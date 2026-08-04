@@ -143,7 +143,6 @@ Essa adaptação deve ser prática. O objetivo é fazer o material antigo funcio
 
 Antes da primeira sessão, ainda é preciso definir:
 
-* período histórico de Forgotten Realms;
 * nível inicial;
 * método de criação de personagem;
 * protocolo de rolagens;

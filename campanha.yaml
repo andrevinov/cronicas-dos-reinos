@@ -15,8 +15,11 @@ sistema:
 cenario:
   nome: "Forgotten Realms"
   periodo_historico:
-    status: "pendente"
-    valor: null
+    status: "definido"
+    valor: "1372 DR"
+    nome_do_ano: "Ano da Magia Selvagem"
+    base_de_cenario: "Forgotten Realms Campaign Setting, D&D 3e"
+    observacao: "Material de Ravens Bluff de AD&D deve ser preservado como base regional e reconciliado com 1372 DR quando necessario."
   regiao_inicial:
     nome: "Ravens Bluff"
     tambem_conhecida_como: "The Living City"
@@ -80,7 +83,6 @@ regras:
 
 preparacao:
   prioridades_atuais:
-    - "definir periodo historico de Forgotten Realms"
     - "preparar Ravens Bluff como regiao inicial"
     - "criar personagem inicial"
     - "criar estado inicial"

@@ -1835,11 +1835,10 @@ Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 2. criar o protocolo de sessão;
 3. resumir criação de personagem;
 4. resumir resolução de ações;
-5. definir período histórico de Forgotten Realms;
-6. preparar Ravens Bluff como região inicial;
-7. criar o personagem;
-8. criar o estado inicial;
-9. preparar a primeira sessão.
+5. preparar Ravens Bluff como região inicial;
+6. criar o personagem;
+7. criar o estado inicial;
+8. preparar a primeira sessão.
 
 Não criar dezenas de documentos vazios apenas para reproduzir a árvore de diretórios.
 

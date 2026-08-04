@@ -1364,6 +1364,7 @@ Já foram definidos:
 * Dungeons & Dragons como sistema;
 * Dungeons & Dragons 5ª edição como base mecânica;
 * Forgotten Realms como cenário;
+* 1372 DR, Ano da Magia Selvagem, como período histórico;
 * português como idioma;
 * UTF-8 como codificação;
 * aproximadamente 70% de fidelidade às regras;
@@ -1381,7 +1382,6 @@ Já foram definidos:
 
 Antes da primeira sessão, ainda será necessário definir:
 
-* período histórico de Forgotten Realms;
 * nível inicial;
 * método de criação de personagem;
 * suplementos opcionais disponíveis ao personagem;
