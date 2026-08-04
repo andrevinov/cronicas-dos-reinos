@@ -1,0 +1,115 @@
+campanha:
+  status: "pronta_para_primeira_sessao"
+  sessao_atual: 1
+  modo_de_cena_atual: "interacao"
+
+personagem:
+  nome: "Ren Kagehira"
+  arquivo_ficha: "personagens/jogador/ficha.yaml"
+  status: "ativo"
+  nivel: 3
+  classe: "Monge"
+  subclasse: "Caminho da Sombra"
+
+localizacao:
+  plano: "Material"
+  mundo: "Toril"
+  continente: "Faerûn"
+  regiao: "The Vast"
+  cidade: "Ravens Bluff"
+  area: "porto"
+  ponto_exato: "a definir na abertura da primeira sessão"
+  descricao_operacional: "Ren chegou a Ravens Bluff pelo porto e ainda está se orientando na cidade."
+
+tempo:
+  ano_dr: 1372
+  nome_do_ano: "Ano da Magia Selvagem"
+  data_exata: null
+  periodo_do_dia: "fim da tarde"
+  clima: "a definir na abertura da primeira sessão"
+  observacao: "A data exata pode ser definida na preparação da primeira sessão sem alterar o conceito inicial."
+
+recursos:
+  pontos_de_vida:
+    atuais: 24
+    maximos: 24
+  dados_de_vida:
+    atuais: 3
+    maximos: 3
+    dado: "d8"
+  ki:
+    atuais: 3
+    maximos: 3
+    recarga: "descanso curto ou longo"
+  classe_de_armadura: 16
+  deslocamento: "50 pés"
+  dinheiro:
+    po: 15
+  condicoes: []
+  exaustao: 0
+
+equipamento_em_posse:
+  armas:
+    - "wakizashi, mecanicamente espada curta"
+    - "10 shuriken, mecanicamente dardos"
+  ferramentas:
+    - "ferramentas de caligrafia"
+    - "ferramentas de ladrão"
+    - "kit de disfarce"
+  itens_importantes:
+    - "selo quebrado do Clã Kagehira"
+    - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
+    - "pedaço de tecido com o símbolo usado pelo traidor"
+  outros:
+    - "roupas escuras de viagem"
+    - "manto simples com capuz"
+    - "pacote de explorador"
+
+objetivos:
+  longo_prazo:
+    - "encontrar Masao Hirasawa"
+    - "recuperar o Selo da Lua Velada"
+    - "descobrir por que Aiko Kagehira foi morta"
+  imediato:
+    - "descobrir se Masao passou pelo porto de Ravens Bluff"
+    - "encontrar uma cobertura local para investigar sem chamar atenção"
+    - "avaliar se a Night Watch pode servir como entrada segura na cidade"
+
+vinculos_ativos:
+  faccao_prevista:
+    nome: "Night Watch"
+    status: "ainda nao estabelecido"
+  contato_previsto:
+    nome: "Luath"
+    papel: "sargento da City Guard"
+    status: "ainda nao conhecido em jogo"
+  antagonista_principal:
+    nome: "Masao Hirasawa"
+    status: "foragido"
+    conhecimento_de_ren: "Ren acredita que Masao pode ter usado Ravens Bluff como esconderijo, ponto de troca ou passagem."
+
+conhecimento_atual:
+  arquivo: "personagens/jogador/conhecimento.md"
+  rumores_relevantes:
+    - "A guarda precisa de gente capaz para tarefas que guardas formais não conseguem cobrir."
+    - "Cargas somem entre o cais, armazéns e alfândega."
+    - "Uma pessoa discreta pode se esconder bem em Ravens Bluff, se tiver dinheiro ou patrono."
+
+estado_narrativo:
+  situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
+  primeira_cena_sugerida: "Ren observa o porto no fim da tarde, perto de armazéns e fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
+  risco_imediato: "baixo"
+  foco_inicial:
+    - "orientação urbana"
+    - "primeiro contato local"
+    - "pistas sobre Masao"
+    - "entrada possível pela Night Watch"
+
+pendencias:
+  antes_da_primeira_sessao:
+    - "definir abertura exata da cena"
+    - "definir método de progressão"
+  podem_ser_definidas_em_jogo:
+    - "data exata no calendário local"
+    - "clima inicial"
+    - "primeiro NPC abordado"

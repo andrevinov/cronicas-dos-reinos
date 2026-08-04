@@ -239,6 +239,16 @@ Ataque com wakizashi: d20 14 + 5 = 19. Acerto. Dano: 1d6 4 + 3 = 7.
 
 O narrador deve rolar para Ren quando a ação declarada exigir rolagem.
 
+Sempre que possível, usar o rolador local:
+
+```bash
+python3 ferramentas/rolar-dados.py ren pericia furtividade --cd 15
+python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
+python3 ferramentas/rolar-dados.py npc d20 --nome "Guarda" --bonus 3 --cd 12 --label "Percepção"
+```
+
+Atalhos e exemplos ficam em `ferramentas/README.md`.
+
 ---
 
 ## Rolagens ocultas

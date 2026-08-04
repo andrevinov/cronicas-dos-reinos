@@ -604,6 +604,14 @@ O agente não deve alterar um resultado depois de conhecer o valor do dado.
 
 Modificadores e dificuldades devem ser definidos antes da rolagem, salvo efeitos legitimamente desencadeados depois dela.
 
+Quando uma rolagem puder ser resolvida pela ferramenta local, usar:
+
+```bash
+python3 ferramentas/rolar-dados.py
+```
+
+Exemplos e atalhos ficam em `ferramentas/README.md`. Rolagens abertas podem ser copiadas para a transcrição. Rolagens ocultas devem ser registradas apenas na área do narrador quando forem relevantes.
+
 ---
 
 ## 18. Rolagens ocultas
@@ -1550,6 +1558,8 @@ Toda ferramenta deve:
 
 Não automatizar decisões narrativas que exigem julgamento.
 
+O rolador padrão da campanha é `ferramentas/rolar-dados.py`. Ele possui comandos genéricos e atalhos baseados na ficha atual de Ren; se a ficha mudar de modo relevante, atualizar a ferramenta ou registrar a pendência antes de usar os atalhos afetados.
+
 ---
 
 ## 51. Validação de consistência
@@ -1833,8 +1843,8 @@ A estrutura poderá evoluir, mas o agente deve preservar a separação conceitua
 
 Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 
-1. criar o estado inicial;
-2. definir método de progressão;
+1. definir método de progressão;
+2. criar `sessoes/001/transcricao.md`;
 3. resumir criação de personagem;
 4. resumir resolução de ações;
 5. preparar a primeira sessão.

@@ -282,7 +282,17 @@ Exemplos:
 * testes ligados a armadilhas desconhecidas;
 * acontecimentos fora da presença do personagem.
 
-O repositório poderá futuramente possuir ferramentas simples para automatizar rolagens e registrar seus resultados.
+O repositório possui um rolador local em `ferramentas/rolar-dados.py`.
+
+Sempre que possível, as rolagens devem usar essa ferramenta para reduzir erro manual e manter um formato consistente na transcrição.
+
+Exemplos rápidos:
+
+```bash
+python3 ferramentas/rolar-dados.py ren pericia furtividade --cd 15
+python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
+python3 ferramentas/rolar-dados.py npc d20 --nome "Guarda" --bonus 3 --cd 12 --label "Percepção"
+```
 
 ---
 
@@ -1381,6 +1391,7 @@ Já foram definidos:
 * nenhum suplemento mecânico opcional no personagem inicial;
 * guia de narrativa e protocolo de sessão iniciais;
 * limites de conteúdo adulto registrados em `narracao/limites.md`;
+* estado inicial registrado em `estado/estado-atual.yaml`;
 * a preparação gradual de novas regiões.
 
 ---
@@ -1392,7 +1403,6 @@ Antes da primeira sessão, ainda será necessário definir:
 * grau de dificuldade;
 * regras da casa;
 * método de progressão;
-* estado inicial;
 * estrutura mínima necessária para a primeira sessão.
 
 ---
@@ -1403,7 +1413,7 @@ Os próximos arquivos recomendados são:
 
 ```text
 regras/criacao-de-personagem.md
-estado/estado-atual.yaml
+sessoes/001/transcricao.md
 regras/resolucao-de-acoes.md
 ```
 

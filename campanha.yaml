@@ -37,6 +37,8 @@ estrutura:
     guia_de_narrativa: "narracao/guia-de-narrativa.md"
     protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
     limites_de_conteudo: "narracao/limites.md"
+    ferramentas: "ferramentas/README.md"
+    rolador_de_dados: "ferramentas/rolar-dados.py"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
     regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
     regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"
@@ -50,6 +52,8 @@ estrutura:
     personagem_conhecimento: "personagens/jogador/conhecimento.md"
     personagem_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
     area_do_narrador: "narrador/README.md"
+    estado_atual: "estado/estado-atual.yaml"
+    tempo_atual: "estado/tempo.yaml"
 
 fontes:
   status: "definidas_iniciais"
@@ -110,9 +114,9 @@ regras:
   protocolo_de_rolagens:
     status: "definido_inicial"
     arquivo: "narracao/protocolo-de-sessao.md"
+    ferramenta_padrao: "ferramentas/rolar-dados.py"
 
 preparacao:
   prioridades_atuais:
-    - "criar estado inicial"
     - "definir metodo de progressao"
     - "preparar primeira sessao"
