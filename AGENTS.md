@@ -1831,13 +1831,13 @@ A estrutura poderá evoluir, mas o agente deve preservar a separação conceitua
 
 Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 
-1. criar o guia de narrativa;
-2. criar o protocolo de sessão;
-3. resumir criação de personagem;
-4. resumir resolução de ações;
-5. preparar Ravens Bluff como região inicial;
-6. criar o personagem;
-7. criar o estado inicial;
+1. criar o estado inicial;
+2. definir protocolo de rolagens;
+3. definir método de progressão;
+4. criar o guia de narrativa;
+5. criar o protocolo de sessão;
+6. resumir criação de personagem;
+7. resumir resolução de ações;
 8. preparar a primeira sessão.
 
 Não criar dezenas de documentos vazios apenas para reproduzir a árvore de diretórios.

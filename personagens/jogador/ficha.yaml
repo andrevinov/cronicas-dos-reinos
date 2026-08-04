@@ -1,0 +1,239 @@
+personagem:
+  nome: "Ren Kagehira"
+  status: "ativo"
+  campanha: "Crônicas dos Reinos"
+  sistema: "Dungeons & Dragons 5e"
+  fonte_mecanica_principal: "Livro do Jogador, D&D 5e"
+
+identidade:
+  ancestralidade: "Humano variante"
+  cultura_origem: "Kozakuran"
+  origem_geografica: "Kozakura, Kara-Tur"
+  classe: "Monge"
+  nivel: 3
+  subclasse: "Caminho da Sombra"
+  background: "Exilado de Clã"
+  alinhamento: "Leal Neutro"
+  idade: 24
+  tamanho: "Médio"
+  idiomas:
+    - "Comum"
+    - "Kozakuran"
+
+criacao:
+  metodo_atributos: "array solo melhorado"
+  array_usado: [16, 15, 14, 13, 12, 10]
+  ajustes_ancestralidade:
+    destreza: 1
+    sabedoria: 1
+  talento_inicial: "Móvel"
+  suplementos_mecanicos_opcionais: "nenhum"
+  observacao: "Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional."
+  escolhas:
+    pericia_humano_variante: "Investigação"
+    pericias_monge:
+      - "Acrobacia"
+      - "Furtividade"
+    ferramenta_monge: "ferramentas de caligrafia"
+    pericias_background:
+      - "Intuição"
+      - "Percepção"
+    ferramentas_background:
+      - "ferramentas de ladrão"
+      - "kit de disfarce"
+
+atributos:
+  forca:
+    valor: 12
+    modificador: 1
+    salvaguarda_proficiente: true
+    bonus_salvaguarda: 3
+  destreza:
+    valor: 17
+    modificador: 3
+    salvaguarda_proficiente: true
+    bonus_salvaguarda: 5
+  constituicao:
+    valor: 14
+    modificador: 2
+    salvaguarda_proficiente: false
+    bonus_salvaguarda: 2
+  inteligencia:
+    valor: 13
+    modificador: 1
+    salvaguarda_proficiente: false
+    bonus_salvaguarda: 1
+  sabedoria:
+    valor: 16
+    modificador: 3
+    salvaguarda_proficiente: false
+    bonus_salvaguarda: 3
+  carisma:
+    valor: 10
+    modificador: 0
+    salvaguarda_proficiente: false
+    bonus_salvaguarda: 0
+
+proficiencia:
+  bonus: 2
+
+combate:
+  classe_de_armadura:
+    valor: 16
+    calculo: "10 + Destreza + Sabedoria, sem armadura"
+  pontos_de_vida:
+    maximos: 24
+    atuais: 24
+    dados_de_vida: "3d8"
+    calculo: "8 + CON no nível 1; média 5 + CON nos níveis 2 e 3"
+  iniciativa: 3
+  deslocamento:
+    base: "30 pés"
+    bonus_monge_sem_armadura: "10 pés"
+    bonus_talento_movel: "10 pés"
+    total: "50 pés"
+  ataques:
+    - nome: "Golpe desarmado"
+      bonus_ataque: 5
+      dano: "1d4 + 3 contundente"
+      observacao: "Conta como ataque marcial de monge."
+    - nome: "Wakizashi"
+      mecanica: "espada curta"
+      bonus_ataque: 5
+      dano: "1d6 + 3 perfurante"
+      observacao: "Arma de monge; nome cultural é apenas descritivo."
+    - nome: "Shuriken"
+      mecanica: "dardo"
+      bonus_ataque: 5
+      dano: "1d4 + 3 perfurante"
+      alcance: "20/60 pés"
+      quantidade: 10
+
+pericias:
+  acrobacia: 5
+  furtividade: 5
+  intuicao: 5
+  percepcao: 5
+  investigacao: 3
+  atletismo: 1
+  historia: 1
+  religiao: 1
+  arcana: 1
+  enganacao: 0
+  intimidacao: 0
+  persuasao: 0
+  sobrevivencia: 3
+  medicina: 3
+  natureza: 1
+  prestidigitacao: 3
+  atuacao: 0
+  lidar_com_animais: 3
+
+sentidos:
+  percepcao_passiva: 15
+  investigacao_passiva: 13
+  intuicao_passiva: 15
+
+proficiencias:
+  armaduras: []
+  armas:
+    - "armas simples"
+    - "espadas curtas"
+  ferramentas:
+    - "ferramentas de caligrafia"
+    - "ferramentas de ladrão"
+    - "kit de disfarce"
+
+recursos_de_classe:
+  defesa_sem_armadura:
+    resumo: "CA = 10 + Destreza + Sabedoria enquanto não usa armadura nem escudo."
+  artes_marciais:
+    dado: "1d4"
+    resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
+  ki:
+    pontos_maximos: 3
+    pontos_atuais: 3
+    cd: 13
+    recarga: "descanso curto ou longo"
+    usos:
+      rajada_de_golpes:
+        custo: 1
+        resumo: "Depois da ação Atacar, faz dois golpes desarmados como ação bônus."
+      defesa_paciente:
+        custo: 1
+        resumo: "Usa Esquivar como ação bônus."
+      passo_do_vento:
+        custo: 1
+        resumo: "Usa Desengajar ou Disparada como ação bônus; distância de salto dobrada no turno."
+  movimento_sem_armadura:
+    bonus: "10 pés"
+    resumo: "Move-se mais rápido enquanto não usa armadura nem escudo."
+  aparar_projeteis:
+    reacao: true
+    reducao: "1d10 + 6"
+    resumo: "Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o projétil de volta."
+  artes_sombrias:
+    subclasse: "Caminho da Sombra"
+    truque:
+      nome: "ilusão menor"
+      custo: 0
+    magias_com_ki:
+      - nome: "escuridão"
+        custo: 2
+      - nome: "visão no escuro"
+        custo: 2
+      - nome: "passos sem pegadas"
+        custo: 2
+      - nome: "silêncio"
+        custo: 2
+    resumo: "Usa ki para criar cobertura, silêncio, furtividade sobrenatural e truques de distração."
+
+talentos:
+  movel:
+    resumo: "Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque de oportunidade dela pelo resto do turno, acertando ou errando."
+    observacao: "Ajuda Ren a bater e reposicionar, essencial para campanha solo."
+
+background:
+  nome: "Exilado de Clã"
+  origem: "customizado"
+  proficiencias_concedidas:
+    pericias:
+      - "Intuição"
+      - "Percepção"
+    ferramentas:
+      - "ferramentas de ladrão"
+      - "kit de disfarce"
+  caracteristica_narrativa:
+    nome: "Sinais do Clã"
+    resumo: "Ren reconhece marcas, códigos e hábitos de agentes treinados em tradições semelhantes às de seu clã. Isso pode abrir pistas, mas também denunciá-lo a inimigos atentos."
+
+equipamento:
+  armas:
+    - "wakizashi, mecanicamente espada curta"
+    - "10 shuriken, mecanicamente dardos"
+  armadura: "nenhuma"
+  itens:
+    - "roupas escuras de viagem"
+    - "manto simples com capuz"
+    - "ferramentas de caligrafia"
+    - "ferramentas de ladrão"
+    - "kit de disfarce"
+    - "pacote de explorador"
+    - "selo quebrado do Clã Kagehira"
+    - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
+    - "pedaço de tecido com o símbolo usado pelo traidor"
+  dinheiro:
+    po: 15
+
+vinculos:
+  regiao_inicial: "Ravens Bluff"
+  entrada_na_cidade: "chegada pelo porto"
+  contato_inicial_previsto: "Luath, sargento da City Guard"
+  faccao_inicial_prevista: "Night Watch"
+  motivacao_principal: "encontrar o traidor Masao Hirasawa"
+  objetivo_imediato: "descobrir quem ajudou Masao a entrar ou se esconder em Ravens Bluff"
+
+progressao:
+  xp_atual: null
+  metodo: "pendente"
+  observacao: "Nível inicial já definido como 3; método futuro de avanço ainda será decidido."

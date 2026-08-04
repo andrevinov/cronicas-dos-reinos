@@ -143,8 +143,5 @@ Essa adaptação deve ser prática. O objetivo é fazer o material antigo funcio
 
 Antes da primeira sessão, ainda é preciso definir:
 
-* nível inicial;
-* método de criação de personagem;
 * protocolo de rolagens;
-* quais suplementos opcionais estarão disponíveis ao personagem;
 * se o avanço será por experiência, marco ou outro método.

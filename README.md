@@ -1374,6 +1374,11 @@ Já foram definidos:
 * a separação entre conhecimento, verdade e segredo;
 * Ravens Bluff como região inicial;
 * fontes iniciais registradas em `regras/fontes.md`;
+* pacote mínimo de Ravens Bluff para apoiar criação de personagem;
+* Ren Kagehira como personagem inicial;
+* nível inicial 3;
+* método de atributos por array solo melhorado;
+* nenhum suplemento mecânico opcional no personagem inicial;
 * a preparação gradual de novas regiões.
 
 ---
@@ -1382,14 +1387,11 @@ Já foram definidos:
 
 Antes da primeira sessão, ainda será necessário definir:
 
-* nível inicial;
-* método de criação de personagem;
-* suplementos opcionais disponíveis ao personagem;
-* tom da campanha;
 * grau de dificuldade;
 * regras da casa;
 * protocolo de rolagens;
-* estrutura definitiva da ficha;
+* método de progressão;
+* estado inicial;
 * estrutura mínima necessária para a primeira sessão.
 
 ---
@@ -1399,15 +1401,14 @@ Antes da primeira sessão, ainda será necessário definir:
 Os próximos arquivos recomendados são:
 
 ```text
-regras/resolucao-de-acoes.md
 regras/criacao-de-personagem.md
+estado/estado-atual.yaml
+regras/resolucao-de-acoes.md
 narracao/guia-de-narrativa.md
 narracao/protocolo-de-sessao.md
-cenario/regioes/ravens-bluff/visao-geral.md
-cenario/regioes/ravens-bluff/fontes.md
 ```
 
-Depois dessas definições, poderá começar a preparação detalhada de Ravens Bluff e a criação do personagem.
+Depois dessas decisões, poderá começar a preparação da primeira sessão.
 
 ---
 

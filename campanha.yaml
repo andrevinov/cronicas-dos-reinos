@@ -37,6 +37,17 @@ estrutura:
     guia_de_narrativa: "narracao/guia-de-narrativa.md"
     protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
+    regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
+    regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"
+    regiao_inicial_faccoes: "cenario/regioes/ravens-bluff/faccoes.md"
+    regiao_inicial_personagens: "cenario/regioes/ravens-bluff/personagens-iniciais.md"
+    regiao_inicial_rumores: "cenario/regioes/ravens-bluff/rumores-iniciais.md"
+    regiao_inicial_vinculos: "cenario/regioes/ravens-bluff/vinculos-de-personagem.md"
+    personagem_conceito: "personagens/jogador/conceito.md"
+    personagem_ficha: "personagens/jogador/ficha.yaml"
+    personagem_historia: "personagens/jogador/historia.md"
+    personagem_conhecimento: "personagens/jogador/conhecimento.md"
+    personagem_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
 
 fontes:
   status: "definidas_iniciais"
@@ -55,22 +66,34 @@ fontes:
 
 jogador:
   personagem_inicial:
-    status: "pendente"
+    status: "definido"
+    nome: "Ren Kagehira"
+    conceito: "humano de Kozakura, monge do Caminho da Sombra, caçando um traidor de clã em Ravens Bluff"
     arquivo_ficha: "personagens/jogador/ficha.yaml"
+    arquivo_conceito: "personagens/jogador/conceito.md"
+    arquivo_historia: "personagens/jogador/historia.md"
+    arquivo_conhecimento: "personagens/jogador/conhecimento.md"
+    arquivo_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
   nivel_inicial:
-    status: "pendente"
-    valor: null
+    status: "definido"
+    valor: 3
   metodo_de_criacao:
-    status: "pendente"
-    valor: null
+    status: "definido"
+    valor: "array solo melhorado"
+    atributos: [16, 15, 14, 13, 12, 10]
+  suplementos_opcionais_personagem:
+    status: "definido"
+    valor: "nenhum suplemento mecanico opcional no personagem inicial"
 
 tom:
-  status: "pendente"
+  status: "definido_inicial"
   diretrizes_iniciais:
     - "mundo aberto"
     - "consequencias persistentes"
     - "agencia real do jogador"
     - "preparacao local antes de expansao ampla"
+    - "campanha solo com aliados temporarios"
+    - "furtividade, investigacao urbana e sobrevivencia"
 
 regras:
   fidelidade_aproximada: "70%"
@@ -83,6 +106,8 @@ regras:
 
 preparacao:
   prioridades_atuais:
-    - "preparar Ravens Bluff como regiao inicial"
-    - "criar personagem inicial"
     - "criar estado inicial"
+    - "definir protocolo de rolagens"
+    - "definir metodo de progressao"
+    - "criar guia de narrativa"
+    - "preparar primeira sessao"

@@ -79,15 +79,21 @@ Essas fontes não devem deslocar Ravens Bluff como foco inicial.
 
 ## Pendências de pesquisa regional
 
-Antes da primeira sessão, preparar apenas o necessário:
+Pacote mínimo já criado:
 
 * visão geral jogável de Ravens Bluff;
 * lista curta de bairros ou áreas iniciais;
 * 5 a 8 NPCs recorrentes;
 * 3 a 5 facções locais;
 * rumores iniciais;
+* conexões com porto, patrulha urbana e arredores imediatos.
+
+Antes da primeira sessão, ainda será necessário selecionar, com base no personagem:
+
 * ameaças de baixo nível;
 * ponto de entrada do personagem na cidade;
-* conexões com porto, patrulha urbana e arredores imediatos.
+* contato principal;
+* facções ativas;
+* rumores conhecidos pelo personagem.
 
 Não tentar resumir todos os livros regionais antes de jogar.

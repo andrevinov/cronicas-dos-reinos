@@ -8,6 +8,21 @@ Este documento é uma visão geral operacional. Ele deve orientar preparação, 
 
 ---
 
+## Arquivos de apoio
+
+O pacote mínimo regional para criação de personagem está dividido em:
+
+* `fontes.md`;
+* `lugares-iniciais.md`;
+* `faccoes.md`;
+* `personagens-iniciais.md`;
+* `rumores-iniciais.md`;
+* `vinculos-de-personagem.md`.
+
+Esses arquivos bastam para escolher origem, contato, vínculo local e primeira cena provável.
+
+---
+
 ## Função na campanha
 
 Ravens Bluff será a primeira base da campanha.
@@ -180,14 +195,14 @@ Essas conexões devem aparecer primeiro como rumores, mapas, viajantes, notícia
 
 Antes de jogar, este diretório deve conter ou apontar para:
 
-* fontes regionais;
-* visão geral;
-* lista curta de lugares iniciais;
-* lista curta de NPCs;
-* lista curta de facções;
-* rumores iniciais;
-* possíveis cenas de abertura;
-* pendências de adaptação.
+* fontes regionais: `fontes.md`;
+* visão geral: este arquivo;
+* lista curta de lugares iniciais: `lugares-iniciais.md`;
+* lista curta de NPCs: `personagens-iniciais.md`;
+* lista curta de facções: `faccoes.md`;
+* rumores iniciais: `rumores-iniciais.md`;
+* vínculos e possíveis cenas de abertura: `vinculos-de-personagem.md`;
+* pendências de adaptação: registradas nos próprios arquivos regionais.
 
 Não é necessário preparar toda a cidade antes da criação do personagem.
 
