@@ -693,6 +693,8 @@ Exemplo:
 
 O comportamento narrativo específico deve ser definido em `narracao/guia-de-narrativa.md`.
 
+Os limites de conteúdo adulto, romance, intimidade, violência e crueldade devem ser definidos e consultados em `narracao/limites.md`.
+
 Na ausência de instrução mais específica, o agente deve:
 
 * escrever de forma clara e evocativa;
@@ -1832,13 +1834,10 @@ A estrutura poderá evoluir, mas o agente deve preservar a separação conceitua
 Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 
 1. criar o estado inicial;
-2. definir protocolo de rolagens;
-3. definir método de progressão;
-4. criar o guia de narrativa;
-5. criar o protocolo de sessão;
-6. resumir criação de personagem;
-7. resumir resolução de ações;
-8. preparar a primeira sessão.
+2. definir método de progressão;
+3. resumir criação de personagem;
+4. resumir resolução de ações;
+5. preparar a primeira sessão.
 
 Não criar dezenas de documentos vazios apenas para reproduzir a árvore de diretórios.
 

@@ -143,5 +143,4 @@ Essa adaptação deve ser prática. O objetivo é fazer o material antigo funcio
 
 Antes da primeira sessão, ainda é preciso definir:
 
-* protocolo de rolagens;
 * se o avanço será por experiência, marco ou outro método.

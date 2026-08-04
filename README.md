@@ -1379,6 +1379,8 @@ Já foram definidos:
 * nível inicial 3;
 * método de atributos por array solo melhorado;
 * nenhum suplemento mecânico opcional no personagem inicial;
+* guia de narrativa e protocolo de sessão iniciais;
+* limites de conteúdo adulto registrados em `narracao/limites.md`;
 * a preparação gradual de novas regiões.
 
 ---
@@ -1389,7 +1391,6 @@ Antes da primeira sessão, ainda será necessário definir:
 
 * grau de dificuldade;
 * regras da casa;
-* protocolo de rolagens;
 * método de progressão;
 * estado inicial;
 * estrutura mínima necessária para a primeira sessão.
@@ -1404,8 +1405,6 @@ Os próximos arquivos recomendados são:
 regras/criacao-de-personagem.md
 estado/estado-atual.yaml
 regras/resolucao-de-acoes.md
-narracao/guia-de-narrativa.md
-narracao/protocolo-de-sessao.md
 ```
 
 Depois dessas decisões, poderá começar a preparação da primeira sessão.

@@ -36,6 +36,7 @@ estrutura:
     regras_e_fontes: "regras/fontes.md"
     guia_de_narrativa: "narracao/guia-de-narrativa.md"
     protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
+    limites_de_conteudo: "narracao/limites.md"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
     regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
     regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"
@@ -48,6 +49,7 @@ estrutura:
     personagem_historia: "personagens/jogador/historia.md"
     personagem_conhecimento: "personagens/jogador/conhecimento.md"
     personagem_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
+    area_do_narrador: "narrador/README.md"
 
 fontes:
   status: "definidas_iniciais"
@@ -94,6 +96,11 @@ tom:
     - "preparacao local antes de expansao ampla"
     - "campanha solo com aliados temporarios"
     - "furtividade, investigacao urbana e sobrevivencia"
+    - "jogo adulto com romance e intimidade consentida tratados por corte de cena"
+    - "violencia sombria permitida sem crueldade grafica gratuita"
+  limites_de_conteudo:
+    status: "definido"
+    arquivo: "narracao/limites.md"
 
 regras:
   fidelidade_aproximada: "70%"
@@ -101,13 +108,11 @@ regras:
     status: "pendente"
     arquivo: "regras/regras-da-casa.md"
   protocolo_de_rolagens:
-    status: "pendente"
+    status: "definido_inicial"
     arquivo: "narracao/protocolo-de-sessao.md"
 
 preparacao:
   prioridades_atuais:
     - "criar estado inicial"
-    - "definir protocolo de rolagens"
     - "definir metodo de progressao"
-    - "criar guia de narrativa"
     - "preparar primeira sessao"
