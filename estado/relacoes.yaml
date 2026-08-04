@@ -1,0 +1,44 @@
+relacoes:
+  edran_vale:
+    nome: "Edran Vale"
+    tipo: "contato local"
+    local: "The Silver Lily"
+    status: "ativo"
+    atitude_para_ren: "cautelosa, levemente favoravel"
+    confianca: "baixa"
+    respeito: "inicial"
+    motivo: >
+      Ren pagou bem, não ameaçou a hospedagem, explicou seu uso da palavra
+      "gaijin" e tratou Edran como possível aliado respeitável.
+    acordos:
+      - "Edran recebeu 1 PO por silêncio discreto sobre as perguntas de Ren na The Silver Lily."
+    informacoes_compartilhadas_por_edran:
+      - "Velis Rook pode saber mais sobre registros e movimentações na alfândega."
+      - "Mara Tharle pode ter visto movimentação irregular de carga no pátio."
+    riscos:
+      - "A confiança ainda é comercial e frágil."
+      - "Edran protege a própria casa antes de proteger Ren."
+  mara_tharle:
+    nome: "Mara Tharle"
+    tipo: "testemunha local"
+    local: "pátio de carga de Ravens Bluff"
+    status: "ativo"
+    atitude_para_ren: "assustada e desconfiada"
+    confianca: "muito baixa"
+    respeito: "nenhum"
+    motivo: >
+      Ren abordou Mara furtivamente e a conteve fisicamente para impedir
+      que o contato fosse percebido. Depois explicou sua busca por Masao e
+      ofereceu pagamento, mas a abordagem deixou Mara com medo e raiva.
+    informacoes_compartilhadas_por_mara:
+      - "Uma caixa pequena e comprida saiu da fila antes de chegar a Narwhal Manor."
+      - "Velis Rook estava presente e chamou a irregularidade de erro de contagem."
+      - "Um homem de casaco com botões de latão observava os carregadores."
+      - "Gente da Red Sail Tavern conhece o homem de botões de latão."
+      - "Um rapaz perguntou por estrangeiro do leste com lâmina curta e rosto marcado."
+    limites:
+      - "Mara pediu que Ren não fosse à casa dela."
+      - "Mara aceitou 1 PO pelo inconveniente e pelo silêncio."
+    riscos:
+      - "Mara pode evitar Ren no futuro."
+      - "Se pressionada ou ameaçada, pode procurar a guarda ou contar a alguém do porto."

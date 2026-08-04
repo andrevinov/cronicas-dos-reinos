@@ -1,6 +1,6 @@
 campanha:
   nome: "Crônicas dos Reinos"
-  status: "preparacao"
+  status: "sessao_001_em_andamento"
   idioma: "pt-BR"
   codificacao: "UTF-8"
 
@@ -34,6 +34,10 @@ estrutura:
   fonte_de_verdade: "repositorio"
   arquivos_referenciados:
     regras_e_fontes: "regras/fontes.md"
+    dificuldade: "regras/dificuldade.md"
+    progressao: "regras/progressao.md"
+    regras_da_casa: "regras/regras-da-casa.md"
+    resolucao_de_acoes: "regras/resolucao-de-acoes.md"
     guia_de_narrativa: "narracao/guia-de-narrativa.md"
     protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
     limites_de_conteudo: "narracao/limites.md"
@@ -45,6 +49,7 @@ estrutura:
     regiao_inicial_faccoes: "cenario/regioes/ravens-bluff/faccoes.md"
     regiao_inicial_personagens: "cenario/regioes/ravens-bluff/personagens-iniciais.md"
     regiao_inicial_rumores: "cenario/regioes/ravens-bluff/rumores-iniciais.md"
+    regiao_inicial_porto: "cenario/regioes/ravens-bluff/porto-e-primeiros-locais.md"
     regiao_inicial_vinculos: "cenario/regioes/ravens-bluff/vinculos-de-personagem.md"
     personagem_conceito: "personagens/jogador/conceito.md"
     personagem_ficha: "personagens/jogador/ficha.yaml"
@@ -52,7 +57,12 @@ estrutura:
     personagem_conhecimento: "personagens/jogador/conhecimento.md"
     personagem_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
     area_do_narrador: "narrador/README.md"
+    preparacao_sessao_atual: "narrador/sessoes/001/preparacao.md"
+    mapa_sessao_atual: "narrador/sessoes/001/mapa-e-salas.md"
+    npcs_sessao_atual: "narrador/sessoes/001/npcs.md"
+    relogios_sessao_atual: "narrador/sessoes/001/relogios.md"
     estado_atual: "estado/estado-atual.yaml"
+    relacoes: "estado/relacoes.yaml"
     tempo_atual: "estado/tempo.yaml"
 
 fontes:
@@ -108,9 +118,20 @@ tom:
 
 regras:
   fidelidade_aproximada: "70%"
+  dificuldade:
+    status: "definida"
+    valor: "solo cautelosa, com risco real"
+    arquivo: "regras/dificuldade.md"
   regras_da_casa:
-    status: "pendente"
+    status: "definida_inicial"
     arquivo: "regras/regras-da-casa.md"
+  resolucao_de_acoes:
+    status: "definida_inicial"
+    arquivo: "regras/resolucao-de-acoes.md"
+  progressao:
+    status: "definida"
+    metodo: "marcos narrativos"
+    arquivo: "regras/progressao.md"
   protocolo_de_rolagens:
     status: "definido_inicial"
     arquivo: "narracao/protocolo-de-sessao.md"
@@ -118,5 +139,5 @@ regras:
 
 preparacao:
   prioridades_atuais:
-    - "definir metodo de progressao"
-    - "preparar primeira sessao"
+    - "jogar primeira cena"
+    - "consolidar sessao ao pausar ou encerrar"

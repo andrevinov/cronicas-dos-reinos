@@ -1843,11 +1843,11 @@ A estrutura poderá evoluir, mas o agente deve preservar a separação conceitua
 
 Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 
-1. definir método de progressão;
-2. criar `sessoes/001/transcricao.md`;
-3. resumir criação de personagem;
-4. resumir resolução de ações;
-5. preparar a primeira sessão.
+1. abrir e conduzir `sessoes/001/transcricao.md`;
+2. consolidar a primeira sessão ao encerrar ou pausar;
+3. resumir resolução de ações;
+4. resumir criação de personagem;
+5. criar novos arquivos de cenário, NPCs ou regras somente quando entrarem em jogo ou forem necessários para a próxima cena.
 
 Não criar dezenas de documentos vazios apenas para reproduzir a árvore de diretórios.
 

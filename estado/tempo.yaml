@@ -3,6 +3,6 @@ nome_do_ano: "Ano da Magia Selvagem"
 data_atual:
   status: "pendente"
   valor: null
-periodo_do_dia: "fim da tarde"
+periodo_do_dia: "início da noite"
 local_referencia: "Ravens Bluff"
-observacao: "A data exata será definida quando a primeira sessão for aberta ou quando calendário preciso se tornar necessário."
+observacao: "A data exata segue pendente; durante a Sessão 001, Ren chegou no fim da tarde e agora está no início da noite."

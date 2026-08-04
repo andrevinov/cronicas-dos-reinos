@@ -17,6 +17,7 @@ O pacote mínimo regional para criação de personagem está dividido em:
 * `faccoes.md`;
 * `personagens-iniciais.md`;
 * `rumores-iniciais.md`;
+* `porto-e-primeiros-locais.md`;
 * `vinculos-de-personagem.md`.
 
 Esses arquivos bastam para escolher origem, contato, vínculo local e primeira cena provável.
@@ -201,6 +202,7 @@ Antes de jogar, este diretório deve conter ou apontar para:
 * lista curta de NPCs: `personagens-iniciais.md`;
 * lista curta de facções: `faccoes.md`;
 * rumores iniciais: `rumores-iniciais.md`;
+* porto e primeiros locais: `porto-e-primeiros-locais.md`;
 * vínculos e possíveis cenas de abertura: `vinculos-de-personagem.md`;
 * pendências de adaptação: registradas nos próprios arquivos regionais.
 

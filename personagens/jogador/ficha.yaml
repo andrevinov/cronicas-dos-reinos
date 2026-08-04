@@ -152,7 +152,7 @@ recursos_de_classe:
     resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
   ki:
     pontos_maximos: 3
-    pontos_atuais: 3
+    pontos_atuais: 1
     cd: 13
     recarga: "descanso curto ou longo"
     usos:
@@ -223,7 +223,7 @@ equipamento:
     - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
     - "pedaço de tecido com o símbolo usado pelo traidor"
   dinheiro:
-    po: 15
+    po: 12
 
 vinculos:
   regiao_inicial: "Ravens Bluff"
@@ -235,5 +235,7 @@ vinculos:
 
 progressao:
   xp_atual: null
-  metodo: "pendente"
-  observacao: "Nível inicial já definido como 3; método futuro de avanço ainda será decidido."
+  metodo: "marcos narrativos"
+  arquivo_regras: "regras/progressao.md"
+  marco_atual: "início da campanha em Ravens Bluff"
+  observacao: "Nível inicial já definido como 3; XP numérico pode ser usado como referência, mas a progressão oficial ocorre por marcos narrativos."

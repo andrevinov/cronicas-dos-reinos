@@ -1378,6 +1378,9 @@ Já foram definidos:
 * português como idioma;
 * UTF-8 como codificação;
 * aproximadamente 70% de fidelidade às regras;
+* dificuldade solo cautelosa, com risco real, registrada em `regras/dificuldade.md`;
+* resolução básica de ações registrada em `regras/resolucao-de-acoes.md`;
+* regras da casa iniciais registradas em `regras/regras-da-casa.md`;
 * o Codex como narrador e mantenedor da campanha;
 * a proposta de mundo aberto;
 * o registro de consequências persistentes;
@@ -1385,9 +1388,11 @@ Já foram definidos:
 * Ravens Bluff como região inicial;
 * fontes iniciais registradas em `regras/fontes.md`;
 * pacote mínimo de Ravens Bluff para apoiar criação de personagem;
+* arquivo público do porto e primeiros locais em `cenario/regioes/ravens-bluff/porto-e-primeiros-locais.md`;
 * Ren Kagehira como personagem inicial;
 * nível inicial 3;
 * método de atributos por array solo melhorado;
+* progressão por marcos narrativos registrada em `regras/progressao.md`;
 * nenhum suplemento mecânico opcional no personagem inicial;
 * guia de narrativa e protocolo de sessão iniciais;
 * limites de conteúdo adulto registrados em `narracao/limites.md`;
@@ -1398,12 +1403,9 @@ Já foram definidos:
 
 ## Próximas decisões
 
-Antes da primeira sessão, ainda será necessário definir:
+Pendência não bloqueante para a primeira sessão:
 
-* grau de dificuldade;
-* regras da casa;
-* método de progressão;
-* estrutura mínima necessária para a primeira sessão.
+* resumos detalhados de criação de personagem.
 
 ---
 
@@ -1413,11 +1415,11 @@ Os próximos arquivos recomendados são:
 
 ```text
 regras/criacao-de-personagem.md
-sessoes/001/transcricao.md
-regras/resolucao-de-acoes.md
+registros/experiencia.md
+sessoes/001/resumo.md
 ```
 
-Depois dessas decisões, poderá começar a preparação da primeira sessão.
+A Sessão 001 já possui transcrição inicial e preparação reservada do narrador.
 
 ---
 
