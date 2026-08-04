@@ -404,6 +404,12 @@ Essas informações devem ser registradas em `campanha.yaml` ou em arquivos dire
 
 A campanha não deve começar com valores críticos indefinidos.
 
+A região inicial da campanha já está definida como **Ravens Bluff**, em Forgotten Realms.
+
+O agente deve tratar Ravens Bluff como a primeira base regional da campanha, com preparação suficiente para sustentar várias sessões locais antes de expandir o escopo para outras regiões.
+
+Ao preparar material inicial, priorizar fontes e resumos sobre Ravens Bluff, The Living City, sua estrutura urbana, arredores imediatos, facções, NPCs recorrentes, ameaças locais, rumores e conexões com regiões vizinhas.
+
 O agente pode usar marcadores temporários apenas para detalhes menores que não afetem a primeira sessão.
 
 ---
@@ -1825,16 +1831,15 @@ A estrutura poderá evoluir, mas o agente deve preservar a separação conceitua
 
 Enquanto o projeto estiver em fase inicial, o agente deve priorizar:
 
-1. definir `campanha.yaml`;
-2. definir a edição e as fontes;
-3. criar o guia de narrativa;
-4. criar o protocolo de sessão;
-5. resumir criação de personagem;
-6. resumir resolução de ações;
-7. definir a região inicial;
-8. criar o personagem;
-9. criar o estado inicial;
-10. preparar a primeira sessão.
+1. criar o guia de narrativa;
+2. criar o protocolo de sessão;
+3. resumir criação de personagem;
+4. resumir resolução de ações;
+5. definir período histórico de Forgotten Realms;
+6. preparar Ravens Bluff como região inicial;
+7. criar o personagem;
+8. criar o estado inicial;
+9. preparar a primeira sessão.
 
 Não criar dezenas de documentos vazios apenas para reproduzir a árvore de diretórios.
 

@@ -1,0 +1,86 @@
+campanha:
+  nome: "Crônicas dos Reinos"
+  status: "preparacao"
+  idioma: "pt-BR"
+  codificacao: "UTF-8"
+
+sistema:
+  nome: "Dungeons & Dragons"
+  edicao:
+    status: "definida"
+    valor: "5ª edição"
+    base_mecanica: "D&D 5e classico"
+    observacao: "Material de AD&D e de outras edicoes pode ser usado como fonte de cenario e aventura, com adaptacao leve para 5e."
+
+cenario:
+  nome: "Forgotten Realms"
+  periodo_historico:
+    status: "pendente"
+    valor: null
+  regiao_inicial:
+    nome: "Ravens Bluff"
+    tambem_conhecida_como: "The Living City"
+    status: "definida"
+    funcao_na_campanha: "base inicial"
+    intencao_de_uso: "sustentar varias sessoes locais antes da expansao gradual para outras regioes"
+  expansao_regional:
+    modo: "gradual"
+    criterio: "preparar novas regioes quando a campanha se aproximar delas"
+
+estrutura:
+  fonte_de_verdade: "repositorio"
+  arquivos_referenciados:
+    regras_e_fontes: "regras/fontes.md"
+    guia_de_narrativa: "narracao/guia-de-narrativa.md"
+    protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
+    regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
+
+fontes:
+  status: "definidas_iniciais"
+  arquivo_canonico: "regras/fontes.md"
+  observacao: "Regras-base em D&D 5e; materiais de AD&D e outras edicoes entram como fontes de cenario, aventura e inspiracao, com adaptacao quando necessario."
+  regras_base:
+    - "Livro do Jogador, D&D 5e"
+    - "Manual dos Monstros, D&D 5e"
+    - "Guia do Mestre 2024, como apoio secundario quando compativel"
+  candidatas_regionais:
+    - "LC1 - Gateway to Ravens Bluff, The Living City"
+    - "LC2 - Inside Ravens Bluff"
+    - "LC3 - Nightwatch in the Living City"
+    - "LC4 - Port of Ravens Bluff"
+    - "The City of Ravens Bluff"
+
+jogador:
+  personagem_inicial:
+    status: "pendente"
+    arquivo_ficha: "personagens/jogador/ficha.yaml"
+  nivel_inicial:
+    status: "pendente"
+    valor: null
+  metodo_de_criacao:
+    status: "pendente"
+    valor: null
+
+tom:
+  status: "pendente"
+  diretrizes_iniciais:
+    - "mundo aberto"
+    - "consequencias persistentes"
+    - "agencia real do jogador"
+    - "preparacao local antes de expansao ampla"
+
+regras:
+  fidelidade_aproximada: "70%"
+  regras_da_casa:
+    status: "pendente"
+    arquivo: "regras/regras-da-casa.md"
+  protocolo_de_rolagens:
+    status: "pendente"
+    arquivo: "narracao/protocolo-de-sessao.md"
+
+preparacao:
+  prioridades_atuais:
+    - "definir periodo historico de Forgotten Realms"
+    - "preparar Ravens Bluff como regiao inicial"
+    - "criar personagem inicial"
+    - "criar estado inicial"

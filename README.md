@@ -64,15 +64,15 @@ Este repositório será dedicado exclusivamente a uma combinação específica d
 * período histórico;
 * conjunto de livros autorizados.
 
-A versão exata de **Dungeons & Dragons** ainda será definida antes da criação do personagem e do início da primeira aventura.
+A campanha usará **Dungeons & Dragons 5ª edição** como base mecânica.
 
-Depois de escolhida, a edição será registrada em `campanha.yaml` e deverá ser tratada como parte fundamental do contrato da campanha.
+A edição está registrada em `campanha.yaml` e deverá ser tratada como parte fundamental do contrato da campanha.
 
 O projeto não pretende ser um motor agnóstico capaz de executar simultaneamente diferentes sistemas de RPG.
 
 Embora algumas estruturas possam ser reutilizáveis, este repositório será construído especificamente para a campanha de Dungeons & Dragons em Forgotten Realms.
 
-Não deverão ser incluídas regras de outras edições ou de outros sistemas, salvo quando uma adaptação for adotada conscientemente e registrada como regra da casa.
+Materiais de outras edições poderão ser usados como fontes de cenário, aventura, personagens, lugares e conflitos, mas suas mecânicas deverão ser adaptadas para 5e.
 
 ---
 
@@ -99,11 +99,13 @@ A campanha deverá considerar, conforme forem relevantes:
 
 Entretanto, não será necessário documentar todo o cenário antes do início do jogo.
 
-A preparação deverá começar pela região inicial da campanha e se expandir gradualmente, acompanhando os movimentos do personagem.
+A preparação deverá começar pela região inicial da campanha, **Ravens Bluff**, e se expandir gradualmente, acompanhando os movimentos do personagem.
 
-Se a campanha começar em Shadowdale, por exemplo, o material inicial poderá incluir:
+Ravens Bluff será tratada como a base inicial da campanha. A intenção é permanecer por várias sessões nessa região antes de ampliar o escopo para outras partes de Forgotten Realms.
 
-* visão geral de Shadowdale;
+O material inicial de Ravens Bluff poderá incluir:
+
+* visão geral de Ravens Bluff e da região ao redor;
 * vilas e lugares importantes;
 * personagens influentes;
 * facções presentes;
@@ -1360,6 +1362,7 @@ Já foram definidos:
 
 * o uso de um repositório exclusivo para esta campanha;
 * Dungeons & Dragons como sistema;
+* Dungeons & Dragons 5ª edição como base mecânica;
 * Forgotten Realms como cenário;
 * português como idioma;
 * UTF-8 como codificação;
@@ -1368,6 +1371,8 @@ Já foram definidos:
 * a proposta de mundo aberto;
 * o registro de consequências persistentes;
 * a separação entre conhecimento, verdade e segredo;
+* Ravens Bluff como região inicial;
+* fontes iniciais registradas em `regras/fontes.md`;
 * a preparação gradual de novas regiões.
 
 ---
@@ -1376,12 +1381,10 @@ Já foram definidos:
 
 Antes da primeira sessão, ainda será necessário definir:
 
-* edição de Dungeons & Dragons;
 * período histórico de Forgotten Realms;
-* região inicial;
 * nível inicial;
-* livros autorizados;
 * método de criação de personagem;
+* suplementos opcionais disponíveis ao personagem;
 * tom da campanha;
 * grau de dificuldade;
 * regras da casa;
@@ -1396,16 +1399,15 @@ Antes da primeira sessão, ainda será necessário definir:
 Os próximos arquivos recomendados são:
 
 ```text
-AGENTS.md
-campanha.yaml
-regras/fontes.md
 regras/resolucao-de-acoes.md
 regras/criacao-de-personagem.md
 narracao/guia-de-narrativa.md
 narracao/protocolo-de-sessao.md
+cenario/regioes/ravens-bluff/visao-geral.md
+cenario/regioes/ravens-bluff/fontes.md
 ```
 
-Depois dessas definições, poderá começar a preparação da região inicial e a criação do personagem.
+Depois dessas definições, poderá começar a preparação detalhada de Ravens Bluff e a criação do personagem.
 
 ---
 
