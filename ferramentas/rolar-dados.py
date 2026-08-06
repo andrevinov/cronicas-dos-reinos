@@ -53,8 +53,8 @@ class AttackProfile:
 
 
 REN_SKILLS: dict[str, int] = {
-    "acrobacia": 5,
-    "furtividade": 5,
+    "acrobacia": 6,
+    "furtividade": 6,
     "intuicao": 5,
     "percepcao": 5,
     "investigacao": 3,
@@ -68,7 +68,7 @@ REN_SKILLS: dict[str, int] = {
     "sobrevivencia": 3,
     "medicina": 3,
     "natureza": 1,
-    "prestidigitacao": 3,
+    "prestidigitacao": 4,
     "atuacao": 0,
     "lidar_com_animais": 3,
 }
@@ -96,7 +96,7 @@ REN_SKILL_LABELS: dict[str, str] = {
 
 REN_SAVES: dict[str, int] = {
     "forca": 3,
-    "destreza": 5,
+    "destreza": 6,
     "constituicao": 2,
     "inteligencia": 1,
     "sabedoria": 3,
@@ -113,9 +113,9 @@ REN_SAVE_LABELS: dict[str, str] = {
 }
 
 REN_ATTACKS: dict[str, AttackProfile] = {
-    "golpe_desarmado": AttackProfile("Golpe desarmado", 5, "1d4+3", "contundente"),
-    "wakizashi": AttackProfile("Wakizashi", 5, "1d6+3", "perfurante"),
-    "shuriken": AttackProfile("Shuriken", 5, "1d4+3", "perfurante"),
+    "golpe_desarmado": AttackProfile("Golpe desarmado", 6, "1d4+4", "contundente"),
+    "wakizashi": AttackProfile("Wakizashi", 6, "1d6+4", "perfurante"),
+    "shuriken": AttackProfile("Shuriken", 6, "1d4+4", "perfurante"),
 }
 
 

@@ -45,19 +45,46 @@ relacoes:
     riscos:
       - "Mara pode evitar Ren no futuro."
       - "Se pressionada ou ameaçada, pode procurar a guarda ou contar a alguém do porto."
+  velis_rook:
+    nome: "Velis Rook"
+    tipo: "escrivão menor ligado à alfândega / registros de carga"
+    local: "Narwhal Manor"
+    status: "em cena; alertado"
+    atitude_para_ren: "assustada e hostil"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Ren já havia roubado a prancheta de Velis durante o incêndio da Red Sail
+      Tavern. Em Narwhal Manor, Ren derrubou uma lâmpada com shuriken para
+      criar distração e tentou tomar a pasta de documentos de Velis. Velis
+      evitou o impacto direto, segurou a pasta e chamou guarda. Em seguida,
+      Ren arrancou a pasta à força e fugiu rápido demais para os guardas
+      cercarem a lateral.
+    informacoes_observadas_por_ren:
+      - "Velis chegou à porta lateral de funcionários de Narwhal Manor com pasta rígida de couro encerado."
+      - "Velis estava com dedos marcados por tinta nova."
+      - "Ren viu na pasta: carimbo de Narwhal Manor, número 13 e a expressão 'retenção anulada'."
+      - "Ren tomou a pasta de Velis, ainda não examinada."
+      - "A pasta continha documentos que apontam Velis como responsável por anulação retroativa ligada ao volume 13."
+    riscos:
+      - "Velis sabe que alguém tentou tomar seus papéis na porta lateral."
+      - "Velis ainda não identificou Ren com certeza como o oriental que procura Masao, mas viu um rosto e uma mão perto demais da pasta."
+      - "Velis pode avisar Narwhal Manor, Brass ou superiores de que a pasta foi roubada por alguém rápido e treinado."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"
-    local: "Rua da Corda / Fishtown"
+    local: "circuito Silver Lily / Rua da Corda / Fishtown"
     status: "ativo"
-    atitude_para_ren: "assustado, oportunista e temporariamente cooperativo"
-    confianca: "nenhuma"
-    respeito: "baixo"
+    atitude_para_ren: "assustado, oportunista e cooperativo por pagamento"
+    confianca: "muito baixa"
+    respeito: "baixo, mas crescente por medo e utilidade"
     motivo: >
       Ren seguiu Pell discretamente e tentou contê-lo numa passagem escura.
       Pell escapou do primeiro agarre, mas Ren conseguiu falar antes que ele
       gritasse e apresentou a abordagem como tentativa de manter o contato
-      secreto.
+      secreto. Depois, Pell usou o ponto morto do vaso com flor nos fundos da
+      Silver Lily para deixar uma mensagem útil sobre Velis Rook, Brass, Rusk e
+      o "homem da lua".
     informacoes_compartilhadas_por_pell:
       - "Pell ouviu na Silver Lily menções a homem do leste, rosto marcado, Velis Rook e Mara."
       - "Pell levou a notícia para Brass na Red Sail porque Brass paga rápido por esse tipo de informação."
@@ -66,10 +93,13 @@ relacoes:
       - "Velis disse 'então é hoje', entregou resposta para Brass e foi à Red Sail com a prancheta."
       - "Pell não viu o homem marcado e não sabe se ele está na cidade."
       - "Pell ouviu Velis murmurar a palavra 'Lua'."
+      - "Pell deixou bilhete dizendo que Velis vai limpar papel na casa grande do peixe antes do sino de nove."
+      - "Pell deixou bilhete dizendo que Brass está irritado, Rusk não voltou e o homem da lua não desce ao cais."
     limites:
       - "Pell pediu pagamento para continuar 'não lembrando'."
       - "Pell aceitou 1 PO de Ren pela informação."
       - "Ren estabeleceu um ponto morto de contato nos fundos da Silver Lily: quando houver um pequeno vaso com flor na parte alta da escada, Pell pode deixar mensagem ali e receber pagamento depois."
+      - "Ren pagou 1 PO pelo bilhete de Pell deixando a moeda no vaso."
     riscos:
       - "Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro."
       - "Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade."
@@ -77,8 +107,8 @@ relacoes:
   nera_vell:
     nome: "Nera Vell"
     tipo: "testemunha protegida / gravadora de selos"
-    local: "Rua da Corda / Fishtown"
-    status: "ativa, com Ren"
+    local: "carroça verde de Silva Elkwood, Jack Mooney & Sons Circus"
+    status: "sob proteção temporária de Silva Elkwood"
     atitude_para_ren: "assustada, grata, pragmática e emocionalmente implicada"
     confianca: "moderada em situação de crise"
     respeito: "prático"
@@ -88,34 +118,116 @@ relacoes:
       escolha errada mate ela ou o irmão. Na Casa da Aurora Menor, Nera ouviu
       fragmentos sobre Aiko, Masao e a vingança de Ren, incluindo a fala dele
       sobre não querer ver irmãos perdendo irmãos novamente. Nera ajudou
-      Maerra a deitar Ren quando ele apagou de cansaço.
+      Maerra a deitar Ren quando ele apagou de cansaço. No circo, Ren a
+      tranquilizou sobre Silva, prometeu não sumir e ela aceitou entregar o
+      livro para o esconderijo de Silva.
+      Após o julgamento interno de Merrit, Ren voltou à carroça verde, sentou
+      perto dos Vell e explicou que Jack aceitou mantê-los no circo por agora.
+      Nera aceitou o alívio sem despejar perguntas e agradeceu porque Ren
+      voltou antes de sumir de novo.
+      Mais tarde, Ren voltou novamente para checar os Vell e avisou que seguirá
+      uma trilha à noite ligada aos homens que tentaram levar Nera.
+      Ren prometeu a Tavin que voltará e explicou que pretende investigar a
+      conexão entre Red Sail e Masao.
+      Quando Ren voltou ao circo e foi tomar banho atrás da lona azul, Nera não
+      conseguiu esperar. Foi até a lona por preocupação, viu mais do que
+      pretendia por um instante e ficou claramente envergonhada, mas o alívio
+      por vê-lo vivo foi mais forte que a compostura.
+      Ren a tranquilizou, disse que não estava ferido fisicamente e prometeu ir
+      à carroça verde depois do banho. Nera aceitou esperar e agradeceu por ele
+      ter voltado. O vínculo romântico ainda é contido e incerto, mas deixou de
+      ser apenas subtexto.
+      Depois do banho, Ren foi à carroça verde e não acordou Tavin. As mãos de
+      Ren e Nera se tocaram, e Ren não retirou a dele; Nera ajustou os dedos
+      aos dele e aceitou a intimidade em silêncio.
+      No topo da carroça dos estandartes, Ren abriu para Nera a ferida de Aiko,
+      a quebra interna causada pela morte da irmã, a natureza de sua vingança e
+      o risco real de morrer perseguindo Masao. Nera admitiu que sua preocupação
+      por Ren é verdadeira, mas pediu que ela e Tavin continuem sendo pessoas
+      para ele, não ferramentas ou peso dentro da vingança.
+      Ren respondeu que esse é exatamente o problema: ela e Tavin já são pessoas
+      para ele. Ren admitiu que teme não conseguir dar a eles um futuro vivo e
+      seguro, tocou o rosto de Nera e os dois se beijaram. O vínculo romântico
+      entre os dois agora é explícito, embora ainda sem promessa de futuro.
+      Ren depois reforçou que a missão de Nera é ficar quieta, não fazer
+      loucuras e proteger a si mesma e a Tavin. Nera voltou de mãos dadas com
+      Ren até a carroça verde antes que ele fosse dormir.
+      Na saleta de ervas da Casa da Aurora Menor, Nera viu a pasta roubada de
+      Velis ser aberta. Reconheceu tecnicamente a impressão protegida da falsa
+      lua velada como uso criminoso posterior do trabalho que foi obrigada a
+      fazer. Também ouviu o bilhete chamar a gravadora e o menino de "ruído"
+      que não deve chegar a Tyr.
+      Depois, acompanhou Ren e Tavin de volta ao circo usando os disfarces de
+      Dessa. A busca controlada já havia sido conduzida por Jack, com a Red Sail
+      dispersada pela pressão da guarda. Nera voltou para a carroça verde e
+      segurou a manga de Ren por um instante antes de entrar, demonstrando
+      alívio contido por ele ter trazido os dois vivos de volta.
+      Quando Ren explicou que iria a Tyr com a pasta lacrada, Nera aceitou ficar
+      na carroça verde, mas se despediu dele com afeto e medo evidentes.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
       - "O segundo homem usava papel e tinta associáveis a Narwhal Manor."
       - "Nera mantinha um livro de provas escondido na própria banca."
       - "Tavin ouviu as palavras 'Narwhal', 'segunda maré' e 'se vier sozinho'."
+      - "Nera reconheceu a impressão protegida da falsa lua velada na pasta de Velis como derivada do trabalho que foi obrigada a fazer, mas prensada com cera de arquivo."
     acordos:
       - "Ren decidiu tirar Tavin de perigo e recuperar o livro de provas."
+      - "Ren prometeu dar um jeito de checar a situação de Nera e Tavin e entrar em contato."
     riscos:
       - "Nera pode priorizar Tavin se achar que Ren está usando os dois como isca."
-      - "O livro também incrimina Nera profissionalmente, e agora está com ela."
-      - "Nera não quer que Ren desapareça com o livro antes que Maerra entenda o caso."
+      - "O livro também incrimina Nera profissionalmente, mas agora está escondido por Silva."
+      - "Nera pode reagir mal se Ren desaparecer por tempo demais sem notícia."
+      - "Nera falhou em manter a compostura ao reencontrar Ren depois do julgamento interno no circo."
+      - "Nera sabe que o abrigo no circo é real por hoje e amanhã, mas será reavaliado depois."
+      - "Nera perguntou se a trilha da noite envolve a caixa ou o homem dos botões."
+      - "Nera entende que Masao é o motivo maior por trás do envolvimento de Ren com a Red Sail."
+      - "Nera está mais emocionalmente implicada do que consegue disfarçar, mas ainda tenta preservar decoro."
+      - "Nera aceitou esperar Ren na carroça verde depois do banho, mas sua preocupação por ele já atravessa prudência."
+      - "Nera e Ren deram o primeiro passo físico claro de intimidade ao ficarem de mãos dadas na carroça verde."
+      - "Nera não pediu que Ren abandone a vingança, mas quer saber se ainda será pessoa para ele quando a vingança apertar."
+      - "Nera e Ren se beijaram; o vínculo romântico é explícito, mas ainda sem promessa de futuro."
+      - "Nera entende com mais clareza que Masao usou ela e Tavin para atingir Ren, o que despertou medo e raiva."
+      - "Nera recebeu de Ren uma instrução direta para não se expor nem tentar ajudá-lo de modo imprudente."
+      - "Nera agora sabe que um bilhete na pasta de Velis trata ela e Tavin como ruído a ser impedido de chegar a Tyr."
+      - "Nera voltou ao circo, mas entende que a pasta lacrada pode atrair nova pressão."
+      - "Nera sabe que Ren pretende procurar Tyr para transformar a pasta em vantagem formal."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
-    local: "Rua da Corda / Fishtown"
-    status: "ativo, com Ren e Nera"
-    atitude_para_ren: "assustado e obediente por necessidade"
-    confianca: "muito baixa"
-    respeito: "medo respeitoso"
+    local: "carroça verde de Silva Elkwood, Jack Mooney & Sons Circus"
+    status: "sob proteção temporária de Silva Elkwood"
+    atitude_para_ren: "assustado, grato e tentando obedecer"
+    confianca: "baixa, mas crescendo"
+    respeito: "medo respeitoso com simpatia"
     motivo: >
       Tavin viu Ren chegar junto de Nera e sabe que havia homens procurando
-      por ele, mas ainda não entende se Ren é salvação, ameaça ou ambos.
+      por ele, mas ainda não entende se Ren é salvação, ameaça ou ambos. No
+      circo, respondeu ao cumprimento improvisado de Ren e repetiu "beleza"
+      como se fosse promessa de obediência. Depois que Ren confirmou o abrigo
+      provisório no circo, Tavin relaxou o bastante para brincar perguntando se
+      Ren sabe cair engraçado.
+      Mais tarde, quando Ren voltou para avisar que seguiria uma trilha à noite,
+      Tavin perguntou se Ren voltaria.
+      Ren prometeu que voltará, e Tavin aceitou a promessa como algo que precisa
+      escolher acreditar.
+      Na saleta de ervas da Casa da Aurora Menor, Tavin ouviu o bilhete da pasta
+      de Velis tratar "gravadora e menino" como ruído que não deve chegar a Tyr.
+      Depois voltou ao circo com Ren e Nera, sob disfarce, após a pressão da Red
+      Sail ser dispersada pela busca controlada de Jack e pela patrulha de Luath.
+      Ao se despedir, Ren pousou a mão na cabeça de Tavin e pediu que ele ficasse
+      quietinho. Tavin repetiu "beleza", tratando a palavra como promessa.
     informacoes_compartilhadas_por_tavin:
       - "Ainda não interrogado diretamente."
     riscos:
       - "Pode travar, fugir ou falar demais se for pressionado em local inseguro."
+      - "Tavin parece associar o cumprimento improvisado de Ren a uma senha amigável de segurança."
+      - "Tavin está alimentado e fisicamente bem dentro do possível."
+      - "Tavin quer confirmação simples de que Ren vai voltar."
+      - "Tavin tentou repetir o nome de palco Kagefusha como 'Kagefucha'."
+      - "Tavin pode estar assustado por entender que o bilhete da pasta de Velis se refere a ele."
+      - "Tavin voltou ao abrigo do circo sem ser identificado na travessia."
+      - "Tavin sabe que Ren saiu novamente, agora para procurar Tyr."
   velha_sella:
     nome: "Velha Sella"
     tipo: "contato cauteloso / moradora de Fishtown"
@@ -147,27 +259,513 @@ relacoes:
       dele, mas deixou claro que a Casa da Aurora Menor protege vivos, não
       vendetas. Quando Ren apagou, Maerra o deitou num catre, manteve armas
       e provas à vista, e protegeu Nera e Tavin afastando-os da porta.
+      Depois da emboscada contra Rusk em Fishtown, Ren voltou à Casa da Aurora
+      Menor sem cauda e avisou que Nera e Tavin estão vivos sob proteção de
+      Silva Elkwood e Jack Mooney. Maerra recebeu a notícia com alívio contido
+      e emprestou roupas comuns de doação, água e pão, mas não vestes sagradas.
+      Depois que Ren evacuou os Vell do circo durante a sondagem da Red Sail,
+      voltou à Casa da Aurora Menor com Nera e Tavin sem cauda. Maerra avaliou
+      Luath como contato honrado e útil da Night Watch, mas recomendou que Ren
+      não entregue Nera e Tavin de imediato e não tente usar Luath como faca de
+      vingança.
+      Ren pediu que Maerra mantivesse Nera e Tavin enquanto ele falava com
+      Luath. Maerra aceitou e entregou a Ren a cópia parcial selada do livro de
+      provas como verdade verificável.
+      Quando Ren voltou com a pasta roubada de Velis Rook, Maerra o conduziu à
+      saleta de ervas, permitiu que respirasse, mas enquadrou a situação como
+      problema arrancado de Narwhal Manor. Depois ofereceu um fio lateral
+      futuro: investigar os Meninos do Primeiro Sino e a Casa Velha do Primeiro
+      Raio, com possível empréstimo do Broche do Semblante Humilde se for
+      recuperado e puder servir para proteger vivos.
+      Ao ver a pasta aberta, Maerra identificou valor probatório e perigo legal:
+      a prova é forte, mas foi roubada. Ela avalia que Luath ou uma autoridade
+      de Tyr precisam legitimá-la antes que Narwhal transforme Ren e Nera nos
+      acusados principais.
+      A pedido de Ren, Maerra tentou reconhecer o material, mas manteve limites:
+      escreveu declaração cautelosa sobre o que viu e ouviu na abertura da
+      pasta, registrou que Nera reconheceu a impressão da lua velada e lacrou o
+      conjunto com cera da Casa da Aurora Menor. Ela não atestou cadeia de
+      custódia, autoria final ou inocência.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
+      - "Maerra não quer a Casa da Aurora Menor usada como esconderijo passivo para crime sem avaliação moral."
+      - "Se Ren insistir em agir sozinho com a pasta roubada, Maerra pode pressionar por encaminhamento a Luath ou Tyr."
     encaminhamentos_oferecidos:
       - "Silva Elkwood, clériga de Chauntea ligada ao circo dos Mooney, como abrigo discreto para Nera e Tavin."
       - "Sirrus Melandor/Tyr como proteção formal e institucional."
       - "Ways Unknown como opção de sumiço pago, menos pastoral e menos transparente."
+    auxilios_prestados:
+      - "Emprestou roupas comuns de doação, água e pão para Ren se disfarçar melhor antes de voltar ao circo."
+      - "Avaliou Luath como contato prático e honrado dentro da City Guard/Night Watch."
+      - "Orientou Ren a procurar Luath com verdade verificável, não com confissão completa de vingança."
+      - "Aceitou manter Nera e Tavin temporariamente enquanto Ren procura Luath."
+      - "Entregou a Ren a cópia parcial selada do livro de provas de Nera."
+      - "Ofereceu o fio lateral dos Meninos do Primeiro Sino e da Casa Velha do Primeiro Raio."
+      - "Indicou a possibilidade de pedir o empréstimo do Broche do Semblante Humilde se Ren recuperar o relicário antigo e usar a ferramenta para proteger pessoas."
+      - "Escreveu declaração cautelosa sobre a abertura da pasta de Velis e lacrou o conjunto com cera da Casa da Aurora Menor."
+  luath:
+    nome: "Luath"
+    tipo: "sargento da City Guard / supervisor possível da Night Watch"
+    local: "posto da City Guard / Night Watch"
+    status: "contato operacional cauteloso"
+    atitude_para_ren: "cautelosa, direta e avaliadora"
+    confianca: "baixa operacional"
+    respeito: "inicial, baseado em utilidade prática"
+    motivo: >
+      Maerra Thandrel descreveu Luath como honrado de modo prático: um homem
+      que cumpre dever, não vende gente pobre por conveniência e entende que a
+      cidade tem sujeira sob as aparências. Ele é útil como ponte para a Night
+      Watch e para rua, não como instrumento direto da vingança de Ren.
+      Ren chegou ao posto da City Guard/Night Watch ao amanhecer carregando a
+      cópia parcial selada por Maerra. Luath estava disponível, observou mãos,
+      cintura, trouxas e saídas antes de perguntar o nome de Ren e se ele veio
+      trazer, fugir ou vender problema.
+      Ren entregou o documento e disse que vinha deixar recado a pedido de
+      amigo de fé. Luath reconheceu o peso prático de Maerra o bastante para
+      criar privacidade, mas não confiou automaticamente em Ren. Levou Ren a um
+      depósito lateral e pediu fatos sobre gente viva em risco nas próximas
+      horas, sem poesia, juramento ou nomes grandes antes dos pequenos.
+      Ren então revelou o próprio nome, origem, Masao Hirasawa, o assassinato
+      de Aiko e a ameaça contra a seladora e o irmão dela. Luath aceitou que há
+      risco civil imediato e acionou patrulheiros contra as buscas ostensivas
+      da Red Sail como perturbação da paz, intimidação e usurpação de
+      autoridade. Ao mesmo tempo, deixou claro que ajudará nos vivos, não na
+      caça pessoal de Ren.
+      Ren respondeu com informações práticas: a pressão atual acontece no
+      circo de Jack Mooney; Dain Mord é conhecido como Brass; e o protocolo de
+      contato envolve ficha de cobre, vela vermelha e cordão azul. Luath
+      reconheceu Dain Mord como nome útil, aceitou não mandar guarda abrir baús
+      e carroças no circo sem ordem ou flagrante e enviou patrulheiros para
+      pressionar buscas ilegais da Red Sail nas ruas e acessos. Ele segue
+      cauteloso com a vendeta de Ren e avisou que ajudará com provas e
+      testemunhas, não com corpos.
+      Ao sair, Ren afirmou que Masao Hirasawa não merece cela. Luath não
+      retirou a ajuda contra a Red Sail, mas registrou Ren com mais força como
+      risco de justiça privada.
+    informacoes_indiretas:
+      - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
+      - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
+      - "Luath trabalha dentro de uma corrente institucional; mesmo homens honestos podem ser puxados por superiores."
+    riscos:
+      - "Se Ren abrir a conversa como vendeta para matar Masao, Luath tenderá a reagir como guarda."
+      - "Entregar Nera e Tavin a Luath de imediato pode colocá-los dentro de uma cadeia institucional que Ren ainda não controla."
+      - "Luath pode estar sob pressão para resolver problemas do porto sem atingir nomes influentes."
+      - "O selo de Maerra comprou privacidade, não confiança."
+      - "Luath agora sabe que Ren está caçando Masao por uma morte familiar; isso o torna mais cauteloso com Ren."
+      - "A franqueza de Ren sobre Masao não merecer cela tornou Luath mais propenso a vigiar Ren se corpos aparecerem."
+    acordos_ou_acoes:
+      - "Luath ficou com a cópia parcial selada de Maerra."
+      - "Luath acionou patrulheiros para enquadrar buscas não autorizadas da Red Sail como perturbação da paz, intimidação e usurpação de autoridade."
+      - "Luath recebeu de Ren a informação de que Dain Mord é Brass e o protocolo da ficha de cobre com vela vermelha e cordão azul."
+      - "Luath não mandará busca aberta ao circo de Jack Mooney sem ordem, flagrante ou razão melhor, mas pressionará Red Sail nas ruas e acessos."
+      - "A pressão de patrulheiros acionados por Luath ajudou a dispersar a Red Sail do perímetro do circo após a busca controlada de Jack."
+  sirrus_melandor:
+    nome: "Sirrus Melandor"
+    tipo: "Chief Prelate / alto sacerdote de Tyr"
+    local: "Casa de Tyr, Temple District"
+    status: "não encontrado diretamente"
+    atitude_para_ren: "desconhecida"
+    confianca: "nenhuma"
+    respeito: "não estabelecido"
+    motivo: >
+      Maerra e Nera apontaram Sirrus Melandor como o caminho forte para
+      proteção formal, testemunho e peso institucional contra gente poderosa.
+      Ren chegou à Casa de Tyr com a pasta de Velis lacrada por Maerra, mas
+      ainda está diante dos guardiões e do registro; não há acesso direto a
+      Sirrus garantido.
+    riscos:
+      - "Tyr pode proteger prova e testemunha, mas também torna o caso visível e registrado."
+      - "Se Ren apresentar o caso como licença para vingança, pode perder a porta antes de chegar a Sirrus."
+      - "A cadeia de custódia da pasta continua vulnerável, embora o lacre de Maerra ajude."
   silva_elkwood:
     nome: "Silva Elkwood"
     tipo: "clériga de Chauntea / contato potencial de abrigo"
     local: "Jack Mooney & Sons Circus"
-    status: "ainda nao conhecida em jogo"
+    status: "conhecida em jogo"
+    atitude_para_ren: "favoravel e cautelosa, ainda preocupada com o risco ao circo"
+    confianca: "moderada e vigilante"
+    respeito: "alto"
+    motivo: >
+      Silva reconheceu a senha e o selo de Maerra imediatamente, fez cobertura
+      pública sobre casca de salgueiro e deixou Ren, Nera e Tavin entrarem na
+      carroça verde. Ao ouvir Ren priorizar os irmãos Vell e o livro acima da
+      própria segurança, julgou o pedido sincero. Aceitou esconder Nera, Tavin
+      e o livro imediatamente, e ofereceu abrigo provisório de poucas horas para
+      Ren num compartimento de pano atrás da carroça de remendos. Pela manhã,
+      falhou em convencer Jack Mooney a aceitar abrigo estável sem mais verdade
+      ou solução. Ainda quer proteger os Vell, mas o prazo prático agora é o
+      meio-dia. Quando Ren retornou vestido como marinheiro, Silva o reconheceu
+      e permaneceu presente na conversa privada com Jack. Depois da crise de
+      Merrit, Silva entrou na carroça verde com tato, confirmou abrigo real por
+      hoje e amanhã e mandou Ren comer e dormir.
+      Após Ren resolver o fio de Harl sem sangue e sem julgamento público,
+      Silva passou a tratar Ren com mais confiança prática. Ainda não é
+      confiança irrestrita: Silva segue medindo riscos ao circo, aos Vell e ao
+      livro.
+      Silva ouviu Ren prometer a Tavin que voltaria, explicar que pretende
+      apenas investigar a conexão entre Red Sail e Masao, e propor Kagefusha
+      como nome de palco.
+      Ren voltou ao circo pela rota combinada depois da trilha noturna, sem
+      trazer perseguição imediata para a carroça verde. Silva notou que ele
+      estava fisicamente inteiro, mas mentalmente aéreo, e ofereceu banho
+      simples atrás da lona azul antes de decidir se ele falaria com Nera.
+      Depois do banho, Silva autorizou Ren e Nera a caminhar apenas pela rota
+      interna das lonas e indicou Dessa Wren como solução para roupas comuns de
+      disfarce.
+      Ren levou Nera de volta dentro do limite combinado e depois completou
+      descanso longo no depósito de figurino velho. Antes do amanhecer, Silva e
+      Jack tiveram de lidar com sondagem externa ligada ao porto ou à Red Sail;
+      eles impediram acesso direto, mas Silva chamou Ren assim que o descanso
+      foi suficiente.
+      Ren propôs evacuar Nera e Tavin antes de uma busca controlada; Silva
+      julgou possível e levou a proposta a Jack, com a ressalva de que ninguém
+      da Red Sail deve circular livremente pelo circo.
+      Depois, Silva não conseguiu garantir uma saída limpa, mas indicou a rota
+      menos ruim pela borda oposta se Jack puxasse a atenção para as cozinhas.
+      Quando Ren retornou com Nera e Tavin, Silva viu que a busca controlada já
+      havia funcionado por ora e recolheu os irmãos para a carroça verde antes
+      de perguntar detalhes. Ela reconheceu a pasta lacrada como novo risco.
+      Ren pediu que Silva cuidasse dos Vell novamente enquanto ele procura Tyr.
+      Silva aceitou, mas advertiu Ren a não colecionar dívida que só morto
+      consegue pagar.
+    documentos:
+      - "Silva abriu e leu o bilhete curto e selado de Maerra."
+    riscos:
+      - "O circo reduz o alcance natural da Red Sail, mas não é fortaleza."
+      - "Se Dain conectar os Vell ao circo, Silva e os Mooney podem ser pressionados."
+      - "Abrigo mais longo para Ren exigirá envolver Jack Mooney ou sustentar uma cobertura maior."
+      - "Jack só tolera manter Nera e Tavin no circo até o meio-dia sem uma solução melhor."
+      - "Silva confia mais em Ren depois da confissão de Harl, mas seguirá intervindo se achar que ele está prometendo mais segurança do que pode entregar."
+      - "Silva instruiu Ren a avisar por onde sairá, voltar pela carroça de remendos se ferido e não retornar direto à carroça verde se trouxer perseguição."
+      - "Silva sabe que Ren voltou abalado da trilha e pode pressionar por explicações se ele tentar agir de novo sem descanso."
+      - "Silva autorizou passeio curto pela rota interna das lonas: sem borda do acampamento, sem carroça dos animais e sem estrada."
+      - "Silva sabe que a pressão externa alcançou o perímetro do circo ao amanhecer."
+      - "Silva aceita a busca controlada apenas se Jack mantiver controle sobre onde os homens olham e quem acompanha."
+      - "Silva manteve o livro de provas escondido com ela enquanto Ren retirava Nera e Tavin."
+      - "Silva recebeu Nera e Tavin de volta depois que a pressão imediata da Red Sail foi dispersada."
+      - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
+  jack_mooney:
+    nome: "Jack Mooney"
+    tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
+    local: "Jack Mooney & Sons Circus"
+    status: "patrono condicional ativo"
+    atitude_para_ren: "pragmatica, desconfiada e interessada"
+    confianca: "baixa e condicional"
+    respeito: "inicial, baseado em competencia, audacia e honestidade parcial"
+    motivo: >
+      Jack percebeu inconsistências na cobertura de Silva, cobrou explicações
+      e recusou transformar o circo em refúgio estável sem saber a verdade.
+      Não pretende entregar Nera e Tavin à Red Sail, mas quer o estrangeiro
+      armado fora do acampamento antes de aprender seu nome. Ren retornou ao
+      circo vestido como marinheiro e provocou Jack com a mensagem de que um
+      homem entrou e saiu de seu circo sem ser percebido. Jack mordeu a isca
+      por orgulho e curiosidade, chamando Ren para uma conversa privada. Ao
+      ouvir a oferta de Ren, aceitou não expulsar Nera e Tavin ao meio-dia, mas
+      colocou termos rígidos: Ren deve respeitar as regras internas do circo e
+      provar utilidade investigando discretamente a sabotagem da amarra da corda
+      alta do lado leste antes do crepúsculo. Ren aceitou os termos. Ren
+      resolveu a sabotagem antes do meio-dia, com prova física e sem sangue.
+      Jack aceitou manter os Vell por hoje e amanhã e manter Ren como acrobata
+      estrangeiro em teste, mas não prometeu apostar o circo inteiro contra a
+      Red Sail sem entender melhor o risco. Depois que Ren revelou a influência
+      de Harl sobre Merrit, Jack deu a Ren até o pôr do sol para resolver o fio.
+      Ren convenceu Harl a confessar. Jack aplicou punição discreta e confirmou
+      abrigo para Ren, Nera e Tavin por hoje e amanhã.
+      Na madrugada seguinte, Jack e Silva impediram que uma sondagem ligada ao
+      porto ou à Red Sail acessasse o interior sensível do acampamento, mas o
+      problema chegou perto demais para ser ignorado.
+      Ren propôs que Jack transformasse a pressão em busca controlada, enquanto
+      os Vell seriam removidos discretamente. Jack aceitou a lógica porque pode
+      enquadrar a busca como concessão comercial, não submissão.
+      Jack puxou a atenção externa para a área das cozinhas, dando a Ren uma
+      janela para sair com os Vell pela borda oposta.
+      Depois, conduziu a busca controlada como concessão teatral: abriu o que
+      quis, quando quis, e manteve os homens do porto longe do que importava
+      até a presença da guarda encerrar a pressão imediata.
+    acordos_oferecidos:
+      - "Nera e Tavin não serão expulsos ao meio-dia."
+      - "O livro fica sob guarda definida por Silva Elkwood."
+      - "Se Ren aceitar os termos e investigar a sabotagem da corda alta, Jack oferece comida, abrigo discreto e cobertura como acrobata oriental por alguns dias."
+      - "Ren não deve matar debaixo da lona, salvo necessidade extrema reconhecível."
+      - "Ren não deve usar o circo para iniciar guerra aberta com a Red Sail."
+      - "Nera e Tavin ficam no circo por hoje e amanhã."
+      - "Ren fica como Ren Kage, acrobata estrangeiro em teste, com comida e abrigo discreto definido por Jack."
+      - "Após a confissão de Harl, Jack confirmou o abrigo por hoje e amanhã sem novo julgamento no meio da tarde."
+    informacoes_recebidas_por_jack:
+      - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
+      - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
+      - "Ren suspeita que há omissão na certeza de Merrit sobre Sorn detectar o problema."
+      - "Harl Venn admitiu ter plantado em Merrit a ideia de que Sorn ouviria uma amarra cantando errado."
+    riscos:
+      - "Pode expulsar Ren se ele quebrar as regras internas do circo."
+      - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
+      - "Pode virar aliado se Ren ou Silva apresentarem verdade suficiente e risco controlável."
+      - "Ainda pode rever a punição de Merrit se a influência externa for comprovada."
+      - "Não pretende virar muralha contra a Red Sail sem saber o tamanho do risco."
+      - "Conduziu julgamento interno controlado e suspendeu Merrit de apresentações."
+      - "Puniu Harl discretamente: um mês longe da corda alta, sem chave, sem conferência de segurança e sem ficar sozinho com Merrit ou Lysa por ora."
+      - "A sondagem ao amanhecer aumenta a pressão para Ren oferecer explicações ou solução antes que o abrigo dos Vell fique caro demais para o circo."
+      - "Jack aceita busca controlada como manobra de apaziguamento, mas não permitirá vasculha livre nem exposição da rotina interna do circo."
+      - "A busca controlada aliviou a pressão imediata, mas pode fazer a Red Sail voltar por meios menos públicos."
+  dessa_wren:
+    nome: "Dessa Wren"
+    tipo: "costureira prática / guarda-roupa menor do circo"
+    local: "Jack Mooney & Sons Circus"
+    status: "conhecida em jogo"
+    atitude_para_ren: "pragmática, irônica e cooperativa por pagamento"
+    confianca: "baixa"
+    respeito: "profissional inicial"
+    motivo: >
+      Ren procurou Dessa ao amanhecer, apresentou-se como novo acrobata e
+      colocou 1 PO na mesa pedindo roupas discretas para um homem, uma mulher
+      e um garoto. Dessa entendeu que era roupa de fuga, aceitou a moeda como
+      pagamento pelo susto e pelo silêncio, e montou disfarces comuns e
+      esquecíveis para os três. Ren pagou mais 1 PO para que roupas roubadas e
+      roupas de doação virassem retalho, e mais 1 PO para que suas roupas
+      próprias fossem guardadas como figurino estrangeiro.
+      Mais tarde, Ren voltou ao guarda-roupa menor carregando a pasta lacrada
+      por Maerra. Dessa percebeu que ele pretende ir a um lugar formal e ofereceu
+      duas apresentações: roupas próprias orientais, memoráveis e honestas
+      quanto à identidade, ou conjunto limpo de cidadão menor com faixa interna
+      para esconder a pasta. Ren escolheu o cidadão menor, pagou 1 PO pela roupa
+      e pela limpeza de suas roupas próprias, e descreveu uma futura roupa de
+      apresentação com obi espetacular inspirado em Kara-Tur.
+    informacoes_compartilhadas_por_dessa:
+      - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
+      - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
+      - "Dessa sabe que Ren agora carrega documento lacrado e precisa se apresentar melhor para um lugar formal."
+    acordos:
+      - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
+      - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
+      - "Dessa recebeu 1 PO para guardar as roupas próprias de Ren."
+      - "Dessa recebeu 1 PO por roupa limpa de cidadão menor e limpeza das roupas próprias de Ren."
+      - "Dessa recebeu encomenda informal de uma futura roupa de apresentação com obi espetacular."
+    riscos:
+      - "Se os disfarces voltarem ligados a sangue ou crime evidente, Dessa dirá que foram roubados dela."
+      - "Dessa entende disfarce teatral e roupas comuns, mas não é especialista em espionagem real."
+  merrit_tealeaf:
+    nome: "Merrit Tealeaf"
+    tipo: "halfling contorcionista / sabotadora confessa da corda alta"
+    local: "Jack Mooney & Sons Circus"
+    status: "conhecida em jogo"
+    atitude_para_ren: "assustada, pressionada e tentando reduzir a propria culpa"
+    confianca: "nenhuma"
+    respeito: "medo pratico"
+    motivo: >
+      Ren confrontou Merrit com a pista da passagem estreita e a ameaça de
+      encontrar a arma do crime. Merrit confessou ter cortado a tira da amarra,
+      mas insiste que queria apenas cancelar o número de Mira, não matá-la.
+      Depois, Ren a aconselhou a assumir a culpa e pedir desculpas; isso a
+      tocou mais do que a intimidação.
+    informacoes_compartilhadas_por_merrit:
+      - "Merrit passou pela rota estreita entre caixas de contrapeso e mastro lateral."
+      - "Merrit cortou a tira da amarra da corda alta."
+      - "Merrit diz que Lysa e Harl não sabiam."
+      - "A faca curva usada no corte está escondida na caixa azul do número de cambalhotas, em um fundo falso, embrulhada em pano azul."
+      - "Merrit disse que vai pedir desculpas, se Mira permitir."
+      - "Merrit assumiu a culpa diante de Jack, Mira, Lysa, Sorn, Harl, Silva e Ren."
+      - "Silva levou Merrit ao depósito de figurino velho para uma conversa discreta com Ren, sob supervisão próxima."
+      - "Merrit revelou a Ren que Harl Venn plantou a frase 'Sorn sempre ouve', mas insiste que ele não mandou diretamente cortar a tira."
+      - "Merrit descreveu Harl como apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas."
+      - "Ren prometeu não abordar Harl diretamente nem revelar que ouviu dela."
+      - "Merrit quase sorriu com a ideia de um número chamado 'O Exótico e a Exótica', mas respondeu que Ren cairia sério demais."
+    riscos:
+      - "Merrit pode entrar em pânico se Mira, Jack ou Lysa a confrontarem publicamente."
+      - "A confissão foi parcialmente ouvida por Mira Dane."
+      - "Ren percebeu omissão na explicação de Merrit sobre confiar que Sorn detectaria o corte."
+      - "Jack aplicou punição provisória, mas pode rever o caso se a influência externa for comprovada."
+      - "Merrit foi suspensa de apresentações e colocada sob controle de Silva/Sorn."
+      - "Merrit está emocionalmente abalada e não inicia novas revelações sem perguntas cuidadosas."
+      - "Merrit protege Harl por lealdade e culpa."
+      - "Merrit resiste a chamar Harl de manipulador, mas admite que talvez falar a frase certa para a pessoa errada também seja usar alguém."
+      - "Merrit não conseguiu confiar totalmente que Harl não será exposto."
+  homem_red_sail_capturado:
+    nome: "desconhecido"
+    tipo: "agente operacional menor/médio da Red Sail"
+    local: "beco discreto atrás de casa de apostas fechada"
+    status: "coagido por Ren"
+    atitude_para_ren: "amedrontada e hostil"
+    confianca: "nenhuma"
+    respeito: "medo"
+    motivo: >
+      Ren capturou o homem, obteve informações sobre Brass, Nera, a falsa lua
+      velada e o procedimento da ficha, depois tomou uma fita vermelha
+      identificável e um botão de osso infantil como garantia. O homem aceitou
+      enviar às 19:00 uma mensagem falsa para Brass sobre Ren e a seladora
+      estarem feridos na oficina de velas abandonada.
+    riscos:
+      - "Pode tentar fugir da cidade ou quebrar o acordo se achar que Brass descobrirá de qualquer forma."
+      - "Pode obedecer por medo, mas não é aliado."
+      - "Se for pressionado pela Red Sail antes das 19:00, pode entrar em pânico."
+  rusk_cinza:
+    nome: "Rusk 'Cinza'"
+    tipo: "coletor/intermediário da Red Sail"
+    local: "pátio de tonéis atrás da Red Sail"
+    status: "não encontrado"
     atitude_para_ren: "desconhecida"
     confianca: "nenhuma"
     respeito: "nenhum"
     motivo: >
-      Maerra acredita que Silva pode esconder Nera e Tavin como ajudantes de
-      cozinha ou pacientes por alguns dias, especialmente com bilhete selado
-      da Casa da Aurora Menor.
-    documentos:
-      - "Ren tem um bilhete curto e selado de Maerra para Silva, suficiente para abrir conversa, mas não garantia plena de abrigo."
+      Segundo o capturado, Rusk recolhe a ficha de vela vermelha quando Brass
+      não vem pessoalmente. Parece velho demais para correr, mas não é. Leva
+      a ficha para Brass ou para gente de Narwhal; se houver cordão azul,
+      manda corredor com urgência.
     riscos:
-      - "O circo reduz o alcance natural da Red Sail, mas não é fortaleza."
-      - "Se Dain conectar os Vell ao circo, Silva e os Mooney podem ser pressionados."
+      - "Pode identificar armadilha se a ficha ou frase forem usadas de modo errado."
+      - "Pode conectar Ren ao chamado se sobreviver a uma emboscada."
+  sorn_kel:
+    nome: "Sorn Kel"
+    tipo: "responsavel por cordame e montagem"
+    local: "Jack Mooney & Sons Circus"
+    status: "em conversa inicial com Ren"
+    atitude_para_ren: "cautelosa e tensa"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Ren foi apresentado de modo implícito por Silva como alguém autorizado a
+      fazer perguntas sobre a sabotagem. Sorn viu a tira de couro e reagiu
+      visivelmente, mas Ren não conseguiu determinar se era culpa, medo
+      profissional, medo de Jack ou medo de outra pessoa. Ao responder, admitiu
+      responsabilidade profissional parcial: assinou a conferência da corda, mas
+      o lado leste teria sido conferido por Harl Venn. Disse que encontrou a
+      tira cortada antes das sete e avisou Jack. Depois de pressão de Ren,
+      revelou uma omissão: viu Harl na carroça de cordame com Lysa Renn depois
+      da nona badalada, com Harl usando a cópia da chave para pegar breu.
+    informacoes_compartilhadas_por_sorn:
+      - "A última conferência completa foi ontem depois da nona badalada."
+      - "Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn."
+      - "Sorn encontrou a tira cortada hoje antes das sete e avisou Jack."
+      - "Lysa Renn perdeu o número alto para Mira há três tendays."
+      - "Lysa costuma usar duas fitas vermelhas e hoje foi vista com apenas uma."
+      - "Ontem Sorn ouviu Lysa reclamar de farpa perto da plataforma leste."
+      - "Sorn e Harl trabalham com breu de cordame; Tobb Marlin usa piche grosso nas rodas."
+      - "O baú de cordame tem chave com Sorn e cópia no prego da carroça de cordame durante montagem."
+      - "Depois da nona badalada, Sorn viu Harl Venn na carroça de cordame com Lysa Renn."
+      - "Lysa pediu breu para treinar pegada por causa do joelho."
+      - "Harl estava com a cópia da chave; Sorn mandou devolver no prego, mas não conferiu pessoalmente."
+      - "Quando Sorn viu depois, a chave estava no prego, mas torta."
+    riscos:
+      - "Pode se fechar se sentir que está sendo acusado sem prova."
+      - "Pode ser testemunha útil se Ren abordar como profissional, não como culpado."
+      - "A conversa já chamou um pouco de atenção de Mira Dane e dois ajudantes."
+  mira_dane:
+    nome: "Mira Dane"
+    tipo: "acrobata da corda alta"
+    local: "Jack Mooney & Sons Circus"
+    status: "visivel na tenda principal"
+    atitude_para_ren: "desconhecida"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Mira era a artista que subiria na corda alta sabotada. Ela treinava numa
+      corda baixa quando Silva chamou Sorn de forma seca e percebeu tensão na
+      conversa.
+    riscos:
+      - "Pode procurar respostas se perceber que o cancelamento do número não foi por corda molhada."
+      - "Pode ser vítima, testemunha, alvo de rivalidade ou peça de uma encenação maior."
+  harl_venn:
+    nome: "Harl Venn"
+    tipo: "ajudante de cordame"
+    local: "Jack Mooney & Sons Circus"
+    status: "confessou sua parte a Jack"
+    atitude_para_ren: "envergonhada, defensiva e com respeito relutante"
+    confianca: "baixa"
+    respeito: "inicial e relutante"
+    motivo: >
+      Segundo Sorn, Harl foi quem conferiu o lado leste da corda alta ontem
+      depois da nona badalada, embora Sorn tenha assinado a conferência. Ren o
+      encontrou atrás da carroça de cordame. Harl respondeu sem vacilar que a
+      corda estava boa quando ele conferiu, mas Ren percebeu que ele está
+      escolhendo responder apenas ao que foi perguntado. Sob pergunta direta
+      sobre Lysa, Harl afirmou que ela pegou apenas breu, mas admitiu que não
+      viu as mãos dela o tempo todo. Quando Ren foi abordar Lysa, Harl não o
+      seguiu, mas ficou observando de longe e se distraiu do trabalho. Mais
+      tarde, Ren tentou reabrir conversa com camaradagem e perguntas sobre
+      comida, mas Harl permaneceu defensivo e perguntou se Jack mandou Ren
+      falar com ele. Ren ofereceu 1 PO por uma hora do tempo de Harl. Harl
+      aceitou a moeda, corrigiu Ren ao ser chamado de Hal e acompanhou Ren até
+      a cozinha sob a lona amarela, ainda desconfiado. Ren apelou à fome,
+      pobreza, admiração e amor para levá-lo a assumir responsabilidade. Harl
+      confessou a Ren e depois a Jack que plantou a ideia em Merrit, mas não
+      ordenou diretamente o corte.
+    informacoes_compartilhadas_por_harl:
+      - "Harl afirma que puxou a amarra, ouviu a corda, passou a mão na volta e no couro."
+      - "Harl afirma que a corda estava boa quando ele conferiu o lado leste."
+      - "Harl afirma que teria sentido se a tira já estivesse aberta daquele jeito."
+      - "Harl afirma que Lysa pegou breu."
+      - "Harl admitiu que virou para pegar pano e não viu as mãos de Lysa por um instante."
+      - "Harl viu Lysa fechar o punho esquerdo depois."
+      - "Harl afirma que sua faca de trabalho não saiu do cinto e que dorme com ela debaixo do travesseiro."
+      - "Segundo Merrit, Harl disse que corda fala com Sorn antes de falar com plateia e que uma amarra cantando errado seria detectada pela manhã."
+      - "Segundo Merrit, Harl é apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas."
+      - "Jack foi informado por Ren de que Harl plantou a ideia em Merrit, sem fonte pública revelada."
+      - "Harl informou que a melhor comida fica na cozinha sob a lona amarela, antes dos músicos."
+      - "Harl aceitou 1 PO de Ren por uma hora de conversa."
+      - "Harl confessou que plantou em Merrit a ideia de que Sorn detectaria a amarra cantando errado antes de alguém cair."
+      - "Harl afirmou que queria cancelar o número de Mira, não derrubá-la."
+    riscos:
+      - "Pode ser testemunha-chave, negligente, culpado ou pessoa usada como cobertura."
+      - "Também trabalha com breu de cordame."
+      - "Pode ter manipulado Merrit sem dar ordem explícita."
+      - "Tem devoção romântica ou idealizada por Lysa."
+      - "Jack proibirá Harl de tocar corda alta, conferir amarra sozinho ou pegar chave de baú por ora."
+      - "Ren tem até o pôr do sol para conversar com Harl antes de Jack escolher punição mais pesada."
+      - "Harl percebeu que Ren pode estar se aproximando por ordem ou interesse de Jack."
+      - "Harl agora sabe que Ren está disposto a gastar ouro para conseguir tempo privado."
+      - "Jack puniu Harl discretamente: um mês longe da corda alta, sem chave, sem conferência de segurança e sem ficar sozinho com Merrit ou Lysa por ora."
+      - "Harl deve pedir desculpas a Merrit diante de Silva à noite, para assumir que ela não carrega a culpa sozinha."
+  lysa_renn:
+    nome: "Lysa Renn"
+    tipo: "acrobata / possível rival de Mira Dane"
+    local: "Jack Mooney & Sons Circus"
+    status: "em conversa reservada com Ren"
+    atitude_para_ren: "defensiva e provocadora"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Segundo Sorn, Lysa perdeu o número alto para Mira Dane há três tendays
+      após torcer o joelho. Costuma usar duas fitas vermelhas nos pulsos, mas
+      hoje foi vista com apenas uma. Sorn ouviu Lysa reclamar de uma farpa perto
+      da plataforma leste no dia anterior. Ren conseguiu isolá-la atrás de uma
+      cortina de lona. Lysa usa apenas uma fita vermelha no pulso direito; ao
+      perceber que a conversa era sobre a noite anterior, tocou rapidamente o
+      pulso esquerdo vazio e depois cruzou os braços. Ren blefou dizendo que
+      Harl contou tudo; Lysa não comprou totalmente, mas reagiu forte. Ren
+      percebeu que ela esconde algo ligado à noite anterior e ao pulso esquerdo,
+      mas a negação dela sobre cortar a amarra para derrubar Mira pareceu mais
+      sincera do que o resto. Confrontada sobre o fio vermelho, Lysa confessou
+      que subiu à plataforma leste depois da nona badalada para testar o joelho;
+      a fita do pulso esquerdo teria rasgado numa farpa, e ela ainda guarda o
+      restante manchado de breu. Lysa explicou que escondeu a subida porque
+      Mira faria "a coisa certa": contaria a Jack e impediria que Lysa subisse
+      machucada. Ren acredita que o medo principal dela é ser afastada do alto e
+      vista como acabada.
+    informacoes_compartilhadas_por_lysa:
+      - "Lysa disse que Harl não conta tudo nem quando sabe."
+      - "Lysa negou ter cortado a amarra."
+      - "Lysa disse que não cortaria uma corda com Mira em cima."
+      - "Lysa confessou que subiu à plataforma leste depois da nona badalada."
+      - "Lysa afirma que usou breu para testar o joelho."
+      - "Lysa afirma que a fita do pulso esquerdo rasgou numa farpa perto da base da plataforma."
+      - "Lysa ainda tem o restante da fita, amassado e manchado de breu."
+      - "Lysa disse que não quer pôr Mira no chinelo; quer que Mira pare de olhá-la como história triste."
+      - "Lysa acredita que Mira contaria a Jack para impedir que ela subisse machucada."
+      - "Lysa teme que Jack a tire do alto pelo resto da temporada, do ano ou para sempre."
+    riscos:
+      - "A fita vermelha pode ser pista real, coincidência ou tentativa de incriminação."
+      - "Pode se sentir substituída por Mira."
+      - "Pode se fechar se a conversa virar acusação direta cedo demais."
+  tobb_marlin:
+    nome: "Tobb Marlin"
+    tipo: "carreiro do circo"
+    local: "Jack Mooney & Sons Circus"
+    status: "mencionado por Sorn Kel"
+    atitude_para_ren: "desconhecida"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Segundo Sorn, Tobb usa piche grosso nas rodas das carroças, diferente do
+      breu fino de cordame encontrado no degrau.
+    riscos:
+      - "Pode explicar piche/graxa por rota inocente ou fornecer comparação útil."

@@ -146,3 +146,40 @@ Não revelar de uma vez:
 * se Masao está pessoalmente em Ravens Bluff;
 * se "M. H." era Masao, agente, falso nome ou isca;
 * o alcance da participação de Narwhal Manor.
+
+---
+
+### SEG-009: Os Meninos do Primeiro Sino
+
+Estado:
+
+* gancho oferecido por Maerra por volta de 09:15 na saleta de ervas;
+* não deve puxar Ren imediatamente se a pasta de Velis estiver em foco;
+* serve como side quest urbana e moral: proteger crianças e testar se Ren consegue agir para vivos, não só para vingança.
+
+Premissa pública:
+
+* crianças de rua que dormem em pórticos e correm recados estão sumindo por períodos cada vez maiores;
+* a última que voltou mencionou a Casa Velha do Primeiro Raio, antiga casa de auxílio de Lathander fechada há anos;
+* porões podem estar sendo usados para passagem clandestina de coisas ou pessoas.
+
+Verdade oculta inicial:
+
+* um pequeno grupo usa os porões como rota de recados e esconderijo temporário;
+* as crianças não foram todas sequestradas do mesmo modo: algumas aceitaram comida/trabalho, outras foram coagidas quando tentaram sair;
+* há uma peça de contrabando menor ligada ao porto, mas não necessariamente à trama principal de Masao;
+* pode haver uma ponte indireta com Red Sail por método ou atravessador, não por comando direto.
+
+Revelar em camadas:
+
+1. marcas de sol riscado em carvão perto de portas baixas;
+2. crianças com medo de guardas, não só de criminosos;
+3. mapa parcial de porões sob a Casa Velha do Primeiro Raio;
+4. presença de adulto usando crianças como olheiros;
+5. relicário antigo trancado ou escondido com o Broche do Semblante Humilde.
+
+Possível recompensa:
+
+* Broche do Semblante Humilde: item homebrew discreto, inspirado em disfarce/anonimato;
+* proposta mecânica futura, se recuperado e aprovado: 1 vez por amanhecer, permite lançar Disfarçar-se em si mesmo sem componentes por 1 hora, com aparência sempre humilde/comum e sem imitar pessoa específica com precisão perfeita;
+* Maerra só pedirá empréstimo ao templo se Ren resgatar vivos e não usar o item para assassinato gratuito.

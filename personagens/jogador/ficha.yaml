@@ -10,7 +10,7 @@ identidade:
   cultura_origem: "Kozakuran"
   origem_geografica: "Kozakura, Kara-Tur"
   classe: "Monge"
-  nivel: 3
+  nivel: 4
   subclasse: "Caminho da Sombra"
   background: "Exilado de Clã"
   alinhamento: "Leal Neutro"
@@ -49,10 +49,10 @@ atributos:
     salvaguarda_proficiente: true
     bonus_salvaguarda: 3
   destreza:
-    valor: 17
-    modificador: 3
+    valor: 18
+    modificador: 4
     salvaguarda_proficiente: true
-    bonus_salvaguarda: 5
+    bonus_salvaguarda: 6
   constituicao:
     valor: 14
     modificador: 2
@@ -64,7 +64,7 @@ atributos:
     salvaguarda_proficiente: false
     bonus_salvaguarda: 1
   sabedoria:
-    valor: 16
+    valor: 17
     modificador: 3
     salvaguarda_proficiente: false
     bonus_salvaguarda: 3
@@ -79,14 +79,14 @@ proficiencia:
 
 combate:
   classe_de_armadura:
-    valor: 16
+    valor: 17
     calculo: "10 + Destreza + Sabedoria, sem armadura"
   pontos_de_vida:
-    maximos: 24
-    atuais: 24
-    dados_de_vida: "3d8"
-    calculo: "8 + CON no nível 1; média 5 + CON nos níveis 2 e 3"
-  iniciativa: 3
+    maximos: 31
+    atuais: 31
+    dados_de_vida: "4d8"
+    calculo: "8 + CON no nível 1; média 5 + CON nos níveis 2, 3 e 4"
+  iniciativa: 4
   deslocamento:
     base: "30 pés"
     bonus_monge_sem_armadura: "10 pés"
@@ -94,24 +94,24 @@ combate:
     total: "50 pés"
   ataques:
     - nome: "Golpe desarmado"
-      bonus_ataque: 5
-      dano: "1d4 + 3 contundente"
+      bonus_ataque: 6
+      dano: "1d4 + 4 contundente"
       observacao: "Conta como ataque marcial de monge."
     - nome: "Wakizashi"
       mecanica: "espada curta"
-      bonus_ataque: 5
-      dano: "1d6 + 3 perfurante"
+      bonus_ataque: 6
+      dano: "1d6 + 4 perfurante"
       observacao: "Arma de monge; nome cultural é apenas descritivo."
     - nome: "Shuriken"
       mecanica: "dardo"
-      bonus_ataque: 5
-      dano: "1d4 + 3 perfurante"
+      bonus_ataque: 6
+      dano: "1d4 + 4 perfurante"
       alcance: "20/60 pés"
       quantidade: 10
 
 pericias:
-  acrobacia: 5
-  furtividade: 5
+  acrobacia: 6
+  furtividade: 6
   intuicao: 5
   percepcao: 5
   investigacao: 3
@@ -125,7 +125,7 @@ pericias:
   sobrevivencia: 3
   medicina: 3
   natureza: 1
-  prestidigitacao: 3
+  prestidigitacao: 4
   atuacao: 0
   lidar_com_animais: 3
 
@@ -151,7 +151,7 @@ recursos_de_classe:
     dado: "1d4"
     resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
   ki:
-    pontos_maximos: 3
+    pontos_maximos: 4
     pontos_atuais: 3
     cd: 13
     recarga: "descanso curto ou longo"
@@ -170,8 +170,13 @@ recursos_de_classe:
     resumo: "Move-se mais rápido enquanto não usa armadura nem escudo."
   aparar_projeteis:
     reacao: true
-    reducao: "1d10 + 6"
+    reducao: "1d10 + 8"
     resumo: "Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o projétil de volta."
+  queda_lenta:
+    nivel: 4
+    reacao: true
+    reducao: 20
+    resumo: "Ao cair, pode usar a reação para reduzir o dano de queda em 20."
   artes_sombrias:
     subclasse: "Caminho da Sombra"
     truque:
@@ -193,6 +198,11 @@ talentos:
     resumo: "Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque de oportunidade dela pelo resto do turno, acertando ou errando."
     observacao: "Ajuda Ren a bater e reposicionar, essencial para campanha solo."
 
+aumentos_de_atributo:
+  nivel_4:
+    escolha: "+1 Destreza, +1 Sabedoria"
+    motivo: "Consolida Ren como infiltrador solo: melhora ataque, dano, CA, iniciativa e perícias de Destreza, enquanto prepara avanço futuro de Sabedoria."
+
 background:
   nome: "Exilado de Clã"
   origem: "customizado"
@@ -213,7 +223,10 @@ equipamento:
     - "10 shuriken, mecanicamente dardos"
   armadura: "nenhuma"
   itens:
-    - "roupas escuras de viagem"
+    - "disfarce atual de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso"
+    - "roupas próprias de Ren guardadas com Dessa Wren como figurino estrangeiro"
+    - "roupas roubadas e roupas comuns de doação entregues a Dessa Wren para virar retalho"
+    - "disfarces de Nera e Tavin de Dessa Wren em uso"
     - "manto simples com capuz"
     - "ferramentas de caligrafia"
     - "ferramentas de ladrão"
@@ -225,9 +238,14 @@ equipamento:
     - "prancheta de Velis Rook"
     - "carimbo falso da lua velada"
     - "bilhete de B. sobre isca para o oriental"
-    - "bilhete selado de Maerra para Silva Elkwood"
+    - "ficha de cobre com vela vermelha"
+    - "cordão azul"
+    - "ordem em papel encerado sobre gravadora, oriental e Brass"
+    - "fita vermelha identificável do homem da Red Sail"
+    - "botão de osso infantil tomado como garantia"
+    - "tira de couro da amarra sabotada da corda alta"
   dinheiro:
-    po: 11
+    po: 33
 
 vinculos:
   regiao_inicial: "Ravens Bluff"
@@ -241,5 +259,5 @@ progressao:
   xp_atual: null
   metodo: "marcos narrativos"
   arquivo_regras: "regras/progressao.md"
-  marco_atual: "início da campanha em Ravens Bluff"
-  observacao: "Nível inicial já definido como 3; XP numérico pode ser usado como referência, mas a progressão oficial ocorre por marcos narrativos."
+  marco_atual: "primeira noite em Ravens Bluff consolidada"
+  observacao: "Ren alcançou nível 4 após sobreviver à primeira noite, proteger Nera e Tavin, conquistar base provisória com Jack Mooney, resolver a sabotagem interna do circo e obter prova forte de que a caixa da Lua foi armadilha ligada a Masao ou agente próximo."

@@ -12,6 +12,12 @@ Visibilidade: oculto.
 
 Progresso inicial: 1/6.
 
+Progresso atual: 2/6.
+
+Último avanço:
+
+* Pell avisou que Velis Rook vai limpar papel em Narwhal Manor antes do sino de nove; o rastro ainda está vivo, mas tem janela curta antes que registros sejam removidos, corrigidos ou realocados.
+
 Descrição:
 
 O rastro ligado à movimentação suspeita no porto fica mais difícil de seguir conforme testemunhas são silenciadas, registros são corrigidos e objetos são removidos.
@@ -34,6 +40,7 @@ Sinais perceptíveis:
 * armazém limpo cedo demais;
 * fiscal subitamente ausente;
 * boato de que "o estrangeiro está perguntando demais".
+* boato de que "alguma coisa preta demais" engoliu a oficina de velas e fugiu pelas fachadas apertadas.
 
 ---
 
@@ -42,6 +49,13 @@ Sinais perceptíveis:
 Visibilidade: parcialmente visível.
 
 Progresso inicial: 0/4.
+
+Progresso atual: 2/4.
+
+Último avanço:
+
+* Ren respondeu às três perguntas práticas de Luath sem tentar esconder o risco geral: apontou a pressão atual sobre o circo de Jack Mooney, confirmou Dain Mord/Brass e descreveu o protocolo da ficha de cobre, vela vermelha e cordão azul;
+* Luath aceitou tratar o circo como ponto sensível sem ler isso como proteção indevida, mas manteve distância clara da caça pessoal de Ren contra Masao.
 
 Descrição:
 
@@ -69,6 +83,105 @@ Consequência em 4/4:
 Consequência em -2:
 
 * a guarda passa a vigiar Ren como forasteiro armado.
+
+Estado atual:
+
+* Luath acionou patrulheiros para tratar buscas não autorizadas da Red Sail como perturbação da paz, intimidação e usurpação de autoridade;
+* Luath ficou com a cópia parcial selada de Maerra;
+* Luath reconhece Ren como fonte útil com disciplina suficiente para contato operacional;
+* Luath ainda não confia em Ren como aliado pleno e continua vendo risco de vendeta;
+* a fala de Ren sobre Masao não merecer cela reforçou a cautela de Luath, embora não tenha cancelado a ação contra a Red Sail.
+* a patrulha acionada por Luath ajudou a dispersar a pressão imediata da Red Sail no perímetro do circo, confirmando utilidade prática do contato.
+
+---
+
+## Relógio: alarme em Narwhal Manor
+
+Visibilidade: parcialmente visível.
+
+Progresso inicial: 0/4.
+
+Progresso atual: 2/4.
+
+Último avanço:
+
+* Ren arrancou a pasta de Velis Rook em público e fugiu com Passo do Vento;
+* a fuga foi limpa o bastante para evitar perseguição imediata, mas Narwhal Manor sabe que papéis foram roubados.
+
+Descrição:
+
+Mede se a confusão na lateral de Narwhal Manor vira incidente menor, perseguição, bloqueio de portas ou detenção formal.
+
+Avança quando:
+
+* Ren insiste em agir diante de guardas ou funcionários sem nova cobertura;
+* Velis entra nos arquivos e alerta gente interna;
+* guardas identificam arma arremessada, shuriken ou o rosto de Ren;
+* alguém liga o incidente a Red Sail, Luath ou Maerra.
+
+Regride quando:
+
+* Ren cria explicação social crível;
+* a cena é desviada para acidente de manutenção;
+* Ren sai antes que guardas fixem descrição útil;
+* outra ameaça mais clara rouba a atenção.
+
+Consequência em 4/4:
+
+* Narwhal Manor fecha acessos imediatos, guarda procura o agressor e Velis fica inacessível sem plano novo.
+
+Estado atual:
+
+* Velis perdeu a pasta e grita por guardas;
+* guardas ainda não têm Ren cercado nem cauda colada nele;
+* a descrição do ladrão é incompleta, mas inclui movimento excepcionalmente rápido e um homem pobre próximo à porta lateral;
+* Narwhal Manor deve fechar a porta lateral e procurar internamente quem deixou os papéis saírem;
+* Ren chegou à Casa da Aurora Menor sem cauda confirmada, então o alarme ainda não aponta para Maerra, Nera ou Tavin;
+* a pasta aberta revela prova forte, mas Narwhal pode tentar transformá-la em falsificação plantada por ladrão estrangeiro se Luath ou Tyr não forem acionados com cuidado.
+* a pasta agora foi lacrada por Maerra com declaração testemunhal estreita; isso reduz risco de acusação de adulteração posterior, mas não resolve cadeia de custódia nem autoria.
+* Ren chegou à entrada da Casa de Tyr com a pasta lacrada, mas ainda não registrou formalmente a prova nem obteve audiência.
+
+---
+
+## Relógio: Meninos do Primeiro Sino
+
+Visibilidade: parcialmente visível.
+
+Progresso inicial: 1/6.
+
+Progresso atual: 1/6.
+
+Último avanço:
+
+* Maerra revelou a Ren que crianças de rua associadas à Casa da Aurora Menor estão sumindo por períodos cada vez maiores, e três ainda não voltaram.
+
+Descrição:
+
+Mede o agravamento do risco às crianças ligadas à Casa Velha do Primeiro Raio.
+
+Avança quando:
+
+* passam dias sem investigação;
+* a rede local percebe que Maerra está procurando ajuda;
+* as crianças são movidas para outro ponto;
+* guardas formais fazem batida desajeitada e espantam testemunhas pequenas.
+
+Regride quando:
+
+* Ren ou aliado encontra uma criança desaparecida;
+* Maerra protege uma testemunha infantil;
+* o ponto de entrada nos porões é descoberto sem alarme;
+* o adulto controlador perde olheiros ou rotas.
+
+Consequência em 6/6:
+
+* as crianças desaparecidas são movidas para fora da Casa Velha do Primeiro Raio, tornando o resgate mais difícil e fragmentado.
+
+Estado atual:
+
+* gancho oferecido, mas não urgente ao minuto;
+* Maerra pediu que Ren não faça isso agora enquanto Nera, Tavin e a pasta de Velis ainda estão em risco imediato;
+* possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
 
 ---
 
@@ -118,7 +231,7 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 2/4.
 
-Progresso atual: 3/4.
+Progresso atual: 2/4.
 
 Último avanço:
 
@@ -152,13 +265,53 @@ Sinais perceptíveis:
 
 ---
 
+## Relógio: rumor do roubo no Market District
+
+Visibilidade: oculto.
+
+Progresso inicial: 1/4.
+
+Progresso atual: 1/4.
+
+Último avanço:
+
+* Ren roubou 27 PO de um mercador rico no mercado noturno, usando Ilusão menor e contato social como cobertura;
+* o mercador não viu a fuga, mas pode lembrar de um peregrino pobre ou forasteiro que tocou seu braço antes da bolsa sumir.
+* olhos soltos do mercado conectaram a figura de peregrino pobre à direção geral do circo/campos de carroças, mas não viram a entrada discreta de Ren.
+
+Descrição:
+
+Mede se um roubo comum de mercado vira rumor conectado a Ren, a um falso peregrino ou a um padrão maior de incidentes urbanos.
+
+Avança quando:
+
+* Ren volta ao mercado com disfarce semelhante;
+* o mercador aciona guarda ou guilda com descrição útil;
+* Ren tenta gastar muito ouro imediatamente em área próxima;
+* a City Guard começa a juntar relatos de forasteiros furtivos na mesma noite.
+
+Consequência em 4/4:
+
+* patrulheiros ou guardas de guilda passam a procurar um falso peregrino/forasteiro;
+* o disfarce de doação da Casa da Aurora Menor fica arriscado em áreas comerciais;
+* Maerra pode ouvir rumor desconfortável, embora nada a ligue diretamente ao crime.
+
+Sinais perceptíveis:
+
+* mercadores conferindo bolsas com nervosismo;
+* guardas perguntando por peregrino pobre;
+* boato de "oração que roubou ouro";
+* vendedores recusando aproximação de forasteiros vestidos como pedintes.
+
+---
+
 ## Relógio: busca pela caixa da Lua
 
 Visibilidade: parcialmente visível.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 3/6.
+Progresso atual: 5/6.
 
 Último avanço:
 
@@ -175,6 +328,13 @@ Observação recente:
 * durante a hora seguinte, a busca alcançou a Casa da Aurora Menor por pergunta indireta, ainda sem confirmação de que Nera está dentro.
 * Maerra segurou a atenção na porta principal, e o homem não percebeu a saída lateral de Ren, Nera e Tavin.
 * o homem da Red Sail retomou a busca rápido depois da Casa da Aurora, mas Ren, Nera e Tavin chegaram à borda do circo sem contato direto.
+* durante o sono de Ren no circo, a pressão externa não alcançou o esconderijo.
+* Ren capturou um agente operacional da Red Sail antes que ele pudesse chamar Brass ou reforço.
+* durante o repouso de Ren à tarde, dois homens do porto passaram pela estrada de trás do circo perguntando por uma moça ferida e um rapaz novo; Jack desviou a conversa antes de confirmação.
+* durante a noite, a Red Sail aproximou novamente a busca dos campos de carroças/circos; Jack e Silva impediram acesso direto, mas a pressão chegou ao perímetro antes do amanhecer.
+* Ren propôs evacuar Nera e Tavin e permitir uma busca controlada para apaziguar a pressão; Jack aceitou a lógica, mas a busca ainda não ocorreu.
+* Ren retirou Nera e Tavin pela borda oposta antes da busca começar, usando disfarces de Dessa Wren. A fuga não foi identificada pelos homens do porto/Red Sail.
+* Luath acionou patrulheiros para interromper buscas ostensivas da Red Sail por falta de autoridade formal.
 
 Descrição:
 
@@ -200,3 +360,120 @@ Sinais perceptíveis:
 * lanternas cobrindo passarelas;
 * barcos pequenos sem luz;
 * perguntas sobre uma mulher molhada e uma caixa comprida.
+
+---
+
+## Relógio: confiança interna do circo
+
+Visibilidade: parcialmente visível.
+
+Progresso inicial: 1/4.
+
+Progresso atual: 4/4.
+
+Último avanço:
+
+* Silva acolheu Nera, Tavin, o livro e Ren sem avisar Jack Mooney antes;
+* a cobertura de paciente/acompanhante falhou durante a rotina do café, e uma voz masculina com autoridade está exigindo explicações de Silva.
+* Silva falhou em convencer Jack a assumir o risco; Jack tolera os Vell apenas até o meio-dia sem uma solução melhor.
+* Ren contou a Jack verdade suficiente sobre Masao, Aiko, Red Sail, Nera e Tavin, oferecendo serviços concretos em troca de abrigo.
+* Jack aceitou não expulsar Nera e Tavin ao meio-dia, mas transformou a proteção em acordo condicional ligado à investigação da sabotagem da corda alta.
+* Ren aceitou os termos de Jack e iniciou a investigação sem criar pânico imediato.
+* Ren resolveu a sabotagem da corda alta, fez Harl confessar sua participação indireta sem reabrir o julgamento público e voltou vivo da trilha noturna sem trazer perseguição armada para dentro do acampamento.
+
+Descrição:
+
+Mede se o circo aceita virar abrigo e possível base temporária, ou se trata Ren e os Vell como risco intolerável.
+
+Avança positivamente quando:
+
+* Ren é honesto sem expor segredos desnecessários;
+* Silva consegue enquadrar o caso como proteção de vulneráveis;
+* Jack Mooney vê utilidade ou justiça na situação;
+* o grupo evita atrair a Red Sail para dentro do acampamento.
+
+Regride quando:
+
+* Ren ameaça membros do circo;
+* a cobertura vira mentira impossível;
+* Nera, Tavin ou o livro são encontrados por terceiros;
+* o circo sofre pressão direta por causa de Ren.
+
+Consequência em 4/4:
+
+* Jack Mooney aceita ajudar com abrigo, trabalho falso, contato de estrada ou apresentação controlada.
+
+Estado atual:
+
+* 4/4 atingido na prática; Jack aceita Ren como acrobata estrangeiro em teste e mantém abrigo provisório para Ren, Nera e Tavin;
+* a ajuda continua pragmática, não incondicional, e pode ser pressionada se a Red Sail trouxer problema formal ao perímetro do circo.
+* Jack aceita busca controlada como estratégia temporária, desde que ele controle o teatro da vasculha e Ren mova os Vell antes.
+* Ren moveu os Vell antes da busca, preservando a cobertura imediata de Jack e Silva; resta ver se a busca sem resultado apazigua ou irrita Brass/Red Sail.
+
+Consequência em 0/4:
+
+* Ren deve sair do circo, e Nera/Tavin podem ser mantidos apenas por Silva sob risco pessoal.
+
+Sinais perceptíveis:
+
+* perguntas de Jack Mooney;
+* trabalhadores do circo comentando inconsistências;
+* Silva ficando mais curta e ríspida;
+* mudança de rota ou pressa para partir.
+
+---
+
+## Relógio: sabotagem da corda alta
+
+Visibilidade: parcialmente visível.
+
+Progresso inicial: 1/4.
+
+Progresso atual: 3/4.
+
+Último avanço:
+
+* Jack descobriu uma amarra da corda alta do lado leste cortada quase até o miolo e cancelou o número de Mira Dane sob a desculpa de corda molhada.
+* Ren aceitou investigar e fez inspeção inicial, identificando acessos plausíveis e sinais físicos sem espalhar a informação.
+* Silva chamou Sorn Kel de modo seco demais; Mira Dane e dois ajudantes notaram tensão perto da corda alta.
+* Sorn respondeu perguntas e abriu três fios: Harl Venn como conferente do lado leste, Lysa Renn como ligação com fita vermelha e rivalidade potencial, e o baú de breu de cordame como fonte possível da mancha.
+* Após pressão de Ren, Sorn revelou que viu Harl Venn e Lysa Renn na carroça de cordame depois da nona badalada, com Harl usando a cópia da chave para pegar breu.
+* Ren conseguiu isolar Lysa sem espalhar a conversa, mas Harl acompanhou a abordagem de longe.
+* O blefe de Ren não convenceu Lysa totalmente, mas revelou que ela esconde algo ligado à noite anterior e ao pulso esquerdo; a negação específica sobre derrubar Mira parece mais sincera.
+* Lysa confessou ter subido à plataforma leste depois da nona badalada e explicou o fio vermelho como fita rasgada numa farpa; isso confirma presença na janela da sabotagem, mas não prova o corte da amarra.
+* Lysa explicou que escondeu a subida por medo de Mira contar a Jack e tirá-la do alto; a motivação contra Mira fica menos simples.
+* Ren investigou a passagem estreita e encontrou sinais de alguém pequeno, com pó de mão seca e conta verde com fio amarelo associada por Silva a Merrit Tealeaf.
+* Ren pressionou Merrit Tealeaf com a pista da passagem estreita; Merrit confessou o corte da amarra, mas a abordagem não ficou discreta e Mira Dane parece ter ouvido parte da confissão.
+* Ren recuperou a faca curva escondida por Merrit e confirmou compatibilidade com a tira sabotada; Mira Dane entrou na cena antes de Silva conter a informação.
+* Ren entregou a Jack a prova física e a confissão essencial; Jack reconheceu a solidez da solução antes do meio-dia, enquanto Silva conteve Mira e Merrit sem pânico imediato.
+* Jack conduziu julgamento interno controlado; Merrit assumiu a culpa, foi suspensa e ficará sob vigilância. A ameaça imediata à corda alta foi contida, mas o fio de influência externa continua aberto.
+* Ren convenceu Harl Venn a confessar que plantou em Merrit a ideia de que Sorn ouviria uma amarra cantando errado. Jack puniu Harl discretamente, sem reabrir julgamento público, e confirmou abrigo para Ren, Nera e Tavin por hoje e amanhã.
+
+Estado atual:
+
+* ameaça imediata resolvida;
+* fio residual aberto: quem, se alguém, percebeu e explorou as fraquezas emocionais de Merrit/Harl/Lysa antes de Ren chegar.
+
+Descrição:
+
+Mede a pressão criada pela sabotagem dentro do circo. Quanto mais tempo passa sem descoberta discreta, maior o risco de pânico, repetição da sabotagem, acusação errada ou interferência externa.
+
+Avança quando:
+
+* Ren demora a investigar depois de aceitar o serviço;
+* suspeitos percebem que a sabotagem foi descoberta;
+* a informação se espalha entre artistas e ajudantes;
+* o circo sofre pressão externa enquanto a amarra sabotada continua sem explicação.
+
+Consequência em 4/4:
+
+* o sabotador age novamente, foge ou incrimina outra pessoa;
+* Jack reduz a margem de confiança em Ren;
+* o circo pode cancelar número importante ou iniciar busca interna ruidosa.
+
+Sinais perceptíveis:
+
+* artistas cochichando sobre número cancelado;
+* remendadores chamados com urgência;
+* mudança de escala na tenda principal;
+* Jack ou Silva interrompendo perguntas que chamem atenção demais.

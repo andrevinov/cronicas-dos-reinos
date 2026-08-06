@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa esquematico de Narwhal Manor</title>
+  <desc id="desc">Mapa superior esquematico do que Ren consegue observar as 07:54 na lateral de Narwhal Manor: porta principal com fila, patio de carrocas, porta lateral de funcionarios, Velis Rook prestes a entrar e posicao aproximada de Ren.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#29333b" stroke-width="1" opacity="0.45"/>
+    </pattern>
+    <marker id="arrow-gold" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f1d56b"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#75c7ff"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#e27b7b"/>
+    </marker>
+    <style>
+      .bg { fill: #10161c; }
+      .grid { fill: url(#grid); }
+      .street { fill: #302b27; stroke: #5b4d42; stroke-width: 4; }
+      .alley { fill: #242424; stroke: #4c463e; stroke-width: 3; }
+      .building { fill: #3b3940; stroke: #96836b; stroke-width: 5; }
+      .building-dark { fill: #2c2e34; stroke: #6f6864; stroke-width: 4; }
+      .yard { fill: #393027; stroke: #876f54; stroke-width: 4; }
+      .door { fill: #d5c8a8; stroke: #fff0bf; stroke-width: 3; }
+      .queue { fill: #66707a; stroke: #c6ced2; stroke-width: 2; }
+      .guard { fill: #8f3e3e; stroke: #e19a8e; stroke-width: 3; }
+      .ren { fill: #ffd866; stroke: #fff4b0; stroke-width: 4; }
+      .velis { fill: #b8ddff; stroke: #e4f5ff; stroke-width: 4; }
+      .assistant { fill: #b3c2c6; stroke: #edf6f7; stroke-width: 3; }
+      .cover { fill: #554a3e; stroke: #aa916a; stroke-width: 3; }
+      .cart { fill: #5c4a37; stroke: #b79467; stroke-width: 3; }
+      .barrel { fill: #63503c; stroke: #bd9b72; stroke-width: 2; }
+      .danger { fill: #522d33; stroke: #d46b76; stroke-width: 3; opacity: 0.92; }
+      .sight { fill: #dbc76d; opacity: 0.13; stroke: #f1d56b; stroke-width: 2; stroke-dasharray: 10 8; }
+      .los { stroke: #f1d56b; stroke-width: 3; stroke-dasharray: 10 8; fill: none; opacity: 0.9; marker-end: url(#arrow-gold); }
+      .route { stroke: #75c7ff; stroke-width: 4; fill: none; stroke-dasharray: 12 9; marker-end: url(#arrow-blue); }
+      .risk-line { stroke: #e27b7b; stroke-width: 4; fill: none; stroke-dasharray: 12 8; marker-end: url(#arrow-red); }
+      .unknown { fill: #202429; stroke: #5e6870; stroke-width: 3; stroke-dasharray: 8 6; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 24px; fill: #f2eadc; font-weight: 700; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #d8cdbb; font-weight: 600; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #c7beb1; font-weight: 600; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #aeb8bd; }
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 34px; fill: #fff4d8; font-weight: 800; }
+      .badge { fill: #1a2027; stroke: #5f6872; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="1000"/>
+  <rect class="grid" x="40" y="75" width="1320" height="790" opacity="0.9"/>
+
+  <text class="title" x="60" y="52">Narwhal Manor - entrada lateral e acessos visiveis</text>
+  <text class="note" x="60" y="82">07:54. Norte no topo. 1 quadrado ~= 5 pes. Visao/inferencia de Ren.</text>
+
+  <!-- Streets -->
+  <rect class="street" x="70" y="735" width="1260" height="125" rx="8"/>
+  <text class="small" x="88" y="806">rua dos armazens / fluxo de funcionarios e carregadores</text>
+
+  <rect class="street" x="1055" y="140" width="170" height="600" rx="8"/>
+  <text class="tiny" x="1118" y="455" transform="rotate(90 1118 455)">rua lateral para armazens</text>
+
+  <rect class="alley" x="95" y="595" width="310" height="140" rx="6"/>
+  <text class="small" x="118" y="674">viela escura / posicao de Ren</text>
+
+  <rect class="street" x="70" y="150" width="320" height="445" rx="8"/>
+  <text class="tiny" x="125" y="373" transform="rotate(-90 125 373)">rua principal / fila publica</text>
+
+  <!-- Narwhal Manor main building -->
+  <rect class="building" x="390" y="130" width="640" height="445" rx="8"/>
+  <text class="label" x="420" y="170">Narwhal Manor / alfandega</text>
+  <text class="small" x="420" y="201">registros, impostos, cargas retidas</text>
+
+  <rect class="unknown" x="430" y="225" width="255" height="110" rx="6"/>
+  <text class="small" x="450" y="283">sala publica</text>
+  <text class="tiny" x="450" y="308">fila, guiches, testemunhas</text>
+
+  <rect class="unknown" x="715" y="220" width="270" height="165" rx="6"/>
+  <text class="small" x="735" y="285">arquivos internos</text>
+  <text class="tiny" x="735" y="310">trancas, mesas, papeis</text>
+
+  <rect class="unknown" x="430" y="370" width="250" height="150" rx="6"/>
+  <text class="small" x="450" y="438">escritorios menores</text>
+
+  <rect class="unknown" x="720" y="405" width="260" height="115" rx="6"/>
+  <text class="small" x="740" y="470">corredor de servico</text>
+
+  <!-- Doors -->
+  <rect class="door" x="380" y="255" width="24" height="86" rx="3"/>
+  <text class="tiny" x="248" y="305">porta principal</text>
+
+  <rect class="door" x="1020" y="445" width="30" height="82" rx="3"/>
+  <text class="tiny" x="968" y="545">porta lateral</text>
+  <text class="tiny" x="966" y="565">funcionarios</text>
+
+  <rect class="door" x="880" y="570" width="82" height="28" rx="3"/>
+  <text class="tiny" x="845" y="620">saida para patio</text>
+
+  <!-- Yard and carts -->
+  <rect class="yard" x="650" y="590" width="470" height="145" rx="8"/>
+  <text class="label" x="670" y="627">patio de carrocas</text>
+  <text class="tiny" x="670" y="650">barris lacrados, marcas de carga, dois guardas</text>
+
+  <rect class="cart" x="710" y="675" width="110" height="40" rx="4"/>
+  <circle class="barrel" cx="735" cy="723" r="12"/>
+  <circle class="barrel" cx="795" cy="723" r="12"/>
+  <rect class="cart" x="880" y="665" width="130" height="45" rx="4"/>
+  <circle class="barrel" cx="910" cy="718" r="12"/>
+  <circle class="barrel" cx="982" cy="718" r="12"/>
+
+  <circle class="guard" cx="685" cy="662" r="16"/>
+  <text class="tiny" x="705" y="668">guarda</text>
+  <circle class="guard" cx="1052" cy="653" r="16"/>
+  <text class="tiny" x="1072" y="659">guarda</text>
+
+  <!-- Queue at main entrance -->
+  <circle class="queue" cx="320" cy="245" r="11"/>
+  <circle class="queue" cx="300" cy="285" r="11"/>
+  <circle class="queue" cx="315" cy="326" r="11"/>
+  <circle class="queue" cx="292" cy="368" r="11"/>
+  <circle class="queue" cx="318" cy="410" r="11"/>
+  <circle class="queue" cx="296" cy="450" r="11"/>
+  <text class="small" x="172" y="236">fila de capitaes</text>
+  <text class="tiny" x="172" y="260">muita testemunha, pouca furtividade</text>
+
+  <!-- Ren, Velis, assistant -->
+  <circle class="ren" cx="340" cy="655" r="22"/>
+  <text class="small" x="270" y="624">Ren</text>
+  <text class="tiny" x="252" y="645">oculto na sombra</text>
+
+  <circle class="velis" cx="1078" cy="510" r="19"/>
+  <text class="small" x="1110" y="505">Velis Rook</text>
+  <text class="tiny" x="1110" y="526">pasta encerada</text>
+
+  <circle class="assistant" cx="1012" cy="488" r="14"/>
+  <text class="tiny" x="915" y="485">ajudante abre</text>
+  <text class="tiny" x="915" y="504">a porta</text>
+
+  <!-- Cover and street props -->
+  <rect class="cover" x="170" y="620" width="85" height="42" rx="4"/>
+  <rect class="cover" x="250" y="688" width="110" height="34" rx="4"/>
+  <text class="tiny" x="162" y="708">caixas / barris</text>
+
+  <rect class="cover" x="510" y="760" width="110" height="36" rx="4"/>
+  <rect class="cover" x="650" y="785" width="90" height="34" rx="4"/>
+  <text class="tiny" x="505" y="843">carga parada</text>
+
+  <rect class="danger" x="1165" y="760" width="120" height="58" rx="8"/>
+  <text class="tiny" x="1178" y="782">olhos possiveis</text>
+  <text class="tiny" x="1178" y="801">da Red Sail</text>
+
+  <!-- Lines and routes -->
+  <path class="sight" d="M340,655 L1018,445 L1108,532 L405,735 Z"/>
+  <path class="los" d="M340,655 C520,600 760,535 1078,510"/>
+  <text class="tiny" x="560" y="580">Velis ainda nao viu Ren</text>
+
+  <path class="route" d="M1078,510 C1055,505 1038,500 1020,488"/>
+  <text class="tiny" x="1090" y="432">se passar pela porta:</text>
+  <text class="tiny" x="1090" y="451">entra nos arquivos</text>
+
+  <path class="route" d="M340,655 C475,674 585,680 650,665"/>
+  <text class="tiny" x="430" y="707">aproximacao pelo patio: guardas e carga</text>
+
+  <path class="route" d="M340,655 C335,520 330,410 380,296"/>
+  <text class="tiny" x="160" y="518">entrada publica: lenta, com fila</text>
+
+  <path class="risk-line" d="M1225,785 C1138,717 1105,615 1078,510"/>
+  <text class="tiny" x="1186" y="696">rua lateral</text>
+  <text class="tiny" x="1186" y="715">exposta</text>
+
+  <!-- Clock note -->
+  <rect class="badge" x="60" y="880" width="760" height="82" rx="8"/>
+  <text class="note" x="82" y="913">Janela: antes do sino de nove. Velis esta fora por segundos, nao minutos.</text>
+  <text class="note" x="82" y="941">Mapa esquematico: nao revela rotas internas, guardas ocultos ou conteudo da pasta.</text>
+
+  <!-- Legend -->
+  <rect class="badge" x="900" y="55" width="440" height="178" rx="8"/>
+  <text class="label" x="925" y="90">Legenda</text>
+  <circle class="ren" cx="938" cy="122" r="12"/>
+  <text class="small" x="963" y="129">Ren</text>
+  <circle class="velis" cx="938" cy="154" r="12"/>
+  <text class="small" x="963" y="161">Velis</text>
+  <circle class="guard" cx="938" cy="186" r="12"/>
+  <text class="small" x="963" y="193">guarda / risco</text>
+  <line x1="925" y1="218" x2="960" y2="218" class="los"/>
+  <text class="small" x="970" y="224">linha de visao de Ren</text>
+</svg>

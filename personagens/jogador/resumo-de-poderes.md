@@ -2,24 +2,24 @@
 
 Este arquivo existe para consulta rápida durante a narração.
 
-Ren é um monge do **Caminho da Sombra**, nível 3. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
+Ren é um monge do **Caminho da Sombra**, nível 4. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
 
 ---
 
 ## Números rápidos
 
-* CA: 16, sem armadura;
-* PV: 24;
+* CA: 17, sem armadura;
+* PV: 31;
 * deslocamento: 50 pés;
 * bônus de proficiência: +2;
-* iniciativa: +3;
-* Furtividade: +5;
-* Acrobacia: +5;
+* iniciativa: +4;
+* Furtividade: +6;
+* Acrobacia: +6;
 * Percepção: +5;
 * Intuição: +5;
 * Investigação: +3;
 * CD de ki: 13;
-* pontos de ki: 3 por descanso curto ou longo.
+* pontos de ki: 4 por descanso curto ou longo.
 
 ---
 
@@ -42,7 +42,7 @@ Ren é bom em:
 
 ### Golpe desarmado
 
-Ataque corpo a corpo com +5 para acertar e dano `1d4 + 3`.
+Ataque corpo a corpo com +6 para acertar e dano `1d4 + 4`.
 
 Serve para socos, chutes, joelhadas, cotoveladas, rasteiras e golpes rápidos.
 
@@ -50,13 +50,13 @@ Serve para socos, chutes, joelhadas, cotoveladas, rasteiras e golpes rápidos.
 
 Funciona mecanicamente como espada curta.
 
-Ataque com +5 para acertar e dano `1d6 + 3`.
+Ataque com +6 para acertar e dano `1d6 + 4`.
 
 ### Shuriken
 
 Funcionam mecanicamente como dardos.
 
-Ataque com +5 para acertar e dano `1d4 + 3`, alcance 20/60 pés.
+Ataque com +6 para acertar e dano `1d4 + 4`, alcance 20/60 pés.
 
 ---
 
@@ -70,7 +70,7 @@ Em cena, isso significa que ele pode combinar lâmina curta, cotovelo, chute, jo
 
 ## Ki
 
-Ren tem 3 pontos de ki.
+Ren tem 4 pontos de ki.
 
 Eles voltam em descanso curto ou longo.
 
@@ -152,9 +152,17 @@ Uso típico: impedir alarme, neutralizar conjurador, cobrir arrombamento, atrave
 
 Ren pode usar sua reação para reduzir dano de uma flecha, dardo, virote ou outro ataque à distância com arma.
 
-Redução: `1d10 + 6`.
+Redução: `1d10 + 8`.
 
 Se reduzir o dano a zero, pode gastar 1 ki para arremessar o projétil de volta.
+
+---
+
+## Queda Lenta
+
+Ren pode usar sua reação quando cai para reduzir o dano de queda em 20.
+
+Uso típico: telhados, mastros, carroças, muralhas baixas, saltos ruins e fugas urbanas em terreno vertical.
 
 ---
 
@@ -182,7 +190,7 @@ Limites importantes:
 * dano moderado, não explosivo;
 * depende de posicionamento;
 * escuridão mágica pode atrapalhar aliados;
-* não possui teleporte no nível 3;
+* não possui teleporte no nível 4;
 * não é invisível o tempo todo;
 * magia de sombra é forte, mas custa recursos.
 

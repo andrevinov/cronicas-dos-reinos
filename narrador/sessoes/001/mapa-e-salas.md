@@ -596,6 +596,21 @@ Perceptível:
 * às 05:28, o grupo chegou à borda externa do acampamento do Jack Mooney & Sons Circus;
 * entrada visível: carroças em semicírculo, homem largo carregando baldes e observando estranhos;
 * lateral de cozinha: fumaça baixa, cheiro de mingau/cinza fria, mulher velha mexendo panela sem levantar os olhos.
+* às 05:32, a mulher da cozinha reconheceu o selo de Maerra e indicou a carroça verde de Silva Elkwood;
+* carroça verde: atrás da tenda baixa, perto dos baldes de areia; símbolo pequeno de espiga e folha perto da roda;
+* entrada correta: cortina lateral, não porta da frente;
+* senha de contato: "a manhã veio cedo";
+* cobertura: buscar casca de salgueiro para dor.
+* às 05:34, Ren usou a senha e mostrou o selo de Maerra; Silva abriu a cortina lateral e recebeu o grupo sem alarme.
+* interior da carroça verde: apertado, organizado, com frascos em tiras de couro, folhas secas, panos limpos, bacia rasa, catre estreito e símbolo simples de Chauntea.
+* às 05:36, Silva aceitou esconder Nera, Tavin e o livro; ofereceu esconder Ren por poucas horas num compartimento de pano atrás da carroça de remendos.
+* às 05:40, o livro foi escondido na caixa de semente com fundo falso dentro da carroça verde.
+* carroça de remendos: cheira a lona molhada, pó, corda e roupa velha; há um compartimento estreito fechado por panos pendurados, suficiente para um homem deitar de lado sem mover muito os ombros.
+* sinal de Silva para Ren sair: dois assobios curtos e um longo.
+* Ren dormiu no compartimento das 05:40 às 08:05, repouso curto/sono reparador.
+* às 08:05, Silva deu o sinal combinado; uma voz masculina com autoridade, provavelmente Jack Mooney, cobra explicações de Silva.
+* às 08:06, Ren saiu da carroça de remendos sem ser visto usando distração com Ilusão menor e Passos sem Pegadas.
+* posição atual de Ren: atrás de uma carroça de carga com lona escura, ainda dentro do circo, fora da linha direta de Jack, da cozinha e da carroça de remendos.
 
 Pessoa associada:
 
@@ -609,6 +624,115 @@ Segredo:
 * mover Ren junto dos Vell aumenta risco de chamar atenção por causa de sua aparência de Kara-Tur.
 * o bilhete de Maerra para Silva está curto e selado; facilita entrada, mas Silva ainda pode exigir explicação.
 * o homem da Red Sail retomou busca rápido depois da Casa da Aurora, mas não há contato direto ainda.
+* a caixa de semente na carroça de Silva pode ocultar o livro por enquanto.
+* o compartimento de pano atrás da carroça de remendos é apertado, escuro e adequado para esconder uma pessoa por poucas horas.
+* se alguém mencionar o nome de Ren sem o sinal de Silva, isso pode ser armadilha ou teste.
+* a ameaça externa não alcançou o esconderijo durante o repouso, mas a pressão interna do circo agora exige conversa.
+* Jack não viu Ren sair; Silva pode suspeitar ou descobrir depois, mas não denunciou no momento.
+* às 08:12, Ren saiu pela borda externa do acampamento sem ser visto.
+* posição atual de Ren: rua de serviço na borda externa do circo dos Mooney.
+* Jack tolera manter Nera e Tavin no circo apenas até o meio-dia, salvo verdade suficiente ou solução melhor.
+* às 10:03, Ren retornou ao circo vestido como marinheiro/estivador e enviou a Jack a mensagem de que alguém entrou e saiu do circo sem ser percebido;
+* às 17:30, Ren saiu novamente pela rota da carroça de remendos, cruzando atrás da lona escura de carga e pela linha de estacas baixas até a borda externa do acampamento;
+* rota de saída combinada com Silva: se voltar ferido, entrar pela carroça de remendos; se trouxer perseguição, não voltar direto para a carroça verde.
+* às 17:46, Ren alcançou uma travessa de varais entre o circo e a borda baixa de Fishtown;
+* varal útil: casaco cinza grosseiro, camisa de algodão manchada de sabão, calças largas de trabalhador e gorro escuro;
+* a roldana do varal é velha e estalou quando Ren tentou retirar as peças;
+* uma menina comum viu Ren na mureta e chamou pela mãe em voz baixa.
+* Ren tentou encobrir a cena com som ilusório de gato, mas a mãe viu movimento humano e gritou por ladrão de roupa;
+* Ren fugiu levando apenas casaco cinza e gorro escuro; camisa e calças ficaram no varal.
+
+## Área P: Casa de Tyr
+
+Descrição pública:
+
+Casa formal de justiça e culto a Tyr no Temple District. Pedra clara, degraus largos, porta alta, símbolos de balança e mão de Tyr em relevo austero. O lugar transmite ordem, registro e consequência, não acolhimento íntimo.
+
+Perceptível:
+
+* guardiões na porta, normalmente armados de modo cerimonial e prático;
+* vestíbulo com bancos retos;
+* mesa de registro com acólito e livro grande;
+* placa para audiências, juramentos e queixas formais;
+* nome de Sirrus Melandor listado como Chief Prelate, sem promessa de acesso imediato.
+
+Segredo:
+
+* Tyr pode proteger prova e testemunha, mas transforma problema escondido em problema visível;
+* uma acusação contra Narwhal/Red Sail sem cadeia limpa pode encontrar resistência burocrática antes de alcançar Sirrus;
+* se Ren soar como assassino buscando licença moral, a casa pode tentar contê-lo ou chamar guarda;
+* se Ren focar nos vivos, no bilhete "ruído" e na ameaça a testemunhas, tem caminho melhor.
+
+Pessoas associadas:
+
+* **Sirrus Melandor**, Chief Prelate e alto sacerdote de Tyr;
+* guardião veterano da porta;
+* guardiã jovem da porta;
+* acólito de registro.
+
+Saídas:
+
+* rua cívica do Temple District;
+* vestíbulo público;
+* sala de espera de queixas;
+* corredor interno para clérigos/paladinos, se acesso for concedido.
+
+Testes possíveis:
+
+* Persuasão CD 13 para obter audiência preliminar sem soar como criminoso;
+* Religião CD 12 para enquadrar o pedido em linguagem adequada de justiça/testemunho;
+* Intuição CD 13 para perceber qual funcionário pode abrir porta melhor;
+* Enganação CD variável se Ren esconder demais a origem da pasta;
+* História CD 12 para reconhecer peso cívico de Sirrus Melandor.
+
+## Área R: Beco do disfarce guardado
+
+Descrição pública:
+
+Beco de serviço atrás de uma parede de tijolo torta e um antigo letreiro de curtidor, no caminho entre a travessa dos varais e Fishtown.
+
+Perceptível:
+
+* letreiro de couro rachado;
+* tijolo com salitre em forma de meia-lua;
+* cano de chuva quebrado;
+* fresta seca atrás de tábuas empilhadas, alta demais para crianças pequenas e pouco útil para quem procura lenha.
+
+Estado:
+
+* Ren deixou ali peças mais reconhecíveis das roupas escuras e o manto simples com capuz, dobrados e escondidos na fresta seca;
+* Ren memorizou o local pelas três marcas.
+
+## Área S: Ponto de observação da oficina de velas
+
+Descrição pública:
+
+Sótão quebrado de antiga loja de sebo e pavio, abandonada o bastante para cheirar a gordura velha e madeira úmida, do outro lado da viela da oficina de velas abandonada.
+
+Perceptível:
+
+* escada externa sem três degraus;
+* tábuas soltas formando fresta horizontal entre parede e beiral;
+* vista para a lateral da oficina de velas, a abertura usada por Ren antes, a passagem estreita dos fundos e parte da viela que vem da Rua da Corda.
+
+Limites:
+
+* se alguém vier pelo canal baixo, Ren tende a ouvir antes de ver;
+* se vier pela rua dos tonéis, Ren tende a ver antes de ouvir;
+* se vier por telhado, Ren pode perceber tarde.
+
+Estado:
+
+* às 18:16, Ren está oculto ali observando a oficina antes da armadilha das 19:00.
+* referência visual da visão de Ren: `sessoes/001/imagens/005-visao-oficina-velas.png`;
+* mapa esquemático visível ao jogador: `sessoes/001/imagens/006-mapa-oficina-velas.png`;
+* versão SVG editável: `sessoes/001/imagens/006-mapa-oficina-velas.svg`.
+* às 19:11, dois homens responderam à isca; Rusk "Cinza" entrou na oficina pela abertura lateral, e um capanga da Red Sail ficou no vão lateral vigiando a viela;
+* Ren segue oculto no sótão e nenhum dos dois percebeu sua posição.
+* a triagem do circo não barrou Ren como problema comum;
+* Jack chamou Ren para conversa privada no escritório-carroça atrás da tenda principal;
+* escritório-carroça de Jack: carroça grande pintada de vermelho escuro e verde, cheiro de serragem, tinta, couro molhado e papel; mapas de estrada presos com alfinetes, contratos dobrados sob peso de bronze, garrafa fechada e três cadeiras;
+* Silva reconheceu Ren e está presente na conversa.
 
 Saídas:
 
@@ -623,3 +747,107 @@ Testes possíveis:
 * Persuasão CD 12 com bilhete de Maerra para Silva aceitar abrigo;
 * Percepção CD 14 para notar observadores no trajeto;
 * Enganação CD 13 para apresentar os Vell como ajudantes/pacientes, se necessário.
+
+---
+
+## Área P: Beco da isca contra a Red Sail
+
+Descrição pública:
+
+Beco discreto atrás de uma casa de apostas fechada, em ruas de serviço entre o circo dos Mooney e o circuito que alimenta o porto.
+
+Perceptível:
+
+* passagem estreita;
+* cheiro de cerveja velha, barro e madeira úmida;
+* pouca circulação respeitável pela manhã;
+* bom o bastante para uma isca rápida, ruim para permanecer tempo demais.
+
+Estado atual:
+
+* às 09:04, Ren está no beco com um homem da Red Sail capturado e amarrado;
+* um bêbado apagado está vestido parcialmente com as roupas escuras de Ren para simular o oriental caído;
+* Ren recuperou a wakizashi;
+* Ren está vestido com roupas roubadas de estivador/marinheiro;
+* Passos sem Pegadas expirou por volta de 09:06;
+* o garoto de recados saiu da área sem atrair atenção.
+* às 09:09, Ren interrogou o capturado e obteve procedimento para chamar Brass, confirmação da isca da falsa lua velada e ligação indireta com Narwhal.
+* às 09:13, Ren coagiu o capturado a mandar mensagem falsa às 19:00 e obteve o nome Rusk "Cinza" como coletor da ficha.
+
+Pessoa associada:
+
+* homem da Red Sail capturado.
+
+Segredo:
+
+* o beco é viável para interrogatório curto;
+* demora, gritos ou luta prolongada podem atrair moradores, apostadores ou patrulha;
+* o falso oriental caído não resistirá a inspeção calma.
+* quanto mais tempo Ren permanecer após 09:09, maior o risco de o beco deixar de ser invisível.
+* uma pessoa na rua ouviu vozes no beco, mas não viu Ren claramente.
+
+---
+
+## Área Q: Corda alta do lado leste
+
+Descrição pública:
+
+Parte interna da tenda principal do Jack Mooney & Sons Circus ainda não inspecionada por Ren. Segundo Jack, uma das amarras da corda alta do lado leste foi cortada quase até o miolo durante a noite anterior ou madrugada.
+
+Perceptível quando inspecionada:
+
+* estrutura de lona principal;
+* mastros de sustentação;
+* corda alta a cerca de 25 pés do chão no trecho de travessia;
+* plataformas laterais um pouco acima da corda;
+* amarrações laterais;
+* pontos de acesso por escada de manutenção, plataforma de artista e área de manutenção;
+* circulação de artistas, ajudantes de corda, remendadores e carregadores;
+* necessidade de investigar sem provocar pânico no circo.
+
+Estado atual:
+
+* Jack cancelou o número de Mira Dane dizendo que a corda molhou;
+* a tira de couro mostrada a Ren tem marca fina e oblíqua de lâmina;
+* Jack quer prova antes do crepúsculo, não apenas suspeita.
+* às 10:17, Ren iniciou inspeção acompanhado por Silva;
+* corte limpo e deliberado por lâmina, mas Ren não identificou ferramenta exata;
+* três acessos plausíveis à amarra sabotada: escada de manutenção parcialmente escondida por lona dobrada, plataforma dos artistas e passagem estreita entre caixas de contrapeso e mastro lateral;
+* serragem sob o mastro leste foi varrida num retângulo estreito;
+* terceiro degrau da escada de manutenção tem mancha escura de breu ou graxa de cordame;
+* há fio vermelho curto preso numa farpa perto da base da plataforma.
+* às 10:18, Silva chamou Sorn Kel para perguntas de modo seco demais para passar despercebido;
+* Mira Dane e dois ajudantes notaram tensão, mas ainda não sabem a natureza exata do problema.
+* às 10:22, Sorn disse que o lado leste teria sido conferido por Harl Venn ontem depois da nona badalada;
+* Sorn disse ter encontrado a tira cortada antes das sete da manhã;
+* Sorn apontou breu de cordame como provável origem da mancha no degrau;
+* Sorn lembrou que Lysa Renn usa fitas vermelhas e hoje foi vista com apenas uma.
+* às 10:24, Sorn revelou que viu Harl Venn na carroça de cordame com Lysa Renn depois da nona badalada;
+* segundo Sorn, Lysa pediu breu para treinar pegada, Harl estava com a cópia da chave, e Sorn não conferiu pessoalmente a devolução.
+* às 10:27, Ren encontrou Harl atrás da carroça de cordame;
+* Harl respondeu sem vacilar que a corda estava boa quando ele conferiu, mas Ren percebeu que ele está escolhendo responder só ao perguntado.
+* às 10:29, Harl afirmou que Lysa pegou apenas breu, mas admitiu que não viu as mãos dela por um instante e que ela fechou o punho esquerdo depois.
+* às 10:33, Ren abordou Lysa e conseguiu isolá-la atrás de uma cortina de lona, fora de ouvido comum;
+* Harl não seguiu, mas ficou observando de longe;
+* Lysa usa apenas uma fita vermelha no pulso direito e tocou rapidamente o pulso esquerdo vazio quando percebeu o assunto.
+* às 10:35, Ren blefou que Harl contou tudo; Lysa não comprou totalmente, mas reagiu forte e negou ter cortado a amarra para derrubar Mira.
+* às 10:37, Lysa confessou que subiu à plataforma leste depois da nona badalada para testar o joelho;
+* segundo Lysa, a fita vermelha do pulso esquerdo rasgou numa farpa perto da base da plataforma; ela ainda tem o restante da fita manchado de breu.
+* às 10:45, Ren investigou a passagem estreita entre caixas de contrapeso e mastro lateral;
+* encontrou uma caixa de contrapeso movida recentemente, meia pegada pequena de sapato macio, pó claro de mão seca/giz/talco na madeira e uma conta minúscula de vidro verde com fio amarelo;
+* Silva associa a conta verde com fio amarelo ao tornozelo de Merrit Tealeaf.
+
+Pessoa associada:
+
+* Mira Dane, acrobata da corda alta.
+* Sorn Kel, responsável por cordame e montagem.
+* Harl Venn, ajudante de cordame mencionado como último a conferir o lado leste.
+* Lysa Renn, acrobata mencionada por conexão com Mira e fita vermelha.
+* Tobb Marlin, carreiro mencionado por usar piche grosso nas rodas.
+* Merrit Tealeaf, halfling contorcionista mencionada por Silva como capaz de usar a passagem estreita.
+
+Segredo:
+
+* ainda não definir culpado final sem considerar as ações de Ren;
+* candidatos podem incluir rivalidade interna, pressão externa, tentativa de extorsão, sabotagem comercial ou ligação indireta com a rede que também toca Red Sail/Narwhal;
+* preservar a possibilidade de pista lateral verdadeira, pista falsa ou conexão futura com a trama principal.

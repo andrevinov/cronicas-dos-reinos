@@ -697,3 +697,932 @@ Chegada:
   * entrada visível entre carroças, onde um homem largo carrega baldes e observa estranhos;
   * lateral de cozinha, com fumaça baixa e uma mulher velha mexendo panela sem levantar os olhos.
 * Silva Elkwood ainda não foi vista.
+
+Ren escolheu a lateral de cozinha.
+
+Resultado:
+
+* a mulher velha da cozinha reconheceu o selo de Maerra no bilhete;
+* ela não abriu o bilhete e não chamou atenção;
+* indicou a carroça verde de Silva, atrás da tenda baixa, perto dos baldes de areia;
+* orientou a usar a cortina lateral, não a porta da frente;
+* senha recebida: **"a manhã veio cedo"**;
+* se alguém perguntar, o grupo veio buscar casca de salgueiro para dor;
+* o rastro da Red Sail ainda não alcançou o circo neste momento.
+
+Na carroça verde de Silva:
+
+* Ren bateu uma vez e usou a senha corretamente;
+* Tavin fez um pequeno ruído com um balde de areia, mas Silva cobriu a situação sem alarme;
+* Silva Elkwood reconheceu a senha e o selo de Maerra de imediato;
+* ela abriu o bilhete de Maerra e deixou Ren, Nera e Tavin entrarem;
+* Silva é prática e cautelosa: perguntou se precisa esconder pessoas, livro, sangue ou tudo isso;
+* o rastro da Red Sail ainda não alcançou o circo neste momento.
+
+Decisão de Silva:
+
+* Ren pediu que Silva escondesse tudo: Nera, Tavin, o livro, sangue e, se possível, ele próprio;
+* Silva acredita na sinceridade essencial de Ren;
+* Silva aceitou esconder Nera, Tavin e o livro imediatamente;
+* Silva quer guardar o livro numa caixa de semente dentro da carroça, em vez de deixá-lo com Nera;
+* Silva também pode esconder Ren por algumas horas num compartimento de pano atrás da carroça de remendos;
+* abrigo mais longo para Ren exigirá envolver Jack Mooney ou criar uma cobertura maior;
+* Nera hesita em entregar o livro e olha para Ren antes de decidir.
+
+Ren tranquilizou Nera:
+
+* Ren disse que Silva é sincera;
+* Nera aceitou entregar o livro;
+* Silva escondeu o livro numa caixa de semente com fundo falso dentro da carroça verde;
+* Nera e Tavin devem obedecer Silva e sustentar a cobertura de paciente e acompanhante;
+* Ren aceitou se esconder por algumas horas atrás da carroça de remendos;
+* Silva combinou um sinal: **dois assobios curtos e um longo**;
+* se Jack Mooney disser o nome de Ren sem esse sinal, Ren deve permanecer escondido.
+
+Descanso no circo:
+
+* Ren dormiu cerca de **2 horas e 25 minutos**, das 05:40 às 08:05;
+* isso conta como repouso curto/sono reparador, não como descanso longo;
+* Ren acordou mecanicamente recuperado: **24/24 PV**, **Ki 3/3**, sem exaustão e sem penalidade de fadiga;
+* a Red Sail não alcançou o esconderijo durante esse intervalo;
+* a cobertura de Silva não passou limpa pela rotina interna do circo;
+* Silva deu o sinal combinado de dois assobios curtos e um longo;
+* uma voz masculina com autoridade no circo está cobrando explicações de Silva do lado de fora.
+
+Saída da carroça de remendos:
+
+* Ren leu a posição de Jack e a rota de saída;
+* Ren usou **Ilusão menor** para criar um som assustador perto da cozinha;
+* a reação de um ajudante derrubou panelas e distraiu Jack;
+* Ren conjurou **Passos sem Pegadas**, gastando 2 ki;
+* Ren saiu da carroça de remendos sem ser visto por Jack ou pelos trabalhadores próximos;
+* Ren está atrás de uma carroça de carga com lona escura, ainda dentro do circo;
+* **Passos sem Pegadas** está ativo por concentração até cerca de 09:06;
+* recursos atuais: **24/24 PV**, **Ki 1/3**.
+
+Observando Jack e Silva:
+
+* Ren ouviu Jack cobrar explicações de Silva;
+* Silva não conseguiu convencer Jack a aceitar o abrigo dos Vell como solução estável;
+* Jack não pretende entregar Nera e Tavin a homens do porto;
+* Jack só tolera manter Nera e Tavin no circo **até o meio-dia**;
+* antes disso, Silva precisa trazer verdade suficiente ou uma solução: estrada, Tyr ou outro caminho;
+* Jack quer o estrangeiro armado fora do acampamento antes de aprender seu nome;
+* Silva disse que Ren já saiu;
+* Ren saiu pela borda externa do circo sem ser visto e sem deixar rastro útil.
+
+Isca para a Red Sail:
+
+* Ren encontrou um bêbado isolado atrás de uma casa de apostas fechada;
+* roubou roupas de estivador/marinheiro e vestiu-as;
+* deixou suas roupas escuras sobre o bêbado apagado para simular um oriental caído;
+* a wakizashi foi usada como parte da isca, mas Ren a recuperou depois do ataque;
+* Ren localizou circulação de homens da Red Sail nas ruas que alimentam o porto;
+* escolheu um homem com postura de autoridade, mas não conseguiu confirmar se era chefe;
+* pagou **1 PO** a um garoto de recados para atrair o homem ao beco;
+* o garoto entregou mal a história, mas o homem mordeu a isca por ambição ou oportunismo;
+* o homem veio sozinho;
+* Ren o derrubou com golpes não letais e gastou seu último ponto de ki em Rajada de Golpes;
+* o capturado não parece ser Dain nem chefe maior;
+* itens encontrados no capturado:
+  * faca curta;
+  * ficha de cobre com vela vermelha;
+  * cordão azul no bolso interno;
+  * tira de papel encerado sem assinatura.
+* texto do papel:
+
+```text
+se a gravadora aparecer, segurar viva. se o oriental aparecer, marcar e chamar brass.
+```
+
+Recursos após a captura:
+
+* Ren está com **24/24 PV**;
+* Ren está com **Ki 0/3**;
+* Ren está com **10 PO**;
+* Passos sem Pegadas termina por volta de **09:06**.
+
+Interrogatório do capturado:
+
+* o capturado não gritou e falou baixo;
+* ele não é Dain e não é chefe maior;
+* para chamar Brass:
+  * usar a ficha de cobre com vela vermelha;
+  * ir ao pátio de tonéis atrás da Red Sail, não pela porta da taverna;
+  * entregar a ficha a quem estiver varrendo cinza perto da porta de barris;
+  * frase de chamada: **"a vela entortou"**;
+  * se for urgente, amarrar o cordão azul num prego do beco dos tonéis;
+  * Brass pode vir pessoalmente ou mandar alguém punir quem chamou à toa.
+* sobre a caixa e o selo:
+  * a caixa era para parecer carga de Kara-Tur ou de clã oriental;
+  * o objetivo principal era enganar ou atrair **"o oriental certo"**;
+  * a lua errada foi feita de propósito para ser notada por quem procurasse a lua verdadeira;
+  * o selo também poderia servir para culpar estrangeiros se guardas achassem carga, corpo ou sangue depois.
+* sobre Nera:
+  * Brass queria Nera calada primeiro;
+  * depois a ordem mudou para mantê-la viva quando descobriram ou suspeitaram do livro;
+  * Tavin era pressão sobre Nera;
+  * a ordem atual é segurar Nera viva, mas isso não significa mantê-la bem.
+* sobre o estrangeiro com cicatriz:
+  * o capturado não viu esse homem e não sabe confirmar a cicatriz;
+  * ouviu falar de outro homem do leste que não devia ser tocado sem Brass;
+  * termos ouvidos: **"hóspede"** e **"homem da lua"**;
+  * o capturado deixou escapar **Narwhal** ao falar do "homem de papel bom";
+  * segundo ele, as ordens melhores vêm em papel que não nasce no porto.
+* Ren percebeu que o capturado omitiu uma coisa: quem costuma recolher a ficha quando Brass não vem pessoalmente.
+* Passos sem Pegadas expirou por volta de **09:06**.
+
+Chantagem do capturado:
+
+* Ren percebeu que o medo central do capturado envolve filhos;
+* Ren tomou como garantias:
+  * a fita vermelha identificável do pulso do homem;
+  * um pequeno botão de osso infantil, aparentemente importante para ele.
+* o homem aceitou atuar como agente duplo por medo;
+* mensagem falsa combinada para **19:00**:
+  * Ren e a seladora foram encontrados na oficina de velas abandonada no Harbor District;
+  * ambos estão feridos e cansados.
+* o capturado disse que enviará a mensagem por corredor pequeno, porque se for pessoalmente Brass notará que ele está tremendo;
+* quem recolhe a ficha quando Brass não vem pessoalmente: **Rusk "Cinza"**;
+* Rusk varre cinza perto dos barris e leva a ficha a Brass ou a gente de Narwhal;
+* se a ficha chega com cordão azul, Rusk manda corredor antes de olhar duas vezes.
+
+Sobre Jack Mooney:
+
+* o capturado não conhece relação direta entre Jack Mooney e a Red Sail;
+* segundo ele, a Red Sail não manda no circo como manda em docas, tavernas e carreiros;
+* Brass não gosta de mexer no circo sem ordem de cima;
+* se Narwhal mandar, a situação muda;
+* Jack é visto como "problema caro".
+
+Risco imediato:
+
+* uma pessoa na rua ouviu vozes no beco;
+* essa pessoa não viu Ren claramente.
+
+Saída para a feira:
+
+* Ren tentou sair como marinheiro bêbado, mas a atuação não foi muito convincente;
+* ainda assim, ninguém ligou Ren claramente ao que ocorreu no beco;
+* Ren recuperou suas roupas escuras e saiu antes de a atenção crescer;
+* Ren comprou fruta, pão simples e água numa feira próxima;
+* o gasto foi em cobre e não alterou o total controlado de **10 PO**;
+* Ren está alimentado e hidratado de forma simples;
+* Ren concluiu que Jack Mooney é a melhor solução imediata para Nera e Tavin;
+* possível oferta a Jack: serviços discretos de proteção, recuperação e solução de problemas em troca de abrigo para os Vell;
+* Ren está sem ki, então qualquer retorno ao circo agora será sem sombra sobrenatural.
+
+Retorno ao circo para falar com Jack:
+
+* Ren voltou ao Jack Mooney & Sons Circus vestido como marinheiro/estivador;
+* Ren não percebeu perseguidor claro no caminho;
+* a mensagem provocativa sobre alguém ter entrado e saído do circo sem Jack perceber chegou até Jack;
+* Jack aceitou conversar em particular no escritório-carroça atrás da tenda principal;
+* Silva Elkwood reconheceu Ren apesar das roupas de marinheiro e está presente na sala;
+* Jack está irritado, interessado e quer uma explicação objetiva antes de decidir o destino de Ren, Nera e Tavin no circo;
+* hora aproximada da conversa: **10:03**;
+* o prazo prático do meio-dia para Nera e Tavin segue ativo.
+
+Resposta de Jack à oferta de Ren:
+
+* Ren contou a Jack sobre Masao Hirasawa, Aiko Kagehira, sua vingança, a Red Sail, Nera e Tavin;
+* Ren ofereceu serviços de combate, infiltração, furtividade e acrobacia em troca de comida, abrigo, cobertura e proteção para os Vell;
+* Jack corrigiu a ideia de que a Red Sail o teme: segundo ele, a Red Sail evita mexer com o circo porque isso custa dinheiro, testemunhas e rotas;
+* Jack aceitou que Nera e Tavin **não sairão ao meio-dia**;
+* a proteção segue condicional, não permanente;
+* termos de Jack:
+  * ninguém deve morrer debaixo da lona sem necessidade extrema;
+  * se Ren for visto no circo, será tratado como acrobata oriental contratado após audição fechada;
+  * Ren não deve usar o circo para iniciar uma guerra que respingue nos trabalhadores;
+  * o livro fica onde Silva decidir.
+* primeiro serviço oferecido por Jack:
+  * alguém cortou quase até o miolo uma amarra da corda alta do lado leste;
+  * se Mira Dane subisse hoje, poderia cair;
+  * Jack cancelou o número dizendo que a corda molhou;
+  * Jack quer que Ren descubra quem tocou na amarra antes do crepúsculo, discretamente e com prova.
+* se Ren aceitar e cumprir, Jack oferece comida, abrigo discreto e cobertura por alguns dias;
+* se Ren falhar, Jack ainda não pretende entregar os Vell aos homens do porto, mas buscará outro lugar para eles e deixará Ren fora do circo.
+
+Aceite do acordo e inspeção inicial:
+
+* Ren aceitou trabalhar para Jack Mooney sob termos condicionais;
+* cobertura pública definida por Jack: **Ren Kage**, acrobata oriental contratado em audição fechada;
+* Silva acompanhou Ren até a tenda principal;
+* Nera e Tavin não apareceram e seguem escondidos;
+* Silva disse que Nera perguntou se Ren tinha voltado, e que ela a impediu de sair do esconderijo;
+* Silva pareceu genuinamente surpresa com a sabotagem e depois ficou irritada;
+* a corda alta do lado leste fica a cerca de **25 pés** do chão no trecho de travessia;
+* as plataformas laterais ficam um pouco acima disso;
+* o corte no couro é limpo e deliberado, feito por lâmina;
+* Ren não conseguiu identificar com segurança o tipo exato de lâmina ou ferramenta;
+* três acessos plausíveis à amarra sabotada:
+  * escada de manutenção parcialmente escondida por lona dobrada;
+  * plataforma dos artistas;
+  * passagem estreita entre caixas de contrapeso e o mastro lateral.
+* sinais físicos encontrados:
+  * serragem sob o mastro leste varrida num retângulo estreito;
+  * mancha escura de breu ou graxa de cordame no terceiro degrau da escada de manutenção;
+  * fio vermelho curto preso numa farpa perto da base da plataforma.
+* pessoas visíveis na tenda:
+  * **Mira Dane**, acrobata que subiria na corda alta;
+  * **Sorn Kel**, responsável por cordame e montagem, segundo Silva.
+
+Sorn chamado para perguntas:
+
+* Ren tentou entender a reação de Sorn à tira de couro;
+* Sorn não conseguiu esconder que a tira mexeu com ele;
+* Ren não conseguiu separar se a reação veio de culpa, medo profissional, medo de Jack ou medo de outra pessoa;
+* Silva chamou Sorn de forma seca demais para ser totalmente discreta;
+* Mira Dane e dois ajudantes perceberam tensão, embora ainda não saibam o assunto;
+* Sorn se aproximou de Ren e Silva e aceitou responder perguntas.
+
+Respostas iniciais de Sorn:
+
+* a última conferência completa da corda alta foi ontem, depois da nona badalada, antes de fechar a lona;
+* a marca no livro de conferência é de Sorn;
+* Sorn admitiu que não subiu nos dois lados:
+  * ele conferiu a linha e o lado oeste;
+  * o lado leste teria ficado com **Harl Venn**, ajudante de Sorn;
+  * Sorn assinou a conferência mesmo assim.
+* quem encontrou a tira cortada foi Sorn, hoje cedo, antes das sete, depois que a cozinha já tinha acendido fogo;
+* Sorn percebeu que a corda "cantava diferente", subiu, tocou a tira e viu que ela abria mais do que devia;
+* Sorn levou a tira a Jack, e Jack mandou calar e cancelar o número de Mira;
+* Sorn não sabe apontar alguém que odeie Mira o bastante para tentar matá-la;
+* Sorn diz que Mira é "boa demais para ser fácil";
+* **Lysa Renn** perdeu o número alto para Mira há três tendays, depois de torcer o joelho;
+* Lysa usa duas fitas vermelhas no pulso quando treina, uma em cada braço;
+* hoje cedo Sorn viu Lysa com apenas uma fita;
+* ontem, perto da plataforma leste, Sorn ouviu Lysa xingando uma farpa velha porque ela tinha puxado fio de alguma coisa;
+* Sorn trabalha com breu/graxa de cordame, e Harl também;
+* o breu fica num pote pequeno no baú de cordame;
+* Sorn fica com uma chave do baú;
+* durante montagem, uma cópia da chave fica no prego da carroça de cordame;
+* **Tobb Marlin**, carreiro, usa piche mais grosso nas rodas, mas Sorn diz que o cheiro é diferente;
+* Ren não conseguiu determinar se Sorn está omitindo algo deliberadamente ou apenas preocupado com a própria responsabilidade.
+
+Omissão revelada por Sorn:
+
+* Ren tentou intimidar Sorn, mas a ameaça em si não funcionou muito bem;
+* a oferta de "limpar sua barra" fez Sorn revelar uma omissão;
+* depois da nona badalada, Sorn viu **Harl Venn** na carroça de cordame com **Lysa Renn**;
+* Lysa disse que precisava de breu para treinar pegada por causa do joelho;
+* Harl estava com a cópia da chave do baú de cordame;
+* Sorn mandou Harl devolver a chave no prego e fechar tudo;
+* Sorn não ficou para conferir pessoalmente;
+* quando voltou, a chave estava no prego, mas torta;
+* Sorn não contou a Jack porque isso exporia sua negligência e colocaria Lysa no centro da suspeita;
+* isso pode explicar o breu na escada, mas não prova sabotagem.
+
+Abordagem inicial a Harl:
+
+* Ren encontrou Harl Venn atrás da carroça de cordame, separando argolas, cunhas de madeira e linha fina;
+* Harl é jovem adulto, talvez dezenove ou vinte anos;
+* Harl tem breu escuro sob algumas unhas e uma faca curta de trabalho no cinto;
+* Ren perguntou tecnicamente se a corda estava ok quando Harl conferiu;
+* Harl respondeu sem vacilar que a corda estava boa;
+* segundo Harl, ele puxou a amarra, ouviu a corda, passou a mão na volta e no couro;
+* Harl disse que teria sentido se a tira já estivesse aberta daquele jeito;
+* Ren percebeu que a resposta técnica parece firme;
+* Ren também percebeu que Harl está respondendo só ao que foi perguntado e escolhendo não oferecer mais informação.
+
+Pressão sobre Harl:
+
+* Ren perguntou diretamente se Lysa pegou algo além de breu;
+* Harl afirmou que Lysa pediu e pegou breu;
+* Harl admitiu que virou para pegar um pano por um instante e não viu as mãos de Lysa o tempo todo;
+* depois disso, Harl viu Lysa fechar o punho esquerdo;
+* Harl não sabe, ou não disse, se era dor no joelho, raiva ou algo escondido;
+* Harl afirmou que a faca de trabalho dele não saiu do cinto;
+* Harl diz que dorme com a faca debaixo do travesseiro;
+* Ren não conseguiu determinar se Harl mente sobre Lysa.
+
+Abordagem a Lysa:
+
+* Ren deixou Harl para trás e observou a reação dele;
+* Harl não seguiu Ren fisicamente, mas ficou observando de longe e se distraiu do trabalho;
+* Ren encontrou Lysa Renn perto da parte de trás da tenda principal, sentada sobre um baú de figurinos;
+* Lysa tem o joelho enfaixado;
+* Lysa usa apenas uma fita vermelha no pulso direito;
+* o pulso esquerdo está sem fita;
+* Ren conseguiu levá-la para trás de uma cortina de lona, fora de ouvido comum;
+* ao perceber que a conversa era sobre a noite anterior, Lysa tocou rapidamente o pulso esquerdo vazio;
+* depois, cruzou os braços como se escondesse os dois pulsos;
+* Ren não conseguiu interpretar se a reação indica culpa, medo, vergonha, raiva ou outra coisa.
+
+Blefe com Lysa:
+
+* Ren disse que Harl contou tudo e que Lysa achou que tinha conseguido;
+* Lysa não comprou totalmente o blefe;
+* ainda assim, reagiu forte:
+  * apertou o pulso esquerdo vazio;
+  * perdeu cor por um instante;
+  * demonstrou medo de algo encontrado.
+* Lysa disse que Harl não conta tudo nem quando sabe;
+* Lysa negou ter cortado a amarra;
+* quando mencionou Mira e a corda, a reação de Lysa pareceu menos falsa;
+* Ren percebeu que Lysa esconde algo ligado à noite anterior, ao pulso esquerdo e possivelmente à fita perdida;
+* a negação de Lysa sobre ter cortado a amarra para derrubar Mira parece mais sincera do que o resto.
+
+Confissão parcial de Lysa:
+
+* Ren confrontou Lysa sobre o fio vermelho encontrado perto da plataforma;
+* Lysa confessou que subiu à plataforma leste depois da nona badalada;
+* segundo Lysa, ela usou o breu para testar o joelho e saber se ainda conseguiria subir;
+* Lysa diz que a fita vermelha do pulso esquerdo prendeu numa farpa perto da base da plataforma;
+* Lysa puxou a fita com raiva e ela rasgou;
+* Lysa ainda tem o restante da fita, amassado e manchado de breu;
+* a ponta está rasgada em fiapos, sem marca óbvia de corte limpo;
+* isso explica o fio vermelho encontrado, mas confirma que Lysa esteve na plataforma leste na janela da sabotagem;
+* Lysa nega novamente ter cortado a amarra;
+* Ren não conseguiu determinar se a explicação inteira é honesta.
+
+Motivo de Lysa para esconder a subida:
+
+* Ren tentou acalmar Lysa e ofereceu ensinar acrobacias de Kara-Tur;
+* Lysa disse que não quer "pôr Mira no chinelo";
+* Lysa quer que Mira pare de olhá-la como se ela já tivesse virado história triste;
+* segundo Lysa, se Mira descobrisse a subida escondida:
+  * tiraria Lysa da plataforma, mesmo à força;
+  * contaria a Jack;
+  * impediria Lysa de subir machucada.
+* Lysa acredita que Jack poderia tirá-la do alto pelo resto da temporada, do ano ou para sempre;
+* Ren acredita que Lysa escondeu a própria presença por medo de perder o alto e ser vista como acabada;
+* isso reduz a hipótese de motivação simples de Lysa contra Mira, mas não prova inocência sobre a amarra.
+
+Passagem estreita e Merrit:
+
+* Ren liberou Lysa sem levá-la a Jack;
+* Harl viu Lysa sair livre e pareceu respirar melhor;
+* Ren conjecturou com Silva que o terceiro acesso, pela passagem estreita entre caixas de contrapeso e mastro lateral, exigiria alguém pequeno;
+* Silva apontou **Merrit Tealeaf** como alguém com porte e habilidade para isso;
+* Merrit é halfling, contorcionista e faz números de entrada por caixa/saída por alçapão;
+* antes da lesão de Lysa, Merrit fazia número de equilíbrio baixo com ela;
+* desde que Mira assumiu o alto, Merrit ficou com preenchimento de intervalo e palhaçada de queda;
+* Silva alertou que gostar de Lysa não torna Merrit assassina;
+* Ren examinou a passagem estreita e encontrou:
+  * uma caixa de contrapeso movida pouco, mas recentemente;
+  * meia pegada pequena de sapato macio, pequena demais para Harl, Lysa ou Mira;
+  * pó claro de mão seca/giz/talco na madeira lateral, diferente de breu;
+  * uma conta minúscula de vidro verde com fio amarelo presa num nó baixo da lona.
+* Silva associa contas verdes com fio amarelo ao tornozelo de Merrit;
+* a rota estreita tem sinais diferentes da rota de Lysa pela plataforma;
+* isso não prova sabotagem, mas abre um novo fio forte envolvendo Merrit.
+
+Abordagem a Merrit:
+
+* Silva levou Ren até **Merrit Tealeaf**, halfling contorcionista, perto das caixas de número;
+* Merrit usa sapatos macios e uma tira de tornozelo com contas verdes; faltam contas nessa tira;
+* Ren confrontou Merrit com a pista da passagem estreita e ameaçou revistar corpo e quarto em busca da arma do crime;
+* Merrit não sustentou a primeira mentira e confessou ter passado pela rota estreita;
+* Merrit confessou ter cortado a tira da amarra da corda alta;
+* segundo Merrit, ela queria apenas que a corda "cantasse errado" pela manhã, para que Sorn detectasse o problema e cancelasse o número de Mira;
+* Merrit disse que **Lysa não sabia** e que **Harl não sabia**;
+* Merrit disse que a faca usada está escondida na **caixa azul do número de cambalhotas**, num fundo falso, embrulhada em pano azul;
+* Ren acredita na culpa central de Merrit, mas percebe uma omissão quando ela repete que achou que Sorn detectaria o corte;
+* a tentativa de manter tudo discreto falhou: **Mira Dane** parece ter ouvido pelo menos Merrit dizer "Eu não queria que Mira morresse".
+
+Recuperação da arma:
+
+* Merrit levou Ren e Silva até a **caixa azul do número de cambalhotas**;
+* a faca curva estava escondida em fundo falso, embrulhada em pano azul;
+* Ren encontrou resíduo de couro na lâmina/pano;
+* Ren comparou a faca com a tira sabotada entregue por Jack e concluiu que o padrão de corte combina;
+* Mira Dane se aproximou antes que Silva conseguisse manter a conversa fechada;
+* Mira sabe, pelo menos em linhas gerais, que Merrit cortou a amarra;
+* Ren perguntou se Merrit precisava muito do emprego;
+* Merrit respondeu que sim, dizendo que o circo é o único lugar onde ela ainda é alguma coisa;
+* Ren leu medo real, vergonha e dependência emocional do circo na resposta de Merrit.
+
+Entrega das provas a Jack:
+
+* Ren aconselhou Merrit a assumir sinceramente a culpa e pedir desculpas;
+* Merrit pareceu tocada pelo conselho e disse que vai pedir desculpas, se Mira permitir;
+* Silva conseguiu conter Merrit e Mira sem espalhar pânico imediato;
+* Ren levou a Jack a tira sabotada, a faca curva, o pano azul e o resíduo de couro;
+* Jack reconheceu que a prova é sólida;
+* Jack disse que Ren resolveu antes do meio-dia, com prova e sem sangue, e que isso "compra muito" na lona;
+* Jack ainda não definiu a punição de Merrit;
+* Jack perguntou se Ren acha que foi apenas uma burrice desesperada de artista ferida ou se alguém ensinou Merrit a fazer uma burrice específica.
+
+Resposta de Ren a Jack:
+
+* Ren avaliou que alguém pode ter aconselhado Merrit, pois a frase sobre Sorn sempre ouvir parecia ensaiada ou implantada;
+* Jack disse que Ren não precisa provar capacidade no picadeiro agora;
+* Jack aceitou manter **Nera e Tavin** no circo por **hoje e amanhã**;
+* Jack aceitou manter Ren no circo como **Ren Kage**, acrobata estrangeiro em teste, com comida e lugar para dormir escolhido por Jack;
+* regras de Jack para Ren:
+  * nada de sangue debaixo da lona, salvo defesa contra ameaça letal;
+  * se a Red Sail bater no portão, Jack não vira muralha sem saber o tamanho do risco;
+  * enquanto estiver no circo, Ren deve sustentar a cobertura de acrobata estrangeiro em teste, inclusive em cena se Jack mandar.
+* Jack considera que Ren demonstrou capacidade suficiente para não ser jogado de volta na rua, mas ainda não o bastante para Jack apostar o circo inteiro na guerra de Ren;
+* Jack ofereceu escolha imediata: acompanhar o julgamento interno de Merrit ou ir ver Nera e Tavin antes que Jack feche a questão.
+
+Julgamento interno de Merrit:
+
+* Ren decidiu assistir ao julgamento interno antes de falar com os Vell;
+* Jack reuniu apenas Silva, Mira, Lysa, Sorn, Harl, Merrit e Ren numa lateral fechada por lona;
+* Merrit assumiu a culpa com sinceridade:
+  * cortou a tira;
+  * passou pela rota estreita;
+  * escondeu a faca;
+  * disse que Lysa e Harl não sabiam;
+  * pediu desculpas a Mira sem exigir perdão imediato.
+* Mira conteve a raiva e disse que hoje não perdoa Merrit, mas não a atacará porque quer que Jack decida olhando para os fatos;
+* Lysa reagiu mal à ideia de que Merrit fez isso "por ela" e saiu abalada;
+* Jack decidiu que Merrit:
+  * não se apresenta por enquanto;
+  * não toca em lâmina, corda alta, alçapão ou caixa de truque sem Silva ou Sorn vendo;
+  * dorme e come onde Silva mandar;
+  * será entregue à guarda se fugir ou se mentir sobre influência externa.
+* Jack manteve aberto o fio de que a mão que cortou foi de Merrit, mas a ideia pode ter vindo de outro lugar;
+* Ren percebeu que Sorn reagiu mal à frase de que "Sorn sempre ouve": não como culpado evidente, mas como alguém percebendo que sua reputação profissional virou ferramenta na mão de alguém;
+* Harl ficou fechado e ilegível durante essa parte.
+
+Reencontro com os Vell:
+
+* depois do julgamento, Ren foi à carroça verde de Silva;
+* Tavin estava sentado com uma tigela vazia;
+* Nera tentou manter a compostura ao ver Ren, mas falhou e segurou a manga dele com força;
+* Nera disse "Você voltou";
+* Tavin fez o cumprimento improvisado de Ren e disse "Beleza?" como se fosse uma senha séria;
+* Nera perguntou se o chamado de Jack era bom ou ruim, pois Silva apenas avisou que Jack tinha chamado Ren por causa de um problema.
+
+Conversa com os Vell depois do julgamento:
+
+* Ren disse a Nera que prometeu voltar e cumprimentou Tavin com "beleza";
+* Nera e Tavin estão alimentados e fisicamente bem dentro do possível;
+* Ren disse que Jack o empregou e que, enquanto Ren estiver no circo, ali será uma morada segura;
+* Nera aceitou o alívio sem despejar perguntas e agradeceu por Ren voltar antes de sumir de novo;
+* Tavin relaxou o bastante para perguntar se Ren sabe cair engraçado no circo;
+* Silva entrou depois da crise interna e confirmou que:
+  * Jack garantiu abrigo real por hoje e amanhã;
+  * depois disso, a situação será reavaliada conforme o barulho externo;
+  * ninguém no circo entregará os Vell por conveniência, mas lona não é muralha de castelo.
+* Jack mandou preparar para Ren um canto seco e discreto no depósito de figurino velho, atrás da arca dos estandartes;
+* Silva disse que Ren deve comer agora e dormir depois.
+
+Repouso no circo:
+
+* Ren comeu, meditou e dormiu no depósito de figurino velho, atrás da arca dos estandartes;
+* o repouso durou cerca de três horas e alguma coisa;
+* Ren recuperou o ki: **3/3**;
+* não foi descanso longo;
+* ao acordar, Ren tentou organizar os fios soltos de Merrit, mas não chegou a uma resposta clara;
+* o melhor ponto de entrada continua sendo a frase ensaiada: **"Sorn sempre ouve"**;
+* enquanto Ren dormia, dois homens do porto passaram pela estrada de trás do circo e perguntaram a um vendedor de maçãs se o circo tinha recebido uma moça ferida e um rapaz novo;
+* Jack mandou um palhaço bêbado atrapalhar a conversa até os homens irem embora;
+* os homens não identificaram Nera, Tavin ou Ren, mas a Red Sail já está farejando o perímetro do circo.
+
+Conversa discreta com Merrit:
+
+* Ren pediu a Silva que chamasse Merrit ao depósito de figurino velho;
+* Silva aceitou, mas impôs condições:
+  * Merrit não circularia sozinha pelo acampamento;
+  * Silva ficaria perto da porta;
+  * Ren não deveria encostar em Merrit para arrancar resposta;
+  * Merrit não teria acesso a lâmina.
+* Silva trouxe Merrit sem chamar atenção, usando a movimentação comum do depósito como cobertura;
+* Merrit entrou sem as contas no tornozelo, com roupa simples de treino e olhos vermelhos;
+* Merrit está presente e disposta a ouvir, mas tomada por vergonha e medo;
+* Merrit não começou a falar espontaneamente além de dizer que Silva falou que Ren queria conversar.
+
+Merrit revela Harl:
+
+* Ren confrontou Merrit diretamente sobre a frase **"Sorn sempre ouve"**;
+* Merrit deixou escapar o nome **Harl Venn**;
+* segundo Merrit, Harl não mandou diretamente que ela cortasse a tira;
+* Harl teria dito que "corda fala com Sorn antes de falar com plateia" e que, se uma amarra cantasse errado pela manhã, Sorn ouviria;
+* Merrit disse que Harl também estava com raiva de Mira, Jack e de todos que, na visão deles, estavam empurrando Lysa para fora;
+* Merrit insiste que Harl não segurou a faca;
+* Ren leu que Merrit protege Harl por lealdade e culpa, não por medo direto de retaliação;
+* Silva não ouviu o nome de Harl.
+
+Ligação de Harl com Lysa:
+
+* Ren disse a Merrit que Harl a usou e perguntou se ele é apaixonado por Lysa;
+* Merrit resistiu à palavra "usou" e defendeu Harl de ser tratado como monstro;
+* Merrit não negou a ligação emocional de Harl com Lysa;
+* segundo Merrit, Harl é apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas;
+* Ren concluiu que Harl tem devoção romântica/idealizada por Lysa;
+* Ren também concluiu que Harl sabia tocar nos pontos certos: a culpa de Merrit, a situação de Lysa e a reputação de Sorn;
+* Merrit admitiu que talvez "falar a frase certa para a pessoa errada" também seja uma forma de usar alguém.
+
+Encerramento da conversa com Merrit:
+
+* Ren disse que não abordará Harl diretamente e que Harl não saberá que Ren ouviu isso de Merrit;
+* Ren também disse que precisa deixar claro para Jack que Harl tem "um dedinho nessa corda";
+* Merrit não conseguiu confiar totalmente nessa proteção e ficou apavorada com a possibilidade de Harl ser exposto;
+* a brincadeira de Ren sobre "O Exótico e a Exótica" quase arrancou um sorriso de Merrit;
+* Merrit respondeu que talvez Ren caísse sério demais;
+* Silva não ouviu o nome de Harl, mas percebeu que a conversa deixou Merrit ferida;
+* Ren pediu que Silva o acompanhasse até Jack;
+* Jack estava disponível e levou Ren e Silva para trás de uma divisória de lona para ouvir a nova informação.
+
+Jack informado sobre Harl:
+
+* Ren contou a Jack que Harl é apaixonado por Lysa e plantou em Merrit a ideia de que Sorn sempre ouviria uma amarra cantando errado;
+* Ren pediu que Jack não punisse Harl imediatamente;
+* Jack não aceitou deixar Harl intocado;
+* Jack decidiu que Harl, por ora:
+  * não toca na corda alta;
+  * não confere amarra sozinho;
+  * não pega chave de baú.
+* Jack não abrirá julgamento público agora, porque a fonte está escondida, Harl não confessou e Merrit está emocionalmente fragilizada;
+* Jack deu a Ren até o pôr do sol para conversar com Harl e trazer algo útil:
+  * uma admissão de que Harl plantou a ideia;
+  * ou prova convincente de que Harl entendeu o tamanho da besteira e não vai repetir.
+* Silva não apoiou nem bloqueou a proposta, mas recomendou que Ren fale com Harl longe de Lysa e Merrit.
+
+Abordagem social a Harl:
+
+* Ren tentou abordar Harl de forma amigável, perguntando onde encontrar comida boa no circo;
+* Harl indicou a cozinha sob a lona amarela;
+* segundo Harl, se Ren chegar antes dos músicos ainda há carne; depois disso, sobra cenoura e conversa;
+* Harl não comprou a camaradagem de Ren, não o acompanhou e perguntou se Jack mandou Ren falar com ele.
+* Ren ofereceu 1 PO por uma hora do tempo de Harl;
+* Harl aceitou a moeda, corrigiu Ren ao ser chamado de "Hal" e acompanhou Ren até a cozinha;
+* Harl manteve desconfiança e perguntou se a fala amigável de Ren é a história verdadeira ou apenas a história antes da verdadeira.
+
+Confissão de Harl:
+
+* Ren apelou à fome, pobreza, admiração e amor para convencer Harl a assumir sua parte;
+* Harl admitiu que plantou em Merrit a ideia de que Sorn ouviria uma amarra cantando errado;
+* Harl disse que não mandou Merrit pegar a faca nem cortar a amarra;
+* Harl afirmou que queria cancelar o número de Mira, não derrubá-la;
+* Harl confessou sua parte a Jack;
+* Jack puniu Harl discretamente:
+  * um mês longe da corda alta;
+  * sem chave;
+  * sem conferência de segurança;
+  * sem ficar sozinho com Merrit ou Lysa por ora.
+* Jack mandou Harl pedir desculpas a Merrit diante de Silva à noite, para assumir que ela não carrega a culpa sozinha;
+* Jack confirmou abrigo para Ren, Nera e Tavin por hoje e amanhã, ainda com reavaliação futura conforme o risco externo.
+
+Visita aos Vell antes da trilha da noite:
+
+* Silva confia mais em Ren depois da resolução com Harl, mas de forma cautelosa e vigilante;
+* Nera e Tavin estão fisicamente bem, alimentados, escondidos e com água/cobertores;
+* Ren avisou que seguirá uma trilha à noite ligada aos homens que tentaram levar Nera;
+* Nera perguntou se a trilha envolve a caixa ou o homem dos botões;
+* Tavin perguntou se Ren vai voltar.
+* Ren prometeu a Tavin que voltará;
+* Ren disse que pretende investigar a conexão entre Red Sail e Masao, sem fazer loucura;
+* Nera associou a caixa ao selo falso, o homem dos botões ao trabalho e silêncio dela, e Masao ao motivo maior que puxou Ren para a trama;
+* Ren propôs "Kagefusha", "Moinho das Sombras", como nome de palco;
+* Silva instruiu Ren a avisar por onde sairá, voltar pela carroça de remendos se ferido e não retornar direto à carroça verde se trouxer perseguição.
+* imagem da despedida na carroça verde: [004-vell-carroca-verde.png](../../sessoes/001/imagens/004-vell-carroca-verde.png);
+* Ren prometeu a Silva que não trará perseguidor para a carroça verde;
+* Ren explicou que sairia pela rota da carroça de remendos;
+* Ren saiu do circo às 17:30 sem atrair atenção externa;
+* ainda falta cerca de uma hora e meia para a armadilha das 19:00.
+
+Disfarce no caminho para a oficina:
+
+* Ren evitou olhos naturais da Red Sail no deslocamento inicial;
+* Ren encontrou roupas excelentes para disfarce num varal de travessa:
+  * casaco cinza grosseiro;
+  * camisa de algodão manchada de sabão;
+  * calças largas de trabalhador;
+  * gorro escuro.
+* ao tentar retirar as roupas, a roldana do varal estalou e chamou atenção;
+* Ren está com o casaco e o gorro na mão;
+* camisa e calças ainda estão presas no varal;
+* uma menina comum, não identificada como ligada à Red Sail, viu Ren e chamou pela mãe em voz baixa.
+* Ren tentou encobrir o barulho com som ilusório de gato, mas a mãe viu movimento humano e gritou por ladrão de roupa;
+* isso cria rumor local comum, não alarme da Red Sail;
+* Ren escapou deixando camisa e calças no varal;
+* Ren encontrou um beco seguro e deixou suas peças mais reconhecíveis dobradas numa fresta seca atrás de tábuas;
+* marcas do beco: letreiro de couro rachado, tijolo com salitre em forma de meia-lua e cano de chuva quebrado;
+* o disfarce atual é fraco de perto, mas quebra a silhueta à distância;
+* Ren chegou a um ponto de observação no sótão quebrado de uma antiga loja de sebo e pavio, diante da oficina de velas abandonada;
+* dali Ren vê a lateral da oficina, a abertura por onde entrou antes, a passagem estreita dos fundos e parte da viela que vem da Rua da Corda;
+* por enquanto não há luz, guarda ou movimento evidente dentro da oficina.
+* imagem da visão de Ren: [005-visao-oficina-velas.png](../../sessoes/001/imagens/005-visao-oficina-velas.png);
+* mapa esquemático do local: [006-mapa-oficina-velas.png](../../sessoes/001/imagens/006-mapa-oficina-velas.png);
+* versão editável do mapa: [006-mapa-oficina-velas.svg](../../sessoes/001/imagens/006-mapa-oficina-velas.svg).
+
+Resposta à isca da oficina:
+
+* Ren estudou uma rota de fuga pelas fachadas apertadas;
+* Ren manteve-se oculto no sótão e ninguém percebeu sua posição;
+* dois homens responderam à isca:
+  * um provavelmente é **Rusk "Cinza"**, com cinza nas mangas e aparência de varredor;
+  * o outro é um capanga da Red Sail com porrete curto e tira vermelho-escura quase escondida no pulso.
+* Rusk entrou na oficina de velas pela abertura lateral para examinar marcas antigas de ocupação;
+* o capanga ficou no vão lateral vigiando a viela;
+* Ren ouviu fragmentos como "feridos", "se estiver mentindo" e "Brass quer notícia, não incêndio";
+* a posição atual favorece surpresa, mas o capanga está entre Ren e Rusk.
+
+Interrogatório de Rusk na oficina:
+
+* Ren conjurou Escuridão sobre a entrada lateral da oficina, neutralizou o capanga da Red Sail e rendeu **Rusk "Cinza"** com a wakizashi no pescoço;
+* Rusk afirmou que o selo falso da lua e a caixa não eram ideia dele nem da taverna;
+* segundo Rusk, Brass recebeu o pedido de alguém acima ou fora da Red Sail;
+* a marca falsa precisava parecer coisa do leste, de clã e de juramento;
+* o erro no selo era proposital: o "homem certo" deveria reconhecer que não era acidente e seguir a pista;
+* a caixa era "teatro": lâmina estranha, pano, lacre, carimbo e itens para deixar rastro oriental em quarto, carga ou corpo;
+* se o oriental aparecesse, seguiria a lua; se não aparecesse, a caixa ainda sustentaria uma história falsa envolvendo "homem do leste";
+* Rusk não sabe ou não quis dizer o nome do estrangeiro ligado a Brass;
+* Brass chama o estrangeiro de "hóspede" e às vezes de "homem da lua";
+* o hóspede não fica na Red Sail Tavern;
+* mensagens passam por Brass, Velis Rook e um "homem de papel bom" em Narwhal;
+* Rusk viu o hóspede uma vez: capuz baixo, mão limpa demais, comum falado baixo e de forma estrangeira, e uma possível marca na bochecha direita;
+* Rusk disse que Brass quer dinheiro, favor e ser o homem que encontra Ren primeiro;
+* Rusk disse que o hóspede quer saber quando o caçador chega e quer Ren se movendo para onde possa ser visto;
+* Rusk confirmou que Nera era problema por ter feito o trabalho e manter livro, e Tavin era problema por ter ouvido palavras demais;
+* Ren percebeu que Rusk ainda omite o ponto de entrega ou método usado para passar mensagens/fichas de Brass a Narwhal.
+
+Conclusão de Ren após Rusk:
+
+* Ren concluiu que Masao está em Ravens Bluff ou perto o bastante para operar por fios locais;
+* Ren concluiu que Masao, ou alguém muito próximo dele, sabe que Ren o persegue;
+* a caixa, o selo errado, os objetos falsamente orientais e a palavra Lua foram montados para atrair Ren e manipular sua reação;
+* Ren entende que os próximos alvos informativos fortes são **Brass** e o elo de **Narwhal Manor**;
+* Rusk e o capanga ficaram inconscientes na oficina depois do interrogatório;
+* Ren escapou pela rota das fachadas apertadas, mas uma testemunha percebeu a direção geral da fuga.
+
+Passagem pela Casa da Aurora Menor:
+
+* Ren recuperou suas roupas escuras e o manto no beco seguro, com atraso;
+* Ren confirmou que não havia cauda antes de ir ao Temple District;
+* Ren avisou Maerra que Nera e Tavin estão vivos e sob proteção de Silva Elkwood e Jack Mooney;
+* Maerra recebeu a notícia com alívio contido;
+* Maerra emprestou roupas comuns de doação, água e pão;
+* Maerra não emprestou veste ou símbolo sagrado e pediu que Ren não use a Casa da Aurora Menor como máscara para violência;
+* o disfarce atual de Ren é de viajante pobre assistido por templo, não de trabalhador de Fishtown.
+
+Roubo no Market District:
+
+* Ren foi ao mercado noturno para se financiar;
+* escolheu um mercador rico com bolsa pesada e exposta;
+* usou Ilusão menor para simular animal sob uma barraca, mas o alvo não se assustou totalmente;
+* Ren aproveitou a aproximação como falsa ajuda/oracao e roubou a bolsa;
+* Ren escapou pelos becos escuros sem perseguição imediata;
+* a bolsa continha 27 PO, elevando o dinheiro de Ren para 36 PO;
+* risco posterior: o mercador pode lembrar de um peregrino pobre ou forasteiro que tocou seu braço antes da bolsa sumir.
+
+Retorno ao circo após o mercado:
+
+* Ren voltou ao circo pela rota da carroça de remendos;
+* Ren não conseguiu confirmar com segurança absoluta que ninguém no caminho do mercado notou sua direção geral;
+* Ren entrou no acampamento sem ser notado pela rotina interna;
+* Ren trocou o disfarce de doação pelas roupas escuras de viagem;
+* Silva encontrou Ren perto das cozinhas laterais e ofereceu banho simples atrás da lona azul;
+* Nera está acordada, e Tavin dorme.
+
+Banho atrás da lona azul:
+
+* Ren começou a tomar banho atrás da lona azul, com a wakizashi ao alcance;
+* Nera não conseguiu esperar e foi até a lona por preocupação;
+* Nera levantou a lona por um instante, viu mais do que pretendia e virou o rosto, envergonhada;
+* Silva estava por perto e preservou a privacidade com firmeza prática;
+* Nera perguntou se Ren está ferido;
+* o banho ainda não conta como descanso curto e Ren continua sem ki.
+* Ren tranquilizou Nera, disse que não está ferido fisicamente e prometeu ir à carroça verde depois do banho;
+* Nera aceitou esperar e agradeceu por Ren voltar;
+* Ren percebeu que Nera está sentindo algo por ele e que sua própria preocupação por ela talvez também já seja algo;
+* a tensão romântica entre os dois ficou mais explícita, mas segue contida.
+
+Carroça verde após o banho:
+
+* Ren terminou o banho, vestiu suas roupas escuras e foi à carroça verde;
+* Tavin dorme e Ren não o acordou;
+* as mãos de Ren e Nera se tocaram, e Ren não retirou a dele;
+* Nera ajustou os dedos aos de Ren e aceitou a intimidade;
+* Silva percebeu e fingiu arrumar uma manta para dar privacidade;
+* Silva disse que **Dessa Wren**, responsável pelo guarda-roupa menor do circo, pode providenciar roupas comuns:
+  * duas mudas improvisadas, trabalhador de estrada e ajudante de mercado, por 3 PO;
+  * três mudas, incluindo corte de pequeno mercador, por 5 PO.
+* Silva autorizou passeio curto pela rota interna das lonas, longe das bordas do acampamento;
+* rota autorizada: linha das lonas internas, atrás da tenda principal, roda quebrada perto dos estandartes velhos e retorno pelo corredor das cozinhas;
+* se Silva assobiar, Ren e Nera devem voltar sem discutir.
+
+Carroça dos estandartes:
+
+* Ren encontrou um ponto alto seguro e não feito de lona: o teto de uma carroça larga de madeira perto dos estandartes velhos;
+* Ren estava sem ki e não pôde usar Passo do Vento;
+* Ren tentou subir com Nera usando apoio e acrobacia mundana;
+* Nera confiou nele e segurou firme;
+* a subida fez barulho e alguns circenses perceberam o casal;
+* Silva viu ou soube onde eles estão, mas não interrompeu;
+* Ren e Nera têm alguns minutos de privacidade relativa sob as estrelas para conversar.
+
+Conversa sobre Aiko, vingança e Nera:
+
+* Ren contou a Nera que se sente quebrado desde a morte de Aiko;
+* Ren explicou que Aiko era como uma mãe para ele e o protegeu de dores desnecessárias, assim como Nera protege Tavin;
+* Ren disse que veio a Ravens Bluff para matar Masao e que não vai parar antes da vingança;
+* Ren admitiu que pode morrer qualquer noite;
+* Ren perguntou se Nera tem certeza de que quer se preocupar com alguém como ele;
+* Nera não prometeu amor nem futuro, mas admitiu que se preocupa de verdade com Ren;
+* Nera disse que tentou dar nomes úteis para sua preocupação, mas eles não eram nomes verdadeiros;
+* Nera pediu uma coisa: que ela e Tavin continuem sendo pessoas para Ren, não ferramentas, peso ou parte da vingança dele.
+* Ren respondeu que esse é o problema: Nera e Tavin já são pessoas para ele;
+* Ren admitiu que não quer que Nera sofra mais e que teme não conseguir dar a ela e Tavin um futuro vivo e seguro;
+* Ren tocou o rosto de Nera e os dois se beijaram;
+* o vínculo romântico entre Ren e Nera agora é explícito, embora sem promessa de futuro;
+* Nera entende com mais clareza que Masao usou ela e Tavin para atingir Ren.
+
+Fim da primeira noite:
+
+* Ren disse a Nera que a missão dela é ficar quieta, não fazer loucura e proteger a si mesma e a Tavin;
+* Ren e Nera voltaram de mãos dadas até a carroça verde de Silva;
+* Silva preservou a privacidade, mas deixou claro pela postura que os limites do passeio estavam encerrados;
+* Ren foi dormir no canto discreto do depósito de figurino velho preparado por Jack;
+* Ren completou descanso longo e acordou recuperado;
+* ao amanhecer, Silva chamou Ren em voz baixa antes de o circo despertar por completo;
+* Ren sabe que há sondagem ou visita incômoda no perímetro do circo ligada ao porto ou à Red Sail;
+* Nera e Tavin ainda estão escondidos, mas o abrigo no circo já sofre pressão externa.
+
+Plano de busca controlada no circo:
+
+* Ren propôs a Silva evacuar Nera e Tavin discretamente antes de Jack permitir uma busca ostensiva e controlada;
+* Silva julgou a ideia possível, mas deixou claro que a busca não pode ser livre: Jack precisa controlar quais lonas, carroças e baús serão abertos;
+* Ren pediu que Jack entrasse em contato com Brass ou com quem fala pela Red Sail, enquadrando a busca como solução comercial para parar a perturbação no perímetro;
+* Silva levou a proposta a Jack;
+* Ren ouviu Jack segurando a conversa externa com teatralidade, indicando que a manobra está em curso;
+* a busca ainda não começou, e Nera/Tavin ainda não foram movidos.
+
+Dessa Wren e os disfarces:
+
+* Ren foi ao guarda-roupa menor e encontrou Dessa Wren;
+* Ren pagou 1 PO por roupas rápidas e silêncio;
+* Dessa montou um pacote de disfarces comuns:
+  * Ren: casaco pardo de ajudante de carga, gorro de lã escura e lenço grosso;
+  * Nera: saia cinza, xale marrom de viúva pobre, touca simples e avental manchado;
+  * Tavin: colete remendado, camisa larga, gorro mole e cesta de pano sujo.
+* Dessa sugeriu a cobertura de "homem, irmã viúva e rapaz de recado", ou família pobre levando roupa para lavar;
+* Ren pagou mais 1 PO para Dessa transformar roupas roubadas e roupas de doação em retalho;
+* Ren pagou mais 1 PO para Dessa guardar suas roupas próprias como figurino estrangeiro;
+* dinheiro atual de Ren: 33 PO.
+
+Saída do circo com Nera e Tavin:
+
+* Ren explicou a Nera e Tavin que eles sairiam enquanto Jack preparava uma busca controlada;
+* Nera quis saber do livro de provas, mas Silva determinou que o livro ficaria escondido com ela, pois carregá-lo aumentaria o risco se o grupo fosse parado;
+* Silva não conseguiu garantir uma saída totalmente limpa;
+* a melhor janela surgiu quando Jack puxou a atenção externa para a entrada das cozinhas;
+* Ren, Nera e Tavin saíram pela rota das bacias de lavagem, carroça de lenha e barris de água cinza;
+* Tavin quase quebrou a cobertura ao ouvir menção à moça ferida;
+* Ren gastou 1 ki em Passo do Vento para corrigir a postura de Tavin e atravessar o ângulo crítico;
+* os homens do porto/Red Sail não identificaram a fuga;
+* Ren, Nera e Tavin estão fora do miolo do circo, ainda próximos, usando disfarces comuns;
+* recursos atuais: Ren 31/31 PV, Ki 3/4, 33 PO.
+
+Travessia até a Casa da Aurora Menor:
+
+* Ren conduziu Nera e Tavin por áreas pobres, ruas de serviço e mercados de primeira hora;
+* Ren confirmou com muita segurança que ninguém os seguiu desde o circo;
+* Ren comprou pão escuro, maçãs pequenas e queijo seco com moedas de cobre, sem alterar o total em PO;
+* o disfarce de Dessa funcionou bem em áreas pobres: ninguém olhou duas vezes para uma família pobre carregando pano sujo;
+* Ren, Nera e Tavin chegaram à Casa da Aurora Menor por volta de 06:47.
+
+Maerra sobre Luath e a Night Watch:
+
+* Maerra corrigiu o nome: **Night Watch**, não "Nights Watch";
+* Maerra conhece Luath por reputação e o considera honrado de modo prático, não santo;
+* segundo Maerra, Luath cumpre dever, não gosta de covardia, não vende pobre por conveniência e sabe que a cidade tem sujeira sob as aparências;
+* Maerra recomenda procurar Luath com uma verdade verificável, não com a história inteira da vingança;
+* bons pontos iniciais para Luath: sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco;
+* Maerra recomenda não entregar Nera e Tavin a Luath de imediato, pois mesmo homens honestos estão presos a correntes institucionais;
+* Maerra disse que Sirrus Melandor/Tyr é melhor para tribunal e proteção formal pesada, enquanto Luath é melhor para rua e Night Watch;
+* conselho central de Maerra: usar Luath como ponte, não como faca.
+
+Ida de Ren ao posto da Night Watch:
+
+* Ren pediu que Maerra ficasse com Nera e Tavin enquanto ele conversa com Luath;
+* Maerra aceitou, mas corrigiu Ren: a Red Sail talvez esteja ocupada no circo, não necessariamente toda lá;
+* Maerra entregou a Ren a cópia parcial selada do livro de provas;
+* a cópia não equivale ao livro original, mas contém trechos úteis sobre a encomenda da falsa lua, a diferença deliberada do desenho e parte da ligação com o segundo homem de materiais melhores;
+* Nera ficou contrariada por Ren sair, mas não discutiu;
+* Nera disse para Ren voltar com uma ponte, não com outra faca;
+* Ren foi ao posto da City Guard/Night Watch como pobre comum e não chamou atenção;
+* Luath estava no posto ao amanhecer;
+* Luath observou mãos, trouxas, cintura e saídas antes de olhar nos olhos de Ren;
+* Luath perguntou o nome de Ren e se ele veio trazer problema, fugir de problema ou vender problema.
+* Ren entregou a cópia parcial selada e disse que vinha deixar recado a pedido de um amigo de fé;
+* o bilhete de Maerra pedia que Luath conversasse com Ren a sós e usasse a frase sobre dar pão ao faminto;
+* Luath não pareceu confiar automaticamente em Ren, mas aceitou a privacidade por respeito cauteloso a Maerra;
+* Luath levou Ren a um depósito lateral de patrulha;
+* Luath pediu que Ren comece pelo que põe gente viva em risco nas próximas horas, sem poesia, juramento ou nome grande antes de nome pequeno.
+* Ren contou a Luath seu nome, origem, Masao Hirasawa, o assassinato de Aiko, a falsificação do selo e a ameaça contra Nera e Tavin;
+* Luath não conhece o nome Masao Hirasawa, mas marcou o "ainda";
+* Luath resumiu o problema civil como: falsificação de marca estrangeira, queima de arquivo contra seladora e irmão, buscas ilegais da Red Sail, Dain Mord perto demais e possível financiador melhor por trás;
+* Luath também percebeu que Ren veio caçar um homem por causa da irmã assassinada, e isso o deixou mais cauteloso;
+* Luath aceitou ajudar nos vivos, não na caça pessoal de Ren;
+* Luath acionou patrulheiros para impedir buscas não autorizadas da Red Sail, enquadrando-as como perturbação da paz, intimidação e usurpação de autoridade;
+* Luath ficou com a cópia parcial selada de Maerra por enquanto;
+* Luath pediu três informações pequenas:
+  * onde a pressão da Red Sail está acontecendo agora;
+  * nome completo de Dain Mord, se Ren tiver;
+  * um lugar onde Luath não deve mandar guarda nenhum porque isso mataria testemunhas.
+* Ren respondeu que a pressão atual está sobre o circo de Jack Mooney, mas que buscas também passaram pelo porto, templos e outras áreas;
+* Ren confirmou a Luath que Dain Mord é conhecido como Brass e descreveu o protocolo da ficha de cobre com vela vermelha e cordão azul;
+* Luath conhecia Dain Mord, mas não sabia que ele usava esse protocolo;
+* Luath aceitou não mandar uma busca aberta ao circo sem ordem, flagrante ou razão melhor;
+* Luath enviou patrulheiros para coibir buscas ilegais da Red Sail nas ruas, vizinhanças e acessos;
+* Luath deixou claro que isso não é proteção a Jack Mooney, e sim retirada da autoridade informal da Red Sail;
+* Luath aceitou receber recado limpo por Maerra, usando "o amigo da terra do sol nascente", mas alertou Ren para não transformar Maerra em caixa postal de assassinato;
+* Luath avisou: provas e testemunhas podem ser ouvidas; um corpo entregue como "justiça" pode fazer a guarda pôr ferro em Ren.
+* Ren disse a Luath que Masao Hirasawa não merece cela e que já escapou de uma cela enorme em Kara-Tur;
+* Luath não retirou a ajuda contra a Red Sail, mas deixou claro pelo rosto e pela fala que agora vigiará melhor a diferença entre justiça e sangue.
+
+Ponto morto da Silver Lily:
+
+* Ren foi aos fundos da Silver Lily antes de voltar ao templo;
+* Ren não percebeu perseguição direta no caminho e não usou Passos sem Pegadas;
+* o vaso com flor estava virado e havia um bilhete de Pell;
+* Pell escreveu que **Velis vai limpar papel na casa grande do peixe antes do sino de nove**;
+* Pell escreveu que **Brass está irritado**, **Rusk não voltou** e **o homem da lua não desce ao cais**;
+* "casa grande do peixe" provavelmente significa **Narwhal Manor**;
+* Ren pagou Pell deixando 1 PO no vaso;
+* Ren destruiu o bilhete durante o deslocamento;
+* a pista cria uma janela curta para Velis Rook antes que registros sejam limpos ou alterados.
+* Ren chegou ao entorno de Narwhal Manor por volta de 07:54;
+* no caminho, Ren percebeu dois possíveis olhos da Red Sail e desviou, perdendo alguns minutos;
+* Velis Rook está visível na entrada lateral de funcionários, com uma pasta rígida de couro encerado, prestes a entrar;
+* dinheiro atual de Ren: 32 PO.
+* Ren acertou um shuriken no gancho da lâmpada acima da porta lateral e a derrubou;
+* Velis evitou o impacto direto da lâmpada;
+* Ren tentou tomar a pasta durante a confusão, mas Velis percebeu e a apertou contra o peito;
+* Ren não conseguiu sustentar a aparência de cidadão apenas preocupado;
+* Velis chamou guarda;
+* Ren fez uma segunda tentativa física, arrancou a pasta das mãos de Velis e fugiu;
+* Ren gastou 1 ki em Passo do Vento para abrir distância pela direção oposta aos guardas;
+* Ren desapareceu no fluxo das ruas de serviço sem perseguição imediata colada nele;
+* Narwhal Manor está em alarme local por roubo de papéis;
+* a pasta rígida de couro encerado de Velis está com Ren e ainda não foi examinada;
+* Ren viu rapidamente na pasta: carimbo de Narwhal Manor, número **13** e a expressão **"retenção anulada"**;
+* Ren está com 9 shuriken restantes e 2/4 ki.
+* Ren encontrou uma manta de estopa cinza abandonada no caminho e a usa para quebrar a silhueta;
+* Ren fez uma rota lenta e indireta até a Casa da Aurora Menor;
+* Ren confirmou que chegou sem cauda;
+* a pasta de Velis continua escondida sob as roupas, ainda não examinada;
+* hora aproximada ao chegar à lateral da Casa da Aurora Menor: 08:42.
+* Ren foi levado à saleta de ervas com Maerra, Nera e Tavin;
+* Ren bebeu água, comeu um pouco e respirou, mas não completou descanso curto mecânico;
+* Maerra chamou a pasta roubada de "porta arrancada" e deixou claro que isso é problema, não só documento;
+* a pasta de Velis continuou fechada e não examinada durante a pausa;
+* Maerra ofereceu um fio lateral futuro chamado **os Meninos do Primeiro Sino**;
+* crianças que dormem em pórticos e correm recados estão sumindo por uma noite, depois duas, e três ainda não voltaram;
+* a última criança que voltou disse que foram levados para a **Casa Velha do Primeiro Raio**, antiga casa de auxílio de Lathander fechada há anos, abaixo do Temple District, perto das ruas que descem para armazéns;
+* Maerra suspeita que os porões da casa estejam sendo usados para passagem de coisas sem passar pela rua;
+* Maerra não sabe se há ligação com Red Sail;
+* Maerra pediu que Ren não faça isso agora, mas considere investigar quando o incêndio atual baixar;
+* possível recompensa/uso futuro: recuperar um relicário antigo onde talvez ainda esteja o **Broche do Semblante Humilde**, item que ajudava peregrinos de Lathander a parecerem menos memoráveis em estrada perigosa;
+* Maerra pode pedir ao templo que empreste o broche a Ren se ele o recuperar e se for usado para proteger vivos;
+* hora aproximada após a pausa: 09:15;
+* ki atual: 2/4.
+* Ren abriu a pasta de Velis diante de Maerra, Nera e Tavin;
+* a pasta contém uma retenção temporária do **volume 13**, ligado à **Casa da Rede Morta**;
+* a descrição do volume 13 menciona caixa comprida, lacre cinza, divergência de marca, portador oriental, **M. H.** e necessidade de conferência antes de liberação;
+* a pasta contém uma anulação retroativa com a expressão **"retenção anulada"**, assinada por **V. Rook**;
+* a lista de correções manda trocar **M. H.** por **M. Harrow, convés**, remover "oriental" da observação, registrar erro de carregador e tratar qualquer citação à Red Sail como perturbação de doca, não alfândega;
+* a lista diz que **D. Mord cobre os custos miúdos**;
+* Nera reconheceu a impressão protegida da falsa lua velada como derivada do trabalho que foi obrigada a fazer, mas prensada com cera de arquivo por alguém que não sabe gravar;
+* a pasta contém bilhete dizendo: "o hóspede não desce ao cais", "lua fica em Narwhal até sinal de B.", e "gravadora e menino são ruído; não deixar ruído chegar a Tyr";
+* Maerra avalia que a pasta ajuda muito, mas não encerra a crise sozinha;
+* por ter sido roubada, a pasta pode virar prova ou acusação contra Ren e Nera, dependendo de quem a legitimar primeiro;
+* Maerra aponta duas portas possíveis: Luath e Tyr;
+* hora aproximada após abrir a pasta: 09:24.
+* Maerra não conseguiu transformar a pasta em prova juridicamente limpa sozinha;
+* Maerra escreveu uma declaração cautelosa atestando apenas que viu os papéis serem abertos diante dela, de Ren, Nera e Tavin, e que ouviu Nera reconhecer a impressão da lua velada como derivada de seu trabalho;
+* Maerra lacrou a pasta com cera da Casa da Aurora Menor, sem atestar cadeia de custódia, autoria final ou inocência;
+* o lacre dificulta adulteração posterior e torna mais arriscado para Narwhal alegar que Ren mudou os papéis depois de sair do templo;
+* Ren levou Nera e Tavin de volta ao circo usando os disfarces de Dessa;
+* a patrulha acionada por Luath ajudou a dispersar a Red Sail dos acessos do circo;
+* Jack conduziu a busca controlada sem entregar Nera, Tavin ou o livro;
+* Nera e Tavin voltaram à carroça verde sob proteção de Silva;
+* Ren não confirmou cauda no retorno ao circo, mas também não percebe perseguição ativa;
+* hora aproximada após retorno ao circo: 10:18.
+* Ren pediu que Silva cuidasse novamente de Nera e Tavin enquanto ele leva a pasta lacrada a Tyr;
+* Silva aceitou, mas deixou claro que as dívidas de Ren com ela agora também são razão para ele voltar vivo;
+* Ren despediu-se de Nera e Tavin, pedindo que fiquem quietos e sem correr riscos;
+* Tavin respondeu "beleza" como promessa;
+* Nera se despediu de Ren com afeto e medo evidentes;
+* Ren foi ao guarda-roupa menor falar com Dessa Wren;
+* Dessa ainda tem as roupas próprias de Ren, guardadas como figurino estrangeiro;
+* Dessa ofereceu duas opções para a ida a Tyr: roupas próprias orientais, mais memoráveis e honestas quanto à identidade, ou roupa limpa de cidadão menor, menos marcante e mais adequada para levar documento sério;
+* hora aproximada no guarda-roupa menor: 10:24.
+* Ren escolheu a roupa limpa de cidadão menor;
+* Ren pagou 1 PO a Dessa pela roupa e pela limpeza de suas roupas próprias;
+* dinheiro atual de Ren: 31 PO;
+* Ren descreveu a Dessa uma futura roupa de apresentação com obi espetacular inspirado em Kara-Tur;
+* ao sair pela lateral do circo, Ren foi notado por algumas pessoas por causa de um incidente pequeno com lona/caixa;
+* Ren percebeu um possível remanescente do porto olhando a saída, quebrou linha de visão e tomou rota eficiente para o Temple District;
+* Ren chegou sem cauda colada à Casa de Tyr;
+* a Casa de Tyr é formal, de pedra clara, com guardiões na entrada, acólito de registro e menção visível a Sirrus Melandor como Chief Prelate;
+* o guardião mais velho perguntou se o assunto de Ren é confissão, queixa ou testemunho;
+* hora aproximada ao chegar à Casa de Tyr: 10:57.
+* Ren pediu testemunho para Sirrus Melandor e disse que foi instruído a mostrar apenas a ele;
+* o guardião não concedeu acesso direto a Sirrus só por esse pedido;
+* o guardião reconheceu a seriedade de testemunho lacrado e ofereceu uma triagem preliminar sem abrir a pasta;
+* Ren precisa explicar quem o instruiu, quem corre risco vivo agora e por que o caso não pode esperar a ordem normal das queixas;
+* a guardiã jovem avisou que, se a primeira palavra for vingança, Ren escolheu a casa errada;
+* hora aproximada no primeiro filtro de Tyr: 10:58.
+
+Progressão:
+
+* Ren alcançou o nível 4 por marco narrativo após a primeira noite consolidada em Ravens Bluff;
+* o avanço veio de sobreviver à sequência inicial, proteger os Vell, conquistar base provisória com Jack Mooney, resolver a sabotagem do circo e descobrir que a caixa da Lua foi armadilha ligada a Masao ou agente próximo;
+* Ren agora tem 31 PV máximos, CA 17, 4 pontos de ki, Queda Lenta e Destreza 18 / Sabedoria 17.

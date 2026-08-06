@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa esquematico da oficina de velas abandonada</title>
+  <desc id="desc">Mapa superior esquematico do que Ren consegue observar as 18:16 em Fishtown: oficina de velas abandonada, ponto de observacao no sotao da loja de sebo e pavio, vielas visiveis, passagem dos fundos, canal baixo e pontos cegos.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2a333b" stroke-width="1" opacity="0.45"/>
+    </pattern>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#75c7ff"/>
+    </marker>
+    <marker id="arrow-gold" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f1d56b"/>
+    </marker>
+    <style>
+      .bg { fill: #10161c; }
+      .grid { fill: url(#grid); }
+      .street { fill: #302b27; stroke: #5a4c3f; stroke-width: 3; }
+      .alley { fill: #252321; stroke: #4f463d; stroke-width: 3; }
+      .building { fill: #3a342d; stroke: #826d58; stroke-width: 4; }
+      .known-inside { fill: #2c2a27; stroke: #7d6a58; stroke-width: 3; stroke-dasharray: 10 7; }
+      .unknown { fill: #25282b; stroke: #626b72; stroke-width: 3; stroke-dasharray: 9 7; }
+      .water { fill: #15313d; stroke: #4f8ca0; stroke-width: 4; }
+      .cover { fill: #574c40; stroke: #a98d66; stroke-width: 3; }
+      .ren { fill: #ffd866; stroke: #fff4b0; stroke-width: 4; }
+      .site { fill: #d8cdb6; stroke: #fff0c2; stroke-width: 3; }
+      .danger { fill: #68323b; stroke: #d46b76; stroke-width: 3; opacity: 0.9; }
+      .sight { fill: #dbc76d; opacity: 0.14; stroke: #f1d56b; stroke-width: 2; stroke-dasharray: 10 8; }
+      .los { stroke: #f1d56b; stroke-width: 3; stroke-dasharray: 10 8; fill: none; opacity: 0.9; marker-end: url(#arrow-gold); }
+      .route { stroke: #75c7ff; stroke-width: 4; fill: none; stroke-dasharray: 12 9; marker-end: url(#arrow-blue); }
+      .blind { fill: #000000; opacity: 0.24; stroke: #8f98a0; stroke-width: 2; stroke-dasharray: 7 6; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 24px; fill: #f2eadc; font-weight: 700; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #d8cdbb; font-weight: 600; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 15px; fill: #c7beb1; font-weight: 600; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 17px; fill: #aeb8bd; }
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 34px; fill: #fff4d8; font-weight: 800; }
+      .badge { fill: #1a2027; stroke: #5f6872; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="1000"/>
+  <rect class="grid" x="40" y="70" width="1320" height="800" opacity="0.9"/>
+
+  <text class="title" x="60" y="52">Oficina de velas abandonada - mapa de observacao</text>
+  <text class="note" x="60" y="82">18:16, fim de tarde. Norte operacional no topo. 1 quadrado ~= 5 pes. Apenas o que Ren consegue observar/inferir.</text>
+
+  <!-- Streets and alleys -->
+  <rect class="street" x="80" y="110" width="1180" height="92" rx="8"/>
+  <text class="small" x="100" y="166">Viela vinda da Rua da Corda / Fishtown</text>
+
+  <rect class="street" x="1140" y="190" width="120" height="610" rx="8"/>
+  <text class="tiny" x="1162" y="520" transform="rotate(90 1162 520)">rua dos toneis</text>
+
+  <path class="water" d="M70,810 C210,785 330,820 470,798 C635,771 785,820 960,800 C1100,784 1200,812 1325,792 L1325,920 C1185,942 1050,914 910,932 C735,954 615,918 465,938 C305,960 200,930 70,950 Z"/>
+  <text class="small" x="110" y="885">canal baixo / agua escura</text>
+
+  <rect class="alley" x="165" y="230" width="930" height="120" rx="6"/>
+  <text class="small" x="185" y="302">viela estreita entre a loja de sebo e a oficina</text>
+
+  <rect class="alley" x="850" y="350" width="130" height="365" rx="6"/>
+  <text class="tiny" x="880" y="550" transform="rotate(90 880 550)">passagem estreita dos fundos</text>
+
+  <rect class="alley" x="330" y="650" width="540" height="88" rx="6"/>
+  <text class="small" x="350" y="706">rota baixa para Fishtown / redes penduradas</text>
+
+  <!-- Observation point building -->
+  <rect class="building" x="170" y="385" width="470" height="230" rx="5"/>
+  <rect class="known-inside" x="200" y="420" width="410" height="160" rx="5"/>
+  <text class="label" x="195" y="410">Loja de sebo e pavio</text>
+  <text class="small" x="220" y="455">abandonada / sotao quebrado</text>
+  <circle class="ren" cx="540" cy="430" r="22"/>
+  <text class="small" x="570" y="438">Ren oculto</text>
+  <rect class="cover" x="510" y="357" width="100" height="26" rx="4"/>
+  <text class="tiny" x="395" y="352">fresta horizontal entre tabuas</text>
+
+  <!-- Candle workshop -->
+  <rect class="building" x="700" y="385" width="355" height="240" rx="5"/>
+  <rect class="known-inside" x="730" y="420" width="295" height="170" rx="4"/>
+  <text class="label" x="720" y="410">Oficina de velas</text>
+  <text class="small" x="745" y="455">interior nao visivel agora</text>
+  <rect class="site" x="690" y="505" width="34" height="78" rx="3"/>
+  <text class="tiny" x="650" y="612">abertura lateral</text>
+  <rect class="unknown" x="978" y="445" width="70" height="82" rx="3"/>
+  <text class="tiny" x="968" y="544">janelas fechadas</text>
+  <rect class="cover" x="885" y="618" width="95" height="48" rx="4"/>
+  <text class="tiny" x="820" y="684">ripas soltas / saida dos fundos</text>
+
+  <!-- Other buildings / blind roofs -->
+  <rect class="unknown" x="80" y="230" width="65" height="475" rx="5"/>
+  <text class="tiny" x="60" y="468" transform="rotate(-90 60 468)">fachadas apertadas</text>
+
+  <rect class="unknown" x="1088" y="350" width="55" height="330" rx="5"/>
+  <text class="tiny" x="1062" y="524" transform="rotate(-90 1062 524)">beiral alto</text>
+
+  <polygon class="blind" points="660,350 700,350 700,625 660,625"/>
+  <text class="tiny" x="617" y="494" transform="rotate(-90 617 494)">ponto cego por parede</text>
+
+  <polygon class="blind" points="980,350 1140,350 1140,445 1035,445 1035,385"/>
+  <text class="tiny" x="1000" y="332">telhados: detectar tarde</text>
+
+  <!-- Props -->
+  <rect class="cover" x="260" y="250" width="92" height="42" rx="4"/>
+  <rect class="cover" x="380" y="250" width="70" height="35" rx="4"/>
+  <text class="tiny" x="248" y="235">barris / caixas</text>
+
+  <rect class="cover" x="740" y="248" width="120" height="36" rx="4"/>
+  <rect class="cover" x="900" y="260" width="80" height="32" rx="4"/>
+  <text class="tiny" x="742" y="236">rede velha / sombra</text>
+
+  <!-- Field of view -->
+  <path class="sight" d="M540,430 L690,505 L885,618 L965,350 L540,430 Z"/>
+  <path class="los" d="M540,430 C610,466 660,500 707,544"/>
+  <path class="los" d="M540,430 C650,405 745,392 878,392"/>
+  <path class="los" d="M540,430 C705,520 810,610 932,642"/>
+  <text class="tiny" x="555" y="482">campo de visao parcial</text>
+
+  <!-- Approach routes -->
+  <path class="route" d="M1180,235 C1110,252 1032,267 965,287"/>
+  <text class="tiny" x="1015" y="260">vem da rua dos toneis: Ren ve antes</text>
+
+  <path class="route" d="M485,840 C540,770 625,720 850,696"/>
+  <text class="tiny" x="490" y="795">canal baixo: Ren ouve antes</text>
+
+  <path class="route" d="M235,170 C360,215 510,247 680,286"/>
+  <text class="tiny" x="315" y="216">viela da Rua da Corda</text>
+
+  <path class="route" d="M922,685 C980,755 1058,790 1182,800"/>
+  <text class="tiny" x="968" y="758">fuga para rotas baixas</text>
+
+  <!-- Legend -->
+  <rect class="badge" x="60" y="885" width="710" height="88" rx="8"/>
+  <text class="note" x="82" y="918">Nota: mapa esquematico para jogo. Nao revela inimigos ocultos, interior nao visto ou rotas secretas.</text>
+  <text class="note" x="82" y="946">O disfarce atual de Ren e fraco de perto, mas ajuda a quebrar a silhueta a distancia.</text>
+
+  <rect class="badge" x="945" y="55" width="390" height="190" rx="8"/>
+  <text class="label" x="970" y="90">Legenda</text>
+  <circle class="ren" cx="980" cy="122" r="12"/>
+  <text class="small" x="1005" y="129">Ren</text>
+  <rect class="site" x="968" y="148" width="25" height="18" rx="2"/>
+  <text class="small" x="1005" y="165">acesso visivel</text>
+  <line x1="968" y1="190" x2="1000" y2="190" class="los"/>
+  <text class="small" x="1010" y="197">linha de visao</text>
+  <line x1="968" y1="220" x2="1000" y2="220" class="route"/>
+  <text class="small" x="1010" y="227">rota visivel/provavel</text>
+</svg>

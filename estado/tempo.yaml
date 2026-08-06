@@ -3,11 +3,203 @@ nome_do_ano: "Ano da Magia Selvagem"
 data_atual:
   status: "pendente"
   valor: null
-periodo_do_dia: "madrugada"
-hora_aproximada: "05:28"
+periodo_do_dia: "manhã"
+hora_aproximada: "10:58"
 local_referencia: "Ravens Bluff"
-observacao: "A data exata segue pendente; durante a Sessão 001, cerca de uma hora a uma hora e meia se passou entre a abordagem de Mara, o reconhecimento da Red Sail Tavern e o retorno de Ren ao balcão da The Silver Lily. Ren meditou por 30 minutos, voltou aos arredores da Red Sail Tavern, observou o local do alto do galpão de cordame, seguiu Pell até uma passagem escura perto de Fishtown, retornou à Red Sail, roubou a prancheta de Velis durante um incêndio criado como distração, despistou um perseguidor, abandonou a Silver Lily, examinou a prancheta num abrigo abandonado, descansou por uma hora e chegou à Casa da Rede Morta. Às 01:18 viu o esquife chegar; por volta de 01:19 iniciou confronto ao conjurar Escuridão sobre o barco; por volta de 01:21 escapou do cais por um canal lateral com a caixa e a pessoa amarrada, em esquife danificado; por volta de 01:25 encostou o barco e se escondeu provisoriamente com a caixa e a jovem resgatada; por volta de 01:27 abriu a caixa e descobriu materiais de falsificação ligados à falsa marca da lua velada; por volta de 01:37 abandonou a caixa, levou Nera, o carimbo e o bilhete para a oficina de velas abandonada; por volta de 01:45 improvisou abrigo básico dentro da oficina; por volta de 01:55 começou conversa baixa com Nera e descanso leve; por volta de 02:05 Nera revelou Dain 'Brass' Mord, a ligação provável com Narwhal Manor e a existência de seu livro de provas; por volta de 02:15 Ren revelou sua história e Nera revelou o risco ao irmão Tavin; às 02:55 Ren completou o descanso curto e recuperou ki; por volta de 03:02 chegou com Nera à beira da Rua da Corda usando Passos sem Pegadas; por volta de 03:04 neutralizou silenciosamente um vigia ligado a Brass perto da casa de redes azuis; por volta de 03:07 entrou na casa e confirmou Tavin vivo; por volta de 03:13 saiu com Nera e Tavin e recuperou o livro de provas na banca de Nera antes da chegada de buscadores da Red Sail; por volta de 03:27 chegou à borda do Temple District e ouviu de Nera a recomendação da Casa da Aurora Menor e da Irmã Maerra Thandrel; por volta de 03:29 chegou diante da Casa da Aurora Menor; por volta de 03:31 entrou e encontrou Maerra; por volta de 03:32 tentou deixar Nera e Tavin no abrigo, mas Maerra exigiu informação mínima antes de deixá-lo sair; por volta de 03:33 Ren pediu conversa reservada, e Maerra o levou à saleta de ervas atrás do altar; por volta de 03:35 contou a Maerra sobre a Red Sail, Masao, Aiko e sua vingança, quase colapsando de cansaço; por volta de 03:35 a 04:05 Ren apagou por meia hora, sem recuperar ki; por volta de 04:08 Maerra sugeriu Silva Elkwood/circo dos Mooney como abrigo discreto para Nera e Tavin, além de Tyr e Ways Unknown como alternativas; entre 04:08 e 05:08 Ren completou descanso curto enquanto Maerra copiava trechos essenciais e preparava bilhete para Silva; ao fim, um homem chegou à porta perguntando por uma gravadora de lacres ferida; por volta de 05:12 Ren, Nera e Tavin saíram pela porta lateral sem serem percebidos e seguiram rumo ao circo dos Mooney; por volta de 05:28 chegaram à borda do acampamento do Jack Mooney & Sons Circus."
+observacao: "A data exata segue pendente; durante a Sessão 001, cerca de uma hora a uma hora e meia se passou entre a abordagem de Mara, o reconhecimento da Red Sail Tavern e o retorno de Ren ao balcão da The Silver Lily. Ren meditou por 30 minutos, voltou aos arredores da Red Sail Tavern, observou o local do alto do galpão de cordame, seguiu Pell até uma passagem escura perto de Fishtown, retornou à Red Sail, roubou a prancheta de Velis durante um incêndio criado como distração, despistou um perseguidor, abandonou a Silver Lily, examinou a prancheta num abrigo abandonado, descansou por uma hora e chegou à Casa da Rede Morta. Às 01:18 viu o esquife chegar; por volta de 01:19 iniciou confronto ao conjurar Escuridão sobre o barco; por volta de 01:21 escapou do cais por um canal lateral com a caixa e a pessoa amarrada, em esquife danificado; por volta de 01:25 encostou o barco e se escondeu provisoriamente com a caixa e a jovem resgatada; por volta de 01:27 abriu a caixa e descobriu materiais de falsificação ligados à falsa marca da lua velada; por volta de 01:37 abandonou a caixa, levou Nera, o carimbo e o bilhete para a oficina de velas abandonada; por volta de 01:45 improvisou abrigo básico dentro da oficina; por volta de 01:55 começou conversa baixa com Nera e descanso leve; por volta de 02:05 Nera revelou Dain 'Brass' Mord, a ligação provável com Narwhal Manor e a existência de seu livro de provas; por volta de 02:15 Ren revelou sua história e Nera revelou o risco ao irmão Tavin; às 02:55 Ren completou o descanso curto e recuperou ki; por volta de 03:02 chegou com Nera à beira da Rua da Corda usando Passos sem Pegadas; por volta de 03:04 neutralizou silenciosamente um vigia ligado a Brass perto da casa de redes azuis; por volta de 03:07 entrou na casa e confirmou Tavin vivo; por volta de 03:13 saiu com Nera e Tavin e recuperou o livro de provas na banca de Nera antes da chegada de buscadores da Red Sail; por volta de 03:27 chegou à borda do Temple District e ouviu de Nera a recomendação da Casa da Aurora Menor e da Irmã Maerra Thandrel; por volta de 03:29 chegou diante da Casa da Aurora Menor; por volta de 03:31 entrou e encontrou Maerra; por volta de 03:32 tentou deixar Nera e Tavin no abrigo, mas Maerra exigiu informação mínima antes de deixá-lo sair; por volta de 03:33 Ren pediu conversa reservada, e Maerra o levou à saleta de ervas atrás do altar; por volta de 03:35 contou a Maerra sobre a Red Sail, Masao, Aiko e sua vingança, quase colapsando de cansaço; por volta de 03:35 a 04:05 Ren apagou por meia hora, sem recuperar ki; por volta de 04:08 Maerra sugeriu Silva Elkwood/circo dos Mooney como abrigo discreto para Nera e Tavin, além de Tyr e Ways Unknown como alternativas; entre 04:08 e 05:08 Ren completou descanso curto enquanto Maerra copiava trechos essenciais e preparava bilhete para Silva; ao fim, um homem chegou à porta perguntando por uma gravadora de lacres ferida; por volta de 05:12 Ren, Nera e Tavin saíram pela porta lateral sem serem percebidos e seguiram rumo ao circo dos Mooney; por volta de 05:28 chegaram à borda do acampamento do Jack Mooney & Sons Circus; por volta de 05:32 entraram pela lateral da cozinha e receberam indicação da carroça verde de Silva Elkwood; por volta de 05:34 entraram na carroça verde com senha e selo, sem alarme; por volta de 05:36 Silva aceitou esconder Nera, Tavin e o livro, oferecendo abrigo provisório de poucas horas também para Ren; por volta de 05:40 Silva escondeu o livro numa caixa de semente e levou Ren ao compartimento de pano atrás da carroça de remendos; Ren dormiu até cerca de 08:05, acordando com o sinal combinado de Silva; por volta de 08:06, Ren usou Ilusão menor e Passos sem Pegadas para sair da carroça de remendos sem ser visto."
 marcos_de_tempo:
+  captura_red_sail:
+    horario_aproximado: "09:04"
+    observacao: "Ren capturou um agente operacional da Red Sail num beco após montar isca com falso oriental caído; Passos sem Pegadas expira por volta de 09:06."
+  interrogatorio_red_sail:
+    horario_aproximado: "09:09"
+    observacao: "Ren interrogou o capturado e obteve procedimento para chamar Brass, confirmação da isca da falsa lua velada e informação limitada sobre o estrangeiro com cicatriz."
+  agente_duplo_red_sail:
+    horario_aproximado: "09:13"
+    observacao: "Ren coagiu o capturado a enviar às 19:00 uma mensagem falsa para Brass sobre Ren e a seladora estarem feridos na oficina de velas abandonada; obteve o nome Rusk 'Cinza' como coletor da ficha."
+  feira_apos_beco:
+    horario_aproximado: "09:43"
+    observacao: "Ren saiu do beco sem ser identificado, recuperou suas roupas escuras, comeu fruta e pão simples, bebeu água e decidiu que Jack Mooney é a melhor solução imediata para Nera e Tavin."
+  retorno_ao_circo_para_jack:
+    horario_aproximado: "10:03"
+    observacao: "Ren voltou ao Jack Mooney & Sons Circus vestido como marinheiro/estivador e provocou Jack com a informação de que alguém entrou e saiu do circo sem que ele percebesse. A mensagem chegou, Jack aceitou conversa privada e Silva reconheceu Ren apesar do disfarce."
+  proposta_condicional_de_jack:
+    horario_aproximado: "10:09"
+    observacao: "Ren contou a Jack sobre Masao, Aiko, a Red Sail, Nera e Tavin, oferecendo serviços em troca de abrigo. Jack suspendeu o prazo imediato do meio-dia para os Vell e ofereceu comida, abrigo e cobertura condicional se Ren aceitar investigar a sabotagem da amarra da corda alta antes do crepúsculo."
+  aceite_e_inicio_da_investigacao_do_circo:
+    horario_aproximado: "10:17"
+    observacao: "Ren aceitou o acordo condicional de Jack, recebeu a cobertura de Ren Kage como acrobata oriental contratado e iniciou inspeção da área da corda alta do lado leste. Identificou altura aproximada, acessos plausíveis, serragem varrida, mancha de breu/graxa e fio vermelho preso numa farpa."
+  sorn_chamado_para_perguntas:
+    horario_aproximado: "10:18"
+    observacao: "Ren tentou ler a reação de Sorn Kel à tira de couro. Sorn reagiu visivelmente, mas Ren não conseguiu separar culpa de medo profissional ou outro medo. Silva chamou Sorn de modo seco demais, e Mira Dane mais dois ajudantes notaram a tensão."
+  perguntas_iniciais_a_sorn:
+    horario_aproximado: "10:22"
+    observacao: "Sorn disse que a conferência do lado leste ficou com Harl Venn ontem depois da nona badalada; Sorn encontrou a amarra cortada antes das sete e avisou Jack. Também apontou Lysa Renn como acrobata ligada a Mira e a fitas vermelhas, e explicou o uso de breu pelo cordame."
+  omissao_de_sorn_sobre_harl_e_lysa:
+    horario_aproximado: "10:24"
+    observacao: "Após pressão de Ren, Sorn revelou que viu Harl Venn na carroça de cordame com Lysa Renn depois da nona badalada. Lysa pediu breu para treinar pegada, Harl estava com a cópia da chave, e Sorn não conferiu pessoalmente a devolução."
+  abordagem_inicial_a_harl:
+    horario_aproximado: "10:27"
+    observacao: "Ren abordou Harl Venn atrás da carroça de cordame e perguntou tecnicamente se a corda estava ok quando ele conferiu. Harl respondeu com firmeza que sim. Ren percebeu que a resposta técnica parece sólida, mas Harl está escolhendo não falar além do perguntado."
+  pressao_sobre_harl_e_lysa:
+    horario_aproximado: "10:29"
+    observacao: "Ren perguntou se Lysa pegou algo além de breu. Harl afirmou que não, mas admitiu que virou para pegar pano por um instante e não viu as mãos dela o tempo todo. Também viu Lysa fechar o punho esquerdo depois."
+  abordagem_a_lysa:
+    horario_aproximado: "10:33"
+    observacao: "Ren observou que Harl acompanhou de longe sua ida até Lysa, sem segui-lo. Ren conseguiu isolar Lysa atrás de uma cortina de lona. Lysa usa apenas uma fita vermelha no pulso direito e tocou rapidamente o pulso esquerdo vazio quando percebeu que a conversa era sobre a noite anterior."
+  blefe_de_ren_com_lysa:
+    horario_aproximado: "10:35"
+    observacao: "Ren blefou dizendo que Harl contou tudo. Lysa não comprou totalmente, mas reagiu forte ao comentário. Ren percebeu que ela esconde algo ligado à noite anterior, ao pulso esquerdo e possivelmente à fita perdida, mas a negação dela sobre cortar a amarra para derrubar Mira parece mais sincera."
+  lysa_confessa_subida_a_plataforma:
+    horario_aproximado: "10:37"
+    observacao: "Confrontada sobre o fio vermelho, Lysa confessou que subiu à plataforma leste depois da nona badalada para testar o joelho usando breu. A fita vermelha do pulso esquerdo rasgou numa farpa, e ela ainda guarda o restante manchado de breu."
+  lysa_explica_medo_de_mira_e_jack:
+    horario_aproximado: "10:39"
+    observacao: "Lysa disse que Mira, se descobrisse o treino escondido, faria a coisa certa: tiraria Lysa da plataforma, contaria a Jack e impediria que ela subisse machucada. Ren acreditou que Lysa escondia a própria presença por medo de perder o alto, não por querer derrubar Mira."
+  passagem_estreita_e_merrit:
+    horario_aproximado: "10:45"
+    observacao: "Ren liberou Lysa e investigou a passagem estreita entre contrapesos e mastro lateral. Silva apontou Merrit Tealeaf, halfling contorcionista e antiga parceira de número baixo de Lysa, como alguém capaz de passar ali. Ren encontrou caixa movida, meia pegada pequena, pó claro de mão seca e conta verde com fio amarelo associada por Silva a Merrit."
+  abrigo_dos_vell_no_circo:
+    horario_limite: "meio-dia suspenso por ora; nova avaliacao apos resposta de Ren e progresso na tarefa de Jack"
+    observacao: "Após ouvir Ren, Jack aceitou não expulsar Nera e Tavin ao meio-dia. A proteção segue condicional à conduta de Ren e à utilidade prática dele para o circo."
+  julgamento_merrit:
+    horario_aproximado: "11:20"
+    observacao: "Ren assistiu ao julgamento interno de Merrit Tealeaf. Jack conduziu a cena sem pânico, Merrit assumiu a culpa, Mira conteve a raiva, Lysa saiu abalada e Merrit foi suspensa de apresentações sob controle de Silva/Sorn. Jack manteve aberto o fio de influência externa."
+  repouso_ren_no_circo:
+    horario_aproximado: "11:55-15:35"
+    observacao: "Ren comeu, meditou e dormiu no depósito de figurino velho, atrás da arca dos estandartes. O repouso contou como descanso curto seguro e recuperou o ki para 3/3, mas não foi descanso longo. Durante a tarde, dois homens do porto farejaram o perímetro do circo perguntando por uma moça ferida e um rapaz novo; Jack desviou a conversa antes de confirmação."
+  abordagem_tarde_a_harl:
+    horario_aproximado: "16:07-16:10"
+    observacao: "Ren tentou abordar Harl com camaradagem e papo sobre comida para tirá-lo da defensiva. Harl informou que a melhor comida fica na cozinha sob a lona amarela, antes dos músicos, mas não aceitou acompanhar Ren de graça e perguntou se Jack mandou Ren falar com ele. Ren ofereceu 1 PO por uma hora do tempo de Harl. Harl aceitou, corrigiu o nome para 'Harl, com r', levou Ren até a cozinha e se afastou para uma lateral menos barulhenta."
+  confissao_de_harl:
+    horario_aproximado: "16:23"
+    observacao: "Ren apelou à fome, pobreza, admiração e amor para convencer Harl a assumir sua parte. Harl admitiu a Ren e depois a Jack que plantou em Merrit a ideia de que Sorn ouviria uma amarra cantando errado, embora não tenha dado ordem direta para cortar. Jack puniu Harl discretamente, mantendo-o por um mês longe da corda alta, sem chave e sem conferência de segurança, e confirmou abrigo para Ren, Nera e Tavin por hoje e amanhã."
+  visita_tarde_aos_vell:
+    horario_aproximado: "16:31-16:34"
+    observacao: "Ren visitou Nera e Tavin na carroça verde de Silva. Os irmãos estão alimentados, escondidos e fisicamente bem. Ren explicou que seguirá uma trilha à noite ligada aos homens que tentaram levar Nera. Nera perguntou se a trilha envolve a caixa ou o homem dos botões; Tavin perguntou se Ren vai voltar. Ren prometeu voltar e disse que investigará a conexão entre Red Sail e Masao. Também propôs Kagefusha, Moinho das Sombras, como nome de palco."
+  saida_do_circo_para_trilha:
+    horario_aproximado: "17:30"
+    observacao: "Ren se despediu dos Vell, prometeu a Silva que não traria perseguição para a carroça verde, explicou que sairia pela rota da carroça de remendos e deixou o circo quando a penumbra começou. Saiu sem atrair atenção externa. Ainda falta cerca de uma hora e meia para a armadilha das 19:00."
+  busca_por_disfarce_no_varal:
+    horario_aproximado: "17:46"
+    observacao: "Ren se deslocou discretamente em direção à oficina de velas abandonada, evitando olhos naturais da Red Sail. Encontrou um varal excelente para obter disfarce: casaco cinza grosseiro, camisa, calças largas e gorro escuro. Ao tentar roubar as peças, a roldana estalou; Ren pegou casaco e gorro, mas camisa e calças ainda estão presas. Uma menina comum viu Ren na mureta e chamou pela mãe em voz baixa."
+  chegada_ao_ponto_de_observacao_da_oficina:
+    horario_aproximado: "18:16"
+    observacao: "Ren tentou encobrir o roubo do varal com som ilusório de gato, mas a mãe viu movimento humano e gritou por ladrão de roupa. Ren escapou; isso gerou rumor local comum, não alarme da Red Sail. Ren encontrou um beco seguro, deixou suas peças mais reconhecíveis dobradas numa fresta seca atrás de tábuas e vestiu casaco cinza e gorro escuro como disfarce apressado. O disfarce é fraco de perto, mas quebra a silhueta à distância. Ren chegou a um sótão quebrado de antiga loja de sebo e pavio, bom ponto de observação da oficina de velas abandonada antes da armadilha das 19:00."
+  isca_da_oficina_respondida:
+    horario_aproximado: "19:11"
+    observacao: "Ren estudou rota de fuga pelas fachadas apertadas, manteve-se oculto e percebeu a aproximação da isca. Dois homens vieram pela rua dos tonéis: um provavelmente é Rusk 'Cinza', com cinza nas mangas e aparência de varredor; o outro é um capanga da Red Sail. Nenhum percebeu Ren. Rusk entrou na oficina de velas pela abertura lateral para examinar marcas antigas de ocupação; o capanga ficou no vão lateral vigiando a viela."
+  escuridao_na_oficina:
+    horario_aproximado: "19:12"
+    observacao: "Ren conjurou Escuridão sobre a entrada lateral da oficina de velas e avançou contra o capanga da Red Sail. A aproximação silenciosa falhou, o primeiro golpe errou, mas o golpe bônus acertou e empurrou o capanga ferido para dentro. O capanga errou o contra-ataque no breu e não gritou alarme amplo. Rusk 'Cinza' continua dentro da oficina, sem posição visual confirmada por Ren."
+  rajada_contra_rusk:
+    horario_aproximado: "19:12"
+    observacao: "Ren gastou seu último ponto de ki em Rajada de Golpes. Neutralizou o capanga da Red Sail, localizou Rusk pelo som e acertou dois golpes nele. Rusk ficou ferido e falhou em escapar pelo interior da oficina. Moradores de Fishtown ouviram barulho, mas ainda não abriram alarme."
+  interrogatorio_de_rusk:
+    horario_aproximado: "19:12"
+    observacao: "Ren rendeu Rusk com a wakizashi no pescoço e perguntou sobre o selo falso da lua, a caixa e o estrangeiro ligado a Brass. Rusk afirmou que a caixa e o selo eram montagem para criar rastro oriental e atrair o homem certo; associou o hóspede de Brass à lua, Velis Rook, Narwhal e possível marca na bochecha direita; Ren percebeu que Rusk ainda omite o ponto de entrega ou método de contato entre Brass e Narwhal."
+  fuga_da_oficina_de_velas:
+    horario_aproximado: "19:14"
+    observacao: "Ren concluiu que a caixa da Lua foi isca feita para atraí-lo e que Masao ou agente muito próximo sabe que ele chegou a Ravens Bluff. Apagou Rusk, desceu o corpo sem barulho e tentou criar distração arremessando uma peça na loja de sebo. A distração não causou grande desabamento, mas Ren escapou pela rota das fachadas apertadas. Uma testemunha percebeu a direção geral da fuga, sem identificar Ren."
+  passagem_pela_casa_da_aurora_menor:
+    horario_aproximado: "20:08"
+    observacao: "Ren saiu de Fishtown sem virar rastro claro, recuperou roupas escuras e manto no beco seguro com atraso, confirmou que não havia cauda e chegou à Casa da Aurora Menor usando o casaco/gorro roubados do varal. Avisou Maerra que Nera e Tavin estão vivos e protegidos por Silva e Jack no circo. Maerra emprestou roupas comuns de doação, água e pão, mas não vestes ou símbolo sagrado."
+  roubo_no_market_district:
+    horario_aproximado: "20:32"
+    observacao: "Ren foi ao mercado noturno do Market District para se financiar. Escolheu um mercador rico, usou Ilusão menor como distração parcial e roubou a bolsa durante uma falsa ajuda/oracao. Obteve 27 PO e escapou pelos becos sem perseguição imediata. Possível rumor posterior: peregrino pobre ou forasteiro perto do mercador antes do roubo."
+  retorno_ao_circo_apos_mercado:
+    horario_aproximado: "21:02"
+    observacao: "Ren voltou ao circo pela rota da carroça de remendos. Não conseguiu confirmar com segurança absoluta que ninguém no caminho do mercado notou sua direção geral, mas entrou no acampamento sem ser percebido pela rotina interna. Trocou o disfarce de doação pelas roupas escuras de viagem e encontrou Silva perto das cozinhas laterais. Silva ofereceu banho simples atrás da lona azul; Nera está acordada e Tavin dorme."
+  banho_e_nera_na_lona_azul:
+    horario_aproximado: "21:10"
+    observacao: "Ren começou banho simples atrás da lona azul, com a wakizashi ao alcance. Nera não conseguiu esperar, veio atrás dele por preocupação e levantou a lona por um instante, vendo mais do que pretendia antes de virar o rosto. Silva está por perto e preserva a situação com firmeza prática. O banho ainda não conta como descanso curto e Ren continua com 0/3 ki."
+  conversa_na_lona_azul:
+    horario_aproximado: "21:12"
+    observacao: "Ren tranquilizou Nera, disse que não está ferido fisicamente e prometeu ir à carroça verde depois do banho. Nera aceitou esperar, ainda envergonhada e aliviada. Silva preservou a privacidade com humor seco. A tensão romântica entre Ren e Nera ficou mais explícita, mas segue contida por medo, vergonha e circunstância."
+  carroca_verde_apos_banho:
+    horario_aproximado: "21:24"
+    observacao: "Ren terminou o banho, vestiu suas roupas escuras e foi à carroça verde. Tavin dorme. Ren e Nera tocaram as mãos e mantiveram a intimidade. Silva informou que Dessa Wren pode providenciar roupas comuns de disfarce: duas mudas improvisadas por 3 PO, ou três mudas incluindo corte de pequeno mercador por 5 PO. Silva autorizou passeio curto pela rota interna das lonas, longe das bordas do acampamento."
+  carroca_dos_estandartes:
+    horario_aproximado: "21:28"
+    observacao: "Ren procurou uma estrutura alta não feita de lona para conversar com Nera. Encontrou o teto de uma carroça larga de madeira perto dos estandartes velhos. Como estava sem ki, não pôde usar Passo do Vento; tentou subir com Nera de forma mundana. A subida fez barulho e alguns circenses perceberam o casal, mas Silva não interrompeu. Ren e Nera têm privacidade relativa sob as estrelas."
+  conversa_sobre_aiko_e_vinganca:
+    horario_aproximado: "21:31"
+    observacao: "No topo da carroça dos estandartes, Ren contou a Nera que se sente quebrado desde a morte de Aiko, que veio a Ravens Bluff para matar Masao e que talvez possa morrer qualquer noite. Nera admitiu que se preocupa de verdade com Ren, mas colocou uma condição emocional: ela e Tavin precisam continuar sendo pessoas para ele, não ferramentas, peso ou parte da vingança."
+  primeiro_beijo_de_ren_e_nera:
+    horario_aproximado: "21:34"
+    observacao: "Ren respondeu a Nera que ela e Tavin já são pessoas para ele. Admitiu que quer fazer de tudo para vencer Masao, trazer os culpados à justiça e sair vivo com Nera e Tavin. Ren tocou o rosto de Nera e os dois se beijaram no topo da carroça dos estandartes. O vínculo romântico agora é explícito entre eles, mas sem promessa de futuro."
+  retorno_de_nera_a_carroca_verde:
+    horario_aproximado: "21:42"
+    observacao: "Ren e Nera desceram da carroça dos estandartes e caminharam de mãos dadas pela rota interna autorizada por Silva. Ren deixou Nera novamente na carroça verde; Tavin continuava dormindo. Silva preservou a privacidade, mas manteve a vigilância prática."
+  descanso_longo_de_ren:
+    horario_aproximado: "21:50-05:50"
+    observacao: "Ren dormiu no canto discreto do depósito de figurino velho preparado por Jack Mooney. O descanso contou como descanso longo completo: PV, dados de vida e ki recuperados. O marco de nível 4 foi aplicado ao despertar."
+  sondagem_no_perimetro_do_circo:
+    horario_aproximado: "05:55-06:05"
+    observacao: "Antes de o circo despertar por completo, gente ligada ao porto ou à Red Sail alcançou o perímetro do acampamento com perguntas sobre uma mulher ferida e um rapaz. Jack e Silva impediram acesso direto ao esconderijo, mas a pressão ficou próxima demais para ignorar."
+  plano_de_busca_controlada:
+    horario_aproximado: "06:06"
+    observacao: "Ren propôs evacuar Nera e Tavin discretamente antes de Jack permitir uma busca controlada no circo, com o objetivo de apaziguar a sondagem sem entregar os Vell. Silva julgou a ideia possível, desde que Jack controle quais lonas, carroças e baús serão abertos."
+  disfarces_de_dessa_wren:
+    horario_aproximado: "06:08"
+    observacao: "Ren foi ao guarda-roupa menor e pagou 1 PO a Dessa Wren por roupas rápidas e silêncio. Dessa montou disfarces comuns para Ren, Nera e Tavin: ajudante de carga, viúva pobre/lavadeira e rapaz de recados/cozinha."
+  fuga_oposta_do_circo:
+    horario_aproximado: "06:13"
+    observacao: "Ren pagou mais 2 PO a Dessa Wren: 1 PO para transformar roupas roubadas e roupas de doação em retalho, e 1 PO para guardar suas roupas próprias como figurino estrangeiro. Silva não conseguiu garantir saída limpa, mas Jack puxou a atenção para a entrada das cozinhas. Ren, Nera e Tavin saíram pela rota das bacias de lavagem e barris de água cinza. Ren gastou 1 ki em Passo do Vento para corrigir uma hesitação de Tavin no cruzamento crítico. Os homens do porto/Red Sail não identificaram a fuga."
+  travessia_para_aurora_menor:
+    horario_aproximado: "06:13-06:47"
+    observacao: "Ren conduziu Nera e Tavin por áreas pobres e ruas de serviço, misturando o grupo ao fluxo da manhã. Confirmou com segurança que não havia cauda, comprou comida simples com moedas de cobre e seguiu para a Casa da Aurora Menor. O gasto de cobre não alterou o total de PO registrado."
+  consulta_a_maerra_sobre_luath:
+    horario_aproximado: "06:47"
+    observacao: "Na Casa da Aurora Menor, Ren perguntou a Maerra se Luath, sargento da City Guard ligado à Night Watch, é realmente honrado. Maerra respondeu que Luath não é santo, mas é honrado de modo útil: cumpre dever, não vende pobre por conveniência e entende a sujeira da cidade. Ela recomendou que Ren leve verdade verificável e não entregue Nera e Tavin de imediato."
+  ren_vai_ao_posto_da_night_watch:
+    horario_aproximado: "06:49-07:04"
+    observacao: "Ren pediu que Maerra ficasse com Nera e Tavin enquanto ele conversa com Luath. Maerra aceitou e entregou a cópia parcial selada do livro de provas. Ren caminhou como pobre comum até o posto da City Guard/Night Watch, sem chamar atenção. Luath estava disponível ao amanhecer."
+  conversa_privada_com_luath:
+    horario_aproximado: "07:06"
+    observacao: "Ren entregou a Luath a cópia parcial selada por Maerra, incluindo um bilhete pedindo conversa a sós. Luath não confiou de imediato, mas aceitou privacidade por respeito cauteloso a Maerra e levou Ren para um depósito lateral de patrulha."
+  luath_aciona_patrulha_contra_buscas:
+    horario_aproximado: "07:13"
+    observacao: "Ren contou a Luath sobre Masao, Aiko, a falsificação do selo, a ameaça contra Nera e Tavin e as buscas ostensivas da Red Sail. Luath aceitou agir contra as buscas como perturbação da paz, intimidação e usurpação de autoridade. A cópia parcial selada ficou com Luath. Ele pediu três informações práticas antes de mover mais guardas."
+  luath_recebe_informacao_pratica:
+    horario_aproximado: "07:16"
+    observacao: "Ren informou Luath que a pressão atual da Red Sail recai sobre o circo de Jack Mooney, explicou que Dain Mord é Brass e descreveu o protocolo da ficha de cobre com vela vermelha e cordão azul. Luath reconheceu Dain Mord, aceitou não mandar busca aberta ao circo sem ordem ou flagrante e enviou patrulheiros para coibir buscas ilegais nas ruas, vizinhanças e acessos."
+  ponto_morto_de_pell_na_silver_lily:
+    horario_aproximado: "07:31"
+    observacao: "Antes de voltar à Casa da Aurora Menor, Ren foi aos fundos da The Silver Lily e checou o vaso com flor combinado com Pell. Pell deixou bilhete avisando que Velis Rook vai limpar papel na casa grande do peixe, provavelmente Narwhal Manor, antes do sino de nove; Brass está irritado; Rusk não voltou; e o homem da lua não desce ao cais."
+  chegada_a_narwhal_manor:
+    horario_aproximado: "07:54"
+    observacao: "Ren pagou Pell com 1 PO deixado no vaso, destruiu o bilhete e seguiu para Narwhal Manor. No caminho, evitou dois possíveis olhos da Red Sail e perdeu alguns minutos em rotas laterais. Chegou sem cauda clara e viu Velis Rook prestes a entrar pela porta lateral de funcionários com uma pasta rígida de couro encerado."
+  tentativa_de_furto_da_pasta_de_velis:
+    horario_aproximado: "07:55"
+    observacao: "Ren derrubou a lâmpada acima da porta lateral de Narwhal Manor com um shuriken para criar distração. Velis evitou o impacto direto, segurou a pasta e percebeu a tentativa de furto. Ren não conseguiu tomar a pasta, mas viu carimbo de Narwhal Manor, número 13 e a expressão 'retenção anulada'. Velis chamou guarda."
+  roubo_da_pasta_de_velis:
+    horario_aproximado: "07:57"
+    observacao: "Ren fez uma segunda e única tentativa física, arrancou a pasta de Velis Rook e gastou 1 ki em Passo do Vento para fugir pela direção oposta aos guardas. Escapou pelas ruas de serviço sem perseguição imediata colada nele. Narwhal Manor entrou em alarme local por roubo de papéis."
+  retorno_a_aurora_menor_com_pasta:
+    horario_aproximado: "08:42"
+    observacao: "Ren afastou-se lentamente de Narwhal Manor, encontrou uma manta de estopa cinza abandonada e a usou para quebrar a silhueta. Fez rota indireta, confirmou ausência de cauda e chegou à lateral da Casa da Aurora Menor com a pasta de Velis escondida sob as roupas. A pasta ainda não foi examinada."
+  pausa_na_saleta_de_ervas:
+    horario_aproximado: "08:42-09:15"
+    observacao: "Ren entrou pela lateral da Casa da Aurora Menor e foi levado à saleta de ervas com Maerra, Nera e Tavin. Bebeu água, comeu um pouco e respirou, mas a pausa não contou como descanso curto mecânico. A pasta de Velis permaneceu fechada. Maerra ofereceu um fio lateral futuro: os Meninos do Primeiro Sino e a Casa Velha do Primeiro Raio."
+  abertura_da_pasta_de_velis:
+    horario_aproximado: "09:24"
+    observacao: "Ren abriu a pasta de Velis diante de Maerra, Nera e Tavin. Eles encontraram retenção temporária do volume 13 na Casa da Rede Morta, anulação retroativa assinada por V. Rook, lista de correções removendo 'oriental' e trocando M. H. por M. Harrow, menção a D. Mord, impressão protegida da falsa lua velada reconhecida por Nera e bilhete dizendo que o hóspede não desce ao cais, que a lua fica em Narwhal até sinal de B., e que gravadora e menino são ruído que não deve chegar a Tyr. Maerra avaliou que a prova é forte, mas precisa ser legitimada por Luath ou Tyr por ter sido roubada."
+  reconhecimento_cauteloso_de_maerra:
+    horario_aproximado: "09:35"
+    observacao: "Maerra tentou dar peso à pasta sem prometer mais do que podia. Escreveu declaração cautelosa atestando que os papéis foram abertos diante dela, de Ren, Nera e Tavin; registrou que Nera reconheceu a impressão da lua velada como derivada do trabalho encomendado; e lacrou a pasta com cera da Casa da Aurora Menor. Maerra não atestou cadeia de custódia, autoria final nem inocência de qualquer parte."
+  retorno_ao_circo_com_os_vell:
+    horario_aproximado: "10:18"
+    observacao: "Ren deixou a Casa da Aurora Menor com Nera, Tavin e a pasta lacrada. A travessia discreta funcionou, embora Ren não tenha conseguido confirmar com segurança absoluta que ninguém observou a rota. Perto do circo, patrulheiros acionados por Luath já pressionavam a Red Sail a abandonar buscas sem mandado. Jack conduziu uma busca controlada e os homens do porto saíram contrariados. Ren devolveu Nera e Tavin à carroça verde de Silva."
+  ren_se_prepara_para_tyr:
+    horario_aproximado: "10:24"
+    observacao: "Ren informou Silva que pretende ir a Tyr com a pasta lacrada, por causa do bilhete que demonstra medo de que Tyr se envolva. Despediu-se de Nera e Tavin, deixando-os na carroça verde sob proteção de Silva, e foi ao guarda-roupa menor falar com Dessa Wren. Dessa tem as roupas próprias de Ren e propôs duas apresentações: forasteiro oriental memorável ou cidadão menor limpo e discreto."
+  chegada_a_casa_de_tyr:
+    horario_aproximado: "10:57"
+    observacao: "Ren escolheu a roupa de cidadão menor, pagou 1 PO a Dessa pela roupa e pela limpeza de suas roupas próprias, e descreveu um futuro traje de apresentação com obi espetacular. Saiu pela lateral do circo. A saída foi notada por algumas pessoas, possivelmente incluindo um remanescente do porto, mas Ren percebeu o risco, quebrou linha de visão e escolheu rota eficiente até o Temple District. Chegou sem cauda colada à Casa de Tyr, diante de guardiões e acólito de registro."
+  primeiro_filtro_em_tyr:
+    horario_aproximado: "10:58"
+    observacao: "Ren pediu testemunho diretamente para Sirrus Melandor e disse ter sido instruído a mostrar apenas a ele. O guardião recusou acesso direto imediato, mas reconheceu a seriedade do testemunho lacrado e ofereceu triagem preliminar sem abrir a pasta: Ren deve dizer quem o instruiu, quem corre risco vivo agora e por que não pode esperar a ordem normal das queixas."
   segunda_mare:
     horario_aproximado: "02:00"
     janela_segura_para_chegar_antes: "até cerca de 01:30"
