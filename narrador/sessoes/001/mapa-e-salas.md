@@ -852,3 +852,43 @@ Segredo:
 * ainda não definir culpado final sem considerar as ações de Ren;
 * candidatos podem incluir rivalidade interna, pressão externa, tentativa de extorsão, sabotagem comercial ou ligação indireta com a rede que também toca Red Sail/Narwhal;
 * preservar a possibilidade de pista lateral verdadeira, pista falsa ou conexão futura com a trama principal.
+
+---
+
+## Área R: Incêndio dos armazéns de breu e cordame
+
+Descrição pública:
+
+Borda norte do incêndio no Harbor District, perto dos armazéns de breu e cordame. Fumaça escura e oleosa, filas de baldes, civis correndo, guardas divididos entre conter pânico e proteger casas, e homens da Red Sail circulando armados como força de contenção.
+
+Perceptível quando inspecionada:
+
+* três focos separados de incêndio em carroças/rua de serviço;
+* uma carroça quase vazia bloqueia rota estreita por onde guardas e baldes circulariam;
+* uma carroça queimada junto a portão lateral;
+* uma carroça tombada perto de tonéis de água;
+* beiral de armazém de cordame queimando, mas breu ainda sem explosão generalizada;
+* homens da Red Sail com cordas, barris d'água e porretes;
+* guardas formais mais focados em civis e casas do que nos armazéns;
+* pelo menos um armazém preservado sob proteção informal da Red Sail.
+
+Estado atual:
+
+* às 12:08, Ren chegou à borda norte e leu a cena;
+* Ren organizou rumores sobre chegada rápida demais da Red Sail e possível armazém ligado a Narwhal Manor;
+* um olheiro da Red Sail fixou Ren como observador suspeito;
+* Ren ainda não foi abordado.
+
+Pessoas associadas:
+
+* olheiro da Red Sail de colete escuro e faixa vermelha no pulso;
+* mulher larga de lenço cinza organizando fila de baldes;
+* guardas e civis dispersos;
+* possíveis trabalhadores de armazém ligados a Narwhal.
+
+Segredo:
+
+* não revelar ainda se o incêndio foi ordenado por Masao, Brass, Narwhal ou outro agente;
+* a coordenação dos focos sugere planejamento, mas a prova ainda não existe;
+* a Red Sail está usando a crise para parecer necessária;
+* um armazém específico pode ter sido preservado ou deixado sem vigilância por ser a verdadeira peça da manobra.

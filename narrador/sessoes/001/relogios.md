@@ -205,6 +205,8 @@ Progresso atual: 4/4.
 * Ren roubou a prancheta de Velis Rook durante um tumulto com fogo na Red Sail Tavern;
 * agentes da Red Sail não identificaram Ren, mas sabem que um marinheiro suspeito saiu com algo importante.
 * Ren interferiu diretamente na retirada da Casa da Rede Morta, conjurando Escuridão no esquife e tomando o barco com a caixa e a pessoa amarrada.
+* no incêndio dos armazéns de breu, um olheiro da Red Sail fixou Ren como observador suspeito e falou com uma mulher de lenço cinza que organiza a contenção.
+* a tentativa de formar cauda depois disso falhou; a Red Sail não identificou o circo como destino de Ren a partir do incêndio.
 
 Descrição:
 
@@ -277,7 +279,7 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 2/6.
 
-Progresso atual: 2/6.
+Progresso atual: 3/6.
 
 Último avanço:
 
@@ -285,6 +287,8 @@ Progresso atual: 2/6.
 * três focos simultâneos em carroças/rua de serviço sugerem incidente coordenado, mas Ren não tem prova;
 * rumores dizem que a Red Sail já atua no local com cordas, barris d'água e homens armados segurando saqueadores longe dos armazéns;
 * a crise divide atenção de guarda, Tyr e curiosos, criando chance de a Red Sail parecer útil.
+* Ren investigou a borda norte, confirmou sinais de coordenação e foi marcado por um olheiro da Red Sail.
+* a Red Sail falhou em seguir Ren depois do incêndio, mantendo a vantagem pública, mas sem transformar o observador em alvo localizado.
 
 Descrição:
 

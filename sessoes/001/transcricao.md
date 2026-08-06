@@ -6955,3 +6955,105 @@ Tyr se mexe contra Narwhal e Red Sail; antes que o meio-dia chegue, algo grande 
 Atrás dele, dentro da Casa de Tyr, Sirrus já dá ordens mais curtas. A convocação de Velis ainda está viva. A preservação dos registros saiu. Mas a manhã acabou de ficar mais difícil.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:45**. Ren deixou a câmara reservada de Tyr; a wakizashi e os shuriken foram liberados. Suas três perguntas foram entregues a Halessa como anexo reservado. A pasta permanece sob custódia formal de Tyr. Há fumaça grande no Harbor District, perto de armazéns de breu e cordame; rumores dizem que a Red Sail já atua no local como força de contenção. Tyr emitiu a ordem de preservação, mas a crise urbana deve dividir atenção e recursos.
+
+**Jogador**
+
+Ren vai investigar o ocorrido. Tenta manter low profile, ouvir das pessoas, e entender o que está acontecendo em Harbor District.
+
+**Narrador**
+
+Teste de Furtividade (Ren): d20 4 + 6 = 10 contra CD 14. Falha.
+
+Teste de Percepção (Ren): d20 19 + 5 = 24 contra CD 13. Sucesso.
+
+Teste de Investigação (Ren): d20 17 + 3 = 20 contra CD 14. Sucesso.
+
+Teste de Intuição (Ren): d20 2 + 5 = 7 contra CD 13. Falha.
+
+Ren desce do Temple District junto com o fluxo de gente atraída pelo alarme. A roupa de cidadão menor ajuda, mas a cidade está com os nervos abertos demais. Quem anda devagar demais parece curioso. Quem anda rápido demais parece culpado. Ren tenta ser nenhum dos dois, mas por duas vezes precisa parar quando uma carroça de água passa espirrando lama, e isso o deixa exposto tempo suficiente.
+
+Quando chega à borda norte do incêndio, perto da descida para os armazéns de breu e cordame, ele entende a cena melhor do que gostaria.
+
+Não é um único fogo.
+
+Há três marcas separadas: uma carroça queimada junto a um portão lateral, outra tombada perto de tonéis de água, e uma terceira, quase vazia, atravessada na rua estreita por onde guardas e baldes deveriam circular. O fogo maior morde o beiral de um armazém de cordame, mas o breu propriamente dito ainda não explodiu em inferno aberto. Alguém conteve cedo o bastante para salvar o pior. Ou para salvar exatamente o que queria salvar.
+
+Os rumores vêm em pedaços:
+
+* um menino diz que viu "fogo azul pequeno" por baixo de uma carroça antes das chamas comuns;
+* uma lavadeira jura que a Red Sail chegou com barris d'água rápido demais, "como se já soubesse";
+* um estivador diz que não importa, porque se eles não tivessem chegado, metade da rua teria queimado;
+* dois homens discutem que a guarda foi empurrada para proteger gente e casas, enquanto a Red Sail ficou com os armazéns;
+* alguém menciona que um dos armazéns intactos pertence a gente ligada a **Narwhal Manor**, mas outro corta a conversa quando percebe ouvidos demais.
+
+Ren organiza o que é sólido: três focos, bloqueio de rota, chegada rápida da Red Sail, guarda desviada para controle civil, e pelo menos um armazém preservado sob proteção de homens que não são guarda formal.
+
+O que ele não consegue separar é o veneno do remédio. Há medo real ali. Há gratidão real também. E há frases prontas demais, repetidas por bocas diferentes: "sem a Red Sail, o porto queimava"; "a guarda chega tarde"; "homem armado é ruim até ser o único com balde".
+
+Perto de uma pilha de cordas molhadas, um homem de colete escuro e faixa vermelha no pulso ergue o rosto na direção de Ren. Não é Brass. Não é Rusk. Só um olheiro com olhos bons demais para um dia cheio de fumaça.
+
+Ele olha para Ren tempo demais.
+
+Depois vira o rosto e fala algo baixo para uma mulher larga, de cabelo preso sob lenço cinza, que organiza uma fila de baldes como se mandasse ali há anos.
+
+Ren não foi abordado. Ainda. Mas o baixo perfil falhou no ponto mais perigoso: alguém da Red Sail fixou que há um observador estranho, calmo demais, lendo o incêndio em vez de só temê-lo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **12:08**. Ren está na borda norte do incêndio no Harbor District. Ele entendeu a estrutura do incidente: três focos, rota bloqueada, Red Sail chegando rápido e um armazém ligado a Narwhal possivelmente preservado. Mas um olheiro da Red Sail marcou Ren como observador suspeito. Ren ainda pode se afastar, seguir o olheiro, tentar se misturar ajudando no incêndio, abordar civis específicos, ou procurar outro ponto de observação.
+
+**Jogador**
+
+Ren percebe que foi localizado. Mas com Velis tendo visto seu rosto e com Masao sabendo de sua perseguição, Ren já entendeu que é conhecido. A verdade é que a Red Sail soube de Ren poucas horas depois que ele chegou, e já tinha copiado o selo de seu clã. A essa altura, a guerra só não é aberta porque ninguém, exceto Ren, tem provas contundentes sobre o outro. O que talvez force a Red Sail a agir ainda mais por vias ilegais, Ren conclui.
+
+Ren decide voltar ao circo. Se ele detectar que foi seguido, irá usar Passo do Vento para afastar-se rapidamente por vielas e telhados escuros, praticamente desaparecendo ao cruzar o equivalente a duas quadras em segundos. Mesmo se não detectar, ele fará o caminho por bem mais tempo que o necessário, e entrar furtivamente usando acrobacia pela saída que ele costuma usar.
+
+**Narrador**
+
+Teste da Red Sail para improvisar cauda: d20 6 + 3 = 9 contra CD 14. Falha.
+
+Teste de Percepção (Ren): d20 9 + 5 = 14 contra CD 14. Sucesso.
+
+Teste de Furtividade (Ren): d20 18 + 6 = 24 contra CD 16. Sucesso.
+
+Teste de Acrobacia (Ren): d20 7 + 6 = 13 contra CD 13. Sucesso.
+
+Ren entende o bastante para não esperar o segundo olhar.
+
+O olheiro de colete escuro tenta transformar suspeita em ordem. Ele fala com a mulher de lenço cinza; ela olha uma vez para a rua, depois para os baldes, depois para a fumaça. Há muita gente, muito grito, muita água suja no chão. A Red Sail tem homens no perímetro, mas não tem uma linha pronta para seguir um observador que decide virar apenas mais uma pessoa recuando do calor.
+
+Ren vê a tentativa nascer antes de virar cauda.
+
+Por isso não desperdiça ki. Não há perseguidor colado ainda; há a possibilidade de um. Ele faz o que veio aprendendo a fazer em Ravens Bluff: não vai direto para onde quer ir.
+
+Primeiro segue junto de dois carregadores que xingam o preço do breu. Depois se deixa ultrapassar por uma fila de gente com baldes vazios. Em uma esquina, para tempo suficiente para parecer interessado numa discussão sobre quem pagará pelos tonéis quebrados. Em outra, some atrás de lençóis estendidos sobre uma viela estreita, atravessa um pátio de peixe seco, sobe uma mureta baixa e desce do outro lado sem fazer a madeira gemer.
+
+Uma vez, Ren vê um homem de faixa vermelha aparecer atrás dele a distância. Não é o mesmo olheiro. O homem olha para os lados, procura uma silhueta que já não existe e decide voltar para a fumaça. A cauda nunca fecha.
+
+Ren alonga a volta pelo lado menos glorioso da cidade, evita a rota da Aurora Menor e não passa perto da Silver Lily. Quando chega ao campo dos Mooney, não entra pela frente nem pelas cozinhas. Usa a rota da carroça de remendos, aproveita o movimento de dois ajudantes levando lona molhada para secar e sobe pelo ponto de madeira onde a estrutura range menos.
+
+A entrada não é bonita. Um pé escorrega meio palmo na madeira úmida, e Ren precisa usar a mão direita para corrigir o peso antes que a bota bata. Mas o som morre dentro do barulho comum do circo.
+
+Ele está dentro.
+
+Não trouxe cauda.
+
+O circo está acordado demais para uma hora que deveria ser apenas trabalho. A fumaça do porto também chegou ali como rumor: ajudantes cochicham que "alguma coisa grande queimou perto dos armazéns"; um músico pergunta se isso cancela apresentação; uma mulher responde que Jack não cancela nada enquanto houver público respirando.
+
+Perto da carroça de remendos, Silva Elkwood aparece antes de Ren dar três passos para dentro. Ela não parece surpresa por ele ter voltado por ali. Parece irritada por ele ter dado motivo para ela precisar olhar.
+
+"Você cheira a porto queimado", ela diz baixo. "E esse é um cheiro que costuma vir acompanhado."
+
+Ela olha por cima do ombro dele, para a rota de entrada.
+
+"Veio sozinho?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **12:52**. Ren retornou ao Jack Mooney & Sons Circus pela rota da carroça de remendos. A Red Sail marcou Ren como observador suspeito no incêndio, mas não conseguiu segui-lo até o circo. Ren não gastou ki no retorno. Silva interceptou Ren discretamente perto da entrada interna e perguntou se ele veio sozinho.
+
+**Jogador**
+
+"Sozinho. E com novidades." Há um misto de alegria e preocupação nos olhos de Ren. Por um lado ele sabe que Tyr entrar no processo os fortalece, e pode ajudar a sacar um rato como Masao do chão. Por outro lado... a operação no porto pareceu muito a mente de Masao. Fazer a Red Sail ser 'melhor avaliada' pelo público é o tipo de coisa que fortalece-a politicamente, e pode segurar mais a mão de Tyr ou da Night Watch.
+
+Ren revela tudo a Silva. Inclusive que a nomeou secretamente no processo.
+
+"As coisas estão escalando, Silvia. Do nosso lado... e do deles. Fico me perguntando se é justo continuarmos aqui no circo. Talvez sejamos um perigo a todos que aqui se encontram."
+
+Literalmente procurando por conselho.

@@ -1688,6 +1688,24 @@ Ponto morto da Silver Lily:
 * um rumor de rua diz que a Red Sail já está no local com cordas, barris d'água e homens armados segurando saqueadores longe dos armazéns;
 * Ren percebe o timing suspeito: Tyr se move contra Narwhal/Red Sail, e antes do meio-dia uma crise puxa guarda, atenção e rumor de volta para o porto;
 * hora aproximada: 11:45.
+* Ren desceu ao Harbor District para investigar o incêndio tentando manter baixo perfil;
+* Ren chegou mais visível do que queria e ficou exposto tempo demais em dois pontos do fluxo de carroças e água;
+* na borda norte do incêndio, Ren identificou três focos separados: carroça queimada junto a portão lateral, carroça tombada perto de tonéis de água e carroça quase vazia bloqueando rua estreita de circulação;
+* o fogo maior morde um armazém de cordame, mas o breu ainda não explodiu em escala catastrófica;
+* rumores ouvidos: menino viu "fogo azul pequeno" sob uma carroça; lavadeira acha que a Red Sail chegou rápido demais; estivador diz que a Red Sail salvou a rua; guardas foram puxados para civis enquanto Red Sail segurou armazéns;
+* alguém mencionou que um armazém intacto pertence a gente ligada a Narwhal Manor, mas a conversa foi cortada;
+* Ren organizou fatos sólidos: três focos, bloqueio de rota, chegada rápida da Red Sail, guarda desviada e armazém preservado sob proteção informal de homens que não são guarda formal;
+* Ren não conseguiu distinguir com segurança gratidão real de fala plantada;
+* um olheiro da Red Sail, de colete escuro e faixa vermelha no pulso, fixou Ren como observador suspeito e falou baixo com uma mulher larga de lenço cinza que organizava fila de baldes;
+* Ren ainda não foi abordado;
+* hora aproximada: 12:08.
+* Ren percebeu que a Red Sail tentaria transformar suspeita em cauda, mas a tentativa não se formou bem no caos do incêndio;
+* Ren não gastou Passo do Vento no retorno;
+* Ren tomou rota longa, evitou Silver Lily e Aurora Menor e não revelou o destino;
+* Ren entrou no circo pela rota da carroça de remendos;
+* a Red Sail não seguiu Ren até o circo;
+* Silva interceptou Ren perto da entrada interna e perguntou se ele veio sozinho;
+* hora aproximada: 12:52.
 
 Progressão:
 

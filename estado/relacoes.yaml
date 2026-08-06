@@ -499,6 +499,10 @@ relacoes:
       consegue pagar. Na Casa de Tyr, Ren nomeou Silva em registro selado como
       guardiã atual informada por ele para Nera e Tavin, ainda pendente de
       confirmação externa. A confirmação ainda não chegou a Silva em cena.
+      Depois do incêndio no Harbor District, Ren voltou ao circo pela rota da
+      carroça de remendos sem trazer cauda. Silva o interceptou discretamente
+      perto da entrada interna, demonstrando que continua vigiando os acessos
+      sensíveis do circo.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -516,6 +520,7 @@ relacoes:
       - "Silva recebeu Nera e Tavin de volta depois que a pressão imediata da Red Sail foi dispersada."
       - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
       - "Silva agora consta em registro selado de Tyr como guardiã atual informada por Ren, embora ainda precise confirmar ou negar formalmente."
+      - "Silva viu Ren voltar do Harbor District sem cauda aparente e quer confirmação direta de que ele veio sozinho."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"

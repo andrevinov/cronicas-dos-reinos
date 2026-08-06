@@ -495,3 +495,49 @@ Interpretação reservada:
 * não revelar autoria dentro da cena; Ren percebe timing suspeito, não prova;
 * Red Sail consegue se posicionar publicamente como força útil de contenção, protegendo armazéns e afastando saqueadores;
 * Tyr mantém a ordem de preservação e a convocação de Velis, mas recursos e atenção ficam divididos pela crise urbana.
+
+---
+
+## Ren investiga o incêndio no Harbor District
+
+Ren chega ao Harbor District em low profile: d20 4 + 6 = 10 contra CD 14. Falha.
+
+Ren le a cena do incendio de longe: d20 19 + 5 = 24 contra CD 13. Sucesso.
+
+Ren organiza rumores do Harbor District: d20 17 + 3 = 20 contra CD 14. Sucesso.
+
+Ren distingue medo real de fala plantada: d20 2 + 5 = 7 contra CD 13. Falha.
+
+Fixa Ren como observador suspeito (Olheiro da Red Sail): d20 20 + 2 = 22 contra CD 14. Sucesso.
+
+Encobre Ren apesar do erro de rota (Multidao do porto): d20 5 + 1 = 6 contra CD 12. Falha.
+
+Interpretação reservada:
+
+* Ren chega ao Harbor District mais visível do que queria, preso por fluxo de carroças e gente;
+* Percepção alta revela estrutura física: três focos, rota de baldes/guardas bloqueada por uma carroça quase vazia, fogo grande contido antes de alcançar breu em escala catastrófica;
+* Investigação alta organiza rumores úteis: Red Sail chegou rápido demais, guarda foi desviada para civis, Red Sail segurou armazéns e há menção cautelosa a armazém ligado a Narwhal;
+* Intuição falha: Ren não separa com segurança quais falas são gratidão real e quais são narrativa plantada;
+* olheiro da Red Sail fixa Ren como observador suspeito; não é reconhecimento pleno ainda, mas ele pode avisar alguém;
+* multidão não encobre Ren bem o bastante neste ponto.
+
+---
+
+## Retorno de Ren ao circo após o incêndio
+
+Improvisa cauda no Harbor District (Red Sail): d20 6 + 3 = 9 contra CD 14. Falha.
+
+Ren detecta cauda ao sair do incendio: d20 9 + 5 = 14 contra CD 14. Sucesso.
+
+Ren toma rota longa sem revelar destino: d20 18 + 6 = 24 contra CD 16. Sucesso.
+
+Ren entra no circo pela rota habitual: d20 7 + 6 = 13 contra CD 13. Sucesso.
+
+Interpretação reservada:
+
+* Red Sail tenta transformar o olhar do olheiro em cauda, mas não coordena rápido o bastante no caos do incêndio;
+* Ren percebe a tentativa nascendo antes de virar perseguição colada;
+* como não há cauda efetiva, Ren não gasta Passo do Vento;
+* rota longa e cuidadosa impede ligação entre o observador do incêndio e o circo;
+* entrada pela carroça de remendos funciona no limite, sem chamar atenção externa;
+* Silva intercepta Ren por vigilância interna, não porque alguém o seguiu.

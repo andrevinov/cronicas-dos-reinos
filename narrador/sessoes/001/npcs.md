@@ -396,6 +396,71 @@ Bloco rápido 5e:
 
 ---
 
+## Olheiro da Red Sail no incêndio dos armazéns
+
+Papel: observador menor da Red Sail durante a contenção pública no Harbor District.
+
+Aparência e presença:
+
+* colete escuro;
+* faixa vermelha no pulso;
+* rosto comum de trabalhador de porto;
+* olhos atentos demais para alguém só carregando baldes.
+
+Estado atual:
+
+* às 12:08, percebeu Ren observando a cena do incêndio com calma incomum;
+* fixou Ren como observador suspeito, não como identidade confirmada;
+* falou baixo com a mulher larga de lenço cinza que organiza a fila de baldes.
+* tentou virar a suspeita em cauda, mas o caos do incêndio impediu coordenação rápida;
+* não seguiu Ren até o circo.
+
+Segredo:
+
+* pode apenas marcar Ren para relato posterior, não necessariamente confrontá-lo no meio da multidão;
+* se Ren o seguir, pode levar a um ponto de recado, a Brass ou a uma isca.
+* por enquanto, o que ele tem é "observador suspeito no incêndio", não destino nem prova.
+
+Bloco rápido 5e:
+
+* CA 11;
+* PV 7;
+* Percepção +2, Furtividade +2;
+* evita combate e tenta se misturar.
+
+---
+
+## Mulher de lenço cinza
+
+Papel: organizadora informal da fila de baldes no incêndio; possível supervisora de campo ligada ou tolerada pela Red Sail.
+
+Aparência e presença:
+
+* mulher larga;
+* cabelo preso sob lenço cinza;
+* voz forte de comando;
+* age como se tivesse autoridade prática no perímetro.
+
+Estado atual:
+
+* organiza civis e homens da Red Sail na fila de baldes;
+* recebeu comentário baixo do olheiro que notou Ren;
+* ainda não abordou Ren diretamente.
+
+Segredo:
+
+* pode ser apenas chefe de armazém acostumada a comandar crise, ou contato operacional da Red Sail;
+* decidir conforme ação de Ren, preservando ambiguidade inicial.
+
+Bloco rápido 5e:
+
+* CA 12;
+* PV 12;
+* Intimidação +3, Persuasão +2, Percepção +2;
+* combate improvisado com balde, gancho ou porrete +3, dano 1d6+1 contundente.
+
+---
+
 ## Vigia da Red Sail na casa de redes azuis
 
 Papel: vigia de Brass perto da casa da velha Sella.

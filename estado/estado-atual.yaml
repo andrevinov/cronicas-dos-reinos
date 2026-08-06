@@ -17,16 +17,16 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Temple District"
-  ponto_exato: "degraus externos da Casa de Tyr"
-  descricao_operacional: "Ren entregou a Halessa três perguntas para possível uso na oitiva de Velis Rook: interesse em selos de clãs de Kara-Tur, identidade/interesse no 'hóspede' e conteúdo oculto do volume 13. Sirrus reiterou que Ren não deve agir contra Velis antes da oitiva. Ao sair da câmara, Ren teve a wakizashi e os shuriken liberados. A pasta permanece sob custódia formal de Tyr. Do lado de fora, Ren viu fumaça escura subindo do Harbor District, perto de armazéns de breu e cordame; rumores dizem que a Red Sail já atua no local como força de contenção."
+  area: "campos do circo"
+  ponto_exato: "entrada interna pela carroça de remendos, Jack Mooney & Sons Circus"
+  descricao_operacional: "Ren deixou o incêndio do Harbor District antes que a Red Sail conseguisse transformar suspeita em perseguição. Percebeu a tentativa nascendo, mas não havia cauda efetiva colada; por isso não gastou Passo do Vento. Tomou rota longa, evitou Silver Lily e Aurora Menor, e retornou ao circo pela rota da carroça de remendos. A entrada funcionou no limite. Silva Elkwood interceptou Ren discretamente e perguntou se ele veio sozinho."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "manhã"
-  hora_aproximada: "11:45"
+  hora_aproximada: "12:52"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
@@ -52,7 +52,7 @@ recursos:
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"
     - "livro de provas de Nera escondido por Silva Elkwood"
-    - "fora do circuito imediato da Red Sail no Harbor District"
+    - "de volta ao circuito de risco da Red Sail no Harbor District"
     - "Maerra aceitou esconder Nera e Tavin por enquanto"
     - "descanso curto completo; ainda cansado, mas centrado"
     - "chegou à borda do circo dos Mooney"
@@ -238,6 +238,13 @@ recursos:
     - "pasta de Velis permanece sob custodia formal de Tyr"
     - "fumaça grande visivel no Harbor District, perto dos armazens de breu e cordame"
     - "rumor de que a Red Sail ja atua no local do incendio como forca de contencao"
+    - "Ren chegou ao Harbor District mais visivel do que pretendia"
+    - "Ren identificou tres focos separados no incendio dos armazens de breu e cordame"
+    - "Red Sail parece ter chegado rapido demais com cordas, barris d'agua e homens armados"
+    - "um olheiro da Red Sail fixou Ren como observador suspeito"
+    - "Red Sail nao conseguiu seguir Ren ate o circo"
+    - "Ren voltou ao circo pela rota da carroca de remendos sem gastar ki"
+    - "Silva interceptou Ren discretamente perto da entrada interna"
     - "PV, dados de vida e ki recuperados com o descanso longo"
     - "Red Sail ou gente ligada ao porto aproximou a busca do perimetro do circo antes do amanhecer"
     - "Nera e Tavin ainda nao foram identificados formalmente no circo"
@@ -382,7 +389,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir se investiga a fumaça no Harbor District, retorna ao circo ou passa por Maerra/Luath"
+    - "responder a Silva se veio sozinho e resumir o que viu no Harbor District"
     - "proteger Nera e Tavin, agora de volta a carroca verde e explicitamente nomeados como ruido no bilhete"
     - "aguardar confirmacao de envio e possivel resposta de Luath e Maerra"
     - "impedir que Narwhal e Red Sail virem a acusacao contra Ren e Nera"
@@ -415,7 +422,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está nos degraus externos da Casa de Tyr. Suas três perguntas para Velis foram entregues a Halessa como anexo reservado; a pasta está sob custódia formal de Tyr; a wakizashi e os shuriken foram liberados. Ao sul e leste, uma coluna de fumaça escura sobe do Harbor District, perto de armazéns de breu e cordame. Rumores na rua dizem que a Red Sail já atua no local como força de contenção. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 11:45."
+  cena_atual: "Ren está dentro do Jack Mooney & Sons Circus, perto da entrada interna pela carroça de remendos. Ele não trouxe cauda do Harbor District, mas a Red Sail sabe que havia um observador suspeito na borda do incêndio. Silva Elkwood interceptou Ren e perguntou se ele veio sozinho. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 12:52."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"
