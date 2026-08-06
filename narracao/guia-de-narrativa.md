@@ -401,6 +401,42 @@ NPCs importantes devem ganhar arquivo próprio quando voltarem a ser relevantes.
 
 Um NPC não deve existir apenas para despejar exposição. Mesmo aliados temporários devem ter interesses próprios.
 
+### Fala imersiva de NPCs
+
+NPCs não devem verbalizar feedback de mesa, avaliação de estratégia ou pistas sobre qual palavra-chave o jogador deve usar.
+
+Evitar falas como:
+
+* "você escolheu a palavra certa";
+* "continue nessa linha";
+* "isso foi uma boa abordagem";
+* "essa é a opção correta";
+* qualquer frase que pareça traduzir a lógica de perícia, CD, modo de cena ou solução esperada.
+
+Quando um NPC precisar reagir positivamente a uma abordagem, a resposta deve nascer do mundo:
+
+* protocolo institucional;
+* interesse próprio;
+* medo;
+* reputação;
+* dever religioso, legal ou profissional;
+* personalidade e limites do NPC;
+* informação concreta que Ren apresentou.
+
+Exemplo ruim:
+
+```text
+"Você escolheu a palavra certa: testemunho. Continue nela."
+```
+
+Exemplo melhor:
+
+```text
+"Então trate isto como testemunho. Nomes, risco imediato e razão de urgência."
+```
+
+O narrador pode esclarecer em texto de situação que uma palavra ou postura ajudou mecanicamente, mas isso deve ficar fora da fala do NPC e sem quebrar o ponto de vista da cena.
+
 ---
 
 ## Dungeons e mapas

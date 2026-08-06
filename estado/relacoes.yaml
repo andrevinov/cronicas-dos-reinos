@@ -66,10 +66,13 @@ relacoes:
       - "Ren viu na pasta: carimbo de Narwhal Manor, número 13 e a expressão 'retenção anulada'."
       - "Ren tomou a pasta de Velis, ainda não examinada."
       - "A pasta continha documentos que apontam Velis como responsável por anulação retroativa ligada ao volume 13."
+      - "Tyr convocará Velis Rook para responder por anulação retroativa e possível obstrução."
+      - "Halessa recebeu três perguntas de Ren para possível uso na oitiva de Velis."
     riscos:
       - "Velis sabe que alguém tentou tomar seus papéis na porta lateral."
       - "Velis ainda não identificou Ren com certeza como o oriental que procura Masao, mas viu um rosto e uma mão perto demais da pasta."
       - "Velis pode avisar Narwhal Manor, Brass ou superiores de que a pasta foi roubada por alguém rápido e treinado."
+      - "A convocação de Tyr pode fazê-lo cooperar, mentir sob pressão ou avisar superiores antes de chegar, dependendo de como a ordem o alcança."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"
@@ -364,20 +367,85 @@ relacoes:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"
     local: "Casa de Tyr, Temple District"
-    status: "não encontrado diretamente"
-    atitude_para_ren: "desconhecida"
-    confianca: "nenhuma"
-    respeito: "não estabelecido"
+    status: "em cena"
+    atitude_para_ren: "rígida, institucional e cautelosa"
+    confianca: "baixa"
+    respeito: "inicial pela gravidade do material, não por confiança pessoal"
     motivo: >
       Maerra e Nera apontaram Sirrus Melandor como o caminho forte para
       proteção formal, testemunho e peso institucional contra gente poderosa.
       Ren chegou à Casa de Tyr com a pasta de Velis lacrada por Maerra, mas
-      ainda está diante dos guardiões e do registro; não há acesso direto a
-      Sirrus garantido.
+      não recebeu acesso direto a Sirrus no primeiro pedido. O guardião aceitou
+      classificar o caso como testemunho reservado urgente, e uma guardiã jovem
+      foi buscar autoridade intermediária para ouvir sem abrir o lacre. Depois
+      da abertura da pasta em câmara reservada, Irmão Caldrin Vos mandou chamar
+      Sirrus imediatamente. Sirrus leu o bilhete e as correções centrais,
+      reconheceu a gravidade, mas exigiu linha de custódia antes de conceder
+      proteção nominal a Nera Vell e Tavin Vell. Ren nomeou Silva Elkwood em
+      registro selado como guardiã atual informada por ele. Sirrus aceitou
+      emitir ordem de preservação de registros e convocar Velis Rook, mas negou
+      que Ren acompanhe ocultamente a primeira oitiva de Velis. Ao se retirar,
+      Ren reafirmou que não pretende agir contra Velis e que só quer as
+      testemunhas seguras. Sirrus aceitou a declaração sem suavizar a postura.
+    acoes_possiveis:
+      - "Emitir ordem de preservação sobre registros ligados ao volume 13, Narwhal Manor e Dain Mord."
+      - "Enviar dois juramentados discretos para acompanhar transferência voluntária dos Vell a uma porta de Tyr."
+      - "Convocar Velis Rook para responder por anulação retroativa sob pena de obstrução."
     riscos:
       - "Tyr pode proteger prova e testemunha, mas também torna o caso visível e registrado."
       - "Se Ren apresentar o caso como licença para vingança, pode perder a porta antes de chegar a Sirrus."
       - "A cadeia de custódia da pasta continua vulnerável, embora o lacre de Maerra ajude."
+      - "Sirrus não concederá proteção nominal sem saber quem responde pela custódia atual dos Vell ou sem confirmação de Maerra/Luath."
+      - "Sirrus considera que Ren agir contra Velis antes da oitiva enfraqueceria Nera e Tavin."
+  halessa_vorn:
+    nome: "Irmã Halessa Vorn"
+    tipo: "ouvidora juramentada de Tyr"
+    local: "Casa de Tyr, Temple District"
+    status: "em cena"
+    atitude_para_ren: "formal, cautelosa e operacionalmente disposta a escalar"
+    confianca: "baixa institucional"
+    respeito: "inicial, pelo foco em testemunhas vivas"
+    motivo: >
+      Halessa foi chamada pela guardiã jovem depois que Ren apresentou o selo
+      de Maerra e enquadrou o caso como testemunho reservado urgente envolvendo
+      duas vidas em risco. Ela chegou para ouvir o bastante para decidir se o
+      caso sobe para Sirrus, permanece no filtro da casa ou exige guarda.
+      Ren apresentou o caso com foco em N.V., T.V., Red Sail, falsificação do
+      selo do clã, tentativa de queima de arquivo, cópia parcial sob custódia
+      de Luath e pasta lacrada por Maerra. Halessa percebeu a lacuna de cadeia
+      de custódia da pasta, mas decidiu escalar o assunto dentro de Tyr por
+      envolver ameaça viva a testemunhas e possível tentativa de impedir que
+      elas cheguem à justiça. Quando Ren afirmou que as testemunhas estão
+      seguras hoje e pediu prioridade para confirmação com Luath/Maerra e
+      abertura do lacre, Halessa aceitou não movê-las sem necessidade e
+      organizou câmara reservada para poucos minutos depois. Depois que Ren
+      aceitou a paz juramentada, Halessa abriu a pasta em câmara reservada com
+      Irmão Caldrin Vos e um escriba. O conteúdo foi forte o bastante para
+      chamar Sirrus Melandor imediatamente. Quando Ren registrou Nera Vell e
+      Tavin Vell por nome completo, Halessa percebeu cuidado genuíno no tom
+      dele e manteve os nomes em ata reservada e selada. Quando Sirrus negou
+      a presença oculta de Ren na oitiva de Velis, Halessa abriu alternativa:
+      Ren pode escrever até três perguntas para possível uso na oitiva. Ren
+      entregou três perguntas sobre selos de clãs de Kara-Tur, o hóspede e o
+      volume 13; Halessa recebeu como anexo reservado do portador.
+    ofertas:
+      - "Resguardo provisório de 24 horas para N.V. e T.V., se puderem ser movidos com segurança para uma porta indicada por Tyr."
+      - "Ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada."
+      - "Audiência de lacre em câmara reservada, com Halessa, outro juramentado e possível informação a Sirrus antes do próximo sino maior se o conteúdo justificar."
+      - "Duas fichas reservadas enviadas a Luath e Maerra para confirmar custódia, lacre, abertura presenciada e situação das testemunhas."
+      - "Audiência de lacre por volta de 11:21 se Ren aceitar paz juramentada."
+      - "Pasta aberta e mantida sob custódia formal de Tyr."
+      - "Sirrus Melandor chamado imediatamente após leitura do bilhete e das correções."
+      - "Aceitou receber até três perguntas de Ren para possível uso na oitiva de Velis."
+      - "Recebeu três perguntas de Ren como anexo reservado do portador."
+    riscos:
+      - "Se Ren focar em vingança, Halessa pode rebaixar o caso para risco de violência privada."
+      - "Se Ren esconder demais, Halessa pode suspeitar que a Casa de Tyr está sendo usada."
+      - "Se Ren entregar nomes completos em voz alta, pode criar registro ou exposição antes de proteção formal."
+      - "Halessa notou que 'sorte' não explica cadeia de custódia; a pasta pode ajudar Ren ou criar risco legal contra ele."
+      - "Tyr ainda não concedeu abrigo irrestrito nem acesso direto a Sirrus."
+      - "Halessa ainda decide quais perguntas de Ren cabem sem comprometer a ata."
+      - "A crise no Harbor District pode reduzir a velocidade prática de respostas e extratos, mesmo com o caso preservado."
   silva_elkwood:
     nome: "Silva Elkwood"
     tipo: "clériga de Chauntea / contato potencial de abrigo"
@@ -428,7 +496,9 @@ relacoes:
       de perguntar detalhes. Ela reconheceu a pasta lacrada como novo risco.
       Ren pediu que Silva cuidasse dos Vell novamente enquanto ele procura Tyr.
       Silva aceitou, mas advertiu Ren a não colecionar dívida que só morto
-      consegue pagar.
+      consegue pagar. Na Casa de Tyr, Ren nomeou Silva em registro selado como
+      guardiã atual informada por ele para Nera e Tavin, ainda pendente de
+      confirmação externa. A confirmação ainda não chegou a Silva em cena.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -445,6 +515,7 @@ relacoes:
       - "Silva manteve o livro de provas escondido com ela enquanto Ren retirava Nera e Tavin."
       - "Silva recebeu Nera e Tavin de volta depois que a pressão imediata da Red Sail foi dispersada."
       - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
+      - "Silva agora consta em registro selado de Tyr como guardiã atual informada por Ren, embora ainda precise confirmar ou negar formalmente."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"

@@ -176,6 +176,12 @@ Estado atual:
 * Ren viu por um instante carimbo de Narwhal Manor, número 13 e a expressão "retenção anulada".
 * Velis viu o ladrão de perto o suficiente para lembrar que não era um carregador comum, mas rápido demais para fixar uma descrição perfeita.
 * a pasta revela que Velis assinou uma anulação retroativa do volume 13 e tinha lista de correções para remover "oriental" e trocar M. H. por M. Harrow.
+* Tyr emitirá convocação formal para Velis responder por anulação retroativa e possível obstrução;
+* Ren pediu para ouvir a primeira oitiva, mas Sirrus negou; Ren pode escrever perguntas para Halessa filtrar.
+
+Segredo adicional:
+
+* a convocação formal pode assustar Velis mais do que uma ameaça de rua, mas também pode acionar proteção de Narwhal se ele conseguir mandar aviso antes de chegar.
 
 Bloco rápido 5e:
 
@@ -227,6 +233,13 @@ Estado atual:
 * mandou alguém verificar um ruído na viela dos fundos depois de falar sobre Velis Rook, a caixa comprida e o "oriental procurando homem marcado";
 * o rapaz da porta acreditou ter ouvido um gato e não viu Ren;
 * está dentro da Red Sail quando Pell entrega mensagem e Velis Rook entra pela porta dos fundos.
+* após Tyr se mover contra registros ligados a Narwhal/Red Sail, um incêndio grande começou no Harbor District perto de armazéns de breu e cordame;
+* rumor público diz que a Red Sail já está no local com cordas, barris d'água e homens armados afastando saqueadores.
+
+Nota reservada:
+
+* não revelar ainda se Dain coordenou, apenas aproveitou ou foi informado tarde sobre a contingência;
+* o efeito público imediato é a Red Sail parecer útil depois de uma manhã de pressão institucional.
 
 Bloco rápido 5e:
 
@@ -1065,27 +1078,126 @@ Papel: Chief Prelate e alto sacerdote de Tyr; autoridade religiosa forte para ju
 
 Aparência e presença:
 
-* ainda não visto diretamente por Ren;
+* alto, ombros retos;
+* barba curta muito bem aparada;
+* veste branca e cinza com a balança de Tyr sobre o peito;
+* olho esquerdo coberto por faixa simples de linho escuro;
 * nome aparece em placa de audiências, juramentos e queixas formais na Casa de Tyr;
 * conhecido por Maerra/Nera como caminho institucional pesado, mais útil para tribunal do que para rua.
 
 Estado atual:
 
 * Ren chegou à Casa de Tyr com a pasta de Velis lacrada por Maerra;
-* acesso direto a Sirrus ainda não foi concedido;
-* primeiro filtro: guardiões de porta e acólito de registro.
+* acesso direto a Sirrus não foi concedido no primeiro filtro;
+* o guardião reconheceu o selo como ligado à Aurora Menor/Lathander, mas não conhece Maerra o bastante para pular protocolo;
+* o caso foi classificado como testemunho reservado urgente;
+* uma guardiã jovem foi buscar autoridade intermediária para ouvir sem abrir a pasta;
+* após a pasta ser aberta em câmara reservada, Irmão Caldrin Vos mandou chamar Sirrus imediatamente;
+* Sirrus entrou na câmara, leu o bilhete e as correções centrais, e reconheceu a gravidade;
+* adotou postura rígida com Ren, tratando a pasta como documento importante, mas irregularmente obtido;
+* ofereceu ações antes do meio-dia: preservar registros, enviar juramentados para transferência voluntária e convocar Velis Rook;
+* exige linha de custódia antes de conceder proteção nominal aos Vell;
+* recebeu de Ren a nomeação selada de Silva Elkwood como guardiã atual informada pelo portador;
+* aceitou emitir ordem de preservação de registros e convocar Velis Rook;
+* negou que Ren acompanhe ocultamente a primeira oitiva de Velis;
+* aceitou a declaração de Ren de que não pretende agir contra Velis, mas avisou que o alinhamento com Tyr precisa continuar fora da casa.
 
 Segredo:
 
 * Sirrus pode ser justo sem ser conveniente;
 * se o caso chegar a ele com foco em testemunhas ameaçadas, falsificação e tentativa de impedir Tyr de saber, a porta fica mais forte;
 * se Ren revelar a vendeta como objetivo principal, Sirrus pode tentar conter Ren tanto quanto proteger Nera e Tavin.
+* falha na postura inicial significa rigidez institucional e exigência de custódia, não rejeição da gravidade do caso.
+* Sirrus vê presença oculta de Ren na oitiva como risco de contaminar testemunho e criar argumento para Narwhal.
+* a crise no Harbor District deve dividir recursos da casa, mas Sirrus tentará impedir que isso anule a preservação dos registros.
 
 Bloco rápido 5e:
 
 * usar estatísticas de sacerdote/clérigo experiente se necessário;
 * foco social: Intuição alta, Religião alta, Persuasão formal;
 * acesso deve passar por protocolo ou urgência convincente.
+
+---
+
+## Irmã Halessa Vorn
+
+Papel: ouvidora juramentada da Casa de Tyr; autoridade intermediária capaz de decidir se um testemunho sobe, fica no filtro interno ou chama guarda.
+
+Aparência e presença:
+
+* mulher de meia-idade;
+* veste cinza-azulada;
+* cabelo preso em trança curta;
+* faixa com a balança de Tyr atravessando o peito;
+* presença formal o bastante para guardiões e acólito ajustarem postura quando ela entra.
+
+Estado atual:
+
+* chamada pela guardiã jovem quando Ren apresentou selo de Maerra e enquadrou o caso como testemunho reservado urgente;
+* sentou-se à mesa lateral de triagem;
+* ainda não abriu a pasta lacrada;
+* ouviu Ren apresentar N.V., T.V., Red Sail, falsificação do selo Kagehira, tentativa de queima de arquivo, cópia parcial com Luath e pasta lacrada por Maerra;
+* percebeu a lacuna de cadeia de custódia da pasta, mas não acusou Ren formalmente;
+* decidiu escalar o caso dentro de Tyr;
+* ofereceu resguardo provisório de 24 horas para N.V. e T.V. se puderem ser movidos com segurança, ficha selada para Maerra ou Luath, e audiência de lacre em câmara reservada;
+* ouviu Ren decidir não mover as testemunhas por enquanto e priorizar confirmação com Luath/Maerra mais abertura do lacre;
+* aceitou essa lógica e mandou fichas reservadas para Luath e Maerra por mensageiros de Tyr;
+* organizou audiência de lacre para poucos minutos depois, sob paz juramentada;
+* Ren aceitou a paz juramentada;
+* abriu a pasta em câmara reservada com Irmão Caldrin Vos e um escriba;
+* identificou rapidamente o valor jurídico do bilhete e das correções retroativas;
+* a pasta passou à custódia formal de Tyr;
+* Sirrus Melandor foi chamado imediatamente;
+* Ren registrou Nera Vell e Tavin Vell por nomes completos em ata reservada;
+* Halessa percebeu cuidado genuíno de Ren pelos Vell.
+* recebeu o nome de Silva Elkwood em registro selado como guardiã atual informada por Ren;
+* ofereceu a Ren escrever até três perguntas para possível uso na oitiva de Velis.
+* recebeu as três perguntas de Ren como anexo reservado do portador:
+  * interesse em selos de clãs de Kara-Tur;
+  * identidade/interesse no "hóspede";
+  * conteúdo oculto do volume 13.
+
+Segredo:
+
+* Halessa valoriza ordem, custódia e proteção de testemunhas;
+* não é hostil a Ren, mas não permitirá que a Casa de Tyr seja usada como atalho para vendeta;
+* pode encaminhar a Sirrus se ouvir risco vivo, obstrução de justiça e ligação plausível com gente poderosa;
+* pode chamar guarda se Ren soar como portador de prova roubada tentando obter cobertura para violência privada.
+* neste momento, a proteção das testemunhas pesa mais que a irregularidade da pasta, mas a irregularidade não desapareceu;
+* Halessa tende a exigir nomes completos em ambiente controlado antes de colocar pessoas sob resguardo formal.
+* a exigência de paz juramentada é institucional, não uma tentativa de desarmar Ren por desconfiança pessoal específica.
+* Halessa pode filtrar perguntas de Ren para Velis, mas não fará perguntas que exponham técnica, fonte ou localização dos Vell sem necessidade.
+* pode oferecer a Ren extrato reservado do que for operacionalmente relevante se a segurança das testemunhas exigir.
+
+---
+
+## Irmão Caldrin Vos
+
+Papel: juramentado de Tyr chamado para a abertura reservada do lacre.
+
+Aparência e presença:
+
+* homem magro;
+* calvo;
+* barba grisalha curta;
+* voz seca, sem excesso de cerimônia.
+
+Estado atual:
+
+* participou da abertura da pasta lacrada por Maerra;
+* leu por cima do ombro de Halessa o bilhete sobre impedir que a gravadora e o menino chegassem a Tyr;
+* mandou chamar Sirrus imediatamente.
+
+Segredo:
+
+* Caldrin é mais direto que Halessa e tende a agir quando vê obstrução clara;
+* não significa que ele confie em Ren, apenas que reconhece a gravidade institucional.
+
+Bloco rápido 5e:
+
+* usar estatísticas sociais de sacerdote/acólita experiente se necessário;
+* Intuição +5, Religião +4, Persuasão +4;
+* sem foco em combate nesta cena.
 
 ---
 

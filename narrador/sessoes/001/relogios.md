@@ -139,7 +139,13 @@ Estado atual:
 * Ren chegou à Casa da Aurora Menor sem cauda confirmada, então o alarme ainda não aponta para Maerra, Nera ou Tavin;
 * a pasta aberta revela prova forte, mas Narwhal pode tentar transformá-la em falsificação plantada por ladrão estrangeiro se Luath ou Tyr não forem acionados com cuidado.
 * a pasta agora foi lacrada por Maerra com declaração testemunhal estreita; isso reduz risco de acusação de adulteração posterior, mas não resolve cadeia de custódia nem autoria.
-* Ren chegou à entrada da Casa de Tyr com a pasta lacrada, mas ainda não registrou formalmente a prova nem obteve audiência.
+* Ren chegou à Casa de Tyr com a pasta lacrada e o caso entrou em triagem reservada com Halessa Vorn.
+* Halessa ainda não abriu o lacre nem concedeu abrigo irrestrito, mas ofereceu medidas provisórias que podem proteger Nera e Tavin e tornar mais difícil apagar o caso.
+* Halessa mandou fichas reservadas a Luath e Maerra e ofereceu abrir o lacre em câmara reservada por volta de 11:21, sob paz juramentada.
+* a pasta foi aberta em câmara reservada e entrou em custódia formal de Tyr; Sirrus Melandor foi chamado imediatamente.
+* Nera Vell e Tavin Vell foram registrados por nome completo em ata reservada e selada, mas Sirrus exigiu linha de custódia antes de conceder proteção nominal.
+* Silva Elkwood foi nomeada em registro selado como guardiã atual informada por Ren, ainda a confirmar.
+* Tyr emitiu ordem de preservação de registros antes do meio-dia e convocará Velis Rook, reduzindo a margem de Narwhal para apagar documentos sem custo formal.
 
 ---
 
@@ -262,6 +268,58 @@ Sinais perceptíveis:
 * fileiras de baldes;
 * gente correndo na direção da Red Sail;
 * patrulheiros perguntando por um marinheiro com jaqueta grossa.
+
+---
+
+## Relógio: incêndio dos armazéns de breu
+
+Visibilidade: parcialmente visível.
+
+Progresso inicial: 2/6.
+
+Progresso atual: 2/6.
+
+Último avanço:
+
+* logo após Tyr emitir ordem de preservação e convocar Velis Rook, um fogo grande começou no Harbor District perto de armazéns de breu e cordame;
+* três focos simultâneos em carroças/rua de serviço sugerem incidente coordenado, mas Ren não tem prova;
+* rumores dizem que a Red Sail já atua no local com cordas, barris d'água e homens armados segurando saqueadores longe dos armazéns;
+* a crise divide atenção de guarda, Tyr e curiosos, criando chance de a Red Sail parecer útil.
+
+Descrição:
+
+Mede se o incêndio vira acidente contido, crise urbana, justificativa para patrulha privada da Red Sail ou cobertura para movimentação de registros/pessoas.
+
+Avança quando:
+
+* o fogo alcança breu, cordame ou armazém adjacente;
+* a guarda precisa aceitar ajuda da Red Sail em público;
+* alguém usa a confusão para mover carga, registro ou testemunha;
+* a população compra a narrativa de que a Red Sail protege o porto melhor que a guarda.
+
+Regride quando:
+
+* a guarda assume perímetro com firmeza;
+* Tyr ou Luath mantêm foco nos registros apesar da distração;
+* uma testemunha identifica origem coordenada do fogo;
+* a Red Sail é flagrada usando a crise para extorsão ou sumiço de prova.
+
+Consequência em 4/6:
+
+* Red Sail ganha cobertura pública para circular armada como "contenção";
+* investigações contra ela ficam politicamente mais caras no curto prazo.
+
+Consequência em 6/6:
+
+* a crise redefine a manhã no porto: registros, testemunhas e autoridades ficam sob pressão e a Red Sail ganha argumento de necessidade pública.
+
+Sinais perceptíveis:
+
+* fumaça escura e oleosa;
+* sinos de alarme fora de hora;
+* boatos de carroças pegando fogo ao mesmo tempo;
+* civis agradecendo ou tolerando homens da Red Sail no perímetro;
+* guardas dividindo atenção entre incêndio e ordens formais.
 
 ---
 
@@ -477,3 +535,55 @@ Sinais perceptíveis:
 * remendadores chamados com urgência;
 * mudança de escala na tenda principal;
 * Jack ou Silva interrompendo perguntas que chamem atenção demais.
+
+---
+
+## Relógio: círculo de Masao desperta
+
+Visibilidade: oculto.
+
+Progresso inicial: 1/6.
+
+Progresso atual: 2/6.
+
+Último avanço:
+
+* Ren já interferiu na isca da falsa lua velada, salvou Nera Vell, tomou a pasta de Velis Rook e levou a prova lacrada à Casa de Tyr; isso ainda não significa que Masao saiba todos os detalhes, mas aproxima a investigação de instituições que sua rede queria evitar.
+* após Tyr se mover contra os registros, uma contingência pública no Harbor District foi acionada com timing suspeito; tratar como possível resposta de rede, não confirmação pública de Masao.
+
+Descrição:
+
+Mede quando a resposta deixa de ser apenas Red Sail/Narwhal local e passa a envolver agentes especializados ou interesses diretos de Masao.
+
+Avança quando:
+
+* prova chega a Tyr, Luath ou outra autoridade com peso formal;
+* Brass, Narwhal ou Velis perdem controle narrativo do caso;
+* Nera, Tavin, Maerra, Silva ou Jack viram nomes conectáveis para a rede;
+* Ren expõe padrão de técnicas de sombra, origem ou vínculo Kagehira;
+* um intermediário falha e precisa ser substituído por alguém mais competente.
+
+Consequência em 3/6:
+
+* agente especializado observa Ren ou testa sua rotina;
+* um contato de Ren recebe ameaça, proposta ou falsa proteção;
+* pistas falsas e mensagens pessoais começam a aparecer.
+
+Consequência em 6/6:
+
+* Masao ou seu círculo envia executor forte, sequestrador, infiltrador ou duelista;
+* o conflito pode mirar abrigo, reputação ou vínculo emocional antes de mirar Ren diretamente.
+
+Diretriz de calibragem:
+
+* aumentar pressão quando Ren tiver base mínima e algumas portas institucionais abertas;
+* evitar atropelar a fase atual de estabelecimento, mas não manter antagonistas passivos depois que relógios justificarem resposta;
+* se uma derrota precoce encerraria a campanha sem produzir escolha interessante, uma intervenção misteriosa rara pode salvar Ren ou protegido, desde que crie dívida, pista, custo ou novo mistério.
+
+Sinais perceptíveis:
+
+* mensagem com conhecimento íntimo demais sobre Ren;
+* adversário que conhece técnicas orientais ou o nome Kagehira;
+* observador que não age como capanga portuário;
+* ameaça entregue com precisão, sem ostentação;
+* alguém poupando Ren por ordem, curiosidade ou teste.

@@ -104,6 +104,14 @@ O jogador escreve o que Ren faz, diz, tenta, pensa ou sente.
 
 O narrador resolve o mundo, rolagens, NPCs, consequências e nova situação.
 
+Checklist breve antes de publicar resposta do narrador:
+
+* a fala dos NPCs soa como pessoa do mundo, não como dica de sistema;
+* nenhum NPC está elogiando ou corrigindo a palavra-chave escolhida pelo jogador;
+* informações de mecânica, se necessárias, ficam fora do diálogo do NPC;
+* segredos do narrador não aparecem como certeza na voz narrativa;
+* a resposta devolve a Ren uma situação jogável, não uma solução pronta.
+
 ---
 
 ## Tamanho das entradas

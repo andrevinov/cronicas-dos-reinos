@@ -666,6 +666,7 @@ Segredo:
 Pessoas associadas:
 
 * **Sirrus Melandor**, Chief Prelate e alto sacerdote de Tyr;
+* **Irmã Halessa Vorn**, ouvidora juramentada;
 * guardião veterano da porta;
 * guardiã jovem da porta;
 * acólito de registro.

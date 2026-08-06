@@ -183,3 +183,77 @@ Possível recompensa:
 * Broche do Semblante Humilde: item homebrew discreto, inspirado em disfarce/anonimato;
 * proposta mecânica futura, se recuperado e aprovado: 1 vez por amanhecer, permite lançar Disfarçar-se em si mesmo sem componentes por 1 hora, com aparência sempre humilde/comum e sem imitar pessoa específica com precisão perfeita;
 * Maerra só pedirá empréstimo ao templo se Ren resgatar vivos e não usar o item para assassinato gratuito.
+
+---
+
+### SEG-010: Escalada de Masao e oposição ativa
+
+Diretriz reservada:
+
+Masao Hirasawa deve crescer como antagonista de longo prazo, não como alvo local simples. Ele pode ter ambição megalomaníaca, disciplina estratégica e plano regional grande o bastante para ameaçar redes criminosas, instituições e rotas entre Faerûn e Kara-Tur.
+
+Não revelar plano final cedo. Sinais iniciais devem parecer peças desconectadas:
+
+* controle de intermediários portuários;
+* falsificação cultural dirigida a Ren;
+* infiltração em registros e alfândega;
+* medo de instituições fortes como Tyr;
+* uso de testemunhas como isca, ruído ou alavanca;
+* agentes especializados que não agem como capangas comuns.
+
+Masao pode ter um círculo de executores de elite, inspirado no arquétipo de "dez lâminas" ou tropa secreta de especialistas, mas evitar copiar personagens ou estrutura específica de outra obra. Criar versões próprias, com objetivos, estilos e rivalidades locais.
+
+Possíveis funções de elite:
+
+* duelista forte em combate um contra um, usado para testar ou quebrar Ren;
+* assassino furtivo que entra e sai sem reivindicar autoria;
+* sequestrador/chantagista que prefere marcar terreno e manipular vínculos;
+* infiltrador social ligado a documentos, templos ou nobreza;
+* fanático que admira Masao como futuro senhor de uma nova ordem;
+* agente que odeia Masao, mas ainda serve por medo, dívida ou objetivo comum.
+
+Escalada recomendada:
+
+1. primeiro, pressão indireta: mensagens, olhos, registros queimados, intermediários sumindo;
+2. depois, ataques cirúrgicos contra abrigo, reputação ou contatos de Ren;
+3. só então, combate direto contra agente realmente perigoso;
+4. se Ren estiver perto de derrota total cedo demais, permitir intervenção misteriosa rara, desde que crie nova dívida, mistério ou complicação, não simples apagamento de consequência.
+
+Pressionar mais no futuro, mas sem invalidar o estabelecimento inicial:
+
+* enquanto Ren ainda constrói abrigo para os Vell, calibrar para tensão e custo;
+* quando Ren tiver base mínima, contatos e prova encaminhada, aumentar a atividade inimiga;
+* adversários inteligentes devem tentar separar Ren de aliados, controlar informação, desacreditá-lo e escolher terreno;
+* inimigos não precisam esperar Ren agir se relógios avançarem.
+
+---
+
+### SEG-011: Incêndio dos armazéns de breu
+
+Estado:
+
+* iniciado por volta de 11:45, logo após Tyr abrir a pasta, emitir ordem de preservação e preparar convocação de Velis;
+* visível a Ren como fumaça escura no Harbor District;
+* rumor público imediato: Red Sail já está no local com cordas, barris d'água e homens armados afastando saqueadores.
+
+Função narrativa:
+
+* abalar a cidade com uma crise pública;
+* dividir atenção de guarda, Tyr e população;
+* permitir que a Red Sail pareça útil, necessária ou pelo menos tolerável depois de sofrer pressão institucional;
+* sinalizar que a rede maior possui contingências além de capangas de cais.
+
+Não revelar ainda:
+
+* se Masao ordenou diretamente;
+* se Dain "Brass" Mord coordenou ou só aproveitou;
+* qual carga, registro ou pessoa foi movimentada durante a distração;
+* se o incêndio era o objetivo principal ou cobertura.
+
+Revelar em camadas:
+
+1. três focos simultâneos em carroças ou rua de serviço;
+2. Red Sail chegando rápido demais com equipamento apropriado;
+3. alguma autoridade menor aceitando ajuda deles por necessidade;
+4. um armazém específico que não queimou, mas ficou sem vigilância;
+5. eventual pista de técnica, material ou mensageiro ligado ao "hóspede".

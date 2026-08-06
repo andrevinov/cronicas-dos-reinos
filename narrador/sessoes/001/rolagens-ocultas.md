@@ -366,3 +366,132 @@ Interpretação reservada:
 * o pedido não soa presunçoso ou criminoso, apenas insuficiente para pular protocolo;
 * o guardião reconhece que a pasta lacrada e o termo "testemunho" exigem filtro respeitoso sem abrir o lacre;
 * Tyr oferece mesa lateral e triagem preliminar: quem instruiu, quem corre risco vivo agora e por que não pode esperar.
+
+---
+
+## Selo de Maerra na triagem de Tyr
+
+Ren usa o selo de Maerra e foca nas vidas em risco: d20 12 + 2 = 14 contra CD 13. Sucesso.
+
+Guardiao de Tyr reconhece Maerra e aceita urgencia: d20 7 + 4 = 11 contra CD 12. Falha.
+
+Interpretação reservada:
+
+* Ren responde bem ao filtro: vidas em risco, humildade pessoal e foco em testemunho, não vingança;
+* o guardião reconhece o selo como ligado à Aurora Menor/Lathander, mas não conhece Maerra o bastante para pular protocolo;
+* o pedido entra como testemunho reservado urgente, sem abrir a pasta e sem nomes completos em voz alta;
+* a guardiã jovem vai buscar uma autoridade intermediária, não Sirrus diretamente.
+
+---
+
+## Ren apresenta o caso a Halessa
+
+Ren apresenta testemunho reservado a Halessa: d20 8 + 2 = 10 contra CD 13. Falha.
+
+Ren omite como obteve a pasta de Velis: d20 20 = 20 contra CD 13. Sucesso.
+
+Halessa percebe lacuna na cadeia de custodia: d20 15 + 5 = 20 contra CD 13. Sucesso.
+
+Halessa decide escalar o caso dentro de Tyr: d20 13 + 4 = 17 contra CD 14. Sucesso.
+
+Interpretação reservada:
+
+* a fala geral de Ren fica no eixo certo, mas longa e com arestas; Halessa não concede confiança ampla nem abrigo irrestrito;
+* Ren consegue evitar revelar que tomou a pasta à força, mas a frase sobre "cruzar com os documentos" não cria cadeia de custódia;
+* Halessa percebe a lacuna de custódia e marca isso como risco, sem acusar formalmente Ren neste momento;
+* o risco às testemunhas, o bilhete sobre impedir chegada a Tyr, o lacre de Maerra e a existência de cópia com Luath são suficientes para escalar o caso;
+* Tyr oferece medidas provisórias: resguardo de 24h, ficha selada para Maerra/Luath e audiência de lacre em câmara reservada.
+
+---
+
+## Ren pede abertura de lacre e confirmação institucional
+
+Ren pede audiencia de lacre imediata: d20 10 + 2 = 12 contra CD 12. Sucesso.
+
+Organiza camara reservada rapidamente (Halessa): d20 20 + 4 = 24 contra CD 13. Sucesso.
+
+Alcancam Maerra e Luath sem atraso (Mensageiros de Tyr): d20 16 + 2 = 18 contra CD 12. Sucesso.
+
+Interpretação reservada:
+
+* Ren escolhe uma linha operacional sensata: não move os Vell agora, mas tenta registrar prova e acionar confirmação externa;
+* Halessa aceita que mover testemunhas escondidas pode ser pior que protegê-las onde estão por hoje;
+* Halessa organiza câmara reservada rapidamente, sem esperar resposta de Maerra e Luath;
+* mensageiros de Tyr saem com fichas reservadas para Luath e Maerra e não sofrem atraso relevante neste momento;
+* condição institucional: paz juramentada para Ren, armas contidas, pasta sob custódia de Tyr após abertura;
+* se Ren aceitar, a audiência de lacre começa por volta de 11:21.
+
+---
+
+## Abertura da pasta em Tyr
+
+Leitura juridica do bilhete e das correcoes (Halessa): d20 17 + 5 = 22 contra CD 12. Sucesso.
+
+Escala para Sirrus sem adiar (Juramentado de Tyr): d20 19 + 4 = 23 contra CD 14. Sucesso.
+
+Organiza indice probatorio da pasta (Escriba de Tyr): d20 13 + 4 = 17 contra CD 13. Sucesso.
+
+Interpretação reservada:
+
+* Halessa identifica rapidamente o centro jurídico: obstrução de testemunho, adulteração/correção retroativa de registro e possível conluio entre Red Sail, Narwhal e D. Mord;
+* o bilhete "gravadora e menino são ruído; não deixar ruído chegar a Tyr" é forte o suficiente para chamar Sirrus imediatamente;
+* Caldrin Vos, segundo juramentado, concorda sem adiar;
+* o escriba consegue organizar um índice probatório inicial claro: retenção do volume 13, anulação/correções e bilhete;
+* a pasta continua com problema de origem, mas agora existe sob custódia formal de Tyr e foi aberta em câmara reservada;
+* Halessa pede que Ren escolha entre manter N.V./T.V. por iniciais ou registrar Nera Vell e Tavin Vell em ata reservada e selada antes de Sirrus entrar.
+
+---
+
+## Registro nominal dos Vell e entrada de Sirrus
+
+Percebe cuidado genuino de Ren pelos Vell (Halessa): d20 14 + 5 = 19 contra CD 10. Sucesso.
+
+Prioriza protecao antes de exigir localizacao (Sirrus Melandor): d20 1 + 5 = 6 contra CD 14. Falha.
+
+Interpretação reservada:
+
+* Halessa percebe que Ren está emocionalmente implicado e quer proteger Nera e Tavin, não apenas usá-los como peça;
+* Halessa registra Nera Vell e Tavin Vell em ata reservada e selada, mantendo nomes fora do livro público;
+* Sirrus reconhece a gravidade imediatamente, mas entra por controle institucional, não por confiança em Ren;
+* Sirrus não nega ajuda, mas não concede proteção nominal sem saber quem detém custódia atual ou sem confirmação de Maerra/Luath;
+* opções apresentadas: nomear guardião atual em registro selado, aguardar confirmação de Maerra/Luath, ou transferir os Vell voluntariamente para porta de Tyr;
+* ações possíveis antes do meio-dia: ordem de preservação de registros, juramentados para transferência discreta e convocação de Velis Rook.
+
+---
+
+## Ren nomeia Silva e pede para ouvir Velis
+
+Ren pede para ouvir Velis sob controle de Tyr: d20 3 + 2 = 5 contra CD 15. Falha.
+
+Aceita arranjo reservado sem expor Ren (Sirrus Melandor): d20 1 + 5 = 6 contra CD 13. Falha.
+
+Preservacao de registros sai antes do meio-dia (Ordem de Tyr): d20 11 + 4 = 15 contra CD 12. Sucesso.
+
+Interpretação reservada:
+
+* o nome de Silva Elkwood entra em registro selado como guardiã atual informada por Ren, ainda a confirmar por resposta externa;
+* Sirrus rejeita a presença oculta de Ren na primeira oitiva de Velis por risco de contaminar testemunho e criar arma narrativa para Narwhal;
+* a rejeição é institucional e firme, não hostilidade aberta;
+* Halessa oferece alternativa: Ren pode escrever até três perguntas, e ela decide quais cabem na oitiva;
+* Tyr emite ordem de preservação de registros imediatamente, cobrindo volume 13, retenções/anulações/correções, Narwhal Manor, Dain Mord, M. H., M. Harrow, lua velada e carga oriental;
+* Velis Rook será convocado por Tyr, mas Ren não deve agir contra ele antes da oitiva se quiser preservar força do caso.
+
+---
+
+## Perguntas de Ren e crise no Harbor District
+
+Aciona contingencia publica apos Tyr se mover (Rede de Masao): d20 18 + 4 = 22 contra CD 15. Sucesso.
+
+Consegue parecer util na crise (Red Sail): d20 10 + 3 = 13 contra CD 13. Sucesso.
+
+Mantem foco apesar da distracao urbana (Tyr): d20 7 + 4 = 11 contra CD 13. Falha.
+
+Interpretação reservada:
+
+* Halessa recebe as três perguntas de Ren como anexo reservado do portador;
+* as perguntas podem ser filtradas para não revelar fonte, técnica, testemunhas ou localização dos Vell;
+* Ren sai da câmara com wakizashi liberada e shuriken devolvidos;
+* uma contingência pública é acionada no Harbor District: fogo grande perto de armazéns de breu e cordame, com três focos simultâneos em carroças/rua de serviço;
+* não revelar autoria dentro da cena; Ren percebe timing suspeito, não prova;
+* Red Sail consegue se posicionar publicamente como força útil de contenção, protegendo armazéns e afastando saqueadores;
+* Tyr mantém a ordem de preservação e a convocação de Velis, mas recursos e atenção ficam divididos pela crise urbana.

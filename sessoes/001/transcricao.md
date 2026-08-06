@@ -6530,3 +6530,428 @@ A guardiã jovem acrescenta, seca:
 O nome de Maerra está na borda da situação, mesmo sem Ren tê-lo dito ainda. O lacre da Aurora Menor pode ajudar, mas só se Ren decidir usá-lo como ponte, não como escudo.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **10:58**. Ren não obteve acesso direto a Sirrus, mas o guardião reconheceu a seriedade de um testemunho lacrado e ofereceu um filtro preliminar sem abrir a pasta. Próxima resposta crítica: dizer quem o instruiu, quem está em risco vivo agora e por que o caso precisa subir rapidamente.
+
+**Jogador**
+
+Mostro o selo de Maerra.
+
+"Isso vale a vida de duas pessoas honradas... que valem mais do que a vida desse estrangeiro que vos fala. As pessoas que as perseguem são tão fortes que só temem Sirrus, talvez mais ninguém", falo, num tom tranquilo.
+
+**Narrador**
+
+O guardião olha para o selo.
+
+Não com reconhecimento imediato. Com atenção.
+
+"Aurora Menor", ele diz, depois de um instante. "Lathander."
+
+O nome de Maerra não abre a porta como uma chave. Mas impede que ela se feche.
+
+A guardiã jovem estende a mão, não para tomar a pasta, mas para apontar o banco junto da mesa lateral. O acólito fecha o livro principal, pega uma tabuinha menor e se aproxima.
+
+"Duas pessoas honradas têm nomes?", ela pergunta.
+
+O guardião mais velho ergue um dedo antes que Ren responda, como quem organiza uma rua antes de deixar carroça passar.
+
+"Não os diga alto se isso as mata. Iniciais servem por agora. Relação serve. Onde estão, se estiverem protegidas, diga em termos que não entreguem porta. Quem persegue, diga o que pode ser dito sem abrir o lacre."
+
+Ele olha de novo para o selo claro de Maerra.
+
+"Eu não conheço essa irmã o bastante para dobrar regra por ela. Conheço a casa o bastante para não tratar pedido dela como teatro."
+
+O acólito escreve três linhas na tabuinha, deixando espaços:
+
+```text
+Testemunho reservado.
+Fonte de triagem:
+Vidas em risco:
+Razão de urgência:
+```
+
+Então o guardião faz um sinal para a mulher mais jovem. Ela entra por um corredor lateral, rápida, sem correr. O velho permanece com Ren.
+
+"Ela vai chamar alguém com autoridade para ouvir sem abrir. Não Sirrus ainda."
+
+O tom dele não suaviza, mas fica mais preciso.
+
+"Então trate isto como testemunho: fonte, vidas em risco, urgência."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:00**. O selo de Maerra não deu acesso direto a Sirrus, mas convenceu a Casa de Tyr a tratar o caso como testemunho reservado urgente. Ren está sentado à mesa lateral; um acólito prepara registro mínimo sem nomes completos em voz alta, e a guardiã jovem foi chamar alguém com autoridade intermediária para ouvir sem abrir o lacre.
+
+**Jogador**
+
+Fico aguardando na mesa, observando os arredores, pensando em tudo que vi e ouvi esses dias, tentando pensar em algo que possa me dar vantagem na conversação que travarei brevemente.
+
+**Narrador**
+
+Ren observa.
+
+A Casa de Tyr não se move como a Aurora Menor. Na casa de Maerra, urgência entra pela porta lateral e vira água, pano limpo, catre. Aqui, urgência vira ordem: tabuinha menor, nomes evitados em voz alta, corredor separado, guardiões que não olham só para a pessoa, mas para o efeito que ela pode causar no prédio.
+
+Teste de Percepção (Ren): d20 19 + 5 = 24 contra CD 12. Sucesso.
+
+Ren percebe três coisas úteis. Primeiro: o livro grande no vestíbulo registra queixas comuns, mas a tabuinha menor fica fora dele; isso existe justamente para assuntos sensíveis antes de virarem registro público. Segundo: ninguém aqui quer tocar no lacre de Maerra antes da pessoa certa chegar, o que significa que a custódia do documento importa. Terceiro: a porta lateral por onde a guardiã saiu não leva ao salão principal; leva a salas internas de triagem, onde alguém decide se um caso sobe.
+
+Teste de Investigação (Ren): d20 19 + 3 = 22 contra CD 13. Sucesso.
+
+Quando Ren organiza os fatos, a vantagem não está em acusar todos de uma vez. Está em uma sequência limpa: duas testemunhas vivas foram marcadas como ruído; um documento escrito diz que esse ruído não deve chegar a Tyr; uma sacerdotisa de Lathander lacrou o que viu sem tentar vender certeza maior do que tinha; e a pasta roubada é perigosa justamente porque os inimigos podem transformá-la em acusação se Tyr não registrar primeiro que ela existe.
+
+Teste de Religião (Ren): d20 14 + 1 = 15 contra CD 12. Sucesso.
+
+Tyr não é Lathander. Pedir piedade pode funcionar, mas não é a língua mais forte da casa. A língua forte é dever: custódia, testemunho, ameaça a vidas, obstrução de justiça. Ren entende que, se entrar pela dor de Aiko ou pela cabeça de Masao, a porta endurece. Se entrar pelo direito de Nera e Tavin continuarem vivos para testemunhar, a casa ouve melhor.
+
+O acólito não apressa Ren. Só molha a ponta da pena e espera.
+
+Pelo corredor, passos retornam: a guardiã jovem volta acompanhada de uma mulher de meia-idade em veste cinza-azulada, cabelo preso em trança curta, uma faixa com a balança de Tyr atravessando o peito. Ela não tem o peso público de Sirrus Melandor, mas todos no vestíbulo ajustam a postura meio palmo quando ela entra.
+
+Ela senta do outro lado da mesa lateral.
+
+"Sou **Irmã Halessa Vorn**, ouvidora juramentada desta casa", diz. "O lacre permanece fechado por enquanto. Você vai me dar o bastante para eu decidir se isto sobe, se fica, ou se chama guarda."
+
+Ela olha para a tabuinha menor.
+
+"Fonte de triagem. Vidas em risco. Razão de urgência."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:03**. Ren obteve preparação social: se mantiver a próxima fala focada em custódia, testemunho, vidas em risco e obstrução de justiça, recebe **+2 circunstancial** na próxima rolagem social com Halessa/Tyr. A autoridade intermediária presente é **Irmã Halessa Vorn**, ouvidora juramentada da Casa de Tyr; a pasta segue lacrada.
+
+**Jogador**
+
+"Boa dia, irmã. Sou Ren Kagehira. Sou um estrangeiro de Kara-Tur, recém-chegado à cidade.
+
+Estou em sua cidade em busca de um fugitivo, um criminoso que fugiu de meu país. A pista que segui de lá pra cá aponta que este hoje está em Ravens Bluff. Enquanto investigava a pista, acabei me deparando com um sequestro de uma jovem... N.V. Fiz o que pude e resgatei a jovem das mãos de seus captores, que eram homens da Red Sail. A pedido dela, também resgatei o irmão dela, T.V., que estava prestes a ser sequestrado pela Red Sail. Isso ocorreu há 24 horas. Desde então tenho mantido-os fora das vistas de todos, a despeito das buscas ostensivas que a Red Sail tem feito pela cidade.
+
+A garota é seladora. Ela iria ser eliminada por saber muito sobre uma operação que a Red Sail iria iniciar em breve, em conluio com o homem que persigo. A moça foi solicitada, sem prévio entendimento, a falsificar o selo de meu clã. Ela o fez e, junto do irmão, ouviram demais no processo. E eu acabei impedindo a queima de arquivo.
+
+Coloco o livro copiado por Maerra na mesa.
+
+"Nesse livro, copiado pela sacerdote de Lathander, estão cópias das anotações que a seladora mantinha para sua segurança, em relação a pagamentos e pedidos que recebia."
+
+Coloco a pasta na mesa.
+
+"Uma fonte segura minha me informou que um dos envolvidos iria destruir algumas provas hoje em Marwal Manor e eu tive a sorte de cruzar com os documentos antes que eles fossem destruídos", falo, tentando não revelar de que forma cruzei com eles. "A sacerdotisa revisou e lacrou-os, pois são bastante sensíveis."
+
+Respiro. Falo olhando nos olhos dela.
+
+"Preciso de abrigo para proteger duas testemunhas chave de um caso que envolve abuso de autoridade, extorsão, tráfico de influências, sequestro e mais alguns crimes que são crimes tanto aqui quanto no leste", sumarizando.
+
+**Narrador**
+
+Há um ajuste prático antes que o gesto vire fato: a cópia parcial feita por Maerra não está com Ren. Ela ficou com Luath, no posto da City Guard/Night Watch. O que Ren põe na mesa, sem abrir, é a pasta lacrada; e o que ele entrega com a voz é a informação de que já existe uma cópia parcial, selada por Lathander, sob custódia de um sargento da guarda.
+
+Halessa não interrompe.
+
+O acólito escreve pouco. Iniciais. Red Sail. Seladora. Irmão. Busca ostensiva. Cópia com Luath. Pasta lacrada por Maerra. Ele não escreve o nome do fugitivo de Kara-Tur quando Ren ainda não o oferece como centro do pedido.
+
+Teste de Persuasão com preparação (Ren): d20 8 + 2 = 10 contra CD 13. Falha.
+
+A fala de Ren é honesta no eixo certo, mas longa o bastante para abrir arestas. Halessa escuta "fugitivo de meu país", "homem que persigo" e "tive a sorte de cruzar com os documentos" sem perder o fio principal, mas também sem comprar a história inteira do modo como Ren gostaria.
+
+"Narwhal Manor", ela corrige, baixa, quando Ren diz Marwal. Não como repreensão. Como registro.
+
+Então ela põe dois dedos sobre a mesa, perto da pasta lacrada, sem tocá-la.
+
+"Sorte não é cadeia de custódia."
+
+A frase fica no ar por um instante. Não há acusação formal nela. Ainda.
+
+"Mas que alguém tenha escrito que uma seladora e um menino não devem chegar a Tyr, se isso estiver aí dentro como você afirma, é matéria desta casa."
+
+Halessa olha para o acólito.
+
+"Registro reservado. Não no livro grande."
+
+O acólito muda de pena.
+
+Halessa volta a Ren.
+
+"Eu não concedo abrigo formal a sombras. Concedo a pessoas. Por ora, aceito as iniciais. Para proteção, precisarei dos nomes completos antes que cruzem uma porta sob Tyr. Não em voz alta aqui."
+
+Ela enfim toca a borda do pano que envolve a pasta, apenas no laço exterior, confirmando visualmente o lacre de Maerra sem violá-lo.
+
+"Isto sobe. Não ainda para Sirrus Melandor em pessoa. Sobe para câmara reservada desta casa, com recado a ele se o lacre disser metade do que você diz."
+
+A guardiã jovem, de pé atrás dela, relaxa meio dedo da mão sobre o punho da arma.
+
+"Você pediu abrigo. Posso oferecer três coisas agora, Ren Kagehira."
+
+Halessa ergue um dedo.
+
+"Primeiro: resguardo provisório por vinte e quatro horas para N.V. e T.V., se eles aceitarem vir até uma porta indicada por Tyr sem escolta ruidosa."
+
+Segundo dedo.
+
+"Segundo: uma ficha selada desta casa para a irmã Maerra ou para o sargento Luath, confirmando que este testemunho entrou em triagem reservada. Isso não absolve ninguém. Mas torna mais difícil fingirem que estas pessoas nunca existiram."
+
+Terceiro.
+
+"Terceiro: audiência de lacre. Não pública. Você, eu, outro juramentado, e se o conteúdo justificar, Sirrus será informado antes do próximo sino maior."
+
+Ela sustenta o olhar de Ren.
+
+"Agora eu preciso de uma escolha operacional, não de mais história: as testemunhas podem ser movidas para uma porta de Tyr sem que isso as mate? Ou você precisa que o primeiro resguardo vá até elas por meio de Maerra, Luath ou outro intermediário confiável?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:07**. Halessa não comprou todos os pontos de Ren nem ignorou a lacuna sobre como a pasta foi obtida, mas decidiu escalar o caso dentro de Tyr. A pasta continua lacrada. Tyr oferece três medidas imediatas: resguardo provisório de 24h para N.V. e T.V. se puderem ser movidos com segurança; ficha selada para Maerra ou Luath confirmando triagem reservada; e audiência de lacre em câmara reservada, com possibilidade de informar Sirrus antes do próximo sino maior se o conteúdo justificar.
+
+**Jogador**
+
+"As testemunhas estão... seguras. [No circo, onde Ren acredita que ninguém sabe, cercada por homens da Night Watch e com a Red Sail impossibilitada de operar livremente, além de que já fizeram revista na Red Sail... o circo parece seguro o suficiente hoje. Amanhã é outra história.] Estou mantendo-as seguras. Hoje elas tem abrigo... se eu precisar amanhã ou depois, espero contar com vocês. Por hoje, eu me interesso mais na confirmação com Luath e Maerra e com a abertura do lacre e escalação para Sirrus. Quando podemos realizar isso?"
+
+**Narrador**
+
+Teste de Persuasão (Ren): d20 10 + 2 = 12 contra CD 12. Sucesso.
+
+Halessa mede Ren por um instante mais longo.
+
+"Então não as mova duas vezes sem necessidade", ela diz. "Se estão vivas, ocultas e não isoladas de toda ajuda, isso é melhor do que fazê-las atravessar a cidade só para satisfazer nosso livro de entradas."
+
+Ela olha para o acólito.
+
+"Duas fichas. Uma para o sargento Luath, pedindo confirmação reservada de custódia da cópia parcial e de qualquer ação tomada contra buscas ilegais da Red Sail. Uma para a irmã Maerra Thandrel, pedindo confirmação reservada do lacre, da abertura presenciada e da condição das duas testemunhas quando as viu."
+
+O acólito escreve depressa. Não escreve N.V. e T.V. por extenso.
+
+Halessa volta a Ren.
+
+"A abertura do lacre pode começar em doze minutos, se você aceitar as condições da casa. Câmara reservada, porta interna, sem plateia. Eu, outro juramentado e um escriba. A pasta será aberta diante de você, mas depois fica sob guarda de Tyr até decisão de custódia."
+
+A guardiã jovem já pega um cordão branco de uma gaveta lateral.
+
+"Sua lâmina fica com você, embainhada e presa por paz juramentada. Armas arremessáveis ficam em pacote fechado sobre a mesa da câmara enquanto o lacre é aberto. Se o cordão for rompido sem ameaça clara à sua vida, esta conversa muda de nome."
+
+Halessa diz isso sem ameaça dramática. É regra da casa.
+
+"Quanto a Sirrus: se o bilhete existir como você descreveu, e se a pasta mostrar ligação plausível entre Narwhal, Red Sail e obstrução de testemunho, ele será informado antes do próximo sino maior. Não prometo presença imediata. Prometo que o caso subirá."
+
+Um dos guardiões sai com as fichas seladas. Outro permanece.
+
+"Você terá a confirmação de envio agora. A resposta de Luath e Maerra pode levar meia hora, talvez uma hora, dependendo das ruas. A audiência de lacre não precisa esperar por isso."
+
+Ela inclina a cabeça, mínima.
+
+"Então: você entra como testemunha, sob paz juramentada, e a pasta fica sob custódia de Tyr depois da abertura. Aceita?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:09**. Halessa aceitou não mover Nera e Tavin agora. Dois mensageiros de Tyr saíram com fichas reservadas para Luath e Maerra. A audiência de lacre pode começar por volta de **11:21**, em câmara reservada, se Ren aceitar paz juramentada: wakizashi embainhada e presa por cordão branco; shuriken em pacote fechado sobre a mesa da câmara; pasta aberta diante de Ren e mantida sob custódia de Tyr depois.
+
+**Jogador**
+
+"Aceito", falo, levemente aliviado. Por Nera e Tavin. E aguardo as instruções.
+
+**Narrador**
+
+Halessa faz um sinal curto para a guardiã jovem.
+
+O cordão branco não prende a wakizashi como uma humilhação. Prende como declaração visível: a lâmina está ali, reconhecida, mas a casa exige que ela permaneça em paz. Os shuriken são contados, colocados num pano limpo e fechados com um nó simples sobre a mesa. Nada disso sai da vista de Ren.
+
+"Você entra como testemunha e portador do lacre", diz Halessa. "Não está preso. Não está absolvido. Não está autorizado a omitir ameaça direta a vidas dentro desta casa. Se for perguntado sobre fato, responda fato. Se não souber, diga que não sabe."
+
+Doze minutos depois, Ren passa por uma porta interna para uma câmara menor, de pedra clara, sem janelas para a rua. Há uma mesa pesada, três cadeiras de um lado, uma cadeira do outro. Halessa entra com outro juramentado: um homem magro, calvo, de barba grisalha curta, chamado **Irmão Caldrin Vos**. O escriba fica perto da ponta da mesa, com pena e areia de secagem.
+
+A pasta é posta no centro.
+
+"Lacre de Maerra Thandrel, Casa da Aurora Menor, recebido por Ren Kagehira e aberto em câmara reservada de Tyr", recita Halessa.
+
+Ela rompe o lacre.
+
+Teste de avaliação jurídica (Halessa): d20 17 + 5 = 22 contra CD 12. Sucesso.
+
+Teste para escalar a Sirrus sem adiar (Irmão Caldrin): d20 19 + 4 = 23 contra CD 14. Sucesso.
+
+Teste para organizar índice probatório (Escriba de Tyr): d20 13 + 4 = 17 contra CD 13. Sucesso.
+
+A leitura não demora tanto quanto Ren esperaria. Halessa não lê como leiga: ela separa a pasta em três pilhas. A primeira: registros de carga e retenção do volume 13. A segunda: anulação retroativa, correções de linguagem, troca de "M. H." por "M. Harrow" e remoção da palavra "oriental". A terceira: bilhete curto.
+
+Quando chega à frase sobre a gravadora e o menino serem "ruído" e não chegarem a Tyr, o rosto dela não muda. Mas a mão para.
+
+Caldrin lê por cima do ombro dela e diz apenas:
+
+"Chame Sirrus."
+
+O escriba ergue os olhos.
+
+"Agora", completa Caldrin.
+
+Halessa não discute.
+
+"Agora."
+
+A guardiã jovem sai da câmara quase correndo, embora ainda com disciplina. Halessa vira uma folha em branco, escreve uma nota curta e sela com cera cinza-azulada de Tyr.
+
+"Isso já não é só proteção de testemunha", ela diz a Ren. "É possível obstrução deliberada de justiça por pessoas com acesso a registro mercantil, autoridade privada armada e correção retroativa de documento. A pasta continua com problema de origem. Mas agora ela existe aqui, foi aberta aqui, e ninguém pode fingir que Tyr nunca viu."
+
+Ela empurra uma tabuinha menor para Ren, com a pena ao lado.
+
+"Última escolha antes de Sirrus entrar: você pode manter N.V. e T.V. por iniciais nesta primeira ata, ou pode escrever os nomes completos em registro reservado, selado. Sem isso, Tyr pode agir sobre o crime e sobre o risco, mas não pode conceder resguardo formal nominal se a manhã virar contra eles."
+
+O pacote de shuriken segue sobre a mesa, fechado, a menos de um braço de distância. A wakizashi está na cintura de Ren, presa pelo cordão branco.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:29**. A pasta foi aberta em câmara reservada e passou à custódia formal de Tyr. Sirrus Melandor está sendo chamado imediatamente. Halessa pede que Ren decida se registra **Nera Vell** e **Tavin Vell** por nomes completos em ata reservada e selada, ou se mantém apenas as iniciais por enquanto.
+
+**Jogador**
+
+"Nera Vell. Tavin Vell. São os nomes deles." Ren fala quase com doçura. Alguém atento perceberia que Ren quer o bem deles dois. "Por favor, registre os nomes deles."
+
+**Narrador**
+
+Teste de Intuição (Halessa): d20 14 + 5 = 19 contra CD 10. Sucesso.
+
+Halessa percebe.
+
+Ela não sorri, não suaviza o protocolo, não transforma cuidado em absolvição. Mas a pena dela muda de ritmo: menos seca, mais cuidadosa. Ela escreve **Nera Vell** e **Tavin Vell** em uma linha separada da ata, dobra a tira de pergaminho sobre si mesma e pinga cera cinza-azulada no ponto de fechamento.
+
+"Registrados em ata reservada e selada", diz. "Não no livro público."
+
+O escriba escreve um índice sem nomes, referindo-se a eles como Testemunha Um e Testemunha Dois. Caldrin observa a porta.
+
+Poucos minutos depois, a porta interna abre.
+
+**Sirrus Melandor** não entra como homem apressado, embora tenha sido chamado com urgência. Ele é alto, ombros retos, barba curta muito bem aparada, veste branca e cinza com a balança de Tyr sobre o peito. O olho esquerdo é coberto por uma faixa simples de linho escuro; o direito passa por Halessa, por Caldrin, pela pasta aberta, pelo cordão branco na wakizashi de Ren e pelo pacote de shuriken sobre a mesa.
+
+Teste de postura inicial (Sirrus): d20 1 + 5 = 6 contra CD 14. Falha.
+
+Sirrus lê primeiro. Não cumprimenta Ren antes disso.
+
+Ele pega o bilhete com uma pinça de madeira, lê a linha sobre a gravadora e o menino, depois lê a correção que apaga "oriental" e troca **M. H.** por **M. Harrow**. Só então levanta o olho para Ren.
+
+"Você trouxe à minha casa um documento importante, irregularmente obtido, envolvendo duas testemunhas nomeadas que não estão aqui, uma organização privada armada, um registro mercantil adulterado e uma pessoa estrangeira que você afirma perseguir."
+
+A voz dele é baixa, mas pesa.
+
+"A Casa de Tyr não será usada como sombra de outra sombra."
+
+Halessa intervém antes que a frase feche a sala:
+
+"Os nomes estão selados. A pasta entrou em custódia. Luath e Maerra foram acionados. O risco às testemunhas é plausível e imediato."
+
+Sirrus não tira o olho de Ren.
+
+"Concordo. Por isso isto não volta ao vestíbulo."
+
+Ele pousa o bilhete sobre a mesa.
+
+"Ren Kagehira, eu posso fazer três coisas antes do meio-dia. Posso emitir uma ordem de preservação sobre registros ligados ao volume 13, Narwhal Manor e Dain Mord. Posso mandar dois juramentados discretos acompanharem uma transferência das testemunhas para resguardo de Tyr, se elas consentirem. E posso convocar Velis Rook para responder por anulação retroativa sob pena de obstrução."
+
+Ele deixa uma pausa curta.
+
+"Mas não concedo proteção nominal a pessoas cuja localização e custódia você retém sozinho. Se elas estão sob guarda de terceiro, preciso do nome desse guardião, em registro selado, ou preciso que Maerra ou Luath confirmem custódia alternativa."
+
+Halessa fica imóvel, mas Ren percebe que essa é a fresta: Sirrus não está exigindo que Ren entregue Nera e Tavin ali, agora. Está exigindo que Tyr saiba por qual porta a responsabilidade passa se algo acontecer.
+
+Sirrus conclui:
+
+"Você quer justiça para eles. Então escolha a forma dela: nomeie o guardião atual em registro selado, espere a confirmação de Maerra ou Luath, ou traga as testemunhas a uma porta de Tyr antes que Narwhal escreva a próxima mentira."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:34**. Nera Vell e Tavin Vell foram registrados por nome completo em ata reservada e selada. Sirrus Melandor entrou na câmara, reconheceu a gravidade dos documentos, mas adotou postura rígida: Tyr pode preservar registros, convocar Velis e organizar resguardo, mas para proteção nominal precisa de uma destas opções: nome do guardião atual em registro selado, confirmação de custódia por Maerra/Luath, ou transferência voluntária dos Vell para uma porta de Tyr.
+
+**Jogador**
+
+"Nomeio". Pego um papel, escrevo nome "Silva Elkwood", e dobro. Entrego para registro.
+
+"Sobre o que o senhor pode fazer antes do meio dia, acredito que a preservação dos registros e a convocação de Velis Rook são justas e compulsórias ao caso. Solicito poder acompanhar a convocação de Velis Rook, se possível. Não preciso estar visível pra ele, só quero poder ouvir o que ele tem a dizer."
+
+Faço silêncio.
+
+"Pela segurança das testemunhas. E da cidade." Justificando meu pedido de ouvir o interrogatório de Velis.
+
+**Narrador**
+
+Halessa recebe o papel dobrado com o nome de **Silva Elkwood** sem lê-lo em voz alta. Ela marca o exterior com um traço curto, sela o papel e o prende à ata reservada dos Vell.
+
+"Guardião atual informado pelo portador", ela diz para o escriba. "A confirmar por resposta externa."
+
+Isso não expõe Silva no livro público. Mas também não força Tyr a tratá-la como guardiã formal sem confirmação dela, de Maerra ou de Luath.
+
+Teste de Persuasão (Ren): d20 3 + 2 = 5 contra CD 15. Falha.
+
+Teste de decisão institucional (Sirrus): d20 1 + 5 = 6 contra CD 13. Falha.
+
+Teste de preservação de registros (Tyr): d20 11 + 4 = 15 contra CD 12. Sucesso.
+
+Sirrus ouve o pedido de Ren até o fim.
+
+"Não."
+
+A palavra é seca, mas não raivosa.
+
+"Você é parte interessada, portador irregular do documento e possível alvo da rede que estes papéis sugerem. Se Velis Rook disser algo verdadeiro na sua presença oculta, o testemunho nasce contaminado. Se disser algo falso e depois descobrir que você ouviu, nós demos a ele uma arma. Se ele morrer hoje, alguém dirá que Tyr ouviu você antes de ouvi-lo."
+
+Caldrin já escreve duas ordens curtas em pergaminho firme.
+
+Sirrus continua:
+
+"A convocação será feita por Tyr, não por você. A preservação dos registros sai agora: volume 13, retenções anuladas, correções retroativas, Narwhal Manor, Dain Mord e qualquer entrada ligada a M. H., M. Harrow, lua velada ou carga oriental. Se algum registro desaparecer depois desta ordem, isso deixa de ser descuido e vira confissão por fogo."
+
+Ele olha para a pasta aberta.
+
+"Velis Rook será convocado para responder por anulação retroativa e obstrução. Você não ouvirá a primeira oitiva atrás de cortina."
+
+Halessa, vendo a rigidez de Sirrus, oferece a fresta prática:
+
+"Você pode escrever três perguntas. Eu decidirei quais cabem na oitiva sem comprometer a ata. Depois, se a segurança das testemunhas exigir, poderemos lhe dar um extrato reservado do que for operacionalmente relevante."
+
+Sirrus não contradiz.
+
+"E Ren Kagehira", ele acrescenta. "Se você decidir agir contra Velis antes que ele responda a esta casa, você enfraquece Nera Vell e Tavin Vell. Não fortalece."
+
+O escriba sopra areia sobre a ordem de preservação. Caldrin enrola uma das cópias e passa a um guardião.
+
+A engrenagem de Tyr começou a se mover.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:38**. Silva Elkwood foi nomeada em registro selado como guardiã atual informada por Ren, ainda a confirmar. Tyr emitiu ordem de preservação de registros antes do meio-dia e convocará Velis Rook. Sirrus negou que Ren acompanhe ocultamente a primeira oitiva de Velis, mas Halessa permitiu que Ren escreva até **três perguntas** para possível uso na oitiva e prometeu extrato reservado do que for operacionalmente relevante se a segurança das testemunhas exigir.
+
+**Jogador**
+
+Contrariado, mas apaziguado, Ren escreve as seguintes perguntas:
+
+"Qual o interesse de vocês em selos de clãs de Kara-Tur?"
+"Quem é 'o hóspede' e qual é o interesse de vocês nele?"
+"O que você estão escondendo no volume 13?"
+
+Entrega-as a Halessa. Agradece a Sirrus, Halessa e os outros presentes.
+
+"Eu não pretendo agir contra Velis, eminência. Só quero as testemunhas seguras. Nossos interesses estão alinhados." E me retiro.
+
+[Seria interessante que Masao pudesse fazer algo que afetasse a cidade. Algo que pelo menos pudesse abalar um pouco essas pessoas, deixa-las incrédulas... mas que ao mesmo tempo pudesse fortalecer um pouco a Red Sail. Afinal, a Red Sail só tem perdido, e se eles já fecharam um acordo com Masao, este já deve ter colocado eles sobre algum tipo de proteção. Não acate minha ideia se não achar que faça sentido pra história que você já está montando.]
+
+**Narrador**
+
+Halessa lê as três perguntas em silêncio, sem comentar o mérito de cada uma.
+
+"Recebidas", ela diz. "Eu não prometo forma. Prometo que serão consideradas sem expor fonte ou testemunhas."
+
+Sirrus inclina a cabeça para Ren, um gesto pequeno demais para ser caloroso, mas preciso demais para ser desprezo.
+
+"Então mantenha esse alinhamento quando estiver fora desta casa."
+
+O escriba registra a entrega das perguntas como **anexo reservado do portador**. Halessa recolhe a tabuinha. Caldrin acompanha um guardião até a porta com a ordem de preservação enrolada e selada; outro mensageiro já recebe instrução separada para a convocação de Velis Rook.
+
+Quando Ren se levanta, a guardiã jovem desfaz o cordão branco da wakizashi. O pacote de shuriken é devolvido fechado, sem que ninguém o abra de novo.
+
+Ren está quase deixando a câmara quando um som atravessa a pedra.
+
+Não é sino de hora.
+
+É sino de alarme, vindo de longe, na direção baixa da cidade.
+
+Um acólito aparece no corredor, ofegante, e para antes de cruzar a soleira da câmara reservada. Ele olha primeiro para Sirrus, não para Ren.
+
+"Fumaça no Harbor District, eminência. Fogo grande perto dos armazéns de breu e cordame. Dizem que três carroças pegaram fogo ao mesmo tempo na rua de serviço. A guarda está puxando gente para baixo."
+
+Sirrus não se move por um instante.
+
+"A ordem de preservação sai mesmo assim", ele diz.
+
+Caldrin responde:
+
+"Já saiu."
+
+Quando Ren chega ao vestíbulo e depois aos degraus externos da Casa de Tyr, a fumaça já é visível: uma coluna escura, oleosa, subindo além dos telhados ao sul e leste. Gente comum para na rua. Alguns correm. Outros ficam olhando, como se esperassem que a cidade decidisse por eles qual medo vem primeiro.
+
+Um homem passa gritando que a Red Sail já está no local com cordas, barris d'água e homens armados segurando saqueadores longe dos armazéns. Outro responde que é claro que estão: metade daqueles armazéns paga proteção a eles.
+
+O detalhe que incomoda Ren é o timing.
+
+Tyr se mexe contra Narwhal e Red Sail; antes que o meio-dia chegue, algo grande puxa guarda, atenção e rumor de volta para o porto. Ren não sabe se isso é coincidência, resposta ou peça de um jogo maior. Mas sente a cidade mudar de peso sob os pés.
+
+Atrás dele, dentro da Casa de Tyr, Sirrus já dá ordens mais curtas. A convocação de Velis ainda está viva. A preservação dos registros saiu. Mas a manhã acabou de ficar mais difícil.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **11:45**. Ren deixou a câmara reservada de Tyr; a wakizashi e os shuriken foram liberados. Suas três perguntas foram entregues a Halessa como anexo reservado. A pasta permanece sob custódia formal de Tyr. Há fumaça grande no Harbor District, perto de armazéns de breu e cordame; rumores dizem que a Red Sail já atua no local como força de contenção. Tyr emitiu a ordem de preservação, mas a crise urbana deve dividir atenção e recursos.

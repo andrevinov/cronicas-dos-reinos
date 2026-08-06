@@ -1620,6 +1620,74 @@ Ponto morto da Silver Lily:
 * Ren precisa explicar quem o instruiu, quem corre risco vivo agora e por que o caso não pode esperar a ordem normal das queixas;
 * a guardiã jovem avisou que, se a primeira palavra for vingança, Ren escolheu a casa errada;
 * hora aproximada no primeiro filtro de Tyr: 10:58.
+* Ren mostrou o selo de Maerra e explicou que duas pessoas honradas correm risco;
+* o guardião reconheceu o selo como ligado à Aurora Menor/Lathander, mas não conhece Maerra o suficiente para pular protocolo;
+* Tyr classificou o caso como testemunho reservado urgente;
+* o acólito preparou registro mínimo sem exigir nomes completos em voz alta;
+* a guardiã jovem foi chamar uma autoridade intermediária para ouvir sem abrir a pasta;
+* Ren ainda não obteve acesso direto a Sirrus Melandor;
+* hora aproximada após o avanço na triagem: 11:00.
+* Ren observou que a Casa de Tyr possui um registro reservado separado do livro grande de queixas públicas;
+* a custódia do lacre importa: ninguém quis tocar na pasta antes de autoridade adequada chegar;
+* a linha mais forte para Tyr é: custódia, testemunho, vidas em risco e obstrução de justiça;
+* a linha mais fraca para Tyr é: dor pessoal, vingança e caça a Masao;
+* Irmã Halessa Vorn, ouvidora juramentada da Casa de Tyr, chegou para ouvir o bastante para decidir se o caso sobe, fica ou chama guarda;
+* se Ren mantiver o foco na linha forte, terá +2 circunstancial na próxima rolagem social com Tyr;
+* hora aproximada: 11:03.
+* Ren não carrega a cópia parcial feita por Maerra; essa cópia ficou com Luath no posto da City Guard/Night Watch;
+* Ren apresentou o caso a Halessa com foco em N.V., T.V., Red Sail, falsificação do selo do clã, tentativa de queima de arquivo e pasta lacrada;
+* Halessa percebeu que a forma como Ren obteve a pasta tem lacuna de cadeia de custódia;
+* Halessa não acusou Ren formalmente, mas disse que sorte não é cadeia de custódia;
+* Halessa decidiu escalar o caso dentro de Tyr;
+* Tyr oferece resguardo provisório de 24 horas para N.V. e T.V., caso possam ser movidos com segurança para uma porta indicada por Tyr;
+* Tyr oferece ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada;
+* Tyr oferece audiência de lacre em câmara reservada, com possibilidade de informar Sirrus antes do próximo sino maior se o conteúdo justificar;
+* Halessa aguarda uma escolha operacional: mover as testemunhas ou levar o primeiro resguardo até elas por Maerra, Luath ou outro intermediário confiável;
+* hora aproximada: 11:07.
+* Ren escolheu não mover Nera e Tavin por enquanto, pois acredita que estão seguros hoje no circo;
+* Halessa aceitou que mover testemunhas ocultas sem necessidade pode piorar o risco;
+* Tyr enviou duas fichas reservadas: uma para Luath confirmar custódia da cópia parcial e ações contra buscas ilegais da Red Sail; outra para Maerra confirmar o lacre, a abertura presenciada e a condição das testemunhas quando as viu;
+* a audiência de lacre pode começar por volta de 11:21;
+* condição de Tyr para a audiência: Ren entra sob paz juramentada, com wakizashi embainhada e presa por cordão branco, shuriken em pacote fechado sobre a mesa e pasta sob custódia de Tyr depois da abertura;
+* se a pasta mostrar o bilhete e ligação plausível Narwhal/Red Sail/obstrução de testemunho, Sirrus será informado antes do próximo sino maior;
+* hora aproximada: 11:09.
+* Ren aceitou a paz juramentada de Tyr;
+* a wakizashi ficou embainhada e presa por cordão branco, e os 9 shuriken ficaram em pacote fechado sobre a mesa da câmara;
+* a pasta foi aberta em câmara reservada diante de Halessa, Irmão Caldrin Vos, escriba e Ren;
+* Halessa separou a pasta em registros de retenção do volume 13, anulação/correções retroativas e bilhete curto;
+* o bilhete sobre "gravadora e menino" não chegarem a Tyr foi forte o bastante para Caldrin mandar chamar Sirrus imediatamente;
+* a pasta agora está sob custódia formal de Tyr, embora sua origem ainda tenha problema;
+* Halessa pediu que Ren escolha entre manter N.V./T.V. por iniciais ou registrar Nera Vell e Tavin Vell por nomes completos em ata reservada e selada;
+* hora aproximada: 11:29.
+* Ren registrou Nera Vell e Tavin Vell por nome completo em ata reservada e selada;
+* Halessa percebeu que Ren quer proteger os Vell de forma genuína;
+* Sirrus Melandor entrou na câmara reservada;
+* Sirrus reconheceu a gravidade dos documentos, mas adotou postura rígida e não concede proteção nominal sem linha de custódia;
+* Sirrus pode agir antes do meio-dia para preservar registros ligados ao volume 13/Narwhal/Dain Mord, enviar juramentados discretos para transferência voluntária dos Vell e convocar Velis Rook;
+* para resguardo nominal dos Vell, Ren precisa nomear o guardião atual em registro selado, aguardar confirmação de Maerra/Luath ou transferir voluntariamente Nera e Tavin para uma porta de Tyr;
+* hora aproximada: 11:34.
+* Ren nomeou Silva Elkwood em registro selado como guardiã atual informada por ele, ainda a confirmar externamente;
+* o nome de Silva não foi lido em voz alta nem lançado no livro público;
+* Tyr emitiu ordem de preservação de registros cobrindo volume 13, retenções anuladas, correções retroativas, Narwhal Manor, Dain Mord, M. H., M. Harrow, lua velada e carga oriental;
+* Velis Rook será convocado por Tyr para responder por anulação retroativa e obstrução;
+* Sirrus negou que Ren acompanhe ocultamente a primeira oitiva de Velis, por risco de contaminar testemunho;
+* Halessa permitiu que Ren escreva até três perguntas para possível uso na oitiva;
+* se a segurança das testemunhas exigir, Tyr pode fornecer a Ren um extrato reservado do que for operacionalmente relevante;
+* Sirrus avisou que agir contra Velis antes da oitiva enfraqueceria Nera e Tavin;
+* hora aproximada: 11:38.
+* Ren entregou a Halessa três perguntas para possível uso na oitiva de Velis:
+  - "Qual o interesse de vocês em selos de clãs de Kara-Tur?"
+  - "Quem é 'o hóspede' e qual é o interesse de vocês nele?"
+  - "O que vocês estão escondendo no volume 13?"
+* Halessa recebeu as perguntas como anexo reservado do portador, sem prometer forma específica;
+* Sirrus disse a Ren para manter o alinhamento com Tyr quando estiver fora da casa;
+* ao sair da câmara, Ren recuperou a wakizashi e os 9 shuriken;
+* a pasta de Velis permanece sob custódia formal de Tyr;
+* Ren ouviu sino de alarme vindo da direção baixa da cidade, não sino de hora;
+* há fumaça escura e oleosa subindo do Harbor District, perto dos armazéns de breu e cordame;
+* um rumor de rua diz que a Red Sail já está no local com cordas, barris d'água e homens armados segurando saqueadores longe dos armazéns;
+* Ren percebe o timing suspeito: Tyr se move contra Narwhal/Red Sail, e antes do meio-dia uma crise puxa guarda, atenção e rumor de volta para o porto;
+* hora aproximada: 11:45.
 
 Progressão:
 
