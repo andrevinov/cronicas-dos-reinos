@@ -17,17 +17,19 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "porto"
-  ponto_exato: "lado de fora da Red Sail Tavern"
-  descricao_operacional: "Ren dispensou Mara Tharle, encerrou a Escuridão e está fazendo reconhecimento discreto pelo lado de fora da Red Sail Tavern."
+  area: "borda do acampamento do circo dos Mooney"
+  ponto_exato: "limite externo das carroças do Jack Mooney & Sons Circus"
+  descricao_operacional: "Ren, Nera e Tavin seguiram da Casa da Aurora Menor até a borda do circo dos Mooney. Nera e Tavin guiaram a rota por ruas menores e passagens de carroceiros. O grupo chegou sem contato direto, mas Ren não conseguiu confirmar se a busca ficou totalmente para trás. Nera falou sobre Aiko e reconheceu que Tavin está vivo porque Ren entrou no barco. O circo está acordando; há uma entrada visível entre carroças e uma lateral de cozinha. Silva Elkwood ainda não foi vista."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
-  periodo_do_dia: "início da noite"
+  periodo_do_dia: "madrugada"
+  hora_aproximada: "05:28"
   clima: "névoa baixa vinda do Dragon Reach, ar úmido e cheiro de chuva antiga"
-  observacao: "A data exata pode ser definida na preparação da primeira sessão sem alterar o conceito inicial."
+  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
+  prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
 
 recursos:
   pontos_de_vida:
@@ -38,14 +40,22 @@ recursos:
     maximos: 3
     dado: "d8"
   ki:
-    atuais: 1
+    atuais: 3
     maximos: 3
     recarga: "descanso curto ou longo"
   classe_de_armadura: 16
   deslocamento: "50 pés"
   dinheiro:
-    po: 12
-  condicoes: []
+    po: 11
+  condicoes:
+    - "com Nera Vell"
+    - "com Tavin Vell"
+    - "rastro recente parcialmente confundido, mas não apagado"
+    - "livro de provas de Nera em posse de Nera"
+    - "fora do circuito imediato da Red Sail no Harbor District"
+    - "Maerra aceitou esconder Nera e Tavin por enquanto"
+    - "descanso curto completo; ainda cansado, mas centrado"
+    - "chegou à borda do circo dos Mooney"
   exaustao: 0
 
 equipamento_em_posse:
@@ -60,6 +70,10 @@ equipamento_em_posse:
     - "selo quebrado do Clã Kagehira"
     - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
     - "pedaço de tecido com o símbolo usado pelo traidor"
+    - "prancheta de Velis Rook, examinada"
+    - "carimbo falso da lua velada"
+    - "bilhete de B. sobre isca para o oriental"
+    - "bilhete selado de Maerra para Silva Elkwood, curto e imperfeito"
   outros:
     - "roupas escuras de viagem"
     - "manto simples com capuz"
@@ -72,8 +86,11 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
     - "descobrir se Masao passou pelo porto de Ravens Bluff"
-    - "encontrar uma cobertura local para investigar sem chamar atenção"
-    - "avaliar se a Night Watch pode servir como entrada segura na cidade"
+    - "decidir se Nera e Tavin serão levados a Silva Elkwood no circo dos Mooney"
+    - "encontrar Silva Elkwood no circo dos Mooney"
+    - "evitar que o homem na porta da Casa da Aurora siga a trilha do grupo"
+    - "decidir se trechos essenciais do livro serão copiados e selados por Maerra antes do amanhecer"
+    - "avaliar se Tyr/Sirrus Melandor deve ser acionado para proteção formal"
 
 vinculos_ativos:
   faccao_prevista:
@@ -98,8 +115,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren observa a Red Sail Tavern pelo lado de fora; Velis Rook não está claramente visível, mas dois homens comentam a Escuridão do beco e um homem de casaco com botões de latão escuta de uma mesa lateral."
-  risco_imediato: "moderado"
+  cena_atual: "Ren está na borda externa do acampamento do Jack Mooney & Sons Circus com Nera e Tavin. O livro original está com Nera; Ren carrega o bilhete selado para Silva Elkwood. Há dois caminhos imediatos: a entrada visível entre carroças, vigiada por um homem largo com baldes, ou a lateral de cozinha, com fumaça baixa e uma mulher velha mexendo panela. Ren está com 3/3 ki."
+  risco_imediato: "alto"
   foco_inicial:
     - "orientação urbana"
     - "primeiro contato local"

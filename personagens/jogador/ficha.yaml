@@ -152,7 +152,7 @@ recursos_de_classe:
     resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
   ki:
     pontos_maximos: 3
-    pontos_atuais: 1
+    pontos_atuais: 3
     cd: 13
     recarga: "descanso curto ou longo"
     usos:
@@ -222,8 +222,12 @@ equipamento:
     - "selo quebrado do Clã Kagehira"
     - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
     - "pedaço de tecido com o símbolo usado pelo traidor"
+    - "prancheta de Velis Rook"
+    - "carimbo falso da lua velada"
+    - "bilhete de B. sobre isca para o oriental"
+    - "bilhete selado de Maerra para Silva Elkwood"
   dinheiro:
-    po: 12
+    po: 11
 
 vinculos:
   regiao_inicial: "Ravens Bluff"

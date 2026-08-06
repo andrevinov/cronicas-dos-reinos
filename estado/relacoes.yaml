@@ -4,7 +4,7 @@ relacoes:
     tipo: "contato local"
     local: "The Silver Lily"
     status: "ativo"
-    atitude_para_ren: "cautelosa, levemente favoravel"
+    atitude_para_ren: "cautelosa, tensa"
     confianca: "baixa"
     respeito: "inicial"
     motivo: >
@@ -18,6 +18,9 @@ relacoes:
     riscos:
       - "A confiança ainda é comercial e frágil."
       - "Edran protege a própria casa antes de proteger Ren."
+      - "Edran percebeu que Ren tentou parecer ter ficado no quarto, mas não confrontou o assunto além de um aviso discreto."
+      - "Edran não entregou a moradia de Pell e deixou claro que reagirá mal se Ren machucar o rapaz ou trouxer violência para a rua da Silver Lily."
+      - "Edran viu Ren deixar a Silver Lily com seus pertences logo depois da notícia do incêndio na Red Sail chegar à hospedagem."
   mara_tharle:
     nome: "Mara Tharle"
     tipo: "testemunha local"
@@ -42,3 +45,129 @@ relacoes:
     riscos:
       - "Mara pode evitar Ren no futuro."
       - "Se pressionada ou ameaçada, pode procurar a guarda ou contar a alguém do porto."
+  pell:
+    nome: "Pell"
+    tipo: "mensageiro local"
+    local: "Rua da Corda / Fishtown"
+    status: "ativo"
+    atitude_para_ren: "assustado, oportunista e temporariamente cooperativo"
+    confianca: "nenhuma"
+    respeito: "baixo"
+    motivo: >
+      Ren seguiu Pell discretamente e tentou contê-lo numa passagem escura.
+      Pell escapou do primeiro agarre, mas Ren conseguiu falar antes que ele
+      gritasse e apresentou a abordagem como tentativa de manter o contato
+      secreto.
+    informacoes_compartilhadas_por_pell:
+      - "Pell ouviu na Silver Lily menções a homem do leste, rosto marcado, Velis Rook e Mara."
+      - "Pell levou a notícia para Brass na Red Sail porque Brass paga rápido por esse tipo de informação."
+      - "Brass perguntou se Ren tinha arma, estava sozinho, tinha sotaque forte ou mostrou selo, papel ou símbolo."
+      - "Brass mandou Pell levar mensagem fechada para Velis Rook perto de Narwhal Manor."
+      - "Velis disse 'então é hoje', entregou resposta para Brass e foi à Red Sail com a prancheta."
+      - "Pell não viu o homem marcado e não sabe se ele está na cidade."
+      - "Pell ouviu Velis murmurar a palavra 'Lua'."
+    limites:
+      - "Pell pediu pagamento para continuar 'não lembrando'."
+      - "Pell aceitou 1 PO de Ren pela informação."
+      - "Ren estabeleceu um ponto morto de contato nos fundos da Silver Lily: quando houver um pequeno vaso com flor na parte alta da escada, Pell pode deixar mensagem ali e receber pagamento depois."
+    riscos:
+      - "Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro."
+      - "Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade."
+      - "O aviso de Ren sobre risco de morte pode fazer Pell cooperar por medo ou desaparecer se a cidade parecer perigosa demais."
+  nera_vell:
+    nome: "Nera Vell"
+    tipo: "testemunha protegida / gravadora de selos"
+    local: "Rua da Corda / Fishtown"
+    status: "ativa, com Ren"
+    atitude_para_ren: "assustada, grata, pragmática e emocionalmente implicada"
+    confianca: "moderada em situação de crise"
+    respeito: "prático"
+    motivo: >
+      Ren a resgatou do esquife, contou sua própria história e aceitou salvar
+      Tavin antes de buscar o livro de provas. Nera ainda teme que qualquer
+      escolha errada mate ela ou o irmão. Na Casa da Aurora Menor, Nera ouviu
+      fragmentos sobre Aiko, Masao e a vingança de Ren, incluindo a fala dele
+      sobre não querer ver irmãos perdendo irmãos novamente. Nera ajudou
+      Maerra a deitar Ren quando ele apagou de cansaço.
+    informacoes_compartilhadas_por_nera:
+      - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
+      - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
+      - "O segundo homem usava papel e tinta associáveis a Narwhal Manor."
+      - "Nera mantinha um livro de provas escondido na própria banca."
+      - "Tavin ouviu as palavras 'Narwhal', 'segunda maré' e 'se vier sozinho'."
+    acordos:
+      - "Ren decidiu tirar Tavin de perigo e recuperar o livro de provas."
+    riscos:
+      - "Nera pode priorizar Tavin se achar que Ren está usando os dois como isca."
+      - "O livro também incrimina Nera profissionalmente, e agora está com ela."
+      - "Nera não quer que Ren desapareça com o livro antes que Maerra entenda o caso."
+  tavin_vell:
+    nome: "Tavin Vell"
+    tipo: "testemunha jovem"
+    local: "Rua da Corda / Fishtown"
+    status: "ativo, com Ren e Nera"
+    atitude_para_ren: "assustado e obediente por necessidade"
+    confianca: "muito baixa"
+    respeito: "medo respeitoso"
+    motivo: >
+      Tavin viu Ren chegar junto de Nera e sabe que havia homens procurando
+      por ele, mas ainda não entende se Ren é salvação, ameaça ou ambos.
+    informacoes_compartilhadas_por_tavin:
+      - "Ainda não interrogado diretamente."
+    riscos:
+      - "Pode travar, fugir ou falar demais se for pressionado em local inseguro."
+  velha_sella:
+    nome: "Velha Sella"
+    tipo: "contato cauteloso / moradora de Fishtown"
+    local: "casa de redes azuis, Rua da Corda"
+    status: "ativa"
+    atitude_para_ren: "desconfiada, mas cooperativa dentro de limites"
+    confianca: "baixa"
+    respeito: "cauteloso"
+    motivo: >
+      Sella escondeu Tavin antes da chegada de Ren, não gritou quando Ren
+      entrou e aceitou apagar sinais da presença do garoto depois que ele saiu.
+    riscos:
+      - "Protege a própria casa antes de proteger Ren."
+      - "Se a Red Sail a pressionar, pode negar tudo e fechar a porta para futuros contatos."
+  maerra_thandrel:
+    nome: "Irmã Maerra Thandrel"
+    tipo: "sacerdotisa de Lathander / abrigo potencial"
+    local: "Casa da Aurora Menor, Temple District"
+    status: "ativa, em cena; abrigo provisório concedido"
+    atitude_para_ren: "cautelosa, disposta a ouvir, moralmente firme"
+    confianca: "provisória e limitada"
+    respeito: "pendente"
+    motivo: >
+      Nera recomendou Maerra como alguém realmente compassiva. Ao receber
+      Nera e Tavin de madrugada, Maerra percebeu Ren armado atrás deles, mas
+      não tocou o sino nem chamou ajuda. Após ouvir Ren e o nome Brass,
+      aceitou esconder Nera e Tavin por enquanto. Após a confissão de Ren
+      sobre Masao, Aiko e vingança, Maerra acreditou na sinceridade essencial
+      dele, mas deixou claro que a Casa da Aurora Menor protege vivos, não
+      vendetas. Quando Ren apagou, Maerra o deitou num catre, manteve armas
+      e provas à vista, e protegeu Nera e Tavin afastando-os da porta.
+    riscos:
+      - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
+      - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
+    encaminhamentos_oferecidos:
+      - "Silva Elkwood, clériga de Chauntea ligada ao circo dos Mooney, como abrigo discreto para Nera e Tavin."
+      - "Sirrus Melandor/Tyr como proteção formal e institucional."
+      - "Ways Unknown como opção de sumiço pago, menos pastoral e menos transparente."
+  silva_elkwood:
+    nome: "Silva Elkwood"
+    tipo: "clériga de Chauntea / contato potencial de abrigo"
+    local: "Jack Mooney & Sons Circus"
+    status: "ainda nao conhecida em jogo"
+    atitude_para_ren: "desconhecida"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Maerra acredita que Silva pode esconder Nera e Tavin como ajudantes de
+      cozinha ou pacientes por alguns dias, especialmente com bilhete selado
+      da Casa da Aurora Menor.
+    documentos:
+      - "Ren tem um bilhete curto e selado de Maerra para Silva, suficiente para abrir conversa, mas não garantia plena de abrigo."
+    riscos:
+      - "O circo reduz o alcance natural da Red Sail, mas não é fortaleza."
+      - "Se Dain conectar os Vell ao circo, Silva e os Mooney podem ser pressionados."

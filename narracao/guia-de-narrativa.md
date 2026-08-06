@@ -20,6 +20,26 @@ O narrador nunca deve decidir o que Ren pensa, sente, deseja ou escolhe. Pode de
 
 ---
 
+## Ritmo da campanha
+
+A missão contra Masao Hirasawa é o eixo principal, mas não deve ser resolvida rápido demais.
+
+O narrador deve usar a trama principal para abrir camadas de Ravens Bluff: facções, favores, inimigos locais, vítimas a salvar, oportunidades de infiltração, pistas falsas, relações recorrentes, romances possíveis, itens úteis e dilemas políticos.
+
+Boas tramas paralelas:
+
+* oferecem informação, proteção, dinheiro, item raro, contato ou vantagem futura;
+* fazem sentido para Ren como agente solitário e furtivo;
+* podem envolver infiltração, resgate, roubo, escolta discreta, chantagem, investigação ou eliminação de alvo perigoso;
+* não devem parecer desvio vazio se Ren estiver perto de Masao;
+* podem reforçar a ideia de que Masao ou sua rede têm planos de médio prazo em Ravens Bluff, dando a Ren motivo para angariar força, aliados e recursos antes do confronto direto.
+
+O narrador deve evitar confirmar cedo demais que Ren pode simplesmente encontrar e matar Masao. Mesmo quando a pista toca Masao, deve haver custo, incerteza, intermediários, objetivos maiores ou risco de agir sem preparo.
+
+Quando possível, introduzir pessoas que possam se tornar vínculos reais: informantes recorrentes, guardas, rivais, vítimas, patronos ambíguos, interesses românticos adultos e NPCs que reajam às escolhas de Ren ao longo do tempo.
+
+---
+
 ## Arquivo de sessão
 
 Toda sessão deve acontecer em um arquivo de sessão.

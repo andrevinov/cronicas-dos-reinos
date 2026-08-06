@@ -53,6 +53,46 @@ O antagonista imediato da sessão deve preferir silêncio, medo e recuperação 
 
 Ele não deve tentar matar Ren sem motivo forte. Se Ren se mostrar perigoso, a resposta inicial será vigiar, intimidar ou desacreditar.
 
+### SEG-006: Prancheta de Velis
+
+A prancheta roubada por Ren aponta para a Casa da Rede Morta, depósito 13, em Fishtown.
+
+O conteúdo legitimo descoberto por Ren:
+
+* a caixa comprida foi retirada antes da conferência;
+* a rota oculta aponta para Rede Morta / 13;
+* "Lua" é palavra operacional;
+* "M. H." aparece como portador, mas não prova sozinho que Masao está na cidade;
+* a marca de lua velada é uma imitação ocidental, não o selo verdadeiro.
+
+Manter oculto por enquanto:
+
+* se a caixa ainda está no depósito;
+* quem está usando as iniciais M. H.;
+* se o portador é Masao, agente dele ou isca;
+* o conteúdo real da caixa.
+
+### SEG-007: Ritmo pós-prancheta
+
+A Casa da Rede Morta deve aprofundar a campanha, não encerrar a missão principal.
+
+Usar a pista para abrir pelo menos uma nova camada antes de qualquer confirmação plena sobre Masao:
+
+* intermediários locais;
+* alvo ou vítima ligada ao depósito 13;
+* prova parcial sobre o Selo da Lua Velada;
+* escolha entre seguir a caixa, salvar alguém ou capturar um informante;
+* oportunidade de ganho lateral útil para Ren, como contato, item, favor ou informação.
+
+Se surgir indício de que Masao está em Ravens Bluff, isso deve sugerir plano de médio prazo na cidade, não partida imediata inevitável. Isso permite que Ren tenha razões jogáveis para fazer tramas paralelas, ganhar força, criar contatos e se envolver na política local.
+
+Possíveis sementes laterais a introduzir organicamente:
+
+* alguém preso ou escondido no circuito da Rede Morta que possa precisar de resgate;
+* rumor sobre item útil a infiltração, disfarce ou fuga;
+* serviço de infiltração oferecido por contato em troca de informação;
+* NPC recorrente capaz de virar aliado, rival ou vínculo íntimo adulto.
+
 ---
 
 ## Escada de revelação
@@ -82,3 +122,27 @@ Manter oculto por enquanto:
 
 Se for necessário justificar uma cena ao jogador, explicar apenas o que Ren pode perceber.
 
+---
+
+### SEG-008: Livro de provas de Nera
+
+Estado:
+
+* recuperado por Ren na banca de Nera Vell por volta de 03:13;
+* não foi examinado com calma ainda;
+* Nera sabe ler a lógica interna do livro melhor do que Ren.
+
+Conteúdo a revelar em camadas, conforme tempo, luz e testes:
+
+1. confirmação da impressão da lua velada falsa e de que o erro foi deliberado;
+2. registro abreviado que aponta para Dain "Brass" Mord como pagador/intermediário;
+3. nota de material trazido por um segundo homem com perfil de escrivão;
+4. indício físico de papel, tinta ou cera associado ao circuito de Narwhal Manor;
+5. uma marca ou abreviação que pode apontar para patrono acima de Brass, mas não identificar B. diretamente sem investigação adicional.
+
+Não revelar de uma vez:
+
+* identidade final de B.;
+* se Masao está pessoalmente em Ravens Bluff;
+* se "M. H." era Masao, agente, falso nome ou isca;
+* o alcance da participação de Narwhal Manor.
