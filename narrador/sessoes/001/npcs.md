@@ -767,6 +767,9 @@ Estado atual:
 * viu a pasta lacrada com Ren e a reconheceu como novo risco que pode fazer a Red Sail voltar.
 * aceitou cuidar novamente de Nera e Tavin enquanto Ren leva a pasta a Tyr;
 * avisou Ren que cada favor devido vira razão para ele voltar vivo e útil.
+* depois do incêndio no Harbor District, interceptou Ren perto da entrada interna da carroça de remendos e ouviu o relato sobre Tyr, Sirrus, Halessa, Velis, a nomeação selada e a leitura de Ren sobre a Red Sail transformar crise em capital político.
+* aceitou, com reprimenda, ter sido nomeada por Ren em ata selada de Tyr; considera a manobra útil, mas quer controlar como Jack fica sabendo.
+* aconselhou manter os Vell no circo durante a crise, separar Ren, Nera/Tavin e o livro, transformar os irmãos em parte da rotina do circo e manter Ren visível por algumas horas como Ren Kage, acrobata estrangeiro.
 
 Segredo:
 
@@ -774,6 +777,7 @@ Segredo:
 * esconder os Vell no circo reduz alcance natural da Red Sail, mas cria risco de expor o circo caso Dain conecte os pontos;
 * pode virar contato recorrente ligado a Chauntea, estrada e ganchos laterais fora do porto.
 * se Ren aceitar ficar, Silva tentará separar fisicamente Ren dos Vell por segurança e plausibilidade.
+* Silva entende que a melhor defesa imediata é dispersar os alvos: Ren visível como artista, Vell diluídos na rotina do circo e livro guardado em outro ponto.
 
 Bloco rápido 5e:
 

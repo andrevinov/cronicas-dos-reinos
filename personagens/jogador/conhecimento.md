@@ -1706,6 +1706,15 @@ Ponto morto da Silver Lily:
 * a Red Sail não seguiu Ren até o circo;
 * Silva interceptou Ren perto da entrada interna e perguntou se ele veio sozinho;
 * hora aproximada: 12:52.
+* Ren contou a Silva sobre Tyr, Sirrus, Velis, as três perguntas, a nomeação selada dela e o incêndio do Harbor District;
+* Silva aceitou ter sido nomeada em ata de Tyr, mas repreendeu Ren por fazê-lo sem avisar antes;
+* conselho de Silva: sair correndo agora seria conveniente para os inimigos, pois o circo ainda oferece multidão organizada, testemunhas, Jack e barulho;
+* conselho de Silva: o erro seria manter Ren, Nera/Tavin e o livro no mesmo lugar;
+* Silva pretende mover Nera e Tavin para dentro da rotina do circo, não mantê-los apenas escondidos na carroça verde;
+* Silva quer separar o livro dos Vell;
+* Silva recomenda que Ren fique visível por algumas horas como Ren Kage, acrobata estrangeiro recém-contratado, para reduzir suspeita de sumiços constantes;
+* Silva recomenda que Ren fale com Nera sem acender pânico e depois fale com Jack junto dela;
+* hora aproximada: 12:58.
 
 Progressão:
 

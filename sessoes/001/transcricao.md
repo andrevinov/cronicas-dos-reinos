@@ -7057,3 +7057,61 @@ Ren revela tudo a Silva. Inclusive que a nomeou secretamente no processo.
 "As coisas estão escalando, Silvia. Do nosso lado... e do deles. Fico me perguntando se é justo continuarmos aqui no circo. Talvez sejamos um perigo a todos que aqui se encontram."
 
 Literalmente procurando por conselho.
+
+**Narrador**
+
+Silva não responde ali.
+
+Ela pega Ren pelo cotovelo, sem delicadeza e sem violência, e o conduz por trás de uma pilha de lonas dobradas onde o barulho dos ajudantes, das rodas e dos ensaios cobre quase tudo. Uma criança passa correndo com uma argola de metal na mão; Silva espera a criança sumir antes de falar.
+
+"Primeiro: é **Silva**. Se você me chamar de Silvia na frente de Jack, ele vai achar que eu ganhei uma irmã e vai tentar cobrar ingresso dela também."
+
+O humor vem seco, pequeno, só o bastante para quebrar a pressão.
+
+Então o rosto dela endurece.
+
+"Segundo: nunca nomeie uma mulher em ata de templo sem avisar antes." Ela segura o olhar de Ren por um segundo. "Mas fez certo."
+
+Ela escuta o restante. Tyr. Sirrus. A pasta. As perguntas. Velis. A fumaça. Os três focos. A Red Sail chegando rápido demais. O armazém ligado a Narwhal. A possibilidade de Masao usar incêndio como palco.
+
+Silva não interrompe. Quando Ren termina, ela fica alguns instantes olhando para a lama pisada entre as carroças.
+
+"Você quer saber se é justo ficar aqui", ela diz. "Não é. Nada disso é justo. Mas sair correndo agora seria conveniente para quem quer vocês fora de onde há olhos, lona, testemunha, Jack e barulho."
+
+Ela aponta com o queixo para o campo do circo.
+
+"Aqui não é fortaleza. Mas é multidão organizada. Isso vale mais do que parede quando a ameaça precisa fingir que não é ameaça."
+
+Silva baixa a voz.
+
+"O erro seria deixar tudo junto. Você, os Vell e o livro. Três coisas que querem apagar. Três coisas no mesmo lugar viram uma fogueira só."
+
+Ela começa a contar nos dedos.
+
+"Nera e Tavin não dormem mais na carroça verde hoje. Eu os movo para dentro da rotina: figurino, remendo, ajudante, comida. Eles vão existir como gente do circo, não como escondidos debaixo da minha saia. O livro também sai de perto deles. Jack precisa saber o bastante para autorizar isso, e só o bastante."
+
+Silva inclina a cabeça para Ren.
+
+"Você fica visível de propósito por algumas horas. Não como Ren Kagehira, perseguidor de assassino. Como Ren Kage, acrobata estrangeiro recém-contratado. Se alguém vier farejar, encontra o que já sabe: Jack tem um artista novo. Isso é menos perigoso do que você sumir toda hora e voltar cheirando a crime."
+
+Ela olha para o céu, onde a fumaça do porto já mancha a luz.
+
+"Tyr te deu uma porta. Use. Espere Maerra ou Luath confirmarem o que puderem. Espere ver se essa convocação de Velis puxa algum bicho do buraco. Não entregue Nera e Tavin a uma travessia no meio de incêndio, rumor e patrulha privada."
+
+Silva faz uma pausa mais longa.
+
+"E sobre ser perigo para o circo: sim. Você é."
+
+Ela não tenta suavizar.
+
+"Mas a Red Sail já era perigo antes de você chegar. Jack sabe disso. Eu sei disso. A diferença é que agora talvez exista uma chance de fazer esse perigo sangrar no lugar certo."
+
+Por fim, ela toca o braço de Ren, rápido.
+
+"Meu conselho: coma alguma coisa, lave o cheiro de porto das mãos, fale com Nera sem acender pânico, e depois fale com Jack. Não sozinho. Comigo. Se Jack ouvir de você que Tyr já registrou meu nome antes de ouvir de mim, talvez ele faça piada. Se ouvir de mim primeiro, talvez ele só cobre caro."
+
+Ao longe, uma voz chama por Silva. Ela responde com um gesto irritado, sem se afastar ainda.
+
+"E Ren: se Masao está transformando a cidade em tabuleiro, pare de jogar como peça solta. Peça solta é fácil de tirar da mesa."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **12:58**. Ren falou com Silva em local discreto dentro do circo. Silva aceitou, com reprimenda, ter sido nomeada em ata selada de Tyr. O conselho dela: não mover os Vell para fora durante a crise; separar Ren, os Vell e o livro; mover Nera e Tavin para dentro da rotina do circo; manter Ren visível por algumas horas como Ren Kage, acrobata estrangeiro; e falar com Jack junto dela.

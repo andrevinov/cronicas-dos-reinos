@@ -541,3 +541,21 @@ Interpretação reservada:
 * rota longa e cuidadosa impede ligação entre o observador do incêndio e o circo;
 * entrada pela carroça de remendos funciona no limite, sem chamar atenção externa;
 * Silva intercepta Ren por vigilância interna, não porque alguém o seguiu.
+
+---
+
+## Conselho de Silva após retorno do incêndio
+
+Silva garante conversa discreta (Silva): d20 15 + 4 = 19 contra CD 12. Sucesso.
+
+Jack percebe a conversa e se aproxima (Jack Mooney): d20 4 + 3 = 7 contra CD 14. Falha.
+
+Silva avalia melhor abrigo para os Vell (Silva): d20 13 + 5 = 18 contra CD 13. Sucesso.
+
+Interpretação reservada:
+
+* Silva puxa Ren para um ponto discreto e a conversa não vaza para ajudantes comuns;
+* Jack não entra no meio, dando espaço para Silva orientar Ren antes;
+* Silva aceita a nomeação em Tyr com reprimenda, não como quebra de confiança;
+* avaliação de Silva: sair agora seria pior; manter os Vell no circo é viável por hoje, desde que Ren, Vell e livro sejam separados;
+* estratégia sugerida: Vell entram na rotina do circo, livro separado deles, Ren fica visível como Ren Kage por algumas horas e depois fala com Jack junto de Silva.

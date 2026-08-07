@@ -502,7 +502,13 @@ relacoes:
       Depois do incêndio no Harbor District, Ren voltou ao circo pela rota da
       carroça de remendos sem trazer cauda. Silva o interceptou discretamente
       perto da entrada interna, demonstrando que continua vigiando os acessos
-      sensíveis do circo.
+      sensíveis do circo. Ren contou a Silva sobre Tyr, Sirrus, Halessa, Velis,
+      a nomeação selada e a leitura do incêndio como possível manobra política
+      da Red Sail. Silva aceitou a nomeação com reprimenda, não como quebra de
+      confiança, e aconselhou Ren a não mover os Vell durante a crise: separar
+      Ren, Nera/Tavin e o livro, transformar os irmãos em gente da rotina do
+      circo, manter Ren visível por algumas horas como Ren Kage e falar com
+      Jack junto dela.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -521,6 +527,9 @@ relacoes:
       - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
       - "Silva agora consta em registro selado de Tyr como guardiã atual informada por Ren, embora ainda precise confirmar ou negar formalmente."
       - "Silva viu Ren voltar do Harbor District sem cauda aparente e quer confirmação direta de que ele veio sozinho."
+      - "Silva aceitou a nomeação em Tyr com reprimenda e quer falar com Jack antes que a notícia chegue por outra boca."
+      - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."
+      - "Silva quer que Ren fique visível por algumas horas como Ren Kage, acrobata estrangeiro, em vez de parecer uma sombra sempre ligada a crises."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"

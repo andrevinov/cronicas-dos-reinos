@@ -18,15 +18,15 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "campos do circo"
-  ponto_exato: "entrada interna pela carroça de remendos, Jack Mooney & Sons Circus"
-  descricao_operacional: "Ren deixou o incêndio do Harbor District antes que a Red Sail conseguisse transformar suspeita em perseguição. Percebeu a tentativa nascendo, mas não havia cauda efetiva colada; por isso não gastou Passo do Vento. Tomou rota longa, evitou Silver Lily e Aurora Menor, e retornou ao circo pela rota da carroça de remendos. A entrada funcionou no limite. Silva Elkwood interceptou Ren discretamente e perguntou se ele veio sozinho."
+  ponto_exato: "atrás de lonas dobradas perto da carroça de remendos, Jack Mooney & Sons Circus"
+  descricao_operacional: "Ren contou a Silva tudo que ocorreu em Tyr e no incêndio, incluindo que a nomeou em ata selada como guardiã atual dos Vell. Silva aceitou com reprimenda e aconselhou não mover Nera e Tavin para fora durante a crise. O plano sugerido por Silva: separar Ren, Vell e livro; mover Nera e Tavin para dentro da rotina do circo; manter Ren visível por algumas horas como Ren Kage, acrobata estrangeiro; e falar com Jack junto dela."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "manhã"
-  hora_aproximada: "12:52"
+  hora_aproximada: "12:58"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
@@ -245,6 +245,11 @@ recursos:
     - "Red Sail nao conseguiu seguir Ren ate o circo"
     - "Ren voltou ao circo pela rota da carroca de remendos sem gastar ki"
     - "Silva interceptou Ren discretamente perto da entrada interna"
+    - "Ren contou a Silva sobre Tyr, Sirrus, Velis, a nomeacao selada e o incendio do Harbor District"
+    - "Silva aceitou a nomeacao em Tyr com reprimenda"
+    - "conselho de Silva: nao mover os Vell para fora durante a crise"
+    - "conselho de Silva: separar Ren, Nera/Tavin e o livro"
+    - "conselho de Silva: Ren deve ficar visivel por algumas horas como Ren Kage"
     - "PV, dados de vida e ki recuperados com o descanso longo"
     - "Red Sail ou gente ligada ao porto aproximou a busca do perimetro do circo antes do amanhecer"
     - "Nera e Tavin ainda nao foram identificados formalmente no circo"
@@ -389,7 +394,9 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "responder a Silva se veio sozinho e resumir o que viu no Harbor District"
+    - "falar com Nera sem acender panico"
+    - "falar com Jack junto de Silva sobre o novo plano de abrigo"
+    - "lavar o cheiro de porto das mãos e comer algo"
     - "proteger Nera e Tavin, agora de volta a carroca verde e explicitamente nomeados como ruido no bilhete"
     - "aguardar confirmacao de envio e possivel resposta de Luath e Maerra"
     - "impedir que Narwhal e Red Sail virem a acusacao contra Ren e Nera"
@@ -422,7 +429,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está dentro do Jack Mooney & Sons Circus, perto da entrada interna pela carroça de remendos. Ele não trouxe cauda do Harbor District, mas a Red Sail sabe que havia um observador suspeito na borda do incêndio. Silva Elkwood interceptou Ren e perguntou se ele veio sozinho. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 12:52."
+  cena_atual: "Ren está com Silva em ponto discreto atrás de lonas dobradas perto da carroça de remendos. Silva aconselhou manter os Vell no circo por enquanto, mas separar Ren, Nera/Tavin e o livro, transformar os irmãos em parte da rotina do circo e deixar Ren visível por algumas horas como Ren Kage. Ela quer falar com Jack junto de Ren. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 12:58."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"
