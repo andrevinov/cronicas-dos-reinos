@@ -18,15 +18,15 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "campos do circo"
-  ponto_exato: "escritório-carroça de Jack Mooney, Jack Mooney & Sons Circus"
-  descricao_operacional: "Ren e Silva estão no escritório-carroça de Jack. Ren propôs o Benefício da Lona Aberta: um espetáculo público beneficente para vítimas e trabalhadores afetados pelo incêndio, capaz de comprar respeitabilidade, dinheiro e proteção social para o circo sem declarar guerra aberta à Red Sail. Jack aceitou o esqueleto do plano como viável, com condições: anunciar para amanhã ao cair da tarde se houver preparação suficiente; evitar acusar Red Sail, Masao ou Narwhal em público; integrar Nera e Tavin como trabalhadores comuns antes dos cartazes; separar o livro do lugar onde os Vell dormem; buscar apoio de templo/guarda sem parecer medo; e testar se Ren tem um número acrobático vendável."
+  ponto_exato: "linha interna entre o escritório-carroça de Jack e o guarda-roupa menor, Jack Mooney & Sons Circus"
+  descricao_operacional: "Ren avisou Jack que buscará apoio limpo de Luath antes de apresentar seu número. Em seguida, falou com Nera e Tavin sobre o Benefício da Lona Aberta, a integração deles à rotina do circo e nomes de cobertura: Nera adotou Lena, Tavin adotou Timo. Dessa aprovou uma versão viável de 'O Vento da Noite: uma lenda de Kara-Tur', com Ren como figura acrobática central, Nera/Lena apenas como Princesa das Sombras mascarada e sem nome, Merrit Tealeaf como narradora sob supervisão de Silva, panos branco/preto como vento e noite, e música local adaptada no lugar de shamisen. Jack autorizou a preparação condicionada: primeiro apoio limpo de Luath, depois prova física do número."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "início da tarde"
-  hora_aproximada: "13:24"
+  hora_aproximada: "13:43"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
@@ -369,6 +369,10 @@ recursos:
     - "Jack aceitou preparar um espetáculo beneficente para amanhã ao cair da tarde, sem acusação pública contra Red Sail, Masao ou Narwhal"
     - "Jack quer integrar Nera e Tavin à rotina antes dos cartazes e separar o livro do local onde eles dormem"
     - "Jack quer que Ren prove um número acrobático vendável ou obtenha apoio institucional limpo para o evento"
+    - "Nera adotou Lena como nome de cobertura no circo"
+    - "Tavin adotou Timo como nome de cobertura no circo"
+    - "Dessa aprovou uma versão viável de O Vento da Noite com figurino improvisado, panos de vento/noite, música local adaptada e Merrit narrando sob supervisão"
+    - "Jack autorizou a preparação do número, condicionada a apoio limpo de Luath e prova física posterior"
   exaustao: 0
 
 equipamento_em_posse:
@@ -407,7 +411,8 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir se primeiro prova um número acrobático vendável a Jack/Sorn/Mira ou se busca apoio institucional limpo para o Benefício da Lona Aberta"
+    - "falar com Luath para obter apoio institucional limpo ao Benefício da Lona Aberta sem expor medo nem os Vell"
+    - "voltar ao circo e provar fisicamente o número O Vento da Noite para Jack, Sorn, Mira, Dessa e Silva"
     - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
     - "definir com Silva onde o livro original de Nera ficará longe do local onde os Vell dormem"
     - "comer algo quando houver abertura segura"
@@ -443,7 +448,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está no escritório-carroça de Jack com Silva. Jack aceitou o Benefício da Lona Aberta como plano inicial viável: evento beneficente no dia seguinte ao cair da tarde, com ingressos comuns, camarotes caros e doações visíveis, sem acusar publicamente Red Sail, Masao ou Narwhal. Silva pode buscar mãos de Chauntea; Jack mobilizará Sorn, Mira e Dessa para preparar a lona. Ren precisa decidir o primeiro peso que carrega agora: provar que há um número acrobático vendável ou buscar uma proteção pública/apoio institucional que justifique templo ou guarda sem expor medo. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 13:24."
+  cena_atual: "Ren está na linha interna do Jack Mooney & Sons Circus depois de alinhar o Benefício da Lona Aberta com Jack, Silva, Nera/Tavin e Dessa. Nera e Tavin usarão os nomes de cobertura Lena e Timo. Dessa consegue montar O Vento da Noite com figurino improvisado, máscara, panos de vento/noite, música local adaptada e Merrit Tealeaf narrando sob supervisão. Jack quer que Ren vá a Luath primeiro e volte com apoio limpo, ou com a confirmação de que a guarda não quer se envolver. Depois Ren deverá provar o número fisicamente. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 13:43."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

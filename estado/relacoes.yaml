@@ -167,6 +167,11 @@ relacoes:
       alívio contido por ele ter trazido os dois vivos de volta.
       Quando Ren explicou que iria a Tyr com a pasta lacrada, Nera aceitou ficar
       na carroça verde, mas se despediu dele com afeto e medo evidentes.
+      Ao ouvir o plano do Benefício da Lona Aberta, aceitou integrar a rotina
+      do circo sob nome de cobertura e escolheu "Lena". Também aceitou a
+      possibilidade de atuar como Princesa das Sombras apenas se estiver com
+      máscara inteira, luvas, cabelo coberto, sem nome anunciado e sem aplauso
+      próprio.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -195,6 +200,8 @@ relacoes:
       - "Nera agora sabe que um bilhete na pasta de Velis trata ela e Tavin como ruído a ser impedido de chegar a Tyr."
       - "Nera voltou ao circo, mas entende que a pasta lacrada pode atrair nova pressão."
       - "Nera sabe que Ren pretende procurar Tyr para transformar a pasta em vantagem formal."
+      - "Nera usará Lena como nome de cobertura na rotina do circo."
+      - "Nera aceita aparecer em O Vento da Noite apenas como figura mascarada e anônima, se Silva e Jack aprovarem."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -220,6 +227,9 @@ relacoes:
       Sail ser dispersada pela busca controlada de Jack e pela patrulha de Luath.
       Ao se despedir, Ren pousou a mão na cabeça de Tavin e pediu que ele ficasse
       quietinho. Tavin repetiu "beleza", tratando a palavra como promessa.
+      Ao ouvir o plano do Benefício da Lona Aberta, aceitou usar "Timo" como
+      nome de cobertura na rotina do circo e repetiu que Timo carrega água e
+      não pega faca, archote ou segredo.
     informacoes_compartilhadas_por_tavin:
       - "Ainda não interrogado diretamente."
     riscos:
@@ -231,6 +241,7 @@ relacoes:
       - "Tavin pode estar assustado por entender que o bilhete da pasta de Velis se refere a ele."
       - "Tavin voltou ao abrigo do circo sem ser identificado na travessia."
       - "Tavin sabe que Ren saiu novamente, agora para procurar Tyr."
+      - "Tavin usará Timo como nome de cobertura na rotina do circo."
   velha_sella:
     nome: "Velha Sella"
     tipo: "contato cauteloso / moradora de Fishtown"
@@ -513,6 +524,10 @@ relacoes:
       comunitária do plano: Chauntea pode ajudar com comida, água, cobertores e
       mãos, desde que o evento não vire palanque de acusação nem exponha Nera e
       Tavin.
+      Silva aceitou a possibilidade de Nera participar de O Vento da Noite
+      apenas como figura anônima e mascarada, sem nome anunciado, sem aplauso
+      próprio e somente se Jack aprovar. Também aceitou Merrit como narradora
+      apenas sob supervisão direta.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -535,6 +550,7 @@ relacoes:
       - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."
       - "Silva quer que Ren fique visível por algumas horas como Ren Kage, acrobata estrangeiro, em vez de parecer uma sombra sempre ligada a crises."
       - "Silva apoia o Benefício da Lona Aberta apenas como ação comunitária discreta, não como declaração pública de guerra."
+      - "Silva não permitirá que Nera vire atração reconhecível nem que Merrit tenha acesso solto a cordas, facas ou caixas de truque."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -595,6 +611,8 @@ relacoes:
       - "Nera será integrada ao trabalho com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público."
       - "O livro de provas não deve dormir onde Nera e Tavin dormem."
       - "Ren deve provar um número vendável ou obter apoio institucional limpo para o evento."
+      - "Jack autorizou preparar O Vento da Noite como número condicionado: apoio limpo de Luath primeiro, prova física de Ren depois."
+      - "A participação de Nera/Lena só é aceitável como figura mascarada e sem nome próprio no cartaz ou nos aplausos."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -635,19 +653,28 @@ relacoes:
       para esconder a pasta. Ren escolheu o cidadão menor, pagou 1 PO pela roupa
       e pela limpeza de suas roupas próprias, e descreveu uma futura roupa de
       apresentação com obi espetacular inspirado em Kara-Tur.
+      Ren explicou a Dessa a ideia de O Vento da Noite, uma lenda de Kara-Tur
+      inspirada em Ame-no-Wakahiko. Dessa não possui guia confiável de
+      vestimentas orientais nem shamisen disponível em Ravens Bluff nesse prazo,
+      mas aceitou montar uma versão teatral viável com robe negro, máscara
+      inteira, panos branco/preto para vento e noite, lanternas, música local
+      adaptada e narração curta.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
       - "Dessa sabe que Ren agora carrega documento lacrado e precisa se apresentar melhor para um lugar formal."
+      - "Dessa sabe que Ren pretende vender O Vento da Noite como lenda de Kara-Tur no Benefício da Lona Aberta."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
       - "Dessa recebeu 1 PO para guardar as roupas próprias de Ren."
       - "Dessa recebeu 1 PO por roupa limpa de cidadão menor e limpeza das roupas próprias de Ren."
       - "Dessa recebeu encomenda informal de uma futura roupa de apresentação com obi espetacular."
+      - "Dessa aceitou preparar figurino e efeitos simples para O Vento da Noite, desde que Ren não mude a história várias vezes antes de amanhã."
     riscos:
       - "Se os disfarces voltarem ligados a sangue ou crime evidente, Dessa dirá que foram roubados dela."
       - "Dessa entende disfarce teatral e roupas comuns, mas não é especialista em espionagem real."
+      - "A versão teatral de Kara-Tur feita por Dessa será adaptação local, não reconstrução cultural autêntica."
   merrit_tealeaf:
     nome: "Merrit Tealeaf"
     tipo: "halfling contorcionista / sabotadora confessa da corda alta"
@@ -674,6 +701,7 @@ relacoes:
       - "Merrit descreveu Harl como apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas."
       - "Ren prometeu não abordar Harl diretamente nem revelar que ouviu dela."
       - "Merrit quase sorriu com a ideia de um número chamado 'O Exótico e a Exótica', mas respondeu que Ren cairia sério demais."
+      - "Merrit pode narrar O Vento da Noite sob supervisão de Silva, como trabalho limitado sem corda alta, faca, caixa de truque ou acesso solto."
     riscos:
       - "Merrit pode entrar em pânico se Mira, Jack ou Lysa a confrontarem publicamente."
       - "A confissão foi parcialmente ouvida por Mira Dane."
@@ -684,6 +712,7 @@ relacoes:
       - "Merrit protege Harl por lealdade e culpa."
       - "Merrit resiste a chamar Harl de manipulador, mas admite que talvez falar a frase certa para a pessoa errada também seja usar alguém."
       - "Merrit não conseguiu confiar totalmente que Harl não será exposto."
+      - "Se for usada como narradora, Merrit deve ficar onde Silva veja suas mãos."
   homem_red_sail_capturado:
     nome: "desconhecido"
     tipo: "agente operacional menor/médio da Red Sail"

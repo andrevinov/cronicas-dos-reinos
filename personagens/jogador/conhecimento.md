@@ -1715,6 +1715,29 @@ Ponto morto da Silver Lily:
 * Silva recomenda que Ren fique visível por algumas horas como Ren Kage, acrobata estrangeiro recém-contratado, para reduzir suspeita de sumiços constantes;
 * Silva recomenda que Ren fale com Nera sem acender pânico e depois fale com Jack junto dela;
 * hora aproximada: 12:58.
+* Ren tomou banho rápido atrás da lona azul e falou com Nera e Tavin na carroça verde;
+* Ren contou que Tyr registrou os nomes dos dois em ata reservada e selada;
+* Nera entendeu que o registro protege, mas também cria risco se vazar;
+* Tavin aceitou trabalhar como ajudante de cozinha/recados sob controle de Silva;
+* Nera pode ser integrada ao trabalho de guarda-roupa/remendos com Dessa Wren;
+* hora aproximada: 13:10.
+* Ren relatou a Jack e Silva a ida a Tyr, a ata reservada, a convocação de Velis, a nomeação selada de Silva e sua leitura sobre o incêndio;
+* Jack recusou tratar a ligação direta de Masao com a Red Sail como certeza sem prova, mas reconheceu que alguém está usando a crise para fazer a Red Sail parecer necessária;
+* Ren propôs o Benefício da Lona Aberta como evento beneficente capaz de dar respeitabilidade, dinheiro e proteção pública ao circo;
+* Jack aceitou o esqueleto do plano: evento amanhã ao cair da tarde, ingressos comuns, camarotes caros, doações visíveis e nenhuma acusação pública contra Red Sail, Masao ou Narwhal;
+* Silva pode pedir ajuda comunitária de Chauntea, mas não como palanque de acusação;
+* Jack quer presença de guarda ou apoio institucional de forma limpa, para proteger fila, doação e famílias deslocadas sem parecer medo;
+* Nera e Tavin devem virar trabalhadores comuns antes dos cartazes, e o livro não deve dormir onde eles dormem;
+* hora aproximada: 13:24.
+* Ren avisou Jack que falará com Luath antes de apresentar seu show;
+* Nera aceitou usar **Lena** como nome de cobertura no circo;
+* Tavin aceitou usar **Timo** como nome de cobertura no circo;
+* Dessa não tem guia confiável de vestimentas orientais nem shamisen disponível nesse prazo, mas consegue montar uma versão teatral de **O Vento da Noite: uma lenda de Kara-Tur**;
+* elementos viáveis do número: robe negro, máscara inteira, panos branco/preto como vento e noite, lanternas, música local adaptada e narração curta;
+* Nera/Lena pode ser a Princesa das Sombras apenas mascarada, anônima e sem aplauso próprio, se Jack e Silva aprovarem;
+* Merrit Tealeaf pode narrar sob supervisão de Silva, sem corda alta, faca, caixa de truque ou acesso solto;
+* Jack autorizou a preparação do número sob condição: apoio limpo de Luath primeiro, prova física de Ren depois;
+* hora aproximada: 13:43.
 
 Progressão:
 

@@ -326,3 +326,73 @@ Ele bate a ficha na mesa, uma vez.
 Do lado de fora, o circo segue rangendo, vivo, úmido, cheio de gente que ainda não sabe que acabou de virar parte de uma disputa maior sem ouvir o nome da guerra.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **13:24**. Jack aceitou o esqueleto do Benefício da Lona Aberta como plano viável: evento público beneficente no dia seguinte ao cair da tarde, sem acusação direta à Red Sail, Masao ou Narwhal. O plano pode fortalecer o circo com respeitabilidade, dinheiro e patronos locais, enquanto integra Nera e Tavin à rotina de trabalho e separa o livro deles. Jack quer agora que Ren contribua com uma de duas necessidades imediatas: provar que há um número acrobático vendável ou obter uma proteção pública/apoio institucional que possa justificar presença de guarda ou templo sem expor medo.
+
+**Jogador**
+
+"Eu irei falar com Luath. Quando voltar, vou te apresentar meu show", Ren fala, confiante.
+
+[Quero fazer uma pequena série de interações nessa conversa sem precisar ser demasiado arrastado, talvez um ou duas frases de cada envolvido. O mais importante é entender o que se resolveu dessas conversas:
+
+1) Irei até Nera e Tavin contar as novidades sobre o plano, que isso os ajudará a entrar no fluxo do circo. Vou pedir a eles que usem outros nomes a partir de agora. Pensem nisso como "nomes artísticos", afinal, eles trabalham no cico. Isso ajudará a manter os sigilos deles.
+
+2) Irei falar com Dessa, perguntar se ela arrumou algum guia de vestimentas orientais. A ideia do meu show é contar a lenda de Ame-no-Wakahiko e o Vento da Noite (que combina um pouco com a história de Ren e Nera, rs). Ren seria o Ame-no-Wakahiko, e talvez até Nera possa ser a Princesa das Sombras (ela estaria coberta com um lindo robe negro e com uma máscara, ninguém a reconheceria. Precisaria de um narrador, talvez a halfling que cortou a corda (não lembro mais o nome dela). A halfling narraria a história, Ren faria toda a acrobacia e dança acrobática, alguém toca uma música (um shamisen seria top, mas acho que não se encontra quem toque esse instrumento nem muito menos o próprio em Ravens Bluff, se eu estiver errado você me corrige). Talvez poderia ter "efeitos especiais" (alguém passando com um pano branco pra significar o vento, com um preto pra significar a noite). A ideia é explicar a apresentação pra Dessa, pra ver se ela já dá um ok. Se ela e Silva disser que conseguimos roupa, efeitos e todo o resto, apresentamos isso pra Jack depois.]
+
+**Narrador**
+
+Jack aceita a ordem das prioridades com um movimento curto da ficha entre os dedos.
+
+"Luath primeiro, então. Mas você não vai pedir guarda para proteger meu medo. Vai pedir presença para proteger fila, doação e família deslocada. Se ele ouvir a primeira frase certa, talvez não precise ouvir a segunda."
+
+Silva leva Ren de volta à carroça verde antes que o plano cresça pernas demais sem alcançar os Vell.
+
+Nera ouve tudo sem interromper: o benefício, o trabalho com Dessa, a cozinha para Tavin, a ideia de nomes de rotina. Quando Ren fala em nomes artísticos, ela entende depressa demais para sorrir de primeira. Depois escolhe um com a praticidade de quem já aprendeu que nome pode proteger ou condenar.
+
+"Lena", ela diz. "Perto o bastante para eu virar a cabeça se alguém chamar. Longe o bastante para ninguém escrever Vell por costume."
+
+Tavin leva mais tempo, porque trata a ideia como brincadeira antes de tratar como abrigo.
+
+"Timo", ele decide, e olha para Ren como se pedisse aprovação sem pedir. "Timo carrega água. Timo não pega faca, archote ou segredo."
+
+"Timo também não explica que Timo é nome falso", Silva acrescenta da entrada.
+
+"Timo sabe."
+
+Nera quase ri. Quase. O plano não torna o dia seguro, mas dá uma forma ao próximo pedaço dele. Quando Ren menciona a possibilidade de uma Princesa das Sombras, ela não responde como artista; responde como alguém medindo exposição.
+
+"Se for máscara inteira, luva, cabelo coberto e ninguém disser meu nome, eu posso ficar parada onde mandarem", ela diz. "Mas eu não tiro máscara para aplauso."
+
+Silva não veta. Isso, por si só, já é concessão.
+
+"Se ela aparecer, aparece como sombra, não como moça bonita para curioso procurar depois", Silva diz. "E só se Jack aceitar."
+
+No guarda-roupa menor, Dessa Wren escuta a explicação de Ren com uma agulha presa entre os dentes e um pedaço de tecido preto no colo. Ela não tem guia de vestimenta oriental. Tem, nas palavras dela, "duas memórias ruins de cartaz, um estrangeiro que fala como se pano brotasse de oração, e uma pilha de coisas que ainda podem fingir nobreza se ninguém encostar perto".
+
+O nome Ame-no-Wakahiko faz Dessa parar por meio segundo.
+
+"Isso não cabe no cartaz", ela decreta. "No cartaz vai 'O Vento da Noite: uma lenda de Kara-Tur'. O resto alguém fala dentro da lona, onde quem pagou já está preso pelo banco."
+
+Ela aponta soluções, uma atrás da outra. Robe negro existe, mas precisa ser aumentado e fechado. Máscara inteira dá para fazer com couro fino, tecido engomado e véu. O vento branco pode ser dois ajudantes com pano comprido preso em varas leves. A noite pode ser pano preto correndo baixo, lanternas por trás e fumaça de resina em pouca quantidade, se Sorn não tiver ataque de cordame ao ouvir "fumaça" perto de lona.
+
+Shamisen, não. Não em Ravens Bluff, não hoje, e não por preço que Jack aceite antes de ganhar dinheiro. Dessa propõe o possível: rabeca baixa, flauta, tambor de mão e alguém imitando o ritmo que Ren cantarolar. Não será Kozakura. Será Ravens Bluff tentando vender Kara-Tur sem quebrar a perna no primeiro passo.
+
+Quando Ren menciona a halfling que cortou a corda, Dessa solta um som seco.
+
+"Merrit Tealeaf. E narrar pode ser a primeira ideia útil que ouvi para ela desde que decidiu virar lâmina pequena em lugar errado."
+
+Silva, que chegou no meio da lista e ouviu o suficiente, pesa a proposta.
+
+"Sem corda alta. Sem faca. Sem caixa de truque. Merrit lê ou decora frase curta, onde eu possa ver as mãos dela. Isso talvez seja melhor do que deixar a culpa apodrecer no canto."
+
+Dessa resume o resultado com a autoridade de quem já aceitou trabalho demais para reclamar com eficácia:
+
+"Consigo roupa, máscara, pano de vento, pano de noite e uma versão pobre de música estrangeira. Consigo deixar a garota irreconhecível se ela obedecer e não tentar ser graciosa. Consigo fazer você parecer lenda se você não falar demais antes de pular. O que eu não consigo é milagre até amanhã se você me mudar a história três vezes."
+
+Quando a ideia volta a Jack em forma curta, ele escuta só o necessário.
+
+"Vento da Noite eu vendo. Ame-sei-lá-o-quê eu deixo para quem comprou ingresso escutar sentado." Ele olha para Silva. "Merrit narrando, sob seus olhos. A garota mascarada, sem nome e sem aplauso próprio. O menino na cozinha, longe de pano, fogo e frase importante."
+
+Então aponta a bengala para Ren.
+
+"Você vai a Luath. Volta com uma frase limpa ou volta sabendo que a guarda não quer pôr o pé nisso. Depois me mostra o salto. Se cair, eu vendo só a lenda e deixo você carregando vento."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **13:43**. Ren avisou Jack que buscará apoio de Luath antes de apresentar o número. Nera e Tavin aceitaram nomes de cobertura para a rotina do circo: **Lena** e **Timo**. Dessa aprovou uma versão viável de "O Vento da Noite: uma lenda de Kara-Tur": Ren como figura central acrobática, Nera/Lena possível como Princesa das Sombras apenas mascarada e sem nome, Merrit Tealeaf como narradora sob supervisão de Silva, panos branco/preto como vento e noite, e música local adaptada no lugar de shamisen. Jack autorizou a preparação condicionada: primeiro apoio limpo de Luath, depois prova física do número.
