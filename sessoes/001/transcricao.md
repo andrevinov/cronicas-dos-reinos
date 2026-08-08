@@ -7115,3 +7115,5 @@ Ao longe, uma voz chama por Silva. Ela responde com um gesto irritado, sem se af
 "E Ren: se Masao está transformando a cidade em tabuleiro, pare de jogar como peça solta. Peça solta é fácil de tirar da mesa."
 
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **12:58**. Ren falou com Silva em local discreto dentro do circo. Silva aceitou, com reprimenda, ter sido nomeada em ata selada de Tyr. O conselho dela: não mover os Vell para fora durante a crise; separar Ren, os Vell e o livro; mover Nera e Tavin para dentro da rotina do circo; manter Ren visível por algumas horas como Ren Kage, acrobata estrangeiro; e falar com Jack junto dela.
+
+> Pausa: Sessão 001 fechada neste ponto por tamanho do arquivo. Ren está no Jack Mooney & Sons Circus, atrás de lonas dobradas perto da carroça de remendos, conversando com Silva. Última situação imediata: Silva aconselhou separar Ren, os Vell e o livro; mover Nera e Tavin para dentro da rotina do circo; manter Ren visível por algumas horas como Ren Kage, acrobata estrangeiro; e falar com Jack junto dela. Continuação em `sessoes/002/transcricao.md`.
