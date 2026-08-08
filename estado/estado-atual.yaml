@@ -19,14 +19,14 @@ localizacao:
   cidade: "Ravens Bluff"
   area: "campos do circo"
   ponto_exato: "escritório-carroça de Jack Mooney, Jack Mooney & Sons Circus"
-  descricao_operacional: "Ren e Silva estão no escritório-carroça de Jack. Ren relatou honestamente o que houve em Tyr, incluindo a ata reservada, a convocação de Velis e a nomeação selada de Silva como guardiã atual informada dos Vell. Jack aceitou que o registro selado pode ajudar e piorar ao mesmo tempo, recusou tratar a ligação de Masao com a Red Sail como certeza plena sem prova e reconheceu o padrão de alguém usando a crise para fazer a Red Sail parecer necessária. Diante da oferta de dinheiro de Ren, Jack indicou que só ouvirá a proposta se ela responder a termos concretos: fonte do dinheiro, custo público, risco ao circo, proteção dos Vell e destino do livro. Ren ainda não apresentou o plano."
+  descricao_operacional: "Ren e Silva estão no escritório-carroça de Jack. Ren propôs o Benefício da Lona Aberta: um espetáculo público beneficente para vítimas e trabalhadores afetados pelo incêndio, capaz de comprar respeitabilidade, dinheiro e proteção social para o circo sem declarar guerra aberta à Red Sail. Jack aceitou o esqueleto do plano como viável, com condições: anunciar para amanhã ao cair da tarde se houver preparação suficiente; evitar acusar Red Sail, Masao ou Narwhal em público; integrar Nera e Tavin como trabalhadores comuns antes dos cartazes; separar o livro do lugar onde os Vell dormem; buscar apoio de templo/guarda sem parecer medo; e testar se Ren tem um número acrobático vendável."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "início da tarde"
-  hora_aproximada: "13:18"
+  hora_aproximada: "13:24"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
@@ -365,6 +365,10 @@ recursos:
     - "Jack entende que o registro selado ajuda contra gente decente, mas cria novo risco se gente indecente descobrir que existe algo a perguntar"
     - "Jack reconhece que alguém está usando o incêndio para fazer a Red Sail parecer necessária no Harbor District"
     - "Jack recusou tratar a ligação direta de Masao com a Red Sail como certeza sem prova, mas aceitou ouvir o plano de Ren"
+    - "Ren vendeu a Jack o esqueleto do Benefício da Lona Aberta com sucesso"
+    - "Jack aceitou preparar um espetáculo beneficente para amanhã ao cair da tarde, sem acusação pública contra Red Sail, Masao ou Narwhal"
+    - "Jack quer integrar Nera e Tavin à rotina antes dos cartazes e separar o livro do local onde eles dormem"
+    - "Jack quer que Ren prove um número acrobático vendável ou obtenha apoio institucional limpo para o evento"
   exaustao: 0
 
 equipamento_em_posse:
@@ -403,7 +407,9 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "apresentar a proposta prometida a Jack, respondendo às preocupações dele sobre dinheiro, culpa pública, risco ao circo, proteção dos Vell e destino do livro"
+    - "decidir se primeiro prova um número acrobático vendável a Jack/Sorn/Mira ou se busca apoio institucional limpo para o Benefício da Lona Aberta"
+    - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
+    - "definir com Silva onde o livro original de Nera ficará longe do local onde os Vell dormem"
     - "comer algo quando houver abertura segura"
     - "proteger Nera e Tavin, agora de volta a carroca verde e explicitamente nomeados como ruido no bilhete"
     - "aguardar confirmacao de envio e possivel resposta de Luath e Maerra"
@@ -437,7 +443,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está no escritório-carroça de Jack com Silva. Ren relatou Tyr, a ata reservada, a convocação de Velis, a nomeação selada de Silva e sua leitura sobre o incêndio no Harbor District. Jack recusou tratar a ligação direta de Masao com a Red Sail como certeza sem prova, mas reconheceu que alguém está usando a crise para fazer a Red Sail parecer necessária. Diante da promessa de dinheiro feita por Ren, Jack indicou que quer termos concretos antes de aceitar qualquer plano. Ren ainda não apresentou a proposta. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 13:18."
+  cena_atual: "Ren está no escritório-carroça de Jack com Silva. Jack aceitou o Benefício da Lona Aberta como plano inicial viável: evento beneficente no dia seguinte ao cair da tarde, com ingressos comuns, camarotes caros e doações visíveis, sem acusar publicamente Red Sail, Masao ou Narwhal. Silva pode buscar mãos de Chauntea; Jack mobilizará Sorn, Mira e Dessa para preparar a lona. Ren precisa decidir o primeiro peso que carrega agora: provar que há um número acrobático vendável ou buscar uma proteção pública/apoio institucional que justifique templo ou guarda sem expor medo. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 13:24."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

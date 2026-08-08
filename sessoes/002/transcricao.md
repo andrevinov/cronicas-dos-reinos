@@ -260,3 +260,69 @@ Ele aponta a ficha para Ren como se apontasse uma faca sem lâmina.
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **13:18**. Ren e Silva estão no escritório-carroça de Jack. Jack ouviu o relato honesto sobre Tyr, aceitou que o registro selado pode ajudar e piorar ao mesmo tempo, e recusou tratar a ligação de Masao com a Red Sail como certeza plena sem prova. Ainda assim, Jack reconheceu o padrão: alguém está usando a crise para fazer a Red Sail parecer necessária. Diante da oferta de dinheiro de Ren, Jack indicou que só ouvirá a proposta se ela responder a termos concretos: fonte do dinheiro, custo público, risco ao circo, proteção dos Vell e destino do livro. Ren ainda não apresentou o plano.
 
 > Pausa: Sessão 002 encerrada neste ponto, imediatamente antes de Jack perguntar qual é o plano. A interação posterior, as rolagens associadas e as respostas de Jack e Silva foram removidas da continuidade.
+
+**Jogador**
+
+"Nós vamos fazer o mesmo que Masao quer fazer com a Red Sail: ganhar respeitabilidade. Com o povo, com os comerciantes."
+
+Ren explica o plano: "O Benefício da Lona Aberta". Explica que fazer isso dará o circo justamente o que Masao está querendo dar à Red Sail: respeitabilidade e importância. Pra esse espetáculo Jack precisará de mais mãos, então Nera e Tavin acabarão sendo de grande ajuda. Como todos verão eles trabalhando, vão acabar sendo incorporados normalmente à rotina do circo. Podemos repetir esse espetáculo uma vez por mês. Podemos pedir patrocínio dos nobres, quem sabe até dos Golden Lords em Vesperin. Afinal, se estamos fazendo o "pão e circo" e resolvendo problemas pras autoridades, nada mais justo que o dinheiro público fluir pra nós.
+
+"E se você precisar de um artista oriental pra fazer um belo show de acrobacias... estamos aqui", falo, com um sorriso no rosto.
+
+**Narrador**
+
+Teste de Persuasão para vender o Benefício da Lona Aberta: d20 com vantagem [15, 10] -> 15 contra CD 12. Sucesso.
+
+Jack não responde de imediato.
+
+Isso, vindo dele, é atenção verdadeira. A ficha de madeira para entre dois dedos. O sorriso dele não cresce; fica menor, mais afiado, como se a proposta tivesse finalmente saído do campo de promessa e entrado no campo de contas.
+
+"Respeitabilidade", ele repete. "Essa palavra custa caro quando comprada cedo e mais caro ainda quando comprada tarde."
+
+Silva descruza os braços antes de falar.
+
+"Chauntea pode abençoar comida, água limpa e cobertor sem virar palanque de ninguém", ela diz. "Se for para famílias atingidas pelo incêndio e gente deslocada do porto, eu consigo pedir mãos. Não exército. Mãos."
+
+Jack aponta para ela.
+
+"Isso é dinheiro que rico paga para parecer decente sem precisar tocar em ferida." Ele olha para Ren de novo. "E isso é melhor do que vender vingança."
+
+Ele se inclina sobre a mesa, puxa a folha de contas e vira o verso em branco. A bengala prende uma ponta do papel. A ficha de madeira prende a outra.
+
+"Mas você não chama de pão e circo na frente de ninguém com bolsa cheia. Nem brincando. Rico não gosta de ouvir a palavra certa para o truque que comprou."
+
+O primeiro risco vira tinta imaginária no papel quando Jack começa a contar.
+
+"Nome: Benefício da Lona Aberta. Amanhã ao cair da tarde, se eu conseguir fazer a cidade saber hoje sem parecer desespero. Não é contra Red Sail. Não é contra Masao. Não é contra Narwhal. É pela gente que perdeu trabalho, sono, telhado ou carga no fogo. Se alguém quiser se ofender com isso, que se ofenda em público."
+
+Outro dedo.
+
+"Dinheiro: ingresso comum barato para encher lona, camarote caro para comerciante que quer ser visto, assento de honra para doador que trouxer comida, pano ou moeda. Nada de Golden Lord de Vesperin hoje. Primeiro eu tiro prata de Ravens Bluff. Depois penso em ouro distante."
+
+Mais um.
+
+"Proteção: eu quero guarda visível o bastante para ladrão pensar duas vezes e discreta o bastante para ninguém dizer que Jack Mooney precisou ser escoltado para vender pipoca. Se Luath ou Tyr quiserem uma razão limpa para rondar perto, Silva ou você arrumam a frase."
+
+Silva ergue um dedo.
+
+"E os Vell?"
+
+"Os Vell viram trabalho antes do primeiro cartaz." Jack responde rápido demais para ser improviso puro. "A garota vai para Dessa com etiqueta, remendo, marcação de pacote e controle de doação pequena. O menino vai para cozinha, água e recado curto. Ninguém anuncia sobrenome, ninguém chama de testemunha, ninguém faz criança parecer peça valiosa."
+
+Silva mantém o olhar nele até Jack acrescentar:
+
+"E o livro não dorme onde eles dormem."
+
+Ela aceita isso com um movimento mínimo do queixo.
+
+Jack volta para Ren.
+
+"Agora o pedaço que é seu. Um artista oriental pode ajudar. Pode ser cor no cartaz, curiosidade no boca a boca, motivo para camarote pagar mais. Mas antes de eu vender uma respiração sua como atração, você mostra se consegue cair, girar, parar e levantar sem matar meu chão de vergonha."
+
+Ele bate a ficha na mesa, uma vez.
+
+"Você me trouxe uma ideia que eu posso pôr para trabalhar. Isso compra começo, não milagre. Silva fala com as mãos de Chauntea. Eu ponho Sorn, Mira e Dessa para pensar no que cabe na lona amanhã. Você escolhe o primeiro peso que vai carregar agora: me dá um número que eu possa vender, ou me dá uma proteção pública que eu possa escrever no cartaz sem escrever medo."
+
+Do lado de fora, o circo segue rangendo, vivo, úmido, cheio de gente que ainda não sabe que acabou de virar parte de uma disputa maior sem ouvir o nome da guerra.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 31 PO, 9 shuriken**. Hora aproximada: **13:24**. Jack aceitou o esqueleto do Benefício da Lona Aberta como plano viável: evento público beneficente no dia seguinte ao cair da tarde, sem acusação direta à Red Sail, Masao ou Narwhal. O plano pode fortalecer o circo com respeitabilidade, dinheiro e patronos locais, enquanto integra Nera e Tavin à rotina de trabalho e separa o livro deles. Jack quer agora que Ren contribua com uma de duas necessidades imediatas: provar que há um número acrobático vendável ou obter uma proteção pública/apoio institucional que possa justificar presença de guarda ou templo sem expor medo.

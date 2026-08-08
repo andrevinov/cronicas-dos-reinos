@@ -509,6 +509,10 @@ relacoes:
       Ren, Nera/Tavin e o livro, transformar os irmãos em gente da rotina do
       circo, manter Ren visível por algumas horas como Ren Kage e falar com
       Jack junto dela.
+      Silva ouviu Ren propor o Benefício da Lona Aberta e apoiou a parte
+      comunitária do plano: Chauntea pode ajudar com comida, água, cobertores e
+      mãos, desde que o evento não vire palanque de acusação nem exponha Nera e
+      Tavin.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -530,6 +534,7 @@ relacoes:
       - "Silva aceitou a nomeação em Tyr com reprimenda e quer falar com Jack antes que a notícia chegue por outra boca."
       - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."
       - "Silva quer que Ren fique visível por algumas horas como Ren Kage, acrobata estrangeiro, em vez de parecer uma sombra sempre ligada a crises."
+      - "Silva apoia o Benefício da Lona Aberta apenas como ação comunitária discreta, não como declaração pública de guerra."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -568,6 +573,15 @@ relacoes:
       Depois, conduziu a busca controlada como concessão teatral: abriu o que
       quis, quando quis, e manteve os homens do porto longe do que importava
       até a presença da guarda encerrar a pressão imediata.
+      Ren propôs o Benefício da Lona Aberta como forma de o circo comprar
+      respeitabilidade, dinheiro e proteção social depois do incêndio, sem
+      acusar publicamente Red Sail, Masao ou Narwhal. Jack aceitou o esqueleto
+      do plano como viável e comercialmente útil, desde que fique sob controle
+      dele: evento beneficente amanhã ao cair da tarde, ingressos comuns,
+      camarotes caros, doações visíveis, Vell integrados como trabalhadores
+      comuns antes dos cartazes, livro separado do lugar onde eles dormem,
+      apoio de templo/guarda sem parecer medo e Ren testado antes de ser
+      vendido como atração.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -577,6 +591,10 @@ relacoes:
       - "Nera e Tavin ficam no circo por hoje e amanhã."
       - "Ren fica como Ren Kage, acrobata estrangeiro em teste, com comida e abrigo discreto definido por Jack."
       - "Após a confissão de Harl, Jack confirmou o abrigo por hoje e amanhã sem novo julgamento no meio da tarde."
+      - "Jack aceitou preparar o Benefício da Lona Aberta como plano inicial condicionado."
+      - "Nera será integrada ao trabalho com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público."
+      - "O livro de provas não deve dormir onde Nera e Tavin dormem."
+      - "Ren deve provar um número vendável ou obter apoio institucional limpo para o evento."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -593,6 +611,7 @@ relacoes:
       - "A sondagem ao amanhecer aumenta a pressão para Ren oferecer explicações ou solução antes que o abrigo dos Vell fique caro demais para o circo."
       - "Jack aceita busca controlada como manobra de apaziguamento, mas não permitirá vasculha livre nem exposição da rotina interna do circo."
       - "A busca controlada aliviou a pressão imediata, mas pode fazer a Red Sail voltar por meios menos públicos."
+      - "O Benefício da Lona Aberta pode fortalecer o circo, mas também pode atrair pressão se a Red Sail enxergar perda de narrativa pública."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
