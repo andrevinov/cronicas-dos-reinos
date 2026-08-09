@@ -19,17 +19,17 @@ localizacao:
   cidade: "Ravens Bluff"
   area: "campos do circo"
   ponto_exato: "escritório-carroça de Jack Mooney, manhã seguinte ao Benefício da Lona Aberta"
-  descricao_operacional: "Ren comeu, falou com Nera na carroça verde e foi ao escritório-carroça de Jack. Nera aceitou a utilidade de Kage como porta de abrigo e renda, mas alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos, Vell ou Masao. Jack recebeu uma proposta escrita sem nome claro vinda do camarote oeste: a casa ocupante deseja conhecer termos para apresentação privada de Kage, com pagamento adiantado e discrição. Jack considera isso proposta e insulto ao mesmo tempo. Ele quer responder com filtros rígidos: Kage não vai sozinho a casa privada no primeiro convite; toda proposta deve ter nome de casa, endereço, pagador e metade adiantada; local deve ser controlado; nada envolve Nera, Tavin, livro ou história triste vendida. Antes de responder, Jack pediu que Ren defina o que Kage não faz por dinheiro."
+  descricao_operacional: "Ren comeu, falou com Nera na carroça verde e foi ao escritório-carroça de Jack. Nera aceitou a utilidade de Kage como porta de abrigo e renda, mas alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos, Vell ou Masao. Jack recebeu uma proposta escrita sem nome claro vinda do camarote oeste e perguntou o que Kage não faz por dinheiro. Ren definiu limites: Kage só se apresenta em tenda montada e controlada pelo circo, com equipe presente, segurança da casa ou contratada com nome, antecedência, sem reunião social, sem fala obrigatória, sem exposição pessoal, sem intimidação privada e sem envolver os Vell. Jack preparou resposta rígida ao camarote oeste, com preço de 40 PO para primeira apresentação fechada curta, metade adiantada e custos por fora, mas antes de selar o papel uma mensageira de Tyr chegou à borda das carroças pedindo Silva Elkwood por assunto de lacre reservado."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "manhã seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "06:45 da manhã seguinte ao Benefício"
+  hora_aproximada: "06:58 da manhã seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
-  prazo_relevante: "Jack aguarda Ren definir limites de Kage antes de responder à proposta sem nome claro do camarote oeste."
+  prazo_relevante: "O camarote oeste espera resposta até o meio-dia; Jack ainda não selou a resposta porque uma mensageira de Tyr chegou pedindo Silva Elkwood por assunto de lacre reservado."
 
 recursos:
   pontos_de_vida:
@@ -423,6 +423,9 @@ recursos:
     - "Proposta escrita sem nome claro chegou do camarote oeste pedindo termos para apresentação privada de Kage"
     - "Jack quer exigir nome de casa, endereço, pagador, metade adiantada e local controlado antes de qualquer apresentação privada"
     - "Jack pediu que Ren defina o que Kage não faz por dinheiro"
+    - "Ren definiu limites formais para Kage: apenas tenda controlada pelo circo, equipe presente, segurança identificada, antecedência, sem reunião social, sem fala obrigatória, sem exposição pessoal e sem intimidação privada"
+    - "Jack preparou resposta rígida ao camarote oeste, com preço de 40 PO para primeira apresentação fechada curta, 20 PO adiantadas e custos de tenda/segurança/transporte por fora"
+    - "mensageira de Tyr chegou à borda das carroças pedindo Silva Elkwood por assunto de lacre reservado"
   exaustao: 0
 
 equipamento_em_posse:
@@ -462,8 +465,8 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "definir para Jack o que Kage não faz por dinheiro"
-    - "decidir como responder à proposta sem nome claro do camarote oeste"
+    - "decidir se acompanha Silva até a mensageira de Tyr ou permanece com Jack para finalizar a resposta ao camarote oeste"
+    - "selar ou ajustar a resposta de Jack à proposta sem nome claro do camarote oeste antes do meio-dia"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
     - "observar se Red Sail, Narwhal ou outros interessados reagem ao sucesso do número"
     - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
@@ -501,7 +504,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está no escritório-carroça de Jack Mooney com Silva presente. Uma proposta escrita sem nome claro, vinda do camarote oeste, pede termos para apresentação privada de Kage com pagamento adiantado e discrição. Jack quer filtrar qualquer resposta: nome de casa, endereço, pagador, metade adiantada, local controlado e nada envolvendo os Vell. Antes de responder, Jack pediu que Ren defina o que Kage não faz por dinheiro. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 06:45 da manhã seguinte ao Benefício."
+  cena_atual: "Ren está no escritório-carroça de Jack Mooney com Silva presente. Ren definiu limites formais para Kage, e Jack preparou resposta rígida ao camarote oeste, mas ainda não selou o papel. Uma mensageira de Tyr chegou à borda das carroças pedindo Silva Elkwood por assunto de lacre reservado. Silva perguntou se Ren vem com ela ou fica com Jack para terminar a negociação comercial. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 06:58 da manhã seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

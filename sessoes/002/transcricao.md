@@ -1414,3 +1414,81 @@ Ele toca o papel sem nome.
 "Se eu vou vender sua ausência, preciso saber onde ela acaba."
 
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **06:45 da manhã seguinte ao Benefício**. Ren comeu, falou com Nera e foi ao escritório-carroça de Jack. Uma proposta sem nome claro chegou do camarote oeste, pedindo termos para apresentação privada de Kage com pagamento adiantado e discrição. Jack quer responder apenas com filtros rígidos: nada de casa privada no primeiro convite, proposta assinada, local controlado, pagamento adiantado e nenhum envolvimento dos Vell. Antes de responder, Jack quer que Ren defina o que Kage não faz por dinheiro.
+
+**Jogador**
+
+"Concordo com seus 4 dedos. É a forma mais segura de proceder. E sobre o que Kage não faz por dinheiro... ele não se apresenta em lugar que equipe não possa estar ou validar, ele não se apresenta fora da tenda montada pra ele, não importa o quão glamoroso seja o hall de castelo que ofereçam. Tudo que estiver ligado a apresentação é sempre na tenda montada, com equipe, marcado com antecedência boa. Kage não anda sem segurança: acho que dá pra tirarmos uma graninha pra pagar uns seguranças particulares e dar um pouco mais de 'peso' ao artista. Segurança protege Kage, protege equipe. E por fim, Kage não participa de reunião onde ele vai ter que falar, não faz social. Kage é artista, só se interessa em vender sua arte."
+
+Ren não irá falar, mas ele entende que apresentações individuais de Kage são facas de dois gumes: por um lado, formas de obter aliados, influência entre os ricos, formas de combater Masao, mas também representam riscos para ele e qualquer um do circo ligado a ele.
+
+**Narrador**
+
+Jack escuta sem interromper.
+
+Isso, vindo dele, é quase uma concessão formal.
+
+Quando Ren termina, Jack encosta a ponta da bengala no assoalho uma vez, pensando. Silva olha para Ren com atenção seca na parte sobre segurança particular; não reprova a ideia, mas também não deixa que ela passe limpa demais.
+
+"Segurança particular", Jack repete. "Boa palavra. Péssimo mercado."
+
+Ele aponta a bengala para fora, na direção do acampamento.
+
+"Um carregador meu que sabe levantar poste e ficar calado vale mais que três lâminas alugadas que bebem no porto e contam o serviço antes do segundo copo. Primeiro, usamos gente da casa. Sorn para marcação e segurança de cena. Dois homens meus para caixa, porta e corda. Se isso crescer, aí eu contrato braço de guilda com nome escrito e dívida assinada."
+
+Silva acrescenta:
+
+"E ninguém contratado por fora chega perto de Lena, Timo ou do meu canto."
+
+"Isso nem precisa virar regra de Kage", Jack diz. "Isso é regra de continuar respirando."
+
+Ele puxa uma folha limpa, vira a proposta sem nome de barriga para baixo e começa a ditar para si mesmo enquanto escreve.
+
+"Kage não se apresenta em casa privada. Kage se apresenta em tenda erguida e controlada por Jack Mooney & Sons, com equipe do circo, entrada marcada, saída marcada, duas saídas livres e nenhum convidado tocando em equipamento. Kage não recebe social. Não conversa com patrono. Não tira máscara por contrato. Não conta história de sangue, terra natal ou família. Não assusta devedor, rival, esposa, amante, criado, concorrente ou inimigo de ninguém em nome de entretenimento."
+
+Ele molha a pena de novo.
+
+"Arma em cena só se Sorn marcar e Silva aprovar a distância. Sem lâmina real perto de público bêbado. Sem demonstração fora de marcação. Sem repetir truque até ficar barato. Sem perguntar onde Kage dorme. Sem seguir artista depois da lona."
+
+Silva, pela primeira vez, parece quase satisfeita.
+
+"E sem comprar Ren junto", ela diz.
+
+Jack olha para Ren por cima do papel.
+
+"Essa parte não escrevo. Quem precisa ler isso já tenta justamente o contrário."
+
+Ele volta à folha.
+
+"Preço: quarenta peças de ouro pela primeira apresentação fechada curta, metade antes, custos de tenda, segurança e transporte por fora. Se quiserem só saber se podem pagar, podem. Se quiserem saber quem podem mandar, assinam primeiro."
+
+A quantia não é absurda para um camarote rico, mas é alta o bastante para tirar curiosos pequenos, vaidosos de bolso raso e gente que queria testar Kage como se testa animal de feira. Jack sabe disso. A boca dele aperta um pouco, calculando lucro, risco e insulto na mesma conta.
+
+"Resposta sem nome não recebe sim", ele conclui. "Recebe porta com fechadura."
+
+Ele dobra o papel, mas ainda não sela.
+
+Do lado de fora, passos rápidos cruzam a terra pisada. Não são passos de pânico; são passos de ajudante que sabe que está carregando assunto grande o bastante para interromper chefe.
+
+Uma voz jovem chama pela porta:
+
+"Mestre Jack? Silva? Tem uma mensageira de Tyr na borda das carroças. Ela pediu Silva Elkwood por assunto de lacre reservado. Não falou nome de ferido, nem de artista. Só disse que veio da Casa de Tyr e que não entrega a ficha a mão errada."
+
+Silva já se afasta da parede.
+
+Jack fica imóvel por meio segundo, o papel do camarote oeste ainda entre os dedos. Então olha para Ren.
+
+"O camarote espera até o meio-dia. Tyr, quando aprende a andar cedo, costuma estar carregando problema ou proteção. Às vezes os dois."
+
+Silva abre a porta só o bastante para sair, mas espera uma respiração antes de cruzar.
+
+"Você vem comigo ou fica aqui terminando de virar mercadoria cara com Jack?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **06:58 da manhã seguinte ao Benefício**. Ren definiu limites formais para Kage: apresentação apenas em tenda controlada pelo circo, equipe presente, segurança da casa ou contratada com nome, sem reunião social, sem fala obrigatória, sem exposição pessoal, sem uso dos Vell e sem intimidação privada. Jack preparou uma resposta rígida ao camarote oeste, mas antes de selar o papel chegou uma mensageira de Tyr pedindo Silva Elkwood por assunto de lacre reservado.
+
+**Jogador**
+
+"Vamos", falo. Olho pra Jack: "já já eu assino a venda da minha alma, chefe", falo, sorrindo, tentando quebrar a seriedade do meu empregador que parece tão duro por fora, mas eu já entendi ser um paizão por dentro.
+
+Caminho com Silva até o emissário de Tyr.
+
+"Acha que vão convocar você? Ou é algum outro tipo de formalidade?", Ren pergunta.
