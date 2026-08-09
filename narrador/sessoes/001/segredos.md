@@ -212,6 +212,16 @@ Possíveis funções de elite:
 * fanático que admira Masao como futuro senhor de uma nova ordem;
 * agente que odeia Masao, mas ainda serve por medo, dívida ou objetivo comum.
 
+Possibilidade futura não canônica:
+
+* após o Benefício da Lona Aberta, Ren pode ser abordado por um executor de
+  elite ligado a Masao, de preferência alguém que Ren conheça ou reconheça do
+  passado;
+* a cena não precisa ser combate até a morte: pode ser conversa, teste,
+  intimidação, duelo interrompido ou recado calculado;
+* evitar usar literalmente nomes ou estrutura copiada de outra obra; criar um
+  círculo próprio de especialistas de Masao, com funções e conflitos próprios.
+
 Escalada recomendada:
 
 1. primeiro, pressão indireta: mensagens, olhos, registros queimados, intermediários sumindo;

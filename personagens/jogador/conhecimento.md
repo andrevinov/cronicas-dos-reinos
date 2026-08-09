@@ -1734,10 +1734,124 @@ Ponto morto da Silver Lily:
 * Tavin aceitou usar **Timo** como nome de cobertura no circo;
 * Dessa não tem guia confiável de vestimentas orientais nem shamisen disponível nesse prazo, mas consegue montar uma versão teatral de **O Vento da Noite: uma lenda de Kara-Tur**;
 * elementos viáveis do número: robe negro, máscara inteira, panos branco/preto como vento e noite, lanternas, música local adaptada e narração curta;
-* Nera/Lena pode ser a Princesa das Sombras apenas mascarada, anônima e sem aplauso próprio, se Jack e Silva aprovarem;
+* antes da decisão final de Jack, Nera/Lena podia ser a Princesa das Sombras apenas mascarada, anônima e sem aplauso próprio, se Jack e Silva aprovassem;
 * Merrit Tealeaf pode narrar sob supervisão de Silva, sem corda alta, faca, caixa de truque ou acesso solto;
 * Jack autorizou a preparação do número sob condição: apoio limpo de Luath primeiro, prova física de Ren depois;
 * hora aproximada: 13:43.
+* Ren foi ao posto da City Guard/Night Watch em perfil discreto e apresentou o Benefício da Lona Aberta como questão de ordem pública;
+* Luath aceitou tratar Ren publicamente como artista, mas não comprou compromisso formal da Night Watch;
+* rolagem: Persuasão para obter apoio limpo de Luath, d20 com vantagem [9, 10] -> 10 contra CD 12, falha;
+* Luath recusou que Jack use o nome da Night Watch em cartaz, anúncio ou como selo público do evento;
+* Luath pode aceitar uma ronda normal no caminho do evento se Jack entregar aviso escrito antes do pôr do sol;
+* o aviso precisa conter hora, entrada, saída, estimativa de público e responsável pela lona;
+* Silva ou outro nome de templo precisa assinar a parte real de comida, cobertor ou doação;
+* se homens da Red Sail tentarem impor autoridade no evento, Luath pode enquadrar isso como perturbação da paz, não como proteção privada ao circo;
+* hora aproximada: 14:08.
+* Ren pressionou Luath a ir além da resposta formal, argumentando que Jack está fortalecendo o circo contra uma organização que tentou queimar arquivo de uma mulher e uma criança;
+* rolagem: Persuasão para pressionar Luath além da resposta formal, d20 1 contra CD 15, falha;
+* Luath rejeitou duramente a crítica de burocracia e a oferta de Ren de prestar serviços secretos para obter provas sem que ninguém soubesse;
+* Luath manteve apenas o acordo limitado anterior: aviso escrito limpo antes do pôr do sol pode justificar ronda normal, sem nome da guarda no cartaz;
+* Luath avisou que Ren deve trazer fatos, nomes, lugares, horas, testemunhas ou rastros, não oferecer-se como mão escondida da guarda;
+* a confiança operacional de Luath em Ren piorou, embora a ponte não tenha sido rompida;
+* hora aproximada: 14:11.
+* Ren voltou ao circo e relatou a Jack a resposta limitada de Luath;
+* Jack entendeu que Luath ofereceu um caminho estreito, mas utilizável: aviso escrito limpo antes do pôr do sol, sem nome da guarda no cartaz;
+* Ren apresentou suas capacidades artísticas diante de Jack, Silva, Dessa, Mira e Sorn;
+* rolagem: Acrobacia para vender O Vento da Noite, d20 13 + 6 = 19 contra CD 15, sucesso;
+* rolagem: precisão com shuriken em alvo de ensaio, d20 18 + 6 = 24 contra CD 14, sucesso;
+* Ren gastou 1 ki em Passo do Vento durante a demonstração, ficando com 1/4 ki;
+* Jack aceitou vender **O Vento da Noite** como atração real do Benefício da Lona Aberta;
+* Sorn quer marcar cada ponto de pouso antes de o número acontecer com lona cheia;
+* Silva proibiu que o efeito com shuriken chegue perto de criança, cozinha ou fila;
+* Jack quer tratar os shuriken como "agulha de estrela" ou "vento cortado", sem anunciar arma ao público;
+* Dessa definiu uma lógica de cena com pano branco, pano preto baixo, lanternas, flauta no salto, tambor no pouso e Merrit falando pouco;
+* o próximo passo imediato é preparar com Jack e Silva o aviso escrito para Luath antes do pôr do sol;
+* hora aproximada: 14:43.
+* Jack e Silva prepararam o aviso escrito limpo para Luath sobre o Benefício da Lona Aberta;
+* o aviso define evento amanhã ao cair da tarde, entrada/saída pelos campos e rota de carroças, estimativa de público maior que uma noite comum, Jack responsável pela lona e Silva responsável por comida, água, cobertores e doações;
+* Ren entregou o aviso a Luath antes do pôr do sol, sem nova discussão e com agradecimento humilde;
+* Luath aceitou orientar ronda normal no caminho do evento, sem apoio formal público, sem nome da guarda no anúncio e sem desfazer totalmente a cautela anterior;
+* Ren voltou ao circo e completou descanso curto seguro no depósito de figurino velho;
+* Ren recuperou o ki para 4/4;
+* Jack e Silva permitiram que Merrit narre O Vento da Noite apenas como papel limitado de chão, sem corda alta, faca, caixa de truque ou acesso solto;
+* Merrit aceitou narrar o número e ensaiou entradas cômicas curtas, incluindo reverência exagerada e tropeço falso;
+* Nera/Lena e Tavin/Timo assistiram parte do ensaio pela rota interna do circo;
+* Tavin perguntou se "Kagefucha" voa;
+* Nera viu que o número tem marcações e supervisão, não apenas risco improvisado;
+* Ren decidiu manter-se visível como Ren Kage e evitar ações contra Masao ou Red Sail até a apresentação para não dar munição pública aos inimigos;
+* hora aproximada: 18:12.
+* Jack decidiu que **Lysa Renn**, não Nera/Lena, será a Princesa das Sombras;
+* motivo da decisão: manter Nera protegida fora da exposição pública e reintegrar Lysa em um papel seguro, mascarado e sem acrobacia alta;
+* o papel de Lysa não terá beijo, toque romântico, nome anunciado nem aplauso próprio;
+* Nera demonstrou ciúme contido ao ver Lysa assumir o pano preto, mas não contestou a decisão;
+* Ren ensaiou à noite sem gastar ki; Sorn cortou o treino de Lysa quando o joelho cobrou;
+* Ren e Nera caminharam depois pela rota interna das lonas, com mãos dadas, beijos e juras de amor de Ren;
+* Nera não respondeu com promessa igual, mas pediu que Ren viva tempo bastante para ela acreditar sem medo;
+* Ren completou descanso longo antes do dia da apresentação;
+* no dia do Benefício da Lona Aberta, Ren ensaiou de manhã e à tarde, cobrou texto curto de Merrit, roupa de Dessa e marcações de Sorn;
+* Mira corrigiu tecnicamente o segundo giro de Lysa para poupar o joelho;
+* Ren almoçou com Nera/Lena e Tavin/Timo e tentou explicar sushi; Tavin não se convenceu sobre peixe cru;
+* a ronda normal prometida por Luath passou pela estrada do circo sem teatralidade;
+* dois homens de faixa vermelha atravessaram a estrada sem parar durante a chegada do público;
+* Ren está vestido com o figurino de O Vento da Noite: camadas negras, faixa escura com desenho de vento, tecido branco oculto para giros, mangas falsas, cabelo preso e máscara parcial de entrada;
+* antes da entrada, Tavin disse que Ren parece "caro"; Silva avisou que ele parece visível e não deve desperdiçar isso; Nera pediu que ele volte inteiro para trás da lona;
+* Jack iniciou a chamada pública de O Vento da Noite;
+* hora aproximada: 17:42 do dia seguinte.
+* Ren executou **O Vento da Noite** diante da lona cheia;
+* rolagem: Acrobacia para executar O Vento da Noite diante da lona cheia, d20 com vantagem [8, 16] -> 16 + 6 = 22 contra CD 15, sucesso;
+* rolagem: Atuação para firmar Ren Kage como persona pública, d20 com vantagem [10, 16] -> 16 contra CD 13, sucesso;
+* Ren gastou 1 ki em Passo do Vento durante a apresentação, ficando com 3/4 ki;
+* o público reagiu com silêncio impressionado antes do aplauso, seguido por resposta forte das arquibancadas, bancos médios e camarotes;
+* Lysa cumpriu o papel de Princesa das Sombras sem forçar o joelho e recebeu reconhecimento técnico discreto de Mira;
+* Merrit sustentou a narração curta, funcionou diante do público e voltou a ter um lugar visível no palco sem romper as restrições;
+* Jack percebeu que O Vento da Noite vende;
+* a persona pública **Ren Kage** começou a se fixar em Ravens Bluff como artista estrangeiro caro, estranho e memorável;
+* o resultado financeiro e político completo do Benefício da Lona Aberta ainda depende do restante da noite;
+* hora aproximada: 17:58 do dia seguinte.
+* Ren não voltou ao público depois de O Vento da Noite, preservando a aura de mistério;
+* Jack aprovou a ausência pública: para ele, mistério guardado vira ingresso futuro;
+* Sorn aprovou a precisão de Ren nas marcações, mas alertou sobre o ombro abrindo demais no salto da segunda lanterna;
+* Lysa sustentou o papel de Princesa das Sombras sem cair; Mira reconheceu o resultado e deu crítica técnica útil;
+* Dessa confirmou que o figurino funcionou: tecido branco, máscara, mangas e costura não atrapalharam a cena;
+* Silva alertou que a máscara pública Ren Kage ajuda, mas não é esconderijo;
+* Jack recebeu uma ficha do camarote oeste: um homem quer saber se Kage recebe patrono privado ou contratação fechada;
+* Jack pode negar por Ren, dizer que Kage só fala por ele, marcar resposta controlada para amanhã ou permitir contato imediato;
+* Jack considera contato imediato a opção que mais barateia o mistério recém-criado;
+* hora aproximada: 18:07 do dia seguinte.
+* Ren decidiu deixar o número e a figura de Kage ligados ao circo por enquanto, sem atender patrono privado na mesma noite;
+* Jack respondeu ao camarote oeste que Kage não recebe casa privada hoje e que propostas por escrito podem ser enviadas amanhã;
+* rolagem: resultado financeiro e social do Benefício da Lona Aberta, d20 com vantagem [12, 17] -> 17 + 4 = 21 contra CD 14, sucesso;
+* o Benefício da Lona Aberta fechou sem interrupção aberta;
+* a ronda normal passou de modo discreto e ajudou a manter problemas comuns afastados, sem uso público do nome da Night Watch;
+* Jack estima cerca de setenta e poucas peças de ouro limpas para o circo depois de custos e promessas públicas;
+* Silva administra separadamente a lista de doações comunitárias;
+* o evento gerou promessas comerciais, incluindo desconto de farinha por um tenday;
+* Nera e Tavin dormem no circo esta noite;
+* Jack quer conversar pela manhã sobre quanto Kage custa, para quem custa e quanto desse preço compra silêncio;
+* hora aproximada: 21:10 do dia seguinte.
+* Ren terminou a noite feliz com o sucesso de Kage, mas incomodado porque esperava uma ação de Masao ou de algum lacaio durante o evento;
+* Ren tomou banho depois do Benefício e devolveu o figurino de O Vento da Noite aos cuidados de Dessa;
+* Ren comeu com Nera e Tavin na carroça verde;
+* Nera percebeu que Ren esperava que alguém viesse e não tentou escolher uma explicação única: talvez Masao não soubesse a tempo, talvez tenha evitado o circo, talvez tenha mandado alguém olhar, talvez esteja deixando Ren imaginar possibilidades;
+* Nera lembrou que, naquela noite, ela e Tavin comeram dentro de uma carroça que ninguém arrombou, Tavin está inteiro, Jack ganhou dinheiro, Silva não precisou mentir para todos o tempo inteiro e Ren voltou para trás da lona;
+* Ren dormiu no canto definido para ele no circo sem interrupção aberta;
+* Ren completou descanso longo e recuperou o ki para 4/4;
+* pela manhã, Silva deixou água e pão para Ren e avisou que Jack quer falar depois da comida;
+* Silva comentou que Nera está acordada na carroça verde, tentando fingir que não espera Ren;
+* hora aproximada: 06:20 da manhã seguinte ao Benefício.
+* Ren comeu antes de falar com Jack;
+* Ren falou com Nera na carroça verde enquanto Tavin ainda dormia;
+* Nera entende que Kage pode ser uma porta de abrigo e renda, desde que não vire corrente;
+* Nera alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos de camarote, ela, Tavin ou Masao;
+* Jack recebeu proposta escrita sem nome claro vinda do camarote oeste;
+* o texto pede termos para apresentação privada do artista chamado Kage, em ambiente fechado, com convidados selecionados, pagamento adiantado possível e discrição;
+* a proposta não traz nome de casa nem endereço, apenas um traço azul ligado ao camarote oeste;
+* Jack considera a mensagem ao mesmo tempo proposta e insulto: querem comprar, mas ainda não assinar que querem comprar;
+* Jack pretende exigir nome de casa, endereço, pagador e metade do pagamento adiantado antes de responder de verdade;
+* Jack quer que qualquer apresentação privada, se existir, ocorra em local controlado: tenda pequena do circo, pátio de templo ou salão de guilda com saídas e gente do circo por perto, não sala fechada de rico;
+* Jack e Silva concordam que Nera, Tavin, o livro e a história dos Vell não entram na mesa de negociação;
+* Jack pediu que Ren defina o que Kage não faz por dinheiro antes de ele vender qualquer ausência, palavra ou porta;
+* hora aproximada: 06:45 da manhã seguinte ao Benefício.
 
 Progressão:
 

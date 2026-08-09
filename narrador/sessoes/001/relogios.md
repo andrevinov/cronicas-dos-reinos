@@ -50,12 +50,20 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 0/4.
 
-Progresso atual: 2/4.
+Progresso atual: 1/4.
 
 Último avanço:
 
 * Ren respondeu às três perguntas práticas de Luath sem tentar esconder o risco geral: apontou a pressão atual sobre o circo de Jack Mooney, confirmou Dain Mord/Brass e descreveu o protocolo da ficha de cobre, vela vermelha e cordão azul;
 * Luath aceitou tratar o circo como ponto sensível sem ler isso como proteção indevida, mas manteve distância clara da caça pessoal de Ren contra Masao.
+
+Última regressão:
+
+* Ren pressionou Luath a ir além da resposta formal ao Benefício da Lona Aberta e ofereceu serviços secretos de obtenção de prova sem que ninguém soubesse. Luath manteve o acordo limitado de ronda normal, mas passou a ver Ren como risco maior de conluio e justiça privada.
+
+Observação recente:
+
+* Ren pediu apoio ao Benefício da Lona Aberta como questão de ordem pública. A abordagem foi disciplinada, mas a rolagem social falhou: Luath recusou compromisso formal da Night Watch e proibiu uso do nome da guarda em anúncio. Sem avanço nem regressão do relógio; Luath ofereceu apenas ronda normal condicionada a aviso escrito limpo de Jack e assinatura comunitária/temporal de Silva ou outro nome de templo.
 
 Descrição:
 
@@ -92,6 +100,11 @@ Estado atual:
 * Luath ainda não confia em Ren como aliado pleno e continua vendo risco de vendeta;
 * a fala de Ren sobre Masao não merecer cela reforçou a cautela de Luath, embora não tenha cancelado a ação contra a Red Sail.
 * a patrulha acionada por Luath ajudou a dispersar a pressão imediata da Red Sail no perímetro do circo, confirmando utilidade prática do contato.
+* Luath recusou compromisso formal com o Benefício da Lona Aberta, mas aceitou caminho limitado por ronda normal se houver aviso escrito limpo antes do pôr do sol.
+* após nova pressão de Ren, Luath rejeitou qualquer serviço off-record e a confiança prática caiu para 1/4; ainda há ponte operacional, mas mais estreita.
+* Ren entregou o aviso escrito do Benefício da Lona Aberta antes do pôr do sol, sem nova discussão e com postura humilde; Luath aceitou orientar ronda normal para o evento. Isso estabiliza a ponte no nível atual, mas não recupera ainda a confiança perdida.
+* No dia do Benefício da Lona Aberta, a ronda normal passou pela estrada do circo sem teatralidade. Ren manteve-se visível como artista e não gerou novo incidente criminal antes da apresentação.
+* O Benefício fechou sem uso público do nome da Night Watch e sem incidente aberto. A ronda normal mostrou utilidade prática, mas ainda não recupera a confiança perdida com Luath.
 
 ---
 
@@ -471,6 +484,11 @@ Estado atual:
 * a ajuda continua pragmática, não incondicional, e pode ser pressionada se a Red Sail trouxer problema formal ao perímetro do circo.
 * Jack aceita busca controlada como estratégia temporária, desde que ele controle o teatro da vasculha e Ren mova os Vell antes.
 * Ren moveu os Vell antes da busca, preservando a cobertura imediata de Jack e Silva; resta ver se a busca sem resultado apazigua ou irrita Brass/Red Sail.
+* Jack escolheu Lysa Renn, não Nera/Lena, como Princesa das Sombras. Isso preserva melhor a proteção dos Vell e integra uma artista do circo ao número, reduzindo risco interno imediato.
+* O Vento da Noite funcionou diante da lona cheia. Ren Kage agora é uma atração vendável para Jack e uma máscara pública aceita pelo público; isso fortalece a utilidade de manter Ren no circo, mas também torna a cobertura mais visível e repetível.
+* Um camarote oeste perguntou se Kage aceita patrono privado ou contratação fechada. Isso é capital social e possível dinheiro para Jack, mas também cria uma porta de aproximação que precisa ser filtrada.
+* Ren decidiu manter Kage vinculado ao circo por enquanto. Jack recusou casa privada na mesma noite e empurrou propostas por escrito para amanhã. O Benefício gerou cerca de setenta e poucas PO limpas para o circo, doações comunitárias sob Silva e promessas comerciais, reforçando a utilidade de manter Ren e os Vell por esta noite.
+* Na manhã seguinte, chegou proposta escrita sem nome claro do camarote oeste pedindo termos para apresentação privada de Kage, com pagamento adiantado e discrição. Jack pretende exigir identificação, endereço, pagador, metade adiantada e local controlado antes de qualquer resposta real.
 
 Consequência em 0/4:
 
@@ -548,12 +566,14 @@ Visibilidade: oculto.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 2/6.
+Progresso atual: 3/6.
 
 Último avanço:
 
 * Ren já interferiu na isca da falsa lua velada, salvou Nera Vell, tomou a pasta de Velis Rook e levou a prova lacrada à Casa de Tyr; isso ainda não significa que Masao saiba todos os detalhes, mas aproxima a investigação de instituições que sua rede queria evitar.
 * após Tyr se mover contra os registros, uma contingência pública no Harbor District foi acionada com timing suspeito; tratar como possível resposta de rede, não confirmação pública de Masao.
+* Ren Kage se tornou figura pública reconhecível no Benefício da Lona Aberta, ligado a uma estética de Kara-Tur, movimento excepcional e nome incompleto "Kage". Isso não revela Kagehira nem prova conexão com Masao, mas cria uma superfície pública que agentes mais competentes podem usar para observar rotina, patronos e vínculos.
+* Na noite após o Benefício, nenhuma tentativa competente conseguiu mapear a rotina interna de Kage dentro do circo; a superfície pública existe, mas ainda não virou acesso direto.
 
 Descrição:
 

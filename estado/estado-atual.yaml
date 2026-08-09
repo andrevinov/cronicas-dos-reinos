@@ -18,18 +18,18 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "campos do circo"
-  ponto_exato: "linha interna entre o escritório-carroça de Jack e o guarda-roupa menor, Jack Mooney & Sons Circus"
-  descricao_operacional: "Ren avisou Jack que buscará apoio limpo de Luath antes de apresentar seu número. Em seguida, falou com Nera e Tavin sobre o Benefício da Lona Aberta, a integração deles à rotina do circo e nomes de cobertura: Nera adotou Lena, Tavin adotou Timo. Dessa aprovou uma versão viável de 'O Vento da Noite: uma lenda de Kara-Tur', com Ren como figura acrobática central, Nera/Lena apenas como Princesa das Sombras mascarada e sem nome, Merrit Tealeaf como narradora sob supervisão de Silva, panos branco/preto como vento e noite, e música local adaptada no lugar de shamisen. Jack autorizou a preparação condicionada: primeiro apoio limpo de Luath, depois prova física do número."
+  ponto_exato: "escritório-carroça de Jack Mooney, manhã seguinte ao Benefício da Lona Aberta"
+  descricao_operacional: "Ren comeu, falou com Nera na carroça verde e foi ao escritório-carroça de Jack. Nera aceitou a utilidade de Kage como porta de abrigo e renda, mas alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos, Vell ou Masao. Jack recebeu uma proposta escrita sem nome claro vinda do camarote oeste: a casa ocupante deseja conhecer termos para apresentação privada de Kage, com pagamento adiantado e discrição. Jack considera isso proposta e insulto ao mesmo tempo. Ele quer responder com filtros rígidos: Kage não vai sozinho a casa privada no primeiro convite; toda proposta deve ter nome de casa, endereço, pagador e metade adiantada; local deve ser controlado; nada envolve Nera, Tavin, livro ou história triste vendida. Antes de responder, Jack pediu que Ren defina o que Kage não faz por dinheiro."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
-  periodo_do_dia: "início da tarde"
-  hora_aproximada: "13:43"
+  periodo_do_dia: "manhã seguinte ao Benefício da Lona Aberta"
+  hora_aproximada: "06:45 da manhã seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
-  prazo_relevante: "segunda maré por volta de 02:00; chegar à Casa da Rede Morta até cerca de 01:30 dá margem antes da retirada."
+  prazo_relevante: "Jack aguarda Ren definir limites de Kage antes de responder à proposta sem nome claro do camarote oeste."
 
 recursos:
   pontos_de_vida:
@@ -40,7 +40,7 @@ recursos:
     maximos: 4
     dado: "d8"
   ki:
-    atuais: 2
+    atuais: 4
     maximos: 4
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -373,6 +373,56 @@ recursos:
     - "Tavin adotou Timo como nome de cobertura no circo"
     - "Dessa aprovou uma versão viável de O Vento da Noite com figurino improvisado, panos de vento/noite, música local adaptada e Merrit narrando sob supervisão"
     - "Jack autorizou a preparação do número, condicionada a apoio limpo de Luath e prova física posterior"
+    - "Luath recusou apoio formal da Night Watch ao Benefício da Lona Aberta, mas aceitou ronda normal se Jack/Silva entregarem aviso limpo antes do pôr do sol"
+    - "Ren pressionou Luath além da resposta formal e ofereceu serviços secretos; Luath rejeitou duramente a proposta e ficou mais cauteloso"
+    - "Ren demonstrou O Vento da Noite com sucesso diante de Jack, Silva, Dessa, Mira e Sorn"
+    - "Ren gastou 1 ki em Passo do Vento durante a demonstração"
+    - "Jack aceitou vender O Vento da Noite como atração do Benefício da Lona Aberta"
+    - "Jack e Silva prepararam aviso escrito limpo para Luath sobre o Benefício da Lona Aberta"
+    - "Ren entregou o aviso a Luath antes do pôr do sol, sem nova discussão"
+    - "Luath aceitou orientar ronda normal no caminho do evento, sem apoio formal público"
+    - "Ren completou descanso curto no circo e recuperou o ki"
+    - "Merrit aceitou narrar O Vento da Noite como papel limitado de chão, sob supervisão de Silva"
+    - "Nera/Lena e Tavin/Timo assistiram parte do ensaio de O Vento da Noite"
+    - "Jack decidiu que Lysa Renn será a Princesa das Sombras no lugar de Nera/Lena"
+    - "Princesa das Sombras não terá beijo, toque romântico, nome anunciado nem aplauso próprio"
+    - "Ren ensaiou à noite e no dia seguinte sem gastar ki antes da apresentação"
+    - "Ren completou descanso longo antes do dia da apresentação"
+    - "Nera demonstrou ciúme contido ao ver Lysa assumir o papel de Princesa das Sombras"
+    - "Ren almoçou com Nera e Tavin e tentou explicar sushi"
+    - "A ronda normal prometida por Luath passou pela estrada do circo no dia do evento"
+    - "Ren está vestido com o figurino de O Vento da Noite e prestes a entrar em cena"
+    - "Ren executou O Vento da Noite diante da lona cheia com sucesso"
+    - "Rolagem de Acrobacia de O Vento da Noite: 22 contra CD 15, sucesso"
+    - "Rolagem de Atuação de O Vento da Noite: 16 contra CD 13, sucesso"
+    - "Ren gastou 1 ki em Passo do Vento durante a apresentação"
+    - "A persona pública Ren Kage começou a se fixar em Ravens Bluff"
+    - "Jack percebeu que O Vento da Noite vende"
+    - "Ren não voltou ao público após O Vento da Noite e preservou a aura de mistério"
+    - "Sorn aprovou a precisão das marcações de Ren, com ressalva técnica sobre o ombro no salto da segunda lanterna"
+    - "Lysa sustentou a Princesa das Sombras sem cair e recebeu crítica técnica útil de Mira"
+    - "Dessa confirmou que o figurino de O Vento da Noite funcionou diante da lona cheia"
+    - "Silva alertou que a máscara pública Ren Kage ajuda, mas não é esconderijo"
+    - "Jack recebeu interesse de um camarote oeste por patronato ou contratação privada de Kage"
+    - "Ren decidiu deixar Kage ligado ao circo por ora e não atender patrono privado na mesma noite"
+    - "Jack respondeu ao camarote oeste que Kage não recebe casa privada hoje; propostas por escrito podem vir amanhã"
+    - "Rolagem de resultado financeiro e social do Benefício da Lona Aberta: 21 contra CD 14, sucesso"
+    - "Benefício da Lona Aberta fechou sem interrupção aberta"
+    - "Jack estima cerca de setenta e poucas PO limpas para o circo depois de custos e promessas públicas"
+    - "Silva administra separadamente a lista de doações comunitárias"
+    - "Nera e Tavin dormem no circo esta noite"
+    - "Ren tomou banho depois do Benefício da Lona Aberta"
+    - "Ren comeu com Nera e Tavin na carroça verde"
+    - "Ren completou descanso longo sem interrupção aberta"
+    - "Ren recuperou o ki para 4/4"
+    - "Silva trouxe água e pão para Ren pela manhã"
+    - "Nera está acordada na carroça verde, tentando fingir que não espera Ren"
+    - "Ren comeu na manhã seguinte ao Benefício"
+    - "Ren falou com Nera antes de ir ver Jack"
+    - "Nera alertou que Kage pode virar porta, mas não deve comprar Ren inteiro"
+    - "Proposta escrita sem nome claro chegou do camarote oeste pedindo termos para apresentação privada de Kage"
+    - "Jack quer exigir nome de casa, endereço, pagador, metade adiantada e local controlado antes de qualquer apresentação privada"
+    - "Jack pediu que Ren defina o que Kage não faz por dinheiro"
   exaustao: 0
 
 equipamento_em_posse:
@@ -398,7 +448,8 @@ equipamento_em_posse:
     - "tira de couro da amarra sabotada da corda alta"
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
   outros:
-    - "roupa atual de cidadão menor limpo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
+    - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso e máscara parcial de entrada"
+    - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
     - "manta de estopa cinza sobre o ombro para quebrar a silhueta"
     - "roupas proprias de Ren guardadas com Dessa Wren para limpeza e uso como figurino estrangeiro"
     - "roupas roubadas e roupas de doacao entregues a Dessa Wren para virar retalho"
@@ -411,8 +462,10 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "falar com Luath para obter apoio institucional limpo ao Benefício da Lona Aberta sem expor medo nem os Vell"
-    - "voltar ao circo e provar fisicamente o número O Vento da Noite para Jack, Sorn, Mira, Dessa e Silva"
+    - "definir para Jack o que Kage não faz por dinheiro"
+    - "decidir como responder à proposta sem nome claro do camarote oeste"
+    - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
+    - "observar se Red Sail, Narwhal ou outros interessados reagem ao sucesso do número"
     - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
     - "definir com Silva onde o livro original de Nera ficará longe do local onde os Vell dormem"
     - "comer algo quando houver abertura segura"
@@ -448,7 +501,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está na linha interna do Jack Mooney & Sons Circus depois de alinhar o Benefício da Lona Aberta com Jack, Silva, Nera/Tavin e Dessa. Nera e Tavin usarão os nomes de cobertura Lena e Timo. Dessa consegue montar O Vento da Noite com figurino improvisado, máscara, panos de vento/noite, música local adaptada e Merrit Tealeaf narrando sob supervisão. Jack quer que Ren vá a Luath primeiro e volte com apoio limpo, ou com a confirmação de que a guarda não quer se envolver. Depois Ren deverá provar o número fisicamente. Ren segue com 2/4 ki e 31 PO. Hora aproximada: 13:43."
+  cena_atual: "Ren está no escritório-carroça de Jack Mooney com Silva presente. Uma proposta escrita sem nome claro, vinda do camarote oeste, pede termos para apresentação privada de Kage com pagamento adiantado e discrição. Jack quer filtrar qualquer resposta: nome de casa, endereço, pagador, metade adiantada, local controlado e nada envolvendo os Vell. Antes de responder, Jack pediu que Ren defina o que Kage não faz por dinheiro. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 06:45 da manhã seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

@@ -107,7 +107,7 @@ combate:
       bonus_ataque: 6
       dano: "1d4 + 4 perfurante"
       alcance: "20/60 pés"
-      quantidade: 10
+      quantidade: 9
 
 pericias:
   acrobacia: 6
@@ -152,7 +152,7 @@ recursos_de_classe:
     resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
   ki:
     pontos_maximos: 4
-    pontos_atuais: 3
+    pontos_atuais: 4
     cd: 13
     recarga: "descanso curto ou longo"
     usos:
@@ -220,11 +220,13 @@ background:
 equipamento:
   armas:
     - "wakizashi, mecanicamente espada curta"
-    - "10 shuriken, mecanicamente dardos"
+    - "9 shuriken, mecanicamente dardos"
   armadura: "nenhuma"
   itens:
-    - "disfarce atual de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso"
-    - "roupas próprias de Ren guardadas com Dessa Wren como figurino estrangeiro"
+    - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas, cabelo preso e máscara parcial de entrada"
+    - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
+    - "disfarce antigo de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso"
+    - "roupas próprias de Ren incorporadas por Dessa Wren como base de figurino estrangeiro"
     - "roupas roubadas e roupas comuns de doação entregues a Dessa Wren para virar retalho"
     - "disfarces de Nera e Tavin de Dessa Wren em uso"
     - "manto simples com capuz"
@@ -245,7 +247,7 @@ equipamento:
     - "botão de osso infantil tomado como garantia"
     - "tira de couro da amarra sabotada da corda alta"
   dinheiro:
-    po: 33
+    po: 31
 
 vinculos:
   regiao_inicial: "Ravens Bluff"

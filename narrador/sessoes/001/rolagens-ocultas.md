@@ -559,3 +559,31 @@ Interpretação reservada:
 * Silva aceita a nomeação em Tyr com reprimenda, não como quebra de confiança;
 * avaliação de Silva: sair agora seria pior; manter os Vell no circo é viável por hoje, desde que Ren, Vell e livro sejam separados;
 * estratégia sugerida: Vell entram na rotina do circo, livro separado deles, Ren fica visível como Ren Kage por algumas horas e depois fala com Jack junto de Silva.
+
+---
+
+## Fechamento do Benefício da Lona Aberta
+
+Interferência externa imediata no fechamento do Benefício: d20 13 = 13 contra CD 15. Falha.
+
+Interpretação reservada:
+
+* não há interrupção aberta da Red Sail, Narwhal ou agente especializado durante o fechamento do Benefício;
+* a ronda normal e o controle de Jack bastam para dispersar problemas comuns e manter intimidação armada fora da lona;
+* o camarote oeste aceita a negativa imediata de Jack por enquanto, sem insistir em contato direto na mesma noite;
+* isso não limpa a oportunidade: patronato privado segue como porta social a filtrar amanhã.
+
+---
+
+## Noite após o Benefício da Lona Aberta
+
+Observador especializado tenta mapear rotina de Kage após o Benefício: d20 8 + 5 = 13 contra CD 15. Falha.
+
+Ren nota sinal anormal antes de dormir: d20 2 + 5 = 7 contra CD 15. Falha.
+
+Interpretação reservada:
+
+* a publicização de Kage cria superfície futura, mas ninguém competente consegue mapear a rotina interna de Ren naquela noite;
+* o fechamento controlado do circo, o recolhimento das lonas, a ronda normal e o filtro de Jack/Silva impedem aproximação clara;
+* Ren não percebe sinal anormal antes de dormir;
+* a noite pode render descanso longo sem interrupção aberta.
