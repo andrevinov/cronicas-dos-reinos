@@ -1896,6 +1896,17 @@ Ponto morto da Silver Lily:
 * por volta de 11:18, o adulto saiu da Casa Velha rumo aos armazéns com um embrulho fino e comprido;
 * Ren continua escondido e ainda não entrou nem abordou ninguém;
 * hora aproximada: 11:18 da manhã seguinte ao Benefício.
+* Ren abandonou o rastro imediato do adulto de avental manchado para tentar localizar Velis Rook antes do meio-dia;
+* rolagem: Localizar rota provável de Velis, d20 4 + 3 = 7 contra CD 14, falha;
+* rolagem: Vigiar Velis sem ser notado, d20 7 + 6 = 13 contra CD 15, falha;
+* rolagem: Ouvir conversa em movimento, d20 14 + 5 = 19 contra CD 14, sucesso;
+* Ren errou a primeira rota e perdeu tempo, mas chegou ao perímetro lateral da Casa de Tyr quando Velis chegava com uma mulher ligada a interesses de casa rica;
+* Ren ouviu a mulher preparar Velis para negar instrução de patrono e tratar a anulação como correção de escrita;
+* Ren ouviu que Velis deve dizer que a marca da lua foi recebida, não criada por ele, e que o "oriental" era M. Harrow;
+* um guardião de Tyr percebeu um homem de capuz interessado demais, mas Ren se afastou sem ser identificado com certeza;
+* Velis entrou na Casa de Tyr;
+* a mulher que instruiu Velis não entrou e seguiu sozinha rumo às ruas de escribas e comércio;
+* hora aproximada: 11:49 da manhã seguinte ao Benefício.
 
 Progressão:
 

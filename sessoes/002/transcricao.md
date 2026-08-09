@@ -1751,3 +1751,79 @@ Ren ainda está escondido. Ainda não foi marcado. Ainda não gastou ki. Mas já
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **11:18 da manhã seguinte ao Benefício**. Ren não comprou luneta, pois o item é caro demais e não estava disponível como compra rápida útil. Ele ocupou um ponto alto discretamente e observou a Casa Velha por horas. Não gerou alarme. A observação visual falhou em detalhes finos, mas Ren organizou um padrão forte: a frente não é usada, a viela lateral e a porta de serviço são o eixo real, crianças parecem funcionar como olhos externos, e um adulto de avental manchado usou a rota duas vezes. Agora esse adulto sai rumo aos armazéns com um embrulho fino e comprido.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren decide localizar Velis Rook e vigiar, inicialmente, de longe. Se ele notar que Velis está conversando com alguém, tentará a abordagem "trabalhandor de cabeça baixa e capuz por cima do rosto" pra tentar andar por perto e ouvir a conversa. Caso alguém desconfie, ele apenas se afastará. Caso tentem descobrir que é ele e ele se sinta encurrala-do, usa Ilusão Menor pra assustar a pessoa, fazendo um som reconhecível de dragão vindo atacar a cidade, liga Passo do Vento e some enquanto se distraem.]
+
+**Narrador**
+
+Seguir Velis significa abandonar o homem de avental manchado e o embrulho comprido.
+
+Ren não vê isso como drama. Vê como custo. A Casa Velha ainda estará ali à noite; Velis tem sino em cima da cabeça. O adulto de avental desce para os armazéns e some no fluxo baixo da cidade enquanto Ren sai do sótão pelo mesmo caminho paciente por onde entrou.
+
+Localizar rota provável de Velis: d20 4 + 3 = 7 contra CD 14. Falha.  
+Vigiar Velis sem ser notado: d20 7 + 6 = 13 contra CD 15. Falha.  
+Ouvir conversa em movimento: d20 14 + 5 = 19 contra CD 14. Sucesso.
+
+Ren escolhe o eixo certo no papel: Narwhal Manor, registros de carga, Casa de Tyr. Erra a primeira dobra.
+
+Vai cedo demais para uma rua de funcionários perto de Narwhal e encontra só porta fechada, um criado varrendo o mesmo degrau sem pressa e dois homens que parecem não olhar para nada enquanto olham para tudo. Velis não sai por ali. Se saiu, saiu por outra boca. Se ainda está dentro, não está onde Ren consegue vê-lo sem transformar a manhã em invasão.
+
+O tempo sangra.
+
+Quando Ren corta de volta para o Temple District, a cidade já se aproxima daquela hora em que todo sino menor parece ensaiar o sino grande. A Casa de Tyr não tenta se esconder: pedra clara, degraus largos, símbolo austero, gente entrando com queixa, promessa, medo ou documento.
+
+Velis Rook aparece pela rua lateral, não pela frente cheia.
+
+Ele parece menor de dia. Roupas limpas demais, dedos de tinta, rosto tenso de quem ensaiou indignação diante do espelho e descobriu que a garganta não acredita. Ao lado dele caminha uma mulher de meia-idade com manto azul-acinzentado bom demais para serva e simples demais para nobre. Ela não usa símbolo de Narwhal à mostra, mas tudo nela é casa rica tentando parecer procedimento: luvas, bolsa de documento, sapato que não nasceu para lama.
+
+Ren baixa a cabeça, puxa o capuz e entra no fluxo de quem carrega coisa nenhuma para algum patrão invisível.
+
+A aproximação quase funciona.
+
+Quase.
+
+Um guardião de Tyr perto da lateral percebe o homem de capuz fazendo caminho útil demais para trabalhador sem carga. Não chama arma. Só muda o peso de um pé para outro e começa a prestar atenção. A mulher ao lado de Velis também percebe alguma coisa, talvez não Ren, mas a forma de alguém tentar virar parte da parede.
+
+Ren não força. Mantém o plano: passa, ouve, sai.
+
+"Correção de escrita", a mulher diz baixo, sem mover muito a boca. "Não instrução de patrono."
+
+Velis responde mais baixo ainda. Ren pega o medo antes das palavras.
+
+"Eles têm a pasta."
+
+"Eles têm uma pasta roubada", ela corrige. "E você tem memória."
+
+Os dois param perto da entrada lateral. Um acólito de Tyr espera do lado de dentro, sem convidar a mulher a entrar.
+
+Velis engole seco.
+
+"E a lua?"
+
+"Marca recebida. Não criada por você."
+
+"E o oriental?"
+
+"M. Harrow", ela diz. "Erro de leitura corrigido antes de virar prejuízo. Você não conhece homem de Kara-Tur. Você conhece letra ruim, carga atrasada e pressão de cais."
+
+O guardião olha direto para Ren agora.
+
+"Você aí."
+
+Não é reconhecimento. É filtro.
+
+Ren já está saindo antes da segunda palavra existir. Não corre. Não vira sombra dramática. Não usa dragão falso para incendiar o meio-dia diante da Casa de Tyr. Apenas aceita ser trabalhador que lembrou de outro serviço, cruza atrás de uma carroça de água e deixa o ângulo morrer.
+
+Atrás dele, Velis entra na Casa de Tyr.
+
+A mulher não entra. O acólito não permite, ou ela já sabia que não deveria tentar. Ela fica um instante na rua lateral, ajeita a luva direita, e então começa a descer na direção das ruas de escribas, mensageiros e casas de comércio que servem gente rica sem parecer serviçal.
+
+Ren não foi identificado com certeza. Mas o perímetro de Tyr viu um homem de capuz interessado demais. Se ele insistir agora no mesmo ângulo, pode transformar curiosidade em registro.
+
+O que ele tem é menos do que queria e mais do que tinha: alguém preparou Velis para negar patrono, reduzir a anulação a erro de escrita, tratar a marca da lua como recebida e empurrar o "oriental" para **M. Harrow**.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **11:49 da manhã seguinte ao Benefício**. Ren abandonou o rastro imediato do adulto da Casa Velha para procurar Velis. Errou a primeira rota, perdeu tempo e chegou ao perímetro de Tyr sem ponto ideal. Conseguiu ouvir parte de uma conversa entre Velis Rook e uma mulher ligada a interesses de casa rica: Velis foi instruído a tratar o caso como correção de escrita, negar instrução de patrono, dizer que a marca da lua foi recebida e que o "oriental" era **M. Harrow**. Um guardião de Tyr percebeu um homem de capuz interessado demais; Ren se afastou sem ser identificado com certeza. Velis entrou na Casa de Tyr. A mulher desce sozinha rumo às ruas de escribas e comércio.
+
+O que Ren faz?

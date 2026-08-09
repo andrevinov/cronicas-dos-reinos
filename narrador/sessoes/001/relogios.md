@@ -159,6 +159,7 @@ Estado atual:
 * Nera Vell e Tavin Vell foram registrados por nome completo em ata reservada e selada, mas Sirrus exigiu linha de custódia antes de conceder proteção nominal.
 * Silva Elkwood foi nomeada em registro selado como guardiã atual informada por Ren, ainda a confirmar.
 * Tyr emitiu ordem de preservação de registros antes do meio-dia e convocará Velis Rook, reduzindo a margem de Narwhal para apagar documentos sem custo formal.
+* Na manhã seguinte ao Benefício, Ren tentou vigiar a chegada de Velis à Casa de Tyr. Não ficou em posição ideal e um guardião notou um homem de capuz interessado demais, mas Ren se afastou sem identificação confirmada. Ren ouviu indício de preparação de depoimento por uma mulher ligada a interesses de casa rica: negar patrono, reduzir a anulação a correção de escrita, tratar a lua como marca recebida e empurrar o "oriental" para M. Harrow. Sem avanço imediato do relógio, mas o risco institucional aumenta se Ren insistir no perímetro de Tyr.
 
 ---
 
