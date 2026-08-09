@@ -1882,25 +1882,6 @@ Ponto morto da Silver Lily:
 * do lado de fora da casa, Ren identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado, possíveis observadores na rua e movimento breve atrás de uma janela alta;
 * Ren ainda não entrou nem abordou ninguém;
 * hora aproximada: 08:12 da manhã seguinte ao Benefício.
-* Ren abordou a velha vendedora de nabos fingindo conversa casual sobre a casa;
-* rolagem: Enganação para parecer casual, d20 3 + 0 = 3 contra CD 12, falha;
-* a velha percebeu que Ren não perguntava por curiosidade comum e ficou cautelosa, mas não chamou alarme;
-* rolagem: Percepção para acompanhar o menino durante a conversa, d20 12 + 5 = 17 contra CD 13, sucesso;
-* Ren percebeu que o menino reagiu à palavra "templo" olhando rapidamente para a marca de carvão apagada e para a viela lateral;
-* a velha deixou claro que perguntar diretamente pelo menino seria mal recebido;
-* hora aproximada: 08:14 da manhã seguinte ao Benefício.
-* Ren abandonou a abordagem casual e ameaçou a velha vendedora e o menino para exigir cooperação;
-* rolagem: Intimidação contra a velha e o menino, d20 7 + 0 = 7 contra CD 14, falha;
-* a velha não cooperou, elevou a voz e chamou atenção limitada de transeuntes;
-* o menino se assustou e correu para a viela lateral ligada às marcas de carvão;
-* Ren percebeu novo movimento ou escurecimento na janela alta da Casa Velha;
-* hora aproximada: 08:15 da manhã seguinte ao Benefício.
-* Ren gastou 1 ki em Passo do Vento para tentar agarrar o menino em fuga;
-* rolagem resistida: Atletismo de Ren 5 contra Acrobacia do menino 5, empate; o menino não ficou agarrado;
-* a velha gritou "ladrão de menino" e chamou atenção mais clara da rua;
-* o menino tocou duas vezes numa tábua lateral e entrou por uma abertura baixa sob uma escada da Casa Velha;
-* Ren está na viela, perto da abertura baixa, com testemunhas atrás e alerta provável dentro;
-* hora aproximada: 08:15 da manhã seguinte ao Benefício.
 
 Progressão:
 
