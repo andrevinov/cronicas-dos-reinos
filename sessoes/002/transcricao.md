@@ -1827,3 +1827,83 @@ O que ele tem é menos do que queria e mais do que tinha: alguém preparou Velis
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **11:49 da manhã seguinte ao Benefício**. Ren abandonou o rastro imediato do adulto da Casa Velha para procurar Velis. Errou a primeira rota, perdeu tempo e chegou ao perímetro de Tyr sem ponto ideal. Conseguiu ouvir parte de uma conversa entre Velis Rook e uma mulher ligada a interesses de casa rica: Velis foi instruído a tratar o caso como correção de escrita, negar instrução de patrono, dizer que a marca da lua foi recebida e que o "oriental" era **M. Harrow**. Um guardião de Tyr percebeu um homem de capuz interessado demais; Ren se afastou sem ser identificado com certeza. Velis entrou na Casa de Tyr. A mulher desce sozinha rumo às ruas de escribas e comércio.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren irá discretamente até Maerra. Falará o que viu na Casa. Falará sobre as instruções que Velis recebeu. Sobre Silva ser a guardiã legal dos Vell. Procurará conselhos.]
+
+**Narrador**
+
+Sair do perímetro de Tyr sem arrastar atenção até Maerra: d20 14 + 6 = 20 contra CD 13. Sucesso.
+
+Ren deixa o guardião com uma suspeita sem corpo.
+
+Isso exige mais disciplina do que velocidade. Ele não vira a primeira esquina que parece fuga. Não olha para trás no primeiro impulso. Deixa uma carroça de água passar, acompanha um homem com tabuleiro de pães por meia rua, troca de lado perto de uma fileira de devotos, depois some na rotina do Temple District como alguém que nunca esteve interessado em Tyr.
+
+Quando a Casa da Aurora Menor aparece, o sino maior já está próximo o bastante para o bronze parecer dentro dos dentes.
+
+A casa de Maerra continua parecendo menos templo e mais lugar onde gente quebrada aprende a respirar sem pedir licença. A porta principal está aberta. Um homem com tosse espera num banco. Uma mulher amamenta perto da parede, de costas para a luz. Duas crianças disputam um pedaço de barbante até Maerra olhar uma vez e a guerra virar silêncio diplomático.
+
+Ela vê Ren antes de ele falar.
+
+"Você está inteiro", ela diz. "Isso já elimina metade das possibilidades ruins."
+
+Maerra não leva Ren à saleta de ervas de imediato. Primeiro termina de amarrar uma faixa no pulso inchado de um carregador, entrega a ele uma orientação curta sobre repouso que ambos sabem que ele não poderá cumprir, e só então puxa Ren para trás da cortina.
+
+A saleta ainda cheira a ervas secas, água morna e cera.
+
+Ren conta.
+
+Casa Velha. Sol riscado. Crianças como olhos. Velha que vende nabo de verdade e ainda assim observa o que importa. O adulto de avental manchado saindo com embrulho. A escolha de abandonar esse rastro porque Velis tinha o meio-dia de Tyr em cima. A mulher de manto azul-acinzentado preparando Velis: correção de escrita, não patrono; lua recebida, não criada; oriental vira M. Harrow. Silva confirmada como guardiã dos Vell.
+
+Maerra escuta sem interromper.
+
+Quando Ren chama Silva de guardiã legal, ela levanta um dedo.
+
+"Cuidado com a palavra. Legal é coisa que tribunal gosta de mastigar até virar osso." A voz dela não é repreensão; é ajuste de lâmina. "Silva é guardiã atual confirmada e registrada em trilha reservada. De fato, com reconhecimento suficiente para Tyr saber por qual porta bater e por qual porta não marchar. Isso é forte. Não é adoção. Não é tutela plena. Não dê a Narwhal uma palavra grande para tentar quebrar."
+
+Lá fora, o sino maior começa.
+
+Maerra espera o primeiro impacto passar. O som entra na saleta como luz pesada.
+
+"Sobre Velis: você ouviu coisa útil. Também ouviu do lugar errado."
+
+Ela passa a mão sobre a mesa, afastando uma folha velha de hortelã.
+
+"Se você correr para Tyr dizendo 'eu estava perto da porta lateral depois que Sirrus me negou a cortina e ouvi a testemunha sendo preparada', você entrega a eles duas coisas: uma pista e um problema chamado Ren. Halessa talvez use a pista. Sirrus certamente verá o problema."
+
+Ela pega um pedaço de papel pequeno, mas não escreve ainda.
+
+"O que pode ser dito sem sujar tanto: que há risco de Velis ter sido instruído antes da entrada. Que perguntas úteis seriam: quem lhe disse que era M. Harrow? Quando a correção foi feita? Quem recebeu a marca da lua? De quem recebeu? Que patrono ele está negando antes de ser perguntado sobre patrono?"
+
+Maerra olha para Ren ao dizer a última frase.
+
+"Gente mentindo muitas vezes responde uma pergunta que ninguém fez. Isso é útil para Tyr, se Tyr chegar lá sozinho."
+
+Sobre a Casa Velha, ela demora mais.
+
+"Você fez bem em olhar. Fez melhor em não agarrar ninguém." Há dureza suficiente na frase para mostrar que ela está falando com a imagem do que poderia ter acontecido, não com o que Ren fez. "Criança que serve de olho nem sempre serve porque quer. E criança com medo de guarda não corre para o lado certo quando vê adulto armado dizendo que vai salvar."
+
+Ela encosta a ponta do dedo na mesa três vezes, como se marcasse rotas.
+
+"Se for voltar lá: noite, sim. Mas noite não é desculpa para entrar cego. Você já tem o melhor ângulo: parede cega do depósito, escada baixa dos fundos, fora do olhar da vendedora. O objetivo inicial não deve ser punir adulto. Deve ser descobrir se há criança viva presa, rota de porão e saída. Depois você decide onde cortar."
+
+Maerra enfim escreve. Pouco. Muito menos do que Ren contou.
+
+"Posso mandar uma ficha a Halessa sem pôr seu nome no meio da rua. Não vou escrever que você ouviu. Vou escrever que uma preocupação chegou à Aurora Menor: Velis pode ter sido instruído antes da oitiva, e certas perguntas devem ser feitas antes que a mentira endureça. Halessa vai entender o bastante. Talvez. Se ela quiser."
+
+Ela sopra a tinta.
+
+"Mas isso usa minha casa como ponte. Eu faço porque envolve testemunhas vivas e obstrução contra Tyr. Não porque você quer ouvir Velis sangrar por dentro."
+
+O sino termina. A última vibração fica presa nas prateleiras.
+
+"Meu conselho, Ren: pare de tentar estar em três incêndios ao mesmo tempo. Velis entrou em Tyr. Deixe Tyr fazer o trabalho de pedra por algumas horas. A mulher de manto pode ser seguida, sim, mas você já perdeu vantagem e quase virou nota no perímetro. A Casa Velha pode esperar a noite, desde que você não deixe a trilha esfriar por dias. E Silva precisa saber que meio-dia passou sem os Vell serem movidos."
+
+Maerra dobra a ficha pequena.
+
+"Escolha o próximo cuidado. Não a próxima caça."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **12:07 da manhã seguinte ao Benefício**. Ren chegou discretamente à Casa da Aurora Menor sem arrastar a atenção do perímetro de Tyr. Maerra ouviu sobre a Casa Velha, sobre as instruções dadas a Velis, e corrigiu o termo: Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena. Maerra pode enviar ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren como ouvinte. O conselho dela: deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell.
+
+O que Ren faz?

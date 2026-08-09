@@ -1907,6 +1907,14 @@ Ponto morto da Silver Lily:
 * Velis entrou na Casa de Tyr;
 * a mulher que instruiu Velis não entrou e seguiu sozinha rumo às ruas de escribas e comércio;
 * hora aproximada: 11:49 da manhã seguinte ao Benefício.
+* Ren foi discretamente até a Casa da Aurora Menor para falar com Maerra;
+* rolagem: Furtividade para sair do perímetro de Tyr sem arrastar atenção até Maerra, d20 14 + 6 = 20 contra CD 13, sucesso;
+* Ren relatou a Maerra a observação da Casa Velha, as instruções dadas a Velis e a situação de Silva;
+* Maerra corrigiu o termo: Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena;
+* Maerra avaliou que avisar Tyr diretamente como ouvinte oculto poderia transformar a pista sobre Velis em problema para Ren;
+* Maerra pode enviar ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren como ouvinte;
+* Maerra aconselhou Ren a deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell;
+* hora aproximada: 12:07 da manhã seguinte ao Benefício.
 
 Progressão:
 
