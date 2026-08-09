@@ -1907,3 +1907,89 @@ Maerra dobra a ficha pequena.
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **12:07 da manhã seguinte ao Benefício**. Ren chegou discretamente à Casa da Aurora Menor sem arrastar a atenção do perímetro de Tyr. Maerra ouviu sobre a Casa Velha, sobre as instruções dadas a Velis, e corrigiu o termo: Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena. Maerra pode enviar ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren como ouvinte. O conselho dela: deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren irá observar Narwhal Manor novamente. O objetivo dele é observar quem trabalha no lugar fazendo serviços, que possivelmente já não esteja implicado
+  com Velis e Masao, mas que esteja próximo o suficiente pra ouvir coisas e virar espião de Ren ali dentro. Inicialmente Ren só quer descobrir uma pessoa que
+
+  pareça inteligente o suficiente pra cumprir essa função. Depois seguirá essa pessoa: o objetivo é ver se essa pessoa tem problemas (leia-se: side quest)
+  que Ren possa realizar. Side quest ou não, Ren oferecerá seus serviços de "proteção" a essa pessoa (ou ouro, se ela pedir) em troca dela relatar tudo que
+  já ouviu e continuar relatando nos dias vindouros.]
+
+**Narrador**
+
+Maerra não corre atrás dele quando Ren escolhe outro caminho.
+
+Mas a ficha pequena fica entre os dedos dela por um momento a mais.
+
+"Então ainda não mando", ela diz, sem transformar isso em discussão. "Se mudar de ideia, diga antes que o sino torne a notícia velha."
+
+Voltar ao entorno de Narwhal sem ativar o alarme: d20 5 + 6 = 11 contra CD 15. Falha.
+Mapear fluxo de serviço e escolher fonte útil: d20 12 + 3 = 15 contra CD 15. Sucesso.
+Ler pressão pessoal em possível fonte: d20 6 + 5 = 11 contra CD 14. Falha.
+Seguir a fonte para longe de Narwhal: d20 11 + 6 = 17 contra CD 14. Sucesso.
+
+Narwhal Manor ao meio-dia parece mais limpo do que deveria.
+
+Não limpo de sujeira. Limpo de erro. A lateral por onde Velis perdera a pasta já não é mais uma lateral comum: a porta está fechada por dentro, um criado mais velho confere nomes antes de deixar cestos entrarem, e dois guardas fingem que estão ali por causa de roubo de rua, não por causa de papel. Há um buraco de vidro remendado acima da entrada, onde a lâmpada caiu pela manhã.
+
+Ren chega perto o bastante para observar, mas não perto o bastante para ficar invisível ao lugar.
+
+Um dos guardas não reconhece seu rosto. Isso seria impossível pelo ângulo, pela roupa e pelo tempo passado. Mas o homem reconhece uma coisa pior para um vigia: alguém parado sem pertencer à rua. O olhar dele passa por Ren uma vez, volta, demora meio segundo, e então o guarda fala algo baixo para o criado da lista.
+
+Ren muda de posição antes que isso vire abordagem.
+
+Perde o melhor ângulo. Ganha um segundo, mais sujo, mais longe e mais seguro: uma sombra entre uma oficina de selas e a parede de uma casa de cópias baratas, de onde consegue ver o fluxo sem ouvir quase nada.
+
+O lugar tem hierarquia até na sujeira.
+
+Escrivães entram com dedos limpos demais e saem com pressa ofendida. Capitães e procuradores passam pela frente, onde a lei gosta de ser vista. Pela lateral entram carvão, água, cera, panos, comida fria, areia para secar tinta, lâmpadas novas e gente que os escribas olham sem enxergar.
+
+Ren deixa os óbvios de lado. Guarda é pago para lembrar rosto. Escrivão menor demais sonha em virar Velis. Criado velho demais sabe sobreviver dizendo pouco. Copeira que fica só na cozinha escuta talheres, não nomes.
+
+A pessoa certa aparece pela terceira vez com um tabuleiro de velas aparadas.
+
+É uma mulher de uns vinte e poucos anos, cabelo castanho preso em pano escuro, mangas dobradas com marcas de cera e tinta velha. Não veste libré boa. Não parece criada doméstica da casa rica, mas funcionária de serviço de prédio: aparar pavios, trocar velas, recolher cera caída, levar areia limpa, buscar panos borrados. Invisível o bastante para atravessar corredor. Próxima o bastante para ouvir quando porta importante fecha mal.
+
+Ela sabe contar. Ren vê isso quando um escrivão jovem empurra um pacote para ela e diz algo rápido demais. A mulher nem discute; só aponta duas tiras de lacre, três tinteiros, quatro rolos de pano, e o rapaz corrige a própria lista com irritação envergonhada.
+
+Nome, Ren só pega depois, quando o criado velho da lateral chama:
+
+"Kethra. Rua antes do segundo sino. E volta limpa."
+
+Kethra Dunn.
+
+Ela não sai como alguém culpado. Sai como alguém que sabe que gente culpada pisa mais leve.
+
+Ren a segue por ruas de serviço, depois por uma fileira de casas estreitas onde aprendizes comem de pé e mensageiros cortam caminho sem pedir licença. Kethra não olha para trás do jeito certo para detectar cauda treinada. Olha para trás do jeito errado: medo comum, repetido demais.
+
+Isso não diz qual é o problema. Só diz que há um.
+
+Ela para num beco curto atrás de uma loja de penhores com tabuleta de cobre escurecido. Não entra. Espera.
+
+Dois homens aparecem de dentro da loja. Um tem barriga dura sob colete marrom e anéis baratos demais para serem discretos. O outro é mais novo, comprido, com cicatriz fina no lábio e uma mão sempre perto da faca.
+
+"Oito peças até o segundo sino da tarde", diz o de colete. "Ou uma lista."
+
+Kethra mantém as mãos fechadas na frente do avental.
+
+"Eu limpo vela. Não copio ata."
+
+"Você limpa vela no corredor dos lacres", ele responde. "E sabe ler número grande. Hoje Tyr chamou gente. Queremos nomes. Se não nomes, oito peças. Se não oito peças, Colm para de comer às nossas custas."
+
+O mais novo sorri como quem aprendeu com homem pior.
+
+"E não peça ajuda na casa grande. Eles gostam de criada útil. Não de criada cara."
+
+Kethra não chora. Isso também diz algo. Ela fica imóvel até os dois voltarem para a porta da loja, e só quando o trinco fecha conta o dinheiro no bolso: poucas moedas de prata, cobre demais, nenhuma esperança no peso.
+
+Ren está a poucos passos, fora da linha direta do beco. Ele conseguiu seguir sem ser visto por Kethra nem pelos homens. Tem uma possível fonte dentro de Narwhal Manor: inteligente, próxima dos corredores certos, ainda não visivelmente comprada por Velis ou Masao. Tem também um problema imediato: alguém já está tentando comprar ou quebrar a mesma fonte por dívida ou ameaça contra um tal Colm.
+
+A leitura emocional, porém, não é limpa. Ren não sabe se Colm é irmão, amante, filho adulto, cúmplice ou nome usado para apertar Kethra. Não sabe se a dívida é real. Não sabe se a loja de penhores é só penhor, fachada de agiota ou ponto de recados.
+
+Sabe apenas que, se abrir a conversa com "proteção" do jeito errado, pode soar igual aos homens que acabaram de sair.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:04 do dia seguinte ao Benefício**. Ren retornou ao entorno de Narwhal Manor, mas o lugar está mais alerta depois do roubo da pasta; um guarda notou um observador deslocado antes de Ren mudar de posição. Mesmo assim, Ren identificou **Kethra Dunn**, funcionária de serviço que circula por corredores de lacres, velas e panos borrados. Ele a seguiu até uma loja de penhores/cobrança, onde dois homens exigiram oito peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém chamado **Colm**. Kethra ainda não viu Ren.
+
+O que Ren faz?

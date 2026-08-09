@@ -77,6 +77,31 @@ relacoes:
       - "Velis pode avisar Narwhal Manor, Brass ou superiores de que a pasta foi roubada por alguém rápido e treinado."
       - "A convocação de Tyr pode fazê-lo cooperar, mentir sob pressão ou avisar superiores antes de chegar, dependendo de como a ordem o alcança."
       - "Se Tyr associar o homem de capuz visto no perímetro a Ren, Sirrus pode ler isso como tentativa de contornar a negativa de acompanhar a oitiva."
+  kethra_dunn:
+    nome: "Kethra Dunn"
+    tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
+    local: "Narwhal Manor; vista pela última vez perto de loja de penhores/cobrança no Lower Trades"
+    status: "em cena; ainda não abordada por Ren"
+    atitude_para_ren: "desconhecida"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Ren identificou Kethra como candidata a fonte interna por circular em
+      corredores de lacres, velas e panos borrados de Narwhal Manor sem ser
+      tratada como escriba. Ela demonstrou inteligência prática ao corrigir
+      contagem de material diante de um escrivão jovem. Ren a seguiu sem ser
+      visto até uma loja de penhores/cobrança, onde dois homens exigiram oito
+      peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém
+      chamado Colm.
+    informacoes_observadas_por_ren:
+      - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
+      - "Ela sabe contar e ler o bastante para corrigir lista de material."
+      - "Dois homens exigiram dela oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr."
+      - "Os cobradores ameaçaram alguém chamado Colm."
+    riscos:
+      - "Kethra ainda não viu Ren e pode interpretar uma oferta de proteção como nova cobrança ou ameaça."
+      - "Ren não sabe se Colm é parente, amante, filho adulto, cúmplice ou nome usado contra ela."
+      - "A loja de penhores/cobrança pode ser apenas agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"

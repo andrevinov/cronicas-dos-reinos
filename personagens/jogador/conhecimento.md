@@ -1915,6 +1915,18 @@ Ponto morto da Silver Lily:
 * Maerra pode enviar ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren como ouvinte;
 * Maerra aconselhou Ren a deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell;
 * hora aproximada: 12:07 da manhã seguinte ao Benefício.
+* Ren saiu da Casa da Aurora Menor sem autorizar explicitamente Maerra a enviar a ficha curta a Halessa;
+* rolagem: Voltar ao entorno de Narwhal sem ativar o alarme, d20 5 + 6 = 11 contra CD 15, falha;
+* um guarda de Narwhal notou um observador deslocado antes de Ren mudar de posição;
+* rolagem: Mapear fluxo de serviço e escolher fonte útil, d20 12 + 3 = 15 contra CD 15, sucesso;
+* Ren identificou **Kethra Dunn**, funcionária de serviço de Narwhal que apara velas, recolhe cera e panos borrados, e circula por corredores de lacres;
+* rolagem: Ler pressão pessoal em possível fonte, d20 6 + 5 = 11 contra CD 14, falha;
+* rolagem: Seguir a fonte para longe de Narwhal, d20 11 + 6 = 17 contra CD 14, sucesso;
+* Ren seguiu Kethra sem ser visto até uma loja de penhores/cobrança;
+* dois homens exigiram de Kethra oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm;
+* Ren não sabe ainda se Colm é parente, amante, cúmplice, filho adulto ou nome usado para pressioná-la;
+* Kethra ainda não viu Ren;
+* hora aproximada: 13:04 do dia seguinte ao Benefício.
 
 Progressão:
 
