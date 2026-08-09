@@ -1999,3 +1999,79 @@ Sabe apenas que, se abrir a conversa com "proteção" do jeito errado, pode soar
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:04 do dia seguinte ao Benefício**. Ren retornou ao entorno de Narwhal Manor, mas o lugar está mais alerta depois do roubo da pasta; um guarda notou um observador deslocado antes de Ren mudar de posição. Mesmo assim, Ren identificou **Kethra Dunn**, funcionária de serviço que circula por corredores de lacres, velas e panos borrados. Ele a seguiu até uma loja de penhores/cobrança, onde dois homens exigiram oito peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém chamado **Colm**. Kethra ainda não viu Ren.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren se assegura que Kethra não está sendo seguida na volta para Narwhal. Se não estiver, se aproximará dela como se fosse um estrangeiro pedindo orientações sobre direções na cidade, com sotaque ruim e abobalhado. No meio da conversa, ele falará: "eu sei que você está com problemas, Kethra. Posso te ajudar a resolve-los", e ofereço-a 8 peças de ouro, pra tentar estabelecer tranquilidade nela de ter o dinheiro pra pagar os chantagistas. "Tem um lugar discreto onde possamos conversar?", ele pergunta, e se ela topar, marcamos uma hora antes da badalada do sino pra conversarmos discretamente e elaborarmos um plano.]
+
+**Narrador**
+
+Checar se Kethra está sendo seguida: d20 2 + 5 = 7 contra CD 13. Falha.
+Parecer estrangeiro perdido e inofensivo: d20 12 = 12 contra CD 13. Falha.
+Oferecer ajuda sem soar como cobrador: d20 7 = 7 contra CD 14. Falha.
+
+Ren observa primeiro.
+
+Os dois homens não saem da loja atrás dela. Não há bota pesada dobrando a esquina logo depois, nem capuz repetido demais nas vitrines, nem sinal simples de cauda de rua. Mas o beco tem janelas altas, frestas de porta e gente demais fingindo cuidar da própria vida. Ren não consegue transformar isso em certeza limpa.
+
+O bastante para agir. Não o bastante para relaxar.
+
+Kethra deixa o beco com passos controlados, mas a pressa aparece nos dedos: ela conta moedas enquanto anda, guarda, conta de novo, erra o fecho do bolso uma vez. Está voltando para Narwhal porque foi mandada voltar limpa, não porque quer.
+
+Ren escolhe uma rua menos apertada, alcança a lateral dela perto de uma banca de cordas usadas e entra na conversa como estrangeiro perdido.
+
+O sotaque ruim ajuda. O "abobalhado" ajuda menos.
+
+Kethra responde à primeira pergunta de direção quase no automático, apontando com dois dedos sem parar de andar. "Rua dos Cesteiros é para lá. Se quer escriba barato, suba duas esquinas. Se quer porto, está indo errado."
+
+Ela só olha de verdade quando Ren usa o nome dela.
+
+"Eu sei que você está com problemas, Kethra. Posso te ajudar a resolvê-los."
+
+O corpo dela muda antes do rosto. Ombros fecham. Mão direita vai para o bolso vazio, como se ali houvesse faca, chave ou santo pequeno. Quando Ren mostra as oito peças de ouro, a reação que vem não é alívio.
+
+É medo com matemática.
+
+"Guarde isso", ela diz, baixo demais para a banca ouvir e alto o bastante para cortar a conversa. "Guarde agora."
+
+Kethra olha para a rua atrás de Ren, depois para a rua atrás dela. Não como alguém treinada. Como alguém que descobriu que uma corda pode estar amarrada dos dois lados.
+
+"Você sabe meu nome. Sabe o valor. Me seguiu depois deles." A voz dela treme apenas na última palavra. "Isso não é ajuda. Isso é outro preço."
+
+Ela começa a andar de novo, mais rápido, mas não corre. Correr chamaria atenção. Kethra sabe disso.
+
+Ren acompanha meio passo, o suficiente para não perder a conversa, não o suficiente para encurralá-la.
+
+"Tem um lugar discreto onde possamos conversar?"
+
+Kethra solta uma risada curta, sem humor.
+
+"Lugar discreto é onde pobre morre sem testemunha."
+
+Por um instante, parece que a porta fechou.
+
+Então ela diz, ainda andando:
+
+"Se você está mentindo, diga a eles que eu não falei nada. Se está dizendo verdade, não pague na porta da loja. Oito peças viram dezesseis quando sabem que existe bolsa maior."
+
+Ela engole seco.
+
+"E não fale meu nome de novo na rua."
+
+Essa é a primeira coisa que não é recusa.
+
+Kethra vira numa travessa estreita que volta para o eixo de Narwhal. Antes de entrar no fluxo maior, deixa cair uma frase sem virar o rosto:
+
+"A fonte seca atrás dos azulejos verdes. Quando o sino menor tocar antes do segundo sino. Se eu não estiver lá, é porque Colm piorou ou porque alguém me viu com você."
+
+Ela não pega o ouro.
+
+Não aceita proteção.
+
+Mas também não chama guarda, não grita e não nega Colm.
+
+Ren fica com as oito peças ainda na mão ou perto demais dela. A janela é curta: há menos de uma hora antes do segundo sino da tarde. Kethra precisa voltar a Narwhal. Os homens da loja querem dinheiro ou nomes até lá. E a falha de Ren em limpar a rua deixa uma dúvida útil e incômoda: talvez ninguém tenha visto; talvez alguém só não tenha se movido ainda.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:10 do dia seguinte ao Benefício**. Ren abordou Kethra, mas a tentativa de parecer inofensivo e tranquilizá-la com ouro falhou. Ela não aceitou as 8 PO, não concordou plenamente com a oferta de proteção e interpretou parte da aproximação como possível nova pressão. Ainda assim, deixou uma abertura: **fonte seca atrás dos azulejos verdes**, quando o sino menor tocar antes do segundo sino. Kethra avisou que pagar diretamente os cobradores pode aumentar o preço. Ela voltou para o fluxo rumo a Narwhal.
+
+O que Ren faz?

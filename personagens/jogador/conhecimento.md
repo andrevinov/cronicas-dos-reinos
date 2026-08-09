@@ -1927,6 +1927,16 @@ Ponto morto da Silver Lily:
 * Ren não sabe ainda se Colm é parente, amante, cúmplice, filho adulto ou nome usado para pressioná-la;
 * Kethra ainda não viu Ren;
 * hora aproximada: 13:04 do dia seguinte ao Benefício.
+* Ren tentou confirmar se Kethra estava sendo seguida na volta para Narwhal;
+* rolagem: Checar se Kethra está sendo seguida, d20 2 + 5 = 7 contra CD 13, falha;
+* Ren não viu cauda óbvia sobre Kethra, mas não conseguiu ter certeza limpa;
+* rolagem: Parecer estrangeiro perdido e inofensivo, d20 12 = 12 contra CD 13, falha;
+* rolagem: Oferecer ajuda sem soar como cobrador, d20 7 = 7 contra CD 14, falha;
+* Kethra não aceitou as 8 PO e não aceitou proteção imediatamente;
+* Kethra interpretou parte da aproximação como possível nova pressão, por Ren saber seu nome, saber o valor e tê-la seguido depois dos cobradores;
+* Kethra avisou que pagar diretamente os cobradores pode aumentar o preço;
+* Kethra não chamou guarda e deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino;
+* hora aproximada: 13:10 do dia seguinte ao Benefício.
 
 Progressão:
 

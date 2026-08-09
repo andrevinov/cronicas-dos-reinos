@@ -81,8 +81,8 @@ relacoes:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
     local: "Narwhal Manor; vista pela última vez perto de loja de penhores/cobrança no Lower Trades"
-    status: "em cena; ainda não abordada por Ren"
-    atitude_para_ren: "desconhecida"
+    status: "em cena; abordada por Ren, mas não recrutada"
+    atitude_para_ren: "assustada, desconfiada, ainda não hostil"
     confianca: "nenhuma"
     respeito: "nenhum"
     motivo: >
@@ -93,15 +93,22 @@ relacoes:
       visto até uma loja de penhores/cobrança, onde dois homens exigiram oito
       peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém
       chamado Colm.
+      Ren tentou abordá-la como estrangeiro perdido, revelou saber que ela
+      estava com problemas e ofereceu 8 PO. A aproximação falhou em tranquilizar
+      Kethra: ela não aceitou o ouro nem a proteção, mas também não chamou
+      guarda e deixou uma abertura para encontro discreto.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
       - "Dois homens exigiram dela oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr."
       - "Os cobradores ameaçaram alguém chamado Colm."
+      - "Kethra avisou que pagar diretamente os cobradores pode aumentar o preço."
+      - "Kethra mencionou a fonte seca atrás dos azulejos verdes como possível ponto discreto quando o sino menor tocar antes do segundo sino."
     riscos:
-      - "Kethra ainda não viu Ren e pode interpretar uma oferta de proteção como nova cobrança ou ameaça."
+      - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "Ren não sabe se Colm é parente, amante, filho adulto, cúmplice ou nome usado contra ela."
       - "A loja de penhores/cobrança pode ser apenas agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
+      - "Kethra ainda pode não comparecer ao ponto discreto se achar que foi vista com Ren ou se Colm piorar."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"

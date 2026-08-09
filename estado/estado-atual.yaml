@@ -18,15 +18,15 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Lower Trades / entorno de Narwhal Manor"
-  ponto_exato: "beco curto atrás de uma loja de penhores de cobre escurecido"
-  descricao_operacional: "Após receber o conselho de Maerra, Ren voltou a observar Narwhal Manor enquanto Maerra colocou em curso uma ficha curta a Halessa, sem nomear Ren como ouvinte, alertando para o risco de Velis ter sido instruído antes da oitiva. O entorno da casa está mais alerta depois do roubo da pasta de Velis: a porta lateral foi filtrada, o buraco da lâmpada foi remendado e um guarda notou um observador deslocado antes de Ren mudar de posição. Mesmo perdendo o melhor ângulo, Ren conseguiu mapear o fluxo de serviço e identificou Kethra Dunn, funcionária que apara velas, recolhe cera e panos borrados e circula por corredores de lacres. Ela parece inteligente e próxima o bastante para ouvir coisas úteis. Ren a seguiu sem ser visto até uma loja de penhores/cobrança, onde dois homens exigiram oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm. Kethra ainda não viu Ren."
+  ponto_exato: "rua de serviço próxima ao retorno para Narwhal Manor"
+  descricao_operacional: "Após receber o conselho de Maerra, Ren voltou a observar Narwhal Manor enquanto Maerra colocou em curso uma ficha curta a Halessa, sem nomear Ren como ouvinte, alertando para o risco de Velis ter sido instruído antes da oitiva. O entorno da casa está mais alerta depois do roubo da pasta de Velis: a porta lateral foi filtrada, o buraco da lâmpada foi remendado e um guarda notou um observador deslocado antes de Ren mudar de posição. Mesmo perdendo o melhor ângulo, Ren conseguiu mapear o fluxo de serviço e identificou Kethra Dunn, funcionária que apara velas, recolhe cera e panos borrados e circula por corredores de lacres. Ren a seguiu até uma loja de penhores/cobrança, onde dois homens exigiram oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm. Ren tentou abordar Kethra como estrangeiro perdido, ofereceu ajuda e mostrou 8 PO, mas a abordagem soou perigosa para ela. Kethra não pegou o ouro e não aceitou proteção, mas deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "início da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "13:04 do dia seguinte ao Benefício"
+  hora_aproximada: "13:10 do dia seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso."
@@ -485,6 +485,13 @@ recursos:
     - "Rolagem para seguir a fonte para longe de Narwhal: 17 contra CD 14, sucesso"
     - "Ren seguiu Kethra até uma loja de penhores/cobrança sem ser visto"
     - "dois homens exigiram de Kethra oito peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm"
+    - "Rolagem para checar se Kethra está sendo seguida: 7 contra CD 13, falha"
+    - "Ren não viu cauda óbvia sobre Kethra, mas não conseguiu ter certeza limpa"
+    - "Rolagem para parecer estrangeiro perdido e inofensivo: 12 contra CD 13, falha"
+    - "Rolagem para oferecer ajuda sem soar como cobrador: 7 contra CD 14, falha"
+    - "Kethra não aceitou as 8 PO e interpretou parte da aproximação como possível nova pressão"
+    - "Kethra avisou que pagar diretamente os cobradores pode aumentar o preço"
+    - "Kethra deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino"
   exaustao: 0
 
 equipamento_em_posse:
@@ -564,7 +571,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está num beco curto atrás de uma loja de penhores/cobrança no Lower Trades, tendo seguido Kethra Dunn desde Narwhal Manor sem ser visto. Kethra é funcionária de serviço de Narwhal, circula por corredores de lacres, velas e panos borrados, e parece inteligente o bastante para ser fonte interna. Dois homens acabaram de exigir dela oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm. Kethra ainda não viu Ren. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 13:04 do dia seguinte ao Benefício."
+  cena_atual: "Ren está numa rua de serviço próxima ao retorno para Narwhal Manor, depois de abordar Kethra Dunn. A tentativa de parecer estrangeiro perdido e inofensivo falhou por pouco, e a oferta de 8 PO soou mais como nova pressão do que alívio. Kethra não aceitou o ouro nem a proteção, mas não chamou guarda e deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino. Ela avisou que pagar diretamente os cobradores pode aumentar o preço e voltou para o fluxo rumo a Narwhal. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 13:10 do dia seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"
