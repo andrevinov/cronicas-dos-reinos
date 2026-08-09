@@ -1618,3 +1618,70 @@ Ela olha para Ren agora, e o tom volta ao prático.
 Ao longe, a carroça-escritório de Jack ainda está com a porta entreaberta.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **07:10 da manhã seguinte ao Benefício**. Silva confirmou formalmente a guarda imediata dos Vell, pediu manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior. Tyr não enviará juramentados ao circo sem novo pedido, salvo ameaça imediata confirmada. A mensageira informou que a primeira convocação de Velis Rook foi entregue e que Tyr espera resposta antes do meio-dia. Jack ainda precisa selar ou ajustar a resposta ao camarote oeste.
+
+**Jogador**
+
+"Depois que assinar contrato com Jack eu tenho algumas... coisas pessoais pra resolver. Nada de mais."
+
+Ren responde a Silva, sorrindo. Não temos outro show de Kage pra tão perto, então é assinar o contrato e liberar-se pra outras coisas.
+
+[Avançando rapidamente a história aqui:
+
+Ren assina o contrato, e depois vai conversar com os Vell. Não precisa ampliar essa parte tanto, afinal, serão trivialidades a esse ponto.
+
+Findado isso, Ren pretende sair pela cidade discretamente, e começar a sondar o lugar que Maerra falou, relativo ás crianças. Apenas sondar por fora, entender o lugar, como ele é.]
+
+**Narrador**
+
+Silva olha para Ren por um instante longo o bastante para deixar claro que ouviu o "nada de mais" como exatamente o contrário.
+
+"Coisas pessoais costumam sangrar mais que serviço pago", ela diz. "Mas pelo menos hoje você está avisando antes."
+
+Ela não tenta impedir. Só aponta com o queixo para a carroça de Jack.
+
+"Assine a alma barata. Depois saia sem arrastar ninguém junto."
+
+Jack recebe a resposta de Tyr com um grunhido e a resposta de Ren com outro. O contrato, se alguém generoso quiser chamar assim, é mais uma folha de controle de circo do que documento de tribunal: **Ren Kage**, artista contratado em caráter condicional pelo Jack Mooney & Sons Circus; apresentações privadas apenas por intermédio de Jack; local controlado pelo circo; equipe presente; sem retirada de máscara por contrato; sem social obrigatório; sem uso de Kage para intimidação privada; pagamento e despesas definidos caso a caso. Jack faz Ren marcar o nome de palco, não o nome inteiro de clã.
+
+"Alma ainda não", ele diz, soprando a tinta. "Direito de vender vento em tenda minha. Comece pequeno."
+
+A resposta ao camarote oeste é selada logo depois. Não é sim. É uma porta estreita: nome de casa, endereço, pagador, metade adiantada, local controlado pelo circo, quarenta peças de ouro pela primeira apresentação curta e custos por fora. Sem isso, Kage continua inexistente para casa privada.
+
+Na carroça verde, Nera ouve a versão curta sem transformar a despedida em cena grande. Talvez por entender que cena grande chama o mundo. Tavin, já acordado, pergunta se Kagefucha assinou papel de príncipe. Nera corrige "Kage" por hábito; Tavin corrige de volta "eu sei" por teimosia.
+
+Quando Ren diz que vai tratar de algo pessoal e sair por um tempo, Nera não gosta. Não precisa dizer. Ainda assim, ela não o prende com uma pergunta que já sabe a resposta.
+
+"Volte antes de virar história de outra pessoa", ela diz.
+
+Tavin ergue dois dedos como saudação torta.
+
+"E se for voar, olha onde cai."
+
+Dessa entrega a Ren as roupas de cidadão menor limpo em condição aceitável e mantém o figurino de O Vento da Noite guardado. Sorn, vendo Ren passar, faz apenas um comentário sobre não estragar o ombro antes de ganhar dinheiro com ele. O circo continua girando, e exatamente por isso Ren consegue sair sem parecer fuga.
+
+Teste de Furtividade: d20 13 + 6 = 19 contra CD 14. Sucesso.
+
+Ren deixa os campos do circo sem chamar atenção útil. Não usa ki. Não leva Nera, Tavin, livro ou rumor junto. A rota evita os olhos mais naturais do porto e também evita a Casa da Aurora Menor, porque ir de Maerra direto para o problema dela seria desenhar linha no chão para qualquer pessoa paciente.
+
+A cidade entre o circo e as ruas baixas já está acordada: carroças de pão, água suja sendo jogada em sarjeta, aprendizes correndo com embrulhos, sinos menores chamando gente que não tem tempo de ouvir sinos maiores. Perto do Temple District, as pedras ficam melhores por algumas quadras. Depois pioram rápido, conforme as ruas descem em direção aos armazéns e às costas pobres da cidade.
+
+A **Casa Velha do Primeiro Raio** não parece dramática à primeira vista.
+
+Isso a torna pior.
+
+É uma construção estreita de dois andares, encostada entre uma antiga loja de velas votivas e uma parede cega de depósito. O símbolo de Lathander acima da porta principal foi raspado há anos, mas ainda resta o círculo do sol em pedra mais clara. As janelas do térreo estão fechadas por tábuas antigas. As de cima têm frestas, não vidro. A porta principal parece inutilizada de propósito: muita poeira velha diante dela, ferragem enferrujada, nenhum caminho natural de pé recente.
+
+Teste de Investigação: d20 11 + 3 = 14 contra CD 13. Sucesso.  
+Teste de Percepção: d20 11 + 5 = 16 contra CD 14. Sucesso.
+
+O uso real não está na frente.
+
+Ren percebe três coisas sem precisar chegar perto demais. Primeiro: em duas paredes laterais, quase na altura de joelho de criança, há marcas de carvão que poderiam ser rabisco sem sentido. Uma delas parece sol riscado, com três traços cortando o círculo. Outra foi apagada às pressas, mas não o bastante. Segundo: a viela esquerda, estreita e com cheiro de água parada, tem trânsito recente de pés pequenos e pés adultos. Os pequenos contornam poças; os adultos pisam por cima. Terceiro: atrás da casa, onde uma escada baixa desce meio nível para uma porta de serviço, há um ponto de observação improvisado: caixote, telha quebrada, vista boa para a rua de cima.
+
+Não há guarda formal. Não há faixa vermelha visível. Não há homem armado plantado na porta como criminoso sem imaginação.
+
+Há uma velha vendendo nabos do outro lado da rua que observa pouco demais para ser só curiosa. Há um menino magro sentado no degrau de uma oficina fechada, descalço, segurando uma maçã pequena sem comer. E há, por trás de uma janela alta da casa velha, um movimento curto de sombra que desaparece quando uma carroça passa rangendo.
+
+Ren ainda está fora. Ainda não foi visto como invasor. A sondagem confirma que o lugar respira por portas laterais e olhos pequenos, não pela entrada principal.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:12 da manhã seguinte ao Benefício**. Ren assinou o acordo condicional de Kage com Jack, despediu-se rapidamente dos Vell e deixou o circo discretamente. Ele chegou aos arredores da Casa Velha do Primeiro Raio sem cauda evidente. Do lado de fora, identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, uma provável entrada de serviço nos fundos, um ponto de observação improvisado e pelo menos dois observadores possíveis na rua. Ren ainda não entrou nem abordou ninguém.

@@ -174,6 +174,10 @@ Progresso atual: 1/6.
 
 * Maerra revelou a Ren que crianças de rua associadas à Casa da Aurora Menor estão sumindo por períodos cada vez maiores, e três ainda não voltaram.
 
+Observação recente:
+
+* Ren iniciou sondagem externa da Casa Velha do Primeiro Raio na manhã seguinte ao Benefício da Lona Aberta. Identificou marcas de sol riscado, trânsito por viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado e possíveis observadores, sem entrar e sem gerar alarme. Não há avanço do relógio neste momento.
+
 Descrição:
 
 Mede o agravamento do risco às crianças ligadas à Casa Velha do Primeiro Raio.
@@ -201,6 +205,7 @@ Estado atual:
 * gancho oferecido, mas não urgente ao minuto;
 * Maerra pediu que Ren não faça isso agora enquanto Nera, Tavin e a pasta de Velis ainda estão em risco imediato;
 * possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
+* primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
 
 ---
 

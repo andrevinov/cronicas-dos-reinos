@@ -1870,6 +1870,18 @@ Ponto morto da Silver Lily:
 * a mensageira de Tyr informou que a primeira convocação de Velis Rook foi entregue;
 * Tyr espera resposta de Velis antes do meio-dia;
 * hora aproximada: 07:10 da manhã seguinte ao Benefício.
+* Ren assinou como Ren Kage o acordo condicional de artista com Jack Mooney;
+* o acordo define que apresentações privadas de Kage passam por Jack, em local controlado pelo circo, com equipe presente, sem retirada de máscara por contrato, sem social obrigatório e sem uso para intimidação privada;
+* Jack selou a resposta rígida ao camarote oeste;
+* Ren falou rapidamente com Nera e Tavin antes de sair do circo;
+* Ren saiu do circo discretamente, sem usar ki;
+* rolagem: Furtividade para sair e cruzar a cidade discretamente, d20 13 + 6 = 19 contra CD 14, sucesso;
+* Ren chegou aos arredores da **Casa Velha do Primeiro Raio** sem cauda evidente;
+* rolagem: Investigação na sondagem externa da Casa Velha do Primeiro Raio, d20 11 + 3 = 14 contra CD 13, sucesso;
+* rolagem: Percepção na sondagem externa da Casa Velha do Primeiro Raio, d20 11 + 5 = 16 contra CD 14, sucesso;
+* do lado de fora da casa, Ren identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado, possíveis observadores na rua e movimento breve atrás de uma janela alta;
+* Ren ainda não entrou nem abordou ninguém;
+* hora aproximada: 08:12 da manhã seguinte ao Benefício.
 
 Progressão:
 
