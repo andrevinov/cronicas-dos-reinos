@@ -1895,6 +1895,12 @@ Ponto morto da Silver Lily:
 * o menino se assustou e correu para a viela lateral ligada às marcas de carvão;
 * Ren percebeu novo movimento ou escurecimento na janela alta da Casa Velha;
 * hora aproximada: 08:15 da manhã seguinte ao Benefício.
+* Ren gastou 1 ki em Passo do Vento para tentar agarrar o menino em fuga;
+* rolagem resistida: Atletismo de Ren 5 contra Acrobacia do menino 5, empate; o menino não ficou agarrado;
+* a velha gritou "ladrão de menino" e chamou atenção mais clara da rua;
+* o menino tocou duas vezes numa tábua lateral e entrou por uma abertura baixa sob uma escada da Casa Velha;
+* Ren está na viela, perto da abertura baixa, com testemunhas atrás e alerta provável dentro;
+* hora aproximada: 08:15 da manhã seguinte ao Benefício.
 
 Progressão:
 

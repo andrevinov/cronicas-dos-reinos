@@ -152,7 +152,7 @@ recursos_de_classe:
     resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
   ki:
     pontos_maximos: 4
-    pontos_atuais: 4
+    pontos_atuais: 3
     cd: 13
     recarga: "descanso curto ou longo"
     usos:

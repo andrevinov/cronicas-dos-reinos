@@ -1772,3 +1772,44 @@ A velha não se move para atacar. Só abre a boca outra vez, pronta para transfo
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:15 da manhã seguinte ao Benefício**. A intimidação falhou. A velha não cooperou, chamou atenção pública limitada e o menino disparou para a viela lateral ligada às marcas de carvão. Ren pode reagir imediatamente, mas qualquer ação agora terá testemunhas e risco de alerta interno.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren gasta um ponto de ki, usa Passo do Vento para pegar o menino e correr dali com a maior velocidade possível. Ele irá buscar sair de cena, pra bem distante mesmo, e interrogará o garotinho em um beco.
+
+**Narrador**
+
+Ren gasta 1 ponto de ki em **Passo do Vento**.
+
+Teste resistido para agarrar o menino em fuga:  
+Atletismo de Ren: d20 4 + 1 = 5.  
+Acrobacia do menino: d20 1 + 4 = 5.  
+Resultado: empate; a situação não muda, então o menino não fica agarrado.
+
+Ren explode para frente.
+
+Para quem está na rua, não parece corrida comum. Parece um homem arrancado do lugar por uma corda invisível, os pés tocando pedra molhada só o bastante para não cair. A velha grita antes mesmo de entender que ele decidiu correr.
+
+"Ladrão de menino!"
+
+A palavra suja a rua inteira.
+
+O menino é rápido para alguém faminto. Ren é muito mais rápido. A diferença fecha em dois batimentos: entrada da viela, tonel quebrado, madeira empilhada, cheiro de urina velha e água parada. Ren alcança a gola do casaco pequeno antes da primeira curva.
+
+Mas alcançar não é controlar.
+
+O casaco está largo demais, úmido demais, velho demais. O menino torce o corpo como quem já aprendeu a escapar de adulto maior, e Ren tem uma fração de instante para escolher entre apertar de verdade ou tentar segurar sem quebrar nada. Essa fração basta. O pano rasga na mão de Ren, a pele magra escapa por baixo, e o menino cai de lado na lama, rola, bate o joelho num caixote e continua.
+
+Ele não grita.
+
+Isso é pior.
+
+Em vez de chamar socorro, ele dá dois tapas rápidos numa tábua baixa presa à parede lateral da Casa Velha. Toc. Toc. Depois se espreme por uma abertura que Ren não tinha visto da rua: não é porta inteira, é uma fresta de serviço sob uma escada meio podre, feita para passar saco pequeno, balde, criança ou alguém disposto a se arrastar.
+
+Atrás de Ren, a velha continua gritando. Os dois carregadores entraram alguns passos na viela, mas não conseguem acompanhar. Um deles segura um gancho de carga, mais para coragem própria do que para ameaça real. Na janela alta, a fresta escurece outra vez.
+
+O menino ainda não sumiu completamente. Ren vê o calcanhar sujo desaparecer para dentro da abertura baixa. Se ele se jogar agora, pode tentar entrar atrás, mas será de bruços, estreito, anunciado e sem saber o que existe do outro lado. Se hesitar, a abertura pode ser fechada por dentro.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **08:15 da manhã seguinte ao Benefício**. Ren usou Passo do Vento e alcançou o menino, mas falhou em agarrá-lo. A rua agora ouviu acusação de "ladrão de menino", o menino tocou duas vezes numa tábua lateral e entrou por uma abertura baixa ligada à Casa Velha. Ren está na viela, a poucos passos da fresta, com alerta provável dentro e testemunhas atrás.
+
+O que Ren faz?

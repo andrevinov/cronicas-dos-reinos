@@ -314,6 +314,9 @@ marcos_de_tempo:
   intimidacao_falha_na_casa_velha:
     horario_aproximado: "08:15 da manhã seguinte ao Benefício"
     observacao: "Ren abandonou a abordagem casual e ameaçou a velha vendedora e o menino para exigir cooperação sobre quem estaria por trás da Casa Velha do Primeiro Raio. Rolagem aberta: Intimidação 7 contra CD 14, falha. A velha não cooperou, elevou a voz para chamar atenção de transeuntes, e o menino fugiu para a viela lateral ligada às marcas de carvão. Ren percebeu novo movimento ou escurecimento na janela alta da Casa Velha."
+  perseguicao_do_menino_na_viela:
+    horario_aproximado: "08:15 da manhã seguinte ao Benefício"
+    observacao: "Ren gastou 1 ki em Passo do Vento para alcançar e agarrar o menino em fuga. Rolagem aberta resistida: Atletismo de Ren 5 contra Acrobacia do menino 5; empate, sem agarrão. O menino escapou do contato, tocou duas vezes numa tábua lateral e entrou por uma abertura baixa sob escada da Casa Velha. A velha gritou 'ladrão de menino' e testemunhas viram parte da perseguição."
   segunda_mare:
     horario_aproximado: "02:00"
     janela_segura_para_chegar_antes: "até cerca de 01:30"
