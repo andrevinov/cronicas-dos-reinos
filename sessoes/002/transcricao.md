@@ -1724,3 +1724,51 @@ O menino enfim morde a maçã. Não por fome. Para ter algo a fazer com a boca. 
 Atrás da janela alta, nada se move agora. A viela lateral continua aberta, úmida e estreita. A velha não chamou ninguém. O menino ainda não correu. Mas a casualidade da conversa morreu.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:14 da manhã seguinte ao Benefício**. Ren abordou a velha vendedora de nabos; ela percebeu que a conversa sobre a casa não era casual e ficou cautelosa. Ren, porém, percebeu que o menino reagiu à palavra "templo" olhando rapidamente para a marca de carvão apagada e para a viela lateral. Ninguém chamou alarme ainda, mas a velha deixou claro que perguntar diretamente pelo menino seria mal recebido.
+
+**Jogador**
+
+Ren baixa a cabeça por um instante, cortando o ato, depois de confirmar que a velha e o garoto são lacaios de quem quer que seja que está prendendo as crianças ali dentro. Depois levanta e olha diretamente pra velha, com um olhar de raiva contida.
+
+"É melhor você falar pro seu garoto não sair daqui. Se ele tentar sair, os dois vão se arrepender."
+
+Se o garoto olhar pra ele, irá encontrar olhos estrangeiros assustadores.
+
+"A senhora sabe bem que eu não vim aqui atrás de nabos. Eu vim aqui atrás de gente que mexe com criança. Eu sei que o mundo é cruel e que a vida joga a gente pro inferno, mas... mexer com criança é o fundo do poço. E é injustificável. Então eu vou dar a oportunidade pra senhora falar direitinho pra quem a senhora e esse moleque trabalham. Se eu julgar que vocês são vítimas obrigadas a trabalhar com isso, posso garantir sua proteção. Se eu entender que estão defendendo os desgraçados dos seus empregadores... vou trata-los como inimigos tanto quanto qualquer um deles."
+
+Ren se ajeita na frente dela, ainda mantendo um ar de naturalidade pra quem observa a conversa de longe.
+
+"Cooperem e eu saio daqui como se nada tivesse acontecido. Mintam pra mim e eu garanto que vocês irão encontrar um destino tão ruim quanto o dos sequestradores ali dentro."
+
+**Narrador**
+
+Teste de Intimidação: d20 7 + 0 = 7 contra CD 14. Falha.
+
+A raiva de Ren chega antes da lógica da ameaça.
+
+A velha entende. Isso, pelo menos, Ren consegue ver: o rosto dela fica mais seco, os dedos enrijecem, o queixo prende uma tremura pequena. O menino olha para ele desta vez. Os olhos dele encontram os de Ren por menos de um segundo e o susto ali é limpo, cru, sem cálculo adulto. Não é obediência. É pânico.
+
+O que falha não é o medo. É a ponte entre medo e cooperação.
+
+A velha vira o corpo meio palmo, não para fugir, mas para pôr a própria cesta entre Ren e o menino. Quando fala de novo, a voz sai mais alta do que antes, calculada para virar conversa de rua.
+
+"Ouviram? Homem armado ameaçando velha por causa de parede velha."
+
+Dois homens que descarregam sacos do outro lado da rua olham. A dona da loja de velas votivas aparece na fresta da porta. Ninguém corre para salvar ninguém ainda, mas a cena deixou de ser invisível.
+
+A velha volta os olhos para Ren. O medo continua ali, só que agora duro.
+
+"Eu vendo nabo. Ele rouba maçã. Se isso é crime de gente grande, chama guarda." Ela engole seco. "Mas se encostar nele, moço, a rua inteira vai saber que estrangeiro fino bate em menino pobre antes do primeiro caldo."
+
+O menino usa a frase dela como porta.
+
+Ele salta do degrau.
+
+Não vai para a rua larga. Vai para a viela esquerda, exatamente a que Ren já tinha marcado, pequeno o bastante para cortar entre um tonel e uma pilha de madeira sem desacelerar. A maçã cai e rola na lama. No alto da Casa Velha, uma fresta escurece por um instante; alguém ou algo se afastou da janela.
+
+Ren ainda está perto o bastante para reagir. Se correr, alcança distância rápido, mas abandona a velha gritando atrás dele e talvez entra na viela já anunciado. Se ficar, o menino desaparece pelo canto baixo em poucos batimentos de coração.
+
+A velha não se move para atacar. Só abre a boca outra vez, pronta para transformar o próximo gesto de Ren em escândalo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:15 da manhã seguinte ao Benefício**. A intimidação falhou. A velha não cooperou, chamou atenção pública limitada e o menino disparou para a viela lateral ligada às marcas de carvão. Ren pode reagir imediatamente, mas qualquer ação agora terá testemunhas e risco de alerta interno.
+
+O que Ren faz?

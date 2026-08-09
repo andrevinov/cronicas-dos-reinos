@@ -168,16 +168,18 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 1/6.
+Progresso atual: 2/6.
 
 Último avanço:
 
 * Maerra revelou a Ren que crianças de rua associadas à Casa da Aurora Menor estão sumindo por períodos cada vez maiores, e três ainda não voltaram.
+* Ren abandonou a sondagem discreta diante da Casa Velha do Primeiro Raio e ameaçou a velha vendedora e o menino. A intimidação falhou, a velha chamou atenção da rua e o menino fugiu pela viela lateral, criando alerta local antes de Ren entrar.
 
 Observação recente:
 
 * Ren iniciou sondagem externa da Casa Velha do Primeiro Raio na manhã seguinte ao Benefício da Lona Aberta. Identificou marcas de sol riscado, trânsito por viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado e possíveis observadores, sem entrar e sem gerar alarme. Não há avanço do relógio neste momento.
 * Ren tentou conversa casual com a velha vendedora de nabos; ela ficou cautelosa, mas não chamou alarme. Ren percebeu que o menino no degrau reagiu à palavra "templo" olhando para a marca de carvão apagada e para a viela lateral. Não há avanço do relógio neste momento.
+* Após a ameaça direta de Ren, a cobertura de sondagem está comprometida na rua. A reação do menino e o movimento na janela indicam risco de alerta interno, mas ainda não confirmam deslocamento das crianças nem resposta armada.
 
 Descrição:
 
@@ -208,6 +210,7 @@ Estado atual:
 * possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
 * primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
 * a velha vendedora está cautelosa com Ren; o menino pode saber algo sobre a marca e a viela lateral.
+* a intimidação falhou e criou atenção pública limitada; o menino correu para a viela lateral e pode avisar outros antes de Ren interceptá-lo.
 
 ---
 

@@ -1889,6 +1889,12 @@ Ponto morto da Silver Lily:
 * Ren percebeu que o menino reagiu à palavra "templo" olhando rapidamente para a marca de carvão apagada e para a viela lateral;
 * a velha deixou claro que perguntar diretamente pelo menino seria mal recebido;
 * hora aproximada: 08:14 da manhã seguinte ao Benefício.
+* Ren abandonou a abordagem casual e ameaçou a velha vendedora e o menino para exigir cooperação;
+* rolagem: Intimidação contra a velha e o menino, d20 7 + 0 = 7 contra CD 14, falha;
+* a velha não cooperou, elevou a voz e chamou atenção limitada de transeuntes;
+* o menino se assustou e correu para a viela lateral ligada às marcas de carvão;
+* Ren percebeu novo movimento ou escurecimento na janela alta da Casa Velha;
+* hora aproximada: 08:15 da manhã seguinte ao Benefício.
 
 Progressão:
 
