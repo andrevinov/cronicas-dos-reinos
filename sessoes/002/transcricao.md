@@ -1921,9 +1921,15 @@ O que Ren faz?
 
 Maerra não corre atrás dele quando Ren escolhe outro caminho.
 
-Mas a ficha pequena fica entre os dedos dela por um momento a mais.
+Mas a ficha pequena não fica sobre a mesa.
 
-"Então ainda não mando", ela diz, sem transformar isso em discussão. "Se mudar de ideia, diga antes que o sino torne a notícia velha."
+Maerra sela a dobra com cera fina e chama uma jovem de túnica gasta, velha o bastante para entender urgência e nova o bastante para ainda atravessar rua sem parecer mensageira de coisa importante.
+
+"Para Halessa Vorn. Mão própria ou juramentado reconhecido. Trilha reservada. Sem nome do portador."
+
+Só então Maerra olha de volta para Ren.
+
+"Isso eu mando. Você não precisa entrar em Tyr para fazer pergunta que Tyr deveria fazer sozinho. Se vier resposta, você saberá depois."
 
 Voltar ao entorno de Narwhal sem ativar o alarme: d20 5 + 6 = 11 contra CD 15. Falha.
 Mapear fluxo de serviço e escolher fonte útil: d20 12 + 3 = 15 contra CD 15. Sucesso.
