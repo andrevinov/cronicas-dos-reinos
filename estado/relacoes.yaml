@@ -49,7 +49,7 @@ relacoes:
     nome: "Velis Rook"
     tipo: "escrivão menor ligado à alfândega / registros de carga"
     local: "Narwhal Manor"
-    status: "em cena; alertado"
+    status: "em cena; alertado; convocação de Tyr entregue"
     atitude_para_ren: "assustada e hostil"
     confianca: "nenhuma"
     respeito: "nenhum"
@@ -67,6 +67,7 @@ relacoes:
       - "Ren tomou a pasta de Velis, ainda não examinada."
       - "A pasta continha documentos que apontam Velis como responsável por anulação retroativa ligada ao volume 13."
       - "Tyr convocará Velis Rook para responder por anulação retroativa e possível obstrução."
+      - "A primeira convocação de Tyr a Velis Rook foi entregue; Tyr espera resposta antes do meio-dia."
       - "Halessa recebeu três perguntas de Ren para possível uso na oitiva de Velis."
     riscos:
       - "Velis sabe que alguém tentou tomar seus papéis na porta lateral."
@@ -485,10 +486,14 @@ relacoes:
       que Ren acompanhe ocultamente a primeira oitiva de Velis. Ao se retirar,
       Ren reafirmou que não pretende agir contra Velis e que só quer as
       testemunhas seguras. Sirrus aceitou a declaração sem suavizar a postura.
+      Na manhã seguinte ao Benefício, Tyr informou por mensageira que a primeira
+      convocação de Velis Rook foi entregue e que a Casa espera resposta antes
+      do meio-dia.
     acoes_possiveis:
       - "Emitir ordem de preservação sobre registros ligados ao volume 13, Narwhal Manor e Dain Mord."
       - "Enviar dois juramentados discretos para acompanhar transferência voluntária dos Vell a uma porta de Tyr."
       - "Convocar Velis Rook para responder por anulação retroativa sob pena de obstrução."
+      - "A primeira convocação de Velis Rook foi entregue; Tyr espera resposta antes do meio-dia."
     riscos:
       - "Tyr pode proteger prova e testemunha, mas também torna o caso visível e registrado."
       - "Se Ren apresentar o caso como licença para vingança, pode perder a porta antes de chegar a Sirrus."
@@ -530,6 +535,9 @@ relacoes:
       chegou a Silva Elkwood no circo: Luath confirmou a cópia parcial e a ação
       contra buscas ilegais, Maerra confirmou o lacre e a abertura presenciada,
       e Tyr agora busca a confirmação da guardiã atual informada.
+      Silva confirmou guarda imediata, pediu manutenção temporária no abrigo
+      atual e solicitou resguardo em espera sem deslocamento até o próximo sino
+      maior.
     ofertas:
       - "Resguardo provisório de 24 horas para N.V. e T.V., se puderem ser movidos com segurança para uma porta indicada por Tyr."
       - "Ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada."
@@ -541,6 +549,7 @@ relacoes:
       - "Aceitou receber até três perguntas de Ren para possível uso na oitiva de Velis."
       - "Recebeu três perguntas de Ren como anexo reservado do portador."
       - "Tyr recebeu confirmações de Luath e Maerra e enviou ficha reservada a Silva Elkwood para confirmar a guarda atual informada."
+      - "Tyr recebeu de Silva a confirmação da guarda imediata dos Vell, manutenção temporária no abrigo atual e pedido de resguardo em espera sem deslocamento."
     riscos:
       - "Se Ren focar em vingança, Halessa pode rebaixar o caso para risco de violência privada."
       - "Se Ren esconder demais, Halessa pode suspeitar que a Casa de Tyr está sendo usada."
@@ -646,10 +655,12 @@ relacoes:
       lacre reservado, Silva foi recebê-la com Ren. A ficha informou que Luath
       confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou
       o lacre e a abertura presenciada, e Tyr agora pede confirmação formal da
-      guarda atual informada. Silva aceita confirmar que os Vell estão sob seu
-      cuidado imediato por ora, mas ainda precisa escolher se pede resguardo em
-      espera, transferência voluntária discreta para Tyr ou manutenção temporária
-      no abrigo atual.
+      guarda atual informada. Após Ren defender que os Vell permaneçam no circo,
+      Silva confirmou formalmente a guarda imediata, pediu manutenção temporária
+      no abrigo atual e solicitou resguardo em espera sem deslocamento até o
+      próximo sino maior. Silva aceitou o agradecimento de Ren por cuidar dos
+      Vell, mas reforçou que ele deve voltar vivo em vez de morrer fazendo
+      besteira.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -667,8 +678,9 @@ relacoes:
       - "Silva recebeu Nera e Tavin de volta depois que a pressão imediata da Red Sail foi dispersada."
       - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
       - "Silva consta em registro selado de Tyr como guardiã atual informada por Ren; a ficha reservada de confirmação chegou à borda das carroças."
-      - "Silva aceita confirmar que os Vell estão sob seu cuidado imediato por ora."
-      - "Silva ainda precisa indicar a Tyr se deseja resguardo em espera, transferência voluntária discreta ou manutenção temporária no abrigo atual."
+      - "Silva confirmou formalmente a guarda imediata dos Vell perante a mensageira de Tyr."
+      - "Silva pediu manutenção temporária no abrigo atual e recusou transferência para Tyr neste momento."
+      - "Silva solicitou resguardo em espera sem deslocamento até o próximo sino maior."
       - "Silva viu Ren voltar do Harbor District sem cauda aparente e quer confirmação direta de que ele veio sozinho."
       - "Silva aceitou a nomeação em Tyr com reprimenda e quer falar com Jack antes que a notícia chegue por outra boca."
       - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."

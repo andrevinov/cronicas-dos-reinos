@@ -1861,6 +1861,15 @@ Ponto morto da Silver Lily:
 * Tyr agora pede confirmação formal de Silva como guardiã atual informada dos Vell;
 * Silva aceita confirmar a guarda imediata, mas a resposta ainda precisa indicar se haverá resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual;
 * hora aproximada: 07:04 da manhã seguinte ao Benefício.
+* Ren defendeu que Nera e Tavin permaneçam no circo, por parecer mais vida do que prisão e por valorizar a proximidade;
+* Ren agradeceu Silva por cuidar dos Vell;
+* Silva confirmou formalmente a guarda imediata dos Vell;
+* Silva pediu manutenção temporária no abrigo atual, sem transferência para Tyr neste momento;
+* Silva solicitou resguardo em espera sem deslocamento até o próximo sino maior;
+* Tyr não enviará juramentados ao circo sem novo pedido, salvo ameaça imediata confirmada;
+* a mensageira de Tyr informou que a primeira convocação de Velis Rook foi entregue;
+* Tyr espera resposta de Velis antes do meio-dia;
+* hora aproximada: 07:10 da manhã seguinte ao Benefício.
 
 Progressão:
 

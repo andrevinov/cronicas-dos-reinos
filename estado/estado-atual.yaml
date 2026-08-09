@@ -18,18 +18,18 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "campos do circo"
-  ponto_exato: "borda interna das carroças do Jack Mooney & Sons Circus, junto à mensageira de Tyr"
-  descricao_operacional: "Ren comeu, falou com Nera na carroça verde e foi ao escritório-carroça de Jack. Nera aceitou a utilidade de Kage como porta de abrigo e renda, mas alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos, Vell ou Masao. Jack recebeu uma proposta escrita sem nome claro vinda do camarote oeste e perguntou o que Kage não faz por dinheiro. Ren definiu limites para Kage, e Jack preparou resposta rígida ao camarote oeste, mas ainda não selou o papel. Quando uma mensageira de Tyr chegou pedindo Silva Elkwood por assunto de lacre reservado, Ren acompanhou Silva até a borda das carroças. A ficha de Tyr informa que Luath confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou o lacre e a abertura presenciada, e agora Tyr pede confirmação formal de Silva como guardiã atual informada dos Vell. Silva aceita confirmar a guarda imediata, mas precisa decidir se pede resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual."
+  ponto_exato: "borda interna das carroças do Jack Mooney & Sons Circus, após resposta à mensageira de Tyr"
+  descricao_operacional: "Ren comeu, falou com Nera na carroça verde e foi ao escritório-carroça de Jack. Nera aceitou a utilidade de Kage como porta de abrigo e renda, mas alertou que não quer ver Ren Kage inteiro comprado por Jack, ricos, Vell ou Masao. Jack recebeu uma proposta escrita sem nome claro vinda do camarote oeste e perguntou o que Kage não faz por dinheiro. Ren definiu limites para Kage, e Jack preparou resposta rígida ao camarote oeste, mas ainda não selou o papel. Quando uma mensageira de Tyr chegou pedindo Silva Elkwood por assunto de lacre reservado, Ren acompanhou Silva até a borda das carroças. A ficha de Tyr informou que Luath confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou o lacre e a abertura presenciada, e Tyr pediu confirmação formal de Silva como guardiã atual informada dos Vell. Após Ren defender que os Vell permaneçam no circo, Silva confirmou formalmente a guarda imediata, pediu manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior. A mensageira informou que a primeira convocação de Velis Rook foi entregue e que Tyr espera resposta dele antes do meio-dia."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "manhã seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "07:04 da manhã seguinte ao Benefício"
+  hora_aproximada: "07:10 da manhã seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
-  prazo_relevante: "O camarote oeste espera resposta até o meio-dia; a mensageira de Tyr aguarda declaração curta de Silva sobre guarda imediata e resguardo dos Vell."
+  prazo_relevante: "O camarote oeste espera resposta até o meio-dia; Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Tyr espera resposta de Velis Rook antes do meio-dia."
 
 recursos:
   pontos_de_vida:
@@ -429,8 +429,14 @@ recursos:
     - "Ren acompanhou Silva até a mensageira de Tyr"
     - "Tyr recebeu confirmação de Luath sobre a cópia parcial e as ações contra buscas ilegais"
     - "Tyr recebeu confirmação de Maerra sobre o lacre, a abertura presenciada e a condição em que viu os Vell"
-    - "Silva aceita confirmar que os Vell estão sob seu cuidado imediato por ora"
-    - "decisão pendente de resguardo: manter abrigo atual, pedir resguardo em espera ou transferir os Vell discretamente para Tyr"
+    - "Ren defendeu que Nera e Tavin permaneçam no circo, por parecer mais vida do que prisão e por valorizar a proximidade"
+    - "Ren agradeceu Silva por estar com os Vell e para os Vell"
+    - "Silva confirmou formalmente a guarda imediata dos Vell"
+    - "Silva pediu manutenção temporária no abrigo atual, sem transferência para Tyr neste momento"
+    - "Silva solicitou resguardo em espera sem deslocamento até o próximo sino maior"
+    - "Tyr não enviará juramentados ao circo sem novo pedido, salvo ameaça imediata confirmada"
+    - "mensageira de Tyr informou que a primeira convocação de Velis Rook foi entregue"
+    - "Tyr espera resposta de Velis Rook antes do meio-dia"
   exaustao: 0
 
 equipamento_em_posse:
@@ -470,8 +476,8 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "defender uma linha diante de Silva sobre o resguardo dos Vell: manter abrigo atual, pedir resguardo em espera ou transferir discretamente para Tyr"
     - "selar ou ajustar a resposta de Jack à proposta sem nome claro do camarote oeste antes do meio-dia"
+    - "decidir se a manhã será usada para manter Kage visível, ajudar Jack/Silva no circo ou acompanhar indiretamente a convocação de Velis"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
     - "observar se Red Sail, Narwhal ou outros interessados reagem ao sucesso do número"
     - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
@@ -481,7 +487,7 @@ objetivos:
     - "considerar que Tyr recebeu confirmações de Luath e Maerra"
     - "impedir que Narwhal e Red Sail virem a acusacao contra Ren e Nera"
     - "aproveitar a intervencao limitada da guarda enquanto a pressao sobre o circo esta menor"
-    - "avaliar se os Vell permanecem no circo, se recebem resguardo em espera ou se precisam de transferência formal a Tyr"
+    - "manter os Vell no circo com resguardo em espera de Tyr até o próximo sino maior"
     - "decidir se continua puxando o fio de Brass/Narwhal ou se busca protecao formal"
     - "proteger o livro original de Nera escondido com Silva"
     - "quando houver folga, investigar os Meninos do Primeiro Sino e a Casa Velha do Primeiro Raio"
@@ -509,7 +515,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está com Silva na borda interna das carroças, diante de uma mensageira de Tyr. A ficha reservada informa que Luath e Maerra confirmaram suas partes, e Tyr agora pede que Silva confirme ou negue a guarda atual dos Vell e indique se deseja resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual. Silva aceita confirmar a guarda imediata, mas perguntou a Ren qual linha ele vai defender antes que ela escreva o próprio nome. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 07:04 da manhã seguinte ao Benefício."
+  cena_atual: "Ren está com Silva na borda interna das carroças, logo após a mensageira de Tyr partir. Silva confirmou formalmente a guarda imediata dos Vell, pediu manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior. A mensageira informou que a primeira convocação de Velis Rook foi entregue e que Tyr espera resposta antes do meio-dia. Jack ainda precisa selar ou ajustar a resposta ao camarote oeste. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 07:10 da manhã seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

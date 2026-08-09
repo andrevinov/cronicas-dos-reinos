@@ -1550,3 +1550,71 @@ A manhã parece um pouco mais fria por um instante.
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **07:04 da manhã seguinte ao Benefício**. Ren acompanhou Silva até a mensageira de Tyr. A Casa de Tyr recebeu confirmações de Luath e Maerra e agora pede confirmação formal de Silva como guardiã atual informada dos Vell. Silva aceita confirmar a guarda imediata, mas a resposta pode pedir resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual.
 
 **Jogador**
+
+"Tyr parece uma prisão glorificada, se me perdoa dizer. Eu prefiro que fiquem aqui. Aqui parece um pouco mais com... 'viver', e é o que eles precisam. Além disso, aqui eles estão perto de mim, e valorizo bastante essa proximidade. O pessoal de Tyr não parece gostar de mim tão próximo, como Sirrus deixou claro", falo, sorrindo.
+
+Ren olha pro lado, como quem vai dizer algo difícil.
+
+"Silva, acho que depois desse tempo todo nem cheguei a te agradecer. Obrigado. Obrigado por estar com eles, pra eles. Sei que você é uma mulher de fé, mas mesmo assim merece esse agradecimento tão mundano. E muito mais."
+
+**Narrador**
+
+Silva escuta a primeira parte com o rosto fechado.
+
+Quando Ren chama Tyr de prisão glorificada, a mensageira não reage como pessoa ofendida; reage como pessoa treinada para não transformar opinião de rua em assunto de ata. Só os olhos dela se movem uma vez, medindo Ren com a mesma economia que Halessa usaria diante de uma mesa.
+
+Silva, porém, solta um som curto pelo nariz.
+
+"Tyr é porta de pedra", ela diz. "Às vezes é cela. Às vezes é muralha. O problema é que, de dentro, uma criança pobre não escolhe fácil qual das duas virou."
+
+Ela olha para a ficha, depois para o campo do circo, onde uma lona está sendo sacudida por dois ajudantes e um garoto carrega baldes grandes demais para os braços. A vida comum fazendo barulho suficiente para parecer proteção.
+
+"Eles ficam aqui."
+
+A mensageira inclina a cabeça, pronta para receber a formulação exata.
+
+Silva fala devagar, escolhendo palavras que possam sobreviver a escriba, templo e político:
+
+"Silva Elkwood confirma, sob sinal reconhecido, que mantém sob cuidado imediato as duas testemunhas registradas em ata reservada. Por ora, solicita manutenção temporária no abrigo atual. Não solicita transferência neste momento. Mudança de local será comunicada por ficha reservada ou por mensageiro reconhecido. Juramentados não devem se aproximar do abrigo sem pedido explícito, salvo ameaça imediata confirmada pela Casa de Tyr."
+
+A mensageira repete em voz baixa, palavra por palavra, para fixar.
+
+"E quer resguardo em espera?", ela pergunta.
+
+Silva demora uma respiração.
+
+"Quero porta acordada, não pé marchando."
+
+A jovem entende.
+
+"Resguardo em espera sem deslocamento. Até o próximo sino maior, renovável por nova ficha."
+
+Silva aceita com um gesto. Isso não move os Vell. Não traz juramentados para a borda do circo. Mas deixa Tyr pronto para agir se Silva chamar antes que a cidade engula o intervalo.
+
+Só então o agradecimento de Ren parece alcançar outro lugar nela.
+
+Silva não olha para ele de imediato. Fecha a ficha, pega a tira curta de pergaminho que a mensageira oferece, e assina com uma letra firme, simples, sem floreio. Depois pressiona o pequeno disco de cobre na cera morna: espiga de Chauntea, marca de estrada.
+
+"Mulher de fé ainda precisa de pão, sono e gente dizendo obrigado antes de morrer fazendo besteira", ela diz, sem levantar a voz. "Então aceito. O agradecimento, não a morte."
+
+A mensageira sela a resposta e guarda o pacote junto ao peito.
+
+"A Casa de Tyr recebeu confirmação de guarda atual. Nenhuma transferência será iniciada sem novo pedido. Resguardo em espera até o próximo sino maior."
+
+Ela hesita o bastante para deixar claro que a frase seguinte não é a ata inteira, mas é útil.
+
+"Irmã Halessa também manda dizer: a primeira convocação de Velis Rook foi entregue. A Casa espera resposta dele antes do meio-dia. Se houver risco direto às testemunhas antes disso, usem ficha reservada. Se houver movimento contra o abrigo, não esperem formalidade bonita."
+
+Silva absorve a informação sem demonstrar surpresa. A mensageira se despede com um aceno curto e começa a voltar pelo caminho de onde veio, sem atravessar o acampamento.
+
+Quando ela se afasta, Silva guarda a cópia mínima dentro da manga.
+
+"Você ouviu. Velis foi chamado. Isso é bom para a prova. Ruim para gente que prefere agir antes que ele fale."
+
+Ela olha para Ren agora, e o tom volta ao prático.
+
+"Nera e Tavin ficam aqui. Tyr fica acordado. Jack ainda tem rico sem nome para filtrar. E você..." O olhar dela pesa um pouco mais. "Você vai ter de decidir se passa a manhã sendo Kage visível, Ren útil ou sombra atrás de Velis. Tente não ser os três ao mesmo tempo."
+
+Ao longe, a carroça-escritório de Jack ainda está com a porta entreaberta.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **07:10 da manhã seguinte ao Benefício**. Silva confirmou formalmente a guarda imediata dos Vell, pediu manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior. Tyr não enviará juramentados ao circo sem novo pedido, salvo ameaça imediata confirmada. A mensageira informou que a primeira convocação de Velis Rook foi entregue e que Tyr espera resposta antes do meio-dia. Jack ainda precisa selar ou ajustar a resposta ao camarote oeste.
