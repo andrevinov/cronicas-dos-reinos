@@ -1882,6 +1882,20 @@ Ponto morto da Silver Lily:
 * do lado de fora da casa, Ren identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado, possíveis observadores na rua e movimento breve atrás de uma janela alta;
 * Ren ainda não entrou nem abordou ninguém;
 * hora aproximada: 08:12 da manhã seguinte ao Benefício.
+* Ren descartou comprar uma luneta: o item custa 1000 PO pela referência do Livro do Jogador e não estava disponível como compra rápida viável nas ruas baixas;
+* rolagem: Furtividade para ocupar ponto alto de observação, d20 18 + 6 = 24 contra CD 14, sucesso;
+* Ren ocupou um sótão quebrado de oficina de rodas com vista para a Casa Velha, sem gastar ki e sem chamar atenção;
+* rolagem: Observação prolongada da Casa Velha, d20 6 + 5 = 11 contra CD 15, falha;
+* Ren não conseguiu detalhes finos: expressões, sinais pequenos, número interno de pessoas ou leituras seguras de intenção;
+* rolagem: Investigação para organizar padrões da movimentação, d20 20 + 3 = 23 contra CD 14, sucesso;
+* Ren observou por quase três horas sem gerar alarme;
+* Ren percebeu que a porta frontal não é usada e que a viela lateral/porta de serviço são o eixo real;
+* crianças aparecem em pontos externos compatíveis com vigilância informal ou papel de olheiros;
+* a velha vendedora vende nabos de verdade, mas interrompe gestos quando crianças passam perto da marca do sol riscado;
+* um adulto baixo, de ombros largos e avental manchado, usou a rota da viela duas vezes;
+* por volta de 11:18, o adulto saiu da Casa Velha rumo aos armazéns com um embrulho fino e comprido;
+* Ren continua escondido e ainda não entrou nem abordou ninguém;
+* hora aproximada: 11:18 da manhã seguinte ao Benefício.
 
 Progressão:
 

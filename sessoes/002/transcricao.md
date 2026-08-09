@@ -1689,3 +1689,65 @@ Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada:
 **Jogador**
 
 [Se Ren já tiver percebido que há um mercado próximo e que ele vai demorar menos de meia hora pra comprar uma luneta, ele o fará. Se não, ele vai simplesmente procurar um lugar alto de onde ele possa olhar esse lugar discretamente, e se precisar, usar Passo do Vento pra subir sem ser percebido. Caso esteja com a luneta, melhor, pois poderá obsservar detalhadamente. A ideia dele é passar algumas horas observando de longe, incognito, vendo os movimentos do garoto e da velhinha, que ele já imagina serem a "recepção" do lugar.]
+
+**Narrador**
+
+Ren sabe que existe comércio perto o bastante para comprar pão, carvão, corda, faca ruim e pano usado em menos de meia hora.
+
+Uma luneta é outra coisa.
+
+Mesmo em Ravens Bluff, isso não fica pendurado em banca pobre. Uma luneta de verdade custa coisa de navegador rico, arcanista prático ou casa mercante: **1.000 PO** pelo preço comum do Livro do Jogador. Mesmo uma lente de aumento decente custa mais do que Ren tem no bolso e não serviria para observar janela distante. Com **31 PO**, pouca margem e a manhã correndo, Ren abandona essa opção sem transformar a busca em trilha própria.
+
+Ele procura altura.
+
+Furtividade para ocupar ponto de observação: d20 18 + 6 = 24 contra CD 14. Sucesso.
+
+Não precisa gastar ki.
+
+Há uma oficina de rodas fechada duas portas acima e do outro lado da rua, com uma escada de carga nos fundos e telhas deslocadas por anos de chuva. Ren chega ao beiral pelo caminho menos heroico: caixa, travessa estreita, mão no tijolo, peso distribuído, pausa quando uma mulher joga água suja pela janela, movimento quando uma carroça cobre o som. O corpo quer resolver com velocidade. Ren resolve com paciência.
+
+Do sótão quebrado, ele não vê tudo. Vê o bastante.
+
+Observação prolongada da Casa Velha: d20 6 + 5 = 11 contra CD 15. Falha.  
+Organizar padrões da movimentação: d20 20 + 3 = 23 contra CD 14. Sucesso.
+
+Sem luneta, a Casa Velha guarda os detalhes pequenos. Ren não consegue ler expressões com segurança. Não consegue contar quantas pessoas existem dentro. Não consegue distinguir toda mão que aparece atrás de fresta de janela, nem todo sinal feito com dedos, nem se uma criança olha por medo, hábito ou ordem.
+
+Mas horas tornam o acaso menos convincente.
+
+A porta da frente continua morta. Ninguém usa. Poeira velha, ferragem velha, teatro velho.
+
+A viela esquerda respira.
+
+O menino da maçã não fica o tempo todo no degrau. Ele some duas vezes, sempre quando uma carroça maior passa ou quando sino menor cobre som de madeira. Volta sem pressa demais, como criança fingindo não ter pressa. Uma menina de lenço vermelho aparece depois, menor que Tavin, carregando uma cesta vazia grande demais para o braço dela. Ela passa pela parede marcada com o sol riscado, não toca a marca, mas desacelera ali. Mais tarde, um garoto com uma manga rasgada faz o mesmo.
+
+A velha dos nabos vende nabos de verdade. Isso também importa. Cinco pessoas compram dela em quase três horas. Ela reclama de moeda pequena, corta rama ruim, discute preço e manda um homem lavar a mão antes de mexer na cesta. Mas quando criança passa perto da marca, ela para de cortar por meio segundo. Não olha para a casa. Olha para a rua.
+
+Perto da décima badalada menor, um adulto entra no padrão.
+
+Homem baixo, ombros largos, capa ordinária sobre avental manchado, bota que não desvia de poça. Ele vem das ruas dos armazéns, não do Temple District. Carrega um embrulho de pano encerado debaixo do braço esquerdo. Não para diante da velha. Não olha para o menino. Passa pela viela como quem errou caminho, mas o corpo não hesita. Minutos depois, a sombra aparece atrás da janela alta. O homem não sai pela frente.
+
+Quase uma hora depois, ele sai pela mesma viela sem o embrulho.
+
+Ren perde o rosto dele quando uma carroça de barris atravessa a visão. Perde também qualquer sinal feito na parede. Mas não perde o desenho maior: a Casa Velha usa ruído urbano como porta. Carroças, sinos, água despejada, discussão de mercado. Sempre que a rua fica naturalmente barulhenta, a viela ganha movimento.
+
+O ponto de observação improvisado atrás da casa também ganha sentido. Não é bom para vigiar a porta principal. É bom para ver quem sobe da rua baixa antes de alcançar a entrada de serviço. Altura de criança. Campo de visão de criança. Paciência de criança.
+
+Pelo fim da observação, Ren tem um mapa prático, ainda incompleto:
+
+* a entrada frontal é isca ou abandono real;
+* a viela esquerda e a porta de serviço nos fundos são o eixo útil;
+* a janela alta tem alguém atento em intervalos, mas não o tempo inteiro;
+* os observadores externos parecem misturados à vida comum da rua;
+* o melhor acesso discreto à noite provavelmente vem por cima da parede cega do depósito vizinho e desce para a escada baixa dos fundos, fora do olhar direto da vendedora;
+* o adulto de avental manchado é a primeira pessoa não infantil que Ren viu usando o padrão sem hesitação.
+
+Quando o sol já subiu o bastante para reduzir a névoa a sujeira brilhante nas pedras, o mesmo homem de avental reaparece na boca da viela. Agora traz outro embrulho, menor, fino e comprido. Ele olha para a rua uma vez, como qualquer pessoa cautelosa olharia. A velha corta a rama de um nabo. O menino da maçã não está visível.
+
+O homem segue na direção dos armazéns baixos, carregando o embrulho para fora da Casa Velha.
+
+Ren ainda está escondido. Ainda não foi marcado. Ainda não gastou ki. Mas já são quase três horas de observação, e o meio-dia de Tyr e Velis se aproxima em algum lugar da cidade.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **11:18 da manhã seguinte ao Benefício**. Ren não comprou luneta, pois o item é caro demais e não estava disponível como compra rápida útil. Ele ocupou um ponto alto discretamente e observou a Casa Velha por horas. Não gerou alarme. A observação visual falhou em detalhes finos, mas Ren organizou um padrão forte: a frente não é usada, a viela lateral e a porta de serviço são o eixo real, crianças parecem funcionar como olhos externos, e um adulto de avental manchado usou a rota duas vezes. Agora esse adulto sai rumo aos armazéns com um embrulho fino e comprido.
+
+O que Ren faz?
