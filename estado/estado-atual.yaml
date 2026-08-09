@@ -19,17 +19,17 @@ localizacao:
   cidade: "Ravens Bluff"
   area: "ruas baixas entre Temple District e armazéns"
   ponto_exato: "arredores externos da Casa Velha do Primeiro Raio"
-  descricao_operacional: "Após a resposta de Silva a Tyr, Ren voltou à carroça-escritório de Jack, assinou o acordo condicional de Ren Kage e deixou que Jack selasse a resposta rígida ao camarote oeste. O acordo formaliza Kage como artista condicional do Jack Mooney & Sons Circus, com apresentações privadas apenas por intermédio de Jack, em local controlado, com equipe presente, sem retirada de máscara por contrato, sem social obrigatório e sem uso para intimidação privada. Ren passou rapidamente pela carroça verde, falou com Nera e Tavin sem transformar a despedida em cena longa, e saiu do circo discretamente sem usar ki. Ele evitou rotas diretas demais e chegou aos arredores da Casa Velha do Primeiro Raio sem cauda evidente. Do lado de fora, identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, uma provável entrada de serviço nos fundos, um ponto de observação improvisado e pelo menos dois observadores possíveis na rua."
+  descricao_operacional: "Após a resposta de Silva a Tyr, Ren voltou à carroça-escritório de Jack, assinou o acordo condicional de Ren Kage e deixou que Jack selasse a resposta rígida ao camarote oeste. O acordo formaliza Kage como artista condicional do Jack Mooney & Sons Circus, com apresentações privadas apenas por intermédio de Jack, em local controlado, com equipe presente, sem retirada de máscara por contrato, sem social obrigatório e sem uso para intimidação privada. Ren passou rapidamente pela carroça verde, falou com Nera e Tavin sem transformar a despedida em cena longa, e saiu do circo discretamente sem usar ki. Ele evitou rotas diretas demais e chegou aos arredores da Casa Velha do Primeiro Raio sem cauda evidente. Do lado de fora, identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, uma provável entrada de serviço nos fundos, um ponto de observação improvisado e pelo menos dois observadores possíveis na rua. Ren abordou a velha vendedora de nabos; a tentativa de parecer casual falhou, mas ele percebeu que o menino no degrau reagiu à palavra 'templo' olhando rapidamente para a marca de carvão apagada e para a viela lateral."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "manhã seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "08:12 da manhã seguinte ao Benefício"
+  hora_aproximada: "08:14 da manhã seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
-  prazo_relevante: "O camarote oeste espera resposta até o meio-dia; Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Tyr espera resposta de Velis Rook antes do meio-dia; Ren ainda não entrou na Casa Velha do Primeiro Raio nem abordou seus possíveis observadores."
+  prazo_relevante: "O camarote oeste espera resposta até o meio-dia; Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Tyr espera resposta de Velis Rook antes do meio-dia; Ren ainda não entrou na Casa Velha do Primeiro Raio, e a velha vendedora de nabos ficou cautelosa com as perguntas."
 
 recursos:
   pontos_de_vida:
@@ -452,6 +452,12 @@ recursos:
     - "Ren identificou ponto de observação improvisado com vista para a rua"
     - "Ren percebeu uma velha vendedora e um menino magro como possíveis observadores na rua"
     - "Ren viu movimento curto de sombra atrás de uma janela alta da Casa Velha do Primeiro Raio"
+    - "Ren abordou a velha vendedora de nabos fingindo conversa casual"
+    - "Rolagem de Enganação na conversa com a velha: 3 contra CD 12, falha"
+    - "Rolagem de Percepção para acompanhar o menino durante a conversa: 17 contra CD 13, sucesso"
+    - "a velha percebeu que Ren não perguntou sobre a casa por curiosidade casual e ficou cautelosa"
+    - "o menino reagiu à palavra templo olhando rapidamente para a marca de carvão apagada e para a viela lateral"
+    - "a velha deixou claro que perguntar diretamente pelo menino seria mal recebido"
   exaustao: 0
 
 equipamento_em_posse:
@@ -491,7 +497,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir se observa mais, aborda um dos possíveis observadores ou tenta uma aproximação pela entrada de serviço da Casa Velha do Primeiro Raio"
+    - "decidir se recua, compra tempo com a velha, tenta falar com o menino de modo indireto ou segue a pista da viela lateral"
     - "não entrar de modo imprudente antes de entender se há crianças, adultos armados ou rota subterrânea"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
     - "observar se Red Sail, Narwhal ou outros interessados reagem ao sucesso do número"
@@ -530,7 +536,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está do lado de fora da Casa Velha do Primeiro Raio, abaixo do Temple District, perto das ruas que descem para os armazéns. A sondagem externa teve sucesso: ele identificou marcas de sol riscado em carvão, trânsito recente por uma viela lateral, uma provável entrada de serviço nos fundos, um ponto de observação improvisado, possíveis observadores na rua e movimento breve atrás de uma janela alta. Ren ainda não entrou nem abordou ninguém. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 08:12 da manhã seguinte ao Benefício."
+  cena_atual: "Ren está do lado de fora da Casa Velha do Primeiro Raio, abaixo do Temple District, perto das ruas que descem para os armazéns. Após a sondagem externa, ele abordou a velha vendedora de nabos. A tentativa de parecer casual falhou, e a velha ficou cautelosa, mas Ren percebeu que o menino no degrau reagiu à palavra 'templo' olhando para a marca de carvão apagada e para a viela lateral. Ninguém chamou alarme ainda. Ren ainda não entrou na casa. Ren está com 31/31 PV, 4/4 ki, 31 PO e 9 shuriken. Hora aproximada: 08:14 da manhã seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

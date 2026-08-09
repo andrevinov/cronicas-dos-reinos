@@ -1882,6 +1882,13 @@ Ponto morto da Silver Lily:
 * do lado de fora da casa, Ren identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado, possíveis observadores na rua e movimento breve atrás de uma janela alta;
 * Ren ainda não entrou nem abordou ninguém;
 * hora aproximada: 08:12 da manhã seguinte ao Benefício.
+* Ren abordou a velha vendedora de nabos fingindo conversa casual sobre a casa;
+* rolagem: Enganação para parecer casual, d20 3 + 0 = 3 contra CD 12, falha;
+* a velha percebeu que Ren não perguntava por curiosidade comum e ficou cautelosa, mas não chamou alarme;
+* rolagem: Percepção para acompanhar o menino durante a conversa, d20 12 + 5 = 17 contra CD 13, sucesso;
+* Ren percebeu que o menino reagiu à palavra "templo" olhando rapidamente para a marca de carvão apagada e para a viela lateral;
+* a velha deixou claro que perguntar diretamente pelo menino seria mal recebido;
+* hora aproximada: 08:14 da manhã seguinte ao Benefício.
 
 Progressão:
 

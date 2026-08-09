@@ -177,6 +177,7 @@ Progresso atual: 1/6.
 Observação recente:
 
 * Ren iniciou sondagem externa da Casa Velha do Primeiro Raio na manhã seguinte ao Benefício da Lona Aberta. Identificou marcas de sol riscado, trânsito por viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado e possíveis observadores, sem entrar e sem gerar alarme. Não há avanço do relógio neste momento.
+* Ren tentou conversa casual com a velha vendedora de nabos; ela ficou cautelosa, mas não chamou alarme. Ren percebeu que o menino no degrau reagiu à palavra "templo" olhando para a marca de carvão apagada e para a viela lateral. Não há avanço do relógio neste momento.
 
 Descrição:
 
@@ -206,6 +207,7 @@ Estado atual:
 * Maerra pediu que Ren não faça isso agora enquanto Nera, Tavin e a pasta de Velis ainda estão em risco imediato;
 * possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
 * primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
+* a velha vendedora está cautelosa com Ren; o menino pode saber algo sobre a marca e a viela lateral.
 
 ---
 

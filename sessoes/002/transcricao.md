@@ -1685,3 +1685,42 @@ Há uma velha vendendo nabos do outro lado da rua que observa pouco demais para 
 Ren ainda está fora. Ainda não foi visto como invasor. A sondagem confirma que o lugar respira por portas laterais e olhos pequenos, não pela entrada principal.
 
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:12 da manhã seguinte ao Benefício**. Ren assinou o acordo condicional de Kage com Jack, despediu-se rapidamente dos Vell e deixou o circo discretamente. Ele chegou aos arredores da Casa Velha do Primeiro Raio sem cauda evidente. Do lado de fora, identificou marcas de carvão em forma de sol riscado, trânsito recente pela viela lateral, uma provável entrada de serviço nos fundos, um ponto de observação improvisado e pelo menos dois observadores possíveis na rua. Ren ainda não entrou nem abordou ninguém.
+
+**Jogador**
+
+Ren chega até a velha, olhando os nabos que ela está vendendo. Puxa um assunto qualquer sobre nabos, sobre o clima, e depois começa a falar da casa.
+
+"Essa casa parece um templo, não é? Um templo antigo, coisa do tipo."
+
+Ele tenta fazer parecer que a conversa é absolutamente informal. E não tira o olho do garotinho enquanto conversa com a velha.
+
+**Narrador**
+
+Teste de Enganação: d20 3 + 0 = 3 contra CD 12. Falha.  
+Teste de Percepção: d20 12 + 5 = 17 contra CD 13. Sucesso.
+
+Os nabos são pequenos, pálidos e um pouco tortos. A velha vende como quem não espera vender muito: pano no colo, cesta baixa, faca curta para cortar rama podre e um copo de barro com algumas moedas de cobre.
+
+Ela deixa Ren falar do tempo por duas frases. Na terceira, já sabe que ele não veio por nabo.
+
+"Nabo cresce no frio e na terra ruim", ela diz, pegando um e virando para mostrar uma rachadura na casca. "Gente fina não gosta. Gente com fome aprende."
+
+Quando Ren menciona a casa, a mão dela para por meio instante sobre a faca. Não pega a lâmina. Só deixa os dedos lembrarem que ela existe.
+
+"Templo?" Ela olha para a fachada sem virar a cabeça toda. "Foi. Casa de sol, sopa e sermão. Agora é parede. Parede velha não reza."
+
+A resposta soa como conversa de rua, mas a voz mudou. Não ficou mais alta. Ficou mais estreita. A velha percebeu que a pergunta tem intenção e agora mede Ren como alguém que pode ser guarda, criminoso, cobrador, curioso perigoso ou idiota com boas botas.
+
+O menino no degrau também ouviu a palavra "templo".
+
+Ele não olha para Ren. Esse é o detalhe. Criança assustada olha demais ou foge. Ele faz o contrário: força a cara de quem não ouviu nada. A maçã pequena fica presa na mão dele, intocada. O olhar dele passa, rápido demais, pela marca de carvão apagada na parede lateral e depois pela viela esquerda. Não pela porta da frente. Não pela velha.
+
+A velha percebe Ren percebendo.
+
+"Se quer nabo, compro conversa junto. Se quer casa velha, conversa com pedra." Ela empurra um nabo para cima da pilha com o polegar. "E se quer menino, escolheu rua errada para perguntar."
+
+O menino enfim morde a maçã. Não por fome. Para ter algo a fazer com a boca. Depois escorrega um pouco no degrau, como quem pode levantar se a velha disser uma palavra ou se Ren der um passo errado.
+
+Atrás da janela alta, nada se move agora. A viela lateral continua aberta, úmida e estreita. A velha não chamou ninguém. O menino ainda não correu. Mas a casualidade da conversa morreu.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **08:14 da manhã seguinte ao Benefício**. Ren abordou a velha vendedora de nabos; ela percebeu que a conversa sobre a casa não era casual e ficou cautelosa. Ren, porém, percebeu que o menino reagiu à palavra "templo" olhando rapidamente para a marca de carvão apagada e para a viela lateral. Ninguém chamou alarme ainda, mas a velha deixou claro que perguntar diretamente pelo menino seria mal recebido.
