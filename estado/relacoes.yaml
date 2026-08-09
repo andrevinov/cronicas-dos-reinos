@@ -526,6 +526,10 @@ relacoes:
       Ren pode escrever até três perguntas para possível uso na oitiva. Ren
       entregou três perguntas sobre selos de clãs de Kara-Tur, o hóspede e o
       volume 13; Halessa recebeu como anexo reservado do portador.
+      Na manhã seguinte ao Benefício da Lona Aberta, uma ficha reservada de Tyr
+      chegou a Silva Elkwood no circo: Luath confirmou a cópia parcial e a ação
+      contra buscas ilegais, Maerra confirmou o lacre e a abertura presenciada,
+      e Tyr agora busca a confirmação da guardiã atual informada.
     ofertas:
       - "Resguardo provisório de 24 horas para N.V. e T.V., se puderem ser movidos com segurança para uma porta indicada por Tyr."
       - "Ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada."
@@ -536,6 +540,7 @@ relacoes:
       - "Sirrus Melandor chamado imediatamente após leitura do bilhete e das correções."
       - "Aceitou receber até três perguntas de Ren para possível uso na oitiva de Velis."
       - "Recebeu três perguntas de Ren como anexo reservado do portador."
+      - "Tyr recebeu confirmações de Luath e Maerra e enviou ficha reservada a Silva Elkwood para confirmar a guarda atual informada."
     riscos:
       - "Se Ren focar em vingança, Halessa pode rebaixar o caso para risco de violência privada."
       - "Se Ren esconder demais, Halessa pode suspeitar que a Casa de Tyr está sendo usada."
@@ -637,6 +642,14 @@ relacoes:
       acordada tentando fingir que não espera Ren.
       No escritório de Jack, Silva reforçou que Nera, Tavin, o livro e a história
       dos Vell não entram em nenhuma negociação sobre Kage.
+      Quando uma mensageira de Tyr chegou à borda das carroças por assunto de
+      lacre reservado, Silva foi recebê-la com Ren. A ficha informou que Luath
+      confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou
+      o lacre e a abertura presenciada, e Tyr agora pede confirmação formal da
+      guarda atual informada. Silva aceita confirmar que os Vell estão sob seu
+      cuidado imediato por ora, mas ainda precisa escolher se pede resguardo em
+      espera, transferência voluntária discreta para Tyr ou manutenção temporária
+      no abrigo atual.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -653,7 +666,9 @@ relacoes:
       - "Silva manteve o livro de provas escondido com ela enquanto Ren retirava Nera e Tavin."
       - "Silva recebeu Nera e Tavin de volta depois que a pressão imediata da Red Sail foi dispersada."
       - "Silva aceitou guardar Nera e Tavin novamente enquanto Ren leva a pasta lacrada a Tyr."
-      - "Silva agora consta em registro selado de Tyr como guardiã atual informada por Ren, embora ainda precise confirmar ou negar formalmente."
+      - "Silva consta em registro selado de Tyr como guardiã atual informada por Ren; a ficha reservada de confirmação chegou à borda das carroças."
+      - "Silva aceita confirmar que os Vell estão sob seu cuidado imediato por ora."
+      - "Silva ainda precisa indicar a Tyr se deseja resguardo em espera, transferência voluntária discreta ou manutenção temporária no abrigo atual."
       - "Silva viu Ren voltar do Harbor District sem cauda aparente e quer confirmação direta de que ele veio sozinho."
       - "Silva aceitou a nomeação em Tyr com reprimenda e quer falar com Jack antes que a notícia chegue por outra boca."
       - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."

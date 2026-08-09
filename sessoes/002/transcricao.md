@@ -1492,3 +1492,61 @@ Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada:
 Caminho com Silva até o emissário de Tyr.
 
 "Acha que vão convocar você? Ou é algum outro tipo de formalidade?", Ren pergunta.
+
+**Narrador**
+
+Jack ergue uma sobrancelha.
+
+"Se eu comprasse alma, menino, não começava pela sua. Está gasta, estrangeira e provavelmente amaldiçoada."
+
+A frase vem seca, mas a bengala dele bate uma vez no assoalho, quase como ponto final de palco. Quando Ren passa pela porta com Silva, Jack já voltou ao papel do camarote oeste, pena suspensa, mas não selada. Ele não gosta de deixar moeda esperando. Gosta menos ainda de assinar coisa importante enquanto Tyr bate na borda do circo.
+
+Silva caminha rápido, sem correr. A manhã abre passagem em torno dela porque o circo conhece o passo: quando Silva anda assim, ou há sangue, ou há santo, ou há papel capaz de virar os dois.
+
+"Convocação não chega pedindo meu nome na borda das carroças", ela responde baixo a Ren. "Convocação entra com dois guardiões e uma voz grande. Isso aí é confirmação. Ou cobrança. Às vezes Tyr chama as duas coisas de dever para não precisar escolher."
+
+A mensageira espera fora do miolo do acampamento, exatamente onde alguém treinado para assunto sensível deveria esperar: longe o bastante para não ver a rotina interna do circo, perto o bastante para não parecer que está escondida. É jovem, mas não novata. Veste cinza limpo de viagem, manto curto com a balança de Tyr costurada no ombro e uma bolsa de couro presa ao peito. Duas pessoas do circo fingem trabalhar perto demais; Silva olha uma vez, e as duas lembram de tarefas mais urgentes.
+
+"Silva Elkwood?", pergunta a mensageira.
+
+"Depende de quem pergunta."
+
+A jovem mostra uma ficha de madeira clara, marcada com cera cinza-azulada. Não abre o lacre. Não diz nomes.
+
+"Irmã Halessa Vorn, por registro reservado da Casa de Tyr. Entrega apenas à pessoa nomeada ou a juramentado reconhecido. Assunto: guarda informada, confirmação de custódia e resguardo possível."
+
+Silva estende a mão. A mensageira não entrega ainda.
+
+"Preciso de confirmação por sinal ou palavra."
+
+Silva tira de dentro da manga um pequeno disco de cobre gasto, com espiga de Chauntea de um lado e uma marca de estrada do outro. A mensageira compara com uma tira estreita de pergaminho, assente e só então entrega a ficha lacrada.
+
+Silva quebra o lacre virada de lado, protegendo o conteúdo do vento e de olhos soltos. Ela lê sem mover os lábios. A primeira leitura endurece o rosto dela. A segunda não amolece.
+
+"Luath confirmou que recebeu a cópia parcial e que houve ação contra buscas ilegais", ela diz a Ren, ainda baixo. "Maerra confirmou o lacre, a abertura presenciada e o estado em que viu os dois quando passaram por ela. Tyr agora quer a minha parte porque alguém teve a brilhante ideia de pôr meu nome numa ata selada."
+
+A última frase vem com veneno suficiente para lembrar Ren de que a reprimenda não acabou só porque ela aceitou a utilidade.
+
+Silva vira a ficha para Ren ver apenas o trecho operacional, cobrindo nomes e marcas de arquivo com os dedos. A escrita é formal, limpa, econômica:
+
+> A pessoa nomeada como guarda atual informada deve confirmar ou negar, sob sinal reconhecível, se mantém sob cuidado imediato as duas testemunhas registradas em ata reservada. Pode requerer resguardo em espera, transferência voluntária discreta para porta de Tyr, ou manutenção temporária no abrigo atual com aviso de mudança.
+
+A mensageira mantém o olhar no campo, não no papel. Isso também é treinamento.
+
+"Tem resposta agora?", ela pergunta. "Posso levar declaração curta. Se houver pedido de transferência, volto com dois juramentados. Se houver pedido de resguardo em espera, a Casa mantém gente pronta até o próximo sino maior. Se a guardiã confirmar apenas abrigo atual, a ficha volta selada e nada mais se move por enquanto."
+
+Silva dobra a ficha uma vez, devagar.
+
+"Eu confirmo que estão sob meu cuidado por ora", ela diz. "Isso eu assino sem perguntar a homem nenhum."
+
+Então olha para Ren.
+
+"Mas a segunda linha muda o dia deles. Juramentados vindo até a borda do circo chamam menos atenção que guarda, mas ainda chamam. Transferir para Tyr protege de um jeito e prende de outro. Manter aqui preserva a cobertura do circo, mas se a informação vazar, a parede é lona."
+
+A manhã parece um pouco mais fria por um instante.
+
+"Qual linha você vai defender antes que eu escreva meu nome?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **07:04 da manhã seguinte ao Benefício**. Ren acompanhou Silva até a mensageira de Tyr. A Casa de Tyr recebeu confirmações de Luath e Maerra e agora pede confirmação formal de Silva como guardiã atual informada dos Vell. Silva aceita confirmar a guarda imediata, mas a resposta pode pedir resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual.
+
+**Jogador**

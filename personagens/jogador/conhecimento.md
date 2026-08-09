@@ -1852,6 +1852,15 @@ Ponto morto da Silver Lily:
 * Jack e Silva concordam que Nera, Tavin, o livro e a história dos Vell não entram na mesa de negociação;
 * Jack pediu que Ren defina o que Kage não faz por dinheiro antes de ele vender qualquer ausência, palavra ou porta;
 * hora aproximada: 06:45 da manhã seguinte ao Benefício.
+* Ren definiu que Kage só se apresenta em tenda controlada pelo circo, com equipe presente, segurança identificada, antecedência, sem reunião social, sem fala obrigatória, sem exposição pessoal, sem intimidação privada e sem envolver os Vell;
+* Jack preparou resposta rígida ao camarote oeste: 40 PO pela primeira apresentação fechada curta, 20 PO adiantadas e custos de tenda, segurança e transporte por fora;
+* antes de Jack selar a resposta, uma mensageira de Tyr chegou à borda das carroças pedindo Silva Elkwood por assunto de lacre reservado;
+* Ren acompanhou Silva até a mensageira;
+* Ren ouviu que Tyr recebeu confirmação de Luath sobre a cópia parcial e as ações contra buscas ilegais;
+* Ren ouviu que Tyr recebeu confirmação de Maerra sobre o lacre, a abertura presenciada e a condição em que viu os Vell;
+* Tyr agora pede confirmação formal de Silva como guardiã atual informada dos Vell;
+* Silva aceita confirmar a guarda imediata, mas a resposta ainda precisa indicar se haverá resguardo em espera, transferência voluntária discreta para Tyr ou manutenção temporária no abrigo atual;
+* hora aproximada: 07:04 da manhã seguinte ao Benefício.
 
 Progressão:
 
