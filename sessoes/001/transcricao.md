@@ -1,7 +1,7 @@
 # Sessão 001
 
 Data real: 2026-08-04
-Data no mundo: 1372 DR, Ano da Magia Selvagem; data exata pendente
+Data no mundo: Midsummer, 1372 DR, Ano da Magia Selvagem
 Personagem: Ren Kagehira
 Local inicial: Ravens Bluff, Cais de Chegada
 Modo inicial de cena: interação

@@ -1,7 +1,7 @@
 # Sessão 002
 
 Data real: 2026-08-06
-Data no mundo: 1372 DR, Ano da Magia Selvagem; data exata pendente
+Data no mundo: início em 1 Eleasis, 1372 DR; data atual 3 Eleasis, 1372 DR, Ano da Magia Selvagem
 Personagem: Ren Kagehira
 Local inicial: Jack Mooney & Sons Circus, campos do circo, Ravens Bluff
 Modo inicial de cena: interação
@@ -2520,6 +2520,6 @@ Kethra encara Ren.
 
 "Você pôs coleira em Bram. Não pôs mordaça na cidade. Se quer que eu continue voltando para Narwhal, meu irmão precisa sumir melhor do que isso."
 
-Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:38 do dia seguinte ao Benefício**. Ren encontrou Kethra depois do turno e confirmou que ela não tinha cauda clara, mas a aproximação deixou uma lembrança possível em um aprendiz na lateral de Narwhal. Kethra visitou Colm no Lavadouro dos Três Tanques e agora confia em Ren de modo prático, não pleno. Ela revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a "hóspede", "homem da lua" e à versão preparada de **M. Harrow**; também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze foi retirada em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Um rapaz já farejou a frase ligada ao lavadouro, então Colm não está seguro ali por muito tempo.
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:38 de 3 Eleasis, 1372 DR**. Ren encontrou Kethra depois do turno e confirmou que ela não tinha cauda clara, mas a aproximação deixou uma lembrança possível em um aprendiz na lateral de Narwhal. Kethra visitou Colm no Lavadouro dos Três Tanques e agora confia em Ren de modo prático, não pleno. Ela revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a "hóspede", "homem da lua" e à versão preparada de **M. Harrow**; também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze foi retirada em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Um rapaz já farejou a frase ligada ao lavadouro, então Colm não está seguro ali por muito tempo.
 
 O que Ren faz?

@@ -2016,7 +2016,7 @@ Ponto morto da Silver Lily:
 * Kethra sabe que recados do homem dos botões de latão chegam a Narwhal sem que ele entre pela frente como convidado;
 * Colm não está seguro no quarto da lenha por muito tempo;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
-* hora aproximada: 17:38 do dia seguinte ao Benefício.
+* hora aproximada: 17:38 de 3 Eleasis, 1372 DR.
 
 Progressão:
 
