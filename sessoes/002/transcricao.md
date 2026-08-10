@@ -2458,9 +2458,9 @@ Kethra percebe Ren antes de chegar à porta dos fundos do lavadouro.
 
 Não se assusta como antes. Só para sob a sombra de roupas molhadas penduradas alto e diz, sem olhar direto:
 
-"Se veio me dizer que meu irmão está vivo, diga baixo."
+"Se veio falar do meu irmão, diga baixo."
 
-Ren mostra o suficiente do caderno de Bram para responder sem discurso.
+Ren mostra o suficiente do caderno de Bram para lembrar que a coleira ainda está na mão dele.
 
 Só então ela respira.
 
