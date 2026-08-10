@@ -1950,6 +1950,27 @@ Ponto morto da Silver Lily:
 * Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas;
 * Kethra deu uma pista de Narwhal: Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze;
 * hora aproximada: 13:35 do dia seguinte ao Benefício.
+* Ren melhorou seu disfarce com barro, poeira e capuz antes de entrar na loja de Bram Vask;
+* rolagem: Disfarce apressado com barro, poeira e capuz, d20 10 + 6 = 16 contra CD 12, sucesso;
+* rolagem: Entrar como devedor e manter Bram interessado, d20 5 contra CD 13, falha;
+* Bram percebeu que Ren não parecia devedor comum, mas ainda fechou a porta da loja;
+* rolagem: Golpe desarmado contra Noll, d20 20 + 6 = 26 contra CA 12, acerto crítico;
+* dano crítico contra Noll: 2d4 [3, 4] + 4 = 11 contundente;
+* rolagem: Rajada de Golpes contra Noll, d20 11 + 6 = 17 contra CA 12, acerto;
+* dano da Rajada de Golpes contra Noll: 1d4 [1] + 4 = 5 contundente;
+* Ren gastou 1 ki em Rajada de Golpes e deixou Noll inconsciente de forma não letal;
+* rolagem: Sangue-frio de Bram Vask após Noll cair, d20 11 + 1 = 12 contra CD 16, falha;
+* Bram cedeu à intimidação de Ren e entregou o acesso a Colm;
+* rolagem: Encontrar o livro de contas sob pressão, d20 16 + 3 = 19 contra CD 12, sucesso;
+* Ren tomou o caderno de contas de Bram Vask como alavanca prática;
+* o caderno registra contabilidade suja com marcas, iniciais, dias, apelidos, símbolos e números, não prova jurídica limpa por si só;
+* rolagem: Colm estar consciente e capaz de andar, d20 10 contra CD 10, sucesso;
+* Colm Dunn saiu vivo, fraco, machucado e capaz de andar pela passagem dos fundos;
+* Colm tem dois dedos inchados e tortos e uma tosse seca;
+* Bram Vask viu um agressor encapuzado, enlameado e perigoso, mas não o rosto de Ren;
+* Kethra ainda não sabe em cena que Colm saiu da loja;
+* Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
+* hora aproximada: 13:48 do dia seguinte ao Benefício.
 
 Progressão:
 

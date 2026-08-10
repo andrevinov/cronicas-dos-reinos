@@ -81,7 +81,7 @@ relacoes:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
     local: "Narwhal Manor; fonte seca atrás dos azulejos verdes no Lower Trades"
-    status: "em cena; possível fonte condicionada ao resgate de Colm"
+    status: "possível fonte; ainda não sabe em cena que Colm saiu vivo"
     atitude_para_ren: "assustada, desconfiada, pragmática"
     confianca: "nenhuma"
     respeito: "nenhum"
@@ -103,6 +103,10 @@ relacoes:
       Ravens Bluff como motivo para confiar. Ela exigiu prova concreta:
       Colm Dunn, seu irmão, deve sair vivo da loja de Bram Vask sem que ela
       pareça ter vendido ninguém.
+      Ren entrou na loja de Bram Vask com disfarce apressado, derrubou Noll
+      de forma não letal, intimidou Bram, tomou o caderno de contas sujas e
+      saiu pelos fundos com Colm vivo e capaz de andar. Kethra ainda não
+      recebeu essa notícia em cena.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -114,12 +118,77 @@ relacoes:
       - "Kethra revelou que Noll é o homem do lábio cortado e funciona como mão de Bram."
       - "Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas."
       - "Kethra disse que Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze."
+      - "Colm saiu vivo da loja de Bram Vask, mas Kethra ainda não sabe disso em cena."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
-      - "Ren não sabe se Colm é parente, amante, filho adulto, cúmplice ou nome usado contra ela."
-      - "A loja de penhores/cobrança pode ser apenas agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
-      - "Kethra ainda pode não comparecer ao ponto discreto se achar que foi vista com Ren ou se Colm piorar."
-      - "Kethra só deve aceitar papel de fonte recorrente se Colm sair vivo e se ela não parecer ter vendido informação."
+      - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
+      - "Bram pode tentar punir Kethra se concluir que ela vendeu informação."
+      - "Kethra só deve aceitar papel de fonte recorrente se acreditar que Colm saiu vivo sem expô-la."
+  colm_dunn:
+    nome: "Colm Dunn"
+    tipo: "irmão de Kethra Dunn / devedor explorado"
+    local: "passagem de fundos próxima à loja de Bram Vask, Lower Trades"
+    status: "vivo, fraco, consciente e capaz de andar"
+    atitude_para_ren: "assustado e confuso"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Colm foi mantido no alto da loja de Bram Vask como devedor por
+      dívida/trabalho. Ren o encontrou atrás de porta com trinco externo após
+      intimidar Bram e neutralizar Noll. Colm perguntou primeiro por Kethra,
+      demonstrando que não sabe ainda se foi salvo, vendido ou transferido
+      para outro cobrador.
+    informacoes_observadas_por_ren:
+      - "Colm tem dois dedos inchados e tortos."
+      - "Colm tem tosse seca."
+      - "Colm está fraco e assustado, mas consegue andar."
+      - "Colm sabe que Kethra é relevante para sua situação, mas ainda não sabe o papel de Ren."
+    riscos:
+      - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
+      - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
+      - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
+  bram_vask:
+    nome: "Bram Vask"
+    tipo: "agiota / dono de loja de penhores e cobrança"
+    local: "loja de Bram Vask, Lower Trades"
+    status: "vivo, intimidado, sem o caderno de contas"
+    atitude_para_ren: "amedrontada e hostil"
+    confianca: "nenhuma"
+    respeito: "medo prático"
+    motivo: >
+      Ren entrou em sua loja como suposto devedor, mas Bram percebeu que a
+      história não parecia comum. Ainda assim, fechou a porta para controlar a
+      conversa. Ren então derrubou Noll com velocidade suficiente para quebrar
+      o sangue-frio de Bram, exigiu Colm e tomou o caderno de contas sujas como
+      alavanca contra futuras cobranças sobre Colm ou a família de Kethra.
+    informacoes_observadas_por_ren:
+      - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
+      - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
+      - "Bram tem medo do caderno cair nas mãos de Tyr ou da Night Watch, mesmo que ele não seja prova jurídica limpa por si só."
+      - "Bram não viu o rosto de Ren, apenas um agressor encapuzado, enlameado e perigoso."
+    riscos:
+      - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
+      - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
+      - "Se Bram ligar Colm a Kethra como fonte da informação, ela corre risco direto."
+  noll:
+    nome: "Noll"
+    tipo: "capanga de Bram Vask / mão de cobrança"
+    local: "loja de Bram Vask, Lower Trades"
+    status: "inconsciente e respirando"
+    atitude_para_ren: "hostil quando acordar"
+    confianca: "nenhuma"
+    respeito: "medo possível após derrota"
+    motivo: >
+      Noll tentou assumir posição de ameaça durante a conversa na loja.
+      Ren o atacou de forma não letal e o derrubou com um golpe crítico
+      seguido de Rajada de Golpes, antes que Noll conseguisse reagir.
+    informacoes_observadas_por_ren:
+      - "Noll tem lábio cortado."
+      - "Noll funciona como mão violenta de Bram, não como dono."
+      - "Noll foi deixado inconsciente, respirando, sem ser morto."
+    riscos:
+      - "Quando acordar, Noll pode lembrar a silhueta, sotaque ou modo de luta do agressor."
+      - "Noll pode querer recuperar reputação pela violência se Bram permitir."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"

@@ -2157,3 +2157,117 @@ Kethra se afasta meio passo.
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:35 do dia seguinte ao Benefício**. Ren esperou discretamente na fonte seca atrás dos azulejos verdes e confirmou que o ponto, naquele momento, não estava sob observação clara. Kethra compareceu, mas a tentativa de enquadrar a ameaça maior de Ravens Bluff falhou: ela ainda não confia em Ren e exige prova concreta. Ela revelou que **Colm Dunn** é seu irmão, preso por dívida/trabalho no alto da loja de **Bram Vask**; o homem do lábio cortado se chama **Noll**. Kethra quer Colm vivo, ela mesma fora da suspeita, e Bram/Noll sem aprenderem que ela tem uma bolsa maior ou protetor. Em troca, deu uma pista: Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren irá melhorar um pouco seu disfarce: passar um pouco de barro no rosto, poeira na roupa, usar o capuz o tempo todo, evitando mostrar o rosto de toda forma.
+
+Ele entrará no local como alguém que precisa de dinheiro emprestado. Depois que ele tiver a atenção dos sujeitos, já lá dentro, portas fechadas, Ren falará que sabe que eles estão com um sujeito preso ali. Que esse sujeito deve dinheiro a Ren e a "seu grupo". E que precisa que Vask o entregue, pra queele possa extrair de Colm o dinheiro da dívida, "de um jeito ou de outro".
+
+Vask provavelmente verá Ren como concorrente, outro agiota. Vask provavelmente reclamará, dirá que ele o deve também, desconfiará da posição de Ren como agiota. Nessa hora, Ren atacará Noll com um ataque surpresa, gastando ki paraRajada de Golpes. A ideia é apagar Noll com tanta velocidade e precisão que Brask intimidado e entender que não pode vencer aquele oponente.
+
+Se Brask se intimidar, Ren explicará o futuro dele: eu deixo você continuar com seu negócio de agiotagem, sem interferências: eu só quero o rapaz. Tomo o livro onde ele guarda todas as dívidas (assumindo que esteja ali numa gaveta próxima) e falo que se eu ver ele entrando em contato com Colm ou qualquer pessoa daquela família, aquele livro iria pra Tyr ou pra Night Watch. Mas se ele não fizesse nada, ele ficaria guardado numa gaveta, e Brask só perderia um cliente. Falaria que isso é "cortesia" de Brask pra um novo colega de profissão recém-chegado.
+
+A idéia é não mostrar o rosto pra Brask, apagar seu colega, intimidá-lo e sair de lá com Colm. Caso Ren não intimide Brask, ele lança Silêncio e apaga Brask. Leva o seu livro, deixa um bilhete dizendo o que já disse: "se não quiser que esse livro caia nas mãos de alguma das justiças daqui, é só aceitar que perdeu esse devedor. Cortesia pra um novo colega de profissão na cidade."]
+
+**Narrador**
+
+Disfarce apressado com barro, poeira e capuz: d20 10 + 6 = 16 contra CD 12. Sucesso.
+Entrar como devedor e manter Bram interessado: d20 5 contra CD 13. Falha.
+Ataque com golpe desarmado contra Noll: d20 20 + 6 = 26 contra CA 12. Acerto crítico.
+Dano crítico: 2d4 [3, 4] + 4 = 11 contundente.
+Rajada de Golpes, segundo golpe desarmado contra Noll: d20 11 + 6 = 17 contra CA 12. Acerto.
+Dano: 1d4 [1] + 4 = 5 contundente.
+Sangue-frio de Bram Vask após Noll cair: d20 11 + 1 = 12 contra CD 16. Falha.
+Encontrar o livro de contas sob pressão: d20 16 + 3 = 19 contra CD 12. Sucesso.
+Colm estar consciente e capaz de andar: d20 10 contra CD 10. Sucesso.
+
+Barro no rosto. Poeira na roupa. Capuz baixo.
+
+O disfarce não transforma Ren em outro homem, mas quebra o que importa: contorno limpo, pele limpa, traço de estrangeiro rico, memória fácil. No reflexo sujo de uma janela escura, ele não parece um artista recém-aceito pelo circo. Parece um forasteiro de rua baixa que dormiu mal, comeu pior e aprendeu a não mostrar os olhos.
+
+A loja de Bram Vask cheira a cobre velho, couro molhado e vela barata.
+
+Por fora, é penhor: ferramentas sem dono claro, fivelas tortas, talheres desencontrados, um retrato de família virado para a parede. Por dentro, a organização é menos inocente. O balcão tem marcas de faca antigas. O chão perto da escada dos fundos está mais gasto que a entrada principal. A porta dos fundos fica trancada, mas não longe da mão de Bram.
+
+Bram Vask está atrás do balcão, colete marrom, anéis baratos, barba curta mal aparada. Noll, o homem do lábio cortado, fica a um passo da parede lateral, não como guarda de loja, mas como homem acostumado a interromper conversa com os punhos.
+
+Ren entra como quem precisa de dinheiro.
+
+A mentira não pega.
+
+Bram olha para a roupa, para o barro, para o capuz, depois para as mãos de Ren. Alguma coisa ali não combina com fome comum. Talvez postura. Talvez silêncio demais. Talvez o tipo de homem que não olha as mercadorias como quem precisa vendê-las.
+
+Mas ele ainda fecha a porta.
+
+Esse é o primeiro erro dele.
+
+"Então fala", Bram diz, sem gentileza. "Quanto, por quê, e quem garante?"
+
+Quando Ren menciona Colm, a temperatura da sala muda. Não é surpresa limpa. É reconhecimento feio.
+
+Bram inclina a cabeça.
+
+"Colm deve para mim."
+
+Noll desgruda da parede.
+
+"Colm deve para gente que veio antes de você pisar nesta rua", Bram continua. "Se tem grupo por trás desse capuz, ele que entre na fila."
+
+Ele não chega ao fim da ameaça.
+
+Ren se move.
+
+O primeiro golpe entra antes que Noll entenda que a conversa acabou. Dois nós dos dedos sobem pela linha curta da mandíbula, não para quebrar pescoço, mas para desligar corpo. O som é seco, carne contra osso, e Noll perde o eixo.
+
+O ki acende por dentro de Ren como fio esticado.
+
+Antes que o homem caia inteiro, Ren já está no segundo movimento. Um passo, giro curto, outro impacto no ponto certo. Noll bate de costas no balcão, derruba uma balança pequena e desaba no chão.
+
+Ele respira.
+
+Não levanta.
+
+Bram fica com a mão presa embaixo do balcão, onde provavelmente havia uma faca, sino, bastão ou outro recurso de covarde prático. Os olhos dele descem até Noll, sobem para o capuz enlameado de Ren, e param.
+
+"Quem é você?"
+
+A resposta de Ren não precisa ser nome.
+
+Ele explica o futuro de Bram Vask em voz baixa o bastante para não atravessar a madeira da loja. Bram continua com seu negócio. Continua cobrando de quem consegue cobrar. Perde um devedor e apenas um. Colm sai agora. A família de Colm não recebe visita, recado, aumento de dívida, lembrança ou punição.
+
+Bram tenta uma última vez:
+
+"E se eu disser que não?"
+
+Ren só olha para Noll.
+
+Bram entende.
+
+"Cima", ele diz, a boca amarga. "Porta da esquerda."
+
+O caderno está onde esse tipo de homem guarda o que precisa perto e nega existir: sob o balcão, atrás de um fundo baixo, junto de moedas pequenas, fichas riscadas e uma faca curta. Não é prova limpa para juiz honesto. É contabilidade suja. Iniciais. Marcas. Dias. Símbolos de rua. Apelidos. Números que sobem quando alguém sangra e descem quando alguém obedece.
+
+Mas para Bram, esse caderno vale medo.
+
+Ren toma o livro.
+
+Bram não impede.
+
+A escada dos fundos confirma Kethra: o corredor superior cheira a couro molhado, suor velho e madeira abafada. A porta da esquerda tem trinco externo. Quando abre, Colm Dunn está sentado no chão com os joelhos recolhidos, magro demais para a idade que aparenta. Dois dedos de uma mão estão inchados e tortos. Ele olha primeiro para o capuz, depois para o espaço atrás de Ren.
+
+"Kethra?"
+
+A voz vem arranhada, e logo depois a tosse seca dobra seu peito.
+
+Colm está consciente. Fraco, machucado, assustado. Mas consegue ficar em pé quando entende que a porta está aberta.
+
+Bram permanece embaixo. Noll permanece no chão. A porta dos fundos se abre para a passagem estreita atrás da loja, onde o ar tem cheiro de água parada, telha quente e couro úmido.
+
+Bram Vask não viu o rosto de Ren.
+
+Viu só um forasteiro encapuzado, enlameado, rápido demais, que levou Colm e o caderno.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **13:48 do dia seguinte ao Benefício**. Noll está inconsciente e respirando dentro da loja de Bram Vask. Bram está vivo, intimidado e sem o caderno de contas. Colm Dunn saiu vivo e capaz de andar pela passagem dos fundos, mas Kethra ainda não sabe disso.
+
+O que Ren faz?
