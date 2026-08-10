@@ -1986,6 +1986,22 @@ Ponto morto da Silver Lily:
 * o segundo sino já tocou;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
 * hora aproximada: 14:05 do dia seguinte ao Benefício.
+* Ren comprou um manto roto de mendigo por moeda baixa; o gasto não altera o total de PO;
+* rolagem: Preparar cobertura de mendigo sem fixar lembrança útil, d20 17 + 6 = 23 contra CD 13, sucesso;
+* rolagem: Encontrar ponto alto discreto para vigiar Vask, d20 3 + 3 = 6 contra CD 13, falha;
+* rolagem: Vigilância prolongada da loja de Bram Vask, d20 2 + 5 = 7 contra CD 14, falha;
+* rolagem: Aproximar-se como mendigo quando houve movimento na loja, d20 3 + 6 = 9 contra CD 15, falha;
+* a cobertura de mendigo funcionou e Ren não foi identificado;
+* Ren não encontrou bom ponto alto e precisou vigiar de ângulo baixo e parcial;
+* Bram não saiu em pessoa de modo claro durante a vigília;
+* Noll não apareceu em condição de caçar ninguém;
+* Ren não viu perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques;
+* Ren viu um movimento pequeno e mal confirmado perto dos fundos da loja, mas não conseguiu identificar se era recado, cliente, cúmplice ou ruído;
+* Ren se afastou quando sua aproximação como mendigo começou a gerar suspeita;
+* Colm segue escondido temporariamente no Lavadouro dos Três Tanques até pelo menos o escurecer;
+* Kethra ainda deve estar em Narwhal ou saindo de lá em breve, dependendo do fluxo do serviço;
+* Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
+* hora aproximada: 16:55 do dia seguinte ao Benefício.
 
 Progressão:
 

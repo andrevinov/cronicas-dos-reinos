@@ -2366,3 +2366,62 @@ O que Ren faz?
 **Jogador**
 
 [Ren aproveitará o tempo que Kethra ainda irá trabalhar (umas 3 horas pelo menos) para tentar fazer o seguinte: conseguir uma nova camada de roupa (pode ser o manto de um mendigo, pagando-lhe uma moeda por ele), encontrar um lugar alto e discreto e vigiar Vask de longe. Ele quer saber o que ele vai fazer nas próximas horas, se ele vai atrás de alguém, e observar de longe qualquer encontro. Se ele achar que é possível, ele tentará se aproximar discretamente como mendigo. No caso de qualquer suspeita, ele apenas se afastará.]
+
+**Narrador**
+
+Preparar cobertura de mendigo sem fixar lembrança útil: d20 17 + 6 = 23 contra CD 13. Sucesso.
+Encontrar ponto alto discreto para vigiar Vask: d20 3 + 3 = 6 contra CD 13. Falha.
+Vigilância prolongada da loja de Bram Vask: d20 2 + 5 = 7 contra CD 14. Falha.
+Aproximar-se como mendigo quando Vask sair: d20 3 + 6 = 9 contra CD 15. Falha.
+
+A roupa é a parte fácil.
+
+Não porque Ravens Bluff seja generosa, mas porque miséria troca pele por moeda quando a moeda aparece sem pergunta. Ren encontra um homem encolhido sob a lateral de uma padaria fechada, com um manto roto demais para segurar chuva e bom o bastante para apagar forma. Uma moeda baixa muda de mão. Cobre ou prata pequena, nada que altere o total de peças de ouro de Ren.
+
+O manto vem com cheiro de fumaça velha, gordura fria e rua dormida. Perfeito.
+
+Por cima da poeira, do barro e do capuz, a nova camada muda Ren de forasteiro perigoso para mais um corpo que a cidade aprendeu a não enxergar. Ele curva um pouco os ombros, quebra o ritmo dos passos e guarda o caderno onde não parece haver nada que valha a pena tomar.
+
+O ponto alto, porém, não vem.
+
+Os telhados úteis ao redor da loja de Bram Vask são ruins de um jeito irritante: altos demais e expostos, baixos demais e cegos, ou com gente trabalhando perto de janelas que olham justamente para onde Ren precisaria subir. A melhor posição elevada exigiria mostrar silhueta por tempo demais.
+
+Ren não força.
+
+Escolhe um ponto pior: uma escada externa coberta, meio apodrecida, atrás de uma oficina de calhas e remendos, com vista parcial para a rua lateral da loja. Dá para ver a frente por ângulo quebrado. Dá para ver parte dos fundos quando ninguém passa com carroça ou cesto grande. Não dá para jurar tudo.
+
+As horas seguintes cobram esse erro.
+
+A loja de Bram fica fechada por tempo bastante para parecer prudência. Uma mulher bate na frente, espera, xinga baixo e vai embora. Um homem com avental de couro para na esquina, olha para a porta e decide não entrar. Duas vezes Ren vê sombra mexer atrás das frestas do balcão, mas não distingue Bram de outro corpo.
+
+Noll não aparece.
+
+Isso, pelo menos, Ren consegue notar.
+
+Perto da metade da tarde, a porta dos fundos abre por pouco tempo. Alguém pequeno demais para ser Bram sai ou passa rente à saída, quase engolido por um carregador com feixes de vara clara atravessando a rua no pior segundo possível. Há um movimento de mão. Talvez moeda. Talvez bilhete. Talvez nada além de gente pobre demais tentando não ser vista por gente pobre.
+
+Ren tenta se mover como mendigo para ganhar ângulo.
+
+Não funciona.
+
+Um aprendiz numa janela baixa olha tempo demais para o manto roto. Não olha como quem reconhece Ren. Olha como quem reconhece que aquele mendigo mudou de lugar com intenção. Ao mesmo tempo, uma tábua range sob o pé de Ren, e uma fresta da loja de Bram escurece como se alguém do lado de dentro tivesse se aproximado da madeira.
+
+Ren abandona a aproximação.
+
+Ele se afasta antes que a suspeita vire rosto.
+
+Depois disso, a vigília rende mais cansaço do que certeza. Bram não sai em pessoa pela frente. Ninguém que Ren consiga identificar claramente segue a rota de Kethra, a Rua da Cal ou o Lavadouro dos Três Tanques. Mas a tarde não fica limpa: houve pelo menos um movimento pequeno e mal visto perto da saída dos fundos, e Ren não conseguiu confirmar se era recado, cliente, cúmplice ou simples ruído da rua.
+
+Quando a luz começa a perder força entre as paredes estreitas do Lower Trades, Ren tem três certezas úteis e uma incerteza ruim.
+
+Bram não fez perseguição aberta.
+
+Noll não apareceu em condição de caçar ninguém.
+
+O disfarce de mendigo segurou bem o bastante para Ren não ser identificado.
+
+Mas algo pode ter saído daquela loja sem que Ren conseguisse ler.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **16:55 do dia seguinte ao Benefício**. Ren está sob cobertura de mendigo perto da área da loja de Bram Vask, com um ponto de observação ruim e parcial. Colm segue escondido no Lavadouro dos Três Tanques até pelo menos o escurecer. Kethra ainda deve estar em Narwhal ou saindo de lá em breve, dependendo do fluxo do serviço. Ren continua com o caderno de contas de Bram.
+
+O que Ren faz?

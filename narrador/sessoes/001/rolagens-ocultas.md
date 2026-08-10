@@ -600,3 +600,18 @@ Interpretação reservada:
 * ela chega cautelosa e atrasada por poucos minutos, depois de cumprir presença mínima em Narwhal;
 * não traz cauda intencional, mas continua com medo de ter sido vista na abordagem anterior;
 * a falha de Persuasão de Ren faz Kethra rejeitar explicações grandiosas sobre ameaça maior e exigir plano imediato para Colm.
+
+---
+
+## Reação imediata de Bram e Noll após o resgate de Colm
+
+Manter medo e evitar retaliação direta imediata (Bram Vask): d20 1 + 1 = 2 contra CD 12. Falha.
+
+Acordar e conseguir se mover depois da surra (Noll): d20 1 + 2 = 3 contra CD 10. Falha.
+
+Interpretação reservada:
+
+* Bram entra em pânico e tenta criar resposta indireta em vez de cumprir de modo inteligente a ameaça recebida;
+* Noll acorda mal e não consegue servir como perseguidor ou executor nas horas seguintes;
+* Bram não tem força imediata para perseguir Colm pessoalmente, mas pode acionar contato externo de modo desorganizado;
+* a vigilância ruim de Ren permite que apenas um sinal incompleto desse movimento apareça publicamente.

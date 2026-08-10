@@ -187,7 +187,7 @@ relacoes:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"
     local: "loja de Bram Vask, Lower Trades"
-    status: "vivo, intimidado, sem o caderno de contas"
+    status: "vivo, intimidado, sem o caderno de contas; sob vigilância parcial de Ren até 16:55"
     atitude_para_ren: "amedrontada e hostil"
     confianca: "nenhuma"
     respeito: "medo prático"
@@ -197,20 +197,30 @@ relacoes:
       conversa. Ren então derrubou Noll com velocidade suficiente para quebrar
       o sangue-frio de Bram, exigiu Colm e tomou o caderno de contas sujas como
       alavanca contra futuras cobranças sobre Colm ou a família de Kethra.
+      Depois, Ren comprou um manto roto, assumiu cobertura de mendigo e vigiou
+      a loja por quase três horas, mas não encontrou ponto alto bom e teve
+      leitura parcial. Bram não saiu em pessoa de modo claro. Ren não viu
+      perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três
+      Tanques, mas viu movimento pequeno e mal confirmado perto dos fundos da
+      loja.
     informacoes_observadas_por_ren:
       - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
       - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
       - "Bram tem medo do caderno cair nas mãos de Tyr ou da Night Watch, mesmo que ele não seja prova jurídica limpa por si só."
       - "Bram não viu o rosto de Ren, apenas um agressor encapuzado, enlameado e perigoso."
+      - "Após o resgate de Colm, Bram não saiu em pessoa de modo claro durante quase três horas de vigília parcial de Ren."
+      - "Ren não viu perseguição aberta saindo da loja rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques."
+      - "Houve movimento pequeno e mal confirmado perto dos fundos da loja, mas Ren não identificou natureza, destinatário ou ligação com Bram."
     riscos:
       - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
       - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
       - "Se Bram ligar Colm a Kethra como fonte da informação, ela corre risco direto."
+      - "A vigília ruim de Ren deixa aberta a possibilidade de Bram ter acionado alguém indiretamente."
   noll:
     nome: "Noll"
     tipo: "capanga de Bram Vask / mão de cobrança"
     local: "loja de Bram Vask, Lower Trades"
-    status: "inconsciente e respirando"
+    status: "última confirmação pública: inconsciente e respirando; não visto durante a vigília"
     atitude_para_ren: "hostil quando acordar"
     confianca: "nenhuma"
     respeito: "medo possível após derrota"
@@ -222,6 +232,7 @@ relacoes:
       - "Noll tem lábio cortado."
       - "Noll funciona como mão violenta de Bram, não como dono."
       - "Noll foi deixado inconsciente, respirando, sem ser morto."
+      - "Noll não apareceu em condição de caçar ninguém durante a vigília parcial de Ren."
     riscos:
       - "Quando acordar, Noll pode lembrar a silhueta, sotaque ou modo de luta do agressor."
       - "Noll pode querer recuperar reputação pela violência se Bram permitir."
