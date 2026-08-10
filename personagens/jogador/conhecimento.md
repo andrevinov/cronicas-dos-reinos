@@ -1971,6 +1971,21 @@ Ponto morto da Silver Lily:
 * Kethra ainda não sabe em cena que Colm saiu da loja;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
 * hora aproximada: 13:48 do dia seguinte ao Benefício.
+* Ren tentou interceptar Kethra pelo caminho reverso que conhecia;
+* rolagem: Escolher ponto de interceptação na rota de Kethra, d20 1 + 3 = 4 contra CD 11, falha;
+* Kethra usou uma passagem coberta diferente e quase alcançou a última curva antes da loja de Bram;
+* rolagem: Mover Colm pela rota curta sem chamar atenção, d20 11 + 6 = 17 contra CD 13, sucesso;
+* Ren e Colm não atraíram observadores úteis no deslocamento curto;
+* Kethra viu Colm vivo antes de entrar na loja;
+* Ren mostrou a Kethra o caderno de contas de Bram Vask;
+* Kethra avaliou que o caderno não acaba com Bram, mas põe uma coleira nele por enquanto;
+* Kethra orientou Ren a levar Colm aos fundos do **Lavadouro dos Três Tanques**, na **Rua da Cal**;
+* se houver gente por perto, a frase de identificação para o lavadouro é: "sabão preto para pano azul";
+* **Sella Rove** aceitou esconder Colm temporariamente no quarto da lenha;
+* Kethra voltou para Narwhal para não ligar seu sumiço ao resgate;
+* o segundo sino já tocou;
+* Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
+* hora aproximada: 14:05 do dia seguinte ao Benefício.
 
 Progressão:
 

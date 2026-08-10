@@ -80,11 +80,11 @@ relacoes:
   kethra_dunn:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
-    local: "Narwhal Manor; fonte seca atrás dos azulejos verdes no Lower Trades"
-    status: "possível fonte; ainda não sabe em cena que Colm saiu vivo"
-    atitude_para_ren: "assustada, desconfiada, pragmática"
-    confianca: "nenhuma"
-    respeito: "nenhum"
+    local: "Narwhal Manor; rota entre Lower Trades e Narwhal"
+    status: "possível fonte; viu Colm vivo e voltou a Narwhal"
+    atitude_para_ren: "assustada, desconfiada, pragmática e agora operacionalmente aberta"
+    confianca: "baixa, mas real em termos práticos"
+    respeito: "prático e cauteloso"
     motivo: >
       Ren identificou Kethra como candidata a fonte interna por circular em
       corredores de lacres, velas e panos borrados de Narwhal Manor sem ser
@@ -105,8 +105,12 @@ relacoes:
       pareça ter vendido ninguém.
       Ren entrou na loja de Bram Vask com disfarce apressado, derrubou Noll
       de forma não letal, intimidou Bram, tomou o caderno de contas sujas e
-      saiu pelos fundos com Colm vivo e capaz de andar. Kethra ainda não
-      recebeu essa notícia em cena.
+      saiu pelos fundos com Colm vivo e capaz de andar.
+      Ao tentar interceptá-la antes da loja, Ren errou o melhor ponto e ela
+      quase chegou à curva final, mas ele conseguiu mover Colm sem atrair
+      atenção útil. Kethra viu Colm vivo, reconheceu o valor do caderno de
+      Bram e orientou Ren a escondê-lo no Lavadouro dos Três Tanques. Depois
+      voltou para Narwhal para não ligar seu sumiço ao resgate.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -118,35 +122,67 @@ relacoes:
       - "Kethra revelou que Noll é o homem do lábio cortado e funciona como mão de Bram."
       - "Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas."
       - "Kethra disse que Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze."
-      - "Colm saiu vivo da loja de Bram Vask, mas Kethra ainda não sabe disso em cena."
+      - "Colm saiu vivo da loja de Bram Vask."
+      - "Kethra viu Colm vivo antes de entrar na loja de Bram."
+      - "Kethra avaliou que o caderno de contas de Bram não elimina o risco, mas põe uma coleira temporária nele."
+      - "Kethra orientou Ren a levar Colm aos fundos do Lavadouro dos Três Tanques, na Rua da Cal."
+      - "Frase de identificação para o lavadouro se houver gente por perto: 'sabão preto para pano azul'."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
       - "Bram pode tentar punir Kethra se concluir que ela vendeu informação."
-      - "Kethra só deve aceitar papel de fonte recorrente se acreditar que Colm saiu vivo sem expô-la."
+      - "Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela."
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "passagem de fundos próxima à loja de Bram Vask, Lower Trades"
-    status: "vivo, fraco, consciente e capaz de andar"
-    atitude_para_ren: "assustado e confuso"
-    confianca: "nenhuma"
-    respeito: "nenhum"
+    local: "quarto da lenha do Lavadouro dos Três Tanques, Rua da Cal"
+    status: "vivo, fraco, consciente, escondido temporariamente"
+    atitude_para_ren: "assustado, confuso e obediente por necessidade"
+    confianca: "muito baixa"
+    respeito: "baixo, misturado com medo"
     motivo: >
       Colm foi mantido no alto da loja de Bram Vask como devedor por
       dívida/trabalho. Ren o encontrou atrás de porta com trinco externo após
       intimidar Bram e neutralizar Noll. Colm perguntou primeiro por Kethra,
       demonstrando que não sabe ainda se foi salvo, vendido ou transferido
       para outro cobrador.
+      Depois de ver Kethra brevemente na rua, Colm obedeceu à orientação dela
+      e deixou Ren conduzi-lo ao Lavadouro dos Três Tanques. Sella Rove o
+      escondeu temporariamente no quarto da lenha.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
       - "Colm está fraco e assustado, mas consegue andar."
       - "Colm sabe que Kethra é relevante para sua situação, mas ainda não sabe o papel de Ren."
+      - "Colm viu Kethra viva e ouviu dela que não deve ir para casa, Narwhal ou Tyr pela porta da frente."
+      - "Colm está escondido no quarto da lenha do Lavadouro dos Três Tanques até pelo menos o escurecer."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
       - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
+      - "O esconderijo atual é temporário e depende da discrição de Sella Rove e do silêncio de Bram."
+  sella_rove:
+    nome: "Sella Rove"
+    tipo: "lavadeira / contato de Kethra"
+    local: "Lavadouro dos Três Tanques, Rua da Cal, Lower Trades"
+    status: "ativa; abrigando Colm temporariamente"
+    atitude_para_ren: "desconfiada e prática"
+    confianca: "nenhuma"
+    respeito: "nenhum"
+    motivo: >
+      Kethra indicou Sella Rove como pessoa capaz de esconder Colm por algumas
+      horas nos fundos do Lavadouro dos Três Tanques. Sella aceitou Colm no
+      quarto da lenha após reconhecer a senha indireta e o peso do caderno de
+      Bram Vask, mas não fez perguntas abertas.
+    informacoes_observadas_por_ren:
+      - "Sella Rove é uma mulher de braços fortes e cabelo grisalho preso."
+      - "Ela controla ou trabalha nos fundos do Lavadouro dos Três Tanques."
+      - "A frase 'sabão preto para pano azul' funciona como identificação ligada a Kethra."
+      - "Sella aceitou esconder Colm temporariamente no quarto da lenha."
+    riscos:
+      - "Sella não é aliada de Ren; sua disposição vem da ligação com Kethra."
+      - "O lavadouro é lugar de trabalho, não fortaleza."
+      - "Se muita gente associar Colm ao lavadouro, Sella pode expulsá-lo ou buscar ajuda própria."
   bram_vask:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"

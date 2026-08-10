@@ -2271,3 +2271,98 @@ Viu só um forasteiro encapuzado, enlameado, rápido demais, que levou Colm e o 
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **13:48 do dia seguinte ao Benefício**. Noll está inconsciente e respirando dentro da loja de Bram Vask. Bram está vivo, intimidado e sem o caderno de contas. Colm Dunn saiu vivo e capaz de andar pela passagem dos fundos, mas Kethra ainda não sabe disso.
 
 O que Ren faz?
+
+**Jogador**
+
+[Como Ren sabe o caminho que Kethra faz, ele se afasta da loja fazendo o caminho reverso dela, acreditando que irá encontrá-la. Se ela passar por alguma viela, houver alguma viela obrigatória pra chegar ali na loja de Vask, tão melhor: ele fica esperando-a ali, já que é questão de poucos minutos e Vask deve estar assustado o suficiente pra não perseguir. Assim que encontrar Kethra, ele seguirá as orientações dela sobre onde ir com Colm. E contará a Kethra que Vask não a incomodará mais. Se ela pedir certeza, ele mostrará o livro.]
+
+**Narrador**
+
+Escolher ponto de interceptação na rota de Kethra: d20 1 + 3 = 4 contra CD 11. Falha.
+Mover Colm pela rota curta sem chamar atenção: d20 11 + 6 = 17 contra CD 13. Sucesso.
+
+Ren conhece o caminho que Kethra fez antes.
+
+Mas não conhece o caminho que ela escolhe quando está com medo.
+
+Ele puxa Colm para longe da porta dos fundos, passa pela passagem estreita, cruza duas sombras de telhado e escolhe uma boca de viela onde, pela lógica, Kethra deveria aparecer antes de virar para a loja. Colm acompanha, mas cada passo dele tem atraso. Uma mão no muro. Uma respiração presa. A tosse tentando sair e sendo engolida à força.
+
+Ninguém fixa os dois.
+
+Um homem com saco de carvão passa pela rua maior sem olhar para dentro. Uma mulher bate tapete numa janela alta. Dois meninos correm atrás de uma roda quebrada e somem antes de notar qualquer coisa útil. O capuz, a pressa contida e o corpo de Colm colado à parede viram apenas mais uma miséria pequena do Lower Trades.
+
+Então o sino começa a marcar o segundo toque.
+
+E Kethra não aparece pela viela escolhida.
+
+A falha custa minutos, não sangue. Ren percebe o erro quando vê movimento na rua mais adiante: Kethra vindo por uma passagem coberta entre duas casas baixas, quase na última curva antes da loja de Bram. Ela trocou de rota. Talvez por cautela. Talvez por hábito. Talvez porque nunca usa o mesmo caminho duas vezes quando vai pagar medo.
+
+Ela vê Colm antes de ver Ren.
+
+O rosto dela perde cor.
+
+"Colm."
+
+O nome sai quase sem som.
+
+Colm tenta responder, mas a tosse vem primeiro. Kethra dá dois passos, para no terceiro e olha por cima do ombro para a rua da loja. O gesto é instinto: amor puxando para frente, sobrevivência puxando de volta.
+
+"Não aqui", ela diz.
+
+Ela não abraça o irmão. Ainda não. Só segura o pulso dele por um instante, como quem confirma que não é cadáver, não é truque, não é febre.
+
+Ren diz que Vask não a incomodará mais.
+
+Kethra olha para o capuz enlameado.
+
+"Como você sabe?"
+
+Quando Ren mostra o caderno, a expressão dela muda de novo. Não vira alegria. Vira cálculo. Os olhos correm por uma página aberta, reconhecem marcas, iniciais, sinais de dia e dívida. Ela fecha o livro com dois dedos, rápido, como se o papel pudesse morder.
+
+"Isso não mata Bram", ela diz. "Mas põe coleira nele. Por hoje. Talvez amanhã. Mais se ele tiver juízo."
+
+Ela olha para Colm.
+
+"Você não vai para casa."
+
+Colm engole seco.
+
+"Keth..."
+
+"Não vai", ela corta, e a voz treme só no fim. "Nem para Narwhal. Nem para Tyr pela porta da frente."
+
+Kethra se vira para Ren.
+
+"Rua da Cal. Lavadouro dos Três Tanques. Fundos, não frente. Peça Sella Rove se ela estiver sozinha. Se houver gente, diga só: sabão preto para pano azul. Ela vai entender que é coisa minha. Colm fica no quarto da lenha até escurecer."
+
+Ela toca de leve os dedos quebrados do irmão e recua antes que o gesto vire despedida longa demais.
+
+"Eu volto para Narwhal agora. Se eu sumir junto dele, Bram não precisa ser esperto para saber que fui eu. Se eu aparecer no serviço e ele ficar calado, ele perde só um devedor."
+
+Colm parece prestes a protestar. Kethra aperta o pulso dele uma vez.
+
+"Vai. Anda. Respira pelo nariz quando puder. E não fala meu nome em porta nenhuma se tiver ouvido demais por perto."
+
+Ren segue a orientação.
+
+O Lavadouro dos Três Tanques fica a poucas ruas dali, escondido atrás de uma fachada de tábuas pálidas e roupas penduradas que cheiram a cinza, sabão forte e água fervida. Pela frente, é só trabalho comum. Pelos fundos, uma porta baixa abre para um corredor de pedra úmida.
+
+Uma mulher de braços grossos e cabelo preso num nó cinza aparece com um pano molhado na mão. Os olhos dela descem para Colm, sobem para o capuz de Ren e ficam no caderno por um segundo longo quando ele aparece o bastante para confirmar que a mensagem tem peso.
+
+"Quarto da lenha", ela diz, sem perguntar mais. "Nada de tosse alta."
+
+Colm entra.
+
+Antes de desaparecer para dentro, ele olha para Ren como quem ainda não sabe se deve agradecer, temer ou apenas obedecer até entender o mundo de novo.
+
+Kethra já não está na rua quando Ren olha de volta.
+
+Ela voltou para Narwhal, levando no rosto a expressão de quem acabou de ganhar o irmão e perder qualquer ilusão de que isso acabou.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **14:05 do dia seguinte ao Benefício**. Colm Dunn está escondido temporariamente no quarto da lenha do **Lavadouro dos Três Tanques**, sob cuidado de **Sella Rove**. Kethra voltou para Narwhal para não ligar seu sumiço ao resgate. Ren continua com o caderno de contas de Bram Vask. O segundo sino já tocou.
+
+O que Ren faz?
+
+**Jogador**
+
+[Ren aproveitará o tempo que Kethra ainda irá trabalhar (umas 3 horas pelo menos) para tentar fazer o seguinte: conseguir uma nova camada de roupa (pode ser o manto de um mendigo, pagando-lhe uma moeda por ele), encontrar um lugar alto e discreto e vigiar Vask de longe. Ele quer saber o que ele vai fazer nas próximas horas, se ele vai atrás de alguém, e observar de longe qualquer encontro. Se ele achar que é possível, ele tentará se aproximar discretamente como mendigo. No caso de qualquer suspeita, ele apenas se afastará.]

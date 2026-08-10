@@ -18,15 +18,15 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Lower Trades / entorno de Narwhal Manor"
-  ponto_exato: "passagem de fundos próxima à loja de Bram Vask, Lower Trades"
-  descricao_operacional: "Após receber o conselho de Maerra, Ren voltou a observar Narwhal Manor enquanto Maerra colocou em curso uma ficha curta a Halessa, sem nomear Ren como ouvinte, alertando para o risco de Velis ter sido instruído antes da oitiva. O entorno da casa está mais alerta depois do roubo da pasta de Velis. Ren identificou Kethra Dunn, funcionária que circula por corredores de lacres, velas e panos borrados, e descobriu que Colm Dunn, irmão dela, estava preso por dívida/trabalho no alto da loja de Bram Vask. Depois do encontro na fonte seca, Ren entrou na loja com disfarce apressado de barro, poeira e capuz. A tentativa de parecer devedor não convenceu Bram totalmente, mas ele fechou a porta. Ren atacou Noll de modo não letal, gastou 1 ki em Rajada de Golpes e o deixou inconsciente. Bram perdeu o sangue-frio, entregou Colm e não viu o rosto de Ren. Ren tomou o caderno de contas sujas de Bram como alavanca e saiu pela passagem dos fundos com Colm vivo, fraco, consciente e capaz de andar. Kethra ainda não sabe em cena que Colm saiu."
+  ponto_exato: "fundos do Lavadouro dos Três Tanques, Rua da Cal, Lower Trades"
+  descricao_operacional: "Após receber o conselho de Maerra, Ren voltou a observar Narwhal Manor enquanto Maerra colocou em curso uma ficha curta a Halessa, sem nomear Ren como ouvinte, alertando para o risco de Velis ter sido instruído antes da oitiva. O entorno da casa está mais alerta depois do roubo da pasta de Velis. Ren identificou Kethra Dunn, funcionária que circula por corredores de lacres, velas e panos borrados, e descobriu que Colm Dunn, irmão dela, estava preso por dívida/trabalho no alto da loja de Bram Vask. Depois do encontro na fonte seca, Ren entrou na loja com disfarce apressado, derrubou Noll de modo não letal, intimidou Bram, tomou o caderno de contas sujas como alavanca e saiu com Colm. Ao tentar interceptar Kethra antes da loja, Ren errou o melhor ponto e ela quase chegou à curva final, mas Ren moveu Colm sem chamar atenção útil. Kethra viu Colm vivo, reconheceu o valor do caderno e orientou Ren a levá-lo aos fundos do Lavadouro dos Três Tanques, na Rua da Cal. Colm está escondido temporariamente no quarto da lenha sob cuidado de Sella Rove. Kethra voltou para Narwhal para não ligar seu sumiço ao resgate. O segundo sino já tocou."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
   periodo_do_dia: "início da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "13:48 do dia seguinte ao Benefício"
+  hora_aproximada: "14:05 do dia seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso."
@@ -515,6 +515,17 @@ recursos:
     - "Rolagem para Colm estar consciente e capaz de andar: 10 contra CD 10, sucesso"
     - "Colm Dunn saiu vivo e capaz de andar pela passagem dos fundos"
     - "Bram viu um agressor encapuzado e perigoso, mas não o rosto de Ren"
+    - "Rolagem para escolher ponto de interceptação na rota de Kethra: 4 contra CD 11, falha"
+    - "Ren errou o melhor ponto de interceptação e Kethra quase alcançou a última curva antes da loja"
+    - "Rolagem para mover Colm pela rota curta sem chamar atenção: 17 contra CD 13, sucesso"
+    - "Ren e Colm não atraíram observadores úteis no deslocamento curto"
+    - "Kethra viu Colm vivo antes de entrar na loja de Bram"
+    - "Ren mostrou o caderno de contas de Bram a Kethra"
+    - "Kethra julgou que o caderno põe uma coleira temporária em Bram, mas não encerra o risco para sempre"
+    - "Kethra orientou Ren a levar Colm ao Lavadouro dos Três Tanques, nos fundos, usando a frase 'sabão preto para pano azul' se houvesse gente por perto"
+    - "Colm Dunn está escondido temporariamente no quarto da lenha do Lavadouro dos Três Tanques, sob cuidado de Sella Rove"
+    - "Kethra voltou para Narwhal para não ligar seu sumiço ao resgate de Colm"
+    - "O segundo sino já tocou"
   exaustao: 0
 
 equipamento_em_posse:
@@ -555,7 +566,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir para onde levar Colm Dunn sem expor Kethra como fonte"
+    - "decidir o próximo movimento após esconder Colm Dunn no Lavadouro dos Três Tanques"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "não entrar de modo imprudente antes de entender se há crianças, adultos armados ou rota subterrânea"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
@@ -595,7 +606,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está na passagem de fundos próxima à loja de Bram Vask, no Lower Trades, com Colm Dunn vivo, fraco, consciente e capaz de andar. Noll está inconsciente e respirando dentro da loja. Bram Vask está vivo, intimidado e sem o caderno de contas, que Ren tomou como alavanca. Bram viu apenas um agressor encapuzado e enlameado, não o rosto de Ren. Kethra ainda não sabe em cena que Colm saiu. Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken. Hora aproximada: 13:48 do dia seguinte ao Benefício."
+  cena_atual: "Ren está nos fundos do Lavadouro dos Três Tanques, na Rua da Cal, Lower Trades. Colm Dunn está escondido temporariamente no quarto da lenha sob cuidado de Sella Rove. Kethra viu Colm vivo, reconheceu o valor do caderno de contas de Bram Vask e voltou para Narwhal para não ligar seu sumiço ao resgate. Bram continua vivo, intimidado e sem o caderno; Noll ficou inconsciente e respirando na loja. Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken. Hora aproximada: 14:05 do dia seguinte ao Benefício. O segundo sino já tocou."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"
