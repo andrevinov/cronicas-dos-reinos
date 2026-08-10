@@ -2075,3 +2075,85 @@ Ren fica com as oito peças ainda na mão ou perto demais dela. A janela é curt
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:10 do dia seguinte ao Benefício**. Ren abordou Kethra, mas a tentativa de parecer inofensivo e tranquilizá-la com ouro falhou. Ela não aceitou as 8 PO, não concordou plenamente com a oferta de proteção e interpretou parte da aproximação como possível nova pressão. Ainda assim, deixou uma abertura: **fonte seca atrás dos azulejos verdes**, quando o sino menor tocar antes do segundo sino. Kethra avisou que pagar diretamente os cobradores pode aumentar o preço. Ela voltou para o fluxo rumo a Narwhal.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren vai esperar discretamente na fonte seca. Próximo, fingindo estar fazendo alguma coisa. Se Kethra não vier, ele já sabe onde procurá-la. Ren não irá tentar nada violento: apenas segui-la e observa-la durante a negociação, se ela não vier. Se vier, ele checará se não há ninguém observado e explicará, sem se deter muito, que ela já sabe que alguém muito ruim chegou em Ravens Bluff, e que essa pessoa começará a sacudir a cidade em breve. E que eu estou aqui pra dar conta dela. Que preciso de aliados. Que posso oferecer proteção.]
+
+**Narrador**
+
+Esperar na fonte seca sem parecer emboscada: d20 18 + 6 = 24 contra CD 13. Sucesso.
+Checar observadores ao redor da fonte seca: d20 18 + 5 = 23 contra CD 14. Sucesso.
+Explicar a Kethra a ameaça maior e oferecer proteção: d20 4 contra CD 14. Falha.
+
+Ren não segue Kethra de volta até a porta de Narwhal.
+
+Isso, por si só, talvez salve a conversa.
+
+A fonte seca atrás dos azulejos verdes fica onde duas ruas pobres tentaram um dia fingir importância. Há uma parede baixa com azulejos rachados, quase todos verdes, alguns trocados por barro comum. No centro, uma bacia de pedra sem água guarda folhas, pontas de vela e três moedas de cobre antigas demais para valer o esforço de roubar.
+
+Ren encontra um lugar bom: perto o suficiente para ver a entrada da travessa, longe o bastante para não parecer homem esperando uma pessoa específica. Ajoelha perto da fivela de uma sandália, mexe no cadarço, depois se move para a sombra de um arco quebrado como alguém descansando pé cansado.
+
+Ninguém fixa o ponto.
+
+Um rapaz passa vendendo cordéis de oração baratos. Uma lavadeira atravessa com balde vazio. Um escriba gordo corta caminho reclamando sozinho de poeira. Nenhum deles marca a fonte, espera sinal ou olha duas vezes para o mesmo ângulo. Depois da falha anterior na rua, Ren não pode jurar que ninguém viu a primeira abordagem. Mas aqui, agora, o ponto está limpo.
+
+Kethra vem quando o sino menor já está perto.
+
+Não pela rua mais direta. Ela aparece por trás da parede de azulejos, sem tabuleiro, com as mangas ainda manchadas de cera. Para antes de entrar no espaço da fonte, como se estivesse decidindo se Ren é uma armadilha ruim ou apenas uma armadilha necessária.
+
+"Você falou meu nome na rua", ela diz.
+
+Não é cumprimento.
+
+Ren fala pouco, como prometeu. Diz que ela já sabe que alguém muito ruim chegou a Ravens Bluff; que essa pessoa vai sacudir a cidade em breve; que ele está ali para dar conta dela; que precisa de aliados; que pode oferecer proteção.
+
+Kethra escuta até o fim.
+
+E não compra.
+
+"Homem ruim chega todo dia", ela responde. "Homem ruim vai embora quando acha porto melhor. Homem ruim fica quando compra casa, guarda, cama, tinta e fome."
+
+Ela olha para a travessa por onde veio, depois para a bacia seca.
+
+"Você está falando de cidade. Eu estou falando de uma porta trancada em cima de uma loja de penhores."
+
+A frase corta o tamanho do mundo de volta ao tamanho de uma pessoa.
+
+"Colm é meu irmão." Agora a voz dela fica menor. "Não sabe ler ata. Mal sabe ler preço. Foi carregador de caixa leve até quebrar dois dedos. Pegou dinheiro para remédio, depois mais para comida, depois trabalhou para pagar, depois disseram que o trabalho só pagava juros. Agora ele dorme no alto da loja de Bram Vask."
+
+Bram Vask. O homem de colete marrom e anéis baratos.
+
+"O do lábio cortado chama Noll. Não é dono. É mão."
+
+Ela não se aproxima mais. Também não foge.
+
+"Eles querem nomes de Tyr porque alguém paga por nome fresco. Quem foi chamado. Quem entrou. Quem saiu sem passar pela frente. Qual selo foi usado. Se eu dou nome errado, Colm apanha. Se eu dou nome certo, alguém pior sabe que fui eu. Se eu pago as oito, eles perguntam de onde veio. Se eu apareço com protetor, eles sobem o preço ou vendem Colm para outro buraco."
+
+Kethra ergue os olhos para Ren.
+
+"Então não me diga que vai sacudir a cidade. Cidade sacode pobre todo dia."
+
+Há medo nela. Mas há inteligência também, e a inteligência é mais útil que gratidão.
+
+"Se você quer que eu seja ouvido dentro de Narwhal, primeiro prove que consegue resolver coisa pequena sem transformar em incêndio. Colm sai vivo. Eu volto para o serviço sem parecer que vendi ninguém. Bram Vask não aprende que eu tenho bolsa maior. Noll não aprende seu rosto."
+
+Ela puxa uma tira de pano velho do bolso, enrolada em torno de uma lasca de madeira. Não entrega na mão de Ren; deixa na borda da fonte.
+
+"A escada dos fundos da loja dá para um corredor com cheiro de couro molhado. A janela do alto abre para telhado baixo de telhas vermelhas. Colm tem uma tosse seca quando ri, mas não ri muito agora. Se ele estiver amarrado, foi hoje. Até ontem, era porta trancada e comida contada."
+
+Kethra respira uma vez, curta.
+
+"E uma coisa de Narwhal, para você não achar que vim sem moeda: Velis não voltou para a mesa dele depois de Tyr. Mas uma mulher de manto cinza-azulado mandou limpar a gaveta de areia, cera e panos do corredor treze. Não mandou queimar. Mandou tirar do prédio."
+
+Isso é pouco. Mas é pouco vindo de dentro.
+
+O sino menor toca.
+
+Kethra se afasta meio passo.
+
+"Segundo sino está perto. Se eu voltar de mãos vazias, eles cobram. Se eu não voltar, eles sobem para Colm. Se você for fazer algo, faça sem meu nome."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 31 PO, 9 shuriken**. Hora aproximada: **13:35 do dia seguinte ao Benefício**. Ren esperou discretamente na fonte seca atrás dos azulejos verdes e confirmou que o ponto, naquele momento, não estava sob observação clara. Kethra compareceu, mas a tentativa de enquadrar a ameaça maior de Ravens Bluff falhou: ela ainda não confia em Ren e exige prova concreta. Ela revelou que **Colm Dunn** é seu irmão, preso por dívida/trabalho no alto da loja de **Bram Vask**; o homem do lábio cortado se chama **Noll**. Kethra quer Colm vivo, ela mesma fora da suspeita, e Bram/Noll sem aprenderem que ela tem uma bolsa maior ou protetor. Em troca, deu uma pista: Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze.
+
+O que Ren faz?

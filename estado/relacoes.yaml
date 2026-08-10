@@ -80,9 +80,9 @@ relacoes:
   kethra_dunn:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
-    local: "Narwhal Manor; vista pela última vez perto de loja de penhores/cobrança no Lower Trades"
-    status: "em cena; abordada por Ren, mas não recrutada"
-    atitude_para_ren: "assustada, desconfiada, ainda não hostil"
+    local: "Narwhal Manor; fonte seca atrás dos azulejos verdes no Lower Trades"
+    status: "em cena; possível fonte condicionada ao resgate de Colm"
+    atitude_para_ren: "assustada, desconfiada, pragmática"
     confianca: "nenhuma"
     respeito: "nenhum"
     motivo: >
@@ -97,6 +97,12 @@ relacoes:
       estava com problemas e ofereceu 8 PO. A aproximação falhou em tranquilizar
       Kethra: ela não aceitou o ouro nem a proteção, mas também não chamou
       guarda e deixou uma abertura para encontro discreto.
+      Na fonte seca atrás dos azulejos verdes, Ren esperou sem parecer
+      emboscada e confirmou que o ponto não estava sob observação clara. Kethra
+      compareceu, mas não aceitou a explicação ampla sobre ameaça maior em
+      Ravens Bluff como motivo para confiar. Ela exigiu prova concreta:
+      Colm Dunn, seu irmão, deve sair vivo da loja de Bram Vask sem que ela
+      pareça ter vendido ninguém.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -104,11 +110,16 @@ relacoes:
       - "Os cobradores ameaçaram alguém chamado Colm."
       - "Kethra avisou que pagar diretamente os cobradores pode aumentar o preço."
       - "Kethra mencionou a fonte seca atrás dos azulejos verdes como possível ponto discreto quando o sino menor tocar antes do segundo sino."
+      - "Kethra revelou que Colm Dunn é seu irmão e está preso por dívida/trabalho no alto da loja de Bram Vask."
+      - "Kethra revelou que Noll é o homem do lábio cortado e funciona como mão de Bram."
+      - "Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas."
+      - "Kethra disse que Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "Ren não sabe se Colm é parente, amante, filho adulto, cúmplice ou nome usado contra ela."
       - "A loja de penhores/cobrança pode ser apenas agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
       - "Kethra ainda pode não comparecer ao ponto discreto se achar que foi vista com Ren ou se Colm piorar."
+      - "Kethra só deve aceitar papel de fonte recorrente se Colm sair vivo e se ela não parecer ter vendido informação."
   pell:
     nome: "Pell"
     tipo: "mensageiro local"

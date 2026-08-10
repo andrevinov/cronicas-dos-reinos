@@ -587,3 +587,16 @@ Interpretação reservada:
 * o fechamento controlado do circo, o recolhimento das lonas, a ronda normal e o filtro de Jack/Silva impedem aproximação clara;
 * Ren não percebe sinal anormal antes de dormir;
 * a noite pode render descanso longo sem interrupção aberta.
+
+---
+
+## Kethra comparece à fonte seca
+
+Kethra consegue comparecer apesar da pressão: d20 11 + 1 = 12 contra CD 12. Sucesso.
+
+Interpretação reservada:
+
+* Kethra comparece porque precisa de saída para Colm, não porque confia em Ren;
+* ela chega cautelosa e atrasada por poucos minutos, depois de cumprir presença mínima em Narwhal;
+* não traz cauda intencional, mas continua com medo de ter sido vista na abordagem anterior;
+* a falha de Persuasão de Ren faz Kethra rejeitar explicações grandiosas sobre ameaça maior e exigir plano imediato para Colm.

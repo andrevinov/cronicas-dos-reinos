@@ -1937,6 +1937,19 @@ Ponto morto da Silver Lily:
 * Kethra avisou que pagar diretamente os cobradores pode aumentar o preço;
 * Kethra não chamou guarda e deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino;
 * hora aproximada: 13:10 do dia seguinte ao Benefício.
+* Ren esperou discretamente na fonte seca atrás dos azulejos verdes;
+* rolagem: Esperar na fonte seca sem parecer emboscada, d20 18 + 6 = 24 contra CD 13, sucesso;
+* rolagem: Checar observadores ao redor da fonte seca, d20 18 + 5 = 23 contra CD 14, sucesso;
+* Ren confirmou que o ponto da fonte, naquele momento, não estava sob observação clara;
+* Kethra compareceu antes do segundo sino;
+* rolagem: Explicar a Kethra a ameaça maior e oferecer proteção, d20 4 contra CD 14, falha;
+* Kethra não aceitou a explicação ampla sobre ameaça maior em Ravens Bluff como base de confiança;
+* Kethra revelou que **Colm Dunn** é seu irmão e está preso por dívida/trabalho no alto da loja de **Bram Vask**;
+* Kethra revelou que **Noll** é o homem do lábio cortado e funciona como mão de Bram;
+* Kethra quer Colm vivo, ela própria fora de suspeita e Bram/Noll sem aprenderem que ela tem bolsa maior ou protetor;
+* Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas;
+* Kethra deu uma pista de Narwhal: Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze;
+* hora aproximada: 13:35 do dia seguinte ao Benefício.
 
 Progressão:
 
