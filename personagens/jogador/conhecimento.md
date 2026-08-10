@@ -2002,6 +2002,21 @@ Ponto morto da Silver Lily:
 * Kethra ainda deve estar em Narwhal ou saindo de lá em breve, dependendo do fluxo do serviço;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
 * hora aproximada: 16:55 do dia seguinte ao Benefício.
+* Ren encontrou Kethra depois do turno sem uma cauda clara sobre ela;
+* rolagem: Encontrar Kethra depois do turno sem chamar atenção útil, d20 7 + 6 = 13 contra CD 14, falha;
+* um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu;
+* rolagem: Checar se Kethra vem com cauda, d20 12 + 5 = 17 contra CD 14, sucesso;
+* rolagem: Transformar o resgate de Colm em confiança prática, d20 14 contra CD 12, sucesso;
+* Kethra visitou Colm no Lavadouro dos Três Tanques;
+* Sella Rove avisou que um rapaz já perguntou pela frase ligada ao lavadouro: "sabão preto para pano azul";
+* Kethra não ouviu o nome **Masao Hirasawa** em Narwhal;
+* Kethra ouviu referências a **"hóspede"**, **"homem da lua"** e à versão preparada de **M. Harrow**;
+* Kethra avalia que **Velis Rook** escreve, corrige, assina e treme, mas não parece mandante;
+* Kethra revelou que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros;
+* Kethra sabe que recados do homem dos botões de latão chegam a Narwhal sem que ele entre pela frente como convidado;
+* Colm não está seguro no quarto da lenha por muito tempo;
+* Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
+* hora aproximada: 17:38 do dia seguinte ao Benefício.
 
 Progressão:
 

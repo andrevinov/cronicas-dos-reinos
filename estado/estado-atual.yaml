@@ -17,19 +17,19 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Lower Trades / entorno de Narwhal Manor"
-  ponto_exato: "ponto baixo de observação parcial perto da loja de Bram Vask, Lower Trades"
-  descricao_operacional: "Após receber o conselho de Maerra, Ren voltou a observar Narwhal Manor enquanto Maerra colocou em curso uma ficha curta a Halessa, sem nomear Ren como ouvinte, alertando para o risco de Velis ter sido instruído antes da oitiva. Ren identificou Kethra Dunn e descobriu que Colm Dunn, irmão dela, estava preso por dívida/trabalho no alto da loja de Bram Vask. Ren entrou na loja com disfarce apressado, derrubou Noll de modo não letal, intimidou Bram, tomou o caderno de contas sujas como alavanca e saiu com Colm. Kethra viu Colm vivo, reconheceu o valor do caderno e orientou Ren a levá-lo ao Lavadouro dos Três Tanques, onde Sella Rove o escondeu temporariamente no quarto da lenha. Kethra voltou para Narwhal. Depois, Ren comprou um manto roto por moeda baixa, montou cobertura de mendigo e vigiou Bram por quase três horas. A cobertura segurou, mas Ren não encontrou ponto alto bom e a vigília foi parcial: Bram não saiu em pessoa, Noll não apareceu, não houve perseguição aberta a Kethra, Colm ou ao lavadouro, mas houve um movimento pequeno e mal visto perto dos fundos da loja que Ren não conseguiu confirmar."
+  area: "Lower Trades / Rua da Cal"
+  ponto_exato: "fundos do Lavadouro dos Três Tanques, quarto da lenha"
+  descricao_operacional: "Após a vigília parcial da loja de Bram Vask, Ren reencontrou Kethra Dunn depois do turno e confirmou que ela não tinha cauda clara, embora um aprendiz na lateral de Narwhal possa lembrar de um mendigo se movendo quando ela saiu. Kethra foi ao Lavadouro dos Três Tanques ver Colm. Sella Rove avisou que um rapaz já farejou a frase 'sabão preto para pano azul', sinal de que o esconderijo começou a ficar perigoso. Kethra agora confia em Ren de modo prático e revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow. Também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Colm não está seguro no lavadouro por muito tempo."
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
   data_exata: null
-  periodo_do_dia: "início da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "16:55 do dia seguinte ao Benefício"
+  periodo_do_dia: "fim da tarde seguinte ao Benefício da Lona Aberta"
+  hora_aproximada: "17:38 do dia seguinte ao Benefício"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm Dunn precisa ser movido ou protegido melhor antes que a sondagem ligada a Bram alcance o quarto da lenha."
 
 recursos:
   pontos_de_vida:
@@ -537,6 +537,18 @@ recursos:
     - "Ren não viu perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques"
     - "Ren viu movimento pequeno e mal confirmado perto dos fundos da loja, mas não conseguiu identificar se era recado, cliente, cúmplice ou ruído"
     - "Ren se afastou quando sua aproximação como mendigo começou a gerar suspeita"
+    - "Rolagem para encontrar Kethra depois do turno sem chamar atenção útil: 13 contra CD 14, falha"
+    - "Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu"
+    - "Rolagem para checar se Kethra vinha com cauda: 17 contra CD 14, sucesso"
+    - "Ren confirmou que Kethra não tinha cauda clara ao sair de Narwhal"
+    - "Rolagem para transformar o resgate de Colm em confiança prática: 14 contra CD 12, sucesso"
+    - "Kethra visitou Colm no Lavadouro dos Três Tanques"
+    - "Sella Rove avisou que um rapaz já perguntou pela frase 'sabão preto para pano azul'"
+    - "Kethra revelou que não ouviu o nome Masao em Narwhal"
+    - "Kethra ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow"
+    - "Kethra avalia que Velis Rook escreve, corrige, assina e treme, mas não parece mandante"
+    - "Kethra revelou que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros"
+    - "Colm Dunn não está seguro no quarto da lenha por muito tempo"
   exaustao: 0
 
 equipamento_em_posse:
@@ -578,7 +590,8 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir o próximo movimento após vigília parcial da loja de Bram Vask"
+    - "decidir como mover ou proteger melhor Colm Dunn antes que a sondagem ligada a Bram alcance o quarto da lenha"
+    - "decidir se segue a pista da gaveta de areia, cera e panos retirada de Narwhal rumo à rua dos tintureiros"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "não entrar de modo imprudente antes de entender se há crianças, adultos armados ou rota subterrânea"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
@@ -618,7 +631,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está sob cobertura de mendigo perto da loja de Bram Vask, no Lower Trades, após quase três horas de vigília parcial. A cobertura funcionou, mas o ponto de observação era ruim: Bram não saiu em pessoa de modo claro, Noll não apareceu em condição de caçar ninguém e Ren não viu perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques. Houve um movimento pequeno e mal confirmado perto dos fundos da loja que Ren não conseguiu identificar. Colm Dunn segue escondido temporariamente no quarto da lenha do Lavadouro dos Três Tanques sob cuidado de Sella Rove. Kethra ainda deve estar em Narwhal ou saindo de lá em breve. Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken. Hora aproximada: 16:55 do dia seguinte ao Benefício."
+  cena_atual: "Ren está nos fundos do Lavadouro dos Três Tanques com Kethra Dunn, Colm Dunn e Sella Rove. Kethra visitou Colm e agora confia em Ren de modo prático, mas avisou que não ouviu o nome Masao em Narwhal; ouviu 'hóspede', 'homem da lua' e a versão preparada de M. Harrow. Ela revelou que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Sella avisou que um rapaz já farejou a frase de identificação do lavadouro, então Colm não está seguro ali por muito tempo. Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken. Hora aproximada: 17:38 do dia seguinte ao Benefício."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

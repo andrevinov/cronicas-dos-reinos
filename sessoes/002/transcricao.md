@@ -2425,3 +2425,101 @@ Mas algo pode ter saído daquela loja sem que Ren conseguisse ler.
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **16:55 do dia seguinte ao Benefício**. Ren está sob cobertura de mendigo perto da área da loja de Bram Vask, com um ponto de observação ruim e parcial. Colm segue escondido no Lavadouro dos Três Tanques até pelo menos o escurecer. Kethra ainda deve estar em Narwhal ou saindo de lá em breve, dependendo do fluxo do serviço. Ren continua com o caderno de contas de Bram.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren vai encontrar Kethra de forma discreta depois que ela sair do trabalho. Se ela for ver o irmão, ele irá com ela. Ele vai tentar conversar com ela e extrair o que ela sabe sobre Velis Rook e seu envolvimento com Masao.]
+
+**Narrador**
+
+Encontrar Kethra depois do turno sem chamar atenção útil: d20 7 + 6 = 13 contra CD 14. Falha.
+Checar se Kethra vem com cauda: d20 12 + 5 = 17 contra CD 14. Sucesso.
+Transformar o resgate de Colm em confiança prática: d20 14 contra CD 12. Sucesso.
+
+Narwhal Manor não solta seus trabalhadores em fila limpa.
+
+As portas laterais cospem gente aos poucos: carregadores com caixas vazias, criadas com panos úmidos, um escriba jovem apertando rolos contra o peito como se papel pudesse fugir, um velho com balde de areia cinza. Kethra sai mais tarde do que Ren esperava, sem tabuleiro de velas, com as mangas lavadas às pressas e um embrulho pequeno preso contra o corpo.
+
+Ren se move quando ela se move.
+
+É quase limpo.
+
+Quase.
+
+Um aprendiz na lateral de Narwhal, jovem demais para entender tudo e velho o bastante para lembrar coisa estranha, olha para o mendigo de manto roto que deixa a parede no mesmo instante em que Kethra entra na rua. O olhar não fixa rosto. Não há alarme. Mas existe uma lembrança possível: uma sombra pobre que se mexeu junto com a mulher das velas.
+
+Kethra não vai direto para a Rua da Cal. Ela dobra duas vezes, para numa banca fechada, espera um grupo de lavadeiras passar e só então toma o caminho do Lavadouro dos Três Tanques. Ren mantém distância suficiente para não empurrar medo nas costas dela, e perto o bastante para ler a rua.
+
+Ninguém a segue de modo claro.
+
+Nenhum guarda de Narwhal. Nenhum homem de Bram. Nenhum capuz repetido. Se há olho, está distante ou parado demais para Ren separar do ruído comum.
+
+Kethra percebe Ren antes de chegar à porta dos fundos do lavadouro.
+
+Não se assusta como antes. Só para sob a sombra de roupas molhadas penduradas alto e diz, sem olhar direto:
+
+"Se veio me dizer que meu irmão está vivo, diga baixo."
+
+Ren mostra o suficiente do caderno de Bram para responder sem discurso.
+
+Só então ela respira.
+
+O Lavadouro dos Três Tanques está mais quente por dentro do que a rua. Vapor sobe das cubas, sabão preto gruda no ar e o chão de pedra úmida guarda pegadas de gente demais. Sella Rove abre a porta dos fundos com o mesmo rosto duro de antes, mas os olhos dela vão primeiro para Kethra, depois para Ren.
+
+"Um rapaz veio perguntar se aqui se lavava pano azul com sabão preto", Sella diz. "Mandei procurar o rio."
+
+Kethra fica imóvel.
+
+"Quando?"
+
+"Pouco antes da última troca de água."
+
+A expressão de Kethra não quebra. Fica mais estreita.
+
+"Bram mexeu."
+
+Sella leva os três pelo corredor baixo até o quarto da lenha. Colm está sentado sobre um cobertor dobrado, com uma tigela vazia ao lado e os dedos inchados apoiados no colo. Quando vê Kethra, tenta levantar rápido demais. A tosse vem primeiro.
+
+Dessa vez Kethra atravessa a distância.
+
+Não há abraço grande. Não ali. Não com porta fina, vapor e medo ao redor. Mas ela segura o rosto do irmão com as duas mãos por um instante, testa encostando na dele, e murmura alguma coisa que Ren não precisa ouvir.
+
+Depois ela volta a ser Kethra Dunn.
+
+"Você perguntou de Velis Rook", ela diz a Ren. "E do seu Masao."
+
+O nome estrangeiro sai errado na boca dela. Não por desprezo. Por não pertencer aos corredores que ela conhece.
+
+"Masao Hirasawa não é nome que ouvi em Narwhal. Se esse homem existe lá dentro, não deixam esse nome cair em chão de serviço."
+
+Ela baixa a voz.
+
+"O que ouvi é 'hóspede'. Às vezes 'homem da lua'. E ouvi gente demais fingindo que 'M. Harrow' sempre foi o nome certo."
+
+Colm olha de Kethra para Ren, sem entender tudo. Sella fica perto da porta, pano molhado na mão, escutando como quem não escuta.
+
+"Velis não manda nisso", Kethra continua. "Velis escreve, corrige, assina e treme. Isso não faz dele inocente. Faz dele pena na mão de gente com mesa maior. Antes de Tyr chamá-lo, ele já estava limpando caminho: anulação, correção, nome trocado, marca recebida em vez de marca feita. Depois que Tyr chamou, ele não voltou para a mesa até eu sair."
+
+Ela aponta para o próprio avental, onde ainda há uma mancha clara de cera.
+
+"Mas a mulher de manto cinza-azulado voltou a mandar. A gaveta de areia, cera e panos do corredor treze saiu do prédio. Não foi queimada ali. Foi escondida em cesto de roupa suja, com tira amarela no nó, levada para fora pela porta de serviço. Eu não vi o destino final. Vi a direção: rua dos tintureiros, descendo para o lado dos pátios onde ninguém pergunta por mancha."
+
+Kethra engole seco.
+
+"E uma coisa sobre Brass. O homem dos botões não entra pela frente de Narwhal como convidado. Mas recado dele chega. Quando chega, Velis fica com cara de homem que vai errar de propósito e torcer para chamarem de letra ruim."
+
+Ela olha para Colm. A informação seguinte parece custar mais.
+
+"Se você quer ouvido dentro de Narwhal, eu posso ouvir. Pouco. O que passa por vela, areia, pano, porta mal fechada. Mas Colm não pode ficar aqui até a noite como se Bram fosse dormir obediente. Se aquele rapaz veio farejar a frase, o quarto da lenha já começou a virar aposta."
+
+Sella confirma sem dramatizar:
+
+"Ele fica mais um pouco. Não fica quando os homens começarem a procurar lugar quente para beber e cobrar."
+
+Kethra encara Ren.
+
+"Você pôs coleira em Bram. Não pôs mordaça na cidade. Se quer que eu continue voltando para Narwhal, meu irmão precisa sumir melhor do que isso."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:38 do dia seguinte ao Benefício**. Ren encontrou Kethra depois do turno e confirmou que ela não tinha cauda clara, mas a aproximação deixou uma lembrança possível em um aprendiz na lateral de Narwhal. Kethra visitou Colm no Lavadouro dos Três Tanques e agora confia em Ren de modo prático, não pleno. Ela revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a "hóspede", "homem da lua" e à versão preparada de **M. Harrow**; também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze foi retirada em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Um rapaz já farejou a frase ligada ao lavadouro, então Colm não está seguro ali por muito tempo.
+
+O que Ren faz?
