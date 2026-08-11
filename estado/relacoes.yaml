@@ -81,8 +81,8 @@ relacoes:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
     local: "Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor"
-    status: "fonte prática potencial; visitou Colm vivo no lavadouro"
-    atitude_para_ren: "assustada, desconfiada, pragmática e agora operacionalmente aberta"
+    status: "fonte prática potencial; visitou Colm vivo no lavadouro e ouviu a história de Ren sobre Masao"
+    atitude_para_ren: "assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da ameaça"
     confianca: "baixa, mas real em termos práticos"
     respeito: "prático e cauteloso"
     motivo: >
@@ -117,6 +117,13 @@ relacoes:
       Lavadouro dos Três Tanques, ouviu de Sella que um rapaz já farejou a
       frase ligada ao esconderijo e aceitou tratar Ren como alguém útil, ainda
       que não plenamente confiável.
+      Ren contou a Kethra sobre Aiko, Masao Hirasawa, o selo e sua vingança,
+      sem revelar outros protegidos. Kethra acreditou na dor dele e no perigo
+      real ao redor de Narwhal, Brass, Velis e a lua, mas não aceitou a escala
+      de uma ameaça à cidade inteira sem provas mais visíveis. Ela não possui
+      parente viável no interior capaz de receber Colm agora, embora exista
+      sangue distante para o lado do Fire River. A colaboração dela continua
+      presa à segurança concreta de Colm.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -138,6 +145,10 @@ relacoes:
       - "Kethra avalia que Velis Rook escreve, corrige, assina e treme, mas não parece mandante."
       - "Kethra disse que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros."
       - "Kethra sabe que recados do homem dos botões de latão chegam a Narwhal sem que ele entre pela frente como convidado."
+      - "Kethra ouviu de Ren a história de Aiko, Masao Hirasawa, o selo e a vingança de Ren, mas não ouviu sobre outros protegidos dele."
+      - "Kethra não tem parente viável no interior capaz de receber Colm agora; há sangue distante para o lado do Fire River, mas nenhuma porta segura."
+      - "Kethra acredita que Masao é perigo real para Ren e para a trama que toca Narwhal, mas não foi convencida de que a cidade inteira esteja diante de um reino de terror."
+      - "Kethra aceita continuar ouvindo Narwhal se Colm receber uma solução prática antes que o lavadouro deixe de ser seguro."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
@@ -145,11 +156,12 @@ relacoes:
       - "Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela."
       - "Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu do turno."
       - "Se Colm permanecer no Lavadouro dos Três Tanques, a colaboração de Kethra pode quebrar por medo ou necessidade."
+      - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
     local: "quarto da lenha do Lavadouro dos Três Tanques, Rua da Cal"
-    status: "vivo, fraco, consciente, escondido temporariamente; precisa ser movido em breve"
+    status: "vivo, fraco, consciente, escondido temporariamente; precisa ser movido do quarto da lenha antes do escurecer de vez"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -166,6 +178,10 @@ relacoes:
       Colm a entender que Ren não era apenas outro cobrador, mas o esconderijo
       começou a ficar inseguro depois que um rapaz farejou a frase ligada a
       Sella.
+      Ren propôs tirar Colm da cidade amanhã, 4 Eleasis, por uma carroça comum.
+      Kethra não tem parente viável para recebê-lo, e Sella só oferece uma
+      janela ruim até antes da primeira luz, escondendo Colm atrás da caldeira
+      velha em vez do quarto da lenha.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -173,12 +189,15 @@ relacoes:
       - "Colm sabe que Kethra é relevante para sua situação, mas ainda não sabe o papel de Ren."
       - "Colm viu Kethra viva e ouviu dela que não deve ir para casa, Narwhal ou Tyr pela porta da frente."
       - "Colm está escondido no quarto da lenha do Lavadouro dos Três Tanques, mas o local deixou de ser seguro até o escurecer."
+      - "Colm diz que consegue andar, mas Kethra avalia que ele só consegue andar devagar."
+      - "Colm pode ser escondido atrás da caldeira velha até antes da primeira luz de 4 Eleasis, se Ren aceitar essa solução temporária."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
       - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
       - "O esconderijo atual é temporário e depende da discrição de Sella Rove."
       - "Um rapaz já perguntou pela frase ligada ao lavadouro, então Colm pode ser encontrado se permanecer ali por muito tempo."
+      - "Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança, fome ou doença."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"
@@ -196,17 +215,23 @@ relacoes:
       se ali se lavava pano azul com sabão preto. Ela desviou o rapaz, mas
       deixou claro que Colm não pode ficar ali quando a noite trouxer gente
       procurando lugar quente para beber e cobrar.
+      Após Ren propor uma saída de Ravens Bluff em 4 Eleasis, Sella ofereceu
+      uma solução ruim e temporária: mudar Colm do quarto da lenha para trás da
+      caldeira velha, sob lona de carvão e barril de cinza, somente até antes
+      da primeira luz.
     informacoes_observadas_por_ren:
       - "Sella Rove é uma mulher de braços fortes e cabelo grisalho preso."
       - "Ela controla ou trabalha nos fundos do Lavadouro dos Três Tanques."
       - "A frase 'sabão preto para pano azul' funciona como identificação ligada a Kethra."
       - "Sella aceitou esconder Colm temporariamente no quarto da lenha."
       - "Sella desviou um rapaz que perguntou pela frase 'pano azul com sabão preto'."
+      - "Sella pode esconder Colm atrás da caldeira velha até antes da primeira luz de 4 Eleasis, mas não depois."
     riscos:
       - "Sella não é aliada de Ren; sua disposição vem da ligação com Kethra."
       - "O lavadouro é lugar de trabalho, não fortaleza."
       - "Se muita gente associar Colm ao lavadouro, Sella pode expulsá-lo ou buscar ajuda própria."
       - "Sella pode retirar sua ajuda se Ren demorar a mover Colm ou trouxer violência para o lavadouro."
+      - "A ajuda de Sella para a noite é abrigo ruim, não proteção forte; tosse, perguntas ou homens adultos procurando Colm podem quebrar a cobertura."
   bram_vask:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"

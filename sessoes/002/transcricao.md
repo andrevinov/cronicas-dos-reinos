@@ -2523,3 +2523,88 @@ Kethra encara Ren.
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:38 de 3 Eleasis, 1372 DR**. Ren encontrou Kethra depois do turno e confirmou que ela não tinha cauda clara, mas a aproximação deixou uma lembrança possível em um aprendiz na lateral de Narwhal. Kethra visitou Colm no Lavadouro dos Três Tanques e agora confia em Ren de modo prático, não pleno. Ela revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a "hóspede", "homem da lua" e à versão preparada de **M. Harrow**; também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze foi retirada em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Um rapaz já farejou a frase ligada ao lavadouro, então Colm não está seguro ali por muito tempo.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren não pode usar Maerra, Silva, Jack ou até Tyr: ele já usou todas essas mãos e todas estão ocupadas. Levar mais alguém pra qualquer uma delas é sobrecarregar... e como Masao sequer fora confirmado, muito menos seu reino de terror tenha começado a ser implantado de forma visível, Ren tem pouquíssimos argumentos para convencer qualquer pessoa.
+
+"Vocês tem parentes no interior? Eu acho que o ideal é que seu irmão saia da cidade por um tempo, Kethra. Eu posso escolta-lo em segurança amanhã, se for o caso, em direção a alguma carroça que possa tira-lo daqui, temporariamente. Eu consigo uma proteção melhor pra ele quando nossa posição aqui na cidade estiver... mais fortalecida."
+
+Ren para, suspira. Entende que Kethra é de confiança, e ele tem que ser honesto sobre quem é e o que está acontecendo.
+
+Ren conta sua história. Fala sobre Masao, sobre quem ele é e o que deve estar pretendendo fazer com essa cidade.
+
+"Eu não sou um herói, Kethra. Não um desses cavaleiros puros e desinteressados que aparecem nas histórias. Eu tenho interesses, sim, e uma vingança pra tocar. Mas eu tenho certeza que os meus interesses e os interesses da cidade estão alinhados. Se vocês soubessem o tipo de homem que Masao é e o que ele vai fazer com essa cidade... entenderiam isso com mais clareza."
+
+Ele ainda não vai falar que tem outras pessoas a quem está protegendo.
+
+**Narrador**
+
+Parentes viáveis no interior: d20 4 contra CD 11. Falha.
+Honestidade com Kethra sobre Masao: d20 com vantagem [7, 8] -> 8 contra CD 13. Falha.
+
+O nome de Masao fica no quarto da lenha como fumaça que não encontra saída.
+
+Ren fala baixo, mas não há como transformar aquela história em coisa pequena. Aiko. O selo. A traição. O homem vindo do leste com disciplina bastante para matar, fugir, usar nomes, usar símbolos e talvez plantar raízes numa cidade que ainda nem aprendeu o perigo pelo nome certo. Kethra escuta sem interromper. Colm também escuta, embora partes da conversa passem por ele como palavras de febre. Sella fica perto da porta, a mão no pano molhado, o rosto virado para o corredor.
+
+Quando Ren termina, Kethra não responde de imediato.
+
+Ela olha primeiro para Colm. Depois para o caderno de Bram. Depois para Ren.
+
+"Sangue no interior, talvez", ela diz. "Porta, não."
+
+A resposta vem seca, sem teatro.
+
+"Gente da nossa mãe andava para o lado do Fire River. Um tio que fazia carvão morreu faz anos. Uma prima casou, mudou de nome e sumiu em serviço de lavoura. Pode existir alguém que ainda tenha nosso sangue em algum campo, sim. Não existe uma porta onde eu possa bater hoje e dizer: esconda meu irmão de cobrador, casa rica, homem de botões e estrangeiro de vingança."
+
+Colm baixa os olhos, como se a lista inteira pesasse nos dedos quebrados.
+
+"Carroça existe", Kethra continua. "Sempre existe carroça saindo antes da luz. Cinza, roupa fervida, cal, legumes, carvão. Gente pobre sai da cidade todo dia fingindo que não está fugindo. Mas parente seguro? Não."
+
+Ela volta ao outro assunto.
+
+"Eu acredito que você não inventou sua irmã."
+
+O nome não sai da boca dela. Não por desprezo. Por cuidado.
+
+"Acredito que esse Masao Hirasawa é perigoso para você. Acredito que há coisa podre passando por Narwhal, Red Sail, Brass, Velis e essa lua. Eu vi bastante para não rir disso."
+
+Então o olhar dela endurece.
+
+"Mas você está me pedindo para apostar meu irmão num futuro que eu ainda não vi. Ravens Bluff é cheia de homens dizendo que outro homem vai transformar a cidade em inferno. Alguns conseguem. Muitos só usam a frase para comprar obediência."
+
+Ela não diz que Ren mente. Isso talvez fosse mais simples.
+
+"Você salvou Colm. Isso pesa. Você tem o caderno de Bram. Isso pesa. A sua dor pesa. O seu juramento, para mim, pesa menos que os pés do meu irmão conseguindo andar até amanhã."
+
+Sella solta um som curto pelo nariz.
+
+"Amanhã é bonito", ela diz. "Hoje ainda não acabou."
+
+Ela aponta com o queixo para a parede fina do quarto da lenha.
+
+"Ele não fica aqui quando escurecer de vez. Foi aqui que perguntaram. Posso mudar o rapaz para trás da caldeira velha depois da última água, sob lona de carvão e barril de cinza. Lugar ruim. Quente demais primeiro, frio depois. Melhor que esta porta. Até antes da primeira luz de 4 Eleasis. Depois disso, meu lavadouro volta a ser lavadouro, não buraco de sumiço."
+
+Colm tenta firmar a voz.
+
+"Eu ando."
+
+Kethra fecha os olhos por meio segundo.
+
+"Devagar", ela corrige. "Você anda devagar."
+
+Depois olha para Ren de novo.
+
+"Se você consegue pôr ele numa carroça antes da primeira luz, e seguir até longe o bastante para não parecer só esquina virada, isso compra tempo. Não salva a vida inteira dele. Compra tempo."
+
+A palavra tempo parece ser a única moeda que todos ali ainda aceitam.
+
+"E se você quer que eu continue ouvindo Narwhal, eu ouço. Pouco. Vela, areia, pano, porta, recado. Não por heroísmo. Porque Colm respirou hoje por sua causa, e porque alguém está usando gente como Velis, Bram e Brass para pisar em gente pequena antes que a cidade enxergue a bota."
+
+Kethra respira fundo.
+
+"Mas eu não vou chamar sua vingança de guerra da cidade até a cidade me mostrar essa guerra com os próprios dentes."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:46 de 3 Eleasis, 1372 DR**. Kethra não tem parente viável no interior capaz de receber Colm agora. Ela acredita na dor de Ren e aceita que Masao é perigo real para ele e para a trama que toca Narwhal, mas não foi convencida da escala de uma ameaça à cidade inteira. Sella oferece uma solução ruim e temporária: tirar Colm do quarto da lenha e escondê-lo atrás da caldeira velha até antes da primeira luz de **4 Eleasis**, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída. Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver.
+
+O que Ren faz?

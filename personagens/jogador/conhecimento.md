@@ -2017,6 +2017,17 @@ Ponto morto da Silver Lily:
 * Colm não está seguro no quarto da lenha por muito tempo;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
 * hora aproximada: 17:38 de 3 Eleasis, 1372 DR.
+* Ren contou a Kethra sua história sobre Aiko, Masao Hirasawa, o selo e sua vingança, sem revelar que protege outras pessoas;
+* rolagem: Parentes viáveis no interior, d20 4 contra CD 11, falha;
+* Kethra não tem parente viável no interior capaz de receber Colm agora; existe sangue distante para o lado do Fire River, mas nenhuma porta segura;
+* rolagem: Honestidade com Kethra sobre Masao, d20 com vantagem [7, 8] -> 8 contra CD 13, falha;
+* Kethra acredita na dor de Ren e aceita que Masao é perigo real para Ren e para a trama que toca Narwhal, Brass, Velis e a lua;
+* Kethra não foi convencida da escala de uma ameaça à cidade inteira sem provas mais visíveis;
+* Sella pode mover Colm do quarto da lenha para trás da caldeira velha, sob lona de carvão e barril de cinza, até antes da primeira luz de 4 Eleasis;
+* depois disso, se Ren quiser tirar Colm da cidade, precisará organizar uma carroça comum e escoltar a saída;
+* Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver;
+* Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
+* hora aproximada: 17:46 de 3 Eleasis, 1372 DR.
 
 Progressão:
 

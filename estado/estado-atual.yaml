@@ -19,7 +19,7 @@ localizacao:
   cidade: "Ravens Bluff"
   area: "Lower Trades / Rua da Cal"
   ponto_exato: "fundos do Lavadouro dos Três Tanques, quarto da lenha"
-  descricao_operacional: "Após a vigília parcial da loja de Bram Vask, Ren reencontrou Kethra Dunn depois do turno e confirmou que ela não tinha cauda clara, embora um aprendiz na lateral de Narwhal possa lembrar de um mendigo se movendo quando ela saiu. Kethra foi ao Lavadouro dos Três Tanques ver Colm. Sella Rove avisou que um rapaz já farejou a frase 'sabão preto para pano azul', sinal de que o esconderijo começou a ficar perigoso. Kethra agora confia em Ren de modo prático e revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow. Também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Colm não está seguro no lavadouro por muito tempo."
+  descricao_operacional: "Após a vigília parcial da loja de Bram Vask, Ren reencontrou Kethra Dunn depois do turno e confirmou que ela não tinha cauda clara, embora um aprendiz na lateral de Narwhal possa lembrar de um mendigo se movendo quando ela saiu. Kethra foi ao Lavadouro dos Três Tanques ver Colm. Sella Rove avisou que um rapaz já farejou a frase 'sabão preto para pano azul', sinal de que o esconderijo começou a ficar perigoso. Kethra revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow. Também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Ren contou a Kethra sua história sobre Aiko, Masao e a vingança. Kethra acredita na dor de Ren e no perigo real ao redor de Narwhal, Brass, Velis e a lua, mas não foi convencida da escala de uma ameaça à cidade inteira. Ela não tem parente viável no interior para receber Colm agora. Sella oferece esconder Colm atrás da caldeira velha até antes da primeira luz de 4 Eleasis, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída. Colm não está seguro no lavadouro por muito tempo."
 
 tempo:
   ano_dr: 1372
@@ -32,10 +32,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 3
   periodo_do_dia: "fim da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "17:38 de 3 Eleasis"
+  hora_aproximada: "17:46 de 3 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual é 3 Eleasis."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm Dunn precisa ser movido ou protegido melhor antes que a sondagem ligada a Bram alcance o quarto da lenha."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm Dunn precisa ser movido para fora do quarto da lenha e escondido melhor antes do escurecer de vez; a janela oferecida por Sella dura só até antes da primeira luz de 4 Eleasis, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída."
 
 recursos:
   pontos_de_vida:
