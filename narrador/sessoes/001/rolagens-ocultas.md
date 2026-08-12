@@ -615,3 +615,21 @@ Interpretação reservada:
 * Noll acorda mal e não consegue servir como perseguidor ou executor nas horas seguintes;
 * Bram não tem força imediata para perseguir Colm pessoalmente, mas pode acionar contato externo de modo desorganizado;
 * a vigilância ruim de Ren permite que apenas um sinal incompleto desse movimento apareça publicamente.
+
+---
+
+## Antes da primeira luz de 4 Eleasis
+
+Manter Dent oculto até a saída da carroça (Dorra Hest): d20 3 + 3 = 6 contra CD 13. Falha.
+
+Alcançar os pátios antes da primeira luz (Resposta indireta de Bram): d20 14 + 1 = 15 contra CD 14. Sucesso.
+
+Chegar a Maerra sem chamar atenção (Ajuda discreta de Chauntea): d20 14 + 4 = 18 contra CD 12. Sucesso.
+
+Interpretação reservada:
+
+* a pessoa enviada por Silva alcança a Casa da Aurora Menor sem chamar atenção útil e entrega ajuda prática de Chauntea antes do amanhecer;
+* a resposta indireta de Bram alcança os pátios de saída antes da carroça de Dorra Hest partir;
+* Dorra não consegue manter Dent totalmente oculto até a saída limpa;
+* isso não precisa significar captura automática de Colm/Dent, mas a saída dele de Ravens Bluff deixa de ser limpa e passa a criar novo fio de risco envolvendo Bram, Dorra e os fornos de cal;
+* Ren não sabe disso ao acordar no circo; qualquer revelação futura deve vir por Kethra, Sella, Dorra, rumor dos pátios ou consequência visível.

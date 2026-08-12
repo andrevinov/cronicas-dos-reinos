@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Jack Mooney & Sons Circus"
-  ponto_exato: "perto da carroça verde, abraçado por Nera após falar com Silva Elkwood"
+  area: "pátios de saída de trabalhadores"
+  ponto_exato: "área das carroças de cal, onde a carroça de Dorra Hest estava antes da primeira luz"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -54,10 +54,17 @@ localizacao:
     Sil pela primeira vez e contou, em linhas gerais, que sete crianças foram
     resgatadas e estão vivas sob cuidado de Maerra. Silva pretende mandar ajuda
     discreta de Chauntea à Casa da Aurora Menor antes do amanhecer. Nera saiu da
-    carroça verde e abraçou Ren, extremamente preocupada. Colm/Dent segue
-    escondido sob a lona de Dorra Hest até a partida antes da primeira luz de
-    4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado
-    fisicamente por Ren.
+    carroça verde e abraçou Ren, extremamente preocupada. Ren a abraçou, beijou
+    discretamente, prometeu voltar e foi dormir no depósito de figurino velho.
+    Dormiu algumas horas sem completar descanso longo, mas fez repouso curto de
+    monge com centralização suficiente para recuperar ki. A ajuda discreta de Chauntea alcançou Maerra sem chamar
+    atenção útil. Ao acordar, Ren encontrou Nera sentada perto da entrada do
+    canto, com água e pão. Ren vestiu roupa de cidadão comum, explicou a Nera
+    que precisava checar Colm/Dent e Dorra Hest, e saiu para os pátios de saída
+    de trabalhadores. Chegou depois da partida das carroças de cal; a carroça de
+    Dorra não estava mais no local, e Ren não conseguiu confirmar se Colm/Dent
+    saiu em segurança, foi descoberto ou apenas já está na estrada. O ponto
+    morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren.
 
 tempo:
   ano_dr: 1372
@@ -69,11 +76,11 @@ tempo:
   dia_do_mes: 4
   dezena: 1
   dia_da_dezena: 4
-  periodo_do_dia: "madrugada de 4 Eleasis, após o Benefício da Lona Aberta"
-  hora_aproximada: "02:16 de 4 Eleasis"
+  periodo_do_dia: "amanhecer de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
+  hora_aproximada: "06:30 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, mas ainda sem ki, informou Silva sobre o resgate das sete crianças, e Nera o abraçou perto da carroça verde."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent, mas a carroça de Dorra já havia saído e ele não confirmou o destino de Colm."
 
 recursos:
   pontos_de_vida:
@@ -84,7 +91,7 @@ recursos:
     maximos: 4
     dado: "d8"
   ki:
-    atuais: 0
+    atuais: 4
     maximos: 4
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -192,6 +199,18 @@ recursos:
     - "Ren chamou Silva Elkwood de Sil pela primeira vez e contou por cima que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra"
     - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer"
     - "Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada"
+    - "Ren abraçou e beijou Nera discretamente antes de dormir"
+    - "Ren dormiu algumas horas no depósito de figurino velho, mas não completou descanso longo"
+    - "Ren completou descanso curto de monge durante o repouso no circo e recuperou ki"
+    - "a ajuda discreta de Chauntea enviada por Silva alcançou Maerra antes do amanhecer"
+    - "Ren acordou com Nera sentada perto da entrada do canto, com água e pão"
+    - "Ren ainda não tem notícia confirmada sobre Colm/Dent ou Dorra Hest"
+    - "Nera sabe que Ren foi aos pátios de saída conferir Colm/Dent e pretende avisar Silva"
+    - "Ler sinais da carroça de Dorra nos pátios: 12 contra CD 14, falha"
+    - "Notar atenção perigosa nos pátios: 11 contra CD 13, falha"
+    - "Ren chegou aos pátios depois da partida das carroças de cal"
+    - "a carroça de Dorra Hest não está mais nos pátios"
+    - "Ren não confirmou se Colm/Dent saiu em segurança, foi descoberto ou apenas já está na estrada"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"
@@ -777,12 +796,12 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "responder a Silva se trouxe alguém atrás e decidir quanto contar sobre Peta, Maerra e a oficina dos tintureiros"
-    - "descansar de forma segura e completar descanso curto de monge se quiser recuperar ki"
+    - "decidir como responder a Nera ao acordar no depósito de figurino velho"
+    - "decidir o próximo passo nos pátios de saída sem confirmação limpa sobre Colm/Dent"
     - "considerar que a Casa Velha do Primeiro Raio pode usar crianças como olheiros e não deve ser tratada como abrigo vazio"
-    - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se confia na saída comprada com Dorra"
+    - "descobrir futuramente, por fonte legítima, se Colm/Dent saiu de Ravens Bluff com Dorra Hest antes da primeira luz"
     - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
-    - "resolver a pista da gaveta de areia, cera e panos retirada de Narwhal rumo à rua dos tintureiros"
+    - "decidir como investigar a rota baixa/oficina dos tintureiros depois do resgate de Peta"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "proteger Peta e as outras crianças agora sob cuidado de Maerra"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
@@ -822,7 +841,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren voltou ao Jack Mooney & Sons Circus pela rota da carroça de remendos após resgatar Peta e entregá-la viva a Maerra. Na Casa da Aurora Menor, Maerra não reconheceu a marca do sol apagado com segurança, e Peta não conseguiu falar algo útil além de fragmentos: frio, embaixo, e que a mulher de vermelho não falava com ela. Ren dormiu pouco por cansaço, mas não completou descanso curto de monge e não recuperou ki. O Broche do Semblante Humilde expirou no caminho de volta e está gasto até o próximo amanhecer. Ren chegou ao circo sem cauda competente percebida. Silva Elkwood o interceptou antes da carroça verde e perguntou: 'Você trouxe alguém atrás?'. Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken. Hora aproximada: 02:10 de 4 Eleasis, 1372 DR."
+  cena_atual: "Ren acordou no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:05 de 4 Eleasis, após repouso curto de monge que recuperou seu ki para 4/4, mas sem completar descanso longo. Nera estava junto da entrada do canto com água e pão. Ren vestiu roupa de cidadão comum, avisou Nera que iria conferir Colm/Dent e Dorra Hest, e foi aos pátios de saída de trabalhadores. Chegou por volta de 06:30, depois da partida das carroças de cal. A carroça de Dorra Hest não está mais no local. Ren falhou em ler sinais conclusivos da carroça e em notar atenção perigosa nos pátios; não confirmou se Colm/Dent saiu em segurança, foi descoberto ou já está na estrada."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

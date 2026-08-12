@@ -2277,3 +2277,23 @@ Progressão:
 * Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada;
 * Ren segue com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 02:16 de 4 Eleasis, 1372 DR.
+* Ren abraçou e beijou Nera discretamente, prometendo voltar;
+* Nera aceitou deixá-lo dormir e disse que ouviu a promessa;
+* Silva aceitou o agradecimento de Ren e respondeu que ele deveria agradecer dormindo;
+* Ren dormiu algumas horas no depósito de figurino velho, atrás da arca dos estandartes;
+* o repouso não contou como descanso longo, mas contou como descanso curto de monge; Ren recuperou ki para 4/4;
+* Silva mandou ajuda discreta de Chauntea para Maerra antes do amanhecer;
+* Ren acordou com Nera sentada perto da entrada do canto, com água e pão;
+* Ren ainda não tem notícia confirmada sobre Colm/Dent ou Dorra Hest;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 06:05 de 4 Eleasis, 1372 DR.
+* Ren levantou, abraçou Nera, vestiu roupa de cidadão comum e explicou que precisava conferir se Colm/Dent saiu com Dorra Hest;
+* Nera comentou que sete moedas compram memória e espera que também tenham comprado silêncio;
+* Nera pretende avisar Silva para onde Ren foi;
+* rolagem: Ler sinais da carroça de Dorra nos pátios, d20 9 + 3 = 12 contra CD 14, falha;
+* rolagem: Notar atenção perigosa nos pátios, d20 6 + 5 = 11 contra CD 13, falha;
+* Ren chegou aos pátios de saída depois da partida das carroças de cal;
+* a carroça de Dorra Hest não está mais no local;
+* Ren não confirmou se Colm/Dent saiu em segurança, foi descoberto ou apenas já está na estrada;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 06:30 de 4 Eleasis, 1372 DR.

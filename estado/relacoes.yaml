@@ -176,8 +176,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "sob a lona da carroça de Dorra Hest, pátios de saída de trabalhadores"
-    status: "vivo, fraco, consciente, usando o nome Dent; aguardando saída de Ravens Bluff antes da primeira luz de 4 Eleasis"
+    local: "última posição conhecida por Ren: sob a lona da carroça de Dorra Hest, pátios de saída de trabalhadores"
+    status: "vivo, fraco e consciente na última vez que Ren o viu; situação após a primeira luz ainda não confirmada por Ren"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -200,8 +200,10 @@ relacoes:
       velha em vez do quarto da lenha.
       Ren então moveu Colm imediatamente para os pátios de saída, entregou seu
       manto roto como disfarce, deu a ele o nome de cobertura Dent e pagou 7 PO
-      a Dorra Hest para levá-lo aos fornos de cal do Fire River. Colm está sob
-      a lona da carroça até a partida antes da primeira luz.
+      a Dorra Hest para levá-lo aos fornos de cal do Fire River. A última
+      informação de Ren é que Colm/Dent estava sob a lona da carroça aguardando
+      a partida antes da primeira luz; ao amanhecer, Ren ainda não recebeu
+      confirmação sobre a saída.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -212,16 +214,16 @@ relacoes:
       - "Colm diz que consegue andar, mas Kethra avalia que ele só consegue andar devagar."
       - "Colm recebeu o nome de cobertura Dent."
       - "Colm está usando o manto roto de mendigo que era de Ren."
-      - "Colm está escondido sob a lona da carroça de Dorra Hest."
-      - "Dorra Hest aceitou levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis."
+      - "Última informação conhecida por Ren: Colm estava escondido sob a lona da carroça de Dorra Hest."
+      - "Dorra Hest aceitou levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis, mas Ren ainda não recebeu confirmação da saída."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
       - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
-      - "O esconderijo atual é temporário e depende da discrição de Dorra Hest até a partida."
+      - "A saída de Colm/Dent dependeu da discrição de Dorra Hest até a partida, mas Ren ainda não confirmou o resultado."
       - "Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a área dos pátios de carroças."
       - "Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança, fome ou doença."
-      - "Antes da partida, Colm ainda pode ser descoberto se alguém seguir a pista fraca dos pátios de carroças."
+      - "Se alguém seguiu a pista fraca dos pátios de carroças antes da primeira luz, Colm/Dent pode estar em risco sem que Ren saiba ainda."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"
@@ -270,7 +272,7 @@ relacoes:
     nome: "Dorra Hest"
     tipo: "chefe de carroça / capataz de trabalhadores dos fornos de cal"
     local: "pátios de saída de trabalhadores; rota dos fornos de cal do Fire River"
-    status: "ativa; aceitou pagamento para levar Colm/Dent para fora de Ravens Bluff"
+    status: "ativa; aceitou pagamento para levar Colm/Dent para fora de Ravens Bluff, saída ainda não confirmada por Ren"
     atitude_para_ren: "pragmática, desconfiada e comprada por utilidade imediata"
     confianca: "nenhuma"
     respeito: "baixo, mas reconhece dinheiro e decisão rápida"
@@ -284,7 +286,7 @@ relacoes:
     informacoes_observadas_por_ren:
       - "Dorra Hest comanda uma carroça de eixo duplo coberta por lona manchada de branco."
       - "A carroça leva trabalhadores e material para fornos de cal do Fire River."
-      - "Dorra sai antes da primeira luz de 4 Eleasis."
+      - "Dorra planejava sair antes da primeira luz de 4 Eleasis."
       - "Dorra aceitou 7 PO para levar Colm sob o nome Dent."
       - "Dorra não parece gentil; parece capaz de manter silêncio enquanto o pagamento compensar o risco."
     riscos:
@@ -397,7 +399,7 @@ relacoes:
   nera_vell:
     nome: "Nera Vell"
     tipo: "testemunha protegida / gravadora de selos"
-    local: "carroça verde de Silva Elkwood, Jack Mooney & Sons Circus"
+    local: "depósito de figurino velho, perto do canto de Ren; normalmente na carroça verde de Silva Elkwood"
     status: "sob proteção temporária de Silva Elkwood"
     atitude_para_ren: "assustada, grata, pragmática e emocionalmente implicada"
     confianca: "moderada em situação de crise"
@@ -502,7 +504,9 @@ relacoes:
       Após a incursão na Casa Velha e na oficina dos tintureiros, Nera percebeu
       o retorno de Ren por volta de 02:16 de 4 Eleasis, saiu da carroça verde
       contra a instrução de esperar e o abraçou com preocupação explícita ao
-      vê-lo vivo e exausto.
+      vê-lo vivo e exausto. Ren a abraçou, beijou discretamente e prometeu
+      voltar. Nera aceitou deixar Ren dormir e, pela manhã, foi conferir o
+      canto dele no depósito de figurino velho, levando água e pão.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -551,6 +555,8 @@ relacoes:
       - "Nera interpretou M. Harrow como possível nome de registro usado para dar corpo escrito à mentira sobre o 'oriental'."
       - "Nera viu Ren voltar da Casa Velha/rua dos tintureiros vivo, sem ki e exausto, depois do resgate das crianças."
       - "Nera abraçou Ren perto da carroça verde antes que ele fosse dormir."
+      - "Nera ouviu Ren prometer voltar e o deixou dormir."
+      - "Nera foi conferir Ren no depósito de figurino velho ao amanhecer, com água e pão."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -694,7 +700,9 @@ relacoes:
       apropriação cruel de símbolo ligado a amanhecer. Peta, em choque, só
       conseguiu dizer fragmentos: frio, embaixo, e que a mulher de vermelho não
       falava com ela. Maerra permitiu que Ren dormisse pouco, deu água e pão, e
-      indicou que poderá mandar palavra curta a Luath se necessário.
+      indicou que poderá mandar palavra curta a Luath se necessário. Antes do
+      amanhecer, recebeu ajuda discreta enviada por Silva/Chauntea, com pano,
+      comida simples e mãos caladas, sem chamar atenção útil.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
@@ -1015,7 +1023,8 @@ relacoes:
       foi seguido, chamou-a de Sil pela primeira vez e contou por cima que sete
       crianças foram resgatadas e estão sob cuidado de Maerra. Silva percebeu
       o cansaço extremo de Ren e decidiu mandar ajuda discreta de Chauntea à
-      Casa da Aurora Menor antes do amanhecer.
+      Casa da Aurora Menor antes do amanhecer. Ren agradeceu Silva por ajudar
+      Nera e Maerra; Silva respondeu que ele deveria agradecer dormindo.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1061,6 +1070,8 @@ relacoes:
       - "Silva ouviu Ren chamá-la de Sil pela primeira vez e não corrigiu o apelido."
       - "Silva sabe que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra."
       - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer."
+      - "Silva sabe que a ajuda discreta de Chauntea chegou a Maerra sem chamar atenção útil antes do amanhecer."
+      - "Silva mandou Ren dormir depois da incursão e não quer que ele aja sem recuperar o centro."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"

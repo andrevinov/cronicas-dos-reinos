@@ -4434,3 +4434,114 @@ Silva vira o rosto para a borda do acampamento, dando a eles a privacidade exata
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren informou Silva que não foi seguido e contou, em linhas gerais, que **sete crianças** foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra. Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer. **Nera apareceu da carroça verde e abraçou Ren**, extremamente preocupada. Hora aproximada: **02:16 de 4 Eleasis, 1372 DR**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren abraça Nera. Ri carinhoso, não porque deboche dela, mas porque pra ele, que pretendia apenas cumprir sua vingança e, talvez até morrer tentando, apaixonar-se por alguém, sentir carinho vindo de alguém, era algo que ele nunca esperou, quando saiu de sua terra. Ele sente que Nera o está curando... e que talvez sua missão seja mais valiosa ainda por isso.
+
+"Voltei. E voltarei sempre. Prometi que não ia te abandonar, não foi?"
+
+Em tão pouco tempo Ren formou um vínculo forte: ele sabe que ela a ama, e ele também a ama. Não mais que tudo, não mais que a vingança... ou talvez sim. Ele não saber dizer ainda. Ele só sabe que Nera e Tavin acabaram tornando-se pessoas a serem consideradas dentro de seu plano e, ao mesmo tempo, novas molas motoras para ser bem sucedido.
+
+Ren a beija, discretamente, lentamente. Alisa seu rosto, olha nos seus olhos.
+
+"Se eu não for dormir, Maerra bate em nós dois. Pode voltar pra carroça. Estou bem. De manhã pode me visitar no meu cantinho e conferir que estarei lá."
+
+E depois de se despedir, agradece Silva por ajudar Nera e Maerra. E vai dormir.
+
+**Narrador**
+
+Nera recebe o riso de Ren sem se afastar.
+
+No beijo, ela continua cuidadosa; não por falta de vontade, mas porque o corpo de Ren está dizendo coisas que a boca dele ainda tenta negociar. A mão dela sobe ao rosto dele no mesmo instante em que a dele toca o dela, e por alguns segundos o circo inteiro vira lona, madeira úmida, respiração baixa e a certeza pequena de que ele está ali.
+
+Quando Ren promete voltar sempre, Nera fecha os olhos.
+
+"Prometeu", ela responde. "Eu ouvi."
+
+Não soa como cobrança. Soa como alguém segurando uma corda com as duas mãos.
+
+Ao aviso sobre Maerra, ela quase sorri.
+
+"Então durma antes que eu precise escolher entre obedecer uma sacerdotisa de Lathander e uma clériga de Chauntea na mesma noite."
+
+Ela não tenta arrancar mais explicações. Só encosta a testa na dele por um instante curto, depois recua antes que Silva precise repetir a ordem.
+
+Silva aceita o agradecimento de Ren com um aceno seco.
+
+"Agradeça dormindo."
+
+O caminho até o canto de Ren no depósito de figurino velho parece mais longo do que deveria. As lonas dormem em volumes escuros. Um cavalo mexe a cabeça em algum cercado próximo. Alguém tosse atrás de uma carroça, vira de lado e volta a dormir.
+
+Ren chega ao canto atrás da arca dos estandartes.
+
+Dessa deixou um cobertor dobrado ali. Ou Silva mandou deixar. No circo, às vezes as duas coisas são indistinguíveis.
+
+O sono vem rápido.
+
+Não é descanso longo. A noite já foi quebrada demais, curta demais, suja demais. Mas, em algum ponto antes da luz cinza, o corpo de Ren encontra o hábito antigo: respiração baixa, mente recolhida, meia hora de centro entre um sono e outro. Não é noite reparadora. É o bastante para o ki voltar.
+
+A madrugada continua sem ele.
+
+Antes da primeira luz, alguém de Chauntea sai pelo lado discreto do circo com embrulho de pano, comida simples e mãos acostumadas a trabalho silencioso. A pessoa alcança a Casa da Aurora Menor sem criar rumor útil. Se alguém na cidade vê mais um trabalhador pobre atravessando rua fria antes do amanhecer, não guarda isso como história.
+
+Nenhuma notícia vem dos pátios de carroça. Isso, por si só, não diz nada. Gente como Dorra Hest não manda confirmação elegante depois de partir. Carroça pobre some no cinza da manhã e só vira notícia quando dá errado perto de alguém que ainda possa contar.
+
+Quando Ren acorda, a luz já é cinza atrás das frestas do depósito.
+
+Nera está sentada no chão perto da entrada do canto, não dentro demais para parecer invasão, não fora demais para fingir que veio por acaso. O xale está nos ombros. Há um copo de água ao lado dela e um pedaço de pão sobre pano limpo.
+
+"Estou conferindo", ela diz baixo.
+
+Do lado de fora, o circo começa a fazer seus ruídos pequenos de manhã: corda puxada, madeira rangendo, alguém chamando por água, um ajudante bocejando uma resposta incompreensível.
+
+Ren dormiu algumas horas, o bastante para não cair ao levantar, mas não o bastante para completar um descanso longo. O repouso contou como descanso curto de monge, com meditação suficiente para recuperar ki.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Ren dormiu no depósito de figurino velho por algumas horas e **não completou descanso longo**, mas completou um **descanso curto de monge** e recuperou ki. Silva mandou ajuda discreta de Chauntea para Maerra antes do amanhecer. Não há notícia confirmada sobre Colm/Dent ou Dorra Hest. Hora aproximada: **06:05 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?
+
+**Jogador**
+
+Ren levanta. Abraça Nera. Veste-se enquanto conversa com ela (ela olhando pro outro lado, rs), colocando suas roupas de cidadão comum. Faz um asseio muito rápido e explica pra Nera que precisa conferir pelo menos uma coisa pela manhã: se Colm conseguiu viajar com Dorra Hest, que o prometera fazer isso por 7 moedas. E parte em direção ao local das carruagens (acredito que esse horário é o horário de saída das carroças).
+
+**Narrador**
+
+Nera abraça Ren de volta e, quando ele começa a se vestir, vira o rosto com uma disciplina muito exagerada.
+
+"Estou olhando para a madeira", ela diz, séria demais. "A madeira está sendo muito interessante."
+
+A compostura dura até Ren explicar o nome de Colm, Dorra Hest e as sete moedas. Aí o rosto dela muda. Não para ciúme, nem para bronca. Para cálculo de risco.
+
+"Sete moedas compram memória", ela diz baixo. "Espero que tenham comprado silêncio também."
+
+Ela não tenta impedir Ren. Só entrega o pão e a água para ele comer e beber ao menos um pouco antes de sair. Quando ele passa pela entrada do depósito, Nera acrescenta:
+
+"Eu vou dizer a Silva para onde você foi. Antes que ela descubra por outra pessoa e venha me culpar."
+
+O asseio é rápido: água fria no rosto, cabelo preso, roupa de cidadão comum ajustada o bastante para não parecer figurino. Ren sai do circo pela rota menos teatral, sem a máscara de Kage e sem o broche para amaciar olhares. A manhã ainda está cinza, mas não vazia.
+
+O lugar que Ren procura não é exatamente de carruagens. Carruagem é palavra de gente que paga por assento e mola. Ali são pátios de carroças: roda grossa, eixo ruim, lona manchada, mula magra, barril, saco, cal, carvão, peixe, barro e gente que já começou o dia antes de o sol terminar de nascer.
+
+E Ren chega tarde para a parte limpa da saída.
+
+Ler sinais da carroça de Dorra nos pátios: d20 9 + 3 = 12 contra CD 14. Falha.  
+Notar atenção perigosa nos pátios: d20 6 + 5 = 11 contra CD 13. Falha.
+
+A carroça de Dorra Hest não está onde Ren a deixou.
+
+Isso, sozinho, não responde quase nada. Ela prometeu sair antes da primeira luz, e a primeira luz já passou. O espaço onde a carroça ficou tem lama pisada, pó branco de cal e sulcos de roda indo para fora junto de outros três rastros parecidos. Há lona velha rasgada num canto, mas nada que Ren consiga ligar com segurança ao manto de Colm, à carroça de Dorra ou a uma briga.
+
+Um homem de camisa sem mangas fecha a traseira de uma carroça menor carregada de sacos.
+
+"Se veio pros fornos, atrasou", ele resmunga para alguém que não necessariamente é Ren. "As de cal saíram no cinza."
+
+Mais adiante, perto de uma pilha de barris vazios, dois trabalhadores discutem sobre eixo quebrado. Um deles menciona "Dorra" uma vez, mas dentro de uma lista de nomes, como quem fala de chefes de carroça que sempre saem cedo demais e pagam tarde demais. A frase se perde no rangido de madeira.
+
+Ren não vê Colm. Não vê Dorra. Não vê perseguição clara. Também não consegue dizer, a partir do chão pisado, se Dent saiu escondido, se foi descoberto antes da partida, se mudou de carroça ou se simplesmente já está longe na estrada dos fornos.
+
+O que ele tem é uma janela fechada e três direções possíveis: seguir agora o rastro geral das carroças de cal para fora da cidade, perguntar pelos nomes certos aqui no pátio e correr o risco de fixar o próprio interesse, ou procurar outro elo, como Sella, Kethra ou o ponto morto de Narwhal.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Ren chegou aos **pátios de saída de trabalhadores** por volta de **06:30 de 4 Eleasis, 1372 DR**. A carroça de Dorra Hest não está mais no local. Ren não confirmou se **Colm/Dent** saiu em segurança, foi descoberto ou apenas já está na estrada.
+
+O que Ren faz?
