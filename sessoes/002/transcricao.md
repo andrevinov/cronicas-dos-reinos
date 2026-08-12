@@ -3002,3 +3002,50 @@ Na parte baixa, depois da voz, vem um ruído menor: pano arrastando, talvez pé 
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **23:59 de 3 Eleasis, 1372 DR**. Ren está dentro da sala alta de serviço, junto à porta interna entreaberta. O patamar/corredor além da porta está vazio, mas há passagem escura à esquerda, escada iluminada à direita e uma linha baixa de alarme improvisado antes da descida.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren vai em direção a escada, discretamente. Tenta espiar o que há além dela antes de descer por completo. Busca lugares onde possa se esconder caso ouça passos em direção a onde está.
+
+**Narrador**
+
+Aproximar-se do topo da escada com Passos sem Pegadas: d20 16 + 16 = 32 contra CD 16. Sucesso.
+Espiar a área abaixo da escada e mapear esconderijos imediatos: d20 14 + 5 = 19 contra CD 15. Sucesso.
+
+Ren passa pelo patamar sem tocar a linha baixa.
+
+A perna sobe com espaço calculado; o peso cai do outro lado sem puxar fio, argola, colher, tampa ou sino quebrado. A casa continua em silêncio. A luz da escada sobe em lâminas estreitas entre os degraus, amarela e fraca, dando ao rodapé o brilho de osso velho.
+
+Do topo, antes de descer por completo, Ren vê o bastante.
+
+A escada não termina numa sala nobre. Termina numa cozinha ou refeitório velho, talvez parte de uma casa de auxílio de Lathander antes de tudo ali apodrecer. Há uma mesa comprida encostada de lado, bancos quebrados empilhados, lenha úmida, panelas pretas e uma lamparina baixa protegida por vidro sujo. O chão de pedra tem marcas de arrasto recentes.
+
+Um adulto está ali.
+
+É baixo, largo de ombros, usando avental manchado sobre camisa escura. O mesmo tipo de corpo que Ren viu de fora durante o dia. Ele está de lado para a escada, não olhando para cima, com uma mão apoiada na mesa e a outra perto de um bastão curto ou cabo de ferramenta. Não parece guarda formal. Parece alguém acostumado a mandar em espaço fechado.
+
+Duas crianças ficam visíveis.
+
+Uma está sentada perto da parede, talvez dez ou onze anos, joelhos recolhidos, olhos abertos demais para sono. A outra é menor e está meio coberta por um pano grosseiro junto a um cesto grande. Nenhuma das duas está amarrada do jeito óbvio de prisioneiro em história barata. Mas a postura da maior não é de quem pode levantar e ir embora.
+
+O homem de avental fala baixo, sem virar o rosto:
+
+"Se baterem em cima, você não olha. Você corre para baixo. Entendeu?"
+
+A criança maior mexe a cabeça uma vez.
+
+Atrás da cozinha, uma cortina grossa de tecido velho tapa uma passagem mais larga. Por baixo dela vem outra luz, mais baixa e mais avermelhada, e um cheiro diferente: cera quente, terra molhada, talvez incenso ruim. A cortina não encosta totalmente no chão; Ren vê sombra passando do outro lado, mas não conta quantas pessoas.
+
+À direita da cozinha há uma porta reforçada por barra de madeira. Pela posição, deve ligar à entrada de serviço lá fora, a porta meio nível abaixo que Ren evitou. À esquerda, entre prateleiras e parede, há uma abertura estreita que parece voltar para a parte frontal da casa ou para depósito baixo.
+
+Ren também mapeia onde sumir se alguém vier.
+
+No patamar onde está, o melhor esconderijo imediato é o vão entre a prateleira estreita e a parede, ruim para lutar, bom para desaparecer se alguém subir sem procurar direito. Atrás dele, na sala alta, os panos e caixas quebram a silhueta o bastante para Passos sem Pegadas fazer o resto. Se ele descer mais dois ou três degraus, ganha a sombra sob a escada e, mais abaixo, a pilha de lenha e bancos quebrados; mas aí estará comprometido com o andar inferior.
+
+A casa ainda não sabe que Ren está ali.
+
+Mas agora Ren sabe que há crianças entre ele e qualquer resposta simples.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:01 de 4 Eleasis, 1372 DR**. Ren está no topo da escada interna de serviço. Abaixo há uma cozinha/refeitório velho com um adulto de avental manchado, pelo menos duas crianças visíveis, uma passagem coberta por cortina ao fundo, uma porta barrada que provavelmente liga à entrada de serviço e uma abertura estreita lateral.
+
+O que Ren faz?

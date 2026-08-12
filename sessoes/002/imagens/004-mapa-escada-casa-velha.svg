@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <style>
+      .bg { fill: #181512; }
+      .stone { fill: #3b3831; stroke: #8a8172; stroke-width: 5; }
+      .room { fill: #4a4338; stroke: #c7b98e; stroke-width: 6; }
+      .dark-room { fill: #24221f; stroke: #6f685c; stroke-width: 5; }
+      .wood { fill: #6b4f32; stroke: #d3b178; stroke-width: 4; }
+      .curtain { fill: #4a1517; stroke: #c05a42; stroke-width: 5; }
+      .red-glow { fill: #9c3329; opacity: 0.45; }
+      .lamp { fill: #f2c46b; stroke: #ffe5a6; stroke-width: 4; }
+      .shadow { fill: #0f0d0b; opacity: 0.7; }
+      .safe { fill: #234f46; stroke: #78d4b7; stroke-width: 4; }
+      .danger { fill: none; stroke: #e7d16b; stroke-width: 5; stroke-dasharray: 18 12; }
+      .line { stroke: #e7d16b; stroke-width: 5; stroke-dasharray: 14 10; }
+      .arrow { stroke: #d8d0bf; stroke-width: 6; fill: none; marker-end: url(#arrowhead); }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 34px; fill: #f4ead2; font-weight: 700; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 25px; fill: #f4ead2; font-weight: 600; }
+      .note { font-family: Arial, Helvetica, sans-serif; font-size: 22px; fill: #d8cfb9; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 20px; fill: #1b1713; font-weight: 700; }
+      .ren { fill: #111; stroke: #9fd9ff; stroke-width: 6; }
+      .adult { fill: #2a231e; stroke: #f0b35f; stroke-width: 5; }
+      .child { fill: #5f503f; stroke: #c9d6a3; stroke-width: 4; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#d8d0bf"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+  <text class="label" x="56" y="62">Casa Velha do Primeiro Raio - topo da escada interna</text>
+  <text class="note" x="58" y="98">00:01 de 4 Eleasis, 1372 DR | mapa operacional conhecido por Ren</text>
+
+  <!-- Upper service room -->
+  <rect class="dark-room" x="70" y="155" width="420" height="265" rx="6"/>
+  <text class="label" x="105" y="205">Sala alta</text>
+  <text class="small" x="105" y="238">de servico</text>
+  <rect class="wood" x="105" y="275" width="130" height="55" rx="4"/>
+  <rect class="wood" x="260" y="278" width="155" height="46" rx="4"/>
+  <rect class="safe" x="95" y="350" width="145" height="42" rx="6"/>
+  <text class="tiny" x="105" y="378">panos/caixas</text>
+  <text class="note" x="92" y="448">Janela de entrada</text>
+  <line class="arrow" x1="165" y1="430" x2="165" y2="398"/>
+
+  <!-- Landing and left corridor -->
+  <rect class="stone" x="490" y="230" width="305" height="150" rx="5"/>
+  <text class="small" x="522" y="275">Patamar</text>
+  <text class="note" x="522" y="306">vazio</text>
+  <rect class="safe" x="622" y="322" width="130" height="36" rx="6"/>
+  <text class="tiny" x="633" y="346">vao p/ esconder</text>
+
+  <rect class="dark-room" x="490" y="100" width="470" height="130" rx="5"/>
+  <text class="small" x="525" y="145">Passagem escura</text>
+  <text class="note" x="525" y="177">rumo a parte frontal</text>
+
+  <!-- Tripwire -->
+  <line class="line" x1="555" y1="382" x2="790" y2="420"/>
+  <circle class="lamp" cx="805" cy="425" r="12"/>
+  <text class="small" x="560" y="460">linha baixa de alarme</text>
+  <text class="note" x="560" y="488">metal fino/talheres atras da prateleira</text>
+
+  <!-- Stairs -->
+  <g transform="translate(760 360)">
+    <polygon class="stone" points="0,0 280,85 195,390 -85,305"/>
+    <line x1="-8" y1="38" x2="245" y2="116" stroke="#b0a48d" stroke-width="4"/>
+    <line x1="-28" y1="110" x2="225" y2="188" stroke="#b0a48d" stroke-width="4"/>
+    <line x1="-48" y1="182" x2="205" y2="260" stroke="#b0a48d" stroke-width="4"/>
+    <line x1="-68" y1="254" x2="185" y2="332" stroke="#b0a48d" stroke-width="4"/>
+    <circle class="ren" cx="28" cy="36" r="22"/>
+    <text class="small" x="-8" y="-25">Ren</text>
+  </g>
+  <text class="small" x="845" y="335">escada estreita</text>
+  <text class="note" x="850" y="364">Ren ainda nao desceu por completo</text>
+
+  <!-- Kitchen/refectory -->
+  <rect class="room" x="780" y="520" width="720" height="360" rx="6"/>
+  <text class="label" x="815" y="570">Cozinha / refeitorio velho</text>
+  <circle class="lamp" cx="1018" cy="632" r="20"/>
+  <rect class="wood" x="965" y="685" width="310" height="72" rx="5"/>
+  <text class="tiny" x="1048" y="729">mesa comprida</text>
+  <rect class="wood" x="855" y="775" width="190" height="42" rx="4"/>
+  <text class="tiny" x="884" y="803">bancos quebrados</text>
+  <rect class="safe" x="795" y="635" width="145" height="70" rx="5"/>
+  <text class="tiny" x="815" y="663">lenha</text>
+  <text class="tiny" x="815" y="689">e sombra</text>
+
+  <circle class="adult" cx="1120" cy="630" r="28"/>
+  <text class="small" x="1160" y="620">adulto de</text>
+  <text class="small" x="1160" y="650">avental manchado</text>
+  <line class="arrow" x1="1150" y1="628" x2="1250" y2="626"/>
+
+  <circle class="child" cx="930" cy="610" r="20"/>
+  <text class="note" x="852" y="598">crianca maior</text>
+  <circle class="child" cx="910" cy="735" r="17"/>
+  <text class="note" x="830" y="738">crianca menor</text>
+
+  <!-- Rear curtain and deeper area -->
+  <rect class="red-glow" x="1075" y="855" width="335" height="34"/>
+  <rect class="curtain" x="1060" y="816" width="360" height="52" rx="4"/>
+  <text class="small" x="1098" y="850">cortina grossa</text>
+  <text class="note" x="1078" y="914">luz avermelhada, cera quente, terra molhada</text>
+
+  <!-- Barred service door -->
+  <rect class="wood" x="1420" y="610" width="58" height="180" rx="4"/>
+  <line x1="1418" y1="700" x2="1480" y2="700" stroke="#2b1f14" stroke-width="11"/>
+  <text class="small" x="1288" y="590">porta barrada</text>
+  <text class="note" x="1260" y="618">provavel entrada de servico</text>
+
+  <!-- Side opening -->
+  <rect class="dark-room" x="775" y="548" width="55" height="120" rx="4"/>
+  <text class="small" x="610" y="615">abertura estreita</text>
+  <text class="note" x="602" y="644">frente/deposito baixo</text>
+  <line class="arrow" x1="762" y1="610" x2="830" y2="608"/>
+
+  <!-- Known unknown area -->
+  <rect class="shadow" x="1060" y="890" width="360" height="60"/>
+  <text class="note" x="1090" y="936">area alem da cortina: nao mapeada</text>
+
+  <!-- Legend -->
+  <rect class="dark-room" x="70" y="745" width="570" height="175" rx="6"/>
+  <text class="small" x="100" y="790">Legenda</text>
+  <circle class="ren" cx="112" cy="832" r="14"/>
+  <text class="note" x="142" y="840">Ren / posicao atual</text>
+  <circle class="adult" cx="112" cy="872" r="14"/>
+  <text class="note" x="142" y="880">adulto visivel</text>
+  <circle class="child" cx="112" cy="912" r="12"/>
+  <text class="note" x="142" y="920">criancas visiveis</text>
+  <rect class="safe" x="380" y="812" width="42" height="28" rx="5"/>
+  <text class="note" x="438" y="834">esconderijo possivel</text>
+  <line class="line" x1="382" y1="876" x2="425" y2="876"/>
+  <text class="note" x="438" y="884">alarme improvisado</text>
+</svg>
