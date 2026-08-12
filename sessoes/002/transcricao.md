@@ -3329,3 +3329,64 @@ Mas em mais dois passos, vai entrar nele.
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:07 de 4 Eleasis, 1372 DR**. Ren está no corredor baixo além da cortina, em escuridão comum no trecho imediato. Toll, Vessa e o rapaz magro estão inconscientes na cozinha/refeitório atrás dele. A primeira pessoa enviada para verificar a luz apagada é uma criança, provavelmente Miri; um adulto está mais fundo, perto da dobra do corredor, fora de alcance imediato e ainda sem alarme aberto.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren tenta pegar Miri na escuridão, tapar sua boca. Falar pra ela baixo no ouvido "calma, eu vim aqui salvar vocês. Seus amigos estão do outro lado da cortina e falaram que você, Doss e Cal ainda estão lá dentro. Você vai passar da cortina, fingir chamar Vessa, falar com seus amigos, depois voltar e dizer que não encontrou Vessa e não consegue acender a vela."
+
+**Narrador**
+
+Pegar Miri e tapar a boca sem som: d20 8 + 16 = 24 contra CD 14. Sucesso.
+Convencer Miri em sussurro: d20 com vantagem [10, 13] -> 13 contra CD 12. Sucesso.
+Perceber algo errado no trecho escuro: d20 19 + 2 = 21 contra CD 15. Sucesso.
+Manter a voz quando responder ao adulto: d20 8 + 2 = 10 contra CD 11. Falha.
+
+Ren não agarra Miri como quem toma prisioneiro. A mão vem firme, exata, fechando a boca antes do susto virar ar. O outro braço segura ombro e peito só o bastante para impedir o primeiro recuo.
+
+Mesmo assim, o corpo dela vira pedra.
+
+A vareta de vela quase cai. Ren prende também o pulso, devagar, e aproxima a boca do ouvido dela.
+
+"Calma. Eu vim aqui salvar vocês. Seus amigos estão do outro lado da cortina e falaram que você, Doss e Cal ainda estão lá dentro. Você vai passar da cortina, fingir chamar Vessa, falar com seus amigos, depois voltar e dizer que não encontrou Vessa e não consegue acender a vela."
+
+No começo, Miri só treme.
+
+Então o nome dos outros entra nela. Não como certeza. Como possibilidade. A respiração dela bate quente contra a mão de Ren, rápida demais, mas deixa de tentar virar grito. Ela mexe a cabeça uma vez. Pequena. Quase nada.
+
+Ren solta a boca dela primeiro. Mantém a mão perto, caso o pânico vença. Miri não grita.
+
+Do fundo do corredor, a voz adulta chama:
+
+"Miri?"
+
+A menina engole seco. A escuridão cobre o rosto dela, mas não cobre a voz.
+
+"Eu... eu vou ver Vessa."
+
+Ela tenta fazer soar normal. Não consegue.
+
+O adulto fica quieto.
+
+Esse silêncio muda o corredor. Antes era espera. Agora é cálculo.
+
+"Miri", ele diz de novo, mais baixo.
+
+A criança dá um passo em direção à cortina. Passa por Ren sem encostar nele. Do outro lado do pano, na cozinha, as duas crianças que já viram Ren prendem a respiração quando percebem quem vem.
+
+Miri empurra a cortina só um pouco e chama, obediente demais:
+
+"Vessa?"
+
+O adulto não compra.
+
+Ren ouve o peso dele se mover na dobra do corredor. Um passo só. Depois outro, cauteloso. Ele ainda não entra correndo, ainda não grita alarme para a casa inteira, mas agora não está mandando criança resolver. Está vindo conferir.
+
+Na luz vermelha distante, a forma baixa do adulto aparece melhor por um instante: ombros largos, cabeça inclinada pelo teto, uma mão junto ao lado do corpo. Não dá para ver claramente o que ele segura. Dá para ouvir que ele para antes da parte totalmente escura.
+
+"Miri. Volta aqui."
+
+Miri congela com metade do corpo na cortina.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:07 de 4 Eleasis, 1372 DR**. Ren convenceu Miri a não gritar e ela está parcialmente junto à cortina, entre Ren e a cozinha. O adulto mais fundo percebeu que algo está errado; ele se aproximou até a borda da escuridão comum, ainda fora de alcance imediato de Ren, e chamou Miri de volta. Ainda não há alarme aberto, mas a mentira está prestes a quebrar.
+
+O que Ren faz?

@@ -2118,6 +2118,9 @@ Progressão:
 * Ren entrou no corredor além da cortina e apagou rapidamente as velas próximas sem gerar novo ruído útil;
 * a reação no fundo não virou alarme aberto imediato;
 * uma criança foi mandada primeiro para verificar a luz apagada e reacender o lado da cortina, com um adulto mais atrás;
+* Ren conteve Miri em silêncio e a convenceu de que veio salvar as crianças;
+* Miri tentou fingir que iria chamar Vessa, mas sua voz soou errada;
+* o adulto mais fundo percebeu a anormalidade, aproximou-se até a borda da escuridão e chamou Miri de volta;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 00:07 de 4 Eleasis, 1372 DR.
