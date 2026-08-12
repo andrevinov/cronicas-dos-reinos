@@ -2182,3 +2182,16 @@ Progressão:
 * Maerra aponta como direção rápida seguir o fio de cera/tintura e uma saída baixa ligada à porta de ferro; ela também pode mandar palavra a Luath, mas alerta que guarda fazendo barulho na Casa Velha talvez encontre adultos caídos, não Peta;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde;
 * hora aproximada: 00:35 de 4 Eleasis, 1372 DR.
+* Ren disse às crianças que elas estão seguras e que irá atrás de Peta;
+* Cal pediu, em voz baixa, que Ren traga Peta;
+* Maerra respondeu à brincadeira de Ren dizendo que ele continua sendo um estrangeiro armado no templo dela, mas que ela tem uma opinião melhor sobre o que ele faz quando encontra uma criança no caminho da própria vingança;
+* Ren saiu sozinho da Casa da Aurora Menor para procurar Peta antes que a trilha esfriasse;
+* rolagem: Ler para onde a porta de ferro pode dar, d20 5 + 5 = 10 contra CD 14, falha;
+* rolagem: Seguir fio de cera e tintura no entorno da Casa Velha, d20 20 + 3 = 23 contra CD 15, sucesso;
+* Ren não conseguiu deduzir com segurança, pelo lado de fora, para onde a porta de ferro da câmara baixa daria;
+* duas construções abaixo da lateral conhecida da Casa Velha, Ren encontrou uma grelha baixa de drenagem mal recolocada;
+* na grelha há mancha de cera vermelha, fibra de pano encerado semelhante ao pedaço rasgado e cheiro de cera/tintura;
+* diante da grelha há uma marca pequena de joelho ou palma de criança na lama fina;
+* a rota parece seguir por galeria estreita na direção das ruas dos ofícios sujos e da rua dos tintureiros;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* hora aproximada: 00:47 de 4 Eleasis, 1372 DR.

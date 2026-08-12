@@ -3900,3 +3900,90 @@ Sim. **Passos sem Pegadas** ainda respira em volta de Ren, mas não por muito ma
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:35 de 4 Eleasis, 1372 DR**. Ren levou seis crianças resgatadas à **Casa da Aurora Menor**, sob proteção de **Maerra Thandrel**. Peta continua desaparecida, provavelmente levada por rota baixa ligada à porta de ferro. A caixa velha foi aberta e entregue a Maerra; dela saiu o **Broche do Semblante Humilde**, cedido a Ren como empréstimo provisório para proteger vivos. Ren ainda está com o pedaço de pano vermelho encerado. Maerra pode mandar palavra a Luath, mas alerta que isso pode custar tempo e provocar uma batida barulhenta.
 
 O que Ren faz?
+
+**Jogador**
+
+"Minha técnica não vai durar muito tempo mais. Mas... precisamos salvar Peta. Não posso deixa-la nas mãos desse pessoal."
+
+Ren se prepara pra sair. Fala com as crianças, diz que elas estão seguras e que ele vai atrás de Peta agora.
+
+Olha pra Maerra.
+
+"Você já tem uma opinião melhor de mim, sacerdotisa de Lathander? Ou eu ainda sou o estrangeiro perigoso que entrou armado no seu templo?"
+
+Ren fala isso brincando, apenas pela dicotomia de como Maerra o recebera no começo, e como recebe agora, mesmo ele sendo de fato um estrangeiro armado num templo de Lathander. Mas ele também se regozija com o fato dela te-lo julgado precipitadamente e, agora, estar contando com ele.
+
+Depois disso, Ren se encaminha pra região ao redor da casa, estipulando pra onde a porta poderia dar, e procurando o cheiro de cera e tintura.
+
+**Narrador**
+
+Ler para onde a porta de ferro pode dar: d20 5 + 5 = 10 contra CD 14. Falha.
+Seguir fio de cera e tintura no entorno da Casa Velha: d20 20 + 3 = 23 contra CD 15. Sucesso.
+
+As crianças não respondem bem à palavra "seguras" de imediato.
+
+Não porque duvidem exatamente de Ren. Porque a palavra ainda é grande demais para caber nelas. Miri olha para Maerra. Doss olha para a porta lateral trancada. Cal olha para o chão. Nib segura o embrulho de Doss como se isso o mantivesse preso ao mundo.
+
+Mas quando Ren diz que vai atrás de Peta, alguma coisa passa pelo grupo.
+
+Não esperança limpa. Algo menor e mais urgente.
+
+"Traz ela", Cal sussurra.
+
+Maerra ouve a pergunta de Ren sem sorrir no começo.
+
+Depois a boca dela cede só um pouco.
+
+"Você continua sendo um estrangeiro armado no meu templo."
+
+Ela pega uma manta caída no ombro de uma das crianças e ajeita sem desviar os olhos dele.
+
+"Eu só tenho uma opinião melhor sobre o que você faz quando encontra uma criança no caminho da sua vingança."
+
+Então acrescenta, seca:
+
+"E eu não julguei precipitadamente. Homem armado em porta de abrigo é perigo até provar o contrário. Hoje você provou alguma coisa. Não prove o oposto na próxima esquina."
+
+Não é bênção formal. Não é absolvição.
+
+Mas Maerra não fecha a porta entre Ren e a manhã.
+
+Ren sai.
+
+Voltar aos arredores da Casa Velha sozinho é diferente de levar seis crianças pela cidade. A névoa ainda está baixa. A técnica de sombra ainda cobre o chão ao redor dele, mas já não parece infinita. Cada rua vencida come um pedaço do tempo restante.
+
+Ao chegar perto da Casa Velha do Primeiro Raio, Ren tenta primeiro resolver o problema como geometria: porta de ferro à esquerda da câmara baixa, corredor baixo, cozinha, lateral da casa, declive da rua, muros vizinhos.
+
+Não fecha.
+
+A Casa Velha foi construída sobre coisa mais velha. Paredes não alinham como deveriam. Porões de casas abandonadas, antigos canais de drenagem e fundações reaproveitadas confundem a leitura. A porta de ferro pode apontar para baixo, para trás, para uma casa vizinha ou para uma galeria estreita que curva sob a rua. Do lado de fora, Ren não consegue cravar.
+
+Então ele para de procurar a porta.
+
+Procura o trabalho.
+
+O pano vermelho dá a medida do cheiro: cera ruim, tintura azeda, barro de rua baixa. Ren passa pela lateral morta da Casa Velha, pelo muro quebrado, por um beco onde água suja corre em linha fina. No primeiro minuto, há só cidade. No segundo, há um rastro falso de vela comum perto de uma janela. No terceiro, a névoa abre o cheiro certo.
+
+Atrás de tábuas encostadas num muro úmido, não na Casa Velha em si mas duas construções abaixo, há uma grelha baixa de escoamento.
+
+Não é porta para gente honesta.
+
+Tem ferrugem nas bordas, lodo escuro nos cantos e marcas recentes onde alguma coisa raspou a pedra. No rebordo interno, há uma mancha minúscula de cera vermelha, esmagada pelo contato. Mais abaixo, presa num prego torto, uma fibra do mesmo pano encerado.
+
+E no chão diante da grelha há uma marca pequena demais para bota adulta: joelho ou palma de criança na lama fina, já meio desfeita pela água.
+
+A grelha não está aberta. Está apenas mal recolocada.
+
+O cheiro que sai dela é fraco, mas é o mesmo: cera, tintura, umidade velha.
+
+De dentro, nenhum grito.
+
+Só ar baixo.
+
+Essa rota não leva diretamente à porta de ferro de modo visível. Mas Ren entende o suficiente: alguém saiu por baixo ou passou algo por baixo, não pela rua comum. A trilha segue para uma galeria de drenagem estreita, inclinada na direção das ruas dos ofícios sujos e, mais adiante, da rua dos tintureiros.
+
+Passos sem Pegadas ainda está ativo, mas por pouco tempo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:47 de 4 Eleasis, 1372 DR**. Ren está sozinho perto da Casa Velha, duas construções abaixo da lateral conhecida, diante de uma grelha baixa de drenagem mal recolocada. Ele não conseguiu deduzir com segurança a geometria da porta de ferro, mas encontrou um rastro forte de cera/tintura/pano vermelho e uma marca pequena de criança diante da entrada baixa. A rota parece seguir por galeria estreita na direção das ruas de ofícios sujos/rua dos tintureiros. O Broche do Semblante Humilde está com Ren, mas ainda não foi usado.
+
+O que Ren faz?
