@@ -17,9 +17,9 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Lower Trades / pátios de carroças de cal e carvão"
-  ponto_exato: "pátio de saída de trabalhadores, perto da rota dos fornos de cal do Fire River"
-  descricao_operacional: "Ren tirou Colm Dunn do Lavadouro dos Três Tanques sob o manto roto de mendigo e o levou aos pátios de carroças, usando o nome de cobertura Dent. A saída do lavadouro não foi limpa: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios de carroças, sem rosto claro. Ren encontrou uma carroça adequada dos fornos de cal do Fire River e pagou 7 PO a Dorra Hest, chefe prática e desconfiada, para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis. Colm está escondido sob a lona da carroça de Dorra, com pão e moedas pequenas de Kethra/Sella. Dorra prometeu silêncio operacional e alguns dias nos fornos, não segurança de longo prazo. Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver; ela acredita na dor de Ren e no perigo ligado a Masao, Narwhal, Brass, Velis e a lua, mas não foi convencida da escala de uma ameaça à cidade inteira."
+  area: "Lower Trades / Rua da Cal"
+  ponto_exato: "fundos do Lavadouro dos Três Tanques, perto da porta lateral"
+  descricao_operacional: "Ren avisou Kethra que Colm está sob o nome Dent, escondido na carroça de Dorra Hest, com saída prevista antes da primeira luz de 4 Eleasis rumo aos fornos de cal do Fire River. Kethra memorizou Dorra Hest, Dent, fornos de cal e primeira luz, mas não acompanhou a saída para não ligar seu rosto ao deslocamento. A volta de Ren até o lavadouro não foi limpa: um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal. Kethra recusou mensagens diárias por criarem padrão perigoso, mas aceitou um ponto morto nos fundos de Narwhal Manor: um vaso rachado junto dos barris de areia e da calha quebrada. Mensagem fica sob o fundo, presa com cera cinza; rachadura virada para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada. O ponto ainda precisa ser montado fisicamente por Ren."
 
 tempo:
   ano_dr: 1372
@@ -32,10 +32,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 3
   periodo_do_dia: "fim da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "18:32 de 3 Eleasis"
+  hora_aproximada: "18:52 de 3 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual é 3 Eleasis."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Uma menina viu dois vultos saindo da área do lavadouro rumo aos pátios de carroças, o que pode virar pista se Bram comprar lembranças."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente."
 
 recursos:
   pontos_de_vida:
@@ -568,6 +568,14 @@ recursos:
     - "Rolagem para convencer chefe da carroça com oferta de 7 PO: 16 contra CD 13, sucesso"
     - "Ren pagou 7 PO a Dorra Hest para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis"
     - "Dorra Hest aceitou esconder Colm/Dent sob a lona da carroça e levá-lo aos fornos de cal do Fire River por alguns dias"
+    - "Rolagem para voltar até Kethra sem arrastar atenção dos pátios: 12 contra CD 14, falha"
+    - "Um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal"
+    - "Ren avisou Kethra que Colm está sob o nome Dent na carroça de Dorra Hest, rumo aos fornos de cal do Fire River antes da primeira luz de 4 Eleasis"
+    - "Rolagem para ler o limite prático de Kethra para mensagens: 11 contra CD 13, falha"
+    - "Kethra recusou mensagens diárias por criarem padrão perigoso"
+    - "Rolagem para definir ponto morto discreto nos fundos de Narwhal: 16 contra CD 15, sucesso"
+    - "Kethra aceitou usar um vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor como ponto morto"
+    - "Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua indica perigo urgente ligado a Bram; rachadura para a parede indica nada; se o vaso sumir, o caminho morreu"
   exaustao: 0
 
 equipamento_em_posse:
@@ -609,6 +617,7 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
     - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se retoma outra pista imediatamente"
+    - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
     - "decidir se segue a pista da gaveta de areia, cera e panos retirada de Narwhal rumo à rua dos tintureiros"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "não entrar de modo imprudente antes de entender se há crianças, adultos armados ou rota subterrânea"
@@ -649,7 +658,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está nos pátios de carroças de cal e carvão, perto da rota dos fornos de cal do Fire River. Colm Dunn, agora sob o nome Dent, está escondido sob a lona da carroça de Dorra Hest, que aceitou 7 PO para levá-lo para fora de Ravens Bluff antes da primeira luz de 4 Eleasis e deixá-lo por alguns dias nos fornos. A solução compra tempo, não segurança definitiva. A saída do lavadouro deixou uma pista fraca: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios. Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken. Hora aproximada: 18:32 de 3 Eleasis, 1372 DR."
+  cena_atual: "Ren está nos fundos do Lavadouro dos Três Tanques, perto da porta lateral, depois de avisar Kethra sobre Colm/Dent na carroça de Dorra Hest. Kethra recusou mensagens diárias, mas aceitou um ponto morto por vaso rachado nos fundos de Narwhal Manor, ainda a ser montado por Ren. A volta de Ren deixou outra lembrança fraca nos pátios: um homem velho viu o movimento entre a carroça de cal e a direção da Rua da Cal. Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken. Hora aproximada: 18:52 de 3 Eleasis, 1372 DR."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

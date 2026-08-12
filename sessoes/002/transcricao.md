@@ -2718,3 +2718,95 @@ Mas Ren sabe duas coisas ao mesmo tempo: Colm tem uma saída real de Ravens Bluf
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 24 PO, 9 shuriken**. Hora aproximada: **18:32 de 3 Eleasis, 1372 DR**. Ren entregou seu manto roto a Colm, agora usando o nome **Dent**, e pagou **7 PO** a **Dorra Hest**, chefe de uma carroça de trabalhadores dos fornos de cal do Fire River. Dorra aceitou levar Colm para fora da cidade antes da primeira luz de **4 Eleasis** e deixá-lo nos fornos por alguns dias, sem prometer segurança de longo prazo. A saída do lavadouro não foi limpa: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios de carroças, embora sem rosto claro. Colm está escondido sob a lona da carroça de Dorra.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren volta até Kethra, dessa vez o mais discretamente que consegue. Anuncia a saída do irmão, explica onde ele vai estar, quem vai estar cuidando dele. Pede a ela que esteja focada na nova missão, sem se expor a perigos: ele só quer que ela informe o que for possível ali dentro, sem exageros. Ren combina que ela deixe mensagens diárias pra ele num vaso de flores que ele deixará nos fundos de Narwhal Manor, num cantinho discreto que ele já viu nas visitas ao local. Ren irá conferir o vaso diariamente e só falará com Kethra diretamente se for necessário ou ela pedir. Se Vask voltar a persegui-la ela deve avisá-lo.
+
+**Narrador**
+
+Voltar até Kethra sem arrastar atenção dos pátios: d20 6 + 6 = 12 contra CD 14. Falha.
+Ler o limite prático de Kethra para mensagens: d20 6 + 5 = 11 contra CD 13. Falha.
+Definir ponto morto discreto nos fundos de Narwhal: d20 13 + 3 = 16 contra CD 15. Sucesso.
+
+Ren deixa a carroça de Dorra sem olhar para trás tempo demais.
+
+Isso é o certo. Também é difícil, porque Colm agora é uma forma sob lona, um nome falso e sete moedas de ouro nas mãos de uma mulher que não prometeu bondade. Só compromisso caro.
+
+A volta para a Rua da Cal não fica tão limpa quanto Ren gostaria. Os pátios já começaram a afundar na confusão do fim do dia: trabalhadores bebendo água morna, carroceiros conferindo eixo, gente discutindo espaço sob lona. Ainda assim, um homem velho sentado sobre uma roda quebrada observa Ren passar vindo da direção da carroça de cal e depois, minutos mais tarde, tomando rumo de volta para as ruas do lavadouro.
+
+Não é rosto. Não é acusação. É padrão.
+
+Mais uma lembrança fraca na cidade.
+
+Kethra ainda está nos fundos do Lavadouro dos Três Tanques, perto demais da porta lateral para parecer calma e longe demais do quarto da lenha para fingir que não espera. Sella está ao fundo, lavando uma cuba que já está limpa.
+
+Quando Ren diz **Dorra Hest**, **Dent**, **fornos de cal do Fire River** e **antes da primeira luz de 4 Eleasis**, Kethra não chora. O rosto dela fecha por dentro, como se cada palavra fosse um nó numa corda que ela talvez nunca consiga puxar de volta.
+
+"Dorra Hest", ela repete. "Dent. Fornos de cal. Antes da primeira luz."
+
+Só então a respiração dela falha.
+
+"Ele odeia cal."
+
+É a primeira coisa inútil que ela diz desde que Ren a conhece. A primeira coisa de irmã, não de fonte.
+
+Depois ela engole isso também.
+
+"Melhor odiar cal do que apodrecer em cima da loja de Bram."
+
+Ren fala da missão. Narwhal. Ouvir pouco. Não se expor. Vask. Avisar se a cobrança voltar.
+
+Kethra aceita quase tudo com silêncio curto.
+
+Quase.
+
+Quando Ren fala em mensagens diárias, ela corta:
+
+"Diária, não."
+
+A firmeza vem rápida demais para ser medo puro. É experiência.
+
+"Todo dia vira hora. Hora vira hábito. Hábito vira alguém esperando eu encostar a mão onde não devo. Eu deixo mensagem quando tiver coisa. Ou quando Bram mexer. Se eu não tiver nada, você não quer me ver fingindo que tenho."
+
+Sella, sem levantar os olhos da cuba, diz:
+
+"Moça viva informa mais que moça pontual."
+
+Kethra olha para Ren de novo.
+
+"Você confere se quiser. Mas não na mesma hora. Não pelo mesmo caminho. E não me procure só porque não achou papel."
+
+O ponto morto, porém, funciona.
+
+Ren lembra de um canto nos fundos de Narwhal Manor onde a área de serviço perde nobreza: barris de areia cinza, vasos rachados demais para frente de casa, uma calha quebrada, flores pobres tentando sobreviver sem sol. Um vaso novo chamaria atenção. Um vaso barato, rachado, com flores comuns e terra ruim, entre os outros, pode virar só mais uma coisa que ninguém quer limpar.
+
+Kethra conhece o lugar antes de Ren terminar a descrição.
+
+"Atrás dos barris de areia, perto da calha quebrada", ela diz. "Eu passo ali quando levam cera suja e pano queimado."
+
+Ela pensa por alguns segundos.
+
+"Se houver mensagem, eu deixo papel encerado sob o fundo, preso com cera cinza. Se for só aviso de perigo vindo de Bram, sem tempo para escrever, eu viro a rachadura do vaso para a rua. Se a rachadura estiver para a parede, não tem nada."
+
+Ela aponta um dedo para Ren.
+
+"E se um dia o vaso sumir, você não aparece perguntando por ele. Significa que alguém limpou, quebrou ou notou. Aí esse caminho morreu."
+
+Sella finalmente larga o pano.
+
+"E você", ela diz a Ren, "não traga a perseguição para cá só para dar boa notícia. Boa notícia também deixa pegada."
+
+Kethra não discorda.
+
+Mas antes que Ren vá, ela fala mais baixo:
+
+"Se ele sair da cidade vivo, eu ouço Narwhal amanhã. Pouco. Sem heroísmo."
+
+O nome de Colm não aparece de novo.
+
+Isso também é parte do disfarce.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 24 PO, 9 shuriken**. Hora aproximada: **18:52 de 3 Eleasis, 1372 DR**. Ren avisou Kethra que Colm está sob o nome **Dent**, escondido na carroça de **Dorra Hest**, com saída prevista antes da primeira luz de **4 Eleasis** rumo aos fornos de cal do Fire River. A volta até Kethra deixou outra lembrança fraca: um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal. Kethra recusou mensagens diárias por serem padrão perigoso, mas aceitou um ponto morto nos fundos de Narwhal Manor: um vaso rachado junto dos barris de areia e da calha quebrada. Mensagem fica sob o fundo, presa com cera cinza; rachadura virada para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada. O ponto ainda precisa ser montado fisicamente por Ren.
+
+O que Ren faz?

@@ -2042,6 +2042,17 @@ Ponto morto da Silver Lily:
 * Dorra prometeu silêncio prático e alguns dias nos fornos de cal, não segurança de longo prazo;
 * Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 18:32 de 3 Eleasis, 1372 DR.
+* Ren voltou até Kethra para avisar sobre Dorra Hest, Dent, os fornos de cal do Fire River e a saída antes da primeira luz de 4 Eleasis;
+* rolagem: Voltar até Kethra sem arrastar atenção dos pátios, d20 6 + 6 = 12 contra CD 14, falha;
+* um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal;
+* rolagem: Ler o limite prático de Kethra para mensagens, d20 6 + 5 = 11 contra CD 13, falha;
+* Kethra recusou mensagens diárias por criarem padrão perigoso;
+* rolagem: Definir ponto morto discreto nos fundos de Narwhal, d20 13 + 3 = 16 contra CD 15, sucesso;
+* Kethra aceitou usar um vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor como ponto morto;
+* protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura virada para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada; se o vaso sumir, o caminho morreu;
+* o ponto morto ainda precisa ser montado fisicamente por Ren;
+* Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 18:52 de 3 Eleasis, 1372 DR.
 
 Progressão:
 
