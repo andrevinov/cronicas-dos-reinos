@@ -2053,6 +2053,15 @@ Ponto morto da Silver Lily:
 * o ponto morto ainda precisa ser montado fisicamente por Ren;
 * Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 18:52 de 3 Eleasis, 1372 DR.
+* Ren voltou ao Jack Mooney & Sons Circus para tomar banho, ver os Vell, falar com Silva e Nera e descansar;
+* o retorno foi tratado como deslocamento discreto comum: sem cauda competente no trajeto e sem busca ativa sobre Ren, não houve rolagem nem rastro útil até o acampamento;
+* Silva interceptou Ren antes da carroça verde, checou a borda do acampamento e só então permitiu banho, conversa e descanso;
+* Ren contou a Silva e Nera sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio;
+* Nera interpretou M. Harrow como possível nome de registro usado para dar corpo escrito à mentira sobre o "oriental";
+* Silva alertou que a Casa Velha do Primeiro Raio deve ser tratada como uma casa velha que usa crianças como olhos, não como abrigo vazio;
+* Ren completou descanso curto com meia hora de meditação e recuperou ki para 4/4;
+* Ren está com 31/31 PV, 4/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 21:05 de 3 Eleasis, 1372 DR.
 
 Progressão:
 

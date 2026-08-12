@@ -323,7 +323,7 @@ def cmd_ren_save(args: argparse.Namespace) -> int:
 
 
 def cmd_ren_initiative(args: argparse.Namespace) -> int:
-    bonus = 3 + args.bonus_extra
+    bonus = 4 + args.bonus_extra
     label = args.label or "Iniciativa (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), None))
     return 0

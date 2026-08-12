@@ -494,6 +494,11 @@ relacoes:
       verde antes de sair do circo para tratar de assuntos pessoais. Nera não
       transformou a despedida em cena longa, mas pediu que ele volte antes de
       virar história de outra pessoa.
+      Ao anoitecer, Ren voltou ao circo após resolver a saída temporária de
+      Colm/Dent com Dorra Hest. Nera ouviu de Ren sobre Kethra, Colm, Velis,
+      M. Harrow e a Casa Velha do Primeiro Raio. Ela reagiu com atenção
+      especial ao uso de M. Harrow como possível nome de registro para encaixar
+      a mentira preparada sobre o "oriental".
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -537,6 +542,9 @@ relacoes:
       - "Nera entende Kage como possível porta de proteção, mas teme que vire corrente para Ren."
       - "Nera sabe que Ren saiu novamente do circo na manhã seguinte ao Benefício, depois de assinar o acordo de Kage."
       - "Nera pediu que Ren volte antes de virar história de outra pessoa."
+      - "Nera sabe que Ren voltou ao circo ao anoitecer sem cauda competente e sem rastro útil até o acampamento."
+      - "Nera ouviu de Ren sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio."
+      - "Nera interpretou M. Harrow como possível nome de registro usado para dar corpo escrito à mentira sobre o 'oriental'."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -963,6 +971,14 @@ relacoes:
       Ren avisou Silva que, depois de assinar com Jack, sairia para resolver
       coisas pessoais. Silva não o impediu, mas registrou que ao menos ele
       avisou antes.
+      Ao anoitecer, Ren voltou ao circo pela rota das carroças de remendos por
+      deslocamento discreto comum, sem cauda competente no trajeto e sem gerar
+      rastro útil até o acampamento. Silva interceptou Ren antes da carroça
+      verde, mandou checar a borda do acampamento e só permitiu banho, conversa
+      e descanso depois de confirmar que ninguém o seguiu até dentro. Ren contou
+      a Silva sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa
+      Velha do Primeiro Raio. Silva reforçou que a Casa Velha deve ser tratada
+      como lugar que usa crianças como olheiros, não como abrigo vazio.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -984,6 +1000,11 @@ relacoes:
       - "Silva pediu manutenção temporária no abrigo atual e recusou transferência para Tyr neste momento."
       - "Silva solicitou resguardo em espera sem deslocamento até o próximo sino maior."
       - "Silva sabe que Ren saiu do circo na manhã seguinte ao Benefício para tratar de assuntos pessoais."
+      - "Silva sabe que Ren voltou ao circo ao anoitecer sem cauda competente e sem rastro útil até o acampamento."
+      - "Silva impediu Ren de ir direto à carroça verde até checar a borda do acampamento."
+      - "Silva sabe que Ren comprou tempo para Colm/Dent com Dorra Hest, não segurança duradoura."
+      - "Silva sabe que Kethra aceitou um ponto morto em Narwhal, mas recusou mensagens diárias."
+      - "Silva sabe que Ren pretende ou considera preparar a Casa Velha do Primeiro Raio para uma incursão noturna."
       - "Silva viu Ren voltar do Harbor District sem cauda aparente e quer confirmação direta de que ele veio sozinho."
       - "Silva aceitou a nomeação em Tyr com reprimenda e quer falar com Jack antes que a notícia chegue por outra boca."
       - "Silva aconselhou separar Ren, Nera/Tavin e o livro para que a Red Sail não possa apagar os três alvos de uma vez."

@@ -2810,3 +2810,75 @@ Isso também é parte do disfarce.
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 24 PO, 9 shuriken**. Hora aproximada: **18:52 de 3 Eleasis, 1372 DR**. Ren avisou Kethra que Colm está sob o nome **Dent**, escondido na carroça de **Dorra Hest**, com saída prevista antes da primeira luz de **4 Eleasis** rumo aos fornos de cal do Fire River. A volta até Kethra deixou outra lembrança fraca: um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal. Kethra recusou mensagens diárias por serem padrão perigoso, mas aceitou um ponto morto nos fundos de Narwhal Manor: um vaso rachado junto dos barris de areia e da calha quebrada. Mensagem fica sob o fundo, presa com cera cinza; rachadura virada para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada. O ponto ainda precisa ser montado fisicamente por Ren.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren volta pro circo. Precisa tomar banho, precisa ver o Vell, descansar uma hora (com meia hora de meditação) para se preparar para a invasão da noite.
+
+Ele falará com Silva e Nera sobre a Casa da Crianças (esqueci o nome rs). Falará sobre Kethra e Velis, e tudo que descobriu e colocou em direção hoje.
+
+**Narrador**
+
+Ravens Bluff não barra Ren no caminho de volta.
+
+O trecho entre a Rua da Cal e os campos do circo está cheio do tipo certo de gente: carroceiros atrasados, trabalhadores voltando dos fornos, meninos correndo recado antes que a noite engula as ruas menores. Sem uma cauda competente em cima dele e sem busca ativa no trajeto, Ren não precisa desaparecer como truque de palco. Basta não virar assunto.
+
+Ele evita as vias largas, troca de lado quando convém, quebra a silhueta nos muros e deixa a própria presença se dissolver no fluxo pobre do fim do dia. Quando alcança a rota das carroças de remendos, não há rosto fixado atrás dele, nem passo repetido, nem sinal de Red Sail acompanhando a entrada.
+
+Silva aparece antes da carroça verde.
+
+"Não", ela diz, sem erguer a voz. "Primeiro você não vai para eles."
+
+Ela faz Ren esperar atrás dos barris de água cinza enquanto manda dois circenses darem uma volta preguiçosa pela beira do acampamento, como quem procura corda esquecida e criança fora de lugar. O atraso custa minutos. Ninguém entra atrás dele. Ninguém se aproxima da carroça verde. Mas Silva volta com o rosto fechado.
+
+"Você veio sozinho. Eu conferi."
+
+Só então ela libera o banho atrás da lona azul. Água fria, sabão áspero, pano limpo. O cheiro de cal, cinza e lavadouro sai da pele com dificuldade. Quando Ren termina, Silva já deixou comida simples e uma ordem curta: falar sentado.
+
+Nera está na carroça verde. Tavin não participa da conversa pesada; está recolhido perto do fundo, com sono demais para fingir coragem e esperto demais para não perceber que os adultos estão usando vozes baixas.
+
+Quando Ren fala de Kethra, Colm, Dent, Dorra Hest e os fornos de cal do Fire River, Nera olha por um instante para Tavin. Ela não interrompe. Não transforma a compaixão em pergunta.
+
+Silva, sim.
+
+"Então você comprou tempo, não segurança."
+
+Não há condenação na frase. Só contabilidade.
+
+"Tempo serve. Desde que você não confunda com milagre."
+
+Sobre Kethra, Silva aceita a lógica do ponto morto, mas aprova a recusa das mensagens diárias.
+
+"Boa fonte é gente viva e desconfiada. Se ela começar a deixar papel todo dia, vira sino. Sino chama mão."
+
+Nera escuta a parte de Velis com mais atenção quando Ren fala da versão preparada de **M. Harrow**.
+
+"Se eles estão dando um nome ao 'oriental'", ela diz devagar, "talvez não seja só para negar você. É para ter uma linha de registro onde encaixar a mentira. Um nome que um escriba consegue repetir sem parecer que inventou na hora."
+
+Silva não gosta disso.
+
+"E Tyr já está com a mão nesse fio. Se Halessa está ouvindo Velis, você não pisa no pé dela esta noite."
+
+Quando Ren menciona a "casa das crianças", Silva corrige o nome sem zombaria.
+
+"Casa Velha do Primeiro Raio. E os Meninos do Primeiro Sino. Não trate como abrigo de criança. Trate como casa velha que aprendeu a usar criança como olho."
+
+Ela pega um carvão e risca três marcas no fundo de uma tábua: frente, viela, porta de serviço.
+
+"Você já viu o bastante para saber que a frente é teatro morto. A lateral é vida. Se entrar hoje, o primeiro alarme pode não ser sino, nem guarda, nem cachorro. Pode ser criança correndo para avisar adulto. Isso muda tudo."
+
+Nera cruza os braços, inquieta.
+
+"Se houver criança lá dentro, Ren..."
+
+Ela para antes de transformar a frase em ordem. Silva termina por outro caminho:
+
+"Você não está invadindo uma casa vazia."
+
+Depois disso, Silva cobra o descanso. Uma hora inteira, sem negociação. Meia hora de meditação no depósito de figurino velho, com a respiração descendo devagar até o corpo parar de guardar cada beco como ameaça imediata. O circo segue vivo ao redor: roda rangendo, animal remexendo palha, gente lavando panela, Jack discutindo preço em algum lugar longe o bastante para não virar problema de Ren agora.
+
+O descanso curto se completa.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Hora aproximada: **21:05 de 3 Eleasis, 1372 DR**. Ren voltou ao Jack Mooney & Sons Circus por deslocamento discreto comum, sem cauda competente no trajeto e sem gerar rastro útil até o acampamento. Tomou banho, viu Nera e Tavin sem levar ninguém até a carroça verde, contou a Silva e Nera sobre Kethra, Colm/Dent, Velis, M. Harrow e a Casa Velha do Primeiro Raio. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de **4 Eleasis**. O ponto morto de Kethra em Narwhal ainda não foi montado fisicamente.
+
+O que Ren faz?
