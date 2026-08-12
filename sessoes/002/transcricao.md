@@ -3987,3 +3987,69 @@ Passos sem Pegadas ainda está ativo, mas por pouco tempo.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:47 de 4 Eleasis, 1372 DR**. Ren está sozinho perto da Casa Velha, duas construções abaixo da lateral conhecida, diante de uma grelha baixa de drenagem mal recolocada. Ele não conseguiu deduzir com segurança a geometria da porta de ferro, mas encontrou um rastro forte de cera/tintura/pano vermelho e uma marca pequena de criança diante da entrada baixa. A rota parece seguir por galeria estreita na direção das ruas de ofícios sujos/rua dos tintureiros. O Broche do Semblante Humilde está com Ren, mas ainda não foi usado.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren continua a perseguição até a rua dos tintureiros, tentando localizar a pessoa de vermelho, qualquer marca da passagem dela, ou Peta. Primeiramente, observando de longe, furtivo.
+
+**Narrador**
+
+Avançar pela galeria sob Passos sem Pegadas: d20 20 + 16 = 36 contra CD 15. Sucesso.
+Manter o fio de cera e tintura até a rua dos tintureiros: d20 17 + 3 = 20 contra CD 15. Sucesso.
+Observar de longe a rua dos tintureiros: d20 14 + 5 = 19 contra CD 14. Sucesso.
+
+A grelha cede sem gemer.
+
+Não porque esteja em bom estado. Porque Ren entende onde o ferro quer reclamar antes que reclame. Uma mão no canto certo, peso deslocado, respiração baixa. A tampa enferrujada sobe o suficiente para ele passar e volta ao lugar sem bater.
+
+A galeria é estreita demais para caminhar direito.
+
+Água escura corre rasa pelo centro. As paredes têm lodo, marcas antigas de enchente e raízes finas atravessando fendas. Em alguns trechos, Ren precisa virar o ombro; em outros, abaixar a cabeça quase até o peito. **Passos sem Pegadas** não torna o mundo limpo, mas tira dele a história de Ren: a lama não guarda bem o pé, a água não denuncia ritmo, o ar baixo não carrega respiração para longe.
+
+O rastro não é constante.
+
+É cera aqui. Tintura ali. Uma raspagem no tijolo. Uma gota vermelha que não é sangue: espessa demais, seca demais. Um ponto onde algo pequeno encostou a mão suja na parede. A galeria curva duas vezes, passa sob uma rua estreita e encontra uma divisão: à esquerda, água mais fria e limpa; à direita, cheiro de cuba, pano fervido, urina velha e corante barato.
+
+Direita.
+
+A rua dos tintureiros não se anuncia com placa. Anuncia-se pelo cheiro.
+
+Mesmo de madrugada, ela respira tinta. Azul azedo. Amarelo amargo. Vermelho de raiz fervida. Cera usada para lacrar, proteger, impermeabilizar, falsificar. As casas e oficinas são estreitas, de fundos úmidos, com varais altos como teias negras contra a névoa.
+
+Ren emerge por outra grelha, atrás de um pátio baixo cercado por muros de tijolo. Ele não sai de pé no meio da rua: primeiro olha.
+
+Isso também salva a aproximação.
+
+À frente, do outro lado do pátio, há uma oficina apagada pela frente, mas viva pelos fundos. Uma porta baixa tem luz por baixo. Não luz de taverna; luz de trabalho escondido. Perto dela, encostado junto a dois barris, há um cesto de roupa suja com uma tira amarela dando dois nós.
+
+O mesmo tipo de nó que Kethra descreveu.
+
+No barro perto da soleira, Ren vê três coisas:
+
+Uma marca estreita de sola adulta indo da grelha para a porta.
+
+Uma gota de cera vermelha esmagada sob o calcanhar.
+
+E um arrasto pequeno, irregular, como ponta de pé infantil ou joelho roçando sem força plena.
+
+Ele não vê Peta no pátio.
+
+Mas ouve algo de dentro.
+
+Não uma palavra. Não um grito. Um som abafado, curto, cortado depressa demais. Criança ou pano pressionado contra boca; Ren não consegue separar de onde está.
+
+Pela fresta baixa da porta, uma sombra passa. Magra. Encurvada. Tecido pesado caindo à frente do corpo.
+
+Vermelho escuro na borda da luz.
+
+Atrás dessa sombra, por meio instante, aparece outra forma: menor, baixa demais para adulto, colocada perto do chão.
+
+A oficina tem pelo menos uma entrada traseira baixa, a porta dos fundos iluminada, uma janela estreita alta com pano por dentro e a grelha por onde Ren veio. A frente dá para a rua dos tintureiros, mas parece fechada.
+
+Ren ainda não foi notado.
+
+Mas **Passos sem Pegadas** está perto do fim.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**, restando poucos minutos. Hora aproximada: **00:55 de 4 Eleasis, 1372 DR**. Ren está oculto no pátio dos fundos de uma oficina na rua dos tintureiros. Encontrou o cesto com tira amarela de dois nós, marcas de cera/tintura, possível arrasto infantil e uma figura magra de vermelho dentro da oficina. Há uma forma pequena baixa lá dentro, provavelmente Peta, mas Ren ainda não tem confirmação visual limpa. O Broche do Semblante Humilde está com Ren, ainda não usado.
+
+O que Ren faz?

@@ -2195,3 +2195,16 @@ Progressão:
 * a rota parece seguir por galeria estreita na direção das ruas dos ofícios sujos e da rua dos tintureiros;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
 * hora aproximada: 00:47 de 4 Eleasis, 1372 DR.
+* rolagem: Avançar pela galeria sob Passos sem Pegadas, d20 20 + 16 = 36 contra CD 15, sucesso;
+* rolagem: Manter o fio de cera e tintura até a rua dos tintureiros, d20 17 + 3 = 20 contra CD 15, sucesso;
+* rolagem: Observar de longe a rua dos tintureiros, d20 14 + 5 = 19 contra CD 14, sucesso;
+* Ren seguiu a galeria de drenagem sem ser notado e emergiu em um pátio dos fundos na rua dos tintureiros;
+* há uma oficina apagada pela frente, mas ativa pelos fundos, com luz de trabalho escondido por baixo da porta traseira;
+* junto a dois barris no pátio há um cesto de roupa suja com tira amarela de dois nós, combinando com a pista dada por Kethra;
+* perto da soleira dos fundos, Ren viu marca estreita de sola adulta, gota de cera vermelha esmagada e arrasto pequeno irregular compatível com criança sem força plena;
+* Ren ouviu um som abafado curto vindo de dentro, compatível com criança ou pano pressionado contra boca;
+* Ren viu pela fresta baixa uma sombra magra de vermelho e uma forma menor, baixa demais para adulto, perto do chão;
+* Ren ainda não foi notado;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, restando poucos minutos;
+* hora aproximada: 00:55 de 4 Eleasis, 1372 DR.
