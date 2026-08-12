@@ -4545,3 +4545,46 @@ O que ele tem é uma janela fechada e três direções possíveis: seguir agora 
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Ren chegou aos **pátios de saída de trabalhadores** por volta de **06:30 de 4 Eleasis, 1372 DR**. A carroça de Dorra Hest não está mais no local. Ren não confirmou se **Colm/Dent** saiu em segurança, foi descoberto ou apenas já está na estrada.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá perguntar por ali mesmo se as carroças de cal saíram no horário. Se houve problemas. Pagará uma moeda de ouro pra interessar o perguntado. Procurará alguém que ele ache que pode responder sem compromisso. Ele só quer a confirmação de que nada deu errado na saída.
+
+**Narrador**
+
+Ren espera a primeira resposta impaciente passar. Não aborda o homem de camisa sem mangas, que já falou alto demais uma vez, nem os dois que discutem eixo quebrado como se quisessem uma plateia. Ele circula o bastante para achar alguém com mão suja de cal, ombro cansado e posição pequena: um sujeito magro sentado sobre um barril virado, amarrando tira de couro em volta do próprio punho antes de voltar ao trabalho.
+
+Parece o tipo de homem que ouviu tudo porque ninguém se importa que ele esteja ali.
+
+Escolher informante discreto nos pátios: d20 5 + 5 = 10 contra CD 13. Falha.  
+Comprar confirmação sem chamar atenção: d20 12 = 12 contra CD 12. Sucesso.
+
+A moeda de ouro muda a postura dele antes de tocar a palma. Os dedos fecham rápido. O olhar vai de Ren para o pátio, do pátio para Ren de novo, medindo se a pergunta vale problema.
+
+Vale uma moeda.
+
+"As de cal saíram no cinza", ele diz baixo. "No horário de pobre, não de sino. As primeiras foram limpas. A de Dorra saiu também."
+
+Ele cospe para o lado, mais por hábito do que por desprezo.
+
+"Mas não saiu lisa."
+
+O homem puxa a tira no punho com os dentes e fala sem olhar diretamente para Ren.
+
+"Teve um sujeito antes da partida. Roupa de trabalho, mas limpa demais pra quem veio carregar. Ficou perguntando se tinha doente vindo do lavadouro, homem embrulhado, mão ruim, tosse. Não falou teu nome. Não ouvi 'Colm'. Ouvi Dorra chamar o dela de Dent, como se fosse sobrinho torto que ela tava levando pra não morrer na rua."
+
+A palavra "Dent" vem com pouco peso na boca dele. Para o pátio, parece só mais um nome pobre.
+
+"Dorra fez barulho", ele continua. "Muito. Xingou roda, xingou saco, xingou quem perguntou. Mexeu ela mesma na lona. Botou dois sacos de cal por cima da beirada e mandou andar. Se quer minha palavra: tinha peso de homem ali quando a carroça saiu. E ouvi tosse depois que a roda pegou a rua."
+
+Ele fecha a mão sobre a moeda dentro do bolso.
+
+"Mas eu não abri lona. Não sou sacerdote pra jurar vivo, morto ou inteiro."
+
+A resposta não vira alarme no pátio. Ninguém se junta à conversa. Ninguém aponta Ren. Mas a escolha do informante não foi perfeita: ele é menor que Dorra, menor que os chefes de eixo, menor que quase todo mundo ali, só que não é invisível. Se alguém vier depois comprando lembranças sobre quem perguntou por carroças de cal, ele pode lembrar do rosto, da roupa comum e da moeda.
+
+Ren tem uma confirmação parcial: Dorra saiu dos pátios, provavelmente levando Dent sob a lona. Mas a saída não foi limpa. Alguém chegou perto demais antes da partida e procurava exatamente um doente vindo do lavadouro.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **06:35 de 4 Eleasis, 1372 DR**. Ren pagou **1 PO** por informação nos pátios. Ele sabe agora que a carroça de Dorra Hest saiu rumo aos fornos de cal, provavelmente com Colm/Dent sob a lona, mas também sabe que alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura.
+
+O que Ren faz?

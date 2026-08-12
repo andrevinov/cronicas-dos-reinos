@@ -62,9 +62,12 @@ localizacao:
     canto, com água e pão. Ren vestiu roupa de cidadão comum, explicou a Nera
     que precisava checar Colm/Dent e Dorra Hest, e saiu para os pátios de saída
     de trabalhadores. Chegou depois da partida das carroças de cal; a carroça de
-    Dorra não estava mais no local, e Ren não conseguiu confirmar se Colm/Dent
-    saiu em segurança, foi descoberto ou apenas já está na estrada. O ponto
-    morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren.
+    Dorra não estava mais no local. Depois pagou 1 PO a um trabalhador dos pátios
+    e obteve confirmação parcial: Dorra saiu no cinza, provavelmente com Dent sob
+    a lona, mas alguém havia perguntado por um doente vindo do lavadouro antes da
+    partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. O
+    ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por
+    Ren.
 
 tempo:
   ano_dr: 1372
@@ -77,10 +80,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "amanhecer de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "06:30 de 4 Eleasis"
+  hora_aproximada: "06:35 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent, mas a carroça de Dorra já havia saído e ele não confirmou o destino de Colm."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura."
 
 recursos:
   pontos_de_vida:
@@ -97,7 +100,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: "50 pés"
   dinheiro:
-    po: 24
+    po: 23
   condicoes:
     - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
     - "Passos sem Pegadas expirou por volta de 00:58 de 4 Eleasis"
@@ -210,7 +213,14 @@ recursos:
     - "Notar atenção perigosa nos pátios: 11 contra CD 13, falha"
     - "Ren chegou aos pátios depois da partida das carroças de cal"
     - "a carroça de Dorra Hest não está mais nos pátios"
-    - "Ren não confirmou se Colm/Dent saiu em segurança, foi descoberto ou apenas já está na estrada"
+    - "Ren pagou 1 PO por informação nos pátios sobre a saída das carroças de cal"
+    - "Rolagem para escolher informante discreto nos pátios: 10 contra CD 13, falha"
+    - "Rolagem para comprar confirmação sem chamar atenção: 12 contra CD 12, sucesso"
+    - "Um trabalhador dos pátios disse que Dorra Hest saiu no cinza, depois das primeiras carroças de cal"
+    - "O trabalhador disse que um sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do lavadouro, homem embrulhado, mão ruim e tosse"
+    - "O trabalhador ouviu Dorra chamar o protegido de Dent e tratá-lo como sobrinho torto"
+    - "O trabalhador acredita que havia peso de homem sob a lona quando a carroça saiu e ouviu tosse depois que a roda pegou a rua"
+    - "Ren obteve confirmação parcial: Colm/Dent provavelmente saiu com Dorra, mas a saída foi comprometida e não está confirmada como segura"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"
@@ -725,6 +735,11 @@ recursos:
     - "Rolagem para convencer chefe da carroça com oferta de 7 PO: 16 contra CD 13, sucesso"
     - "Ren pagou 7 PO a Dorra Hest para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis"
     - "Dorra Hest aceitou esconder Colm/Dent sob a lona da carroça e levá-lo aos fornos de cal do Fire River por alguns dias"
+    - "Rolagem para escolher informante discreto nos pátios depois da saída de Dorra: 10 contra CD 13, falha"
+    - "Rolagem para comprar confirmação sem chamar atenção nos pátios: 12 contra CD 12, sucesso"
+    - "Ren pagou 1 PO a um trabalhador dos pátios e ouviu que Dorra saiu no cinza, provavelmente com Dent sob a lona"
+    - "O relato comprado indica que alguém perguntou por um doente vindo do lavadouro antes de Dorra sair"
+    - "A saída de Colm/Dent foi comprometida, não confirmada como segura"
     - "Rolagem para voltar até Kethra sem arrastar atenção dos pátios: 12 contra CD 14, falha"
     - "Um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal"
     - "Ren avisou Kethra que Colm está sob o nome Dent na carroça de Dorra Hest, rumo aos fornos de cal do Fire River antes da primeira luz de 4 Eleasis"
@@ -796,10 +811,9 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir como responder a Nera ao acordar no depósito de figurino velho"
-    - "decidir o próximo passo nos pátios de saída sem confirmação limpa sobre Colm/Dent"
+    - "decidir o próximo passo nos pátios de saída após saber que Colm/Dent provavelmente saiu com Dorra, mas com a saída comprometida"
     - "considerar que a Casa Velha do Primeiro Raio pode usar crianças como olheiros e não deve ser tratada como abrigo vazio"
-    - "descobrir futuramente, por fonte legítima, se Colm/Dent saiu de Ravens Bluff com Dorra Hest antes da primeira luz"
+    - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
     - "decidir como investigar a rota baixa/oficina dos tintureiros depois do resgate de Peta"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
@@ -841,7 +855,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren acordou no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:05 de 4 Eleasis, após repouso curto de monge que recuperou seu ki para 4/4, mas sem completar descanso longo. Nera estava junto da entrada do canto com água e pão. Ren vestiu roupa de cidadão comum, avisou Nera que iria conferir Colm/Dent e Dorra Hest, e foi aos pátios de saída de trabalhadores. Chegou por volta de 06:30, depois da partida das carroças de cal. A carroça de Dorra Hest não está mais no local. Ren falhou em ler sinais conclusivos da carroça e em notar atenção perigosa nos pátios; não confirmou se Colm/Dent saiu em segurança, foi descoberto ou já está na estrada."
+  cena_atual: "Ren acordou no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:05 de 4 Eleasis, após repouso curto de monge que recuperou seu ki para 4/4, mas sem completar descanso longo. Nera estava junto da entrada do canto com água e pão. Ren vestiu roupa de cidadão comum, avisou Nera que iria conferir Colm/Dent e Dorra Hest, e foi aos pátios de saída de trabalhadores. Chegou por volta de 06:30, depois da partida das carroças de cal. A carroça de Dorra Hest não está mais no local. Ren falhou em ler sinais conclusivos da carroça e em notar atenção perigosa nos pátios. Depois pagou 1 PO por informação e ouviu que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas que alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

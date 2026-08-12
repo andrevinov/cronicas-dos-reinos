@@ -2297,3 +2297,13 @@ Progressão:
 * Ren não confirmou se Colm/Dent saiu em segurança, foi descoberto ou apenas já está na estrada;
 * Ren segue com 31/31 PV, CA 17, 4/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 06:30 de 4 Eleasis, 1372 DR.
+* rolagem: Escolher informante discreto nos pátios, d20 5 + 5 = 10 contra CD 13, falha;
+* rolagem: Comprar confirmação sem chamar atenção, d20 12 contra CD 12, sucesso;
+* Ren pagou 1 PO a um trabalhador dos pátios por informação sobre as carroças de cal;
+* o trabalhador disse que Dorra Hest saiu no cinza, depois das primeiras carroças;
+* antes da saída de Dorra, um sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do lavadouro, homem embrulhado, mão ruim e tosse;
+* o trabalhador ouviu Dorra chamar o protegido de **Dent** e tratá-lo como sobrinho torto;
+* o trabalhador acredita que havia peso de homem sob a lona quando Dorra saiu e ouviu tosse depois que a roda pegou a rua;
+* Ren obteve confirmação parcial: Colm/Dent provavelmente saiu com Dorra, mas a saída foi comprometida e não está confirmada como segura;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO e 9 shuriken;
+* hora aproximada: 06:35 de 4 Eleasis, 1372 DR.

@@ -250,7 +250,7 @@ equipamento:
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
     - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; usado na madrugada de 4 Eleasis e gasto até o próximo amanhecer"
   dinheiro:
-    po: 24
+    po: 23
 
 vinculos:
   regiao_inicial: "Ravens Bluff"

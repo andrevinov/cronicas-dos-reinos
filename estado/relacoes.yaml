@@ -132,6 +132,10 @@ relacoes:
       luz. Kethra recusou mensagens diárias por criarem padrão perigoso, mas
       aceitou usar um vaso rachado nos fundos de Narwhal Manor como ponto morto
       quando houver informação real ou perigo urgente ligado a Bram.
+      Na manhã de 4 Eleasis, Ren foi aos pátios e pagou 1 PO por informação.
+      Soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas que
+      alguém perguntou por um doente vindo do lavadouro antes da partida. Kethra
+      ainda não sabe disso em cena.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -170,14 +174,15 @@ relacoes:
       - "Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu do turno."
       - "A saída de Colm do lavadouro deixou uma pista fraca: uma menina viu dois vultos indo dos Três Tanques aos pátios de carroças."
       - "A volta de Ren até Kethra deixou outra pista fraca: um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal."
-      - "Se Colm for encontrado antes de sair da cidade, a colaboração de Kethra pode quebrar por medo ou necessidade."
+      - "Ren soube depois, por um trabalhador dos pátios, que alguém perguntou por um doente vindo do lavadouro antes da carroça de Dorra sair."
+      - "Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade."
       - "Se Ren procurar Kethra por ausência de mensagem, pode destruir o valor do ponto morto por transformar silêncio em encontro."
       - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "última posição conhecida por Ren: sob a lona da carroça de Dorra Hest, pátios de saída de trabalhadores"
-    status: "vivo, fraco e consciente na última vez que Ren o viu; situação após a primeira luz ainda não confirmada por Ren"
+    local: "última informação conhecida por Ren: provavelmente sob a lona da carroça de Dorra Hest, rumo aos fornos de cal do Fire River"
+    status: "provavelmente saiu de Ravens Bluff com Dorra Hest, mas a saída foi comprometida e segurança não está confirmada"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -200,10 +205,10 @@ relacoes:
       velha em vez do quarto da lenha.
       Ren então moveu Colm imediatamente para os pátios de saída, entregou seu
       manto roto como disfarce, deu a ele o nome de cobertura Dent e pagou 7 PO
-      a Dorra Hest para levá-lo aos fornos de cal do Fire River. A última
-      informação de Ren é que Colm/Dent estava sob a lona da carroça aguardando
-      a partida antes da primeira luz; ao amanhecer, Ren ainda não recebeu
-      confirmação sobre a saída.
+      a Dorra Hest para levá-lo aos fornos de cal do Fire River. Na manhã de
+      4 Eleasis, Ren pagou 1 PO por informação nos pátios e ouviu que Dorra saiu
+      no cinza, provavelmente com Dent sob a lona, mas que alguém havia
+      perguntado por um doente vindo do lavadouro antes da partida.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -214,16 +219,17 @@ relacoes:
       - "Colm diz que consegue andar, mas Kethra avalia que ele só consegue andar devagar."
       - "Colm recebeu o nome de cobertura Dent."
       - "Colm está usando o manto roto de mendigo que era de Ren."
-      - "Última informação conhecida por Ren: Colm estava escondido sob a lona da carroça de Dorra Hest."
-      - "Dorra Hest aceitou levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis, mas Ren ainda não recebeu confirmação da saída."
+      - "Última informação conhecida por Ren: Colm/Dent provavelmente saiu sob a lona da carroça de Dorra Hest."
+      - "Dorra Hest saiu dos pátios no cinza, rumo aos fornos de cal do Fire River."
+      - "Um trabalhador dos pátios ouviu Dorra chamar o protegido de Dent e acredita que havia peso de homem sob a lona quando a carroça saiu."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
       - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
-      - "A saída de Colm/Dent dependeu da discrição de Dorra Hest até a partida, mas Ren ainda não confirmou o resultado."
+      - "A saída de Colm/Dent dependeu da discrição de Dorra Hest até a partida, e essa discrição falhou parcialmente."
       - "Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a área dos pátios de carroças."
       - "Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança, fome ou doença."
-      - "Se alguém seguiu a pista fraca dos pátios de carroças antes da primeira luz, Colm/Dent pode estar em risco sem que Ren saiba ainda."
+      - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"
@@ -272,7 +278,7 @@ relacoes:
     nome: "Dorra Hest"
     tipo: "chefe de carroça / capataz de trabalhadores dos fornos de cal"
     local: "pátios de saída de trabalhadores; rota dos fornos de cal do Fire River"
-    status: "ativa; aceitou pagamento para levar Colm/Dent para fora de Ravens Bluff, saída ainda não confirmada por Ren"
+    status: "ativa; saiu dos pátios rumo aos fornos de cal, provavelmente levando Colm/Dent, mas sob risco"
     atitude_para_ren: "pragmática, desconfiada e comprada por utilidade imediata"
     confianca: "nenhuma"
     respeito: "baixo, mas reconhece dinheiro e decisão rápida"
@@ -283,16 +289,24 @@ relacoes:
       levá-lo para os fornos de cal do Fire River antes da primeira luz de
       4 Eleasis. Dorra prometeu silêncio prático e alguns dias de trabalho ou
       abrigo ruim, não proteção verdadeira.
+      Na manhã de 4 Eleasis, um trabalhador dos pátios contou a Ren que Dorra
+      saiu no cinza, depois de alguém perguntar por um doente vindo do lavadouro.
+      O trabalhador acredita que Dent ainda estava sob a lona quando a carroça
+      partiu, mas não pôde jurar segurança.
     informacoes_observadas_por_ren:
       - "Dorra Hest comanda uma carroça de eixo duplo coberta por lona manchada de branco."
       - "A carroça leva trabalhadores e material para fornos de cal do Fire River."
       - "Dorra planejava sair antes da primeira luz de 4 Eleasis."
       - "Dorra aceitou 7 PO para levar Colm sob o nome Dent."
       - "Dorra não parece gentil; parece capaz de manter silêncio enquanto o pagamento compensar o risco."
+      - "Dorra saiu no cinza, depois das primeiras carroças de cal."
+      - "Dorra fez barulho, mexeu na lona e tratou Dent como sobrinho torto quando alguém perguntou por um doente vindo do lavadouro."
+      - "Um trabalhador acredita que Dent estava sob a lona quando a carroça saiu, mas não pode jurar."
     riscos:
       - "Dorra pode abandonar Colm/Dent se ele tossir sangue, atrair guarda, roubar ou parecer caro demais para manter."
       - "As 7 PO são quantia grande o bastante para fixar a memória de Dorra."
       - "Se alguém pagar mais ou ameaçar os trabalhadores antes da partida, Dorra pode recalcular a lealdade."
+      - "A pergunta feita antes da partida expôs que alguém chegou perto demais da carroça certa."
   bram_vask:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"
@@ -323,6 +337,10 @@ relacoes:
       Ao voltar para avisar Kethra, Ren deixou mais uma lembrança fraca: um
       homem velho nos pátios viu um homem saindo da área da carroça de cal e
       depois tomando direção da Rua da Cal.
+      Na manhã de 4 Eleasis, Ren soube por um trabalhador dos pátios que um
+      sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do
+      lavadouro antes da carroça de Dorra sair. Ren ainda não confirmou que essa
+      pessoa foi enviada por Bram.
     informacoes_observadas_por_ren:
       - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
       - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
@@ -334,6 +352,7 @@ relacoes:
       - "Sella Rove relatou que um rapaz perguntou pela frase 'pano azul com sabão preto' no Lavadouro dos Três Tanques."
       - "Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro."
       - "Um homem velho nos pátios viu um homem sair da área da carroça de cal e depois tomar direção da Rua da Cal."
+      - "Um trabalhador dos pátios contou a Ren que alguém perguntou por um doente vindo do lavadouro antes da saída de Dorra."
     riscos:
       - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
       - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
@@ -342,6 +361,7 @@ relacoes:
       - "A pergunta do rapaz no lavadouro sugere que a resposta indireta pode estar se aproximando de Colm."
       - "Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças."
       - "Se Bram juntar a menina e o homem velho, pode estreitar a busca para carroças de cal ou carvão."
+      - "Se a pessoa que perguntou nos pátios era resposta de Bram, Bram ou intermediário já estreitou a busca até Dorra Hest e os fornos de cal."
   noll:
     nome: "Noll"
     tipo: "capanga de Bram Vask / mão de cobrança"

@@ -633,3 +633,4 @@ Interpretação reservada:
 * Dorra não consegue manter Dent totalmente oculto até a saída limpa;
 * isso não precisa significar captura automática de Colm/Dent, mas a saída dele de Ravens Bluff deixa de ser limpa e passa a criar novo fio de risco envolvendo Bram, Dorra e os fornos de cal;
 * Ren não sabe disso ao acordar no circo; qualquer revelação futura deve vir por Kethra, Sella, Dorra, rumor dos pátios ou consequência visível.
+* revelação parcial em cena, 06:35 de 4 Eleasis: Ren pagou 1 PO a um trabalhador dos pátios e soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas depois de um sujeito perguntar por um doente vindo do lavadouro. Isso manifesta a falha de Dorra e o sucesso da resposta indireta de Bram sem confirmar captura de Colm/Dent.
