@@ -2154,3 +2154,16 @@ Progressão:
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 00:10 de 4 Eleasis, 1372 DR.
+* Ren pegou a caixa velha marcada por sol apagado e o pedaço de pano vermelho rasgado;
+* a chave de Narro e a lâmina curta ficaram para trás na câmara baixa;
+* rolagem: Retirada pela lateral com as crianças sob Passos sem Pegadas, d20 3 + 12 = 15 contra CD 12, sucesso;
+* rolagem: Primeiro grupo manter o ponto no Tanque seco, d20 16 + 2 = 18 contra CD 11, sucesso;
+* Ren saiu pela lateral da Casa Velha com Nib, Doss e Cal;
+* Miri e as outras duas crianças da cozinha conseguiram manter o ponto no Tanque seco atrás da casa dos azulejos verdes;
+* as seis crianças resgatadas estão com Ren no Tanque seco, mas Peta não está;
+* as crianças acreditam que Peta foi levada porque viu algo que não devia depois da sopa, envolvendo a porta de ferro, a pessoa de vermelho e a caixa do sol;
+* Doss disse que Narro mandava nas crianças, mas parava de mandar quando a pessoa de vermelho vinha;
+* as crianças descrevem a pessoa de vermelho como alguém que vem pela porta de ferro, usa pano vermelho grosso, cheira a cera/tintura, fala pouco e às vezes leva pacotes ou crianças para "ficar embaixo";
+* Ren está com a caixa velha fechada e um pedaço de pano vermelho encerado;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 00:15 de 4 Eleasis, 1372 DR.

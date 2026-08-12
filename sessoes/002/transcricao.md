@@ -3731,3 +3731,78 @@ E não vazia.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. Ren identificou que a figura vermelha é uma pessoa magra usando capuz/avental vermelho-escuro de tecido encerado, com rosto parcialmente coberto. Ele viu por um instante uma criança pequena atrás dela, provavelmente Peta, antes da porta fechar e ser trancada ou barrada por dentro. Nib, Doss e Cal continuam na câmara, sem gritar. A caixa do sol, a chave de Narro, a lâmina curta e um pedaço de pano vermelho rasgado estão ao alcance de Ren.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren decide pegar a caixa, pegar o pedaço de pano vermelho rasgado e falar pras crianças seguirem-no, e ir pela saída da lateral. Reunir-se com as crianças no Tanque seco. Conversar com elas pra tentar entender porque, entre todas as crianças, Peta teria sido sequestrada e quem era essa figura de vermelho.
+
+**Narrador**
+
+Retirada pela lateral com as crianças sob Passos sem Pegadas: d20 3 + 12 = 15 contra CD 12. Sucesso.
+Primeiro grupo manter o ponto no Tanque seco: d20 16 + 2 = 18 contra CD 11. Sucesso.
+
+Ren pega a caixa velha com o sol apagado.
+
+Ela é achatada, de madeira escurecida por tempo, gordura e mão suja, com uma tranca pequena na frente. O desenho do sol na tampa quase desapareceu, mas ainda existe sob os riscos. Dentro, alguma coisa leve bate uma vez contra a madeira quando ele a ergue.
+
+O pedaço de pano vermelho sai da saliência enferrujada com um puxão curto. Não é pano comum de roupa pobre: é mais grosso, encerado, com cheiro de cera velha, barro úmido e tintura azeda.
+
+A chave de Narro e a lâmina curta ficam no chão, ao lado do corpo inconsciente dele.
+
+Quando Ren manda Nib, Doss e Cal seguirem, os três hesitam por apenas um instante. O beco baixo ainda chama por instinto, porque é caminho de criança. Mas Ren aponta a rota por onde veio, e o peso do que acabou de acontecer decide por eles.
+
+A volta pela câmara baixa não é limpa, mas é conhecida.
+
+O corredor baixo engole os passos. **Passos sem Pegadas** cobre Ren e as crianças como uma ausência sobre a pedra úmida. No trecho das velas apagadas, Nib quase tropeça no adulto de roupa escura, mas Doss o puxa pela gola antes que ele caia. Na cozinha, Cal vê Toll sob pano e lenha e desvia o olhar rápido demais. Vessa continua no chão. O rapaz magro continua preso meio sob a cortina.
+
+Ninguém atravessa atrás deles.
+
+Atrás da porta de ferro, lá no fundo, não vem novo grito. Só a sensação pior de algo se afastando por dentro da Casa Velha.
+
+A porta lateral já está destravada. Ren passa primeiro, depois as crianças, uma a uma. A névoa fria da rua parece grande depois do teto baixo. A Casa Velha fica atrás deles sem voz, sem sino, sem alarme aberto para a rua.
+
+O Tanque seco fica atrás da casa dos azulejos verdes, onde a parede rachada guarda placas antigas, quase todas verdes, algumas já substituídas por barro comum. A fonte sem água tem a boca quebrada e espaço escuro por baixo, usado por corpos pequenos e medo antigo.
+
+Miri está lá.
+
+As outras duas crianças da cozinha também.
+
+Elas não correram bonito. Uma delas está com lama até o cotovelo, a outra perdeu uma sandália, e Miri tem o rosto duro de quem ficou repetindo para si mesma que Ren disse que viria. Mas elas mantiveram o ponto.
+
+Quando Nib, Doss e Cal aparecem com Ren, o alívio quase vira barulho. Não vira porque Doss faz um gesto duro de silêncio e porque Cal começa a chorar sem som, só tremendo.
+
+Peta não está com eles.
+
+Essa ausência pesa mais do que qualquer pergunta.
+
+Quando Ren pergunta por que Peta, as respostas vêm quebradas, uma por cima da outra, até Doss cortar as outras com voz baixa.
+
+"Ela viu."
+
+Miri esfrega o nariz na manga.
+
+"Depois da sopa. Narro mandou ela levar tigela pra baixo. Ela voltou branca. Disse que tinha uma porta com ferro e uma luz vermelha. Disse que viu o homem vermelho sem ele querer."
+
+"Não sem capuz", Cal sussurra, ainda no chão, abraçando os joelhos. "Sem o pano na cara. Só um pedaço. Ela disse que ele tinha olho ruim."
+
+Doss aperta o embrulho contra o peito.
+
+"E ela viu a caixa aberta. Ou quase aberta. Narro ficou sabendo. Ele disse que quem olha santo morto aprende a ficar calado."
+
+As crianças não sabem dizer se Peta foi escolhida desde antes ou se virou a criança errada no lugar errado quando a Casa Velha começou a recolher tudo. O que elas conseguem montar é isto: depois da sopa, Peta foi mandada para perto da porta de ferro; viu algo que não devia, envolvendo a figura vermelha e a caixa do sol; depois disso, Narro não deixou mais que ela subisse.
+
+Sobre a figura vermelha, elas sabem menos do que temem.
+
+Não é Toll. Não é Vessa. Não é Narro.
+
+Vem pela porta de ferro. Quase sempre depois que as velas vermelhas são acesas. Usa pano vermelho grosso, cheira a cera e tintura, fala pouco e baixo. Às vezes leva pacote. Às vezes traz pacote. Às vezes escolhe criança para "ficar embaixo" até aprender a não contar.
+
+"Narro mandava na gente", Doss diz. "Mas quando o vermelho vinha, Narro parava de mandar."
+
+A caixa fechada está com Ren. O pano vermelho também. Se havia chave para a caixa, ela ficou para trás com Narro, no chão da câmara baixa.
+
+Ao redor da fonte seca, a rua ainda parece não saber exatamente o que aconteceu. Mas isso não vai durar a noite inteira.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:15 de 4 Eleasis, 1372 DR**. Ren saiu da Casa Velha pela lateral com **Nib, Doss e Cal** e reencontrou **Miri** e as outras duas crianças no **Tanque seco** atrás da casa dos azulejos verdes. **Peta foi provavelmente levada pela pessoa de vermelho** para dentro de uma rota além da porta de ferro. Ren está com a caixa velha marcada por sol apagado e o pedaço de pano vermelho encerado rasgado. A chave de Narro e a lâmina curta ficaram para trás na câmara baixa.
+
+O que Ren faz?
