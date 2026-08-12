@@ -2111,5 +2111,10 @@ Progressão:
 * Ren baixou o corpo sem batida, mas a criança menor soltou um som e Ren não conseguiu esconder a mulher a tempo;
 * a mulher está inconsciente no chão da cozinha/refeitório, parcialmente visível, com chaves caídas perto da mesa;
 * alguém atrás da cortina está reagindo, ainda antes de alarme aberto pleno;
+* um rapaz magro cruzou a cortina para verificar Vessa;
+* Ren manteve ângulo de emboscada e neutralizou o rapaz com golpe crítico não letal;
+* Ren não conseguiu baixar o corpo sem mexer na cortina, que ficou semiaberta;
+* do outro lado há corredor/porão baixo com luz avermelhada, marcas de cera, terra úmida, sacos e caixas pequenas; vozes baixas vêm de mais fundo;
+* ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:05 de 4 Eleasis, 1372 DR.
+* hora aproximada: 00:06 de 4 Eleasis, 1372 DR.

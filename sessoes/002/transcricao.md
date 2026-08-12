@@ -3233,3 +3233,48 @@ Ren ainda não foi visto com clareza. Mas o cômodo agora está errado demais: T
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:05 de 4 Eleasis, 1372 DR**. A mulher de lenço escuro, aparentemente chamada Vessa, está inconsciente e parcialmente escondida atrás da mesa. As chaves dela caíram perto da mesa. Uma pessoa atrás da cortina chamou por Vessa e está prestes a abrir a passagem. Alarme aberto ainda não começou, mas a cena está a segundos de romper.
 
 O que Ren faz?
+
+**Jogador**
+
+Não tem jeito. A furtividade parece que está finalizando.
+
+Ren tenta um ataque surpresa assim que a pessoa passa da cortina. Pra apaga-la em silêncio, se possível.
+
+**Narrador**
+
+Manter ângulo de emboscada quando a cortina abre: d20 12 + 16 = 28 contra CD 18. Sucesso.
+Ataque surpresa não letal contra quem cruza a cortina: d20 com vantagem [20, 16] -> 20 + 6 = 26 contra CA 12. Acerto crítico. Dano crítico: 2d4 [3, 4] + 4 = 11 contundente.
+Baixar o terceiro corpo sem derrubar a cortina: d20 6 + 6 = 12 contra CD 14. Falha.
+Reação imediata além da cortina aos sons acumulados: d20 7 + 2 = 9 contra CD 14. Falha.
+
+A cortina abre só o bastante para deixar passar uma pessoa estreita.
+
+Não é Toll. Não é Vessa. É um rapaz magro, talvez velho o bastante para ter barba rala se a vida tivesse sido mais generosa, novo o bastante para ainda parecer menor na luz ruim. Ele vem com uma faca curta na mão direita e os olhos no lugar errado: na chave caída, no braço de Vessa, na menina menor.
+
+Não em Ren.
+
+O golpe de Ren entra antes que o rapaz entenda o que está vendo.
+
+É um impacto curto, perfeito, abaixo da orelha. O corpo dele desliga no mesmo instante, como fio cortado. A faca cai sem força, batendo no tecido da cortina antes de encontrar pedra. Ren tenta segurar o rapaz pelo peito e pelo ombro, mas o peso vem torto, preso no pano grosso.
+
+A cortina puxa.
+
+Não cai. Mas abre.
+
+Por um fôlego, a cozinha e o que existe além dela ficam ligados por uma boca escura e vermelha.
+
+Do outro lado há um corredor baixo de porão, não uma sala cheia de guardas prontos. O teto é tão baixo que um adulto grande precisaria curvar a cabeça. Há marcas de cera no chão, terra úmida nos cantos, dois sacos de lona, uma caixa pequena com tampa aberta e uma faixa de luz avermelhada vindo de mais fundo. Ren vê marcas de joelhos e mãos pequenas no chão de terra batida, como se crianças passassem ali engatinhando em partes do caminho.
+
+Vozes existem, mas não estão junto da cortina. Mais fundo. Baixas. Uma delas ri de algo que não ouviu. Outra manda alguém calar a boca.
+
+Ninguém atravessa imediatamente.
+
+O rapaz magro está inconsciente junto à cortina, meio dentro da cozinha, meio atravessado na passagem. Vessa continua atrás da mesa. Toll continua sob pano, banco e lenha. As duas crianças olham para Ren como se a casa inteira estivesse prendendo o ar.
+
+A furtividade ainda não acabou.
+
+Mas agora ela está pendurada por um fio.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:06 de 4 Eleasis, 1372 DR**. Toll, Vessa e o rapaz magro estão inconscientes na cozinha/refeitório. A cortina está semiaberta. Além dela há um corredor baixo de porão com luz avermelhada, marcas de cera, terra úmida, sacos, caixa pequena e vozes mais ao fundo. Ainda não há alarme aberto, mas qualquer atraso ou novo ruído pode romper a infiltração.
+
+O que Ren faz?
