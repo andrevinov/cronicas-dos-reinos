@@ -4101,3 +4101,50 @@ Ren age primeiro.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** ainda está ativo por concentração até cerca de **00:58 de 4 Eleasis**, mas a entrada agressiva quebrou a discrição dentro da oficina. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**. Ren está no interior da oficina dos tintureiros, junto à porta dos fundos. A figura vermelha sofreu **5 de dano contundente não letal**, está caída/desequilibrada e consciente, ainda sem agir. A criança no chão está viva e presa, quase certamente Peta. Há uma cortina no fundo, movimento atrás dela e um cordão fino ao alcance da figura vermelha.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá atacar a pessoa em vermelho pra tentar impedi-la de gritar ou ligar algum alarme.
+
+**Narrador**
+
+Golpe não letal para impedir grito ou alarme: d20 com vantagem [3, 1] -> 3 + 6 = 9 contra CA 13. Erro.
+Golpe bônus de Artes Marciais para cortar a reação: d20 com vantagem [11, 1] -> 11 + 6 = 17 contra CA 13. Acerto. Dano: 1d4 4 + 4 = 8 contundente.
+
+A mão estreita da figura vermelha quase fecha no cordão.
+
+Quase.
+
+Ren tenta interceptar o movimento com o primeiro golpe, mas o corpo caído se dobra de forma errada no chão molhado. A pancada pega madeira, não carne. A faca curta treme sob a mesa. O cordão estica um dedo.
+
+Então Ren muda o ângulo.
+
+O segundo golpe entra seco, de baixo para cima, no lado da mandíbula e do pescoço. O capuz bate contra o banco. O corpo inteiro perde intenção de uma vez: dedos abrem, joelho solta, cabeça cai de lado. O cordão volta frouxo sem puxar nada.
+
+Sem grito.
+
+Sem alarme.
+
+Por enquanto.
+
+A figura vermelha está inconsciente, respirando, com a máscara ainda presa ao rosto. De perto, o cheiro dela é mais forte: cera rançosa, tintura, suor frio e alguma coisa metálica que não é sangue fresco. A faca curta fica sob a mesa, fora da mão dela. O cordão fino balança uma vez e para.
+
+A criança presa no chão faz um som abafado atrás da mordaça. Os olhos dela vão de Ren para a cortina do fundo e voltam para Ren.
+
+Atrás da cortina, algo arrasta madeira contra pedra.
+
+Não é ainda gente entrando.
+
+É som de alguém removendo trava, tampa ou passagem. Depois vem uma voz baixa, adulta, do outro lado do tecido:
+
+"Vermelho?"
+
+A voz espera meio segundo.
+
+Não recebe resposta.
+
+Do outro lado da cortina, o movimento acelera.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. A **figura vermelha está inconsciente** e não puxou o cordão. A criança está viva, presa e amordaçada, quase certamente Peta, ao alcance de Ren. Há movimento urgente atrás da cortina do fundo, como alguém mexendo em trava, tampa ou rota de fuga. **Passos sem Pegadas** segue ativo até cerca de **00:58**, mas dentro da oficina a surpresa já virou ruído. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?
