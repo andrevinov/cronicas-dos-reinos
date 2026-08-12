@@ -2139,6 +2139,12 @@ Progressão:
 * Narro é um homem comprido, seco, de rosto estreito, e está com uma caixa achatada de madeira velha marcada por um sol apagado;
 * Nib, Doss e Cal estão no gargalo de fuga do beco baixo; Peta não está à vista;
 * há uma porta reforçada com tiras de ferro à esquerda, sendo fechada por alguém ou algo parcialmente oculto em vermelho;
+* Ren atacou Narro apesar de Cal estar sendo usado como obstáculo;
+* o primeiro golpe de Ren foi crítico e Cal conseguiu cair fora do agarrão;
+* Ren neutralizou Narro de modo não letal com o segundo golpe;
+* a caixa velha marcada por sol apagado, uma chave e uma lâmina curta caíram perto de Narro;
+* a porta de ferro falhou em fechar porque um pano vermelho prendeu numa saliência enferrujada;
+* Ren ainda não viu rosto ou identidade da figura vermelha do outro lado da porta;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 00:10 de 4 Eleasis, 1372 DR.

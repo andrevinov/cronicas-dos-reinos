@@ -3615,3 +3615,64 @@ Não chegou em silêncio. Não chegou com ângulo perfeito.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** ainda está ativo por concentração até cerca de **00:58 de 4 Eleasis**, mas Ren trocou silêncio por velocidade. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. As três crianças da cozinha saíram pela lateral rumo ao Tanque seco, mas a fuga delas não foi limpa e Ren ainda não sabe se chegaram. Ren está na entrada de uma câmara baixa no fundo do porão. Narro está a poucos passos, com uma caixa velha marcada por um sol apagado, perto da boca do beco baixo; Nib, Doss e Cal estão no gargalo de fuga. Peta não está à vista. Uma porta de ferro à esquerda está sendo fechada por alguém ou algo parcialmente oculto em vermelho.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren tenta apagar Narro inicialmente. Atacá-lo.
+
+**Narrador**
+
+Iniciativa de Ren: d20 12 + 4 = 16.
+Iniciativa de Narro: d20 11 + 2 = 13.
+Tempo da porta de ferro: d20 4 + 1 = 5.
+Achar ângulo contra Narro sem atingir Cal: d20 5 + 6 = 11 contra CD 14. Falha.
+Ataque não letal contra Narro com Cal no caminho: d20 20 + 6 = 26 contra CA 14. Acerto crítico. Dano crítico: 2d4 [1, 4] + 4 = 9 contundente.
+Golpe bônus de Artes Marciais contra Narro: d20 14 + 6 = 20 contra CA 14. Acerto. Dano: 1d4 2 + 4 = 6 contundente.
+Cal cair fora do agarrão de Narro quando Ren ataca: d20 19 + 2 = 21 contra CD 12. Sucesso.
+Figura vermelha fechar a porta de ferro antes de ser interrompida: d20 1 + 2 = 3 contra CD 12. Falha.
+
+Narro está pronto para correr, não para lutar.
+
+Isso quase basta.
+
+Quase.
+
+Ren entra na câmara baixa sem ângulo limpo. Cal está no caminho, Narro está usando o ombro da criança como parede viva, e o teto rouba espaço de qualquer golpe amplo. Por um instante, a escolha parece ruim: bater fraco para não acertar Cal, ou bater forte demais e confiar na precisão.
+
+Ren escolhe precisão.
+
+O primeiro golpe entra por cima do ombro de Cal, num espaço pequeno demais para parecer golpe. Dois dedos, base da palma, impulso curto. Narro não consegue esconder a garganta atrás da criança. O impacto pega a lateral do pescoço e sobe para baixo do maxilar.
+
+Os dentes dele batem.
+
+Cal entende no mesmo instante que a mão no ombro afrouxou. A criança se joga para baixo, para o lado, quase caindo de joelhos, mas saindo do eixo de Narro.
+
+Ren já está no segundo golpe.
+
+Sem Cal no caminho, o punho entra no esterno de Narro e quebra o resto do ar dentro dele. A lâmina pequena escapa da mão. A chave bate no chão. A caixa velha com o sol apagado desliza debaixo do braço e cai contra a pedra com um som oco, mas não se abre.
+
+Narro cai de lado.
+
+Não morto. Apagado.
+
+Do lado esquerdo, a porta de ferro tenta fechar.
+
+Tenta.
+
+O tecido vermelho que Ren viu pela fresta prende numa saliência enferrujada da própria porta. Há um puxão seco de dentro, um sibilo baixo, e a porta volta um palmo em vez de fechar. Por esse palmo, Ren não vê rosto. Vê só vermelho sujo, movimento recuando e uma mão estreita puxando o pano preso de volta para a sombra.
+
+Nib, no beco baixo, para de engatinhar e olha por cima do ombro.
+
+Doss aperta o embrulho no peito com tanta força que os nós dos dedos ficam claros.
+
+Cal está no chão, entre Ren e a porta de ferro, respirando rápido demais, mas livre.
+
+A caixa com o sol está no chão, perto do corpo de Narro, ao alcance de Ren. A chave e a lâmina curta também.
+
+Atrás da porta de ferro presa, a figura vermelha ainda está lá.
+
+E agora também sabe que Narro caiu.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. Narro está inconsciente de modo não letal. Cal se soltou e está no chão, livre mas perto da porta de ferro. Nib está na boca do beco baixo; Doss segura um embrulho; Peta segue fora de vista. A caixa velha marcada por sol apagado, a chave e a lâmina curta caíram perto de Narro. A porta de ferro não fechou: um pano vermelho ficou preso e há uma figura parcialmente oculta do outro lado, ainda sem rosto visível.
+
+O que Ren faz?
