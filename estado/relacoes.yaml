@@ -81,7 +81,7 @@ relacoes:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
     local: "Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor"
-    status: "fonte prática potencial; visitou Colm vivo no lavadouro e ouviu a história de Ren sobre Masao"
+    status: "fonte prática potencial; Colm/Dent colocado em carroça para os fornos de cal"
     atitude_para_ren: "assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da ameaça"
     confianca: "baixa, mas real em termos práticos"
     respeito: "prático e cauteloso"
@@ -124,6 +124,10 @@ relacoes:
       parente viável no interior capaz de receber Colm agora, embora exista
       sangue distante para o lado do Fire River. A colaboração dela continua
       presa à segurança concreta de Colm.
+      Ren tirou Colm do lavadouro sob o manto roto de mendigo, usando o nome
+      de cobertura Dent, e pagou Dorra Hest para levá-lo numa carroça dos
+      fornos de cal do Fire River antes da primeira luz de 4 Eleasis. Kethra
+      não acompanhou a saída para não ligar seu rosto ao deslocamento.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -149,19 +153,21 @@ relacoes:
       - "Kethra não tem parente viável no interior capaz de receber Colm agora; há sangue distante para o lado do Fire River, mas nenhuma porta segura."
       - "Kethra acredita que Masao é perigo real para Ren e para a trama que toca Narwhal, mas não foi convencida de que a cidade inteira esteja diante de um reino de terror."
       - "Kethra aceita continuar ouvindo Narwhal se Colm receber uma solução prática antes que o lavadouro deixe de ser seguro."
+      - "Kethra sabe que Ren entregou seu manto roto a Colm, deu a ele o nome Dent e pagou 7 PO a Dorra Hest para levá-lo aos fornos de cal do Fire River."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
       - "Bram pode tentar punir Kethra se concluir que ela vendeu informação."
       - "Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela."
       - "Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu do turno."
-      - "Se Colm permanecer no Lavadouro dos Três Tanques, a colaboração de Kethra pode quebrar por medo ou necessidade."
+      - "A saída de Colm do lavadouro deixou uma pista fraca: uma menina viu dois vultos indo dos Três Tanques aos pátios de carroças."
+      - "Se Colm for encontrado antes de sair da cidade, a colaboração de Kethra pode quebrar por medo ou necessidade."
       - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "quarto da lenha do Lavadouro dos Três Tanques, Rua da Cal"
-    status: "vivo, fraco, consciente, escondido temporariamente; precisa ser movido do quarto da lenha antes do escurecer de vez"
+    local: "sob a lona da carroça de Dorra Hest, pátios de saída de trabalhadores"
+    status: "vivo, fraco, consciente, usando o nome Dent; aguardando saída de Ravens Bluff antes da primeira luz de 4 Eleasis"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -182,6 +188,10 @@ relacoes:
       Kethra não tem parente viável para recebê-lo, e Sella só oferece uma
       janela ruim até antes da primeira luz, escondendo Colm atrás da caldeira
       velha em vez do quarto da lenha.
+      Ren então moveu Colm imediatamente para os pátios de saída, entregou seu
+      manto roto como disfarce, deu a ele o nome de cobertura Dent e pagou 7 PO
+      a Dorra Hest para levá-lo aos fornos de cal do Fire River. Colm está sob
+      a lona da carroça até a partida antes da primeira luz.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -190,19 +200,23 @@ relacoes:
       - "Colm viu Kethra viva e ouviu dela que não deve ir para casa, Narwhal ou Tyr pela porta da frente."
       - "Colm está escondido no quarto da lenha do Lavadouro dos Três Tanques, mas o local deixou de ser seguro até o escurecer."
       - "Colm diz que consegue andar, mas Kethra avalia que ele só consegue andar devagar."
-      - "Colm pode ser escondido atrás da caldeira velha até antes da primeira luz de 4 Eleasis, se Ren aceitar essa solução temporária."
+      - "Colm recebeu o nome de cobertura Dent."
+      - "Colm está usando o manto roto de mendigo que era de Ren."
+      - "Colm está escondido sob a lona da carroça de Dorra Hest."
+      - "Dorra Hest aceitou levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
       - "Levar Colm diretamente até Kethra pode expor a fonte se houver observadores."
-      - "O esconderijo atual é temporário e depende da discrição de Sella Rove."
-      - "Um rapaz já perguntou pela frase ligada ao lavadouro, então Colm pode ser encontrado se permanecer ali por muito tempo."
+      - "O esconderijo atual é temporário e depende da discrição de Dorra Hest até a partida."
+      - "Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a área dos pátios de carroças."
       - "Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança, fome ou doença."
+      - "Antes da partida, Colm ainda pode ser descoberto se alguém seguir a pista fraca dos pátios de carroças."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"
     local: "Lavadouro dos Três Tanques, Rua da Cal, Lower Trades"
-    status: "ativa; abrigando Colm temporariamente, mas com pressão próxima"
+    status: "ativa; ajudou a preparar a saída de Colm/Dent do lavadouro"
     atitude_para_ren: "desconfiada e prática"
     confianca: "nenhuma"
     respeito: "nenhum"
@@ -219,6 +233,9 @@ relacoes:
       uma solução ruim e temporária: mudar Colm do quarto da lenha para trás da
       caldeira velha, sob lona de carvão e barril de cinza, somente até antes
       da primeira luz.
+      Ren decidiu mover Colm imediatamente. Sella preparou embrulho simples de
+      comida e abriu uma saída lateral de cinza, mas a movimentação ainda
+      deixou uma lembrança fraca numa menina da rua.
     informacoes_observadas_por_ren:
       - "Sella Rove é uma mulher de braços fortes e cabelo grisalho preso."
       - "Ela controla ou trabalha nos fundos do Lavadouro dos Três Tanques."
@@ -226,12 +243,39 @@ relacoes:
       - "Sella aceitou esconder Colm temporariamente no quarto da lenha."
       - "Sella desviou um rapaz que perguntou pela frase 'pano azul com sabão preto'."
       - "Sella pode esconder Colm atrás da caldeira velha até antes da primeira luz de 4 Eleasis, mas não depois."
+      - "Sella preparou pão, queijo seco, água e uma agulha torta com linha para Colm/Dent."
+      - "Sella abriu uma saída lateral para reduzir a ligação direta entre Colm e a porta principal do lavadouro."
     riscos:
       - "Sella não é aliada de Ren; sua disposição vem da ligação com Kethra."
       - "O lavadouro é lugar de trabalho, não fortaleza."
       - "Se muita gente associar Colm ao lavadouro, Sella pode expulsá-lo ou buscar ajuda própria."
       - "Sella pode retirar sua ajuda se Ren demorar a mover Colm ou trouxer violência para o lavadouro."
-      - "A ajuda de Sella para a noite é abrigo ruim, não proteção forte; tosse, perguntas ou homens adultos procurando Colm podem quebrar a cobertura."
+      - "A ajuda de Sella reduziu o risco imediato, mas não apagou o rastro fraco deixado na saída lateral."
+  dorra_hest:
+    nome: "Dorra Hest"
+    tipo: "chefe de carroça / capataz de trabalhadores dos fornos de cal"
+    local: "pátios de saída de trabalhadores; rota dos fornos de cal do Fire River"
+    status: "ativa; aceitou pagamento para levar Colm/Dent para fora de Ravens Bluff"
+    atitude_para_ren: "pragmática, desconfiada e comprada por utilidade imediata"
+    confianca: "nenhuma"
+    respeito: "baixo, mas reconhece dinheiro e decisão rápida"
+    motivo: >
+      Ren encontrou Dorra Hest ao procurar uma carroça pobre, discreta e ligada
+      a trabalho duro fora da cidade. Dorra percebeu que Colm/Dent era fraco
+      demais para enxada ou cal, mas aceitou 7 PO para escondê-lo sob a lona e
+      levá-lo para os fornos de cal do Fire River antes da primeira luz de
+      4 Eleasis. Dorra prometeu silêncio prático e alguns dias de trabalho ou
+      abrigo ruim, não proteção verdadeira.
+    informacoes_observadas_por_ren:
+      - "Dorra Hest comanda uma carroça de eixo duplo coberta por lona manchada de branco."
+      - "A carroça leva trabalhadores e material para fornos de cal do Fire River."
+      - "Dorra sai antes da primeira luz de 4 Eleasis."
+      - "Dorra aceitou 7 PO para levar Colm sob o nome Dent."
+      - "Dorra não parece gentil; parece capaz de manter silêncio enquanto o pagamento compensar o risco."
+    riscos:
+      - "Dorra pode abandonar Colm/Dent se ele tossir sangue, atrair guarda, roubar ou parecer caro demais para manter."
+      - "As 7 PO são quantia grande o bastante para fixar a memória de Dorra."
+      - "Se alguém pagar mais ou ameaçar os trabalhadores antes da partida, Dorra pode recalcular a lealdade."
   bram_vask:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"
@@ -256,6 +300,9 @@ relacoes:
       Três Tanques pela frase ligada a Kethra. Ren não confirmou que Bram
       enviou o rapaz, mas Kethra interpretou como sinal de que Bram mexeu
       indiretamente.
+      Ao mover Colm para os pátios de carroças, Ren não conseguiu apagar todo
+      rastro: uma menina viu dois vultos saindo da área dos Três Tanques rumo
+      aos pátios, sem rosto claro.
     informacoes_observadas_por_ren:
       - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
       - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
@@ -265,12 +312,14 @@ relacoes:
       - "Ren não viu perseguição aberta saindo da loja rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques."
       - "Houve movimento pequeno e mal confirmado perto dos fundos da loja, mas Ren não identificou natureza, destinatário ou ligação com Bram."
       - "Sella Rove relatou que um rapaz perguntou pela frase 'pano azul com sabão preto' no Lavadouro dos Três Tanques."
+      - "Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro."
     riscos:
       - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
       - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
       - "Se Bram ligar Colm a Kethra como fonte da informação, ela corre risco direto."
       - "A vigília ruim de Ren deixa aberta a possibilidade de Bram ter acionado alguém indiretamente."
       - "A pergunta do rapaz no lavadouro sugere que a resposta indireta pode estar se aproximando de Colm."
+      - "Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças."
   noll:
     nome: "Noll"
     tipo: "capanga de Bram Vask / mão de cobrança"

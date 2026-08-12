@@ -226,7 +226,6 @@ equipamento:
     - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas, cabelo preso e máscara parcial de entrada"
     - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
     - "disfarce antigo de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso"
-    - "manto roto de mendigo comprado por moeda baixa"
     - "roupas próprias de Ren incorporadas por Dessa Wren como base de figurino estrangeiro"
     - "roupas roubadas e roupas comuns de doação entregues a Dessa Wren para virar retalho"
     - "disfarces de Nera e Tavin de Dessa Wren em uso"
@@ -249,7 +248,7 @@ equipamento:
     - "tira de couro da amarra sabotada da corda alta"
     - "caderno de contas de Bram Vask"
   dinheiro:
-    po: 31
+    po: 24
 
 vinculos:
   regiao_inicial: "Ravens Bluff"

@@ -2028,6 +2028,20 @@ Ponto morto da Silver Lily:
 * Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver;
 * Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken;
 * hora aproximada: 17:46 de 3 Eleasis, 1372 DR.
+* Ren perguntou se Colm conseguia andar; Colm disse que sim, mas Kethra avaliou que ele só consegue andar devagar;
+* Ren entregou seu manto roto de mendigo a Colm como disfarce;
+* Colm adotou o nome de cobertura **Dent**;
+* Kethra e Sella prepararam um embrulho simples com pão, queijo seco, água, moedas pequenas e linha;
+* rolagem: Mover Colm até os pátios de saída sem virar rastro útil, d20 4 + 6 = 10 contra CD 14, falha;
+* uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro;
+* rolagem: Identificar carroça pobre adequada, d20 20 + 3 = 23 contra CD 14, sucesso;
+* Ren encontrou **Dorra Hest**, chefe de uma carroça de trabalhadores dos fornos de cal do Fire River;
+* rolagem: Convencer chefe da carroça com oferta de 7 PO, d20 com vantagem [16, 11] -> 16 contra CD 13, sucesso;
+* Ren pagou 7 PO para Dorra levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis;
+* Colm/Dent está escondido sob a lona da carroça de Dorra;
+* Dorra prometeu silêncio prático e alguns dias nos fornos de cal, não segurança de longo prazo;
+* Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 18:32 de 3 Eleasis, 1372 DR.
 
 Progressão:
 

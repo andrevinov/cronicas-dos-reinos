@@ -2608,3 +2608,113 @@ Kethra respira fundo.
 Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 31 PO, 9 shuriken**. Hora aproximada: **17:46 de 3 Eleasis, 1372 DR**. Kethra não tem parente viável no interior capaz de receber Colm agora. Ela acredita na dor de Ren e aceita que Masao é perigo real para ele e para a trama que toca Narwhal, mas não foi convencida da escala de uma ameaça à cidade inteira. Sella oferece uma solução ruim e temporária: tirar Colm do quarto da lenha e escondê-lo atrás da caldeira velha até antes da primeira luz de **4 Eleasis**, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída. Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver.
 
 O que Ren faz?
+
+**Jogador**
+
+"Ok. Você consegue andar, Colm?"
+
+Se ele conseguir, Ren irá entregar o seu manto de pobre pra ele. Peço pra Kethra e sua amiga criarem uma malinha com alguns pães, algumas moedas, e irei com Colm até a área da cidade onde as carroças costumam sair. Lá Ren tentará identificar uma carroça que esteja saindo com trabalhadores, uma dessas que pergunta pouco, que talvez precise de trabalhadores diários. Vou orientar Colm a usar um novo nome, "Dent". Vou procurar o chefe desse grupo e vou convencê-lo de que meu amigo precisa muito do emprego. Se o homem relutar, oferecerei 7 moedas de ouro para ele levar Colm com ele (que, convenhamos, é uma pequena fortuna pra alguém que trabalha em ramos bem pobres).
+
+**Narrador**
+
+Mover Colm até os pátios de saída sem virar rastro útil: d20 4 + 6 = 10 contra CD 14. Falha.
+Identificar carroça pobre adequada: d20 20 + 3 = 23 contra CD 14. Sucesso.
+Convencer chefe da carroça com oferta de 7 PO: d20 com vantagem [16, 11] -> 16 contra CD 13. Sucesso.
+
+Colm responde antes de Kethra.
+
+"Consigo."
+
+A palavra sai firme demais para o corpo dele. A tosse vem logo depois e estraga a mentira pela metade. Kethra olha para Ren como quem traduz sem delicadeza:
+
+"Consegue andar se ninguém mandar correr."
+
+O manto roto de Ren muda de ombro. Em Colm, ele parece menos disfarce e mais destino: pano velho sobre rosto pálido, costas encolhidas, mãos escondidas. Kethra prende o nó na altura do peito e para por um instante quando os dedos inchados do irmão somem sob o tecido.
+
+Sella não faz malinha. Faz embrulho.
+
+Dois pães duros, um pedaço de queijo seco envolto em pano, uma tira de cebola, um odre pequeno que já viu dias melhores. Kethra põe moedas miúdas dentro do forro, cobre e prata pobre demais para virar solução. Sella acrescenta uma agulha torta com linha escura.
+
+"Nome?", Kethra pergunta.
+
+"Dent", Ren diz.
+
+Colm repete baixo:
+
+"Dent."
+
+Não soa natural ainda. Mas soa possível.
+
+Kethra não vai junto. Ela entende antes de Ren precisar explicar. Se Colm for visto saindo com ela, todo o cuidado anterior vira teatro ruim. Então ela fica no quarto da lenha com a mão fechada sobre o próprio avental, sem abraçar de novo porque abraço longo prende gente no lugar.
+
+Sella abre a saída errada.
+
+Não a porta dos fundos mais usada. Uma lateral estreita por onde cestos quebrados e cinza velha são empurrados para fora. Isso ajuda. A hora ajuda também: o lavadouro está cheio de vapor, troca de água, mulheres cansadas e homens que querem só terminar carga antes que a luz acabe.
+
+Mesmo assim, Colm falha no pior tipo de silêncio: o do corpo.
+
+No segundo beco, ele prende o pé numa pedra solta e bate o ombro em uma tábua. Não cai. Ren segura. Mas o barulho faz uma menina parar de catar lascas perto de um tonel rachado. Ela vê um mendigo fraco demais sendo levado por outro homem encapuzado. Não vê rosto limpo. Vê direção.
+
+E vê que os dois saem da área do Lavadouro dos Três Tanques.
+
+Ren não volta para corrigir isso. Corrigir seria virar lembrança maior.
+
+Os pátios de saída não são um lugar só. São três ou quatro bocas de trabalho espremidas entre armazéns baixos, carroças tortas, cheiro de cal, saco de carvão e homens que dormem onde conseguem antes de sair cedo. Àquela hora, quase ninguém está partindo de verdade. A cidade puxa coisa para dentro no fim do dia, não para fora.
+
+Mas a leitura de Ren acerta o padrão certo.
+
+Há uma carroça de eixo duplo, coberta por lona manchada de branco, parada perto de barris de cinza e cestos de pedra clara. Não é carga de mercado. É carga de forno. Dois rapazes dormem em cima de sacos vazios. Um homem magro demais amarra corda com paciência de quem vai sair antes da primeira luz, e uma mulher baixa, de ombros largos, conta peças de cobre numa tábua.
+
+O nome dela é Dorra Hest. Ren descobre isso porque dois trabalhadores a chamam antes de pedir mais água.
+
+Dorra olha para Colm uma vez e entende o bastante para não gostar.
+
+"Esse aí não aguenta cal", ela diz. "Nem enxada."
+
+Ren fala de emprego, de necessidade, de um homem que precisa sair da cidade e trabalhar o que puder. O nome é Dent. Dent não deve perguntas a ninguém ali. Dent pode carregar água, separar pedra pequena, cuidar de barril, limpar ferramenta, dormir no frio se mandarem.
+
+Dorra continua olhando para as mãos escondidas de Colm.
+
+"Nome novo demais."
+
+A bolsa de Ren muda o argumento.
+
+Sete peças de ouro não entram na mão dela como suborno elegante. Entram como peso absurdo. Dorra cobre as moedas com a palma antes que os trabalhadores vejam bem demais, e o rosto dela fica mais fechado, não mais gentil.
+
+"Por sete", ela diz, "Dent saiu da cidade comigo antes da primeira luz. Fica nos fornos de cal do Fire River até eu cansar dele, ele cansar de mim ou alguém pagar mais do que isso para perguntar melhor."
+
+Ela inclina o queixo para Colm.
+
+"Se tossir sangue na minha lona, eu largo no templo de estrada mais próximo. Se roubar, eu quebro a outra mão. Se falar nome errado, eu não ouvi."
+
+Colm engole seco.
+
+"Entendi."
+
+"Não entendeu", Dorra responde. "Mas vai aprender."
+
+Ela aponta para debaixo da lona, entre os sacos vazios e um barril de cinza tampado.
+
+"Dorme ali. Não sai para mijar sem pedir. Se guarda perguntar, é sobrinho de pedreiro morto e chama Dent. Se cobrador perguntar, nunca entrou nesta carroça."
+
+A solução é feia. Mas existe.
+
+Kethra não vê o irmão subir na carroça. Talvez isso seja misericórdia. Talvez seja só mais uma coisa roubada dela.
+
+Quando Colm se acomoda sob a lona, ele segura o embrulho de pão como se fosse documento sagrado. Antes de sumir de vista, olha para Ren.
+
+"Eu digo que você..."
+
+A frase morre porque ele não sabe que palavra usar. Salvou? Comprou? Mandou embora?
+
+Dorra bate uma mão seca na lateral da carroça.
+
+"Menos fala, Dent."
+
+O pátio continua ruidoso. Corda. Cinza. Roda. Gente cansada. Nada ali parece heroico. Isso ajuda.
+
+Mas Ren sabe duas coisas ao mesmo tempo: Colm tem uma saída real de Ravens Bluff antes da primeira luz de **4 Eleasis**; e em algum beco atrás, uma menina viu dois vultos saindo da área do lavadouro rumo aos pátios de carroças.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 3/4, 24 PO, 9 shuriken**. Hora aproximada: **18:32 de 3 Eleasis, 1372 DR**. Ren entregou seu manto roto a Colm, agora usando o nome **Dent**, e pagou **7 PO** a **Dorra Hest**, chefe de uma carroça de trabalhadores dos fornos de cal do Fire River. Dorra aceitou levar Colm para fora da cidade antes da primeira luz de **4 Eleasis** e deixá-lo nos fornos por alguns dias, sem prometer segurança de longo prazo. A saída do lavadouro não foi limpa: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios de carroças, embora sem rosto claro. Colm está escondido sob a lona da carroça de Dorra.
+
+O que Ren faz?

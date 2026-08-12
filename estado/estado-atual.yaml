@@ -17,9 +17,9 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Lower Trades / Rua da Cal"
-  ponto_exato: "fundos do Lavadouro dos Três Tanques, quarto da lenha"
-  descricao_operacional: "Após a vigília parcial da loja de Bram Vask, Ren reencontrou Kethra Dunn depois do turno e confirmou que ela não tinha cauda clara, embora um aprendiz na lateral de Narwhal possa lembrar de um mendigo se movendo quando ela saiu. Kethra foi ao Lavadouro dos Três Tanques ver Colm. Sella Rove avisou que um rapaz já farejou a frase 'sabão preto para pano azul', sinal de que o esconderijo começou a ficar perigoso. Kethra revelou que não ouviu o nome Masao em Narwhal, mas ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow. Também confirmou que Velis parece instrumento de papel, não mandante, e que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Ren contou a Kethra sua história sobre Aiko, Masao e a vingança. Kethra acredita na dor de Ren e no perigo real ao redor de Narwhal, Brass, Velis e a lua, mas não foi convencida da escala de uma ameaça à cidade inteira. Ela não tem parente viável no interior para receber Colm agora. Sella oferece esconder Colm atrás da caldeira velha até antes da primeira luz de 4 Eleasis, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída. Colm não está seguro no lavadouro por muito tempo."
+  area: "Lower Trades / pátios de carroças de cal e carvão"
+  ponto_exato: "pátio de saída de trabalhadores, perto da rota dos fornos de cal do Fire River"
+  descricao_operacional: "Ren tirou Colm Dunn do Lavadouro dos Três Tanques sob o manto roto de mendigo e o levou aos pátios de carroças, usando o nome de cobertura Dent. A saída do lavadouro não foi limpa: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios de carroças, sem rosto claro. Ren encontrou uma carroça adequada dos fornos de cal do Fire River e pagou 7 PO a Dorra Hest, chefe prática e desconfiada, para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis. Colm está escondido sob a lona da carroça de Dorra, com pão e moedas pequenas de Kethra/Sella. Dorra prometeu silêncio operacional e alguns dias nos fornos, não segurança de longo prazo. Kethra seguirá ouvindo Narwhal se Colm tiver uma chance prática de sobreviver; ela acredita na dor de Ren e no perigo ligado a Masao, Narwhal, Brass, Velis e a lua, mas não foi convencida da escala de uma ameaça à cidade inteira."
 
 tempo:
   ano_dr: 1372
@@ -32,10 +32,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 3
   periodo_do_dia: "fim da tarde seguinte ao Benefício da Lona Aberta"
-  hora_aproximada: "17:46 de 3 Eleasis"
+  hora_aproximada: "18:32 de 3 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual é 3 Eleasis."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm Dunn precisa ser movido para fora do quarto da lenha e escondido melhor antes do escurecer de vez; a janela oferecida por Sella dura só até antes da primeira luz de 4 Eleasis, quando uma carroça comum pode tirá-lo da cidade se Ren organizar e escoltar a saída."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Uma menina viu dois vultos saindo da área do lavadouro rumo aos pátios de carroças, o que pode virar pista se Bram comprar lembranças."
 
 recursos:
   pontos_de_vida:
@@ -52,7 +52,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: "50 pés"
   dinheiro:
-    po: 31
+    po: 24
   condicoes:
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
@@ -555,6 +555,19 @@ recursos:
     - "Kethra avalia que Velis Rook escreve, corrige, assina e treme, mas não parece mandante"
     - "Kethra revelou que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros"
     - "Colm Dunn não está seguro no quarto da lenha por muito tempo"
+    - "Ren contou a Kethra a história de Aiko, Masao Hirasawa, o selo e sua vingança, sem revelar outros protegidos"
+    - "Rolagem para parentes viáveis no interior: 4 contra CD 11, falha"
+    - "Kethra não tem parente viável no interior capaz de receber Colm agora"
+    - "Rolagem de honestidade com Kethra sobre Masao: 8 contra CD 13, falha"
+    - "Kethra acredita no perigo real ao redor de Ren e Narwhal, mas não foi convencida da escala de uma ameaça à cidade inteira"
+    - "Rolagem para mover Colm até os pátios de saída sem virar rastro útil: 10 contra CD 14, falha"
+    - "Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro"
+    - "Ren entregou seu manto roto de mendigo a Colm como disfarce"
+    - "Colm adotou o nome de cobertura Dent"
+    - "Rolagem para identificar carroça pobre adequada: 23 contra CD 14, sucesso"
+    - "Rolagem para convencer chefe da carroça com oferta de 7 PO: 16 contra CD 13, sucesso"
+    - "Ren pagou 7 PO a Dorra Hest para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis"
+    - "Dorra Hest aceitou esconder Colm/Dent sob a lona da carroça e levá-lo aos fornos de cal do Fire River por alguns dias"
   exaustao: 0
 
 equipamento_em_posse:
@@ -584,7 +597,6 @@ equipamento_em_posse:
     - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso e máscara parcial de entrada"
     - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
     - "manta de estopa cinza sobre o ombro para quebrar a silhueta"
-    - "manto roto de mendigo comprado por moeda baixa"
     - "roupas proprias de Ren guardadas com Dessa Wren para limpeza e uso como figurino estrangeiro"
     - "roupas roubadas e roupas de doacao entregues a Dessa Wren para virar retalho"
     - "disfarces de Nera e Tavin de Dessa Wren em uso"
@@ -596,7 +608,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir como mover ou proteger melhor Colm Dunn antes que a sondagem ligada a Bram alcance o quarto da lenha"
+    - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se retoma outra pista imediatamente"
     - "decidir se segue a pista da gaveta de areia, cera e panos retirada de Narwhal rumo à rua dos tintureiros"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "não entrar de modo imprudente antes de entender se há crianças, adultos armados ou rota subterrânea"
@@ -637,7 +649,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está nos fundos do Lavadouro dos Três Tanques com Kethra Dunn, Colm Dunn e Sella Rove. Kethra visitou Colm e agora confia em Ren de modo prático, mas avisou que não ouviu o nome Masao em Narwhal; ouviu 'hóspede', 'homem da lua' e a versão preparada de M. Harrow. Ela revelou que a gaveta de areia, cera e panos do corredor treze saiu em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros. Sella avisou que um rapaz já farejou a frase de identificação do lavadouro, então Colm não está seguro ali por muito tempo. Ren está com 31/31 PV, 3/4 ki, 31 PO e 9 shuriken. Hora aproximada: 17:38 de 3 Eleasis, 1372 DR."
+  cena_atual: "Ren está nos pátios de carroças de cal e carvão, perto da rota dos fornos de cal do Fire River. Colm Dunn, agora sob o nome Dent, está escondido sob a lona da carroça de Dorra Hest, que aceitou 7 PO para levá-lo para fora de Ravens Bluff antes da primeira luz de 4 Eleasis e deixá-lo por alguns dias nos fornos. A solução compra tempo, não segurança definitiva. A saída do lavadouro deixou uma pista fraca: uma menina viu dois vultos saindo da área dos Três Tanques em direção aos pátios. Ren está com 31/31 PV, 3/4 ki, 24 PO e 9 shuriken. Hora aproximada: 18:32 de 3 Eleasis, 1372 DR."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"
