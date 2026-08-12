@@ -2256,3 +2256,17 @@ Progressão:
 * Maerra iniciou atendimento imediato a Peta e perguntou a Ren quantos vieram atrás;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
 * hora aproximada: 01:05 de 4 Eleasis, 1372 DR.
+* rolagem: Maerra reconhecer a marca do sol apagado, d20 2 + 5 = 7 contra CD 14, falha;
+* Maerra não reconheceu a mulher de vermelho nem a marca com segurança;
+* Maerra avaliou apenas que o sol apagado não é símbolo de Lathander ou ordem conhecida por ela, parecendo deboche ou apropriação cruel de símbolo de amanhecer;
+* rolagem: Peta conseguir dizer algo útil em choque, d20 2 contra CD 12, falha;
+* Peta só conseguiu dizer fragmentos: "frio", "embaixo" e que a mulher de vermelho não falava com ela;
+* Cal segurou o antebraço de Ren por um instante em agradecimento;
+* Ren dormiu pouco na Casa da Aurora Menor por puro cansaço;
+* o sono não contou como descanso curto de monge: Ren não meditou por tempo suficiente e não recuperou ki;
+* Ren voltou ao Jack Mooney & Sons Circus pela rota da carroça de remendos;
+* o Broche do Semblante Humilde expirou no caminho e está gasto até o próximo amanhecer;
+* Ren não percebeu cauda competente no retorno ao circo;
+* Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
+* hora aproximada: 02:10 de 4 Eleasis, 1372 DR.

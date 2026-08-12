@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Temple District"
-  ponto_exato: "Casa da Aurora Menor, porta lateral/saleta de abrigo"
+  area: "Jack Mooney & Sons Circus"
+  ponto_exato: "rota da carroça de remendos, interceptado por Silva Elkwood antes da carroça verde"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -43,7 +43,14 @@ localizacao:
     confirmada viva por Cal e entregue a Maerra. Passos sem Pegadas expirou por
     volta de 00:58 de 4 Eleasis; o Broche do Semblante Humilde foi usado e deve
     manter a aparência humilde/comum de Ren até cerca de 01:56, com uso gasto
-    até o próximo amanhecer. Colm/Dent segue escondido sob a lona de Dorra Hest
+    até o próximo amanhecer. Maerra não reconheceu a mulher ou a marca com
+    segurança, e Peta, em choque, só conseguiu dizer fragmentos: "frio",
+    "embaixo" e que a mulher de vermelho não falava com ela. Ren apagou por
+    cansaço na Casa da Aurora Menor por pouco tempo, sem completar descanso
+    curto de monge e sem recuperar ki. Depois voltou ao circo pela rota da
+    carroça de remendos, sem cauda competente percebida; o broche expirou no
+    caminho. Silva Elkwood interceptou Ren antes da carroça verde e perguntou se
+    ele trouxe alguém atrás. Colm/Dent segue escondido sob a lona de Dorra Hest
     até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em
     Narwhal ainda precisa ser montado fisicamente por Ren.
 
@@ -58,10 +65,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "madrugada de 4 Eleasis, após o Benefício da Lona Aberta"
-  hora_aproximada: "01:05 de 4 Eleasis"
+  hora_aproximada: "02:10 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo por volta de 02:10 sem cauda competente percebida, mas ainda sem ki."
 
 recursos:
   pontos_de_vida:
@@ -170,6 +177,13 @@ recursos:
     - "Passos sem Pegadas expirou no trajeto por volta de 00:58"
     - "Ren chegou à Casa da Aurora Menor sem levantar suspeita útil"
     - "Peta foi confirmada viva por Cal e entregue aos cuidados imediatos de Maerra"
+    - "Maerra não reconheceu a marca do sol apagado: 7 contra CD 14, falha"
+    - "Peta conseguir dizer algo útil em choque: 2 contra CD 12, falha"
+    - "Peta só conseguiu dizer fragmentos: frio, embaixo, e que a mulher de vermelho não falava com ela"
+    - "Ren dormiu pouco na Casa da Aurora Menor por puro cansaço, sem completar descanso curto de monge e sem recuperar ki"
+    - "O Broche do Semblante Humilde expirou no caminho de volta ao circo"
+    - "Ren voltou ao circo pela rota da carroça de remendos sem cauda competente percebida"
+    - "Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"
@@ -739,7 +753,7 @@ equipamento_em_posse:
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; usado na madrugada de 4 Eleasis e gasto até o próximo amanhecer"
   outros:
     - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso e máscara parcial de entrada"
     - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
@@ -755,14 +769,14 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "responder a Maerra sobre quantos vieram atrás ou o que Ren viu na oficina dos tintureiros"
-    - "decidir se prioriza descanso, aviso a Luath, retorno à oficina dos tintureiros, ou proteção imediata das crianças"
+    - "responder a Silva se trouxe alguém atrás e decidir quanto contar sobre Peta, Maerra e a oficina dos tintureiros"
+    - "descansar de forma segura e completar descanso curto de monge se quiser recuperar ki"
     - "considerar que a Casa Velha do Primeiro Raio pode usar crianças como olheiros e não deve ser tratada como abrigo vazio"
     - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se confia na saída comprada com Dorra"
     - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
     - "resolver a pista da gaveta de areia, cera e panos retirada de Narwhal rumo à rua dos tintureiros"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
-    - "proteger a criança presa no chão da oficina, quase certamente Peta"
+    - "proteger Peta e as outras crianças agora sob cuidado de Maerra"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
     - "observar se Red Sail, Narwhal ou outros interessados reagem ao sucesso do número"
     - "integrar Nera com Dessa Wren e Tavin à cozinha/recados antes de qualquer cartaz público"
@@ -800,7 +814,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren chegou à Casa da Aurora Menor pela porta lateral com Peta viva, presa e amordaçada, disfarçada como carga de retalhos úmidos sob o Broche do Semblante Humilde. Maerra colocou Ren e a criança para dentro sem fazer pergunta na porta; Cal confirmou que a criança é Peta. Maerra cortou a mordaça primeiro, ainda não removeu todas as amarras, e perguntou a Ren: 'Quantos vieram atrás?'. Ren está sob aparência humilde/comum do broche até cerca de 01:56, mas o uso do item está gasto até o próximo amanhecer. Passos sem Pegadas expirou no trajeto por volta de 00:58. Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken. Hora aproximada: 01:05 de 4 Eleasis, 1372 DR."
+  cena_atual: "Ren voltou ao Jack Mooney & Sons Circus pela rota da carroça de remendos após resgatar Peta e entregá-la viva a Maerra. Na Casa da Aurora Menor, Maerra não reconheceu a marca do sol apagado com segurança, e Peta não conseguiu falar algo útil além de fragmentos: frio, embaixo, e que a mulher de vermelho não falava com ela. Ren dormiu pouco por cansaço, mas não completou descanso curto de monge e não recuperou ki. O Broche do Semblante Humilde expirou no caminho de volta e está gasto até o próximo amanhecer. Ren chegou ao circo sem cauda competente percebida. Silva Elkwood o interceptou antes da carroça verde e perguntou: 'Você trouxe alguém atrás?'. Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken. Hora aproximada: 02:10 de 4 Eleasis, 1372 DR."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

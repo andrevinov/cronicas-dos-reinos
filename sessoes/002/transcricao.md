@@ -4287,3 +4287,98 @@ Não para o rosto do broche. Para Ren.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren resgatou **Peta viva** e chegou à **Casa da Aurora Menor** sem levantar suspeita útil. **Passos sem Pegadas expirou** no trajeto, por volta de **00:58**. O **Broche do Semblante Humilde foi usado** e deve manter a aparência humilde/comum de Ren até cerca de **01:56**, mas seu uso está gasto até o próximo amanhecer. Hora aproximada: **01:05 de 4 Eleasis, 1372 DR**. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; alguém atrás da cortina reagiu, mas não houve alarme público imediato. Peta está com Maerra, viva, presa ainda parcialmente e em choque.
 
 O que Ren faz?
+
+**Jogador**
+
+"Ninguém. O broche se mostrou útil quando minhas técnicas perderam seu efeito. Teria sido muito arriscado sem ele."
+
+Conto a Maerra sobre a estranha mulher de vermelho. Querendo saber se ela sabe algo sobre alguém assim. Pergunta a Peta também se ela viu essa mulher fazer algo ou dizer algo diferente.
+
+Depois que Maerra fala [e talvez alguma criança abrace Ren], ele acaba dormindo por puro cansaço. Mas não dormirá muito, só o suficiente para conseguir fazer o caminho para o circo. Maerra já tem muita gente pra cuidar.
+
+**Narrador**
+
+Reconhecer a marca do sol apagado: Maerra, d20 2 + 5 = 7 contra CD 14. Falha.
+Conseguir dizer algo útil em choque: Peta, d20 2 contra CD 12. Falha.
+
+"Ninguém ainda", Maerra corrige, sem dureza.
+
+Ela não desperdiça tempo repreendendo Ren pela resposta. Só ouve. A mulher pálida. A máscara presa com cera. A cicatriz antiga. A marca do sol apagado no pescoço. A manga cinza. A mão com dois anéis. A barra de ferro. A abertura baixa atrás da cortina.
+
+Quando Ren descreve o círculo cortado por três riscos, Maerra para por um instante.
+
+Não é reconhecimento limpo.
+
+É incômodo religioso.
+
+"Isso não é sinal de Lathander", ela diz. "Nem símbolo de ordem que eu conheça. Parece deboche. Ou apropriação. Um sol apagado é o tipo de coisa que gente cruel usa quando quer ensinar medo a criança que já ouviu falar de amanhecer."
+
+Ela olha para a caixa aberta, para o broche que agora está em Ren e para Peta tentando respirar sem chorar alto.
+
+"Mas eu não conheço a mulher. Nem posso te dar nome de culto só porque alguém riscou um sol."
+
+Maerra se abaixa junto de Peta antes que Ren faça a pergunta diretamente de novo. A voz dela muda: menos ferro, mais pano.
+
+"Peta. Só se conseguir. A mulher de vermelho disse alguma coisa diferente? Fez alguma coisa que você lembra?"
+
+Peta abre a boca.
+
+Nada sai primeiro.
+
+Depois sai um som pequeno demais para palavra. Maerra espera. Não empurra.
+
+"Frio", Peta consegue dizer. "Embaixo."
+
+Ela fecha os olhos com força. Tenta outra vez. O corpo inteiro treme antes da frase nascer.
+
+"Ela... não falava comigo."
+
+Isso custa tudo que ela tem naquele instante.
+
+Maerra não pergunta mais.
+
+"Chega."
+
+Cal está na beira da saleta. Por um momento parece que vai correr até Peta. Em vez disso, ele vai até Ren. Não abraça como criança feliz abraça. Segura Ren pelo antebraço com as duas mãos, aperta uma vez, rápido, como se agradecimento fosse uma coisa perigosa demais para ficar muito tempo exposta.
+
+Depois solta.
+
+Ren senta porque o corpo escolhe antes de qualquer argumento.
+
+Maerra ainda está falando alguma coisa sobre água morna, pano limpo e deixar o peito de Peta destravar antes de tirar as amarras dos tornozelos, mas as palavras começam a ficar longe. A saleta tem cheiro de erva esmagada, cera limpa e medo diminuindo devagar.
+
+O sono vem sem cerimônia.
+
+Não é descanso de monge. Não é meditação. Não é recuperação.
+
+É queda.
+
+Quando Maerra toca o ombro de Ren de novo, não há manhã. Só outra parte da madrugada.
+
+"Você dormiu pouco", ela diz. "O bastante para ficar de pé. Não o bastante para fingir que está inteiro."
+
+Peta está deitada de lado em um catre baixo, já sem mordaça e com as mãos soltas, coberta até os ombros. Cal dormiu sentado no chão perto dela, a cabeça tombada contra a parede. Miri está acordada, mas finge que não.
+
+Maerra entrega a Ren um copo de água e um pedaço pequeno de pão.
+
+"Eu tenho muita gente para cuidar", ela diz, porque ouviu isso no jeito dele antes mesmo que ele dissesse. "Mas não use isso como desculpa para cair na rua. Vá pelo fundo. Se Luath precisar saber antes do amanhecer, eu mando palavra curta. Não mando criança, não mando devoto jovem, não mando ninguém que não saiba correr com boca fechada."
+
+O rosto humilde do broche ainda cobre Ren quando ele sai da Casa da Aurora Menor, mas já está perto do fim.
+
+A cidade entre o templo e o circo está mais vazia do que segura. Ren não encontra cauda competente. Não há grito vindo da rua dos tintureiros atrás dele, nem sino de guarda, nem patrulha virando exatamente no tempo errado. Quando o efeito do broche se desfaz, perto das ruas mais largas que levam aos terrenos do circo, ele já é só Ren de novo em ruas onde quase ninguém quer lembrar de ninguém.
+
+O Jack Mooney & Sons Circus dorme com um olho aberto.
+
+Ren entra pela rota da carroça de remendos. Antes que chegue perto da carroça verde, uma sombra se destaca da lateral de uma lona.
+
+Silva Elkwood.
+
+Ela olha para o rosto dele, para as mãos, para a roupa, para o modo como ele está de pé.
+
+"Você trouxe alguém atrás?"
+
+Mesma pergunta. Outra guardiã.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren dormiu pouco na Casa da Aurora Menor, mas **não completou descanso curto de monge** e **não recuperou ki**. O **Broche do Semblante Humilde expirou no caminho** e está gasto até o próximo amanhecer. Peta está viva sob cuidado de Maerra. Hora aproximada: **02:10 de 4 Eleasis, 1372 DR**. Ren chegou ao **Jack Mooney & Sons Circus** pela rota da carroça de remendos, sem cauda competente percebida, e Silva o interceptou antes da carroça verde.
+
+O que Ren faz?
