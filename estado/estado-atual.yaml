@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Lower Trades"
-  ponto_exato: "rua próxima à loja de penhores/cobrança de Bram Vask"
+  area: "Harbor District"
+  ponto_exato: "escada dos fundos da The Silver Lily, junto ao ponto morto de Pell"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -73,9 +73,17 @@ localizacao:
     ou testemunho, mas a Night Watch pressionou Bram em sua loja. Depois da
     visita da guarda, Ren pagou uma criança para entregar recado ameaçador; a
     mensagem chegou imprecisa, ligando a ameaça à visita da guarda. Bram não
-    atacou a criança em público, fechou a loja e começou a se mover nos fundos. O
-    ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por
-    Ren.
+    atacou a criança em público, fechou a loja e começou a se mover nos fundos.
+    Ren seguiu até os fundos de Narwhal Manor e montou fisicamente o ponto morto
+    de Kethra no vaso rachado junto aos barris de areia e à calha quebrada. A
+    chegada foi limpa, mas a montagem ficou imperfeita: a base do vaso deixou
+    sinais discretos de manipulação e há uma migalha de cera cinza visível de
+    perto. A mensagem informa que Colm/Dent foi com a cal, que Bram recebeu
+    visita da guarda e recado para parar, e que o amigo está seguro por algum
+    tempo. Depois Ren foi à The Silver Lily e encontrou novo bilhete de Pell no
+    ponto morto: Rusk não voltou, Brass usa mensageiro novo e evita o beco dos
+    tonéis, alguém perguntou se Kage era o mesmo oriental da Silver Lily, e um
+    papel fino foi para Narwhal com a palavra "máscara" associada.
 
 tempo:
   ano_dr: 1372
@@ -87,11 +95,11 @@ tempo:
   dia_do_mes: 4
   dezena: 1
   dia_da_dezena: 4
-  periodo_do_dia: "amanhecer de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "08:10 de 4 Eleasis"
+  periodo_do_dia: "manhã de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
+  hora_aproximada: "08:45 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'."
 
 recursos:
   pontos_de_vida:
@@ -239,6 +247,16 @@ recursos:
     - "Rolagem para Ren observar a entrega do recado sem fixar rosto: 20 contra CD 13, sucesso"
     - "A criança entregou o recado de forma imprecisa, ligando a ameaça de Ren à visita da guarda"
     - "Bram não atacou a criança em público, mas fechou a loja e começou a se mover nos fundos"
+    - "Aproximar-se dos fundos de Narwhal sem ativar atenção: 15 contra CD 15, sucesso"
+    - "Ren montou o ponto morto de Kethra no vaso rachado junto aos barris de areia e à calha quebrada"
+    - "Montar ponto morto de Kethra sem parecer novo: 10 contra CD 14, falha"
+    - "O ponto morto de Kethra funciona, mas nasceu com sinais discretos de manipulação no vaso e migalha de cera cinza visível de perto"
+    - "Ren deixou para Kethra a mensagem sobre Colm/Dent ter ido com a cal, Bram ter recebido guarda e recado, e o amigo estar seguro por algum tempo"
+    - "Pell conseguir deixar recado novo desde a última verificação: 18 contra CD 15, sucesso"
+    - "Ren encontrou novo bilhete de Pell no ponto morto da The Silver Lily"
+    - "O bilhete de Pell diz que Rusk não voltou, Brass usa mensageiro novo e evita o beco dos tonéis"
+    - "O bilhete de Pell diz que alguém perguntou se Kage era o mesmo oriental da Silver Lily"
+    - "O bilhete de Pell diz que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra 'máscara' ouvida"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"

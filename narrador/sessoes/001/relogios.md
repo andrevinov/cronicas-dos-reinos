@@ -163,6 +163,7 @@ Estado atual:
 * Na manhã seguinte ao Benefício, Ren tentou vigiar a chegada de Velis à Casa de Tyr. Não ficou em posição ideal e um guardião notou um homem de capuz interessado demais, mas Ren se afastou sem identificação confirmada. Ren ouviu indício de preparação de depoimento por uma mulher ligada a interesses de casa rica: negar patrono, reduzir a anulação a correção de escrita, tratar a lua como marca recebida e empurrar o "oriental" para M. Harrow. Sem avanço imediato do relógio, mas o risco institucional aumenta se Ren insistir no perímetro de Tyr.
 * Ren retornou ao entorno de Narwhal Manor por volta de 12:30-13:00 para observar trabalhadores de serviço. A tentativa de ficar invisível falhou parcialmente; um guarda notou um observador deslocado antes de Ren trocar de posição. A casa ainda não identificou Ren, mas a vigilância lateral endureceu.
 * No fim da tarde, Ren reencontrou Kethra após o turno. Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando ela saiu, mas não há identificação, abordagem ou cauda confirmada. Sem avanço imediato do relógio, mas a superfície de suspeita ao redor de Kethra aumentou.
+* Na manhã de 4 Eleasis, Ren voltou aos fundos de Narwhal Manor para montar o ponto morto de Kethra. A aproximação foi limpa, mas a montagem do vaso ficou imperfeita, com sinais discretos de manipulação. Sem avanço imediato do relógio, mas o ponto pode virar pista se funcionários mexerem nos vasos ou se Narwhal procurar sinais de contato externo.
 
 ---
 

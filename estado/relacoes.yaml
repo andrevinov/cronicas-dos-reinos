@@ -135,7 +135,11 @@ relacoes:
       Na manhã de 4 Eleasis, Ren foi aos pátios e pagou 1 PO por informação.
       Soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas que
       alguém perguntou por um doente vindo do lavadouro antes da partida. Kethra
-      ainda não sabe disso em cena.
+      ainda não sabe disso em cena. Depois Ren montou fisicamente o ponto morto
+      combinado nos fundos de Narwhal Manor e deixou mensagem dizendo que Colm
+      foi com a cal, que Bram recebeu guarda e recado para parar, e que o amigo
+      está seguro por algum tempo. A entrega foi feita, mas o vaso ficou com
+      sinais discretos de manipulação.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -166,6 +170,7 @@ relacoes:
       - "Kethra recusou mensagens diárias; ela só deixará mensagem quando houver algo útil ou perigo."
       - "Ponto morto acordado: vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor."
       - "Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada; se o vaso sumir, o caminho morreu."
+      - "Ren montou fisicamente o ponto morto na manhã de 4 Eleasis e deixou a rachadura voltada para a parede, com mensagem de que Colm/Dent foi com a cal e Bram recebeu pressão da guarda e recado."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
@@ -175,6 +180,7 @@ relacoes:
       - "A saída de Colm do lavadouro deixou uma pista fraca: uma menina viu dois vultos indo dos Três Tanques aos pátios de carroças."
       - "A volta de Ren até Kethra deixou outra pista fraca: um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal."
       - "Ren soube depois, por um trabalhador dos pátios, que alguém perguntou por um doente vindo do lavadouro antes da carroça de Dorra sair."
+      - "A montagem inicial do ponto morto de Kethra ficou imperfeita: o vaso tem sinais discretos de manipulação e cera cinza visível de perto."
       - "Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade."
       - "Se Ren procurar Kethra por ausência de mensagem, pode destruir o valor do ponto morto por transformar silêncio em encontro."
       - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
@@ -405,7 +411,9 @@ relacoes:
       gritasse e apresentou a abordagem como tentativa de manter o contato
       secreto. Depois, Pell usou o ponto morto do vaso com flor nos fundos da
       Silver Lily para deixar uma mensagem útil sobre Velis Rook, Brass, Rusk e
-      o "homem da lua".
+      o "homem da lua". Na manhã de 4 Eleasis, Pell deixou novo bilhete no
+      mesmo ponto, indicando que a ausência de Rusk já afetou o circuito de
+      Brass e que alguém está tentando ligar Kage ao oriental da Silver Lily.
     informacoes_compartilhadas_por_pell:
       - "Pell ouviu na Silver Lily menções a homem do leste, rosto marcado, Velis Rook e Mara."
       - "Pell levou a notícia para Brass na Red Sail porque Brass paga rápido por esse tipo de informação."
@@ -416,15 +424,20 @@ relacoes:
       - "Pell ouviu Velis murmurar a palavra 'Lua'."
       - "Pell deixou bilhete dizendo que Velis vai limpar papel na casa grande do peixe antes do sino de nove."
       - "Pell deixou bilhete dizendo que Brass está irritado, Rusk não voltou e o homem da lua não desce ao cais."
+      - "Pell deixou novo bilhete dizendo que Rusk não voltou, Brass usa menino novo e evita o beco dos tonéis."
+      - "Pell deixou novo bilhete dizendo que, depois da lona, alguém perguntou se Kage era o mesmo oriental da Silver Lily."
+      - "Pell escreveu que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra 'máscara' ouvida."
     limites:
       - "Pell pediu pagamento para continuar 'não lembrando'."
       - "Pell aceitou 1 PO de Ren pela informação."
       - "Ren estabeleceu um ponto morto de contato nos fundos da Silver Lily: quando houver um pequeno vaso com flor na parte alta da escada, Pell pode deixar mensagem ali e receber pagamento depois."
       - "Ren pagou 1 PO pelo bilhete de Pell deixando a moeda no vaso."
+      - "No novo bilhete de 4 Eleasis, Pell pediu pagamento melhor."
     riscos:
       - "Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro."
       - "Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade."
       - "O aviso de Ren sobre risco de morte pode fazer Pell cooperar por medo ou desaparecer se a cidade parecer perigosa demais."
+      - "Pell agora é ponto sensível porque foi perguntado sobre a possível ligação entre Kage e o oriental da Silver Lily."
   nera_vell:
     nome: "Nera Vell"
     tipo: "testemunha protegida / gravadora de selos"

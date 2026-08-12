@@ -2324,3 +2324,16 @@ Progressão:
 * Ren não foi identificado na entrega do recado;
 * Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO, 9 shuriken e o caderno de contas de Bram Vask;
 * hora aproximada: 08:10 de 4 Eleasis, 1372 DR.
+* Ren foi aos fundos de Narwhal Manor para montar fisicamente o ponto morto combinado com Kethra;
+* rolagem: Aproximar-se dos fundos de Narwhal sem ativar atenção, d20 9 + 6 = 15 contra CD 15, sucesso;
+* Ren deixou no vaso rachado, com a rachadura voltada para a parede, a mensagem: "Nosso amigo foi com o cal. Nosso inimigo recebeu visita de guarda e recado de parar de ir atrás. Suficiente pra mantê-lo na coleira. Amigo seguro por algum tempo.";
+* rolagem: Montar ponto morto de Kethra sem parecer novo, d20 6 + 4 = 10 contra CD 14, falha;
+* o ponto morto funciona, mas há sinais discretos de manipulação: semicírculo limpo demais na sujeira antiga da pedra e migalha de cera cinza visível de perto;
+* Ren checou o ponto morto de Pell nos fundos da The Silver Lily;
+* rolagem: Pell conseguir deixar recado novo desde a última verificação, d20 16 + 2 = 18 contra CD 15, sucesso;
+* Pell deixou bilhete novo dizendo que Rusk não voltou, que Brass usa menino novo e evita o beco dos tonéis;
+* Pell escreveu que, depois da lona, alguém perguntou por Kage: um queria casa privada, outro perguntou se era o mesmo oriental da Silver Lily;
+* Pell escreveu que disse ao perguntador que na Silver Lily todo estrangeiro parece estrangeiro;
+* Pell escreveu que um papel fino foi para Narwhal por mão sem faixa vermelha e que ouviu a palavra "máscara";
+* Pell pediu pagamento melhor;
+* hora aproximada: 08:45 de 4 Eleasis, 1372 DR.

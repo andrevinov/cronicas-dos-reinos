@@ -358,6 +358,11 @@ Estado atual:
 * escreveu que Velis vai limpar papel na casa grande do peixe antes do sino de nove;
 * escreveu que Brass está irritado, Rusk não voltou e o homem da lua não desce ao cais;
 * espera pagamento de uma moeda no vaso.
+* deixou novo bilhete no ponto morto da Silver Lily antes da manhã de 4 Eleasis;
+* escreveu que Rusk não voltou, Brass usa menino novo e evita o beco dos tonéis;
+* escreveu que, depois do Benefício da Lona Aberta, alguém perguntou se Kage era o mesmo oriental da Silver Lily;
+* escreveu que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra "máscara" ouvida;
+* pediu pagamento melhor.
 
 Bloco rápido 5e:
 

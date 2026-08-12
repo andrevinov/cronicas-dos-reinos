@@ -4713,3 +4713,47 @@ Ren não foi identificado. A guarda pressionou Bram. A mensagem chegou, embora t
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **08:10 de 4 Eleasis, 1372 DR**. Luath não aceitou o caderno de Bram como prova formal limpa e o devolveu a Ren após copiar marcas úteis, mas a Night Watch pressionou Bram Vask. A mensagem enviada pela criança foi entregue de forma imprecisa, ligando a ameaça à visita da guarda. Bram não atacou a criança em público, mas fechou a loja e começou a se mover nos fundos. Ren está próximo à loja de Bram, misturado à rua.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá estabelecer o ponto morto atrás de Narwhal Manor, como combinou com Kethra. Escolherá entre os próprios vasinhos que já tem no lugar e ninguém dá atenção um deles, e colocará no ponto que combinou com ela. Dentro, colocará um papel com a mensagem: "Nosso amigo foi com o cal. Nosso inimigo recebeu visita de guarda e recado de parar de ir atrás. Suficiente pra mantê-lo na coleira. Amigo seguro por algum tempo."
+
+Depois irá até o ponto morto atrás da taverna onde ficou, ver se Pell deixou mais alguma coisa.
+
+**Narrador**
+
+O deslocamento até Narwhal Manor não exige que Ren trate cada esquina como uma perseguição. A cidade está acordada demais para notar todo homem pobre andando com pressa medida. O último trecho, porém, é outro assunto: os fundos da casa ainda carregam a memória recente de papéis roubados, portas laterais vigiadas e funcionários ensinados a olhar duas vezes para quem fica tempo demais perto de coisa de serviço.
+
+Aproximar-se dos fundos de Narwhal sem ativar atenção: d20 9 + 6 = 15 contra CD 15. Sucesso.
+
+Ren chega no momento certo entre duas idas de criados à água suja. Há barris de areia, a calha quebrada, um monte de vasos sem planta boa e um vaso rachado que já parece velho o bastante para não merecer amor de ninguém. Ele coloca a rachadura voltada para a parede, prende o papel sob o fundo com cera cinza e deixa a mensagem onde Kethra saberá procurar se decidir procurar.
+
+Montar ponto morto de Kethra sem parecer novo: d20 6 + 4 = 10 contra CD 14. Falha.
+
+O problema não é a entrega. A entrega está feita.
+
+O problema é que, quando Ren se afasta meio passo, o vaso não volta a mentir tão bem quanto deveria. A base deixou um semicírculo limpo demais na sujeira antiga da pedra, e uma migalha de cera cinza ficou numa reentrância baixa que alguém procurando areia derramada poderia notar. Ren consegue sujar um pouco a marca com o pé e reposicionar o vaso sem repetir todo o movimento, mas não há como consertar tudo ali sem ficar tempo demais na lateral de uma casa que já anda desconfiada.
+
+Ninguém o aborda. Ninguém chama guarda. Mas o ponto morto nasce funcionando e imperfeito.
+
+A volta à Silver Lily passa por ruas mais honestas na sujeira: peixe, corda úmida, pão velho, cerveja azeda escapando por frestas de portas ainda fechadas. A escada dos fundos da taverna está do mesmo jeito que Ren deixou: madeira que range pouco, parede engordurada pela mão de gente que sobe carregando balde e o pequeno vaso com flor na parte alta.
+
+Pell conseguir deixar recado novo desde a última verificação: d20 16 + 2 = 18 contra CD 15. Sucesso.
+
+A flor está mais caída do que antes, mas o vaso foi virado uma fração. Debaixo dele há um papel dobrado duas vezes, escrito com mão rápida e economia de tinta:
+
+> Flor velha. Pague melhor.
+>
+> Rusk não voltou. Latão usa menino novo e evita o beco dos tonéis.
+>
+> Depois da lona, perguntaram por Kage. Um queria casa privada. Outro perguntou se era o mesmo oriental do Lily. Eu disse que no Lily todo estrangeiro parece estrangeiro.
+>
+> Papel fino foi para o peixe grande por mão sem faixa vermelha. Palavra ouvida: máscara.
+
+Não há moeda junto do bilhete. Pell deixou informação esperando pagamento posterior ou cobrança futura, o que talvez diga tanto sobre medo quanto sobre ambição. A parte de Rusk combina com o que Ren já sabe ter causado. A parte de Kage é mais nova e mais incômoda: alguém, em algum ponto depois do Benefício da Lona Aberta, tentou aproximar a figura pública do artista oriental ao homem que passou pela Silver Lily fazendo perguntas.
+
+O recado não prova quem perguntou. Não prova que a resposta de Pell convenceu. Mas prova que a máscara de palco já começou a bater na porta da hospedagem antiga.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **08:45 de 4 Eleasis, 1372 DR**. O ponto morto de Kethra está montado nos fundos de Narwhal Manor, com mensagem entregue, mas com sinais discretos de manipulação no vaso. No ponto morto de Pell, Ren encontrou novo bilhete: Rusk não voltou ao circuito da Red Sail; Brass está usando outro mensageiro; alguém perguntou se Kage era o mesmo oriental da Silver Lily; e um papel fino seguiu para Narwhal com a palavra "máscara" associada.
+
+O que Ren faz?

@@ -649,3 +649,17 @@ Interpretação reservada:
 * a mensagem torta liga a ameaça à visita da guarda, fazendo Bram entender que a mão anônima pode observar e talvez acionar pressão institucional;
 * a pressão não produz obediência limpa: Bram fecha a loja e passa a procurar resposta indireta, menos por coragem e mais por medo/raiva sem alvo claro;
 * consequência futura deve vir por movimento indireto, ocultação de registros, procura por quem viu algo nos pátios/Lower Trades ou tentativa de descobrir a mão anônima, não por perseguição pública imediata.
+
+---
+
+## Novo bilhete de Pell e risco do ponto de Kethra
+
+Pell conseguir deixar recado novo desde a última verificação: d20 16 + 2 = 18 contra CD 15. Sucesso.
+
+Interpretação reservada:
+
+* Pell teve oportunidade e coragem de deixar novo bilhete no ponto morto da The Silver Lily antes da manhã de 4 Eleasis;
+* o bilhete condensa informação acumulada do circuito da Red Sail, da Silver Lily e de rumores após o Benefício da Lona Aberta;
+* a informação sobre Kage/Silver Lily é rumor operacional, não confirmação de identidade de Ren;
+* Pell espera pagamento melhor e pode virar risco se concluir que a informação dele não será paga;
+* o ponto morto de Kethra foi montado com sucesso operacional, mas a falha na montagem deixou sinais discretos de manipulação no vaso; isso não gera alarme imediato em Narwhal Manor, mas torna o ponto mais vulnerável se alguém de serviço mexer nos vasos ou se a casa já estiver procurando sinais.
