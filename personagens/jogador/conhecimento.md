@@ -2145,6 +2145,12 @@ Progressão:
 * a caixa velha marcada por sol apagado, uma chave e uma lâmina curta caíram perto de Narro;
 * a porta de ferro falhou em fechar porque um pano vermelho prendeu numa saliência enferrujada;
 * Ren ainda não viu rosto ou identidade da figura vermelha do outro lado da porta;
+* Ren tentou abrir a porta de ferro, mas falhou em forçá-la antes que a figura vermelha reagisse;
+* a figura vermelha cortou o pano preso, recuou e bateu a porta;
+* Ren viu que a figura vermelha é uma pessoa magra com capuz e avental vermelho-escuro de tecido encerado, rosto parcialmente coberto, pele pálida na luz vermelha e mão estreita;
+* Ren viu por um instante uma criança pequena atrás da figura vermelha, provavelmente Peta;
+* a porta de ferro está fechada e trancada ou barrada por dentro;
+* um pedaço de pano vermelho rasgado ficou do lado de Ren;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 00:10 de 4 Eleasis, 1372 DR.

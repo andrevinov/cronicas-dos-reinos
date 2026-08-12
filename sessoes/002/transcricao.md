@@ -3676,3 +3676,58 @@ E agora também sabe que Narro caiu.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. Narro está inconsciente de modo não letal. Cal se soltou e está no chão, livre mas perto da porta de ferro. Nib está na boca do beco baixo; Doss segura um embrulho; Peta segue fora de vista. A caixa velha marcada por sol apagado, a chave e a lâmina curta caíram perto de Narro. A porta de ferro não fechou: um pano vermelho ficou preso e há uma figura parcialmente oculta do outro lado, ainda sem rosto visível.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá abrir a porta pra ver quem é a figura de vermelho. Preparado para combate, se necessário.
+
+**Narrador**
+
+Forçar a porta de ferro antes da figura se soltar: d20 4 + 1 = 5 contra CD 13. Falha.
+Figura vermelha recuar ou reagir antes da porta abrir: d20 13 + 3 = 16 contra CD 13. Sucesso.
+Identificar a figura vermelha no vão da porta: d20 10 + 5 = 15 contra CD 13. Sucesso.
+Crianças no gargalo não entrarem em pânico quando a porta abre: d20 15 + 2 = 17 contra CD 11. Sucesso.
+
+Ren chega à porta de ferro antes que ela consiga fechar de vez.
+
+Mas chegar não é o mesmo que abrir.
+
+A porta é baixa, grossa, antiga, com tiras de ferro inchadas de ferrugem e madeira dura por trás. Ren enfia a mão no vão, pega a borda e puxa. O ombro protesta. Sem ki, sem espaço e com a porta sendo puxada do outro lado, a força não entra limpa.
+
+Do lado de dentro, a figura vermelha reage primeiro.
+
+O pano preso sofre um puxão brutal. Não solta. Então uma lâmina curta aparece só por um instante e corta o tecido junto à saliência enferrujada. O pedaço vermelho fica pendurado do lado de Ren, rasgado, úmido de suor ou água velha.
+
+Nesse instante, antes da porta bater, Ren vê.
+
+Não é sombra sem forma. Não é bicho saído de história.
+
+É uma pessoa.
+
+Magra, encurvada pelo teto baixo, vestida com um capuz e avental comprido de tecido encerado vermelho-escuro, manchado de cera, barro e alguma tintura velha. Parte do rosto está coberta por pano. O que aparece é pele pálida demais na luz vermelha, um olho arregalado e uma mão estreita com unhas quebradas puxando o tecido cortado para dentro.
+
+Atrás dessa pessoa, mais baixo, Ren vê uma criança pequena por meio fôlego: joelho no chão, cabelo grudado no rosto, boca aberta sem som. A criança é empurrada para trás pela mão vermelha antes que Ren consiga fixar mais detalhe.
+
+Peta.
+
+Provavelmente Peta.
+
+A porta bate.
+
+Não com estrondo de sino, mas com peso suficiente para a câmara inteira tremer. Do outro lado, uma barra ou tranca cai em encaixe. Ferro em ferro. Curto. Definitivo.
+
+Nib não grita. Doss também não. Cal, no chão, só se encolhe e cobre a cabeça com os braços.
+
+A caixa do sol continua aos pés de Ren. A chave de Narro está no chão. A lâmina curta também. O pedaço de pano vermelho rasgado ficou preso na saliência, do lado de fora da porta.
+
+Do outro lado da porta, Ren ouve movimento rápido se afastando. Um arrasto pequeno. Um som abafado de criança sendo levada ou empurrada. Depois, mais longe, um ruído de madeira baixa: talvez outra passagem, talvez móvel arrastado, talvez fuga interna.
+
+A porta de ferro agora está fechada.
+
+Mas não silenciosa.
+
+E não vazia.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. Ren identificou que a figura vermelha é uma pessoa magra usando capuz/avental vermelho-escuro de tecido encerado, com rosto parcialmente coberto. Ele viu por um instante uma criança pequena atrás dela, provavelmente Peta, antes da porta fechar e ser trancada ou barrada por dentro. Nib, Doss e Cal continuam na câmara, sem gritar. A caixa do sol, a chave de Narro, a lâmina curta e um pedaço de pano vermelho rasgado estão ao alcance de Ren.
+
+O que Ren faz?
