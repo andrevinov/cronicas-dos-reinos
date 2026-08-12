@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "rua dos tintureiros"
-  ponto_exato: "interior da oficina dos tintureiros, junto à porta dos fundos"
+  ponto_exato: "pátio dos fundos da oficina dos tintureiros, com a criança nos braços"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -28,14 +28,18 @@ localizacao:
     fundos, com o cesto de roupa suja marcado por tira amarela de dois nós.
     Usando os momentos finais de Passos sem Pegadas, Ren entrou pela porta dos
     fundos, atacou a pessoa de vermelho de modo não letal e a deixou
-    inconsciente antes que gritasse ou puxasse o cordão fino ao alcance dela. A
-    criança no chão está viva, presa e amordaçada, quase certamente Peta. Há
-    movimento urgente atrás da cortina do fundo, como alguém mexendo em trava,
-    tampa ou rota de fuga. Passos sem Pegadas pode durar até cerca de 00:58 de
-    4 Eleasis se Ren mantiver concentração. Colm/Dent segue escondido sob a
-    lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O
-    ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por
-    Ren.
+    inconsciente antes que gritasse ou puxasse o cordão fino ao alcance dela.
+    Ren arrancou a máscara e viu que a pessoa de vermelho é uma mulher jovem
+    adulta desconhecida, pálida, com cicatriz antiga de queimadura/cera e marca
+    de sol apagado no pescoço. Em seguida pegou a criança viva, presa e
+    amordaçada, quase certamente Peta, e saiu para o pátio dos fundos antes que
+    a cortina se abrisse por completo. Atrás da cortina há pelo menos uma pessoa
+    reagindo e uma abertura baixa escura, possivelmente passagem, alçapão ou
+    escada descendo. Passos sem Pegadas pode durar até cerca de 00:58 de
+    4 Eleasis se Ren mantiver concentração, mas está nos instantes finais.
+    Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da
+    primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa
+    ser montado fisicamente por Ren.
 
 tempo:
   ano_dr: 1372
@@ -51,7 +55,7 @@ tempo:
   hora_aproximada: "00:56 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. Ren seguiu a galeria até a rua dos tintureiros e entrou na oficina ativa pelos fundos. A criança no chão está viva e presa, quase certamente Peta. A figura vermelha está inconsciente e não puxou o cordão, mas há movimento urgente atrás da cortina do fundo."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. Ren seguiu a galeria até a rua dos tintureiros, entrou na oficina ativa pelos fundos, nocauteou a pessoa de vermelho e saiu para o pátio com a criança viva nos braços. A figura vermelha está inconsciente e não puxou o cordão, mas há reação atrás da cortina do fundo."
 
 recursos:
   pontos_de_vida:
@@ -150,6 +154,10 @@ recursos:
     - "a figura vermelha está inconsciente, respirando, e não puxou o cordão"
     - "a criança no chão está viva e presa por panos, quase certamente Peta"
     - "há movimento urgente atrás da cortina do fundo, como alguém mexendo em trava, tampa ou rota de fuga"
+    - "Pegar Peta e sair da oficina sob pressão: 23 contra CD 15, sucesso"
+    - "Ren removeu a máscara da figura vermelha e viu uma mulher jovem adulta desconhecida, pálida, magra, com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço"
+    - "Ren pegou a criança viva, presa e amordaçada, quase certamente Peta, e saiu com ela para o pátio dos fundos"
+    - "ao sair, Ren viu atrás da cortina uma manga cinza, uma mão com dois anéis simples, uma barra de ferro curta e uma abertura baixa escura"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"
@@ -735,7 +743,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "agir primeiro no combate dentro da oficina dos tintureiros antes que a figura vermelha use faca, cordão, rota de fuga ou a criança"
+    - "escolher a rota de fuga com a criança: grelha baixa discreta porém lenta, ou rua/pátio mais rápido e exposto"
     - "considerar que a Casa Velha do Primeiro Raio pode usar crianças como olheiros e não deve ser tratada como abrigo vazio"
     - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se confia na saída comprada com Dorra"
     - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
@@ -779,7 +787,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está no interior da oficina dos tintureiros, junto à porta dos fundos, depois de avançar sob os últimos minutos de Passos sem Pegadas. A fresta sob a porta não era larga para passagem de adulto, então Ren transformou a intenção em uma entrada baixa pela porta: aproximou-se sem ser percebido, entrou controlando o corpo no piso molhado e acertou a figura vermelha com um carrinho não letal. O alvo sofreu 5 de dano contundente, caiu/desequilibrou, mas continua consciente. O golpe bônus de Ren errou. A criança no chão está viva, presa por panos e quase certamente é Peta. O interior visível tem cubas rasas, varais de pano, potes de cera ruim, lamparina protegida e uma cortina grossa ao fundo, de onde houve movimento com o baque. A figura vermelha está entre Ren e a criança, com uma faca curta de trabalho e um cordão fino ao alcance. Iniciativa: Ren 23, figura vermelha 17; Ren age primeiro. Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken. Passos sem Pegadas segue ativo por concentração até cerca de 00:58 de 4 Eleasis, mas a discrição dentro da oficina foi quebrada. Hora aproximada: 00:56 de 4 Eleasis, 1372 DR."
+  cena_atual: "Ren está no pátio dos fundos da oficina dos tintureiros com a criança viva, presa e amordaçada nos braços, quase certamente Peta. Ele arrancou a máscara da figura vermelha antes de sair e viu uma mulher jovem adulta desconhecida, pálida e magra, com cicatriz antiga de queimadura/cera e uma marca de sol apagado no pescoço. A figura vermelha está inconsciente dentro da oficina e não puxou o cordão. Ao sair, Ren viu a cortina do fundo se abrir parcialmente: uma manga cinza, uma mão com dois anéis simples, uma barra de ferro curta e uma abertura baixa escura atrás do tecido. A grelha por onde Ren veio está a poucos passos, mas é estreita e lenta com a criança; a rota pela rua/pátio é mais rápida e mais exposta. Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken. Passos sem Pegadas segue ativo por concentração até cerca de 00:58 de 4 Eleasis, mas está nos instantes finais. Hora aproximada: 00:56 de 4 Eleasis, 1372 DR."
   risco_imediato: "alto"
   foco_inicial:
     - "orientação urbana"

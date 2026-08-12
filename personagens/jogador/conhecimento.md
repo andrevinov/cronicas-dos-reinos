@@ -2214,11 +2214,32 @@ Progressão:
 * rolagem: Golpe bônus de Artes Marciais contra a figura desequilibrada, d20 com vantagem [3, 6] -> 6 + 6 = 12 contra CA 13, erro;
 * iniciativa: Ren 23; figura vermelha 17;
 * Ren entrou no interior da oficina dos tintureiros pela porta dos fundos, de modo baixo e agressivo;
-* a figura vermelha foi atingida e derrubada/desequilibrada, mas continua consciente;
+* a figura vermelha foi atingida e derrubada/desequilibrada, mas naquele primeiro momento ainda continuava consciente;
 * Ren viu que a criança no chão está viva, presa por panos e quase certamente é Peta;
 * a oficina contém cubas rasas, varais de pano, potes de cera ruim, lamparina protegida e uma cortina grossa ao fundo;
 * há movimento atrás da cortina do fundo, e a figura vermelha tem ao alcance uma faca curta de trabalho e um cordão fino;
 * Ren age primeiro na ordem de iniciativa;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
 * Passos sem Pegadas segue ativo até cerca de 00:58, mas a discrição dentro da oficina foi quebrada;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Golpe não letal para impedir grito ou alarme, d20 com vantagem [3, 1] -> 3 + 6 = 9 contra CA 13, erro;
+* rolagem: Golpe bônus de Artes Marciais para cortar a reação, d20 com vantagem [11, 1] -> 11 + 6 = 17 contra CA 13, acerto, 8 de dano contundente;
+* Ren nocauteou a figura vermelha antes que ela gritasse ou puxasse o cordão;
+* a figura vermelha está inconsciente, respirando, com máscara ainda presa ao rosto;
+* a criança está viva, presa e amordaçada, quase certamente Peta, ao alcance de Ren;
+* atrás da cortina do fundo, há movimento urgente como alguém mexendo em trava, tampa ou rota de fuga;
+* uma voz adulta atrás da cortina chamou por "Vermelho" e não recebeu resposta;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas dentro da oficina a surpresa já virou ruído;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Pegar Peta e sair da oficina sob pressão, d20 17 + 6 = 23 contra CD 15, sucesso;
+* Ren removeu a máscara da figura vermelha antes de sair;
+* a figura vermelha é uma mulher jovem adulta desconhecida, pálida, magra, com cabeça raspada dos lados, cabelo escuro, cicatriz antiga de queimadura/cera da orelha até perto da boca e marca de sol apagado no lado esquerdo do pescoço;
+* a figura vermelha não é Masao, Brass, Velis, Noll ou qualquer rosto já nomeado para Ren;
+* Ren pegou a criança viva, presa e amordaçada, quase certamente Peta, e saiu com ela para o pátio dos fundos;
+* ao sair, Ren viu a cortina do fundo abrir parcialmente: manga cinza, mão com dois anéis simples, barra de ferro curta e abertura baixa escura atrás do tecido;
+* a grelha por onde Ren veio está a poucos passos, mas é estreita e lenta com a criança;
+* a rota pela rua/pátio é mais rápida e mais exposta;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas está nos instantes finais;
 * hora aproximada: 00:56 de 4 Eleasis, 1372 DR.

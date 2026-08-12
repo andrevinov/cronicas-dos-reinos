@@ -4148,3 +4148,65 @@ Do outro lado da cortina, o movimento acelera.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. A **figura vermelha está inconsciente** e não puxou o cordão. A criança está viva, presa e amordaçada, quase certamente Peta, ao alcance de Ren. Há movimento urgente atrás da cortina do fundo, como alguém mexendo em trava, tampa ou rota de fuga. **Passos sem Pegadas** segue ativo até cerca de **00:58**, mas dentro da oficina a surpresa já virou ruído. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren tira a máscara da pessoa de vermelho. Ele precisa ver quem é a pessoa de vermelho. Depois de ver a cara da pessoa... Ren pegará a criança e tentará fugir. Ele não sabe quantos guardas existem do outro lado, e a parte mais importante dessa missão é Peta.
+
+**Narrador**
+
+Pegar Peta e sair da oficina sob pressão: d20 17 + 6 = 23 contra CD 15. Sucesso.
+
+A máscara não está só amarrada. Está presa com cera endurecida na lateral do capuz, como se a pessoa de vermelho precisasse manter aquele rosto mesmo suando, correndo ou carregando peso.
+
+Ren puxa.
+
+O pano cede com um som úmido.
+
+O rosto por baixo não é de Masao. Não é Brass. Não é Velis. Não é Noll. Não é ninguém que Ren já tenha ouvido nomear.
+
+É uma mulher jovem adulta, magra a ponto de parecer doente, com a cabeça raspada dos lados e cabelo escuro colado ao crânio pelo suor. A pele é pálida demais para quem trabalha ao sol, marcada por manchas de tintura no maxilar e por uma cicatriz fina, brilhante, que passa da orelha até a curva da boca. Não parece corte de lâmina limpa. Parece queimadura de cera ou ácido fraco, antiga o bastante para ter fechado mal.
+
+No lado esquerdo do pescoço, parcialmente escondido pelo colarinho vermelho, há uma marca pequena feita em tinta escura: um círculo com três riscos atravessando o meio.
+
+O sol apagado.
+
+O olhar dela não abre. O corpo continua respirando.
+
+Ren não tem tempo para mais.
+
+A criança no chão se encolhe quando ele se aproxima, mas não tenta fugir dele. Os pulsos estão presos por pano, as pernas também, e a mordaça foi amarrada com pressa cruel o bastante para machucar a pele no canto da boca. Soltar tudo ali tomaria segundos que o fundo da oficina não quer dar.
+
+Então Ren faz o que dá para fazer rápido: passa um braço por baixo dela, prende o corpo pequeno contra si e a levanta do chão com cuidado suficiente para não torcer as amarras. Ela é leve demais. O som que sai pela mordaça fica preso no tecido.
+
+Atrás da cortina, a madeira raspando para.
+
+Alguém percebe a falta de resposta.
+
+"Abre", a voz adulta diz, agora mais dura.
+
+Outra voz, mais longe, responde alguma coisa baixa que Ren não distingue.
+
+Ren já está se movendo.
+
+O chão molhado tenta roubar o pé dele na segunda passada, mas não consegue. Um balde tomba sem bater: só roda meia volta, espalhando água azul pelo chão. Ren passa pela porta dos fundos com a criança presa contra o peito antes que a cortina abra por completo.
+
+No instante em que ele cruza o limiar para o pátio, a cortina atrás dele se rasga para o lado.
+
+Ren não vê corpo inteiro.
+
+Vê uma manga cinza, uma mão com dois anéis simples e uma barra de ferro curta empurrando o tecido. Vê também uma abertura escura atrás da cortina, baixa demais para ser sala comum: passagem, alçapão ou escada descendo.
+
+A voz atrás dele xinga baixo.
+
+Não grita ainda.
+
+Isso importa.
+
+Ren está no pátio dos fundos, com a criança nos braços. A porta da oficina está aberta atrás dele. A grelha por onde veio fica a poucos passos, mas é estreita: para passar por ela com Peta, Ren terá que colocá-la primeiro ou entrar de lado, perdendo velocidade. A alternativa pela rua dos tintureiros é mais rápida para pernas livres, mas mais visível se alguém estiver acordado ou se o fundo da oficina finalmente levantar alarme.
+
+Passos sem Pegadas ainda respira ao redor dele por instantes finais.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren viu o rosto da pessoa de vermelho: uma mulher jovem adulta desconhecida, pálida, com cicatriz de queimadura/cera e marca de **sol apagado** no pescoço. A pessoa de vermelho continua inconsciente dentro da oficina. A criança está viva, presa e amordaçada nos braços de Ren, quase certamente Peta. Ren está no **pátio dos fundos da oficina dos tintureiros**, diante da escolha imediata de rota: grelha baixa e discreta, mas lenta com a criança, ou rua/pátio, mais rápida e mais exposta. **Passos sem Pegadas** está quase no fim. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?
