@@ -3548,3 +3548,70 @@ Atrás da dobra vermelha, o movimento aumenta. Alguém mais fundo está recolhen
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:09 de 4 Eleasis, 1372 DR**. As três crianças da cozinha/Miri podem fugir pela porta lateral agora aberta, mas o raspar da barra e o atraso fizeram o fundo do porão começar uma retirada ou reorganização. Elas indicaram um esconderijo: a fonte seca atrás da casa dos azulejos verdes; rota alternativa pelo beco do sabão e escada sem corrimão. Miri disse que há um homem chamado Narro lá embaixo, Doss, Cal, Nib e possivelmente Peta, além de "o homem vermelho". O broche ou relicário parece ligado a uma caixa velha com desenho de sol, à porta de ferro ou a Narro.
 
 O que Ren faz?
+
+**Jogador**
+
+"Não vão pra Maerra agora. Vão pro Tanque seco. Eu encontro vocês lá em breve."
+
+Ren liga Passo do Vento pra tentar compensar a perda de tempo e entrar o mais rápido possível pelo beco baixo, entendendo que estão fugindo lá embaixo. Agora não é furtividade, é velocidade.
+
+**Narrador**
+
+Passo do Vento pelo corredor baixo: d20 5 + 6 = 11 contra CD 14. Falha.
+Ler a retirada na dobra vermelha: d20 11 + 5 = 16 contra CD 13. Sucesso.
+Retirada antes de Ren alcançar: d20 10 + 2 = 12 contra CD 14. Falha.
+Crianças saírem pela lateral rumo ao Tanque seco: d20 3 + 2 = 5 contra CD 10. Falha.
+
+"Não vão pra Maerra agora. Vão pro Tanque seco. Eu encontro vocês lá em breve."
+
+Miri entende. A menina maior entende. A menor não entende nada além de porta aberta e noite fria.
+
+Elas saem.
+
+Não limpas.
+
+A menor tropeça no rebaixo de pedra e solta um som curto demais para ser grito, alto demais para ser nada. A maior puxa o braço dela com força. Miri volta meio passo, empurra as duas para fora e olha uma última vez para Ren antes de sumir pela fresta. A porta fica aberta um palmo, deixando névoa entrar e deixando a saída delas incerta. Ren sabe o destino. Não sabe ainda se chegaram.
+
+Então ele gasta o último ki.
+
+O corpo responde antes do pensamento: pernas, quadril, respiração, tudo em linha. Mas a Casa Velha não foi construída para velocidade. O corredor baixo transforma **Passo do Vento** em choque contra pedra e madeira.
+
+Ren mergulha pela cortina, passa pela dobra escura, e o ombro raspa numa viga baixa que ele teria evitado se estivesse caçando silêncio. O cotovelo bate num ressalto de pedra. Um prato de barro vazio salta, gira no chão e quebra com estalo seco.
+
+Agora eles sabem.
+
+Mas Ren também lê o caminho.
+
+O movimento não vai pelo corredor largo. Vai pelo **beco baixo** que as crianças mencionaram: uma passagem de joelhos, aberta na parede antiga, onde adulto passa mal e criança some depressa. As marcas no chão confirmam: mãos pequenas, arrasto de saco, cera pingada em linha irregular.
+
+A dobra vermelha desemboca numa câmara baixa, torta, talvez antigo depósito sob a capela. Há uma lamparina vermelha dentro de um nicho. À esquerda, uma porta reforçada com tiras de ferro está aberta só o bastante para mostrar sombra e um pedaço de tecido vermelho passando atrás. À direita, no rodapé da parede, fica a boca do beco baixo: buraco largo para criança, miserável para adulto.
+
+Narro está ali.
+
+Não é grande. É comprido, seco, de rosto estreito e cabelo oleoso preso atrás. Ele tem uma caixa achatada de madeira velha debaixo de um braço. Mesmo na luz ruim, Ren vê o desenho quase apagado de um sol na tampa. Na outra mão, Narro segura uma chave curta e uma lâmina pequena, mais ferramenta de corte do que faca de duelo.
+
+Três crianças estão no gargalo.
+
+Um garoto pequeno, provavelmente Nib, já está de joelhos na boca do beco baixo. Outra criança mais alta, talvez Doss, segura um embrulho contra o peito. Cal está perto da porta de ferro, com os olhos fixos em Narro. Peta não está à vista.
+
+Narro estava tentando mover todos ao mesmo tempo e falhou. O ruído de Ren fez ele virar antes de terminar.
+
+Os olhos dele não encontram um homem inteiro. Encontram uma forma escura, rápida demais, entrando no vermelho.
+
+Narro mostra os dentes.
+
+"Fecha."
+
+A palavra vai para a porta de ferro.
+
+Lá dentro, alguma coisa vermelha se move.
+
+Narro puxa Cal pelo ombro, usando a criança como distância e obstáculo, não exatamente como escudo ainda. A caixa com o sol fica presa contra as costelas dele.
+
+Ren chegou a tempo de impedir a retirada limpa.
+
+Não chegou em silêncio. Não chegou com ângulo perfeito.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** ainda está ativo por concentração até cerca de **00:58 de 4 Eleasis**, mas Ren trocou silêncio por velocidade. Hora aproximada: **00:10 de 4 Eleasis, 1372 DR**. As três crianças da cozinha saíram pela lateral rumo ao Tanque seco, mas a fuga delas não foi limpa e Ren ainda não sabe se chegaram. Ren está na entrada de uma câmara baixa no fundo do porão. Narro está a poucos passos, com uma caixa velha marcada por um sol apagado, perto da boca do beco baixo; Nib, Doss e Cal estão no gargalo de fuga. Peta não está à vista. Uma porta de ferro à esquerda está sendo fechada por alguém ou algo parcialmente oculto em vermelho.
+
+O que Ren faz?

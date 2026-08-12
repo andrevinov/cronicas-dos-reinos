@@ -2133,6 +2133,12 @@ Progressão:
 * as crianças associaram o relicário/broche a um "sol pequeno", uma caixa velha com desenho de sol, uma porta de ferro e/ou Narro;
 * as crianças conhecem um esconderijo na fonte seca atrás da casa dos azulejos verdes; se houver guarda, a rota alternativa é pelo beco do sabão e uma escada sem corrimão;
 * o fundo do porão começou uma retirada ou reorganização depois do ruído e do atraso;
+* Ren mandou as três crianças da cozinha irem ao Tanque seco, mas a fuga delas não foi limpa e ainda não está confirmada;
+* Ren gastou seu último ki em Passo do Vento para avançar pelo corredor baixo;
+* a velocidade de Ren fez ruído no porão, mas ele leu a retirada e alcançou a câmara baixa antes que Narro fugisse;
+* Narro é um homem comprido, seco, de rosto estreito, e está com uma caixa achatada de madeira velha marcada por um sol apagado;
+* Nib, Doss e Cal estão no gargalo de fuga do beco baixo; Peta não está à vista;
+* há uma porta reforçada com tiras de ferro à esquerda, sendo fechada por alguém ou algo parcialmente oculto em vermelho;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
-* Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:09 de 4 Eleasis, 1372 DR.
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 00:10 de 4 Eleasis, 1372 DR.
