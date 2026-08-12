@@ -2125,6 +2125,14 @@ Progressão:
 * o adulto entrou no trecho escuro e Ren o neutralizou de modo não letal, abafando a queda;
 * o adulto usava roupa de trabalho escura, cinto com bolso de couro, bastão curto pesado e uma tira de pano amarelo com dois nós no pulso direito;
 * Miri está na cozinha com as outras crianças;
+* ao puxar o adulto para a cozinha, Ren fez ruído perceptível dentro da casa;
+* as crianças abriram a porta lateral por dentro, mas a barra raspou alto;
+* Miri disse que há um homem chamado Narro lá embaixo;
+* Miri viu Doss, Cal e Nib; não viu Peta depois da sopa;
+* a criança menor mencionou "o homem vermelho";
+* as crianças associaram o relicário/broche a um "sol pequeno", uma caixa velha com desenho de sol, uma porta de ferro e/ou Narro;
+* as crianças conhecem um esconderijo na fonte seca atrás da casa dos azulejos verdes; se houver guarda, a rota alternativa é pelo beco do sabão e uma escada sem corrimão;
+* o fundo do porão começou uma retirada ou reorganização depois do ruído e do atraso;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:08 de 4 Eleasis, 1372 DR.
+* hora aproximada: 00:09 de 4 Eleasis, 1372 DR.

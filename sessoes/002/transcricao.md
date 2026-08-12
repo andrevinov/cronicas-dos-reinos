@@ -3448,3 +3448,103 @@ Mas o porão, agora, perdeu gente demais para continuar normal por muito tempo.
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:08 de 4 Eleasis, 1372 DR**. Ren apagou não letalmente o adulto que veio conferir Miri e abafou a queda. Miri está na cozinha com as outras crianças. Toll, Vessa, o rapaz magro e este adulto estão inconscientes. O corredor baixo segue adiante por uma dobra iluminada por luz vermelha; há ruído pequeno mais fundo, mas ainda não há alarme aberto.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren volta até as crianças enquanto puxa o corpo do adulto pra junto dos outros.
+
+"Quantos guardas há lá embaixo? Quantas crianças ainda estão lá?" Também descreve o item mágico de Lathander e perguntam se eles o viram.
+
+Quando termina de falar, manda eles desbloquearem a porta e fugirem. Pergunta a elas se conhecem um local bom pra se esconder. Pede pra descreverem onde fica. Fala que quando liberar as outras crianças, irá com elas pra lá.
+
+**Narrador**
+
+Arrastar o adulto para junto dos outros sem ruído útil: d20 5 + 1 = 6 contra CD 13. Falha.
+Abrir a porta lateral por dentro sem raspar alto: d20 3 + 2 = 5 contra CD 12. Falha.
+Fundo do porão reagir ao atraso e começar retirada: d20 16 + 1 = 17 contra CD 13. Sucesso.
+
+Ren puxa o adulto pelo corredor.
+
+O corpo é mais pesado do que Toll, mais largo que o rapaz magro e menos cooperativo que Vessa caída sem fôlego. No teto baixo, Ren não consegue levantar o peso direito; precisa arrastar. O calcanhar do homem risca a terra úmida, depois bate uma vez na pedra irregular onde o corredor encontra a cozinha.
+
+Toc.
+
+Não é alto. Mas é diferente de cera, diferente de pé pequeno, diferente de casa velha respirando.
+
+Ren põe o corpo junto dos outros mesmo assim. A cozinha agora é uma coleção de mentiras mal cobertas: Toll sob banco e pano, Vessa atrás da mesa, o rapaz magro perto da cortina, o adulto de roupa escura meio dobrado onde o ângulo permite.
+
+As crianças estão brancas de medo. Miri olha para o adulto novo e depois para Ren, como se tentasse decidir qual nome dele devia saber.
+
+Ren pergunta baixo.
+
+"Quantos guardas há lá embaixo? Quantas crianças ainda estão lá?"
+
+A menina maior responde primeiro, atropelando a própria voz:
+
+"Guarda, guarda, não. Tem homem. Dois aqui em cima com Toll quando precisa. Vessa. O de pano amarelo. E lá embaixo..."
+
+Ela olha para Miri.
+
+Miri fecha as mãos na saia suja.
+
+"Um que manda no buraco. Narro. E às vezes outro que vem pegar pacote. Hoje eu vi Narro. Vi Doss. Vi Cal. Vi Nib. Não vi Peta depois da sopa."
+
+A menor sussurra:
+
+"E o homem vermelho."
+
+A maior aperta o ombro dela com força demais.
+
+"Não chama assim."
+
+Ren descreve o broche: objeto antigo de Lathander, de peregrino, ligado a parecer humilde, menos memorável. As crianças não conhecem essas palavras, mas conhecem forma.
+
+Miri fala:
+
+"Tem sol pequeno."
+
+Ela aponta para baixo, para o corredor além da dobra.
+
+"Não é pra tocar. Fica na caixa de manhã. À noite fica com Narro ou na porta de ferro. Ele diz que é coisa de santo morto e dá azar roubar."
+
+A menina maior acrescenta:
+
+"Caixa velha com desenho de sol. Tranca pequena. Vessa tinha chave? Ou Narro tem. Não sei."
+
+Ren manda que elas destravem a porta e fujam. A maior vai primeiro até a barra da porta lateral. As mãos dela tremem. A barra de madeira é pesada demais para criança mover com elegância. Miri ajuda. A menor fica no meio do cômodo, paralisada, até a maior sussurrar o nome dela com raiva.
+
+A barra sobe.
+
+Raspa.
+
+Desta vez o som é maior.
+
+Na cozinha, todas congelam.
+
+Do fundo do porão vem resposta imediata: não grito. Movimento.
+
+Algo pesado arrasta sobre madeira. Depois passos pequenos, apressados. Uma voz adulta, mais longe, diz uma frase curta que Ren não entende inteira, mas entende a função: ordem de mover.
+
+A porta lateral abre um palmo para a noite fria. Névoa entra pela fresta.
+
+"Pra onde?", pergunta a menina maior, quase sem som.
+
+Miri responde antes dela:
+
+"Tanque seco."
+
+A maior hesita, depois confirma:
+
+"Atrás da casa dos azulejos verdes, tem fonte seca com boca quebrada. A gente se esconde embaixo quando chove. Mas não todos. Se tiver guarda, corre pelo beco do sabão e sobe a escada sem corrimão."
+
+Miri olha para Ren.
+
+"Se a gente for pra Maerra, eles devolvem?"
+
+A pergunta não vem como desconfiança de Ren. Vem como regra do mundo.
+
+Atrás da dobra vermelha, o movimento aumenta. Alguém mais fundo está recolhendo ou soltando crianças, pacote, ou os dois. Ainda não há alarme aberto para a rua. Mas a Casa Velha, por dentro, já entendeu que a cozinha parou de responder.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:09 de 4 Eleasis, 1372 DR**. As três crianças da cozinha/Miri podem fugir pela porta lateral agora aberta, mas o raspar da barra e o atraso fizeram o fundo do porão começar uma retirada ou reorganização. Elas indicaram um esconderijo: a fonte seca atrás da casa dos azulejos verdes; rota alternativa pelo beco do sabão e escada sem corrimão. Miri disse que há um homem chamado Narro lá embaixo, Doss, Cal, Nib e possivelmente Peta, além de "o homem vermelho". O broche ou relicário parece ligado a uma caixa velha com desenho de sol, à porta de ferro ou a Narro.
+
+O que Ren faz?
