@@ -2121,6 +2121,10 @@ Progressão:
 * Ren conteve Miri em silêncio e a convenceu de que veio salvar as crianças;
 * Miri tentou fingir que iria chamar Vessa, mas sua voz soou errada;
 * o adulto mais fundo percebeu a anormalidade, aproximou-se até a borda da escuridão e chamou Miri de volta;
+* Ren mandou Miri correr para a cozinha e usou a reação do adulto como isca;
+* o adulto entrou no trecho escuro e Ren o neutralizou de modo não letal, abafando a queda;
+* o adulto usava roupa de trabalho escura, cinto com bolso de couro, bastão curto pesado e uma tira de pano amarelo com dois nós no pulso direito;
+* Miri está na cozinha com as outras crianças;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:07 de 4 Eleasis, 1372 DR.
+* hora aproximada: 00:08 de 4 Eleasis, 1372 DR.

@@ -3390,3 +3390,61 @@ Miri congela com metade do corpo na cortina.
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:07 de 4 Eleasis, 1372 DR**. Ren convenceu Miri a não gritar e ela está parcialmente junto à cortina, entre Ren e a cozinha. O adulto mais fundo percebeu que algo está errado; ele se aproximou até a borda da escuridão comum, ainda fora de alcance imediato de Ren, e chamou Miri de volta. Ainda não há alarme aberto, mas a mentira está prestes a quebrar.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren faz sinal para Miri correr pro outro lado da cortina. Isso fará o adulto passar por Ren, ou assim Ren acredita. Se ele passar, Ren tentará apaga-lo.
+
+**Narrador**
+
+Miri correr para a cortina apesar da ordem: d20 11 + 2 = 13 contra CD 12. Sucesso.
+Adulto resistir à isca e não entrar no escuro: d20 4 + 2 = 6 contra CD 13. Falha.
+Manter emboscada no escuro enquanto Miri corre: d20 2 + 16 = 18 contra CD 16. Sucesso.
+Ataque não letal na emboscada do corredor: d20 com vantagem [8, 9] -> 9 + 6 = 15 contra CA 12. Acerto. Dano: 1d4 3 + 4 = 7 contundente.
+Golpe bônus de Artes Marciais: d20 com vantagem [19, 4] -> 19 + 6 = 25 contra CA 12. Acerto. Dano: 1d4 2 + 4 = 6 contundente.
+Abafar corpo e voz no corredor baixo: d20 19 + 1 = 20 contra CD 14. Sucesso.
+Perceber a luta abafada como alarme: d20 9 + 1 = 10 contra CD 13. Falha.
+
+Ren faz o sinal.
+
+Miri entende tarde, mas entende. O medo quase a prende no lugar. Então ela escolhe a cortina.
+
+Não corre como criança livre. Corre como criança que aprendeu a obedecer baixo: três passos curtos, quase tropeçando, passando pelo pano grosso para a cozinha. Do outro lado, uma das meninas puxa Miri para perto antes que ela veja todos os corpos de uma vez.
+
+O adulto no fundo não espera mais.
+
+"Miri."
+
+Desta vez não é chamado. É ordem quebrando.
+
+Ele entra.
+
+A luz vermelha fica atrás dele por um instante, desenhando ombros largos, cabeça baixa, mão fechada num bastão curto. Ele vem rápido demais para cautela perfeita e devagar demais para corrida. O teto obriga o corpo a vir inclinado. Isso basta.
+
+Ren bate do escuro.
+
+O primeiro golpe pega o adulto por baixo das costelas, bem onde a respiração precisa virar grito. O homem dobra e tenta empurrar o bastão para frente, mas não há espaço. Parede de um lado. Cortina e criança atrás. Teto baixo em cima.
+
+O segundo golpe entra limpo na lateral da mandíbula.
+
+O adulto perde força antes de perder peso. Ren entra junto, prende a roupa grossa no peito e usa o próprio corpo contra a parede úmida para impedir a queda seca. O bastão raspa na pedra, mas não bate. A boca do homem abre sem voz. O som que sai é só ar quebrado.
+
+Ele apaga.
+
+Por dois batimentos de coração, ninguém respira direito.
+
+Do fundo, a luz vermelha continua. Há uma dobra no corredor a poucos passos de onde o adulto veio. Além dela, Ren ouve movimento pequeno: tecido, pé descalço, talvez alguém se encolhendo. Não há corrida grande. Não há sino. Não há grito chamando a casa inteira.
+
+Mas agora o corredor tem outro corpo no chão, mais pesado que os outros, exatamente entre Ren e o fundo do porão.
+
+Na cozinha, Miri está com as outras duas crianças. Ela viu o suficiente para entender que Vessa não vai responder, mas não o bastante para ordenar o próprio medo. Uma delas segura a boca da menor com as duas mãos.
+
+Ren consegue ver melhor o adulto apagado pelo recorte vermelho: não é guarda formal. Usa roupa de trabalho escura, cinto com bolso de couro e bastão curto pesado, sem armadura. No pulso direito, há uma tira de pano amarelo amarrada com dois nós.
+
+A infiltração ainda vive.
+
+Mas o porão, agora, perdeu gente demais para continuar normal por muito tempo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:08 de 4 Eleasis, 1372 DR**. Ren apagou não letalmente o adulto que veio conferir Miri e abafou a queda. Miri está na cozinha com as outras crianças. Toll, Vessa, o rapaz magro e este adulto estão inconscientes. O corredor baixo segue adiante por uma dobra iluminada por luz vermelha; há ruído pequeno mais fundo, mas ainda não há alarme aberto.
+
+O que Ren faz?
