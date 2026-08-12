@@ -3806,3 +3806,97 @@ Ao redor da fonte seca, a rua ainda parece não saber exatamente o que aconteceu
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:15 de 4 Eleasis, 1372 DR**. Ren saiu da Casa Velha pela lateral com **Nib, Doss e Cal** e reencontrou **Miri** e as outras duas crianças no **Tanque seco** atrás da casa dos azulejos verdes. **Peta foi provavelmente levada pela pessoa de vermelho** para dentro de uma rota além da porta de ferro. Ren está com a caixa velha marcada por sol apagado e o pedaço de pano vermelho encerado rasgado. A chave de Narro e a lâmina curta ficaram para trás na câmara baixa.
 
 O que Ren faz?
+
+**Jogador **
+
+Ren vai com as crianças até Maerra. Discretamente, sem chamar atenção, coordenando o avanço lento delas. E vai contar tudo que aconteceu pra sacerdotisa de Lathander, em busca de respostas e direção. Entregará a caixa pra ela, mas ficará com o item caso Maerra ceda a ele. [Ren, com paciência e ferramentas de ladrão, abre essa caixa sem dúvida].
+
+**Narrador**
+
+Conduzir seis crianças até Maerra sob Passos sem Pegadas: d20 13 + 12 = 25 contra CD 13. Sucesso.
+
+Ren não faz o grupo correr.
+
+Isso salva a travessia.
+
+Seis crianças assustadas não viram fila ordenada por vontade. Viram respiração alta, pé descalço na pedra fria, mão agarrada em manga, soluço engolido, medo de cada esquina. Ren reduz o passo até elas conseguirem acompanhá-lo e divide o grupo em sombra curta: Doss atrás dele, Cal perto de Miri, Nib entre duas crianças maiores.
+
+**Passos sem Pegadas** faz o resto.
+
+Na lama fina, os pés pequenos quase não deixam história. Na névoa, o grupo parece mais uma falha no beco do que sete corpos atravessando Ravens Bluff depois da meia-noite. Um bêbado dorme sob uma marquise sem acordar. Duas mulheres fecham uma janela antes de olhar direito. Um guarda distante muda de rua para evitar a parte mais pobre do caminho.
+
+Quando a marca simples do sol nascente da **Casa da Aurora Menor** aparece na porta lateral, as crianças estão inteiras.
+
+Não calmas.
+
+Inteiras.
+
+Maerra abre depois da segunda batida baixa. Está de mangas arregaçadas, cabelo preso, olhos de quem não estava dormindo pesado. Por um instante ela vê Ren, a caixa, o pano vermelho, seis crianças e nenhuma Peta.
+
+A expressão dela não se quebra em espanto. Vira trabalho.
+
+"Para dentro. Agora."
+
+A Casa da Aurora Menor acorda em silêncio. Não como templo em alarme, mas como enfermaria que conhece madrugada ruim. Mantas saem de um banco. Água aparece em tigelas. Uma acólita jovem é chamada sem sino. Maerra manda trancar a lateral depois do último pé entrar, mas não barra Ren.
+
+Ren conta.
+
+Não precisa enfeitar. Toll. Vessa. O rapaz. O adulto do corredor. Narro. A porta de ferro. A pessoa de vermelho. Peta sendo empurrada para trás. O pano. A caixa. A chave deixada no chão.
+
+Maerra ouve de pé no começo. Depois se senta só quando Doss confirma a parte de Peta com a própria voz.
+
+"Casa velha de Lathander", ela diz baixo, olhando para a caixa. "E alguém usando criança embaixo dela."
+
+A frase sai sem raiva alta. Isso a torna pior.
+
+Ren entrega a caixa. Com as ferramentas de ladrão e alguns minutos de paciência, a tranca pequena não resiste. Não há estalo violento, mola escondida ou agulha. Só metal velho cedendo com um clique seco.
+
+Dentro há linho amarelado, um pequeno papel quebradiço demais para abrir com pressa e um broche.
+
+O broche é simples à primeira vista: latão fosco, formato de fecho comum de manto, sem pedra, sem brilho de nobreza. Só quando Maerra vira a peça contra a lamparina aparece o detalhe: um sol nascente quase oculto sob linhas de capa e ombro curvado. Não um sol de altar. Um sol para quem atravessa estrada tentando não virar alvo.
+
+Maerra fecha os dedos ao redor dele por um instante.
+
+"O Broche do Semblante Humilde."
+
+Ela olha para as crianças antes de olhar para Ren.
+
+"Não era feito para esconder assassino. Era feito para que peregrino pobre, mensageiro de cura, viúva em estrada ou criança escoltada parecesse menos digno de roubo. Menos memorável. Mais comum."
+
+Ela não entrega o broche de imediato. Primeiro pega o pano vermelho.
+
+Cheira uma vez.
+
+Depois outra, mais curta.
+
+"Isso não é veste de culto. É pano de trabalho. Encerado. Tintureiro ou cerieiro. Barro de rua baixa. Cera ruim."
+
+A palavra **cera** encontra outro fio que Ren já tem: a gaveta de areia, cera e panos do corredor treze de Narwhal, retirada em cesto de roupa suja com nó amarelo rumo à rua dos tintureiros.
+
+Maerra não sabe desse detalhe inteiro até Ren contá-lo. Quando ele conta, ela fica imóvel por um segundo.
+
+"Então há dois caminhos encostando no mesmo cheiro."
+
+Ela empurra a caixa aberta de volta para si, como coisa da Casa da Aurora. Mas coloca o broche na mão de Ren.
+
+"Empréstimo. Não prêmio. Se você o usar, use para trazer Peta viva ou para proteger alguém vivo. Depois volta para cá."
+
+Mecanicamente, Maerra acredita que o broche pode ser ativado **uma vez por amanhecer** para produzir em quem o usa um efeito semelhante a **Disfarçar-se** por cerca de **1 hora**, sem componentes, sempre como aparência humilde/comum e sem imitar uma pessoa específica com perfeição.
+
+Ela aponta para as crianças.
+
+"Elas ficam. Eu respondo por elas até alguém melhor precisar responder comigo."
+
+Então aponta para a porta, mas não como expulsão.
+
+"Direção: se você quer Peta antes que esfriem a trilha, siga o cheiro de cera e tintura, e pense em saída baixa. A porta de ferro pode dar em porão velho, drenagem, corredor de serviço ou rota para as ruas dos ofícios sujos. Se você quer força formal, eu mando palavra a Luath agora. Mas guarda fazendo barulho na Casa Velha talvez encontre adultos caídos, não Peta."
+
+Maerra baixa a voz.
+
+"Você ainda tem sua sombra andando com você?"
+
+Sim. **Passos sem Pegadas** ainda respira em volta de Ren, mas não por muito mais tempo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:35 de 4 Eleasis, 1372 DR**. Ren levou seis crianças resgatadas à **Casa da Aurora Menor**, sob proteção de **Maerra Thandrel**. Peta continua desaparecida, provavelmente levada por rota baixa ligada à porta de ferro. A caixa velha foi aberta e entregue a Maerra; dela saiu o **Broche do Semblante Humilde**, cedido a Ren como empréstimo provisório para proteger vivos. Ren ainda está com o pedaço de pano vermelho encerado. Maerra pode mandar palavra a Luath, mas alerta que isso pode custar tempo e provocar uma batida barulhenta.
+
+O que Ren faz?

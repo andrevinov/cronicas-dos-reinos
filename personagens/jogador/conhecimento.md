@@ -2167,3 +2167,18 @@ Progressão:
 * Ren está com a caixa velha fechada e um pedaço de pano vermelho encerado;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
 * hora aproximada: 00:15 de 4 Eleasis, 1372 DR.
+* rolagem: Conduzir seis crianças até Maerra sob Passos sem Pegadas, d20 13 + 12 = 25 contra CD 13, sucesso;
+* Ren levou Miri, duas crianças da cozinha, Nib, Doss e Cal até a Casa da Aurora Menor sem chamar atenção útil;
+* Maerra acolheu as seis crianças na Casa da Aurora Menor;
+* Ren contou a Maerra sobre Toll, Vessa, o rapaz, o adulto do corredor, Narro, a porta de ferro, a pessoa de vermelho, Peta, o pano e a caixa;
+* Ren abriu a caixa velha com ferramentas de ladrão e paciência; a tranca pequena cedeu sem rolagem por falta de pressão;
+* a caixa continha linho amarelado, papel quebradiço e o **Broche do Semblante Humilde**;
+* Maerra reconheceu o broche como item antigo de Lathander feito para tornar peregrinos, mensageiros de cura, viúvas ou crianças escoltadas menos memoráveis e mais comuns em estrada perigosa;
+* Maerra cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório, com a condição de usá-lo para proteger vivos e depois devolvê-lo;
+* mecanicamente, Maerra acredita que o broche pode ser ativado 1 vez por amanhecer para produzir em Ren efeito semelhante a Disfarçar-se por cerca de 1 hora, sem componentes, sempre como aparência humilde/comum e sem imitar pessoa específica com perfeição;
+* Maerra ficou com a caixa/relicário aberto na Casa da Aurora Menor;
+* Maerra identificou o pano vermelho como pano de trabalho encerado, de tintureiro ou cerieiro, com cheiro de cera ruim, tintura e barro de rua baixa;
+* ao ouvir de Ren a pista de Kethra sobre areia, cera e panos do corredor treze indo para a rua dos tintureiros, Maerra disse que há dois caminhos encostando no mesmo cheiro;
+* Maerra aponta como direção rápida seguir o fio de cera/tintura e uma saída baixa ligada à porta de ferro; ela também pode mandar palavra a Luath, mas alerta que guarda fazendo barulho na Casa Velha talvez encontre adultos caídos, não Peta;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde;
+* hora aproximada: 00:35 de 4 Eleasis, 1372 DR.

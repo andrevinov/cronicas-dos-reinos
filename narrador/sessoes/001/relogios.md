@@ -185,6 +185,7 @@ Observação recente:
 * Na noite de 3 Eleasis, Ren voltou à Casa Velha, ocupou o ponto de observação anterior sem alarme e alcançou a viela lateral diante da porta de serviço. A observação noturna não revelou detalhes finos do interior, mas confirmou a lateral como eixo real. Não há avanço do relógio neste momento.
 * Na madrugada de 4 Eleasis, Ren entrou pela janela alta, chegou à cozinha/refeitório velho, encontrou crianças dentro e neutralizou Toll, adulto de avental que guardava a cozinha/porta, sem gerar alarme. O relógio regride porque Ren encontrou crianças vivas e abriu uma janela real de resgate/informação antes de elas serem movidas.
 * Ainda na madrugada de 4 Eleasis, Ren neutralizou vários adultos e Narro, recuperou a caixa velha marcada por sol apagado e retirou seis crianças para o Tanque seco. Peta foi vista provavelmente sendo levada por uma pessoa de vermelho por uma rota além da porta de ferro. O relógio permanece em 0/6 porque a operação resgatou testemunhas vivas, mas há urgência específica sobre Peta e a rota interna.
+* Ren levou as seis crianças até Maerra na Casa da Aurora Menor sem chamar atenção útil. Elas agora são testemunhas protegidas por uma sacerdotisa de Lathander. O risco sistêmico às crianças resgatadas cai, mas Peta permanece em risco imediato e pode ser movida para fora da rota local.
 
 Descrição:
 
@@ -215,7 +216,7 @@ Estado atual:
 * possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
 * primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
 * observação prolongada confirmou padrão externo sem alertar a Casa Velha; adulto de avental manchado saiu rumo aos armazéns com embrulho fino e comprido por volta de 11:18.
-* incursão noturna em andamento: Ren saiu da Casa Velha pela lateral com seis crianças resgatadas e está no Tanque seco; Peta segue em risco além da porta de ferro/rota interna.
+* incursão noturna em andamento: Ren entregou seis crianças a Maerra na Casa da Aurora Menor e recebeu o Broche do Semblante Humilde como empréstimo provisório. Peta segue em risco além da porta de ferro/rota interna, com possível ligação a cera/tintura/rua dos tintureiros.
 
 ---
 

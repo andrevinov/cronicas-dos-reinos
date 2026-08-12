@@ -630,10 +630,10 @@ relacoes:
     nome: "Irmã Maerra Thandrel"
     tipo: "sacerdotisa de Lathander / abrigo potencial"
     local: "Casa da Aurora Menor, Temple District"
-    status: "ativa, em cena; abrigo provisório concedido"
-    atitude_para_ren: "cautelosa, disposta a ouvir, moralmente firme"
-    confianca: "provisória e limitada"
-    respeito: "pendente"
+    status: "ativa, em cena; abrigo provisório concedido às seis crianças resgatadas"
+    atitude_para_ren: "cautelosa, disposta a agir, moralmente firme"
+    confianca: "moderada em pauta de proteção de vulneráveis"
+    respeito: "cauteloso"
     motivo: >
       Nera recomendou Maerra como alguém realmente compassiva. Ao receber
       Nera e Tavin de madrugada, Maerra percebeu Ren armado atrás deles, mas
@@ -670,6 +670,12 @@ relacoes:
       pasta, registrou que Nera reconheceu a impressão da lua velada e lacrou o
       conjunto com cera da Casa da Aurora Menor. Ela não atestou cadeia de
       custódia, autoria final ou inocência.
+      Na madrugada de 4 Eleasis, Ren levou seis crianças resgatadas da Casa
+      Velha do Primeiro Raio à Casa da Aurora Menor, entregou a caixa velha
+      marcada por sol apagado e relatou Peta sendo provavelmente levada pela
+      pessoa de vermelho. Maerra acolheu as crianças, reconheceu o Broche do
+      Semblante Humilde dentro da caixa e cedeu o broche a Ren como empréstimo
+      provisório para proteger vivos.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
@@ -691,6 +697,10 @@ relacoes:
       - "Corrigiu Ren: Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena."
       - "Colocou em curso ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren como ouvinte."
       - "Aconselhou Ren a deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell."
+      - "Acolheu seis crianças resgatadas da Casa Velha na madrugada de 4 Eleasis."
+      - "Reconheceu o Broche do Semblante Humilde dentro da caixa velha marcada por sol apagado."
+      - "Cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório para proteger vivos."
+      - "Identificou o pano vermelho como pano de trabalho encerado ligado a tintureiro ou cerieiro."
   luath:
     nome: "Luath"
     tipo: "sargento da City Guard / supervisor possível da Night Watch"
