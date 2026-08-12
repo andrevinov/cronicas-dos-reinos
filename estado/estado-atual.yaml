@@ -17,9 +17,9 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "arredores da Casa Velha do Primeiro Raio"
-  ponto_exato: "viela lateral, diante da porta de serviço meio nível abaixo"
-  descricao_operacional: "Ren descansou mais uma hora e meia no circo, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas e saiu para a Casa Velha do Primeiro Raio. A travessia até a região foi tratada como deslocamento discreto comum, sem cauda competente no trajeto. Ren ocupou o ponto de observação anterior sem alertar olheiros, observou por cerca de quarenta e cinco minutos e se aproximou da lateral em uma janela de ruído natural. A observação noturna não revelou detalhes finos do interior, mas a leitura de padrão foi excelente: a frente parece inativa, a lateral é o eixo real, a porta de serviço tem luz fraca por baixo e há uma janela alta escura acima. No momento, Ren não vê criança em posição ativa do lado de fora, mas isso não prova que não haja olheiros ou crianças dentro. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren."
+  area: "interior da Casa Velha do Primeiro Raio"
+  ponto_exato: "sala alta de serviço acessada pela janela acima da porta lateral"
+  descricao_operacional: "Ren descansou mais uma hora e meia no circo, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas e saiu para a Casa Velha do Primeiro Raio. A travessia até a região foi tratada como deslocamento discreto comum, sem cauda competente no trajeto. Ren ocupou o ponto de observação anterior sem alertar olheiros, observou por cerca de quarenta e cinco minutos e se aproximou da lateral em uma janela de ruído natural. A observação noturna não revelou detalhes finos do interior, mas a leitura de padrão foi excelente: a frente parece inativa, a lateral é o eixo real, a porta de serviço tem luz fraca por baixo e há uma janela alta escura acima. Da lateral, Ren examinou a janela alta, confirmou uma sala de serviço vazia com ligação para o restante da casa, abriu a trava discretamente com ferramentas de ladrão e entrou sem gerar alarme. Depois de entrar, ativou Passos sem Pegadas; a concentração pode durar até cerca de 00:58 de 4 Eleasis. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren."
 
 tempo:
   ano_dr: 1372
@@ -32,10 +32,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 3
   periodo_do_dia: "noite avançada de 3 Eleasis, após o Benefício da Lona Aberta"
-  hora_aproximada: "23:55 de 3 Eleasis"
+  hora_aproximada: "23:58 de 3 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual é 3 Eleasis."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Ren está na lateral da Casa Velha do Primeiro Raio, ainda do lado de fora, sem alarme gerado. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Ren entrou na Casa Velha do Primeiro Raio pela janela alta acima da porta lateral, sem alarme gerado, e está com Passos sem Pegadas ativo. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente."
 
 recursos:
   pontos_de_vida:
@@ -46,7 +46,7 @@ recursos:
     maximos: 4
     dado: "d8"
   ki:
-    atuais: 4
+    atuais: 2
     maximos: 4
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -54,6 +54,8 @@ recursos:
   dinheiro:
     po: 24
   condicoes:
+    - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
+    - "Passos sem Pegadas ativo por concentração até cerca de 00:58 de 4 Eleasis"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"

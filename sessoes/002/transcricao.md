@@ -2938,3 +2938,36 @@ Mapa operacional salvo em `sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Hora aproximada: **23:55 de 3 Eleasis, 1372 DR**. Ren descansou, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas e chegou à lateral da Casa Velha do Primeiro Raio. Ele não gerou alarme ao ocupar o ponto de observação nem ao se aproximar da lateral. A observação noturna não revelou detalhes finos do interior, mas a leitura de padrão foi excelente: a frente parece inativa, a lateral é o eixo real, a porta de serviço tem luz fraca por baixo e há uma janela alta escura acima. No momento, Ren não vê criança em posição ativa do lado de fora, mas isso não prova que não haja olheiros ou crianças dentro. Ele está parado na lateral, diante da porta de serviço meio nível abaixo.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren observa a janela acima da porta. Se não houver ninguém no cômodo, e o cômodo parece ter ligação com o resto da casa, Ren usará suas ferramentas de ladrão pra arrombar discretamente a janela e entrar por ali. Depois de entrar, ele ligará Passos sem Pegadas.
+
+**Narrador**
+
+Examinar a janela alta da Casa Velha: d20 14 + 5 = 19 contra CD 15. Sucesso.
+Abrir discretamente a janela alta com ferramentas de ladrão: d20 13 + 6 = 19 contra CD 15. Sucesso.
+
+A janela fica alta o bastante para não ser convite. De perto, porém, ela não é feita para deter alguém como Ren; é feita para deixar ar sair, fumaça fina escapar e a casa fingir que não está usando aquela lateral.
+
+A madeira do batente inchou com umidade antiga. A fresta entre a folha e a moldura permite um olhar enviesado para dentro. Primeiro, só há escuro. Depois, quando o olho se acostuma, formas menores se separam da sombra: prateleiras estreitas, panos dobrados de qualquer jeito, uma bacia rasa no chão, dois ganchos vazios e uma caixa baixa encostada na parede.
+
+Não há corpo no cômodo. Nenhuma respiração próxima. Nenhum peso mudando nas tábuas.
+
+E há ligação com o resto da casa: uma porta interna, estreita, está entreaberta. Por baixo dela entra uma linha fraca de luz mais quente do que a noite, vinda de algum corredor ou vão além. Não dá para ver quem está do outro lado. Dá para ver que a sala não é beco sem saída.
+
+As ferramentas de ladrão entram devagar. A primeira lingueta resiste. A segunda cede com um estalo seco pequeno demais para vencer o gotejar da calha e o ranger distante de uma carroça nas ruas baixas. Ren segura a janela antes que ela caia para dentro, levanta só o bastante e passa.
+
+O interior cheira a pano úmido, cinza fria e sopa velha. O símbolo antigo de Lathander ainda existe numa parede, quase apagado sob raspões, fuligem e carvão. O sol não foi removido com cuidado. Foi castigado até virar mancha.
+
+Ren fecha a janela atrás de si até deixá-la encostada, sem travar. Quando ativa **Passos sem Pegadas**, a sombra parece engrossar ao redor dos tornozelos e das mãos. A poeira sob seus pés deixa de responder como deveria. O ar segura o som pequeno antes que ele se espalhe.
+
+Do outro lado da porta interna, a Casa Velha respira baixo.
+
+Um som de madeira contra pedra vem de algum ponto abaixo ou adiante: toc, pausa, toc. Depois uma voz adulta, grave e baixa demais para virar palavras inteiras, corta o ruído. O toc para.
+
+Ren está dentro.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** está ativo por concentração, podendo durar até cerca de **00:58 de 4 Eleasis** se Ren mantiver a técnica. Hora aproximada: **23:58 de 3 Eleasis, 1372 DR**. Ele está numa sala alta de serviço, vazia, ligada ao restante da Casa Velha por uma porta interna entreaberta. Nenhum alarme foi gerado.
+
+O que Ren faz?
