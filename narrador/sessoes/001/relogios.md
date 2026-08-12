@@ -12,7 +12,7 @@ Visibilidade: oculto.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 1/6.
+Progresso atual: 0/6.
 
 Último avanço:
 
@@ -183,6 +183,7 @@ Observação recente:
 * Ren iniciou sondagem externa da Casa Velha do Primeiro Raio na manhã seguinte ao Benefício da Lona Aberta. Identificou marcas de sol riscado, trânsito por viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado e possíveis observadores, sem entrar e sem gerar alarme. Não há avanço do relógio neste momento.
 * Ren observou a Casa Velha por quase três horas a partir de ponto alto discreto, sem abordagem direta e sem alarme. Identificou padrão de uso da viela/porta de serviço, crianças como olhos externos e adulto de avental manchado usando a rota. Não há avanço do relógio neste momento.
 * Na noite de 3 Eleasis, Ren voltou à Casa Velha, ocupou o ponto de observação anterior sem alarme e alcançou a viela lateral diante da porta de serviço. A observação noturna não revelou detalhes finos do interior, mas confirmou a lateral como eixo real. Não há avanço do relógio neste momento.
+* Na madrugada de 4 Eleasis, Ren entrou pela janela alta, chegou à cozinha/refeitório velho, encontrou crianças dentro e neutralizou Toll, adulto de avental que guardava a cozinha/porta, sem gerar alarme. O relógio regride porque Ren encontrou crianças vivas e abriu uma janela real de resgate/informação antes de elas serem movidas.
 
 Descrição:
 

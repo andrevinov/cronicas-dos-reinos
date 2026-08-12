@@ -2084,3 +2084,24 @@ Progressão:
 * Ren alcançou o nível 4 por marco narrativo após a primeira noite consolidada em Ravens Bluff;
 * o avanço veio de sobreviver à sequência inicial, proteger os Vell, conquistar base provisória com Jack Mooney, resolver a sabotagem do circo e descobrir que a caixa da Lua foi armadilha ligada a Masao ou agente próximo;
 * Ren agora tem 31 PV máximos, CA 17, 4 pontos de ki, Queda Lenta e Destreza 18 / Sabedoria 17.
+
+## Casa Velha do Primeiro Raio: infiltração noturna
+
+* Ren entrou pela janela alta acima da porta lateral sem gerar alarme;
+* Ren ativou **Passos sem Pegadas**, gastando 2 ki, com duração por concentração até cerca de 00:58 de 4 Eleasis;
+* dentro da sala alta de serviço, Ren encontrou ligação para um patamar/corredor de serviço;
+* no patamar, Ren percebeu passagem escura para a parte frontal, escada iluminada para baixo e uma linha baixa de alarme improvisado presa a metal fino;
+* Ren contornou o alarme e chegou ao topo da escada;
+* abaixo, havia cozinha/refeitório velho com adulto de avental manchado, duas crianças visíveis, porta barrada, abertura lateral e cortina grossa ao fundo;
+* imagens salvas: `sessoes/002/imagens/003-visao-escada-casa-velha.png`, `sessoes/002/imagens/004-mapa-escada-casa-velha.png` e `sessoes/002/imagens/004-mapa-escada-casa-velha.svg`;
+* Ren neutralizou o adulto de avental, chamado **Toll**, com golpes não letais e Rajada de Golpes, gastando 1 ki;
+* Toll está inconsciente e escondido de modo apressado sob banco, pano e lenha;
+* as duas crianças visíveis cooperaram em silêncio;
+* elas disseram que Toll guarda a cozinha e a porta, mas não manda embaixo;
+* elas disseram que a Casa Velha oferece sopa e canto, depois usa crianças para recados e vigia, e impede saída de quem vê coisa demais;
+* os porões têm caminho velho, buraco para rua baixa e são usados para papel, vela, pacote, esconderijo e observação de guardas;
+* as crianças mencionaram **Miri**, **Doss** e **Cal** como crianças mais abaixo ou atrás da cortina;
+* a mentira combinada, se alguém aparecer, é que Toll ouviu barulho lá fora e foi resolver, mas ainda não voltou;
+* alguém além da cortina chamou por Toll;
+* Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 00:03 de 4 Eleasis, 1372 DR.

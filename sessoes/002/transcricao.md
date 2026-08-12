@@ -3049,3 +3049,85 @@ Mas agora Ren sabe que há crianças entre ele e qualquer resposta simples.
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:01 de 4 Eleasis, 1372 DR**. Ren está no topo da escada interna de serviço. Abaixo há uma cozinha/refeitório velho com um adulto de avental manchado, pelo menos duas crianças visíveis, uma passagem coberta por cortina ao fundo, uma porta barrada que provavelmente liga à entrada de serviço e uma abertura estreita lateral.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren se aproxima furtivamente do homem. Gasta um de ki e tenta apagar o homem silenciosamente com seu ataque surpresa e Rajada de Golpes. Se ele conseguir apagá-lo, ele segurará o corpo para não cair de uma vez, e fará sinal para as crianças ficarem em silêncio. Se as crianças ficarem em silêncio, Ren pedirá ajuda pra encobrir o homem rapidamente, e dirá as crianças que se alguém aparecer, falar que o homem ouviu um barulho lá fora e foi resolver, mas ainda não voltou. Ele fala isso pra caso alguém apareça enquanto ele interroga as crianças sobre o que está acontecendo ali e se há mais crianças presas.
+
+**Narrador**
+
+Aproximar-se do homem de avental sem alertar a cozinha: d20 18 + 16 = 34 contra CD 17. Sucesso.
+Golpe surpresa não letal contra o homem de avental: d20 com vantagem [5, 10] -> 10 + 6 = 16 contra CA 12. Acerto. Dano: 1d4 2 + 4 = 6 contundente.
+Rajada de Golpes 1 contra o homem de avental: d20 14 + 6 = 20 contra CA 12. Acerto. Dano: 1d4 3 + 4 = 7 contundente.
+Rajada de Golpes 2 contra o homem de avental: d20 2 + 6 = 8 contra CA 12. Erro.
+Controlar o corpo inconsciente antes de bater no chão: d20 10 + 6 = 16 contra CD 13. Sucesso.
+Reação das crianças ao sinal de silêncio: d20 17 + 2 = 19 contra CD 12. Sucesso.
+Encobrir rapidamente o homem inconsciente com ajuda das crianças: d20 com vantagem [18, 17] -> 18 + 6 = 24 contra CD 14. Sucesso.
+
+Ren desce.
+
+Não rápido. Não teatral. Só inevitável.
+
+O homem de avental não olha para cima a tempo. A primeira pancada entra na lateral do pescoço, curta, seca, feita para cortar força antes de cortar vida. O corpo dele tenta virar. A mão busca o cabo sobre a mesa.
+
+Ren já está dentro da distância.
+
+O segundo golpe acerta abaixo da mandíbula, empurrando o ar para fora do homem num som menor que uma tosse. O terceiro passa raspando quando o corpo dele amolece antes da trajetória prevista, mas já não importa. Os joelhos cedem.
+
+Ren segura o peso antes que ele encontre a pedra.
+
+Por um instante, o mundo inteiro vira uma coisa só: o braço de Ren por baixo do ombro do homem, o avental áspero, o cheiro de suor velho e farinha azeda, a lamparina tremendo, os olhos da criança maior ficando enormes.
+
+Ren faz o sinal.
+
+A menor puxa ar pelo nariz, quase um soluço. A maior prende a boca dela com a própria mão antes que Ren precise mover um dedo. Não há grito.
+
+As duas entendem rápido demais. Isso diz mais sobre a casa do que qualquer explicação.
+
+Com a ajuda delas, o corpo vai para baixo da mesa comprida e depois para trás dos bancos quebrados. A maior empurra um pano engordurado por cima das pernas. A menor arrasta, com esforço silencioso, um cesto vazio para quebrar a forma humana. Ren ajeita lenha, sombra e banco num desenho que não enganaria busca cuidadosa, mas pode sobreviver a uma olhada apressada.
+
+A menina maior cochicha primeiro:
+
+"Toll."
+
+Ela aponta para o homem escondido.
+
+"Ele guarda a cozinha. E a porta. Não manda embaixo."
+
+A menor ainda está com os olhos no corpo. A maior responde por ela, rápido, baixo, tropeçando nas palavras:
+
+"Não chama guarda. Guarda devolve. Ou bate. Ou pergunta nome e depois eles acham."
+
+Quando Ren pergunta o que está acontecendo ali, ela olha para a cortina antes de olhar para ele.
+
+"Dão sopa. Dão canto. Primeiro é recado. Depois é vigia. Depois, se você vê coisa que não devia, não sai mais."
+
+Ela engole seco.
+
+"Tem caminho embaixo. Porão velho. Buraco para rua baixa. Eles fazem menino pequeno passar onde homem grande não passa. Papel, vela, pacote. Às vezes só olhar se tem guarda."
+
+A menor murmura algo que Ren quase perde.
+
+"Miri tá lá."
+
+A maior aperta a mão dela, mas confirma com a cabeça.
+
+"Miri. Doss. Cal. Mais embaixo ou atrás do pano. Não sei se todos juntos. Quando batem em cima, mandam correr para baixo."
+
+Ela repete a mentira que Ren deu, testando a frase como quem testa tábua podre:
+
+"Toll ouviu barulho lá fora. Foi ver. Ainda não voltou."
+
+Não soa natural. Mas soa possível, se dita por uma criança assustada para alguém que espera medo.
+
+Do outro lado da cortina grossa, a luz avermelhada mexe.
+
+Uma voz mais distante fala uma palavra que Ren não entende. Depois outra, mais clara:
+
+"Toll?"
+
+Ainda não é alarme. É chamada.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:03 de 4 Eleasis, 1372 DR**. Toll, o adulto de avental, está inconsciente e escondido de modo apressado na cozinha/refeitório. As duas crianças ficaram em silêncio e cooperaram. Elas disseram que há mais crianças abaixo ou atrás da cortina, que os porões servem para recados/pacotes/esconderijo, e que alguém além da cortina acabou de chamar por Toll.
+
+O que Ren faz?

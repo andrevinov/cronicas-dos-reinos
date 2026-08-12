@@ -56,8 +56,8 @@
   <!-- Tripwire -->
   <line class="line" x1="555" y1="382" x2="790" y2="420"/>
   <circle class="lamp" cx="805" cy="425" r="12"/>
-  <text class="small" x="560" y="460">linha baixa de alarme</text>
-  <text class="note" x="560" y="488">metal fino/talheres atras da prateleira</text>
+  <text class="small" x="425" y="465">linha baixa de alarme</text>
+  <text class="note" x="425" y="493">metal fino preso atras</text>
 
   <!-- Stairs -->
   <g transform="translate(760 360)">
@@ -84,10 +84,9 @@
   <text class="tiny" x="815" y="663">lenha</text>
   <text class="tiny" x="815" y="689">e sombra</text>
 
-  <circle class="adult" cx="1120" cy="630" r="28"/>
-  <text class="small" x="1160" y="620">adulto de</text>
-  <text class="small" x="1160" y="650">avental manchado</text>
-  <line class="arrow" x1="1150" y1="628" x2="1250" y2="626"/>
+  <circle class="adult" cx="1190" cy="630" r="28"/>
+  <text class="small" x="1228" y="624">adulto</text>
+  <text class="note" x="1228" y="652">avental manchado</text>
 
   <circle class="child" cx="930" cy="610" r="20"/>
   <text class="note" x="852" y="598">crianca maior</text>
@@ -103,13 +102,14 @@
   <!-- Barred service door -->
   <rect class="wood" x="1420" y="610" width="58" height="180" rx="4"/>
   <line x1="1418" y1="700" x2="1480" y2="700" stroke="#2b1f14" stroke-width="11"/>
-  <text class="small" x="1288" y="590">porta barrada</text>
-  <text class="note" x="1260" y="618">provavel entrada de servico</text>
+  <text class="small" x="1235" y="505">porta barrada</text>
+  <text class="note" x="1165" y="535">provavel entrada de servico</text>
+  <line class="arrow" x1="1398" y1="525" x2="1438" y2="615"/>
 
   <!-- Side opening -->
   <rect class="dark-room" x="775" y="548" width="55" height="120" rx="4"/>
-  <text class="small" x="610" y="615">abertura estreita</text>
-  <text class="note" x="602" y="644">frente/deposito baixo</text>
+  <text class="small" x="560" y="675">abertura estreita</text>
+  <text class="note" x="555" y="704">frente/deposito baixo</text>
   <line class="arrow" x1="762" y1="610" x2="830" y2="608"/>
 
   <!-- Known unknown area -->
