@@ -2243,3 +2243,16 @@ Progressão:
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
 * Passos sem Pegadas segue ativo até cerca de 00:58, mas está nos instantes finais;
 * hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Sair do pátio dos tintureiros sem entregar a direção, d20 18 + 16 = 34 contra CD 16, sucesso;
+* rolagem: Improvisar Peta como carga sob o disfarce do broche, d20 16 + 6 = 22 contra CD 14, sucesso;
+* Ren saiu pela rua dos tintureiros em vez de retornar pela grelha baixa;
+* Ren usou pano grosso de tingimento e cesto quebrado para ocultar Peta como carga de retalhos úmidos;
+* Ren ativou o **Broche do Semblante Humilde** na rua dos tintureiros;
+* o broche está ativo até cerca de 01:56 de 4 Eleasis, produzindo aparência humilde/comum em Ren;
+* o uso do broche está gasto até o próximo amanhecer;
+* **Passos sem Pegadas** expirou no trajeto por volta de 00:58 de 4 Eleasis;
+* Ren chegou à Casa da Aurora Menor sem levantar suspeita útil;
+* Cal confirmou que a criança resgatada é **Peta**;
+* Maerra iniciou atendimento imediato a Peta e perguntou a Ren quantos vieram atrás;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
+* hora aproximada: 01:05 de 4 Eleasis, 1372 DR.

@@ -4210,3 +4210,80 @@ Passos sem Pegadas ainda respira ao redor dele por instantes finais.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren viu o rosto da pessoa de vermelho: uma mulher jovem adulta desconhecida, pálida, com cicatriz de queimadura/cera e marca de **sol apagado** no pescoço. A pessoa de vermelho continua inconsciente dentro da oficina. A criança está viva, presa e amordaçada nos braços de Ren, quase certamente Peta. Ren está no **pátio dos fundos da oficina dos tintureiros**, diante da escolha imediata de rota: grelha baixa e discreta, mas lenta com a criança, ou rua/pátio, mais rápida e mais exposta. **Passos sem Pegadas** está quase no fim. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren vai para a rua dos tintureiros, buscando ser discreto em sua passagem até atingir a rua. Depois que atingir, irá usar o poder do broche para disfarçar-se. Se ele encontrar cestos velhos na rua, ou algum pano roto, ele colocará a criança no cesto ou pano e andará com ela nos braços como se fosse uma carga. Caminhará assim, sem levantar suspeitas, até Maerra.
+
+**Narrador**
+
+Sair do pátio dos tintureiros sem entregar a direção: d20 18 + 16 = 34 contra CD 16. Sucesso.
+Improvisar Peta como carga sob o disfarce do broche: d20 16 + 6 = 22 contra CD 14. Sucesso.
+
+Ren escolhe a rota mais exposta.
+
+E é justamente isso que compra o primeiro segundo. Quem sair pela cortina espera grelha, beco baixo, sombra de rato, água suja. Não espera que alguém com uma criança nos braços corte para a rua dos tintureiros como carregador atrasado.
+
+Passos sem Pegadas ainda cobre os primeiros passos.
+
+Ren não corre em linha limpa. Ele sai do pátio pelo lado onde os barris projetam sombra, passa por trás de um varal baixo e pega da pilha de descarte um pano grosso de tingimento, duro de cera nas bordas, fedendo a vermelho velho. Um cesto quebrado, largo demais para mercado e ruim demais para venda, está encostado junto ao muro. Não serve para esconder a criança inteira. Serve para dar forma à mentira.
+
+O pano vai por cima. O cesto sustenta por baixo. Peta vira, aos olhos de quem não olha com cuidado, um volume de retalho úmido e roupa estragada.
+
+Do fundo da oficina, a porta range.
+
+Ren já está na rua.
+
+Quando o último resto da sombra mágica começa a morrer no chão, Ren toca o Broche do Semblante Humilde.
+
+Não há clarão.
+
+O mundo simplesmente perde interesse nele.
+
+As linhas do rosto mudam o bastante para ficarem pobres, cansadas e comuns. O corte estrangeiro some sob a impressão de pano barato, ombro curvado, barba curta de dois dias, pele sem história. O broche não cria uma pessoa famosa nem imita ninguém. Ele cria alguém que a cidade aprendeu a ignorar: um homem de trabalho sujo carregando pano manchado tarde demais para fazer perguntas.
+
+A rua dos tintureiros ajuda a mentira.
+
+Tudo ali cheira a coisa que ninguém quer tocar. Cestos vazam cor. Panos pingam. Uma janela alta se abre para jogar água escura e fecha de novo antes que a pessoa veja mais que uma carga passando. Um homem bêbado, dormindo sentado sob um beiral, ergue a cabeça, vê pano, cesto e pobreza, e volta a dormir.
+
+Passos sem Pegadas se desfaz antes da primeira esquina larga.
+
+O broche continua.
+
+Atrás, na rua dos tintureiros, não sobe grito público. Não ainda. Se alguém dentro da oficina percebeu a fuga, não escolheu chamar a rua inteira como testemunha. Isso também diz alguma coisa: quem trabalha ali teme barulho tanto quanto Ren.
+
+O caminho até a Casa da Aurora Menor não fica seguro. Fica possível.
+
+Ren evita a frente das tavernas tardias, usa muros de serviço, passa por uma viela onde cinza molhada cobre o cheiro de tintura e atravessa uma rua mais aberta no passo exato de um carregador que não quer ser lembrado. O peso de Peta é pequeno, mas a tensão dele não é. Sob o pano, ela respira curto. Não grita. Não se debate. A mordaça continua no lugar até haver parede amiga.
+
+Quando a porta lateral da Casa da Aurora Menor se abre, Maerra vê primeiro a carga.
+
+Depois vê a forma dela.
+
+Depois vê Ren por trás do rosto humilde que o broche colocou sobre ele.
+
+Ela não faz pergunta na porta.
+
+"Dentro."
+
+A palavra é baixa e absoluta.
+
+Só depois da tranca correr atrás dele é que Maerra puxa o pano, vê a criança e chama por uma lâmina pequena de curativo. Cal, acordado demais para criança salva, aparece na borda da saleta com o rosto branco.
+
+"Peta."
+
+Agora não é quase.
+
+É Peta.
+
+Maerra corta a mordaça primeiro, não as amarras dos pulsos. Faz isso com cuidado de quem já viu criança machucada tentar puxar ar depressa demais. Peta engasga, respira, e não consegue falar de imediato. Uma das outras crianças começa a chorar em silêncio.
+
+Maerra olha para Ren.
+
+Não para o rosto do broche. Para Ren.
+
+"Quantos vieram atrás?"
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren resgatou **Peta viva** e chegou à **Casa da Aurora Menor** sem levantar suspeita útil. **Passos sem Pegadas expirou** no trajeto, por volta de **00:58**. O **Broche do Semblante Humilde foi usado** e deve manter a aparência humilde/comum de Ren até cerca de **01:56**, mas seu uso está gasto até o próximo amanhecer. Hora aproximada: **01:05 de 4 Eleasis, 1372 DR**. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; alguém atrás da cortina reagiu, mas não houve alarme público imediato. Peta está com Maerra, viva, presa ainda parcialmente e em choque.
+
+O que Ren faz?

@@ -630,10 +630,10 @@ relacoes:
     nome: "Irmã Maerra Thandrel"
     tipo: "sacerdotisa de Lathander / abrigo potencial"
     local: "Casa da Aurora Menor, Temple District"
-    status: "ativa, em cena; abrigo provisório concedido às seis crianças resgatadas"
-    atitude_para_ren: "cautelosa, disposta a agir, moralmente firme"
-    confianca: "moderada em pauta de proteção de vulneráveis"
-    respeito: "cauteloso"
+    status: "ativa, em cena; abrigo provisório concedido às sete crianças resgatadas"
+    atitude_para_ren: "cautelosa, disposta a agir, moralmente firme e mais aberta após o resgate de Peta"
+    confianca: "moderada-alta em pauta de proteção de vulneráveis"
+    respeito: "cauteloso, crescente"
     motivo: >
       Nera recomendou Maerra como alguém realmente compassiva. Ao receber
       Nera e Tavin de madrugada, Maerra percebeu Ren armado atrás deles, mas
@@ -676,6 +676,11 @@ relacoes:
       pessoa de vermelho. Maerra acolheu as crianças, reconheceu o Broche do
       Semblante Humilde dentro da caixa e cedeu o broche a Ren como empréstimo
       provisório para proteger vivos.
+      Ren voltou pouco depois, por volta de 01:05 de 4 Eleasis, trazendo Peta
+      viva, presa e amordaçada, disfarçada como carga de retalhos úmidos sob o
+      Broche do Semblante Humilde. Maerra colocou Ren e a criança para dentro
+      sem fazer pergunta na porta, iniciou atendimento imediato e perguntou
+      quantos vieram atrás.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
