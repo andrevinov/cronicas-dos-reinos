@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "rota da carroça de remendos, interceptado por Silva Elkwood antes da carroça verde"
+  ponto_exato: "perto da carroça verde, abraçado por Nera após falar com Silva Elkwood"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -50,9 +50,14 @@ localizacao:
     curto de monge e sem recuperar ki. Depois voltou ao circo pela rota da
     carroça de remendos, sem cauda competente percebida; o broche expirou no
     caminho. Silva Elkwood interceptou Ren antes da carroça verde e perguntou se
-    ele trouxe alguém atrás. Colm/Dent segue escondido sob a lona de Dorra Hest
-    até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em
-    Narwhal ainda precisa ser montado fisicamente por Ren.
+    ele trouxe alguém atrás. Ren respondeu que não foi seguido, chamou Silva de
+    Sil pela primeira vez e contou, em linhas gerais, que sete crianças foram
+    resgatadas e estão vivas sob cuidado de Maerra. Silva pretende mandar ajuda
+    discreta de Chauntea à Casa da Aurora Menor antes do amanhecer. Nera saiu da
+    carroça verde e abraçou Ren, extremamente preocupada. Colm/Dent segue
+    escondido sob a lona de Dorra Hest até a partida antes da primeira luz de
+    4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado
+    fisicamente por Ren.
 
 tempo:
   ano_dr: 1372
@@ -65,10 +70,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "madrugada de 4 Eleasis, após o Benefício da Lona Aberta"
-  hora_aproximada: "02:10 de 4 Eleasis"
+  hora_aproximada: "02:16 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo por volta de 02:10 sem cauda competente percebida, mas ainda sem ki."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro estão inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, mas ainda sem ki, informou Silva sobre o resgate das sete crianças, e Nera o abraçou perto da carroça verde."
 
 recursos:
   pontos_de_vida:
@@ -184,6 +189,9 @@ recursos:
     - "O Broche do Semblante Humilde expirou no caminho de volta ao circo"
     - "Ren voltou ao circo pela rota da carroça de remendos sem cauda competente percebida"
     - "Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás"
+    - "Ren chamou Silva Elkwood de Sil pela primeira vez e contou por cima que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra"
+    - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer"
+    - "Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada"
     - "Nera Vell escondida por Silva Elkwood"
     - "Tavin Vell escondido por Silva Elkwood"
     - "rastro recente parcialmente confundido, mas não apagado"

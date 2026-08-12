@@ -499,6 +499,10 @@ relacoes:
       M. Harrow e a Casa Velha do Primeiro Raio. Ela reagiu com atenção
       especial ao uso de M. Harrow como possível nome de registro para encaixar
       a mentira preparada sobre o "oriental".
+      Após a incursão na Casa Velha e na oficina dos tintureiros, Nera percebeu
+      o retorno de Ren por volta de 02:16 de 4 Eleasis, saiu da carroça verde
+      contra a instrução de esperar e o abraçou com preocupação explícita ao
+      vê-lo vivo e exausto.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -545,6 +549,8 @@ relacoes:
       - "Nera sabe que Ren voltou ao circo ao anoitecer sem cauda competente e sem rastro útil até o acampamento."
       - "Nera ouviu de Ren sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio."
       - "Nera interpretou M. Harrow como possível nome de registro usado para dar corpo escrito à mentira sobre o 'oriental'."
+      - "Nera viu Ren voltar da Casa Velha/rua dos tintureiros vivo, sem ki e exausto, depois do resgate das crianças."
+      - "Nera abraçou Ren perto da carroça verde antes que ele fosse dormir."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -1005,7 +1011,11 @@ relacoes:
       Depois da incursão na Casa Velha e na oficina dos tintureiros, Ren voltou
       ao circo por volta de 02:10 de 4 Eleasis, sem cauda competente percebida,
       mas sem ki e visivelmente exausto. Silva o interceptou antes da carroça
-      verde para confirmar se ele trouxe alguém atrás.
+      verde para confirmar se ele trouxe alguém atrás. Ren respondeu que não
+      foi seguido, chamou-a de Sil pela primeira vez e contou por cima que sete
+      crianças foram resgatadas e estão sob cuidado de Maerra. Silva percebeu
+      o cansaço extremo de Ren e decidiu mandar ajuda discreta de Chauntea à
+      Casa da Aurora Menor antes do amanhecer.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1048,6 +1058,9 @@ relacoes:
       - "Silva aceita que Nera e Tavin permaneçam no circo nesta noite após o fechamento sem incidente aberto."
       - "Silva checou Ren na manhã seguinte ao Benefício e garantiu que ele coma antes de falar com Jack."
       - "Silva não permitirá que a negociação sobre Kage use Nera, Tavin, o livro ou a tragédia dos Vell como tempero comercial."
+      - "Silva ouviu Ren chamá-la de Sil pela primeira vez e não corrigiu o apelido."
+      - "Silva sabe que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra."
+      - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"

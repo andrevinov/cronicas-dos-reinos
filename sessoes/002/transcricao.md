@@ -4382,3 +4382,55 @@ Mesma pergunta. Outra guardiã.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren dormiu pouco na Casa da Aurora Menor, mas **não completou descanso curto de monge** e **não recuperou ki**. O **Broche do Semblante Humilde expirou no caminho** e está gasto até o próximo amanhecer. Peta está viva sob cuidado de Maerra. Hora aproximada: **02:10 de 4 Eleasis, 1372 DR**. Ren chegou ao **Jack Mooney & Sons Circus** pela rota da carroça de remendos, sem cauda competente percebida, e Silva o interceptou antes da carroça verde.
 
 O que Ren faz?
+
+**Jogador**
+
+"Não fui seguido, Sil, pode ficar tranquila." [É a primeira vez que Ren chama ela por esse apelido, e é tentando ser carinhoso mesmo]
+
+Ela pode notar que a batalha da noite foi longa. Ren explica por cima que conseguiu salvar as crianças na Casa do Primeiro Raio. Que entendeu que as crianças devem ter ouvidos coisas sobre alguma operação que está acontecendo na cidade, mas ainda não conseguiu ligar isso a Masao nem a Red Sail diretamente. Mas o que importa é que tem 7 crianças livres e vivas sob o cuidado de Maerra agora. Depois de explicar o que deu, se Nera não aparecer e abraça-lo extremamente preocupada com ele, Ren irá para seus aposentos, pra poder dormir.
+
+**Narrador**
+
+Silva não corrige o apelido.
+
+Ela percebe. O olhar dela muda por uma fração de segundo quando "Sil" sai da boca de Ren, como se a palavra tivesse passado por uma porta que ainda não estava oficialmente aberta. Mas a mão dela continua no mesmo lugar, perto do bastão curto, e os olhos continuam contando as sombras atrás dele.
+
+"Tranquila é palavra de gente que não guarda carroça com gente procurada dentro", ela responde baixo. "Mas não tem ninguém colado em você. Isso serve."
+
+Ela deixa Ren falar.
+
+Quando ele resume a Casa Velha do Primeiro Raio, Silva não interrompe no primeiro adulto caído, nem no segundo, nem na oficina dos tintureiros. Só o rosto dela endurece mais quando Ren chega às crianças.
+
+"Sete", ela repete.
+
+Não como pergunta.
+
+Como quem coloca peso no número para ele não virar abstração.
+
+"Maerra vai precisar de pano, comida e mãos caladas antes do amanhecer. Eu mando uma pessoa de Chauntea que saiba entrar pela lateral e sair sem sermão público." Ela olha de novo para Ren, agora sem fingir que está vendo apenas estratégia. "E você está sem ki, sem broche, sem sono decente e tentando ficar de pé por orgulho ou hábito. Nenhum dos dois me interessa."
+
+Da carroça verde, vem um som pequeno: madeira de degrau sob pé descalço.
+
+Silva fecha os olhos por meio segundo.
+
+"Eu disse para ela esperar."
+
+Nera não esperou.
+
+Ela aparece com um xale puxado sobre os ombros, cabelo solto de sono e rosto pálido demais para alguém que acabou de acordar por acaso. O olhar dela passa por Silva primeiro, pedindo permissão tarde demais. Depois encontra Ren.
+
+Toda a prudência que ela tentou guardar morre no caminho entre a porta da carroça e ele.
+
+Nera cruza os poucos passos e abraça Ren com força, como se precisasse confirmar com os braços que a cidade não devolveu só uma sombra vestida com a roupa dele. Ela não pergunta de imediato. Não fala de Masao, Red Sail, Narwhal ou Tyr.
+
+Só encosta o rosto nele e solta o ar preso.
+
+"Você voltou."
+
+Silva vira o rosto para a borda do acampamento, dando a eles a privacidade exata de uma guardiã que continua trabalhando.
+
+"Meio minuto", ela diz. "Depois cama. Se ele tentar discutir, Nera, você tem minha bênção para empurrar."
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. Ren informou Silva que não foi seguido e contou, em linhas gerais, que **sete crianças** foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra. Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer. **Nera apareceu da carroça verde e abraçou Ren**, extremamente preocupada. Hora aproximada: **02:16 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?

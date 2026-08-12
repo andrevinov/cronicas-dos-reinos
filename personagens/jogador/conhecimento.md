@@ -2270,3 +2270,10 @@ Progressão:
 * Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás;
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
 * hora aproximada: 02:10 de 4 Eleasis, 1372 DR.
+* Ren disse a Silva que não foi seguido e a chamou de "Sil" pela primeira vez;
+* Ren contou a Silva, em linhas gerais, que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão vivas sob cuidado de Maerra;
+* Ren ainda não conseguiu ligar diretamente o que as crianças ouviram a Masao ou à Red Sail;
+* Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer;
+* Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada;
+* Ren segue com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 02:16 de 4 Eleasis, 1372 DR.
