@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa operacional da Casa Velha do Primeiro Raio</title>
+  <desc id="desc">Mapa tatico externo mostrando a frente inativa, a viela lateral, a escada de servico e pontos observados por Ren.</desc>
+  <defs>
+    <style>
+      .bg { fill: #1f2525; }
+      .street { fill: #2f3635; stroke: #56605d; stroke-width: 3; }
+      .alley { fill: #27302f; stroke: #6b746e; stroke-width: 3; }
+      .building { fill: #4b453b; stroke: #b7aa8d; stroke-width: 5; }
+      .unknown { fill: #39352f; stroke: #80745d; stroke-width: 3; stroke-dasharray: 12 10; }
+      .roof { fill: #3d392f; stroke: #8d826d; stroke-width: 3; }
+      .door { fill: #8a6b3f; stroke: #e2c37c; stroke-width: 4; }
+      .window { fill: #1b2022; stroke: #87908b; stroke-width: 3; }
+      .mark { stroke: #171717; stroke-width: 7; fill: none; stroke-linecap: round; }
+      .ren { fill: #151719; stroke: #e6d28b; stroke-width: 5; }
+      .route { fill: none; stroke: #d8c77b; stroke-width: 5; stroke-dasharray: 14 12; stroke-linecap: round; }
+      .sight { fill: none; stroke: #81a9c8; stroke-width: 3; stroke-dasharray: 6 10; opacity: 0.75; }
+      .danger { fill: #783a35; stroke: #d3a19a; stroke-width: 3; }
+      .prop { fill: #5d5446; stroke: #a59779; stroke-width: 3; }
+      .label { fill: #efe6cc; font: 28px "DejaVu Sans", Arial, sans-serif; }
+      .small { fill: #d7cfb9; font: 21px "DejaVu Sans", Arial, sans-serif; }
+      .tiny { fill: #c2baa7; font: 18px "DejaVu Sans", Arial, sans-serif; }
+      .note { fill: #d9c982; font: 20px "DejaVu Sans", Arial, sans-serif; }
+      .box { fill: #242929; stroke: #8b846e; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+
+  <rect class="street" x="70" y="80" width="1260" height="145" rx="10"/>
+  <text class="label" x="95" y="135">rua superior / fluxo comum</text>
+  <text class="small" x="95" y="174">frente visivel, pouco usada</text>
+
+  <rect class="street" x="1010" y="230" width="210" height="560" rx="10"/>
+  <text class="small" x="1042" y="515" transform="rotate(90 1042 515)">descida para armazens</text>
+
+  <rect class="building" x="330" y="260" width="520" height="430" rx="6"/>
+  <rect class="unknown" x="375" y="305" width="430" height="340" rx="4"/>
+  <text class="label" x="392" y="360">Casa Velha do</text>
+  <text class="label" x="392" y="398">Primeiro Raio</text>
+  <text class="small" x="395" y="455">interior desconhecido</text>
+  <text class="small" x="395" y="490">frente parece teatro morto</text>
+
+  <rect class="door" x="530" y="250" width="95" height="24"/>
+  <text class="tiny" x="500" y="242">porta frontal inativa</text>
+
+  <rect class="alley" x="855" y="255" width="135" height="450" rx="8"/>
+  <text class="small" x="900" y="284">viela lateral</text>
+
+  <rect class="street" x="235" y="710" width="755" height="95" rx="10"/>
+  <text class="small" x="265" y="765">beco baixo e barro / saida de servico</text>
+
+  <rect class="door" x="835" y="530" width="35" height="96"/>
+  <path class="route" d="M 925 685 C 925 635 905 600 872 580"/>
+  <text class="tiny" x="590" y="594">escada meio nivel abaixo</text>
+  <text class="tiny" x="590" y="624">porta de servico</text>
+
+  <rect class="window" x="816" y="350" width="28" height="70"/>
+  <text class="tiny" x="685" y="385">janela alta</text>
+
+  <circle class="mark" cx="862" cy="475" r="23"/>
+  <path class="mark" d="M 839 498 L 885 452 M 862 445 L 862 505 M 834 475 L 890 475"/>
+  <text class="tiny" x="690" y="480">sol riscado em carvao</text>
+
+  <rect class="prop" x="920" y="320" width="46" height="46"/>
+  <rect class="prop" x="255" y="630" width="74" height="45"/>
+  <text class="tiny" x="140" y="660">caixote com linha de visao</text>
+
+  <circle class="danger" cx="222" cy="185" r="18"/>
+  <circle class="danger" cx="1140" cy="304" r="18"/>
+  <text class="tiny" x="246" y="192">ponto onde crianca poderia observar</text>
+  <text class="tiny" x="1035" y="285">rua escura</text>
+
+  <circle class="ren" cx="922" cy="684" r="22"/>
+  <text class="note" x="955" y="710">Ren na lateral</text>
+  <path class="sight" d="M 922 684 L 860 575"/>
+  <path class="sight" d="M 922 684 L 833 385"/>
+  <path class="sight" d="M 922 684 L 946 342"/>
+
+  <rect class="roof" x="120" y="395" width="150" height="120" rx="6"/>
+  <text class="tiny" x="118" y="382">ponto de observacao anterior</text>
+  <path class="sight" d="M 250 410 L 856 475"/>
+  <path class="sight" d="M 250 410 L 832 385"/>
+
+  <rect class="box" x="80" y="805" width="1240" height="62" rx="8"/>
+  <text class="small" x="105" y="832">Mapa nao exato. Mostra apenas informacao externa conhecida:</text>
+  <text class="small" x="105" y="858">frente inativa, eixo lateral, porta de servico, janela alta, marcas e possiveis olhos.</text>
+</svg>

@@ -17,9 +17,9 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "campos do Jack Mooney & Sons Circus"
-  ponto_exato: "depósito de figurino velho, perto da carroça verde de Silva Elkwood"
-  descricao_operacional: "Ren voltou da Rua da Cal ao circo por deslocamento discreto comum, sem cauda competente no trajeto e sem gerar rastro útil até o acampamento. Tomou banho atrás da lona azul, viu Nera e Tavin sem levar ninguém até a carroça verde, contou a Silva e Nera sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio, e completou um descanso curto com meia hora de meditação. Silva ainda aplicou checagem interna antes de liberar acesso à carroça verde. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren."
+  area: "arredores da Casa Velha do Primeiro Raio"
+  ponto_exato: "viela lateral, diante da porta de serviço meio nível abaixo"
+  descricao_operacional: "Ren descansou mais uma hora e meia no circo, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas e saiu para a Casa Velha do Primeiro Raio. A travessia até a região foi tratada como deslocamento discreto comum, sem cauda competente no trajeto. Ren ocupou o ponto de observação anterior sem alertar olheiros, observou por cerca de quarenta e cinco minutos e se aproximou da lateral em uma janela de ruído natural. A observação noturna não revelou detalhes finos do interior, mas a leitura de padrão foi excelente: a frente parece inativa, a lateral é o eixo real, a porta de serviço tem luz fraca por baixo e há uma janela alta escura acima. No momento, Ren não vê criança em posição ativa do lado de fora, mas isso não prova que não haja olheiros ou crianças dentro. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente por Ren."
 
 tempo:
   ano_dr: 1372
@@ -31,11 +31,11 @@ tempo:
   dia_do_mes: 3
   dezena: 1
   dia_da_dezena: 3
-  periodo_do_dia: "noite de 3 Eleasis, após o Benefício da Lona Aberta"
-  hora_aproximada: "21:05 de 3 Eleasis"
+  periodo_do_dia: "noite avançada de 3 Eleasis, após o Benefício da Lona Aberta"
+  hora_aproximada: "23:55 de 3 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual é 3 Eleasis."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior; Ren ainda não entrou na Casa Velha do Primeiro Raio. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Colm/Dent deve sair de Ravens Bluff na carroça de Dorra Hest antes da primeira luz de 4 Eleasis; até lá, está escondido sob lona no pátio de saída. Há duas lembranças fracas que podem apontar para os pátios se Bram comprar informação: uma menina viu dois vultos saindo dos Três Tanques e um homem velho viu Ren sair da área da carroça de cal rumo à Rua da Cal. Ren está na lateral da Casa Velha do Primeiro Raio, ainda do lado de fora, sem alarme gerado. O ponto morto de Kethra em Narwhal ainda precisa ser montado fisicamente."
 
 recursos:
   pontos_de_vida:
@@ -583,6 +583,20 @@ recursos:
     - "Ren contou a Silva e Nera sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio"
     - "Silva alertou que a Casa Velha do Primeiro Raio deve ser tratada como casa velha que usa crianças como olhos, não como abrigo vazio"
     - "Ren completou descanso curto com meia hora de meditação e recuperou ki para 4/4"
+    - "Ren descansou mais uma hora e meia no circo antes da incursão noturna"
+    - "Ren preparou pintura preta no rosto com o kit de disfarce para dificultar identificação sob pouca luz"
+    - "Ren vestiu roupas orientais e preparou armas antes de sair"
+    - "Ren chegou à região da Casa Velha do Primeiro Raio por deslocamento discreto comum, sem cauda competente"
+    - "Rolagem para ocupar ponto de observação da Casa Velha: 15 contra CD 14, sucesso"
+    - "Rolagem de observação noturna da Casa Velha: 10 contra CD 15, falha"
+    - "Rolagem para organizar padrões de entrada na lateral: 23 contra CD 14, sucesso"
+    - "Ren ocupou o ponto de observação anterior sem gerar alarme"
+    - "A observação noturna não revelou detalhes finos do interior"
+    - "Ren percebeu excelente padrão externo: frente inativa, lateral como eixo real, luz fraca sob a porta de serviço e janela alta escura acima"
+    - "Ren não vê criança em posição ativa do lado de fora no momento, mas isso não prova ausência de olheiros ou crianças dentro"
+    - "Ren alcançou a viela lateral e está diante da porta de serviço meio nível abaixo"
+    - "Imagem da visão lateral salva em sessoes/002/imagens/001-visao-casa-velha-lateral.png"
+    - "Mapa operacional salvo em sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.png e sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.svg"
   exaustao: 0
 
 equipamento_em_posse:
@@ -623,7 +637,7 @@ objetivos:
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
   imediato:
-    - "decidir se invade ou observa novamente a Casa Velha do Primeiro Raio nesta noite"
+    - "decidir como agir diante da porta de serviço lateral da Casa Velha do Primeiro Raio"
     - "considerar que a Casa Velha do Primeiro Raio pode usar crianças como olheiros e não deve ser tratada como abrigo vazio"
     - "decidir se permanece perto da carroça de Dorra Hest até Colm/Dent sair antes da primeira luz de 4 Eleasis ou se confia na saída comprada com Dorra"
     - "montar fisicamente o vaso rachado nos fundos de Narwhal Manor, se ainda quiser usar Kethra como fonte por ponto morto"
@@ -667,7 +681,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
   primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está no depósito de figurino velho do Jack Mooney & Sons Circus, perto da carroça verde de Silva Elkwood, após banho, conversa com Silva e Nera e descanso curto completo. Ele voltou da Rua da Cal por deslocamento discreto comum, sem cauda competente no trajeto e sem gerar rastro útil até o acampamento; Silva ainda aplicou checagem interna antes de liberar acesso à carroça verde. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de 4 Eleasis. O ponto morto de Kethra em Narwhal ainda não foi montado. Ren está com 31/31 PV, 4/4 ki, 24 PO e 9 shuriken. Hora aproximada: 21:05 de 3 Eleasis, 1372 DR."
+  cena_atual: "Ren está na viela lateral da Casa Velha do Primeiro Raio, diante da porta de serviço meio nível abaixo. Ele descansou, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas, ocupou o ponto de observação anterior sem alarme e se aproximou da lateral após ler o padrão de uso da casa. A observação noturna não revelou detalhes finos do interior, mas confirmou a frente como inativa e a lateral como eixo real; há luz fraca sob a porta e uma janela alta escura acima. Ren não vê criança em posição ativa do lado de fora no momento, mas isso não prova ausência de olheiros ou crianças dentro. Ren está com 31/31 PV, 4/4 ki, 24 PO e 9 shuriken. Hora aproximada: 23:55 de 3 Eleasis, 1372 DR."
   risco_imediato: "moderado"
   foco_inicial:
     - "orientação urbana"

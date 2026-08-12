@@ -2882,3 +2882,59 @@ O descanso curto se completa.
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Hora aproximada: **21:05 de 3 Eleasis, 1372 DR**. Ren voltou ao Jack Mooney & Sons Circus por deslocamento discreto comum, sem cauda competente no trajeto e sem gerar rastro útil até o acampamento. Tomou banho, viu Nera e Tavin sem levar ninguém até a carroça verde, contou a Silva e Nera sobre Kethra, Colm/Dent, Velis, M. Harrow e a Casa Velha do Primeiro Raio. Colm/Dent segue escondido sob a lona de Dorra Hest até a partida antes da primeira luz de **4 Eleasis**. O ponto morto de Kethra em Narwhal ainda não foi montado fisicamente.
 
 O que Ren faz?
+
+
+**Jogador**
+
+Ren descansa 1 hora e meia. Uma dormindo, meia hora meditando ao acordar. 22:3O é hora boa pra começar a se preparar pra missão de infiltração.
+
+Ren veste suas roupas orientais. Usa o kit de disfarce pra pintar o rosto de preto e dificultar sua identificação. Prepara armas, e sai em direção à Casa Velha do Primeiro Raio.
+
+Ren ficará do lado de fora, primeiramente do ponto onde ele aprendeu a observar. Observará entre 30 minutos e 1 hora. Se notar que está seguro pra entrar, ele irá para a lateral.
+
+[Na lateral, quero que você pare e produza duas imagens: uma do que Ren está vendo e outra do mapa do local.]
+
+**Narrador**
+
+Ocupar ponto de observação da Casa Velha: d20 9 + 6 = 15 contra CD 14. Sucesso.
+Observação noturna da Casa Velha: d20 5 + 5 = 10 contra CD 15. Falha.
+Organizar padrões de entrada na lateral: d20 20 + 3 = 23 contra CD 14. Sucesso.
+
+A hora e meia no circo passa sem interrupção útil.
+
+O sono curto vem pesado, mais queda do que descanso, mas a meia hora de meditação ao acordar limpa o suficiente da névoa interna para Ren não sair carregando pressa como barulho. Por volta de **22:30**, ele começa a se preparar de verdade.
+
+As roupas orientais mudam a silhueta. A pintura preta no rosto, feita com o kit de disfarce, não serve para parecer outra pessoa em conversa próxima; serve para quebrar maçã do rosto, nariz, queixo e pele sob pouca luz. Se alguém o encarar de perto, verá um homem preparado para trabalho noturno. Se o vir por fresta, beco ou janela alta, terá menos rosto para guardar.
+
+As armas ficam no lugar certo.
+
+A travessia até a região da Casa Velha do Primeiro Raio não exige heroísmo. Ruas pobres à noite têm gente bastante para apagar um homem sozinho e sombra bastante para não pedir espetáculo. Ren escolhe rotas baixas, evita os trechos onde guarda formal pergunta por motivo e chega ao ponto de observação que já conhecia sem cauda competente.
+
+O sótão quebrado da oficina de rodas ainda aceita peso, desde que Ren trate a madeira como se ela pudesse denunciá-lo. Ele entra, se acomoda e observa.
+
+A Casa Velha, à noite, fica menos casa e mais massa escura contra ruas úmidas. A frente continua morta. A porta frontal não abre. Não há lamparina recebendo visita honesta, nem fila, nem batida comum. A marca do sol riscado fica quase invisível sem saber onde procurar.
+
+A observação fina falha. Ren não conta quantas pessoas há dentro. Não lê rosto atrás de janela alta. Não sabe se a sombra que atravessa uma fresta é adulto, jovem ou pano pendurado em corrente de ar. A noite protege o interior.
+
+Mas o padrão abre.
+
+Uma carroça tardia desce para os armazéns, rangendo ferro. Nesse ruído, a fresta baixa sob a porta lateral ganha uma linha de luz por alguns segundos e some. Depois, quando alguém despeja água suja em algum quintal próximo, a mesma lateral respira de novo: madeira que cede pouco, peso que muda de lugar, silêncio logo depois.
+
+Não é entrada franca. É intervalo.
+
+Ren não vê criança em posição ativa naquele momento. Isso não significa que não haja criança. Significa só que, naquela janela, os olhos externos não estão plantados onde estavam de manhã. O caixote com linha de visão está vazio. A rua superior tem um bêbado dormindo ou fingindo dormir longe o bastante para não cobrir a lateral. A velha dos nabos não está ali; a banca foi recolhida.
+
+O caminho seguro não é entrar. É chegar à lateral sem acender a casa.
+
+Ren desce do ponto de observação, cruza no atraso natural entre uma roda distante e o gotejar de uma calha, e alcança a viela lateral. A porta de serviço fica meio nível abaixo, no pequeno rebaixo de pedra. Há um fio de luz quente sob a madeira, fraco demais para iluminar a rua, forte o bastante para dizer que a casa não está morta. Acima, a janela alta continua escura.
+
+Perto da porta, o carvão do sol riscado está na pedra, baixo, à altura de mão pequena.
+
+Ren para ali.
+
+Imagem da visão lateral salva em `sessoes/002/imagens/001-visao-casa-velha-lateral.png`.
+Mapa operacional salvo em `sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.png` e `sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.svg`.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 24 PO, 9 shuriken**. Hora aproximada: **23:55 de 3 Eleasis, 1372 DR**. Ren descansou, preparou pintura preta com o kit de disfarce, vestiu roupas orientais, preparou armas e chegou à lateral da Casa Velha do Primeiro Raio. Ele não gerou alarme ao ocupar o ponto de observação nem ao se aproximar da lateral. A observação noturna não revelou detalhes finos do interior, mas a leitura de padrão foi excelente: a frente parece inativa, a lateral é o eixo real, a porta de serviço tem luz fraca por baixo e há uma janela alta escura acima. No momento, Ren não vê criança em posição ativa do lado de fora, mas isso não prova que não haja olheiros ou crianças dentro. Ele está parado na lateral, diante da porta de serviço meio nível abaixo.
+
+O que Ren faz?

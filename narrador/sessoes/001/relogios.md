@@ -182,6 +182,7 @@ Observação recente:
 
 * Ren iniciou sondagem externa da Casa Velha do Primeiro Raio na manhã seguinte ao Benefício da Lona Aberta. Identificou marcas de sol riscado, trânsito por viela lateral, provável entrada de serviço nos fundos, ponto de observação improvisado e possíveis observadores, sem entrar e sem gerar alarme. Não há avanço do relógio neste momento.
 * Ren observou a Casa Velha por quase três horas a partir de ponto alto discreto, sem abordagem direta e sem alarme. Identificou padrão de uso da viela/porta de serviço, crianças como olhos externos e adulto de avental manchado usando a rota. Não há avanço do relógio neste momento.
+* Na noite de 3 Eleasis, Ren voltou à Casa Velha, ocupou o ponto de observação anterior sem alarme e alcançou a viela lateral diante da porta de serviço. A observação noturna não revelou detalhes finos do interior, mas confirmou a lateral como eixo real. Não há avanço do relógio neste momento.
 
 Descrição:
 
@@ -212,6 +213,7 @@ Estado atual:
 * possível recompensa futura: Broche do Semblante Humilde, se recuperado e se o templo aceitar emprestar.
 * primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
 * observação prolongada confirmou padrão externo sem alertar a Casa Velha; adulto de avental manchado saiu rumo aos armazéns com embrulho fino e comprido por volta de 11:18.
+* incursão noturna em andamento: Ren está diante da porta lateral, ainda do lado de fora, sem alarme gerado.
 
 ---
 
