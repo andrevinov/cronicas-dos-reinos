@@ -172,7 +172,7 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 1/6.
+Progresso atual: 0/6.
 
 Último avanço:
 

@@ -2115,6 +2115,9 @@ Progressão:
 * Ren manteve ângulo de emboscada e neutralizou o rapaz com golpe crítico não letal;
 * Ren não conseguiu baixar o corpo sem mexer na cortina, que ficou semiaberta;
 * do outro lado há corredor/porão baixo com luz avermelhada, marcas de cera, terra úmida, sacos e caixas pequenas; vozes baixas vêm de mais fundo;
+* Ren entrou no corredor além da cortina e apagou rapidamente as velas próximas sem gerar novo ruído útil;
+* a reação no fundo não virou alarme aberto imediato;
+* uma criança foi mandada primeiro para verificar a luz apagada e reacender o lado da cortina, com um adulto mais atrás;
 * ainda não há alarme aberto pleno, mas a cena acumulou sinais evidentes;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:06 de 4 Eleasis, 1372 DR.
+* hora aproximada: 00:07 de 4 Eleasis, 1372 DR.

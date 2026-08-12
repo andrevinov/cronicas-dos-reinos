@@ -3278,3 +3278,54 @@ Mas agora ela está pendurada por um fio.
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:06 de 4 Eleasis, 1372 DR**. Toll, Vessa e o rapaz magro estão inconscientes na cozinha/refeitório. A cortina está semiaberta. Além dela há um corredor baixo de porão com luz avermelhada, marcas de cera, terra úmida, sacos, caixa pequena e vozes mais ao fundo. Ainda não há alarme aberto, mas qualquer atraso ou novo ruído pode romper a infiltração.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren entra no corredor e apaga as velas do lado dele rapidamente. Ele espera as pessoas se aproximarem, e tenta apaga-las no escuro, sem Rajada de Golpes ainda.
+
+**Narrador**
+
+Entrar no corredor e apagar as velas sem novo ruído: d20 4 + 16 = 20 contra CD 16. Sucesso.
+Apagar as chamas próximas rapidamente: d20 16 + 4 = 20 contra CD 13. Sucesso.
+Entender a luz apagada como intrusão imediata: d20 4 + 2 = 6 contra CD 14. Falha.
+Reconhecer a primeira silhueta antes do golpe: d20 20 + 5 = 25 contra CD 13. Sucesso.
+
+Ren passa pela cortina antes que o pano pare de balançar.
+
+O rapaz magro no chão atrapalha meio passo, mas não o suficiente para prender Ren na cozinha. Um ombro deslocado para dentro, a perna passando limpa, a mão no tecido grosso para que ele não raspe na pedra. O corredor baixo o recebe com cheiro de terra úmida, cera velha e ar parado.
+
+Ali dentro, adulto não anda direito. O teto força a cabeça para baixo. As paredes estreitam o cotovelo. Ren apaga primeiro as duas velas presas num ressalto de pedra à esquerda, depois uma chama baixa dentro de um prato de barro perto da caixa aberta. Os dedos fecham e soltam; a cera chia uma vez, abafada pela umidade e pelo silêncio estranho de Passos sem Pegadas.
+
+A boca da cortina fica escura atrás dele.
+
+Mais ao fundo, a faixa vermelha ainda existe, mas agora parece mais distante. Ela desenha só o bastante para transformar o corredor em recortes: os sacos de lona, a tampa da caixa, as marcas pequenas de mãos no chão, o túnel baixo seguindo para uma dobra.
+
+As vozes param.
+
+Uma delas pergunta:
+
+"Vessa?"
+
+Outra, mais funda e mais irritada, responde baixo demais para Ren pegar tudo. Depois vem uma frase mais clara:
+
+"Miri. Vai acender. Só olha e volta."
+
+Não é alarme. É pior de outro jeito.
+
+A primeira silhueta que aparece na luz vermelha não tem ombro de guarda, nem passo de adulto. Ren percebe antes de qualquer golpe: é uma criança. Pequena, magra, com cabelo cortado torto e uma vareta de vela apagada na mão. Ela entra no trecho escuro devagar, quase de lado, como quem espera encontrar bronca antes de encontrar perigo.
+
+Atrás dela, mais fundo, há peso de adulto. Ren não vê rosto. Só uma forma parada perto da dobra do corredor, baixa por causa do teto, mantendo distância bastante para não entrar na escuridão que Ren acabou de fazer.
+
+A menina dá mais um passo. Está a alcance de braço.
+
+O adulto lá atrás murmura:
+
+"Se apagou sozinha, chama Vessa."
+
+A criança não responde. Ela olha para o chão, para as marcas de cera, para a cortina escura atrás de Ren. Ainda não viu Ren.
+
+Mas em mais dois passos, vai entrar nele.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:07 de 4 Eleasis, 1372 DR**. Ren está no corredor baixo além da cortina, em escuridão comum no trecho imediato. Toll, Vessa e o rapaz magro estão inconscientes na cozinha/refeitório atrás dele. A primeira pessoa enviada para verificar a luz apagada é uma criança, provavelmente Miri; um adulto está mais fundo, perto da dobra do corredor, fora de alcance imediato e ainda sem alarme aberto.
+
+O que Ren faz?
