@@ -2971,3 +2971,34 @@ Ren está dentro.
 Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** está ativo por concentração, podendo durar até cerca de **00:58 de 4 Eleasis** se Ren mantiver a técnica. Hora aproximada: **23:58 de 3 Eleasis, 1372 DR**. Ele está numa sala alta de serviço, vazia, ligada ao restante da Casa Velha por uma porta interna entreaberta. Nenhum alarme foi gerado.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren caminha furtivamente para espiar a porta entreaberta. Ele quer ver que tipo de sala há após a porta, se há alguém e pra onde essa sala dá.
+
+**Narrador**
+
+Aproximar-se furtivamente da porta interna com Passos sem Pegadas: d20 2 + 16 = 18 contra CD 15. Sucesso.
+Espiar e entender a sala além da porta entreaberta: d20 12 + 5 = 17 contra CD 14. Sucesso.
+
+O chão antigo tenta falar mesmo sob o cuidado de Ren. Uma tábua baixa um nada sob o peso, mas o som morre cedo demais, como se a casa engolisse a própria reclamação antes que ela chegasse à fresta de luz.
+
+Ren chega à porta interna.
+
+Do outro lado não há uma sala cheia. É um patamar estreito de serviço, quase um corredor em forma de cotovelo, feito para gente carregando pano, balde, lenha ou comida, não para visita. As paredes ainda têm cal velha por baixo da sujeira. Aqui e ali, o reboco mostra marcas circulares onde símbolos do sol foram raspados ou cobertos.
+
+Não há ninguém no patamar imediato.
+
+À esquerda, o corredor segue escuro e mais seco, em direção à parte frontal da casa. A poeira ali está mexida por pés pequenos e pés adultos, mas não por passagem recente de muitos adultos pesados. Essa rota parece levar para o corpo antigo da casa: salão, dormitório velho, capela ou sala comum, algo maior e mais apagado.
+
+À direita, uma escada estreita desce seis ou sete degraus. A luz quente vem de baixo, instável, provavelmente lamparina protegida ou braseiro pequeno. É dali, ou de uma sala logo depois dali, que veio a voz adulta. Ren não pega uma frase inteira; pega só o peso da fala, masculino ou grave o bastante para parecer, e uma sílaba dura que termina em ordem, não conversa.
+
+Há um detalhe ruim antes da escada.
+
+Uma linha baixa, quase da cor da madeira suja, atravessa parte da passagem na altura da canela. Ela não está esticada como armadilha de lâmina. Está presa de modo tosco a uma argola no rodapé e desaparece por trás de uma prateleira estreita. Atrás da prateleira, Ren vê o brilho fraco de metal fino: colher torta, tampa pequena, talvez pedaço de sino quebrado. Se alguém passar com pressa ou no escuro, aquilo não machuca. Só canta.
+
+Na parte baixa, depois da voz, vem um ruído menor: pano arrastando, talvez pé descalço, talvez alguém mudando de posição perto do chão. Ren não vê a pessoa. Só sabe que a casa não está vazia abaixo.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 2/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **23:59 de 3 Eleasis, 1372 DR**. Ren está dentro da sala alta de serviço, junto à porta interna entreaberta. O patamar/corredor além da porta está vazio, mas há passagem escura à esquerda, escada iluminada à direita e uma linha baixa de alarme improvisado antes da descida.
+
+O que Ren faz?
