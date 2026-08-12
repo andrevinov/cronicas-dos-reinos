@@ -4053,3 +4053,51 @@ Mas **Passos sem Pegadas** está perto do fim.
 Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**, restando poucos minutos. Hora aproximada: **00:55 de 4 Eleasis, 1372 DR**. Ren está oculto no pátio dos fundos de uma oficina na rua dos tintureiros. Encontrou o cesto com tira amarela de dois nós, marcas de cera/tintura, possível arrasto infantil e uma figura magra de vermelho dentro da oficina. Há uma forma pequena baixa lá dentro, provavelmente Peta, mas Ren ainda não tem confirmação visual limpa. O Broche do Semblante Humilde está com Ren, ainda não usado.
 
 O que Ren faz?
+
+**Jogador**
+
+Usando os finalmentes de Passos sem Pegadas, Ren avança e entra por baixo da fresta, dando um "carrinho" na pessoa de vermelho como a primeira parte do seu ataque surpresa, tentando nocautea-la rápido para lidar com quaisquer outros inimigos que hajam ali.
+
+**Narrador**
+
+Aproximação final sob Passos sem Pegadas: d20 12 + 16 = 28 contra CD 15. Sucesso.
+Entrada baixa pela porta dos fundos: d20 13 + 6 = 19 contra CD 14. Sucesso.
+Carrinho surpresa não letal contra a figura vermelha: d20 com vantagem [2, 15] -> 15 + 6 = 21 contra CA 13. Acerto. Dano: 1d4 1 + 4 = 5 contundente.
+Golpe bônus de Artes Marciais contra a figura desequilibrada: d20 com vantagem [3, 6] -> 6 + 6 = 12 contra CA 13. Erro.
+Iniciativa: Ren 23; figura vermelha 17.
+
+A fresta não deixa um corpo adulto passar.
+
+Ela serve para luz, sombras, ponta de bota, cheiro e erro. No primeiro instante, Ren vê isso pelo tamanho do vão e não perde o movimento tentando caber onde não cabe. A magia ainda apaga o pátio atrás dele; a soleira recebe o peso sem anunciar Ren antes da hora.
+
+A porta dos fundos cede para dentro com um estalo seco de madeira úmida, baixo demais para rua ouvir de imediato, alto demais para continuar sendo segredo dentro da oficina.
+
+Ren entra baixo.
+
+O piso logo depois da porta está molhado de água tingida. O impulso quase vira escorregão, mas Ren segura o corpo na diagonal, passa por baixo da primeira prateleira e acerta a figura vermelha nas pernas antes que ela consiga virar o rosto.
+
+O impacto dobra a pessoa contra um banco baixo.
+
+Vermelho encerado bate em madeira. Um capuz pesado escorrega um pouco, mas não o suficiente para dar rosto limpo: pele pálida na borda da máscara, queixo estreito, uma mão comprida manchada de tintura escura. O corpo é leve demais para o pano que usa. O primeiro golpe entra, tira o ar e derruba a figura de lado, mas não a apaga.
+
+Ren gira para completar com o segundo golpe.
+
+A figura vermelha não se defende bem; só cai mal. Esse pouco basta. O golpe de Ren passa por cima do ombro dela e arrebenta uma vareta de secagem contra a parede. Panos úmidos despencam. Um filete de tintura vermelha escorre pela madeira como se a sala sangrasse, mas é só corante.
+
+Agora Ren vê a oficina por dentro.
+
+É um cômodo comprido e baixo, abafado por vapor velho. Cubas rasas ocupam a lateral direita. Varais de pano escuro pendem do teto. Há mesa de trabalho, potes de cera ruim, tiras amarelas dobradas, uma lamparina protegida por lata furada e, ao fundo, uma cortina grossa separando outra área que Ren ainda não enxerga. Nenhum outro adulto está claramente visível no primeiro fôlego, mas algo atrás da cortina se move com o baque da entrada.
+
+A forma pequena perto do chão é uma criança.
+
+Viva.
+
+Está deitada de lado, com pulsos presos por pano e uma tira escura atravessando a boca. Os olhos estão abertos demais. Pelo tamanho, pela hora, pelo rastro e por tudo que as outras crianças disseram, é quase certamente Peta, embora Ren ainda não tenha confirmação por nome.
+
+A figura vermelha está caída entre Ren e a menina, consciente, ferida, sem ter conseguido agir. A mão estreita dela se arrasta pelo chão em direção a duas coisas ao alcance: uma faca curta de trabalho caída sob a mesa e um cordão fino que sobe para dentro da cortina do fundo.
+
+Ren age primeiro.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 0/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** ainda está ativo por concentração até cerca de **00:58 de 4 Eleasis**, mas a entrada agressiva quebrou a discrição dentro da oficina. Hora aproximada: **00:56 de 4 Eleasis, 1372 DR**. Ren está no interior da oficina dos tintureiros, junto à porta dos fundos. A figura vermelha sofreu **5 de dano contundente não letal**, está caída/desequilibrada e consciente, ainda sem agir. A criança no chão está viva e presa, quase certamente Peta. Há uma cortina no fundo, movimento atrás dela e um cordão fino ao alcance da figura vermelha.
+
+O que Ren faz?

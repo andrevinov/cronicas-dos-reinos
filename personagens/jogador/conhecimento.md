@@ -2208,3 +2208,17 @@ Progressão:
 * Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
 * Passos sem Pegadas segue ativo até cerca de 00:58, restando poucos minutos;
 * hora aproximada: 00:55 de 4 Eleasis, 1372 DR.
+* rolagem: Aproximação final sob Passos sem Pegadas, d20 12 + 16 = 28 contra CD 15, sucesso;
+* rolagem: Entrada baixa pela porta dos fundos, d20 13 + 6 = 19 contra CD 14, sucesso;
+* rolagem: Carrinho surpresa não letal contra a figura vermelha, d20 com vantagem [2, 15] -> 15 + 6 = 21 contra CA 13, acerto, 5 de dano contundente;
+* rolagem: Golpe bônus de Artes Marciais contra a figura desequilibrada, d20 com vantagem [3, 6] -> 6 + 6 = 12 contra CA 13, erro;
+* iniciativa: Ren 23; figura vermelha 17;
+* Ren entrou no interior da oficina dos tintureiros pela porta dos fundos, de modo baixo e agressivo;
+* a figura vermelha foi atingida e derrubada/desequilibrada, mas continua consciente;
+* Ren viu que a criança no chão está viva, presa por panos e quase certamente é Peta;
+* a oficina contém cubas rasas, varais de pano, potes de cera ruim, lamparina protegida e uma cortina grossa ao fundo;
+* há movimento atrás da cortina do fundo, e a figura vermelha tem ao alcance uma faca curta de trabalho e um cordão fino;
+* Ren age primeiro na ordem de iniciativa;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas a discrição dentro da oficina foi quebrada;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
