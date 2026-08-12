@@ -2106,5 +2106,10 @@ Progressão:
 * Ren se escondeu na cozinha quando alguém veio da área atrás da cortina;
 * as crianças tentaram sustentar a mentira, mas falharam;
 * a pessoa que entrou é uma mulher seca de lenço escuro; ela ainda não viu Ren nem achou Toll, mas percebeu que a porta lateral continua barrada e desconfia que Toll não saiu;
+* Ren colocou a wakizashi no pescoço da mulher sem alarme, mas ela tentou puxar ar para chamar ajuda em vez de responder;
+* Ren a apagou com um golpe não letal no estômago;
+* Ren baixou o corpo sem batida, mas a criança menor soltou um som e Ren não conseguiu esconder a mulher a tempo;
+* a mulher está inconsciente no chão da cozinha/refeitório, parcialmente visível, com chaves caídas perto da mesa;
+* alguém atrás da cortina está reagindo, ainda antes de alarme aberto pleno;
 * Ren está com 31/31 PV, CA 17, 1/4 ki, 24 PO e 9 shuriken;
-* hora aproximada: 00:04 de 4 Eleasis, 1372 DR.
+* hora aproximada: 00:05 de 4 Eleasis, 1372 DR.

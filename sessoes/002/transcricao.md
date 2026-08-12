@@ -3180,3 +3180,56 @@ O som ainda não vira alarme aberto, mas já é grande demais para continuar inv
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:04 de 4 Eleasis, 1372 DR**. Ren está escondido sob a sombra da escada/lenha. A mulher de lenço escuro entrou pela cortina, não viu Ren, mas percebeu a falha da mentira e está prestes a encontrar o corpo escondido de Toll se continuar avançando.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren chega por trás dela e coloca a wakizashi no seu pescoço. "Se você gritar, morre". "Responda baixo: pra quem você trabalha? Quantos guardas há lá embaixo? Onde está o objeto mágico de Lathander?" Se ela der qualquer indício de grito, Ren irá usar um bom soco no estômago para apaga-la rapidamente.
+
+**Narrador**
+
+Colocar a wakizashi no pescoço da mulher sem alarme: d20 com vantagem [3, 20] -> 20 + 6 = 26 contra CA 10. Acerto crítico.
+Pressionar a mulher de lenço escuro a responder baixo: d20 com vantagem [9, 1] -> 9 contra CD 12. Falha.
+Golpe no estômago para cortar o grito da mulher: d20 com vantagem [2, 12] -> 12 + 6 = 18 contra CA 10. Acerto. Dano: 1d4 4 + 4 = 8 contundente.
+Baixar a mulher sem deixar o corpo bater: d20 10 + 6 = 16 contra CD 13. Sucesso.
+Crianças mantêm silêncio após a segunda queda: d20 5 + 2 = 7 contra CD 13. Falha.
+Esconder a mulher antes de alguém cruzar a cortina: d20 1 + 6 = 7 contra CD 15. Falha.
+
+Ren sai da sombra como se a sombra tivesse decidido respirar.
+
+A mulher não chega a virar. A wakizashi aparece no pescoço dela com precisão absurda: fria, exata, sem cortar, mas sem deixar dúvida de que poderia cortar. A haste de ferro para no ar. O corpo dela endurece.
+
+"Se você gritar, morre."
+
+A ameaça entra. O medo também. Mas obediência é outra coisa.
+
+Quando Ren pergunta por quem ela trabalha, quantos guardas há embaixo e onde está o objeto de Lathander, os olhos dela correm para a cortina, não para ele. A boca abre para formar resposta. O ar que entra é grande demais.
+
+Ela vai chamar.
+
+Ren solta a lâmina só o bastante para bater.
+
+O punho entra no estômago dela e tira tudo: voz, ar, intenção. A mulher dobra sem som inteiro. A haste escapa dos dedos e Ren a segura com o antebraço antes que bata na pedra. Com a outra mão, ele baixa a mulher até o chão.
+
+O corpo não bate.
+
+As chaves, sim.
+
+Não alto. Um tilintar curto, metálico, pequeno. Mas pequeno, aqui, já é coisa demais.
+
+A menor solta um som fino, metade susto, metade choro engolido. A maior tenta tapar a boca dela, mas chega tarde. Ren puxa o corpo da mulher para trás da mesa, tenta quebrar a silhueta com banco e pano, mas o movimento é ruim: o lenço escuro fica visível, um braço escorrega para fora, e as chaves param brilhando perto do pé da mesa.
+
+Do outro lado da cortina, alguém fica em silêncio.
+
+Esse silêncio é pior que pergunta.
+
+Então vem uma voz baixa, mais jovem que a de Toll, mas firme:
+
+"Vessa?"
+
+A cortina mexe de novo.
+
+Ren ainda não foi visto com clareza. Mas o cômodo agora está errado demais: Toll não responde, Vessa não responde, a porta está barrada, as crianças estão rígidas, e há chaves no chão.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:05 de 4 Eleasis, 1372 DR**. A mulher de lenço escuro, aparentemente chamada Vessa, está inconsciente e parcialmente escondida atrás da mesa. As chaves dela caíram perto da mesa. Uma pessoa atrás da cortina chamou por Vessa e está prestes a abrir a passagem. Alarme aberto ainda não começou, mas a cena está a segundos de romper.
+
+O que Ren faz?
