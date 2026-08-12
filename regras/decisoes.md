@@ -23,3 +23,13 @@ Este arquivo registra interpretações recorrentes adotadas durante a campanha.
 - Justificativa: a competência de Ren como infiltrador deve aparecer no jogo. Rolar para cada deslocamento comum aumenta artificialmente a chance de ele parecer incompetente e cria pistas fracas demais para terem valor narrativo.
 - Aplicação futura: rolagens de Furtividade entram quando houver oposição ou tensão clara, como carregar Colm ferido, cruzar um perímetro vigiado, escapar de cauda ativa, entrar ou sair de lugar sob alarme, conduzir Nera/Tavin, infiltrar-se na Casa Velha do Primeiro Raio ou agir sob observação deliberada. Em deslocamentos comuns, o narrador pode descrever cautela e protocolos de aliados sem criar falha ou rastro.
 - Estado: permanente.
+
+## DEC-0003 — Agiotagem, dívida privada e crimes acionáveis em Ravens Bluff
+
+- Sessão de origem: 002
+- Contexto: Bram Vask usa uma loja de penhores/cobrança como frente para dívida/trabalho, ameaçou Colm Dunn e Kethra Dunn, manteve Colm preso por dívida e possui caderno de contas sujas.
+- Regra oficial: D&D 5e não define código penal urbano. As fontes regionais de Ravens Bluff serão usadas como cenário, com a City Guard, a Night Watch, os tribunais e a Casa de Tyr tratando justiça, ordem pública, contratos e testemunho.
+- Decisão adotada: em Ravens Bluff, empréstimo privado caro, penhor, cobrança de dívida e juros abusivos não são automaticamente crime criminal limpo se houver aparência de contrato, penhor ou acordo comercial. Viram caso acionável quando ligados a fraude, ameaça, extorsão, cárcere privado, trabalho forçado, agressão, sequestro, intimidação de testemunha, obstrução de justiça ou cobrança por violência contratada.
+- Justificativa: Ravens Bluff é cidade comercial e portuária; dinheiro, penhor, dívida e contratos existem em zona cinzenta. A lei local tende a agir com mais força quando há violência, coação, perturbação da ordem, prova documental útil ou envolvimento de instituições como Tyr.
+- Aplicação futura: Luath/Night Watch pode agir mais rápido contra ameaça, cárcere, violência de cobrança e perturbação pública do que contra "juros altos" isolados. Tyr se interessa mais quando houver juramento, testemunha, documento, obstrução ou abuso deliberado de processo. Um caderno de contas de agiota é alavanca útil, mas só vira prova forte se conectado a vítimas, testemunhos, cárcere, violência ou registros verificáveis.
+- Estado: permanente, revisável se uma fonte regional específica de Ravens Bluff definir regra legal mais precisa.

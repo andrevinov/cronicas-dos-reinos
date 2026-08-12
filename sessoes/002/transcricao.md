@@ -4588,3 +4588,128 @@ Ren tem uma confirmação parcial: Dorra saiu dos pátios, provavelmente levando
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **06:35 de 4 Eleasis, 1372 DR**. Ren pagou **1 PO** por informação nos pátios. Ele sabe agora que a carroça de Dorra Hest saiu rumo aos fornos de cal, provavelmente com Colm/Dent sob a lona, mas também sabe que alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá até Luath, vestido de cidadão pobre. Vai relatar que Bram faz esse tipo de serviço, e entregará o caderno como prova. Contará sobre Kethra, sobre Colm, só não contará como conseguiu tirar Colm de lá. Falará que, se ele não for pressionado, certamente pressionará Kethra ou tentará descobrir o paradeiro do irmão dela.
+
+Se Luath concordar ou não em fazer a pressão, Ren irá pra perto da loja de penhores, e pagará uma criança pra dar uma mensagem a Bram Vask. Ele não dará a mensagem escrita pra criança, apenas repetirá 100 vezes com ela até que ela decore:
+
+"Eu sei que você foi atrás de Colm
+Minha paciência está se esgotando
+As visitas de hoje são só o começo
+Se você não esquecê-lo, será pior"
+
+Ren fará a criança ir ou depois dos policiais irem embora, ou a qualquer tempo, se Luath não concordar com a busca ou não lhe falar hora. Bram irá entender do que se trata. Ren ficará perto o suficiente de alguma multidão enquanto ouve o recado ser dado.
+
+**Narrador**
+
+O caminho dos pátios até o posto da City Guard/Night Watch não exige furtividade especial. Ren não está carregando ninguém, não há perseguidor colado e a manhã está cheia de gente indo trabalhar. Ele apenas vira pobre comum dentro de uma cidade que não olha duas vezes para pobre comum enquanto há carroças, peixe, cal, fumaça e patrulha mudando de turno.
+
+Luath está no posto.
+
+Não sentado esperando Ren. Isso nunca. Ele está de pé junto a uma mesa lateral, ouvindo um patrulheiro explicar uma briga de taverna com três versões ruins e nenhuma testemunha sóbria. Quando vê Ren, os olhos dele fazem a leitura habitual: roupa, mãos, cintura, volume sob casaco, saída atrás.
+
+"Você costuma trazer manhã junto", ele diz, dispensando o patrulheiro com um gesto.
+
+Ren conta o bastante. Bram Vask. Loja de penhores. Dívida que vira trabalho. Kethra Dunn. Colm. O risco de Bram tentar alcançar a irmã ou comprar o paradeiro do irmão. E põe o caderno de contas sujas sobre a mesa.
+
+Convencer Luath a pressionar Bram com prova irregular: d20 6 + 2 = 8 contra CD 14. Falha.
+
+Luath não toca o caderno de imediato.
+
+Primeiro escuta a parte que Ren não diz.
+
+"Você quer que eu aperte um homem com base num caderno que apareceu na sua mão, sem me dizer como apareceu, depois que um devedor sumiu de uma sala onde você também não vai me dizer como entrou."
+
+Ele abre o caderno com dois dedos, como quem não quer deixar impressão demais nem no papel nem no próprio juízo. Passa por uma página. Outra. Iniciais. Apelidos. Marcas de rua. Números. Pequenos sinais de dias, cobrança, baixa, aumento.
+
+O rosto dele não muda, mas a voz perde um pouco de paciência.
+
+"Isso é lama com contabilidade. Serve para começar pergunta. Não serve para eu fingir que é prova limpa."
+
+Ele copia três marcas numa tira de papel ruim, anota o nome de Bram Vask, a loja e o nome de Kethra Dunn sem dizer em voz alta. Depois empurra o caderno de volta.
+
+"Eu não vou pôr esse livro no meu armário com o teu silêncio pendurado nele. Se Colm quiser testemunhar, se Kethra quiser testemunhar, se Sella quiser dizer que alguém farejou frase no lavadouro, isso vira outra conversa. Sem isso, eu tenho suspeita, risco vivo e um cheiro ruim."
+
+Luath fecha a mão sobre a tira de papel.
+
+"O cheiro ruim basta para ronda. Não basta para você mandar em ronda."
+
+Ele se inclina um pouco.
+
+"E escute bem: se eu vir teu dedo empurrando guarda por baixo da mesa, eu corto o dedo do caso. Você quer proteger gente pequena? Pare de misturar ameaça anônima com instituição. Eu cuido da minha rua. Você cuida para não virar mais um problema nela."
+
+Ele não promete horário. Não promete busca. Não promete que Bram será preso. Mas também não devolve a informação ao vazio.
+
+Quando Ren chega aos arredores da loja de Bram Vask, o Lower Trades já está mais acordado. Portas sobem. Pães duros trocam de mão. Carregadores passam com caixas leves demais para valerem o esforço e pesadas demais para quem não comeu. Ren encontra uma pequena massa de rua perto de uma banca de caldo ralo e fica nela como mais um corpo esperando calor.
+
+Então duas fardas aparecem.
+
+Pressão da Night Watch sobre Bram: d20 20 + 4 = 24 contra CD 13. Sucesso.
+
+Não vêm correndo. Não vêm como batida teatral. Isso talvez seja mais eficiente. Uma mulher da guarda com queixo quadrado entra primeiro, o companheiro fica meio passo atrás e olha para cima antes de cruzar a porta. Bram abre porque não abrir seria história. Ren não ouve cada palavra, mas ouve o tom: nome completo, licença, reclamação de cobrança, quarto de cima, gente mantida por dívida, mulher de serviço em Narwhal.
+
+A porta fica aberta tempo demais para Bram gostar.
+
+Em um momento, a guarda de queixo quadrado ergue a voz o bastante para a rua ouvir:
+
+"Se algum devedor ferido sumir, aparecer morto, ou se alguma mulher chamada em assunto de dívida receber visita depois desta manhã, isso vira caso meu antes de virar teu livro."
+
+Bram responde baixo demais.
+
+A resposta não convence ninguém na rua. Mas ninguém na rua quer ser testemunha disso.
+
+Os guardas saem sem prender Bram. Também sem rir. A pressão foi pequena para tribunal e grande para um homem que prefere trabalhar na sombra de contrato sujo. Bram fica alguns segundos na porta depois que eles vão embora, pálido de raiva contida, e só então volta para dentro.
+
+Ren espera.
+
+Quando a rua absorve a presença da guarda, ele encontra uma criança de cabelo cortado torto, joelho cinzento e olho de quem já aprendeu a saber se uma moeda vem antes ou depois do risco. O pagamento é baixo o bastante para não mexer nas peças de ouro de Ren e alto o bastante para valer uma corrida curta.
+
+Ren repete o recado. De novo. De novo. A criança repete também, cada vez mais irritada, até parecer que decorou.
+
+Criança decorar e entregar o recado: d20 2 contra CD 11. Falha.  
+Ren observar entrega do recado sem fixar rosto: d20 15 + 5 = 20 contra CD 13. Sucesso.
+
+Ela entra e erra.
+
+Não tudo. O bastante para ser reconhecível. O bastante para causar dano diferente.
+
+"O homem disse que sabe que você foi atrás de Colm", ela dispara, rápido demais. "A paciência dele está acabando. A visita da guarda foi só o começo. Se você não esquecer, vai piorar."
+
+Não é o texto de Ren.
+
+É pior em um ponto e melhor em outro.
+
+Pior, porque transforma o "eu" em "o homem" e deixa claro que há alguém usando boca alheia. Pior também porque cola a visita da guarda à ameaça, como se a mesma mão pudesse puxar as duas cordas.
+
+Melhor, talvez, porque Bram entende.
+
+Bram conter reação após guarda e ameaça: d20 8 + 1 = 9 contra CD 14. Falha.  
+Bram evitar cena pública com a criança: d20 11 + 2 = 13 contra CD 12. Sucesso.
+
+Ele não agarra a criança. Não ali, com a rua ainda lembrando das fardas. Só põe uma moeda pequena no balcão com dois dedos e pergunta:
+
+"Que homem?"
+
+A criança pega a moeda e recua.
+
+"Não sei. Homem."
+
+Bram olha para a rua.
+
+Ren já está dentro da multidão antes do olhar chegar. Vê o rosto de Bram passar por medo, cálculo e algo mais duro. Não é coragem. É o tipo de raiva que não sabe onde bater e por isso começa a procurar parede.
+
+A criança sai inteira.
+
+Bram fecha a porta da loja.
+
+Depois fecha a janela.
+
+Depois, pela fresta lateral, Ren vê movimento no fundo da loja: não correria, não fuga imediata, mas gente mexendo coisa que não queria mexer de manhã.
+
+Ren não foi identificado. A guarda pressionou Bram. A mensagem chegou, embora torta. Bram entendeu que Colm agora tem sombra, guarda e ameaça ao redor do nome. Mas também entendeu que há uma mão anônima misturando essas coisas.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **08:10 de 4 Eleasis, 1372 DR**. Luath não aceitou o caderno de Bram como prova formal limpa e o devolveu a Ren após copiar marcas úteis, mas a Night Watch pressionou Bram Vask. A mensagem enviada pela criança foi entregue de forma imprecisa, ligando a ameaça à visita da guarda. Bram não atacou a criança em público, mas fechou a loja e começou a se mover nos fundos. Ren está próximo à loja de Bram, misturado à rua.
+
+O que Ren faz?

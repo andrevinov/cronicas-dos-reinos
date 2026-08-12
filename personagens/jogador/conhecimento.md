@@ -2307,3 +2307,20 @@ Progressão:
 * Ren obteve confirmação parcial: Colm/Dent provavelmente saiu com Dorra, mas a saída foi comprometida e não está confirmada como segura;
 * Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO e 9 shuriken;
 * hora aproximada: 06:35 de 4 Eleasis, 1372 DR.
+* Ren foi ao posto da City Guard/Night Watch vestido como cidadão pobre;
+* Ren relatou a Luath que Bram Vask mantém cobrança suja, ameaça Kethra e pode tentar descobrir o paradeiro de Colm/Dent;
+* Ren ofereceu o caderno de contas de Bram como prova, mas não explicou como tirou Colm da loja;
+* rolagem: Convencer Luath a pressionar Bram com prova irregular, d20 6 + 2 = 8 contra CD 14, falha;
+* Luath examinou o caderno, copiou marcas úteis, mas devolveu o caderno a Ren por não aceitá-lo como prova formal limpa sem cadeia de custódia e testemunho;
+* Luath não prometeu horário, busca ou prisão, e advertiu Ren contra misturar ameaça anônima com instituição;
+* rolagem: Pressão da Night Watch sobre Bram, d20 20 + 4 = 24 contra CD 13, sucesso;
+* dois guardas da Night Watch/City Guard foram à loja de Bram Vask e o pressionaram sobre cobrança violenta, possível gente mantida por dívida e risco a Kethra;
+* os guardas não prenderam Bram, mas deixaram aviso público de que visita ou dano a devedor ferido ou mulher ligada a dívida viraria caso da guarda;
+* Ren pagou uma criança com moeda baixa para entregar recado decorado a Bram; o gasto não altera o total de PO;
+* rolagem: Criança decorar e entregar o recado, d20 2 contra CD 11, falha;
+* rolagem: Ren observar entrega do recado sem fixar rosto, d20 15 + 5 = 20 contra CD 13, sucesso;
+* a criança entregou o recado de forma imprecisa, dizendo que "o homem" sabia que Bram foi atrás de Colm e que "a visita da guarda" foi só o começo;
+* Bram entendeu a ameaça, não atacou a criança em público, fechou a loja e começou a se mover nos fundos;
+* Ren não foi identificado na entrega do recado;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO, 9 shuriken e o caderno de contas de Bram Vask;
+* hora aproximada: 08:10 de 4 Eleasis, 1372 DR.

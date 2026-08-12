@@ -341,6 +341,11 @@ relacoes:
       sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do
       lavadouro antes da carroça de Dorra sair. Ren ainda não confirmou que essa
       pessoa foi enviada por Bram.
+      Mais tarde na mesma manhã, a Night Watch pressionou Bram em sua loja após
+      Ren levar o caso a Luath. Depois da visita da guarda, uma criança entregou
+      a Bram um recado ameaçador enviado por Ren, mas errou a formulação e ligou
+      a ameaça à visita da guarda. Bram não fez cena pública com a criança, mas
+      fechou a loja e começou a se mover nos fundos.
     informacoes_observadas_por_ren:
       - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
       - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
@@ -353,6 +358,8 @@ relacoes:
       - "Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro."
       - "Um homem velho nos pátios viu um homem sair da área da carroça de cal e depois tomar direção da Rua da Cal."
       - "Um trabalhador dos pátios contou a Ren que alguém perguntou por um doente vindo do lavadouro antes da saída de Dorra."
+      - "A Night Watch pressionou Bram em sua loja na manhã de 4 Eleasis, falando de cobrança violenta, possível gente mantida por dívida e risco a Kethra."
+      - "Uma criança entregou a Bram um recado ameaçador de Ren, de forma imprecisa, dizendo que a visita da guarda foi só o começo."
     riscos:
       - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
       - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
@@ -362,6 +369,8 @@ relacoes:
       - "Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças."
       - "Se Bram juntar a menina e o homem velho, pode estreitar a busca para carroças de cal ou carvão."
       - "Se a pessoa que perguntou nos pátios era resposta de Bram, Bram ou intermediário já estreitou a busca até Dorra Hest e os fornos de cal."
+      - "A mensagem torta pode fazer Bram associar a ameaça anônima a alguém capaz de observar ou influenciar a guarda."
+      - "Bram não parece contido; a dupla pressão pode gerar resposta indireta, ocultação de registros ou busca por quem o ameaçou."
   noll:
     nome: "Noll"
     tipo: "capanga de Bram Vask / mão de cobrança"
@@ -803,6 +812,14 @@ relacoes:
       Depois, Ren entregou o aviso escrito do Benefício da Lona Aberta sem nova
       discussão e com postura humilde. Luath aceitou o documento como limpo e
       manteve a via limitada de ronda normal, sem restaurar confiança ampla.
+      Na manhã de 4 Eleasis, Ren procurou Luath como cidadão pobre, relatou
+      Bram Vask, Kethra Dunn, Colm/Dent e o risco de Bram pressionar a família,
+      oferecendo o caderno de contas sujas de Bram como prova, mas sem explicar
+      como tirou Colm da loja. Luath examinou o caderno, copiou marcas úteis e
+      o devolveu, recusando tratá-lo como prova formal limpa sem cadeia de
+      custódia ou testemunho. Ainda assim, a Night Watch pressionou Bram por
+      cobrança violenta, possível cárcere/trabalho por dívida e risco a Kethra,
+      nos termos da guarda, não nos termos de Ren.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -826,6 +843,8 @@ relacoes:
       - "Luath aceitou orientar ronda normal perto do Benefício da Lona Aberta, sem apoio formal público."
       - "A Night Watch não pode ser usada em cartaz, anúncio ou como selo público do evento."
       - "Luath recusou qualquer serviço off-record de Ren em nome da guarda."
+      - "Luath examinou o caderno de Bram, copiou marcas úteis e devolveu o caderno a Ren por não aceitar prova irregular sem cadeia de custódia."
+      - "Dois guardas pressionaram Bram Vask em sua loja após o relato de Ren, sem prender Bram."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"
