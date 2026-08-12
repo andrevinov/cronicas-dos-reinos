@@ -3131,3 +3131,52 @@ Ainda não é alarme. É chamada.
 Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:03 de 4 Eleasis, 1372 DR**. Toll, o adulto de avental, está inconsciente e escondido de modo apressado na cozinha/refeitório. As duas crianças ficaram em silêncio e cooperaram. Elas disseram que há mais crianças abaixo ou atrás da cortina, que os porões servem para recados/pacotes/esconderijo, e que alguém além da cortina acabou de chamar por Toll.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren se esconde no lugar que dava pra se esconder. Imagina que a pessoa virá se chamar Toll o suficiente e o mesmo não responder. Deixa as crianças agiren e mentirem. Se a pessoa tentar sair da casa para procurar Toll, Ren tentará outro ataque surpresa, dessa vez sem Rajada de Golpes. Se ele conseguir apagar a pessoa, ele a esconderá no lugar onde ele achou que seria interessante pra se esconder. Depois voltará para as crianças e perguntará quantos soldados armados tem nessa casa. Descreverá o item mágico de Lathander que Maerra descreveu pra ele e perguntará se alguma das crianças o viu. E tentará se infiltrar mais adentro.
+
+**Narrador**
+
+Ren se esconder na cozinha com Passos sem Pegadas: d20 17 + 16 = 33 contra CD 16. Sucesso.
+Crianças sustentam a mentira sobre Toll: d20 6 + 1 = 7 contra CD 13. Falha.
+
+Ren some no pedaço mais útil da cozinha: a sombra sob a escada, quebrada pela pilha de lenha, pelo ângulo da mesa e pelo volume dos bancos. Não é confortável. Não é bom para lutar de pé. Mas é excelente para não existir por alguns segundos.
+
+A cortina mexe.
+
+Uma mulher aparece primeiro pela mão, depois pelo ombro. Ela é seca, de rosto comprido, lenço escuro amarrado no cabelo e uma tira de couro com chaves pequenas presa à cintura. Não veste armadura. Carrega uma haste curta de ferro, dessas que servem tanto para mexer braseiro quanto para bater em dedos.
+
+"Toll?"
+
+A menina maior responde baixo demais:
+
+"Ele ouviu barulho lá fora."
+
+A mulher para.
+
+A menor olha para a porta barrada.
+
+É só um instante. Mas a mulher vê.
+
+O olhar dela vai da criança para a barra de madeira ainda atravessada na porta lateral. A mentira poderia funcionar se Toll tivesse saído por outro caminho. Não funciona bem com a porta que ele deveria guardar ainda fechada por dentro.
+
+"Lá fora", a mulher repete, sem erguer a voz.
+
+Ela dá dois passos para dentro da cozinha. Não vê Ren. Não vê Toll. Ainda.
+
+Mas não caminha para a porta. Caminha para a mesa.
+
+"Então por que a porta está barrada?"
+
+A criança maior abre a boca e não acha resposta. A menor começa a encolher atrás do cesto.
+
+A mulher ergue um pouco a haste de ferro, mais aviso do que golpe, e chama de novo, desta vez mais alto:
+
+"Toll."
+
+O som ainda não vira alarme aberto, mas já é grande demais para continuar invisível por muito tempo. Se ela der mais dois passos, verá o arranjo ruim de pano, lenha e banco onde Toll está escondido.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 1/4, 24 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração até cerca de **00:58 de 4 Eleasis**. Hora aproximada: **00:04 de 4 Eleasis, 1372 DR**. Ren está escondido sob a sombra da escada/lenha. A mulher de lenço escuro entrou pela cortina, não viu Ren, mas percebeu a falha da mentira e está prestes a encontrar o corpo escondido de Toll se continuar avançando.
+
+O que Ren faz?
