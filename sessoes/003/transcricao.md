@@ -855,3 +855,93 @@ Ren está na lona principal, com o ensaio de Kage ajustado para uma versão segu
 O posto da Night Watch já está dentro da janela indicada por Luath. O ensaio pode continuar pela tarde, ou Ren pode interromper para procurar o sargento.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren está contente com a versão de Sorn/Dessa. A mensagem que ele queria passar está ok.
+
+Ele suspende o treino, falando que tem que resolver alguns assuntos (e também por Lysa, mas ele não falará).
+
+Sairá vestido discretamente de homem pobre e irá até Luath pra conversar com o sargento. Tentará descobrir o que o sargento já tem pra contar abertamente, e também inferir o que ele talvez não queira publicizar. Se ele conseguir detectar algo no tremido do olho de Luath, ele vai tentar confirmar com ele se entendeu certo.
+
+**Narrador**
+
+Chegar ao posto sem ligar Ren Kage ao visitante pobre: d20 1 + 6 = 7 contra CD 13. Falha.
+
+Ler o que Luath evita publicizar: d20 5 + 6 = 11 contra CD 13. Falha.
+
+Luath abrir informação útil sem tornar Ren auxiliar oficial: d20 2 + 2 = 4 contra CD 12. Falha.
+
+Ren suspende o treino no ponto certo: antes que Sorn precise dizer "não" pela quarta vez e antes que Lysa transforme alívio em orgulho ferido.
+
+"Assuntos", Jack repete, olhando da marca no chão para Ren. "Que voltem com meus assuntos junto deles, se puder."
+
+Sorn não pergunta. Apenas risca um círculo no chão com o giz.
+
+"Se alguém mexer nesta marca enquanto você estiver fora, eu quebro o dedo."
+
+Dessa entende antes de ouvir a explicação inteira. Ela encontra roupa pobre e comum o bastante para quebrar Kage: casaco gasto, gola sem graça, pano escuro no cabelo, sujeira velha nas dobras certas. Funciona de longe. Funciona bem o bastante para uma rua comum.
+
+Mas a saída não fica limpa.
+
+Não há perseguidor competente colado em Ren. Não há homem da Red Sail apontando dedo nem guarda gritando o nome de Kage. O problema é menor e mais irritante: na borda do acampamento, um vendedor de caldo ralo que estava tentando ouvir rumor da explosão vê o artista estrangeiro sumir da área da lona e, algum tempo depois, vê um forasteiro pobre sair pelo lado dos remendos com o mesmo tamanho, a mesma disciplina de ombro e a mesma pressa controlada.
+
+Ele não sabe o que viu. Mas gosta de ter visto.
+
+Isso não vira cauda. Vira memória.
+
+O caminho até o posto da City Guard/Night Watch está mais cheio do que de manhã. A explosão já virou fila: peixeiros reclamando mercadoria perdida, donos de banca exigindo salvo-conduto, um homem com a mão enfaixada xingando Gond, dois guardas com lama seca até o joelho, um escriba tentando transformar pânico em colunas legíveis.
+
+Quando Ren chega, um guarda jovem o barra por reflexo.
+
+"Queixa na fila."
+
+Outro guarda, mais velho, reconhece o rosto pobre do mercado, ou pelo menos o tipo de problema que ele carrega.
+
+"Não é queixa. É o homem do sargento."
+
+Essa frase entra nos ouvidos errados de pelo menos duas pessoas. Não revela Kage. Mas reforça uma linha pública fina: o forasteiro pobre admitido no mercado voltou a ser admitido pela guarda.
+
+Luath recebe Ren não no depósito lateral de antes, mas numa sala estreita atrás da mesa de escalas. Não por confiança maior. Por falta de lugar limpo. Há um mapa ruim de quarteirões na parede, três canecas sem dono e uma caixa de areia fina no canto, como se o posto inteiro tivesse aprendido a ter medo de faísca.
+
+Luath está mais velho do que estava de manhã.
+
+"Você veio", ele diz. "Bom. Eu não mandei buscar, então ainda não sou culpado por você estar aqui."
+
+Ele não oferece cadeira.
+
+"O que eu posso dizer sem abrir minha garganta para os meus superiores: os dois estão vivos. Separados. Vigiados. O leve acordou primeiro e tentou virar ninguém. Carregador contratado, não sabe nome, não sabe casa, só obedeceu o homem cinza porque recebeu moeda e medo. Pode ser verdade. Pode ser treino ruim."
+
+Luath passa um dedo sujo por uma linha no mapa.
+
+"O de manga cinza acordou menos. Falou menos ainda. Sem papel, sem marca de casa, sem anel de família. Dois anéis simples: ferro e latão. Roupa feita para parecer trabalhador, mas as mãos não eram de quem descarrega peixe. Ele sabe usar ferramenta. Sabe onde bater em pedra velha. E sabia que a guarda ia ouvir."
+
+Ele olha para Ren nessa última frase.
+
+"Isso eu não estou pondo em boca de praça."
+
+Luath continua antes que a pergunta vire acusação:
+
+"Gond estabilizou o barril de baixo. Estabilizou não é carregou para desfile. Continua em Sarbreen, sob areia, pano úmido e três homens nervosos. Os quatro barris apreendidos estão separados. A oficina dos tintureiros continua vazia. A mulher de vermelho sumiu antes da guarda chegar. O buraco do mercado está fechado por guarda, mas se a palavra Sarbreen crescer mais uma polegada, metade da cidade vai querer descer com corda para procurar tesouro, contrabando ou avô anão."
+
+Ren procura o tremido no olho de Luath.
+
+Há tremidos demais.
+
+Cansaço. Raiva. Pressa. O peso de superiores. O peso de não dizer Sarbreen alto. O peso de dois prisioneiros vivos que talvez não continuem inteiros se gente importante decidir que eles pertencem a outro lugar. Ren percebe que Luath está segurando mais de uma coisa, mas não consegue separar qual delas é a lâmina escondida e qual é só a mão tremendo por segurar a cidade desde cedo.
+
+Não há entendimento claro o bastante para confirmar.
+
+Luath também não dá a Ren a abertura que Ren queria. Não oferece cela, interrogatório conjunto, nem acesso aos dois presos.
+
+"Você não vai falar com eles", ele diz. "Ainda. Não porque eu não saiba que você tirou os dois do buraco. Porque se eu deixo um estrangeiro armado entrar na cela hoje, amanhã alguém com bota melhor manda dizer que todo o caso nasceu da sua mão."
+
+Ele apoia as duas mãos na mesa.
+
+"Mas você pode me dar pergunta. Uma. Curta. Sem Masao no começo. Sem poesia. Uma pergunta que eu possa fazer como se fosse minha."
+
+Lá fora, alguém grita sobre peixe apodrecendo. Outro grita de volta que peixe não explode sozinho. O posto responde com cansaço, tinta e portas batendo.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **15:03 de 4 Eleasis, 1372 DR**. Ren está no posto da City Guard/Night Watch, em conversa estreita com Luath. A ida não gerou cauda competente, mas criou uma memória fraca ligando o sumiço de Kage a um forasteiro pobre e reforçou a impressão pública de que esse forasteiro tem entrada com a guarda. Luath revelou informações controladas, mas não abriu acesso aos prisioneiros. Ele aceita levar **uma pergunta curta** de Ren para um dos interrogatórios.
+
+Qual pergunta Ren entrega a Luath?

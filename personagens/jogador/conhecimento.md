@@ -2512,3 +2512,17 @@ Progressão:
 * se Ren quiser executar a versão fisicamente mais ambiciosa amanhã, precisará de novo ensaio e aceitar novo risco;
 * o segundo sino da tarde passou sem recado de Luath ao circo até 14:18;
 * hora aproximada: 14:18 de 4 Eleasis, 1372 DR.
+* Ren suspendeu o treino de Kage satisfeito com a versão segura de Sorn/Dessa;
+* rolagem: Chegar ao posto sem ligar Ren Kage ao visitante pobre, d20 1 + 6 = 7 contra CD 13, falha;
+* a saída do circo não gerou cauda competente, mas criou uma memória fraca: um vendedor de caldo viu Kage sumir da área da lona e depois viu um forasteiro pobre de porte parecido sair pelo lado dos remendos;
+* no posto da Night Watch, um guarda mais velho reconheceu Ren como o homem do sargento, reforçando a linha pública fina de que o forasteiro pobre admitido no mercado tem entrada com a guarda;
+* rolagem: Ler o que Luath evita publicizar, d20 5 + 6 = 11 contra CD 13, falha;
+* Ren percebeu que Luath está segurando mais de uma coisa, mas não conseguiu separar qual ponto é mais importante;
+* rolagem: Luath abrir informação útil sem tornar Ren auxiliar oficial, d20 2 + 2 = 4 contra CD 12, falha;
+* Luath revelou informação controlada: os dois prisioneiros estão vivos, separados e vigiados;
+* o vulto leve acordou primeiro e tenta se apresentar como carregador contratado que obedeceu por moeda e medo;
+* o homem de manga cinza acordou menos, falou pouco, não tinha papéis ou marca de casa, usava dois anéis simples de ferro e latão, e suas mãos pareciam de alguém que sabe usar ferramenta e mexer em pedra velha;
+* Gond estabilizou o barril em Sarbreen, mas ele continua abaixo, sob contenção;
+* Luath não permitiu que Ren fale com os prisioneiros neste momento;
+* Luath aceitou levar uma pergunta curta de Ren ao interrogatório como se fosse dele;
+* hora aproximada: 15:03 de 4 Eleasis, 1372 DR.

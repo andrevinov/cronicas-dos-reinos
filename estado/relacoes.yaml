@@ -908,6 +908,12 @@ relacoes:
       Ren buscar informação depois do segundo sino ou receber recado no circo.
       A utilidade prática de Ren aumentou aos olhos de Luath, especialmente por
       entregar vivos e prova material, mas a cautela institucional permanece.
+      Depois do segundo sino, Ren procurou Luath no posto da Night Watch em
+      roupa pobre. A chegada reforçou uma linha pública fina de que o
+      forasteiro pobre admitido no mercado tem entrada com a guarda. Luath
+      revelou apenas informação controlada, recusou acesso direto aos
+      prisioneiros e aceitou levar uma pergunta curta de Ren ao interrogatório,
+      sem torná-lo auxiliar oficial.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -918,6 +924,7 @@ relacoes:
       - "Luath pode estar sob pressão para resolver problemas do porto sem atingir nomes influentes."
       - "Luath agora possui dois prisioneiros ligados aos barris e ao acesso de Sarbreen; se eles sumirem, morrerem ou forem tomados por autoridade superior, a confiança prática de Ren na guarda pode ser testada."
       - "A ligação pública entre Ren e a entrada no perímetro do mercado ainda é fraca, mas uma peixeira e um escrivãozinho de guilda viram um forasteiro pobre ser admitido pela guarda antes da explosão parcial."
+      - "A ida de Ren ao posto depois do segundo sino reforçou a linha pública fina de que o forasteiro pobre do mercado tem entrada com a guarda; a ligação com Kage ainda é fraca, mas uma memória na borda do circo pode crescer."
       - "O selo de Maerra comprou privacidade, não confiança."
       - "Luath agora sabe que Ren está caçando Masao por uma morte familiar; isso o torna mais cauteloso com Ren."
       - "A franqueza de Ren sobre Masao não merecer cela tornou Luath mais propenso a vigiar Ren se corpos aparecerem."
@@ -938,6 +945,7 @@ relacoes:
       - "Luath mandou chamar Ren ao mercado de peixe quando quatro barris mal marcados foram encontrados e dois estavam desaparecidos."
       - "Luath sabe por um peixeiro que um homem de manga cinza e dois anéis mandou descarregar os barris por intermediário."
       - "Luath ouviu de Ren que o pó dos barris explode se estiver seco e encontrar chama."
+      - "Luath recusou acesso direto de Ren aos prisioneiros, mas aceitou levar uma pergunta curta ao interrogatório."
       - "Luath enviou guardas para cercar a oficina dos tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó."
       - "Luath recebeu de Ren a linha de raciocínio sobre alvos capazes de quebrar o ânimo da cidade e mandou avisos discretos para mercado, água, ponte, templo e guarda."
       - "Luath informou a Ren que a carroça dos dois barris faltantes tinha eixo baixo, roda traseira esquerda ruim, tábua traseira manchada de vermelho e foi vista rumo à balança velha pelo Beco da Salmoura."
