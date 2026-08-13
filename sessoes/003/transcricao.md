@@ -691,3 +691,75 @@ O segundo barril ficou na câmara baixa de serviço, separado do acionamento ime
 Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração, até cerca de 11:42 se não for quebrado; **Visão no Escuro** segue ativa. O homem de manga cinza e o vulto leve foram entregues vivos a Luath. O dispositivo de acionamento foi removido e entregue à guarda com cuidado. O barril principal continua em Sarbreen, sem ignição imediata, mas ainda perigoso. Hora aproximada: **10:48 de 4 Eleasis, 1372 DR**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren fica no local, esperando Luath fazer algum interrogatório inicial. Se Luath decidir não fazer interrogatório ali, Ren respeitará, e entrará em contato com o sargento mais tarde pra ver se consegue puxar algo dele. Independente, depois do interrogatório ou de se despedir de Luath, Ren volta pro circo. Amanhã tem Kage e ele precisa ensaiar.
+
+**Narrador**
+
+Controlar perímetro até Gond chegar: d20 13 + 4 = 17 contra CD 13. Sucesso.
+
+Relatório útil da oficina dos tintureiros antes de Ren sair: d20 19 + 2 = 21 contra CD 12. Sucesso.
+
+Luath não faz o interrogatório ali.
+
+Não porque não queira. Pelo olhar que ele lança aos dois corpos içados, ele quer muito. Mas há gente demais acima, madeira quebrada demais sob os pés, pó demais perto de pedra velha e um barril inteiro ainda respirando perigo embaixo da cidade.
+
+"Não aqui", ele diz, baixo, para Ren. "Se eu acordo esses dois na boca do mercado, metade da rua vira testemunha ruim e a outra metade vira rumor."
+
+Os guardas mantêm o perímetro melhor do que parecia possível alguns minutos antes. A primeira onda de curiosos recua quando Luath troca homens cansados por homens secos, põe dois escudos como parede visual e manda barris de areia ficarem mais perto da abertura do que as pessoas. Um aprendiz de Gond chega sem lamparina, o que já o faz parecer inteligente o bastante para ser útil. Ele se ajoelha longe do dispositivo entregue por Ren, olha primeiro com olhos, não com fogo, e só então começa a pedir pano úmido, pinça de ferro envolta em couro e uma caixa com areia fina.
+
+Antes de Ren sair, Jory volta da rua dos tintureiros com a capa molhada e a boca fechada até chegar perto de Luath.
+
+O relatório é curto, mas útil.
+
+A oficina dos fundos está vazia de gente. A mulher de vermelho não está mais lá. A cortina do fundo foi arrancada de um lado, há uma abertura baixa descendo para pedra úmida, um cesto de roupa suja com tira amarela de dois nós, respingos de cera vermelha e sinais de limpeza apressada perto das mesas. Nada de barril inteiro à vista. Nada de criança. Um cheiro parecido com o do pó ficou preso no chão baixo, mas fraco demais para apontar quantidade.
+
+Luath ouve tudo sem olhar para Ren de imediato.
+
+"Quatro barris apreendidos. Um estourou aqui. Um ficou inteiro embaixo." Ele conta nos dedos, não por burrice, mas para fixar a cadeia. "Isso fecha a carroça de seis. Não fecha a cidade."
+
+Ele olha para a abertura de Sarbreen.
+
+"Eu vou pôr Gond no barril, guarda nos dois vivos e gente minha na oficina. Se eles acordarem antes de eu mandar, alguém perde dente por impaciência." Só então olha para Ren. "Você quer palavra deles, procure depois. Não venha como Kage. E não venha com poesia. Posto da Night Watch depois do segundo sino, ou eu mando recado pelo circo se a rua piorar primeiro."
+
+Sair do mercado sem levar cauda competente ao circo: d20 10 + 17 = 27 contra CD 13. Sucesso.
+
+Ren sai pela parte feia do perímetro, não pela parte dramática. Passos sem Pegadas ainda segura o que resta de sombra ao redor dele; gente vê guardas, corda, areia, fumaça e buraco. Não vê uma trilha útil saindo dali até o circo.
+
+Ravens Bluff já começou a transformar o acontecimento em versões. A cada rua, a explosão muda de dono: acidente de peixeiro, vingança de estivador, demônio embaixo da balança, barril de Gond, sabotagem de guilda, estrangeiro pobre admitido pela guarda. Essa última versão existe, mas ainda é fina demais para apontar sozinha para Ren.
+
+Quando ele chega ao Jack Mooney & Sons Circus, a manhã passou da metade.
+
+Hora aproximada: 11:27 de 4 Eleasis.
+
+O acampamento não está em pânico, mas já sabe que algo aconteceu no mercado. Carreiros trazem rumor antes de trazerem roda limpa. A balança velha virou fumaça, dizem. A guarda fechou peixe, dizem. Um buraco abriu para cidade antiga, dizem. Jack Mooney está perto da lona principal com uma tábua de ensaio debaixo do braço e uma cara de quem odeia rumores porque eles nunca pagam ingresso no horário certo.
+
+Silva vê Ren antes de Jack. Vê a roupa molhada, o cheiro de cinza fria e mercado, a postura inteira demais para estar ileso por acaso.
+
+"Você voltou", ela diz. Não parece surpresa. Parece contabilidade.
+
+Nera está perto da carroça verde, com um pedaço de tecido escuro no colo. Ela não corre. Tavin quase corre, mas Silva põe uma mão no ombro dele sem olhar.
+
+Jack aproxima-se com passos curtos.
+
+"Meu artista indisponível foi visto pela cidade?", ele pergunta.
+
+Silva responde antes de Ren precisar escolher tudo:
+
+"Não por olhos que chegaram aqui com ele."
+
+Jack aceita isso como se fosse uma moeda de valor incerto, mas real. Depois aponta para a tenda.
+
+"Kage amanhã precisa de ensaio. Mas Kage também precisa de joelho, pulmão e cabeça. Sorn está marcando chão. Dessa quer mexer na máscara. Eu quero saber se a cidade vai interromper minha tarde com guarda, nobre ou incêndio novo."
+
+Sorn, do outro lado, risca marcas baixas no chão com giz e não levanta a voz:
+
+"Se ele veio de buraco e explosão, primeira passagem é de marcação. Sem salto grande."
+
+Passos sem Pegadas ainda está ativo, mas perto do fim. Visão no Escuro segue ativa sem atrapalhar. Ren está no circo com **Ki 0/5**, sujo de Sarbreen, sem cauda competente percebida, e com a apresentação de Kage marcada para amanhã ao cair da tarde.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. Hora aproximada: **11:27 de 4 Eleasis, 1372 DR**. Luath não interrogou os prisioneiros no mercado; pediu contato depois do segundo sino ou por recado ao circo. A oficina dos tintureiros foi encontrada vazia, com sinais de limpeza apressada e abertura baixa para pedra úmida. A carroça de seis barris parece contabilizada, mas Luath não considera a cidade segura por isso.
+
+O que Ren faz?

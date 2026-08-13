@@ -2482,3 +2482,19 @@ Progressão:
 * Ren está na primeira câmara baixa sob a balança velha, junto à corda de Luath;
 * a junta antiga na parede da câmara baixa está parcialmente forçada, e a saída lateral onde o vulto leve vigiava permanece aberta, escura e estreita;
 * hora aproximada: 10:48 de 4 Eleasis, 1372 DR.
+* Luath recusou interrogar os prisioneiros no mercado, por risco de curiosos, rumor ruim, perímetro instável e explosivo remanescente;
+* Luath pediu que Ren procure o posto da Night Watch depois do segundo sino, sem vir como Kage, ou aguarde recado pelo circo se a rua piorar primeiro;
+* rolagem: Controlar perímetro até Gond chegar, d20 13 + 4 = 17 contra CD 13, sucesso;
+* rolagem: Relatório útil da oficina dos tintureiros antes de Ren sair, d20 19 + 2 = 21 contra CD 12, sucesso;
+* a oficina dos tintureiros foi encontrada vazia;
+* a mulher de vermelho não estava mais lá;
+* a oficina tinha sinais de limpeza apressada, cesto de roupa suja com tira amarela de dois nós, abertura baixa para pedra úmida e cheiro fraco semelhante ao pó;
+* Luath contabilizou a carroça de seis barris como quatro apreendidos, um parcialmente detonado e um inteiro em Sarbreen, mas não considera a cidade segura só por isso;
+* rolagem: Sair do mercado sem levar cauda competente ao circo, d20 10 + 17 = 27 contra CD 13, sucesso;
+* Ren voltou ao Jack Mooney & Sons Circus sem cauda competente percebida;
+* ao chegar, os rumores da explosão já haviam alcançado o circo;
+* Jack, Silva, Nera, Tavin e Sorn estão próximos da preparação de ensaio de Kage;
+* Sorn limitou a primeira passagem de ensaio a marcação, sem salto grande, por Ren ter voltado de buraco e explosão;
+* Ren está com 38/38 PV, CA 17, 0/5 ki, 21 PO, 9 shuriken e Visão no Escuro ativa;
+* Passos sem Pegadas ainda está ativo, mas perto do fim;
+* hora aproximada: 11:27 de 4 Eleasis, 1372 DR.
