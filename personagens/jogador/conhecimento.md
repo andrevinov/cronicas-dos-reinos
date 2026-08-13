@@ -2413,3 +2413,12 @@ Progressão:
 * Luath aceitou a parte concreta e enviou guardas para cercar a oficina dos tintureiros com cautela;
 * Luath considera três linhas urgentes: rota baixa pela grelha, rastro da carroça dos seis barris ou oficina dos tintureiros;
 * hora aproximada: 10:31 de 4 Eleasis, 1372 DR.
+* Ren escolheu seguir o rastro da carroça dos dois barris faltantes e alertou Luath a pensar em alvos que deixariam a cidade mais frágil: mercado, água, ponte, templo e guarda;
+* Luath tratou essa linha como ameaça civil concreta e mandou avisos discretos sem anunciar pólvora ao público;
+* Luath informou que a carroça dos dois barris faltantes tinha eixo baixo, roda traseira esquerda ruim, tábua traseira manchada de vermelho e fora vista rumo à balança velha pelo Beco da Salmoura havia dez a quinze minutos;
+* rolagem: seguir a trilha da carroça no mercado, d20 6 + 4 = 10 contra CD 15, falha;
+* Ren perdeu minutos no cruzamento de rastros do mercado, e uma explosão parcial atingiu a área da balança velha;
+* a explosão feriu pessoas próximas, rachou o tablado e abriu uma passagem baixa escura sob o mercado, com pedra molhada, cheiro ácido/de ovo ruim e cera vermelha em madeira quebrada;
+* o efeito parece menor do que dois barris inteiros secos deveriam causar; Ren considera plausível haver carga remanescente, pó úmido que não detonou ou outro barril em outro ponto;
+* Ren segue com 38/38 PV, CA 17, 5/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
+* hora aproximada: 10:41 de 4 Eleasis, 1372 DR.

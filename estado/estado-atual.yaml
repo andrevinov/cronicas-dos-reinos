@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Harbor / mercado de peixe"
-  ponto_exato: "perímetro isolado perto dos barris mal marcados"
+  ponto_exato: "perto da balança velha do mercado de peixe, diante de passagem baixa aberta por explosão parcial"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -129,6 +129,17 @@ localizacao:
     a cicatriz, a marca de sol apagado, a oficina dos tintureiros e o homem de
     manga cinza com dois anéis. Luath enviou guardas para cercar a oficina dos
     tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó.
+    Ren escolheu seguir o rastro da carroça e alertou Luath a pensar nos alvos
+    que deixariam Ravens Bluff mais frágil e desesperançada: mercado, água,
+    ponte, templo e guarda. Luath deu a descrição da carroça dos dois barris
+    faltantes: eixo baixo, roda traseira esquerda ruim, tábua de trás manchada
+    de vermelho e última vista no Beco da Salmoura rumo à balança velha. Ren
+    tentou seguir a trilha, mas perdeu tempo no cruzamento de rastros do
+    mercado. Às 10:41, uma explosão parcial atingiu a área da balança velha,
+    feriu pessoas próximas, rachou o tablado e abriu uma passagem baixa escura
+    com pedra molhada. O efeito parece menor do que dois barris inteiros
+    deveriam causar; pode haver carga remanescente, pó úmido que não detonou ou
+    outro barril em outro ponto.
 
 tempo:
   ano_dr: 1372
@@ -141,7 +152,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "manhã de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "10:31 de 4 Eleasis"
+  hora_aproximada: "10:41 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'. Ren pagou 2 PO a Pell por ponto morto, com observação parcial de funcionária da Silver Lily. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados. Às 10:03, Tobb trouxe recado de Luath: quatro barris mal marcados foram encontrados perto do mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro; a guarda acredita que havia seis. Por volta de 10:27, Ren encontrou Luath no perímetro isolado do mercado de peixe. Luath confirmou que a conta da carroça era de seis barris, que quatro foram encontrados e que um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário. Às 10:31, Ren identificou o risco explosivo do pó e ligou a cera vermelha à rua dos tintureiros; Luath enviou guardas para cercar a oficina dos tintureiros."
@@ -907,8 +918,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo na Casa da Aurora Menor após a lembrança de Peta sobre o homem de manga cinza, os dois anéis, o peixe, a máscara e o lugar frio sob rodas"
-    - "investigar a rota baixa/oficina dos tintureiros e sua possível ligação com Narwhal Manor, Brass e a palavra máscara"
+    - "decidir como agir diante da passagem baixa aberta pela explosão parcial na balança velha"
+    - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "monitorar se Kethra consegue usar o ponto morto de Narwhal sem expor a si mesma"
     - "aguardar resposta futura de Pell sobre dia, hora ou local onde Dain 'Brass' Mord fique sozinho"
@@ -947,8 +958,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está com Luath no perímetro isolado do mercado de peixe, por volta de 10:31 de 4 Eleasis de 1372 DR. Ren identificou o pó como substância explosiva quando seca e exposta a chama, semelhante em princípio a pólvora/pó de fumaça, mas com traços alquímicos locais. A cera vermelha bate fortemente com o fio da rua dos tintureiros. Luath enviou guardas para cercar a oficina dos tintureiros e considera três linhas urgentes: rota baixa pela grelha, rastro da carroça dos seis barris ou oficina dos tintureiros. Ren está com 38/38 PV, CA 17, Ki 5/5, 21 PO e 9 shuriken."
-  risco_imediato: "moderado"
+  cena_atual: "Ren está perto da balança velha do mercado de peixe, por volta de 10:41 de 4 Eleasis de 1372 DR. Após escolher seguir o rastro da carroça dos dois barris faltantes, falhou em manter a trilha no cruzamento de marcas do mercado. Uma explosão parcial atingiu a área da balança velha, feriu pessoas próximas, rachou o tablado e abriu uma passagem baixa escura com pedra molhada, cheiro ácido/de ovo ruim e cera vermelha na madeira quebrada. O efeito parece menor do que dois barris inteiros deveriam causar; pode haver carga remanescente, pó úmido que não detonou ou outro barril em outro ponto. Luath está atrás de Ren dando ordens contra pânico e chama. Ren está com 38/38 PV, CA 17, Ki 5/5, 21 PO e 9 shuriken."
+  risco_imediato: "alto"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"

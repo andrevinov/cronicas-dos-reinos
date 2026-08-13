@@ -893,7 +893,13 @@ relacoes:
       dos tintureiros e contou a Luath sobre a mulher de vermelho, a cicatriz, a
       marca de sol apagado e o homem de manga cinza com dois anéis. Luath
       aceitou a parte concreta e enviou guardas para cercar a oficina dos
-      tintureiros com cautela.
+      tintureiros com cautela. Quando Ren alertou que ataques contra mercado,
+      água, ponte, templo ou guarda deixariam a cidade mais frágil e
+      desesperançada, Luath tratou a linha como ameaça civil concreta e mandou
+      avisos discretos, sem anunciar pólvora ao público. Depois deu a Ren as
+      informações sobre a carroça dos dois barris faltantes. A trilha se perdeu
+      no mercado, e uma explosão parcial atingiu a balança velha antes que Ren
+      chegasse ao ponto certo.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -923,6 +929,9 @@ relacoes:
       - "Luath sabe por um peixeiro que um homem de manga cinza e dois anéis mandou descarregar os barris por intermediário."
       - "Luath ouviu de Ren que o pó dos barris explode se estiver seco e encontrar chama."
       - "Luath enviou guardas para cercar a oficina dos tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó."
+      - "Luath recebeu de Ren a linha de raciocínio sobre alvos capazes de quebrar o ânimo da cidade e mandou avisos discretos para mercado, água, ponte, templo e guarda."
+      - "Luath informou a Ren que a carroça dos dois barris faltantes tinha eixo baixo, roda traseira esquerda ruim, tábua traseira manchada de vermelho e foi vista rumo à balança velha pelo Beco da Salmoura."
+      - "Após a falha de Ren em manter a trilha no mercado, uma explosão parcial atingiu a balança velha; Luath passou a conter pânico, chama e curiosos."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"

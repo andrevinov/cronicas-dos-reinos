@@ -72,6 +72,14 @@ O que Ren faz?
 
 **Jogador**
 
+[Cria uma imagem aérea dessa cena, mas que dê pra ver Ren, Luath e o pânico das pessoas, junto da destruição causada]
+
+**Narrador**
+
+Imagem aérea da explosão parcial na balança velha: [001-explosao-balanca-velha.png](imagens/001-explosao-balanca-velha.png).
+
+**Jogador**
+
 [Ok, então pode aplicar o nível 5. Eu escolho algum poder? O que é CD de ki?]
 
 **Narrador**
@@ -341,5 +349,59 @@ Ele aponta para a grelha.
 "Você acha porta onde só tem parede. Então escolha onde põe os olhos primeiro: na rota baixa daqui, nos rastros da carroça que deixou seis e saiu com dois, ou na oficina dos tintureiros antes que ela seja limpa."
 
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:31 de 4 Eleasis, 1372 DR**. Ren identificou o pó como substância explosiva quando seca e exposta a chama, semelhante em princípio a pólvora/pó de fumaça, mas com traços alquímicos locais. A cera vermelha bate fortemente com o fio da rua dos tintureiros. Luath enviou guardas para cercar a oficina dos tintureiros com cautela e considera três linhas urgentes: rota baixa pela grelha, rastro da carroça dos seis barris ou oficina dos tintureiros.
+
+O que Ren faz?
+
+**Jogador**
+
+"Vou no rastro da carroça. Você e seus homens precisam ir a oficina dos tintureiros e o mais importante é tentar descobrir o verdadeiro total de barris. Eu sinto que não são apenas seis, e precisamos saber o quanto precisamos procurar. Talvez a oficina em si dê pistas de quantos barris são."
+
+Antes de sair:
+
+"Luath, Masao certamente tem mais alvo. Mesmo depois de acharmos os barris, pense: que lugares daqui, caso fossem atacados, deixariam as pessoas mais fragilizadas e desesperançadas? Talvez essa linha de raciocínio nos faça descobrir os verdadeiros lugares alvo."
+
+Ren pede informações sobre a caroça que saiu com os outros dois barris: onde foi vista por último, há quanto tempo, e tenta seguir essa trilha.
+
+**Narrador**
+
+Luath não discute o nome de Masao naquele instante. A expressão dele diz que a parte do "homem que tomou uma cidade" ainda mora na tal outra gaveta. Mas a pergunta sobre alvos muda alguma coisa nele, porque não depende de acreditar na história inteira. Depende só de imaginar uma cidade com medo.
+
+"Mercado, água, ponte, templo, guarda", ele diz, baixo, como se testasse a lista contra o mapa dentro da cabeça. "Nessa ordem, se o objetivo for desespero rápido."
+
+Ele vira para dois homens da guarda.
+
+"Aviso curto. Sem gritar pólvora. Olhos em cisternas públicas, ponte baixa do porto, Casa da Aurora Menor e entrada de Tyr. Quem acender lamparina perto de barril fechado perde a mão para mim antes de perder para o fogo. E mandem palavra a Gond. Se tiverem um aprendiz sóbrio, serve."
+
+Para Ren, Luath dá o que sabe sobre a carroça.
+
+"Eixo baixo. Roda traseira esquerda ruim, ferro batendo torto. Tábua de trás manchada de vermelho. O carroceiro jura que trouxe seis e descarregou quatro aqui. Os outros dois foram mandados 'para baixo da balança velha' por um ajudante com ficha de peixe, como se fosse carga que não podia pegar sol. Última vista no Beco da Salmoura, dez, quinze minutos atrás."
+
+Teste de Investigação: d20 6 + 4 = 10 contra CD 15. Falha.
+
+Ren encontra o primeiro sinal rápido: um risco torto de roda no lodo fino, uma marca vermelha raspada na quina de uma caixa, o fedor de peixe velho encobrindo quase tudo. Por meio minuto, a trilha parece obedecer.
+
+Depois o mercado a engole.
+
+Há rodas demais. Água demais. Homens arrastando caixas, peixeiras lavando sangue de tábua, carregadores puxando tonéis vazios, lama sendo pisada em todas as direções. A roda ruim aparece duas vezes onde não devia, desaparece numa faixa de pedra seca e volta perto de outro carro completamente diferente. Ren perde minutos escolhendo o rastro mais provável em vez do certo.
+
+Então o som chega antes da resposta.
+
+Não é uma chama alta. Não é uma bola de fogo de conto. É um golpe surdo, fundo, como se alguma coisa pesada tivesse socado a cidade por baixo.
+
+O chão treme sob os pés de Ren. Uma fileira de tábuas estala adiante. Gente grita. Um bafo cinza, ácido e quente rola pelo Beco da Salmoura e traz junto pó, sal podre, peixe aberto e aquele cheiro de ovo ruim multiplicado.
+
+Quando Ren dobra a última esquina, vê a balança velha do mercado torta sobre o suporte rachado. Parte do tablado ao redor afundou, não o bastante para engolir a rua inteira, mas o bastante para abrir um rasgo escuro sob as pranchas. Um ajudante está no chão com sangue no rosto, vivo e tentando respirar. Uma peixeira arrasta outro homem pela gola para longe da fumaça. Dois guardas tentam segurar curiosos que querem correr na direção errada.
+
+O estrago é sério, mas errado para dois barris inteiros secos. Ou parte do pó estava úmida. Ou só uma carga pegou. Ou a explosão foi feita para abrir a passagem, não para destruir o mercado inteiro.
+
+Debaixo do tablado rachado há pedra molhada, madeira quebrada e uma garganta baixa descendo para a escuridão. Rodas passam em algum lugar acima ou ao lado, abafadas. Água escorre pela parede.
+
+Atrás de Ren, a voz de Luath corta o pânico.
+
+"Sem chama! Areia! Tirem vivos primeiro!"
+
+Ele ainda está longe demais para alcançar a abertura antes de Ren. Perto da garganta baixa, entre fumaça e pó, há marcas arrastadas recentes e uma lasca de cera vermelha presa numa tábua quebrada. Também há um chiado baixo vindo de dentro, como pano molhado encostando em brasa, ou como alguma coisa química terminando de morrer.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:41 de 4 Eleasis, 1372 DR**. Ren tentou seguir a trilha da carroça, mas perdeu tempo no cruzamento de rastros do mercado. Uma explosão parcial atingiu a área da balança velha e abriu uma passagem baixa sob o tablado. O efeito parece menor do que dois barris inteiros deveriam causar; pode haver carga remanescente, pó úmido que não detonou ou outro barril em outro ponto. Há feridos próximos, guardas tentando conter pânico e uma abertura escura à frente.
 
 O que Ren faz?
