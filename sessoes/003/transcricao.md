@@ -583,3 +583,49 @@ Pela leitura rápida, há três perigos imediatos: o barril ainda pode ser deton
 Situação: **Ren 38/38 PV, CA 17, Ki 1/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** está ativo por concentração; **Visão no Escuro** está ativa. Hora aproximada: **10:44 de 4 Eleasis, 1372 DR**. Ren está oculto a cerca de 30 pés de dois vultos em uma câmara baixa de Sarbreen. O homem de manga cinza e dois anéis está tentando forçar uma junta/trava antiga na parede. Um segundo barril está posicionado para explodir contra essa parede, mas ainda não foi aceso.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren se aproximará para tentar um ataque surpresa ao homem de manga cinza e ao vulto leve. O objetivo dele é silencia-los antes que possam dar algum alarme. E por isso usará Rajada de Golpes.
+
+**Narrador**
+
+Aproximação final sob Passos sem Pegadas: d20 1 + 17 = 18 contra CD 15. Sucesso.
+
+Iniciativa de Ren: d20 11 + 4 = 15.  
+Iniciativa do homem de manga cinza: d20 13 + 2 = 15.  
+Iniciativa do vulto leve: d20 2 + 3 = 5.
+
+Ren e o homem de manga cinza empatam no sino interno da luta, mas Ren é mais rápido. E os dois ainda estão surpreendidos.
+
+O primeiro passo quase trai tudo.
+
+A sola encontra uma pedra lisa debaixo da água rasa, e por um instante o peso de Ren quer contar a história inteira em um respingo. Mas a sombra agarrada ao corpo pelo ki engole o som. O vulto leve olha para a galeria errada. O homem de manga cinza continua com a barra curta de ferro encaixada na junta antiga, os dois anéis raspando baixo contra pedra.
+
+Ren chega sem anúncio.
+
+**Rajada de Golpes**: Ren gasta **1 ki**. Ki atual: **0/5**.
+
+Primeiro golpe desarmado contra o homem de manga cinza, com vantagem por ataque a partir de ocultação: d20 com vantagem [15, 10] -> 15 + 7 = 22 contra CA 13. Acerto. Dano: 1d6 3 + 4 = 7 contundente.
+
+Segundo golpe desarmado contra o homem de manga cinza: d20 12 + 7 = 19 contra CA 13. Acerto. Dano: 1d6 2 + 4 = 6 contundente.
+
+Primeiro golpe da Rajada contra o vulto leve: d20 12 + 7 = 19 contra CA 14. Acerto. Dano: 1d6 4 + 4 = 8 contundente.
+
+Segundo golpe da Rajada contra o vulto leve: d20 17 + 7 = 24 contra CA 14. Acerto. Dano: 1d6 5 + 4 = 9 contundente.
+
+A primeira pancada pega o homem de manga cinza entre ombro e costela antes que ele entenda que há alguém atrás dele. A barra curta escapa meio dedo da junta antiga. A segunda entra no braço da ferramenta, entortando o cotovelo contra a pedra e arrancando dele o ar que viraria palavra. Ele não grita.
+
+Mas também não cai.
+
+Ren gira no mesmo fôlego. O vulto leve tenta virar para a saída lateral, tarde demais: o primeiro golpe dobra o corpo dele contra um pilar baixo; o segundo apaga a perna de apoio e joga a cabeça contra o próprio capuz, sem voz, sem lâmina levantada, sem alarme. Ele cai na água rasa perto da passagem lateral, vivo ou morto ainda não confirmado no calor do instante, mas fora da luta imediata.
+
+O homem de manga cinza fica de joelho torto junto à parede, respirando como quem engole pedra. A surpresa dele passa sem ação útil: não alcança o cordão, não acende a tigela, não grita para a galeria adiante. Ainda assim, os olhos dele estão abertos. A mão dos dois anéis está a menos de um braço da barra de ferro caída e a poucos passos do conjunto de cerâmica e pó escuro.
+
+O barril continua inteiro. A carga ainda não foi acesa. A junta antiga está parcialmente forçada.
+
+Pela ordem da iniciativa, Ren ainda tem o próximo batimento antes que o homem de manga cinza consiga agir de verdade. Mas agora não há mais folga: se ele tiver tempo, pode tentar gritar, puxar o dispositivo, fugir pela lateral ou terminar o que começou na parede.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração; **Visão no Escuro** está ativa. O vulto leve caiu junto à saída lateral. O homem de manga cinza está ferido, consciente, corpo a corpo com Ren, perto da barra, da junta antiga e do barril armado. Hora aproximada: **10:44 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?

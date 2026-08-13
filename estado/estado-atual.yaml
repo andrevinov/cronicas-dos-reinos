@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "interacao"
+  modo_de_cena_atual: "combate"
 
 personagem:
   nome: "Ren Kagehira"
@@ -159,7 +159,12 @@ localizacao:
     perto de uma saída lateral e o homem de manga cinza com dois anéis usando
     uma barra curta de ferro numa junta/trava antiga. O segundo barril está
     posicionado para explodir contra a parede, ligado a um conjunto improvisado
-    de pano encerado, cerâmica, cordão e pó escuro, ainda não aceso.
+    de pano encerado, cerâmica, cordão e pó escuro, ainda não aceso. Ren se
+    aproximou sob Passos sem Pegadas e atacou de surpresa usando Rajada de
+    Golpes. O vulto leve caiu junto à saída lateral, sem alarme útil. O homem
+    de manga cinza está ferido, consciente, corpo a corpo com Ren, perto da
+    barra, da junta antiga e do barril armado. Ren gastou o último ki e está
+    com Ki 0/5.
 
 tempo:
   ano_dr: 1372
@@ -186,7 +191,7 @@ recursos:
     maximos: 5
     dado: "d8"
   ki:
-    atuais: 1
+    atuais: 0
     maximos: 5
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -897,8 +902,11 @@ recursos:
     - "Mapa operacional salvo em sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.png e sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.svg"
     - "Passos sem Pegadas ativo desde cerca de 10:43 de 4 Eleasis; concentração possível até cerca de 11:42 se não for quebrada"
     - "Visão no Escuro ativa desde cerca de 10:43 de 4 Eleasis; duração aproximada até 18:43"
-    - "Ren está oculto na entrada de uma câmara baixa de serviço de Sarbreen, a cerca de 30 pés do homem de manga cinza e de um vigia"
-    - "há sinais de que um segundo barril foi arrastado para galeria escura"
+    - "Ren se aproximou sob Passos sem Pegadas e abriu combate de surpresa contra o homem de manga cinza e o vulto leve"
+    - "Ren gastou seu último ki em Rajada de Golpes; ki atual 0/5"
+    - "o vulto leve caiu junto à saída lateral, sem alarme útil"
+    - "o homem de manga cinza está ferido, consciente e corpo a corpo com Ren, perto da barra curta, da junta antiga e do barril armado"
+    - "o segundo barril continua inteiro e ainda não foi aceso"
   exaustao: 0
 
 equipamento_em_posse:
@@ -942,7 +950,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como interferir no segundo barril e no homem de manga cinza antes que a parede antiga seja aberta ou a carga seja detonada"
+    - "impedir que o homem de manga cinza grite, acione o dispositivo, fuja ou termine de forçar a junta antiga"
+    - "neutralizar ou estabilizar o segundo barril armado em Sarbreen"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "monitorar se Kethra consegue usar o ponto morto de Narwhal sem expor a si mesma"
@@ -982,7 +991,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está oculto na entrada de uma câmara baixa de serviço de Sarbreen, por volta de 10:44 de 4 Eleasis de 1372 DR. Passos sem Pegadas e Visão no Escuro estão ativos. Ele está a cerca de 30 pés de dois vultos: um vigia leve perto de uma saída lateral e o homem de manga cinza com dois anéis trabalhando com barra curta de ferro numa junta/trava antiga marcada por runas geométricas. O segundo barril está deitado a menos de dois passos da parede, preparado com pano encerado, cerâmica, cordão e pó escuro para explodir contra a estrutura, mas ainda não foi aceso. O homem de manga cinza disse que a guarda ouvir era parte do plano. Ren está com 38/38 PV, CA 17, Ki 1/5, 21 PO e 9 shuriken."
+  cena_atual: "Ren abriu combate de surpresa em uma câmara baixa de serviço de Sarbreen, por volta de 10:44 de 4 Eleasis de 1372 DR. Passos sem Pegadas e Visão no Escuro estão ativos. Ren gastou o último ki em Rajada de Golpes e está com Ki 0/5. O vulto leve caiu junto à saída lateral, sem alarme útil. O homem de manga cinza com dois anéis está ferido, consciente e corpo a corpo com Ren, perto da barra curta, da junta/trava antiga e do segundo barril armado. O barril continua inteiro, ligado a pano encerado, cerâmica, cordão e pó escuro, ainda não aceso. Ren ainda age antes que o homem de manga cinza consiga agir de verdade."
   risco_imediato: "alto"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"

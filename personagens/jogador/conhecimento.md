@@ -2456,3 +2456,14 @@ Progressão:
 * Ren ouviu o homem de manga cinza dizer: "Mais uma. Só mais uma. Depois você leva a luz para trás e corre."; o outro respondeu que a guarda ouviu; o homem de manga cinza respondeu: "Era para ouvir. Trabalha.";
 * Ren está oculto a cerca de 30 pés dos dois vultos;
 * hora aproximada: 10:44 de 4 Eleasis, 1372 DR.
+* Ren aproximou-se sob Passos sem Pegadas e abriu combate de surpresa contra os dois;
+* rolagem: aproximação final sob Passos sem Pegadas, d20 1 + 17 = 18 contra CD 15, sucesso;
+* rolagem: iniciativa Ren 15, homem de manga cinza 15, vulto leve 5; Ren age antes do homem de manga cinza por maior Destreza;
+* Ren gastou seu último ki em **Rajada de Golpes**; ki atual 0/5;
+* Ren acertou dois golpes desarmados no homem de manga cinza, causando 13 de dano contundente total;
+* Ren acertou dois golpes desarmados no vulto leve, causando 17 de dano contundente total;
+* o vulto leve caiu junto à saída lateral, sem alarme útil;
+* o homem de manga cinza está ferido, consciente e corpo a corpo com Ren;
+* o segundo barril continua inteiro, armado e ainda não aceso;
+* Ren ainda age antes que o homem de manga cinza consiga agir de verdade;
+* Ren está com 38/38 PV, CA 17, 0/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
