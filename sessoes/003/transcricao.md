@@ -170,4 +170,54 @@ Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada:
 
 O que Ren responde a Jack?
 
+**Jogador**
 
+"Vamos fazer uma pequena apresentação amanhã. Ser relembrado. Depois disso, a próxima pode ser uma particular pra quem der mais. O que acha?"
+
+Ren fala, enquanto brinca com muita destreza com uma moeda da mesa de Jack em sua mão, como se fossem truques de prestidigitação.
+
+**Narrador**
+
+Teste de Prestidigitação: d20 14 + 4 = 18 contra CD 12. Sucesso.
+
+A moeda passa entre os dedos de Ren sem parecer truque barato. Ela some atrás do polegar, reaparece sobre o dorso da mão, gira uma vez na junta do indicador e cai de volta na mesa no mesmo lugar de onde saiu, limpa, sem tilintar alto.
+
+Jack olha para a moeda. Depois olha para Ren.
+
+"Isso", ele diz, "eu vendo."
+
+Ele risca a tábua com giz.
+
+"Amanhã ao cair da tarde: aparição curta de Kage na lona principal. Pouca fala, muito ar, nenhum agradecimento longo. O público precisa lembrar que viu uma coisa que pode sumir se não pagar para ver de novo."
+
+Outra marca.
+
+"Depois disso, particular para quem der mais, mas não leilão aberto de peixeira. Eu faço parecer que há fila sem admitir que há fome. Camarote oeste respondeu direito, entra na primeira conversa. Se outro nobre mandar proposta melhor com nome limpo, eu ponho os dois para se cheirarem sem encostar. Você não aperta mão de ninguém. Eu aperto. Você aparece quando estiver caro."
+
+Jack empurra a moeda de volta para Ren com a unha.
+
+"Uma apresentação fixa por dezena, talvez. Não mais que isso no começo. Kage raro vale mais que Kage cansado. Se a cidade gritar, eu digo que meu artista não está disponível para correr atrás de cada sino. Ensaiando, meditando, cuidando do corpo, escolha a palavra estrangeira que parecer cara."
+
+Ele está prestes a escrever essa última linha quando alguém bate duas vezes na lateral da carroça.
+
+Não é batida de artista pedindo dinheiro. É batida curta, seca, de recado que já passou por uma mão nervosa.
+
+Silva abre a porta antes de Jack mandar. Do lado de fora está Tobb Marlin, o carreiro, com o chapéu enfiado torto e um olhar que não combina com fofoca comum.
+
+"Tem guarda na borda", Tobb diz. "Não entrou. Disse que é recado de Luath. Para Jack, Silva... e para o homem que falou com ele de Bram Vask, se esse homem ainda estiver respirando por aqui."
+
+Jack não olha para Ren de imediato. Olha para Silva. Silva olha para Ren.
+
+Tobb engole seco e continua, tentando repetir direito:
+
+"Perto do mercado de peixe fecharam duas passagens. Barris mal marcados. Quatro encontrados. Dizem que eram seis. Um rachou. Tinha pó cinza, cheiro de ovo ruim e cera vermelha no aro. Luath mandou dizer: se o homem do caderno entende de fios que se juntam, que venha sem plateia. E sem roupa de palco."
+
+A carroça fica pequena demais por um instante.
+
+Jack pousa a pena.
+
+"Calendário resolvido", ele diz baixo. "Agora a cidade gritou."
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:03 de 4 Eleasis, 1372 DR**. Jack aceitou o calendário inicial: Kage fará uma aparição curta na lona principal em 5 Eleasis ao cair da tarde; depois disso, uma apresentação particular pode ser negociada com quem cumprir filtros e pagar mais. Antes que Jack concluísse o registro, chegou recado de Luath: perto do mercado de peixe, a guarda encontrou quatro barris mal marcados com pó cinza, cheiro acre e cera vermelha; acredita-se que havia seis. Luath quer falar com o homem que tratou de Bram Vask, sem plateia e sem roupa de palco.
+
+O que Ren faz?

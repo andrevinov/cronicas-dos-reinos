@@ -2382,3 +2382,16 @@ Progressão:
 * Ren alcançou nível 5 por marco narrativo após resgatar Colm/Dent, desmantelar parcialmente a Casa Velha do Primeiro Raio, salvar sete crianças e abrir pistas concretas sobre a rota baixa, Narwhal, Brass e a máscara;
 * Ren está com 38/38 PV, CA 17, 5/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
 * hora aproximada: 09:15 de 4 Eleasis, 1372 DR.
+
+### Sessão 003: retorno ao circo e recado de Luath
+
+* Ren voltou ao Jack Mooney & Sons Circus para ver Nera e Tavin e conversar com Jack sobre o calendário público de Kage;
+* no caminho, ouviu rumor solto de que uma passagem "perto do peixe" foi fechada por barris mal marcados;
+* Nera e Tavin continuam vivos e integrados à rotina do circo sob proteção de Silva;
+* Jack aceitou um calendário inicial para Kage: pequena aparição na lona principal em 5 Eleasis ao cair da tarde, e apresentações particulares posteriores apenas para contratantes filtrados e pagando mais;
+* rolagem: truque de moeda com Prestidigitação diante de Jack, d20 14 + 4 = 18 contra CD 12, sucesso;
+* Tobb Marlin trouxe recado de Luath: perto do mercado de peixe, a guarda fechou duas passagens e encontrou quatro barris mal marcados com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro;
+* o recado diz que havia seis barris, não quatro;
+* Luath quer falar com o homem que tratou de Bram Vask, sem plateia e sem roupa de palco;
+* Ren está no circo, na carroça-escritório de Jack, com 38/38 PV, CA 17, 5/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
+* hora aproximada: 10:03 de 4 Eleasis, 1372 DR.
