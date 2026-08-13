@@ -663,3 +663,24 @@ Interpretação reservada:
 * a informação sobre Kage/Silver Lily é rumor operacional, não confirmação de identidade de Ren;
 * Pell espera pagamento melhor e pode virar risco se concluir que a informação dele não será paga;
 * o ponto morto de Kethra foi montado com sucesso operacional, mas a falha na montagem deixou sinais discretos de manipulação no vaso; isso não gera alarme imediato em Narwhal Manor, mas torna o ponto mais vulnerável se alguém de serviço mexer nos vasos ou se a casa já estiver procurando sinais.
+
+---
+
+## Pagamento a Pell e nova conversa com as crianças
+
+Deixar duas moedas e novo pedido no ponto de Pell sem chamar atenção: d20 2 + 4 = 6 contra CD 13. Falha.
+
+Conduzir perguntas às crianças sem pressionar demais: d20 19 + 5 = 24 contra CD 12. Sucesso.
+
+Crianças organizarem lembranças úteis após descanso e cuidado: d20 3 + 2 = 5 contra CD 13. Falha.
+
+Peta lembrar detalhe novo depois do choque: d20 17 + 1 = 18 contra CD 12. Sucesso.
+
+Interpretação reservada:
+
+* Ren deixou o pagamento e o pedido para Pell, mas uma funcionária da Silver Lily viu parcialmente a manipulação do vaso; ela não leu o bilhete, mas o ponto está menos seguro;
+* o pedido por Brass é claro e valioso: Pell pode tentar obter rotina, lugar de sono ou momento isolado, mas isso o expõe mais que escutar rumores;
+* Ren conduziu bem a conversa com as crianças, evitando transformar o resgate em novo dano;
+* o grupo continua desorganizado e traumatizado, então não consegue entregar cadeia coerente nova;
+* Peta, por ter sido o alvo final e ter descansado sob cuidado de Maerra, recuperou detalhe útil: a pessoa de vermelho é instrumento, não mandante; o homem de manga cinza e dois anéis falava por trás; "papel para o peixe" e "máscara não era para o sol" conectam a pista infantil ao bilhete de Pell sem provar identidade final;
+* o lugar frio sob rodas e com água na parede aponta para porão, drenagem, armazém baixo ou rota de serviço sob área de carroças, não para uma porta única ainda.

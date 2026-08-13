@@ -1,10 +1,11 @@
 # Sessão 002
 
-Data real: 2026-08-06
-Data no mundo: início em 1 Eleasis, 1372 DR; data atual 3 Eleasis, 1372 DR, Ano da Magia Selvagem
+Data real: 2026-08-06 a 2026-08-12
+Data no mundo: início em 1 Eleasis, 1372 DR; encerramento em 4 Eleasis, 1372 DR, Ano da Magia Selvagem
 Personagem: Ren Kagehira
 Local inicial: Jack Mooney & Sons Circus, campos do circo, Ravens Bluff
 Modo inicial de cena: interação
+Status: encerrada
 
 Estado inicial:
 
@@ -4757,3 +4758,113 @@ O recado não prova quem perguntou. Não prova que a resposta de Pell convenceu.
 Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 23 PO, 9 shuriken**. Hora aproximada: **08:45 de 4 Eleasis, 1372 DR**. O ponto morto de Kethra está montado nos fundos de Narwhal Manor, com mensagem entregue, mas com sinais discretos de manipulação no vaso. No ponto morto de Pell, Ren encontrou novo bilhete: Rusk não voltou ao circuito da Red Sail; Brass está usando outro mensageiro; alguém perguntou se Kage era o mesmo oriental da Silver Lily; e um papel fino seguiu para Narwhal com a palavra "máscara" associada.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren deixa duas moedas de ouro no vaso. "Pelas duas informações. Preciso pegar latão. Preciso de dia e hora onde Latão vai estar só. Ou lugar onde dorme. Pagamento bom por isso."
+
+Sai de lá em direção a Maerra. Quer conversar com as crianças novamente. Quer saber o que elas sabem.
+
+**Narrador**
+
+Duas moedas de ouro mudam o peso de um vaso pobre.
+
+Deixar duas moedas e novo pedido no ponto de Pell sem chamar atenção: d20 2 + 4 = 6 contra CD 13. Falha.
+
+Ren consegue deixar o pagamento e o papel. Mas o ouro toca cerâmica com um som pequeno demais para a rua e alto demais para uma escada dos fundos. Uma porta interna abre um dedo. Por trás dela, uma moça de avental, provavelmente da cozinha, vê Ren perto do vaso por tempo suficiente para entender que havia algo ali. Não lê o bilhete. Não vê o rosto inteiro. Fecha a porta devagar, como quem acabou de decidir que aquilo não vale uma pergunta em voz alta.
+
+Ainda assim, o ponto de Pell fica menos limpo. Duas moedas de ouro são informação mesmo antes de virarem pagamento.
+
+O caminho até a Casa da Aurora Menor não pede teste. Ren não está em fuga, não carrega criança, não há cauda competente colada nele. Ravens Bluff engole o trajeto como engole quase tudo: carroças, fiéis, mendigos, acólitos com cestos, vendedores com peixe salgado, gente apressada demais para lembrar de todo rosto.
+
+Quando Ren chega, a casa de Maerra está acordada de um jeito cansado. Há cheiro de mingau fino, erva fervida e pano lavado às pressas. Duas mulheres que não estavam ali na noite anterior ajudam sem fazer perguntas demais; uma delas usa no pescoço um pequeno símbolo de Chauntea, simples e gasto. A ajuda prometida por Silva chegou e já virou mãos trabalhando.
+
+Maerra vê Ren na entrada lateral antes que ele precise pedir muito.
+
+"Elas dormiram pouco", ela diz. "Você também. Então vamos ser claros: pergunta curta, uma criança por vez, e se eu disser que acabou, acabou."
+
+Conduzir perguntas às crianças sem pressionar demais: d20 19 + 5 = 24 contra CD 12. Sucesso.
+
+Ren acerta o tom. Não transforma aquilo em interrogatório. Fica baixo, deixa Maerra perto, aceita pausas, não insiste quando uma lembrança começa a virar soluço. Isso ajuda.
+
+Criancas organizarem lembrancas úteis após descanso e cuidado: d20 3 + 2 = 5 contra CD 13. Falha.
+
+O conjunto, porém, continua quebrado. Miri lembra portas e nomes, mas perde a ordem. Doss insiste que Narro mandava em tudo, depois admite que Narro calava quando "Vermelho" aparecia. Cal quer ser útil e quase inventa coragem onde só havia medo. Nib olha para o chão e só confirma com a cabeça. As duas crianças da cozinha repetem o que Ren já tinha ouvido: sopa, recado, vigia, quem via demais não saía quando queria.
+
+Nenhuma delas consegue desenhar uma cadeia inteira. O que existe é um punhado de partes: Toll na cozinha, Vessa vindo da cortina, Narro abaixo, a porta de ferro, o cheiro de cera e tintura, o sol apagado, a pessoa de vermelho que não falava.
+
+Peta fica por último.
+
+Peta lembrar detalhe novo depois do choque: d20 17 + 1 = 18 contra CD 12. Sucesso.
+
+Ela está enrolada em manta clara, com os dedos fechados no tecido como se alguém pudesse tomar a borda dela. A voz sai pequena, mas menos perdida do que de madrugada.
+
+"Não era ela", Peta diz.
+
+Maerra não se mexe. Só mantém a mão perto do ombro da criança, sem prender.
+
+"A vermelha não mandava. A vermelha fazia." Peta engole seco. "Tinha a mão cinza. Dois anéis. Ele falava por trás. Falou... falou que papel ia para o peixe. E que a máscara não era para o sol."
+
+A palavra fica no quarto mais tempo do que deveria.
+
+Máscara.
+
+Peta fecha os olhos, tentando agarrar mais uma coisa.
+
+"Eu estava embaixo. Frio. Não era a casa da sopa. O chão em cima fazia roda. Tipo carroça. Tinha água na parede. Ele disse para eu ficar embaixo até parar de tremer. Depois a vermelha veio."
+
+Depois disso, a criança começa a tremer de novo, e Maerra encerra a conversa sem pedir licença.
+
+"Chega."
+
+Ela cobre melhor Peta e olha para Ren.
+
+"Isso é o que ela tem hoje. Mais do que isso, você vai quebrar a menina antes de achar a porta."
+
+O que Ren tem agora é pequeno, mas encaixa com outras peças: o homem de manga cinza e dois anéis; a palavra "máscara"; papel indo para o "peixe"; e um lugar frio, abaixo de uma área onde rodas passam por cima, com água nas paredes. Pode ser porão sob oficina, passagem de serviço, drenagem velha, armazém baixo ou algo encostado nas rotas de carroça. Não basta para apontar uma porta única.
+
+Situação: **Ren 31/31 PV, CA 17, Ki 4/4, 21 PO, 9 shuriken**. Hora aproximada: **09:15 de 4 Eleasis, 1372 DR**. Ren deixou 2 PO e um pedido para Pell descobrir dia/hora ou lugar onde Brass fique sozinho, mas o depósito foi visto de forma parcial por uma funcionária da Silver Lily. Na Casa da Aurora Menor, as crianças confirmaram fragmentos já conhecidos, e Peta acrescentou uma pista nova: "papel para o peixe", "máscara", homem de manga cinza com dois anéis e um lugar frio embaixo de onde passam rodas.
+
+O que Ren faz?
+
+**Jogador**
+
+[Ok, então pode aplicar o nível 5. Eu escolho algum poder? O que é CD de ki?]
+
+**Narrador**
+
+[Progressão aplicada.
+
+Ren sobe para o **nível 5 de monge** por marco narrativo. Neste nível, pela progressão base do monge no Livro do Jogador de D&D 5e, você **não escolhe poder, talento, atributo ou magia**. As novidades são fixas:
+
+* PV máximos 31 -> 38;
+* bônus de proficiência +2 -> +3;
+* Ki 4 -> 5;
+* CD de ki 13 -> 14;
+* Artes Marciais 1d4 -> 1d6;
+* Ataque Extra;
+* Ataque Atordoante.
+
+CD de ki é a dificuldade que um inimigo precisa vencer quando uma técnica de monge exige salvaguarda. Para Ren: `8 + proficiência + Sabedoria = 8 + 3 + 3 = 14`. Exemplo: se Ren acerta um ataque corpo a corpo e gasta 1 ki em Ataque Atordoante, o alvo faz salvaguarda de Constituição contra CD 14 ou fica atordoado até o fim do próximo turno de Ren.
+
+Situação mecânica atual: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**.]
+
+---
+
+## Encerramento da Sessão 002
+
+Sessão 002 encerrada aqui, sem avanço adicional de tempo no mundo.
+
+Ponto de retomada da sessão 003: **Casa da Aurora Menor, Temple District, Ravens Bluff, 09:15 de 4 Eleasis de 1372 DR**.
+
+Estado de Ren na pausa: **38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken, nível 5**.
+
+Fios imediatos em aberto:
+
+* pista de Peta: homem de manga cinza com dois anéis, "papel para o peixe", "máscara" e lugar frio sob rodas, com água nas paredes;
+* resposta futura de Pell sobre onde ou quando Dain "Brass" Mord fica sozinho;
+* segurança incerta de Colm/Dent após a saída comprometida com Dorra Hest;
+* ponto morto de Kethra montado em Narwhal Manor, mas com sinais discretos de manipulação;
+* reação possível de Bram Vask à pressão da guarda e ao recado ameaçador;
+* desdobramentos de Tyr sobre Velis Rook, Halessa, Sirrus e a ficha curta enviada por Maerra;
+* proteção dos Vell no circo, sob Silva, com resguardo de Tyr em espera.

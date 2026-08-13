@@ -1,0 +1,131 @@
+sessao: 2
+status: "encerrada"
+
+periodo:
+  inicio:
+    data: "1 Eleasis, 1372 DR"
+    hora_aproximada: "12:58"
+    local: "Jack Mooney & Sons Circus"
+  fim:
+    data: "4 Eleasis, 1372 DR"
+    hora_aproximada: "09:15"
+    local: "Casa da Aurora Menor, Temple District"
+
+personagem:
+  nome: "Ren Kagehira"
+  nivel_inicial: 4
+  nivel_final: 5
+  pontos_de_vida:
+    iniciais: "31/31"
+    finais: "38/38"
+  ki:
+    inicial: "2/4"
+    final: "5/5"
+  classe_de_armadura: 17
+  dinheiro:
+    inicial_po: 31
+    final_po: 21
+  shuriken:
+    inicial: 9
+    final: 9
+
+progressao:
+  metodo: "marcos narrativos"
+  marco: "Casa Velha do Primeiro Raio parcialmente desmantelada e sete crianças resgatadas"
+  nivel_aplicado: 5
+  arquivo: "sessoes/002/experiencia.md"
+
+mudancas_mecanicas:
+  - "bônus de proficiência +2 -> +3"
+  - "PV máximos 31 -> 38"
+  - "dados de vida 4d8 -> 5d8"
+  - "ki máximo 4 -> 5"
+  - "CD de ki 13 -> 14"
+  - "Artes Marciais 1d4 -> 1d6"
+  - "ataques proficientes com Destreza +6 -> +7"
+  - "Furtividade e Acrobacia +6 -> +7"
+  - "Percepção e Intuição +5 -> +6"
+  - "Investigação +3 -> +4"
+  - "Aparar Projéteis 1d10 + 8 -> 1d10 + 9"
+  - "Queda Lenta 20 -> 25"
+  - "característica Ataque Extra adquirida"
+  - "característica Ataque Atordoante adquirida"
+
+recursos_consumidos:
+  dinheiro:
+    - valor_po: 7
+      destino: "Dorra Hest"
+      motivo: "levar Colm/Dent aos fornos de cal do Fire River"
+    - valor_po: 1
+      destino: "trabalhador dos pátios"
+      motivo: "informação sobre a saída das carroças de cal"
+    - valor_po: 2
+      destino: "Pell"
+      motivo: "pagamento por informações e pedido sobre Dain 'Brass' Mord"
+  itens:
+    - item: "Broche do Semblante Humilde"
+      estado: "usado na madrugada de 4 Eleasis; gasto até o próximo amanhecer; continua emprestado por Maerra"
+    - item: "manto roto de mendigo"
+      estado: "entregue a Colm/Dent como disfarce"
+
+itens_obtidos_ou_mantidos:
+  - "caderno de contas de Bram Vask"
+  - "pedaço rasgado de pano vermelho encerado"
+  - "Broche do Semblante Humilde, empréstimo provisório de Maerra"
+
+estado_de_npcs_relevantes:
+  nera_vell:
+    status: "protegida no circo por Silva Elkwood"
+    observacao: "usa Lena como nome de cobertura; vínculo romântico com Ren é explícito, mas sem promessa de futuro"
+  tavin_vell:
+    status: "protegido no circo por Silva Elkwood"
+    observacao: "usa Timo como nome de cobertura"
+  silva_elkwood:
+    status: "guardiã imediata confirmada dos Vell perante Tyr"
+    observacao: "pediu manutenção temporária no circo e resguardo em espera sem deslocamento"
+  jack_mooney:
+    status: "patrono condicional ativo de Ren Kage"
+    observacao: "selou resposta rígida ao camarote oeste; mantém Kage ligado ao circo"
+  maerra_thandrel:
+    status: "ativa na Casa da Aurora Menor"
+    observacao: "protege as sete crianças resgatadas; enviou ficha curta a Halessa sobre possível instrução prévia a Velis"
+  luath:
+    status: "contato operacional cauteloso"
+    observacao: "pressionou Bram via Night Watch, mas não aceitou o caderno como prova formal limpa"
+  kethra_dunn:
+    status: "fonte potencial em Narwhal"
+    observacao: "ponto morto montado nos fundos de Narwhal Manor, mas com sinais discretos de manipulação"
+  colm_dunn:
+    status: "provavelmente saiu com Dorra Hest sob o nome Dent; segurança não confirmada"
+    observacao: "alguém perguntou por um doente vindo do lavadouro antes da partida"
+  bram_vask:
+    status: "vivo, pressionado e hostil"
+    observacao: "recebeu visita da guarda e recado ameaçador; fechou a loja e começou a se mover nos fundos"
+  pell:
+    status: "ativo como informante pago"
+    observacao: "ponto morto da Silver Lily foi parcialmente observado por uma funcionária"
+  peta:
+    status: "viva sob cuidado de Maerra"
+    observacao: "lembrou pistas sobre homem de manga cinza, dois anéis, peixe, máscara e lugar frio sob rodas"
+
+localizacao_final:
+  cidade: "Ravens Bluff"
+  distrito: "Temple District"
+  ponto: "Casa da Aurora Menor"
+  cena: "Ren está perto da saleta de Maerra após ouvir a lembrança de Peta e aplicar o nível 5."
+
+arquivos_atualizados:
+  - "campanha.yaml"
+  - "estado/estado-atual.yaml"
+  - "estado/tempo.yaml"
+  - "estado/relacoes.yaml"
+  - "personagens/jogador/ficha.yaml"
+  - "personagens/jogador/resumo-de-poderes.md"
+  - "personagens/jogador/conceito.md"
+  - "personagens/jogador/conhecimento.md"
+  - "ferramentas/rolar-dados.py"
+  - "sessoes/002/transcricao.md"
+  - "sessoes/002/experiencia.md"
+  - "sessoes/002/resumo.md"
+  - "sessoes/002/alteracoes-de-estado.yaml"
+  - "sessoes/002/consequencias.md"

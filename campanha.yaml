@@ -1,6 +1,6 @@
 campanha:
   nome: "Crônicas dos Reinos"
-  status: "sessao_002_em_andamento"
+  status: "entre_sessoes"
   idioma: "pt-BR"
   codificacao: "UTF-8"
 
@@ -139,5 +139,5 @@ regras:
 
 preparacao:
   prioridades_atuais:
-    - "jogar primeira cena"
-    - "consolidar sessao ao pausar ou encerrar"
+    - "discutir pontos de lore e narração após o encerramento da sessão 002"
+    - "preparar abertura da sessão 003 a partir de 09:15 de 4 Eleasis, 1372 DR"

@@ -2,24 +2,24 @@
 
 Este arquivo existe para consulta rápida durante a narração.
 
-Ren é um monge do **Caminho da Sombra**, nível 4. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
+Ren é um monge do **Caminho da Sombra**, nível 5. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
 
 ---
 
 ## Números rápidos
 
 * CA: 17, sem armadura;
-* PV: 31;
+* PV: 38;
 * deslocamento: 50 pés;
-* bônus de proficiência: +2;
+* bônus de proficiência: +3;
 * iniciativa: +4;
-* Furtividade: +6;
-* Acrobacia: +6;
-* Percepção: +5;
-* Intuição: +5;
-* Investigação: +3;
-* CD de ki: 13;
-* pontos de ki: 4 por descanso curto ou longo.
+* Furtividade: +7;
+* Acrobacia: +7;
+* Percepção: +6;
+* Intuição: +6;
+* Investigação: +4;
+* CD de ki: 14;
+* pontos de ki: 5 por descanso curto ou longo.
 
 ---
 
@@ -42,7 +42,7 @@ Ren é bom em:
 
 ### Golpe desarmado
 
-Ataque corpo a corpo com +6 para acertar e dano `1d4 + 4`.
+Ataque corpo a corpo com +7 para acertar e dano `1d6 + 4`.
 
 Serve para socos, chutes, joelhadas, cotoveladas, rasteiras e golpes rápidos.
 
@@ -50,13 +50,13 @@ Serve para socos, chutes, joelhadas, cotoveladas, rasteiras e golpes rápidos.
 
 Funciona mecanicamente como espada curta.
 
-Ataque com +6 para acertar e dano `1d6 + 4`.
+Ataque com +7 para acertar e dano `1d6 + 4`.
 
 ### Shuriken
 
 Funcionam mecanicamente como dardos.
 
-Ataque com +6 para acertar e dano `1d4 + 4`, alcance 20/60 pés.
+Ataque com +7 para acertar e dano `1d4 + 4`, alcance 20/60 pés.
 
 ---
 
@@ -66,13 +66,21 @@ Quando Ren usa a ação Atacar com golpe desarmado ou arma de monge, ele pode fa
 
 Em cena, isso significa que ele pode combinar lâmina curta, cotovelo, chute, joelhada e deslocamento em uma sequência fluida.
 
+## Ataque Extra
+
+Quando Ren usa a ação Atacar no próprio turno, ele faz dois ataques em vez de um.
+
+Com Artes Marciais, isso pode virar dois ataques na ação e um golpe desarmado como ação bônus. Com Rajada de Golpes, pode virar dois ataques na ação e dois golpes desarmados como ação bônus, gastando 1 ki.
+
 ---
 
 ## Ki
 
-Ren tem 4 pontos de ki.
+Ren tem 5 pontos de ki.
 
 Eles voltam em descanso curto ou longo.
+
+A CD de ki é a dificuldade que inimigos precisam superar contra algumas técnicas de Ren. Ela é calculada como `8 + bônus de proficiência + Sabedoria`; para Ren no nível 5, isso dá `8 + 3 + 3 = 14`.
 
 ### Rajada de Golpes
 
@@ -97,6 +105,14 @@ Custa 1 ki.
 Ren usa Desengajar ou Disparada como ação bônus, e seus saltos ficam melhores nesse turno.
 
 Bom para atravessar becos, subir em algo, escapar de ameaça ou perseguir alguém.
+
+### Ataque Atordoante
+
+Custa 1 ki quando Ren acerta um ataque corpo a corpo.
+
+O alvo faz uma salvaguarda de Constituição contra CD de ki 14. Se falhar, fica atordoado até o fim do próximo turno de Ren.
+
+Bom para interromper um alvo perigoso, abrir fuga, impedir alarme ou virar uma luta curta.
 
 ---
 
@@ -152,7 +168,7 @@ Uso típico: impedir alarme, neutralizar conjurador, cobrir arrombamento, atrave
 
 Ren pode usar sua reação para reduzir dano de uma flecha, dardo, virote ou outro ataque à distância com arma.
 
-Redução: `1d10 + 8`.
+Redução: `1d10 + 9`.
 
 Se reduzir o dano a zero, pode gastar 1 ki para arremessar o projétil de volta.
 
@@ -160,7 +176,7 @@ Se reduzir o dano a zero, pode gastar 1 ki para arremessar o projétil de volta.
 
 ## Queda Lenta
 
-Ren pode usar sua reação quando cai para reduzir o dano de queda em 20.
+Ren pode usar sua reação quando cai para reduzir o dano de queda em 25.
 
 Uso típico: telhados, mastros, carroças, muralhas baixas, saltos ruins e fugas urbanas em terreno vertical.
 
@@ -190,7 +206,7 @@ Limites importantes:
 * dano moderado, não explosivo;
 * depende de posicionamento;
 * escuridão mágica pode atrapalhar aliados;
-* não possui teleporte no nível 4;
+* ainda não possui teleporte; Passo Sombrio só vem no nível 6;
 * não é invisível o tempo todo;
 * magia de sombra é forte, mas custa recursos.
 

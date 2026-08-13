@@ -219,6 +219,7 @@ Estado atual:
 * primeira sondagem externa feita por Ren sem alarme; provável entrada de serviço e sinais de uso recente identificados, mas interior ainda desconhecido.
 * observação prolongada confirmou padrão externo sem alertar a Casa Velha; adulto de avental manchado saiu rumo aos armazéns com embrulho fino e comprido por volta de 11:18.
 * incursão noturna concluída no nível imediato: Ren entregou seis crianças a Maerra, recebeu o Broche do Semblante Humilde como empréstimo provisório, seguiu a pista da rua dos tintureiros e resgatou Peta viva. Sete crianças estão sob cuidado da Casa da Aurora Menor. A Casa Velha perdeu Toll, Vessa, o rapaz magro, outro adulto e Narro por incapacidade temporária, mas a rota baixa/oficina ainda aponta para uma estrutura maior não identificada.
+* Na manhã de 4 Eleasis, Ren voltou à Casa da Aurora Menor e conversou com as crianças sob limite de Maerra. O grupo não conseguiu organizar nova cadeia coerente, mas Peta lembrou pista útil: homem de manga cinza e dois anéis, papel para o peixe, máscara não era para o sol e lugar frio sob rodas com água na parede. Sem avanço do relógio.
 
 ---
 
