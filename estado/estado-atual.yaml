@@ -1,7 +1,7 @@
 campanha:
-  status: "entre_sessoes"
-  sessao_atual: 2
-  modo_de_cena_atual: "pausa_entre_sessoes"
+  status: "em_sessao"
+  sessao_atual: 3
+  modo_de_cena_atual: "interacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Temple District"
-  ponto_exato: "Casa da Aurora Menor, perto da saleta de Maerra"
+  area: "campos do Jack Mooney & Sons Circus"
+  ponto_exato: "carroça-escritório de Jack Mooney"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -94,7 +94,17 @@ localizacao:
     fazia; que um homem de manga cinza e dois anéis falava por trás; que ele
     mencionou papel indo para o peixe e disse que a máscara não era para o sol;
     e que Peta ficou em um lugar frio, embaixo de onde rodas passavam por cima,
-    com água na parede.
+    com água na parede. No início da sessão 003, Ren decidiu retornar ao Jack
+    Mooney & Sons Circus para ver os Vell e falar com Jack sobre o calendário de
+    apresentações de Kage. O deslocamento desde a Casa da Aurora Menor não
+    exigiu rolagem e não trouxe cauda competente percebida. No caminho, Ren
+    ouviu rumor solto sobre passagem fechada "perto do peixe" por barris mal
+    marcados. Ao chegar ao circo, encontrou Nera e Tavin vivos e integrados à
+    rotina sob Silva. Ren está agora na carroça-escritório de Jack, ouvindo a
+    proposta inicial de calendário: não vender Kage em 4 Eleasis, considerar
+    reprise curta em 5 Eleasis ao cair da tarde e só aceitar apresentação fechada
+    em tenda controlada pelo circo se o camarote oeste cumprir os filtros já
+    exigidos.
 
 tempo:
   ano_dr: 1372
@@ -107,10 +117,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "manhã de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "09:15 de 4 Eleasis"
+  hora_aproximada: "09:55 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'. Ren pagou 2 PO a Pell por ponto morto, com observação parcial de funcionária da Silver Lily. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas."
+  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'. Ren pagou 2 PO a Pell por ponto morto, com observação parcial de funcionária da Silver Lily. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados."
 
 recursos:
   pontos_de_vida:
@@ -911,9 +921,9 @@ conhecimento_atual:
     - "Uma pessoa discreta pode se esconder bem em Ravens Bluff, se tiver dinheiro ou patrono."
 
 estado_narrativo:
-  situacao_inicial: "Ren está recém-chegado a Ravens Bluff e procura o primeiro fio local que possa levá-lo a Masao."
-  primeira_cena_sugerida: "Ren observa o Cais de Chegada no fim da tarde, perto do pátio de carga e dos fiscais, enquanto ouve que a Night Watch aceitará auxiliares para a noite."
-  cena_atual: "Ren está na Casa da Aurora Menor, perto da saleta de Maerra, por volta de 09:15 de 4 Eleasis de 1372 DR. Depois de pagar Pell e deixar pedido sobre Dain 'Brass' Mord, foi parcialmente visto por uma funcionária da Silver Lily junto ao ponto morto, sem que ela lesse o bilhete. Na Casa da Aurora Menor, as crianças confirmaram fragmentos da Casa Velha do Primeiro Raio; Peta acrescentou que a pessoa de vermelho não mandava, apenas fazia, e lembrou de um homem de manga cinza com dois anéis falando sobre papel para o peixe, máscara e um lugar frio sob rodas, com água nas paredes. Ren acaba de alcançar nível 5 por marco narrativo e está com 38/38 PV, CA 17, Ki 5/5, 21 PO e 9 shuriken."
+  situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
+  primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
+  cena_atual: "Ren está na carroça-escritório de Jack Mooney, no Jack Mooney & Sons Circus, por volta de 09:55 de 4 Eleasis de 1372 DR. Depois de ouvir a pista de Peta na Casa da Aurora Menor, retornou ao circo para ver os Vell e falar com Jack sobre o calendário de apresentações de Kage. Nera e Tavin estão vivos e integrados à rotina do circo sob Silva. Jack propõe não vender Kage em 4 Eleasis, considerar reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde e aceitar apresentação fechada apenas em tenda controlada pelo circo se o camarote oeste cumprir os filtros exigidos. Ren está com 38/38 PV, CA 17, Ki 5/5, 21 PO e 9 shuriken."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"

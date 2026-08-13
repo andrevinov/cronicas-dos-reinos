@@ -1,6 +1,6 @@
 campanha:
   nome: "Crônicas dos Reinos"
-  status: "entre_sessoes"
+  status: "em_sessao"
   idioma: "pt-BR"
   codificacao: "UTF-8"
 
@@ -139,5 +139,5 @@ regras:
 
 preparacao:
   prioridades_atuais:
-    - "discutir pontos de lore e narração após o encerramento da sessão 002"
-    - "preparar abertura da sessão 003 a partir de 09:15 de 4 Eleasis, 1372 DR"
+    - "conduzir a sessão 003 a partir de 09:15 de 4 Eleasis, 1372 DR"
+    - "investigar a pista de Peta sobre peixe, máscara e lugar frio sob rodas"

@@ -582,7 +582,11 @@ relacoes:
       contra a instrução de esperar e o abraçou com preocupação explícita ao
       vê-lo vivo e exausto. Ren a abraçou, beijou discretamente e prometeu
       voltar. Nera aceitou deixar Ren dormir e, pela manhã, foi conferir o
-      canto dele no depósito de figurino velho, levando água e pão.
+      canto dele no depósito de figurino velho, levando água e pão. Depois de
+      Ren sair novamente para checar Colm/Dent, Luath, Pell e Maerra, ele
+      retornou ao circo por volta de 09:55 de 4 Eleasis. Nera viu Ren chegar
+      vivo e conteve o impulso de correr até ele, mantendo-se dentro da rotina
+      do circo.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -633,6 +637,7 @@ relacoes:
       - "Nera abraçou Ren perto da carroça verde antes que ele fosse dormir."
       - "Nera ouviu Ren prometer voltar e o deixou dormir."
       - "Nera foi conferir Ren no depósito de figurino velho ao amanhecer, com água e pão."
+      - "Nera viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis, depois da ida aos pátios, Luath, Silver Lily e Casa da Aurora Menor."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -679,7 +684,9 @@ relacoes:
       conseguir sustentar curiosidade sobre o medo de Ren.
       Na manhã seguinte, depois de Ren assinar o acordo de Kage, Tavin ouviu que
       Ren sairia por um tempo e fez uma saudação torta, dizendo para ele olhar
-      onde cai se for voar.
+      onde cai se for voar. Quando Ren retornou ao circo por volta de 09:55 de
+      4 Eleasis, Tavin o viu da rotina de água e fez uma nova saudação torta,
+      quase derrubando a jarra vazia.
     informacoes_compartilhadas_por_tavin:
       - "Ainda não interrogado diretamente."
     riscos:
@@ -700,6 +707,7 @@ relacoes:
       - "Tavin sabe que Ren saiu novamente, agora para procurar Tyr."
       - "Tavin usará Timo como nome de cobertura na rotina do circo."
       - "Tavin sabe que Ren saiu novamente do circo na manhã seguinte ao Benefício, depois de assinar papel como Kage."
+      - "Tavin viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis e continua tratando sua presença como promessa concreta de volta."
   velha_sella:
     nome: "Velha Sella"
     tipo: "contato cauteloso / moradora de Fishtown"
@@ -1119,7 +1127,10 @@ relacoes:
       crianças foram resgatadas e estão sob cuidado de Maerra. Silva percebeu
       o cansaço extremo de Ren e decidiu mandar ajuda discreta de Chauntea à
       Casa da Aurora Menor antes do amanhecer. Ren agradeceu Silva por ajudar
-      Nera e Maerra; Silva respondeu que ele deveria agradecer dormindo.
+      Nera e Maerra; Silva respondeu que ele deveria agradecer dormindo. Quando
+      Ren retornou ao circo por volta de 09:55 de 4 Eleasis, Silva confirmou
+      que a ajuda de Chauntea chegou a Maerra e direcionou Ren a Jack para a
+      conversa sobre Kage.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1167,6 +1178,7 @@ relacoes:
       - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer."
       - "Silva sabe que a ajuda discreta de Chauntea chegou a Maerra sem chamar atenção útil antes do amanhecer."
       - "Silva mandou Ren dormir depois da incursão e não quer que ele aja sem recuperar o centro."
+      - "Silva viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis sem cauda competente percebida e o encaminhou à conversa com Jack sobre o calendário de Kage."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1261,7 +1273,11 @@ relacoes:
       mensageira de Tyr pedindo Silva Elkwood por assunto de lacre reservado.
       Após a resposta de Silva a Tyr, Ren assinou como Ren Kage o acordo
       condicional de artista do circo, e Jack selou a resposta rígida ao
-      camarote oeste.
+      camarote oeste. Em 4 Eleasis, por volta de 09:55, Ren retornou ao circo
+      e procurou Jack para definir calendário de apresentações. Jack propôs não
+      vender Kage naquele dia, considerar uma reprise curta de O Vento da Noite
+      em 5 Eleasis ao cair da tarde, e só aceitar apresentação fechada em tenda
+      controlada pelo circo se o camarote oeste cumprir os filtros já exigidos.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1296,6 +1312,7 @@ relacoes:
       - "Jack preparou resposta rígida ao camarote oeste, com 40 PO pela primeira apresentação fechada curta, 20 PO adiantadas e custos de tenda, segurança e transporte por fora."
       - "Ren assinou como Ren Kage o acordo condicional de artista do Jack Mooney & Sons Circus."
       - "Jack selou a resposta rígida ao camarote oeste."
+      - "Jack propôs calendário inicial: Kage não se apresenta em 4 Eleasis; pode fazer reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde; apresentações fechadas só em tenda controlada pelo circo e após filtros formais do contratante."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."

@@ -26,6 +26,7 @@ Informações desta pasta só devem migrar para arquivos públicos quando Ren de
 narrador/
 ├── verdade-da-campanha.md
 ├── segredos/
+│   └── canone.md
 ├── sessoes/
 │   └── 001/
 │       ├── preparacao.md
@@ -40,3 +41,10 @@ narrador/
 ```
 
 Criar arquivos apenas quando houver conteúdo real para registrar.
+
+## Cânone de pressão
+
+O arquivo reservado `segredos/canone.md` registra acontecimentos externos e
+reações de mundo que podem avançar independentemente das ações imediatas de Ren.
+Ele deve ser consultado ao abrir um novo dia no mundo ou quando uma sessão
+atravessar várias horas relevantes.
