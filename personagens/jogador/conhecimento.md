@@ -2433,3 +2433,26 @@ Progressão:
 * Luath disse que, perto dali, entradas conhecidas passam por bocas de drenagem do cais e porões registrados de armazém, mas a entrada imediata é a passagem aberta pela explosão na balança velha;
 * Ren viu por um instante um traço angular antigo gravado na pedra sob o tablado, meio coberto por lodo, e ouviu som de metal contra pedra seguido por passos rápidos se afastando pela água rasa;
 * hora aproximada: 10:42 de 4 Eleasis, 1372 DR.
+* Ren decidiu descer pela abertura da balança velha enquanto Luath segura a superfície e verifica a contagem de barris;
+* Ren ativou **Passos sem Pegadas**, gastando 2 ki; ki atual 3/5; concentração possível até cerca de 11:42 de 4 Eleasis, se não for quebrada antes;
+* rolagem: Descer pelo tablado quebrado sem provocar desabamento ou queda ruim, d20 11 + 7 = 18 contra CD 13, sucesso;
+* rolagem: Furtividade sob Passos sem Pegadas na entrada de Sarbreen, d20 4 + 17 = 21 contra CD 17, sucesso;
+* Ren desceu sem cair, sem derrubar a borda do tablado e sem ser percebido por quem está abaixo;
+* na primeira câmara baixa sob o mercado, Ren encontrou blocos antigos de Sarbreen, marcas geométricas gravadas na pedra e restos de um barril detonado;
+* os restos encontrados não bastam para dois barris; há marca circular limpa no lodo e sulco pesado indicando que outro barril inteiro foi arrastado para uma galeria baixa;
+* Ren ouviu ao menos dois ritmos de movimento adiante: um leve e rápido, outro mais pesado e interrompido por arrasto, além de som de metal contra pedra, como ferramenta, cunha ou trava;
+* a galeria adiante está em escuridão total para visão humana; Ren ainda não ativou Visão no Escuro;
+* hora aproximada: 10:43 de 4 Eleasis, 1372 DR.
+* Ren ativou **Visão no Escuro**, gastando 2 ki; ki atual 1/5; duração aproximada até 18:43 de 4 Eleasis; não exige concentração;
+* **Passos sem Pegadas** continua ativo por concentração;
+* rolagem: Percepção na galeria escura de Sarbreen, d20 10 + 6 = 16 contra CD 14, sucesso;
+* rolagem: Manter perseguição furtiva sob Passos sem Pegadas, d20 1 + 17 = 18 contra CD 17, sucesso;
+* Ren percebeu um fio fino atravessado a meia canela, preso a lasca de madeira e caco de concha, e evitou acioná-lo;
+* Ren quase escorregou numa pedra solta, mas recuperou o equilíbrio e o efeito de Passos sem Pegadas abafou o erro;
+* Ren alcançou visual de uma câmara baixa de serviço ou manutenção antiga, com pilares grossos, água rasa e uma parede lateral com junta vertical marcada por runas geométricas;
+* Ren viu dois vultos: um leve, de capuz e mangas escuras, vigiando uma saída lateral; e o homem de manga cinza com dois anéis trabalhando na parede com barra curta de ferro;
+* o segundo barril está deitado perto da parede, com cera vermelha parcialmente removida e uma faixa de pano encerado ligada a conjunto de cerâmica, cordão e pó escuro numa tigela rasa de metal;
+* Ren conclui que o barril está posicionado para empurrar/explodir contra a parede certa, mas ainda não foi aceso;
+* Ren ouviu o homem de manga cinza dizer: "Mais uma. Só mais uma. Depois você leva a luz para trás e corre."; o outro respondeu que a guarda ouviu; o homem de manga cinza respondeu: "Era para ouvir. Trabalha.";
+* Ren está oculto a cerca de 30 pés dos dois vultos;
+* hora aproximada: 10:44 de 4 Eleasis, 1372 DR.

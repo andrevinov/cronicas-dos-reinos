@@ -469,3 +469,117 @@ Luath ouve também. O olhar dele vai de Ren para a abertura.
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:42 de 4 Eleasis, 1372 DR**. Luath confirmou que Ravens Bluff foi construída sobre as ruínas subterrâneas da antiga cidade anã de **Sarbreen**, hoje parcialmente usada como esgotos, drenagens, porões e passagens perigosas. A abertura diante de Ren parece ter exposto pedra antiga e ar circulando para baixo; há som de alguém ou algo se afastando pela passagem. Entrar agora significa descer sem chama aberta, em fumaça, água rasa e terreno quebrado.
 
 O que Ren faz?
+
+**Jogador**
+
+"Eu vou descer. Eles estão lá agora, e acho que abrindo alguma porta. Mesmo assim, não deixa de checar quantos barris: ele pode colocar outros em lugares estratégicos."
+
+Ren vai até a entrada e desce, tentando manter-se discreto nessa descida (ligando Passos sem Pegadas).
+
+**Narrador**
+
+Luath não tenta impedir.
+
+"Eu conto barril", ele diz. "E seguro a boca."
+
+Então ergue a voz para os guardas:
+
+"Corda aqui. Areia na beirada. Ninguém desce atrás dele sem eu mandar. E nada de lâmina batendo em pedra."
+
+Ren chama a sombra para perto do corpo.
+
+**Passos sem Pegadas** ativo: Ren gasta **2 ki**. Ki atual: **3/5**. Concentração possível até cerca de **11:42 de 4 Eleasis**, se não for quebrada antes.
+
+Descer pelo tablado quebrado sem provocar desabamento ou queda ruim: d20 11 + 7 = 18 contra CD 13. Sucesso.
+
+Furtividade sob Passos sem Pegadas na entrada de Sarbreen: d20 4 + 17 = 21 contra CD 17. Sucesso.
+
+O primeiro trecho é mais difícil para o corpo do que para o silêncio.
+
+As tábuas não foram feitas para suportar peso depois do estouro. Uma delas cede quando Ren põe o pé, mas ele não insiste no ponto errado; gira o ombro, usa uma viga rachada como apoio e desce sem derrubar a borda inteira. O pó cinza gruda na roupa e na pele. A fumaça passa por ele e some para baixo.
+
+Lá embaixo, o mercado vira outro mundo.
+
+O som de cima ainda existe, mas chega amassado: Luath dando ordens, gente tossindo, alguém chorando de raiva ou dor, madeira sendo arrastada. A luz da manhã entra pelo rasgo do tablado em um cone sujo, suficiente para revelar a primeira câmara baixa. Depois disso, só sombra.
+
+Ren pisa em pedra velha.
+
+Não é construção de mercado. A parede tem blocos baixos, largos, encaixados com precisão antiga. Entre o lodo e a fuligem, há marcas geométricas gravadas fundo demais para serem arranhão casual. Uma delas lembra um martelo reduzido a linhas retas, cercado por cortes curtos. Sarbreen não parece história ali. Parece fundação.
+
+A água rasa cobre o chão até metade da sola. No centro da câmara há restos de barril: arco de ferro torto, madeira aberta, cera vermelha arrancada em placas grossas. Mas os restos não bastam para dois barris.
+
+Perto da parede direita, Ren vê o que importa: uma marca circular limpa no lodo, como se outro barril inteiro tivesse ficado ali por pouco tempo. A partir dela, um sulco pesado segue para fora do cone de luz, arrastado pela água rasa em direção a uma galeria baixa.
+
+O segundo barril desceu.
+
+Ou foi levado.
+
+Os passos que Ren ouviu antes ainda existem, mas agora são mais distantes. Dois ritmos. Um leve e rápido, quase correndo. Outro mais pesado, interrompido por arrasto, como alguém empurrando ou puxando carga sem poder fazer barulho direito. Em algum ponto além da curva, metal encosta em pedra outra vez: não um golpe de combate, mas ferramenta, cunha ou trava.
+
+Ren não foi percebido. O silêncio ao redor dele está errado o bastante para parecer vazio.
+
+Mas a luz termina antes da curva.
+
+À frente, a galeria que leva ao som é escura de verdade. Não penumbra: escuro sem olho humano. A trilha do barril, os passos e o ar puxado para baixo continuam por ali. Atrás, Luath segura a superfície e começa a mandar homens contarem os barris restantes sem criar pânico público.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 3/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** está ativo por concentração. Hora aproximada: **10:43 de 4 Eleasis, 1372 DR**. Ren desceu sem queda e sem ser percebido. Na primeira câmara baixa de Sarbreen, encontrou restos de um barril detonado e sinais de que outro barril inteiro foi arrastado para uma galeria escura. Há pelo menos dois ritmos de movimento adiante, e um som de metal contra pedra além da curva. Ren ainda não possui visão no escuro ativa.
+
+O que Ren faz?
+
+**Jogador**
+
+Ren ativa Visão no Escuro e avança.
+
+**Narrador**
+
+Ren deixa mais ki escorrer para os olhos.
+
+**Visão no Escuro** ativa: Ren gasta **2 ki**. Ki atual: **1/5**. Duração aproximada: **8 horas**, até cerca de **18:43 de 4 Eleasis**. Não exige concentração. **Passos sem Pegadas** continua ativo por concentração.
+
+Percepção na galeria escura de Sarbreen: d20 10 + 6 = 16 contra CD 14. Sucesso.
+
+Manter perseguição furtiva sob Passos sem Pegadas: d20 1 + 17 = 18 contra CD 17. Sucesso.
+
+A escuridão não desaparece. Ela muda.
+
+As paredes viram cinza sobre cinza. Água rasa vira prata suja. O lodo fica preto. O mundo perde cor, mas ganha bordas: rachaduras antigas, marcas de cinzel, encaixes de pedra que um construtor humano pobre jamais faria daquele jeito.
+
+Ren avança pela galeria baixa.
+
+No primeiro passo depois da curva, o pé quase encontra uma armadilha pobre, não anã: um fio fino atravessado a meia canela, preso numa lasca de madeira e num caco de concha. Se ele passasse direto, talvez só fizesse barulho. Talvez puxasse algo mais adiante. Ele vê a linha a tempo, inclina o corpo, passa por cima e mantém o silêncio.
+
+O erro vem logo depois.
+
+Uma pedra solta vira debaixo da sola. Por um instante, o peso de Ren quer cair inteiro na água. **Passos sem Pegadas** não segura o corpo por ele, mas abafa a história do erro: o respingo que deveria denunciar vira quase nada, engolido pela água velha e pela sombra ao redor. Ren recupera o equilíbrio com a mão na parede.
+
+À frente, a galeria abre num compartimento de serviço antigo, talvez uma câmara de válvulas ou passagem de manutenção. O teto é baixo, sustentado por pilares grossos, e uma parede lateral tem uma junta vertical marcada por runas geométricas. Parte da junta já foi limpa de lodo.
+
+Dois vultos estão ali.
+
+Um deles é magro, de capuz baixo e mangas escuras. Move-se leve demais para estivador comum. Está perto de uma saída lateral estreita, olhando para trás com frequência.
+
+O outro está junto à parede marcada. Manga cinza. Mão direita trabalhando com uma barra curta de ferro e duas alianças simples no dedo. É ele que faz o som de metal contra pedra, tentando forçar uma peça baixa, uma trava antiga ou uma cunha enterrada na junta.
+
+O segundo barril está deitado a menos de dois passos dessa parede.
+
+Não está aceso. Ainda.
+
+A cera vermelha foi arrancada de parte do aro. Uma faixa de pano encerado sai do tampo e vai até um pequeno conjunto de cerâmica, cordão e pó escuro dentro de uma tigela rasa de metal. A coisa parece improvisada, mas intencional: não é só uma carga largada. É um modo de fazer o barril empurrar a parede certa.
+
+O homem de manga cinza fala baixo, sem virar:
+
+"Mais uma. Só mais uma. Depois você leva a luz para trás e corre."
+
+O vulto leve responde, quase sem voz:
+
+"A guarda ouviu."
+
+"Era para ouvir. Trabalha."
+
+Ren está a cerca de trinta pés deles, ainda fora do cone mais aberto da câmara. Eles não perceberam sua chegada.
+
+Pela leitura rápida, há três perigos imediatos: o barril ainda pode ser detonado; a parede antiga pode abrir ou ceder se eles terminarem a cunha; e qualquer metal batendo errado perto do pó, da tigela ou da pedra pode transformar a câmara baixa em outra explosão.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 1/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** está ativo por concentração; **Visão no Escuro** está ativa. Hora aproximada: **10:44 de 4 Eleasis, 1372 DR**. Ren está oculto a cerca de 30 pés de dois vultos em uma câmara baixa de Sarbreen. O homem de manga cinza e dois anéis está tentando forçar uma junta/trava antiga na parede. Um segundo barril está posicionado para explodir contra essa parede, mas ainda não foi aceso.
+
+O que Ren faz?

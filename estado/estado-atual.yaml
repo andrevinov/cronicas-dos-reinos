@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Harbor / mercado de peixe"
-  ponto_exato: "perto da balança velha do mercado de peixe, diante de passagem baixa aberta por explosão parcial"
+  ponto_exato: "galeria baixa de Sarbreen, à entrada de uma câmara de serviço com segundo barril"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -145,7 +145,21 @@ localizacao:
     viraram porões, esgotos, drenagens, passagens clandestinas e lugares
     perigosos. A abertura causada pela explosão expôs pedra antiga com marca
     angular sob o tablado, ar puxando para baixo e som de metal contra pedra
-    seguido por passos se afastando na água rasa.
+    seguido por passos se afastando na água rasa. Ren decidiu descer, pediu que
+    Luath continuasse checando a contagem de barris e ativou Passos sem Pegadas,
+    gastando 2 ki. A descida pelo tablado quebrado foi bem-sucedida, e Ren
+    entrou sem ser percebido. Na primeira câmara baixa de Sarbreen sob o
+    mercado, encontrou restos de um barril detonado e sinais de que outro barril
+    inteiro foi arrastado para uma galeria em escuridão total. Há ao menos dois
+    ritmos de movimento adiante e som de metal contra pedra, como ferramenta,
+    cunha ou trava. Ren ativou Visão no Escuro, gastando mais 2 ki, e avançou.
+    Percebeu um fio simples de alarme, evitou acioná-lo, quase escorregou numa
+    pedra solta, mas manteve a perseguição furtiva. Ele agora vê, a cerca de 30
+    pés, dois vultos em uma câmara baixa de serviço de Sarbreen: um vigia leve
+    perto de uma saída lateral e o homem de manga cinza com dois anéis usando
+    uma barra curta de ferro numa junta/trava antiga. O segundo barril está
+    posicionado para explodir contra a parede, ligado a um conjunto improvisado
+    de pano encerado, cerâmica, cordão e pó escuro, ainda não aceso.
 
 tempo:
   ano_dr: 1372
@@ -158,7 +172,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 4
   periodo_do_dia: "manhã de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "10:42 de 4 Eleasis"
+  hora_aproximada: "10:44 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'. Ren pagou 2 PO a Pell por ponto morto, com observação parcial de funcionária da Silver Lily. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados. Às 10:03, Tobb trouxe recado de Luath: quatro barris mal marcados foram encontrados perto do mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro; a guarda acredita que havia seis. Por volta de 10:27, Ren encontrou Luath no perímetro isolado do mercado de peixe. Luath confirmou que a conta da carroça era de seis barris, que quatro foram encontrados e que um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário. Às 10:31, Ren identificou o risco explosivo do pó e ligou a cera vermelha à rua dos tintureiros; Luath enviou guardas para cercar a oficina dos tintureiros."
@@ -172,7 +186,7 @@ recursos:
     maximos: 5
     dado: "d8"
   ki:
-    atuais: 5
+    atuais: 1
     maximos: 5
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -881,6 +895,10 @@ recursos:
     - "Ren alcançou a viela lateral e está diante da porta de serviço meio nível abaixo"
     - "Imagem da visão lateral salva em sessoes/002/imagens/001-visao-casa-velha-lateral.png"
     - "Mapa operacional salvo em sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.png e sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.svg"
+    - "Passos sem Pegadas ativo desde cerca de 10:43 de 4 Eleasis; concentração possível até cerca de 11:42 se não for quebrada"
+    - "Visão no Escuro ativa desde cerca de 10:43 de 4 Eleasis; duração aproximada até 18:43"
+    - "Ren está oculto na entrada de uma câmara baixa de serviço de Sarbreen, a cerca de 30 pés do homem de manga cinza e de um vigia"
+    - "há sinais de que um segundo barril foi arrastado para galeria escura"
   exaustao: 0
 
 equipamento_em_posse:
@@ -924,7 +942,7 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como agir diante da passagem baixa aberta pela explosão parcial na balança velha"
+    - "decidir como interferir no segundo barril e no homem de manga cinza antes que a parede antiga seja aberta ou a carga seja detonada"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "monitorar se Kethra consegue usar o ponto morto de Narwhal sem expor a si mesma"
@@ -964,7 +982,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está perto da balança velha do mercado de peixe, por volta de 10:42 de 4 Eleasis de 1372 DR. Após a explosão parcial, Luath confirmou que Ravens Bluff foi construída sobre a antiga cidade anã de Sarbreen, cujas ruínas sobrevivem como porões, esgotos, drenagens e passagens perigosas. A abertura diante de Ren parece ter exposto pedra antiga com marca angular meio coberta por lodo; a fumaça é puxada para baixo e Ren ouviu som de metal contra pedra seguido por passos se afastando pela água rasa. Luath segura a boca da passagem e o pânico acima, mas exige decisão imediata: Ren pode descer agora ou ficar para ajudar na superfície. Ren está com 38/38 PV, CA 17, Ki 5/5, 21 PO e 9 shuriken."
+  cena_atual: "Ren está oculto na entrada de uma câmara baixa de serviço de Sarbreen, por volta de 10:44 de 4 Eleasis de 1372 DR. Passos sem Pegadas e Visão no Escuro estão ativos. Ele está a cerca de 30 pés de dois vultos: um vigia leve perto de uma saída lateral e o homem de manga cinza com dois anéis trabalhando com barra curta de ferro numa junta/trava antiga marcada por runas geométricas. O segundo barril está deitado a menos de dois passos da parede, preparado com pano encerado, cerâmica, cordão e pó escuro para explodir contra a estrutura, mas ainda não foi aceso. O homem de manga cinza disse que a guarda ouvir era parte do plano. Ren está com 38/38 PV, CA 17, Ki 1/5, 21 PO e 9 shuriken."
   risco_imediato: "alto"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"

@@ -154,7 +154,7 @@ recursos_de_classe:
     resumo: "Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um."
   ki:
     pontos_maximos: 5
-    pontos_atuais: 5
+    pontos_atuais: 1
     cd: 14
     recarga: "descanso curto ou longo"
     calculo_cd: "8 + bônus de proficiência + modificador de Sabedoria"
