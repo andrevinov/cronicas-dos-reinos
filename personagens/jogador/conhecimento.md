@@ -2406,3 +2406,10 @@ Progressão:
 * segundo um peixeiro, o homem de manga cinza e dois anéis mandou descarregar os barris por intermédio de outro sujeito;
 * Luath pediu que Ren diga, sem poesia, o que sabe que a guarda ainda não sabe;
 * hora aproximada: 10:27 de 4 Eleasis, 1372 DR.
+* rolagem: Examinar pó, cera e ligação com a oficina dos tintureiros, d20 20 + 4 = 24 contra CD 13, sucesso;
+* Ren identificou que o pó é substância explosiva quando seca e exposta a chama, semelhante em princípio a pólvora/pó de fumaça, mas com impurezas e traços alquímicos locais;
+* a cera vermelha dos barris bate fortemente com o fio do pano vermelho, cera ruim, tintura e oficina dos tintureiros;
+* Ren contou a Luath sobre a mulher de vermelho, sua cicatriz de queimadura/cera, a marca de sol apagado no pescoço, a oficina dos tintureiros e o homem de manga cinza com dois anéis;
+* Luath aceitou a parte concreta e enviou guardas para cercar a oficina dos tintureiros com cautela;
+* Luath considera três linhas urgentes: rota baixa pela grelha, rastro da carroça dos seis barris ou oficina dos tintureiros;
+* hora aproximada: 10:31 de 4 Eleasis, 1372 DR.

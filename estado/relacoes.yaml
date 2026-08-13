@@ -888,7 +888,12 @@ relacoes:
       barris mal marcados, com suspeita de que a conta original era de seis.
       Luath envolveu Ren porque as pistas tocavam peixe, cera vermelha, barris
       e o padrão de fios que Ren vinha seguindo, mas deixou claro que não estava
-      chamando Ren por causa da vingança dele.
+      chamando Ren por causa da vingança dele. Ren identificou o pó como
+      explosivo quando seco e exposto a chama, ligou a cera vermelha à oficina
+      dos tintureiros e contou a Luath sobre a mulher de vermelho, a cicatriz, a
+      marca de sol apagado e o homem de manga cinza com dois anéis. Luath
+      aceitou a parte concreta e enviou guardas para cercar a oficina dos
+      tintureiros com cautela.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -916,6 +921,8 @@ relacoes:
       - "Dois guardas pressionaram Bram Vask em sua loja após o relato de Ren, sem prender Bram."
       - "Luath mandou chamar Ren ao mercado de peixe quando quatro barris mal marcados foram encontrados e dois estavam desaparecidos."
       - "Luath sabe por um peixeiro que um homem de manga cinza e dois anéis mandou descarregar os barris por intermediário."
+      - "Luath ouviu de Ren que o pó dos barris explode se estiver seco e encontrar chama."
+      - "Luath enviou guardas para cercar a oficina dos tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"

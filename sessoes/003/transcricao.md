@@ -281,3 +281,65 @@ Luath conclui:
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:27 de 4 Eleasis, 1372 DR**. Ren encontrou Luath no perímetro isolado do mercado de peixe. A aproximação discreta falhou parcialmente: algumas pessoas viram um forasteiro pobre ser admitido pela guarda. Luath mostrou quatro barris mal marcados; dois estão desaparecidos. Um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário.
 
 O que Ren responde ou faz?
+
+**Jogador**
+
+Ren examina. Observa a cera vermelha no aro. Se o cheiro bater com o da casa da rua das tinturas onde a "Vermelho" estava, Ren explicará para Luath a localização e dirá que é o lugar provável onde eles estavam confeccionando os barris. Que talvez ainda haja rastros lá.
+
+Ren explicará que uma mulher vestida de vermelho (e a descreverá) organizava o esquema junto com esse homem da manga cinza e dois anéis nos dedos. E que é tudo de concreto que ele sabe.
+
+"Mas, se quiser saber o que eu sei de inconcreto, eu sei que um homem perigoso está tentando tomar sua cidade. Como tomou a minha. E isso é típico dele."
+
+Ren examina o pó. Ele sabe o que é. A pólvora é uma descoberta do seu lado do mapa há muitos séculos. Os gaijin ainda não conhecem, ele pressupõe.
+
+"Isso explode. Se estiver seca e em contato com o fogo. Seja lá quem for que estiver coordenando isso, ele deve estar colocando barris assim em lugares chave da cidade para... para ameaçar pessoas de tirar suas vidas em instantes. E começar um reino de medo."
+
+Ren olha pra Luath: "e isso é só o começo. Só o começo."
+
+**Narrador**
+
+Teste de Investigação: d20 20 + 4 = 24 contra CD 13. Sucesso.
+
+Ren não precisa tocar muito para entender o bastante.
+
+O pó cinza não é idêntico às misturas que ele conheceu em histórias, depósitos militares e rumores técnicos de Kara-Tur. Há impureza demais, umidade demais, e alguma coisa no cheiro lembra reagente alquímico local, não só carvão, salitre e enxofre. Mas o princípio está ali. Se aquilo secar e encontrar chama, não vai queimar como madeira. Vai empurrar o ar.
+
+A cera vermelha confirma o outro fio. O cheiro ruim de cera barata, tintura escura e oficina fechada bate com o pano vermelho encerado e com a rua dos tintureiros. Não é prova perfeita de que saiu exatamente da mesma mão, mas é forte o bastante para ser rota, não coincidência.
+
+Luath escuta sem interromper. Quando Ren descreve a mulher de vermelho, a cicatriz de queimadura/cera, a marca de sol apagado no pescoço, a oficina dos tintureiros, a cortina e o homem de manga cinza com dois anéis, o rosto dele perde a pouca paciência que ainda tinha para tratar aquilo como carga suspeita comum.
+
+Quando Ren diz que aquilo explode, Luath olha para o barril rachado de novo.
+
+"Pó de fumaça", murmura um dos guardas atrás dele, sem certeza. "Ou história de Gond."
+
+Luath corta o guarda com um olhar.
+
+"História mata gente quando vira barril."
+
+Ele dá ordens rápido, em voz baixa, sem transformar a rua em pânico.
+
+"Nada de chama. Nada de lamparina. Balde de areia, pano molhado, mão leve. Jory, pega dois e vai à rua dos tintureiros. Oficina dos fundos, cera ruim, cortina, mulher de vermelho se ainda estiver lá. Não entra chutando porta se sentir cheiro desse pó. Cerca e manda palavra."
+
+Um guarda sai.
+
+Luath volta a Ren.
+
+"Eu acredito na parte que posso pisar: cera, barril, dois anéis, oficina, dois barris faltando. A parte do homem que tomou sua cidade eu guardo em outra gaveta por enquanto."
+
+Ele se abaixa perto da grelha baixa, sem encostar no pó. A água fina que escorre por ali segue para baixo do mercado, na direção de túneis de drenagem e armazéns baixos. Acima, rodas continuam passando em ruas próximas, abafadas pelo isolamento.
+
+"A menina disse frio, embaixo, rodas em cima e água na parede." Luath olha para Ren. "Isso aqui pode ser só uma boca do mesmo lugar. Ou uma das bocas."
+
+Do outro lado da corda, o rapaz que queria pegar mercadoria começa a discutir mais alto com o guarda. A palavra "estragar" aparece três vezes. "Meu patrão" aparece duas. A cidade quer voltar a funcionar em cima de uma coisa que talvez esteja esperando fogo.
+
+Luath fala baixo:
+
+"Eu posso mandar varrer a rua dos tintureiros. Posso fechar o mercado inteiro e criar pânico, com dois barris ainda fora. Posso chamar Gond, se eu conseguir alguém que venha antes de meio-dia. Mas os dois barris que faltam não vão esperar minha cadeia perfeita."
+
+Ele aponta para a grelha.
+
+"Você acha porta onde só tem parede. Então escolha onde põe os olhos primeiro: na rota baixa daqui, nos rastros da carroça que deixou seis e saiu com dois, ou na oficina dos tintureiros antes que ela seja limpa."
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:31 de 4 Eleasis, 1372 DR**. Ren identificou o pó como substância explosiva quando seca e exposta a chama, semelhante em princípio a pólvora/pó de fumaça, mas com traços alquímicos locais. A cera vermelha bate fortemente com o fio da rua dos tintureiros. Luath enviou guardas para cercar a oficina dos tintureiros com cautela e considera três linhas urgentes: rota baixa pela grelha, rastro da carroça dos seis barris ou oficina dos tintureiros.
+
+O que Ren faz?
