@@ -2498,3 +2498,17 @@ Progressão:
 * Ren está com 38/38 PV, CA 17, 0/5 ki, 21 PO, 9 shuriken e Visão no Escuro ativa;
 * Passos sem Pegadas ainda está ativo, mas perto do fim;
 * hora aproximada: 11:27 de 4 Eleasis, 1372 DR.
+* Ren falou rapidamente com Silva, Nera e Tavin atrás da carroça verde, sem chamar atenção do circo todo;
+* Silva extraiu as partes práticas: Ren voltou vivo, não trouxe cauda competente, Luath tem dois prisioneiros vivos, há barril perigoso entregue à guarda e o mercado ainda não está resolvido;
+* Ren fez descanso curto de uma hora no depósito de figurino velho: meia hora de sono e meia hora de meditação;
+* Ren recuperou o ki para 5/5;
+* Passos sem Pegadas expirou durante o repouso, perto de 11:42 de 4 Eleasis;
+* Visão no Escuro segue ativa até cerca de 18:43 de 4 Eleasis;
+* rolagem: Marcar duas seções novas de Kage sem risco físico, d20 6 + 7 = 13 contra CD 14, falha;
+* rolagem: Aprimorar falas e drama do número, d20 5 + 0 = 5 contra CD 13, falha;
+* rolagem: Integrar Lysa, Merrit, Dessa e Sorn ao ajuste, d20 10 + 4 = 14 contra CD 12, sucesso;
+* o ensaio não sustentou quatro movimentos físicos novos completos com segurança;
+* a equipe do circo transformou a ideia em duas pequenas novidades cênicas, mantendo Kage parecido com O Vento da Noite, mas com sinais de que ainda há recursos não vistos;
+* se Ren quiser executar a versão fisicamente mais ambiciosa amanhã, precisará de novo ensaio e aceitar novo risco;
+* o segundo sino da tarde passou sem recado de Luath ao circo até 14:18;
+* hora aproximada: 14:18 de 4 Eleasis, 1372 DR.

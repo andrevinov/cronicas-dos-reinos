@@ -763,3 +763,95 @@ Passos sem Pegadas ainda está ativo, mas perto do fim. Visão no Escuro segue a
 Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. Hora aproximada: **11:27 de 4 Eleasis, 1372 DR**. Luath não interrogou os prisioneiros no mercado; pediu contato depois do segundo sino ou por recado ao circo. A oficina dos tintureiros foi encontrada vazia, com sinais de limpeza apressada e abertura baixa para pedra úmida. A carroça de seis barris parece contabilizada, mas Luath não considera a cidade segura por isso.
 
 O que Ren faz?
+
+**Jogador**
+
+Primeiro, falar com Silva e os Vell, sem chamar atenção do circo todo. Depois, dormir meia hora e meditar meia hora pra recuperar o ki. Depois ensaiar, se possível a tarde toda. Para amanhã, Ren pretende fazer algo muito parecido com o que fez no primeiro show, mas com 2 pequenas seções inéditas, cada uma com 2 movimentos a mais. Quase como um recado do tipo: "Kage não é só o que vocês viram no primeiro show". Ele convoca Lysa, Merrit, repassa falas com eles, tenta melhorar as falas, os momentos de drama da história, tentando aperfeiçoa-la ainda mais. Daqui pra amanhã não dá pra criar número novo (nem era a intenção), mas dá pra deixar o número antigo mais interessante.
+
+**Narrador**
+
+Silva não leva Ren para a carroça verde primeiro.
+
+Ela leva Ren para o lado de trás dela.
+
+É uma diferença pequena, mas importante. A frente da carroça pertence ao circo: passantes, ajudantes, menino com jarra, gente fingindo que não olha. Atrás, entre lona estendida, roda travada e duas caixas de ervas secas, a conversa vira coisa de poucos olhos.
+
+Nera vem. Tavin também, depois de Silva fazer um gesto curto que significa fique quieto e venha ao mesmo tempo.
+
+Ren consegue falar com eles sem chamar o circo todo. O que ele escolhe contar fica baixo o bastante para não virar rumor, mas Silva extrai as partes práticas: Ren voltou vivo, não trouxe cauda competente, Luath tem dois prisioneiros vivos, há barril perigoso entregue à guarda e o mercado não está resolvido só porque parou de explodir.
+
+Nera ouve sem interromper no começo. O alívio dela é visível demais para passar por disciplina, mas ela segura as perguntas até Silva perguntar primeiro o que importa.
+
+"Uma hora", Silva diz. "Dormir e meditar. Depois disso, Kage ensaia se conseguir ficar em pé sem se achar imortal."
+
+Tavin olha para Ren, para a roupa molhada e para a fuligem nas dobras.
+
+"Você cheira a peixe queimado", ele diz, muito baixo.
+
+Sorn, quando escuta o plano, apenas aponta para o depósito de figurino velho.
+
+"Dorme antes de cair. Eu marco chão para artista, não para cadáver caro."
+
+O descanso curto funciona.
+
+Ren apaga por meia hora num canto seco do depósito de figurino velho, com Silva controlando entrada melhor do que muita porta com trinco. Depois passa outra meia hora em meditação, sem treino, sem conversa e sem esforço. **Passos sem Pegadas** se desfaz durante esse repouso, perto de 11:42, sem efeito dramático; a sombra simplesmente deixa de acompanhar cada gesto como antes. **Visão no Escuro** continua ativa.
+
+Ao fim do descanso curto, Ren recupera o ki.
+
+Situação mecânica após o descanso: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **12:35 de 4 Eleasis**.
+
+O ensaio começa com prudência e orgulho brigando pelo mesmo espaço.
+
+Marcar duas seções novas de Kage sem risco físico: d20 6 + 7 = 13 contra CD 14. Falha.
+
+Aprimorar falas e drama do número: d20 5 + 0 = 5 contra CD 13. Falha.
+
+Integrar Lysa, Merrit, Dessa e Sorn ao ajuste: d20 10 + 4 = 14 contra CD 12. Sucesso.
+
+A primeira tentativa de Ren mostra exatamente o problema. O corpo dele ainda sabe fazer mais do que a tarde permite cobrar. O primeiro movimento novo encaixa bonito até a saída; o segundo pede um pouso um pouco mais fundo, um giro um pouco mais seco, um ombro um pouco mais aberto. Não chega a ser queda. Chega a ser a cara de Sorn ficando imóvel.
+
+"Não", Sorn diz.
+
+Só isso.
+
+Depois aponta o giz para a marca.
+
+"Aqui vira chão baixo. Sem salto grande. Sem pouso novo. Sem braço abrindo para impressionar rico que nem comprou ingresso ainda."
+
+Lysa cruza os braços, pronta para odiar a limitação por princípio, mas Mira passa perto, olha a marca e diz apenas:
+
+"Ele está certo."
+
+Isso encerra a discussão de Lysa melhor do que qualquer discurso.
+
+As falas também não crescem bem na primeira tentativa. Merrit tenta dar mais cor ao conto, mais céu, mais sombra, mais destino. Em duas frases, a história começa a virar explicação. Em três, Jack faz uma careta como se alguém estivesse vendendo sopa com água demais.
+
+"Menos templo, mais lona", ele corta. "Se o público entender tudo, para de pagar para ver de novo."
+
+Dessa salva a tarde mais do que os dados de Ren.
+
+Ela muda a lógica das duas partes inéditas. Em vez de quatro movimentos novos reais, vocês ficam com duas pequenas que parecem novas sem exigir que o corpo pague tudo sozinho.
+
+Na primeira, Kage não salta mais alto: ele desaparece mais cedo. Pano preto baixo, uma lanterna escondida meio palmo fora da marca antiga, Lysa surgindo como Princesa das Sombras por um batimento a mais e Ren cruzando a marca de joelho e mão, rápido o bastante para parecer que escolheu o chão, não que foi obrigado a ficar nele.
+
+Na segunda, perto do fim, Merrit não explica a lenda. Ela dá apenas duas frases curtas, com pausa suficiente para o tambor respirar:
+
+"O vento voltou pela mesma porta."
+
+"Mas trouxe outra sombra atrás dele."
+
+Não é um número novo. Sorn deixa isso claro três vezes. Mas também não é o mesmo número repetido. A mensagem chega: Kage ainda tem coisa guardada, só que guardada dentro de limite, não dentro de vaidade.
+
+Lysa trabalha melhor quando para de tentar provar que o joelho não existe. Merrit melhora quando cala antes da piada virar pedido de perdão. Dessa mexe no pano e na máscara como se estivesse remendando não roupa, mas expectativa. Jack assiste com os braços cruzados, e pela primeira vez desde que Ren voltou de Sarbreen, parece menos preocupado em perder a tarde inteira.
+
+O segundo sino da tarde passa durante o ensaio.
+
+Nenhum recado de Luath chegou ao circo ainda. Isso não significa que não haja nada a ouvir no posto da Night Watch; significa apenas que a rua não piorou o bastante para Luath mandar alguém arrancar Ren da lona.
+
+Hora aproximada: **14:18 de 4 Eleasis, 1372 DR**.
+
+Ren está na lona principal, com o ensaio de Kage ajustado para uma versão segura e um pouco mais rica. **Ki 5/5**. **Visão no Escuro** segue ativa até cerca de 18:43. **Passos sem Pegadas** expirou durante o descanso. A apresentação de amanhã tem agora duas novidades pequenas, mas se Ren quiser transformar isso em quatro movimentos físicos novos de verdade, Sorn vai exigir novo ensaio e novo risco.
+
+O posto da Night Watch já está dentro da janela indicada por Luath. O ensaio pode continuar pela tarde, ou Ren pode interromper para procurar o sargento.
+
+O que Ren faz?

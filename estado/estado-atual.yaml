@@ -177,8 +177,15 @@ localizacao:
     vermelho ausente, sinais de limpeza apressada, cesto de tira amarela de
     dois nós e abertura baixa para pedra úmida. Ren saiu do mercado sem levar
     cauda competente ao circo. Ao retornar ao Jack Mooney & Sons Circus por
-    volta de 11:27, encontrou Jack, Silva, Nera, Tavin, Sorn e a preparação
-    inicial do ensaio de Kage. A cidade já espalha rumores sobre a explosão.
+    volta de 11:27, falou de modo reservado com Silva, Nera e Tavin, sem chamar
+    atenção do circo todo. Depois completou descanso curto de uma hora no
+    depósito de figurino velho: meia hora de sono e meia hora de meditação,
+    recuperando ki para 5/5. Passos sem Pegadas expirou durante esse repouso;
+    Visão no Escuro segue ativa até cerca de 18:43. Em seguida, Ren começou o
+    ensaio de Kage. A tentativa de acrescentar duas seções fisicamente novas
+    falhou por margem curta e o texto dramático inicial ficou excessivo, mas
+    Lysa, Merrit, Dessa e Sorn integraram uma versão segura com duas pequenas
+    novidades cênicas. O segundo sino da tarde passou sem recado de Luath.
 
 tempo:
   ano_dr: 1372
@@ -190,8 +197,8 @@ tempo:
   dia_do_mes: 4
   dezena: 1
   dia_da_dezena: 4
-  periodo_do_dia: "manhã de 4 Eleasis, após a incursão na Casa Velha do Primeiro Raio"
-  hora_aproximada: "11:27 de 4 Eleasis"
+  periodo_do_dia: "início da tarde de 4 Eleasis, após descanso curto e ensaio parcial de Kage"
+  hora_aproximada: "14:18 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. O ponto morto de Kethra está montado em Narwhal Manor, mas com sinais discretos de manipulação. Pell deixou bilhete novo ligando a ausência de Rusk, a mudança de mensageiro de Brass, perguntas sobre Kage/Silver Lily e um papel fino enviado a Narwhal com a palavra 'máscara'. Ren pagou 2 PO a Pell por ponto morto, com observação parcial de funcionária da Silver Lily. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados. Às 10:03, Tobb trouxe recado de Luath: quatro barris mal marcados foram encontrados perto do mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro; a guarda acredita que havia seis. Por volta de 10:27, Ren encontrou Luath no perímetro isolado do mercado de peixe. Luath confirmou que a conta da carroça era de seis barris, que quatro foram encontrados e que um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário. Às 10:31, Ren identificou o risco explosivo do pó e ligou a cera vermelha à rua dos tintureiros; Luath enviou guardas para cercar a oficina dos tintureiros."
@@ -205,7 +212,7 @@ recursos:
     maximos: 5
     dado: "d8"
   ki:
-    atuais: 0
+    atuais: 5
     maximos: 5
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
@@ -927,8 +934,17 @@ recursos:
     - "Luath recusou interrogar os prisioneiros no mercado, mas pediu contato depois do segundo sino ou enviará recado ao circo se a rua piorar primeiro"
     - "relatório da oficina dos tintureiros: local vazio, mulher de vermelho ausente, sinais de limpeza apressada, cesto de tira amarela de dois nós e abertura baixa para pedra úmida"
     - "Rolagem para sair do mercado sem levar cauda competente ao circo: 27 contra CD 13, sucesso"
-    - "Passos sem Pegadas segue ativo, mas perto do fim; Visão no Escuro segue ativa até cerca de 18:43"
     - "Ren retornou ao Jack Mooney & Sons Circus por volta de 11:27, com Ki 0/5, sujo de Sarbreen e sem cauda competente percebida"
+    - "Ren falou rapidamente com Silva, Nera e Tavin atrás da carroça verde, sem chamar atenção do circo todo"
+    - "Ren completou descanso curto de uma hora no depósito de figurino velho, com meia hora de sono e meia hora de meditação"
+    - "Ren recuperou ki para 5/5"
+    - "Passos sem Pegadas expirou durante o repouso, perto de 11:42"
+    - "Visão no Escuro segue ativa até cerca de 18:43"
+    - "Rolagem para marcar duas seções novas de Kage sem risco físico: 13 contra CD 14, falha"
+    - "Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha"
+    - "Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso"
+    - "A versão segura de Kage para 5 Eleasis tem duas pequenas novidades cênicas, mas não quatro movimentos físicos novos completos"
+    - "O segundo sino da tarde passou sem recado de Luath ao circo até 14:18"
   exaustao: 0
 
 equipamento_em_posse:
@@ -972,9 +988,9 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o quanto contar a Jack, Silva, Nera e Sorn sobre a explosão, Sarbreen e Luath"
-    - "ensaiar Kage para a apresentação curta de 5 Eleasis sem ignorar cansaço, Ki 0/5 e risco físico"
-    - "aguardar contato com Luath após o segundo sino ou por recado ao circo sobre o interrogatório dos prisioneiros"
+    - "decidir se interrompe o ensaio de Kage para procurar Luath no posto da Night Watch depois do segundo sino ou se continua ensaiando pela tarde"
+    - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas, salvo se Ren aceitar novo ensaio e risco para movimentos físicos mais ambiciosos"
+    - "aguardar contato ou procurar Luath após o segundo sino sobre o interrogatório dos prisioneiros"
     - "deixar a estabilização do segundo barril armado em Sarbreen com Luath, guarda e Gond, salvo se novo risco surgir"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
@@ -1015,7 +1031,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren retornou ao Jack Mooney & Sons Circus por volta de 11:27 de 4 Eleasis de 1372 DR. Está entre a carroça verde e a lona principal, perto da marcação de ensaio de Kage. Passos sem Pegadas ainda está ativo, mas perto do fim; Visão no Escuro segue ativa. Ren está com 38/38 PV, CA 17, Ki 0/5, 21 PO e 9 shuriken, sujo de Sarbreen e sem cauda competente percebida. Luath não interrogou os prisioneiros no mercado; pediu contato depois do segundo sino ou por recado ao circo. A oficina dos tintureiros foi encontrada vazia, com sinais de limpeza apressada e abertura baixa para pedra úmida. Jack quer saber se a cidade vai interromper a tarde; Sorn limitou a primeira passagem de ensaio a marcação, sem salto grande."
+  cena_atual: "Ren está na lona principal do Jack Mooney & Sons Circus por volta de 14:18 de 4 Eleasis de 1372 DR, durante o ensaio de Kage. Ele falou reservadamente com Silva, Nera e Tavin, completou descanso curto e recuperou ki para 5/5. Passos sem Pegadas expirou durante o repouso; Visão no Escuro segue ativa até cerca de 18:43. O ensaio produziu uma versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas, mas não a expansão física completa inicialmente pretendida. O segundo sino da tarde já passou e nenhum recado de Luath chegou ao circo; Ren pode continuar ensaiando ou procurar o sargento no posto da Night Watch."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
