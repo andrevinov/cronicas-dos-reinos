@@ -2467,3 +2467,18 @@ Progressão:
 * o segundo barril continua inteiro, armado e ainda não aceso;
 * Ren ainda age antes que o homem de manga cinza consiga agir de verdade;
 * Ren está com 38/38 PV, CA 17, 0/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
+* Ren atacou novamente o homem de manga cinza e o apagou de modo não letal antes que ele gritasse ou acionasse o dispositivo;
+* rolagem: primeiro golpe desarmado contra o homem de manga cinza, d20 15 + 7 = 22 contra CA 13, acerto, 9 de dano contundente;
+* rolagem: segundo golpe desarmado contra o homem de manga cinza, d20 17 + 7 = 24 contra CA 13, acerto, 6 de dano contundente;
+* rolagem: Desarmar dispositivo do barril com ferramentas de ladrão, d20 20 + 7 = 27 contra CD 15, sucesso;
+* Ren separou o acionamento do barril: cordão, cerâmica, tigela rasa, pano encerado, recipiente fechado de brasa ou luz fraca e cera vermelha;
+* a frase "Depois você leva a luz para trás e corre" parece se referir a esse recipiente protegido de brasa/luz, mas Ren ainda não sabe todo o propósito da operação;
+* o barril principal continua em Sarbreen, sem ignição imediata, mas ainda perigoso;
+* rolagem: Arrastar corpos pela galeria sob Passos sem Pegadas, d20 7 + 17 = 24 contra CD 15, sucesso;
+* rolagem: Esforço físico para mover o homem de manga cinza até a corda, d20 3 + 1 = 4 contra CD 12, falha;
+* Ren conseguiu levar os corpos até a primeira câmara baixa sem alarme útil, mas precisou da corda e da ajuda de Luath para içar o homem de manga cinza;
+* o homem de manga cinza e o vulto leve foram entregues vivos a Luath;
+* o dispositivo de acionamento foi entregue à guarda;
+* Ren está na primeira câmara baixa sob a balança velha, junto à corda de Luath;
+* a junta antiga na parede da câmara baixa está parcialmente forçada, e a saída lateral onde o vulto leve vigiava permanece aberta, escura e estreita;
+* hora aproximada: 10:48 de 4 Eleasis, 1372 DR.

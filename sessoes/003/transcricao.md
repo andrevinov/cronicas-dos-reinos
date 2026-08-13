@@ -629,3 +629,65 @@ Pela ordem da iniciativa, Ren ainda tem o próximo batimento antes que o homem d
 Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração; **Visão no Escuro** está ativa. O vulto leve caiu junto à saída lateral. O homem de manga cinza está ferido, consciente, corpo a corpo com Ren, perto da barra, da junta antiga e do barril armado. Hora aproximada: **10:44 de 4 Eleasis, 1372 DR**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren ataca mais uma vez, buscando apagar o homem de manga cinza. Se ele conseguir, irá trabalhar silenciosamente para levar o homem de manga cinza e o vulto leve até a corda para Luath e seus homens puxarem. Levará também os dispositivos que eles estavam usando para explodir os barris.
+
+**Narrador**
+
+Primeiro golpe desarmado contra o homem de manga cinza: d20 15 + 7 = 22 contra CA 13. Acerto. Dano: 1d6 5 + 4 = 9 contundente.
+
+Segundo golpe desarmado contra o homem de manga cinza: d20 17 + 7 = 24 contra CA 13. Acerto. Dano: 1d6 2 + 4 = 6 contundente.
+
+Ren fecha a distância que já não existe.
+
+O homem de manga cinza tenta puxar ar para fazer alguma coisa com ele: palavra, aviso, maldição, qualquer ruído que chegue além da câmara. O primeiro golpe de Ren entra baixo, na linha do diafragma, e corta essa tentativa antes que vire som. O segundo pega atrás da orelha, controlado o bastante para apagar, não matar.
+
+O corpo dele dobra contra a parede antiga e desliza para a água rasa.
+
+Ele fica inconsciente e respirando.
+
+O combate termina antes de se tornar barulho.
+
+Desarmar dispositivo do barril com ferramentas de ladrão: d20 20 + 7 = 27 contra CD 15. Sucesso.
+
+O dispositivo não é bonito, mas é legível para mãos cuidadosas. Ren não trata aquilo como corda comum. Primeiro afasta a barra de ferro caída com o pé, sem deixar metal bater em pedra. Depois separa o cordão do conjunto de cerâmica, prende a tigela rasa pelo aro, vira o pano encerado pelo lado úmido e encontra o detalhe que torna a coisa pior: um pequeno recipiente fechado, do tamanho de dois dedos, guardando brasa lenta ou luz química fraca sob proteção de barro e pano grosso.
+
+Então a frase faz mais sentido sem resolver tudo.
+
+"Depois você leva a luz para trás e corre."
+
+Não era para acender com lamparina aberta no meio da câmara. A luz estava ali para ser trazida no último instante, protegida, encostada ao pó escuro e abandonada. O barril continua perigoso, mas Ren separa o acionamento do corpo principal: cordão, cerâmica, tigela, pano encerado, recipiente de brasa/luz e pedaços de cera vermelha. Sem isso, o barril não está seguro, mas também não está pronto para explodir com um toque descuidado.
+
+Arrastar corpos pela galeria sob Passos sem Pegadas: d20 7 + 17 = 24 contra CD 15. Sucesso.
+
+Esforço físico para mover o homem de manga cinza até a corda: d20 3 + 1 = 4 contra CD 12. Falha.
+
+O vulto leve é fácil primeiro: corpo menor, menos peso, queda perto da saída lateral. Ren confirma o bastante para saber que ainda respira, então o arrasta pelo capuz e pelo cinto, mantendo a cabeça fora da água rasa sempre que o chão permite. **Passos sem Pegadas** não torna um corpo leve, mas apaga a maior parte dos rastros e dos ruídos pequenos.
+
+O homem de manga cinza é outro problema.
+
+Ele é peso morto, roupa encharcada, membros soltos, água puxando tecido e pedra irregular mordendo calcanhar. Ren consegue tirá-lo da câmara e levá-lo pela galeria sem fazer alarme útil, mas não consegue transformar aquilo numa retirada limpa até a superfície sozinho. Na primeira câmara baixa, abaixo da abertura da balança velha, o corpo fica pesado demais para subir pelo rasgo de madeira e pedra sem ajuda.
+
+A corda de Luath resolve o que força bruta de Ren não resolve.
+
+Ren dá o sinal curto. Acima, a resposta vem sem grito: madeira rangendo, dois homens ajustando posição, Luath mandando alguém calar a boca antes que pergunte coisa errada. Primeiro sobe o vulto leve, amarrado às pressas. Depois o homem de manga cinza. O içamento não é silencioso para a superfície, mas não vira alarme para a galeria atrás de Ren. Para quem ainda esteja embaixo, se houver alguém, o mercado acima já era ruído antes disso.
+
+Quando o homem de manga cinza passa pela abertura, Luath aparece por um instante na borda quebrada. A luz suja da manhã corta o rosto dele em tiras.
+
+"Vivo?", ele pergunta baixo.
+
+Ren consegue indicar que sim.
+
+Luath olha para o pacote de cerâmica, cordão, pano e recipiente fechado que Ren entrega com cuidado.
+
+"Gond", ele diz para alguém acima. "Agora. E se algum aprendiz trouxer chama para olhar melhor, eu jogo o aprendiz no rio antes do barril fazer isso por mim."
+
+Abaixo, Sarbreen volta a respirar água fria.
+
+O segundo barril ficou na câmara baixa de serviço, separado do acionamento imediato, mas ainda carregado. A junta antiga na parede continua parcialmente forçada. A barra de ferro está caída ali. A saída lateral onde o vulto leve vigiava permanece aberta, escura e estreita. Não há passos vindo dela neste instante.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 0/5, 21 PO, 9 shuriken**. **Passos sem Pegadas** segue ativo por concentração, até cerca de 11:42 se não for quebrado; **Visão no Escuro** segue ativa. O homem de manga cinza e o vulto leve foram entregues vivos a Luath. O dispositivo de acionamento foi removido e entregue à guarda com cuidado. O barril principal continua em Sarbreen, sem ignição imediata, mas ainda perigoso. Hora aproximada: **10:48 de 4 Eleasis, 1372 DR**.
+
+O que Ren faz?
