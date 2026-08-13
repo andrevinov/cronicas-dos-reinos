@@ -883,7 +883,12 @@ relacoes:
       o devolveu, recusando tratá-lo como prova formal limpa sem cadeia de
       custódia ou testemunho. Ainda assim, a Night Watch pressionou Bram por
       cobrança violenta, possível cárcere/trabalho por dívida e risco a Kethra,
-      nos termos da guarda, não nos termos de Ren.
+      nos termos da guarda, não nos termos de Ren. Mais tarde naquela manhã,
+      Luath mandou chamar Ren ao mercado de peixe após a guarda encontrar quatro
+      barris mal marcados, com suspeita de que a conta original era de seis.
+      Luath envolveu Ren porque as pistas tocavam peixe, cera vermelha, barris
+      e o padrão de fios que Ren vinha seguindo, mas deixou claro que não estava
+      chamando Ren por causa da vingança dele.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -909,6 +914,8 @@ relacoes:
       - "Luath recusou qualquer serviço off-record de Ren em nome da guarda."
       - "Luath examinou o caderno de Bram, copiou marcas úteis e devolveu o caderno a Ren por não aceitar prova irregular sem cadeia de custódia."
       - "Dois guardas pressionaram Bram Vask em sua loja após o relato de Ren, sem prender Bram."
+      - "Luath mandou chamar Ren ao mercado de peixe quando quatro barris mal marcados foram encontrados e dois estavam desaparecidos."
+      - "Luath sabe por um peixeiro que um homem de manga cinza e dois anéis mandou descarregar os barris por intermediário."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"

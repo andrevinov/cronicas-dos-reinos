@@ -221,3 +221,63 @@ Jack pousa a pena.
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:03 de 4 Eleasis, 1372 DR**. Jack aceitou o calendário inicial: Kage fará uma aparição curta na lona principal em 5 Eleasis ao cair da tarde; depois disso, uma apresentação particular pode ser negociada com quem cumprir filtros e pagar mais. Antes que Jack concluísse o registro, chegou recado de Luath: perto do mercado de peixe, a guarda encontrou quatro barris mal marcados com pó cinza, cheiro acre e cera vermelha; acredita-se que havia seis. Luath quer falar com o homem que tratou de Bram Vask, sem plateia e sem roupa de palco.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá até Luath, com suas vestes de homem pobre. Passa rapidamente por Silva, Nera e Tavin. Pede pra não se preocuparem, que ele irá voltar.
+
+Procura o Sargento Luath discretamente até conseguir aborda-lo.
+
+**Narrador**
+
+Silva recebe o "não se preocupem" com a mesma expressão que usaria para ouvir alguém prometer que a chuva não molha.
+
+"Essa frase nunca carregou balde nenhum", ela diz. Mas abre caminho.
+
+Nera não discute na frente de todos. Só prende os dedos no pano que estava remendando e olha para Ren por tempo suficiente para deixar claro que ouviu a promessa. Tavin, mais simples, ergue a jarra vazia de novo.
+
+"Olha onde cai", ele diz, como se isso cobrisse tudo.
+
+Jack não impede a saída. "Homem pobre, não Kage", ele lembra. "Se alguém perguntar, meu artista está indisponível porque é caro demais para andar quando guarda assobia."
+
+Teste de Furtividade: d20 4 + 7 = 11 contra CD 13. Falha.
+
+Ren sai pelo caminho certo, sem roupa de palco, sem caminhar como artista e sem trazer atenção grande do circo. Mas a cidade já está olhando para o lugar errado com olhos demais. Perto das ruas que descem para o mercado de peixe, uma corda de isolamento improvisada segura carregadores, peixeiras, aprendizes e curiosos irritados. Um guarda deixa Ren passar depois de uma palavra curta ao ouvido; isso não vira grito, mas vira lembrança. Uma mulher com avental manchado e um escrivãozinho de guilda veem um forasteiro pobre ser admitido onde outros ficaram do lado de fora.
+
+Luath está atrás de uma fileira de caixas de peixe viradas, num corredor lateral que cheira a sal podre, lama fria e ovo ruim. Ele não usa pose de comandante. Está com as mangas dobradas, uma tira de pano úmido cobrindo parte do nariz e dois guardas segurando curiosos longe de um canto sombreado.
+
+No chão, junto a uma parede baixa molhada, há quatro barris.
+
+Três estão inteiros, mal rotulados como sal de conservação e restos de peixe. O quarto rachou perto do aro. Dele vazou um pó cinza que virou pasta em contato com a umidade da rua. Há cera vermelha no aro, não como lacre formal de guilda, mas como marca grossa e apressada. Perto dos barris, a pedra da rua desce para uma grelha baixa; a parede atrás dela está úmida até a altura do joelho.
+
+Luath vê Ren chegando e mede o caminho por onde ele veio antes de falar.
+
+"Você veio. Bom." O olhar dele passa por cima dos curiosos do outro lado da corda. "Não veio limpo. Menos bom."
+
+Ele aponta com o queixo para os barris.
+
+"Quatro encontrados. A conta da carroça era seis. O rótulo é mentira. O carroceiro que trouxe diz que só recebeu ordem para deixar 'sal estragado' perto do peixe antes de abrir movimento. Está com medo demais para mentir bonito."
+
+Luath se aproxima meio passo, baixando a voz.
+
+"Um peixeiro viu quem mandou descarregar. Homem de manga cinza. Dois anéis simples na mão direita. Não tocou nos barris. Falou por trás de outro sujeito e foi embora antes da confusão."
+
+A frase bate em Peta antes de bater no mercado.
+
+Luath não espera Ren reagir por dentro.
+
+"Eu não mandei chamar você por causa da sua vingança. Mandei chamar porque você trouxe Bram, Kethra e Colm antes de eu saber que precisava deles. E porque Maerra parece ter decidido que você acha portas onde só tem parede."
+
+Ele aponta para o barril rachado, depois para a grelha.
+
+"Não sei ainda se isso explode, queima, envenena ou só assusta quem sabe mais do que eu. Sei que dois barris sumiram. Sei que alguém escolheu 'peixe' como lugar onde isso pareceria sujeira comum até tarde demais. E sei que você ouviu essa palavra antes."
+
+Um dos guardas atrás de Luath mantém um balde de areia pronto. Outro segura afastado um rapaz que insiste que precisa pegar mercadoria antes que estrague. Do outro lado da rua isolada, o escrivãozinho de guilda ainda tenta ver o rosto de Ren.
+
+Luath conclui:
+
+"Sem poesia. O que você sabe que eu ainda não sei?"
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:27 de 4 Eleasis, 1372 DR**. Ren encontrou Luath no perímetro isolado do mercado de peixe. A aproximação discreta falhou parcialmente: algumas pessoas viram um forasteiro pobre ser admitido pela guarda. Luath mostrou quatro barris mal marcados; dois estão desaparecidos. Um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário.
+
+O que Ren responde ou faz?

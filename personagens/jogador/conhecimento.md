@@ -2395,3 +2395,14 @@ Progressão:
 * Luath quer falar com o homem que tratou de Bram Vask, sem plateia e sem roupa de palco;
 * Ren está no circo, na carroça-escritório de Jack, com 38/38 PV, CA 17, 5/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
 * hora aproximada: 10:03 de 4 Eleasis, 1372 DR.
+* Ren saiu do circo em vestes de homem pobre para encontrar Luath no mercado de peixe;
+* rolagem: aproximação discreta até Luath, d20 4 + 7 = 11 contra CD 13, falha;
+* a aproximação falhou parcialmente: uma peixeira e um escrivãozinho de guilda viram um forasteiro pobre ser admitido pela guarda em área isolada;
+* Luath mostrou quatro barris mal rotulados como sal de conservação/restos de peixe;
+* um dos barris rachou e deixou vazar pó cinza que virou pasta com a umidade;
+* os barris têm cera vermelha grossa no aro, não como lacre formal de guilda;
+* há uma grelha baixa próxima e parede molhada até altura do joelho;
+* Luath disse que a conta da carroça era de seis barris;
+* segundo um peixeiro, o homem de manga cinza e dois anéis mandou descarregar os barris por intermédio de outro sujeito;
+* Luath pediu que Ren diga, sem poesia, o que sabe que a guarda ainda não sabe;
+* hora aproximada: 10:27 de 4 Eleasis, 1372 DR.
