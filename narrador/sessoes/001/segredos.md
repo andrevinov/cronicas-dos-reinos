@@ -192,6 +192,12 @@ Diretriz reservada:
 
 Masao Hirasawa deve crescer como antagonista de longo prazo, não como alvo local simples. Ele pode ter ambição megalomaníaca, disciplina estratégica e plano regional grande o bastante para ameaçar redes criminosas, instituições e rotas entre Faerûn e Kara-Tur.
 
+Continuidade pós-sessão 002: o círculo de elite de Masao foi canonizado como
+**Juppongatana**, conhecido em tradução simples como **as Dez Espadas**. Usar o
+nome como homenagem deliberada do jogador a Rurouni Kenshin e como alcunha
+própria do submundo de Kara-Tur. Criar integrantes adaptados a esta campanha,
+com vínculos próprios com Masao, Ren e Forgotten Realms.
+
 Não revelar plano final cedo. Sinais iniciais devem parecer peças desconectadas:
 
 * controle de intermediários portuários;
@@ -201,7 +207,15 @@ Não revelar plano final cedo. Sinais iniciais devem parecer peças desconectada
 * uso de testemunhas como isca, ruído ou alavanca;
 * agentes especializados que não agem como capangas comuns.
 
-Masao pode ter um círculo de executores de elite, inspirado no arquétipo de "dez lâminas" ou tropa secreta de especialistas, mas evitar copiar personagens ou estrutura específica de outra obra. Criar versões próprias, com objetivos, estilos e rivalidades locais.
+Masao possui um círculo de executores de elite no arquétipo de dez especialistas.
+Na campanha, a homenagem é assumida no nome e na função dramática; os membros
+devem ganhar objetivos, estilos e rivalidades próprios.
+
+A partir de Ren no nível 5, um membro da Juppongatana pode aparecer em Ravens
+Bluff ou por meio de intermediários. O primeiro encontro deve demonstrar aumento
+real de escala: dano, perda, deslocamento forçado, ameaça a vínculo, dilema de
+matar ou custo estratégico são consequências válidas. Consultar
+`narrador/juppongatana.md` antes de usar.
 
 Possíveis funções de elite:
 
@@ -219,8 +233,8 @@ Possibilidade futura não canônica:
   passado;
 * a cena não precisa ser combate até a morte: pode ser conversa, teste,
   intimidação, duelo interrompido ou recado calculado;
-* evitar usar literalmente nomes ou estrutura copiada de outra obra; criar um
-  círculo próprio de especialistas de Masao, com funções e conflitos próprios.
+* usar a Juppongatana como homenagem e criar o executor como personagem próprio
+  da campanha, com função, voz e conflito ligados a Masao e Ren.
 
 Escalada recomendada:
 

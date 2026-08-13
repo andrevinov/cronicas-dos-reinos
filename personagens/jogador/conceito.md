@@ -14,6 +14,10 @@ Ele chegou a **Ravens Bluff** seguindo o rastro de um traidor de seu clã. Esse 
 
 Ren não veio a Faerûn para se tornar herói. Veio para encontrar uma pessoa. O problema é que Ravens Bluff é uma cidade onde uma busca privada pode rapidamente encostar em guildas, guardas, contrabandistas, nobres, templos e velhos segredos enterrados sob as ruas.
 
+Sua origem vem do Clã Kagehira, uma rede shinobi de elite que servia ao shogunato de Kozakura como inteligência discreta. Ren e Aiko foram órfãos ainda crianças, sobreviveram anos na miséria e foram depois resgatados pelo tio, chefe do clã. Aiko se tornou shinobi antes dele e o ajudou a acompanhar o treinamento.
+
+O inimigo central de Ren é **Masao Hirasawa**, velho criminoso de Kara-Tur, antigo monge segundo rumores, articulador do submundo de Kozakura e líder da **Juppongatana**, as Dez Espadas. Masao matou Aiko, roubou o Selo da Lua Velada e desapareceu para o oeste depois da queda do poder que quase consolidou em Kozakura.
+
 ---
 
 ## Função na campanha
@@ -59,7 +63,9 @@ Sua primeira cena provável envolve o porto, a guarda noturna ou uma carga suspe
 
 Estes detalhes podem ser definidos em jogo:
 
-* nome verdadeiro do traidor, caso esteja usando identidades falsas;
 * quais facções de Ravens Bluff já protegem ou exploram o traidor;
-* se o clã de Ren ainda o apoia ou o considera descartável;
-* se a morte da irmã foi assassinato simples, execução política ou parte de algo maior.
+* se algum sobrevivente do Clã Kagehira ainda apoia Ren ou o considera descartável;
+* quais membros das Dez Espadas vieram para Faerûn, morreram ou se dispersaram;
+* o que Masao roubou de uma divindade de Kara-Tur e quanto da lenda sobre o inferno é literal;
+* se Masao veio para Faerûn fugindo, buscando algo sob a terra ou as duas coisas;
+* quem ou o que salvou Ren depois da facada de Masao.

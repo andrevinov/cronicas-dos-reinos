@@ -871,6 +871,7 @@ objetivos:
     - "encontrar Masao Hirasawa"
     - "recuperar o Selo da Lua Velada"
     - "descobrir por que Aiko Kagehira foi morta"
+    - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
     - "decidir o próximo passo na Casa da Aurora Menor após a lembrança de Peta sobre o homem de manga cinza, os dois anéis, o peixe, a máscara e o lugar frio sob rodas"
     - "investigar a rota baixa/oficina dos tintureiros e sua possível ligação com Narwhal Manor, Brass e a palavra máscara"
@@ -900,7 +901,7 @@ vinculos_ativos:
   antagonista_principal:
     nome: "Masao Hirasawa"
     status: "foragido"
-    conhecimento_de_ren: "Ren acredita que Masao pode ter usado Ravens Bluff como esconderijo, ponto de troca ou passagem."
+    conhecimento_de_ren: "Ren acredita que Masao pode ter usado Ravens Bluff como esconderijo, ponto de troca ou passagem. Ren sabe que Masao construiu poder no submundo de Kozakura, comandou a Juppongatana/Dez Espadas e cultiva o sonho de ser rei das sombras."
 
 conhecimento_atual:
   arquivo: "personagens/jogador/conhecimento.md"

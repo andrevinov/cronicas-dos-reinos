@@ -11,11 +11,37 @@ O conteúdo aqui é conhecimento do personagem. Segredos do narrador devem ficar
 Ren sabe:
 
 * seu treinamento veio do Clã Kagehira;
+* o Clã Kagehira servia ao shogunato de Kozakura como rede shinobi de inteligência, infiltração e mensagens secretas;
+* seus pais morreram em uma missão quando Aiko e Ren ainda eram crianças;
+* ele e Aiko sobreviveram por cinco anos na miséria antes de serem encontrados pelo tio, chefe do clã;
+* Aiko avançou no treinamento mais rápido que ele e o ajudava nas madrugadas;
 * Masao Hirasawa matou Aiko Kagehira;
 * Masao roubou o Selo da Lua Velada;
 * o selo pode ser usado para falsificar autoridade do clã;
-* se Ren falhar, seu clã provavelmente o considerará morto ou inútil;
+* o quartel-general dos Kagehira foi destruído depois da armadilha de Masao;
 * a missão é pessoal, mas também protege agentes que ainda podem estar vivos.
+
+---
+
+## Sobre Masao e as Dez Espadas
+
+Ren sabe ou acredita:
+
+* Masao Hirasawa é um homem velho, perigoso e estrategista;
+* a história corrente em Kozakura diz que Masao foi monge, roubou um pertence de uma divindade de Kara-Tur, foi amaldiçoado ao inferno e voltou de lá com as próprias mãos;
+* Masao cultiva o sonho de ser o rei das sombras: senhor invisível de crime, segredos, rotas, autoridades compradas e passagens subterrâneas;
+* Masao reuniu a Juppongatana, as Dez Espadas, como círculo de elite de criminosos e especialistas de Kara-Tur;
+* os Kagehira atrapalhavam Masao porque funcionavam como os olhos e ouvidos secretos do shogun;
+* depois da captura breve e fuga de Masao, as Dez Espadas também desapareceram de Kara-Tur.
+
+Ren não sabe:
+
+* qual pertence divino Masao teria roubado;
+* qual divindade o teria amaldiçoado;
+* quanto da lenda sobre o inferno é literal;
+* se Masao veio a Faerûn por fuga, busca de poder ou ambos;
+* onde estão os membros sobreviventes das Dez Espadas;
+* quem realmente salvou Ren depois da facada de Masao.
 
 ---
 
@@ -67,6 +93,7 @@ Ren acredita que Masao:
 * passou por rotas comerciais;
 * usou pelo menos uma identidade falsa;
 * tinha dinheiro ou apoio externo;
+* pode estar ligado a agentes de elite ou intermediários vindos da antiga rede das Dez Espadas;
 * chegou ou tentou chegar ao Mar das Estrelas Cadentes;
 * pode ter usado Ravens Bluff como esconderijo, ponto de troca ou passagem.
 
@@ -75,7 +102,7 @@ Ren ainda não sabe:
 * se Masao permanece na cidade;
 * se Masao trabalha para alguém local;
 * se o selo já foi vendido;
-* se a morte de Aiko foi decisão própria de Masao ou ordem de outra pessoa.
+* se a armadilha contra Aiko foi apenas vingança contra os Kagehira ou parte de algo maior.
 
 ---
 
