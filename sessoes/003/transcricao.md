@@ -80,6 +80,26 @@ Imagem aérea da explosão parcial na balança velha: [001-explosao-balanca-velh
 
 **Jogador**
 
+[Antes de agir, faz um teste de Intuição pra mim, sobre a seguinte ideia: é uma faca de dois gumes isso dos barris. Além de impor medo à cidade e seus poderosos, é possível que Masao tenha achado algo embaixo da cidade... masmorras de alguma civilização antiga que ele queira acessar. E talvez esteja querendo conseguir acesso. Testa minha Intuição e me diz se consigo concluir isso ou não. Minha ação vai depender dessa conclusão.]
+
+**Narrador**
+
+Intuição sobre o propósito dos barris: d20 8 + 6 = 14 contra CD 15. Falha.
+
+Ren não consegue transformar essa hipótese em conclusão.
+
+A ideia tem dentes. A explosão foi pequena demais para parecer uso pleno de dois barris secos. O ponto escolhido não foi uma praça simbólica, uma casa nobre ou uma fila cheia; foi a balança velha, sobre madeira, pedra molhada e passagem baixa. E Peta já tinha falado de frio, embaixo, rodas acima e água na parede.
+
+Mas isso ainda abre direções demais.
+
+Pode ser tentativa de acesso. Pode ser rota de fuga. Pode ser teste de carga. Pode ser sabotagem feita para parecer terror maior do que foi. Pode ser só uma explosão mal executada por pó úmido. Pode ser Masao procurando algo sob a cidade, mas a parte de masmorras antigas ou civilização enterrada ainda não se sustenta sozinha na cabeça de Ren.
+
+Conclusão útil: **Ren pode suspeitar que o objetivo não era apenas matar gente ou criar pânico; abrir ou expor uma rota subterrânea é plausível.** Conclusão que ele ainda não tem: **que Masao encontrou uma masmorra antiga específica ou que os barris existem principalmente para acessar uma civilização soterrada.**
+
+Situação segue a mesma: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:41 de 4 Eleasis, 1372 DR**.
+
+**Jogador**
+
 [Ok, então pode aplicar o nível 5. Eu escolho algum poder? O que é CD de ki?]
 
 **Narrador**
@@ -403,5 +423,49 @@ Atrás de Ren, a voz de Luath corta o pânico.
 Ele ainda está longe demais para alcançar a abertura antes de Ren. Perto da garganta baixa, entre fumaça e pó, há marcas arrastadas recentes e uma lasca de cera vermelha presa numa tábua quebrada. Também há um chiado baixo vindo de dentro, como pano molhado encostando em brasa, ou como alguma coisa química terminando de morrer.
 
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:41 de 4 Eleasis, 1372 DR**. Ren tentou seguir a trilha da carroça, mas perdeu tempo no cruzamento de rastros do mercado. Uma explosão parcial atingiu a área da balança velha e abriu uma passagem baixa sob o tablado. O efeito parece menor do que dois barris inteiros deveriam causar; pode haver carga remanescente, pó úmido que não detonou ou outro barril em outro ponto. Há feridos próximos, guardas tentando conter pânico e uma abertura escura à frente.
+
+O que Ren faz?
+
+**Jogador**
+
+Mesmo sem conclusão prática, Ren vira pra Luath:
+
+"Existem túneis subterrâneos conhecidos nessa cidade? Talvez de alguma civilização anterior a de vocês? Você sabe onde há uma entrada pra eles aqui por perto?"
+
+**Narrador**
+
+Luath já está andando quando Ren pergunta. Um dos guardas tenta passar por ele com um balde de areia; outro grita para alguém parar de procurar mercadoria no meio da fumaça. Luath segura o primeiro pelo ombro, empurra o balde na direção certa e responde sem tirar os olhos da abertura.
+
+"Sarbreen."
+
+Ele fala o nome como quem não está contando uma lenda, mas nomeando um problema antigo de trabalho.
+
+"Cidade anã. Antes de Ravens Bluff ser Ravens Bluff. Metade da cidade humana foi construída em cima do que sobrou dela, e parte do que sobrou virou porão, esgoto, drenagem, adega de rico, buraco de ladrão e morte de curioso."
+
+Um estalo baixo vem da garganta aberta sob o tablado. Não é explosão. É madeira cedendo mais um dedo.
+
+Luath continua:
+
+"Tem entradas conhecidas? Tem. Guardas, Brigada de Esgoto, Inspetoria de Construções, algumas guildas, certos armazéns e certas casas velhas têm pedaços de mapa. Pedaços. Mapa inteiro vira briga de faca ou processo de nobre. Perto daqui, as entradas limpas ficam por bocas de drenagem do cais e porões registrados de armazém. Mas uma entrada limpa não abre com barril."
+
+Ele aponta para o rasgo escuro.
+
+"A entrada perto é essa."
+
+Agora Ren entende a diferença no rosto de Luath. O sargento não está surpreso porque existem túneis. Está surpreso porque alguém escolheu abrir um deles em pleno mercado, com carga explosiva, na frente da cidade inteira.
+
+"Se seu homem queria só pânico, escolheu um jeito caro. Se queria porta, escolheu um jeito barulhento. Qualquer uma das duas coisas é ruim."
+
+De dentro da passagem, o chiado diminui. A fumaça não sobe reta; ela é puxada para baixo e para dentro, como se houvesse ar correndo por trás da ruptura. Por um instante, entre as tábuas partidas, Ren vê uma marca que não pertence ao mercado: um traço angular gravado em pedra velha, meio coberto por lodo. Não é escrita comum. Não é marca de guilda atual. Parece antigo, geométrico, feito para durar.
+
+Então vem outro som.
+
+Não grito. Não palavra clara. Um golpe abafado de metal contra pedra, mais fundo na passagem, seguido por passos rápidos se afastando na água rasa.
+
+Luath ouve também. O olhar dele vai de Ren para a abertura.
+
+"Eu tenho feridos, gente burra querendo correr para o buraco e guardas demais usando metal onde não deviam. Se você descer, eu seguro a boca e mando areia. Se ficar, eu uso você aqui. Mas decida agora."
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **10:42 de 4 Eleasis, 1372 DR**. Luath confirmou que Ravens Bluff foi construída sobre as ruínas subterrâneas da antiga cidade anã de **Sarbreen**, hoje parcialmente usada como esgotos, drenagens, porões e passagens perigosas. A abertura diante de Ren parece ter exposto pedra antiga e ar circulando para baixo; há som de alguém ou algo se afastando pela passagem. Entrar agora significa descer sem chama aberta, em fumaça, água rasa e terreno quebrado.
 
 O que Ren faz?

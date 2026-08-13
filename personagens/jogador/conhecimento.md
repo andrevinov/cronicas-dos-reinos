@@ -2422,3 +2422,14 @@ Progressão:
 * o efeito parece menor do que dois barris inteiros secos deveriam causar; Ren considera plausível haver carga remanescente, pó úmido que não detonou ou outro barril em outro ponto;
 * Ren segue com 38/38 PV, CA 17, 5/5 ki, 21 PO, 9 shuriken e o caderno de contas de Bram Vask;
 * hora aproximada: 10:41 de 4 Eleasis, 1372 DR.
+* rolagem: Intuição sobre o propósito dos barris, d20 8 + 6 = 14 contra CD 15, falha;
+* Ren não conseguiu concluir que Masao esteja tentando acessar uma masmorra antiga ou civilização soterrada sob Ravens Bluff;
+* Ren considera plausível que a explosão não tenha sido apenas para matar ou criar pânico, e que abrir ou expor uma rota subterrânea possa ser parte do objetivo;
+* a hipótese de algo antigo específico embaixo da cidade permanece especulativa para Ren.
+* Ren perguntou a Luath sobre túneis subterrâneos ou civilização anterior sob Ravens Bluff;
+* Luath respondeu com o nome **Sarbreen**: uma antiga cidade anã sobre a qual Ravens Bluff foi construída;
+* segundo Luath, partes de Sarbreen viraram porões, esgotos, drenagens, adegas, passagens clandestinas e lugares perigosos;
+* Luath sabe que guardas, Brigada de Esgoto, Inspetoria de Construções, certas guildas, armazéns e casas antigas possuem apenas pedaços de mapas; mapas completos ou bons demais são disputados, restritos ou politicamente perigosos;
+* Luath disse que, perto dali, entradas conhecidas passam por bocas de drenagem do cais e porões registrados de armazém, mas a entrada imediata é a passagem aberta pela explosão na balança velha;
+* Ren viu por um instante um traço angular antigo gravado na pedra sob o tablado, meio coberto por lodo, e ouviu som de metal contra pedra seguido por passos rápidos se afastando pela água rasa;
+* hora aproximada: 10:42 de 4 Eleasis, 1372 DR.
