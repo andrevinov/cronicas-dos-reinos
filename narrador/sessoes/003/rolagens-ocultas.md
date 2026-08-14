@@ -180,3 +180,46 @@ Consequências:
   Brunna direcione Ren à Escada das Sete Águas.
 * A reação confirma que há olhos sobre o tema Sarbreen, mas não identifica o
   mandante nem prova ligação direta com o cabriolé, Narwhal, Red Sail ou Masao.
+
+---
+
+## Plano duplo com Brunna Torkel
+
+Contexto: Ren escreveu discretamente para Brunna jogar o jogo do bilhete,
+oferecer em voz alta a Escada das Sete Águas, vender o mapa isca e, em
+silêncio, vender também um mapa de local seco com segunda saída e perfil
+compatível com reunião/culto. Depois Ren saiu, ativou Passos sem Pegadas e
+vigiou a oficina para tentar ouvir quem pagaria Brunna.
+
+Rolagens abertas:
+
+* Escrever instrução discreta para Brunna: d20 4 + 4 = 8 contra CD 13. Falha.
+* Compra encenada da Escada das Sete Águas: d20 1 + 0 = 1 contra CD 12. Falha.
+* Sair e vigiar Medidas Torkel sob Passos sem Pegadas: d20 6 + 7 + 10 = 23
+  contra CD 15. Sucesso. O atalho de rolagem mostrou 13 sem o bônus de
+  Passos sem Pegadas; o +10 foi aplicado ao mesmo dado.
+* Ouvir a cobrança pela janela: d20 3 + 6 = 9 contra CD 14. Falha.
+
+Rolagens ocultas:
+
+* Brunna entender plano de Ren apesar da escrita ruim: d20 12 + 5 = 17 contra
+  CD 12. Sucesso.
+* Canal da Escada perceber encenação na compra: d20 16 + 4 = 20 contra CD 12.
+  Sucesso.
+* Cobrador da Escada perceber Ren vigiando sob Passos sem Pegadas: d20 8 + 5 =
+  13 contra CD 17. Falha.
+* Cobrador da Escada deixar sinal identificável ao pagar Brunna: d20 8 + 3 = 11
+  contra CD 13. Falha.
+
+Consequências:
+
+* Brunna entende o plano e aceita lucrar dos dois lados.
+* Ren compra publicamente o mapa da Escada das Sete Águas por 2 PO e,
+  discretamente, compra o mapa dos porões secos por mais 2 PO.
+* O canal interessado percebe que a compra pública foi encenada ou contaminada,
+  mas ainda paga Brunna por conferir a entrega.
+* O cobrador não percebe Ren sob Passos sem Pegadas.
+* Ren confirma que alguém veio pagar Brunna, mas não obtém rosto, selo, nome ou
+  frase completa; só ouve fragmento contendo a palavra "errado".
+* Recursos após a cena: Ren fica com 17 PO e 2/5 ki; Passos sem Pegadas ativo
+  até cerca de 20:31 de 5 Eleasis, se a concentração for mantida.

@@ -1659,3 +1659,65 @@ Pode ser lugar de emboscada. Pode ser caminho falso para gastar a noite. Pode se
 Conclusão útil: **a Escada das Sete Águas provavelmente não é neutra**. Conclusão que Ren ainda não tem: **se ela é isca, desvio ou rota verdadeira vigiada**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren disfarça, como se não desse atenção ao que está vendo. Procura papel e pena, e fica olhando um objeto enquanto escreve, discretamente: "joga o jogo deles, me oferece em voz alta o que pediram". Se Brunna oferecer, Ren se fará de desentendido e levará esse mapa, oferecendo abertamente o preço que ela cobrar por ele. Depois colocará o mesmo valor na mesa e escreverá "me dá mapa de local seco, com segunda saída, onde pode ter culto". Se ela for esperta, ganha meu dinheiro e o dinheiro de quem ofereceu uma grana pra que eu recebesse aquele mapa. Ren fará que vai embora, ligará Passos sem Pegadas e procurará um canto oculto por onde pode ficar vigiando a oficina dela. Se alguém entrar pra "paga-la" depois, Ren ficará discretamente em alguma janela, escutando.
+
+**Narrador**
+
+Teste de Prestidigitação de Ren para escrever a instrução discreta: d20 4 + 4 = 8 contra CD 13. Falha.
+
+Teste de Enganação de Ren para encenar a compra da Escada das Sete Águas: d20 1 + 0 = 1 contra CD 12. Falha.
+
+O plano é bom. A execução, dentro da sala pequena de Brunna, é torta.
+
+Ren consegue achar papel e pena, mas o gesto não fica natural. O olho dele desvia para o objeto errado por tempo demais, a pena raspa um pouco alto no papel, e Brunna precisa fingir que está irritada com um compasso para dar cobertura ao que está lendo. Ela entende mesmo assim. Não por delicadeza de Ren; por ser rápida.
+
+"Você quer porta?", ela pergunta em voz alta, seca demais. "Então quer história de tolo. A Escada das Sete Águas é o que se vende para homem que acha que Sarbreen tem placa na entrada."
+
+Ela puxa uma folha mais estreita, riscada com um corredor descendente que cruza marcas de drenagem, três níveis úmidos e uma escada quebrada em zigue-zague. Bate o dedo no canto inferior.
+
+"Duas peças de ouro por isso. Uma para o mapa, outra para eu fingir que não avisei que água canta mentira."
+
+A encenação de Ren não ajuda. Ele se faz de desentendido, mas o silêncio fica meio batido, a moeda vem na hora errada, e qualquer olho treinado do lado de fora perceberia que há teatro ali, não só compra. Brunna segura a cena por ele, tomando as duas moedas como se estivesse acostumada a vender arrependimento.
+
+Depois, quando Ren coloca mais duas peças de ouro na mesa e escreve a segunda instrução, Brunna não comenta. A mão dela cobre o papel. A outra mão desliza por baixo de uma tábua de camadas e arranca uma cópia menor, sem título, feita em linhas curtas.
+
+"O outro você não comprou", ela diz baixo, sem olhar para ele. "E eu não vendi."
+
+O mapa verdadeiro não é bonito. Mostra um trecho de porões secos atrás de armazéns velhos, duas entradas possíveis marcadas por medidas de parede, uma saída baixa para drenagem e três sinais riscados: **parede raspada**, **ar seco**, **marca apagada**. Brunna não escreve "culto". Não escreve "sol". Mas o tipo de lugar bate com o que ela disse: onde alguém pode reunir gente sem lama nos joelhos, guardar papel e apagar símbolo antigo antes de riscar outro.
+
+Ren paga **4 PO** no total. Fica com **17 PO**.
+
+Ele sai pela frente como comprador enganado.
+
+Dois passos depois da dobra da viela, Ren gasta ki.
+
+**Passos sem Pegadas** ativo: Ren gasta **2 ki**. Ki atual: **2/5**. Duração: até cerca de **20:31**, enquanto mantiver concentração. Bônus de +10 em Furtividade para Ren e criaturas escolhidas próximas; aqui, apenas Ren.
+
+Teste de Furtividade de Ren para sair e vigiar Medidas Torkel sob Passos sem Pegadas: d20 6 + 7 + 10 = 23 contra CD 15. Sucesso.
+
+Ele some do fluxo antes que o fluxo perceba. Não vira sombra mágica visível; vira ausência bem colocada. Um alpendre torto, uma pilha de caibros, uma janela alta com vidro opaco e moldura solta. De lá, Ren consegue ver a veneziana dos fundos da Medidas Torkel e parte estreita da sala onde Brunna trabalha.
+
+O tempo passa pouco, mas parece muito.
+
+Teste de Percepção de Ren para ouvir a cobrança pela janela: d20 3 + 6 = 9 contra CD 14. Falha.
+
+Alguém vem.
+
+Não pela frente. Um sujeito baixo, de capa escura comum e capuz puxado, entra pelo fundo com a confiança de quem não quer conversar mais do que precisa. Ren não ouve as primeiras palavras. A janela devolve mais ruído de madeira úmida do que voz. Brunna fica de pé, não recua, e aponta para a mesa como quem cobra antes de discutir.
+
+O sujeito põe uma bolsinha pequena ali.
+
+Ren vê moeda. Não vê selo. Não vê anel. Não vê rosto limpo. A mão do sujeito tem luva simples, sem bordado; a manga é marrom escura, não cinza-azulada. Brunna diz algo curto. O sujeito responde mais curto ainda. A única palavra que atravessa a janela com alguma clareza é:
+
+"...errado."
+
+Depois ele sai pelo mesmo fundo, rápido, sem correr.
+
+Ren não foi percebido vigiando. Mas também não conseguiu ouvir o bastante para identificar o canal, o pagador ou a instrução completa. O que ele tem agora são duas coisas concretas: a Escada das Sete Águas foi paga por alguém que ainda se importou em conferir a entrega, e o mapa seco de Brunna aponta para porões velhos atrás de armazéns, com parede raspada, ar seco e marca apagada.
+
+Hora aproximada: **19:49 de 5 Eleasis, 1372 DR**. Ren está oculto do lado de fora da Medidas Torkel, sob **Passos sem Pegadas**, com **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. Ele carrega o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos.
+
+O que Ren faz?

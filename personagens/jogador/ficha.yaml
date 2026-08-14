@@ -154,7 +154,7 @@ recursos_de_classe:
     resumo: "Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um."
   ki:
     pontos_maximos: 5
-    pontos_atuais: 4
+    pontos_atuais: 2
     cd: 14
     recarga: "descanso curto ou longo"
     calculo_cd: "8 + bônus de proficiência + modificador de Sabedoria"
@@ -256,7 +256,7 @@ equipamento:
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
     - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso disponível desde o amanhecer de 5 Eleasis"
   dinheiro:
-    po: 21
+    po: 17
 
 vinculos:
   regiao_inicial: "Ravens Bluff"
