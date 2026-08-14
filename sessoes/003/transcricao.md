@@ -2559,3 +2559,73 @@ Ren ainda tem um instante antes de aparecer.
 Hora aproximada: **18:18 de 6 Eleasis, 1372 DR**. Ren está atrás da **Sombra B**, prestes a entrar como Kage. A **Sombra A** junto aos bancos dos músicos continua visível e utilizável para Passo Sombrio. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
 
 O que Ren faz como primeiro gesto de Kage?
+
+**Jogador**
+
+Se eles querem saber se eu sou um Kagehira... dane-se. Saberão hoje.
+
+Ren usa Passo Sombrio pra entrar da sombra A para B. E começa o seu show. Dá o melhor show que puder dar, na força de vontade mais pristina de fazer seus inimigos saberem que ele é perigoso.
+
+**Narrador**
+
+Ren está na Sombra B, não na A. Mas a intenção é clara: entrar usando o caminho entre as duas sombras marcadas.
+
+O Passo Sombrio não gasta ki.
+
+Teste de Acrobacia de Ren para entrada de Kage com Passo Sombrio e controle físico: d20 com vantagem [13, 1] -> 13 + 7 = 20 contra CD 15. Sucesso.
+
+Teste de Atuação de Ren para transformar técnica em ameaça teatral: d20 11 + 2 = 13 contra CD 13. Sucesso.
+
+Merrit termina a primeira frase como se tivesse visto o movimento antes de ele acontecer.
+
+"...ela já estava esperando no canto errado."
+
+A Sombra B fica vazia.
+
+Não há cortina puxada. Não há fumaça. Não há salto visível entre um ponto e outro.
+
+Há apenas uma quebra curta no modo como a lamparina recorta o corpo de Kage e, no batimento seguinte, Ren está na Sombra A, junto aos bancos dos músicos, de perfil para os convidados. O pano negro de Dessa chega meio fôlego depois, atrasado de propósito, como se a roupa tivesse tentado seguir o corpo e falhado.
+
+Um dos músicos erra uma nota. Sorn não olha para ele. Isso é aviso suficiente.
+
+Ren entra baixo, sem pedir aplauso. O primeiro giro é quase pequeno demais para ser número: pé, quadril, ombro, manga negra abrindo apenas o bastante para esconder o centro do corpo. O segundo movimento corrige a escala. Ele passa pelo limite da luz sem se entregar a ela, corta a área baixa do picadeiro com uma sequência seca de mãos vazias, e cada golpe parado no ar parece terminar a um dedo de uma garganta que não está ali.
+
+Não é o Kage que quer ser amado pela lona cheia.
+
+É o Kage que quer que uma sala de inimigos entenda custo.
+
+Lysa entra na marca baixa e recua no tempo certo, não como princesa, mas como sombra menor que evita ser engolida. Merrit acompanha com a voz mais magra do que no Benefício, sem floreio para criança, sem encanto fácil para público grande. Dessa fez o figurino trabalhar contra o olhar: quando Ren vira, a parte branca quase aparece, mas nunca o suficiente para virar beleza. Fica como lâmina escondida.
+
+Os seis convidados reagem diferente. Dois se inclinam para frente, fascinados. Um recua meio palmo sem perceber. Um dos guardas sem brasão leva a mão ao cinto e para quando Tobb apenas muda o peso do corpo. Jack não fala. Não precisa.
+
+Corven Dalm perde meio piscar.
+
+É pouco, mas Ren vê.
+
+O homem da Casa Veyr, na marca de luz, tenta seguir o mapa da técnica com os olhos. Primeiro procura a dobra lateral vazia. Depois a sombra dos músicos. Depois uma terceira sombra que Ren não usou. Ele entendeu que viu coisa real. Não entendeu a gramática completa. Sabe que a sombra pode ser caminho; não sabe ainda onde acaba a estrada.
+
+O show continua.
+
+Ren não faz outro Passo Sombrio. Não ainda. Ele deixa a primeira aparição trabalhar sozinha, como veneno que demora a espalhar. O corpo faz o resto: deslocamentos impossíveis de serem conforto, quedas paradas antes de virarem queda, giros baixos demais para nobre aplaudir sem sentir que está aplaudindo ameaça.
+
+A presença de Kage pega por pouco, mas pega. Não vira êxtase. Vira silêncio útil.
+
+Então Dalm encontra a brecha.
+
+Ele não levanta a voz. Não quebra o contrato de modo limpo. Fala como patrono fazendo comentário sobre técnica, com Jack a poucos passos e todos os ouvidos podendo fingir que ouviram apenas elogio.
+
+"Raro", diz Corven Dalm. "A Casa Veyr foi bem aconselhada. Nem todo nome curto nasce pequeno."
+
+Jack olha para ele.
+
+Não o bastante para encerrar a apresentação.
+
+O homem da Casa Veyr não olha para Dalm. Continua olhando para Ren.
+
+A frase fica no ar, fina e calculada. Pode ser só sobre "Kage". Pode ser sobre outro nome por trás de Kage. Pode ser sobre preço. Pode ser sobre família.
+
+Merrit, profissional até o osso, segura o próximo verso por meio segundo para não atropelar a escolha de Kage.
+
+Hora aproximada: **18:20 de 6 Eleasis, 1372 DR**. Ren está na área baixa da apresentação, perto da **Sombra A**. O **Passo Sombrio** foi usado uma vez nesta cena, sem gasto de ki; como Ren não fez ataque corpo a corpo no mesmo instante, a vantagem de ataque concedida pela habilidade não fica guardada. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A Casa Veyr viu que Kage pode atravessar sombras, mas não conseguiu mapear todos os limites da técnica.
+
+O que Ren faz diante da frase de Dalm?

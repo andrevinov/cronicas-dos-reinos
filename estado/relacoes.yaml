@@ -1578,6 +1578,7 @@ relacoes:
       - "A Casa Veyr tentou alterar os filtros finais: pagamento restante com convidados, assinatura de Dalm só na lona e homem da casa junto da entrada de artistas."
       - "Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle dos Mooney, não da Casa Veyr."
       - "Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO está com Jack/Tobb, mas o cachê de Ren pela apresentação fechada segue pendente do pós-show."
+      - "Ren abriu a apresentação fechada com Passo Sombrio, escolhendo impacto e ameaça controlada em vez de ocultar totalmente a técnica."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1592,6 +1593,7 @@ relacoes:
       - "Tobb verificou que Casa Veyr existe operacionalmente como presença temporária de aluguel e pagamento, mas sem raiz local profunda."
       - "Ren prometeu a Jack que nada aconteceria às pessoas do circo; Jack ouviu a promessa, mas continua dependendo dos filtros práticos."
       - "Ren decidiu prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual e discutiu o transporte de Kage com Jack."
+      - "Jack viu Dalm encaixar a frase ambígua 'Nem todo nome curto nasce pequeno' durante a apresentação, sem romper claramente o contrato."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1613,6 +1615,7 @@ relacoes:
       - "A frase sobre intermediários desnecessários na resposta da Casa Veyr sugere nova tentativa de separar Kage dos filtros de Jack e Silva."
       - "Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer a contraproposta."
       - "Mesmo com a entrada controlada, o homem da Casa Veyr está perto o bastante da aba dos artistas para observar lamparinas, pregas e sombras."
+      - "A revelação do Passo Sombrio aumenta o valor comercial de Kage, mas também torna a máscara mais interessante para observadores especializados."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
@@ -1663,7 +1666,10 @@ relacoes:
       máscara pudesse virar conversa com público ou interessado privado.
       Na tarde de 6 Eleasis, Dessa preparou Ren para a apresentação fechada da
       Casa Veyr como Kage particular: menos caro, mais difícil de comprar. Ela
-      ajustou o figurino para preservar medo e silêncio em vez de ostentação.
+      ajustou o figurino para preservar medo e silêncio em vez de ostentação. Na
+      abertura da apresentação, o figurino acompanhou bem o Passo Sombrio: o
+      pano atrasado fez a técnica parecer ainda mais impossível sem revelar o
+      trabalho de bastidor.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
@@ -1678,6 +1684,7 @@ relacoes:
       - "Dessa preparou Ren como Kage para a reprise curta de 5 Eleasis e manteve a versão segura do figurino."
       - "Dessa viu a reprise curta funcionar no limite técnico e ajudou a retirar Kage dos olhos do público imediatamente."
       - "Dessa está preparando Kage para a apresentação fechada da Casa Veyr com ênfase em silêncio, medo e controle de imagem."
+      - "Dessa viu Kage abrir a apresentação fechada com Passo Sombrio e transformar o atraso do pano em efeito cênico útil."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
@@ -1868,7 +1875,9 @@ relacoes:
       No treino das 13:30, Ren confirmou duas marcas escuras úteis na tenda
       menor. Sorn aceitou marcá-las apenas sob condição de ninguém alterar as
       lamparinas: dobra atrás da entrada lateral e faixa baixa junto aos bancos
-      de músicos/panos extras.
+      de músicos/panos extras. Na abertura da apresentação fechada, Ren usou
+      Passo Sombrio entre essas marcas sem quebrar segurança física, mas Sorn
+      agora sabe que a Casa Veyr viu pelo menos a categoria da técnica.
     informacoes_compartilhadas_por_sorn:
       - "A última conferência completa foi ontem depois da nona badalada."
       - "Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn."
@@ -1887,6 +1896,7 @@ relacoes:
       - "Na reprise curta de 5 Eleasis, Sorn viu Kage pousar na borda externa da marca durante o salto com Passo do Vento."
       - "Sorn marcou treino básico de Kage para 13:30 de 6 Eleasis, com Merrit e Lysa, sem número novo."
       - "Sorn aceitou duas marcas escuras confiáveis para a tenda menor se as lamparinas ficarem como foram marcadas."
+      - "Sorn viu Ren usar Passo Sombrio da dobra lateral para os bancos dos músicos na abertura da apresentação fechada."
     riscos:
       - "Pode se fechar se sentir que está sendo acusado sem prova."
       - "Pode ser testemunha útil se Ren abordar como profissional, não como culpado."
@@ -1897,6 +1907,7 @@ relacoes:
       - "O ensaio individual de 5 Eleasis passou no limite, mas a coordenação do número não evoluiu além da versão segura já definida."
       - "A reprise curta reforçou a posição de Sorn: Kage funciona, mas não deve aumentar dificuldade sem marcação nova."
       - "A tenda menor ainda não oferece continuidade de sombra confiável por todos os cantos; Sorn exigirá controle de lamparinas e marcas se Kage usar esse recurso."
+      - "Depois da revelação do Passo Sombrio, Sorn tende a proteger ainda mais as lamparinas e limitar novos usos fora das duas marcas confiáveis."
   mira_dane:
     nome: "Mira Dane"
     tipo: "acrobata da corda alta"

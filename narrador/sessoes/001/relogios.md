@@ -323,7 +323,7 @@ Visibilidade: parcialmente visível.
 
 Progresso inicial: 2/6.
 
-Progresso atual: 3/6.
+Progresso atual: 4/6.
 
 Último avanço:
 
@@ -611,6 +611,7 @@ Progresso atual: 3/6.
 * após Tyr se mover contra os registros, uma contingência pública no Harbor District foi acionada com timing suspeito; tratar como possível resposta de rede, não confirmação pública de Masao.
 * Ren Kage se tornou figura pública reconhecível no Benefício da Lona Aberta, ligado a uma estética de Kara-Tur, movimento excepcional e nome incompleto "Kage". Isso não revela Kagehira nem prova conexão com Masao, mas cria uma superfície pública que agentes mais competentes podem usar para observar rotina, patronos e vínculos.
 * Na noite após o Benefício, nenhuma tentativa competente conseguiu mapear a rotina interna de Kage dentro do circo; a superfície pública existe, mas ainda não virou acesso direto.
+* Em 6 Eleasis, durante a apresentação fechada da Casa Veyr, Ren decidiu abrir Kage com Passo Sombrio diante de observadores interessados. O homem da Casa Veyr não conseguiu mapear os limites completos da técnica, mas a existência de deslocamento real entre sombras foi vista e associada à persona Kage.
 
 Descrição:
 

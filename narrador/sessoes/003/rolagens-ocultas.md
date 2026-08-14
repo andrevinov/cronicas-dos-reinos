@@ -382,6 +382,42 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: abertura de Kage diante da Casa Veyr
+
+Contexto: Ren decidiu revelar o Passo Sombrio como primeiro gesto de Kage,
+aceitando o risco de ser associado a uma técnica rara de sombra para fazer os
+observadores entenderem que ele é perigoso.
+
+Rolagens abertas:
+
+* Entrada de Kage com Passo Sombrio e controle físico: d20 com vantagem [13, 1]
+  -> 13 + 7 = 20 contra CD 15. Sucesso.
+* Presença de Kage para transformar técnica em ameaça teatral: d20 11 + 2 = 13
+  contra CD 13. Sucesso.
+
+Rolagens ocultas:
+
+* Homem da Casa Veyr mapear limites do Passo Sombrio visto no palco: d20 9 + 5
+  = 14 contra CD 16. Falha.
+* Corven Dalm provocar Kage sem romper o contrato dos Mooney: d20 10 + 6 = 16
+  contra CD 15. Sucesso.
+
+Consequências:
+
+* Ren usa Passo Sombrio da dobra lateral para a sombra junto aos bancos dos
+  músicos. O uso não gasta ki.
+* O show abre com sucesso físico forte e presença cênica suficiente para
+  transformar Kage em ameaça controlada, não apenas atração.
+* A Casa Veyr vê que Kage pode atravessar sombras, mas o homem da casa não
+  consegue mapear todos os limites da técnica nesta primeira observação.
+* Dalm consegue inserir uma provocação ambígua sem dar a Jack motivo limpo para
+  encerrar o show: "Nem todo nome curto nasce pequeno."
+* Como Ren expôs uma técnica rara de sombra diante de observadores interessados,
+  o relógio oculto "círculo de Masao desperta" deve avançar 1, salvo se
+  consequência posterior impedir que a informação saia da tenda.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
