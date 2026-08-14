@@ -297,6 +297,52 @@ Consequências:
 
 ---
 
+## Tarde de 6 Eleasis: aceite de Kage, visita a Nera e dobra contratual
+
+Contexto: Ren autorizou Jack a aceitar a apresentação fechada da Casa Veyr sob
+os filtros rígidos dos Mooney, reconhecendo que provavelmente é armadilha. Em
+seguida, tentou usar Passo Sombrio para entrar discretamente na carroça verde e
+avisar Nera sobre a menção à gravadora/seladora antes de se preparar com Dessa.
+
+Rolagens abertas:
+
+* Encontrar linha de sombra e visão para entrar na carroça verde com Passo
+  Sombrio: d20 17 + 6 = 23 contra CD 13. Sucesso.
+* Entrar na carroça verde por Passo Sombrio sem virar assunto do circo: d20 4 +
+  7 = 11 contra CD 12. Falha.
+
+Rolagens ocultas:
+
+* Casa Veyr aceitar filtros finais de Jack sem romper contrato: d20 4 + 4 = 8
+  contra CD 14. Falha.
+* Silva e Tobb manterem rota interna limpa para visita discreta aos Vell: d20
+  13 + 5 = 18 contra CD 13. Sucesso.
+* Jack Mooney bloquear dobra contratual da Casa Veyr sem atrasar a apresentação:
+  d20 1 + 6 = 7 contra CD 14. Falha.
+* Nera Vell reconhecer Corven Dalm, Casa Veyr ou uso de seladora/gravadora: d20
+  1 + 4 = 5 contra CD 14. Falha.
+
+Consequências:
+
+* Ren confirmou uma linha válida de sombra e visão para usar Passo Sombrio rumo
+  à carroça verde, desde que Silva abrisse a porta por instantes. O uso não
+  gastou ki.
+* A entrada por Passo Sombrio não virou rumor público porque Silva e Tobb
+  limparam a rota interna, mas não foi sutil dentro da carroça: a lamparina
+  tremeu/apagou, Nera se assustou, e a técnica mostrou risco emocional perto dos
+  Vell.
+* Nera não reconheceu Casa Veyr nem Corven Dalm e não conseguiu distinguir se
+  "seladora/gravadora" veio de alguém de arquivo, de selo, de Brass ou de
+  repetição calculada para pressionar Ren.
+* A Casa Veyr não aceitou os filtros de Jack de modo limpo: tenta empurrar
+  pagamento final para a chegada, assinatura de Corven Dalm apenas ao pisar na
+  lona e presença de um homem da casa junto da entrada de artistas.
+* Jack tentou bloquear a dobra sem atrasar ou arriscar o show, mas falhou. A
+  apresentação não está cancelada, porém o aceite limpo que Jack queria virou
+  novo ponto de decisão antes da saída.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob

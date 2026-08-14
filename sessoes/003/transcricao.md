@@ -2299,3 +2299,135 @@ Jack encara Ren sem teatralidade.
 Hora aproximada: **14:18 de 6 Eleasis, 1372 DR**. Ren está na **tenda menor do Jack Mooney & Sons Circus**, depois do treino básico de Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Broche do Semblante Humilde** expirou por volta de **09:25** e está gasto até o próximo amanhecer. A apresentação fechada da Casa Veyr ainda não foi aceita em definitivo; Jack está pronto para enviar aceite com filtros rígidos, salvo alteração de Ren.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren sorri com a preocupação do velho Mooney.
+
+"Pode aceitar, Jack. Eu sei que é uma armadilha. Mas tá na hora de eu dar as caras. Eu não vou tolerar ameaças às pessoas que eu protejo. Eles querem Kage? Então terão Kage. Espero que estejam preparados."
+
+E depois de algum silêncio.
+
+"Fique tranquilo: não vai acontecer nada com ninguém daqui. Dou minha palavra."
+
+Depois da conversa com Jack, Ren tomará um bom banho, e observará se há sombra que ele poderia atravessar para entrar na carroça verde sem ser notado. Se ele encontrar algo bom (tipo, sombra do quarto dele, carroça com porta semiaberta, sombra dentro da carroça) ele pedirá a Silva pra deixar a porta aberta uns instantinhos enquanto ele entra de leve. E entrará na carroça usando a sombra, pra conversar com Nera de forma segura. Falará que citaram "a seladora", que vai se expor a eles, que quer respostas de quem pode ser. Que ela não se preocupe. Que ele volta.
+
+Depois é se preparar pra apresentação. Ver com Jack como ele pretende que seja o deslocamento. Arrumar-se com Dessa e ir.
+
+**Narrador**
+
+Jack não sorri com a promessa.
+
+Ele ouve tudo, até a palavra final, e só então bate duas vezes com a unha na tampa da caixa.
+
+"Não use sua palavra como lona contra faca, Kage. Palavra é coisa bonita. Não segura estaca quando o vento vira."
+
+A voz dele continua baixa. Não é bronca pública; é conta.
+
+"Mas eu ouvi. E vou escrever do jeito que presta: Kage aceita a apresentação se os filtros dos Mooney forem lei dentro da lona. Se tentarem comprar conversa sem testemunha, o artista fica mudo. Se tentarem puxar os Vell, a gravadora, o menino ou qualquer coisa que não seja palco, eu apago lamparina e devolvo moeda com cuspe."
+
+Jack chama Tobb, dita a resposta e manda o homem sair sem pressa aparente. Isso, no circo, significa pressa real.
+
+"Agora vá tomar banho", Jack diz. "Armadilha nenhuma respeita artista fedendo a lona úmida."
+
+O banho vem com água morna o bastante para ser luxo e pouca privacidade o bastante para lembrar que luxo no circo é sempre emprestado. O cheiro de sabão comum tira poeira de Narwhal, suor de treino e um pouco da tensão da pele, mas não tira a sensação de que a noite já começou a se mover.
+
+Depois, Ren observa a rota da carroça verde.
+
+Teste de Percepção de Ren para encontrar linha de sombra e visão para entrar na carroça verde com Passo Sombrio: d20 17 + 6 = 23 contra CD 13. Sucesso.
+
+Existe uma linha.
+
+Não é perfeita, mas é real: a sombra comprida entre duas carroças de roupa, o vão escuro sob o eixo da carroça verde, e, se a porta ficar aberta por quase nada, a sombra interna junto ao baú de sementes de Silva. O alcance está dentro dos sessenta pés. Ren consegue ver o espaço por um fio estreito quando a porta respira.
+
+Silva escuta o pedido sem expressão.
+
+"Você quer testar a coisa nova dentro da carroça onde eu escondo duas pessoas que não precisam de mais susto."
+
+Ela deixa a frase no ar por tempo suficiente para ser recusa. Então olha para a rota, para Ren, para a movimentação dos ajudantes, e muda o peso de um pé para o outro.
+
+"Uma vez. Porta aberta o bastante para olho de agulha. Tavin fica na cozinha descascando coisa que não precisa ser descascada. Se você aparecer em cima da mesa, eu te bato com a própria mesa."
+
+Silva e Tobb limpam a rota interna sem anúncio: uma menina é mandada buscar linha, um ajudante é xingado por deixar balde onde não devia, e a lateral da carroça verde fica vazia por um intervalo curto demais para parecer combinado.
+
+Teste de Furtividade de Ren para entrar na carroça verde por Passo Sombrio sem virar assunto do circo: d20 4 + 7 = 11 contra CD 12. Falha.
+
+O Passo Sombrio funciona.
+
+Não há gasto de ki.
+
+A sombra entre as carroças prende Ren por um instante frio demais, como se a pele lembrasse uma madrugada que o sol não alcança. No segundo seguinte, ele está dentro da carroça verde, perto do baú de sementes.
+
+Mas não é limpo.
+
+A lamparina baixa treme e apaga. A porta range um dedo a mais. Nera, sentada perto da parede com uma camisa de Tavin no colo, prende a respiração e recua antes de reconhecer Ren. Do lado de fora, Silva fecha a porta no mesmo instante, seca como tampa de caixa.
+
+Ninguém no circo vira o rosto. Silva e Tobb seguraram a rota. Mas dentro da carroça verde, a técnica nova deixa claro que ainda não é delicada perto de quem Ren quer proteger.
+
+Nera leva a mão ao peito e solta o ar devagar.
+
+"Eu ia dizer que você podia bater antes de entrar", ela murmura. A voz tenta ironia, mas falha no meio. "Mas acho que esse era o ponto."
+
+Quando Ren explica a proposta, a palavra usada contra ela, a exposição de Kage e a intenção de buscar respostas, Nera escuta sem interromper. A cada frase, a preocupação dela muda de lugar: primeiro medo por Tavin, depois raiva por terem falado dela como ferramenta, depois uma atenção técnica que tenta achar uma ponta útil.
+
+Ela não acha.
+
+"Corven Dalm não é nome que eu conheça", Nera diz. "Casa Veyr também não. Se alguém me chamou de seladora ou gravadora, pode ser gente de arquivo, gente de selo, gente que ouviu Brass falar, ou só alguém repetindo palavra que achou bonita o bastante para assustar você."
+
+Ela olha para a porta fechada.
+
+"Isso é pior do que uma resposta, eu sei."
+
+Por um momento, a mão dela fecha a camisa de Tavin com força demais.
+
+"Não me peça para não me preocupar como se isso fosse uma tarefa simples, Ren." Ela volta os olhos para ele. "Eu posso ficar quieta. Posso ficar dentro da carroça. Posso não estragar o plano de Silva. Mas não vou fingir que é tranquilo ver você se oferecendo para a pessoa que sabe que eu existo."
+
+Nera se aproxima, mais baixa agora.
+
+"Se eles disserem meu nome lá dentro, não olhe para esta carroça nem para onde Silva estaria. Olhe para Jack. Para Tobb. Para a lona. Para qualquer coisa que faça parecer que isso é contrato, não coração."
+
+Ela toca a mão de Ren por um instante.
+
+"E volte. Não como frase bonita. Volte de um jeito que eu possa brigar com você depois."
+
+A porta se abre um dedo, no tempo exato de Silva.
+
+"Acabou a visita fantasma", ela diz do lado de fora. "Antes que a sombra aprenda a fazer drama também."
+
+Quando Ren sai, já há outro movimento em curso no circo. O aceite foi enviado. A tenda menor está sendo ajustada para parecer simples aos olhos de quem paga e menos simples para quem tenta contar saídas. Tobb desloca dois homens para posições que não parecem guarda. Sorn recoloca uma lamparina três dedos mais baixa e ameaça arrancar a mão de quem mudar aquilo de novo. Merrit ensaia uma frase curta demais para ela gostar. Lysa alonga o joelho com raiva controlada.
+
+Dessa recebe Ren no guarda-roupa menor com o figurino já separado.
+
+"Kage particular", ela diz, levantando as camadas negras. "Rico adora achar que viu uma coisa que o pobre não viu. Então hoje você não vai parecer mais caro. Vai parecer mais difícil de comprar."
+
+Ela ajusta a gola, puxa uma costura sobre o ombro e demora meio segundo a mais avaliando o efeito antes de transformar isso em crítica profissional.
+
+"Bonito demais chama conversa. Quieto demais chama medo. Fique no meio. Medo paga melhor."
+
+O fim da tarde começa a escurecer nas bordas da lona.
+
+É então que Jack entra.
+
+Não entra como homem com show pronto. Entra como homem com papel ruim na mão.
+
+"A Casa Veyr respondeu."
+
+Ele mostra o bilhete, mas não solta da própria mão.
+
+"Não recusaram. Isso seria limpo demais. Mandaram dizer que os quarenta restantes virão com os convidados, que Corven Dalm assina quando pisar na lona, e que um homem da casa deve ficar junto da aba de entrada dos artistas para 'resguardar a privacidade do patrono'."
+
+Tobb, atrás dele, parece ter mordido limão.
+
+"Eu mandei de volta que privacidade do patrono fica onde eu mandar, e que dinheiro que anda junto com convidado chega tarde demais para mandar em corda."
+
+Jack dobra o papel.
+
+"Eles não cederam antes do mensageiro fechar a boca. Se eu segurar minha linha inteira, o show pode morrer aqui ou atrasar até depois da hora prometida. Se eu ceder, alguém que não é dos Mooney fica perto demais da entrada de artista."
+
+Ele olha para Ren já meio vestido como Kage.
+
+"A armadilha acabou de mostrar um dente antes da cortina subir. Minha vontade é arrancar o dente e mandar a boca embora. Mas quem eles querem ver é você."
+
+Hora aproximada: **17:26 de 6 Eleasis, 1372 DR**. Ren está no **guarda-roupa menor do circo**, em preparação para Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Passo Sombrio** foi usado uma vez para entrar na carroça verde, sem custo de ki; a entrada não virou rumor no circo, mas assustou Nera e mostrou que a técnica ainda não é sutil perto dos Vell. A Casa Veyr não aceitou os filtros finais de modo limpo: quer pagar o restante só na chegada, fazer Corven Dalm assinar apenas ao pisar na lona e manter um homem da casa perto da entrada de artista.
+
+O que Ren faz?

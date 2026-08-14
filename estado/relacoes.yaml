@@ -640,6 +640,14 @@ relacoes:
       que ama Nera, que solucionará tudo e que ela pode ficar tranquila. Silva
       entregou o bilhete sem abrir. Nera leu duas vezes e respondeu por Silva
       que promessa grande demais não vale menos, mas pesa mais.
+      Na tarde de 6 Eleasis, Ren entrou na carroça verde por Passo Sombrio para
+      falar com Nera antes da apresentação fechada da Casa Veyr. A rota externa
+      foi limpa por Silva e Tobb, mas a entrada assustou Nera e apagou a
+      lamparina. Ren contou que a proposta citou a seladora/gravadora, que Kage
+      vai se expor e que ele pretende voltar. Nera não reconheceu Corven Dalm
+      nem Casa Veyr e não conseguiu determinar a origem exata do termo. Alertou
+      Ren a não olhar para a carroça verde nem para Silva se alguém disser o nome
+      dela durante a apresentação, para não transformar contrato em coração.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -699,6 +707,9 @@ relacoes:
       - "Nera percebeu que um recado externo tocou a segurança ao redor de Kage antes da reprise de 5 Eleasis, mas não viu o papel."
       - "Nera recebeu de Ren, por Silva, um bilhete dizendo que ele a ama e que solucionará tudo."
       - "Nera respondeu indiretamente que promessa grande demais não vale menos, mas pesa mais."
+      - "Nera sabe que a Casa Veyr ou o canal ligado a ela citou a seladora/gravadora para pressionar Kage."
+      - "Nera não reconheceu Corven Dalm nem Casa Veyr."
+      - "Nera alertou Ren a não entregar reação emocional se alguém citar o nome dela durante a apresentação fechada."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -1299,6 +1310,10 @@ relacoes:
       Após o treino da tenda menor, Silva ainda mantém os Vell fora da superfície
       de Kage e da Casa Veyr; qualquer aproximação entre apresentação fechada e
       carroça verde deve passar por ela.
+      Silva aceitou abrir a porta da carroça verde por instantes para um teste
+      controlado de Passo Sombrio, com Tavin longe da carroça e Tobb limpando a
+      rota interna. A visita não virou rumor no circo, mas Silva viu que a
+      técnica ainda assusta dentro da carroça e reforça sua cautela com os Vell.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1361,6 +1376,7 @@ relacoes:
       - "Silva sabe que a resposta da Casa Veyr chegou com 40 PO adiantadas, mas que Jack ainda não aceitou a apresentação fechada."
       - "Silva sabe que Casa Veyr foi verificada como presença temporária pagante, mas sem raiz local forte."
       - "Silva mantém Nera e Tavin longe da superfície da apresentação fechada de Kage."
+      - "Silva ajudou Ren a fazer uma visita discreta por Passo Sombrio à carroça verde, mas considera a técnica brusca demais para uso casual perto dos Vell."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1503,6 +1519,12 @@ relacoes:
       ou entrada de artista, nenhuma conversa privada com Kage fora da lona e
       cancelamento imediato se aparecerem gravadora, menino, Vell ou assunto
       alheio.
+      Ren autorizou Jack a aceitar, prometendo proteger o circo. Jack aceitou a
+      direção, mas não tomou a palavra de Ren como substituto dos filtros. A Casa
+      Veyr respondeu com uma dobra contratual: pagamento final só com os
+      convidados, assinatura de Corven Dalm apenas ao pisar na lona e um homem da
+      casa junto da entrada de artistas. Jack tentou bloquear sem atrasar o show,
+      mas não conseguiu; levou a decisão de volta a Ren.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1548,6 +1570,7 @@ relacoes:
       - "Jack recebeu 40 PO adiantadas de Corven Dalm, procurador da Casa Veyr, mas reteve o dinheiro até confirmar legitimidade e aceitar ou recusar a apresentação fechada."
       - "Jack tratou a resposta de Ren sobre o show não parar como ensaio de aceite sob filtros do circo, não como sim final."
       - "Jack propôs aceitar a apresentação fechada da Casa Veyr apenas com filtros rígidos e aguarda se Ren acrescenta condição final."
+      - "A Casa Veyr tentou alterar os filtros finais: pagamento restante com convidados, assinatura de Dalm só na lona e homem da casa junto da entrada de artistas."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1560,6 +1583,7 @@ relacoes:
       - "A resposta escrita veio de Corven Dalm, procurador da Casa Veyr, aceitando 80 PO por apresentação fechada curta e tentando excluir intermediários da conversa artística."
       - "Ren aceitou preparar a tenda menor e revisar o número, mas ainda sob controle de Jack e sem remover os filtros do circo."
       - "Tobb verificou que Casa Veyr existe operacionalmente como presença temporária de aluguel e pagamento, mas sem raiz local profunda."
+      - "Ren prometeu a Jack que nada aconteceria às pessoas do circo; Jack ouviu a promessa, mas continua dependendo dos filtros práticos."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1628,6 +1652,9 @@ relacoes:
       Durante a reprise curta, o figurino segurou a margem apertada do salto com
       Passo do Vento. Depois, Dessa puxou Ren para trás da lona antes que a
       máscara pudesse virar conversa com público ou interessado privado.
+      Na tarde de 6 Eleasis, Dessa preparou Ren para a apresentação fechada da
+      Casa Veyr como Kage particular: menos caro, mais difícil de comprar. Ela
+      ajustou o figurino para preservar medo e silêncio em vez de ostentação.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
@@ -1641,6 +1668,7 @@ relacoes:
       - "Dessa reorganizou o ensaio de 4 Eleasis para transformar a ambição de quatro movimentos físicos novos em duas novidades cênicas seguras para Kage."
       - "Dessa preparou Ren como Kage para a reprise curta de 5 Eleasis e manteve a versão segura do figurino."
       - "Dessa viu a reprise curta funcionar no limite técnico e ajudou a retirar Kage dos olhos do público imediatamente."
+      - "Dessa está preparando Kage para a apresentação fechada da Casa Veyr com ênfase em silêncio, medo e controle de imagem."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
