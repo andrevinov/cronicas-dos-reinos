@@ -1797,3 +1797,51 @@ Mas a sensação operacional é clara: se havia alguém vigiando a entrada, Ren 
 Hora aproximada: **20:07 de 5 Eleasis, 1372 DR**. Ren está no primeiro patamar baixo da **Escada das Sete Águas**, ainda sob **Passos sem Pegadas** até cerca de **20:31**, se mantiver a concentração. Recursos: **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. Passo do Vento não foi usado, porque Ren não percebeu ataque ou risco imediato que exigisse fuga. Abaixo há escuridão real; à esquerda, uma porta inchada; adiante, uma abertura baixa; atrás, a escada de volta e o fio de controle intacto.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren liga Visão do Escuro e continua explorando.
+
+**Narrador**
+
+Ren gasta o restante do ki.
+
+**Visão no Escuro** ativa: Ren gasta **2 ki**. Ki atual: **0/5**. Duração aproximada: até cerca de **04:07 de 6 Eleasis**, sem concentração. **Passos sem Pegadas** continua ativo até cerca de **20:31 de 5 Eleasis**, enquanto Ren mantiver a concentração.
+
+O mundo subterrâneo se acende em cinza.
+
+A porta inchada à esquerda deixa de ser apenas obstáculo: a madeira foi molhada por anos e depois secou torta. Há marcas de unha de ferramenta no batente, mas antigas, e uma cunha de pedra empurrada por baixo do lado interno. Não parece uma porta usada esta noite. Parece uma porta travada para que alguém não abra por engano.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas ao sondar o patamar: d20 3 + 17 = 20 contra CD 17. Sucesso.
+
+Teste de Percepção de Ren no patamar baixo: d20 15 + 6 = 21 contra CD 14. Sucesso.
+
+Teste de Investigação de Ren nas marcas do patamar: d20 11 + 4 = 15 contra CD 15. Sucesso.
+
+A marca de cera raspada na parede direita fica mais clara: não é só sujeira. Alguém cobriu e depois raspou um sinal de sol simples, infantil quase, com riscos curtos ao redor de um círculo. Sobre ele, uma linha horizontal foi passada com força suficiente para apagar o centro. A cera vermelha sobrou nas fendas. O desenho não parece antigo de Sarbreen. Parece coisa recente feita sobre pedra antiga.
+
+A abertura baixa adiante é o caminho vivo.
+
+Ren avança só o bastante para olhar, sem ainda se entregar ao corredor. A galeria tem cerca de quatro pés e meio de altura; obriga um adulto a andar baixo ou curvado. O chão é menos alagado do que a escada, com água correndo pelas laterais e uma faixa central de pedra gasta por uso repetido. A cada poucos passos há marcas pequenas de cera vermelha em pontos discretos: não como decoração, mas como orientação para quem sabe procurar.
+
+A trinta ou quarenta pés, a galeria se abre numa câmara estreita. Ali há uma luz abafada, quase morta, coberta por barro cozido furado. Ren vê primeiro o objeto, depois a pessoa: uma figura magra sentada num nicho lateral, de costas parciais para a entrada, com uma manta escura nos ombros e uma vara curta apoiada no joelho. A cabeça está inclinada, não dormindo totalmente, mas ouvindo outro lado da câmara. Ela não olha para Ren.
+
+Mais importante: há um fio baixo cruzando a faixa central antes da câmara, preso a duas argolas velhas de metal escurecido. Diferente do fio de cima, este não conta passagem para a janela. Este parece feito para puxar algo dentro da câmara.
+
+Ren ainda não foi percebido.
+
+Mas a escolha ficou mais estreita. Ele está sob a Escada das Sete Águas, com **0/5 ki**. A magia de furtividade ainda o protege, mas não há Passo do Vento, Escuridão, Silêncio, Rajada ou Visão no Escuro extra se algo der errado antes de um descanso. A figura no nicho está a cerca de **35 pés**, atrás de um fio de acionamento. A porta inchada permanece atrás à esquerda; a escada de volta está atrás; a galeria baixa e o vigia estão adiante.
+
+Hora aproximada: **20:08 de 5 Eleasis, 1372 DR**. Ren está no primeiro patamar baixo, olhando para a galeria e a câmara estreita além dela. Recursos: **38/38 PV, CA 17, Ki 0/5, 17 PO, 9 shuriken**. **Passos sem Pegadas** ativo até cerca de **20:31**, se a concentração for mantida. **Visão no Escuro** ativa até cerca de **04:07**.
+
+O que Ren faz?
+
+**Narrador**
+
+Imagem da visão atual de Ren: [003-visao-escada-sete-aguas.png](imagens/003-visao-escada-sete-aguas.png)
+
+Mapa operacional da Escada das Sete Águas: [002-mapa-escada-sete-aguas.png](imagens/002-mapa-escada-sete-aguas.png)
+
+Versão editável do mapa: [002-mapa-escada-sete-aguas.svg](imagens/002-mapa-escada-sete-aguas.svg)
+
+O mapa mostra apenas o que Ren consegue ver ou inferir de sua posição atual: a escada de retorno, o primeiro patamar baixo, a porta inchada à esquerda, a galeria baixa adiante, o fio de acionamento antes da câmara e o vigia no nicho lateral.

@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <style>
+      .bg { fill: #151411; }
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 38px; fill: #f4ead2; font-weight: 700; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 24px; fill: #d8cfb9; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 28px; fill: #f4ead2; font-weight: 700; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 21px; fill: #d8cfb9; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 18px; fill: #151411; font-weight: 700; }
+      .stone { fill: #3a3933; stroke: #8c8373; stroke-width: 5; }
+      .old-stone { fill: #282722; stroke: #6f685c; stroke-width: 4; }
+      .street { fill: #2a2924; stroke: #5f584d; stroke-width: 4; }
+      .water { fill: none; stroke: #6aa7b8; stroke-width: 5; stroke-linecap: round; opacity: 0.75; }
+      .door { fill: #5c4630; stroke: #c6a76d; stroke-width: 5; }
+      .blocked { stroke: #b88049; stroke-width: 8; stroke-linecap: round; }
+      .ren { fill: #0f1011; stroke: #8fd3ff; stroke-width: 7; }
+      .ren-aura { fill: #8fd3ff; opacity: 0.12; }
+      .foe { fill: #211f1d; stroke: #f0b35f; stroke-width: 6; }
+      .light { fill: #e8b85f; opacity: 0.38; }
+      .lamp { fill: #e9bd62; stroke: #ffe0a0; stroke-width: 3; }
+      .unknown { fill: #090807; opacity: 0.78; }
+      .known-shadow { fill: #0d0c0a; opacity: 0.42; }
+      .danger { fill: none; stroke: #e7d16b; stroke-width: 6; stroke-dasharray: 16 11; }
+      .danger-red { fill: none; stroke: #c9573f; stroke-width: 6; stroke-dasharray: 16 11; }
+      .route { fill: none; stroke: #8fd3ff; stroke-width: 5; stroke-dasharray: 10 12; opacity: 0.85; }
+      .mark { fill: #b74435; stroke: #e8a184; stroke-width: 2; }
+      .arrow { stroke: #d8d0bf; stroke-width: 5; fill: none; marker-end: url(#arrowhead); }
+      .sight { fill: #9ed7ff; opacity: 0.08; stroke: #9ed7ff; stroke-width: 3; stroke-dasharray: 12 10; }
+      .box { fill: #22201c; stroke: #6f685c; stroke-width: 4; }
+      .legend-text { font-family: Arial, Helvetica, sans-serif; font-size: 22px; fill: #e8ddc6; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#d8d0bf"/>
+    </marker>
+    <filter id="soft-glow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+  <text class="title" x="54" y="62">Escada das Sete Águas - primeiro patamar baixo</text>
+  <text class="subtitle" x="56" y="96">20:08 de 5 Eleasis, 1372 DR | mapa operacional da visão atual de Ren</text>
+
+  <!-- Surface context -->
+  <rect class="street" x="70" y="135" width="650" height="150" rx="6"/>
+  <text class="label" x="100" y="180">Rua de serviço acima</text>
+  <text class="small" x="100" y="212">depósito sem tabuleta observa a entrada</text>
+  <rect class="box" x="495" y="155" width="175" height="75" rx="4"/>
+  <rect class="lamp" x="640" y="176" width="18" height="35" rx="4"/>
+  <text class="tiny" x="510" y="198">depósito</text>
+  <line class="arrow" x1="560" y1="232" x2="560" y2="318"/>
+
+  <!-- Stairs -->
+  <g transform="translate(500 288)">
+    <path class="stone" d="M80 0 L230 40 L175 310 L25 270 Z"/>
+    <line x1="72" y1="42" x2="215" y2="80" stroke="#b5aa92" stroke-width="4"/>
+    <line x1="62" y1="92" x2="205" y2="130" stroke="#b5aa92" stroke-width="4"/>
+    <line x1="52" y1="142" x2="195" y2="180" stroke="#b5aa92" stroke-width="4"/>
+    <line x1="42" y1="192" x2="185" y2="230" stroke="#b5aa92" stroke-width="4"/>
+    <line x1="32" y1="242" x2="175" y2="280" stroke="#b5aa92" stroke-width="4"/>
+    <path class="water" d="M98 10 C85 76 80 130 68 190 C61 225 57 247 48 270"/>
+    <path class="water" d="M132 20 C118 86 113 142 101 202 C94 236 89 257 82 287"/>
+    <path class="water" d="M166 30 C151 97 147 153 135 213 C127 247 122 270 116 303"/>
+    <line class="danger" x1="62" y1="82" x2="211" y2="121"/>
+    <circle class="mark" cx="69" cy="83" r="8"/>
+    <text class="small" x="-130" y="108">fio de controle</text>
+    <text class="small" x="-130" y="133">intacto atrás</text>
+  </g>
+
+  <!-- First lower landing -->
+  <rect class="stone" x="430" y="590" width="310" height="170" rx="6"/>
+  <circle class="ren-aura" cx="575" cy="680" r="105"/>
+  <circle class="ren" cx="575" cy="680" r="24"/>
+  <text class="label" x="612" y="674">Ren</text>
+  <text class="small" x="612" y="704">PV 38/38 | Ki 0/5</text>
+  <text class="small" x="462" y="620">primeiro patamar</text>
+  <text class="small" x="462" y="646">baixo</text>
+  <path class="water" d="M462 743 C505 724 550 724 598 742 C648 760 682 753 722 731"/>
+  <circle class="mark" cx="705" cy="618" r="10"/>
+  <text class="small" x="625" y="570">marca raspada</text>
+  <text class="small" x="625" y="596">sob cera</text>
+
+  <!-- Blocked door left -->
+  <rect class="door" x="210" y="620" width="220" height="110" rx="5"/>
+  <line class="blocked" x1="240" y1="710" x2="390" y2="638"/>
+  <line class="blocked" x1="245" y1="640" x2="392" y2="713"/>
+  <text class="label" x="210" y="587">porta inchada</text>
+  <text class="small" x="210" y="760">travada por dentro</text>
+  <text class="small" x="210" y="786">não parece rota ativa</text>
+  <line class="arrow" x1="430" y1="675" x2="405" y2="675"/>
+
+  <!-- Low gallery -->
+  <path class="old-stone" d="M740 635 L1110 595 L1110 705 L740 745 Z"/>
+  <text class="label" x="805" y="540">galeria baixa</text>
+  <text class="small" x="805" y="568">4,5 pés de altura</text>
+  <text class="small" x="805" y="594">adulto anda curvado</text>
+  <path class="water" d="M758 728 C830 700 908 699 985 716 C1032 726 1070 714 1103 696"/>
+  <path class="water" d="M756 655 C835 638 914 633 989 645 C1030 652 1060 648 1104 634"/>
+  <circle class="mark" cx="810" cy="674" r="7"/>
+  <circle class="mark" cx="900" cy="662" r="7"/>
+  <circle class="mark" cx="998" cy="652" r="7"/>
+  <path class="route" d="M598 680 C690 688 794 680 905 663"/>
+
+  <!-- Tripwire before chamber -->
+  <line class="danger-red" x1="1042" y1="590" x2="1042" y2="713"/>
+  <circle class="mark" cx="1042" cy="590" r="8"/>
+  <circle class="mark" cx="1042" cy="713" r="8"/>
+  <text class="label" x="900" y="840">fio de acionamento</text>
+  <text class="small" x="900" y="868">puxa algo dentro da câmara</text>
+
+  <!-- Chamber -->
+  <rect class="old-stone" x="1110" y="525" width="350" height="250" rx="6"/>
+  <ellipse class="light" cx="1215" cy="650" rx="170" ry="110" filter="url(#soft-glow)"/>
+  <circle class="lamp" cx="1238" cy="648" r="18"/>
+  <text class="label" x="1136" y="508">câmara estreita</text>
+  <text class="small" x="1136" y="804">luz abafada em barro furado</text>
+  <rect class="box" x="1130" y="565" width="105" height="85" rx="5"/>
+  <text class="tiny" x="1142" y="613">nicho</text>
+  <circle class="foe" cx="1198" cy="604" r="22"/>
+  <line x1="1218" y1="608" x2="1270" y2="638" stroke="#f0b35f" stroke-width="5" stroke-linecap="round"/>
+  <text class="label" x="1240" y="590">vigia</text>
+  <text class="small" x="1240" y="618">figura magra com vara curta</text>
+  <rect class="unknown" x="1350" y="535" width="92" height="222" rx="4"/>
+  <text class="small" x="1348" y="790">além: não visto</text>
+
+  <!-- Current visual cone -->
+  <path class="sight" d="M592 666 L1110 525 L1110 775 L592 696 Z"/>
+  <text class="small" x="735" y="914">Visão no Escuro: Ren vê até a câmara estreita, mas não além dela</text>
+
+  <!-- Legend -->
+  <rect class="box" x="70" y="810" width="640" height="150" rx="6"/>
+  <text class="label" x="100" y="852">Legenda</text>
+  <circle class="ren" cx="112" cy="894" r="15"/>
+  <text class="legend-text" x="142" y="902">Ren / posição atual</text>
+  <circle class="foe" cx="112" cy="932" r="15"/>
+  <text class="legend-text" x="142" y="940">vigia visivel</text>
+  <line class="danger-red" x1="398" y1="890" x2="455" y2="890"/>
+  <text class="legend-text" x="470" y="898">fio de acionamento</text>
+  <circle class="mark" cx="425" cy="932" r="10"/>
+  <text class="legend-text" x="470" y="940">cera vermelha / marca recente</text>
+</svg>

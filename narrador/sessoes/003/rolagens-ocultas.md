@@ -294,3 +294,39 @@ Consequências:
   sem ser percebido.
 * Sem Visão no Escuro ativa, a partir do patamar baixo a progressão adiante
   fica limitada por escuridão real.
+
+---
+
+## Visão no Escuro e sondagem da galeria baixa
+
+Contexto: no primeiro patamar baixo da Escada das Sete Águas, Ren ativou Visão
+no Escuro e continuou explorando cautelosamente sob Passos sem Pegadas.
+
+Rolagens abertas:
+
+* Furtividade de Ren sob Passos sem Pegadas ao sondar o patamar: d20 3 + 17 =
+  20 contra CD 17. Sucesso.
+* Percepção de Ren no patamar baixo: d20 15 + 6 = 21 contra CD 14. Sucesso.
+* Investigação de Ren nas marcas do patamar: d20 11 + 4 = 15 contra CD 15.
+  Sucesso.
+
+Rolagem oculta:
+
+* Vigia abaixo perceber Ren sob Passos sem Pegadas: d20 8 + 3 = 11 contra
+  CD 20. Falha.
+
+Consequências:
+
+* Ren gasta 2 ki em Visão no Escuro, ficando com 0/5 ki. A magia dura até cerca
+  de 04:07 de 6 Eleasis e não exige concentração.
+* Passos sem Pegadas continua ativo até cerca de 20:31 de 5 Eleasis, se Ren
+  mantiver a concentração.
+* Ren identifica que a porta inchada à esquerda parece travada de dentro com
+  cunha antiga e não é o caminho ativo desta noite.
+* Ren identifica um sinal recente de sol simples apagado/raspado sob cera
+  vermelha na parede direita.
+* Ren vê que a abertura baixa adiante leva a uma galeria usada, com marcas de
+  cera vermelha discretas como orientação.
+* Ren vê uma figura magra em nicho lateral a cerca de 35 pés, ainda sem percebê-
+  lo, e nota um fio baixo antes da câmara estreita que parece acionar algo
+  dentro da câmara.
