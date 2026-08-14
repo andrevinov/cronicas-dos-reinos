@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "investigacao_urbana"
+  modo_de_cena_atual: "preparacao_de_apresentacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "carroça-escritório de Jack Mooney, após café com Silva"
+  ponto_exato: "tenda menor, perto da entrada lateral marcada por Sorn"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -231,6 +231,35 @@ localizacao:
     apresentação. Tobb verifica se Casa Veyr existe para além do papel, Dessa
     avalia a tenda menor e Silva calcula como manter os Vell longe disso sem
     denunciar que eles são o ponto sensível.
+    Ren respondeu a Jack que o show não pode parar, tratando a proposta como
+    ensaio de aceite sob filtros do circo. Na tenda menor, tentou mapear sombras
+    para usar o Passo Sombrio, mas não conseguiu garantir trânsito por todos os
+    cantos: há pontos úteis de sombra na entrada lateral, junto aos bancos de
+    músicos e atrás dos panos de Dessa, mas o centro fica quebrado por faixas de
+    luz e vento na lona. O treino básico de Kage foi marcado para 13:30 com Sorn,
+    Merrit e Lysa, sem número novo. Ren tentou pagar 1 PO a Harl para vigiar a
+    montagem, mas Harl recusou a moeda por medo de parecer novamente envolvido em
+    segredo; prometeu falar com Sorn ou Tobb se vir risco real. Depois Ren deixou
+    o circo, ativou o Broche do Semblante Humilde perto de Narwhal Manor e chegou
+    à lateral de serviço sem puxar atenção útil. Encontrou Kethra por poucos
+    instantes usando a frase "sabão preto para pano azul". Kethra não recebeu
+    notícia de Colm/Dent e não ouviu nova informação concreta em Narwhal desde a
+    pista da ponte baixa; percebe apenas silêncio excessivo no corredor treze e
+    rotina mais vigiada.
+    Ren dispensou Kethra antes que a ausência dela chamasse atenção. Kethra
+    avisou que, se Ren procurar Dorra, não deve usar o nome dela antes de saber
+    quem está ouvindo nem procurar Dent alto demais. Ren saiu de Narwhal e voltou
+    ao circo sob o Broche sem reforçar padrão útil. O Broche expirou por volta de
+    09:25 e está gasto até o próximo amanhecer. A checagem das carroças de Dorra
+    ficou para outro intervalo. Às 13:30, Ren treinou Kage na tenda menor com
+    Sorn, Merrit e Lysa; o treino confirmou duas marcas escuras confiáveis se as
+    lamparinas não forem alteradas: dobra atrás da entrada lateral e faixa baixa
+    junto aos bancos de músicos/panos extras. Tobb verificou que Casa Veyr existe
+    como presença temporária de aluguel, com camarote/salão e procurador pagador,
+    mas sem raiz nobre local forte. Harl participou apenas da montagem baixa e
+    não viu irregularidade útil. Jack está pronto para aceitar a apresentação
+    fechada somente com filtros rígidos e aguarda se Ren acrescenta alguma
+    condição.
 
 tempo:
   ano_dr: 1372
@@ -242,11 +271,11 @@ tempo:
   dia_do_mes: 6
   dezena: 1
   dia_da_dezena: 6
-  periodo_do_dia: "manhã de 6 Eleasis, após café com Silva e resposta privada ao preço de Kage"
-  hora_aproximada: "07:18 de 6 Eleasis"
+  periodo_do_dia: "tarde de 6 Eleasis, após treino básico de Kage na tenda menor"
+  hora_aproximada: "14:18 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31 e Visão no Escuro expirou por volta de 04:07 de 6 Eleasis. Ao amanhecer, Ren alcançou nível 6 e despertou Passo Sombrio. Após café com Silva, Ren recebeu de Jack 8 PO pela reprise pública de Kage, ficando com 25 PO. Jack recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para uma apresentação fechada curta, mas reteve o dinheiro até confirmação e aceite."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Jack ainda não aceitou em definitivo: está pronto para enviar aceite com pagamento final antes da primeira lamparina, assinatura de Corven Dalm, convidados contados, guardas controlados, veto a mexer em corda/pano/lamparina e cancelamento imediato se aparecerem Vell, gravadora, menino ou conversa privada."
 
 recursos:
   pontos_de_vida:
@@ -1040,7 +1069,7 @@ equipamento_em_posse:
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso disponível desde o amanhecer de 6 Eleasis"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso de 6 Eleasis expirou por volta de 09:25 e está gasto até o próximo amanhecer"
     - "mapa público da Escada das Sete Águas, comprado de Brunna Torkel"
     - "cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída baixa para drenagem, parede raspada, ar seco e marca apagada"
   outros:
@@ -1106,16 +1135,17 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na carroça-escritório de Jack Mooney por volta de 07:18 de 6 Eleasis de 1372 DR, depois de tomar café com Silva e contar sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath. Jack pagou 8 PO pela reprise pública de Kage em 5 Eleasis, elevando os recursos de Ren para 25 PO. Jack recebeu uma resposta privada de Corven Dalm, procurador da Casa Veyr, aceitando 80 PO por uma apresentação fechada curta de Kage e enviando 40 PO adiantadas. Jack reteve o adiantamento na própria caixa e ainda não aceitou o trabalho, pois Tobb, Dessa e Silva estão verificando casa, tenda e segurança dos Vell. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está disponível desde o amanhecer de 6 Eleasis."
-  risco_imediato: "baixo no circo; risco operacional moderado a alto se Ren sair de novo sem preparar cobertura social"
+  cena_atual: "Ren está na tenda menor do Jack Mooney & Sons Circus por volta de 14:18 de 6 Eleasis de 1372 DR, depois do treino básico de Kage com Sorn, Merrit e Lysa. O contato com Kethra em Narwhal terminou sem novo alarme; ela não tem notícia de Colm/Dent e avisou Ren a não procurar Dorra usando seu nome sem cautela. O Broche do Semblante Humilde expirou por volta de 09:25 e está gasto até o próximo amanhecer. A tenda menor tem duas marcas escuras confiáveis para Passo Sombrio, se as lamparinas não forem alteradas, mas não permite trânsito livre por todos os cantos. Tobb verificou que Casa Veyr existe como presença temporária pagante, sem raiz local profunda. Harl não viu irregularidade útil na montagem. Jack está pronto para enviar aceite com filtros rígidos, salvo se Ren acrescentar condição final. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken."
+  risco_imediato: "moderado na tenda menor; o risco não é combate aberto agora, mas contrato privado com casa pagante de raiz frágil, tentativa de conversa sem testemunha e possibilidade de pressão sobre Kage ou os Vell durante a apresentação fechada"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
     - "segurança de Colm/Dent, Kethra, Peta e das crianças resgatadas"
     - "proteção dos Vell no circo e desdobramentos de Tyr"
+    - "apresentação fechada da Casa Veyr e limitações da tenda menor para Passo Sombrio"
 
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "primeiro NPC abordado"
-    - "definir com Jack se Kage aceita a apresentação fechada ligada à Casa Veyr, envia contraproposta mais dura ou deixa as 40 PO adiantadas retidas até o contratante ficar impaciente"
+    - "definir com Jack se Kage aceita a apresentação fechada ligada à Casa Veyr com os filtros rígidos propostos ou se acrescenta condição final antes do aceite"
+    - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

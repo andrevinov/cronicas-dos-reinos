@@ -2826,3 +2826,41 @@ Progressão:
 * Jack interpreta isso como tentativa de tirar Silva, Jack ou outro filtro entre Kage e a mão que paga;
 * Tobb verifica se Casa Veyr existe para além do papel, Dessa avalia a tenda menor e Silva calcula como manter os Vell longe disso sem expor que eles são sensíveis;
 * hora aproximada: 07:18 de 6 Eleasis, 1372 DR.
+
+### Sessão 003: tenda menor e novo contato com Kethra
+
+* Ren respondeu a Jack que "o show não pode parar"; Jack tratou isso como ensaio de aceite sob filtros do circo, não como sim final;
+* Jack manterá a apresentação da Casa Veyr, se ocorrer, dentro da lona dos Mooney, pela entrada dos Mooney e com olhos dos Mooney contando convidados;
+* rolagem: Mapear sombras da tenda menor para Passo Sombrio, d20 2 + 4 = 6 contra CD 12, falha;
+* Ren identificou pontos de sombra úteis na entrada lateral, junto aos bancos de músicos e atrás dos panos de Dessa;
+* Ren não conseguiu garantir trânsito por todos os cantos da tenda com Passo Sombrio; o centro fica quebrado por faixas de luz e pelo movimento da lona;
+* Sorn marcou treino básico de Kage para **13:30** com Merrit e Lysa: revisão de entrada, saída, posição de Merrit, caminho de Lysa e duas marcas escuras, sem número novo;
+* rolagem: Convencer Harl a vigiar a montagem por 1 PO, d20 8 = 8 contra CD 12, falha;
+* Harl recusou a moeda para não parecer envolvido em outro segredo após a punição de Jack;
+* Harl disse que avisará Sorn ou Tobb se vir risco real, mas não aceitou virar olho pago de Ren;
+* Ren ativou o **Broche do Semblante Humilde** perto de Narwhal Manor; aparência ativa até cerca de **09:25** e uso gasto até o próximo amanhecer;
+* rolagem: Chegar a Narwhal sob o Broche sem puxar atenção útil, d20 9 + 7 = 16 contra CD 15, sucesso;
+* rolagem: Ler o fluxo de serviço de Narwhal para contato com Kethra, d20 12 + 6 = 18 contra CD 14, sucesso;
+* Narwhal Manor está mais vigiada na lateral de serviço, mas Ren chegou sem puxar atenção útil;
+* Ren encontrou Kethra por poucos instantes usando a frase "sabão preto para pano azul";
+* Kethra não recebeu notícia de Colm/Dent; para ela, o silêncio ainda não confirma segurança nem desastre;
+* Kethra não tem nova informação concreta de Narwhal, apenas silêncio excessivo no corredor treze, cestos contados com mais cuidado e gente evitando falar de tintureiro;
+* hora aproximada: 08:37 de 6 Eleasis, 1372 DR.
+
+### Sessão 003: retorno ao circo e filtro da Casa Veyr
+
+* Ren dispensou Kethra antes que a ausência dela chamasse atenção;
+* Kethra avisou que, se Ren procurar Dorra, não deve usar o nome dela antes de saber quem está ouvindo nem procurar Dent alto demais;
+* rolagem: Sair de Narwhal e voltar ao circo sob o Broche sem reforçar padrão, d20 10 + 7 = 17 contra CD 14, sucesso;
+* Ren retornou ao Jack Mooney & Sons Circus sem novo alarme em Narwhal;
+* o Broche do Semblante Humilde expirou por volta de 09:25 e está gasto até o próximo amanhecer;
+* a checagem das carroças de Dorra ficou para outro intervalo;
+* rolagem: Revisão básica de Kage às 13:30, d20 6 + 7 = 13 contra CD 12, sucesso;
+* o treino confirmou duas marcas escuras confiáveis na tenda menor, se as lamparinas não forem alteradas: dobra profunda atrás da entrada lateral e faixa baixa junto aos bancos de músicos/panos extras;
+* Ren não tem trânsito livre por todos os cantos da tenda com Passo Sombrio; o centro continua quebrado por luz, vento e movimento de lona;
+* Tobb verificou que Casa Veyr existe como presença temporária pagante, com camarote/salão alugado e Corven Dalm como procurador que assina e paga;
+* Tobb não encontrou raiz nobre local forte, capela jurando honra ou vizinhos tratando Casa Veyr como sangue antigo de Ravens Bluff;
+* Harl participou apenas da montagem baixa e disse que não viu mão em corda, marca nova em estaca nem gente mexendo em lamparina depois das marcações de Sorn;
+* Harl não ofereceu certeza absoluta, apenas afirmou que falaria com Sorn ou Tobb se visse coisa capaz de matar gente;
+* Jack propôs aceitar a apresentação fechada apenas com filtros rígidos: pagamento final antes da primeira lamparina, assinatura de Corven Dalm, convidados contados por Tobb, guardas posicionados pelos Mooney, veto a tocar corda/pano/lamparina/entrada de artista, nenhuma conversa privada com Kage fora da lona e cancelamento imediato se aparecerem gravadora, menino, Vell ou assunto alheio;
+* hora aproximada: 14:18 de 6 Eleasis, 1372 DR.

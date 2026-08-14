@@ -2091,3 +2091,211 @@ Ele aponta para a carta.
 Hora aproximada: **07:18 de 6 Eleasis, 1372 DR**. Ren está na carroça-escritório de **Jack Mooney**, no Jack Mooney & Sons Circus. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Broche do Semblante Humilde** está disponível. Jack recebeu resposta com **40 PO adiantadas**, mas ainda não confirmou a legitimidade da Casa Veyr nem aceitou a apresentação fechada.
 
 O que Ren faz?
+
+**Jogador**
+
+"O show não pode parar, Jack", diz Ren. "Não é esse o lema de nós, circenses?", brinca Ren com o fato de já não poder dizer de alguma forma que não é um artista circense.
+
+Ren irá inspecionar a tenda menor que será usada no show particular. Ele quer garantir que a tenda, quando armada, produza algumas "sombras" nos distintos cantos. Na linguagem nova do corpo de Ren, ter certeza que ele pode "caminhar por todos os cantos dentro da tenda através da continuidade das sombras".
+
+Se Harl for participar da montagem da tenda (que Ren certamente não poderá ir), Ren oferecerá 1 PO pra ele e pedirá pra ele ficar atento a qualquer coisa estranha que acontecer durante a montagem, ou depois dela. Pedirá que ele o relate a mínima desconfiança (faz isso porque percebeu que Harl é inteligente, astuto, bom mentiroso e bastante observador).
+
+Marcará um treino com Sorn, Merrit e Lysa as 13:30, só pra uma revisão básica do show mesmo.
+
+Depois ele irá tentar falar com Kethra em Narwhal Manor, discretamente. Perguntar se teve notícias de Colm. Ver se ela tem informação interessante. Para isso, quando chegar perto de Narwhal, ele usará o Broche do Semblante Humilde para não chamar nenhuma atenção.
+
+**Narrador**
+
+Jack inclina a cabeça, como se a frase tivesse custado mais caro do que as oito moedas.
+
+"Nós, circenses", ele repete. "Olhe só. O pronome ainda está em período de experiência, Kage, mas aceito a provocação."
+
+Ele fecha a caixa com as quarenta peças de ouro dentro.
+
+"Então fica assim: não é sim ainda. É ensaio de sim. Casa Veyr vem para a minha lona, pela minha entrada, com os meus olhos contando cabeça. Se tentarem transformar conversa artística em conversa sem testemunha, o show fica gripado e morre antes de nascer."
+
+Jack manda chamar Dessa e Sorn. A tenda menor fica armada pela metade numa área lateral do acampamento, onde normalmente se fazem apresentações curtas, truques de intervalo e reuniões que não precisam da tenda principal. Ela é menor, baixa nas bordas, com pano remendado em três tons de azul velho e verde escuro. De manhã, ainda sem lamparinas de apresentação, parece inofensiva.
+
+Quando Ren começa a pensar nela como espaço de combate e sombra, ela deixa de ser inofensiva.
+
+Teste de Investigação de Ren para mapear sombras da tenda menor para Passo Sombrio: d20 2 + 4 = 6 contra CD 12. Falha.
+
+O problema aparece rápido: lona não é depósito. No depósito, as sombras se agarravam a baús, arcas, estandartes, dobras fixas. Na tenda, o tecido respira. O vento muda uma borda. Uma corda puxa outra. Um ajudante levanta a aba para passar e corta, por um instante, a continuidade que Ren tinha acabado de imaginar.
+
+Ren não consegue garantir todos os cantos.
+
+Consegue identificar pontos possíveis: a dobra atrás da entrada lateral, a sombra baixa junto aos bancos de músicos, o canto dos panos extras atrás da divisória de Dessa. Mas o centro da tenda fica quebrado por faixas de luz. Com a montagem atual, Passo Sombrio seria possível em trechos, não como domínio livre de todo o espaço.
+
+Sorn observa Ren olhando para as sombras como se estivesse medindo corda invisível.
+
+"Você está marcando escuro agora?", ele pergunta.
+
+Dessa, que entende teatro melhor do que entende monges de Kozakura, pega uma tira de pano preto e prende entre duas estacas.
+
+"Se o truque precisa de cantos ruins para olho de gente fina, isso eu faço. Se precisa que o mundo dobre direitinho, aí fale com o mundo."
+
+Sorn aponta dois limites com o polegar.
+
+"Treze e meia dá para revisar entrada, saída, posição de Merrit, caminho de Lysa e duas marcas escuras. Não dá para inventar número novo. Se alguém mexer nas lamparinas depois, eu paro tudo."
+
+Merrit, quando avisada do treino, aceita com um aceno rápido demais e já pergunta se precisa falar menos do que ontem. Lysa ouve de longe, faz cara de quem não quer ser convocada por Sorn, mas não recusa. A palavra "básico" ajuda mais do que qualquer gentileza.
+
+Harl está por perto, carregando estacas comuns sob o olho de outro ajudante. Não está no cordame alto, não toca chave de baú e não decide segurança. A punição de Jack ainda está sobre os ombros dele.
+
+Ren oferece a moeda e o pedido.
+
+Teste de Persuasão de Ren para convencer Harl a vigiar a montagem por 1 PO: d20 8 = 8 contra CD 12. Falha.
+
+Harl olha para a peça, depois para Ren. A mão dele chega a se mover, por hábito de quem sabe o valor de uma moeda, mas para antes de tocar.
+
+"Não", ele diz baixo.
+
+Não é bravura limpa. É medo com vergonha.
+
+"Se Jack descobre que eu aceitei dinheiro para vigiar montagem depois do que eu fiz, ele não me deixa nem perto de lona molhada." Harl engole seco. "E se eu fico rondando feito olho comprado, Sorn percebe em três respirações."
+
+Ele empurra a moeda de volta com dois dedos.
+
+"Se eu vir coisa errada de verdade, eu falo com Sorn ou Tobb. Não por moeda. Por corda não matar gente." Ele evita olhar diretamente para Ren por um instante. "Não me põe em coisa que parece segredo. Eu já tive segredo demais."
+
+A moeda permanece com Ren.
+
+Por volta de pouco depois da oitava badalada, Ren deixa o circo. A manhã em Ravens Bluff já perdeu o cinza macio do amanhecer e ganhou o barulho de cidade que quer fingir normalidade: rodas sobre pedra, grito de vendedor, cheiro de peixe velho em becos baixos, fumaça fina sobre telhados úmidos.
+
+Perto de Narwhal Manor, Ren ativa o **Broche do Semblante Humilde**.
+
+A mudança não é máscara teatral. É esquecimento. O corte do rosto fica menos memorável, a roupa parece mais pobre e mais comum do que era, a postura se afunda no tipo de cansaço que gente apressada evita olhar por educação ou desprezo. Ren não vira outra pessoa importante. Vira alguém que a cidade tem prática em não ver.
+
+O uso do broche fica gasto até o próximo amanhecer. A aparência humilde deve durar até cerca de **09:25**.
+
+Teste de Furtividade de Ren para chegar a Narwhal sob o Broche sem puxar atenção útil: d20 9 + 7 = 16 contra CD 15. Sucesso.
+
+Narwhal Manor está mais apertada do que da última vez. Não fechada em pânico; pior. Fechada como casa rica que quer parecer rotina. A porta lateral tem ferrolho novo. Um criado velho fica tempo demais varrendo uma área já varrida. Dois carregadores entram pela lateral com cestos, mas um guarda olha para as mãos deles, não para os rostos.
+
+O broche cobre Ren o bastante para ele não ser o homem rápido que arrancou papel de Velis, nem Kage, nem o forasteiro pobre exato visto outras vezes. Ele se mantém no fluxo menor: água, cinza, cesto, pano.
+
+Teste de Percepção de Ren para ler o fluxo de serviço de Narwhal e achar contato com Kethra: d20 12 + 6 = 18 contra CD 14. Sucesso.
+
+Ren não força a entrada. Espera.
+
+Kethra aparece pela porta de serviço com um cesto de panos úmidos e a pressa controlada de quem não pode parecer que está evitando ninguém. Ela passa por um ajudante, corrige a posição de uma alça, desce dois degraus e vira para o corredor estreito onde a água escorre para uma sarjeta lateral.
+
+Quando Ren usa a frase baixa, "sabão preto para pano azul", ela quase não altera o passo.
+
+Quase.
+
+Só a mão aperta demais a borda do cesto.
+
+"Você escolhe manhãs péssimas", ela murmura, sem olhar para ele. "Anda dois passos atrás. Se andar colado, eu derrubo o cesto e grito."
+
+Ela o leva até o vão entre uma parede de serviço e um depósito de barris vazios. O lugar não é seguro; é apenas ruim demais para conversa longa, e por isso bom para uma curta.
+
+Sobre Colm, a resposta dela vem sem enfeite.
+
+"Nada." A palavra sai dura. "Nenhum recado dos fornos. Nenhum homem de cal veio procurar meu nome. Nenhum cobrador de Bram veio cobrar o corpo do meu irmão de mim." Ela fecha os olhos por meio segundo. "Isso não é boa notícia. Também não é má notícia. É só silêncio."
+
+Kethra respira pelo nariz, segurando a impaciência.
+
+"Se Dent chegou inteiro, Dorra não me deve ternura bastante para mandar bilhete. Se não chegou, alguém ainda não achou útil me fazer saber. É isso que eu tenho."
+
+Sobre Narwhal, ela balança a cabeça antes mesmo de Ren terminar a pergunta.
+
+"Nada que vire faca na sua mão hoje. Depois da conversa da ponte baixa, a casa ficou quieta demais. Corredor treze limpo. Cesto contado duas vezes. Gente que falava de tintureiro agora fala de sabão, e mal." Ela olha enfim para Ren, por baixo da sombra do lenço. "Quando casa rica cala de repente, pode ser porque queimou papel. Pode ser porque está esperando ver quem pergunta."
+
+Um rangido vem da porta lateral. Kethra se endireita.
+
+"Tenho talvez três respirações antes de alguém perguntar por que eu estou demorando com pano ruim."
+
+Hora aproximada: **08:37 de 6 Eleasis, 1372 DR**. Ren está junto à lateral de serviço de **Narwhal Manor**, sob o efeito do **Broche do Semblante Humilde** até cerca de **09:25**. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O treino básico de Kage está marcado para **13:30** com Sorn, Merrit e Lysa. A tenda menor tem pontos de sombra utilizáveis, mas Ren ainda não conseguiu garantir trânsito por todos os cantos com Passo Sombrio.
+
+O que Ren faz?
+
+**Jogador**
+
+"Você pode voltar", Ren fala. "Hoje eu vim mais pra saber de Dent. Vou dar uma checada nas carroças depois pra ver se encontro Dorra."
+
+Ren se despede de Kethra e volta pro circo. Hoje tem apresentação pra ensaiar. Depois de ensaiar, ele não sairá do circo até a hora da apresentação. Se a tenda for montada antes da apresentação e Harl participar da montagem, ele vai perguntar se ele viu algo estranho.
+
+**Narrador**
+
+Kethra não agradece. Isso levaria tempo e, pior, pareceria íntimo.
+
+Ela só aperta o cesto contra o quadril e diz, quase sem mover a boca:
+
+"Se achar Dorra, não use meu nome antes de saber quem está ouvindo. E não procure Dent alto demais. Homem escondido vira homem achado quando gente boa pergunta por ele na rua errada."
+
+O rangido da porta lateral cresce. Kethra deixa o corpo cansado voltar ao rosto, dá dois passos com panos úmidos e já não parece mais alguém conversando. Parece apenas parte da casa.
+
+Ren sai pelo mesmo tipo de fresta por onde entrou: gente de serviço, água suja, parede fria, pressa comum.
+
+Teste de Furtividade de Ren para sair de Narwhal e voltar ao circo sob o Broche sem reforçar padrão: d20 10 + 7 = 17 contra CD 14. Sucesso.
+
+Narwhal Manor fica para trás sem grito novo, sem guarda atravessando rua, sem criado apontando dedo. A casa continua rígida demais, mas não morde desta vez. O Broche do Semblante Humilde faz seu trabalho até o fim: Ren atravessa a manhã como mais um homem pobre entre muitos, carregando no corpo a espécie de cansaço que Ravens Bluff aprendeu a ignorar.
+
+Quando ele alcança o circo dos Mooney, a aparência emprestada ainda segura por alguns minutos. Pouco antes da nona badalada e meia, ela começa a morrer nas bordas: o corte real do rosto volta, a postura deixa de parecer tão apagada, a roupa volta a carregar detalhe demais para ser só miséria comum.
+
+O uso do broche está gasto até o próximo amanhecer.
+
+A manhã dentro do circo não tem grande cena. Tem trabalho.
+
+Dessa prende pano, desfaz pano, reclama de nó feito por gente que deveria ter nascido mesa. Sorn marca o chão com farinha clara e depois apaga metade das próprias marcas porque a luz mudou quando uma aba da tenda respirou com o vento. Merrit aparece com texto demais; Dessa corta. Lysa aparece com orgulho demais; Sorn corta.
+
+Silva não vem cobrar Ren. Em vez disso, manda comida simples por uma menina da cozinha e um recado seco:
+
+"Artista que cai por fome dá prejuízo idiota."
+
+A checagem das carroças de Dorra fica para outro intervalo. Até o treino, a prioridade do circo engole a manhã, e depois dele Ren já decidiu não sair do acampamento antes da apresentação.
+
+Às 13:30, a tenda menor está armada o bastante para ser testada e frágil o bastante para lembrar que lona nunca é pedra.
+
+Teste de Acrobacia de Ren para revisão básica de Kage às 13:30: d20 6 + 7 = 13 contra CD 12. Sucesso.
+
+Não é um ensaio brilhante. É melhor que isso: é um ensaio que não mente.
+
+Ren confirma, no corpo, duas marcas escuras que podem servir ao Passo Sombrio se as lamparinas permanecerem como estão: a dobra profunda atrás da entrada lateral e a faixa baixa de sombra junto aos bancos de músicos, antes dos panos extras de Dessa. Não há domínio livre da tenda. O centro continua quebrado por luz, movimento de lona e gente passando. Mas esses dois pontos ficam reais o bastante para Sorn aceitar marcá-los.
+
+"Dois cantos", Sorn diz. "Não três fingidos. Dois. Se alguém mexer na lamparina depois, você não usa esse escuro e eu finjo que nunca aprovei nada."
+
+Merrit faz a própria parte em chão, curta, com a boca quase mordida para não acrescentar uma frase esperta. Lysa atravessa como sombra baixa, sem forçar joelho, irritada justamente porque o corpo obedece quando ela faz menos. Isso não cura orgulho nenhum, mas mantém todos vivos.
+
+No fim do treino, Tobb volta com barro seco nas botas e uma cara de quem preferiria estar consertando roda quebrada a nome de gente rica.
+
+Jack escuta o relatório perto da entrada da tenda menor, com a caixa das quarenta peças ainda longe das mãos de qualquer artista.
+
+"Casa Veyr existe", Tobb diz. "Mas existe como chave alugada, não como pedra antiga. Camarote oeste alugado, salão alugado, criados temporários, conta paga por procurador. Corven Dalm é nome que assina e paga. Não achei brasão antigo, capela jurando honra nem vizinho chamando de sangue da cidade."
+
+Jack esfrega a ponta do polegar no canto da boca.
+
+"Então não é fantasma."
+
+"Não", Tobb responde. "É pior. É gente com endereço que pode virar outro endereço amanhã."
+
+O relatório não prova armadilha. Também não dá respeitabilidade. A Casa Veyr tem dinheiro, aluguel, papel e procurador. Não tem raiz aparente em Ravens Bluff. Se algo der errado, pode chamar tudo de entretenimento contratado por intermediário e desaparecer atrás de nomes menores.
+
+Jack parece quase satisfeito por ter uma coisa concreta para desconfiar.
+
+Quando Ren encontra Harl durante a montagem final, ele está com estacas comuns e corda baixa, sob olhos próximos demais para qualquer heroísmo. Ren pergunta se ele viu algo estranho.
+
+Harl limpa a mão na calça antes de responder. A vergonha da manhã ainda está ali, mas menos defensiva.
+
+"Estranho de verdade? Não." Ele olha para Sorn, depois para Tobb, como se medisse o peso da palavra. "Vi rico mandando recado sem querer sujar sapato, vi ajudante perguntando onde não precisava perguntar, vi Sorn brigando com vento. Isso é circo com dinheiro perto."
+
+Ele baixa a voz um pouco.
+
+"Não vi mão em corda, não vi marca nova em estaca, não vi ninguém mexer em lamparina depois que Sorn marcou. Mas também não vou te vender certeza. Se eu vir coisa que mata gente, falo com Sorn. Ou Tobb. Como eu disse."
+
+Jack espera Harl se afastar antes de falar com Ren.
+
+"Temos uma casa que paga e pode sumir. Temos uma tenda que aguenta dois escuros úteis, não um milagre. Temos Harl sem relatório bonito. E temos Kage caro o bastante para alguém tentar comprar uma conversa sem testemunha."
+
+Ele toca a tampa da caixa, onde o adiantamento continua trancado.
+
+"Se aceitarmos, eu mando assim: quarenta restantes antes da primeira lamparina acesa; Corven Dalm assina na minha frente; seis convidados contados por Tobb; dois guardas sem brasão ficam onde Sorn e Tobb mandarem; ninguém da Casa Veyr toca corda, pano, lamparina ou entrada de artista; nenhuma conversa privada com Kage fora da lona; se aparecer palavra sobre gravadora, menino, Vell ou assunto alheio, o show morre ali."
+
+Jack encara Ren sem teatralidade.
+
+"Isso ainda não é sim final. É o sim que eu consigo deixar de pé sem vender minha lona junto. Se Kage quiser acrescentar uma lâmina ao contrato, fale agora."
+
+Hora aproximada: **14:18 de 6 Eleasis, 1372 DR**. Ren está na **tenda menor do Jack Mooney & Sons Circus**, depois do treino básico de Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Broche do Semblante Humilde** expirou por volta de **09:25** e está gasto até o próximo amanhecer. A apresentação fechada da Casa Veyr ainda não foi aceita em definitivo; Jack está pronto para enviar aceite com filtros rígidos, salvo alteração de Ren.
+
+O que Ren faz?

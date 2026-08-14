@@ -258,6 +258,45 @@ Consequências:
 
 ---
 
+## Manhã e tarde de 6 Eleasis: retorno de Narwhal e filtro da Casa Veyr
+
+Contexto: depois do contato curto com Kethra na lateral de serviço de Narwhal
+Manor, Ren voltou ao circo sob o Broche do Semblante Humilde. A tarde foi
+consumida por ensaio básico de Kage na tenda menor e por verificações dos
+Mooney sobre a proposta da Casa Veyr.
+
+Rolagens abertas:
+
+* Sair de Narwhal e voltar ao circo sob o Broche sem reforçar padrão: d20 10 +
+  7 = 17 contra CD 14. Sucesso.
+* Revisão básica de Kage às 13:30: d20 6 + 7 = 13 contra CD 12. Sucesso.
+
+Rolagens ocultas:
+
+* Filtro dos Mooney para verificar Casa Veyr em tempo útil: d20 13 + 5 = 18
+  contra CD 14. Sucesso.
+* Harl Venn perceber irregularidade real na montagem da tenda menor: d20 6 + 3
+  = 9 contra CD 14. Falha.
+
+Consequências:
+
+* Ren saiu do entorno de Narwhal sem acionar novo alarme, sem abordagem e sem
+  reforçar padrão útil contra Kethra.
+* O Broche do Semblante Humilde expirou por volta de 09:25 de 6 Eleasis e segue
+  gasto até o próximo amanhecer.
+* O treino confirma duas marcas escuras confiáveis na tenda menor, se as
+  lamparinas não forem alteradas: dobra profunda atrás da entrada lateral e
+  faixa baixa junto aos bancos de músicos/panos extras. Não há continuidade de
+  sombra por toda a tenda.
+* Tobb confirma que Casa Veyr existe operacionalmente como presença temporária
+  de aluguel, com camarote/salão e procurador pagador, mas sem raiz nobre local
+  forte ou garantia social profunda. Isso permite aceite filtrado, não confiança.
+* Harl não percebe irregularidade real durante a montagem. Isso não prova
+  ausência absoluta de risco; apenas significa que ele não viu algo que pudesse
+  levar a Sorn ou Tobb como alerta.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
@@ -356,3 +395,28 @@ Consequências:
   desnecessários" da conversa artística, preservando risco operacional.
 * Tobb, Dessa e Silva passam a verificar casa, tenda e proteção dos Vell antes
   de qualquer decisão sobre a apresentação fechada.
+
+---
+
+## Manhã de 6 Eleasis: notícias de Kethra
+
+Contexto: Ren chegou discretamente à lateral de serviço de Narwhal Manor sob o
+Broche do Semblante Humilde e conseguiu contato breve com Kethra Dunn para
+perguntar por Colm/Dent e por nova informação interna.
+
+Rolagens ocultas:
+
+* Notícia de Dent chegar a Kethra pela rede dos fornos de cal: d20 5 + 2 = 7
+  contra CD 13. Falha.
+* Kethra ouvir informação útil em Narwhal desde a última mensagem: d20 5 + 4 =
+  9 contra CD 14. Falha.
+
+Consequências:
+
+* Kethra ainda não sabe se Colm/Dent chegou aos fornos de cal ou se Dorra Hest
+  manteve a cobertura.
+* Nenhuma nova pista concreta chega por Kethra nesta manhã. O máximo visível é
+  atmosfera operacional: corredor treze silencioso demais, cestos contados com
+  mais cuidado e gente evitando termos ligados a tintureiro, cesto e barril.
+* A aproximação pública de Ren a Narwhal não avança o alarme por enquanto, pois
+  as rolagens abertas de chegada e leitura do fluxo foram bem-sucedidas.

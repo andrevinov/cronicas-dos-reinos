@@ -146,6 +146,15 @@ relacoes:
       barril; e Kethra ouviu nos fundos a frase "se a boca abriu no mercado,
       olhem a ponte baixa". Ren desmontou o ponto morto com cuidado, removendo
       a cera e a migalha cinza.
+      Na manhã de 6 Eleasis, Ren voltou à lateral de serviço de Narwhal Manor
+      sob o Broche do Semblante Humilde e conseguiu falar brevemente com Kethra
+      usando a frase "sabão preto para pano azul". Kethra não recebeu notícia de
+      Colm/Dent e não conseguiu nova informação concreta desde a última mensagem.
+      Ela percebe apenas silêncio excessivo no corredor treze, cestos contados
+      com mais cuidado e gente evitando falar de tintureiro, cesto ou barril.
+      Ren dispensou Kethra antes que a ausência dela chamasse atenção. Kethra
+      avisou que, se Ren procurar Dorra, não deve usar o nome dela antes de saber
+      quem está ouvindo nem procurar Dent alto demais.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -172,6 +181,8 @@ relacoes:
       - "Kethra acredita que Masao é perigo real para Ren e para a trama que toca Narwhal, mas não foi convencida de que a cidade inteira esteja diante de um reino de terror."
       - "Kethra aceita continuar ouvindo Narwhal se Colm receber uma solução prática antes que o lavadouro deixe de ser seguro."
       - "Kethra sabe que Ren entregou seu manto roto a Colm, deu a ele o nome Dent e pagou 7 PO a Dorra Hest para levá-lo aos fornos de cal do Fire River."
+      - "Kethra pediu que Ren não use o nome dela ao procurar Dorra antes de saber quem está ouvindo."
+      - "Kethra alertou que procurar Dent alto demais pode transformar esconderijo em rastro."
       - "Kethra memorizou Dorra Hest, Dent, fornos de cal do Fire River e saída antes da primeira luz de 4 Eleasis."
       - "Kethra recusou mensagens diárias; ela só deixará mensagem quando houver algo útil ou perigo."
       - "Ponto morto acordado: vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor."
@@ -181,6 +192,9 @@ relacoes:
       - "Kethra ouviu que, depois do peixe, Narwhal tremeu e a mulher de manto cinza-azulado mandou o corredor treze não falar de tintureiro, cesto ou barril."
       - "Kethra ouviu nos fundos de Narwhal a frase: 'se a boca abriu no mercado, olhem a ponte baixa'."
       - "Ren desmontou o ponto morto de Narwhal sem deixar novo padrão útil."
+      - "Na manhã de 6 Eleasis, Kethra ainda não tem notícia de Colm/Dent."
+      - "Kethra não ouviu nova informação concreta em Narwhal desde a pista da ponte baixa."
+      - "Kethra percebe que o corredor treze está quieto demais e que termos ligados a tintureiro, cesto e barril viraram assunto evitado."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
@@ -194,6 +208,7 @@ relacoes:
       - "Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade."
       - "O ponto morto de Narwhal morreu; novo contato com Kethra exigirá conversa discreta e novo protocolo."
       - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
+      - "Contatos presenciais na lateral de Narwhal continuam arriscados: o Broche ajudou nesta manhã, mas repetição pode criar padrão."
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
@@ -1281,6 +1296,9 @@ relacoes:
       Ren conhecer seus limites. Depois, com Jack, participa do filtro contra a
       resposta da Casa Veyr e calcula como manter Nera e Tavin afastados da
       possível apresentação fechada sem denunciar que são o ponto sensível.
+      Após o treino da tenda menor, Silva ainda mantém os Vell fora da superfície
+      de Kage e da Casa Veyr; qualquer aproximação entre apresentação fechada e
+      carroça verde deve passar por ela.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1341,6 +1359,8 @@ relacoes:
       - "Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath."
       - "Silva sabe que Ren despertou o Passo Sombrio e quer que ele teste a técnica longe dos Vell até conhecer seus limites."
       - "Silva sabe que a resposta da Casa Veyr chegou com 40 PO adiantadas, mas que Jack ainda não aceitou a apresentação fechada."
+      - "Silva sabe que Casa Veyr foi verificada como presença temporária pagante, mas sem raiz local forte."
+      - "Silva mantém Nera e Tavin longe da superfície da apresentação fechada de Kage."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1470,6 +1490,19 @@ relacoes:
       e Silva pensa na proteção dos Vell. Jack aceitou o relato de Ren sobre a
       perseguição perdida do cabriolé como relatório limpo, por não transformar
       método observado em certeza inventada.
+      Quando Ren respondeu que o show não pode parar, Jack tratou a frase como
+      ensaio de aceite, não como autorização plena: se a apresentação ocorrer,
+      será em lona dos Mooney, por entrada dos Mooney e com a equipe dos Mooney
+      controlando convidados, lamparinas e conversa.
+      Tobb verificou Casa Veyr em tempo útil: a casa existe como presença
+      temporária pagante, com camarote/salão alugado e Corven Dalm como
+      procurador que assina e paga, mas sem raiz nobre local forte. Jack está
+      pronto para aceitar somente com filtros rígidos: pagamento final antes da
+      primeira lamparina, assinatura de Dalm, convidados contados por Tobb,
+      guardas posicionados pelos Mooney, veto a mexer em corda, pano, lamparina
+      ou entrada de artista, nenhuma conversa privada com Kage fora da lona e
+      cancelamento imediato se aparecerem gravadora, menino, Vell ou assunto
+      alheio.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1513,6 +1546,8 @@ relacoes:
       - "Jack escreveu resposta-isca exigindo 80 PO, 40 PO adiantadas, custos por fora, tenda/controlos do circo, nome do pagador, casa responsável, endereço e hora por escrito."
       - "Jack pagou 8 PO a Ren pela reprise pública de Kage em 5 Eleasis."
       - "Jack recebeu 40 PO adiantadas de Corven Dalm, procurador da Casa Veyr, mas reteve o dinheiro até confirmar legitimidade e aceitar ou recusar a apresentação fechada."
+      - "Jack tratou a resposta de Ren sobre o show não parar como ensaio de aceite sob filtros do circo, não como sim final."
+      - "Jack propôs aceitar a apresentação fechada da Casa Veyr apenas com filtros rígidos e aguarda se Ren acrescenta condição final."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1523,6 +1558,8 @@ relacoes:
       - "Ren autorizou Jack a aceitar a proposta como isca e pedir o dobro; Ren tentou seguir o canal após o envio."
       - "Ren informou Jack que viu método, recadeiro pago e cabriolé cinza-azulado sem brasão, mas não identificou o mandante."
       - "A resposta escrita veio de Corven Dalm, procurador da Casa Veyr, aceitando 80 PO por apresentação fechada curta e tentando excluir intermediários da conversa artística."
+      - "Ren aceitou preparar a tenda menor e revisar o número, mas ainda sob controle de Jack e sem remover os filtros do circo."
+      - "Tobb verificou que Casa Veyr existe operacionalmente como presença temporária de aluguel e pagamento, mas sem raiz local profunda."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1542,6 +1579,7 @@ relacoes:
       - "A tentativa de contatar Kage diretamente antes da reprise sugere que pelo menos um interessado quer separar Ren de Jack e dos filtros do circo."
       - "A nova tira de papel aumenta o risco de Kage virar alavanca contra Nera, mesmo sem prova de que o abrigo dos Vell foi localizado."
       - "A frase sobre intermediários desnecessários na resposta da Casa Veyr sugere nova tentativa de separar Kage dos filtros de Jack e Silva."
+      - "Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer a contraproposta."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
@@ -1756,7 +1794,7 @@ relacoes:
     nome: "Sorn Kel"
     tipo: "responsavel por cordame e montagem"
     local: "Jack Mooney & Sons Circus"
-    status: "ativo nos bastidores da reprise curta de Kage"
+    status: "ativo nos bastidores da apresentação fechada de Kage"
     atitude_para_ren: "cautelosa e profissional"
     confianca: "nenhuma"
     respeito: "profissional inicial"
@@ -1786,6 +1824,14 @@ relacoes:
       Durante a reprise, Sorn viu Ren pousar na borda externa da marca após
       gastar ki no salto de efeito. Considera que o número funcionou, mas sem
       margem para aumento de risco físico sem novo treino.
+      Na manhã de 6 Eleasis, Sorn viu Ren tentar mapear sombras na tenda menor
+      para a possível apresentação fechada da Casa Veyr. Ele aceitou marcar
+      treino básico às 13:30 com Merrit e Lysa, mas limitou a revisão a entrada,
+      saída, posições e duas marcas escuras, sem salto novo ou alteração maior.
+      No treino das 13:30, Ren confirmou duas marcas escuras úteis na tenda
+      menor. Sorn aceitou marcá-las apenas sob condição de ninguém alterar as
+      lamparinas: dobra atrás da entrada lateral e faixa baixa junto aos bancos
+      de músicos/panos extras.
     informacoes_compartilhadas_por_sorn:
       - "A última conferência completa foi ontem depois da nona badalada."
       - "Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn."
@@ -1802,6 +1848,8 @@ relacoes:
       - "No ensaio de 4 Eleasis, Sorn vetou a versão fisicamente mais ambiciosa das novidades de Kage e manteve chão baixo, sem pouso novo ou salto grande."
       - "Na preparação da reprise curta de 5 Eleasis, Sorn manteve Kage na versão segura, sem salto novo de risco."
       - "Na reprise curta de 5 Eleasis, Sorn viu Kage pousar na borda externa da marca durante o salto com Passo do Vento."
+      - "Sorn marcou treino básico de Kage para 13:30 de 6 Eleasis, com Merrit e Lysa, sem número novo."
+      - "Sorn aceitou duas marcas escuras confiáveis para a tenda menor se as lamparinas ficarem como foram marcadas."
     riscos:
       - "Pode se fechar se sentir que está sendo acusado sem prova."
       - "Pode ser testemunha útil se Ren abordar como profissional, não como culpado."
@@ -1811,6 +1859,7 @@ relacoes:
       - "Sorn percebeu uma falha técnica quase invisível no ombro de Ren durante o salto da segunda lanterna."
       - "O ensaio individual de 5 Eleasis passou no limite, mas a coordenação do número não evoluiu além da versão segura já definida."
       - "A reprise curta reforçou a posição de Sorn: Kage funciona, mas não deve aumentar dificuldade sem marcação nova."
+      - "A tenda menor ainda não oferece continuidade de sombra confiável por todos os cantos; Sorn exigirá controle de lamparinas e marcas se Kage usar esse recurso."
   mira_dane:
     nome: "Mira Dane"
     tipo: "acrobata da corda alta"
@@ -1859,6 +1908,15 @@ relacoes:
       pobreza, admiração e amor para levá-lo a assumir responsabilidade. Harl
       confessou a Ren e depois a Jack que plantou a ideia em Merrit, mas não
       ordenou diretamente o corte.
+      Na manhã de 6 Eleasis, Ren ofereceu 1 PO para que Harl ficasse atento a
+      qualquer coisa estranha na montagem da tenda menor. Harl recusou a moeda:
+      depois da punição de Jack, aceitar dinheiro para vigiar montagem pareceria
+      segredo novo. Ele disse que avisará Sorn ou Tobb se vir risco real, mas não
+      quer ser olho comprado de Ren.
+      Durante a montagem baixa da tenda menor, Harl não viu irregularidade útil:
+      não viu mão em corda, marca nova em estaca nem gente mexendo em lamparina
+      depois das marcações de Sorn. Ele manteve a ressalva de que não venderá
+      certeza absoluta.
     informacoes_compartilhadas_por_harl:
       - "Harl afirma que puxou a amarra, ouviu a corda, passou a mão na volta e no couro."
       - "Harl afirma que a corda estava boa quando ele conferiu o lado leste."
@@ -1874,6 +1932,9 @@ relacoes:
       - "Harl aceitou 1 PO de Ren por uma hora de conversa."
       - "Harl confessou que plantou em Merrit a ideia de que Sorn detectaria a amarra cantando errado antes de alguém cair."
       - "Harl afirmou que queria cancelar o número de Mira, não derrubá-la."
+      - "Harl recusou 1 PO de Ren para vigiar a montagem da tenda menor em 6 Eleasis."
+      - "Harl prometeu avisar Sorn ou Tobb se vir risco real, mas recusou virar olho pago de Ren."
+      - "Harl disse que não viu mão em corda, marca nova em estaca nem alguém mexendo em lamparina depois das marcações de Sorn."
     riscos:
       - "Pode ser testemunha-chave, negligente, culpado ou pessoa usada como cobertura."
       - "Também trabalha com breu de cordame."
@@ -1885,6 +1946,7 @@ relacoes:
       - "Harl agora sabe que Ren está disposto a gastar ouro para conseguir tempo privado."
       - "Jack puniu Harl discretamente: um mês longe da corda alta, sem chave, sem conferência de segurança e sem ficar sozinho com Merrit ou Lysa por ora."
       - "Harl deve pedir desculpas a Merrit diante de Silva à noite, para assumir que ela não carrega a culpa sozinha."
+      - "Harl está sensível a qualquer pedido que pareça segredo, vigilância comprada ou tentativa de contornar Sorn e Jack."
   lysa_renn:
     nome: "Lysa Renn"
     tipo: "acrobata / possível rival de Mira Dane"
