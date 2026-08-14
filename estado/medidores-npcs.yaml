@@ -1,10 +1,10 @@
-schema: 1
+schema: 2
 status: "ativo"
 visibilidade: "jogador"
 ultima_revisao_global:
   sessao: 3
   data_do_mundo: "6 Eleasis, 1372 DR"
-  momento: "06:41, após retorno de Ren ao circo e despertar do Passo Sombrio"
+  momento: "14:18, após definição de natureza do vínculo e subtexto afetivo"
 fontes_consultadas:
   - "estado/relacoes.yaml"
   - "estado/estado-atual.yaml"
@@ -39,6 +39,22 @@ escala:
     "6-7": "risco alto; o NPC impõe limites, condições ou distância"
     "8-9": "risco muito alto; mesmo gostando de Ren, o NPC bloqueia imprudências"
     "10": "Ren é visto como ameaça imediata à sobrevivência ou ao núcleo do NPC"
+  natureza_do_vinculo:
+    descricao: >
+      Interpretação qualitativa do vínculo. O mesmo número pode significar
+      romance, amizade, proteção, respeito profissional, relação quase familiar,
+      rivalidade afetuosa, fascínio ou dependência, conforme NPC e contexto.
+  subtexto_romantico:
+    descricao: >
+      Indica se a relação tem leitura romântica atual ou potencial. Não é
+      derivado automático de vínculo alto; depende de idade, orientação,
+      contexto, valores do NPC, risco, cenas jogadas e consentimento narrativo.
+    valores:
+      nenhum: "sem leitura romântica relevante"
+      possivel: "pode emergir se vínculo, segurança e cenas futuras sustentarem"
+      claro: "romance, atração ou interesse já explícito em cena"
+      reprimido: "existe atração ou ciúme contido, mas o NPC segura por dever, medo, lealdade ou contexto"
+      inadequado: "romance não deve ser usado por idade, papel de cuidado, assimetria ou outro limite claro"
 
 uso_em_jogo:
   revisao:
@@ -50,6 +66,9 @@ uso_em_jogo:
       elimina dureza quando risco_percebido também é alto; nesse caso, a dureza
       deve vir acompanhada de cuidado prático, humor familiar, proteção concreta
       ou sinais de preocupação, não apenas reprimendas repetidas.
+      A natureza_do_vinculo define que tipo de intimidade aparece quando o
+      vínculo sobe: romance, amizade, proteção maternal, respeito profissional,
+      rivalidade afetuosa ou outro padrão coerente.
   testes_sociais:
     orientacao: >
       Os medidores podem ajustar CDs sociais quando a ação de Ren depende da
@@ -65,6 +84,11 @@ uso_em_jogo:
       - "risco_percebido 8 ou mais deve bloquear pedidos que coloquem protegidos do NPC em perigo sem plano robusto"
   limites:
     - "medidores não forçam romance, lealdade ou perdão"
+    - "vínculo alto abre intimidade; não define sozinho que essa intimidade é romântica"
+    - "Ren ser bonito pode influenciar primeira impressão, curiosidade e subtexto, mas não substitui personalidade, orientação, idade, compromisso, medo, luto, dever ou contexto"
+    - "mulheres de idade próxima podem desenvolver queda, ciúme, fascínio ou flerte se vínculo e cenas sustentarem; isso deve surgir como consequência plausível, não como regra automática"
+    - "mulheres bem mais velhas ou em papel de cuidado tendem a expressar vínculo alto como proteção, dureza familiar, orgulho ou preocupação, salvo indicação forte em contrário"
+    - "homens com vínculo alto tendem a expressar amizade, camaradagem, respeito, rivalidade fraterna ou lealdade, salvo indicação forte em contrário"
     - "medidores não substituem segredos, objetivos próprios ou conhecimento real do NPC"
     - "medidores não revelam informação que o NPC não teria como saber"
     - "um NPC pode falar duro por personalidade, mas o tom deve refletir melhora real quando os números melhorarem"
@@ -77,6 +101,12 @@ npcs:
       vinculo: 8
       confianca: 7
       risco_percebido: 8
+    natureza_do_vinculo: "romântico explícito, protetivo e vulnerável"
+    subtexto_romantico: "claro"
+    observacao_afetiva: >
+      Nera já tem vínculo romântico em cena. O ciúme dela deve nascer da
+      vulnerabilidade concreta: ela está escondida enquanto Kage ganha palco,
+      dinheiro e olhares; não deve virar posse automática sobre Ren.
     leitura_atual: >
       Nera tem vínculo romântico explícito com Ren e acredita que ele tenta
       protegê-la e proteger Tavin. Ao mesmo tempo, ela vê Ren como alguém que
@@ -107,6 +137,11 @@ npcs:
       vinculo: 7
       confianca: 6
       risco_percebido: 4
+    natureza_do_vinculo: "fraternal, infantil e protetivo"
+    subtexto_romantico: "inadequado"
+    observacao_afetiva: >
+      Tavin é criança e deve expressar vínculo por segurança, admiração simples,
+      curiosidade e medo de abandono, nunca por subtexto romântico.
     leitura_atual: >
       Tavin associa Ren a resgate, volta prometida e Kage como figura quase
       fantástica. Ele ainda é criança assustada, mas Ren virou referência de
@@ -134,6 +169,12 @@ npcs:
       vinculo: 7
       confianca: 8
       risco_percebido: 8
+    natureza_do_vinculo: "protetivo, quase maternal e prático"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Silva pode gostar muito de Ren e ainda tratá-lo com secura. O calor dela
+      deve aparecer como comida, limites, checagem de cauda, cuidado com sono e
+      proteção dos Vell, não como flerte.
     leitura_atual: >
       Silva gosta de Ren mais do que sua fala seca admite e confia bastante em
       sua intenção e competência prática. O risco percebido continua muito alto
@@ -163,6 +204,12 @@ npcs:
       vinculo: 5
       confianca: 6
       risco_percebido: 7
+    natureza_do_vinculo: "profissional, patronal e utilitário"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Jack pode desenvolver afeição por Ren como ativo raro, jovem teimoso e
+      artista da casa, mas traduz isso em contrato, preço, controle e proteção
+      operacional.
     leitura_atual: >
       Jack vê Ren como ativo valioso, artista vendável e homem útil, não como
       amigo íntimo. Confia na competência de Ren quando há controle claro, mas
@@ -192,6 +239,12 @@ npcs:
       vinculo: 6
       confianca: 8
       risco_percebido: 6
+    natureza_do_vinculo: "pastoral, moral e protetivo"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Maerra enxerga Ren como alguém capaz de escolher luz sem negar sua sombra.
+      O vínculo se expressa por orientação moral, abrigo e limites, não por
+      atração.
     leitura_atual: >
       Maerra acredita que Ren protege vulneráveis e já viu provas fortes disso.
       Ela não aprova vendeta como eixo moral, mas confia nele quando o assunto é
@@ -221,6 +274,11 @@ npcs:
       vinculo: 3
       confianca: 6
       risco_percebido: 8
+    natureza_do_vinculo: "respeito operacional cauteloso"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Se o vínculo com Luath subir, deve virar camaradagem institucional,
+      confiança de campo ou respeito duro, não intimidade sentimental rápida.
     leitura_atual: >
       Luath respeita a utilidade operacional de Ren, especialmente depois dos
       barris e de Sarbreen, mas não tem vínculo pessoal forte com ele. Ren segue
@@ -249,6 +307,13 @@ npcs:
       vinculo: 4
       confianca: 5
       risco_percebido: 7
+    natureza_do_vinculo: "aliança prática cautelosa"
+    subtexto_romantico: "possivel"
+    observacao_afetiva: >
+      Não há queda atual de Kethra por Ren. Se Colm/Dent for confirmado seguro,
+      o risco cair e Ren continuar demonstrando competência sem exigir fé cega,
+      o vínculo pode ganhar tensão pessoal ou atração contida. Por enquanto,
+      sobrevivência e cautela abafam qualquer leitura romântica.
     leitura_atual: >
       Kethra reconhece que Ren salvou Colm e entregou soluções práticas, mas
       ainda mede tudo pelo risco ao irmão e pela sobrevivência dentro de Narwhal.
@@ -275,6 +340,11 @@ npcs:
       vinculo: 2
       confianca: 2
       risco_percebido: 7
+    natureza_do_vinculo: "transacional, medroso e oportunista"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Pell reage a moeda, medo e oportunidade. Vínculo alto futuro significaria
+      lealdade comprada ou gratidão nervosa, não afeto íntimo.
     leitura_atual: >
       Pell coopera por medo, pagamento e oportunidade. Ele não é aliado e pode
       vender lembranças sobre Ren se a ameaça ou a recompensa mudarem.
@@ -301,6 +371,11 @@ npcs:
       vinculo: 3
       confianca: 4
       risco_percebido: 5
+    natureza_do_vinculo: "profissional técnico e desconfiado"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Brunna pode respeitar Ren se ele tratar Sarbreen como levantamento sério,
+      mas a relação passa por ofício, pagamento e proteção da loja.
     leitura_atual: >
       Brunna não gosta de teatro ruim, mas reconhece pergunta certa, pagamento
       certo e risco real. Ela ajudou Ren porque a situação tocou sua perícia e
@@ -329,6 +404,12 @@ npcs:
       vinculo: 5
       confianca: 5
       risco_percebido: 4
+    natureza_do_vinculo: "profissional, teatral e espirituoso"
+    subtexto_romantico: "possivel"
+    observacao_afetiva: >
+      Dessa pode notar a beleza de Ren e o valor visual de Kage como artista.
+      Qualquer flerte atual tende a vir como provocação de bastidor, humor ou
+      controle teatral; romance real exigiria cenas futuras e aumento de vínculo.
     leitura_atual: >
       Dessa vê Ren como artista útil, cliente pagante e problema interessante.
       Ela confia no corpo de Ren em cena e no valor de Kage, mas não se considera
@@ -357,6 +438,11 @@ npcs:
       vinculo: 4
       confianca: 5
       risco_percebido: 5
+    natureza_do_vinculo: "respeito técnico e profissional"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Sorn expressa melhora de vínculo por confiança em marcação, permissão de
+      risco controlado e correções menos defensivas, não por calor emocional.
     leitura_atual: >
       Sorn respeita disciplina de marcação e viu Ren obedecer limites em cena.
       A relação ainda é profissional, não pessoal, e passa por segurança física.
@@ -383,6 +469,13 @@ npcs:
       vinculo: 3
       confianca: 3
       risco_percebido: 5
+    natureza_do_vinculo: "rivalidade defensiva, admiração possível e orgulho ferido"
+    subtexto_romantico: "possivel"
+    observacao_afetiva: >
+      Lysa não tem queda atual por Ren; ela está ferida, defensiva e focada no
+      palco. Se vínculo subir, pode virar fascínio competitivo, flerte áspero ou
+      atração reprimida, especialmente por Kage representar risco, disciplina e
+      presença de palco. Isso também pode acionar ciúme de Nera se ficar visível.
     leitura_atual: >
       Lysa ainda é defensiva com Ren por causa da investigação da sabotagem e
       por orgulho ferido, mas Kage também deu a ela um papel baixo que funcionou
@@ -403,3 +496,71 @@ npcs:
       - "Ren a acusa publicamente ou reabre a sabotagem como humilhação"
       - "Lysa é afastada de cena por risco ligado a Kage"
       - "Ren força comparação direta entre Lysa e Mira"
+
+  merrit_tealeaf:
+    nome: "Merrit Tealeaf"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 4
+      confianca: 4
+      risco_percebido: 6
+    natureza_do_vinculo: "culpa, validação de palco e confiança frágil"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Merrit pode buscar aprovação de Ren porque ele a confrontou, poupou uma
+      exposição pior e lhe devolveu um lugar controlado de cena. Isso deve
+      aparecer como necessidade de validação, humor nervoso e culpa, não como
+      romance.
+    leitura_atual: >
+      Merrit teme Ren e respeita que ele tenha ajudado a transformar a sabotagem
+      em confissão controlada em vez de desastre público. O sucesso como
+      narradora de chão devolveu a ela algum valor, mas a culpa ainda manda.
+    tom_atual: >
+      Nervosa, espirituosa quando se sente segura e ansiosa por não estragar
+      outra coisa. Pode procurar confirmação curta de que fez a parte certa.
+    impacto_em_testes: >
+      Pedidos que deem estrutura clara, supervisão e chance de reparar dano
+      reduzem CD. Pressão pública, ameaça de expor Harl ou reabrir culpa sem
+      saída aumentam CD.
+    gatilhos_de_aumento:
+      - "Ren permite que Merrit repare dano sem fingir que nada aconteceu"
+      - "Ren protege a fonte da confissão sem encobrir risco real"
+      - "Merrit sustenta papel limitado sem quebrar confiança de Sorn ou Silva"
+    gatilhos_de_queda:
+      - "Ren usa Merrit como bode expiatório público"
+      - "Ren revela a fonte sobre Harl sem necessidade clara"
+      - "Merrit volta a esconder ferramenta, faca ou segredo operacional"
+
+  harl_venn:
+    nome: "Harl Venn"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 3
+      confianca: 3
+      risco_percebido: 6
+    natureza_do_vinculo: "respeito relutante, vergonha e cautela"
+    subtexto_romantico: "nenhum"
+    observacao_afetiva: >
+      Se o vínculo com Harl subir, deve virar camaradagem difícil ou respeito de
+      bastidor entre homens que já fizeram escolhas ruins, não afeto caloroso de
+      imediato. A devoção romântica relevante de Harl continua voltada a Lysa ou
+      ao que Lysa representava para ele.
+    leitura_atual: >
+      Harl respeita Ren por ter arrancado uma confissão sem entregá-lo
+      diretamente como monstro, mas teme ser usado de novo em segredo e está
+      sensível a qualquer pedido que pareça vigilância comprada.
+    tom_atual: >
+      Defensivo, envergonhado e mais honesto quando a conversa evita moeda,
+      segredo e tentativa de contornar Sorn ou Jack.
+    impacto_em_testes: >
+      Pedidos diretos, públicos o bastante para não parecer novo segredo, podem
+      ter CD menor. Pagamento por vigilância, pedido de esconder informação ou
+      contato envolvendo Lysa/Merrit aumentam CD.
+    gatilhos_de_aumento:
+      - "Ren respeita a recusa de Harl em virar olho pago"
+      - "Harl consegue avisar risco real a Sorn ou Tobb sem ser usado como isca"
+      - "Ren trata a culpa de Harl como responsabilidade, não como coleira"
+    gatilhos_de_queda:
+      - "Ren pressiona Harl a agir em segredo contra ordens de Jack"
+      - "Ren usa Lysa ou Merrit para manipular Harl"
+      - "Harl descobre que Ren escondeu informação de modo que piora sua punição"
