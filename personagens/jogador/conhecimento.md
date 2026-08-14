@@ -12,6 +12,11 @@ Ren sabe:
 
 * seu treinamento veio do Clã Kagehira;
 * o Clã Kagehira servia ao shogunato de Kozakura como rede shinobi de inteligência, infiltração e mensagens secretas;
+* a arte formal do clã é chamada **Kagehira Getsuei-ryu**, a Escola da Sombra da Lua;
+* katas lembrados do Kagehira Getsuei-ryu incluem **Tsuki Kakure**,
+  **Mizu no Kage** e **Hotaru Otoshi**;
+* o tio e mestre que mais marcou seu treinamento foi **Kagehira Tadatsune**,
+  chamado pelos alunos de **Tadatsune-sensei**;
 * seus pais morreram em uma missão quando Aiko e Ren ainda eram crianças;
 * ele e Aiko sobreviveram por cinco anos na miséria antes de serem encontrados pelo tio, chefe do clã;
 * Aiko avançou no treinamento mais rápido que ele e o ajudava nas madrugadas;
@@ -2623,3 +2628,24 @@ Progressão:
 * Silva conhece rumores de lâmpada sem chama, anel anão que abre porta, martelo que acha parede falsa, sala onde a sombra fica errada e arma antiga que não enferruja, mas não sabe separar fato de fantasia;
 * Silva apontou caminhos possíveis: Lockwood Mooney para triagem arcana discreta, Gond para pedra/travas/engenharia perigosa, Wizards' Guild para magia com custo político, ou mapas velhos do porto com alto risco de fraude;
 * hora aproximada: 22:24 de 4 Eleasis, 1372 DR.
+
+### Sessão 003: kata de Kozakura antes do descanso
+
+* Antes de dormir no depósito de figurino velho do circo, Ren fez kata de memória de Kozakura;
+* o estilo do Clã Kagehira foi nomeado como **Kagehira Getsuei-ryu**, a Escola da Sombra da Lua;
+* Ren lembrou as formas **Tsuki Kakure**, a Lua Velada; **Mizu no Kage**, a Sombra na Água; e **Hotaru Otoshi**, a Queda do Vaga-lume;
+* Ren recordou **Kagehira Tadatsune**, seu tio, chefe do clã e mestre chamado pelos alunos de **Tadatsune-sensei**;
+* Tadatsune ensinava que o Kagehira Getsuei-ryu não era arte de torneio, mas arte para atravessar uma casa de mentiras, sair com o papel certo e deixar o inimigo acreditar que perdeu por descuido próprio;
+* Ren lembrou a correção antiga de Aiko sobre seus passos: "Você pisa como quem quer convencer o chão de que existe";
+* Ren sabe que Ravens Bluff, por ter porto, pode receber viajantes, mercadores, exilados ou mestres vindos de Kara-Tur, embora isso ainda seja possibilidade, não pista concreta;
+* hora aproximada: 22:47 de 4 Eleasis, 1372 DR.
+
+### Sessão 003: descanso longo e manhã de 5 Eleasis
+
+* Ren dormiu no depósito de figurino velho do Jack Mooney & Sons Circus sem interrupção aberta;
+* pela manhã, Silva informou que nada entrou no circo durante a noite, apesar de haver gente demais perto da estrada de carroças;
+* nenhum recado de Luath chegou por mão vista por Silva, Jack ou Tobb antes de Ren acordar;
+* Ren completou descanso longo: PV 38/38, Ki 5/5, dados de vida completos;
+* o **Broche do Semblante Humilde** voltou a estar disponível com o amanhecer de 5 Eleasis;
+* a reprise curta de Kage está prevista para o cair da tarde de 5 Eleasis;
+* hora aproximada: 06:50 de 5 Eleasis, 1372 DR.

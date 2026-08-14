@@ -77,6 +77,26 @@ silêncio e instinto. Levou os dois de volta e os colocou em treinamento.
 
 ---
 
+## Kagehira Getsuei-ryu
+
+A arte formal do clã era o **Kagehira Getsuei-ryu**, a Escola da Sombra da Lua.
+
+Não era uma escola pública de duelistas, nem uma ordem monástica famosa. Era uma
+arte de clã: punho, queda, passo, lâmina curta, respiração, leitura de sala,
+silêncio sobre tábua e papel. O objetivo não era vencer torneios ou atrair
+discípulos. Era atravessar uma casa onde todos mentem, sair com a informação
+certa e deixar o inimigo acreditar que perdeu por descuido próprio.
+
+O mestre que mais marcou Ren foi **Kagehira Tadatsune**, seu tio e chefe do
+clã. Para os alunos, ele era **Tadatsune-sensei**. Para Ren, foi ao mesmo tempo
+resgatador, mestre severo e autoridade que não permitiu que gratidão se tornasse
+fraqueza.
+
+Entre as formas que Ren lembra estão **Tsuki Kakure**, a Lua Velada; **Mizu no
+Kage**, a Sombra na Água; e **Hotaru Otoshi**, a Queda do Vaga-lume.
+
+---
+
 ## Aiko
 
 Aiko se desenvolveu rápido. Mais rápido que Ren.

@@ -1341,3 +1341,39 @@ Se Ren dormir agora, o corpo enfim terá chance de cobrar a noite inteira. O que
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **22:47 de 4 Eleasis, 1372 DR**. Ren está no depósito de figurino velho do Jack Mooney & Sons Circus. Não houve gasto de recurso. Se ele se deitar agora e a noite não for interrompida, começa um descanso longo.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren descansa. Se não for interrompido.
+
+**Narrador**
+
+A interrupção não vem.
+
+Na primeira hora, o circo ainda trabalha em volta do sono de Ren. Roda arranha terra pisada, alguém prende lona, alguém ri baixo longe demais para virar rosto, e uma voz de Silva corta uma conversa antes que ela fique curiosa demais. Depois o acampamento se fecha como animal grande recolhendo as patas.
+
+O depósito de figurino velho não fica confortável, mas fica suficiente. O cheiro de lona, pó e roupa guardada vence o cheiro de Sarbreen. A madeira estala algumas vezes com a umidade fria do Dragon Reach. Em algum ponto da madrugada, chuva fina ou névoa grossa toca o teto como dedos leves e depois passa.
+
+Ninguém chama por Kage. Ninguém levanta a lona com faca na mão. Ninguém traz recado de Luath.
+
+Quando Ren acorda de verdade, a luz já é cinza clara nas frestas. A manhã de **5 Eleasis, 1372 DR** entrou no circo antes dos músicos. Há cheiro de mingau, graxa de roda, café fraco e capim molhado. Um dos cavalos bate o casco duas vezes do lado de fora, impaciente com alguma rotina que não conhece tragédia.
+
+O descanso longo se completa.
+
+Situação mecânica: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Dados de Vida completos. O **Broche do Semblante Humilde** teve o uso renovado com o amanhecer: está disponível novamente, uma vez, até o próximo amanhecer.
+
+Silva está acordada antes dele, como se dormir fosse um luxo que ela permite aos outros por caridade. Ela aparece perto da entrada do depósito com uma tigela pequena e a voz baixa.
+
+"Nada entrou. Teve gente demais perto da estrada de carroças, mas isso é cidade. Jack fechou pergunta comprida com resposta curta, Tobb ficou andando onde devia, e ninguém comprou caminho até aqui."
+
+Ela deixa a tigela onde Ren pode pegar.
+
+"Também não veio recado do seu sargento. Se veio notícia, não veio por mão que Jack, eu ou Tobb tenhamos visto."
+
+Lá fora, o circo começa a manhã de apresentação. Não a grande noite do Benefício da Lona Aberta, mas a primeira reprise curta de Kage, marcada para o cair da tarde. Sorn já está falando com alguém sobre marcação. Dessa passa com tecido escuro dobrado no braço. Nera e Tavin ainda estão dentro da rotina protegida da carroça verde; vivos, escondidos à vista e cercados por tarefas pequenas o bastante para parecerem comuns.
+
+Ravens Bluff, por outro lado, não dormiu do mesmo jeito. O mercado de peixe, Sarbreen, Luath, Brass, Narwhal, Kethra, Colm/Dent, Maerra e a pergunta sobre a luz continuam todos em algum lugar da cidade.
+
+Por enquanto, há manhã.
+
+O que Ren faz?

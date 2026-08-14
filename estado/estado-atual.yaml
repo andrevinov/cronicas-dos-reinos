@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "exploracao"
+  modo_de_cena_atual: "interacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "depósito de figurino velho, após kata do Kagehira Getsuei-ryu antes de dormir"
+  ponto_exato: "depósito de figurino velho, ao acordar após descanso longo"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -202,18 +202,18 @@ localizacao:
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
-  data_exata: "4 Eleasis, 1372 DR"
+  data_exata: "5 Eleasis, 1372 DR"
   calendario: "Calendário de Harptos"
   mes: "Eleasis"
   nome_sazonal_do_mes: "Highsun"
-  dia_do_mes: 4
+  dia_do_mes: 5
   dezena: 1
-  dia_da_dezena: 4
-  periodo_do_dia: "noite de 4 Eleasis, antes de dormir após kata de memória de Kozakura"
-  hora_aproximada: "22:47 de 4 Eleasis"
-  clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
-  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
-  prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. Ren montou o ponto morto de Kethra em Narwhal Manor e pagou 2 PO a Pell pelo ponto morto da Silver Lily; depois, por volta de 16:02, removeu os dois pontos mortos. Pell deixou bilhete apontando janela nos fundos da Red Sail entre o sino de seis e o de sete; Kethra deixou bilhete apontando tensão em Narwhal, silêncio imposto sobre corredor treze/tintureiro/cesto/barril e a frase 'se a boca abriu no mercado, olhem a ponte baixa'. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados. Às 10:03, Tobb trouxe recado de Luath: quatro barris mal marcados foram encontrados perto do mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro; a guarda acredita que havia seis. Por volta de 10:27, Ren encontrou Luath no perímetro isolado do mercado de peixe. Luath confirmou que a conta da carroça era de seis barris, que quatro foram encontrados e que um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário. Às 10:31, Ren identificou o risco explosivo do pó e ligou a cera vermelha à rua dos tintureiros; Luath enviou guardas para cercar a oficina dos tintureiros."
+  dia_da_dezena: 5
+  periodo_do_dia: "manhã de 5 Eleasis, após descanso longo no circo"
+  hora_aproximada: "06:50 de 5 Eleasis"
+  clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
+  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Não chegou recado seguro de Luath ao circo antes de Ren acordar. A primeira reprise curta de Kage está prevista para o cair da tarde de 5 Eleasis. Permanecem abertas as linhas de Sarbreen, Red Sail/Brass, Narwhal, Luath, Maerra/crianças, Kethra e Colm/Dent."
 
 recursos:
   pontos_de_vida:
@@ -991,7 +991,7 @@ equipamento_em_posse:
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; usado na madrugada de 4 Eleasis e gasto até o próximo amanhecer"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso disponível desde o amanhecer de 5 Eleasis"
   outros:
     - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso e máscara parcial de entrada"
     - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
@@ -1008,7 +1008,7 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o que fazer antes de dormir"
+    - "decidir como usar a manhã de 5 Eleasis antes da reprise curta de Kage ao cair da tarde"
     - "decidir se puxa o fio de Sarbreen por Lockwood Mooney, Gond, Wizards' Guild ou mapas velhos do porto"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
     - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
@@ -1052,8 +1052,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 22:47 de 4 Eleasis de 1372 DR. Depois de jantar, caminhar com Nera, treinar Kage sozinho e ouvir Silva falar sobre rumores incertos de Sarbreen, Ren fez kata de memória de Kozakura antes de dormir. O estilo do Clã Kagehira foi nomeado em cena como Kagehira Getsuei-ryu, a Escola da Sombra da Lua. As formas lembradas foram Tsuki Kakure, Mizu no Kage e Hotaru Otoshi. Ren recordou Aiko, Tadatsune-sensei, o dojo sem tatame em Ravens Bluff, a comida de Kozakura e possibilidades futuras de buscar mestres de Kara-Tur. Não houve gasto de recursos. Se Ren se deitar agora e a noite não for interrompida, começa um descanso longo."
-  risco_imediato: "moderado"
+  cena_atual: "Ren acordou no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:50 de 5 Eleasis de 1372 DR, após descanso longo sem interrupção. Silva informou que nada entrou no circo durante a noite, embora houvesse gente demais perto da estrada de carroças como de costume. Não chegou recado de Luath por canal visto por Silva, Jack ou Tobb. Ren está com PV, ki e dados de vida completos; o Broche do Semblante Humilde voltou a estar disponível com o amanhecer. A reprise curta de Kage está prevista para o cair da tarde."
+  risco_imediato: "baixo a moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
