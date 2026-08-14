@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "interacao"
+  modo_de_cena_atual: "preparacao_de_apresentacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "depósito de figurino velho, ao acordar após descanso longo"
+  ponto_exato: "bastidores da lona principal, vestido como Kage antes da reprise curta"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -209,11 +209,11 @@ tempo:
   dia_do_mes: 5
   dezena: 1
   dia_da_dezena: 5
-  periodo_do_dia: "manhã de 5 Eleasis, após descanso longo no circo"
-  hora_aproximada: "06:50 de 5 Eleasis"
+  periodo_do_dia: "fim da tarde de 5 Eleasis, instantes antes da reprise curta de Kage"
+  hora_aproximada: "17:46 de 5 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Não chegou recado seguro de Luath ao circo antes de Ren acordar. A primeira reprise curta de Kage está prevista para o cair da tarde de 5 Eleasis. Permanecem abertas as linhas de Sarbreen, Red Sail/Brass, Narwhal, Luath, Maerra/crianças, Kethra e Colm/Dent."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante o dia, Ren preparou a reprise curta de Kage; a parte física segura se manteve, mas a coordenação geral não melhorou além da versão segura já definida. Luath enviou recado útil sobre a luz, ponte baixa e sol apagado. Antes do show, Jack interceptou proposta privada sem nome para Kage mencionando a gravadora; ele filtrou o contato e pretende responder depois da apresentação."
 
 recursos:
   pontos_de_vida:
@@ -1008,11 +1008,13 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como usar a manhã de 5 Eleasis antes da reprise curta de Kage ao cair da tarde"
+    - "decidir o que fazer nos instantes antes de entrar como Kage na reprise curta"
+    - "apresentar a versão segura de Kage ao cair da tarde de 5 Eleasis"
     - "decidir se puxa o fio de Sarbreen por Lockwood Mooney, Gond, Wizards' Guild ou mapas velhos do porto"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
     - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
-    - "aguardar contato de Luath sobre a pergunta 'Para onde a luz ia voltar depois que o mercado ouvisse?'"
+    - "interpretar o recado de Luath: ponte baixa como olho/caminho, luz como brasa/sinal e retorno por pedra molhada ao fio do sol apagado"
+    - "decidir depois do show como responder à proposta privada sem nome que mencionou a gravadora"
     - "deixar a estabilização do segundo barril armado em Sarbreen com Luath, guarda e Gond, salvo se novo risco surgir"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
@@ -1052,8 +1054,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren acordou no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:50 de 5 Eleasis de 1372 DR, após descanso longo sem interrupção. Silva informou que nada entrou no circo durante a noite, embora houvesse gente demais perto da estrada de carroças como de costume. Não chegou recado de Luath por canal visto por Silva, Jack ou Tobb. Ren está com PV, ki e dados de vida completos; o Broche do Semblante Humilde voltou a estar disponível com o amanhecer. A reprise curta de Kage está prevista para o cair da tarde."
-  risco_imediato: "baixo a moderado"
+  cena_atual: "Ren está nos bastidores da lona principal por volta de 17:46 de 5 Eleasis de 1372 DR, vestido como Kage e a instantes da reprise curta. Passou o dia no circo: tomou café com Nera e Tavin, falou sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu, ensaiou com Sorn, Merrit e Dessa, almoçou com Nera, Silva e Tavin, pediu que Lysa descansasse o joelho e fez uma apresentação curta para os Vell. A parte física segura do número se manteve; a coordenação geral não melhorou além da versão segura. Luath enviou recado útil sobre a luz, ponte baixa e sol apagado. Jack interceptou proposta privada sem nome para Kage mencionando a gravadora e pretende responder depois da apresentação."
+  risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"

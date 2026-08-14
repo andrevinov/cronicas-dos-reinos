@@ -614,6 +614,11 @@ relacoes:
       isso como alívio e aproximação, não como covardia. Depois jantou e
       caminhou com Ren pela rota interna permitida por Silva, trocando carícias
       discretas e beijos longe das bordas do acampamento.
+      Na manhã de 5 Eleasis, Ren tomou café e almoçou com Nera e Tavin e falou
+      sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu. Nera percebeu
+      a tristeza que Ren tentou esconder ao falar das cerejeiras e perguntou se
+      a lembrança era boa ou dolorosa. Antes da reprise curta de Kage, pediu
+      baixo que Ren voltasse para trás da lona depois.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -668,6 +673,9 @@ relacoes:
       - "Nera viu Ren retornar ao circo no começo da noite de 4 Eleasis, sem sangue aparente, mas retido por Silva antes da carroça verde."
       - "Nera ouviu Ren admitir que não tentou capturar Brass por medo do risco aos aliados, ao circo e a Kage."
       - "Nera caminhou com Ren pela rota interna do circo e trocou carícias discretas com ele antes do treino solo."
+      - "Nera ouviu Ren falar sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu."
+      - "Nera percebeu que a lembrança das cerejeiras toca saudade e dor, embora Ren não tenha transformado isso em explicação completa diante de Tavin."
+      - "Nera percebeu que um recado externo tocou a segurança ao redor de Kage antes da reprise de 5 Eleasis, mas não viu o papel."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -717,6 +725,10 @@ relacoes:
       onde cai se for voar. Quando Ren retornou ao circo por volta de 09:55 de
       4 Eleasis, Tavin o viu da rotina de água e fez uma nova saudação torta,
       quase derrubando a jarra vazia.
+      Na manhã de 5 Eleasis, Tavin ouviu Ren falar de Kozakura, clã e treino,
+      tentou pronunciar Getsuei-ryu e perguntou se Ren apanhou muito quando era
+      pequeno. Antes da reprise curta, viu uma apresentação pequena de Kage para
+      os Vell e tentou aplaudir sem chamar atenção demais.
     informacoes_compartilhadas_por_tavin:
       - "Ainda não interrogado diretamente."
     riscos:
@@ -738,6 +750,8 @@ relacoes:
       - "Tavin usará Timo como nome de cobertura na rotina do circo."
       - "Tavin sabe que Ren saiu novamente do circo na manhã seguinte ao Benefício, depois de assinar papel como Kage."
       - "Tavin viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis e continua tratando sua presença como promessa concreta de volta."
+      - "Tavin sabe que Ren aprendeu a lutar dentro de um clã de Kozakura e associa isso a treino duro."
+      - "Tavin viu a pequena prévia de Kage para os Vell antes da reprise de 5 Eleasis."
   velha_sella:
     nome: "Velha Sella"
     tipo: "contato cauteloso / moradora de Fishtown"
@@ -1386,6 +1400,11 @@ relacoes:
       disso, deixar a próxima particular para quem pagar melhor. Jack aceitou a
       linha comercial e a traduziu como escassez controlada: Kage raro, pouca
       fala, particulares filtrados, sem contato social direto.
+      Antes da reprise curta de 5 Eleasis, Jack interceptou uma proposta
+      privada sem nome claro tentando chegar diretamente a Kage e mencionando
+      que a presença da gravadora não seria necessária se ele respondesse
+      sozinho. Jack interpretou isso como tentativa de comprar erro, não
+      apresentação, e decidiu filtrar a resposta para depois do número.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1422,11 +1441,13 @@ relacoes:
       - "Jack selou a resposta rígida ao camarote oeste."
       - "Jack propôs calendário inicial: Kage não se apresenta em 4 Eleasis; pode fazer reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde; apresentações fechadas só em tenda controlada pelo circo e após filtros formais do contratante."
       - "Ren aceitou uma pequena apresentação em 5 Eleasis ao cair da tarde e particulares posteriores para quem cumprir filtros e pagar melhor."
+      - "Jack filtrou uma proposta privada sem nome claro que tentou alcançar Kage diretamente antes da reprise de 5 Eleasis."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
       - "Ren suspeita que há omissão na certeza de Merrit sobre Sorn detectar o problema."
       - "Harl Venn admitiu ter plantado em Merrit a ideia de que Sorn ouviria uma amarra cantando errado."
+      - "Antes da reprise curta de 5 Eleasis, Jack recebeu proposta privada sem nome claro que mencionava dispensar a gravadora se Kage respondesse sozinho."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1443,6 +1464,7 @@ relacoes:
       - "O sucesso de O Vento da Noite aumenta o valor de Ren para Jack, mas também torna o artista novo mais reconhecível em Ravens Bluff."
       - "Patronato privado pode ser dinheiro limpo, vaidade de rico, ponte social ou tentativa de pescar identidade; Jack ainda não sabe qual."
       - "Manter Kage caro e inacessível aumenta valor comercial, mas pode fazer patronos insistirem por vias indiretas."
+      - "A tentativa de contatar Kage diretamente antes da reprise sugere que pelo menos um interessado quer separar Ren de Jack e dos filtros do circo."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
@@ -1485,6 +1507,9 @@ relacoes:
       enquanto ainda precisa sustentar a imagem de Kage.
       Depois do fechamento do Benefício, Dessa recolheu o figurino de O Vento
       da Noite antes do banho de Ren, tratando as costuras como ativo valioso.
+      Antes da reprise curta de 5 Eleasis, Dessa vestiu Ren novamente como Kage,
+      conferiu costuras e advertiu que qualquer heroísmo fora da marcação pode
+      arruinar o figurino e a segurança do número.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
@@ -1496,6 +1521,7 @@ relacoes:
       - "Dessa acha que a roupa deve continuar protegida nos bastidores para preservar o efeito de palco."
       - "Dessa está com o figurino de O Vento da Noite guardado após o fechamento do Benefício."
       - "Dessa reorganizou o ensaio de 4 Eleasis para transformar a ambição de quatro movimentos físicos novos em duas novidades cênicas seguras para Kage."
+      - "Dessa preparou Ren como Kage para a reprise curta de 5 Eleasis e manteve a versão segura do figurino."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
@@ -1536,6 +1562,9 @@ relacoes:
       Nos bastidores, Merrit buscou validação por ter calado antes de estragar;
       Sorn cortou seco, mas Dessa preservou a piada do céu rico como parte útil
       do número.
+      Na preparação da reprise curta de 5 Eleasis, Merrit tentou ampliar demais
+      a história outra vez. Dessa e Sorn cortaram o excesso; a versão final
+      permaneceu curta e funcional, sem transformar o número em algo novo.
     informacoes_compartilhadas_por_merrit:
       - "Merrit passou pela rota estreita entre caixas de contrapeso e mastro lateral."
       - "Merrit cortou a tira da amarra da corda alta."
@@ -1553,6 +1582,7 @@ relacoes:
       - "Merrit narrou O Vento da Noite de chão, com texto curto e supervisão, sem incidente."
       - "Dessa aprovou manter a piada do céu rico no texto de Merrit."
       - "No ensaio de 4 Eleasis, Merrit tentou ampliar demais o drama da lenda; a versão segura ficou com duas frases curtas e pausas marcadas."
+      - "Na preparação da reprise curta de 5 Eleasis, Merrit repetiu a história em versão enxuta após Dessa e Sorn cortarem excessos."
     riscos:
       - "Merrit pode entrar em pânico se Mira, Jack ou Lysa a confrontarem publicamente."
       - "A confissão foi parcialmente ouvida por Mira Dane."
@@ -1641,7 +1671,7 @@ relacoes:
     nome: "Sorn Kel"
     tipo: "responsavel por cordame e montagem"
     local: "Jack Mooney & Sons Circus"
-    status: "ativo nos bastidores do Benefício da Lona Aberta"
+    status: "ativo nos bastidores da reprise curta de Kage"
     atitude_para_ren: "cautelosa e profissional"
     confianca: "nenhuma"
     respeito: "profissional inicial"
@@ -1663,6 +1693,11 @@ relacoes:
       Nos bastidores, Sorn reconheceu que Ren caiu onde foi mandado. Também
       apontou que o ombro de Ren quase abriu demais no salto da segunda lanterna
       e proibiu novo salto se alguém mexer nas marcas sem avisá-lo.
+      Na preparação da reprise curta de 5 Eleasis, Sorn acompanhou o ensaio de
+      Ren e manteve a versão segura do número. O ensaio individual passou no
+      limite; a coordenação com Merrit e Dessa não melhorou o bastante para
+      justificar salto novo ou risco maior. Sorn também apoiou que Lysa
+      descansasse o joelho antes da entrada.
     informacoes_compartilhadas_por_sorn:
       - "A última conferência completa foi ontem depois da nona badalada."
       - "Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn."
@@ -1677,6 +1712,7 @@ relacoes:
       - "Harl estava com a cópia da chave; Sorn mandou devolver no prego, mas não conferiu pessoalmente."
       - "Quando Sorn viu depois, a chave estava no prego, mas torta."
       - "No ensaio de 4 Eleasis, Sorn vetou a versão fisicamente mais ambiciosa das novidades de Kage e manteve chão baixo, sem pouso novo ou salto grande."
+      - "Na preparação da reprise curta de 5 Eleasis, Sorn manteve Kage na versão segura, sem salto novo de risco."
     riscos:
       - "Pode se fechar se sentir que está sendo acusado sem prova."
       - "Pode ser testemunha útil se Ren abordar como profissional, não como culpado."
@@ -1684,6 +1720,7 @@ relacoes:
       - "Sorn está responsável por preservar as marcações e limites de segurança de O Vento da Noite."
       - "As marcações de Sorn funcionaram durante O Vento da Noite; Ren pousou limpo diante do público."
       - "Sorn percebeu uma falha técnica quase invisível no ombro de Ren durante o salto da segunda lanterna."
+      - "O ensaio individual de 5 Eleasis passou no limite, mas a coordenação do número não evoluiu além da versão segura já definida."
   mira_dane:
     nome: "Mira Dane"
     tipo: "acrobata da corda alta"

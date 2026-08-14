@@ -1234,7 +1234,7 @@ O jantar vem da cozinha lateral: caldo grosso, pão escuro, cebola doce demais d
 
 O passeio não passa da rota permitida por Silva, mas dentro dela há noite suficiente.
 
-Entre lonas recolhidas, estacas, cordas e carroças apagadas, o circo parece outro lugar: menos espetáculo, mais criatura grande respirando no escuro. Nera anda perto de Ren, primeiro de mãos dadas, depois com o ombro encostando no dele quando a passagem fica estreita demais para fingir distância. As carícias ficam pequenas porque a cidade ainda existe: dedos no pulso, mão na cintura por um instante, um beijo escondido atrás de uma carroça de figurino, outro interrompido pelo barulho de alguém virando uma tina vazia longe demais para ver.
+Entre lonas recolhidas, estacas, cordas e carroças apagadas, o circo parece outro lugar: menos espetáculo, mais estrutura grande respirando no escuro. Nera anda perto de Ren, primeiro de mãos dadas, depois com o ombro encostando no dele quando a passagem fica estreita demais para fingir distância. As carícias ficam pequenas porque a cidade ainda existe: dedos no pulso, mão na cintura por um instante, um beijo escondido atrás de uma carroça de figurino, outro interrompido pelo barulho de alguém virando uma tina vazia longe demais para ver.
 
 Nera ri baixo nesse segundo, mais de susto do que de alegria. Mesmo assim, ri.
 
@@ -1350,13 +1350,13 @@ Ren descansa. Se não for interrompido.
 
 A interrupção não vem.
 
-Na primeira hora, o circo ainda trabalha em volta do sono de Ren. Roda arranha terra pisada, alguém prende lona, alguém ri baixo longe demais para virar rosto, e uma voz de Silva corta uma conversa antes que ela fique curiosa demais. Depois o acampamento se fecha como animal grande recolhendo as patas.
+Na primeira hora, o circo ainda trabalha em volta do sono de Ren. Roda arranha terra pisada, alguém prende lona, alguém ri baixo longe demais para virar rosto, e uma voz de Silva corta uma conversa antes que ela fique curiosa demais. Depois o acampamento se fecha como uma máquina grande recolhendo suas travas.
 
 O depósito de figurino velho não fica confortável, mas fica suficiente. O cheiro de lona, pó e roupa guardada vence o cheiro de Sarbreen. A madeira estala algumas vezes com a umidade fria do Dragon Reach. Em algum ponto da madrugada, chuva fina ou névoa grossa toca o teto como dedos leves e depois passa.
 
 Ninguém chama por Kage. Ninguém levanta a lona com faca na mão. Ninguém traz recado de Luath.
 
-Quando Ren acorda de verdade, a luz já é cinza clara nas frestas. A manhã de **5 Eleasis, 1372 DR** entrou no circo antes dos músicos. Há cheiro de mingau, graxa de roda, café fraco e capim molhado. Um dos cavalos bate o casco duas vezes do lado de fora, impaciente com alguma rotina que não conhece tragédia.
+Quando Ren acorda de verdade, a luz já é cinza clara nas frestas. A manhã de **5 Eleasis, 1372 DR** entrou no circo antes dos músicos. Há cheiro de mingau, graxa de roda, café fraco e capim molhado. Uma roda frouxa range duas vezes do lado de fora, impaciente dentro de alguma rotina que não conhece tragédia.
 
 O descanso longo se completa.
 
@@ -1377,3 +1377,101 @@ Ravens Bluff, por outro lado, não dormiu do mesmo jeito. O mercado de peixe, Sa
 Por enquanto, há manhã.
 
 O que Ren faz?
+
+**Jogador**
+
+[Quero avançar esse dia rápido até a apresentação, caso não aconteça algo no meio tempo como reação.] Ren toma café com os Vell. Conversa com Sorn sobre ensaio e passa boa parte da manhã ensaiando o número. Almoça com Nera, Silva e Tavin, fala com ela sobre a saudade de sua terra, sobre ter acordado sentindo o cheiro das cerejeiras na primavera. Se ela ou Tavin arriscar uma pergunta sobre a vida de Ren, sobre como ele aprendeu a lutar, Ren contará um pouco sobre o que é ser de um clã, sobre o que era o clã Kozakura, sobre terem um estilo próprio de luta. Eles são estrangeiros, e além disso não há mais segredos a guardar: seu clã foi arrasado por Masao. Elas talvez percebam um pouco da tristeza que ele tenta ocultar. A tarde, mesmo Lysa querendo ensaiar, Ren pede pra que ela descanse o corpo pra apresentação. Ren ensaia com Sorn seus pulos sozinho, faz Merrit repetir a história e sua parte, faz uma apresentação pros Vell, e depois vai se arrumar com Dessa: chegou a hora do show.]
+
+[Se houver interrupções ou qualquer coisa do cânone para esse período manhã, tarde, perto do show, você pode (e deve) aplicar.]
+
+**Narrador**
+
+A manhã aceita ser manhã por algumas horas.
+
+O café com os Vell acontece perto da carroça verde, não dentro dela, porque Silva prefere gente protegida parecendo ocupada a gente protegida parecendo escondida. Mingau grosso, pão de ontem tostado na borda, maçã cortada em quatro para render mais, água e café fraco. Tavin come com a concentração de quem aprendeu que comida quieta dura mais. Nera, com uma tigela nas mãos, observa Ren por cima da borda quando ele fala das cerejeiras.
+
+"Cerejeiras cheiram diferente de flor de altar?", Tavin pergunta, tentando parecer casual e falhando.
+
+Nera dá a ele um olhar de advertência, mas não corta a pergunta.
+
+Quando Ren fala de Kozakura, o circo ao redor vira contraste. Não há pátio de madeira polida, nem papel de arroz, nem tatame, nem fileira de sandálias na entrada de um dojo. Há lama, lona, roda, arreio, corda, faca de cozinha e gente chamando por prego. Mesmo assim, a explicação encontra lugar. Clã não era só sobrenome. Era casa, dever, rede, sinal, segredo, família e ferramenta de Estado. Os Kagehira não eram nobres de varanda; eram mãos na parede escura. O **Kagehira Getsuei-ryu** não ensinava a vencer aplauso, e sim a atravessar lugar hostil sem deixar o erro parecer externo.
+
+Tavin tenta repetir "Getsuei" e sai algo como "Getsu-ei-ru". Depois pergunta se isso quer dizer que Ren apanhou muito quando era pequeno.
+
+Silva, que estava passando perto, responde antes de Ren precisar:
+
+"Todo mundo que aprende coisa difícil apanha de algum jeito. Uns apanham de mestre. Uns de fome. Uns de burrice própria."
+
+Nera não pergunta tudo que poderia. Pergunta só:
+
+"E quando você sente esse cheiro de cerejeira, é uma lembrança boa ou uma lembrança que dói?"
+
+A resposta que Ren dá fica com ele. O que fica visível para ela é suficiente: a tristeza não está escondida tão bem quanto a postura tenta esconder. Nera não toca nisso diante de Tavin. Apenas encosta os dedos nos de Ren por um instante curto demais para virar cena e longo o bastante para dizer que ouviu.
+
+Depois vem trabalho.
+
+Teste de Acrobacia de Ren no ensaio individual: d20 5 + 7 = 12 contra CD 12. Sucesso.
+
+Ensaio coordenado com Sorn, Merrit e Dessa: d20 7 + 4 = 11 contra CD 13. Falha.
+
+O corpo de Ren cumpre o necessário, mas sem folga. Os pulos baixos entram no ponto, as quedas não abrem risco novo e a sequência física segura permanece apresentável. Sorn não elogia. Ele só solta um "serve" que, vindo dele, quase parece medalha.
+
+A coordenação do número, porém, não cresce. Merrit tenta colocar cor demais numa frase curta, Dessa manda cortar metade, Sorn manda cortar mais um terço, e no fim sobra o bastante para funcionar, não para transformar a apresentação em coisa nova. A reprise de Kage continua sendo exatamente isso: reprise curta, segura, com duas pequenas novidades cênicas. Não é uma evolução grandiosa. É manutenção competente de uma máscara que ainda está vendendo bem.
+
+Lysa aparece na beira do ensaio com o corpo todo dizendo que quer trabalhar e o joelho dizendo outra coisa. Quando Ren pede que ela descanse, a boca dela torce.
+
+"Claro. A sombra descansa no banco enquanto o vento fica famoso."
+
+Mira, que escuta de longe, não olha para Ren. Olha para o joelho de Lysa.
+
+"A sombra que manca antes da noite não entra inteira na lona."
+
+Isso encerra a discussão de um jeito que Lysa odeia e obedece.
+
+No almoço, com Nera, Silva e Tavin, a conversa volta a Kozakura por caminhos pequenos: comida, arroz, peixe seco, chá amargo, a diferença entre um selo verdadeiro e uma imitação boa demais, a ideia estranha de uma família que também era serviço secreto. Tavin pergunta se todo clã tem golpe próprio. Nera pergunta se todo clã acaba virando alvo.
+
+Silva não interfere nessa resposta. Só come devagar e ouve como alguém que sabe que proteger gente não é o mesmo que entender de onde ela veio.
+
+O primeiro recado chega depois do almoço.
+
+Não vem por mão dramática. Vem por Tobb Marlin, que aparece com cara de quem gostaria que papéis de guarda pegassem fogo sozinhos. O bilhete está dobrado simples, sem selo vistoso.
+
+> Para o homem que perguntou da luz.
+>
+> O leve falou por comida e medo. Ponte baixa parece olho ou caminho, não fim. A luz era brasa protegida e sinal. Depois do mercado ouvir, ela voltaria por trás, pela pedra molhada, para mão ligada ao sol apagado. Homem dos anéis fechou a boca. Gond mantém o barril. Não desça sozinho.
+>
+> L.
+
+O bilhete não dá mapa. Dá direção de pensamento. A ponte baixa talvez tenha sido vigia, passagem ou ponto de confirmação, não destino final. O fio do **sol apagado** volta a encostar na rota da Casa Velha, da mulher de vermelho e da oficina dos tintureiros.
+
+O segundo recado chega mais tarde e não vem da guarda.
+
+Jack intercepta antes que alcance Ren. Um mensageiro limpo demais para o campo de carroças, com sapato sem lama e casaco cinza-azulado, tenta deixar proposta "diretamente para Kage". Jack não permite. O papel é fino, caro, com dobra precisa e cheiro discreto de cera clara. Não traz nome de casa. Traz dinheiro prometido, um endereço a confirmar depois da apresentação, exigência de discrição e uma frase ruim:
+
+> A presença da gravadora não será necessária se Kage responder sozinho.
+
+Jack lê uma vez, dobra de volta e a expressão dele perde todo o teatro.
+
+"Isto não compra apresentação. Isto compra erro", ele diz a Ren, quando consegue falar sem plateia. "Depois do número eu devolvo uma resposta que morde. Antes do número, você entra limpo. Kage não aparece assustado porque papel rico aprendeu uma palavra."
+
+Silva fica mais quieta depois disso. Nera não vê o papel, mas percebe o suficiente na postura dos adultos para saber que alguma coisa tocou a borda dela.
+
+A tarde continua mesmo assim, porque circo é uma máquina cruel nesse ponto: se alguém vende ingresso, a lona sobe.
+
+Ren faz uma apresentação curta para os Vell, sem público de verdade. Tavin tenta bater palmas e lembrar que Timo não deve chamar atenção. Nera não aplaude no começo. Fica olhando como se estivesse conferindo se a lenda tem carne por baixo. Quando a sequência termina, ela respira de novo.
+
+"Volta para trás da lona depois", ela diz, baixo.
+
+Dessa toma Ren logo depois, porque emoção atrasa figurino.
+
+O guarda-roupa menor vira oficina de transformação. Camada escura, faixa presa, tecido branco escondido para o giro, manga falsa conferida duas vezes, cabelo seguro, máscara parcial na mão. Dessa ajusta uma costura no ombro e estala a língua.
+
+"Se você rasgar isso fazendo heroísmo fora da marcação, eu costuro sua sombra no chão."
+
+Do lado de fora, a lona principal começa a ganhar voz. Não é a multidão enorme do Benefício da Lona Aberta, mas é gente suficiente para pagar curiosidade. Jack está em algum lugar perto da entrada, preparando o anúncio. Merrit repete uma frase curta tão baixo que quase vira oração. Sorn verifica as marcas de pouso pela última vez. Lysa está pronta, irritada e inteira o bastante para cumprir a sombra baixa que lhe foi dada.
+
+Kage está vestido.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **17:46 de 5 Eleasis, 1372 DR**. O número continua seguro, sem salto novo de risco; a coordenação não melhorou além da versão já definida. Luath enviou pista útil sobre a luz, ponte baixa e sol apagado. Um recado sem nome tentou tocar Kage por via privada e mencionou a gravadora; Jack filtrou e pretende responder depois da apresentação. A entrada de Kage está a instantes.
+
+O que Ren faz antes de entrar?
