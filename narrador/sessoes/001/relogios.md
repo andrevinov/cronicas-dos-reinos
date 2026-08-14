@@ -263,6 +263,13 @@ Sinais perceptíveis:
 * pergunta casual demais sobre sua origem;
 * trabalhador que decide ir embora assim que Ren entra.
 
+Observação recente:
+
+* durante a reprise curta de Kage em 5 Eleasis, uma pessoa observadora começou a
+  ligar a máscara pública de Kage ao forasteiro pobre visto em canais da guarda
+  e do mercado. Isso ainda não identifica Ren Kagehira nem localiza os Vell, mas
+  aumenta o risco de comparação entre as personas de Ren.
+
 ---
 
 ## Relógio: resposta pública ao incêndio da Red Sail
@@ -508,6 +515,10 @@ Estado atual:
 * Um camarote oeste perguntou se Kage aceita patrono privado ou contratação fechada. Isso é capital social e possível dinheiro para Jack, mas também cria uma porta de aproximação que precisa ser filtrada.
 * Ren decidiu manter Kage vinculado ao circo por enquanto. Jack recusou casa privada na mesma noite e empurrou propostas por escrito para amanhã. O Benefício gerou cerca de setenta e poucas PO limpas para o circo, doações comunitárias sob Silva e promessas comerciais, reforçando a utilidade de manter Ren e os Vell por esta noite.
 * Na manhã seguinte, chegou proposta escrita sem nome claro do camarote oeste pedindo termos para apresentação privada de Kage, com pagamento adiantado e discrição. Jack pretende exigir identificação, endereço, pagador, metade adiantada e local controlado antes de qualquer resposta real.
+* A reprise curta de Kage em 5 Eleasis funcionou e aumentou valor comercial, mas
+  o segundo recado privado usou a palavra gravadora para pressionar Ren e o
+  circo. Jack, Silva e a equipe seguraram os filtros do pós-show; o abrigo dos
+  Vell permanece intacto, porém mais sensível.
 
 Consequência em 0/4:
 

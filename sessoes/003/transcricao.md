@@ -1228,7 +1228,7 @@ Nera não transforma a fala de Ren em julgamento. O rosto dela muda quando ouve 
 
 Silva finge que não ouviu. Mal. Depois aponta para a parte interna do acampamento.
 
-"Janta. Rota interna. Nada de borda, nada de carroça dos animais, nada de banco alto onde meio circo resolve virar testemunha. Se alguém de fora perguntar por você, Kage está descansando porque amanhã custa caro."
+"Janta. Rota interna. Nada de borda, nada de carroça de arreios, nada de banco alto onde meio circo resolve virar testemunha. Se alguém de fora perguntar por você, Kage está descansando porque amanhã custa caro."
 
 O jantar vem da cozinha lateral: caldo grosso, pão escuro, cebola doce demais de tanto cozinhar, e um pedaço pequeno de carne que alguém teria chamado de generoso se não estivesse mentindo. Tavin dorme antes de terminar a própria tigela, com a cabeça pendendo para o lado e a colher ainda presa na mão. Nera tira a colher dele antes que caia, cobre o irmão com pano dobrado e volta para Ren com o silêncio de quem escolheu ficar acordada.
 
@@ -1475,3 +1475,65 @@ Kage está vestido.
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **17:46 de 5 Eleasis, 1372 DR**. O número continua seguro, sem salto novo de risco; a coordenação não melhorou além da versão já definida. Luath enviou pista útil sobre a luz, ponte baixa e sol apagado. Um recado sem nome tentou tocar Kage por via privada e mencionou a gravadora; Jack filtrou e pretende responder depois da apresentação. A entrada de Kage está a instantes.
 
 O que Ren faz antes de entrar?
+
+**Jogador**
+
+Ren apenas se concentra, tentando tirar a ameaça velada a Nera da mente. Ele pretende descobrir quem o chamou e quem sabe que Nera está no circo logo depois da apresentação. Mas agora... é foco na apresentação. No momento certo da apresentação, Ren gastará 1 de ki para usar Passo do Vento e fazer os movimentos "mágicos" que o público está começando a amar.
+
+**Narrador**
+
+Ren não recebe mais tempo para pensar no papel.
+
+Jack entra primeiro. A voz dele corta a lona com domínio velho de picadeiro, sem alongar história nem pedir piedade pela cidade. Ele vende escassez, não explicação. Diz que alguns ventos passam uma vez, alguns retornam quando querem, e alguns só descem quando a noite está olhando.
+
+Merrit aparece no chão com reverência curta, menor do que gostaria e maior do que Sorn aceitaria sem ranger os dentes. Dessa acerta a última sombra de tecido. Lysa ocupa a marca baixa, sem tentar provar nada ao joelho. Sorn, do lado de dentro da entrada, levanta dois dedos para Ren: marca um, marca dois. Nada além disso.
+
+Então Kage entra.
+
+Teste de Acrobacia de Ren durante a reprise: d20 6 + 7 = 13 contra CD 13. Sucesso.
+
+Passo do Vento gasto: **1 ki**. Ren fica com **4/5 ki**.
+
+O número funciona por disciplina, não por sobra.
+
+Na primeira passagem, Kage some cedo demais para quem tenta seguir com os olhos. O pano preto corta a lanterna por meio batimento, Lysa aparece como sombra baixa no ponto certo, e Ren cruza a marca de joelho e mão com a precisão seca de quem sabe que meio palmo a mais viraria erro. O público não vê o limite. Sorn vê.
+
+No momento do salto, Ren gasta o ki.
+
+Para a plateia, o corpo de Kage parece contrariar o peso. Não é voo. É pior para quem tenta explicar depois: é salto longo demais, pouso baixo demais, giro branco onde antes havia tecido escuro, e o silêncio curto entre a flauta e o tambor. A sola de Ren toca a borda externa da marca de Sorn. O corpo segura. O figurino segura. O picadeiro segura.
+
+Merrit solta a frase certa e cala. Isso, nela, já é uma forma de milagre cênico. Dessa não sorri, mas a mão dela fecha no tecido com satisfação profissional. Lysa termina inteira, irritada por ser só sombra e aliviada por ainda conseguir ser sombra.
+
+O aplauso vem menor que o do Benefício da Lona Aberta, mas mais útil para Jack: concentrado, pagante, curioso. Não é comoção pública. É valor de mercado.
+
+Kage não agradece.
+
+Jack já está se movendo antes que a primeira mão tente apontar demais para a entrada dos bastidores. Tobb corta um lado. Silva corta outro sem parecer guarda. Sorn recolhe marcação como se marcação fosse assunto sagrado. Dessa puxa Ren para trás da lona antes que alguém decida que a máscara pode responder pergunta.
+
+O interessado privado não atravessa o filtro.
+
+O que chega até Ren é Jack, e Jack apenas quando a lona já está entre Kage e a plateia. Ele traz o papel caro de volta, agora com uma segunda dobra presa dentro da primeira. Não parece ter sido aberta diante do público.
+
+"Tentaram de novo", ele diz, baixo. "Não com força. Com pressa. Isso é diferente."
+
+Na nova tira de papel há poucas palavras, escritas pela mesma mão limpa demais:
+
+> Depois do aplauso, Kage vale mais. A gravadora vale menos se continuar cercada. Mandem preço e condição antes que outra casa compre o silêncio.
+
+Jack segura a tira entre dois dedos, como se não quisesse sujar a pele com a ideia.
+
+"Isto não prova que sabem onde ela dorme", ele diz. "Prova que sabem que a palavra gravadora mexe com você, comigo ou com alguém que eles querem que fique nervoso. É o bastante para ser veneno."
+
+Silva chega logo depois. Ela não pergunta para ver o papel; Jack mostra mesmo assim. A expressão dela não muda muito, mas a voz baixa um tom.
+
+"Nera e Tavin ficam na carroça verde. Tobb fecha a rota curta. Eu mudo a menina de costura para perto deles e tiro curiosos de lá sem explicar por quê."
+
+Do lado de fora, a lona ainda mastiga aplauso, vozes e moedas. Do lado de dentro, Kage acabou de ficar mais caro e Ren acaba de perder a proteção simples de ser apenas artista novo.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 4/5, 21 PO, 9 shuriken**. Hora aproximada: **18:07 de 5 Eleasis, 1372 DR**. A reprise funcionou, sem acidente e sem exposição direta dos Vell. Jack e a equipe impediram acesso imediato a Kage. Há uma nova pressão escrita: alguém associa Kage à "gravadora" e tenta forçar negociação antes que Jack controle o preço e as condições. Nera e Tavin seguem protegidos na carroça verde, mas Silva está endurecendo a segurança interna.
+
+Jack olha para Ren.
+
+"Agora você me diz se eu respondo como dono de circo, se você quer seguir a mão que trouxe isso, ou se essa noite Kage desaparece antes que alguém descubra quanto custa uma sombra."
+
+O que Ren faz?

@@ -73,3 +73,40 @@ Consequências:
 * Nenhum agente especializado de Masao/Juppongatana entra em contato direto ou
   observa de modo qualificado antes da apresentação. A pressão segue disponível
   para cena futura.
+
+---
+
+## Reprise curta de Kage em 5 Eleasis
+
+Contexto: Ren entrou como Kage focado na apresentação, tentando deixar para o
+pós-show a ameaça velada contra Nera. Planejou gastar 1 ki em Passo do Vento
+no momento de maior efeito público.
+
+Rolagens:
+
+* Teste de Acrobacia de Ren durante a reprise: d20 6 + 7 = 13 contra CD 13.
+  Sucesso.
+* Jack e equipe seguram borda do público após reprise: d20 19 + 4 = 23 contra
+  CD 13. Sucesso.
+* Interessado privado tenta furar filtros após a reprise: d20 5 + 3 = 8 contra
+  CD 15. Falha.
+* Observador liga Kage a forasteiro pobre da guarda: d20 15 + 2 = 17 contra
+  CD 16. Sucesso.
+* Resposta pública da reprise valoriza Kage: d20 15 + 2 = 17 contra CD 14.
+  Sucesso.
+
+Consequências:
+
+* Ren gastou 1 ki em Passo do Vento durante a reprise, ficando com 4/5 ki.
+* O número funciona, mas no limite técnico. Sorn percebe que Ren usou toda a
+  margem das marcações; não há acidente nem dano, mas não convém aumentar risco
+  físico sem novo treino.
+* A plateia compra a reprise como prova de que Kage ainda tem novidade guardada.
+  O valor público da máscara sobe.
+* Jack, Sorn, Dessa, Silva e Tobb seguram muito bem a borda do pós-show. O
+  interessado privado não consegue chegar diretamente a Kage, Nera, Tavin ou à
+  rotina interna.
+* Uma pessoa observadora, provavelmente a partir de relatos da guarda/mercado e
+  da superfície pública do circo, começa a ligar Kage ao forasteiro pobre que
+  teve acesso a Luath. Isso ainda não revela Ren Kagehira nem o abrigo dos Vell,
+  mas cria risco futuro de comparação entre máscaras.

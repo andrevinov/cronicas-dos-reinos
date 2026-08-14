@@ -1243,6 +1243,11 @@ relacoes:
       fragmentada, perigosa e cheia de histórias falsas. Indicou Lockwood Mooney,
       Gond, Wizards' Guild ou mapas velhos do porto como caminhos possíveis, cada
       um com custo e risco próprios.
+      Após a reprise curta de 5 Eleasis, Silva viu Jack e a equipe segurarem a
+      borda do pós-show e leu a segunda tira de papel que usava a palavra
+      gravadora para pressionar Kage. Ela endureceu a segurança interna dos Vell:
+      Tobb fecha a rota curta, uma menina de costura fica mais perto da carroça
+      verde e curiosos serão afastados sem explicação.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1253,7 +1258,7 @@ relacoes:
       - "Silva confia mais em Ren depois da confissão de Harl, mas seguirá intervindo se achar que ele está prometendo mais segurança do que pode entregar."
       - "Silva instruiu Ren a avisar por onde sairá, voltar pela carroça de remendos se ferido e não retornar direto à carroça verde se trouxer perseguição."
       - "Silva sabe que Ren voltou abalado da trilha e pode pressionar por explicações se ele tentar agir de novo sem descanso."
-      - "Silva autorizou passeio curto pela rota interna das lonas: sem borda do acampamento, sem carroça dos animais e sem estrada."
+      - "Silva autorizou passeio curto pela rota interna das lonas: sem borda do acampamento, sem carroça de arreios e sem estrada."
       - "Silva sabe que a pressão externa alcançou o perímetro do circo ao amanhecer."
       - "Silva aceita a busca controlada apenas se Jack mantiver controle sobre onde os homens olham e quem acompanha."
       - "Silva manteve o livro de provas escondido com ela enquanto Ren retirava Nera e Tavin."
@@ -1297,6 +1302,7 @@ relacoes:
       - "Silva permitiu jantar e passeio de Ren com Nera apenas pela rota interna do circo."
       - "Silva viu Ren treinar Kage sozinho sem gastar ki nem tentar salto perigoso."
       - "Silva apontou Lockwood Mooney, Gond, Wizards' Guild e mapas velhos do porto como caminhos possíveis para investigar Sarbreen e rumores de itens, mas não conseguiu separar rumor confiável de fantasia."
+      - "Silva viu a reprise curta de Kage funcionar e endureceu a segurança dos Vell depois que nova tira de papel pressionou Kage usando a palavra gravadora."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1405,6 +1411,12 @@ relacoes:
       que a presença da gravadora não seria necessária se ele respondesse
       sozinho. Jack interpretou isso como tentativa de comprar erro, não
       apresentação, e decidiu filtrar a resposta para depois do número.
+      Depois da reprise curta, Jack, Tobb, Silva, Sorn e Dessa impediram que o
+      interessado privado furasse os filtros do pós-show. Uma segunda tira de
+      papel chegou às mãos de Jack, dizendo que Kage vale mais depois do aplauso
+      e que a gravadora vale menos se continuar cercada. Jack leu isso como
+      veneno de negociação: não prova localização dos Vell, mas prova que alguém
+      sabe qual palavra usar para pressionar Ren e o circo.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1442,12 +1454,15 @@ relacoes:
       - "Jack propôs calendário inicial: Kage não se apresenta em 4 Eleasis; pode fazer reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde; apresentações fechadas só em tenda controlada pelo circo e após filtros formais do contratante."
       - "Ren aceitou uma pequena apresentação em 5 Eleasis ao cair da tarde e particulares posteriores para quem cumprir filtros e pagar melhor."
       - "Jack filtrou uma proposta privada sem nome claro que tentou alcançar Kage diretamente antes da reprise de 5 Eleasis."
+      - "Jack segurou a borda do pós-show de 5 Eleasis e impediu contato direto com Kage."
+      - "Jack pediu que Ren escolha se ele responde como dono de circo, se Ren segue a mão do recado ou se Kage desaparece por ora."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
       - "Ren suspeita que há omissão na certeza de Merrit sobre Sorn detectar o problema."
       - "Harl Venn admitiu ter plantado em Merrit a ideia de que Sorn ouviria uma amarra cantando errado."
       - "Antes da reprise curta de 5 Eleasis, Jack recebeu proposta privada sem nome claro que mencionava dispensar a gravadora se Kage respondesse sozinho."
+      - "Depois da reprise curta de 5 Eleasis, Jack recebeu segunda tira de papel: 'Depois do aplauso, Kage vale mais. A gravadora vale menos se continuar cercada. Mandem preço e condição antes que outra casa compre o silêncio.'"
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1465,6 +1480,7 @@ relacoes:
       - "Patronato privado pode ser dinheiro limpo, vaidade de rico, ponte social ou tentativa de pescar identidade; Jack ainda não sabe qual."
       - "Manter Kage caro e inacessível aumenta valor comercial, mas pode fazer patronos insistirem por vias indiretas."
       - "A tentativa de contatar Kage diretamente antes da reprise sugere que pelo menos um interessado quer separar Ren de Jack e dos filtros do circo."
+      - "A nova tira de papel aumenta o risco de Kage virar alavanca contra Nera, mesmo sem prova de que o abrigo dos Vell foi localizado."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
@@ -1510,6 +1526,9 @@ relacoes:
       Antes da reprise curta de 5 Eleasis, Dessa vestiu Ren novamente como Kage,
       conferiu costuras e advertiu que qualquer heroísmo fora da marcação pode
       arruinar o figurino e a segurança do número.
+      Durante a reprise curta, o figurino segurou a margem apertada do salto com
+      Passo do Vento. Depois, Dessa puxou Ren para trás da lona antes que a
+      máscara pudesse virar conversa com público ou interessado privado.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
@@ -1522,6 +1541,7 @@ relacoes:
       - "Dessa está com o figurino de O Vento da Noite guardado após o fechamento do Benefício."
       - "Dessa reorganizou o ensaio de 4 Eleasis para transformar a ambição de quatro movimentos físicos novos em duas novidades cênicas seguras para Kage."
       - "Dessa preparou Ren como Kage para a reprise curta de 5 Eleasis e manteve a versão segura do figurino."
+      - "Dessa viu a reprise curta funcionar no limite técnico e ajudou a retirar Kage dos olhos do público imediatamente."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
@@ -1565,6 +1585,9 @@ relacoes:
       Na preparação da reprise curta de 5 Eleasis, Merrit tentou ampliar demais
       a história outra vez. Dessa e Sorn cortaram o excesso; a versão final
       permaneceu curta e funcional, sem transformar o número em algo novo.
+      Durante a reprise curta, Merrit disse a frase certa e calou antes de
+      estragar o efeito. Isso manteve a narração funcional e ajudou Kage a sair
+      sem interação direta com a plateia.
     informacoes_compartilhadas_por_merrit:
       - "Merrit passou pela rota estreita entre caixas de contrapeso e mastro lateral."
       - "Merrit cortou a tira da amarra da corda alta."
@@ -1583,6 +1606,7 @@ relacoes:
       - "Dessa aprovou manter a piada do céu rico no texto de Merrit."
       - "No ensaio de 4 Eleasis, Merrit tentou ampliar demais o drama da lenda; a versão segura ficou com duas frases curtas e pausas marcadas."
       - "Na preparação da reprise curta de 5 Eleasis, Merrit repetiu a história em versão enxuta após Dessa e Sorn cortarem excessos."
+      - "Na reprise curta de 5 Eleasis, Merrit sustentou a frase marcada e calou a tempo."
     riscos:
       - "Merrit pode entrar em pânico se Mira, Jack ou Lysa a confrontarem publicamente."
       - "A confissão foi parcialmente ouvida por Mira Dane."
@@ -1698,6 +1722,9 @@ relacoes:
       limite; a coordenação com Merrit e Dessa não melhorou o bastante para
       justificar salto novo ou risco maior. Sorn também apoiou que Lysa
       descansasse o joelho antes da entrada.
+      Durante a reprise, Sorn viu Ren pousar na borda externa da marca após
+      gastar ki no salto de efeito. Considera que o número funcionou, mas sem
+      margem para aumento de risco físico sem novo treino.
     informacoes_compartilhadas_por_sorn:
       - "A última conferência completa foi ontem depois da nona badalada."
       - "Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn."
@@ -1713,6 +1740,7 @@ relacoes:
       - "Quando Sorn viu depois, a chave estava no prego, mas torta."
       - "No ensaio de 4 Eleasis, Sorn vetou a versão fisicamente mais ambiciosa das novidades de Kage e manteve chão baixo, sem pouso novo ou salto grande."
       - "Na preparação da reprise curta de 5 Eleasis, Sorn manteve Kage na versão segura, sem salto novo de risco."
+      - "Na reprise curta de 5 Eleasis, Sorn viu Kage pousar na borda externa da marca durante o salto com Passo do Vento."
     riscos:
       - "Pode se fechar se sentir que está sendo acusado sem prova."
       - "Pode ser testemunha útil se Ren abordar como profissional, não como culpado."
@@ -1721,6 +1749,7 @@ relacoes:
       - "As marcações de Sorn funcionaram durante O Vento da Noite; Ren pousou limpo diante do público."
       - "Sorn percebeu uma falha técnica quase invisível no ombro de Ren durante o salto da segunda lanterna."
       - "O ensaio individual de 5 Eleasis passou no limite, mas a coordenação do número não evoluiu além da versão segura já definida."
+      - "A reprise curta reforçou a posição de Sorn: Kage funciona, mas não deve aumentar dificuldade sem marcação nova."
   mira_dane:
     nome: "Mira Dane"
     tipo: "acrobata da corda alta"
@@ -1832,6 +1861,9 @@ relacoes:
       Nos bastidores, Lysa reagiu à própria insegurança afirmando que não caiu.
       A crítica seca de Mira não virou briga aberta e funcionou como
       reconhecimento técnico limitado.
+      Na reprise curta de 5 Eleasis, Lysa cumpriu outra vez a presença baixa de
+      sombra sem forçar o joelho. O papel ainda fere seu orgulho, mas ela saiu
+      inteira.
     informacoes_compartilhadas_por_lysa:
       - "Lysa disse que Harl não conta tudo nem quando sabe."
       - "Lysa negou ter cortado a amarra."
@@ -1849,11 +1881,13 @@ relacoes:
       - "Lysa executou a Princesa das Sombras com segurança durante O Vento da Noite e recebeu um aceno técnico de Mira."
       - "Lysa ouviu de Mira que o segundo giro funcionou por ser menor, não por tentar provar força."
       - "No ensaio de 4 Eleasis, Lysa aceitou trabalhar a novidade de Kage como presença baixa e marcada, depois que Mira confirmou a limitação técnica de Sorn."
+      - "Na reprise curta de 5 Eleasis, Lysa cumpriu a sombra baixa sem forçar o joelho."
     riscos:
       - "A fita vermelha pode ser pista real, coincidência ou tentativa de incriminação."
       - "Pode se sentir substituída por Mira."
       - "Pode se fechar se a conversa virar acusação direta cedo demais."
       - "O sucesso em papel baixo pode estabilizar Lysa por ora, mas também lembrá-la do quanto perdeu no alto."
+      - "Lysa pode aceitar melhor limites baixos se isso a mantiver em cena, mas ainda odeia parecer substituível."
   tobb_marlin:
     nome: "Tobb Marlin"
     tipo: "carreiro do circo"
