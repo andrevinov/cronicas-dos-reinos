@@ -81,7 +81,7 @@ relacoes:
     nome: "Kethra Dunn"
     tipo: "funcionária de serviço de Narwhal Manor / fonte potencial"
     local: "Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor"
-    status: "fonte prática potencial; Colm/Dent colocado em carroça; ponto morto montado com sinais discretos de manipulação"
+    status: "fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem sobre ponte baixa"
     atitude_para_ren: "assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da ameaça"
     confianca: "baixa, mas real em termos práticos"
     respeito: "prático e cauteloso"
@@ -140,6 +140,12 @@ relacoes:
       foi com a cal, que Bram recebeu guarda e recado para parar, e que o amigo
       está seguro por algum tempo. A entrega foi feita, mas o vaso ficou com
       sinais discretos de manipulação.
+      No meio da tarde de 4 Eleasis, Kethra respondeu pelo vaso: não sabe se
+      Dent chegou; depois do peixe, Narwhal tremeu; a mulher de manto
+      cinza-azulado mandou o corredor treze não falar de tintureiro, cesto ou
+      barril; e Kethra ouviu nos fundos a frase "se a boca abriu no mercado,
+      olhem a ponte baixa". Ren desmontou o ponto morto com cuidado, removendo
+      a cera e a migalha cinza.
     informacoes_observadas_por_ren:
       - "Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre e registro podem fechar mal."
       - "Ela sabe contar e ler o bastante para corrigir lista de material."
@@ -171,6 +177,10 @@ relacoes:
       - "Ponto morto acordado: vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor."
       - "Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua significa perigo urgente ligado a Bram; rachadura para a parede significa nada; se o vaso sumir, o caminho morreu."
       - "Ren montou fisicamente o ponto morto na manhã de 4 Eleasis e deixou a rachadura voltada para a parede, com mensagem de que Colm/Dent foi com a cal e Bram recebeu pressão da guarda e recado."
+      - "Kethra deixou mensagem pelo ponto morto dizendo que não sabe se Dent chegou."
+      - "Kethra ouviu que, depois do peixe, Narwhal tremeu e a mulher de manto cinza-azulado mandou o corredor treze não falar de tintureiro, cesto ou barril."
+      - "Kethra ouviu nos fundos de Narwhal a frase: 'se a boca abriu no mercado, olhem a ponte baixa'."
+      - "Ren desmontou o ponto morto de Narwhal sem deixar novo padrão útil."
     riscos:
       - "Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça."
       - "A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas chamadas de Tyr."
@@ -182,7 +192,7 @@ relacoes:
       - "Ren soube depois, por um trabalhador dos pátios, que alguém perguntou por um doente vindo do lavadouro antes da carroça de Dorra sair."
       - "A montagem inicial do ponto morto de Kethra ficou imperfeita: o vaso tem sinais discretos de manipulação e cera cinza visível de perto."
       - "Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade."
-      - "Se Ren procurar Kethra por ausência de mensagem, pode destruir o valor do ponto morto por transformar silêncio em encontro."
+      - "O ponto morto de Narwhal morreu; novo contato com Kethra exigirá conversa discreta e novo protocolo."
       - "Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas e imediatas."
   colm_dunn:
     nome: "Colm Dunn"
@@ -414,6 +424,11 @@ relacoes:
       o "homem da lua". Na manhã de 4 Eleasis, Pell deixou novo bilhete no
       mesmo ponto, indicando que a ausência de Rusk já afetou o circuito de
       Brass e que alguém está tentando ligar Kage ao oriental da Silver Lily.
+      No meio da tarde de 4 Eleasis, Pell deixou novo bilhete em troca das
+      2 PO: Brass não fica sozinho hoje, mas pode passar pelos fundos da Red
+      Sail entre o sino de seis e o de sete, no movimento do barril seco da
+      cozinha, com um homem entrando antes e outro saindo depois. Ren removeu
+      o ponto morto da Silver Lily depois de ler o bilhete.
     informacoes_compartilhadas_por_pell:
       - "Pell ouviu na Silver Lily menções a homem do leste, rosto marcado, Velis Rook e Mara."
       - "Pell levou a notícia para Brass na Red Sail porque Brass paga rápido por esse tipo de informação."
@@ -427,6 +442,8 @@ relacoes:
       - "Pell deixou novo bilhete dizendo que Rusk não voltou, Brass usa menino novo e evita o beco dos tonéis."
       - "Pell deixou novo bilhete dizendo que, depois da lona, alguém perguntou se Kage era o mesmo oriental da Silver Lily."
       - "Pell escreveu que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra 'máscara' ouvida."
+      - "Pell deixou bilhete no meio da tarde de 4 Eleasis dizendo que Brass não fica sozinho hoje."
+      - "Pell apontou uma janela entre o sino de seis e o de sete nos fundos da Red Sail, no movimento do barril seco da cozinha, com um homem entrando antes e outro saindo depois."
     limites:
       - "Pell pediu pagamento para continuar 'não lembrando'."
       - "Pell aceitou 1 PO de Ren pela informação."
@@ -434,12 +451,14 @@ relacoes:
       - "Ren pagou 1 PO pelo bilhete de Pell deixando a moeda no vaso."
       - "No novo bilhete de 4 Eleasis, Pell pediu pagamento melhor."
       - "Ren deixou 2 PO no ponto morto de Pell e pediu dia/hora ou local onde Dain 'Brass' Mord fique sozinho."
+      - "Ren removeu o ponto morto da Silver Lily após receber a resposta de Pell no meio da tarde de 4 Eleasis."
     riscos:
       - "Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro."
       - "Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade."
       - "O aviso de Ren sobre risco de morte pode fazer Pell cooperar por medo ou desaparecer se a cidade parecer perigosa demais."
       - "Pell agora é ponto sensível porque foi perguntado sobre a possível ligação entre Kage e o oriental da Silver Lily."
       - "O depósito de 2 PO foi visto parcialmente por uma funcionária da Silver Lily, sem leitura do bilhete; o ponto de Pell está menos limpo."
+      - "O ponto morto da Silver Lily morreu; novo contato com Pell exigirá reinstalação discreta."
   peta:
     nome: "Peta"
     tipo: "criança resgatada / testemunha traumatizada"
@@ -946,6 +965,8 @@ relacoes:
       - "Luath sabe por um peixeiro que um homem de manga cinza e dois anéis mandou descarregar os barris por intermediário."
       - "Luath ouviu de Ren que o pó dos barris explode se estiver seco e encontrar chama."
       - "Luath recusou acesso direto de Ren aos prisioneiros, mas aceitou levar uma pergunta curta ao interrogatório."
+      - "Ren entregou a Luath a linha de interrogatório sobre a explosão ter sido feita para ser ouvida e sobre descobrir qual área da cidade ficaria em risco."
+      - "Luath reformulou a pergunta para os prisioneiros como: 'Para onde a luz ia voltar depois que o mercado ouvisse?'"
       - "Luath enviou guardas para cercar a oficina dos tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó."
       - "Luath recebeu de Ren a linha de raciocínio sobre alvos capazes de quebrar o ânimo da cidade e mandou avisos discretos para mercado, água, ponte, templo e guarda."
       - "Luath informou a Ren que a carroça dos dois barris faltantes tinha eixo baixo, roda traseira esquerda ruim, tábua traseira manchada de vermelho e foi vista rumo à balança velha pelo Beco da Salmoura."

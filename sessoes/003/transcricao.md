@@ -945,3 +945,79 @@ Lá fora, alguém grita sobre peixe apodrecendo. Outro grita de volta que peixe 
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **15:03 de 4 Eleasis, 1372 DR**. Ren está no posto da City Guard/Night Watch, em conversa estreita com Luath. A ida não gerou cauda competente, mas criou uma memória fraca ligando o sumiço de Kage a um forasteiro pobre e reforçou a impressão pública de que esse forasteiro tem entrada com a guarda. Luath revelou informações controladas, mas não abriu acesso aos prisioneiros. Ele aceita levar **uma pergunta curta** de Ren para um dos interrogatórios.
 
 Qual pergunta Ren entrega a Luath?
+
+**Jogador**
+
+"Essa ação está estranha, sargento. Esses homens estavam há 60 pés de uma abertura, 100 da outra. Ouvi o homem de manga cinza dizer que a explosão 'era pra ser ouvida'. Eu tenho que essa explosão tenha sido feita pra tirar nossa atenção de outra coisa. Outra coisa maior."
+
+Ren reflete um pouco.
+
+"A gente precisa saber qual o próximo passo deles, antes que eles sejam capazes de executá-lo. Eles não vão entregar o próximo passo... mas se você prometer aliviar algo pra eles, talvez dar uma refeição maior ou coisa do tipo, eles consigam nos dizer pelo menos em qual área da cidade devemos ficar ligados. Uma pequena concessão em troca de uma pequena informação."
+
+Depois de se despedir do sargento, Ren passará pelos seus dois pontos mortos: Silver Lily e Narwhal Manor. Observará primeiro se os pontos estão lá, receberá as mensagens se houverem, e depois os removerá. Amanhã ele falará discretamente com os envolvidos e instalará novos pontos.
+
+**Narrador**
+
+Ir da Night Watch à Silver Lily sem reforçar a memória do forasteiro: d20 19 + 7 = 26 contra CD 14. Sucesso.
+
+Ler e limpar o ponto morto da Silver Lily sem perder detalhe: d20 13 + 4 = 17 contra CD 13. Sucesso.
+
+Chegar aos fundos de Narwhal Manor sem cauda clara: d20 12 + 7 = 19 contra CD 15. Sucesso.
+
+Ler e desmontar o ponto morto de Narwhal sem deixar padrão: d20 16 + 4 = 20 contra CD 14. Sucesso.
+
+Luath escuta tudo sem interromper. Na parte da explosão feita para ser ouvida, ele não parece surpreso. Parece incomodado por Ren ter colocado em voz alta algo que já estava mordendo a borda da mesa.
+
+"Isso não vira pergunta assim", ele diz. "Se eu pergunto 'qual o próximo passo', eles me dão oração, cuspe ou mentira."
+
+Ele pega um pedaço estreito de papel e escreve com letra curta, de guarda que aprendeu a caber em margem:
+
+**Para onde a luz ia voltar depois que o mercado ouvisse?**
+
+Depois risca uma palavra, pensa melhor e deixa a frase como está.
+
+"Isso eu posso perguntar. Parece minha. Veio do que você ouviu embaixo, não de Masao, nem de sonho de reino de sombras." Luath dobra o papel uma vez. "E comida eu posso dar. Não como prêmio. Como ferramenta. Homem com boca seca mente mal e grita melhor."
+
+Ele ergue os olhos para Ren.
+
+"Se sair algo que eu possa mandar sem botar uma corda no seu pescoço, mando ao circo. Se não sair, você vai saber pelo silêncio."
+
+A despedida não tem aperto de mão. Só um movimento de queixo e o peso claro de que Luath aceitou a pergunta, não Ren como parte da cela.
+
+Ren sai do posto antes que a palavra "homem do sargento" ganhe mais pernas.
+
+A ida até a The Silver Lily fica limpa. Ren quebra rua, muda ritmo junto de trabalhadores que carregam caixas leves, espera uma carroça tapar uma esquina e passa pela hospedagem como mais um homem pobre tentando não parecer parado demais perto de porta boa.
+
+O pequeno vaso com flor está lá.
+
+Pell não tentou enfeitar a própria coragem. O bilhete é menor que os anteriores, escrito rápido, com uma dobra úmida num canto:
+
+> Brass não fica sozinho hoje. Depois do peixe, medo subiu. Se quer ver ele fora da sala, sino de seis para sete, fundo da Red Sail, barril seco da cozinha. Um entra antes, outro sai depois. Menino novo sem lenço faz a volta. Duas moedas compram isso. Não compram minha morte. P.
+
+Ren limpa o ponto sem pressa visível. A flor sai como lixo murcho. O papel desaparece. O vaso deixa de ser ponto morto e volta a ser só um vaso ruim nos fundos de uma hospedagem que já viu mensageiro demais.
+
+Narwhal Manor exige mais cuidado, mas não pega Ren.
+
+A casa grande do peixe está tensa de um jeito que não precisa gritar para ser ouvido. Portas fecham cedo demais. Um criado sai com pano sujo e volta com as mãos vazias. Uma mulher de avental atravessa o pátio interno olhando para os próprios pés como se os pés pudessem ser interrogados. Ninguém aponta para Ren. Ninguém o segue até os fundos.
+
+O vaso rachado de Kethra continua junto aos barris de areia e à calha quebrada. A rachadura está virada para a parede, não para a rua: pelo protocolo, isso não é aviso urgente sobre Bram. Mas há cera cinza nova sob a borda, fina demais para acidente.
+
+A mensagem é curta, dobrada numa tira estreita:
+
+> Li. Não sei se Dent chegou. Depois do peixe, Narwhal tremeu. Manto cinza-azul mandou: corredor treze não fala tintureiro, cesto, barril. Ouvi nos fundos: se a boca abriu no mercado, olhem a ponte baixa. Não uso este vaso de novo. K.
+
+Ren desmonta o ponto com mais competência do que o montou. A cera sai inteira. A migalha cinza que antes podia denunciar manipulação desaparece no lodo perto da calha. O fundo do vaso volta para o lugar sem nova marca útil. A rachadura fica sem função.
+
+Dois pontos mortos morrem sem virar espetáculo.
+
+Mas deixam duas direções.
+
+Pell aponta para uma janela entre o sino de seis e o de sete, nos fundos da Red Sail, onde Brass talvez apareça menos cercado do que de costume, mas ainda com gente antes e depois dele.
+
+Kethra aponta para a ponte baixa, ligada à reação interna de Narwhal depois da explosão do mercado. Não é prova. É frase ouvida por uma fonte assustada em casa rica que agora está limpando as próprias palavras.
+
+Hora aproximada: **16:02 de 4 Eleasis, 1372 DR**.
+
+Ren está em uma rua de serviço perto dos fundos de Narwhal Manor. **38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de 18:43. Os pontos mortos da Silver Lily e de Narwhal foram removidos. A ponte baixa é uma pista imediata; a janela de Brass fica mais perto do crepúsculo.
+
+O que Ren faz?
