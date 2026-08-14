@@ -606,6 +606,9 @@ relacoes:
       retornou ao circo por volta de 09:55 de 4 Eleasis. Nera viu Ren chegar
       vivo e conteve o impulso de correr até ele, mantendo-se dentro da rotina
       do circo.
+      No começo da noite de 4 Eleasis, Nera viu Ren retornar à borda interna do
+      circo sem sangue aparente e sem corpo carregado, mas também viu Silva
+      interceptá-lo antes de permitir acesso direto à carroça verde.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -657,6 +660,7 @@ relacoes:
       - "Nera ouviu Ren prometer voltar e o deixou dormir."
       - "Nera foi conferir Ren no depósito de figurino velho ao amanhecer, com água e pão."
       - "Nera viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis, depois da ida aos pátios, Luath, Silver Lily e Casa da Aurora Menor."
+      - "Nera viu Ren retornar ao circo no começo da noite de 4 Eleasis, sem sangue aparente, mas retido por Silva antes da carroça verde."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -813,6 +817,11 @@ relacoes:
       trás; que ele mencionou papel para o peixe e máscara não ser para o sol; e
       que ela ficou em lugar frio, embaixo de onde passavam rodas, com água na
       parede.
+      No começo da noite de 4 Eleasis, Ren voltou à Casa da Aurora Menor apenas
+      para verificar as crianças, sem interrogá-las de novo e sem trazer cauda
+      útil. Maerra permitiu a visita breve, confirmou que as sete continuam
+      vivas, alimentadas e protegidas, e reconheceu que Ren parecia ter escolhido
+      não fazer algo violento.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
@@ -840,6 +849,7 @@ relacoes:
       - "Reconheceu o Broche do Semblante Humilde dentro da caixa velha marcada por sol apagado."
       - "Cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório para proteger vivos."
       - "Identificou o pano vermelho como pano de trabalho encerado ligado a tintureiro ou cerieiro."
+      - "Permitiu visita breve de Ren às crianças no começo da noite de 4 Eleasis, sem novo interrogatório."
   luath:
     nome: "Luath"
     tipo: "sargento da City Guard / supervisor possível da Night Watch"
@@ -1196,6 +1206,11 @@ relacoes:
       Ren retornou ao circo por volta de 09:55 de 4 Eleasis, Silva confirmou
       que a ajuda de Chauntea chegou a Maerra e direcionou Ren a Jack para a
       conversa sobre Kage.
+      No começo da noite de 4 Eleasis, Ren voltou novamente ao circo pela borda
+      dos remendos depois de observar Brass e visitar Maerra. A volta não trouxe
+      perseguição colada para dentro do acampamento, mas ficou imperfeita o
+      bastante para Silva interceptá-lo antes da carroça verde e perguntar se
+      ele veio sozinho ou apenas chegou primeiro.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1244,6 +1259,7 @@ relacoes:
       - "Silva sabe que a ajuda discreta de Chauntea chegou a Maerra sem chamar atenção útil antes do amanhecer."
       - "Silva mandou Ren dormir depois da incursão e não quer que ele aja sem recuperar o centro."
       - "Silva viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis sem cauda competente percebida e o encaminhou à conversa com Jack sobre o calendário de Kage."
+      - "Silva interceptou Ren no começo da noite de 4 Eleasis após uma volta discreta imperfeita e quer confirmar se há cauda antes de liberá-lo para a carroça verde."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1547,8 +1563,8 @@ relacoes:
   dain_brass_mord:
     nome: "Dain 'Brass' Mord"
     tipo: "intermediário/figura operacional da Red Sail"
-    local: "fundos da Red Sail Tavern"
-    status: "visível para Ren; acompanhado"
+    local: "The Red Sail Tavern; visto nos fundos por Ren em 4 Eleasis"
+    status: "observado por Ren; acompanhado; possível alerta baixo sobre observador no galpão de cordame"
     atitude_para_ren: "hostil ou interessada, ainda não confrontada diretamente"
     confianca: "nenhuma"
     respeito: "desconhecido"
@@ -1560,6 +1576,11 @@ relacoes:
       teria uma janela entre o sino de seis e o de sete nos fundos da Red Sail,
       no movimento do barril seco da cozinha. Ren seguiu a janela e viu Brass
       nos fundos da taverna por volta de 18:09 de 4 Eleasis.
+      Ren escolheu não atacar Brass, observou por mais alguns minutos e recuou.
+      A observação confirmou que Brass usa rotina comum como cortina operacional,
+      mas não revelou todo o mecanismo da troca. A saída de Ren do ponto de
+      observação não foi perfeita: alguém nos fundos da Red Sail provavelmente
+      percebeu movimento no galpão de cordame, sem identificar Ren.
     informacoes_observadas_por_ren:
       - "Brass foi associado ao homem de casaco com botões de latão."
       - "Brass perguntou a Pell se Ren tinha arma, estava sozinho, tinha sotaque forte e se mostrou selo, papel ou símbolo."
@@ -1569,10 +1590,14 @@ relacoes:
       - "Ren viu Brass nos fundos da Red Sail, a cerca de 25 pés da descida mais rápida do ponto de observação."
       - "Brass estava com pelo menos dois homens próximos e um menino mensageiro fora da linha imediata."
       - "Ren não conseguiu ouvir a conversa de Brass no beco."
+      - "Brass usa o barril seco da cozinha, o menino sem lenço e homens posicionados como cortina operacional."
+      - "Ren não sabe se a passagem de Brass envolve papel, objeto pequeno, palavra, confirmação visual ou apenas presença."
+      - "Alguém nos fundos da Red Sail provavelmente percebeu movimento no galpão de cordame, sem identificar Ren."
     riscos:
       - "Atacar Brass pode chamar a taverna inteira e reforços da Red Sail."
       - "Fugir sozinho após um golpe parece plausível; fugir carregando Brass seria muito mais arriscado."
       - "Se Brass sobreviver ou escapar, pode conectar Ren mais diretamente à pressão contra a Red Sail."
+      - "O ponto de observação do galpão de cordame pode estar comprometido para uso futuro."
   rusk_cinza:
     nome: "Rusk 'Cinza'"
     tipo: "coletor/intermediário da Red Sail"

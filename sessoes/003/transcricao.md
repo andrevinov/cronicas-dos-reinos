@@ -1107,3 +1107,93 @@ Não é uma oportunidade limpa.
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **18:09 de 4 Eleasis, 1372 DR**. **Visão no Escuro** segue ativa até cerca de 18:43. Ren está oculto na varanda de carga do galpão de cordame, observando os fundos da Red Sail. Brass está visível a cerca de 25 pés da descida mais rápida, com pelo menos dois homens próximos e um menino mensageiro fora da linha imediata. Ren não conseguiu ouvir a conversa, mas entende as rotas e o risco.
 
 O que Ren faz?
+
+**Jogador**
+
+Se Ren estivesse sozinho em sua missão, ele certamente renderia os guardas, faria Brass falar ali mesmo, na ponta da wakizashi. Mas Ravens Bluff deu a Ren Nera, Tavin, Maerra, Silva, Jack, Kethra, Colm, Luath... pessoas com quem se preocupar. Umas por precisarem de Ren, outras por serem aliados de Ren e não aprovariam uma falha numa empreitada dessas. Ren não pode. Kage não pode ser afetado por algo assim. São muitas variáveis que seguram sua ação.
+
+Ele apenas observa o desenrolar e entende como funciona o esquema de Brass para ir e vir. E promete ao homem dos botões de latão que não demorará pra que Ren ponha as mãos nele e extraia tudo que tem que extrair. Tudo sobre Masao.
+
+Sem mais, Ren vai até Maerra, dar uma olhada nas crianças e rever a amiga velha. Depois volta para o circo.
+
+**Narrador**
+
+Entender o esquema de ida e volta de Brass: d20 7 + 4 = 11 contra CD 14. Falha.
+
+Sair do ponto da Red Sail sem ser marcado: d20 4 + 7 = 11 contra CD 15. Falha.
+
+Chegar à Casa da Aurora Menor sem cauda útil: d20 15 + 7 = 22 contra CD 13. Sucesso.
+
+Voltar ao circo pela rota discreta: d20 3 + 7 = 10 contra CD 14. Falha.
+
+Ren não desce.
+
+A decisão fica no corpo dele antes de virar movimento. O beco oferece aquela fração suja de oportunidade: Brass fora da porta, botões pegando luz, garganta ao alcance se tudo fosse só distância, força e lâmina. Mas não é. Há a cozinha atrás dele, os homens dos lados, o menino sem lenço fazendo voltas, a taverna inteira pronta para virar boca e mão. Há Nera, Tavin, Maerra, Silva, Jack, Kethra, Colm, Luath. Há Kage, que agora é mais que vaidade de palco: é cobertura, preço, abrigo e risco.
+
+Então Ren observa.
+
+O padrão roda mais uma vez, mas não se abre por completo. O menino sem lenço passa antes e depois, sempre como quem não está fazendo nada. O homem do beco se posiciona perto demais do barril seco para ser carregador comum. O homem dentro da porta segura a luz e a abertura. O barril não é carga; é cortina móvel. Quando Brass fala, a cozinha sobe de volume. Quando Brass se move, alguém puxa a porta no ângulo certo. Por um instante, Ren vê um terceiro homem sair da Red Sail depois da passagem de Brass, limpando as mãos num pano que pode ser pano de cozinha, pano de sinal ou só pano.
+
+Mas o mecanismo inteiro não aparece.
+
+Ren entende o bastante para saber que Brass não se desloca sozinho, não fica descoberto por tempo útil e usa trabalho comum como parede. Não entende ainda se a troca é de papel, palavra, objeto pequeno, confirmação visual ou simples presença. O esquema tem um ponto cego calculado: quem olha de longe vê rotina; quem chega perto entra no alcance de três homens e da taverna.
+
+Brass some de volta para dentro.
+
+Se a promessa de Ren tem som, ela fica atrás dos dentes. O homem dos botões de latão ainda vai falar. Não ali. Não com Nera e Tavin pagando a conta da pressa.
+
+Quando Ren começa a sair da varanda de carga, a madeira trai um ruído pequeno demais para alarme e grande demais para o beco ignorar. O homem do barril olha para cima. Não vê rosto, não aponta faca, não grita. Mas olha para a sombra sob o beiral como quem acabou de descobrir que a viela teve olhos.
+
+O menino sem lenço volta pela boca do beco pouco depois e também para por meio batimento, cabeça inclinada para o galpão de cordame.
+
+Ren sai antes que a curiosidade vire busca.
+
+A consequência não o segue como perseguição colada. É pior em outro sentido: alguém nos fundos da Red Sail pode contar que havia observador no galpão, e o ponto bom de hoje talvez esteja morto amanhã.
+
+O caminho até a Casa da Aurora Menor fica limpo.
+
+Ren corta ruas, troca ritmo, deixa a pressão do porto morrer atrás dele. Quando a subida para o Temple District começa a vencer o cheiro de peixe, fumaça e água suja, a magia nos olhos dele acaba. A Visão no Escuro se desfaz perto do fim do crepúsculo, e a noite volta a ser noite comum: lamparina, sombra, janela fechada, passo medido.
+
+Na Casa da Aurora Menor, ninguém faz cena na porta.
+
+Maerra está com as mangas arregaçadas e uma mancha de mingau seco perto do punho, sinal mais honesto que qualquer selo. Ela olha Ren uma vez, depois olha atrás dele. Não encontra cauda. Só então abre espaço.
+
+"Você veio sozinho desta vez", ela diz. Não é pergunta. É contagem.
+
+As crianças não estão bem no sentido bonito da palavra. Estão vivas, alimentadas e protegidas, que hoje vale mais. Miri dorme sentada com a cabeça encostada em outra menina. Nib segura um copo de barro vazio como se alguém pudesse tomar dele a qualquer instante. Cal está acordado demais, vigiando a sala com olhos de quem ainda acha que porta aberta é começo de problema. Peta dorme enrolada num cobertor áspero, pequena sob pano demais, com uma das mãos fechada perto da boca.
+
+Maerra não deixa Ren transformar a visita em novo interrogatório, mas também não precisa. Ele veio olhar. Ela permite isso.
+
+"Sete respiram", ela diz baixo. "Nenhuma sumiu. Nenhuma acordou gritando por tempo bastante para acordar a rua. Para hoje, isso é vitória."
+
+A velha amiga parece mais velha do que pela manhã. Não por idade, mas por ter carregado mais um dia inteiro nas costas.
+
+Quando Ren se prepara para sair, Maerra acompanha até a lateral.
+
+"Você tem cara de quem escolheu não fazer alguma coisa violenta", ela observa. "Guarde essa parte de você. Ela talvez esteja salvando mais gente do que a lâmina."
+
+Ela não pede relatório. Não pede promessa. Só fecha a porta depois que Ren passa.
+
+A volta ao circo não fica tão limpa.
+
+Nada explode. Ninguém encosta a mão no ombro de Ren. Nenhum capanga da Red Sail sai de uma viela com faca baixa. Mas, perto dos campos de carroças, dois carregadores parados onde não deveriam estar parados olham tempo demais para o homem pobre que vem do lado da cidade e escolhe a borda dos remendos. Um deles fala alguma coisa ao outro. Ren não ouve. Quando olha de novo, os dois já estão andando em direção oposta.
+
+Pode ser nada.
+
+Também pode ser mais uma memória comprável numa cidade em que muita gente está vendendo o que viu.
+
+Silva intercepta Ren antes da carroça verde, como se tivesse crescido do lado escuro de uma lona.
+
+"Você está vivo", ela diz. Depois olha para a borda do acampamento, não para o rosto dele. "E entrou pela rota certa. Isso responde metade."
+
+Nera aparece atrás da lona da carroça verde antes que Silva termine de decidir se vai impedi-la. Ela não corre. Não desta vez. Só fica ali, com a mão presa no tecido, lendo Ren em pedaços: sem sangue, sem corpo carregado, sem sorriso.
+
+Tavin provavelmente dorme; há uma jarra vazia encostada perto da roda, abandonada depois do dever do dia.
+
+Silva volta os olhos para Ren.
+
+"Agora me diga a outra metade. Veio sozinho ou só chegou primeiro?"
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **19:54 de 4 Eleasis, 1372 DR**. **Visão no Escuro expirou por volta de 18:43**. Ren observou Brass sem atacar, mas não decifrou todo o esquema. Alguém nos fundos da Red Sail provavelmente notou que havia observador no galpão de cordame, sem identificar Ren. A ida até a Casa da Aurora Menor foi limpa e não levou cauda útil até Maerra. A volta ao circo criou um rastro fraco perto dos campos de carroças, sem perseguição colada. Ren está na borda interna do Jack Mooney & Sons Circus, diante de Silva, com Nera à vista.
+
+O que Ren responde?
