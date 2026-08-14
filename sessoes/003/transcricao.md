@@ -1755,3 +1755,45 @@ Agora Ren enxerga melhor o arranjo: há pelo menos um ponto de observação sobr
 Hora aproximada: **20:02 de 5 Eleasis, 1372 DR**. Ren está oculto na rua de serviço diante da Escada das Sete Águas, ainda sob **Passos sem Pegadas** até cerca de **20:31**, se mantiver a concentração. Recursos: **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. O cobrador continua se afastando pela lateral do depósito. A escada úmida, a janela de observação e o depósito sem tabuleta estão ao alcance de uma decisão imediata.
 
 O que Ren faz?
+
+**Jogador**
+
+Entendendo que ninguém imaginaria que Ren entraria agora, Ren tenta explorar mais um pouco a Escada das Sete Águas: aproximar-se, ver se dá pra descer, e descer discretamente. Caso ele perceba que corre riscos, ligará Passo do Vento e fugirá.
+
+**Narrador**
+
+Ren deixa o cobrador ir.
+
+O primeiro risco não está na lâmina de alguém. Está no desenho da entrada.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas para aproximar-se da Escada: d20 7 + 17 = 24 contra CD 16. Sucesso.
+
+Teste de Percepção de Ren para notar sinais vivos na entrada: d20 4 + 6 = 10 contra CD 14. Falha.
+
+Teste de Investigação de Ren para entender a marcação da escada: d20 18 + 4 = 22 contra CD 15. Sucesso.
+
+Ele se aproxima sem virar vulto para a janela do depósito. A lamparina coberta continua ali, imóvel, olhando os degraus como olho cansado. Ren não ouve voz, respiração ou madeira rangendo lá dentro; a água e as rodas distantes comem os sons finos.
+
+Mas a cera vermelha fala melhor que gente.
+
+A mancha do terceiro filete não é lacre e não é símbolo. É controle. Um fio escuro, quase grudado à pedra molhada, atravessa parte do degrau por baixo da água. A cera prende o fio ao marco lateral. Quem desce no passo natural rompe ou desloca aquilo; quem observa de cima talvez nem precise ouvir alarme, só ver a água mudar ou o fio faltar. A Escada das Sete Águas não impede entrada. Ela conta entrada.
+
+Isso é risco, mas não ataque imediato. Ren consegue passar sem acionar.
+
+Teste de Acrobacia de Ren na pedra molhada: d20 17 + 7 = 24 contra CD 13. Sucesso.
+
+Teste de Furtividade de Ren na primeira descida da Escada: d20 18 + 17 = 35 contra CD 17. Sucesso.
+
+Ren baixa o peso para a lateral do degrau, usa a parede fria com dois dedos e cruza a linha sem tocá-la. O barulho do próprio movimento some dentro do som da água. O primeiro trecho desce em zigue-zague curto, estreito demais para dois homens armados lado a lado. A pedra tem marcas antigas sob remendos mais novos: canto anão talhado, correção humana apressada, argamassa recente em rachaduras que não deveriam estar recentes.
+
+Após doze degraus, a rua vira apenas um retângulo cinza acima. Após mais seis, a luz não basta para ler chão com segurança. Ren ainda vê diferença entre parede e vazio, mas não detalhe. Sem Visão no Escuro, continuar muito além disso passa de infiltração para tato e sorte.
+
+No primeiro patamar baixo, a água escorre por uma canaleta lateral e desaparece numa fenda estreita. Há três coisas que Ren consegue distinguir sem luz própria: uma marca de cera vermelha raspada na parede à direita, na altura do joelho; uma abertura baixa adiante, escura de verdade; e uma porta velha de madeira inchada à esquerda, fechada por dentro ou emperrada, com cheiro fraco de lodo seco por baixo.
+
+Nada grita. Nada corre. Nenhuma lâmina vem.
+
+Mas a sensação operacional é clara: se havia alguém vigiando a entrada, Ren passou por esse olho; se há alguém mais abaixo, ainda não percebeu sua presença.
+
+Hora aproximada: **20:07 de 5 Eleasis, 1372 DR**. Ren está no primeiro patamar baixo da **Escada das Sete Águas**, ainda sob **Passos sem Pegadas** até cerca de **20:31**, se mantiver a concentração. Recursos: **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. Passo do Vento não foi usado, porque Ren não percebeu ataque ou risco imediato que exigisse fuga. Abaixo há escuridão real; à esquerda, uma porta inchada; adiante, uma abertura baixa; atrás, a escada de volta e o fio de controle intacto.
+
+O que Ren faz?

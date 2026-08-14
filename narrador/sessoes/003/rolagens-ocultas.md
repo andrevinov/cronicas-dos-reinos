@@ -255,3 +255,42 @@ Consequências:
   depósito, recebe algo pequeno e continua se afastando.
 * Ren percebe cera vermelha fresca no marco lateral da escada e uma janela de
   observação com lamparina coberta voltada para os degraus.
+
+---
+
+## Primeira descida pela Escada das Sete Águas
+
+Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
+Passos sem Pegadas, aproximando-se, avaliando se a descida era possível e
+descendo discretamente. O jogador condicionou fuga com Passo do Vento a Ren
+perceber risco imediato.
+
+Rolagens abertas:
+
+* Furtividade de Ren sob Passos sem Pegadas para aproximar-se da Escada: d20 7
+  + 17 = 24 contra CD 16. Sucesso.
+* Percepção de Ren para notar sinais vivos na entrada: d20 4 + 6 = 10 contra
+  CD 14. Falha.
+* Investigação de Ren para entender a marcação da escada: d20 18 + 4 = 22
+  contra CD 15. Sucesso.
+* Acrobacia de Ren na pedra molhada: d20 17 + 7 = 24 contra CD 13. Sucesso.
+* Furtividade de Ren na primeira descida da Escada: d20 18 + 17 = 35 contra
+  CD 17. Sucesso.
+
+Rolagens ocultas:
+
+* Observador da janela perceber Ren sob Passos sem Pegadas: d20 14 + 4 = 18
+  contra CD 20. Falha.
+* Presença abaixo perceber Ren na descida: d20 10 + 3 = 13 contra CD 20. Falha.
+
+Consequências:
+
+* Ren não é percebido pelo ponto de observação do depósito.
+* Ren identifica que a cera vermelha e o fio sob água funcionam como controle
+  de entrada, não como lacre ou símbolo. Ele evita romper o fio.
+* Passo do Vento não é usado, pois Ren identifica risco de alarme/controle, mas
+  não percebe ataque ou risco imediato que exija fuga.
+* Ren chega ao primeiro patamar baixo sem escorregar, sem acionar o controle e
+  sem ser percebido.
+* Sem Visão no Escuro ativa, a partir do patamar baixo a progressão adiante
+  fica limitada por escuridão real.
