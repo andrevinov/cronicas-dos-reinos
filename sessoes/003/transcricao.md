@@ -1293,3 +1293,51 @@ O que Ren faz antes de dormir?
 Antes de dormir Ren fica lembrando de sua terra. De sua irmã. Ali no quarto mesmo ele fica fazendo os "kata" de sua arte marcial [você pode nomea-la, nomear o estilo, se tiver algo nos suplementos, ou criar, se for o caso], lembrando de como aprenderam isso dos mestres [pode nomear mestres se tiver algum que possa ter sido o dele nos suplementos, ou criar um], da saudade que tem de treinar em um dojo com tatame, da comida de sua terra. Pensa que, talvez, se ficar famoso na cidade, poderia abrir um. Mas o que ele queria mesmo era encontrar algum mestre de Kara-Tur e poder ampliar seu treinamento.
 
 [Você pode usar esse momento pra me fazer saber coisas sobre Kara-Tur que Ren sabe... e eu talvez não saiba porque não li o suplemento]
+
+**Narrador**
+
+Ren encontra um canto suficientemente escuro no depósito de figurino velho, onde o cheiro de lona, pó, madeira úmida e roupa usada tenta substituir o cheiro que ele procura e não encontra: arroz cozido, chá amargo, tatame limpo, madeira polida, tinta de caligrafia.
+
+O nome formal que volta à mente é **Kagehira Getsuei-ryu**: a Escola da Sombra da Lua. Não era uma escola pública como as de duelistas de Yoemura, nem um templo famoso, nem uma ordem monástica de Shou Lung. Era arte de clã. Pouca exibição, muita repetição. Punho, queda, passo, lâmina curta, respiração, leitura de sala, silêncio sobre tábua e papel.
+
+O kata que Ren começa é **Tsuki Kakure**, a Lua Velada.
+
+Primeiro, a base baixa. Depois o giro curto do ombro. Mão vazia como se afastasse manga, joelho dobrando sem ruído, passo lateral que no dojo antigo deveria deslizar sobre palha trançada sem fazer o mestre levantar os olhos. Em Ravens Bluff, o chão range. A madeira do circo não conhece Kozakura. Mesmo assim, o corpo de Ren lembra.
+
+Aiko lembrava melhor.
+
+Ela corrigia o pé dele com dois dedos, sem paciência para orgulho.
+
+> "Você pisa como quem quer convencer o chão de que existe."
+
+O mestre que mais batia essa lição era **Kagehira Tadatsune**, o tio que os trouxe de volta. Para os alunos, ele era só **Tadatsune-sensei**. Para os agentes adultos, era o chefe do clã. Para Ren, durante muito tempo, foi as duas coisas e mais uma terceira: o homem que não deixou ele e Aiko morrerem na rua, mas também não permitiu que a gratidão virasse fraqueza.
+
+Tadatsune ensinava que o Kagehira Getsuei-ryu não era feito para vencer torneios. Era feito para atravessar uma casa onde todos mentem, sair com o papel certo, e deixar o inimigo acreditando que perdeu por descuido próprio.
+
+Em Kozakura, Ren sabe, isso fazia sentido porque poder raramente andava com uma só face. Havia a corte imperial em **Dojyu**, o bakufu em **Gifu**, governadores militares, regentes, templos com sohei, portos como **Jitogawa**, contrabandistas de **Odako**, wako nas águas ruins, yakuza crescendo como mofo em fresta rica, e famílias shinobi maiores, como **Konishi** e **Uji**, cujos nomes eram pronunciados com respeito profissional e cuidado.
+
+Os Kagehira não eram os maiores. Eram confiáveis. Ou tinham sido.
+
+Ren muda para a segunda sequência: **Mizu no Kage**, a Sombra na Água. Mão aberta, cotovelo recolhido, passo quebrado. É uma forma para corredor estreito, ponte molhada, convés, telhado depois de chuva. A ironia vem sem convite: se tivesse aprendido o lendário **Estilo da Sombra de Gelo** de Kojiyama, talvez as pedras úmidas de Sarbreen parecessem menos traiçoeiras. Mas Kojiyama sempre foi rumor de monastério escondido, não coisa que um jovem Kagehira simplesmente visitava entre missões.
+
+Também havia histórias da **Escola da Água Cintilante**, kensai de lâmina refinada, e de monges de Shou Lung: Dragão, Garça Branca, Caçador Ágil. Histórias de mestres que ensinavam uma vida inteira por um gesto correto, ou quebravam um aluno por chegar com motivo errado.
+
+Em Ravens Bluff, tudo isso parece longe demais.
+
+Mas não impossível.
+
+A cidade tem porto. Porto traz seda, especiaria, papel, jade falso, moedas velhas, marinheiro mentiroso, mapa roubado e mestre escondido. Se Ren ficar famoso como Kage, talvez algum viajante de Kara-Tur ouça o nome. Talvez um mercador de Shou Lung reconheça o corte de uma saudação. Talvez um exilado de Wa veja demais. Talvez um mestre de verdade esteja em Faerûn, evitando exatamente o tipo de atenção que Ren agora começa a atrair.
+
+A última forma é a que Aiko treinava com ele nas madrugadas: **Hotaru Otoshi**, a Queda do Vaga-lume. Entrar leve, apagar a luz, terminar baixo.
+
+Ren termina no silêncio.
+
+Não há tatame. Não há Aiko. Não há caldo de arroz com peixe seco, nabo em conserva, chá e o estalo distante de bambu no vento.
+
+Há lona velha, cidade hostil, gente viva que depende dele, e Masao em algum lugar além das sombras.
+
+Se Ren dormir agora, o corpo enfim terá chance de cobrar a noite inteira. O que fica aceso é outra coisa: a ideia de que força contra Masao talvez não venha só de achar uma lâmina melhor, mas de reencontrar uma linhagem de treino que o mundo ainda não conseguiu matar.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **22:47 de 4 Eleasis, 1372 DR**. Ren está no depósito de figurino velho do Jack Mooney & Sons Circus. Não houve gasto de recurso. Se ele se deitar agora e a noite não for interrompida, começa um descanso longo.
+
+O que Ren faz?
