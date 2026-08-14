@@ -619,6 +619,12 @@ relacoes:
       a tristeza que Ren tentou esconder ao falar das cerejeiras e perguntou se
       a lembrança era boa ou dolorosa. Antes da reprise curta de Kage, pediu
       baixo que Ren voltasse para trás da lona depois.
+      Na noite de 5 Eleasis, depois de Ren retornar da Escada das Sete Águas e
+      do posto de Luath, ele evitou vê-la diretamente para não arrastar medo ou
+      possível cauda até a carroça verde. Entregou a Silva um bilhete dizendo
+      que ama Nera, que solucionará tudo e que ela pode ficar tranquila. Silva
+      entregou o bilhete sem abrir. Nera leu duas vezes e respondeu por Silva
+      que promessa grande demais não vale menos, mas pesa mais.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -676,6 +682,8 @@ relacoes:
       - "Nera ouviu Ren falar sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu."
       - "Nera percebeu que a lembrança das cerejeiras toca saudade e dor, embora Ren não tenha transformado isso em explicação completa diante de Tavin."
       - "Nera percebeu que um recado externo tocou a segurança ao redor de Kage antes da reprise de 5 Eleasis, mas não viu o papel."
+      - "Nera recebeu de Ren, por Silva, um bilhete dizendo que ele a ama e que solucionará tudo."
+      - "Nera respondeu indiretamente que promessa grande demais não vale menos, mas pesa mais."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -1261,6 +1269,11 @@ relacoes:
       gravadora para pressionar Kage. Ela endureceu a segurança interna dos Vell:
       Tobb fecha a rota curta, uma menina de costura fica mais perto da carroça
       verde e curiosos serão afastados sem explicação.
+      Mais tarde, Ren retornou do posto de Luath pela rota longa, sem cauda útil
+      percebida, mas sem certeza absoluta de limpeza. Silva interceptou Ren
+      antes que ele fosse à carroça verde. Ren escolheu não ver os Vell e pediu
+      que Silva entregasse um bilhete a Nera. Silva não abriu o bilhete,
+      entregou-o e depois transmitiu a resposta de Nera a Ren.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1316,6 +1329,8 @@ relacoes:
       - "Silva viu Ren treinar Kage sozinho sem gastar ki nem tentar salto perigoso."
       - "Silva apontou Lockwood Mooney, Gond, Wizards' Guild e mapas velhos do porto como caminhos possíveis para investigar Sarbreen e rumores de itens, mas não conseguiu separar rumor confiável de fantasia."
       - "Silva viu a reprise curta de Kage funcionar e endureceu a segurança dos Vell depois que nova tira de papel pressionou Kage usando a palavra gravadora."
+      - "Silva interceptou Ren na volta do posto de Luath e aceitou entregar um bilhete fechado a Nera sem expô-lo diretamente aos Vell."
+      - "Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1473,6 +1488,7 @@ relacoes:
       - "Jack selou a resposta rígida ao camarote oeste."
       - "Jack propôs calendário inicial: Kage não se apresenta em 4 Eleasis; pode fazer reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde; apresentações fechadas só em tenda controlada pelo circo e após filtros formais do contratante."
       - "Ren aceitou uma pequena apresentação em 5 Eleasis ao cair da tarde e particulares posteriores para quem cumprir filtros e pagar melhor."
+      - "O acordo condicional não fixou um cachê público permanente; o pagamento da reprise de Kage em 5 Eleasis está pendente de acerto com Jack."
       - "Jack filtrou uma proposta privada sem nome claro que tentou alcançar Kage diretamente antes da reprise de 5 Eleasis."
       - "Jack segurou a borda do pós-show de 5 Eleasis e impediu contato direto com Kage."
       - "Jack pediu que Ren escolha se ele responde como dono de circo, se Ren segue a mão do recado ou se Kage desaparece por ora."

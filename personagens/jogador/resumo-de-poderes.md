@@ -2,15 +2,15 @@
 
 Este arquivo existe para consulta rápida durante a narração.
 
-Ren é um monge do **Caminho da Sombra**, nível 5. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
+Ren é um monge do **Caminho da Sombra**, nível 6. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
 
 ---
 
 ## Números rápidos
 
 * CA: 17, sem armadura;
-* PV: 38;
-* deslocamento: 50 pés;
+* PV: 45;
+* deslocamento: 55 pés;
 * bônus de proficiência: +3;
 * iniciativa: +4;
 * Furtividade: +7;
@@ -19,7 +19,7 @@ Ren é um monge do **Caminho da Sombra**, nível 5. Ele não é um assassino inv
 * Intuição: +6;
 * Investigação: +4;
 * CD de ki: 14;
-* pontos de ki: 5 por descanso curto ou longo.
+* pontos de ki: 6 por descanso curto ou longo.
 
 ---
 
@@ -76,11 +76,11 @@ Com Artes Marciais, isso pode virar dois ataques na ação e um golpe desarmado 
 
 ## Ki
 
-Ren tem 5 pontos de ki.
+Ren tem 6 pontos de ki.
 
 Eles voltam em descanso curto ou longo.
 
-A CD de ki é a dificuldade que inimigos precisam superar contra algumas técnicas de Ren. Ela é calculada como `8 + bônus de proficiência + Sabedoria`; para Ren no nível 5, isso dá `8 + 3 + 3 = 14`.
+A CD de ki é a dificuldade que inimigos precisam superar contra algumas técnicas de Ren. Ela é calculada como `8 + bônus de proficiência + Sabedoria`; para Ren no nível 6, isso dá `8 + 3 + 3 = 14`.
 
 ### Rajada de Golpes
 
@@ -162,6 +162,16 @@ Cria uma área onde som não passa.
 
 Uso típico: impedir alarme, neutralizar conjurador, cobrir arrombamento, atravessar piso barulhento.
 
+### Passo Sombrio
+
+Não custa ki.
+
+Como ação bônus, quando Ren está em luz baixa ou escuridão, ele pode se teleportar até 60 pés para um espaço desocupado que consiga ver e que também esteja em luz baixa ou escuridão.
+
+Depois do teleporte, Ren ganha vantagem no primeiro ataque corpo a corpo que fizer antes do fim do turno.
+
+Limites importantes: exige sombra ou escuridão na origem e no destino, exige linha de visão para o ponto de chegada e consome a ação bônus do turno. Ren ainda não enxerga através da própria Escuridão mágica, então não pode usar Passo Sombrio para um ponto dentro dela se não conseguir ver esse ponto.
+
 ---
 
 ## Aparar Projéteis
@@ -179,6 +189,12 @@ Se reduzir o dano a zero, pode gastar 1 ki para arremessar o projétil de volta.
 Ren pode usar sua reação quando cai para reduzir o dano de queda em 25.
 
 Uso típico: telhados, mastros, carroças, muralhas baixas, saltos ruins e fugas urbanas em terreno vertical.
+
+## Golpes Potencializados por Ki
+
+Os golpes desarmados de Ren contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos.
+
+Uso típico: enfrentar criaturas sobrenaturais, mortos-vivos, espíritos materializados, construtos menores ou inimigos protegidos contra armas comuns.
 
 ---
 
@@ -206,7 +222,7 @@ Limites importantes:
 * dano moderado, não explosivo;
 * depende de posicionamento;
 * escuridão mágica pode atrapalhar aliados;
-* ainda não possui teleporte; Passo Sombrio só vem no nível 6;
+* Passo Sombrio depende de luz baixa ou escuridão e consome a ação bônus;
 * não é invisível o tempo todo;
 * magia de sombra é forte, mas custa recursos.
 

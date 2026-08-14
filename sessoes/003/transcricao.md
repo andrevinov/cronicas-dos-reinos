@@ -1901,3 +1901,109 @@ No meio da conversa, a sensação de silêncio sobrenatural ao redor de Ren se d
 Hora aproximada: **20:36 de 5 Eleasis, 1372 DR**. Ren está numa sala lateral do posto da **Night Watch/City Guard** com Luath. Recursos: **38/38 PV, CA 17, Ki 0/5, 17 PO, 9 shuriken**. **Passos sem Pegadas** expirou por volta de **20:31**. **Visão no Escuro** segue ativa até cerca de **04:07 de 6 Eleasis**. Luath pode colocar vigilância discreta na superfície da Escada das Sete Águas e nos arredores da saída baixa, mas os mapas não deram uma rota segura de entrada.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren volta para o circo discretamente. Um pouco estressado por não conseguir trazer nada útil que apaziguasse em sua cabeça o fato de Nera ter sido exposta. Ren demorará tudo que puder demorar pra ir ao circo sem trazer cauda. Depois que chegar, não irá ver os Vell. Mas quando Silva o procurar, ele pede a ela pra entregar um bilhete pra Nera. No bilhete, ele fala que a ama, e diz que irá solucionar tudo. Que ela pode ficar tranquila.
+
+A noite, no seu próprio "quarto", Ren fica tentando lembrar como que sua irmã fazia o Passo da Sombra. Ele acredita que essa técnica pode ajuda-lo a se infiltrar em Sarbreen. Ren vai passar a noite "treinando" [e se o narrador for bonzinho, ele bem que poderia avançar Ren pro nível 6 logo, considerando o que ele tem feito rs].
+
+**Narrador**
+
+Luath não tenta segurar Ren por mais tempo do que precisa.
+
+"Eu ponho olhos na Escada e na água baixa", ele diz, dobrando o mapa de patrulha. "Você não volta para lá hoje sem dormir ou sem ficar mais inteligente do que está agora."
+
+Não soa como conselho. Soa como ordem que ele sabe que talvez não consiga cumprir.
+
+Teste de Furtividade de Ren para voltar ao circo sem cauda útil: d20 16 + 7 = 23 contra CD 15. Sucesso.
+
+Teste de Percepção de Ren para conferir a rota antes de entrar no circo: d20 7 + 6 = 13 contra CD 14. Falha.
+
+Ren faz a volta longa.
+
+Ele não sai do posto para o circo; sai do posto para uma rua, da rua para uma pausa, da pausa para um beco onde nada o obriga a andar, do beco para uma sombra atrás de carroça, da carroça para outro pedaço da cidade. A pressa quer puxar o corpo para a carroça verde. Ren não deixa. Cada desvio compra distância entre a segurança dos Vell e qualquer olho que possa ter sobrado do cabriolé, da Escada ou da busca por Sarbreen.
+
+O resultado é bom, mas não dá paz.
+
+Ren não encontra cauda útil. Não vê o mesmo rosto duas vezes. Não percebe capuz insistente, mensageiro repetido ou roda cinza-azulada reaparecendo no canto da visão. Ainda assim, quando finalmente chega à borda do acampamento dos Mooney, a falta de prova não vira certeza. Só vira ausência de sinal.
+
+Silva o encontra antes que ele precise escolher entre procurar a carroça verde ou obedecer ao próprio medo.
+
+Ela está junto de um varal de figurino escuro, com uma lamparina baixa na mão e um cobertor dobrado no braço. Olha primeiro para trás de Ren. Depois para o rosto dele.
+
+"Você veio sozinho", ela diz. "Ou só veio antes do problema?"
+
+Ren não vai até os Vell.
+
+Quando ele entrega o bilhete, Silva não abre. Apenas pesa o papel entre dois dedos, como se pudesse medir quanto desespero cabe numa dobra.
+
+"Eu entrego", ela diz. "Mas se escreveu 'fica tranquila', ela vai saber que você não está."
+
+Silva leva o bilhete.
+
+Ren não vê Nera recebê-lo. Não vê se ela sorri, se fecha o rosto, se chora, se guarda junto ao peito ou se dobra de novo com raiva da promessa impossível. A proteção, naquela noite, inclui essa distância.
+
+Mais tarde, Silva volta sozinha ao depósito de figurino velho. Não entra no canto de Ren. Só deixa água perto da arca dos estandartes.
+
+"Ela leu duas vezes", Silva diz. "E mandou dizer que promessa grande demais não vale menos, mas pesa mais. Durma antes de tentar carregar outra."
+
+Depois ela vai embora.
+
+Ren fica com a noite.
+
+No começo, ele tenta lembrar Aiko.
+
+Teste de Intuição de Ren para lembrar o princípio do Passo da Sombra de Aiko: d20 1 + 6 = 7 contra CD 15. Falha.
+
+A memória não obedece.
+
+Ela vem inteira nos lugares errados: o som de Aiko corrigindo seus pés no assoalho do dojo; a mão dela empurrando o ombro dele para baixo antes de uma queda; o cheiro de chuva em madeira velha; a irritação dela quando Ren tentava vencer força com força. Mas a técnica, a parte limpa, a linha entre uma sombra e outra, escapa. Quanto mais Ren tenta reproduzir Aiko, mais a lembrança dela vira pessoa e menos vira instrução.
+
+Então o treino muda.
+
+Não é mais "como Aiko fazia". É "o que Aiko tentava fazer Ren entender".
+
+Teste de Acrobacia de Ren para transformar memória em forma corporal: d20 12 + 7 = 19 contra CD 14. Sucesso.
+
+O depósito dos Mooney tem sombras suficientes: o vão sob os estandartes velhos, o lado sem lamparina da arca, o espaço entre dois baús de roupa preta, o canto onde a lona grossa encontra a parede da carroça. Ren começa como sempre começou: passo, giro, pausa, respiração. O corpo está cansado e sem ki, mas isso ajuda mais do que atrapalha. Sem recurso para forçar, ele precisa parar de empurrar a sombra como porta.
+
+Perto da madrugada, quando a Visão no Escuro ainda queima fraca atrás dos olhos, Ren entende a primeira metade.
+
+Sombra não é buraco.
+
+Sombra é continuidade.
+
+O erro era tentar atravessar o espaço entre uma e outra. Aiko não atravessava. Ela escolhia o instante em que o inimigo aceitava que um pedaço escuro e outro pedaço escuro eram coisas separadas, e então provava que não eram.
+
+A primeira tentativa real quase falha. Ren sai debaixo dos estandartes e aparece só dois passos adiante, joelho batendo na lateral da arca. A segunda não é salto, nem corrida, nem magia como as artes sombrias que gastam ki. É menor e mais funda: a lamparina pisca, o contorno dele some do canto errado, e o pé toca o chão junto aos baús pretos sem ter feito o caminho no meio.
+
+Não é o Passo da Sombra de Aiko.
+
+É o de Ren.
+
+> Marco narrativo: Ren alcança o **nível 6** como monge do Caminho da Sombra.
+
+O marco não vem por bondade. Vem porque, desde que chegou a Ravens Bluff, Ren deixou de ser apenas sobrevivente de uma vingança antiga. Ele construiu uma máscara pública, salvou testemunhas, abriu caminho com Maerra, Silva, Jack e Luath, sobreviveu a Sarbreen, impediu parte de uma operação explosiva, reconheceu uma entrada-isca e escolheu recuar quando avançar seria vaidade. A técnica nova nasce dessa soma: infiltração, autocontrole e sombra usada como caminho.
+
+Mecanicamente, Ren completa descanso longo no fim da madrugada. **PV 45/45, Ki 6/6, 6 dados de vida, deslocamento 55 pés**. Ele ganha **Passo Sombrio**, **Golpes Potencializados por Ki** e melhoria de movimento sem armadura. **Visão no Escuro** expira por volta de **04:07**. O **Broche do Semblante Humilde** volta a estar disponível com o amanhecer de **6 Eleasis**.
+
+Quando a primeira claridade suja entra pelas frestas do depósito de figurino velho, Ren está de pé entre duas sombras pequenas demais para esconder uma pessoa comum.
+
+Agora elas já escondem caminho.
+
+Hora aproximada: **06:41 de 6 Eleasis, 1372 DR**. Ren está no depósito de figurino velho do **Jack Mooney & Sons Circus**. Recursos: **45/45 PV, CA 17, Ki 6/6, 17 PO, 9 shuriken**. O circo ainda desperta em camadas; Nera recebeu o bilhete, mas Ren ainda não a viu desde que voltou.
+
+O que Ren faz?
+
+**Jogador**
+
+[No contrato de Ren com Jack, Ren recebe algo por show, né? Até agora Jack não pagou nada, rs.]
+
+**Narrador**
+
+Sim. O contrato condicional de Kage não fixou um salário estável por semana nem uma porcentagem permanente, mas deixou claro que apresentações e despesas seriam acertadas caso a caso. A primeira noite do Benefício da Lona Aberta foi tratada mais como proteção social, cobertura, abrigo e fortalecimento do circo; a reprise pública de 5 Eleasis, porém, já entra como trabalho de Kage.
+
+Jack ainda não pagou porque a cena passou direto do pós-show para a isca do recado, a perseguição do cabriolé, Brunna, a Escada, Luath e a volta tarde ao circo. Isso fica registrado como pendência: Ren tem cachê a acertar com Jack pela reprise pública de 5 Eleasis, e a divisão das apresentações privadas também precisa ficar explícita antes de Kage trabalhar para patrono fechado.
+
+Por enquanto, não somo ouro na ficha. Quando Ren falar com Jack ou Jack trouxer as contas, o pagamento entra em cena.

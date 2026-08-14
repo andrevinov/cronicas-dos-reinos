@@ -7,7 +7,7 @@ personagem:
   nome: "Ren Kagehira"
   arquivo_ficha: "personagens/jogador/ficha.yaml"
   status: "ativo"
-  nivel: 5
+  nivel: 6
   classe: "Monge"
   subclasse: "Caminho da Sombra"
 
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "posto da City Guard / Night Watch"
-  ponto_exato: "sala lateral estreita do posto de Luath, com mapas da Escada das Sete Águas e dos porões secos sobre a mesa"
+  area: "Jack Mooney & Sons Circus"
+  ponto_exato: "depósito de figurino velho, no canto usado por Ren como quarto improvisado"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -209,38 +209,45 @@ localizacao:
     parece mais olho, boca, controle ou entrada-isca do que coração da operação.
     Os mapas não deram rota segura de invasão; Luath pode pôr vigilância
     discreta na superfície da Escada, no depósito sem tabuleta e em possíveis
-    saídas baixas.
+    saídas baixas. Ren voltou ao circo pela rota longa, sem cauda útil
+    percebida, mas sem conseguir provar a si mesmo que a rota estava
+    absolutamente limpa. Ele evitou ver Nera e Tavin, entregou a Silva um
+    bilhete para Nera dizendo que a ama e que solucionará tudo, e passou a noite
+    no depósito de figurino velho tentando transformar a lembrança do Passo da
+    Sombra de Aiko em técnica própria. Ao amanhecer de 6 Eleasis, após descanso
+    longo e treino meditativo, Ren despertou o Passo Sombrio e alcançou nível 6
+    como monge do Caminho da Sombra.
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
-  data_exata: "5 Eleasis, 1372 DR"
+  data_exata: "6 Eleasis, 1372 DR"
   calendario: "Calendário de Harptos"
   mes: "Eleasis"
   nome_sazonal_do_mes: "Highsun"
-  dia_do_mes: 5
+  dia_do_mes: 6
   dezena: 1
-  dia_da_dezena: 5
-  periodo_do_dia: "começo da noite de 5 Eleasis, no posto da Night Watch após recuar da Escada das Sete Águas"
-  hora_aproximada: "20:36 de 5 Eleasis"
+  dia_da_dezena: 6
+  periodo_do_dia: "amanhecer de 6 Eleasis, após descanso e despertar do Passo Sombrio no circo"
+  hora_aproximada: "06:41 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
-  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31, mas Visão no Escuro continua ativa até cerca de 04:07 de 6 Eleasis."
+  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31 e Visão no Escuro expirou por volta de 04:07 de 6 Eleasis. Ao amanhecer, Ren alcançou nível 6 e despertou Passo Sombrio."
 
 recursos:
   pontos_de_vida:
-    atuais: 38
-    maximos: 38
+    atuais: 45
+    maximos: 45
   dados_de_vida:
-    atuais: 5
-    maximos: 5
+    atuais: 6
+    maximos: 6
     dado: "d8"
   ki:
-    atuais: 0
-    maximos: 5
+    atuais: 6
+    maximos: 6
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
-  deslocamento: "50 pés"
+  deslocamento: "55 pés"
   dinheiro:
     po: 17
   condicoes:
@@ -970,6 +977,16 @@ recursos:
     - "Passos sem Pegadas expirou por volta de 20:31 de 5 Eleasis durante a conversa com Luath"
     - "Luath avaliou que a Escada das Sete Águas parece mais olho, boca, controle ou entrada-isca do que coração da operação"
     - "Os mapas de Brunna e Luath não produziram rota segura de invasão; Luath pode pôr vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas"
+    - "Rolagem para voltar ao circo sem cauda útil: 23 contra CD 15, sucesso"
+    - "Rolagem para conferir a rota antes de entrar no circo: 13 contra CD 14, falha"
+    - "Ren voltou ao circo sem cauda útil percebida, mas não obteve certeza absoluta de limpeza da rota"
+    - "Ren não foi ver Nera e Tavin ao voltar; entregou a Silva um bilhete para Nera dizendo que a ama e que solucionará tudo"
+    - "Silva entregou o bilhete a Nera e depois informou Ren que Nera leu duas vezes e respondeu que promessa grande demais pesa mais"
+    - "Rolagem para lembrar o princípio do Passo da Sombra de Aiko: 7 contra CD 15, falha"
+    - "Rolagem para transformar memória em forma corporal: 19 contra CD 14, sucesso"
+    - "Ren completou descanso longo no depósito de figurino velho, recuperando PV, dados de vida e ki"
+    - "Visão no Escuro expirou por volta de 04:07 de 6 Eleasis"
+    - "Ren alcançou nível 6 ao amanhecer de 6 Eleasis e despertou Passo Sombrio"
     - "Rolagem para marcar duas seções novas de Kage sem risco físico: 13 contra CD 14, falha"
     - "Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha"
     - "Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso"
@@ -1009,7 +1026,7 @@ equipamento_em_posse:
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso disponível desde o amanhecer de 5 Eleasis"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso disponível desde o amanhecer de 6 Eleasis"
     - "mapa público da Escada das Sete Águas, comprado de Brunna Torkel"
     - "cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída baixa para drenagem, parede raspada, ar seco e marca apagada"
   outros:
@@ -1028,8 +1045,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo na sala lateral do posto de Luath, depois de recuar da Escada das Sete Águas e descobrir que os mapas não dão rota segura de invasão"
-    - "avaliar se usa a vigilância discreta de Luath como cobertura, se segue os porões secos de Brunna sozinho, se volta ao circo para descansar ou se busca outro especialista antes de novo risco direto"
+    - "decidir o próximo passo no amanhecer de 6 Eleasis, depois de alcançar nível 6 e despertar Passo Sombrio"
+    - "avaliar se usa a vigilância discreta de Luath como cobertura, se segue os porões secos de Brunna com o novo Passo Sombrio, se fala com Nera/Silva/Jack antes de sair ou se busca outro especialista antes de novo risco direto"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
@@ -1075,8 +1092,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está numa sala lateral do posto da Night Watch/City Guard com Luath por volta de 20:36 de 5 Eleasis de 1372 DR. Ele recuou da Escada das Sete Águas sem acionar o fio de controle, chegou ao posto sem cauda útil percebida e contou a Luath sobre a galeria baixa, o vigia, o fio de acionamento, a marca de sol apagado e o depósito com janela de observação. Os mapas de Brunna e Luath não produziram uma rota segura de invasão. Luath avaliou que a Escada parece mais olho, boca, controle ou entrada-isca do que coração da operação, e pode colocar vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas. Recursos atuais: 38/38 PV, Ki 0/5, 17 PO, 9 shuriken. Passos sem Pegadas expirou por volta de 20:31; Visão no Escuro continua ativa até cerca de 04:07 de 6 Eleasis."
-  risco_imediato: "baixo no posto; risco operacional alto se Ren voltar aos subterrâneos com Ki 0/5"
+  cena_atual: "Ren está no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:41 de 6 Eleasis de 1372 DR. Na noite anterior, voltou do posto de Luath pela rota longa, sem cauda útil percebida, mas sem certeza absoluta de limpeza. Não foi ver Nera e Tavin; entregou a Silva um bilhete para Nera dizendo que a ama e que solucionará tudo. Silva entregou o bilhete e depois informou que Nera leu duas vezes e respondeu que promessa grande demais pesa mais. Durante a madrugada, Ren tentou lembrar o Passo da Sombra de Aiko, falhou em copiar a memória, mas transformou o princípio em forma própria. Ele completou descanso longo, alcançou nível 6 e despertou Passo Sombrio. Recursos atuais: 45/45 PV, Ki 6/6, 17 PO, 9 shuriken. Visão no Escuro expirou por volta de 04:07; Broche do Semblante Humilde está disponível desde o amanhecer de 6 Eleasis. O cachê da reprise pública de Kage em 5 Eleasis ainda não foi acertado com Jack; nenhum ouro foi somado até pagamento em cena."
+  risco_imediato: "baixo no circo; risco operacional moderado a alto se Ren sair de novo sem preparar cobertura social"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1087,3 +1104,4 @@ pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
     - "primeiro NPC abordado"
+    - "acertar com Jack o cachê da reprise pública de Kage em 5 Eleasis e a divisão de futuras apresentações privadas; não somar PO até pagamento em cena"
