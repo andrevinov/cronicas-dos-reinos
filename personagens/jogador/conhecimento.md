@@ -2806,7 +2806,7 @@ Progressão:
 * recursos ao amanhecer: 45/45 PV, Ki 6/6, 6 dados de vida, deslocamento 55 pés;
 * **Visão no Escuro** expirou por volta de 04:07 de 6 Eleasis;
 * o **Broche do Semblante Humilde** voltou a estar disponível no amanhecer de 6 Eleasis;
-* o cachê da reprise pública de Kage em 5 Eleasis ainda não foi acertado com Jack; Ren não recebeu moedas por ela até agora, e nenhum PO deve ser somado antes de pagamento em cena;
+* naquele momento, o cachê da reprise pública de Kage em 5 Eleasis ainda não havia sido acertado com Jack; esse registro foi superado pelo pagamento posterior no café com Silva;
 * hora aproximada: 06:41 de 6 Eleasis, 1372 DR.
 
 ### Sessão 003: café com Silva e resposta da Casa Veyr
@@ -2883,3 +2883,17 @@ Progressão:
 * Jack tentou bloquear a dobra, mas a Casa Veyr não cedeu antes da saída do mensageiro;
 * a apresentação ainda não está cancelada, mas Ren precisa decidir se aceita a dobra, recusa e arrisca perder a isca, ou propõe outra solução;
 * hora aproximada: 17:26 de 6 Eleasis, 1372 DR.
+
+### Sessão 003: transporte de Kage e entrada controlada da Casa Veyr
+
+* Ren decidiu prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual;
+* Jack definiu que Kage não sairia do circo nem seria transportado como artista privado do patrono;
+* Dessa cobriu a travessia com panos de figurino, e Kage foi movido pela rota interna de remendos/panos até a dobra lateral da tenda menor;
+* Sorn manteve duas sombras úteis na tenda menor: a dobra lateral onde Kage espera e a faixa baixa junto aos bancos dos músicos;
+* Tobb contou as 40 PO restantes antes da entrada útil dos convidados;
+* Corven Dalm assinou antes de pisar na lona útil;
+* o total de 80 PO da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren por esta apresentação ainda será acertada após o show;
+* o homem da Casa Veyr ficou em luz clara perto da entrada dos artistas, com gente dos Mooney entre ele e a aba real;
+* o homem da Casa Veyr observou lamparinas, pregas de lona e caminhos de sombra mais do que o picadeiro;
+* visão atual de Ren: seis convidados em meia-lua, dois guardas sem brasão, Corven Dalm perto de Jack/Tobb, homem da Casa Veyr em marca de luz, Sombra A junto aos bancos dos músicos e Sombra B na dobra lateral onde Kage espera;
+* hora aproximada: 18:18 de 6 Eleasis, 1372 DR.

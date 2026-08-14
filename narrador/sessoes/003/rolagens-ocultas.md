@@ -343,6 +343,35 @@ Consequências:
 
 ---
 
+## Fim da tarde de 6 Eleasis: transporte de Kage e entrada da Casa Veyr
+
+Contexto: Ren decidiu prosseguir com a apresentação fechada apesar da dobra
+contratual da Casa Veyr e discutiu com Jack como o transporte e a entrada seriam
+controlados pelos Mooney.
+
+Rolagem oculta:
+
+* Plano de transporte dos Mooney para isolar Kage e neutralizar a entrada de
+  artista apesar da dobra: d20 9 + 6 = 15 contra CD 14. Sucesso.
+
+Consequências:
+
+* Jack, Tobb, Sorn e Dessa conseguem transformar a exigência da Casa Veyr em
+  procedimento controlado: Kage não sai do circo nem entra como pacote do
+  patrono; é movido pela rota interna de panos, remendos e dobra lateral.
+* Tobb conta as 40 PO restantes antes dos convidados cruzarem a corda útil da
+  tenda; o total de 80 PO fica sob controle de Jack/Tobb, mas o cachê de Ren
+  ainda será acertado após a apresentação.
+* Corven Dalm assina sob a aba da frente antes de pisar na lona útil.
+* O homem da Casa Veyr não fica solto na entrada real dos artistas: é posto em
+  luz clara, perto o bastante para cumprir a aparência da exigência, mas longe
+  demais para controlar a aba sem se denunciar.
+* Ren/Kage começa a cena na dobra lateral marcada por Sorn. A faixa baixa junto
+  aos bancos dos músicos permanece visível e em penumbra suficiente para Passo
+  Sombrio se Ren quiser usá-la.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob

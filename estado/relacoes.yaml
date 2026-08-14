@@ -1524,7 +1524,12 @@ relacoes:
       Veyr respondeu com uma dobra contratual: pagamento final só com os
       convidados, assinatura de Corven Dalm apenas ao pisar na lona e um homem da
       casa junto da entrada de artistas. Jack tentou bloquear sem atrasar o show,
-      mas não conseguiu; levou a decisão de volta a Ren.
+      mas não conseguiu; levou a decisão de volta a Ren. Ren decidiu prosseguir,
+      e Jack transformou a exigência em procedimento controlado: Kage foi movido
+      pela rota interna de panos/remendos, Dalm assinou antes de pisar na lona
+      útil, Tobb contou as 40 PO restantes antes da entrada útil dos convidados e
+      o homem da casa ficou em luz clara, perto da entrada dos artistas, mas sem
+      controle da aba real.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1561,7 +1566,7 @@ relacoes:
       - "Jack selou a resposta rígida ao camarote oeste."
       - "Jack propôs calendário inicial: Kage não se apresenta em 4 Eleasis; pode fazer reprise curta de O Vento da Noite em 5 Eleasis ao cair da tarde; apresentações fechadas só em tenda controlada pelo circo e após filtros formais do contratante."
       - "Ren aceitou uma pequena apresentação em 5 Eleasis ao cair da tarde e particulares posteriores para quem cumprir filtros e pagar melhor."
-      - "O acordo condicional não fixou um cachê público permanente; o pagamento da reprise de Kage em 5 Eleasis está pendente de acerto com Jack."
+      - "O acordo condicional não fixou um cachê público permanente; a reprise de Kage em 5 Eleasis foi acertada posteriormente por 8 PO."
       - "Jack filtrou uma proposta privada sem nome claro que tentou alcançar Kage diretamente antes da reprise de 5 Eleasis."
       - "Jack segurou a borda do pós-show de 5 Eleasis e impediu contato direto com Kage."
       - "Jack pediu que Ren escolha se ele responde como dono de circo, se Ren segue a mão do recado ou se Kage desaparece por ora."
@@ -1571,6 +1576,8 @@ relacoes:
       - "Jack tratou a resposta de Ren sobre o show não parar como ensaio de aceite sob filtros do circo, não como sim final."
       - "Jack propôs aceitar a apresentação fechada da Casa Veyr apenas com filtros rígidos e aguarda se Ren acrescenta condição final."
       - "A Casa Veyr tentou alterar os filtros finais: pagamento restante com convidados, assinatura de Dalm só na lona e homem da casa junto da entrada de artistas."
+      - "Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle dos Mooney, não da Casa Veyr."
+      - "Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO está com Jack/Tobb, mas o cachê de Ren pela apresentação fechada segue pendente do pós-show."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1584,6 +1591,7 @@ relacoes:
       - "Ren aceitou preparar a tenda menor e revisar o número, mas ainda sob controle de Jack e sem remover os filtros do circo."
       - "Tobb verificou que Casa Veyr existe operacionalmente como presença temporária de aluguel e pagamento, mas sem raiz local profunda."
       - "Ren prometeu a Jack que nada aconteceria às pessoas do circo; Jack ouviu a promessa, mas continua dependendo dos filtros práticos."
+      - "Ren decidiu prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual e discutiu o transporte de Kage com Jack."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1604,6 +1612,7 @@ relacoes:
       - "A nova tira de papel aumenta o risco de Kage virar alavanca contra Nera, mesmo sem prova de que o abrigo dos Vell foi localizado."
       - "A frase sobre intermediários desnecessários na resposta da Casa Veyr sugere nova tentativa de separar Kage dos filtros de Jack e Silva."
       - "Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer a contraproposta."
+      - "Mesmo com a entrada controlada, o homem da Casa Veyr está perto o bastante da aba dos artistas para observar lamparinas, pregas e sombras."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"

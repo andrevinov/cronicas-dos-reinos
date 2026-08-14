@@ -2431,3 +2431,85 @@ Ele olha para Ren já meio vestido como Kage.
 Hora aproximada: **17:26 de 6 Eleasis, 1372 DR**. Ren está no **guarda-roupa menor do circo**, em preparação para Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Passo Sombrio** foi usado uma vez para entrar na carroça verde, sem custo de ki; a entrada não virou rumor no circo, mas assustou Nera e mostrou que a técnica ainda não é sutil perto dos Vell. A Casa Veyr não aceitou os filtros finais de modo limpo: quer pagar o restante só na chegada, fazer Corven Dalm assinar apenas ao pisar na lona e manter um homem da casa perto da entrada de artista.
 
 O que Ren faz?
+
+**Jogador**
+
+"Vamo entreter esse povo hoje, Jack. Tem mais ouro esperando a gente lá, não tem? Vamo pegar esse ouro. Vai ser uma noite pra eles lembrarem."
+
+E discute como será o transporte.
+
+**Narrador**
+
+Jack olha para Ren por um segundo comprido. Não sorri, mas a expressão muda: a raiva deixa de ser resposta ao bilhete e vira trabalho.
+
+"Tem ouro, sim", ele diz. "Mas ouro não entra andando sozinho no meu bolso. Tobb conta a bolsa antes do primeiro convidado cruzar a corda. Corven Dalm assina antes de pisar na lona útil. E o homem da casa fica onde eu mandar, não onde ele chama de junto."
+
+Tobb solta um ruído baixo que quase parece aprovação.
+
+Jack aponta dois dedos para o chão, como se já estivesse desenhando a tenda na serragem.
+
+"Transporte de Kage não é rua. Eles vêm ao circo. Você não sai daqui em carroça bonita, não atravessa campo com patrono e não vira pacote de rico. Você sai do guarda-roupa pela rota dos panos de Dessa, passa pela carroça de remendos, entra pela lateral baixa e espera atrás da dobra marcada por Sorn. Se alguém de fora vir alguma coisa, vai ver Kage já pronto, não Ren sendo vestido."
+
+Dessa, que estava prendendo uma camada negra na altura do ombro de Ren, levanta uma sobrancelha.
+
+"Eu cubro a travessia com manto de figurino e dois carregadores fingindo carregar pano caro demais para encostar no chão", ela diz. "O que é mentira só na parte do caro."
+
+Sorn entra logo depois, mede Ren com os olhos e fala sem cerimônia:
+
+"Duas sombras úteis. A dobra atrás da entrada lateral e a faixa baixa junto aos bancos dos músicos. As duas continuam boas se ninguém mexer nas lamparinas. Se você for usar sua coisa nova, usa entre esses pontos. O centro da tenda continua quebrado. Não tenta atravessar luz achando que ela vai pedir desculpa."
+
+Jack fecha a mão.
+
+"O homem da Casa Veyr fica numa marca de luz perto da aba de serviço, com um dos meus entre ele e a entrada real. Mãos visíveis. Nada de tocar pano, corda, estaca, lamparina ou músico. Se ele sair da luz, o show para. Se Dalm tentar assinar só depois de estar confortável, ele volta para fora. Se disserem gravadora, menino, Vell ou qualquer palavra que não seja espetáculo, eu apago a noite."
+
+Ele se inclina um pouco.
+
+"E depois que os aplausos morrerem, eu acerto sua parte. Igual gente que trabalha e paga dívida antes de fazer pose."
+
+O plano passa de boca em boca sem parecer plano. Um ajudante carrega um rolo de lona no momento errado de propósito. Uma menina atravessa com baldes vazios e obriga dois curiosos a desviarem. Dessa cobre Ren com pano negro por cima do figurino, mas deixa a postura de Kage respirar por baixo: alto, quieto, difícil de comprar. Silva não aparece na rota. Essa ausência, no circo, é sinal de que ela está onde precisa estar.
+
+A tarde perde a última cor útil.
+
+Quando a Casa Veyr chega, não chega como festa. Chega como gente que comprou silêncio e quer ver se o silêncio obedece. Seis convidados entram em mantos discretos, caros sem brilho. Dois guardas sem brasão ficam para trás quando Tobb manda. Corven Dalm é mais magro do que a assinatura fazia imaginar: barba aparada curta, cabelo preso com fita escura, dedos secos, olhar de homem que pesa cláusula como se fosse moeda.
+
+A bolsa aparece antes da entrada. Tobb conta sem pressa teatral.
+
+"Quarenta", ele diz.
+
+Dalm assina no tampo estreito colocado sob a aba da frente, ainda fora da parte útil da lona. Jack não lhe oferece cadeira. O procurador aceita isso com um sorriso fino demais para ser cordial.
+
+"A Casa Veyr aprecia discrição", Dalm diz.
+
+"Então vai adorar obedecer regra simples", Jack responde.
+
+O homem designado para a entrada dos artistas tenta ganhar dois passos a mais. Não consegue. Sorn move uma lamparina um palmo, Tobb move o próprio corpo meio palmo, e de repente o sujeito está em uma poça de luz clara, perto o bastante para ver a aba lateral, longe demais para encostar nela sem se denunciar. Ele usa casaco escuro sem brasão, luvas cinzentas e não parece interessado no picadeiro. O olhar dele conta lamparinas, pregas de lona, caminhos de sombra.
+
+Ren, já como Kage, fica atrás da dobra profunda da entrada lateral, com o pano de Dessa entre ele e o mundo. Pela fresta baixa, vê parte da tenda.
+
+Visão atual de Ren:
+
+```text
+                 ENTRADA DOS CONVIDADOS
+        Tobb / mesa estreita / Corven Dalm
+
+   seis convidados em meia-lua        dois guardas sem brasão
+
+                 área baixa de apresentação
+
+ [Sombra A: bancos dos músicos]    panos extras de Dessa
+
+ [Sombra B: dobra lateral] REN/KAGE
+        corda baixa dos Mooney
+        homem da Casa Veyr em luz clara
+        entrada real dos artistas, protegida por gente do circo
+```
+
+A Sombra B segura Ren agora. A Sombra A está visível por uma linha limpa entre os panos e os bancos dos músicos. Ambas estão em penumbra suficiente para o Passo Sombrio, desde que as lamparinas continuem como Sorn deixou.
+
+Do lado de fora da fresta, Dessa toca de leve o pulso de Ren: sinal de entrada próxima.
+
+Merrit respira uma vez, pequena demais para ser anúncio. Lysa já está na posição baixa. Jack ainda está visível perto de Dalm. O homem da Casa Veyr olha uma vez para a dobra onde Kage espera, mas a luz sobre ele é clara demais para esconder intenção.
+
+Hora aproximada: **18:18 de 6 Eleasis, 1372 DR**. Ren está na **tenda menor do Jack Mooney & Sons Circus**, atrás da dobra lateral marcada por Sorn, prestes a entrar como Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O circo está com as **80 PO da Casa Veyr sob controle de Jack/Tobb**, mas a parte de Ren ainda será acertada depois da apresentação. A Casa Veyr entrou sob compromisso operacional dos Mooney: Dalm assinou antes de pisar na lona útil, Tobb contou o pagamento restante, e o homem da casa foi posto em luz clara, perto da entrada de artistas, mas sem controle dela.
+
+O que Ren faz nos segundos antes da entrada de Kage?

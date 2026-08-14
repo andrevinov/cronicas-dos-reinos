@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "preparacao_de_apresentacao"
+  modo_de_cena_atual: "entrada_de_apresentacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "guarda-roupa menor, durante preparação de Kage"
+  ponto_exato: "tenda menor, atrás da dobra lateral marcada por Sorn"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -273,8 +273,15 @@ localizacao:
     termo. Antes da saída, a Casa Veyr respondeu com dobra contratual: quer pagar
     os 40 PO restantes só com os convidados, fazer Corven Dalm assinar apenas ao
     pisar na lona e manter um homem da casa junto da entrada de artistas. Jack
-    não conseguiu bloquear essa dobra sem atrasar ou arriscar o show; Ren deve
-    decidir como responder.
+    não conseguiu bloquear essa dobra sem atrasar ou arriscar o show. Ren
+    decidiu prosseguir. Os Mooney controlaram o transporte: Kage foi levado pela
+    rota interna de panos/remendos até a dobra lateral marcada por Sorn, sem sair
+    do circo nem virar pacote do patrono. Tobb contou as 40 PO restantes antes da
+    entrada útil dos convidados, Corven Dalm assinou antes de pisar na lona útil
+    e o homem da Casa Veyr foi colocado em luz clara perto da entrada dos
+    artistas, mas sem controle da aba real. A apresentação está prestes a
+    começar; Ren/Kage vê a faixa baixa junto aos bancos dos músicos como destino
+    possível para Passo Sombrio.
 
 tempo:
   ano_dr: 1372
@@ -286,11 +293,11 @@ tempo:
   dia_do_mes: 6
   dezena: 1
   dia_da_dezena: 6
-  periodo_do_dia: "fim da tarde de 6 Eleasis, antes da apresentação fechada de Kage"
-  hora_aproximada: "17:26 de 6 Eleasis"
+  periodo_do_dia: "começo da noite de 6 Eleasis, apresentação fechada de Kage prestes a começar"
+  hora_aproximada: "18:18 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo: quer pagar os 40 PO restantes só com os convidados, fazer Corven Dalm assinar apenas ao pisar na lona e manter um homem da casa junto da entrada de artistas. Jack não conseguiu bloquear a dobra sem atrasar ou arriscar o show."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
 
 recursos:
   pontos_de_vida:
@@ -1150,8 +1157,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no guarda-roupa menor do Jack Mooney & Sons Circus por volta de 17:26 de 6 Eleasis de 1372 DR, parcialmente preparado como Kage. Ren autorizou Jack a aceitar a apresentação fechada da Casa Veyr, mas a Casa Veyr respondeu com uma dobra contratual: quer pagar os 40 PO restantes só com os convidados, fazer Corven Dalm assinar apenas ao pisar na lona e manter um homem da casa junto da entrada de artistas. Jack não conseguiu bloquear a dobra sem atrasar ou arriscar o show e trouxe a decisão para Ren. Antes disso, Ren tomou banho, usou Passo Sombrio para entrar na carroça verde sem gastar ki e avisou Nera sobre a menção à seladora/gravadora; a rota pública ficou limpa, mas Nera se assustou com a entrada pela sombra e não reconheceu Corven Dalm nem Casa Veyr. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
-  risco_imediato: "alto em termos contratuais e operacionais: aceitar a dobra põe um homem da Casa Veyr perto demais da entrada de artistas; recusar pode cancelar ou atrasar a apresentação e perder a isca; renegociar pode revelar quanto Ren/Jack querem manter o controle"
+  cena_atual: "Ren está na tenda menor do Jack Mooney & Sons Circus por volta de 18:18 de 6 Eleasis de 1372 DR, já como Kage, atrás da dobra lateral marcada por Sorn. Ren aceitou prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual. Os Mooney controlaram o transporte e a entrada: Kage foi levado pela rota interna de panos/remendos, Tobb contou as 40 PO restantes antes da entrada útil dos convidados, Corven Dalm assinou antes de pisar na lona útil e o homem da casa foi colocado em luz clara perto da entrada de artistas, sem controlar a aba real. A Sombra B segura Ren agora; a Sombra A, junto aos bancos dos músicos, está visível e em penumbra suficiente para Passo Sombrio. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. O total de 80 PO da Casa Veyr está sob controle de Jack/Tobb, mas o pagamento de Ren por esta apresentação ainda está pendente do pós-show."
+  risco_imediato: "alto em termos operacionais e sociais: a Casa Veyr já está dentro da tenda sob regras dos Mooney; o homem da casa observa lamparinas, pregas e sombras a partir de uma marca de luz; qualquer tentativa de puxar gravadora, menino, Vell ou conversa privada pode encerrar o show ou expor reação de Ren"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1162,5 +1169,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como responder à dobra contratual da Casa Veyr antes da apresentação fechada"
+    - "decidir o primeiro gesto de Kage antes da apresentação fechada começar"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"
