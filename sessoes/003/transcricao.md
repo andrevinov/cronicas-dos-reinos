@@ -1550,16 +1550,6 @@ Ele olha pra Silva.
 
 **Narrador**
 
-[Esclarecimento de cena: a mão que trouxe a segunda tira de papel não está parada à vista esperando resposta no perímetro. Pelo que Jack e Tobb conseguem afirmar sem sair atrás dela, a pessoa entregou o recado com pressa e já se retirou antes que Kage voltasse aos bastidores. A frase "mandem preço e condição" sugere que esperam uma resposta pelo canal do recado, não uma conversa imediata na lona.]
-
-Se Ren mantiver a ordem para Jack aceitar, há dois caminhos práticos: Jack pode mandar uma resposta por mão própria do circo, e Ren pode tentar seguir essa mão até o próximo elo; ou Ren pode tentar sair agora atrás do mensageiro original, mas já partiria com atraso, sem alvo à vista e dependendo da direção que Tobb ou algum ajudante tenha notado.
-
-[Esclarecimento adicional: Jack ainda não disse "não" definitivo a esse segundo recado. Ele impediu contato direto com Kage e reteve a resposta para controlar o canal. A pessoa que trouxe a tira não combinou verbalmente "volto amanhã", mas a própria frase "mandem preço e condição" deixa um caminho aberto: Jack pode responder por mensageiro do circo, por bilhete formal ou por outro canal que ele escolha, sem entregar Kage pessoalmente.]
-
-[Esclarecimento sobre origem: Jack não sabe a origem real do pedido. Ele sabe o bastante para responder pelo canal prático: descrição do mensageiro, forma de entrega, relação provável com a proposta privada/camarote oeste e um caminho para mandar preço e condição. Isso dá a Ren algo investigável, mas não um destino confirmado. Seguir a resposta pode levar ao próximo elo do pedido; não garante chegar diretamente à casa, patrono ou mandante verdadeiro.]
-
-**Narrador**
-
 Jack observa Ren amassar o papel sem tentar arrancá-lo de sua mão. O rosto dele não amolece; fica mais comercial, o que nele é quase o mesmo que ficar perigoso.
 
 "Dobro, então", ele diz. "Meu preço limpo era quarenta. Agora é oitenta pela primeira apresentação curta, quarenta adiantadas, tenda minha, marcação minha, segurança minha, hora minha. E se querem comprar silêncio, silêncio também obedece regra minha."
@@ -1599,5 +1589,57 @@ Mas também não alcançou o mandante.
 O que ele tem é menos do que queria e mais do que nada: o canal usa dinheiro limpo, intermediário descartável, carro fechado sem brasão e cor cinza-azulada recorrente. A direção inicial aponta para a faixa de ruas que serve tanto casas ricas com cocheiros discretos quanto escritórios ligados a comércio, alfândega e patronos privados. Não basta para acusar Narwhal, Red Sail ou qualquer casa específica.
 
 Hora aproximada: **18:39 de 5 Eleasis, 1372 DR**. Ren está fora do circo, na borda das ruas de serviço entre os campos de carroças e o caminho para o Market/Harbor District. Está sem Kage visível, com **38/38 PV, CA 17, Ki 4/5, 21 PO, 9 shuriken**. O cabriolé cinza-azulado acabou de sumir no fluxo.
+
+O que Ren faz?
+
+**Jogador**
+
+Se não for interrompido, Ren usará o começo da noite para buscar informações sobre Sabreen, a masmorra anã debaixo da cidade. Procurará alguém que pode se identificar como especialista nas ruínas. Seu objetivo é encontrar mapas, localizações interessantes e... sem comunicar à pessoa, lugares onde algum culto do sol apagado poderia estar se reunindo ou buscando/fazendo algo.
+
+**Narrador**
+
+Ren deixa o ponto onde o cabriolé desapareceu antes que a frustração vire perseguição cega. A noite já não lhe oferece o truque dos olhos que usou sob Sarbreen; aquela magia morreu no crepúsculo do dia anterior. A cidade é apenas lamparina, sombra comum e gente demais vendo pouco.
+
+Procurar Sarbreen no começo da noite é fácil do pior jeito.
+
+Teste de Furtividade de Ren para circular pelo Market/Harbor sem puxar cauda útil: d20 1 + 7 = 8 contra CD 13. Falha.
+
+Teste de Investigação de Ren para encontrar especialista útil em Sarbreen: d20 13 + 4 = 17 contra CD 15. Sucesso.
+
+Nas primeiras duas tentativas, Ren encontra mentira embrulhada em mapa. Um homem tenta vender uma "porta dos reis anões" desenhada em papel novo demais. Uma mulher na lateral de um sebo oferece entrada para tesouro por três moedas e muda de história quando Ren pergunta por drenagem, pedra molhada e eixo de carroça. O problema não é só perder tempo: suas perguntas passam de boca em boca. Não com o nome Ren Kagehira. Não com certeza. Mas como "o estrangeiro do palco" ou "o homem de olho baixo procurando buraco anão".
+
+Isso basta para sujar a água.
+
+A terceira indicação presta porque vem com irritação, não promessa. Um vendedor de tintas aponta com o queixo para uma porta estreita atrás de uma oficina de prumos, cal e madeira velha, na transição entre o Market District e os serviços do Harbor. A tabuleta diz apenas **Medidas Torkel**.
+
+Lá dentro, a sala cheira a giz molhado, couro encerado e pedra raspada. Há tábuas finas com linhas de porões, fragmentos de planta, decalques de marcas antigas e pedaços de papel presos por pesos de ferro. A mulher atrás da mesa é anã, grisalha, ombros largos, unhas manchadas de azul de marcação. Ela olha Ren uma vez e corrige antes de cumprimentar.
+
+"Sarbreen. Com r. Se você disser sem o r, vendedor de mapa falso cobra mais rápido."
+
+Ela se apresenta como **Brunna Torkel**, medidora de porões, antiga auxiliar de levantamento para obras e disputas de propriedade. Não vende tesouro. Vende erro de planta, parede que não devia existir e passagem que alguém tampou em reforma antiga.
+
+"Mapa inteiro não existe", ela diz, puxando uma folha de camadas. "Quem diz que tem Sarbreen inteira está mentindo ou morto antes de cobrar. O que existe é pedaço. Pedaço de dreno, pedaço de adega, pedaço de salão velho, pedaço de escada que começa em casa rica e termina em água ruim."
+
+A mão curta dela marca três pontos sem pedir ainda que Ren explique demais.
+
+O primeiro é a região da **Balança Velha**, onde a abertura do mercado tocou pedra anã recente o bastante para a guarda estar pisando em cima. O segundo corre sob ofícios sujos e tintureiros: uma linha fria de escoadouro, baixa, com paredes que suam água mesmo no verão. O terceiro fica mais afastado, perto de porões reformados atrás de armazéns antigos: um conjunto de salas secas o bastante para lamparina, sem tráfego público direto, onde as marcas antigas foram raspadas muitas vezes.
+
+Brunna bate o dedo nesse terceiro ponto.
+
+"Se alguém quer só passar carga, usa água e lama. Se alguém quer conversar, guardar papel, riscar símbolo ou fazer cerimônia sem tossir, procura ar seco, segunda saída e teto que não desabe quando passa carroça em cima."
+
+Antes que ela diga o preço da cópia, uma tira estreita de papel desliza por baixo da veneziana dos fundos.
+
+Brunna para. A mão dela não vai para arma; vai para a lamparina. Ren vê a frase antes que ela dobre o papel por completo:
+
+> O do palco pergunta por baixo. Se pedir porta, entregue a Escada das Sete Águas. Paga-se dobrado.
+
+A anã fica imóvel por meio fôlego. Depois olha para Ren com a irritação de quem acabou de descobrir que a própria sala virou parte de uma rua maior.
+
+"Você trouxe pressa atrás de você", ela diz. "Não uma lâmina na porta. Ainda não. Mas alguém quer escolher qual mapa você compra."
+
+Na mesa há a folha de camadas de Brunna, ainda aberta. Nela, o ponto dos porões secos permanece sob o dedo dela. A veneziana dos fundos está a poucos passos. A porta da frente dá para a viela estreita da oficina de prumos. E a tal **Escada das Sete Águas**, se existir como ela diz, acaba de virar isca ou oportunidade.
+
+Hora aproximada: **19:18 de 5 Eleasis, 1372 DR**. Ren está na oficina **Medidas Torkel**, diante de Brunna Torkel, com **38/38 PV, CA 17, Ki 4/5, 21 PO, 9 shuriken**. Ele encontrou uma fonte útil sobre Sarbreen, mas sua busca já foi notada por alguém que o associa ao palco.
 
 O que Ren faz?

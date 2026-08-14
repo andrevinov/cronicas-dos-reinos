@@ -146,3 +146,37 @@ Consequências:
   por um cabriolé cinza-azulado sem brasão; Ren perde o veículo no fluxo entre
   campos de carroças e ruas de serviço rumo ao Market/Harbor District. O elo
   aponta para dinheiro e método, não para origem confirmada.
+
+---
+
+## Busca noturna por especialista em Sarbreen
+
+Contexto: após perder o cabriolé cinza-azulado, Ren decidiu usar o começo da
+noite para procurar alguém que se identificasse como especialista nas ruínas de
+Sarbreen, buscando mapas, localizações e possíveis lugares de reunião sem
+declarar a hipótese do culto do sol apagado.
+
+Rolagens abertas:
+
+* Circular pelo Market/Harbor sem puxar cauda útil: d20 1 + 7 = 8 contra CD 13.
+  Falha.
+* Encontrar especialista útil em Sarbreen: d20 13 + 4 = 17 contra CD 15.
+  Sucesso.
+
+Rolagem oculta:
+
+* Ruído da busca por Sarbreen virar reação imediata: d20 19 + 3 = 22 contra
+  CD 15. Sucesso.
+
+Consequências:
+
+* Ren encontra uma fonte realmente útil: Brunna Torkel, medidora de porões e
+  antiga auxiliar de levantamentos ligada a obras, plantas e disputas de
+  propriedade.
+* A busca não permanece discreta. A associação pública fina entre o estrangeiro
+  do palco/Kage e perguntas por Sarbreen chega rápido a pelo menos um canal
+  interessado.
+* O canal tenta interferir na informação entregue, oferecendo pagamento para que
+  Brunna direcione Ren à Escada das Sete Águas.
+* A reação confirma que há olhos sobre o tema Sarbreen, mas não identifica o
+  mandante nem prova ligação direta com o cabriolé, Narwhal, Red Sail ou Masao.

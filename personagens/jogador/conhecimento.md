@@ -2691,3 +2691,18 @@ Progressão:
 * Ren não foi marcado de forma clara, mas não alcançou o mandante;
 * o canal sugere dinheiro limpo, intermediário descartável, carro fechado sem brasão e cor cinza-azulada recorrente;
 * hora aproximada: 18:39 de 5 Eleasis, 1372 DR.
+
+### Sessão 003: busca noturna por especialista em Sarbreen
+
+* Ren decidiu usar o começo da noite para procurar uma fonte sobre Sarbreen, buscando mapas e locais interessantes sem revelar a hipótese do culto do sol apagado;
+* Visão no Escuro não está ativa; a magia lançada em Sarbreen havia expirado por volta de 18:43 de 4 Eleasis;
+* rolagem: Circular pelo Market/Harbor sem puxar cauda útil, d20 1 + 7 = 8 contra CD 13, falha;
+* a busca criou rumor: alguém pode repetir que "o estrangeiro do palco" ou "o homem de olho baixo" está perguntando por buracos anões;
+* rolagem: Encontrar especialista útil em Sarbreen, d20 13 + 4 = 17 contra CD 15, sucesso;
+* Ren encontrou **Brunna Torkel**, anã medidora de porões e antiga auxiliar de levantamentos de obras e disputas de propriedade;
+* Brunna corrigiu o nome **Sarbreen** e explicou que não existe mapa inteiro confiável da antiga cidade anã, apenas pedaços de drenos, adegas, salões, escadas e porões incorporados à cidade atual;
+* Brunna apontou três linhas úteis: a região da Balança Velha, a linha fria sob ofícios sujos/tintureiros e um conjunto de porões secos atrás de armazéns antigos;
+* segundo Brunna, quem quer só passar carga tende a usar água e lama; quem quer conversar, guardar papel, riscar símbolo ou fazer cerimônia tende a procurar ar seco, segunda saída e teto estável;
+* uma tira de papel foi deixada pela veneziana dos fundos de Medidas Torkel com a frase: "O do palco pergunta por baixo. Se pedir porta, entregue a Escada das Sete Águas. Paga-se dobrado.";
+* Ren sabe que alguém associou sua busca sobre Sarbreen ao palco e tentou interferir no mapa que Brunna lhe mostraria;
+* hora aproximada: 19:18 de 5 Eleasis, 1372 DR.

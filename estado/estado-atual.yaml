@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "borda dos campos de carroças e ruas de serviço rumo ao Market/Harbor District"
-  ponto_exato: "fora do circo, após perder o cabriolé cinza-azulado sem brasão"
+  area: "transição entre Market District e serviços do Harbor"
+  ponto_exato: "oficina Medidas Torkel, diante de Brunna Torkel"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -181,7 +181,7 @@ localizacao:
     atenção do circo todo. Depois completou descanso curto de uma hora no
     depósito de figurino velho: meia hora de sono e meia hora de meditação,
     recuperando ki para 5/5. Passos sem Pegadas expirou durante esse repouso;
-    Visão no Escuro segue ativa até cerca de 18:43. Em seguida, Ren começou o
+    Visão no Escuro expirou por volta de 18:43 de 4 Eleasis. Em seguida, Ren começou o
     ensaio de Kage. A tentativa de acrescentar duas seções fisicamente novas
     falhou por margem curta e o texto dramático inicial ficou excessivo, mas
     Lysa, Merrit, Dessa e Sorn integraram uma versão segura com duas pequenas
@@ -209,11 +209,11 @@ tempo:
   dia_do_mes: 5
   dezena: 1
   dia_da_dezena: 5
-  periodo_do_dia: "começo da noite de 5 Eleasis, após a resposta-isca ao canal privado de Kage"
-  hora_aproximada: "18:39 de 5 Eleasis"
+  periodo_do_dia: "começo da noite de 5 Eleasis, durante busca por Sarbreen"
+  hora_aproximada: "19:18 de 5 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas."
 
 recursos:
   pontos_de_vida:
@@ -951,7 +951,7 @@ recursos:
     - "Ren completou descanso curto de uma hora no depósito de figurino velho, com meia hora de sono e meia hora de meditação"
     - "Ren recuperou ki para 5/5"
     - "Passos sem Pegadas expirou durante o repouso, perto de 11:42"
-    - "Visão no Escuro segue ativa até cerca de 18:43"
+    - "Visão no Escuro expirou por volta de 18:43 de 4 Eleasis"
     - "Rolagem para marcar duas seções novas de Kage sem risco físico: 13 contra CD 14, falha"
     - "Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha"
     - "Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso"
@@ -1008,10 +1008,10 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo após perder o cabriolé cinza-azulado sem brasão no fluxo entre campos de carroças e ruas de serviço"
-    - "considerar se continua procurando o cabriolé, retorna ao circo sem levar cauda ou busca outro canal de investigação"
+    - "decidir como responder a Brunna Torkel e ao bilhete que tentou direcionar Ren à Escada das Sete Águas"
+    - "avaliar se compra a cópia honesta de Brunna, pressiona a fonte, investiga a veneziana dos fundos ou usa a Escada das Sete Águas como isca"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
-    - "decidir se puxa o fio de Sarbreen por Lockwood Mooney, Gond, Wizards' Guild ou mapas velhos do porto"
+    - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
     - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
     - "interpretar o recado de Luath: ponte baixa como olho/caminho, luz como brasa/sinal e retorno por pedra molhada ao fio do sol apagado"
@@ -1055,7 +1055,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está fora do circo por volta de 18:39 de 5 Eleasis de 1372 DR, na borda das ruas de serviço entre os campos de carroças e o caminho para o Market/Harbor District. Depois da reprise curta de Kage, mandou Jack aceitar a proposta como isca e pedir 80 PO com filtros rígidos. Jack enviou a resposta por mão controlada do circo. Ren seguiu o canal, mas falhou em se manter perto e em identificar o elo certo: viu o papel passar para um recadeiro pago comum e depois para uma mão enluvada dentro de um cabriolé cinza-azulado sem brasão. O cabriolé sumiu no fluxo. Ren não foi marcado de forma clara, mas não alcançou o mandante. Recursos atuais: 38/38 PV, Ki 4/5, 21 PO, 9 shuriken."
+  cena_atual: "Ren está na oficina Medidas Torkel por volta de 19:18 de 5 Eleasis de 1372 DR, diante de Brunna Torkel, anã medidora de porões e fonte útil sobre Sarbreen. Depois de perder o cabriolé cinza-azulado, procurou especialista em Sarbreen no eixo Market/Harbor. A busca encontrou uma fonte real, mas falhou em permanecer discreta: rumores ligam o estrangeiro do palco a perguntas sobre ruínas. Brunna mostrou linhas parciais de Sarbreen: Balança Velha, linha fria sob ofícios sujos/tintureiros e porões secos atrás de armazéns antigos. Uma tira de papel entrou pela veneziana dos fundos instruindo Brunna a direcionar 'o do palco' à Escada das Sete Águas por pagamento dobrado. Recursos atuais: 38/38 PV, Ki 4/5, 21 PO, 9 shuriken."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
