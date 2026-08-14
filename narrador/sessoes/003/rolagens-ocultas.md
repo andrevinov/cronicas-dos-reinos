@@ -354,6 +354,11 @@ Rolagem oculta:
 * Plano de transporte dos Mooney para isolar Kage e neutralizar a entrada de
   artista apesar da dobra: d20 9 + 6 = 15 contra CD 14. Sucesso.
 
+Rolagem aberta:
+
+* Intuição de Ren para ler risco provável da Casa Veyr antes da entrada de
+  Kage: d20 19 + 6 = 25 contra CD 15. Sucesso.
+
 Consequências:
 
 * Jack, Tobb, Sorn e Dessa conseguem transformar a exigência da Casa Veyr em
@@ -369,6 +374,11 @@ Consequências:
 * Ren/Kage começa a cena na dobra lateral marcada por Sorn. A faixa baixa junto
   aos bancos dos músicos permanece visível e em penumbra suficiente para Passo
   Sombrio se Ren quiser usá-la.
+* Ren conclui que a ameaça mais provável é sondagem e provocação controlada,
+  não ataque aberto, sequestro imediato ou refém dentro da tenda.
+* O risco principal percebido por Ren é a Casa Veyr mapear o Passo Sombrio, as
+  sombras úteis, a saída real de Kage ou a reação emocional dele a termos como
+  gravadora, menino ou Vell.
 
 ---
 

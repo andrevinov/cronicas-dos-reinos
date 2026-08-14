@@ -2513,3 +2513,49 @@ Merrit respira uma vez, pequena demais para ser anúncio. Lysa já está na posi
 Hora aproximada: **18:18 de 6 Eleasis, 1372 DR**. Ren está na **tenda menor do Jack Mooney & Sons Circus**, atrás da dobra lateral marcada por Sorn, prestes a entrar como Kage. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O circo está com as **80 PO da Casa Veyr sob controle de Jack/Tobb**, mas a parte de Ren ainda será acertada depois da apresentação. A Casa Veyr entrou sob compromisso operacional dos Mooney: Dalm assinou antes de pisar na lona útil, Tobb contou o pagamento restante, e o homem da casa foi posto em luz clara, perto da entrada de artistas, mas sem controle dela.
 
 O que Ren faz nos segundos antes da entrada de Kage?
+
+**Jogador**
+
+Ren observa o local. Tenta intuir: eles vão me atacar durante o show? Eles vão tentar me sequestrar? Fazer alguém de refém? Dado o lugar, as pessoas e as posições... o que é mais provável que aconteça?
+
+**Narrador**
+
+Teste de Intuição de Ren para ler risco provável da Casa Veyr antes da entrada de Kage: d20 19 + 6 = 25 contra CD 15. Sucesso.
+
+Ren olha menos para o conjunto e mais para os vazios entre as pessoas.
+
+Ataque aberto durante o show não parece o movimento mais provável. Não com Dalm assinando diante de Jack, Tobb contando moeda, seis convidados identificáveis o bastante para virarem testemunha e dois guardas mantidos longe da área útil. Se a Casa Veyr quisesse sangue agora, teria escolhido um lugar onde pudesse negar plateia, não uma lona cheia de gente dos Mooney olhando cada corda.
+
+Sequestro imediato também parece ruim para eles. Kage está dentro da rota dos Mooney, perto de duas sombras marcadas, com Jack ainda visível e Sorn cuidando das lamparinas como se cada chama fosse uma faca. Arrancar Ren dali exigiria barulho, correria ou magia evidente. Possível, mas não é a mão mais limpa.
+
+Refém dentro da tenda parece menos provável ainda. O valor da ameaça que eles já mostraram não é pegar alguém ali. É demonstrar que sabem qual palavra machuca. "Gravadora." Talvez "menino." Talvez "Vell." A faca que já encostaram em Ren é reação, não garganta.
+
+O mais provável é teste.
+
+Não teste de aplauso. Teste de padrão.
+
+O homem da Casa Veyr não olha como apreciador de acrobacia. Ele mede lamparinas, pregas, sombras e a distância entre a dobra lateral e os músicos. Ele quer saber se Kage usa o escuro como cenário, como truque ou como caminho. Se Ren usar o Passo Sombrio cedo demais, esse homem ganha resposta. Se Ren reagir ao nome certo no meio do número, Dalm ganha outra. Se Ren tentar proteger uma direção específica com os olhos, eles ganham a terceira.
+
+Dalm, por sua vez, não parece homem de primeiro golpe. Parece homem de segunda frase. A postura dele diz que tentará transformar espetáculo em conversa depois que o espetáculo provar valor: um elogio, uma cláusula, uma pergunta sobre privacidade, talvez uma palavra colocada com cuidado para ver se Kage sangra por dentro sem mexer a máscara.
+
+A leitura de Ren fica clara:
+
+* **ameaça imediata mais provável:** sondagem e provocação controlada;
+* **risco tático mais concreto:** eles mapearem o Passo Sombrio, as sombras úteis ou a saída real de Kage;
+* **risco emocional mais concreto:** usarem "gravadora", "menino", "Vell" ou algo equivalente para medir a reação de Ren;
+* **ataque/sequestro/refém agora:** possível, mas menos provável do que observação, marcação e tentativa de conversa posterior;
+* **melhor preservação de vantagem:** não entregar para onde Ren quer olhar, não revelar todas as sombras e deixar Jack/Tobb responderem qualquer tentativa contratual.
+
+Dessa ainda está com os dedos no pulso de Ren. O sinal dela é leve, mas o tempo acabou ficando estreito.
+
+Merrit inspira para começar a frase de abertura.
+
+"Às vezes", a voz dela sai baixa, ganhando corpo sem virar grito, "a noite não entra pela porta..."
+
+Jack vira o rosto para a tenda como se a frase fosse só espetáculo. Dalm observa Jack. O homem da Casa Veyr observa a dobra.
+
+Ren ainda tem um instante antes de aparecer.
+
+Hora aproximada: **18:18 de 6 Eleasis, 1372 DR**. Ren está atrás da **Sombra B**, prestes a entrar como Kage. A **Sombra A** junto aos bancos dos músicos continua visível e utilizável para Passo Sombrio. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
+
+O que Ren faz como primeiro gesto de Kage?
