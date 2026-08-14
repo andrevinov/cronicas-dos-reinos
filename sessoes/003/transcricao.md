@@ -1845,3 +1845,59 @@ Mapa operacional da Escada das Sete Águas: [002-mapa-escada-sete-aguas.png](ima
 Versão editável do mapa: [002-mapa-escada-sete-aguas.svg](imagens/002-mapa-escada-sete-aguas.svg)
 
 O mapa mostra apenas o que Ren consegue ver ou inferir de sua posição atual: a escada de retorno, o primeiro patamar baixo, a porta inchada à esquerda, a galeria baixa adiante, o fio de acionamento antes da câmara e o vigia no nicho lateral.
+
+**Jogador**
+
+Ren decide voltar. Ele já entendeu que ali é uma espécie de quartel general e ele não pode se comprometer assim. Ele vai voltar por onde veio, e vai furtivamente até Luath contar o que encontrou, e explorar junto com ele os mapas.
+
+**Narrador**
+
+Ren não dá o passo que a galeria parece pedir.
+
+O vigia continua no nicho, a cabeça inclinada para o outro lado da câmara. O fio baixo permanece esticado diante da entrada, fino demais para ser obstáculo físico e importante demais para ser ignorado. Ren recua antes de cruzar a linha em que curiosidade vira compromisso.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas para sair do patamar: d20 8 + 7 + 10 = 25 contra CD 17. Sucesso.
+
+Teste de Acrobacia de Ren para subir a Escada sem tocar o fio de controle: d20 18 + 7 = 25 contra CD 13. Sucesso.
+
+A subida é pior para o corpo do que a descida. Na volta, a água puxa o pé para baixo, e o frio da pedra insiste nos dedos. Ren precisa passar novamente pela linha escura presa à cera vermelha no terceiro filete. Ele espera o ritmo da água cobrir o movimento, sobe pela lateral do degrau, recolhe o peso antes que a sola arraste cascalho e cruza sem mover o fio.
+
+Lá em cima, a lamparina coberta do depósito ainda queima como antes. A janela não se abre mais. Ninguém chama. Ninguém corre atrás dele. A Escada das Sete Águas fica para trás sem saber, até onde Ren consegue perceber, que foi visitada.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas para chegar ao posto de Luath sem cauda útil: d20 13 + 7 + 10 = 30 contra CD 15. Sucesso.
+
+Teste de Percepção de Ren para conferir se alguém acompanhou a saída: d20 15 + 6 = 21 contra CD 14. Sucesso.
+
+Ren não toma linha reta até a guarda. Ele quebra duas vezes pelo Market, usa a sombra de um carro de peixe vazio, para tempo suficiente para ver se algum passo se repete atrás dele e só então segue para o posto. Há gente demais, lama demais, roda demais. Mas nenhuma presença se prende à sua fuga. Nenhum capuz reaparece. Nenhum cabriolé cinza-azulado volta ao ângulo de visão. O rastro dele, desta vez, morre no próprio ruído da cidade.
+
+Quando Ren chega ao posto da Night Watch, a magia ainda segura o silêncio em torno dele, mas não resolve a parte social. Para falar com Luath, ele precisa voltar a ser alguém diante de uma porta.
+
+O guarda da frente leva um instante para reconhecer o homem pobre molhado até quase o joelho. Depois chama outro, não alto o bastante para virar cena. Ren é colocado numa sala lateral estreita, com banco, mesa, mapa de patrulha preso por faca e cheiro de lã úmida.
+
+Luath entra pouco depois. Ele não está de armadura limpa; tem a manga dobrada, olheiras fundas e tinta escura no polegar.
+
+"Você tem esse talento raro", ele diz, olhando a barra molhada da roupa de Ren antes de olhar para os mapas. "Chegar parecendo notícia ruim antes que alguém bata na minha porta para anunciar notícia ruim."
+
+Ele ouve. Não interrompe na primeira menção ao vigia, nem ao fio, nem à marca raspada de sol apagado. Quando Ren mostra o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos de Brunna, Luath puxa o mapa de patrulha da parede e prende os três no mesmo tampo.
+
+Teste de Investigação de Ren para cruzar mapas com Luath: d20 5 + 4 = 9 contra CD 14. Falha.
+
+Os mapas não se encaixam como deveriam.
+
+Parte disso é porque Brunna vendeu pedaços de verdade, não uma planta. Parte é porque Sarbreen não respeita quarteirão de superfície. E parte é porque o mapa público da Escada parece útil demais nos lugares errados: tem nome, tem descida, tem fluxo de água, tem desenho bastante para atrair alguém com pressa. Já a cópia dos porões secos tem marcas melhores, mas menos portas claras. Duas entradas possíveis. Uma saída baixa. Parede raspada. Ar seco. Marca apagada.
+
+Luath fica mais tempo olhando para os vazios do que para as linhas.
+
+"Se isso é quartel-general, é um quartel feito para ser achado por quem vai morrer cedo", ele diz por fim. "Eu não gosto disso como coração. Gosto como olho. Como boca. Como lugar que conta quem aceitou a porta errada."
+
+Ele marca três pontos com carvão: a Escada das Sete Águas, o depósito sem tabuleta com a janela de observação e uma faixa irregular atrás de armazéns velhos onde o mapa seco de Brunna pode encaixar, mas não com certeza suficiente para uma batida limpa.
+
+"Se eu mando quatro guardas entrarem pela escada, eles chutam o primeiro fio, queimam sua entrada e talvez entreguem ao outro lado que nós finalmente aprendemos a palavra certa. Então não vou fazer isso." Luath bate a ponta do carvão no depósito. "Mas posso pôr olhos aqui. Gente que parece carga, não guarda. E posso mandar uma segunda dupla olhar saída baixa e água mexida, sem pisar dentro."
+
+A conclusão útil é menor do que Ren queria, mas concreta: a Escada das Sete Águas continua ativa e vigiada; o local abaixo dela provavelmente é ponto de controle, triagem ou defesa, não necessariamente o centro da operação; os porões secos de Brunna continuam sendo a melhor pista para papéis, reunião ou símbolo; e Luath pode cobrir a superfície, mas não transformar esses mapas numa invasão segura agora.
+
+No meio da conversa, a sensação de silêncio sobrenatural ao redor de Ren se desfaz. **Passos sem Pegadas** expira. A **Visão no Escuro** continua ativa, inútil sob a lamparina do posto, mas ainda queimando por trás dos olhos.
+
+Hora aproximada: **20:36 de 5 Eleasis, 1372 DR**. Ren está numa sala lateral do posto da **Night Watch/City Guard** com Luath. Recursos: **38/38 PV, CA 17, Ki 0/5, 17 PO, 9 shuriken**. **Passos sem Pegadas** expirou por volta de **20:31**. **Visão no Escuro** segue ativa até cerca de **04:07 de 6 Eleasis**. Luath pode colocar vigilância discreta na superfície da Escada das Sete Águas e nos arredores da saída baixa, mas os mapas não deram uma rota segura de entrada.
+
+O que Ren faz?

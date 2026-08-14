@@ -878,7 +878,7 @@ relacoes:
     status: "contato operacional cauteloso"
     atitude_para_ren: "cautelosa, direta e avaliadora"
     confianca: "baixa operacional"
-    respeito: "inicial, baseado em utilidade prática"
+    respeito: "prático crescente, contido por cautela"
     motivo: >
       Maerra Thandrel descreveu Luath como honrado de modo prático: um homem
       que cumpre dever, não vende gente pobre por conveniência e entende que a
@@ -964,6 +964,15 @@ relacoes:
       revelou apenas informação controlada, recusou acesso direto aos
       prisioneiros e aceitou levar uma pergunta curta de Ren ao interrogatório,
       sem torná-lo auxiliar oficial.
+      Na noite de 5 Eleasis, Ren retornou ao posto após recuar da Escada das
+      Sete Águas. Ele mostrou o mapa público da Escada, a cópia discreta dos
+      porões secos de Brunna Torkel e relatou a galeria baixa, o vigia, o fio
+      de acionamento, a marca de sol apagado e o depósito sem tabuleta com
+      janela de observação. Luath cruzou os mapas com Ren, mas eles não deram
+      rota segura de invasão. Luath avaliou a Escada como possível olho, boca,
+      controle ou entrada-isca, mais do que coração confirmado da operação, e
+      preferiu colocar vigilância discreta de superfície em vez de mandar uma
+      batida formal pela escada.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -975,6 +984,7 @@ relacoes:
       - "Luath agora possui dois prisioneiros ligados aos barris e ao acesso de Sarbreen; se eles sumirem, morrerem ou forem tomados por autoridade superior, a confiança prática de Ren na guarda pode ser testada."
       - "A ligação pública entre Ren e a entrada no perímetro do mercado ainda é fraca, mas uma peixeira e um escrivãozinho de guilda viram um forasteiro pobre ser admitido pela guarda antes da explosão parcial."
       - "A ida de Ren ao posto depois do segundo sino reforçou a linha pública fina de que o forasteiro pobre do mercado tem entrada com a guarda; a ligação com Kage ainda é fraca, mas uma memória na borda do circo pode crescer."
+      - "Se Luath mover guardas demais para a Escada das Sete Águas, pode queimar a entrada, alertar o outro lado e transformar a pista de Ren em perímetro público."
       - "O selo de Maerra comprou privacidade, não confiança."
       - "Luath agora sabe que Ren está caçando Masao por uma morte familiar; isso o torna mais cauteloso com Ren."
       - "A franqueza de Ren sobre Masao não merecer cela tornou Luath mais propenso a vigiar Ren se corpos aparecerem."
@@ -1005,6 +1015,9 @@ relacoes:
       - "Luath respondeu a Ren sobre os subterrâneos de Ravens Bluff, nomeando Sarbreen como a antiga cidade anã sob a cidade atual."
       - "Luath informou que entradas conhecidas perto dali passam por drenagens do cais e porões registrados de armazéns, mas que a abertura imediata é a própria passagem aberta pela explosão."
       - "Luath aceitou que Ren descesse pela abertura da balança velha, prometendo segurar a boca da passagem, contar os barris na superfície e impedir descida desordenada da guarda."
+      - "Luath recebeu de Ren o relato da Escada das Sete Águas: depósito sem tabuleta com janela de observação, fio de controle na entrada, marca de sol apagado raspada, galeria baixa, vigia e fio de acionamento antes de câmara estreita."
+      - "Luath examinou o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos de Brunna Torkel, sem reter os originais."
+      - "Luath não mandará batida formal pela Escada agora; em vez disso, pode colocar vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"

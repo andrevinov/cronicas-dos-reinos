@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Escada das Sete Águas, sob a transição entre Market District e serviços do Harbor"
-  ponto_exato: "primeiro patamar baixo da Escada das Sete Águas, olhando para a galeria baixa e a câmara estreita com vigia adiante"
+  area: "posto da City Guard / Night Watch"
+  ponto_exato: "sala lateral estreita do posto de Luath, com mapas da Escada das Sete Águas e dos porões secos sobre a mesa"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -197,7 +197,19 @@ localizacao:
     manga cinza falou pouco, não tinha papéis e usava dois anéis simples de
     ferro e latão; Gond estabilizou o barril em Sarbreen, mas ele continua
     abaixo. Luath não abriu acesso aos presos e aceitou levar uma pergunta curta
-    de Ren ao interrogatório.
+    de Ren ao interrogatório. Na noite de 5 Eleasis, Ren seguiu o canal da
+    proposta privada de Kage até Brunna Torkel, comprou um mapa público da
+    Escada das Sete Águas e uma cópia discreta de porões secos atrás de
+    armazéns antigos, ativou Passos sem Pegadas e confirmou que alguém pagou
+    Brunna para direcioná-lo à Escada. Ren seguiu o cobrador até a Escada das
+    Sete Águas, desceu sem acionar o fio de controle da entrada, ativou Visão
+    no Escuro e viu uma galeria baixa com vigia em nicho lateral e fio de
+    acionamento antes de uma câmara estreita. Com Ki 0/5, Ren decidiu recuar,
+    saiu sem perceber cauda e foi ao posto de Luath. Luath avaliou que a Escada
+    parece mais olho, boca, controle ou entrada-isca do que coração da operação.
+    Os mapas não deram rota segura de invasão; Luath pode pôr vigilância
+    discreta na superfície da Escada, no depósito sem tabuleta e em possíveis
+    saídas baixas.
 
 tempo:
   ano_dr: 1372
@@ -209,11 +221,11 @@ tempo:
   dia_do_mes: 5
   dezena: 1
   dia_da_dezena: 5
-  periodo_do_dia: "começo da noite de 5 Eleasis, após ativar Visão no Escuro sob a Escada das Sete Águas"
-  hora_aproximada: "20:08 de 5 Eleasis"
+  periodo_do_dia: "começo da noite de 5 Eleasis, no posto da Night Watch após recuar da Escada das Sete Águas"
+  hora_aproximada: "20:36 de 5 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31, mas Visão no Escuro continua ativa até cerca de 04:07 de 6 Eleasis."
 
 recursos:
   pontos_de_vida:
@@ -953,6 +965,11 @@ recursos:
     - "Passos sem Pegadas expirou durante o repouso, perto de 11:42"
     - "Visão no Escuro expirou por volta de 18:43 de 4 Eleasis"
     - "Passos sem Pegadas ativo desde cerca de 19:31 de 5 Eleasis; concentração possível até cerca de 20:31 se não for quebrada"
+    - "Visão no Escuro ativa desde cerca de 20:08 de 5 Eleasis; duração aproximada até 04:07 de 6 Eleasis"
+    - "Ren recuou da Escada das Sete Águas sem acionar o fio de controle e sem perceber cauda"
+    - "Passos sem Pegadas expirou por volta de 20:31 de 5 Eleasis durante a conversa com Luath"
+    - "Luath avaliou que a Escada das Sete Águas parece mais olho, boca, controle ou entrada-isca do que coração da operação"
+    - "Os mapas de Brunna e Luath não produziram rota segura de invasão; Luath pode pôr vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas"
     - "Rolagem para marcar duas seções novas de Kage sem risco físico: 13 contra CD 14, falha"
     - "Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha"
     - "Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso"
@@ -1011,8 +1028,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo no primeiro patamar baixo da Escada das Sete Águas, diante de uma galeria baixa com fio de acionamento e vigia em nicho lateral a cerca de 35 pés"
-    - "avaliar se recua, observa mais, tenta contornar o fio, neutraliza o vigia sem ki, investiga a porta inchada ou abandona a isca para seguir o mapa discreto dos porões secos"
+    - "decidir o próximo passo na sala lateral do posto de Luath, depois de recuar da Escada das Sete Águas e descobrir que os mapas não dão rota segura de invasão"
+    - "avaliar se usa a vigilância discreta de Luath como cobertura, se segue os porões secos de Brunna sozinho, se volta ao circo para descansar ou se busca outro especialista antes de novo risco direto"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
@@ -1058,8 +1075,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no primeiro patamar baixo da Escada das Sete Águas por volta de 20:08 de 5 Eleasis de 1372 DR, sob Passos sem Pegadas e Visão no Escuro. Ele gastou seus 2 pontos restantes de ki em Visão no Escuro, ficando com Ki 0/5. Com a visão ativada, identificou que a porta inchada à esquerda parece travada de dentro e não é o caminho ativo desta noite; viu um sinal recente de sol simples apagado/raspado sob cera vermelha na parede direita; e viu que a abertura baixa adiante leva a uma galeria usada, marcada por pequenos pontos de cera vermelha. A cerca de 35 pés há uma figura magra em nicho lateral, ainda sem perceber Ren, e um fio baixo antes da câmara estreita que parece acionar algo dentro da câmara. Recursos atuais: 38/38 PV, Ki 0/5, 17 PO, 9 shuriken. Passos sem Pegadas ativo até cerca de 20:31 se Ren mantiver concentração; Visão no Escuro ativa até cerca de 04:07 de 6 Eleasis."
-  risco_imediato: "moderado"
+  cena_atual: "Ren está numa sala lateral do posto da Night Watch/City Guard com Luath por volta de 20:36 de 5 Eleasis de 1372 DR. Ele recuou da Escada das Sete Águas sem acionar o fio de controle, chegou ao posto sem cauda útil percebida e contou a Luath sobre a galeria baixa, o vigia, o fio de acionamento, a marca de sol apagado e o depósito com janela de observação. Os mapas de Brunna e Luath não produziram uma rota segura de invasão. Luath avaliou que a Escada parece mais olho, boca, controle ou entrada-isca do que coração da operação, e pode colocar vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas. Recursos atuais: 38/38 PV, Ki 0/5, 17 PO, 9 shuriken. Passos sem Pegadas expirou por volta de 20:31; Visão no Escuro continua ativa até cerca de 04:07 de 6 Eleasis."
+  risco_imediato: "baixo no posto; risco operacional alto se Ren voltar aos subterrâneos com Ki 0/5"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
