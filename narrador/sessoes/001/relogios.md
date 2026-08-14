@@ -269,6 +269,9 @@ Observação recente:
   ligar a máscara pública de Kage ao forasteiro pobre visto em canais da guarda
   e do mercado. Isso ainda não identifica Ren Kagehira nem localiza os Vell, mas
   aumenta o risco de comparação entre as personas de Ren.
+* após a resposta-isca de Jack, Ren viu o canal privado usar recadeiro pago e um
+  cabriolé cinza-azulado sem brasão. Ren não foi marcado de forma clara, mas
+  perdeu o veículo antes de identificar mandante, casa ou destino final.
 
 ---
 
@@ -519,6 +522,8 @@ Estado atual:
   o segundo recado privado usou a palavra gravadora para pressionar Ren e o
   circo. Jack, Silva e a equipe seguraram os filtros do pós-show; o abrigo dos
   Vell permanece intacto, porém mais sensível.
+* Jack escreveu resposta-isca com preço alto e filtros rígidos. A operação gerou
+  trilha parcial para Ren, não contrato real nem acesso direto ao mandante.
 
 Consequência em 0/4:
 

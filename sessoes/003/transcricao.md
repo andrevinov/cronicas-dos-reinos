@@ -1537,3 +1537,67 @@ Jack olha para Ren.
 "Agora você me diz se eu respondo como dono de circo, se você quer seguir a mão que trouxe isso, ou se essa noite Kage desaparece antes que alguém descubra quanto custa uma sombra."
 
 O que Ren faz?
+
+**Jogador**
+
+Agora que a apresentação acabou, Ren se permite expressar um pouco de ódio. Ele pega o papel, faz uma expressão controlada de raiva, amassando-o e fitando o papel enquanto o amassa.
+
+"Jack, pode dizer que Kage aceita. Peça mais do que eles ofereçam... peça o dobro. Você está arriscando o circo, então merece pelo menos que paguem alto por isso. Eu vou estar vendo de longe e vou seguir esse desgraçado pra ver que mão é essa que quer tanto me conhecer."
+
+Ele olha pra Silva.
+
+"Mantém eles seguros, por favor. Eu volto assim que puder."
+
+**Narrador**
+
+[Esclarecimento de cena: a mão que trouxe a segunda tira de papel não está parada à vista esperando resposta no perímetro. Pelo que Jack e Tobb conseguem afirmar sem sair atrás dela, a pessoa entregou o recado com pressa e já se retirou antes que Kage voltasse aos bastidores. A frase "mandem preço e condição" sugere que esperam uma resposta pelo canal do recado, não uma conversa imediata na lona.]
+
+Se Ren mantiver a ordem para Jack aceitar, há dois caminhos práticos: Jack pode mandar uma resposta por mão própria do circo, e Ren pode tentar seguir essa mão até o próximo elo; ou Ren pode tentar sair agora atrás do mensageiro original, mas já partiria com atraso, sem alvo à vista e dependendo da direção que Tobb ou algum ajudante tenha notado.
+
+[Esclarecimento adicional: Jack ainda não disse "não" definitivo a esse segundo recado. Ele impediu contato direto com Kage e reteve a resposta para controlar o canal. A pessoa que trouxe a tira não combinou verbalmente "volto amanhã", mas a própria frase "mandem preço e condição" deixa um caminho aberto: Jack pode responder por mensageiro do circo, por bilhete formal ou por outro canal que ele escolha, sem entregar Kage pessoalmente.]
+
+[Esclarecimento sobre origem: Jack não sabe a origem real do pedido. Ele sabe o bastante para responder pelo canal prático: descrição do mensageiro, forma de entrega, relação provável com a proposta privada/camarote oeste e um caminho para mandar preço e condição. Isso dá a Ren algo investigável, mas não um destino confirmado. Seguir a resposta pode levar ao próximo elo do pedido; não garante chegar diretamente à casa, patrono ou mandante verdadeiro.]
+
+**Narrador**
+
+Jack observa Ren amassar o papel sem tentar arrancá-lo de sua mão. O rosto dele não amolece; fica mais comercial, o que nele é quase o mesmo que ficar perigoso.
+
+"Dobro, então", ele diz. "Meu preço limpo era quarenta. Agora é oitenta pela primeira apresentação curta, quarenta adiantadas, tenda minha, marcação minha, segurança minha, hora minha. E se querem comprar silêncio, silêncio também obedece regra minha."
+
+Ele pega outro papel, mais grosso que o do recado, mas não tão caro. Isso também é escolha. A resposta de Jack parece contrato, não súplica:
+
+> Kage aceita apresentação fechada curta apenas sob controle do Jack Mooney & Sons Circus. Preço: 80 PO, 40 PO adiantadas, custos de tenda, transporte e segurança por fora. Nome do pagador, casa responsável, endereço de recebimento e hora propostos devem vir por escrito antes de qualquer confirmação. Kage não recebe visita privada, não fala sem contrato e não comparece sem equipe do circo. A gravadora não faz parte de preço, palco ou conversa.
+>
+> J. Mooney
+
+Silva escuta o pedido de Ren sem responder de imediato. Quando responde, não promete mais do que pode.
+
+"Eu mantenho", ela diz. "Mas você não volta direto para a carroça verde se vier com cauda. Volta pela borda de remendos, para Tobb, para mim ou para Jack. Não para ela."
+
+Dessa tira de Ren o que é Kage com a eficiência quase bruta de quem não confunde símbolo com tecido. Máscara fora. Manga falsa fora. Faixa presa de outro jeito. O bastante para que, a vinte passos e com pouca luz, ele não seja o artista que acabou de fazer a lona aplaudir.
+
+Jack não manda Tobb. Tobb é conhecido demais. Manda um ajudante de estaca magro, de rosto comum e ombros baixos, com a instrução simples de levar o papel até o ponto indicado pelo canal: a borda dos campos de carroças, onde mensageiros pagos, cocheiros de aluguel e recadeiros de casa rica se misturam antes de voltar para a cidade.
+
+Ren sai depois, largo o suficiente para não parecer escolta e perto o suficiente para tentar não perder a linha.
+
+Teste de Furtividade de Ren para seguir o canal: d20 3 + 7 = 10 contra CD 15. Falha.
+
+Teste de Percepção de Ren para identificar o elo certo: d20 2 + 6 = 8 contra CD 14. Falha.
+
+A noite cedo atrapalha de um jeito cruel: ainda há luz bastante para notar movimento estranho, mas não luz bastante para ler rosto a distância. O público saindo da lona cria ruído, poeira e desculpas. Ren acompanha o ajudante de Jack até o limite dos campos, vê o papel passar para um recadeiro pago de casaco gasto e boné escuro, e segue esse segundo homem por duas curvas curtas entre carroças paradas.
+
+O recadeiro não age como conspirador. Age como trabalhador que recebe cobre para não perguntar. Isso torna tudo pior.
+
+Perto de um trecho onde duas ruas de serviço se cruzam, ele não entrega o papel a uma casa. Entrega a uma mão enluvada que sai por pouco tempo da janela de um cabriolé cinza-azulado, sem brasão, com lanternas baixas e cortina meio corrida. Ren vê a cor, a mão, o contorno de alguém sentado dentro. Não vê rosto. Não vê selo. Não ouve nome.
+
+Ele tenta mudar de ângulo, mas uma carroça vazia entra entre ele e a rua. Quando Ren passa pela traseira dela, o cabriolé já está se misturando ao fluxo de fim de espetáculo: gente voltando para o Market District, cocheiros tentando alcançar vias melhores, trabalhadores indo para o Harbor District antes que a névoa engrosse.
+
+Ren não foi marcado de forma clara.
+
+Mas também não alcançou o mandante.
+
+O que ele tem é menos do que queria e mais do que nada: o canal usa dinheiro limpo, intermediário descartável, carro fechado sem brasão e cor cinza-azulada recorrente. A direção inicial aponta para a faixa de ruas que serve tanto casas ricas com cocheiros discretos quanto escritórios ligados a comércio, alfândega e patronos privados. Não basta para acusar Narwhal, Red Sail ou qualquer casa específica.
+
+Hora aproximada: **18:39 de 5 Eleasis, 1372 DR**. Ren está fora do circo, na borda das ruas de serviço entre os campos de carroças e o caminho para o Market/Harbor District. Está sem Kage visível, com **38/38 PV, CA 17, Ki 4/5, 21 PO, 9 shuriken**. O cabriolé cinza-azulado acabou de sumir no fluxo.
+
+O que Ren faz?

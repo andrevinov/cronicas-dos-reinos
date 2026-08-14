@@ -110,3 +110,39 @@ Consequências:
   da superfície pública do circo, começa a ligar Kage ao forasteiro pobre que
   teve acesso a Luath. Isso ainda não revela Ren Kagehira nem o abrigo dos Vell,
   mas cria risco futuro de comparação entre máscaras.
+
+---
+
+## Resposta-isca ao pedido privado de Kage
+
+Contexto: Ren mandou Jack aceitar a proposta, pedir caro e usar a resposta como
+isca. A intenção de Ren é observar de longe e seguir o próximo elo do canal.
+
+Rolagens:
+
+* Jack formula resposta-isca sem entregar Kage: d20 7 + 5 = 12 contra CD 14.
+  Falha.
+* Mão do circo leva resposta sem abrir rotina interna: d20 4 + 3 = 7 contra
+  CD 13. Falha.
+* Teste de Furtividade de Ren para seguir o canal: d20 3 + 7 = 10 contra CD 15.
+  Falha.
+* Teste de Percepção de Ren para identificar o elo certo: d20 2 + 6 = 8 contra
+  CD 14. Falha.
+* Contraobservação do canal privado percebe a cauda: d20 6 + 3 = 9 contra
+  CD 15. Falha.
+
+Consequências:
+
+* Jack consegue responder, mas a isca fica dura e comercial demais para puxar o
+  mandante direto. O canal trata a resposta como negociação perigosa, não como
+  convite seguro.
+* A entrega por mão do circo não revela os Vell nem a rotina interna sensível,
+  mas mostra ao outro lado que Jack está controlando Kage com firmeza.
+* Ren consegue acompanhar a saída geral do recado, mas não de modo limpo nem
+  próximo o bastante para identificar todos os sinais.
+* O canal privado não percebe Ren como cauda qualificada, mas usa
+  intermediários e tráfego urbano para quebrar a linha.
+* Resultado visível para Ren: a resposta passa por um mensageiro pago e depois
+  por um cabriolé cinza-azulado sem brasão; Ren perde o veículo no fluxo entre
+  campos de carroças e ruas de serviço rumo ao Market/Harbor District. O elo
+  aponta para dinheiro e método, não para origem confirmada.

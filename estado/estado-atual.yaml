@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "pos_apresentacao"
+  modo_de_cena_atual: "investigacao_urbana"
 
 personagem:
   nome: "Ren Kagehira"
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Jack Mooney & Sons Circus"
-  ponto_exato: "bastidores laterais da lona principal, logo após a reprise curta de Kage"
+  area: "borda dos campos de carroças e ruas de serviço rumo ao Market/Harbor District"
+  ponto_exato: "fora do circo, após perder o cabriolé cinza-azulado sem brasão"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -209,11 +209,11 @@ tempo:
   dia_do_mes: 5
   dezena: 1
   dia_da_dezena: 5
-  periodo_do_dia: "começo da noite de 5 Eleasis, logo após a reprise curta de Kage"
-  hora_aproximada: "18:07 de 5 Eleasis"
+  periodo_do_dia: "começo da noite de 5 Eleasis, após a resposta-isca ao canal privado de Kage"
+  hora_aproximada: "18:39 de 5 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack e a equipe impediram contato direto com Kage após o show. Um novo recado escrito pressionou Kage usando a palavra gravadora, e Silva endureceu a proteção interna de Nera e Tavin."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante."
 
 recursos:
   pontos_de_vida:
@@ -1008,14 +1008,14 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como responder à nova tira de papel que pressionou Kage usando a palavra gravadora"
-    - "decidir se Jack responde como dono de circo, se Ren tenta seguir a mão que trouxe o recado ou se Kage desaparece por enquanto"
-    - "manter Nera e Tavin protegidos na carroça verde enquanto Silva endurece a segurança interna"
+    - "decidir o próximo passo após perder o cabriolé cinza-azulado sem brasão no fluxo entre campos de carroças e ruas de serviço"
+    - "considerar se continua procurando o cabriolé, retorna ao circo sem levar cauda ou busca outro canal de investigação"
+    - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "decidir se puxa o fio de Sarbreen por Lockwood Mooney, Gond, Wizards' Guild ou mapas velhos do porto"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
     - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
     - "interpretar o recado de Luath: ponte baixa como olho/caminho, luz como brasa/sinal e retorno por pedra molhada ao fio do sol apagado"
-    - "investigar quem chamou Kage, quem sabe que a gravadora importa e quanto disso toca Nera diretamente"
+    - "investigar quem chamou Kage, quem sabe que a gravadora importa e quanto disso toca Nera diretamente; o canal visto usa recadeiro pago e cabriolé cinza-azulado sem brasão"
     - "deixar a estabilização do segundo barril armado em Sarbreen com Luath, guarda e Gond, salvo se novo risco surgir"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
@@ -1055,7 +1055,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está nos bastidores laterais da lona principal por volta de 18:07 de 5 Eleasis de 1372 DR, logo após a reprise curta de Kage. O número funcionou no limite técnico: Ren gastou 1 ki em Passo do Vento, ficou com Ki 4/5, a plateia valorizou Kage e Sorn percebeu que não há margem para aumentar risco físico sem novo treino. Jack e a equipe impediram contato direto com Kage. Uma segunda tira de papel pressionou o circo usando a palavra gravadora e exigindo preço e condição antes que outra casa compre o silêncio. Jack quer saber se responde como dono de circo, se Ren seguirá a mão do recado ou se Kage desaparecerá por ora. Nera e Tavin seguem na carroça verde, com Silva endurecendo a segurança interna."
+  cena_atual: "Ren está fora do circo por volta de 18:39 de 5 Eleasis de 1372 DR, na borda das ruas de serviço entre os campos de carroças e o caminho para o Market/Harbor District. Depois da reprise curta de Kage, mandou Jack aceitar a proposta como isca e pedir 80 PO com filtros rígidos. Jack enviou a resposta por mão controlada do circo. Ren seguiu o canal, mas falhou em se manter perto e em identificar o elo certo: viu o papel passar para um recadeiro pago comum e depois para uma mão enluvada dentro de um cabriolé cinza-azulado sem brasão. O cabriolé sumiu no fluxo. Ren não foi marcado de forma clara, mas não alcançou o mandante. Recursos atuais: 38/38 PV, Ki 4/5, 21 PO, 9 shuriken."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
