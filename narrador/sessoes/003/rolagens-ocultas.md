@@ -330,3 +330,29 @@ Consequências:
 * Ren vê uma figura magra em nicho lateral a cerca de 35 pés, ainda sem percebê-
   lo, e nota um fio baixo antes da câmara estreita que parece acionar algo
   dentro da câmara.
+
+---
+
+## Manhã de 6 Eleasis: resposta ao preço de Kage
+
+Contexto: Ren decidiu procurar Jack depois do café com Silva para saber se a
+resposta à isca privada de Kage havia chegado e para informar que não conseguiu
+seguir o mensageiro até o mandante.
+
+Rolagens ocultas:
+
+* Canal privado de Kage responder antes do café de 6 Eleasis: d20 13 + 3 = 16
+  contra CD 14. Sucesso.
+* Filtro de Jack e Silva receber resposta sem expor rotina interna: d20 10 + 5
+  = 15 contra CD 13. Sucesso.
+
+Consequências:
+
+* A resposta chega cedo, por via filtrada, sem contato direto com Kage, Ren,
+  Nera, Tavin ou a carroça verde.
+* O pagador se apresenta como Corven Dalm, procurador da Casa Veyr, e envia 40
+  PO adiantadas, mas Jack retém o dinheiro até confirmação e aceite.
+* A proposta aceita parte dos filtros de Jack, mas tenta remover "intermediários
+  desnecessários" da conversa artística, preservando risco operacional.
+* Tobb, Dessa e Silva passam a verificar casa, tenda e proteção dos Vell antes
+  de qualquer decisão sobre a apresentação fechada.

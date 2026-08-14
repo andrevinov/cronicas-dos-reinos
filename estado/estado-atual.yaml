@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "depósito de figurino velho, no canto usado por Ren como quarto improvisado"
+  ponto_exato: "carroça-escritório de Jack Mooney, após café com Silva"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -217,6 +217,20 @@ localizacao:
     Sombra de Aiko em técnica própria. Ao amanhecer de 6 Eleasis, após descanso
     longo e treino meditativo, Ren despertou o Passo Sombrio e alcançou nível 6
     como monge do Caminho da Sombra.
+    Depois de se lavar e se vestir, Ren tomou café com Silva longe da carroça
+    verde e contou sobre Sarbreen, Brunna, a Escada das Sete Águas e a avaliação
+    de Luath. Silva tratou a técnica nova como ferramenta recuperada, mas pediu
+    que Ren a teste longe dos Vell até entender seus limites. Também informou que
+    Nera guardou o bilhete e perguntou se Ren havia comido antes de tentar carregar
+    a promessa. Em seguida, Ren foi até Jack. Jack pagou 8 PO pela reprise pública
+    de Kage em 5 Eleasis e mostrou a resposta à isca privada: Corven Dalm,
+    procurador da Casa Veyr, aceitou 80 PO por uma apresentação fechada curta,
+    mandou 40 PO adiantadas, aceitou tenda controlada pelo circo e equipe mínima
+    dos Mooney, mas tentou retirar "intermediários desnecessários" da conversa
+    artística. Jack reteve o adiantamento na própria caixa e ainda não aceitou a
+    apresentação. Tobb verifica se Casa Veyr existe para além do papel, Dessa
+    avalia a tenda menor e Silva calcula como manter os Vell longe disso sem
+    denunciar que eles são o ponto sensível.
 
 tempo:
   ano_dr: 1372
@@ -228,11 +242,11 @@ tempo:
   dia_do_mes: 6
   dezena: 1
   dia_da_dezena: 6
-  periodo_do_dia: "amanhecer de 6 Eleasis, após descanso e despertar do Passo Sombrio no circo"
-  hora_aproximada: "06:41 de 6 Eleasis"
+  periodo_do_dia: "manhã de 6 Eleasis, após café com Silva e resposta privada ao preço de Kage"
+  hora_aproximada: "07:18 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31 e Visão no Escuro expirou por volta de 04:07 de 6 Eleasis. Ao amanhecer, Ren alcançou nível 6 e despertou Passo Sombrio."
+  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador. Ren recuou da Escada e levou a informação a Luath; Passos sem Pegadas expirou por volta de 20:31 e Visão no Escuro expirou por volta de 04:07 de 6 Eleasis. Ao amanhecer, Ren alcançou nível 6 e despertou Passo Sombrio. Após café com Silva, Ren recebeu de Jack 8 PO pela reprise pública de Kage, ficando com 25 PO. Jack recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para uma apresentação fechada curta, mas reteve o dinheiro até confirmação e aceite."
 
 recursos:
   pontos_de_vida:
@@ -249,7 +263,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: "55 pés"
   dinheiro:
-    po: 17
+    po: 25
   condicoes:
     - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
     - "Passos sem Pegadas expirou por volta de 00:58 de 4 Eleasis"
@@ -1092,7 +1106,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no depósito de figurino velho do Jack Mooney & Sons Circus por volta de 06:41 de 6 Eleasis de 1372 DR. Na noite anterior, voltou do posto de Luath pela rota longa, sem cauda útil percebida, mas sem certeza absoluta de limpeza. Não foi ver Nera e Tavin; entregou a Silva um bilhete para Nera dizendo que a ama e que solucionará tudo. Silva entregou o bilhete e depois informou que Nera leu duas vezes e respondeu que promessa grande demais pesa mais. Durante a madrugada, Ren tentou lembrar o Passo da Sombra de Aiko, falhou em copiar a memória, mas transformou o princípio em forma própria. Ele completou descanso longo, alcançou nível 6 e despertou Passo Sombrio. Recursos atuais: 45/45 PV, Ki 6/6, 17 PO, 9 shuriken. Visão no Escuro expirou por volta de 04:07; Broche do Semblante Humilde está disponível desde o amanhecer de 6 Eleasis. O cachê da reprise pública de Kage em 5 Eleasis ainda não foi acertado com Jack; nenhum ouro foi somado até pagamento em cena."
+  cena_atual: "Ren está na carroça-escritório de Jack Mooney por volta de 07:18 de 6 Eleasis de 1372 DR, depois de tomar café com Silva e contar sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath. Jack pagou 8 PO pela reprise pública de Kage em 5 Eleasis, elevando os recursos de Ren para 25 PO. Jack recebeu uma resposta privada de Corven Dalm, procurador da Casa Veyr, aceitando 80 PO por uma apresentação fechada curta de Kage e enviando 40 PO adiantadas. Jack reteve o adiantamento na própria caixa e ainda não aceitou o trabalho, pois Tobb, Dessa e Silva estão verificando casa, tenda e segurança dos Vell. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está disponível desde o amanhecer de 6 Eleasis."
   risco_imediato: "baixo no circo; risco operacional moderado a alto se Ren sair de novo sem preparar cobertura social"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
@@ -1104,4 +1118,4 @@ pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
     - "primeiro NPC abordado"
-    - "acertar com Jack o cachê da reprise pública de Kage em 5 Eleasis e a divisão de futuras apresentações privadas; não somar PO até pagamento em cena"
+    - "definir com Jack se Kage aceita a apresentação fechada ligada à Casa Veyr, envia contraproposta mais dura ou deixa as 40 PO adiantadas retidas até o contratante ficar impaciente"

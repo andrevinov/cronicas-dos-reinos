@@ -2013,3 +2013,81 @@ Por enquanto, não somo ouro na ficha. Quando Ren falar com Jack ou Jack trouxer
 [Tô levando calote até em jogo, rs. Brinks.]
 
 Ren levanta, se asseia, se veste, e vai falar com Silva. Tomar café com ela, um pouco mais animado por ter conseguido "dominar uma técnica do Getsuei-ryu", mas ainda consternado por Nera ter sido ameaçada. Conta pra Silva sobe Sarbreen, Brunna e Luath. Depois que falar com Silva irá até Jack pra saber se ele já recebeu resposta sobre a apresentação, e explicar que não conseguiu seguir o mensageiro.
+
+**Narrador**
+
+O asseio é simples: água fria, pano áspero, cabelo preso, roupa comum ajustada sem a solenidade de Kage. Mas o corpo não volta exatamente igual ao sono.
+
+Ren percebe isso antes de qualquer outra pessoa. O canto sob a arca, a dobra de sombra entre dois baús, o vão baixo onde a lona encontra madeira: antes eram esconderijos. Agora parecem distância dobrada.
+
+Silva está perto da cozinha lateral, não na carroça verde. Isso já é resposta para uma pergunta que Ren ainda não fez. Ela escolheu um ponto onde pode falar sem expor os Vell e sem transformar café em audiência.
+
+Há mingau grosso, pão de ontem aquecido em chapa e café ruim o bastante para acordar pela ofensa. Silva serve duas tigelas e olha Ren de cima a baixo.
+
+"Você dormiu", ela diz. "E isso já faz de hoje um dia estatisticamente mais inteligente do que ontem."
+
+Quando Ren fala do Getsuei-ryu e da técnica dominada durante a madrugada, Silva não entende a parte de escola, forma e sombra como Ren entende. Mas entende o rosto dele. Entende que a animação não é vaidade de palco.
+
+"Bom", ela diz, mais baixo. "Não vou fingir que sei o que isso significa no seu corpo. Mas sei reconhecer quando alguém recupera uma ferramenta que achava perdida." Ela empurra a tigela um pouco mais para perto dele. "Use longe da carroça verde até saber exatamente o que faz. Isso não é bronca. É logística."
+
+Ela escuta o resto sem interromper: Sarbreen sob Ravens Bluff, Brunna Torkel, o mapa da Escada, o mapa dos porões secos, o cobrador, o depósito sem tabuleta, a janela de observação, a avaliação de Luath.
+
+Dessa vez, Silva não transforma cada frase em lição. Ela separa as coisas com os dedos sobre a mesa, como quem organiza sementes.
+
+"A Escada não é porta de frente. É campainha, olho ou boca." Um dedo. "Brunna virou sino: quando você fez pergunta sobre Sarbreen, alguém ouviu." Outro dedo. "Luath não vai abrir buraco por mapa ruim. Isso é bom. Guarda com pressa em túnel velho vira história curta."
+
+Ela bebe o café e faz uma careta breve.
+
+"Isso é útil, Ren. Não é a resposta que você queria para dormir em paz, mas é útil."
+
+Sobre Nera, Silva demora um pouco mais.
+
+"Ela acordou cedo. Não veio aqui porque eu pedi que não viesse. E porque entendeu por que você não foi até ela ontem." A voz continua seca, mas menos cortante. "Guardou seu bilhete. Não me perguntou se devia acreditar. Só perguntou se você tinha comido antes de tentar carregar a promessa."
+
+Silva deixa isso ficar na mesa junto do café.
+
+Depois aponta com o queixo para a carroça-escritório de Jack.
+
+"Ele já está de mau humor com dinheiro alheio. Isso costuma significar que papel chegou."
+
+Jack está com a porta da carroça-escritório aberta, mas não por descuido. Tobb está do lado de fora, sentado num caixote, com expressão de quem não está guardando nada e por isso mesmo guarda a entrada. Quando Ren chega, Tobb levanta sem pressa e sai para arrumar uma roda que não parece precisar de arrumo.
+
+Lá dentro, Jack tem três coisas sobre a mesa: um livro de contas, uma bolsa pequena de moedas e uma carta dobrada em papel fino, sem brasão nobre visível. A cera é azul-acinzentada.
+
+"Antes que o grande artista processe o velho Jack por calote", ele diz, empurrando a bolsa pequena para Ren, "a reprise de ontem."
+
+A bolsa tem **8 PO**.
+
+"O Benefício comprou teto, comida, mentira útil e aplauso público. Aquilo foi fundação. Ontem já foi trabalho de Kage." Jack encosta a ponta da pena no livro de contas. "Não me faça virar agiota de artista. Já tem agiota demais nesta cidade."
+
+Recursos de Ren: **25 PO**.
+
+Só então Jack toca na carta fina.
+
+"Agora, sobre os ricos que não gostam de assinar o próprio desejo." Ele abre a dobra e vira o papel para Ren ler o bastante, sem entregar a carta inteira à mão dele ainda. "Responderam antes de o mingau engrossar. E mandaram metade."
+
+A metade está numa segunda bolsa, maior, dentro de uma caixa de madeira aos pés da mesa. Jack não a oferece.
+
+"Quarenta peças adiantadas. Não são suas. Não são minhas. São isca presa na minha caixa até eu decidir se vira contrato ou prova de que alguém quer nos comprar pela maçaneta."
+
+O texto visível cumpre parte dos filtros de Jack: aceita **80 PO** pela apresentação fechada curta de Kage, aceita tenda controlada pelo circo, aceita equipe mínima dos Mooney e promete custos por fora. O pagador se apresenta como **Corven Dalm**, procurador da **Casa Veyr**, ocupante temporária de camarote e salões alugados na área oeste. Propõe apresentação hoje, depois do anoitecer, com seis convidados selecionados e dois guardas sem brasão.
+
+Não menciona Nera pelo nome. Também não pede a presença da gravadora. Mas há uma frase calculada demais:
+
+> A ausência de assuntos alheios será respeitada, desde que Kage compareça sem intermediários desnecessários à conversa artística.
+
+Jack bate a unha nessa linha.
+
+"Isso aqui quer dizer: aceitamos sua tenda, mas ainda queremos tirar uma lasca de mim, de Silva ou de qualquer pessoa entre Kage e a mão que paga."
+
+Quando Ren explica que não conseguiu seguir o mensageiro até o mandante, Jack não explode. Ele fecha a carta, devagar.
+
+"Bom. Ruim seria você dizer que sabe porque seguiu um cabriolé cinza em cidade cheia e inventou certeza para parecer sombra perfeita." Ele olha Ren por cima do papel. "Você viu método. Dinheiro, intermediário, carro sem brasão, caminho quebrado. Não viu dono. Isso é relatório limpo."
+
+Ele aponta para a carta.
+
+"Tobb está checando se Casa Veyr existe como mais do que tinta seca. Dessa está vendo se a tenda menor aguenta entrada e saída sem público. Silva vai me dizer quantas formas existem de manter os Vell longe disso sem parecer que estamos escondendo os Vell disso." Jack fecha o livro de contas. "E você vai decidir se Kage morde o anzol, se mandamos contraproposta mais dura, ou se deixamos quarenta peças dormirem na minha caixa até o peixe ficar impaciente."
+
+Hora aproximada: **07:18 de 6 Eleasis, 1372 DR**. Ren está na carroça-escritório de **Jack Mooney**, no Jack Mooney & Sons Circus. Recursos: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O **Broche do Semblante Humilde** está disponível. Jack recebeu resposta com **40 PO adiantadas**, mas ainda não confirmou a legitimidade da Casa Veyr nem aceitou a apresentação fechada.
+
+O que Ren faz?

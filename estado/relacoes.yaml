@@ -1274,6 +1274,13 @@ relacoes:
       antes que ele fosse à carroça verde. Ren escolheu não ver os Vell e pediu
       que Silva entregasse um bilhete a Nera. Silva não abriu o bilhete,
       entregou-o e depois transmitiu a resposta de Nera a Ren.
+      Na manhã de 6 Eleasis, Silva tomou café com Ren longe da carroça verde,
+      ouviu o relato sobre Sarbreen, Brunna, a Escada das Sete Águas e Luath, e
+      tratou a nova técnica de Ren como ferramenta recuperada, não como vaidade.
+      Manteve o limite prático: Passo Sombrio deve ser testado longe dos Vell até
+      Ren conhecer seus limites. Depois, com Jack, participa do filtro contra a
+      resposta da Casa Veyr e calcula como manter Nera e Tavin afastados da
+      possível apresentação fechada sem denunciar que são o ponto sensível.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1331,6 +1338,9 @@ relacoes:
       - "Silva viu a reprise curta de Kage funcionar e endureceu a segurança dos Vell depois que nova tira de papel pressionou Kage usando a palavra gravadora."
       - "Silva interceptou Ren na volta do posto de Luath e aceitou entregar um bilhete fechado a Nera sem expô-lo diretamente aos Vell."
       - "Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria."
+      - "Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath."
+      - "Silva sabe que Ren despertou o Passo Sombrio e quer que ele teste a técnica longe dos Vell até conhecer seus limites."
+      - "Silva sabe que a resposta da Casa Veyr chegou com 40 PO adiantadas, mas que Jack ainda não aceitou a apresentação fechada."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
@@ -1452,6 +1462,14 @@ relacoes:
       conversa. O envio funcionou apenas como trilha parcial: Ren viu a resposta
       passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas não
       alcançou o mandante.
+      Na manhã de 6 Eleasis, Jack pagou 8 PO a Ren pela reprise pública de Kage
+      em 5 Eleasis. Também recebeu uma resposta escrita assinada por Corven Dalm,
+      procurador da Casa Veyr, com 40 PO adiantadas e aceite parcial dos filtros
+      rígidos. Jack reteve o adiantamento na própria caixa e não aceitou ainda a
+      apresentação fechada: Tobb verifica a Casa Veyr, Dessa avalia a tenda menor
+      e Silva pensa na proteção dos Vell. Jack aceitou o relato de Ren sobre a
+      perseguição perdida do cabriolé como relatório limpo, por não transformar
+      método observado em certeza inventada.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1493,6 +1511,8 @@ relacoes:
       - "Jack segurou a borda do pós-show de 5 Eleasis e impediu contato direto com Kage."
       - "Jack pediu que Ren escolha se ele responde como dono de circo, se Ren segue a mão do recado ou se Kage desaparece por ora."
       - "Jack escreveu resposta-isca exigindo 80 PO, 40 PO adiantadas, custos por fora, tenda/controlos do circo, nome do pagador, casa responsável, endereço e hora por escrito."
+      - "Jack pagou 8 PO a Ren pela reprise pública de Kage em 5 Eleasis."
+      - "Jack recebeu 40 PO adiantadas de Corven Dalm, procurador da Casa Veyr, mas reteve o dinheiro até confirmar legitimidade e aceitar ou recusar a apresentação fechada."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1501,6 +1521,8 @@ relacoes:
       - "Antes da reprise curta de 5 Eleasis, Jack recebeu proposta privada sem nome claro que mencionava dispensar a gravadora se Kage respondesse sozinho."
       - "Depois da reprise curta de 5 Eleasis, Jack recebeu segunda tira de papel: 'Depois do aplauso, Kage vale mais. A gravadora vale menos se continuar cercada. Mandem preço e condição antes que outra casa compre o silêncio.'"
       - "Ren autorizou Jack a aceitar a proposta como isca e pedir o dobro; Ren tentou seguir o canal após o envio."
+      - "Ren informou Jack que viu método, recadeiro pago e cabriolé cinza-azulado sem brasão, mas não identificou o mandante."
+      - "A resposta escrita veio de Corven Dalm, procurador da Casa Veyr, aceitando 80 PO por apresentação fechada curta e tentando excluir intermediários da conversa artística."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1519,6 +1541,7 @@ relacoes:
       - "Manter Kage caro e inacessível aumenta valor comercial, mas pode fazer patronos insistirem por vias indiretas."
       - "A tentativa de contatar Kage diretamente antes da reprise sugere que pelo menos um interessado quer separar Ren de Jack e dos filtros do circo."
       - "A nova tira de papel aumenta o risco de Kage virar alavanca contra Nera, mesmo sem prova de que o abrigo dos Vell foi localizado."
+      - "A frase sobre intermediários desnecessários na resposta da Casa Veyr sugere nova tentativa de separar Kage dos filtros de Jack e Silva."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
