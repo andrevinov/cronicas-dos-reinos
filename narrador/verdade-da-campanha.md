@@ -31,6 +31,33 @@ A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a ba
   chantagem, autoridades corrompidas e entradas para ruínas, túneis ou lugares
   enterrados.
 
+### Âncoras de Kara-Tur
+
+O material de Kara-Tur amplia as possíveis raízes de Masao, mas não deve
+antecipar a revelação do objeto sagrado roubado.
+
+Opções compatíveis:
+
+* um fragmento ou elo de relíquia usada para prender espíritos;
+* uma página, runa ou fórmula de T'u Lung ligada a roubo de anos de vida;
+* uma relíquia sombria associada a dor, morte e passagem através de pedra;
+* um sinal sagrado roubado de Chirasu ou de outro poder ligado a furtividade,
+  segredos e ações ocultas;
+* um texto monástico corrompido por interpretação de Masao, não maligno em sua
+  origem.
+
+Antes de transformar uma dessas opções em fato canônico, verificar
+`narrador/kara-tur-segredos.md` e registrar a escolha aqui.
+
+Sinais que podem aparecer sem revelar a verdade inteira:
+
+* vítimas envelhecidas de modo irregular;
+* cinza avermelhada, pedra escurecida ou sombra fria;
+* selos de autoridade oriental usados fora de contexto;
+* rituais com vela preta e branca, espelho, sangue ou caligrafia;
+* técnica marcial ou espiritual que Ren reconhece como vinda de Kara-Tur, mas
+  não necessariamente de Kozakura.
+
 ### Relação com o Clã Kagehira
 
 Antes da campanha, o Clã Kagehira servia ao shogunato de Kozakura como rede
@@ -105,6 +132,9 @@ Nem todos precisam estar vivos, leais ou presentes em Faerûn.
 Diretrizes específicas de uso em jogo, escala de ameaça, lealdade variável,
 dilemas para Ren e inspiração por easter eggs ficam no arquivo reservado
 `narrador/juppongatana.md`.
+
+Inspirações de Kara-Tur para membros, cultos, técnicas e relíquias de apoio ficam
+também em `narrador/kara-tur-segredos.md`.
 
 ### Faerûn
 

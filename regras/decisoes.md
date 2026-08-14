@@ -38,8 +38,18 @@ Este arquivo registra interpretações recorrentes adotadas durante a campanha.
 
 - Sessão de origem: 003
 - Contexto: Ren encontrou barris mal marcados no mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha. O jogador declarou que Ren reconhece o princípio da pólvora por sua origem em Kara-Tur.
-- Regra oficial: a campanha usa D&D 5e como base mecânica e Forgotten Realms como cenário; explosivos mundanos ou alquímicos devem ser adaptados quando entrarem em jogo.
+- Regra oficial: a campanha usa D&D 5e como base mecânica e Forgotten Realms como cenário; explosivos mundanos ou alquímicos devem ser adaptados quando entrarem em jogo. O apêndice de Kara-Tur trata pólvora e tecnologia transferidas entre mundos como instáveis ou incompatíveis, então o princípio cultural pode existir sem equivaler automaticamente a pólvora moderna funcional em Faerûn.
 - Decisão adotada: Ren pode reconhecer o princípio geral de misturas explosivas vindas de tradições técnicas de Kara-Tur: quando secas e expostas a chama, podem deflagrar de modo muito mais violento que combustão comum. Em Ravens Bluff, esse material será tratado como substância rara, perigosa e pouco compreendida pela população comum, com possíveis equivalentes locais, alquímicos ou ligados a Gond/pó de fumaça. A identificação exata exige teste, contexto ou especialista.
 - Justificativa: preserva o conhecimento cultural de Ren sem transformar todo explosivo local em pólvora moderna conhecida, e mantém Forgotten Realms coerente com magia, alquimia, Gond e raridade tecnológica.
 - Aplicação futura: Ren pode suspeitar de risco explosivo ao encontrar pó seco, cheiro acre, barris selados e fontes de chama, mas estabilidade, alcance, dano, método de ignição e natureza exata serão determinados caso a caso. Guardas comuns podem conhecer boatos, mas não procedimentos técnicos.
-- Estado: provisória, aguardando revisão se fontes oficiais específicas sobre pólvora/pó de fumaça forem consultadas.
+- Estado: permanente para o princípio geral; revisável apenas se uma fonte específica de Forgotten Realms sobre pó de fumaça exigir ajuste mais preciso.
+
+## DEC-0005 — Adaptação de Kara-Tur de AD&D para D&D 5e
+
+- Sessão de origem: preparação entre sessões 003 e 004
+- Contexto: o livro `Kara-Tur: The Eastern Realms` foi adicionado como fonte para a origem de Ren, Masao, Kozakura, a Juppongatana e possíveis materiais orientais de Forgotten Realms.
+- Regra oficial: a campanha usa D&D 5e como base mecânica. Materiais de AD&D podem sustentar cenário, lugares, NPCs, facções, itens, lendas e aventuras, mas não substituem as regras de 5e.
+- Decisão adotada: todo material mecânico de Kara-Tur será convertido caso a caso antes de entrar em jogo. Níveis de AD&D, bônus altos, acerto automático, aumento direto de nível, magias antigas e itens de escala extrema não entram literalmente. Escolas, técnicas e manuais podem virar treinamento de downtime, boon limitado, vantagem situacional, item consumível, item sintonizado ou traço de NPC. Artefatos, relíquias de morte, profecia, desejo, controle de espíritos e exércitos selados ficam como material lendário ou narrativo até preparação específica.
+- Justificativa: isso preserva a riqueza de Kara-Tur como cenário de Forgotten Realms sem quebrar a matemática, progressão e identidade mecânica de D&D 5e.
+- Aplicação futura: antes de conceder item, técnica, veneno, magia, monstro ou estatística vinda de Kara-Tur, consultar `cenario/regioes/kara-tur/itens-e-treinamentos-5e.md` e registrar adaptações relevantes se puderem voltar a aparecer.
+- Estado: permanente.

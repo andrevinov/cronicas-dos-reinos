@@ -1287,3 +1287,9 @@ A noite do circo está mais quieta agora. Não calma. Quietude é só o interval
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **22:24 de 4 Eleasis, 1372 DR**. Ren jantou, caminhou com Nera pela rota interna permitida por Silva e treinou sozinho no picadeiro sem gastar ki. A parte física individual de Kage ficou mais sólida; a presença dramática não melhorou sem equipe. Silva não conseguiu confirmar que a borda do circo está limpa, apenas que não há perseguição colada. Sobre Sarbreen, ela sabe rumores, mas não consegue separar fato útil de fantasia. Caminhos possíveis que ela apontou: **Lockwood Mooney** para triagem arcana discreta, **Gond** para pedra/travas/engenharia perigosa, **Wizards' Guild** para magia com custo político, ou mapas velhos do porto com alto risco de fraude.
 
 O que Ren faz antes de dormir?
+
+**Jogador**
+
+Antes de dormir Ren fica lembrando de sua terra. De sua irmã. Ali no quarto mesmo ele fica fazendo os "kata" de sua arte marcial [você pode nomea-la, nomear o estilo, se tiver algo nos suplementos, ou criar, se for o caso], lembrando de como aprenderam isso dos mestres [pode nomear mestres se tiver algum que possa ter sido o dele nos suplementos, ou criar um], da saudade que tem de treinar em um dojo com tatame, da comida de sua terra. Pensa que, talvez, se ficar famoso na cidade, poderia abrir um. Mas o que ele queria mesmo era encontrar algum mestre de Kara-Tur e poder ampliar seu treinamento.
+
+[Você pode usar esse momento pra me fazer saber coisas sobre Kara-Tur que Ren sabe... e eu talvez não saiba porque não li o suplemento]

@@ -105,6 +105,41 @@ jogador. O narrador controla apenas reações externas, rastros e consequências
 
 ---
 
+## Inspirações de Kara-Tur
+
+Usar o material de Kara-Tur para dar textura própria a cada membro, evitando que
+todos sejam "assassinos orientais" genéricos.
+
+Fontes úteis:
+
+* **Kozakura:** shinobi, shogunato, selos, yakuza recentes, wako, templos armados,
+  Névoa Vermelha, escolas de espada e monastérios escondidos;
+* **Wa:** yakuza mais consolidados, ronin deslocados, artistas-espiões, ordem
+  social rígida e documentos falsificados;
+* **T'u Lung:** wu jen perigosos, cultos violentos, magia de longevidade,
+  armadilhas alquímicas e corrupção política;
+* **Shou Lung:** tongs, sociedades secretas em células, arquivos de chantagem,
+  ordens monásticas e símbolos codificados;
+* **Koryo:** rivalidades marítimas, pó sonífero, relíquias submersas, profecias
+  e conflitos antigos com Kozakura.
+
+Arquétipos possíveis:
+
+* duelista de escola refinada que trata combate como cerimônia;
+* shukenja renegado da Névoa Vermelha que mata por espírito, febre ou possessão;
+* falsificador que usa o Selo da Lua Velada melhor do que um guerreiro usaria
+  uma lâmina;
+* wu jen obcecado por roubo de anos, jardins hostis e ovos de chama;
+* yakuza ou ronin de Wa que entende dívida, vergonha e reputação pública;
+* agente de Koryo que odeia Kozakura por razões próprias, mas aceita dinheiro de
+  Masao;
+* monge corrompido de uma ordem de Shou Lung que confunde voto com vingança.
+
+Esses modelos ficam em aberto até cada membro ser criado. Não preencher as Dez
+Espadas inteiras de uma vez se a campanha ainda não precisar disso.
+
+---
+
 ## Personalidade e desenho de membros
 
 Antes de colocar um membro em cena, definir pelo menos:

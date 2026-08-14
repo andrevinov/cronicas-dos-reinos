@@ -51,6 +51,23 @@ Quando houver diferença entre períodos históricos, a campanha deve registrar 
 
 ---
 
+## Origem de Ren: Kara-Tur
+
+Estas fontes sustentam a origem de Ren, Masao, o Clã Kagehira, a Juppongatana e
+possíveis conexões futuras entre Faerûn e os reinos orientais.
+
+| Prioridade | Fonte | Uso na campanha | Arquivo local |
+| --- | --- | --- | --- |
+| Alta | Kara-Tur: The Eastern Realms, Forgotten Realms Campaign #1032, AD&D | Kozakura, Shou Lung, T'u Lung, Wa, Koryo, Tabot, cultura, facções, itens, técnicas, antagonistas e rotas orientais | `books/high_fr_adnd1e_tsr-1032_kara-tur-the-eastern-realms.pdf` |
+
+O livro deve ser usado como fonte de cenário e inspiração de campanha. Regras,
+níveis, magias, itens e estatísticas de AD&D devem ser adaptados para D&D 5e
+antes de aparecerem em jogo.
+
+Resumos derivados ficam em `cenario/regioes/kara-tur/`.
+
+---
+
 ## Região inicial: Ravens Bluff
 
 Ravens Bluff é a região inicial da campanha e deve receber prioridade de preparação.
@@ -141,6 +158,5 @@ Essa adaptação deve ser prática. O objetivo é fazer o material antigo funcio
 
 ## Pendências
 
-Antes da primeira sessão, ainda é preciso definir:
-
-* se o avanço será por experiência, marco ou outro método.
+Sem pendências críticas de fonte para a campanha atual. Novas fontes regionais
+devem ser registradas aqui quando passarem a sustentar preparação ou jogo.

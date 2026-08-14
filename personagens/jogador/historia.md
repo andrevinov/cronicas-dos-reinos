@@ -9,6 +9,25 @@ Kagehira**.
 
 ---
 
+## Kozakura natal
+
+Kozakura é um reino insular de Kara-Tur marcado por corte imperial, shogunato,
+governadores militares, templos influentes, casas comerciais, piratas wako,
+yakuza em crescimento e famílias shinobi que trabalham nas sombras da política.
+
+Para Ren, autoridade nunca foi uma coisa simples. Um selo, uma carta, um gesto
+correto ou uma mensagem entregue na hora certa podiam mover soldados, calar
+testemunhas, salvar uma família ou condenar um traidor. A verdade raramente
+viajava sozinha; viajava dobrada em papel, escondida em poesia, cifrada em
+caligrafia ou carregada por alguém que não podia admitir para quem servia.
+
+Esse mundo ensinou Ren a desconfiar de qualquer poder que dependa apenas de
+declaração pública. Em Kozakura, o que uma pessoa diz ser e o que ela consegue
+provar por sinal, linhagem, selo ou reconhecimento de bastidor podem ser coisas
+muito diferentes.
+
+---
+
 ## O Clã Kagehira
 
 Antes de Ren, o Clã Kagehira era uma casa respeitada entre os círculos discretos

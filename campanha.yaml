@@ -51,6 +51,11 @@ estrutura:
     regiao_inicial_rumores: "cenario/regioes/ravens-bluff/rumores-iniciais.md"
     regiao_inicial_porto: "cenario/regioes/ravens-bluff/porto-e-primeiros-locais.md"
     regiao_inicial_vinculos: "cenario/regioes/ravens-bluff/vinculos-de-personagem.md"
+    regiao_kara_tur_fontes: "cenario/regioes/kara-tur/fontes.md"
+    regiao_kara_tur_visao_geral: "cenario/regioes/kara-tur/visao-geral.md"
+    regiao_kara_tur_kozakura: "cenario/regioes/kara-tur/kozakura.md"
+    regiao_kara_tur_faccoes: "cenario/regioes/kara-tur/faccoes-e-antagonistas.md"
+    regiao_kara_tur_itens_treinamentos: "cenario/regioes/kara-tur/itens-e-treinamentos-5e.md"
     personagem_conceito: "personagens/jogador/conceito.md"
     personagem_ficha: "personagens/jogador/ficha.yaml"
     personagem_historia: "personagens/jogador/historia.md"
@@ -79,6 +84,7 @@ fontes:
     - "LC3 - Nightwatch in the Living City"
     - "LC4 - Port of Ravens Bluff"
     - "The City of Ravens Bluff"
+    - "Kara-Tur: The Eastern Realms"
 
 jogador:
   personagem_inicial:
