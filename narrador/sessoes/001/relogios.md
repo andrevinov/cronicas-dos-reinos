@@ -603,7 +603,7 @@ Visibilidade: oculto.
 
 Progresso inicial: 1/6.
 
-Progresso atual: 3/6.
+Progresso atual: 4/6.
 
 Último avanço:
 
@@ -612,6 +612,7 @@ Progresso atual: 3/6.
 * Ren Kage se tornou figura pública reconhecível no Benefício da Lona Aberta, ligado a uma estética de Kara-Tur, movimento excepcional e nome incompleto "Kage". Isso não revela Kagehira nem prova conexão com Masao, mas cria uma superfície pública que agentes mais competentes podem usar para observar rotina, patronos e vínculos.
 * Na noite após o Benefício, nenhuma tentativa competente conseguiu mapear a rotina interna de Kage dentro do circo; a superfície pública existe, mas ainda não virou acesso direto.
 * Em 6 Eleasis, durante a apresentação fechada da Casa Veyr, Ren decidiu abrir Kage com Passo Sombrio diante de observadores interessados. O homem da Casa Veyr não conseguiu mapear os limites completos da técnica, mas a existência de deslocamento real entre sombras foi vista e associada à persona Kage.
+* Na mesma apresentação, Ren mencionou Masao e "dez lâminas" em voz alta diante de Corven Dalm e dos convidados. Dalm não entregou reação visível, mas a referência agora está ligada publicamente a uma cena de Kage.
 
 Descrição:
 

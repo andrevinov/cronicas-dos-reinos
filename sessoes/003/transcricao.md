@@ -2687,3 +2687,83 @@ O homem da Casa Veyr volta a olhar para Ren, mas perdeu uma respiração de obse
 Hora aproximada: **18:21 de 6 Eleasis, 1372 DR**. Ren está em cena, perto da **Sombra A**, com o número ainda em andamento. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. Ren manteve a máscara diante da provocação; o número perdeu um pouco de margem física, mas não quebrou. Dalm tentou avançar até família/nome/fogo, e Jack cortou a linha sem encerrar a apresentação.
 
 O que Ren faz agora?
+
+**Jogador**
+
+Ren faz um sinal pra Jack, algo como "vamos continuar a apresentação", e faz a apresentação até o fim. É ruim pro circo e pra Kage que seu primeiro contrato público seja um fiasco. Temos que sair dali com moral, considerando que talvez apenas Dalm seja "fake" e os outros convidados possam espalhar notícias boas sobre a apresentação.
+
+Ao fim da apresentação, Ren se aproximará do convidado e e dirá, com um sotaque muito mais arrastado o que o seu: "vejo que o nobre anfitrião parece querer saber mais sobre o humilde artista. Posso convida-lo pra me conhecer um pouco melhor em meu camarim, ou [aqui você faz uma referência clara a Masao, talvez ao símbolo do clã Hirasawa, algo tipo "ou homens que tem símbolo X e Y tem medo de artista de circo?]
+
+Ren acredita que isso serve pra não assustar os outros nobres, que provavelmente vieram pela apresentação em si. E talvez atraia o Dalm para um interrogatório particular.
+
+Ren irá ao seu camarim sozinho com o homem. Ele não acha que um nobre criado a leite de pera seja capaz de derrotá-lo num combate ou coisa do tipo, logo irá sem medo.
+
+**Narrador**
+
+O sinal de Ren para Jack é pequeno.
+
+Jack entende. O rosto dele não muda muito, mas a mandíbula fica dura o bastante para dizer que essa conta ainda será cobrada depois.
+
+Teste de Acrobacia de Ren para finalizar a apresentação de Kage sem perder moral: d20 9 + 7 = 16 contra CD 14. Sucesso.
+
+Teste de Atuação de Ren para transformar o convite ao camarim em teatro e isca diante da Casa Veyr: d20 6 + 2 = 8 contra CD 15. Falha.
+
+Merrit entra no verso seguinte como se Jack tivesse sido parte do texto desde o começo. A música acompanha. Lysa não tenta brilhar; fica baixa, precisa, cobrindo as sobras de espaço que o número ainda precisa. Dessa, atrás da lateral, puxa um pano escuro no momento certo, e Sorn mantém as lamparinas onde estavam.
+
+Kage termina.
+
+Não é uma explosão alegre de feira. Não vira fiasco. O último movimento é limpo: uma parada seca na borda da Sombra A, mão erguida, máscara inclinada, como se a própria escuridão tivesse decidido onde o artista deve existir. Por um instante, ninguém bate palma.
+
+Então uma das convidadas bate.
+
+Outro convidado acompanha. Depois mais dois. O aplauso se espalha, real, mas cauteloso. Há admiração ali, só que misturada com medo e com a sensação de que a sala ouviu algo que talvez não devesse ter ouvido. Kage sai do número com moral; não sai com fofoca simples de maravilha inocente.
+
+Ren se aproxima de Corven Dalm antes que Jack consiga transformar o fim em dispersão limpa.
+
+Com o sotaque mais arrastado, quase uma caricatura venenosa do próprio Kage, ele diz:
+
+"Vejo que o nobre anfitrião deseja saber mais sobre este humilde artista. Posso convidá-lo a conhecer melhor Kage no camarim... ou homens que contam dez lâminas para Masao têm medo de artista de circo?"
+
+A frase acerta Dalm.
+
+Ou deveria acertar.
+
+O procurador da Casa Veyr não dá meio piscar a mais. Nem em Masao, nem nas dez lâminas. O sorriso dele permanece fino, educado, quase aborrecido. Para os convidados comuns, a frase soa como provocação estrangeira demais, cheia de lâmina e nome desconhecido; para quem entende que Jack acabou de cortar "genealogia", fica claro que Kage puxou o assunto de volta com a própria mão.
+
+O aplauso morre mal.
+
+Jack dá um passo para perto de Ren, baixo o bastante para não virar discurso.
+
+"Você acabou de comprar uma sala com o meu nome escrito na porta", ele murmura. "Tobb fica na aba. O homem da casa não passa."
+
+Dalm se levanta com calma.
+
+"O humilde artista tem camarim, então?", ele pergunta. "Ravens Bluff é mesmo uma cidade generosa."
+
+O homem da Casa Veyr também se move.
+
+Tobb chega antes. Não empurra, não ameaça, não dá espetáculo. Apenas fica entre o homem e a rota dos artistas com uma das mãos na corda baixa e a outra aberta no ar, como quem segura uma lona contra vento forte.
+
+"Convidado fica onde foi contado", Tobb diz.
+
+Por meio segundo, parece que a Casa Veyr vai forçar a borda do contrato.
+
+Não força.
+
+Os seis convidados começam a ser conduzidos para fora por gente dos Mooney, com sorriso profissional e pressa discreta. Eles levarão uma boa história para fora da tenda, mas não a história que Ren queria: não apenas "Kage é extraordinário", e sim "Kage é extraordinário, perigoso, e Corven Dalm foi chamado para trás da lona por causa de um nome estrangeiro com gosto de faca".
+
+O camarim de Kage existe só porque Dessa chamou assim. É o guarda-roupa menor: cabides, panos dobrados, um espelho manchado, cheiro de pó de arroz, corda encerada e lona úmida. Há uma lamparina alta num gancho, fraca o bastante para deixar sombra sob a arca de figurinos, mas não profunda o bastante para atravessar a sala inteira em segurança. A aba de entrada não fica completamente fechada. Do lado de fora, Ren escuta o peso de Tobb parado perto demais para ser acidente.
+
+Dalm entra sozinho.
+
+De perto, ele não parece criado a leite e pera. Não tem corpo de duelista de salão nem postura de assassino de beco, mas também não carrega moleza. Ele se move como homem acostumado a portas fechadas, contratos ruins e respostas que chegam depois que alguém já assinou.
+
+Ele espera a aba cair atrás dele.
+
+Só então diz, em voz baixa:
+
+"Você diz Masao como quem perdeu algo para ele, não como artista que ouviu uma história."
+
+Hora aproximada: **18:30 de 6 Eleasis, 1372 DR**. A apresentação terminou sem fiasco, mas o convite público ao camarim deixou a saída dos convidados tensa. Ren está no guarda-roupa menor/camarim funcional de Kage com Corven Dalm; Tobb está do lado de fora, perto da aba, e o homem da Casa Veyr foi impedido de acompanhar. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O total de **80 PO** da Casa Veyr segue com Jack/Tobb; o cachê de Ren por esta apresentação ainda será acertado depois.
+
+O que Ren faz?

@@ -453,6 +453,51 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: final de Kage e convite ao camarim
+
+Contexto: depois de Jack cortar a segunda provocação de Dalm, Ren fez sinal para
+seguir o show, terminou a apresentação e chamou Dalm ao camarim com referência
+clara a Masao e às dez lâminas.
+
+Rolagens abertas:
+
+* Finalizar a apresentação de Kage sem perder moral: d20 9 + 7 = 16 contra CD
+  14. Sucesso.
+* Convite de camarim como teatro e isca para Dalm: d20 6 + 2 = 8 contra CD 15.
+  Falha.
+
+Rolagens ocultas:
+
+* Mascarar reação à referência a Masao, Corven Dalm: d20 10 + 6 = 16 contra CD
+  16. Sucesso.
+* Aceitar convite para o camarim de Kage, Corven Dalm: d20 12 + 5 = 17 contra
+  CD 14. Sucesso.
+* Permitir o camarim sem perder controle dos filtros, Jack Mooney: d20 2 + 6 =
+  8 contra CD 15. Falha.
+* Sair com notícia boa apesar da tensão final, convidados da Casa Veyr: d20 4 +
+  2 = 6 contra CD 14. Falha.
+* Acompanhar Dalm até perto do camarim, homem da Casa Veyr: d20 5 + 5 = 10
+  contra CD 15. Falha.
+
+Consequências:
+
+* O final físico de Kage funciona e evita fiasco: a plateia aplaude de modo
+  real, mas cauteloso.
+* O convite público falha como teatro limpo. A menção a Masao e às dez lâminas soa
+  perigosa e pessoal demais, deixando os convidados com impressão de artista
+  extraordinário, mas envolto em assunto estranho e ameaçador.
+* Dalm não entrega reação visível à referência a Masao, mas aceita o convite ao
+  camarim, demonstrando interesse e disciplina.
+* Jack não consegue preservar plenamente os filtros depois do convite público:
+  bloquear a ida de Dalm faria Kage parecer controlado ou assustado. Ele permite
+  a conversa com salvaguardas improvisadas, deixando Tobb perto da aba.
+* O homem da Casa Veyr tenta acompanhar, mas Tobb e a equipe dos Mooney o
+  bloqueiam antes que chegue ao camarim funcional.
+* Ren e Dalm ficam no guarda-roupa menor/camarim de Kage, com Tobb do lado de
+  fora e a aba sem fechamento absoluto.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
