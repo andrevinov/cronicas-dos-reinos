@@ -1544,6 +1544,35 @@ relacoes:
       - "Pode tentar fugir da cidade ou quebrar o acordo se achar que Brass descobrirá de qualquer forma."
       - "Pode obedecer por medo, mas não é aliado."
       - "Se for pressionado pela Red Sail antes das 19:00, pode entrar em pânico."
+  dain_brass_mord:
+    nome: "Dain 'Brass' Mord"
+    tipo: "intermediário/figura operacional da Red Sail"
+    local: "fundos da Red Sail Tavern"
+    status: "visível para Ren; acompanhado"
+    atitude_para_ren: "hostil ou interessada, ainda não confrontada diretamente"
+    confianca: "nenhuma"
+    respeito: "desconhecido"
+    motivo: >
+      Ren confirmou por várias fontes que Dain Mord é chamado de Brass, que
+      paga por informação sobre o estrangeiro oriental, que usa mensageiros e
+      que se conecta a Velis Rook, Narwhal Manor, Red Sail e ao circuito da
+      falsa lua velada. Pell informou que Brass não fica sozinho hoje, mas
+      teria uma janela entre o sino de seis e o de sete nos fundos da Red Sail,
+      no movimento do barril seco da cozinha. Ren seguiu a janela e viu Brass
+      nos fundos da taverna por volta de 18:09 de 4 Eleasis.
+    informacoes_observadas_por_ren:
+      - "Brass foi associado ao homem de casaco com botões de latão."
+      - "Brass perguntou a Pell se Ren tinha arma, estava sozinho, tinha sotaque forte e se mostrou selo, papel ou símbolo."
+      - "Brass mandou Pell levar mensagem fechada para Velis Rook perto de Narwhal Manor."
+      - "Brass está ligado ao protocolo da ficha de cobre com vela vermelha e cordão azul."
+      - "Pell disse que Brass não fica sozinho hoje."
+      - "Ren viu Brass nos fundos da Red Sail, a cerca de 25 pés da descida mais rápida do ponto de observação."
+      - "Brass estava com pelo menos dois homens próximos e um menino mensageiro fora da linha imediata."
+      - "Ren não conseguiu ouvir a conversa de Brass no beco."
+    riscos:
+      - "Atacar Brass pode chamar a taverna inteira e reforços da Red Sail."
+      - "Fugir sozinho após um golpe parece plausível; fugir carregando Brass seria muito mais arriscado."
+      - "Se Brass sobreviver ou escapar, pode conectar Ren mais diretamente à pressão contra a Red Sail."
   rusk_cinza:
     nome: "Rusk 'Cinza'"
     tipo: "coletor/intermediário da Red Sail"

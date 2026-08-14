@@ -1021,3 +1021,89 @@ Hora aproximada: **16:02 de 4 Eleasis, 1372 DR**.
 Ren está em uma rua de serviço perto dos fundos de Narwhal Manor. **38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de 18:43. Os pontos mortos da Silver Lily e de Narwhal foram removidos. A ponte baixa é uma pista imediata; a janela de Brass fica mais perto do crepúsculo.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren vai à região da ponte baixa. Apenas averiguar, entender o local, se há guardas, se acontece algo. Se ele não encontrar nada que o estimule a arriscar uma ação, ele irá dar preferência à janela exposta por Pell. Encontrar um ponto para observar os fundos da Red Sail, de preferência bem próximo, próximo suficiente para ouvir conversa ou, talvez, num momento de loucura, tentar atacar Brass e fugir de lá com ele.
+
+**Narrador**
+
+Chegar à ponte baixa sem cauda clara: d20 14 + 7 = 21 contra CD 14. Sucesso.
+
+Ler a ponte baixa antes de se aproximar demais: d20 18 + 6 = 24 contra CD 14. Sucesso.
+
+Entender se há sinal de operação na ponte baixa: d20 1 + 4 = 5 contra CD 15. Falha.
+
+Encontrar ponto de observação nos fundos da Red Sail, se Ren seguir para lá: d20 17 + 7 = 24 contra CD 15. Sucesso.
+
+Manter-se oculto na espera pelos fundos da Red Sail: d20 15 + 7 = 22 contra CD 15. Sucesso.
+
+Ouvir e separar fala útil nos fundos da Red Sail: d20 2 + 6 = 8 contra CD 15. Falha.
+
+Mapear rota de fuga e risco se tentar tomar Brass: d20 14 + 4 = 18 contra CD 14. Sucesso.
+
+Agora a expressão "ponte baixa" ganha corpo para Ren.
+
+Não é ponte nobre, nem travessia feita para desfile. É uma passagem baixa do porto, entre armazéns, cais e uma faixa de água suja que sobe e desce com a maré e a drenagem. Madeira grossa por cima, pedra antiga e remendo novo por baixo. Carroças pequenas passam devagar; trabalhadores com barris cruzam reclamando; guardas conseguem bloquear a ponte com três homens e uma ordem seca, se precisarem. Se ela quebra, não derruba Ravens Bluff. Mas corta circulação de carga, gente, água e patrulha num ponto em que a cidade já está com os nervos expostos.
+
+Luath fez alguma coisa.
+
+Há dois guardas nas extremidades, fingindo inspeção comum de tablado. Um terceiro, mais novo, fica abaixo da lateral com um balde de areia e uma vara de gancho, sem lamparina. Um aprendiz com símbolo de Gond na tira do avental ajoelha perto de uma junção baixa e usa espelho polido para olhar onde olho comum não entra. Ninguém grita "bomba". Ninguém fecha o porto. A ponte continua funcionando, só mais lenta.
+
+Ren lê bem a superfície.
+
+Os guardas estão atentos, mas não em pânico. A multidão está irritada por atraso, não assustada por ameaça. Não há barril visível, não há carroça parada com eixo ruim, não há homem de manga cinza esperando a chance certa. Há, porém, detalhes ruins demais para parecerem completamente inocentes: uma tábua recém-lavada que cheira a vinagre e sal, uma lasca com cera clara raspada, e um arranhão baixo no encaixe de pedra onde alguém poderia ter passado corda, cunha ou gancho.
+
+O problema é transformar isso em certeza.
+
+A ponte tem séculos de conserto ruim, sal, ferrugem, corda, lama e fraude comum de carregador. O que parece sinal pode ser manutenção velha. O que parece limpeza pode ser apenas medo de fiscal. Ren percebe que ali **pode** ter havido preparação ou passagem de algo, mas não consegue provar direção, método ou urgência. E, com a guarda e Gond já olhando, meter a mão agora arriscaria expor Ren sem garantir descoberta.
+
+Não é nada. Mas também não é o suficiente.
+
+Ren deixa a ponte baixa para trás e segue a segunda janela.
+
+A Red Sail está diferente da primeira noite. O incêndio antigo deixou marcas que a taverna tenta esconder com tinta ruim, tábua nova e ruído. O salão continua vivo demais, mas os fundos estão mais disciplinados. O beco dos tonéis tem menos bêbado perdido e mais gente que parece bêbada de propósito.
+
+Ren encontra um ponto melhor do que tinha direito de esperar: a varanda de carga do galpão de cordame do outro lado da viela, escura sob beiral salgado, com visão oblíqua da porta dos fundos, da janela alta da cozinha, dos barris vazios junto à calha quebrada e de uma faixa estreita por onde alguém teria de passar antes de sumir na rua dos tonéis.
+
+É perto o bastante para agir. Não é perto o bastante para ser seguro.
+
+A espera cobra paciência. A cozinha cospe gordura, voz, panela e xingamento. A porta dos fundos abre três vezes para lixo, uma vez para cerveja, duas para nada que valha o risco. Ren fica oculto. Ninguém olha tempo suficiente para fazer dele uma pessoa.
+
+Perto do começo da janela de Pell, o padrão muda.
+
+Um menino magro, sem lenço no pulso, passa primeiro pela viela sem olhar para a porta. Ele não entra. Faz a volta, exatamente como Pell escreveu.
+
+Depois vem o barril seco da cozinha: grande, vazio, usado como desculpa perfeita para abrir espaço e tapar visão. Um homem de avental empurra o barril para fora, reclama alto demais de mofo e pede que alguém segure a porta.
+
+Alguém segura.
+
+O casaco escuro aparece por trás da luz da cozinha. Botões de latão pegam o brilho por um instante, não como joia, mas como sinal antigo de homem que gosta de ser reconhecido pelo próprio circuito.
+
+Dain "Brass" Mord está ali.
+
+Não sozinho.
+
+Há um homem dentro da porta, meio encoberto pela luz; outro no beco, perto do barril; e o menino sem lenço já fez a volta, podendo ser recado ou alarme antes que um corpo bata no chão. Brass fica a cerca de vinte e cinco pés da base mais próxima por onde Ren poderia descer. Se Ren se mover agora, consegue alcançar a viela rápido. Se atacar limpo a partir da sombra, pode pegar a primeira batida antes que entendam de onde veio.
+
+Fugir sozinho depois de um golpe é outra história.
+
+Fugir carregando Brass seria muito pior.
+
+Ren mapeia isso com clareza: há uma rota estreita para a rua dos tonéis, outra para Fishtown por trás de pilhas de rede, e uma subida ruim por caixas até telhado baixo. Sem corpo nos ombros, funciona. Com Brass resistindo, gritando ou simplesmente pesando, cada uma vira briga contra tempo, porta, capanga e taverna inteira.
+
+Ren tenta ouvir a fala.
+
+O beco não ajuda. A cozinha grita. O barril arranha pedra. Uma mulher dentro da taverna ri alto demais. Brass fala pouco, baixo, de lado, e a palavra se perde antes de virar sentido. Ren pega tom, não conteúdo: irritação controlada, pressa e uma ordem sendo reduzida para caber em uma frase curta.
+
+Brass vira meio perfil.
+
+Por alguns batimentos, ele está fora da porta, parcialmente coberto pelo homem do barril, com dois apoios próximos e a taverna inteira atrás.
+
+É uma oportunidade real.
+
+Não é uma oportunidade limpa.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **18:09 de 4 Eleasis, 1372 DR**. **Visão no Escuro** segue ativa até cerca de 18:43. Ren está oculto na varanda de carga do galpão de cordame, observando os fundos da Red Sail. Brass está visível a cerca de 25 pés da descida mais rápida, com pelo menos dois homens próximos e um menino mensageiro fora da linha imediata. Ren não conseguiu ouvir a conversa, mas entende as rotas e o risco.
+
+O que Ren faz?

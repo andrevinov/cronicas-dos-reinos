@@ -113,6 +113,21 @@ Nem todo armazém precisa ser nomeado antes de aparecer em jogo. Quando um armaz
 
 ---
 
+## Ponte baixa do porto
+
+Travessia baixa e funcional entre armazéns, cais e uma faixa estreita de água suja ligada à maré e à drenagem.
+
+Usos em jogo:
+
+* circulação de carroças pequenas, carregadores, barris e patrulhas;
+* gargalo urbano que pode atrasar carga, água, guarda e socorro;
+* acesso visual ou físico limitado à parte inferior quando a maré permite;
+* ponto plausível para inspeção de Gond, guarda, contrabandistas ou sabotadores.
+
+A ponte não é marco nobre. É infraestrutura pobre e útil. Em crise, três guardas ou uma carroça atravessada conseguem transformar a passagem em bloqueio.
+
+---
+
 ## Tavernas portuárias
 
 As tavernas próximas ao porto servem marinheiros, fiscais cansados, estivadores, pequenos comerciantes e gente que vive de informação.
@@ -190,4 +205,3 @@ Cais -> Pátio de Carga -> Armazém -> Escritório lateral -> Beco dos fundos ->
 Se Ren entrar e sair por um caminho, esse caminho continua existindo salvo mudança causada por alguém no mundo.
 
 Em cenas urbanas seguras, deslocamento pode ser resumido por bairro ou destino.
-
