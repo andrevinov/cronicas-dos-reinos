@@ -2629,3 +2629,61 @@ Merrit, profissional até o osso, segura o próximo verso por meio segundo para 
 Hora aproximada: **18:20 de 6 Eleasis, 1372 DR**. Ren está na área baixa da apresentação, perto da **Sombra A**. O **Passo Sombrio** foi usado uma vez nesta cena, sem gasto de ki; como Ren não fez ataque corpo a corpo no mesmo instante, a vantagem de ataque concedida pela habilidade não fica guardada. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A Casa Veyr viu que Kage pode atravessar sombras, mas não conseguiu mapear todos os limites da técnica.
 
 O que Ren faz diante da frase de Dalm?
+
+**Jogador**
+
+Ren continua o show, profissional. Ele quer ver até onde Dalm irá.
+
+**Narrador**
+
+Teste de Atuação de Ren para Kage continuar o show sem entregar reação a Dalm: d20 18 + 2 = 20 contra CD 14. Sucesso.
+
+Teste de Acrobacia de Ren para manter o número físico enquanto observa a Casa Veyr: d20 6 + 7 = 13 contra CD 14. Falha.
+
+Ren não morde.
+
+Não há olhar para Jack. Não há olhar para a carroça verde. Não há microvolta do rosto na palavra "nome". Kage apenas deixa a frase cair no chão da tenda como se Dalm tivesse elogiado a costura, a música ou a umidade da noite.
+
+Merrit entende o meio segundo e entra por cima dele.
+
+"...e quando a noite aprende o caminho, ela não pede licença a quem acendeu a lâmpada."
+
+Ren acompanha a frase com o corpo. O passo seguinte é seco, bom, mas não perfeito. Ao tentar manter Dalm, o homem da Casa Veyr, os guardas e a marca de Sorn todos no mesmo mapa mental, Ren chega meio palmo fora da linha ideal. O joelho segura. O tornozelo não reclama. Mas Sorn vê.
+
+Lysa também vê.
+
+Ela encurta o próprio recuo, fazendo parecer que aquele meio palmo era espaço dela desde o início. O número não quebra. Só perde a margem limpa que teria se Ren estivesse pensando apenas em palco.
+
+O silêncio dos convidados se aprofunda.
+
+Dalm percebe que a primeira frase não tirou sangue visível. O sorriso dele fica um pouco menos fino e um pouco mais frio. Ele espera até um giro baixo de Ren abrir espaço para mais uma frase disfarçada de comentário cultural.
+
+"Algumas casas preservam brasões", ele diz. "Outras preservam apenas o pedaço do nome que sobreviveu ao fogo."
+
+Jack se move antes que a última palavra termine de morrer.
+
+Não é grande. Não é teatral. Um passo só. Mas esse passo põe Jack entre a mesa, Dalm e a parte útil da lona.
+
+"Contrato compra espetáculo", Jack diz. "Não compra genealogia."
+
+Tobb, atrás de Dalm, fecha a mão sobre a corda baixa da entrada. O homem da Casa Veyr, na marca de luz, finalmente tira os olhos de Ren e olha para Jack. Esse é o primeiro erro dele desde que entrou: por um instante, para de contar sombras.
+
+Dalm abre as mãos, ainda sentado no limite da cordialidade.
+
+"Naturalmente. Foi admiração artística."
+
+"Então admire quieto", Jack responde.
+
+A frase de Jack não encerra o show. Mas agora há linha desenhada. Dalm foi longe o bastante para confirmar o tipo de isca: não gravadora, não menino, não Vell. Nome. Casa. Fogo. Sobrevivência.
+
+E Ren não entregou reação.
+
+Merrit retoma o verso com habilidade quase cruel, como se Jack também fizesse parte da lenda.
+
+"Há homens que chamam a noite pelo nome errado", ela diz. "E por isso acham que a compraram."
+
+O homem da Casa Veyr volta a olhar para Ren, mas perdeu uma respiração de observação. A Sombra B continua disponível atrás da dobra lateral. A Sombra A está próxima de Ren, mas agora muito vigiada. O centro da tenda permanece quebrado por luz.
+
+Hora aproximada: **18:21 de 6 Eleasis, 1372 DR**. Ren está em cena, perto da **Sombra A**, com o número ainda em andamento. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. Ren manteve a máscara diante da provocação; o número perdeu um pouco de margem física, mas não quebrou. Dalm tentou avançar até família/nome/fogo, e Jack cortou a linha sem encerrar a apresentação.
+
+O que Ren faz agora?

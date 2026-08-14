@@ -1579,6 +1579,7 @@ relacoes:
       - "Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle dos Mooney, não da Casa Veyr."
       - "Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO está com Jack/Tobb, mas o cachê de Ren pela apresentação fechada segue pendente do pós-show."
       - "Ren abriu a apresentação fechada com Passo Sombrio, escolhendo impacto e ameaça controlada em vez de ocultar totalmente a técnica."
+      - "Durante a apresentação fechada, Jack cortou a provocação de Dalm sobre nome/família/fogo sem encerrar o show: 'Contrato compra espetáculo. Não compra genealogia.'"
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1594,6 +1595,7 @@ relacoes:
       - "Ren prometeu a Jack que nada aconteceria às pessoas do circo; Jack ouviu a promessa, mas continua dependendo dos filtros práticos."
       - "Ren decidiu prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual e discutiu o transporte de Kage com Jack."
       - "Jack viu Dalm encaixar a frase ambígua 'Nem todo nome curto nasce pequeno' durante a apresentação, sem romper claramente o contrato."
+      - "Jack viu Ren não entregar reação à provocação de Dalm; a segunda provocação deu a Jack margem para intervir."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1616,6 +1618,7 @@ relacoes:
       - "Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer a contraproposta."
       - "Mesmo com a entrada controlada, o homem da Casa Veyr está perto o bastante da aba dos artistas para observar lamparinas, pregas e sombras."
       - "A revelação do Passo Sombrio aumenta o valor comercial de Kage, mas também torna a máscara mais interessante para observadores especializados."
+      - "Dalm já testou o eixo nome/família/fogo diante de Kage, o que aumenta risco de provocação pessoal sem ainda romper a tenda em violência."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
@@ -2034,7 +2037,9 @@ relacoes:
       reconhecimento técnico limitado.
       Na reprise curta de 5 Eleasis, Lysa cumpriu outra vez a presença baixa de
       sombra sem forçar o joelho. O papel ainda fere seu orgulho, mas ela saiu
-      inteira.
+      inteira. Na apresentação fechada da Casa Veyr, Lysa percebeu Ren meio
+      palmo fora da linha ideal enquanto ele observava Dalm e cobriu o espaço
+      com um recuo encurtado, mantendo o número inteiro.
     informacoes_compartilhadas_por_lysa:
       - "Lysa disse que Harl não conta tudo nem quando sabe."
       - "Lysa negou ter cortado a amarra."
@@ -2053,6 +2058,7 @@ relacoes:
       - "Lysa ouviu de Mira que o segundo giro funcionou por ser menor, não por tentar provar força."
       - "No ensaio de 4 Eleasis, Lysa aceitou trabalhar a novidade de Kage como presença baixa e marcada, depois que Mira confirmou a limitação técnica de Sorn."
       - "Na reprise curta de 5 Eleasis, Lysa cumpriu a sombra baixa sem forçar o joelho."
+      - "Na apresentação fechada da Casa Veyr, Lysa cobriu uma pequena perda de margem física de Ren sem quebrar o número."
     riscos:
       - "A fita vermelha pode ser pista real, coincidência ou tentativa de incriminação."
       - "Pode se sentir substituída por Mira."

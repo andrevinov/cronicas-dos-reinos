@@ -418,6 +418,41 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: Dalm testa nome e reação de Kage
+
+Contexto: durante a apresentação fechada, depois da primeira provocação ambígua
+de Corven Dalm, Ren decidiu continuar o show profissionalmente para ver até onde
+Dalm iria.
+
+Rolagens abertas:
+
+* Kage continua o show sem entregar reação a Dalm: d20 18 + 2 = 20 contra CD
+  14. Sucesso.
+* Manter o número físico enquanto observa a Casa Veyr: d20 6 + 7 = 13 contra CD
+  14. Falha.
+
+Rolagem oculta:
+
+* Corven Dalm escalar provocação sem dar motivo limpo para Jack encerrar: d20 9
+  + 6 = 15 contra CD 16. Falha.
+
+Consequências:
+
+* Ren não entrega reação emocional à frase "Nem todo nome curto nasce pequeno";
+  não olha para Jack, para Silva, para a carroça verde ou para direção sensível.
+* O esforço de manter observação ampla enquanto continua o número tira margem
+  física: Ren fica meio palmo fora da linha ideal, mas Lysa cobre o espaço e o
+  número não quebra.
+* Dalm tenta avançar para família/nome/fogo: "Algumas casas preservam brasões.
+  Outras preservam apenas o pedaço do nome que sobreviveu ao fogo."
+* Como a provocação cruzou a linha de assunto alheio, Jack consegue intervir sem
+  encerrar imediatamente o show: "Contrato compra espetáculo. Não compra
+  genealogia."
+* O homem da Casa Veyr perde uma respiração de observação ao olhar para Jack.
+  Ele não obtém mapa adicional do Passo Sombrio nesse instante.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
