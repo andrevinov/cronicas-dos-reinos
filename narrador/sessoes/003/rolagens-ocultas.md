@@ -532,6 +532,46 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: Dalm entrega janela sem entregar patrono
+
+Contexto: Ren mudou a pressão, deixando claro que prefere o "quem", mas aceita
+quando, como, onde, porquê e o que como preço para adiar a definição de Dalm como
+inimigo.
+
+Rolagens abertas:
+
+* Persuasão sob pressão de Ren para obter uma entrega útil de Dalm: d20 com
+  vantagem [18, 1] -> 18 + 0 = 18 contra CD 14. Sucesso.
+* Intuição de Ren para separar pista útil de veneno na resposta de Dalm: d20 9
+  + 6 = 15 contra CD 14. Sucesso.
+
+Rolagem oculta:
+
+* Corven Dalm entregar pista sem comprometer patrono real: d20 18 + 6 = 24
+  contra CD 15. Sucesso.
+
+Consequências:
+
+* Dalm não revela quem pagou ou usa a Casa Veyr como filtro.
+* Dalm entrega uma janela útil: antes da segunda maré.
+* Dalm define Ponte Baixa como passagem/porta/garganta de pedra, não como ponte
+  vista de cima.
+* Dalm aponta "seco onde deveria haver água, atrás dos armazéns velhos", ligando
+  a pista aos porões secos e rotas baixas já levantadas por Ren/Brunna/Luath.
+* Dalm descreve o método da rede como papel antes de lâmina: anular retenção,
+  trocar nome, guardar livro no lugar errado e transformar testemunha em ruído.
+* Dalm diz que a rede sabe que há uma gravadora e um menino usado como alavanca,
+  e que Kage reage a essa corda, mas ainda não sabe onde eles dormem.
+* Pela Intuição bem-sucedida, Ren sente que essa parte central é verdadeira o
+  bastante para orientar decisão, embora Dalm esteja claramente empurrando Ren
+  para uma rota perigosa.
+* Dalm enquadra o motivo como terceiro jogo: alguém quer saber se Ren é peça de
+  Masao, acidente contra Masao ou faca apontável antes que Masao feche a mão.
+  Isso não confirma se Dalm fala por Masao, contra Masao ou por rival local.
+* Tobb dá aviso discreto de tempo do lado de fora.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob

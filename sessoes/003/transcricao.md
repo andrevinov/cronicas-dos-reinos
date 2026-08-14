@@ -2812,7 +2812,7 @@ Ele não sorri agora.
 
 A lamparina do camarim estala uma vez.
 
-Ren não pega contradição limpa. A cadência de Dalm é polida demais, medida demais. Pode ser verdade parcial. Pode ser isca. Pode ser uma mentira vestida com exatamente a quantidade de verdade necessária para sobreviver ao primeiro olhar.
+Ren não pega contradição limpa. A cadência de Dalm é polida demais, medida demais. Pode ser verdade parcial. Pode ser isca. Pode ser uma mentira vestida com exatamente a quantidade  de verdade necessária para sobreviver ao primeiro olhar.
 
 "Em duas dessas coisas", Dalm diz baixo, "você respondeu sem perceber."
 
@@ -2821,5 +2821,69 @@ Ele enfim dá meio passo para o lado, não em direção à saída, mas para não
 "Então pergunte de novo, Kage. Mas entenda a diferença: 'para quem' é uma pergunta de homem que quer correr atrás de uma sombra. 'O que essa pessoa já sabe' talvez seja uma pergunta de homem que pretende continuar vivo."
 
 Hora aproximada: **18:31 de 6 Eleasis, 1372 DR**. Ren não arrancou o nome do patrono real por trás da Casa Veyr. Dalm percebeu que o sotaque de Kage é máscara e deixou claro que veio medir três eixos: **Passo Sombrio**, **gravadora** e **reação a Masao**. Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
+
+O que Ren faz?
+
+**Jogador**
+
+"Gosto de nomes, e por isso pergunto quem. Você pode me dar quando, como, onde, porquê e o que, esses podem manter a conversa interessante suficiente pra eu adiar a decisão sobre como eu vou te enxergar no final da noite. Mas o quem é o que pode fazer com que eu não te veja como inimigo depois do que você disse aqui."
+
+Ren está sentado, imóvel, como um imperador de Kara-Tur em suas vestes pomposas. E completamente pronto pro combate.
+
+"E então, o que vai me dar?"
+
+**Narrador**
+
+Teste de Persuasão sob pressão de Ren para obter uma entrega útil de Dalm: d20 com vantagem [18, 1] -> 18 + 0 = 18 contra CD 14. Sucesso.
+
+Teste de Intuição de Ren para separar pista útil de veneno na resposta de Dalm: d20 9 + 6 = 15 contra CD 14. Sucesso.
+
+Dalm observa Ren sentado.
+
+Há um instante em que o camarim parece pequeno demais para os dois. Não por movimento. Pelo contrário: pela ausência dele. Ren não precisa se levantar para parecer pronto. O figurino negro, as camadas pomposas e a quietude fazem o papel que o sotaque não faz mais. Não é o artista pedindo atenção; é uma autoridade estrangeira decidindo se a sala ainda merece conversa.
+
+Dalm entende a mudança.
+
+E, pela primeira vez desde que entrou, ele parece escolher as próximas palavras não para ferir, mas para não gastar uma saída.
+
+"Muito bem", diz. "O quem fica caro demais para esta tenda. Posso lhe dar o resto em pedaços."
+
+Ele levanta um dedo.
+
+"Quando: antes da segunda maré. Não como ameaça poética. Como horário de trabalho."
+
+O segundo dedo.
+
+"Onde: Ponte Baixa. Mas não a ponte que um homem olha de cima. É nome de passagem. Porta, porão, garganta de pedra. Procure seco onde deveria haver água, atrás dos armazéns velhos."
+
+O terceiro.
+
+"Como: papel primeiro. Lâmina depois. Quem está mexendo nisso não começa matando; começa anulando retenção, trocando nome, guardando livro no lugar errado e fazendo uma testemunha parecer ruído."
+
+O quarto dedo não sobe. Dalm apenas abre a mão.
+
+"O quê: eles sabem que existe uma gravadora. Sabem que existe um menino usado como cabo para puxá-la. Sabem que Kage se mexe quando essa corda é tocada. Não sabem, ainda, a cama onde os dois dormem. Se soubessem, esta noite não teria sido comprada com aplauso."
+
+Essa parte soa verdadeira.
+
+Não confortável. Não bondosa. Verdadeira o bastante para Ren sentir o encaixe frio: a Casa Veyr veio medir ligação, não executar captura já pronta. Se Dalm está mentindo, escolheu uma mentira que se ajusta bem demais ao modo como a noite foi montada.
+
+Dalm inclina a cabeça.
+
+"Por quê? Porque alguém quer saber se você é peça de Masao, acidente contra Masao, ou faca que pode ser apontada antes que Masao feche a mão."
+
+Ele finalmente deixa o quarto dedo subir.
+
+"E porque alguém em Ravens Bluff acredita que, se dois inimigos forem postos na mesma escada escura, talvez um deles resolva o problema do outro."
+
+A lamparina estala de novo.
+
+Do lado de fora, Tobb bate duas vezes de leve na madeira da armação. Não é interrupção. É aviso: tempo demais.
+
+Dalm olha para a aba, depois volta a Ren.
+
+"Isso é o que eu lhe dou, Kage. Não amizade. Não absolvição. Não o nome. Uma janela."
+
+Hora aproximada: **18:32 de 6 Eleasis, 1372 DR**. Ren conseguiu arrancar uma entrega útil sem obter o patrono real: **antes da segunda maré**, **Ponte Baixa como passagem/porta**, **porões secos atrás de armazéns velhos**, método por **papéis antes de lâminas**, e confirmação provável de que os inimigos sabem da gravadora e do menino, mas ainda não sabem onde Nera e Tavin dormem. Ren percebe que Dalm está empurrando uma rota perigosa, mas não pega mentira clara nas informações centrais. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
 
 O que Ren faz?

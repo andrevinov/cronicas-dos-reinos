@@ -303,7 +303,13 @@ localizacao:
     quem Dalm veio avaliá-lo, mas não conseguiu arrancar o patrono real por trás
     da Casa Veyr. Dalm percebeu que a voz de Kage é máscara e respondeu apenas
     com a camada contratual, acrescentando que veio medir sombra, gravadora e a
-    reação de Ren a Masao.
+    reação de Ren a Masao. Ren então transformou a ameaça em negociação,
+    oferecendo adiar a definição de Dalm como inimigo se ele entregasse quando,
+    como, onde, porquê ou o quê. Dalm não entregou o "quem", mas deu uma janela
+    útil: antes da segunda maré, Ponte Baixa como passagem/porta/garganta de
+    pedra, seco onde deveria haver água atrás de armazéns velhos, método por
+    papéis antes de lâminas, e confirmação provável de que a rede sabe da
+    gravadora e do menino, mas ainda não sabe onde Nera e Tavin dormem.
 
 tempo:
   ano_dr: 1372
@@ -316,7 +322,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 6
   periodo_do_dia: "começo da noite de 6 Eleasis, pós-apresentação fechada de Kage"
-  hora_aproximada: "18:31 de 6 Eleasis"
+  hora_aproximada: "18:32 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
   prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. Ren abriu Kage com Passo Sombrio sem gastar ki, da Sombra B para a Sombra A, terminou a apresentação sem fiasco e chamou Dalm ao camarim com referência direta a Masao e às dez lâminas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
@@ -1179,8 +1185,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no guarda-roupa menor/camarim funcional de Kage, na tenda menor do Jack Mooney & Sons Circus, por volta de 18:31 de 6 Eleasis de 1372 DR. A apresentação fechada da Casa Veyr terminou sem fiasco: Kage finalizou bem, mas o convite público de Ren a Corven Dalm, com referência direta a Masao e às dez lâminas, deixou a saída dos convidados tensa e menos favorável como propaganda limpa. Dalm não entregou reação visível à referência, aceitou o convite e entrou sozinho no camarim. Ren largou o sotaque de Kage, endureceu a voz e exigiu saber para quem Dalm veio avaliá-lo; a pressão falhou, e Dalm não entregou o patrono real por trás da Casa Veyr. Dalm percebeu que a voz de Kage é máscara e afirmou que veio medir se a sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão de Ren ou anzol em sua garganta. Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta. Tobb está do lado de fora, perto da aba, e o homem da Casa Veyr foi impedido de acompanhar. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. O total de 80 PO da Casa Veyr está sob controle de Jack/Tobb, mas o pagamento de Ren por esta apresentação ainda está pendente do pós-show."
-  risco_imediato: "alto em termos operacionais e sociais: Ren está em conversa quase privada com Dalm, com Tobb perto da aba e Jack controlando a retirada dos convidados. Ameaça física imediata ainda parece menos provável que sondagem, chantagem, proposta ou teste de informação, mas Dalm já obteve uma informação sobre a máscara vocal de Kage e não entregou quem está por trás da Casa Veyr."
+  cena_atual: "Ren está no guarda-roupa menor/camarim funcional de Kage, na tenda menor do Jack Mooney & Sons Circus, por volta de 18:32 de 6 Eleasis de 1372 DR. A apresentação fechada da Casa Veyr terminou sem fiasco, mas deixou os convidados tensos. Dalm não entregou o patrono real por trás da Casa Veyr. Entregou, porém, uma janela útil: antes da segunda maré; Ponte Baixa como passagem/porta/garganta de pedra, não ponte vista de cima; seco onde deveria haver água, atrás dos armazéns velhos; método por papéis antes de lâminas; e escopo provável de conhecimento inimigo: sabem da gravadora e do menino como alavanca, e que Kage reage a essa corda, mas ainda não sabem onde Nera e Tavin dormem. Ren percebeu que a parte central soa verdadeira o bastante para guiar decisão, embora Dalm esteja empurrando uma rota perigosa. Tobb está do lado de fora, perto da aba, e deu aviso discreto de tempo. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. O total de 80 PO da Casa Veyr está sob controle de Jack/Tobb, mas o pagamento de Ren por esta apresentação ainda está pendente do pós-show."
+  risco_imediato: "alto em termos operacionais e sociais: Ren está em conversa quase privada com Dalm, com Tobb perto da aba e o tempo do camarim se esgotando. Ameaça física imediata ainda parece menos provável que sondagem, chantagem, proposta ou teste de informação, mas Dalm já obteve uma informação sobre a máscara vocal de Kage e está tentando empurrar Ren para a janela da Ponte Baixa antes da segunda maré."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1191,5 +1197,6 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren/Kage responde à evasiva de Dalm no camarim funcional"
+    - "decidir se encerra, pressiona, retém ou segue negociando com Dalm no camarim funcional antes que Tobb interrompa"
+    - "avaliar a janela da Ponte Baixa antes da segunda maré, ligada a passagem baixa, porões secos atrás de armazéns velhos e método por papéis antes de lâminas"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

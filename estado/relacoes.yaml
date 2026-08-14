@@ -1649,6 +1649,11 @@ relacoes:
       avaliá-lo, Dalm não entregou o patrono real por trás da Casa Veyr. Ele
       percebeu que a voz de Kage é máscara performática e respondeu que veio
       medir sombra, gravadora e reação a Masao.
+      Diante de nova pressão mais negociada de Ren, Dalm continuou protegendo o
+      patrono real, mas entregou uma janela acionável: antes da segunda maré,
+      Ponte Baixa como passagem baixa e seca atrás de armazéns velhos, método
+      por papéis antes de lâminas e escopo provável do conhecimento inimigo
+      sobre a gravadora e o menino.
     informacoes_observadas_por_ren:
       - "Dalm é o procurador que assinou pela Casa Veyr na apresentação fechada."
       - "Dalm conhece ou reconhece o suficiente da referência a Masao para comentar a pronúncia de Ren em privado."
@@ -1657,11 +1662,16 @@ relacoes:
       - "De perto, Dalm não parece um nobre mole ou puramente ornamental; sua ameaça mais clara é social, contratual e informacional."
       - "Dalm percebeu que o sotaque de Kage é performático e que Ren tem outro registro de voz por baixo."
       - "Dalm declarou que veio medir se a sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão de Ren ou anzol em sua garganta."
+      - "Dalm disse que a janela relevante é antes da segunda maré."
+      - "Dalm disse que Ponte Baixa é passagem/porta/garganta de pedra, não ponte vista de cima."
+      - "Dalm apontou seco onde deveria haver água, atrás dos armazéns velhos."
+      - "Dalm disse que a rede sabe que existe uma gravadora e um menino como alavanca, mas ainda não sabe onde eles dormem."
     riscos:
       - "Dalm pode estar tentando separar Kage dos filtros de Jack sem quebrar contrato em público."
       - "A conversa privada pode virar proposta, chantagem, teste de verdade ou tentativa de mapear a ligação entre Kage, Masao e a gravadora."
       - "A falta de reação visível de Dalm à referência a Masao não prova ignorância."
       - "Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta."
+      - "A pista da Ponte Baixa pode ser informação real e também rota preparada para observar ou testar Ren."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"
