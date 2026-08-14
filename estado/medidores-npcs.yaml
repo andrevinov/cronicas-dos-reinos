@@ -1,0 +1,405 @@
+schema: 1
+status: "ativo"
+visibilidade: "jogador"
+ultima_revisao_global:
+  sessao: 3
+  data_do_mundo: "6 Eleasis, 1372 DR"
+  momento: "06:41, após retorno de Ren ao circo e despertar do Passo Sombrio"
+fontes_consultadas:
+  - "estado/relacoes.yaml"
+  - "estado/estado-atual.yaml"
+proposito: >
+  Registrar medidores rápidos para calibrar tom, reação e dificuldade social
+  de NPCs recorrentes em relação a Ren. Este arquivo não substitui os fatos
+  detalhados de estado/relacoes.yaml; ele resume o estado emocional e prático
+  atual para uso durante narração.
+
+escala:
+  vinculo:
+    descricao: "Boa vontade pessoal, afeto, calor humano ou apego emocional."
+    "0-2": "hostilidade, medo ou repulsa pessoal"
+    "3-4": "distância, irritação ou relação apenas instrumental"
+    "5": "neutralidade funcional"
+    "6-7": "boa vontade real, simpatia ou cuidado recorrente"
+    "8-9": "afeição forte, lealdade emocional ou romance ativo"
+    "10": "devoção extrema; raro e instável em jogo"
+  confianca:
+    descricao: "Quanto o NPC acredita na palavra, julgamento e competência de Ren."
+    "0-2": "não acredita sem coerção, prova forte ou pagamento"
+    "3-4": "aceita apenas partes verificáveis ou de baixo risco"
+    "5": "cooperação cautelosa com prova mínima"
+    "6-7": "aceita planos razoáveis se estiverem alinhados ao próprio interesse"
+    "8-9": "age com base na palavra de Ren quando o assunto combina com o histórico"
+    "10": "confiança quase irrestrita; raro e perigoso"
+  risco_percebido:
+    descricao: "Quanto o NPC acha que a presença, escolhas ou inimigos de Ren trazem perigo."
+    "0-2": "Ren parece seguro ou irrelevante como fonte de risco"
+    "3-4": "risco baixo, administrável por rotina"
+    "5": "risco real, mas ainda comum para a vida do NPC"
+    "6-7": "risco alto; o NPC impõe limites, condições ou distância"
+    "8-9": "risco muito alto; mesmo gostando de Ren, o NPC bloqueia imprudências"
+    "10": "Ren é visto como ameaça imediata à sobrevivência ou ao núcleo do NPC"
+
+uso_em_jogo:
+  revisao:
+    frequencia: "fim de sessão, pedido do jogador ou evento emocional/operacional marcante"
+    evitar: "recalcular por cada fala pequena ou cada teste isolado"
+  fala:
+    orientacao: >
+      O tom de cada NPC deve combinar os três medidores. Vínculo alto não
+      elimina dureza quando risco_percebido também é alto; nesse caso, a dureza
+      deve vir acompanhada de cuidado prático, humor familiar, proteção concreta
+      ou sinais de preocupação, não apenas reprimendas repetidas.
+  testes_sociais:
+    orientacao: >
+      Os medidores podem ajustar CDs sociais quando a ação de Ren depende da
+      disposição do NPC. O ajuste comum deve ficar entre -2 e +2. Vantagem ou
+      desvantagem só deve aparecer quando houver fundamento forte na cena.
+    diretrizes:
+      - "confianca 8 ou mais pode dispensar rolagem para cooperação rotineira alinhada aos valores do NPC"
+      - "confianca 6-7 pode reduzir CD em 1 ou 2 quando Ren pede algo coerente com histórico e interesse do NPC"
+      - "confianca 3-4 pode aumentar CD em 1 ou exigir prova, pagamento ou garantia concreta"
+      - "confianca 0-2 normalmente exige pagamento, coerção, prova forte ou situação extrema"
+      - "vinculo 8 ou mais pode suavizar tom e permitir acesso emocional sem rolagem, salvo se houver risco alto"
+      - "risco_percebido 7 ou mais pode impor custo, condição ou limite mesmo em caso de sucesso"
+      - "risco_percebido 8 ou mais deve bloquear pedidos que coloquem protegidos do NPC em perigo sem plano robusto"
+  limites:
+    - "medidores não forçam romance, lealdade ou perdão"
+    - "medidores não substituem segredos, objetivos próprios ou conhecimento real do NPC"
+    - "medidores não revelam informação que o NPC não teria como saber"
+    - "um NPC pode falar duro por personalidade, mas o tom deve refletir melhora real quando os números melhorarem"
+
+npcs:
+  nera_vell:
+    nome: "Nera Vell"
+    grupo: "Vell / protegidos no circo"
+    medidores:
+      vinculo: 8
+      confianca: 7
+      risco_percebido: 8
+    leitura_atual: >
+      Nera tem vínculo romântico explícito com Ren e acredita que ele tenta
+      protegê-la e proteger Tavin. Ao mesmo tempo, ela vê Ren como alguém que
+      promete carregar perigos grandes demais e pode desaparecer dentro da
+      própria vingança.
+    tom_atual: >
+      Afetuosa, preocupada e franca. Deve poder demonstrar calor, saudade,
+      ciúme contido e orgulho assustado; cobranças devem soar pessoais, não
+      como sermão institucional.
+    impacto_em_testes: >
+      Pedidos de confiança pessoal coerentes com proteção dos Vell tendem a CD
+      menor ou dispensar rolagem. Pedidos que a coloquem como isca, que afastem
+      Ren por tempo indefinido ou que usem Tavin como peça enfrentam resistência
+      forte apesar do vínculo.
+    gatilhos_de_aumento:
+      - "Ren volta quando promete ou deixa aviso seguro quando não pode voltar"
+      - "Ren trata Nera e Tavin como pessoas, não como ferramentas de vingança"
+      - "Ren divide informação suficiente para ela não se sentir guardada no escuro"
+    gatilhos_de_queda:
+      - "Ren desaparece sem sinal após prometer retorno"
+      - "Ren usa Nera, Tavin ou o livro como isca sem consentimento claro"
+      - "Ren promete solução absoluta sem reconhecer o risco real"
+
+  tavin_vell:
+    nome: "Tavin Vell"
+    grupo: "Vell / protegidos no circo"
+    medidores:
+      vinculo: 7
+      confianca: 6
+      risco_percebido: 4
+    leitura_atual: >
+      Tavin associa Ren a resgate, volta prometida e Kage como figura quase
+      fantástica. Ele ainda é criança assustada, mas Ren virou referência de
+      segurança simples.
+    tom_atual: >
+      Curioso, cauteloso e mais leve quando está protegido. Deve falar com
+      simplicidade, fazer perguntas concretas e procurar confirmação de que Ren
+      vai voltar.
+    impacto_em_testes: >
+      Ren raramente precisa rolar para acalmar Tavin em ambiente seguro. Sob
+      pressão, a fragilidade de Tavin pesa mais que os medidores.
+    gatilhos_de_aumento:
+      - "Ren cumpre promessas simples e volta visível"
+      - "Ren mantém Tavin fora de segredos perigosos"
+      - "Ren o trata com paciência, não como pacote a ser movido"
+    gatilhos_de_queda:
+      - "Tavin vê Ren ferir alguém de modo assustador sem entender o motivo"
+      - "Ren some depois de prometer voltar"
+      - "Tavin é pressionado por inimigos por causa de ligação com Ren"
+
+  silva_elkwood:
+    nome: "Silva Elkwood"
+    grupo: "Jack Mooney & Sons Circus / Chauntea"
+    medidores:
+      vinculo: 7
+      confianca: 8
+      risco_percebido: 8
+    leitura_atual: >
+      Silva gosta de Ren mais do que sua fala seca admite e confia bastante em
+      sua intenção e competência prática. O risco percebido continua muito alto
+      porque Ren atrai inimigos para perto dos Vell, do livro e do circo.
+    tom_atual: >
+      Dura, seca e prática, mas não fria. A fala dela deve incluir cuidado
+      concreto, humor cansado, pequenos gestos de proteção e reconhecimento
+      quando Ren age com autocontrole.
+    impacto_em_testes: >
+      Pedidos alinhados à proteção dos Vell, descanso, separação de riscos e
+      rotas seguras podem dispensar rolagem. Pedidos que tragam cauda para a
+      carroça verde ou misturem Nera/Tavin com Kage devem enfrentar bloqueio
+      forte mesmo se Silva confiar em Ren.
+    gatilhos_de_aumento:
+      - "Ren avisa por onde vai e volta por rota combinada"
+      - "Ren recua de risco ruim em vez de provar coragem"
+      - "Ren protege Vell, livro e circo como coisas separadas"
+    gatilhos_de_queda:
+      - "Ren volta com perseguição direta para dentro do acampamento"
+      - "Ren procura Nera antes de checar cauda"
+      - "Ren usa a confiança de Silva para contornar Jack ou Tyr"
+
+  jack_mooney:
+    nome: "Jack Mooney"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 5
+      confianca: 6
+      risco_percebido: 7
+    leitura_atual: >
+      Jack vê Ren como ativo valioso, artista vendável e homem útil, não como
+      amigo íntimo. Confia na competência de Ren quando há controle claro, mas
+      considera que o preço político e físico ao circo ainda pode ficar alto.
+    tom_atual: >
+      Negociador, irônico e controlador. Deve reconhecer competência e pagar
+      contas quando cabível, mas sempre traduz afeto em contrato, preço, limite
+      ou regra de bastidor.
+    impacto_em_testes: >
+      Negociações comerciais de Kage partem de respeito real e podem ter CD
+      menor se Ren aceitar filtros de Jack. Pedidos que exponham o circo, furtem
+      autoridade de Jack ou confundam palco com guerra aumentam CD ou falham sem
+      contrapartida pesada.
+    gatilhos_de_aumento:
+      - "Ren respeita filtros de Jack para Kage"
+      - "Ren gera dinheiro ou proteção pública sem expor o circo"
+      - "Ren entrega informação antes que Jack seja surpreendido por terceiros"
+    gatilhos_de_queda:
+      - "Ren mata, sequestra ou inicia guerra sob a lona"
+      - "Kage atende patrono por fora de Jack"
+      - "a presença de Ren põe artistas ou público em risco direto"
+
+  maerra_thandrel:
+    nome: "Irmã Maerra Thandrel"
+    grupo: "Casa da Aurora Menor / Lathander"
+    medidores:
+      vinculo: 6
+      confianca: 8
+      risco_percebido: 6
+    leitura_atual: >
+      Maerra acredita que Ren protege vulneráveis e já viu provas fortes disso.
+      Ela não aprova vendeta como eixo moral, mas confia nele quando o assunto é
+      salvar vivos e preservar testemunhas.
+    tom_atual: >
+      Firme, pastoral e direta. Deve repreender desvios morais reais, mas também
+      reconhecer escolhas boas, oferecer cuidado e permitir que Ren seja mais do
+      que a própria vingança.
+    impacto_em_testes: >
+      Pedidos ligados a crianças, testemunhas e proteção concreta tendem a
+      redução de CD ou cooperação sem rolagem. Pedidos que usem a Casa da Aurora
+      Menor como cobertura para crime, interrogatório agressivo ou vingança
+      aumentam CD e podem ser recusados.
+    gatilhos_de_aumento:
+      - "Ren protege vivos sem exigir gratidão ou controle"
+      - "Ren aceita limites com crianças e testemunhas traumatizadas"
+      - "Ren encaminha prova para instituições quando isso protege inocentes"
+    gatilhos_de_queda:
+      - "Ren usa a Casa da Aurora Menor como esconderijo de violência privada"
+      - "Ren pressiona crianças traumatizadas por informação"
+      - "Ren prioriza vingança quando há vulneráveis em risco imediato"
+
+  luath:
+    nome: "Luath"
+    grupo: "City Guard / Night Watch"
+    medidores:
+      vinculo: 3
+      confianca: 6
+      risco_percebido: 8
+    leitura_atual: >
+      Luath respeita a utilidade operacional de Ren, especialmente depois dos
+      barris e de Sarbreen, mas não tem vínculo pessoal forte com ele. Ren segue
+      marcado como risco de justiça privada.
+    tom_atual: >
+      Seco, institucional e objetivo. Deve poder reconhecer competência sem
+      virar aliado caloroso; quando impõe limite, o limite vem da guarda e da
+      cidade, não de antipatia pessoal.
+    impacto_em_testes: >
+      Informações concretas, prisioneiros vivos, mapas e risco civil podem
+      reduzir CD. Pedidos de acesso direto a interrogatórios, serviço off-record
+      ou violência contra Masao aumentam CD ou são recusados por princípio.
+    gatilhos_de_aumento:
+      - "Ren entrega pessoas vivas, prova material e linhas verificáveis"
+      - "Ren evita transformar guarda em ferramenta de vingança"
+      - "Ren aceita restrições institucionais sem tentar comprar exceção suja"
+    gatilhos_de_queda:
+      - "Ren deixa corpos ligados à investigação"
+      - "Ren pede cobertura para crime ou execução privada"
+      - "a ligação pública entre Ren, Kage e a guarda fica clara demais"
+
+  kethra_dunn:
+    nome: "Kethra Dunn"
+    grupo: "Narwhal Manor / Colm-Dent"
+    medidores:
+      vinculo: 4
+      confianca: 5
+      risco_percebido: 7
+    leitura_atual: >
+      Kethra reconhece que Ren salvou Colm e entregou soluções práticas, mas
+      ainda mede tudo pelo risco ao irmão e pela sobrevivência dentro de Narwhal.
+    tom_atual: >
+      Pragmática, desconfiada e sem romantizar heroísmo. Deve cooperar quando a
+      troca for concreta e segura; gratidão existe, mas fica atrás da cautela.
+    impacto_em_testes: >
+      Provas de segurança de Colm/Dent e pedidos com protocolo limpo reduzem
+      CD. Contatos frequentes, mensagens previsíveis ou pedidos vagos sobre
+      ameaça à cidade aumentam CD.
+    gatilhos_de_aumento:
+      - "Ren confirma segurança real de Colm sem criar padrão rastreável"
+      - "Ren usa o ponto morto apenas para informação útil ou perigo urgente"
+      - "Ren protege Kethra sem pedir fé ampla demais"
+    gatilhos_de_queda:
+      - "Colm/Dent sofre consequência ligada às ações de Ren"
+      - "Ren expõe o ponto morto ou cria rotina previsível"
+      - "Ren pede que Kethra assuma risco por uma ameaça que ela ainda não viu"
+
+  pell:
+    nome: "Pell"
+    grupo: "Silver Lily / Red Sail periférica"
+    medidores:
+      vinculo: 2
+      confianca: 2
+      risco_percebido: 7
+    leitura_atual: >
+      Pell coopera por medo, pagamento e oportunidade. Ele não é aliado e pode
+      vender lembranças sobre Ren se a ameaça ou a recompensa mudarem.
+    tom_atual: >
+      Nervoso, oportunista e evasivo. Deve tentar parecer menor do que é e
+      manter saída aberta em quase toda conversa.
+    impacto_em_testes: >
+      Pagamento, medo plausível e informação concreta são mais importantes que
+      vínculo. Sem moeda, proteção ou ameaça crível, CDs sobem e Pell pode
+      desaparecer.
+    gatilhos_de_aumento:
+      - "Ren paga corretamente sem expor Pell"
+      - "Ren protege Pell de retaliação sem exigir lealdade heroica"
+      - "informações de Pell geram lucro ou sobrevivência para ele"
+    gatilhos_de_queda:
+      - "Pell é visto recebendo moeda ou recado de Ren"
+      - "Brass ou outro pagador oferece alternativa melhor"
+      - "Ren ameaça Pell sem saída concreta"
+
+  brunna_torkel:
+    nome: "Brunna Torkel"
+    grupo: "Medidas Torkel / Sarbreen"
+    medidores:
+      vinculo: 3
+      confianca: 4
+      risco_percebido: 5
+    leitura_atual: >
+      Brunna não gosta de teatro ruim, mas reconhece pergunta certa, pagamento
+      certo e risco real. Ela ajudou Ren porque a situação tocou sua perícia e
+      porque ele aceitou pagar.
+    tom_atual: >
+      Irritada, técnica e pouco paciente com fantasia sobre tesouros. Pode ser
+      útil se Ren falar como alguém que precisa de levantamento, erro de planta
+      e rota, não de lenda.
+    impacto_em_testes: >
+      Pagamento justo, precisão técnica e respeito ao ofício reduzem CD.
+      Violência, exposição da loja, pergunta vaga sobre Sarbreen ou tentativa de
+      arrancar mapa inteiro aumentam CD.
+    gatilhos_de_aumento:
+      - "Ren paga por informação e protege a fonte"
+      - "Ren usa termos técnicos aprendidos corretamente"
+      - "Ren não transforma a Medidas Torkel em cena pública"
+    gatilhos_de_queda:
+      - "Ren volta com perseguição até a loja"
+      - "Ren exige certeza onde Brunna só tem levantamento parcial"
+      - "a investigação de Ren prejudica a clientela ou segurança dela"
+
+  dessa_wren:
+    nome: "Dessa Wren"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 5
+      confianca: 5
+      risco_percebido: 4
+    leitura_atual: >
+      Dessa vê Ren como artista útil, cliente pagante e problema interessante.
+      Ela confia no corpo de Ren em cena e no valor de Kage, mas não se considera
+      cúmplice de espionagem real.
+    tom_atual: >
+      Irônico, profissional e prático. Deve tratar figurino como ativo sério e
+      Ren como artista que precisa ser vestido, podado e tirado do público na
+      hora certa.
+    impacto_em_testes: >
+      Pedidos de figurino, adaptação teatral e retirada de cena têm boa chance
+      sem rolagem se houver tempo e pagamento. Disfarces ligados a sangue, crime
+      evidente ou risco ao guarda-roupa aumentam CD.
+    gatilhos_de_aumento:
+      - "Ren respeita figurino, marcação e tempo de bastidor"
+      - "Ren paga ou reconhece o trabalho dela"
+      - "Kage valoriza a costura de Dessa sem expô-la"
+    gatilhos_de_queda:
+      - "Ren destrói figurino por heroísmo fora da marca"
+      - "roupas feitas por Dessa voltam ligadas a crime rastreável"
+      - "Ren muda a proposta de cena tarde demais"
+
+  sorn_kel:
+    nome: "Sorn Kel"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 4
+      confianca: 5
+      risco_percebido: 5
+    leitura_atual: >
+      Sorn respeita disciplina de marcação e viu Ren obedecer limites em cena.
+      A relação ainda é profissional, não pessoal, e passa por segurança física.
+    tom_atual: >
+      Técnico, contido e pouco sentimental. Elogios devem vir como correção
+      precisa: onde Ren caiu certo, onde quase abriu ombro, onde não há margem.
+    impacto_em_testes: >
+      Planos de palco com marcação, ensaio e margem física têm CD menor.
+      Pedidos de salto novo, improviso sem ensaio ou risco ao joelho de Lysa
+      aumentam CD ou são vetados.
+    gatilhos_de_aumento:
+      - "Ren respeita marcações e admite limite físico"
+      - "Ren consulta Sorn antes de aumentar risco de número"
+      - "Ren mantém Kage impressionante sem quebrar segurança"
+    gatilhos_de_queda:
+      - "Ren improvisa salto sem aviso"
+      - "Ren usa equipamento do circo como cobertura para luta"
+      - "alguém se machuca porque Ren ignorou limite técnico"
+
+  lysa_renn:
+    nome: "Lysa Renn"
+    grupo: "Jack Mooney & Sons Circus"
+    medidores:
+      vinculo: 3
+      confianca: 3
+      risco_percebido: 5
+    leitura_atual: >
+      Lysa ainda é defensiva com Ren por causa da investigação da sabotagem e
+      por orgulho ferido, mas Kage também deu a ela um papel baixo que funcionou
+      sem destruir seu joelho.
+    tom_atual: >
+      Provocadora, orgulhosa e vulnerável quando o assunto toca o alto, Mira ou
+      o próprio joelho. Pode aceitar limites se eles mantiverem presença de
+      palco, mas odeia parecer peça substituível.
+    impacto_em_testes: >
+      Abordagens que reconhecem competência e oferecem papel seguro podem
+      reduzir CD. Acusação direta, comparação com Mira ou tentativa de tratá-la
+      como inválida aumenta CD.
+    gatilhos_de_aumento:
+      - "Ren reconhece a utilidade dela sem fingir que o joelho não existe"
+      - "Kage dá espaço de palco seguro sem componente romântico ou humilhante"
+      - "Ren evita usar Mira como régua moral contra Lysa"
+    gatilhos_de_queda:
+      - "Ren a acusa publicamente ou reabre a sabotagem como humilhação"
+      - "Lysa é afastada de cena por risco ligado a Kage"
+      - "Ren força comparação direta entre Lysa e Mira"

@@ -68,6 +68,7 @@ estrutura:
     relogios_sessao_atual: "narrador/sessoes/001/relogios.md"
     estado_atual: "estado/estado-atual.yaml"
     relacoes: "estado/relacoes.yaml"
+    medidores_npcs: "estado/medidores-npcs.yaml"
     tempo_atual: "estado/tempo.yaml"
 
 fontes:

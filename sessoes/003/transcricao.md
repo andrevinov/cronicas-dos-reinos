@@ -2007,3 +2007,9 @@ Sim. O contrato condicional de Kage não fixou um salário estável por semana n
 Jack ainda não pagou porque a cena passou direto do pós-show para a isca do recado, a perseguição do cabriolé, Brunna, a Escada, Luath e a volta tarde ao circo. Isso fica registrado como pendência: Ren tem cachê a acertar com Jack pela reprise pública de 5 Eleasis, e a divisão das apresentações privadas também precisa ficar explícita antes de Kage trabalhar para patrono fechado.
 
 Por enquanto, não somo ouro na ficha. Quando Ren falar com Jack ou Jack trouxer as contas, o pagamento entra em cena.
+
+**Jogador**
+
+[Tô levando calote até em jogo, rs. Brinks.]
+
+Ren levanta, se asseia, se veste, e vai falar com Silva. Tomar café com ela, um pouco mais animado por ter conseguido "dominar uma técnica do Getsuei-ryu", mas ainda consternado por Nera ter sido ameaçada. Conta pra Silva sobe Sarbreen, Brunna e Luath. Depois que falar com Silva irá até Jack pra saber se ele já recebeu resposta sobre a apresentação, e explicar que não conseguiu seguir o mensageiro.
