@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "borda interna do acampamento, perto da rota da carroça de remendos"
+  ponto_exato: "picadeiro quase vazio, após treino solo e conversa com Silva"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -209,8 +209,8 @@ tempo:
   dia_do_mes: 4
   dezena: 1
   dia_da_dezena: 4
-  periodo_do_dia: "começo da noite de 4 Eleasis, após retorno discreto imperfeito ao circo"
-  hora_aproximada: "19:54 de 4 Eleasis"
+  periodo_do_dia: "noite de 4 Eleasis, após jantar, passeio com Nera, treino solo e conversa com Silva"
+  hora_aproximada: "22:24 de 4 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de cinza molhada"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 4 Eleasis durante a infiltração noturna na Casa Velha do Primeiro Raio."
   prazo_relevante: "O prazo de meio-dia passou: Velis Rook entrou na Casa de Tyr e os Vell não foram transferidos. Tyr mantém resguardo em espera sem deslocamento até o próximo sino maior. Maerra colocou em curso ficha curta a Halessa sobre a possível preparação de Velis antes da oitiva; Ren ainda não conhece as consequências disso. Na Casa Velha, Toll, Vessa, o rapaz magro, outro adulto de roupa escura e Narro foram deixados inconscientes; Ren retirou seis crianças e as entregou à proteção de Maerra na Casa da Aurora Menor. Peta também foi resgatada viva e entregue a Maerra por volta de 01:05. A caixa velha marcada por sol apagado foi aberta e entregue a Maerra; dela saiu o Broche do Semblante Humilde, agora emprestado a Ren e usado nesta madrugada, gasto até o próximo amanhecer. Ren ainda está com o pedaço de pano vermelho rasgado; a chave de Narro e a lâmina curta ficaram para trás na câmara baixa. A pessoa de vermelho ficou inconsciente na oficina dos tintureiros; Ren viu que ela é uma mulher jovem adulta desconhecida com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço. Alguém atrás da cortina da oficina reagiu, mas não houve alarme público imediato. Ren voltou ao circo sem cauda competente percebida, informou Silva sobre o resgate das sete crianças, recebeu Nera, dormiu poucas horas no depósito de figurino velho e recuperou ki por descanso curto de monge. Silva mandou ajuda discreta de Chauntea à Casa da Aurora Menor. Ren foi aos pátios de saída para conferir Colm/Dent; a carroça de Dorra já havia saído. Após pagar 1 PO por informação, Ren soube que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas alguém perguntou por um doente vindo do lavadouro antes da partida. A saída de Colm/Dent foi comprometida, não confirmada como segura. Ren procurou Luath, mas Luath recusou tratar o caderno de Bram como prova formal limpa; ainda assim, a Night Watch pressionou Bram. A mensagem ameaçadora enviada por criança chegou imprecisa e ligou a ameaça à visita da guarda. Ren montou o ponto morto de Kethra em Narwhal Manor e pagou 2 PO a Pell pelo ponto morto da Silver Lily; depois, por volta de 16:02, removeu os dois pontos mortos. Pell deixou bilhete apontando janela nos fundos da Red Sail entre o sino de seis e o de sete; Kethra deixou bilhete apontando tensão em Narwhal, silêncio imposto sobre corredor treze/tintureiro/cesto/barril e a frase 'se a boca abriu no mercado, olhem a ponte baixa'. Na Casa da Aurora Menor, Peta lembrou que o homem de manga cinza e dois anéis mencionou papel para o peixe, máscara e um lugar frio abaixo de rodas. Ren retornou ao circo por volta de 09:55 para ver os Vell e conversar com Jack sobre o calendário de Kage; no caminho, ouviu rumor solto sobre passagem fechada perto do peixe por barris mal marcados. Às 10:03, Tobb trouxe recado de Luath: quatro barris mal marcados foram encontrados perto do mercado de peixe, com pó cinza, cheiro acre/de ovo ruim e cera vermelha no aro; a guarda acredita que havia seis. Por volta de 10:27, Ren encontrou Luath no perímetro isolado do mercado de peixe. Luath confirmou que a conta da carroça era de seis barris, que quatro foram encontrados e que um peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar os barris por intermediário. Às 10:31, Ren identificou o risco explosivo do pó e ligou a cera vermelha à rua dos tintureiros; Luath enviou guardas para cercar a oficina dos tintureiros."
@@ -1008,10 +1008,10 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "responder a Silva se voltou sozinho ou se apenas chegou antes de uma possível cauda"
-    - "decidir quanto contar a Silva e Nera sobre Brass, Red Sail, Maerra e os rastros fracos da noite"
+    - "decidir o que fazer antes de dormir"
+    - "decidir se puxa o fio de Sarbreen por Lockwood Mooney, Gond, Wizards' Guild ou mapas velhos do porto"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
-    - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas, salvo se Ren aceitar novo ensaio e risco para movimentos físicos mais ambiciosos"
+    - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
     - "aguardar contato de Luath sobre a pergunta 'Para onde a luz ia voltar depois que o mercado ouvisse?'"
     - "deixar a estabilização do segundo barril armado em Sarbreen com Luath, guarda e Gond, salvo se novo risco surgir"
     - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
@@ -1052,8 +1052,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren voltou à borda interna do Jack Mooney & Sons Circus por volta de 19:54 de 4 Eleasis de 1372 DR. Ele decidiu não atacar Brass nos fundos da Red Sail, observou o esquema por mais alguns minutos e recuou. Ren entendeu que Brass usa o barril seco da cozinha, o menino sem lenço e homens posicionados como cortina operacional, mas não decifrou o mecanismo inteiro da troca. Alguém nos fundos da Red Sail provavelmente percebeu movimento no galpão de cordame, sem identificar Ren. Ren visitou a Casa da Aurora Menor sem cauda útil e confirmou com Maerra que as sete crianças seguem vivas, alimentadas e protegidas. A Visão no Escuro expirou por volta de 18:43. Na volta ao circo, dois carregadores perto dos campos de carroças olharam tempo demais para Ren; não há perseguição colada, mas há rastro fraco comprável. Silva interceptou Ren antes da carroça verde, com Nera à vista, e perguntou se ele veio sozinho ou só chegou primeiro."
-  risco_imediato: "moderado-alto"
+  cena_atual: "Ren está no picadeiro quase vazio do Jack Mooney & Sons Circus por volta de 22:24 de 4 Eleasis de 1372 DR, após contar a Silva e Nera que não tentou capturar Brass por considerar o risco alto demais. Silva checou a borda do circo e não encontrou perseguição colada, mas também não conseguiu confirmar que o rastro fraco da volta foi limpo. Ren jantou, caminhou com Nera pela rota interna permitida e trocou carícias discretas com ela. Depois treinou Kage sozinho sem gastar ki: a parte física individual da versão segura ficou mais sólida, mas a presença dramática não melhorou sem equipe. Silva explicou que Sarbreen é uma cidade anã quebrada sob Ravens Bluff, não uma masmorra única; ela conhece rumores de itens, mapas e salas antigas, mas não consegue separar fato útil de fantasia nesta noite. Caminhos apontados: Lockwood Mooney para triagem arcana discreta, Gond para pedra/travas/engenharia perigosa, Wizards' Guild para magia com custo político, ou mapas velhos do porto com alto risco de fraude."
+  risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"

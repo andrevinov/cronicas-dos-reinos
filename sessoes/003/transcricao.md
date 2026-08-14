@@ -1197,3 +1197,93 @@ Silva volta os olhos para Ren.
 Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **19:54 de 4 Eleasis, 1372 DR**. **Visão no Escuro expirou por volta de 18:43**. Ren observou Brass sem atacar, mas não decifrou todo o esquema. Alguém nos fundos da Red Sail provavelmente notou que havia observador no galpão de cordame, sem identificar Ren. A ida até a Casa da Aurora Menor foi limpa e não levou cauda útil até Maerra. A volta ao circo criou um rastro fraco perto dos campos de carroças, sem perseguição colada. Ren está na borda interna do Jack Mooney & Sons Circus, diante de Silva, com Nera à vista.
 
 O que Ren responde?
+
+**Jogador**
+
+Ren conta a Silva e Nera que não teve coragem de tentar capturar e interrogar Brass. Que era arriscado... e ele não quer arriscar nada assim. Para o resto do dia de hoje, Ren jantará e passeará com Nera, trocarão carícias. Depois Ren ensaiará sua parte no picadeiro, apenas o que der pra ensaiar sem Sorn nem Lysa, para polpa-los do dia cansativo. Depois conversará com Silva sobre as masmorras dos anões, o que dizem haver lá, e se há rumores de itens mágicos poderosos ou coisa do tipo.
+
+**Narrador**
+
+Checagem discreta da borda do circo por Silva: d20 6 + 4 = 10 contra CD 12. Falha.
+
+Treino solo de Kage sem marcação de equipe: d20 14 + 7 = 21 contra CD 12. Sucesso.
+
+Sustentar presença de palco sozinho: d20 10 + 0 = 10 contra CD 13. Falha.
+
+Separar rumor útil de fantasia sobre Sarbreen: d20 3 + 3 = 6 contra CD 12. Falha.
+
+Silva escuta a palavra "coragem" sem corrigir de imediato. Primeiro, faz o que Silva faz: manda Tobb caminhar pela borda externa das carroças com cara de quem procura uma corda perdida, puxa um ajudante mais velho para a lateral dos remendos e troca duas frases baixas com uma mulher da cozinha que conhece mais rostos de carregador do que gostaria.
+
+Quando volta, não parece satisfeita.
+
+"Não encontrei ninguém colado em você", ela diz. "Isso não é o mesmo que limpo."
+
+Só então olha para Ren de verdade.
+
+"E você chama isso de não ter coragem porque ainda está confundindo coragem com faca no pescoço. Capturar homem cercado, trazer guerra para a lona e depois chamar de destino seria fácil de entender. Difícil é voltar com as mãos vazias quando as mãos queriam sangue."
+
+Nera não transforma a fala de Ren em julgamento. O rosto dela muda quando ouve Brass; muda de novo quando entende que Ren viu a chance e não tomou. Ela sai de trás da lona sem correr, para perto o bastante de Silva permitir, e toca os dedos de Ren antes de dizer qualquer coisa.
+
+"Eu gosto das suas mãos vazias", ela fala baixo.
+
+Silva finge que não ouviu. Mal. Depois aponta para a parte interna do acampamento.
+
+"Janta. Rota interna. Nada de borda, nada de carroça dos animais, nada de banco alto onde meio circo resolve virar testemunha. Se alguém de fora perguntar por você, Kage está descansando porque amanhã custa caro."
+
+O jantar vem da cozinha lateral: caldo grosso, pão escuro, cebola doce demais de tanto cozinhar, e um pedaço pequeno de carne que alguém teria chamado de generoso se não estivesse mentindo. Tavin dorme antes de terminar a própria tigela, com a cabeça pendendo para o lado e a colher ainda presa na mão. Nera tira a colher dele antes que caia, cobre o irmão com pano dobrado e volta para Ren com o silêncio de quem escolheu ficar acordada.
+
+O passeio não passa da rota permitida por Silva, mas dentro dela há noite suficiente.
+
+Entre lonas recolhidas, estacas, cordas e carroças apagadas, o circo parece outro lugar: menos espetáculo, mais criatura grande respirando no escuro. Nera anda perto de Ren, primeiro de mãos dadas, depois com o ombro encostando no dele quando a passagem fica estreita demais para fingir distância. As carícias ficam pequenas porque a cidade ainda existe: dedos no pulso, mão na cintura por um instante, um beijo escondido atrás de uma carroça de figurino, outro interrompido pelo barulho de alguém virando uma tina vazia longe demais para ver.
+
+Nera ri baixo nesse segundo, mais de susto do que de alegria. Mesmo assim, ri.
+
+"Você voltou", ela diz, como se a frase ainda precisasse ser provada pelo toque.
+
+O tempo com ela não resolve nada. Talvez por isso pese menos.
+
+Mais tarde, no picadeiro quase vazio, Ren trabalha sozinho.
+
+Sem Sorn, não há marca nova de pouso. Sem Lysa, não há corpo para sincronizar com a Princesa das Sombras. Sem Merrit, o silêncio fica sem ponte para o público. Ren escolhe o que pode treinar sem transformar cansaço alheio em risco: entrada, eixo, queda baixa, giro de manga, a parada antes do olhar final, o ponto exato em que o corpo de Kage deve parecer leve mesmo quando Ren está medindo cada músculo.
+
+Essa parte responde.
+
+O corpo lembra. A sequência segura fica mais limpa. O pé cai onde deve cair, o ombro não abre demais, a respiração entra no lugar certo entre uma marca e outra. Se amanhã algo apertar e Ren precisar sustentar sozinho a parte física de Kage, ele tem mais controle do que tinha à tarde.
+
+Mas a presença de palco não cresce no mesmo ritmo.
+
+Quando Ren tenta preencher sozinho o vazio que Merrit, Dessa, Lysa e a luz da lona normalmente segurariam, Kage fica sério demais. O silêncio passa de mistério para peso. A pausa final quase funciona, mas sem olho de público, sem narradora e sem contraponto, ela vira só um homem parado no centro do picadeiro escuro.
+
+Resultado prático: o treino solo **consolida a parte física individual** da versão segura de Kage, mas **não melhora o drama geral da apresentação** nem substitui um ensaio completo com Sorn, Lysa, Merrit e Dessa. A versão de amanhã continua sendo a versão segura com duas pequenas novidades cênicas; a versão fisicamente mais ambiciosa ainda exigiria novo ensaio e novo risco.
+
+Silva assiste ao fim de longe, sem anunciar presença. Quando Ren para, ela está sentada numa caixa baixa perto de uma estaca, com uma caneca nas mãos.
+
+"Se Jack perguntar, eu digo que você não tentou voar sozinho", ela diz. "Isso conta como bom senso suficiente para uma noite."
+
+A conversa sobre Sarbreen acontece ali mesmo, no picadeiro apagado.
+
+Silva não gosta da pergunta. Não porque ela não entenda. Porque entende o bastante para não gostar.
+
+"Sarbreen não é uma masmorra", ela diz. "É uma cidade morta quebrada embaixo de uma cidade viva. Isso é pior. Masmorra tem começo, fim e porta. Sarbreen tem porão de rico, dreno de pobre, parede anã, ninho de rato, sala lacrada, buraco de contrabandista, túnel que ninguém lembra, mapa falso e mapa verdadeiro vendido pela mesma mão."
+
+Ela bebe um gole, pensa, e continua com mais cautela:
+
+"Rumor de item mágico poderoso existe sempre. Quanto mais poderoso, mais provável que seja mentira para vender mapa, chave enferrujada ou coragem idiota. Já ouvi história de lâmpada que queima sem chama debaixo da cidade. De anel anão que abre porta que não tem fechadura. De martelo que acha parede falsa. De sala onde a sombra fica errada. De arma que saiu limpa de um lugar onde tudo enferruja. Também ouvi tudo isso de bêbado, ladrão, vendedor de sebo e filho de nobre querendo parecer aventureiro."
+
+Ela balança a cabeça.
+
+"Eu não sei separar o útil do lixo. Não hoje."
+
+Depois aponta a caneca para a direção das carroças internas.
+
+"Se você quer falar de magia sem se vender para a primeira guilda que sorrir, comece pequeno. Lockwood Mooney sabe mais de magia do que Jack gosta que ele saiba. Não é explorador de Sarbreen, mas sabe quando uma história tem cheiro de truque arcano. Gond entende pedra, trava, ponte e coisa que explode. A Wizards' Guild entende magia e papelada, nessa ordem. E tem gente no porto que vende mapa velho de Sarbreen por cobre, prata ou vida, dependendo de quem pergunta."
+
+Silva deixa a última frase ficar um pouco no ar.
+
+"Se você quer poder, Ren, vai achar gente tentando vender poder para você. Se quer chance de sobreviver a Masao, talvez comece procurando **luz confiável**, **mapa confiável** e **alguém que saiba dizer quando uma porta antiga quer matar curioso**."
+
+A noite do circo está mais quieta agora. Não calma. Quietude é só o intervalo em que a cidade ainda não decidiu bater de novo.
+
+Situação: **Ren 38/38 PV, CA 17, Ki 5/5, 21 PO, 9 shuriken**. Hora aproximada: **22:24 de 4 Eleasis, 1372 DR**. Ren jantou, caminhou com Nera pela rota interna permitida por Silva e treinou sozinho no picadeiro sem gastar ki. A parte física individual de Kage ficou mais sólida; a presença dramática não melhorou sem equipe. Silva não conseguiu confirmar que a borda do circo está limpa, apenas que não há perseguição colada. Sobre Sarbreen, ela sabe rumores, mas não consegue separar fato útil de fantasia. Caminhos possíveis que ela apontou: **Lockwood Mooney** para triagem arcana discreta, **Gond** para pedra/travas/engenharia perigosa, **Wizards' Guild** para magia com custo político, ou mapas velhos do porto com alto risco de fraude.
+
+O que Ren faz antes de dormir?
