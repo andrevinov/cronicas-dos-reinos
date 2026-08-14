@@ -1645,16 +1645,23 @@ relacoes:
       Masao e às dez lâminas. Dalm não demonstrou reação visível diante dos convidados,
       aceitou o convite e, no camarim, comentou que Ren diz Masao como
       quem perdeu algo para ele.
+      Quando Ren abandonou o sotaque de Kage e exigiu saber para quem Dalm veio
+      avaliá-lo, Dalm não entregou o patrono real por trás da Casa Veyr. Ele
+      percebeu que a voz de Kage é máscara performática e respondeu que veio
+      medir sombra, gravadora e reação a Masao.
     informacoes_observadas_por_ren:
       - "Dalm é o procurador que assinou pela Casa Veyr na apresentação fechada."
       - "Dalm conhece ou reconhece o suficiente da referência a Masao para comentar a pronúncia de Ren em privado."
       - "Dalm manteve compostura perfeita diante da referência pública a Masao."
       - "Dalm aceitou entrar sozinho no camarim funcional de Kage, enquanto seu homem foi impedido de acompanhar."
       - "De perto, Dalm não parece um nobre mole ou puramente ornamental; sua ameaça mais clara é social, contratual e informacional."
+      - "Dalm percebeu que o sotaque de Kage é performático e que Ren tem outro registro de voz por baixo."
+      - "Dalm declarou que veio medir se a sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão de Ren ou anzol em sua garganta."
     riscos:
       - "Dalm pode estar tentando separar Kage dos filtros de Jack sem quebrar contrato em público."
       - "A conversa privada pode virar proposta, chantagem, teste de verdade ou tentativa de mapear a ligação entre Kage, Masao e a gravadora."
       - "A falta de reação visível de Dalm à referência a Masao não prova ignorância."
+      - "Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta."
   dessa_wren:
     nome: "Dessa Wren"
     tipo: "costureira prática / guarda-roupa menor do circo"

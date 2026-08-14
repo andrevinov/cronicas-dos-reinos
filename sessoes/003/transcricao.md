@@ -2767,3 +2767,59 @@ Só então diz, em voz baixa:
 Hora aproximada: **18:30 de 6 Eleasis, 1372 DR**. A apresentação terminou sem fiasco, mas o convite público ao camarim deixou a saída dos convidados tensa. Ren está no guarda-roupa menor/camarim funcional de Kage com Corven Dalm; Tobb está do lado de fora, perto da aba, e o homem da Casa Veyr foi impedido de acompanhar. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. O total de **80 PO** da Casa Veyr segue com Jack/Tobb; o cachê de Ren por esta apresentação ainda será acertado depois.
 
 O que Ren faz?
+
+**Jogador**
+
+"E você fala do que você não viu, e anda com gente que não conhece de verdade", Ren fala, endurecendo a voz. Sozinho com o homem ele não faz questão de sotaque.
+
+"Eu sei que você veio aqui me avaliar, Dalm, ou qualquer que seja seu nome", Ren fala, fitando-o. "Vou te dar a chance de responder, aqui e agora: veio me avaliar pra quem?"
+
+**Narrador**
+
+Teste de Intimidação de Ren para arrancar resposta útil de Dalm: d20 com vantagem [9, 9] -> 9 + 0 = 9 contra CD 16. Falha.
+
+Teste de Intuição de Ren para ler a resposta controlada de Dalm: d20 7 + 6 = 13 contra CD 15. Falha.
+
+A primeira coisa que muda no camarim não é a ameaça.
+
+É a voz.
+
+Sem o sotaque, sem a curva de Kage feita para plateia, Ren ocupa a sala de outro jeito. Menos lenda. Mais homem. Mais faca fora da bainha.
+
+Dalm nota.
+
+O olhar dele desce só um instante até a boca de Ren, como se estivesse corrigindo uma anotação interna. Não há medo bastante para virar recuo. Há interesse. E isso, no espaço apertado do guarda-roupa menor, talvez seja pior.
+
+Do lado de fora, a bota de Tobb desloca peso na terra pisada. Ele ouviu o tom mudar. Não necessariamente as palavras.
+
+Dalm mantém as mãos visíveis. Uma cortesia pequena para a aba, para Tobb, para a ideia de que ninguém quer explicar sangue no camarim de Jack Mooney.
+
+"Corven Dalm serve", ele diz. "Nomes, em Ravens Bluff, são móveis. Usa-se enquanto a casa não pega fogo."
+
+Ele inclina a cabeça um pouco, como quem concede que Ren fez a pergunta certa tarde demais.
+
+"Para a Casa Veyr, naturalmente. Está no contrato, na assinatura e no dinheiro que seu dono de circo ainda não lhe pagou."
+
+A resposta é limpa demais para ser útil.
+
+Dalm continua antes que Ren possa cortar.
+
+"Se a sua pergunta é quem pagou a Casa Veyr para saber o que acontece quando alguém coloca Masao perto da sua boca, então sua voz endureceu, mas não ficou cara o bastante."
+
+Ele não sorri agora.
+
+"Eu não vim avaliar se Kage salta. Todo convidado viu isso. Vim avaliar se a sombra era truque, se a gravadora era corrente, e se Masao era lâmina na sua mão ou anzol na sua garganta."
+
+A lamparina do camarim estala uma vez.
+
+Ren não pega contradição limpa. A cadência de Dalm é polida demais, medida demais. Pode ser verdade parcial. Pode ser isca. Pode ser uma mentira vestida com exatamente a quantidade de verdade necessária para sobreviver ao primeiro olhar.
+
+"Em duas dessas coisas", Dalm diz baixo, "você respondeu sem perceber."
+
+Ele enfim dá meio passo para o lado, não em direção à saída, mas para não ficar exatamente onde Ren o colocou.
+
+"Então pergunte de novo, Kage. Mas entenda a diferença: 'para quem' é uma pergunta de homem que quer correr atrás de uma sombra. 'O que essa pessoa já sabe' talvez seja uma pergunta de homem que pretende continuar vivo."
+
+Hora aproximada: **18:31 de 6 Eleasis, 1372 DR**. Ren não arrancou o nome do patrono real por trás da Casa Veyr. Dalm percebeu que o sotaque de Kage é máscara e deixou claro que veio medir três eixos: **Passo Sombrio**, **gravadora** e **reação a Masao**. Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
+
+O que Ren faz?

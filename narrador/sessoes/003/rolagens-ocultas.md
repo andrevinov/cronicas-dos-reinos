@@ -498,6 +498,40 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: Ren pressiona Dalm no camarim
+
+Contexto: no camarim funcional de Kage, Ren largou o sotaque de palco,
+confrontou Corven Dalm diretamente e exigiu saber para quem Dalm veio avaliá-lo.
+
+Rolagens abertas:
+
+* Intimidação de Ren para arrancar resposta útil de Dalm: d20 com vantagem [9,
+  9] -> 9 + 0 = 9 contra CD 16. Falha.
+* Intuição de Ren para ler a resposta controlada de Dalm: d20 7 + 6 = 13 contra
+  CD 15. Falha.
+
+Rolagem oculta:
+
+* Corven Dalm controlar resposta sem entregar patrono real: d20 12 + 6 = 18
+  contra CD 14. Sucesso.
+
+Consequências:
+
+* Ren não força Dalm a revelar quem está por trás da Casa Veyr.
+* Ao largar o sotaque de palco, Ren revela a Dalm que a voz de Kage é máscara
+  performática e que há outro registro por baixo.
+* Dalm responde com a camada contratual limpa: Casa Veyr, assinatura e dinheiro.
+  Ele se recusa a entregar quem pagou a casa ou usou a casa como filtro.
+* Dalm explicita apenas o suficiente para avançar a tensão: veio medir se a
+  sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão de
+  Ren ou anzol em sua garganta.
+* Ren não consegue determinar se Dalm fala por Masao, contra Masao ou por um
+  terceiro local usando o nome como ferramenta.
+* Tobb percebe a mudança de tom do lado de fora, mas não há registro de que
+  tenha ouvido conteúdo suficiente para agir ou interromper.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob
