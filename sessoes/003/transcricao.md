@@ -1721,3 +1721,37 @@ Ren não foi percebido vigiando. Mas também não conseguiu ouvir o bastante par
 Hora aproximada: **19:49 de 5 Eleasis, 1372 DR**. Ren está oculto do lado de fora da Medidas Torkel, sob **Passos sem Pegadas**, com **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. Ele carrega o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren segue o homem de longe, usando Passos sem Pegadas, até onde conseguir sem se expor.
+
+**Narrador**
+
+O sujeito de capa escura não corre.
+
+Isso ajuda Ren mais do que atrapalha. Corrida chama olhar; passo apressado de trabalhador comum desaparece melhor entre carroceiros, vendedores fechando banca e gente indo para o Harbor antes que a névoa fique grossa demais. O homem evita ruas largas, passa por duas vielas de serviço e faz uma pausa falsa junto a uma pilha de tábuas molhadas, como se estivesse ajustando a bota. Não é caçador. É alguém treinado a não levar problema direto até a própria porta.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas para seguir o cobrador: d20 19 + 17 = 36 contra CD 17. Sucesso.
+
+Teste de Percepção de Ren para manter o alvo à vista sem encurtar demais a distância: d20 9 + 6 = 15 contra CD 15. Sucesso.
+
+Ren fica longe o bastante para não virar sombra atrás dele e perto o bastante para não perder o capuz no fluxo. O bônus da magia não apaga o mundo ao redor, mas apaga as pequenas traições: barro que deveria marcar sola, poça que deveria denunciar peso, cascalho que deveria rolar no momento errado.
+
+O caminho não leva a uma casa rica. Leva a um lugar feito para observar uma entrada.
+
+Entre dois armazéns antigos, onde o Market District começa a ceder para serviço portuário, há uma descida torta de pedra. Sete filetes de água escorrem de níveis diferentes por degraus gastos, cada um vindo de uma boca estreita na parede. Abaixo, a escada some sob um arco baixo, úmido, com cheiro de lodo frio. A **Escada das Sete Águas** existe. Mas, vista dali, não parece uma porta secreta. Parece uma boca que alguém deixou aberta para ver quem teria coragem de entrar.
+
+O cobrador não desce.
+
+Ele cruza para o lado oposto e bate duas vezes por baixo da calha de um depósito sem tabuleta. Uma veneziana alta abre só uma fresta. Ren não vê o rosto de quem está dentro, mas ouve o bastante para separar três palavras:
+
+"Comprou. Errado. Teatro."
+
+A resposta da veneziana se perde no rangido de uma roda passando atrás de Ren. O cobrador recebe algo pequeno, talvez ficha ou tira dobrada, e aponta uma vez com o queixo para a escada molhada. Depois se afasta pela lateral do depósito, ainda sem correr.
+
+Agora Ren enxerga melhor o arranjo: há pelo menos um ponto de observação sobre a Escada das Sete Águas, não dentro dela. Uma janela estreita no segundo piso do depósito fica voltada para os degraus. A lamparina ali está coberta, mas não apagada. No marco lateral da escada, perto do terceiro filete de água, há cera vermelha fresca do tamanho de uma unha, esfregada como marca rápida e não como lacre.
+
+Hora aproximada: **20:02 de 5 Eleasis, 1372 DR**. Ren está oculto na rua de serviço diante da Escada das Sete Águas, ainda sob **Passos sem Pegadas** até cerca de **20:31**, se mantiver a concentração. Recursos: **38/38 PV, CA 17, Ki 2/5, 17 PO, 9 shuriken**. O cobrador continua se afastando pela lateral do depósito. A escada úmida, a janela de observação e o depósito sem tabuleta estão ao alcance de uma decisão imediata.
+
+O que Ren faz?

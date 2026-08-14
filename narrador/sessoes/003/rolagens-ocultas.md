@@ -223,3 +223,35 @@ Consequências:
   frase completa; só ouve fragmento contendo a palavra "errado".
 * Recursos após a cena: Ren fica com 17 PO e 2/5 ki; Passos sem Pegadas ativo
   até cerca de 20:31 de 5 Eleasis, se a concentração for mantida.
+
+---
+
+## Perseguição do cobrador da Escada
+
+Contexto: após ver o sujeito baixo de capa escura pagar Brunna Torkel pela
+entrega da Escada das Sete Águas, Ren decidiu segui-lo de longe sob Passos sem
+Pegadas, tentando não se expor.
+
+Rolagens abertas:
+
+* Furtividade de Ren sob Passos sem Pegadas para seguir o cobrador: d20 19 + 17
+  = 36 contra CD 17. Sucesso.
+* Percepção de Ren para manter o alvo à vista sem encurtar demais a distância:
+  d20 9 + 6 = 15 contra CD 15. Sucesso.
+
+Rolagem oculta:
+
+* Contraobservação do cobrador perceber a cauda: d20 4 + 5 = 9 contra CD 20.
+  Falha.
+
+Consequências:
+
+* O cobrador não percebe Ren.
+* Ren segue o cobrador até a área da Escada das Sete Águas, confirmando que a
+  escada existe e é vigiada a partir de um depósito sem tabuleta.
+* Ren ouve apenas fragmento suficiente para saber que o canal considera a compra
+  da Escada contaminada: "Comprou. Errado. Teatro."
+* O cobrador não desce pela escada. Ele faz contato com uma veneziana do
+  depósito, recebe algo pequeno e continua se afastando.
+* Ren percebe cera vermelha fresca no marco lateral da escada e uma janela de
+  observação com lamparina coberta voltada para os degraus.

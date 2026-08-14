@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "transição entre Market District e serviços do Harbor"
-  ponto_exato: "oculto do lado de fora da Medidas Torkel, vigiando a saída dos fundos"
+  area: "transição entre Market District e serviços do Harbor, diante da Escada das Sete Águas"
+  ponto_exato: "oculto em rua de serviço diante da Escada das Sete Águas, observando o depósito sem tabuleta e o cobrador se afastando"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -209,8 +209,8 @@ tempo:
   dia_do_mes: 5
   dezena: 1
   dia_da_dezena: 5
-  periodo_do_dia: "começo da noite de 5 Eleasis, após plano duplo com Brunna Torkel"
-  hora_aproximada: "19:49 de 5 Eleasis"
+  periodo_do_dia: "começo da noite de 5 Eleasis, após seguir o cobrador da Escada das Sete Águas"
+  hora_aproximada: "20:02 de 5 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data atual avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus."
   prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção, por volta de 06:47 de 5 Eleasis. O Broche do Semblante Humilde, emprestado por Maerra/Lathander, teve o uso renovado com o amanhecer e está disponível novamente até o próximo amanhecer. Durante a reprise curta de Kage, Ren gastou 1 ki em Passo do Vento e a apresentação funcionou, mas no limite técnico. Jack enviou uma resposta-isca exigindo preço alto e filtros rígidos. Ren seguiu o canal: viu a resposta passar por recadeiro pago e por cabriolé cinza-azulado sem brasão, mas perdeu o veículo no fluxo urbano sem identificar mandante. Depois procurou informação sobre Sarbreen e encontrou Brunna Torkel, mas a busca criou rumor e alguém tentou direcioná-lo à Escada das Sete Águas. Ren comprou o mapa-isca e um mapa discreto de porões secos, ativou Passos sem Pegadas e confirmou que alguém pagou Brunna, mas não identificou o pagador."
@@ -1011,8 +1011,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo após confirmar que alguém pagou Brunna Torkel pela entrega da Escada das Sete Águas, sem obter identificação limpa do pagador"
-    - "avaliar se segue o sujeito de capa escura comum, retorna ao circo, investiga a Escada das Sete Águas ou usa o mapa discreto dos porões secos"
+    - "decidir o próximo passo diante da Escada das Sete Águas, com o cobrador se afastando, uma janela de observação ativa e cera vermelha fresca no marco lateral"
+    - "avaliar se continua seguindo o cobrador, investiga o depósito sem tabuleta, examina a escada úmida, recua para usar o mapa discreto dos porões secos ou retorna ao circo"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
     - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
@@ -1058,7 +1058,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está oculto do lado de fora da Medidas Torkel por volta de 19:49 de 5 Eleasis de 1372 DR, sob Passos sem Pegadas. Ele instruiu Brunna a jogar o jogo do bilhete; a escrita discreta falhou e a encenação pública da compra da Escada das Sete Águas foi ruim, mas Brunna entendeu o plano. Ren comprou o mapa-isca por 2 PO e, em silêncio, a cópia dos porões secos por mais 2 PO. Depois ativou Passos sem Pegadas e vigiou a oficina. Um sujeito baixo de capa escura comum e capuz entrou pelos fundos, pagou Brunna com uma bolsinha pequena e saiu; Ren não foi percebido, mas também não ouviu o suficiente para identificar o canal, captando apenas o fragmento '...errado.' Recursos atuais: 38/38 PV, Ki 2/5, 17 PO, 9 shuriken. Passos sem Pegadas ativo até cerca de 20:31 se Ren mantiver concentração."
+  cena_atual: "Ren está oculto na rua de serviço diante da Escada das Sete Águas por volta de 20:02 de 5 Eleasis de 1372 DR, sob Passos sem Pegadas. Ele seguiu o sujeito baixo de capa escura comum que pagou Brunna Torkel e não foi percebido. A perseguição levou a uma descida de pedra com sete filetes de água e a um depósito sem tabuleta usado como ponto de observação. Ren ouviu o fragmento 'Comprou. Errado. Teatro.', viu o cobrador receber algo pequeno pela veneziana e percebeu cera vermelha fresca no marco lateral da escada. O cobrador continua se afastando pela lateral do depósito. Recursos atuais: 38/38 PV, Ki 2/5, 17 PO, 9 shuriken. Passos sem Pegadas ativo até cerca de 20:31 se Ren mantiver concentração."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
