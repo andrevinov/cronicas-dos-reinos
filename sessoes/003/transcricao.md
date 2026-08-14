@@ -1643,3 +1643,19 @@ Na mesa há a folha de camadas de Brunna, ainda aberta. Nela, o ponto dos porõe
 Hora aproximada: **19:18 de 5 Eleasis, 1372 DR**. Ren está na oficina **Medidas Torkel**, diante de Brunna Torkel, com **38/38 PV, CA 17, Ki 4/5, 21 PO, 9 shuriken**. Ele encontrou uma fonte útil sobre Sarbreen, mas sua busca já foi notada por alguém que o associa ao palco.
 
 O que Ren faz?
+
+**Jogador**
+
+[Ren tenta ler se a indicação da Escada das Sete Águas parece uma armadilha, uma distração ou uma pista real controlada, usando o que Brunna já disse sobre Sarbreen e os padrões de recado que ele ouviu até agora.]
+
+**Narrador**
+
+Teste de Intuição de Ren sobre a Escada das Sete Águas: d20 7 + 6 = 13 contra CD 14. Falha.
+
+Ren consegue ver a manipulação mais óbvia: alguém não queria apenas que Brunna mentisse; queria que ela escolhesse uma resposta específica caso ele pedisse "porta". Isso torna a Escada das Sete Águas importante para alguém, mas não diz como.
+
+Pode ser lugar de emboscada. Pode ser caminho falso para gastar a noite. Pode ser uma entrada real que eles preferem que Ren use porque já está observada, preparada ou menos perigosa para eles do que os porões secos que Brunna apontou. O padrão do bilhete, do cabriolé e dos recados anteriores combina com controle de canal, não com brutalidade imediata. Mas Ren não consegue fechar uma leitura confiável.
+
+Conclusão útil: **a Escada das Sete Águas provavelmente não é neutra**. Conclusão que Ren ainda não tem: **se ela é isca, desvio ou rota verdadeira vigiada**.
+
+O que Ren faz?

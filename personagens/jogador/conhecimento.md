@@ -2705,4 +2705,6 @@ Progressão:
 * segundo Brunna, quem quer só passar carga tende a usar água e lama; quem quer conversar, guardar papel, riscar símbolo ou fazer cerimônia tende a procurar ar seco, segunda saída e teto estável;
 * uma tira de papel foi deixada pela veneziana dos fundos de Medidas Torkel com a frase: "O do palco pergunta por baixo. Se pedir porta, entregue a Escada das Sete Águas. Paga-se dobrado.";
 * Ren sabe que alguém associou sua busca sobre Sarbreen ao palco e tentou interferir no mapa que Brunna lhe mostraria;
+* rolagem: Intuição de Ren sobre a Escada das Sete Águas, d20 7 + 6 = 13 contra CD 14, falha;
+* Ren percebe que a Escada das Sete Águas provavelmente não é neutra, mas não consegue concluir se ela é isca, desvio ou rota verdadeira vigiada;
 * hora aproximada: 19:18 de 5 Eleasis, 1372 DR.

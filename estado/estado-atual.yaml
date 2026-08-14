@@ -1008,7 +1008,7 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como responder a Brunna Torkel e ao bilhete que tentou direcionar Ren à Escada das Sete Águas"
+    - "decidir como responder a Brunna Torkel e ao bilhete que tentou direcionar Ren à Escada das Sete Águas; Intuição falhou por pouco, então Ren sabe que a Escada provavelmente não é neutra, mas não sabe se é isca, desvio ou rota verdadeira vigiada"
     - "avaliar se compra a cópia honesta de Brunna, pressiona a fonte, investiga a veneziana dos fundos ou usa a Escada das Sete Águas como isca"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
@@ -1055,7 +1055,7 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na oficina Medidas Torkel por volta de 19:18 de 5 Eleasis de 1372 DR, diante de Brunna Torkel, anã medidora de porões e fonte útil sobre Sarbreen. Depois de perder o cabriolé cinza-azulado, procurou especialista em Sarbreen no eixo Market/Harbor. A busca encontrou uma fonte real, mas falhou em permanecer discreta: rumores ligam o estrangeiro do palco a perguntas sobre ruínas. Brunna mostrou linhas parciais de Sarbreen: Balança Velha, linha fria sob ofícios sujos/tintureiros e porões secos atrás de armazéns antigos. Uma tira de papel entrou pela veneziana dos fundos instruindo Brunna a direcionar 'o do palco' à Escada das Sete Águas por pagamento dobrado. Recursos atuais: 38/38 PV, Ki 4/5, 21 PO, 9 shuriken."
+  cena_atual: "Ren está na oficina Medidas Torkel por volta de 19:18 de 5 Eleasis de 1372 DR, diante de Brunna Torkel, anã medidora de porões e fonte útil sobre Sarbreen. Depois de perder o cabriolé cinza-azulado, procurou especialista em Sarbreen no eixo Market/Harbor. A busca encontrou uma fonte real, mas falhou em permanecer discreta: rumores ligam o estrangeiro do palco a perguntas sobre ruínas. Brunna mostrou linhas parciais de Sarbreen: Balança Velha, linha fria sob ofícios sujos/tintureiros e porões secos atrás de armazéns antigos. Uma tira de papel entrou pela veneziana dos fundos instruindo Brunna a direcionar 'o do palco' à Escada das Sete Águas por pagamento dobrado. Intuição de Ren falhou por pouco: ele percebe que a Escada provavelmente não é neutra, mas não sabe se é isca, desvio ou rota verdadeira vigiada. Recursos atuais: 38/38 PV, Ki 4/5, 21 PO, 9 shuriken."
   risco_imediato: "moderado"
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
