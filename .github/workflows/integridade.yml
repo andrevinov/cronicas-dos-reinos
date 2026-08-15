@@ -29,7 +29,7 @@ jobs:
         run: python ferramentas/verificar-integridade.py
 
       - name: Preservação da baseline durante a refatoração
-        if: startsWith(github.ref_name, 'refactor/')
+        if: github.event_name == 'pull_request' || startsWith(github.ref_name, 'refactor/')
         run: >-
           python ferramentas/verificar-integridade.py
           --baseline baseline/estado-logico-2026-08-15.yaml
