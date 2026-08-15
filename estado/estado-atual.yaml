@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "infiltracao_observacao"
+  modo_de_cena_atual: "exploracao_infiltracao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Harbor District / armazéns velhos"
-  ponto_exato: "segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável Ponte Baixa"
+  area: "Harbor District / armazéns velhos / Ponte Baixa"
+  ponto_exato: "cerca de doze pés dentro da boca seca da Ponte Baixa, numa dobra baixa de pedra"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -323,24 +323,30 @@ localizacao:
     indicar cal, sal, carvão, pano encerado, ar quente, ralo tampado e
     preservação de papel. Seguindo aos armazéns velhos, Ren encaixou o mapa de Brunna à
     pista de Dalm e encontrou uma provável passagem seca sob parede baixa entre
-    dois armazéns, com pó claro e pano encerado velho impedindo umidade. Ren está
-    observando de um segundo andar quebrado e já mapeou sombras úteis para Passo
-    Sombrio.
+    dois armazéns, com pó claro e pano encerado velho impedindo umidade. Ren
+    observou a passagem até faltar cerca de meia hora para a segunda maré. A
+    vigília não revelou movimento útil, embora Ren tenha aguentado bem a espera.
+    Ao se mover, cruzou da oficina até a fresta sem chamar atenção comum, mas
+    não conseguiu identificar mecanismo, fio, pressão ou lacre claro na boca seca
+    antes de passar. Ren entrou cerca de doze pés na passagem. Está numa dobra
+    baixa de pedra; sem Visão no Escuro, o caminho adiante é volume escuro, não
+    mapa. Ren ainda não ativou Passos sem Pegadas nem deixou marca explícita para
+    Luath.
 
 tempo:
   ano_dr: 1372
   nome_do_ano: "Ano da Magia Selvagem"
-  data_exata: "6 Eleasis, 1372 DR"
+  data_exata: "7 Eleasis, 1372 DR"
   calendario: "Calendário de Harptos"
   mes: "Eleasis"
   nome_sazonal_do_mes: "Highsun"
-  dia_do_mes: 6
+  dia_do_mes: 7
   dezena: 1
-  dia_da_dezena: 6
-  periodo_do_dia: "noite de 6 Eleasis, observação da Ponte Baixa"
-  hora_aproximada: "20:52 de 6 Eleasis"
+  dia_da_dezena: 7
+  periodo_do_dia: "madrugada de 7 Eleasis, dentro da boca seca da Ponte Baixa"
+  hora_aproximada: "01:32 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
-  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
+  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
   prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. Ren abriu Kage com Passo Sombrio sem gastar ki, da Sombra B para a Sombra A, terminou a apresentação sem fiasco e chamou Dalm ao camarim com referência direta a Masao e às dez lâminas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
 
 recursos:
@@ -1201,8 +1207,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável Ponte Baixa atrás de armazéns velhos, por volta de 20:52 de 6 Eleasis de 1372 DR. Depois de deixar Dalm sair, Ren informou Jack, montou uma saída falsa com Dessa e Tobb, avisou Luath e Maerra, e chegou sem cauda útil ao ponto indicado. A provável Ponte Baixa é uma passagem seca sob parede baixa entre dois armazéns antigos, com pó claro entre as pedras e pano encerado velho impedindo umidade. Ren já mapeou sombras úteis: Sombra A sob o beiral quebrado da oficina, Sombra B atrás de barris vazios, Sombra C dentro da fresta seca da Ponte Baixa quase no limite de visão útil, e Sombra D sob uma carroça quebrada junto ao armazém sul. Ele não está sob Passos sem Pegadas nem Visão no Escuro no momento. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. A janela segura antes da segunda maré ainda é ampla, mas a entrada pode estar vigiada, marcada ou preparada."
-  risco_imediato: "alto em termos de infiltração: a rua parece vazia demais, a passagem foi provavelmente preparada para permanecer seca e Dalm pode ter empurrado Ren para uma rota observada. Não há guarda visível, mas a ausência de movimento também é sinal de controle."
+  cena_atual: "Ren está cerca de doze pés dentro da boca seca da Ponte Baixa, numa dobra baixa de pedra, por volta de 01:32 de 7 Eleasis de 1372 DR. Depois de vigiar a passagem desde o segundo andar quebrado da oficina de tonéis, ele não percebeu movimento útil e decidiu entrar quando faltava cerca de meia hora para a segunda maré. Cruzou da oficina até a fresta sem chamar atenção comum, mas falhou em identificar mecanismo, fio, pressão ou lacre claro na boca seca. Atrás dele, a rua ainda aparece como retângulo úmido e cinzento; à frente, sem Visão no Escuro, o caminho é volume escuro. Ele não está sob Passos sem Pegadas nem Visão no Escuro no momento. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. Ren ainda não deixou marca explícita para Luath."
+  risco_imediato: "alto em termos de infiltração: a passagem foi preparada para permanecer seca, a investigação da boca falhou e o caminho adiante está escuro sem recurso ativo de visão ou furtividade sobrenatural."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1213,6 +1219,6 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren se aproxima da Ponte Baixa: observar mais, ativar Passos sem Pegadas, ativar Visão no Escuro, usar Passo Sombrio, testar a fresta seca ou procurar outra entrada"
-    - "avaliar se deixa marca de retorno para Luath antes de entrar"
+    - "decidir se Ren ativa Visão no Escuro, Passos sem Pegadas, Silêncio, usa Passo Sombrio de volta/para frente se houver linha de visão, deixa marca para Luath ou continua no escuro"
+    - "avaliar se deixa marca de retorno para Luath antes de avançar além da boca seca"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

@@ -3066,3 +3066,49 @@ Não há guarda visível. Não há fila. Não há culto cantando. Só uma rua qu
 Hora aproximada: **20:52 de 6 Eleasis, 1372 DR**. Ren está no segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável **Ponte Baixa** atrás de armazéns velhos. Ele não está sob **Passos sem Pegadas** nem **Visão no Escuro** no momento; recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A janela segura antes da segunda maré ainda é ampla, mas a entrada pode estar vigiada, marcada ou preparada.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren continuará vigiando até chegar perto do horário. Se nada acontecer até faltar meia hora pra segunda maré, ele entra.
+
+**Narrador**
+
+A espera é a parte mais difícil de uma emboscada quando ninguém aparece.
+
+No primeiro trecho da noite, o porto ainda respira: corda arrastando madeira, uma porta distante batendo duas vezes, vozes bêbadas que não entram na rua de serviço. Depois isso também morre. A névoa baixa engole o fundo dos armazéns e transforma cada poste em silhueta de homem parado.
+
+Teste de Percepção de Ren na vigília da Ponte Baixa até perto da segunda maré: d20 1 + 6 = 7 contra CD 15. Falha.
+
+Teste de Constituição para resistir ao cansaço e à rigidez da espera: d20 18 + 2 = 20 contra CD 13. Sucesso.
+
+Ren não cochila. O corpo aguenta. O problema é outro: a rua é quieta de um jeito que gasta o olhar. Duas vezes ele acha que alguma coisa mudou atrás dos barris. Uma vez é névoa. Outra, talvez um rato. Ou talvez não. O som da água distante muda o bastante para sugerir maré, mas não o bastante para virar relógio.
+
+Se alguém entrou ou saiu por uma fresta melhor escondida, Ren não pegou.
+
+Nada sobe até o segundo andar da oficina. Nenhuma patrulha tropeça no esconderijo. Nenhum trabalhador bêbado escolhe aquele canto para mijar ou dormir. Isso, naquela rua, quase incomoda mais do que ajudaria.
+
+Quando o cálculo de Ren chega perto de meia hora antes da segunda maré, ele se move.
+
+Teste de Furtividade de Ren ao deixar o ponto de observação e cruzar até a Ponte Baixa: d20 10 + 7 = 17 contra CD 15. Sucesso.
+
+Ele desce evitando as três tábuas que rangem. Cruza a rua baixa no intervalo entre duas oscilações da lamparina distante. O pano de carreiro nas costas quebra a forma do corpo; para qualquer olho comum, se houver um, ele seria só sombra atravessando sombra.
+
+A pilha de barris vazios fede a madeira velha, peixe seco e água que evaporou errado. De perto, a fresta da Ponte Baixa é mais baixa do que parecia: não é uma porta para homem ereto, mas uma boca de pedra, larga o bastante para passar agachado, talvez de lado em alguns pontos. A borda inferior foi raspada há pouco. Não com ferramenta fina; com pressa paciente.
+
+Teste de Investigação de Ren na boca seca antes de passar o corpo: d20 2 + 4 = 6 contra CD 15. Falha.
+
+Ren encontra o pó claro. Encontra o pano encerado. Encontra arranhões baixos onde madeira nova esconde pedra antiga. Mas não encontra fio claro, pressão clara, lacre claro ou marca segura de alarme antes de precisar decidir se passa.
+
+Se há mecanismo, está melhor escondido do que a luz permite.
+
+Ele entra.
+
+O primeiro trecho rouba o mundo depressa. Atrás dele, a rua ainda existe como retângulo úmido e cinzento. À frente, a passagem baixa desce em garganta seca. A pedra toca ombro e antebraço. O ar tem gosto de cal, sal e pano velho guardado tempo demais. Água deveria correr ali; em vez disso, há secura artificial e um frio sem vento.
+
+Depois de uns doze pés, Ren alcança uma dobra interna onde consegue ficar meio ajoelhado, meio curvado. A luz da rua já não ajuda quase nada. Sem **Visão no Escuro**, o que há adiante é volume escuro, não mapa. Sem **Passos sem Pegadas**, cada raspão de tecido contra pedra ainda pertence ao mundo.
+
+Um detalhe pequeno fica com ele: logo na entrada, o pano encerado não estava apenas tapando umidade. Estava dobrado para dentro, como se alguém quisesse impedir que o ar de fora entrasse, mas aceitasse que algo de dentro respirasse para baixo.
+
+Hora aproximada: **01:32 de 7 Eleasis, 1372 DR**. Ren está dentro da boca seca da **Ponte Baixa**, cerca de doze pés além da entrada, numa dobra baixa de pedra. Ele não está sob **Passos sem Pegadas** nem **Visão no Escuro**; recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A segunda maré está a aproximadamente meia hora. Ren ainda não deixou uma marca explícita para Luath.
+
+O que Ren faz?

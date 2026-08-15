@@ -760,3 +760,49 @@ Consequências:
   mais cuidado e gente evitando termos ligados a tintureiro, cesto e barril.
 * A aproximação pública de Ren a Narwhal não avança o alarme por enquanto, pois
   as rolagens abertas de chegada e leitura do fluxo foram bem-sucedidas.
+
+---
+
+## Noite de 6 para 7 Eleasis: vigília e entrada na Ponte Baixa
+
+Contexto: Ren decidiu vigiar a provável Ponte Baixa até faltar cerca de meia
+hora para a segunda maré. Se nada acontecesse, entraria pela fresta seca.
+
+Rolagens abertas:
+
+* Vigília de Ren na Ponte Baixa até perto da segunda maré: d20 1 + 6 = 7 contra
+  CD 15. Falha.
+* Resistir ao cansaço e à rigidez da espera: d20 18 + 2 = 20 contra CD 13.
+  Sucesso.
+* Furtividade de Ren ao deixar o ponto de observação e cruzar até a Ponte Baixa:
+  d20 10 + 7 = 17 contra CD 15. Sucesso.
+* Investigação de Ren na boca seca antes de passar o corpo: d20 2 + 4 = 6 contra
+  CD 15. Falha.
+
+Rolagens ocultas:
+
+* Movimento secreto aparecer dentro da janela observada: d20 8 + 4 = 12 contra
+  CD 15. Falha.
+* Olheiro externo perceber Ren no segundo andar: d20 13 + 5 = 18 contra CD 19.
+  Falha.
+* Patrulha ou trabalhador interferir no esconderijo de Ren: d20 9 + 2 = 11
+  contra CD 13. Falha.
+* Controle oculto perceber a entrada de Ren: d20 12 + 4 = 16 contra CD 15.
+  Sucesso.
+* Fio seco acionar com a passagem de Ren: d20 9 + 3 = 12 contra CD 15. Falha.
+
+Consequências:
+
+* Ren aguenta a espera sem cochilar ou sofrer penalidade imediata de cansaço.
+* A vigília não revela entrada, saída ou movimentação útil; a falha crítica de
+  Percepção significa que Ren não pode afirmar que nada ocorreu, apenas que ele
+  não pegou nada acionável.
+* Ninguém comum interrompe o esconderijo de Ren, e o olheiro externo não
+  identifica sua posição no segundo andar.
+* Ren cruza da oficina até a fresta sem chamar atenção comum.
+* Ren não identifica mecanismo, fio, pressão ou lacre claro na boca seca antes de
+  entrar.
+* O fio seco não aciona de forma direta com a passagem de Ren.
+* Algum controle oculto percebeu ou registrou a entrada de Ren. Ren não sabe
+  disso ainda; usar como alerta interno, preparação ou ajuste de oposição na
+  próxima área, sem revelar a fonte ao jogador.

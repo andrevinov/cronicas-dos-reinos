@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="titulo desc">
+  <title id="titulo">Mapa tático da Ponte Baixa, 20:52 de 6 Eleasis</title>
+  <desc id="desc">Mapa top-down da visão atual de Ren: oficina de tonéis abandonada, rua de serviço, armazéns velhos, fresta seca da Ponte Baixa e sombras úteis para Passo Sombrio.</desc>
+
+  <defs>
+    <pattern id="grade" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#35434c" stroke-width="1" opacity="0.45"/>
+    </pattern>
+    <filter id="sombra-suave" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <marker id="seta" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d4b65b"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="900" fill="#11181d"/>
+  <rect x="40" y="90" width="1060" height="690" fill="#1c272e" stroke="#42505a" stroke-width="3" filter="url(#sombra-suave)"/>
+  <rect x="40" y="90" width="1060" height="690" fill="url(#grade)" opacity="0.55"/>
+
+  <text x="40" y="54" fill="#f0e7d1" font-family="serif" font-size="34" font-weight="700">Ponte Baixa - visão de Ren, 20:52</text>
+  <text x="43" y="82" fill="#b8c4ca" font-family="sans-serif" font-size="17">Escala aproximada: cada quadrado = 10 pés. Norte para cima. Apenas informação visível ou inferida por Ren.</text>
+
+  <!-- Rua de serviço -->
+  <path d="M120 375 C260 345 385 360 520 375 C680 392 825 380 990 342 L1028 540 C845 586 676 585 512 558 C360 532 238 541 105 579 Z"
+        fill="#28353d" stroke="#4a5b65" stroke-width="3"/>
+  <path d="M120 375 C260 345 385 360 520 375 C680 392 825 380 990 342"
+        fill="none" stroke="#7a8b90" stroke-width="2" opacity="0.35"/>
+  <text x="430" y="500" fill="#d7dde0" font-family="sans-serif" font-size="24" opacity="0.85">rua de serviço úmida e vazia</text>
+
+  <!-- Armazem norte -->
+  <rect x="110" y="140" width="760" height="210" fill="#2a211b" stroke="#695a48" stroke-width="4"/>
+  <path d="M110 140 L190 98 L880 98 L870 140 Z" fill="#1b1614" stroke="#5b4a3a" stroke-width="3"/>
+  <rect x="192" y="170" width="120" height="54" fill="#111416" stroke="#4d4137" stroke-width="3"/>
+  <rect x="715" y="208" width="85" height="108" fill="#0f1214" stroke="#5d4e3f" stroke-width="3"/>
+  <text x="136" y="168" fill="#f0e7d1" font-family="serif" font-size="26" font-weight="700">armazém velho norte</text>
+  <text x="197" y="203" fill="#93a5ac" font-family="sans-serif" font-size="16">janela alta escura</text>
+  <text x="706" y="338" fill="#93a5ac" font-family="sans-serif" font-size="16">porta fechada</text>
+
+  <!-- Armazem sul -->
+  <rect x="805" y="435" width="280" height="260" fill="#261f1a" stroke="#665746" stroke-width="4"/>
+  <path d="M805 435 L856 392 L1090 402 L1085 435 Z" fill="#1a1512" stroke="#5b4a3a" stroke-width="3"/>
+  <rect x="884" y="522" width="90" height="145" fill="#0f1214" stroke="#5d4e3f" stroke-width="3"/>
+  <text x="832" y="463" fill="#f0e7d1" font-family="serif" font-size="24" font-weight="700">armazém sul</text>
+  <text x="862" y="704" fill="#93a5ac" font-family="sans-serif" font-size="16">porta escura</text>
+
+  <!-- Parede baixa entre armazens e Ponte Baixa -->
+  <rect x="315" y="312" width="525" height="48" rx="5" fill="#4b4640" stroke="#92836b" stroke-width="3"/>
+  <path d="M396 345 C450 338 486 342 535 348 C601 356 650 352 720 343"
+        fill="none" stroke="#d9d0b8" stroke-width="8" stroke-linecap="round" opacity="0.9"/>
+  <ellipse cx="552" cy="355" rx="115" ry="30" fill="#15181a" stroke="#d9d0b8" stroke-width="4"/>
+  <path d="M456 356 C493 347 532 346 586 354 C621 359 652 360 683 354"
+        fill="none" stroke="#f0efe4" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <text x="390" y="295" fill="#f0e7d1" font-family="serif" font-size="21" font-weight="700">parede baixa entre armazéns</text>
+  <text x="650" y="390" fill="#f5ebc7" font-family="sans-serif" font-size="20" font-weight="700">Ponte Baixa / fresta seca</text>
+  <text x="650" y="415" fill="#c8d0d3" font-family="sans-serif" font-size="15">pó claro + pano encerado</text>
+
+  <!-- Barris e tabuas -->
+  <g fill="#5b422a" stroke="#a77b49" stroke-width="3">
+    <circle cx="282" cy="337" r="24"/>
+    <circle cx="245" cy="361" r="23"/>
+    <circle cx="315" cy="373" r="25"/>
+    <circle cx="272" cy="397" r="22"/>
+  </g>
+  <g stroke="#7a5b3b" stroke-width="8" stroke-linecap="round" opacity="0.9">
+    <line x1="205" y1="415" x2="360" y2="392"/>
+    <line x1="218" y1="439" x2="375" y2="418"/>
+    <line x1="238" y1="462" x2="350" y2="450"/>
+  </g>
+  <text x="174" y="321" fill="#d7dde0" font-family="sans-serif" font-size="18">barris vazios</text>
+
+  <!-- Oficina de toneis -->
+  <rect x="150" y="610" width="560" height="145" fill="#241c17" stroke="#6e5b48" stroke-width="4"/>
+  <path d="M150 610 L232 555 L718 572 L710 610 Z" fill="#191411" stroke="#5b4a3a" stroke-width="3"/>
+  <rect x="225" y="635" width="110" height="70" fill="#141718" stroke="#5d4e3f" stroke-width="3"/>
+  <path d="M365 630 L520 620 L505 710 L360 720 Z" fill="#101416" stroke="#52616b" stroke-width="2" stroke-dasharray="10 7"/>
+  <text x="175" y="642" fill="#f0e7d1" font-family="serif" font-size="23" font-weight="700">oficina de tonéis</text>
+  <text x="175" y="670" fill="#f0e7d1" font-family="serif" font-size="23" font-weight="700">abandonada</text>
+  <text x="175" y="698" fill="#c8d0d3" font-family="sans-serif" font-size="16">2º andar quebrado; três tábuas rangem</text>
+
+  <!-- Carroca quebrada -->
+  <g transform="translate(930 575) rotate(-9)">
+    <rect x="-75" y="-32" width="155" height="58" fill="#33271f" stroke="#806344" stroke-width="4"/>
+    <line x1="-95" y1="35" x2="90" y2="-38" stroke="#745436" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="-55" cy="43" r="26" fill="#1a1512" stroke="#9a7045" stroke-width="5"/>
+    <circle cx="55" cy="35" r="23" fill="#1a1512" stroke="#9a7045" stroke-width="5"/>
+  </g>
+  <text x="947" y="548" fill="#d7dde0" font-family="sans-serif" font-size="16">carroça quebrada</text>
+
+  <!-- Posicao de Ren e sombras -->
+  <circle cx="450" cy="638" r="18" fill="#f0c84d" stroke="#fff3bc" stroke-width="4"/>
+  <text x="478" y="628" fill="#fff3bc" font-family="sans-serif" font-size="23" font-weight="700">Ren</text>
+  <text x="478" y="653" fill="#d8c277" font-family="sans-serif" font-size="15">posição atual</text>
+
+  <ellipse cx="398" cy="598" rx="80" ry="30" fill="#2d254a" stroke="#a98cff" stroke-width="4" opacity="0.92"/>
+  <text x="362" y="604" fill="#ffffff" font-family="sans-serif" font-size="23" font-weight="700">A</text>
+
+  <ellipse cx="286" cy="385" rx="86" ry="48" fill="#2d254a" stroke="#a98cff" stroke-width="4" opacity="0.92"/>
+  <text x="275" y="393" fill="#ffffff" font-family="sans-serif" font-size="23" font-weight="700">B</text>
+
+  <ellipse cx="555" cy="354" rx="105" ry="36" fill="#2d254a" stroke="#a98cff" stroke-width="4" opacity="0.92"/>
+  <text x="545" y="363" fill="#ffffff" font-family="sans-serif" font-size="23" font-weight="700">C</text>
+
+  <ellipse cx="928" cy="595" rx="98" ry="48" fill="#2d254a" stroke="#a98cff" stroke-width="4" opacity="0.92"/>
+  <text x="918" y="604" fill="#ffffff" font-family="sans-serif" font-size="23" font-weight="700">D</text>
+
+  <!-- Linhas de alcance/visao -->
+  <path d="M450 638 L286 385" fill="none" stroke="#d4b65b" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#seta)"/>
+  <path d="M450 638 L555 354" fill="none" stroke="#d4b65b" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#seta)"/>
+  <path d="M450 638 L928 595" fill="none" stroke="#d4b65b" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#seta)"/>
+  <text x="520" y="520" fill="#d4b65b" font-family="sans-serif" font-size="17">linhas de visão aproximadas</text>
+
+  <!-- Norte -->
+  <g transform="translate(1045 130)">
+    <circle cx="0" cy="0" r="42" fill="#172026" stroke="#7e8d93" stroke-width="3"/>
+    <path d="M0 -30 L12 6 L0 0 L-12 6 Z" fill="#e8e0ca"/>
+    <text x="-9" y="31" fill="#e8e0ca" font-family="sans-serif" font-size="18" font-weight="700">N</text>
+  </g>
+
+  <!-- Legenda lateral -->
+  <rect x="1140" y="110" width="220" height="660" rx="10" fill="#172026" stroke="#4d5d66" stroke-width="3"/>
+  <text x="1162" y="150" fill="#f0e7d1" font-family="serif" font-size="26" font-weight="700">Legenda</text>
+
+  <circle cx="1172" cy="192" r="11" fill="#f0c84d" stroke="#fff3bc" stroke-width="3"/>
+  <text x="1195" y="199" fill="#d7dde0" font-family="sans-serif" font-size="17">Ren</text>
+
+  <ellipse cx="1172" cy="235" rx="18" ry="11" fill="#2d254a" stroke="#a98cff" stroke-width="3"/>
+  <text x="1195" y="241" fill="#d7dde0" font-family="sans-serif" font-size="17">sombra navegável</text>
+
+  <rect x="1157" y="268" width="32" height="18" fill="#4b4640" stroke="#92836b" stroke-width="2"/>
+  <text x="1195" y="284" fill="#d7dde0" font-family="sans-serif" font-size="17">parede baixa</text>
+
+  <ellipse cx="1173" cy="322" rx="25" ry="11" fill="#15181a" stroke="#d9d0b8" stroke-width="3"/>
+  <text x="1195" y="328" fill="#d7dde0" font-family="sans-serif" font-size="17">fresta seca</text>
+
+  <line x1="1155" y1="364" x2="1190" y2="364" stroke="#d4b65b" stroke-width="3" stroke-dasharray="7 6"/>
+  <text x="1195" y="370" fill="#d7dde0" font-family="sans-serif" font-size="17">linha de visão</text>
+
+  <text x="1162" y="430" fill="#f0e7d1" font-family="serif" font-size="22" font-weight="700">Sombras</text>
+  <text x="1162" y="462" fill="#d7dde0" font-family="sans-serif" font-size="16">A: beiral da oficina</text>
+  <text x="1162" y="490" fill="#d7dde0" font-family="sans-serif" font-size="16">B: atrás dos barris</text>
+  <text x="1162" y="518" fill="#d7dde0" font-family="sans-serif" font-size="16">C: dentro da fresta</text>
+  <text x="1162" y="546" fill="#d7dde0" font-family="sans-serif" font-size="16">D: carroça quebrada</text>
+
+  <text x="1162" y="610" fill="#f0e7d1" font-family="serif" font-size="22" font-weight="700">Estado</text>
+  <text x="1162" y="642" fill="#d7dde0" font-family="sans-serif" font-size="16">Sem guardas visíveis</text>
+  <text x="1162" y="670" fill="#d7dde0" font-family="sans-serif" font-size="16">Rua vazia demais</text>
+  <text x="1162" y="698" fill="#d7dde0" font-family="sans-serif" font-size="16">Ren sem Visão no Escuro</text>
+  <text x="1162" y="726" fill="#d7dde0" font-family="sans-serif" font-size="16">Ren sem Passos sem Pegadas</text>
+
+  <!-- Barra de escala -->
+  <g transform="translate(85 815)">
+    <line x1="0" y1="0" x2="150" y2="0" stroke="#e8e0ca" stroke-width="5"/>
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#e8e0ca" stroke-width="4"/>
+    <line x1="75" y1="-8" x2="75" y2="8" stroke="#e8e0ca" stroke-width="3"/>
+    <line x1="150" y1="-12" x2="150" y2="12" stroke="#e8e0ca" stroke-width="4"/>
+    <text x="0" y="35" fill="#d7dde0" font-family="sans-serif" font-size="15">0</text>
+    <text x="61" y="35" fill="#d7dde0" font-family="sans-serif" font-size="15">15 pés</text>
+    <text x="132" y="35" fill="#d7dde0" font-family="sans-serif" font-size="15">30 pés</text>
+  </g>
+</svg>
