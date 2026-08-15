@@ -1189,3 +1189,35 @@ Consequências:
   com hora, descrição e testemunha.
 * A Ponte Baixa ainda não percebeu plenamente a retirada nem conseguiu limpar a
   sala seca antes de qualquer resposta futura da guarda, mas isso é temporário.
+
+---
+
+## Noite de 7 Eleasis: contenção do registro reservado
+
+Contexto: Ren pediu que Luath registrasse a origem das evidências da Ponte
+Baixa como testemunha/fonte em risco, sem usar Ren Kage, homem sem nome ou Ren
+Kagehira no registro.
+
+Sem rolagem:
+
+* Luath aceita a via de fonte reservada porque ele próprio a ofereceu e porque
+  a formulação de Ren não exige falsificar autoria nem negar a existência da
+  fonte.
+
+Rolagem oculta:
+
+* Night Watch conter o registro reservado da Ponte Baixa sem criar memória
+  lateral útil no posto: d20 7 + 3 = 10 contra CD 13. Falha.
+
+Consequências:
+
+* Luath sela o material como recebido de fonte reservada sob risco plausível de
+  represália, com identidade retida pelo sargento recebedor até requisição
+  selada de autoridade competente.
+* O registro externo não traz Ren Kage, Ren Kagehira, gravadora, menino ou Kage.
+* Luath mantém a chave do pacote e pretende tentar encaminhamento a Tyr no
+  primeiro cinza.
+* A falha não expõe o nome de Ren imediatamente, mas cria memória burocrática
+  lateral: ao menos uma pessoa no posto saberá que Luath recebeu de madrugada
+  um pacote reservado ligado à Ponte Baixa. Isso pode virar rumor institucional
+  ou pressão futura se alguém procurar essa trilha.

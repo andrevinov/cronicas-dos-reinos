@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "exploracao_infiltracao"
+  modo_de_cena_atual: "interacao_institucional"
 
 personagem:
   nome: "Ren Kagehira"
@@ -321,17 +321,24 @@ localizacao:
     o fim da manhã, procurará crime, prova e responsável. Depois Ren foi à Casa
     da Aurora Menor e ouviu de Maerra que seco onde deveria haver água pode
     indicar cal, sal, carvão, pano encerado, ar quente, ralo tampado e
-    preservação de papel. Seguindo aos armazéns velhos, Ren encaixou o mapa de Brunna à
-    pista de Dalm e encontrou uma provável passagem seca sob parede baixa entre
-    dois armazéns, com pó claro e pano encerado velho impedindo umidade. Ren
-    observou a passagem até faltar cerca de meia hora para a segunda maré. A
-    vigília não revelou movimento útil, embora Ren tenha aguentado bem a espera.
-    Ao se mover, cruzou da oficina até a fresta sem chamar atenção comum, mas
-    não conseguiu identificar mecanismo, fio, pressão ou lacre claro na boca seca
-    antes de passar. Ren entrou cerca de doze pés na passagem. Está numa dobra
-    baixa de pedra; sem Visão no Escuro, o caminho adiante é volume escuro, não
-    mapa. Ren ainda não ativou Passos sem Pegadas nem deixou marca explícita para
-    Luath.
+    preservação de papel. Seguindo aos armazéns velhos, Ren encaixou o mapa de
+    Brunna à pista de Dalm e encontrou a Ponte Baixa, uma passagem seca sob parede
+    baixa entre dois armazéns. Ele esperou até perto da segunda maré, entrou,
+    ativou Visão no Escuro e Passos sem Pegadas, marcou "K ->" no corredor seco e
+    encontrou uma sala baixa seca usada como arquivo vivo de alteração, secagem e
+    preparação de papéis. Retirou três evidências: tira de controle com retenção
+    anulada, volume 13, V. Rook, M. Harrow e data recente; tira encerada com Kage,
+    gravadora, menino e antes de maré; e cilindro curto de matriz/cera com marca
+    de sol apagado. A retirada não ficou limpa, a linha de cinza do pano foi
+    tocada, a lingueta do trilho ficou solta e a marca "K ->" permaneceu no
+    local. Ren recuou por uma cadeia de sombras, saiu sem cauda útil percebida e
+    chegou ao posto da Night Watch por volta de 02:18. Luath recebeu o relato e,
+    após Ren pedir sigilo de fonte, selou as três evidências como material
+    recebido de fonte reservada sob risco plausível de represália. O registro
+    externo não nomeia Ren Kage, Ren Kagehira, gravadora ou menino; a identidade
+    fica retida com Luath até requisição selada de autoridade competente. Luath
+    guardou o pacote em gaveta de ferro e pretende tentar encaminhamento a Tyr no
+    primeiro cinza.
 
 tempo:
   ano_dr: 1372
@@ -344,10 +351,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "madrugada de 7 Eleasis, no posto da Night Watch"
-  hora_aproximada: "01:48 de 7 Eleasis"
+  hora_aproximada: "02:24 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. Ren abriu Kage com Passo Sombrio sem gastar ki, da Sombra B para a Sombra A, terminou a apresentação sem fiasco e chamou Dalm ao camarim com referência direta a Masao e às dez lâminas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
+  prazo_relevante: "Passos sem Pegadas foi ativado por Ren por volta de 01:32 de 7 Eleasis e pode durar até cerca de 02:32 se a concentração for mantida; Visão no Escuro foi ativada no mesmo momento e pode durar até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24; Luath pretende tentar encaminhamento a Tyr no primeiro cinza. O total de 80 PO da apresentação da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois."
 
 recursos:
   pontos_de_vida:
@@ -368,18 +375,13 @@ recursos:
   condicoes:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas ativo desde cerca de 01:32 de 7 Eleasis; concentração possível até cerca de 02:32 se não for quebrada"
-    - "Ren está numa câmara baixa seca da Ponte Baixa, cerca de quarenta a cinquenta pés além da entrada"
-    - "Na câmara atual, Ren vê um canal frio e úmido à esquerda, um corredor seco mais usado à direita e uma fenda de ar com pano encerado acima/adiante"
-    - "Ren seguiu pelo corredor seco da direita sem ser localizado e chegou a um painel baixo quase fechado"
-    - "Pela fresta do painel, Ren vê parte de uma sala baixa seca com prateleiras, mesa estreita, bandejas rasas, rolos de pano encerado, pequenos cilindros, feixes de papel elevados e brilho fraco parcialmente oculto no fundo"
-    - "Ren deixou uma marca pequena 'K ->' no começo do corredor seco, apontando para o painel baixo"
-    - "Ren abriu o painel baixo silenciosamente; ele está diante da passagem aberta, ainda fora da sala baixa seca"
-    - "Sala baixa seca visível: rolos de pano encerado e cilindros com cera à esquerda, mesa estreita com bandejas e peso de pedra ao centro, feixes de papel elevados à direita e passagem baixa coberta perto de brilho fraco no fundo"
-    - "Ren entrou e vasculhou a sala baixa seca sem ser localizado neste trecho"
-    - "Ren identificou a sala como arquivo de passagem/preparação de documentos, não arquivo morto"
-    - "Ren retirou três evidências da sala e as colocou sobre a mesa de Luath: tira de controle com retenção anulada/volume 13/V. Rook/M. Harrow/data recente; tira encerada com Kage/gravadora/menino/antes de maré; cilindro curto de matriz/cera com marca de sol apagado"
-    - "A retirada das evidências não ficou limpa; alguém que conheça o arquivo pode perceber manipulação depois"
-    - "Ren observou o brilho fraco no fundo: brasa ou lamparina mínima protegida por cobertura fosca, junto de passagem baixa coberta por pano escuro ou couro encerado"
+    - "Ren está numa sala lateral reservada do posto da Night Watch, diante de Luath"
+    - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
+    - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
+    - "A identidade da fonte fica retida com Luath até requisição selada de autoridade competente"
+    - "Na Ponte Baixa, a retirada das evidências não ficou limpa; alguém que conheça o arquivo pode perceber manipulação depois"
+    - "Na Ponte Baixa, a linha de cinza do pano foi tocada, a lingueta/trava do trilho ficou solta e a marca pequena 'K ->' permanece no começo do corredor seco"
+    - "A segunda maré alcançou a câmara de retenção durante o recuo de Ren; o corredor seco ainda permitiu saída, mas o interior da Ponte Baixa deixou de estar completamente seco"
     - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
     - "Passos sem Pegadas expirou por volta de 00:58 de 4 Eleasis"
     - "layout parcial interno da Casa Velha: patamar vazio, passagem escura à esquerda, escada iluminada à direita e linha baixa de alarme improvisado"
@@ -1174,27 +1176,22 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir o próximo passo no amanhecer de 6 Eleasis, depois de alcançar nível 6 e despertar Passo Sombrio"
-    - "avaliar se usa a vigilância discreta de Luath como cobertura, se segue os porões secos de Brunna com o novo Passo Sombrio, se fala com Nera/Silva/Jack antes de sair ou se busca outro especialista antes de novo risco direto"
+    - "decidir para onde Ren vai após o lacre reservado das evidências da Ponte Baixa: sair ainda sob os minutos finais de Passos sem Pegadas, ficar para falar mais com Luath ou buscar descanso"
+    - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
-    - "puxar o fio de Sarbreen a partir de Brunna Torkel, dos porões secos atrás de armazéns antigos, da linha fria dos tintureiros ou da Escada das Sete Águas"
-    - "considerar que o ponto de observação do galpão de cordame nos fundos da Red Sail provavelmente ficou comprometido"
-    - "manter a versão segura de Kage para 5 Eleasis, com duas pequenas novidades cênicas e parte física individual consolidada por treino solo; a presença dramática não melhorou sem equipe"
-    - "interpretar o recado de Luath: ponte baixa como olho/caminho, luz como brasa/sinal e retorno por pedra molhada ao fio do sol apagado"
-    - "investigar quem chamou Kage, quem sabe que a gravadora importa e quanto disso toca Nera diretamente; o canal visto usa recadeiro pago e cabriolé cinza-azulado sem brasão"
-    - "deixar a estabilização do segundo barril armado em Sarbreen com Luath, guarda e Gond, salvo se novo risco surgir"
-    - "descobrir se ainda há carga explosiva remanescente no mercado de peixe ou em outro ponto da cidade"
+    - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
+    - "acompanhar o encaminhamento de Luath a Tyr no primeiro cinza, se Ren quiser reforçar a linha institucional"
+    - "evitar voltar sozinho à Ponte Baixa sem nova informação, pois Luath não autorizou essa entrada e os sinais deixados podem ter sido percebidos depois"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "reinstalar futuramente, em conversa discreta, novos pontos mortos com Pell e Kethra se ainda forem necessários"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "proteger Peta e as outras crianças agora sob cuidado de Maerra"
     - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
-    - "observar se Red Sail, Narwhal, Bram ou interessados no camarote oeste reagem aos movimentos recentes de Ren"
-    - "proteger Nera e Tavin, agora de volta a carroca verde e explicitamente nomeados como ruido no bilhete"
+    - "proteger Nera e Tavin, agora de volta à carroça verde e explicitamente nomeados como ruído no bilhete"
     - "considerar que Tyr recebeu confirmações de Luath e Maerra"
-    - "impedir que Narwhal e Red Sail virem a acusacao contra Ren e Nera"
+    - "impedir que Narwhal e Red Sail virem a acusação contra Ren e Nera"
     - "manter os Vell no circo com resguardo em espera de Tyr até o próximo sino maior"
-    - "decidir se continua puxando o fio de Brass/Narwhal ou se busca protecao formal"
+    - "decidir se continua puxando o fio de Brass/Narwhal/Ponte Baixa ou se prioriza proteção formal"
     - "proteger o livro original de Nera escondido com Silva"
     - "reavaliar recursos e necessidade de descanso antes de novo risco direto"
 
@@ -1205,7 +1202,7 @@ vinculos_ativos:
   contato_previsto:
     nome: "Luath"
     papel: "sargento da City Guard"
-    status: "contato operacional cauteloso; confiança baixa, mas útil"
+    status: "contato operacional cauteloso; confiança moderada, risco alto"
   antagonista_principal:
     nome: "Masao Hirasawa"
     status: "foragido"
@@ -1221,8 +1218,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren ativou Visão no Escuro e Passos sem Pegadas dentro da boca seca da Ponte Baixa, gastando 4 ki e ficando com Ki 2/6. Depois de chegar à câmara seca de retenção, escolheu o corredor seco da direita, deixou uma marca pequena 'K ->' apontando para o painel, abriu o painel silenciosamente e entrou na sala baixa seca. Por volta de 01:48 de 7 Eleasis, identificou a sala como arquivo de passagem/preparação de documentos, não arquivo morto: datas atuais de 4, 6 e 7 Eleasis com anotação de maré; V. Rook em correções/anulações; M. Harrow como nome de saída/culpa pronta; D. Mord como marca menor de passagem/recebimento. Ren retirou três evidências: tira de controle com retenção anulada/volume 13/V. Rook/M. Harrow/data recente; tira encerada com Kage/gravadora/menino/antes de maré; cilindro curto de matriz/cera com marca de sol apagado. A retirada não ficou limpa. Ao examinar o pano escuro/couro encerado junto da brasa protegida, Ren percebeu borda pesada, retorno fixo e linha de cinza funcionando como controle. Ele não viu alvo desocupado suficiente para usar Passo Sombrio antes de atravessar, então passou fisicamente, roçando a borda pesada sem disparar sinal útil. Por volta de 01:52, encontrou uma lingueta/trava de trilho na dobra direita da garganta baixa, entendeu que ela bloqueia ou sinaliza a rota de passa-carga e a desencaixou com ferramentas de ladrão sem disparar sinal secundário. Ao passar pela dobra molhada, tocou madeira contra pedra; o ruído provavelmente foi percebido adiante. Uma segunda portinhola baixa correu quase até fechar. Ren recuou por cadeia de sombras e saiu pela fresta seca por volta de 01:55, sem perceber cauda útil ou olho externo. A segunda maré alcançou a câmara de retenção durante o recuo, mas não fechou a saída seca. Ren então foi ao posto da Night Watch sob Passos sem Pegadas, chegou por volta de 02:18 e relatou tudo a Luath em sala lateral reservada. As três evidências estão sobre a mesa de Luath; ele pode selá-las sob custódia provisória da Night Watch como material recebido de informante em risco, mas antes quer saber se registra a origem como Ren Kage, homem sem nome ou Ren Kagehira. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
-  risco_imediato: "moderado: Ren está no posto da Night Watch sem cauda útil percebida, mas a entrega das evidências cria risco institucional e de cadeia de custódia. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar sua passagem a exame competente. Luath não conseguiu transformar as evidências em batida imediata nem em lacre de Tyr de madrugada."
+  cena_atual: "Ren está numa sala lateral reservada do posto da Night Watch, diante de Luath, às 02:24 de 7 Eleasis. Após voltar da Ponte Baixa sem cauda útil percebida, entregou a Luath três evidências retiradas da sala seca: tira de controle com retenção anulada/volume 13/V. Rook/M. Harrow/data recente, tira encerada com Kage/gravadora/menino/antes de maré e cilindro curto de matriz/cera com marca de sol apagado. Ren pediu registro como testemunha/fonte em risco. Luath selou o material com cera da Night Watch como recebido de fonte reservada sob risco plausível de represália, sem nomear Ren Kage, Ren Kagehira, gravadora ou menino no registro externo. A identidade fica retida com Luath até requisição selada de autoridade competente. Luath guardou o pacote em gaveta de ferro e pretende tentar encaminhamento a Tyr no primeiro cinza. Passos sem Pegadas ainda dura poucos minutos se a concentração de Ren for mantida; Visão no Escuro dura até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
+  risco_imediato: "moderado: Ren está no posto da Night Watch sem cauda útil percebida, mas a entrega das evidências criou rastro institucional. O registro externo não expõe o nome de Ren, mas o pacote reservado pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. Luath não conseguiu transformar as evidências em batida imediata nem em lacre de Tyr de madrugada."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1233,6 +1230,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren quer que Luath registre a origem das evidências da Ponte Baixa: Ren Kage, homem sem nome ou Ren Kagehira"
-    - "avaliar se deixa marca de retorno para Luath antes de avançar além da boca seca"
+    - "decidir o que Ren faz depois do lacre reservado das evidências da Ponte Baixa"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

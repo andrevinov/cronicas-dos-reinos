@@ -3693,3 +3693,55 @@ Ele olha para Ren, finalmente mais homem do que procedimento.
 Hora aproximada: **02:18 de 7 Eleasis, 1372 DR**. Ren está numa sala lateral do posto da **Night Watch**, diante de Luath. **Passos sem Pegadas** ainda está ativo por mais alguns minutos, se Ren mantiver concentração; **Visão no Escuro** continua ativa. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. As três evidências da Ponte Baixa estão sobre a mesa, prestes a serem seladas sob custódia provisória de Luath, dependendo de como Ren quer se identificar no registro.
 
 O que Ren faz?
+
+**Jogador**
+
+"Eu não posso usar meu nome, Luath. Não ainda. Se eu uso o nome do circo, Jack e as testemunhas perdem. Se eu uso meu nome, todos saberão que é o estrangeiro do circo."
+
+Ren respira.
+
+"Coloque-me como testemunha em risco. Você tem direito a sigilo da fonte. Não há como isso ser identificado como falsificação posteirormente, pois não é."
+
+**Narrador**
+
+Luath fica um instante calado.
+
+Não por discordar. Por medir onde a frase de Ren encosta na lei e onde tenta empurrá-la.
+
+"Não me ensine meu ofício às duas da manhã", ele diz, seco. Depois baixa os olhos para as três peças. "Mas, desta vez, você está perto o bastante."
+
+Ele puxa uma folha curta de registro, não o livro grande do posto. Escreve devagar, com letra de homem que prefere espada a pena, mas sabe que a pena pode matar ou salvar depois.
+
+"Eu não vou escrever Ren Kage. Não vou escrever Kagehira. E não vou escrever homem sem nome, porque isso parece truque de bêbado tentando escapar de dívida."
+
+A pena raspa.
+
+"Vai ficar assim: **material recebido de fonte reservada sob risco plausível de represália, identidade retida pelo sargento recebedor até requisição selada de autoridade competente**. Hora. Lugar de recebimento. Descrição das peças. Uma testemunha do posto vendo que as peças existem antes de eu lacrar."
+
+Ele olha para Ren.
+
+"Isso não é falsificação. Também não é milagre. Se Tyr ou um superior limpo exigir meu juramento sobre a fonte, o nome mora comigo. Não no papel solto. Comigo."
+
+O guarda volta com cera escura da Night Watch, cordão fino e uma pequena lâmina de selagem. Luath manda que ele fique do lado de dentro da porta, longe o bastante para não ler detalhes, perto o bastante para testemunhar que três peças entraram no pacote. A tira de controle, a tira encerada e o cilindro de matriz/cera somem sob pano, cordão e selo.
+
+O lacre fecha com um estalo baixo.
+
+Luath escreve no exterior apenas:
+
+> Ponte Baixa. Material reservado. 7 Eleasis, segunda vigília da madrugada. Fonte em risco.
+
+Nenhum **Kage**. Nenhum **Kagehira**. Nenhuma **gravadora**. Nenhum **menino**.
+
+Depois ele guarda o pacote numa gaveta de ferro sob a mesa e passa a chave por dentro do cinto.
+
+"Ao primeiro cinza, eu tento pôr isto numa mão de Tyr antes que algum superior curioso transforme papel em política. Antes disso, mando dois olhos meus para os armazéns velhos. Olhos, não espadas. Se eu mandar uma patrulha tropeçando pela Ponte Baixa agora, eu só ensino o inimigo qual porta a guarda aprendeu."
+
+A raiva dele não sobe. Fica comprimida no maxilar.
+
+"Você fez bem em trazer isso para cá. E fez bem em não tentar vender seu nome como assinatura heroica." A pausa é curta. "Não confunda isso com autorização para voltar sozinho ao buraco."
+
+Do lado de fora da sala, o posto range com madrugada: botas, tosse, uma pergunta abafada, pena arrastando em outro livro. Nada ali soa como alarme. Também nada ali soa como segredo perfeito.
+
+Hora aproximada: **02:24 de 7 Eleasis, 1372 DR**. Ren está na sala lateral reservada do posto da **Night Watch**, diante de Luath. As três evidências da Ponte Baixa foram seladas sob custódia provisória da Night Watch como material recebido de **fonte reservada sob risco plausível de represália**, sem nomear Ren no registro externo. **Passos sem Pegadas** ainda deve durar poucos minutos, se Ren mantiver concentração; **Visão no Escuro** continua ativa. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**.
+
+O que Ren faz?
