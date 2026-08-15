@@ -1,22 +1,14 @@
 # Protocolo de sessão
 
-Este protocolo define como iniciar, escrever, alternar, encerrar e consolidar sessões de **Crônicas dos Reinos**.
+Este protocolo define como iniciar, narrar, registrar, pausar e encerrar sessões de **Crônicas dos Reinos**.
 
-O guia de estilo e condução fica em `narracao/guia-de-narrativa.md`.
-
-Os limites de conteúdo ficam em `narracao/limites.md` e devem ser consultados sempre que a sessão envolver romance, intimidade, violência intensa, crueldade, horror ou temas adultos.
+Estilo: `narracao/guia-de-narrativa.md`. Limites: `narracao/limites.md`. Acesso e economia de contexto: `docs/agente/acesso-e-operacoes.md`.
 
 ---
 
 ## Estrutura de diretórios
 
-Cada sessão deve ter uma pasta própria:
-
-```text
-sessoes/001/
-```
-
-Arquivos recomendados:
+Cada sessão possui pasta própria:
 
 ```text
 sessoes/001/
@@ -28,7 +20,13 @@ sessoes/001/
 └── imagens/
 ```
 
-O arquivo `transcricao.md` é o arquivo vivo da sessão, escrito em alternância entre narrador e jogador.
+`transcricao.md` é o registro completo da alternância entre jogador e narrador.
+
+Durante a sessão ativa, mudanças ainda não consolidadas ficam em:
+
+```text
+runtime/eventos-pendentes.jsonl
+```
 
 ---
 
@@ -55,40 +53,21 @@ Estado inicial:
 ---
 ```
 
-Atualizar o cabeçalho se uma informação pendente for definida durante a preparação.
+O cabeçalho é snapshot inicial. Não deve ser reescrito a cada mudança durante a sessão.
 
 ---
 
 ## Abertura
 
-A primeira entrada da sessão é sempre do narrador.
+A primeira entrada é do narrador e deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico de Ren quando necessário e uma deixa clara para agir.
 
-Ela deve conter:
-
-* recap curto, se houver sessão anterior;
-* localização atual;
-* situação imediata;
-* elementos importantes no ambiente;
-* NPCs ou ameaças perceptíveis;
-* estado crítico de Ren, se relevante;
-* modo inicial de cena;
-* uma deixa clara para o jogador agir.
-
-Exemplo de fechamento da abertura:
-
-```markdown
-**Narrador**
-
-...
-
-O que Ren faz?
-```
+O recap não deve carregar a sessão anterior inteira nem revelar material reservado.
 
 ---
 
 ## Alternância
 
-A sessão deve alternar entre:
+Formato:
 
 ```markdown
 **Narrador**
@@ -100,391 +79,251 @@ A sessão deve alternar entre:
 ...
 ```
 
-O jogador escreve o que Ren faz, diz, tenta, pensa ou sente.
+O jogador controla o que Ren faz, diz, tenta, pensa ou sente. O narrador resolve mundo, NPCs, regras, rolagens e consequências.
 
-O narrador resolve o mundo, rolagens, NPCs, consequências e nova situação.
+Checklist breve antes de publicar resposta:
 
-Checklist breve antes de publicar resposta do narrador:
+- NPCs falam como pessoas do mundo, não como interface de sistema;
+- mecânica necessária fica fora da voz do NPC;
+- segredos não aparecem como certeza pública;
+- a resposta devolve situação jogável, não solução pronta.
 
-* a fala dos NPCs soa como pessoa do mundo, não como dica de sistema;
-* nenhum NPC está elogiando ou corrigindo a palavra-chave escolhida pelo jogador;
-* informações de mecânica, se necessárias, ficam fora do diálogo do NPC;
-* segredos do narrador não aparecem como certeza na voz narrativa;
-* a resposta devolve a Ren uma situação jogável, não uma solução pronta.
+---
+
+## Loop transacional de narração
+
+Desde a Etapa 7, uma interação comum segue:
+
+```text
+ação do jogador
+→ usar contexto já presente
+→ consultar somente lacuna necessária
+→ resolver rolagens
+→ produzir narração
+→ registrar transação
+→ devolver controle ao jogador
+```
+
+A persistência deve ser feita em uma única chamada:
+
+```bash
+python3 ferramentas/turno.py registrar <<'JSON'
+{
+  "jogador": "Ren ...",
+  "narracao": "...",
+  "resumo": "Resumo curto do que mudou.",
+  "modo": "combate",
+  "deltas": []
+}
+JSON
+```
+
+O registrador escreve somente:
+
+1. `sessoes/NNN/transcricao.md`;
+2. `runtime/eventos-pendentes.jsonl`.
+
+A prosa da narração fica apenas na transcrição. O JSONL guarda ID, sessão, resumo, deltas e eventualmente rolagens ocultas.
+
+### Proibição de write amplification
+
+Durante cada troca normal **não** atualizar também:
+
+- `estado/estado-atual.yaml`;
+- `estado/tempo.yaml`;
+- ficha;
+- relações;
+- medidores de NPC;
+- conhecimento consolidado;
+- consequências;
+- relógios;
+- resumos de sessão;
+- logs reservados separados.
+
+Esses destinos são consolidados posteriormente em lote.
+
+Também não rodar por rotina, a cada ação, `git status`, `git diff`, testes globais, regeneração de runtime ou commit.
+
+---
+
+## Deltas mínimos
+
+Um delta registra apenas o que mudou e precisa sobreviver à próxima interação.
+
+Exemplos:
+
+```json
+{"alvo":"estado","op":"inc","caminho":"recursos.pontos_de_vida.atuais","valor":-6}
+{"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
+{"alvo":"estado","op":"set","caminho":"localizacao.ponto_exato","valor":"junto à cerca"}
+{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
+{"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
+{"alvo":"conhecimento","op":"registrar","valor":{"assunto":"ponte baixa","texto":"brasa protegida é sinal"}}
+```
+
+Operações: `set`, `inc`, `append`, `remove`, `registrar`.
+
+Se nada persistente mudou, `deltas` pode ser vazio. Não transformar descrição sensorial ou fala trivial em estado estruturado.
+
+`contexto.py` aplica deltas suportados sobre o snapshot-base ao responder consultas. Assim, o estado operacional permanece correto antes da consolidação.
+
+---
+
+## Idempotência e interrupção
+
+Cada transação recebe ID estável e marcador HTML interno na transcrição. Repetir exatamente a mesma entrada não duplica registros.
+
+Se houver queda entre as duas escritas, repetir a chamada repara somente o lado ausente.
+
+Validação barata:
+
+```bash
+python3 ferramentas/turno.py check
+```
+
+Uma pausa no meio da sessão é segura quando esse comando passa: transcrição + buffer pendente + snapshot-base bastam para retomada.
 
 ---
 
 ## Tamanho das entradas
 
-Entrada típica do jogador:
+Entrada típica do jogador: uma frase a um parágrafo.
 
-* uma frase a um parágrafo.
+Entrada típica do narrador: duas frases a três parágrafos.
 
-Entrada típica do narrador:
+Entradas maiores são apropriadas em abertura, descoberta importante, encerramento de cena, resolução de combate, transição de viagem ou consequência substancial.
 
-* duas frases a três parágrafos.
-
-Entradas maiores são aceitáveis em:
-
-* abertura de sessão;
-* descoberta importante;
-* encerramento de cena;
-* resolução de combate;
-* transição de viagem;
-* consolidação de consequências.
+Não repetir PV, CA, Ki, dinheiro, hora e localização em toda resposta se nada relevante mudou.
 
 ---
 
 ## Modos de cena
 
-Registrar o modo quando ele mudar de forma relevante.
+Modos principais:
 
-Formato:
+- interação;
+- exploração;
+- combate.
 
-```markdown
-> Modo de cena: exploração
-```
+Registrar mudança de modo quando ela for relevante, como delta de `estado.campanha.modo_de_cena_atual`. Não repetir o rótulo em toda entrada se o modo não mudou.
 
-Modos:
+### Interação
 
-* interação;
-* exploração;
-* combate.
+Foco em diálogo, postura, descoberta e relações. Acompanhar informação revelada, mentira/omissão, promessas, dívidas e mudanças significativas de atitude.
 
----
+### Exploração
 
-## Cena de interação
+Foco em posição, luz, ruído, ferramentas, saídas, tempo gasto, riscos e rota de volta.
 
-Usar para conversa, cidade relativamente segura, investigação social e desenvolvimento de personagem.
+### Combate
 
-Granularidade:
+Fluxo: surpresa se houver → iniciativa → posição → ação de Ren → rolagens/consequências → próximo turno.
 
-* uma troca pode representar segundos, minutos ou uma pequena cena;
-* poucas rolagens;
-* foco em diálogo, postura, descoberta e relações.
-
-O narrador deve acompanhar:
-
-* atitude dos NPCs;
-* informações reveladas;
-* mentiras ou omissões;
-* mudanças de reputação;
-* favores, dívidas e promessas.
-
----
-
-## Cena de exploração
-
-Usar para locais perigosos sem iniciativa ativa.
-
-Granularidade:
-
-* uma troca representa uma ação ou sequência curta;
-* posição, luz, ruído, ferramentas e rotas importam;
-* rolagens são mais comuns.
-
-O narrador deve acompanhar:
-
-* sala ou área atual;
-* saídas;
-* ruído;
-* luz;
-* distância aproximada;
-* armadilhas;
-* criaturas escondidas;
-* tempo gasto;
-* rota de volta.
-
----
-
-## Cena de combate
-
-Usar quando houver iniciativa, ataque, perseguição tática ou risco imediato equivalente.
-
-Fluxo:
-
-1. estabelecer surpresa, se houver;
-2. rolar iniciativa;
-3. descrever posição inicial;
-4. jogador declara ação de Ren;
-5. narrador resolve rolagens e consequências;
-6. repetir até encerrar o combate.
-
-Cada rodada deve deixar claro:
-
-* rodada atual;
-* turno atual;
-* PV de Ren;
-* ki restante;
-* inimigos visíveis;
-* estado aparente dos inimigos;
-* distâncias relevantes;
-* cobertura e rotas de fuga.
-
-Formato recomendado:
-
-```markdown
-> Combate, rodada 2. Ren: PV 18/24, Ki 2/3.
-```
+Manter claro, quando relevante, rodada/turno, PV/Ki, inimigos visíveis, estado aparente, distâncias, cobertura e fuga. A clareza tática não exige repetir o bloco inteiro quando nada nele mudou.
 
 ---
 
 ## Rolagens visíveis
 
-Quando a rolagem puder ser conhecida pelo jogador, registrar no texto.
-
-Formato:
+Formato recomendado:
 
 ```text
 Teste de Furtividade: d20 12 + 5 = 17 contra CD 15. Sucesso.
 ```
 
-Formato para ataques:
-
-```text
-Ataque com wakizashi: d20 14 + 5 = 19. Acerto. Dano: 1d6 4 + 3 = 7.
-```
-
-O narrador deve rolar para Ren quando a ação declarada exigir rolagem.
-
-Sempre que possível, usar o rolador local:
+Usar:
 
 ```bash
 python3 ferramentas/rolar-dados.py ren pericia furtividade --cd 15
 python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
-python3 ferramentas/rolar-dados.py npc d20 --nome "Guarda" --bonus 3 --cd 12 --label "Percepção"
 ```
 
-Atalhos e exemplos ficam em `ferramentas/README.md`.
+Quando duas ou mais rolagens são independentes e já sabemos que todas serão necessárias, usar **uma chamada**:
+
+```bash
+python3 ferramentas/rolar-lote.py <<'JSON'
+[
+  ["ren", "pericia", "furtividade", "--cd", "15"],
+  ["npc", "d20", "--nome", "Guarda", "--bonus", "3", "--cd", "12"]
+]
+JSON
+```
+
+Não antecipar uma rolagem que só deveria existir se outra tiver determinado resultado.
 
 ---
 
 ## Rolagens ocultas
 
-Usar rolagens ocultas quando revelar a rolagem já entregaria informação indevida.
+Usar quando revelar o dado já entregaria informação indevida: mentira, criatura escondida, armadilha, facção fora de cena, relógio oculto etc.
 
-Exemplos:
+Durante o loop narrativo, rolagens ocultas relevantes podem ser registradas em `rolagens_ocultas` da transação. Elas não entram em consultas públicas normais.
 
-* NPC mentindo;
-* criatura escondida;
-* armadilha não percebida;
-* facção agindo fora de cena;
-* relógio oculto;
-* encontro aleatório secreto;
-* consequência que ainda não é perceptível.
-
-Rolagens ocultas importantes devem ser anotadas em:
+Na consolidação serão transferidas, quando necessário, para:
 
 ```text
 narrador/sessoes/NNN/rolagens-ocultas.md
 ```
 
-Não registrar rolagens ocultas na transcrição se isso revelar o segredo.
+Isso evita uma terceira escrita por turno.
 
 ---
 
 ## Preparação do narrador
 
-Antes de uma sessão, criar material reservado apenas quando necessário.
-
-Pasta recomendada:
-
-```text
-narrador/sessoes/001/
-```
-
-Arquivos possíveis:
-
-```text
-preparacao.md
-segredos.md
-mapa-e-salas.md
-relogios.md
-rolagens-ocultas.md
-npcs.md
-```
-
-Esse material não deve ser lido pelo jogador durante a campanha.
+Criar material reservado somente quando necessário em `narrador/sessoes/NNN/`: preparação, segredos, mapas, relógios, rolagens ou NPCs relevantes. Não carregar a pasta inteira durante narração sem lacuna concreta.
 
 ---
 
-## Dungeons
+## Dungeons e cidades
 
-Quando uma dungeon ou local perigoso tiver mapa, o narrador deve preparar um resumo reservado.
+Em dungeon, preservar topologia, saídas, mudanças e segredos; revelar apenas o percebido por Ren.
 
-Formato recomendado:
-
-```markdown
-# Mapa e salas
-
-## Topologia
-
-Entrada A -> Corredor B -> Sala C -> Escada D
-
-## Sala C
-
-Descrição pública:
-
-Segredo:
-
-Perigos:
-
-Saídas:
-
-Mudanças se Ren voltar:
-```
-
-A transcrição deve revelar apenas o que Ren percebe.
-
-Manter consistência espacial. Se Ren voltar por uma rota, ela deve continuar existindo salvo mudança causada por eventos.
+Em cidade, abstrair deslocamento salvo perseguição, cauda, tempo crítico, perigo de bairro ou rota com consequência. Não detalhar caminho por rotina.
 
 ---
 
-## Cidades
+## Imagens
 
-Em cidade, usar abstração maior.
-
-O narrador pode resolver deslocamentos como:
-
-* "do porto ao mercado";
-* "do quartel aos cais";
-* "da taverna ao templo".
-
-Detalhar rota apenas quando:
-
-* houver perseguição;
-* alguém estiver seguindo Ren;
-* tempo for relevante;
-* bairro for perigoso;
-* rota escolhida tiver consequência;
-* Ren estiver tentando evitar ser visto.
-
----
-
-## Imagens durante sessão
-
-Quando o jogador pedir imagem, salvar em:
-
-```text
-sessoes/NNN/imagens/
-```
-
-Nome:
-
-```text
-sessao-NNN-momento-XX-slug.png
-```
-
-Registrar no ponto correspondente da transcrição:
-
-```markdown
-Imagem: [nome da imagem](imagens/sessao-NNN-momento-XX-slug.png)
-```
-
-Se a imagem representar uma sala de dungeon, ela não deve revelar saídas, armadilhas ou criaturas que Ren ainda não percebeu.
+Imagens pedidas durante sessão ficam em `sessoes/NNN/imagens/` e são referenciadas na transcrição. Não revelar elementos ainda não percebidos.
 
 ---
 
 ## Encerramento de cena
 
-Ao encerrar uma cena importante, o narrador deve registrar na transcrição:
+A narração pode fazer checkpoint curto do que mudou, mas não precisa virar relatório. Não é obrigatório consolidar todos os arquivos canônicos ao fim de cada cena.
 
-* o que mudou;
-* informação descoberta;
-* recursos gastos;
-* novas ameaças;
-* próximos caminhos óbvios;
-* pendências imediatas.
-
-Não precisa transformar todo encerramento em relatório.
-
----
-
-## Corte de cena por conteúdo adulto
-
-Quando uma cena romântica chegar a intimidade sexual, usar corte de cena.
-
-Formato possível:
-
-```markdown
-> Corte de cena: os personagens passam a noite juntos. A sessão retoma depois, quando isso voltar a importar para escolhas, emoções ou consequências.
-```
-
-O narrador pode registrar consequências emocionais, sociais, materiais ou narrativas, mas não deve transformar a transcrição em descrição sexual explícita.
-
-Quando violência ou crueldade ultrapassarem o necessário para a cena, resumir e focar no impacto percebido por Ren.
+Se uma pausa longa acontecer, `turno.py check` é suficiente para verificar persistência transacional.
 
 ---
 
 ## Encerramento de sessão
 
-Ao encerrar uma sessão, criar ou atualizar:
+Criar/atualizar, conforme aplicável:
 
 ```text
 sessoes/NNN/resumo.md
 sessoes/NNN/alteracoes-de-estado.yaml
 sessoes/NNN/consequencias.md
-```
-
-Quando houver XP, marco, recompensa ou progresso:
-
-```text
 sessoes/NNN/experiencia.md
 ```
 
-O encerramento deve registrar:
+A consolidação deve considerar ponto inicial/final, tempo, decisões, rolagens decisivas, combates, recursos, itens, relações, descobertas, mistérios, consequências e pendências.
 
-* ponto inicial e final;
-* tempo transcorrido;
-* cenas principais;
-* decisões de Ren;
-* rolagens decisivas;
-* combates;
-* recursos gastos;
-* itens ganhos ou perdidos;
-* NPCs conhecidos;
-* informações descobertas;
-* mistérios abertos;
-* consequências persistentes;
-* pendências para a próxima sessão.
+`runtime/eventos-pendentes.jsonl` é a lista explícita das alterações ainda não consolidadas. A Etapa 8 implementará sua aplicação automática/idempotente. Até lá, não limpar o buffer por rotina.
 
----
-
-## Consolidação pós-sessão
-
-Depois do encerramento, atualizar os arquivos canônicos necessários:
-
-* `estado/estado-atual.yaml`;
-* `estado/tempo.yaml`, quando existir;
-* `estado/relacoes.yaml`, quando existir;
-* `registros/consequencias.yaml`, quando existir;
-* `personagens/jogador/ficha.yaml`, se recursos mudarem;
-* `personagens/jogador/conhecimento.md`, se Ren aprender algo;
-* arquivos de NPC ou facção, se necessário.
-
-Não consolidar segredos em arquivos públicos.
+Após consolidação canônica, regenerar `runtime/contexto.yaml` e `runtime/cena.yaml`.
 
 ---
 
 ## Pausas e retomadas
 
-Se a sessão for interrompida, registrar no fim da transcrição:
+Não é necessário escrever um novo bloco de pausa se a última transação já contém resumo suficiente e `turno.py check` passa. Quando útil para legibilidade humana, um marcador de pausa pode continuar na transcrição.
 
-```markdown
-> Pausa: Ren está em X, tentando Y. Última situação imediata: Z.
-```
-
-Ao retomar, o narrador deve ler esse ponto e abrir com recap curto.
+Ao retomar, tentar L0 → `contexto.py status` → `contexto.py cena`. Não reler automaticamente a transcrição inteira.
 
 ---
 
 ## Correções
 
-Quando houver erro de regra, estado ou continuidade:
-
-* corrigir explicitamente;
-* registrar o motivo se afetar fatos relevantes;
-* evitar apagar decisões do jogador;
-* preferir ajuste diegético quando não distorcer o jogo.
-
-Correções grandes devem ir também para `registros/retcons.md` quando esse arquivo existir.
+Corrigir explicitamente erro de regra, estado ou continuidade. Não apagar decisão do jogador. Uma correção durante sessão deve entrar como nova transação/delta, nunca como alteração silenciosa de evento anterior já narrado.
