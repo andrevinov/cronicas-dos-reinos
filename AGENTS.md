@@ -1,6 +1,6 @@
 # AGENTS.md — roteador operacional de Crônicas dos Reinos
 
-Este arquivo contém apenas instruções que precisam estar disponíveis em praticamente qualquer tarefa. O detalhamento foi movido para `docs/agente/` e deve ser lido **somente quando a tarefa exigir**.
+Este arquivo contém apenas instruções que precisam estar disponíveis em praticamente qualquer tarefa. O detalhamento está em `docs/agente/` e deve ser lido **somente quando a tarefa exigir**.
 
 ## 1. Fonte de verdade
 
@@ -10,7 +10,9 @@ Respeitar sistema, edição, período histórico, fontes autorizadas e configura
 
 Todo texto novo deve usar português e UTF-8.
 
-`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. `runtime/contexto.yaml` e `runtime/cena.yaml` são as duas projeções quentes geradas a partir do cânone. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
+`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
+
+Desde a Etapa 5, `estado/estado-atual.yaml` e `estado/tempo.yaml` descrevem **somente o presente**. Cronologia pertence a `sessoes/`; os arquivos em `historico/legado/` preservam o estado acumulativo anterior à migração e são frios, usados apenas para auditoria ou recuperação excepcional.
 
 ## 2. Invariantes inegociáveis
 
@@ -42,7 +44,7 @@ Em conflito, usar como ordem inicial:
 9. fontes oficiais autorizadas;
 10. possibilidades futuras.
 
-Runtime e resultados de consulta não entram nessa hierarquia porque são projeções das fontes acima.
+Runtime e resultados de consulta não entram nessa hierarquia porque são projeções. `historico/legado/` também não substitui o estado corrente: ele registra a forma antiga dos dados para auditoria.
 
 Erro conhecido não deve ser preservado apenas por estar em fonte de alta autoridade: identificar o conflito, verificar mudança posterior e corrigir explicitamente.
 
@@ -61,19 +63,22 @@ Não:
 - ler o repositório inteiro para se situar;
 - abrir pasta inteira quando uma entidade específica basta;
 - reler informação confiável já presente no contexto;
-- abrir estado canônico gigante quando `contexto.py` responder;
-- abrir transcrição antiga antes de tentar runtime, consulta dirigida, resumo ou estado;
+- abrir estado canônico inteiro quando `contexto.py` responder;
+- abrir transcrição antiga antes de tentar runtime, consulta dirigida ou resumo;
+- consultar `historico/legado/` para uma pergunta normal sobre o presente;
 - consultar livro oficial se resumo ou decisão interna já resolver;
 - continuar pesquisando apenas para confirmar algo já estabelecido com segurança.
 
 Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
-- **L1:** `python3 ferramentas/contexto.py status` — consulta `runtime/contexto.yaml`;
-- **L2:** `contexto.py cena` — consulta `runtime/cena.yaml` — ou `npc`, `relacao`, `conhecimento` e `regra`;
+- **L1:** `python3 ferramentas/contexto.py status`;
+- **L2:** `contexto.py cena`, `npc`, `relacao`, `conhecimento` ou `regra`;
 - **L3:** `contexto.py buscar "termo"`, ainda sem transcrições completas;
-- **L4:** `contexto.py buscar "termo" --historico` ou leitura direta de uma fonte específica apontada pela consulta;
+- **L4:** `contexto.py buscar "termo" --historico`, resumo/transcrição específica ou múltiplas fontes para resolver conflito;
 - **L5:** fonte oficial externa/autorizada.
+
+`historico/legado/` fica fora da escada normal e só deve ser aberto para auditoria de migração ou recuperação excepcional de algo ausente dos registros de sessão.
 
 Para material reservado, só usar `contexto.py buscar "termo" --reservado` quando existir uma lacuna concreta de bastidor. Não incluir `--historico` ou `--reservado` por rotina.
 
@@ -110,7 +115,7 @@ Durante narração:
 - não repetir estado mecânico inteiro se nada relevante mudou;
 - manter registro suficiente para consolidação posterior sem interromper a cena.
 
-`runtime/eventos-pendentes.jsonl` já existe, mas a arquitetura transacional de escrita será implantada em etapa posterior. Até lá, evitar duplicação documental desnecessária sem deixar estado crítico inconsistente.
+`runtime/eventos-pendentes.jsonl` existe, mas a arquitetura transacional de escrita será implantada em etapa posterior. Até lá, evitar duplicação documental desnecessária sem deixar estado crítico inconsistente.
 
 ## 7. Regras e dados
 
@@ -136,6 +141,8 @@ A busca padrão de `contexto.py` não inclui `narrador/`; inclusão de material 
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa. Não publicar o repositório nem mudar visibilidade sem pedido explícito.
 
+Estado atual deve registrar **como as coisas estão agora**, não recontar como chegaram até ali. Histórico de cena/sessão vai para registros históricos; não acumular novamente cronologia em `estado/estado-atual.yaml` ou `estado/tempo.yaml`.
+
 Após alteração canônica que mude a situação atual, regenerar:
 
 ```bash
@@ -145,6 +152,7 @@ python3 ferramentas/gerar-runtime.py
 Após mudança estrutural ou migração, executar:
 
 ```bash
+python3 ferramentas/migrar-estado-atual.py --check
 python3 ferramentas/gerar-runtime.py --check
 python3 ferramentas/verificar-integridade.py
 python3 ferramentas/verificar-integridade.py --baseline baseline/estado-logico-2026-08-15.yaml
