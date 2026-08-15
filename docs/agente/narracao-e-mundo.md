@@ -51,11 +51,56 @@ Ao iniciar uma sessão:
 
 O recap deve ser curto e não revelar material reservado.
 
-## Durante a sessão
+## Durante a sessão — escrita transacional
 
 Acompanhar mudanças importantes de localização, tempo, recursos, dano/cura, condições, magias/habilidades, itens, promessas, relações, descobertas, relógios e consequências. Não interromper a narração para exibir atualização interna.
 
-O registro pode ser consolidado ao fim da cena ou sessão. Durante a atual refatoração, esta regra é especialmente importante: **não duplicar preventivamente a mesma mudança em vários arquivos apenas porque ela ocorreu.** A arquitetura transacional completa será implantada em etapa posterior.
+Desde a Etapa 7, **não consolidar essas mudanças diretamente em vários arquivos durante cada troca**. O avanço narrativo ao vivo usa `ferramentas/turno.py registrar`, que persiste somente:
+
+- a entrada do jogador e a resposta do narrador em `sessoes/NNN/transcricao.md`;
+- um registro mínimo em `runtime/eventos-pendentes.jsonl`.
+
+O registro pendente contém resumo curto e apenas deltas realmente ocorridos. Exemplos:
+
+```json
+{"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
+{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
+{"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
+{"alvo":"conhecimento","op":"registrar","valor":{"assunto":"balança velha","texto":"marca violeta sob a unha"}}
+```
+
+Não registrar um delta quando nada persistente mudou. Um turno pode ter `deltas: []` e ainda assim permanecer rastreável na transcrição.
+
+`ferramentas/contexto.py` combina snapshot-base + eventos pendentes quando responde `status`, `cena`, `npc`, `relacao`, `conhecimento` e `buscar`. Portanto o narrador deve consultar o estado efetivo por essa ferramenta, e não tentar manter manualmente múltiplos arquivos sincronizados durante a cena.
+
+### Limite de escrita por avanço
+
+O alvo operacional é **duas escritas**:
+
+1. transcrição;
+2. buffer de eventos.
+
+Não atualizar, por rotina, `estado/`, ficha, arquivos de relação, conhecimento, consequências, relógios ou logs de rolagem oculta na mesma interação. Esses destinos pertencem à consolidação posterior.
+
+Também não executar `git status`, `git diff`, suíte de testes, regeneração de runtime ou commit depois de cada ação de Ren. Essas operações não fazem parte do loop narrativo.
+
+### Rolagens
+
+Se duas ou mais rolagens independentes já são necessárias antes de qualquer resultado, usar `ferramentas/rolar-lote.py`. Se a segunda rolagem só existe dependendo do resultado da primeira, não agrupá-las artificialmente.
+
+Rolagens ocultas relevantes podem ser anexadas ao registro transacional em `rolagens_ocultas`; ficam indisponíveis à consulta pública normal e serão consolidadas no destino reservado adequado posteriormente.
+
+## Encerramento de cena
+
+Uma cena importante pode receber checkpoint narrativo na própria transcrição. A Etapa 7 não exige consolidar todos os arquivos canônicos a cada encerramento de cena; isso só deve acontecer se houver necessidade real de checkpoint externo ou durante a consolidação em lote.
+
+Antes de uma pausa longa, executar:
+
+```bash
+python3 ferramentas/turno.py check
+```
+
+Se passar, transcrição + buffer pendente preservam o estado necessário para retomada.
 
 ## Encerramento de sessão
 
@@ -67,12 +112,16 @@ Historicamente a sessão consolida, conforme aplicável:
 - `sessoes/NNN/experiencia.md`;
 - `sessoes/NNN/consequencias.md`.
 
-Registrar ponto inicial/final, tempo transcorrido, acontecimentos, decisões, rolagens decisivas, combates, XP/marcos, recursos, ferimentos/condições, relações, promessas/favores/dívidas, descobertas, mistérios, consequências, mudanças do mundo, relógios e pendências quando existirem. Depois consolidar o estado necessário para retomada. Uma sessão não está encerrada se a próxima exigir reconstrução manual substancial.
+Registrar ponto inicial/final, tempo transcorrido, acontecimentos, decisões, rolagens decisivas, combates, XP/marcos, recursos, ferimentos/condições, relações, promessas/favores/dívidas, descobertas, mistérios, consequências, mudanças do mundo, relógios e pendências quando existirem.
+
+Na arquitetura transacional, `runtime/eventos-pendentes.jsonl` é a lista explícita de mudanças ainda não incorporadas. A Etapa 8 implementará a consolidação automática/idempotente desse buffer. Até lá, não apagar nem marcar eventos pendentes manualmente como consolidados sem procedimento deliberado.
 
 ## Memória por finalidade
 
 - `sessoes/`: memória histórica — **o que aconteceu?**
-- `estado/`: estado atual — **como está agora?**
+- `estado/`: estado atual consolidado — **como estava no último checkpoint canônico?**
+- `runtime/eventos-pendentes.jsonl`: delta corrente — **o que mudou depois desse checkpoint?**
+- `ferramentas/contexto.py`: projeção efetiva — **como está agora considerando base + deltas?**
 - `registros/`, quando existir: memória crônica — **o que pode voltar a importar?**
 - `narrador/`: verdade secreta — **o que é verdadeiro sem ser necessariamente conhecido?**
 
@@ -82,11 +131,13 @@ Evitar duplicar a mesma informação em muitos lugares. Quando duplicação for 
 
 Decisões capazes de afetar sessões futuras devem permanecer rastreáveis: promessas quebradas, vidas salvas/abandonadas, favores a facções, segredos expostos, crimes, recursos destruídos, dívidas, humilhações, ameaças que escaparam etc.
 
-Uma consequência persistente deve ter origem identificável, estado e entidades relacionadas. Efeitos possíveis não são cenas obrigatórias. Consequências podem permanecer dormentes por muitas sessões e devem ser consultadas quando realmente relacionadas à preparação corrente.
+Durante a sessão, uma consequência nova pode ser um delta `registrar` em `consequencia`; na consolidação ela deve ganhar origem identificável, estado e entidades relacionadas. Efeitos possíveis não são cenas obrigatórias.
 
 ## Relações
 
 Não reduzir necessariamente relações a um número único. Quando útil registrar confiança, respeito, medo, gratidão, lealdade, suspeita, ressentimento, dívida, interesse e rivalidade. Mudança significativa precisa de causa.
+
+Durante a sessão, registrar apenas o delta significativo (`relacao:<id>`), não recontar o histórico da relação. O histórico próprio é atualizado em consolidação.
 
 ## Camadas de conhecimento
 
@@ -100,3 +151,5 @@ Distinguir:
 6. informação ainda não definida.
 
 Antes de NPC usar uma informação, verificar como a obteve quando isso for relevante. Antes de revelar algo, verificar como Ren poderia percebê-lo. Rumor continua rumor até confirmação; evitar onisciência acidental.
+
+Descoberta nova de Ren pode existir temporariamente apenas como delta `conhecimento`; `contexto.py conhecimento` precisa enxergá-la antes da consolidação, sem transformá-la em verdade objetiva do mundo.
