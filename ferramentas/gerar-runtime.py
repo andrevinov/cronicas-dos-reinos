@@ -48,10 +48,19 @@ def require_mapping(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
-def build_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
-    estado = require_mapping(load_yaml(repo / "estado/estado-atual.yaml"), "estado atual")
-    tempo_arquivo = require_mapping(load_yaml(repo / "estado/tempo.yaml"), "tempo")
-    ficha = require_mapping(load_yaml(repo / "personagens/jogador/ficha.yaml"), "ficha")
+def build_runtime_from_documents(
+    estado: dict[str, Any],
+    tempo_arquivo: dict[str, Any],
+    ficha: dict[str, Any],
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Constrói runtime a partir de documentos já carregados.
+
+    A função existe para que a consolidação transacional possa preparar e validar
+    **todos** os arquivos novos antes de iniciar qualquer escrita canônica.
+    """
+    estado = require_mapping(estado, "estado atual")
+    tempo_arquivo = require_mapping(tempo_arquivo, "tempo")
+    ficha = require_mapping(ficha, "ficha")
 
     campanha = require_mapping(estado.get("campanha"), "estado.campanha")
     personagem = require_mapping(estado.get("personagem"), "estado.personagem")
@@ -71,7 +80,7 @@ def build_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     data = tempo_estado.get("data_exata") or ((tempo_arquivo.get("data_atual") or {}).get("valor"))
     hora = tempo_estado.get("hora_aproximada") or tempo_arquivo.get("hora_aproximada")
     periodo = tempo_estado.get("periodo_do_dia") or tempo_arquivo.get("periodo_do_dia")
-    clima = tempo_estado.get("clima")
+    clima = tempo_estado.get("clima") or tempo_arquivo.get("clima")
 
     contexto = {
         "versao_runtime": RUNTIME_VERSION,
@@ -148,7 +157,6 @@ def build_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
         },
     }
 
-    # Confirma que a ficha canônica continua apontando para o mesmo personagem/nível.
     ficha_personagem = require_mapping(ficha.get("personagem"), "ficha.personagem")
     ficha_identidade = require_mapping(ficha.get("identidade"), "ficha.identidade")
     if ficha_personagem.get("nome") != personagem.get("nome"):
@@ -157,6 +165,13 @@ def build_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
         raise ValueError("nível diverge entre estado e ficha")
 
     return contexto, cena
+
+
+def build_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+    estado = require_mapping(load_yaml(repo / "estado/estado-atual.yaml"), "estado atual")
+    tempo_arquivo = require_mapping(load_yaml(repo / "estado/tempo.yaml"), "tempo")
+    ficha = require_mapping(load_yaml(repo / "personagens/jogador/ficha.yaml"), "ficha")
+    return build_runtime_from_documents(estado, tempo_arquivo, ficha)
 
 
 def dump_yaml(data: dict[str, Any]) -> str:
