@@ -2,72 +2,27 @@
 
 `runtime/` contém o contexto operacional mais provável de ser necessário na próxima interação narrativa.
 
-Ele **não é fonte de verdade canônica**. `contexto.yaml` e `cena.yaml` são projeções-base derivadas do último estado consolidado. Durante uma sessão ativa, `eventos-pendentes.jsonl` pode conter deltas ainda não consolidados; `ferramentas/contexto.py` projeta esses deltas sobre a base ao consultar o estado efetivo.
+`contexto.yaml` e `cena.yaml` são projeções-base do último checkpoint consolidado. Durante sessão ativa, `eventos-pendentes.jsonl` contém deltas posteriores a esse checkpoint. `ferramentas/contexto.py` projeta base + deltas em memória e entrega o estado efetivo.
 
-Assim, durante jogo ao vivo, não é necessário reescrever estado, ficha, relações e conhecimento a cada fala.
+Nenhum desses arquivos é fonte canônica independente.
 
-## Arquivos
+## Arquivos normais
 
-- `contexto.yaml`: snapshot-base pequeno de sessão, personagem, recursos, tempo, localização e ponteiros.
-- `cena.yaml`: snapshot-base da situação imediata.
-- `eventos-pendentes.jsonl`: **buffer transacional ativo**, uma linha JSON por avanço narrativo ainda não consolidado.
-- `consultas-contexto.jsonl`: telemetria local opcional criada por `ferramentas/contexto.py`; é ignorada pelo Git e não contém o conteúdo consultado.
+- `contexto.yaml`: snapshot-base pequeno de sessão, personagem, recursos, tempo e localização;
+- `cena.yaml`: snapshot-base da situação imediata;
+- `eventos-pendentes.jsonl`: buffer transacional, uma linha por avanço ainda não consolidado;
+- `consultas-contexto.jsonl`: telemetria local opcional ignorada pelo Git.
 
-## Regra de escrita durante narração
+## Escrita durante narração
 
-Um turno narrativo comum escreve somente:
+Um avanço comum escreve somente:
 
 1. `sessoes/NNN/transcricao.md`;
 2. `runtime/eventos-pendentes.jsonl`.
 
-Use `ferramentas/turno.py` para fazer as duas escritas em uma única chamada lógica e de forma idempotente.
+Use `ferramentas/turno.py registrar` para essas duas persistências. A prosa completa fica apenas na transcrição; o buffer guarda ID, sessão, resumo, deltas e rolagens ocultas necessárias.
 
-```bash
-python3 ferramentas/turno.py registrar <<'JSON'
-{
-  "jogador": "Ren tenta alcançar o alvo.",
-  "narracao": "...",
-  "resumo": "Ren alcança o alvo e gasta 1 Ki.",
-  "modo": "combate",
-  "deltas": [
-    {
-      "alvo": "estado",
-      "op": "inc",
-      "caminho": "recursos.ki.atuais",
-      "valor": -1
-    }
-  ]
-}
-JSON
-```
-
-A prosa completa não é copiada para o JSONL. O buffer guarda apenas ID, sessão, resumo curto, deltas e, quando necessário, rolagens ocultas até a consolidação.
-
-## Deltas
-
-Operações suportadas:
-
-- `set`: substitui valor corrente;
-- `inc`: soma delta numérico;
-- `append`: acrescenta item a lista;
-- `remove`: remove chave ou item;
-- `registrar`: registra fato que não precisa alterar imediatamente um valor estruturado, como descoberta ou consequência.
-
-Alvos típicos:
-
-- `estado`;
-- `tempo`;
-- `relacao:<id>`;
-- `npc:<id>`;
-- `conhecimento`;
-- `consequencia`;
-- `relogio:<id>`.
-
-Deltas com `visibilidade: narrador` permanecem fora das consultas públicas normais. Rolagens ocultas podem ficar em `rolagens_ocultas` até a consolidação da sessão.
-
-## Estado efetivo
-
-Durante uma sessão com eventos pendentes:
+## Estado efetivo antes do checkpoint
 
 ```bash
 python3 ferramentas/contexto.py status
@@ -77,36 +32,78 @@ python3 ferramentas/contexto.py npc nera
 python3 ferramentas/contexto.py conhecimento "ponte baixa"
 ```
 
-Essas consultas combinam o snapshot-base com os deltas pendentes relevantes **em memória**. Os YAMLs de runtime não precisam ser regravados por turno.
+As consultas aplicam deltas pendentes sem regravar os YAMLs-base.
 
-Isso permite interromper o processo no meio de uma cena: snapshot-base + `eventos-pendentes.jsonl` + transcrição bastam para reconstruir o estado operacional corrente.
+## Consolidação
 
-## Idempotência e recuperação
+Checkpoint de cena:
 
-Cada bloco gravado na transcrição recebe um comentário HTML interno com o ID da transação. A mesma entrada executada novamente gera o mesmo ID automaticamente.
+```bash
+python3 ferramentas/consolidar.py cena
+```
 
-Se o processo cair depois de escrever o evento, mas antes da transcrição — ou o inverso — repetir a mesma operação repara apenas o lado ausente. Não duplica o que já foi persistido.
+Fechamento de sessão:
 
-Validação:
+```bash
+python3 ferramentas/consolidar.py sessao
+```
+
+O consolidador calcula os documentos finais em memória, cria staging e journal de hashes, instala os arquivos afetados e coloca `eventos-pendentes.jsonl` por último. O novo `contexto.yaml` e `cena.yaml` são preparados no mesmo lote.
+
+Depois de consolidação bem-sucedida não é necessário executar `gerar-runtime.py` novamente por rotina.
+
+O ledger `sessoes/NNN/consolidacoes.jsonl` registra os IDs já aplicados e impede reaplicação.
+
+## Recuperação de consolidação interrompida
+
+Durante a instalação podem existir, temporariamente:
+
+```text
+runtime/consolidacao-em-andamento.json
+runtime/.consolidacao-stage/
+```
+
+Esses caminhos são ignorados pelo Git. Enquanto o journal existir, `contexto.py` e `turno.py` recusam operação normal para impedir uso de um checkpoint parcialmente instalado.
+
+Recupere com:
+
+```bash
+python3 ferramentas/consolidar.py recuperar
+```
+
+A recuperação instala os bytes já staged; não recalcula os deltas. Para cada arquivo, aceita somente o hash anterior ou o hash final esperado. Um terceiro hash interrompe a recuperação em vez de sobrescrever edição concorrente.
+
+## Deltas suportados
+
+Operações: `set`, `inc`, `append`, `remove`, `registrar`.
+
+Domínios consolidados:
+
+- `estado`;
+- `tempo`;
+- `ficha`;
+- `progressao`;
+- `relacao:<id>`;
+- `npc:<id>`;
+- `conhecimento`;
+- `consequencia`;
+- `relogio:<id>`.
+
+Conteúdo com `visibilidade: narrador` não pode ser instalado em domínio público.
+
+## Verificação
 
 ```bash
 python3 ferramentas/turno.py check
-python3 ferramentas/turno.py status
-```
-
-## Regeneração do snapshot-base
-
-```bash
-python3 ferramentas/gerar-runtime.py
+python3 ferramentas/consolidar.py status
+python3 ferramentas/consolidar.py check
 python3 ferramentas/gerar-runtime.py --check
 ```
 
-Esses comandos continuam tratando `contexto.yaml` e `cena.yaml` como projeções do **estado canônico consolidado**. Eventos pendentes são uma sobreposição separada e não tornam o snapshot-base inválido.
+`gerar-runtime.py` continua útil depois de uma alteração canônica manual. O consolidador já gera o runtime do checkpoint que instala.
 
-Após a futura consolidação dos eventos nos arquivos canônicos, o buffer será esvaziado/marcado e o runtime-base será regenerado.
+## Limites
 
-## Regras de tamanho
+`contexto.yaml` e `cena.yaml` permanecem abaixo de 8 KiB. `eventos-pendentes.jsonl` tem limite operacional de 512 KiB; alcançar esse limite exige checkpoint antes de novos turnos.
 
-`contexto.yaml` e `cena.yaml` continuam abaixo de 8 KiB. `eventos-pendentes.jsonl` tem limite operacional de 512 KiB; atingir esse limite indica que a sessão precisa ser consolidada antes de continuar.
-
-Não transforme nenhum desses arquivos em diário histórico. A transcrição é o registro completo; o JSONL contém apenas deltas de trabalho.
+Runtime não é diário histórico: transcrição guarda a prosa; o ledger guarda batches; arquivos canônicos guardam o estado corrente.
