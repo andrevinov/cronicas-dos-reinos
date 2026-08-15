@@ -1,33 +1,58 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler e qual fluxo executar**. Ele substitui a antiga prática de carregar um conjunto amplo de arquivos por precaução.
+Este documento define como o agente decide **o que ler, quando parar de ler e qual fluxo executar**. A interface preferencial de leitura operacional é `ferramentas/contexto.py`.
 
 ## Regra principal de economia de contexto
 
-Antes de qualquer leitura, perguntar: **a informação já presente no contexto é suficiente para executar a tarefa com segurança?**
+Antes de qualquer consulta, perguntar: **a informação já presente no contexto é suficiente para executar a tarefa com segurança?**
 
 Se sim, não ler arquivo algum.
 
-Se não, buscar somente a menor fonte capaz de responder à lacuna concreta. Depois de cada leitura, perguntar novamente se já é suficiente. **Quando for suficiente, parar.**
+Se não, buscar somente a menor fonte capaz de responder à lacuna concreta. Depois de cada consulta, perguntar novamente se já é suficiente. **Quando for suficiente, parar.**
 
 Não ler o repositório inteiro, uma pasta inteira ou um arquivo grande apenas para "se situar". Não consultar livros oficiais preventivamente. Não reler informação que já está disponível e confiável no contexto atual.
 
-A camada `runtime/` existe para concentrar o estado quente. Ela é derivada e descartável: serve para leitura rápida, mas não substitui as fontes canônicas. Divergência entre runtime e fonte canônica significa runtime desatualizado, não autorização para alterar o cânone a partir dele.
+`runtime/` continua sendo derivado e descartável. `contexto.py` é apenas a porta de leitura mais econômica sobre runtime e fontes canônicas; a saída da ferramenta também não se torna cânone.
+
+## Interface única de consulta
+
+Usar preferencialmente:
+
+```bash
+python3 ferramentas/contexto.py status
+python3 ferramentas/contexto.py cena
+python3 ferramentas/contexto.py npc kethra
+python3 ferramentas/contexto.py relacao jack
+python3 ferramentas/contexto.py conhecimento masao
+python3 ferramentas/contexto.py regra furtividade
+python3 ferramentas/contexto.py buscar "ponte baixa"
+```
+
+A ferramenta possui orçamento padrão de saída e compacta resultados antes de devolver conteúdo excessivo. Consultas locais registram apenas metadados em `runtime/consultas-contexto.jsonl`, arquivo ignorado pelo Git: comando, nível, número de fontes, bytes devolvidos e se houve truncamento. Nenhum conteúdo consultado é gravado nesse log.
+
+A busca genérica não inclui `narrador/` nem transcrições completas por padrão. Quando necessário:
+
+```bash
+python3 ferramentas/contexto.py buscar "sol apagado" --reservado
+python3 ferramentas/contexto.py buscar "frase exata" --historico
+```
+
+`--reservado` é deliberado porque material de `narrador/` pode conter segredos. `--historico` é deliberado porque transcrições são material frio e volumoso. Não usar essas opções preventivamente.
 
 ## Escada de leitura
 
 Usar a menor camada que resolva a pergunta:
 
 - **L0 — contexto já disponível:** nenhuma leitura.
-- **L1 — estado quente:** `runtime/contexto.yaml`.
-- **L2 — cena ou fragmento específico:** `runtime/cena.yaml` ou um único arquivo apontado pelo runtime para NPC, relação, regra, lugar, segredo ou conhecimento.
-- **L3 — índice/resumo:** resumo de sessão, visão geral regional, decisão de regra ou documento de domínio mais amplo.
-- **L4 — histórico profundo:** estado acumulativo, transcrição antiga, cronologia extensa ou múltiplos documentos para resolver contradição.
+- **L1 — estado quente:** `contexto.py status`.
+- **L2 — consulta dirigida:** `cena`, `npc`, `relacao`, `conhecimento` ou `regra`.
+- **L3 — descoberta limitada:** `buscar`, sem transcrições completas.
+- **L4 — histórico profundo:** `buscar --historico` ou leitura direta de uma fonte específica apontada por consulta anterior.
 - **L5 — fonte externa/autorizada:** livros oficiais ou pesquisa de material-base quando os resumos internos não bastarem.
 
-Escalar apenas por necessidade identificável. A existência de um nível mais profundo não é motivo para consultá-lo.
+Escalar apenas por necessidade identificável. A existência de um nível mais profundo não é motivo para consultá-lo. Durante narração comum, o alvo é permanecer em L0–L2.
 
-Durante narração comum, o alvo é permanecer em L0–L2. L4 e L5 devem ser excepcionais.
+Leitura direta com `cat`, `sed`, `rg` ou abertura integral de arquivo canônico continua permitida quando a ferramenta apontar uma fonte específica e o fragmento retornado não bastar, ou durante tarefas estruturais de manutenção. Na narração comum, é exceção.
 
 ## Classificação da tarefa
 
@@ -52,23 +77,19 @@ A classificação serve para escolher o fluxo e os documentos especializados; n�
 
 ### Narração ou início de sessão
 
-1. Tentar L0: contexto já carregado.
-2. Se faltar estado operacional, ler `runtime/contexto.yaml`.
-3. Se faltar situação imediata, ler `runtime/cena.yaml`.
-4. Somente então seguir um ponteiro específico para relação, regra, segredo, conhecimento, estado completo ou histórico.
+Começar em L0. Se faltar estado operacional, usar `contexto.py status`; se faltar o recorte imediato, usar `contexto.py cena`. Só consultar entidade, regra ou histórico quando a resposta atual depender disso.
 
-Na abertura de sessão é aceitável um conjunto um pouco maior, mas ainda deve começar pelo runtime. Não carregar material remoto à cena apenas porque existe.
-
-Os arquivos `estado/estado-atual.yaml`, `estado/tempo.yaml`, `estado/relacoes.yaml`, `personagens/jogador/conhecimento.md` e transcrições não são mais fontes de primeira leitura para se situar. São camadas profundas acessadas quando a lacuna concreta exigir.
+Na abertura de sessão é aceitável consultar um pouco mais para reconstruir sessão, data, local, estado crítico, situação e segredos diretamente relacionados. Ainda assim, usar consultas dirigidas antes de arquivos completos.
 
 ### Aplicação de regra
 
-Consultar nesta ordem e parar quando resolvido:
+Usar `contexto.py regra "assunto"`. A busca interna percorre os resumos de `regras/` e devolve apenas as seções mais relevantes.
 
-1. resumo específico em `regras/`;
-2. decisão anterior equivalente em `regras/decisoes.md`;
-3. `regras/regras-da-casa.md`;
-4. fonte oficial autorizada, se a dúvida continuar.
+Se ainda houver dúvida, seguir e parar assim que resolvido:
+
+1. decisão anterior equivalente em `regras/decisoes.md`;
+2. `regras/regras-da-casa.md`;
+3. fonte oficial autorizada.
 
 ### Atualização da ficha
 
@@ -86,28 +107,56 @@ Revisar transcrição ou registro bruto, estado inicial, rolagens importantes, d
 
 Após consolidar as fontes canônicas, regenerar o runtime; nunca consolidar o cânone a partir do runtime como se ele fosse autoridade histórica.
 
-## Preparação inicial da campanha
+## Semântica dos comandos de contexto
 
-Antes da primeira sessão devem estar definidos: edição, período histórico, região inicial, nível inicial, método de atributos, livros/suplementos autorizados, regras da casa, tom, limites, dificuldade, progressão, protocolo de rolagens e personagem inicial. Registrar em `campanha.yaml` ou arquivos diretamente referenciados.
+### `status`
 
-Ravens Bluff é a base regional inicial e deve receber preparação suficiente para sustentar várias sessões antes da expansão. Priorizar The Living City, estrutura urbana, arredores imediatos, facções, NPCs recorrentes, ameaças, rumores e conexões vizinhas. Marcadores temporários só para detalhes menores que não afetem o jogo imediato.
+Retorna somente `runtime/contexto.yaml`: sessão, personagem, recursos, tempo, localização e ponteiros. É a consulta operacional mais barata.
+
+### `cena`
+
+Retorna contexto quente e `runtime/cena.yaml`: resumo imediato, mecânica da cena e alertas/prazos. Não repetir se esses dados já estão no contexto da conversa.
+
+### `npc`
+
+Combina, quando disponíveis, os medidores rápidos do NPC e sua relação atual com Ren. Não carrega automaticamente segredos de `narrador/`.
+
+### `relacao`
+
+Extrai somente a entidade correspondente de `estado/relacoes.yaml`, compactando campos históricos grandes para respeitar o orçamento.
+
+### `conhecimento`
+
+Busca seções em `personagens/jogador/conhecimento.md`. Serve para responder **o que Ren sabe**, não o que é objetivamente verdadeiro nos bastidores.
+
+### `regra`
+
+Busca seções nos resumos internos de `regras/`. Ausência de resultado não autoriza inventar regra; nesse caso, escalar segundo a hierarquia de fontes.
+
+### `buscar`
+
+É ferramenta de descoberta, não primeira escolha. Procura ocorrências pequenas nos domínios operacionais e nos resumos de sessão. Por padrão, não consulta `narrador/` nem `transcricao.md`.
 
 ## Runtime
 
 `runtime/contexto.yaml` deve permanecer pequeno e conter somente estado operacional: sessão, personagem, recursos, tempo, localização e ponteiros.
 
-`runtime/cena.yaml` deve conter um recorte ainda menor da situação imediata. O resumo de cena é derivado do final cronológico de `localizacao.descricao_operacional`; ele existe para evitar a leitura integral do estado acumulativo.
+`runtime/cena.yaml` deve conter um recorte ainda menor da situação imediata. `runtime/eventos-pendentes.jsonl` está reservado para a futura arquitetura transacional.
 
-`runtime/eventos-pendentes.jsonl` está reservado para a futura arquitetura transacional. Enquanto ela não for implantada, a existência do arquivo não muda as obrigações atuais de consolidação.
-
-Comandos:
+Comandos de geração:
 
 ```bash
 python3 ferramentas/gerar-runtime.py
 python3 ferramentas/gerar-runtime.py --check
 ```
 
-O modo `--check` deve fazer parte dos testes de integridade. Se falhar, não usar runtime desatualizado para narrar.
+Se `--check` falhar, não usar runtime desatualizado para narrar.
+
+## Preparação inicial da campanha
+
+Antes da primeira sessão devem estar definidos: edição, período histórico, região inicial, nível inicial, método de atributos, livros/suplementos autorizados, regras da casa, tom, limites, dificuldade, progressão, protocolo de rolagens e personagem inicial. Registrar em `campanha.yaml` ou arquivos diretamente referenciados.
+
+Ravens Bluff é a base regional inicial e deve receber preparação suficiente para sustentar várias sessões antes da expansão. Priorizar The Living City, estrutura urbana, arredores imediatos, facções, NPCs recorrentes, ameaças, rumores e conexões vizinhas. Marcadores temporários só para detalhes menores que não afetem o jogo imediato.
 
 ## Comandos conceituais
 
@@ -150,4 +199,4 @@ Concluída quando resumo, estado, ficha, XP/marco, relações, consequências, t
 
 Prioridades concretas de campanha devem vir de `campanha.yaml`, do estado canônico e, para acesso rápido, de `runtime/`, não de números de sessão hardcoded no manual do agente.
 
-Preserva-se o princípio de não criar dezenas de documentos vazios para satisfazer uma árvore idealizada; criar arquivos quando houver conteúdo real e utilidade previsível.
+Preserva-se o princípio: **não criar dezenas de documentos vazios para satisfazer uma árvore idealizada; criar arquivos quando houver conteúdo real e utilidade previsível.**
