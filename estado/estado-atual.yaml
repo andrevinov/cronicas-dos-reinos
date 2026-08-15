@@ -392,7 +392,14 @@ localizacao:
     agisse. A faca caiu no barro, fora da mão dela. O besteiro disparou contra
     Ren, errou, e recuou para cobertura parcial atrás da lona preta do monte de
     carvão. Colm/Dent continua vivo, amarrado e gagado, mas sem lâmina direta
-    encostada nele neste momento.
+    encostada nele neste momento. Ren então avançou até o besteiro, acertou um
+    golpe controlado sem apagá-lo e colocou a wakizashi em seu pescoço. A pressão
+    funcionou: o besteiro afirmou que Bram Vask pagou a pergunta, mas não veio;
+    um homem de mãos limpas organizou a compra/captura; o objetivo era manter
+    Colm/Dent respirando para atrair quem viesse atrás; Mera Fumaça não chamou a
+    emboscada e pode estar presa no galpão baixo; o rapaz da corda nova pode ter
+    corrido para avisar o intermediário se ouviu o laço sem ouvir o assobio do
+    besteiro.
 
 tempo:
   ano_dr: 1372
@@ -405,10 +412,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "amanhecer de 7 Eleasis, no mato baixo junto à estrada do Fire River"
-  hora_aproximada: "07:25 de 7 Eleasis"
+  hora_aproximada: "07:26 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo e neutralizou a ameaça direta da faca, mas o besteiro ainda está ativo em cobertura parcial."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou a ameaça direta da faca e rendeu o besteiro, mas o rapaz da corda nova pode estar correndo para avisar o intermediário de mãos limpas."
 
 recursos:
   pontos_de_vida:
@@ -450,6 +457,15 @@ recursos:
     - "O besteiro disparou contra Ren e errou; Aparar Projéteis não foi necessário"
     - "A besta do homem está descarregada por um instante, mas ele recua para cobertura e leva a mão ao cinto"
     - "Ren está de pé junto a Colm/Dent e à mulher caída; não está preso nem caído"
+    - "Ren avançou até o besteiro, acertou um golpe controlado de 5 de dano contundente e o rendeu com a wakizashi no pescoço"
+    - "O besteiro está ferido, consciente e rendido sob lâmina"
+    - "A besta do homem caiu junto ao monte de carvão"
+    - "No cinto do besteiro há dois virotes, uma faca curta barata e um apito de madeira"
+    - "Segundo o besteiro, Bram Vask pagou a pergunta, mas não veio pessoalmente"
+    - "Segundo o besteiro, um homem de mãos limpas com roupa de trabalhador e mão de escrivão organizou a compra/captura"
+    - "Segundo o besteiro, Colm/Dent deveria respirar; quem viesse atrás valia mais que ele"
+    - "Segundo o besteiro, Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo"
+    - "Segundo o besteiro, o rapaz da corda nova foi para a estrada e pode correr para avisar o intermediário se ouviu o laço sem ouvir o assobio"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1252,8 +1268,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir se Ren persegue/neutraliza o besteiro, solta Colm/Dent imediatamente, toma a faca caída ou tenta impedir que o besteiro fuja e leve notícia"
-    - "identificar se os captores queriam dinheiro, informação, Ren, Kage ou apenas cumprir ordem de Bram/outro mandante"
+    - "decidir se Ren amarra/desarma o besteiro, solta Colm/Dent imediatamente, verifica Mera Fumaça no galpão baixo ou corre atrás do rapaz da corda nova"
+    - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
@@ -1295,8 +1311,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está junto à vala rasa na estrada do Fire River, às 07:25 de 7 Eleasis, vestido como homem pobre. Ele venceu a iniciativa, cruzou quinze pés sem usar Passo do Vento e neutralizou a mulher de avental escuro com dois golpes não letais antes que ela pudesse agir contra Colm. A mulher está inconsciente e respirando; a faca caiu no barro fora da mão dela. Colm/Dent está vivo, amarrado e gagado, sem lâmina direta sobre ele neste instante. O besteiro disparou contra Ren, errou e recuou para cobertura parcial atrás do monte velho de carvão, a cerca de vinte e cinco a trinta pés. A localização exata de Mera Fumaça ainda não foi confirmada. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde está disponível, mas não foi usado nesta saída."
-  risco_imediato: "alto localizado: o refém saiu da ameaça direta da lâmina, mas ainda está preso e exposto. O besteiro está ativo, parcialmente coberto, com a besta descarregada por um instante e a mão indo ao cinto. Ele pode fugir, recarregar, chamar reforço ou tentar outra medida se Ren não o impedir."
+  cena_atual: "Ren está junto à vala rasa na estrada do Fire River, às 07:26 de 7 Eleasis, vestido como homem pobre. Ele neutralizou a mulher de avental escuro de modo não letal, rendeu o besteiro com um golpe controlado e mantém a wakizashi no pescoço dele. Colm/Dent está vivo, amarrado e gagado, sem lâmina direta sobre ele neste instante. A mulher está inconsciente e respirando; a faca dela caiu no barro. A besta do homem está caída junto ao monte de carvão. O besteiro afirmou que Bram Vask pagou a pergunta, que um homem de mãos limpas organizou a compra/captura, que Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo, e que o rapaz da corda nova pode ter corrido para avisar o intermediário. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde está disponível, mas não foi usado nesta saída."
+  risco_imediato: "alto localizado: Colm/Dent está vivo, mas ainda preso. O besteiro está rendido sob lâmina, mas não amarrado; a mulher está inconsciente; Mera pode estar presa no galpão baixo; o rapaz da corda nova pode estar levando notícia ao homem de mãos limpas. A prioridade escolhida agora determinará se Ren salva os presentes, impede o aviso ou preserva prisioneiros para Luath/Tyr."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1307,5 +1323,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir se Ren persegue/neutraliza o besteiro, solta Colm/Dent imediatamente, toma a faca caída ou faz outra ação no turno atual"
+    - "decidir se Ren amarra/desarma o besteiro, solta Colm/Dent imediatamente, verifica Mera Fumaça no galpão baixo ou corre atrás do rapaz da corda nova"
     - "verificar depois a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir novos observadores até sobreviventes"

@@ -4228,3 +4228,51 @@ Ele recua meio corpo para trás da lona preta endurecida, tentando ganhar cobert
 Fim da primeira rodada. A mulher está inconsciente e viva. Colm/Dent está vivo, amarrado e gagado, sem lâmina direta sobre ele neste exato momento. O besteiro continua ativo, parcialmente coberto pelo monte de carvão, a cerca de vinte e cinco a trinta pés de Ren. Ren está de pé junto a Colm e à mulher caída. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. Reação disponível. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 É o turno de Ren.
+
+**Jogador**
+
+Ren avança sobre o homem para atacá-lo. Se acertar um primeiro golpe ele não irá apaga-lo: usará a outra ação pra por a wakizashi em seu pescoço e dizer: "quem mandou você fazer isso? Fale, por sua vida e a dela!", apontando pra mulher apagada.
+
+**Narrador**
+
+Ren ainda tem distância bastante.
+
+O besteiro tenta transformar a lona preta e o monte de carvão em parede. Para outro homem, talvez fosse. Para Ren, é só caminho ruim.
+
+Golpe controlado contra o besteiro: d20 15 + 7 = 22 contra CA 13. Acerto. Dano: 1d6 1 + 4 = 5 contundente.  
+Intimidação com wakizashi no pescoço: d20 20 + 0 = 20 contra CD 13. Sucesso.  
+Besteiro manter sangue-frio sob a wakizashi: d20 20 + 2 = 22 contra CD 15. Sucesso.
+
+Ren cruza o barro, pisa na beirada da lona endurecida e entra por cima do abrigo dele antes que a mão no cinto encontre o que procurava. O golpe não vem para apagar. Vem para ensinar o corpo a parar: cotovelo curto no peito, ombro contra a madeira do monte, ar arrancado dos pulmões.
+
+A besta bate no carvão e escorrega para baixo.
+
+A wakizashi sai limpa o bastante para que o som pareça alto no meio do mato. Quando a lâmina encosta sob a mandíbula do homem, ele congela. Não como covarde. Como alguém que entende medida.
+
+"Quem mandou você fazer isso? Fale, por sua vida e a dela."
+
+Ren aponta para a mulher caída.
+
+O homem engole seco. O sangue-frio dele não quebra. Isso não o torna corajoso. Só impede a mentira desesperada de sair primeiro.
+
+"Vask pagou a pergunta", ele diz, baixo, sem tirar os olhos da lâmina. "Bram Vask. Não veio aqui. Não sabe carregar lama. Mandou homem limpo fazer a compra."
+
+Ele força ar pelo nariz.
+
+"Roupa de trabalhador, mão de escrivão. Disse que o torto era para respirar. Que quem viesse atrás valia mais que o torto. A tira no caminho era para puxar você fora da estrada."
+
+O olhar dele corta rápido para Colm, depois para a mulher inconsciente.
+
+"Mera não chamou isso. Mera guardou o torto por dinheiro de Dorra. A gente tirou quando ela foi na pilha de secagem. Ela viu tarde demais. Está fechada no galpão baixo se ainda não arrombou a porta."
+
+O último trecho sai mais rápido.
+
+"O rapaz da corda nova foi para a estrada. Se ouviu o laço e não ouviu meu assobio, corre para avisar o homem limpo."
+
+O besteiro fica imóvel sob a wakizashi, uma mão aberta no ar, a outra afastada do cinto. A besta está caída perto do monte de carvão. No cinto dele, Ren vê dois virotes, uma faca curta barata e um apito de madeira preso por cordão.
+
+Colm tosse atrás, ainda preso. A mulher continua respirando no barro. A estrada fica quieta demais por um instante.
+
+Fim do contato imediato de combate, se Ren mantiver o controle. O besteiro está ferido, consciente e rendido sob a lâmina. Colm/Dent está vivo, amarrado e gagado. A mulher está inconsciente e viva. Segundo o besteiro, **Bram Vask pagou a pergunta**, um **homem de mãos limpas** organizou a captura, **Mera Fumaça não chamou a emboscada** e pode estar presa no galpão baixo. O rapaz da corda nova pode ter corrido para avisar esse intermediário. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+O que Ren faz?
