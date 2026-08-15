@@ -3318,3 +3318,81 @@ corredor seco atrás
 Hora aproximada: **01:42 de 7 Eleasis, 1372 DR**. Ren está diante do painel baixo aberto, ainda fora da sala baixa seca. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Há uma marca pequena **"K ->"** no começo do corredor seco, apontando para este painel.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren examina os documentos primeiro. Ele quer entender que tipo de arquivo é aquele. Se as datas são atuais. Quem assina. Se é só pra guardar ou há algo mais. Se ele conseguir enxergar algum documento útil, algum selo diferente, ele pegará para si e levará com ele. Ele olhará tanto nos rolos, cilindros e ceras, como na mesa do centro, como nos feixes elevados.
+
+Se ninguém o interromper, levando ou não alguma coisa, ele irá observar o brilho fraco no fundo. Sempre mantendo a furtividade.
+
+**Narrador**
+
+Ren entra baixo, pela abertura do painel.
+
+Teste de Furtividade de Ren ao entrar e vasculhar a sala baixa seca sob Passos sem Pegadas: d20 6 + 17 = 23 contra CD 18. Sucesso.
+
+A sala aceita o corpo dele sem aceitar presença. Tudo ali foi feito para reduzir rastro: mesa baixa, prateleira curta, papel suspenso, pó seco, pano encerado, luz mínima. Um homem de pé seria erro. Um homem ajoelhado é parte do desenho.
+
+Ren começa pelos feixes elevados.
+
+Teste de Investigação de Ren com apoio das ferramentas de caligrafia nos documentos da sala seca: d20 20 + 7 = 27 contra CD 16. Sucesso.
+
+A primeira coisa que ele entende é que aquilo não é arquivo morto.
+
+É arquivo de passagem.
+
+Papéis entram ali para secar, receber marca, perder marca, mudar ordem, mudar nome ou esperar o momento certo de subir para algum balcão respeitável. As bandejas de areia e cinza clara não são só para absorver umidade: também servem para apagar brilho novo de tinta, envelhecer borda, segurar lacre fresco e fazer correção recente parecer descuido antigo.
+
+As datas são atuais.
+
+Ele encontra marcações de **4 Eleasis**, **6 Eleasis** e uma preparação já separada para **7 Eleasis**, sem hora formal, mas com uma anotação curta de maré. Não há pilhas velhas de anos. Não há poeira honesta. O lugar trabalha em dias, talvez horas.
+
+Os nomes aparecem em camadas.
+
+**V. Rook** aparece mais de uma vez em registros de correção, anulação ou confirmação de volume. O traço bate com o tipo de mão administrativa que Ren já viu ligado a Velis: curto, apertado, tentando parecer mais firme do que é.
+
+**M. Harrow** aparece como nome de saída, não como pessoa de verdade no processo: rótulo, destino, culpa pronta.
+
+**D. Mord** aparece em uma tira menor, não como autoridade formal, mas como recebimento ou passagem de mão. Não é assinatura de cartório. É marca de canal.
+
+E a expressão volta como faca pequena:
+
+**retenção anulada**.
+
+Aparece ligada ao **volume 13**, a correção retroativa e a um conjunto de papéis que deveriam fazer uma testemunha ou volume errado parecer simples ruído de escrituração.
+
+O centro da mesa confirma o método. Há restos de cera vermelha, cera cinza e uma cera pálida quase sem cor. Os cilindros pequenos não são todos lacres oficiais; alguns são matrizes curtas, boas para pressionar cera em tiras pequenas, não para selar decreto grande. Um deles traz a marca simples de um **sol apagado**: círculo pobre, riscos raspados ou cortados, como símbolo feito para ser reconhecido por quem já sabe, não para impressionar.
+
+Nos rolos de pano encerado, Ren encontra tiras estreitas preparadas para envolver papel fino e atravessar umidade sem borrar. Em uma delas, uma anotação curta, sem assinatura formal, junta palavras que não deveriam estar juntas:
+
+**Kage**. **gravadora**. **menino**. **antes de maré**.
+
+Não há nome de Nera. Não há nome de Tavin. Mas a corda que Dalm puxou no camarim está aqui, ou passou por mãos que usam a mesma mesa.
+
+Teste de Prestidigitação de Ren para retirar documentos úteis sem desarrumar o arquivo: d20 9 + 4 = 13 contra CD 14. Falha.
+
+Ren escolhe rápido o que vale carregar:
+
+* uma tira de controle com **retenção anulada**, **volume 13**, **V. Rook**, **M. Harrow** e data recente;
+* a tira encerada com as palavras **Kage**, **gravadora**, **menino** e **antes de maré**;
+* um cilindro curto de matriz/cera com a marca de **sol apagado**.
+
+Ele tira as peças com cuidado, mas não consegue devolver o conjunto à mentira perfeita. Um cordão volta com tensão errada. Um feixe de papel perde o alinhamento de meio dedo. A areia clara sob a mesa conserva uma pequena ausência onde o cilindro estava.
+
+Não é bagunça de ladrão bêbado.
+
+Mas alguém que conheça aquela sala saberá que uma mão competente tocou o arquivo.
+
+Teste de Percepção de Ren ao observar a sala e o brilho fraco no fundo: d20 5 + 6 = 11 contra CD 15. Falha.
+
+Ninguém interrompe Ren.
+
+O brilho fraco no fundo não é tocha aberta. É uma brasa ou lamparina mínima guardada atrás de cobertura fosca, talvez chifre fino, vidro sujo ou cerâmica pálida. Ela protege luz e calor ao mesmo tempo. De perto, Ren entende só o suficiente: aquilo mantém um ponto vivo sem deixar a sala parecer iluminada de fora.
+
+Ao lado da luz, a passagem baixa coberta por pano escuro ou couro encerado espera como uma segunda garganta. O pano está preso só em cima. Embaixo, toca quase o chão, mas não sela tudo. Há sombra suficiente dos dois lados para o Passo Sombrio, se Ren conseguir ver um espaço desocupado além; neste ângulo, ele ainda não consegue.
+
+O som da água, atrás e à esquerda, parece um pouco mais cheio agora.
+
+Hora aproximada: **01:48 de 7 Eleasis, 1372 DR**. Ren está dentro da **sala baixa seca da Ponte Baixa**, perto da mesa e a poucos passos do brilho protegido no fundo. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele carrega três evidências retiradas da sala, mas a ausência delas pode ser percebida por alguém que conheça o arquivo.
+
+O que Ren faz?

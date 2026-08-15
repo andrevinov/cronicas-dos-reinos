@@ -932,3 +932,61 @@ Consequências:
   papel elevados à direita e uma passagem baixa coberta perto de brilho fraco no
   fundo. Ele não vê ninguém, mas sua Percepção falhou e a sala não está
   completamente garantida.
+
+---
+
+## Noite de 6 para 7 Eleasis: busca no arquivo de passagem da Ponte Baixa
+
+Contexto: Ren entrou na sala baixa seca, examinou documentos, rolos, cilindros,
+ceras, mesa e feixes elevados. Se encontrasse documento ou selo útil, pretendia
+levar consigo. Se não fosse interrompido, observaria o brilho fraco no fundo.
+
+Rolagens abertas:
+
+* Furtividade de Ren ao entrar e vasculhar a sala baixa seca sob Passos sem
+  Pegadas: d20 6 + 17 = 23 contra CD 18. Sucesso.
+* Investigação de Ren com apoio das ferramentas de caligrafia nos documentos da
+  sala seca: d20 20 + 7 = 27 contra CD 16. Sucesso.
+* Prestidigitação de Ren para retirar documentos úteis sem desarrumar o arquivo:
+  d20 9 + 4 = 13 contra CD 14. Falha.
+* Percepção de Ren ao observar a sala e o brilho fraco no fundo: d20 5 + 6 = 11
+  contra CD 15. Falha.
+
+Rolagens ocultas:
+
+* Ouvinte ou vigia notar Ren durante a busca na sala seca: d20 17 + 4 = 21
+  contra CD 23. Falha.
+* Sinal seco no feixe denunciar retirada de documento: d20 16 + 3 = 19 contra
+  CD 14. Sucesso.
+* Interrupção chegar antes de Ren observar o brilho no fundo: d20 7 + 3 = 10
+  contra CD 15. Falha.
+
+Consequências:
+
+* Ren entra e vasculha a sala sem ser localizado por ouvinte ou vigia neste
+  trecho.
+* A investigação é excepcional: Ren entende que a sala é arquivo de passagem,
+  preparação e correção de documentos, não arquivo morto. A mesa, areia, cinza,
+  cera e pano encerado servem para secar, envelhecer, proteger, alterar ou
+  preparar documentos para circulação.
+* Datas atuais aparecem nos papéis: 4 Eleasis, 6 Eleasis e uma preparação para
+  7 Eleasis com anotação curta de maré.
+* Nomes ou marcas legíveis: V. Rook em registros de correção/anulação, M. Harrow
+  como nome de saída/culpa pronta, D. Mord como marca menor de passagem ou
+  recebimento, não como autoridade formal.
+* A expressão "retenção anulada" reaparece ligada ao volume 13, correção
+  retroativa e ruído de testemunha/volume errado.
+* Ren encontra cera vermelha, cera cinza, cera pálida quase sem cor, tiras de
+  pano encerado e cilindros curtos; um cilindro/matriz carrega marca de sol
+  apagado.
+* Ren encontra uma tira encerada com "Kage", "gravadora", "menino" e "antes de
+  maré", sem nomes de Nera ou Tavin.
+* Ren leva três evidências: tira de controle com retenção anulada/volume
+  13/V. Rook/M. Harrow/data recente; tira encerada com Kage/gravadora/menino/
+  antes de maré; cilindro curto de matriz/cera com marca de sol apagado.
+* A retirada não fica limpa: o feixe, o cordão e a ausência do cilindro podem
+  denunciar a manipulação para alguém que conheça o arquivo.
+* Ren observa o brilho: brasa ou lamparina mínima protegida por cobertura fosca,
+  junto de passagem baixa coberta por pano escuro ou couro encerado. A Percepção
+  falha, então não confirmar ausência de armadilha, pessoa, fio ou controle
+  sutil ali.
