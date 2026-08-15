@@ -4496,3 +4496,45 @@ Mera vê a faixa azul.
 Hora aproximada: **07:42 de 7 Eleasis, 1372 DR**. Ren está atrás das tábuas e do capim junto à vala seca, com **Mera Fumaça livre** e **Colm/Dent vivo, fraco e ferido**. Mera não conhece outros prisioneiros. Ela indicou um **forno morto**, a cerca de cinco minutos pelo mato, como esconderijo brevíssimo, e a curandeira rural **Iria Doss**, a cerca de quinze minutos para uma pessoa saudável, como tratamento possível mas não secreto. Uma carroça de resposta acaba de entrar no ramal: o rapaz da faixa azul está no banco, há um condutor e um homem com besta leve na traseira. Eles ainda não localizaram Ren, Mera ou Colm. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren voa direto pra carroça. Se o homem ou o garoto tentar atacá-lo, ele reagirá, mas se não colocará a wakizashi apontada pro rosto do homem e dirá: "quem te mandou criar essa cena? Quem é o mandante?"
+
+**Narrador**
+
+Ren sai do capim antes que a carroça complete a curva.
+
+O rapaz da faixa azul é o primeiro a reconhecê-lo. Abre a boca, mas Ren já atravessou o ramal. O condutor puxa as rédeas tarde demais; o cavalo dá um passo torto, a roda raspa no barranco e a carroça perde quase todo o movimento.
+
+O homem da traseira tenta erguer a besta dos joelhos. Não chega a apontá-la. Ren pisa no eixo, sobe junto da tábua manchada e encosta a ponta da wakizashi abaixo do olho dele.
+
+Intimidação à queima-roupa: d20 com vantagem [19, 8] -> 19 + 0 = 19 contra CD 13. Sucesso.
+
+O homem abre os dedos. A besta cai dentro da carroça com um baque curto. O rapaz ergue as duas mãos; o condutor mantém as dele visíveis sobre as rédeas. Nenhum dos três tenta atacar.
+
+"Quem te mandou criar essa cena? Quem é o mandante?"
+
+O besteiro engole sem afastar o rosto da lâmina.
+
+"A moeda é de Bram Vask. Mas o laço, a mulher presa, Dent respirando... isso foi o homem das mãos limpas. Casaco pardo. Tinta violeta no polegar. Não deu nome pra nós."
+
+Ren não move a lâmina.
+
+O homem continua:
+
+"O garoto levou o aviso até a balança velha da cal, no ramal de trás dos fornos. O mão-limpa estava lá. Mandou trazer a carroça, recolher os vivos e apagar quem viesse buscar Dent se desse para fazer sem barulho. Disse que esperaria até a carroça voltar."
+
+O rapaz da faixa azul confirma depressa demais, olhando para a ponta da wakizashi, não para Ren.
+
+"Ele estava lá quando eu saí. Perto do galpão da balança. Sozinho."
+
+O condutor balança a cabeça e fala pela primeira vez:
+
+"Eu só trouxe a carroça. Eles pagaram ida e volta."
+
+Atrás de Ren, a poucas dezenas de pés, Mera e Colm continuam ocultos pelas tábuas e pelo capim. A carroça está parada e pode carregar os dois, mas o homem de mãos limpas agora sabe que a primeira armadilha falhou; se ainda estiver na balança velha, cada minuto favorece a fuga dele.
+
+Hora aproximada: **07:43 de 7 Eleasis, 1372 DR**. Ren está apoiado na traseira da carroça, com a wakizashi no rosto do besteiro. O homem largou a besta; o rapaz da faixa azul e o condutor mantêm as mãos visíveis. Nenhum deles atacou, e Ren não gastou Ki, reação ou pontos de vida. Segundo os dois executores, **Bram Vask financiou a ação**, mas o **homem de casaco pardo, mãos limpas e tinta violeta no polegar** planejou a armadilha e pode ainda estar na **balança velha da cal, no ramal atrás dos fornos**, esperando a carroça voltar. Mera e Colm/Dent permanecem junto à vala; Colm ainda precisa de tratamento hoje.
+
+O que Ren faz?

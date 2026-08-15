@@ -1578,3 +1578,34 @@ Consequências:
   madeira antes que a carroça alcance linha de visão útil sobre a vala.
 * A carroça ainda não localizou Ren, Mera ou Colm/Dent quando a cena devolve o
   controle ao jogador.
+
+---
+
+## Interceptação da carroça de resposta
+
+Contexto: Ren saiu diretamente da cobertura para alcançar a carroça, reagindo
+caso o homem da besta ou o rapaz tentasse atacá-lo e, caso contrário,
+pressionando o besteiro com a wakizashi para identificar o mandante.
+
+Rolagem aberta:
+
+* Intimidação à queima-roupa com vantagem: d20 [19, 8] + 0 = 19 contra CD 13.
+  Sucesso.
+
+Consequências:
+
+* A distância estava dentro do deslocamento normal de 55 pés de Ren; Passo do
+  Vento não foi necessário.
+* Os ocupantes ainda não conheciam a posição de Ren e foram surpreendidos pela
+  investida. O besteiro não conseguiu apontar a arma antes de Ren alcançar a
+  traseira.
+* O sucesso na Intimidação impediu reação hostil imediata. O besteiro largou a
+  besta; o rapaz e o condutor mantiveram as mãos visíveis.
+* O besteiro identifica Bram Vask como fonte do dinheiro e o homem de mãos
+  limpas como planejador e comandante operacional da armadilha.
+* O rapaz afirma ter encontrado o homem de mãos limpas na balança velha da cal,
+  no ramal atrás dos fornos, e tê-lo deixado lá esperando o retorno da carroça.
+* O condutor afirma ser apenas um carreteiro pago para a viagem de ida e volta.
+* A carroça fica parada e potencialmente utilizável para transportar Colm e
+  Mera, mas os três ocupantes permanecem conscientes e não estão amarrados.
+* Recursos de Ren inalterados: 45/45 PV, Ki 6/6.

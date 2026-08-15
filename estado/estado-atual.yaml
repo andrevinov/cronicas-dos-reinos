@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "estrada do Fire River"
-  ponto_exato: "atrás de tábuas e capim junto à vala seca da secagem velha da estrada do Fire River"
+  ponto_exato: "na traseira da carroça interceptada no ramal da secagem velha da estrada do Fire River"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -424,7 +424,13 @@ localizacao:
     prisioneiros e indicou o forno morto como cobertura breve e Iria Doss como
     curandeira rural. Antes que a conversa terminasse, uma carroça de resposta
     entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta
-    leve. Ren percebeu a aproximação antes de ser localizado.
+    leve. Ren percebeu a aproximação antes de ser localizado, saiu da cobertura
+    e alcançou a traseira dentro de seu deslocamento normal. Com a wakizashi no
+    rosto do besteiro, obteve a rendição imediata dos três. O homem largou a
+    besta; ninguém atacou. O besteiro identificou Bram Vask como fonte do
+    dinheiro e o homem de mãos limpas como planejador da armadilha. O rapaz da
+    faixa azul afirmou que esse homem ainda estava na balança velha da cal, no
+    ramal atrás dos fornos, quando a carroça partiu.
 
 tempo:
   ano_dr: 1372
@@ -436,11 +442,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "amanhecer de 7 Eleasis, junto à vala seca da secagem velha na estrada do Fire River"
-  hora_aproximada: "07:42 de 7 Eleasis"
+  periodo_do_dia: "amanhecer de 7 Eleasis, junto à carroça interceptada no ramal da secagem velha da estrada do Fire River"
+  hora_aproximada: "07:43 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou os dois captores imediatos e libertou Mera. O rapaz da corda nova conseguiu trazer uma carroça de resposta ao ramal, mas a aproximação não surpreendeu Ren. Colm precisa de tratamento hoje; Iria Doss está a cerca de quinze minutos para uma pessoa saudável, enquanto o forno morto oferece apenas cobertura breve a cinco minutos pelo mato."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou os dois captores imediatos, libertou Mera e rendeu os três ocupantes da carroça de resposta. Colm precisa de tratamento hoje; Iria Doss está a cerca de quinze minutos para uma pessoa saudável. Ao mesmo tempo, o homem de mãos limpas pode ainda estar na balança velha da cal, mas cada minuto favorece sua fuga."
 
 recursos:
   pontos_de_vida:
@@ -462,7 +468,7 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está atrás de tábuas e capim junto à vala seca, vestido como homem pobre, com Mera e Colm/Dent"
+    - "Ren está apoiado na traseira da carroça interceptada, vestido como homem pobre, com a wakizashi no rosto do besteiro"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "O Broche do Semblante Humilde não foi usado na saída atual"
     - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
@@ -513,7 +519,14 @@ recursos:
     - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode raspar e bater se removida sem cuidado"
     - "Mera não viu outros prisioneiros além dela e de Colm/Dent"
     - "Mera indicou um forno morto a cinco minutos pelo mato como esconderijo brevíssimo e Iria Doss como curandeira rural a cerca de quinze minutos para uma pessoa saudável"
-    - "Uma carroça de resposta entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta leve; eles ainda não localizaram Ren, Mera ou Colm/Dent"
+    - "A carroça de resposta entrou no ramal sem localizar Ren, Mera ou Colm/Dent antes da interceptação"
+    - "Ren alcançou a carroça dentro de seu deslocamento normal de 55 pés, sem usar Passo do Vento"
+    - "Intimidação à queima-roupa com vantagem: 19 contra CD 13, sucesso"
+    - "O besteiro largou a arma; o rapaz da faixa azul e o condutor mantêm as mãos visíveis, e nenhum deles tentou atacar"
+    - "Segundo o besteiro, Bram Vask forneceu o dinheiro, mas o homem de mãos limpas planejou e comandou a armadilha"
+    - "Segundo o rapaz da faixa azul, o homem de mãos limpas estava na balança velha da cal, no ramal atrás dos fornos, esperando a carroça voltar"
+    - "O condutor afirma ser apenas um carreteiro pago para a viagem de ida e volta"
+    - "A carroça interceptada pode transportar Mera e Colm/Dent, mas seus três ocupantes continuam conscientes e sem amarras"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1316,7 +1329,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir se Ren evita, intercepta ou enfrenta a carroça de resposta antes que ela alcance o galpão aberto e a vala"
+    - "decidir o que fazer com o besteiro, o rapaz da faixa azul e o condutor rendidos junto à carroça interceptada"
+    - "decidir entre usar imediatamente a carroça para levar Colm/Dent a Iria Doss ou tentar alcançar o homem de mãos limpas na balança velha da cal antes que ele fuja"
     - "retirar Mera Fumaça e Colm/Dent da secagem comprometida, escolhendo entre o forno morto como cobertura brevíssima e Iria Doss como tratamento rural exposto"
     - "decidir se Ren volta para amarrar/desarmar os captores inconscientes antes que acordem ou se aceita esse risco"
     - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
@@ -1361,8 +1375,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está atrás de tábuas e capim junto à vala seca, às 07:42 de 7 Eleasis, ainda em roupas de homem pobre. Mera Fumaça está livre e reunida a Colm/Dent. Ela descreveu quatro envolvidos, negou conhecer outros prisioneiros e indicou o forno morto como esconderijo brevíssimo e Iria Doss como curandeira rural. Uma carroça de resposta entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta leve; eles ainda não localizaram o grupo."
-  risco_imediato: "alto localizado: a carroça de resposta está a segundos de ganhar visão da porta aberta e da cobertura imperfeita junto à vala; Colm/Dent está fraco e não suporta deslocamento longo, Mera manca, e os captores anteriores continuam inconscientes e sem amarras para trás no mato."
+  cena_atual: "Ren está apoiado na traseira da carroça interceptada, às 07:43 de 7 Eleasis, ainda em roupas de homem pobre, com a wakizashi no rosto do besteiro. A Intimidação funcionou: o homem largou a besta, o rapaz da faixa azul e o condutor mantêm as mãos visíveis, e ninguém atacou. Segundo os dois executores, Bram Vask pagou, mas o homem de mãos limpas planejou a armadilha e pode ainda estar na balança velha da cal, no ramal atrás dos fornos. Mera Fumaça e Colm/Dent permanecem junto à vala seca, a poucas dezenas de pés."
+  risco_imediato: "alto localizado: os três ocupantes da carroça estão rendidos, mas conscientes e sem amarras; os captores anteriores continuam inconscientes e sem amarras para trás no mato; Colm/Dent precisa de tratamento hoje, enquanto cada minuto pode permitir que o homem de mãos limpas abandone a balança velha da cal."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1373,7 +1387,8 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren reage à carroça de resposta antes que ela veja a vala e a porta aberta"
+    - "decidir o destino imediato dos três ocupantes rendidos e se Ren toma a carroça"
+    - "decidir se Ren prioriza levar Colm/Dent a Iria Doss ou perseguir o homem de mãos limpas na balança velha da cal"
     - "decidir se Ren conduz Mera e Colm ao forno morto, tenta alcançar Iria Doss ou procura outra rota"
     - "decidir se Ren aceita deixar os captores inconscientes para trás sem amarras"
     - "identificar o homem de casaco pardo, tinta violeta sob a unha do polegar direito e cicatriz abaixo da orelha esquerda descrito por Mera"
