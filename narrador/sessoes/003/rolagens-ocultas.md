@@ -572,6 +572,71 @@ Consequências:
 
 ---
 
+## Noite de 6 Eleasis: saída falsa de Kage, avisos e Ponte Baixa
+
+Contexto: Ren deixou Dalm ir, pediu desculpas a Jack, relatou a pista e montou
+uma saída falsa: Tobb como Kage retornando ao controle dos Mooney, enquanto Ren
+usaria roupas de Tobb para sair rumo a Luath, Maerra e à Ponte Baixa.
+
+Rolagens abertas:
+
+* Disfarce e troca rápida com ajuda de Dessa: d20 com vantagem [10, 2] -> 10 +
+  7 = 17 contra CD 14. Sucesso.
+* Rota falsa dos Mooney para fazer Kage voltar ao controle do circo: d20 18 + 5
+  = 23 contra CD 14. Sucesso.
+* Furtividade de Ren para deslizar do caminho falso sem chamar atenção: d20 3 +
+  7 = 10 contra CD 15. Falha.
+* Percepção de Ren para notar suspeita útil na saída: d20 12 + 6 = 18 contra CD
+  16. Sucesso.
+* Furtividade de Ren para corrigir a rota até Luath sem cauda útil: d20 12 + 7 =
+  19 contra CD 14. Sucesso.
+* Persuasão de Ren para convencer Luath a não mandar homens para dentro antes da
+  madrugada: d20 com vantagem [20, 16] -> 20 + 0 = 20 contra CD 12. Sucesso.
+* Furtividade de Ren para chegar aos armazéns velhos sem cauda útil: d20 12 + 7
+  = 19 contra CD 15. Sucesso.
+* Investigação de Ren para encaixar o mapa de Brunna à pista da Ponte Baixa: d20
+  19 + 4 = 23 contra CD 14. Sucesso.
+* Percepção de Ren para achar ponto discreto e sombras úteis: d20 11 + 6 = 17
+  contra CD 15. Sucesso.
+
+Rolagens ocultas:
+
+* Observador da Casa Veyr perceber que Tobb não é Kage: d20 15 + 5 = 20 contra
+  CD 16. Sucesso.
+* Observador da Casa Veyr transformar suspeita do disfarce em cauda útil: d20 2
+  + 5 = 7 contra CD 17. Falha.
+* Luath estar disponível para contato reservado ainda no começo da noite: d20 14
+  + 3 = 17 contra CD 12. Sucesso.
+* Maerra dar conselho útil sobre a janela da Ponte Baixa: d20 9 + 5 = 14 contra
+  CD 13. Sucesso.
+
+Consequências:
+
+* A maioria das testemunhas compra a imagem operacional de que Kage retornou ao
+  controle dos Mooney.
+* O homem da Casa Veyr percebe que há truque na volta de Kage, provavelmente por
+  largura, peso e postura de Tobb sob a máscara, mas não transforma a suspeita
+  em cauda útil. A Casa Veyr fica com desconfiança, não com localização.
+* Ren percebe que o observador suspeitou e corrige a rota antes de chegar a
+  Luath.
+* Jack recebe todo o relato de Ren e mandará a informação a Silva. Ele fica
+  irritado pela quebra pública de filtro, mas aceita a lógica da cobertura por
+  proteger o circo.
+* Luath aceita não mandar homens para dentro da Ponte Baixa antes da madrugada,
+  para não queimar a entrada; ele tratará ausência de Ren até o fim da manhã
+  como crime/prova/responsável, não como simples sumiço descartável.
+* Maerra aconselha Ren a desconfiar do seco onde deveria haver água: procurar
+  cal, sal, carvão, pano encerado, ar quente, ralo tampado e sinais de
+  preservação de papel; também reforça a necessidade de caminho de volta ou marca para
+  Luath.
+* Ren chega sem cauda útil ao ponto dos armazéns velhos e identifica a provável
+  Ponte Baixa como passagem seca sob parede baixa entre dois armazéns, com pó
+  claro e pano encerado velho impedindo umidade.
+* Ren encontra ponto discreto no segundo andar quebrado de uma oficina de tonéis
+  abandonada e mapeia sombras úteis A, B, C e D para Passo Sombrio.
+
+---
+
 ## Primeira descida pela Escada das Sete Águas
 
 Contexto: Ren decidiu explorar imediatamente a Escada das Sete Águas, sob

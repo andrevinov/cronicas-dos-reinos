@@ -877,6 +877,14 @@ relacoes:
       útil. Maerra permitiu a visita breve, confirmou que as sete continuam
       vivas, alimentadas e protegidas, e reconheceu que Ren parecia ter escolhido
       não fazer algo violento.
+      Na noite de 6 Eleasis, Ren voltou antes de ir à Ponte Baixa, relatou a
+      pista de Dalm sobre Masao, segunda maré, porões secos, papéis antes de
+      lâminas, gravadora e menino, e pediu conselho. Maerra não tentou impedi-lo,
+      mas enquadrou a janela como moldura: quem entrega uma janela escolhe o que
+      Ren vê por ela. Aconselhou-o a desconfiar do seco onde deveria haver água,
+      procurar sinais como cal, sal, carvão, pano encerado, ar quente, ralo
+      tampado e preservação de papel, e deixar caminho de volta ou marca para
+      Luath.
     riscos:
       - "Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele."
       - "Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren."
@@ -905,6 +913,7 @@ relacoes:
       - "Cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório para proteger vivos."
       - "Identificou o pano vermelho como pano de trabalho encerado ligado a tintureiro ou cerieiro."
       - "Permitiu visita breve de Ren às crianças no começo da noite de 4 Eleasis, sem novo interrogatório."
+      - "Aconselhou Ren antes da Ponte Baixa: desconfiar do seco onde deveria haver água, procurar cal, sal, carvão, pano encerado, ar quente, ralo tampado e sinais de preservação de papel, além de deixar marca ou caminho de volta para Luath."
   luath:
     nome: "Luath"
     tipo: "sargento da City Guard / supervisor possível da Night Watch"
@@ -1007,6 +1016,13 @@ relacoes:
       controle ou entrada-isca, mais do que coração confirmado da operação, e
       preferiu colocar vigilância discreta de superfície em vez de mandar uma
       batida formal pela escada.
+      Na noite de 6 Eleasis, Ren chegou sem cauda útil após a apresentação
+      fechada da Casa Veyr e relatou a pista de Dalm: Masao, Ponte Baixa, segunda
+      maré, porões secos, papéis antes de lâminas, gravadora e menino. Luath
+      aceitou não mandar homens para dentro da Ponte Baixa antes da madrugada
+      para não queimar a entrada. Se Ren não voltar até o fim da manhã, Luath
+      tratará a ausência como crime, prova e responsável, não como simples corpo
+      de estrangeiro descartável.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -1019,6 +1035,7 @@ relacoes:
       - "A ligação pública entre Ren e a entrada no perímetro do mercado ainda é fraca, mas uma peixeira e um escrivãozinho de guilda viram um forasteiro pobre ser admitido pela guarda antes da explosão parcial."
       - "A ida de Ren ao posto depois do segundo sino reforçou a linha pública fina de que o forasteiro pobre do mercado tem entrada com a guarda; a ligação com Kage ainda é fraca, mas uma memória na borda do circo pode crescer."
       - "Se Luath mover guardas demais para a Escada das Sete Águas, pode queimar a entrada, alertar o outro lado e transformar a pista de Ren em perímetro público."
+      - "Se Ren não voltar da Ponte Baixa até o fim da manhã, Luath pode mover busca e investigação, mas isso provavelmente queimará a entrada."
       - "O selo de Maerra comprou privacidade, não confiança."
       - "Luath agora sabe que Ren está caçando Masao por uma morte familiar; isso o torna mais cauteloso com Ren."
       - "A franqueza de Ren sobre Masao não merecer cela tornou Luath mais propenso a vigiar Ren se corpos aparecerem."
@@ -1052,6 +1069,9 @@ relacoes:
       - "Luath recebeu de Ren o relato da Escada das Sete Águas: depósito sem tabuleta com janela de observação, fio de controle na entrada, marca de sol apagado raspada, galeria baixa, vigia e fio de acionamento antes de câmara estreita."
       - "Luath examinou o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos de Brunna Torkel, sem reter os originais."
       - "Luath não mandará batida formal pela Escada agora; em vez disso, pode colocar vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas."
+      - "Luath recebeu de Ren a pista de Dalm sobre Masao, Ponte Baixa, segunda maré, porões secos, papéis antes de lâminas, gravadora e menino."
+      - "Luath aceitou não mandar homens para dentro da Ponte Baixa antes da madrugada, para não queimar a entrada."
+      - "Se Ren não voltar até o fim da manhã, Luath tratará o caso como crime, prova e responsável."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"
@@ -1535,6 +1555,10 @@ relacoes:
       camarim com referência a Masao e às dez lâminas. Jack permitiu a conversa por não
       conseguir bloquear a cena sem fazer Kage parecer controlado ou assustado,
       mas ficou descontente e improvisou salvaguardas com Tobb na aba.
+      Após Dalm entregar a pista da Ponte Baixa, Ren pediu desculpas a Jack e
+      relatou tudo para que a informação chegasse a Silva. Jack aceitou montar
+      uma saída falsa de Kage com Dessa e Tobb para proteger o circo e a máscara
+      pública, mas registrou que Ren lhe deve a quebra pública de filtro.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1603,6 +1627,8 @@ relacoes:
       - "Jack viu Dalm encaixar a frase ambígua 'Nem todo nome curto nasce pequeno' durante a apresentação, sem romper claramente o contrato."
       - "Jack viu Ren não entregar reação à provocação de Dalm; a segunda provocação deu a Jack margem para intervir."
       - "Jack viu Ren chamar Dalm ao camarim com referência pública a Masao e às dez lâminas, o que piorou a saída social dos convidados e forçou salvaguarda improvisada."
+      - "Ren relatou a Jack a pista de Dalm sobre segunda maré, Ponte Baixa, porões secos atrás de armazéns velhos, papéis antes de lâminas, gravadora, menino e Masao."
+      - "Ren pediu que Jack repasse a informação a Silva."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."
@@ -1627,6 +1653,7 @@ relacoes:
       - "A revelação do Passo Sombrio aumenta o valor comercial de Kage, mas também torna a máscara mais interessante para observadores especializados."
       - "Dalm já testou o eixo nome/família/fogo diante de Kage, o que aumenta risco de provocação pessoal sem ainda romper a tenda em violência."
       - "O convite público de Ren a Dalm para o camarim, usando referência a Masao, irritou Jack por contornar os filtros que ele vinha tentando preservar."
+      - "Jack aceitou a saída falsa porque protege a versão pública de Kage, mas a Casa Veyr pode ter ficado com suspeita de truque."
   corven_dalm:
     nome: "Corven Dalm"
     tipo: "procurador da Casa Veyr / contratante da apresentação fechada de Kage"
@@ -1726,6 +1753,9 @@ relacoes:
       abertura da apresentação, o figurino acompanhou bem o Passo Sombrio: o
       pano atrasado fez a técnica parecer ainda mais impossível sem revelar o
       trabalho de bastidor.
+      Depois da conversa de Ren com Dalm, Dessa ajudou a montar uma troca rápida:
+      Tobb como silhueta falsa de Kage retornando ao controle dos Mooney e Ren
+      saindo em roupas de carreiro/Tobb.
     informacoes_compartilhadas_por_dessa:
       - "Dessa sabe que Ren precisa vestir rapidamente um homem, uma mulher e um garoto."
       - "Dessa sabe que o pedido tem urgência e cheiro de fuga, mas não sabe a história dos Vell."
@@ -1741,6 +1771,7 @@ relacoes:
       - "Dessa viu a reprise curta funcionar no limite técnico e ajudou a retirar Kage dos olhos do público imediatamente."
       - "Dessa está preparando Kage para a apresentação fechada da Casa Veyr com ênfase em silêncio, medo e controle de imagem."
       - "Dessa viu Kage abrir a apresentação fechada com Passo Sombrio e transformar o atraso do pano em efeito cênico útil."
+      - "Dessa sabe que Tobb vestiu uma versão falsa de Kage para proteger a saída de Ren após a apresentação fechada da Casa Veyr."
     acordos:
       - "Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato."
       - "Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho."
@@ -2122,15 +2153,21 @@ relacoes:
     nome: "Tobb Marlin"
     tipo: "carreiro do circo"
     local: "Jack Mooney & Sons Circus"
-    status: "mencionado por Sorn Kel"
-    atitude_para_ren: "desconhecida"
-    confianca: "nenhuma"
-    respeito: "nenhum"
+    status: "ativo; ajudou na segurança e cobertura de Kage"
+    atitude_para_ren: "pragmática, profissional e subordinada aos filtros de Jack"
+    confianca: "baixa operacional"
+    respeito: "prático inicial"
     motivo: >
       Segundo Sorn, Tobb usa piche grosso nas rodas das carroças, diferente do
-      breu fino de cordame encontrado no degrau.
+      breu fino de cordame encontrado no degrau. Na apresentação fechada da Casa
+      Veyr, Tobb contou o pagamento restante, bloqueou o homem da Casa Veyr
+      quando ele tentou acompanhar Dalm ao camarim e ficou junto da aba enquanto
+      Ren conversava com Dalm. Depois aceitou vestir uma silhueta falsa de Kage
+      para que o artista parecesse voltar ao controle dos Mooney, permitindo que
+      Ren saísse em roupas de carreiro.
     riscos:
       - "Pode explicar piche/graxa por rota inocente ou fornecer comparação útil."
+      - "A Casa Veyr pode suspeitar que Tobb serviu como falso Kage na saída da tenda menor."
   brunna_torkel:
     nome: "Brunna Torkel"
     tipo: "medidora de porões / fonte sobre Sarbreen"

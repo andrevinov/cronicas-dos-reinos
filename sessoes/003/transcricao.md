@@ -2887,3 +2887,182 @@ Dalm olha para a aba, depois volta a Ren.
 Hora aproximada: **18:32 de 6 Eleasis, 1372 DR**. Ren conseguiu arrancar uma entrega útil sem obter o patrono real: **antes da segunda maré**, **Ponte Baixa como passagem/porta**, **porões secos atrás de armazéns velhos**, método por **papéis antes de lâminas**, e confirmação provável de que os inimigos sabem da gravadora e do menino, mas ainda não sabem onde Nera e Tavin dormem. Ren percebe que Dalm está empurrando uma rota perigosa, mas não pega mentira clara nas informações centrais. Recursos inalterados: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**.
 
 O que Ren faz?
+
+Ren deixa Dalm ir. Ainda intrigado. Aliado? Inimigo? Setando armadilha?
+
+Ren chama Jack.
+
+Pede desculpas. Conta tudo que o camarada falou. Não pra pedir conselhos, mas porque quer que ele repasse a Silva quando ele chegar no circo.
+
+Fala pra Jack que vai chamar Dessa e Tobb no camarim. Objetivo: Dessa irá vestir Tobb de Kage, Ren vestirar as roupas de Tobb. A ideia: Kage voltará em carroça, todo mundo ali verá ele voltando pro circo, como deve ser. Em algum momento, Ren, usando as roupas de Tobb, deslizará do caminho de volta e irá em direção a Luath. Isso protege o circo: Kage foi visto indo pro circo: ele não pode ser um estrangeiro que talvez seja encontrado fazendo besteira pela madrugada.
+
+Falará a Luath que recebeu uma pista. Contará tudo, inclusive que o homem falou sobre Masao. Que pode ser uma armadilha pra Ren, ou alguma descoberta importante. Falará que, se for armadilha, Luath só terá um estrangeiro morto pra jogar numa vala. Mas se for pista importante Ren poderá trazer algo que possa ajudar a definir o destino de Ravens Bluff.
+
+Pede ao sargento que não mande homem lá pra dentro, não durante a madrugada. Mas se Ren não voltar até o fim da manhã, faça uma busca, e provavelmente encontrará um corpo.
+
+Depois irá até Maerra. Contará tudo. Pedirá conselho. Irá embora depois.
+
+Depois irá até o lugar. Encontrará um ponto discreto pra observar, e sombras úteis para atravessar quando a hora for boa.
+
+**Narrador**
+
+Dalm não aperta a vantagem.
+
+Talvez porque já tenha entregado o que escolheu entregar. Talvez porque Tobb bateu na armação. Talvez porque, numa tenda dos Mooney, um homem esperto não força uma porta que ainda abre sozinha.
+
+Ele inclina a cabeça, não como vassalo, nem como amigo.
+
+"Então boa noite, Kage."
+
+Quando Dalm sai, Tobb abre a aba apenas o suficiente. O homem da Casa Veyr está a alguns passos, com o corpo imóvel demais para ser casual. Dalm não olha para ele de imediato. Primeiro olha para Jack. Depois para a tenda. Só então deixa que seu acompanhante caminhe ao lado.
+
+Jack espera Dalm se afastar antes de entrar.
+
+Ren pede desculpas e conta tudo: a janela antes da segunda maré, a Ponte Baixa que não é ponte vista de cima, os porões secos atrás dos armazéns velhos, o método por papéis antes de lâminas, a gravadora, o menino, Masao.
+
+Jack ouve sem interromper. Isso é pior do que se ele gritasse.
+
+Quando Ren termina, Jack esfrega o rosto com uma mão e diz:
+
+"Você me deve desculpa, sim. Não por ter puxado o fio. Por ter puxado em público depois que eu já tinha dito onde a linha acabava."
+
+Ele olha para a aba por onde Dalm saiu.
+
+"Mas depois eu cobro. Silva vai ouvir isso. E se essa casa rica achou que comprou minha lona para medir sua alma, eu quero saber quem mais estava com régua."
+
+Quando Ren explica a troca com Tobb, Jack quase ri. Não por achar engraçado.
+
+"Você já está no circo, garoto. O que você quer é que Kage volte para onde todo mundo espera que Kage seja guardado."
+
+Ele chama Dessa e Tobb.
+
+Teste de Disfarce e troca rápida com ajuda de Dessa: d20 com vantagem [10, 2] -> 10 + 7 = 17 contra CD 14. Sucesso.
+
+Teste da rota falsa dos Mooney para fazer Kage voltar ao controle do circo: d20 18 + 5 = 23 contra CD 14. Sucesso.
+
+Teste de Furtividade de Ren para deslizar do caminho falso sem chamar atenção: d20 3 + 7 = 10 contra CD 15. Falha.
+
+Teste de Percepção de Ren para notar suspeita útil na saída: d20 12 + 6 = 18 contra CD 16. Sucesso.
+
+Teste de Furtividade de Ren para corrigir a rota até Luath sem cauda útil: d20 12 + 7 = 19 contra CD 14. Sucesso.
+
+Dessa olha para Tobb, depois para o figurino de Kage, depois para Ren.
+
+"Ele é largo demais", ela diz.
+
+"Obrigado", Tobb responde.
+
+"Não foi elogio."
+
+Mas Dessa já está trabalhando. Kage de perto não passa. Kage visto de lado, sob pano, com máscara parcial, entrando numa carroça de figurino controlada por Jack, passa. Tobb não precisa ser Ren. Precisa ser uma silhueta difícil de contradizer sem chegar perto demais.
+
+Ren, por outro lado, veste a camada contrária: roupa de carreiro, pano grosso, postura de trabalhador que carrega coisa porque mandaram carregar. Não vira Tobb para quem conhece Tobb. Vira um dos homens que se confundem com corda, eixo, pano e sombra de carroça.
+
+Para a maior parte da tenda, funciona.
+
+Kage volta para o controle dos Mooney. Jack faz questão de que a imagem exista: a carroça certa, o pano certo, Tobb no volume certo, Dessa reclamando alto do figurino e Sorn movendo lamparina como se nada pudesse acontecer sem autorização dele.
+
+Mas Ren vê o problema antes que vire faca.
+
+O homem da Casa Veyr olha tempo demais. Não para Ren. Para "Kage". O olhar dele encontra largura de ombro, peso de passo, distância entre pescoço e máscara. Ele percebe que há truque ali.
+
+Perceber não é seguir.
+
+Quando Ren escapa pelo lado dos panos, o observador ainda está preso à própria descoberta. Ele tenta transformar suspeita em caminho, mas Jack e Tobb já fizeram o circo virar labirinto: ajudante cruza com tambor, criança passa com balde, corda desce, carroça vira, lamparina muda. A Casa Veyr fica com desconfiança. Não com cauda.
+
+Ren chega ao posto de Luath sem arrastar ninguém útil.
+
+Luath está disponível. Não feliz. Disponível.
+
+Teste de Persuasão de Ren para convencer Luath a não mandar homens para dentro antes da madrugada: d20 com vantagem [20, 16] -> 20 + 0 = 20 contra CD 12. Sucesso.
+
+Ele ouve o relato inteiro no depósito lateral, o mesmo tipo de lugar onde conversa ruim já coube antes. Na menção a Masao, a boca de Luath endurece. Na menção a gravadora e menino, ele deixa a raiva passar pelo rosto e não pela voz.
+
+"Você não me pede guarda", ele diz. "Você me pede para eu não queimar uma entrada que talvez seja armadilha, talvez seja prova, talvez seja os dois."
+
+Ele pega carvão e risca três marcas num mapa velho: Escada das Sete Águas, faixa dos porões secos de Brunna, armazéns velhos.
+
+"Não mando homem lá para dentro esta noite. Não por sua causa. Por causa da entrada. Se eu puser bota de guarda em túnel preparado, eu aviso a cidade inteira que a guarda aprendeu a palavra certa."
+
+O carvão para.
+
+"Mas não venha me vender o próprio corpo como se fosse saco de lixo. Se você não voltar até o fim da manhã, eu não procuro um estrangeiro morto para jogar em vala. Eu procuro crime, prova e responsável. E se eu achar seu cadáver embaixo da cidade, vou ficar extremamente irritado com o morto também."
+
+Ele aponta para Ren.
+
+"Se encontrar papel, marca, nome, rota ou gente viva, traga. Se encontrar Masao em pessoa, sua primeira obrigação com Ravens Bluff é não transformar sua vingança em incêndio dentro de ruína velha."
+
+Luath não promete resgate heroico. Promete memória institucional. Para um guarda como ele, isso é quase intimidade.
+
+Ren segue até a Casa da Aurora Menor.
+
+Maerra está acordada. A Casa da Aurora Menor não dorme cedo quando há crianças assustadas no prédio. Ela ouve de pé no começo; depois senta quando Ren chega à parte da Ponte Baixa.
+
+Ela não gosta da palavra "janela".
+
+"Janela também é moldura", Maerra diz. "Quem dá uma janela escolhe o que você vê por ela."
+
+Ela fecha os olhos por um instante, não para rezar alto, mas para organizar medo sem despejá-lo em Ren.
+
+"Meu conselho? Não trate lugar seco como lugar seguro. Se deveria haver água e não há, alguém trabalhou para secar, desviar ou esconder. Procure cal, sal, carvão, pano encerado, ar quente, ralo tampado. Coisa que mantém papel vivo debaixo da cidade."
+
+Depois, mais baixo:
+
+"E não deixe só caminho de entrada. Deixe caminho de volta. Nem que seja uma marca para Luath encontrar se você não puder falar."
+
+Ela não tenta impedir Ren. Tenta fazer a parte dela pesar o bastante dentro dele.
+
+Ren vai embora.
+
+Teste de Furtividade de Ren para chegar aos armazéns velhos sem cauda útil: d20 12 + 7 = 19 contra CD 15. Sucesso.
+
+Teste de Investigação de Ren para encaixar o mapa de Brunna à pista da Ponte Baixa: d20 19 + 4 = 23 contra CD 14. Sucesso.
+
+Teste de Percepção de Ren para achar ponto discreto e sombras úteis: d20 11 + 6 = 17 contra CD 15. Sucesso.
+
+A noite cresce enquanto ele desce de novo para a parte da cidade que cheira a madeira molhada, peixe velho, breu e corda. O disfarce de carreiro ajuda. Não porque convence de perto, mas porque ninguém quer saber o nome de mais um homem carregando cansaço no ombro.
+
+Os armazéns velhos atrás do trecho indicado por Brunna não anunciam nada. Esse é o primeiro sinal de que a pista presta.
+
+Lugar falso demais geralmente tenta parecer importante. Este parece sobrado.
+
+Ren encontra a linha depois de comparar três coisas: a cópia discreta de Brunna, o que Dalm chamou de "seco onde deveria haver água" e o conselho de Maerra. Há uma parede baixa entre dois armazéns antigos, meio escondida por barris vazios e uma pilha de tábuas ruins. Embaixo dela, pedra antiga desce um palmo antes de sumir atrás de madeira nova.
+
+A marca d'água está errada.
+
+A rua ao redor tem umidade. As paredes vizinhas suam. Mas a fresta sob a parede está seca, seca demais, como garganta protegida por dentro. Há pó claro entre as pedras, talvez cal ou sal grosso moído. Um pano encerado velho foi enfiado na lateral para impedir vento úmido de entrar.
+
+Ponte Baixa não é ponte para atravessar por cima.
+
+É uma passagem sob o peso de dois prédios, uma garganta de pedra baixa onde antes água ou drenagem deveria correr.
+
+Ren encontra um ponto bom de observação: o segundo andar quebrado de uma oficina de tonéis abandonada, do outro lado da rua de serviço. O assoalho range, mas só em três tábuas; evitando-as, ele consegue ver a parede baixa, a pilha de barris, a rua estreita e parte dos fundos de dois armazéns.
+
+Visão atual de Ren:
+
+```text
+              armazém velho norte
+        [janela alta escura]      [porta de serviço fechada]
+
+    barris vazios
+        ###        fresta seca / "Ponte Baixa"
+        ###        sob parede baixa entre armazéns
+
+rua de serviço estreita, úmida, quase vazia
+
+    oficina de tonéis abandonada
+    segundo andar quebrado: posição atual de Ren
+```
+
+Sombras úteis para Passo Sombrio:
+
+* **Sombra A:** sob o beiral quebrado da própria oficina de tonéis, perto de Ren;
+* **Sombra B:** atrás da pilha de barris vazios, a cerca de 35 pés, com visão parcial;
+* **Sombra C:** dentro da fresta seca da Ponte Baixa, quase no limite de visão útil, entre 55 e 60 pés conforme a névoa e a lamparina distante oscilam;
+* **Sombra D:** sob uma carroça quebrada encostada ao armazém sul, boa para recuo lateral, a cerca de 40 pés.
+
+Não há guarda visível. Não há fila. Não há culto cantando. Só uma rua que parece vazia demais para uma noite de trabalho portuário.
+
+Hora aproximada: **20:52 de 6 Eleasis, 1372 DR**. Ren está no segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável **Ponte Baixa** atrás de armazéns velhos. Ele não está sob **Passos sem Pegadas** nem **Visão no Escuro** no momento; recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A janela segura antes da segunda maré ainda é ampla, mas a entrada pode estar vigiada, marcada ou preparada.
+
+O que Ren faz?

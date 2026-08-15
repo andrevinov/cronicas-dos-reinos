@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "conversa_privada_tensa"
+  modo_de_cena_atual: "infiltracao_observacao"
 
 personagem:
   nome: "Ren Kagehira"
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Jack Mooney & Sons Circus"
-  ponto_exato: "guarda-roupa menor / camarim funcional de Kage, tenda menor"
+  area: "Harbor District / armazéns velhos"
+  ponto_exato: "segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável Ponte Baixa"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -309,7 +309,23 @@ localizacao:
     útil: antes da segunda maré, Ponte Baixa como passagem/porta/garganta de
     pedra, seco onde deveria haver água atrás de armazéns velhos, método por
     papéis antes de lâminas, e confirmação provável de que a rede sabe da
-    gravadora e do menino, mas ainda não sabe onde Nera e Tavin dormem.
+    gravadora e do menino, mas ainda não sabe onde Nera e Tavin dormem. Ren
+    deixou Dalm sair e relatou tudo a Jack, que ficou irritado pela quebra
+    pública de filtro, mas aceitou repassar a informação a Silva. Com ajuda de
+    Jack, Dessa e Tobb, Ren montou uma saída falsa: Tobb vestido como Kage
+    retornou ao controle dos Mooney, enquanto Ren saiu em roupas de carreiro. A
+    maioria comprou a imagem de Kage protegido; o homem da Casa Veyr percebeu
+    que havia truque, mas não transformou a suspeita em cauda. Ren foi até
+    Luath, contou a pista e convenceu o sargento a não mandar homens para dentro
+    da Ponte Baixa antes da madrugada. Luath registrou que, se Ren não voltar até
+    o fim da manhã, procurará crime, prova e responsável. Depois Ren foi à Casa
+    da Aurora Menor e ouviu de Maerra que seco onde deveria haver água pode
+    indicar cal, sal, carvão, pano encerado, ar quente, ralo tampado e
+    preservação de papel. Seguindo aos armazéns velhos, Ren encaixou o mapa de Brunna à
+    pista de Dalm e encontrou uma provável passagem seca sob parede baixa entre
+    dois armazéns, com pó claro e pano encerado velho impedindo umidade. Ren está
+    observando de um segundo andar quebrado e já mapeou sombras úteis para Passo
+    Sombrio.
 
 tempo:
   ano_dr: 1372
@@ -321,8 +337,8 @@ tempo:
   dia_do_mes: 6
   dezena: 1
   dia_da_dezena: 6
-  periodo_do_dia: "começo da noite de 6 Eleasis, pós-apresentação fechada de Kage"
-  hora_aproximada: "18:32 de 6 Eleasis"
+  periodo_do_dia: "noite de 6 Eleasis, observação da Ponte Baixa"
+  hora_aproximada: "20:52 de 6 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, e agora para 6 Eleasis após novo descanso no circo."
   prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. Ren abriu Kage com Passo Sombrio sem gastar ki, da Sombra B para a Sombra A, terminou a apresentação sem fiasco e chamou Dalm ao camarim com referência direta a Masao e às dez lâminas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
@@ -1185,18 +1201,18 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está no guarda-roupa menor/camarim funcional de Kage, na tenda menor do Jack Mooney & Sons Circus, por volta de 18:32 de 6 Eleasis de 1372 DR. A apresentação fechada da Casa Veyr terminou sem fiasco, mas deixou os convidados tensos. Dalm não entregou o patrono real por trás da Casa Veyr. Entregou, porém, uma janela útil: antes da segunda maré; Ponte Baixa como passagem/porta/garganta de pedra, não ponte vista de cima; seco onde deveria haver água, atrás dos armazéns velhos; método por papéis antes de lâminas; e escopo provável de conhecimento inimigo: sabem da gravadora e do menino como alavanca, e que Kage reage a essa corda, mas ainda não sabem onde Nera e Tavin dormem. Ren percebeu que a parte central soa verdadeira o bastante para guiar decisão, embora Dalm esteja empurrando uma rota perigosa. Tobb está do lado de fora, perto da aba, e deu aviso discreto de tempo. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. O total de 80 PO da Casa Veyr está sob controle de Jack/Tobb, mas o pagamento de Ren por esta apresentação ainda está pendente do pós-show."
-  risco_imediato: "alto em termos operacionais e sociais: Ren está em conversa quase privada com Dalm, com Tobb perto da aba e o tempo do camarim se esgotando. Ameaça física imediata ainda parece menos provável que sondagem, chantagem, proposta ou teste de informação, mas Dalm já obteve uma informação sobre a máscara vocal de Kage e está tentando empurrar Ren para a janela da Ponte Baixa antes da segunda maré."
+  cena_atual: "Ren está no segundo andar quebrado de uma oficina de tonéis abandonada, observando a provável Ponte Baixa atrás de armazéns velhos, por volta de 20:52 de 6 Eleasis de 1372 DR. Depois de deixar Dalm sair, Ren informou Jack, montou uma saída falsa com Dessa e Tobb, avisou Luath e Maerra, e chegou sem cauda útil ao ponto indicado. A provável Ponte Baixa é uma passagem seca sob parede baixa entre dois armazéns antigos, com pó claro entre as pedras e pano encerado velho impedindo umidade. Ren já mapeou sombras úteis: Sombra A sob o beiral quebrado da oficina, Sombra B atrás de barris vazios, Sombra C dentro da fresta seca da Ponte Baixa quase no limite de visão útil, e Sombra D sob uma carroça quebrada junto ao armazém sul. Ele não está sob Passos sem Pegadas nem Visão no Escuro no momento. Recursos atuais: 45/45 PV, Ki 6/6, 25 PO, 9 shuriken. O Broche do Semblante Humilde está gasto até o próximo amanhecer. A janela segura antes da segunda maré ainda é ampla, mas a entrada pode estar vigiada, marcada ou preparada."
+  risco_imediato: "alto em termos de infiltração: a rua parece vazia demais, a passagem foi provavelmente preparada para permanecer seca e Dalm pode ter empurrado Ren para uma rota observada. Não há guarda visível, mas a ausência de movimento também é sinal de controle."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
     - "segurança de Colm/Dent, Kethra, Peta e das crianças resgatadas"
     - "proteção dos Vell no circo e desdobramentos de Tyr"
-    - "apresentação fechada da Casa Veyr e limitações da tenda menor para Passo Sombrio"
+    - "Ponte Baixa, porões secos atrás de armazéns velhos e janela antes da segunda maré"
 
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir se encerra, pressiona, retém ou segue negociando com Dalm no camarim funcional antes que Tobb interrompa"
-    - "avaliar a janela da Ponte Baixa antes da segunda maré, ligada a passagem baixa, porões secos atrás de armazéns velhos e método por papéis antes de lâminas"
+    - "decidir como Ren se aproxima da Ponte Baixa: observar mais, ativar Passos sem Pegadas, ativar Visão no Escuro, usar Passo Sombrio, testar a fresta seca ou procurar outra entrada"
+    - "avaliar se deixa marca de retorno para Luath antes de entrar"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"
