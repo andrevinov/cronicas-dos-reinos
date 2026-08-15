@@ -3334,3 +3334,39 @@ Progressão:
 * o besteiro recuou para cobertura parcial atrás do monte velho de carvão, com a besta descarregada por um instante e a mão indo ao cinto;
 * recursos atuais: 45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken;
 * hora aproximada: 07:25 de 7 Eleasis, 1372 DR.
+
+### Sessão 003: rendição do besteiro
+
+* Ren avançou sobre o besteiro, tentando acertá-lo sem apagá-lo;
+* rolagem: Golpe controlado contra o besteiro, d20 15 + 7 = 22 contra CA 13, acerto, 5 de dano contundente;
+* rolagem: Intimidação com wakizashi no pescoço, d20 20 + 0 = 20 contra CD 13, sucesso;
+* rolagem: Besteiro manter sangue-frio sob a wakizashi, d20 20 + 2 = 22 contra CD 15, sucesso;
+* o besteiro está ferido, consciente e rendido sob a lâmina;
+* a besta do homem caiu junto ao monte de carvão;
+* no cinto dele há dois virotes, uma faca curta barata e um apito de madeira preso por cordão;
+* segundo o besteiro, Bram Vask pagou a pergunta, mas não veio pessoalmente;
+* segundo o besteiro, um homem de mãos limpas, vestido como trabalhador mas com mão de escrivão, organizou a compra/captura;
+* segundo o besteiro, Colm/Dent deveria respirar, porque quem viesse atrás dele valia mais;
+* segundo o besteiro, Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo;
+* segundo o besteiro, o rapaz da corda nova foi para a estrada e pode correr para avisar o intermediário se ouviu o laço sem ouvir o assobio;
+* recursos atuais: 45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken;
+* hora aproximada: 07:26 de 7 Eleasis, 1372 DR.
+
+### Sessão 003: Colm e rastro do rapaz da corda nova
+
+* Ren apagou o besteiro já rendido com um golpe certeiro, sem matá-lo;
+* o besteiro está inconsciente, vivo e respirando;
+* rolagem: Medicina para avaliar Colm, d20 6 + 3 = 9 contra CD 12, falha;
+* Ren confirmou que Colm/Dent está vivo e consciente;
+* Ren não percebeu sangramento fresco em quantidade, lâmina enterrada ou respiração de moribundo;
+* Colm/Dent tem pulsos esfolados, marcas de pancada antiga, dois dedos tortos inchados e tosse seca funda;
+* Ren não conseguiu avaliar com segurança se há costela trincada, febre, dano interno ou só exaustão, frio e dias de abuso;
+* Colm/Dent parece capaz de falar fragmentos e talvez ficar de pé com ajuda, mas correr não parece seguro;
+* o pano da boca de Colm/Dent está puxado para baixo, mas as cordas principais ainda prendem peito e braços às tábuas baixas;
+* rolagem: Rastro do rapaz da corda nova, d20 1 + 3 = 4 contra CD 14, falha;
+* rolagem: Sinais imediatos na estrada, d20 8 + 6 = 14 contra CD 15, falha;
+* Ren encontrou indício provável de que o rapaz saiu do mato para a estrada;
+* Ren perdeu a direção útil do rapaz entre roda de carroça, pegadas de trabalhador, barro pisado e terra dura;
+* se Ren perseguir o rapaz agora, será por palpite e velocidade, não por rastro limpo;
+* recursos atuais: 45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken;
+* hora aproximada: 07:28 de 7 Eleasis, 1372 DR.

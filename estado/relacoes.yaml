@@ -213,7 +213,7 @@ relacoes:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
     local: "mato baixo junto à estrada do Fire River, preso próximo a uma vala rasa antes da secagem velha de Mera Fumaça"
-    status: "vivo, amarrado e gagado; ameaça direta da lâmina removida por Ren, mas ainda exposto enquanto o besteiro permanece ativo"
+    status: "vivo, com o pano da boca puxado para baixo; ainda amarrado pelas cordas principais"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -251,7 +251,15 @@ relacoes:
       lâmina curta e um homem com besta leve. Ren atacou a mulher antes que ela
       pudesse agir, neutralizando-a de modo não letal; a faca caiu fora da mão
       dela. Colm continua amarrado e gagado, mas a ameaça direta da lâmina foi
-      removida. O besteiro segue ativo em cobertura parcial.
+      removida. O besteiro disparou contra Ren e errou. Ren então avançou sobre
+      o besteiro, feriu-o sem apagá-lo, rendeu-o com a wakizashi e obteve
+      informação de que Bram Vask pagou a pergunta, um homem de mãos limpas
+      organizou a captura, Mera Fumaça não chamou a emboscada e pode estar presa
+      no galpão baixo, e o rapaz da corda nova pode ter corrido para avisar o
+      intermediário. Em seguida, Ren apagou o besteiro já rendido, foi a
+      Colm/Dent, puxou o pano da boca dele para baixo e tentou avaliar suas
+      condições. Confirmou que Colm está vivo e consciente, mas não conseguiu
+      diagnosticar a gravidade completa dos ferimentos em poucos segundos.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -272,7 +280,17 @@ relacoes:
       - "Colm/Dent está amarrado e gagado junto a uma vala rasa, com uma mulher de lâmina curta ao lado dele e um besteiro em cobertura parcial."
       - "Ren neutralizou a mulher de lâmina curta antes que ela pudesse agir contra Colm/Dent."
       - "A faca caiu no barro fora da mão da mulher."
-      - "O besteiro disparou contra Ren e errou; ele continua ativo atrás de cobertura parcial."
+      - "O besteiro disparou contra Ren e errou."
+      - "Ren rendeu o besteiro com a wakizashi e depois o apagou sem matá-lo."
+      - "Segundo o besteiro, Bram Vask pagou a pergunta, mas não veio pessoalmente."
+      - "Segundo o besteiro, um homem de mãos limpas com roupa de trabalhador e mão de escrivão organizou a compra/captura."
+      - "Segundo o besteiro, Colm/Dent deveria respirar porque quem viesse atrás valia mais."
+      - "Segundo o besteiro, Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo."
+      - "Segundo o besteiro, o rapaz da corda nova pode ter corrido para avisar o intermediário."
+      - "Ren puxou o pano da boca de Colm/Dent para baixo, mas as cordas principais ainda prendem peito e braços às tábuas baixas."
+      - "Ren confirmou que Colm/Dent está vivo e consciente, sem sangramento fresco evidente."
+      - "Ren não conseguiu avaliar com segurança costelas, febre, dano interno ou capacidade real de deslocamento de Colm/Dent."
+      - "Colm/Dent tem pulsos esfolados, marcas de pancada antiga, dois dedos tortos inchados e tosse seca funda."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -283,7 +301,32 @@ relacoes:
       - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
-      - "Colm/Dent ainda está preso e vulnerável enquanto o besteiro permanecer ativo ou houver outros captores próximos."
+      - "Colm/Dent ainda está preso e vulnerável enquanto Ren não cortar ou soltar as cordas principais."
+      - "O rapaz da corda nova pode ter avisado o intermediário de mãos limpas; Ren perdeu a direção útil do rastro."
+      - "A informação sobre Mera vem de um captor rendido e ainda não foi confirmada diretamente."
+  mera_fumaca:
+    nome: "Mera Fumaça"
+    tipo: "contato rural possível / guardiã temporária de Colm-Dent"
+    local: "secagem velha na estrada do Fire River, possivelmente galpão baixo"
+    status: "não encontrada em cena; segundo o besteiro, não chamou a emboscada e pode estar presa no galpão baixo"
+    atitude_para_ren: "desconhecida"
+    confianca: "desconhecida"
+    respeito: "desconhecido"
+    motivo: >
+      Dorra teria enviado Colm/Dent para uma secagem velha com Mera Fumaça
+      depois que os fornos de cal deixaram de ser seguros. O besteiro capturado
+      afirmou que Mera guardou Dent por dinheiro de Dorra e não chamou a
+      emboscada, mas viu a retirada tarde demais e pode estar fechada no galpão
+      baixo.
+    informacoes_observadas_por_ren:
+      - "Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River."
+      - "Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra."
+      - "Segundo o besteiro, Mera não chamou a emboscada."
+      - "Segundo o besteiro, Mera pode estar presa no galpão baixo."
+    riscos:
+      - "A informação vem de um captor rendido, ainda não confirmada diretamente."
+      - "Se Mera estiver presa, pode haver outro captor, fechadura, armadilha ou pressão contra ela."
+      - "Se Ren ignorar Mera por muito tempo, a situação no galpão baixo pode piorar sem ele ver."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"
@@ -416,6 +459,10 @@ relacoes:
       a Bram um recado ameaçador enviado por Ren, mas errou a formulação e ligou
       a ameaça à visita da guarda. Bram não fez cena pública com a criança, mas
       fechou a loja e começou a se mover nos fundos.
+      No ponto preparado da estrada do Fire River, um besteiro rendido por Ren
+      afirmou que Bram Vask pagou a pergunta sobre Colm/Dent, mas não veio
+      pessoalmente; segundo ele, um homem de mãos limpas organizou a
+      compra/captura.
     informacoes_observadas_por_ren:
       - "Bram usa a loja de penhores como frente para dívida/trabalho e cobrança."
       - "Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números."
@@ -430,6 +477,8 @@ relacoes:
       - "Um trabalhador dos pátios contou a Ren que alguém perguntou por um doente vindo do lavadouro antes da saída de Dorra."
       - "A Night Watch pressionou Bram em sua loja na manhã de 4 Eleasis, falando de cobrança violenta, possível gente mantida por dívida e risco a Kethra."
       - "Uma criança entregou a Bram um recado ameaçador de Ren, de forma imprecisa, dizendo que a visita da guarda foi só o começo."
+      - "Segundo um besteiro rendido por Ren na estrada do Fire River, Bram Vask pagou a pergunta sobre Colm/Dent, mas não veio pessoalmente."
+      - "Segundo o mesmo besteiro, um homem de mãos limpas organizou a captura/compra em campo."
     riscos:
       - "Bram pode procurar proteção, vingança ou uma forma de identificar o agressor."
       - "Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades."
@@ -441,6 +490,7 @@ relacoes:
       - "Se a pessoa que perguntou nos pátios era resposta de Bram, Bram ou intermediário já estreitou a busca até Dorra Hest e os fornos de cal."
       - "A mensagem torta pode fazer Bram associar a ameaça anônima a alguém capaz de observar ou influenciar a guarda."
       - "Bram não parece contido; a dupla pressão pode gerar resposta indireta, ocultação de registros ou busca por quem o ameaçou."
+      - "Se a fala do besteiro for verdadeira, Bram terceirizou a ação no Fire River por meio de intermediário mais limpo e talvez mais perigoso juridicamente."
   noll:
     nome: "Noll"
     tipo: "capanga de Bram Vask / mão de cobrança"

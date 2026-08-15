@@ -1433,3 +1433,62 @@ Consequências:
 * O besteiro recuou para cobertura parcial atrás do monte velho de carvão, com
   a besta descarregada por um instante e a mão indo ao cinto.
 * Recursos de Ren inalterados: 45/45 PV, Ki 6/6.
+
+---
+
+## Rendição do besteiro e informação sobre Bram/Mera
+
+Contexto: Ren avançou sobre o besteiro, buscando feri-lo sem apagá-lo e
+pressioná-lo com a wakizashi.
+
+Rolagens abertas:
+
+* Golpe controlado contra o besteiro: d20 15 + 7 = 22 contra CA 13. Acerto.
+  Dano: 1d6 1 + 4 = 5 contundente.
+* Intimidação com wakizashi no pescoço: d20 20 + 0 = 20 contra CD 13. Sucesso.
+* Besteiro manter sangue-frio sob a wakizashi: d20 20 + 2 = 22 contra CD 15.
+  Sucesso.
+
+Consequências:
+
+* Ren alcança e fere o besteiro sem apagá-lo.
+* A Intimidação de Ren força resposta útil imediata.
+* O sucesso do besteiro em manter sangue-frio não nega a intimidação; apenas
+  faz a resposta sair controlada em vez de pânico ou baboseira.
+* O besteiro identifica Bram Vask como pagador da pergunta, mas não como
+  presença direta.
+* O besteiro menciona um intermediário de mãos limpas, vestido como trabalhador,
+  com mão de escrivão.
+* O objetivo era manter Colm/Dent respirando e usar quem viesse atrás como alvo
+  mais valioso.
+* O besteiro afirma que Mera Fumaça não chamou a emboscada e pode estar presa no
+  galpão baixo.
+* O rapaz da corda nova pode ter corrido para avisar o intermediário.
+
+---
+
+## Colm e rastro do rapaz da corda nova
+
+Contexto: Ren apagou o besteiro rendido, foi até Colm/Dent para avaliar suas
+condições e tentou entender para onde foi o rapaz da corda nova.
+
+Rolagens abertas:
+
+* Medicina para avaliar Colm: d20 6 + 3 = 9 contra CD 12. Falha.
+* Rastro do rapaz da corda nova: d20 1 + 3 = 4 contra CD 14. Falha crítica
+  natural.
+* Sinais imediatos na estrada: d20 8 + 6 = 14 contra CD 15. Falha.
+
+Consequências:
+
+* O besteiro já rendido foi apagado sem nova rolagem, por não haver oposição
+  real naquele instante.
+* Colm/Dent está vivo e consciente, mas Ren não consegue avaliar com segurança
+  a gravidade completa dos ferimentos.
+* O pano da boca de Colm/Dent foi puxado para baixo; as cordas principais ainda
+  prendem peito e braços.
+* Ren identifica apenas um indício provável de que o rapaz saiu do mato para a
+  estrada.
+* A direção útil do rapaz foi perdida entre marcas de carroça, pegadas, barro
+  pisado e terra dura.
+* Uma perseguição imediata partiria de palpite, não de rastro limpo.

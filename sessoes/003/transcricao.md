@@ -4276,3 +4276,45 @@ Colm tosse atrás, ainda preso. A mulher continua respirando no barro. A estrada
 Fim do contato imediato de combate, se Ren mantiver o controle. O besteiro está ferido, consciente e rendido sob a lâmina. Colm/Dent está vivo, amarrado e gagado. A mulher está inconsciente e viva. Segundo o besteiro, **Bram Vask pagou a pergunta**, um **homem de mãos limpas** organizou a captura, **Mera Fumaça não chamou a emboscada** e pode estar presa no galpão baixo. O rapaz da corda nova pode ter corrido para avisar esse intermediário. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren apaga o besteiro com um golpe certeiro. Vai a Colm, avalia suas condições. E tenta entender pra onde foi o "rapaz da corda nova".
+
+**Narrador**
+
+O besteiro já está sob a lâmina, com a besta no chão e o corpo encostado no carvão. Não há espaço real para luta limpa ali. Ren muda o ângulo da wakizashi só o bastante para não cortar e acerta um golpe seco, curto, atrás da orelha.
+
+O homem apaga.
+
+Ele cai de lado contra a lona preta endurecida e fica respirando pesado, vivo, com a boca entreaberta e o rosto sujo de carvão.
+
+Medicina para avaliar Colm: d20 6 + 3 = 9 contra CD 12. Falha.  
+Rastro do rapaz da corda nova: d20 1 + 3 = 4 contra CD 14. Falha.  
+Sinais imediatos na estrada: d20 8 + 6 = 14 contra CD 15. Falha.
+
+Ren volta até Colm.
+
+O pano que prende a boca dele está úmido de saliva, cinza e medo. Quando Ren o puxa para baixo o bastante para ver a respiração, Colm tosse forte, dobra o pescoço para frente e quase engasga no próprio ar. Os olhos dele encontram Ren sem entender tudo de uma vez.
+
+"Keth...?" A palavra quebra no meio. Depois vem só tosse.
+
+Colm está vivo e consciente. Isso Ren sabe. Não há sangue fresco em quantidade, nem lâmina enterrada, nem respiração de moribundo. Os pulsos estão esfolados. A pele no rosto tem cinza, suor frio e marcas de pancada antiga. Os dois dedos tortos continuam inchados e ruins. A tosse é seca e funda demais para tranquilizar.
+
+Mas Ren não consegue avaliar melhor que isso em poucos segundos. Não sabe se há costela trincada, febre subindo, dano interno ou apenas exaustão, frio e dias de abuso. Colm parece capaz de falar fragmentos e talvez ficar de pé com ajuda, mas correr não parece uma promessa honesta.
+
+As cordas principais ainda prendem o peito e os braços dele às tábuas baixas; o pano da boca está puxado para baixo, não recolocado.
+
+Ren então lê o chão ao redor.
+
+O ponto foi preparado para confundir. Há as marcas pesadas do besteiro, o giro da mulher, o arrasto de Colm, o disparo do laço, o pó de cal espalhado e as pegadas novas do próprio Ren rasgando a cena. Ele encontra um ponto provável onde o rapaz ficou: capim amassado perto da volta para a estrada, uma marca leve de cal na beirada da cerca, um sinal de sola menor apontando para fora.
+
+Depois a estrada engole tudo.
+
+Roda de carroça. Pegada de trabalhador. Barro pisado demais. Terra dura onde deveria haver lama. O menino pode ter corrido para a cidade, para os fornos, para uma das três construções de secagem, ou cortado por uma vala lateral antes de voltar ao caminho principal. Ren não vê silhueta correndo, não ouve assobio, não pega voz ao longe.
+
+A melhor leitura não é certeza: o rapaz provavelmente saiu do mato para a estrada, mas Ren perdeu a direção útil. Se ele perseguir agora, será por palpite e velocidade, não por rastro limpo.
+
+Hora aproximada: **07:28 de 7 Eleasis, 1372 DR**. O besteiro está **inconsciente e vivo**. A mulher continua **inconsciente e viva**. Colm/Dent está **vivo, com o pano da boca puxado para baixo, mas ainda amarrado**. Ren não conseguiu avaliar a gravidade completa dos ferimentos de Colm e perdeu a trilha precisa do rapaz da corda nova. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+O que Ren faz?
