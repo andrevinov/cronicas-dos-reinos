@@ -4318,3 +4318,48 @@ A melhor leitura não é certeza: o rapaz provavelmente saiu do mato para a estr
 Hora aproximada: **07:28 de 7 Eleasis, 1372 DR**. O besteiro está **inconsciente e vivo**. A mulher continua **inconsciente e viva**. Colm/Dent está **vivo, com o pano da boca puxado para baixo, mas ainda amarrado**. Ren não conseguiu avaliar a gravidade completa dos ferimentos de Colm e perdeu a trilha precisa do rapaz da corda nova. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren coloca Colm nas costas e o carrega até próximo de onde Mera Fumaça deve estar presa. E avalia o local.
+
+**Narrador**
+
+Ren não precisa serrar as cordas com calma. Um corte limpo aqui, outro ali, e as amarras principais cedem sem arrancar pele a mais do que já foi arrancado. Colm quase cai para frente quando o peito se solta das tábuas, mas Ren o pega antes que o corpo dele bata no barro.
+
+"Mera..." Colm tenta dizer. A voz sai como cinza raspando madeira. "Baixo..."
+
+Carregar Colm pelo mato baixo: d20 20 + 1 = 21 contra CD 12. Sucesso.  
+Aproximação cautelosa carregando Colm: d20 14 + 7 = 21 contra CD 14. Sucesso.  
+Avaliar o entorno do galpão baixo: d20 13 + 6 = 19 contra CD 14. Sucesso.  
+Identificar sinais de Mera e da prisão: d20 1 + 4 = 5 contra CD 13. Falha.
+
+O peso de Colm não é o problema. Ele é mais osso, pano úmido e tosse do que homem inteiro agora. O problema é carregá-lo sem fazer dele sino, sem deixar a respiração quebrada dele denunciar cada passo. Ren ajusta Colm alto nas costas, prende um braço dele por cima do próprio ombro e atravessa o mato como se o chão ruim fosse só mais uma forma de kata.
+
+Os dois captores ficam para trás, fora de vista: a mulher caída no barro perto da vala, o besteiro apagado junto ao carvão. Nenhum deles foi amarrado nesta pressa, além de estarem sem as armas nas mãos.
+
+Ren não segue a estrada aberta. Usa a cerca baixa, um trecho de salgueiros e o lado morto de uma pilha de lenha velha para se aproximar das construções. A manhã ajuda e atrapalha: há luz suficiente para ver longe, mas ainda há névoa baixa e fumaça dos fornos quebrando contornos.
+
+O lugar se resolve melhor de perto.
+
+Há uma construção maior e velha, provavelmente a secagem propriamente dita, com ripas altas, fendas de ventilação e cheiro antigo de pano, cinza e calor úmido. Mais adiante, perto de uma vala seca e de um amontoado de tábuas, há um galpão baixo, quase enterrado na própria sombra, telhado inclinado de madeira escura, porta curta e pesada. Um terceiro abrigo, menor, parece mais depósito de ferramenta e carvão.
+
+Não há guarda visível entre Ren e o galpão baixo. Não há conversa. Não há passo fresco se aproximando. Também não há tranquilidade.
+
+Do galpão baixo vem um som curto.
+
+Não é grito. É madeira recebendo impacto por dentro, fraco demais para arrombar, forte o bastante para não ser vento. Depois, uma respiração ou voz abafada, indistinta.
+
+Ren vê marcas úteis no entorno: capim pisado perto da porta, barro raspado por calcanhar, um pedaço de corda curta jogado perto do batente e uma barra de madeira atravessada por fora em encaixes improvisados. Alguém quis fechar aquilo rápido, não bonito.
+
+Mas a leitura fina falha. O arranjo da porta é ruim demais, remendado demais, cheio de usos anteriores. Ren não consegue dizer se há fio, cunha, prego solto, alarme simples, ou só uma tranca rural feita às pressas. Também não consegue confirmar se há alguém além de Mera dentro, nem se a pessoa dentro está presa, ferida, fingindo ou tentando chamar.
+
+Colm respira contra o ombro de Ren. Quando vê o galpão, ele tenta levantar a cabeça e só consegue um movimento fraco.
+
+"Ela... viu..." ele sussurra. "Não abriu..."
+
+A estrada está atrás e à esquerda, perto o bastante para que uma carroça pesada seja ouvida se passar. O ponto da emboscada ficou para trás no mato. À frente, o galpão baixo está a poucos passos, fechado por fora. A secagem maior fica além dele, com sombra suficiente para esconder alguém parado lá dentro se essa pessoa souber ficar imóvel.
+
+Hora aproximada: **07:34 de 7 Eleasis, 1372 DR**. Colm/Dent está nas costas de Ren, vivo e fraco. Os captores imediatos ficaram inconscientes para trás e não foram amarrados. Ren chegou perto do provável galpão baixo de Mera Fumaça sem ser percebido por ninguém visível. Há som de movimento ou voz abafada dentro do galpão. Ren não identificou com segurança se a porta possui alarme, armadilha ou apenas tranca improvisada. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+O que Ren faz?

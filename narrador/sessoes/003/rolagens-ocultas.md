@@ -1492,3 +1492,30 @@ Consequências:
 * A direção útil do rapaz foi perdida entre marcas de carroça, pegadas, barro
   pisado e terra dura.
 * Uma perseguição imediata partiria de palpite, não de rastro limpo.
+
+---
+
+## Aproximação ao galpão baixo de Mera
+
+Contexto: Ren soltou Colm/Dent das cordas principais, colocou-o nas costas e
+tentou levá-lo até perto de onde Mera Fumaça deve estar presa, avaliando o
+local antes de entrar.
+
+Rolagens abertas:
+
+* Carregar Colm pelo mato baixo: d20 20 + 1 = 21 contra CD 12. Sucesso.
+* Aproximação cautelosa carregando Colm: d20 14 + 7 = 21 contra CD 14.
+  Sucesso.
+* Avaliar o entorno do galpão baixo: d20 13 + 6 = 19 contra CD 14. Sucesso.
+* Identificar sinais de Mera e da prisão: d20 1 + 4 = 5 contra CD 13. Falha
+  crítica natural.
+
+Consequências:
+
+* Ren carrega Colm sem queda, atraso grave ou piora evidente imediata.
+* Ren se aproxima do galpão baixo sem ser percebido por ninguém visível.
+* A avaliação de entorno confirma que há som abafado vindo de dentro, que a porta
+  foi fechada por fora às pressas e que não há guarda visível no trecho imediato.
+* A falha crítica em Investigação impede Ren de identificar com segurança se a
+  porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada.
+* Os captores imediatos ficam inconscientes para trás e não foram amarrados.

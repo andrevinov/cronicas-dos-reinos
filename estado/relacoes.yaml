@@ -212,8 +212,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "mato baixo junto à estrada do Fire River, preso próximo a uma vala rasa antes da secagem velha de Mera Fumaça"
-    status: "vivo, com o pano da boca puxado para baixo; ainda amarrado pelas cordas principais"
+    local: "perto do provável galpão baixo de Mera Fumaça, na secagem velha da estrada do Fire River"
+    status: "vivo, fraco e carregado nas costas de Ren"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -260,6 +260,10 @@ relacoes:
       Colm/Dent, puxou o pano da boca dele para baixo e tentou avaliar suas
       condições. Confirmou que Colm está vivo e consciente, mas não conseguiu
       diagnosticar a gravidade completa dos ferimentos em poucos segundos.
+      Depois Ren cortou as cordas principais, colocou Colm nas costas e o
+      carregou cautelosamente até perto do provável galpão baixo de Mera
+      Fumaça. Colm conseguiu murmurar fragmentos sobre Mera e o galpão baixo,
+      mas continua fraco demais para se mover com segurança sozinho.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -291,6 +295,9 @@ relacoes:
       - "Ren confirmou que Colm/Dent está vivo e consciente, sem sangramento fresco evidente."
       - "Ren não conseguiu avaliar com segurança costelas, febre, dano interno ou capacidade real de deslocamento de Colm/Dent."
       - "Colm/Dent tem pulsos esfolados, marcas de pancada antiga, dois dedos tortos inchados e tosse seca funda."
+      - "Ren cortou as cordas principais de Colm/Dent e o colocou nas costas."
+      - "Colm/Dent conseguiu murmurar fragmentos sobre Mera e o galpão baixo."
+      - "Ren carregou Colm/Dent até perto do provável galpão baixo sem ser percebido por ninguém visível."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -301,14 +308,14 @@ relacoes:
       - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
-      - "Colm/Dent ainda está preso e vulnerável enquanto Ren não cortar ou soltar as cordas principais."
+      - "Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse e possível ferimento não diagnosticado."
       - "O rapaz da corda nova pode ter avisado o intermediário de mãos limpas; Ren perdeu a direção útil do rastro."
       - "A informação sobre Mera vem de um captor rendido e ainda não foi confirmada diretamente."
   mera_fumaca:
     nome: "Mera Fumaça"
     tipo: "contato rural possível / guardiã temporária de Colm-Dent"
     local: "secagem velha na estrada do Fire River, possivelmente galpão baixo"
-    status: "não encontrada em cena; segundo o besteiro, não chamou a emboscada e pode estar presa no galpão baixo"
+    status: "provavelmente dentro do galpão baixo fechado por fora; ainda não vista diretamente"
     atitude_para_ren: "desconhecida"
     confianca: "desconhecida"
     respeito: "desconhecido"
@@ -318,11 +325,19 @@ relacoes:
       afirmou que Mera guardou Dent por dinheiro de Dorra e não chamou a
       emboscada, mas viu a retirada tarde demais e pode estar fechada no galpão
       baixo.
+      Ren carregou Colm/Dent até perto do provável galpão baixo e ouviu som
+      curto de impacto ou voz abafada vindo de dentro. O galpão está fechado por
+      fora com barra de madeira improvisada, mas Ren não identificou com
+      segurança se há alarme, armadilha, fio, cunha ou apenas tranca rural.
     informacoes_observadas_por_ren:
       - "Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River."
       - "Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra."
       - "Segundo o besteiro, Mera não chamou a emboscada."
       - "Segundo o besteiro, Mera pode estar presa no galpão baixo."
+      - "Ren chegou perto do provável galpão baixo sem ser percebido por ninguém visível."
+      - "Há som curto de impacto ou voz abafada vindo de dentro do galpão baixo."
+      - "A porta do galpão baixo está fechada por fora com barra de madeira improvisada."
+      - "Ren não identificou com segurança se a porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada."
     riscos:
       - "A informação vem de um captor rendido, ainda não confirmada diretamente."
       - "Se Mera estiver presa, pode haver outro captor, fechadura, armadilha ou pressão contra ela."
