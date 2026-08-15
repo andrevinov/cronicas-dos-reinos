@@ -42,6 +42,14 @@ class ContextoTransactionalTest(unittest.TestCase):
         with (repo / "runtime/eventos-pendentes.jsonl").open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
 
+    def add_empty_knowledge_index(self, repo: Path):
+        (repo / "personagens/jogador/conhecimento/index.yaml").write_text(
+            "topicos: []\nsessoes: {}\n", encoding="utf-8"
+        )
+        (repo / "personagens/jogador/conhecimento/ativo.yaml").write_text(
+            "topicos_prioritarios: []\ndescobertas_recentes: []\n", encoding="utf-8"
+        )
+
     def test_status_and_scene_show_effective_resources_without_runtime_rewrite(self):
         repo = self.make_repo()
         before = (repo / "runtime/contexto.yaml").read_bytes()
@@ -93,12 +101,7 @@ class ContextoTransactionalTest(unittest.TestCase):
 
     def test_new_knowledge_is_visible_before_consolidation(self):
         repo = self.make_repo()
-        (repo / "personagens/jogador/conhecimento/index.yaml").write_text(
-            "topicos: []\nsessoes: {}\n", encoding="utf-8"
-        )
-        (repo / "personagens/jogador/conhecimento/ativo.yaml").write_text(
-            "topicos_prioritarios: []\ndescobertas_recentes: []\n", encoding="utf-8"
-        )
+        self.add_empty_knowledge_index(repo)
         self.append_event(
             repo,
             {
@@ -119,6 +122,30 @@ class ContextoTransactionalTest(unittest.TestCase):
         self.assertTrue(data["resultado"]["encontrado"])
         self.assertTrue(data["resultado"]["pendentes"])
         self.assertIn("runtime/eventos-pendentes.jsonl", data["fontes"])
+
+    def test_generic_event_summary_does_not_become_character_knowledge(self):
+        repo = self.make_repo()
+        self.add_empty_knowledge_index(repo)
+        self.append_event(
+            repo,
+            {
+                "versao": 1,
+                "id": "t3b",
+                "sessao": 3,
+                "resumo": "Um inimigo chamado Corvo Azul age fora da vista de Ren.",
+                "deltas": [
+                    {
+                        "alvo": "consequencia",
+                        "op": "registrar",
+                        "visibilidade": "narrador",
+                        "valor": {"texto": "Corvo Azul prepara uma emboscada."},
+                    }
+                ],
+            },
+        )
+        data = mod.command_knowledge(repo, "Corvo Azul")
+        self.assertFalse(data["resultado"]["encontrado"])
+        self.assertNotIn("pendentes", data["resultado"])
 
     def test_generic_search_prefers_pending_current_fact(self):
         repo = self.make_repo()
