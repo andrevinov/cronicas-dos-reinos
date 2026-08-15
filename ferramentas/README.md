@@ -13,11 +13,10 @@ python3 ferramentas/rolar-dados.py ren pericia furtividade --cd 15
 python3 ferramentas/rolar-dados.py ren salvaguarda destreza --cd 13
 python3 ferramentas/rolar-dados.py ren iniciativa
 python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
-python3 ferramentas/rolar-dados.py ren dano wakizashi --critico
 python3 ferramentas/rolar-dados.py npc d20 --nome "Guarda" --bonus 3 --cd 12 --label "Percepção"
 ```
 
-Atalhos atuais de Ren:
+Atalhos de Ren:
 
 ```bash
 python3 ferramentas/rolar-dados.py ren listar
@@ -36,13 +35,11 @@ python3 ferramentas/rolar-lote.py <<'JSON'
 JSON
 ```
 
-O lote apenas chama o mesmo `rolar-dados.py`; não muda regras nem RNG. Não agrupar uma rolagem cuja necessidade depende do resultado da anterior.
+O lote usa o mesmo `rolar-dados.py`; não muda regras nem RNG. Não agrupar uma rolagem cuja necessidade depende do resultado anterior.
 
 ## Registrador transacional de turno
 
 `ferramentas/turno.py` é a interface preferencial de **escrita durante narração ao vivo**.
-
-Uma chamada registra simultaneamente a troca na transcrição e os deltas mínimos no buffer pendente:
 
 ```bash
 python3 ferramentas/turno.py registrar <<'JSON'
@@ -68,11 +65,9 @@ Por turno comum, a ferramenta altera somente:
 1. `sessoes/NNN/transcricao.md`;
 2. `runtime/eventos-pendentes.jsonl`.
 
-Ela **não** atualiza ficha, estado, tempo, relações, conhecimento, consequências ou relógios. Esses destinos serão tratados pela consolidação da Etapa 8.
+Ela não atualiza diretamente ficha, estado, tempo, relações, conhecimento, consequências ou relógios. A prosa completa fica apenas na transcrição; o JSONL recebe resumo curto, deltas e rolagens ocultas relevantes.
 
-A prosa completa fica apenas na transcrição; o JSONL recebe resumo curto, deltas e rolagens ocultas relevantes.
-
-Comandos de segurança:
+Segurança:
 
 ```bash
 python3 ferramentas/turno.py check
@@ -85,17 +80,19 @@ O registro é idempotente. Se houver interrupção entre as duas escritas, repet
 
 Operações:
 
-- `set`: substitui um valor;
+- `set`: substitui valor;
 - `inc`: soma variação numérica;
 - `append`: acrescenta item;
 - `remove`: remove item/chave;
 - `registrar`: guarda fato para consolidação sem alterar imediatamente um campo estruturado.
 
-Alvos usuais:
+Alvos suportados pela consolidação:
 
 ```text
 estado
 tempo
+ficha
+progressao
 relacao:<id>
 npc:<id>
 conhecimento
@@ -107,12 +104,78 @@ Exemplos:
 
 ```json
 {"alvo":"estado","op":"inc","caminho":"recursos.pontos_de_vida.atuais","valor":-7}
-{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
+{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04"}
 {"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
 {"alvo":"conhecimento","op":"registrar","valor":{"assunto":"ponte baixa","texto":"brasa protegida é sinal"}}
+{"alvo":"consequencia","op":"registrar","valor":{"titulo":"Dívida aberta","descricao":"Pode voltar a importar."}}
 ```
 
-`visibilidade: narrador` impede que um delta reservado entre em consultas públicas normais. `rolagens_ocultas` pode ser incluído no registro da transação e será consolidado depois em área reservada.
+`visibilidade: narrador` mantém conteúdo reservado fora de consultas públicas. O consolidador recusa um delta reservado destinado a arquivos públicos.
+
+## Consolidação automática de cena e sessão
+
+`ferramentas/consolidar.py` transforma o buffer pendente em cânone **em lote**. Não usar depois de cada turno.
+
+Checkpoint de cena importante:
+
+```bash
+python3 ferramentas/consolidar.py cena
+```
+
+Fechamento de sessão:
+
+```bash
+python3 ferramentas/consolidar.py sessao
+```
+
+Estado rápido:
+
+```bash
+python3 ferramentas/consolidar.py status
+python3 ferramentas/consolidar.py check
+```
+
+O consolidador:
+
+- valida as transações ainda pendentes;
+- calcula em memória todos os documentos finais antes da primeira escrita;
+- sincroniza representações espelhadas de PV, Ki, CA, dinheiro, nível e tempo;
+- atualiza apenas relações/NPCs realmente afetados e registra a causa no histórico específico;
+- materializa conhecimento novo em fragmentos incrementais sem modificar os fragmentos legados;
+- consolida consequências/progressão somente quando há delta explícito;
+- mantém rolagens ocultas e relógios na área reservada;
+- atualiza os artefatos da sessão preservando texto manual fora das seções automáticas;
+- prepara o novo runtime no mesmo lote;
+- remove do buffer as transações aplicadas **por último**.
+
+Cada lote entra em:
+
+```text
+sessoes/NNN/consolidacoes.jsonl
+```
+
+Esse ledger impede a reaplicação de IDs já incorporados.
+
+### Segurança contra queda no meio da consolidação
+
+Antes da instalação, os bytes finais ficam em staging e um journal registra hashes anteriores/finais:
+
+```text
+runtime/consolidacao-em-andamento.json
+runtime/.consolidacao-stage/
+```
+
+Enquanto o journal existir, `contexto.py` e `turno.py` recusam operação normal. Não continue o jogo sobre um checkpoint parcialmente instalado.
+
+Recuperação:
+
+```bash
+python3 ferramentas/consolidar.py recuperar
+```
+
+A recuperação instala os **mesmos bytes já preparados**; ela não recalcula o lote nem executa `inc` de novo. Se algum destino tiver sido editado externamente e possuir um terceiro hash, a ferramenta recusa sobrescrever silenciosamente.
+
+Detalhamento: `docs/agente/consolidacao-transacional.md`.
 
 ## Consulta única de contexto
 
@@ -128,17 +191,15 @@ python3 ferramentas/contexto.py regra furtividade
 python3 ferramentas/contexto.py buscar "ponte baixa"
 ```
 
-Desde a Etapa 6, a consulta resolve índice → fragmento. Desde a Etapa 7, ela também aplica `runtime/eventos-pendentes.jsonl` sobre os fragmentos/snapshots relevantes.
+Desde a Etapa 6, a consulta resolve índice → fragmento. Desde a Etapa 7, aplica também o buffer pendente sobre snapshots/fragmentos relevantes.
 
-Portanto:
-
-- `status`: snapshot-base + deltas correntes de recursos/tempo/localização/modo;
-- `cena`: contexto + cena com a mesma sobreposição;
-- `npc`: fragmento de medidores/relação + deltas `npc:<id>`/`relacao:<id>`;
-- `relacao`: um fragmento + deltas ainda pendentes daquela entidade;
-- `conhecimento`: fragmentos consolidados + descobertas pendentes;
+- `status`: snapshot-base + deltas correntes;
+- `cena`: contexto + cena com sobreposição;
+- `npc`: fragmentos de medidores/relação + deltas da entidade;
+- `relacao`: um fragmento + deltas ainda pendentes;
+- `conhecimento`: fragmentos consolidados — incluindo incrementais recentes — + descobertas pendentes;
 - `regra`: resumos internos de regras;
-- `buscar`: fontes operacionais + resumos de eventos pendentes.
+- `buscar`: descoberta limitada.
 
 A busca genérica exclui por padrão `narrador/`, `historico/` e transcrições completas:
 
@@ -147,14 +208,14 @@ python3 ferramentas/contexto.py buscar "sol apagado" --reservado
 python3 ferramentas/contexto.py buscar "frase exata" --historico
 ```
 
-A saída padrão é YAML com orçamento de 8 KiB e teto técnico de 16 KiB:
+A saída padrão possui orçamento de 8 KiB e teto de 16 KiB:
 
 ```bash
 python3 ferramentas/contexto.py --json status
 python3 ferramentas/contexto.py --max-bytes 4096 npc nera
 ```
 
-A telemetria opcional de consultas grava somente metadados em `runtime/consultas-contexto.jsonl`. Para não registrar:
+Telemetria opcional grava somente metadados em `runtime/consultas-contexto.jsonl`. Para desabilitar:
 
 ```bash
 python3 ferramentas/contexto.py --sem-log status
@@ -162,26 +223,24 @@ python3 ferramentas/contexto.py --sem-log status
 
 ### Núcleo e sobreposição
 
-A implementação foi separada em:
+- `contexto_core.py`: mecanismo de índice/fragmento;
+- `contexto.py`: porta pública com sobreposição transacional;
+- `transacoes.py`: schema, aplicação e busca de deltas.
 
-- `contexto_core.py`: mecanismo de índice/fragmento da Etapa 6;
-- `contexto.py`: porta pública que acrescenta a sobreposição transacional;
-- `transacoes.py`: schema, aplicação e busca de deltas pendentes.
-
-Não chamar `contexto_core.py` durante narração normal, pois ele não aplica mudanças ainda pendentes.
+Não chamar `contexto_core.py` na narração normal, pois ele não aplica mudanças ainda pendentes.
 
 ## Estado quente (`runtime/`)
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots-base gerados deterministicamente a partir do estado consolidado:
+`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots-base derivados do estado consolidado.
 
 ```bash
 python3 ferramentas/gerar-runtime.py
 python3 ferramentas/gerar-runtime.py --check
 ```
 
-A existência de eventos pendentes não torna esses arquivos obsoletos: `contexto.py` aplica a sobreposição em memória. Não regenerar os snapshots a cada turno.
+Eventos pendentes não tornam o snapshot-base obsoleto: `contexto.py` projeta a sobreposição em memória. Não regenerar a cada turno.
 
-`runtime/eventos-pendentes.jsonl` agora é buffer transacional ativo, não reservatório futuro.
+Depois de `consolidar.py`, o runtime correspondente ao novo checkpoint já foi calculado e instalado no mesmo lote; não regenerá-lo novamente por rotina.
 
 ## Estado corrente e memória fragmentada
 
@@ -193,7 +252,7 @@ python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
 ```
 
-Elas protegem blobs legados, IDs, fragmentos atuais, histórico de relações e reconstrução byte a byte do antigo conhecimento acumulado.
+Elas protegem o estado atual contra retorno da cronologia, blobs legados, entidades históricas e reconstrução byte a byte do conhecimento pré-Etapa 6. Novas relações/NPCs e conhecimento incremental podem evoluir sem modificar o legado preservado.
 
 ## Verificação de integridade
 
@@ -202,6 +261,7 @@ Para manutenção/consolidação, não para cada turno:
 ```bash
 python3 -m pip install -r requirements-dev.txt
 python3 ferramentas/turno.py check
+python3 ferramentas/consolidar.py check
 python3 ferramentas/migrar-estado-atual.py --check
 python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
@@ -223,7 +283,8 @@ Proteções acumuladas:
 - **Etapa 4:** consulta dirigida com orçamento rígido;
 - **Etapa 5:** estado atual separado da cronologia;
 - **Etapa 6:** relações/NPCs/conhecimento fragmentados e reconstruíveis;
-- **Etapa 7:** escrita de turno limitada a transcrição + deltas, recuperação idempotente, estado efetivo por sobreposição e rolagens em lote.
+- **Etapa 7:** escrita por turno limitada a transcrição + deltas, recuperação idempotente, estado efetivo por sobreposição e rolagens em lote;
+- **Etapa 8:** consolidação em lote com ledger anti-reaplicação, mirrors consistentes, staging/journal recuperável e isolamento de material reservado.
 
 ## Análise de rollouts do Codex
 
