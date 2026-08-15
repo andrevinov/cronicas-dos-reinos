@@ -121,6 +121,12 @@ Uso em jogo:
 Yakuza e piratas fornecem redes de contrabando, documentos falsos, abrigo,
 intermediários e violência negável.
 
+Em 1357 DR, a yakuza de Kozakura ainda é recente quando comparada à de Wa. Em
+1372 DR, a campanha trata os quinze anos seguintes como período de crescimento
+rápido, disputa de território e profissionalização criminosa. Masao Hirasawa se
+encaixa nesse intervalo como uma das figuras que transforma violência dispersa,
+contrabando, falsificação e oficiais comprados em rede mais ambiciosa.
+
 Uso em jogo:
 
 * uma casa de jogo oriental em Ravens Bluff imita o Black Water Hall;

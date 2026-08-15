@@ -31,6 +31,41 @@ A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a ba
   chantagem, autoridades corrompidas e entradas para ruínas, túneis ou lugares
   enterrados.
 
+### Cronologia de Kozakura e Ren
+
+O encaixe canônico da campanha para Kozakura entre o suplemento oficial e 1372 DR
+é o seguinte:
+
+* em **1357 DR** / **1431** no calendário kozakurano, o material oficial retrata
+  Gonijo como imperador jovem, Hojo Kawabuko como shogun jovem e Takenaka Okawa
+  como shikken que governa de fato a partir de Gifu;
+* em **1372 DR** / **1446** no calendário kozakurano, não há fonte oficial
+  posterior adotada pela campanha que resolva completamente a crise;
+* a campanha preenche os quinze anos com a maioridade de Kawabuko, a resistência
+  de Okawa a perder poder, a oposição de Sugawara, rebeliões menores e conflito
+  político suficiente para manter Kozakura instável;
+* o shogunato sobreviveu, mas ficou mais dependente de inteligência discreta,
+  mensagens seguras, agentes de confiança e contenção silenciosa;
+* o Clã Kagehira ganhou importância nesse espaço como pequena rede confiável do
+  bakufu de Gifu, não como rival maior que Konishi ou Uji;
+* Ren nasceu em **1348 DR**; entre **1353 e 1358 DR**, ele e Aiko viveram nas
+  ruas; em **1357 DR**, Ren tinha cerca de nove anos e sobrevivia fora da
+  proteção do clã;
+* Tadatsune resgatou os irmãos por volta de **1358 DR**, e a formação de Ren
+  ocorreu enquanto a crise política fazia os Kagehira valerem cada vez mais para
+  Gifu;
+* Masao cresceu entre **cerca de 1365 e 1370 DR**, aproveitando o fato de que a
+  yakuza de Kozakura ainda era recente em 1357 DR e podia ser consolidada por um
+  operador excepcional;
+* a queda dos Kagehira, a morte de Aiko, o roubo do Selo da Lua Velada, a captura
+  breve de Masao por uma facção rival e a fuga para oeste ficam entre
+  **1369/1370 e 1372 DR**.
+
+Correção canônica: quando preparação antiga disser que Masao subverteu "a
+capital inteira", entender como **Gifu**, centro do governo shogunal. Dojyu é a
+capital imperial e cultural. Para a história dos Kagehira, Masao apodrecer Gifu
+é mais preciso e mais grave.
+
 ### Âncoras de Kara-Tur
 
 O material de Kara-Tur amplia as possíveis raízes de Masao, mas não deve
@@ -61,10 +96,13 @@ Sinais que podem aparecer sem revelar a verdade inteira:
 ### Relação com o Clã Kagehira
 
 Antes da campanha, o Clã Kagehira servia ao shogunato de Kozakura como rede
-shinobi de inteligência, mensageria secreta, infiltração e contenção de ameaças.
+shinobi de inteligência, mensageria secreta, infiltração e contenção de ameaças
+ligada ao bakufu de Gifu.
 
 Masao identificou os Kagehira como um dos principais obstáculos ao seu domínio
-do submundo de Kozakura.
+do submundo de Kozakura porque eles protegiam exatamente o tipo de fluxo que ele
+queria controlar: documentos, rotas, mensageiros, nomes falsos, oficiais
+comprados e ameaças que precisavam ficar invisíveis.
 
 Verdade reservada:
 

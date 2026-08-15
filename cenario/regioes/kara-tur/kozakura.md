@@ -19,6 +19,33 @@ uma rede shinobi de inteligência ligada ao shogunato.
 
 ---
 
+## Marco cronológico da campanha
+
+O material oficial de Kara-Tur retrata Kozakura em **1357 DR**, equivalente a
+**1431** no calendário kozakurano. Nesse momento:
+
+* **Gonijo** é o imperador, jovem e com pouco poder político direto;
+* **Hojo Kawabuko** é o shogun, ainda muito jovem;
+* **Takenaka Okawa** é o shikken e governa de fato a partir de **Gifu**;
+* **Takenaka Sugawara** e seus aliados preparam oposição caso Okawa se recuse a
+  abandonar a regência;
+* o país está cheio de intriga, rebeliões menores, rivalidades de clãs,
+  famílias shinobi contratáveis e yakuza ainda recentes.
+
+A campanha ocorre em **1372 DR**, quinze anos depois. Não há, para esta
+campanha, uma fonte oficial posterior que resolva de modo fechado essa crise. O
+repo preenche essa lacuna como continuidade própria: Kawabuko atingiu a
+maioridade, a regência de Okawa gerou conflito aberto ou crise de bastidores, e o
+shogunato sobreviveu sem pacificar totalmente o país. Essa sobrevivência deixou
+o bakufu mais dependente de inteligência secreta, mensageria confiável,
+contenção discreta e controle de documentos.
+
+Esse é o espaço histórico onde o Clã Kagehira ganha importância extraordinária:
+não como potência maior que Konishi ou Uji, mas como pequena rede de confiança
+ligada ao aparelho shogunal de **Gifu**.
+
+---
+
 ## Estrutura política
 
 Kozakura possui:
@@ -171,6 +198,25 @@ Ren não sabe automaticamente:
 O Clã Kagehira funcionava em um ambiente onde informação valia tanto quanto
 tropa. Sua destruição não deve ser tratada como perda isolada de família, mas
 como a quebra de um órgão secreto de confiança.
+
+O encaixe canônico da campanha é:
+
+* Ren nasce em **1348 DR**, pouco depois da Hojo War;
+* entre **1353 e 1358 DR**, Ren e Aiko vivem nas ruas enquanto Kozakura está no
+  ponto de crise mostrado pelo suplemento oficial;
+* de **1358 a cerca de 1367 DR**, Tadatsune resgata os irmãos e os treina em um
+  período no qual o bakufu de Gifu precisa cada vez mais de agentes confiáveis;
+* de **cerca de 1365 a 1370 DR**, Masao cresce junto da consolidação recente da
+  yakuza kozakurana, usando criminosos, wako, falsificadores, oficiais comprados
+  e rotas desviadas;
+* entre **1369/1370 e 1372 DR**, a queda dos Kagehira, a morte de Aiko, o roubo
+  do Selo da Lua Velada, a captura breve de Masao por uma facção rival e sua
+  fuga para o oeste levam Ren até Faerûn.
+
+Quando documentos anteriores disserem que Masao subverteu "a capital inteira",
+ler e corrigir como **Gifu**, centro do governo shogunal. **Dojyu** continua
+sendo a capital imperial e cultural; corromper Gifu é mais grave para a história
+dos Kagehira porque atinge o coração do bakufu que eles serviam.
 
 O Selo da Lua Velada é perigoso porque um símbolo legítimo em Kozakura pode:
 

@@ -4,8 +4,8 @@ Este arquivo registra a história conhecida por Ren e os fatos públicos de sua
 origem. Causas ocultas, sobreviventes desconhecidos e verdades reservadas do
 narrador ficam fora deste arquivo até serem descobertas em jogo.
 
-Ren nasceu em **Kozakura**, em Kara-Tur, numa família ligada ao **Clã
-Kagehira**.
+Ren nasceu em **1348 DR**, em **Kozakura**, em Kara-Tur, numa família ligada ao
+**Clã Kagehira**.
 
 ---
 
@@ -14,6 +14,11 @@ Kagehira**.
 Kozakura é um reino insular de Kara-Tur marcado por corte imperial, shogunato,
 governadores militares, templos influentes, casas comerciais, piratas wako,
 yakuza em crescimento e famílias shinobi que trabalham nas sombras da política.
+
+Dojyu é a capital imperial e cultural. Gifu é o centro do bakufu, o governo
+shogunal real. Para a história dos Kagehira, essa diferença importa: proteger o
+shogunato significava proteger os fios secretos que saíam de Gifu, não apenas a
+cerimônia pública de Dojyu.
 
 Para Ren, autoridade nunca foi uma coisa simples. Um selo, uma carta, um gesto
 correto ou uma mensagem entregue na hora certa podiam mover soldados, calar
@@ -34,7 +39,7 @@ Antes de Ren, o Clã Kagehira era uma casa respeitada entre os círculos discret
 de Kozakura.
 
 Não era uma família nobre aberta, nem uma ordem religiosa formal. O clã servia
-ao governo do shogun como rede de inteligência, mensageiros secretos,
+ao governo do shogun em Gifu como rede de inteligência, mensageiros secretos,
 observadores, infiltradores e agentes de recuperação de informação. Quando uma
 missão precisava acontecer sem proclamação pública, sem bandeira e sem
 assinatura, os Kagehira estavam entre as mãos chamadas.
@@ -61,6 +66,13 @@ ou não podem explicar: os pais não voltaram, foram dados como mortos e o mundo
 seguiu sem esperar pelas crianças.
 
 Aiko e Ren passaram cinco anos abandonados.
+
+Em 1357 DR, quando o shogun Hojo Kawabuko ainda era jovem e Takenaka Okawa
+governava como shikken, Ren tinha cerca de nove anos e sobrevivia nas ruas com
+Aiko. As disputas entre shogunato, regentes, cortesãos, templos, famílias
+shinobi e criminosos não eram para ele uma aula de história. Eram o barulho de
+fundo de um país quebrado onde duas crianças podiam desaparecer sem que o mundo
+parasse.
 
 Viveram em absoluta miséria, roubando comida, dormindo onde desse, apanhando de
 gente maior, fugindo de guardas, capangas e comerciantes furiosos. Aprenderam a
@@ -146,6 +158,11 @@ Ele procura controlar as entradas para aquilo que fica abaixo.
 
 Enquanto Aiko e Ren treinavam, Masao crescia no submundo de Kozakura.
 
+Esse crescimento aconteceu no mesmo intervalo em que a yakuza kozakurana deixava
+de ser uma força recente e dispersa para se tornar algo mais organizado,
+especialmente em torno de jogo, proteção, documentos falsos, portos, wako e
+oficiais comprados.
+
 Foi nesse período que ele reuniu a **Juppongatana**, conhecida em tradução
 simples como **as Dez Espadas**: um círculo de criminosos, assassinos, duelistas,
 infiltradores, chantagistas e especialistas de elite vindos de Kara-Tur. Não
@@ -185,10 +202,10 @@ sabe que sobreviveu.
 Quando conseguiu voltar ao quartel-general dos Kagehira, muitos dias depois, o
 lugar estava destruído.
 
-Kozakura mergulhara em caos. Masao havia subvertido a capital inteira por tempo
-suficiente para quase se tornar o rei do submundo que sonhava ser. Só não tomou
-a posição de modo permanente porque outro clã, inimigo do shogun, conseguiu
-capturá-lo antes que o domínio se consolidasse.
+Kozakura mergulhara em caos. Masao havia subvertido **Gifu**, o coração do
+governo shogunal, por tempo suficiente para quase se tornar o rei do submundo que
+sonhava ser. Só não tomou a posição de modo permanente porque outro clã, inimigo
+do shogun, conseguiu capturá-lo antes que o domínio se consolidasse.
 
 ---
 

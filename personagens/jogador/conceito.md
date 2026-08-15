@@ -16,7 +16,7 @@ Ren não veio a Faerûn para se tornar herói. Veio para encontrar uma pessoa. O
 
 Sua origem vem do Clã Kagehira, uma rede shinobi de elite que servia ao shogunato de Kozakura como inteligência discreta. Ren e Aiko foram órfãos ainda crianças, sobreviveram anos na miséria e foram depois resgatados pelo tio, chefe do clã. Aiko se tornou shinobi antes dele e o ajudou a acompanhar o treinamento.
 
-O inimigo central de Ren é **Masao Hirasawa**, velho criminoso de Kara-Tur, antigo monge segundo rumores, articulador do submundo de Kozakura e líder da **Juppongatana**, as Dez Espadas. Masao matou Aiko, roubou o Selo da Lua Velada e desapareceu para o oeste depois da queda do poder que quase consolidou em Kozakura.
+O inimigo central de Ren é **Masao Hirasawa**, velho criminoso de Kara-Tur, antigo monge segundo rumores, articulador do submundo de Kozakura e líder da **Juppongatana**, as Dez Espadas. Masao matou Aiko, roubou o Selo da Lua Velada e desapareceu para o oeste depois da queda do poder que quase consolidou em **Gifu**, centro do governo shogunal.
 
 ---
 

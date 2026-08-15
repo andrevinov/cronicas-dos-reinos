@@ -22,6 +22,36 @@ nomes, lendas, objetos contrabandeados e agentes deslocados.
 
 ---
 
+## Relação com Faerûn
+
+Kara-Tur não é um país nem uma cultura única. É uma região vasta do mesmo mundo
+de Forgotten Realms, distante de Faerûn, mas não isolada dele.
+
+O contato pode ocorrer por:
+
+* rotas terrestres perigosas, especialmente por Tabot e pela Silver Road;
+* viagens marítimas longas, portos orientais e intermediários de várias nações;
+* mercadores, marinheiros, estudiosos, diplomatas, missionários, náufragos,
+  exilados, aventureiros e criminosos;
+* mercadorias como seda, chá, jade, papel, laca, armas, sinetes, venenos e
+  objetos religiosos;
+* relatos cultos trocados por sábios, como correspondências entre eruditos do
+  Oriente e figuras conhecedoras de Faerûn.
+
+Pessoas comuns de Faerûn tendem a saber pouco sobre Kara-Tur, misturando povos,
+costumes e lendas. Mercadores, navegadores, estudiosos e aventureiros podem ter
+conhecimento mais concreto. O inverso também é verdadeiro: para muitos habitantes
+de Kara-Tur, Faerûn é o Ocidente distante dos gaijin; para elites cultas,
+viajantes e agentes especializados, pode ser geografia política real.
+
+Para Ren, Faerûn não é outro mundo desconhecido. Ele sabe que o Ocidente existe,
+que rotas chegam até lá e que estrangeiros já aparecem em portos como Jitogawa.
+Ainda assim, seu conhecimento inicial é incompleto, prático e cheio de lacunas
+sobre política local, instituições, leis, moedas, deuses e costumes urbanos de
+Faerûn.
+
+---
+
 ## Grandes regiões úteis
 
 ### Kozakura

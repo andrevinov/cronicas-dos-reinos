@@ -11,6 +11,11 @@ Não revelar este conteúdo ao jogador salvo descoberta legítima em jogo.
 As informações de Kara-Tur devem aprofundar Ren, Masao e a Juppongatana sem
 forçar a campanha a abandonar Ravens Bluff.
 
+O documento interno `books/Kara-Tur e Faerûn.pdf` é canônico para o encaixe
+entre Ren, Masao, Clã Kagehira, Kozakura e Faerûn. Ele não é suplemento oficial,
+mas define como esta campanha preenche a lacuna entre o retrato oficial de
+Kozakura em 1357 DR e a campanha em 1372 DR.
+
 Usar primeiro como rastros:
 
 * mercadorias;
@@ -33,6 +38,11 @@ Estas verdades são compatíveis com o cânone atual:
 
 * Masao teve disciplina monástica antes de se tornar senhor do submundo.
 * O objeto sagrado roubado por Masao ainda não foi definido publicamente.
+* Masao ascendeu em Kozakura no intervalo em que a yakuza local, ainda recente
+  no retrato oficial de 1357 DR, podia ser consolidada por um operador com
+  dinheiro, medo, falsificadores, wako e oficiais comprados.
+* O quase domínio de Masao deve ser centrado em **Gifu**, sede do bakufu, não em
+  Dojyu, que permanece como capital imperial e cultural.
 * A fuga de Masao de um domínio infernal pode ter exigido conhecimento de
   aprisionamento espiritual, roubo de anos de vida, sombra ou passagem entre
   planos.
@@ -189,7 +199,10 @@ Os Kagehira são próprios da campanha. Para encaixe com o cenário:
 
 * não transformar os Kagehira em clã ninja mais poderoso que todos os nomes
   oficiais;
-* tratá-los como rede especializada, confiável e valiosa para o shogunato;
+* tratá-los como rede especializada, confiável e valiosa para o bakufu de Gifu;
+* associar sua ascensão à lacuna de 1357-1372 DR: Kawabuko atinge a maioridade,
+  Okawa resiste a perder poder, Sugawara pressiona, o shogunato sobrevive e fica
+  mais dependente de agentes discretos;
 * sua destruição abriu espaço para Uji, Konishi, yakuza, wako ou agentes de
   Masao disputarem rotas que antes eram vigiadas;
 * sobreviventes Kagehira podem existir, mas devem ter preço, medo, missão ou

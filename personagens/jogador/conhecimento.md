@@ -10,8 +10,11 @@ O conteúdo aqui é conhecimento do personagem. Segredos do narrador devem ficar
 
 Ren sabe:
 
+* seu nascimento corresponde a 1348 DR na equivalência usada pelos registros de
+  Faerûn, o que lhe dá 24 anos em 1372 DR;
 * seu treinamento veio do Clã Kagehira;
-* o Clã Kagehira servia ao shogunato de Kozakura como rede shinobi de inteligência, infiltração e mensagens secretas;
+* o Clã Kagehira servia ao shogunato de Kozakura, a partir de Gifu, como rede
+  shinobi de inteligência, infiltração e mensagens secretas;
 * a arte formal do clã é chamada **Kagehira Getsuei-ryu**, a Escola da Sombra da Lua;
 * katas lembrados do Kagehira Getsuei-ryu incluem **Tsuki Kakure**,
   **Mizu no Kage** e **Hotaru Otoshi**;
@@ -37,6 +40,8 @@ Ren sabe ou acredita:
 * Masao cultiva o sonho de ser o rei das sombras: senhor invisível de crime, segredos, rotas, autoridades compradas e passagens subterrâneas;
 * Masao reuniu a Juppongatana, as Dez Espadas, como círculo de elite de criminosos e especialistas de Kara-Tur;
 * os Kagehira atrapalhavam Masao porque funcionavam como os olhos e ouvidos secretos do shogun;
+* Masao quase consolidou poder em Gifu, centro do governo shogunal, não na corte
+  imperial de Dojyu;
 * depois da captura breve e fuga de Masao, as Dez Espadas também desapareceram de Kara-Tur.
 
 Ren não sabe:
@@ -58,7 +63,13 @@ Ren conhece:
 * etiqueta de clã, juramento e hierarquia;
 * sinais discretos usados por agentes treinados de forma semelhante;
 * rotas comerciais gerais que ligam Kara-Tur ao oeste;
-* o fato de que Faerûn costuma entender mal povos e costumes vindos do leste.
+* que Faerûn costuma entender mal povos e costumes vindos do leste;
+* que o Ocidente não é outro mundo desconhecido, mas uma região distante sobre a
+  qual circulam mercadorias, rumores, viajantes e relatos incompletos;
+* que Dojyu é a capital imperial e cultural de Kozakura, enquanto Gifu é o centro
+  do bakufu e do governo shogunal;
+* que portos de Kozakura, como Jitogawa, podem receber estrangeiros em áreas
+  restritas e sob forte controle;
 * a diferença geral entre autoridade imperial, shogunato, regentes e
   governadores militares em Kozakura;
 * a importância de selos, caligrafia, mensageiros, passes, papéis de alfândega e
@@ -71,12 +82,14 @@ Ren conhece:
   T'u Lung, Koryo, Tabot e outras regiões têm costumes, rivalidades e métodos
   próprios;
 * que uma técnica, arma, veneno ou ritual oriental visto em Faerûn não prova por
-  si só origem kozakuarana.
+  si só origem kozakurana.
 
 Ele não conhece profundamente a política de Faerûn.
 
 Ren não sabe automaticamente:
 
+* se alguma facção venceu de modo definitivo, nos bastidores, as disputas abertas
+  em Kozakura depois da crise de maioridade de Hojo Kawabuko;
 * planos atuais de facções de Kozakura;
 * identidades de agentes de Kara-Tur em Ravens Bluff;
 * segredos internos de clãs shinobi fora dos Kagehira;

@@ -86,6 +86,10 @@ fontes:
     - "LC4 - Port of Ravens Bluff"
     - "The City of Ravens Bluff"
     - "Kara-Tur: The Eastern Realms"
+  documentos_internos_aprovados:
+    - nome: "Kara-Tur e Faerûn"
+      arquivo: "books/Kara-Tur e Faerûn.pdf"
+      uso: "encaixe canônico de Ren, Masao e Clã Kagehira na lacuna de Kozakura entre 1357 DR e 1372 DR; relação geral entre Kara-Tur e Faerûn"
 
 jogador:
   personagem_inicial:

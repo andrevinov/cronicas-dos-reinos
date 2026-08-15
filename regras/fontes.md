@@ -59,10 +59,17 @@ possíveis conexões futuras entre Faerûn e os reinos orientais.
 | Prioridade | Fonte | Uso na campanha | Arquivo local |
 | --- | --- | --- | --- |
 | Alta | Kara-Tur: The Eastern Realms, Forgotten Realms Campaign #1032, AD&D | Kozakura, Shou Lung, T'u Lung, Wa, Koryo, Tabot, cultura, facções, itens, técnicas, antagonistas e rotas orientais | `books/high_fr_adnd1e_tsr-1032_kara-tur-the-eastern-realms.pdf` |
+| Alta, interna | Kara-Tur e Faerûn | Documento aprovado de campanha para encaixar Ren, Masao e o Clã Kagehira no intervalo entre o material oficial de 1357 DR e a campanha em 1372 DR; também orienta o nível de contato entre Kara-Tur e Faerûn | `books/Kara-Tur e Faerûn.pdf` |
 
 O livro deve ser usado como fonte de cenário e inspiração de campanha. Regras,
 níveis, magias, itens e estatísticas de AD&D devem ser adaptados para D&D 5e
 antes de aparecerem em jogo.
+
+`Kara-Tur e Faerûn` não é suplemento oficial. Ele é fonte interna autorizada
+para decisões desta campanha: a lacuna de quinze anos de Kozakura, a função dos
+Kagehira em Gifu, a ascensão de Masao no submundo kozakurano e o conhecimento
+parcial entre Kara-Tur e Faerûn. Se uma preparação antiga do repo contradisser
+esse encaixe, atualizar a preparação antiga em vez de ignorar o documento.
 
 Resumos derivados ficam em `cenario/regioes/kara-tur/`.
 

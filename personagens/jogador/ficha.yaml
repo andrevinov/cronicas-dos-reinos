@@ -15,6 +15,7 @@ identidade:
   background: "Exilado de Clã"
   alinhamento: "Leal Neutro"
   idade: 24
+  ano_nascimento_equivalente_dr: 1348
   tamanho: "Médio"
   idiomas:
     - "Comum"
