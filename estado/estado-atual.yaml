@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "estrada do Fire River"
-  ponto_exato: "oculto atrás de mureta de pedra calcária, a cerca de quarenta pés da balança velha da cal atrás dos fornos do Fire River"
+  ponto_exato: "dentro do cômodo dos fundos da balança velha da cal atrás dos fornos do Fire River"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -437,7 +437,13 @@ localizacao:
     partiu em direção a Iria Doss, mas a chegada ainda não foi confirmada. Ren
     gastou 1 Ki em Passo do Vento e correu até a balança velha da cal. Chegou
     sem ser percebido e se ocultou atrás de uma mureta a quarenta pés, mas não
-    viu o intermediário nem conseguiu identificar a rota de saída correta.
+    viu o intermediário nem conseguiu identificar a rota de saída correta. Ren
+    depois entrou furtivamente na balança, examinou a mesa com suas ferramentas
+    de caligrafia e recuperou fragmentos de mata-borrão: "se falhar", "estrada
+    principal" e "B.V. paga". A marca d'água parcial do papel é compatível com
+    o circuito de Narwhal Manor. Ren percebeu e neutralizou um aviso simples de
+    fio e pesos na porta do cômodo dos fundos. O cômodo está vazio, com papéis
+    ainda quentes sob cinza e uma portinhola traseira encostada.
 
 tempo:
   ano_dr: 1372
@@ -449,11 +455,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "manhã de 7 Eleasis, diante da balança velha da cal atrás dos fornos do Fire River"
-  hora_aproximada: "07:53 de 7 Eleasis"
+  periodo_do_dia: "manhã de 7 Eleasis, no cômodo dos fundos da balança velha da cal"
+  hora_aproximada: "07:57 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. O homem de mãos limpas não está visível na balança velha, e Ren não identificou sua rota de saída."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis do braseiro continuam se perdendo para o calor, e o homem de mãos limpas mantém vantagem de fuga apesar da pista parcial sobre a estrada principal."
 
 recursos:
   pontos_de_vida:
@@ -475,7 +481,7 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está oculto atrás de mureta de pedra calcária, a cerca de quarenta pés da balança velha da cal, vestido como homem pobre"
+    - "Ren está dentro do cômodo dos fundos da balança velha da cal, vestido como homem pobre e ainda não percebido"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "O Broche do Semblante Humilde não foi usado na saída atual"
     - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
@@ -543,7 +549,16 @@ recursos:
     - "Investigação para ler o local e as rotas de saída: 5 contra CD 14, falha crítica natural"
     - "O homem de mãos limpas não está visível; Ren não identificou sua rota entre os fornos, o ramal do rio e a estrada principal"
     - "Ren viu cadeira vazia, pavio recentemente apagado e mancha violeta na mesa estreita da balança"
-    - "Ren não confirmou se o pequeno cômodo dos fundos está vazio ou preparado contra perseguidores"
+    - "Antes de entrar, Ren não havia confirmado se o pequeno cômodo dos fundos estava vazio ou preparado contra perseguidores"
+    - "Furtividade para cruzar até a balança e trabalhar sem ser percebido: 25 contra CD 15, sucesso"
+    - "Investigação da mesa com ferramentas de caligrafia e vantagem: 19 contra CD 14, sucesso"
+    - "Ren identificou a mancha violeta como tinta de cópia para livro-caixa"
+    - "Ren recuperou de uma tira de mata-borrão os fragmentos 'se falhar', 'estrada principal' e 'B.V. paga'"
+    - "O mata-borrão tem marca d'água parcial compatível com papel do circuito de Narwhal Manor"
+    - "A evidência torna provável, mas não prova, que o homem de mãos limpas seja o mesmo segundo intermediário descrito por Nera; não confirma Velis Rook"
+    - "Percepção para examinar o limiar do cômodo dos fundos: 23 contra CD 15, sucesso"
+    - "Ren percebeu e neutralizou sem ruído um aviso de fio e três pesos suspensos sobre chapa de ferro"
+    - "O cômodo dos fundos está vazio; há papéis ainda quentes sob cinza num braseiro e uma portinhola traseira apenas encostada"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1346,8 +1361,9 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir se Ren observa por mais tempo, contorna a balança, examina o cômodo dos fundos ou abandona o local"
-    - "tentar recuperar a rota do homem de mãos limpas sem assumir que uma das três saídas aparentes é correta"
+    - "decidir se Ren tenta preservar e ler os papéis ainda quentes no braseiro antes que se percam"
+    - "decidir como examinar ou abrir a portinhola traseira sem expor posição"
+    - "usar a pista 'estrada principal / B.V. paga' sem tratá-la como prova de rota realmente seguida"
     - "confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos à casa de Iria Doss"
     - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
@@ -1391,8 +1407,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está oculto atrás de uma mureta de pedra calcária, às 07:53 de 7 Eleasis, a cerca de quarenta pés da balança velha da cal. Chegou sem ser percebido depois de gastar 1 Ki em Passo do Vento, mas o homem de mãos limpas não está visível. Ren viu cadeira vazia, pavio recentemente apagado e mancha violeta na mesa, porém não conseguiu identificar a rota de saída entre os fornos, o ramal do rio e a estrada principal. Mera partiu com Colm/Dent na carroça rumo a Iria Doss; a chegada ainda não foi confirmada."
-  risco_imediato: "moderado incerto: Ren não foi percebido, mas não confirmou se o cômodo dos fundos da balança está vazio ou preparado contra perseguidores; o intermediário ganhou tempo e sua rota não foi identificada; os captores expulsos podem espalhar a descrição atual de Ren; Mera e Colm seguem expostos durante o trajeto até Iria Doss."
+  cena_atual: "Ren está dentro do cômodo dos fundos da balança velha, às 07:57 de 7 Eleasis. Cruzou o galpão sem ser percebido, recuperou fragmentos de escrita que ligam falha, estrada principal e pagamento de B.V., e identificou papel compatível com o circuito de Narwhal Manor. Percebeu e neutralizou um aviso de fio e pesos sem acioná-lo. O cômodo está vazio; há papéis ainda quentes sob cinza em um braseiro e uma portinhola traseira apenas encostada."
+  risco_imediato: "moderado localizado: os papéis podem se perder para o calor; a portinhola traseira ainda não foi examinada ou aberta; trabalhadores e carroças circulam no ramal superior, embora ninguém tenha percebido Ren; o intermediário já ganhou tempo de fuga."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1403,7 +1419,7 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como sondar a balança velha sem assumir que o cômodo dos fundos está seguro"
-    - "decidir se tenta recuperar uma das três rotas aparentes do homem de mãos limpas ou se prioriza outro fio"
+    - "decidir se preserva os papéis do braseiro ou examina primeiro a portinhola traseira"
+    - "decidir como usar a ligação provável entre o homem de mãos limpas, Narwhal Manor e o segundo intermediário descrito por Nera"
     - "confirmar depois se Mera e Colm/Dent chegaram a Iria Doss"
     - "identificar o homem de casaco pardo, tinta violeta sob a unha do polegar direito e cicatriz abaixo da orelha esquerda descrito por Mera"

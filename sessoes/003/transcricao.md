@@ -4610,3 +4610,47 @@ Ren permanece oculto atrás da mureta. Até onde consegue perceber, ninguém o v
 Hora aproximada: **07:53 de 7 Eleasis, 1372 DR**. Ren está a cerca de **quarenta pés da balança velha da cal**, em cobertura, sem ter avançado para o galpão. O homem de mãos limpas não está visível. Há três rotas aparentes de saída, mas nenhuma pôde ser identificada como a correta. Mera partiu com Colm/Dent na carroça, levando uma besta, em direção à casa de Iria Doss; Ren ainda não sabe se chegaram. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**. **Visão no Escuro** permanece ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren entra furtivamente. Se não for impedido, procura estudar a mesa, a mancha violeta. Tenta encontrar algo que possa ajudar a localizar o homem da mão limpa, tanto algo que possa dizer por onde ele fugiu como algo que possa ser útil pra identifica-lo no futuro. Depois prosseguirá pro cômodo dos fundos furtivamente.
+
+**Narrador**
+
+Furtividade para cruzar até a balança e trabalhar sem ser percebido: d20 18 + 7 = 25 contra CD 15. Sucesso.
+
+Ren deixa a mureta quando uma carroça de cal passa pelo ramal superior, usando o ranger das rodas e as vozes distantes dos trabalhadores para encobrir os poucos passos expostos. Alcança a lateral aberta do galpão, entra pela sombra do braço de pesagem e para junto à mesa sem chamar atenção dos fornos.
+
+Investigação da mesa com ferramentas de caligrafia: d20 com vantagem [9, 15] -> 15 + 4 = 19 contra CD 14. Sucesso.
+
+A mancha não é apenas tinta violeta derramada. É tinta de cópia para livro-caixa: escurece quase até o preto na escrita principal, mas deixa violeta nas bordas, no mata-borrão e sob as unhas. Cara demais para bilhete de capanga e adequada a registros que precisam gerar segunda via.
+
+Sob o peso de pedra da mesa, Ren encontra uma tira de mata-borrão usada duas vezes. A folha escrita foi levada, mas a pressão e a transferência deixaram fragmentos espelhados. Com o conhecimento de caligrafia, Ren reconstrói apenas três partes sem inventar o restante:
+
+"...se falhar..."
+
+"...estrada principal..."
+
+"...B.V. paga..."
+
+Isso sugere um plano de retirada pela estrada principal e volta ao circuito de Bram Vask, mas não prova que o homem tenha seguido a própria anotação depois de perceber o atraso da carroça.
+
+A tira de papel traz outra coisa. Quando inclinada contra a luz da manhã, revela uma marca d'água parcial: curva de onda e ponta longa, o mesmo padrão de papel de qualidade associado aos documentos de Narwhal Manor que Ren já tomou de Velis Rook. Somada à tinta sob a unha e ao perfil de escrivão descrito por Nera, a pista torna provável que o homem de mãos limpas seja o mesmo segundo intermediário que levou tecido, papéis e a falsa lâmina oriental à banca dela. Ainda não há nome nem prova de que seja o próprio Velis.
+
+Antes de seguir ao cômodo, Ren estuda a entrada.
+
+Percepção para examinar o limiar do cômodo dos fundos: d20 17 + 6 = 23 contra CD 15. Sucesso.
+
+Um fio quase incolor sai da parte baixa da porta, passa por um furo no batente e termina preso a três pesos pequenos da balança, suspensos sobre uma chapa de ferro. Abrir a porta de modo comum faria os pesos caírem com barulho suficiente para alcançar quem passasse pelo ramal superior. Não é uma armadilha para ferir. É um aviso deixado para denunciar perseguidor ou vasculhador.
+
+Ren segura os pesos, afrouxa o fio e abre a porta sem deixá-los cair.
+
+O cômodo dos fundos está vazio.
+
+É estreito, com cheiro de pavio queimado, couro úmido e papel aquecido. Há uma prateleira quase limpa, um gancho sem casaco e um braseiro baixo onde pedaços de papel ainda conservam calor sob cinza branca. Na parede oposta, uma portinhola traseira está encostada, não trancada. Uma faixa de luz entra pela base e revela pó de cal revolvido do lado de fora.
+
+Ren está dentro do cômodo sem ter acionado o aviso. Ninguém visível reage, mas os papéis no braseiro continuam se desfazendo e a portinhola traseira ainda não foi aberta.
+
+Hora aproximada: **07:57 de 7 Eleasis, 1372 DR**. Ren está dentro do **cômodo dos fundos da balança velha**, sem ter sido percebido e sem acionar o aviso de pesos. A mesa forneceu uma pista parcial: o intermediário planejava uma retirada pela **estrada principal**, com **B.V.** pagando, e usava papel do circuito de **Narwhal Manor**. É provável, mas ainda não comprovado, que seja o mesmo segundo escrivão descrito por Nera. No cômodo há papéis queimando sob cinza e uma portinhola traseira apenas encostada. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**.
+
+O que Ren faz?

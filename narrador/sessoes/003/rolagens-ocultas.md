@@ -1436,6 +1436,43 @@ Consequências:
 
 ---
 
+## Saída do homem de mãos limpas e busca na balança velha
+
+Contexto acumulado: depois que a carroça de resposta não voltou no prazo, o
+homem de mãos limpas avaliou se deveria abandonar a balança. Ren chegou depois,
+sondou o local, entrou furtivamente, examinou a mesa com apoio de caligrafia e
+avançou para o cômodo dos fundos.
+
+Rolagem oculta anterior:
+
+* Homem de mãos limpas perceber que a resposta falhou a tempo de abandonar a
+  balança: d20 16 + 4 = 20 contra CD 14. Sucesso.
+
+Rolagens abertas atuais:
+
+* Furtividade para cruzar até a balança e trabalhar sem ser percebido: d20 18 +
+  7 = 25 contra CD 15. Sucesso.
+* Investigação da mesa com ferramentas de caligrafia, com vantagem: d20 [9, 15]
+  + 4 = 19 contra CD 14. Sucesso.
+* Percepção para examinar o limiar do cômodo dos fundos: d20 17 + 6 = 23 contra
+  CD 15. Sucesso.
+
+Consequências:
+
+* O homem de mãos limpas abandonou a balança antes da chegada de Ren e deixou
+  um aviso simples de fio e pesos na porta do cômodo dos fundos.
+* Ren não foi percebido por trabalhadores ou tráfego do ramal superior.
+* O exame da mesa recupera fragmentos reais, não uma mensagem completa: "se
+  falhar", "estrada principal" e "B.V. paga".
+* O papel tem marca d'água parcial compatível com o circuito de Narwhal Manor.
+  Isso reforça a hipótese de que o homem de mãos limpas seja o segundo
+  intermediário descrito por Nera, mas não confirma que seja Velis Rook.
+* Ren percebe e neutraliza o aviso de pesos sem acioná-lo.
+* O cômodo está vazio. O intermediário deixou papéis queimando sob cinza e uma
+  portinhola traseira encostada. Esses elementos ainda não foram examinados.
+
+---
+
 ## Retirada dos captores e perseguição até a balança velha
 
 Contexto: Ren ameaçou os quatro participantes da emboscada, ordenou que os três
