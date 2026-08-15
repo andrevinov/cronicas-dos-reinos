@@ -4191,3 +4191,40 @@ Hora aproximada: **07:24 de 7 Eleasis, 1372 DR**. Ren evitou o laço e não est�
 Imagem: [ponto preparado na estrada do Fire River](imagens/004-ponto-preparado-fire-river-v2.png)
 
 O que Ren faz?
+
+**Jogador**
+
+Ren dispara até a mulher, tenta derruba-la com ataques não letais.
+
+**Narrador**
+
+> Modo de cena: combate
+
+Iniciativa de Ren: d20 17 + 4 = 21.  
+Iniciativa do besteiro: d20 14 + 1 = 15.  
+Iniciativa da mulher de avental escuro: d20 10 + 1 = 11.
+
+Ren se move primeiro.
+
+Ele não precisa de Passo do Vento para cruzar quinze pés.
+
+A poeira de cal ainda está no ar quando Ren sai dela como se o laço tivesse errado por escolha dele, não por sorte. A mulher tenta puxar a lâmina de volta para Colm. É lenta demais.
+
+Primeiro golpe não letal contra a mulher: d20 12 + 7 = 19 contra CA 12. Acerto. Dano: 1d6 6 + 4 = 10 contundente.  
+Segundo golpe não letal contra a mulher: d20 7 + 7 = 14 contra CA 12. Acerto. Dano: 1d6 4 + 4 = 8 contundente.
+
+O primeiro golpe entra baixo, no centro do corpo, tirando ar, base e intenção. O segundo vem antes que a queda termine: antebraço contra mandíbula e ombro, com força suficiente para apagar sem abrir carne. A faca cai no barro ao lado da vala, fora da mão dela. A mulher bate de lado na terra molhada e fica respirando, inconsciente.
+
+Colm puxa ar pelo nariz e tosse contra o pano da boca. A corda ainda prende o peito dele às tábuas baixas, mas a lâmina não está mais encostada nele.
+
+O besteiro solta um palavrão curto atrás do monte de carvão.
+
+Ataque com besta leve do besteiro contra Ren: d20 4 + 3 = 7 contra CA 17. Erro.
+
+O virote sai apressado, baixo demais, corta folhas de salgueiro e desaparece no barro atrás de Ren. Aparar Projéteis nem chega a ser necessário. O besteiro percebe isso quase junto com Ren: o refém já não está sob a faca, o disparo falhou, e agora há um monge entre ele e qualquer explicação fácil.
+
+Ele recua meio corpo para trás da lona preta endurecida, tentando ganhar cobertura melhor. A besta está descarregada por um instante. A mão dele vai para a cintura, onde há outro virote e talvez mais alguma coisa pequena presa no cinto.
+
+Fim da primeira rodada. A mulher está inconsciente e viva. Colm/Dent está vivo, amarrado e gagado, sem lâmina direta sobre ele neste exato momento. O besteiro continua ativo, parcialmente coberto pelo monte de carvão, a cerca de vinte e cinco a trinta pés de Ren. Ren está de pé junto a Colm e à mulher caída. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. Reação disponível. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+É o turno de Ren.

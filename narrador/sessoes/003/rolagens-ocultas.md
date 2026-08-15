@@ -1404,3 +1404,32 @@ Consequências:
 * Colm/Dent está vivo e em perigo imediato, preso junto a uma vala rasa.
 * O contato ainda não virou iniciativa; os captores falam primeiro para tentar
   controlar a cena com Colm como pressão.
+
+---
+
+## Combate no ponto preparado: primeira rodada
+
+Contexto: Ren declarou que dispara até a mulher e tenta derrubá-la com ataques
+não letais.
+
+Rolagens abertas:
+
+* Iniciativa de Ren: d20 17 + 4 = 21.
+* Iniciativa do besteiro: d20 14 + 1 = 15.
+* Iniciativa da mulher de avental escuro: d20 10 + 1 = 11.
+* Primeiro golpe não letal contra a mulher: d20 12 + 7 = 19 contra CA 12.
+  Acerto. Dano: 1d6 6 + 4 = 10 contundente.
+* Segundo golpe não letal contra a mulher: d20 7 + 7 = 14 contra CA 12.
+  Acerto. Dano: 1d6 4 + 4 = 8 contundente.
+* Ataque com besta leve do besteiro contra Ren: d20 4 + 3 = 7 contra CA 17.
+  Erro.
+
+Consequências:
+
+* Ren agiu antes dos captores e alcançou a mulher sem gastar Passo do Vento.
+* A mulher foi neutralizada viva e inconsciente antes de agir contra Colm/Dent.
+* A faca caiu no barro fora da mão da mulher.
+* O besteiro errou Ren; Aparar Projéteis não foi necessário.
+* O besteiro recuou para cobertura parcial atrás do monte velho de carvão, com
+  a besta descarregada por um instante e a mão indo ao cinto.
+* Recursos de Ren inalterados: 45/45 PV, Ki 6/6.
