@@ -212,8 +212,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "atrás de tábuas e capim junto à vala seca da secagem velha da estrada do Fire River"
-    status: "vivo, solto, fraco e reunido a Mera Fumaça; precisa de tratamento hoje"
+    local: "em trânsito na carroça com Mera Fumaça, rumo à casa de Iria Doss"
+    status: "vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -308,6 +308,8 @@ relacoes:
       - "Mera Fumaça está livre e reunida a Colm/Dent."
       - "Segundo Mera, Colm/Dent precisa de tratamento hoje, embora não pareça estar morrendo naquele instante."
       - "Uma carroça de resposta entrou no ramal antes que Ren pudesse retirar Colm/Dent da secagem."
+      - "Ren expulsou os participantes da emboscada e ajudou a acomodar Colm/Dent na carroça abandonada."
+      - "Mera partiu com Colm/Dent na carroça em direção a Iria Doss; Ren ainda não confirmou a chegada."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -319,16 +321,16 @@ relacoes:
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
       - "Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse, cobertura ruim e possível ferimento não diagnosticado."
-      - "O rapaz da corda nova avisou aliados e retornou numa carroça com um condutor e um homem de besta leve."
-      - "A cobertura atual pode ser descoberta quando a carroça ganhar visão da porta aberta e da vala."
+      - "O rapaz da corda nova avisou aliados e retornou numa carroça com um condutor e um homem de besta leve; Ren rendeu e depois expulsou o grupo."
+      - "O trajeto até Iria Doss é conhecido na estrada e pode expor Mera e Colm antes da chegada."
   mera_fumaca:
     nome: "Mera Fumaça"
     tipo: "contato rural possível / guardiã temporária de Colm-Dent"
-    local: "junto à vala seca da secagem velha na estrada do Fire River, reunida a Colm/Dent"
-    status: "viva, libertada por Ren, ferida e manca; cooperando na retirada"
-    atitude_para_ren: "cautelosa e pragmática; coopera porque Ren a libertou e está protegendo Colm/Dent"
-    confianca: "baixa"
-    respeito: "moderado inicial"
+    local: "em trânsito na carroça rumo à casa de Iria Doss, com Colm/Dent"
+    status: "viva, ferida e manca; armada com besta e conduzindo Colm para tratamento"
+    atitude_para_ren: "cautelosa, pragmática e cooperativa; Ren a libertou, protegeu Colm e confiou a retirada a ela"
+    confianca: "moderada inicial"
+    respeito: "moderado"
     motivo: >
       Dorra teria enviado Colm/Dent para uma secagem velha com Mera Fumaça
       depois que os fornos de cal deixaram de ser seguros. O besteiro capturado
@@ -370,10 +372,12 @@ relacoes:
       - "Mera conhece um forno morto a cinco minutos pelo mato, útil apenas como cobertura breve."
       - "Mera indicou Iria Doss como curandeira rural que trata ferimentos de cal, problemas no peito e ossos quebrados, mas cuja casa não é secreta."
       - "Uma carroça de resposta entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta leve; eles ainda não localizaram o grupo."
+      - "Ren entregou uma besta a Mera e a ajudou a acomodar Colm/Dent na carroça."
+      - "Mera partiu rumo a Iria Doss com Colm/Dent; Ren ainda não confirmou a chegada."
     riscos:
       - "Mera manca e não consegue sustentar fuga rápida sem ajuda."
       - "A secagem velha e o galpão baixo estão comprometidos como abrigo."
-      - "A carroça de resposta pode encontrar a porta aberta, a cobertura imperfeita da vala e os sobreviventes em poucos instantes."
+      - "O trajeto até Iria Doss não é secreto, e Mera ainda está ferida enquanto conduz Colm."
   iria_doss:
     nome: "Iria Doss"
     tipo: "curandeira rural e ajustadora de ossos / contato apenas indicado por Mera"

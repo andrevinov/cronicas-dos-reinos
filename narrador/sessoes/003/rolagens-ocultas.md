@@ -1436,6 +1436,49 @@ Consequências:
 
 ---
 
+## Retirada dos captores e perseguição até a balança velha
+
+Contexto: Ren ameaçou os quatro participantes da emboscada, ordenou que os três
+conscientes recolhessem os dois captores inconscientes e permitiu que saíssem a
+pé. Depois entregou a carroça e uma besta a Mera para levar Colm/Dent a Iria
+Doss, gastou 1 Ki em Passo do Vento e correu até a balança velha da cal, onde
+pretendia sondar antes de avançar.
+
+Rolagens abertas:
+
+* Furtividade ao se aproximar da balança: d20 16 + 7 = 23 contra CD 15. Sucesso.
+* Percepção para localizar o homem ou movimento recente: d20 7 + 6 = 13 contra
+  CD 15. Falha.
+* Investigação para ler o local e as rotas de saída: d20 1 + 4 = 5 contra CD
+  14. Falha crítica natural.
+
+Rolagem oculta:
+
+* Homem de mãos limpas perceber que a resposta falhou a tempo de abandonar a
+  balança: d20 16 + 4 = 20 contra CD 14. Sucesso.
+
+Consequências:
+
+* A ameaça não exigiu novo teste porque os homens já estavam rendidos pela
+  Intimidação anterior e não tinham apoio imediato.
+* Os quatro participantes da emboscada e o condutor saíram a pé; as duas bestas
+  ficaram para trás. Eles conhecem a aparência usada por Ren nesta manhã, mas
+  não receberam seu nome.
+* Mera partiu com Colm/Dent na carroça e levou uma das bestas. A chegada a Iria
+  Doss ainda não foi confirmada.
+* Ren gastou 1 Ki e ficou com 5/6.
+* O homem de mãos limpas interpretou a demora como fracasso da resposta e saiu
+  da balança antes da chegada de Ren.
+* Ren não foi percebido na aproximação, mas não viu o alvo partir nem conseguiu
+  identificar a rota correta entre fornos, ramal do rio e estrada principal.
+* A falha crítica em Investigação custa minutos numa pegada recente apagada por
+  marcas de roda e impede confirmar se o cômodo dos fundos está vazio ou se foi
+  preparado para detectar ou ferir perseguidores.
+* Ren permanece em cobertura a cerca de quarenta pés da balança, sem ter
+  avançado para o galpão.
+
+---
+
 ## Rendição do besteiro e informação sobre Bram/Mera
 
 Contexto: Ren avançou sobre o besteiro, buscando feri-lo sem apagá-lo e

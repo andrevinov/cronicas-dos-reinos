@@ -4538,3 +4538,75 @@ Atrás de Ren, a poucas dezenas de pés, Mera e Colm continuam ocultos pelas tá
 Hora aproximada: **07:43 de 7 Eleasis, 1372 DR**. Ren está apoiado na traseira da carroça, com a wakizashi no rosto do besteiro. O homem largou a besta; o rapaz da faixa azul e o condutor mantêm as mãos visíveis. Nenhum deles atacou, e Ren não gastou Ki, reação ou pontos de vida. Segundo os dois executores, **Bram Vask financiou a ação**, mas o **homem de casaco pardo, mãos limpas e tinta violeta no polegar** planejou a armadilha e pode ainda estar na **balança velha da cal, no ramal atrás dos fornos**, esperando a carroça voltar. Mera e Colm/Dent permanecem junto à vala; Colm ainda precisa de tratamento hoje.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren espeta a wakizashi na cara do homem, no limite estreito pra começar a ferir.
+
+"Eu não tenho nada contra matar, é pra isso que eu fui treinado, inclusive. Mas eu evito até onde dá, e vocês já passaram de todos os limites."
+
+Ele aproxima o rosto deles:
+
+"Vocês vão recolher os amigos de vocês que estão apagados ali em cima. Se eu vir qualquer um dos quatro por aqui ou por Ravens Bluff mais uma vez eu não vou hesitar em cortar as cabeças de vocês NO PRIMEIRO INSTANTE. Vocês me entenderam?"
+
+Depois deles confirmarem.
+
+"VOCÊS ME ENTENDERAM MESMO?"
+
+E depois permite-os fugir.
+
+Depois que eles saem, deixando a caroça e o cavalo, eu falo: "Mera, você precisa ir com Dent até a curandeira. Eu irei checar sua situação em breve. Preciso seguir rapidamente o rastro desse 'homem de mãos limpas'."
+
+Entrego uma besta pra ela.
+
+"Pra sua proteção."
+
+Ligo Passo do Vento e vou o mais rápido possível até a posição do tal homem de mãos limpas. Quando chegar lá, não avançar feito idiota: sondar e planejar primeiro.
+
+**Narrador**
+
+A ponta entra apenas o bastante para abrir uma linha vermelha abaixo do olho do besteiro.
+
+Ele não se move. O rapaz da faixa azul perde a cor, e o condutor olha para as próprias mãos sobre as rédeas como se qualquer movimento pudesse ser o errado.
+
+"Entendemos", diz o besteiro.
+
+Ren aproxima o rosto.
+
+"VOCÊS ME ENTENDERAM MESMO?"
+
+"Sim!" O rapaz responde primeiro. O condutor repete logo depois. O besteiro confirma por último, baixo e sem desviar os olhos da lâmina.
+
+Sob a vigilância de Ren, os três vão buscar a mulher de avental e o primeiro besteiro, ainda inconscientes. Deixam para trás as armas. O transporte é lento e humilhante: o homem ferido e o condutor carregam um corpo, enquanto o rapaz ajuda a arrastar o outro sobre um pedaço de lona velha. Quando alcançam a estrada principal, Ren permite que sigam a pé. Nenhum deles olha para trás antes da curva.
+
+Mera ajuda Ren a acomodar Colm na carroça abandonada. O cavalo ainda está assustado, mas aceita as rédeas dela. Quando Ren entrega a besta, Mera confere a corda e apoia a arma ao alcance do banco.
+
+"Se Iria ainda estiver em casa, eu ponho Dent nas mãos dela", diz. "Não vou esperar você na estrada."
+
+Ela conduz a carroça pelo ramal do rio. Colm permanece deitado na traseira, respirando com dificuldade, mas consciente quando a carroça desaparece depois do salgueiro partido.
+
+Ren gasta 1 ponto de Ki e dispara na direção dos fornos.
+
+Os primeiros segundos de Passo do Vento apagam uma distância que tomaria muito mais de um homem comum. Depois ele mantém o ritmo pela trilha de cal, atravessa o ramal detrás dos fornos e reduz a velocidade somente quando avista a balança velha.
+
+Furtividade ao se aproximar da balança: d20 16 + 7 = 23 contra CD 15. Sucesso.
+
+Percepção para localizar o homem ou movimento recente: d20 7 + 6 = 13 contra CD 15. Falha.
+
+Investigação para ler o local e as rotas de saída: d20 1 + 4 = 5 contra CD 14. Falha crítica natural.
+
+Ren não entra.
+
+A balança ocupa um galpão aberto de madeira escurecida, com plataforma baixa, braço de pesagem torto e um pequeno cômodo fechado nos fundos. Uma mureta de pedra calcária quebrada oferece cobertura a cerca de quarenta pés. Dali, Ren vê uma cadeira vazia, um pavio recentemente apagado e uma mancha violeta na borda da mesa estreita.
+
+Nenhuma pessoa aparece. Nenhuma voz responde ao vento dos fornos.
+
+O terreno, porém, foi esmagado por anos de carroças e pelas passagens desta manhã. Há sulcos seguindo de volta aos fornos, uma trilha estreita descendo para o ramal do rio e terra dura rumo à estrada principal. Ren não consegue distinguir qual marca é do homem de mãos limpas. Ao tentar ler melhor de longe, perde minutos comparando uma pegada recente que termina sob marcas de roda e não leva a lugar algum.
+
+Também não consegue confirmar se o cômodo dos fundos está realmente vazio ou se a entrada foi deixada preparada para quem seguisse depressa demais.
+
+Ren permanece oculto atrás da mureta. Até onde consegue perceber, ninguém o viu chegar.
+
+Hora aproximada: **07:53 de 7 Eleasis, 1372 DR**. Ren está a cerca de **quarenta pés da balança velha da cal**, em cobertura, sem ter avançado para o galpão. O homem de mãos limpas não está visível. Há três rotas aparentes de saída, mas nenhuma pôde ser identificada como a correta. Mera partiu com Colm/Dent na carroça, levando uma besta, em direção à casa de Iria Doss; Ren ainda não sabe se chegaram. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**. **Visão no Escuro** permanece ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível.
+
+O que Ren faz?
