@@ -1036,3 +1036,47 @@ Consequências:
   madeira ou pedra se encaixando mais à frente.
 * A segunda maré começa a alterar a rota úmida da esquerda. Ainda não invade a
   sala seca, mas aumenta pressão de tempo e risco de retorno por caminhos baixos.
+
+---
+
+## Noite de 6 para 7 Eleasis: trava do trilho e resposta adiante
+
+Contexto: Ren procurou a origem do encaixe seco ouvido além do pano escuro.
+Tentou entender e desencaixar a peça; se não conseguisse, seguiria pela direita.
+
+Rolagens abertas:
+
+* Furtividade de Ren ao avançar pela garganta baixa até a origem do som sob
+  Passos sem Pegadas: d20 20 + 17 = 37 contra CD 18. Sucesso.
+* Percepção de Ren para localizar exatamente o encaixe seco adiante: d20 8 + 6
+  = 14 contra CD 15. Falha.
+* Investigação de Ren para entender o que encaixou e como desencaixar: d20 20
+  + 4 = 24 contra CD 15. Sucesso.
+* Ferramentas de ladrão de Ren para desencaixar a trava sem ruído útil: d20 18
+  + 7 = 25 contra CD 16. Sucesso.
+* Acrobacia de Ren para passar pela dobra direita sem bater no mecanismo ou no
+  trilho: d20 1 + 7 = 8 contra CD 14. Falha.
+
+Rolagens ocultas:
+
+* Ouvinte adiante perceber o toque ruim de Ren na dobra: d20 17 + 4 = 21 contra
+  CD 14. Sucesso.
+* Sinal secundário da trava denunciar que a cunha foi desencaixada: d20 10 + 3
+  = 13 contra CD 16. Falha.
+* Pressão da segunda maré empurrar água para a rota de retorno durante a demora:
+  d20 13 + 2 = 15 contra CD 13. Sucesso.
+* Resposta interna fechar ou deslocar uma segunda peça antes de Ren cruzar a
+  dobra: d20 13 + 3 = 16 contra CD 15. Sucesso.
+
+Consequências:
+
+* Ren entende que a peça encaixada era uma lingueta/trava de trilho, não
+  comporta principal de água. Ela bloqueia ou sinaliza a rota de passa-carga.
+* A trava é desencaixada com sucesso e sem acionar sinal secundário útil.
+* A falha crítica de Acrobacia produz um toque curto de madeira contra pedra.
+  Esse ruído é pequeno, mas objetivo, e não é apagado por Passos sem Pegadas.
+* Alguém ou algo adiante percebe o toque e consegue responder antes de Ren
+  cruzar a dobra: uma segunda portinhola baixa é movida quase até fechar.
+* A pressão da segunda maré aumenta na rota úmida atrás. Ainda não alcança a
+  garganta seca atual, mas o retorno por áreas baixas fica mais arriscado com
+  o tempo.

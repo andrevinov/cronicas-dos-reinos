@@ -3464,3 +3464,74 @@ sala baixa seca atrás
 Hora aproximada: **01:50 de 7 Eleasis, 1372 DR**. Ren está do outro lado do pano escuro, numa **garganta baixa de serviço** além da sala seca da Ponte Baixa. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele não conseguiu usar o Passo Sombrio para atravessar o pano, porque não viu alvo desocupado com segurança antes de entrar; agora há uma sombra curta utilizável antes da próxima dobra.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá procurar o local do som. Procurará algo que encaixou e tentará desencaixar. Se não conseguir, vai entrar pela direita.
+
+**Narrador**
+
+Ren segue o som sem seguir o impulso.
+
+Teste de Furtividade de Ren ao avançar pela garganta baixa até a origem do som sob Passos sem Pegadas: d20 20 + 17 = 37 contra CD 18. Sucesso.
+
+O corpo dele quase deixa de existir dentro da pedra. A magia apaga passo, roupa, respiração curta. A garganta baixa, úmida agora no centro, tenta fazer o resto: roubar equilíbrio, empurrar joelho, obrigar cotovelo a bater. Ren vence isso no primeiro avanço.
+
+Teste de Percepção de Ren para localizar exatamente o encaixe seco adiante: d20 8 + 6 = 14 contra CD 15. Falha.
+
+O som não se entrega pelo ouvido. A pedra curva errado. A dobra para a direita devolve eco curto, e por um instante Ren não sabe se o encaixe veio de baixo, da parede ou de mais adiante.
+
+Então a mão entende antes do ouvido.
+
+Teste de Investigação de Ren para entender o que encaixou e como desencaixar: d20 20 + 4 = 24 contra CD 15. Sucesso.
+
+Não é porta grande. Não é comporta principal de água.
+
+É uma lingueta baixa de madeira escura enfiada de lado num rasgo da pedra, presa sobre as duas marcas paralelas do chão. Uma trava de trilho. Algo feito para impedir que uma gaveta rasa, bandeja ou portinhola de passa-carga corra pelo canal. Também serve como sinal simples: quem conhece a rota sabe se a passagem está aberta ou bloqueada sem precisar falar.
+
+O encaixe que Ren ouviu foi isso. Alguém, ou algum mecanismo, empurrou a lingueta para dentro do trilho pouco antes dele chegar.
+
+Teste com ferramentas de ladrão de Ren para desencaixar a trava sem ruído útil: d20 18 + 7 = 25 contra CD 16. Sucesso.
+
+Ren tira a pressão da peça com a ponta fina da ferramenta, apoia dois dedos no lado que não canta e puxa no momento em que a água distante bate em pedra atrás dele. A lingueta solta sem estalo. O trilho fica livre.
+
+Por meio fôlego, a escolha abre.
+
+Teste de Acrobacia de Ren para passar pela dobra direita sem bater no mecanismo ou no trilho: d20 1 + 7 = 8 contra CD 14. Falha.
+
+O chão trai no trecho que não parecia chão.
+
+Não é queda. Ren segura o peso antes que o corpo desabe. Mas a sola encontra pedra lisa sob a película de umidade, e o ombro toca a peça solta que ele acabou de vencer.
+
+Toc.
+
+Baixo. Curto. Real.
+
+A Passos sem Pegadas engole Ren. Não engole madeira batendo em pedra.
+
+O som não vira alarme aberto. Não há grito. Não há sino. Mas a garganta à frente responde com a pior coisa possível: competência.
+
+Mais adiante, depois da dobra direita, algo se move uma vez. Um encaixe mais limpo que o primeiro. Depois outro som menor, como ar sendo cortado por madeira fina. Quando Ren força o ângulo pela curva, a Visão no Escuro mostra só o fim do movimento: uma segunda portinhola baixa, a cerca de vinte pés adiante, termina de correr para dentro do batente. Não fecha como parede inteira. Deixa uma fresta baixa, escura, talvez suficiente para ver, talvez não para passar sem mexer nela.
+
+Atrás, além do pano e da sala seca, a água bate mais cheia na rota úmida da câmara de retenção. Ainda não veio atrás de Ren por este trilho seco. Mas o retorno por baixo da Ponte Baixa está ficando menos paciente.
+
+Visão atual de Ren:
+
+```text
+sala seca atrás
+  |
+  | pano escuro / brasa protegida
+  v
+garganta baixa úmida
+  |
+[Ren] na dobra direita
+  |
+  | trilho baixo destravado
+  v
+segunda portinhola baixa quase fechada
+  fresta inferior escura
+```
+
+Hora aproximada: **01:52 de 7 Eleasis, 1372 DR**. Ren está na **dobra direita da garganta baixa**, além da sala seca da Ponte Baixa. A primeira trava do trilho foi desencaixada sem disparar sinal útil, mas a passagem ruim produziu um toque seco que provavelmente foi percebido adiante. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**.
+
+O que Ren faz?
