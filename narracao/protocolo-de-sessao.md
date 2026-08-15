@@ -1,8 +1,8 @@
 # Protocolo de sessão
 
-Este protocolo define como iniciar, narrar, registrar, pausar e encerrar sessões de **Crônicas dos Reinos**.
+Este protocolo define como iniciar, narrar, registrar, consolidar, pausar e encerrar sessões de **Crônicas dos Reinos**.
 
-Estilo: `narracao/guia-de-narrativa.md`. Limites: `narracao/limites.md`. Acesso e economia de contexto: `docs/agente/acesso-e-operacoes.md`.
+Estilo: `narracao/guia-de-narrativa.md`. Limites: `narracao/limites.md`. Acesso: `docs/agente/acesso-e-operacoes.md`. Consolidação: `docs/agente/consolidacao-transacional.md`.
 
 ---
 
@@ -20,48 +20,25 @@ sessoes/001/
 └── imagens/
 ```
 
-`transcricao.md` é o registro completo da alternância entre jogador e narrador.
-
-Durante a sessão ativa, mudanças ainda não consolidadas ficam em:
+`transcricao.md` é o registro completo da alternância entre jogador e narrador. Durante a sessão ativa, mudanças posteriores ao último checkpoint ficam em:
 
 ```text
 runtime/eventos-pendentes.jsonl
 ```
 
----
+Depois de consolidadas, as transações passam também pelo ledger:
 
-## Cabeçalho da transcrição
-
-Modelo:
-
-```markdown
-# Sessão 001
-
-Data real: AAAA-MM-DD
-Data no mundo: pendente
-Personagem: Ren Kagehira
-Local inicial: Ravens Bluff
-Modo inicial de cena: interação
-
-Estado inicial:
-
-* PV: 24/24
-* Ki: 3/3
-* condições: nenhuma
-* localização: a definir
-
----
+```text
+sessoes/NNN/consolidacoes.jsonl
 ```
 
-O cabeçalho é snapshot inicial. Não deve ser reescrito a cada mudança durante a sessão.
-
 ---
 
-## Abertura
+## Cabeçalho e abertura
 
-A primeira entrada é do narrador e deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico de Ren quando necessário e uma deixa clara para agir.
+O cabeçalho da transcrição é snapshot inicial; não deve ser reescrito a cada mudança. A abertura deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico quando necessário e uma deixa clara para Ren agir.
 
-O recap não deve carregar a sessão anterior inteira nem revelar material reservado.
+Não copiar a sessão anterior nem carregar material reservado preventivamente.
 
 ---
 
@@ -81,30 +58,25 @@ Formato:
 
 O jogador controla o que Ren faz, diz, tenta, pensa ou sente. O narrador resolve mundo, NPCs, regras, rolagens e consequências.
 
-Checklist breve antes de publicar resposta:
-
-- NPCs falam como pessoas do mundo, não como interface de sistema;
-- mecânica necessária fica fora da voz do NPC;
-- segredos não aparecem como certeza pública;
-- a resposta devolve situação jogável, não solução pronta.
+Antes de publicar: NPCs devem soar como pessoas do mundo; mecânica fica fora da voz do NPC; segredos não aparecem como certeza pública; a resposta devolve uma situação jogável.
 
 ---
 
 ## Loop transacional de narração
 
-Desde a Etapa 7, uma interação comum segue:
+Uma interação comum segue:
 
 ```text
 ação do jogador
 → usar contexto já presente
-→ consultar somente lacuna necessária
+→ consultar somente a lacuna necessária
 → resolver rolagens
 → produzir narração
 → registrar transação
 → devolver controle ao jogador
 ```
 
-A persistência deve ser feita em uma única chamada:
+Persistir com uma única chamada:
 
 ```bash
 python3 ferramentas/turno.py registrar <<'JSON'
@@ -123,24 +95,11 @@ O registrador escreve somente:
 1. `sessoes/NNN/transcricao.md`;
 2. `runtime/eventos-pendentes.jsonl`.
 
-A prosa da narração fica apenas na transcrição. O JSONL guarda ID, sessão, resumo, deltas e eventualmente rolagens ocultas.
+A prosa completa fica só na transcrição. O JSONL guarda ID, sessão, resumo, deltas e eventualmente rolagens ocultas.
 
 ### Proibição de write amplification
 
-Durante cada troca normal **não** atualizar também:
-
-- `estado/estado-atual.yaml`;
-- `estado/tempo.yaml`;
-- ficha;
-- relações;
-- medidores de NPC;
-- conhecimento consolidado;
-- consequências;
-- relógios;
-- resumos de sessão;
-- logs reservados separados.
-
-Esses destinos são consolidados posteriormente em lote.
+Durante cada troca normal não atualizar também estado, tempo, ficha, relações, NPCs, conhecimento, consequências, relógios, resumos ou logs reservados. Esses destinos são consolidados em lote.
 
 Também não rodar por rotina, a cada ação, `git status`, `git diff`, testes globais, regeneração de runtime ou commit.
 
@@ -148,68 +107,49 @@ Também não rodar por rotina, a cada ação, `git status`, `git diff`, testes g
 
 ## Deltas mínimos
 
-Um delta registra apenas o que mudou e precisa sobreviver à próxima interação.
-
-Exemplos:
+Um delta registra somente o que mudou e precisa sobreviver à próxima interação.
 
 ```json
 {"alvo":"estado","op":"inc","caminho":"recursos.pontos_de_vida.atuais","valor":-6}
 {"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
 {"alvo":"estado","op":"set","caminho":"localizacao.ponto_exato","valor":"junto à cerca"}
-{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
+{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04"}
 {"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
 {"alvo":"conhecimento","op":"registrar","valor":{"assunto":"ponte baixa","texto":"brasa protegida é sinal"}}
+{"alvo":"consequencia","op":"registrar","valor":{"titulo":"Dívida aberta","descricao":"Pode voltar a importar."}}
 ```
 
 Operações: `set`, `inc`, `append`, `remove`, `registrar`.
 
-Se nada persistente mudou, `deltas` pode ser vazio. Não transformar descrição sensorial ou fala trivial em estado estruturado.
+Se nada persistente mudou, `deltas` pode ser vazio. Descrição sensorial ou fala trivial não precisa virar estado estruturado.
 
-`contexto.py` aplica deltas suportados sobre o snapshot-base ao responder consultas. Assim, o estado operacional permanece correto antes da consolidação.
+`contexto.py` aplica os deltas sobre o snapshot-base até a consolidação.
 
 ---
 
-## Idempotência e interrupção
+## Idempotência do turno
 
-Cada transação recebe ID estável e marcador HTML interno na transcrição. Repetir exatamente a mesma entrada não duplica registros.
-
-Se houver queda entre as duas escritas, repetir a chamada repara somente o lado ausente.
-
-Validação barata:
+Cada transação recebe ID estável e marcador interno na transcrição. Repetir a mesma entrada não duplica registros. Se houver queda entre as duas escritas, repetir a chamada repara somente o lado ausente.
 
 ```bash
 python3 ferramentas/turno.py check
 ```
 
-Uma pausa no meio da sessão é segura quando esse comando passa: transcrição + buffer pendente + snapshot-base bastam para retomada.
+Enquanto não houver consolidação em andamento, transcrição + buffer + snapshot-base bastam para uma retomada segura.
 
 ---
 
-## Tamanho das entradas
+## Tamanho, modos e ritmo
 
-Entrada típica do jogador: uma frase a um parágrafo.
-
-Entrada típica do narrador: duas frases a três parágrafos.
-
-Entradas maiores são apropriadas em abertura, descoberta importante, encerramento de cena, resolução de combate, transição de viagem ou consequência substancial.
+Entrada típica do jogador: uma frase a um parágrafo. Entrada típica do narrador: duas frases a três parágrafos. Usar entradas maiores em abertura, descoberta importante, resolução de combate, transição ou consequência substancial.
 
 Não repetir PV, CA, Ki, dinheiro, hora e localização em toda resposta se nada relevante mudou.
 
----
-
-## Modos de cena
-
-Modos principais:
-
-- interação;
-- exploração;
-- combate.
-
-Registrar mudança de modo quando ela for relevante, como delta de `estado.campanha.modo_de_cena_atual`. Não repetir o rótulo em toda entrada se o modo não mudou.
+Modos principais: interação, exploração e combate. Registrar mudança de modo apenas quando ela ocorrer de verdade.
 
 ### Interação
 
-Foco em diálogo, postura, descoberta e relações. Acompanhar informação revelada, mentira/omissão, promessas, dívidas e mudanças significativas de atitude.
+Foco em diálogo, postura, descoberta e relações. Acompanhar informação revelada, mentira/omissão, promessas, dívidas e mudanças significativas.
 
 ### Exploração
 
@@ -217,113 +157,129 @@ Foco em posição, luz, ruído, ferramentas, saídas, tempo gasto, riscos e rota
 
 ### Combate
 
-Fluxo: surpresa se houver → iniciativa → posição → ação de Ren → rolagens/consequências → próximo turno.
-
-Manter claro, quando relevante, rodada/turno, PV/Ki, inimigos visíveis, estado aparente, distâncias, cobertura e fuga. A clareza tática não exige repetir o bloco inteiro quando nada nele mudou.
+Surpresa se houver → iniciativa → posição → ação de Ren → rolagens/consequências → próximo turno. Manter claros os elementos táticos relevantes sem repetir blocos inalterados.
 
 ---
 
-## Rolagens visíveis
+## Rolagens
 
-Formato recomendado:
+Para rolagens visíveis, usar `ferramentas/rolar-dados.py`. Quando duas ou mais rolagens independentes já forem necessárias, usar uma chamada a `ferramentas/rolar-lote.py`. Não antecipar rolagens condicionais.
 
-```text
-Teste de Furtividade: d20 12 + 5 = 17 contra CD 15. Sucesso.
-```
-
-Usar:
-
-```bash
-python3 ferramentas/rolar-dados.py ren pericia furtividade --cd 15
-python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
-```
-
-Quando duas ou mais rolagens são independentes e já sabemos que todas serão necessárias, usar **uma chamada**:
-
-```bash
-python3 ferramentas/rolar-lote.py <<'JSON'
-[
-  ["ren", "pericia", "furtividade", "--cd", "15"],
-  ["npc", "d20", "--nome", "Guarda", "--bonus", "3", "--cd", "12"]
-]
-JSON
-```
-
-Não antecipar uma rolagem que só deveria existir se outra tiver determinado resultado.
-
----
-
-## Rolagens ocultas
-
-Usar quando revelar o dado já entregaria informação indevida: mentira, criatura escondida, armadilha, facção fora de cena, relógio oculto etc.
-
-Durante o loop narrativo, rolagens ocultas relevantes podem ser registradas em `rolagens_ocultas` da transação. Elas não entram em consultas públicas normais.
-
-Na consolidação serão transferidas, quando necessário, para:
+Rolagens ocultas relevantes ficam no campo `rolagens_ocultas` da transação. Isso evita uma terceira escrita durante o turno. Na consolidação elas são transferidas em lote para:
 
 ```text
 narrador/sessoes/NNN/rolagens-ocultas.md
 ```
 
-Isso evita uma terceira escrita por turno.
+---
+
+## Material reservado, dungeons, cidades e imagens
+
+Material reservado necessário fica em `narrador/sessoes/NNN/`; não carregar a pasta inteira sem lacuna concreta.
+
+Em dungeon, preservar topologia e segredos, revelando apenas o percebido. Em cidade, abstrair deslocamento salvo perseguição, cauda, tempo crítico, perigo ou rota com consequência.
+
+Imagens pedidas durante sessão ficam em `sessoes/NNN/imagens/` e são referenciadas na transcrição sem revelar elementos ainda não percebidos.
 
 ---
 
-## Preparação do narrador
+## Checkpoint de cena
 
-Criar material reservado somente quando necessário em `narrador/sessoes/NNN/`: preparação, segredos, mapas, relógios, rolagens ou NPCs relevantes. Não carregar a pasta inteira durante narração sem lacuna concreta.
+Não consolidar por cronômetro nem depois de cada ação. Consolidar quando houver **fronteira de cena importante** e um checkpoint canônico for útil: fim de combate relevante, saída de local perigoso, descanso/transição forte, mudança clara de objetivo ou antes de uma pausa operacional longa.
 
----
+```bash
+python3 ferramentas/consolidar.py cena
+```
 
-## Dungeons e cidades
+O comando:
 
-Em dungeon, preservar topologia, saídas, mudanças e segredos; revelar apenas o percebido por Ren.
+- valida o buffer;
+- calcula todas as alterações em memória;
+- prepara staging + journal;
+- instala estado/ficha/tempo/entidades/conhecimento/artefatos afetados;
+- instala o novo runtime;
+- remove as transações aplicadas do buffer por último.
 
-Em cidade, abstrair deslocamento salvo perseguição, cauda, tempo crítico, perigo de bairro ou rota com consequência. Não detalhar caminho por rotina.
-
----
-
-## Imagens
-
-Imagens pedidas durante sessão ficam em `sessoes/NNN/imagens/` e são referenciadas na transcrição. Não revelar elementos ainda não percebidos.
-
----
-
-## Encerramento de cena
-
-A narração pode fazer checkpoint curto do que mudou, mas não precisa virar relatório. Não é obrigatório consolidar todos os arquivos canônicos ao fim de cada cena.
-
-Se uma pausa longa acontecer, `turno.py check` é suficiente para verificar persistência transacional.
+Depois de sucesso, a narração pode continuar normalmente. Não executar `gerar-runtime.py` novamente por rotina: o novo runtime já faz parte do mesmo lote.
 
 ---
 
 ## Encerramento de sessão
 
-Criar/atualizar, conforme aplicável:
+Antes de declarar a sessão encerrada:
+
+```bash
+python3 ferramentas/consolidar.py sessao
+```
+
+A consolidação de sessão aplica os deltas pendentes e mantém, conforme houver conteúdo real:
 
 ```text
+sessoes/NNN/consolidacoes.jsonl
 sessoes/NNN/resumo.md
 sessoes/NNN/alteracoes-de-estado.yaml
 sessoes/NNN/consequencias.md
 sessoes/NNN/experiencia.md
 ```
 
-A consolidação deve considerar ponto inicial/final, tempo, decisões, rolagens decisivas, combates, recursos, itens, relações, descobertas, mistérios, consequências e pendências.
+Se já existir `alteracoes-de-estado.yaml` manual em formato incompatível com o gerado automaticamente, ele não é destruído; a ferramenta usa `alteracoes-transacionais.yaml`.
 
-`runtime/eventos-pendentes.jsonl` é a lista explícita das alterações ainda não consolidadas. A Etapa 8 implementará sua aplicação automática/idempotente. Até lá, não limpar o buffer por rotina.
+Texto manual em resumo, consequências e experiência fica fora dos marcadores automáticos e é preservado.
 
-Após consolidação canônica, regenerar `runtime/contexto.yaml` e `runtime/cena.yaml`.
+O resumo automático **não reconstrói a história por inferência**: usa os resumos curtos das transações. Informações importantes que precisam virar conhecimento, consequência, progressão ou outro estado devem existir como deltas explícitos.
+
+`consolidar.py sessao` marca seus artefatos automáticos como encerrados, mas não incrementa automaticamente a sessão, não cria a próxima e não escolhe progressão por Ren.
+
+---
+
+## Conhecimento, relações e NPCs depois da consolidação
+
+Conhecimento novo registrado é materializado em fragmentos incrementais por sessão e ligado a `conhecimento/ativo.yaml`; os fragmentos legados permanecem intocados e reconstruíveis.
+
+Mudança de relação atualiza somente o fragmento corrente da entidade e registra a causa no histórico específico. O mesmo vale para medidores de NPC. Novas entidades podem nascer na consolidação sem exigir retorno aos antigos monólitos.
+
+---
+
+## Consequências, progressão e relógios
+
+Consequências só entram no artefato automático quando houver delta explícito `consequencia`.
+
+`progressao` pode registrar um marco/recompensa, mas isso não autoriza escolher opção de nível pelo jogador. Mudanças mecânicas efetivas precisam de delta próprio.
+
+Relógios reservados usam `relogio:<id>` e permanecem em `narrador/relogios/`. Delta com `visibilidade: narrador` não pode ser instalado em domínio público.
+
+---
+
+## Queda durante consolidação
+
+Se existir:
+
+```text
+runtime/consolidacao-em-andamento.json
+```
+
+não narrar, não usar `contexto.py` e não registrar novo turno. O estado pode estar entre dois arquivos do mesmo commit lógico.
+
+Recuperar primeiro:
+
+```bash
+python3 ferramentas/consolidar.py recuperar
+```
+
+A recuperação usa os bytes já staged e aceita como estado de cada destino apenas o hash anterior ou o hash final. Ela não recalcula o lote e, portanto, não reaplica incrementos.
+
+Depois de sucesso, journal/staging são removidos e a operação normal é liberada.
 
 ---
 
 ## Pausas e retomadas
 
-Não é necessário escrever um novo bloco de pausa se a última transação já contém resumo suficiente e `turno.py check` passa. Quando útil para legibilidade humana, um marcador de pausa pode continuar na transcrição.
+Sem journal de consolidação, `turno.py check` valida uma pausa com eventos pendentes. Ao retomar, tentar L0 → `contexto.py status` → `contexto.py cena`; não reler automaticamente a transcrição inteira.
 
-Ao retomar, tentar L0 → `contexto.py status` → `contexto.py cena`. Não reler automaticamente a transcrição inteira.
+Se a pausa ocorreu durante consolidação, usar `consolidar.py recuperar` antes de qualquer leitura operacional.
 
 ---
 
 ## Correções
 
-Corrigir explicitamente erro de regra, estado ou continuidade. Não apagar decisão do jogador. Uma correção durante sessão deve entrar como nova transação/delta, nunca como alteração silenciosa de evento anterior já narrado.
+Erro de regra, estado ou continuidade deve ser corrigido explicitamente. Não apagar decisão do jogador. Durante sessão, correção vira nova transação/delta; nunca alteração silenciosa de evento anterior já narrado.
