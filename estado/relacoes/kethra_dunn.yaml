@@ -1,0 +1,51 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: kethra_dunn
+historico: historico/relacoes/kethra_dunn.yaml
+relacao:
+  nome: Kethra Dunn
+  tipo: funcionária de serviço de Narwhal Manor / fonte potencial
+  local: Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor
+  status: fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem
+    sobre ponte baixa
+  atitude_para_ren: assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da
+    ameaça
+  confianca: baixa, mas real em termos práticos
+  respeito: prático e cauteloso
+  motivo_atual: Ren dispensou Kethra antes que a ausência dela chamasse atenção. Kethra avisou que, se Ren procurar
+    Dorra, não deve usar o nome dela antes de saber quem está ouvindo nem procurar Dent alto demais.
+  informacoes_observadas_por_ren:
+  - 'Ponto morto acordado: vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor.'
+  - 'Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua significa perigo urgente
+    ligado a Bram; rachadura para a parede significa nada; se o vaso sumir, o caminho morreu.'
+  - Ren montou fisicamente o ponto morto na manhã de 4 Eleasis e deixou a rachadura voltada para a parede, com mensagem
+    de que Colm/Dent foi com a cal e Bram recebeu pressão da guarda e recado.
+  - Kethra deixou mensagem pelo ponto morto dizendo que não sabe se Dent chegou.
+  - Kethra ouviu que, depois do peixe, Narwhal tremeu e a mulher de manto cinza-azulado mandou o corredor treze
+    não falar de tintureiro, cesto ou barril.
+  - 'Kethra ouviu nos fundos de Narwhal a frase: ''se a boca abriu no mercado, olhem a ponte baixa''.'
+  - Ren desmontou o ponto morto de Narwhal sem deixar novo padrão útil.
+  - Na manhã de 6 Eleasis, Kethra ainda não tem notícia de Colm/Dent.
+  - Kethra não ouviu nova informação concreta em Narwhal desde a pista da ponte baixa.
+  - Kethra percebe que o corredor treze está quieto demais e que termos ligados a tintureiro, cesto e barril viraram
+    assunto evitado.
+  riscos:
+  - Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela.
+  - Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu do turno.
+  - 'A saída de Colm do lavadouro deixou uma pista fraca: uma menina viu dois vultos indo dos Três Tanques aos pátios
+    de carroças.'
+  - 'A volta de Ren até Kethra deixou outra pista fraca: um homem velho nos pátios viu Ren sair da área da carroça
+    de cal e depois tomar direção da Rua da Cal.'
+  - Ren soube depois, por um trabalhador dos pátios, que alguém perguntou por um doente vindo do lavadouro antes
+    da carroça de Dorra sair.
+  - 'A montagem inicial do ponto morto de Kethra ficou imperfeita: o vaso tem sinais discretos de manipulação e
+    cera cinza visível de perto.'
+  - Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade.
+  - O ponto morto de Narwhal morreu; novo contato com Kethra exigirá conversa discreta e novo protocolo.
+  - Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas
+    e imediatas.
+  - 'Contatos presenciais na lateral de Narwhal continuam arriscados: o Broche ajudou nesta manhã, mas repetição
+    pode criar padrão.'
+conteudo_mais_antigo_no_historico:
+  informacoes_observadas_por_ren: 29
+  riscos: 3

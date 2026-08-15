@@ -1,0 +1,64 @@
+schema_historico_relacao: 1
+id: harl_venn
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Harl Venn
+  tipo: ajudante de cordame
+  local: Jack Mooney & Sons Circus
+  status: confessou sua parte a Jack
+  atitude_para_ren: envergonhada, defensiva e com respeito relutante
+  confianca: baixa
+  respeito: inicial e relutante
+  motivo: 'Segundo Sorn, Harl foi quem conferiu o lado leste da corda alta ontem depois da nona badalada, embora
+    Sorn tenha assinado a conferência. Ren o encontrou atrás da carroça de cordame. Harl respondeu sem vacilar que
+    a corda estava boa quando ele conferiu, mas Ren percebeu que ele está escolhendo responder apenas ao que foi
+    perguntado. Sob pergunta direta sobre Lysa, Harl afirmou que ela pegou apenas breu, mas admitiu que não viu
+    as mãos dela o tempo todo. Quando Ren foi abordar Lysa, Harl não o seguiu, mas ficou observando de longe e se
+    distraiu do trabalho. Mais tarde, Ren tentou reabrir conversa com camaradagem e perguntas sobre comida, mas
+    Harl permaneceu defensivo e perguntou se Jack mandou Ren falar com ele. Ren ofereceu 1 PO por uma hora do tempo
+    de Harl. Harl aceitou a moeda, corrigiu Ren ao ser chamado de Hal e acompanhou Ren até a cozinha sob a lona
+    amarela, ainda desconfiado. Ren apelou à fome, pobreza, admiração e amor para levá-lo a assumir responsabilidade.
+    Harl confessou a Ren e depois a Jack que plantou a ideia em Merrit, mas não ordenou diretamente o corte. Na
+    manhã de 6 Eleasis, Ren ofereceu 1 PO para que Harl ficasse atento a qualquer coisa estranha na montagem da
+    tenda menor. Harl recusou a moeda: depois da punição de Jack, aceitar dinheiro para vigiar montagem pareceria
+    segredo novo. Ele disse que avisará Sorn ou Tobb se vir risco real, mas não quer ser olho comprado de Ren. Durante
+    a montagem baixa da tenda menor, Harl não viu irregularidade útil: não viu mão em corda, marca nova em estaca
+    nem gente mexendo em lamparina depois das marcações de Sorn. Ele manteve a ressalva de que não venderá certeza
+    absoluta.
+
+    '
+  informacoes_compartilhadas_por_harl:
+  - Harl afirma que puxou a amarra, ouviu a corda, passou a mão na volta e no couro.
+  - Harl afirma que a corda estava boa quando ele conferiu o lado leste.
+  - Harl afirma que teria sentido se a tira já estivesse aberta daquele jeito.
+  - Harl afirma que Lysa pegou breu.
+  - Harl admitiu que virou para pegar pano e não viu as mãos de Lysa por um instante.
+  - Harl viu Lysa fechar o punho esquerdo depois.
+  - Harl afirma que sua faca de trabalho não saiu do cinto e que dorme com ela debaixo do travesseiro.
+  - Segundo Merrit, Harl disse que corda fala com Sorn antes de falar com plateia e que uma amarra cantando errado
+    seria detectada pela manhã.
+  - Segundo Merrit, Harl é apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas.
+  - Jack foi informado por Ren de que Harl plantou a ideia em Merrit, sem fonte pública revelada.
+  - Harl informou que a melhor comida fica na cozinha sob a lona amarela, antes dos músicos.
+  - Harl aceitou 1 PO de Ren por uma hora de conversa.
+  - Harl confessou que plantou em Merrit a ideia de que Sorn detectaria a amarra cantando errado antes de alguém
+    cair.
+  - Harl afirmou que queria cancelar o número de Mira, não derrubá-la.
+  - Harl recusou 1 PO de Ren para vigiar a montagem da tenda menor em 6 Eleasis.
+  - Harl prometeu avisar Sorn ou Tobb se vir risco real, mas recusou virar olho pago de Ren.
+  - Harl disse que não viu mão em corda, marca nova em estaca nem alguém mexendo em lamparina depois das marcações
+    de Sorn.
+  riscos:
+  - Pode ser testemunha-chave, negligente, culpado ou pessoa usada como cobertura.
+  - Também trabalha com breu de cordame.
+  - Pode ter manipulado Merrit sem dar ordem explícita.
+  - Tem devoção romântica ou idealizada por Lysa.
+  - Jack proibirá Harl de tocar corda alta, conferir amarra sozinho ou pegar chave de baú por ora.
+  - Ren tem até o pôr do sol para conversar com Harl antes de Jack escolher punição mais pesada.
+  - Harl percebeu que Ren pode estar se aproximando por ordem ou interesse de Jack.
+  - Harl agora sabe que Ren está disposto a gastar ouro para conseguir tempo privado.
+  - 'Jack puniu Harl discretamente: um mês longe da corda alta, sem chave, sem conferência de segurança e sem ficar
+    sozinho com Merrit ou Lysa por ora.'
+  - Harl deve pedir desculpas a Merrit diante de Silva à noite, para assumir que ela não carrega a culpa sozinha.
+  - Harl está sensível a qualquer pedido que pareça segredo, vigilância comprada ou tentativa de contornar Sorn
+    e Jack.

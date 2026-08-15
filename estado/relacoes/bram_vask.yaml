@@ -1,0 +1,50 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: bram_vask
+historico: historico/relacoes/bram_vask.yaml
+relacao:
+  nome: Bram Vask
+  tipo: agiota / dono de loja de penhores e cobrança
+  local: loja de Bram Vask, Lower Trades
+  status: vivo, intimidado, sem o caderno de contas; provável resposta indireta em andamento
+  atitude_para_ren: amedrontada e hostil
+  confianca: nenhuma
+  respeito: medo prático
+  motivo_atual: Bram não fez cena pública com a criança, mas fechou a loja e começou a se mover nos fundos. No ponto
+    preparado da estrada do Fire River, um besteiro rendido por Ren afirmou que Bram Vask pagou a pergunta sobre
+    Colm/Dent, mas não veio pessoalmente; segundo ele, um homem de mãos limpas organizou a compra/captura.
+  informacoes_observadas_por_ren:
+  - Houve movimento pequeno e mal confirmado perto dos fundos da loja, mas Ren não identificou natureza, destinatário
+    ou ligação com Bram.
+  - Sella Rove relatou que um rapaz perguntou pela frase 'pano azul com sabão preto' no Lavadouro dos Três Tanques.
+  - Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto
+    claro.
+  - Um homem velho nos pátios viu um homem sair da área da carroça de cal e depois tomar direção da Rua da Cal.
+  - Um trabalhador dos pátios contou a Ren que alguém perguntou por um doente vindo do lavadouro antes da saída
+    de Dorra.
+  - A Night Watch pressionou Bram em sua loja na manhã de 4 Eleasis, falando de cobrança violenta, possível gente
+    mantida por dívida e risco a Kethra.
+  - Uma criança entregou a Bram um recado ameaçador de Ren, de forma imprecisa, dizendo que a visita da guarda foi
+    só o começo.
+  - Segundo um besteiro rendido por Ren na estrada do Fire River, Bram Vask pagou a pergunta sobre Colm/Dent, mas
+    não veio pessoalmente.
+  - Segundo o mesmo besteiro, um homem de mãos limpas organizou a captura/compra em campo.
+  - Na balança velha, Ren recuperou os fragmentos de mata-borrão 'se falhar', 'estrada principal' e 'B.V. paga';
+    a leitura sugere Bram Vask, mas não constitui identificação documental completa.
+  riscos:
+  - Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades.
+  - Se Bram ligar Colm a Kethra como fonte da informação, ela corre risco direto.
+  - A vigília ruim de Ren deixa aberta a possibilidade de Bram ter acionado alguém indiretamente.
+  - A pergunta do rapaz no lavadouro sugere que a resposta indireta pode estar se aproximando de Colm.
+  - Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças.
+  - Se Bram juntar a menina e o homem velho, pode estreitar a busca para carroças de cal ou carvão.
+  - Se a pessoa que perguntou nos pátios era resposta de Bram, Bram ou intermediário já estreitou a busca até Dorra
+    Hest e os fornos de cal.
+  - A mensagem torta pode fazer Bram associar a ameaça anônima a alguém capaz de observar ou influenciar a guarda.
+  - Bram não parece contido; a dupla pressão pode gerar resposta indireta, ocultação de registros ou busca por quem
+    o ameaçou.
+  - Se a fala do besteiro for verdadeira, Bram terceirizou a ação no Fire River por meio de intermediário mais limpo
+    e talvez mais perigoso juridicamente.
+conteudo_mais_antigo_no_historico:
+  informacoes_observadas_por_ren: 6
+  riscos: 1

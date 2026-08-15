@@ -1,0 +1,17 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: velha_sella
+historico: historico/relacoes/velha_sella.yaml
+relacao:
+  nome: Velha Sella
+  tipo: contato cauteloso / moradora de Fishtown
+  local: casa de redes azuis, Rua da Corda
+  status: ativa
+  atitude_para_ren: desconfiada, mas cooperativa dentro de limites
+  confianca: baixa
+  respeito: cauteloso
+  motivo_atual: Sella escondeu Tavin antes da chegada de Ren, não gritou quando Ren entrou e aceitou apagar sinais
+    da presença do garoto depois que ele saiu.
+  riscos:
+  - Protege a própria casa antes de proteger Ren.
+  - Se a Red Sail a pressionar, pode negar tudo e fechar a porta para futuros contatos.

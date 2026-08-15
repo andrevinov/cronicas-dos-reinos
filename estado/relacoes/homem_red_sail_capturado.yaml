@@ -1,0 +1,19 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: homem_red_sail_capturado
+historico: historico/relacoes/homem_red_sail_capturado.yaml
+relacao:
+  nome: desconhecido
+  tipo: agente operacional menor/médio da Red Sail
+  local: beco discreto atrás de casa de apostas fechada
+  status: coagido por Ren
+  atitude_para_ren: amedrontada e hostil
+  confianca: nenhuma
+  respeito: medo
+  motivo_atual: Ren capturou o homem, obteve informações sobre Brass, Nera, a falsa lua velada e o procedimento
+    da ficha, depois tomou uma fita vermelha identificável e um botão de osso infantil como garantia. O homem aceitou
+    enviar às 19:00 uma mensagem falsa para Brass sobre Ren e a seladora estarem feridos na oficina de velas abandonada.
+  riscos:
+  - Pode tentar fugir da cidade ou quebrar o acordo se achar que Brass descobrirá de qualquer forma.
+  - Pode obedecer por medo, mas não é aliado.
+  - Se for pressionado pela Red Sail antes das 19:00, pode entrar em pânico.

@@ -1,0 +1,36 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: brunna_torkel
+npc:
+  nome: Brunna Torkel
+  grupo: Medidas Torkel / Sarbreen
+  medidores:
+    vinculo: 3
+    confianca: 4
+    risco_percebido: 5
+  natureza_do_vinculo: profissional técnico e desconfiado
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Brunna pode respeitar Ren se ele tratar Sarbreen como levantamento sério, mas a relação passa
+    por ofício, pagamento e proteção da loja.
+
+    '
+  leitura_atual: 'Brunna não gosta de teatro ruim, mas reconhece pergunta certa, pagamento certo e risco real. Ela
+    ajudou Ren porque a situação tocou sua perícia e porque ele aceitou pagar.
+
+    '
+  tom_atual: 'Irritada, técnica e pouco paciente com fantasia sobre tesouros. Pode ser útil se Ren falar como alguém
+    que precisa de levantamento, erro de planta e rota, não de lenda.
+
+    '
+  impacto_em_testes: 'Pagamento justo, precisão técnica e respeito ao ofício reduzem CD. Violência, exposição da
+    loja, pergunta vaga sobre Sarbreen ou tentativa de arrancar mapa inteiro aumentam CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren paga por informação e protege a fonte
+  - Ren usa termos técnicos aprendidos corretamente
+  - Ren não transforma a Medidas Torkel em cena pública
+  gatilhos_de_queda:
+  - Ren volta com perseguição até a loja
+  - Ren exige certeza onde Brunna só tem levantamento parcial
+  - a investigação de Ren prejudica a clientela ou segurança dela

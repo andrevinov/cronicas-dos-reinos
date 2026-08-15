@@ -1,0 +1,42 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: nera_vell
+historico: historico/relacoes/nera_vell.yaml
+relacao:
+  nome: Nera Vell
+  tipo: testemunha protegida / gravadora de selos
+  local: depósito de figurino velho, perto do canto de Ren; normalmente na carroça verde de Silva Elkwood
+  status: sob proteção temporária de Silva Elkwood
+  atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
+  confianca: moderada em situação de crise
+  respeito: prático
+  motivo_atual: Nera ficou parcialmente aliviada por entender que os inimigos ainda têm uma palavra de pressão,
+    mas não uma porta confirmada até ela. Ela reforçou que o circo não deve ensinar onde ela dorme.
+  informacoes_compartilhadas_por_nera:
+  - Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada.
+  - Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido.
+  - O segundo homem usava papel e tinta associáveis a Narwhal Manor.
+  - Nera mantinha um livro de provas escondido na própria banca.
+  - Tavin ouviu as palavras 'Narwhal', 'segunda maré' e 'se vier sozinho'.
+  - Nera reconheceu a impressão protegida da falsa lua velada na pasta de Velis como derivada do trabalho que foi
+    obrigada a fazer, mas prensada com cera de arquivo.
+  acordos:
+  - Ren decidiu tirar Tavin de perigo e recuperar o livro de provas.
+  - Ren prometeu dar um jeito de checar a situação de Nera e Tavin e entrar em contato.
+  riscos:
+  - Nera ouviu Ren falar sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu.
+  - Nera percebeu que a lembrança das cerejeiras toca saudade e dor, embora Ren não tenha transformado isso em explicação
+    completa diante de Tavin.
+  - Nera percebeu que um recado externo tocou a segurança ao redor de Kage antes da reprise de 5 Eleasis, mas não
+    viu o papel.
+  - Nera recebeu de Ren, por Silva, um bilhete dizendo que ele a ama e que solucionará tudo.
+  - Nera respondeu indiretamente que promessa grande demais não vale menos, mas pesa mais.
+  - Nera sabe que a Casa Veyr ou o canal ligado a ela citou a seladora/gravadora para pressionar Kage.
+  - Nera não reconheceu Corven Dalm nem Casa Veyr.
+  - Nera alertou Ren a não entregar reação emocional se alguém citar o nome dela durante a apresentação fechada.
+  - Nera sabe, em linhas gerais, que Ren encontrou documentos na Ponte Baixa e que Luath os lacrou como fonte protegida
+    sem nome externo de Ren, Nera ou Tavin.
+  - Nera entende que os inimigos ainda parecem possuir palavras de pressão sobre ela e Tavin, mas não demonstraram
+    saber a porta exata onde os Vell dormem.
+conteudo_mais_antigo_no_historico:
+  riscos: 43

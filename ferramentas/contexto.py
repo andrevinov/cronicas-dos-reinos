@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Consulta contexto da campanha com saída pequena, previsível e orientada por domínio."""
+"""Consulta contexto da campanha com saída pequena, previsível e orientada por domínio.
+
+A ferramenta é a porta normal de leitura operacional. Desde a Etapa 6, relações,
+medidores de NPC e conhecimento são resolvidos por índice e por um fragmento
+específico, sem carregar os antigos depósitos acumulativos.
+"""
 from __future__ import annotations
 
 import argparse
@@ -22,7 +27,12 @@ DEFAULT_MAX_BYTES = 8 * 1024
 HARD_MAX_BYTES = 16 * 1024
 QUERY_LOG = Path("runtime/consultas-contexto.jsonl")
 TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".txt", ".json"}
-SKIP_DIRS = {".git", "books", "imagens", "__pycache__"}
+SKIP_DIRS = {".git", "books", "imagens", "__pycache__", "legado"}
+REL_INDEX = Path("estado/relacoes/index.yaml")
+NPC_INDEX = Path("estado/npcs/index.yaml")
+KNOW_INDEX = Path("personagens/jogador/conhecimento/index.yaml")
+KNOW_ACTIVE = Path("personagens/jogador/conhecimento/ativo.yaml")
+KNOW_ROOT = Path("personagens/jogador/conhecimento")
 
 
 def load_yaml(path: Path) -> Any:
@@ -168,30 +178,8 @@ def resolve_entity(mapping: Any, term: str) -> tuple[str | None, Any | None, lis
 
 
 def compact_relation(payload: dict[str, Any]) -> dict[str, Any]:
-    priority = (
-        "nome",
-        "tipo",
-        "local",
-        "status",
-        "atitude_para_ren",
-        "confianca",
-        "respeito",
-        "motivo",
-        "acordos",
-        "limites",
-        "riscos",
-        "ultima_alteracao",
-        "informacoes_observadas_por_ren",
-        "informacoes_compartilhadas_por_edran",
-    )
-    out: dict[str, Any] = {}
-    for key in priority:
-        if key in payload:
-            out[key] = payload[key]
-    for key in payload:
-        if key not in out and key.startswith(("informacoes_", "pendencias", "estado_")):
-            out[key] = payload[key]
-    return compact_value(out, string_limit=900, list_limit=8, depth=4)
+    """Mantém compatibilidade com chamadas antigas e limita relações já compactas."""
+    return compact_value(payload, string_limit=900, list_limit=8, depth=4)
 
 
 def split_markdown_sections(text: str) -> list[dict[str, Any]]:
@@ -205,9 +193,7 @@ def split_markdown_sections(text: str) -> list[dict[str, Any]]:
         nonlocal buffer
         body = "\n".join(buffer).strip()
         if body:
-            sections.append(
-                {"titulo": current_heading, "linha": current_start, "conteudo": body}
-            )
+            sections.append({"titulo": current_heading, "linha": current_start, "conteudo": body})
         buffer = []
 
     for lineno, line in enumerate(lines, 1):
@@ -242,9 +228,15 @@ def section_score(section: dict[str, Any], term: str) -> int:
     return score
 
 
-def search_markdown_files(paths: Iterable[Path], term: str, repo: Path, limit: int = 3) -> list[dict[str, Any]]:
+def search_markdown_files(
+    paths: Iterable[Path], term: str, repo: Path, limit: int = 3
+) -> list[dict[str, Any]]:
     ranked: list[tuple[int, str, dict[str, Any]]] = []
+    seen: set[Path] = set()
     for path in paths:
+        if path in seen:
+            continue
+        seen.add(path)
         try:
             text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
@@ -255,34 +247,49 @@ def search_markdown_files(paths: Iterable[Path], term: str, repo: Path, limit: i
             if score:
                 ranked.append((score, rel, section))
     ranked.sort(key=lambda item: (-item[0], item[1], item[2]["linha"]))
-    result = []
-    for score, rel, section in ranked[:limit]:
-        result.append(
-            {
-                "arquivo": rel,
-                "linha": section["linha"],
-                "titulo": section["titulo"],
-                "relevancia": score,
-                "conteudo": truncate_text(section["conteudo"], 2400),
-            }
-        )
-    return result
+    return [
+        {
+            "arquivo": rel,
+            "linha": section["linha"],
+            "titulo": section["titulo"],
+            "relevancia": score,
+            "conteudo": truncate_text(section["conteudo"], 2400),
+        }
+        for score, rel, section in ranked[:limit]
+    ]
+
+
+def _iter_text_files(root: Path) -> Iterable[Path]:
+    if not root.exists():
+        return
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        if any(part in SKIP_DIRS for part in path.parts):
+            continue
+        yield path
 
 
 def iter_search_files(repo: Path, *, reserved: bool, historical: bool) -> Iterable[Path]:
+    """Escopo da busca genérica.
+
+    A busca normal vê apenas material operacional/público. `historico/` e
+    transcrições completas entram somente com --historico; `narrador/` somente
+    com --reservado.
+    """
     roots = ["estado", "personagens/jogador", "cenario", "regras", "narracao"]
     if reserved:
         roots.append("narrador")
     for root_name in roots:
-        root = repo / root_name
-        if not root.exists():
-            continue
-        for path in root.rglob("*"):
-            if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
-                continue
-            if any(part in SKIP_DIRS for part in path.parts):
-                continue
-            yield path
+        yield from _iter_text_files(repo / root_name)
+
+    if historical:
+        historical_root = repo / "historico"
+        if historical_root.exists():
+            for path in historical_root.rglob("*"):
+                if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+                    continue
+                yield path
 
     sessions = repo / "sessoes"
     if sessions.exists():
@@ -299,7 +306,14 @@ def iter_search_files(repo: Path, *, reserved: bool, historical: bool) -> Iterab
                     yield trans
 
 
-def generic_search(repo: Path, term: str, *, reserved: bool, historical: bool, limit: int = 8) -> list[dict[str, Any]]:
+def generic_search(
+    repo: Path,
+    term: str,
+    *,
+    reserved: bool,
+    historical: bool,
+    limit: int = 8,
+) -> list[dict[str, Any]]:
     query = normalize(term)
     tokens = [token for token in query.split() if token]
     if not tokens:
@@ -327,11 +341,40 @@ def generic_search(repo: Path, term: str, *, reserved: bool, historical: bool, l
     ]
 
 
-def envelope(command: str, term: str | None, level: str, sources: list[str], result: Any) -> dict[str, Any]:
+def envelope(
+    command: str,
+    term: str | None,
+    level: str,
+    sources: list[str],
+    result: Any,
+) -> dict[str, Any]:
     query: dict[str, Any] = {"comando": command}
     if term is not None:
         query["termo"] = term
     return {"consulta": query, "nivel": level, "fontes": sources, "resultado": result}
+
+
+def _resolve_index(
+    repo: Path,
+    index_path: Path,
+    mapping_key: str,
+    term: str,
+) -> tuple[str | None, dict[str, Any] | None, list[str], dict[str, Any]]:
+    data = load_yaml(repo / index_path) or {}
+    mapping = data.get(mapping_key) if isinstance(data, dict) else None
+    key, entry, suggestions = resolve_entity(mapping, term)
+    return key, entry if isinstance(entry, dict) else None, suggestions, data
+
+
+def _load_fragment(repo: Path, entry: dict[str, Any] | None, payload_key: str) -> tuple[Any, str | None]:
+    if not entry:
+        return None, None
+    rel = entry.get("arquivo")
+    if not isinstance(rel, str):
+        return None, None
+    doc = load_yaml(repo / rel) or {}
+    payload = doc.get(payload_key) if isinstance(doc, dict) else None
+    return payload, rel
 
 
 def command_scene(repo: Path) -> dict[str, Any]:
@@ -352,54 +395,100 @@ def command_status(repo: Path) -> dict[str, Any]:
 
 
 def command_relation(repo: Path, term: str) -> dict[str, Any]:
-    data = load_yaml(repo / "estado/relacoes.yaml") or {}
-    mapping = data.get("relacoes") if isinstance(data, dict) else None
-    key, payload, suggestions = resolve_entity(mapping, term)
-    if payload is None:
-        result = {"encontrado": False, "candidatos": suggestions}
-    else:
-        result = {"encontrado": True, "id": key, "relacao": compact_relation(payload)}
-    return envelope("relacao", term, "L2", ["estado/relacoes.yaml"], result)
+    key, entry, suggestions, _ = _resolve_index(repo, REL_INDEX, "relacoes", term)
+    if entry is None:
+        return envelope(
+            "relacao",
+            term,
+            "L2",
+            [REL_INDEX.as_posix()],
+            {"encontrado": False, "candidatos": suggestions},
+        )
+
+    payload, fragment = _load_fragment(repo, entry, "relacao")
+    if not isinstance(payload, dict):
+        raise ValueError(f"fragmento de relação inválido para {key}")
+    sources = [REL_INDEX.as_posix()]
+    if fragment:
+        sources.append(fragment)
+    result = {
+        "encontrado": True,
+        "id": key,
+        "relacao": compact_relation(payload),
+        "historico_disponivel": entry.get("historico"),
+    }
+    return envelope("relacao", term, "L2", sources, result)
 
 
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
-    med_data = load_yaml(repo / "estado/medidores-npcs.yaml") or {}
-    rel_data = load_yaml(repo / "estado/relacoes.yaml") or {}
-    med_map = med_data.get("npcs") if isinstance(med_data, dict) else None
-    rel_map = rel_data.get("relacoes") if isinstance(rel_data, dict) else None
-    med_key, med_payload, med_suggestions = resolve_entity(med_map, term)
-    rel_key, rel_payload, rel_suggestions = resolve_entity(rel_map, term)
-    result: dict[str, Any] = {
-        "encontrado": bool(med_payload or rel_payload),
-        "medidores": None,
-        "relacao": None,
-    }
-    if med_payload:
+    med_key, med_entry, med_suggestions, _ = _resolve_index(repo, NPC_INDEX, "npcs", term)
+    rel_key, rel_entry, rel_suggestions, _ = _resolve_index(repo, REL_INDEX, "relacoes", term)
+
+    med_payload, med_fragment = _load_fragment(repo, med_entry, "npc")
+    rel_payload, rel_fragment = _load_fragment(repo, rel_entry, "relacao")
+    found = isinstance(med_payload, dict) or isinstance(rel_payload, dict)
+    result: dict[str, Any] = {"encontrado": found, "medidores": None, "relacao": None}
+    sources = [NPC_INDEX.as_posix(), REL_INDEX.as_posix()]
+
+    if isinstance(med_payload, dict):
         result["medidores"] = {
             "id": med_key,
             "dados": compact_value(med_payload, string_limit=750, list_limit=6, depth=4),
         }
-    if rel_payload:
-        result["relacao"] = {"id": rel_key, "dados": compact_relation(rel_payload)}
-    if not result["encontrado"]:
+        if med_fragment:
+            sources.append(med_fragment)
+    if isinstance(rel_payload, dict):
+        result["relacao"] = {
+            "id": rel_key,
+            "dados": compact_relation(rel_payload),
+            "historico_disponivel": rel_entry.get("historico") if rel_entry else None,
+        }
+        if rel_fragment:
+            sources.append(rel_fragment)
+    if not found:
         result["candidatos"] = list(dict.fromkeys(med_suggestions + rel_suggestions))[:8]
-    return envelope(
-        "npc",
-        term,
-        "L2",
-        ["estado/medidores-npcs.yaml", "estado/relacoes.yaml"],
-        result,
-    )
+
+    return envelope("npc", term, "L2", list(dict.fromkeys(sources)), result)
+
+
+def _knowledge_active_paths(repo: Path) -> list[Path]:
+    active = load_yaml(repo / KNOW_ACTIVE) or {}
+    paths: list[Path] = []
+    for group in ("topicos_prioritarios", "descobertas_recentes"):
+        for entry in active.get(group, []) if isinstance(active, dict) else []:
+            if not isinstance(entry, dict):
+                continue
+            for rel in entry.get("arquivos", []):
+                path = repo / str(rel)
+                if path.is_file():
+                    paths.append(path)
+    return paths
 
 
 def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
-    path = repo / "personagens/jogador/conhecimento.md"
-    matches = search_markdown_files([path], term, repo, limit=3)
+    active_paths = _knowledge_active_paths(repo)
+    active_matches = search_markdown_files(active_paths, term, repo, limit=3)
+
+    # Um acerto forte no recorte ativo já basta. Caso contrário, o processo local
+    # pesquisa os demais fragmentos; apenas os trechos vencedores entram no contexto.
+    if active_matches and active_matches[0]["relevancia"] >= 90:
+        matches = active_matches
+        level = "L2"
+    else:
+        all_paths = sorted(
+            path for path in (repo / KNOW_ROOT).rglob("*.md")
+            if path.is_file()
+        )
+        matches = search_markdown_files(all_paths, term, repo, limit=3)
+        level = "L2-L3"
+
+    sources = [KNOW_ACTIVE.as_posix(), KNOW_INDEX.as_posix()]
+    sources.extend(item["arquivo"] for item in matches)
     return envelope(
         "conhecimento",
         term,
-        "L2",
-        ["personagens/jogador/conhecimento.md"],
+        level,
+        list(dict.fromkeys(sources)),
         {"encontrado": bool(matches), "trechos": matches},
     )
 
@@ -407,9 +496,7 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
 def command_rule(repo: Path, term: str) -> dict[str, Any]:
     rules = sorted((repo / "regras").glob("*.md"))
     matches = search_markdown_files(rules, term, repo, limit=3)
-    sources = list(dict.fromkeys(item["arquivo"] for item in matches))
-    if not sources:
-        sources = ["regras/"]
+    sources = list(dict.fromkeys(item["arquivo"] for item in matches)) or ["regras/"]
     return envelope(
         "regra",
         term,
@@ -419,13 +506,19 @@ def command_rule(repo: Path, term: str) -> dict[str, Any]:
     )
 
 
-def command_search(repo: Path, term: str, *, reserved: bool, historical: bool) -> dict[str, Any]:
+def command_search(
+    repo: Path,
+    term: str,
+    *,
+    reserved: bool,
+    historical: bool,
+) -> dict[str, Any]:
     matches = generic_search(repo, term, reserved=reserved, historical=historical, limit=8)
     level = "L4" if historical else "L3"
     sources = list(dict.fromkeys(item["arquivo"] for item in matches))
     scope = {
         "reservado": reserved,
-        "historico_com_transcricoes": historical,
+        "historico_com_transcricoes_e_arquivos_frios": historical,
     }
     return envelope(
         "buscar",
@@ -483,7 +576,7 @@ def build_parser() -> argparse.ArgumentParser:
     search.add_argument(
         "--historico",
         action="store_true",
-        help="inclui transcrições completas; usar somente após resumos não bastarem",
+        help="inclui transcrições e histórico frio; usar somente após fontes correntes não bastarem",
     )
     return parser
 

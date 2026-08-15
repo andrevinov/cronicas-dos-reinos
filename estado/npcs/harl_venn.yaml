@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: harl_venn
+npc:
+  nome: Harl Venn
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 3
+    confianca: 3
+    risco_percebido: 6
+  natureza_do_vinculo: respeito relutante, vergonha e cautela
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Se o vínculo com Harl subir, deve virar camaradagem difícil ou respeito de bastidor entre
+    homens que já fizeram escolhas ruins, não afeto caloroso de imediato. A devoção romântica relevante de Harl
+    continua voltada a Lysa ou ao que Lysa representava para ele.
+
+    '
+  leitura_atual: 'Harl respeita Ren por ter arrancado uma confissão sem entregá-lo diretamente como monstro, mas
+    teme ser usado de novo em segredo e está sensível a qualquer pedido que pareça vigilância comprada.
+
+    '
+  tom_atual: 'Defensivo, envergonhado e mais honesto quando a conversa evita moeda, segredo e tentativa de contornar
+    Sorn ou Jack.
+
+    '
+  impacto_em_testes: 'Pedidos diretos, públicos o bastante para não parecer novo segredo, podem ter CD menor. Pagamento
+    por vigilância, pedido de esconder informação ou contato envolvendo Lysa/Merrit aumentam CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren respeita a recusa de Harl em virar olho pago
+  - Harl consegue avisar risco real a Sorn ou Tobb sem ser usado como isca
+  - Ren trata a culpa de Harl como responsabilidade, não como coleira
+  gatilhos_de_queda:
+  - Ren pressiona Harl a agir em segredo contra ordens de Jack
+  - Ren usa Lysa ou Merrit para manipular Harl
+  - Harl descobre que Ren escondeu informação de modo que piora sua punição

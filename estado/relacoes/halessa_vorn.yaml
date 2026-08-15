@@ -1,0 +1,42 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: halessa_vorn
+historico: historico/relacoes/halessa_vorn.yaml
+relacao:
+  nome: Irmã Halessa Vorn
+  tipo: ouvidora juramentada de Tyr
+  local: Casa de Tyr, Temple District
+  status: em cena
+  atitude_para_ren: formal, cautelosa e operacionalmente disposta a escalar
+  confianca: baixa institucional
+  respeito: inicial, pelo foco em testemunhas vivas
+  motivo_atual: 'Na manhã seguinte ao Benefício da Lona Aberta, uma ficha reservada de Tyr chegou a Silva Elkwood
+    no circo: Luath confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou o lacre e a abertura
+    presenciada, e Tyr agora busca a confirmação da guardiã atual informada. Silva confirmou guarda imediata, pediu
+    manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior.'
+  ofertas:
+  - Ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada.
+  - Audiência de lacre em câmara reservada, com Halessa, outro juramentado e possível informação a Sirrus antes
+    do próximo sino maior se o conteúdo justificar.
+  - Duas fichas reservadas enviadas a Luath e Maerra para confirmar custódia, lacre, abertura presenciada e situação
+    das testemunhas.
+  - Audiência de lacre por volta de 11:21 se Ren aceitar paz juramentada.
+  - Pasta aberta e mantida sob custódia formal de Tyr.
+  - Sirrus Melandor chamado imediatamente após leitura do bilhete e das correções.
+  - Aceitou receber até três perguntas de Ren para possível uso na oitiva de Velis.
+  - Recebeu três perguntas de Ren como anexo reservado do portador.
+  - Tyr recebeu confirmações de Luath e Maerra e enviou ficha reservada a Silva Elkwood para confirmar a guarda
+    atual informada.
+  - Tyr recebeu de Silva a confirmação da guarda imediata dos Vell, manutenção temporária no abrigo atual e pedido
+    de resguardo em espera sem deslocamento.
+  riscos:
+  - Se Ren focar em vingança, Halessa pode rebaixar o caso para risco de violência privada.
+  - Se Ren esconder demais, Halessa pode suspeitar que a Casa de Tyr está sendo usada.
+  - Se Ren entregar nomes completos em voz alta, pode criar registro ou exposição antes de proteção formal.
+  - Halessa notou que 'sorte' não explica cadeia de custódia; a pasta pode ajudar Ren ou criar risco legal contra
+    ele.
+  - Tyr ainda não concedeu abrigo irrestrito nem acesso direto a Sirrus.
+  - Halessa ainda decide quais perguntas de Ren cabem sem comprometer a ata.
+  - A crise no Harbor District pode reduzir a velocidade prática de respostas e extratos, mesmo com o caso preservado.
+conteudo_mais_antigo_no_historico:
+  ofertas: 1

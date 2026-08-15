@@ -1,0 +1,70 @@
+schema_historico_relacao: 1
+id: sorn_kel
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Sorn Kel
+  tipo: responsavel por cordame e montagem
+  local: Jack Mooney & Sons Circus
+  status: ativo nos bastidores da apresentação fechada de Kage
+  atitude_para_ren: cautelosa e profissional
+  confianca: nenhuma
+  respeito: profissional inicial
+  motivo: 'Ren foi apresentado de modo implícito por Silva como alguém autorizado a fazer perguntas sobre a sabotagem.
+    Sorn viu a tira de couro e reagiu visivelmente, mas Ren não conseguiu determinar se era culpa, medo profissional,
+    medo de Jack ou medo de outra pessoa. Ao responder, admitiu responsabilidade profissional parcial: assinou a
+    conferência da corda, mas o lado leste teria sido conferido por Harl Venn. Disse que encontrou a tira cortada
+    antes das sete e avisou Jack. Depois de pressão de Ren, revelou uma omissão: viu Harl na carroça de cordame
+    com Lysa Renn depois da nona badalada, com Harl usando a cópia da chave para pegar breu. Durante a preparação
+    de O Vento da Noite, Sorn assumiu a segurança das marcações de pouso e cortou o treino de Lysa antes que ela
+    forçasse o joelho. No início da apresentação, vigiou as marcas no chão. Durante o número, os pousos de Ren caíram
+    dentro das marcações, confirmando que a disciplina de ensaio e os limites de Sorn seguraram o risco físico.
+    Nos bastidores, Sorn reconheceu que Ren caiu onde foi mandado. Também apontou que o ombro de Ren quase abriu
+    demais no salto da segunda lanterna e proibiu novo salto se alguém mexer nas marcas sem avisá-lo. Na preparação
+    da reprise curta de 5 Eleasis, Sorn acompanhou o ensaio de Ren e manteve a versão segura do número. O ensaio
+    individual passou no limite; a coordenação com Merrit e Dessa não melhorou o bastante para justificar salto
+    novo ou risco maior. Sorn também apoiou que Lysa descansasse o joelho antes da entrada. Durante a reprise, Sorn
+    viu Ren pousar na borda externa da marca após gastar ki no salto de efeito. Considera que o número funcionou,
+    mas sem margem para aumento de risco físico sem novo treino. Na manhã de 6 Eleasis, Sorn viu Ren tentar mapear
+    sombras na tenda menor para a possível apresentação fechada da Casa Veyr. Ele aceitou marcar treino básico às
+    13:30 com Merrit e Lysa, mas limitou a revisão a entrada, saída, posições e duas marcas escuras, sem salto novo
+    ou alteração maior. No treino das 13:30, Ren confirmou duas marcas escuras úteis na tenda menor. Sorn aceitou
+    marcá-las apenas sob condição de ninguém alterar as lamparinas: dobra atrás da entrada lateral e faixa baixa
+    junto aos bancos de músicos/panos extras. Na abertura da apresentação fechada, Ren usou Passo Sombrio entre
+    essas marcas sem quebrar segurança física, mas Sorn agora sabe que a Casa Veyr viu pelo menos a categoria da
+    técnica.
+
+    '
+  informacoes_compartilhadas_por_sorn:
+  - A última conferência completa foi ontem depois da nona badalada.
+  - Sorn assinou a conferência, mas o lado leste teria sido checado por Harl Venn.
+  - Sorn encontrou a tira cortada hoje antes das sete e avisou Jack.
+  - Lysa Renn perdeu o número alto para Mira há três tendays.
+  - Lysa costuma usar duas fitas vermelhas e hoje foi vista com apenas uma.
+  - Ontem Sorn ouviu Lysa reclamar de farpa perto da plataforma leste.
+  - Sorn e Harl trabalham com breu de cordame; Tobb Marlin usa piche grosso nas rodas.
+  - O baú de cordame tem chave com Sorn e cópia no prego da carroça de cordame durante montagem.
+  - Depois da nona badalada, Sorn viu Harl Venn na carroça de cordame com Lysa Renn.
+  - Lysa pediu breu para treinar pegada por causa do joelho.
+  - Harl estava com a cópia da chave; Sorn mandou devolver no prego, mas não conferiu pessoalmente.
+  - Quando Sorn viu depois, a chave estava no prego, mas torta.
+  - No ensaio de 4 Eleasis, Sorn vetou a versão fisicamente mais ambiciosa das novidades de Kage e manteve chão
+    baixo, sem pouso novo ou salto grande.
+  - Na preparação da reprise curta de 5 Eleasis, Sorn manteve Kage na versão segura, sem salto novo de risco.
+  - Na reprise curta de 5 Eleasis, Sorn viu Kage pousar na borda externa da marca durante o salto com Passo do Vento.
+  - Sorn marcou treino básico de Kage para 13:30 de 6 Eleasis, com Merrit e Lysa, sem número novo.
+  - Sorn aceitou duas marcas escuras confiáveis para a tenda menor se as lamparinas ficarem como foram marcadas.
+  - Sorn viu Ren usar Passo Sombrio da dobra lateral para os bancos dos músicos na abertura da apresentação fechada.
+  riscos:
+  - Pode se fechar se sentir que está sendo acusado sem prova.
+  - Pode ser testemunha útil se Ren abordar como profissional, não como culpado.
+  - A conversa já chamou um pouco de atenção de Mira Dane e dois ajudantes.
+  - Sorn está responsável por preservar as marcações e limites de segurança de O Vento da Noite.
+  - As marcações de Sorn funcionaram durante O Vento da Noite; Ren pousou limpo diante do público.
+  - Sorn percebeu uma falha técnica quase invisível no ombro de Ren durante o salto da segunda lanterna.
+  - O ensaio individual de 5 Eleasis passou no limite, mas a coordenação do número não evoluiu além da versão segura
+    já definida.
+  - 'A reprise curta reforçou a posição de Sorn: Kage funciona, mas não deve aumentar dificuldade sem marcação nova.'
+  - A tenda menor ainda não oferece continuidade de sombra confiável por todos os cantos; Sorn exigirá controle
+    de lamparinas e marcas se Kage usar esse recurso.
+  - Depois da revelação do Passo Sombrio, Sorn tende a proteger ainda mais as lamparinas e limitar novos usos fora
+    das duas marcas confiáveis.

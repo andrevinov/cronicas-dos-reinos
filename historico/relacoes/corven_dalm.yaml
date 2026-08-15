@@ -1,0 +1,46 @@
+schema_historico_relacao: 1
+id: corven_dalm
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Corven Dalm
+  tipo: procurador da Casa Veyr / contratante da apresentação fechada de Kage
+  local: guarda-roupa menor / camarim funcional de Kage, Jack Mooney & Sons Circus
+  status: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+  atitude_para_ren: polida, provocadora e calculista
+  confianca: nenhuma
+  respeito: tático inicial pela competência e audácia de Kage
+  motivo: 'Corven Dalm assinou como procurador da Casa Veyr e pagou a apresentação fechada de Kage por meio de filtros
+    formais, mas sua proposta tentou retirar intermediários da conversa artística. Durante o número, provocou Kage
+    com frases sobre nome curto, brasões, fogo e sobrevivência, medindo reação emocional sem romper imediatamente
+    o contrato. Ren não entregou a primeira reação, mas depois chamou Dalm ao camarim com referência direta a Masao
+    e às dez lâminas. Dalm não demonstrou reação visível diante dos convidados, aceitou o convite e, no camarim,
+    comentou que Ren diz Masao como quem perdeu algo para ele. Quando Ren abandonou o sotaque de Kage e exigiu saber
+    para quem Dalm veio avaliá-lo, Dalm não entregou o patrono real por trás da Casa Veyr. Ele percebeu que a voz
+    de Kage é máscara performática e respondeu que veio medir sombra, gravadora e reação a Masao. Diante de nova
+    pressão mais negociada de Ren, Dalm continuou protegendo o patrono real, mas entregou uma janela acionável:
+    antes da segunda maré, Ponte Baixa como passagem baixa e seca atrás de armazéns velhos, método por papéis antes
+    de lâminas e escopo provável do conhecimento inimigo sobre a gravadora e o menino.
+
+    '
+  informacoes_observadas_por_ren:
+  - Dalm é o procurador que assinou pela Casa Veyr na apresentação fechada.
+  - Dalm conhece ou reconhece o suficiente da referência a Masao para comentar a pronúncia de Ren em privado.
+  - Dalm manteve compostura perfeita diante da referência pública a Masao.
+  - Dalm aceitou entrar sozinho no camarim funcional de Kage, enquanto seu homem foi impedido de acompanhar.
+  - De perto, Dalm não parece um nobre mole ou puramente ornamental; sua ameaça mais clara é social, contratual
+    e informacional.
+  - Dalm percebeu que o sotaque de Kage é performático e que Ren tem outro registro de voz por baixo.
+  - Dalm declarou que veio medir se a sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão
+    de Ren ou anzol em sua garganta.
+  - Dalm disse que a janela relevante é antes da segunda maré.
+  - Dalm disse que Ponte Baixa é passagem/porta/garganta de pedra, não ponte vista de cima.
+  - Dalm apontou seco onde deveria haver água, atrás dos armazéns velhos.
+  - Dalm disse que a rede sabe que existe uma gravadora e um menino como alavanca, mas ainda não sabe onde eles
+    dormem.
+  riscos:
+  - Dalm pode estar tentando separar Kage dos filtros de Jack sem quebrar contrato em público.
+  - A conversa privada pode virar proposta, chantagem, teste de verdade ou tentativa de mapear a ligação entre Kage,
+    Masao e a gravadora.
+  - A falta de reação visível de Dalm à referência a Masao não prova ignorância.
+  - Ren não conseguiu determinar se Dalm fala por Masao, contra Masao ou por alguém local usando o nome como ferramenta.
+  - A pista da Ponte Baixa pode ser informação real e também rota preparada para observar ou testar Ren.

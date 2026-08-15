@@ -1,0 +1,37 @@
+schema_historico_relacao: 1
+id: sirrus_melandor
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Sirrus Melandor
+  tipo: Chief Prelate / alto sacerdote de Tyr
+  local: Casa de Tyr, Temple District
+  status: em cena
+  atitude_para_ren: rígida, institucional e cautelosa
+  confianca: baixa
+  respeito: inicial pela gravidade do material, não por confiança pessoal
+  motivo: 'Maerra e Nera apontaram Sirrus Melandor como o caminho forte para proteção formal, testemunho e peso
+    institucional contra gente poderosa. Ren chegou à Casa de Tyr com a pasta de Velis lacrada por Maerra, mas não
+    recebeu acesso direto a Sirrus no primeiro pedido. O guardião aceitou classificar o caso como testemunho reservado
+    urgente, e uma guardiã jovem foi buscar autoridade intermediária para ouvir sem abrir o lacre. Depois da abertura
+    da pasta em câmara reservada, Irmão Caldrin Vos mandou chamar Sirrus imediatamente. Sirrus leu o bilhete e as
+    correções centrais, reconheceu a gravidade, mas exigiu linha de custódia antes de conceder proteção nominal
+    a Nera Vell e Tavin Vell. Ren nomeou Silva Elkwood em registro selado como guardiã atual informada por ele.
+    Sirrus aceitou emitir ordem de preservação de registros e convocar Velis Rook, mas negou que Ren acompanhe ocultamente
+    a primeira oitiva de Velis. Ao se retirar, Ren reafirmou que não pretende agir contra Velis e que só quer as
+    testemunhas seguras. Sirrus aceitou a declaração sem suavizar a postura. Na manhã seguinte ao Benefício, Tyr
+    informou por mensageira que a primeira convocação de Velis Rook foi entregue e que a Casa espera resposta antes
+    do meio-dia.
+
+    '
+  acoes_possiveis:
+  - Emitir ordem de preservação sobre registros ligados ao volume 13, Narwhal Manor e Dain Mord.
+  - Enviar dois juramentados discretos para acompanhar transferência voluntária dos Vell a uma porta de Tyr.
+  - Convocar Velis Rook para responder por anulação retroativa sob pena de obstrução.
+  - A primeira convocação de Velis Rook foi entregue; Tyr espera resposta antes do meio-dia.
+  riscos:
+  - Tyr pode proteger prova e testemunha, mas também torna o caso visível e registrado.
+  - Se Ren apresentar o caso como licença para vingança, pode perder a porta antes de chegar a Sirrus.
+  - A cadeia de custódia da pasta continua vulnerável, embora o lacre de Maerra ajude.
+  - Sirrus não concederá proteção nominal sem saber quem responde pela custódia atual dos Vell ou sem confirmação
+    de Maerra/Luath.
+  - Sirrus considera que Ren agir contra Velis antes da oitiva enfraqueceria Nera e Tavin.

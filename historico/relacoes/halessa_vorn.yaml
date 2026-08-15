@@ -1,0 +1,57 @@
+schema_historico_relacao: 1
+id: halessa_vorn
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Irmã Halessa Vorn
+  tipo: ouvidora juramentada de Tyr
+  local: Casa de Tyr, Temple District
+  status: em cena
+  atitude_para_ren: formal, cautelosa e operacionalmente disposta a escalar
+  confianca: baixa institucional
+  respeito: inicial, pelo foco em testemunhas vivas
+  motivo: 'Halessa foi chamada pela guardiã jovem depois que Ren apresentou o selo de Maerra e enquadrou o caso
+    como testemunho reservado urgente envolvendo duas vidas em risco. Ela chegou para ouvir o bastante para decidir
+    se o caso sobe para Sirrus, permanece no filtro da casa ou exige guarda. Ren apresentou o caso com foco em N.V.,
+    T.V., Red Sail, falsificação do selo do clã, tentativa de queima de arquivo, cópia parcial sob custódia de Luath
+    e pasta lacrada por Maerra. Halessa percebeu a lacuna de cadeia de custódia da pasta, mas decidiu escalar o
+    assunto dentro de Tyr por envolver ameaça viva a testemunhas e possível tentativa de impedir que elas cheguem
+    à justiça. Quando Ren afirmou que as testemunhas estão seguras hoje e pediu prioridade para confirmação com
+    Luath/Maerra e abertura do lacre, Halessa aceitou não movê-las sem necessidade e organizou câmara reservada
+    para poucos minutos depois. Depois que Ren aceitou a paz juramentada, Halessa abriu a pasta em câmara reservada
+    com Irmão Caldrin Vos e um escriba. O conteúdo foi forte o bastante para chamar Sirrus Melandor imediatamente.
+    Quando Ren registrou Nera Vell e Tavin Vell por nome completo, Halessa percebeu cuidado genuíno no tom dele
+    e manteve os nomes em ata reservada e selada. Quando Sirrus negou a presença oculta de Ren na oitiva de Velis,
+    Halessa abriu alternativa: Ren pode escrever até três perguntas para possível uso na oitiva. Ren entregou três
+    perguntas sobre selos de clãs de Kara-Tur, o hóspede e o volume 13; Halessa recebeu como anexo reservado do
+    portador. Na manhã seguinte ao Benefício da Lona Aberta, uma ficha reservada de Tyr chegou a Silva Elkwood no
+    circo: Luath confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou o lacre e a abertura
+    presenciada, e Tyr agora busca a confirmação da guardiã atual informada. Silva confirmou guarda imediata, pediu
+    manutenção temporária no abrigo atual e solicitou resguardo em espera sem deslocamento até o próximo sino maior.
+
+    '
+  ofertas:
+  - Resguardo provisório de 24 horas para N.V. e T.V., se puderem ser movidos com segurança para uma porta indicada
+    por Tyr.
+  - Ficha selada para Maerra ou Luath confirmando que o testemunho entrou em triagem reservada.
+  - Audiência de lacre em câmara reservada, com Halessa, outro juramentado e possível informação a Sirrus antes
+    do próximo sino maior se o conteúdo justificar.
+  - Duas fichas reservadas enviadas a Luath e Maerra para confirmar custódia, lacre, abertura presenciada e situação
+    das testemunhas.
+  - Audiência de lacre por volta de 11:21 se Ren aceitar paz juramentada.
+  - Pasta aberta e mantida sob custódia formal de Tyr.
+  - Sirrus Melandor chamado imediatamente após leitura do bilhete e das correções.
+  - Aceitou receber até três perguntas de Ren para possível uso na oitiva de Velis.
+  - Recebeu três perguntas de Ren como anexo reservado do portador.
+  - Tyr recebeu confirmações de Luath e Maerra e enviou ficha reservada a Silva Elkwood para confirmar a guarda
+    atual informada.
+  - Tyr recebeu de Silva a confirmação da guarda imediata dos Vell, manutenção temporária no abrigo atual e pedido
+    de resguardo em espera sem deslocamento.
+  riscos:
+  - Se Ren focar em vingança, Halessa pode rebaixar o caso para risco de violência privada.
+  - Se Ren esconder demais, Halessa pode suspeitar que a Casa de Tyr está sendo usada.
+  - Se Ren entregar nomes completos em voz alta, pode criar registro ou exposição antes de proteção formal.
+  - Halessa notou que 'sorte' não explica cadeia de custódia; a pasta pode ajudar Ren ou criar risco legal contra
+    ele.
+  - Tyr ainda não concedeu abrigo irrestrito nem acesso direto a Sirrus.
+  - Halessa ainda decide quais perguntas de Ren cabem sem comprometer a ata.
+  - A crise no Harbor District pode reduzir a velocidade prática de respostas e extratos, mesmo com o caso preservado.

@@ -1,0 +1,19 @@
+schema_historico_relacao: 1
+id: rusk_cinza
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Rusk 'Cinza'
+  tipo: coletor/intermediário da Red Sail
+  local: pátio de tonéis atrás da Red Sail
+  status: não encontrado
+  atitude_para_ren: desconhecida
+  confianca: nenhuma
+  respeito: nenhum
+  motivo: 'Segundo o capturado, Rusk recolhe a ficha de vela vermelha quando Brass não vem pessoalmente. Parece
+    velho demais para correr, mas não é. Leva a ficha para Brass ou para gente de Narwhal; se houver cordão azul,
+    manda corredor com urgência.
+
+    '
+  riscos:
+  - Pode identificar armadilha se a ficha ou frase forem usadas de modo errado.
+  - Pode conectar Ren ao chamado se sobreviver a uma emboscada.

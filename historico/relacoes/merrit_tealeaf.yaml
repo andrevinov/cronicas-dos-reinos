@@ -1,0 +1,67 @@
+schema_historico_relacao: 1
+id: merrit_tealeaf
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Merrit Tealeaf
+  tipo: halfling contorcionista / sabotadora confessa da corda alta
+  local: Jack Mooney & Sons Circus
+  status: conhecida em jogo
+  atitude_para_ren: assustada, pressionada e tentando reduzir a propria culpa
+  confianca: nenhuma
+  respeito: medo pratico
+  motivo: 'Ren confrontou Merrit com a pista da passagem estreita e a ameaça de encontrar a arma do crime. Merrit
+    confessou ter cortado a tira da amarra, mas insiste que queria apenas cancelar o número de Mira, não matá-la.
+    Depois, Ren a aconselhou a assumir a culpa e pedir desculpas; isso a tocou mais do que a intimidação. No fim
+    da tarde, Ren pediu que Merrit narrasse O Vento da Noite como papel limitado de chão. Jack e Silva aceitaram
+    apenas sob restrições rígidas. Merrit ensaiou entradas cômicas curtas e percebeu que ainda pode ter um lugar
+    visível no circo sem fingir que a sabotagem foi perdoada. No dia seguinte, Ren cobrou que Merrit cortasse o
+    texto ao essencial. Ela chega à apresentação com voz poupada, três entradas curtas e a ordem de calar antes
+    de estragar os saltos. Durante O Vento da Noite, Merrit sustentou a narração curta, usou humor sem roubar o
+    número e permaneceu no papel de chão sob supervisão. O sucesso não apaga a sabotagem, mas devolve a ela um lugar
+    visível e controlado na rotina do circo. Nos bastidores, Merrit buscou validação por ter calado antes de estragar;
+    Sorn cortou seco, mas Dessa preservou a piada do céu rico como parte útil do número. Na preparação da reprise
+    curta de 5 Eleasis, Merrit tentou ampliar demais a história outra vez. Dessa e Sorn cortaram o excesso; a versão
+    final permaneceu curta e funcional, sem transformar o número em algo novo. Durante a reprise curta, Merrit disse
+    a frase certa e calou antes de estragar o efeito. Isso manteve a narração funcional e ajudou Kage a sair sem
+    interação direta com a plateia.
+
+    '
+  informacoes_compartilhadas_por_merrit:
+  - Merrit passou pela rota estreita entre caixas de contrapeso e mastro lateral.
+  - Merrit cortou a tira da amarra da corda alta.
+  - Merrit diz que Lysa e Harl não sabiam.
+  - A faca curva usada no corte está escondida na caixa azul do número de cambalhotas, em um fundo falso, embrulhada
+    em pano azul.
+  - Merrit disse que vai pedir desculpas, se Mira permitir.
+  - Merrit assumiu a culpa diante de Jack, Mira, Lysa, Sorn, Harl, Silva e Ren.
+  - Silva levou Merrit ao depósito de figurino velho para uma conversa discreta com Ren, sob supervisão próxima.
+  - Merrit revelou a Ren que Harl Venn plantou a frase 'Sorn sempre ouve', mas insiste que ele não mandou diretamente
+    cortar a tira.
+  - Merrit descreveu Harl como apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas.
+  - Ren prometeu não abordar Harl diretamente nem revelar que ouviu dela.
+  - Merrit quase sorriu com a ideia de um número chamado 'O Exótico e a Exótica', mas respondeu que Ren cairia sério
+    demais.
+  - Merrit pode narrar O Vento da Noite sob supervisão de Silva, como trabalho limitado sem corda alta, faca, caixa
+    de truque ou acesso solto.
+  - Merrit aceitou narrar O Vento da Noite e ensaiou três entradas curtas, uma reverência exagerada e um tropeço
+    falso.
+  - Merrit narrou O Vento da Noite de chão, com texto curto e supervisão, sem incidente.
+  - Dessa aprovou manter a piada do céu rico no texto de Merrit.
+  - No ensaio de 4 Eleasis, Merrit tentou ampliar demais o drama da lenda; a versão segura ficou com duas frases
+    curtas e pausas marcadas.
+  - Na preparação da reprise curta de 5 Eleasis, Merrit repetiu a história em versão enxuta após Dessa e Sorn cortarem
+    excessos.
+  - Na reprise curta de 5 Eleasis, Merrit sustentou a frase marcada e calou a tempo.
+  riscos:
+  - Merrit pode entrar em pânico se Mira, Jack ou Lysa a confrontarem publicamente.
+  - A confissão foi parcialmente ouvida por Mira Dane.
+  - Ren percebeu omissão na explicação de Merrit sobre confiar que Sorn detectaria o corte.
+  - Jack aplicou punição provisória, mas pode rever o caso se a influência externa for comprovada.
+  - Merrit foi suspensa de apresentações e colocada sob controle de Silva/Sorn.
+  - Merrit está emocionalmente abalada e não inicia novas revelações sem perguntas cuidadosas.
+  - Merrit protege Harl por lealdade e culpa.
+  - Merrit resiste a chamar Harl de manipulador, mas admite que talvez falar a frase certa para a pessoa errada
+    também seja usar alguém.
+  - Merrit não conseguiu confiar totalmente que Harl não será exposto.
+  - Se for usada como narradora, Merrit deve ficar onde Silva veja suas mãos.
+  - O sucesso como narradora pode reduzir o desespero de Merrit, mas ainda não restaura confiança plena.

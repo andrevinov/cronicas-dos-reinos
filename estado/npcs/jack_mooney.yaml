@@ -1,0 +1,38 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: jack_mooney
+npc:
+  nome: Jack Mooney
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 5
+    confianca: 6
+    risco_percebido: 7
+  natureza_do_vinculo: profissional, patronal e utilitário
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Jack pode desenvolver afeição por Ren como ativo raro, jovem teimoso e artista da casa, mas
+    traduz isso em contrato, preço, controle e proteção operacional.
+
+    '
+  leitura_atual: 'Jack vê Ren como ativo valioso, artista vendável e homem útil, não como amigo íntimo. Confia na
+    competência de Ren quando há controle claro, mas considera que o preço político e físico ao circo ainda pode
+    ficar alto.
+
+    '
+  tom_atual: 'Negociador, irônico e controlador. Deve reconhecer competência e pagar contas quando cabível, mas
+    sempre traduz afeto em contrato, preço, limite ou regra de bastidor.
+
+    '
+  impacto_em_testes: 'Negociações comerciais de Kage partem de respeito real e podem ter CD menor se Ren aceitar
+    filtros de Jack. Pedidos que exponham o circo, furtem autoridade de Jack ou confundam palco com guerra aumentam
+    CD ou falham sem contrapartida pesada.
+
+    '
+  gatilhos_de_aumento:
+  - Ren respeita filtros de Jack para Kage
+  - Ren gera dinheiro ou proteção pública sem expor o circo
+  - Ren entrega informação antes que Jack seja surpreendido por terceiros
+  gatilhos_de_queda:
+  - Ren mata, sequestra ou inicia guerra sob a lona
+  - Kage atende patrono por fora de Jack
+  - a presença de Ren põe artistas ou público em risco direto

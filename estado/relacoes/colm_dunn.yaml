@@ -1,0 +1,46 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: colm_dunn
+historico: historico/relacoes/colm_dunn.yaml
+relacao:
+  nome: Colm Dunn
+  tipo: irmão de Kethra Dunn / devedor explorado
+  local: em trânsito na carroça com Mera Fumaça, rumo à casa de Iria Doss
+  status: vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada
+  atitude_para_ren: assustado, confuso, mas menos perdido após ver Kethra
+  confianca: baixa por necessidade
+  respeito: baixo, misturado com medo
+  motivo_atual: Ren libertou Mera e a trouxe até Colm. Mera indicou Iria Doss como tratamento rural possível, mas
+    uma carroça de resposta entrou no ramal antes que o grupo pudesse partir.
+  informacoes_observadas_por_ren:
+  - Ren cortou as cordas principais de Colm/Dent e o colocou nas costas.
+  - Colm/Dent conseguiu murmurar fragmentos sobre Mera e o galpão baixo.
+  - Ren carregou Colm/Dent até perto do provável galpão baixo sem ser percebido por ninguém visível.
+  - Ren encostou Colm/Dent atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão.
+  - A cobertura de Colm/Dent é imperfeita, e a tosse dele pode denunciá-lo se alguém se aproximar.
+  - Mera Fumaça está livre e reunida a Colm/Dent.
+  - Segundo Mera, Colm/Dent precisa de tratamento hoje, embora não pareça estar morrendo naquele instante.
+  - Uma carroça de resposta entrou no ramal antes que Ren pudesse retirar Colm/Dent da secagem.
+  - Ren expulsou os participantes da emboscada e ajudou a acomodar Colm/Dent na carroça abandonada.
+  - Mera partiu com Colm/Dent na carroça em direção a Iria Doss; Ren ainda não confirmou a chegada.
+  riscos:
+  - Levar Colm diretamente até Kethra pode expor a fonte se houver observadores.
+  - A saída de Colm/Dent dependeu da discrição de Dorra Hest até a partida, e essa discrição falhou parcialmente.
+  - Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a
+    área dos pátios de carroças.
+  - Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança,
+    fome ou doença.
+  - Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se
+    tiver deixado Ravens Bluff.
+  - Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire
+    River.
+  - A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera
+    ou isca.
+  - Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse, cobertura ruim e possível ferimento
+    não diagnosticado.
+  - O rapaz da corda nova avisou aliados e retornou numa carroça com um condutor e um homem de besta leve; Ren rendeu
+    e depois expulsou o grupo.
+  - O trajeto até Iria Doss é conhecido na estrada e pode expor Mera e Colm antes da chegada.
+conteudo_mais_antigo_no_historico:
+  informacoes_observadas_por_ren: 30
+  riscos: 2

@@ -1,0 +1,25 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: mira_dane
+historico: historico/relacoes/mira_dane.yaml
+relacao:
+  nome: Mira Dane
+  tipo: acrobata da corda alta
+  local: Jack Mooney & Sons Circus
+  status: visivel na tenda principal
+  atitude_para_ren: fria e técnica
+  confianca: nenhuma
+  respeito: baixo, técnico
+  motivo_atual: Mira era a artista que subiria na corda alta sabotada. Ela treinava numa corda baixa quando Silva
+    chamou Sorn de forma seca e percebeu tensão na conversa. No dia da apresentação, assistiu a uma passagem de
+    Lysa como Princesa das Sombras e deu uma correção técnica curta para poupar o joelho dela no segundo giro. Após
+    O Vento da Noite, reconheceu tecnicamente a execução de Lysa com um aceno discreto, sem transformar isso em
+    perdão ou reconciliação pública. Nos bastidores, reforçou que Lysa fez melhor por diminuir o giro em vez de
+    tentar provar grandeza.
+  riscos:
+  - Pode procurar respostas se perceber que o cancelamento do número não foi por corda molhada.
+  - Pode ser vítima, testemunha, alvo de rivalidade ou peça de uma encenação maior.
+  - Mira ainda tem tensão com Lysa, mas corrigiu tecnicamente o giro dela antes da apresentação.
+  - Mira reconheceu tecnicamente a execução de Lysa após O Vento da Noite, mas a relação entre as duas continua
+    tensa.
+  - Mira considera que Lysa acertou justamente por aceitar um movimento menor e seguro.

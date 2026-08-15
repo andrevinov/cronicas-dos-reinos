@@ -1,0 +1,41 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: velis_rook
+historico: historico/relacoes/velis_rook.yaml
+relacao:
+  nome: Velis Rook
+  tipo: escrivão menor ligado à alfândega / registros de carga
+  local: Narwhal Manor
+  status: em cena; alertado; convocação de Tyr entregue
+  atitude_para_ren: assustada e hostil
+  confianca: nenhuma
+  respeito: nenhum
+  motivo_atual: Ren já havia roubado a prancheta de Velis durante o incêndio da Red Sail Tavern. Em Narwhal Manor,
+    Ren derrubou uma lâmpada com shuriken para criar distração e tentou tomar a pasta de documentos de Velis. Velis
+    evitou o impacto direto, segurou a pasta e chamou guarda. Em seguida, Ren arrancou a pasta à força e fugiu rápido
+    demais para os guardas cercarem a lateral.
+  informacoes_observadas_por_ren:
+  - 'Ren viu na pasta: carimbo de Narwhal Manor, número 13 e a expressão ''retenção anulada''.'
+  - Ren tomou a pasta de Velis, ainda não examinada.
+  - A pasta continha documentos que apontam Velis como responsável por anulação retroativa ligada ao volume 13.
+  - Tyr convocará Velis Rook para responder por anulação retroativa e possível obstrução.
+  - A primeira convocação de Tyr a Velis Rook foi entregue; Tyr espera resposta antes do meio-dia.
+  - Halessa recebeu três perguntas de Ren para possível uso na oitiva de Velis.
+  - Ren ouviu, perto da lateral da Casa de Tyr, uma mulher ligada a interesses de casa rica preparar Velis para
+    negar instrução de patrono, chamar a anulação de correção de escrita, tratar a marca da lua como recebida e
+    dizer que o 'oriental' era M. Harrow.
+  - Velis entrou na Casa de Tyr pouco antes do meio-dia; a mulher que o instruiu não entrou.
+  - Papel encontrado na balança velha tem marca d'água parcial compatível com o circuito de Narwhal Manor, mas não
+    identifica Velis Rook como o homem de mãos limpas.
+  - Ren confirmou visualmente durante a perseguição que o homem de mãos limpas não é Velis Rook.
+  riscos:
+  - Velis sabe que alguém tentou tomar seus papéis na porta lateral.
+  - Velis ainda não identificou Ren com certeza como o oriental que procura Masao, mas viu um rosto e uma mão perto
+    demais da pasta.
+  - Velis pode avisar Narwhal Manor, Brass ou superiores de que a pasta foi roubada por alguém rápido e treinado.
+  - A convocação de Tyr pode fazê-lo cooperar, mentir sob pressão ou avisar superiores antes de chegar, dependendo
+    de como a ordem o alcança.
+  - Se Tyr associar o homem de capuz visto no perímetro a Ren, Sirrus pode ler isso como tentativa de contornar
+    a negativa de acompanhar a oitiva.
+conteudo_mais_antigo_no_historico:
+  informacoes_observadas_por_ren: 2

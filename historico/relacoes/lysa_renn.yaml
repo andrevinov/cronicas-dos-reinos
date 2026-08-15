@@ -1,0 +1,60 @@
+schema_historico_relacao: 1
+id: lysa_renn
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Lysa Renn
+  tipo: acrobata / possível rival de Mira Dane
+  local: Jack Mooney & Sons Circus
+  status: reintegrada em papel baixo e mascarado
+  atitude_para_ren: defensiva e provocadora
+  confianca: nenhuma
+  respeito: baixo e ferido
+  motivo: 'Segundo Sorn, Lysa perdeu o número alto para Mira Dane há três tendays após torcer o joelho. Costuma
+    usar duas fitas vermelhas nos pulsos, mas hoje foi vista com apenas uma. Sorn ouviu Lysa reclamar de uma farpa
+    perto da plataforma leste no dia anterior. Ren conseguiu isolá-la atrás de uma cortina de lona. Lysa usa apenas
+    uma fita vermelha no pulso direito; ao perceber que a conversa era sobre a noite anterior, tocou rapidamente
+    o pulso esquerdo vazio e depois cruzou os braços. Ren blefou dizendo que Harl contou tudo; Lysa não comprou
+    totalmente, mas reagiu forte. Ren percebeu que ela esconde algo ligado à noite anterior e ao pulso esquerdo,
+    mas a negação dela sobre cortar a amarra para derrubar Mira pareceu mais sincera do que o resto. Confrontada
+    sobre o fio vermelho, Lysa confessou que subiu à plataforma leste depois da nona badalada para testar o joelho;
+    a fita do pulso esquerdo teria rasgado numa farpa, e ela ainda guarda o restante manchado de breu. Lysa explicou
+    que escondeu a subida porque Mira faria "a coisa certa": contaria a Jack e impediria que Lysa subisse machucada.
+    Ren acredita que o medo principal dela é ser afastada do alto e vista como acabada. Jack escolheu Lysa como
+    Princesa das Sombras em O Vento da Noite: papel mascarado, sem nome anunciado, sem beijo, sem toque romântico,
+    sem aplauso próprio e sem acrobacia alta. A função permite reintegrá-la em cena sem forçar o joelho como antes.
+    Durante a apresentação, Lysa cumpriu o papel sem forçar o joelho, girou pouco e certo, desapareceu no momento
+    combinado e recebeu de Mira um reconhecimento técnico discreto. O papel menor ainda fere seu orgulho, mas o
+    sucesso lhe devolveu presença de palco controlada. Nos bastidores, Lysa reagiu à própria insegurança afirmando
+    que não caiu. A crítica seca de Mira não virou briga aberta e funcionou como reconhecimento técnico limitado.
+    Na reprise curta de 5 Eleasis, Lysa cumpriu outra vez a presença baixa de sombra sem forçar o joelho. O papel
+    ainda fere seu orgulho, mas ela saiu inteira. Na apresentação fechada da Casa Veyr, Lysa percebeu Ren meio palmo
+    fora da linha ideal enquanto ele observava Dalm e cobriu o espaço com um recuo encurtado, mantendo o número
+    inteiro.
+
+    '
+  informacoes_compartilhadas_por_lysa:
+  - Lysa disse que Harl não conta tudo nem quando sabe.
+  - Lysa negou ter cortado a amarra.
+  - Lysa disse que não cortaria uma corda com Mira em cima.
+  - Lysa confessou que subiu à plataforma leste depois da nona badalada.
+  - Lysa afirma que usou breu para testar o joelho.
+  - Lysa afirma que a fita do pulso esquerdo rasgou numa farpa perto da base da plataforma.
+  - Lysa ainda tem o restante da fita, amassado e manchado de breu.
+  - Lysa disse que não quer pôr Mira no chinelo; quer que Mira pare de olhá-la como história triste.
+  - Lysa acredita que Mira contaria a Jack para impedir que ela subisse machucada.
+  - Lysa teme que Jack a tire do alto pelo resto da temporada, do ano ou para sempre.
+  - Lysa aceitou ser Princesa das Sombras, embora o papel menor fira seu orgulho.
+  - Lysa deve fazer movimentos baixos e simples para poupar o joelho.
+  - Não há componente romântico no número entre Ren e Lysa.
+  - Lysa executou a Princesa das Sombras com segurança durante O Vento da Noite e recebeu um aceno técnico de Mira.
+  - Lysa ouviu de Mira que o segundo giro funcionou por ser menor, não por tentar provar força.
+  - No ensaio de 4 Eleasis, Lysa aceitou trabalhar a novidade de Kage como presença baixa e marcada, depois que
+    Mira confirmou a limitação técnica de Sorn.
+  - Na reprise curta de 5 Eleasis, Lysa cumpriu a sombra baixa sem forçar o joelho.
+  - Na apresentação fechada da Casa Veyr, Lysa cobriu uma pequena perda de margem física de Ren sem quebrar o número.
+  riscos:
+  - A fita vermelha pode ser pista real, coincidência ou tentativa de incriminação.
+  - Pode se sentir substituída por Mira.
+  - Pode se fechar se a conversa virar acusação direta cedo demais.
+  - O sucesso em papel baixo pode estabilizar Lysa por ora, mas também lembrá-la do quanto perdeu no alto.
+  - Lysa pode aceitar melhor limites baixos se isso a mantiver em cena, mas ainda odeia parecer substituível.

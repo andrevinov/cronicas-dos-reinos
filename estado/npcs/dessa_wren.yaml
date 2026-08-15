@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: dessa_wren
+npc:
+  nome: Dessa Wren
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 5
+    confianca: 5
+    risco_percebido: 4
+  natureza_do_vinculo: profissional, teatral e espirituoso
+  subtexto_romantico: possivel
+  observacao_afetiva: 'Dessa pode notar a beleza de Ren e o valor visual de Kage como artista. Qualquer flerte atual
+    tende a vir como provocação de bastidor, humor ou controle teatral; romance real exigiria cenas futuras e aumento
+    de vínculo.
+
+    '
+  leitura_atual: 'Dessa vê Ren como artista útil, cliente pagante e problema interessante. Ela confia no corpo de
+    Ren em cena e no valor de Kage, mas não se considera cúmplice de espionagem real.
+
+    '
+  tom_atual: 'Irônico, profissional e prático. Deve tratar figurino como ativo sério e Ren como artista que precisa
+    ser vestido, podado e tirado do público na hora certa.
+
+    '
+  impacto_em_testes: 'Pedidos de figurino, adaptação teatral e retirada de cena têm boa chance sem rolagem se houver
+    tempo e pagamento. Disfarces ligados a sangue, crime evidente ou risco ao guarda-roupa aumentam CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren respeita figurino, marcação e tempo de bastidor
+  - Ren paga ou reconhece o trabalho dela
+  - Kage valoriza a costura de Dessa sem expô-la
+  gatilhos_de_queda:
+  - Ren destrói figurino por heroísmo fora da marca
+  - roupas feitas por Dessa voltam ligadas a crime rastreável
+  - Ren muda a proposta de cena tarde demais

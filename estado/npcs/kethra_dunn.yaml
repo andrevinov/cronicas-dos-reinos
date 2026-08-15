@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: kethra_dunn
+npc:
+  nome: Kethra Dunn
+  grupo: Narwhal Manor / Colm-Dent
+  medidores:
+    vinculo: 4
+    confianca: 5
+    risco_percebido: 7
+  natureza_do_vinculo: aliança prática cautelosa
+  subtexto_romantico: possivel
+  observacao_afetiva: 'Não há queda atual de Kethra por Ren. Se Colm/Dent for confirmado seguro, o risco cair e
+    Ren continuar demonstrando competência sem exigir fé cega, o vínculo pode ganhar tensão pessoal ou atração contida.
+    Por enquanto, sobrevivência e cautela abafam qualquer leitura romântica.
+
+    '
+  leitura_atual: 'Kethra reconhece que Ren salvou Colm e entregou soluções práticas, mas ainda mede tudo pelo risco
+    ao irmão e pela sobrevivência dentro de Narwhal.
+
+    '
+  tom_atual: 'Pragmática, desconfiada e sem romantizar heroísmo. Deve cooperar quando a troca for concreta e segura;
+    gratidão existe, mas fica atrás da cautela.
+
+    '
+  impacto_em_testes: 'Provas de segurança de Colm/Dent e pedidos com protocolo limpo reduzem CD. Contatos frequentes,
+    mensagens previsíveis ou pedidos vagos sobre ameaça à cidade aumentam CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren confirma segurança real de Colm sem criar padrão rastreável
+  - Ren usa o ponto morto apenas para informação útil ou perigo urgente
+  - Ren protege Kethra sem pedir fé ampla demais
+  gatilhos_de_queda:
+  - Colm/Dent sofre consequência ligada às ações de Ren
+  - Ren expõe o ponto morto ou cria rotina previsível
+  - Ren pede que Kethra assuma risco por uma ameaça que ela ainda não viu

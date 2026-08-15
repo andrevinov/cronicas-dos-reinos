@@ -14,6 +14,8 @@ Não ler o repositório inteiro, uma pasta inteira ou um arquivo grande apenas p
 
 `runtime/` continua sendo derivado e descartável. `contexto.py` é apenas a porta de leitura mais econômica sobre runtime e fontes canônicas; a saída da ferramenta também não se torna cânone.
 
+Relações, medidores de NPC e conhecimento são fragmentados. A ferramenta resolve índices pequenos e abre somente o fragmento necessário. Os antigos monólitos preservados em `historico/legado/` são material de auditoria, não memória operacional.
+
 ## Interface única de consulta
 
 Usar preferencialmente:
@@ -30,14 +32,14 @@ python3 ferramentas/contexto.py buscar "ponte baixa"
 
 A ferramenta possui orçamento padrão de saída e compacta resultados antes de devolver conteúdo excessivo. Consultas locais registram apenas metadados em `runtime/consultas-contexto.jsonl`, arquivo ignorado pelo Git: comando, nível, número de fontes, bytes devolvidos e se houve truncamento. Nenhum conteúdo consultado é gravado nesse log.
 
-A busca genérica não inclui `narrador/` nem transcrições completas por padrão. Quando necessário:
+A busca genérica não inclui `narrador/`, `historico/` nem transcrições completas por padrão. Quando necessário:
 
 ```bash
 python3 ferramentas/contexto.py buscar "sol apagado" --reservado
 python3 ferramentas/contexto.py buscar "frase exata" --historico
 ```
 
-`--reservado` é deliberado porque material de `narrador/` pode conter segredos. `--historico` é deliberado porque transcrições são material frio e volumoso. Não usar essas opções preventivamente.
+`--reservado` é deliberado porque material de `narrador/` pode conter segredos. `--historico` é deliberado porque histórico frio e transcrições são camadas volumosas. Não usar essas opções preventivamente.
 
 ## Escada de leitura
 
@@ -46,13 +48,15 @@ Usar a menor camada que resolva a pergunta:
 - **L0 — contexto já disponível:** nenhuma leitura.
 - **L1 — estado quente:** `contexto.py status`.
 - **L2 — consulta dirigida:** `cena`, `npc`, `relacao`, `conhecimento` ou `regra`.
-- **L3 — descoberta limitada:** `buscar`, sem transcrições completas.
-- **L4 — histórico profundo:** `buscar --historico` ou leitura direta de uma fonte específica apontada por consulta anterior.
+- **L3 — descoberta limitada:** `buscar`, sem histórico frio/transcrições completas.
+- **L4 — histórico profundo:** `buscar --historico`, histórico específico de uma relação ou leitura de fonte histórica apontada por consulta anterior.
 - **L5 — fonte externa/autorizada:** livros oficiais ou pesquisa de material-base quando os resumos internos não bastarem.
 
 Escalar apenas por necessidade identificável. A existência de um nível mais profundo não é motivo para consultá-lo. Durante narração comum, o alvo é permanecer em L0–L2.
 
 Leitura direta com `cat`, `sed`, `rg` ou abertura integral de arquivo canônico continua permitida quando a ferramenta apontar uma fonte específica e o fragmento retornado não bastar, ou durante tarefas estruturais de manutenção. Na narração comum, é exceção.
+
+Nunca substituir uma consulta a uma relação por leitura de toda `estado/relacoes/`, nem uma consulta de conhecimento por abertura recursiva de `personagens/jogador/conhecimento/`. A fragmentação existe para que o acesso seja dirigido.
 
 ## Classificação da tarefa
 
@@ -105,6 +109,8 @@ Consultar direção real da campanha, cronologia vigente relevante, consequênci
 
 Revisar transcrição ou registro bruto, estado inicial, rolagens importantes, decisões do jogador, recursos, relações, consequências, relógios e XP/marcos **na medida necessária para consolidar mudanças**. A futura arquitetura transacional fará essa consolidação em lote.
 
+Ao atualizar uma relação, escrever o estado corrente no fragmento da entidade; histórico cronológico pertence à camada histórica/sessão, não deve voltar a inflar o fragmento atual. Conhecimento adquirido deve entrar em fragmentos coerentes e manter os índices reconstruíveis.
+
 Após consolidar as fontes canônicas, regenerar o runtime; nunca consolidar o cânone a partir do runtime como se ele fosse autoridade histórica.
 
 ## Semântica dos comandos de contexto
@@ -119,15 +125,15 @@ Retorna contexto quente e `runtime/cena.yaml`: resumo imediato, mecânica da cen
 
 ### `npc`
 
-Combina, quando disponíveis, os medidores rápidos do NPC e sua relação atual com Ren. Não carrega automaticamente segredos de `narrador/`.
+Resolve `estado/npcs/index.yaml` e, quando necessário, `estado/relacoes/index.yaml`, abrindo no máximo os fragmentos correspondentes. Combina medidores do NPC e relação atual com Ren. Não carrega automaticamente histórico da relação nem segredos de `narrador/`.
 
 ### `relacao`
 
-Extrai somente a entidade correspondente de `estado/relacoes.yaml`, compactando campos históricos grandes para respeitar o orçamento.
+Resolve `estado/relacoes/index.yaml` e abre somente `estado/relacoes/<id>.yaml`. A resposta inclui um ponteiro para `historico/relacoes/<id>.yaml`, mas o histórico não é lido na consulta normal.
 
 ### `conhecimento`
 
-Busca seções em `personagens/jogador/conhecimento.md`. Serve para responder **o que Ren sabe**, não o que é objetivamente verdadeiro nos bastidores.
+Consulta `personagens/jogador/conhecimento/ativo.yaml`/`index.yaml` e pesquisa apenas os fragmentos Markdown pertinentes. Serve para responder **o que Ren sabe**, não o que é objetivamente verdadeiro nos bastidores. O arquivo `personagens/jogador/conhecimento.md` é apenas um roteador.
 
 ### `regra`
 
@@ -135,7 +141,7 @@ Busca seções nos resumos internos de `regras/`. Ausência de resultado não au
 
 ### `buscar`
 
-É ferramenta de descoberta, não primeira escolha. Procura ocorrências pequenas nos domínios operacionais e nos resumos de sessão. Por padrão, não consulta `narrador/` nem `transcricao.md`.
+É ferramenta de descoberta, não primeira escolha. Procura ocorrências pequenas nos domínios operacionais e nos resumos de sessão. Por padrão, não consulta `narrador/`, `historico/` nem `transcricao.md`; `--historico` inclui explicitamente as camadas frias.
 
 ## Runtime
 

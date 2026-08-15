@@ -1,0 +1,36 @@
+schema_historico_relacao: 1
+id: brunna_torkel
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Brunna Torkel
+  tipo: medidora de porões / fonte sobre Sarbreen
+  local: Medidas Torkel, transição entre Market District e serviços do Harbor
+  status: em cena
+  atitude_para_ren: irritada, alerta e potencialmente útil
+  confianca: nenhuma
+  respeito: baixo, baseado na pergunta certa
+  motivo: 'Ren chegou a Brunna após procurar informação sobre Sarbreen no começo da noite de 5 Eleasis. A busca
+    de Ren não foi discreta, mas a investigação encontrou uma fonte real em vez de vendedor de mapa falso. Brunna
+    corrigiu o nome Sarbreen e se apresentou como medidora de porões e antiga auxiliar de levantamentos de obras,
+    plantas e disputas de propriedade. Ela não vende tesouro nem promete mapa inteiro, mas conhece pedaços de drenos,
+    adegas, salões, escadas e porões incorporados à cidade atual.
+
+    '
+  informacoes_compartilhadas_por_brunna:
+  - Não existe mapa inteiro confiável de Sarbreen; existem pedaços de mapas e levantamentos parciais.
+  - A região da Balança Velha toca pedra anã recente o bastante para estar sob atenção da guarda e de Gond.
+  - Há uma linha fria sob ofícios sujos e tintureiros, baixa e com paredes úmidas mesmo no verão.
+  - Há porões secos atrás de armazéns antigos, com segunda saída e teto estável, mais adequados a reuniões, papéis,
+    símbolos ou cerimônias.
+  - Brunna recebeu por veneziana um bilhete tentando mandá-la direcionar Ren à Escada das Sete Águas.
+  - Brunna entendeu a instrução discreta de Ren apesar da escrita ruim.
+  - Brunna vendeu publicamente a Ren o mapa da Escada das Sete Águas por 2 PO.
+  - Brunna entregou em silêncio a Ren uma cópia de porões secos atrás de armazéns antigos por mais 2 PO.
+  riscos:
+  - A busca de Ren por Sarbreen criou rumor ligando 'o estrangeiro do palco' a perguntas sobre ruínas.
+  - Alguém tentou comprar a informação que Brunna daria a Ren, oferecendo pagamento dobrado para apontar a Escada
+    das Sete Águas.
+  - Brunna pode se fechar se a sala dela virar campo de violência ou se Ren tentar arrancar informação sem pagar
+    ou negociar.
+  - Um sujeito de capa escura comum e capuz pagou Brunna depois da saída de Ren; Ren confirmou a cobrança, mas não
+    identificou o canal.
