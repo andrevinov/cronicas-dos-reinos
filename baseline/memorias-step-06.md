@@ -19,6 +19,8 @@ A Etapa 6 substituiu três depósitos acumulativos por roteadores, índices e fr
 - os três arquivos antigos de entrada continuam existindo apenas como roteadores pequenos;
 - cópias integrais pré-migração permanecem em `historico/legado/` com os blobs Git originais.
 
+A etapa reduz **custo de acesso**, não necessariamente espaço total em disco: durante a migração mantemos cópias frias integrais justamente para provar que nada foi perdido. O ganho operacional vem de o narrador consultar índice + fragmento em vez de carregar os depósitos de quase 500 KB.
+
 ## Garantias
 
 `ferramentas/migrar-memorias-fragmentadas.py --check` valida IDs, tamanhos, arquivos atuais, históricos e blobs legados.
