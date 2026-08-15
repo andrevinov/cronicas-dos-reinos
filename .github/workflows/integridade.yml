@@ -25,6 +25,9 @@ jobs:
       - name: Testes unitários
         run: python -m unittest discover -s tests -v
 
+      - name: Estado atual separado do histórico
+        run: python ferramentas/migrar-estado-atual.py --check
+
       - name: Runtime derivado e atualizado
         run: python ferramentas/gerar-runtime.py --check
 
