@@ -154,7 +154,7 @@ recursos_de_classe:
     resumo: "Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um."
   ki:
     pontos_maximos: 6
-    pontos_atuais: 2
+    pontos_atuais: 6
     cd: 14
     recarga: "descanso curto ou longo"
     calculo_cd: "8 + bônus de proficiência + modificador de Sabedoria"
@@ -264,9 +264,9 @@ equipamento:
     - "tira de couro da amarra sabotada da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso de 6 Eleasis expirou por volta de 09:25 e está gasto até o próximo amanhecer"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso renovado no amanhecer de 7 Eleasis e disponível"
   dinheiro:
-    po: 25
+    po: 45
 
 vinculos:
   regiao_inicial: "Ravens Bluff"

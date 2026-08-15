@@ -1249,3 +1249,48 @@ Consequências:
 * A Percepção alta confirma que Ren não percebe cauda útil acompanhando a volta.
 * Ren entra no circo pela rota interna de remendos sem acordar a rotina.
 * Silva Elkwood está acordada e intercepta a cena de modo controlado.
+
+---
+
+## Amanhecer de 7 Eleasis: descanso, Tyr e rotina do circo
+
+Contexto: após contar a Silva o essencial sobre a Ponte Baixa e o lacre
+reservado de Luath, Ren falou baixo com Nera, comeu, dormiu cerca de duas horas,
+meditou por meia hora e foi falar com Jack ao amanhecer.
+
+Sem rolagem:
+
+* A conversa baixa com Nera não exige teste. Ren cumpre um gatilho positivo da
+  relação ao voltar, dividir informação suficiente e não acordar Tavin.
+* O descanso conta como descanso curto válido para Ren: houve mais de uma hora
+  de pausa, sono leve e meditação suficiente para recuperar o centro.
+* Jack pagar um cachê imediato de 20 PO pela apresentação fechada não exige
+  teste. O dinheiro já estava com Jack/Tobb e o pagamento do número é tratado
+  como conta separada da bronca pela quebra de filtro.
+
+Rolagens ocultas:
+
+* Encaminhar pacote reservado da Ponte Baixa a Tyr no primeiro cinza, por
+  Luath: d20 15 + 4 = 19 contra CD 14. Sucesso.
+* Manter a rotina do circo quieta enquanto Ren descansa, por Silva: d20 14 + 4
+  = 18 contra CD 12. Sucesso.
+* Pressão externa alcançar o circo antes de Ren acordar: d20 7 + 4 = 11 contra
+  CD 16. Falha.
+
+Consequências:
+
+* Nera recebe a notícia de que Luath lacrou as provas e que o registro externo
+  não nomeia Ren, Nera ou Tavin; isso reduz a ansiedade imediata, mas não a
+  elimina.
+* Tavin continua dormindo e não recebe nova carga de medo nesta cena.
+* Silva mantém a rotina do circo quieta durante o descanso de Ren. Nenhum alerta
+  amplo atravessa o acampamento antes do amanhecer.
+* O pacote reservado passa para uma mão de Tyr antes que a manhã vire disputa
+  aberta dentro da Night Watch. A mensagem curta de Luath chega ao circo sem
+  nomear a fonte.
+* Nenhuma pressão externa alcança o circo antes de Ren acordar e meditar.
+* Jack recebe o resumo da Ponte Baixa, sabe que a prova saiu das roupas de Ren e
+  entende que os inimigos usam "gravadora" e "menino" como pressão sem terem
+  demonstrado saber a localização exata dos Vell.
+* Jack paga 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, mas
+  mantém a quebra pública de filtro como dívida operacional separada.

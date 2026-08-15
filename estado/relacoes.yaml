@@ -648,6 +648,13 @@ relacoes:
       nem Casa Veyr e não conseguiu determinar a origem exata do termo. Alertou
       Ren a não olhar para a carroça verde nem para Silva se alguém disser o nome
       dela durante a apresentação, para não transformar contrato em coração.
+      Na madrugada de 7 Eleasis, depois da Ponte Baixa e do lacre reservado de
+      Luath, Ren foi discretamente à carroça verde e falou baixo com Nera sem
+      acordar Tavin. Ele contou apenas o necessário: a prova saiu das mãos dele,
+      Luath a lacrou como fonte protegida e o registro externo não nomeia Ren,
+      Nera ou Tavin. Nera ficou parcialmente aliviada por entender que os
+      inimigos ainda têm uma palavra de pressão, mas não uma porta confirmada
+      até ela. Ela reforçou que o circo não deve ensinar onde ela dorme.
     informacoes_compartilhadas_por_nera:
       - "Dain 'Brass' Mord encomendou a cópia deliberadamente errada da lua velada."
       - "Um segundo homem, com perfil de escrivão e materiais melhores, esteve envolvido."
@@ -710,6 +717,8 @@ relacoes:
       - "Nera sabe que a Casa Veyr ou o canal ligado a ela citou a seladora/gravadora para pressionar Kage."
       - "Nera não reconheceu Corven Dalm nem Casa Veyr."
       - "Nera alertou Ren a não entregar reação emocional se alguém citar o nome dela durante a apresentação fechada."
+      - "Nera sabe, em linhas gerais, que Ren encontrou documentos na Ponte Baixa e que Luath os lacrou como fonte protegida sem nome externo de Ren, Nera ou Tavin."
+      - "Nera entende que os inimigos ainda parecem possuir palavras de pressão sobre ela e Tavin, mas não demonstraram saber a porta exata onde os Vell dormem."
   tavin_vell:
     nome: "Tavin Vell"
     tipo: "testemunha jovem"
@@ -1365,6 +1374,12 @@ relacoes:
       que circularem nas roupas de Ren. Ela manteve o acampamento dormindo, não
       acordou Jack de imediato e ofereceu caminhos práticos: falar baixo com
       Nera, acordar Jack ou comer e meditar antes do primeiro cinza.
+      Silva conduziu Ren à carroça verde para uma conversa baixa com Nera sem
+      acordar Tavin, depois fez Ren comer e manteve a rotina do circo quieta
+      enquanto ele dormia e meditava. Ao amanhecer, leu a mensagem curta de
+      Luath informando que o pacote reservado passou para Tyr sem nome externo.
+      Ela acompanhou a conversa com Jack e reforça, junto dele, que qualquer
+      acesso aos Vell passa por ela quando houver risco de olho externo.
     documentos:
       - "Silva abriu e leu o bilhete curto e selado de Maerra."
     riscos:
@@ -1429,13 +1444,16 @@ relacoes:
       - "Silva sabe que Casa Veyr foi verificada como presença temporária pagante, mas sem raiz local forte."
       - "Silva mantém Nera e Tavin longe da superfície da apresentação fechada de Kage."
       - "Silva ajudou Ren a fazer uma visita discreta por Passo Sombrio à carroça verde, mas considera a técnica brusca demais para uso casual perto dos Vell."
+      - "Silva manteve a rotina do circo quieta enquanto Ren completava descanso curto antes do amanhecer de 7 Eleasis."
+      - "Silva leu a mensagem curta de Luath informando que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo."
+      - "Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no acampamento."
   jack_mooney:
     nome: "Jack Mooney"
     tipo: "dono do circo / autoridade local do acampamento / patrono condicional"
     local: "Jack Mooney & Sons Circus"
     status: "patrono condicional ativo"
     atitude_para_ren: "pragmatica, desconfiada e interessada"
-    confianca: "baixa e condicional"
+    confianca: "moderada e condicional"
     respeito: "inicial, baseado em competencia, audacia e honestidade parcial"
     motivo: >
       Jack percebeu inconsistências na cobertura de Silva, cobrou explicações
@@ -1591,6 +1609,14 @@ relacoes:
       relatou tudo para que a informação chegasse a Silva. Jack aceitou montar
       uma saída falsa de Kage com Dessa e Tobb para proteger o circo e a máscara
       pública, mas registrou que Ren lhe deve a quebra pública de filtro.
+      Ao amanhecer de 7 Eleasis, depois do retorno de Ren e da mensagem curta de
+      Luath indicando que o pacote reservado passou para Tyr sem nome externo,
+      Jack ouviu que os inimigos ainda não demonstraram saber exatamente onde
+      Nera dorme. Ele pagou 20 PO como cachê de Kage pela apresentação fechada
+      da Casa Veyr, tratando o pagamento do número como conta separada da bronca
+      pela quebra pública de filtro. Jack quer decidir se Kage aparecerá hoje
+      como artista visível e controlado ou se sua ausência será comprada com
+      desculpa deliberada.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1638,10 +1664,13 @@ relacoes:
       - "Jack propôs aceitar a apresentação fechada da Casa Veyr apenas com filtros rígidos e aguarda se Ren acrescenta condição final."
       - "A Casa Veyr tentou alterar os filtros finais: pagamento restante com convidados, assinatura de Dalm só na lona e homem da casa junto da entrada de artistas."
       - "Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle dos Mooney, não da Casa Veyr."
-      - "Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO está com Jack/Tobb, mas o cachê de Ren pela apresentação fechada segue pendente do pós-show."
+      - "Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO ficou com Jack/Tobb até o acerto posterior."
       - "Ren abriu a apresentação fechada com Passo Sombrio, escolhendo impacto e ameaça controlada em vez de ocultar totalmente a técnica."
       - "Durante a apresentação fechada, Jack cortou a provocação de Dalm sobre nome/família/fogo sem encerrar o show: 'Contrato compra espetáculo. Não compra genealogia.'"
       - "Após o final da apresentação, Jack permitiu que Dalm entrasse no guarda-roupa menor/camarim funcional de Kage, com Tobb vigiando a aba e o homem da Casa Veyr impedido de acompanhar."
+      - "Jack pagou 20 PO a Ren como cachê de Kage pela apresentação fechada da Casa Veyr, deixando o restante para lona, equipe, risco e caixa do circo."
+      - "Jack separou o pagamento do número da bronca pela quebra pública de filtro, que permanece como dívida operacional."
+      - "Jack pediu que Ren escolha se Kage aparece hoje como homem visível, calmo e controlado, ou se Jack compra a ausência dele com desculpa deliberada."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."
@@ -1661,6 +1690,7 @@ relacoes:
       - "Jack viu Ren chamar Dalm ao camarim com referência pública a Masao e às dez lâminas, o que piorou a saída social dos convidados e forçou salvaguarda improvisada."
       - "Ren relatou a Jack a pista de Dalm sobre segunda maré, Ponte Baixa, porões secos atrás de armazéns velhos, papéis antes de lâminas, gravadora, menino e Masao."
       - "Ren pediu que Jack repasse a informação a Silva."
+      - "Ren informou Jack ao amanhecer de 7 Eleasis que Luath lacrou as provas da Ponte Baixa, que uma mensagem indica encaminhamento a Tyr sem nome externo e que os inimigos ainda não demonstraram saber a localização exata dos Vell."
     riscos:
       - "Pode expulsar Ren se ele quebrar as regras internas do circo."
       - "Pode mover Nera e Tavin para outro abrigo se Ren falhar ou atrair pressão direta."

@@ -3873,3 +3873,110 @@ Ela não formula como ordem. Silva raramente precisa.
 Hora aproximada: **03:13 de 7 Eleasis, 1372 DR**. Ren está na rota interna de remendos do **Jack Mooney & Sons Circus**, com Silva. Ela ouviu o relato completo da Ponte Baixa e do lacre reservado de Luath. **Visão no Escuro** continua ativa; **Passos sem Pegadas** expirou. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Nera dorme mal na carroça verde; Tavin dorme profundamente. Jack ainda não foi acordado.
 
 O que Ren faz?
+
+Ren vai até Nera, discretamente. Conversa com ela, pra despreocupa-la. Fala brevemente sobre os avanços. Depois come alguma coisa, dorme duas horas, medita meia hora, e só depois vai em Jack. O foco com Jack é explicar que eles não sabem exatamente onde está Nera e que Luath já está com as provas.
+
+**Narrador**
+
+Silva levanta sem pressa.
+
+Não porque a noite permita calma. Porque pressa faz madeira falar.
+
+Ela conduz Ren até a carroça verde pela rota curta de dentro, apagando duas lamparinas pequenas no caminho com os dedos molhados. Na última curva, para e aponta com o queixo.
+
+"Baixo. O menino dormiu fundo."
+
+Nera não dormiu fundo.
+
+Está deitada, sim, mas com os olhos abertos para a madeira acima dela, como quem ficou escutando cada passo do acampamento até todos os passos virarem ameaça. Quando vê Ren inteiro na abertura estreita, a respiração dela muda antes do rosto.
+
+Ela não corre. Não acorda Tavin. Só se senta devagar, puxando o cobertor até o ombro.
+
+"Silva disse que você voltou inteiro", ela sussurra. "Não disse inteiro de onde."
+
+Ren fala baixo. O bastante para Tavin continuar afundado no sono. Conta o necessário: Ponte Baixa não era ponte; havia uma sala seca, papéis, marcas de alteração, o sol apagado. Luath recebeu as peças, lacrou como fonte protegida e não escreveu o nome de Ren no lado de fora. Antes do primeiro cinza, tentaria pôr aquilo numa mão de Tyr.
+
+Nera escuta sem interromper. Quando a palavra **gravadora** passa pela história, o rosto dela fecha por um instante; quando Ren explica que a tira não dizia onde ela dorme, nem dizia seu nome, a mão dela procura a dele.
+
+"Então eles ainda têm uma palavra", ela diz. "Não têm uma porta."
+
+O alívio existe. Pequeno, cansado, real. Não vence o medo. Só abre espaço para respirar ao lado dele.
+
+"Isso ajuda", ela continua, quase sem voz. "Não me deixa tranquila. Mas ajuda."
+
+Ela olha para Tavin. O menino virou de lado, uma mão fechada perto da boca, alheio por enquanto a pontes, selos e marés.
+
+"Se eles não sabem onde eu durmo, não vamos ensinar."
+
+Nera segura Ren por mais um momento, testa encostada brevemente contra a dele. Depois o solta antes que o próprio gesto vire pedido para ele ficar.
+
+"Vai comer", ela sussurra. "E quando falar com Jack... não deixe ele ouvir só perigo. Faça ele ouvir que a prova saiu da sua roupa."
+
+Silva, do lado de fora, não comenta nada quando Ren sai. Só entrega um pedaço de pão escuro, queijo frio e uma tigela pequena de caldo morno, como se aquilo fosse a resposta que ela vinha guardando desde que ele apareceu na rota dos remendos.
+
+"Come primeiro. Desaba depois."
+
+O depósito de figurino velho ainda cheira a pó, madeira seca, lã guardada e tinta velha. Ren dorme duas horas quebradas atrás da arca dos estandartes, sem sonho suficiente para virar lembrança. O circo se mexe ao redor como um corpo grande tentando não acordar inteiro: alguém corta lenha miúda longe dali, uma roda range, uma mulher tosse dentro de outra carroça, Tobb passa uma vez falando baixo demais para as palavras atravessarem a porta.
+
+Ninguém o chama.
+
+Quando Ren acorda, a primeira luz cinza já está nas frestas. A meia hora de meditação não apaga a noite, mas recoloca o corpo sob comando. A respiração baixa. A dor miúda dos joelhos e ombros vira ruído. A sombra dentro dele deixa de ser fuga e volta a ser ferramenta.
+
+Pouco antes de Silva levá-lo até Jack, Tobb aparece na entrada do depósito com um papel estreito dobrado duas vezes.
+
+"Veio pela mão certa", ele diz. "Não li."
+
+Silva lê. Só então entrega a Ren.
+
+> Pacote passou para Tyr. Sem nome no papel de fora.
+> L.
+
+Silva dobra o papel de volta.
+
+"Bom. Agora temos uma parede entre isso e a primeira boca curiosa."
+
+Jack Mooney já está acordado quando Ren entra na carroça-escritório. Não parece descansado. Parece montado: colete fechado, cabelo preso sem capricho, livro de contas aberto e uma xícara esquecida ao lado da caixa de dinheiro.
+
+Tobb fica perto da porta. Silva entra também, mas não toma a frente.
+
+Jack olha primeiro para Ren, depois para o papel vindo de Luath, depois para Silva.
+
+"Kage me dá uma noite de ouro, uma pista para uma garganta de pedra, some antes da lona esfriar, volta antes do amanhecer e agora a guarda manda bilhete curto." Ele fecha o livro de contas com dois dedos. "Vamos ouvir a parte que não cabe no cartaz."
+
+Ren explica o foco: o inimigo sabe usar **gravadora** e **menino** como pressão, mas não demonstrou saber exatamente onde Nera está; a prova saiu das mãos de Ren, foi lacrada por Luath e começou a passar para Tyr.
+
+Jack não interrompe. Isso, nele, é atenção.
+
+Quando Ren termina, Jack fica alguns segundos olhando para o tampo da mesa.
+
+"Não saber onde ela dorme é bom", ele diz. "Não é o mesmo que não procurar. Então a primeira regra continua simples: ninguém ensina."
+
+Ele aponta para Silva sem olhar para ela.
+
+"A carroça verde não vira lugar de conselho, despedida, romance ou confissão quando houver olho novo no acampamento. Quem precisa falar com os Vell passa por Silva. Inclusive você."
+
+A frase é dura. Mas não vem com desprezo. Vem com estrutura.
+
+"A segunda regra: Kage não corre como culpado se a cidade perguntar por Ponte Baixa. Kage come, ensaia, aparece onde eu disser que aparece e desaparece onde eu disser que desaparece. Se você vira sombra toda vez que alguém puxa um fio, eles aprendem que a sombra é resposta."
+
+Jack pega uma pequena bolsa de couro dentro da caixa. Coloca sobre a mesa, sem empurrar ainda.
+
+"E a terceira: conta separada de bronca."
+
+As moedas soam baixo.
+
+"Vinte peças para Kage pela apresentação fechada de ontem. O restante segura lona, gente, risco, Tobb contando moeda sob olho de casa alheia e Jack Mooney fingindo que isso tudo ainda é só espetáculo. Se a Casa Veyr virar dinheiro limpo de novo, conversamos de novo. Se virar faca, também."
+
+Só então ele empurra a bolsa para o alcance de Ren.
+
+"Isso paga o número. Não paga a quebra de filtro."
+
+Tobb pigarreia baixo, como quem acha a divisão menos ruim do que esperava. Silva não sorri, mas a tensão no maxilar dela afrouxa meio grau.
+
+Jack se inclina para frente.
+
+"Agora, Ren. Antes que Ravens Bluff abra os olhos de vez: você quer que eu venda Kage hoje como homem visível, calmo e controlado... ou quer que eu compre a ausência dele com uma desculpa boa?"
+
+Hora aproximada: **06:07 de 7 Eleasis, 1372 DR**. Ren está na carroça-escritório de **Jack Mooney**, com Jack, Silva e Tobb. Ele falou baixo com Nera sem acordar Tavin, completou um descanso curto com sono e meditação, recebeu a notícia de que o pacote reservado da Ponte Baixa passou para Tyr sem nome externo e informou Jack do essencial. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** continua ativa até cerca de **09:32**. **Passos sem Pegadas** expirou. Com o amanhecer de 7 Eleasis, o **Broche do Semblante Humilde** está disponível novamente.
+
+O que Ren faz?

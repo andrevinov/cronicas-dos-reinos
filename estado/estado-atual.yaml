@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Jack Mooney & Sons Circus"
-  ponto_exato: "rota interna de remendos, diante de Silva Elkwood"
+  ponto_exato: "carroça-escritório de Jack Mooney, com Jack, Silva e Tobb"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -350,8 +350,19 @@ localizacao:
     coração do acampamento e perguntou se ele veio limpo. Ren confirmou e contou
     o essencial sobre a Ponte Baixa, a sala de arquivo vivo, as evidências, o sol
     apagado e o lacre reservado de Luath. Silva avaliou que é melhor as provas
-    estarem trancadas com Luath do que nas roupas de Ren. Nera dorme mal na
-    carroça verde; Tavin dorme profundamente; Jack ainda não foi acordado.
+    estarem trancadas com Luath do que nas roupas de Ren. Ren falou baixo com
+    Nera na carroça verde sem acordar Tavin, contou o necessário para
+    tranquilizá-la e reforçou que a prova saiu das mãos dele. Depois comeu,
+    dormiu cerca de duas horas no depósito de figurino velho e meditou por meia
+    hora, completando descanso curto e recuperando o centro. Ao primeiro cinza,
+    uma mensagem curta de Luath informou que o pacote reservado passou para Tyr
+    sem nome no papel externo. Ren foi então à carroça-escritório de Jack, com
+    Silva e Tobb presentes, e explicou que os inimigos ainda não demonstraram
+    saber exatamente onde Nera dorme, enquanto Luath/Tyr já têm as provas. Jack
+    pagou 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, mas
+    manteve a quebra pública de filtro como dívida operacional separada. Agora
+    Jack quer saber se Ren prefere que Kage pareça visível, calmo e controlado
+    hoje, ou que sua ausência seja comprada com desculpa deliberada.
 
 tempo:
   ano_dr: 1372
@@ -363,11 +374,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "madrugada de 7 Eleasis, no Jack Mooney & Sons Circus"
-  hora_aproximada: "03:13 de 7 Eleasis"
+  periodo_do_dia: "amanhecer de 7 Eleasis, no Jack Mooney & Sons Circus"
+  hora_aproximada: "06:07 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24; Luath pretende tentar encaminhamento a Tyr no primeiro cinza. O total de 80 PO da apresentação da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo."
 
 recursos:
   pontos_de_vida:
@@ -378,20 +389,24 @@ recursos:
     maximos: 6
     dado: "d8"
   ki:
-    atuais: 2
+    atuais: 6
     maximos: 6
     recarga: "descanso curto ou longo"
   classe_de_armadura: 17
   deslocamento: "55 pés"
   dinheiro:
-    po: 25
+    po: 45
   condicoes:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
-    - "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, diante de Silva Elkwood"
+    - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
+    - "Ren está na carroça-escritório de Jack Mooney, com Jack, Silva e Tobb"
+    - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
+    - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
     - "A identidade da fonte fica retida com Luath até requisição selada de autoridade competente"
+    - "Jack pagou 20 PO a Ren como cachê de Kage pela apresentação fechada da Casa Veyr; a quebra pública de filtro continua como dívida operacional separada"
     - "Na Ponte Baixa, a retirada das evidências não ficou limpa; alguém que conheça o arquivo pode perceber manipulação depois"
     - "Na Ponte Baixa, a linha de cinza do pano foi tocada, a lingueta/trava do trilho ficou solta e a marca pequena 'K ->' permanece no começo do corredor seco"
     - "A segunda maré alcançou a câmara de retenção durante o recuo de Ren; o corredor seco ainda permitiu saída, mas o interior da Ponte Baixa deixou de estar completamente seco"
@@ -1170,7 +1185,7 @@ equipamento_em_posse:
     - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
     - "caderno de contas de Bram Vask"
     - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso de 6 Eleasis expirou por volta de 09:25 e está gasto até o próximo amanhecer"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso renovado no amanhecer de 7 Eleasis e disponível"
     - "mapa público da Escada das Sete Águas, comprado de Brunna Torkel"
     - "cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída baixa para drenagem, parede raspada, ar seco e marca apagada"
   outros:
@@ -1189,12 +1204,11 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir para onde Ren vai após o lacre reservado das evidências da Ponte Baixa: sair ainda sob os minutos finais de Passos sem Pegadas, ficar para falar mais com Luath ou buscar descanso"
-    - "decidir entre falar baixo com Nera, acordar Jack para reunião cansada, ou comer e tentar uma hora de meditação antes do primeiro cinza"
+    - "responder a Jack se Kage deve aparecer hoje como homem visível, calmo e controlado, ou se Jack deve comprar a ausência dele com desculpa deliberada"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
-    - "acompanhar o encaminhamento de Luath a Tyr no primeiro cinza, se Ren quiser reforçar a linha institucional"
+    - "acompanhar os próximos efeitos do pacote reservado da Ponte Baixa em Tyr, agora que a mensagem de Luath indica que ele passou sem nome externo"
     - "evitar voltar sozinho à Ponte Baixa sem nova informação, pois Luath não autorizou essa entrada e os sinais deixados podem ter sido percebidos depois"
     - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
     - "reinstalar futuramente, em conversa discreta, novos pontos mortos com Pell e Kethra se ainda forem necessários"
@@ -1207,7 +1221,7 @@ objetivos:
     - "manter os Vell no circo com resguardo em espera de Tyr até o próximo sino maior"
     - "decidir se continua puxando o fio de Brass/Narwhal/Ponte Baixa ou se prioriza proteção formal"
     - "proteger o livro original de Nera escondido com Silva"
-    - "reavaliar recursos e necessidade de descanso antes de novo risco direto"
+    - "usar com cuidado o Broche do Semblante Humilde, novamente disponível no amanhecer de 7 Eleasis"
 
 vinculos_ativos:
   faccao_prevista:
@@ -1232,8 +1246,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, com Silva Elkwood, às 03:13 de 7 Eleasis. Após voltar limpo do posto de Luath, Ren contou a Silva o essencial sobre a Ponte Baixa, os documentos, o sol apagado e o lacre reservado das evidências. Silva não acordou Jack para evitar que o acampamento perceba uma onda de urgência, mas deixou três caminhos imediatos: levar Ren para falar baixo com Nera sem acordar Tavin, acordar Jack para uma reunião cansada, ou fazer Ren comer e tentar uma hora de meditação antes do primeiro cinza. Visão no Escuro continua ativa até cerca de 09:32. Passos sem Pegadas expirou por volta de 02:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
-  risco_imediato: "moderado: Ren chegou ao circo sem cauda útil percebida, mas a noite ainda carrega rastros institucionais e inimigos atentos. O pacote reservado da Ponte Baixa pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. A entrada no circo não acordou a rotina; Silva controla a próxima passagem para Nera, Jack ou descanso."
+  cena_atual: "Ren está na carroça-escritório de Jack Mooney, com Jack, Silva e Tobb, às 06:07 de 7 Eleasis. Depois de falar baixo com Nera, comer, dormir duas horas e meditar meia hora, Ren completou descanso curto e recuperou ki. Uma mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo. Ren explicou a Jack que os inimigos ainda não demonstraram saber exatamente onde Nera dorme e que as provas saíram das roupas dele. Jack pagou 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, separando esse pagamento da bronca pela quebra pública de filtro. Jack agora quer saber se Ren prefere Kage visível, calmo e controlado hoje, ou se a ausência de Kage deve ser comprada com desculpa deliberada. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde voltou a estar disponível com o amanhecer."
+  risco_imediato: "moderado: Ren está descansado em recursos imediatos, mas o circo segue exposto a respostas indiretas de Ponte Baixa, Narwhal, Red Sail, Casa Veyr ou interessados em Dalm. O pacote reservado passou para Tyr, o que fortalece a linha institucional, mas também pode atrair pressão burocrática. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. Jack e Silva tentam impedir que a rotina do circo ensine onde Nera e Tavin dormem."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1244,5 +1258,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir entre falar com Nera, acordar Jack, meditar/descansar ou outra ação antes do amanhecer"
+    - "decidir com Jack se Kage deve aparecer hoje de modo controlado ou se sua ausência será explicada deliberadamente"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"
