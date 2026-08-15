@@ -33,6 +33,16 @@ jobs:
           python ferramentas/migrar-memorias-fragmentadas.py --check
           python ferramentas/reindexar-conhecimento.py --check
 
+      - name: Protocolo transacional de narração
+        run: |
+          test -f ferramentas/contexto_core.py
+          test -f ferramentas/transacoes.py
+          test -f ferramentas/turno.py
+          python ferramentas/turno.py check
+          printf '%s\n' '[["rolar","1d4","--label","Lote A"],["d20","--bonus","2","--label","Lote B"]]' | python ferramentas/rolar-lote.py > /tmp/rolagens-lote.txt
+          grep -q "Lote A" /tmp/rolagens-lote.txt
+          grep -q "Lote B" /tmp/rolagens-lote.txt
+
       - name: Runtime derivado e atualizado
         run: python ferramentas/gerar-runtime.py --check
 

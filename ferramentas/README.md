@@ -1,12 +1,10 @@
 # Ferramentas
 
-Ferramentas locais de apoio para conduzir **Crônicas dos Reinos**.
+Ferramentas locais de apoio para conduzir **Crônicas dos Reinos** com leitura e escrita econômicas.
 
 ## Rolador de dados
 
-Usar `ferramentas/rolar-dados.py` sempre que uma rolagem aberta ou oculta exigir dado durante a preparação ou narração.
-
-Exemplos:
+Usar `ferramentas/rolar-dados.py` para uma rolagem individual:
 
 ```bash
 python3 ferramentas/rolar-dados.py rolar 2d6+3
@@ -17,7 +15,6 @@ python3 ferramentas/rolar-dados.py ren iniciativa
 python3 ferramentas/rolar-dados.py ren ataque wakizashi --ca 14
 python3 ferramentas/rolar-dados.py ren dano wakizashi --critico
 python3 ferramentas/rolar-dados.py npc d20 --nome "Guarda" --bonus 3 --cd 12 --label "Percepção"
-python3 ferramentas/rolar-dados.py npc ataque --nome "Bandido" --arma "espada curta" --bonus-ataque 4 --dano 1d6+2 --tipo-dano perfurante --ca 16
 ```
 
 Atalhos atuais de Ren:
@@ -26,13 +23,100 @@ Atalhos atuais de Ren:
 python3 ferramentas/rolar-dados.py ren listar
 ```
 
-Saídas públicas podem ser copiadas para a transcrição da sessão. Rolagens ocultas devem ser registradas apenas na área do narrador quando forem relevantes.
+### Rolagens em lote
+
+Quando duas ou mais rolagens independentes já forem necessárias antes de conhecer qualquer resultado, usar `rolar-lote.py` para reduzir ciclos modelo → ferramenta → modelo:
+
+```bash
+python3 ferramentas/rolar-lote.py <<'JSON'
+[
+  ["ren", "pericia", "furtividade", "--cd", "14"],
+  ["npc", "d20", "--nome", "Guarda", "--bonus", "3", "--cd", "12"]
+]
+JSON
+```
+
+O lote apenas chama o mesmo `rolar-dados.py`; não muda regras nem RNG. Não agrupar uma rolagem cuja necessidade depende do resultado da anterior.
+
+## Registrador transacional de turno
+
+`ferramentas/turno.py` é a interface preferencial de **escrita durante narração ao vivo**.
+
+Uma chamada registra simultaneamente a troca na transcrição e os deltas mínimos no buffer pendente:
+
+```bash
+python3 ferramentas/turno.py registrar <<'JSON'
+{
+  "jogador": "Ren avança sobre o alvo.",
+  "narracao": "...",
+  "resumo": "Ren alcança o alvo e gasta 1 Ki.",
+  "modo": "combate",
+  "deltas": [
+    {
+      "alvo": "estado",
+      "op": "inc",
+      "caminho": "recursos.ki.atuais",
+      "valor": -1
+    }
+  ]
+}
+JSON
+```
+
+Por turno comum, a ferramenta altera somente:
+
+1. `sessoes/NNN/transcricao.md`;
+2. `runtime/eventos-pendentes.jsonl`.
+
+Ela **não** atualiza ficha, estado, tempo, relações, conhecimento, consequências ou relógios. Esses destinos serão tratados pela consolidação da Etapa 8.
+
+A prosa completa fica apenas na transcrição; o JSONL recebe resumo curto, deltas e rolagens ocultas relevantes.
+
+Comandos de segurança:
+
+```bash
+python3 ferramentas/turno.py check
+python3 ferramentas/turno.py status
+```
+
+O registro é idempotente. Se houver interrupção entre as duas escritas, repetir exatamente a mesma entrada repara apenas o lado ausente.
+
+## Schema dos deltas
+
+Operações:
+
+- `set`: substitui um valor;
+- `inc`: soma variação numérica;
+- `append`: acrescenta item;
+- `remove`: remove item/chave;
+- `registrar`: guarda fato para consolidação sem alterar imediatamente um campo estruturado.
+
+Alvos usuais:
+
+```text
+estado
+tempo
+relacao:<id>
+npc:<id>
+conhecimento
+consequencia
+relogio:<id>
+```
+
+Exemplos:
+
+```json
+{"alvo":"estado","op":"inc","caminho":"recursos.pontos_de_vida.atuais","valor":-7}
+{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
+{"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
+{"alvo":"conhecimento","op":"registrar","valor":{"assunto":"ponte baixa","texto":"brasa protegida é sinal"}}
+```
+
+`visibilidade: narrador` impede que um delta reservado entre em consultas públicas normais. `rolagens_ocultas` pode ser incluído no registro da transação e será consolidado depois em área reservada.
 
 ## Consulta única de contexto
 
-`ferramentas/contexto.py` é a interface preferencial para leituras durante narração e preparação. Ela evita abrir arquivos acumulativos inteiros quando uma consulta específica basta.
-
-Comandos principais:
+`ferramentas/contexto.py` é a interface preferencial para leitura durante narração e preparação.
 
 ```bash
 python3 ferramentas/contexto.py status
@@ -44,67 +128,62 @@ python3 ferramentas/contexto.py regra furtividade
 python3 ferramentas/contexto.py buscar "ponte baixa"
 ```
 
-Desde a Etapa 6, `npc`, `relacao` e `conhecimento` não leem mais os antigos depósitos monolíticos. A ferramenta resolve internamente **índice → fragmento**:
+Desde a Etapa 6, a consulta resolve índice → fragmento. Desde a Etapa 7, ela também aplica `runtime/eventos-pendentes.jsonl` sobre os fragmentos/snapshots relevantes.
 
-- relações: `estado/relacoes/index.yaml` → `estado/relacoes/<id>.yaml`;
-- medidores: `estado/npcs/index.yaml` → `estado/npcs/<id>.yaml`;
-- conhecimento: `personagens/jogador/conhecimento/ativo.yaml`/`index.yaml` → fragmentos Markdown relevantes.
+Portanto:
 
-O histórico completo de uma relação permanece em `historico/relacoes/<id>.yaml`, mas não é lido por `relacao` ou `npc` normalmente. Para uma pergunta histórica, escalar deliberadamente.
+- `status`: snapshot-base + deltas correntes de recursos/tempo/localização/modo;
+- `cena`: contexto + cena com a mesma sobreposição;
+- `npc`: fragmento de medidores/relação + deltas `npc:<id>`/`relacao:<id>`;
+- `relacao`: um fragmento + deltas ainda pendentes daquela entidade;
+- `conhecimento`: fragmentos consolidados + descobertas pendentes;
+- `regra`: resumos internos de regras;
+- `buscar`: fontes operacionais + resumos de eventos pendentes.
 
-A busca genérica exclui por padrão `narrador/`, `historico/` e transcrições completas. A escalada precisa ser deliberada:
+A busca genérica exclui por padrão `narrador/`, `historico/` e transcrições completas:
 
 ```bash
 python3 ferramentas/contexto.py buscar "sol apagado" --reservado
 python3 ferramentas/contexto.py buscar "frase exata" --historico
 ```
 
-A saída padrão é YAML e possui orçamento de 8 KiB. O teto técnico é 16 KiB; quando necessário, o resultado é compactado antes da impressão. Também é possível pedir JSON:
+A saída padrão é YAML com orçamento de 8 KiB e teto técnico de 16 KiB:
 
 ```bash
 python3 ferramentas/contexto.py --json status
 python3 ferramentas/contexto.py --max-bytes 4096 npc nera
 ```
 
-Por padrão a ferramenta anexa **somente metadados** da consulta a `runtime/consultas-contexto.jsonl`: comando, termo, nível, quantidade de fontes, bytes devolvidos e se houve truncamento. Esse arquivo é ignorado pelo Git e não contém o conteúdo lido. Para testes ou uso sem telemetria local:
+A telemetria opcional de consultas grava somente metadados em `runtime/consultas-contexto.jsonl`. Para não registrar:
 
 ```bash
 python3 ferramentas/contexto.py --sem-log status
 ```
 
-Semântica rápida:
+### Núcleo e sobreposição
 
-- `status`: somente `runtime/contexto.yaml`;
-- `cena`: estado quente + `runtime/cena.yaml`;
-- `npc`: um fragmento de medidores +, quando houver, um fragmento da relação atual;
-- `relacao`: índice pequeno + um fragmento da relação atual; apenas aponta para o histórico;
-- `conhecimento`: pesquisa os fragmentos do conhecimento de Ren e devolve os três trechos mais relevantes;
-- `regra`: seções relevantes dos resumos internos de regras;
-- `buscar`: descoberta limitada; com `--historico`, inclui histórico frio e transcrições.
+A implementação foi separada em:
+
+- `contexto_core.py`: mecanismo de índice/fragmento da Etapa 6;
+- `contexto.py`: porta pública que acrescenta a sobreposição transacional;
+- `transacoes.py`: schema, aplicação e busca de deltas pendentes.
+
+Não chamar `contexto_core.py` durante narração normal, pois ele não aplica mudanças ainda pendentes.
 
 ## Estado quente (`runtime/`)
 
-A camada operacional rápida é gerada deterministicamente a partir das fontes canônicas:
+`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots-base gerados deterministicamente a partir do estado consolidado:
 
 ```bash
 python3 ferramentas/gerar-runtime.py
-```
-
-Isso atualiza `runtime/contexto.yaml` e `runtime/cena.yaml`. Não altera `estado/`, ficha, sessões ou outros arquivos canônicos.
-
-Para validar sem escrever:
-
-```bash
 python3 ferramentas/gerar-runtime.py --check
 ```
 
-O CI executa esse modo automaticamente. Se o estado canônico mudar sem regeneração, a verificação falha em vez de permitir que o narrador use contexto quente obsoleto.
+A existência de eventos pendentes não torna esses arquivos obsoletos: `contexto.py` aplica a sobreposição em memória. Não regenerar os snapshots a cada turno.
 
-`runtime/eventos-pendentes.jsonl` já existe como reservatório para a futura arquitetura transacional, mas ainda não substitui a consolidação atual da campanha.
+`runtime/eventos-pendentes.jsonl` agora é buffer transacional ativo, não reservatório futuro.
 
 ## Estado corrente e memória fragmentada
-
-A Etapa 5 separou presente de cronologia em `estado/estado-atual.yaml` e `estado/tempo.yaml`. A Etapa 6 fez o mesmo com memórias acumulativas.
 
 Verificações permanentes:
 
@@ -114,22 +193,15 @@ python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
 ```
 
-`migrar-memorias-fragmentadas.py --check` comprova que:
-
-- as cópias pré-migração de relações, medidores e conhecimento mantêm os blobs Git originais;
-- todos os IDs de relações/NPCs continuam representados;
-- cada fragmento atual respeita o limite de tamanho;
-- o histórico completo de cada relação continua logicamente idêntico ao legado;
-- a concatenação ordenada dos fragmentos de conhecimento reconstrói **byte a byte** o antigo `conhecimento.md`.
-
-`reindexar-conhecimento.py --check` protege a divisão das descobertas por cabeçalhos `Sessão NNN` e garante que o recorte ativo acompanhe a sessão corrente quando ela possui entradas explícitas.
+Elas protegem blobs legados, IDs, fragmentos atuais, histórico de relações e reconstrução byte a byte do antigo conhecimento acumulado.
 
 ## Verificação de integridade
 
-Durante a refatoração de economia de contexto, usar:
+Para manutenção/consolidação, não para cada turno:
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
+python3 ferramentas/turno.py check
 python3 ferramentas/migrar-estado-atual.py --check
 python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
@@ -137,30 +209,27 @@ python3 ferramentas/gerar-runtime.py --check
 python3 ferramentas/verificar-integridade.py
 ```
 
-Para comparar o estado atual com a fotografia lógica criada antes da migração:
+Baseline lógica:
 
 ```bash
 python3 ferramentas/verificar-integridade.py \
   --baseline baseline/estado-logico-2026-08-15.yaml
 ```
 
-O verificador confere UTF-8, YAML sem chaves duplicadas, arquivos obrigatórios, referências de `campanha.yaml`, existência da sessão atual, consistência básica entre estado e ficha, limites de PV/Ki e coerência temporal.
+Proteções acumuladas:
 
-As proteções acumuladas incluem:
-
-- **Etapa 2:** `AGENTS.md` ≤ 12 KiB/180 linhas, seis documentos especializados e cobertura das 58 seções legadas;
-- **Etapa 3:** runtime derivado ≤ 8 KiB e coerente com sessão, personagem, recursos, tempo e localização;
-- **Etapa 4:** orçamento de saída, isolamento de material reservado/frio e consultas dirigidas;
-- **Etapa 5:** estado/tempo correntes separados da cronologia e legado preservado;
-- **Etapa 6:** relações, medidores e conhecimento fragmentados, reconstruíveis e consultáveis sem reabrir os monólitos.
+- **Etapa 2:** roteador `AGENTS.md` curto e cobertura normativa;
+- **Etapa 3:** runtime-base pequeno e derivado;
+- **Etapa 4:** consulta dirigida com orçamento rígido;
+- **Etapa 5:** estado atual separado da cronologia;
+- **Etapa 6:** relações/NPCs/conhecimento fragmentados e reconstruíveis;
+- **Etapa 7:** escrita de turno limitada a transcrição + deltas, recuperação idempotente, estado efetivo por sobreposição e rolagens em lote.
 
 ## Análise de rollouts do Codex
-
-Para medir o comportamento do Codex sem inserir telemetria dentro da narração:
 
 ```bash
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
 ```
 
-A baseline pré-refatoração usada para comparação está em `baseline/rollout-2026-08-15.json`.
+A baseline pré-refatoração está em `baseline/rollout-2026-08-15.json`.
