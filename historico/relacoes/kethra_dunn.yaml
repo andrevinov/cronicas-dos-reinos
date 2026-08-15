@@ -1,0 +1,132 @@
+schema_historico_relacao: 1
+id: kethra_dunn
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Kethra Dunn
+  tipo: funcionária de serviço de Narwhal Manor / fonte potencial
+  local: Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor
+  status: fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem
+    sobre ponte baixa
+  atitude_para_ren: assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da
+    ameaça
+  confianca: baixa, mas real em termos práticos
+  respeito: prático e cauteloso
+  motivo: 'Ren identificou Kethra como candidata a fonte interna por circular em corredores de lacres, velas e panos
+    borrados de Narwhal Manor sem ser tratada como escriba. Ela demonstrou inteligência prática ao corrigir contagem
+    de material diante de um escrivão jovem. Ren a seguiu sem ser visto até uma loja de penhores/cobrança, onde
+    dois homens exigiram oito peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm.
+    Ren tentou abordá-la como estrangeiro perdido, revelou saber que ela estava com problemas e ofereceu 8 PO. A
+    aproximação falhou em tranquilizar Kethra: ela não aceitou o ouro nem a proteção, mas também não chamou guarda
+    e deixou uma abertura para encontro discreto. Na fonte seca atrás dos azulejos verdes, Ren esperou sem parecer
+    emboscada e confirmou que o ponto não estava sob observação clara. Kethra compareceu, mas não aceitou a explicação
+    ampla sobre ameaça maior em Ravens Bluff como motivo para confiar. Ela exigiu prova concreta: Colm Dunn, seu
+    irmão, deve sair vivo da loja de Bram Vask sem que ela pareça ter vendido ninguém. Ren entrou na loja de Bram
+    Vask com disfarce apressado, derrubou Noll de forma não letal, intimidou Bram, tomou o caderno de contas sujas
+    e saiu pelos fundos com Colm vivo e capaz de andar. Ao tentar interceptá-la antes da loja, Ren errou o melhor
+    ponto e ela quase chegou à curva final, mas ele conseguiu mover Colm sem atrair atenção útil. Kethra viu Colm
+    vivo, reconheceu o valor do caderno de Bram e orientou Ren a escondê-lo no Lavadouro dos Três Tanques. Depois
+    voltou para Narwhal para não ligar seu sumiço ao resgate. Após o turno, Ren reencontrou Kethra discretamente.
+    A aproximação deixou uma lembrança possível em um aprendiz na lateral de Narwhal, mas Ren confirmou que Kethra
+    não tinha cauda clara. Kethra visitou Colm no Lavadouro dos Três Tanques, ouviu de Sella que um rapaz já farejou
+    a frase ligada ao esconderijo e aceitou tratar Ren como alguém útil, ainda que não plenamente confiável. Ren
+    contou a Kethra sobre Aiko, Masao Hirasawa, o selo e sua vingança, sem revelar outros protegidos. Kethra acreditou
+    na dor dele e no perigo real ao redor de Narwhal, Brass, Velis e a lua, mas não aceitou a escala de uma ameaça
+    à cidade inteira sem provas mais visíveis. Ela não possui parente viável no interior capaz de receber Colm agora,
+    embora exista sangue distante para o lado do Fire River. A colaboração dela continua presa à segurança concreta
+    de Colm. Ren tirou Colm do lavadouro sob o manto roto de mendigo, usando o nome de cobertura Dent, e pagou Dorra
+    Hest para levá-lo numa carroça dos fornos de cal do Fire River antes da primeira luz de 4 Eleasis. Kethra não
+    acompanhou a saída para não ligar seu rosto ao deslocamento. Ren voltou para avisá-la sobre Dorra, Dent, os
+    fornos de cal e a primeira luz. Kethra recusou mensagens diárias por criarem padrão perigoso, mas aceitou usar
+    um vaso rachado nos fundos de Narwhal Manor como ponto morto quando houver informação real ou perigo urgente
+    ligado a Bram. Na manhã de 4 Eleasis, Ren foi aos pátios e pagou 1 PO por informação. Soube que Dorra saiu no
+    cinza, provavelmente com Dent sob a lona, mas que alguém perguntou por um doente vindo do lavadouro antes da
+    partida. Kethra ainda não sabe disso em cena. Depois Ren montou fisicamente o ponto morto combinado nos fundos
+    de Narwhal Manor e deixou mensagem dizendo que Colm foi com a cal, que Bram recebeu guarda e recado para parar,
+    e que o amigo está seguro por algum tempo. A entrega foi feita, mas o vaso ficou com sinais discretos de manipulação.
+    No meio da tarde de 4 Eleasis, Kethra respondeu pelo vaso: não sabe se Dent chegou; depois do peixe, Narwhal
+    tremeu; a mulher de manto cinza-azulado mandou o corredor treze não falar de tintureiro, cesto ou barril; e
+    Kethra ouviu nos fundos a frase "se a boca abriu no mercado, olhem a ponte baixa". Ren desmontou o ponto morto
+    com cuidado, removendo a cera e a migalha cinza. Na manhã de 6 Eleasis, Ren voltou à lateral de serviço de Narwhal
+    Manor sob o Broche do Semblante Humilde e conseguiu falar brevemente com Kethra usando a frase "sabão preto
+    para pano azul". Kethra não recebeu notícia de Colm/Dent e não conseguiu nova informação concreta desde a última
+    mensagem. Ela percebe apenas silêncio excessivo no corredor treze, cestos contados com mais cuidado e gente
+    evitando falar de tintureiro, cesto ou barril. Ren dispensou Kethra antes que a ausência dela chamasse atenção.
+    Kethra avisou que, se Ren procurar Dorra, não deve usar o nome dela antes de saber quem está ouvindo nem procurar
+    Dent alto demais.
+
+    '
+  informacoes_observadas_por_ren:
+  - Kethra apara velas, recolhe cera, leva areia limpa e panos borrados, e cruza corredores onde portas de lacre
+    e registro podem fechar mal.
+  - Ela sabe contar e ler o bastante para corrigir lista de material.
+  - Dois homens exigiram dela oito peças de ouro ou uma lista de nomes ligados às chamadas de Tyr.
+  - Os cobradores ameaçaram alguém chamado Colm.
+  - Kethra avisou que pagar diretamente os cobradores pode aumentar o preço.
+  - Kethra mencionou a fonte seca atrás dos azulejos verdes como possível ponto discreto quando o sino menor tocar
+    antes do segundo sino.
+  - Kethra revelou que Colm Dunn é seu irmão e está preso por dívida/trabalho no alto da loja de Bram Vask.
+  - Kethra revelou que Noll é o homem do lábio cortado e funciona como mão de Bram.
+  - Kethra disse que a escada dos fundos da loja dá para um corredor com cheiro de couro molhado e que a janela
+    alta abre para telhado baixo de telhas vermelhas.
+  - Kethra disse que Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar
+    do prédio a gaveta de areia, cera e panos do corredor treze.
+  - Colm saiu vivo da loja de Bram Vask.
+  - Kethra viu Colm vivo antes de entrar na loja de Bram.
+  - Kethra avaliou que o caderno de contas de Bram não elimina o risco, mas põe uma coleira temporária nele.
+  - Kethra orientou Ren a levar Colm aos fundos do Lavadouro dos Três Tanques, na Rua da Cal.
+  - 'Frase de identificação para o lavadouro se houver gente por perto: ''sabão preto para pano azul''.'
+  - Kethra não ouviu o nome Masao Hirasawa em Narwhal.
+  - Kethra ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow.
+  - Kethra avalia que Velis Rook escreve, corrige, assina e treme, mas não parece mandante.
+  - Kethra disse que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com
+    nó de tira amarela rumo à rua dos tintureiros.
+  - Kethra sabe que recados do homem dos botões de latão chegam a Narwhal sem que ele entre pela frente como convidado.
+  - Kethra ouviu de Ren a história de Aiko, Masao Hirasawa, o selo e a vingança de Ren, mas não ouviu sobre outros
+    protegidos dele.
+  - Kethra não tem parente viável no interior capaz de receber Colm agora; há sangue distante para o lado do Fire
+    River, mas nenhuma porta segura.
+  - Kethra acredita que Masao é perigo real para Ren e para a trama que toca Narwhal, mas não foi convencida de
+    que a cidade inteira esteja diante de um reino de terror.
+  - Kethra aceita continuar ouvindo Narwhal se Colm receber uma solução prática antes que o lavadouro deixe de ser
+    seguro.
+  - Kethra sabe que Ren entregou seu manto roto a Colm, deu a ele o nome Dent e pagou 7 PO a Dorra Hest para levá-lo
+    aos fornos de cal do Fire River.
+  - Kethra pediu que Ren não use o nome dela ao procurar Dorra antes de saber quem está ouvindo.
+  - Kethra alertou que procurar Dent alto demais pode transformar esconderijo em rastro.
+  - Kethra memorizou Dorra Hest, Dent, fornos de cal do Fire River e saída antes da primeira luz de 4 Eleasis.
+  - Kethra recusou mensagens diárias; ela só deixará mensagem quando houver algo útil ou perigo.
+  - 'Ponto morto acordado: vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor.'
+  - 'Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua significa perigo urgente
+    ligado a Bram; rachadura para a parede significa nada; se o vaso sumir, o caminho morreu.'
+  - Ren montou fisicamente o ponto morto na manhã de 4 Eleasis e deixou a rachadura voltada para a parede, com mensagem
+    de que Colm/Dent foi com a cal e Bram recebeu pressão da guarda e recado.
+  - Kethra deixou mensagem pelo ponto morto dizendo que não sabe se Dent chegou.
+  - Kethra ouviu que, depois do peixe, Narwhal tremeu e a mulher de manto cinza-azulado mandou o corredor treze
+    não falar de tintureiro, cesto ou barril.
+  - 'Kethra ouviu nos fundos de Narwhal a frase: ''se a boca abriu no mercado, olhem a ponte baixa''.'
+  - Ren desmontou o ponto morto de Narwhal sem deixar novo padrão útil.
+  - Na manhã de 6 Eleasis, Kethra ainda não tem notícia de Colm/Dent.
+  - Kethra não ouviu nova informação concreta em Narwhal desde a pista da ponte baixa.
+  - Kethra percebe que o corredor treze está quieto demais e que termos ligados a tintureiro, cesto e barril viraram
+    assunto evitado.
+  riscos:
+  - Kethra interpretou parte da oferta inicial de Ren como possível nova cobrança ou ameaça.
+  - A loja de penhores/cobrança pode ser agiotagem comum, fachada de recados ou ligação com gente interessada nas
+    chamadas de Tyr.
+  - Bram pode tentar punir Kethra se concluir que ela vendeu informação.
+  - Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela.
+  - Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu do turno.
+  - 'A saída de Colm do lavadouro deixou uma pista fraca: uma menina viu dois vultos indo dos Três Tanques aos pátios
+    de carroças.'
+  - 'A volta de Ren até Kethra deixou outra pista fraca: um homem velho nos pátios viu Ren sair da área da carroça
+    de cal e depois tomar direção da Rua da Cal.'
+  - Ren soube depois, por um trabalhador dos pátios, que alguém perguntou por um doente vindo do lavadouro antes
+    da carroça de Dorra sair.
+  - 'A montagem inicial do ponto morto de Kethra ficou imperfeita: o vaso tem sinais discretos de manipulação e
+    cera cinza visível de perto.'
+  - Se Colm for encontrado ou não chegar aos fornos de cal, a colaboração de Kethra pode quebrar por medo ou necessidade.
+  - O ponto morto de Narwhal morreu; novo contato com Kethra exigirá conversa discreta e novo protocolo.
+  - Se Ren tratar a dor e a vingança como prova suficiente para Kethra, ela tende a recuar para demandas concretas
+    e imediatas.
+  - 'Contatos presenciais na lateral de Narwhal continuam arriscados: o Broche ajudou nesta manhã, mas repetição
+    pode criar padrão.'

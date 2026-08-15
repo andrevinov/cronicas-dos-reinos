@@ -1,0 +1,383 @@
+schema_relacoes: 2
+natureza: indice_relacoes_atuais
+historico_acumulado: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+quantidade: 34
+relacoes:
+  edran_vale:
+    nome: Edran Vale
+    tipo: contato local
+    status: ativo
+    atitude_para_ren: cautelosa, tensa
+    confianca: baixa
+    respeito: inicial
+    arquivo: estado/relacoes/edran_vale.yaml
+    historico: historico/relacoes/edran_vale.yaml
+    bytes_fragmento: 1247
+    campos_atuais: 11
+  mara_tharle:
+    nome: Mara Tharle
+    tipo: testemunha local
+    status: ativo
+    atitude_para_ren: assustada e desconfiada
+    confianca: muito baixa
+    respeito: nenhum
+    arquivo: estado/relacoes/mara_tharle.yaml
+    historico: historico/relacoes/mara_tharle.yaml
+    bytes_fragmento: 1201
+    campos_atuais: 11
+  velis_rook:
+    nome: Velis Rook
+    tipo: escrivão menor ligado à alfândega / registros de carga
+    status: em cena; alertado; convocação de Tyr entregue
+    atitude_para_ren: assustada e hostil
+    confianca: nenhuma
+    respeito: nenhum
+    arquivo: estado/relacoes/velis_rook.yaml
+    historico: historico/relacoes/velis_rook.yaml
+    bytes_fragmento: 2703
+    campos_atuais: 10
+  kethra_dunn:
+    nome: Kethra Dunn
+    tipo: funcionária de serviço de Narwhal Manor / fonte potencial
+    status: fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem
+      sobre ponte baixa
+    atitude_para_ren: assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala
+      da ameaça
+    confianca: baixa, mas real em termos práticos
+    respeito: prático e cauteloso
+    arquivo: estado/relacoes/kethra_dunn.yaml
+    historico: historico/relacoes/kethra_dunn.yaml
+    bytes_fragmento: 3563
+    campos_atuais: 10
+  colm_dunn:
+    nome: Colm Dunn
+    tipo: irmão de Kethra Dunn / devedor explorado
+    status: vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada
+    atitude_para_ren: assustado, confuso, mas menos perdido após ver Kethra
+    confianca: baixa por necessidade
+    respeito: baixo, misturado com medo
+    arquivo: estado/relacoes/colm_dunn.yaml
+    historico: historico/relacoes/colm_dunn.yaml
+    bytes_fragmento: 3037
+    campos_atuais: 10
+  mera_fumaca:
+    nome: Mera Fumaça
+    tipo: contato rural possível / guardiã temporária de Colm-Dent
+    status: viva, ferida e manca; armada com besta e conduzindo Colm para tratamento
+    atitude_para_ren: cautelosa, pragmática e cooperativa; Ren a libertou, protegeu Colm e confiou a retirada a
+      ela
+    confianca: moderada inicial
+    respeito: moderado
+    arquivo: estado/relacoes/mera_fumaca.yaml
+    historico: historico/relacoes/mera_fumaca.yaml
+    bytes_fragmento: 2332
+    campos_atuais: 10
+  iria_doss:
+    nome: Iria Doss
+    tipo: curandeira rural e ajustadora de ossos / contato apenas indicado por Mera
+    status: não encontrada por Ren; segundo Mera, ativa e capaz de tratar Colm/Dent
+    atitude_para_ren: desconhecida
+    confianca: desconhecida
+    respeito: desconhecido
+    arquivo: estado/relacoes/iria_doss.yaml
+    historico: historico/relacoes/iria_doss.yaml
+    bytes_fragmento: 1066
+    campos_atuais: 10
+  sella_rove:
+    nome: Sella Rove
+    tipo: lavadeira / contato de Kethra
+    status: ativa; ajudou a preparar a saída de Colm/Dent do lavadouro
+    atitude_para_ren: desconfiada e prática
+    confianca: nenhuma
+    respeito: nenhum
+    arquivo: estado/relacoes/sella_rove.yaml
+    historico: historico/relacoes/sella_rove.yaml
+    bytes_fragmento: 2093
+    campos_atuais: 10
+  dorra_hest:
+    nome: Dorra Hest
+    tipo: chefe de carroça / capataz de trabalhadores dos fornos de cal
+    status: ativa; não está nos pátios; teria movido Colm/Dent dos fornos para uma secagem velha na estrada do Fire
+      River
+    atitude_para_ren: pragmática, desconfiada e comprada por utilidade imediata
+    confianca: nenhuma
+    respeito: baixo, mas reconhece dinheiro e decisão rápida
+    arquivo: estado/relacoes/dorra_hest.yaml
+    historico: historico/relacoes/dorra_hest.yaml
+    bytes_fragmento: 2475
+    campos_atuais: 10
+  bram_vask:
+    nome: Bram Vask
+    tipo: agiota / dono de loja de penhores e cobrança
+    status: vivo, intimidado, sem o caderno de contas; provável resposta indireta em andamento
+    atitude_para_ren: amedrontada e hostil
+    confianca: nenhuma
+    respeito: medo prático
+    arquivo: estado/relacoes/bram_vask.yaml
+    historico: historico/relacoes/bram_vask.yaml
+    bytes_fragmento: 3403
+    campos_atuais: 10
+  noll:
+    nome: Noll
+    tipo: capanga de Bram Vask / mão de cobrança
+    status: 'última confirmação pública: inconsciente e respirando; não visto durante a vigília'
+    atitude_para_ren: hostil quando acordar
+    confianca: nenhuma
+    respeito: medo possível após derrota
+    arquivo: estado/relacoes/noll.yaml
+    historico: historico/relacoes/noll.yaml
+    bytes_fragmento: 1088
+    campos_atuais: 10
+  pell:
+    nome: Pell
+    tipo: mensageiro local
+    status: ativo
+    atitude_para_ren: assustado, oportunista e cooperativo por pagamento
+    confianca: muito baixa
+    respeito: baixo, mas crescente por medo e utilidade
+    arquivo: estado/relacoes/pell.yaml
+    historico: historico/relacoes/pell.yaml
+    bytes_fragmento: 3274
+    campos_atuais: 11
+  peta:
+    nome: Peta
+    tipo: criança resgatada / testemunha traumatizada
+    status: viva, resgatada da oficina dos tintureiros, em recuperação
+    atitude_para_ren: assustada, mas reconhece Ren como a pessoa que a tirou da oficina
+    confianca: frágil
+    respeito: não aplicável
+    arquivo: estado/relacoes/peta.yaml
+    historico: historico/relacoes/peta.yaml
+    bytes_fragmento: 1619
+    campos_atuais: 10
+  nera_vell:
+    nome: Nera Vell
+    tipo: testemunha protegida / gravadora de selos
+    status: sob proteção temporária de Silva Elkwood
+    atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
+    confianca: moderada em situação de crise
+    respeito: prático
+    arquivo: estado/relacoes/nera_vell.yaml
+    historico: historico/relacoes/nera_vell.yaml
+    bytes_fragmento: 2682
+    campos_atuais: 11
+  tavin_vell:
+    nome: Tavin Vell
+    tipo: testemunha jovem
+    status: sob proteção temporária de Silva Elkwood
+    atitude_para_ren: assustado, grato e tentando obedecer
+    confianca: baixa, mas crescendo
+    respeito: medo respeitoso com simpatia
+    arquivo: estado/relacoes/tavin_vell.yaml
+    historico: historico/relacoes/tavin_vell.yaml
+    bytes_fragmento: 1720
+    campos_atuais: 10
+  velha_sella:
+    nome: Velha Sella
+    tipo: contato cauteloso / moradora de Fishtown
+    status: ativa
+    atitude_para_ren: desconfiada, mas cooperativa dentro de limites
+    confianca: baixa
+    respeito: cauteloso
+    arquivo: estado/relacoes/velha_sella.yaml
+    historico: historico/relacoes/velha_sella.yaml
+    bytes_fragmento: 670
+    campos_atuais: 9
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    tipo: sacerdotisa de Lathander / abrigo potencial
+    status: ativa, em cena; abrigo provisório concedido às sete crianças resgatadas
+    atitude_para_ren: cautelosa, disposta a agir, moralmente firme e mais aberta após o resgate de Peta
+    confianca: moderada-alta em pauta de proteção de vulneráveis
+    respeito: cauteloso, crescente
+    arquivo: estado/relacoes/maerra_thandrel.yaml
+    historico: historico/relacoes/maerra_thandrel.yaml
+    bytes_fragmento: 2921
+    campos_atuais: 11
+  luath:
+    nome: Luath
+    tipo: sargento da City Guard / supervisor possível da Night Watch
+    status: contato operacional cauteloso
+    atitude_para_ren: cautelosa, direta e avaliadora
+    confianca: moderada operacional
+    respeito: prático crescente, contido por cautela
+    arquivo: estado/relacoes/luath.yaml
+    historico: historico/relacoes/luath.yaml
+    bytes_fragmento: 4501
+    campos_atuais: 11
+  sirrus_melandor:
+    nome: Sirrus Melandor
+    tipo: Chief Prelate / alto sacerdote de Tyr
+    status: em cena
+    atitude_para_ren: rígida, institucional e cautelosa
+    confianca: baixa
+    respeito: inicial pela gravidade do material, não por confiança pessoal
+    arquivo: estado/relacoes/sirrus_melandor.yaml
+    historico: historico/relacoes/sirrus_melandor.yaml
+    bytes_fragmento: 1585
+    campos_atuais: 10
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    tipo: ouvidora juramentada de Tyr
+    status: em cena
+    atitude_para_ren: formal, cautelosa e operacionalmente disposta a escalar
+    confianca: baixa institucional
+    respeito: inicial, pelo foco em testemunhas vivas
+    arquivo: estado/relacoes/halessa_vorn.yaml
+    historico: historico/relacoes/halessa_vorn.yaml
+    bytes_fragmento: 2720
+    campos_atuais: 10
+  silva_elkwood:
+    nome: Silva Elkwood
+    tipo: clériga de Chauntea / contato potencial de abrigo
+    status: conhecida em jogo
+    atitude_para_ren: favoravel e cautelosa, ainda preocupada com o risco ao circo
+    confianca: moderada e vigilante
+    respeito: alto
+    arquivo: estado/relacoes/silva_elkwood.yaml
+    historico: historico/relacoes/silva_elkwood.yaml
+    bytes_fragmento: 2018
+    campos_atuais: 10
+  jack_mooney:
+    nome: Jack Mooney
+    tipo: dono do circo / autoridade local do acampamento / patrono condicional
+    status: patrono condicional ativo
+    atitude_para_ren: pragmatica, desconfiada e interessada
+    confianca: moderada e condicional
+    respeito: inicial, baseado em competencia, audacia e honestidade parcial
+    arquivo: estado/relacoes/jack_mooney.yaml
+    historico: historico/relacoes/jack_mooney.yaml
+    bytes_fragmento: 5313
+    campos_atuais: 11
+  corven_dalm:
+    nome: Corven Dalm
+    tipo: procurador da Casa Veyr / contratante da apresentação fechada de Kage
+    status: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+    atitude_para_ren: polida, provocadora e calculista
+    confianca: nenhuma
+    respeito: tático inicial pela competência e audácia de Kage
+    arquivo: estado/relacoes/corven_dalm.yaml
+    historico: historico/relacoes/corven_dalm.yaml
+    bytes_fragmento: 2713
+    campos_atuais: 10
+  dessa_wren:
+    nome: Dessa Wren
+    tipo: costureira prática / guarda-roupa menor do circo
+    status: conhecida em jogo
+    atitude_para_ren: pragmática, irônica e cooperativa por pagamento
+    confianca: baixa
+    respeito: profissional inicial
+    arquivo: estado/relacoes/dessa_wren.yaml
+    historico: historico/relacoes/dessa_wren.yaml
+    bytes_fragmento: 3004
+    campos_atuais: 11
+  merrit_tealeaf:
+    nome: Merrit Tealeaf
+    tipo: halfling contorcionista / sabotadora confessa da corda alta
+    status: conhecida em jogo
+    atitude_para_ren: assustada, pressionada e tentando reduzir a propria culpa
+    confianca: nenhuma
+    respeito: medo pratico
+    arquivo: estado/relacoes/merrit_tealeaf.yaml
+    historico: historico/relacoes/merrit_tealeaf.yaml
+    bytes_fragmento: 2744
+    campos_atuais: 10
+  homem_red_sail_capturado:
+    nome: desconhecido
+    tipo: agente operacional menor/médio da Red Sail
+    status: coagido por Ren
+    atitude_para_ren: amedrontada e hostil
+    confianca: nenhuma
+    respeito: medo
+    arquivo: estado/relacoes/homem_red_sail_capturado.yaml
+    historico: historico/relacoes/homem_red_sail_capturado.yaml
+    bytes_fragmento: 976
+    campos_atuais: 9
+  dain_brass_mord:
+    nome: Dain 'Brass' Mord
+    tipo: intermediário/figura operacional da Red Sail
+    status: observado por Ren; acompanhado; possível alerta baixo sobre observador no galpão de cordame
+    atitude_para_ren: hostil ou interessada, ainda não confrontada diretamente
+    confianca: nenhuma
+    respeito: desconhecido
+    arquivo: estado/relacoes/dain_brass_mord.yaml
+    historico: historico/relacoes/dain_brass_mord.yaml
+    bytes_fragmento: 2259
+    campos_atuais: 10
+  rusk_cinza:
+    nome: Rusk 'Cinza'
+    tipo: coletor/intermediário da Red Sail
+    status: não encontrado
+    atitude_para_ren: desconhecida
+    confianca: nenhuma
+    respeito: nenhum
+    arquivo: estado/relacoes/rusk_cinza.yaml
+    historico: historico/relacoes/rusk_cinza.yaml
+    bytes_fragmento: 751
+    campos_atuais: 9
+  sorn_kel:
+    nome: Sorn Kel
+    tipo: responsavel por cordame e montagem
+    status: ativo nos bastidores da apresentação fechada de Kage
+    atitude_para_ren: cautelosa e profissional
+    confianca: nenhuma
+    respeito: profissional inicial
+    arquivo: estado/relacoes/sorn_kel.yaml
+    historico: historico/relacoes/sorn_kel.yaml
+    bytes_fragmento: 3045
+    campos_atuais: 10
+  mira_dane:
+    nome: Mira Dane
+    tipo: acrobata da corda alta
+    status: visivel na tenda principal
+    atitude_para_ren: fria e técnica
+    confianca: nenhuma
+    respeito: baixo, técnico
+    arquivo: estado/relacoes/mira_dane.yaml
+    historico: historico/relacoes/mira_dane.yaml
+    bytes_fragmento: 1443
+    campos_atuais: 9
+  harl_venn:
+    nome: Harl Venn
+    tipo: ajudante de cordame
+    status: confessou sua parte a Jack
+    atitude_para_ren: envergonhada, defensiva e com respeito relutante
+    confianca: baixa
+    respeito: inicial e relutante
+    arquivo: estado/relacoes/harl_venn.yaml
+    historico: historico/relacoes/harl_venn.yaml
+    bytes_fragmento: 2696
+    campos_atuais: 10
+  lysa_renn:
+    nome: Lysa Renn
+    tipo: acrobata / possível rival de Mira Dane
+    status: reintegrada em papel baixo e mascarado
+    atitude_para_ren: defensiva e provocadora
+    confianca: nenhuma
+    respeito: baixo e ferido
+    arquivo: estado/relacoes/lysa_renn.yaml
+    historico: historico/relacoes/lysa_renn.yaml
+    bytes_fragmento: 2141
+    campos_atuais: 10
+  tobb_marlin:
+    nome: Tobb Marlin
+    tipo: carreiro do circo
+    status: ativo; ajudou na segurança e cobertura de Kage
+    atitude_para_ren: pragmática, profissional e subordinada aos filtros de Jack
+    confianca: baixa operacional
+    respeito: prático inicial
+    arquivo: estado/relacoes/tobb_marlin.yaml
+    historico: historico/relacoes/tobb_marlin.yaml
+    bytes_fragmento: 1091
+    campos_atuais: 9
+  brunna_torkel:
+    nome: Brunna Torkel
+    tipo: medidora de porões / fonte sobre Sarbreen
+    status: em cena
+    atitude_para_ren: irritada, alerta e potencialmente útil
+    confianca: nenhuma
+    respeito: baixo, baseado na pergunta certa
+    arquivo: estado/relacoes/brunna_torkel.yaml
+    historico: historico/relacoes/brunna_torkel.yaml
+    bytes_fragmento: 2377
+    campos_atuais: 10

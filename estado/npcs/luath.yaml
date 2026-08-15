@@ -1,0 +1,39 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: luath
+npc:
+  nome: Luath
+  grupo: City Guard / Night Watch
+  medidores:
+    vinculo: 4
+    confianca: 7
+    risco_percebido: 8
+  natureza_do_vinculo: respeito operacional cauteloso
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Se o vínculo com Luath subir, deve virar camaradagem institucional, confiança de campo ou
+    respeito duro, não intimidade sentimental rápida.
+
+    '
+  leitura_atual: 'Luath respeita a utilidade operacional de Ren, especialmente depois dos barris, de Sarbreen e
+    da entrega das evidências da Ponte Baixa. A escolha de Ren por fonte reservada, em vez de assinatura heroica
+    ou mentira nominal, reforçou a confiança prática. A comparação com os Miburo/Shinsengumi criou uma primeira
+    camaradagem institucional, ainda seca e contida. Ren segue marcado como risco de justiça privada.
+
+    '
+  tom_atual: 'Seco, institucional e objetivo. Deve poder reconhecer competência sem virar aliado caloroso; quando
+    impõe limite, o limite vem da guarda, da cidade e da cadeia de custódia, não de antipatia pessoal.
+
+    '
+  impacto_em_testes: 'Informações concretas, prisioneiros vivos, mapas e risco civil podem reduzir CD ou dispensar
+    rolagem quando couberem na autoridade de Luath. Pedidos de acesso direto a interrogatórios, serviço off-record
+    ou violência contra Masao aumentam CD ou são recusados por princípio.
+
+    '
+  gatilhos_de_aumento:
+  - Ren entrega pessoas vivas, prova material e linhas verificáveis
+  - Ren evita transformar guarda em ferramenta de vingança
+  - Ren aceita restrições institucionais sem tentar comprar exceção suja
+  gatilhos_de_queda:
+  - Ren deixa corpos ligados à investigação
+  - Ren pede cobertura para crime ou execução privada
+  - a ligação pública entre Ren, Kage e a guarda fica clara demais

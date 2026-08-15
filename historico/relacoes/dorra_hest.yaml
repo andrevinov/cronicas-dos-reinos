@@ -1,0 +1,46 @@
+schema_historico_relacao: 1
+id: dorra_hest
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Dorra Hest
+  tipo: chefe de carroça / capataz de trabalhadores dos fornos de cal
+  local: pátios de saída de trabalhadores; rota dos fornos de cal do Fire River
+  status: ativa; não está nos pátios; teria movido Colm/Dent dos fornos para uma secagem velha na estrada do Fire
+    River
+  atitude_para_ren: pragmática, desconfiada e comprada por utilidade imediata
+  confianca: nenhuma
+  respeito: baixo, mas reconhece dinheiro e decisão rápida
+  motivo: 'Ren encontrou Dorra Hest ao procurar uma carroça pobre, discreta e ligada a trabalho duro fora da cidade.
+    Dorra percebeu que Colm/Dent era fraco demais para enxada ou cal, mas aceitou 7 PO para escondê-lo sob a lona
+    e levá-lo para os fornos de cal do Fire River antes da primeira luz de 4 Eleasis. Dorra prometeu silêncio prático
+    e alguns dias de trabalho ou abrigo ruim, não proteção verdadeira. Na manhã de 4 Eleasis, um trabalhador dos
+    pátios contou a Ren que Dorra saiu no cinza, depois de alguém perguntar por um doente vindo do lavadouro. O
+    trabalhador acredita que Dent ainda estava sob a lona quando a carroça partiu, mas não pôde jurar segurança.
+    No amanhecer de 7 Eleasis, Ren voltou aos pátios procurando Dorra e encontrou um ajudante dos fornos. Dorra
+    não estava presente. O ajudante informou que Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá: depois
+    que alguém de "mão limpa" perguntou por ele, Dorra decidiu que a cal não esconderia tosse já procurada e mandou
+    Dent para uma secagem velha na estrada do Fire River, com alguém chamada Mera Fumaça. O prazo ruim de três dias
+    termina hoje.
+
+    '
+  informacoes_observadas_por_ren:
+  - Dorra Hest comanda uma carroça de eixo duplo coberta por lona manchada de branco.
+  - A carroça leva trabalhadores e material para fornos de cal do Fire River.
+  - Dorra planejava sair antes da primeira luz de 4 Eleasis.
+  - Dorra aceitou 7 PO para levar Colm sob o nome Dent.
+  - Dorra não parece gentil; parece capaz de manter silêncio enquanto o pagamento compensar o risco.
+  - Dorra saiu no cinza, depois das primeiras carroças de cal.
+  - Dorra fez barulho, mexeu na lona e tratou Dent como sobrinho torto quando alguém perguntou por um doente vindo
+    do lavadouro.
+  - Um trabalhador acredita que Dent estava sob a lona quando a carroça saiu, mas não pode jurar.
+  - Um ajudante dos fornos informou que Dent chegou vivo aos fornos de cal, mas Dorra não conseguiu mantê-lo ali
+    com segurança.
+  - Dorra teria enviado Dent para uma secagem velha na estrada do Fire River, com Mera Fumaça.
+  - O acordo ruim de três dias termina em 7 Eleasis.
+  riscos:
+  - Dorra pode abandonar Colm/Dent se ele tossir sangue, atrair guarda, roubar ou parecer caro demais para manter.
+  - As 7 PO são quantia grande o bastante para fixar a memória de Dorra.
+  - Se alguém pagar mais ou ameaçar os trabalhadores antes da partida, Dorra pode recalcular a lealdade.
+  - A pergunta feita antes da partida expôs que alguém chegou perto demais da carroça certa.
+  - A nova busca de Ren nos pátios foi percebida por olhos perigosos; seguir direto para Fire River pode conduzir
+    pressão até Dent.

@@ -1,0 +1,45 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: merrit_tealeaf
+historico: historico/relacoes/merrit_tealeaf.yaml
+relacao:
+  nome: Merrit Tealeaf
+  tipo: halfling contorcionista / sabotadora confessa da corda alta
+  local: Jack Mooney & Sons Circus
+  status: conhecida em jogo
+  atitude_para_ren: assustada, pressionada e tentando reduzir a propria culpa
+  confianca: nenhuma
+  respeito: medo pratico
+  motivo_atual: Durante a reprise curta, Merrit disse a frase certa e calou antes de estragar o efeito. Isso manteve
+    a narração funcional e ajudou Kage a sair sem interação direta com a plateia.
+  informacoes_compartilhadas_por_merrit:
+  - Merrit descreveu Harl como apaixonado pelo que Lysa era, talvez por Lysa, talvez pelas duas coisas.
+  - Ren prometeu não abordar Harl diretamente nem revelar que ouviu dela.
+  - Merrit quase sorriu com a ideia de um número chamado 'O Exótico e a Exótica', mas respondeu que Ren cairia sério
+    demais.
+  - Merrit pode narrar O Vento da Noite sob supervisão de Silva, como trabalho limitado sem corda alta, faca, caixa
+    de truque ou acesso solto.
+  - Merrit aceitou narrar O Vento da Noite e ensaiou três entradas curtas, uma reverência exagerada e um tropeço
+    falso.
+  - Merrit narrou O Vento da Noite de chão, com texto curto e supervisão, sem incidente.
+  - Dessa aprovou manter a piada do céu rico no texto de Merrit.
+  - No ensaio de 4 Eleasis, Merrit tentou ampliar demais o drama da lenda; a versão segura ficou com duas frases
+    curtas e pausas marcadas.
+  - Na preparação da reprise curta de 5 Eleasis, Merrit repetiu a história em versão enxuta após Dessa e Sorn cortarem
+    excessos.
+  - Na reprise curta de 5 Eleasis, Merrit sustentou a frase marcada e calou a tempo.
+  riscos:
+  - A confissão foi parcialmente ouvida por Mira Dane.
+  - Ren percebeu omissão na explicação de Merrit sobre confiar que Sorn detectaria o corte.
+  - Jack aplicou punição provisória, mas pode rever o caso se a influência externa for comprovada.
+  - Merrit foi suspensa de apresentações e colocada sob controle de Silva/Sorn.
+  - Merrit está emocionalmente abalada e não inicia novas revelações sem perguntas cuidadosas.
+  - Merrit protege Harl por lealdade e culpa.
+  - Merrit resiste a chamar Harl de manipulador, mas admite que talvez falar a frase certa para a pessoa errada
+    também seja usar alguém.
+  - Merrit não conseguiu confiar totalmente que Harl não será exposto.
+  - Se for usada como narradora, Merrit deve ficar onde Silva veja suas mãos.
+  - O sucesso como narradora pode reduzir o desespero de Merrit, mas ainda não restaura confiança plena.
+conteudo_mais_antigo_no_historico:
+  informacoes_compartilhadas_por_merrit: 8
+  riscos: 1

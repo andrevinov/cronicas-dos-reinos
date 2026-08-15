@@ -1,0 +1,58 @@
+schema_historico_relacao: 1
+id: mera_fumaca
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Mera Fumaça
+  tipo: contato rural possível / guardiã temporária de Colm-Dent
+  local: em trânsito na carroça rumo à casa de Iria Doss, com Colm/Dent
+  status: viva, ferida e manca; armada com besta e conduzindo Colm para tratamento
+  atitude_para_ren: cautelosa, pragmática e cooperativa; Ren a libertou, protegeu Colm e confiou a retirada a ela
+  confianca: moderada inicial
+  respeito: moderado
+  motivo: 'Dorra teria enviado Colm/Dent para uma secagem velha com Mera Fumaça depois que os fornos de cal deixaram
+    de ser seguros. O besteiro capturado afirmou que Mera guardou Dent por dinheiro de Dorra e não chamou a emboscada,
+    mas viu a retirada tarde demais e pode estar fechada no galpão baixo. Ren carregou Colm/Dent até perto do provável
+    galpão baixo e ouviu som curto de impacto ou voz abafada vindo de dentro. O galpão está fechado por fora com
+    barra de madeira improvisada, mas Ren não identificou com segurança se há alarme, armadilha, fio, cunha ou apenas
+    tranca rural. Ren depois inspecionou o interior pelas frestas e viu uma mulher viva, presa pelas mãos e por
+    um tornozelo a uma argola baixa ou gancho antigo. Ren confirmou que era Mera Fumaça e a libertou ao entrar,
+    dentro do mesmo minuto. Ela estava cansada, magra e irritada, com ferimento e risco de fraqueza, mas sem ameaça
+    de imediato. Ren a levou até Colm/Dent e pediu descrição dos captores, informação sobre outros presos e indicação
+    de abrigo ou tratamento. Mera respondeu sem barganha, indicou o forno morto e Iria Doss, e reconheceu o rapaz
+    da faixa azul quando a carroça de resposta entrou no ramal.
+
+    '
+  informacoes_observadas_por_ren:
+  - Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River.
+  - Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra.
+  - Segundo o besteiro, Mera não chamou a emboscada.
+  - Segundo o besteiro, Mera pode estar presa no galpão baixo.
+  - Ren chegou perto do provável galpão baixo sem ser percebido por ninguém visível.
+  - Há som curto de impacto ou voz abafada vindo de dentro do galpão baixo.
+  - A porta do galpão baixo está fechada por fora com barra de madeira improvisada.
+  - Ren não identificou com segurança se a porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada.
+  - Ren viu uma mulher viva dentro do galpão baixo, presa pelas mãos e por um tornozelo.
+  - A mulher vista pelo buraco da fresta era Mera Fumaça.
+  - Ao entrar, Ren conseguiu libertar Mera Fumaça sem combate adicional.
+  - Não há outra pessoa visível no interior durante a entrada, mas a luz ruim e pilhas internas impedem certeza
+    absoluta além do primeiro cômodo.
+  - Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode fazer ruído se removida
+    sem cuidado.
+  - A retirada da barra foi barulhenta o suficiente para aumentar risco de alerta.
+  - 'Mera viu quatro envolvidos: a mulher de avental escuro, o homem magro da besta, o rapaz de faixa azul e corda
+    nova, e um homem de casaco pardo com mãos de escrivão.'
+  - O homem de casaco pardo tinha punhos limpos, rosto estreito, barba raspada, tinta violeta sob a unha do polegar
+    direito e cicatriz pequena abaixo da orelha esquerda.
+  - Mera não viu outros prisioneiros além dela e de Colm/Dent.
+  - Segundo Mera, os captores usavam Colm/Dent para atrair alguém que viesse buscá-lo.
+  - Mera conhece um forno morto a cinco minutos pelo mato, útil apenas como cobertura breve.
+  - Mera indicou Iria Doss como curandeira rural que trata ferimentos de cal, problemas no peito e ossos quebrados,
+    mas cuja casa não é secreta.
+  - Uma carroça de resposta entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta leve; eles
+    ainda não localizaram o grupo.
+  - Ren entregou uma besta a Mera e a ajudou a acomodar Colm/Dent na carroça.
+  - Mera partiu rumo a Iria Doss com Colm/Dent; Ren ainda não confirmou a chegada.
+  riscos:
+  - Mera manca e não consegue sustentar fuga rápida sem ajuda.
+  - A secagem velha e o galpão baixo estão comprometidos como abrigo.
+  - O trajeto até Iria Doss não é secreto, e Mera ainda está ferida enquanto conduz Colm.

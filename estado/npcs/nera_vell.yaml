@@ -1,0 +1,38 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: nera_vell
+npc:
+  nome: Nera Vell
+  grupo: Vell / protegidos no circo
+  medidores:
+    vinculo: 8
+    confianca: 7
+    risco_percebido: 8
+  natureza_do_vinculo: romântico explícito, protetivo e vulnerável
+  subtexto_romantico: claro
+  observacao_afetiva: 'Nera já tem vínculo romântico em cena. O ciúme dela deve nascer da vulnerabilidade concreta:
+    ela está escondida enquanto Kage ganha palco, dinheiro e olhares; não deve virar posse automática sobre Ren.
+
+    '
+  leitura_atual: 'Nera tem vínculo romântico explícito com Ren e acredita que ele tenta protegê-la e proteger Tavin.
+    Ao mesmo tempo, ela vê Ren como alguém que promete carregar perigos grandes demais e pode desaparecer dentro
+    da própria vingança.
+
+    '
+  tom_atual: 'Afetuosa, preocupada e franca. Deve poder demonstrar calor, saudade, ciúme contido e orgulho assustado;
+    cobranças devem soar pessoais, não como sermão institucional.
+
+    '
+  impacto_em_testes: 'Pedidos de confiança pessoal coerentes com proteção dos Vell tendem a CD menor ou dispensar
+    rolagem. Pedidos que a coloquem como isca, que afastem Ren por tempo indefinido ou que usem Tavin como peça
+    enfrentam resistência forte apesar do vínculo.
+
+    '
+  gatilhos_de_aumento:
+  - Ren volta quando promete ou deixa aviso seguro quando não pode voltar
+  - Ren trata Nera e Tavin como pessoas, não como ferramentas de vingança
+  - Ren divide informação suficiente para ela não se sentir guardada no escuro
+  gatilhos_de_queda:
+  - Ren desaparece sem sinal após prometer retorno
+  - Ren usa Nera, Tavin ou o livro como isca sem consentimento claro
+  - Ren promete solução absoluta sem reconhecer o risco real

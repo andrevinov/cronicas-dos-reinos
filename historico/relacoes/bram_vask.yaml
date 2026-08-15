@@ -1,0 +1,76 @@
+schema_historico_relacao: 1
+id: bram_vask
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Bram Vask
+  tipo: agiota / dono de loja de penhores e cobrança
+  local: loja de Bram Vask, Lower Trades
+  status: vivo, intimidado, sem o caderno de contas; provável resposta indireta em andamento
+  atitude_para_ren: amedrontada e hostil
+  confianca: nenhuma
+  respeito: medo prático
+  motivo: 'Ren entrou em sua loja como suposto devedor, mas Bram percebeu que a história não parecia comum. Ainda
+    assim, fechou a porta para controlar a conversa. Ren então derrubou Noll com velocidade suficiente para quebrar
+    o sangue-frio de Bram, exigiu Colm e tomou o caderno de contas sujas como alavanca contra futuras cobranças
+    sobre Colm ou a família de Kethra. Depois, Ren comprou um manto roto, assumiu cobertura de mendigo e vigiou
+    a loja por quase três horas, mas não encontrou ponto alto bom e teve leitura parcial. Bram não saiu em pessoa
+    de modo claro. Ren não viu perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques,
+    mas viu movimento pequeno e mal confirmado perto dos fundos da loja. Mais tarde, Sella relatou que um rapaz
+    já perguntou no Lavadouro dos Três Tanques pela frase ligada a Kethra. Ren não confirmou que Bram enviou o rapaz,
+    mas Kethra interpretou como sinal de que Bram mexeu indiretamente. Ao mover Colm para os pátios de carroças,
+    Ren não conseguiu apagar todo rastro: uma menina viu dois vultos saindo da área dos Três Tanques rumo aos pátios,
+    sem rosto claro. Ao voltar para avisar Kethra, Ren deixou mais uma lembrança fraca: um homem velho nos pátios
+    viu um homem saindo da área da carroça de cal e depois tomando direção da Rua da Cal. Na manhã de 4 Eleasis,
+    Ren soube por um trabalhador dos pátios que um sujeito de roupa de trabalho limpa demais perguntou por um doente
+    vindo do lavadouro antes da carroça de Dorra sair. Ren ainda não confirmou que essa pessoa foi enviada por Bram.
+    No amanhecer de 7 Eleasis, ao voltar aos pátios em busca de Dorra/Dent, Ren percebeu nova atenção perigosa:
+    um homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagiram à busca. Ren ainda não confirmou
+    que esses olhos sejam de Bram, mas o padrão lembra a resposta indireta anterior ao fio de Colm. Mais tarde na
+    mesma manhã, a Night Watch pressionou Bram em sua loja após Ren levar o caso a Luath. Depois da visita da guarda,
+    uma criança entregou a Bram um recado ameaçador enviado por Ren, mas errou a formulação e ligou a ameaça à visita
+    da guarda. Bram não fez cena pública com a criança, mas fechou a loja e começou a se mover nos fundos. No ponto
+    preparado da estrada do Fire River, um besteiro rendido por Ren afirmou que Bram Vask pagou a pergunta sobre
+    Colm/Dent, mas não veio pessoalmente; segundo ele, um homem de mãos limpas organizou a compra/captura.
+
+    '
+  informacoes_observadas_por_ren:
+  - Bram usa a loja de penhores como frente para dívida/trabalho e cobrança.
+  - Bram mantém registros sujos com iniciais, marcas, dias, apelidos, símbolos e números.
+  - Bram tem medo do caderno cair nas mãos de Tyr ou da Night Watch, mesmo que ele não seja prova jurídica limpa
+    por si só.
+  - Bram não viu o rosto de Ren, apenas um agressor encapuzado, enlameado e perigoso.
+  - Após o resgate de Colm, Bram não saiu em pessoa de modo claro durante quase três horas de vigília parcial de
+    Ren.
+  - Ren não viu perseguição aberta saindo da loja rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques.
+  - Houve movimento pequeno e mal confirmado perto dos fundos da loja, mas Ren não identificou natureza, destinatário
+    ou ligação com Bram.
+  - Sella Rove relatou que um rapaz perguntou pela frase 'pano azul com sabão preto' no Lavadouro dos Três Tanques.
+  - Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto
+    claro.
+  - Um homem velho nos pátios viu um homem sair da área da carroça de cal e depois tomar direção da Rua da Cal.
+  - Um trabalhador dos pátios contou a Ren que alguém perguntou por um doente vindo do lavadouro antes da saída
+    de Dorra.
+  - A Night Watch pressionou Bram em sua loja na manhã de 4 Eleasis, falando de cobrança violenta, possível gente
+    mantida por dívida e risco a Kethra.
+  - Uma criança entregou a Bram um recado ameaçador de Ren, de forma imprecisa, dizendo que a visita da guarda foi
+    só o começo.
+  - Segundo um besteiro rendido por Ren na estrada do Fire River, Bram Vask pagou a pergunta sobre Colm/Dent, mas
+    não veio pessoalmente.
+  - Segundo o mesmo besteiro, um homem de mãos limpas organizou a captura/compra em campo.
+  - Na balança velha, Ren recuperou os fragmentos de mata-borrão 'se falhar', 'estrada principal' e 'B.V. paga';
+    a leitura sugere Bram Vask, mas não constitui identificação documental completa.
+  riscos:
+  - Bram pode procurar proteção, vingança ou uma forma de identificar o agressor.
+  - Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades.
+  - Se Bram ligar Colm a Kethra como fonte da informação, ela corre risco direto.
+  - A vigília ruim de Ren deixa aberta a possibilidade de Bram ter acionado alguém indiretamente.
+  - A pergunta do rapaz no lavadouro sugere que a resposta indireta pode estar se aproximando de Colm.
+  - Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças.
+  - Se Bram juntar a menina e o homem velho, pode estreitar a busca para carroças de cal ou carvão.
+  - Se a pessoa que perguntou nos pátios era resposta de Bram, Bram ou intermediário já estreitou a busca até Dorra
+    Hest e os fornos de cal.
+  - A mensagem torta pode fazer Bram associar a ameaça anônima a alguém capaz de observar ou influenciar a guarda.
+  - Bram não parece contido; a dupla pressão pode gerar resposta indireta, ocultação de registros ou busca por quem
+    o ameaçou.
+  - Se a fala do besteiro for verdadeira, Bram terceirizou a ação no Fire River por meio de intermediário mais limpo
+    e talvez mais perigoso juridicamente.

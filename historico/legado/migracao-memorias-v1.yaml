@@ -1,0 +1,55 @@
+schema_migracao_memorias: 1
+relacoes:
+  origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+  blob: 6a8b7765c98aa31ca6b4355a78a879185f4361f0
+  quantidade: 34
+npcs:
+  origem: historico/legado/medidores-npcs-pre-etapa-6.yaml
+  blob: 7170959e9a1539e7449593e04a8e8fba7375caf3
+  quantidade: 14
+conhecimento:
+  origem: historico/legado/conhecimento-acumulado-pre-etapa-6.md
+  blob: 9ff35d2650f6da2496a3989d4786414a049ebe3f
+  fragmentos: 41
+  ordem_fragmentos:
+  - personagens/jogador/conhecimento/topicos/01-introducao.md
+  - personagens/jogador/conhecimento/topicos/02-sobre-si-mesmo.md
+  - personagens/jogador/conhecimento/topicos/03-sobre-masao-e-as-dez-espadas.md
+  - personagens/jogador/conhecimento/topicos/04-sobre-kozakura-e-kara-tur.md
+  - personagens/jogador/conhecimento/topicos/05-sobre-faerun.md
+  - personagens/jogador/conhecimento/topicos/06-sobre-ravens-bluff.md
+  - personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
+  - personagens/jogador/conhecimento/topicos/08-contato-inicial-provavel.md
+  - personagens/jogador/conhecimento/topicos/09-rumores-que-ren-pode-ouvir-cedo.md
+  - personagens/jogador/conhecimento/topicos/10-descobertas-em-jogo.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/001-sessao-001-the-silver-lily.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/002-sessao-001-mara-tharle.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/003-sessao-001-reconhecimento-da-red-sail-tavern.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/004-sessao-001-retorno-a-silver-lily.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/005-sessao-001-segunda-aproximacao-da-red-sail.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/006-sessao-001-roubo-da-prancheta.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/007-sessao-001-fuga-da-silver-lily.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/008-sessao-001-conteudo-da-prancheta.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/009-sessao-001-casa-da-rede-morta.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-01.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-02.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-03.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-04.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-05.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-06.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-07.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-08.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-09.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-10.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-11.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-01.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-02.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-03.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-04.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-05.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-06.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-07.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-08.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-09.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-10.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-11.md

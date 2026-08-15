@@ -1,0 +1,40 @@
+schema_historico_relacao: 1
+id: sella_rove
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Sella Rove
+  tipo: lavadeira / contato de Kethra
+  local: Lavadouro dos Três Tanques, Rua da Cal, Lower Trades
+  status: ativa; ajudou a preparar a saída de Colm/Dent do lavadouro
+  atitude_para_ren: desconfiada e prática
+  confianca: nenhuma
+  respeito: nenhum
+  motivo: 'Kethra indicou Sella Rove como pessoa capaz de esconder Colm por algumas horas nos fundos do Lavadouro
+    dos Três Tanques. Sella aceitou Colm no quarto da lenha após reconhecer a senha indireta e o peso do caderno
+    de Bram Vask, mas não fez perguntas abertas. Depois do turno de Kethra, Sella informou que um rapaz passou perguntando
+    se ali se lavava pano azul com sabão preto. Ela desviou o rapaz, mas deixou claro que Colm não pode ficar ali
+    quando a noite trouxer gente procurando lugar quente para beber e cobrar. Após Ren propor uma saída de Ravens
+    Bluff em 4 Eleasis, Sella ofereceu uma solução ruim e temporária: mudar Colm do quarto da lenha para trás da
+    caldeira velha, sob lona de carvão e barril de cinza, somente até antes da primeira luz. Ren decidiu mover Colm
+    imediatamente. Sella preparou embrulho simples de comida e abriu uma saída lateral de cinza, mas a movimentação
+    ainda deixou uma lembrança fraca numa menina da rua. Quando Ren voltou para dar boa notícia a Kethra, Sella
+    alertou que boa notícia também deixa pegada, reforçando que o lavadouro não deve virar ponto de retorno frequente.
+
+    '
+  informacoes_observadas_por_ren:
+  - Sella Rove é uma mulher de braços fortes e cabelo grisalho preso.
+  - Ela controla ou trabalha nos fundos do Lavadouro dos Três Tanques.
+  - A frase 'sabão preto para pano azul' funciona como identificação ligada a Kethra.
+  - Sella aceitou esconder Colm temporariamente no quarto da lenha.
+  - Sella desviou um rapaz que perguntou pela frase 'pano azul com sabão preto'.
+  - Sella pode esconder Colm atrás da caldeira velha até antes da primeira luz de 4 Eleasis, mas não depois.
+  - Sella preparou pão, queijo seco, água e uma agulha torta com linha para Colm/Dent.
+  - Sella abriu uma saída lateral para reduzir a ligação direta entre Colm e a porta principal do lavadouro.
+  - Sella avisou Ren que voltar ao lavadouro para dar boa notícia também cria rastro.
+  riscos:
+  - Sella não é aliada de Ren; sua disposição vem da ligação com Kethra.
+  - O lavadouro é lugar de trabalho, não fortaleza.
+  - Se muita gente associar Colm ao lavadouro, Sella pode expulsá-lo ou buscar ajuda própria.
+  - Sella pode retirar sua ajuda se Ren demorar a mover Colm ou trouxer violência para o lavadouro.
+  - A ajuda de Sella reduziu o risco imediato, mas não apagou o rastro fraco deixado na saída lateral.
+  - Sella pode fechar a porta para Ren se ele usar o lavadouro como base de recados.

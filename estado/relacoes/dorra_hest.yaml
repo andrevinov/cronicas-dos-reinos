@@ -1,0 +1,39 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: dorra_hest
+historico: historico/relacoes/dorra_hest.yaml
+relacao:
+  nome: Dorra Hest
+  tipo: chefe de carroça / capataz de trabalhadores dos fornos de cal
+  local: pátios de saída de trabalhadores; rota dos fornos de cal do Fire River
+  status: ativa; não está nos pátios; teria movido Colm/Dent dos fornos para uma secagem velha na estrada do Fire
+    River
+  atitude_para_ren: pragmática, desconfiada e comprada por utilidade imediata
+  confianca: nenhuma
+  respeito: baixo, mas reconhece dinheiro e decisão rápida
+  motivo_atual: 'O ajudante informou que Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá: depois que alguém
+    de "mão limpa" perguntou por ele, Dorra decidiu que a cal não esconderia tosse já procurada e mandou Dent para
+    uma secagem velha na estrada do Fire River, com alguém chamada Mera Fumaça. O prazo ruim de três dias termina
+    hoje.'
+  informacoes_observadas_por_ren:
+  - A carroça leva trabalhadores e material para fornos de cal do Fire River.
+  - Dorra planejava sair antes da primeira luz de 4 Eleasis.
+  - Dorra aceitou 7 PO para levar Colm sob o nome Dent.
+  - Dorra não parece gentil; parece capaz de manter silêncio enquanto o pagamento compensar o risco.
+  - Dorra saiu no cinza, depois das primeiras carroças de cal.
+  - Dorra fez barulho, mexeu na lona e tratou Dent como sobrinho torto quando alguém perguntou por um doente vindo
+    do lavadouro.
+  - Um trabalhador acredita que Dent estava sob a lona quando a carroça saiu, mas não pode jurar.
+  - Um ajudante dos fornos informou que Dent chegou vivo aos fornos de cal, mas Dorra não conseguiu mantê-lo ali
+    com segurança.
+  - Dorra teria enviado Dent para uma secagem velha na estrada do Fire River, com Mera Fumaça.
+  - O acordo ruim de três dias termina em 7 Eleasis.
+  riscos:
+  - Dorra pode abandonar Colm/Dent se ele tossir sangue, atrair guarda, roubar ou parecer caro demais para manter.
+  - As 7 PO são quantia grande o bastante para fixar a memória de Dorra.
+  - Se alguém pagar mais ou ameaçar os trabalhadores antes da partida, Dorra pode recalcular a lealdade.
+  - A pergunta feita antes da partida expôs que alguém chegou perto demais da carroça certa.
+  - A nova busca de Ren nos pátios foi percebida por olhos perigosos; seguir direto para Fire River pode conduzir
+    pressão até Dent.
+conteudo_mais_antigo_no_historico:
+  informacoes_observadas_por_ren: 1

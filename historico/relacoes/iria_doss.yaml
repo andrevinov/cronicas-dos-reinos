@@ -1,0 +1,21 @@
+schema_historico_relacao: 1
+id: iria_doss
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Iria Doss
+  tipo: curandeira rural e ajustadora de ossos / contato apenas indicado por Mera
+  local: casa baixa depois do salgueiro partido, no ramal do rio a leste da secagem velha
+  status: não encontrada por Ren; segundo Mera, ativa e capaz de tratar Colm/Dent
+  atitude_para_ren: desconhecida
+  confianca: desconhecida
+  respeito: desconhecido
+  motivo: 'Mera indicou Iria como alguém acostumada a tratar queimaduras de cal, problemas pulmonares e ossos quebrados
+    de trabalhadores locais. Iria aceitaria moeda e a palavra de Mera, mas sua casa é conhecida na estrada e não
+    funciona como esconderijo seguro.
+
+    '
+  informacoes_observadas_por_ren:
+  - A existência, capacidade e disposição de Iria vêm apenas do relato de Mera.
+  - A casa de Iria fica a cerca de quinze minutos para uma pessoa saudável, mais tempo com Colm e Mera feridos.
+  riscos:
+  - Perguntas na estrada podem levar perseguidores até a casa de Iria.

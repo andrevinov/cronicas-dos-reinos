@@ -1,0 +1,128 @@
+* Ren viu pela fresta baixa uma sombra magra de vermelho e uma forma menor, baixa demais para adulto, perto do chão;
+* Ren ainda não foi notado;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, restando poucos minutos;
+* hora aproximada: 00:55 de 4 Eleasis, 1372 DR.
+* rolagem: Aproximação final sob Passos sem Pegadas, d20 12 + 16 = 28 contra CD 15, sucesso;
+* rolagem: Entrada baixa pela porta dos fundos, d20 13 + 6 = 19 contra CD 14, sucesso;
+* rolagem: Carrinho surpresa não letal contra a figura vermelha, d20 com vantagem [2, 15] -> 15 + 6 = 21 contra CA 13, acerto, 5 de dano contundente;
+* rolagem: Golpe bônus de Artes Marciais contra a figura desequilibrada, d20 com vantagem [3, 6] -> 6 + 6 = 12 contra CA 13, erro;
+* iniciativa: Ren 23; figura vermelha 17;
+* Ren entrou no interior da oficina dos tintureiros pela porta dos fundos, de modo baixo e agressivo;
+* a figura vermelha foi atingida e derrubada/desequilibrada, mas naquele primeiro momento ainda continuava consciente;
+* Ren viu que a criança no chão está viva, presa por panos e quase certamente é Peta;
+* a oficina contém cubas rasas, varais de pano, potes de cera ruim, lamparina protegida e uma cortina grossa ao fundo;
+* há movimento atrás da cortina do fundo, e a figura vermelha tem ao alcance uma faca curta de trabalho e um cordão fino;
+* Ren age primeiro na ordem de iniciativa;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas a discrição dentro da oficina foi quebrada;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Golpe não letal para impedir grito ou alarme, d20 com vantagem [3, 1] -> 3 + 6 = 9 contra CA 13, erro;
+* rolagem: Golpe bônus de Artes Marciais para cortar a reação, d20 com vantagem [11, 1] -> 11 + 6 = 17 contra CA 13, acerto, 8 de dano contundente;
+* Ren nocauteou a figura vermelha antes que ela gritasse ou puxasse o cordão;
+* a figura vermelha está inconsciente, respirando, com máscara ainda presa ao rosto;
+* a criança está viva, presa e amordaçada, quase certamente Peta, ao alcance de Ren;
+* atrás da cortina do fundo, há movimento urgente como alguém mexendo em trava, tampa ou rota de fuga;
+* uma voz adulta atrás da cortina chamou por "Vermelho" e não recebeu resposta;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas dentro da oficina a surpresa já virou ruído;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Pegar Peta e sair da oficina sob pressão, d20 17 + 6 = 23 contra CD 15, sucesso;
+* Ren removeu a máscara da figura vermelha antes de sair;
+* a figura vermelha é uma mulher jovem adulta desconhecida, pálida, magra, com cabeça raspada dos lados, cabelo escuro, cicatriz antiga de queimadura/cera da orelha até perto da boca e marca de sol apagado no lado esquerdo do pescoço;
+* a figura vermelha não é Masao, Brass, Velis, Noll ou qualquer rosto já nomeado para Ren;
+* Ren pegou a criança viva, presa e amordaçada, quase certamente Peta, e saiu com ela para o pátio dos fundos;
+* ao sair, Ren viu a cortina do fundo abrir parcialmente: manga cinza, mão com dois anéis simples, barra de ferro curta e abertura baixa escura atrás do tecido;
+* a grelha por onde Ren veio está a poucos passos, mas é estreita e lenta com a criança;
+* a rota pela rua/pátio é mais rápida e mais exposta;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde ainda não usado;
+* Passos sem Pegadas segue ativo até cerca de 00:58, mas está nos instantes finais;
+* hora aproximada: 00:56 de 4 Eleasis, 1372 DR.
+* rolagem: Sair do pátio dos tintureiros sem entregar a direção, d20 18 + 16 = 34 contra CD 16, sucesso;
+* rolagem: Improvisar Peta como carga sob o disfarce do broche, d20 16 + 6 = 22 contra CD 14, sucesso;
+* Ren saiu pela rua dos tintureiros em vez de retornar pela grelha baixa;
+* Ren usou pano grosso de tingimento e cesto quebrado para ocultar Peta como carga de retalhos úmidos;
+* Ren ativou o **Broche do Semblante Humilde** na rua dos tintureiros;
+* o broche está ativo até cerca de 01:56 de 4 Eleasis, produzindo aparência humilde/comum em Ren;
+* o uso do broche está gasto até o próximo amanhecer;
+* **Passos sem Pegadas** expirou no trajeto por volta de 00:58 de 4 Eleasis;
+* Ren chegou à Casa da Aurora Menor sem levantar suspeita útil;
+* Cal confirmou que a criança resgatada é **Peta**;
+* Maerra iniciou atendimento imediato a Peta e perguntou a Ren quantos vieram atrás;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
+* hora aproximada: 01:05 de 4 Eleasis, 1372 DR.
+* rolagem: Maerra reconhecer a marca do sol apagado, d20 2 + 5 = 7 contra CD 14, falha;
+* Maerra não reconheceu a mulher de vermelho nem a marca com segurança;
+* Maerra avaliou apenas que o sol apagado não é símbolo de Lathander ou ordem conhecida por ela, parecendo deboche ou apropriação cruel de símbolo de amanhecer;
+* rolagem: Peta conseguir dizer algo útil em choque, d20 2 contra CD 12, falha;
+* Peta só conseguiu dizer fragmentos: "frio", "embaixo" e que a mulher de vermelho não falava com ela;
+* Cal segurou o antebraço de Ren por um instante em agradecimento;
+* Ren dormiu pouco na Casa da Aurora Menor por puro cansaço;
+* o sono não contou como descanso curto de monge: Ren não meditou por tempo suficiente e não recuperou ki;
+* Ren voltou ao Jack Mooney & Sons Circus pela rota da carroça de remendos;
+* o Broche do Semblante Humilde expirou no caminho e está gasto até o próximo amanhecer;
+* Ren não percebeu cauda competente no retorno ao circo;
+* Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás;
+* Ren está com 31/31 PV, CA 17, 0/4 ki, 24 PO, 9 shuriken, o pedaço de pano vermelho encerado e o Broche do Semblante Humilde usado até o próximo amanhecer;
+* hora aproximada: 02:10 de 4 Eleasis, 1372 DR.
+* Ren disse a Silva que não foi seguido e a chamou de "Sil" pela primeira vez;
+* Ren contou a Silva, em linhas gerais, que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão vivas sob cuidado de Maerra;
+* Ren ainda não conseguiu ligar diretamente o que as crianças ouviram a Masao ou à Red Sail;
+* Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer;
+* Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada;
+* Ren segue com 31/31 PV, CA 17, 0/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 02:16 de 4 Eleasis, 1372 DR.
+* Ren abraçou e beijou Nera discretamente, prometendo voltar;
+* Nera aceitou deixá-lo dormir e disse que ouviu a promessa;
+* Silva aceitou o agradecimento de Ren e respondeu que ele deveria agradecer dormindo;
+* Ren dormiu algumas horas no depósito de figurino velho, atrás da arca dos estandartes;
+* o repouso não contou como descanso longo, mas contou como descanso curto de monge; Ren recuperou ki para 4/4;
+* Silva mandou ajuda discreta de Chauntea para Maerra antes do amanhecer;
+* Ren acordou com Nera sentada perto da entrada do canto, com água e pão;
+* Ren ainda não tem notícia confirmada sobre Colm/Dent ou Dorra Hest;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 06:05 de 4 Eleasis, 1372 DR.
+* Ren levantou, abraçou Nera, vestiu roupa de cidadão comum e explicou que precisava conferir se Colm/Dent saiu com Dorra Hest;
+* Nera comentou que sete moedas compram memória e espera que também tenham comprado silêncio;
+* Nera pretende avisar Silva para onde Ren foi;
+* rolagem: Ler sinais da carroça de Dorra nos pátios, d20 9 + 3 = 12 contra CD 14, falha;
+* rolagem: Notar atenção perigosa nos pátios, d20 6 + 5 = 11 contra CD 13, falha;
+* Ren chegou aos pátios de saída depois da partida das carroças de cal;
+* a carroça de Dorra Hest não está mais no local;
+* Ren não confirmou se Colm/Dent saiu em segurança, foi descoberto ou apenas já está na estrada;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 24 PO e 9 shuriken;
+* hora aproximada: 06:30 de 4 Eleasis, 1372 DR.
+* rolagem: Escolher informante discreto nos pátios, d20 5 + 5 = 10 contra CD 13, falha;
+* rolagem: Comprar confirmação sem chamar atenção, d20 12 contra CD 12, sucesso;
+* Ren pagou 1 PO a um trabalhador dos pátios por informação sobre as carroças de cal;
+* o trabalhador disse que Dorra Hest saiu no cinza, depois das primeiras carroças;
+* antes da saída de Dorra, um sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do lavadouro, homem embrulhado, mão ruim e tosse;
+* o trabalhador ouviu Dorra chamar o protegido de **Dent** e tratá-lo como sobrinho torto;
+* o trabalhador acredita que havia peso de homem sob a lona quando Dorra saiu e ouviu tosse depois que a roda pegou a rua;
+* Ren obteve confirmação parcial: Colm/Dent provavelmente saiu com Dorra, mas a saída foi comprometida e não está confirmada como segura;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO e 9 shuriken;
+* hora aproximada: 06:35 de 4 Eleasis, 1372 DR.
+* Ren foi ao posto da City Guard/Night Watch vestido como cidadão pobre;
+* Ren relatou a Luath que Bram Vask mantém cobrança suja, ameaça Kethra e pode tentar descobrir o paradeiro de Colm/Dent;
+* Ren ofereceu o caderno de contas de Bram como prova, mas não explicou como tirou Colm da loja;
+* rolagem: Convencer Luath a pressionar Bram com prova irregular, d20 6 + 2 = 8 contra CD 14, falha;
+* Luath examinou o caderno, copiou marcas úteis, mas devolveu o caderno a Ren por não aceitá-lo como prova formal limpa sem cadeia de custódia e testemunho;
+* Luath não prometeu horário, busca ou prisão, e advertiu Ren contra misturar ameaça anônima com instituição;
+* rolagem: Pressão da Night Watch sobre Bram, d20 20 + 4 = 24 contra CD 13, sucesso;
+* dois guardas da Night Watch/City Guard foram à loja de Bram Vask e o pressionaram sobre cobrança violenta, possível gente mantida por dívida e risco a Kethra;
+* os guardas não prenderam Bram, mas deixaram aviso público de que visita ou dano a devedor ferido ou mulher ligada a dívida viraria caso da guarda;
+* Ren pagou uma criança com moeda baixa para entregar recado decorado a Bram; o gasto não altera o total de PO;
+* rolagem: Criança decorar e entregar o recado, d20 2 contra CD 11, falha;
+* rolagem: Ren observar entrega do recado sem fixar rosto, d20 15 + 5 = 20 contra CD 13, sucesso;
+* a criança entregou o recado de forma imprecisa, dizendo que "o homem" sabia que Bram foi atrás de Colm e que "a visita da guarda" foi só o começo;
+* Bram entendeu a ameaça, não atacou a criança em público, fechou a loja e começou a se mover nos fundos;
+* Ren não foi identificado na entrega do recado;
+* Ren segue com 31/31 PV, CA 17, 4/4 ki, 23 PO, 9 shuriken e o caderno de contas de Bram Vask;
+* hora aproximada: 08:10 de 4 Eleasis, 1372 DR.
+* Ren foi aos fundos de Narwhal Manor para montar fisicamente o ponto morto combinado com Kethra;
+* rolagem: Aproximar-se dos fundos de Narwhal sem ativar atenção, d20 9 + 6 = 15 contra CD 15, sucesso;
+* Ren deixou no vaso rachado, com a rachadura voltada para a parede, a mensagem: "Nosso amigo foi com o cal. Nosso inimigo recebeu visita de guarda e recado de parar de ir atrás. Suficiente pra mantê-lo na coleira. Amigo seguro por algum tempo.";
+* rolagem: Montar ponto morto de Kethra sem parecer novo, d20 6 + 4 = 10 contra CD 14, falha;
+* o ponto morto funciona, mas há sinais discretos de manipulação: semicírculo limpo demais na sujeira antiga da pedra e migalha de cera cinza visível de perto;
+* Ren checou o ponto morto de Pell nos fundos da The Silver Lily;
+* rolagem: Pell conseguir deixar recado novo desde a última verificação, d20 16 + 2 = 18 contra CD 15, sucesso;

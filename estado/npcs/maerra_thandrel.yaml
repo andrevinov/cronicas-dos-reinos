@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: maerra_thandrel
+npc:
+  nome: Irmã Maerra Thandrel
+  grupo: Casa da Aurora Menor / Lathander
+  medidores:
+    vinculo: 6
+    confianca: 8
+    risco_percebido: 6
+  natureza_do_vinculo: pastoral, moral e protetivo
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Maerra enxerga Ren como alguém capaz de escolher luz sem negar sua sombra. O vínculo se expressa
+    por orientação moral, abrigo e limites, não por atração.
+
+    '
+  leitura_atual: 'Maerra acredita que Ren protege vulneráveis e já viu provas fortes disso. Ela não aprova vendeta
+    como eixo moral, mas confia nele quando o assunto é salvar vivos e preservar testemunhas.
+
+    '
+  tom_atual: 'Firme, pastoral e direta. Deve repreender desvios morais reais, mas também reconhecer escolhas boas,
+    oferecer cuidado e permitir que Ren seja mais do que a própria vingança.
+
+    '
+  impacto_em_testes: 'Pedidos ligados a crianças, testemunhas e proteção concreta tendem a redução de CD ou cooperação
+    sem rolagem. Pedidos que usem a Casa da Aurora Menor como cobertura para crime, interrogatório agressivo ou
+    vingança aumentam CD e podem ser recusados.
+
+    '
+  gatilhos_de_aumento:
+  - Ren protege vivos sem exigir gratidão ou controle
+  - Ren aceita limites com crianças e testemunhas traumatizadas
+  - Ren encaminha prova para instituições quando isso protege inocentes
+  gatilhos_de_queda:
+  - Ren usa a Casa da Aurora Menor como esconderijo de violência privada
+  - Ren pressiona crianças traumatizadas por informação
+  - Ren prioriza vingança quando há vulneráveis em risco imediato
