@@ -44,7 +44,15 @@ python3 ferramentas/contexto.py regra furtividade
 python3 ferramentas/contexto.py buscar "ponte baixa"
 ```
 
-A busca genérica exclui por padrão `narrador/` e transcrições completas. A escalada precisa ser deliberada:
+Desde a Etapa 6, `npc`, `relacao` e `conhecimento` não leem mais os antigos depósitos monolíticos. A ferramenta resolve internamente **índice → fragmento**:
+
+- relações: `estado/relacoes/index.yaml` → `estado/relacoes/<id>.yaml`;
+- medidores: `estado/npcs/index.yaml` → `estado/npcs/<id>.yaml`;
+- conhecimento: `personagens/jogador/conhecimento/ativo.yaml`/`index.yaml` → fragmentos Markdown relevantes.
+
+O histórico completo de uma relação permanece em `historico/relacoes/<id>.yaml`, mas não é lido por `relacao` ou `npc` normalmente. Para uma pergunta histórica, escalar deliberadamente.
+
+A busca genérica exclui por padrão `narrador/`, `historico/` e transcrições completas. A escalada precisa ser deliberada:
 
 ```bash
 python3 ferramentas/contexto.py buscar "sol apagado" --reservado
@@ -66,13 +74,13 @@ python3 ferramentas/contexto.py --sem-log status
 
 Semântica rápida:
 
-- `status`: somente o estado quente de `runtime/contexto.yaml`;
-- `cena`: estado quente + recorte de `runtime/cena.yaml`;
-- `npc`: medidores rápidos + relação atual, sem abrir segredos automaticamente;
-- `relacao`: uma única entidade de `estado/relacoes.yaml`;
-- `conhecimento`: seções relevantes do conhecimento de Ren;
+- `status`: somente `runtime/contexto.yaml`;
+- `cena`: estado quente + `runtime/cena.yaml`;
+- `npc`: um fragmento de medidores +, quando houver, um fragmento da relação atual;
+- `relacao`: índice pequeno + um fragmento da relação atual; apenas aponta para o histórico;
+- `conhecimento`: pesquisa os fragmentos do conhecimento de Ren e devolve os três trechos mais relevantes;
 - `regra`: seções relevantes dos resumos internos de regras;
-- `buscar`: descoberta limitada para localizar a próxima fonte, não substituto para consultas dirigidas.
+- `buscar`: descoberta limitada; com `--historico`, inclui histórico frio e transcrições.
 
 ## Estado quente (`runtime/`)
 
@@ -94,12 +102,37 @@ O CI executa esse modo automaticamente. Se o estado canônico mudar sem regenera
 
 `runtime/eventos-pendentes.jsonl` já existe como reservatório para a futura arquitetura transacional, mas ainda não substitui a consolidação atual da campanha.
 
+## Estado corrente e memória fragmentada
+
+A Etapa 5 separou presente de cronologia em `estado/estado-atual.yaml` e `estado/tempo.yaml`. A Etapa 6 fez o mesmo com memórias acumulativas.
+
+Verificações permanentes:
+
+```bash
+python3 ferramentas/migrar-estado-atual.py --check
+python3 ferramentas/migrar-memorias-fragmentadas.py --check
+python3 ferramentas/reindexar-conhecimento.py --check
+```
+
+`migrar-memorias-fragmentadas.py --check` comprova que:
+
+- as cópias pré-migração de relações, medidores e conhecimento mantêm os blobs Git originais;
+- todos os IDs de relações/NPCs continuam representados;
+- cada fragmento atual respeita o limite de tamanho;
+- o histórico completo de cada relação continua logicamente idêntico ao legado;
+- a concatenação ordenada dos fragmentos de conhecimento reconstrói **byte a byte** o antigo `conhecimento.md`.
+
+`reindexar-conhecimento.py --check` protege a divisão das descobertas por cabeçalhos `Sessão NNN` e garante que o recorte ativo acompanhe a sessão corrente quando ela possui entradas explícitas.
+
 ## Verificação de integridade
 
 Durante a refatoração de economia de contexto, usar:
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
+python3 ferramentas/migrar-estado-atual.py --check
+python3 ferramentas/migrar-memorias-fragmentadas.py --check
+python3 ferramentas/reindexar-conhecimento.py --check
 python3 ferramentas/gerar-runtime.py --check
 python3 ferramentas/verificar-integridade.py
 ```
@@ -113,21 +146,13 @@ python3 ferramentas/verificar-integridade.py \
 
 O verificador confere UTF-8, YAML sem chaves duplicadas, arquivos obrigatórios, referências de `campanha.yaml`, existência da sessão atual, consistência básica entre estado e ficha, limites de PV/Ki e coerência temporal.
 
-Desde a Etapa 2, ele também protege o desenho de **progressive disclosure** do agente:
+As proteções acumuladas incluem:
 
-- `AGENTS.md` não pode ultrapassar 12 KiB nem 180 linhas;
-- os seis documentos especializados de `docs/agente/` são obrigatórios;
-- `docs/agente/cobertura-agents-v1.yaml` deve mapear todas as 58 seções do manual legado;
-- o roteador precisa manter as regras explícitas de leitura sob demanda e parada antecipada.
-
-Desde a Etapa 3, ele também protege o estado quente:
-
-- `runtime/contexto.yaml` e `runtime/cena.yaml` são obrigatórios e marcados como derivados;
-- cada arquivo quente deve ficar abaixo de 8 KiB;
-- sessão, personagem, recursos, tempo e localização precisam coincidir com as fontes canônicas;
-- cada linha não vazia de `runtime/eventos-pendentes.jsonl` precisa ser um objeto JSON válido.
-
-Na Etapa 4, os testes também garantem que `contexto.py` respeite orçamento, mantenha material reservado/frio fora da busca padrão e consiga consultar runtime, NPCs, relações e conhecimento sem devolver arquivos inteiros.
+- **Etapa 2:** `AGENTS.md` ≤ 12 KiB/180 linhas, seis documentos especializados e cobertura das 58 seções legadas;
+- **Etapa 3:** runtime derivado ≤ 8 KiB e coerente com sessão, personagem, recursos, tempo e localização;
+- **Etapa 4:** orçamento de saída, isolamento de material reservado/frio e consultas dirigidas;
+- **Etapa 5:** estado/tempo correntes separados da cronologia e legado preservado;
+- **Etapa 6:** relações, medidores e conhecimento fragmentados, reconstruíveis e consultáveis sem reabrir os monólitos.
 
 ## Análise de rollouts do Codex
 
