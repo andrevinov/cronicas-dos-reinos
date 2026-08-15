@@ -92,15 +92,13 @@ Rolagens ocultas relevantes podem ser anexadas ao registro transacional em `rola
 
 ## Encerramento de cena
 
-Uma cena importante pode receber checkpoint narrativo na própria transcrição. A Etapa 7 não exige consolidar todos os arquivos canônicos a cada encerramento de cena; isso só deve acontecer se houver necessidade real de checkpoint externo ou durante a consolidação em lote.
-
-Antes de uma pausa longa, executar:
+Uma cena importante pode receber checkpoint narrativo na própria transcrição. Não consolidar por rotina a cada troca; quando houver fronteira de cena relevante e um checkpoint canônico for útil, usar:
 
 ```bash
-python3 ferramentas/turno.py check
+python3 ferramentas/consolidar.py cena
 ```
 
-Se passar, transcrição + buffer pendente preservam o estado necessário para retomada.
+Se não houver necessidade de checkpoint, `turno.py check` continua suficiente para uma pausa segura com transações pendentes. Se existir journal de consolidação, recuperar antes de retomar a narração.
 
 ## Encerramento de sessão
 
@@ -114,7 +112,7 @@ Historicamente a sessão consolida, conforme aplicável:
 
 Registrar ponto inicial/final, tempo transcorrido, acontecimentos, decisões, rolagens decisivas, combates, XP/marcos, recursos, ferimentos/condições, relações, promessas/favores/dívidas, descobertas, mistérios, consequências, mudanças do mundo, relógios e pendências quando existirem.
 
-Na arquitetura transacional, `runtime/eventos-pendentes.jsonl` é a lista explícita de mudanças ainda não incorporadas. A Etapa 8 implementará a consolidação automática/idempotente desse buffer. Até lá, não apagar nem marcar eventos pendentes manualmente como consolidados sem procedimento deliberado.
+Na arquitetura transacional, `runtime/eventos-pendentes.jsonl` é a lista explícita de mudanças ainda não incorporadas. Antes de encerrar a sessão, executar `python3 ferramentas/consolidar.py sessao`; o ledger impede reaplicação e o buffer só é limpo depois da instalação verificada do lote.
 
 ## Memória por finalidade
 

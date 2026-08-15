@@ -192,3 +192,7 @@ books/
 
 # Telemetria operacional local; não é cânone nem deve sujar commits
 runtime/consultas-contexto.jsonl
+
+# Commit multiarquivo da consolidação; transitório e recuperável
+runtime/consolidacao-em-andamento.json
+runtime/.consolidacao-stage/
