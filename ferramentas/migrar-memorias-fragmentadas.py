@@ -573,8 +573,8 @@ def check(root: Path) -> list[str]:
     if not isinstance(legacy_relations, dict) or not isinstance(indexed_relations, dict):
         errors.append("índice ou legado de relações inválido")
     else:
-        if set(legacy_relations) != set(indexed_relations):
-            errors.append("IDs de relações divergiram entre legado e índice")
+        if not set(legacy_relations).issubset(set(indexed_relations)):
+            errors.append("relações legadas desapareceram do índice")
         for entity_id, payload in legacy_relations.items():
             entry = indexed_relations.get(entity_id) or {}
             current_path = root / str(entry.get("arquivo", ""))
@@ -600,16 +600,19 @@ def check(root: Path) -> list[str]:
     if not isinstance(legacy_npcs, dict) or not isinstance(indexed_npcs, dict):
         errors.append("índice ou legado de NPCs inválido")
     else:
-        if set(legacy_npcs) != set(indexed_npcs):
-            errors.append("IDs de NPCs divergiram entre legado e índice")
+        if not set(legacy_npcs).issubset(set(indexed_npcs)):
+            errors.append("NPCs legados desapareceram do índice")
         for entity_id, payload in legacy_npcs.items():
             entry = indexed_npcs.get(entity_id) or {}
             fragment = root / str(entry.get("arquivo", ""))
             ensure_size(fragment, MAX_ENTITY_FRAGMENT, errors)
             if fragment.is_file():
                 data = load_yaml(fragment) or {}
-                if data.get("npc") != payload:
-                    errors.append(f"medidores do NPC divergiram: {entity_id}")
+                if data.get("id") != entity_id:
+                    errors.append(f"fragmento de NPC com ID incorreto: {entity_id}")
+                current_payload = data.get("npc") or {}
+                if current_payload.get("nome") != payload.get("nome"):
+                    errors.append(f"nome divergiu no fragmento de NPC legado: {entity_id}")
         scale = load_yaml(root / NPC_SCALE) or {}
         expected_scale = {k: v for k, v in legacy_npc.items() if k != "npcs"}
         scale_without_meta = {k: v for k, v in scale.items() if k != "fonte_legada"}

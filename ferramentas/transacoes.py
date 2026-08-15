@@ -17,6 +17,7 @@ from typing import Any, Iterable
 
 SCHEMA_VERSION = 1
 PENDING_PATH = Path("runtime/eventos-pendentes.jsonl")
+CONSOLIDATION_JOURNAL = Path("runtime/consolidacao-em-andamento.json")
 TRANSCRIPT_MARKER_PREFIX = "turno-transacional:"
 ALLOWED_OPS = {"set", "inc", "append", "remove", "registrar"}
 ALLOWED_VISIBILITY = {"operacional", "narrador"}
@@ -164,6 +165,10 @@ def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str,
 
 
 def load_pending(repo: Path) -> list[dict[str, Any]]:
+    if (repo / CONSOLIDATION_JOURNAL).exists():
+        raise TransactionError(
+            "consolidação em andamento; execute ferramentas/consolidar.py recuperar antes de ler ou registrar novos turnos"
+        )
     path = repo / PENDING_PATH
     if not path.exists():
         return []

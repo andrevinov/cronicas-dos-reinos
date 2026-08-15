@@ -454,7 +454,7 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
 def _knowledge_active_paths(repo: Path) -> list[Path]:
     active = load_yaml(repo / KNOW_ACTIVE) or {}
     paths: list[Path] = []
-    for group in ("topicos_prioritarios", "descobertas_recentes"):
+    for group in ("topicos_prioritarios", "descobertas_recentes", "incrementais_recentes"):
         for entry in active.get(group, []) if isinstance(active, dict) else []:
             if not isinstance(entry, dict):
                 continue
