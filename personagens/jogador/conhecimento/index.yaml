@@ -47,16 +47,11 @@ topicos:
   - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-01.md
   - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-02.md
   - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-03.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-04.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-05.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-06.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-07.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-08.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-09.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-10.md
-  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-11.md
-  bytes: 127785
+  bytes: 26953
 sessoes:
   '1':
     index: personagens/jogador/conhecimento/descobertas/sessao-001/index.yaml
     quantidade: 10
+  '3':
+    index: personagens/jogador/conhecimento/descobertas/sessao-003/index.yaml
+    quantidade: 56

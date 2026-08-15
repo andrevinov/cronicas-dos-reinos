@@ -1,6 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_mais_recente: 1
+sessao_atual_da_campanha: 3
+sessao_mais_recente_indexada: 3
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -15,46 +16,36 @@ topicos_prioritarios:
   - personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
   bytes: 601
 descobertas_recentes:
-- titulo: 'Sessão 001: reconhecimento da Red Sail Tavern'
+- titulo: 'Sessão 003: inspeção do interior do galpão baixo'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/003-sessao-001-reconhecimento-da-red-sail-tavern.md
-  bytes: 1618
-- titulo: 'Sessão 001: retorno à Silver Lily'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/049-sessao-003-inspecao-do-interior-do-galpao-baixo.md
+  bytes: 1389
+- titulo: 'Sessão 003: entrada no galpão e libertação de Mera'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/004-sessao-001-retorno-a-silver-lily.md
-  bytes: 1102
-- titulo: 'Sessão 001: segunda aproximação da Red Sail'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/050-sessao-003-entrada-no-galpao-e-libertacao-de-mera.md
+  bytes: 842
+- titulo: 'Sessão 003: respostas de Mera e carroça no ramal'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/005-sessao-001-segunda-aproximacao-da-red-sail.md
-  bytes: 4016
-- titulo: 'Sessão 001: roubo da prancheta'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/051-sessao-003-respostas-de-mera-e-carroca-no-ramal.md
+  bytes: 1662
+- titulo: 'Sessão 003: interceptação da carroça de resposta'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/006-sessao-001-roubo-da-prancheta.md
-  bytes: 1181
-- titulo: 'Sessão 001: fuga da Silver Lily'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/052-sessao-003-interceptacao-da-carroca-de-resposta.md
+  bytes: 1353
+- titulo: 'Sessão 003: expulsão dos captores e chegada à balança velha'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/007-sessao-001-fuga-da-silver-lily.md
-  bytes: 703
-- titulo: 'Sessão 001: conteúdo da prancheta'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/053-sessao-003-expulsao-dos-captores-e-chegada-a-balanca-velha.md
+  bytes: 1980
+- titulo: 'Sessão 003: mesa e cômodo dos fundos da balança velha'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/008-sessao-001-conteudo-da-prancheta.md
-  bytes: 1313
-- titulo: 'Sessão 001: Casa da Rede Morta'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/054-sessao-003-mesa-e-comodo-dos-fundos-da-balanca-velha.md
+  bytes: 1978
+- titulo: 'Sessão 003: perseguição do homem de mãos limpas'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/009-sessao-001-casa-da-rede-morta.md
-  bytes: 1608
-- titulo: 'Sessão 001: fuga com a caixa e a cativa'
+  - personagens/jogador/conhecimento/descobertas/sessao-003/055-sessao-003-perseguicao-do-homem-de-maos-limpas.md
+  bytes: 1663
+- titulo: 'Sessão 003: alcance e início do combate com o homem de mãos limpas'
   arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-01.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-02.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-03.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-04.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-05.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-06.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-07.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-08.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-09.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-10.md
-  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-11.md
-  bytes: 124693
-observacao: Este arquivo só roteia consultas; fatos permanecem nos fragmentos de conhecimento.
+  - personagens/jogador/conhecimento/descobertas/sessao-003/056-sessao-003-alcance-e-inicio-do-combate-com-o-homem-de-maos-limpas.md
+  bytes: 1451
+observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
