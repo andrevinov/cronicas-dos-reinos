@@ -28,12 +28,33 @@ python3 ferramentas/rolar-dados.py ren listar
 
 Saídas públicas podem ser copiadas para a transcrição da sessão. Rolagens ocultas devem ser registradas apenas na área do narrador quando forem relevantes.
 
+## Estado quente (`runtime/`)
+
+A camada operacional rápida é gerada deterministicamente a partir das fontes canônicas:
+
+```bash
+python3 ferramentas/gerar-runtime.py
+```
+
+Isso atualiza `runtime/contexto.yaml` e `runtime/cena.yaml`. Não altera `estado/`, ficha, sessões ou outros arquivos canônicos.
+
+Para validar sem escrever:
+
+```bash
+python3 ferramentas/gerar-runtime.py --check
+```
+
+O CI executa esse modo automaticamente. Se o estado canônico mudar sem regeneração, a verificação falha em vez de permitir que o narrador use contexto quente obsoleto.
+
+`runtime/eventos-pendentes.jsonl` já existe como reservatório para a futura arquitetura transacional, mas ainda não substitui a consolidação atual da campanha.
+
 ## Verificação de integridade
 
 Durante a refatoração de economia de contexto, usar:
 
 ```bash
 python3 -m pip install -r requirements-dev.txt
+python3 ferramentas/gerar-runtime.py --check
 python3 ferramentas/verificar-integridade.py
 ```
 
@@ -52,6 +73,13 @@ Desde a Etapa 2, ele também protege o desenho de **progressive disclosure** do 
 - os seis documentos especializados de `docs/agente/` são obrigatórios;
 - `docs/agente/cobertura-agents-v1.yaml` deve mapear todas as 58 seções do manual legado;
 - o roteador precisa manter as regras explícitas de leitura sob demanda e parada antecipada.
+
+Desde a Etapa 3, ele também protege o estado quente:
+
+- `runtime/contexto.yaml` e `runtime/cena.yaml` são obrigatórios e marcados como derivados;
+- cada arquivo quente deve ficar abaixo de 8 KiB;
+- sessão, personagem, recursos, tempo e localização precisam coincidir com as fontes canônicas;
+- cada linha não vazia de `runtime/eventos-pendentes.jsonl` precisa ser um objeto JSON válido.
 
 ## Análise de rollouts do Codex
 
