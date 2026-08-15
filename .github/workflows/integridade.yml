@@ -46,6 +46,10 @@ jobs:
       - name: Consolidação transacional
         run: |
           test -f ferramentas/consolidar.py
+          test -f docs/agente/consolidacao-transacional.md
+          test -f baseline/consolidacao-step-08.md
+          grep -q 'docs/agente/consolidacao-transacional.md' AGENTS.md
+          grep -q 'ferramentas/consolidar.py recuperar' AGENTS.md
           python ferramentas/consolidar.py check
           python ferramentas/consolidar.py status > /tmp/consolidacao-status.json
           grep -q '"eventos_pendentes": 0' /tmp/consolidacao-status.json
