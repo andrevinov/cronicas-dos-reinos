@@ -1,4 +1,4 @@
-name: Ajustes únicos da consolidação — Etapa 8
+name: Limpeza do workflow descartável — Etapa 8
 
 on:
   push:
@@ -9,74 +9,14 @@ permissions:
   contents: write
 
 jobs:
-  ajustar:
-    if: ${{ !contains(github.event.head_commit.message, '[ajustes-consolidacao-v1]') }}
+  limpar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar ajustes pequenos e verificáveis
+      - name: Remover este workflow temporário
         run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          # 1) Guard global: qualquer consumidor de eventos pendentes recusa operar
-          # enquanto uma consolidação multiarquivo estiver em instalação.
-          p = Path('ferramentas/transacoes.py')
-          s = p.read_text(encoding='utf-8')
-          old = 'PENDING_PATH = Path("runtime/eventos-pendentes.jsonl")\nTRANSCRIPT_MARKER_PREFIX'
-          new = 'PENDING_PATH = Path("runtime/eventos-pendentes.jsonl")\nCONSOLIDATION_JOURNAL = Path("runtime/consolidacao-em-andamento.json")\nTRANSCRIPT_MARKER_PREFIX'
-          if old in s:
-              s = s.replace(old, new, 1)
-          old = 'def load_pending(repo: Path) -> list[dict[str, Any]]:\n    path = repo / PENDING_PATH\n'
-          new = '''def load_pending(repo: Path) -> list[dict[str, Any]]:\n    if (repo / CONSOLIDATION_JOURNAL).exists():\n        raise TransactionError(\n            "consolidação em andamento; execute ferramentas/consolidar.py recuperar antes de ler ou registrar novos turnos"\n        )\n    path = repo / PENDING_PATH\n'''
-          if old in s:
-              s = s.replace(old, new, 1)
-          p.write_text(s, encoding='utf-8')
-
-          # 2) Conhecimento incremental recém-consolidado é considerado quente.
-          p = Path('ferramentas/contexto_core.py')
-          s = p.read_text(encoding='utf-8')
-          old = 'for group in ("topicos_prioritarios", "descobertas_recentes"):'
-          new = 'for group in ("topicos_prioritarios", "descobertas_recentes", "incrementais_recentes"):'
-          if old in s:
-              s = s.replace(old, new, 1)
-          p.write_text(s, encoding='utf-8')
-
-          # 3) O verificador da migração protege o legado, mas o presente pode evoluir.
-          # IDs legados devem continuar existindo; novos IDs são permitidos.
-          p = Path('ferramentas/migrar-memorias-fragmentadas.py')
-          s = p.read_text(encoding='utf-8')
-          s = s.replace(
-              'if set(legacy_relations) != set(indexed_relations):\n            errors.append("IDs de relações divergiram entre legado e índice")',
-              'if not set(legacy_relations).issubset(set(indexed_relations)):\n            errors.append("relações legadas desapareceram do índice")'
-          )
-          s = s.replace(
-              'if set(legacy_npcs) != set(indexed_npcs):\n            errors.append("IDs de NPCs divergiram entre legado e índice")',
-              'if not set(legacy_npcs).issubset(set(indexed_npcs)):\n            errors.append("NPCs legados desapareceram do índice")'
-          )
-          old = '''            if fragment.is_file():\n                data = load_yaml(fragment) or {}\n                if data.get("npc") != payload:\n                    errors.append(f"medidores do NPC divergiram: {entity_id}")\n'''
-          new = '''            if fragment.is_file():\n                data = load_yaml(fragment) or {}\n                if data.get("id") != entity_id:\n                    errors.append(f"fragmento de NPC com ID incorreto: {entity_id}")\n                current_payload = data.get("npc") or {}\n                if current_payload.get("nome") != payload.get("nome"):\n                    errors.append(f"nome divergiu no fragmento de NPC legado: {entity_id}")\n'''
-          if old in s:
-              s = s.replace(old, new, 1)
-          p.write_text(s, encoding='utf-8')
-
-          # 4) Staging e journal são locais/transitórios e nunca entram em commit.
-          p = Path('.gitignore')
-          s = p.read_text(encoding='utf-8')
-          additions = '''\n# Commit multiarquivo da consolidação; transitório e recuperável\nruntime/consolidacao-em-andamento.json\nruntime/.consolidacao-stage/\n'''
-          if 'runtime/consolidacao-em-andamento.json' not in s:
-              s = s.rstrip() + '\n' + additions
-          p.write_text(s, encoding='utf-8')
-          PY
-
-      - name: Commit
-        run: |
-          if git diff --quiet; then
-            echo "Sem ajustes pendentes."
-            exit 0
-          fi
           git config user.name "André Carvalho"
           git config user.email "me@andrev.me"
-          git add ferramentas/transacoes.py ferramentas/contexto_core.py ferramentas/migrar-memorias-fragmentadas.py .gitignore
-          git commit -m "Reforça segurança da consolidação [ajustes-consolidacao-v1]"
+          git rm .github/workflows/ajustes-etapa-8.yml
+          git commit -m "Remove workflow descartável da Etapa 8"
           git push
