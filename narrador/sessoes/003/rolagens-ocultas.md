@@ -848,3 +848,42 @@ Consequências:
 * Ren chega a uma câmara baixa seca com três leituras visíveis: canal frio e
   úmido à esquerda, corredor seco mais usado à direita e fenda de ar/pano
   encerado acima/adiante.
+
+---
+
+## Noite de 6 para 7 Eleasis: corredor seco da direita
+
+Contexto: Ren escolheu seguir pelo corredor seco da direita na câmara baixa da
+Ponte Baixa, sob Visão no Escuro e Passos sem Pegadas.
+
+Rolagens abertas:
+
+* Furtividade de Ren pelo corredor seco da direita sob Passos sem Pegadas: d20
+  10 + 17 = 27 contra CD 18. Sucesso.
+* Percepção de Ren ao avançar pelo corredor seco: d20 6 + 6 = 12 contra CD 15.
+  Falha.
+* Investigação de Ren para entender a função das marcas e do corredor: d20 12 +
+  4 = 16 contra CD 15. Sucesso.
+* Acrobacia de Ren para atravessar o estreitamento final sem tocar madeira,
+  pedra ou pó solto: d20 7 + 7 = 14 contra CD 14. Sucesso.
+
+Rolagens ocultas:
+
+* Vigia reposicionado notar Ren no corredor seco: d20 13 + 4 = 17 contra CD 25.
+  Falha.
+* Preparação interna fechar a primeira porta útil antes de Ren alcançá-la: d20
+  2 + 3 = 5 contra CD 14. Falha.
+
+Consequências:
+
+* Ren continua não localizado por vigia ou atenção interna neste trecho.
+* O corredor seco é compreendido como rota de passa-carga baixo, pasta rígida,
+  gaveta estreita ou caixa rasa, não como passagem principal de patrulha.
+* A preparação interna tentou fechar ou isolar a primeira abertura útil, mas
+  falhou; o painel baixo ficou quase fechado, com fresta irregular junto ao
+  chão.
+* Pela fresta, Ren vê parte de uma sala baixa seca com prateleiras, mesa
+  estreita, bandejas rasas com areia ou cinza clara, rolos de pano encerado,
+  pequenos cilindros e feixes de papel mantidos longe do chão.
+* Há brilho fraco no fundo da sala, parcialmente oculto. Ren não vê ninguém pelo
+  ângulo atual, mas não enxerga a sala inteira.

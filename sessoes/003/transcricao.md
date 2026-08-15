@@ -3181,3 +3181,73 @@ Ren não consegue determinar a distância com segurança.
 Hora aproximada: **01:36 de 7 Eleasis, 1372 DR**. Ren está numa **câmara baixa seca da Ponte Baixa**, cerca de quarenta a cinquenta pés além da entrada. **Visão no Escuro** está ativa. **Passos sem Pegadas** está ativo e exige concentração. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. A segunda maré está próxima; o caminho úmido à esquerda pode piorar com o tempo, enquanto o corredor seco à direita parece mais usado.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren pega o caminho da direita.
+
+**Narrador**
+
+Ren escolhe o seco.
+
+Teste de Furtividade de Ren pelo corredor seco da direita sob Passos sem Pegadas: d20 10 + 17 = 27 contra CD 18. Sucesso.
+
+Teste de Percepção de Ren ao avançar pelo corredor seco: d20 6 + 6 = 12 contra CD 15. Falha.
+
+Teste de Investigação de Ren para entender a função das marcas e do corredor: d20 12 + 4 = 16 contra CD 15. Sucesso.
+
+Teste de Acrobacia de Ren para atravessar o estreitamento final sem tocar madeira, pedra ou pó solto: d20 7 + 7 = 14 contra CD 14. Sucesso.
+
+O corredor da direita não gosta de ombros.
+
+Ele começa limpo demais, depois estreita de propósito. A pedra antiga foi gasta em duas alturas diferentes: baixo, onde algo comprido arrastou mais de uma vez; e na lateral direita, onde mãos ou dedos procuraram apoio sempre no mesmo ponto. Com a Visão no Escuro, tudo fica sem cor, mas o uso fica claro o bastante.
+
+Não é passagem de patrulha. Não principalmente.
+
+É trilho de coisa rasa.
+
+Pasta rígida. Gaveta estreita. Caixa de documentos. Talvez bandeja de areia seca carregando lacres, papéis ou pequenos objetos que não podiam tocar umidade.
+
+O som que Ren ouviu antes não se repete. Isso não ajuda tanto quanto deveria. A Passos sem Pegadas engole Ren, mas também torna mais difícil separar o silêncio natural do silêncio construído. O corredor parece vazio. Ou esvaziado.
+
+Depois de vinte e poucos pés, ele encontra a fonte do som.
+
+Um painel baixo de madeira foi puxado quase até fechar uma abertura à frente. Não é uma porta para homem em pé. É mais parecido com tampa deslizante de depósito ou passa-carga. A cunha inferior ficou torta, talvez por pressa, talvez por madeira inchada, e deixou uma fresta irregular de dois dedos junto ao chão.
+
+Ren passa pelo estreitamento final no limite: um joelho recolhido, a bainha controlada com a mão, o peso trocado antes que o pó denuncie qualquer pressão. A madeira não toca nele.
+
+Pela fresta, a Visão no Escuro mostra parte de uma sala baixa e seca.
+
+Há prateleiras curtas. Uma mesa estreita. Bandejas rasas com areia ou cinza clara. Rolos de pano encerado. Um suporte com pequenos cilindros, talvez lacres, talvez recipientes de cera. No fundo, fora do ângulo completo da fresta, há um brilho muito fraco que a Visão no Escuro não colore: luz real, quase morta, protegida por alguma cobertura.
+
+E há papel.
+
+Não folhas espalhadas. Feixes baixos, presos e mantidos longe do chão.
+
+Visão atual de Ren:
+
+```text
+câmara seca atrás
+   |
+corredor seco estreito
+   |
+[Ren] -> painel baixo quase fechado
+            |
+            | fresta inferior
+            v
+      sala baixa seca
+      prateleiras / mesa estreita / bandejas rasas
+      brilho fraco no fundo, parcialmente oculto
+```
+
+Ren não vê ninguém pelo ângulo da fresta.
+
+Também não vê a sala inteira.
+
+Hora aproximada: **01:39 de 7 Eleasis, 1372 DR**. Ren está no fim do corredor seco da direita, diante de um painel baixo quase fechado. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos; recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. A segunda maré está próxima.
+
+O que Ren faz?
+
+Retorna para o começo do corredor onde entrou, no contato com a câmara seca de retenção, e escreve na parede, pequeno, mas legível: "K", e uma seta na direção da porta com fresta que ele pretendo entrar.
+
+Ren volta para a porta e tenta abri-la furtivamente.

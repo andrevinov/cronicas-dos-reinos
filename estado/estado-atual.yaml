@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "Harbor District / armazéns velhos / Ponte Baixa"
-  ponto_exato: "câmara baixa seca da Ponte Baixa, cerca de quarenta a cinquenta pés além da entrada"
+  ponto_exato: "fim do corredor seco da direita, diante de painel baixo quase fechado dentro da Ponte Baixa"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -344,7 +344,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "madrugada de 7 Eleasis, dentro da Ponte Baixa"
-  hora_aproximada: "01:36 de 7 Eleasis"
+  hora_aproximada: "01:39 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
   prazo_relevante: "Ren completou descanso longo no depósito de figurino velho, sem interrupção aberta, por volta de 06:41 de 6 Eleasis. Ao amanhecer, alcançou nível 6 e despertou Passo Sombrio. Jack pagou 8 PO pela reprise pública de Kage, deixando Ren com 25 PO, e recebeu resposta de Corven Dalm, procurador da Casa Veyr, com 40 PO adiantadas para apresentação fechada curta. Ren usou o Broche do Semblante Humilde para contato breve com Kethra em Narwhal; saiu sem reforçar padrão útil, e o Broche expirou por volta de 09:25, permanecendo gasto até o próximo amanhecer. Às 13:30, o treino básico de Kage confirmou duas marcas escuras confiáveis na tenda menor, mas não continuidade por toda a lona. Tobb confirmou que Casa Veyr existe como presença temporária pagante, sem raiz nobre local forte. Ren visitou Nera discretamente por Passo Sombrio sem gastar ki; a rota pública foi protegida por Silva e Tobb, mas a entrada assustou Nera. A Casa Veyr não aceitou os filtros finais de modo limpo, mas Ren decidiu prosseguir. Os Mooney controlaram a entrada: Tobb contou as 40 PO restantes, Dalm assinou antes de pisar na lona útil e o homem da casa ficou em luz clara perto da entrada dos artistas. Ren abriu Kage com Passo Sombrio sem gastar ki, da Sombra B para a Sombra A, terminou a apresentação sem fiasco e chamou Dalm ao camarim com referência direta a Masao e às dez lâminas. O total de 80 PO está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois da apresentação."
@@ -370,6 +370,8 @@ recursos:
     - "Passos sem Pegadas ativo desde cerca de 01:32 de 7 Eleasis; concentração possível até cerca de 02:32 se não for quebrada"
     - "Ren está numa câmara baixa seca da Ponte Baixa, cerca de quarenta a cinquenta pés além da entrada"
     - "Na câmara atual, Ren vê um canal frio e úmido à esquerda, um corredor seco mais usado à direita e uma fenda de ar com pano encerado acima/adiante"
+    - "Ren seguiu pelo corredor seco da direita sem ser localizado e chegou a um painel baixo quase fechado"
+    - "Pela fresta do painel, Ren vê parte de uma sala baixa seca com prateleiras, mesa estreita, bandejas rasas, rolos de pano encerado, pequenos cilindros, feixes de papel elevados e brilho fraco parcialmente oculto no fundo"
     - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
     - "Passos sem Pegadas expirou por volta de 00:58 de 4 Eleasis"
     - "layout parcial interno da Casa Velha: patamar vazio, passagem escura à esquerda, escada iluminada à direita e linha baixa de alarme improvisado"
@@ -1211,8 +1213,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren ativou Visão no Escuro e Passos sem Pegadas dentro da boca seca da Ponte Baixa, gastando 4 ki e ficando com Ki 2/6. Avançou em silêncio pelo trecho baixo e chegou por volta de 01:36 de 7 Eleasis a uma câmara seca de retenção, cerca de quarenta a cinquenta pés além da entrada. Ele não foi localizado por atenção comum neste trecho, mas falhou em ler marcas, secura e possíveis sinais de controle. A câmara oferece um canal frio e úmido à esquerda, um corredor seco e mais usado à direita e uma fenda de ar com pano encerado acima/adiante. Ren ouviu um único som baixo de madeira contra pedra vindo da direção direita, sem conseguir determinar distância com segurança. O Broche do Semblante Humilde está gasto até o próximo amanhecer. Ren ainda não deixou marca explícita para Luath."
-  risco_imediato: "alto em termos de infiltração: Passos sem Pegadas protege o deslocamento, mas a passagem foi preparada para permanecer seca, Ren falhou em interpretar sinais de controle e a segunda maré está próxima."
+  cena_atual: "Ren ativou Visão no Escuro e Passos sem Pegadas dentro da boca seca da Ponte Baixa, gastando 4 ki e ficando com Ki 2/6. Depois de chegar à câmara seca de retenção, escolheu o corredor seco da direita. Avançou sem ser localizado e entendeu que o corredor serve mais para passa-carga baixo, pasta rígida, gaveta estreita ou caixa rasa do que para patrulha comum. Por volta de 01:39 de 7 Eleasis, Ren chegou ao fim do corredor, diante de um painel baixo de madeira quase fechado. A cunha inferior ficou torta e deixou uma fresta irregular. Pela fresta, Ren vê parte de uma sala baixa seca com prateleiras, mesa estreita, bandejas rasas com areia ou cinza clara, rolos de pano encerado, pequenos cilindros, feixes de papel elevados e brilho fraco parcialmente oculto no fundo. Ele não vê ninguém pelo ângulo atual, mas não enxerga a sala inteira. O Broche do Semblante Humilde está gasto até o próximo amanhecer. Ren ainda não deixou marca explícita para Luath."
+  risco_imediato: "alto em termos de infiltração: Passos sem Pegadas protege o deslocamento, mas Ren está diante de uma sala operacional ligada a papéis e preservação de material seco, sem visão completa do interior e com a segunda maré próxima."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1223,6 +1225,6 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir se Ren segue pelo corredor seco à direita, investiga a fenda de ar/pano encerado, checa o canal úmido à esquerda, deixa marca para Luath ou recua"
+    - "decidir se Ren espia melhor pela fresta, abre ou atravessa o painel baixo, usa Passo Sombrio se encontrar sombra visível segura, cria distração, deixa marca para Luath ou recua"
     - "avaliar se deixa marca de retorno para Luath antes de avançar além da boca seca"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"
