@@ -19,6 +19,7 @@ Eles ainda não possuem blocos mecânicos em 5e. Para a criação do personagem,
 | Rolf "Sunny" Sunriver | Chief Constable | guarda, patrulha, Night Watch, mentor duro | LC1, LC3 |
 | Lord Calvin Longbottle | Regent of the Harbor | porto, navios, tarifas, fiscalização | LC1 |
 | Sirrus Melandor | Chief Prelate, alto sacerdote de Tyr | fé, justiça, templos, cura e dever cívico | LC1 |
+| Dame Jenilynn Leyland | clériga de Tyr e integrante da Right Hand of Tyr | investigação religiosa, justiça, custódia, perseguição a corrupção institucional | Ravens Bluff, `books/Aliados para Ren.pdf` |
 | Lord Charles Frederik LaVerne Blacktree IV | Lord Speaker do Advisory Council | política indireta, aristocracia, comicidade social ou intriga | LC1 |
 
 ---

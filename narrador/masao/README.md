@@ -13,17 +13,18 @@ Não revelar este conteúdo ao jogador salvo descoberta legítima em jogo.
 Ele é:
 
 * antigo monge, segundo a lenda conhecida por Ren;
-* ladrão de um pertence sagrado de uma divindade de Kara-Tur;
-* condenado a um domínio infernal ou equivalente;
+* ladrão de uma relíquia sagrada ainda não revelada;
+* condenado por **Tadasu no Kami** a um domínio infernal ou equivalente;
 * homem que voltou da sentença divina;
 * fundador e centro da Juppongatana;
 * aspirante à eternidade;
 * arquiteto do título **Rei das Sombras**;
 * futuro construtor do **Kokuten**, se não for impedido.
 
-O objeto roubado, a divindade exata e o mecanismo de fuga do inferno continuam
-segredos não definidos em público. O plano geral de deicídio e usurpação de
-função divina é canônico.
+O objeto roubado e o mecanismo de fuga do inferno continuam segredos não
+definidos em público. A divindade exata está definida nos bastidores como
+**Tadasu no Kami**, mas Ren ainda não sabe disso. O plano geral de deicídio e
+usurpação de função divina é canônico.
 
 Imagem: `imagens/masao-hirasawa.png`
 
@@ -65,8 +66,8 @@ ambiente já se organiza como templo ao redor dele.
 * **O Primeiro Homem Livre:** título interno de seu projeto.
 
 O núcleo filosófico de Masao: um homem condenado por um deus, que atravessou a
-punição e retornou contra a vontade desse deus, demonstrou que a autoridade
-divina possui limites.
+punição e retornou contra a vontade de **Tadasu no Kami**, demonstrou que a
+autoridade divina possui limites.
 
 Ele não quer apenas matar um deus. Quer matar um deus e continuar com aquilo que
 o deus fazia.
@@ -100,6 +101,10 @@ Masao não pensa "sou um deus". Ele pensa: **deus é um cargo**.
 Para ele, poderes divinos são entidades que monopolizaram leis da realidade:
 morte, julgamento, segredo, passagem, destino, punição. Como já desobedeceu uma
 dessas leis, concluiu que elas podem ser reescritas.
+
+Masao sabe que era culpado quando Tadasu o julgou. Seu ódio não nasce de
+inocência, mas da recusa em aceitar que alguém possua autoridade moral para
+sentenciá-lo. Essa recusa se resume na frase canônica: **deus é um cargo**.
 
 ---
 
@@ -160,6 +165,9 @@ compulsão e possessão.
 Retorno do Inferno. Traço mítico: a primeira vez que Masao chega a 0 PV, morre
 por instantes e retorna. O mecanismo permanece segredo.
 
+O terceiro estágio do Selo da Retificação de Ren, se conquistado perto do fim,
+não derrota Masao, mas pode impedir o Jigoku-gaeshi depois que Ren já o vencer.
+
 ---
 
 ## Três fases da luta final
@@ -188,6 +196,10 @@ No começo, Masao não odeia Ren. Ren é o garoto que deveria ter morrido.
 
 O erro de Masao não é profecia, linhagem secreta ou destino. É descuido
 arrogante: ele não terminou o serviço porque Ren não valia mais cinco segundos.
+
+Esse ponto cego permanece metafísico. Masao constrói defesas contra deuses,
+Chosen, magos épicos e intervenção celestial, mas Ren é apenas um homem vindo da
+falha que Masao julgou irrelevante.
 
 Quando Ren derrotar membros da Juppongatana, Masao primeiro achará interessante,
 depois experimental, depois incômodo. Só muito tarde reconhecerá Ren como ameaça

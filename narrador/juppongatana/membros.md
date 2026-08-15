@@ -167,6 +167,11 @@ Uso contra Ren: Shizune é a inimiga que entende melhor o valor do **Selo da Lua
 Velada**. Deve atacar a credibilidade de Ren, suas provas, seus aliados e sua
 identidade pública antes de aparecer como combatente.
 
+Shizune também é a primeira entre as Dez Espadas a perceber **Shen Meihua** como
+problema real. Se Meihua entrar em cena, Shizune já sabe que existe uma médica
+de Shou Lung seguindo o papel certo e tentará apagar identidades, transformar
+Meihua em cúmplice falsa ou usar Ren como isca para localizá-la.
+
 ---
 
 ## Círculo do Meio

@@ -237,14 +237,14 @@ quais ele precisa negociar ou guerrear.
 
 ### 6. Kokuten
 
-Componente final: não é objeto. É **vítima**.
+Componente final: não é objeto. É **vítima**: **Tadasu no Kami**, a divindade de
+Kara-Tur que condenou Masao.
 
 Problema resolvido: como tomar a função divina depois de matar seu ocupante.
 
-Uso por Masao: erguer o Kokuten, fechar o Portão Celestial, atrair para dentro
-dele a divindade de Kara-Tur que o condenou e usar o Jathiman Dagger para
-matá-la. Se funcionar, Masao quer que o domínio vazio o reconheça como sucessor
-da função assassinada.
+Uso por Masao: erguer o Kokuten, fechar o Portão Celestial, atrair Tadasu para
+dentro dele e usar o Jathiman Dagger para matá-lo. Se funcionar, Masao quer que
+o domínio vazio o reconheça como sucessor da função assassinada.
 
 Efeito de escala: depois do Kokuten, Harpistas são serviço de inteligência
 inimigo; Storm é adversária direta; Elminster e a Simbul entram no tabuleiro
@@ -260,3 +260,8 @@ Juppongatana.
 
 Masao ainda pensa grande demais para considerar Ren ameaça central. Esse erro
 deve persistir enquanto Ren desmonta degraus iniciais do plano.
+
+O ponto cego central do plano é que Masao está construindo uma fortaleza contra
+os céus. Ren não vem dos céus. Ele é um homem, uma testemunha e um sobrevivente
+que pode atravessar brechas que o Tenmon Fūsa e o Kokuten não foram desenhados
+para bloquear.

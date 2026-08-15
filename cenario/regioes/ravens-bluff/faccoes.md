@@ -36,7 +36,10 @@ Ravens Bluff possui uma religião cívica importante. O personagem pode cultuar 
 | Tymora | sorte e risco | aventureiro, jogador, marinheiro, ladino simpático |
 | Waukeen | comércio, dinheiro, contratos | mercador, escriba, devedor, negociante |
 
-Figura principal já identificada: **Sirrus Melandor**, Chief Prelate e alto sacerdote de Tyr.
+Figura principal já identificada: **Sirrus Melandor**, Chief Prelate e alto
+sacerdote de Tyr. **Dame Jenilynn Leyland**, integrante da Right Hand of Tyr, é
+uma figura de campo importante para investigações de autoridade corrompida,
+ordens falsas, custódia violada e justiça religiosa.
 
 ---
 

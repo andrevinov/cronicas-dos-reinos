@@ -53,6 +53,12 @@ Consequência se Ren falhar: convocação, mandado falso, ordem contraditória,
 documento em nome de Kage ou Kagehira, ou aliado secundário comprometido sem que
 Shizune precise aparecer.
 
+Amarração com aliados: Shizune é o gatilho mais limpo para introduzir **Shen
+Meihua** e, depois, **Dame Jenilynn Leyland**. Meihua pode reconhecer a assinatura
+técnica de Shizune em papel, tinta, dobra ou autoridade falsa; Jenilynn pode
+começar caçando Ren justamente porque Shizune construiu um caso plausível contra
+ele.
+
 ---
 
 ### Sawagejō Chō

@@ -14,8 +14,9 @@ Masao Hirasawa é um homem velho, vindo de Kara-Tur, e deve permanecer como
 antagonista de longo prazo da campanha.
 
 Ele não é apenas um assassino fugitivo. Masao busca poder, eternidade e uma forma
-de se vingar da divindade de Kara-Tur que, segundo a lenda, o amaldiçoou ao
-inferno depois que ele roubou um pertence sagrado.
+de se vingar de **Tadasu no Kami**, a divindade de Kara-Tur que o condenou a um
+domínio infernal depois que ele cometeu crimes sujeitos a julgamento, incluindo
+o roubo de uma relíquia sagrada ainda não revelada.
 
 A aparência canônica de Masao é a da imagem em
 `narrador/masao/imagens/masao-hirasawa.png`, não a descrição inicial do documento
@@ -28,22 +29,26 @@ A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a ba
 
 * Masao foi ligado a uma disciplina monástica antes de se tornar senhor do
   submundo.
-* Masao roubou um pertence de uma divindade de Kara-Tur.
-* Masao foi condenado a um domínio infernal ou equivalente.
+* Masao roubou uma relíquia sagrada cujo conteúdo exato ainda não foi revelado.
+* Masao foi condenado por **Tadasu no Kami** a um domínio infernal ou
+  equivalente.
 * Masao escapou por meios próprios ou por pacto ainda não revelado.
+* A sentença de Tadasu permanece aberta: Masao está vivo onde, pela ordem que o
+  julgou, não deveria estar.
 * Masao acredita que poder antigo escondido sob a terra pode ajudá-lo em sua
   vingança.
 * Masao tenta controlar cidades por baixo, dominando crime, rotas, documentos,
   chantagem, autoridades corrompidas e entradas para ruínas, túneis ou lugares
   enterrados.
 * Masao pretende construir uma máquina metafísica de deicídio que culmina no
-  **Kokuten**, onde tentará matar a divindade que o condenou e tomar a função
-  deixada vazia.
+  **Kokuten**, onde tentará matar **Tadasu no Kami** e tomar a função deixada
+  vazia.
 
 Detalhes reservados ficam em:
 
 * `narrador/masao/README.md`;
-* `narrador/masao/plano.md`.
+* `narrador/masao/plano.md`;
+* `narrador/aliados/tadasu-no-kami.md`.
 
 ### Cronologia de Kozakura e Ren
 
@@ -82,10 +87,12 @@ capital imperial e cultural. Para a história dos Kagehira, Masao apodrecer Gifu
 
 ### Âncoras de Kara-Tur
 
-O material de Kara-Tur amplia as possíveis raízes de Masao, mas não deve
-antecipar a revelação do objeto sagrado roubado.
+O material de Kara-Tur amplia as possíveis raízes de Masao. A divindade que o
+condenou está definida nos bastidores como **Tadasu no Kami**, mas Ren ainda não
+sabe disso. O objeto sagrado roubado permanece deliberadamente obscuro até
+revelação própria.
 
-Opções compatíveis:
+Opções compatíveis para a relíquia roubada ou para componentes associados:
 
 * um fragmento ou elo de relíquia usada para prender espíritos;
 * uma página, runa ou fórmula de T'u Lung ligada a roubo de anos de vida;
@@ -96,7 +103,8 @@ Opções compatíveis:
   origem.
 
 Antes de transformar uma dessas opções em fato canônico, verificar
-`narrador/kara-tur-segredos.md` e registrar a escolha aqui.
+`narrador/kara-tur-segredos.md`, `narrador/aliados/tadasu-no-kami.md` e registrar
+a escolha aqui.
 
 Sinais que podem aparecer sem revelar a verdade inteira:
 
@@ -142,8 +150,10 @@ importante porque permite falsificar autoridade, acionar contatos antigos e
 ameaçar agentes ainda vivos ou adormecidos.
 
 O quartel-general dos Kagehira foi destruído enquanto Ren vagava ferido. A queda
-não precisa significar extermínio total: sobreviventes, células perdidas,
-traidores, exilados e agentes sem contato permanecem possibilidades futuras.
+não foi extermínio total: **Kagehira Hotaru** sobreviveu por estar em missão
+ligada às células Hotarubi e passou anos acreditando que Ren também morreu.
+Outros sobreviventes, células perdidas, traidores, exilados e agentes sem
+contato ainda podem existir, mas Hotaru é a sobrevivente canônica central.
 
 ### O velho pescador
 
@@ -155,7 +165,9 @@ pode estar ligado a uma tradição monástica esquecida, a uma intervenção div
 menor de Kara-Tur, a uma dívida antiga dos Kagehira ou a uma força que se opõe a
 Masao por razões próprias.
 
-Não confirmar essa natureza até que a campanha precise dessa revelação.
+Não confirmar essa natureza até que a campanha precise dessa revelação. Ele pode
+ter sido tocado indiretamente por Tadasu, mas isso não deve ser tratado como
+prova de profecia ou destino.
 
 ### Juppongatana, as Dez Espadas
 
@@ -191,11 +203,37 @@ dilemas para Ren e inspiração por easter eggs ficam no arquivo reservado
 Inspirações de Kara-Tur para membros, cultos, técnicas e relíquias de apoio ficam
 também em `narrador/kara-tur-segredos.md`.
 
+### Aliados estruturais de Ren
+
+O documento interno `books/Aliados para Ren.pdf` define cinco pilares canônicos
+de apoio futuro. Eles devem surgir em algum momento da campanha, preferencialmente
+na ordem abaixo, sem retirar de Ren a responsabilidade pelas decisões centrais.
+
+Os arquivos autoritativos ficam em `narrador/aliados/`.
+
+* **Shen Meihua**, a Agulha de Jade: médica, infiltradora e operadora de
+  inteligência de Shou Lung, em fuga operacional de Shizune depois de seguir a
+  infraestrutura de Masao.
+* **Tsukishiro Jōen**, a Lua Vazia: mestre idoso de Kozakura, antigo professor
+  de Tadatsune, capaz de completar a formação incompleta de Ren pelo Mukyoku
+  Tsukikage-ryū.
+* **Dame Jenilynn Leyland**, a Mão da Justiça: clériga/paladina de Tyr ligada à
+  Right Hand of Tyr e aos Silver Halls de Ravens Bluff, destinada a transformar
+  a caça a Masao em investigação reconhecível por Faerûn.
+* **Kagehira Hotaru**, o Último Vaga-Lume: prima mais nova de Ren, sobrevivente
+  do clã por causa das células Hotarubi, inicialmente convencida de que Ren
+  morreu e de que talvez Masao esteja usando o nome Kagehira como isca.
+* **Tadasu no Kami**, manifestado como Tadasu no Hakuryū: a divindade justa e
+  benevolente que condenou Masao, confirma que Ren não é escolhido e lhe oferece
+  o Selo da Retificação como consequência de escolha, não como ordem divina.
+
+Marcos de aparição ficam em `narrador/aliados/marcos-de-aparicao.md`.
+
 ### Faerûn
 
 A razão imediata da vinda de Masao a Faerûn pode ter múltiplas camadas, mas a
 direção maior agora é canônica: Faerûn contém peças que permitem transformar a
-vingança contra uma divindade de Kara-Tur em engenharia de apoteose.
+vingança contra **Tadasu no Kami** em engenharia de apoteose.
 
 Possibilidades compatíveis:
 
@@ -214,7 +252,7 @@ Peças maiores do plano:
 * Nether Scroll perdido ligado a engenharia planar e artefatos;
 * legado da First Imaskarcana;
 * Sol Negro, por mythallar ou equivalente netherese;
-* Kokuten, cuja peça final é a própria divindade atraída para ser morta.
+* Kokuten, cuja peça final é Tadasu atraído para ser morto.
 
 Na narração, sinais de Masao devem surgir por camadas: intermediários, símbolos
 falsos, documentos, pressão no submundo, medo institucional, agentes

@@ -25,6 +25,12 @@ Informações desta pasta só devem migrar para arquivos públicos quando Ren de
 ```text
 narrador/
 ├── verdade-da-campanha.md
+├── aliados/
+│   ├── README.md
+│   ├── personagens.md
+│   ├── tadasu-no-kami.md
+│   ├── marcos-de-aparicao.md
+│   └── imagens/
 ├── juppongatana/
 │   ├── README.md
 │   ├── membros.md
@@ -64,3 +70,11 @@ Os arquivos reservados `juppongatana/` e `masao/` registram a estrutura canônic
 dos antagonistas orientais ligados à história de Ren. Eles devem ser consultados
 antes de usar Masao, um membro das Dez Espadas, artefatos do plano de deicídio ou
 pressões de escala regional/continental em Faerûn.
+
+## Aliados maiores
+
+Os arquivos reservados `aliados/` registram Shen Meihua, Tsukishiro Jōen, Dame
+Jenilynn Leyland, Kagehira Hotaru e Tadasu no Kami como pilares futuros da
+campanha de Ren. Eles devem ser consultados antes de introduzir aliados
+orientais, treinamento avançado do Getsuei-ryū, a ponte com Tyr/Right Hand of
+Tyr, sobreviventes Kagehira ou revelações sobre a divindade que condenou Masao.

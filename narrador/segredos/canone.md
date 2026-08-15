@@ -72,6 +72,9 @@ pode ser ignorado, investigado ou amadurecer depois.
 * Consultar `narrador/juppongatana/marcos-de-aparicao.md` antes de introduzir
   qualquer membro das Dez Espadas; os marcos ali são cânone de pressão, ajustável
   pelas ações de Ren.
+* Consultar `narrador/aliados/marcos-de-aparicao.md` antes de introduzir Shen,
+  Jōen, Jenilynn, Hotaru ou Tadasu; a ordem preferencial é canônica, mas a forma
+  de entrada deve responder às consequências em jogo.
 
 ---
 
@@ -212,3 +215,25 @@ Pressões prováveis:
   disponível;
 * a Juppongatana ou agente equivalente pode passar de observação para contato
   direto se os relógios justificarem.
+
+## 7 Eleasis em diante - Primeira trilha de aliado canônico
+
+Plano sujeito a alteração conforme a continuação da sessão 003.
+
+Ren já alcançou nível 6, já chamou atenção de Luath, Tyr, Narwhal, o circo e
+agentes associados a Masao. A primeira trilha de aliado canônico deve preferir
+**Shen Meihua**, salvo se Ren escolher explicitamente se entrincheirar em Tyr, o
+que pode prefigurar **Dame Jenilynn Leyland** antes da aparição direta de Shen.
+
+Formas discretas de introdução:
+
+* remédio oriental usado corretamente em vítima que não sabe quem a tratou;
+* documento falso com correção marginal que só alguém treinado em Shou Lung ou
+  Kozakura entenderia;
+* uma curandeira apagando suas próprias identidades perto do porto;
+* um agente de Shizune procurando "a médica";
+* um frasco, agulha, dobradura ou sutura que indique presença de alguém que já
+  segue a mesma rede.
+
+Não transformar Shen em solução automática. Ela deve chegar com informação útil,
+mas também com perseguição, perda de identidades e inimigos próximos.

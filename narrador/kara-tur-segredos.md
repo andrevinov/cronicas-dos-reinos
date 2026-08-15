@@ -22,6 +22,10 @@ do mesmo documento e ficam em:
 * `narrador/juppongatana/`;
 * `narrador/masao/`.
 
+O documento interno `books/Aliados para Ren.pdf` também é canônico. Os aliados
+maiores de Ren, a ordem preferencial de aparição e Tadasu no Kami ficam em
+`narrador/aliados/`.
+
 Usar primeiro como rastros:
 
 * mercadorias;
@@ -43,6 +47,8 @@ registrada em arquivo canônico específico.
 Estas verdades são compatíveis com o cânone atual:
 
 * Masao teve disciplina monástica antes de se tornar senhor do submundo.
+* A divindade que condenou Masao está definida nos bastidores como **Tadasu no
+  Kami**.
 * O objeto sagrado roubado por Masao ainda não foi definido publicamente.
 * Masao ascendeu em Kozakura no intervalo em que a yakuza local, ainda recente
   no retrato oficial de 1357 DR, podia ser consolidada por um operador com
@@ -59,7 +65,8 @@ Estas verdades são compatíveis com o cânone atual:
   Koryo. O nome é de Masao; a origem individual de cada membro pode variar.
 * O plano maior de Masao não é apenas controlar submundo: ele quer construir uma
   máquina metafísica de deicídio e usurpação de função divina, começando por
-  infraestrutura criminosa e terminando no Kokuten.
+  infraestrutura criminosa e terminando no Kokuten, onde pretende matar Tadasu
+  no Kami.
 
 ---
 
@@ -67,6 +74,10 @@ Estas verdades são compatíveis com o cânone atual:
 
 Escolher uma opção antes de uma revelação maior. Não revelar todas como se
 fossem pistas verdadeiras.
+
+Estas opções dizem respeito à relíquia roubada ou a componentes associados ao
+crime de Masao. Elas não reabrem a identidade da divindade que o condenou:
+Tadasu no Kami já é canônico nos bastidores.
 
 ### Elo da Corrente de Marfim
 
@@ -126,6 +137,10 @@ Vantagens:
 
 Risco:
 
+* como Tadasu no Kami agora é a divindade que condenou Masao, esta opção não deve
+  ser o objeto principal da sentença divina sem adaptação explícita;
+* usar melhor como pista falsa, relíquia secundária, tabu de submundo ou camada
+  de encobrimento;
 * Chirasu também é patrona de ações ocultas; evitar transformar todo shinobi em
   servo dela.
 
@@ -214,8 +229,10 @@ Os Kagehira são próprios da campanha. Para encaixe com o cenário:
   mais dependente de agentes discretos;
 * sua destruição abriu espaço para Uji, Konishi, yakuza, wako ou agentes de
   Masao disputarem rotas que antes eram vigiadas;
-* sobreviventes Kagehira podem existir, mas devem ter preço, medo, missão ou
-  motivo para não terem encontrado Ren antes;
+* **Kagehira Hotaru** é a sobrevivente Kagehira central já canônica; ela tem
+  preço, missão e motivo para não ter encontrado Ren antes;
+* outros sobreviventes Kagehira podem existir, mas devem ter preço, medo, missão
+  ou motivo para não terem encontrado Ren antes;
 * o Selo da Lua Velada é perigoso porque o mundo ainda pode aceitar sua
   autoridade mesmo depois da queda do clã.
 

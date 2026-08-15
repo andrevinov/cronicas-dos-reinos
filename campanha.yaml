@@ -67,6 +67,10 @@ estrutura:
     juppongatana_marcos: "narrador/juppongatana/marcos-de-aparicao.md"
     masao: "narrador/masao/README.md"
     masao_plano: "narrador/masao/plano.md"
+    aliados_ren: "narrador/aliados/README.md"
+    aliados_ren_personagens: "narrador/aliados/personagens.md"
+    aliados_ren_tadasu: "narrador/aliados/tadasu-no-kami.md"
+    aliados_ren_marcos: "narrador/aliados/marcos-de-aparicao.md"
     preparacao_sessao_atual: "narrador/sessoes/001/preparacao.md"
     mapa_sessao_atual: "narrador/sessoes/001/mapa-e-salas.md"
     npcs_sessao_atual: "narrador/sessoes/001/npcs.md"
@@ -95,6 +99,9 @@ fontes:
     - nome: "Kara-Tur e Faerûn"
       arquivo: "books/Kara-Tur e Faerûn.pdf"
       uso: "encaixe canônico de Ren, Masao e Clã Kagehira na lacuna de Kozakura entre 1357 DR e 1372 DR; relação geral entre Kara-Tur e Faerûn"
+    - nome: "Aliados para Ren"
+      arquivo: "books/Aliados para Ren.pdf"
+      uso: "aliados canônicos futuros de Ren; ordem preferencial de aparição; ponte entre Ren, Masao, Tyr, sobreviventes Kagehira e a divindade que condenou Masao"
 
 jogador:
   personagem_inicial:
@@ -124,7 +131,7 @@ tom:
     - "consequencias persistentes"
     - "agencia real do jogador"
     - "preparacao local antes de expansao ampla"
-    - "campanha solo com aliados temporarios"
+    - "campanha solo com aliados temporarios, recorrentes e canonicos sem roubar agencia de Ren"
     - "furtividade, investigacao urbana e sobrevivencia"
     - "jogo adulto com romance e intimidade consentida tratados por corte de cena"
     - "violencia sombria permitida sem crueldade grafica gratuita"
