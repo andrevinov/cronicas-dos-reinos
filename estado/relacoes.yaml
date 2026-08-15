@@ -212,8 +212,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "última informação conhecida por Ren: foi movido dos fornos de cal para uma secagem velha na estrada do Fire River com Mera Fumaça; Ren encontrou pano semelhante ao manto de Dent e marcas saindo da estrada antes de confirmar a secagem"
-    status: "vivo até a chegada aos fornos de cal, mas segurança atual não confirmada; possível rastro, retirada, captura ou isca na estrada do Fire River"
+    local: "mato baixo junto à estrada do Fire River, preso próximo a uma vala rasa antes da secagem velha de Mera Fumaça"
+    status: "vivo, amarrado e gagado; usado como refém/pressão por dois captores"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -245,7 +245,10 @@ relacoes:
       do Fire River com Mera Fumaça depois que alguém de "mão limpa" fez
       perguntas. Ao seguir para lá, Ren percebeu observação alternada e encontrou
       uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca, com
-      marcas recentes saindo da estrada para o mato baixo.
+      marcas recentes saindo da estrada para o mato baixo. Ren seguiu a trilha
+      apesar de suspeitar de isca e encontrou Colm vivo, amarrado e gagado junto
+      a uma vala rasa, usado como pressão por uma mulher de avental escuro com
+      lâmina curta e um homem com besta leve.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -262,6 +265,8 @@ relacoes:
       - "Na manhã de 7 Eleasis, Ren soube que Colm/Dent chegou vivo aos fornos de cal, mas Dorra o moveu para uma secagem velha na estrada do Fire River com Mera Fumaça."
       - "Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca antes de confirmar a localização de Mera."
       - "Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada."
+      - "Ren confirmou Colm/Dent vivo no mato baixo junto à estrada do Fire River."
+      - "Colm/Dent está amarrado e gagado junto a uma vala rasa, com uma mulher de lâmina curta ao lado dele e um besteiro em cobertura parcial."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -272,6 +277,7 @@ relacoes:
       - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
+      - "No momento atual, qualquer escalada brusca pode colocar Colm/Dent em risco direto antes que Ren neutralize a mulher ao lado dele."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"

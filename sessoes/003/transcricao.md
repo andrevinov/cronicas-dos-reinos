@@ -4136,3 +4136,56 @@ Atrás, na curva anterior, o rapaz da corda nova ainda não apareceu de novo.
 Hora aproximada: **07:19 de 7 Eleasis, 1372 DR**. Ren está na **estrada do Fire River**, fora do miolo de Ravens Bluff, antes das construções que podem incluir a secagem velha de **Mera Fumaça**. Ele não conseguiu quebrar completamente a atenção nascida nos pátios, mas percebeu o padrão a tempo. A localização exata de Mera ainda não foi confirmada. Ren encontrou uma tira de pano semelhante ao manto de Colm/Dent presa numa cerca e marcas recentes saindo da estrada para o mato baixo. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** segue disponível e ainda não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren irá seguir a trilha óbvia. Ele entende que Colm está morto ou em perigo. Suspeita que estão tentando atraí-lo, mas vai.
+
+**Narrador**
+
+> Modo de cena: exploração
+
+Seguir as marcas no mato baixo: d20 9 + 3 = 12 contra CD 14. Falha.  
+Avançar pelo mato sem entregar posição: d20 11 + 7 = 18 contra CD 15. Sucesso.  
+Perceber ameaça antes de entrar no ponto preparado: d20 8 + 6 = 14 contra CD 15. Falha.  
+Evitar laço baixo no ponto preparado: d20 20 + 7 = 27 contra CD 14. Sucesso.
+
+Ren entra no mato baixo sem pressa de quem acredita na própria sorte.
+
+O rastro é óbvio demais em alguns trechos e pobre demais em outros. A bota pesada aparece onde a lama aceita marca. O passo arrastado some sobre raiz seca. Duas folhas quebradas apontam para um desvio que não combina com corpo cansado; uma fibra parda presa em espinho parece deixada para ser vista, não perdida. Ren mantém o peso baixo, evita galho seco, usa tronco torto e sombra de salgueiro como cobertura. Quem espera ouvir um homem vindo pela trilha não recebe esse presente inteiro.
+
+Mas o lugar preparado chega antes de se revelar.
+
+O chão afunda um dedo sob a sola de Ren.
+
+O laço dispara.
+
+A corda sobe para prender tornozelo e puxar carne contra estaca baixa, mas Ren já não está onde o mecanismo esperava. O corpo gira por instinto, joelho recolhido, mão na terra úmida. A corda chicoteia o ar, pega só a barra do casaco e rasga tecido em vez de perna. Um saco pendurado acima se rompe com o tranco e derrama pó branco de cal velha numa nuvem curta. Ardida. Cega por um sopro, não por tempo bastante.
+
+Agora o ponto aparece.
+
+À esquerda, a cerca de trinta pés, há um monte velho de carvão coberto por lona preta endurecida. Atrás dele, um homem ergue uma besta leve, mas sem mira limpa; o pó e a mudança brusca de Ren quebraram a linha do disparo. À direita, perto de uma vala rasa, uma mulher de avental escuro segura uma lâmina curta de trabalho, dessas usadas para cortar corda, pano grosso ou garganta pequena se a mão for cruel o bastante.
+
+Entre ela e a vala, preso de lado contra duas tábuas baixas, está Colm.
+
+Vivo.
+
+Magro demais, rosto sujo de cinza, o manto roto de Ren ainda nos ombros em farrapos. Uma tira de pano prende a boca dele, mas não abafa a tosse inteira. Os dois dedos tortos estão inchados e roxos; os olhos acompanham movimento, confusos, aterrados, ainda presentes.
+
+A mulher vê Ren não cair.
+
+Isso estraga metade da cena dela.
+
+"Devagar", ela diz, e a lâmina baixa até a corda que prende Colm pela frente, perto demais do pescoço para ser só ameaça de amarra. "Ninguém pagou por defunto ainda."
+
+O homem da besta ajusta o pé atrás do monte de carvão.
+
+"Você veio pelo torto", ele diz. "Então fala como gente que quer ele respirando."
+
+Atrás, para o lado da estrada, o rapaz da corda nova ainda não reapareceu. Isso pode significar que ficou vigiando a saída. Pode significar que correu para chamar outro. Pode significar que só esperava ouvir o laço fechar.
+
+Ren está agachado na borda da nuvem de cal, parcialmente encoberto por mato baixo e pó branco. Colm está a cerca de quinze pés, preso junto à vala. A mulher está ao lado dele. O besteiro está a cerca de trinta pés, com cobertura parcial atrás do monte de carvão. Há sombras úteis sob os salgueiros e dentro da secagem velha mais adiante, mas o trecho aberto entre Ren e Colm recebe luz cinza de manhã.
+
+Hora aproximada: **07:24 de 7 Eleasis, 1372 DR**. Ren evitou o laço e não está preso nem caído. Colm/Dent está **vivo**, amarrado e usado como pressão. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+O que Ren faz?

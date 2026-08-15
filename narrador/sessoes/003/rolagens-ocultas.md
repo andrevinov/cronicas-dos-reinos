@@ -1376,3 +1376,31 @@ Consequências:
   presa numa cerca e marcas recentes saindo da estrada para o mato baixo.
 * A negociação com Mera ainda não ocorreu e deve ser resolvida apenas se Ren
   alcançar Mera em cena.
+
+---
+
+## Ponto preparado no mato baixo da estrada do Fire River
+
+Contexto: Ren decidiu seguir as marcas óbvias para o mato baixo, entendendo que
+Colm/Dent podia estar morto, em perigo ou sendo usado como isca.
+
+Rolagens abertas:
+
+* Seguir as marcas no mato baixo: d20 9 + 3 = 12 contra CD 14. Falha.
+* Avançar pelo mato sem entregar posição: d20 11 + 7 = 18 contra CD 15.
+  Sucesso.
+* Perceber ameaça antes de entrar no ponto preparado: d20 8 + 6 = 14 contra CD
+  15. Falha.
+* Evitar laço baixo no ponto preparado: d20 20 + 7 = 27 contra CD 14. Sucesso.
+
+Consequências:
+
+* A falha em seguir marcas separa rastro real de isca tarde demais: Ren entra no
+  ponto preparado.
+* A Furtividade bem-sucedida impede que os captores tenham linha perfeita ou
+  surpresa total sobre ele.
+* A falha de Percepção permite que o laço dispare.
+* A salvaguarda crítica evita captura física: Ren não fica preso nem caído.
+* Colm/Dent está vivo e em perigo imediato, preso junto a uma vala rasa.
+* O contato ainda não virou iniciativa; os captores falam primeiro para tentar
+  controlar a cena com Colm como pressão.

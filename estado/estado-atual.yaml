@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "estrada do Fire River"
-  ponto_exato: "perto de cerca baixa e salgueiros, antes das construções associadas à secagem velha de Mera Fumaça"
+  ponto_exato: "mato baixo junto a vala rasa e monte velho de carvão, antes das construções associadas à secagem velha de Mera Fumaça"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -380,7 +380,14 @@ localizacao:
     observação alternada e não confirmou a localização exata de Mera. Perto de
     três construções possíveis, encontrou uma tira de pano semelhante ao manto
     dado a Colm/Dent presa numa cerca e marcas recentes saindo da estrada para
-    o mato baixo: uma bota pesada e uma passada incompleta ou arrastada.
+    o mato baixo: uma bota pesada e uma passada incompleta ou arrastada. Ren
+    seguiu a trilha óbvia apesar de suspeitar de isca. O rastro o levou a um
+    ponto preparado: um laço baixo com pó de cal e dois captores usando Colm como
+    pressão. Ren não leu o ponto preparado a tempo, mas evitou o laço com uma
+    reação perfeita. Colm/Dent está vivo, amarrado e gagado junto a uma vala
+    rasa, com uma mulher de avental escuro e lâmina curta ao lado dele; um homem
+    com besta leve está a cerca de trinta pés, parcialmente coberto por monte
+    velho de carvão. O contato ainda não virou iniciativa, mas é hostil.
 
 tempo:
   ano_dr: 1372
@@ -392,11 +399,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "amanhecer de 7 Eleasis, na estrada do Fire River"
-  hora_aproximada: "07:19 de 7 Eleasis"
+  periodo_do_dia: "amanhecer de 7 Eleasis, no mato baixo junto à estrada do Fire River"
+  hora_aproximada: "07:24 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. A ida pela estrada do Fire River foi interrompida por sinais de observação e por marcas saindo da estrada antes de Ren confirmar Mera Fumaça."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, mas como refém imediato em ponto preparado junto à estrada do Fire River."
 
 recursos:
   pontos_de_vida:
@@ -418,7 +425,7 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está na estrada do Fire River, vestido como homem pobre"
+    - "Ren está no mato baixo junto à estrada do Fire River, vestido como homem pobre"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "O Broche do Semblante Humilde não foi usado na saída atual"
     - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
@@ -430,6 +437,11 @@ recursos:
     - "Ren ainda não confirmou a localização exata de Mera Fumaça"
     - "Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca baixa"
     - "Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada"
+    - "Ren seguiu as marcas no mato baixo; não leu o ponto preparado a tempo, mas evitou o laço baixo com uma salvaguarda perfeita"
+    - "Colm/Dent está vivo, amarrado e gagado junto a uma vala rasa"
+    - "Uma mulher de avental escuro com lâmina curta está ao lado de Colm/Dent"
+    - "Um homem com besta leve está a cerca de trinta pés, com cobertura parcial atrás de monte velho de carvão"
+    - "Ren está parcialmente encoberto por mato baixo e pó de cal; não está preso nem caído"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1232,8 +1244,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir se segue as marcas saindo da estrada para o mato baixo, investiga as três construções possíveis ou tenta cortar a observação antes de procurar Mera Fumaça"
-    - "decidir como lidar com a atenção perigosa nascida nos pátios antes que ela vire cauda ou recado contra Colm/Dent"
+    - "decidir como lidar com os captores de Colm/Dent sem entregar o refém ou perder a chance de capturá-los vivos"
+    - "identificar se os captores querem dinheiro, informação, Ren, Kage ou apenas cumprir ordem de Bram/outro mandante"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
@@ -1275,8 +1287,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na estrada do Fire River, às 07:19 de 7 Eleasis, vestido como homem pobre. Ele saiu dos pátios após saber que Colm/Dent chegou vivo aos fornos de cal, mas foi movido por Dorra para uma secagem velha com Mera Fumaça depois que alguém de 'mão limpa' fez perguntas. Ren não conseguiu quebrar completamente a atenção dos pátios, mas percebeu observação alternada na estrada. A localização exata de Mera ainda não foi confirmada. Antes de três construções possíveis, Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca e marcas recentes saindo da estrada para o mato baixo. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde está disponível, mas não foi usado nesta saída."
-  risco_imediato: "alto localizado: se Ren for direto às construções, pode conduzir olhos até a secagem velha ou até Mera Fumaça. Se seguir as marcas no mato, pode encontrar Colm/Dent, uma emboscada, uma retirada apressada ou apenas rastro plantado. Se parar para quebrar a observação, pode perder tempo enquanto o prazo ruim de Dent termina hoje."
+  cena_atual: "Ren está no mato baixo junto à estrada do Fire River, às 07:24 de 7 Eleasis, vestido como homem pobre. Ele seguiu as marcas saindo da estrada para o mato apesar de suspeitar de isca. O rastro levou a um ponto preparado com laço baixo e pó de cal; Ren não percebeu a ameaça a tempo, mas evitou o laço e não está preso nem caído. Colm/Dent foi confirmado vivo, amarrado e gagado junto a uma vala rasa. Uma mulher de avental escuro com lâmina curta está ao lado dele; um homem com besta leve está a cerca de trinta pés atrás de monte velho de carvão. A localização exata de Mera Fumaça ainda não foi confirmada. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde está disponível, mas não foi usado nesta saída."
+  risco_imediato: "alto localizado: Colm/Dent está sob ameaça direta. O contato ainda não virou iniciativa porque os captores falaram primeiro, mas qualquer movimento brusco pode iniciar combate ou provocar dano ao refém. Ren tem cobertura parcial de mato baixo e pó de cal; o besteiro não tem mira limpa perfeita, mas está pronto. Há sombras úteis sob salgueiros e dentro da secagem velha, enquanto o trecho entre Ren e Colm recebe luz cinza de manhã."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1287,5 +1299,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir se Ren segue as marcas para o mato, investiga as construções, usa o Broche do Semblante Humilde ou tenta cortar a observação antes de procurar Mera Fumaça"
-    - "verificar a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir observadores até Colm/Dent"
+    - "decidir se Ren negocia, ataca, usa ki, tenta reposicionar com sombras ou cria distração para tirar Colm/Dent da lâmina"
+    - "verificar depois a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir novos observadores até sobreviventes"
