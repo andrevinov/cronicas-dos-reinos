@@ -26,7 +26,7 @@ recursos:
 tempo:
   data: 7 Eleasis, 1372 DR
   hora_aproximada: 08:03 de 7 Eleasis
-  periodo: manhã de 7 Eleasis, junto à cerca de salgueiros no ramal da estrada principal do Fire River
+  periodo: manhã de 7 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -35,7 +35,8 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: estrada do Fire River
-  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas
+  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
+    limpas
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
