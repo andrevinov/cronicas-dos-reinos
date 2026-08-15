@@ -887,3 +887,48 @@ Consequências:
   pequenos cilindros e feixes de papel mantidos longe do chão.
 * Há brilho fraco no fundo da sala, parcialmente oculto. Ren não vê ninguém pelo
   ângulo atual, mas não enxerga a sala inteira.
+
+---
+
+## Noite de 6 para 7 Eleasis: marca para Luath e abertura do painel
+
+Contexto: Ren voltou ao começo do corredor seco, marcou "K ->" na parede
+apontando para o painel baixo e retornou para abrir o painel furtivamente.
+
+Rolagens abertas:
+
+* Furtividade de Ren ao voltar, marcar a parede e retornar ao painel sob Passos
+  sem Pegadas: d20 7 + 17 = 24 contra CD 15. Sucesso.
+* Investigação de Ren para ler rapidamente a cunha, o trilho e possíveis
+  controles do painel: d20 9 + 4 = 13 contra CD 14. Falha.
+* Ferramentas de ladrão de Ren para abrir o painel baixo sem ruído útil: d20 18
+  + 7 = 25 contra CD 15. Sucesso.
+* Percepção de Ren depois da abertura do painel: d20 6 + 6 = 12 contra CD 15.
+  Falha.
+
+Rolagens ocultas:
+
+* Ouvinte no fundo perceber a abertura do painel: d20 8 + 4 = 12 contra CD 25.
+  Falha.
+* Sinal seco no trilho denunciar movimento do painel: d20 4 + 3 = 7 contra CD
+  18. Falha.
+* Pressão da segunda maré alterar a rota úmida enquanto Ren abre o painel: d20 4
+  + 2 = 6 contra CD 13. Falha.
+
+Consequências:
+
+* Ren deixa uma marca pequena e legível "K ->" no começo do corredor seco,
+  apontando para o painel baixo. Luath pode encontrá-la se chegar procurando
+  sinais, mas a marca também pode ser percebida por oposição que examine o
+  corredor.
+* Ren não identifica com segurança se a cunha ou o trilho têm controle fino,
+  aviso secundário ou apenas desgaste comum.
+* A abertura do painel é silenciosa e não é percebida por ouvinte no fundo.
+* O sinal seco/trilho não denuncia o movimento neste momento.
+* A pressão da maré ainda não altera a rota úmida de modo relevante durante esta
+  pequena janela.
+* Ren vê melhor a sala baixa seca: rolos de pano encerado e cilindros com cera
+  à esquerda, mesa estreita com bandejas e peso de pedra ao centro, feixes de
+  papel elevados à direita e uma passagem baixa coberta perto de brilho fraco no
+  fundo. Ele não vê ninguém, mas sua Percepção falhou e a sala não está
+  completamente garantida.

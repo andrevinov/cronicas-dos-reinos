@@ -3251,3 +3251,70 @@ O que Ren faz?
 Retorna para o começo do corredor onde entrou, no contato com a câmara seca de retenção, e escreve na parede, pequeno, mas legível: "K", e uma seta na direção da porta com fresta que ele pretendo entrar.
 
 Ren volta para a porta e tenta abri-la furtivamente.
+
+**Narrador**
+
+Ren recua pelo mesmo corredor que acabou de vencer.
+
+Teste de Furtividade de Ren ao voltar, marcar a parede e retornar ao painel sob Passos sem Pegadas: d20 7 + 17 = 24 contra CD 15. Sucesso.
+
+O caminho continua estreito, mas agora o corpo conhece os pontos ruins. Ren passa sem raspar a bainha, sem encostar o ombro na pedra lisa demais e sem quebrar a camada clara de pó além do necessário.
+
+No começo do corredor seco, onde ele toca a câmara baixa de retenção, Ren usa um traço escuro pequeno, provavelmente carvão ou pigmento do kit de disfarce, não lâmina. O sinal fica baixo, junto da parede direita:
+
+```text
+K ->
+```
+
+Pequeno o bastante para não chamar olho distraído do outro lado da câmara. Legível o bastante para alguém procurando por um sinal encontrar direção.
+
+Depois ele volta ao painel.
+
+Teste de Investigação de Ren para ler rapidamente a cunha, o trilho e possíveis controles do painel: d20 9 + 4 = 13 contra CD 14. Falha.
+
+Ren entende o óbvio: a madeira corre em trilho baixo, inchada em uma lateral, e a cunha inferior ficou torta. O que ele não consegue separar é se essa cunha falhou por pressa, por má carpintaria antiga ou por algum pequeno controle que ele ainda não percebeu.
+
+Se existe aviso fino ali, ele está misturado demais com pó, madeira e uso.
+
+Teste com ferramentas de ladrão de Ren para abrir o painel baixo sem ruído útil: d20 18 + 7 = 25 contra CD 15. Sucesso.
+
+Teste de Percepção de Ren depois da abertura do painel: d20 6 + 6 = 12 contra CD 15. Falha.
+
+Ren não força.
+
+Ele tira peso da cunha com dois dedos, prende a respiração quando a madeira ameaça morder o trilho e desloca o painel aos poucos. O primeiro dedo de abertura vira dois. Dois viram uma mão. A madeira range só dentro dela mesma, sem soltar aquele gemido comprido que acorda casa inteira. A Passos sem Pegadas não faz milagre em madeira velha; a mão de Ren faz.
+
+O painel abre o bastante para ele passar agachado, se quiser.
+
+Ninguém grita.
+
+Nenhum sino toca.
+
+O brilho fraco no fundo da sala continua preso sob alguma proteção, como brasa guardada dentro de concha ou vidro sujo. A sala baixa está vazia pelo que Ren consegue ver agora, mas a visão ainda é cortada por prateleiras, mesa e ângulos baixos.
+
+Com o painel aberto, a sala se organiza melhor.
+
+À esquerda, prateleiras curtas guardam rolos de pano encerado e cilindros pequenos. Alguns têm cera nas bordas. À direita, os feixes de papel ficam sobre calços baixos de madeira, amarrados por cordão escuro. No centro, uma mesa estreita tem duas bandejas rasas com areia ou cinza clara e uma pedra lisa usada como peso. No chão, a camada de pó claro está menos intacta perto da mesa, como se alguém tivesse se ajoelhado ali recentemente.
+
+No fundo, perto do brilho fraco, há uma segunda abertura parcial. Não uma porta comum: mais uma passagem baixa, coberta por pano escuro ou couro encerado. O ângulo não permite saber se ela sobe, desce ou segue reta.
+
+Ren não ouve passos. Também não consegue confiar completamente nisso.
+
+Visão atual de Ren:
+
+```text
+corredor seco atrás
+   |
+[Ren] -> painel baixo aberto
+            |
+            v
+   sala baixa seca
+   esquerda: rolos, cilindros, cera
+   centro: mesa estreita, bandejas, peso de pedra
+   direita: feixes de papel elevados
+   fundo: brilho fraco + passagem baixa coberta
+```
+
+Hora aproximada: **01:42 de 7 Eleasis, 1372 DR**. Ren está diante do painel baixo aberto, ainda fora da sala baixa seca. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Há uma marca pequena **"K ->"** no começo do corredor seco, apontando para este painel.
+
+O que Ren faz?
