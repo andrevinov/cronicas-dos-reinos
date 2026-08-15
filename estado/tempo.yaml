@@ -567,6 +567,9 @@ marcos_de_tempo:
   vigilia_e_entrada_na_ponte_baixa:
     horario_aproximado: "20:52 de 6 Eleasis-01:32 de 7 Eleasis"
     observacao: "Ren vigiou a provável Ponte Baixa até faltar cerca de meia hora para a segunda maré. Rolagens abertas: Percepção na vigília 7 contra CD 15, falha; Constituição para resistir ao cansaço e à rigidez 20 contra CD 13, sucesso; Furtividade ao deixar o ponto de observação e cruzar até a entrada 17 contra CD 15, sucesso; Investigação na boca seca antes de passar o corpo 6 contra CD 15, falha. Ren não viu movimento útil, não sofreu penalidade imediata por cansaço, cruzou até a fresta sem chamar atenção comum e entrou cerca de doze pés na boca seca da Ponte Baixa. Ele não identificou mecanismo ou fio claro antes de passar. Ren ainda não ativou Passos sem Pegadas nem Visão no Escuro e não deixou marca explícita para Luath."
+  infiltracao_inicial_na_ponte_baixa:
+    horario_aproximado: "01:32-01:36 de 7 Eleasis"
+    observacao: "Ren ativou Visão no Escuro e Passos sem Pegadas dentro da boca seca da Ponte Baixa, gastando 4 ki e ficando com Ki 2/6. Passos sem Pegadas exige concentração e pode durar até cerca de 02:32; Visão no Escuro pode durar até cerca de 09:32. Rolagens abertas: Furtividade sob Passos sem Pegadas 25 contra CD 17, sucesso; Percepção para ler a primeira galeria 8 contra CD 15, falha; Investigação para interpretar marcas e possíveis controles 10 contra CD 14, falha; Acrobacia para avançar pela passagem baixa sem ruído útil 23 contra CD 13, sucesso. Ren chegou a uma câmara baixa seca, cerca de quarenta a cinquenta pés além da entrada. Vê um canal frio e úmido à esquerda, corredor seco mais usado à direita e fenda de ar com pano encerado acima/adiante. Ouviu som baixo de madeira contra pedra vindo da direita, sem determinar distância."
   segunda_mare:
     horario_aproximado: "02:00"
     janela_segura_para_chegar_antes: "até cerca de 01:30"

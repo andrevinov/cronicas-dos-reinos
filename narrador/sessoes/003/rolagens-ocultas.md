@@ -806,3 +806,45 @@ Consequências:
 * Algum controle oculto percebeu ou registrou a entrada de Ren. Ren não sabe
   disso ainda; usar como alerta interno, preparação ou ajuste de oposição na
   próxima área, sem revelar a fonte ao jogador.
+
+---
+
+## Noite de 6 para 7 Eleasis: infiltração inicial na Ponte Baixa
+
+Contexto: Ren ativou Visão no Escuro e Passos sem Pegadas dentro da boca seca
+da Ponte Baixa, depois começou a avançar pelo trecho baixo.
+
+Rolagens abertas:
+
+* Furtividade de Ren sob Passos sem Pegadas no primeiro trecho da Ponte Baixa:
+  d20 8 + 17 = 25 contra CD 17. Sucesso.
+* Percepção de Ren ao ler a primeira galeria com Visão no Escuro: d20 2 + 6 =
+  8 contra CD 15. Falha.
+* Investigação de Ren para interpretar marcas, secura e possíveis controles do
+  trecho inicial: d20 6 + 4 = 10 contra CD 14. Falha.
+* Acrobacia de Ren para avançar pela passagem baixa sem bater corpo, arma ou
+  tecido na pedra: d20 16 + 7 = 23 contra CD 13. Sucesso.
+
+Rolagens ocultas:
+
+* Atenção interna contra a infiltração silenciosa de Ren: d20 16 + 4 = 20 contra
+  CD 25. Falha.
+* Resposta interna ao sinal de entrada na Ponte Baixa: d20 11 + 3 = 14 contra
+  CD 13. Sucesso.
+
+Consequências:
+
+* Ren gastou 4 ki: 2 ki em Visão no Escuro e 2 ki em Passos sem Pegadas,
+  ficando com Ki 2/6.
+* Passos sem Pegadas fica ativo sob concentração até cerca de 02:32, salvo
+  interrupção; Visão no Escuro fica ativa até cerca de 09:32.
+* Ren avança sem ser localizado pela atenção interna neste trecho, apesar de o
+  controle oculto já ter registrado a entrada antes.
+* A resposta interna ao sinal de entrada consegue se organizar a tempo; usar
+  isso como alteração de posição, fechamento, retirada parcial ou preparação na
+  área seguinte, sem revelar a fonte ao jogador.
+* Ren não interpreta bem marcas, secura, pontos na parede ou sinais de controle
+  no trecho inicial. Ele percebe apenas indícios ambíguos.
+* Ren chega a uma câmara baixa seca com três leituras visíveis: canal frio e
+  úmido à esquerda, corredor seco mais usado à direita e fenda de ar/pano
+  encerado acima/adiante.

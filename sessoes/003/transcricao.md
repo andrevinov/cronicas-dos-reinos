@@ -3112,3 +3112,72 @@ Um detalhe pequeno fica com ele: logo na entrada, o pano encerado não estava ap
 Hora aproximada: **01:32 de 7 Eleasis, 1372 DR**. Ren está dentro da boca seca da **Ponte Baixa**, cerca de doze pés além da entrada, numa dobra baixa de pedra. Ele não está sob **Passos sem Pegadas** nem **Visão no Escuro**; recursos atuais: **45/45 PV, CA 17, Ki 6/6, 25 PO, 9 shuriken**. A segunda maré está a aproximadamente meia hora. Ren ainda não deixou uma marca explícita para Luath.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren liga Visão no Escuro e Passos sem Pegadas. E começa a se infiltrar.
+
+**Narrador**
+
+Ren junta a respiração no peito, deixa o mundo estreitar até o tamanho da pedra diante do rosto e puxa a sombra para perto.
+
+**Visão no Escuro**: 2 ki.
+**Passos sem Pegadas**: 2 ki.
+
+Ki atual: **2/6**. **Passos sem Pegadas** exige concentração e pode durar até cerca de **02:32** se não for quebrado. **Visão no Escuro** pode durar até cerca de **09:32**.
+
+Teste de Furtividade de Ren sob Passos sem Pegadas no primeiro trecho da Ponte Baixa: d20 8 + 17 = 25 contra CD 17. Sucesso.
+
+Teste de Percepção de Ren ao ler a primeira galeria com Visão no Escuro: d20 2 + 6 = 8 contra CD 15. Falha.
+
+Teste de Investigação de Ren para interpretar marcas, secura e possíveis controles do trecho inicial: d20 6 + 4 = 10 contra CD 14. Falha.
+
+Teste de Acrobacia de Ren para avançar pela passagem baixa sem bater corpo, arma ou tecido na pedra: d20 16 + 7 = 23 contra CD 13. Sucesso.
+
+A escuridão deixa de ser muro e vira mundo sem cor.
+
+A Ponte Baixa não é túnel confortável. É um velho canal de serviço obrigado a fingir que nunca teve água. A pedra desce baixa sobre as costas de Ren; a linha antiga da umidade aparece nas paredes como uma cicatriz cinzenta, mais alta do que deveria estar se aquilo fosse passagem feita para gente. O chão foi raspado, depois coberto por pó claro. Cal, sal, ou uma mistura dos dois. Sob a magia, os passos de Ren não deixam rastro útil. Mesmo assim, a secura parece querer guardar a forma de qualquer coisa que toca nela.
+
+Ele avança.
+
+O corpo passa onde um homem apressado bateria ombro, joelho, cotovelo, bainha. Ren não. Ele dobra, gira, apoia dois dedos na pedra e desliza pelo trecho baixo com precisão quase irritante. A wakizashi não raspa. O pano não canta. O pó não levanta o bastante para entregar caminho.
+
+Mas o lugar não se entrega de volta.
+
+Há riscos no chão, mas Ren não consegue separar arrasto de caixa, marca de joelho, ferramenta velha ou sinal feito de propósito. Há pequenos pontos escuros na parede direita, mas podem ser mofo morto, carvão apagado ou referência para quem já conhece a rota. Num ponto, a pedra muda de textura sob a mão, lisa demais, como se fosse tocada com frequência. Quando Ren olha de novo, a Visão no Escuro transforma tudo na mesma escala cruel de cinza.
+
+Depois de cerca de trinta passos curtos, a garganta de pedra abre numa câmara baixa, seca e irregular. Não chega a ser sala. Parece mais uma área de retenção antiga, onde água deveria perder força antes de seguir para outro canal.
+
+Visão atual de Ren:
+
+```text
+entrada atrás
+  |
+  |  corredor baixo e seco
+  |
+[câmara baixa de retenção]
+  |\
+  | \__ direita: corredor seco, mais limpo, com marcas de arrasto baixo
+  |
+  |____ esquerda: canal mais frio e úmido; som distante de água crescente
+  |
+  ^ acima/adiante: fenda de ar com pano encerado e pedra raspada
+```
+
+À esquerda, o ar fica mais frio e úmido. O som da água vem de longe, mas vem mais cheio do que antes. A segunda maré ainda não chegou inteira, mas já está respirando naquela direção.
+
+À direita, o corredor continua seco demais. Ali o pó foi perturbado de modo mais regular, em linhas baixas e paralelas. Algo estreito e comprido passou por ali mais de uma vez. Não parece rota de patrulha comum. Parece rota de carga leve, pasta, caixa rasa ou gente que aprendeu a atravessar abaixada.
+
+Acima e um pouco adiante há uma fenda de ar tapada por outro pedaço de pano encerado, presa por pedra pequena. O pano não balança com vento de fora. Ele infla e murcha muito pouco, como pulmão preguiçoso.
+
+Então vem um som baixo da direita.
+
+Madeira contra pedra. Uma vez só.
+
+Pode ser estrutura cedendo. Pode ser água empurrando algum tampo velho. Pode ser alguém, mais fundo, fechando algo antes que a maré mude.
+
+Ren não consegue determinar a distância com segurança.
+
+Hora aproximada: **01:36 de 7 Eleasis, 1372 DR**. Ren está numa **câmara baixa seca da Ponte Baixa**, cerca de quarenta a cinquenta pés além da entrada. **Visão no Escuro** está ativa. **Passos sem Pegadas** está ativo e exige concentração. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. A segunda maré está próxima; o caminho úmido à esquerda pode piorar com o tempo, enquanto o corredor seco à direita parece mais usado.
+
+O que Ren faz?
