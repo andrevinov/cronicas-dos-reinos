@@ -1,0 +1,1451 @@
+campanha:
+  status: "em_sessao"
+  sessao_atual: 3
+  modo_de_cena_atual: "resgate_rural"
+
+personagem:
+  nome: "Ren Kagehira"
+  arquivo_ficha: "personagens/jogador/ficha.yaml"
+  status: "ativo"
+  nivel: 6
+  classe: "Monge"
+  subclasse: "Caminho da Sombra"
+
+localizacao:
+  plano: "Material"
+  mundo: "Toril"
+  continente: "Faerûn"
+  regiao: "The Vast"
+  cidade: "Ravens Bluff"
+  area: "estrada do Fire River"
+  ponto_exato: "junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas"
+  descricao_operacional: >
+    Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
+    proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
+    provavelmente levada pela pessoa de vermelho através de rota baixa ligada à
+    porta de ferro. Ren seguiu o rastro de cera, tintura e pano encerado pela
+    drenagem até a rua dos tintureiros e encontrou uma oficina ativa pelos
+    fundos, com o cesto de roupa suja marcado por tira amarela de dois nós.
+    Usando os momentos finais de Passos sem Pegadas, Ren entrou pela porta dos
+    fundos, atacou a pessoa de vermelho de modo não letal e a deixou
+    inconsciente antes que gritasse ou puxasse o cordão fino ao alcance dela.
+    Ren arrancou a máscara e viu que a pessoa de vermelho é uma mulher jovem
+    adulta desconhecida, pálida, com cicatriz antiga de queimadura/cera e marca
+    de sol apagado no pescoço. Em seguida pegou a criança viva, presa e
+    amordaçada, quase certamente Peta, e saiu para o pátio dos fundos antes que
+    a cortina se abrisse por completo. Atrás da cortina há pelo menos uma pessoa
+    reagindo e uma abertura baixa escura, possivelmente passagem, alçapão ou
+    escada descendo. Ren escolheu sair pela rua dos tintureiros, usou os
+    instantes finais de Passos sem Pegadas para quebrar a direção da fuga e,
+    ao alcançar a rua, ativou o Broche do Semblante Humilde. Com pano de
+    tingimento e cesto quebrado, disfarçou Peta como carga de retalhos úmidos e
+    chegou à Casa da Aurora Menor sem levantar suspeita útil. Peta foi
+    confirmada viva por Cal e entregue a Maerra. Passos sem Pegadas expirou por
+    volta de 00:58 de 4 Eleasis; o Broche do Semblante Humilde foi usado e deve
+    manter a aparência humilde/comum de Ren até cerca de 01:56, com uso gasto
+    até o próximo amanhecer. Maerra não reconheceu a mulher ou a marca com
+    segurança, e Peta, em choque, só conseguiu dizer fragmentos: "frio",
+    "embaixo" e que a mulher de vermelho não falava com ela. Ren apagou por
+    cansaço na Casa da Aurora Menor por pouco tempo, sem completar descanso
+    curto de monge e sem recuperar ki. Depois voltou ao circo pela rota da
+    carroça de remendos, sem cauda competente percebida; o broche expirou no
+    caminho. Silva Elkwood interceptou Ren antes da carroça verde e perguntou se
+    ele trouxe alguém atrás. Ren respondeu que não foi seguido, chamou Silva de
+    Sil pela primeira vez e contou, em linhas gerais, que sete crianças foram
+    resgatadas e estão vivas sob cuidado de Maerra. Silva pretende mandar ajuda
+    discreta de Chauntea à Casa da Aurora Menor antes do amanhecer. Nera saiu da
+    carroça verde e abraçou Ren, extremamente preocupada. Ren a abraçou, beijou
+    discretamente, prometeu voltar e foi dormir no depósito de figurino velho.
+    Dormiu algumas horas sem completar descanso longo, mas fez repouso curto de
+    monge com centralização suficiente para recuperar ki. A ajuda discreta de Chauntea alcançou Maerra sem chamar
+    atenção útil. Ao acordar, Ren encontrou Nera sentada perto da entrada do
+    canto, com água e pão. Ren vestiu roupa de cidadão comum, explicou a Nera
+    que precisava checar Colm/Dent e Dorra Hest, e saiu para os pátios de saída
+    de trabalhadores. Chegou depois da partida das carroças de cal; a carroça de
+    Dorra não estava mais no local. Depois pagou 1 PO a um trabalhador dos pátios
+    e obteve confirmação parcial: Dorra saiu no cinza, provavelmente com Dent sob
+    a lona, mas alguém havia perguntado por um doente vindo do lavadouro antes da
+    partida. A saída de Colm/Dent foi comprometida, não confirmada como segura.
+    Ren então procurou Luath no posto da City Guard/Night Watch, relatou Bram
+    Vask, Kethra e Colm, e ofereceu o caderno de contas sujas de Bram como prova
+    sem explicar como tirou Colm da loja. Luath examinou o caderno, copiou marcas
+    úteis e o devolveu por não aceitar prova formal limpa sem cadeia de custódia
+    ou testemunho, mas a Night Watch pressionou Bram em sua loja. Depois da
+    visita da guarda, Ren pagou uma criança para entregar recado ameaçador; a
+    mensagem chegou imprecisa, ligando a ameaça à visita da guarda. Bram não
+    atacou a criança em público, fechou a loja e começou a se mover nos fundos.
+    Ren seguiu até os fundos de Narwhal Manor e montou fisicamente o ponto morto
+    de Kethra no vaso rachado junto aos barris de areia e à calha quebrada. A
+    chegada foi limpa, mas a montagem ficou imperfeita: a base do vaso deixou
+    sinais discretos de manipulação e há uma migalha de cera cinza visível de
+    perto. A mensagem informa que Colm/Dent foi com a cal, que Bram recebeu
+    visita da guarda e recado para parar, e que o amigo está seguro por algum
+    tempo. Depois Ren foi à The Silver Lily e encontrou novo bilhete de Pell no
+    ponto morto: Rusk não voltou, Brass usa mensageiro novo e evita o beco dos
+    tonéis, alguém perguntou se Kage era o mesmo oriental da Silver Lily, e um
+    papel fino foi para Narwhal com a palavra "máscara" associada. Ren deixou 2
+    PO e um novo pedido para Pell descobrir dia, hora ou local onde Dain "Brass"
+    Mord fique sozinho, mas o depósito falhou em discrição: uma funcionária da
+    Silver Lily viu parcialmente Ren junto ao vaso, sem ler o bilhete. Depois
+    Ren seguiu para a Casa da Aurora Menor sem cauda competente. Maerra permitiu
+    perguntas curtas às crianças, com ela impondo limite. Ren conduziu bem a
+    conversa; o grupo de crianças não conseguiu organizar lembranças novas de
+    modo coerente, mas Peta lembrou que a pessoa de vermelho não mandava, apenas
+    fazia; que um homem de manga cinza e dois anéis falava por trás; que ele
+    mencionou papel indo para o peixe e disse que a máscara não era para o sol;
+    e que Peta ficou em um lugar frio, embaixo de onde rodas passavam por cima,
+    com água na parede. No início da sessão 003, Ren decidiu retornar ao Jack
+    Mooney & Sons Circus para ver os Vell e falar com Jack sobre o calendário de
+    apresentações de Kage. O deslocamento desde a Casa da Aurora Menor não
+    exigiu rolagem e não trouxe cauda competente percebida. No caminho, Ren
+    ouviu rumor solto sobre passagem fechada "perto do peixe" por barris mal
+    marcados. Ao chegar ao circo, encontrou Nera e Tavin vivos e integrados à
+    rotina sob Silva. Ren está agora na carroça-escritório de Jack, ouvindo a
+    proposta inicial de calendário: não vender Kage em 4 Eleasis, considerar
+    reprise curta em 5 Eleasis ao cair da tarde e só aceitar apresentação fechada
+    em tenda controlada pelo circo se o camarote oeste cumprir os filtros já
+    exigidos. Ren propôs uma pequena apresentação em 5 Eleasis para ser
+    relembrado e, depois disso, uma apresentação particular para quem pagar
+    melhor. Jack aceitou a linha comercial: Kage raro, aparição curta, pouca
+    fala, e particulares só com filtros formais. Antes de Jack concluir o
+    registro, Tobb Marlin trouxe recado de Luath: perto do mercado de peixe, a
+    guarda fechou duas passagens e encontrou quatro barris mal marcados com pó
+    cinza, cheiro acre/de ovo ruim e cera vermelha no aro; acredita-se que eram
+    seis. Luath quer falar com o homem que tratou de Bram Vask, sem plateia e
+    sem roupa de palco. Ren deixou o circo em vestes de homem pobre e procurou
+    Luath discretamente. A tentativa de aproximação falhou parcialmente: Ren
+    passou pelo isolamento da guarda, mas uma peixeira e um escrivãozinho de
+    guilda viram um forasteiro pobre ser admitido onde outros ficaram do lado de
+    fora. Luath mostrou quatro barris mal rotulados como sal/restos de peixe; um
+    deles rachou e deixou vazar pó cinza que virou pasta úmida. Há cera vermelha
+    grossa no aro, uma grelha baixa próxima e parede molhada até a altura do
+    joelho. Luath disse que a conta da carroça era de seis barris e que um
+    peixeiro descreveu o homem de manga cinza e dois anéis mandando descarregar
+    os barris por intermédio de outro sujeito. Ren examinou os barris e
+    reconheceu o princípio de uma substância explosiva semelhante a pólvora/pó
+    de fumaça, embora com impurezas e traços alquímicos locais. A cera vermelha
+    bate fortemente com o fio da rua dos tintureiros e da oficina onde a mulher
+    de vermelho foi neutralizada. Ren contou a Luath sobre a mulher de vermelho,
+    a cicatriz, a marca de sol apagado, a oficina dos tintureiros e o homem de
+    manga cinza com dois anéis. Luath enviou guardas para cercar a oficina dos
+    tintureiros com cautela, sem entrar chutando porta se houver cheiro do pó.
+    Ren escolheu seguir o rastro da carroça e alertou Luath a pensar nos alvos
+    que deixariam Ravens Bluff mais frágil e desesperançada: mercado, água,
+    ponte, templo e guarda. Luath deu a descrição da carroça dos dois barris
+    faltantes: eixo baixo, roda traseira esquerda ruim, tábua de trás manchada
+    de vermelho e última vista no Beco da Salmoura rumo à balança velha. Ren
+    tentou seguir a trilha, mas perdeu tempo no cruzamento de rastros do
+    mercado. Às 10:41, uma explosão parcial atingiu a área da balança velha,
+    feriu pessoas próximas, rachou o tablado e abriu uma passagem baixa escura
+    com pedra molhada. O efeito parece menor do que dois barris inteiros
+    deveriam causar; pode haver carga remanescente, pó úmido que não detonou ou
+    outro barril em outro ponto. Ren perguntou a Luath sobre túneis
+    subterrâneos ou civilização anterior sob Ravens Bluff. Luath respondeu com
+    Sarbreen, antiga cidade anã sob a cidade atual, e explicou que partes dela
+    viraram porões, esgotos, drenagens, passagens clandestinas e lugares
+    perigosos. A abertura causada pela explosão expôs pedra antiga com marca
+    angular sob o tablado, ar puxando para baixo e som de metal contra pedra
+    seguido por passos se afastando na água rasa. Ren decidiu descer, pediu que
+    Luath continuasse checando a contagem de barris e ativou Passos sem Pegadas,
+    gastando 2 ki. A descida pelo tablado quebrado foi bem-sucedida, e Ren
+    entrou sem ser percebido. Na primeira câmara baixa de Sarbreen sob o
+    mercado, encontrou restos de um barril detonado e sinais de que outro barril
+    inteiro foi arrastado para uma galeria em escuridão total. Há ao menos dois
+    ritmos de movimento adiante e som de metal contra pedra, como ferramenta,
+    cunha ou trava. Ren ativou Visão no Escuro, gastando mais 2 ki, e avançou.
+    Percebeu um fio simples de alarme, evitou acioná-lo, quase escorregou numa
+    pedra solta, mas manteve a perseguição furtiva. Ele agora vê, a cerca de 30
+    pés, dois vultos em uma câmara baixa de serviço de Sarbreen: um vigia leve
+    perto de uma saída lateral e o homem de manga cinza com dois anéis usando
+    uma barra curta de ferro numa junta/trava antiga. O segundo barril está
+    posicionado para explodir contra a parede, ligado a um conjunto improvisado
+    de pano encerado, cerâmica, cordão e pó escuro, ainda não aceso. Ren se
+    aproximou sob Passos sem Pegadas e atacou de surpresa usando Rajada de
+    Golpes. O vulto leve caiu junto à saída lateral, sem alarme útil. Ren
+    apagou o homem de manga cinza com golpes não letais antes que ele pudesse
+    gritar ou acionar o dispositivo. Ren separou com cuidado o acionamento do
+    barril: cordão, cerâmica, tigela rasa, pano encerado, recipiente de brasa
+    ou luz fraca e cera vermelha. O barril principal continua em Sarbreen, sem
+    ignição imediata, mas ainda perigoso. Ren arrastou o vulto leve e o homem
+    de manga cinza até a primeira câmara baixa; Luath e seus homens içaram os
+    dois vivos pela corda. O dispositivo foi entregue à guarda. Ren está junto
+    à corda, abaixo da balança velha, com Passos sem Pegadas e Visão no Escuro
+    ativos, Ki 0/5. Luath recusou interrogar os prisioneiros no mercado por
+    risco de rumor, perímetro instável e explosivo ainda presente, mas combinou
+    contato depois do segundo sino ou por recado ao circo. Um mensageiro da
+    guarda relatou que a oficina dos tintureiros estava vazia, com a mulher de
+    vermelho ausente, sinais de limpeza apressada, cesto de tira amarela de
+    dois nós e abertura baixa para pedra úmida. Ren saiu do mercado sem levar
+    cauda competente ao circo. Ao retornar ao Jack Mooney & Sons Circus por
+    volta de 11:27, falou de modo reservado com Silva, Nera e Tavin, sem chamar
+    atenção do circo todo. Depois completou descanso curto de uma hora no
+    depósito de figurino velho: meia hora de sono e meia hora de meditação,
+    recuperando ki para 5/5. Passos sem Pegadas expirou durante esse repouso;
+    Visão no Escuro expirou por volta de 18:43 de 4 Eleasis. Em seguida, Ren começou o
+    ensaio de Kage. A tentativa de acrescentar duas seções fisicamente novas
+    falhou por margem curta e o texto dramático inicial ficou excessivo, mas
+    Lysa, Merrit, Dessa e Sorn integraram uma versão segura com duas pequenas
+    novidades cênicas. O segundo sino da tarde passou sem recado de Luath. Ren
+    suspendeu o treino e saiu vestido como homem pobre para procurar Luath no
+    posto da Night Watch. A saída não gerou cauda competente, mas criou uma
+    memória fraca ligando o sumiço de Kage a um forasteiro pobre de porte
+    parecido. No posto, um guarda mais velho reconheceu Ren como o homem do
+    sargento, reforçando a linha pública fina de que o forasteiro pobre admitido
+    no mercado tem entrada com a guarda. Luath revelou apenas informação
+    controlada: os dois prisioneiros estão vivos, separados e vigiados; o vulto
+    leve tenta se apresentar como carregador contratado ignorante; o homem de
+    manga cinza falou pouco, não tinha papéis e usava dois anéis simples de
+    ferro e latão; Gond estabilizou o barril em Sarbreen, mas ele continua
+    abaixo. Luath não abriu acesso aos presos e aceitou levar uma pergunta curta
+    de Ren ao interrogatório. Na noite de 5 Eleasis, Ren seguiu o canal da
+    proposta privada de Kage até Brunna Torkel, comprou um mapa público da
+    Escada das Sete Águas e uma cópia discreta de porões secos atrás de
+    armazéns antigos, ativou Passos sem Pegadas e confirmou que alguém pagou
+    Brunna para direcioná-lo à Escada. Ren seguiu o cobrador até a Escada das
+    Sete Águas, desceu sem acionar o fio de controle da entrada, ativou Visão
+    no Escuro e viu uma galeria baixa com vigia em nicho lateral e fio de
+    acionamento antes de uma câmara estreita. Com Ki 0/5, Ren decidiu recuar,
+    saiu sem perceber cauda e foi ao posto de Luath. Luath avaliou que a Escada
+    parece mais olho, boca, controle ou entrada-isca do que coração da operação.
+    Os mapas não deram rota segura de invasão; Luath pode pôr vigilância
+    discreta na superfície da Escada, no depósito sem tabuleta e em possíveis
+    saídas baixas. Ren voltou ao circo pela rota longa, sem cauda útil
+    percebida, mas sem conseguir provar a si mesmo que a rota estava
+    absolutamente limpa. Ele evitou ver Nera e Tavin, entregou a Silva um
+    bilhete para Nera dizendo que a ama e que solucionará tudo, e passou a noite
+    no depósito de figurino velho tentando transformar a lembrança do Passo da
+    Sombra de Aiko em técnica própria. Ao amanhecer de 6 Eleasis, após descanso
+    longo e treino meditativo, Ren despertou o Passo Sombrio e alcançou nível 6
+    como monge do Caminho da Sombra.
+    Depois de se lavar e se vestir, Ren tomou café com Silva longe da carroça
+    verde e contou sobre Sarbreen, Brunna, a Escada das Sete Águas e a avaliação
+    de Luath. Silva tratou a técnica nova como ferramenta recuperada, mas pediu
+    que Ren a teste longe dos Vell até entender seus limites. Também informou que
+    Nera guardou o bilhete e perguntou se Ren havia comido antes de tentar carregar
+    a promessa. Em seguida, Ren foi até Jack. Jack pagou 8 PO pela reprise pública
+    de Kage em 5 Eleasis e mostrou a resposta à isca privada: Corven Dalm,
+    procurador da Casa Veyr, aceitou 80 PO por uma apresentação fechada curta,
+    mandou 40 PO adiantadas, aceitou tenda controlada pelo circo e equipe mínima
+    dos Mooney, mas tentou retirar "intermediários desnecessários" da conversa
+    artística. Jack reteve o adiantamento na própria caixa e ainda não aceitou a
+    apresentação. Tobb verifica se Casa Veyr existe para além do papel, Dessa
+    avalia a tenda menor e Silva calcula como manter os Vell longe disso sem
+    denunciar que eles são o ponto sensível.
+    Ren respondeu a Jack que o show não pode parar, tratando a proposta como
+    ensaio de aceite sob filtros do circo. Na tenda menor, tentou mapear sombras
+    para usar o Passo Sombrio, mas não conseguiu garantir trânsito por todos os
+    cantos: há pontos úteis de sombra na entrada lateral, junto aos bancos de
+    músicos e atrás dos panos de Dessa, mas o centro fica quebrado por faixas de
+    luz e vento na lona. O treino básico de Kage foi marcado para 13:30 com Sorn,
+    Merrit e Lysa, sem número novo. Ren tentou pagar 1 PO a Harl para vigiar a
+    montagem, mas Harl recusou a moeda por medo de parecer novamente envolvido em
+    segredo; prometeu falar com Sorn ou Tobb se vir risco real. Depois Ren deixou
+    o circo, ativou o Broche do Semblante Humilde perto de Narwhal Manor e chegou
+    à lateral de serviço sem puxar atenção útil. Encontrou Kethra por poucos
+    instantes usando a frase "sabão preto para pano azul". Kethra não recebeu
+    notícia de Colm/Dent e não ouviu nova informação concreta em Narwhal desde a
+    pista da ponte baixa; percebe apenas silêncio excessivo no corredor treze e
+    rotina mais vigiada.
+    Ren dispensou Kethra antes que a ausência dela chamasse atenção. Kethra
+    avisou que, se Ren procurar Dorra, não deve usar o nome dela antes de saber
+    quem está ouvindo nem procurar Dent alto demais. Ren saiu de Narwhal e voltou
+    ao circo sob o Broche sem reforçar padrão útil. O Broche expirou por volta de
+    09:25 e está gasto até o próximo amanhecer. A checagem das carroças de Dorra
+    ficou para outro intervalo. Às 13:30, Ren treinou Kage na tenda menor com
+    Sorn, Merrit e Lysa; o treino confirmou duas marcas escuras confiáveis se as
+    lamparinas não forem alteradas: dobra atrás da entrada lateral e faixa baixa
+    junto aos bancos de músicos/panos extras. Tobb verificou que Casa Veyr existe
+    como presença temporária de aluguel, com camarote/salão e procurador pagador,
+    mas sem raiz nobre local forte. Harl participou apenas da montagem baixa e
+    não viu irregularidade útil. Jack está pronto para aceitar a apresentação
+    fechada somente com filtros rígidos e aguarda se Ren acrescenta alguma
+    condição.
+    Ren autorizou Jack a aceitar a apresentação fechada, reconhecendo que é
+    armadilha e prometendo proteger o circo. Jack aceitou a direção, mas não
+    aceitou a palavra de Ren como substituto dos filtros dos Mooney. Após banho,
+    Ren encontrou uma linha válida de sombra e visão para entrar na carroça verde
+    com Passo Sombrio. Com Silva abrindo a porta e Tobb limpando a rota interna,
+    Ren entrou na carroça sem gastar ki; a entrada não virou rumor no circo, mas
+    assustou Nera e apagou a lamparina, mostrando que a técnica ainda não é
+    delicada perto dos Vell. Ren contou a Nera que a proposta citou a
+    seladora/gravadora, que Kage se exporá e que ele voltará. Nera não reconheceu
+    Corven Dalm nem Casa Veyr e não conseguiu determinar a origem precisa do
+    termo. Antes da saída, a Casa Veyr respondeu com dobra contratual: quer pagar
+    os 40 PO restantes só com os convidados, fazer Corven Dalm assinar apenas ao
+    pisar na lona e manter um homem da casa junto da entrada de artistas. Jack
+    não conseguiu bloquear essa dobra sem atrasar ou arriscar o show. Ren
+    decidiu prosseguir. Os Mooney controlaram o transporte: Kage foi levado pela
+    rota interna de panos/remendos até a dobra lateral marcada por Sorn, sem sair
+    do circo nem virar pacote do patrono. Tobb contou as 40 PO restantes antes da
+    entrada útil dos convidados, Corven Dalm assinou antes de pisar na lona útil
+    e o homem da Casa Veyr foi colocado em luz clara perto da entrada dos
+    artistas, mas sem controle da aba real. A apresentação está prestes a
+    começar; Ren/Kage vê a faixa baixa junto aos bancos dos músicos como destino
+    possível para Passo Sombrio. Ren leu que o risco mais provável era sondagem
+    e provocação controlada, não ataque aberto. Ainda assim, decidiu revelar a
+    técnica: usou Passo Sombrio da dobra lateral para a sombra junto aos bancos
+    dos músicos e abriu Kage como ameaça controlada. A Casa Veyr viu que Kage
+    pode atravessar sombras, mas não mapeou todos os limites. Dalm encaixou uma
+    provocação ambígua sem romper claramente o contrato: "Nem todo nome curto
+    nasce pequeno." Ren continuou profissionalmente e não entregou reação.
+    Observando Dalm e a Casa Veyr enquanto mantinha o número, perdeu um pouco de
+    margem física, mas Lysa cobriu o espaço e o show não quebrou. Dalm tentou
+    avançar até família/nome/fogo, e Jack cortou a linha sem encerrar a
+    apresentação. Ren fez sinal para seguir, e Kage terminou o número com
+    acrobacia limpa o bastante para evitar fiasco. Ao fim, Ren chamou Dalm ao
+    camarim com referência direta a Masao e às dez lâminas; a frase falhou como teatro
+    limpo, deixando a saída dos convidados tensa. Dalm não entregou reação
+    visível à referência, mas aceitou o convite. Jack permitiu a conversa por não
+    conseguir bloquear a cena pública sem piorar a imagem de Kage, mas improvisou
+    salvaguardas: Tobb ficou junto da aba, e o homem da Casa Veyr foi impedido de
+    acompanhar. Ren está no guarda-roupa menor/camarim funcional de Kage com
+    Dalm. Ren largou o sotaque de palco, endureceu a voz e exigiu saber para
+    quem Dalm veio avaliá-lo, mas não conseguiu arrancar o patrono real por trás
+    da Casa Veyr. Dalm percebeu que a voz de Kage é máscara e respondeu apenas
+    com a camada contratual, acrescentando que veio medir sombra, gravadora e a
+    reação de Ren a Masao. Ren então transformou a ameaça em negociação,
+    oferecendo adiar a definição de Dalm como inimigo se ele entregasse quando,
+    como, onde, porquê ou o quê. Dalm não entregou o "quem", mas deu uma janela
+    útil: antes da segunda maré, Ponte Baixa como passagem/porta/garganta de
+    pedra, seco onde deveria haver água atrás de armazéns velhos, método por
+    papéis antes de lâminas, e confirmação provável de que a rede sabe da
+    gravadora e do menino, mas ainda não sabe onde Nera e Tavin dormem. Ren
+    deixou Dalm sair e relatou tudo a Jack, que ficou irritado pela quebra
+    pública de filtro, mas aceitou repassar a informação a Silva. Com ajuda de
+    Jack, Dessa e Tobb, Ren montou uma saída falsa: Tobb vestido como Kage
+    retornou ao controle dos Mooney, enquanto Ren saiu em roupas de carreiro. A
+    maioria comprou a imagem de Kage protegido; o homem da Casa Veyr percebeu
+    que havia truque, mas não transformou a suspeita em cauda. Ren foi até
+    Luath, contou a pista e convenceu o sargento a não mandar homens para dentro
+    da Ponte Baixa antes da madrugada. Luath registrou que, se Ren não voltar até
+    o fim da manhã, procurará crime, prova e responsável. Depois Ren foi à Casa
+    da Aurora Menor e ouviu de Maerra que seco onde deveria haver água pode
+    indicar cal, sal, carvão, pano encerado, ar quente, ralo tampado e
+    preservação de papel. Seguindo aos armazéns velhos, Ren encaixou o mapa de
+    Brunna à pista de Dalm e encontrou a Ponte Baixa, uma passagem seca sob parede
+    baixa entre dois armazéns. Ele esperou até perto da segunda maré, entrou,
+    ativou Visão no Escuro e Passos sem Pegadas, marcou "K ->" no corredor seco e
+    encontrou uma sala baixa seca usada como arquivo vivo de alteração, secagem e
+    preparação de papéis. Retirou três evidências: tira de controle com retenção
+    anulada, volume 13, V. Rook, M. Harrow e data recente; tira encerada com Kage,
+    gravadora, menino e antes de maré; e cilindro curto de matriz/cera com marca
+    de sol apagado. A retirada não ficou limpa, a linha de cinza do pano foi
+    tocada, a lingueta do trilho ficou solta e a marca "K ->" permaneceu no
+    local. Ren recuou por uma cadeia de sombras, saiu sem cauda útil percebida e
+    chegou ao posto da Night Watch por volta de 02:18. Luath recebeu o relato e,
+    após Ren pedir sigilo de fonte, selou as três evidências como material
+    recebido de fonte reservada sob risco plausível de represália. O registro
+    externo não nomeia Ren Kage, Ren Kagehira, gravadora ou menino; a identidade
+    fica retida com Luath até requisição selada de autoridade competente. Luath
+    guardou o pacote em gaveta de ferro e pretende tentar encaminhamento a Tyr no
+    primeiro cinza. Antes de sair, Ren comparou Luath aos Miburo/Shinsengumi de
+    Kozakura: homens do bakufu odiados por criminosos, não santos, mas honrados e
+    ainda de pé quando a cidade fingia não ver a sujeira. Luath recebeu o respeito
+    de modo seco, sem calor explícito, mas sem rejeitar. Ren voltou ao circo pela
+    rota longa usando Passo Sombrio e sombras. A rota não foi limpa em termos de
+    tempo: sombras interrompidas, luz de patrulha, poças refletindo luar e esperas
+    forçadas custaram minutos. Ainda assim, Ren conferiu a volta com atenção, não
+    percebeu cauda útil e entrou no Jack Mooney & Sons Circus pela rota interna de
+    remendos sem acordar a rotina. Silva Elkwood estava acordada entre Ren e o
+    coração do acampamento e perguntou se ele veio limpo. Ren confirmou e contou
+    o essencial sobre a Ponte Baixa, a sala de arquivo vivo, as evidências, o sol
+    apagado e o lacre reservado de Luath. Silva avaliou que é melhor as provas
+    estarem trancadas com Luath do que nas roupas de Ren. Ren falou baixo com
+    Nera na carroça verde sem acordar Tavin, contou o necessário para
+    tranquilizá-la e reforçou que a prova saiu das mãos dele. Depois comeu,
+    dormiu cerca de duas horas no depósito de figurino velho e meditou por meia
+    hora, completando descanso curto e recuperando o centro. Ao primeiro cinza,
+    uma mensagem curta de Luath informou que o pacote reservado passou para Tyr
+    sem nome no papel externo. Ren foi então à carroça-escritório de Jack, com
+    Silva e Tobb presentes, e explicou que os inimigos ainda não demonstraram
+    saber exatamente onde Nera dorme, enquanto Luath/Tyr já têm as provas. Jack
+    pagou 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, mas
+    manteve a quebra pública de filtro como dívida operacional separada. Agora
+    Jack perguntou se Ren prefere que Kage pareça visível, calmo e controlado
+    hoje, ou que sua ausência seja comprada com desculpa deliberada. Ren escolheu
+    ausência cara: Kage só volta na semana seguinte, no circo, salvo outra
+    particular filtrada por 80 PO. Jack aceitou e sabe vender a ausência como
+    escassez, com o joelho da Princesa das Sombras descansando. Ren recebeu as
+    20 PO sem contar, vestiu roupas de homem pobre e saiu para os pátios de
+    trabalhadores em busca de Dorra Hest e notícias de Colm/Dent, sem usar o
+    Broche do Semblante Humilde. O disfarce funcionou, mas a chegada aos pátios
+    não ficou limpa: Ren percebeu atenção útil de ao menos um homem de roupa de
+    trabalho limpa demais e um rapaz com faixa azul. Dorra não está presente. Um
+    ajudante dos fornos informou que Colm/Dent chegou vivo aos fornos de cal,
+    mas não ficou lá; depois que alguém de "mão limpa" perguntou por ele, Dorra
+    o mandou para uma secagem velha na estrada do Fire River com alguém chamada
+    Mera Fumaça. O prazo de abrigo ruim de três dias termina hoje. Ren decidiu
+    seguir a pé para a estrada do Fire River, mas não conseguiu quebrar
+    completamente a atenção nascida nos pátios. No caminho, percebeu sinais de
+    observação alternada e não confirmou a localização exata de Mera. Perto de
+    três construções possíveis, encontrou uma tira de pano semelhante ao manto
+    dado a Colm/Dent presa numa cerca e marcas recentes saindo da estrada para
+    o mato baixo: uma bota pesada e uma passada incompleta ou arrastada. Ren
+    seguiu a trilha óbvia apesar de suspeitar de isca. O rastro o levou a um
+    ponto preparado: um laço baixo com pó de cal e dois captores usando Colm como
+    pressão. Ren não leu o ponto preparado a tempo, mas evitou o laço com uma
+    reação perfeita. Colm/Dent está vivo, amarrado e gagado junto a uma vala
+    rasa, com uma mulher de avental escuro e lâmina curta ao lado dele; um homem
+    com besta leve está a cerca de trinta pés, parcialmente coberto por monte
+    velho de carvão. Ren disparou contra a mulher sem usar Passo do Vento,
+    venceu a iniciativa e a neutralizou com dois golpes não letais antes que ela
+    agisse. A faca caiu no barro, fora da mão dela. O besteiro disparou contra
+    Ren, errou, e recuou para cobertura parcial atrás da lona preta do monte de
+    carvão. Colm/Dent continua vivo, amarrado e gagado, mas sem lâmina direta
+    encostada nele neste momento. Ren então avançou até o besteiro, acertou um
+    golpe controlado sem apagá-lo e colocou a wakizashi em seu pescoço. A pressão
+    funcionou: o besteiro afirmou que Bram Vask pagou a pergunta, mas não veio;
+    um homem de mãos limpas organizou a compra/captura; o objetivo era manter
+    Colm/Dent respirando para atrair quem viesse atrás; Mera Fumaça não chamou a
+    emboscada e pode estar presa no galpão baixo; o rapaz da corda nova pode ter
+    corrido para avisar o intermediário se ouviu o laço sem ouvir o assobio do
+    besteiro. Ren apagou o besteiro já rendido sem matá-lo, puxou o pano da boca
+    de Colm/Dent para baixo e tentou avaliar suas condições. Confirmou que Colm
+    está vivo e consciente, mas não conseguiu diagnosticar a gravidade completa
+    dos ferimentos. Ao tentar ler o rastro do rapaz da corda nova, encontrou
+    apenas indício provável de saída do mato para a estrada; a direção útil se
+    perdeu entre rodas, pegadas, barro pisado e terra dura. Depois soltou
+    Colm/Dent das cordas principais, colocou-o nas costas e o carregou até perto
+    do provável galpão baixo de Mera Fumaça. Ren chegou sem ser percebido por
+    ninguém visível e identificou som abafado vindo de dentro de um galpão baixo
+    fechado por fora com barra improvisada. Viu capim pisado, barro raspado,
+    pedaço de corda curta e sinais de fechamento apressado, mas não conseguiu
+    identificar com segurança se a porta tem alarme, armadilha, fio, cunha ou
+    apenas tranca rural improvisada. Os dois captores imediatos ficaram
+    inconscientes para trás e não foram amarrados. Ren então encostou Colm/Dent
+    atrás de tábuas antigas e capim alto, perto de uma vala seca. A cobertura
+    ficou imperfeita, mas tirou Colm da linha direta da estrada e do galpão. Ren
+    se aproximou furtivamente da porta, viu pelas frestas uma mulher viva,
+    provavelmente Mera Fumaça, presa por mãos e tornozelo, e leu a barra externa:
+    não há fio, sineta, lata ou armadilha trabalhada visível, mas a barra pode
+    raspar e bater se for removida sem cuidado. Ren abriu a porta com ruído,
+    confirmou a identidade de Mera e cortou suas amarras. Depois a levou até
+    Colm/Dent. Mera descreveu quatro envolvidos, afirmou não ter visto outros
+    prisioneiros e indicou o forno morto como cobertura breve e Iria Doss como
+    curandeira rural. Antes que a conversa terminasse, uma carroça de resposta
+    entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta
+    leve. Ren percebeu a aproximação antes de ser localizado, saiu da cobertura
+    e alcançou a traseira dentro de seu deslocamento normal. Com a wakizashi no
+    rosto do besteiro, obteve a rendição imediata dos três. O homem largou a
+    besta; ninguém atacou. O besteiro identificou Bram Vask como fonte do
+    dinheiro e o homem de mãos limpas como planejador da armadilha. O rapaz da
+    faixa azul afirmou que esse homem ainda estava na balança velha da cal, no
+    ramal atrás dos fornos, quando a carroça partiu. Ren ameaçou os quatro
+    participantes da emboscada, fez os três conscientes recolherem os dois
+    inconscientes e permitiu que os cinco partissem a pé sem as armas. Depois
+    entregou uma besta a Mera e ajudou a acomodar Colm/Dent na carroça. Mera
+    partiu em direção a Iria Doss, mas a chegada ainda não foi confirmada. Ren
+    gastou 1 Ki em Passo do Vento e correu até a balança velha da cal. Chegou
+    sem ser percebido e se ocultou atrás de uma mureta a quarenta pés, mas não
+    viu o intermediário nem conseguiu identificar a rota de saída correta. Ren
+    depois entrou furtivamente na balança, examinou a mesa com suas ferramentas
+    de caligrafia e recuperou fragmentos de mata-borrão: "se falhar", "estrada
+    principal" e "B.V. paga". A marca d'água parcial do papel é compatível com
+    o circuito de Narwhal Manor. Ren percebeu e neutralizou um aviso simples de
+    fio e pesos na porta do cômodo dos fundos. O cômodo está vazio, com papéis
+    ainda quentes sob cinza e uma portinhola traseira encostada. Ren abandonou
+    ambos e seguiu a pista da estrada principal. Com testemunhas pagas em moeda
+    baixa, localizou o alvo numa carroça de carvão vazia. Confirmou que o homem
+    corresponde à descrição de Mera e não é Velis Rook. O alvo percebeu Ren,
+    saltou da carroça e entrou num ramal estreito. Ren está a cerca de noventa
+    pés, com três trabalhadores e um carrinho carregado entre os dois. A
+    perseguição entrou em iniciativa. Ren atravessou o obstáculo sem atingir os
+    trabalhadores, anulou com Aparar Projéteis uma faca que teria acertado e
+    alcançou o alvo junto à cerca de salgueiros. O homem atacou com uma segunda
+    faca e errou. É o turno de Ren, adjacente e ileso.
+
+tempo:
+  ano_dr: 1372
+  nome_do_ano: "Ano da Magia Selvagem"
+  data_exata: "7 Eleasis, 1372 DR"
+  calendario: "Calendário de Harptos"
+  mes: "Eleasis"
+  nome_sazonal_do_mes: "Highsun"
+  dia_do_mes: 7
+  dezena: 1
+  dia_da_dezena: 7
+  periodo_do_dia: "manhã de 7 Eleasis, junto à cerca de salgueiros no ramal da estrada principal do Fire River"
+  hora_aproximada: "08:03 de 7 Eleasis"
+  clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
+  observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate é público e testemunhado por trabalhadores."
+
+recursos:
+  pontos_de_vida:
+    atuais: 45
+    maximos: 45
+  dados_de_vida:
+    atuais: 6
+    maximos: 6
+    dado: "d8"
+  ki:
+    atuais: 5
+    maximos: 6
+    recarga: "descanso curto ou longo"
+  classe_de_armadura: 17
+  deslocamento: "55 pés"
+  dinheiro:
+    po: 45
+  condicoes:
+    - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
+    - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
+    - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
+    - "Ren está junto à cerca de salgueiros no ramal da estrada principal, vestido como homem pobre e adjacente ao homem de mãos limpas"
+    - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
+    - "O Broche do Semblante Humilde não foi usado na saída atual"
+    - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
+    - "Dorra Hest não está presente nos pátios nesta cena"
+    - "Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá; segundo ajudante dos fornos, Dorra o mandou para uma secagem velha na estrada do Fire River com Mera Fumaça"
+    - "Ren percebeu atenção perigosa nos pátios: um homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagiram à busca"
+    - "Ren não conseguiu quebrar completamente a atenção nascida nos pátios antes de tomar a estrada do Fire River"
+    - "Na estrada do Fire River, Ren percebeu observação alternada antes das construções ligadas à secagem velha"
+    - "Ren confirmou Mera Fumaça no galpão baixo, abriu a porta com ruído e cortou suas amarras"
+    - "Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca baixa"
+    - "Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada"
+    - "Ren seguiu as marcas no mato baixo; não leu o ponto preparado a tempo, mas evitou o laço baixo com uma salvaguarda perfeita"
+    - "Colm/Dent foi solto das cordas principais e permaneceu escondido de modo imperfeito até partir com Mera na carroça"
+    - "A mulher de avental escuro foi neutralizada viva por Ren e depois retirada da secagem pelos companheiros expulsos"
+    - "A faca da mulher caiu no barro, fora da mão dela"
+    - "O primeiro homem com besta leve foi neutralizado vivo por Ren e depois retirado da secagem pelos companheiros expulsos"
+    - "O besteiro disparou contra Ren e errou; Aparar Projéteis não foi necessário"
+    - "A besta do homem caiu junto ao monte de carvão"
+    - "Ren está em cobertura imperfeita junto à vala seca; não está preso nem caído"
+    - "Ren avançou até o besteiro, acertou um golpe controlado de 5 de dano contundente e o rendeu com a wakizashi no pescoço"
+    - "O primeiro besteiro ficou ferido e inconsciente até ser levado pelos companheiros expulsos"
+    - "No cinto do besteiro há dois virotes, uma faca curta barata e um apito de madeira"
+    - "Segundo o besteiro, Bram Vask pagou a pergunta, mas não veio pessoalmente"
+    - "Segundo o besteiro, um homem de mãos limpas com roupa de trabalhador e mão de escrivão organizou a compra/captura"
+    - "Segundo o besteiro, Colm/Dent deveria respirar; quem viesse atrás valia mais que ele"
+    - "Segundo o besteiro, Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo"
+    - "Segundo o besteiro, o rapaz da corda nova foi para a estrada e pode correr para avisar o intermediário se ouviu o laço sem ouvir o assobio"
+    - "Medicina para avaliar Colm: 9 contra CD 12, falha"
+    - "Ren confirmou que Colm/Dent está vivo e consciente, sem sangramento fresco evidente, mas não avaliou com segurança costelas, febre, dano interno ou capacidade real de deslocamento"
+    - "Colm/Dent tem pulsos esfolados, marcas de pancada antiga, dois dedos tortos inchados e tosse seca funda"
+    - "Rastro do rapaz da corda nova: 4 contra CD 14, falha crítica natural"
+    - "Sinais imediatos na estrada: 14 contra CD 15, falha"
+    - "Ren encontrou apenas indício provável de que o rapaz saiu do mato para a estrada; perdeu a direção útil entre roda de carroça, pegadas de trabalhador, barro pisado e terra dura"
+    - "Carregar Colm pelo mato baixo: 21 contra CD 12, sucesso"
+    - "Aproximação cautelosa carregando Colm: 21 contra CD 14, sucesso"
+    - "Avaliar o entorno do galpão baixo: 19 contra CD 14, sucesso"
+    - "Identificar sinais de Mera e da prisão: 5 contra CD 13, falha crítica natural"
+    - "O galpão baixo estava fechado por fora com barra improvisada; Ren abriu a porta, e a remoção da barra fez ruído"
+    - "Ren não identificou com segurança se a porta do galpão baixo tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada"
+    - "Os captores imediatos ficaram inconscientes e sem amarras até serem recolhidos pelos três ocupantes rendidos da carroça"
+    - "Acomodar Colm em cobertura visual: 10 contra CD 12, falha"
+    - "Aproximação furtiva ao galpão baixo: 16 contra CD 14, sucesso"
+    - "Ver o interior pelas frestas: 24 contra CD 14, sucesso"
+    - "Ler porta e barra sem tocar: 16 contra CD 15, sucesso"
+    - "Colm permaneceu em cobertura imperfeita junto à vala até ser acomodado na carroça com Mera"
+    - "Ren confirmou que a mulher presa no galpão era Mera Fumaça e a libertou"
+    - "Não há outra pessoa visível dentro do galpão, mas a iluminação ruim e as pilhas impedem certeza completa"
+    - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode raspar e bater se removida sem cuidado"
+    - "Mera não viu outros prisioneiros além dela e de Colm/Dent"
+    - "Mera indicou um forno morto a cinco minutos pelo mato como esconderijo brevíssimo e Iria Doss como curandeira rural a cerca de quinze minutos para uma pessoa saudável"
+    - "A carroça de resposta entrou no ramal sem localizar Ren, Mera ou Colm/Dent antes da interceptação"
+    - "Ren alcançou a carroça dentro de seu deslocamento normal de 55 pés, sem usar Passo do Vento"
+    - "Intimidação à queima-roupa com vantagem: 19 contra CD 13, sucesso"
+    - "O besteiro largou a arma; o rapaz da faixa azul e o condutor mantêm as mãos visíveis, e nenhum deles tentou atacar"
+    - "Segundo o besteiro, Bram Vask forneceu o dinheiro, mas o homem de mãos limpas planejou e comandou a armadilha"
+    - "Segundo o rapaz da faixa azul, o homem de mãos limpas estava na balança velha da cal, no ramal atrás dos fornos, esperando a carroça voltar"
+    - "O condutor afirma ser apenas um carreteiro pago para a viagem de ida e volta"
+    - "A carroça interceptada foi abandonada pelos rendidos e usada por Mera para transportar Colm/Dent"
+    - "Ren expulsou os quatro participantes da emboscada sob ameaça de morte; eles e o condutor saíram a pé, levando os dois inconscientes e deixando as armas"
+    - "Os expulsos conhecem a aparência atual de Ren como estrangeiro vestido de homem pobre, mas não receberam seu nome"
+    - "Mera partiu na carroça com Colm/Dent em direção a Iria Doss, levando uma besta; a chegada ainda não foi confirmada"
+    - "Ren gastou 1 Ki em Passo do Vento para ganhar distância no início da corrida até a balança velha da cal"
+    - "Furtividade ao se aproximar da balança: 23 contra CD 15, sucesso"
+    - "Percepção para localizar o homem ou movimento recente: 13 contra CD 15, falha"
+    - "Investigação para ler o local e as rotas de saída: 5 contra CD 14, falha crítica natural"
+    - "O homem de mãos limpas não está visível; Ren não identificou sua rota entre os fornos, o ramal do rio e a estrada principal"
+    - "Ren viu cadeira vazia, pavio recentemente apagado e mancha violeta na mesa estreita da balança"
+    - "Antes de entrar, Ren não havia confirmado se o pequeno cômodo dos fundos estava vazio ou preparado contra perseguidores"
+    - "Furtividade para cruzar até a balança e trabalhar sem ser percebido: 25 contra CD 15, sucesso"
+    - "Investigação da mesa com ferramentas de caligrafia e vantagem: 19 contra CD 14, sucesso"
+    - "Ren identificou a mancha violeta como tinta de cópia para livro-caixa"
+    - "Ren recuperou de uma tira de mata-borrão os fragmentos 'se falhar', 'estrada principal' e 'B.V. paga'"
+    - "O mata-borrão tem marca d'água parcial compatível com papel do circuito de Narwhal Manor"
+    - "A evidência torna provável, mas não prova, que o homem de mãos limpas seja o mesmo segundo intermediário descrito por Nera; não confirma Velis Rook"
+    - "Percepção para examinar o limiar do cômodo dos fundos: 23 contra CD 15, sucesso"
+    - "Ren percebeu e neutralizou sem ruído um aviso de fio e três pesos suspensos sobre chapa de ferro"
+    - "O cômodo dos fundos está vazio; há papéis ainda quentes sob cinza num braseiro e uma portinhola traseira apenas encostada"
+    - "Ren abandonou os papéis do braseiro e a portinhola traseira para seguir imediatamente a pista da estrada principal"
+    - "Encontrar testemunhas na estrada principal com vantagem: 20 contra CD 14, sucesso"
+    - "Testemunhas apontaram uma carroça de carvão vazia com eixo verde seguindo para a cidade; Ren pagou com moeda baixa sem alterar o total de PO"
+    - "Percepção para localizar a carroça e confirmar o passageiro: 22 contra CD 15, sucesso"
+    - "Ren confirmou visualmente o homem descrito por Mera pelo rosto estreito, cicatriz abaixo da orelha esquerda e mancha violeta no polegar"
+    - "O homem de mãos limpas não é Velis Rook; o papel de Narwhal liga os dois ao mesmo circuito, não à mesma identidade"
+    - "O alvo percebeu Ren, saltou da carroça e entrou num ramal estreito entre depósito de cal ensacada e cerca de salgueiros"
+    - "Há três trabalhadores e um carrinho carregado entre Ren e o alvo"
+    - "O alvo está alerta e leva a mão direita para dentro do casaco; não haverá surpresa"
+    - "Iniciativa: homem de mãos limpas 13; Ren 8"
+    - "Acrobacia para atravessar trabalhadores e carrinho: 13 contra CD 13, sucesso"
+    - "Faca curta arremessada pelo alvo com desvantagem: 22 contra CA 17, acerto, 5 de dano antes da reação"
+    - "Aparar Projéteis: 17 de redução; Ren anulou o dano e capturou a faca sem gastar Ki"
+    - "Ren usou Disparada e alcançou o alvo junto à cerca de salgueiros"
+    - "Ataque corpo a corpo do alvo com segunda faca: 9 contra CA 17, erro"
+    - "É o turno de Ren; ele está ileso, adjacente ao alvo e com a reação novamente disponível"
+    - "Três trabalhadores observam o confronto a cerca de cinquenta pés; a cena não é secreta"
+    - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
+    - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
+    - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
+    - "A identidade da fonte fica retida com Luath até requisição selada de autoridade competente"
+    - "Jack pagou 20 PO a Ren como cachê de Kage pela apresentação fechada da Casa Veyr; a quebra pública de filtro continua como dívida operacional separada"
+    - "Na Ponte Baixa, a retirada das evidências não ficou limpa; alguém que conheça o arquivo pode perceber manipulação depois"
+    - "Na Ponte Baixa, a linha de cinza do pano foi tocada, a lingueta/trava do trilho ficou solta e a marca pequena 'K ->' permanece no começo do corredor seco"
+    - "A segunda maré alcançou a câmara de retenção durante o recuo de Ren; o corredor seco ainda permitiu saída, mas o interior da Ponte Baixa deixou de estar completamente seco"
+    - "dentro da Casa Velha do Primeiro Raio pela sala alta de serviço"
+    - "Passos sem Pegadas expirou por volta de 00:58 de 4 Eleasis"
+    - "layout parcial interno da Casa Velha: patamar vazio, passagem escura à esquerda, escada iluminada à direita e linha baixa de alarme improvisado"
+    - "Ren viu abaixo da escada uma cozinha/refeitório velho com adulto de avental manchado e pelo menos duas crianças visíveis"
+    - "Toll, adulto de avental manchado da Casa Velha, está inconsciente e escondido de modo apressado na cozinha/refeitório"
+    - "crianças da Casa Velha cooperaram em silêncio e disseram que há mais crianças abaixo ou atrás da cortina"
+    - "mulher de lenço escuro está inconsciente no chão da cozinha/refeitório, parcialmente visível; alguém atrás da cortina está reagindo"
+    - "rapaz magro que veio pela cortina foi neutralizado; cortina semiaberta revela corredor/porão baixo com luz avermelhada"
+    - "Ren entrou no corredor baixo além da cortina e apagou rapidamente as velas próximas sem gerar novo ruído útil"
+    - "a reação do fundo não virou alarme aberto; uma criança foi mandada primeiro para verificar a luz, com um adulto mais atrás"
+    - "Ren conteve Miri em silêncio e a convenceu de que veio salvar as crianças"
+    - "Miri tentou fingir normalidade, mas sua voz soou errada e o adulto mais fundo se aproximou até a borda da escuridão"
+    - "Ren mandou Miri correr para a cozinha, atraindo o adulto para o trecho escuro"
+    - "adulto de roupa escura com bastão curto foi neutralizado de modo não letal no corredor baixo; queda abafada, sem alarme aberto"
+    - "arrastar o adulto para a cozinha produziu ruído perceptível dentro da casa"
+    - "crianças abriram a porta lateral por dentro, mas a barra raspou alto"
+    - "Miri mencionou Narro, Doss, Cal, Nib, Peta e o homem vermelho"
+    - "as crianças ligaram o item de Lathander a uma caixa velha com desenho de sol, à porta de ferro ou a Narro"
+    - "as crianças indicaram esconderijo na fonte seca atrás da casa dos azulejos verdes, com rota alternativa pelo beco do sabão e escada sem corrimão"
+    - "o fundo do porão começou uma retirada ou reorganização sem alarme aberto para a rua"
+    - "Ren mandou as três crianças da cozinha fugirem para o Tanque seco; a fuga não foi limpa, mas depois foi confirmada no ponto combinado"
+    - "Ren gastou 1 ki em Passo do Vento e está sem ki"
+    - "Ren alcançou a câmara baixa do fundo antes que Narro terminasse a retirada"
+    - "Narro estava com uma caixa velha marcada por sol apagado, perto do beco baixo"
+    - "Nib, Doss e Cal foram encontrados no gargalo de fuga; Peta não estava à vista"
+    - "porta de ferro à esquerda foi fechada por alguém parcialmente oculto em vermelho"
+    - "Narro foi neutralizado de modo não letal por Ren"
+    - "Cal se soltou do agarrão de Narro e está livre no chão perto da porta de ferro"
+    - "caixa velha marcada por sol apagado, chave e lâmina curta caíram perto de Narro"
+    - "porta de ferro falhou em fechar; pano vermelho preso deixa a figura do outro lado parcialmente oculta, sem rosto visível"
+    - "Ren tentou abrir a porta de ferro, mas a figura vermelha cortou o pano preso e conseguiu bater a porta"
+    - "Ren viu que a figura vermelha é uma pessoa magra de capuz e avental vermelho-escuro de tecido encerado, com rosto parcialmente coberto"
+    - "Ren viu uma criança pequena atrás da figura vermelha por um instante, provavelmente Peta"
+    - "porta de ferro está fechada e trancada ou barrada por dentro; pedaço de pano vermelho rasgado ficou do lado de Ren"
+    - "Ren pegou a caixa velha marcada por sol apagado e o pedaço de pano vermelho rasgado"
+    - "Ren deixou a chave de Narro e a lâmina curta para trás na câmara baixa"
+    - "Retirada pela lateral com as crianças sob Passos sem Pegadas: 15 contra CD 12, sucesso"
+    - "Primeiro grupo manter o ponto no Tanque seco: 18 contra CD 11, sucesso"
+    - "Ren saiu da Casa Velha pela lateral com Nib, Doss e Cal"
+    - "Miri e as outras duas crianças da cozinha estavam no Tanque seco"
+    - "as crianças dizem que Peta provavelmente viu algo envolvendo a porta de ferro, a figura vermelha e a caixa do sol depois da sopa"
+    - "as crianças descrevem a figura vermelha como alguém que vem pela porta de ferro, cheira a cera/tintura, fala pouco e faz Narro parar de mandar"
+    - "Conduzir seis crianças até Maerra sob Passos sem Pegadas: 25 contra CD 13, sucesso"
+    - "Ren levou Miri, duas crianças da cozinha, Nib, Doss e Cal à Casa da Aurora Menor sem chamar atenção útil"
+    - "Maerra acolheu as seis crianças e trancou a lateral sem alarme aberto"
+    - "Ren abriu a caixa velha com ferramentas de ladrão e paciência; a tranca pequena cedeu sem rolagem por falta de pressão"
+    - "a caixa continha linho amarelado, papel quebradiço e o Broche do Semblante Humilde"
+    - "Maerra ficou com a caixa/relicário aberto e cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório para proteger vivos"
+    - "Maerra identificou o pano vermelho como pano de trabalho encerado, ligado a tintureiro ou cerieiro, com cheiro de cera ruim e tintura"
+    - "Ren contou a Maerra a pista anterior de Kethra sobre areia, cera e panos do corredor treze indo para a rua dos tintureiros"
+    - "Maerra apontou duas direções: seguir rapidamente o fio de cera/tintura/rota baixa atrás de Peta ou mandar palavra a Luath, com risco de batida formal barulhenta"
+    - "Maerra respondeu à brincadeira de Ren dizendo que ele continua sendo estrangeiro armado no templo dela, mas que ela tem opinião melhor sobre o que ele faz quando encontra uma criança no caminho da vingança"
+    - "Ren saiu sozinho da Casa da Aurora Menor para procurar Peta antes que a trilha esfriasse"
+    - "Ler para onde a porta de ferro pode dar: 10 contra CD 14, falha"
+    - "Seguir fio de cera e tintura no entorno da Casa Velha: 23 contra CD 15, sucesso"
+    - "Ren não conseguiu deduzir a geometria exata da porta de ferro a partir do lado de fora"
+    - "Ren encontrou uma grelha baixa de drenagem mal recolocada duas construções abaixo da lateral conhecida da Casa Velha"
+    - "a grelha tem mancha de cera vermelha, fibra de pano encerado semelhante ao pedaço rasgado e cheiro de cera/tintura"
+    - "há diante da grelha uma marca pequena de joelho ou palma de criança na lama fina"
+    - "a rota da grelha parece seguir por galeria estreita na direção das ruas dos ofícios sujos e da rua dos tintureiros"
+    - "Avançar pela galeria sob Passos sem Pegadas: 36 contra CD 15, sucesso"
+    - "Manter o fio de cera e tintura até a rua dos tintureiros: 20 contra CD 15, sucesso"
+    - "Observar de longe a rua dos tintureiros: 19 contra CD 14, sucesso"
+    - "Ren seguiu a galeria de drenagem sem ser notado e emergiu pelos fundos de um pátio na rua dos tintureiros"
+    - "Ren encontrou uma oficina apagada pela frente, mas com luz de trabalho escondido pelos fundos"
+    - "há um cesto de roupa suja com tira amarela de dois nós junto a dois barris no pátio da oficina"
+    - "há marcas de sola adulta, gota de cera vermelha esmagada e arrasto infantil irregular perto da soleira dos fundos"
+    - "Ren ouviu som abafado curto vindo de dentro, compatível com criança ou pano pressionado contra boca"
+    - "Ren viu uma sombra magra de vermelho dentro da oficina e uma forma menor, baixa demais para adulto, perto do chão"
+    - "Aproximação final sob Passos sem Pegadas: 28 contra CD 15, sucesso"
+    - "Entrada baixa pela porta dos fundos: 19 contra CD 14, sucesso"
+    - "Carrinho surpresa não letal contra a figura vermelha: 21 contra CA 13, acerto, 5 de dano contundente"
+    - "Golpe bônus de Artes Marciais contra a figura desequilibrada: 12 contra CA 13, erro"
+    - "Iniciativa: Ren 23, figura vermelha 17"
+    - "Ren entrou no interior da oficina dos tintureiros e quebrou a discrição dentro do cômodo"
+    - "Golpe não letal para impedir grito ou alarme: 9 contra CA 13, erro"
+    - "Golpe bônus de Artes Marciais para cortar a reação: 17 contra CA 13, acerto, 8 de dano contundente"
+    - "a figura vermelha está inconsciente, respirando, e não puxou o cordão"
+    - "a criança no chão está viva e presa por panos, quase certamente Peta"
+    - "há movimento urgente atrás da cortina do fundo, como alguém mexendo em trava, tampa ou rota de fuga"
+    - "Pegar Peta e sair da oficina sob pressão: 23 contra CD 15, sucesso"
+    - "Ren removeu a máscara da figura vermelha e viu uma mulher jovem adulta desconhecida, pálida, magra, com cicatriz antiga de queimadura/cera e marca de sol apagado no pescoço"
+    - "Ren pegou a criança viva, presa e amordaçada, quase certamente Peta, e saiu com ela para o pátio dos fundos"
+    - "ao sair, Ren viu atrás da cortina uma manga cinza, uma mão com dois anéis simples, uma barra de ferro curta e uma abertura baixa escura"
+    - "Sair do pátio dos tintureiros sem entregar a direção: 34 contra CD 16, sucesso"
+    - "Improvisar Peta como carga sob o disfarce do broche: 22 contra CD 14, sucesso"
+    - "Ren ativou o Broche do Semblante Humilde na rua dos tintureiros; aparência humilde/comum ativa até cerca de 01:56, uso gasto até o próximo amanhecer"
+    - "Passos sem Pegadas expirou no trajeto por volta de 00:58"
+    - "Ren chegou à Casa da Aurora Menor sem levantar suspeita útil"
+    - "Peta foi confirmada viva por Cal e entregue aos cuidados imediatos de Maerra"
+    - "Maerra não reconheceu a marca do sol apagado: 7 contra CD 14, falha"
+    - "Peta conseguir dizer algo útil em choque: 2 contra CD 12, falha"
+    - "Peta só conseguiu dizer fragmentos: frio, embaixo, e que a mulher de vermelho não falava com ela"
+    - "Ren dormiu pouco na Casa da Aurora Menor por puro cansaço, sem completar descanso curto de monge e sem recuperar ki"
+    - "O Broche do Semblante Humilde expirou no caminho de volta ao circo"
+    - "Ren voltou ao circo pela rota da carroça de remendos sem cauda competente percebida"
+    - "Silva Elkwood interceptou Ren antes da carroça verde e perguntou se ele trouxe alguém atrás"
+    - "Ren chamou Silva Elkwood de Sil pela primeira vez e contou por cima que sete crianças foram resgatadas da Casa Velha do Primeiro Raio e estão sob cuidado de Maerra"
+    - "Silva pretende mandar ajuda discreta de Chauntea à Casa da Aurora Menor antes do amanhecer"
+    - "Nera apareceu da carroça verde e abraçou Ren, extremamente preocupada"
+    - "Ren abraçou e beijou Nera discretamente antes de dormir"
+    - "Ren dormiu algumas horas no depósito de figurino velho, mas não completou descanso longo"
+    - "Ren completou descanso curto de monge durante o repouso no circo e recuperou ki"
+    - "a ajuda discreta de Chauntea enviada por Silva alcançou Maerra antes do amanhecer"
+    - "Ren acordou com Nera sentada perto da entrada do canto, com água e pão"
+    - "Ren ainda não tem notícia confirmada sobre Colm/Dent ou Dorra Hest"
+    - "Nera sabe que Ren foi aos pátios de saída conferir Colm/Dent e pretende avisar Silva"
+    - "Ler sinais da carroça de Dorra nos pátios: 12 contra CD 14, falha"
+    - "Notar atenção perigosa nos pátios: 11 contra CD 13, falha"
+    - "Ren chegou aos pátios depois da partida das carroças de cal"
+    - "a carroça de Dorra Hest não está mais nos pátios"
+    - "Ren pagou 1 PO por informação nos pátios sobre a saída das carroças de cal"
+    - "Rolagem para escolher informante discreto nos pátios: 10 contra CD 13, falha"
+    - "Rolagem para comprar confirmação sem chamar atenção: 12 contra CD 12, sucesso"
+    - "Um trabalhador dos pátios disse que Dorra Hest saiu no cinza, depois das primeiras carroças de cal"
+    - "O trabalhador disse que um sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do lavadouro, homem embrulhado, mão ruim e tosse"
+    - "O trabalhador ouviu Dorra chamar o protegido de Dent e tratá-lo como sobrinho torto"
+    - "O trabalhador acredita que havia peso de homem sob a lona quando a carroça saiu e ouviu tosse depois que a roda pegou a rua"
+    - "Ren obteve confirmação parcial: Colm/Dent provavelmente saiu com Dorra, mas a saída foi comprometida e não está confirmada como segura"
+    - "Ren procurou Luath como cidadão pobre para relatar Bram Vask, Kethra Dunn e Colm/Dent"
+    - "Rolagem para convencer Luath a pressionar Bram com prova irregular: 8 contra CD 14, falha"
+    - "Luath examinou o caderno de Bram, copiou marcas úteis e o devolveu a Ren por não aceitar prova formal limpa sem cadeia de custódia ou testemunho"
+    - "Rolagem da pressão da Night Watch sobre Bram: 24 contra CD 13, sucesso"
+    - "Dois guardas pressionaram Bram em sua loja sobre cobrança violenta, possível gente mantida por dívida e risco a Kethra"
+    - "Ren pagou uma criança com moeda baixa para entregar recado a Bram; o gasto não alterou o total de PO"
+    - "Rolagem para criança decorar e entregar o recado: 2 contra CD 11, falha"
+    - "Rolagem para Ren observar a entrega do recado sem fixar rosto: 20 contra CD 13, sucesso"
+    - "A criança entregou o recado de forma imprecisa, ligando a ameaça de Ren à visita da guarda"
+    - "Bram não atacou a criança em público, mas fechou a loja e começou a se mover nos fundos"
+    - "Aproximar-se dos fundos de Narwhal sem ativar atenção: 15 contra CD 15, sucesso"
+    - "Ren montou o ponto morto de Kethra no vaso rachado junto aos barris de areia e à calha quebrada"
+    - "Montar ponto morto de Kethra sem parecer novo: 10 contra CD 14, falha"
+    - "O ponto morto de Kethra funciona, mas nasceu com sinais discretos de manipulação no vaso e migalha de cera cinza visível de perto"
+    - "Ren deixou para Kethra a mensagem sobre Colm/Dent ter ido com a cal, Bram ter recebido guarda e recado, e o amigo estar seguro por algum tempo"
+    - "Pell conseguir deixar recado novo desde a última verificação: 18 contra CD 15, sucesso"
+    - "Ren encontrou novo bilhete de Pell no ponto morto da The Silver Lily"
+    - "O bilhete de Pell diz que Rusk não voltou, Brass usa mensageiro novo e evita o beco dos tonéis"
+    - "O bilhete de Pell diz que alguém perguntou se Kage era o mesmo oriental da Silver Lily"
+    - "O bilhete de Pell diz que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra 'máscara' ouvida"
+    - "Ren deixou 2 PO no ponto morto de Pell e pediu dia/hora ou local onde Dain 'Brass' Mord fique sozinho"
+    - "Deixar duas moedas e novo pedido no ponto de Pell sem chamar atenção: 6 contra CD 13, falha"
+    - "Uma funcionária da Silver Lily viu parcialmente Ren junto ao vaso, sem ler o bilhete"
+    - "Ren foi da Silver Lily à Casa da Aurora Menor sem cauda competente no trajeto"
+    - "Maerra permitiu perguntas curtas às crianças, com ela impondo limite"
+    - "Conduzir perguntas às crianças sem pressionar demais: 24 contra CD 12, sucesso"
+    - "Crianças organizarem lembranças úteis após descanso e cuidado: 5 contra CD 13, falha"
+    - "As crianças confirmaram fragmentos já conhecidos, mas não organizaram cadeia completa nova"
+    - "Peta lembrar detalhe novo depois do choque: 18 contra CD 12, sucesso"
+    - "Peta disse que a pessoa de vermelho não mandava, apenas fazia"
+    - "Peta lembrou de um homem de manga cinza e dois anéis falando por trás"
+    - "Peta lembrou as expressões: papel para o peixe, máscara não era para o sol"
+    - "Peta lembrou de ter ficado em lugar frio, embaixo de onde rodas passavam por cima, com água na parede"
+    - "Ren alcançou nível 5 por marco narrativo após resgatar Colm/Dent, desmantelar parcialmente a Casa Velha do Primeiro Raio, salvar sete crianças e abrir pistas concretas sobre a rota baixa, Narwhal, Brass e a máscara"
+    - "Nera Vell escondida por Silva Elkwood"
+    - "Tavin Vell escondido por Silva Elkwood"
+    - "rastro recente parcialmente confundido, mas não apagado"
+    - "livro de provas de Nera escondido por Silva Elkwood"
+    - "de volta ao circuito de risco da Red Sail no Harbor District"
+    - "Maerra aceitou esconder Nera e Tavin por enquanto"
+    - "descanso curto completo; ainda cansado, mas centrado"
+    - "chegou à borda do circo dos Mooney"
+    - "dentro da carroça verde de Silva Elkwood"
+    - "Silva aceitou esconder Nera, Tavin e o livro imediatamente"
+    - "Ren escondido provisoriamente atrás da carroça de remendos"
+    - "repouso curto/sono reparador concluído; sem penalidade de fadiga"
+    - "Silva deu o sinal combinado para Ren sair"
+    - "Passos sem Pegadas expirou por volta de 09:06"
+    - "Ren saiu da carroça de remendos sem ser visto por Jack"
+    - "Ren saiu do circo pela borda externa sem ser visto"
+    - "Nera e Tavin têm abrigo provisório no circo apenas até o meio-dia"
+    - "vestido com roupas escuras sob manto simples"
+    - "homem da Red Sail capturado e amarrado para interrogatório"
+    - "homem da Red Sail coagido como agente duplo"
+    - "atenção leve atraída na rua; Ren não foi visto claramente"
+    - "alimentado e hidratado de forma simples"
+    - "roupas roubadas de estivador/marinheiro deixadas no canto discreto de Ren no circo"
+    - "Ren esta no escritorio-carroca de Jack Mooney para negociar"
+    - "Silva Elkwood reconheceu Ren apesar das roupas de marinheiro"
+    - "Jack suspendeu o prazo imediato do meio-dia para Nera e Tavin"
+    - "oferta condicional de trabalho e abrigo com Jack Mooney"
+    - "acordo condicional com Jack Mooney aceito"
+    - "cobertura publica no circo: Ren Kage, acrobata oriental contratado em audicao fechada"
+    - "investigando sabotagem da corda alta do lado leste"
+    - "Sorn Kel chamado para perguntas perto da corda alta"
+    - "Mira Dane e dois ajudantes perceberam tensao na conversa"
+    - "Sorn Kel respondeu perguntas iniciais sobre a sabotagem"
+    - "novas pistas: Harl Venn, Lysa Renn, Tobb Marlin e bau de cordame"
+    - "Sorn Kel revelou omissao sobre Harl, Lysa e a copia da chave"
+    - "Ren aborda Harl Venn atras da carroca de cordame"
+    - "Harl admite janela curta em que nao viu as maos de Lysa"
+    - "Ren isolou Lysa Renn atras de uma cortina de lona"
+    - "Harl observa a abordagem de longe"
+    - "Lysa reagiu ao blefe de Ren e negou ter cortado a amarra"
+    - "Lysa confessou ter subido a plataforma leste depois da nona badalada"
+    - "Lysa revelou o restante rasgado da fita vermelha do pulso esquerdo"
+    - "Lysa explicou por que escondeu o treino na plataforma"
+    - "Lysa foi liberada sem ser levada a Jack"
+    - "passagem estreita entre contrapesos investigada"
+    - "novo fio forte: Merrit Tealeaf"
+    - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta"
+    - "Merrit indicou a caixa azul do numero de cambalhotas como esconderijo da faca curva"
+    - "Mira Dane parece ter ouvido parte da confissao de Merrit"
+    - "Ren recuperou a faca curva escondida por Merrit"
+    - "a faca curva combina com o padrao de corte da tira sabotada"
+    - "Mira Dane entrou na cena e sabe em linhas gerais que Merrit cortou a amarra"
+    - "Ren aconselhou Merrit a assumir a culpa e pedir desculpas"
+    - "Silva conteve Merrit e Mira sem panico imediato"
+    - "Ren entregou a Jack a prova fisica da sabotagem"
+    - "Jack reconheceu que Ren resolveu a investigacao antes do meio-dia com prova e sem sangue"
+    - "Ren reforcou a hipotese de que alguem pode ter aconselhado Merrit"
+    - "Jack aceitou manter Nera e Tavin no circo por hoje e amanha"
+    - "Jack aceitou manter Ren no circo como Ren Kage, acrobata estrangeiro em teste"
+    - "Jack nao prometeu defender Ren contra toda a Red Sail sem entender melhor o risco"
+    - "Ren assistiu ao julgamento interno de Merrit"
+    - "Merrit assumiu a culpa com sinceridade"
+    - "Mira conteve a raiva, mas nao perdoou Merrit"
+    - "Lysa saiu abalada do julgamento de Merrit"
+    - "Merrit foi suspensa de apresentacoes e colocada sob controle de Silva/Sorn"
+    - "Ren reencontrou Nera e Tavin na carroca verde de Silva"
+    - "Ren tranquilizou Nera e Tavin sobre o abrigo no circo"
+    - "Nera e Tavin estao alimentados e fisicamente bem dentro do possivel"
+    - "Silva confirmou abrigo real por hoje e amanha, com reavaliacao posterior"
+    - "Jack mandou preparar para Ren um canto discreto no deposito de figurino velho"
+    - "Ren comeu, meditou e dormiu por cerca de tres horas"
+    - "Ren completou repouso seguro curto e recuperou ki"
+    - "Red Sail farejou o perimetro do circo durante a tarde sem confirmar os Vell"
+    - "Silva trouxe Merrit ao deposito de figurino velho para conversa discreta sob supervisao"
+    - "Merrit revelou que Harl Venn plantou a frase Sorn sempre ouve"
+    - "Silva nao ouviu o nome de Harl"
+    - "Ren confirmou que Harl tem devocao romantica ou idealizada por Lysa"
+    - "Ren encerrou a conversa com Merrit e pediu a Silva que o acompanhasse ate Jack"
+    - "Jack esta disponivel para ouvir a nova informacao sobre Harl"
+    - "Ren contou a Jack que Harl plantou a ideia em Merrit"
+    - "Jack proibira Harl de tocar na corda alta, conferir amarra sozinho ou pegar chave de bau"
+    - "Ren recebeu ate o por do sol para conversar com Harl antes de Jack escolher punicao mais pesada"
+    - "Ren abordou Harl com camaradagem, mas Harl permaneceu defensivo"
+    - "Harl perguntou se Jack mandou Ren falar com ele"
+    - "Ren pagou 1 PO por uma hora do tempo de Harl"
+    - "Harl aceitou acompanhar Ren ate a cozinha sob a lona amarela"
+    - "Ren convenceu Harl a confessar sua parte a Jack"
+    - "Harl admitiu que plantou a ideia em Merrit sem ordenar diretamente o corte"
+    - "Jack puniu Harl discretamente e confirmou abrigo para Ren, Nera e Tavin por hoje e amanha"
+    - "Ren visitou Nera e Tavin na carroca verde de Silva"
+    - "Nera e Tavin continuam fisicamente bem, alimentados e escondidos"
+    - "Silva confia mais em Ren, mas segue cautelosa"
+    - "Ren avisou que seguira uma trilha a noite ligada aos homens que tentaram levar Nera"
+    - "Ren prometeu a Tavin que voltara"
+    - "Ren disse que investigara a conexao entre Red Sail e Masao"
+    - "Ren sugeriu Kagefusha, Moinho das Sombras, como nome de palco"
+    - "imagem da despedida na carroca verde salva em sessoes/001/imagens/004-vell-carroca-verde.png"
+    - "Ren prometeu a Silva que nao trara perseguidor para a carroca verde"
+    - "Ren saiu do circo pela rota da carroca de remendos sem atrair atencao externa"
+    - "Ren evitou olhos naturais da Red Sail no deslocamento inicial"
+    - "Ren encontrou roupas excelentes para disfarce num varal de travessa"
+    - "Ren esta com casaco cinza grosseiro e gorro escuro retirados do varal"
+    - "camisa e calcas largas ficaram no varal"
+    - "uma mae comum viu movimento humano e gritou por ladrao de roupa"
+    - "rumor local de ladrao de roupa criado, sem conexao direta com a Red Sail"
+    - "Ren deixou pecas reconheciveis dobradas em fresta seca atras de tabuas"
+    - "disfarce atual e fraco de perto, mas util para quebrar silhueta a distancia"
+    - "Ren abandonou o ponto de observacao sobre a oficina de velas abandonada para atacar"
+    - "imagem da visao de Ren salva em sessoes/001/imagens/005-visao-oficina-velas.png"
+    - "mapa esquematico do local salvo em sessoes/001/imagens/006-mapa-oficina-velas.png"
+    - "Ren estudou uma rota de fuga pelas fachadas apertadas"
+    - "dois homens responderam a isca da oficina de velas"
+    - "um dos homens provavelmente e Rusk Cinza"
+    - "o segundo homem e capanga da Red Sail"
+    - "nenhum dos dois percebeu Ren antes da Escuridao"
+    - "Rusk entrou na oficina pela abertura lateral"
+    - "Ren conjurou Escuridao sobre a entrada lateral da oficina de velas"
+    - "Ren esta no breu junto ao capanga da Red Sail"
+    - "capanga da Red Sail foi neutralizado e esta inconsciente no chao da oficina"
+    - "Rusk Cinza foi localizado pelo som, ferido por Ren e falhou em escapar pelo interior da oficina"
+    - "moradores de Fishtown ouviram barulho vindo da oficina, mas ainda nao deram alarme aberto"
+    - "Rusk Cinza esta rendido sob a wakizashi e disposto a falar baixo"
+    - "pelo menos uma pessoa proxima continua atenta ao barulho da oficina"
+    - "Rusk revelou que o selo falso e a caixa eram montagem para criar rastro oriental e atrair o homem certo"
+    - "Rusk associou o hospede estrangeiro de Brass a lua, Narwhal, Velis Rook e possivel marca na bochecha direita"
+    - "Ren percebeu que Rusk ainda omite um ponto de entrega ou metodo de contato entre Brass e Narwhal"
+    - "Rusk Cinza foi apagado por Ren depois do interrogatorio"
+    - "Escuridao desfeita depois da fuga"
+    - "Ren escapou pela rota das fachadas apertadas"
+    - "uma testemunha percebeu a direcao geral da fuga, mas nao identificou Ren"
+    - "Ren concluiu que a caixa da Lua foi isca montada para atraí-lo"
+    - "Ren concluiu que Masao ou agente muito proximo sabe que ele chegou a Ravens Bluff"
+    - "Ren recuperou roupas escuras e manto no beco seguro"
+    - "Ren confirmou que nao foi seguido ate o Temple District"
+    - "Maerra sabe que Nera e Tavin estao vivos e protegidos por Silva e Jack"
+    - "Ren recebeu roupas comuns de doacao da Casa da Aurora Menor para disfarce"
+    - "Ren roubou 27 PO de um mercador no Market District"
+    - "Ren escapou do mercado sem perseguicao imediata"
+    - "possivel rumor posterior sobre peregrino pobre ou forasteiro envolvido em roubo"
+    - "Ren voltou ao circo pela rota da carroca de remendos"
+    - "Ren entrou no circo sem ser notado pela rotina interna"
+    - "Ren nao confirmou com certeza se alguem no caminho do mercado notou sua direcao geral"
+    - "Ren trocou o disfarce de doacao pelas roupas escuras de viagem"
+    - "Silva sabe que Ren voltou e ofereceu banho simples atras da lona azul"
+    - "Nera esta acordada e Tavin dorme"
+    - "Ren esta tomando banho atras da lona azul com a wakizashi ao alcance"
+    - "Nera veio ate a lona por preocupacao e viu Ren por um instante antes de virar o rosto"
+    - "Silva esta por perto e preserva a privacidade com firmeza"
+    - "Ren prometeu ir ate a carroca verde apos o banho"
+    - "Nera aceitou esperar Ren na carroca verde"
+    - "tensao romantica entre Ren e Nera ficou mais explicita, mas contida"
+    - "Ren terminou o banho e voltou a carroca verde"
+    - "Tavin dorme e nao foi acordado"
+    - "Ren e Nera estao de maos dadas"
+    - "Silva autorizou passeio curto de Ren e Nera pela rota interna das lonas"
+    - "Dessa Wren pode providenciar roupas comuns de disfarce para Ren"
+    - "Ren encontrou teto de carroca larga de madeira como ponto alto seguro para conversar com Nera"
+    - "Ren nao pode usar Passo do Vento por estar sem ki"
+    - "subida com Nera fez barulho e foi percebida por alguns circenses"
+    - "Silva sabe onde Ren e Nera estao, mas nao interrompeu"
+    - "Ren contou a Nera sobre a ferida de Aiko e sua vinganca contra Masao"
+    - "Nera admitiu que se preocupa de verdade com Ren"
+    - "Nera pediu que ela e Tavin continuem sendo pessoas para Ren, nao ferramentas ou peso na vinganca"
+    - "Ren disse a Nera que ela e Tavin ja sao pessoas para ele"
+    - "Ren e Nera se beijaram no topo da carroca dos estandartes"
+    - "vinculo romantico entre Ren e Nera agora e explicito, mas sem promessa de futuro"
+    - "Nera entende melhor que Masao usou ela e Tavin para atingir Ren"
+    - "Ren levou Nera de volta a carroca verde de Silva antes de dormir"
+    - "Ren completou descanso longo seguro no deposito de figurino velho"
+    - "Ren alcançou nivel 4 por marco narrativo"
+    - "dois mensageiros de Tyr sairam com fichas reservadas para Luath e Maerra"
+    - "Halessa aceitou iniciar audiencia de lacre em poucos minutos se Ren aceitar paz juramentada"
+    - "condicao proposta por Tyr: wakizashi embainhada e presa por cordao branco; shuriken em pacote fechado sobre a mesa da camara"
+    - "Ren aceitou paz juramentada de Tyr"
+    - "wakizashi embainhada e presa por cordao branco na cintura de Ren"
+    - "9 shuriken de Ren em pacote fechado sobre a mesa da camara reservada"
+    - "pasta de Velis aberta em camara reservada e agora sob custodia formal de Tyr"
+    - "Sirrus Melandor esta sendo chamado imediatamente"
+    - "Nera Vell e Tavin Vell registrados por nome completo em ata reservada e selada de Tyr"
+    - "Sirrus Melandor esta na camara reservada"
+    - "Silva Elkwood nomeada por Ren em registro selado como guardia atual dos Vell, ainda a confirmar"
+    - "Tyr emitiu ordem de preservacao de registros antes do meio-dia"
+    - "Velis Rook sera convocado por Tyr"
+    - "Sirrus negou presenca oculta de Ren na primeira oitiva de Velis"
+    - "Halessa permitiu que Ren escreva ate tres perguntas para possivel uso na oitiva"
+    - "Ren entregou tres perguntas a Halessa como anexo reservado para possivel uso na oitiva de Velis"
+    - "wakizashi e 9 shuriken liberados quando Ren saiu da camara reservada"
+    - "pasta de Velis permanece sob custodia formal de Tyr"
+    - "fumaça grande visivel no Harbor District, perto dos armazens de breu e cordame"
+    - "rumor de que a Red Sail ja atua no local do incendio como forca de contencao"
+    - "Ren chegou ao Harbor District mais visivel do que pretendia"
+    - "Ren identificou tres focos separados no incendio dos armazens de breu e cordame"
+    - "Red Sail parece ter chegado rapido demais com cordas, barris d'agua e homens armados"
+    - "um olheiro da Red Sail fixou Ren como observador suspeito"
+    - "Red Sail nao conseguiu seguir Ren ate o circo"
+    - "Ren voltou ao circo pela rota da carroca de remendos sem gastar ki"
+    - "Silva interceptou Ren discretamente perto da entrada interna"
+    - "Ren contou a Silva sobre Tyr, Sirrus, Velis, a nomeacao selada e o incendio do Harbor District"
+    - "Silva aceitou a nomeacao em Tyr com reprimenda"
+    - "conselho de Silva: nao mover os Vell para fora durante a crise"
+    - "conselho de Silva: separar Ren, Nera/Tavin e o livro"
+    - "conselho de Silva: Ren deve ficar visivel por algumas horas como Ren Kage"
+    - "PV, dados de vida e ki recuperados com o descanso longo"
+    - "Red Sail ou gente ligada ao porto aproximou a busca do perimetro do circo antes do amanhecer"
+    - "Nera e Tavin ainda nao foram identificados formalmente no circo"
+    - "Ren propos busca controlada no circo apos evacuar Nera e Tavin"
+    - "Silva levou a proposta a Jack"
+    - "Jack aceita a logica da busca controlada, mas ainda nao iniciou a busca"
+    - "Dessa Wren entregou pacote de disfarces rapidos para Ren, Nera e Tavin"
+    - "Dessa Wren recebeu roupas roubadas e roupas de doacao para transformar em retalho"
+    - "Dessa Wren guarda as roupas proprias de Ren como figurino estrangeiro"
+    - "Ren gastou Passo do Vento para corrigir a falha de cobertura de Tavin na saida"
+    - "Ren, Nera e Tavin sairam do circo sem serem identificados pelos homens do porto ou da Red Sail"
+    - "livro de provas de Nera permanece escondido sob protecao de Silva"
+    - "Ren confirmou com seguranca que nao ha cauda apos sair do circo"
+    - "Ren, Nera e Tavin comeram comida simples comprada com moedas de cobre"
+    - "Ren, Nera e Tavin chegaram a Casa da Aurora Menor"
+    - "Maerra avaliou Luath como honrado e util, mas preso a cadeia da City Guard"
+    - "Nera e Tavin ficaram sob protecao temporaria de Maerra na Casa da Aurora Menor"
+    - "Ren entregou a copia parcial selada por Maerra a Luath"
+    - "Ren chegou ao posto da City Guard/Night Watch sem chamar atencao"
+    - "Ren esta saindo pelo corredor lateral indicado por Luath"
+    - "Luath aceitou conversar em particular por respeito cauteloso a Maerra"
+    - "Luath ainda nao confia em Ren e pediu fatos imediatos, sem poesia ou juramento"
+    - "Ren revelou a Luath seu nome, origem, Masao, o assassinato de Aiko e a ameaca contra Nera e Tavin"
+    - "Luath aceitou agir contra buscas ostensivas da Red Sail"
+    - "Luath ficou com a copia parcial selada de Maerra"
+    - "Luath separa proteger vivos da caca pessoal de Ren a Masao"
+    - "Ren informou Luath que a pressao atual acontece no circo de Jack Mooney"
+    - "Ren explicou a Luath que Dain Mord e conhecido como Brass e descreveu o protocolo da ficha de cobre, vela vermelha e cordao azul"
+    - "Luath aceitou nao mandar busca aberta ao circo sem ordem, flagrante ou razao melhor"
+    - "patrulheiros da guarda seguem para pressionar buscas ilegais da Red Sail nas ruas, vizinhancas e acessos"
+    - "Ren afirmou a Luath que Masao Hirasawa nao merece cela"
+    - "Luath passou a considerar Ren risco concreto de justica privada"
+    - "Ren saiu do posto pelo corredor lateral sem usar magia"
+    - "um guarda jovem viu de relance um homem pobre saindo pela lateral do posto"
+    - "Ren nao percebeu perseguicao direta no caminho ate a Silver Lily"
+    - "Pell deixou mensagem no vaso com flor dos fundos da Silver Lily"
+    - "mensagem de Pell: Velis vai limpar papel em Narwhal Manor antes do sino de nove"
+    - "mensagem de Pell: Brass esta irritado, Rusk nao voltou e o homem da lua nao desce ao cais"
+    - "Ren deixou 1 PO no vaso para pagar Pell"
+    - "Ren destruiu o bilhete de Pell durante o deslocamento"
+    - "Ren evitou dois possiveis olhos da Red Sail perto de vendedor de peixe seco"
+    - "Ren chegou a Narwhal Manor sem cauda clara, mas com atraso operacional"
+    - "Velis Rook esta visivel na entrada lateral de funcionarios com pasta rigida de couro encerado"
+    - "imagem da visao de Ren em Narwhal Manor salva em sessoes/001/imagens/009-visao-narwhal-manor.png"
+    - "mapa esquematico de Narwhal Manor salvo em sessoes/001/imagens/010-mapa-narwhal-manor.png"
+    - "Ren gastou um shuriken para derrubar a lampada da porta lateral de Narwhal Manor"
+    - "lampada quebrou no batente/ombro de Velis e criou pequena confusao"
+    - "Velis Rook evitou o impacto direto e manteve a pasta"
+    - "Velis percebeu a tentativa de furto e chamou guarda"
+    - "Ren esta perto de Velis, sem cobertura social confiavel"
+    - "Ren viu na pasta de Velis: carimbo de Narwhal Manor, numero 13 e a expressao retencao anulada"
+    - "Ren arrancou a pasta de Velis Rook"
+    - "Ren gastou 1 ki em Passo do Vento para fugir da lateral de Narwhal Manor"
+    - "Ren desapareceu no fluxo das ruas de servico sem perseguicao imediata colada nele"
+    - "Narwhal Manor esta em alarme local por roubo de papeis"
+    - "Ren encontrou uma manta de estopa cinza abandonada e a usa sobre o ombro"
+    - "Ren chegou a Casa da Aurora Menor sem cauda confirmada"
+    - "pasta de Velis continua escondida sob as roupas e nao examinada"
+    - "Ren respirou, bebeu agua e comeu um pouco na saleta de ervas"
+    - "pausa segura parcial; ainda nao conta como descanso curto mecanico"
+    - "Maerra ofereceu fio lateral futuro: os Meninos do Primeiro Sino"
+    - "possivel local de side quest: Casa Velha do Primeiro Raio"
+    - "possivel recompensa/emprestimo futuro: Broche do Semblante Humilde"
+    - "pasta de Velis aberta diante de Maerra, Nera e Tavin"
+    - "conteudo da pasta: retencao temporaria do volume 13 na Casa da Rede Morta"
+    - "conteudo da pasta: retencao anulada retroativamente por V. Rook"
+    - "conteudo da pasta: lista de correcoes trocando M. H. por M. Harrow e removendo oriental"
+    - "conteudo da pasta: D. Mord cobre custos miudos"
+    - "conteudo da pasta: impressao protegida da falsa lua velada reconhecida por Nera"
+    - "conteudo da pasta: bilhete diz que o hospede nao desce ao cais, lua fica em Narwhal ate sinal de B., gravadora e menino sao ruido que nao deve chegar a Tyr"
+    - "Maerra avalia que Luath ou Tyr precisam legitimar a prova antes que Narwhal vire a acusacao contra Ren e Nera"
+    - "Maerra escreveu declaracao cautelosa sobre a abertura da pasta e o reconhecimento tecnico de Nera"
+    - "pasta de Velis foi reorganizada e lacrada com cera da Casa da Aurora Menor"
+    - "Maerra nao atestou cadeia de custodia nem autoria final, apenas o que viu, ouviu e lacrou"
+    - "Ren deixou a Casa da Aurora Menor com Nera, Tavin e a pasta lacrada"
+    - "patrulheiros acionados por Luath dispersaram pressao imediata da Red Sail perto dos acessos do circo"
+    - "Ren conduziu Nera e Tavin de volta ao circo com discricao"
+    - "Ren nao confirmou cauda no retorno ao circo, mas tambem nao viu perseguidor claro"
+    - "Jack conduziu a busca controlada no circo sem entregar os Vell"
+    - "Nera e Tavin retornaram a carroca verde de Silva"
+    - "Ren informou Silva que pretende levar a pasta lacrada a Tyr"
+    - "Silva aceitou cuidar novamente de Nera e Tavin"
+    - "Ren se despediu de Nera e Tavin antes de ir ao guarda-roupa menor"
+    - "Dessa Wren oferece escolha de vestimenta para a ida a Tyr"
+    - "Ren pagou 1 PO a Dessa por roupa de cidadão menor e limpeza de suas roupas próprias"
+    - "Dessa recebeu instruções para futura roupa de apresentação com obi espetacular inspirado em Kara-Tur"
+    - "Ren está vestido como cidadão menor limpo, com faixa interna para esconder a pasta lacrada"
+    - "saída lateral do circo foi notada por algumas pessoas, mas sem alarme aberto"
+    - "Ren percebeu possível olho remanescente do porto e quebrou linha de visão"
+    - "Ren chegou à Casa de Tyr sem cauda colada"
+    - "Ren pediu testemunho direto para Sirrus Melandor"
+    - "guardião de Tyr negou acesso direto imediato, mas ofereceu filtro preliminar sem abrir a pasta lacrada"
+    - "Ren mostrou o selo de Maerra e focou em duas vidas honradas em risco"
+    - "Casa de Tyr classificou o caso como testemunho reservado urgente"
+    - "guardiã jovem foi chamar autoridade intermediária para ouvir sem abrir o lacre"
+    - "Ren observou o vestíbulo da Casa de Tyr e entendeu o uso de registro reservado"
+    - "Ren organizou argumento em torno de custódia, testemunho, vidas em risco e obstrução de justiça"
+    - "Ren compreendeu que dor pessoal e vingança enfraquecem a abordagem em Tyr"
+    - "Irmã Halessa Vorn chegou para ouvir como ouvidora juramentada"
+    - "preparação social usada na fala inicial a Halessa"
+    - "Ren esclareceu que a cópia parcial feita por Maerra está com Luath, não com ele"
+    - "Halessa percebeu lacuna na cadeia de custódia da pasta, mas não acusou Ren formalmente"
+    - "Halessa decidiu escalar o caso dentro de Tyr"
+    - "Tyr oferece resguardo provisório de 24 horas para N.V. e T.V. se puderem ser movidos em segurança"
+    - "Tyr oferece ficha selada para Maerra ou Luath confirmando triagem reservada"
+    - "Tyr oferece audiência de lacre em câmara reservada"
+    - "Ren tomou banho rápido atrás da lona azul depois de voltar do incêndio no Harbor District"
+    - "Ren contou a Nera e Tavin que Tyr registrou seus nomes em ata reservada e selada"
+    - "Nera entende que o registro de Tyr protege, mas também torna seus nomes rastreáveis se a informação vazar"
+    - "Tavin aceitou a cobertura de ajudante de cozinha/recados sob controle de Silva"
+    - "Nera pode ser integrada ao guarda-roupa/remendos com Dessa Wren"
+    - "Ren contou a Jack sobre a ata reservada de Tyr e a nomeação selada de Silva como guardiã informada dos Vell"
+    - "Jack entende que o registro selado ajuda contra gente decente, mas cria novo risco se gente indecente descobrir que existe algo a perguntar"
+    - "Jack reconhece que alguém está usando o incêndio para fazer a Red Sail parecer necessária no Harbor District"
+    - "Jack recusou tratar a ligação direta de Masao com a Red Sail como certeza sem prova, mas aceitou ouvir o plano de Ren"
+    - "Ren vendeu a Jack o esqueleto do Benefício da Lona Aberta com sucesso"
+    - "Jack aceitou preparar um espetáculo beneficente para amanhã ao cair da tarde, sem acusação pública contra Red Sail, Masao ou Narwhal"
+    - "Jack quer integrar Nera e Tavin à rotina antes dos cartazes e separar o livro do local onde eles dormem"
+    - "Jack quer que Ren prove um número acrobático vendável ou obtenha apoio institucional limpo para o evento"
+    - "Nera adotou Lena como nome de cobertura no circo"
+    - "Tavin adotou Timo como nome de cobertura no circo"
+    - "Dessa aprovou uma versão viável de O Vento da Noite com figurino improvisado, panos de vento/noite, música local adaptada e Merrit narrando sob supervisão"
+    - "Jack autorizou a preparação do número, condicionada a apoio limpo de Luath e prova física posterior"
+    - "Luath recusou apoio formal da Night Watch ao Benefício da Lona Aberta, mas aceitou ronda normal se Jack/Silva entregarem aviso limpo antes do pôr do sol"
+    - "Ren pressionou Luath além da resposta formal e ofereceu serviços secretos; Luath rejeitou duramente a proposta e ficou mais cauteloso"
+    - "Ren demonstrou O Vento da Noite com sucesso diante de Jack, Silva, Dessa, Mira e Sorn"
+    - "Ren gastou 1 ki em Passo do Vento durante a demonstração"
+    - "Jack aceitou vender O Vento da Noite como atração do Benefício da Lona Aberta"
+    - "Jack e Silva prepararam aviso escrito limpo para Luath sobre o Benefício da Lona Aberta"
+    - "Ren entregou o aviso a Luath antes do pôr do sol, sem nova discussão"
+    - "Luath aceitou orientar ronda normal no caminho do evento, sem apoio formal público"
+    - "Ren completou descanso curto no circo e recuperou o ki"
+    - "Merrit aceitou narrar O Vento da Noite como papel limitado de chão, sob supervisão de Silva"
+    - "Nera/Lena e Tavin/Timo assistiram parte do ensaio de O Vento da Noite"
+    - "Jack decidiu que Lysa Renn será a Princesa das Sombras no lugar de Nera/Lena"
+    - "Princesa das Sombras não terá beijo, toque romântico, nome anunciado nem aplauso próprio"
+    - "Ren ensaiou à noite e no dia seguinte sem gastar ki antes da apresentação"
+    - "Ren completou descanso longo antes do dia da apresentação"
+    - "Nera demonstrou ciúme contido ao ver Lysa assumir o papel de Princesa das Sombras"
+    - "Ren almoçou com Nera e Tavin e tentou explicar sushi"
+    - "A ronda normal prometida por Luath passou pela estrada do circo no dia do evento"
+    - "Ren está vestido com o figurino de O Vento da Noite e prestes a entrar em cena"
+    - "Ren executou O Vento da Noite diante da lona cheia com sucesso"
+    - "Rolagem de Acrobacia de O Vento da Noite: 22 contra CD 15, sucesso"
+    - "Rolagem de Atuação de O Vento da Noite: 16 contra CD 13, sucesso"
+    - "Ren gastou 1 ki em Passo do Vento durante a apresentação"
+    - "A persona pública Ren Kage começou a se fixar em Ravens Bluff"
+    - "Jack percebeu que O Vento da Noite vende"
+    - "Ren não voltou ao público após O Vento da Noite e preservou a aura de mistério"
+    - "Sorn aprovou a precisão das marcações de Ren, com ressalva técnica sobre o ombro no salto da segunda lanterna"
+    - "Lysa sustentou a Princesa das Sombras sem cair e recebeu crítica técnica útil de Mira"
+    - "Dessa confirmou que o figurino de O Vento da Noite funcionou diante da lona cheia"
+    - "Silva alertou que a máscara pública Ren Kage ajuda, mas não é esconderijo"
+    - "Jack recebeu interesse de um camarote oeste por patronato ou contratação privada de Kage"
+    - "Ren decidiu deixar Kage ligado ao circo por ora e não atender patrono privado na mesma noite"
+    - "Jack respondeu ao camarote oeste que Kage não recebe casa privada hoje; propostas por escrito podem vir amanhã"
+    - "Rolagem de resultado financeiro e social do Benefício da Lona Aberta: 21 contra CD 14, sucesso"
+    - "Benefício da Lona Aberta fechou sem interrupção aberta"
+    - "Jack estima cerca de setenta e poucas PO limpas para o circo depois de custos e promessas públicas"
+    - "Silva administra separadamente a lista de doações comunitárias"
+    - "Nera e Tavin dormem no circo esta noite"
+    - "Ren tomou banho depois do Benefício da Lona Aberta"
+    - "Ren comeu com Nera e Tavin na carroça verde"
+    - "Ren completou descanso longo sem interrupção aberta"
+    - "Ren recuperou o ki para 4/4"
+    - "Silva trouxe água e pão para Ren pela manhã"
+    - "Nera está acordada na carroça verde, tentando fingir que não espera Ren"
+    - "Ren comeu na manhã seguinte ao Benefício"
+    - "Ren falou com Nera antes de ir ver Jack"
+    - "Nera alertou que Kage pode virar porta, mas não deve comprar Ren inteiro"
+    - "Proposta escrita sem nome claro chegou do camarote oeste pedindo termos para apresentação privada de Kage"
+    - "Jack quer exigir nome de casa, endereço, pagador, metade adiantada e local controlado antes de qualquer apresentação privada"
+    - "Jack pediu que Ren defina o que Kage não faz por dinheiro"
+    - "Ren definiu limites formais para Kage: apenas tenda controlada pelo circo, equipe presente, segurança identificada, antecedência, sem reunião social, sem fala obrigatória, sem exposição pessoal e sem intimidação privada"
+    - "Jack preparou resposta rígida ao camarote oeste, com preço de 40 PO para primeira apresentação fechada curta, 20 PO adiantadas e custos de tenda/segurança/transporte por fora"
+    - "mensageira de Tyr chegou à borda das carroças pedindo Silva Elkwood por assunto de lacre reservado"
+    - "Ren acompanhou Silva até a mensageira de Tyr"
+    - "Tyr recebeu confirmação de Luath sobre a cópia parcial e as ações contra buscas ilegais"
+    - "Tyr recebeu confirmação de Maerra sobre o lacre, a abertura presenciada e a condição em que viu os Vell"
+    - "Ren defendeu que Nera e Tavin permaneçam no circo, por parecer mais vida do que prisão e por valorizar a proximidade"
+    - "Ren agradeceu Silva por estar com os Vell e para os Vell"
+    - "Silva confirmou formalmente a guarda imediata dos Vell"
+    - "Silva pediu manutenção temporária no abrigo atual, sem transferência para Tyr neste momento"
+    - "Silva solicitou resguardo em espera sem deslocamento até o próximo sino maior"
+    - "Tyr não enviará juramentados ao circo sem novo pedido, salvo ameaça imediata confirmada"
+    - "mensageira de Tyr informou que a primeira convocação de Velis Rook foi entregue"
+    - "Tyr espera resposta de Velis Rook antes do meio-dia"
+    - "Ren assinou o acordo condicional de Ren Kage com Jack"
+    - "Jack selou a resposta rígida ao camarote oeste"
+    - "Ren falou brevemente com Nera e Tavin antes de sair do circo"
+    - "Nera pediu que Ren volte antes de virar história de outra pessoa"
+    - "Ren saiu do circo discretamente, sem usar ki"
+    - "Rolagem de Furtividade para sair e cruzar a cidade discretamente: 19 contra CD 14, sucesso"
+    - "Ren chegou aos arredores da Casa Velha do Primeiro Raio sem cauda evidente"
+    - "Rolagem de Investigação na sondagem externa da Casa Velha do Primeiro Raio: 14 contra CD 13, sucesso"
+    - "Rolagem de Percepção na sondagem externa da Casa Velha do Primeiro Raio: 16 contra CD 14, sucesso"
+    - "Ren identificou marcas de carvão em forma de sol riscado perto de paredes laterais"
+    - "Ren identificou trânsito recente de pés pequenos e adultos pela viela lateral"
+    - "Ren identificou provável entrada de serviço nos fundos da Casa Velha do Primeiro Raio"
+    - "Ren identificou ponto de observação improvisado com vista para a rua"
+    - "Ren percebeu uma velha vendedora e um menino magro como possíveis observadores na rua"
+    - "Ren viu movimento curto de sombra atrás de uma janela alta da Casa Velha do Primeiro Raio"
+    - "Ren não comprou luneta: o item custa 1000 PO pela referência do Livro do Jogador e não estava disponível como compra rápida viável"
+    - "Rolagem de Furtividade para ocupar ponto alto de observação: 24 contra CD 14, sucesso"
+    - "Ren ocupou um sótão quebrado de oficina de rodas sem gastar ki e sem chamar atenção"
+    - "Rolagem de Observação prolongada da Casa Velha: 11 contra CD 15, falha para detalhes finos"
+    - "Rolagem de Investigação para organizar padrões da movimentação: 23 contra CD 14, sucesso"
+    - "Ren observou por quase três horas sem gerar alarme"
+    - "Ren concluiu que a porta frontal não é usada e que a viela lateral/porta de serviço são o eixo real de movimento"
+    - "Ren percebeu que crianças aparecem em pontos externos compatíveis com vigilância informal ou papel de olheiros"
+    - "Ren viu um adulto baixo de ombros largos e avental manchado usar a rota da viela duas vezes"
+    - "o adulto de avental manchado saiu da Casa Velha rumo aos armazéns com um embrulho fino e comprido por volta de 11:18"
+    - "Ren abandonou o rastro imediato do adulto de avental manchado para tentar localizar Velis antes do meio-dia"
+    - "Rolagem para localizar rota provável de Velis: 7 contra CD 14, falha"
+    - "Rolagem para vigiar Velis sem ser notado: 13 contra CD 15, falha"
+    - "Rolagem para ouvir conversa em movimento: 19 contra CD 14, sucesso"
+    - "Ren ouviu uma mulher ligada a interesses de casa rica preparar Velis para negar instrução de patrono e tratar a anulação como correção de escrita"
+    - "Ren ouviu que Velis deve dizer que a marca da lua foi recebida, não criada por ele, e que o 'oriental' era M. Harrow"
+    - "um guardião de Tyr percebeu um homem de capuz interessado demais, mas Ren se afastou sem ser identificado com certeza"
+    - "Velis entrou na Casa de Tyr; a mulher que o instruiu não entrou e seguiu rumo às ruas de escribas e comércio"
+    - "Rolagem para sair do perímetro de Tyr sem arrastar atenção até Maerra: 20 contra CD 13, sucesso"
+    - "Ren chegou discretamente à Casa da Aurora Menor e falou com Maerra"
+    - "Maerra corrigiu que Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena"
+    - "Maerra avaliou que avisar Tyr diretamente como ouvinte oculto poderia transformar a pista sobre Velis em problema para Ren"
+    - "Maerra colocou em curso ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem nomear Ren"
+    - "Maerra aconselhou deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell"
+    - "Ren saiu da Casa da Aurora Menor enquanto Maerra encaminhava a ficha curta a Halessa"
+    - "Rolagem para voltar ao entorno de Narwhal sem ativar o alarme: 11 contra CD 15, falha"
+    - "um guarda de Narwhal notou um observador deslocado antes de Ren mudar de posição"
+    - "Rolagem para mapear fluxo de serviço e escolher fonte útil: 15 contra CD 15, sucesso"
+    - "Ren identificou Kethra Dunn, funcionária de serviço de Narwhal que circula por corredores de lacres, velas e panos borrados"
+    - "Rolagem para ler pressão pessoal em possível fonte: 11 contra CD 14, falha"
+    - "Rolagem para seguir a fonte para longe de Narwhal: 17 contra CD 14, sucesso"
+    - "Ren seguiu Kethra até uma loja de penhores/cobrança sem ser visto"
+    - "dois homens exigiram de Kethra oito peças de ouro ou nomes ligados às chamadas de Tyr, ameaçando alguém chamado Colm"
+    - "Rolagem para checar se Kethra está sendo seguida: 7 contra CD 13, falha"
+    - "Ren não viu cauda óbvia sobre Kethra, mas não conseguiu ter certeza limpa"
+    - "Rolagem para parecer estrangeiro perdido e inofensivo: 12 contra CD 13, falha"
+    - "Rolagem para oferecer ajuda sem soar como cobrador: 7 contra CD 14, falha"
+    - "Kethra não aceitou as 8 PO e interpretou parte da aproximação como possível nova pressão"
+    - "Kethra avisou que pagar diretamente os cobradores pode aumentar o preço"
+    - "Kethra deixou uma abertura: fonte seca atrás dos azulejos verdes, quando o sino menor tocar antes do segundo sino"
+    - "Rolagem para esperar na fonte seca sem parecer emboscada: 24 contra CD 13, sucesso"
+    - "Rolagem para checar observadores ao redor da fonte seca: 23 contra CD 14, sucesso"
+    - "Kethra compareceu à fonte seca antes do segundo sino"
+    - "Rolagem para explicar a ameaça maior e oferecer proteção: 4 contra CD 14, falha"
+    - "Kethra revelou que Colm Dunn é seu irmão e está preso por dívida/trabalho no alto da loja de Bram Vask"
+    - "Kethra revelou que Noll é o homem do lábio cortado e funciona como mão de Bram"
+    - "Kethra quer Colm vivo, ela própria fora de suspeita, e Bram/Noll sem aprenderem que ela tem bolsa maior ou protetor"
+    - "Kethra disse que a escada dos fundos da loja leva a corredor com cheiro de couro molhado e que a janela alta abre para telhado baixo de telhas vermelhas"
+    - "Kethra deu pista de Narwhal: Velis não voltou à mesa dele depois de Tyr, mas a mulher de manto cinza-azulado mandou retirar do prédio a gaveta de areia, cera e panos do corredor treze"
+    - "Rolagem para disfarce apressado com barro, poeira e capuz: 16 contra CD 12, sucesso"
+    - "Rolagem para entrar como devedor e manter Bram interessado: 5 contra CD 13, falha"
+    - "Ren entrou na loja de Bram Vask, mas Bram percebeu que ele não parecia devedor comum"
+    - "Ren atacou Noll de forma não letal"
+    - "Primeiro golpe desarmado contra Noll: crítico, 11 de dano contundente"
+    - "Rajada de Golpes contra Noll: acerto, 5 de dano contundente"
+    - "Ren gastou 1 ki em Rajada de Golpes e deixou Noll inconsciente, respirando"
+    - "Bram Vask falhou em manter sangue-frio após Noll cair"
+    - "Ren intimidou Bram e conseguiu que ele entregasse Colm"
+    - "Rolagem para encontrar o livro de contas sob pressão: 19 contra CD 12, sucesso"
+    - "Ren tomou o caderno de contas de Bram Vask como alavanca"
+    - "Rolagem para Colm estar consciente e capaz de andar: 10 contra CD 10, sucesso"
+    - "Colm Dunn saiu vivo e capaz de andar pela passagem dos fundos"
+    - "Bram viu um agressor encapuzado e perigoso, mas não o rosto de Ren"
+    - "Rolagem para escolher ponto de interceptação na rota de Kethra: 4 contra CD 11, falha"
+    - "Ren errou o melhor ponto de interceptação e Kethra quase alcançou a última curva antes da loja"
+    - "Rolagem para mover Colm pela rota curta sem chamar atenção: 17 contra CD 13, sucesso"
+    - "Ren e Colm não atraíram observadores úteis no deslocamento curto"
+    - "Kethra viu Colm vivo antes de entrar na loja de Bram"
+    - "Ren mostrou o caderno de contas de Bram a Kethra"
+    - "Kethra julgou que o caderno põe uma coleira temporária em Bram, mas não encerra o risco para sempre"
+    - "Kethra orientou Ren a levar Colm ao Lavadouro dos Três Tanques, nos fundos, usando a frase 'sabão preto para pano azul' se houvesse gente por perto"
+    - "Colm Dunn está escondido temporariamente no quarto da lenha do Lavadouro dos Três Tanques, sob cuidado de Sella Rove"
+    - "Kethra voltou para Narwhal para não ligar seu sumiço ao resgate de Colm"
+    - "O segundo sino já tocou"
+    - "Ren comprou um manto roto de mendigo por moeda baixa; o gasto não altera o total de PO"
+    - "Rolagem para preparar cobertura de mendigo sem fixar lembrança útil: 23 contra CD 13, sucesso"
+    - "Rolagem para encontrar ponto alto discreto para vigiar Vask: 6 contra CD 13, falha"
+    - "Rolagem de vigilância prolongada da loja de Bram Vask: 7 contra CD 14, falha"
+    - "Rolagem para aproximar-se como mendigo quando houve movimento na loja: 9 contra CD 15, falha"
+    - "Ren vigiou Bram por quase três horas com ângulo ruim e informação parcial"
+    - "Bram não saiu em pessoa de modo claro durante a vigília de Ren"
+    - "Noll não apareceu em condição de caçar ninguém"
+    - "Ren não viu perseguição aberta rumo a Kethra, à Rua da Cal ou ao Lavadouro dos Três Tanques"
+    - "Ren viu movimento pequeno e mal confirmado perto dos fundos da loja, mas não conseguiu identificar se era recado, cliente, cúmplice ou ruído"
+    - "Ren se afastou quando sua aproximação como mendigo começou a gerar suspeita"
+    - "Rolagem para encontrar Kethra depois do turno sem chamar atenção útil: 13 contra CD 14, falha"
+    - "Um aprendiz na lateral de Narwhal pode lembrar de um mendigo se movendo quando Kethra saiu"
+    - "Rolagem para checar se Kethra vinha com cauda: 17 contra CD 14, sucesso"
+    - "Ren confirmou que Kethra não tinha cauda clara ao sair de Narwhal"
+    - "Rolagem para transformar o resgate de Colm em confiança prática: 14 contra CD 12, sucesso"
+    - "Kethra visitou Colm no Lavadouro dos Três Tanques"
+    - "Sella Rove avisou que um rapaz já perguntou pela frase 'sabão preto para pano azul'"
+    - "Kethra revelou que não ouviu o nome Masao em Narwhal"
+    - "Kethra ouviu referências a 'hóspede', 'homem da lua' e à versão preparada de M. Harrow"
+    - "Kethra avalia que Velis Rook escreve, corrige, assina e treme, mas não parece mandante"
+    - "Kethra revelou que a gaveta de areia, cera e panos do corredor treze saiu de Narwhal em cesto de roupa suja com nó de tira amarela rumo à rua dos tintureiros"
+    - "Colm Dunn não está seguro no quarto da lenha por muito tempo"
+    - "Ren contou a Kethra a história de Aiko, Masao Hirasawa, o selo e sua vingança, sem revelar outros protegidos"
+    - "Rolagem para parentes viáveis no interior: 4 contra CD 11, falha"
+    - "Kethra não tem parente viável no interior capaz de receber Colm agora"
+    - "Rolagem de honestidade com Kethra sobre Masao: 8 contra CD 13, falha"
+    - "Kethra acredita no perigo real ao redor de Ren e Narwhal, mas não foi convencida da escala de uma ameaça à cidade inteira"
+    - "Rolagem para mover Colm até os pátios de saída sem virar rastro útil: 10 contra CD 14, falha"
+    - "Uma menina viu dois vultos saindo da área do Lavadouro dos Três Tanques rumo aos pátios de carroças, sem rosto claro"
+    - "Ren entregou seu manto roto de mendigo a Colm como disfarce"
+    - "Colm adotou o nome de cobertura Dent"
+    - "Rolagem para identificar carroça pobre adequada: 23 contra CD 14, sucesso"
+    - "Rolagem para convencer chefe da carroça com oferta de 7 PO: 16 contra CD 13, sucesso"
+    - "Ren pagou 7 PO a Dorra Hest para levar Colm/Dent para fora de Ravens Bluff antes da primeira luz de 4 Eleasis"
+    - "Dorra Hest aceitou esconder Colm/Dent sob a lona da carroça e levá-lo aos fornos de cal do Fire River por alguns dias"
+    - "Rolagem para escolher informante discreto nos pátios depois da saída de Dorra: 10 contra CD 13, falha"
+    - "Rolagem para comprar confirmação sem chamar atenção nos pátios: 12 contra CD 12, sucesso"
+    - "Ren pagou 1 PO a um trabalhador dos pátios e ouviu que Dorra saiu no cinza, provavelmente com Dent sob a lona"
+    - "O relato comprado indica que alguém perguntou por um doente vindo do lavadouro antes de Dorra sair"
+    - "A saída de Colm/Dent foi comprometida, não confirmada como segura"
+    - "Rolagem para voltar até Kethra sem arrastar atenção dos pátios: 12 contra CD 14, falha"
+    - "Um homem velho nos pátios viu Ren sair da área da carroça de cal e depois tomar direção da Rua da Cal"
+    - "Ren avisou Kethra que Colm está sob o nome Dent na carroça de Dorra Hest, rumo aos fornos de cal do Fire River antes da primeira luz de 4 Eleasis"
+    - "Rolagem para ler o limite prático de Kethra para mensagens: 11 contra CD 13, falha"
+    - "Kethra recusou mensagens diárias por criarem padrão perigoso"
+    - "Rolagem para definir ponto morto discreto nos fundos de Narwhal: 16 contra CD 15, sucesso"
+    - "Kethra aceitou usar um vaso rachado junto dos barris de areia e da calha quebrada nos fundos de Narwhal Manor como ponto morto"
+    - "Protocolo do vaso: mensagem sob o fundo presa com cera cinza; rachadura para a rua indica perigo urgente ligado a Bram; rachadura para a parede indica nada; se o vaso sumir, o caminho morreu"
+    - "Ren voltou ao circo por deslocamento discreto comum, sem cauda competente no trajeto e sem gerar rastro útil até o acampamento"
+    - "Silva impediu Ren de ir direto à carroça verde até checar se havia perseguição próxima"
+    - "Ninguém seguiu Ren até dentro do acampamento nem até a carroça verde"
+    - "Ren tomou banho atrás da lona azul"
+    - "Ren contou a Silva e Nera sobre Kethra, Colm/Dent, Dorra Hest, Velis, M. Harrow e a Casa Velha do Primeiro Raio"
+    - "Silva alertou que a Casa Velha do Primeiro Raio deve ser tratada como casa velha que usa crianças como olhos, não como abrigo vazio"
+    - "Ren completou descanso curto com meia hora de meditação e recuperou ki para 4/4"
+    - "Ren descansou mais uma hora e meia no circo antes da incursão noturna"
+    - "Ren preparou pintura preta no rosto com o kit de disfarce para dificultar identificação sob pouca luz"
+    - "Ren vestiu roupas orientais e preparou armas antes de sair"
+    - "Ren chegou à região da Casa Velha do Primeiro Raio por deslocamento discreto comum, sem cauda competente"
+    - "Rolagem para ocupar ponto de observação da Casa Velha: 15 contra CD 14, sucesso"
+    - "Rolagem de observação noturna da Casa Velha: 10 contra CD 15, falha"
+    - "Rolagem para organizar padrões de entrada na lateral: 23 contra CD 14, sucesso"
+    - "Ren ocupou o ponto de observação anterior sem gerar alarme"
+    - "A observação noturna não revelou detalhes finos do interior"
+    - "Ren percebeu excelente padrão externo: frente inativa, lateral como eixo real, luz fraca sob a porta de serviço e janela alta escura acima"
+    - "Ren não vê criança em posição ativa do lado de fora no momento, mas isso não prova ausência de olheiros ou crianças dentro"
+    - "Ren alcançou a viela lateral e está diante da porta de serviço meio nível abaixo"
+    - "Imagem da visão lateral salva em sessoes/002/imagens/001-visao-casa-velha-lateral.png"
+    - "Mapa operacional salvo em sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.png e sessoes/002/imagens/002-mapa-casa-velha-primeiro-raio.svg"
+    - "Passos sem Pegadas ativo desde cerca de 10:43 de 4 Eleasis; concentração possível até cerca de 11:42 se não for quebrada"
+    - "Visão no Escuro ativa desde cerca de 10:43 de 4 Eleasis; duração aproximada até 18:43"
+    - "Ren se aproximou sob Passos sem Pegadas e abriu combate de surpresa contra o homem de manga cinza e o vulto leve"
+    - "Ren gastou seu último ki em Rajada de Golpes; ki atual 0/5"
+    - "Ren apagou o homem de manga cinza com golpes não letais antes que ele pudesse gritar ou acionar o dispositivo"
+    - "o vulto leve e o homem de manga cinza foram entregues vivos a Luath pela corda na abertura da balança velha"
+    - "Ren separou e entregou à guarda o dispositivo de acionamento do barril: cordão, cerâmica, tigela rasa, pano encerado, recipiente de brasa/luz fraca e cera vermelha"
+    - "o segundo barril continua inteiro em Sarbreen, sem ignição imediata, mas ainda perigoso"
+    - "a junta antiga na parede da câmara baixa está parcialmente forçada"
+    - "a saída lateral onde o vulto leve vigiava permanece aberta, escura e estreita"
+    - "Luath recusou interrogar os prisioneiros no mercado, mas pediu contato depois do segundo sino ou enviará recado ao circo se a rua piorar primeiro"
+    - "relatório da oficina dos tintureiros: local vazio, mulher de vermelho ausente, sinais de limpeza apressada, cesto de tira amarela de dois nós e abertura baixa para pedra úmida"
+    - "Rolagem para sair do mercado sem levar cauda competente ao circo: 27 contra CD 13, sucesso"
+    - "Ren retornou ao Jack Mooney & Sons Circus por volta de 11:27, com Ki 0/5, sujo de Sarbreen e sem cauda competente percebida"
+    - "Ren falou rapidamente com Silva, Nera e Tavin atrás da carroça verde, sem chamar atenção do circo todo"
+    - "Ren completou descanso curto de uma hora no depósito de figurino velho, com meia hora de sono e meia hora de meditação"
+    - "Ren recuperou ki para 5/5"
+    - "Passos sem Pegadas expirou durante o repouso, perto de 11:42"
+    - "Visão no Escuro expirou por volta de 18:43 de 4 Eleasis"
+    - "Passos sem Pegadas ativo desde cerca de 19:31 de 5 Eleasis; concentração possível até cerca de 20:31 se não for quebrada"
+    - "Visão no Escuro ativa desde cerca de 20:08 de 5 Eleasis; duração aproximada até 04:07 de 6 Eleasis"
+    - "Ren recuou da Escada das Sete Águas sem acionar o fio de controle e sem perceber cauda"
+    - "Passos sem Pegadas expirou por volta de 20:31 de 5 Eleasis durante a conversa com Luath"
+    - "Luath avaliou que a Escada das Sete Águas parece mais olho, boca, controle ou entrada-isca do que coração da operação"
+    - "Os mapas de Brunna e Luath não produziram rota segura de invasão; Luath pode pôr vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas"
+    - "Rolagem para voltar ao circo sem cauda útil: 23 contra CD 15, sucesso"
+    - "Rolagem para conferir a rota antes de entrar no circo: 13 contra CD 14, falha"
+    - "Ren voltou ao circo sem cauda útil percebida, mas não obteve certeza absoluta de limpeza da rota"
+    - "Ren não foi ver Nera e Tavin ao voltar; entregou a Silva um bilhete para Nera dizendo que a ama e que solucionará tudo"
+    - "Silva entregou o bilhete a Nera e depois informou Ren que Nera leu duas vezes e respondeu que promessa grande demais pesa mais"
+    - "Rolagem para lembrar o princípio do Passo da Sombra de Aiko: 7 contra CD 15, falha"
+    - "Rolagem para transformar memória em forma corporal: 19 contra CD 14, sucesso"
+    - "Ren completou descanso longo no depósito de figurino velho, recuperando PV, dados de vida e ki"
+    - "Visão no Escuro expirou por volta de 04:07 de 6 Eleasis"
+    - "Ren alcançou nível 6 ao amanhecer de 6 Eleasis e despertou Passo Sombrio"
+    - "Rolagem para marcar duas seções novas de Kage sem risco físico: 13 contra CD 14, falha"
+    - "Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha"
+    - "Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso"
+    - "A versão segura de Kage para 5 Eleasis tem duas pequenas novidades cênicas, mas não quatro movimentos físicos novos completos"
+    - "O segundo sino da tarde passou sem recado de Luath ao circo até 14:18"
+    - "Ren suspendeu o treino de Kage satisfeito com a versão segura de Sorn/Dessa"
+    - "Rolagem para chegar ao posto sem ligar Ren Kage ao visitante pobre: 7 contra CD 13, falha"
+    - "A saída do circo não gerou cauda competente, mas criou uma memória fraca ligando o sumiço de Kage a um forasteiro pobre de porte parecido"
+    - "No posto da Night Watch, um guarda mais velho reconheceu Ren como o homem do sargento, reforçando a linha pública fina de que o forasteiro pobre admitido no mercado tem entrada com a guarda"
+    - "Rolagem para ler o que Luath evita publicizar: 11 contra CD 13, falha"
+    - "Rolagem para Luath abrir informação útil sem tornar Ren auxiliar oficial: 4 contra CD 12, falha"
+    - "Luath revelou apenas informação controlada e não abriu acesso aos prisioneiros"
+    - "Luath aceitou levar uma pergunta curta de Ren ao interrogatório"
+  exaustao: 0
+
+equipamento_em_posse:
+  armas:
+    - "wakizashi, mecanicamente espada curta"
+    - "9 shuriken, mecanicamente dardos"
+  ferramentas:
+    - "ferramentas de caligrafia"
+    - "ferramentas de ladrão"
+    - "kit de disfarce"
+  itens_importantes:
+    - "selo quebrado do Clã Kagehira"
+    - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
+    - "pedaço de tecido com o símbolo usado pelo traidor"
+    - "prancheta de Velis Rook, examinada"
+    - "carimbo falso da lua velada"
+    - "bilhete de B. sobre isca para o oriental"
+    - "ficha de cobre com vela vermelha"
+    - "cordão azul"
+    - "ordem em papel encerado sobre gravadora, oriental e Brass"
+    - "fita vermelha identificável do homem da Red Sail"
+    - "botão de osso infantil tomado como garantia"
+    - "tira de couro da amarra sabotada da corda alta"
+    - "faca curva usada por Merrit para cortar a tira da amarra da corda alta"
+    - "caderno de contas de Bram Vask"
+    - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
+    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso renovado no amanhecer de 7 Eleasis e disponível"
+    - "mapa público da Escada das Sete Águas, comprado de Brunna Torkel"
+    - "cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída baixa para drenagem, parede raspada, ar seco e marca apagada"
+  outros:
+    - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso e máscara parcial de entrada"
+    - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
+    - "manta de estopa cinza sobre o ombro para quebrar a silhueta"
+    - "roupas proprias de Ren guardadas com Dessa Wren para limpeza e uso como figurino estrangeiro"
+    - "roupas roubadas e roupas de doacao entregues a Dessa Wren para virar retalho"
+    - "disfarces de Nera e Tavin de Dessa Wren em uso"
+    - "pacote de explorador"
+
+objetivos:
+  longo_prazo:
+    - "encontrar Masao Hirasawa"
+    - "recuperar o Selo da Lua Velada"
+    - "descobrir por que Aiko Kagehira foi morta"
+    - "descobrir o que restou da Juppongatana/Dez Espadas"
+  imediato:
+    - "decidir a ação de Ren no próprio turno contra o homem de mãos limpas adjacente e armado"
+    - "decidir entre nocautear, agarrar, desarmar, atordoar, ferir ou matar o alvo"
+    - "considerar as três testemunhas comuns antes de escolher violência letal ou magia visível"
+    - "confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos à casa de Iria Doss"
+    - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
+    - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
+    - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
+    - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
+    - "acompanhar os próximos efeitos do pacote reservado da Ponte Baixa em Tyr, agora que a mensagem de Luath indica que ele passou sem nome externo"
+    - "evitar voltar sozinho à Ponte Baixa sem nova informação, pois Luath não autorizou essa entrada e os sinais deixados podem ter sido percebidos depois"
+    - "proteger Colm/Dent, agora solto e reunido a Mera Fumaça, mas ainda fraco, ferido e precisando de tratamento hoje"
+    - "reinstalar futuramente, em conversa discreta, novos pontos mortos com Pell e Kethra se ainda forem necessários"
+    - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
+    - "proteger Peta e as outras crianças agora sob cuidado de Maerra"
+    - "manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada"
+    - "proteger Nera e Tavin, agora de volta à carroça verde e explicitamente nomeados como ruído no bilhete"
+    - "considerar que Tyr recebeu confirmações de Luath e Maerra"
+    - "impedir que Narwhal e Red Sail virem a acusação contra Ren e Nera"
+    - "manter os Vell no circo com resguardo em espera de Tyr até o próximo sino maior"
+    - "decidir se continua puxando o fio de Brass/Narwhal/Ponte Baixa ou se prioriza proteção formal"
+    - "proteger o livro original de Nera escondido com Silva"
+    - "usar com cuidado o Broche do Semblante Humilde, novamente disponível no amanhecer de 7 Eleasis"
+
+vinculos_ativos:
+  faccao_prevista:
+    nome: "Night Watch"
+    status: "contato inicial estabelecido"
+  contato_previsto:
+    nome: "Luath"
+    papel: "sargento da City Guard"
+    status: "contato operacional cauteloso; confiança moderada, risco alto"
+  antagonista_principal:
+    nome: "Masao Hirasawa"
+    status: "foragido"
+    conhecimento_de_ren: "Ren acredita que Masao pode ter usado Ravens Bluff como esconderijo, ponto de troca ou passagem. Ren sabe que Masao construiu poder no submundo de Kozakura, comandou a Juppongatana/Dez Espadas e cultiva o sonho de ser rei das sombras."
+
+conhecimento_atual:
+  arquivo: "personagens/jogador/conhecimento.md"
+  rumores_relevantes:
+    - "A guarda precisa de gente capaz para tarefas que guardas formais não conseguem cobrir."
+    - "Cargas somem entre o cais, armazéns e alfândega."
+    - "Uma pessoa discreta pode se esconder bem em Ravens Bluff, se tiver dinheiro ou patrono."
+
+estado_narrativo:
+  situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
+  primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
+  cena_atual: "Ren alcançou o homem de mãos limpas junto à cerca de salgueiros, às 08:03 de 7 Eleasis. O alvo venceu a iniciativa, mas Ren atravessou o carrinho sem atingir trabalhadores, anulou com Aparar Projéteis uma faca arremessada e fechou a distância. O homem atacou com uma segunda faca e errou. É o turno de Ren; ambos estão adjacentes, Ren está ileso e três trabalhadores observam a cerca de cinquenta pés."
+  risco_imediato: "alto localizado: o alvo continua armado e hostil; o combate é público e pode atrair mais trabalhadores, patrulha ou aliados; qualquer violência letal terá testemunhas; Ren ainda controla a própria ação e não sofreu dano."
+  foco_inicial:
+    - "pista da máscara, do peixe e do lugar frio sob rodas"
+    - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
+    - "segurança de Colm/Dent, Kethra, Peta e das crianças resgatadas"
+    - "proteção dos Vell no circo e desdobramentos de Tyr"
+    - "Ponte Baixa, porões secos atrás de armazéns velhos e janela antes da segunda maré"
+
+pendencias:
+  antes_da_primeira_sessao: []
+  podem_ser_definidas_em_jogo:
+    - "resolver o turno de Ren contra o homem de mãos limpas"
+    - "decidir se Ren pretende capturar o alvo vivo e como lidará com as testemunhas"
+    - "confirmar depois se Mera e Colm/Dent chegaram a Iria Doss"
+    - "identificar o homem de casaco pardo, tinta violeta sob a unha do polegar direito e cicatriz abaixo da orelha esquerda descrito por Mera"

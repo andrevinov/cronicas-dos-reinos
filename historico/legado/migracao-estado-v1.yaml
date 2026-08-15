@@ -1,0 +1,14 @@
+versao: 1
+etapa: 5
+descricao: Separação entre estado corrente e histórico acumulado.
+arquivos_legados:
+  estado/estado-atual.yaml:
+    blob_original: 740d15cc420385a44f86acbd7ca7b20ea4d3b8de
+    arquivado_em: historico/legado/estado-acumulado-pre-etapa-5.yaml
+  estado/tempo.yaml:
+    blob_original: cdad0c0233a9d4e90b96dd606831a59755f3f500
+    arquivado_em: historico/legado/tempo-acumulado-pre-etapa-5.yaml
+arquivos_correntes:
+- estado/estado-atual.yaml
+- estado/tempo.yaml
+regra: Arquivos em historico/ são frios e não participam da leitura operacional padrão.

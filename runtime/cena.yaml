@@ -4,7 +4,8 @@ sessao: 3
 modo: resgate_rural
 localizacao:
   area: estrada do Fire River
-  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas
+  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
+    limpas
 tempo:
   data: 7 Eleasis, 1372 DR
   hora_aproximada: 08:03 de 7 Eleasis
@@ -13,10 +14,19 @@ mecanica_imediata:
   ki: 5/6
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: >-
-  Com testemunhas pagas em moeda baixa, localizou o alvo numa carroça de carvão vazia. Confirmou que o homem corresponde à descrição de Mera e não é Velis Rook. O alvo percebeu Ren, saltou da carroça e entrou num ramal estreito. Ren está a cerca de noventa pés, com três trabalhadores e um carrinho carregado entre os dois. A perseguição entrou em iniciativa. Ren atravessou o obstáculo sem atingir os trabalhadores, anulou com Aparar Projéteis uma faca que teria acertado e alcançou o alvo junto à cerca de salgueiros. O homem atacou com uma segunda faca e errou. É o turno de Ren, adjacente e ileso.
-prazos_e_alertas: >-
-  Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate é público e testemunhado por trabalhadores.
+resumo_imediato: Com testemunhas pagas em moeda baixa, localizou o alvo numa carroça de carvão vazia. Confirmou
+  que o homem corresponde à descrição de Mera e não é Velis Rook. O alvo percebeu Ren, saltou da carroça e entrou
+  num ramal estreito. Ren está a cerca de noventa pés, com três trabalhadores e um carrinho carregado entre os dois.
+  A perseguição entrou em iniciativa. Ren atravessou o obstáculo sem atingir os trabalhadores, anulou com Aparar
+  Projéteis uma faca que teria acertado e alcançou o alvo junto à cerca de salgueiros. O homem atacou com uma segunda
+  faca e errou. É o turno de Ren, adjacente e ileso.
+prazos_e_alertas: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão
+  no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche
+  do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa
+  foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem
+  nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis
+  do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate
+  é público e testemunhado por trabalhadores.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
   transcricao: sessoes/003/transcricao.md

@@ -35,7 +35,8 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: estrada do Fire River
-  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas
+  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
+    limpas
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
