@@ -309,7 +309,7 @@ relacoes:
     nome: "Dorra Hest"
     tipo: "chefe de carroça / capataz de trabalhadores dos fornos de cal"
     local: "pátios de saída de trabalhadores; rota dos fornos de cal do Fire River"
-    status: "ativa; saiu dos pátios rumo aos fornos de cal, provavelmente levando Colm/Dent, mas sob risco"
+    status: "ativa; não está nos pátios; teria movido Colm/Dent dos fornos para uma secagem velha na estrada do Fire River"
     atitude_para_ren: "pragmática, desconfiada e comprada por utilidade imediata"
     confianca: "nenhuma"
     respeito: "baixo, mas reconhece dinheiro e decisão rápida"
@@ -324,6 +324,13 @@ relacoes:
       saiu no cinza, depois de alguém perguntar por um doente vindo do lavadouro.
       O trabalhador acredita que Dent ainda estava sob a lona quando a carroça
       partiu, mas não pôde jurar segurança.
+      No amanhecer de 7 Eleasis, Ren voltou aos pátios procurando Dorra e
+      encontrou um ajudante dos fornos. Dorra não estava presente. O ajudante
+      informou que Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá:
+      depois que alguém de "mão limpa" perguntou por ele, Dorra decidiu que a cal
+      não esconderia tosse já procurada e mandou Dent para uma secagem velha na
+      estrada do Fire River, com alguém chamada Mera Fumaça. O prazo ruim de três
+      dias termina hoje.
     informacoes_observadas_por_ren:
       - "Dorra Hest comanda uma carroça de eixo duplo coberta por lona manchada de branco."
       - "A carroça leva trabalhadores e material para fornos de cal do Fire River."
@@ -333,11 +340,15 @@ relacoes:
       - "Dorra saiu no cinza, depois das primeiras carroças de cal."
       - "Dorra fez barulho, mexeu na lona e tratou Dent como sobrinho torto quando alguém perguntou por um doente vindo do lavadouro."
       - "Um trabalhador acredita que Dent estava sob a lona quando a carroça saiu, mas não pode jurar."
+      - "Um ajudante dos fornos informou que Dent chegou vivo aos fornos de cal, mas Dorra não conseguiu mantê-lo ali com segurança."
+      - "Dorra teria enviado Dent para uma secagem velha na estrada do Fire River, com Mera Fumaça."
+      - "O acordo ruim de três dias termina em 7 Eleasis."
     riscos:
       - "Dorra pode abandonar Colm/Dent se ele tossir sangue, atrair guarda, roubar ou parecer caro demais para manter."
       - "As 7 PO são quantia grande o bastante para fixar a memória de Dorra."
       - "Se alguém pagar mais ou ameaçar os trabalhadores antes da partida, Dorra pode recalcular a lealdade."
       - "A pergunta feita antes da partida expôs que alguém chegou perto demais da carroça certa."
+      - "A nova busca de Ren nos pátios foi percebida por olhos perigosos; seguir direto para Fire River pode conduzir pressão até Dent."
   bram_vask:
     nome: "Bram Vask"
     tipo: "agiota / dono de loja de penhores e cobrança"
@@ -372,6 +383,11 @@ relacoes:
       sujeito de roupa de trabalho limpa demais perguntou por um doente vindo do
       lavadouro antes da carroça de Dorra sair. Ren ainda não confirmou que essa
       pessoa foi enviada por Bram.
+      No amanhecer de 7 Eleasis, ao voltar aos pátios em busca de Dorra/Dent,
+      Ren percebeu nova atenção perigosa: um homem de roupa de trabalho limpa
+      demais e um rapaz com faixa azul reagiram à busca. Ren ainda não confirmou
+      que esses olhos sejam de Bram, mas o padrão lembra a resposta indireta
+      anterior ao fio de Colm.
       Mais tarde na mesma manhã, a Night Watch pressionou Bram em sua loja após
       Ren levar o caso a Luath. Depois da visita da guarda, uma criança entregou
       a Bram um recado ameaçador enviado por Ren, mas errou a formulação e ligou
@@ -1617,6 +1633,10 @@ relacoes:
       pela quebra pública de filtro. Jack quer decidir se Kage aparecerá hoje
       como artista visível e controlado ou se sua ausência será comprada com
       desculpa deliberada.
+      Ren escolheu ausência cara: Kage só volta na semana seguinte, no circo,
+      salvo outra apresentação particular filtrada por 80 PO. Jack aceitou bem a
+      estratégia e passou a vender a ausência como escassez e descanso do joelho
+      da Princesa das Sombras, não como medo.
     acordos_oferecidos:
       - "Nera e Tavin não serão expulsos ao meio-dia."
       - "O livro fica sob guarda definida por Silva Elkwood."
@@ -1671,6 +1691,8 @@ relacoes:
       - "Jack pagou 20 PO a Ren como cachê de Kage pela apresentação fechada da Casa Veyr, deixando o restante para lona, equipe, risco e caixa do circo."
       - "Jack separou o pagamento do número da bronca pela quebra pública de filtro, que permanece como dívida operacional."
       - "Jack pediu que Ren escolha se Kage aparece hoje como homem visível, calmo e controlado, ou se Jack compra a ausência dele com desculpa deliberada."
+      - "Ren escolheu que Kage fique ausente para parecer caro: salvo particular filtrada por 80 PO, Kage só volta na próxima semana, no circo."
+      - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras."
     informacoes_recebidas_por_jack:
       - "Merrit Tealeaf confessou ter cortado a tira da amarra da corda alta."
       - "A faca curva recuperada por Ren combina com o padrão do corte e tem resíduo de couro."

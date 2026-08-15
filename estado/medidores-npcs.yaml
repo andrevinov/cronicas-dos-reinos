@@ -4,7 +4,7 @@ visibilidade: "jogador"
 ultima_revisao_global:
   sessao: 3
   data_do_mundo: "7 Eleasis, 1372 DR"
-  momento: "06:07, após conversa com Nera, descanso curto e acerto inicial com Jack"
+  momento: "06:46, após busca nos pátios por Dorra/Dent"
 fontes_consultadas:
   - "estado/relacoes.yaml"
   - "estado/estado-atual.yaml"

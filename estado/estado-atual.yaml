@@ -1,7 +1,7 @@
 campanha:
   status: "em_sessao"
   sessao_atual: 3
-  modo_de_cena_atual: "interacao_institucional"
+  modo_de_cena_atual: "investigacao_urbana"
 
 personagem:
   nome: "Ren Kagehira"
@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "Jack Mooney & Sons Circus"
-  ponto_exato: "carroça-escritório de Jack Mooney, com Jack, Silva e Tobb"
+  area: "pátios de saída de trabalhadores e carroças"
+  ponto_exato: "perto de pilha de cestos vazios, após contato com ajudante dos fornos de cal"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -361,8 +361,20 @@ localizacao:
     saber exatamente onde Nera dorme, enquanto Luath/Tyr já têm as provas. Jack
     pagou 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, mas
     manteve a quebra pública de filtro como dívida operacional separada. Agora
-    Jack quer saber se Ren prefere que Kage pareça visível, calmo e controlado
-    hoje, ou que sua ausência seja comprada com desculpa deliberada.
+    Jack perguntou se Ren prefere que Kage pareça visível, calmo e controlado
+    hoje, ou que sua ausência seja comprada com desculpa deliberada. Ren escolheu
+    ausência cara: Kage só volta na semana seguinte, no circo, salvo outra
+    particular filtrada por 80 PO. Jack aceitou e sabe vender a ausência como
+    escassez, com o joelho da Princesa das Sombras descansando. Ren recebeu as
+    20 PO sem contar, vestiu roupas de homem pobre e saiu para os pátios de
+    trabalhadores em busca de Dorra Hest e notícias de Colm/Dent, sem usar o
+    Broche do Semblante Humilde. O disfarce funcionou, mas a chegada aos pátios
+    não ficou limpa: Ren percebeu atenção útil de ao menos um homem de roupa de
+    trabalho limpa demais e um rapaz com faixa azul. Dorra não está presente. Um
+    ajudante dos fornos informou que Colm/Dent chegou vivo aos fornos de cal,
+    mas não ficou lá; depois que alguém de "mão limpa" perguntou por ele, Dorra
+    o mandou para uma secagem velha na estrada do Fire River com alguém chamada
+    Mera Fumaça. O prazo de abrigo ruim de três dias termina hoje.
 
 tempo:
   ano_dr: 1372
@@ -374,11 +386,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "amanhecer de 7 Eleasis, no Jack Mooney & Sons Circus"
-  hora_aproximada: "06:07 de 7 Eleasis"
+  periodo_do_dia: "amanhecer de 7 Eleasis, nos pátios de saída de trabalhadores"
+  hora_aproximada: "06:46 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis."
 
 recursos:
   pontos_de_vida:
@@ -400,8 +412,13 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está na carroça-escritório de Jack Mooney, com Jack, Silva e Tobb"
+    - "Ren está nos pátios de saída de trabalhadores e carroças, vestido como homem pobre"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
+    - "O Broche do Semblante Humilde não foi usado na saída atual aos pátios"
+    - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
+    - "Dorra Hest não está presente nos pátios nesta cena"
+    - "Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá; segundo ajudante dos fornos, Dorra o mandou para uma secagem velha na estrada do Fire River com Mera Fumaça"
+    - "Ren percebeu atenção perigosa nos pátios: um homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagiram à busca"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1204,13 +1221,14 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "responder a Jack se Kage deve aparecer hoje como homem visível, calmo e controlado, ou se Jack deve comprar a ausência dele com desculpa deliberada"
+    - "decidir como lidar com a atenção perigosa nos pátios antes que ela vire cauda ou recado contra Colm/Dent"
+    - "decidir se segue imediatamente para a secagem velha na estrada do Fire River, onde Colm/Dent teria sido deixado com Mera Fumaça"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
     - "acompanhar os próximos efeitos do pacote reservado da Ponte Baixa em Tyr, agora que a mensagem de Luath indica que ele passou sem nome externo"
     - "evitar voltar sozinho à Ponte Baixa sem nova informação, pois Luath não autorizou essa entrada e os sinais deixados podem ter sido percebidos depois"
-    - "confirmar futuramente, por fonte legítima, se Colm/Dent chegou vivo e escondido aos fornos de cal do Fire River"
+    - "confirmar se Colm/Dent ainda está vivo e escondido na secagem velha da estrada do Fire River"
     - "reinstalar futuramente, em conversa discreta, novos pontos mortos com Pell e Kethra se ainda forem necessários"
     - "aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa"
     - "proteger Peta e as outras crianças agora sob cuidado de Maerra"
@@ -1246,8 +1264,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na carroça-escritório de Jack Mooney, com Jack, Silva e Tobb, às 06:07 de 7 Eleasis. Depois de falar baixo com Nera, comer, dormir duas horas e meditar meia hora, Ren completou descanso curto e recuperou ki. Uma mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo. Ren explicou a Jack que os inimigos ainda não demonstraram saber exatamente onde Nera dorme e que as provas saíram das roupas dele. Jack pagou 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, separando esse pagamento da bronca pela quebra pública de filtro. Jack agora quer saber se Ren prefere Kage visível, calmo e controlado hoje, ou se a ausência de Kage deve ser comprada com desculpa deliberada. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde voltou a estar disponível com o amanhecer."
-  risco_imediato: "moderado: Ren está descansado em recursos imediatos, mas o circo segue exposto a respostas indiretas de Ponte Baixa, Narwhal, Red Sail, Casa Veyr ou interessados em Dalm. O pacote reservado passou para Tyr, o que fortalece a linha institucional, mas também pode atrair pressão burocrática. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. Jack e Silva tentam impedir que a rotina do circo ensine onde Nera e Tavin dormem."
+  cena_atual: "Ren está nos pátios de saída de trabalhadores e carroças, às 06:46 de 7 Eleasis, vestido como homem pobre. Antes de sair do circo, Ren escolheu que Jack venda a ausência de Kage como escassez e descanso da Princesa das Sombras; Jack aceitou bem a linha comercial. Nos pátios, o disfarce de Ren funcionou, mas a chegada não ficou limpa: ele percebeu atenção perigosa de um homem de roupa de trabalho limpa demais e de um rapaz com faixa azul. Dorra Hest não está presente. Um ajudante dos fornos informou que Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá: após alguém de 'mão limpa' perguntar por ele, Dorra o mandou para uma secagem velha na estrada do Fire River, com Mera Fumaça. O prazo ruim de três dias termina hoje. Visão no Escuro continua ativa até cerca de 09:32; o Broche do Semblante Humilde está disponível, mas não foi usado nesta saída."
+  risco_imediato: "alto localizado: Ren obteve uma pista útil sobre Colm/Dent, mas a busca nos pátios foi percebida por olhos já sensíveis ao fio de Dent. O homem de roupa limpa demais pode levar notícia pela saída lateral dos pátios; o rapaz de faixa azul também reagiu. Se Ren seguir direto para Fire River sem quebrar a linha, pode conduzir pressão até a secagem velha. Se ficar tempo demais perguntando nos pátios, pode tornar a busca por Dent mais visível."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1258,5 +1276,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir com Jack se Kage deve aparecer hoje de modo controlado ou se sua ausência será explicada deliberadamente"
-    - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"
+    - "decidir se Ren corta a atenção perigosa nos pátios, segue o homem de roupa limpa, interroga o ajudante dos fornos ou parte para a estrada do Fire River"
+    - "verificar a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir observadores até Colm/Dent"

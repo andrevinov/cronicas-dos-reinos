@@ -3980,3 +3980,109 @@ Jack se inclina para frente.
 Hora aproximada: **06:07 de 7 Eleasis, 1372 DR**. Ren está na carroça-escritório de **Jack Mooney**, com Jack, Silva e Tobb. Ele falou baixo com Nera sem acordar Tavin, completou um descanso curto com sono e meditação, recebeu a notícia de que o pacote reservado da Ponte Baixa passou para Tyr sem nome externo e informou Jack do essencial. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** continua ativa até cerca de **09:32**. **Passos sem Pegadas** expirou. Com o amanhecer de 7 Eleasis, o **Broche do Semblante Humilde** está disponível novamente.
 
 O que Ren faz?
+
+**Jogador**
+
+"Kage precisa de ausência pra ficar caro. O joelho da Princesa das Sombras precisa descansar também. Se aparecer outra apresentação particular por 80 PO? Pode me chamar. Se não, Kage só próxima semana, no circo, pra quem quiser vir vê-lo."
+
+Recebe as P0 sem contar.
+
+Depois disso Ren pega suas roupas de homem pobre e sai do circo. Ele quer ir à região das carroças e ver se encontra Dorra e consegue notícias de "Dent".
+
+**Narrador**
+
+Jack ouve a resposta de Ren sem mudar de rosto.
+
+Depois abre um sorriso curto, de comerciante que reconhece uma frase vendável.
+
+"Ausência cara", ele diz. "Isso eu sei vender."
+
+Tobb solta um som baixo que talvez seja riso, talvez seja aprovação contábil.
+
+Jack já está falando como se escrevesse cartaz invisível.
+
+"Kage não foi recusado por falta de casa. Kage não se repete por capricho. A Princesa das Sombras pisou bonito ontem e descansa o joelho hoje. Quem quiser ver o Vento da Noite de novo compra lona, não corredor. Semana que vem, no circo."
+
+Ele inclina a cabeça.
+
+"Oitenta peças por particular filtrada ainda me fazem escutar. Não me fazem esquecer filtros."
+
+Quando Ren pega a bolsa sem contar, Jack observa isso também.
+
+"Boa escolha. Homem que conta moeda na minha frente antes de sair para rua ruim me diz que está pensando no bolso. Homem que guarda e anda me diz que ainda está pensando no problema."
+
+Silva cruza os braços.
+
+"E o problema que você está pensando agora tem carroça, cal e nome falso."
+
+Ela não pergunta como sabe. Ren já falou de Colm, Dorra e Dent antes; Silva guarda o que importa.
+
+"Então ouça a parte simples antes de sair: não use nome de irmã, não use nome de menino, não use nome de homem se tiver ouvido demais por perto. Pátio de carroça vende notícia pela mesma boca que vende rota."
+
+Jack aponta para Tobb.
+
+"Dez minutos."
+
+Não é pedido. É logística.
+
+Enquanto Jack começa a dar ordens baixas sobre Kage descansar, Lysa não forçar joelho e o circo parecer dono da própria manhã, Tobb leva Ren até uma carroça de guarda-roupa menor. Dessa não está ali, mas a mão dela está em tudo: casaco pardo gasto, gorro escuro, lenço grosso, barro seco num potinho e uma bainha mal costurada que muda a linha dos ombros.
+
+Teste de disfarce de Ren como homem pobre para sair do circo: d20 13 + 7 = 20 contra CD 14. Sucesso.
+
+Quando Ren sai, ele não parece Kage tentando virar pobre.
+
+Parece um homem pobre tentando não ser assunto.
+
+Isso ajuda.
+
+Não basta.
+
+Teste de Furtividade de Ren para sair do circo e chegar aos pátios sem cauda útil: d20 1 + 7 = 8 contra CD 15. Falha.
+
+Teste de Percepção de Ren para notar atenção perigosa nos pátios: d20 9 + 6 = 15 contra CD 14. Sucesso.
+
+Teste de Investigação de Ren para encontrar rastro de Dorra nos pátios: d20 15 + 4 = 19 contra CD 14. Sucesso.
+
+O amanhecer torna Ravens Bluff menos escura, não menos suja.
+
+Ren sai bem vestido para o papel. Tobb e Jack compram alguns minutos bons atrás dele: um ajudante atravessa carregando pano de Kage pelo lado oposto, Sorn chama dois nomes alto demais perto da tenda menor, e uma menina de figurino passa correndo com a notícia perfeitamente inútil de que Lysa não sobe hoje. O circo vira ruído.
+
+Mas fora da borda dos Mooney há muita manhã acordando ao mesmo tempo.
+
+Carroceiros chegam com olhos de sono e mãos de corda. Trabalhadores de cais caminham antes do estômago. Gente que dormiu sob lona alheia recolhe trouxa. Duas carroças discutem passagem estreita; um cavalo morde madeira; um vendedor de caldo abre panela com cheiro de osso e cebola velha.
+
+Ren não é seguido desde a carroça-escritório.
+
+Pior: ele entra num lugar onde alguém já sabe procurar quem procura.
+
+Nos pátios de saída, antes mesmo de achar Dorra, Ren percebe o erro da manhã. Um homem de roupa de trabalho limpa demais para aquela lama fica perto de uma carroça vazia, fingindo escolher corda. Não olha diretamente. Olha pelos reflexos: metal de balde, poça, lateral envernizada de caixa. Do outro lado, um rapaz magro com faixa azul no punho recebe uma frase curta de uma mulher de avental branco de cal e para de descarregar por tempo demais.
+
+Não é cerco. Não ainda.
+
+É atenção útil.
+
+Dorra Hest não está no lugar onde Ren a encontrou antes. A carroça de eixo duplo coberta por lona branca também não. Mas o rastro dela existe em coisas menores: cal grudada em sulco de roda, a marca de uma tábua traseira remendada com prego torto, e um ajudante de fornos com as unhas queimadas de branco que ouve o nome **Dorra** e não finge bem o bastante.
+
+O homem é baixo, largo de ombro, com pele rachada pelo pó. Ele não encara Ren como amigo. Encara como alguém decidindo se a notícia vale ficar vivo.
+
+"Dorra saiu antes do sol", ele diz, baixo, quando Ren consegue encostá-lo perto de uma pilha de cestos vazios. "Não fica em pátio quando tem pergunta esperando."
+
+Ele cospe para o lado. A saliva sai quase branca.
+
+"O sobrinho torto chegou respirando nos fornos. Isso eu sei. Não ficou lá."
+
+A frase pesa mais que deveria.
+
+"Veio mão limpa atrás. Homem que não sabe carregar saco, mas sabe pagar boca. Dorra disse que cal não esconde tosse quando alguém já sabe ouvir. Mandou o torto para secagem velha, estrada do Fire River, com Mera Fumaça. Três dias era o trato ruim. Hoje acaba."
+
+O ajudante olha por cima do ombro de Ren, rápido demais.
+
+O homem de roupa limpa demais deixou a corda. Agora caminha devagar entre duas carroças, não na direção de Ren, mas na direção de uma saída lateral dos pátios.
+
+O ajudante dos fornos baixa mais a voz.
+
+"Se você veio por ele, não diga Dent outra vez aqui."
+
+Hora aproximada: **06:46 de 7 Eleasis, 1372 DR**. Ren está nos **pátios de saída de trabalhadores e carroças**, fora do circo. O disfarce de homem pobre funcionou, mas a ida aos pátios gerou atenção útil: Ren percebeu ao menos um homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagindo à busca. Dorra Hest não está presente. A notícia obtida: **Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá**; após alguém de “mão limpa” perguntar por ele, Dorra o mandou para uma **secagem velha na estrada do Fire River**, com alguém chamada **Mera Fumaça**. O prazo de abrigo ruim de três dias termina hoje. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** está disponível, mas não foi usado nesta saída.
+
+O que Ren faz?

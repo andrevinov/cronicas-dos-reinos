@@ -1294,3 +1294,54 @@ Consequências:
   demonstrado saber a localização exata dos Vell.
 * Jack paga 20 PO como cachê de Kage pela apresentação fechada da Casa Veyr, mas
   mantém a quebra pública de filtro como dívida operacional separada.
+
+---
+
+## Amanhecer de 7 Eleasis: Kage ausente e busca por Dent nos pátios
+
+Contexto: Ren escolheu que Kage fique ausente para parecer caro, aceitou as
+moedas do cachê sem contar, vestiu roupas de homem pobre e saiu do circo para
+os pátios de trabalhadores em busca de Dorra Hest e notícias de Colm/Dent.
+
+Rolagens abertas:
+
+* Disfarce de homem pobre para sair do circo: d20 13 + 7 = 20 contra CD 14.
+  Sucesso.
+* Furtividade para sair do circo e chegar aos pátios sem cauda útil: d20 1 + 7
+  = 8 contra CD 15. Falha.
+* Percepção para notar atenção perigosa nos pátios: d20 9 + 6 = 15 contra CD
+  14. Sucesso.
+* Investigação para encontrar rastro de Dorra nos pátios: d20 15 + 4 = 19
+  contra CD 14. Sucesso.
+
+Rolagens ocultas:
+
+* Jack vender ausência de Kage como escassez, não medo: d20 16 + 5 = 21 contra
+  CD 13. Sucesso.
+* Dorra manter Dent vivo e fora da mão errada até nova notícia: d20 10 + 3 = 13
+  contra CD 14. Falha.
+* Rede dos fornos de cal trazer notícia útil de Dorra aos pátios: d20 11 + 2 =
+  13 contra CD 13. Sucesso.
+* Olhos de Bram reconhecerem nova busca por Dent nos pátios: d20 18 + 2 = 20
+  contra CD 15. Sucesso.
+
+Consequências:
+
+* Jack consegue posicionar a ausência de Kage como escassez e descanso de Lysa,
+  não como medo imediato.
+* O disfarce de Ren funciona bem: à vista comum, ele parece homem pobre tentando
+  não virar assunto, não Kage saindo escondido.
+* A ida aos pátios falha em permanecer limpa. Não nasce de uma cauda direta do
+  circo, mas de olhos já atentos a quem procura o fio de Dent.
+* Ren percebe a atenção perigosa antes que ela se feche sobre ele: ao menos um
+  homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagem à
+  busca.
+* A rede dos fornos traz notícia útil: Colm/Dent chegou vivo aos fornos de cal,
+  mas Dorra não conseguiu mantê-lo ali com segurança depois que um homem de
+  "mão limpa" fez perguntas.
+* Dorra tirou Dent dos fornos e o mandou para uma secagem velha na estrada do
+  Fire River, com alguém conhecida como Mera Fumaça. O prazo original de três
+  dias termina em 7 Eleasis.
+* Os olhos ligados ao fio de Bram percebem que alguém voltou a procurar Dent.
+  Isso pode acelerar pressão sobre a rota do Fire River ou virar cauda futura se
+  Ren não quebrar a linha.
