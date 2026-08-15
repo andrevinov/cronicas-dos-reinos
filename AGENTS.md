@@ -68,7 +68,8 @@ Material reservado só entra com `--reservado` por necessidade concreta. Fluxos 
 Leia no máximo os documentos especializados necessários:
 
 - fundamentos, autoridade, segredo, agência → `docs/agente/fundamentos.md`;
-- acesso, preparação, protocolo transacional/consolidação → `docs/agente/acesso-e-operacoes.md`;
+- acesso, preparação, operação transacional → `docs/agente/acesso-e-operacoes.md`;
+- consolidação, checkpoint, ledger, staging, recuperação → `docs/agente/consolidacao-transacional.md`;
 - regra, decisão, CD, rolagem → `docs/agente/regras-e-rolagens.md`;
 - narração, NPC, facção, relógio, consequência, relação → `docs/agente/narracao-e-mundo.md`;
 - ficha, progressão, inventário, recursos, tempo → `docs/agente/personagem-e-tempo.md`;
@@ -117,6 +118,8 @@ python3 ferramentas/consolidar.py recuperar
 ```
 
 O journal e o staging preservam os bytes preparados; a recuperação não recalcula nem reaplica deltas. `consolidar.py sessao` não inventa fatos, não incrementa automaticamente a sessão e não escolhe progressão pelo jogador.
+
+Detalhes somente quando necessários: `docs/agente/consolidacao-transacional.md`.
 
 ## 8. Regras, dados e segredos
 
