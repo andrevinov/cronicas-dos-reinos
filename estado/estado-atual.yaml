@@ -346,8 +346,12 @@ localizacao:
     tempo: sombras interrompidas, luz de patrulha, poças refletindo luar e esperas
     forçadas custaram minutos. Ainda assim, Ren conferiu a volta com atenção, não
     percebeu cauda útil e entrou no Jack Mooney & Sons Circus pela rota interna de
-    remendos sem acordar a rotina. Silva Elkwood está acordada entre Ren e o
-    coração do acampamento, perguntando se ele veio limpo.
+    remendos sem acordar a rotina. Silva Elkwood estava acordada entre Ren e o
+    coração do acampamento e perguntou se ele veio limpo. Ren confirmou e contou
+    o essencial sobre a Ponte Baixa, a sala de arquivo vivo, as evidências, o sol
+    apagado e o lacre reservado de Luath. Silva avaliou que é melhor as provas
+    estarem trancadas com Luath do que nas roupas de Ren. Nera dorme mal na
+    carroça verde; Tavin dorme profundamente; Jack ainda não foi acordado.
 
 tempo:
   ano_dr: 1372
@@ -360,7 +364,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "madrugada de 7 Eleasis, no Jack Mooney & Sons Circus"
-  hora_aproximada: "03:06 de 7 Eleasis"
+  hora_aproximada: "03:13 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
   prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24; Luath pretende tentar encaminhamento a Tyr no primeiro cinza. O total de 80 PO da apresentação da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois."
@@ -1186,7 +1190,7 @@ objetivos:
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
     - "decidir para onde Ren vai após o lacre reservado das evidências da Ponte Baixa: sair ainda sob os minutos finais de Passos sem Pegadas, ficar para falar mais com Luath ou buscar descanso"
-    - "responder a Silva se a volta ao circo veio limpa antes de avançar para Nera, Tavin, Jack, descanso ou outro plano"
+    - "decidir entre falar baixo com Nera, acordar Jack para reunião cansada, ou comer e tentar uma hora de meditação antes do primeiro cinza"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
@@ -1228,8 +1232,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, diante de Silva Elkwood, às 03:06 de 7 Eleasis. Após o lacre reservado das evidências da Ponte Baixa por Luath, Ren voltou ao circo pela rota longa usando Passo Sombrio e sombras. A rota custou tempo por luzes, poças e sombras interrompidas, mas Ren não percebeu cauda útil e entrou sem acordar a rotina. Silva está acordada, avaliou que Ren parece inteiro e perguntou se ele veio limpo. Visão no Escuro continua ativa até cerca de 09:32. Passos sem Pegadas expirou por volta de 02:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
-  risco_imediato: "moderado: Ren chegou ao circo sem cauda útil percebida, mas a noite ainda carrega rastros institucionais e inimigos atentos. O pacote reservado da Ponte Baixa pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. A entrada no circo não acordou a rotina; Silva é a única presença relevante na cena atual."
+  cena_atual: "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, com Silva Elkwood, às 03:13 de 7 Eleasis. Após voltar limpo do posto de Luath, Ren contou a Silva o essencial sobre a Ponte Baixa, os documentos, o sol apagado e o lacre reservado das evidências. Silva não acordou Jack para evitar que o acampamento perceba uma onda de urgência, mas deixou três caminhos imediatos: levar Ren para falar baixo com Nera sem acordar Tavin, acordar Jack para uma reunião cansada, ou fazer Ren comer e tentar uma hora de meditação antes do primeiro cinza. Visão no Escuro continua ativa até cerca de 09:32. Passos sem Pegadas expirou por volta de 02:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
+  risco_imediato: "moderado: Ren chegou ao circo sem cauda útil percebida, mas a noite ainda carrega rastros institucionais e inimigos atentos. O pacote reservado da Ponte Baixa pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. A entrada no circo não acordou a rotina; Silva controla a próxima passagem para Nera, Jack ou descanso."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1240,5 +1244,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "responder a Silva se Ren veio limpo e decidir se procura Nera/Tavin, Jack, descanso ou outra ação antes do amanhecer"
+    - "decidir entre falar com Nera, acordar Jack, meditar/descansar ou outra ação antes do amanhecer"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

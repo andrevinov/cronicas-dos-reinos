@@ -3821,3 +3821,55 @@ O olhar dela vai para trás dele, para as sombras entre as carroças.
 Hora aproximada: **03:06 de 7 Eleasis, 1372 DR**. Ren voltou ao **Jack Mooney & Sons Circus** pela rota longa. **Passos sem Pegadas** expirou no caminho, por volta de **02:32**; **Visão no Escuro** continua ativa. Ele não percebeu cauda útil e entrou no circo sem acordar a rotina. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Silva está acordada na rota interna de remendos, entre Ren e o coração do acampamento.
 
 O que Ren faz?
+
+**Jogador**
+
+"Limpo".
+
+Ren conta tudo. Sobre a passagem, sobre o que viu, os documentos. Sobre Luath.
+
+**Narrador**
+
+Silva não relaxa quando Ren diz "limpo".
+
+Ela só muda de tipo de vigilância.
+
+"Então entra."
+
+Não leva Ren para a carroça verde. Leva para o espaço entre duas carroças de remendo, onde a lona velha abafa voz e a madeira empilhada quebra a linha de visão. Ali, com a caneca ainda nas mãos e a faca ainda na coxa, ela escuta.
+
+Escuta a Ponte Baixa que não era ponte. A boca seca atrás dos armazéns. A câmara onde a água devia mandar e não mandava. O corredor de passa-carga. O arquivo vivo. **V. Rook**. **M. Harrow**. **D. Mord**. **Retenção anulada**. **Volume 13**. A tira com **Kage**, **gravadora**, **menino** e **antes de maré**. A matriz com o **sol apagado**. A brasa protegida. O pano com cinza. A trava do trilho. A segunda portinhola. A maré entrando.
+
+Quando Ren fala que Luath lacrou tudo como fonte reservada e guardou a identidade consigo, Silva fica imóvel tempo demais.
+
+"Bom", ela diz enfim.
+
+Não há alívio na palavra. Há cálculo.
+
+"Não porque isso resolve. Porque agora não está só na sua mão. E não está na minha. E, pelos deuses, eu prefiro um pacote trancado com um guarda cansado a três pedaços de prova passeando na sua roupa enquanto metade da cidade aprende seu cheiro."
+
+Ela bebe um gole frio da caneca, faz careta e deixa a caneca no chão.
+
+"Luath é duro de engolir, mas não é mole por dentro. Isso ajuda."
+
+Ao ouvir sobre os Miburo, ela ergue uma sobrancelha.
+
+"Lobos, é?" Pela primeira vez desde que Ren chegou, quase há humor. "Se você chamar ele disso na frente dos homens dele, alguém vai latir antes do amanhecer."
+
+O humor morre rápido. Não por falta de vontade. Por falta de noite.
+
+"Agora escuta. Nera dormiu mal. Dormiu, porque eu mandei, mas mal. Tavin apagou de verdade. Jack também precisa saber disso antes que algum papel chegue no circo por outro caminho, mas se eu acordo Jack agora, ele vai acordar Tobb, e se Tobb acorda, meio acampamento descobre que existe motivo para acordar."
+
+Ela olha Ren inteiro de novo.
+
+"Você tem sangue de ninguém na roupa. Não trouxe cauda. Trouxe resposta. Também trouxe pouca reserva no corpo e uma cabeça que passou a noite entrando em boca de pedra."
+
+A faca some para dentro do xale.
+
+"Pode fazer uma destas coisas agora: eu te levo até a carroça verde e você fala baixo com Nera, sem acordar Tavin; eu acordo Jack e a gente transforma isso em reunião de gente cansada; ou você come alguma coisa e tenta arrancar uma hora de meditação antes do primeiro cinza. Se Luath conseguir pôr esse pacote em Tyr, a manhã vai querer você de pé."
+
+Ela não formula como ordem. Silva raramente precisa.
+
+Hora aproximada: **03:13 de 7 Eleasis, 1372 DR**. Ren está na rota interna de remendos do **Jack Mooney & Sons Circus**, com Silva. Ela ouviu o relato completo da Ponte Baixa e do lacre reservado de Luath. **Visão no Escuro** continua ativa; **Passos sem Pegadas** expirou. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Nera dorme mal na carroça verde; Tavin dorme profundamente. Jack ainda não foi acordado.
+
+O que Ren faz?
