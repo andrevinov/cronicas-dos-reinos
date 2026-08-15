@@ -4654,3 +4654,41 @@ Ren está dentro do cômodo sem ter acionado o aviso. Ninguém visível reage, m
 Hora aproximada: **07:57 de 7 Eleasis, 1372 DR**. Ren está dentro do **cômodo dos fundos da balança velha**, sem ter sido percebido e sem acionar o aviso de pesos. A mesa forneceu uma pista parcial: o intermediário planejava uma retirada pela **estrada principal**, com **B.V.** pagando, e usava papel do circuito de **Narwhal Manor**. É provável, mas ainda não comprovado, que seja o mesmo segundo escrivão descrito por Nera. No cômodo há papéis queimando sob cinza e uma portinhola traseira apenas encostada. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**.
 
 O que Ren faz?
+
+Com ódio no coração, imaginando que esse homem deve ter sido quem colocou Nera no meio disso tudo, Ren dispara em direção à estrada principal, no encalço do homem. Se precisar pagar alguém no caminho por informações, o fará.
+
+**Narrador**
+
+Ren deixa o braseiro e a portinhola para trás.
+
+Sai pelo galpão sem tocar o aviso neutralizado e alcança a estrada principal no ritmo que suas pernas permitem. O fluxo da manhã já engrossou: carroças de cal vazias voltam aos fornos, trabalhadores seguem para Ravens Bluff e vendedores de água param perto dos animais.
+
+Encontrar testemunhas na estrada principal: d20 com vantagem [16, 5] -> 16 + 4 = 20 contra CD 14. Sucesso.
+
+A primeira resposta útil vem de um rapaz que enche cochos junto a uma carroça de sacos vazios. Ren oferece moeda baixa e dá a descrição. O rapaz aponta imediatamente para a cidade.
+
+"Casaco pardo, cara estreita? Veio depressa. Pagou para subir numa carroça de carvão vazia. Aquela do eixo verde."
+
+Outro carroceiro confirma que o homem mandou seguir pela estrada principal e ficou olhando para trás desde que subiu.
+
+Percepção para localizar a carroça e confirmar o passageiro: d20 16 + 6 = 22 contra CD 15. Sucesso.
+
+Ren encontra o eixo verde adiante, entre duas carroças mais lentas. O passageiro dobrou o casaco pardo sobre o braço para mudar a silhueta, mas não consegue esconder o rosto estreito nem a pequena cicatriz abaixo da orelha esquerda. Quando segura a lateral da carroça, Ren vê também a mancha violeta no polegar direito.
+
+É o homem descrito por Mera.
+
+E não é Velis Rook. Ren esteve perto demais de Velis ao roubar sua pasta para confundir os dois. O papel de Narwhal liga este homem ao mesmo circuito, não à identidade de Velis.
+
+Por um instante, a distância começa a cair.
+
+Então o homem olha para trás.
+
+Os olhos dele encontram Ren no fluxo da estrada. A hesitação dura menos de uma respiração. Ele bate duas vezes na tábua do carroceiro, salta da carroça ainda em movimento e entra num ramal estreito entre um depósito de cal ensacada e uma cerca de salgueiros.
+
+Ren chega à entrada do ramal a cerca de noventa pés dele. Três trabalhadores empurram um carrinho de mão carregado entre os dois. O homem de mãos limpas continua correndo, mas leva a mão direita para dentro do casaco dobrado. Ren não sabe se procura arma, apito, papel ou outra coisa.
+
+Ele já percebeu a perseguição. Não haverá surpresa se Ren o alcançar agora.
+
+Hora aproximada: **08:02 de 7 Eleasis, 1372 DR**. Ren está na entrada de um ramal estreito junto à estrada principal, com o homem de mãos limpas visível a cerca de **noventa pés**. Há três trabalhadores e um carrinho carregado entre eles. O alvo corresponde à descrição de Mera e **não é Velis Rook**. A velocidade de Ren é suficiente para reduzir a distância, mas o alvo está alerta e alcançando o interior do casaco. Os papéis no braseiro e a portinhola traseira ficaram sem exame adicional. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**.
+
+O que Ren faz?

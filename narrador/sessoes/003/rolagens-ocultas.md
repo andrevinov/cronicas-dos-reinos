@@ -1436,6 +1436,42 @@ Consequências:
 
 ---
 
+## Fuga pela estrada principal e localização visual
+
+Contexto acumulado: o homem de mãos limpas percebeu que a carroça de resposta
+não retornaria, abandonou a balança e seguiu o plano inicial de alcançar a
+estrada principal. Ren deixou os papéis e a portinhola para trás e saiu em
+perseguição, disposto a pagar por informação.
+
+Rolagens abertas:
+
+* Encontrar testemunhas na estrada principal com vantagem pela descrição
+  detalhada, pista escrita e disposição de pagar: d20 [16, 5] + 4 = 20 contra
+  CD 14. Sucesso.
+* Percepção de Ren para localizar a carroça e confirmar o passageiro: d20 16 +
+  6 = 22 contra CD 15. Sucesso.
+
+Rolagem oculta:
+
+* Homem de mãos limpas perceber a perseguição de Ren no fluxo da estrada: d20
+  12 + 3 = 15 contra CD 15. Sucesso.
+
+Consequências:
+
+* O alvo usou a estrada principal e pagou passagem numa carroça de carvão vazia
+  com eixo verde.
+* Ren obtém a informação com moeda baixa; o total registrado de PO não muda.
+* Ren confirma visualmente rosto, cicatriz e tinta no polegar. O alvo não é
+  Velis Rook, embora esteja ligado ao circuito de papel de Narwhal Manor.
+* O alvo percebe Ren, salta da carroça e entra em ramal estreito com três
+  trabalhadores e um carrinho carregado entre os dois.
+* A distância inicial da nova situação é de cerca de noventa pés. O alvo está
+  alerta e leva a mão direita para dentro do casaco; não há surpresa.
+* Os papéis deixados no braseiro se perdem para o calor. A portinhola traseira
+  permanece sem exame.
+
+---
+
 ## Saída do homem de mãos limpas e busca na balança velha
 
 Contexto acumulado: depois que a carroça de resposta não voltou no prazo, o
