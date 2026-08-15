@@ -1,0 +1,39 @@
+name: Limpeza final da documentação — Etapa 8
+
+on:
+  push:
+    branches:
+      - "refactor/context-economy-step-08"
+
+permissions:
+  contents: write
+
+jobs:
+  finalizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Atualizar linguagem de consolidação
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('docs/agente/narracao-e-mundo.md')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              '''## Encerramento de cena\n\nUma cena importante pode receber checkpoint narrativo na própria transcrição. A Etapa 7 não exige consolidar todos os arquivos canônicos a cada encerramento de cena; isso só deve acontecer se houver necessidade real de checkpoint externo ou durante a consolidação em lote.\n\nAntes de uma pausa longa, executar:\n\n```bash\npython3 ferramentas/turno.py check\n```\n\nSe passar, transcrição + buffer pendente preservam o estado necessário para retomada.\n''',
+              '''## Encerramento de cena\n\nUma cena importante pode receber checkpoint narrativo na própria transcrição. Não consolidar por rotina a cada troca; quando houver fronteira de cena relevante e um checkpoint canônico for útil, usar:\n\n```bash\npython3 ferramentas/consolidar.py cena\n```\n\nSe não houver necessidade de checkpoint, `turno.py check` continua suficiente para uma pausa segura com transações pendentes. Se existir journal de consolidação, recuperar antes de retomar a narração.\n'''
+          )
+          s = s.replace(
+              '''Na arquitetura transacional, `runtime/eventos-pendentes.jsonl` é a lista explícita de mudanças ainda não incorporadas. A Etapa 8 implementará a consolidação automática/idempotente desse buffer. Até lá, não apagar nem marcar eventos pendentes manualmente como consolidados sem procedimento deliberado.\n''',
+              '''Na arquitetura transacional, `runtime/eventos-pendentes.jsonl` é a lista explícita de mudanças ainda não incorporadas. Antes de encerrar a sessão, executar `python3 ferramentas/consolidar.py sessao`; o ledger impede reaplicação e o buffer só é limpo depois da instalação verificada do lote.\n'''
+          )
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Remover workflow temporário e publicar
+        run: |
+          git config user.name "André Carvalho"
+          git config user.email "me@andrev.me"
+          git rm .github/workflows/finalizar-docs-etapa-8.yml
+          git add docs/agente/narracao-e-mundo.md
+          git commit -m "Fecha documentação narrativa da consolidação"
+          git push
