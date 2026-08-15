@@ -46,6 +46,13 @@ python3 ferramentas/verificar-integridade.py \
 
 O verificador confere UTF-8, YAML sem chaves duplicadas, arquivos obrigatórios, referências de `campanha.yaml`, existência da sessão atual, consistência básica entre estado e ficha, limites de PV/Ki e coerência temporal.
 
+Desde a Etapa 2, ele também protege o desenho de **progressive disclosure** do agente:
+
+- `AGENTS.md` não pode ultrapassar 12 KiB nem 180 linhas;
+- os seis documentos especializados de `docs/agente/` são obrigatórios;
+- `docs/agente/cobertura-agents-v1.yaml` deve mapear todas as 58 seções do manual legado;
+- o roteador precisa manter as regras explícitas de leitura sob demanda e parada antecipada.
+
 ## Análise de rollouts do Codex
 
 Para medir o comportamento do Codex sem inserir telemetria dentro da narração:

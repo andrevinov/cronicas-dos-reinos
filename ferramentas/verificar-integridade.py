@@ -36,6 +36,20 @@ DuplicateKeyLoader.add_constructor(
     _construct_mapping,
 )
 
+AGENT_DOCS = (
+    "docs/agente/fundamentos.md",
+    "docs/agente/acesso-e-operacoes.md",
+    "docs/agente/regras-e-rolagens.md",
+    "docs/agente/narracao-e-mundo.md",
+    "docs/agente/personagem-e-tempo.md",
+    "docs/agente/pesquisa-e-manutencao.md",
+)
+AGENT_COVERAGE = "docs/agente/cobertura-agents-v1.yaml"
+AGENTS_MAX_BYTES = 12 * 1024
+AGENTS_MAX_LINES = 180
+LEGACY_AGENT_SECTION_COUNT = 58
+LEGACY_AGENT_SHA = "61ef9a4458d187e24bbe701f78c730e3218f9e42"
+
 REQUIRED_PATHS = (
     "AGENTS.md",
     "README.md",
@@ -55,6 +69,8 @@ REQUIRED_PATHS = (
     "regras/progressao.md",
     "regras/regras-da-casa.md",
     "regras/resolucao-de-acoes.md",
+    *AGENT_DOCS,
+    AGENT_COVERAGE,
 )
 
 TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".py", ".json", ".jsonl", ".txt"}
@@ -72,6 +88,67 @@ def get_path(data: Any, dotted: str) -> Any:
             raise KeyError(dotted)
         current = current[part]
     return current
+
+
+def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
+    """Garante que o roteador continue curto e que o manual legado tenha cobertura."""
+    errors: list[str] = []
+    agents_path = repo / "AGENTS.md"
+    if agents_path.exists():
+        raw = agents_path.read_bytes()
+        if len(raw) > AGENTS_MAX_BYTES:
+            errors.append(
+                f"AGENTS.md excede o limite do roteador: {len(raw)} bytes > {AGENTS_MAX_BYTES}"
+            )
+        try:
+            text = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            text = ""
+        line_count = len(text.splitlines())
+        if line_count > AGENTS_MAX_LINES:
+            errors.append(
+                f"AGENTS.md excede o limite de linhas do roteador: {line_count} > {AGENTS_MAX_LINES}"
+            )
+        required_markers = (
+            "Nunca leia por precaução",
+            "Se for suficiente, pare",
+            "docs/agente/acesso-e-operacoes.md",
+            "docs/agente/cobertura-agents-v1.yaml",
+        )
+        for marker in required_markers:
+            if marker not in text:
+                errors.append(f"AGENTS.md perdeu marcador operacional obrigatório: {marker!r}")
+
+    coverage = yaml_docs.get(AGENT_COVERAGE)
+    if not isinstance(coverage, dict):
+        errors.append(f"mapa de cobertura ausente ou inválido: {AGENT_COVERAGE}")
+        return errors
+
+    origem = coverage.get("origem") or {}
+    if origem.get("sha_blob") != LEGACY_AGENT_SHA:
+        errors.append("mapa de cobertura não referencia o SHA do AGENTS legado esperado")
+    if origem.get("secoes") != LEGACY_AGENT_SECTION_COUNT:
+        errors.append("mapa de cobertura não declara as 58 seções do AGENTS legado")
+
+    documentos = coverage.get("documentos") or {}
+    secoes = coverage.get("secoes") or {}
+    expected_sections = set(range(1, LEGACY_AGENT_SECTION_COUNT + 1))
+    actual_sections = set(secoes.keys()) if isinstance(secoes, dict) else set()
+    if actual_sections != expected_sections:
+        missing = sorted(expected_sections - actual_sections)
+        extra = sorted(actual_sections - expected_sections, key=str)
+        errors.append(f"cobertura de AGENTS incompleta: ausentes={missing}, extras={extra}")
+
+    if isinstance(secoes, dict) and isinstance(documentos, dict):
+        for numero, chave_doc in secoes.items():
+            destino = documentos.get(chave_doc)
+            if not isinstance(destino, str):
+                errors.append(f"seção {numero} aponta para documento lógico inexistente: {chave_doc!r}")
+                continue
+            if not (repo / destino).is_file():
+                errors.append(f"seção {numero} aponta para arquivo ausente: {destino}")
+
+    return errors
 
 
 def validate(repo: Path, baseline: Path | None = None) -> list[str]:
@@ -96,6 +173,8 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
                 yaml_docs[rel] = load_yaml(path)
             except Exception as exc:
                 errors.append(f"YAML inválido em {rel}: {exc}")
+
+    errors.extend(validate_agent_router(repo, yaml_docs))
 
     campanha = yaml_docs.get("campanha.yaml")
     estado = yaml_docs.get("estado/estado-atual.yaml")

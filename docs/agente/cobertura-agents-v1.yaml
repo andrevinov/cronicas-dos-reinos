@@ -1,0 +1,95 @@
+versao: 1
+origem:
+  arquivo: "AGENTS.md"
+  sha_blob: "61ef9a4458d187e24bbe701f78c730e3218f9e42"
+  secoes: 58
+  observacao: >-
+    Mapa de cobertura criado antes da substituicao do AGENTS.md monolitico.
+    Cada secao antiga possui um destino normativo explicito.
+
+documentos:
+  fundamentos: "docs/agente/fundamentos.md"
+  acesso: "docs/agente/acesso-e-operacoes.md"
+  regras: "docs/agente/regras-e-rolagens.md"
+  narracao: "docs/agente/narracao-e-mundo.md"
+  personagem: "docs/agente/personagem-e-tempo.md"
+  manutencao: "docs/agente/pesquisa-e-manutencao.md"
+
+secoes:
+  1: fundamentos
+  2: fundamentos
+  3: fundamentos
+  4: fundamentos
+  5: fundamentos
+  6: fundamentos
+  7: fundamentos
+  8: fundamentos
+  9: acesso
+  10: acesso
+  11: acesso
+  12: regras
+  13: regras
+  14: regras
+  15: regras
+  16: regras
+  17: regras
+  18: regras
+  19: fundamentos
+  20: narracao
+  21: narracao
+  22: narracao
+  23: fundamentos
+  24: narracao
+  25: narracao
+  26: narracao
+  27: narracao
+  28: narracao
+  29: narracao
+  30: narracao
+  31: narracao
+  32: narracao
+  33: narracao
+  34: narracao
+  35: narracao
+  36: narracao
+  37: personagem
+  38: personagem
+  39: personagem
+  40: personagem
+  41: personagem
+  42: manutencao
+  43: manutencao
+  44: manutencao
+  45: manutencao
+  46: manutencao
+  47: manutencao
+  48: manutencao
+  49: manutencao
+  50: manutencao
+  51: manutencao
+  52: manutencao
+  53: acesso
+  54: fundamentos
+  55: acesso
+  56: manutencao
+  57: acesso
+  58: fundamentos
+
+adaptacoes_explicitas:
+  secao_9:
+    antes: "lista ampla tratada como leitura minima antes de narrar"
+    agora: >-
+      As mesmas fontes continuam autorizadas, mas a leitura passou a ser
+      progressiva e orientada por lacuna concreta. Essa mudanca e intencional
+      e constitui o objetivo central da refatoracao de economia de contexto.
+  secao_47:
+    antes: "atualizar dependentes no mesmo trabalho sempre que possivel"
+    agora: >-
+      A consistencia entre dependentes continua obrigatoria, mas nao implica
+      duplicar o mesmo fato em varios arquivos a cada turno. A consolidacao
+      transacional sera implementada em etapa posterior.
+  secao_57:
+    antes: "prioridades hardcoded para a sessao 001"
+    agora: >-
+      A prioridade concreta vem de campanha.yaml e do estado corrente. Foi
+      preservido o principio de nao criar documentos vazios ou sem utilidade.
