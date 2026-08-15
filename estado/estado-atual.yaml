@@ -1,10 +1,12 @@
 schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
+
 campanha:
   status: em_sessao
   sessao_atual: 3
   modo_de_cena_atual: resgate_rural
+
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -12,6 +14,7 @@ personagem:
   nivel: 6
   classe: Monge
   subclasse: Caminho da Sombra
+
 localizacao:
   plano: Material
   mundo: Toril
@@ -19,14 +22,17 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: estrada do Fire River
-  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
-    limpas
-  descricao_operacional: Com testemunhas pagas em moeda baixa, localizou o alvo numa carroça de carvão vazia. Confirmou
-    que o homem corresponde à descrição de Mera e não é Velis Rook. O alvo percebeu Ren, saltou da carroça e entrou
-    num ramal estreito. Ren está a cerca de noventa pés, com três trabalhadores e um carrinho carregado entre os
-    dois. A perseguição entrou em iniciativa. Ren atravessou o obstáculo sem atingir os trabalhadores, anulou com
-    Aparar Projéteis uma faca que teria acertado e alcançou o alvo junto à cerca de salgueiros. O homem atacou com
-    uma segunda faca e errou. É o turno de Ren, adjacente e ileso.
+  ponto_exato: >-
+    junto à cerca de salgueiros no ramal da estrada principal do Fire River,
+    adjacente ao homem de mãos limpas
+  descricao_operacional: >-
+    Ren alcançou o homem de mãos limpas após persegui-lo desde uma carroça de
+    carvão. A perseguição entrou em iniciativa. Ren atravessou trabalhadores e
+    um carrinho sem atingi-los, anulou com Aparar Projéteis uma faca arremessada
+    e fechou a distância. O homem atacou com uma segunda faca e errou. É o turno
+    de Ren; ambos estão adjacentes, Ren está ileso e três trabalhadores observam
+    o confronto a cerca de cinquenta pés.
+
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -37,17 +43,20 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: manhã de 7 Eleasis, junto à cerca de salgueiros no ramal da estrada principal do Fire River
+  periodo_do_dia: manhã de 7 Eleasis
   hora_aproximada: 08:03 de 7 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
-  observacao: Estado temporal corrente. Cronologia detalhada e marcos anteriores foram movidos para historico/legado/tempo-acumulado-pre-etapa-5.yaml.
-  prazo_relevante: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão
-    no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche
-    do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa
-    foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr
-    sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada.
-    Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas;
-    o combate é público e testemunhado por trabalhadores.
+  observacao: >-
+    Somente estado temporal corrente. A cronologia detalhada anterior está em
+    historico/legado/tempo-acumulado-pre-etapa-5.yaml e nos registros de sessão.
+  prazo_relevante: >-
+    Visão no Escuro permanece ativa aproximadamente até 09:32. O Broche do
+    Semblante Humilde está disponível desde o amanhecer e ainda não foi usado
+    nesta saída. Mera partiu com Colm/Dent rumo a Iria Doss, mas a chegada ainda
+    não foi confirmada. O pacote reservado da Ponte Baixa passou de Luath para
+    Tyr sem o nome de Ren no registro externo. O combate atual é público e
+    testemunhado por trabalhadores.
+
 recursos:
   pontos_de_vida:
     atuais: 45
@@ -65,21 +74,13 @@ recursos:
   dinheiro:
     po: 45
   condicoes:
-  - 'Rolagem para aprimorar falas e drama do número: 5 contra CD 13, falha'
-  - 'Rolagem para integrar Lysa, Merrit, Dessa e Sorn ao ajuste: 14 contra CD 12, sucesso'
-  - A versão segura de Kage para 5 Eleasis tem duas pequenas novidades cênicas, mas não quatro movimentos físicos
-    novos completos
-  - O segundo sino da tarde passou sem recado de Luath ao circo até 14:18
-  - Ren suspendeu o treino de Kage satisfeito com a versão segura de Sorn/Dessa
-  - 'Rolagem para chegar ao posto sem ligar Ren Kage ao visitante pobre: 7 contra CD 13, falha'
-  - A saída do circo não gerou cauda competente, mas criou uma memória fraca ligando o sumiço de Kage a um forasteiro
-    pobre de porte parecido
-  - No posto da Night Watch, um guarda mais velho reconheceu Ren como o homem do sargento, reforçando a linha pública
-    fina de que o forasteiro pobre admitido no mercado tem entrada com a guarda
-  - 'Rolagem para ler o que Luath evita publicizar: 11 contra CD 13, falha'
-  - 'Rolagem para Luath abrir informação útil sem tornar Ren auxiliar oficial: 4 contra CD 12, falha'
-  - Luath revelou apenas informação controlada e não abriu acesso aos prisioneiros
-  - Luath aceitou levar uma pergunta curta de Ren ao interrogatório
+    - Visão no Escuro ativa aproximadamente até 09:32 de 7 Eleasis
+    - Ren está ileso e adjacente ao homem de mãos limpas em combate público
+    - É o turno de Ren e sua reação está disponível
+  disponibilidades:
+    broche_do_semblante_humilde: disponível; uso do amanhecer ainda não gasto
+    passos_sem_pegadas: inativo
+
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml
@@ -87,16 +88,18 @@ ponteiros:
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
   transcricao_atual: sessoes/003/transcricao.md
-outros_estados_compactos:
-  equipamento_em_posse:
-    armas:
+  historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
+  historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
+
+equipamento_em_posse:
+  armas:
     - wakizashi, mecanicamente espada curta
     - 9 shuriken, mecanicamente dardos
-    ferramentas:
+  ferramentas:
     - ferramentas de caligrafia
     - ferramentas de ladrão
     - kit de disfarce
-    itens_importantes:
+  itens_importantes:
     - selo quebrado do Clã Kagehira
     - mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn
     - pedaço de tecido com o símbolo usado pelo traidor
@@ -111,102 +114,65 @@ outros_estados_compactos:
     - tira de couro da amarra sabotada da corda alta
     - faca curva usada por Merrit para cortar a tira da amarra da corda alta
     - caderno de contas de Bram Vask
-    - pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha
-    - Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito
-      semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com
-      perfeição; uso renovado no amanhecer de 7 Eleasis e disponível
+    - pedaço rasgado de pano vermelho encerado da porta de ferro da Casa Velha
+    - >-
+      Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander;
+      um uso por amanhecer para efeito semelhante a Disfarçar-se em si por uma
+      hora, com aparência humilde/comum sem imitar pessoa específica perfeitamente
     - mapa público da Escada das Sete Águas, comprado de Brunna Torkel
-    - 'cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída
-      baixa para drenagem, parede raspada, ar seco e marca apagada'
-    outros:
-    - 'figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura
-      com desenho de vento, tecido branco oculto para giros, mangas falsas soltas no momento certo, cabelo preso
-      e máscara parcial de entrada'
-    - 'roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas
-      e faixa interna'
-    - manta de estopa cinza sobre o ombro para quebrar a silhueta
-    - roupas proprias de Ren guardadas com Dessa Wren para limpeza e uso como figurino estrangeiro
-    - roupas roubadas e roupas de doacao entregues a Dessa Wren para virar retalho
+    - >-
+      cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns
+      antigos: duas entradas possíveis, saída baixa para drenagem, parede
+      raspada, ar seco e marca apagada
+  outros:
+    - figurino de O Vento da Noite guardado com Dessa Wren
+    - roupa de cidadão menor limpo guardada no circo
+    - manta de estopa cinza para quebrar a silhueta
+    - roupas próprias de Ren guardadas com Dessa Wren para limpeza/figurino
     - disfarces de Nera e Tavin de Dessa Wren em uso
     - pacote de explorador
-  objetivos:
-    longo_prazo:
+
+objetivos:
+  longo_prazo:
     - encontrar Masao Hirasawa
     - recuperar o Selo da Lua Velada
     - descobrir por que Aiko Kagehira foi morta
     - descobrir o que restou da Juppongatana/Dez Espadas
-    imediato:
-    - decidir a ação de Ren no próprio turno contra o homem de mãos limpas adjacente e armado
-    - decidir entre nocautear, agarrar, desarmar, atordoar, ferir ou matar o alvo
-    - considerar as três testemunhas comuns antes de escolher violência letal ou magia visível
-    - confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos à casa de Iria Doss
-    - identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask
-    - 'preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer
-      pressão institucional futura'
-    - manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar
-      direto para eles se trouxer cauda
-    - observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das
-      evidências
-    - acompanhar os próximos efeitos do pacote reservado da Ponte Baixa em Tyr, agora que a mensagem de Luath indica
-      que ele passou sem nome externo
-    - evitar voltar sozinho à Ponte Baixa sem nova informação, pois Luath não autorizou essa entrada e os sinais
-      deixados podem ter sido percebidos depois
-    - proteger Colm/Dent, agora solto e reunido a Mera Fumaça, mas ainda fraco, ferido e precisando de tratamento
-      hoje
-    - reinstalar futuramente, em conversa discreta, novos pontos mortos com Pell e Kethra se ainda forem necessários
-    - aguardar oportunidade futura para saber as consequências da ficha curta de Maerra a Halessa
-    - proteger Peta e as outras crianças agora sob cuidado de Maerra
-    - manter-se como Ren Kage, artista visível, sem quebrar a máscara pública recém-criada
-    - proteger Nera e Tavin, agora de volta à carroça verde e explicitamente nomeados como ruído no bilhete
-    - considerar que Tyr recebeu confirmações de Luath e Maerra
-    - impedir que Narwhal e Red Sail virem a acusação contra Ren e Nera
-    - manter os Vell no circo com resguardo em espera de Tyr até o próximo sino maior
-    - decidir se continua puxando o fio de Brass/Narwhal/Ponte Baixa ou se prioriza proteção formal
-    - proteger o livro original de Nera escondido com Silva
-    - usar com cuidado o Broche do Semblante Humilde, novamente disponível no amanhecer de 7 Eleasis
-  vinculos_ativos:
-    faccao_prevista:
-      nome: Night Watch
-      status: contato inicial estabelecido
-    contato_previsto:
-      nome: Luath
-      papel: sargento da City Guard
-      status: contato operacional cauteloso; confiança moderada, risco alto
-    antagonista_principal:
-      nome: Masao Hirasawa
-      status: foragido
-      conhecimento_de_ren: Ren acredita que Masao pode ter usado Ravens Bluff como esconderijo, ponto de troca ou
-        passagem. Ren sabe que Masao construiu poder no submundo de Kozakura, comandou a Juppongatana/Dez Espadas
-        e cultiva o sonho de ser rei das sombras.
-  conhecimento_atual:
-    arquivo: personagens/jogador/conhecimento.md
-    rumores_relevantes:
-    - A guarda precisa de gente capaz para tarefas que guardas formais não conseguem cobrir.
-    - Cargas somem entre o cais, armazéns e alfândega.
-    - Uma pessoa discreta pode se esconder bem em Ravens Bluff, se tiver dinheiro ou patrono.
-  estado_narrativo:
-    situacao_inicial: A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de
-      manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas.
-    primeira_cena_sugerida: Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes
-      e sem direção única confirmada.
-    cena_atual: Ren alcançou o homem de mãos limpas junto à cerca de salgueiros, às 08:03 de 7 Eleasis. O alvo venceu
-      a iniciativa, mas Ren atravessou o carrinho sem atingir trabalhadores, anulou com Aparar Projéteis uma faca
-      arremessada e fechou a distância. O homem atacou com uma segunda faca e errou. É o turno de Ren; ambos estão
-      adjacentes, Ren está ileso e três trabalhadores observam a cerca de cinquenta pés.
-    risco_imediato: 'alto localizado: o alvo continua armado e hostil; o combate é público e pode atrair mais trabalhadores,
-      patrulha ou aliados; qualquer violência letal terá testemunhas; Ren ainda controla a própria ação e não sofreu
-      dano.'
-    foco_inicial:
-    - pista da máscara, do peixe e do lugar frio sob rodas
-    - respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã
-    - segurança de Colm/Dent, Kethra, Peta e das crianças resgatadas
-    - proteção dos Vell no circo e desdobramentos de Tyr
-    - Ponte Baixa, porões secos atrás de armazéns velhos e janela antes da segunda maré
-  pendencias:
-    antes_da_primeira_sessao: []
-    podem_ser_definidas_em_jogo:
-    - resolver o turno de Ren contra o homem de mãos limpas
-    - decidir se Ren pretende capturar o alvo vivo e como lidará com as testemunhas
-    - confirmar depois se Mera e Colm/Dent chegaram a Iria Doss
-    - identificar o homem de casaco pardo, tinta violeta sob a unha do polegar direito e cicatriz abaixo da orelha
-      esquerda descrito por Mera
+  imediatos:
+    - resolver o turno de Ren contra o homem de mãos limpas e, se possível, descobrir sua identidade
+    - considerar as três testemunhas antes de violência letal ou magia visível
+    - confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos a Iria Doss
+    - preservar o sigilo da fonte reservada no pacote entregue a Tyr
+    - manter Nera, Tavin e o livro original protegidos no circo
+    - observar reações de Ponte Baixa, Narwhal, Red Sail e Casa Veyr aos movimentos recentes
+    - proteger Peta e as demais crianças sob cuidado de Maerra
+    - manter a identidade pública de Kage sem expor desnecessariamente Ren
+    - reinstalar pontos mortos com Pell e Kethra apenas se voltarem a ser necessários
+
+vinculos_ativos:
+  night_watch:
+    contato: Luath
+    estado: contato operacional cauteloso; confiança moderada, risco alto
+    detalhes: estado/relacoes.yaml
+  masao_hirasawa:
+    papel: antagonista principal
+    estado: foragido
+    detalhes_conhecidos_por_ren: personagens/jogador/conhecimento.md
+
+conhecimento_atual:
+  arquivo: personagens/jogador/conhecimento.md
+
+estado_narrativo:
+  cena_atual: >-
+    Ren e o homem de mãos limpas estão adjacentes junto à cerca de salgueiros.
+    O alvo continua armado e hostil; Ren está ileso, a reação está disponível e
+    é o turno de Ren. Três trabalhadores testemunham a cena.
+  risco_imediato: >-
+    alto e localizado: violência letal terá testemunhas e o confronto pode
+    atrair trabalhadores, patrulha ou aliados do alvo.
+
+pendencias:
+  - resolver o combate atual
+  - decidir se o homem de mãos limpas deve ser capturado vivo
+  - confirmar depois se Mera e Colm/Dent chegaram a Iria Doss
+  - descobrir o nome/posição real do homem de mãos limpas no circuito de Bram/Narwhal
