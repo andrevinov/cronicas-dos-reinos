@@ -10,7 +10,7 @@ Respeitar sistema, edição, período histórico, fontes autorizadas e configura
 
 Todo texto novo deve usar português e UTF-8.
 
-`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
+`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. `runtime/contexto.yaml` e `runtime/cena.yaml` são as duas projeções quentes geradas a partir do cânone. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
 
 ## 2. Invariantes inegociáveis
 
@@ -69,8 +69,8 @@ Não:
 Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
-- **L1:** `python3 ferramentas/contexto.py status`;
-- **L2:** `contexto.py cena`, `npc`, `relacao`, `conhecimento` ou `regra`;
+- **L1:** `python3 ferramentas/contexto.py status` — consulta `runtime/contexto.yaml`;
+- **L2:** `contexto.py cena` — consulta `runtime/cena.yaml` — ou `npc`, `relacao`, `conhecimento` e `regra`;
 - **L3:** `contexto.py buscar "termo"`, ainda sem transcrições completas;
 - **L4:** `contexto.py buscar "termo" --historico` ou leitura direta de uma fonte específica apontada pela consulta;
 - **L5:** fonte oficial externa/autorizada.
