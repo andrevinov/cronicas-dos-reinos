@@ -162,9 +162,16 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
     result = data.get("resultado") or {}
     if not isinstance(result, dict):
         return data
-    pending = transacoes.search_pending(
-        _pending(repo), term, reserved=False, target_prefix="conhecimento", limit=4
-    )
+    # Um resumo de turno pode conter o termo sem que ele represente descoberta de
+    # Ren. Só promovemos material pendente a "conhecimento" quando existe delta
+    # explícito para o alvo conhecimento.
+    pending = [
+        item
+        for item in transacoes.search_pending(
+            _pending(repo), term, reserved=False, target_prefix="conhecimento", limit=4
+        )
+        if item.get("deltas")
+    ]
     if pending:
         result["pendentes"] = pending
         result["encontrado"] = True
