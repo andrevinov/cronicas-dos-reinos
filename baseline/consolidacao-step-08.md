@@ -46,6 +46,8 @@ Enquanto o journal existe, leituras operacionais e novos turnos são bloqueados.
 - relógio e rolagem oculta mantidos na área reservada;
 - fechamento de sessão preservando texto manual e registrando progressão explícita.
 
+O gate permanente de CI exige, além da suíte unitária, `turno.py check`, `consolidar.py check`, buffer real vazio durante a refatoração, runtime coerente, memórias legadas preservadas, consulta dirigida funcional, integridade estrutural e comparação com a baseline canônica original.
+
 ## Métrica para o próximo rollout real
 
 A consolidação será medida separadamente do loop narrativo. O objetivo não é que consolidar custe zero, e sim **amortizar muitas alterações em poucas execuções**.
