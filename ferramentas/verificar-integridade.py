@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 from typing import Any
 
@@ -50,6 +51,12 @@ AGENTS_MAX_LINES = 180
 LEGACY_AGENT_SECTION_COUNT = 58
 LEGACY_AGENT_SHA = "61ef9a4458d187e24bbe701f78c730e3218f9e42"
 
+RUNTIME_CONTEXT = "runtime/contexto.yaml"
+RUNTIME_SCENE = "runtime/cena.yaml"
+RUNTIME_EVENTS = "runtime/eventos-pendentes.jsonl"
+RUNTIME_MAX_BYTES = 8 * 1024
+RUNTIME_VERSION = 1
+
 REQUIRED_PATHS = (
     "AGENTS.md",
     "README.md",
@@ -69,6 +76,11 @@ REQUIRED_PATHS = (
     "regras/progressao.md",
     "regras/regras-da-casa.md",
     "regras/resolucao-de-acoes.md",
+    "runtime/README.md",
+    RUNTIME_CONTEXT,
+    RUNTIME_SCENE,
+    RUNTIME_EVENTS,
+    "ferramentas/gerar-runtime.py",
     *AGENT_DOCS,
     AGENT_COVERAGE,
 )
@@ -112,6 +124,8 @@ def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
         required_markers = (
             "Nunca leia por precaução",
             "Se for suficiente, pare",
+            "runtime/contexto.yaml",
+            "runtime/cena.yaml",
             "docs/agente/acesso-e-operacoes.md",
             "docs/agente/cobertura-agents-v1.yaml",
         )
@@ -151,6 +165,103 @@ def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
     return errors
 
 
+def validate_runtime(
+    repo: Path,
+    yaml_docs: dict[str, Any],
+    estado: Any,
+    tempo: Any,
+    ficha: Any,
+) -> list[str]:
+    """Confere que a camada quente é pequena, derivada e coerente com o cânone."""
+    errors: list[str] = []
+
+    for rel in (RUNTIME_CONTEXT, RUNTIME_SCENE):
+        path = repo / rel
+        if path.exists() and path.stat().st_size > RUNTIME_MAX_BYTES:
+            errors.append(
+                f"runtime excede limite de tamanho em {rel}: {path.stat().st_size} bytes > {RUNTIME_MAX_BYTES}"
+            )
+
+    contexto = yaml_docs.get(RUNTIME_CONTEXT)
+    cena = yaml_docs.get(RUNTIME_SCENE)
+    if not isinstance(contexto, dict) or not isinstance(cena, dict):
+        errors.append("runtime/contexto.yaml ou runtime/cena.yaml inválido")
+        return errors
+
+    for label, data in (("contexto", contexto), ("cena", cena)):
+        if data.get("versao_runtime") != RUNTIME_VERSION:
+            errors.append(f"versão de runtime inesperada em {label}: {data.get('versao_runtime')!r}")
+        if data.get("natureza") != "derivado_descartavel":
+            errors.append(f"runtime {label} perdeu marca de natureza derivada")
+
+    if isinstance(estado, dict):
+        state_campaign = estado.get("campanha") or {}
+        state_person = estado.get("personagem") or {}
+        state_location = estado.get("localizacao") or {}
+        state_time = estado.get("tempo") or {}
+        state_resources = estado.get("recursos") or {}
+        state_pv = state_resources.get("pontos_de_vida") or {}
+        state_ki = state_resources.get("ki") or {}
+        state_money = state_resources.get("dinheiro") or {}
+
+        checks = [
+            ("sessão", (contexto.get("sessao") or {}).get("numero"), state_campaign.get("sessao_atual")),
+            ("modo de cena", (contexto.get("sessao") or {}).get("modo_de_cena"), state_campaign.get("modo_de_cena_atual")),
+            ("nome", (contexto.get("personagem") or {}).get("nome"), state_person.get("nome")),
+            ("nível", (contexto.get("personagem") or {}).get("nivel"), state_person.get("nivel")),
+            ("PV atuais", ((contexto.get("recursos") or {}).get("pv") or {}).get("atuais"), state_pv.get("atuais")),
+            ("PV máximos", ((contexto.get("recursos") or {}).get("pv") or {}).get("maximos"), state_pv.get("maximos")),
+            ("Ki atual", ((contexto.get("recursos") or {}).get("ki") or {}).get("atuais"), state_ki.get("atuais")),
+            ("Ki máximo", ((contexto.get("recursos") or {}).get("ki") or {}).get("maximos"), state_ki.get("maximos")),
+            ("CA", (contexto.get("recursos") or {}).get("ca"), state_resources.get("classe_de_armadura")),
+            ("PO", (contexto.get("recursos") or {}).get("dinheiro_po"), state_money.get("po")),
+            ("data", (contexto.get("tempo") or {}).get("data"), state_time.get("data_exata")),
+            ("hora", (contexto.get("tempo") or {}).get("hora_aproximada"), state_time.get("hora_aproximada")),
+            ("ponto exato", (contexto.get("localizacao") or {}).get("ponto_exato"), state_location.get("ponto_exato")),
+            ("cena/sessão", cena.get("sessao"), state_campaign.get("sessao_atual")),
+            ("cena/modo", cena.get("modo"), state_campaign.get("modo_de_cena_atual")),
+            ("cena/ponto", (cena.get("localizacao") or {}).get("ponto_exato"), state_location.get("ponto_exato")),
+        ]
+        for label, actual, expected in checks:
+            if actual != expected:
+                errors.append(f"runtime divergiu do estado ({label}): runtime={actual!r}, estado={expected!r}")
+
+    # O arquivo separado de tempo ainda deve concordar com a projeção quente.
+    if isinstance(tempo, dict):
+        date_from_time = ((tempo.get("data_atual") or {}).get("valor"))
+        runtime_date = (contexto.get("tempo") or {}).get("data")
+        if date_from_time is not None and runtime_date != date_from_time:
+            errors.append(f"runtime divergiu de estado/tempo.yaml na data: {runtime_date!r} != {date_from_time!r}")
+        runtime_hour = (contexto.get("tempo") or {}).get("hora_aproximada")
+        if tempo.get("hora_aproximada") is not None and runtime_hour != tempo.get("hora_aproximada"):
+            errors.append(
+                f"runtime divergiu de estado/tempo.yaml na hora: {runtime_hour!r} != {tempo.get('hora_aproximada')!r}"
+            )
+
+    if isinstance(ficha, dict):
+        runtime_person = contexto.get("personagem") or {}
+        if runtime_person.get("nome") != ((ficha.get("personagem") or {}).get("nome")):
+            errors.append("runtime divergiu da ficha no nome do personagem")
+        if runtime_person.get("nivel") != ((ficha.get("identidade") or {}).get("nivel")):
+            errors.append("runtime divergiu da ficha no nível do personagem")
+
+    # Cada linha não vazia do log precisa ser JSON válido e um objeto.
+    events_path = repo / RUNTIME_EVENTS
+    if events_path.exists():
+        for number, line in enumerate(events_path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip():
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError as exc:
+                errors.append(f"JSONL inválido em {RUNTIME_EVENTS}:{number}: {exc}")
+                continue
+            if not isinstance(event, dict):
+                errors.append(f"evento em {RUNTIME_EVENTS}:{number} não é objeto JSON")
+
+    return errors
+
+
 def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     errors: list[str] = []
 
@@ -180,6 +291,8 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     estado = yaml_docs.get("estado/estado-atual.yaml")
     tempo = yaml_docs.get("estado/tempo.yaml")
     ficha = yaml_docs.get("personagens/jogador/ficha.yaml")
+
+    errors.extend(validate_runtime(repo, yaml_docs, estado, tempo, ficha))
 
     if isinstance(campanha, dict):
         refs = (((campanha.get("estrutura") or {}).get("arquivos_referenciados")) or {})
