@@ -4363,3 +4363,48 @@ A estrada está atrás e à esquerda, perto o bastante para que uma carroça pes
 Hora aproximada: **07:34 de 7 Eleasis, 1372 DR**. Colm/Dent está nas costas de Ren, vivo e fraco. Os captores imediatos ficaram inconscientes para trás e não foram amarrados. Ren chegou perto do provável galpão baixo de Mera Fumaça sem ser percebido por ninguém visível. Há som de movimento ou voz abafada dentro do galpão. Ren não identificou com segurança se a porta possui alarme, armadilha ou apenas tranca improvisada. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren encosta Colm em algum lugar que possua proteção visual mínima, mas perto do galpão baixo. Tentará se aproximar furtivamente da galpão e inspecionar o interior.
+
+**Narrador**
+
+Colm obedece mais por peso do que por força própria.
+
+Ren o tira das costas e o encosta atrás de um amontoado de tábuas antigas, perto de uma vala seca coberta por capim alto. De longe, isso quebra o formato de um corpo. De perto, não esconde bem o bastante.
+
+Acomodar Colm em cobertura visual: d20 3 + 7 = 10 contra CD 12. Falha.  
+Aproximação furtiva ao galpão baixo: d20 9 + 7 = 16 contra CD 14. Sucesso.  
+Ver o interior pelas frestas: d20 18 + 6 = 24 contra CD 14. Sucesso.  
+Ler porta e barra sem tocar: d20 12 + 4 = 16 contra CD 15. Sucesso.
+
+O problema não é o lugar. É Colm. O corpo dele insiste em respirar alto, em tossir baixo demais para ser grito e alto demais para ser pedra. Ren consegue deixá-lo fora da linha direta da estrada e do galpão, mas se alguém vier da secagem maior ou passar perto da vala, Colm não está realmente invisível.
+
+Ainda assim, ninguém grita. Ninguém aparece.
+
+Ren se move até o galpão baixo usando o lado da sombra do telhado e uma fileira de ripas tortas. A porta curta tem madeira inchada, barro seco na base e uma barra atravessada por fora em dois encaixes pregados às pressas. Uma ponta da barra repousa mal apoiada sobre um prego torto; se for puxada de qualquer jeito, raspa e bate. Se for erguida primeiro pelo lado esquerdo e sustentada com a mão direita, dá para tirar com controle.
+
+Não há fio visível. Não há sineta, lata pendurada ou cordão indo para dentro. Não parece armadilha trabalhada. Parece pressa, improviso e gente acostumada a trancar bicho, ferramenta ou pessoa pobre.
+
+Pelas frestas da madeira, Ren vê o interior.
+
+O galpão é baixo e estreito, cheio de cheiro de fumaça velha, pano úmido, cinza e madeira quente. Há varas de secagem encostadas numa parede, sacos dobrados, uma pilha de corda grossa e duas cestas vazias. No chão, perto da parede oposta, há uma mulher sentada de lado, mãos presas à frente por corda, tornozelo amarrado a uma argola baixa de ferro ou gancho antigo no piso.
+
+Ela está viva.
+
+Cabelo escuro com fios grisalhos grudado no rosto. Avental manchado de fumaça. Ombros fortes de quem trabalha com peso e calor. Um pano foi amarrado na boca dela, mas já está meio frouxo, como se ela tivesse mordido e empurrado por tempo demais. Um lado do rosto está inchado. Os olhos estão abertos, furiosos e atentos.
+
+Ela empurra o calcanhar contra a madeira de novo.
+
+Toc.
+
+O som que Ren ouviu.
+
+Não há outra pessoa visível dentro do galpão, mas a iluminação é ruim e há pilhas suficientes para esconder algo pequeno ou alguém encolhido. A mulher ainda não parece ter visto Ren pela fresta. Está olhando para a porta como quem espera que a próxima coisa a entrar possa ser inimigo.
+
+Atrás de Ren, Colm prende outra tosse no braço e falha pela metade. O som é baixo, mas real.
+
+Hora aproximada: **07:36 de 7 Eleasis, 1372 DR**. Colm/Dent está escondido de modo imperfeito atrás de tábuas e capim, vivo e fraco. Ren está junto à porta do galpão baixo sem ter sido percebido por ninguém visível. Dentro há uma mulher viva, provavelmente Mera Fumaça, presa e gagada. A porta parece fechada por barra improvisada, sem alarme ou armadilha visível, mas pode fazer ruído se aberta sem cuidado. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
+
+O que Ren faz?

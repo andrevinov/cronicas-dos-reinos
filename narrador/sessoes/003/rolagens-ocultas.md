@@ -1519,3 +1519,31 @@ Consequências:
 * A falha crítica em Investigação impede Ren de identificar com segurança se a
   porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada.
 * Os captores imediatos ficam inconscientes para trás e não foram amarrados.
+
+---
+
+## Inspeção do interior do galpão baixo
+
+Contexto: Ren encostou Colm/Dent em cobertura visual mínima perto do galpão e se
+aproximou furtivamente para inspecionar o interior pelas frestas antes de tocar
+na porta.
+
+Rolagens abertas:
+
+* Acomodar Colm em cobertura visual: d20 3 + 7 = 10 contra CD 12. Falha.
+* Aproximação furtiva ao galpão baixo: d20 9 + 7 = 16 contra CD 14. Sucesso.
+* Ver o interior pelas frestas: d20 18 + 6 = 24 contra CD 14. Sucesso.
+* Ler porta e barra sem tocar: d20 12 + 4 = 16 contra CD 15. Sucesso.
+
+Consequências:
+
+* Colm fica fora da linha direta da estrada e do galpão, mas a cobertura é
+  imperfeita; a tosse pode denunciá-lo se alguém se aproximar.
+* Ren alcança a porta do galpão sem ser percebido por ninguém visível.
+* Ren vê uma mulher viva, provavelmente Mera Fumaça, presa por mãos e tornozelo
+  dentro do galpão baixo.
+* Não há outra pessoa visível no interior, mas as pilhas e a luz ruim impedem
+  certeza completa.
+* A porta não apresenta fio, sineta, lata ou armadilha trabalhada visível.
+* A barra externa pode fazer ruído se removida sem cuidado; Ren entende como
+  levantá-la com controle.

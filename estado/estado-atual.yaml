@@ -412,7 +412,13 @@ localizacao:
     pedaço de corda curta e sinais de fechamento apressado, mas não conseguiu
     identificar com segurança se a porta tem alarme, armadilha, fio, cunha ou
     apenas tranca rural improvisada. Os dois captores imediatos ficaram
-    inconscientes para trás e não foram amarrados.
+    inconscientes para trás e não foram amarrados. Ren então encostou Colm/Dent
+    atrás de tábuas antigas e capim alto, perto de uma vala seca. A cobertura
+    ficou imperfeita, mas tirou Colm da linha direta da estrada e do galpão. Ren
+    se aproximou furtivamente da porta, viu pelas frestas uma mulher viva,
+    provavelmente Mera Fumaça, presa por mãos e tornozelo, e leu a barra externa:
+    não há fio, sineta, lata ou armadilha trabalhada visível, mas a barra pode
+    raspar e bater se for removida sem cuidado.
 
 tempo:
   ano_dr: 1372
@@ -425,10 +431,10 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "amanhecer de 7 Eleasis, junto ao provável galpão baixo de Mera Fumaça na estrada do Fire River"
-  hora_aproximada: "07:34 de 7 Eleasis"
+  hora_aproximada: "07:36 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou os dois captores imediatos, mas perdeu a direção útil do rapaz da corda nova; se ele correu para avisar o intermediário de mãos limpas, já tem vantagem de tempo. Ren alcançou o provável galpão baixo de Mera com Colm nas costas, mas os captores inconscientes ficaram para trás sem amarras."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou os dois captores imediatos, mas perdeu a direção útil do rapaz da corda nova; se ele correu para avisar o intermediário de mãos limpas, já tem vantagem de tempo. Ren alcançou o provável galpão baixo de Mera, deixou Colm em cobertura imperfeita e viu uma mulher viva presa dentro do galpão."
 
 recursos:
   pontos_de_vida:
@@ -450,7 +456,7 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está perto do provável galpão baixo de Mera Fumaça, vestido como homem pobre e carregando Colm/Dent nas costas"
+    - "Ren está junto à porta do provável galpão baixo de Mera Fumaça, vestido como homem pobre"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "O Broche do Semblante Humilde não foi usado na saída atual"
     - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
@@ -463,7 +469,7 @@ recursos:
     - "Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca baixa"
     - "Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada"
     - "Ren seguiu as marcas no mato baixo; não leu o ponto preparado a tempo, mas evitou o laço baixo com uma salvaguarda perfeita"
-    - "Colm/Dent foi solto das cordas principais, está nas costas de Ren, vivo e fraco"
+    - "Colm/Dent foi solto das cordas principais e está escondido de modo imperfeito atrás de tábuas antigas e capim alto, vivo e fraco"
     - "A mulher de avental escuro foi neutralizada por Ren com dois golpes não letais antes de agir; está inconsciente e respirando"
     - "A faca da mulher caiu no barro, fora da mão dela"
     - "O homem com besta leve foi neutralizado por Ren depois de se render; está inconsciente e vivo junto ao monte velho de carvão"
@@ -491,6 +497,14 @@ recursos:
     - "O galpão baixo está fechado por fora com barra de madeira improvisada; há som curto de impacto ou voz abafada vindo de dentro"
     - "Ren não identificou com segurança se a porta do galpão baixo tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada"
     - "Os captores imediatos ficaram inconscientes para trás e não foram amarrados"
+    - "Acomodar Colm em cobertura visual: 10 contra CD 12, falha"
+    - "Aproximação furtiva ao galpão baixo: 16 contra CD 14, sucesso"
+    - "Ver o interior pelas frestas: 24 contra CD 14, sucesso"
+    - "Ler porta e barra sem tocar: 16 contra CD 15, sucesso"
+    - "Colm está fora da linha direta da estrada e do galpão, mas a cobertura é imperfeita e a tosse dele pode denunciá-lo se alguém se aproximar"
+    - "Ren viu uma mulher viva dentro do galpão baixo, provavelmente Mera Fumaça, presa pelas mãos e por um tornozelo a argola baixa ou gancho antigo no piso"
+    - "Não há outra pessoa visível dentro do galpão, mas a iluminação ruim e as pilhas impedem certeza completa"
+    - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode raspar e bater se removida sem cuidado"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1293,8 +1307,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como Ren abre ou contorna a porta do galpão baixo sem saber se há alarme ou armadilha"
-    - "decidir se Ren deixa Colm/Dent nas costas, escondido perto do galpão ou em outro ponto antes de tentar libertar Mera"
+    - "decidir se Ren remove a barra do galpão baixo com cuidado, chama a mulher presa, tenta abrir por outro caminho ou recua"
+    - "decidir se Ren reforça a cobertura de Colm/Dent antes de libertar Mera"
     - "decidir se Ren volta para amarrar/desarmar os captores inconscientes antes que acordem ou se aceita esse risco"
     - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
@@ -1338,8 +1352,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está perto do provável galpão baixo de Mera Fumaça, às 07:34 de 7 Eleasis, vestido como homem pobre e carregando Colm/Dent nas costas. Ele chegou sem ser percebido por ninguém visível. O galpão baixo está fechado por fora com barra de madeira improvisada, e há som curto de impacto ou voz abafada vindo de dentro. Ren viu capim pisado, barro raspado, pedaço de corda curta e sinais de fechamento apressado, mas não identificou com segurança se a porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada. A secagem maior fica além, com sombras suficientes para esconder alguém imóvel. A mulher e o besteiro ficaram inconscientes para trás, vivos e não amarrados."
-  risco_imediato: "alto localizado: Colm/Dent está vivo, mas fraco e carregado por Ren. Mera pode estar presa dentro do galpão baixo, mas Ren não confirmou quem ou o que está atrás da porta. Os captores imediatos ficaram inconscientes e não amarrados. O rapaz da corda nova pode estar levando notícia ao homem de mãos limpas, e Ren não tem rastro limpo para segui-lo. A prioridade escolhida agora determinará se Ren salva Mera, protege Colm, preserva prisioneiros ou reduz o risco de reforços."
+  cena_atual: "Ren está junto à porta do provável galpão baixo de Mera Fumaça, às 07:36 de 7 Eleasis, vestido como homem pobre. Colm/Dent está escondido de modo imperfeito atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão, mas sua tosse pode denunciá-lo se alguém se aproximar. Ren chegou à porta sem ser percebido por ninguém visível. Pela fresta, viu uma mulher viva, provavelmente Mera Fumaça, presa pelas mãos e por um tornozelo; não há outra pessoa visível no interior, mas as pilhas e a luz ruim impedem certeza completa. A porta está fechada por fora com barra improvisada. Ren não viu fio, sineta, lata ou armadilha trabalhada; a barra pode fazer ruído se removida sem cuidado."
+  risco_imediato: "alto localizado: Colm/Dent está vivo, mas fraco e mal escondido. Mera provavelmente está presa dentro do galpão baixo. Os captores imediatos ficaram inconscientes e não amarrados. O rapaz da corda nova pode estar levando notícia ao homem de mãos limpas. A prioridade escolhida agora determinará se Ren liberta Mera com discrição, protege Colm, preserva prisioneiros ou reduz o risco de reforços."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1350,7 +1364,7 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren lida com a porta do galpão baixo de Mera sem ter identificado alarme ou armadilha"
-    - "decidir onde Colm/Dent fica enquanto Ren verifica Mera Fumaça"
+    - "decidir se Ren remove a barra do galpão baixo com cuidado, chama a mulher presa, tenta abrir por outro caminho ou recua"
+    - "decidir se Ren reforça a cobertura de Colm/Dent antes de libertar Mera Fumaça"
     - "decidir se Ren aceita deixar os captores inconscientes para trás sem amarras"
     - "verificar depois a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir novos observadores até sobreviventes"

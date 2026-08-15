@@ -213,7 +213,7 @@ relacoes:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
     local: "perto do provável galpão baixo de Mera Fumaça, na secagem velha da estrada do Fire River"
-    status: "vivo, fraco e carregado nas costas de Ren"
+    status: "vivo, fraco e escondido de modo imperfeito perto do galpão baixo"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -264,6 +264,9 @@ relacoes:
       carregou cautelosamente até perto do provável galpão baixo de Mera
       Fumaça. Colm conseguiu murmurar fragmentos sobre Mera e o galpão baixo,
       mas continua fraco demais para se mover com segurança sozinho.
+      Ren então o encostou atrás de tábuas antigas e capim alto, fora da linha
+      direta da estrada e do galpão. A cobertura é imperfeita e a tosse de Colm
+      pode denunciá-lo se alguém se aproximar.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -298,6 +301,8 @@ relacoes:
       - "Ren cortou as cordas principais de Colm/Dent e o colocou nas costas."
       - "Colm/Dent conseguiu murmurar fragmentos sobre Mera e o galpão baixo."
       - "Ren carregou Colm/Dent até perto do provável galpão baixo sem ser percebido por ninguém visível."
+      - "Ren encostou Colm/Dent atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão."
+      - "A cobertura de Colm/Dent é imperfeita, e a tosse dele pode denunciá-lo se alguém se aproximar."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -308,14 +313,14 @@ relacoes:
       - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
-      - "Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse e possível ferimento não diagnosticado."
+      - "Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse, cobertura ruim e possível ferimento não diagnosticado."
       - "O rapaz da corda nova pode ter avisado o intermediário de mãos limpas; Ren perdeu a direção útil do rastro."
       - "A informação sobre Mera vem de um captor rendido e ainda não foi confirmada diretamente."
   mera_fumaca:
     nome: "Mera Fumaça"
     tipo: "contato rural possível / guardiã temporária de Colm-Dent"
     local: "secagem velha na estrada do Fire River, possivelmente galpão baixo"
-    status: "provavelmente dentro do galpão baixo fechado por fora; ainda não vista diretamente"
+    status: "provavelmente a mulher viva vista dentro do galpão baixo; presa e ainda não identificada por fala direta"
     atitude_para_ren: "desconhecida"
     confianca: "desconhecida"
     respeito: "desconhecido"
@@ -329,6 +334,10 @@ relacoes:
       curto de impacto ou voz abafada vindo de dentro. O galpão está fechado por
       fora com barra de madeira improvisada, mas Ren não identificou com
       segurança se há alarme, armadilha, fio, cunha ou apenas tranca rural.
+      Ren depois inspecionou o interior pelas frestas e viu uma mulher viva,
+      presa pelas mãos e por um tornozelo a uma argola baixa ou gancho antigo.
+      Pela situação e pela fala anterior dos captores, ela provavelmente é Mera,
+      mas Ren ainda não confirmou por conversa direta.
     informacoes_observadas_por_ren:
       - "Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River."
       - "Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra."
@@ -338,6 +347,10 @@ relacoes:
       - "Há som curto de impacto ou voz abafada vindo de dentro do galpão baixo."
       - "A porta do galpão baixo está fechada por fora com barra de madeira improvisada."
       - "Ren não identificou com segurança se a porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada."
+      - "Ren viu uma mulher viva dentro do galpão baixo, presa pelas mãos e por um tornozelo."
+      - "A mulher vista provavelmente é Mera Fumaça, mas Ren ainda não confirmou por fala direta."
+      - "Não há outra pessoa visível dentro do galpão, mas a luz ruim e pilhas internas impedem certeza completa."
+      - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode fazer ruído se removida sem cuidado."
     riscos:
       - "A informação vem de um captor rendido, ainda não confirmada diretamente."
       - "Se Mera estiver presa, pode haver outro captor, fechadura, armadilha ou pressão contra ela."
