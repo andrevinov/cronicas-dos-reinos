@@ -17,8 +17,8 @@ localizacao:
   continente: "Faerûn"
   regiao: "The Vast"
   cidade: "Ravens Bluff"
-  area: "posto da Night Watch / City Guard"
-  ponto_exato: "sala lateral reservada do posto da Night Watch, diante de Luath"
+  area: "Jack Mooney & Sons Circus"
+  ponto_exato: "rota interna de remendos, diante de Silva Elkwood"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -338,7 +338,16 @@ localizacao:
     externo não nomeia Ren Kage, Ren Kagehira, gravadora ou menino; a identidade
     fica retida com Luath até requisição selada de autoridade competente. Luath
     guardou o pacote em gaveta de ferro e pretende tentar encaminhamento a Tyr no
-    primeiro cinza.
+    primeiro cinza. Antes de sair, Ren comparou Luath aos Miburo/Shinsengumi de
+    Kozakura: homens do bakufu odiados por criminosos, não santos, mas honrados e
+    ainda de pé quando a cidade fingia não ver a sujeira. Luath recebeu o respeito
+    de modo seco, sem calor explícito, mas sem rejeitar. Ren voltou ao circo pela
+    rota longa usando Passo Sombrio e sombras. A rota não foi limpa em termos de
+    tempo: sombras interrompidas, luz de patrulha, poças refletindo luar e esperas
+    forçadas custaram minutos. Ainda assim, Ren conferiu a volta com atenção, não
+    percebeu cauda útil e entrou no Jack Mooney & Sons Circus pela rota interna de
+    remendos sem acordar a rotina. Silva Elkwood está acordada entre Ren e o
+    coração do acampamento, perguntando se ele veio limpo.
 
 tempo:
   ano_dr: 1372
@@ -350,11 +359,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "madrugada de 7 Eleasis, no posto da Night Watch"
-  hora_aproximada: "02:24 de 7 Eleasis"
+  periodo_do_dia: "madrugada de 7 Eleasis, no Jack Mooney & Sons Circus"
+  hora_aproximada: "03:06 de 7 Eleasis"
   clima: "névoa baixa e fria vinda do Dragon Reach, lona úmida, terra pisada e cheiro de capim molhado"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas foi ativado por Ren por volta de 01:32 de 7 Eleasis e pode durar até cerca de 02:32 se a concentração for mantida; Visão no Escuro foi ativada no mesmo momento e pode durar até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24; Luath pretende tentar encaminhamento a Tyr no primeiro cinza. O total de 80 PO da apresentação da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24; Luath pretende tentar encaminhamento a Tyr no primeiro cinza. O total de 80 PO da apresentação da Casa Veyr está sob controle de Jack/Tobb, mas a parte de Ren ainda será acertada depois."
 
 recursos:
   pontos_de_vida:
@@ -374,8 +383,8 @@ recursos:
     po: 25
   condicoes:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
-    - "Passos sem Pegadas ativo desde cerca de 01:32 de 7 Eleasis; concentração possível até cerca de 02:32 se não for quebrada"
-    - "Ren está numa sala lateral reservada do posto da Night Watch, diante de Luath"
+    - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
+    - "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, diante de Silva Elkwood"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
     - "A identidade da fonte fica retida com Luath até requisição selada de autoridade competente"
@@ -1177,6 +1186,7 @@ objetivos:
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
     - "decidir para onde Ren vai após o lacre reservado das evidências da Ponte Baixa: sair ainda sob os minutos finais de Passos sem Pegadas, ficar para falar mais com Luath ou buscar descanso"
+    - "responder a Silva se a volta ao circo veio limpa antes de avançar para Nera, Tavin, Jack, descanso ou outro plano"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
     - "manter Nera e Tavin protegidos na carroça verde; Silva endureceu a segurança interna e avisou Ren a não voltar direto para eles se trouxer cauda"
     - "observar se a Ponte Baixa, Narwhal, Red Sail, Dalm ou interessados no camarote oeste reagem à retirada das evidências"
@@ -1218,8 +1228,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está numa sala lateral reservada do posto da Night Watch, diante de Luath, às 02:24 de 7 Eleasis. Após voltar da Ponte Baixa sem cauda útil percebida, entregou a Luath três evidências retiradas da sala seca: tira de controle com retenção anulada/volume 13/V. Rook/M. Harrow/data recente, tira encerada com Kage/gravadora/menino/antes de maré e cilindro curto de matriz/cera com marca de sol apagado. Ren pediu registro como testemunha/fonte em risco. Luath selou o material com cera da Night Watch como recebido de fonte reservada sob risco plausível de represália, sem nomear Ren Kage, Ren Kagehira, gravadora ou menino no registro externo. A identidade fica retida com Luath até requisição selada de autoridade competente. Luath guardou o pacote em gaveta de ferro e pretende tentar encaminhamento a Tyr no primeiro cinza. Passos sem Pegadas ainda dura poucos minutos se a concentração de Ren for mantida; Visão no Escuro dura até cerca de 09:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
-  risco_imediato: "moderado: Ren está no posto da Night Watch sem cauda útil percebida, mas a entrega das evidências criou rastro institucional. O registro externo não expõe o nome de Ren, mas o pacote reservado pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. Luath não conseguiu transformar as evidências em batida imediata nem em lacre de Tyr de madrugada."
+  cena_atual: "Ren está na rota interna de remendos do Jack Mooney & Sons Circus, diante de Silva Elkwood, às 03:06 de 7 Eleasis. Após o lacre reservado das evidências da Ponte Baixa por Luath, Ren voltou ao circo pela rota longa usando Passo Sombrio e sombras. A rota custou tempo por luzes, poças e sombras interrompidas, mas Ren não percebeu cauda útil e entrou sem acordar a rotina. Silva está acordada, avaliou que Ren parece inteiro e perguntou se ele veio limpo. Visão no Escuro continua ativa até cerca de 09:32. Passos sem Pegadas expirou por volta de 02:32. O Broche do Semblante Humilde está gasto até o próximo amanhecer."
+  risco_imediato: "moderado: Ren chegou ao circo sem cauda útil percebida, mas a noite ainda carrega rastros institucionais e inimigos atentos. O pacote reservado da Ponte Baixa pode sofrer pressão futura dentro da guarda ou de Tyr. Dentro da Ponte Baixa, a retirada de evidências, a linha de cinza tocada, a lingueta do trilho solta e a marca 'K ->' podem denunciar a passagem de Ren a exame competente. A entrada no circo não acordou a rotina; Silva é a única presença relevante na cena atual."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1230,5 +1240,5 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir o que Ren faz depois do lacre reservado das evidências da Ponte Baixa"
+    - "responder a Silva se Ren veio limpo e decidir se procura Nera/Tavin, Jack, descanso ou outra ação antes do amanhecer"
     - "checar Dorra Hest e as carroças dos fornos de cal em intervalo futuro, sem usar o nome de Kethra antes de saber quem está ouvindo"

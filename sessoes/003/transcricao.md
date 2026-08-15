@@ -3745,3 +3745,79 @@ Do lado de fora da sala, o posto range com madrugada: botas, tosse, uma pergunta
 Hora aproximada: **02:24 de 7 Eleasis, 1372 DR**. Ren está na sala lateral reservada do posto da **Night Watch**, diante de Luath. As três evidências da Ponte Baixa foram seladas sob custódia provisória da Night Watch como material recebido de **fonte reservada sob risco plausível de represália**, sem nomear Ren no registro externo. **Passos sem Pegadas** ainda deve durar poucos minutos, se Ren mantiver concentração; **Visão no Escuro** continua ativa. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**.
 
 O que Ren faz?
+
+**Jogador**
+
+“Na minha terra havia homens do bakufu que eram odiados por criminosos. Não eram santos, mas eram bastante honrados. Quando a cidade queria fingir que não via a sujeira, eles eram os únicos que ficavam de pé. Eles se intitulavam Shinsengumi, mas o nome que eu mais gostava deles era Miburo, os Lobos de Mibu."
+
+Ren sorri.
+
+"Você me lembra esses homens, Luath. Um homem honrado, tentando seguir seu próprio código em meio a uma cidade que parece querer arrancar qualquer senso de honra de qualquer um. Você tem meu respeito.”
+
+Ren se despede, e volta pro circo pelo caminho mais longo, usando as sombras.
+
+[Usar a sombras tem que dar algum tipo de vantagem nesses deslocamentos. Antes, quando Ren tinha que andar absolutamente cada passo, ele tinha algum bônus. Poder se teleportar de sombra em sombra, a noite? Não é possível que ele continue tão fácil de ser localizado quanto antes. Acho que até eu, que não sou atlético como Kagehira, conseguiria me ocultar bem a noite com um poder desses, rs.]
+
+**Narrador**
+
+Luath não sorri de imediato.
+
+A palavra estrangeira passa por ele como uma moeda de outro reino: ele não conhece a face, mas entende o peso pelo modo como Ren a entrega.
+
+"Lobos", ele repete, em comum, como se testasse se gosta ou não da tradução.
+
+Então solta uma respiração curta pelo nariz.
+
+"Já me chamaram coisa pior por menos honra."
+
+Ele fecha a gaveta de ferro com a ponta dos dedos, sem bater. A chave some por baixo do cinto, junto da espada e da noite.
+
+"Guarde o respeito para quando eu ainda estiver de pé depois que isso subir a gente grande. Respeito antes da pressão é fácil." A voz continua seca, mas não fria. "Ainda assim... recebido."
+
+Ele chama o guarda da porta e manda abrir a saída lateral, não a frente do posto.
+
+"Você saiu da Ponte Baixa sem trazer cauda para cá. Tente sair daqui sem levar meu corredor até o circo."
+
+Decisão de mesa registrada para uso futuro: **Passo Sombrio** não dá bônus fixo de Furtividade, mas em deslocamento noturno com cadeia real de sombras ele muda a rota possível. Pode conceder vantagem, reduzir CD, permitir evitar área exposta ou impedir que uma falha vire cauda direta. Onde houver luz forte, sombra interrompida ou falta de linha de visão, ainda pode haver teste, custo de tempo ou rota pior.
+
+Teste de Furtividade de Ren para voltar ao circo pela rota longa usando Passo Sombrio e sombras: d20 com vantagem [4, 4] -> 4 + 7 = 11 contra CD 13. Falha.
+
+Teste de Percepção de Ren para conferir cauda durante a volta ao circo: d20 19 + 6 = 25 contra CD 14. Sucesso.
+
+Teste de Furtividade de Ren para entrar no circo pela rota interna sem acordar a rotina: d20 com vantagem [16, 9] -> 16 + 7 = 23 contra CD 12. Sucesso.
+
+As sombras ajudam.
+
+Não o bastante para transformar Ravens Bluff em uma linha reta.
+
+Nos primeiros minutos, enquanto **Passos sem Pegadas** ainda segura o mundo atrás dele, Ren some do posto como se a porta lateral tivesse cuspido só frio. Depois a magia se desfaz. O silêncio pesado que o acompanhava desde a Ponte Baixa se solta dele em algum beco escuro, e a cidade volta a ter lama, água, rangido, vidro ruim e lamparina demais onde ele queria parede apagada.
+
+O Passo Sombrio muda tudo que um homem comum chamaria de beco sem saída. Ren atravessa de uma sombra sob sacada para a boca escura de um depósito, de uma pilha de lenha para o fundo de uma carroça vazia, de um vão entre duas chaminés para a parte baixa de um muro.
+
+Mas a noite não é feita só de sombras boas.
+
+Duas ruas estão lavadas por luz de patrulha. Uma passagem que parecia útil termina em quintal aberto, branco de luar refletido em poças. Em outro ponto, uma linha de varais molhados balança justo quando Ren mede o próximo salto, e ele precisa esperar, imóvel, enquanto três homens bêbados discutem se uma janela caiu sozinha ou se alguém tem amante no segundo andar.
+
+O resultado é ruim para tempo, não para cauda.
+
+Ren vê isso com clareza. Ninguém mantém ritmo com ele. Ninguém repete escolhas. Ninguém corrige a própria rota quando ele corrige a dele. Há olhos comuns demais, noite comum demais, medo comum demais; nenhum fio útil puxando sua sombra até o circo.
+
+Ele chega mais tarde do que queria, mas limpo.
+
+Na borda do Jack Mooney & Sons Circus, as lonas dormem como barcos encalhados. A tenda menor é só volume escuro. As cozinhas são cinza apagado. A carroça verde fica longe o bastante para não puxar o coração antes da checagem.
+
+Ren entra pela rota interna de remendos sem acordar a rotina. Só uma pessoa parece pertencer acordada àquela hora.
+
+Silva Elkwood está sentada num caixote baixo, embrulhada num xale grosso, com uma caneca entre as mãos e uma faca pequena descansando sobre a coxa como se fosse ferramenta de costura.
+
+Ela não se assusta quando Ren aparece. Apenas ergue os olhos.
+
+"Inteiro", ela diz, avaliando mãos, roupa, respiração. "A primeira parte."
+
+O olhar dela vai para trás dele, para as sombras entre as carroças.
+
+"Limpo?"
+
+Hora aproximada: **03:06 de 7 Eleasis, 1372 DR**. Ren voltou ao **Jack Mooney & Sons Circus** pela rota longa. **Passos sem Pegadas** expirou no caminho, por volta de **02:32**; **Visão no Escuro** continua ativa. Ele não percebeu cauda útil e entrou no circo sem acordar a rotina. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Silva está acordada na rota interna de remendos, entre Ren e o coração do acampamento.
+
+O que Ren faz?

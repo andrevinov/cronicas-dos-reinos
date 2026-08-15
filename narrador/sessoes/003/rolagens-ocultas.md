@@ -1221,3 +1221,31 @@ Consequências:
   lateral: ao menos uma pessoa no posto saberá que Luath recebeu de madrugada
   um pacote reservado ligado à Ponte Baixa. Isso pode virar rumor institucional
   ou pressão futura se alguém procurar essa trilha.
+
+---
+
+## Noite de 7 Eleasis: retorno ao circo após Luath
+
+Contexto: Ren se despediu de Luath e voltou ao Jack Mooney & Sons Circus pela
+rota longa, usando Passo Sombrio e sombras. Passos sem Pegadas ainda estava
+ativo nos primeiros minutos, mas expiraria no caminho por volta de 02:32.
+
+Rolagens abertas:
+
+* Furtividade de Ren para voltar ao circo pela rota longa usando Passo Sombrio
+  e sombras: d20 com vantagem [4, 4] -> 4 + 7 = 11 contra CD 13. Falha.
+* Percepção de Ren para conferir cauda durante a volta ao circo: d20 19 + 6 =
+  25 contra CD 14. Sucesso.
+* Furtividade de Ren para entrar no circo pela rota interna sem acordar a rotina:
+  d20 com vantagem [16, 9] -> 16 + 7 = 23 contra CD 12. Sucesso.
+
+Consequências:
+
+* A decisão recorrente sobre Passo Sombrio em deslocamento furtivo urbano foi
+  registrada em `regras/decisoes.md` como DEC-0006.
+* A falha de Furtividade na volta gera custo de tempo e rota ruim, não cauda:
+  Ren precisa esperar, corrigir caminho e evitar trechos com luz forte ou
+  sombras interrompidas.
+* A Percepção alta confirma que Ren não percebe cauda útil acompanhando a volta.
+* Ren entra no circo pela rota interna de remendos sem acordar a rotina.
+* Silva Elkwood está acordada e intercepta a cena de modo controlado.

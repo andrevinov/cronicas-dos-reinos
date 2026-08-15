@@ -53,3 +53,13 @@ Este arquivo registra interpretações recorrentes adotadas durante a campanha.
 - Justificativa: isso preserva a riqueza de Kara-Tur como cenário de Forgotten Realms sem quebrar a matemática, progressão e identidade mecânica de D&D 5e.
 - Aplicação futura: antes de conceder item, técnica, veneno, magia, monstro ou estatística vinda de Kara-Tur, consultar `cenario/regioes/kara-tur/itens-e-treinamentos-5e.md` e registrar adaptações relevantes se puderem voltar a aparecer.
 - Estado: permanente.
+
+## DEC-0006 — Passo Sombrio em deslocamento furtivo urbano
+
+- Sessão de origem: 003
+- Contexto: Ren alcançou nível 6 como monge do Caminho da Sombra e passou a usar Passo Sombrio em ruas, becos, telhados e interiores escuros de Ravens Bluff.
+- Regra oficial: Passo Sombrio permite, quando o monge está em luz baixa ou escuridão, teletransportar-se como ação bônus para um espaço desocupado que consiga ver a até 60 pés e que também esteja em luz baixa ou escuridão. A habilidade não concede bônus direto de Furtividade fora do ataque corpo a corpo posterior.
+- Decisão adotada: em deslocamentos furtivos fora de combate, Passo Sombrio não soma bônus fixo de Furtividade, mas altera a rota disponível. Quando houver cadeia real de sombras, linha de visão e espaço desocupado, ele pode conceder vantagem, reduzir CD, permitir evitar uma área exposta ou impedir que uma falha vire cauda direta. Quando a rota tiver luz forte, curvas sem linha de visão, multidão, neblina refletindo luz, interiores desconhecidos ou sombras interrompidas, ainda pode exigir testes ou gerar custo de tempo, ruído, espera ou rota pior.
+- Justificativa: isso preserva o valor tático enorme da habilidade sem transformá-la em invisibilidade, voo, teleporte sem limite ou Passos sem Pegadas permanente.
+- Aplicação futura: à noite, em ruínas, becos, telhados e interiores com penumbra, Ren deve ser claramente mais difícil de cercar, seguir ou forçar por rotas previsíveis. Em áreas iluminadas, vigiadas ou sem linha de visão, o narrador deve descrever os limites concretos antes de rolar.
+- Estado: permanente.
