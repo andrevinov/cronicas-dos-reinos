@@ -3535,3 +3535,77 @@ segunda portinhola baixa quase fechada
 Hora aproximada: **01:52 de 7 Eleasis, 1372 DR**. Ren está na **dobra direita da garganta baixa**, além da sala seca da Ponte Baixa. A primeira trava do trilho foi desencaixada sem disparar sinal útil, mas a passagem ruim produziu um toque seco que provavelmente foi percebido adiante. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren decide recuar. Não há sentido em continuar se ele já foi ouvido. Ele tentará voltar de onde veio. Usará todas as sombras possíveis para se teleportar.
+
+**Narrador**
+
+Ren escolhe não disputar profundidade com uma passagem que acabou de responder.
+
+Teste de Percepção de Ren para identificar uma cadeia segura de sombras no recuo: d20 20 + 6 = 26 contra CD 14. Sucesso.
+
+A decisão encaixa junto com a visão.
+
+Não é uma única sombra longa. É uma sequência: a dobra onde ele está, o canto baixo antes do pano, a parte escura atrás da brasa protegida, a boca do painel, o trecho seco do corredor e, mais longe, o retângulo cinzento da entrada da Ponte Baixa. Cada ponto é ruim para um homem comum. Para Ren, cada ponto é uma sílaba.
+
+Teste de Furtividade de Ren ao recuar sob Passos sem Pegadas usando Passo Sombrio quando possível: d20 19 + 17 = 36 contra CD 18. Sucesso.
+
+O primeiro Passo Sombrio não faz som.
+
+A pedra à frente fica vazia. A sombra atrás do pano ganha Ren.
+
+Depois, corpo.
+
+Teste de Acrobacia de Ren nos trechos baixos que ainda exigem passagem física: d20 8 + 7 = 15 contra CD 14. Sucesso.
+
+Ele passa por baixo da borda pesada do pano sem repetir o erro. O ombro recolhe antes do peso costurado. O joelho troca base no ponto seco. A linha de cinza já não está perfeita, mas Ren não a piora.
+
+Teste de Investigação de Ren para não travar o próprio recuo em controles já vistos: d20 4 + 4 = 8 contra CD 13. Falha.
+
+Não há tempo para devolver a mentira ao lugar.
+
+A lingueta do trilho fica solta atrás dele. A linha de cinza fica marcada. O arquivo continua com ausências pequenas demais para olho distraído e grandes demais para quem conhece a sala. Ren entende que tentar consertar tudo agora seria trocar saída por perfeição.
+
+Teste de Intuição de Ren para escolher entre recompor sinais ou ganhar distância: d20 13 + 6 = 19 contra CD 14. Sucesso.
+
+Ele ganha distância.
+
+O segundo Passo Sombrio o tira da sala baixa para a boca do painel. O terceiro encurta o corredor seco. Depois há trecho físico, porque curva e madeira quebram linha de visão. Ren atravessa baixo, rápido, sem bater lâmina ou cotovelo.
+
+Quando chega à câmara de retenção, a água já entrou.
+
+Não pelo corredor seco. Não ainda.
+
+Mas o canal à esquerda não é mais som distante. A maré empurrou uma língua escura para dentro da câmara baixa, cobrindo parte do pó claro e comendo a borda das marcas antigas de umidade. A água não corre como enchente aberta; ela ocupa, procura nível, respira contra pedra. O caminho que Ren escolheu na ida continua seco o bastante para passar, mas a Ponte Baixa deixou de fingir que é lugar morto.
+
+Mais dois saltos curtos de sombra e um trecho baixo de corpo levam Ren até a boca da passagem.
+
+A rua de serviço volta como ar frio e cinza.
+
+Do lado de fora, ninguém grita. Nenhuma lamparina se levanta. Nenhum olho útil está esperando no ponto errado. A pilha de barris ainda cheira a madeira velha, peixe seco e água evaporada. A fresta seca da Ponte Baixa fica atrás dele com a mesma discrição suja de antes, exceto pelo que Ren sabe que carregou para fora.
+
+Ele saiu.
+
+Mas saiu deixando sinais para trás.
+
+Visão atual de Ren:
+
+```text
+rua de serviço úmida
+  |
+[Ren] atrás da pilha de barris vazios
+  |
+  | fresta seca / Ponte Baixa
+  v
+entrada baixa
+  |
+câmara de retenção: água já entrando pelo canal esquerdo
+  |
+corredor seco -> sala de arquivo -> pano escuro -> trilho destravado
+```
+
+Hora aproximada: **01:55 de 7 Eleasis, 1372 DR**. Ren está fora da Ponte Baixa, oculto atrás da pilha de barris vazios junto à entrada seca. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele carrega as três evidências retiradas da sala seca. Não percebe cauda útil ou observador externo na saída.
+
+O que Ren faz?

@@ -1080,3 +1080,52 @@ Consequências:
 * A pressão da segunda maré aumenta na rota úmida atrás. Ainda não alcança a
   garganta seca atual, mas o retorno por áreas baixas fica mais arriscado com
   o tempo.
+
+---
+
+## Noite de 6 para 7 Eleasis: recuo pela cadeia de sombras
+
+Contexto: Ren decidiu recuar depois de provavelmente ter sido ouvido na dobra
+direita. Pretendeu voltar pelo caminho de entrada usando todas as sombras
+possíveis para Passo Sombrio.
+
+Rolagens abertas:
+
+* Percepção de Ren para identificar uma cadeia segura de sombras no recuo: d20
+  20 + 6 = 26 contra CD 14. Sucesso.
+* Furtividade de Ren ao recuar sob Passos sem Pegadas usando Passo Sombrio
+  quando possível: d20 19 + 17 = 36 contra CD 18. Sucesso.
+* Acrobacia de Ren nos trechos baixos que ainda exigem passagem física: d20 8
+  + 7 = 15 contra CD 14. Sucesso.
+* Investigação de Ren para não travar o próprio recuo em controles já vistos:
+  d20 4 + 4 = 8 contra CD 13. Falha.
+* Intuição de Ren para escolher entre recompor sinais ou ganhar distância: d20
+  13 + 6 = 19 contra CD 14. Sucesso.
+
+Rolagens ocultas:
+
+* Ouvinte adiante transformar o recuo de Ren em direção útil: d20 18 + 4 = 22
+  contra CD 26. Falha.
+* Resposta interna fechar a rota de retorno antes de Ren atravessar a sala seca:
+  d20 12 + 3 = 15 contra CD 16. Falha.
+* Pressão da segunda maré alcançar a câmara de retenção durante o recuo: d20
+  17 + 2 = 19 contra CD 14. Sucesso.
+* Olho externo na Ponte Baixa perceber Ren saindo pela fresta seca: d20 5 + 4
+  = 9 contra CD 26. Falha.
+* Sinal deixado na sala seca ficar evidentemente mais alterado após o recuo
+  apressado: d20 6 + 3 = 9 contra CD 13. Falha.
+
+Consequências:
+
+* Ren identifica uma cadeia excelente de sombras e consegue usar Passo Sombrio
+  repetidas vezes no recuo sem custo de ki, onde há linha de visão e espaço
+  desocupado.
+* Ren sai da Ponte Baixa sem ser percebido por olho externo e sem que o ouvinte
+  adiante transforme a retirada em direção útil imediata.
+* A rota de retorno não fecha antes de Ren atravessar a sala seca.
+* Ren não recompõe os sinais deixados: documentos retirados, linha de cinza
+  tocada e lingueta do trilho solta continuam como indícios para exame posterior.
+  A falha de Investigação não piora os sinais além do que já existia.
+* A segunda maré alcança a câmara de retenção durante o recuo. O corredor seco
+  usado por Ren ainda permite saída, mas o interior da Ponte Baixa passa a ter
+  água ocupando parte da câmara baixa.
