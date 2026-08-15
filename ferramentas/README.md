@@ -27,3 +27,32 @@ python3 ferramentas/rolar-dados.py ren listar
 ```
 
 Saídas públicas podem ser copiadas para a transcrição da sessão. Rolagens ocultas devem ser registradas apenas na área do narrador quando forem relevantes.
+
+## Verificação de integridade
+
+Durante a refatoração de economia de contexto, usar:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 ferramentas/verificar-integridade.py
+```
+
+Para comparar o estado atual com a fotografia lógica criada antes da migração:
+
+```bash
+python3 ferramentas/verificar-integridade.py \
+  --baseline baseline/estado-logico-2026-08-15.yaml
+```
+
+O verificador confere UTF-8, YAML sem chaves duplicadas, arquivos obrigatórios, referências de `campanha.yaml`, existência da sessão atual, consistência básica entre estado e ficha, limites de PV/Ki e coerência temporal.
+
+## Análise de rollouts do Codex
+
+Para medir o comportamento do Codex sem inserir telemetria dentro da narração:
+
+```bash
+python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
+python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
+```
+
+A baseline pré-refatoração usada para comparação está em `baseline/rollout-2026-08-15.json`.
