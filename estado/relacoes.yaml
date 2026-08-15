@@ -1022,7 +1022,15 @@ relacoes:
       aceitou não mandar homens para dentro da Ponte Baixa antes da madrugada
       para não queimar a entrada. Se Ren não voltar até o fim da manhã, Luath
       tratará a ausência como crime, prova e responsável, não como simples corpo
-      de estrangeiro descartável.
+      de estrangeiro descartável. Na madrugada de 7 Eleasis, Ren voltou vivo ao
+      posto e entregou três evidências retiradas da sala seca da Ponte Baixa,
+      relatando a rota, o arquivo vivo, a brasa protegida, o pano com linha de
+      cinza, a lingueta do trilho, a segunda portinhola e a maré entrando na
+      câmara de retenção. Luath reconheceu utilidade, mas não conseguiu
+      transformar o material em prova limpa, batida imediata ou lacre de Tyr
+      durante a madrugada; ofereceu selar o pacote como material recebido de
+      informante em risco sob custódia provisória da Night Watch, dependendo de
+      como Ren quer aparecer no registro.
     informacoes_indiretas:
       - "Luath não é santo, mas isso o torna mais útil do que ingênuo."
       - "Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco."
@@ -1072,6 +1080,8 @@ relacoes:
       - "Luath recebeu de Ren a pista de Dalm sobre Masao, Ponte Baixa, segunda maré, porões secos, papéis antes de lâminas, gravadora e menino."
       - "Luath aceitou não mandar homens para dentro da Ponte Baixa antes da madrugada, para não queimar a entrada."
       - "Se Ren não voltar até o fim da manhã, Luath tratará o caso como crime, prova e responsável."
+      - "Na madrugada de 7 Eleasis, Ren entregou a Luath três evidências da Ponte Baixa: tira de controle com retenção anulada/volume 13/V. Rook/M. Harrow/data recente, tira encerada com Kage/gravadora/menino/antes de maré e cilindro/matriz com marca de sol apagado."
+      - "Luath não conseguiu montar resposta discreta imediata nem lacre de Tyr de madrugada; pode selar o material sob custódia provisória da Night Watch como recebido de informante em risco."
   sirrus_melandor:
     nome: "Sirrus Melandor"
     tipo: "Chief Prelate / alto sacerdote de Tyr"

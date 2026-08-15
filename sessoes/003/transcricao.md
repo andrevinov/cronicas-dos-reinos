@@ -3609,3 +3609,87 @@ corredor seco -> sala de arquivo -> pano escuro -> trilho destravado
 Hora aproximada: **01:55 de 7 Eleasis, 1372 DR**. Ren está fora da Ponte Baixa, oculto atrás da pilha de barris vazios junto à entrada seca. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele carrega as três evidências retiradas da sala seca. Não percebe cauda útil ou observador externo na saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren sai. Usando uma combinação de sombras e Passos sem Pegadas, ele tenta chegar a Luath para entregar os documentos que adquiriu e relatar o que viu.
+
+**Narrador**
+
+Ren deixa a Ponte Baixa antes que a rua decida lembrar dele.
+
+Teste de Furtividade de Ren para sair dos armazéns velhos rumo a Luath sob Passos sem Pegadas: d20 15 + 17 = 32 contra CD 16. Sucesso.
+
+Teste de Percepção de Ren para notar cauda ou reação nas primeiras ruas após a Ponte Baixa: d20 14 + 6 = 20 contra CD 15. Sucesso.
+
+Nos primeiros quarteirões, nada cola nele.
+
+Isso não quer dizer que a Ponte Baixa continue ignorante. Quer dizer apenas que, se alguém lá dentro entendeu que havia uma mão estranha, essa mão não virou perseguição imediata nas ruas. Ren vê uma lamparina se apagar longe demais para ter certeza. Vê um vulto comum demais junto de um armazém. Espera. O vulto cospe no chão e entra bêbado por uma porta lateral.
+
+Nada útil.
+
+Teste de Investigação de Ren para escolher rota até o posto sem cruzar fluxos previsíveis: d20 4 + 4 = 8 contra CD 13. Falha.
+
+Teste de Acrobacia de Ren para usar sombras, becos e passagens altas sem perder tempo: d20 4 + 7 = 11 contra CD 13. Falha.
+
+A rota não fica bonita.
+
+Ren evita o caminho mais direto, depois corrige demais. Um beco promissor termina em grade baixa trancada. Um telhado úmido não oferece sombra confiável o bastante para saltar sem linha limpa. Duas vezes ele precisa voltar meia quadra, não por perseguição, mas por cálculo ruim entre lamparina, água e parede.
+
+Ele chega ao posto da Night Watch mais tarde do que queria.
+
+Teste de Persuasão de Ren para obter acesso reservado a Luath de madrugada com provas urgentes: d20 13 + 0 = 13 contra CD 12. Sucesso.
+
+O guarda da porta não gosta de ver Ren àquela hora.
+
+Gosta menos ainda quando Ren diz que veio da Ponte Baixa.
+
+A palavra sobe pelo posto como faca sem brilho. Não em pânico: em cansaço. Um guarda some pelo corredor. Outro leva Ren para uma sala lateral que ele já conhece bem demais: banco duro, mesa riscada, mapa velho na parede, cheiro de lã molhada e cinza fria.
+
+Luath não aparece pronto.
+
+Quando aparece, alguns minutos depois, vem com a camisa presa errado no colarinho, cinto de espada fechado às pressas e olhos de homem que tinha conseguido deitar sem conseguir dormir.
+
+"Você voltou", ele diz.
+
+Não é alívio. Não é bronca. É contagem de vivos.
+
+Ren entrega o que trouxe e relata o essencial: a entrada seca, a câmara de retenção, o corredor de passa-carga, a sala de arquivo vivo, as datas atuais, **V. Rook**, **M. Harrow**, **D. Mord**, **retenção anulada**, **volume 13**, a tira com **Kage**, **gravadora**, **menino** e **antes de maré**, a matriz com **sol apagado**, a brasa protegida, o pano com linha de cinza, o trilho, a lingueta, a segunda portinhola e a água entrando na câmara quando ele saiu.
+
+Luath escuta sem interromper até a palavra "menino".
+
+Então levanta dois dedos para o guarda na porta.
+
+"Sem nomes no corredor."
+
+A porta fecha.
+
+Luath põe as três peças sobre a mesa, uma ao lado da outra, sem tocar nelas mais do que precisa. Ele não lê rápido como escriba de Narwhal. Não entende a cera como Nera. Não conhece o sol apagado como quem nasceu naquele submundo. E está cansado demais para fingir que uma prova roubada virou prova limpa só porque chegou nas mãos certas.
+
+Teste de Luath para reconhecer valor imediato das evidências da Ponte Baixa: d20 1 + 5 = 6 contra CD 13. Falha.
+
+Ele fica no ponto errado por tempo demais: cadeia de custódia, invasão, roubo, quem viu Ren entrar, quem viu sair, se isso pode explodir na cara da guarda antes de explodir na cara de Narwhal. Não porque seja burro. Porque é guarda. E porque a cidade inteira já está tentando transformar crime em papel correto antes do amanhecer.
+
+"Isto é útil", ele diz por fim. A voz sai baixa. "Não é limpo."
+
+Teste de Luath para montar resposta discreta antes que a Ponte Baixa seja limpa: d20 5 + 3 = 8 contra CD 14. Falha.
+
+Ele olha o mapa. Olha a hora. Olha as três peças.
+
+"Se eu mando gente minha agora, eles chegam molhados, atrasados e barulhentos. Se mando poucos, talvez percam o buraco. Se mando muitos, acordo metade do Harbor e dou à outra metade a chance de dizer que a guarda invadiu armazém por palavra de estrangeiro armado."
+
+A frustração aparece só na mandíbula.
+
+"E Tyr não vai lacrar isso em câmara limpa antes do primeiro cinza."
+
+Ele pega pano encerado comum do posto, não bonito, e manda o guarda buscar cera de registro. Não a de Tyr. Não a de Narwhal. A da Night Watch.
+
+"Eu posso fazer uma coisa agora: guardar como material recebido de informante em risco, sob meu selo, com hora, descrição e testemunha de recebimento. Isso não te absolve de como pegou. Também não deixa isso sumir da sua manga se te revistarem na rua."
+
+Ele olha para Ren, finalmente mais homem do que procedimento.
+
+"Mas antes de eu selar: você quer isto no meu registro como vindo de **Ren Kage**, artista do circo, como vindo de homem sem nome, ou como vindo de Ren Kagehira?"
+
+Hora aproximada: **02:18 de 7 Eleasis, 1372 DR**. Ren está numa sala lateral do posto da **Night Watch**, diante de Luath. **Passos sem Pegadas** ainda está ativo por mais alguns minutos, se Ren mantiver concentração; **Visão no Escuro** continua ativa. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. As três evidências da Ponte Baixa estão sobre a mesa, prestes a serem seladas sob custódia provisória de Luath, dependendo de como Ren quer se identificar no registro.
+
+O que Ren faz?

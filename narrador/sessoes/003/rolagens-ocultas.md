@@ -1129,3 +1129,63 @@ Consequências:
 * A segunda maré alcança a câmara de retenção durante o recuo. O corredor seco
   usado por Ren ainda permite saída, mas o interior da Ponte Baixa passa a ter
   água ocupando parte da câmara baixa.
+
+---
+
+## Noite de 7 Eleasis: Ren leva as evidências a Luath
+
+Contexto: Ren saiu da Ponte Baixa com três evidências e tentou chegar a Luath
+usando sombras e Passos sem Pegadas para entregar o material e relatar o que viu.
+
+Rolagens abertas:
+
+* Furtividade de Ren para sair dos armazéns velhos rumo a Luath sob Passos sem
+  Pegadas: d20 15 + 17 = 32 contra CD 16. Sucesso.
+* Percepção de Ren para notar cauda ou reação nas primeiras ruas após a Ponte
+  Baixa: d20 14 + 6 = 20 contra CD 15. Sucesso.
+* Investigação de Ren para escolher rota até o posto sem cruzar fluxos
+  previsíveis: d20 4 + 4 = 8 contra CD 13. Falha.
+* Acrobacia de Ren para usar sombras, becos e passagens altas sem perder tempo:
+  d20 4 + 7 = 11 contra CD 13. Falha.
+* Persuasão de Ren para obter acesso reservado a Luath de madrugada com provas
+  urgentes: d20 13 + 0 = 13 contra CD 12. Sucesso.
+
+Rolagens ocultas:
+
+* Resposta da Ponte Baixa transformar os sinais deixados por Ren em cauda
+  imediata: d20 10 + 4 = 14 contra CD 18. Falha.
+* Pressão especializada cruzar a rota de Ren antes de ele entrar no posto: d20
+  5 + 5 = 10 contra CD 15. Falha.
+* Olheiro urbano notar Ren apesar de Passos sem Pegadas e sombras: d20 10 + 4 =
+  14 contra CD 22. Falha.
+* Luath estar acordado e disponível para conversa reservada: d20 6 + 3 = 9
+  contra CD 12. Falha.
+* Posto da Night Watch manter corredor reservado sem curiosos úteis: d20 18 + 2
+  = 20 contra CD 13. Sucesso.
+* Luath reconhecer valor imediato das evidências da Ponte Baixa: d20 1 + 5 = 6
+  contra CD 13. Falha.
+* Luath montar resposta discreta antes que a Ponte Baixa seja limpa: d20 5 + 3
+  = 8 contra CD 14. Falha.
+* Equipe interna da Ponte Baixa perceber a retirada de evidências antes da
+  guarda chegar: d20 5 + 4 = 9 contra CD 14. Falha.
+* Ponte Baixa conseguir limpar a sala seca antes de qualquer resposta da guarda:
+  d20 9 + 3 = 12 contra CD 15. Falha.
+* Tyr ter canal rápido de madrugada para lacrar as novas evidências: d20 4 + 2
+  = 6 contra CD 15. Falha.
+
+Consequências:
+
+* Ren chega ao posto sem cauda útil percebida e sem olheiro urbano transformar a
+  rota em identificação útil.
+* A pressão especializada não cruza a rota de Ren nesta cena.
+* Luath não estava imediatamente disponível; o acesso reservado é obtido, mas
+  custa minutos.
+* O posto preserva corredor reservado sem curiosos úteis.
+* Luath recebe o relato e o material, mas a falha crítica o prende na cadeia de
+  custódia e no risco institucional. Ele não consegue transformar as evidências
+  em batida imediata nem reconhecer valor operacional completo de madrugada.
+* Sem canal rápido de Tyr, a melhor opção imediata de Luath é selar o material
+  sob custódia provisória da Night Watch como recebido de informante em risco,
+  com hora, descrição e testemunha.
+* A Ponte Baixa ainda não percebeu plenamente a retirada nem conseguiu limpar a
+  sala seca antes de qualquer resposta futura da guarda, mas isso é temporário.
