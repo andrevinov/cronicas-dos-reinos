@@ -212,8 +212,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "perto do provável galpão baixo de Mera Fumaça, na secagem velha da estrada do Fire River"
-    status: "vivo, fraco e escondido de modo imperfeito perto do galpão baixo"
+    local: "atrás de tábuas e capim junto à vala seca da secagem velha da estrada do Fire River"
+    status: "vivo, solto, fraco e reunido a Mera Fumaça; precisa de tratamento hoje"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -266,7 +266,9 @@ relacoes:
       mas continua fraco demais para se mover com segurança sozinho.
       Ren então o encostou atrás de tábuas antigas e capim alto, fora da linha
       direta da estrada e do galpão. A cobertura é imperfeita e a tosse de Colm
-      pode denunciá-lo se alguém se aproximar.
+      pode denunciá-lo se alguém se aproximar. Ren libertou Mera e a trouxe até
+      Colm. Mera indicou Iria Doss como tratamento rural possível, mas uma
+      carroça de resposta entrou no ramal antes que o grupo pudesse partir.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -303,6 +305,9 @@ relacoes:
       - "Ren carregou Colm/Dent até perto do provável galpão baixo sem ser percebido por ninguém visível."
       - "Ren encostou Colm/Dent atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão."
       - "A cobertura de Colm/Dent é imperfeita, e a tosse dele pode denunciá-lo se alguém se aproximar."
+      - "Mera Fumaça está livre e reunida a Colm/Dent."
+      - "Segundo Mera, Colm/Dent precisa de tratamento hoje, embora não pareça estar morrendo naquele instante."
+      - "Uma carroça de resposta entrou no ramal antes que Ren pudesse retirar Colm/Dent da secagem."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -314,16 +319,16 @@ relacoes:
       - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
       - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
       - "Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse, cobertura ruim e possível ferimento não diagnosticado."
-      - "O rapaz da corda nova pode ter avisado o intermediário de mãos limpas; Ren perdeu a direção útil do rastro."
-      - "A informação sobre Mera vem de um captor rendido e ainda não foi confirmada diretamente."
+      - "O rapaz da corda nova avisou aliados e retornou numa carroça com um condutor e um homem de besta leve."
+      - "A cobertura atual pode ser descoberta quando a carroça ganhar visão da porta aberta e da vala."
   mera_fumaca:
     nome: "Mera Fumaça"
     tipo: "contato rural possível / guardiã temporária de Colm-Dent"
-    local: "secagem velha na estrada do Fire River, possivelmente galpão baixo"
-    status: "viva e libertada por Ren; ferida, frágil e ainda sem confiança"
-    atitude_para_ren: "atenta e hostil no primeiro contato, mas consciente"
+    local: "junto à vala seca da secagem velha na estrada do Fire River, reunida a Colm/Dent"
+    status: "viva, libertada por Ren, ferida e manca; cooperando na retirada"
+    atitude_para_ren: "cautelosa e pragmática; coopera porque Ren a libertou e está protegendo Colm/Dent"
     confianca: "baixa"
-    respeito: "baixo"
+    respeito: "moderado inicial"
     motivo: >
       Dorra teria enviado Colm/Dent para uma secagem velha com Mera Fumaça
       depois que os fornos de cal deixaram de ser seguros. O besteiro capturado
@@ -338,7 +343,11 @@ relacoes:
       presa pelas mãos e por um tornozelo a uma argola baixa ou gancho antigo.
       Ren confirmou que era Mera Fumaça e a libertou ao entrar, dentro do mesmo
       minuto. Ela estava cansada, magra e irritada, com ferimento e risco de
-      fraqueza, mas sem ameaça de imediato.
+      fraqueza, mas sem ameaça de imediato. Ren a levou até Colm/Dent e pediu
+      descrição dos captores, informação sobre outros presos e indicação de
+      abrigo ou tratamento. Mera respondeu sem barganha, indicou o forno morto
+      e Iria Doss, e reconheceu o rapaz da faixa azul quando a carroça de
+      resposta entrou no ramal.
     informacoes_observadas_por_ren:
       - "Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River."
       - "Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra."
@@ -354,10 +363,35 @@ relacoes:
       - "Não há outra pessoa visível no interior durante a entrada, mas a luz ruim e pilhas internas impedem certeza absoluta além do primeiro cômodo."
       - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode fazer ruído se removida sem cuidado."
       - "A retirada da barra foi barulhenta o suficiente para aumentar risco de alerta."
+      - "Mera viu quatro envolvidos: a mulher de avental escuro, o homem magro da besta, o rapaz de faixa azul e corda nova, e um homem de casaco pardo com mãos de escrivão."
+      - "O homem de casaco pardo tinha punhos limpos, rosto estreito, barba raspada, tinta violeta sob a unha do polegar direito e cicatriz pequena abaixo da orelha esquerda."
+      - "Mera não viu outros prisioneiros além dela e de Colm/Dent."
+      - "Segundo Mera, os captores usavam Colm/Dent para atrair alguém que viesse buscá-lo."
+      - "Mera conhece um forno morto a cinco minutos pelo mato, útil apenas como cobertura breve."
+      - "Mera indicou Iria Doss como curandeira rural que trata ferimentos de cal, problemas no peito e ossos quebrados, mas cuja casa não é secreta."
+      - "Uma carroça de resposta entrou no ramal com o rapaz da faixa azul, um condutor e um homem com besta leve; eles ainda não localizaram o grupo."
     riscos:
-      - "A informação principal veio confirmada pela intervenção direta de Ren, ainda que limitada."
-      - "Se Mera estiver presa, pode haver outro captor, fechadura, armadilha ou pressão contra ela."
-      - "Se Ren ignorar Mera por muito tempo, a situação no galpão baixo pode piorar sem ele ver."
+      - "Mera manca e não consegue sustentar fuga rápida sem ajuda."
+      - "A secagem velha e o galpão baixo estão comprometidos como abrigo."
+      - "A carroça de resposta pode encontrar a porta aberta, a cobertura imperfeita da vala e os sobreviventes em poucos instantes."
+  iria_doss:
+    nome: "Iria Doss"
+    tipo: "curandeira rural e ajustadora de ossos / contato apenas indicado por Mera"
+    local: "casa baixa depois do salgueiro partido, no ramal do rio a leste da secagem velha"
+    status: "não encontrada por Ren; segundo Mera, ativa e capaz de tratar Colm/Dent"
+    atitude_para_ren: "desconhecida"
+    confianca: "desconhecida"
+    respeito: "desconhecido"
+    motivo: >
+      Mera indicou Iria como alguém acostumada a tratar queimaduras de cal,
+      problemas pulmonares e ossos quebrados de trabalhadores locais. Iria
+      aceitaria moeda e a palavra de Mera, mas sua casa é conhecida na estrada
+      e não funciona como esconderijo seguro.
+    informacoes_observadas_por_ren:
+      - "A existência, capacidade e disposição de Iria vêm apenas do relato de Mera."
+      - "A casa de Iria fica a cerca de quinze minutos para uma pessoa saudável, mais tempo com Colm e Mera feridos."
+    riscos:
+      - "Perguntas na estrada podem levar perseguidores até a casa de Iria."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"

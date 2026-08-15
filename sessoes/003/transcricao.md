@@ -4431,7 +4431,7 @@ Ren corta os nós da corda com a lâmina, primeiro nas mãos e depois no tornoze
 
 A primeira palavra dela sai seca, quase raspada.
 
-"Pensei que não voltava."
+"Pensei que não saía viva daqui."
 
 Ela respira e segura o peito um segundo antes de continuar.
 
@@ -4442,5 +4442,57 @@ A frase é rápida e truncada. Ela tenta apontar de novo para a rua com os olhos
 O galpão continua vazio por enquanto. O barulho da barra, sem dúvida, não desapareceu no escuro; se alguém estava perto o suficiente para ouvir, ele não veio ainda.
 
 Hora aproximada: **07:38 de 7 Eleasis, 1372 DR**. Ren está dentro do galpão baixo, de costas para a saída. Mera Fumaça está viva e livre, ainda fraca, com rosto inchado e ferimento antigo. Colm/Dent está fora do alcance visual imediata, escondido atrás de tábuas altas e capim, em risco de revelar sua posição com tosse. A barreira da porta foi aberta com barulho alto o bastante para poder chamar atenção se alguém estivesse a menos de dois passos do ponto. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**.
+
+O que Ren faz?
+
+**Jogador**
+
+Enquanto vai removendo Mera dali e levando até "Dent", Ren pergunta:
+
+1) Quem eram eles? Pede descrição.
+2) Tem mais gente presa?
+3) Tem algum lugar seguro por aqui? Dent precisa de um curandeiro ou médico.
+
+**Narrador**
+
+Mera tenta levantar depressa e descobre que o tornozelo não concorda. Ela prende o ar, aceita o apoio de Ren sem agradecimento e sai do galpão quase arrastando o pé. O estalo da barra ficou para trás; agora cada passo dela parece alto demais.
+
+Enquanto cruzam os poucos passos até as tábuas e o capim, ela responde em pedaços curtos.
+
+"Quatro que eu vi. A mulher de avental escuro e o magro da besta ficaram com Dent. O rapaz era novo, faixa azul no pulso, corda clara que ainda não pegou barro."
+
+A faixa azul e a corda nova fecham a mesma figura que Ren viu reagir nos pátios e depois aparecer na estrada.
+
+Mera continua:
+
+"O quarto se vestia como trabalhador, mas não tinha mão de trabalho. Casaco pardo limpo nos punhos, rosto estreito, barba raspada. Tinta violeta debaixo da unha do polegar direito e uma cicatriz pequena abaixo da orelha esquerda. Falava baixo, como escrivão. Não deu nome. Deu ordem e foi embora antes de armarem o laço."
+
+Ela passa pela abertura entre as tábuas e vê Colm encolhido junto à vala seca.
+
+"Não vi mais ninguém preso. Só nós dois. Eles não queriam vender Dent. Queriam que alguém viesse buscá-lo."
+
+Mera se abaixa diante de Colm. Encosta dois dedos no pescoço dele, escuta a tosse e olha as mãos inchadas sem tentar endireitá-las.
+
+"Seguro, não. Aqui acabou. Tem um forno morto atrás do junco alto, cinco minutos pelo mato para leste. Esconde três pessoas por uma hora, talvez duas. Não cura nada."
+
+Ela aponta com o queixo para além da secagem.
+
+"Iria Doss trata queimadura de cal, peito ruim e osso quebrado. Casa baixa depois do salgueiro partido, no ramal do rio. Quinze minutos para gente inteira; mais com ele. Ela aceita moeda e minha palavra. Mas a casa dela não é esconderijo. Quem perguntar na estrada encontra."
+
+Mera torna a olhar Colm.
+
+"Ele precisa dela hoje. Não está morrendo nesta respiração, mas não carrega esse peito por mais uma estrada longa."
+
+Antes que termine, Ren ouve o erro de quem tentou chegar sem ser ouvido.
+
+Uma roda pequena bate numa pedra da estrada. Depois vem o puxão seco de rédea, madeira rangendo e três pancadas no lado de uma carroça: duas curtas, uma longa.
+
+Pela abertura entre capim e tábuas, Ren vê a carroça vazia reduzir junto ao ramal da secagem. O rapaz da faixa azul está no banco ao lado do condutor. Na traseira, um segundo homem mantém uma besta leve atravessada sobre os joelhos. Ainda não olharam diretamente para a vala, mas a porta aberta do galpão e a barra caída estarão visíveis assim que fizerem a curva.
+
+Mera vê a faixa azul.
+
+"É ele."
+
+Hora aproximada: **07:42 de 7 Eleasis, 1372 DR**. Ren está atrás das tábuas e do capim junto à vala seca, com **Mera Fumaça livre** e **Colm/Dent vivo, fraco e ferido**. Mera não conhece outros prisioneiros. Ela indicou um **forno morto**, a cerca de cinco minutos pelo mato, como esconderijo brevíssimo, e a curandeira rural **Iria Doss**, a cerca de quinze minutos para uma pessoa saudável, como tratamento possível mas não secreto. Uma carroça de resposta acaba de entrar no ramal: o rapaz da faixa azul está no banco, há um condutor e um homem com besta leve na traseira. Eles ainda não localizaram Ren, Mera ou Colm. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?

@@ -1547,3 +1547,34 @@ Consequências:
 * A porta não apresenta fio, sineta, lata ou armadilha trabalhada visível.
 * A barra externa pode fazer ruído se removida sem cuidado; Ren entende como
   levantá-la com controle.
+
+---
+
+## Libertação de Mera e resposta no ramal da secagem
+
+Contexto: Ren abriu o galpão, libertou Mera Fumaça, levou-a até Colm/Dent e fez
+perguntas urgentes enquanto o rapaz da corda nova tentava obter resposta.
+
+Rolagens abertas já registradas na transcrição:
+
+* Retirar a barra do galpão sem barulho: d20 5 + 7 = 12 contra CD 14. Falha.
+* Perceber presença extra no interior ao entrar: d20 15 + 6 = 21 contra CD 15.
+  Sucesso.
+
+Rolagens ocultas:
+
+* Rapaz da corda nova conseguir resposta rápida e retornar à secagem durante a
+  conversa: d20 15 + 2 = 17 contra CD 15. Sucesso.
+* Resposta do homem de mãos limpas aproximar-se da secagem sem alertar Ren: d20
+  2 + 4 = 6 contra CD 16. Falha.
+
+Consequências:
+
+* Mera é libertada e reunida a Colm/Dent sem combate dentro do galpão.
+* Mera descreve apenas o que viu diretamente e não conhece outros prisioneiros.
+* O rapaz de faixa azul e corda nova consegue trazer uma carroça com um condutor
+  e um homem de besta leve ao ramal da secagem.
+* A aproximação falha em surpreender Ren. Ele ouve a roda, a rédea e o sinal na
+  madeira antes que a carroça alcance linha de visão útil sobre a vala.
+* A carroça ainda não localizou Ren, Mera ou Colm/Dent quando a cena devolve o
+  controle ao jogador.
