@@ -24,12 +24,12 @@ jobs:
 
       - name: Commit
         run: |
-          if git diff --quiet; then
+          if [ -z "$(git status --porcelain -- ferramentas/contexto_core.py)" ]; then
             echo "Núcleo já existe."
             exit 0
           fi
           git config user.name "André Carvalho"
           git config user.email "me@andrev.me"
-          git add ferramentas/contexto_core.py
+          git add -f ferramentas/contexto_core.py
           git commit -m "Separa núcleo de contexto [contexto-core-v1]"
           git push
