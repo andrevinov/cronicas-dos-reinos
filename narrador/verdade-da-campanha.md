@@ -17,6 +17,12 @@ Ele não é apenas um assassino fugitivo. Masao busca poder, eternidade e uma fo
 de se vingar da divindade de Kara-Tur que, segundo a lenda, o amaldiçoou ao
 inferno depois que ele roubou um pertence sagrado.
 
+A aparência canônica de Masao é a da imagem em
+`narrador/masao/imagens/masao-hirasawa.png`, não a descrição inicial do documento
+interno. Ele é velho, mas brutalmente musculoso, coberto de cicatrizes e marcas,
+com cabelos brancos longos e desalinhados, sorriso cruel e vestes rituais
+rasgadas com inscrições.
+
 A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a base
 é verdadeira o bastante para orientar a campanha:
 
@@ -30,6 +36,14 @@ A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a ba
 * Masao tenta controlar cidades por baixo, dominando crime, rotas, documentos,
   chantagem, autoridades corrompidas e entradas para ruínas, túneis ou lugares
   enterrados.
+* Masao pretende construir uma máquina metafísica de deicídio que culmina no
+  **Kokuten**, onde tentará matar a divindade que o condenou e tomar a função
+  deixada vazia.
+
+Detalhes reservados ficam em:
+
+* `narrador/masao/README.md`;
+* `narrador/masao/plano.md`.
 
 ### Cronologia de Kozakura e Ren
 
@@ -151,32 +165,37 @@ Masao.
 O nome é uma homenagem deliberada do jogador a Rurouni Kenshin e deve ser
 preservado. Dentro da campanha, a Juppongatana é também uma alcunha própria do
 submundo de Kara-Tur. Seus integrantes, estilos, objetivos, rivalidades e
-relações com Masao devem ser criados para esta continuidade e para Forgotten
-Realms.
+relações com Masao estão canonicamente definidos em `narrador/juppongatana/`.
 
-Funções possíveis dentro do círculo:
+Membros canônicos:
 
-* duelista usado para quebrar adversários em confronto direto;
-* assassino silencioso que não reivindica autoria;
-* sequestrador ou chantagista especializado em vínculos familiares;
-* falsificador, escrivão ou infiltrador de instituições;
-* fanático que vê Masao como fundador de uma nova ordem;
-* agente que odeia Masao, mas serve por medo, dívida ou objetivo comum;
-* explorador de ruínas e entradas subterrâneas;
-* executor capaz de operar entre Kara-Tur e Faerûn.
+* Kurobane Jinzaburō, o Corvo do Estreito;
+* Pan Chu, o Lírio Dourado;
+* Sawagejō Chō, o Caçador de Espadas;
+* Kajiwara Shizune, a Senhora do Selo Negro;
+* Yūkyūzan Anji, o Punho da Ruína;
+* Uonuma Usui, o Olho do Coração;
+* Kureha Shiranui, a Miko da Névoa Vermelha;
+* Amagiri Seishirō, a Lâmina do Intervalo;
+* Wetuji, a Naginata das Nove Vidas;
+* Fuji, a Montanha que se Ajoelha.
 
-Nem todos precisam estar vivos, leais ou presentes em Faerûn.
+Nem todos precisam estar presentes em Faerûn ao mesmo tempo. Alguns podem agir
+fora de cena, chegar por rotas próprias, contrariar Masao parcialmente ou usar
+Ren por interesses particulares. Ainda assim, todos são cânone da campanha.
 
 Diretrizes específicas de uso em jogo, escala de ameaça, lealdade variável,
 dilemas para Ren e inspiração por easter eggs ficam no arquivo reservado
-`narrador/juppongatana.md`.
+`narrador/juppongatana.md` e na pasta `narrador/juppongatana/`.
 
 Inspirações de Kara-Tur para membros, cultos, técnicas e relíquias de apoio ficam
 também em `narrador/kara-tur-segredos.md`.
 
 ### Faerûn
 
-A razão exata da vinda de Masao a Faerûn deve permanecer aberta por enquanto.
+A razão imediata da vinda de Masao a Faerûn pode ter múltiplas camadas, mas a
+direção maior agora é canônica: Faerûn contém peças que permitem transformar a
+vingança contra uma divindade de Kara-Tur em engenharia de apoteose.
 
 Possibilidades compatíveis:
 
@@ -187,6 +206,15 @@ Possibilidades compatíveis:
 * Masao usa Faerûn como novo tabuleiro porque suas redes antigas foram
   comprometidas;
 * mais de uma dessas razões pode ser verdadeira.
+
+Peças maiores do plano:
+
+* Jathiman Dagger e Quagheart de Borem;
+* Heartblood do Karsestone;
+* Nether Scroll perdido ligado a engenharia planar e artefatos;
+* legado da First Imaskarcana;
+* Sol Negro, por mythallar ou equivalente netherese;
+* Kokuten, cuja peça final é a própria divindade atraída para ser morta.
 
 Na narração, sinais de Masao devem surgir por camadas: intermediários, símbolos
 falsos, documentos, pressão no submundo, medo institucional, agentes

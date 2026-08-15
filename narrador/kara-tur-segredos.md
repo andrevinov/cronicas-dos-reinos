@@ -16,6 +16,12 @@ entre Ren, Masao, Clã Kagehira, Kozakura e Faerûn. Ele não é suplemento ofic
 mas define como esta campanha preenche a lacuna entre o retrato oficial de
 Kozakura em 1357 DR e a campanha em 1372 DR.
 
+A composição final da Juppongatana e o plano de Masao em Faerûn foram extraídos
+do mesmo documento e ficam em:
+
+* `narrador/juppongatana/`;
+* `narrador/masao/`.
+
 Usar primeiro como rastros:
 
 * mercadorias;
@@ -51,6 +57,9 @@ Estas verdades são compatíveis com o cânone atual:
   tentou concentrar em Kozakura.
 * A Juppongatana pode misturar membros de Kozakura, Wa, Shou Lung, T'u Lung e
   Koryo. O nome é de Masao; a origem individual de cada membro pode variar.
+* O plano maior de Masao não é apenas controlar submundo: ele quer construir uma
+  máquina metafísica de deicídio e usurpação de função divina, começando por
+  infraestrutura criminosa e terminando no Kokuten.
 
 ---
 

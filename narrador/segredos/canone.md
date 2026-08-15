@@ -69,6 +69,9 @@ pode ser ignorado, investigado ou amadurecer depois.
   muito bem estabelecida.
 * Ao usar membro ou agente direto da Juppongatana, definir objetivo, limite,
   método de fuga e motivo para não encerrar a campanha em uma execução simples.
+* Consultar `narrador/juppongatana/marcos-de-aparicao.md` antes de introduzir
+  qualquer membro das Dez Espadas; os marcos ali são cânone de pressão, ajustável
+  pelas ações de Ren.
 
 ---
 
@@ -117,6 +120,14 @@ Usar conforme as ações de Ren:
 O relógio "círculo de Masao desperta" já alcançou ponto suficiente para que um
 agente mais competente observe Ren, teste sua rotina ou toque um vínculo sem se
 revelar totalmente.
+
+Com a Juppongatana canonicamente definida, a primeira pressão especializada em
+Ravens Bluff deve preferir:
+
+* **Kurobane Jinzaburō**, se a cena envolver telhados, prova física, roubo,
+  documento, cordame, Ponte Baixa, Harbor District ou rota de fuga;
+* **Kajiwara Shizune**, se a cena envolver registros, Tyr, Night Watch, Narwhal,
+  custódia, falso mandado, contrato, selo, autorização ou reputação pública.
 
 Forma base:
 

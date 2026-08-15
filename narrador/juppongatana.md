@@ -10,6 +10,14 @@ Não revelar este conteúdo ao jogador salvo descoberta legítima em jogo.
 
 A **Juppongatana**, ou **Dez Espadas**, é o círculo de elite de Masao Hirasawa.
 
+A lista canônica completa, as imagens extraídas do documento interno e os marcos
+de aparição agora ficam em:
+
+* `narrador/juppongatana/README.md`;
+* `narrador/juppongatana/membros.md`;
+* `narrador/juppongatana/marcos-de-aparicao.md`;
+* `narrador/juppongatana/imagens/`.
+
 O nome é uma homenagem deliberada do jogador a Rurouni Kenshin. A campanha pode
 usar Rurouni Kenshin e outros mangás ou animes ambientados em Japão feudal como
 inspiração estética, temática e estrutural, inclusive como easter eggs. Ainda
@@ -17,7 +25,9 @@ assim, os membros da Juppongatana de Masao devem ser personagens próprios da
 campanha, com nomes, histórias, objetivos, estilos e conflitos adaptados a
 Kara-Tur, Faerûn e à história de Ren.
 
-Eles não são tão poderosos quanto Masao, mas são temidos em Kara-Tur o bastante
+Os membros definidos cobrem Círculo Externo, Círculo do Meio e Círculo Interno.
+Eles não são tão poderosos quanto Masao, exceto por rumores específicos de força
+bruta envolvendo Fuji, mas são temidos em Kara-Tur o bastante
 para que seus nomes, alcunhas ou feitos sejam conhecidos por criminosos,
 shinobi, caçadores de recompensa, cortesãos discretos e sobreviventes de clãs.
 
@@ -123,20 +133,21 @@ Fontes úteis:
 * **Koryo:** rivalidades marítimas, pó sonífero, relíquias submersas, profecias
   e conflitos antigos com Kozakura.
 
-Arquétipos possíveis:
+Arquétipos que foram consolidados na lista canônica:
 
-* duelista de escola refinada que trata combate como cerimônia;
-* shukenja renegado da Névoa Vermelha que mata por espírito, febre ou possessão;
-* falsificador que usa o Selo da Lua Velada melhor do que um guerreiro usaria
-  uma lâmina;
-* wu jen obcecado por roubo de anos, jardins hostis e ovos de chama;
-* yakuza ou ronin de Wa que entende dívida, vergonha e reputação pública;
-* agente de Koryo que odeia Kozakura por razões próprias, mas aceita dinheiro de
-  Masao;
-* monge corrompido de uma ordem de Shou Lung que confunde voto com vingança.
+* mobilidade e furto: Kurobane Jinzaburō;
+* rotas marítimas e força de abordagem: Pan Chu;
+* armas e duelo técnico: Sawagejō Chō;
+* documentos, selos e autoridade falsa: Kajiwara Shizune;
+* corpo e fé quebrada: Yūkyūzan Anji;
+* percepção e negação da escuridão: Uonuma Usui;
+* rito, cinza e medo espiritual: Kureha Shiranui;
+* tempo e intervalo da luta: Amagiri Seishirō;
+* adaptação hengeyokai: Wetuji;
+* força absoluta e devoção: Fuji.
 
-Esses modelos ficam em aberto até cada membro ser criado. Não preencher as Dez
-Espadas inteiras de uma vez se a campanha ainda não precisar disso.
+Antes de colocar qualquer um deles em cena, consultar a ficha consolidada em
+`narrador/juppongatana/membros.md`.
 
 ---
 

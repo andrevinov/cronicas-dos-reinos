@@ -53,6 +53,43 @@ Ren não sabe:
 * onde estão os membros sobreviventes das Dez Espadas;
 * quem realmente salvou Ren depois da facada de Masao.
 
+### Membros conhecidos ou estudados
+
+Ren estudou ou ouviu relatos sobre nomes ligados à Juppongatana e ao submundo de
+Kara-Tur. Isso não significa que conheça localização atual, lealdade real,
+motivos íntimos ou planos presentes de cada um.
+
+Ren conhece, em linhas gerais:
+
+* **Kurobane Jinzaburō**, o Corvo do Estreito: wako ladrão de mensagens, famoso
+  por mobilidade vertical, cordas, telhados e fugas preparadas;
+* **Pan Chu**, o Lírio Dourado: capitão wako do Golden Lily, força brutal e rota
+  marítima clandestina;
+* **Sawagejō Chō**, o Caçador de Espadas: colecionador obsessivo de armas,
+  usuário de lâminas estranhas e técnicas mutáveis;
+* **Kajiwara Shizune**, a Senhora do Selo Negro: falsificadora e manipuladora de
+  documentos, selos, ordens e identidades;
+* **Yūkyūzan Anji**, o Punho da Ruína: monge apostatado, mestre do Futae no
+  Kiwami e destruidor de pedra, portas e defesas;
+* **Uonuma Usui**, o Olho do Coração: guerreiro cego de timbei e rochin, perigoso
+  justamente em escuridão;
+* **Kureha Shiranui**, a Miko da Névoa Vermelha: figura ritual ligada a cinza,
+  febre, névoa vermelha e mortes interpretadas como maldição;
+* **Amagiri Seishirō**, a Lâmina do Intervalo: duelista lendário associado a
+  Shukuchi, distância e cortes antes da reação;
+* **Wetuji**, a Naginata das Nove Vidas: hengeyokai-gata e kensei lendária,
+  conhecida antes da geração de Ren;
+* **Fuji**, a Montanha que se Ajoelha: gigante de força absurda, possivelmente
+  ligado a sangue oni, devoto pessoal de Masao.
+
+Ren não sabe automaticamente:
+
+* quais deles estão em Faerûn;
+* quais vieram a Ravens Bluff;
+* quais obedecem Masao por devoção, medo, dívida, acordo ou objetivo próprio;
+* quais histórias são exagero, propaganda ou encobrimento;
+* se algum deles já percebeu a identidade pública de Ren como Kage.
+
 ---
 
 ## Sobre Kozakura e Kara-Tur

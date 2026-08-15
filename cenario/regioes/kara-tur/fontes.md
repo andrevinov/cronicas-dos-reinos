@@ -20,7 +20,7 @@ Faerûn e os reinos orientais de Forgotten Realms.
 
 | Prioridade | Fonte | Uso na campanha | Arquivo local |
 | --- | --- | --- | --- |
-| Alta, interna | Kara-Tur e Faerûn | Encaixe aprovado de Ren, Masao e Clã Kagehira na lacuna entre Kozakura em 1357 DR e a campanha em 1372 DR; relação geral entre Kara-Tur e Faerûn; limites do que Ren sabe sobre o Ocidente | `books/Kara-Tur e Faerûn.pdf` |
+| Alta, interna | Kara-Tur e Faerûn | Encaixe aprovado de Ren, Masao e Clã Kagehira na lacuna entre Kozakura em 1357 DR e a campanha em 1372 DR; composição canônica da Juppongatana; imagem e plano canônicos de Masao; relação geral entre Kara-Tur e Faerûn; limites do que Ren sabe sobre o Ocidente | `books/Kara-Tur e Faerûn.pdf` |
 
 Este documento não substitui o suplemento oficial como fonte de cenário. Ele
 define como esta campanha preenche os espaços deixados pelo material publicado,

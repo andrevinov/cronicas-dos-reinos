@@ -634,7 +634,10 @@ Consequência em 3/6:
 
 Consequência em 6/6:
 
-* Masao ou seu círculo envia executor forte, sequestrador, infiltrador ou duelista;
+* Masao ou seu círculo envia membro direto ou agente de uma das Dez Espadas;
+* para a primeira pressão em Ravens Bluff, preferir Jinzaburō se o alvo for
+  prova, rota, telhado, documento físico ou fuga; preferir Shizune se o alvo for
+  reputação, ordem falsa, custódia, ata, contrato ou Selo da Lua Velada;
 * o conflito pode mirar abrigo, reputação ou vínculo emocional antes de mirar Ren diretamente.
 
 Diretriz de calibragem:

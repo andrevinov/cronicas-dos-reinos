@@ -25,6 +25,15 @@ Informações desta pasta só devem migrar para arquivos públicos quando Ren de
 ```text
 narrador/
 ├── verdade-da-campanha.md
+├── juppongatana/
+│   ├── README.md
+│   ├── membros.md
+│   ├── marcos-de-aparicao.md
+│   └── imagens/
+├── masao/
+│   ├── README.md
+│   ├── plano.md
+│   └── imagens/
 ├── segredos/
 │   └── canone.md
 ├── sessoes/
@@ -48,3 +57,10 @@ O arquivo reservado `segredos/canone.md` registra acontecimentos externos e
 reações de mundo que podem avançar independentemente das ações imediatas de Ren.
 Ele deve ser consultado ao abrir um novo dia no mundo ou quando uma sessão
 atravessar várias horas relevantes.
+
+## Antagonistas maiores
+
+Os arquivos reservados `juppongatana/` e `masao/` registram a estrutura canônica
+dos antagonistas orientais ligados à história de Ren. Eles devem ser consultados
+antes de usar Masao, um membro das Dez Espadas, artefatos do plano de deicídio ou
+pressões de escala regional/continental em Faerûn.

@@ -195,8 +195,9 @@ Masao Hirasawa deve crescer como antagonista de longo prazo, não como alvo loca
 Continuidade pós-sessão 002: o círculo de elite de Masao foi canonizado como
 **Juppongatana**, conhecido em tradução simples como **as Dez Espadas**. Usar o
 nome como homenagem deliberada do jogador a Rurouni Kenshin e como alcunha
-própria do submundo de Kara-Tur. Criar integrantes adaptados a esta campanha,
-com vínculos próprios com Masao, Ren e Forgotten Realms.
+própria do submundo de Kara-Tur. A composição completa foi definida depois pelo
+documento interno `books/Kara-Tur e Faerûn.pdf` e está registrada em
+`narrador/juppongatana/`.
 
 Não revelar plano final cedo. Sinais iniciais devem parecer peças desconectadas:
 
@@ -209,32 +210,33 @@ Não revelar plano final cedo. Sinais iniciais devem parecer peças desconectada
 
 Masao possui um círculo de executores de elite no arquétipo de dez especialistas.
 Na campanha, a homenagem é assumida no nome e na função dramática; os membros
-devem ganhar objetivos, estilos e rivalidades próprios.
+possuem objetivos, estilos e rivalidades próprios já definidos.
 
 A partir de Ren no nível 5, um membro da Juppongatana pode aparecer em Ravens
 Bluff ou por meio de intermediários. O primeiro encontro deve demonstrar aumento
 real de escala: dano, perda, deslocamento forçado, ameaça a vínculo, dilema de
 matar ou custo estratégico são consequências válidas. Consultar
-`narrador/juppongatana.md` antes de usar.
+`narrador/juppongatana.md` e `narrador/juppongatana/marcos-de-aparicao.md` antes
+de usar.
 
-Possíveis funções de elite:
+Funções de elite já consolidadas:
 
-* duelista forte em combate um contra um, usado para testar ou quebrar Ren;
-* assassino furtivo que entra e sai sem reivindicar autoria;
-* sequestrador/chantagista que prefere marcar terreno e manipular vínculos;
-* infiltrador social ligado a documentos, templos ou nobreza;
-* fanático que admira Masao como futuro senhor de uma nova ordem;
-* agente que odeia Masao, mas ainda serve por medo, dívida ou objetivo comum.
+* Jinzaburō: roubo, mobilidade e fuga;
+* Shizune: documentos, selos e autoridade falsa;
+* Chō: duelo técnico e interesse no Getsuei-ryu;
+* Pan Chu: rotas marítimas e força de abordagem;
+* Anji, Usui e Kureha: mudança de escala para corpo, percepção e rito;
+* Seishirō, Wetuji e Fuji: Círculo Interno, reservado para calamidade pessoal.
 
-Possibilidade futura não canônica:
+Possibilidade futura agora canônica de pressão:
 
-* após o Benefício da Lona Aberta, Ren pode ser abordado por um executor de
-  elite ligado a Masao, de preferência alguém que Ren conheça ou reconheça do
-  passado;
+* após o Benefício da Lona Aberta, a Ponte Baixa e as novas evidências chegarem
+  a Luath/Tyr, a primeira pressão direta deve preferir **Jinzaburō** ou
+  **Shizune**;
 * a cena não precisa ser combate até a morte: pode ser conversa, teste,
   intimidação, duelo interrompido ou recado calculado;
-* usar a Juppongatana como homenagem e criar o executor como personagem próprio
-  da campanha, com função, voz e conflito ligados a Masao e Ren.
+* o objetivo inicial deve ser prova, rotina, reputação ou vínculo, não execução
+  limpa de Ren.
 
 Escalada recomendada:
 
