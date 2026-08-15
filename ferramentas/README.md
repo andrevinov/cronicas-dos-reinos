@@ -28,6 +28,52 @@ python3 ferramentas/rolar-dados.py ren listar
 
 Saídas públicas podem ser copiadas para a transcrição da sessão. Rolagens ocultas devem ser registradas apenas na área do narrador quando forem relevantes.
 
+## Consulta única de contexto
+
+`ferramentas/contexto.py` é a interface preferencial para leituras durante narração e preparação. Ela evita abrir arquivos acumulativos inteiros quando uma consulta específica basta.
+
+Comandos principais:
+
+```bash
+python3 ferramentas/contexto.py status
+python3 ferramentas/contexto.py cena
+python3 ferramentas/contexto.py npc kethra
+python3 ferramentas/contexto.py relacao jack
+python3 ferramentas/contexto.py conhecimento masao
+python3 ferramentas/contexto.py regra furtividade
+python3 ferramentas/contexto.py buscar "ponte baixa"
+```
+
+A busca genérica exclui por padrão `narrador/` e transcrições completas. A escalada precisa ser deliberada:
+
+```bash
+python3 ferramentas/contexto.py buscar "sol apagado" --reservado
+python3 ferramentas/contexto.py buscar "frase exata" --historico
+```
+
+A saída padrão é YAML e possui orçamento de 8 KiB. O teto técnico é 16 KiB; quando necessário, o resultado é compactado antes da impressão. Também é possível pedir JSON:
+
+```bash
+python3 ferramentas/contexto.py --json status
+python3 ferramentas/contexto.py --max-bytes 4096 npc nera
+```
+
+Por padrão a ferramenta anexa **somente metadados** da consulta a `runtime/consultas-contexto.jsonl`: comando, termo, nível, quantidade de fontes, bytes devolvidos e se houve truncamento. Esse arquivo é ignorado pelo Git e não contém o conteúdo lido. Para testes ou uso sem telemetria local:
+
+```bash
+python3 ferramentas/contexto.py --sem-log status
+```
+
+Semântica rápida:
+
+- `status`: somente o estado quente de `runtime/contexto.yaml`;
+- `cena`: estado quente + recorte de `runtime/cena.yaml`;
+- `npc`: medidores rápidos + relação atual, sem abrir segredos automaticamente;
+- `relacao`: uma única entidade de `estado/relacoes.yaml`;
+- `conhecimento`: seções relevantes do conhecimento de Ren;
+- `regra`: seções relevantes dos resumos internos de regras;
+- `buscar`: descoberta limitada para localizar a próxima fonte, não substituto para consultas dirigidas.
+
 ## Estado quente (`runtime/`)
 
 A camada operacional rápida é gerada deterministicamente a partir das fontes canônicas:
@@ -80,6 +126,8 @@ Desde a Etapa 3, ele também protege o estado quente:
 - cada arquivo quente deve ficar abaixo de 8 KiB;
 - sessão, personagem, recursos, tempo e localização precisam coincidir com as fontes canônicas;
 - cada linha não vazia de `runtime/eventos-pendentes.jsonl` precisa ser um objeto JSON válido.
+
+Na Etapa 4, os testes também garantem que `contexto.py` respeite orçamento, mantenha material reservado/frio fora da busca padrão e consiga consultar runtime, NPCs, relações e conhecimento sem devolver arquivos inteiros.
 
 ## Análise de rollouts do Codex
 
