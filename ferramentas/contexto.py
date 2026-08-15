@@ -19,6 +19,15 @@ if str(TOOLS_DIR) not in sys.path:
 import contexto_core as core
 import transacoes
 
+# Guarda as implementações originais ANTES de substituir os pontos de dispatch
+# do núcleo. Sem isso, o caminho CLI recursaria para o próprio wrapper.
+_CORE_COMMAND_STATUS = core.command_status
+_CORE_COMMAND_SCENE = core.command_scene
+_CORE_COMMAND_RELATION = core.command_relation
+_CORE_COMMAND_NPC = core.command_npc
+_CORE_COMMAND_KNOWLEDGE = core.command_knowledge
+_CORE_COMMAND_SEARCH = core.command_search
+
 # Reexporta a API de helpers usada por testes e por ferramentas auxiliares.
 DEFAULT_MAX_BYTES = core.DEFAULT_MAX_BYTES
 HARD_MAX_BYTES = core.HARD_MAX_BYTES
@@ -68,7 +77,7 @@ def _add_pending_source(data: dict[str, Any]) -> None:
 
 
 def command_status(repo: Path) -> dict[str, Any]:
-    data = core.command_status(repo)
+    data = _CORE_COMMAND_STATUS(repo)
     context = data.get("resultado")
     if not isinstance(context, dict):
         return data
@@ -80,7 +89,7 @@ def command_status(repo: Path) -> dict[str, Any]:
 
 
 def command_scene(repo: Path) -> dict[str, Any]:
-    data = core.command_scene(repo)
+    data = _CORE_COMMAND_SCENE(repo)
     result = data.get("resultado") or {}
     context = result.get("contexto") if isinstance(result, dict) else None
     scene = result.get("cena") if isinstance(result, dict) else None
@@ -96,7 +105,7 @@ def command_scene(repo: Path) -> dict[str, Any]:
 
 
 def command_relation(repo: Path, term: str) -> dict[str, Any]:
-    data = core.command_relation(repo, term)
+    data = _CORE_COMMAND_RELATION(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict) or not result.get("encontrado"):
         return data
@@ -115,7 +124,7 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
-    data = core.command_npc(repo, term)
+    data = _CORE_COMMAND_NPC(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict) or not result.get("encontrado"):
         return data
@@ -149,7 +158,7 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
-    data = core.command_knowledge(repo, term)
+    data = _CORE_COMMAND_KNOWLEDGE(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict):
         return data
@@ -174,7 +183,7 @@ def command_search(
     reserved: bool,
     historical: bool,
 ) -> dict[str, Any]:
-    data = core.command_search(
+    data = _CORE_COMMAND_SEARCH(
         repo, term, reserved=reserved, historical=historical
     )
     result = data.get("resultado") or {}
@@ -202,7 +211,8 @@ def command_search(
 
 def main() -> int:
     # O parser e o controle de orçamento permanecem no núcleo; apenas substituímos
-    # as consultas que precisam enxergar a sobreposição transacional.
+    # os pontos de dispatch. As funções wrapper chamam as referências originais
+    # guardadas acima, portanto não há recursão.
     core.command_status = command_status
     core.command_scene = command_scene
     core.command_relation = command_relation
