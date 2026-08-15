@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "estrada do Fire River"
-  ponto_exato: "perto do galpão baixo onde Mera Fumaça pode estar presa, na secagem velha da estrada do Fire River"
+  ponto_exato: "interior do galpão baixo da secagem velha da estrada do Fire River"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -431,7 +431,7 @@ tempo:
   dezena: 1
   dia_da_dezena: 7
   periodo_do_dia: "amanhecer de 7 Eleasis, junto ao provável galpão baixo de Mera Fumaça na estrada do Fire River"
-  hora_aproximada: "07:36 de 7 Eleasis"
+  hora_aproximada: "07:38 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
   prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr; o restante do dinheiro fica com Jack/Tobb para lona, equipe, risco e caixa do circo. Dorra teria garantido abrigo ruim para Dent por três dias; esse prazo termina hoje, 7 Eleasis. Ren confirmou Colm/Dent vivo, neutralizou os dois captores imediatos, mas perdeu a direção útil do rapaz da corda nova; se ele correu para avisar o intermediário de mãos limpas, já tem vantagem de tempo. Ren alcançou o provável galpão baixo de Mera, deixou Colm em cobertura imperfeita e viu uma mulher viva presa dentro do galpão."
@@ -1307,8 +1307,8 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir se Ren remove a barra do galpão baixo com cuidado, chama a mulher presa, tenta abrir por outro caminho ou recua"
-    - "decidir se Ren reforça a cobertura de Colm/Dent antes de libertar Mera"
+    - "decidir se Ren acelera o resgate, primeiro da Mera Fumaça e de Colm/Dent, ou se estabiliza um em troca de exposição potencial"
+    - "decidir se Ren reforça a cobertura de Colm/Dent antes de trazer Mera para fora do galpão"
     - "decidir se Ren volta para amarrar/desarmar os captores inconscientes antes que acordem ou se aceita esse risco"
     - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
@@ -1352,8 +1352,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está junto à porta do provável galpão baixo de Mera Fumaça, às 07:36 de 7 Eleasis, vestido como homem pobre. Colm/Dent está escondido de modo imperfeito atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão, mas sua tosse pode denunciá-lo se alguém se aproximar. Ren chegou à porta sem ser percebido por ninguém visível. Pela fresta, viu uma mulher viva, provavelmente Mera Fumaça, presa pelas mãos e por um tornozelo; não há outra pessoa visível no interior, mas as pilhas e a luz ruim impedem certeza completa. A porta está fechada por fora com barra improvisada. Ren não viu fio, sineta, lata ou armadilha trabalhada; a barra pode fazer ruído se removida sem cuidado."
-  risco_imediato: "alto localizado: Colm/Dent está vivo, mas fraco e mal escondido. Mera provavelmente está presa dentro do galpão baixo. Os captores imediatos ficaram inconscientes e não amarrados. O rapaz da corda nova pode estar levando notícia ao homem de mãos limpas. A prioridade escolhida agora determinará se Ren liberta Mera com discrição, protege Colm, preserva prisioneiros ou reduz o risco de reforços."
+  cena_atual: "Ren está dentro do galpão baixo de Mera Fumaça, às 07:38 de 7 Eleasis, ainda de disfarce de homem pobre. Mera Fumaça está viva e foi libertada. Colm/Dent ainda está escondido perto da vala com cobertura imperfeita e tosse fraca. A retirada da barra foi ruidosa; ainda não houve nova resposta, mas isso pode virar risco. Mera continua ferida e frágil, sem combate imediato."
+  risco_imediato: "alto localizado: a remoção barulhenta da saída pode atrair atenção caso alguém estivesse nos arredores; Colm/Dent permanece vivo, fraco e mal escondido, com potencial de denúncia por tosse; os captores imediatos ainda estão inconscientes e sem amarras; o rapaz da corda nova ainda pode estar carregando notícia ao homem de mãos limpas."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1364,7 +1364,7 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir se Ren remove a barra do galpão baixo com cuidado, chama a mulher presa, tenta abrir por outro caminho ou recua"
-    - "decidir se Ren reforça a cobertura de Colm/Dent antes de libertar Mera Fumaça"
+    - "decidir se Ren acelera com a saída de Mera Fumaça e de Colm/Dent, aceitando exposição parcial para ganhar tempo"
+    - "decidir se Ren reforça a cobertura de Colm/Dent antes de trazer Mera para fora do galpão"
     - "decidir se Ren aceita deixar os captores inconscientes para trás sem amarras"
     - "verificar depois a secagem velha na estrada do Fire River e a identidade de Mera Fumaça sem conduzir novos observadores até sobreviventes"

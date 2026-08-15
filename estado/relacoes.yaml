@@ -320,10 +320,10 @@ relacoes:
     nome: "Mera Fumaça"
     tipo: "contato rural possível / guardiã temporária de Colm-Dent"
     local: "secagem velha na estrada do Fire River, possivelmente galpão baixo"
-    status: "provavelmente a mulher viva vista dentro do galpão baixo; presa e ainda não identificada por fala direta"
-    atitude_para_ren: "desconhecida"
-    confianca: "desconhecida"
-    respeito: "desconhecido"
+    status: "viva e libertada por Ren; ferida, frágil e ainda sem confiança"
+    atitude_para_ren: "atenta e hostil no primeiro contato, mas consciente"
+    confianca: "baixa"
+    respeito: "baixo"
     motivo: >
       Dorra teria enviado Colm/Dent para uma secagem velha com Mera Fumaça
       depois que os fornos de cal deixaram de ser seguros. O besteiro capturado
@@ -336,8 +336,9 @@ relacoes:
       segurança se há alarme, armadilha, fio, cunha ou apenas tranca rural.
       Ren depois inspecionou o interior pelas frestas e viu uma mulher viva,
       presa pelas mãos e por um tornozelo a uma argola baixa ou gancho antigo.
-      Pela situação e pela fala anterior dos captores, ela provavelmente é Mera,
-      mas Ren ainda não confirmou por conversa direta.
+      Ren confirmou que era Mera Fumaça e a libertou ao entrar, dentro do mesmo
+      minuto. Ela estava cansada, magra e irritada, com ferimento e risco de
+      fraqueza, mas sem ameaça de imediato.
     informacoes_observadas_por_ren:
       - "Mera Fumaça existe como contato ligado à secagem velha na estrada do Fire River."
       - "Segundo o besteiro, Mera guardou Colm/Dent por dinheiro de Dorra."
@@ -348,11 +349,13 @@ relacoes:
       - "A porta do galpão baixo está fechada por fora com barra de madeira improvisada."
       - "Ren não identificou com segurança se a porta tem alarme, armadilha, fio, cunha ou apenas tranca rural improvisada."
       - "Ren viu uma mulher viva dentro do galpão baixo, presa pelas mãos e por um tornozelo."
-      - "A mulher vista provavelmente é Mera Fumaça, mas Ren ainda não confirmou por fala direta."
-      - "Não há outra pessoa visível dentro do galpão, mas a luz ruim e pilhas internas impedem certeza completa."
+      - "A mulher vista pelo buraco da fresta era Mera Fumaça."
+      - "Ao entrar, Ren conseguiu libertar Mera Fumaça sem combate adicional."
+      - "Não há outra pessoa visível no interior durante a entrada, mas a luz ruim e pilhas internas impedem certeza absoluta além do primeiro cômodo."
       - "Ren não viu fio, sineta, lata pendurada ou armadilha trabalhada na porta; a barra pode fazer ruído se removida sem cuidado."
+      - "A retirada da barra foi barulhenta o suficiente para aumentar risco de alerta."
     riscos:
-      - "A informação vem de um captor rendido, ainda não confirmada diretamente."
+      - "A informação principal veio confirmada pela intervenção direta de Ren, ainda que limitada."
       - "Se Mera estiver presa, pode haver outro captor, fechadura, armadilha ou pressão contra ela."
       - "Se Ren ignorar Mera por muito tempo, a situação no galpão baixo pode piorar sem ele ver."
   sella_rove:

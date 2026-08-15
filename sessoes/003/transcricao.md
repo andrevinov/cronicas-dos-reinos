@@ -4408,3 +4408,39 @@ Atrás de Ren, Colm prende outra tosse no braço e falha pela metade. O som é b
 Hora aproximada: **07:36 de 7 Eleasis, 1372 DR**. Colm/Dent está escondido de modo imperfeito atrás de tábuas e capim, vivo e fraco. Ren está junto à porta do galpão baixo sem ter sido percebido por ninguém visível. Dentro há uma mulher viva, provavelmente Mera Fumaça, presa e gagada. A porta parece fechada por barra improvisada, sem alarme ou armadilha visível, mas pode fazer ruído se aberta sem cuidado. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren entra no galpão, tentando fazer isso furtivamente. Chega em Mera Fumaça e a solta, em silêncio, enquanto observa se há algum inimigo ali dentro.
+
+**Narrador**
+
+O primeiro puxão erra o ponto ideal: Ren leva 5 + 7 = 12 contra CD 14 para retirar a barra sem ruído.
+
+Retirar a barra do galpão sem barulho: d20 5 + 7 = 12 contra CD 14. Falha.
+
+A barra da saída range no prego torto e solta com um estalo seco, mais curto do que perfeito, mas alto o bastante para não ser chamado de furtivo.
+
+Ren para. Respira curto, ouve o vento baixo da estrada, o marulhar de capim e a tosse de Colm fora do foco da porta. Não há passos novos nas últimas respirações. Então ele força o segundo movimento com a mão esquerda e, com o corpo colado ao batente, entra de lado sem deixar a lama do pé entrar no vão.
+
+Perceber presença extra no interior ao entrar: d20 15 + 6 = 21 contra CD 15. Sucesso.
+
+Pela penumbra baixa, Ren confirma. Não há homem, armadilha nova nem vigia no interior além do que já conhecia. Há poeira de cinza, tecido úmido e um cheiro denso de fumaça velha. Ao lado da parede, ainda presa de joelhos e mãos amarradas para a frente, Mera Fumaça olha para ele com os olhos arregalados e furiosos. O pano do rosto dela escorrega meio solto de novo enquanto ele pisa na entrada.
+
+Ren corta os nós da corda com a lâmina, primeiro nas mãos e depois no tornozelo, evitando golpes no braço dela para não dar tempo de barulho interno. Ele puxa o pano fora da boca dela só o bastante para confirmar a voz sem chamar fora.
+
+A primeira palavra dela sai seca, quase raspada.
+
+"Pensei que não voltava."
+
+Ela respira e segura o peito um segundo antes de continuar.
+
+"Eles quiseram trocar Dent por outra coisa que não entendi."
+
+A frase é rápida e truncada. Ela tenta apontar de novo para a rua com os olhos.
+
+O galpão continua vazio por enquanto. O barulho da barra, sem dúvida, não desapareceu no escuro; se alguém estava perto o suficiente para ouvir, ele não veio ainda.
+
+Hora aproximada: **07:38 de 7 Eleasis, 1372 DR**. Ren está dentro do galpão baixo, de costas para a saída. Mera Fumaça está viva e livre, ainda fraca, com rosto inchado e ferimento antigo. Colm/Dent está fora do alcance visual imediata, escondido atrás de tábuas altas e capim, em risco de revelar sua posição com tosse. A barreira da porta foi aberta com barulho alto o bastante para poder chamar atenção se alguém estivesse a menos de dois passos do ponto. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**.
+
+O que Ren faz?
