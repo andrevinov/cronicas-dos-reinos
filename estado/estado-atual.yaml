@@ -18,7 +18,7 @@ localizacao:
   regiao: "The Vast"
   cidade: "Ravens Bluff"
   area: "estrada do Fire River"
-  ponto_exato: "na entrada de ramal estreito junto à estrada principal do Fire River, a cerca de noventa pés do homem de mãos limpas"
+  ponto_exato: "junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas"
   descricao_operacional: >
     Ren resgatou seis crianças da Casa Velha do Primeiro Raio e as entregou à
     proteção de Maerra na Casa da Aurora Menor. Peta permaneceu desaparecida,
@@ -448,7 +448,11 @@ localizacao:
     baixa, localizou o alvo numa carroça de carvão vazia. Confirmou que o homem
     corresponde à descrição de Mera e não é Velis Rook. O alvo percebeu Ren,
     saltou da carroça e entrou num ramal estreito. Ren está a cerca de noventa
-    pés, com três trabalhadores e um carrinho carregado entre os dois.
+    pés, com três trabalhadores e um carrinho carregado entre os dois. A
+    perseguição entrou em iniciativa. Ren atravessou o obstáculo sem atingir os
+    trabalhadores, anulou com Aparar Projéteis uma faca que teria acertado e
+    alcançou o alvo junto à cerca de salgueiros. O homem atacou com uma segunda
+    faca e errou. É o turno de Ren, adjacente e ileso.
 
 tempo:
   ano_dr: 1372
@@ -460,11 +464,11 @@ tempo:
   dia_do_mes: 7
   dezena: 1
   dia_da_dezena: 7
-  periodo_do_dia: "manhã de 7 Eleasis, em ramal estreito junto à estrada principal do Fire River"
-  hora_aproximada: "08:02 de 7 Eleasis"
+  periodo_do_dia: "manhã de 7 Eleasis, junto à cerca de salgueiros no ramal da estrada principal do Fire River"
+  hora_aproximada: "08:03 de 7 Eleasis"
   clima: "névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos"
   observacao: "Hora operacional estimada a partir da sequência de cenas; Ren não possui relógio preciso. A campanha abriu em Midsummer de 1372 DR; 1372 é ano de Shieldmeet, então Shieldmeet ocorreu entre Midsummer e 1 Eleasis. O Benefício da Lona Aberta ocorreu em 2 Eleasis; a data avançou para 5 Eleasis após Ren completar descanso longo no Jack Mooney & Sons Circus, para 6 Eleasis após novo descanso no circo e para 7 Eleasis durante a vigília de Ren na Ponte Baixa."
-  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e a mensagem recebida no circo indica que o pacote reservado passou para Tyr sem nome no papel externo. Jack pagou 20 PO a Ren como cachê da apresentação fechada da Casa Veyr. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. O homem de mãos limpas está visível a noventa pés, alerta e alcançando o interior do casaco."
+  prazo_relevante: "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate é público e testemunhado por trabalhadores."
 
 recursos:
   pontos_de_vida:
@@ -486,7 +490,7 @@ recursos:
     - "Visão no Escuro ativa desde cerca de 01:32 de 7 Eleasis; duração aproximada até 09:32"
     - "Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis"
     - "Ren completou descanso curto no depósito de figurino velho entre sono leve e meditação, recuperando ki para 6/6"
-    - "Ren está na entrada de um ramal estreito junto à estrada principal, vestido como homem pobre, a cerca de noventa pés do homem de mãos limpas"
+    - "Ren está junto à cerca de salgueiros no ramal da estrada principal, vestido como homem pobre e adjacente ao homem de mãos limpas"
     - "O Broche do Semblante Humilde voltou a estar disponível com o amanhecer de 7 Eleasis"
     - "O Broche do Semblante Humilde não foi usado na saída atual"
     - "Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras, não como medo"
@@ -573,6 +577,14 @@ recursos:
     - "O alvo percebeu Ren, saltou da carroça e entrou num ramal estreito entre depósito de cal ensacada e cerca de salgueiros"
     - "Há três trabalhadores e um carrinho carregado entre Ren e o alvo"
     - "O alvo está alerta e leva a mão direita para dentro do casaco; não haverá surpresa"
+    - "Iniciativa: homem de mãos limpas 13; Ren 8"
+    - "Acrobacia para atravessar trabalhadores e carrinho: 13 contra CD 13, sucesso"
+    - "Faca curta arremessada pelo alvo com desvantagem: 22 contra CA 17, acerto, 5 de dano antes da reação"
+    - "Aparar Projéteis: 17 de redução; Ren anulou o dano e capturou a faca sem gastar Ki"
+    - "Ren usou Disparada e alcançou o alvo junto à cerca de salgueiros"
+    - "Ataque corpo a corpo do alvo com segunda faca: 9 contra CA 17, erro"
+    - "É o turno de Ren; ele está ileso, adjacente ao alvo e com a reação novamente disponível"
+    - "Três trabalhadores observam o confronto a cerca de cinquenta pés; a cena não é secreta"
     - "As três evidências retiradas da Ponte Baixa foram lacradas com cera da Night Watch e guardadas por Luath em gaveta de ferro"
     - "Mensagem curta de Luath informou que o pacote reservado da Ponte Baixa passou para Tyr sem nome no papel externo"
     - "O registro externo das evidências usa fonte reservada sob risco plausível de represália; não menciona Ren Kage, Ren Kagehira, gravadora, menino ou Kage"
@@ -1375,9 +1387,9 @@ objetivos:
     - "descobrir por que Aiko Kagehira foi morta"
     - "descobrir o que restou da Juppongatana/Dez Espadas"
   imediato:
-    - "decidir como alcançar ou deter o homem de mãos limpas a noventa pés sem colocar os três trabalhadores no meio do ataque"
-    - "reagir ao movimento da mão direita do alvo para dentro do casaco"
-    - "preservar a possibilidade de capturar e interrogar o alvo, se essa continuar sendo a intenção de Ren"
+    - "decidir a ação de Ren no próprio turno contra o homem de mãos limpas adjacente e armado"
+    - "decidir entre nocautear, agarrar, desarmar, atordoar, ferir ou matar o alvo"
+    - "considerar as três testemunhas comuns antes de escolher violência letal ou magia visível"
     - "confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos à casa de Iria Doss"
     - "identificar o homem de mãos limpas que organizou a compra/captura para Bram Vask"
     - "preservar o sigilo da fonte reservada: Luath não nomeou Ren no registro externo, mas o pacote pode sofrer pressão institucional futura"
@@ -1421,8 +1433,8 @@ conhecimento_atual:
 estado_narrativo:
   situacao_inicial: "A sessão 003 começa na Casa da Aurora Menor, depois da lembrança de Peta sobre o homem de manga cinza com dois anéis, o papel para o peixe, a máscara e o lugar frio sob rodas."
   primeira_cena_sugerida: "Ren está perto da saleta de Maerra enquanto a manhã avança, com várias pistas urgentes e sem direção única confirmada."
-  cena_atual: "Ren está na entrada de um ramal estreito junto à estrada principal, às 08:02 de 7 Eleasis. O homem de mãos limpas está visível a cerca de noventa pés e corresponde à descrição de Mera; Ren confirmou que não é Velis Rook. O alvo percebeu a perseguição, saltou de uma carroça e corre pelo ramal com a mão direita entrando no casaco dobrado. Três trabalhadores empurrando um carrinho carregado estão entre os dois."
-  risco_imediato: "alto localizado: o alvo está alerta e pode sacar arma, apito, documento ou outro recurso; trabalhadores comuns ocupam a linha direta; a perseguição pode virar combate público; não há surpresa para nenhum lado."
+  cena_atual: "Ren alcançou o homem de mãos limpas junto à cerca de salgueiros, às 08:03 de 7 Eleasis. O alvo venceu a iniciativa, mas Ren atravessou o carrinho sem atingir trabalhadores, anulou com Aparar Projéteis uma faca arremessada e fechou a distância. O homem atacou com uma segunda faca e errou. É o turno de Ren; ambos estão adjacentes, Ren está ileso e três trabalhadores observam a cerca de cinquenta pés."
+  risco_imediato: "alto localizado: o alvo continua armado e hostil; o combate é público e pode atrair mais trabalhadores, patrulha ou aliados; qualquer violência letal terá testemunhas; Ren ainda controla a própria ação e não sofreu dano."
   foco_inicial:
     - "pista da máscara, do peixe e do lugar frio sob rodas"
     - "respostas de Brass, Narwhal, Bram e Pell aos movimentos da manhã"
@@ -1433,7 +1445,7 @@ estado_narrativo:
 pendencias:
   antes_da_primeira_sessao: []
   podem_ser_definidas_em_jogo:
-    - "decidir como Ren tenta deter o homem de mãos limpas no ramal estreito"
-    - "decidir se Ren prioriza captura, ferimento, desarme ou simples manutenção da perseguição"
+    - "resolver o turno de Ren contra o homem de mãos limpas"
+    - "decidir se Ren pretende capturar o alvo vivo e como lidará com as testemunhas"
     - "confirmar depois se Mera e Colm/Dent chegaram a Iria Doss"
     - "identificar o homem de casaco pardo, tinta violeta sob a unha do polegar direito e cicatriz abaixo da orelha esquerda descrito por Mera"

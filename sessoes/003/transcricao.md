@@ -4692,3 +4692,51 @@ Ele já percebeu a perseguição. Não haverá surpresa se Ren o alcançar agora
 Hora aproximada: **08:02 de 7 Eleasis, 1372 DR**. Ren está na entrada de um ramal estreito junto à estrada principal, com o homem de mãos limpas visível a cerca de **noventa pés**. Há três trabalhadores e um carrinho carregado entre eles. O alvo corresponde à descrição de Mera e **não é Velis Rook**. A velocidade de Ren é suficiente para reduzir a distância, mas o alvo está alerta e alcançando o interior do casaco. Os papéis no braseiro e a portinhola traseira ficaram sem exame adicional. Recursos atuais: **45/45 PV, CA 17, Ki 5/6, 45 PO, 9 shuriken**.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren é mais rápido. Inexoravelmente o alcançará. Apenas persegue e, se necessário, entra em combate.
+
+**Narrador**
+
+A perseguição entra em iniciativa quando a mão do homem sai do casaco com uma faca curta.
+
+Iniciativa do homem de mãos limpas: d20 11 + 2 = 13.
+
+Iniciativa de Ren: d20 4 + 4 = 8.
+
+O homem corre primeiro. Usa toda a passada pelo ramal, tentando transformar os trabalhadores e o carrinho numa barreira. Ren vem atrás.
+
+Acrobacia para atravessar os trabalhadores e o carrinho sem derrubá-los: d20 6 + 7 = 13 contra CD 13. Sucesso.
+
+Ren apoia uma mão na lateral do carrinho, passa por cima da carga sem atingir os três homens e cai correndo do outro lado. Os trabalhadores se encolhem contra a cerca e começam a gritar para os dois pararem, mas não conseguem bloquear o caminho.
+
+Mesmo com ambos em Disparada, a diferença é inevitável. A distância cai de noventa para quarenta pés na primeira troca de corridas.
+
+O homem olha de novo, entende a conta e arremessa a faca.
+
+Ataque com faca curta arremessada, além do alcance normal: d20 com desvantagem [19, 18] -> 18 + 4 = 22 contra CA 17. Acerto. Dano: 5 perfurante antes da reação.
+
+Ren usa Aparar Projéteis.
+
+Redução de dano: 1d10 7 + 10 = 17.
+
+A lâmina chega alinhada com o peito. Ren gira o antebraço, desvia o punho da faca e fecha a mão sobre o cabo. Os 5 pontos de dano são reduzidos a zero. Ren não gasta Ki para arremessá-la de volta.
+
+O homem ganha mais trinta pés enquanto ataca. Ren simplesmente continua.
+
+Usando Disparada, alcança os setenta pés restantes e termina a corrida junto dele, perto da cerca de salgueiros. O homem tenta aproveitar o instante em que Ren chega, puxa uma segunda faca curta e golpeia de baixo para cima.
+
+Ataque com segunda faca curta: d20 5 + 4 = 9 contra CA 17. Erro.
+
+Ren desloca o corpo para fora da lâmina. A faca corta apenas o ar e bate de raspão na madeira da cerca.
+
+Agora não há distância.
+
+Os trabalhadores ficaram para trás, a cerca de cinquenta pés, alarmados e observando. O homem de mãos limpas está diante de Ren, armado com a segunda faca, sem aliado visível e sem velocidade suficiente para escapar em linha reta. Ren ainda segura a faca que aparou.
+
+É o turno de Ren.
+
+Hora aproximada: **08:03 de 7 Eleasis, 1372 DR**. Ren alcançou o homem de mãos limpas junto à cerca de salgueiros. O alvo errou o ataque corpo a corpo e continua armado. Ren não sofreu dano e não gastou Ki; está com **45/45 PV, CA 17 e Ki 5/6**. Sua reação volta a estar disponível no início deste turno. Há testemunhas comuns a cerca de cinquenta pés, e o confronto já não é secreto.
+
+O que Ren faz?

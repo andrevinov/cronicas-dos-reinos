@@ -1436,6 +1436,37 @@ Consequências:
 
 ---
 
+## Alcance do homem de mãos limpas
+
+Contexto: Ren decidiu confiar na diferença de velocidade, perseguindo o homem
+de mãos limpas e entrando em combate se necessário. O alvo estava a noventa
+pés, com três trabalhadores e um carrinho carregado entre os dois.
+
+Rolagens abertas:
+
+* Iniciativa do homem de mãos limpas: d20 11 + 2 = 13.
+* Iniciativa de Ren: d20 4 + 4 = 8.
+* Acrobacia de Ren para atravessar trabalhadores e carrinho sem derrubá-los: d20
+  6 + 7 = 13 contra CD 13. Sucesso.
+* Faca curta arremessada pelo alvo além do alcance normal: d20 com desvantagem
+  [19, 18] + 4 = 22 contra CA 17. Acerto; 5 de dano perfurante antes da reação.
+* Aparar Projéteis de Ren: 1d10 7 + 10 = 17 de redução. Todo o dano foi anulado.
+* Ataque corpo a corpo do alvo com segunda faca: d20 5 + 4 = 9 contra CA 17.
+  Erro.
+
+Consequências:
+
+* A diferença de velocidade reduz a distância em cinquenta pés quando ambos
+  usam Disparada.
+* Ren atravessa o obstáculo sem ferir ou derrubar trabalhadores.
+* Ren captura a primeira faca e não gasta Ki para arremessá-la de volta.
+* Ren alcança o alvo junto à cerca de salgueiros depois de nova Disparada.
+* O alvo usa sua ação seguinte para atacar com uma segunda faca e erra.
+* O turno retorna a Ren adjacente ao alvo. Ren está ileso, com 5/6 Ki, reação
+  novamente disponível e testemunhas comuns a cerca de cinquenta pés.
+
+---
+
 ## Fuga pela estrada principal e localização visual
 
 Contexto acumulado: o homem de mãos limpas percebeu que a carroça de resposta
