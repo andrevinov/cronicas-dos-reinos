@@ -990,3 +990,49 @@ Consequências:
   junto de passagem baixa coberta por pano escuro ou couro encerado. A Percepção
   falha, então não confirmar ausência de armadilha, pessoa, fio ou controle
   sutil ali.
+
+---
+
+## Noite de 6 para 7 Eleasis: passagem além do pano escuro
+
+Contexto: Ren se aproximou do pano escuro/couro encerado ao fundo da sala baixa
+seca para tentar ver sombra do outro lado e entrar furtivamente.
+
+Rolagens abertas:
+
+* Furtividade de Ren ao se aproximar do pano e preparar a entrada sob Passos sem
+  Pegadas: d20 19 + 17 = 36 contra CD 18. Sucesso.
+* Investigação de Ren para ler pano, luz protegida e possíveis sinais antes de
+  mover a cobertura: d20 16 + 4 = 20 contra CD 14. Sucesso.
+* Percepção de Ren para enxergar espaço desocupado em sombra além do pano: d20
+  8 + 6 = 14 contra CD 15. Falha.
+* Acrobacia de Ren para atravessar ou reposicionar o corpo na passagem baixa sem
+  tocar pano, luz ou pó solto: d20 6 + 7 = 13 contra CD 14. Falha.
+
+Rolagens ocultas:
+
+* Ouvinte além do pano perceber a aproximação/passagem de Ren: d20 13 + 4 = 17
+  contra Furtividade 36. Falha.
+* Sinal seco do pano denunciar a passagem física de Ren: d20 10 + 3 = 13 contra
+  CD 15. Falha.
+* Resposta interna reposicionar algo além da passagem antes de Ren ganhar visão
+  limpa: d20 15 + 3 = 18 contra CD 14. Sucesso.
+* Pressão da segunda maré alterar o canal úmido enquanto Ren força passagem:
+  d20 18 + 2 = 20 contra CD 13. Sucesso.
+
+Consequências:
+
+* Ren se aproxima e entra sem ser percebido por ouvinte ou vigia neste trecho.
+* A investigação identifica que o pano/couro encerado funciona também como
+  controle: borda pesada, retorno fixo e linha de cinza junto da brasa protegida.
+* A Percepção falha por margem curta: havia sombra além do pano, mas Ren não
+  confirmou espaço desocupado suficiente para usar Passo Sombrio com segurança
+  antes de entrar.
+* Ren entra fisicamente e roça a borda pesada; o sinal não dispara de modo útil,
+  mas a linha de cinza não fica perfeita. Pode ser percebida por alguém que
+  examine a cobertura depois.
+* A resposta interna conseguiu mover, fechar ou reposicionar algo adiante antes
+  de Ren ganhar visão limpa. Em cena, isso aparece apenas como um toque seco de
+  madeira ou pedra se encaixando mais à frente.
+* A segunda maré começa a alterar a rota úmida da esquerda. Ainda não invade a
+  sala seca, mas aumenta pressão de tempo e risco de retorno por caminhos baixos.

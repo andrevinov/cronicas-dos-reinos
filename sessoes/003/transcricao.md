@@ -3396,3 +3396,71 @@ O som da água, atrás e à esquerda, parece um pouco mais cheio agora.
 Hora aproximada: **01:48 de 7 Eleasis, 1372 DR**. Ren está dentro da **sala baixa seca da Ponte Baixa**, perto da mesa e a poucos passos do brilho protegido no fundo. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele carrega três evidências retiradas da sala, mas a ausência delas pode ser percebida por alguém que conheça o arquivo.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren se aproxima do pano para conseguir ver a sombra do outro lado da passagem baixa, e entrar furtivamente.
+
+**Narrador**
+
+Ren chega ao fundo da sala sem deixar a sala perceber que ele chegou.
+
+Teste de Furtividade de Ren ao se aproximar do pano e preparar a entrada sob Passos sem Pegadas: d20 19 + 17 = 36 contra CD 18. Sucesso.
+
+Teste de Investigação de Ren para ler o pano, a luz protegida e possíveis sinais antes de mover a cobertura: d20 16 + 4 = 20 contra CD 14. Sucesso.
+
+De perto, o pano não parece simples cortina.
+
+Ele é escuro, grosso e encerado por dentro. A borda inferior tem peso fino costurado, não para fechar totalmente a passagem, mas para voltar sempre ao mesmo lugar. Ao lado da brasa protegida, uma pequena tira clara de cinza cruza pedra e pano como linha de controle. Se alguém erguesse a cobertura como cortina comum, a linha quebraria.
+
+Ren não ergue.
+
+Ele baixa o corpo, procura o vão de baixo e desloca só o bastante para pôr um olho além da borda pesada.
+
+Teste de Percepção de Ren para enxergar espaço desocupado em sombra além do pano: d20 8 + 6 = 14 contra CD 15. Falha.
+
+Há sombra do outro lado. Sombra suficiente em princípio.
+
+Mas o ângulo é ruim demais para o Passo Sombrio. A cobertura corta o alto, a pedra baixa corta a lateral, e a Visão no Escuro devolve uma garganta estreita em tons de cinza, não um espaço limpo que Ren possa jurar vazio. Ele vê chão, parede úmida mais à frente e um canto de escuridão. Não vê o bastante para atravessar pela sombra sem arriscar aparecer dentro de pedra, carga ou corpo.
+
+Teste de Acrobacia de Ren para atravessar a passagem baixa sem tocar pano, luz ou pó solto: d20 6 + 7 = 13 contra CD 14. Falha.
+
+Ren passa fisicamente.
+
+Quase limpo.
+
+O ombro roça a borda pesada por um instante curto demais para arrastar a cortina, mas longo o bastante para deslocar um grão de cinza da linha clara. A brasa não apaga. O pano não sobe. Nenhum sino seco responde. Mesmo assim, o sinal não ficou perfeito.
+
+Do outro lado, a passagem é mais estreita que a sala.
+
+Não é corredor de gente. É garganta de serviço, talhada para joelho, caixa rasa e braço comprido. A pedra aqui perdeu a secura artificial: ainda há cal ou sal nas bordas, mas o centro do chão começa a escurecer de umidade. Duas marcas paralelas seguem adiante, baixas, como rastro antigo de gaveta, bandeja ou pequeno carrinho puxado por corda.
+
+A luz da brasa fica atrás do pano, abafada. À frente, a Visão no Escuro mostra uns quinze pés de passagem antes de uma dobra para a direita. Perto dessa dobra, há uma sombra baixa utilizável para o Passo Sombrio agora que Ren está deste lado; mas ela só o levaria até antes da curva, não além dela. Depois da curva, ele ainda não vê.
+
+Então vem o primeiro som novo.
+
+Não passos.
+
+Um toque seco, muito baixo, de madeira ou pedra se encaixando mais adiante. Uma só vez. Depois silêncio.
+
+Atrás, pelo caminho de onde Ren veio, o som da água ganha corpo. Não invadiu a sala seca. Ainda não. Mas a segunda maré começou a respirar de verdade pela rota úmida da esquerda.
+
+Visão atual de Ren:
+
+```text
+sala baixa seca atrás
+  mesa / feixes / brasa protegida
+          |
+          | pano escuro com linha de cinza
+          v
+[Ren] em garganta baixa de serviço
+          |
+          | marcas paralelas no chão úmido
+          v
+  dobra para a direita, em sombra baixa
+  som seco adiante: madeira ou pedra encaixando
+```
+
+Hora aproximada: **01:50 de 7 Eleasis, 1372 DR**. Ren está do outro lado do pano escuro, numa **garganta baixa de serviço** além da sala seca da Ponte Baixa. **Visão no Escuro** e **Passos sem Pegadas** continuam ativos. Recursos atuais: **45/45 PV, CA 17, Ki 2/6, 25 PO, 9 shuriken**. Ele não conseguiu usar o Passo Sombrio para atravessar o pano, porque não viu alvo desocupado com segurança antes de entrar; agora há uma sombra curta utilizável antes da próxima dobra.
+
+O que Ren faz?
