@@ -10,7 +10,7 @@ Respeitar sistema, edição, período histórico, fontes autorizadas e configura
 
 Todo texto novo deve usar português e UTF-8.
 
-`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
+`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. Os arquivos quentes são `runtime/contexto.yaml` e `runtime/cena.yaml`. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
 
 Desde a Etapa 5, `estado/estado-atual.yaml` e `estado/tempo.yaml` descrevem **somente o presente**. Cronologia pertence a `sessoes/`; os arquivos em `historico/legado/` preservam o estado acumulativo anterior à migração e são frios, usados apenas para auditoria ou recuperação excepcional.
 
