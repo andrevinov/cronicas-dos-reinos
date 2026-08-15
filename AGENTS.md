@@ -10,7 +10,7 @@ Respeitar sistema, edição, período histórico, fontes autorizadas e configura
 
 Todo texto novo deve usar português e UTF-8.
 
-`runtime/` é uma camada derivada e descartável de acesso rápido; **não é fonte canônica**. Se divergir das fontes, regenerar o runtime a partir delas.
+`runtime/` e a saída de `ferramentas/contexto.py` são projeções operacionais derivadas; **não são fonte canônica**. `runtime/contexto.yaml` e `runtime/cena.yaml` são as duas projeções quentes geradas a partir do cânone. Se houver divergência, prevalece a fonte canônica e o runtime deve ser regenerado.
 
 ## 2. Invariantes inegociáveis
 
@@ -42,7 +42,7 @@ Em conflito, usar como ordem inicial:
 9. fontes oficiais autorizadas;
 10. possibilidades futuras.
 
-`runtime/` não entra nessa hierarquia porque é projeção operacional das fontes acima.
+Runtime e resultados de consulta não entram nessa hierarquia porque são projeções das fontes acima.
 
 Erro conhecido não deve ser preservado apenas por estar em fonte de alta autoridade: identificar o conflito, verificar mudança posterior e corrigir explicitamente.
 
@@ -52,26 +52,30 @@ Erro conhecido não deve ser preservado apenas por estar em fonte de alta autori
 
 Antes de chamar ferramenta ou abrir arquivo, pergunte se o contexto já disponível basta. Se bastar, não leia nada.
 
-Depois de cada leitura, pergunte novamente se já é suficiente. **Se for suficiente, pare.**
+Depois de cada consulta, pergunte novamente se já é suficiente. **Se for suficiente, pare.**
+
+Durante operação normal, preferir `ferramentas/contexto.py` a `cat`, `sed`, `rg` ou abertura integral de arquivos canônicos. A ferramenta existe para devolver apenas o fragmento necessário.
 
 Não:
 
 - ler o repositório inteiro para se situar;
 - abrir pasta inteira quando uma entidade específica basta;
 - reler informação confiável já presente no contexto;
-- abrir estado canônico gigante quando `runtime/` responder;
-- abrir transcrição antiga antes de tentar runtime/resumo/estado;
+- abrir estado canônico gigante quando `contexto.py` responder;
+- abrir transcrição antiga antes de tentar runtime, consulta dirigida, resumo ou estado;
 - consultar livro oficial se resumo ou decisão interna já resolver;
 - continuar pesquisando apenas para confirmar algo já estabelecido com segurança.
 
 Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
-- **L1:** `runtime/contexto.yaml`;
-- **L2:** `runtime/cena.yaml` ou fragmento específico apontado pelo runtime;
-- **L3:** índice, resumo ou documento de domínio mais amplo;
-- **L4:** estado histórico profundo, transcrição ou múltiplas fontes para resolver conflito;
+- **L1:** `python3 ferramentas/contexto.py status` — consulta `runtime/contexto.yaml`;
+- **L2:** `contexto.py cena` — consulta `runtime/cena.yaml` — ou `npc`, `relacao`, `conhecimento` e `regra`;
+- **L3:** `contexto.py buscar "termo"`, ainda sem transcrições completas;
+- **L4:** `contexto.py buscar "termo" --historico` ou leitura direta de uma fonte específica apontada pela consulta;
 - **L5:** fonte oficial externa/autorizada.
+
+Para material reservado, só usar `contexto.py buscar "termo" --reservado` quando existir uma lacuna concreta de bastidor. Não incluir `--historico` ou `--reservado` por rotina.
 
 Só subir quando o nível anterior não responder à pergunta necessária.
 
@@ -95,9 +99,11 @@ O estilo narrativo continua em `narracao/guia-de-narrativa.md`; o fluxo de sess�
 Durante narração:
 
 - usar primeiro o contexto já carregado;
-- se faltar estado operacional, ler `runtime/contexto.yaml`;
-- se faltar situação imediata da cena, ler `runtime/cena.yaml`;
-- seguir ponteiro para arquivo canônico somente quando o runtime não resolver a lacuna;
+- se faltar estado operacional, usar `python3 ferramentas/contexto.py status`;
+- se faltar situação imediata, usar `python3 ferramentas/contexto.py cena`;
+- para pessoa, relação, conhecimento ou regra, consultar diretamente o domínio correspondente;
+- usar `buscar` apenas quando não souber onde a informação está;
+- seguir para arquivo canônico direto somente quando a saída dirigida não resolver a lacuna;
 - consultar somente fatos que afetem a resposta atual;
 - não transformar escolhas em menu rígido;
 - não revelar bastidores;
@@ -108,7 +114,13 @@ Durante narração:
 
 ## 7. Regras e dados
 
-Quando houver dúvida, parar assim que estiver resolvida: resumo interno → decisão anterior → regra da casa → fonte oficial.
+Quando houver dúvida, parar assim que estiver resolvida. Preferir:
+
+```bash
+python3 ferramentas/contexto.py regra "assunto"
+```
+
+A ordem conceitual continua: resumo interno → decisão anterior → regra da casa → fonte oficial.
 
 Rolagem só quando houver incerteza real e consequência relevante. Definir dificuldade/modificadores antes do dado. Nunca falsificar ou corrigir resultado depois.
 
@@ -117,6 +129,8 @@ Usar `ferramentas/rolar-dados.py` quando aplicável.
 ## 8. Segredos
 
 `narrador/` é reservado. Não revelar conteúdo, nomes secretos, caminhos ou inferências de bastidor sem descoberta legítima. Ao justificar uma decisão, explicar apenas o que Ren poderia perceber.
+
+A busca padrão de `contexto.py` não inclui `narrador/`; inclusão de material reservado precisa ser deliberada com `--reservado`.
 
 ## 9. Alterações no repositório
 

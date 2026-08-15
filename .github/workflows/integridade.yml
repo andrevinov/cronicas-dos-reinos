@@ -28,6 +28,23 @@ jobs:
       - name: Runtime derivado e atualizado
         run: python ferramentas/gerar-runtime.py --check
 
+      - name: Consultas dirigidas de contexto
+        run: |
+          python ferramentas/contexto.py --sem-log status > /tmp/contexto-status.yaml
+          python ferramentas/contexto.py --sem-log cena > /tmp/contexto-cena.yaml
+          python ferramentas/contexto.py --sem-log npc nera > /tmp/contexto-npc.yaml
+          python ferramentas/contexto.py --sem-log relacao kethra > /tmp/contexto-relacao.yaml
+          python ferramentas/contexto.py --sem-log conhecimento masao > /tmp/contexto-conhecimento.yaml
+          python ferramentas/contexto.py --sem-log regra furtividade > /tmp/contexto-regra.yaml
+          python ferramentas/contexto.py --sem-log buscar "ponte baixa" > /tmp/contexto-busca.yaml
+          test "$(wc -c < /tmp/contexto-status.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-cena.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-npc.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-relacao.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-conhecimento.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-regra.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-busca.yaml)" -le 8192
+
       - name: Integridade estrutural e semântica
         run: python ferramentas/verificar-integridade.py
 
