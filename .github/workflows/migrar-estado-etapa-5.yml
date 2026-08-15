@@ -1,0 +1,54 @@
+name: Migração única do estado — Etapa 5
+
+on:
+  push:
+    branches:
+      - "refactor/context-economy-step-05"
+
+permissions:
+  contents: write
+
+jobs:
+  migrar:
+    if: ${{ !contains(github.event.head_commit.message, '[estado-v1-migrado]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependências
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Separar estado atual do histórico
+        run: python ferramentas/migrar-estado-atual.py
+
+      - name: Regenerar runtime a partir do novo estado atual
+        run: python ferramentas/gerar-runtime.py
+
+      - name: Verificar migração
+        run: python ferramentas/migrar-estado-atual.py --check
+
+      - name: Testes existentes
+        run: |
+          python -m unittest discover -s tests -v
+          python ferramentas/gerar-runtime.py --check
+          python ferramentas/verificar-integridade.py --baseline baseline/estado-logico-2026-08-15.yaml
+
+      - name: Commit da migração
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "Nenhuma mudança pendente."
+            exit 0
+          fi
+          git config user.name "André Carvalho"
+          git config user.email "me@andrev.me"
+          git add estado/ historico/ runtime/contexto.yaml runtime/cena.yaml
+          git commit -m "Separa estado atual do histórico [estado-v1-migrado]"
+          git push
