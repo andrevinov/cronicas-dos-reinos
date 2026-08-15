@@ -179,7 +179,7 @@ recursos_de_classe:
     resumo: "Golpes desarmados contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos."
   aparar_projeteis:
     reacao: true
-    reducao: "1d10 + 9"
+    reducao: "1d10 + 10"
     resumo: "Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o projétil de volta."
   queda_lenta:
     nivel: 5

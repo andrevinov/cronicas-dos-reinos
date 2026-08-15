@@ -4188,4 +4188,6 @@ Ren está agachado na borda da nuvem de cal, parcialmente encoberto por mato bai
 
 Hora aproximada: **07:24 de 7 Eleasis, 1372 DR**. Ren evitou o laço e não está preso nem caído. Colm/Dent está **vivo**, amarrado e usado como pressão. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** continua disponível e não foi usado nesta saída.
 
+Imagem: [ponto preparado na estrada do Fire River](imagens/004-ponto-preparado-fire-river-v2.png)
+
 O que Ren faz?

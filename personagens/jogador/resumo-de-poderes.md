@@ -178,7 +178,7 @@ Limites importantes: exige sombra ou escuridão na origem e no destino, exige li
 
 Ren pode usar sua reação para reduzir dano de uma flecha, dardo, virote ou outro ataque à distância com arma.
 
-Redução: `1d10 + 9`.
+Redução: `1d10 + 10`.
 
 Se reduzir o dano a zero, pode gastar 1 ki para arremessar o projétil de volta.
 
