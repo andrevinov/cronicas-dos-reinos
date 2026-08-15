@@ -1345,3 +1345,34 @@ Consequências:
 * Os olhos ligados ao fio de Bram percebem que alguém voltou a procurar Dent.
   Isso pode acelerar pressão sobre a rota do Fire River ou virar cauda futura se
   Ren não quebrar a linha.
+
+---
+
+## Estrada do Fire River: tentativa de alcançar Mera Fumaça
+
+Contexto: após obter notícia de que Colm/Dent foi movido para uma secagem velha
+na estrada do Fire River com Mera Fumaça, Ren decidiu ir a pé para confirmar se
+Dent está lá. O Broche do Semblante Humilde foi reservado para uso ao chegar,
+não usado de imediato.
+
+Rolagens abertas:
+
+* Quebrar a atenção dos pátios antes da estrada: d20 2 + 7 = 9 contra CD 16.
+  Falha.
+* Notar cauda ou antecipação na estrada do Fire River: d20 18 + 6 = 24 contra
+  CD 15. Sucesso.
+* Localizar a secagem velha de Mera Fumaça: d20 2 + 4 = 6 contra CD 14. Falha.
+
+Consequências:
+
+* Ren não conseguiu sair dos pátios de forma limpa o bastante para apagar a
+  atenção nascida ali.
+* Como a Percepção foi forte, Ren percebe o padrão de observação alternada antes
+  de conduzir esses olhos diretamente à secagem velha.
+* A localização de Mera Fumaça não foi confirmada; há três construções possíveis
+  no trecho visível da estrada.
+* A falha em localizar a secagem manifesta-se como interrupção por pista mais
+  urgente: Ren encontra uma tira de pano semelhante ao manto dado a Colm/Dent
+  presa numa cerca e marcas recentes saindo da estrada para o mato baixo.
+* A negociação com Mera ainda não ocorreu e deve ser resolvida apenas se Ren
+  alcançar Mera em cena.

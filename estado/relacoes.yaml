@@ -212,8 +212,8 @@ relacoes:
   colm_dunn:
     nome: "Colm Dunn"
     tipo: "irmão de Kethra Dunn / devedor explorado"
-    local: "última informação conhecida por Ren: provavelmente sob a lona da carroça de Dorra Hest, rumo aos fornos de cal do Fire River"
-    status: "provavelmente saiu de Ravens Bluff com Dorra Hest, mas a saída foi comprometida e segurança não está confirmada"
+    local: "última informação conhecida por Ren: foi movido dos fornos de cal para uma secagem velha na estrada do Fire River com Mera Fumaça; Ren encontrou pano semelhante ao manto de Dent e marcas saindo da estrada antes de confirmar a secagem"
+    status: "vivo até a chegada aos fornos de cal, mas segurança atual não confirmada; possível rastro, retirada, captura ou isca na estrada do Fire River"
     atitude_para_ren: "assustado, confuso, mas menos perdido após ver Kethra"
     confianca: "baixa por necessidade"
     respeito: "baixo, misturado com medo"
@@ -240,6 +240,12 @@ relacoes:
       4 Eleasis, Ren pagou 1 PO por informação nos pátios e ouviu que Dorra saiu
       no cinza, provavelmente com Dent sob a lona, mas que alguém havia
       perguntado por um doente vindo do lavadouro antes da partida.
+      Na manhã de 7 Eleasis, Ren voltou aos pátios e soube que Colm/Dent chegou
+      vivo aos fornos de cal, mas Dorra o moveu para uma secagem velha na estrada
+      do Fire River com Mera Fumaça depois que alguém de "mão limpa" fez
+      perguntas. Ao seguir para lá, Ren percebeu observação alternada e encontrou
+      uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca, com
+      marcas recentes saindo da estrada para o mato baixo.
     informacoes_observadas_por_ren:
       - "Colm tem dois dedos inchados e tortos."
       - "Colm tem tosse seca."
@@ -253,6 +259,9 @@ relacoes:
       - "Última informação conhecida por Ren: Colm/Dent provavelmente saiu sob a lona da carroça de Dorra Hest."
       - "Dorra Hest saiu dos pátios no cinza, rumo aos fornos de cal do Fire River."
       - "Um trabalhador dos pátios ouviu Dorra chamar o protegido de Dent e acredita que havia peso de homem sob a lona quando a carroça saiu."
+      - "Na manhã de 7 Eleasis, Ren soube que Colm/Dent chegou vivo aos fornos de cal, mas Dorra o moveu para uma secagem velha na estrada do Fire River com Mera Fumaça."
+      - "Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca antes de confirmar a localização de Mera."
+      - "Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada."
     riscos:
       - "Colm pode entrar em pânico se achar que Ren é apenas outro agiota."
       - "Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros."
@@ -261,6 +270,8 @@ relacoes:
       - "Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a área dos pátios de carroças."
       - "Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança, fome ou doença."
       - "Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se tiver deixado Ravens Bluff."
+      - "Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire River."
+      - "A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera ou isca."
   sella_rove:
     nome: "Sella Rove"
     tipo: "lavadeira / contato de Kethra"

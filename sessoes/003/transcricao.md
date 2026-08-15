@@ -4086,3 +4086,53 @@ O ajudante dos fornos baixa mais a voz.
 Hora aproximada: **06:46 de 7 Eleasis, 1372 DR**. Ren está nos **pátios de saída de trabalhadores e carroças**, fora do circo. O disfarce de homem pobre funcionou, mas a ida aos pátios gerou atenção útil: Ren percebeu ao menos um homem de roupa de trabalho limpa demais e um rapaz com faixa azul reagindo à busca. Dorra Hest não está presente. A notícia obtida: **Colm/Dent chegou vivo aos fornos de cal, mas não ficou lá**; após alguém de “mão limpa” perguntar por ele, Dorra o mandou para uma **secagem velha na estrada do Fire River**, com alguém chamada **Mera Fumaça**. O prazo de abrigo ruim de três dias termina hoje. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** está disponível, mas não foi usado nesta saída.
 
 O que Ren faz?
+
+**Jogador**
+
+Ren decide ir até Mera Fumaça a pé (pelo que entendi, um investimento de uma hora e meia). Ele quer se certificar que "Dent" está lá. Se nada o interromper, Ren irá até o local. Quando chegar, usará o Broche do Semblante Humilde e localizará Dent. Conversará com ele, perguntará se está seguro, se percebeu alguém vindo atrás dele. Caso não, conversará com Mera Fumaça, verá se ela pode mantê-lo lá por mais tempo ou enviar a outro lugar. Pagará até 5 PO, se necessário, para que ela o mantenha ou aloque-o em outro lugar. Ren prefere que Dent não volte a cidade e adquira, talvez, mais uma camada de segurança, alocando-se em algum serviço mais longe por talvez uma ou duas semanas.
+
+**Narrador**
+
+Ren não diz **Dent** outra vez.
+
+Isso ajuda menos do que deveria.
+
+Quebrar a atenção dos pátios antes da estrada: d20 2 + 7 = 9 contra CD 16. Falha.  
+Notar cauda ou antecipação na estrada do Fire River: d20 18 + 6 = 24 contra CD 15. Sucesso.  
+Localizar a secagem velha de Mera Fumaça: d20 2 + 4 = 6 contra CD 14. Falha.
+
+O homem de roupa limpa demais sai dos pátios antes de Ren, pelo lado errado para ser coincidência confortável. Ele não segue como bêbado ruim nem como valentão de Bram. Some entre carroças, reaparece longe demais, troca duas palavras com um carregador de saco vazio e deixa que outro par de olhos faça o próximo trecho.
+
+Ren caminha mesmo assim, mas não em linha reta.
+
+A estrada do Fire River começa como saída pobre de cidade: sulco de roda, lama pisada, cheiro de cal, esterco, capim úmido e fumaça baixa de fornos que ainda não aparecem. A névoa do Dragon Reach fica para trás aos poucos, trocada por um branco seco que gruda na língua. Gente a pé passa com ferramenta no ombro. Carroças vazias rangem de volta. Nenhuma delas precisa olhar muito para Ren para que a estrada pareça observada.
+
+O Broche do Semblante Humilde continua frio sob a roupa. Ren ainda não o usa. Usá-lo ali, cedo demais, faria outro homem pobre surgir no mesmo caminho que um homem pobre acabou de tomar, e isso talvez comprasse menos anonimato do que promessa.
+
+Depois de quase meia hora de marcha cautelosa, o padrão aparece.
+
+Não é a mesma pessoa. É pior que isso. Um rapaz com corda nova demais para serviço velho para numa curva e finge ajustar a sandália. Mais adiante, uma mulher com cesta de carvão molhado atravessa a estrada sem razão boa e olha para trás pelo reflexo de uma poça. Quando Ren para perto de um marco rachado com cal antiga, ambos seguem andando, mas deixam a sensação correta: se ele for direto até a secagem, a secagem ganha olhos.
+
+Ele tenta compensar com informação.
+
+No caminho, a pista de Mera Fumaça se fragmenta em respostas ruins. Um carroceiro conhece "Mera da fumaça", mas aponta para as pilhas de carvão. Um menino diz que secagem velha fica depois do valo seco, mas há dois valos secos. Uma mulher de lenço cinza fala de um galpão onde pano úmido vira papel duro, mas fecha a boca quando outro trabalhador passa perto demais. O nome existe. O lugar existe. Só não se entrega limpo.
+
+À frente, a estrada dobra entre salgueiros baixos e um trecho de terreno cinzento. Três construções pobres aparecem espalhadas além da curva: uma casa de telhado baixo com fumaça clara saindo por frestas, um galpão comprido meio caído perto de varais duros de cal, e uma secagem velha de madeira escura junto a uma roda d'água parada. Qualquer uma delas pode ter Mera. Qualquer uma delas pode ter recebido aviso antes.
+
+Então Ren vê a coisa que interrompe a ida direta.
+
+Na lateral da estrada, presa de propósito numa estaca baixa de cerca, há uma tira de pano grosseiro. Pardo. Roto. Com uma mancha antiga que combina com o manto que Ren deu a Colm.
+
+Não é prova de morte. Não é prova de captura.
+
+É uma mensagem ou uma queda.
+
+E, quando Ren abaixa o olhar para a lama perto da cerca, vê duas marcas recentes: uma bota pesada virando para fora da estrada e a impressão incompleta de alguém que pisou mal, arrastando um pé por dor, fraqueza ou pressa.
+
+As marcas entram pelo mato baixo antes das três construções.
+
+Atrás, na curva anterior, o rapaz da corda nova ainda não apareceu de novo.
+
+Hora aproximada: **07:19 de 7 Eleasis, 1372 DR**. Ren está na **estrada do Fire River**, fora do miolo de Ravens Bluff, antes das construções que podem incluir a secagem velha de **Mera Fumaça**. Ele não conseguiu quebrar completamente a atenção nascida nos pátios, mas percebeu o padrão a tempo. A localização exata de Mera ainda não foi confirmada. Ren encontrou uma tira de pano semelhante ao manto de Colm/Dent presa numa cerca e marcas recentes saindo da estrada para o mato baixo. Recursos atuais: **45/45 PV, CA 17, Ki 6/6, 45 PO, 9 shuriken**. **Visão no Escuro** segue ativa até cerca de **09:32**; o **Broche do Semblante Humilde** segue disponível e ainda não foi usado nesta saída.
+
+O que Ren faz?
