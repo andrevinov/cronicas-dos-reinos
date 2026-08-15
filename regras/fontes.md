@@ -54,14 +54,15 @@ Quando houver diferença entre períodos históricos, a campanha deve registrar 
 ## Origem de Ren: Kara-Tur
 
 Estas fontes sustentam a origem de Ren, Masao, o Clã Kagehira, a Juppongatana,
-os aliados canônicos futuros de Ren e possíveis conexões futuras entre Faerûn e
-os reinos orientais.
+os aliados canônicos futuros de Ren, a Ponte de Kozakura, Shin-Kozakura e
+possíveis conexões futuras entre Faerûn e os reinos orientais.
 
 | Prioridade | Fonte | Uso na campanha | Arquivo local |
 | --- | --- | --- | --- |
 | Alta | Kara-Tur: The Eastern Realms, Forgotten Realms Campaign #1032, AD&D | Kozakura, Shou Lung, T'u Lung, Wa, Koryo, Tabot, cultura, facções, itens, técnicas, antagonistas e rotas orientais | `books/high_fr_adnd1e_tsr-1032_kara-tur-the-eastern-realms.pdf` |
 | Alta, interna | Kara-Tur e Faerûn | Documento aprovado de campanha para encaixar Ren, Masao e o Clã Kagehira no intervalo entre o material oficial de 1357 DR e a campanha em 1372 DR; define a composição canônica da Juppongatana, a imagem canônica de Masao, seu plano maior e o nível de contato entre Kara-Tur e Faerûn | `books/Kara-Tur e Faerûn.pdf` |
 | Alta, interna | Aliados para Ren | Documento aprovado de campanha para definir os aliados canônicos futuros de Ren, a ordem preferencial de entrada em cena, a ponte de Tyr/Ravens Bluff, a sobrevivente Kagehira e o eixo divino de bastidor contra Masao | `books/Aliados para Ren.pdf` |
+| Alta, interna | Ponte de Kozakura | Documento aprovado de campanha para definir o eixo canônico de longo prazo da passagem permanente entre Ravens Bluff e Kozakura, suas anomalias graduais, a perda do controle exclusivo por Masao e a formação futura de Shin-Kozakura | `books/Ponte de Kozakura.pdf` |
 
 O livro deve ser usado como fonte de cenário e inspiração de campanha. Regras,
 níveis, magias, itens e estatísticas de AD&D devem ser adaptados para D&D 5e
@@ -78,6 +79,12 @@ esse encaixe, atualizar a preparação antiga em vez de ignorar o documento.
 autorizada para Shen Meihua, Tsukishiro Jōen, Dame Jenilynn Leyland, Kagehira
 Hotaru e Tadasu no Kami como pilares futuros da campanha de Ren. Suas revelações
 de bastidor ficam em `narrador/aliados/`.
+
+`Ponte de Kozakura` também não é suplemento oficial. Ele é fonte interna
+autorizada para a existência futura de um portal estável entre Ravens Bluff e
+Kozakura, para a evolução de sinais materiais antes da revelação e para
+Shin-Kozakura como consequência histórica posterior. Seus detalhes de bastidor
+ficam em `narrador/ponte-de-kozakura/`.
 
 Resumos derivados ficam em `cenario/regioes/kara-tur/`.
 

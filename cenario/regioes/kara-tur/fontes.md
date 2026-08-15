@@ -3,9 +3,9 @@
 Este arquivo registra as fontes usadas para Kara-Tur na campanha.
 
 Kara-Tur é relevante principalmente por causa da origem de **Ren Kagehira**,
-de **Masao Hirasawa**, da **Juppongatana**, dos aliados canônicos futuros de Ren
-e de possíveis vínculos futuros entre Faerûn e os reinos orientais de Forgotten
-Realms.
+de **Masao Hirasawa**, da **Juppongatana**, dos aliados canônicos futuros de Ren,
+da Ponte de Kozakura e de possíveis vínculos futuros entre Faerûn e os reinos
+orientais de Forgotten Realms.
 
 ---
 
@@ -23,6 +23,7 @@ Realms.
 | --- | --- | --- | --- |
 | Alta, interna | Kara-Tur e Faerûn | Encaixe aprovado de Ren, Masao e Clã Kagehira na lacuna entre Kozakura em 1357 DR e a campanha em 1372 DR; composição canônica da Juppongatana; imagem e plano canônicos de Masao; relação geral entre Kara-Tur e Faerûn; limites do que Ren sabe sobre o Ocidente | `books/Kara-Tur e Faerûn.pdf` |
 | Alta, interna | Aliados para Ren | Aliados canônicos futuros de Ren; ordem preferencial de aparição; ligação com Shou Lung, Kozakura, Tyr em Ravens Bluff, sobreviventes Kagehira e a divindade que condenou Masao | `books/Aliados para Ren.pdf` |
+| Alta, interna | Ponte de Kozakura | Eixo futuro canônico de portal permanente entre Ravens Bluff e Kozakura, anomalias de comércio/pessoas, perda do controle exclusivo de Masao e surgimento futuro de Shin-Kozakura | `books/Ponte de Kozakura.pdf` |
 
 Este documento não substitui o suplemento oficial como fonte de cenário. Ele
 define como esta campanha preenche os espaços deixados pelo material publicado,
@@ -55,3 +56,4 @@ O livro é uma fonte antiga de AD&D. Para esta campanha:
 * `cenario/regioes/kara-tur/itens-e-treinamentos-5e.md`
 * `narrador/kara-tur-segredos.md`
 * `narrador/aliados/`
+* `narrador/ponte-de-kozakura/`

@@ -75,6 +75,9 @@ pode ser ignorado, investigado ou amadurecer depois.
 * Consultar `narrador/aliados/marcos-de-aparicao.md` antes de introduzir Shen,
   Jōen, Jenilynn, Hotaru ou Tadasu; a ordem preferencial é canônica, mas a forma
   de entrada deve responder às consequências em jogo.
+* Consultar `narrador/ponte-de-kozakura/` antes de explicar anomalias de
+  Kara-Tur em Ravens Bluff, pessoas sem registro de desembarque, chegada de
+  Juppongatana por rota não marítima ou qualquer movimento rumo a Shin-Kozakura.
 
 ---
 
@@ -237,3 +240,26 @@ Formas discretas de introdução:
 
 Não transformar Shen em solução automática. Ela deve chegar com informação útil,
 mas também com perseguição, perda de identidades e inimigos próximos.
+
+## Janela longa - Anomalias da Ponte de Kozakura
+
+Este eixo pode começar imediatamente como ruído de cenário, mas a revelação do
+portal não deve acontecer cedo demais.
+
+Sementes discretas:
+
+* objeto kozakurano recente demais para o manifesto conhecido;
+* moeda, papel, tecido, erva, roupa ou pequeno altar que parece só comércio
+  oriental;
+* pessoa de Kozakura lembrada em Ravens Bluff sem registro claro de desembarque;
+* carga oriental que Narwhal, alfândega ou guilda não consegue explicar quando
+  comparada com outros casos;
+* membro ou agente da Juppongatana chegando de modo que a rota marítima não
+  explica completamente.
+
+Regra de condução:
+
+* cada semente isolada deve ter explicação plausível por comércio ou contrabando;
+* a ponte só vira hipótese forte quando alguém compara padrões;
+* se Masao perder a passagem em arco futuro, ele perde o controle exclusivo, mas
+  ainda pode tentar explorar a rota aberta.

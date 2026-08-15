@@ -16,6 +16,11 @@ provas entregues a autoridades, fugas, mortes ou atrasos.
 O objetivo é que a Juppongatana seja antagonista recorrente e inteligente no
 início e meio da campanha, antes de Masao se tornar confronto direto.
 
+A Ponte de Kozakura pode explicar chegadas sem registro marítimo, mas não deve
+ser revelada por isso cedo demais. Antes da descoberta, tratar esse dado como
+anomalia de manifesto, carga, testemunha ou contabilidade que não fecha. Consultar
+`narrador/ponte-de-kozakura/`.
+
 ---
 
 ## Círculo Externo
@@ -81,8 +86,8 @@ danifica ou toma item marcial, ou deixa desafio futuro.
 ### Pan Chu
 
 Primeiro marco: **Ren nível 7-8**, quando a investigação tocar rota marítima,
-navio oriental, carga do leste, fuga de Masao por mar ou desaparecimento de
-pessoas/cargas.
+navio oriental, carga do leste, fuga de Masao por mar, desaparecimento de
+pessoas/cargas ou inconsistência entre rota marítima e chegada real.
 
 Local preferencial: Port District, navio ancorado, contrabando na Dragon Reach,
 armazém de cordame, doca isolada ou operação da Red Sail.
@@ -91,7 +96,8 @@ Objetivo: mover pessoal de Masao, retirar membro ferido da Juppongatana,
 transportar relíquia ou fazer testemunha sumir junto com o navio.
 
 Consequência se Ren falhar: Masao ganha mobilidade marítima limpa em Faerûn,
-provas deixam a cidade ou aliado/testemunha vira refém em rota naval.
+provas deixam a cidade, aliado/testemunha vira refém em rota naval ou uma pista
+da Ponte de Kozakura é encoberta como contrabando comum.
 
 ---
 
@@ -176,7 +182,8 @@ contatos de Kara-Tur, sobreviventes Kagehira, hengeyokai ou respostas sobre por
 que lendas antigas passaram a orbitar Masao.
 
 Local preferencial: jardim noturno, cais sob lua, dojo abandonado, mata fora de
-Ravens Bluff ou encontro durante viagem pela Dragon Coast.
+Ravens Bluff, lugar tocado pela Ponte de Kozakura ou encontro durante viagem pela
+Dragon Coast.
 
 Objetivo: testar Ren como pessoa em movimento, não apenas como inimigo. Wetuji
 pode oferecer conversa, duelo, pista ambígua ou lição que também serve a Masao.

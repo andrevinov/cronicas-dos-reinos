@@ -40,6 +40,10 @@ narrador/
 │   ├── README.md
 │   ├── plano.md
 │   └── imagens/
+├── ponte-de-kozakura/
+│   ├── README.md
+│   ├── anomalias-e-revelacao.md
+│   └── shin-kozakura.md
 ├── segredos/
 │   └── canone.md
 ├── sessoes/
@@ -78,3 +82,12 @@ Jenilynn Leyland, Kagehira Hotaru e Tadasu no Kami como pilares futuros da
 campanha de Ren. Eles devem ser consultados antes de introduzir aliados
 orientais, treinamento avançado do Getsuei-ryū, a ponte com Tyr/Right Hand of
 Tyr, sobreviventes Kagehira ou revelações sobre a divindade que condenou Masao.
+
+## Ponte de Kozakura
+
+Os arquivos reservados `ponte-de-kozakura/` registram a direção canônica de longo
+prazo em que anomalias de Kara-Tur em Ravens Bluff levam à revelação de uma
+passagem permanente para Kozakura. Eles devem ser consultados antes de explicar
+mercadorias orientais sem manifesto, pessoas de Kozakura sem porto, chegadas da
+Juppongatana por rota não marítima, perda do controle exclusivo de Masao sobre a
+passagem ou o surgimento futuro de Shin-Kozakura.

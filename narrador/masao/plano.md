@@ -26,13 +26,21 @@ ritual, rotas e aquisição de artefatos.
 ### 1. Ravens Bluff
 
 Capacidade buscada: porto inicial, crime urbano, guildas, alfândega, arquivos,
-rotas subterrâneas e acesso a ruínas sob a cidade.
+rotas subterrâneas, acesso a ruínas sob a cidade e, se Masao conseguir preservar
+o monopólio, uso clandestino da Ponte de Kozakura.
 
 Estado atual: Masao já opera por intermediários, selos falsos, Red Sail, Narwhal,
 documentos, carga, pó alquímico, rotas baixas e pressão sobre testemunhas.
 
 Risco para Masao: ainda pode ser exposto por Ren, Luath, Tyr, Maerra, Kethra,
 Nera, Tavin ou combinação local antes de consolidar infraestrutura.
+
+Observação de longo prazo: a Ponte de Kozakura é infraestrutura mais importante
+que uma rota de contrabando comum. Ela pode permitir chegada de Juppongatana,
+especialistas, selos, materiais rituais e pessoas de Kozakura sem registro
+portuário. Se Ren e seus aliados tomarem a ponte das mãos de Masao, interpretar
+isso como perda de **controle exclusivo**, não como impossibilidade total de
+Masao continuar tentando explorá-la por infiltração, suborno ou sabotagem.
 
 ---
 
@@ -257,6 +265,11 @@ como jogadores, não como soluções externas.
 Ren pode ver isso nascer da ponta menor do tabuleiro: documentos em Ravens
 Bluff, túneis, selos, contrabando, cinza, pó, provas adulteradas e membros da
 Juppongatana.
+
+Também pode ver nascer por anomalias da Ponte de Kozakura: objetos orientais que
+parecem comércio comum, pessoas sem registro de desembarque, carga sem manifesto
+compatível e rotas subterrâneas que ligam Ravens Bluff a algo muito maior que o
+porto.
 
 Masao ainda pensa grande demais para considerar Ren ameaça central. Esse erro
 deve persistir enquanto Ren desmonta degraus iniciais do plano.

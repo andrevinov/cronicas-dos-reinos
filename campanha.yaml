@@ -71,6 +71,9 @@ estrutura:
     aliados_ren_personagens: "narrador/aliados/personagens.md"
     aliados_ren_tadasu: "narrador/aliados/tadasu-no-kami.md"
     aliados_ren_marcos: "narrador/aliados/marcos-de-aparicao.md"
+    ponte_de_kozakura: "narrador/ponte-de-kozakura/README.md"
+    ponte_de_kozakura_anomalias: "narrador/ponte-de-kozakura/anomalias-e-revelacao.md"
+    shin_kozakura: "narrador/ponte-de-kozakura/shin-kozakura.md"
     preparacao_sessao_atual: "narrador/sessoes/001/preparacao.md"
     mapa_sessao_atual: "narrador/sessoes/001/mapa-e-salas.md"
     npcs_sessao_atual: "narrador/sessoes/001/npcs.md"
@@ -102,6 +105,9 @@ fontes:
     - nome: "Aliados para Ren"
       arquivo: "books/Aliados para Ren.pdf"
       uso: "aliados canônicos futuros de Ren; ordem preferencial de aparição; ponte entre Ren, Masao, Tyr, sobreviventes Kagehira e a divindade que condenou Masao"
+    - nome: "Ponte de Kozakura"
+      arquivo: "books/Ponte de Kozakura.pdf"
+      uso: "eixo narrativo canônico de longo prazo: anomalias de Kara-Tur em Ravens Bluff, descoberta de portal permanente para Kozakura e formação futura de Shin-Kozakura após Masao perder o controle exclusivo da passagem"
 
 jogador:
   personagem_inicial:
@@ -131,6 +137,7 @@ tom:
     - "consequencias persistentes"
     - "agencia real do jogador"
     - "preparacao local antes de expansao ampla"
+    - "direcao canonica de longo prazo para a Ponte de Kozakura e Shin-Kozakura"
     - "campanha solo com aliados temporarios, recorrentes e canonicos sem roubar agencia de Ren"
     - "furtividade, investigacao urbana e sobrevivencia"
     - "jogo adulto com romance e intimidade consentida tratados por corte de cena"

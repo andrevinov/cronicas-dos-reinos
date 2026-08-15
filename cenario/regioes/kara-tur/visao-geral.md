@@ -163,6 +163,9 @@ Essas regiões são úteis quando a campanha precisar de:
 * **Rotas longas:** uma pista de Kara-Tur pode chegar a Ravens Bluff como seda,
   chá, jade, papel, sinete, veneno, máscara, lâmina, escritura ou superstição
   mal entendida.
+* **Contato gradual:** mercadorias e pessoas de Kara-Tur podem parecer apenas
+  comércio distante no começo, mas padrões repetidos podem revelar vínculos mais
+  profundos entre Kozakura e Ravens Bluff.
 
 ---
 
@@ -181,3 +184,7 @@ Essas regiões são úteis quando a campanha precisar de:
   Chirasu, o submundo ou um espírito de montanha.
 * Uma rota marítima que deveria terminar no Mar das Estrelas Cadentes passou por
   intermediários de Wa, Koryo e Kozakura.
+* Uma mercadoria de Kozakura parece recente demais para a rota marítima que
+  supostamente a trouxe.
+* Um viajante oriental aparece em Ravens Bluff sem que o porto consiga explicar
+  claramente por qual navio ele entrou.

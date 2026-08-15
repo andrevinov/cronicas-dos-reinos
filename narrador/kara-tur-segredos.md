@@ -26,6 +26,11 @@ O documento interno `books/Aliados para Ren.pdf` também é canônico. Os aliado
 maiores de Ren, a ordem preferencial de aparição e Tadasu no Kami ficam em
 `narrador/aliados/`.
 
+O documento interno `books/Ponte de Kozakura.pdf` também é canônico. A revelação
+gradual de um portal permanente entre Ravens Bluff e Kozakura, a perda do
+controle exclusivo de Masao e o surgimento futuro de Shin-Kozakura ficam em
+`narrador/ponte-de-kozakura/`.
+
 Usar primeiro como rastros:
 
 * mercadorias;
@@ -61,6 +66,9 @@ Estas verdades são compatíveis com o cânone atual:
 * Masao prefere cidades com crime, túneis, alfândega, papéis, rotas marítimas e
   ruínas subterrâneas porque esses elementos reproduzem o tipo de poder que ele
   tentou concentrar em Kozakura.
+* A Ponte de Kozakura pode ser uma das razões ocultas para Masao investir tanto
+  em Ravens Bluff: ela oferece rota clandestina direta para Kozakura, escondida
+  sob sinais que parecem comércio oriental comum.
 * A Juppongatana pode misturar membros de Kozakura, Wa, Shou Lung, T'u Lung e
   Koryo. O nome é de Masao; a origem individual de cada membro pode variar.
 * O plano maior de Masao não é apenas controlar submundo: ele quer construir uma
@@ -163,6 +171,12 @@ Risco:
   articulações doloridas, cabelo branco súbito ou sombra que não acompanha a luz.
 * Um contato de templo em Ravens Bluff pode identificar que uma prece oriental
   não pede bênção: pede licença para esconder um crime.
+* Uma mercadoria de Kozakura pode estar fresca, íntegra ou recente demais para
+  ter vindo por rota marítima comum.
+* Uma pessoa de Kozakura pode aparecer em Ravens Bluff sem registro plausível de
+  desembarque.
+* Um manifesto pode estar correto em si mesmo e, ainda assim, impossível quando
+  comparado a outros casos semelhantes.
 
 ---
 
@@ -246,9 +260,14 @@ Faerûn, planos e mundos. Usar com parcimônia.
 Rotas preferenciais para a campanha atual:
 
 * comércio marítimo e intermediários humanos primeiro;
-* portal antigo ou passagem planar apenas se a escala da busca por Masao crescer;
+* a Ponte de Kozakura é canônica, mas deve ser prenunciada por comércio marítimo
+  plausível, anomalias acumuladas e contabilidade impossível antes da revelação;
 * sinais materiais antes de exposição: lama estranha, papel impossível, moeda
   velha, sal de outro mar, sombra sem fonte, calendário incompatível.
 
 Não usar portal como atalho para remover agência ou transportar Ren para uma
 cena obrigatória.
+
+Quando a Ponte de Kozakura for controlada por forças que não sejam Masao, tratar
+isso como perda do controle exclusivo dele. Masao ainda pode tentar se beneficiar
+do fluxo por meios indiretos.

@@ -48,7 +48,8 @@ Detalhes reservados ficam em:
 
 * `narrador/masao/README.md`;
 * `narrador/masao/plano.md`;
-* `narrador/aliados/tadasu-no-kami.md`.
+* `narrador/aliados/tadasu-no-kami.md`;
+* `narrador/ponte-de-kozakura/`.
 
 ### Cronologia de Kozakura e Ren
 
@@ -258,3 +259,54 @@ Na narração, sinais de Masao devem surgir por camadas: intermediários, símbo
 falsos, documentos, pressão no submundo, medo institucional, agentes
 especializados e exploração de lugares subterrâneos antes de qualquer confronto
 direto.
+
+### Ponte de Kozakura e Shin-Kozakura
+
+O documento interno `books/Ponte de Kozakura.pdf` define uma direção canônica de
+longo prazo: a campanha revelará a existência de uma passagem estável e
+permanente entre a região de Ravens Bluff e Kozakura.
+
+Essa descoberta deve ser lenta. Antes do portal, aparecem anomalias plausíveis:
+objetos de Kara-Tur, armas, tecidos, selos, papel, roupas, moedas, ervas,
+objetos religiosos, pessoas sem registro de desembarque e cargas que não batem
+com manifestos.
+
+Cada caso isolado deve poder parecer comércio, contrabando, falsificação ou erro
+de alfândega. A verdade surge quando Ren, aliados ou autoridades comparam casos
+demais e percebem que a conta não fecha.
+
+Masao pode ter encontrado, reativado, estabilizado ou explorado a ponte para
+trazer membros da Juppongatana, especialistas, peças rituais, documentos,
+materiais ou aliados antigos sem depender de navios. A definição exata deve ser
+feita quando a revelação se aproximar.
+
+O cânone exige que Masao perca o **controle exclusivo** da ponte em algum ponto.
+Isso não significa que ele nunca mais possa se beneficiar dela. Depois da perda
+de exclusividade, Masao ainda pode explorar a rota por infiltração, suborno,
+documentos falsos, sabotagem, medo público ou guerra indireta.
+
+Quando a ameaça imediata for controlada, a ponte deve começar a produzir uma
+consequência histórica contrária ao projeto de Masao: contato humano duradouro
+entre Ravens Bluff e Kozakura.
+
+O resultado futuro canônico é **Shin-Kozakura**, Nova Kozakura: um bairro
+kozakurano em Ravens Bluff, construído conscientemente para reproduzir formas
+materiais de Kozakura com casas, banhos públicos, jardins, oficinas, casas de
+chá, torii, santuários e templos do Caminho da Iluminação. A mistura cultural
+surge dentro dessa forma: aço anão, bebidas faerûnianas, crianças bilíngues,
+magos ravenians estudando com monges e tyrranos conversando com sacerdotes do
+Caminho.
+
+Shin-Kozakura não existe no início da campanha. Deve nascer por semanas, meses e
+anos de mundo, após descoberta, contenção, negociação, fluxos vigiados, chegada
+de emissários, comércio, imigração e construção deliberada.
+
+Ravens Bluff não pertence a Cormyr. A ponte aumenta sua importância no **Vast**,
+no **Mar das Estrelas Cadentes** e, por consequência, para potências como Cormyr,
+Sembia, Impiltur, Dragon Coast, Zhentarim, Thay e Harpistas.
+
+Arquivos autoritativos:
+
+* `narrador/ponte-de-kozakura/README.md`;
+* `narrador/ponte-de-kozakura/anomalias-e-revelacao.md`;
+* `narrador/ponte-de-kozakura/shin-kozakura.md`.

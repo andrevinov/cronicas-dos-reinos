@@ -89,6 +89,10 @@ Portos ligados a comércio, estrangeiros, seda, doenças de pântano, alfândega
 forjadores, contrabando e cargas desviadas. São bons pontos de origem para pistas
 que chegam a Ravens Bluff.
 
+Caso a campanha aprofunde laços entre Kozakura e Ravens Bluff, esses portos e
+seus equivalentes menores são bons pontos de origem para emissários, artesãos,
+materiais, rumores e disputas de autoridade.
+
 ### Hinomoto
 
 Ilha de muitos santuários, associada a peregrinação, tabus contra armas e

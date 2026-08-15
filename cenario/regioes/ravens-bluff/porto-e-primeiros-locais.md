@@ -74,7 +74,9 @@ Usos em jogo:
 * lacres quebrados;
 * discussões entre fiscais e carregadores;
 * oportunidade para Furtividade, Investigação e Percepção;
-* primeiro sinal de contrabando, roubo ou fraude.
+* primeiro sinal de contrabando, roubo ou fraude;
+* objetos de Kara-Tur que parecem comércio legítimo, mas criam perguntas quando
+  comparados com manifestos, datas e rotas.
 
 É uma boa área para encontros rápidos porque há muita gente, muitos obstáculos e testemunhas pouco confiáveis.
 

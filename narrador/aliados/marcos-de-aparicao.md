@@ -36,6 +36,8 @@ movimento.
 * Ren ser ferido seriamente por agente melhor preparado;
 * investigação tocar remédios, quarentena, ervas orientais, tintas, papéis,
   identidades falsas ou registros que Shizune tentou limpar;
+* uma anomalia da Ponte de Kozakura aparecer como mercadoria, pessoa ou remédio
+  que não cabe em manifesto de navio;
 * Ren perceber que continuar sozinho está custando informação e sangue demais.
 
 **Locais bons:** Harbor District, casa médica clandestina, navio em quarentena,
@@ -66,7 +68,7 @@ agente especializado.
   o limite atual do Getsuei-ryū;
 * Ren insistir em enfrentar a Juppongatana sem treinamento suficiente;
 * rumores de que um Kagehira incompleto está vivo alcançarem antigos círculos
-  marciais de Kozakura;
+  marciais de Kozakura, por rota marítima ou pela Ponte de Kozakura;
 * Meihua encontrar rastro de um velho mestre procurando Ren.
 
 **Locais bons:** templo abandonado, casa de chá fora da rota, estrada chuvosa
@@ -129,6 +131,8 @@ círculos orientais.
 * Chō, Shizune ou outro membro da Juppongatana demonstrar interesse em Ren como
   Kagehira, não apenas como artista Kage;
 * a campanha encontrar um ponto morto, refúgio ou código antigo dos Kagehira;
+* a Ponte de Kozakura começar a mover rumores de Ravens Bluff para Kozakura ou
+  de Kozakura para Ravens Bluff;
 * Ren buscar respostas sobre sobreviventes do clã.
 
 **Locais bons:** Ravens Bluff à noite, cais sob chuva, pátio de hospedaria, rota

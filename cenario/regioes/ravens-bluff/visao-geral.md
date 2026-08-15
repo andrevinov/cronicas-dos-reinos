@@ -186,7 +186,9 @@ Possíveis direções futuras:
 * Dalelands, para conflitos locais, comunidades antigas e ameaças sombrias;
 * Moonsea, para política dura, comércio e perigo;
 * Waterdeep, como segundo grande bloco urbano e caminho para Undermountain;
-* rotas marítimas e fluviais conectadas ao comércio regional.
+* rotas marítimas e fluviais conectadas ao comércio regional;
+* Kara-Tur e Kozakura, inicialmente por mercadorias, pessoas deslocadas, rumores
+  e consequências da história de Ren.
 
 Essas conexões devem aparecer primeiro como rumores, mapas, viajantes, notícias, dívidas, cargas e interesses de facções.
 
