@@ -1,0 +1,4 @@
+[virtualenvs]
+# Mantém o ambiente visível e previsível em <repo>/.venv/.
+# Assim você pode ativá-lo também com: source .venv/bin/activate
+in-project = true
