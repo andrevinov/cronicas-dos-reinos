@@ -198,11 +198,8 @@ jobs:
       - name: Integridade estrutural e semântica
         run: python ferramentas/verificar-integridade.py
 
-      - name: Preservação da baseline durante a refatoração
-        if: github.event_name == 'pull_request' || startsWith(github.ref_name, 'refactor/')
-        run: >-
-          python ferramentas/verificar-integridade.py
-          --baseline baseline/estado-logico-2026-08-15.yaml
+      - name: Preservação do artefato histórico de baseline
+        run: python ferramentas/verificar-integridade.py --verificar-baseline-historica
 
       - name: Auditoria final e teste de retomada
         run: |
@@ -217,6 +214,8 @@ jobs:
           assert report['veredito'] == 'PRONTO PARA RETOMAR'
           assert all(gate['ok'] is True for gate in report['gates'])
           by_name = {gate['nome']: gate for gate in report['gates']}
+          baseline = by_name['regressoes_e_baseline']['detalhe']
+          assert 'baseline histórica' in baseline['baseline_historica'].lower()
           hot = by_name['retomada_somente_camada_quente']['detalhe']
           assert hot['transcricao_lida'] is False
           assert hot['bytes_saida'] <= 8192
