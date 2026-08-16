@@ -15,6 +15,10 @@ Uso preferencial em uma única chamada de ferramenta:
     }
     JSON
 
+O campo `jogador` aceita somente ON já resolvido. Blocos OFF (`[...]`) e
+placeholders RECALL (`{...}`) precisam ser separados/resolvidos antes desta porta;
+se vazarem até aqui, a transação é recusada antes de qualquer escrita.
+
 A operação é idempotente. Se houver interrupção entre as duas escritas, repetir a
 mesma entrada repara somente o lado ausente sem duplicar o outro.
 """
@@ -36,6 +40,7 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import entrada
 from transacoes import (
     PENDING_PATH,
     TransactionError,
@@ -89,6 +94,14 @@ def read_transaction(path: Path | None) -> dict[str, Any]:
     return value
 
 
+def validate_player_protocol(player: str) -> str:
+    """Garante que somente ON resolvido possa chegar à transcrição."""
+    try:
+        return entrada.assert_registerable(player)
+    except entrada.InputProtocolError as exc:
+        raise TransactionError(f"protocolo de entrada inválido: {exc}") from exc
+
+
 def normalize_transaction(repo: Path, transaction: dict[str, Any]) -> tuple[dict[str, Any], int]:
     session = transaction.get("sessao", current_session(repo))
     if not isinstance(session, int) or session < 1:
@@ -104,8 +117,13 @@ def normalize_transaction(repo: Path, transaction: dict[str, Any]) -> tuple[dict
     if player is not None and not isinstance(player, str):
         raise TransactionError("jogador precisa ser string quando presente")
 
-    record = build_pending_record(transaction, session)
     normalized = dict(transaction)
+    if isinstance(player, str) and player.strip():
+        normalized["jogador"] = validate_player_protocol(player)
+    elif isinstance(player, str):
+        normalized.pop("jogador", None)
+
+    record = build_pending_record(normalized, session)
     normalized["id"] = record["id"]
     normalized["sessao"] = session
     normalized["resumo"] = record["resumo"]
@@ -193,6 +211,9 @@ def _atomic_write(path: Path, content: str) -> None:
 
 
 def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, Any]:
+    # A validação ON/OFF/RECALL ocorre dentro de normalize_transaction e, portanto,
+    # antes de qualquer leitura destinada a preparar uma escrita ou de qualquer
+    # mutação do transcript/buffer.
     normalized, session = normalize_transaction(repo, transaction)
     record = build_pending_record(normalized, session)
     transaction_id = record["id"]

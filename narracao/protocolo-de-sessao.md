@@ -2,7 +2,7 @@
 
 Este protocolo define como iniciar, narrar, registrar, consolidar, pausar e encerrar sessões de **Crônicas dos Reinos**.
 
-Estilo: `narracao/guia-de-narrativa.md`. Limites: `narracao/limites.md`. Acesso: `docs/agente/acesso-e-operacoes.md`. Consolidação: `docs/agente/consolidacao-transacional.md`. Memória: `docs/agente/memoria-de-sessoes.md`.
+Estilo: `narracao/guia-de-narrativa.md`. Limites: `narracao/limites.md`. Entrada: `docs/agente/protocolo-de-entrada.md`. Acesso: `docs/agente/acesso-e-operacoes.md`. Consolidação: `docs/agente/consolidacao-transacional.md`. Memória: `docs/agente/memoria-de-sessoes.md`.
 
 ---
 
@@ -22,7 +22,7 @@ sessoes/001/
 └── imagens/
 ```
 
-`transcricao.md` é o registro integral e append-only da alternância entre jogador e narrador. **Ela é fria para leitura.** O arquivo normal de retomada é `handoff.yaml`, indexado por `sessoes/index.yaml`.
+`transcricao.md` é o registro integral e append-only dos **avanços ON** entre jogador e narrador. OFF nunca é copiado para ela. **A transcrição é fria para leitura.** O arquivo normal de retomada é `handoff.yaml`, indexado por `sessoes/index.yaml`.
 
 Durante a sessão ativa, mudanças posteriores ao último checkpoint ficam em:
 
@@ -54,9 +54,31 @@ O cabeçalho da nova transcrição é snapshot inicial curto; não deve ser rees
 
 ---
 
+## Linguagem da janela — ON, OFF e RECALL
+
+A janela do Codex usa três canais explícitos:
+
+```text
+texto normal = ON
+[texto]      = OFF
+{texto}      = RECALL dentro de ON
+```
+
+- **ON** é ficção ativa e pode gerar avanço/transação.
+- **OFF** é André falando com o narrador. Um bloco OFF inteiro começa com `[` e termina com `]`; ele não avança tempo, não consome recurso, não cria delta e não entra na transcrição. Respostas OFF do narrador também ficam entre colchetes.
+- **RECALL** pede para completar uma lembrança factual que Ren legitimamente possui. Deve ser resolvido e substituído antes do avanço. Não pode escolher estratégia, emoção, vontade ou fala criativa por Ren, nem revelar segredo que ele não conhece.
+
+ON, OFF e RECALL podem coexistir na mesma mensagem. Separar os canais antes de resolver a ficção. Se qualquer RECALL não puder ser resolvido de forma legítima e não ambígua, parar sem rolar, avançar ou registrar e explicar a lacuna em OFF.
+
+Somente **ON já resolvido** pode ser enviado como campo `jogador` para `turno.py registrar`. `ferramentas/entrada.py` é o parser/validador determinístico; texto ON comum não precisa pagar um tool call só para classificação.
+
+Contrato completo: `docs/agente/protocolo-de-entrada.md`.
+
+---
+
 ## Alternância
 
-Formato:
+Formato persistido para avanços ON:
 
 ```markdown
 **Narrador**
@@ -76,15 +98,17 @@ Antes de publicar: NPCs soam como pessoas do mundo; mecânica fica fora da voz d
 
 ## Loop transacional de narração
 
-Uma interação comum segue:
+Uma interação com ON segue:
 
 ```text
-ação do jogador
+entrada
+→ separar ON/OFF/RECALL
+→ resolver RECALL
 → usar contexto já presente
 → consultar somente a lacuna necessária
-→ resolver rolagens
+→ resolver rolagens do ON
 → produzir narração
-→ registrar transação
+→ registrar somente ON resolvido + narração + deltas
 → devolver controle ao jogador
 ```
 
@@ -102,7 +126,7 @@ python3 ferramentas/turno.py registrar <<'JSON'
 JSON
 ```
 
-O registrador escreve somente:
+O registrador recusa `jogador` contendo OFF ou RECALL não resolvido antes de qualquer escrita. Ele escreve somente:
 
 1. `sessoes/NNN/transcricao.md`;
 2. `runtime/eventos-pendentes.jsonl`.
@@ -157,7 +181,7 @@ Sem journal de consolidação, runtime + handoff + buffer + transcrição append
 
 ## Tamanho, modos e ritmo
 
-Entrada típica do jogador: uma frase a um parágrafo. Entrada típica do narrador: duas frases a três parágrafos. Usar entradas maiores em abertura, descoberta importante, resolução de combate, transição ou consequência substancial.
+A ação do jogador pode ser curta ou extensa conforme a intenção. A resposta do narrador usa **densidade adaptativa**: ações simples podem ser breves; diálogo, lugar novo, revelação, transição e cenas importantes recebem o espaço necessário para serem vividos, sem enchimento. Não existe teto normal de duas frases/três parágrafos.
 
 Modos principais: interação, exploração e combate. Registrar mudança de modo apenas quando ela ocorrer de verdade.
 
@@ -315,7 +339,7 @@ L0
 → transcrição somente como última escalada
 ```
 
-Nunca reler automaticamente a transcrição inteira.
+Nunca reler automaticamente a transcrição inteira. Um pedido OFF como `[Continue a sessão 3.]` apenas solicita retomada; ele não deve ser gravado como ação de Ren.
 
 ---
 

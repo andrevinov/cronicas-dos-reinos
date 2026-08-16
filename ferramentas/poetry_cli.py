@@ -44,6 +44,10 @@ def _run_script(filename: str) -> int:
     ).returncode
 
 
+def entrada() -> int:
+    return _run_script("entrada.py")
+
+
 def contexto() -> int:
     return _run_script("contexto.py")
 
