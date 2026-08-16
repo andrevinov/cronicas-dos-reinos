@@ -80,7 +80,8 @@ Leia no máximo os documentos especializados necessários:
 - regra, decisão, CD, rolagem → `docs/agente/regras-e-rolagens.md`;
 - narração, NPC, facção, relógio, consequência, relação → `docs/agente/narracao-e-mundo.md`;
 - ficha, progressão, inventário, recursos, tempo → `docs/agente/personagem-e-tempo.md`;
-- pesquisa, região, retcon, edição, YAML, ferramentas, Git → `docs/agente/pesquisa-e-manutencao.md`.
+- pesquisa, região, retcon, edição, YAML, ferramentas, Git → `docs/agente/pesquisa-e-manutencao.md`;
+- telemetria, rollout, benchmark e economia medida → `docs/agente/telemetria-rollouts.md`.
 
 Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao.md`. Limites: `narracao/limites.md`.
 
@@ -95,6 +96,7 @@ Durante **cada avanço comum**:
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime nem handoff;
 - não executar `git status`, `git diff`, commit, auditoria ampla ou suíte global por rotina;
+- não executar `analisar-rollout.py`, `comparar-rollouts.py` ou criar telemetria durante o avanço; medição é pós-hoc;
 - registrar jogador + narrador + deltas em uma única chamada a `ferramentas/turno.py registrar`;
 - essa chamada altera somente a transcrição atual e `runtime/eventos-pendentes.jsonl`;
 - registrar apenas deltas persistentes realmente ocorridos;

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "kind": "post_refactor_rollout_targets",
+  "scope": "avanços narrativos",
+  "notes": [
+    "As metas medem tráfego e comportamento operacional; não estimam cobrança nem quota semanal.",
+    "Input bruto tem faixa-alvo de redução de 75% a 85%; 70% é o piso de aprovação inicial.",
+    "Acesso L0 não aparece como tool call; é inferido quando o turno não contém read/search observado."
+  ],
+  "narration": {
+    "rules": [
+      {
+        "id": "raw-input-floor",
+        "label": "reduzir pelo menos 70% do input bruto por avanço",
+        "metric": "input_tokens_per_turn",
+        "source": "reduction",
+        "operator": ">=",
+        "value": 0.70
+      },
+      {
+        "id": "inference-rounds",
+        "label": "ficar em no máximo 5 inferências por avanço",
+        "metric": "inference_events_per_turn",
+        "source": "after",
+        "operator": "<=",
+        "value": 5.0
+      },
+      {
+        "id": "tool-calls",
+        "label": "ficar em no máximo 8 tool calls por avanço",
+        "metric": "tool_calls_per_turn",
+        "source": "after",
+        "operator": "<=",
+        "value": 8.0
+      },
+      {
+        "id": "write-targets",
+        "label": "manter no máximo 2 alvos de escrita por avanço comum",
+        "metric": "write_target_touches_per_turn",
+        "source": "after",
+        "operator": "<=",
+        "value": 2.0
+      },
+      {
+        "id": "canonical-writes",
+        "label": "não reescrever estado canônico durante avanço comum",
+        "metric": "canonical_write_target_touches_per_turn",
+        "source": "after",
+        "operator": "==",
+        "value": 0.0
+      },
+      {
+        "id": "transcript-reads",
+        "label": "não usar transcrição bruta na narração comum",
+        "metric": "transcript_read_calls_per_turn",
+        "source": "after",
+        "operator": "<=",
+        "value": 0.05
+      },
+      {
+        "id": "hot-access-share",
+        "label": "resolver ao menos 80% dos avanços em L0–L2",
+        "metric": "fraction_turns_l0_l2",
+        "source": "after",
+        "operator": ">=",
+        "value": 0.80
+      }
+    ],
+    "stretch": {
+      "raw_input_reduction_fraction": {
+        "target": 0.75,
+        "excellent": 0.85
+      },
+      "uncached_input_reduction_fraction": {
+        "informational_only": true
+      }
+    }
+  }
+}

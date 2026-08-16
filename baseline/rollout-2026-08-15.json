@@ -1,10 +1,26 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "kind": "codex_rollout_baseline",
+  "label": "pré-refatoração — 2026-08-15",
   "source": {
     "filename": "rollout-2026-08-15T10-13-52-01a0058e-afe1-79e3-a75c-fc7108814a1f.jsonl",
     "size_bytes": 33413779,
     "session_id": "01a0058e-afe1-79e3-a75c-fc7108814a1f",
     "cli_version": "0.147.0"
+  },
+  "measurement": {
+    "native_exact": [
+      "token usage fields",
+      "inference event count",
+      "tool call count",
+      "compaction count"
+    ],
+    "manual_audit": [
+      "tool categories on 13 narrative advances",
+      "write target touches",
+      "patch payload character volume"
+    ],
+    "warning": "Manual classifications are observational and should be compared as operational indicators, not billing data."
   },
   "all_turns": {
     "turns": 21,
@@ -18,9 +34,11 @@
     "cached_fraction": 0.949306,
     "output_tokens": 195421,
     "reasoning_output_tokens": 69250,
-    "apply_patch_calls": 44,
-    "apply_patch_file_operations": 58,
-    "unique_files_touched_by_apply_patch": 8
+    "legacy_analyzer": {
+      "apply_patch_calls": 44,
+      "apply_patch_file_operations": 58,
+      "unique_files_touched_by_apply_patch": 8
+    }
   },
   "narration_turns": {
     "prompt": "Escrevi minhas ações na sessão 3. Pode avançar na história?",
@@ -35,17 +53,41 @@
     "cached_fraction": 0.954926,
     "output_tokens": 176897,
     "reasoning_output_tokens": 60194,
-    "apply_patch_calls": 41,
-    "apply_patch_file_operations": 54,
-    "unique_files_touched_by_apply_patch": 6
+    "legacy_analyzer": {
+      "apply_patch_calls": 41,
+      "apply_patch_file_operations": 54,
+      "unique_files_touched_by_apply_patch": 6
+    },
+    "manual_audit": {
+      "tool_categories": {
+        "read_search": 151,
+        "write": 63,
+        "dice": 51,
+        "validation": 36,
+        "other": 5
+      },
+      "write_target_touches": 109,
+      "avg_write_target_touches_per_turn": 8.385,
+      "patch_payload_chars_approx": 302484,
+      "notes": [
+        "As cinco categorias somam os 306 tool calls dos 13 avanços narrativos.",
+        "Write target touches contam alvos de arquivo atingidos pelas operações de patch observadas, inclusive repetições entre turnos.",
+        "O volume de patch é aproximação em caracteres do payload, preservado apenas como indicador histórico."
+      ]
+    }
   },
   "context": {
     "compactions": 4,
-    "agents_md_chars_observed_in_world_state": 31846
+    "agents_md_chars_observed_in_world_state": 31846,
+    "observations": [
+      "Prompts posteriores frequentemente ficaram na faixa de aproximadamente 140k–224k tokens por inferência.",
+      "Houve avanços finais sem novas leituras de arquivo que ainda consumiram mais de um milhão de tokens de input acumulado devido a múltiplas continuações do modelo."
+    ]
   },
   "notes": [
     "input_tokens é a soma dos last_token_usage registrados por inferência; inclui grande volume reaproveitado por cache.",
     "approx_uncached_input_tokens é input_tokens - cached_input_tokens e deve ser tratado como aproximação operacional, não faturamento.",
-    "A baseline serve para comparação antes/depois; o rollout bruto não é versionado no repositório."
+    "A baseline serve para comparação antes/depois; o rollout bruto não é versionado no repositório.",
+    "Campos inexistentes na baseline, como tool_output_bytes e distribuição L0-L4T, aparecem como n/d na comparação em vez de serem inventados."
   ]
 }

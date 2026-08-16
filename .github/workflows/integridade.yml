@@ -119,6 +119,44 @@ jobs:
           grep -q 'nivel: L4' /tmp/acesso-salto.yaml
           grep -q 'salto_dirigido: true' /tmp/acesso-salto.yaml
 
+      - name: Telemetria externa de rollouts
+        run: |
+          test -f ferramentas/analisar-rollout.py
+          test -f ferramentas/comparar-rollouts.py
+          test -f docs/agente/telemetria-rollouts.md
+          test -f baseline/telemetria-step-11.md
+          test -f baseline/rollout-2026-08-15.json
+          test -f baseline/metas-rollout-pos-refatoracao.json
+          test -f tests/fixtures/rollout-step11-mini.jsonl
+          python ferramentas/analisar-rollout.py tests/fixtures/rollout-step11-mini.jsonl --json > /tmp/rollout-step11.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/rollout-step11.json', encoding='utf-8'))
+          assert report['schema_version'] == 2
+          n = report['narration_turns']
+          assert n['turns'] == 1
+          assert n['inference_events'] == 3
+          assert n['tool_calls'] == 3
+          assert n['write_target_touches'] == 2
+          assert n['canonical_write_target_touches'] == 0
+          assert n['max_access_level_by_turn'] == {'L1': 1}
+          assert n['fraction_turns_l0_l2'] == 1.0
+          PY
+          python ferramentas/comparar-rollouts.py tests/fixtures/rollout-step11-mini.jsonl --json > /tmp/comparacao-step11.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/comparacao-step11.json', encoding='utf-8'))
+          assert report['interpretation']['raw_input_reduction'] > 0.70
+          assert report['after']['narration']['write_target_touches_per_turn'] == 2.0
+          assert all(item['passed'] is True for item in report['targets'])
+          PY
+          rm -f runtime/consultas-contexto.jsonl
+          python ferramentas/contexto.py status > /tmp/contexto-sem-telemetria.yaml
+          test ! -e runtime/consultas-contexto.jsonl
+          python ferramentas/contexto.py --log-local status > /tmp/contexto-com-telemetria.yaml
+          test -s runtime/consultas-contexto.jsonl
+          rm -f runtime/consultas-contexto.jsonl
+
       - name: Consultas dirigidas de contexto
         run: |
           python ferramentas/contexto.py --sem-log status > /tmp/contexto-status.yaml
