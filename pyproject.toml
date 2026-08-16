@@ -1,0 +1,62 @@
+[project]
+name = "cronicas-dos-reinos"
+version = "0.1.0"
+description = "Ferramentas operacionais da campanha Crônicas dos Reinos"
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "PyYAML>=6.0,<7.0",
+]
+
+# Atalhos instalados dentro do .venv pelo `poetry install`.
+# Use sempre como `poetry run <comando> ...` ou, com o .venv ativado,
+# simplesmente `<comando> ...`.
+[project.scripts]
+# Consulta o estado efetivo sem abrir arquivos grandes desnecessariamente.
+contexto = "ferramentas.poetry_cli:contexto"
+
+# Registra um avanço narrativo: transcrição + deltas pendentes.
+turno = "ferramentas.poetry_cli:turno"
+
+# Consolida deltas em fronteira de cena/sessão e atualiza handoff/índice.
+checkpoint = "ferramentas.poetry_cli:checkpoint"
+
+# Motor de consolidação de baixo nível; prefira `checkpoint` no uso normal.
+consolidar = "ferramentas.poetry_cli:consolidar"
+
+# Roda a auditoria completa e responde se a campanha está pronta para retomar.
+auditoria = "ferramentas.poetry_cli:auditoria"
+
+# Verificação estrutural/semântica barata do repositório.
+integridade = "ferramentas.poetry_cli:integridade"
+
+# Gera ou valida o estado quente em runtime/.
+runtime = "ferramentas.poetry_cli:runtime"
+
+# Valida/gerencia a memória compacta de sessões e handoffs.
+sessoes = "ferramentas.poetry_cli:sessoes"
+
+# Rolagem comum de dados da campanha.
+dados = "ferramentas.poetry_cli:dados"
+
+# Agrupa várias rolagens independentes em uma única chamada.
+dados-lote = "ferramentas.poetry_cli:dados_lote"
+
+# Analisa um rollout JSONL do Codex depois da sessão.
+rollout = "ferramentas.poetry_cli:rollout"
+
+# Compara um ou mais rollouts novos com a baseline pré-refatoração.
+rollout-comparar = "ferramentas.poetry_cli:rollout_comparar"
+
+# Executa a suíte unitária completa do repositório.
+testes = "ferramentas.poetry_cli:testes"
+
+[tool.poetry]
+# Este repo é uma aplicação/ferramenta, não uma biblioteca publicada no PyPI,
+# mas mantemos package mode para instalar os console scripts acima no .venv.
+requires-poetry = ">=2.0,<3.0"
+packages = [{ include = "ferramentas" }]
+
+[build-system]
+requires = ["poetry-core>=2.0,<3.0"]
+build-backend = "poetry.core.masonry.api"
