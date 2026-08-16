@@ -1,0 +1,46 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: dessa_wren
+historico: historico/relacoes/dessa_wren.yaml
+relacao:
+  nome: Dessa Wren
+  tipo: costureira prática / guarda-roupa menor do circo
+  local: Jack Mooney & Sons Circus
+  status: conhecida em jogo
+  atitude_para_ren: pragmática, irônica e cooperativa por pagamento
+  confianca: baixa
+  respeito: profissional inicial
+  motivo_atual: 'Na abertura da apresentação, o figurino acompanhou bem o Passo Sombrio: o pano atrasado fez a técnica
+    parecer ainda mais impossível sem revelar o trabalho de bastidor. Depois da conversa de Ren com Dalm, Dessa
+    ajudou a montar uma troca rápida: Tobb como silhueta falsa de Kage retornando ao controle dos Mooney e Ren saindo
+    em roupas de carreiro/Tobb.'
+  informacoes_compartilhadas_por_dessa:
+  - Dessa finalizou o figurino de apresentação de Ren e o pano preto de Lysa.
+  - Dessa viu o figurino de O Vento da Noite funcionar diante da lona cheia.
+  - Dessa acha que a roupa deve continuar protegida nos bastidores para preservar o efeito de palco.
+  - Dessa está com o figurino de O Vento da Noite guardado após o fechamento do Benefício.
+  - Dessa reorganizou o ensaio de 4 Eleasis para transformar a ambição de quatro movimentos físicos novos em duas
+    novidades cênicas seguras para Kage.
+  - Dessa preparou Ren como Kage para a reprise curta de 5 Eleasis e manteve a versão segura do figurino.
+  - Dessa viu a reprise curta funcionar no limite técnico e ajudou a retirar Kage dos olhos do público imediatamente.
+  - Dessa está preparando Kage para a apresentação fechada da Casa Veyr com ênfase em silêncio, medo e controle
+    de imagem.
+  - Dessa viu Kage abrir a apresentação fechada com Passo Sombrio e transformar o atraso do pano em efeito cênico
+    útil.
+  - Dessa sabe que Tobb vestiu uma versão falsa de Kage para proteger a saída de Ren após a apresentação fechada
+    da Casa Veyr.
+  acordos:
+  - Dessa recebeu 1 PO pelo pacote de disfarces rápidos e pelo silêncio imediato.
+  - Dessa recebeu 1 PO para transformar roupas comprometedoras em retalho.
+  - Dessa recebeu 1 PO para guardar as roupas próprias de Ren.
+  - Dessa recebeu 1 PO por roupa limpa de cidadão menor e limpeza das roupas próprias de Ren.
+  - Dessa recebeu encomenda informal de uma futura roupa de apresentação com obi espetacular.
+  - Dessa aceitou preparar figurino e efeitos simples para O Vento da Noite, desde que Ren não mude a história várias
+    vezes antes de amanhã.
+  - Dessa entregou o figurino funcional de O Vento da Noite antes da apresentação.
+  riscos:
+  - Se os disfarces voltarem ligados a sangue ou crime evidente, Dessa dirá que foram roubados dela.
+  - Dessa entende disfarce teatral e roupas comuns, mas não é especialista em espionagem real.
+  - A versão teatral de Kara-Tur feita por Dessa será adaptação local, não reconstrução cultural autêntica.
+conteudo_mais_antigo_no_historico:
+  informacoes_compartilhadas_por_dessa: 5

@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: lysa_renn
+npc:
+  nome: Lysa Renn
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 3
+    confianca: 3
+    risco_percebido: 5
+  natureza_do_vinculo: rivalidade defensiva, admiração possível e orgulho ferido
+  subtexto_romantico: possivel
+  observacao_afetiva: 'Lysa não tem queda atual por Ren; ela está ferida, defensiva e focada no palco. Se vínculo
+    subir, pode virar fascínio competitivo, flerte áspero ou atração reprimida, especialmente por Kage representar
+    risco, disciplina e presença de palco. Isso também pode acionar ciúme de Nera se ficar visível.
+
+    '
+  leitura_atual: 'Lysa ainda é defensiva com Ren por causa da investigação da sabotagem e por orgulho ferido, mas
+    Kage também deu a ela um papel baixo que funcionou sem destruir seu joelho.
+
+    '
+  tom_atual: 'Provocadora, orgulhosa e vulnerável quando o assunto toca o alto, Mira ou o próprio joelho. Pode aceitar
+    limites se eles mantiverem presença de palco, mas odeia parecer peça substituível.
+
+    '
+  impacto_em_testes: 'Abordagens que reconhecem competência e oferecem papel seguro podem reduzir CD. Acusação direta,
+    comparação com Mira ou tentativa de tratá-la como inválida aumenta CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren reconhece a utilidade dela sem fingir que o joelho não existe
+  - Kage dá espaço de palco seguro sem componente romântico ou humilhante
+  - Ren evita usar Mira como régua moral contra Lysa
+  gatilhos_de_queda:
+  - Ren a acusa publicamente ou reabre a sabotagem como humilhação
+  - Lysa é afastada de cena por risco ligado a Kage
+  - Ren força comparação direta entre Lysa e Mira

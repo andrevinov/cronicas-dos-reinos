@@ -1,0 +1,54 @@
+schema_conhecimento_sessao: 2
+sessao: 1
+quantidade: 10
+fragmentos:
+- titulo: 'Sessão 001: The Silver Lily'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/001-sessao-001-the-silver-lily.md
+  bytes: 821
+- titulo: 'Sessão 001: Mara Tharle'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/002-sessao-001-mara-tharle.md
+  bytes: 765
+- titulo: 'Sessão 001: reconhecimento da Red Sail Tavern'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/003-sessao-001-reconhecimento-da-red-sail-tavern.md
+  bytes: 1618
+- titulo: 'Sessão 001: retorno à Silver Lily'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/004-sessao-001-retorno-a-silver-lily.md
+  bytes: 1102
+- titulo: 'Sessão 001: segunda aproximação da Red Sail'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/005-sessao-001-segunda-aproximacao-da-red-sail.md
+  bytes: 4016
+- titulo: 'Sessão 001: roubo da prancheta'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/006-sessao-001-roubo-da-prancheta.md
+  bytes: 1181
+- titulo: 'Sessão 001: fuga da Silver Lily'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/007-sessao-001-fuga-da-silver-lily.md
+  bytes: 703
+- titulo: 'Sessão 001: conteúdo da prancheta'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/008-sessao-001-conteudo-da-prancheta.md
+  bytes: 1313
+- titulo: 'Sessão 001: Casa da Rede Morta'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/009-sessao-001-casa-da-rede-morta.md
+  bytes: 1608
+- titulo: 'Sessão 001: fuga com a caixa e a cativa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-01.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-02.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-03.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-04.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-05.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-06.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-07.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-08.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-09.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-10.md
+  - personagens/jogador/conhecimento/descobertas/sessao-001/010-sessao-001-fuga-com-a-caixa-e-a-cativa-parte-11.md
+  bytes: 124693

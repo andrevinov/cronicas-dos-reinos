@@ -1,0 +1,51 @@
+schema_conhecimento_ativo: 2
+natureza: roteador_derivado
+sessao_atual_da_campanha: 3
+sessao_mais_recente_indexada: 3
+topicos_prioritarios:
+- titulo: Sobre Masao e as Dez Espadas
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/03-sobre-masao-e-as-dez-espadas.md
+  bytes: 3032
+- titulo: Sobre Ravens Bluff
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/06-sobre-ravens-bluff.md
+  bytes: 608
+- titulo: Pistas atuais
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
+  bytes: 601
+descobertas_recentes:
+- titulo: 'Sessão 003: inspeção do interior do galpão baixo'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/049-sessao-003-inspecao-do-interior-do-galpao-baixo.md
+  bytes: 1389
+- titulo: 'Sessão 003: entrada no galpão e libertação de Mera'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/050-sessao-003-entrada-no-galpao-e-libertacao-de-mera.md
+  bytes: 842
+- titulo: 'Sessão 003: respostas de Mera e carroça no ramal'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/051-sessao-003-respostas-de-mera-e-carroca-no-ramal.md
+  bytes: 1662
+- titulo: 'Sessão 003: interceptação da carroça de resposta'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/052-sessao-003-interceptacao-da-carroca-de-resposta.md
+  bytes: 1353
+- titulo: 'Sessão 003: expulsão dos captores e chegada à balança velha'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/053-sessao-003-expulsao-dos-captores-e-chegada-a-balanca-velha.md
+  bytes: 1980
+- titulo: 'Sessão 003: mesa e cômodo dos fundos da balança velha'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/054-sessao-003-mesa-e-comodo-dos-fundos-da-balanca-velha.md
+  bytes: 1978
+- titulo: 'Sessão 003: perseguição do homem de mãos limpas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/055-sessao-003-perseguicao-do-homem-de-maos-limpas.md
+  bytes: 1663
+- titulo: 'Sessão 003: alcance e início do combate com o homem de mãos limpas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/056-sessao-003-alcance-e-inicio-do-combate-com-o-homem-de-maos-limpas.md
+  bytes: 1451
+observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.

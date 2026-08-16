@@ -1,0 +1,14 @@
+{"type":"session_meta","payload":{"id":"fixture-step11","cli_version":"0.test","cwd":"/repo","model_provider":"openai","context_window":258400}}
+{"type":"event_msg","payload":{"type":"task_started","turn_id":"t1"}}
+{"type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"Escrevi minhas ações na sessão 3. Pode avançar na história?"}],"internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"python3 ferramentas/contexto.py status\"}","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"response_item","payload":{"type":"function_call_output","output":"nivel: L1\nresultado: ok\n","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"last_token_usage":{"input_tokens":1000,"cached_input_tokens":800,"output_tokens":50,"reasoning_output_tokens":10}}}}
+{"type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"python3 ferramentas/rolar-lote.py\"}","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"response_item","payload":{"type":"function_call_output","output":"rolagem: 18\n","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"last_token_usage":{"input_tokens":1100,"cached_input_tokens":900,"output_tokens":60,"reasoning_output_tokens":20}}}}
+{"type":"response_item","payload":{"type":"function_call","name":"exec_command","arguments":"{\"cmd\":\"python3 ferramentas/turno.py registrar\"}","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"response_item","payload":{"type":"function_call_output","output":"OK — turno transacional registrado\n","internal_chat_message_metadata_passthrough":{"turn_id":"t1"}}}
+{"type":"event_msg","payload":{"type":"token_count","info":{"last_token_usage":{"input_tokens":1200,"cached_input_tokens":1000,"output_tokens":70,"reasoning_output_tokens":30}}}}
+{"type":"world_state","payload":{"state":{"agents_md":{"text":"fixture"}}}}
+{"type":"compacted","payload":{"replacement":"mini"}}

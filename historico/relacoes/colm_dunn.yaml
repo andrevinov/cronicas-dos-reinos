@@ -1,0 +1,113 @@
+schema_historico_relacao: 1
+id: colm_dunn
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Colm Dunn
+  tipo: irmão de Kethra Dunn / devedor explorado
+  local: em trânsito na carroça com Mera Fumaça, rumo à casa de Iria Doss
+  status: vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada
+  atitude_para_ren: assustado, confuso, mas menos perdido após ver Kethra
+  confianca: baixa por necessidade
+  respeito: baixo, misturado com medo
+  motivo: 'Colm foi mantido no alto da loja de Bram Vask como devedor por dívida/trabalho. Ren o encontrou atrás
+    de porta com trinco externo após intimidar Bram e neutralizar Noll. Colm perguntou primeiro por Kethra, demonstrando
+    que não sabe ainda se foi salvo, vendido ou transferido para outro cobrador. Depois de ver Kethra brevemente
+    na rua, Colm obedeceu à orientação dela e deixou Ren conduzi-lo ao Lavadouro dos Três Tanques. Sella Rove o
+    escondeu temporariamente no quarto da lenha. Kethra visitou Colm no lavadouro depois do turno. A presença dela
+    ajudou Colm a entender que Ren não era apenas outro cobrador, mas o esconderijo começou a ficar inseguro depois
+    que um rapaz farejou a frase ligada a Sella. Ren propôs tirar Colm da cidade amanhã, 4 Eleasis, por uma carroça
+    comum. Kethra não tem parente viável para recebê-lo, e Sella só oferece uma janela ruim até antes da primeira
+    luz, escondendo Colm atrás da caldeira velha em vez do quarto da lenha. Ren então moveu Colm imediatamente para
+    os pátios de saída, entregou seu manto roto como disfarce, deu a ele o nome de cobertura Dent e pagou 7 PO a
+    Dorra Hest para levá-lo aos fornos de cal do Fire River. Na manhã de 4 Eleasis, Ren pagou 1 PO por informação
+    nos pátios e ouviu que Dorra saiu no cinza, provavelmente com Dent sob a lona, mas que alguém havia perguntado
+    por um doente vindo do lavadouro antes da partida. Na manhã de 7 Eleasis, Ren voltou aos pátios e soube que
+    Colm/Dent chegou vivo aos fornos de cal, mas Dorra o moveu para uma secagem velha na estrada do Fire River com
+    Mera Fumaça depois que alguém de "mão limpa" fez perguntas. Ao seguir para lá, Ren percebeu observação alternada
+    e encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca, com marcas recentes saindo
+    da estrada para o mato baixo. Ren seguiu a trilha apesar de suspeitar de isca e encontrou Colm vivo, amarrado
+    e gagado junto a uma vala rasa, usado como pressão por uma mulher de avental escuro com lâmina curta e um homem
+    com besta leve. Ren atacou a mulher antes que ela pudesse agir, neutralizando-a de modo não letal; a faca caiu
+    fora da mão dela. Colm continua amarrado e gagado, mas a ameaça direta da lâmina foi removida. O besteiro disparou
+    contra Ren e errou. Ren então avançou sobre o besteiro, feriu-o sem apagá-lo, rendeu-o com a wakizashi e obteve
+    informação de que Bram Vask pagou a pergunta, um homem de mãos limpas organizou a captura, Mera Fumaça não chamou
+    a emboscada e pode estar presa no galpão baixo, e o rapaz da corda nova pode ter corrido para avisar o intermediário.
+    Em seguida, Ren apagou o besteiro já rendido, foi a Colm/Dent, puxou o pano da boca dele para baixo e tentou
+    avaliar suas condições. Confirmou que Colm está vivo e consciente, mas não conseguiu diagnosticar a gravidade
+    completa dos ferimentos em poucos segundos. Depois Ren cortou as cordas principais, colocou Colm nas costas
+    e o carregou cautelosamente até perto do provável galpão baixo de Mera Fumaça. Colm conseguiu murmurar fragmentos
+    sobre Mera e o galpão baixo, mas continua fraco demais para se mover com segurança sozinho. Ren então o encostou
+    atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão. A cobertura é imperfeita
+    e a tosse de Colm pode denunciá-lo se alguém se aproximar. Ren libertou Mera e a trouxe até Colm. Mera indicou
+    Iria Doss como tratamento rural possível, mas uma carroça de resposta entrou no ramal antes que o grupo pudesse
+    partir.
+
+    '
+  informacoes_observadas_por_ren:
+  - Colm tem dois dedos inchados e tortos.
+  - Colm tem tosse seca.
+  - Colm está fraco e assustado, mas consegue andar.
+  - Colm sabe que Kethra é relevante para sua situação, mas ainda não sabe o papel de Ren.
+  - Colm viu Kethra viva e ouviu dela que não deve ir para casa, Narwhal ou Tyr pela porta da frente.
+  - Colm está escondido no quarto da lenha do Lavadouro dos Três Tanques, mas o local deixou de ser seguro até o
+    escurecer.
+  - Colm diz que consegue andar, mas Kethra avalia que ele só consegue andar devagar.
+  - Colm recebeu o nome de cobertura Dent.
+  - Colm está usando o manto roto de mendigo que era de Ren.
+  - 'Última informação conhecida por Ren: Colm/Dent provavelmente saiu sob a lona da carroça de Dorra Hest.'
+  - Dorra Hest saiu dos pátios no cinza, rumo aos fornos de cal do Fire River.
+  - Um trabalhador dos pátios ouviu Dorra chamar o protegido de Dent e acredita que havia peso de homem sob a lona
+    quando a carroça saiu.
+  - Na manhã de 7 Eleasis, Ren soube que Colm/Dent chegou vivo aos fornos de cal, mas Dorra o moveu para uma secagem
+    velha na estrada do Fire River com Mera Fumaça.
+  - Ren encontrou uma tira de pano semelhante ao manto dado a Colm/Dent presa numa cerca antes de confirmar a localização
+    de Mera.
+  - 'Marcas recentes saem da estrada para o mato baixo: uma bota pesada e uma passada incompleta ou arrastada.'
+  - Ren confirmou Colm/Dent vivo no mato baixo junto à estrada do Fire River.
+  - Colm/Dent está amarrado e gagado junto a uma vala rasa, com uma mulher de lâmina curta ao lado dele e um besteiro
+    em cobertura parcial.
+  - Ren neutralizou a mulher de lâmina curta antes que ela pudesse agir contra Colm/Dent.
+  - A faca caiu no barro fora da mão da mulher.
+  - O besteiro disparou contra Ren e errou.
+  - Ren rendeu o besteiro com a wakizashi e depois o apagou sem matá-lo.
+  - Segundo o besteiro, Bram Vask pagou a pergunta, mas não veio pessoalmente.
+  - Segundo o besteiro, um homem de mãos limpas com roupa de trabalhador e mão de escrivão organizou a compra/captura.
+  - Segundo o besteiro, Colm/Dent deveria respirar porque quem viesse atrás valia mais.
+  - Segundo o besteiro, Mera Fumaça não chamou a emboscada e pode estar presa no galpão baixo.
+  - Segundo o besteiro, o rapaz da corda nova pode ter corrido para avisar o intermediário.
+  - Ren puxou o pano da boca de Colm/Dent para baixo, mas as cordas principais ainda prendem peito e braços às tábuas
+    baixas.
+  - Ren confirmou que Colm/Dent está vivo e consciente, sem sangramento fresco evidente.
+  - Ren não conseguiu avaliar com segurança costelas, febre, dano interno ou capacidade real de deslocamento de
+    Colm/Dent.
+  - Colm/Dent tem pulsos esfolados, marcas de pancada antiga, dois dedos tortos inchados e tosse seca funda.
+  - Ren cortou as cordas principais de Colm/Dent e o colocou nas costas.
+  - Colm/Dent conseguiu murmurar fragmentos sobre Mera e o galpão baixo.
+  - Ren carregou Colm/Dent até perto do provável galpão baixo sem ser percebido por ninguém visível.
+  - Ren encostou Colm/Dent atrás de tábuas antigas e capim alto, fora da linha direta da estrada e do galpão.
+  - A cobertura de Colm/Dent é imperfeita, e a tosse dele pode denunciá-lo se alguém se aproximar.
+  - Mera Fumaça está livre e reunida a Colm/Dent.
+  - Segundo Mera, Colm/Dent precisa de tratamento hoje, embora não pareça estar morrendo naquele instante.
+  - Uma carroça de resposta entrou no ramal antes que Ren pudesse retirar Colm/Dent da secagem.
+  - Ren expulsou os participantes da emboscada e ajudou a acomodar Colm/Dent na carroça abandonada.
+  - Mera partiu com Colm/Dent na carroça em direção a Iria Doss; Ren ainda não confirmou a chegada.
+  riscos:
+  - Colm pode entrar em pânico se achar que Ren é apenas outro agiota.
+  - Colm e Kethra continuam vulneráveis se Bram descobrir onde encontrá-los ou vender a informação a terceiros.
+  - Levar Colm diretamente até Kethra pode expor a fonte se houver observadores.
+  - A saída de Colm/Dent dependeu da discrição de Dorra Hest até a partida, e essa discrição falhou parcialmente.
+  - Um rapaz já perguntou pela frase ligada ao lavadouro; se a pista for comprada depressa, pode apontar para a
+    área dos pátios de carroças.
+  - Mesmo fora da cidade, sem destino confiável, Colm só compra tempo; ele ainda pode ser encontrado por cobrança,
+    fome ou doença.
+  - Alguém perguntou por um doente vindo do lavadouro antes de Dorra sair; Colm/Dent pode estar em risco mesmo se
+    tiver deixado Ravens Bluff.
+  - Olhos atentos nos pátios reagiram à nova busca de Ren por Dent e podem acelerar pressão sobre a estrada do Fire
+    River.
+  - A pista do pano na cerca pode ser rastro real de Colm/Dent, retirada apressada, sinal deixado por Dorra/Mera
+    ou isca.
+  - Colm/Dent está solto das cordas principais, mas vulnerável por fraqueza, tosse, cobertura ruim e possível ferimento
+    não diagnosticado.
+  - O rapaz da corda nova avisou aliados e retornou numa carroça com um condutor e um homem de besta leve; Ren rendeu
+    e depois expulsou o grupo.
+  - O trajeto até Iria Doss é conhecido na estrada e pode expor Mera e Colm antes da chegada.

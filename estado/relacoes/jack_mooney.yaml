@@ -1,0 +1,78 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: jack_mooney
+historico: historico/relacoes/jack_mooney.yaml
+relacao:
+  nome: Jack Mooney
+  tipo: dono do circo / autoridade local do acampamento / patrono condicional
+  local: Jack Mooney & Sons Circus
+  status: patrono condicional ativo
+  atitude_para_ren: pragmatica, desconfiada e interessada
+  confianca: moderada e condicional
+  respeito: inicial, baseado em competencia, audacia e honestidade parcial
+  motivo_atual: 'Ren escolheu ausência cara: Kage só volta na semana seguinte, no circo, salvo outra apresentação
+    particular filtrada por 80 PO. Jack aceitou bem a estratégia e passou a vender a ausência como escassez e descanso
+    do joelho da Princesa das Sombras, não como medo.'
+  acordos_oferecidos:
+  - Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle
+    dos Mooney, não da Casa Veyr.
+  - Tobb contou as 40 PO restantes da Casa Veyr antes da entrada útil; o total de 80 PO ficou com Jack/Tobb até
+    o acerto posterior.
+  - Ren abriu a apresentação fechada com Passo Sombrio, escolhendo impacto e ameaça controlada em vez de ocultar
+    totalmente a técnica.
+  - 'Durante a apresentação fechada, Jack cortou a provocação de Dalm sobre nome/família/fogo sem encerrar o show:
+    ''Contrato compra espetáculo. Não compra genealogia.'''
+  - Após o final da apresentação, Jack permitiu que Dalm entrasse no guarda-roupa menor/camarim funcional de Kage,
+    com Tobb vigiando a aba e o homem da Casa Veyr impedido de acompanhar.
+  - Jack pagou 20 PO a Ren como cachê de Kage pela apresentação fechada da Casa Veyr, deixando o restante para lona,
+    equipe, risco e caixa do circo.
+  - Jack separou o pagamento do número da bronca pela quebra pública de filtro, que permanece como dívida operacional.
+  - Jack pediu que Ren escolha se Kage aparece hoje como homem visível, calmo e controlado, ou se Jack compra a
+    ausência dele com desculpa deliberada.
+  - 'Ren escolheu que Kage fique ausente para parecer caro: salvo particular filtrada por 80 PO, Kage só volta na
+    próxima semana, no circo.'
+  - Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras.
+  informacoes_recebidas_por_jack:
+  - Ren aceitou preparar a tenda menor e revisar o número, mas ainda sob controle de Jack e sem remover os filtros
+    do circo.
+  - Tobb verificou que Casa Veyr existe operacionalmente como presença temporária de aluguel e pagamento, mas sem
+    raiz local profunda.
+  - Ren prometeu a Jack que nada aconteceria às pessoas do circo; Jack ouviu a promessa, mas continua dependendo
+    dos filtros práticos.
+  - Ren decidiu prosseguir com a apresentação fechada da Casa Veyr apesar da dobra contratual e discutiu o transporte
+    de Kage com Jack.
+  - Jack viu Dalm encaixar a frase ambígua 'Nem todo nome curto nasce pequeno' durante a apresentação, sem romper
+    claramente o contrato.
+  - Jack viu Ren não entregar reação à provocação de Dalm; a segunda provocação deu a Jack margem para intervir.
+  - Jack viu Ren chamar Dalm ao camarim com referência pública a Masao e às dez lâminas, o que piorou a saída social
+    dos convidados e forçou salvaguarda improvisada.
+  - Ren relatou a Jack a pista de Dalm sobre segunda maré, Ponte Baixa, porões secos atrás de armazéns velhos, papéis
+    antes de lâminas, gravadora, menino e Masao.
+  - Ren pediu que Jack repasse a informação a Silva.
+  - Ren informou Jack ao amanhecer de 7 Eleasis que Luath lacrou as provas da Ponte Baixa, que uma mensagem indica
+    encaminhamento a Tyr sem nome externo e que os inimigos ainda não demonstraram saber a localização exata dos
+    Vell.
+  riscos:
+  - Manter Kage caro e inacessível aumenta valor comercial, mas pode fazer patronos insistirem por vias indiretas.
+  - A tentativa de contatar Kage diretamente antes da reprise sugere que pelo menos um interessado quer separar
+    Ren de Jack e dos filtros do circo.
+  - A nova tira de papel aumenta o risco de Kage virar alavanca contra Nera, mesmo sem prova de que o abrigo dos
+    Vell foi localizado.
+  - A frase sobre intermediários desnecessários na resposta da Casa Veyr sugere nova tentativa de separar Kage dos
+    filtros de Jack e Silva.
+  - Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer
+    a contraproposta.
+  - Mesmo com a entrada controlada, o homem da Casa Veyr está perto o bastante da aba dos artistas para observar
+    lamparinas, pregas e sombras.
+  - A revelação do Passo Sombrio aumenta o valor comercial de Kage, mas também torna a máscara mais interessante
+    para observadores especializados.
+  - Dalm já testou o eixo nome/família/fogo diante de Kage, o que aumenta risco de provocação pessoal sem ainda
+    romper a tenda em violência.
+  - O convite público de Ren a Dalm para o camarim, usando referência a Masao, irritou Jack por contornar os filtros
+    que ele vinha tentando preservar.
+  - Jack aceitou a saída falsa porque protege a versão pública de Kage, mas a Casa Veyr pode ter ficado com suspeita
+    de truque.
+conteudo_mais_antigo_no_historico:
+  acordos_oferecidos: 45
+  informacoes_recebidas_por_jack: 9
+  riscos: 14

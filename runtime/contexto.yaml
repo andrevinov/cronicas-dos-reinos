@@ -1,0 +1,52 @@
+versao_runtime: 2
+natureza: derivado_descartavel
+fontes_canonicas:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+sessao:
+  numero: 3
+  status: em_sessao
+  modo_de_cena: resgate_rural
+personagem:
+  nome: Ren Kagehira
+  nivel: 6
+  classe: Monge
+  subclasse: Caminho da Sombra
+recursos:
+  pv:
+    atuais: 45
+    maximos: 45
+  ki:
+    atuais: 5
+    maximos: 6
+  ca: 17
+  deslocamento: 55 pés
+  dinheiro_po: 45
+tempo:
+  data: 7 Eleasis, 1372 DR
+  hora_aproximada: 08:03 de 7 Eleasis
+  periodo: manhã de 7 Eleasis
+  clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+localizacao:
+  plano: Material
+  mundo: Toril
+  continente: Faerûn
+  regiao: The Vast
+  cidade: Ravens Bluff
+  area: estrada do Fire River
+  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
+    limpas
+ponteiros:
+  ficha: personagens/jogador/ficha.yaml
+  estado_completo: estado/estado-atual.yaml
+  tempo_completo: estado/tempo.yaml
+  relacoes: estado/relacoes.yaml
+  medidores_npcs: estado/medidores-npcs.yaml
+  conhecimento_de_ren: personagens/jogador/conhecimento.md
+  retomada: ferramentas/contexto.py retomada
+  indice_sessoes: sessoes/index.yaml
+  handoff_atual: sessoes/003/handoff.yaml
+  transcricao_fria: sessoes/003/transcricao.md
+  narrador: narrador/
+  regras: regras/

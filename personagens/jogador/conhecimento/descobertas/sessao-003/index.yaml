@@ -1,0 +1,229 @@
+schema_conhecimento_sessao: 2
+sessao: 3
+quantidade: 56
+fragmentos:
+- titulo: 'Sessão 003: retorno ao circo e recado de Luath'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/001-sessao-003-retorno-ao-circo-e-recado-de-luath-parte-01.md
+  - personagens/jogador/conhecimento/descobertas/sessao-003/001-sessao-003-retorno-ao-circo-e-recado-de-luath-parte-02.md
+  bytes: 15838
+- titulo: 'Sessão 003: pergunta a Luath e limpeza dos pontos mortos'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/002-sessao-003-pergunta-a-luath-e-limpeza-dos-pontos-mortos.md
+  bytes: 1820
+- titulo: 'Sessão 003: ponte baixa e janela de Brass'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/003-sessao-003-ponte-baixa-e-janela-de-brass.md
+  bytes: 2073
+- titulo: 'Sessão 003: recuo da Red Sail, Maerra e retorno ao circo'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/004-sessao-003-recuo-da-red-sail-maerra-e-retorno-ao-circo.md
+  bytes: 1588
+- titulo: 'Sessão 003: noite no circo, treino solo e rumores de Sarbreen'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/005-sessao-003-noite-no-circo-treino-solo-e-rumores-de-sarbreen.md
+  bytes: 1896
+- titulo: 'Sessão 003: kata de Kozakura antes do descanso'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/006-sessao-003-kata-de-kozakura-antes-do-descanso.md
+  bytes: 1058
+- titulo: 'Sessão 003: descanso longo e manhã de 5 Eleasis'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/007-sessao-003-descanso-longo-e-manha-de-5-eleasis.md
+  bytes: 672
+- titulo: 'Sessão 003: preparação da reprise curta de Kage'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/008-sessao-003-preparacao-da-reprise-curta-de-kage.md
+  bytes: 1479
+- titulo: 'Sessão 003: reprise curta de Kage e segunda pressão privada'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/009-sessao-003-reprise-curta-de-kage-e-segunda-pressao-privada.md
+  bytes: 1078
+- titulo: 'Sessão 003: resposta-isca ao canal privado de Kage'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/010-sessao-003-resposta-isca-ao-canal-privado-de-kage.md
+  bytes: 1311
+- titulo: 'Sessão 003: busca noturna por especialista em Sarbreen'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/011-sessao-003-busca-noturna-por-especialista-em-sarbreen.md
+  bytes: 3369
+- titulo: 'Sessão 003: perseguição do cobrador da Escada'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/012-sessao-003-perseguicao-do-cobrador-da-escada.md
+  bytes: 1249
+- titulo: 'Sessão 003: primeira descida pela Escada das Sete Águas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/013-sessao-003-primeira-descida-pela-escada-das-sete-aguas.md
+  bytes: 1261
+- titulo: 'Sessão 003: Visão no Escuro sob a Escada das Sete Águas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/014-sessao-003-visao-no-escuro-sob-a-escada-das-sete-aguas.md
+  bytes: 1535
+- titulo: 'Sessão 003: recuo da Escada e mapas com Luath'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/015-sessao-003-recuo-da-escada-e-mapas-com-luath.md
+  bytes: 1857
+- titulo: 'Sessão 003: retorno ao circo e Passo Sombrio'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/016-sessao-003-retorno-ao-circo-e-passo-sombrio.md
+  bytes: 1672
+- titulo: 'Sessão 003: café com Silva e resposta da Casa Veyr'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/017-sessao-003-cafe-com-silva-e-resposta-da-casa-veyr.md
+  bytes: 1735
+- titulo: 'Sessão 003: tenda menor e novo contato com Kethra'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/018-sessao-003-tenda-menor-e-novo-contato-com-kethra.md
+  bytes: 2068
+- titulo: 'Sessão 003: retorno ao circo e filtro da Casa Veyr'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/019-sessao-003-retorno-ao-circo-e-filtro-da-casa-veyr.md
+  bytes: 2065
+- titulo: 'Sessão 003: visita por Passo Sombrio e dobra contratual da Casa Veyr'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/020-sessao-003-visita-por-passo-sombrio-e-dobra-contratual-da-casa-veyr.md
+  bytes: 2035
+- titulo: 'Sessão 003: transporte de Kage e entrada controlada da Casa Veyr'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/021-sessao-003-transporte-de-kage-e-entrada-controlada-da-casa-veyr.md
+  bytes: 1309
+- titulo: 'Sessão 003: leitura do risco antes da entrada de Kage'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/022-sessao-003-leitura-do-risco-antes-da-entrada-de-kage.md
+  bytes: 1473
+- titulo: 'Sessão 003: abertura de Kage diante da Casa Veyr'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/023-sessao-003-abertura-de-kage-diante-da-casa-veyr.md
+  bytes: 1189
+- titulo: 'Sessão 003: Dalm testa nome e reação de Kage'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/024-sessao-003-dalm-testa-nome-e-reacao-de-kage.md
+  bytes: 1227
+- titulo: 'Sessão 003: final de Kage e convite ao camarim'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/025-sessao-003-final-de-kage-e-convite-ao-camarim.md
+  bytes: 1615
+- titulo: 'Sessão 003: Ren pressiona Dalm no camarim'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/026-sessao-003-ren-pressiona-dalm-no-camarim.md
+  bytes: 1048
+- titulo: 'Sessão 003: Dalm entrega uma janela sem entregar o patrono'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/027-sessao-003-dalm-entrega-uma-janela-sem-entregar-o-patrono.md
+  bytes: 1646
+- titulo: 'Sessão 003: saída falsa de Kage e avisos antes da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/028-sessao-003-saida-falsa-de-kage-e-avisos-antes-da-ponte-baixa.md
+  bytes: 3437
+- titulo: 'Sessão 003: vigília e entrada na boca seca da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/029-sessao-003-vigilia-e-entrada-na-boca-seca-da-ponte-baixa.md
+  bytes: 1596
+- titulo: 'Sessão 003: infiltração inicial na Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/030-sessao-003-infiltracao-inicial-na-ponte-baixa.md
+  bytes: 1443
+- titulo: 'Sessão 003: corredor seco da direita'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/031-sessao-003-corredor-seco-da-direita.md
+  bytes: 1372
+- titulo: 'Sessão 003: marca para Luath e abertura do painel'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/032-sessao-003-marca-para-luath-e-abertura-do-painel.md
+  bytes: 1405
+- titulo: 'Sessão 003: busca no arquivo de passagem da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/033-sessao-003-busca-no-arquivo-de-passagem-da-ponte-baixa.md
+  bytes: 2206
+- titulo: 'Sessão 003: passagem além do pano escuro da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/034-sessao-003-passagem-alem-do-pano-escuro-da-ponte-baixa.md
+  bytes: 1546
+- titulo: 'Sessão 003: trava do trilho além da dobra direita'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/035-sessao-003-trava-do-trilho-alem-da-dobra-direita.md
+  bytes: 1425
+- titulo: 'Sessão 003: recuo da Ponte Baixa pela cadeia de sombras'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/036-sessao-003-recuo-da-ponte-baixa-pela-cadeia-de-sombras.md
+  bytes: 1462
+- titulo: 'Sessão 003: entrega das evidências da Ponte Baixa a Luath'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/037-sessao-003-entrega-das-evidencias-da-ponte-baixa-a-luath.md
+  bytes: 1790
+- titulo: 'Sessão 003: lacre reservado da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/038-sessao-003-lacre-reservado-da-ponte-baixa.md
+  bytes: 1008
+- titulo: 'Sessão 003: retorno ao circo depois de Luath'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/039-sessao-003-retorno-ao-circo-depois-de-luath.md
+  bytes: 1311
+- titulo: 'Sessão 003: relato a Silva depois da Ponte Baixa'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/040-sessao-003-relato-a-silva-depois-da-ponte-baixa.md
+  bytes: 809
+- titulo: 'Sessão 003: Nera, descanso e Jack ao amanhecer'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/041-sessao-003-nera-descanso-e-jack-ao-amanhecer.md
+  bytes: 1546
+- titulo: 'Sessão 003: busca por Dorra e Dent nos pátios'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/042-sessao-003-busca-por-dorra-e-dent-nos-patios.md
+  bytes: 1431
+- titulo: 'Sessão 003: estrada do Fire River'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/043-sessao-003-estrada-do-fire-river.md
+  bytes: 1173
+- titulo: 'Sessão 003: ponto preparado no mato baixo'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/044-sessao-003-ponto-preparado-no-mato-baixo.md
+  bytes: 1152
+- titulo: 'Sessão 003: primeira rodada no ponto preparado'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/045-sessao-003-primeira-rodada-no-ponto-preparado.md
+  bytes: 1209
+- titulo: 'Sessão 003: rendição do besteiro'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/046-sessao-003-rendicao-do-besteiro.md
+  bytes: 1265
+- titulo: 'Sessão 003: Colm e rastro do rapaz da corda nova'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/047-sessao-003-colm-e-rastro-do-rapaz-da-corda-nova.md
+  bytes: 1434
+- titulo: 'Sessão 003: aproximação ao galpão baixo de Mera'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/048-sessao-003-aproximacao-ao-galpao-baixo-de-mera.md
+  bytes: 1328
+- titulo: 'Sessão 003: inspeção do interior do galpão baixo'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/049-sessao-003-inspecao-do-interior-do-galpao-baixo.md
+  bytes: 1389
+- titulo: 'Sessão 003: entrada no galpão e libertação de Mera'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/050-sessao-003-entrada-no-galpao-e-libertacao-de-mera.md
+  bytes: 842
+- titulo: 'Sessão 003: respostas de Mera e carroça no ramal'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/051-sessao-003-respostas-de-mera-e-carroca-no-ramal.md
+  bytes: 1662
+- titulo: 'Sessão 003: interceptação da carroça de resposta'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/052-sessao-003-interceptacao-da-carroca-de-resposta.md
+  bytes: 1353
+- titulo: 'Sessão 003: expulsão dos captores e chegada à balança velha'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/053-sessao-003-expulsao-dos-captores-e-chegada-a-balanca-velha.md
+  bytes: 1980
+- titulo: 'Sessão 003: mesa e cômodo dos fundos da balança velha'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/054-sessao-003-mesa-e-comodo-dos-fundos-da-balanca-velha.md
+  bytes: 1978
+- titulo: 'Sessão 003: perseguição do homem de mãos limpas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/055-sessao-003-perseguicao-do-homem-de-maos-limpas.md
+  bytes: 1663
+- titulo: 'Sessão 003: alcance e início do combate com o homem de mãos limpas'
+  arquivos:
+  - personagens/jogador/conhecimento/descobertas/sessao-003/056-sessao-003-alcance-e-inicio-do-combate-com-o-homem-de-maos-limpas.md
+  bytes: 1451

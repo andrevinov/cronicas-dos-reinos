@@ -1,0 +1,26 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: sirrus_melandor
+historico: historico/relacoes/sirrus_melandor.yaml
+relacao:
+  nome: Sirrus Melandor
+  tipo: Chief Prelate / alto sacerdote de Tyr
+  local: Casa de Tyr, Temple District
+  status: em cena
+  atitude_para_ren: rígida, institucional e cautelosa
+  confianca: baixa
+  respeito: inicial pela gravidade do material, não por confiança pessoal
+  motivo_atual: Sirrus aceitou a declaração sem suavizar a postura. Na manhã seguinte ao Benefício, Tyr informou
+    por mensageira que a primeira convocação de Velis Rook foi entregue e que a Casa espera resposta antes do meio-dia.
+  acoes_possiveis:
+  - Emitir ordem de preservação sobre registros ligados ao volume 13, Narwhal Manor e Dain Mord.
+  - Enviar dois juramentados discretos para acompanhar transferência voluntária dos Vell a uma porta de Tyr.
+  - Convocar Velis Rook para responder por anulação retroativa sob pena de obstrução.
+  - A primeira convocação de Velis Rook foi entregue; Tyr espera resposta antes do meio-dia.
+  riscos:
+  - Tyr pode proteger prova e testemunha, mas também torna o caso visível e registrado.
+  - Se Ren apresentar o caso como licença para vingança, pode perder a porta antes de chegar a Sirrus.
+  - A cadeia de custódia da pasta continua vulnerável, embora o lacre de Maerra ajude.
+  - Sirrus não concederá proteção nominal sem saber quem responde pela custódia atual dos Vell ou sem confirmação
+    de Maerra/Luath.
+  - Sirrus considera que Ren agir contra Velis antes da oitiva enfraqueceria Nera e Tavin.

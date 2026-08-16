@@ -1,0 +1,98 @@
+schema: 2
+status: ativo
+visibilidade: jogador
+ultima_revisao_global:
+  sessao: 3
+  data_do_mundo: 7 Eleasis, 1372 DR
+  momento: 06:46, após busca nos pátios por Dorra/Dent
+fontes_consultadas:
+- estado/relacoes.yaml
+- estado/estado-atual.yaml
+proposito: 'Registrar medidores rápidos para calibrar tom, reação e dificuldade social de NPCs recorrentes em relação
+  a Ren. Este arquivo não substitui os fatos detalhados de estado/relacoes.yaml; ele resume o estado emocional e
+  prático atual para uso durante narração.
+
+  '
+escala:
+  vinculo:
+    descricao: Boa vontade pessoal, afeto, calor humano ou apego emocional.
+    0-2: hostilidade, medo ou repulsa pessoal
+    3-4: distância, irritação ou relação apenas instrumental
+    '5': neutralidade funcional
+    6-7: boa vontade real, simpatia ou cuidado recorrente
+    8-9: afeição forte, lealdade emocional ou romance ativo
+    '10': devoção extrema; raro e instável em jogo
+  confianca:
+    descricao: Quanto o NPC acredita na palavra, julgamento e competência de Ren.
+    0-2: não acredita sem coerção, prova forte ou pagamento
+    3-4: aceita apenas partes verificáveis ou de baixo risco
+    '5': cooperação cautelosa com prova mínima
+    6-7: aceita planos razoáveis se estiverem alinhados ao próprio interesse
+    8-9: age com base na palavra de Ren quando o assunto combina com o histórico
+    '10': confiança quase irrestrita; raro e perigoso
+  risco_percebido:
+    descricao: Quanto o NPC acha que a presença, escolhas ou inimigos de Ren trazem perigo.
+    0-2: Ren parece seguro ou irrelevante como fonte de risco
+    3-4: risco baixo, administrável por rotina
+    '5': risco real, mas ainda comum para a vida do NPC
+    6-7: risco alto; o NPC impõe limites, condições ou distância
+    8-9: risco muito alto; mesmo gostando de Ren, o NPC bloqueia imprudências
+    '10': Ren é visto como ameaça imediata à sobrevivência ou ao núcleo do NPC
+  natureza_do_vinculo:
+    descricao: 'Interpretação qualitativa do vínculo. O mesmo número pode significar romance, amizade, proteção,
+      respeito profissional, relação quase familiar, rivalidade afetuosa, fascínio ou dependência, conforme NPC
+      e contexto.
+
+      '
+  subtexto_romantico:
+    descricao: 'Indica se a relação tem leitura romântica atual ou potencial. Não é derivado automático de vínculo
+      alto; depende de idade, orientação, contexto, valores do NPC, risco, cenas jogadas e consentimento narrativo.
+
+      '
+    valores:
+      nenhum: sem leitura romântica relevante
+      possivel: pode emergir se vínculo, segurança e cenas futuras sustentarem
+      claro: romance, atração ou interesse já explícito em cena
+      reprimido: existe atração ou ciúme contido, mas o NPC segura por dever, medo, lealdade ou contexto
+      inadequado: romance não deve ser usado por idade, papel de cuidado, assimetria ou outro limite claro
+uso_em_jogo:
+  revisao:
+    frequencia: fim de sessão, pedido do jogador ou evento emocional/operacional marcante
+    evitar: recalcular por cada fala pequena ou cada teste isolado
+  fala:
+    orientacao: 'O tom de cada NPC deve combinar os três medidores. Vínculo alto não elimina dureza quando risco_percebido
+      também é alto; nesse caso, a dureza deve vir acompanhada de cuidado prático, humor familiar, proteção concreta
+      ou sinais de preocupação, não apenas reprimendas repetidas. A natureza_do_vinculo define que tipo de intimidade
+      aparece quando o vínculo sobe: romance, amizade, proteção maternal, respeito profissional, rivalidade afetuosa
+      ou outro padrão coerente.
+
+      '
+  testes_sociais:
+    orientacao: 'Os medidores podem ajustar CDs sociais quando a ação de Ren depende da disposição do NPC. O ajuste
+      comum deve ficar entre -2 e +2. Vantagem ou desvantagem só deve aparecer quando houver fundamento forte na
+      cena.
+
+      '
+    diretrizes:
+    - confianca 8 ou mais pode dispensar rolagem para cooperação rotineira alinhada aos valores do NPC
+    - confianca 6-7 pode reduzir CD em 1 ou 2 quando Ren pede algo coerente com histórico e interesse do NPC
+    - confianca 3-4 pode aumentar CD em 1 ou exigir prova, pagamento ou garantia concreta
+    - confianca 0-2 normalmente exige pagamento, coerção, prova forte ou situação extrema
+    - vinculo 8 ou mais pode suavizar tom e permitir acesso emocional sem rolagem, salvo se houver risco alto
+    - risco_percebido 7 ou mais pode impor custo, condição ou limite mesmo em caso de sucesso
+    - risco_percebido 8 ou mais deve bloquear pedidos que coloquem protegidos do NPC em perigo sem plano robusto
+  limites:
+  - medidores não forçam romance, lealdade ou perdão
+  - vínculo alto abre intimidade; não define sozinho que essa intimidade é romântica
+  - Ren ser bonito pode influenciar primeira impressão, curiosidade e subtexto, mas não substitui personalidade,
+    orientação, idade, compromisso, medo, luto, dever ou contexto
+  - mulheres de idade próxima podem desenvolver queda, ciúme, fascínio ou flerte se vínculo e cenas sustentarem;
+    isso deve surgir como consequência plausível, não como regra automática
+  - mulheres bem mais velhas ou em papel de cuidado tendem a expressar vínculo alto como proteção, dureza familiar,
+    orgulho ou preocupação, salvo indicação forte em contrário
+  - homens com vínculo alto tendem a expressar amizade, camaradagem, respeito, rivalidade fraterna ou lealdade,
+    salvo indicação forte em contrário
+  - medidores não substituem segredos, objetivos próprios ou conhecimento real do NPC
+  - medidores não revelam informação que o NPC não teria como saber
+  - um NPC pode falar duro por personalidade, mas o tom deve refletir melhora real quando os números melhorarem
+fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml

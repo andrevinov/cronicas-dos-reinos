@@ -1,0 +1,57 @@
+schema_conhecimento: 2
+natureza: indice_fragmentado
+historico_acumulado: historico/legado/conhecimento-acumulado-pre-etapa-6.md
+topicos:
+- titulo: Introdução
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/01-introducao.md
+  bytes: 209
+- titulo: Sobre si mesmo
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/02-sobre-si-mesmo.md
+  bytes: 1222
+- titulo: Sobre Masao e as Dez Espadas
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/03-sobre-masao-e-as-dez-espadas.md
+  bytes: 3032
+- titulo: Sobre Kozakura e Kara-Tur
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/04-sobre-kozakura-e-kara-tur.md
+  bytes: 1943
+- titulo: Sobre Faerûn
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/05-sobre-faerun.md
+  bytes: 343
+- titulo: Sobre Ravens Bluff
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/06-sobre-ravens-bluff.md
+  bytes: 608
+- titulo: Pistas atuais
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
+  bytes: 601
+- titulo: Contato inicial provável
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/08-contato-inicial-provavel.md
+  bytes: 299
+- titulo: Rumores que Ren pode ouvir cedo
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/09-rumores-que-ren-pode-ouvir-cedo.md
+  bytes: 385
+- titulo: Descobertas em jogo
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/10-descobertas-em-jogo.md
+  bytes: 24
+- titulo: 'Casa Velha do Primeiro Raio: infiltração noturna'
+  arquivos:
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-01.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-02.md
+  - personagens/jogador/conhecimento/topicos/11-casa-velha-do-primeiro-raio-infiltracao-noturna-parte-03.md
+  bytes: 26953
+sessoes:
+  '1':
+    index: personagens/jogador/conhecimento/descobertas/sessao-001/index.yaml
+    quantidade: 10
+  '3':
+    index: personagens/jogador/conhecimento/descobertas/sessao-003/index.yaml
+    quantidade: 56

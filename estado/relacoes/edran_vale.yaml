@@ -1,0 +1,27 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: edran_vale
+historico: historico/relacoes/edran_vale.yaml
+relacao:
+  nome: Edran Vale
+  tipo: contato local
+  local: The Silver Lily
+  status: ativo
+  atitude_para_ren: cautelosa, tensa
+  confianca: baixa
+  respeito: inicial
+  motivo_atual: Ren pagou bem, não ameaçou a hospedagem, explicou seu uso da palavra "gaijin" e tratou Edran como
+    possível aliado respeitável.
+  acordos:
+  - Edran recebeu 1 PO por silêncio discreto sobre as perguntas de Ren na The Silver Lily.
+  informacoes_compartilhadas_por_edran:
+  - Velis Rook pode saber mais sobre registros e movimentações na alfândega.
+  - Mara Tharle pode ter visto movimentação irregular de carga no pátio.
+  riscos:
+  - A confiança ainda é comercial e frágil.
+  - Edran protege a própria casa antes de proteger Ren.
+  - Edran percebeu que Ren tentou parecer ter ficado no quarto, mas não confrontou o assunto além de um aviso discreto.
+  - Edran não entregou a moradia de Pell e deixou claro que reagirá mal se Ren machucar o rapaz ou trouxer violência
+    para a rua da Silver Lily.
+  - Edran viu Ren deixar a Silver Lily com seus pertences logo depois da notícia do incêndio na Red Sail chegar
+    à hospedagem.

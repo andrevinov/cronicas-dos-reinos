@@ -1,0 +1,37 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: merrit_tealeaf
+npc:
+  nome: Merrit Tealeaf
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 4
+    confianca: 4
+    risco_percebido: 6
+  natureza_do_vinculo: culpa, validação de palco e confiança frágil
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Merrit pode buscar aprovação de Ren porque ele a confrontou, poupou uma exposição pior e
+    lhe devolveu um lugar controlado de cena. Isso deve aparecer como necessidade de validação, humor nervoso e
+    culpa, não como romance.
+
+    '
+  leitura_atual: 'Merrit teme Ren e respeita que ele tenha ajudado a transformar a sabotagem em confissão controlada
+    em vez de desastre público. O sucesso como narradora de chão devolveu a ela algum valor, mas a culpa ainda manda.
+
+    '
+  tom_atual: 'Nervosa, espirituosa quando se sente segura e ansiosa por não estragar outra coisa. Pode procurar
+    confirmação curta de que fez a parte certa.
+
+    '
+  impacto_em_testes: 'Pedidos que deem estrutura clara, supervisão e chance de reparar dano reduzem CD. Pressão
+    pública, ameaça de expor Harl ou reabrir culpa sem saída aumentam CD.
+
+    '
+  gatilhos_de_aumento:
+  - Ren permite que Merrit repare dano sem fingir que nada aconteceu
+  - Ren protege a fonte da confissão sem encobrir risco real
+  - Merrit sustenta papel limitado sem quebrar confiança de Sorn ou Silva
+  gatilhos_de_queda:
+  - Ren usa Merrit como bode expiatório público
+  - Ren revela a fonte sobre Harl sem necessidade clara
+  - Merrit volta a esconder ferramenta, faca ou segredo operacional

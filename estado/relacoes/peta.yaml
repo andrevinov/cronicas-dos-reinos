@@ -1,0 +1,27 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: peta
+historico: historico/relacoes/peta.yaml
+relacao:
+  nome: Peta
+  tipo: criança resgatada / testemunha traumatizada
+  local: Casa da Aurora Menor, sob cuidado de Maerra Thandrel
+  status: viva, resgatada da oficina dos tintureiros, em recuperação
+  atitude_para_ren: assustada, mas reconhece Ren como a pessoa que a tirou da oficina
+  confianca: frágil
+  respeito: não aplicável
+  motivo_atual: 'Em choque, Peta primeiro só conseguiu dizer fragmentos: frio, embaixo e que a mulher de vermelho
+    não falava com ela. Na manhã de 4 Eleasis, depois de algum cuidado e descanso, conseguiu lembrar mais: a pessoa
+    de vermelho não mandava, apenas fazia; havia um homem de manga cinza com dois anéis falando por trás; ele mencionou
+    papel para o peixe e disse que a máscara não era para o sol; e Peta ficou em um lugar frio, embaixo de onde
+    rodas passavam por cima, com água na parede.'
+  informacoes_compartilhadas_por_peta:
+  - A pessoa de vermelho não mandava, apenas fazia.
+  - Havia um homem de manga cinza e dois anéis falando por trás.
+  - O homem mencionou que papel ia para o peixe.
+  - O homem disse que a máscara não era para o sol.
+  - Peta ficou em lugar frio, embaixo de onde rodas passavam por cima, com água na parede.
+  riscos:
+  - Peta está traumatizada; insistir demais em perguntas pode quebrá-la antes de revelar algo útil.
+  - A memória dela é fragmentada e deve ser tratada como pista, não como mapa completo.
+  - Quem perdeu Peta pode tentar recuperá-la, silenciá-la ou descobrir para onde ela foi levada.

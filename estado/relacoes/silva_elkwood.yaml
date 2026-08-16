@@ -1,0 +1,35 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: silva_elkwood
+historico: historico/relacoes/silva_elkwood.yaml
+relacao:
+  nome: Silva Elkwood
+  tipo: clériga de Chauntea / contato potencial de abrigo
+  local: Jack Mooney & Sons Circus
+  status: conhecida em jogo
+  atitude_para_ren: favoravel e cautelosa, ainda preocupada com o risco ao circo
+  confianca: moderada e vigilante
+  respeito: alto
+  motivo_atual: Ao amanhecer, leu a mensagem curta de Luath informando que o pacote reservado passou para Tyr sem
+    nome externo. Ela acompanhou a conversa com Jack e reforça, junto dele, que qualquer acesso aos Vell passa por
+    ela quando houver risco de olho externo.
+  documentos:
+  - Silva abriu e leu o bilhete curto e selado de Maerra.
+  riscos:
+  - Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria.
+  - Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath.
+  - Silva sabe que Ren despertou o Passo Sombrio e quer que ele teste a técnica longe dos Vell até conhecer seus
+    limites.
+  - Silva sabe que a resposta da Casa Veyr chegou com 40 PO adiantadas, mas que Jack ainda não aceitou a apresentação
+    fechada.
+  - Silva sabe que Casa Veyr foi verificada como presença temporária pagante, mas sem raiz local forte.
+  - Silva mantém Nera e Tavin longe da superfície da apresentação fechada de Kage.
+  - Silva ajudou Ren a fazer uma visita discreta por Passo Sombrio à carroça verde, mas considera a técnica brusca
+    demais para uso casual perto dos Vell.
+  - Silva manteve a rotina do circo quieta enquanto Ren completava descanso curto antes do amanhecer de 7 Eleasis.
+  - Silva leu a mensagem curta de Luath informando que o pacote reservado da Ponte Baixa passou para Tyr sem nome
+    no papel externo.
+  - Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no
+    acampamento.
+conteudo_mais_antigo_no_historico:
+  riscos: 54

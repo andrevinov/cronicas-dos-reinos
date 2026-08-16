@@ -1,0 +1,36 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: sorn_kel
+npc:
+  nome: Sorn Kel
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 4
+    confianca: 5
+    risco_percebido: 5
+  natureza_do_vinculo: respeito técnico e profissional
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Sorn expressa melhora de vínculo por confiança em marcação, permissão de risco controlado
+    e correções menos defensivas, não por calor emocional.
+
+    '
+  leitura_atual: 'Sorn respeita disciplina de marcação e viu Ren obedecer limites em cena. A relação ainda é profissional,
+    não pessoal, e passa por segurança física.
+
+    '
+  tom_atual: 'Técnico, contido e pouco sentimental. Elogios devem vir como correção precisa: onde Ren caiu certo,
+    onde quase abriu ombro, onde não há margem.
+
+    '
+  impacto_em_testes: 'Planos de palco com marcação, ensaio e margem física têm CD menor. Pedidos de salto novo,
+    improviso sem ensaio ou risco ao joelho de Lysa aumentam CD ou são vetados.
+
+    '
+  gatilhos_de_aumento:
+  - Ren respeita marcações e admite limite físico
+  - Ren consulta Sorn antes de aumentar risco de número
+  - Ren mantém Kage impressionante sem quebrar segurança
+  gatilhos_de_queda:
+  - Ren improvisa salto sem aviso
+  - Ren usa equipamento do circo como cobertura para luta
+  - alguém se machuca porque Ren ignorou limite técnico

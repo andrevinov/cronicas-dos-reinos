@@ -1,0 +1,36 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: tavin_vell
+npc:
+  nome: Tavin Vell
+  grupo: Vell / protegidos no circo
+  medidores:
+    vinculo: 7
+    confianca: 6
+    risco_percebido: 4
+  natureza_do_vinculo: fraternal, infantil e protetivo
+  subtexto_romantico: inadequado
+  observacao_afetiva: 'Tavin é criança e deve expressar vínculo por segurança, admiração simples, curiosidade e
+    medo de abandono, nunca por subtexto romântico.
+
+    '
+  leitura_atual: 'Tavin associa Ren a resgate, volta prometida e Kage como figura quase fantástica. Ele ainda é
+    criança assustada, mas Ren virou referência de segurança simples.
+
+    '
+  tom_atual: 'Curioso, cauteloso e mais leve quando está protegido. Deve falar com simplicidade, fazer perguntas
+    concretas e procurar confirmação de que Ren vai voltar.
+
+    '
+  impacto_em_testes: 'Ren raramente precisa rolar para acalmar Tavin em ambiente seguro. Sob pressão, a fragilidade
+    de Tavin pesa mais que os medidores.
+
+    '
+  gatilhos_de_aumento:
+  - Ren cumpre promessas simples e volta visível
+  - Ren mantém Tavin fora de segredos perigosos
+  - Ren o trata com paciência, não como pacote a ser movido
+  gatilhos_de_queda:
+  - Tavin vê Ren ferir alguém de modo assustador sem entender o motivo
+  - Ren some depois de prometer voltar
+  - Tavin é pressionado por inimigos por causa de ligação com Ren

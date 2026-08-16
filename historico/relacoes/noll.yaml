@@ -1,0 +1,23 @@
+schema_historico_relacao: 1
+id: noll
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Noll
+  tipo: capanga de Bram Vask / mão de cobrança
+  local: loja de Bram Vask, Lower Trades
+  status: 'última confirmação pública: inconsciente e respirando; não visto durante a vigília'
+  atitude_para_ren: hostil quando acordar
+  confianca: nenhuma
+  respeito: medo possível após derrota
+  motivo: 'Noll tentou assumir posição de ameaça durante a conversa na loja. Ren o atacou de forma não letal e o
+    derrubou com um golpe crítico seguido de Rajada de Golpes, antes que Noll conseguisse reagir.
+
+    '
+  informacoes_observadas_por_ren:
+  - Noll tem lábio cortado.
+  - Noll funciona como mão violenta de Bram, não como dono.
+  - Noll foi deixado inconsciente, respirando, sem ser morto.
+  - Noll não apareceu em condição de caçar ninguém durante a vigília parcial de Ren.
+  riscos:
+  - Quando acordar, Noll pode lembrar a silhueta, sotaque ou modo de luta do agressor.
+  - Noll pode querer recuperar reputação pela violência se Bram permitir.

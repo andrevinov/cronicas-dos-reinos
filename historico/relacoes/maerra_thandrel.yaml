@@ -1,0 +1,93 @@
+schema_historico_relacao: 1
+id: maerra_thandrel
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Irmã Maerra Thandrel
+  tipo: sacerdotisa de Lathander / abrigo potencial
+  local: Casa da Aurora Menor, Temple District
+  status: ativa, em cena; abrigo provisório concedido às sete crianças resgatadas
+  atitude_para_ren: cautelosa, disposta a agir, moralmente firme e mais aberta após o resgate de Peta
+  confianca: moderada-alta em pauta de proteção de vulneráveis
+  respeito: cauteloso, crescente
+  motivo: 'Nera recomendou Maerra como alguém realmente compassiva. Ao receber Nera e Tavin de madrugada, Maerra
+    percebeu Ren armado atrás deles, mas não tocou o sino nem chamou ajuda. Após ouvir Ren e o nome Brass, aceitou
+    esconder Nera e Tavin por enquanto. Após a confissão de Ren sobre Masao, Aiko e vingança, Maerra acreditou na
+    sinceridade essencial dele, mas deixou claro que a Casa da Aurora Menor protege vivos, não vendetas. Quando
+    Ren apagou, Maerra o deitou num catre, manteve armas e provas à vista, e protegeu Nera e Tavin afastando-os
+    da porta. Depois da emboscada contra Rusk em Fishtown, Ren voltou à Casa da Aurora Menor sem cauda e avisou
+    que Nera e Tavin estão vivos sob proteção de Silva Elkwood e Jack Mooney. Maerra recebeu a notícia com alívio
+    contido e emprestou roupas comuns de doação, água e pão, mas não vestes sagradas. Depois que Ren evacuou os
+    Vell do circo durante a sondagem da Red Sail, voltou à Casa da Aurora Menor com Nera e Tavin sem cauda. Maerra
+    avaliou Luath como contato honrado e útil da Night Watch, mas recomendou que Ren não entregue Nera e Tavin de
+    imediato e não tente usar Luath como faca de vingança. Ren pediu que Maerra mantivesse Nera e Tavin enquanto
+    ele falava com Luath. Maerra aceitou e entregou a Ren a cópia parcial selada do livro de provas como verdade
+    verificável. Quando Ren voltou com a pasta roubada de Velis Rook, Maerra o conduziu à saleta de ervas, permitiu
+    que respirasse, mas enquadrou a situação como problema arrancado de Narwhal Manor. Depois ofereceu um fio lateral
+    futuro: investigar os Meninos do Primeiro Sino e a Casa Velha do Primeiro Raio, com possível empréstimo do Broche
+    do Semblante Humilde se for recuperado e puder servir para proteger vivos. Ao ver a pasta aberta, Maerra identificou
+    valor probatório e perigo legal: a prova é forte, mas foi roubada. Ela avalia que Luath ou uma autoridade de
+    Tyr precisam legitimá-la antes que Narwhal transforme Ren e Nera nos acusados principais. A pedido de Ren, Maerra
+    tentou reconhecer o material, mas manteve limites: escreveu declaração cautelosa sobre o que viu e ouviu na
+    abertura da pasta, registrou que Nera reconheceu a impressão da lua velada e lacrou o conjunto com cera da Casa
+    da Aurora Menor. Ela não atestou cadeia de custódia, autoria final ou inocência. Na madrugada de 4 Eleasis,
+    Ren levou seis crianças resgatadas da Casa Velha do Primeiro Raio à Casa da Aurora Menor, entregou a caixa velha
+    marcada por sol apagado e relatou Peta sendo provavelmente levada pela pessoa de vermelho. Maerra acolheu as
+    crianças, reconheceu o Broche do Semblante Humilde dentro da caixa e cedeu o broche a Ren como empréstimo provisório
+    para proteger vivos. Ren voltou pouco depois, por volta de 01:05 de 4 Eleasis, trazendo Peta viva, presa e amordaçada,
+    disfarçada como carga de retalhos úmidos sob o Broche do Semblante Humilde. Maerra colocou Ren e a criança para
+    dentro sem fazer pergunta na porta, iniciou atendimento imediato e perguntou quantos vieram atrás. Ren contou
+    sobre a mulher de vermelho, sua cicatriz, a marca de sol apagado no pescoço, a manga cinza, a mão com dois anéis,
+    a barra de ferro e a abertura baixa atrás da cortina. Maerra não reconheceu a mulher nem a marca com segurança,
+    mas avaliou que o sol apagado parece deboche ou apropriação cruel de símbolo ligado a amanhecer. Peta, em choque,
+    só conseguiu dizer fragmentos: frio, embaixo, e que a mulher de vermelho não falava com ela. Maerra permitiu
+    que Ren dormisse pouco, deu água e pão, e indicou que poderá mandar palavra curta a Luath se necessário. Antes
+    do amanhecer, recebeu ajuda discreta enviada por Silva/Chauntea, com pano, comida simples e mãos caladas, sem
+    chamar atenção útil. Na manhã de 4 Eleasis, Ren voltou para falar com as crianças. Maerra permitiu perguntas
+    curtas, uma criança por vez, e encerrou a conversa quando Peta começou a tremer novamente. Peta lembrou que
+    a pessoa de vermelho não mandava, apenas fazia; que havia um homem de manga cinza e dois anéis falando por trás;
+    que ele mencionou papel para o peixe e máscara não ser para o sol; e que ela ficou em lugar frio, embaixo de
+    onde passavam rodas, com água na parede. No começo da noite de 4 Eleasis, Ren voltou à Casa da Aurora Menor
+    apenas para verificar as crianças, sem interrogá-las de novo e sem trazer cauda útil. Maerra permitiu a visita
+    breve, confirmou que as sete continuam vivas, alimentadas e protegidas, e reconheceu que Ren parecia ter escolhido
+    não fazer algo violento. Na noite de 6 Eleasis, Ren voltou antes de ir à Ponte Baixa, relatou a pista de Dalm
+    sobre Masao, segunda maré, porões secos, papéis antes de lâminas, gravadora e menino, e pediu conselho. Maerra
+    não tentou impedi-lo, mas enquadrou a janela como moldura: quem entrega uma janela escolhe o que Ren vê por
+    ela. Aconselhou-o a desconfiar do seco onde deveria haver água, procurar sinais como cal, sal, carvão, pano
+    encerado, ar quente, ralo tampado e preservação de papel, e deixar caminho de volta ou marca para Luath.
+
+    '
+  riscos:
+  - Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele.
+  - Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren.
+  - Maerra não quer a Casa da Aurora Menor usada como esconderijo passivo para crime sem avaliação moral.
+  - Se Ren insistir em agir sozinho com a pasta roubada, Maerra pode pressionar por encaminhamento a Luath ou Tyr.
+  encaminhamentos_oferecidos:
+  - Silva Elkwood, clériga de Chauntea ligada ao circo dos Mooney, como abrigo discreto para Nera e Tavin.
+  - Sirrus Melandor/Tyr como proteção formal e institucional.
+  - Ways Unknown como opção de sumiço pago, menos pastoral e menos transparente.
+  auxilios_prestados:
+  - Emprestou roupas comuns de doação, água e pão para Ren se disfarçar melhor antes de voltar ao circo.
+  - Avaliou Luath como contato prático e honrado dentro da City Guard/Night Watch.
+  - Orientou Ren a procurar Luath com verdade verificável, não com confissão completa de vingança.
+  - Aceitou manter Nera e Tavin temporariamente enquanto Ren procura Luath.
+  - Entregou a Ren a cópia parcial selada do livro de provas de Nera.
+  - Ofereceu o fio lateral dos Meninos do Primeiro Sino e da Casa Velha do Primeiro Raio.
+  - Indicou a possibilidade de pedir o empréstimo do Broche do Semblante Humilde se Ren recuperar o relicário antigo
+    e usar a ferramenta para proteger pessoas.
+  - Escreveu declaração cautelosa sobre a abertura da pasta de Velis e lacrou o conjunto com cera da Casa da Aurora
+    Menor.
+  - 'Corrigiu Ren: Silva é guardiã atual confirmada/registrada em trilha reservada, não guardiã legal plena.'
+  - Colocou em curso ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva, sem
+    nomear Ren como ouvinte.
+  - Aconselhou Ren a deixar Tyr trabalhar Velis por ora, preparar a Casa Velha para a noite com foco em crianças
+    vivas e rotas, e avisar Silva que o meio-dia passou sem transferência dos Vell.
+  - Acolheu seis crianças resgatadas da Casa Velha na madrugada de 4 Eleasis.
+  - Acolheu Peta depois que Ren a resgatou da oficina dos tintureiros.
+  - Permitiu que Ren falasse com as crianças na manhã de 4 Eleasis, sob limite rígido de cuidado.
+  - Reconheceu o Broche do Semblante Humilde dentro da caixa velha marcada por sol apagado.
+  - Cedeu o Broche do Semblante Humilde a Ren como empréstimo provisório para proteger vivos.
+  - Identificou o pano vermelho como pano de trabalho encerado ligado a tintureiro ou cerieiro.
+  - Permitiu visita breve de Ren às crianças no começo da noite de 4 Eleasis, sem novo interrogatório.
+  - 'Aconselhou Ren antes da Ponte Baixa: desconfiar do seco onde deveria haver água, procurar cal, sal, carvão,
+    pano encerado, ar quente, ralo tampado e sinais de preservação de papel, além de deixar marca ou caminho de
+    volta para Luath.'

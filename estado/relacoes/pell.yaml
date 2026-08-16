@@ -1,0 +1,50 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: pell
+historico: historico/relacoes/pell.yaml
+relacao:
+  nome: Pell
+  tipo: mensageiro local
+  local: circuito Silver Lily / Rua da Corda / Fishtown
+  status: ativo
+  atitude_para_ren: assustado, oportunista e cooperativo por pagamento
+  confianca: muito baixa
+  respeito: baixo, mas crescente por medo e utilidade
+  motivo_atual: 'No meio da tarde de 4 Eleasis, Pell deixou novo bilhete em troca das 2 PO: Brass não fica sozinho
+    hoje, mas pode passar pelos fundos da Red Sail entre o sino de seis e o de sete, no movimento do barril seco
+    da cozinha, com um homem entrando antes e outro saindo depois. Ren removeu o ponto morto da Silver Lily depois
+    de ler o bilhete.'
+  informacoes_compartilhadas_por_pell:
+  - Velis disse 'então é hoje', entregou resposta para Brass e foi à Red Sail com a prancheta.
+  - Pell não viu o homem marcado e não sabe se ele está na cidade.
+  - Pell ouviu Velis murmurar a palavra 'Lua'.
+  - Pell deixou bilhete dizendo que Velis vai limpar papel na casa grande do peixe antes do sino de nove.
+  - Pell deixou bilhete dizendo que Brass está irritado, Rusk não voltou e o homem da lua não desce ao cais.
+  - Pell deixou novo bilhete dizendo que Rusk não voltou, Brass usa menino novo e evita o beco dos tonéis.
+  - Pell deixou novo bilhete dizendo que, depois da lona, alguém perguntou se Kage era o mesmo oriental da Silver
+    Lily.
+  - Pell escreveu que um papel fino foi para Narwhal por mão sem faixa vermelha, com a palavra 'máscara' ouvida.
+  - Pell deixou bilhete no meio da tarde de 4 Eleasis dizendo que Brass não fica sozinho hoje.
+  - Pell apontou uma janela entre o sino de seis e o de sete nos fundos da Red Sail, no movimento do barril seco
+    da cozinha, com um homem entrando antes e outro saindo depois.
+  limites:
+  - Pell pediu pagamento para continuar 'não lembrando'.
+  - Pell aceitou 1 PO de Ren pela informação.
+  - 'Ren estabeleceu um ponto morto de contato nos fundos da Silver Lily: quando houver um pequeno vaso com flor
+    na parte alta da escada, Pell pode deixar mensagem ali e receber pagamento depois.'
+  - Ren pagou 1 PO pelo bilhete de Pell deixando a moeda no vaso.
+  - No novo bilhete de 4 Eleasis, Pell pediu pagamento melhor.
+  - Ren deixou 2 PO no ponto morto de Pell e pediu dia/hora ou local onde Dain 'Brass' Mord fique sozinho.
+  - Ren removeu o ponto morto da Silver Lily após receber a resposta de Pell no meio da tarde de 4 Eleasis.
+  riscos:
+  - Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro.
+  - Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade.
+  - O aviso de Ren sobre risco de morte pode fazer Pell cooperar por medo ou desaparecer se a cidade parecer perigosa
+    demais.
+  - Pell agora é ponto sensível porque foi perguntado sobre a possível ligação entre Kage e o oriental da Silver
+    Lily.
+  - O depósito de 2 PO foi visto parcialmente por uma funcionária da Silver Lily, sem leitura do bilhete; o ponto
+    de Pell está menos limpo.
+  - O ponto morto da Silver Lily morreu; novo contato com Pell exigirá reinstalação discreta.
+conteudo_mais_antigo_no_historico:
+  informacoes_compartilhadas_por_pell: 4

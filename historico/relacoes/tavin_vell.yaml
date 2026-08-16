@@ -1,0 +1,62 @@
+schema_historico_relacao: 1
+id: tavin_vell
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Tavin Vell
+  tipo: testemunha jovem
+  local: carroça verde de Silva Elkwood, Jack Mooney & Sons Circus
+  status: sob proteção temporária de Silva Elkwood
+  atitude_para_ren: assustado, grato e tentando obedecer
+  confianca: baixa, mas crescendo
+  respeito: medo respeitoso com simpatia
+  motivo: 'Tavin viu Ren chegar junto de Nera e sabe que havia homens procurando por ele, mas ainda não entende
+    se Ren é salvação, ameaça ou ambos. No circo, respondeu ao cumprimento improvisado de Ren e repetiu "beleza"
+    como se fosse promessa de obediência. Depois que Ren confirmou o abrigo provisório no circo, Tavin relaxou o
+    bastante para brincar perguntando se Ren sabe cair engraçado. Mais tarde, quando Ren voltou para avisar que
+    seguiria uma trilha à noite, Tavin perguntou se Ren voltaria. Ren prometeu que voltará, e Tavin aceitou a promessa
+    como algo que precisa escolher acreditar. Na saleta de ervas da Casa da Aurora Menor, Tavin ouviu o bilhete
+    da pasta de Velis tratar "gravadora e menino" como ruído que não deve chegar a Tyr. Depois voltou ao circo com
+    Ren e Nera, sob disfarce, após a pressão da Red Sail ser dispersada pela busca controlada de Jack e pela patrulha
+    de Luath. Ao se despedir, Ren pousou a mão na cabeça de Tavin e pediu que ele ficasse quietinho. Tavin repetiu
+    "beleza", tratando a palavra como promessa. Ao ouvir o plano do Benefício da Lona Aberta, aceitou usar "Timo"
+    como nome de cobertura na rotina do circo e repetiu que Timo carrega água e não pega faca, archote ou segredo.
+    No fim da tarde, assistiu parte do ensaio de O Vento da Noite como Timo, segurando uma jarra vazia para parecer
+    ocupado, e reagiu com encanto às acrobacias de Ren. No almoço do dia da apresentação, ouviu Ren tentar explicar
+    sushi e desconfiou se peixe cru é comida, castigo ou remédio. Pouco antes do número, viu Ren vestido como O
+    Vento da Noite e disse que ele parece "caro". Durante a apresentação, Tavin viu parte suficiente do efeito público
+    para associar Ren Kage a alguém que realmente parece voar. Nos bastidores, ao ouvir Jack falar de possível patrono
+    privado, Tavin perguntou se "caro" é perigoso; Nera respondeu que quase sempre. No fechamento do Benefício,
+    Tavin estava cansado e sonolento, mas entendeu a conclusão simples: Kage ficou caro e, por esta noite, os Vell
+    ainda dormem no circo. Depois da refeição tardia na carroça verde, Tavin adormeceu antes de conseguir sustentar
+    curiosidade sobre o medo de Ren. Na manhã seguinte, depois de Ren assinar o acordo de Kage, Tavin ouviu que
+    Ren sairia por um tempo e fez uma saudação torta, dizendo para ele olhar onde cai se for voar. Quando Ren retornou
+    ao circo por volta de 09:55 de 4 Eleasis, Tavin o viu da rotina de água e fez uma nova saudação torta, quase
+    derrubando a jarra vazia. Na manhã de 5 Eleasis, Tavin ouviu Ren falar de Kozakura, clã e treino, tentou pronunciar
+    Getsuei-ryu e perguntou se Ren apanhou muito quando era pequeno. Antes da reprise curta, viu uma apresentação
+    pequena de Kage para os Vell e tentou aplaudir sem chamar atenção demais.
+
+    '
+  informacoes_compartilhadas_por_tavin:
+  - Ainda não interrogado diretamente.
+  riscos:
+  - Pode travar, fugir ou falar demais se for pressionado em local inseguro.
+  - Tavin parece associar o cumprimento improvisado de Ren a uma senha amigável de segurança.
+  - Tavin está alimentado e fisicamente bem dentro do possível.
+  - Tavin quer confirmação simples de que Ren vai voltar.
+  - Tavin tentou repetir o nome de palco Kagefusha como 'Kagefucha'.
+  - Tavin viu parte do ensaio de O Vento da Noite e perguntou se Kagefucha voa.
+  - Tavin ouviu Ren explicar sushi e não se convenceu sobre peixe cru.
+  - Tavin achou que Ren vestido para O Vento da Noite parece caro.
+  - Tavin viu O Vento da Noite impressionar o público e reforçou a ideia de que Kagefucha voa.
+  - Tavin ouviu que um camarote pode querer contratar Kage e associou valor alto a perigo.
+  - Tavin sabe que ele e Nera dormem no circo esta noite.
+  - Tavin dormiu no circo após o Benefício sem interrupção aberta.
+  - Tavin pode estar assustado por entender que o bilhete da pasta de Velis se refere a ele.
+  - Tavin voltou ao abrigo do circo sem ser identificado na travessia.
+  - Tavin sabe que Ren saiu novamente, agora para procurar Tyr.
+  - Tavin usará Timo como nome de cobertura na rotina do circo.
+  - Tavin sabe que Ren saiu novamente do circo na manhã seguinte ao Benefício, depois de assinar papel como Kage.
+  - Tavin viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis e continua tratando sua presença como promessa
+    concreta de volta.
+  - Tavin sabe que Ren aprendeu a lutar dentro de um clã de Kozakura e associa isso a treino duro.
+  - Tavin viu a pequena prévia de Kage para os Vell antes da reprise de 5 Eleasis.

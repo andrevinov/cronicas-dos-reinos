@@ -1,0 +1,21 @@
+schema_historico_relacao: 1
+id: tobb_marlin
+origem: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
+relacao:
+  nome: Tobb Marlin
+  tipo: carreiro do circo
+  local: Jack Mooney & Sons Circus
+  status: ativo; ajudou na segurança e cobertura de Kage
+  atitude_para_ren: pragmática, profissional e subordinada aos filtros de Jack
+  confianca: baixa operacional
+  respeito: prático inicial
+  motivo: 'Segundo Sorn, Tobb usa piche grosso nas rodas das carroças, diferente do breu fino de cordame encontrado
+    no degrau. Na apresentação fechada da Casa Veyr, Tobb contou o pagamento restante, bloqueou o homem da Casa
+    Veyr quando ele tentou acompanhar Dalm ao camarim e ficou junto da aba enquanto Ren conversava com Dalm. Depois
+    aceitou vestir uma silhueta falsa de Kage para que o artista parecesse voltar ao controle dos Mooney, permitindo
+    que Ren saísse em roupas de carreiro.
+
+    '
+  riscos:
+  - Pode explicar piche/graxa por rota inocente ou fornecer comparação útil.
+  - A Casa Veyr pode suspeitar que Tobb serviu como falso Kage na saída da tenda menor.

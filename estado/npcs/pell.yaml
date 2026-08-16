@@ -1,0 +1,36 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: pell
+npc:
+  nome: Pell
+  grupo: Silver Lily / Red Sail periférica
+  medidores:
+    vinculo: 2
+    confianca: 2
+    risco_percebido: 7
+  natureza_do_vinculo: transacional, medroso e oportunista
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Pell reage a moeda, medo e oportunidade. Vínculo alto futuro significaria lealdade comprada
+    ou gratidão nervosa, não afeto íntimo.
+
+    '
+  leitura_atual: 'Pell coopera por medo, pagamento e oportunidade. Ele não é aliado e pode vender lembranças sobre
+    Ren se a ameaça ou a recompensa mudarem.
+
+    '
+  tom_atual: 'Nervoso, oportunista e evasivo. Deve tentar parecer menor do que é e manter saída aberta em quase
+    toda conversa.
+
+    '
+  impacto_em_testes: 'Pagamento, medo plausível e informação concreta são mais importantes que vínculo. Sem moeda,
+    proteção ou ameaça crível, CDs sobem e Pell pode desaparecer.
+
+    '
+  gatilhos_de_aumento:
+  - Ren paga corretamente sem expor Pell
+  - Ren protege Pell de retaliação sem exigir lealdade heroica
+  - informações de Pell geram lucro ou sobrevivência para ele
+  gatilhos_de_queda:
+  - Pell é visto recebendo moeda ou recado de Ren
+  - Brass ou outro pagador oferece alternativa melhor
+  - Ren ameaça Pell sem saída concreta

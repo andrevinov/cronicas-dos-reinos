@@ -1,0 +1,31 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: tavin_vell
+historico: historico/relacoes/tavin_vell.yaml
+relacao:
+  nome: Tavin Vell
+  tipo: testemunha jovem
+  local: carroça verde de Silva Elkwood, Jack Mooney & Sons Circus
+  status: sob proteção temporária de Silva Elkwood
+  atitude_para_ren: assustado, grato e tentando obedecer
+  confianca: baixa, mas crescendo
+  respeito: medo respeitoso com simpatia
+  motivo_atual: Na manhã de 5 Eleasis, Tavin ouviu Ren falar de Kozakura, clã e treino, tentou pronunciar Getsuei-ryu
+    e perguntou se Ren apanhou muito quando era pequeno. Antes da reprise curta, viu uma apresentação pequena de
+    Kage para os Vell e tentou aplaudir sem chamar atenção demais.
+  informacoes_compartilhadas_por_tavin:
+  - Ainda não interrogado diretamente.
+  riscos:
+  - Tavin sabe que ele e Nera dormem no circo esta noite.
+  - Tavin dormiu no circo após o Benefício sem interrupção aberta.
+  - Tavin pode estar assustado por entender que o bilhete da pasta de Velis se refere a ele.
+  - Tavin voltou ao abrigo do circo sem ser identificado na travessia.
+  - Tavin sabe que Ren saiu novamente, agora para procurar Tyr.
+  - Tavin usará Timo como nome de cobertura na rotina do circo.
+  - Tavin sabe que Ren saiu novamente do circo na manhã seguinte ao Benefício, depois de assinar papel como Kage.
+  - Tavin viu Ren retornar ao circo por volta de 09:55 de 4 Eleasis e continua tratando sua presença como promessa
+    concreta de volta.
+  - Tavin sabe que Ren aprendeu a lutar dentro de um clã de Kozakura e associa isso a treino duro.
+  - Tavin viu a pequena prévia de Kage para os Vell antes da reprise de 5 Eleasis.
+conteudo_mais_antigo_no_historico:
+  riscos: 10

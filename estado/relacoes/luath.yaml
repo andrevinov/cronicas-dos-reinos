@@ -1,0 +1,61 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: luath
+historico: historico/relacoes/luath.yaml
+relacao:
+  nome: Luath
+  tipo: sargento da City Guard / supervisor possível da Night Watch
+  local: posto da City Guard / Night Watch
+  status: contato operacional cauteloso
+  atitude_para_ren: cautelosa, direta e avaliadora
+  confianca: moderada operacional
+  respeito: prático crescente, contido por cautela
+  motivo_atual: 'Antes de se despedir, Ren comparou Luath aos Miburo/Shinsengumi de Kozakura: homens do bakufu odiados
+    por criminosos, não santos, mas honrados e ainda de pé quando a cidade fingia não ver a sujeira. Luath recebeu
+    o respeito de modo seco, sem transformar isso em intimidade, mas a fala reforçou camaradagem institucional.'
+  informacoes_indiretas:
+  - Luath não é santo, mas isso o torna mais útil do que ingênuo.
+  - Luath pode ouvir sobre sequestro, falsificação, intimidação, Red Sail, Narwhal e testemunhas em risco.
+  - Luath trabalha dentro de uma corrente institucional; mesmo homens honestos podem ser puxados por superiores.
+  riscos:
+  - Luath agora possui dois prisioneiros ligados aos barris e ao acesso de Sarbreen; se eles sumirem, morrerem ou
+    forem tomados por autoridade superior, a confiança prática de Ren na guarda pode ser testada.
+  - A ligação pública entre Ren e a entrada no perímetro do mercado ainda é fraca, mas uma peixeira e um escrivãozinho
+    de guilda viram um forasteiro pobre ser admitido pela guarda antes da explosão parcial.
+  - A ida de Ren ao posto depois do segundo sino reforçou a linha pública fina de que o forasteiro pobre do mercado
+    tem entrada com a guarda; a ligação com Kage ainda é fraca, mas uma memória na borda do circo pode crescer.
+  - Se Luath mover guardas demais para a Escada das Sete Águas, pode queimar a entrada, alertar o outro lado e transformar
+    a pista de Ren em perímetro público.
+  - Se Ren não voltar da Ponte Baixa até o fim da manhã, Luath pode mover busca e investigação, mas isso provavelmente
+    queimará a entrada.
+  - O pacote reservado da Ponte Baixa não nomeia Ren, mas ainda pode sofrer pressão institucional futura dentro
+    da guarda ou de Tyr.
+  - O selo de Maerra comprou privacidade, não confiança.
+  - Luath agora sabe que Ren está caçando Masao por uma morte familiar; isso o torna mais cauteloso com Ren.
+  - A franqueza de Ren sobre Masao não merecer cela tornou Luath mais propenso a vigiar Ren se corpos aparecerem.
+  - A oferta de Ren de realizar serviços secretos para obter provas fez Luath enxergá-lo como risco maior de conluio
+    e justiça privada.
+  acordos_ou_acoes:
+  - Luath examinou o mapa público da Escada das Sete Águas e a cópia discreta dos porões secos de Brunna Torkel,
+    sem reter os originais.
+  - Luath não mandará batida formal pela Escada agora; em vez disso, pode colocar vigilância discreta na superfície
+    da Escada, no depósito sem tabuleta e em possíveis saídas baixas.
+  - Luath recebeu de Ren a pista de Dalm sobre Masao, Ponte Baixa, segunda maré, porões secos, papéis antes de lâminas,
+    gravadora e menino.
+  - Luath aceitou não mandar homens para dentro da Ponte Baixa antes da madrugada, para não queimar a entrada.
+  - Se Ren não voltar até o fim da manhã, Luath tratará o caso como crime, prova e responsável.
+  - 'Na madrugada de 7 Eleasis, Ren entregou a Luath três evidências da Ponte Baixa: tira de controle com retenção
+    anulada/volume 13/V. Rook/M. Harrow/data recente, tira encerada com Kage/gravadora/menino/antes de maré e cilindro/matriz
+    com marca de sol apagado.'
+  - Luath não conseguiu montar resposta discreta imediata nem lacre de Tyr de madrugada; pode selar o material sob
+    custódia provisória da Night Watch como recebido de informante em risco.
+  - Luath selou as evidências da Ponte Baixa como material recebido de fonte reservada sob risco plausível de represália;
+    o registro externo não usa Ren Kage, Ren Kagehira, gravadora, menino ou Kage, e a identidade fica retida com
+    Luath até requisição selada de autoridade competente.
+  - Luath pretende tentar encaminhar o pacote reservado a Tyr no primeiro cinza, antes que superiores curiosos transformem
+    a prova em disputa política.
+  - Ren comparou Luath aos Miburo/Shinsengumi de Kozakura, oferecendo respeito pessoal por sua honra prática dentro
+    de uma cidade suja.
+conteudo_mais_antigo_no_historico:
+  riscos: 3
+  acordos_ou_acoes: 26

@@ -1,0 +1,38 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: silva_elkwood
+npc:
+  nome: Silva Elkwood
+  grupo: Jack Mooney & Sons Circus / Chauntea
+  medidores:
+    vinculo: 7
+    confianca: 8
+    risco_percebido: 8
+  natureza_do_vinculo: protetivo, quase maternal e prático
+  subtexto_romantico: nenhum
+  observacao_afetiva: 'Silva pode gostar muito de Ren e ainda tratá-lo com secura. O calor dela deve aparecer como
+    comida, limites, checagem de cauda, cuidado com sono e proteção dos Vell, não como flerte.
+
+    '
+  leitura_atual: 'Silva gosta de Ren mais do que sua fala seca admite e confia bastante em sua intenção e competência
+    prática. O risco percebido continua muito alto porque Ren atrai inimigos para perto dos Vell, do livro e do
+    circo.
+
+    '
+  tom_atual: 'Dura, seca e prática, mas não fria. A fala dela deve incluir cuidado concreto, humor cansado, pequenos
+    gestos de proteção e reconhecimento quando Ren age com autocontrole.
+
+    '
+  impacto_em_testes: 'Pedidos alinhados à proteção dos Vell, descanso, separação de riscos e rotas seguras podem
+    dispensar rolagem. Pedidos que tragam cauda para a carroça verde ou misturem Nera/Tavin com Kage devem enfrentar
+    bloqueio forte mesmo se Silva confiar em Ren.
+
+    '
+  gatilhos_de_aumento:
+  - Ren avisa por onde vai e volta por rota combinada
+  - Ren recua de risco ruim em vez de provar coragem
+  - Ren protege Vell, livro e circo como coisas separadas
+  gatilhos_de_queda:
+  - Ren volta com perseguição direta para dentro do acampamento
+  - Ren procura Nera antes de checar cauda
+  - Ren usa a confiança de Silva para contornar Jack ou Tyr
