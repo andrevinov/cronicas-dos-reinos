@@ -6,6 +6,7 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 - sobreposição de `runtime/eventos-pendentes.jsonl`;
 - retomada compacta por `sessoes/NNN/handoff.yaml`;
 - consulta de sessão sem abrir transcrição;
+- textura narrativa compacta e dirigida para NPCs/locais;
 - busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
   `--historico --transcricoes`;
 - política mecânica de L1–L4T com teto de bytes e justificativa para escaladas.
@@ -35,6 +36,7 @@ if str(TOOLS_DIR) not in sys.path:
 import contexto_core as core
 import politica_acesso as politica
 import sessoes as memoria_sessoes
+import texturas
 import transacoes
 
 DEFAULT_MAX_BYTES = core.DEFAULT_MAX_BYTES
@@ -75,6 +77,11 @@ def _add_pending_source(data: dict[str, Any]) -> None:
     if pending not in sources:
         sources.append(pending)
     data["fontes"] = sources
+
+
+def _add_sources(data: dict[str, Any], sources: list[str]) -> None:
+    current = list(data.get("fontes") or [])
+    data["fontes"] = list(dict.fromkeys(current + sources))
 
 
 def command_status(repo: Path) -> dict[str, Any]:
@@ -173,8 +180,25 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
     data = core.command_npc(repo, term)
     result = data.get("resultado") or {}
-    if not isinstance(result, dict) or not result.get("encontrado"):
+    if not isinstance(result, dict):
+        result = {"encontrado": False, "medidores": None, "relacao": None}
+        data["resultado"] = result
+
+    # A textura é uma extensão da mesma consulta dirigida; não exige uma segunda
+    # inferência nem busca ampla. Também permite que NPCs ainda sem medidor tenham
+    # presença narrativa compacta.
+    texture, texture_sources, texture_candidates = texturas.lookup(repo, "npcs", term)
+    if texture is not None:
+        result["textura_narrativa"] = texture
+        result["encontrado"] = True
+        _add_sources(data, texture_sources)
+    elif texture_candidates and not result.get("encontrado"):
+        existing = list(result.get("candidatos") or [])
+        result["candidatos"] = list(dict.fromkeys(existing + texture_candidates))[:8]
+
+    if not result.get("encontrado"):
         return data
+
     records = _pending(repo)
     applied_total = 0
 
@@ -202,6 +226,17 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
         result["deltas_pendentes_aplicados"] = applied_total
         _add_pending_source(data)
     return data
+
+
+def command_local(repo: Path, term: str) -> dict[str, Any]:
+    texture, sources, candidates = texturas.lookup(repo, "locais", term)
+    result: dict[str, Any] = {
+        "encontrado": texture is not None,
+        "textura_narrativa": texture,
+    }
+    if texture is None:
+        result["candidatos"] = candidates
+    return envelope("local", term, "L2", sources or [texturas.INDEX_PATH.as_posix()], result)
 
 
 def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
@@ -409,7 +444,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_escalation_arguments(session)
 
     for name, help_text in (
-        ("npc", "L2: medidores e relação atual de um NPC"),
+        ("npc", "L2: medidores, relação atual e textura compacta de um NPC"),
+        ("local", "L2: paleta narrativa compacta de um lugar conhecido"),
         ("relacao", "L2: relação atual com uma entidade"),
         ("conhecimento", "L2: o que Ren sabe sobre um assunto"),
         ("regra", "L2: trechos das regras internas sobre um assunto"),
@@ -482,6 +518,8 @@ def main() -> int:
             data = command_session(repo, args.termo)
         elif args.command == "npc":
             data = command_npc(repo, args.termo)
+        elif args.command == "local":
+            data = command_local(repo, args.termo)
         elif args.command == "relacao":
             data = command_relation(repo, args.termo)
         elif args.command == "conhecimento":
