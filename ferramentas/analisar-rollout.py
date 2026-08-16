@@ -217,11 +217,14 @@ def _access_levels_from_output(text: str) -> list[str]:
 def _infer_write_paths(name: str, raw_input: str) -> list[str]:
     command = _extract_command(raw_input)
     lower = command.lower()
-    paths = _paths(raw_input)
+    paths = [
+        path for path in _paths(raw_input)
+        if not (path.startswith("ferramentas/") and path.endswith(".py"))
+    ]
     if name == "apply_patch" or "*** begin patch" in raw_input.lower():
         patch_paths = PATCH_FILE_RE.findall(raw_input)
         if patch_paths:
-            paths = list(dict.fromkeys(paths + patch_paths))
+            paths = list(dict.fromkeys(patch_paths))
     if "turno.py registrar" in lower:
         paths.extend(["sessoes/NNN/transcricao.md", "runtime/eventos-pendentes.jsonl"])
     if "gerar-runtime.py" in lower and "--check" not in lower:
@@ -423,7 +426,10 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
 
                     patch_files = PATCH_FILE_RE.findall(raw_input)
                     turn["patch_files"].extend(patch_files)
-                    mentioned = _paths(raw_input)
+                    mentioned = [
+                        path for path in _paths(raw_input)
+                        if not (path.startswith("ferramentas/") and path.endswith(".py"))
+                    ]
                     if category == "read_search":
                         turn["read_paths"].extend(mentioned)
                         if "--transcricoes" in command.lower() or any("transcricao.md" in p for p in mentioned):
