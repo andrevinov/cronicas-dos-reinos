@@ -69,4 +69,12 @@ Durante uma sessão ativa, tempo novo deve entrar primeiro como delta de `tempo`
 
 `contexto.py` aplica esse delta imediatamente ao estado efetivo. `estado/tempo.yaml` continua representando o último checkpoint consolidado até a consolidação em lote.
 
+### Autoridade de prazos e alertas temporais
+
+`estado/tempo.yaml:prazo_relevante` é a **fonte autoritativa única** para texto livre de efeitos em duração, vencimentos e alertas temporais do checkpoint corrente. A cópia histórica `estado/estado-atual.yaml:tempo.prazo_relevante` é legado de uma representação anterior e não deve ser mantida como espelho obrigatório.
+
+O runtime deriva `prazos_e_alertas` de `estado/tempo.yaml` e só aceita o campo legado do estado como fallback de migração. Essa regra evita que duas paráfrases igualmente válidas do mesmo conjunto de prazos bloqueiem um checkpoint.
+
+Data, hora aproximada, período do dia e clima continuam com espelhamento/consistência rígidos onde a arquitetura exigir; a exceção é específica para o campo textual `prazo_relevante`.
+
 Para viagens considerar distância, terreno, transporte, ritmo, clima, interrupções e regras da edição. Não deslocar o personagem instantaneamente na narrativa sem considerar tempo e consequências, salvo magia ou elipse explicitamente adotada.

@@ -85,11 +85,18 @@ class ContextoHelpersTest(unittest.TestCase):
 
 
 class ContextoRepositoryTest(unittest.TestCase):
-    def test_status_uses_runtime_only(self):
+    def test_status_uses_only_hot_runtime_and_pending_overlay(self):
         data = mod.command_status(REPO)
         self.assertEqual(data["nivel"], "L1")
-        self.assertEqual(data["fontes"], ["runtime/contexto.yaml"])
         self.assertEqual(data["resultado"]["personagem"]["nome"], "Ren Kagehira")
+        self.assertEqual(data["fontes"][0], "runtime/contexto.yaml")
+        self.assertTrue(
+            set(data["fontes"]).issubset(
+                {"runtime/contexto.yaml", "runtime/eventos-pendentes.jsonl"}
+            )
+        )
+        if data["resultado"].get("sobreposicao_transacional"):
+            self.assertIn("runtime/eventos-pendentes.jsonl", data["fontes"])
 
     def test_relation_lookup_is_targeted(self):
         data = mod.command_relation(REPO, "kethra")
@@ -114,10 +121,23 @@ class ContextoRepositoryTest(unittest.TestCase):
     def test_resume_and_session_memory_stay_small(self):
         resume = mod.command_resume(REPO)
         session = mod.command_session(REPO, "3")
-        rendered_resume, _ = mod.fit_budget(resume, mod.DEFAULT_MAX_BYTES, False)
+        decision = mod.politica.classify("retomada")
+        decorated, budget = mod.politica.decorate(
+            resume,
+            decision,
+            requested_budget=mod.DEFAULT_MAX_BYTES,
+            after=None,
+            reason=None,
+        )
+        rendered_resume, truncated_resume = mod.fit_budget(decorated, budget, True)
         rendered_session, _ = mod.fit_budget(session, mod.DEFAULT_MAX_BYTES, False)
-        self.assertLessEqual(len(rendered_resume.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
+        self.assertFalse(truncated_resume)
+        self.assertLessEqual(len(rendered_resume.encode("utf-8")), 8 * 1024)
         self.assertLessEqual(len(rendered_session.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
+        self.assertIsInstance(
+            resume["resultado"]["contexto"]["recursos"]["ki"],
+            dict,
+        )
         self.assertNotIn("sessoes/003/transcricao.md", resume["fontes"])
         self.assertNotIn("sessoes/003/transcricao.md", session["fontes"])
 

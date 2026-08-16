@@ -5,11 +5,15 @@ Este comando é de manutenção/aceitação. Ele NÃO pertence ao loop narrativo
 
 Objetivos:
 - executar a suíte acumulada de integridade e regressão;
-- confrontar o estado atual com a baseline lógica pré-refatoração;
+- preservar byte a byte a baseline lógica pré-refatoração como evidência histórica;
 - provar que a retomada funciona somente com a camada quente/compacta;
 - provar que deltas pendentes continuam visíveis numa retomada limpa;
 - garantir que a própria auditoria não modifica a campanha;
 - emitir um único veredito: PRONTO PARA RETOMAR ou BLOQUEADO.
+
+A baseline de 15/08/2026 não congela o jogo depois da retomada: suas assertions
+continuam disponíveis para comparações deliberadas, mas o gate permanente protege
+o artefato histórico, não exige que a campanha viva continue em 08:03.
 """
 from __future__ import annotations
 
@@ -35,9 +39,9 @@ TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
+import contexto_core
 import transacoes
 
-BASELINE = Path("baseline/estado-logico-2026-08-15.yaml")
 EXPECTED_ENGINEERING_PATHS = (
     "ferramentas/auditoria-final.py",
     "ferramentas/contexto.py",
@@ -46,16 +50,19 @@ EXPECTED_ENGINEERING_PATHS = (
     "ferramentas/consolidar.py",
     "ferramentas/sessoes.py",
     "ferramentas/politica_acesso.py",
+    "ferramentas/texturas.py",
     "ferramentas/analisar-rollout.py",
     "ferramentas/comparar-rollouts.py",
+    "baseline/estado-logico-2026-08-15.yaml",
     "baseline/rollout-2026-08-15.json",
     "baseline/metas-rollout-pos-refatoracao.json",
     "docs/agente/escada-de-acesso.md",
     "docs/agente/memoria-de-sessoes.md",
     "docs/agente/telemetria-rollouts.md",
+    "docs/agente/densidade-narrativa.md",
+    "cenario/texturas/index.yaml",
 )
 
-# Áreas cuja mutação seria um efeito colateral intolerável da auditoria.
 PROTECTED_ROOTS = (
     "campanha.yaml",
     "estado",
@@ -68,7 +75,7 @@ PROTECTED_ROOTS = (
 )
 
 PROTECTED_EXCLUDES = {
-    "runtime/consultas-contexto.jsonl",  # diagnóstico local opt-in, não cânone
+    "runtime/consultas-contexto.jsonl",
     "runtime/consolidacao-em-andamento.json",
 }
 
@@ -87,15 +94,6 @@ class GateResult:
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle)
-
-
-def get_path(data: Any, dotted: str) -> Any:
-    current = data
-    for part in dotted.split("."):
-        if not isinstance(current, dict) or part not in current:
-            raise AuditError(f"caminho ausente: {dotted}")
-        current = current[part]
-    return current
 
 
 def _sha256(path: Path) -> str:
@@ -219,6 +217,19 @@ def _resume_snapshot(data: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _effective_runtime(repo: Path) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]]]:
+    """Estado operacional verdadeiro: último checkpoint + buffer ainda não consolidado."""
+    base_context = load_yaml(repo / "runtime/contexto.yaml") or {}
+    base_scene = load_yaml(repo / "runtime/cena.yaml") or {}
+    records = transacoes.load_pending(repo)
+    effective_context, effective_scene, _ = transacoes.overlay_runtime(
+        base_context,
+        base_scene,
+        records,
+    )
+    return effective_context, effective_scene or {}, records
+
+
 def gate_structure(repo: Path) -> dict[str, Any]:
     missing = [path for path in EXPECTED_ENGINEERING_PATHS if not (repo / path).is_file()]
     if missing:
@@ -242,24 +253,22 @@ def gate_baseline_and_regressions(repo: Path) -> dict[str, Any]:
         [sys.executable, "ferramentas/sessoes.py", "check"],
         [sys.executable, "ferramentas/checkpoint.py", "check"],
         [sys.executable, "ferramentas/gerar-runtime.py", "--check"],
-        [
-            sys.executable,
-            "ferramentas/verificar-integridade.py",
-            "--baseline",
-            BASELINE.as_posix(),
-        ],
+        [sys.executable, "ferramentas/verificar-integridade.py"],
+        [sys.executable, "ferramentas/verificar-integridade.py", "--verificar-baseline-historica"],
     ]
     results = [run_command(repo, command) for command in commands]
-    return {"comandos": len(results), "ultimo": results[-1]["saida_final"]}
+    return {
+        "comandos": len(results),
+        "baseline_historica": results[-1]["saida_final"],
+        "observacao": "baseline preservada como evidência; estado vivo pode avançar depois da captura",
+    }
 
 
 def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
-    expected_context = load_yaml(repo / "runtime/contexto.yaml") or {}
-    expected_scene = load_yaml(repo / "runtime/cena.yaml") or {}
+    expected_context, expected_scene, pending = _effective_runtime(repo)
     with tempfile.TemporaryDirectory(prefix="cronicas-retomada-quente-") as tmp:
         sandbox = Path(tmp)
         session = _copy_hot_layer(repo, sandbox)
-        # Prova negativa: nenhuma transcrição, estado completo, ficha ou histórico é copiado.
         forbidden = [
             sandbox / "sessoes" / f"{session:03d}" / "transcricao.md",
             sandbox / "estado/estado-atual.yaml",
@@ -276,6 +285,7 @@ def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
         if cold_sources:
             raise AuditError(f"retomada declarou fonte fria: {cold_sources}")
 
+        expected_summary = contexto_core.truncate_text(expected_scene.get("resumo_imediato", ""), 1400)
         checks = {
             "sessao": (((expected_context.get("sessao") or {}).get("numero")), snapshot["sessao"]),
             "modo": (((expected_context.get("sessao") or {}).get("modo_de_cena")), snapshot["modo"]),
@@ -288,7 +298,7 @@ def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
             "hora": (((expected_context.get("tempo") or {}).get("hora_aproximada")), snapshot["hora"]),
             "area": (((expected_context.get("localizacao") or {}).get("area")), snapshot["area"]),
             "ponto": (((expected_context.get("localizacao") or {}).get("ponto_exato")), snapshot["ponto_exato"]),
-            "resumo": (expected_scene.get("resumo_imediato"), snapshot["resumo_imediato"]),
+            "resumo": (expected_summary, snapshot["resumo_imediato"]),
         }
         mismatches = {
             name: {"esperado": expected, "obtido": actual}
@@ -296,11 +306,12 @@ def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
             if expected != actual
         }
         if mismatches:
-            raise AuditError(f"retomada quente divergiu do runtime: {mismatches}")
+            raise AuditError(f"retomada quente divergiu do estado efetivo: {mismatches}")
         return {
             "sessao": session,
             "bytes_saida": output_bytes,
             "fontes": sources,
+            "eventos_pendentes": len(pending),
             "transcricao_lida": False,
             "snapshot": snapshot,
         }
@@ -401,8 +412,7 @@ def gate_no_raw_rollout_tracked(repo: Path) -> dict[str, Any]:
 
 
 def baseline_snapshot(repo: Path) -> dict[str, Any]:
-    context = load_yaml(repo / "runtime/contexto.yaml") or {}
-    scene = load_yaml(repo / "runtime/cena.yaml") or {}
+    context, scene, _ = _effective_runtime(repo)
     return {
         "sessao": ((context.get("sessao") or {}).get("numero")),
         "status": ((context.get("sessao") or {}).get("status")),
@@ -423,7 +433,7 @@ def baseline_snapshot(repo: Path) -> dict[str, Any]:
 def execute_gate(name: str, function: Callable[[Path], Any], repo: Path) -> GateResult:
     try:
         return GateResult(name, True, function(repo))
-    except Exception as exc:  # relatório deve mostrar todos os gates possíveis
+    except Exception as exc:
         return GateResult(name, False, str(exc))
 
 

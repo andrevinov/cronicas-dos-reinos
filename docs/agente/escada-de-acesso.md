@@ -10,6 +10,8 @@ A implementação mecânica vive em `ferramentas/politica_acesso.py` e é aplica
 
 A escada não é uma checklist obrigatória. Quando o alvo já é conhecido, uma consulta dirigida pode saltar um nível intermediário para economizar round-trips. O que é proibido é escalar para material amplo/frio “só para conferir”.
 
+**Pare de buscar quando o contexto bastar; não confunda isso com parar de narrar.** Densidade literária é regulada por `docs/agente/densidade-narrativa.md`, não pelo teto de bytes das ferramentas.
+
 Exemplo correto: a pergunta cita explicitamente Kethra. Pode ir direto a `contexto.py relacao kethra` em L2 sem antes chamar `status`.
 
 Exemplo correto: a pergunta pede algo especificamente da sessão 002. `contexto.py sessao 2` pode saltar a busca ampla L3, mas deve declarar que L2 foi insuficiente e dizer qual lacuna histórica precisa responder.
@@ -42,6 +44,7 @@ Comandos:
 python3 ferramentas/contexto.py cena
 python3 ferramentas/contexto.py retomada
 python3 ferramentas/contexto.py npc kethra
+python3 ferramentas/contexto.py local "casa de Iria Doss"
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
@@ -50,7 +53,7 @@ python3 ferramentas/contexto.py sessao atual
 
 Teto mecânico: **8 KiB**.
 
-L2 é o nível normal da narração quando L0 não basta. Índice + fragmento específico é preferível a busca ampla.
+L2 é o nível normal da narração quando L0 não basta. Índice + fragmento específico é preferível a busca ampla. `npc` pode trazer uma pequena paleta narrativa junto da relação/medidores; `local` consulta apenas uma paleta compacta de ambiente. Essas texturas são opcionais e não autorizam busca ampla adicional quando já forem suficientes.
 
 ### L3 — descoberta limitada
 

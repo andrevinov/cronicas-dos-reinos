@@ -82,6 +82,10 @@ def build_runtime_from_documents(
     hora = tempo_estado.get("hora_aproximada") or tempo_arquivo.get("hora_aproximada")
     periodo = tempo_estado.get("periodo_do_dia") or tempo_arquivo.get("periodo_do_dia")
     clima = tempo_estado.get("clima") or tempo_arquivo.get("clima")
+    # Texto livre de prazos tinha duas cópias e já produziu divergência real em
+    # checkpoint. A autoridade passa a ser estado/tempo.yaml; o campo legado do
+    # estado atual é aceito apenas como fallback durante a migração.
+    prazo_relevante = tempo_arquivo.get("prazo_relevante") or tempo_estado.get("prazo_relevante")
 
     contexto = {
         "versao_runtime": RUNTIME_VERSION,
@@ -152,7 +156,7 @@ def build_runtime_from_documents(
             "deslocamento": recursos.get("deslocamento"),
         },
         "resumo_imediato": tail_sentences(localizacao.get("descricao_operacional"), 8, 1800),
-        "prazos_e_alertas": tail_sentences(tempo_estado.get("prazo_relevante"), 7, 1800),
+        "prazos_e_alertas": tail_sentences(prazo_relevante, 7, 1800),
         "consulta_profunda_somente_se_necessaria": {
             "estado": "estado/estado-atual.yaml",
             "handoff": handoff,

@@ -11,11 +11,17 @@ narração, mas deixa de ser uma fonte de leitura normal. Este módulo mantém:
 O módulo não interpreta transcrições para produzir fatos. Handoffs novos são
 construídos somente de runtime/cena e dos resumos explícitos do ledger de
 consolidação.
+
+Durante uma sessão ativa, o índice pertence ao último checkpoint. A transcrição
+pode crescer depois dele sem reindexação enquanto houver transações pendentes
+válidas; exigir atualização do índice a cada turno reintroduziria uma terceira
+escrita no caminho narrativo normal.
 """
 from __future__ import annotations
 
 import argparse
 import json
+from copy import deepcopy
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
@@ -31,6 +37,7 @@ HANDOFF_SCHEMA = 1
 INDEX_PATH = Path("sessoes/index.yaml")
 HANDOFF_NAME = "handoff.yaml"
 TRANSCRIPT_NAME = "transcricao.md"
+PENDING_PATH = Path("runtime/eventos-pendentes.jsonl")
 MAX_HANDOFF_BYTES = 8 * 1024
 MAX_INDEX_BYTES = 64 * 1024
 RECENT_EVENT_LIMIT = 8
@@ -254,6 +261,45 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
     return records
 
 
+def _live_transcript_drift_allowed(repo: Path, actual: Any, expected: Any) -> bool:
+    """Aceita só a defasagem de bytes causada por turnos após o checkpoint.
+
+    O índice continua representando o último checkpoint. Enquanto a sessão atual
+    tiver eventos pendentes, a única divergência tolerável é a transcrição ativa ter
+    crescido por append (e, consequentemente, o total de bytes de transcrições).
+    Qualquer outro campo divergente continua falhando.
+    """
+    if not isinstance(actual, dict) or not isinstance(expected, dict):
+        return False
+    active = current_session(repo)
+    pending = [
+        record
+        for record in read_jsonl(repo / PENDING_PATH)
+        if record.get("sessao") == active
+    ]
+    if not pending:
+        return False
+
+    key = f"{active:03d}"
+    actual_entry = ((actual.get("sessoes") or {}).get(key) or {})
+    expected_entry = ((expected.get("sessoes") or {}).get(key) or {})
+    actual_bytes = (((actual_entry.get("transcricao") or {}).get("bytes")))
+    expected_bytes = (((expected_entry.get("transcricao") or {}).get("bytes")))
+    actual_total = ((actual.get("totais") or {}).get("bytes_transcricoes"))
+    expected_total = ((expected.get("totais") or {}).get("bytes_transcricoes"))
+    if not all(isinstance(value, int) for value in (actual_bytes, expected_bytes, actual_total, expected_total)):
+        return False
+    if expected_bytes < actual_bytes:
+        return False
+    if expected_total - actual_total != expected_bytes - actual_bytes:
+        return False
+
+    normalized = deepcopy(expected)
+    normalized["sessoes"][key]["transcricao"]["bytes"] = actual_bytes
+    normalized["totais"]["bytes_transcricoes"] = actual_total
+    return normalized == actual
+
+
 def recent_ledger_events(ledger: Iterable[dict[str, Any]], limit: int = RECENT_EVENT_LIMIT) -> list[dict[str, Any]]:
     events: list[dict[str, Any]] = []
     for batch in ledger:
@@ -474,8 +520,8 @@ def check(repo: Path) -> list[str]:
         try:
             actual = load_yaml(path)
             expected = build_index(repo)
-            if actual != expected:
-                errors.append("sessoes/index.yaml está desatualizado; execute ferramentas/sessoes.py reindexar")
+            if actual != expected and not _live_transcript_drift_allowed(repo, actual, expected):
+                errors.append("sessoes/index.yaml está desatualizado fora da defasagem transacional permitida")
             if path.stat().st_size > MAX_INDEX_BYTES:
                 errors.append(f"sessoes/index.yaml excede {MAX_INDEX_BYTES} bytes")
         except (OSError, yaml.YAMLError, SessionMemoryError) as exc:

@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
-"""Verificações baratas de integridade estrutural e semântica da campanha."""
+"""Verificações baratas de integridade estrutural e semântica da campanha.
+
+A baseline de 15/08/2026 é um artefato histórico imutável. Comparar o estado vivo
+contra suas assertions continua disponível via `--baseline`, mas é uma operação
+explícita para migração/campanha congelada — não uma invariável de jogo depois que
+a campanha voltou a avançar.
+"""
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -42,6 +49,7 @@ AGENT_DOCS = (
     "docs/agente/acesso-e-operacoes.md",
     "docs/agente/regras-e-rolagens.md",
     "docs/agente/narracao-e-mundo.md",
+    "docs/agente/densidade-narrativa.md",
     "docs/agente/personagem-e-tempo.md",
     "docs/agente/pesquisa-e-manutencao.md",
 )
@@ -56,6 +64,10 @@ RUNTIME_SCENE = "runtime/cena.yaml"
 RUNTIME_EVENTS = "runtime/eventos-pendentes.jsonl"
 RUNTIME_MAX_BYTES = 8 * 1024
 RUNTIME_VERSION = 2
+
+HISTORICAL_BASELINE = Path("baseline/estado-logico-2026-08-15.yaml")
+HISTORICAL_BASELINE_BLOB = "15859e4f2518ae9a4ea74cef1fcdbf242d2d8411"
+HISTORICAL_BASELINE_ORIGIN = "815aa6e1ac3ad9ae1d59cc081914eb8d67cb5a58"
 
 REQUIRED_PATHS = (
     "AGENTS.md",
@@ -81,6 +93,9 @@ REQUIRED_PATHS = (
     RUNTIME_SCENE,
     RUNTIME_EVENTS,
     "ferramentas/gerar-runtime.py",
+    "ferramentas/texturas.py",
+    "cenario/texturas/index.yaml",
+    HISTORICAL_BASELINE.as_posix(),
     *AGENT_DOCS,
     AGENT_COVERAGE,
 )
@@ -100,6 +115,44 @@ def get_path(data: Any, dotted: str) -> Any:
             raise KeyError(dotted)
         current = current[part]
     return current
+
+
+def git_blob_id(data: bytes) -> str:
+    """Calcula o object id SHA-1 de um blob Git sem depender do executável git."""
+    header = f"blob {len(data)}\0".encode("ascii")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def validate_historical_baseline(repo: Path) -> list[str]:
+    """Protege a evidência pré-refatoração sem congelar o estado vivo nela."""
+    path = repo / HISTORICAL_BASELINE
+    if not path.is_file():
+        return [f"baseline histórica ausente: {HISTORICAL_BASELINE.as_posix()}"]
+    raw = path.read_bytes()
+    actual_blob = git_blob_id(raw)
+    errors: list[str] = []
+    if actual_blob != HISTORICAL_BASELINE_BLOB:
+        errors.append(
+            "baseline histórica foi alterada: "
+            f"blob atual={actual_blob}, esperado={HISTORICAL_BASELINE_BLOB}"
+        )
+    try:
+        snap = load_yaml(path)
+    except Exception as exc:
+        return errors + [f"baseline histórica inválida: {exc}"]
+    if not isinstance(snap, dict):
+        return errors + ["baseline histórica não é mapeamento YAML"]
+    if snap.get("schema_version") != 1:
+        errors.append(f"schema da baseline histórica inesperado: {snap.get('schema_version')!r}")
+    origin = ((snap.get("git") or {}).get("commit_origem"))
+    if origin != HISTORICAL_BASELINE_ORIGIN:
+        errors.append(
+            f"baseline histórica perdeu commit de origem: atual={origin!r}, esperado={HISTORICAL_BASELINE_ORIGIN!r}"
+        )
+    assertions = snap.get("assertions")
+    if not isinstance(assertions, list) or not assertions:
+        errors.append("baseline histórica perdeu suas assertions de referência")
+    return errors
 
 
 def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
@@ -124,9 +177,11 @@ def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
         required_markers = (
             "Nunca leia por precaução",
             "Se for suficiente, pare",
+            "Economia de contexto não é economia de prosa",
             "runtime/contexto.yaml",
             "runtime/cena.yaml",
             "docs/agente/acesso-e-operacoes.md",
+            "docs/agente/densidade-narrativa.md",
             "docs/agente/cobertura-agents-v1.yaml",
         )
         for marker in required_markers:
@@ -226,7 +281,6 @@ def validate_runtime(
             if actual != expected:
                 errors.append(f"runtime divergiu do estado ({label}): runtime={actual!r}, estado={expected!r}")
 
-    # O arquivo separado de tempo ainda deve concordar com a projeção quente.
     if isinstance(tempo, dict):
         date_from_time = ((tempo.get("data_atual") or {}).get("valor"))
         runtime_date = (contexto.get("tempo") or {}).get("data")
@@ -245,7 +299,6 @@ def validate_runtime(
         if runtime_person.get("nivel") != ((ficha.get("identidade") or {}).get("nivel")):
             errors.append("runtime divergiu da ficha no nível do personagem")
 
-    # Cada linha não vazia do log precisa ser JSON válido e um objeto.
     events_path = repo / RUNTIME_EVENTS
     if events_path.exists():
         for number, line in enumerate(events_path.read_text(encoding="utf-8").splitlines(), start=1):
@@ -268,6 +321,8 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     for rel in REQUIRED_PATHS:
         if not (repo / rel).exists():
             errors.append(f"arquivo obrigatório ausente: {rel}")
+
+    errors.extend(validate_historical_baseline(repo))
 
     yaml_docs: dict[str, Any] = {}
     for path in repo.rglob("*"):
@@ -386,9 +441,36 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
-    parser.add_argument("--baseline", type=Path, default=None, help="snapshot lógico a comparar")
+    parser.add_argument(
+        "--baseline",
+        type=Path,
+        default=None,
+        help=(
+            "compara o estado atual ao snapshot lógico informado; usar apenas em migração "
+            "deliberada/campanha congelada, não como gate permanente do jogo vivo"
+        ),
+    )
+    parser.add_argument(
+        "--verificar-baseline-historica",
+        action="store_true",
+        help="valida somente que a baseline pré-refatoração permanece byte a byte intacta",
+    )
     args = parser.parse_args()
     repo = args.repo.resolve()
+
+    if args.verificar_baseline_historica:
+        errors = validate_historical_baseline(repo)
+        if errors:
+            print("FALHA NA BASELINE HISTÓRICA")
+            for error in errors:
+                print(f"- {error}")
+            return 1
+        print(
+            "OK — baseline histórica pré-refatoração permanece intacta: "
+            f"{HISTORICAL_BASELINE_BLOB}"
+        )
+        return 0
+
     baseline = args.baseline.resolve() if args.baseline else None
     errors = validate(repo, baseline)
     if errors:
