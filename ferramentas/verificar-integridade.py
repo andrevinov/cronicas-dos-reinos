@@ -55,7 +55,7 @@ RUNTIME_CONTEXT = "runtime/contexto.yaml"
 RUNTIME_SCENE = "runtime/cena.yaml"
 RUNTIME_EVENTS = "runtime/eventos-pendentes.jsonl"
 RUNTIME_MAX_BYTES = 8 * 1024
-RUNTIME_VERSION = 1
+RUNTIME_VERSION = 2
 
 REQUIRED_PATHS = (
     "AGENTS.md",
