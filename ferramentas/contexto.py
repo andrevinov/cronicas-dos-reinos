@@ -12,10 +12,16 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 from typing import Any, Iterable
+
+try:
+    import yaml
+except ImportError as exc:
+    raise SystemExit(
+        "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
+    ) from exc
 
 TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
@@ -226,7 +232,7 @@ def iter_search_files(
     *,
     reserved: bool,
     historical: bool,
-    transcripts: bool,
+    transcripts: bool = False,
 ) -> Iterable[Path]:
     """Escopo público de busca; histórico não implica transcrição."""
     roots = ["estado", "personagens/jogador", "cenario", "regras", "narracao"]
@@ -271,7 +277,7 @@ def generic_search(
     *,
     reserved: bool,
     historical: bool,
-    transcripts: bool,
+    transcripts: bool = False,
     limit: int = 8,
 ) -> list[dict[str, Any]]:
     query = normalize(term)
@@ -309,7 +315,7 @@ def command_search(
     *,
     reserved: bool,
     historical: bool,
-    transcripts: bool,
+    transcripts: bool = False,
 ) -> dict[str, Any]:
     matches = generic_search(
         repo,
@@ -430,7 +436,7 @@ def main() -> int:
             )
         else:
             raise ValueError(f"comando desconhecido: {args.command}")
-    except (OSError, ValueError, memoria_sessoes.SessionMemoryError) as exc:
+    except (OSError, ValueError, yaml.YAMLError, memoria_sessoes.SessionMemoryError) as exc:
         print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
         return 1
 
