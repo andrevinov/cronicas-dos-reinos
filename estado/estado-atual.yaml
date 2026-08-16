@@ -40,13 +40,6 @@ tempo:
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
-  prazo_relevante: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão
-    no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche
-    do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa
-    foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr
-    sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada.
-    Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas;
-    o combate é público e testemunhado por trabalhadores.
 recursos:
   pontos_de_vida:
     atuais: 45
