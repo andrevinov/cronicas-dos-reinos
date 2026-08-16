@@ -1,0 +1,22 @@
+schema_texturas: 1
+natureza: roteador_narrativo_nao_canonico
+limite_fragmento_bytes: 2048
+observacao: >-
+  Paletas são matéria-prima descritiva opcional. Não substituem estado, relações,
+  cenário canônico, segredos ou eventos pendentes; sugestões só viram fato quando
+  aparecem legitimamente na ficção.
+npcs:
+  iria_doss:
+    nome: Iria Doss
+    aliases:
+      - Iria
+      - curandeira Iria
+    arquivo: cenario/texturas/npcs/iria_doss.yaml
+locais:
+  casa_iria_doss:
+    nome: casa de Iria Doss
+    aliases:
+      - casa de Iria
+      - casa baixa de Iria Doss
+      - abrigo de Iria
+    arquivo: cenario/texturas/locais/casa_iria_doss.yaml
