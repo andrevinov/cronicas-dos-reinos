@@ -33,11 +33,19 @@ class AuditoriaFinalTest(unittest.TestCase):
         snapshot = result["snapshot"]
         state = load_yaml(ROOT / "estado/estado-atual.yaml")
         resources = state["recursos"]
+        expected_pv = {
+            "atuais": resources["pontos_de_vida"]["atuais"],
+            "maximos": resources["pontos_de_vida"]["maximos"],
+        }
+        expected_ki = {
+            "atuais": resources["ki"]["atuais"],
+            "maximos": resources["ki"]["maximos"],
+        }
         self.assertEqual(snapshot["sessao"], state["campanha"]["sessao_atual"])
         self.assertEqual(snapshot["personagem"], state["personagem"]["nome"])
         self.assertEqual(snapshot["nivel"], state["personagem"]["nivel"])
-        self.assertEqual(snapshot["pv"], resources["pontos_de_vida"])
-        self.assertEqual(snapshot["ki"], resources["ki"])
+        self.assertEqual(snapshot["pv"], expected_pv)
+        self.assertEqual(snapshot["ki"], expected_ki)
         self.assertEqual(snapshot["ca"], resources["classe_de_armadura"])
         self.assertTrue(snapshot["resumo_imediato"])
         self.assertFalse(any("transcricao" in str(source) for source in result["fontes"]))
