@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - "refactor/**"
   pull_request:
 
 jobs:
@@ -209,7 +208,9 @@ jobs:
           python ferramentas/auditoria-final.py --json > /tmp/auditoria-final.json
           python - <<'PY'
           import json
+          import yaml
           report = json.load(open('/tmp/auditoria-final.json', encoding='utf-8'))
+          state = yaml.safe_load(open('estado/estado-atual.yaml', encoding='utf-8'))
           assert report['pronto_para_retomar'] is True, report
           assert report['veredito'] == 'PRONTO PARA RETOMAR'
           assert all(gate['ok'] is True for gate in report['gates'])
@@ -220,8 +221,8 @@ jobs:
           assert hot['transcricao_lida'] is False
           assert hot['bytes_saida'] <= 8192
           assert hot['eventos_pendentes'] >= 0
-          assert hot['snapshot']['sessao'] == 3
-          assert hot['snapshot']['personagem'] == 'Ren Kagehira'
+          assert hot['snapshot']['sessao'] == state['campanha']['sessao_atual']
+          assert hot['snapshot']['personagem'] == state['personagem']['nome']
           pending = by_name['retomada_com_delta_pendente']['detalhe']
           assert pending['somente_sandbox'] is True
           assert pending['ki_efetivo'] == pending['ki_base'] - 1
