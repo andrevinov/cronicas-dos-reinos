@@ -183,64 +183,91 @@ Sessões legadas podem não possuir handoff. Nesse caso `sessoes.py sessao N` pr
 
 ## Consulta única de contexto
 
-`ferramentas/contexto.py` é a interface preferencial para leitura.
+`ferramentas/contexto.py` é a interface preferencial para leitura. `ferramentas/politica_acesso.py` aplica a escada e os tetos.
+
+L1/L2:
 
 ```bash
 python3 ferramentas/contexto.py status
 python3 ferramentas/contexto.py retomada
 python3 ferramentas/contexto.py cena
-python3 ferramentas/contexto.py sessao 2
+python3 ferramentas/contexto.py sessao atual
 python3 ferramentas/contexto.py npc kethra
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
-python3 ferramentas/contexto.py buscar "ponte baixa"
+```
+
+Busca L3:
+
+```bash
+python3 ferramentas/contexto.py buscar "ponte baixa" \
+  --apos L2 --motivo "As consultas dirigidas não localizaram o domínio da pista."
+```
+
+Sessão histórica conhecida pode saltar busca ampla:
+
+```bash
+python3 ferramentas/contexto.py sessao 2 \
+  --apos L2 --motivo "A pergunta aponta diretamente para a sessão 002 e seu resumo."
 ```
 
 Semântica principal:
 
-- `status`: snapshot-base + deltas correntes;
-- `retomada`: runtime + cena + handoff atual + resumos de eventos pendentes recentes, sem transcrição;
-- `cena`: contexto + cena com sobreposição;
-- `sessao N`: handoff ou fallback compacto de uma sessão, sem transcrição;
-- `npc`: fragmentos de medidores/relação + deltas da entidade;
-- `relacao`: um fragmento + deltas pendentes;
-- `conhecimento`: fragmentos consolidados + incrementais recentes + descobertas pendentes;
-- `regra`: resumos internos;
-- `buscar`: descoberta limitada.
+- `status`: L1, snapshot-base + deltas correntes;
+- `retomada`: L2, runtime + cena + handoff atual + resumos pendentes, sem transcrição;
+- `cena`: L2, contexto + cena com sobreposição;
+- `sessao atual`: L2;
+- `sessao N` histórica: L4 dirigido, sem transcrição;
+- `npc`, `relacao`, `conhecimento`, `regra`: L2;
+- `buscar`: L3 e exige escalada declarada.
 
 ### Histórico em dois degraus
 
 Por padrão a busca exclui material reservado, `historico/` e transcrições.
 
+L4:
+
 ```bash
-python3 ferramentas/contexto.py buscar "sol apagado" --reservado
-python3 ferramentas/contexto.py buscar "frase exata" --historico
+python3 ferramentas/contexto.py buscar "frase exata" \
+  --historico --apos L3 --motivo "A busca corrente não contém a origem histórica necessária."
 ```
 
 `--historico` acrescenta histórico estruturado, handoffs/resumos/alterações e históricos específicos, **mas ainda não abre transcrições**.
 
-Somente como última escalada local:
+Somente como L4T:
 
 ```bash
-python3 ferramentas/contexto.py buscar "frase exata" --historico --transcricoes
+python3 ferramentas/contexto.py buscar "frase exata" \
+  --historico --transcricoes --apos L4 \
+  --motivo "O histórico estruturado não contém a formulação exata necessária."
 ```
 
-`--transcricoes` sem `--historico` é recusado.
+`--transcricoes` sem `--historico` é recusado. `--reservado` também exige motivo concreto.
 
-A saída padrão possui orçamento de 8 KiB e teto de 16 KiB:
+### Tetos de contexto
 
-```bash
-python3 ferramentas/contexto.py --json status
-python3 ferramentas/contexto.py --max-bytes 4096 npc nera
+A política impõe:
+
+```text
+L1   4 KiB
+L2   8 KiB
+L3   8 KiB
+L4  12 KiB
+L4T 16 KiB
 ```
+
+`--max-bytes` só reduz o teto. Pedir 16 KiB em `status` continua limitado a 4 KiB. Cada saída inclui `controle_acesso.pare_se_suficiente` para lembrar o agente de interromper a busca quando a lacuna estiver resolvida.
+
+Detalhes: `docs/agente/escada-de-acesso.md`.
 
 Telemetria opcional grava somente metadados em `runtime/consultas-contexto.jsonl`; desabilitar com `--sem-log`.
 
 ### Núcleo e porta pública
 
 - `contexto_core.py`: mecanismo de índices/fragmentos herdado;
-- `contexto.py`: porta pública com sobreposição, memória de sessão e política de transcrições frias;
+- `contexto.py`: porta pública com overlay, memória de sessão e política de acesso;
+- `politica_acesso.py`: classificação, escalada, motivos e tetos;
 - `transacoes.py`: schema/aplicação/busca de deltas;
 - `sessoes.py`: handoff e índice de sessões.
 
@@ -303,7 +330,8 @@ Proteções acumuladas:
 - **Etapa 6:** relações/NPCs/conhecimento fragmentados e reconstruíveis;
 - **Etapa 7:** turno limitado a transcrição + deltas, recuperação idempotente, overlay e rolagens em lote;
 - **Etapa 8:** consolidação em lote com ledger, mirrors, staging/journal e isolamento reservado;
-- **Etapa 9:** handoff/índice de sessão, retomada sem transcript, busca histórica em dois degraus e transcrições frias para leitura.
+- **Etapa 9:** handoff/índice, retomada sem transcript, histórico em dois degraus e transcrições frias;
+- **Etapa 10:** escada executável, `--apos`/`--motivo`, saltos dirigidos e tetos por nível.
 
 ## Análise de rollouts do Codex
 
@@ -312,4 +340,4 @@ python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
 ```
 
-A baseline pré-refatoração está em `baseline/rollout-2026-08-15.json`; a baseline específica da memória fria está em `baseline/memoria-sessoes-step-09.md`.
+A baseline pré-refatoração está em `baseline/rollout-2026-08-15.json`; baselines específicas ficam em `baseline/memoria-sessoes-step-09.md` e `baseline/escada-acesso-step-10.md`.

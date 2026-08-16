@@ -1,6 +1,6 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`.
+Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Política formal de níveis e orçamentos: `docs/agente/escada-de-acesso.md`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`.
 
 ## Regra principal de economia de contexto
 
@@ -16,41 +16,57 @@ Relações, medidores de NPC e conhecimento são fragmentados. `sessoes/NNN/hand
 
 ## Interface única de consulta
 
+Consultas L1/L2 não exigem declaração de escalada:
+
 ```bash
 python3 ferramentas/contexto.py status
 python3 ferramentas/contexto.py retomada
 python3 ferramentas/contexto.py cena
-python3 ferramentas/contexto.py sessao 2
+python3 ferramentas/contexto.py sessao atual
 python3 ferramentas/contexto.py npc kethra
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
-python3 ferramentas/contexto.py buscar "ponte baixa"
 ```
 
-A ferramenta possui orçamento padrão de 8 KiB e registra somente metadados opcionais em `runtime/consultas-contexto.jsonl`.
-
-Escaladas deliberadas:
+Busca ampla e histórico exigem declarar qual nível foi insuficiente e a lacuna concreta:
 
 ```bash
-python3 ferramentas/contexto.py buscar "sol apagado" --reservado
-python3 ferramentas/contexto.py buscar "frase exata" --historico
-python3 ferramentas/contexto.py buscar "frase exata" --historico --transcricoes
+python3 ferramentas/contexto.py buscar "ponte baixa" \
+  --apos L2 --motivo "As consultas dirigidas não localizaram em qual domínio a pista foi registrada."
+
+python3 ferramentas/contexto.py buscar "frase exata" \
+  --historico --apos L3 --motivo "A busca corrente não localizou a origem histórica necessária."
+
+python3 ferramentas/contexto.py buscar "frase exata" \
+  --historico --transcricoes --apos L4 \
+  --motivo "O histórico estruturado não contém a formulação exata necessária."
 ```
 
-`--historico` **não** implica mais transcrição. Ele inclui memória histórica estruturada. `--transcricoes` exige `--historico` e é a última escalada local antes de fonte externa.
+Se a sessão histórica já é conhecida, evitar uma busca L3 artificial:
+
+```bash
+python3 ferramentas/contexto.py sessao 2 \
+  --apos L2 --motivo "A pergunta aponta diretamente para a sessão 002 e exige seu resumo consolidado."
+```
+
+A ferramenta aplica tetos mecânicos por nível: L1 4 KiB; L2/L3 8 KiB; L4 12 KiB; L4T 16 KiB. `--max-bytes` pode reduzir o teto, nunca aumentá-lo.
+
+`--historico` **não** implica transcrição. `--transcricoes` exige `--historico`, `--apos L4` e motivo. `--reservado` também exige motivo concreto.
 
 ## Escada de leitura
 
 - **L0 — contexto já disponível:** nenhuma leitura.
-- **L1 — estado/retomada quente:** `contexto.py status` ou `contexto.py retomada`.
-- **L2 — consulta dirigida:** `cena`, `npc`, `relacao`, `conhecimento`, `regra` ou `sessao N`.
-- **L3 — descoberta limitada:** `buscar`, sem histórico frio nem transcrições.
-- **L4 — histórico estruturado:** `buscar --historico`, handoffs, resumos, alterações e históricos específicos; transcrições continuam excluídas.
-- **L4T — evidência bruta de sessão:** `buscar --historico --transcricoes`, somente quando L4 não resolver a lacuna.
-- **L5 — fonte externa/autorizada:** livros oficiais ou pesquisa de material-base quando os resumos internos não bastarem.
+- **L1 — estado quente:** `contexto.py status`.
+- **L2 — consulta dirigida:** `cena`, `retomada`, `npc`, `relacao`, `conhecimento`, `regra` ou sessão atual.
+- **L3 — descoberta limitada:** `buscar`, com `--apos L2 --motivo`.
+- **L4 — histórico estruturado:** `buscar --historico --apos L3 --motivo`; sessão histórica conhecida pode saltar diretamente de L2 para L4.
+- **L4T — evidência bruta:** `buscar --historico --transcricoes --apos L4 --motivo`.
+- **L5 — fonte externa/autorizada:** livros oficiais ou pesquisa material-base quando a memória interna não bastar.
 
-Escalar apenas por necessidade identificável. Durante narração comum, o alvo é permanecer em L0–L2.
+A escada **não obriga a executar cada degrau**. Uma entidade conhecida pode ir direto a L2; uma sessão histórica conhecida pode saltar L3. Isso evita round-trips inúteis. O que exige sequência explícita é a ampliação de escopo: busca ampla → histórico → transcrição.
+
+Durante narração comum, o alvo é permanecer em L0–L2. Toda saída de `contexto.py` traz `controle_acesso.pare_se_suficiente: true` e a condição de parada do nível.
 
 Nunca substituir consulta a uma relação por leitura de toda `estado/relacoes/`, consulta de conhecimento por abertura recursiva de todos os fragmentos, ou retomada por leitura da transcrição atual/anterior.
 
@@ -168,7 +184,7 @@ python3 ferramentas/contexto.py retomada
 
 Isso combina runtime, cena, handoff consolidado e resumos das transações ainda pendentes. Só depois consultar entidade/regra específica.
 
-Ao abrir uma nova sessão, não copiar o último trecho da anterior. Se precisar dela, usar `contexto.py sessao N`, depois L4; transcrição só em L4T.
+Ao abrir uma nova sessão, não copiar o último trecho da anterior. Se a pergunta já nomear uma sessão antiga, use o salto dirigido `sessao N --apos L2 --motivo "..."`; transcrição só em L4T.
 
 ### Aplicação de regra
 
@@ -194,39 +210,39 @@ O motor não inventa fatos ausentes dos deltas, não incrementa a sessão automa
 
 ### `status`
 
-Retorna `runtime/contexto.yaml` com deltas pendentes aplicados em memória.
+L1. Retorna `runtime/contexto.yaml` com deltas pendentes aplicados em memória. Teto 4 KiB.
 
 ### `retomada`
 
-Retorna runtime + cena + memória compacta consolidada da sessão atual + resumos das pendências recentes. **Não abre transcrição.** É a porta padrão depois de pausa, compactação ou processo novo.
+L2. Retorna runtime + cena + memória compacta consolidada da sessão atual + resumos das pendências recentes. **Não abre transcrição.** É a porta padrão depois de pausa, compactação ou processo novo.
 
 ### `cena`
 
-Retorna contexto + `runtime/cena.yaml`, também com sobreposição pendente.
+L2. Retorna contexto + `runtime/cena.yaml`, também com sobreposição pendente.
 
 ### `sessao N`
 
-Consulta `sessoes/index.yaml` e prefere `handoff.yaml`. Para sessões legadas sem handoff, usa resumo/alterações compactas disponíveis. Não abre transcrição automaticamente.
+Sessão atual é L2. Sessão histórica é L4 por alvo dirigido e exige `--apos L2 --motivo`; não paga uma busca L3 desnecessária. Consulta índice/handoff/resumo estruturado sem abrir transcrição.
 
 ### `npc`
 
-Resolve índices/fragmentos do NPC e relação e aplica deltas correspondentes ainda pendentes.
+L2. Resolve índices/fragmentos do NPC e relação e aplica deltas correspondentes ainda pendentes.
 
 ### `relacao`
 
-Abre apenas o fragmento atual e aplica os deltas pendentes da entidade. Histórico frio não é lido automaticamente.
+L2. Abre apenas o fragmento atual e aplica os deltas pendentes da entidade. Histórico frio não é lido automaticamente.
 
 ### `conhecimento`
 
-Pesquisa conhecimento consolidado — incluindo fragmentos incrementais recentes — e descobertas ainda pendentes de alvo `conhecimento`.
+L2. Pesquisa conhecimento consolidado — incluindo fragmentos incrementais recentes — e descobertas ainda pendentes de alvo `conhecimento`.
 
 ### `regra`
 
-Busca resumos internos. Ausência não autoriza inventar regra.
+L2. Busca resumos internos. Ausência não autoriza inventar regra.
 
 ### `buscar`
 
-Sem flags, é descoberta limitada. `--reservado` acrescenta material do narrador. `--historico` acrescenta histórico estruturado. Apenas `--historico --transcricoes` acrescenta transcrições brutas.
+L3 sem flags históricas. Exige `--apos L2 --motivo`. `--reservado` acrescenta material do narrador e também exige motivo. `--historico` sobe para L4 e exige `--apos L3`. Apenas `--historico --transcricoes` sobe para L4T e exige `--apos L4`.
 
 ## Runtime e memória de sessões
 

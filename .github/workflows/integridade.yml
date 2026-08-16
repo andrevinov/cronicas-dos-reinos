@@ -67,19 +67,57 @@ jobs:
           python ferramentas/sessoes.py check
           python ferramentas/checkpoint.py check
           python ferramentas/contexto.py --sem-log retomada > /tmp/contexto-retomada.yaml
-          python ferramentas/contexto.py --sem-log sessao 2 > /tmp/contexto-sessao-2.yaml
+          python ferramentas/contexto.py --sem-log sessao 2 --apos L2 --motivo "A pergunta aponta diretamente para a sessão histórica 002." > /tmp/contexto-sessao-2.yaml
           test "$(wc -c < /tmp/contexto-retomada.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-sessao-2.yaml)" -le 8192
           ! grep -q 'transcricao_lida: true' /tmp/contexto-sessao-2.yaml
           ! grep -q 'sessoes/002/transcricao.md' /tmp/contexto-sessao-2.yaml
-          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico > /tmp/contexto-historico.yaml
+          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --apos L3 --motivo "A busca corrente não contém a origem histórica necessária." > /tmp/contexto-historico.yaml
           ! grep -q 'sessoes/003/transcricao.md' /tmp/contexto-historico.yaml
-          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --transcricoes > /tmp/contexto-transcricoes.yaml
+          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --transcricoes --apos L4 --motivo "O histórico estruturado não contém a formulação exata necessária." > /tmp/contexto-transcricoes.yaml
           grep -q 'sessoes/003/transcricao.md' /tmp/contexto-transcricoes.yaml
           if python ferramentas/contexto.py --sem-log buscar teste --transcricoes > /tmp/contexto-invalido.yaml 2>&1; then
             echo '--transcricoes sem --historico deveria falhar'
             exit 1
           fi
+
+      - name: Escada formal de acesso
+        run: |
+          test -f ferramentas/politica_acesso.py
+          test -f docs/agente/escada-de-acesso.md
+          test -f baseline/escada-acesso-step-10.md
+          grep -q 'docs/agente/escada-de-acesso.md' AGENTS.md
+          grep -q 'L4T' AGENTS.md
+          grep -q -- '--apos L2' AGENTS.md
+          python ferramentas/contexto.py --sem-log --max-bytes 16000 status > /tmp/acesso-l1.yaml
+          test "$(wc -c < /tmp/acesso-l1.yaml)" -le 4096
+          grep -q 'nivel: L1' /tmp/acesso-l1.yaml
+          grep -q 'teto_bytes: 4096' /tmp/acesso-l1.yaml
+          grep -q 'pare_se_suficiente: true' /tmp/acesso-l1.yaml
+          python ferramentas/contexto.py --sem-log cena > /tmp/acesso-l2.yaml
+          grep -q 'nivel: L2' /tmp/acesso-l2.yaml
+          test "$(wc -c < /tmp/acesso-l2.yaml)" -le 8192
+          if python ferramentas/contexto.py --sem-log buscar "ponte baixa" > /tmp/acesso-sem-motivo.txt 2>&1; then
+            echo 'L3 sem --apos/--motivo deveria falhar'
+            exit 1
+          fi
+          python ferramentas/contexto.py --sem-log buscar "ponte baixa" --apos L2 --motivo "As consultas dirigidas não localizaram o domínio da pista." > /tmp/acesso-l3.yaml
+          grep -q 'nivel: L3' /tmp/acesso-l3.yaml
+          grep -q 'depois_de: L2' /tmp/acesso-l3.yaml
+          if python ferramentas/contexto.py --sem-log buscar "ponte baixa" --historico --apos L2 --motivo "A busca corrente não resolveu a origem histórica necessária." > /tmp/acesso-l4-errado.txt 2>&1; then
+            echo 'L4 amplo deveria exigir --apos L3'
+            exit 1
+          fi
+          python ferramentas/contexto.py --sem-log buscar "ponte baixa" --historico --apos L3 --motivo "A busca corrente não resolveu a origem histórica necessária." > /tmp/acesso-l4.yaml
+          grep -q 'nivel: L4' /tmp/acesso-l4.yaml
+          test "$(wc -c < /tmp/acesso-l4.yaml)" -le 12288
+          if python ferramentas/contexto.py --sem-log buscar "ponte baixa" --historico --transcricoes --apos L3 --motivo "O histórico estruturado não contém o trecho bruto necessário." > /tmp/acesso-l4t-errado.txt 2>&1; then
+            echo 'L4T deveria exigir --apos L4'
+            exit 1
+          fi
+          python ferramentas/contexto.py --sem-log sessao 2 --apos L2 --motivo "A pergunta aponta diretamente para a sessão 002 e seu resumo." > /tmp/acesso-salto.yaml
+          grep -q 'nivel: L4' /tmp/acesso-salto.yaml
+          grep -q 'salto_dirigido: true' /tmp/acesso-salto.yaml
 
       - name: Consultas dirigidas de contexto
         run: |
@@ -90,8 +128,8 @@ jobs:
           python ferramentas/contexto.py --sem-log conhecimento masao > /tmp/contexto-conhecimento.yaml
           python ferramentas/contexto.py --sem-log conhecimento "ponte baixa" > /tmp/contexto-conhecimento-recente.yaml
           python ferramentas/contexto.py --sem-log regra furtividade > /tmp/contexto-regra.yaml
-          python ferramentas/contexto.py --sem-log buscar "ponte baixa" > /tmp/contexto-busca.yaml
-          test "$(wc -c < /tmp/contexto-status.yaml)" -le 8192
+          python ferramentas/contexto.py --sem-log buscar "ponte baixa" --apos L2 --motivo "As consultas dirigidas não localizaram o domínio completo da pista." > /tmp/contexto-busca.yaml
+          test "$(wc -c < /tmp/contexto-status.yaml)" -le 4096
           test "$(wc -c < /tmp/contexto-cena.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-npc.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-relacao.yaml)" -le 8192

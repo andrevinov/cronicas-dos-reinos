@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Porta única de contexto com orçamento rígido e transcrições frias.
+"""Porta única de contexto com escada executável, orçamento rígido e transcrições frias.
 
 O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 
@@ -7,7 +7,12 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 - retomada compacta por `sessoes/NNN/handoff.yaml`;
 - consulta de sessão sem abrir transcrição;
 - busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
-  `--historico --transcricoes`.
+  `--historico --transcricoes`;
+- política mecânica de L1–L4T com teto de bytes e justificativa para escaladas.
+
+L0 não é um comando: significa responder com o contexto já presente, sem ferramenta.
+L5 também não é um comando local: significa recorrer a fonte externa/autorizada só
+quando a memória interna realmente não resolver a lacuna.
 """
 from __future__ import annotations
 
@@ -28,6 +33,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import contexto_core as core
+import politica_acesso as politica
 import sessoes as memoria_sessoes
 import transacoes
 
@@ -123,23 +129,26 @@ def command_resume(repo: Path) -> dict[str, Any]:
         }
         for item in recent
     ]
-    data = envelope("retomada", None, "L1-L2", sources, result)
+    data = envelope("retomada", None, "L2", sources, result)
     if recent:
         _add_pending_source(data)
     return data
 
 
-def command_session(repo: Path, term: str) -> dict[str, Any]:
+def _resolve_session(repo: Path, term: str) -> int:
     normalized = normalize(term)
     if normalized in {"atual", "current"}:
-        session = memoria_sessoes.current_session(repo)
-    else:
-        try:
-            session = int(term)
-        except ValueError as exc:
-            raise ValueError("sessao precisa ser número inteiro ou 'atual'") from exc
+        return memoria_sessoes.current_session(repo)
+    try:
+        return int(term)
+    except ValueError as exc:
+        raise ValueError("sessao precisa ser número inteiro ou 'atual'") from exc
+
+
+def command_session(repo: Path, term: str) -> dict[str, Any]:
+    session = _resolve_session(repo, term)
     result, sources = memoria_sessoes.session_snapshot(repo, session)
-    return envelope("sessao", term, "L2-L3", sources, result)
+    return envelope("sessao", term, "L2", sources, result)
 
 
 def command_relation(repo: Path, term: str) -> dict[str, Any]:
@@ -211,8 +220,6 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
         result["pendentes"] = pending
         result["encontrado"] = True
         _add_pending_source(data)
-        if data.get("nivel") == "L2-L3":
-            data["nivel"] = "L2"
     return data
 
 
@@ -360,6 +367,18 @@ def command_search(
     return data
 
 
+def _add_escalation_arguments(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--apos",
+        choices=["L0", "L1", "L2", "L3", "L4"],
+        help="declara o último nível que foi insuficiente; não executa consulta extra",
+    )
+    parser.add_argument(
+        "--motivo",
+        help="lacuna concreta que justifica a escalada; obrigatório em L3+ e acesso reservado",
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
@@ -368,46 +387,82 @@ def build_parser() -> argparse.ArgumentParser:
         "--max-bytes",
         type=int,
         default=DEFAULT_MAX_BYTES,
-        help=f"orçamento máximo de saída; padrão {DEFAULT_MAX_BYTES}, teto {HARD_MAX_BYTES}",
+        help="orçamento solicitado; a política de cada nível pode impor teto menor",
     )
     parser.add_argument("--sem-log", action="store_true", help="não registra telemetria local")
     sub = parser.add_subparsers(dest="command", required=True)
-    sub.add_parser("status", help="somente contexto quente efetivo")
-    sub.add_parser("cena", help="contexto quente + cena efetiva")
-    sub.add_parser("retomada", help="retoma sessão/cena sem abrir transcrições")
+    sub.add_parser("status", help="L1: somente contexto quente efetivo")
+    sub.add_parser("cena", help="L2: contexto quente + cena efetiva")
+    sub.add_parser("retomada", help="L2: retoma sessão/cena sem abrir transcrições")
 
-    session = sub.add_parser("sessao", help="memória compacta de uma sessão")
+    session = sub.add_parser("sessao", help="L2 atual / L4 histórica: memória compacta de uma sessão")
     session.add_argument("termo", help="número ou 'atual'")
+    _add_escalation_arguments(session)
 
     for name, help_text in (
-        ("npc", "medidores e relação atual de um NPC"),
-        ("relacao", "relação atual com uma entidade"),
-        ("conhecimento", "o que Ren sabe sobre um assunto"),
-        ("regra", "trechos das regras internas sobre um assunto"),
+        ("npc", "L2: medidores e relação atual de um NPC"),
+        ("relacao", "L2: relação atual com uma entidade"),
+        ("conhecimento", "L2: o que Ren sabe sobre um assunto"),
+        ("regra", "L2: trechos das regras internas sobre um assunto"),
     ):
         child = sub.add_parser(name, help=help_text)
         child.add_argument("termo")
 
-    search = sub.add_parser("buscar", help="busca limitada e escalonada")
+    search = sub.add_parser("buscar", help="L3/L4/L4T: busca limitada e escalonada")
     search.add_argument("termo")
-    search.add_argument("--reservado", action="store_true", help="inclui narrador/")
+    search.add_argument("--reservado", action="store_true", help="inclui narrador/; exige motivo")
     search.add_argument(
         "--historico",
         action="store_true",
-        help="inclui histórico estruturado/frio; ainda exclui transcrições",
+        help="L4: inclui histórico estruturado/frio; ainda exclui transcrições",
     )
     search.add_argument(
         "--transcricoes",
         action="store_true",
-        help="inclui transcrições brutas; exige --historico",
+        help="L4T: inclui transcrições brutas; exige --historico e --apos L4",
     )
+    _add_escalation_arguments(search)
     return parser
+
+
+def _decision_for(repo: Path, args: argparse.Namespace) -> politica.AccessDecision:
+    current_session = None
+    session_term = None
+    historical = False
+    transcripts = False
+    if args.command == "sessao":
+        current_session = memoria_sessoes.current_session(repo)
+        session_term = args.termo
+    elif args.command == "buscar":
+        historical = args.historico
+        transcripts = args.transcricoes
+    return politica.classify(
+        args.command,
+        current_session=current_session,
+        session_term=session_term,
+        historical=historical,
+        transcripts=transcripts,
+    )
 
 
 def main() -> int:
     args = build_parser().parse_args()
     repo = args.repo.resolve()
     try:
+        if args.command == "buscar" and args.transcricoes and not args.historico:
+            raise politica.AccessPolicyError("--transcricoes exige --historico")
+
+        decision = _decision_for(repo, args)
+        after = getattr(args, "apos", None)
+        reason = getattr(args, "motivo", None)
+        reserved = bool(getattr(args, "reservado", False))
+        validated_reason = politica.validate_escalation(
+            decision,
+            after=after,
+            reason=reason,
+            reserved=reserved,
+        )
+
         if args.command == "status":
             data = command_status(repo)
         elif args.command == "cena":
@@ -425,8 +480,6 @@ def main() -> int:
         elif args.command == "regra":
             data = command_rule(repo, args.termo)
         elif args.command == "buscar":
-            if args.transcricoes and not args.historico:
-                raise ValueError("--transcricoes exige --historico")
             data = command_search(
                 repo,
                 args.termo,
@@ -435,12 +488,26 @@ def main() -> int:
                 transcripts=args.transcricoes,
             )
         else:
-            raise ValueError(f"comando desconhecido: {args.command}")
-    except (OSError, ValueError, yaml.YAMLError, memoria_sessoes.SessionMemoryError) as exc:
+            raise politica.AccessPolicyError(f"comando desconhecido: {args.command}")
+
+        data, effective_max = politica.decorate(
+            data,
+            decision,
+            requested_budget=args.max_bytes,
+            after=after,
+            reason=validated_reason,
+        )
+    except (
+        OSError,
+        ValueError,
+        yaml.YAMLError,
+        memoria_sessoes.SessionMemoryError,
+        politica.AccessPolicyError,
+    ) as exc:
         print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
         return 1
 
-    text, truncated = fit_budget(data, args.max_bytes, args.json)
+    text, truncated = fit_budget(data, effective_max, args.json)
     output_bytes = len(text.encode("utf-8"))
     if not args.sem_log:
         try:

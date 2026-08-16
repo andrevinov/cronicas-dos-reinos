@@ -50,25 +50,30 @@ Runtime, handoffs, índices e resultados de consulta são projeções/roteadores
 
 Antes de chamar ferramenta ou abrir arquivo, pergunte se o contexto já disponível basta. Se bastar, não leia nada. Depois de cada consulta, pergunte novamente se já é suficiente. **Se for suficiente, pare.**
 
+A escada é um controle de escalada, **não uma checklist obrigatória**. Se o alvo já é conhecido, ir direto à consulta dirigida evita round-trips inúteis. O proibido é subir para busca ampla, histórico ou transcrição “só para conferir”.
+
 Preferir `ferramentas/contexto.py` a leitura integral de arquivos. Não abrir pasta inteira, histórico, transcrição ou fonte oficial quando uma camada menor resolver.
 
 Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
-- **L1:** `contexto.py status` ou `contexto.py retomada`;
-- **L2:** `contexto.py cena`, `npc`, `relacao`, `conhecimento`, `regra` ou `sessao N`;
-- **L3:** `contexto.py buscar "termo"`;
-- **L4:** `contexto.py buscar "termo" --historico` — histórico estruturado, ainda sem transcrições;
-- **L4T:** `contexto.py buscar "termo" --historico --transcricoes` — somente se L4 não bastar;
-- **L5:** fonte oficial externa/autorizada.
+- **L1:** `contexto.py status` — teto 4 KiB;
+- **L2:** `cena`, `retomada`, `npc`, `relacao`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
+- **L3:** `buscar "termo" --apos L2 --motivo "lacuna concreta"` — teto 8 KiB;
+- **L4:** `buscar ... --historico --apos L3 --motivo "lacuna"` — teto 12 KiB, ainda sem transcrições;
+- **L4T:** `buscar ... --historico --transcricoes --apos L4 --motivo "lacuna"` — teto 16 KiB;
+- **L5:** fonte oficial externa/autorizada, somente se a memória interna não resolver.
 
-Material reservado só entra com `--reservado` por necessidade concreta. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.** Fluxos: `docs/agente/acesso-e-operacoes.md` e `docs/agente/memoria-de-sessoes.md`.
+Alvo histórico já conhecido pode saltar busca ampla: `contexto.py sessao 2 --apos L2 --motivo "..."`. Isso economiza uma inferência/tool round; não autoriza busca especulativa.
+
+Material reservado só entra com `--reservado` e motivo concreto. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.** Política completa: `docs/agente/escada-de-acesso.md`.
 
 ## 5. Roteamento por tarefa
 
 Leia no máximo os documentos especializados necessários:
 
 - fundamentos, autoridade, segredo, agência → `docs/agente/fundamentos.md`;
+- escada L0–L5, tetos, `--apos`, `--motivo` → `docs/agente/escada-de-acesso.md`;
 - acesso, preparação, operação transacional → `docs/agente/acesso-e-operacoes.md`;
 - consolidação, checkpoint canônico, ledger, staging, recuperação → `docs/agente/consolidacao-transacional.md`;
 - retomada, sessões antigas, handoff, índice, transcrições frias → `docs/agente/memoria-de-sessoes.md`;
