@@ -102,7 +102,8 @@ def build_current_state(
         "Estado temporal corrente. Cronologia detalhada e marcos anteriores foram movidos para "
         f"{ARCHIVE_TIME.as_posix()}."
     )
-    current_time["prazo_relevante"] = runtime_scene.get("prazos_e_alertas") or ""
+    # prazo_relevante é texto livre e tem autoridade única em estado/tempo.yaml.
+    # Não duplicá-lo aqui evita divergência semântica entre duas paráfrases.
 
     current_resources = {
         key: deepcopy(recursos.get(key))
@@ -279,6 +280,13 @@ def validate(repo: Path) -> list[str]:
         errors.append("estado atual perdeu ponteiro para histórico acumulado")
     if tempo.get("historico_acumulado") != ARCHIVE_TIME.as_posix():
         errors.append("tempo atual perdeu ponteiro para histórico acumulado")
+
+    state_time = as_mapping(state.get("tempo"))
+    if "prazo_relevante" in state_time:
+        errors.append(
+            "estado/estado-atual.yaml voltou a duplicar tempo.prazo_relevante; "
+            "a autoridade única é estado/tempo.yaml"
+        )
 
     if state_path.stat().st_size > MAX_CURRENT_STATE_BYTES:
         errors.append(
