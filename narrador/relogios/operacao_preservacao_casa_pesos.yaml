@@ -1,0 +1,14 @@
+schema_relogio: 1
+id: operacao_preservacao_casa_pesos
+natureza: reservado
+relogio:
+  titulo: Operação de preservação da Casa de Pesos
+  progresso: 3
+  limite: 3
+  descricao: Luath chegou após uma equipe clandestina iniciar limpeza e incêndio. Night Watch e Tyr contiveram os
+    homens presentes, preservaram o porão e confirmaram a carga de armas, mas perderam parte do pavimento superior
+    e dos registros restantes para o fogo.
+  consequencia_no_limite: Os dois operadores e a equipe clandestina de limpeza foram presos vivos; componentes de
+    armas, o livro entregue por Ren e os vestígios ligados a Edran foram preservados. O pavimento superior sofreu
+    incêndio grave e nenhum corpo foi encontrado.
+eventos: []

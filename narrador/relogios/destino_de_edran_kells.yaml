@@ -1,0 +1,12 @@
+schema_relogio: 1
+id: destino_de_edran_kells
+natureza: reservado
+relogio:
+  titulo: Destino de Edran Kells
+  progresso: 1
+  limite: 1
+  descricao: Edran Kells está morto. Ren e Tyr ainda não sabem; o corpo, a causa e as circunstâncias permanecem
+    ocultos.
+  consequencia_no_limite: A descoberta do corpo ou de prova equivalente encerra a esperança de resgate e transforma
+    o caso em homicídio ligado à operação da Casa de Pesos.
+eventos: []

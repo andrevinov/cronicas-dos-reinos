@@ -272,7 +272,7 @@ def snapshot(estado: dict[str, Any], tempo: dict[str, Any], ficha: dict[str, Any
 
 
 TIME_MIRRORS = (
-    ("tempo.data_exata", "data_atual.valor"),
+    ("tempo.data_exata", "data_atual"),
     ("tempo.hora_aproximada", "hora_aproximada"),
     ("tempo.periodo_do_dia", "periodo_do_dia"),
     ("tempo.clima", "clima"),

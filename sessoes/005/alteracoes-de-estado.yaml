@@ -1,0 +1,136 @@
+schema_alteracoes_transacionais: 1
+sessao: 5
+status: encerrada
+fonte: sessoes/005/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 5
+  modo: deslocamento_para_vigilancia_ponte_baixa
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 35
+  data: 8 Eleasis, 1372 DR
+  hora: 20:10 de 8 Eleasis
+  area: Jack Mooney & Sons Circus
+  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
+    uma capa simples
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 5
+  modo: fim_sessao_005_ponto_morto_pell
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 35
+  data: 9 Eleasis, 1372 DR
+  hora: 08:48 de 9 Eleasis
+  area: arredores da Silver Lily, Ravens Bluff
+  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+  nivel_ficha: 6
+consolidacoes:
+- id: s005-cena-b2ff92c1ab5a56dd
+  tipo: cena
+  transacoes:
+  - s005-fd0a301ab3a68fe0
+  - s005-9171ba709e77a890
+  - s005-a951185188c3a9da
+  - s005-98fd399c284559e3
+  - s005-ad0f715858eab5a1
+  - s005-2f0187e7cc470be7
+  - s005-bf99880c4f1da09e
+  - s005-aa77f872a409a9e2
+  - s005-66aeb2b3c3204847
+  - s005-009e0a71a081c85b
+  deltas: 77
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - narrador/relogios/destino_de_edran_kells.yaml
+  - narrador/relogios/index.yaml
+  - narrador/sessoes/005/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-2f0187e7cc470be7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-66aeb2b3c3204847.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-9171ba709e77a890.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-98fd399c284559e3.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-a951185188c3a9da.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-aa77f872a409a9e2.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-ad0f715858eab5a1.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-bf99880c4f1da09e.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-fd0a301ab3a68fe0.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/005/alteracoes-de-estado.yaml
+  - sessoes/005/consequencias.md
+  - sessoes/005/consolidacoes.jsonl
+  - sessoes/005/resumo.md
+- id: s005-cena-1adbd3e7cae1486e
+  tipo: cena
+  transacoes:
+  - s005-b616f668f83af3ee
+  - s005-cc42d3bf1c2f50ee
+  deltas: 25
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/operacao_preservacao_casa_pesos.yaml
+  - narrador/sessoes/005/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-b616f668f83af3ee.md
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-cc42d3bf1c2f50ee.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/005/alteracoes-de-estado.yaml
+  - sessoes/005/consequencias.md
+  - sessoes/005/consolidacoes.jsonl
+  - sessoes/005/resumo.md
+- id: s005-cena-0137e614962110f1
+  tipo: cena
+  transacoes:
+  - s005-e1d863a303af2d27
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-e1d863a303af2d27.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/005/alteracoes-de-estado.yaml
+  - sessoes/005/consequencias.md
+  - sessoes/005/consolidacoes.jsonl
+  - sessoes/005/resumo.md
+- id: s005-sessao-3cb87cd71d608586
+  tipo: sessao
+  transacoes:
+  - s005-761d7fbe55c11631
+  deltas: 25
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/operacao_preservacao_casa_pesos.yaml
+  - narrador/relogios/relatorio_pell_ponto_morto.yaml
+  - narrador/sessoes/005/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-761d7fbe55c11631.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/005/alteracoes-de-estado.yaml
+  - sessoes/005/consequencias.md
+  - sessoes/005/consolidacoes.jsonl
+  - sessoes/005/resumo.md

@@ -82,3 +82,78 @@ eventos_pos_migracao:
     op: set
     valor: cautelosa e crescente, ainda condicionada a Ren não contaminar provas nem transformar observação em guerra
       privada
+- transacao: s005-cc42d3bf1c2f50ee
+  sessao: 5
+  resumo: 'Ren entra formalmente pela Casa de Tyr sem ser observado por inimigos externos e pede Halessa em caráter
+    urgente e reservado. Entrega o livro, as duas folhas e quatro amostras das armas, relata a infiltração, a caixa,
+    os dois homens inconscientes e os vestígios de Edran. Halessa corrige que tortura ou violência são fortemente
+    indicadas, mas assassinato ainda não é fato, e alerta que os suspeitos podem descrever Ren. Ela sela o material
+    com a procedência real, envia mensageiro a Luath e ordena preservação urgente da Casa de Pesos com duas testemunhas
+    de Tyr. Ren obtém 14 contra CD 15 em Persuasão com vantagem: Halessa reconhece sua capacidade e age sobre a
+    prova, mas ainda se recusa a tratá-lo como agente clandestino coordenado sem plano e limites prévios. Às 23:06,
+    Ren permanece numa câmara reservada; as provas estão sob custódia provisória de Tyr e a operação foi iniciada.'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Halessa recebeu de Ren provas documentais e amostras de armas obtidas numa entrada não autorizada na
+      Casa de Pesos, selou o material com procedência real e iniciou operação urgente com Luath e testemunhas de
+      Tyr
+  - alvo: relacao:halessa_vorn
+    caminho: atitude_para_ren
+    op: set
+    valor: reconhece a extraordinária capacidade operacional e a escolha de força não letal de Ren, mas reage com
+      firmeza à violação deliberada dos limites que estabeleceu
+  - alvo: relacao:halessa_vorn
+    caminho: confianca
+    op: set
+    valor: 'mista: confia mais na competência, urgência e franqueza posterior de Ren, mas menos em sua disposição
+      de respeitar autorização, cadeia de custódia e planejamento conjunto'
+  - alvo: relacao:halessa_vorn
+    caminho: respeito
+    op: set
+    valor: real pela capacidade de infiltração, contenção não letal e retorno imediato com provas; ainda insuficiente
+      para aceitá-lo como agente clandestino coordenado de Tyr
+  - alvo: relacao:halessa_vorn
+    caminho: ofertas
+    op: append
+    valor: Mobilizou preservação urgente da Casa de Pesos com Luath e duas testemunhas de Tyr, sem aguardar o amanhecer.
+  - alvo: relacao:halessa_vorn
+    caminho: riscos
+    op: append
+    valor: Halessa não aceitará usar Ren como agente clandestino enquanto ele apresentar operações consumadas em
+      vez de negociar objetivo, limites e rota antes da ação.
+- transacao: s005-e1d863a303af2d27
+  sessao: 5
+  resumo: 'Ren pede desculpas por ultrapassar as instruções, mas responde a Halessa com ironia sobre a cautela institucional
+    e reafirma que estará disponível contra Masao. Halessa reconhece que Ren está certo sobre a urgência, defende
+    que a operação já iniciada não é mera nota de repúdio e recusa a falsa escolha entre impotência e ação sem limites.
+    Repreende o uso retórico da mulher levada de barco e pede que fatos assim sejam entregues como evidência. Não
+    fecha a possibilidade de cooperação: exige objetivo, rota e limites acordados antes da próxima infiltração.
+    Para preservar a discrição de Ren, manda que saia pela porta dos peticionários sem registro público. Às 23:13,
+    Ren está num beco lateral da Casa de Tyr com 2/6 Ki; a operação da Casa de Pesos continua.'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Após um desacordo franco sobre urgência e limites, Halessa manteve a operação da Casa de Pesos, protegeu
+      a saída discreta de Ren e deixou aberta cooperação futura condicionada a planejamento prévio
+  - alvo: relacao:halessa_vorn
+    caminho: atitude_para_ren
+    op: set
+    valor: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre a urgência
+      e de preservar sua discrição apesar do desacordo
+  - alvo: relacao:halessa_vorn
+    caminho: confianca
+    op: set
+    valor: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao, mas
+      exige objetivo, rota e limites acordados antes de qualquer ação clandestina futura'
+  - alvo: relacao:halessa_vorn
+    caminho: ofertas
+    op: append
+    valor: Admite discutir futura cooperação clandestina se Ren apresentar antes da ação o objetivo, a rota e os
+      limites que aceita observar.
+  - alvo: relacao:halessa_vorn
+    caminho: ofertas
+    op: append
+    valor: Concedeu a Ren saída pela porta reservada dos peticionários, sem registro público de sua partida.

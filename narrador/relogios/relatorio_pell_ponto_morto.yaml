@@ -1,0 +1,12 @@
+schema_relogio: 1
+id: relatorio_pell_ponto_morto
+natureza: reservado
+relogio:
+  titulo: Relatório de Pell no novo ponto morto
+  progresso: 1
+  limite: 1
+  descricao: 'Pell deixou uma nota de boa-fé com resultados incompletos: não obteve informação imobiliária realmente
+    interessante nem rota confirmada de Brass. O conteúdo ainda não foi lido por Ren.'
+  consequencia_no_limite: Ao abrir a garrafa, Ren recebe o relatório limitado de Pell e não deve bônus por informação
+    realmente interessante nem por rota de Brass.
+eventos: []

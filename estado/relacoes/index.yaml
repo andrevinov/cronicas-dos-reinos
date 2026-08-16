@@ -227,17 +227,17 @@ relacoes:
   halessa_vorn:
     nome: Irmã Halessa Vorn
     tipo: ouvidora juramentada de Tyr
-    status: Halessa confirmou que o caso Vell avançou, preservou contradições da oitiva de Velis e, após o apelo
-      de Ren, revelou uma janela legítima de observação na Casa de Pesos da Ponte Baixa sem autorizar invasão ou
-      confronto
-    atitude_para_ren: formal e cautelosa, mas mais disposta a cooperação operacional limitada quando Ren prioriza
-      inocentes e aceita fronteiras legais
-    confianca: cautelosa e crescente, ainda condicionada a Ren não contaminar provas nem transformar observação
-      em guerra privada
-    respeito: inicial, pelo foco em testemunhas vivas
+    status: Após um desacordo franco sobre urgência e limites, Halessa manteve a operação da Casa de Pesos, protegeu
+      a saída discreta de Ren e deixou aberta cooperação futura condicionada a planejamento prévio
+    atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
+      a urgência e de preservar sua discrição apesar do desacordo
+    confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,
+      mas exige objetivo, rota e limites acordados antes de qualquer ação clandestina futura'
+    respeito: real pela capacidade de infiltração, contenção não letal e retorno imediato com provas; ainda insuficiente
+      para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 3123
+    bytes_fragmento: 3873
     campos_atuais: 10
   silva_elkwood:
     nome: Silva Elkwood

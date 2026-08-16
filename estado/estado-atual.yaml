@@ -4,7 +4,7 @@ historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
   sessao_atual: 5
-  modo_de_cena_atual: deslocamento_para_vigilancia_ponte_baixa
+  modo_de_cena_atual: fim_sessao_005_ponto_morto_pell
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,24 +18,23 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus
-  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
-    uma capa simples
-  descricao_operacional: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa
-    antes da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino
-    de palco de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
+  area: arredores da Silver Lily, Ravens Bluff
+  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+  descricao_operacional: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível.
+    Chegou sem cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação
+    da Casa de Pesos prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 8 Eleasis, 1372 DR
+  data_exata: 9 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 8
+  dia_do_mes: 9
   dezena: 1
-  dia_da_dezena: 8
-  periodo_do_dia: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
-  hora_aproximada: 20:10 de 8 Eleasis
+  dia_da_dezena: 9
+  periodo_do_dia: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
+  hora_aproximada: 08:48 de 9 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -57,8 +56,9 @@ recursos:
     po: 35
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: uso gasto até o amanhecer de 9 Eleasis
-    passos_sem_pegadas: inativo
+    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 9 Eleasis
+    passos_sem_pegadas: disponível mediante gasto de 2 Ki
+    silencio: disponível mediante gasto de 2 Ki
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml

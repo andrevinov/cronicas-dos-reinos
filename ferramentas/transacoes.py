@@ -312,7 +312,7 @@ def overlay_runtime(
         "tempo.clima": "tempo.clima",
     }
     time_map = {
-        "data_atual.valor": "tempo.data",
+        "data_atual": "tempo.data",
         "hora_aproximada": "tempo.hora_aproximada",
         "periodo_do_dia": "tempo.periodo",
         "clima": "tempo.clima",
@@ -360,7 +360,7 @@ def overlay_runtime(
                 elif path == "recursos.deslocamento":
                     _apply_mapped(scene_out, "mecanica_imediata.deslocamento", delta)
             elif target == "tempo":
-                if path == "data_atual.valor":
+                if path == "data_atual":
                     _apply_mapped(scene_out, "tempo.data", delta)
                 elif path == "hora_aproximada":
                     _apply_mapped(scene_out, "tempo.hora_aproximada", delta)

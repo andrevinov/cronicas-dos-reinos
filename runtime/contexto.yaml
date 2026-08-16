@@ -7,7 +7,7 @@ fontes_canonicas:
 sessao:
   numero: 5
   status: em_sessao
-  modo_de_cena: deslocamento_para_vigilancia_ponte_baixa
+  modo_de_cena: fim_sessao_005_ponto_morto_pell
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -24,9 +24,9 @@ recursos:
   deslocamento: 55 pés
   dinheiro_po: 35
 tempo:
-  data: 8 Eleasis, 1372 DR
-  hora_aproximada: 20:10 de 8 Eleasis
-  periodo: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
+  data: 9 Eleasis, 1372 DR
+  hora_aproximada: 08:48 de 9 Eleasis
+  periodo: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -34,9 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus
-  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
-    uma capa simples
+  area: arredores da Silver Lily, Ravens Bluff
+  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml

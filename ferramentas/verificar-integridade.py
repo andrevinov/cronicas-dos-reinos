@@ -282,7 +282,8 @@ def validate_runtime(
                 errors.append(f"runtime divergiu do estado ({label}): runtime={actual!r}, estado={expected!r}")
 
     if isinstance(tempo, dict):
-        date_from_time = ((tempo.get("data_atual") or {}).get("valor"))
+        raw_date = tempo.get("data_atual")
+        date_from_time = raw_date if isinstance(raw_date, str) else ((raw_date or {}).get("valor"))
         runtime_date = (contexto.get("tempo") or {}).get("data")
         if date_from_time is not None and runtime_date != date_from_time:
             errors.append(f"runtime divergiu de estado/tempo.yaml na data: {runtime_date!r} != {date_from_time!r}")

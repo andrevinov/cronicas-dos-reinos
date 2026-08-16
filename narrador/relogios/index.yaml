@@ -13,4 +13,13 @@ relogios:
   exposicao_do_contato_de_pell:
     arquivo: narrador/relogios/exposicao_do_contato_de_pell.yaml
     sessao_ultima_atualizacao: 4
-quantidade: 4
+  destino_de_edran_kells:
+    arquivo: narrador/relogios/destino_de_edran_kells.yaml
+    sessao_ultima_atualizacao: 5
+  operacao_preservacao_casa_pesos:
+    arquivo: narrador/relogios/operacao_preservacao_casa_pesos.yaml
+    sessao_ultima_atualizacao: 5
+  relatorio_pell_ponto_morto:
+    arquivo: narrador/relogios/relatorio_pell_ponto_morto.yaml
+    sessao_ultima_atualizacao: 5
+quantidade: 7

@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 5
 checkpoint:
-  tipo: bootstrap
-  estado: retomavel
-  modo: deslocamento_para_vigilancia_ponte_baixa
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: fim_sessao_005_ponto_morto_pell
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -21,9 +21,9 @@ checkpoint:
     deslocamento: 55 pés
     dinheiro_po: 35
   tempo:
-    data: 8 Eleasis, 1372 DR
-    hora_aproximada: 20:10 de 8 Eleasis
-    periodo: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
+    data: 9 Eleasis, 1372 DR
+    hora_aproximada: 08:48 de 9 Eleasis
+    periodo: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
     plano: Material
@@ -31,17 +31,63 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: Jack Mooney & Sons Circus
-    ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto
-      por uma capa simples
+    area: arredores da Silver Lily, Ravens Bluff
+    ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
 continuidade:
-  resumo_imediato: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa antes
-    da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino de palco
-    de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
-  prazos_e_alertas: O segundo sino depois do pôr do sol é esperado por volta de 21:00. A porta sob o arco oeste
-    da Casa de Pesos da Ponte Baixa pode ser usada entre esse sino e aproximadamente 21:30. Pell ainda deve alimentar
-    a garrafa da Silver Lily durante a noite.
-eventos_recentes: []
+  resumo_imediato: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível. Chegou
+    sem cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação da Casa
+    de Pesos prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
+  prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, armas e vestígios do porão foram
+    preservados. Ren está diante da mensagem de Pell ainda fechada.
+eventos_recentes:
+- batch: s005-cena-b2ff92c1ab5a56dd
+  transacao: s005-bf99880c4f1da09e
+  resumo: Ren oculta-se junto ao portal, mas obtém 12 contra CD 13 em Furtividade. O carregador retorna, percebe
+    a zona de Silêncio e para antes de atravessar; ao notar Ren, começa a recuar. Ren mantém iniciativa 20 contra
+    8, alcança-o no corredor e acerta dois golpes não letais contra CA 12, causando 9 e 6 de dano. O carregador
+    fica inconsciente e estável. Às 21:48, Ren está cerca de dez pés pelo corredor interno; tanto o ca…
+- batch: s005-cena-b2ff92c1ab5a56dd
+  transacao: s005-aa77f872a409a9e2
+  resumo: Ren examina o livro e as folhas. Com 6 contra CD 14 em Investigação, confirma que a caixa foi registrada
+    oficialmente como ferragens de prensa com oito pedras e três libras, enquanto uma folha clandestina registra
+    onze pedras e seis libras e traz as iniciais M.H.; ele não consegue determinar rapidamente o papel exato das
+    iniciais nem decifrar as demais linhas. A caixa é de madeira reforçada por ferro, e Ren escolhe…
+- batch: s005-cena-b2ff92c1ab5a56dd
+  transacao: s005-66aeb2b3c3204847
+  resumo: Ren guarda no livro as duas folhas clandestinas e recolhe da caixa um mecanismo de gatilho, duas pontas
+    farpadas de virote e uma lâmina sem cabo. Carrega o livro e procura reféns pela Casa de Pesos. Ao sair do raio
+    fixo de Silêncio, os sons retornam. Com 26 contra CD 13 em Percepção e 17 contra CD 14 em Investigação, verifica
+    todos os cômodos e conclui que não há refém vivo nem outra pessoa consciente no edifício. N…
+- batch: s005-cena-b2ff92c1ab5a56dd
+  transacao: s005-009e0a71a081c85b
+  resumo: Ren retorna ao salão, usa Passo Sombrio através do buraco para o desvão e sai pela escotilha. Reutiliza
+    a cadeia de sombras da infiltração e obtém 23 contra CD 15 em Furtividade, abandonando a Casa de Pesos sem ser
+    visto ou seguido. Silêncio termina por volta de 21:58. No ponto de observação, veste o casaco noturno sobre
+    o traje oriental e segue discretamente para o Temple District. Às 22:23, chega às sombras próxim…
+- batch: s005-cena-1adbd3e7cae1486e
+  transacao: s005-b616f668f83af3ee
+  resumo: 'Ren observa a ala administrativa da Casa de Tyr sem se aproximar. Obtém 7 contra CD 14 em Percepção e
+    não consegue identificar Halessa entre as janelas iluminadas. Com 10 contra CD 16 em Investigação, encontra
+    sombras parciais, mas não confirma uma rota completa e reversível: não há sacadas, os peitoris são estreitos,
+    a iluminação corta os destinos e fechaduras ou alarmes internos permanecem desconhecidos. Com 25 co…'
+- batch: s005-cena-1adbd3e7cae1486e
+  transacao: s005-cc42d3bf1c2f50ee
+  resumo: Ren entra formalmente pela Casa de Tyr sem ser observado por inimigos externos e pede Halessa em caráter
+    urgente e reservado. Entrega o livro, as duas folhas e quatro amostras das armas, relata a infiltração, a caixa,
+    os dois homens inconscientes e os vestígios de Edran. Halessa corrige que tortura ou violência são fortemente
+    indicadas, mas assassinato ainda não é fato, e alerta que os suspeitos podem descrever Ren.…
+- batch: s005-cena-0137e614962110f1
+  transacao: s005-e1d863a303af2d27
+  resumo: Ren pede desculpas por ultrapassar as instruções, mas responde a Halessa com ironia sobre a cautela institucional
+    e reafirma que estará disponível contra Masao. Halessa reconhece que Ren está certo sobre a urgência, defende
+    que a operação já iniciada não é mera nota de repúdio e recusa a falsa escolha entre impotência e ação sem limites.
+    Repreende o uso retórico da mulher levada de barco e pede que fatos assim sejam…
+- batch: s005-sessao-3cb87cd71d608586
+  transacao: s005-761d7fbe55c11631
+  resumo: Ren retorna ao circo sem cauda e completa um descanso longo, recuperando 6/6 Ki e o uso do Broche no amanhecer
+    de 9 Eleasis. Durante a madrugada, Luath demora a mobilizar a operação; uma equipe clandestina chega antes e
+    inicia limpeza e incêndio na Casa de Pesos. Night Watch e Tyr intervêm, capturam os operadores e a equipe de
+    limpeza, mas o fogo destrói parte do pavimento superior e registros remanescentes. A carga…
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

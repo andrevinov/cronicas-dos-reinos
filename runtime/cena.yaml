@@ -1,25 +1,23 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 5
-modo: deslocamento_para_vigilancia_ponte_baixa
+modo: fim_sessao_005_ponto_morto_pell
 localizacao:
-  area: Jack Mooney & Sons Circus
-  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
-    uma capa simples
+  area: arredores da Silver Lily, Ravens Bluff
+  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
 tempo:
-  data: 8 Eleasis, 1372 DR
-  hora_aproximada: 20:10 de 8 Eleasis
+  data: 9 Eleasis, 1372 DR
+  hora_aproximada: 08:48 de 9 Eleasis
 mecanica_imediata:
   pv: 45/45
   ki: 6/6
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa antes
-  da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino de palco
-  de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
-prazos_e_alertas: O segundo sino depois do pôr do sol é esperado por volta de 21:00. A porta sob o arco oeste da
-  Casa de Pesos da Ponte Baixa pode ser usada entre esse sino e aproximadamente 21:30. Pell ainda deve alimentar
-  a garrafa da Silver Lily durante a noite.
+resumo_imediato: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível. Chegou sem
+  cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação da Casa de Pesos
+  prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
+prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, armas e vestígios do porão foram preservados.
+  Ren está diante da mensagem de Pell ainda fechada.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
   handoff: sessoes/005/handoff.yaml
