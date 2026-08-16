@@ -1,6 +1,6 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 5
+sessao_atual_da_campanha: 6
 sessao_mais_recente_indexada: 5
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
@@ -16,22 +16,6 @@ topicos_prioritarios:
   - personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
   bytes: 601
 descobertas_recentes:
-- titulo: 'Sessão 003: inspeção do interior do galpão baixo'
-  arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-003/049-sessao-003-inspecao-do-interior-do-galpao-baixo.md
-  bytes: 1389
-- titulo: 'Sessão 003: entrada no galpão e libertação de Mera'
-  arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-003/050-sessao-003-entrada-no-galpao-e-libertacao-de-mera.md
-  bytes: 842
-- titulo: 'Sessão 003: respostas de Mera e carroça no ramal'
-  arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-003/051-sessao-003-respostas-de-mera-e-carroca-no-ramal.md
-  bytes: 1662
-- titulo: 'Sessão 003: interceptação da carroça de resposta'
-  arquivos:
-  - personagens/jogador/conhecimento/descobertas/sessao-003/052-sessao-003-interceptacao-da-carroca-de-resposta.md
-  bytes: 1353
 - titulo: 'Sessão 003: expulsão dos captores e chegada à balança velha'
   arquivos:
   - personagens/jogador/conhecimento/descobertas/sessao-003/053-sessao-003-expulsao-dos-captores-e-chegada-a-balanca-velha.md
@@ -50,87 +34,32 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: Ren conjura Silêncio por 2 Ki, ficando com 2/6 e encerrando Passos sem Pegadas. O escrivão percebe o silêncio
-    mágico e saca uma faca. Ren causa 10 de dano à ripa, abrindo sem ruído um buraco pouco maior que um punho. Usa
-    Passo Sombrio para surgir numa sombra junto ao escrivão e vence a iniciativa por 20 a 14. Seus dois ataques
-    não letais acertam CA 12, causando 8 e 7 de dano, e deixam o escrivão inconsciente e estável. Às 21:48, Ren
-    está no salão silenciado; o carregador pode retornar em segundos, e o buraco mantém linha de visão para uma
-    possível fuga ao desvão.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-2f0187e7cc470be7.md
-  bytes: 1082
-  transacao: s005-2f0187e7cc470be7
-- titulo: Ren oculta-se junto ao portal, mas obtém 12 contra CD 13 em Furtividade. O carregador retorna, percebe
-    a zona de Silêncio e para antes de atravessar; ao notar Ren, começa a recuar. Ren mantém iniciativa 20 contra
-    8, alcança-o no corredor e acerta dois golpes não letais contra CA 12, causando 9 e 6 de dano. O carregador
-    fica inconsciente e estável. Às 21:48, Ren está cerca de dez pés pelo corredor interno; tanto o carregador quanto
-    o escrivão estão desacordados, e Silêncio continua ativo.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-bf99880c4f1da09e.md
-  bytes: 936
-  transacao: s005-bf99880c4f1da09e
-- titulo: Ren examina o livro e as folhas. Com 6 contra CD 14 em Investigação, confirma que a caixa foi registrada
-    oficialmente como ferragens de prensa com oito pedras e três libras, enquanto uma folha clandestina registra
-    onze pedras e seis libras e traz as iniciais M.H.; ele não consegue determinar rapidamente o papel exato das
-    iniciais nem decifrar as demais linhas. A caixa é de madeira reforçada por ferro, e Ren escolhe romper o encaixe
-    do ferrolho com dois golpes, causando 6 e 5 de dano. Dentro encontra componentes de aço para armas compactas,
-    sobretudo bestas de mão e facas, em quantidade para armar várias pessoas. Às 21:50, a caixa está aberta e os
-    documentos permanecem sobre a mesa; Silêncio segue ativo.
+- titulo: Ren confirma discrepâncias nos registros da Casa de Pesos, encontra iniciais M.H. e abre uma caixa com componentes para bestas de mão e facas.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-aa77f872a409a9e2.md
   bytes: 1755
   transacao: s005-aa77f872a409a9e2
-- titulo: Ren guarda no livro as duas folhas clandestinas e recolhe da caixa um mecanismo de gatilho, duas pontas
-    farpadas de virote e uma lâmina sem cabo. Carrega o livro e procura reféns pela Casa de Pesos. Ao sair do raio
-    fixo de Silêncio, os sons retornam. Com 26 contra CD 13 em Percepção e 17 contra CD 14 em Investigação, verifica
-    todos os cômodos e conclui que não há refém vivo nem outra pessoa consciente no edifício. No porão encontra
-    argola de contenção, fibras de corda, sangue parcialmente lavado, marcas de arrasto e uma placa de trabalho
-    de Edran Kells. Não há corpo; as provas indicam que Edran foi mantido, ferido e removido. Às 21:56, Ren está
-    no porão com as evidências recolhidas; Silêncio ainda cobre o salão por cerca de dois minutos.
+- titulo: Ren procura reféns, encontra no porão sinais de contenção e sangue e confirma que Edran Kells foi ferido e removido, sem corpo no local.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-66aeb2b3c3204847.md
   bytes: 1659
   transacao: s005-66aeb2b3c3204847
-- titulo: 'Ren observa a ala administrativa da Casa de Tyr sem se aproximar. Obtém 7 contra CD 14 em Percepção e
-    não consegue identificar Halessa entre as janelas iluminadas. Com 10 contra CD 16 em Investigação, encontra
-    sombras parciais, mas não confirma uma rota completa e reversível: não há sacadas, os peitoris são estreitos,
-    a iluminação corta os destinos e fechaduras ou alarmes internos permanecem desconhecidos. Com 25 contra CD 13
-    em Furtividade, não é percebido. Como sua condição de segurança absoluta não foi satisfeita, não gasta Ki nem
-    tenta entrar. Às 22:43, permanece oculto diante da Casa de Tyr com as provas.'
+- titulo: Ren observa a Casa de Tyr, não identifica Halessa nem uma rota segura e desiste da infiltração sem gastar Ki ou ser percebido.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-b616f668f83af3ee.md
   bytes: 1140
   transacao: s005-b616f668f83af3ee
-- titulo: 'Ren entra formalmente pela Casa de Tyr sem ser observado por inimigos externos e pede Halessa em caráter
-    urgente e reservado. Entrega o livro, as duas folhas e quatro amostras das armas, relata a infiltração, a caixa,
-    os dois homens inconscientes e os vestígios de Edran. Halessa corrige que tortura ou violência são fortemente
-    indicadas, mas assassinato ainda não é fato, e alerta que os suspeitos podem descrever Ren. Ela sela o material
-    com a procedência real, envia mensageiro a Luath e ordena preservação urgente da Casa de Pesos com duas testemunhas
-    de Tyr. Ren obtém 14 contra CD 15 em Persuasão com vantagem: Halessa reconhece sua capacidade e age sobre a
-    prova, mas ainda se recusa a tratá-lo como agente clandestino coordenado sem plano e limites prévios. Às 23:06,
-    Ren permanece numa câmara reservada; as provas estão sob custódia provisória de Tyr e a operação foi iniciada.'
+- titulo: Ren entrega a Halessa as provas da Casa de Pesos; Tyr assume a custódia, aciona Luath e inicia uma operação de preservação do local.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-cc42d3bf1c2f50ee.md
   bytes: 1576
   transacao: s005-cc42d3bf1c2f50ee
-- titulo: 'Ren pede desculpas por ultrapassar as instruções, mas responde a Halessa com ironia sobre a cautela institucional
-    e reafirma que estará disponível contra Masao. Halessa reconhece que Ren está certo sobre a urgência, defende
-    que a operação já iniciada não é mera nota de repúdio e recusa a falsa escolha entre impotência e ação sem limites.
-    Repreende o uso retórico da mulher levada de barco e pede que fatos assim sejam entregues como evidência. Não
-    fecha a possibilidade de cooperação: exige objetivo, rota e limites acordados antes da próxima infiltração.
-    Para preservar a discrição de Ren, manda que saia pela porta dos peticionários sem registro público. Às 23:13,
-    Ren está num beco lateral da Casa de Tyr com 2/6 Ki; a operação da Casa de Pesos continua.'
+- titulo: Halessa reconhece a urgência, mas exige objetivo, rota e limites prévios para futuras infiltrações; Ren sai discretamente da Casa de Tyr.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-e1d863a303af2d27.md
   bytes: 1335
   transacao: s005-e1d863a303af2d27
-- titulo: Ren retorna ao circo sem cauda e completa um descanso longo, recuperando 6/6 Ki e o uso do Broche no amanhecer
-    de 9 Eleasis. Durante a madrugada, Luath demora a mobilizar a operação; uma equipe clandestina chega antes e
-    inicia limpeza e incêndio na Casa de Pesos. Night Watch e Tyr intervêm, capturam os operadores e a equipe de
-    limpeza, mas o fogo destrói parte do pavimento superior e registros remanescentes. A carga de armas é confirmada
-    e os vestígios do porão, incluindo a placa de Edran Kells, são preservados; nenhum corpo é encontrado. Silva
-    transmite a notícia e confirma Nera e Tavin seguros. Às 08:48, Ren chega ao ponto morto de Pell atrás da Silver
-    Lily e vê uma mensagem dentro da garrafa, ainda fechada. A Sessão 5 termina.
+- titulo: Ren descansa; Night Watch e Tyr intervêm na Casa de Pesos durante tentativa de limpeza e incêndio, preservando suspeitos, armas e vestígios. A Sessão 5 termina no ponto morto de Pell.
   arquivos:
   - personagens/jogador/conhecimento/incrementais/sessao-005/tx-s005-761d7fbe55c11631.md
   bytes: 1351
