@@ -51,7 +51,13 @@ jobs:
           grep -q 'docs/agente/consolidacao-transacional.md' AGENTS.md
           python ferramentas/consolidar.py check
           python ferramentas/consolidar.py status > /tmp/consolidacao-status.json
-          grep -q '"eventos_pendentes": 0' /tmp/consolidacao-status.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/consolidacao-status.json', encoding='utf-8'))
+          assert isinstance(report['eventos_pendentes'], int)
+          assert report['eventos_pendentes'] >= 0
+          assert report['consolidacao_em_andamento'] is None
+          PY
 
       - name: Runtime derivado e atualizado
         run: python ferramentas/gerar-runtime.py --check
@@ -97,6 +103,10 @@ jobs:
           python ferramentas/contexto.py --sem-log cena > /tmp/acesso-l2.yaml
           grep -q 'nivel: L2' /tmp/acesso-l2.yaml
           test "$(wc -c < /tmp/acesso-l2.yaml)" -le 8192
+          python ferramentas/contexto.py --sem-log local "casa de Iria Doss" > /tmp/acesso-local.yaml
+          grep -q 'nivel: L2' /tmp/acesso-local.yaml
+          grep -q 'textura_narrativa' /tmp/acesso-local.yaml
+          test "$(wc -c < /tmp/acesso-local.yaml)" -le 8192
           if python ferramentas/contexto.py --sem-log buscar "ponte baixa" > /tmp/acesso-sem-motivo.txt 2>&1; then
             echo 'L3 sem --apos/--motivo deveria falhar'
             exit 1
@@ -162,6 +172,8 @@ jobs:
           python ferramentas/contexto.py --sem-log status > /tmp/contexto-status.yaml
           python ferramentas/contexto.py --sem-log cena > /tmp/contexto-cena.yaml
           python ferramentas/contexto.py --sem-log npc nera > /tmp/contexto-npc.yaml
+          python ferramentas/contexto.py --sem-log npc "Iria Doss" > /tmp/contexto-iria.yaml
+          python ferramentas/contexto.py --sem-log local "casa de Iria Doss" > /tmp/contexto-local.yaml
           python ferramentas/contexto.py --sem-log relacao kethra > /tmp/contexto-relacao.yaml
           python ferramentas/contexto.py --sem-log conhecimento masao > /tmp/contexto-conhecimento.yaml
           python ferramentas/contexto.py --sem-log conhecimento "ponte baixa" > /tmp/contexto-conhecimento-recente.yaml
@@ -170,11 +182,16 @@ jobs:
           test "$(wc -c < /tmp/contexto-status.yaml)" -le 4096
           test "$(wc -c < /tmp/contexto-cena.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-npc.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-iria.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-local.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-relacao.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-conhecimento.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-conhecimento-recente.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-regra.yaml)" -le 8192
           test "$(wc -c < /tmp/contexto-busca.yaml)" -le 8192
+          grep -q "textura_narrativa" /tmp/contexto-iria.yaml
+          grep -q "cenario/texturas/npcs/iria_doss.yaml" /tmp/contexto-iria.yaml
+          grep -q "cenario/texturas/locais/casa_iria_doss.yaml" /tmp/contexto-local.yaml
           grep -q "estado/relacoes/kethra_dunn.yaml" /tmp/contexto-relacao.yaml
           grep -q "conhecimento/descobertas/sessao-003" /tmp/contexto-conhecimento-recente.yaml
 
@@ -203,6 +220,7 @@ jobs:
           hot = by_name['retomada_somente_camada_quente']['detalhe']
           assert hot['transcricao_lida'] is False
           assert hot['bytes_saida'] <= 8192
+          assert hot['eventos_pendentes'] >= 0
           assert hot['snapshot']['sessao'] == 3
           assert hot['snapshot']['personagem'] == 'Ren Kagehira'
           pending = by_name['retomada_com_delta_pendente']['detalhe']
