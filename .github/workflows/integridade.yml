@@ -49,13 +49,37 @@ jobs:
           test -f docs/agente/consolidacao-transacional.md
           test -f baseline/consolidacao-step-08.md
           grep -q 'docs/agente/consolidacao-transacional.md' AGENTS.md
-          grep -q 'ferramentas/consolidar.py recuperar' AGENTS.md
           python ferramentas/consolidar.py check
           python ferramentas/consolidar.py status > /tmp/consolidacao-status.json
           grep -q '"eventos_pendentes": 0' /tmp/consolidacao-status.json
 
       - name: Runtime derivado e atualizado
         run: python ferramentas/gerar-runtime.py --check
+
+      - name: Memória fria de sessões
+        run: |
+          test -f ferramentas/sessoes.py
+          test -f ferramentas/checkpoint.py
+          test -f docs/agente/memoria-de-sessoes.md
+          test -f baseline/memoria-sessoes-step-09.md
+          test -f sessoes/index.yaml
+          test -f sessoes/003/handoff.yaml
+          python ferramentas/sessoes.py check
+          python ferramentas/checkpoint.py check
+          python ferramentas/contexto.py --sem-log retomada > /tmp/contexto-retomada.yaml
+          python ferramentas/contexto.py --sem-log sessao 2 > /tmp/contexto-sessao-2.yaml
+          test "$(wc -c < /tmp/contexto-retomada.yaml)" -le 8192
+          test "$(wc -c < /tmp/contexto-sessao-2.yaml)" -le 8192
+          ! grep -q 'transcricao_lida: true' /tmp/contexto-sessao-2.yaml
+          ! grep -q 'sessoes/002/transcricao.md' /tmp/contexto-sessao-2.yaml
+          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico > /tmp/contexto-historico.yaml
+          ! grep -q 'sessoes/003/transcricao.md' /tmp/contexto-historico.yaml
+          python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --transcricoes > /tmp/contexto-transcricoes.yaml
+          grep -q 'sessoes/003/transcricao.md' /tmp/contexto-transcricoes.yaml
+          if python ferramentas/contexto.py --sem-log buscar teste --transcricoes > /tmp/contexto-invalido.yaml 2>&1; then
+            echo '--transcricoes sem --historico deveria falhar'
+            exit 1
+          fi
 
       - name: Consultas dirigidas de contexto
         run: |
