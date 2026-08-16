@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 3
 checkpoint:
-  tipo: cena
-  estado: retomavel
-  modo: aproximacao_curandeira
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: vigilancia_narwhal
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -19,10 +19,10 @@ checkpoint:
       maximos: 6
     ca: 17
     deslocamento: 55 pés
-    dinheiro_po: 45
+    dinheiro_po: 39
   tempo:
     data: 7 Eleasis, 1372 DR
-    hora_aproximada: 08:22 de 7 Eleasis
+    hora_aproximada: 10:45 de 7 Eleasis
     periodo: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
@@ -31,13 +31,12 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: estrada do Fire River
-    ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio
-      a leste da secagem velha
+    area: Narwhal Manor
+    ponto_exato: em cobertura discreta nos fundos de Narwhal Manor, observando Kethra Dunn à distância
 continuidade:
-  resumo_imediato: Ren soltou vivo o homem de mãos limpas após obrigá-lo a repetir uma ameaça para Bram Vask. Depois
-    ocultou dos observadores o rumo verdadeiro e alcançou a casa de Iria Doss por rota indireta. A carroça usada
-    por Mera está parada junto à casa, confirmando que Mera e Colm/Dent chegaram; Ren ainda não examinou o interior.
+  resumo_imediato: Ren entrou abertamente na casa de Iria Doss com a palavra de Mera Fumaça. Colm Dunn está vivo
+    e estável, recebendo tratamento, mas precisa de repouso e observação até a manhã seguinte. Iria pediu 3 PO pelo
+    tratamento e abrigo; o pagamento ainda não foi realizado.
   prazos_e_alertas: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo.
     Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis,
     o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da
@@ -46,21 +45,6 @@ continuidade:
     a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de
     mãos limpas; o combate é público e testemunhado por trabalhadores.
 eventos_recentes:
-- batch: s003-cena-1b1d7789e98c2c9e
-  transacao: s003-104de5ca6b00eb86
-  resumo: Os dois golpes desarmados controlados de Ren erram; o primeiro foi falha automática com 1 natural e o
-    segundo totalizou 10 contra CA 12. O homem permanece adjacente e armado; ação bônus e movimento de Ren seguem
-    disponíveis.
-- batch: s003-cena-1b1d7789e98c2c9e
-  transacao: s003-747896a38e04b402
-  resumo: Ren acerta o golpe desarmado de ação bônus com 24 contra CA 12 e causa 6 de dano contundente. Intimidação
-    com vantagem resulta em 17 contra CD 13, sucesso. O homem deixa cair a faca e aceita responder, coagido; a iniciativa
-    fica suspensa enquanto a rendição durar.
-- batch: s003-cena-1b1d7789e98c2c9e
-  transacao: s003-ad1dbf6722ccea0e
-  resumo: Coagido, o homem afirma que Bram Vask financiou a armadilha como cliente, não como chefe permanente. Segundo
-    ele, Colm/Dent foi mantido vivo como isca para identificar e capturar quem viesse resgatá-lo; essa pessoa seria
-    mais valiosa.
 - batch: s003-cena-1b1d7789e98c2c9e
   transacao: s003-1817f1ac59c440f7
   resumo: 'Ren obtém 19 contra CD 15 na Intimidação com vantagem. O homem confessa ser o segundo intermediário da
@@ -73,6 +57,39 @@ eventos_recentes:
     parte desarmado; a entrega do recado não está confirmada. Ren obtém 14 contra CD 14 em Furtividade, oculta dos
     observadores o rumo real e chega por volta de 08:22 à cobertura próxima da casa de Iria Doss. A carroça de Mera
     está junto à casa, confirmando a chegada do grupo.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-c85e7801275d8d44
+  resumo: Ren entra abertamente na casa de Iria com Mera como garantia. Colm está vivo e estável, mas fraco, desidratado,
+    contundido e com irritação pulmonar; precisa de repouso e observação até a manhã seguinte. Iria pede 3 PO pelo
+    tratamento e abrigo; pagamento ainda não realizado.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-61130a2c42d488a7
+  resumo: A sessão é retomada dentro da casa de Iria Doss às 08:25. Colm permanece vivo e estável, mas precisa de
+    repouso e observação até a manhã seguinte. Iria aguarda o pagamento de 3 PO pelo tratamento e abrigo; Ren ainda
+    não respondeu.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-606bdc8b8202a53f
+  resumo: Ren paga as 3 PO devidas a Iria e pede ajuda para esconder Colm no campo, oferecendo custear sua estadia
+    e visitá-lo. Iria afirma conhecer possíveis acolhedores, mas se recusa a indicar qualquer pessoa antes de entender
+    quem persegue Colm, o alcance dos perseguidores e se o risco acompanha Colm ou Ren.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-7b971f8e84cf329b
+  resumo: Ren revela a Iria que procura um homem perigoso de sua terra que está ampliando controle sobre o crime
+    de Ravens Bluff, e que Bram Vask sequestrou Colm para pressionar uma fonte de Ren em Narwhal Manor. Mesmo com
+    a garantia de Mera, Ren falha em Persuasão (7 contra CD 14); Iria recusa indicar qualquer acolhedor, mas manterá
+    Colm até a manhã seguinte e poderá orientar rotas rurais se ele estiver apto a viajar.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-9e02627d76a8dab6
+  resumo: Mera aceita 3 PO de Ren como compensação prática, e Colm pede que Kethra seja informada apenas de que
+    ele está vivo e não seja levada à casa de Iria. Iria proíbe deixar a carroça ao lado da casa, mas indica um
+    baixio arborizado próximo. Ren obtém 18 contra CD 14 em Sobrevivência e camufla a carroça contra observação
+    casual; termina junto dela por volta de 08:55.
+- batch: s003-sessao-c0d37c26c9e55253
+  transacao: s003-9acf84870a8af11e
+  resumo: Ren assume um disfarce superficial de homem maltrapilho, aguarda um grupo apropriado de trabalhadores
+    e entra em Ravens Bluff sem oposição ativa nem necessidade de rolagem. Ele chega discretamente aos fundos de
+    Narwhal Manor por volta de 10:45 e localiza Kethra Dunn à distância, sem ainda iniciar contato. A sessão 3 termina
+    nesse ponto.
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

@@ -1,0 +1,29 @@
+schema_historico_npc: 2
+id: silva_elkwood
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s004-c60332cdc3a09481
+  sessao: 4
+  resumo: Ren toma banho no circo e depois conta a Silva que Colm está vivo sob tratamento, que Bram Vask tentou
+    matá-los novamente e que fará qualquer coisa para proteger Nera e Tavin, omitindo a morte do homem de mãos limpas.
+    Silva reforça que proteger os Vell, o circo e as ações de Kage precisam permanecer separados, alerta contra
+    a lógica de 'custe o que custar' e pergunta diretamente se Ren já fez algo naquele dia. A conversa fica aberta
+    às 15:10.
+  deltas:
+  - alvo: npc:silva_elkwood
+    caminho: medidores.risco_percebido
+    op: inc
+    valor: 1
+- transacao: s004-9aff1a8cf9c2a85f
+  sessao: 4
+  resumo: Ren explica a Silva por que considera Bram Vask uma ameaça recorrente e pergunta como proteger Colm e
+    outras vítimas sem conseguir estar em todos os lugares. Silva separa o problema imediato de Colm da capacidade
+    estrutural de Bram de produzir novas vítimas. Ela aconselha uma cadeia compartimentada de abrigo e transporte,
+    ação contra dinheiro, cobradores, documentos e sucessores de Bram, e alerta que matar Bram pode apenas promover
+    outro agente. Silva oferece procurar, antes do anoitecer, uma rota rural de Chauntea para Colm, desde que o
+    circo e os Vell permaneçam fora e Ren aceite não controlar toda a cadeia.
+  deltas:
+  - alvo: npc:silva_elkwood
+    caminho: medidores.vinculo
+    op: inc
+    valor: 1

@@ -3,26 +3,11 @@ natureza: tempo_atual
 historico_acumulado: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 ano_dr: 1372
 nome_do_ano: Ano da Magia Selvagem
-data_atual:
-  status: definida
-  calendario: Calendário de Harptos
-  valor: 7 Eleasis, 1372 DR
-  mes: Eleasis
-  nome_sazonal_do_mes: Highsun
-  dia_do_mes: 7
-  dezena: 1
-  dia_da_dezena: 7
-  feriado: null
-  estacao: verão
-  observacao: Somente a data corrente; histórico temporal está arquivado.
-periodo_do_dia: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
-hora_aproximada: 08:22 de 7 Eleasis
+data_atual: 8 Eleasis, 1372 DR
+periodo_do_dia: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
+hora_aproximada: 20:10 de 8 Eleasis
 local_referencia: Ravens Bluff
 clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
-prazo_relevante: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão
-  no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche
-  do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa
-  foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem
-  nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis
-  do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate
-  é público e testemunhado por trabalhadores.
+prazo_relevante: O segundo sino depois do pôr do sol é esperado por volta de 21:00. A porta sob o arco oeste da
+  Casa de Pesos da Ponte Baixa pode ser usada entre esse sino e aproximadamente 21:30. Pell ainda deve alimentar
+  a garrafa da Silver Lily durante a noite.

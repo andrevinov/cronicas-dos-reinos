@@ -5,9 +5,9 @@ npc:
   nome: Pell
   grupo: Silver Lily / Red Sail periférica
   medidores:
-    vinculo: 2
-    confianca: 2
-    risco_percebido: 7
+    vinculo: 3
+    confianca: 3
+    risco_percebido: 8
   natureza_do_vinculo: transacional, medroso e oportunista
   subtexto_romantico: nenhum
   observacao_afetiva: 'Pell reage a moeda, medo e oportunidade. Vínculo alto futuro significaria lealdade comprada

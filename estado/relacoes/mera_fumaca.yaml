@@ -5,11 +5,11 @@ historico: historico/relacoes/mera_fumaca.yaml
 relacao:
   nome: Mera Fumaça
   tipo: contato rural possível / guardiã temporária de Colm-Dent
-  local: em trânsito na carroça rumo à casa de Iria Doss, com Colm/Dent
-  status: viva, ferida e manca; armada com besta e conduzindo Colm para tratamento
+  local: casa de Iria Doss, junto de Colm Dunn
+  status: permanece na casa de Iria, ferida mas estável; ajudou a acomodar Colm na carroça
   atitude_para_ren: cautelosa, pragmática e cooperativa; Ren a libertou, protegeu Colm e confiou a retirada a ela
   confianca: moderada inicial
-  respeito: moderado
+  respeito: moderado, crescente
   motivo_atual: Ren a levou até Colm/Dent e pediu descrição dos captores, informação sobre outros presos e indicação
     de abrigo ou tratamento. Mera respondeu sem barganha, indicou o forno morto e Iria Doss, e reconheceu o rapaz
     da faixa azul quando a carroça de resposta entrou no ramal.

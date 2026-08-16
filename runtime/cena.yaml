@@ -1,33 +1,29 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 3
-modo: aproximacao_curandeira
+sessao: 5
+modo: deslocamento_para_vigilancia_ponte_baixa
 localizacao:
-  area: estrada do Fire River
-  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
-    leste da secagem velha
+  area: Jack Mooney & Sons Circus
+  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
+    uma capa simples
 tempo:
-  data: 7 Eleasis, 1372 DR
-  hora_aproximada: 08:22 de 7 Eleasis
+  data: 8 Eleasis, 1372 DR
+  hora_aproximada: 20:10 de 8 Eleasis
 mecanica_imediata:
   pv: 45/45
-  ki: 5/6
+  ki: 6/6
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren soltou vivo o homem de mãos limpas após obrigá-lo a repetir uma ameaça para Bram Vask. Depois
-  ocultou dos observadores o rumo verdadeiro e alcançou a casa de Iria Doss por rota indireta. A carroça usada por
-  Mera está parada junto à casa, confirmando que Mera e Colm/Dent chegaram; Ren ainda não examinou o interior.
-prazos_e_alertas: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo. Visão
-  no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis, o Broche
-  do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da Ponte Baixa
-  foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou para Tyr sem
-  nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou a chegada. Os papéis
-  do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de mãos limpas; o combate
-  é público e testemunhado por trabalhadores.
+resumo_imediato: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa antes
+  da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino de palco
+  de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
+prazos_e_alertas: O segundo sino depois do pôr do sol é esperado por volta de 21:00. A porta sob o arco oeste da
+  Casa de Pesos da Ponte Baixa pode ser usada entre esse sino e aproximadamente 21:30. Pell ainda deve alimentar
+  a garrafa da Silver Lily durante a noite.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/003/handoff.yaml
+  handoff: sessoes/005/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/003/transcricao.md
+  transcricao_fria: sessoes/005/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md

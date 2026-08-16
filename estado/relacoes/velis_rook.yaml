@@ -6,7 +6,8 @@ relacao:
   nome: Velis Rook
   tipo: escrivão menor ligado à alfândega / registros de carga
   local: Narwhal Manor
-  status: em cena; alertado; convocação de Tyr entregue
+  status: compareceu à primeira oitiva de Tyr, apresentou contradições preservadas e nomeou M. Harrow antes da pergunta
+    correspondente; deve permanecer disponível à Casa de Tyr, mas não está preso
   atitude_para_ren: assustada e hostil
   confianca: nenhuma
   respeito: nenhum

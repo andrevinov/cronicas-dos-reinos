@@ -1,0 +1,25 @@
+schema_historico_npc: 2
+id: pell
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s004-f568de46dc948fdf
+  sessao: 4
+  resumo: Ren procura Pell, mas obtém 9 contra CD 13 em Investigação; um copeiro da Silver Lily nota um homem oriental
+    procurando um mensageiro jovem e Pell, avisado, aborda Ren numa viela. Ren paga 4 PO adiantadas, ficando com
+    35 PO. Encomenda investigação dos proprietários, dívidas e riscos das três propriedades, priorizando a Casa
+    do Salgueiro Seco, e oferece bônus de 1 PO por informação imobiliária relevante e 2 PO por paradeiro ou rotas
+    de Brass. Pell aceita deixar o resultado à noite numa garrafa profundamente escondida sob a escada dos fundos
+    da Silver Lily; Ren verificará pela manhã e pagará os bônus ali.
+  deltas:
+  - alvo: npc:pell
+    caminho: medidores.vinculo
+    op: inc
+    valor: 1
+  - alvo: npc:pell
+    caminho: medidores.confianca
+    op: inc
+    valor: 1
+  - alvo: npc:pell
+    caminho: medidores.risco_percebido
+    op: inc
+    valor: 1

@@ -1,0 +1,52 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 5
+checkpoint:
+  tipo: bootstrap
+  estado: retomavel
+  modo: deslocamento_para_vigilancia_ponte_baixa
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 6
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 35
+  tempo:
+    data: 8 Eleasis, 1372 DR
+    hora_aproximada: 20:10 de 8 Eleasis
+    periodo: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Jack Mooney & Sons Circus
+    ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto
+      por uma capa simples
+continuidade:
+  resumo_imediato: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa antes
+    da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino de palco
+    de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
+  prazos_e_alertas: O segundo sino depois do pôr do sol é esperado por volta de 21:00. A porta sob o arco oeste
+    da Casa de Pesos da Ponte Baixa pode ser usada entre esse sino e aproximadamente 21:30. Pell ainda deve alimentar
+    a garrafa da Silver Lily durante a noite.
+eventos_recentes: []
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/005/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

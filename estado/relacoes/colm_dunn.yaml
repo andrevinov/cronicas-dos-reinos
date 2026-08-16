@@ -5,10 +5,10 @@ historico: historico/relacoes/colm_dunn.yaml
 relacao:
   nome: Colm Dunn
   tipo: irmão de Kethra Dunn / devedor explorado
-  local: em trânsito na carroça com Mera Fumaça, rumo à casa de Iria Doss
-  status: vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada
-  atitude_para_ren: assustado, confuso, mas menos perdido após ver Kethra
-  confianca: baixa por necessidade
+  local: oculto na carroça de hortaliças de Hessa Morn, em trânsito para a segunda transferência
+  status: entregue vivo, consciente e estável à primeira mão da rota compartimentada
+  atitude_para_ren: grato e cauteloso; reconhece a franqueza limitada de Ren
+  confianca: moderada e ainda prudente
   respeito: baixo, misturado com medo
   motivo_atual: Ren libertou Mera e a trouxe até Colm. Mera indicou Iria Doss como tratamento rural possível, mas
     uma carroça de resposta entrou no ramal antes que o grupo pudesse partir.

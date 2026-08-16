@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 3
-status: em_andamento
+status: encerrada
 fonte: sessoes/003/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 3
@@ -19,18 +19,17 @@ checkpoint_inicial:
   nivel_ficha: 6
 checkpoint_atual:
   sessao: 3
-  modo: aproximacao_curandeira
+  modo: vigilancia_narwhal
   personagem: Ren Kagehira
   nivel: 6
   pv: 45/45
   ki: 5/6
   ca: 17
-  dinheiro_po: 45
+  dinheiro_po: 39
   data: 7 Eleasis, 1372 DR
-  hora: 08:22 de 7 Eleasis
-  area: estrada do Fire River
-  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
-    leste da secagem velha
+  hora: 10:45 de 7 Eleasis
+  area: Narwhal Manor
+  ponto_exato: em cobertura discreta nos fundos de Narwhal Manor, observando Kethra Dunn à distância
   nivel_ficha: 6
 consolidacoes:
 - id: s003-cena-1b1d7789e98c2c9e
@@ -50,6 +49,37 @@ consolidacoes:
   - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-1817f1ac59c440f7.md
   - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-ad1dbf6722ccea0e.md
   - personagens/jogador/conhecimento/index.yaml
+  - sessoes/003/alteracoes-de-estado.yaml
+  - sessoes/003/consequencias.md
+  - sessoes/003/consolidacoes.jsonl
+  - sessoes/003/resumo.md
+- id: s003-sessao-c0d37c26c9e55253
+  tipo: sessao
+  transacoes:
+  - s003-c85e7801275d8d44
+  - s003-61130a2c42d488a7
+  - s003-606bdc8b8202a53f
+  - s003-7b971f8e84cf329b
+  - s003-9e02627d76a8dab6
+  - s003-9acf84870a8af11e
+  deltas: 25
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/colm_dunn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/iria_doss.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/mera_fumaca.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/colm_dunn.yaml
+  - historico/relacoes/iria_doss.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/mera_fumaca.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-003/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-c85e7801275d8d44.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
   - sessoes/003/alteracoes-de-estado.yaml
   - sessoes/003/consequencias.md
   - sessoes/003/consolidacoes.jsonl

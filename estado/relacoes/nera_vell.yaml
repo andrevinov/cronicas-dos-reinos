@@ -6,7 +6,9 @@ relacao:
   nome: Nera Vell
   tipo: testemunha protegida / gravadora de selos
   local: depósito de figurino velho, perto do canto de Ren; normalmente na carroça verde de Silva Elkwood
-  status: sob proteção temporária de Silva Elkwood
+  status: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
+    tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo, bem
+    e com saudades.
   atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
   confianca: moderada em situação de crise
   respeito: prático

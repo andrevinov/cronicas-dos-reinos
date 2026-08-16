@@ -1,0 +1,12 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: hessa_morn
+historico: historico/relacoes/hessa_morn.yaml
+relacao:
+  nome: Hessa Morn
+  tipo: horticultora / primeira mão de uma rota rural compartimentada de Chauntea
+  local: antigo lagar de maçãs além do marco de pedra partida
+  status: aceitou Colm, ocultou-o sob a carga e iniciou o trajeto para a segunda mão; reteve a carroça de Mera no
+    lagar
+  atitude_para_ren: cautelosa, profissional e compartimentada
+  confianca: baixa; baseada no protocolo

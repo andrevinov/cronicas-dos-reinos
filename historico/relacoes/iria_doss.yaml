@@ -19,3 +19,45 @@ relacao:
   - A casa de Iria fica a cerca de quinze minutos para uma pessoa saudável, mais tempo com Colm e Mera feridos.
   riscos:
   - Perguntas na estrada podem levar perseguidores até a casa de Iria.
+eventos_pos_migracao:
+- transacao: s003-c85e7801275d8d44
+  sessao: 3
+  resumo: Ren entra abertamente na casa de Iria com Mera como garantia. Colm está vivo e estável, mas fraco, desidratado,
+    contundido e com irritação pulmonar; precisa de repouso e observação até a manhã seguinte. Iria pede 3 PO pelo
+    tratamento e abrigo; pagamento ainda não realizado.
+  deltas:
+  - alvo: relacao:iria_doss
+    caminho: status
+    op: set
+    valor: encontrada por Ren; tratando Colm Dunn na própria casa
+  - alvo: relacao:iria_doss
+    caminho: atitude_para_ren
+    op: set
+    valor: profissional e cautelosa, com a palavra de Mera como garantia inicial
+  - alvo: relacao:iria_doss
+    caminho: motivo_atual
+    op: set
+    valor: Tratar Colm Dunn e mantê-lo sob observação até a manhã seguinte. Pediu 3 PO por ervas, comida, tratamento
+      e abrigo; pagamento ainda pendente.
+- transacao: s003-7b971f8e84cf329b
+  sessao: 3
+  resumo: Ren revela a Iria que procura um homem perigoso de sua terra que está ampliando controle sobre o crime
+    de Ravens Bluff, e que Bram Vask sequestrou Colm para pressionar uma fonte de Ren em Narwhal Manor. Mesmo com
+    a garantia de Mera, Ren falha em Persuasão (7 contra CD 14); Iria recusa indicar qualquer acolhedor, mas manterá
+    Colm até a manhã seguinte e poderá orientar rotas rurais se ele estiver apto a viajar.
+  deltas:
+  - alvo: relacao:iria_doss
+    caminho: riscos
+    op: append
+    valor: Iria foi informada por Ren de que Bram Vask sequestrou Colm para pressionar uma fonte em Narwhal Manor
+      e de que um homem perigoso vindo da terra de Ren está ampliando seu controle sobre o crime de Ravens Bluff.
+- transacao: s004-b690cc97d44c1933
+  sessao: 4
+  resumo: Ren deixa um recado para Nera com Silva. Passa pelos observadores da saída com 20 contra CD 14 em Enganação
+    e chega a Iria por rota longa com 20 contra CD 14 em Sobrevivência. O Broche recupera um uso ao amanhecer. Iria
+    confirma Colm estável; Ren o acomoda na carroça e parte rumo ao lagar.
+  deltas:
+  - alvo: relacao:iria_doss
+    caminho: status
+    op: set
+    valor: Iria manteve Colm seguro durante a noite, confirmou que ele pode viajar e o entregou a Ren

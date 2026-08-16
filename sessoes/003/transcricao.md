@@ -4806,3 +4806,135 @@ Iria termina de ajeitar o cobertor sobre ele e se volta para Ren. A voz é seca,
 Ela não estende a mão nem repete o preço. Apenas espera, com a serenidade de quem já cumpriu a parte difícil e não pretende negociar consigo mesma. Ren tem 45 peças de ouro consigo; a dívida ainda não foi paga.
 
 O que Ren faz?
+
+<!-- turno-transacional:s003-606bdc8b8202a53f -->
+**Jogador**
+
+Ren entrega 3 PO a Iria.
+
+"Iria... esse homem é procurado. Ele é inocente e está sendo perseguido uma corja de bandidos. Você conhece alguém que possa recebê-lo por um tempo? Não minto como se recebe-lo não fosse um risco. Tentei envia-lo a Mera e, bem, já sabemos o que deu. Eu tenho dinheiro aqui, posso pagar as custas de estadia dele por um tempo, e virei regularmente visitá-lo. Acredito que um lugar distante no campo, partindo daqui, considerando que ninguém sabe que ele está aqui agora, seria realmente desaparecer no caso dele."
+**Narrador**
+
+As três moedas pousam sobre a madeira, uma após a outra. Iria termina de apertar a dobra de um pano limpo antes de tocá-las. Conta-as com o polegar, sem cerimônia, e as guarda numa caixa estreita junto dos potes de ervas. A dívida imediata está paga.
+
+Ela continua voltada para Colm enquanto escuta. Dois dedos sob o maxilar dele, atenção na respiração; só depois torna a olhar para Ren.
+
+— Você não sabe que ninguém sabe que ele está aqui — diz, em voz baixa. — Sabe que não viu ninguém seguindo vocês até a minha porta. É diferente.
+
+Não há acusação no tom. Apenas a precisão seca de quem não aceita um diagnóstico feito pela metade.
+
+— Conheço gente mais para dentro do campo. Gente que talvez receba um homem doente por dinheiro, e que não faz perguntas só para alimentar conversa. Mas conhecê-los também significa não levar perigo à soleira deles sem saber que perigo é esse.
+
+Iria fecha a caixa das moedas e apoia a mão sobre a tampa.
+
+— “Bandidos” não basta. Quantos podem procurá-lo? Respondem a quem? Procuram o rosto dele, o nome, ou os dois? Têm gente na estrada, na Vigília ou entre os barqueiros? E o perigo acompanha este homem... ou acompanha você?
+
+Ela inclina ligeiramente a cabeça na direção de Colm.
+
+— Diga-me o que sabe, sem melhorar a história para me tranquilizar. Então eu lhe digo se conheço uma porta que ainda possa ser aberta.
+
+<!-- turno-transacional:s003-7b971f8e84cf329b -->
+**Jogador**
+
+Ren conta a Iria sua história, mas sem entrar em todos os detalhes. Fala que veio a Ravens Bluff procurar um homem que fugiu de sua terra. Um homem perigoso. E que esse homem está na cidade e está começando a controlar o crime ali dentro. Fala que Colm é irmão de uma das minhas fontes, que trabalha em Narwhal Manor, e que ele fora capturado por Bram Vask para tentar pressiona-la.
+
+Explica o que ocorreu no dia de hoje: ele veio checar se Colm estava bem, e se deparou com o sequestro. Resgatou Colm e Mera, e os trouxe aqui sem cauda.
+
+"Eu sei bem que isso não significa que nunca aparecerão aqui. Só o fato de você morar perto do lugar onde o resgatei já é motivo suficiente pra chegarem a esse lugar. Não a culpo se não quiser por suas mãos nisso. Se me informar alguém aonde eu possa levar esse amigo, talvez alguém mais longe, eu posso fazê-lo eu mesmo amanhã, logo no raiar do sol."
+**Narrador**
+
+*Persuasão: 7 contra CD 14 — falha.*
+
+Iria deixa Ren falar até o fim. Não o interrompe quando ele menciona o homem vindo de sua terra, nem quando Narwhal Manor e Bram Vask entram na história. Apenas uma vez seus olhos passam por Mera — que permanece ali, testemunha viva do resgate e garantia de que ao menos aquela parte não é invenção — antes de voltarem para Ren.
+
+Quando ele termina, a casa parece mais quieta. Do catre vem a respiração áspera, mas regular, de Colm. Iria encosta a ponta dos dedos na tampa da caixa onde guardou as moedas.
+
+— Isso não diminuiu o risco — diz. — Só deu nomes a ele.
+
+Ela os enumera sem pressa, como sintomas que não pretende esquecer.
+
+— Narwhal Manor. Bram Vask. Um homem de fora criando raízes no crime da cidade. E Colm não vale pelo que fez; vale por quem pode ser pressionado através dele.
+
+Iria olha para o ferido.
+
+— Se é assim, qualquer casa que o receba pode virar outra armadilha. E eu estaria entregando a porta de alguém que confia em mim a homens que já usaram um inocente como isca. Não farei isso. Não lhe darei um nome.
+
+A recusa vem sem hostilidade, mas também sem fresta.
+
+— Ele fica aqui até amanhã porque aceitei seu dinheiro e porque os pulmões dele precisam de repouso. Ao amanhecer, eu o examino. Se puder viajar, você o leva. Posso lhe dizer quais caminhos evitam povoados, quais moinhos têm gente demais olhando e onde a estrada se abre para o campo. Mas nenhuma porta. Não com o que sei agora.
+
+Ela afasta a mão da caixa e volta a atenção para Colm.
+
+— Se as circunstâncias mudarem, pergunte outra vez. Por enquanto, minha resposta é não.
+
+<!-- turno-transacional:s003-9e02627d76a8dab6 -->
+**Jogador**
+
+Ren aceita sem reclamar.
+
+"Amanhã pela manhã eu estarei aqui, bem cedo."
+
+Olha para Mera. Estende 3 moedas de ouro a ela.
+
+"Sei que não paga seus prejuízos e o trauma. Mas deve ajudar a compensar."
+
+Ren pergunta se pode esconder a carroça em algum lugar da casa. Explica que pretende usá-la amanhã para mover Colm para algum outro lugar. Se Iria confirmar, ele mesmo tentará camuflar a carroça em algum lugar perto que ajude que ela não seja identificada.
+
+"Obrigado, Iria. Obrigado, Mera", Ren diz a elas. Fala com Colm: "Amanhã eu volto. Sua irmã está bem. Darei notícia de você a ela ainda hoje."
+**Narrador**
+
+Mera olha primeiro para as moedas, depois para Ren. Não há falsa modéstia em seu rosto, apenas uma conta feita em silêncio: madeira perdida, trabalho interrompido, o ferimento que ainda a faz poupar uma das pernas.
+
+— Trauma não entra em conta — diz. — Mas comida e dia sem trabalhar entram.
+
+Ela recolhe as três moedas e as fecha na mão.
+
+— Aceito.
+
+Iria, porém, nega com a cabeça assim que Ren menciona deixar a carroça junto da casa.
+
+— Aqui, não. Uma carroça parada ao lado da minha porta conta uma história para qualquer um que passe pela estrada.
+
+Ela indica o lado do rio com dois dedos.
+
+— Depois da curva há um baixio onde a água comeu a margem antiga. Amieiros cresceram por cima. Se conseguir fazê-la entrar de ré sem quebrar tudo ao redor, a estrada não verá as rodas. Cubra o eixo e desfaça seu próprio rastro.
+
+No catre, Colm abre os olhos quando ouve o nome da irmã. A demora antes de reconhecer Ren é curta, mas visível. Ele engole com dificuldade.
+
+— Não traga Kethra aqui — murmura. A voz áspera quase desaparece sob a respiração seguinte. — Só diga que estou vivo.
+
+Mera permanece perto dele. Iria já tornou a ajustar o pano e a infusão, como se a promessa de voltar cedo fosse algo que só ganharia peso quando Ren de fato cruzasse aquela porta outra vez.
+
+— Antes do sol tocar o alto das árvores — diz a curandeira. — Depois disso, cedo já virou outra coisa.
+
+*Sobrevivência: 18 contra CD 14 — sucesso.*
+
+Ren conduz a carroça para fora do terreno da casa e contorna a curva indicada. O baixio é estreito, coberto por capim úmido e ramos baixos. Ele a faz entrar de ré, contém o rangido das rodas e trabalha sobre os sinais que deixaria: quebra a silhueta com folhagem, escurece as partes claras com barro e usa um ramo comprido para desfazer as marcas mais nítidas no solo molhado.
+
+Da estrada, a carroça deixa de parecer uma carroça. Restam sombras irregulares sob os amieiros e uma faixa de vegetação que não chama atenção casual. Uma busca próxima e deliberada ainda poderia encontrá-la, mas ninguém passando pelo ramal a identificaria sem motivo para parar.
+
+Quando termina, são aproximadamente 08:55. A casa baixa de Iria fica além da curva, fora da vista direta; Mera e Colm permanecem lá dentro. Ren está junto à carroça camuflada, com a estrada úmida de volta a Ravens Bluff ao alcance.
+
+<!-- turno-transacional:s003-9acf84870a8af11e -->
+**Jogador**
+
+Ren decide voltar a Ravens Bluff. Ele irá pelo caminho como sempre: parecendo um homem maltrapilho. Tentará entrar na cidade junto de algum grupo de pobres trabalhadores que estiverem entrando em algum momento, pra não chamar atenção. E depois de entrar irá até Kethra Dunn.
+**Narrador**
+
+Ren deixa a carroça sob os amieiros e prepara o rosto que Ravens Bluff menos se esforça para recordar. Vira e amassa as partes mais reconhecíveis da roupa, espalha barro seco onde o tecido ainda parece cuidado demais e altera a maneira de carregar os ombros. Não tenta parecer outra pessoa importante. Torna-se apenas mais um homem em quem ninguém deseja reparar por muito tempo.
+
+A estrada ainda está úmida quando ele começa a volta. Perto da aproximação da cidade, Ren não força a entrada nem escolhe o primeiro grupo disponível. Espera. Deixa passar gente apressada demais, uma carroça com poucos homens e dois viajantes que conversam como quem conhece todos ao redor. A oportunidade vem com trabalhadores do rio e dos fornos: pás gastas aos ombros, cestos vazios, fuligem nas mangas e cansaço suficiente para que um estranho maltrapilho não mereça pergunta.
+
+Ren entra no fluxo pelo lado, acompanhando o passo geral sem pedir acolhimento nem iniciar conversa. Quando o caminho se mistura às ruas de Ravens Bluff, ele já é apenas uma figura entre muitas. Ninguém o detém. Ninguém se separa do grupo para acompanhá-lo.
+
+*Nenhuma rolagem foi necessária: disfarce superficial, contato mínimo e deslocamento sem oposição ativa estabelecida.*
+
+Uma vez dentro da cidade, Ren abandona o grupo aos poucos e segue por vias secundárias até as cercanias de Narwhal Manor. Não se aproxima diretamente da entrada de serviço. O ponto morto do vaso já morreu, e repetir um padrão conhecido seria oferecer a Bram uma linha entre Kethra e o resgate do irmão.
+
+Do abrigo estreito entre uma construção de serviço e uma pilha de caixotes vazios, Ren enfim a encontra. Kethra atravessa os fundos de Narwhal Manor com roupa de trabalho e um volume de tecido dobrado nos braços. Há outras pessoas no pátio, mas por alguns instantes nenhuma caminha junto dela.
+
+Ela ainda não viu Ren.
+
+É aproximadamente 10:45 de 7 Eleasis. Colm está vivo sob os cuidados de Iria. A carroça permanece camuflada perto da casa da curandeira. Ren está novamente em Ravens Bluff, observando Kethra à distância e ainda sem decidir como fará o contato.
+
+**Fim da sessão 3.**

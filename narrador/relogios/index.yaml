@@ -1,0 +1,16 @@
+schema_relogios: 1
+natureza: reservado
+relogios:
+  resposta_red_sail_ao_corpo:
+    arquivo: narrador/relogios/resposta_red_sail_ao_corpo.yaml
+    sessao_ultima_atualizacao: 4
+  rastro_fraco_no_pomar:
+    arquivo: narrador/relogios/rastro_fraco_no_pomar.yaml
+    sessao_ultima_atualizacao: 4
+  exposicao_do_contato_de_kethra:
+    arquivo: narrador/relogios/exposicao_do_contato_de_kethra.yaml
+    sessao_ultima_atualizacao: 4
+  exposicao_do_contato_de_pell:
+    arquivo: narrador/relogios/exposicao_do_contato_de_pell.yaml
+    sessao_ultima_atualizacao: 4
+quantidade: 4

@@ -5,9 +5,9 @@ npc:
   nome: Silva Elkwood
   grupo: Jack Mooney & Sons Circus / Chauntea
   medidores:
-    vinculo: 7
+    vinculo: 8
     confianca: 8
-    risco_percebido: 8
+    risco_percebido: 9
   natureza_do_vinculo: protetivo, quase maternal e prático
   subtexto_romantico: nenhum
   observacao_afetiva: 'Silva pode gostar muito de Ren e ainda tratá-lo com secura. O calor dela deve aparecer como

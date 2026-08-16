@@ -36,3 +36,19 @@ relacao:
   - Fugir sozinho após um golpe parece plausível; fugir carregando Brass seria muito mais arriscado.
   - Se Brass sobreviver ou escapar, pode conectar Ren mais diretamente à pressão contra a Red Sail.
   - O ponto de observação do galpão de cordame pode estar comprometido para uso futuro.
+eventos_pos_migracao:
+- transacao: s004-6a70662f45da5d09
+  sessao: 4
+  resumo: 'Silva aceita procurar uma rota para Colm. Ren dorme duas horas e medita meia hora, completando descanso
+    curto e recuperando 6/6 Ki; evita procurar Nera. Silva deixa recado de que uma cama e duas transferências foram
+    aceitas, faltando definir o primeiro ponto de entrega. À noite, Ren veste as camadas escuras de O Vento da Noite
+    e alcança novo ponto alto sobre a Red Sail com 21 contra CD 16 em Furtividade. Vigia por cerca de três horas:
+    a segurança está reforçada, Brass não aparece e Ren obtém 12 contra CD 15 em Investigação, não conseguindo traçar
+    uma rota que permita capturá-lo vivo e removê-lo por dez minutos sem intervenção.'
+  deltas:
+  - alvo: relacao:dain_brass_mord
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Brass não apareceu na Red Sail durante a vigilância de Ren entre aproximadamente 20:20 e 23:20 de 7 Eleasis;
+      os fundos operaram com pares, iluminação de controle e vigilância reforçada, impedindo mapear uma rota limpa
+      de abdução.

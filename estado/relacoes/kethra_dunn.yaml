@@ -5,11 +5,12 @@ historico: historico/relacoes/kethra_dunn.yaml
 relacao:
   nome: Kethra Dunn
   tipo: funcionária de serviço de Narwhal Manor / fonte potencial
-  local: Lavadouro dos Três Tanques, Rua da Cal; fonte interna em Narwhal Manor
-  status: fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem
-    sobre ponte baixa
-  atitude_para_ren: assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala da
-    ameaça
+  local: fundos de Narwhal Manor, avistada por Ren no fim da manhã de 7 Eleasis
+  status: Kethra sabe que Colm foi entregue vivo e estável a uma cadeia compartimentada cujo destino Ren também
+    desconhece. Ela não conseguiu instalar o cinzeiro porque a saída de lixo passou a ser contada. Um escriturário
+    viu um trabalhador disfarçado procurá-la diretamente.
+  atitude_para_ren: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição de
+    contato direto sob observação crescente
   confianca: baixa, mas real em termos práticos
   respeito: prático e cauteloso
   motivo_atual: Ren dispensou Kethra antes que a ausência dela chamasse atenção. Kethra avisou que, se Ren procurar

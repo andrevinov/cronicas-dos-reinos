@@ -1,0 +1,35 @@
+schema_historico_npc: 2
+id: homem_maos_limpas
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s004-a17b3d53684f1bde
+  sessao: 4
+  resumo: Ren gasta 1 Ki em Passo do Vento e alcança o homem de mãos limpas antes da curva. Ambos obtêm 19 na iniciativa,
+    mas Ren age primeiro por Destreza e o alvo está surpreso. Ren acerta cinco golpes desarmados letais, causa 33
+    de dano e mata o intermediário antes que ele consiga gritar. Às 12:41, o corpo e seus pertences permanecem sem
+    revista junto à vala; Passos sem Pegadas ainda dura cerca de quatro minutos.
+  deltas:
+  - alvo: npc:homem_maos_limpas
+    caminho: nome
+    op: set
+    valor: homem de mãos limpas
+  - alvo: npc:homem_maos_limpas
+    caminho: grupo
+    op: set
+    valor: intermediário ligado a Bram Vask, à Red Sail e ao circuito da falsa lua
+  - alvo: npc:homem_maos_limpas
+    caminho: status
+    op: set
+    valor: morto por Ren em emboscada silenciosa na estrada do Fire River em 7 Eleasis
+  - alvo: npc:homem_maos_limpas
+    caminho: local
+    op: set
+    valor: vala úmida junto a uma curva da estrada do Fire River a leste de Ravens Bluff
+  - alvo: npc:homem_maos_limpas
+    caminho: estatisticas
+    op: set
+    valor:
+      ca: 12
+      iniciativa: 2
+      pv_atuais: 0
+      pv_maximos: 27

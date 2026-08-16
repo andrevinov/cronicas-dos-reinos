@@ -6,9 +6,12 @@ relacao:
   nome: Irmã Halessa Vorn
   tipo: ouvidora juramentada de Tyr
   local: Casa de Tyr, Temple District
-  status: em cena
-  atitude_para_ren: formal, cautelosa e operacionalmente disposta a escalar
-  confianca: baixa institucional
+  status: Halessa confirmou que o caso Vell avançou, preservou contradições da oitiva de Velis e, após o apelo de
+    Ren, revelou uma janela legítima de observação na Casa de Pesos da Ponte Baixa sem autorizar invasão ou confronto
+  atitude_para_ren: formal e cautelosa, mas mais disposta a cooperação operacional limitada quando Ren prioriza
+    inocentes e aceita fronteiras legais
+  confianca: cautelosa e crescente, ainda condicionada a Ren não contaminar provas nem transformar observação em
+    guerra privada
   respeito: inicial, pelo foco em testemunhas vivas
   motivo_atual: 'Na manhã seguinte ao Benefício da Lona Aberta, uma ficha reservada de Tyr chegou a Silva Elkwood
     no circo: Luath confirmou a cópia parcial e a ação contra buscas ilegais, Maerra confirmou o lacre e a abertura

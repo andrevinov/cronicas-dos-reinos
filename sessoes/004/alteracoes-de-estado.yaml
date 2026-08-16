@@ -1,0 +1,174 @@
+schema_alteracoes_transacionais: 1
+sessao: 4
+status: em_andamento
+fonte: sessoes/004/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 4
+  modo: vigilancia_narwhal
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 5/6
+  ca: 17
+  dinheiro_po: 39
+  data: 7 Eleasis, 1372 DR
+  hora: 10:45 de 7 Eleasis
+  area: Narwhal Manor
+  ponto_exato: em cobertura discreta nos fundos de Narwhal Manor, observando Kethra Dunn à distância
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 4
+  modo: deslocamento_para_vigilancia_ponte_baixa
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 35
+  data: 8 Eleasis, 1372 DR
+  hora: 20:10 de 8 Eleasis
+  area: Jack Mooney & Sons Circus
+  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
+    uma capa simples
+  nivel_ficha: 6
+consolidacoes:
+- id: s004-cena-291377ec28d23976
+  tipo: cena
+  transacoes:
+  - s004-f3f10782e6b036a0
+  - s004-bd787b732995b8f2
+  - s004-d1e89610cd4d9313
+  - s004-a17b3d53684f1bde
+  - s004-91d5270b07c5ac30
+  - s004-9f2a1e7ef0323b96
+  - s004-c60332cdc3a09481
+  - s004-9aff1a8cf9c2a85f
+  - s004-6a70662f45da5d09
+  deltas: 78
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/homem_maos_limpas.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/kethra_dunn.yaml
+  - estado/npcs/silva_elkwood.yaml
+  - estado/relacoes/dain_brass_mord.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/npcs/homem_maos_limpas.yaml
+  - historico/npcs/kethra_dunn.yaml
+  - historico/npcs/silva_elkwood.yaml
+  - historico/relacoes/dain_brass_mord.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/resposta_red_sail_ao_corpo.yaml
+  - narrador/sessoes/004/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-6a70662f45da5d09.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-91d5270b07c5ac30.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-bd787b732995b8f2.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-d1e89610cd4d9313.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-f3f10782e6b036a0.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/004/alteracoes-de-estado.yaml
+  - sessoes/004/consequencias.md
+  - sessoes/004/consolidacoes.jsonl
+  - sessoes/004/resumo.md
+- id: s004-cena-5db2b50b7327570e
+  tipo: cena
+  transacoes:
+  - s004-eb577844c071f688
+  - s004-f043b23efef4256e
+  - s004-24af46ec61eded9c
+  - s004-b690cc97d44c1933
+  - s004-28eeef61d124d50e
+  - s004-2a66435c0944f382
+  deltas: 74
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/colm_dunn.yaml
+  - estado/relacoes/hessa_morn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/iria_doss.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/mera_fumaca.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/colm_dunn.yaml
+  - historico/relacoes/hessa_morn.yaml
+  - historico/relacoes/iria_doss.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/mera_fumaca.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/rastro_fraco_no_pomar.yaml
+  - narrador/relogios/resposta_red_sail_ao_corpo.yaml
+  - narrador/sessoes/004/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-24af46ec61eded9c.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-28eeef61d124d50e.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-2a66435c0944f382.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-b690cc97d44c1933.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-eb577844c071f688.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-f043b23efef4256e.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/004/alteracoes-de-estado.yaml
+  - sessoes/004/consequencias.md
+  - sessoes/004/consolidacoes.jsonl
+  - sessoes/004/resumo.md
+- id: s004-cena-6084904558d65ec9
+  tipo: cena
+  transacoes:
+  - s004-808105c277858bb4
+  - s004-e6324f023152781b
+  - s004-f568de46dc948fdf
+  - s004-e3ff1e80256cc261
+  - s004-277f800e52271ff7
+  deltas: 72
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/kethra_dunn.yaml
+  - estado/npcs/pell.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/pell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/relacoes/velis_rook.yaml
+  - estado/tempo.yaml
+  - historico/npcs/kethra_dunn.yaml
+  - historico/npcs/pell.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/pell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - historico/relacoes/velis_rook.yaml
+  - narrador/relogios/exposicao_do_contato_de_kethra.yaml
+  - narrador/relogios/exposicao_do_contato_de_pell.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/resposta_red_sail_ao_corpo.yaml
+  - narrador/sessoes/004/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-277f800e52271ff7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-808105c277858bb4.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-e3ff1e80256cc261.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-e6324f023152781b.md
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-f568de46dc948fdf.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/004/alteracoes-de-estado.yaml
+  - sessoes/004/consequencias.md
+  - sessoes/004/consolidacoes.jsonl
+  - sessoes/004/resumo.md

@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 3
+  numero: 5
   status: em_sessao
-  modo_de_cena: aproximacao_curandeira
+  modo_de_cena: deslocamento_para_vigilancia_ponte_baixa
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -18,15 +18,15 @@ recursos:
     atuais: 45
     maximos: 45
   ki:
-    atuais: 5
+    atuais: 6
     maximos: 6
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 45
+  dinheiro_po: 35
 tempo:
-  data: 7 Eleasis, 1372 DR
-  hora_aproximada: 08:22 de 7 Eleasis
-  periodo: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
+  data: 8 Eleasis, 1372 DR
+  hora_aproximada: 20:10 de 8 Eleasis
+  periodo: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -34,9 +34,9 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: estrada do Fire River
-  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
-    leste da secagem velha
+  area: Jack Mooney & Sons Circus
+  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
+    uma capa simples
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -46,7 +46,7 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/003/handoff.yaml
-  transcricao_fria: sessoes/003/transcricao.md
+  handoff_atual: sessoes/005/handoff.yaml
+  transcricao_fria: sessoes/005/transcricao.md
   narrador: narrador/
   regras: regras/

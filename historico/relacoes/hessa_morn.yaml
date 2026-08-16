@@ -1,0 +1,45 @@
+schema_historico_relacao: 2
+id: hessa_morn
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s004-28eeef61d124d50e
+  sessao: 4
+  resumo: Ren chega ao lagar sem detectar cauda. Responde com franqueza limitada às perguntas de Colm. Obtém 13
+    contra CD 13 em Percepção e confirma os sinais de Hessa, o menino permitido e ausência de vigias. Hessa pede
+    para examinar Colm.
+  deltas:
+  - alvo: relacao:hessa_morn
+    caminho: nome
+    op: set
+    valor: Hessa Morn
+  - alvo: relacao:hessa_morn
+    caminho: tipo
+    op: set
+    valor: horticultora / primeira mão de uma rota rural compartimentada de Chauntea
+  - alvo: relacao:hessa_morn
+    caminho: local
+    op: set
+    valor: antigo lagar de maçãs além do marco de pedra partida
+  - alvo: relacao:hessa_morn
+    caminho: status
+    op: set
+    valor: encontrou Ren com os sinais e contrassenha corretos; aguarda examinar Colm
+  - alvo: relacao:hessa_morn
+    caminho: atitude_para_ren
+    op: set
+    valor: cautelosa, profissional e compartimentada
+  - alvo: relacao:hessa_morn
+    caminho: confianca
+    op: set
+    valor: baixa; baseada no protocolo
+- transacao: s004-2a66435c0944f382
+  sessao: 4
+  resumo: Hessa aceita Colm e o oculta sob a carga; a carroça de Mera fica no lagar. Ren falha por pouco em Sobrevivência,
+    perde tempo e é visto apenas como trabalhador desconhecido por um velho. Volta sem bloqueio e encontra o ponto
+    morto de Narwhal ainda sem cinzeiro ou mensagem.
+  deltas:
+  - alvo: relacao:hessa_morn
+    caminho: status
+    op: set
+    valor: aceitou Colm, ocultou-o sob a carga e iniciou o trajeto para a segunda mão; reteve a carroça de Mera
+      no lagar

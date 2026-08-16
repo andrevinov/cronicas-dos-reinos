@@ -56,3 +56,31 @@ relacao:
   - O depósito de 2 PO foi visto parcialmente por uma funcionária da Silver Lily, sem leitura do bilhete; o ponto
     de Pell está menos limpo.
   - O ponto morto da Silver Lily morreu; novo contato com Pell exigirá reinstalação discreta.
+eventos_pos_migracao:
+- transacao: s004-f568de46dc948fdf
+  sessao: 4
+  resumo: Ren procura Pell, mas obtém 9 contra CD 13 em Investigação; um copeiro da Silver Lily nota um homem oriental
+    procurando um mensageiro jovem e Pell, avisado, aborda Ren numa viela. Ren paga 4 PO adiantadas, ficando com
+    35 PO. Encomenda investigação dos proprietários, dívidas e riscos das três propriedades, priorizando a Casa
+    do Salgueiro Seco, e oferece bônus de 1 PO por informação imobiliária relevante e 2 PO por paradeiro ou rotas
+    de Brass. Pell aceita deixar o resultado à noite numa garrafa profundamente escondida sob a escada dos fundos
+    da Silver Lily; Ren verificará pela manhã e pagará os bônus ali.
+  deltas:
+  - alvo: relacao:pell
+    caminho: status
+    op: set
+    valor: Pell recebeu 4 PO adiantadas para investigar proprietários, dívidas, riscos e necessidades ligados à
+      Estalagem da Lança Torta, ao Pátio dos Três Martelos e à Casa do Salgueiro Seco, com prioridade para esta
+      última; também tentará escutar rotas de Brass. Entrega prevista à noite em nova garrafa sob a escada dos fundos
+      da Silver Lily.
+  - alvo: relacao:pell
+    caminho: motivo_atual
+    op: set
+    valor: 'Ganhar os bônus prometidos sem ser visto perguntando diretamente: 1 PO por informação imobiliária realmente
+      interessante e 2 PO por paradeiro ou caminhos de Brass.'
+  - alvo: relacao:pell
+    caminho: limites
+    op: append
+    valor: 'Novo ponto morto acordado em 8 Eleasis: garrafa suja profundamente enfiada no vão junto à parede sob
+      a escada dos fundos da Silver Lily. Papel dentro significa entrega; Ren retira a mensagem, deixa a garrafa
+      e deposita depois os bônus devidos. Se a garrafa sumir, o caminho morreu.'

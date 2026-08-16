@@ -60,3 +60,19 @@ relacao:
     concreta de volta.
   - Tavin sabe que Ren aprendeu a lutar dentro de um clã de Kozakura e associa isso a treino duro.
   - Tavin viu a pequena prévia de Kage para os Vell antes da reprise de 5 Eleasis.
+eventos_pos_migracao:
+- transacao: s004-277f800e52271ff7
+  sessao: 4
+  resumo: Ren retorna ao circo, toma banho, come e informa Silva sobre a pista de Halessa e sua intenção de vigiar
+    a Casa de Pesos. Silva relata que Nera e Tavin estão fisicamente bem; Nera dorme mal, está assustada e zangada
+    com a separação, mas segue o protocolo, enquanto Tavin está mais estável, ajuda sob o nome Timo e continua esperando
+    Ren voltar. Silva considera uma casa própria mais adequada que o circo, mas adverte que alunos devem ser pessoas
+    com escolha, não muralhas. Ela transmite aos Vell que Ren está vivo, bem e com saudades. Às 20:10, Ren veste
+    seu traje oriental original de infiltração, distinto do figurino de Kage, cobre-o com a capa e parte para a
+    Ponte Baixa. Pell falha nas duas buscas realizadas durante a tarde, resultado ainda desconhecido de Ren.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: status
+    op: set
+    valor: fisicamente bem e mais estável sob o nome de cobertura Timo; ajuda em tarefas pequenas, ainda espera
+      Ren voltar e soube por Silva que ele está vivo, bem e com saudades.

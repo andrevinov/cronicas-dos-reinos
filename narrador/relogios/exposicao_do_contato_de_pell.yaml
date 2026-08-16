@@ -1,0 +1,13 @@
+schema_relogio: 1
+id: exposicao_do_contato_de_pell
+natureza: reservado
+relogio:
+  titulo: Exposição do contato de Pell
+  progresso: 2
+  limite: 4
+  descricao: O antigo depósito de moeda foi visto parcialmente por uma funcionária; agora um copeiro percebeu um
+    homem oriental de roupas pobres procurando um mensageiro jovem nas portas de serviço. Não viu Pell, o ouro ou
+    a conversa, mas a repetição pode marcar o rapaz como contato.
+  consequencia_no_limite: Pell é seguido, pressionado ou recebe oferta rival; o ponto morto pode ser observado,
+    adulterado ou usado como isca.
+eventos: []

@@ -205,3 +205,99 @@ relacao:
     no papel externo.
   - Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no
     acampamento.
+eventos_pos_migracao:
+- transacao: s004-c60332cdc3a09481
+  sessao: 4
+  resumo: Ren toma banho no circo e depois conta a Silva que Colm está vivo sob tratamento, que Bram Vask tentou
+    matá-los novamente e que fará qualquer coisa para proteger Nera e Tavin, omitindo a morte do homem de mãos limpas.
+    Silva reforça que proteger os Vell, o circo e as ações de Kage precisam permanecer separados, alerta contra
+    a lógica de 'custe o que custar' e pergunta diretamente se Ren já fez algo naquele dia. A conversa fica aberta
+    às 15:10.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: atitude_para_ren
+    op: set
+    valor: favorável, protetiva e vigilante; aliviada porque Colm está vivo e Ren voltou sem cauda percebida, mas
+      alarmada pela disposição declarada de pagar qualquer custo para proteger os Vell
+  - alvo: relacao:silva_elkwood
+    caminho: riscos
+    op: append
+    valor: Ren contou a Silva que Bram Vask tentou matar Colm e o próprio Ren novamente, e declarou que alguns homens
+      são irrecuperáveis e que protegerá Nera e Tavin custe o que custar; Silva não sabe que Ren matou o homem de
+      mãos limpas, mas questionou se ele já havia feito algo naquele dia.
+- transacao: s004-9aff1a8cf9c2a85f
+  sessao: 4
+  resumo: Ren explica a Silva por que considera Bram Vask uma ameaça recorrente e pergunta como proteger Colm e
+    outras vítimas sem conseguir estar em todos os lugares. Silva separa o problema imediato de Colm da capacidade
+    estrutural de Bram de produzir novas vítimas. Ela aconselha uma cadeia compartimentada de abrigo e transporte,
+    ação contra dinheiro, cobradores, documentos e sucessores de Bram, e alerta que matar Bram pode apenas promover
+    outro agente. Silva oferece procurar, antes do anoitecer, uma rota rural de Chauntea para Colm, desde que o
+    circo e os Vell permaneçam fora e Ren aceite não controlar toda a cadeia.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: atitude_para_ren
+    op: set
+    valor: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren, mas rejeita
+      que ele assuma sozinho o direito de escolher todos os custos
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva ofereceu procurar antes do anoitecer uma rota compartimentada de Chauntea para acolher e mover
+      Colm, condicionada à aceitação de Ren e à separação completa do circo, de Nera e de Tavin
+  - alvo: relacao:silva_elkwood
+    caminho: riscos
+    op: append
+    valor: Ren contou a Silva que acredita que Bram Vask tenta corromper Kethra Dunn para facilitar a entrada de
+      Masao e aliados em Ravens Bluff; Silva tratou essa ligação como ameaça alegada por Ren e aconselhou obter
+      papel, testemunhas e estrutura antes de concluir que a morte de Bram resolveria o problema.
+- transacao: s004-6a70662f45da5d09
+  sessao: 4
+  resumo: 'Silva aceita procurar uma rota para Colm. Ren dorme duas horas e medita meia hora, completando descanso
+    curto e recuperando 6/6 Ki; evita procurar Nera. Silva deixa recado de que uma cama e duas transferências foram
+    aceitas, faltando definir o primeiro ponto de entrega. À noite, Ren veste as camadas escuras de O Vento da Noite
+    e alcança novo ponto alto sobre a Red Sail com 21 contra CD 16 em Furtividade. Vigia por cerca de três horas:
+    a segurança está reforçada, Brass não aparece e Ren obtém 12 contra CD 15 em Investigação, não conseguindo traçar
+    uma rota que permita capturá-lo vivo e removê-lo por dez minutos sem intervenção.'
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva obteve antes da noite uma cama rural e uma cadeia de duas transferências para Colm, sem expor nomes;
+      falta Ren definir com ela o ponto neutro da primeira entrega
+- transacao: s004-24af46ec61eded9c
+  sessao: 4
+  resumo: Ren volta ao circo sem cauda. Silva revela Hessa Morn e o protocolo da primeira transferência. Ren dorme
+    pouco mais de três horas, medita meia hora, recupera 6/6 Ki e parte às 4:45 para buscar Colm.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: 'Silva entregou a Ren a primeira etapa da rota compartimentada de Colm: Hessa Morn no lagar abandonado;
+      a segunda mão e a cama final permanecem ocultas'
+- transacao: s004-b690cc97d44c1933
+  sessao: 4
+  resumo: Ren deixa um recado para Nera com Silva. Passa pelos observadores da saída com 20 contra CD 14 em Enganação
+    e chega a Iria por rota longa com 20 contra CD 14 em Sobrevivência. O Broche recupera um uso ao amanhecer. Iria
+    confirma Colm estável; Ren o acomoda na carroça e parte rumo ao lagar.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: riscos
+    op: append
+    valor: 'Silva guarda um recado de Ren para entregar diretamente a Nera: ele pede que não se encontrem por enquanto,
+      que ela não se arrisque e assina ''Com amor, R.'''
+- transacao: s004-277f800e52271ff7
+  sessao: 4
+  resumo: Ren retorna ao circo, toma banho, come e informa Silva sobre a pista de Halessa e sua intenção de vigiar
+    a Casa de Pesos. Silva relata que Nera e Tavin estão fisicamente bem; Nera dorme mal, está assustada e zangada
+    com a separação, mas segue o protocolo, enquanto Tavin está mais estável, ajuda sob o nome Timo e continua esperando
+    Ren voltar. Silva considera uma casa própria mais adequada que o circo, mas adverte que alunos devem ser pessoas
+    com escolha, não muralhas. Ela transmite aos Vell que Ren está vivo, bem e com saudades. Às 20:10, Ren veste
+    seu traje oriental original de infiltração, distinto do figurino de Kage, cobre-o com a capa e parte para a
+    Ponte Baixa. Pell falha nas duas buscas realizadas durante a tarde, resultado ainda desconhecido de Ren.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
+      mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
+      consumível.

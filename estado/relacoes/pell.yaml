@@ -6,14 +6,14 @@ relacao:
   nome: Pell
   tipo: mensageiro local
   local: circuito Silver Lily / Rua da Corda / Fishtown
-  status: ativo
+  status: Pell recebeu 4 PO adiantadas para investigar proprietários, dívidas, riscos e necessidades ligados à Estalagem
+    da Lança Torta, ao Pátio dos Três Martelos e à Casa do Salgueiro Seco, com prioridade para esta última; também
+    tentará escutar rotas de Brass. Entrega prevista à noite em nova garrafa sob a escada dos fundos da Silver Lily.
   atitude_para_ren: assustado, oportunista e cooperativo por pagamento
   confianca: muito baixa
   respeito: baixo, mas crescente por medo e utilidade
-  motivo_atual: 'No meio da tarde de 4 Eleasis, Pell deixou novo bilhete em troca das 2 PO: Brass não fica sozinho
-    hoje, mas pode passar pelos fundos da Red Sail entre o sino de seis e o de sete, no movimento do barril seco
-    da cozinha, com um homem entrando antes e outro saindo depois. Ren removeu o ponto morto da Silver Lily depois
-    de ler o bilhete.'
+  motivo_atual: 'Ganhar os bônus prometidos sem ser visto perguntando diretamente: 1 PO por informação imobiliária
+    realmente interessante e 2 PO por paradeiro ou caminhos de Brass.'
   informacoes_compartilhadas_por_pell:
   - Velis disse 'então é hoje', entregou resposta para Brass e foi à Red Sail com a prancheta.
   - Pell não viu o homem marcado e não sabe se ele está na cidade.
@@ -36,6 +36,9 @@ relacao:
   - No novo bilhete de 4 Eleasis, Pell pediu pagamento melhor.
   - Ren deixou 2 PO no ponto morto de Pell e pediu dia/hora ou local onde Dain 'Brass' Mord fique sozinho.
   - Ren removeu o ponto morto da Silver Lily após receber a resposta de Pell no meio da tarde de 4 Eleasis.
+  - 'Novo ponto morto acordado em 8 Eleasis: garrafa suja profundamente enfiada no vão junto à parede sob a escada
+    dos fundos da Silver Lily. Papel dentro significa entrega; Ren retira a mensagem, deixa a garrafa e deposita
+    depois os bônus devidos. Se a garrafa sumir, o caminho morreu.'
   riscos:
   - Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro.
   - Pell não tem lealdade estabelecida; funciona por pagamento, medo e oportunidade.

@@ -58,4 +58,7 @@ sessoes:
 incrementais:
   '3':
     index: personagens/jogador/conhecimento/incrementais/sessao-003/index.yaml
-    quantidade: 2
+    quantidade: 3
+  '4':
+    index: personagens/jogador/conhecimento/incrementais/sessao-004/index.yaml
+    quantidade: 16

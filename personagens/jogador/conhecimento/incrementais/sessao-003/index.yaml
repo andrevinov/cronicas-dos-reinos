@@ -15,4 +15,10 @@ fragmentos:
     e uma testemunha começa a se afastar rumo à estrada.'
   arquivo: personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-1817f1ac59c440f7.md
   bytes: 1095
-quantidade: 2
+- transacao: s003-c85e7801275d8d44
+  titulo: Ren entra abertamente na casa de Iria com Mera como garantia. Colm está vivo e estável, mas fraco, desidratado,
+    contundido e com irritação pulmonar; precisa de repouso e observação até a manhã seguinte. Iria pede 3 PO pelo
+    tratamento e abrigo; pagamento ainda não realizado.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-c85e7801275d8d44.md
+  bytes: 712
+quantidade: 3

@@ -1,7 +1,7 @@
 schema_relacoes: 2
 natureza: indice_relacoes_atuais
 historico_acumulado: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
-quantidade: 34
+quantidade: 35
 relacoes:
   edran_vale:
     nome: Edran Vale
@@ -28,60 +28,62 @@ relacoes:
   velis_rook:
     nome: Velis Rook
     tipo: escrivão menor ligado à alfândega / registros de carga
-    status: em cena; alertado; convocação de Tyr entregue
+    status: compareceu à primeira oitiva de Tyr, apresentou contradições preservadas e nomeou M. Harrow antes da
+      pergunta correspondente; deve permanecer disponível à Casa de Tyr, mas não está preso
     atitude_para_ren: assustada e hostil
     confianca: nenhuma
     respeito: nenhum
     arquivo: estado/relacoes/velis_rook.yaml
     historico: historico/relacoes/velis_rook.yaml
-    bytes_fragmento: 2703
+    bytes_fragmento: 2853
     campos_atuais: 10
   kethra_dunn:
     nome: Kethra Dunn
     tipo: funcionária de serviço de Narwhal Manor / fonte potencial
-    status: fonte prática potencial; Colm/Dent colocado em carroça; ponto morto de Narwhal removido após mensagem
-      sobre ponte baixa
-    atitude_para_ren: assustada, desconfiada, pragmática e operacionalmente aberta, mas não convertida à escala
-      da ameaça
+    status: Kethra sabe que Colm foi entregue vivo e estável a uma cadeia compartimentada cujo destino Ren também
+      desconhece. Ela não conseguiu instalar o cinzeiro porque a saída de lixo passou a ser contada. Um escriturário
+      viu um trabalhador disfarçado procurá-la diretamente.
+    atitude_para_ren: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição
+      de contato direto sob observação crescente
     confianca: baixa, mas real em termos práticos
     respeito: prático e cauteloso
     arquivo: estado/relacoes/kethra_dunn.yaml
     historico: historico/relacoes/kethra_dunn.yaml
-    bytes_fragmento: 3563
+    bytes_fragmento: 3753
     campos_atuais: 10
   colm_dunn:
     nome: Colm Dunn
     tipo: irmão de Kethra Dunn / devedor explorado
-    status: vivo, solto, fraco e a caminho de tratamento; chegada ainda não confirmada
-    atitude_para_ren: assustado, confuso, mas menos perdido após ver Kethra
-    confianca: baixa por necessidade
+    status: entregue vivo, consciente e estável à primeira mão da rota compartimentada
+    atitude_para_ren: grato e cauteloso; reconhece a franqueza limitada de Ren
+    confianca: moderada e ainda prudente
     respeito: baixo, misturado com medo
     arquivo: estado/relacoes/colm_dunn.yaml
     historico: historico/relacoes/colm_dunn.yaml
-    bytes_fragmento: 3037
+    bytes_fragmento: 3068
     campos_atuais: 10
   mera_fumaca:
     nome: Mera Fumaça
     tipo: contato rural possível / guardiã temporária de Colm-Dent
-    status: viva, ferida e manca; armada com besta e conduzindo Colm para tratamento
+    status: permanece na casa de Iria, ferida mas estável; ajudou a acomodar Colm na carroça
     atitude_para_ren: cautelosa, pragmática e cooperativa; Ren a libertou, protegeu Colm e confiou a retirada a
       ela
     confianca: moderada inicial
-    respeito: moderado
+    respeito: moderado, crescente
     arquivo: estado/relacoes/mera_fumaca.yaml
     historico: historico/relacoes/mera_fumaca.yaml
-    bytes_fragmento: 2332
+    bytes_fragmento: 2325
     campos_atuais: 10
   iria_doss:
     nome: Iria Doss
     tipo: curandeira rural e ajustadora de ossos / contato apenas indicado por Mera
-    status: não encontrada por Ren; segundo Mera, ativa e capaz de tratar Colm/Dent
-    atitude_para_ren: desconhecida
+    status: Iria manteve Colm seguro durante a noite, confirmou que ele pode viajar e o entregou a Ren
+    atitude_para_ren: profissional e cautelosa, com a palavra de Mera como garantia inicial
     confianca: desconhecida
     respeito: desconhecido
     arquivo: estado/relacoes/iria_doss.yaml
     historico: historico/relacoes/iria_doss.yaml
-    bytes_fragmento: 1066
+    bytes_fragmento: 1249
     campos_atuais: 10
   sella_rove:
     nome: Sella Rove
@@ -131,13 +133,16 @@ relacoes:
   pell:
     nome: Pell
     tipo: mensageiro local
-    status: ativo
+    status: Pell recebeu 4 PO adiantadas para investigar proprietários, dívidas, riscos e necessidades ligados à
+      Estalagem da Lança Torta, ao Pátio dos Três Martelos e à Casa do Salgueiro Seco, com prioridade para esta
+      última; também tentará escutar rotas de Brass. Entrega prevista à noite em nova garrafa sob a escada dos fundos
+      da Silver Lily.
     atitude_para_ren: assustado, oportunista e cooperativo por pagamento
     confianca: muito baixa
     respeito: baixo, mas crescente por medo e utilidade
     arquivo: estado/relacoes/pell.yaml
     historico: historico/relacoes/pell.yaml
-    bytes_fragmento: 3274
+    bytes_fragmento: 3744
     campos_atuais: 11
   peta:
     nome: Peta
@@ -153,24 +158,27 @@ relacoes:
   nera_vell:
     nome: Nera Vell
     tipo: testemunha protegida / gravadora de selos
-    status: sob proteção temporária de Silva Elkwood
+    status: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
+      tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo,
+      bem e com saudades.
     atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
     confianca: moderada em situação de crise
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 2682
+    bytes_fragmento: 2882
     campos_atuais: 11
   tavin_vell:
     nome: Tavin Vell
     tipo: testemunha jovem
-    status: sob proteção temporária de Silva Elkwood
+    status: fisicamente bem e mais estável sob o nome de cobertura Timo; ajuda em tarefas pequenas, ainda espera
+      Ren voltar e soube por Silva que ele está vivo, bem e com saudades.
     atitude_para_ren: assustado, grato e tentando obedecer
     confianca: baixa, mas crescendo
     respeito: medo respeitoso com simpatia
     arquivo: estado/relacoes/tavin_vell.yaml
     historico: historico/relacoes/tavin_vell.yaml
-    bytes_fragmento: 1720
+    bytes_fragmento: 1851
     campos_atuais: 10
   velha_sella:
     nome: Velha Sella
@@ -219,24 +227,31 @@ relacoes:
   halessa_vorn:
     nome: Irmã Halessa Vorn
     tipo: ouvidora juramentada de Tyr
-    status: em cena
-    atitude_para_ren: formal, cautelosa e operacionalmente disposta a escalar
-    confianca: baixa institucional
+    status: Halessa confirmou que o caso Vell avançou, preservou contradições da oitiva de Velis e, após o apelo
+      de Ren, revelou uma janela legítima de observação na Casa de Pesos da Ponte Baixa sem autorizar invasão ou
+      confronto
+    atitude_para_ren: formal e cautelosa, mas mais disposta a cooperação operacional limitada quando Ren prioriza
+      inocentes e aceita fronteiras legais
+    confianca: cautelosa e crescente, ainda condicionada a Ren não contaminar provas nem transformar observação
+      em guerra privada
     respeito: inicial, pelo foco em testemunhas vivas
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 2720
+    bytes_fragmento: 3123
     campos_atuais: 10
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
-    status: conhecida em jogo
-    atitude_para_ren: favoravel e cautelosa, ainda preocupada com o risco ao circo
+    status: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
+      mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
+      consumível.
+    atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
+      mas rejeita que ele assuma sozinho o direito de escolher todos os custos
     confianca: moderada e vigilante
     respeito: alto
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 2018
+    bytes_fragmento: 3146
     campos_atuais: 10
   jack_mooney:
     nome: Jack Mooney
@@ -302,7 +317,7 @@ relacoes:
     respeito: desconhecido
     arquivo: estado/relacoes/dain_brass_mord.yaml
     historico: historico/relacoes/dain_brass_mord.yaml
-    bytes_fragmento: 2259
+    bytes_fragmento: 2509
     campos_atuais: 10
   rusk_cinza:
     nome: Rusk 'Cinza'
@@ -381,3 +396,14 @@ relacoes:
     historico: historico/relacoes/brunna_torkel.yaml
     bytes_fragmento: 2377
     campos_atuais: 10
+  hessa_morn:
+    arquivo: estado/relacoes/hessa_morn.yaml
+    historico: historico/relacoes/hessa_morn.yaml
+    nome: Hessa Morn
+    tipo: horticultora / primeira mão de uma rota rural compartimentada de Chauntea
+    status: aceitou Colm, ocultou-o sob a carga e iniciou o trajeto para a segunda mão; reteve a carroça de Mera
+      no lagar
+    atitude_para_ren: cautelosa, profissional e compartimentada
+    confianca: baixa; baseada no protocolo
+    bytes_fragmento: 515
+    campos_atuais: 6

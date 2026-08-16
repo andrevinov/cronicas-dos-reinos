@@ -1,0 +1,12 @@
+schema_relogio: 1
+id: resposta_red_sail_ao_corpo
+natureza: reservado
+relogio:
+  titulo: Resposta da Red Sail ao corpo na estrada
+  progresso: 4
+  limite: 4
+  descricao: A Red Sail ligou a morte do homem da estrada à retirada de Colm e, após coordenação de Brass em Narwhal,
+    ampliou a busca dirigida para curandeiros, carroças e propriedades abandonadas a leste. Ainda não possui a casa
+    de Iria, o lagar ou a cadeia rural.
+  consequencia_no_limite: A Red Sail conecta a morte à proteção de Colm ou à atuação de Kage e lança resposta dirigida.
+eventos: []

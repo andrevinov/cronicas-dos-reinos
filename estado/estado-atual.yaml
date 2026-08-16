@@ -3,8 +3,8 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
-  sessao_atual: 3
-  modo_de_cena_atual: aproximacao_curandeira
+  sessao_atual: 5
+  modo_de_cena_atual: deslocamento_para_vigilancia_ponte_baixa
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,25 +18,24 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: estrada do Fire River
-  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
-    leste da secagem velha
-  descricao_operacional: Ren soltou vivo o homem de mãos limpas após obrigá-lo a repetir uma ameaça para Bram Vask.
-    Depois ocultou dos observadores o rumo verdadeiro e alcançou a casa de Iria Doss por rota indireta. A carroça
-    usada por Mera está parada junto à casa, confirmando que Mera e Colm/Dent chegaram; Ren ainda não examinou o
-    interior.
+  area: Jack Mooney & Sons Circus
+  ponto_exato: deixando o acampamento às 20:10, vestido com o traje oriental original de infiltração e coberto por
+    uma capa simples
+  descricao_operacional: Ren descansou no circo, informou Silva e partiu para vigiar a Casa de Pesos da Ponte Baixa
+    antes da janela indicada por Halessa. Usa o traje oriental original de infiltração Kagehira, não o figurino
+    de palco de O Vento da Noite. Está ileso, com 6/6 Ki, 35 PO e o Broche gasto.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 7 Eleasis, 1372 DR
+  data_exata: 8 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 7
+  dia_do_mes: 8
   dezena: 1
-  dia_da_dezena: 7
-  periodo_do_dia: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
-  hora_aproximada: 08:22 de 7 Eleasis
+  dia_da_dezena: 8
+  periodo_do_dia: noite de 8 Eleasis, no Jack Mooney & Sons Circus, pouco antes da partida para a Ponte Baixa
+  hora_aproximada: 20:10 de 8 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -49,19 +48,16 @@ recursos:
     maximos: 6
     dado: d8
   ki:
-    atuais: 5
+    atuais: 6
     maximos: 6
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 45
-  condicoes:
-  - Visão no Escuro ativa aproximadamente até 09:32 de 7 Eleasis
-  - Ren está ileso e adjacente ao homem de mãos limpas em combate público
-  - É o turno de Ren e sua reação está disponível
+    po: 35
+  condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: disponível; uso do amanhecer ainda não gasto
+    broche_do_semblante_humilde: uso gasto até o amanhecer de 9 Eleasis
     passos_sem_pegadas: inativo
 ponteiros:
   tempo_atual: estado/tempo.yaml
@@ -105,7 +101,8 @@ equipamento_em_posse:
   - figurino de O Vento da Noite guardado com Dessa Wren
   - roupa de cidadão menor limpo guardada no circo
   - manta de estopa cinza para quebrar a silhueta
-  - roupas próprias de Ren guardadas com Dessa Wren para limpeza/figurino
+  - 'traje oriental original de infiltração de Ren: roupas ninja Kagehira, conjunto próprio e distinto do figurino
+    de palco de O Vento da Noite'
   - disfarces de Nera e Tavin de Dessa Wren em uso
   - pacote de explorador
 objetivos:
@@ -136,8 +133,8 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren observa de cobertura a casa baixa de Iria Doss. A carroça de Mera está parada ao lado da construção.
-    O interior e a condição atual de Mera e Colm/Dent ainda não foram examinados.
+  cena_atual: Ren está dentro da casa de Iria com Iria Doss, Mera Fumaça e Colm Dunn. Colm está consciente e estável,
+    embora fraco e com irritação pulmonar. Iria aguarda a resposta de Ren ao preço de 3 PO.
   risco_imediato: 'alto e localizado: violência letal terá testemunhas e o confronto pode atrair trabalhadores,
     patrulha ou aliados do alvo.'
 pendencias:

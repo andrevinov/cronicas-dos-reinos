@@ -1,48 +1,51 @@
 personagem:
-  nome: "Ren Kagehira"
-  status: "ativo"
-  campanha: "Crônicas dos Reinos"
-  sistema: "Dungeons & Dragons 5e"
-  fonte_mecanica_principal: "Livro do Jogador, D&D 5e"
-
+  nome: Ren Kagehira
+  status: ativo
+  campanha: Crônicas dos Reinos
+  sistema: Dungeons & Dragons 5e
+  fonte_mecanica_principal: Livro do Jogador, D&D 5e
 identidade:
-  ancestralidade: "Humano variante"
-  cultura_origem: "Kozakuran"
-  origem_geografica: "Kozakura, Kara-Tur"
-  classe: "Monge"
+  ancestralidade: Humano variante
+  cultura_origem: Kozakuran
+  origem_geografica: Kozakura, Kara-Tur
+  classe: Monge
   nivel: 6
-  subclasse: "Caminho da Sombra"
-  background: "Exilado de Clã"
-  alinhamento: "Leal Neutro"
+  subclasse: Caminho da Sombra
+  background: Exilado de Clã
+  alinhamento: Leal Neutro
   idade: 24
   ano_nascimento_equivalente_dr: 1348
-  tamanho: "Médio"
+  tamanho: Médio
   idiomas:
-    - "Comum"
-    - "Kozakuran"
-
+  - Comum
+  - Kozakuran
 criacao:
-  metodo_atributos: "array solo melhorado"
-  array_usado: [16, 15, 14, 13, 12, 10]
+  metodo_atributos: array solo melhorado
+  array_usado:
+  - 16
+  - 15
+  - 14
+  - 13
+  - 12
+  - 10
   ajustes_ancestralidade:
     destreza: 1
     sabedoria: 1
-  talento_inicial: "Móvel"
-  suplementos_mecanicos_opcionais: "nenhum"
-  observacao: "Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional."
+  talento_inicial: Móvel
+  suplementos_mecanicos_opcionais: nenhum
+  observacao: Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional.
   escolhas:
-    pericia_humano_variante: "Investigação"
+    pericia_humano_variante: Investigação
     pericias_monge:
-      - "Acrobacia"
-      - "Furtividade"
-    ferramenta_monge: "ferramentas de caligrafia"
+    - Acrobacia
+    - Furtividade
+    ferramenta_monge: ferramentas de caligrafia
     pericias_background:
-      - "Intuição"
-      - "Percepção"
+    - Intuição
+    - Percepção
     ferramentas_background:
-      - "ferramentas de ladrão"
-      - "kit de disfarce"
-
+    - ferramentas de ladrão
+    - kit de disfarce
 atributos:
   forca:
     valor: 12
@@ -74,42 +77,39 @@ atributos:
     modificador: 0
     salvaguarda_proficiente: false
     bonus_salvaguarda: 0
-
 proficiencia:
   bonus: 3
-
 combate:
   classe_de_armadura:
     valor: 17
-    calculo: "10 + Destreza + Sabedoria, sem armadura"
+    calculo: 10 + Destreza + Sabedoria, sem armadura
   pontos_de_vida:
     maximos: 45
     atuais: 45
-    dados_de_vida: "6d8"
-    calculo: "8 + CON no nível 1; média 5 + CON nos níveis 2, 3, 4, 5 e 6"
+    dados_de_vida: 6d8
+    calculo: 8 + CON no nível 1; média 5 + CON nos níveis 2, 3, 4, 5 e 6
   iniciativa: 4
   deslocamento:
-    base: "30 pés"
-    bonus_monge_sem_armadura: "15 pés"
-    bonus_talento_movel: "10 pés"
-    total: "55 pés"
+    base: 30 pés
+    bonus_monge_sem_armadura: 15 pés
+    bonus_talento_movel: 10 pés
+    total: 55 pés
   ataques:
-    - nome: "Golpe desarmado"
-      bonus_ataque: 7
-      dano: "1d6 + 4 contundente"
-      observacao: "Conta como ataque marcial de monge."
-    - nome: "Wakizashi"
-      mecanica: "espada curta"
-      bonus_ataque: 7
-      dano: "1d6 + 4 perfurante"
-      observacao: "Arma de monge; nome cultural é apenas descritivo."
-    - nome: "Shuriken"
-      mecanica: "dardo"
-      bonus_ataque: 7
-      dano: "1d4 + 4 perfurante"
-      alcance: "20/60 pés"
-      quantidade: 9
-
+  - nome: Golpe desarmado
+    bonus_ataque: 7
+    dano: 1d6 + 4 contundente
+    observacao: Conta como ataque marcial de monge.
+  - nome: Wakizashi
+    mecanica: espada curta
+    bonus_ataque: 7
+    dano: 1d6 + 4 perfurante
+    observacao: Arma de monge; nome cultural é apenas descritivo.
+  - nome: Shuriken
+    mecanica: dardo
+    bonus_ataque: 7
+    dano: 1d4 + 4 perfurante
+    alcance: 20/60 pés
+    quantidade: 9
 pericias:
   acrobacia: 7
   furtividade: 7
@@ -129,157 +129,164 @@ pericias:
   prestidigitacao: 4
   atuacao: 0
   lidar_com_animais: 3
-
 sentidos:
   percepcao_passiva: 16
   investigacao_passiva: 14
   intuicao_passiva: 16
-
 proficiencias:
   armaduras: []
   armas:
-    - "armas simples"
-    - "espadas curtas"
+  - armas simples
+  - espadas curtas
   ferramentas:
-    - "ferramentas de caligrafia"
-    - "ferramentas de ladrão"
-    - "kit de disfarce"
-
+  - ferramentas de caligrafia
+  - ferramentas de ladrão
+  - kit de disfarce
 recursos_de_classe:
   defesa_sem_armadura:
-    resumo: "CA = 10 + Destreza + Sabedoria enquanto não usa armadura nem escudo."
+    resumo: CA = 10 + Destreza + Sabedoria enquanto não usa armadura nem escudo.
   artes_marciais:
-    dado: "1d6"
-    resumo: "Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer um golpe desarmado como ação bônus."
+    dado: 1d6
+    resumo: Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer
+      um golpe desarmado como ação bônus.
   ataque_extra:
-    resumo: "Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um."
+    resumo: Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um.
   ki:
     pontos_maximos: 6
-    pontos_atuais: 5
+    pontos_atuais: 6
     cd: 14
-    recarga: "descanso curto ou longo"
-    calculo_cd: "8 + bônus de proficiência + modificador de Sabedoria"
+    recarga: descanso curto ou longo
+    calculo_cd: 8 + bônus de proficiência + modificador de Sabedoria
     usos:
       rajada_de_golpes:
         custo: 1
-        resumo: "Depois da ação Atacar, faz dois golpes desarmados como ação bônus."
+        resumo: Depois da ação Atacar, faz dois golpes desarmados como ação bônus.
       defesa_paciente:
         custo: 1
-        resumo: "Usa Esquivar como ação bônus."
+        resumo: Usa Esquivar como ação bônus.
       passo_do_vento:
         custo: 1
-        resumo: "Usa Desengajar ou Disparada como ação bônus; distância de salto dobrada no turno."
+        resumo: Usa Desengajar ou Disparada como ação bônus; distância de salto dobrada no turno.
       ataque_atordoante:
         custo: 1
-        resumo: "Quando acerta um ataque corpo a corpo, pode tentar atordoar o alvo; o alvo faz salvaguarda de Constituição contra CD de ki 14 ou fica atordoado até o fim do próximo turno de Ren."
+        resumo: Quando acerta um ataque corpo a corpo, pode tentar atordoar o alvo; o alvo faz salvaguarda de Constituição
+          contra CD de ki 14 ou fica atordoado até o fim do próximo turno de Ren.
   movimento_sem_armadura:
-    bonus: "15 pés"
-    resumo: "Move-se mais rápido enquanto não usa armadura nem escudo."
+    bonus: 15 pés
+    resumo: Move-se mais rápido enquanto não usa armadura nem escudo.
   golpes_potencializados_por_ki:
     nivel: 6
-    resumo: "Golpes desarmados contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos."
+    resumo: Golpes desarmados contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos.
   aparar_projeteis:
     reacao: true
-    reducao: "1d10 + 10"
-    resumo: "Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o projétil de volta."
+    reducao: 1d10 + 10
+    resumo: Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o
+      projétil de volta.
   queda_lenta:
     nivel: 5
     reacao: true
     reducao: 25
-    resumo: "Ao cair, pode usar a reação para reduzir o dano de queda em 25."
+    resumo: Ao cair, pode usar a reação para reduzir o dano de queda em 25.
   artes_sombrias:
-    subclasse: "Caminho da Sombra"
+    subclasse: Caminho da Sombra
     truque:
-      nome: "ilusão menor"
+      nome: ilusão menor
       custo: 0
     magias_com_ki:
-      - nome: "escuridão"
-        custo: 2
-      - nome: "visão no escuro"
-        custo: 2
-      - nome: "passos sem pegadas"
-        custo: 2
-      - nome: "silêncio"
-        custo: 2
-    resumo: "Usa ki para criar cobertura, silêncio, furtividade sobrenatural e truques de distração."
+    - nome: escuridão
+      custo: 2
+    - nome: visão no escuro
+      custo: 2
+    - nome: passos sem pegadas
+      custo: 2
+    - nome: silêncio
+      custo: 2
+    resumo: Usa ki para criar cobertura, silêncio, furtividade sobrenatural e truques de distração.
   passo_sombrio:
-    subclasse: "Caminho da Sombra"
+    subclasse: Caminho da Sombra
     nivel: 6
-    custo: "0 ki"
-    acao: "ação bônus"
-    alcance: "60 pés"
-    resumo: "Quando está em luz baixa ou escuridão, Ren pode teleportar-se para um espaço desocupado que consiga ver e que também esteja em luz baixa ou escuridão. Depois, ganha vantagem no primeiro ataque corpo a corpo que fizer antes do fim do turno."
-
+    custo: 0 ki
+    acao: ação bônus
+    alcance: 60 pés
+    resumo: Quando está em luz baixa ou escuridão, Ren pode teleportar-se para um espaço desocupado que consiga
+      ver e que também esteja em luz baixa ou escuridão. Depois, ganha vantagem no primeiro ataque corpo a corpo
+      que fizer antes do fim do turno.
 talentos:
   movel:
-    resumo: "Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque de oportunidade dela pelo resto do turno, acertando ou errando."
-    observacao: "Ajuda Ren a bater e reposicionar, essencial para campanha solo."
-
+    resumo: Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque
+      de oportunidade dela pelo resto do turno, acertando ou errando.
+    observacao: Ajuda Ren a bater e reposicionar, essencial para campanha solo.
 aumentos_de_atributo:
   nivel_4:
-    escolha: "+1 Destreza, +1 Sabedoria"
-    motivo: "Consolida Ren como infiltrador solo: melhora ataque, dano, CA, iniciativa e perícias de Destreza, enquanto prepara avanço futuro de Sabedoria."
-
+    escolha: +1 Destreza, +1 Sabedoria
+    motivo: 'Consolida Ren como infiltrador solo: melhora ataque, dano, CA, iniciativa e perícias de Destreza, enquanto
+      prepara avanço futuro de Sabedoria.'
 background:
-  nome: "Exilado de Clã"
-  origem: "customizado"
+  nome: Exilado de Clã
+  origem: customizado
   proficiencias_concedidas:
     pericias:
-      - "Intuição"
-      - "Percepção"
+    - Intuição
+    - Percepção
     ferramentas:
-      - "ferramentas de ladrão"
-      - "kit de disfarce"
+    - ferramentas de ladrão
+    - kit de disfarce
   caracteristica_narrativa:
-    nome: "Sinais do Clã"
-    resumo: "Ren reconhece marcas, códigos e hábitos de agentes treinados em tradições semelhantes às de seu clã. Isso pode abrir pistas, mas também denunciá-lo a inimigos atentos."
-
+    nome: Sinais do Clã
+    resumo: Ren reconhece marcas, códigos e hábitos de agentes treinados em tradições semelhantes às de seu clã.
+      Isso pode abrir pistas, mas também denunciá-lo a inimigos atentos.
 equipamento:
   armas:
-    - "wakizashi, mecanicamente espada curta"
-    - "9 shuriken, mecanicamente dardos"
-  armadura: "nenhuma"
+  - wakizashi, mecanicamente espada curta
+  - 9 shuriken, mecanicamente dardos
+  armadura: nenhuma
   itens:
-    - "figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura com desenho de vento, tecido branco oculto para giros, mangas falsas, cabelo preso e máscara parcial de entrada"
-    - "roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas e faixa interna"
-    - "disfarce antigo de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso"
-    - "roupas próprias de Ren incorporadas por Dessa Wren como base de figurino estrangeiro"
-    - "roupas roubadas e roupas comuns de doação entregues a Dessa Wren para virar retalho"
-    - "disfarces de Nera e Tavin de Dessa Wren em uso"
-    - "manto simples com capuz"
-    - "ferramentas de caligrafia"
-    - "ferramentas de ladrão"
-    - "kit de disfarce"
-    - "pacote de explorador"
-    - "selo quebrado do Clã Kagehira"
-    - "mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn"
-    - "pedaço de tecido com o símbolo usado pelo traidor"
-    - "prancheta de Velis Rook"
-    - "carimbo falso da lua velada"
-    - "bilhete de B. sobre isca para o oriental"
-    - "ficha de cobre com vela vermelha"
-    - "cordão azul"
-    - "ordem em papel encerado sobre gravadora, oriental e Brass"
-    - "fita vermelha identificável do homem da Red Sail"
-    - "botão de osso infantil tomado como garantia"
-    - "tira de couro da amarra sabotada da corda alta"
-    - "caderno de contas de Bram Vask"
-    - "pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha"
-    - "Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso renovado no amanhecer de 7 Eleasis e disponível"
+  - 'figurino de O Vento da Noite guardado com Dessa Wren: camadas negras presas para acrobacia, faixa larga escura
+    com desenho de vento, tecido branco oculto para giros, mangas falsas, cabelo preso e máscara parcial de entrada'
+  - 'roupa de cidadão menor limpo guardada no circo: casaco escuro simples, camisa limpa, calça comum, botas escovadas
+    e faixa interna'
+  - 'disfarce antigo de ajudante de carga: casaco pardo, gorro de lã escura e lenço grosso'
+  - 'traje oriental original de infiltração de Ren: roupas ninja Kagehira, preservadas como conjunto próprio e distintas
+    do figurino de palco de O Vento da Noite criado por Dessa Wren'
+  - roupas roubadas e roupas comuns de doação entregues a Dessa Wren para virar retalho
+  - disfarces de Nera e Tavin de Dessa Wren em uso
+  - manto simples com capuz
+  - ferramentas de caligrafia
+  - ferramentas de ladrão
+  - kit de disfarce
+  - pacote de explorador
+  - selo quebrado do Clã Kagehira
+  - mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn
+  - pedaço de tecido com o símbolo usado pelo traidor
+  - prancheta de Velis Rook
+  - carimbo falso da lua velada
+  - bilhete de B. sobre isca para o oriental
+  - ficha de cobre com vela vermelha
+  - cordão azul
+  - ordem em papel encerado sobre gravadora, oriental e Brass
+  - fita vermelha identificável do homem da Red Sail
+  - botão de osso infantil tomado como garantia
+  - tira de couro da amarra sabotada da corda alta
+  - caderno de contas de Bram Vask
+  - pedaço rasgado de pano vermelho encerado, tomado da porta de ferro da Casa Velha
+  - Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; 1 vez por amanhecer permite efeito semelhante
+    a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso
+    renovado no amanhecer de 7 Eleasis e disponível
   dinheiro:
-    po: 45
-
+    po: 35
 vinculos:
-  regiao_inicial: "Ravens Bluff"
-  entrada_na_cidade: "chegada pelo porto"
-  contato_inicial_previsto: "Luath, sargento da City Guard"
-  faccao_inicial_prevista: "Night Watch"
-  motivacao_principal: "encontrar o traidor Masao Hirasawa"
-  objetivo_imediato: "descobrir quem ajudou Masao a entrar ou se esconder em Ravens Bluff"
-
+  regiao_inicial: Ravens Bluff
+  entrada_na_cidade: chegada pelo porto
+  contato_inicial_previsto: Luath, sargento da City Guard
+  faccao_inicial_prevista: Night Watch
+  motivacao_principal: encontrar o traidor Masao Hirasawa
+  objetivo_imediato: descobrir quem ajudou Masao a entrar ou se esconder em Ravens Bluff
 progressao:
   xp_atual: null
-  metodo: "marcos narrativos"
-  arquivo_regras: "regras/progressao.md"
-  marco_atual: "Passo Sombrio despertado após recuar da Escada das Sete Águas e consolidar posição em Ravens Bluff"
-  observacao: "Ren alcançou nível 6 no amanhecer de 6 Eleasis de 1372 DR, após sobreviver a Sarbreen, ajudar a conter a operação dos barris, firmar Kage como máscara pública, proteger os Vell, aprofundar a cooperação cautelosa com Luath, descobrir a Escada das Sete Águas como entrada-isca/controle e transformar a memória de Aiko em domínio próprio do Passo Sombrio."
+  metodo: marcos narrativos
+  arquivo_regras: regras/progressao.md
+  marco_atual: Passo Sombrio despertado após recuar da Escada das Sete Águas e consolidar posição em Ravens Bluff
+  observacao: Ren alcançou nível 6 no amanhecer de 6 Eleasis de 1372 DR, após sobreviver a Sarbreen, ajudar a conter
+    a operação dos barris, firmar Kage como máscara pública, proteger os Vell, aprofundar a cooperação cautelosa
+    com Luath, descobrir a Escada das Sete Águas como entrada-isca/controle e transformar a memória de Aiko em domínio
+    próprio do Passo Sombrio.

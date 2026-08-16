@@ -6,8 +6,11 @@ relacao:
   nome: Silva Elkwood
   tipo: clériga de Chauntea / contato potencial de abrigo
   local: Jack Mooney & Sons Circus
-  status: conhecida em jogo
-  atitude_para_ren: favoravel e cautelosa, ainda preocupada com o risco ao circo
+  status: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
+    mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
+    consumível.
+  atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
+    mas rejeita que ele assuma sozinho o direito de escolher todos os custos
   confianca: moderada e vigilante
   respeito: alto
   motivo_atual: Ao amanhecer, leu a mensagem curta de Luath informando que o pacote reservado passou para Tyr sem
@@ -31,5 +34,13 @@ relacao:
     no papel externo.
   - Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no
     acampamento.
+  - Ren contou a Silva que Bram Vask tentou matar Colm e o próprio Ren novamente, e declarou que alguns homens são
+    irrecuperáveis e que protegerá Nera e Tavin custe o que custar; Silva não sabe que Ren matou o homem de mãos
+    limpas, mas questionou se ele já havia feito algo naquele dia.
+  - Ren contou a Silva que acredita que Bram Vask tenta corromper Kethra Dunn para facilitar a entrada de Masao
+    e aliados em Ravens Bluff; Silva tratou essa ligação como ameaça alegada por Ren e aconselhou obter papel, testemunhas
+    e estrutura antes de concluir que a morte de Bram resolveria o problema.
+  - 'Silva guarda um recado de Ren para entregar diretamente a Nera: ele pede que não se encontrem por enquanto,
+    que ela não se arrisque e assina ''Com amor, R.'''
 conteudo_mais_antigo_no_historico:
   riscos: 54

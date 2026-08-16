@@ -130,3 +130,75 @@ relacao:
     e imediatas.
   - 'Contatos presenciais na lateral de Narwhal continuam arriscados: o Broche ajudou nesta manhã, mas repetição
     pode criar padrão.'
+eventos_pos_migracao:
+- transacao: s003-9acf84870a8af11e
+  sessao: 3
+  resumo: Ren assume um disfarce superficial de homem maltrapilho, aguarda um grupo apropriado de trabalhadores
+    e entra em Ravens Bluff sem oposição ativa nem necessidade de rolagem. Ele chega discretamente aos fundos de
+    Narwhal Manor por volta de 10:45 e localiza Kethra Dunn à distância, sem ainda iniciar contato. A sessão 3 termina
+    nesse ponto.
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: local
+    op: set
+    valor: fundos de Narwhal Manor, avistada por Ren no fim da manhã de 7 Eleasis
+- transacao: s004-f3f10782e6b036a0
+  sessao: 4
+  resumo: A sessão 4 começa nos fundos de Narwhal Manor. Ren ativa o Broche do Semblante Humilde até cerca de 11:45
+    e aborda Kethra sem marcar o contato, obtendo 18 contra CD 15 em Furtividade. Ao saber que Colm está vivo, Kethra
+    demonstra alívio e maior confiança, mas alerta Ren contra ligar Bram a Narwhal ou voltar com cauda. Ela relata
+    que o corredor treze está sendo esvaziado, que a mulher de manto cinza-azulado retirou dois cofres e um livro,
+    e que um homem com cordão vermelho está perguntando por carroças e rotas da estrada do Fire River. Kethra pede
+    um novo protocolo de contato.
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: atitude_para_ren
+    op: set
+    valor: aliviada e mais aberta após confirmar que Colm está vivo, mas alarmada com o confronto anunciado contra
+      Bram Vask e a Red Sail
+- transacao: s004-bd787b732995b8f2
+  sessao: 4
+  resumo: 'Kethra aceita o protocolo de um novo ponto morto com cinzeiro rachado, sem horário fixo, mas ainda não
+    o instalou. Sob o Broche, Ren obtém 14 contra CD 14 em Enganação e passa por trabalhador no pátio de entregas.
+    Ele reconhece um sobrevivente da estrada entregando informação ao homem do cordão vermelho, mas falha em Percepção
+    (9 contra CD 14): confirma que a Red Sail conhece a secagem velha e a direção leste, porém não descobre se já
+    possui a localização exata de Colm. Às 11:30, o contato guarda um papel e o sobrevivente começa a sair; o Broche
+    ainda dura cerca de quinze minutos.'
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: status
+    op: set
+    valor: 'Colm confirmado vivo; novo ponto morto aceito, mas ainda não instalado: cinzeiro velho e preferencialmente
+      rachado perto do antigo vaso, com mensagem sob cinza ou areia e sem horário fixo'
+- transacao: s004-2a66435c0944f382
+  sessao: 4
+  resumo: Hessa aceita Colm e o oculta sob a carga; a carroça de Mera fica no lagar. Ren falha por pouco em Sobrevivência,
+    perde tempo e é visto apenas como trabalhador desconhecido por um velho. Volta sem bloqueio e encontra o ponto
+    morto de Narwhal ainda sem cinzeiro ou mensagem.
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: status
+    op: set
+    valor: Colm foi entregue à rota rural, fato que Kethra ainda não conhece. O cinzeiro não estava instalado às
+      08:32 e não havia mensagem
+- transacao: s004-808105c277858bb4
+  sessao: 4
+  resumo: 'Ren ativa o Broche e tenta abordar Kethra. Obtém 13 contra CD 16 em Furtividade com vantagem: um jovem
+    escriturário percebe o trabalhador desconhecido procurando-a, embora não identifique Ren. Kethra cria cobertura
+    de contratação e conversa brevemente. Ela aprende que Colm foi entregue vivo e estável a uma cadeia compartimentada.
+    Relata que o corredor treze foi apagado, a mulher cinza-azulada não voltou e Brass visitou o homem do cordão
+    vermelho antes do amanhecer; depois disso, a busca se expandiu para curandeiros, carroças e lagares a leste.
+    Kethra estima que um complexo murado adaptável custaria cerca de 800–1.500 PO em ruínas, 2.500–5.000 PO habitável
+    e 10.000+ PO como solar urbano. O Broche fica gasto até o amanhecer de 9 Eleasis.'
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: status
+    op: set
+    valor: Kethra sabe que Colm foi entregue vivo e estável a uma cadeia compartimentada cujo destino Ren também
+      desconhece. Ela não conseguiu instalar o cinzeiro porque a saída de lixo passou a ser contada. Um escriturário
+      viu um trabalhador disfarçado procurá-la diretamente.
+  - alvo: relacao:kethra_dunn
+    caminho: atitude_para_ren
+    op: set
+    valor: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição de contato
+      direto sob observação crescente

@@ -1,0 +1,11 @@
+schema_relogio: 1
+id: rastro_fraco_no_pomar
+natureza: reservado
+relogio:
+  titulo: Rastro fraco no pomar
+  progresso: 1
+  limite: 4
+  descricao: Um velho com três cabras viu um trabalhador pobre desconhecido sair sozinho das sebes perto do pomar.
+    Não viu Colm, Hessa nem a carroça.
+  consequencia_no_limite: Uma busca dirigida conecta o lagar à transferência ou identifica o trabalhador como Ren/Kage.
+eventos: []

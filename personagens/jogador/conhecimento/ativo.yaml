@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 3
-sessao_mais_recente_indexada: 3
+sessao_atual_da_campanha: 4
+sessao_mais_recente_indexada: 4
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -50,19 +50,78 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: Coagido, o homem afirma que Bram Vask financiou a armadilha como cliente, não como chefe permanente. Segundo
-    ele, Colm/Dent foi mantido vivo como isca para identificar e capturar quem viesse resgatá-lo; essa pessoa seria
-    mais valiosa.
+- titulo: Ren deixa um recado para Nera com Silva. Passa pelos observadores da saída com 20 contra CD 14 em Enganação
+    e chega a Iria por rota longa com 20 contra CD 14 em Sobrevivência. O Broche recupera um uso ao amanhecer. Iria
+    confirma Colm estável; Ren o acomoda na carroça e parte rumo ao lagar.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-ad1dbf6722ccea0e.md
-  bytes: 741
-  transacao: s003-ad1dbf6722ccea0e
-- titulo: 'Ren obtém 19 contra CD 15 na Intimidação com vantagem. O homem confessa ser o segundo intermediário da
-    falsa lua: nega ter levado o desenho, atribui a encomenda inicial a Dain Brass Mord e admite ter levado tecido,
-    lâmina falsa e papéis para fabricar um rastro oriental. Afirma que instruções superiores vinham sem assinatura
-    pelo circuito de Narwhal, sob a expressão ''segunda maré'', e diz não conhecer o patrono. A cerca é rachada
-    e uma testemunha começa a se afastar rumo à estrada.'
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-b690cc97d44c1933.md
+  bytes: 551
+  transacao: s004-b690cc97d44c1933
+- titulo: Ren chega ao lagar sem detectar cauda. Responde com franqueza limitada às perguntas de Colm. Obtém 13
+    contra CD 13 em Percepção e confirma os sinais de Hessa, o menino permitido e ausência de vigias. Hessa pede
+    para examinar Colm.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-1817f1ac59c440f7.md
-  bytes: 1095
-  transacao: s003-1817f1ac59c440f7
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-28eeef61d124d50e.md
+  bytes: 494
+  transacao: s004-28eeef61d124d50e
+- titulo: Hessa aceita Colm e o oculta sob a carga; a carroça de Mera fica no lagar. Ren falha por pouco em Sobrevivência,
+    perde tempo e é visto apenas como trabalhador desconhecido por um velho. Volta sem bloqueio e encontra o ponto
+    morto de Narwhal ainda sem cinzeiro ou mensagem.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-2a66435c0944f382.md
+  bytes: 691
+  transacao: s004-2a66435c0944f382
+- titulo: 'Ren ativa o Broche e tenta abordar Kethra. Obtém 13 contra CD 16 em Furtividade com vantagem: um jovem
+    escriturário percebe o trabalhador desconhecido procurando-a, embora não identifique Ren. Kethra cria cobertura
+    de contratação e conversa brevemente. Ela aprende que Colm foi entregue vivo e estável a uma cadeia compartimentada.
+    Relata que o corredor treze foi apagado, a mulher cinza-azulada não voltou e Brass visitou o homem do cordão
+    vermelho antes do amanhecer; depois disso, a busca se expandiu para curandeiros, carroças e lagares a leste.
+    Kethra estima que um complexo murado adaptável custaria cerca de 800–1.500 PO em ruínas, 2.500–5.000 PO habitável
+    e 10.000+ PO como solar urbano. O Broche fica gasto até o amanhecer de 9 Eleasis.'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-808105c277858bb4.md
+  bytes: 1866
+  transacao: s004-808105c277858bb4
+- titulo: 'Ren deixa Narwhal e passa a manhã procurando propriedades adaptáveis a casa segura e dojo. Recorda o
+    bukeyashiki Kagehira, o treinamento do Kagehira Getsuei-ryu e a destruição do complexo por centenas de invasores,
+    depois retoma a busca. Obtém 15 contra CD 15 em Investigação com vantagem e encontra três candidatos: Estalagem
+    da Lança Torta (1.200–1.700 PO, ampla mas perto de rotas observadas), Pátio dos Três Martelos (900–1.400 PO,
+    flexível mas com escrituras fragmentadas) e Casa do Salgueiro Seco (cerca de 3.600 PO, habitável e murada, mas
+    socialmente conspícua). Às 13:15, está diante da Casa do Salgueiro Seco; o Broche expirou e segue gasto até
+    o amanhecer seguinte.'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-e6324f023152781b.md
+  bytes: 1364
+  transacao: s004-e6324f023152781b
+- titulo: Ren procura Pell, mas obtém 9 contra CD 13 em Investigação; um copeiro da Silver Lily nota um homem oriental
+    procurando um mensageiro jovem e Pell, avisado, aborda Ren numa viela. Ren paga 4 PO adiantadas, ficando com
+    35 PO. Encomenda investigação dos proprietários, dívidas e riscos das três propriedades, priorizando a Casa
+    do Salgueiro Seco, e oferece bônus de 1 PO por informação imobiliária relevante e 2 PO por paradeiro ou rotas
+    de Brass. Pell aceita deixar o resultado à noite numa garrafa profundamente escondida sob a escada dos fundos
+    da Silver Lily; Ren verificará pela manhã e pagará os bônus ali.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-f568de46dc948fdf.md
+  bytes: 1215
+  transacao: s004-f568de46dc948fdf
+- titulo: Ren fala em particular com Irmã Halessa Vorn na Casa de Tyr. Ela confirma que Nera e Tavin seguem protegidos,
+    o material permanece selado e Velis compareceu à oitiva, apresentando contradições e nomeando M. Harrow antes
+    da pergunta. Três registros corrigidos convergem na Casa de Pesos da Ponte Baixa; Velis deve permanecer disponível,
+    mas não está preso. Ren apela à consciência de Halessa e obtém 15 contra CD 15 em Persuasão com vantagem. Ela
+    revela que o porteiro noturno Edran Kells desapareceu antes de depor e que a porta de serviço sob o arco oeste
+    foi usada, nas noites suspeitas, entre o segundo sino após o pôr do sol e meia hora depois. Autoriza apenas
+    observação e proteção imediata de inocentes, não invasão ou confronto.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-e3ff1e80256cc261.md
+  bytes: 1875
+  transacao: s004-e3ff1e80256cc261
+- titulo: Ren retorna ao circo, toma banho, come e informa Silva sobre a pista de Halessa e sua intenção de vigiar
+    a Casa de Pesos. Silva relata que Nera e Tavin estão fisicamente bem; Nera dorme mal, está assustada e zangada
+    com a separação, mas segue o protocolo, enquanto Tavin está mais estável, ajuda sob o nome Timo e continua esperando
+    Ren voltar. Silva considera uma casa própria mais adequada que o circo, mas adverte que alunos devem ser pessoas
+    com escolha, não muralhas. Ela transmite aos Vell que Ren está vivo, bem e com saudades. Às 20:10, Ren veste
+    seu traje oriental original de infiltração, distinto do figurino de Kage, cobre-o com a capa e parte para a
+    Ponte Baixa. Pell falha nas duas buscas realizadas durante a tarde, resultado ainda desconhecido de Ren.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-004/tx-s004-277f800e52271ff7.md
+  bytes: 1226
+  transacao: s004-277f800e52271ff7

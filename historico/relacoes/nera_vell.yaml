@@ -168,3 +168,20 @@ relacao:
     sem nome externo de Ren, Nera ou Tavin.
   - Nera entende que os inimigos ainda parecem possuir palavras de pressão sobre ela e Tavin, mas não demonstraram
     saber a porta exata onde os Vell dormem.
+eventos_pos_migracao:
+- transacao: s004-277f800e52271ff7
+  sessao: 4
+  resumo: Ren retorna ao circo, toma banho, come e informa Silva sobre a pista de Halessa e sua intenção de vigiar
+    a Casa de Pesos. Silva relata que Nera e Tavin estão fisicamente bem; Nera dorme mal, está assustada e zangada
+    com a separação, mas segue o protocolo, enquanto Tavin está mais estável, ajuda sob o nome Timo e continua esperando
+    Ren voltar. Silva considera uma casa própria mais adequada que o circo, mas adverte que alunos devem ser pessoas
+    com escolha, não muralhas. Ela transmite aos Vell que Ren está vivo, bem e com saudades. Às 20:10, Ren veste
+    seu traje oriental original de infiltração, distinto do figurino de Kage, cobre-o com a capa e parte para a
+    Ponte Baixa. Pell falha nas duas buscas realizadas durante a tarde, resultado ainda desconhecido de Ren.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
+      tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo,
+      bem e com saudades.

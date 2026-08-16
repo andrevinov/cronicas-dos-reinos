@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: homem_maos_limpas
+npc:
+  nome: homem de mãos limpas
+  grupo: intermediário ligado a Bram Vask, à Red Sail e ao circuito da falsa lua
+  status: morto por Ren em emboscada silenciosa na estrada do Fire River em 7 Eleasis
+  local: vala úmida junto a uma curva da estrada do Fire River a leste de Ravens Bluff
+  estatisticas:
+    ca: 12
+    iniciativa: 2
+    pv_atuais: 0
+    pv_maximos: 27

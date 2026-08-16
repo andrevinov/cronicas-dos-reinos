@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 3
+sessao_atual: 5
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 3
-  bytes_transcricoes: 1198275
+  sessoes: 5
+  bytes_transcricoes: 1280146
 sessoes:
   '001':
     natureza: historica
@@ -47,21 +47,21 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   '003':
-    natureza: atual
+    natureza: historica
     handoff: sessoes/003/handoff.yaml
     compactos:
     - arquivo: sessoes/003/handoff.yaml
-      bytes: 4461
+      bytes: 5886
     - arquivo: sessoes/003/resumo.md
-      bytes: 2017
+      bytes: 4054
     - arquivo: sessoes/003/alteracoes-de-estado.yaml
-      bytes: 1637
+      bytes: 2650
     - arquivo: sessoes/003/consequencias.md
-      bytes: 615
+      bytes: 906
     - arquivo: sessoes/003/experiencia.md
       bytes: 1419
     - arquivo: sessoes/003/consolidacoes.jsonl
-      bytes: 3675
+      bytes: 7867
     ordem_de_leitura:
     - sessoes/003/handoff.yaml
     - sessoes/003/resumo.md
@@ -70,6 +70,43 @@ sessoes:
     - sessoes/003/experiencia.md
     transcricao:
       arquivo: sessoes/003/transcricao.md
-      bytes: 355139
+      bytes: 367828
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  '004':
+    natureza: historica
+    handoff: sessoes/004/handoff.yaml
+    compactos:
+    - arquivo: sessoes/004/handoff.yaml
+      bytes: 5674
+    - arquivo: sessoes/004/resumo.md
+      bytes: 10469
+    - arquivo: sessoes/004/alteracoes-de-estado.yaml
+      bytes: 6546
+    - arquivo: sessoes/004/consequencias.md
+      bytes: 824
+    - arquivo: sessoes/004/consolidacoes.jsonl
+      bytes: 18796
+    ordem_de_leitura:
+    - sessoes/004/handoff.yaml
+    - sessoes/004/resumo.md
+    - sessoes/004/alteracoes-de-estado.yaml
+    - sessoes/004/consequencias.md
+    transcricao:
+      arquivo: sessoes/004/transcricao.md
+      bytes: 68371
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  '005':
+    natureza: atual
+    handoff: sessoes/005/handoff.yaml
+    compactos:
+    - arquivo: sessoes/005/handoff.yaml
+      bytes: 1961
+    ordem_de_leitura:
+    - sessoes/005/handoff.yaml
+    transcricao:
+      arquivo: sessoes/005/transcricao.md
+      bytes: 811
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

@@ -56,3 +56,35 @@ relacao:
   - Mera manca e não consegue sustentar fuga rápida sem ajuda.
   - A secagem velha e o galpão baixo estão comprometidos como abrigo.
   - O trajeto até Iria Doss não é secreto, e Mera ainda está ferida enquanto conduz Colm.
+eventos_pos_migracao:
+- transacao: s003-c85e7801275d8d44
+  sessao: 3
+  resumo: Ren entra abertamente na casa de Iria com Mera como garantia. Colm está vivo e estável, mas fraco, desidratado,
+    contundido e com irritação pulmonar; precisa de repouso e observação até a manhã seguinte. Iria pede 3 PO pelo
+    tratamento e abrigo; pagamento ainda não realizado.
+  deltas:
+  - alvo: relacao:mera_fumaca
+    caminho: local
+    op: set
+    valor: casa de Iria Doss, junto de Colm Dunn
+- transacao: s003-9e02627d76a8dab6
+  sessao: 3
+  resumo: Mera aceita 3 PO de Ren como compensação prática, e Colm pede que Kethra seja informada apenas de que
+    ele está vivo e não seja levada à casa de Iria. Iria proíbe deixar a carroça ao lado da casa, mas indica um
+    baixio arborizado próximo. Ren obtém 18 contra CD 14 em Sobrevivência e camufla a carroça contra observação
+    casual; termina junto dela por volta de 08:55.
+  deltas:
+  - alvo: relacao:mera_fumaca
+    caminho: respeito
+    op: set
+    valor: moderado, crescente
+- transacao: s004-b690cc97d44c1933
+  sessao: 4
+  resumo: Ren deixa um recado para Nera com Silva. Passa pelos observadores da saída com 20 contra CD 14 em Enganação
+    e chega a Iria por rota longa com 20 contra CD 14 em Sobrevivência. O Broche recupera um uso ao amanhecer. Iria
+    confirma Colm estável; Ren o acomoda na carroça e parte rumo ao lagar.
+  deltas:
+  - alvo: relacao:mera_fumaca
+    caminho: status
+    op: set
+    valor: permanece na casa de Iria, ferida mas estável; ajudou a acomodar Colm na carroça
