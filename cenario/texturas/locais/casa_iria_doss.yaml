@@ -1,0 +1,35 @@
+schema_textura: 1
+natureza: paleta_narrativa_sugestiva
+id: casa_iria_doss
+nome: casa de Iria Doss
+autoridade: >-
+  Âncoras canônicas são fatos já estabelecidos. A paleta sensorial é sugestiva e
+  serve para dar corpo ao lugar sem exigir busca ampla; detalhes não narrados ainda
+  não devem ser tratados como pista, recurso ou obstáculo canônico.
+ancoras_canonicas:
+  - casa baixa no ramal do rio a leste da secagem velha, depois do salgueiro partido
+  - lugar quieto, mas conhecido na estrada e inadequado como esconderijo seguro
+  - há espaço para manter Colm num catre e tratá-lo durante a noite
+  - Iria trabalha ali com ervas, comida e recursos de tratamento comuns
+paleta_sensorial_sugerida:
+  luz:
+    - claridade de manhã entrando baixa por aberturas pequenas
+    - interior mais escuro que a estrada úmida do lado de fora
+  cheiros:
+    - ervas secas e infusões
+    - pano úmido, madeira e fumaça antiga de fogão
+  sons:
+    - água ou utensílios de tratamento em atividade baixa
+    - respiração e movimentos de paciente perceptíveis no silêncio
+  materiais:
+    - madeira funcional e gasta
+    - tecidos laváveis, recipientes e instrumentos simples de trabalho
+  sensacao_geral: abrigo de trabalho, não santuário; seguro apenas enquanto ninguém trouxer perigo até a porta
+disposicao_sugerida:
+  - manter o catre de Colm visualmente presente na conversa
+  - deixar a porta e o caminho para fora perceptíveis, reforçando que a casa não é secreta
+  - usar objetos de tratamento como parte natural dos gestos de Iria
+limites:
+  - não transformar a casa em clínica rica, templo, laboratório ou fortaleza
+  - não criar saída secreta, proteção mágica ou estoque raro sem outra fonte
+  - não tratar detalhes sensoriais sugeridos como pistas investigativas por si só
