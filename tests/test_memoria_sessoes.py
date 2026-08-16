@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
 import sys
 import tempfile
 import unittest
@@ -9,7 +8,7 @@ from pathlib import Path
 TOOLS = Path(__file__).parents[1] / "ferramentas"
 sys.path.insert(0, str(TOOLS))
 
-import contexto_core
+import contexto
 import sessoes
 
 try:
@@ -93,7 +92,7 @@ class MemoriaSessoesTest(unittest.TestCase):
         self.assertNotIn("sessoes/001/transcricao.md", sources)
 
     def test_busca_historica_so_le_transcricao_com_escalada_explicita(self):
-        without = contexto_core.generic_search(
+        without = contexto.generic_search(
             self.repo,
             "agulha violeta",
             reserved=False,
@@ -102,7 +101,7 @@ class MemoriaSessoesTest(unittest.TestCase):
         )
         self.assertEqual(without, [])
 
-        with_transcript = contexto_core.generic_search(
+        with_transcript = contexto.generic_search(
             self.repo,
             "agulha violeta",
             reserved=False,
