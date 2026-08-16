@@ -261,7 +261,7 @@ L4T 16 KiB
 
 Detalhes: `docs/agente/escada-de-acesso.md`.
 
-Telemetria opcional grava somente metadados em `runtime/consultas-contexto.jsonl`; desabilitar com `--sem-log`.
+Telemetria local fica **desligada por padrão**. Para um diagnóstico pontual, use `--log-local`; o arquivo `runtime/consultas-contexto.jsonl` continua local/ignorado. A medição normal é pós-hoc pelo rollout nativo.
 
 ### Núcleo e porta pública
 
@@ -331,13 +331,31 @@ Proteções acumuladas:
 - **Etapa 7:** turno limitado a transcrição + deltas, recuperação idempotente, overlay e rolagens em lote;
 - **Etapa 8:** consolidação em lote com ledger, mirrors, staging/journal e isolamento reservado;
 - **Etapa 9:** handoff/índice, retomada sem transcript, histórico em dois degraus e transcrições frias;
-- **Etapa 10:** escada executável, `--apos`/`--motivo`, saltos dirigidos e tetos por nível.
+- **Etapa 10:** escada executável, `--apos`/`--motivo`, saltos dirigidos e tetos por nível;
+- **Etapa 11:** telemetria pós-hoc, comparação antes/depois, metas mensuráveis e zero logging local por padrão.
 
-## Análise de rollouts do Codex
+## Telemetria pós-hoc de rollouts
+
+Não medir dentro do loop narrativo. Depois da sessão:
 
 ```bash
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
 ```
 
-A baseline pré-refatoração está em `baseline/rollout-2026-08-15.json`; baselines específicas ficam em `baseline/memoria-sessoes-step-09.md` e `baseline/escada-acesso-step-10.md`.
+Comparação automática com a baseline de 15/08:
+
+```bash
+python3 ferramentas/comparar-rollouts.py ~/.codex/sessions/.../rollout-novo.jsonl
+```
+
+Várias sessões podem ser agregadas passando vários arquivos. O comparador normaliza por avanço narrativo e mostra input bruto, não-cache aproximado, inferências, tools, leituras/escritas, transcript e distribuição L0–L4T.
+
+Arquivos de referência:
+
+- `baseline/rollout-2026-08-15.json`;
+- `baseline/metas-rollout-pos-refatoracao.json`;
+- `baseline/telemetria-step-11.md`;
+- `docs/agente/telemetria-rollouts.md`.
+
+Redução de tokens é tratada como tráfego operacional, não como fórmula de cobrança/quota.

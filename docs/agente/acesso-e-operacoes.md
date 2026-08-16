@@ -1,6 +1,6 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Política formal de níveis e orçamentos: `docs/agente/escada-de-acesso.md`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`.
+Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Política formal de níveis e orçamentos: `docs/agente/escada-de-acesso.md`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`. Telemetria pós-hoc: `docs/agente/telemetria-rollouts.md`.
 
 ## Regra principal de economia de contexto
 
@@ -67,6 +67,8 @@ A ferramenta aplica tetos mecânicos por nível: L1 4 KiB; L2/L3 8 KiB; L4 12 Ki
 A escada **não obriga a executar cada degrau**. Uma entidade conhecida pode ir direto a L2; uma sessão histórica conhecida pode saltar L3. Isso evita round-trips inúteis. O que exige sequência explícita é a ampliação de escopo: busca ampla → histórico → transcrição.
 
 Durante narração comum, o alvo é permanecer em L0–L2. Toda saída de `contexto.py` traz `controle_acesso.pare_se_suficiente: true` e a condição de parada do nível.
+
+Observabilidade não cria trabalho no turno: `contexto.py` não grava telemetria local por padrão e os rollouts são analisados somente depois da sessão. Para diagnóstico explícito, `--log-local` habilita o pequeno log local.
 
 Nunca substituir consulta a uma relação por leitura de toda `estado/relacoes/`, consulta de conhecimento por abertura recursiva de todos os fragmentos, ou retomada por leitura da transcrição atual/anterior.
 
