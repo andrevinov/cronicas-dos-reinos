@@ -23,6 +23,7 @@ ALLOWED_OPS = {"set", "inc", "append", "remove", "registrar"}
 ALLOWED_VISIBILITY = {"operacional", "narrador"}
 TARGET_RE = re.compile(r"^[a-z][a-z0-9_]*(?::[a-z0-9_]+)?$")
 MAX_SUMMARY_CHARS = 500
+MAX_ACCEPTED_SUMMARY_CHARS = 1600
 MAX_DELTAS = 64
 MAX_HIDDEN_ROLLS = 32
 
@@ -123,9 +124,9 @@ def validate_pending_record(record: Any) -> dict[str, Any]:
     summary = record.get("resumo", "")
     if not isinstance(summary, str):
         raise TransactionError("resumo pendente precisa ser string")
-    if len(summary) > MAX_SUMMARY_CHARS:
+    if len(summary) > MAX_ACCEPTED_SUMMARY_CHARS:
         raise TransactionError(
-            f"resumo pendente excede {MAX_SUMMARY_CHARS} caracteres: {len(summary)}"
+            f"resumo pendente excede {MAX_ACCEPTED_SUMMARY_CHARS} caracteres: {len(summary)}"
         )
 
     deltas = record.get("deltas", [])
