@@ -4788,3 +4788,21 @@ Ren se aproxima da casa de Iria Doss de modo discreto, mas sem agir como ladrão
 **Narrador**
 
 Ren deixa a cobertura e se aproxima pela parte visível do caminho, mãos livres e passos contidos. Mera aparece primeiro à porta e confirma para Iria que foi Ren quem os retirou da armadilha. A curandeira o deixa entrar, mas corrige a impressão de segurança: a casa é quieta, não escondida. Colm está deitado num catre, consciente, exausto e respirando com dificuldade menor do que antes. Iria diz que ele não está morrendo: sofreu desidratação, contusões, marcas das cordas e irritação pulmonar por pó e fumaça; precisa de líquido, repouso e observação até o dia seguinte, sobretudo por risco de febre ou piora da respiração. Nenhum osso grande parece quebrado. Iria aceita a palavra de Mera e cobra 3 PO por ervas, comida, tratamento e abrigo de Colm até a manhã seguinte. Nenhuma moeda foi transferida ainda.
+
+<!-- turno-transacional:s003-61130a2c42d488a7 -->
+**Jogador**
+
+Continue a sessão 3. :)
+**Narrador**
+
+A noite deixou para trás uma trilha de fuligem, sangue e nomes: Colm foi arrancado da armadilha, o homem de mãos limpas saiu vivo para levar o aviso a Bram Vask, e a falsa lua ganhou mais um elo — Dain Brass Mord. Agora, pela primeira vez desde a Ponte Baixa, não há ninguém correndo.
+
+A casa baixa de Iria Doss segura a manhã do lado de fora com paredes grossas, vidros embaçados e cheiro de ervas amargas. Sob esse cheiro persistem a cal úmida da estrada e a fumaça dos fornos. Colm respira deitado, ainda pálido e marcado pelas contusões; de vez em quando, uma tosse curta lhe prende o peito, mas não há urgência no modo como Iria o observa. Há trabalho a fazer, não uma morte iminente.
+
+Iria termina de ajeitar o cobertor sobre ele e se volta para Ren. A voz é seca, baixa o bastante para não perturbar o ferido.
+
+— Ele fica. Até amanhã, pelo menos. Três peças de ouro pelo tratamento e pelo abrigo.
+
+Ela não estende a mão nem repete o preço. Apenas espera, com a serenidade de quem já cumpriu a parte difícil e não pretende negociar consigo mesma. Ren tem 45 peças de ouro consigo; a dívida ainda não foi paga.
+
+O que Ren faz?
