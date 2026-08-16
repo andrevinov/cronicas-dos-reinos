@@ -14,6 +14,7 @@ MODULE_PATH = TOOLS / "auditoria-final.py"
 spec = importlib.util.spec_from_file_location("auditoria_final", MODULE_PATH)
 mod = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
+sys.modules[spec.name] = mod
 spec.loader.exec_module(mod)
 
 
@@ -53,6 +54,8 @@ class AuditoriaFinalTest(unittest.TestCase):
     def test_final_engineering_contract_exists(self):
         for rel in mod.EXPECTED_ENGINEERING_PATHS:
             self.assertTrue((ROOT / rel).is_file(), rel)
+        self.assertTrue((ROOT / "docs/agente/auditoria-final.md").is_file())
+        self.assertTrue((ROOT / "baseline/auditoria-final-step-12.md").is_file())
         self.assertFalse((ROOT / "runtime/consolidacao-em-andamento.json").exists())
 
 
