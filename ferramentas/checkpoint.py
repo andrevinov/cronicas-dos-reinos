@@ -8,6 +8,10 @@
 Se o processo cair após o cânone e antes do handoff, nenhum delta é reaplicado:
 basta executar o comando novamente ou `sessoes.py bootstrap-atual`, pois a memória
 de sessão é cache derivado, não fonte de verdade.
+
+Desde o ajuste de autoridade temporal, `estado/tempo.yaml:prazo_relevante` é a
+representação canônica única de prazos/alertas temporais. O campo legado homônimo
+aninhado em `estado/estado-atual.yaml` não participa mais da checagem de espelho.
 """
 from __future__ import annotations
 
@@ -28,6 +32,16 @@ except ImportError as exc:
 import consolidar
 import sessoes
 import transacoes
+
+PRAZO_MIRROR_LEGADO = ("tempo.prazo_relevante", "prazo_relevante")
+
+# O histórico mostrou que manter texto livre de prazo duplicado em estado + tempo
+# cria divergência sem acrescentar autoridade. A porta operacional remove somente
+# esse espelho legado; data/hora/período/clima e todos os espelhos de ficha seguem
+# com validação rígida.
+consolidar.TIME_MIRRORS = tuple(
+    pair for pair in consolidar.TIME_MIRRORS if pair != PRAZO_MIRROR_LEGADO
+)
 
 
 def _atomic_text(path: Path, text: str) -> None:
