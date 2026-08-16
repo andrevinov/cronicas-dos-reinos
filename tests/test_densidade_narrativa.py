@@ -39,9 +39,9 @@ class ContratoNarrativoTest(unittest.TestCase):
         self.assertIn("Economia de contexto não é economia de prosa", density)
         self.assertIn("Economia de contexto não é economia de prosa", guide)
         self.assertNotIn("entre duas frases e três parágrafos", guide)
-        self.assertIn("`narracao` é a cena", density)
-        self.assertIn("`resumo` é o significado da cena", density)
-        self.assertIn("`deltas` — mudanças persistentes", density)
+        self.assertIn("### 1. `narracao` — a cena", density)
+        self.assertIn("resumo   = o significado da cena", density)
+        self.assertIn("### 3. `deltas` — mudanças persistentes", density)
 
     def test_texturas_sao_pequenas_e_validas(self):
         self.assertEqual(texturas.validate(REPO), [])
