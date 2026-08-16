@@ -15,7 +15,7 @@ except ImportError as exc:
     ) from exc
 
 
-RUNTIME_VERSION = 1
+RUNTIME_VERSION = 2
 CONTEXT_PATH = Path("runtime/contexto.yaml")
 SCENE_PATH = Path("runtime/cena.yaml")
 EVENTS_PATH = Path("runtime/eventos-pendentes.jsonl")
@@ -76,6 +76,7 @@ def build_runtime_from_documents(
     if not isinstance(sessao, int):
         raise ValueError("campanha.sessao_atual precisa ser inteiro")
     transcricao = f"sessoes/{sessao:03d}/transcricao.md"
+    handoff = f"sessoes/{sessao:03d}/handoff.yaml"
 
     data = tempo_estado.get("data_exata") or ((tempo_arquivo.get("data_atual") or {}).get("valor"))
     hora = tempo_estado.get("hora_aproximada") or tempo_arquivo.get("hora_aproximada")
@@ -125,7 +126,10 @@ def build_runtime_from_documents(
             "relacoes": "estado/relacoes.yaml",
             "medidores_npcs": "estado/medidores-npcs.yaml",
             "conhecimento_de_ren": "personagens/jogador/conhecimento.md",
-            "transcricao_atual": transcricao,
+            "retomada": "ferramentas/contexto.py retomada",
+            "indice_sessoes": "sessoes/index.yaml",
+            "handoff_atual": handoff,
+            "transcricao_fria": transcricao,
             "narrador": "narrador/",
             "regras": "regras/",
         },
@@ -151,7 +155,9 @@ def build_runtime_from_documents(
         "prazos_e_alertas": tail_sentences(tempo_estado.get("prazo_relevante"), 7, 1800),
         "consulta_profunda_somente_se_necessaria": {
             "estado": "estado/estado-atual.yaml",
-            "transcricao": transcricao,
+            "handoff": handoff,
+            "indice_sessoes": "sessoes/index.yaml",
+            "transcricao_fria": transcricao,
             "relacoes": "estado/relacoes.yaml",
             "conhecimento": "personagens/jogador/conhecimento.md",
         },
