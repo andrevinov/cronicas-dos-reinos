@@ -12,6 +12,9 @@ dependencies = [
 # Use sempre como `poetry run <comando> ...` ou, com o .venv ativado,
 # simplesmente `<comando> ...`.
 [project.scripts]
+# Classifica/valida a linguagem da mesa: ON, OFF e RECALL.
+entrada = "ferramentas.poetry_cli:entrada"
+
 # Consulta o estado efetivo sem abrir arquivos grandes desnecessariamente.
 contexto = "ferramentas.poetry_cli:contexto"
 
