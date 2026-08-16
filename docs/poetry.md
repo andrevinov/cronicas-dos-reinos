@@ -35,6 +35,10 @@ Não é obrigatório ativar o ambiente. Você pode executar qualquer comando com
 ## Comandos principais
 
 ```bash
+# Classificar/validar a linguagem ON/OFF/RECALL (stdin por padrão).
+printf '%s\n' '[Quanto dinheiro eu tenho?]' | poetry run entrada classificar
+poetry run entrada validar-registro --texto 'Eu pago os 3 PO.'
+
 # Retomar/consultar a campanha sem reler transcrições.
 poetry run contexto retomada
 poetry run contexto status
@@ -69,8 +73,9 @@ poetry run rollout-comparar /caminho/para/rollout.jsonl
 
 Os comentários no próprio `pyproject.toml` são a referência rápida de cada comando:
 
+- `entrada`: classifica/valida ON, OFF e RECALL;
 - `contexto`: consulta estado efetivo e memória dirigida;
-- `turno`: registra transcrição + deltas pendentes;
+- `turno`: registra transcrição + deltas pendentes, aceitando somente ON resolvido em `jogador`;
 - `checkpoint`: consolida e atualiza handoff/índice;
 - `consolidar`: motor de baixo nível do checkpoint;
 - `auditoria`: auditoria completa de retomada;
