@@ -49,7 +49,7 @@ Em fórmula:
 ```text
 narracao = a cena
 resumo   = o significado da cena
-­deltas   = o que mudou no estado persistente
+deltas   = o que mudou no estado persistente
 ```
 
 ## Densidade adaptativa
