@@ -182,6 +182,32 @@ class TurnoTransactionalTest(unittest.TestCase):
         self.assertEqual(effective["recursos"]["ki"]["atuais"], 3)
         self.assertEqual(effective["localizacao"]["ponto_exato"], "junto ao salgueiro")
 
+    def test_warns_about_broad_unchanged_status_panel(self):
+        repo = self.make_repo()
+        tx = self.transaction()
+        tx["narracao"] = (
+            "PV 45/45. CA 17. Ki 5/6. 45 PO. Hora aproximada 08:04. "
+            "Localização: estrada do Fire River. Ren encara o adversário."
+        )
+        result = mod.register_transaction(repo, tx)
+        self.assertEqual(len(result["avisos"]), 1)
+        self.assertIn("painel mecânico repetido", result["avisos"][0])
+
+    def test_short_or_changed_status_does_not_warn(self):
+        short = self.transaction()
+        short["narracao"] = "PV 41/45 e Ki 4/6; Ren continua lutando."
+        self.assertEqual(mod.narration_warnings(short), [])
+
+        changed = self.transaction(
+            delta=[
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -4},
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1},
+                {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "ponte"},
+            ]
+        )
+        changed["narracao"] = "PV 41/45. Ki 4/6. CA 17. Localização: ponte."
+        self.assertEqual(mod.narration_warnings(changed), [])
+
 
 if __name__ == "__main__":
     unittest.main()
