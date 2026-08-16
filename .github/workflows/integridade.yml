@@ -186,3 +186,29 @@ jobs:
         run: >-
           python ferramentas/verificar-integridade.py
           --baseline baseline/estado-logico-2026-08-15.yaml
+
+      - name: Auditoria final e teste de retomada
+        run: |
+          test -f ferramentas/auditoria-final.py
+          test -f docs/agente/auditoria-final.md
+          test -f baseline/auditoria-final-step-12.md
+          python ferramentas/auditoria-final.py --json > /tmp/auditoria-final.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/auditoria-final.json', encoding='utf-8'))
+          assert report['pronto_para_retomar'] is True, report
+          assert report['veredito'] == 'PRONTO PARA RETOMAR'
+          assert all(gate['ok'] is True for gate in report['gates'])
+          by_name = {gate['nome']: gate for gate in report['gates']}
+          hot = by_name['retomada_somente_camada_quente']['detalhe']
+          assert hot['transcricao_lida'] is False
+          assert hot['bytes_saida'] <= 8192
+          assert hot['snapshot']['sessao'] == 3
+          assert hot['snapshot']['personagem'] == 'Ren Kagehira'
+          pending = by_name['retomada_com_delta_pendente']['detalhe']
+          assert pending['somente_sandbox'] is True
+          assert pending['ki_efetivo'] == pending['ki_base'] - 1
+          immutable = by_name['auditoria_sem_mutacao']['detalhe']
+          assert immutable['hash_antes'] == immutable['hash_depois']
+          PY
+          cat /tmp/auditoria-final.json
