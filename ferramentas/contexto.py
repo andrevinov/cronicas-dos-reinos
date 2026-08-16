@@ -84,6 +84,74 @@ def _add_sources(data: dict[str, Any], sources: list[str]) -> None:
     data["fontes"] = list(dict.fromkeys(current + sources))
 
 
+def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
+    """Recorte efetivo necessário para retomar sem estourar o orçamento L2.
+
+    A projeção é feita *depois* de aplicar os eventos pendentes, portanto mantém
+    tipos estruturados (PV/Ki continuam mapas, números continuam números) em vez
+    de depender da compactação genérica de `fit_budget`.
+    """
+    keys = (
+        "sessao",
+        "personagem",
+        "recursos",
+        "tempo",
+        "localizacao",
+        "sobreposicao_transacional",
+    )
+    return {key: context[key] for key in keys if key in context}
+
+
+def _resume_scene_view(scene: dict[str, Any]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key in (
+        "modo",
+        "localizacao",
+        "tempo",
+        "mecanica_imediata",
+        "sobreposicao_transacional",
+    ):
+        if key in scene:
+            result[key] = scene[key]
+    if "resumo_imediato" in scene:
+        result["resumo_imediato"] = truncate_text(scene.get("resumo_imediato", ""), 1400)
+    if "prazos_e_alertas" in scene:
+        result["prazos_e_alertas"] = truncate_text(scene.get("prazos_e_alertas", ""), 900)
+    return result
+
+
+def _resume_memory_view(memory: Any) -> dict[str, Any] | None:
+    """Remove do handoff o que runtime/cena já disseram na mesma resposta."""
+    if not isinstance(memory, dict):
+        return None
+    checkpoint = memory.get("checkpoint") or {}
+    checkpoint_view = (
+        {
+            key: checkpoint.get(key)
+            for key in ("tipo", "estado", "modo")
+            if key in checkpoint
+        }
+        if isinstance(checkpoint, dict)
+        else {}
+    )
+    recent: list[dict[str, Any]] = []
+    for item in list(memory.get("eventos_recentes") or [])[-3:]:
+        if not isinstance(item, dict):
+            continue
+        recent.append(
+            {
+                "transacao": item.get("transacao"),
+                "resumo": truncate_text(item.get("resumo", ""), 260),
+            }
+        )
+    result: dict[str, Any] = {}
+    if checkpoint_view:
+        result["checkpoint"] = checkpoint_view
+    if recent:
+        result["eventos_recentes"] = recent
+    return result or None
+
+
 def command_status(repo: Path) -> dict[str, Any]:
     data = core.command_status(repo)
     context = data.get("resultado")
@@ -119,19 +187,20 @@ def command_resume(repo: Path) -> dict[str, Any]:
     records = _pending(repo)
     if isinstance(context, dict) and isinstance(scene, dict):
         effective_context, effective_scene, _ = transacoes.overlay_runtime(context, scene, records)
-        result["contexto"] = effective_context
-        result["cena"] = effective_scene
+        result["contexto"] = _resume_context_view(effective_context)
+        result["cena"] = _resume_scene_view(effective_scene or {})
+    result["memoria_consolidada"] = _resume_memory_view(result.get("memoria_consolidada"))
 
     session = result.get("sessao")
     recent = (
-        transacoes.pending_for_session(records, session)[-6:]
+        transacoes.pending_for_session(records, session)[-4:]
         if isinstance(session, int)
-        else records[-6:]
+        else records[-4:]
     )
     result["eventos_pendentes_recentes"] = [
         {
             "id": item.get("id"),
-            "resumo": core.truncate_text(item.get("resumo", ""), 500),
+            "resumo": core.truncate_text(item.get("resumo", ""), 320),
             "modo": item.get("modo"),
         }
         for item in recent
