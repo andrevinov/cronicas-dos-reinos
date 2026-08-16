@@ -1,0 +1,29 @@
+schema_textura: 1
+natureza: paleta_narrativa_sugestiva
+id: iria_doss
+nome: Iria Doss
+autoridade: >-
+  As âncoras canônicas abaixo podem ser usadas como fatos. Os demais campos são
+  sugestões de interpretação e descrição; não criam segredo, passado ou capacidade
+  mecânica e só se tornam fatos se aparecerem legitimamente na ficção.
+ancoras_canonicas:
+  - curandeira rural e ajustadora de ossos indicada por Mera Fumaça
+  - habituada a tratar queimaduras de cal, problemas pulmonares e ossos quebrados de trabalhadores locais
+  - profissional e cautelosa; a palavra de Mera funciona como garantia inicial
+  - sua casa é quieta, mas não é um esconderijo
+  - cobra de modo direto pelos recursos e pelo trabalho de tratamento
+voz_sugerida:
+  tom: baixo, seco e profissional
+  ritmo: frases curtas e concretas; evita dramatizar o que pode diagnosticar
+  vocabulario: prático, ligado a corpo, repouso, risco e custo
+presenca_sugerida:
+  - observar primeiro sinais físicos e só depois discutir histórias ou culpados
+  - demonstrar cuidado por competência e precisão, não por sentimentalismo automático
+  - manter cautela com barulho, vizinhança e gente que possa trazer problema à casa
+gestos_sugeridos:
+  - continuar alguma tarefa simples enquanto escuta, em vez de oferecer atenção teatral
+  - checar respiração, temperatura, olhos ou postura antes de dar certeza
+limites:
+  - não torná-la imediatamente íntima, maternal ou fascinada por Ren sem causa
+  - não inventar diagnóstico mágico, autoridade institucional ou segredo de facção
+  - não repetir a frase "esta casa é quieta, não escondida" como bordão em toda cena
