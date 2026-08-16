@@ -48,7 +48,9 @@ Runtime, handoffs, índices e resultados de consulta são projeções/roteadores
 
 **Nunca leia por precaução. Leia para responder a uma lacuna concreta.**
 
-Antes de chamar ferramenta ou abrir arquivo, pergunte se o contexto já disponível basta. Se bastar, não leia nada. Depois de cada consulta, pergunte novamente se já é suficiente. **Se for suficiente, pare.**
+**Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls, arquivos quentes, duplicação e reescritas; não comprima a experiência literária do jogador apenas para produzir menos texto. A transcrição é fria para leitura futura e pode conter prosa rica. Detalhes: `docs/agente/densidade-narrativa.md`.
+
+Antes de chamar ferramenta ou abrir arquivo, pergunte se o contexto já disponível basta. Se bastar, não leia nada. Depois de cada consulta, pergunte novamente se já é suficiente. **Se for suficiente, pare de buscar.** Isso não significa encerrar a narração assim que os fatos mínimos forem conhecidos.
 
 A escada é um controle de escalada, **não uma checklist obrigatória**. Se o alvo já é conhecido, ir direto à consulta dirigida evita round-trips inúteis. O proibido é subir para busca ampla, histórico ou transcrição “só para conferir”.
 
@@ -58,7 +60,7 @@ Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
 - **L1:** `contexto.py status` — teto 4 KiB;
-- **L2:** `cena`, `retomada`, `npc`, `relacao`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
+- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
 - **L3:** `buscar "termo" --apos L2 --motivo "lacuna concreta"` — teto 8 KiB;
 - **L4:** `buscar ... --historico --apos L3 --motivo "lacuna"` — teto 12 KiB, ainda sem transcrições;
 - **L4T:** `buscar ... --historico --transcricoes --apos L4 --motivo "lacuna"` — teto 16 KiB;
@@ -79,6 +81,7 @@ Leia no máximo os documentos especializados necessários:
 - retomada, sessões antigas, handoff, índice, transcrições frias → `docs/agente/memoria-de-sessoes.md`;
 - regra, decisão, CD, rolagem → `docs/agente/regras-e-rolagens.md`;
 - narração, NPC, facção, relógio, consequência, relação → `docs/agente/narracao-e-mundo.md`;
+- densidade literária, diálogo, ambientação e textura compacta → `docs/agente/densidade-narrativa.md`;
 - ficha, progressão, inventário, recursos, tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa, região, retcon, edição, YAML, ferramentas, Git → `docs/agente/pesquisa-e-manutencao.md`;
 - telemetria, rollout, benchmark e economia medida → `docs/agente/telemetria-rollouts.md`.
@@ -99,10 +102,14 @@ Durante **cada avanço comum**:
 - não executar `analisar-rollout.py`, `comparar-rollouts.py` ou criar telemetria durante o avanço; medição é pós-hoc;
 - registrar jogador + narrador + deltas em uma única chamada a `ferramentas/turno.py registrar`;
 - essa chamada altera somente a transcrição atual e `runtime/eventos-pendentes.jsonl`;
+- **`narracao` é a cena completa para o jogador; `resumo` é compressão operacional; `deltas` são apenas mudanças persistentes**;
+- não encurtar `narracao` para fazê-la caber no tamanho desejado do resumo ou do buffer;
 - registrar apenas deltas persistentes realmente ocorridos;
 - não copiar a narração inteira para o JSONL;
 - não repetir bloco completo de PV/CA/Ki/dinheiro/hora/localização quando nada relevante mudou;
 - rolagens ocultas relevantes ficam no registro transacional reservado até consolidação.
+
+Quando um NPC ou local presente precisar de matéria-prima descritiva e o contexto atual não bastar, preferir a mesma consulta dirigida: `contexto.py npc "Nome"` pode trazer textura compacta e `contexto.py local "Lugar"` consulta paleta de ambiente. Não consultar paleta a cada turno nem usar textura como fonte de segredo/cânone novo.
 
 `contexto.py` enxerga as pendências. Para retomar após pausa/compactação, usar `contexto.py retomada`, **não reler a transcrição**.
 
