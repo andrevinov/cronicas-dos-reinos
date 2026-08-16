@@ -1,4 +1,4 @@
-versao_runtime: 1
+versao_runtime: 2
 natureza: derivado_descartavel
 fontes_canonicas:
   estado: estado/estado-atual.yaml
@@ -44,6 +44,9 @@ ponteiros:
   relacoes: estado/relacoes.yaml
   medidores_npcs: estado/medidores-npcs.yaml
   conhecimento_de_ren: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/003/transcricao.md
+  retomada: ferramentas/contexto.py retomada
+  indice_sessoes: sessoes/index.yaml
+  handoff_atual: sessoes/003/handoff.yaml
+  transcricao_fria: sessoes/003/transcricao.md
   narrador: narrador/
   regras: regras/

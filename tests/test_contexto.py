@@ -72,8 +72,16 @@ class ContextoHelpersTest(unittest.TestCase):
 
             reserved = mod.generic_search(repo, "agulha", reserved=True, historical=False)
             self.assertIn("narrador/segredo.md", {item["arquivo"] for item in reserved})
+
             historical = mod.generic_search(repo, "agulha", reserved=False, historical=True)
-            self.assertIn("sessoes/001/transcricao.md", {item["arquivo"] for item in historical})
+            historical_files = {item["arquivo"] for item in historical}
+            self.assertIn("sessoes/001/resumo.md", historical_files)
+            self.assertNotIn("sessoes/001/transcricao.md", historical_files)
+
+            transcripts = mod.generic_search(
+                repo, "agulha", reserved=False, historical=True, transcripts=True
+            )
+            self.assertIn("sessoes/001/transcricao.md", {item["arquivo"] for item in transcripts})
 
 
 class ContextoRepositoryTest(unittest.TestCase):
@@ -102,6 +110,16 @@ class ContextoRepositoryTest(unittest.TestCase):
         rendered, _ = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
         self.assertLess(len(rendered), 12000)
+
+    def test_resume_and_session_memory_stay_small(self):
+        resume = mod.command_resume(REPO)
+        session = mod.command_session(REPO, "3")
+        rendered_resume, _ = mod.fit_budget(resume, mod.DEFAULT_MAX_BYTES, False)
+        rendered_session, _ = mod.fit_budget(session, mod.DEFAULT_MAX_BYTES, False)
+        self.assertLessEqual(len(rendered_resume.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
+        self.assertLessEqual(len(rendered_session.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
+        self.assertNotIn("sessoes/003/transcricao.md", resume["fontes"])
+        self.assertNotIn("sessoes/003/transcricao.md", session["fontes"])
 
 
 if __name__ == "__main__":

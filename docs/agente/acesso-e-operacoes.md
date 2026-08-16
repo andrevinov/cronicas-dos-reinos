@@ -1,6 +1,6 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando consolidar**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. O protocolo profundo de consolidação fica em `docs/agente/consolidacao-transacional.md` e só deve ser lido quando esse trabalho for necessário.
+Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`.
 
 ## Regra principal de economia de contexto
 
@@ -10,15 +10,17 @@ Se sim, não ler arquivo algum. Se não, buscar somente a menor fonte capaz de r
 
 Não ler o repositório inteiro, uma pasta inteira ou um arquivo grande apenas para "se situar". Não consultar livros oficiais preventivamente. Não reler informação já disponível e confiável.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots-base derivados. `runtime/eventos-pendentes.jsonl` contém mudanças posteriores ao último checkpoint consolidado. `contexto.py` aplica essas pendências em memória e devolve o estado operacional efetivo.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots-base derivados. `runtime/eventos-pendentes.jsonl` contém mudanças posteriores ao último checkpoint. `contexto.py` aplica essas pendências em memória e devolve o estado operacional efetivo.
 
-Relações, medidores de NPC e conhecimento são fragmentados. A ferramenta resolve índices pequenos e abre somente o fragmento necessário. Monólitos em `historico/legado/` são material de auditoria.
+Relações, medidores de NPC e conhecimento são fragmentados. `sessoes/NNN/handoff.yaml` é memória compacta de retomada. **Transcrições são preservadas integralmente, mas ficam fora da leitura normal.**
 
 ## Interface única de consulta
 
 ```bash
 python3 ferramentas/contexto.py status
+python3 ferramentas/contexto.py retomada
 python3 ferramentas/contexto.py cena
+python3 ferramentas/contexto.py sessao 2
 python3 ferramentas/contexto.py npc kethra
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
@@ -28,37 +30,41 @@ python3 ferramentas/contexto.py buscar "ponte baixa"
 
 A ferramenta possui orçamento padrão de 8 KiB e registra somente metadados opcionais em `runtime/consultas-contexto.jsonl`.
 
-A busca genérica não inclui `narrador/`, `historico/` nem transcrições completas por padrão:
+Escaladas deliberadas:
 
 ```bash
 python3 ferramentas/contexto.py buscar "sol apagado" --reservado
 python3 ferramentas/contexto.py buscar "frase exata" --historico
+python3 ferramentas/contexto.py buscar "frase exata" --historico --transcricoes
 ```
 
-`--reservado` e `--historico` são escaladas deliberadas, nunca opções de rotina.
+`--historico` **não** implica mais transcrição. Ele inclui memória histórica estruturada. `--transcricoes` exige `--historico` e é a última escalada local antes de fonte externa.
 
 ## Escada de leitura
 
 - **L0 — contexto já disponível:** nenhuma leitura.
-- **L1 — estado quente efetivo:** `contexto.py status`.
-- **L2 — consulta dirigida:** `cena`, `npc`, `relacao`, `conhecimento` ou `regra`.
-- **L3 — descoberta limitada:** `buscar`, sem histórico frio/transcrições completas.
-- **L4 — histórico profundo:** `buscar --historico`, histórico específico ou transcrição apontada por necessidade concreta.
+- **L1 — estado/retomada quente:** `contexto.py status` ou `contexto.py retomada`.
+- **L2 — consulta dirigida:** `cena`, `npc`, `relacao`, `conhecimento`, `regra` ou `sessao N`.
+- **L3 — descoberta limitada:** `buscar`, sem histórico frio nem transcrições.
+- **L4 — histórico estruturado:** `buscar --historico`, handoffs, resumos, alterações e históricos específicos; transcrições continuam excluídas.
+- **L4T — evidência bruta de sessão:** `buscar --historico --transcricoes`, somente quando L4 não resolver a lacuna.
 - **L5 — fonte externa/autorizada:** livros oficiais ou pesquisa de material-base quando os resumos internos não bastarem.
 
 Escalar apenas por necessidade identificável. Durante narração comum, o alvo é permanecer em L0–L2.
 
-Nunca substituir uma consulta a uma relação por leitura de toda `estado/relacoes/`, nem uma consulta de conhecimento por abertura recursiva de `personagens/jogador/conhecimento/`.
+Nunca substituir consulta a uma relação por leitura de toda `estado/relacoes/`, consulta de conhecimento por abertura recursiva de todos os fragmentos, ou retomada por leitura da transcrição atual/anterior.
 
 ## Estado base, pendente e efetivo
 
 Três conceitos devem permanecer separados:
 
 1. **estado consolidado** — arquivos canônicos em `estado/`, ficha, relações e conhecimento;
-2. **deltas pendentes** — mudanças ocorridas depois do último checkpoint, em `runtime/eventos-pendentes.jsonl`;
+2. **deltas pendentes** — mudanças posteriores ao último checkpoint, em `runtime/eventos-pendentes.jsonl`;
 3. **estado efetivo** — projeção do consolidado + deltas, devolvida por `contexto.py`.
 
-Durante jogo ao vivo, consultar o estado efetivo. Não editar o consolidado apenas para fazer uma consulta seguinte enxergar uma mudança recém-ocorrida.
+Handoff e índice de sessões são uma quarta categoria: **cache derivado de retomada**, não novo cânone.
+
+Durante jogo ao vivo, consultar o estado efetivo. Não editar o consolidado apenas para a consulta seguinte enxergar uma mudança recém-ocorrida.
 
 ## Narração ao vivo — ciclo operacional
 
@@ -88,7 +94,9 @@ JSON
 
 O registrador escreve apenas `sessoes/NNN/transcricao.md` e `runtime/eventos-pendentes.jsonl`.
 
-Não atualizar na mesma interação, por rotina: estado, tempo, ficha, fragmentos de relação/NPC, conhecimento consolidado, consequências, relógios ou arquivos separados de rolagens ocultas. Esses destinos pertencem à consolidação em lote.
+Não atualizar na mesma interação, por rotina: estado, tempo, ficha, fragmentos de relação/NPC, conhecimento consolidado, consequências, relógios, handoff, índice de sessões ou arquivos separados de rolagens ocultas. Esses destinos pertencem ao checkpoint.
+
+Também não repetir em prosa o painel completo de PV/CA/Ki/dinheiro/hora/localização quando nada relevante mudou. Mostrar apenas mecânica necessária à decisão/resolução atual.
 
 ### O que vira delta
 
@@ -120,36 +128,47 @@ Não executar a suíte inteira de integridade depois de cada turno.
 
 Quando duas ou mais rolagens são independentes e todas já são necessárias antes de conhecer qualquer resultado, usar uma única chamada a `rolar-lote.py`. Não agrupar rolagem cuja existência dependa do resultado anterior.
 
-## Consolidação — checkpoint, não turno
+## Checkpoint — muito menos frequente que turno
 
-A consolidação deve ser **muito menos frequente que a narração**. Usar no fim de uma cena importante quando um checkpoint canônico for útil e obrigatoriamente antes de considerar a sessão encerrada:
+Fazer checkpoint no fim de cena importante quando um estado canônico for útil e obrigatoriamente antes de considerar a sessão encerrada:
 
 ```bash
-python3 ferramentas/consolidar.py cena
-python3 ferramentas/consolidar.py sessao
+python3 ferramentas/checkpoint.py cena
+python3 ferramentas/checkpoint.py sessao
 ```
 
-O consolidador usa os deltas já registrados; não precisa reconstituir mudanças vasculhando a campanha. Ele prepara todos os bytes finais antes da primeira escrita, atualiza somente os domínios afetados, instala o novo runtime no mesmo lote e remove as transações aplicadas do buffer por último.
+O fluxo separa duas responsabilidades:
+
+1. `consolidar.py` é o motor canônico: journal/staging, aplicação única dos deltas, runtime novo e limpeza do buffer por último;
+2. `checkpoint.py` deriva depois `handoff.yaml` e `sessoes/index.yaml` do estado já instalado.
+
+Essa separação evita contaminar a transação canônica com cache de leitura. Se a segunda fase falhar, regenerar a memória compacta não reaplica deltas.
 
 Se houver `runtime/consolidacao-em-andamento.json`, a operação normal fica bloqueada. Não narrar nem consultar contexto. Recuperar:
 
 ```bash
-python3 ferramentas/consolidar.py recuperar
+python3 ferramentas/checkpoint.py recuperar
 ```
-
-A recuperação instala os bytes já preparados; não recalcula nem reaplica incrementos.
 
 Detalhes de mirrors, relações/NPCs, conhecimento incremental, consequências, progressão, segredos, clocks, ledger e staging: `docs/agente/consolidacao-transacional.md`.
 
 ## Classificação da tarefa
 
-Classificar mentalmente cada pedido em preparação, pesquisa, criação/progressão, sessão/narração, consolidação, manutenção, correção de continuidade ou revisão de material-base. A classificação escolhe fluxo/documento; não gera leitura extra por si só.
+Classificar mentalmente cada pedido em preparação, pesquisa, criação/progressão, sessão/narração, checkpoint/consolidação, manutenção, correção de continuidade ou revisão de material-base. A classificação escolhe fluxo/documento; não gera leitura extra por si só.
 
 ## Leitura por tipo de trabalho
 
-### Narração ou início de sessão
+### Retomada ou início de sessão
 
-Começar em L0. Se faltar estado, `contexto.py status`; se faltar recorte imediato, `contexto.py cena`. Só consultar entidade, regra ou histórico quando a resposta atual depender disso.
+Começar em L0. Se a continuidade não estiver suficientemente presente, usar **primeiro**:
+
+```bash
+python3 ferramentas/contexto.py retomada
+```
+
+Isso combina runtime, cena, handoff consolidado e resumos das transações ainda pendentes. Só depois consultar entidade/regra específica.
+
+Ao abrir uma nova sessão, não copiar o último trecho da anterior. Se precisar dela, usar `contexto.py sessao N`, depois L4; transcrição só em L4T.
 
 ### Aplicação de regra
 
@@ -159,17 +178,17 @@ Usar `contexto.py regra "assunto"`. Se ainda houver dúvida: decisão anterior e
 
 Durante jogo, dano, cura, Ki, moedas, munição e outros recursos entram como deltas; a ficha é sincronizada pela consolidação. Fora do loop narrativo, alteração canônica manual continua exigindo validação e regeneração do runtime quando aplicável.
 
-Depois de `consolidar.py`, **não regenerar runtime por rotina**: o runtime correspondente ao novo cânone já foi calculado antes da instalação e faz parte do mesmo lote.
+Depois de `checkpoint.py`, não regenerar runtime/handoff por rotina: o fluxo já os deixa coerentes.
 
 ### Preparação de nova região
 
 Consultar direção real, cronologia relevante, consequências de alcance regional, relações/facções implicadas, material oficial necessário e planos capazes de alcançar a região. Não preparar regiões sem utilidade previsível.
 
-### Encerramento e consolidação
+### Encerramento e checkpoint
 
-Usar transcrição + buffer como insumos principais. Antes de encerrar a sessão, executar `consolidar.py sessao` e verificar sucesso. Relações atuais permanecem em seus fragmentos; causas históricas vão para histórico específico. Conhecimento novo entra em fragmentos incrementais e seus índices.
+Antes de encerrar a sessão, executar `checkpoint.py sessao` e verificar sucesso. Relações atuais permanecem em seus fragmentos; causas históricas vão para histórico específico. Conhecimento novo entra em fragmentos incrementais e seus índices.
 
-A ferramenta não inventa fatos ausentes dos deltas, não incrementa a sessão automaticamente e não escolhe progressão pelo jogador.
+O motor não inventa fatos ausentes dos deltas, não incrementa a sessão automaticamente e não escolhe progressão pelo jogador.
 
 ## Semântica dos comandos de contexto
 
@@ -177,9 +196,17 @@ A ferramenta não inventa fatos ausentes dos deltas, não incrementa a sessão a
 
 Retorna `runtime/contexto.yaml` com deltas pendentes aplicados em memória.
 
+### `retomada`
+
+Retorna runtime + cena + memória compacta consolidada da sessão atual + resumos das pendências recentes. **Não abre transcrição.** É a porta padrão depois de pausa, compactação ou processo novo.
+
 ### `cena`
 
 Retorna contexto + `runtime/cena.yaml`, também com sobreposição pendente.
+
+### `sessao N`
+
+Consulta `sessoes/index.yaml` e prefere `handoff.yaml`. Para sessões legadas sem handoff, usa resumo/alterações compactas disponíveis. Não abre transcrição automaticamente.
 
 ### `npc`
 
@@ -199,30 +226,32 @@ Busca resumos internos. Ausência não autoriza inventar regra.
 
 ### `buscar`
 
-Ferramenta de descoberta; material reservado só entra com `--reservado` e histórico frio somente com `--historico`.
+Sem flags, é descoberta limitada. `--reservado` acrescenta material do narrador. `--historico` acrescenta histórico estruturado. Apenas `--historico --transcricoes` acrescenta transcrições brutas.
 
-## Runtime
+## Runtime e memória de sessões
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` devem permanecer pequenos. Durante turno, `contexto.py` projeta deltas sem regravá-los. `gerar-runtime.py` continua disponível para manutenção manual; o consolidador já produz o runtime do novo checkpoint.
+`runtime/contexto.yaml` e `runtime/cena.yaml` permanecem pequenos. Durante turno, `contexto.py` projeta deltas sem regravá-los.
+
+`sessoes/index.yaml` contém metadados/ponteiros, não prosa acumulada. `handoff.yaml` tem teto de 8 KiB e é derivado de runtime/cena + ledger, não da transcrição. A transcrição continua crescendo como registro histórico, mas não como contexto operacional.
 
 ## Comandos conceituais
 
 - **"Preparar a campanha"**: completar configuração e documentos mínimos.
 - **"Criar meu personagem"**: executar criação conforme edição e fontes.
 - **"Preparar a próxima sessão"**: preparar abertura e possibilidades prováveis sem avançar indevidamente o mundo.
-- **"Iniciar a sessão"**: carregar o mínimo seguro e narrar.
-- **"Encerrar a sessão"**: executar `consolidar.py sessao`, validar e então encerrar.
+- **"Iniciar/retomar a sessão"**: usar `contexto.py retomada` e narrar com o mínimo seguro.
+- **"Encerrar a sessão"**: executar `checkpoint.py sessao`, validar e então encerrar.
 - **"Conferir meu XP"**: recalcular histórico relevante e apontar divergências.
 - **"Quais opções eu tenho para evoluir?"**: consultar ficha, fontes, pré-requisitos e caminhos registrados.
 - **"Reavaliar o material-base"**: investigar lacunas e atualizar resumos.
 - **"Preparar a região"**: criar apenas material necessário à área relevante.
-- **"Conferir a continuidade"**: buscar contradições entre sessões, estado, ficha e registros.
+- **"Conferir a continuidade"**: começar por memória compacta e escalar só se necessário.
 
 ## Critérios de conclusão
 
 Uma regra está resumida quando pode ser aplicada sem consulta constante ao livro. Uma região está preparada quando sustenta decisões sem árvore rígida. Um personagem está criado quando escolhas/cálculos estão salvos. Uma sessão está preparada quando a abertura e agentes relevantes estão claros.
 
-Uma sessão só está realmente encerrada quando `consolidar.py sessao` concluiu, o buffer não contém as transações aplicadas, os artefatos necessários foram atualizados e o novo runtime-base representa o estado consolidado.
+Uma sessão só está realmente encerrada quando o checkpoint canônico concluiu, o buffer não contém as transações aplicadas, os artefatos necessários foram atualizados e handoff/índice representam o novo ponto de retomada.
 
 ## Prioridade corrente
 

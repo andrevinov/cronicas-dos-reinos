@@ -1,4 +1,4 @@
-versao_runtime: 1
+versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 3
 modo: resgate_rural
@@ -24,6 +24,8 @@ prazos_e_alertas: Visão no Escuro permanece ativa aproximadamente até 09:32. O
   no registro externo. O combate atual é público e testemunhado por trabalhadores.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  transcricao: sessoes/003/transcricao.md
+  handoff: sessoes/003/handoff.yaml
+  indice_sessoes: sessoes/index.yaml
+  transcricao_fria: sessoes/003/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md

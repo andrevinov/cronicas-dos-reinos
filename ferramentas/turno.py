@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -42,10 +43,21 @@ from transacoes import (
     load_pending,
     record_fingerprint,
     transaction_marker,
-    validate_pending_record,
 )
 
 MAX_PENDING_BYTES = 512 * 1024
+
+# Aviso heurístico, nunca bloqueio. A meta é impedir que um painel completo de
+# estado seja copiado para a transcrição a cada avanço sem necessidade.
+_STATUS_PATTERNS = {
+    "pv": re.compile(r"(?:\bPV\b|pontos? de vida)", re.IGNORECASE),
+    "ca": re.compile(r"(?:\bCA\b|classe de armadura)", re.IGNORECASE),
+    "ki": re.compile(r"\bki\b", re.IGNORECASE),
+    "dinheiro": re.compile(r"(?:\bPO\b|peças? de ouro|dinheiro)", re.IGNORECASE),
+    "hora": re.compile(r"(?:\b\d{1,2}:\d{2}\b|hora aproximada)", re.IGNORECASE),
+    "localizacao": re.compile(r"(?:localiza(?:ção|cao)|posição atual|ponto exato)", re.IGNORECASE),
+    "municao": re.compile(r"(?:muni(?:ção|cao)|shuriken|flechas?|virotes?)", re.IGNORECASE),
+}
 
 
 def load_yaml(path: Path) -> Any:
@@ -99,6 +111,50 @@ def normalize_transaction(repo: Path, transaction: dict[str, Any]) -> tuple[dict
     normalized["resumo"] = record["resumo"]
     normalized["deltas"] = record.get("deltas", [])
     return normalized, session
+
+
+def _changed_status_categories(transaction: dict[str, Any]) -> set[str]:
+    changed: set[str] = set()
+    for delta in transaction.get("deltas") or []:
+        if not isinstance(delta, dict):
+            continue
+        target = str(delta.get("alvo") or "")
+        path = str(delta.get("caminho") or "").lower()
+        combined = f"{target.lower()} {path}"
+        if "pontos_de_vida" in combined or ".pv" in combined:
+            changed.add("pv")
+        if re.search(r"(?:^|[._])ki(?:$|[._])", path) or "recursos_de_classe.ki" in combined:
+            changed.add("ki")
+        if "classe_de_armadura" in combined or "combate.ca" in combined:
+            changed.add("ca")
+        if "dinheiro" in combined or re.search(r"(?:^|[._])po(?:$|[._])", path):
+            changed.add("dinheiro")
+        if target == "tempo" or "hora_aproximada" in combined:
+            changed.add("hora")
+        if "localizacao" in combined or "ponto_exato" in combined:
+            changed.add("localizacao")
+        if any(word in combined for word in ("municao", "shuriken", "flecha", "virote")):
+            changed.add("municao")
+    return changed
+
+
+def narration_warnings(transaction: dict[str, Any]) -> list[str]:
+    """Detecta provável painel de status repetido sem impedir um uso deliberado."""
+    narration = str(transaction.get("narracao") or "")
+    mentioned = {
+        category for category, pattern in _STATUS_PATTERNS.items() if pattern.search(narration)
+    }
+    if len(mentioned) < 4:
+        return []
+    changed = _changed_status_categories(transaction)
+    unchanged = mentioned - changed
+    if len(unchanged) < 3:
+        return []
+    fields = ", ".join(sorted(unchanged))
+    return [
+        "possível painel mecânico repetido sem mudança correspondente "
+        f"({fields}); mantenha na narração somente o estado necessário à decisão atual"
+    ]
 
 
 def render_transcript_block(transaction: dict[str, Any]) -> str:
@@ -194,6 +250,7 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         "evento_escrito": need_pending,
         "reparo_parcial": need_transcript != need_pending,
         "ja_registrada": not need_transcript and not need_pending,
+        "avisos": narration_warnings(normalized),
     }
 
 
@@ -263,6 +320,8 @@ def main() -> int:
             )
             if result["reparo_parcial"]:
                 print("OK — inconsistência parcial anterior foi reparada de forma idempotente.")
+            for warning in result.get("avisos", []):
+                print(f"AVISO — {warning}")
             return 0
         if args.comando == "check":
             errors = check_transactions(repo)

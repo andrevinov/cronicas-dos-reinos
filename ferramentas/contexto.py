@@ -1,45 +1,43 @@
 #!/usr/bin/env python3
-"""Porta única de contexto com sobreposição dos deltas transacionais pendentes.
+"""Porta única de contexto com orçamento rígido e transcrições frias.
 
-O motor de consulta fragmentada da Etapa 6 vive em `contexto_core.py`. Esta
-camada acrescenta o estado efetivo da sessão: durante narração ao vivo, fatos
-novos ficam em `runtime/eventos-pendentes.jsonl` até a consolidação e são
-projetados aqui sem reescrever os arquivos canônicos.
+O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
+
+- sobreposição de `runtime/eventos-pendentes.jsonl`;
+- retomada compacta por `sessoes/NNN/handoff.yaml`;
+- consulta de sessão sem abrir transcrição;
+- busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
+  `--historico --transcricoes`.
 """
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
+
+try:
+    import yaml
+except ImportError as exc:
+    raise SystemExit(
+        "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
+    ) from exc
 
 TOOLS_DIR = Path(__file__).resolve().parent
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import contexto_core as core
+import sessoes as memoria_sessoes
 import transacoes
 
-# Guarda as implementações originais ANTES de substituir os pontos de dispatch
-# do núcleo. Sem isso, o caminho CLI recursaria para o próprio wrapper.
-_CORE_COMMAND_STATUS = core.command_status
-_CORE_COMMAND_SCENE = core.command_scene
-_CORE_COMMAND_RELATION = core.command_relation
-_CORE_COMMAND_NPC = core.command_npc
-_CORE_COMMAND_KNOWLEDGE = core.command_knowledge
-_CORE_COMMAND_SEARCH = core.command_search
-
-# Reexporta a API de helpers usada por testes e por ferramentas auxiliares.
 DEFAULT_MAX_BYTES = core.DEFAULT_MAX_BYTES
 HARD_MAX_BYTES = core.HARD_MAX_BYTES
 QUERY_LOG = core.QUERY_LOG
 TEXT_SUFFIXES = core.TEXT_SUFFIXES
 SKIP_DIRS = core.SKIP_DIRS
-REL_INDEX = core.REL_INDEX
-NPC_INDEX = core.NPC_INDEX
-KNOW_INDEX = core.KNOW_INDEX
-KNOW_ACTIVE = core.KNOW_ACTIVE
-KNOW_ROOT = core.KNOW_ROOT
 
+# Reexporta helpers usados por testes/ferramentas existentes.
 load_yaml = core.load_yaml
 normalize = core.normalize
 truncate_text = core.truncate_text
@@ -52,12 +50,9 @@ compact_relation = core.compact_relation
 split_markdown_sections = core.split_markdown_sections
 section_score = core.section_score
 search_markdown_files = core.search_markdown_files
-iter_search_files = core.iter_search_files
-generic_search = core.generic_search
 envelope = core.envelope
-command_rule = core.command_rule
 log_query = core.log_query
-build_parser = core.build_parser
+command_rule = core.command_rule
 
 
 def _pending(repo: Path) -> list[dict[str, Any]]:
@@ -77,7 +72,7 @@ def _add_pending_source(data: dict[str, Any]) -> None:
 
 
 def command_status(repo: Path) -> dict[str, Any]:
-    data = _CORE_COMMAND_STATUS(repo)
+    data = core.command_status(repo)
     context = data.get("resultado")
     if not isinstance(context, dict):
         return data
@@ -89,7 +84,7 @@ def command_status(repo: Path) -> dict[str, Any]:
 
 
 def command_scene(repo: Path) -> dict[str, Any]:
-    data = _CORE_COMMAND_SCENE(repo)
+    data = core.command_scene(repo)
     result = data.get("resultado") or {}
     context = result.get("contexto") if isinstance(result, dict) else None
     scene = result.get("cena") if isinstance(result, dict) else None
@@ -104,8 +99,51 @@ def command_scene(repo: Path) -> dict[str, Any]:
     return data
 
 
+def command_resume(repo: Path) -> dict[str, Any]:
+    result, sources = memoria_sessoes.resume_view(repo)
+    context = result.get("contexto")
+    scene = result.get("cena")
+    records = _pending(repo)
+    if isinstance(context, dict) and isinstance(scene, dict):
+        effective_context, effective_scene, _ = transacoes.overlay_runtime(context, scene, records)
+        result["contexto"] = effective_context
+        result["cena"] = effective_scene
+
+    session = result.get("sessao")
+    recent = (
+        transacoes.pending_for_session(records, session)[-6:]
+        if isinstance(session, int)
+        else records[-6:]
+    )
+    result["eventos_pendentes_recentes"] = [
+        {
+            "id": item.get("id"),
+            "resumo": core.truncate_text(item.get("resumo", ""), 500),
+            "modo": item.get("modo"),
+        }
+        for item in recent
+    ]
+    data = envelope("retomada", None, "L1-L2", sources, result)
+    if recent:
+        _add_pending_source(data)
+    return data
+
+
+def command_session(repo: Path, term: str) -> dict[str, Any]:
+    normalized = normalize(term)
+    if normalized in {"atual", "current"}:
+        session = memoria_sessoes.current_session(repo)
+    else:
+        try:
+            session = int(term)
+        except ValueError as exc:
+            raise ValueError("sessao precisa ser número inteiro ou 'atual'") from exc
+    result, sources = memoria_sessoes.session_snapshot(repo, session)
+    return envelope("sessao", term, "L2-L3", sources, result)
+
+
 def command_relation(repo: Path, term: str) -> dict[str, Any]:
-    data = _CORE_COMMAND_RELATION(repo, term)
+    data = core.command_relation(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict) or not result.get("encontrado"):
         return data
@@ -124,7 +162,7 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
-    data = _CORE_COMMAND_NPC(repo, term)
+    data = core.command_npc(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict) or not result.get("encontrado"):
         return data
@@ -158,13 +196,10 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
-    data = _CORE_COMMAND_KNOWLEDGE(repo, term)
+    data = core.command_knowledge(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict):
         return data
-    # Um resumo de turno pode conter o termo sem que ele represente descoberta de
-    # Ren. Só promovemos material pendente a "conhecimento" quando existe delta
-    # explícito para o alvo conhecimento.
     pending = [
         item
         for item in transacoes.search_pending(
@@ -176,11 +211,102 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
         result["pendentes"] = pending
         result["encontrado"] = True
         _add_pending_source(data)
-        # Conhecimento ainda não consolidado é atual e dirigido; não deve ser
-        # tratado como razão para escalar ao histórico.
         if data.get("nivel") == "L2-L3":
             data["nivel"] = "L2"
     return data
+
+
+def _iter_text_files(root: Path) -> Iterable[Path]:
+    if not root.exists():
+        return
+    for path in root.rglob("*"):
+        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+            continue
+        if any(part in SKIP_DIRS for part in path.parts):
+            continue
+        yield path
+
+
+def iter_search_files(
+    repo: Path,
+    *,
+    reserved: bool,
+    historical: bool,
+    transcripts: bool = False,
+) -> Iterable[Path]:
+    """Escopo público de busca; histórico não implica transcrição."""
+    roots = ["estado", "personagens/jogador", "cenario", "regras", "narracao"]
+    if reserved:
+        roots.append("narrador")
+    for root_name in roots:
+        yield from _iter_text_files(repo / root_name)
+
+    if historical:
+        history = repo / "historico"
+        if history.exists():
+            for path in history.rglob("*"):
+                if path.is_file() and path.suffix.lower() in TEXT_SUFFIXES:
+                    yield path
+
+    sessions = repo / "sessoes"
+    if sessions.exists():
+        for session_dir in sessions.iterdir():
+            if not session_dir.is_dir() or not session_dir.name.isdigit():
+                continue
+            for name in (
+                "handoff.yaml",
+                "resumo.md",
+                "alteracoes-de-estado.yaml",
+                "alteracoes-transacionais.yaml",
+                "consequencias.md",
+                "experiencia.md",
+                "correcoes-de-continuidade.md",
+            ):
+                path = session_dir / name
+                if path.is_file():
+                    yield path
+            if transcripts:
+                path = session_dir / "transcricao.md"
+                if path.is_file():
+                    yield path
+
+
+def generic_search(
+    repo: Path,
+    term: str,
+    *,
+    reserved: bool,
+    historical: bool,
+    transcripts: bool = False,
+    limit: int = 8,
+) -> list[dict[str, Any]]:
+    query = normalize(term)
+    tokens = [token for token in query.split() if token]
+    if not tokens:
+        return []
+    matches: list[tuple[int, str, int, str]] = []
+    for path in iter_search_files(
+        repo, reserved=reserved, historical=historical, transcripts=transcripts
+    ):
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeDecodeError):
+            continue
+        rel = path.relative_to(repo).as_posix()
+        for index, line in enumerate(lines):
+            line_n = normalize(line)
+            if not all(token in line_n for token in tokens):
+                continue
+            score = 20 + sum(line_n.count(token) for token in tokens)
+            start = max(0, index - 1)
+            end = min(len(lines), index + 2)
+            snippet = " ".join(part.strip() for part in lines[start:end] if part.strip())
+            matches.append((score, rel, index + 1, truncate_text(snippet, 650)))
+    matches.sort(key=lambda item: (-item[0], item[1], item[2]))
+    return [
+        {"arquivo": rel, "linha": line, "trecho": snippet}
+        for _, rel, line, snippet in matches[:limit]
+    ]
 
 
 def command_search(
@@ -189,44 +315,140 @@ def command_search(
     *,
     reserved: bool,
     historical: bool,
+    transcripts: bool = False,
 ) -> dict[str, Any]:
-    data = _CORE_COMMAND_SEARCH(
-        repo, term, reserved=reserved, historical=historical
+    matches = generic_search(
+        repo,
+        term,
+        reserved=reserved,
+        historical=historical,
+        transcripts=transcripts,
+        limit=8,
     )
-    result = data.get("resultado") or {}
-    if not isinstance(result, dict):
-        return data
-    pending = transacoes.search_pending(_pending(repo), term, reserved=reserved, limit=5)
-    if not pending:
-        return data
-
-    pending_occurrences = [
+    level = "L4T" if transcripts else ("L4" if historical else "L3")
+    data = envelope(
+        "buscar",
+        term,
+        level,
+        list(dict.fromkeys(item["arquivo"] for item in matches)),
         {
-            "arquivo": transacoes.PENDING_PATH.as_posix(),
-            "transacao": item.get("transacao"),
-            "sessao": item.get("sessao"),
-            "trecho": core.truncate_text(item.get("resumo", ""), 650),
-        }
-        for item in pending
-    ]
-    existing = list(result.get("ocorrencias") or [])
-    result["ocorrencias"] = (pending_occurrences + existing)[:8]
-    result["encontrado"] = True
-    _add_pending_source(data)
+            "escopo": {
+                "reservado": reserved,
+                "historico_estruturado": historical,
+                "transcricoes_frias": transcripts,
+            },
+            "encontrado": bool(matches),
+            "ocorrencias": matches,
+        },
+    )
+
+    pending = transacoes.search_pending(_pending(repo), term, reserved=reserved, limit=5)
+    if pending:
+        result = data["resultado"]
+        occurrences = [
+            {
+                "arquivo": transacoes.PENDING_PATH.as_posix(),
+                "transacao": item.get("transacao"),
+                "sessao": item.get("sessao"),
+                "trecho": truncate_text(item.get("resumo", ""), 650),
+            }
+            for item in pending
+        ]
+        result["ocorrencias"] = (occurrences + list(result.get("ocorrencias") or []))[:8]
+        result["encontrado"] = True
+        _add_pending_source(data)
     return data
 
 
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--json", action="store_true", help="emite JSON em vez de YAML")
+    parser.add_argument(
+        "--max-bytes",
+        type=int,
+        default=DEFAULT_MAX_BYTES,
+        help=f"orçamento máximo de saída; padrão {DEFAULT_MAX_BYTES}, teto {HARD_MAX_BYTES}",
+    )
+    parser.add_argument("--sem-log", action="store_true", help="não registra telemetria local")
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("status", help="somente contexto quente efetivo")
+    sub.add_parser("cena", help="contexto quente + cena efetiva")
+    sub.add_parser("retomada", help="retoma sessão/cena sem abrir transcrições")
+
+    session = sub.add_parser("sessao", help="memória compacta de uma sessão")
+    session.add_argument("termo", help="número ou 'atual'")
+
+    for name, help_text in (
+        ("npc", "medidores e relação atual de um NPC"),
+        ("relacao", "relação atual com uma entidade"),
+        ("conhecimento", "o que Ren sabe sobre um assunto"),
+        ("regra", "trechos das regras internas sobre um assunto"),
+    ):
+        child = sub.add_parser(name, help=help_text)
+        child.add_argument("termo")
+
+    search = sub.add_parser("buscar", help="busca limitada e escalonada")
+    search.add_argument("termo")
+    search.add_argument("--reservado", action="store_true", help="inclui narrador/")
+    search.add_argument(
+        "--historico",
+        action="store_true",
+        help="inclui histórico estruturado/frio; ainda exclui transcrições",
+    )
+    search.add_argument(
+        "--transcricoes",
+        action="store_true",
+        help="inclui transcrições brutas; exige --historico",
+    )
+    return parser
+
+
 def main() -> int:
-    # O parser e o controle de orçamento permanecem no núcleo; apenas substituímos
-    # os pontos de dispatch. As funções wrapper chamam as referências originais
-    # guardadas acima, portanto não há recursão.
-    core.command_status = command_status
-    core.command_scene = command_scene
-    core.command_relation = command_relation
-    core.command_npc = command_npc
-    core.command_knowledge = command_knowledge
-    core.command_search = command_search
-    return core.main()
+    args = build_parser().parse_args()
+    repo = args.repo.resolve()
+    try:
+        if args.command == "status":
+            data = command_status(repo)
+        elif args.command == "cena":
+            data = command_scene(repo)
+        elif args.command == "retomada":
+            data = command_resume(repo)
+        elif args.command == "sessao":
+            data = command_session(repo, args.termo)
+        elif args.command == "npc":
+            data = command_npc(repo, args.termo)
+        elif args.command == "relacao":
+            data = command_relation(repo, args.termo)
+        elif args.command == "conhecimento":
+            data = command_knowledge(repo, args.termo)
+        elif args.command == "regra":
+            data = command_rule(repo, args.termo)
+        elif args.command == "buscar":
+            if args.transcricoes and not args.historico:
+                raise ValueError("--transcricoes exige --historico")
+            data = command_search(
+                repo,
+                args.termo,
+                reserved=args.reservado,
+                historical=args.historico,
+                transcripts=args.transcricoes,
+            )
+        else:
+            raise ValueError(f"comando desconhecido: {args.command}")
+    except (OSError, ValueError, yaml.YAMLError, memoria_sessoes.SessionMemoryError) as exc:
+        print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
+        return 1
+
+    text, truncated = fit_budget(data, args.max_bytes, args.json)
+    output_bytes = len(text.encode("utf-8"))
+    if not args.sem_log:
+        try:
+            log_query(repo, data, output_bytes, truncated)
+        except OSError:
+            pass
+    print(text, end="")
+    return 0
 
 
 if __name__ == "__main__":
