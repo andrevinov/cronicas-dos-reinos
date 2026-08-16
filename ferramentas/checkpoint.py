@@ -81,7 +81,6 @@ def checkpoint(repo: Path, kind: str) -> dict[str, Any]:
 def recover(repo: Path) -> dict[str, Any]:
     canonical = consolidar.resume_consolidation(repo)
     if canonical is None:
-        # Mesmo sem journal pode haver cache ausente/desatualizado.
         memory = refresh_memory(repo, "bootstrap")
         return {"canonico": {"sem_journal": True}, "memoria": memory}
     kind = canonical.get("tipo") or "cena"
@@ -89,9 +88,47 @@ def recover(repo: Path) -> dict[str, Any]:
     return {"canonico": canonical, "memoria": memory}
 
 
+def _current_handoff_errors(repo: Path) -> list[str]:
+    errors: list[str] = []
+    session = sessoes.current_session(repo)
+    path = repo / sessoes.handoff_rel(session)
+    if not path.is_file():
+        return [
+            f"handoff da sessão atual ausente: {sessoes.handoff_rel(session)}; "
+            "execute ferramentas/checkpoint.py recuperar"
+        ]
+    actual = sessoes.load_yaml(path) or {}
+    if not isinstance(actual, dict):
+        return [f"handoff da sessão {session:03d} não é mapeamento"]
+    kind = ((actual.get("checkpoint") or {}).get("tipo"))
+    if kind not in {"bootstrap", "cena", "sessao"}:
+        return [f"handoff da sessão {session:03d} possui tipo de checkpoint inválido: {kind}"]
+
+    context = sessoes.load_yaml(repo / "runtime/contexto.yaml") or {}
+    scene = sessoes.load_yaml(repo / "runtime/cena.yaml") or {}
+    ledger = sessoes.read_jsonl(
+        repo / "sessoes" / f"{session:03d}" / consolidar.LEDGER_NAME
+    )
+    expected = sessoes.build_handoff(
+        repo,
+        session=session,
+        kind=kind,
+        context=context,
+        scene=scene,
+        ledger=ledger,
+    )
+    if actual != expected:
+        errors.append(
+            f"handoff da sessão {session:03d} diverge de runtime/ledger; "
+            "execute ferramentas/checkpoint.py recuperar"
+        )
+    return errors
+
+
 def check(repo: Path) -> list[str]:
     errors = list(consolidar.check(repo))
     errors.extend(sessoes.check(repo))
+    errors.extend(_current_handoff_errors(repo))
     return list(dict.fromkeys(errors))
 
 
