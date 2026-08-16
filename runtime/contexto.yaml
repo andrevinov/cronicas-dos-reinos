@@ -7,7 +7,7 @@ fontes_canonicas:
 sessao:
   numero: 3
   status: em_sessao
-  modo_de_cena: resgate_rural
+  modo_de_cena: aproximacao_curandeira
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -25,8 +25,8 @@ recursos:
   dinheiro_po: 45
 tempo:
   data: 7 Eleasis, 1372 DR
-  hora_aproximada: 08:03 de 7 Eleasis
-  periodo: manhã de 7 Eleasis
+  hora_aproximada: 08:22 de 7 Eleasis
+  periodo: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -35,8 +35,8 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: estrada do Fire River
-  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
-    limpas
+  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
+    leste da secagem velha
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml

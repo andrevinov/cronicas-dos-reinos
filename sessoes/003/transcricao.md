@@ -4740,3 +4740,51 @@ Os trabalhadores ficaram para trás, a cerca de cinquenta pés, alarmados e obse
 Hora aproximada: **08:03 de 7 Eleasis, 1372 DR**. Ren alcançou o homem de mãos limpas junto à cerca de salgueiros. O alvo errou o ataque corpo a corpo e continua armado. Ren não sofreu dano e não gastou Ki; está com **45/45 PV, CA 17 e Ki 5/6**. Sua reação volta a estar disponível no início deste turno. Há testemunhas comuns a cerca de cinquenta pés, e o confronto já não é secreto.
 
 O que Ren faz?
+
+<!-- turno-transacional:s003-104de5ca6b00eb86 -->
+**Jogador**
+
+Ren ataca o homem sem intenção necessária de apagá-lo, buscando respostas. Se o primeiro golpe entrar limpo e mostrar que o homem não tem condições de vencê-lo, Ren interrompe os ataques e o intima a falar.
+**Narrador**
+
+Ren avança com força controlada, procurando quebrar a resistência do homem sem derrubá-lo de vez. O primeiro golpe encontra apenas o salgueiro quando o adversário se encolhe junto à cerca; o segundo corta o espaço acima do ombro dele. Nenhum dos dois acerta. A demonstração que sustentaria a ameaça não acontece, e Ren não profere a fala condicionada. O homem permanece armado e adjacente. Ren ainda dispõe de sua ação bônus e de movimento antes de encerrar o turno.
+
+<!-- turno-transacional:s003-747896a38e04b402 -->
+**Jogador**
+
+Ren usa a ação bônus para atacar novamente; ele precisa causar dor antes de proferir a ameaça.
+**Narrador**
+
+O terceiro golpe não busca apagar o homem. Ren encurta o movimento e enterra o punho sob as costelas dele. O impacto arranca o ar de seus pulmões e o dobra contra a cerca, fazendo os ramos de salgueiro estremecerem. Ren então diz: "Vamos acabar com isso. Você sabe que não vai me vencer, muito menos fugir. É melhor abrir essa sua boca suja e falar o que eu quero saber!" A faca escapa dos dedos do homem e cai na estrada úmida. Ainda curvado e tentando recuperar o fôlego, ele ergue a mão vazia e responde: "Está bem... está bem. Eu falo. Pergunte." Os trabalhadores continuam à distância. A iniciativa fica suspensa pela rendição momentânea, embora o homem permaneça hostil e coagido.
+
+<!-- turno-transacional:s003-ad1dbf6722ccea0e -->
+**Jogador**
+
+Ren pergunta: "Quem é seu chefe? Por que ele mandou você arrumar essa cena toda?"
+**Narrador**
+
+O homem mantém uma das mãos contra as costelas e olha de relance para a faca caída antes de responder. "Chefe? Bram Vask pôs o dinheiro. Não é meu chefe — foi o cliente." Ele engole em seco e continua: "Você tirou o caderno dele e levou Dent. Vask queria Dent respirando, porque sabia que alguém voltaria para buscá-lo. A armadilha não era para o devedor. Era para descobrir quem estava por trás dele e pegar essa pessoa. Você valia mais." A resposta confirma Bram como pagador e o próprio homem como organizador operacional, mas não identifica um superior permanente acima dele.
+
+<!-- turno-transacional:s003-1817f1ac59c440f7 -->
+**Jogador**
+
+Ren acusa o homem de esconder a maior parte do envolvimento, soca a cerca ao lado da cabeça dele e exige saber se foi ele quem levou o desenho da lua à seladora. Furioso com as ameaças recentes a Nera, promete considerar poupá-lo se contar tudo.
+**Narrador**
+
+O punho de Ren passa junto ao rosto do homem e explode contra a madeira. A cerca estala, uma vara de salgueiro se parte e o golpe seco deixa um zumbido no ouvido dele. A pressão vence sua resistência. "Não! O desenho, não. Foi Brass quem levou a encomenda. Eu fui depois." Ele fala depressa, mantendo as mãos visíveis. "Eu levei o tecido, a lâmina falsa e os papéis. Tudo precisava contar a mesma mentira: selo do leste, arma do leste, rastro do leste. A gravadora devia copiar a lua errada de propósito. Se o homem certo seguisse a marca, nós veríamos para onde ele correria e se viria sozinho." Ele admite ser o segundo intermediário descrito por Nera. "As instruções acima de Brass vinham pelo circuito de Narwhal. Sem nome. Papel bom, pagamento e a expressão 'segunda maré'. Eu montava as peças e devolvia o registro. Não conheço o patrono." A cerca fica rachada. Um dos três trabalhadores começa a recuar na direção da estrada principal, alarmado pelo interrogatório.
+
+<!-- turno-transacional:s003-0bb70a436a5a867e -->
+**Jogador**
+
+Ren conclui que o homem trabalha para Brass, Red Sail e também aceita serviço sujo de Bram Vask. Ele o ergue do chão e ordena que leve a Bram o recado: "Você não aprendeu. Da próxima vez que eu te encontrar vai ser seu fim." Exige que repita, avisa que espera que seus dias de crime tenham acabado e que, se voltarem a se cruzar, o próximo recado será para o regente do inferno. Depois o solta e segue rumo à casa de Iria Doss tentando ocultar dos observadores a direção verdadeira.
+**Narrador**
+
+Ren ergue o homem pelo casaco até as botas perderem o chão. Sem resistência, ele repete entre respirações curtas: "Bram Vask não aprendeu. Da próxima vez que você encontrar com ele, vai ser o fim dele." Diante do aviso final, confirma que entendeu. Ren o solta sem golpe adicional; o homem cambaleia, deixa a faca na lama e recua rumo à estrada principal. A entrega do recado ainda não pode ser garantida. Ren parte primeiro numa direção falsa, some atrás de cal ensacada e salgueiros, atravessa uma vala e só então descreve um arco para leste. Furtividade 14 contra CD 14: os trabalhadores e o intermediário perdem o rumo verdadeiro. Cerca de dezenove minutos depois, Ren alcança cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio. A carroça usada por Mera está parada ao lado da casa, confirmando que ela e Colm/Dent chegaram até ali; Ren ainda não examinou o interior.
+
+<!-- turno-transacional:s003-c85e7801275d8d44 -->
+**Jogador**
+
+Ren se aproxima da casa de Iria Doss de modo discreto, mas sem agir como ladrão. Procura a curandeira, Mera e Colm, pergunta pelo estado dele e oferece pagamento pelos serviços.
+**Narrador**
+
+Ren deixa a cobertura e se aproxima pela parte visível do caminho, mãos livres e passos contidos. Mera aparece primeiro à porta e confirma para Iria que foi Ren quem os retirou da armadilha. A curandeira o deixa entrar, mas corrige a impressão de segurança: a casa é quieta, não escondida. Colm está deitado num catre, consciente, exausto e respirando com dificuldade menor do que antes. Iria diz que ele não está morrendo: sofreu desidratação, contusões, marcas das cordas e irritação pulmonar por pó e fumaça; precisa de líquido, repouso e observação até o dia seguinte, sobretudo por risco de febre ou piora da respiração. Nenhum osso grande parece quebrado. Iria aceita a palavra de Mera e cobra 3 PO por ervas, comida, tratamento e abrigo de Colm até a manhã seguinte. Nenhuma moeda foi transferida ainda.

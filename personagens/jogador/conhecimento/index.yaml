@@ -55,3 +55,7 @@ sessoes:
   '3':
     index: personagens/jogador/conhecimento/descobertas/sessao-003/index.yaml
     quantidade: 56
+incrementais:
+  '3':
+    index: personagens/jogador/conhecimento/incrementais/sessao-003/index.yaml
+    quantidade: 2

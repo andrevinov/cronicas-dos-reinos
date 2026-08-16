@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 3
 checkpoint:
-  tipo: bootstrap
+  tipo: cena
   estado: retomavel
-  modo: resgate_rural
+  modo: aproximacao_curandeira
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -22,8 +22,8 @@ checkpoint:
     dinheiro_po: 45
   tempo:
     data: 7 Eleasis, 1372 DR
-    hora_aproximada: 08:03 de 7 Eleasis
-    periodo: manhã de 7 Eleasis
+    hora_aproximada: 08:22 de 7 Eleasis
+    periodo: manhã de 7 Eleasis, no ramal do rio a leste da secagem velha
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
     plano: Material
@@ -32,11 +32,47 @@ checkpoint:
     regiao: The Vast
     cidade: Ravens Bluff
     area: estrada do Fire River
-    ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos limpas
+    ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio
+      a leste da secagem velha
 continuidade:
-  resumo_imediato: Ren alcançou o homem de mãos limpas após persegui-lo desde uma carroça de carvão. A perseguição entrou em iniciativa. Ren atravessou trabalhadores e um carrinho sem atingi-los, anulou com Aparar Projéteis uma faca arremessada e fechou a distância. O homem atacou com uma segunda faca e errou. É o turno de Ren; ambos estão adjacentes, Ren está ileso e três trabalhadores observam o confronto a cerca de cinquenta pés.
-  prazos_e_alertas: Visão no Escuro permanece ativa aproximadamente até 09:32. O Broche do Semblante Humilde está disponível desde o amanhecer e ainda não foi usado nesta saída. Mera partiu com Colm/Dent rumo a Iria Doss, mas a chegada ainda não foi confirmada. O pacote reservado da Ponte Baixa passou de Luath para Tyr sem o nome de Ren no registro externo. O combate atual é público e testemunhado por trabalhadores.
-eventos_recentes: []
+  resumo_imediato: Ren soltou vivo o homem de mãos limpas após obrigá-lo a repetir uma ameaça para Bram Vask. Depois
+    ocultou dos observadores o rumo verdadeiro e alcançou a casa de Iria Doss por rota indireta. A carroça usada
+    por Mera está parada junto à casa, confirmando que Mera e Colm/Dent chegaram; Ren ainda não examinou o interior.
+  prazos_e_alertas: Passos sem Pegadas expirou por volta de 02:32 de 7 Eleasis durante a volta de Ren ao circo.
+    Visão no Escuro foi ativada por volta de 01:32 e pode durar até cerca de 09:32. Com o amanhecer de 7 Eleasis,
+    o Broche do Semblante Humilde voltou a estar disponível e ainda não foi usado nesta saída. As evidências da
+    Ponte Baixa foram seladas por Luath sob custódia provisória da Night Watch às 02:24 e o pacote reservado passou
+    para Tyr sem nome no papel externo. Mera partiu com Colm/Dent rumo a Iria Doss, mas Ren ainda não confirmou
+    a chegada. Os papéis do braseiro foram deixados para trás e se perderam para o calor. Ren alcançou o homem de
+    mãos limpas; o combate é público e testemunhado por trabalhadores.
+eventos_recentes:
+- batch: s003-cena-1b1d7789e98c2c9e
+  transacao: s003-104de5ca6b00eb86
+  resumo: Os dois golpes desarmados controlados de Ren erram; o primeiro foi falha automática com 1 natural e o
+    segundo totalizou 10 contra CA 12. O homem permanece adjacente e armado; ação bônus e movimento de Ren seguem
+    disponíveis.
+- batch: s003-cena-1b1d7789e98c2c9e
+  transacao: s003-747896a38e04b402
+  resumo: Ren acerta o golpe desarmado de ação bônus com 24 contra CA 12 e causa 6 de dano contundente. Intimidação
+    com vantagem resulta em 17 contra CD 13, sucesso. O homem deixa cair a faca e aceita responder, coagido; a iniciativa
+    fica suspensa enquanto a rendição durar.
+- batch: s003-cena-1b1d7789e98c2c9e
+  transacao: s003-ad1dbf6722ccea0e
+  resumo: Coagido, o homem afirma que Bram Vask financiou a armadilha como cliente, não como chefe permanente. Segundo
+    ele, Colm/Dent foi mantido vivo como isca para identificar e capturar quem viesse resgatá-lo; essa pessoa seria
+    mais valiosa.
+- batch: s003-cena-1b1d7789e98c2c9e
+  transacao: s003-1817f1ac59c440f7
+  resumo: 'Ren obtém 19 contra CD 15 na Intimidação com vantagem. O homem confessa ser o segundo intermediário da
+    falsa lua: nega ter levado o desenho, atribui a encomenda inicial a Dain Brass Mord e admite ter levado tecido,
+    lâmina falsa e papéis para fabricar um rastro oriental. Afirma que instruções superiores vinham sem assinatura
+    pelo circuito de Narwhal, sob a expressão ''segunda maré'', e diz não conhecer o patrono. A cer…'
+- batch: s003-cena-1b1d7789e98c2c9e
+  transacao: s003-0bb70a436a5a867e
+  resumo: Ren libera vivo o homem de mãos limpas após obrigá-lo a repetir uma ameaça destinada a Bram Vask. O homem
+    parte desarmado; a entrega do recado não está confirmada. Ren obtém 14 contra CD 14 em Furtividade, oculta dos
+    observadores o rumo real e chega por volta de 08:22 à cobertura próxima da casa de Iria Doss. A carroça de Mera
+    está junto à casa, confirmando a chegada do grupo.
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

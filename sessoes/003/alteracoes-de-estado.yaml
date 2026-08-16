@@ -1,0 +1,56 @@
+schema_alteracoes_transacionais: 1
+sessao: 3
+status: em_andamento
+fonte: sessoes/003/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 3
+  modo: resgate_rural
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 5/6
+  ca: 17
+  dinheiro_po: 45
+  data: 7 Eleasis, 1372 DR
+  hora: 08:03 de 7 Eleasis
+  area: estrada do Fire River
+  ponto_exato: junto à cerca de salgueiros no ramal da estrada principal do Fire River, adjacente ao homem de mãos
+    limpas
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 3
+  modo: aproximacao_curandeira
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 5/6
+  ca: 17
+  dinheiro_po: 45
+  data: 7 Eleasis, 1372 DR
+  hora: 08:22 de 7 Eleasis
+  area: estrada do Fire River
+  ponto_exato: em cobertura com visão da casa baixa de Iria Doss, depois do salgueiro partido no ramal do rio a
+    leste da secagem velha
+  nivel_ficha: 6
+consolidacoes:
+- id: s003-cena-1b1d7789e98c2c9e
+  tipo: cena
+  transacoes:
+  - s003-104de5ca6b00eb86
+  - s003-747896a38e04b402
+  - s003-ad1dbf6722ccea0e
+  - s003-1817f1ac59c440f7
+  - s003-0bb70a436a5a867e
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-003/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-1817f1ac59c440f7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-003/tx-s003-ad1dbf6722ccea0e.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/003/alteracoes-de-estado.yaml
+  - sessoes/003/consequencias.md
+  - sessoes/003/consolidacoes.jsonl
+  - sessoes/003/resumo.md
