@@ -1,7 +1,7 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 5
-modo: fim_sessao_005_ponto_morto_pell
+sessao: 6
+modo: inicio_sessao_006_ponto_morto_pell
 localizacao:
   area: arredores da Silver Lily, Ravens Bluff
   ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
@@ -20,8 +20,8 @@ prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, ar
   Ren está diante da mensagem de Pell ainda fechada.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/005/handoff.yaml
+  handoff: sessoes/006/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/005/transcricao.md
+  transcricao_fria: sessoes/006/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md

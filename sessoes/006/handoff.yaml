@@ -1,0 +1,50 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 6
+checkpoint:
+  tipo: bootstrap
+  estado: retomavel
+  modo: inicio_sessao_006_ponto_morto_pell
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 6
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 35
+  tempo:
+    data: 9 Eleasis, 1372 DR
+    hora_aproximada: 08:48 de 9 Eleasis
+    periodo: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: arredores da Silver Lily, Ravens Bluff
+    ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+continuidade:
+  resumo_imediato: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível. Chegou
+    sem cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação da Casa
+    de Pesos prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
+  prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, armas e vestígios do porão foram
+    preservados. Ren está diante da mensagem de Pell ainda fechada.
+eventos_recentes: []
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/006/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

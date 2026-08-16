@@ -3,8 +3,8 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
-  sessao_atual: 5
-  modo_de_cena_atual: fim_sessao_005_ponto_morto_pell
+  sessao_atual: 6
+  modo_de_cena_atual: inicio_sessao_006_ponto_morto_pell
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -65,7 +65,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/003/transcricao.md
+  transcricao_atual: sessoes/006/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:

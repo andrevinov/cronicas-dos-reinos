@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 5
+  numero: 6
   status: em_sessao
-  modo_de_cena: fim_sessao_005_ponto_morto_pell
+  modo_de_cena: inicio_sessao_006_ponto_morto_pell
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -45,7 +45,7 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/005/handoff.yaml
-  transcricao_fria: sessoes/005/transcricao.md
+  handoff_atual: sessoes/006/handoff.yaml
+  transcricao_fria: sessoes/006/transcricao.md
   narrador: narrador/
   regras: regras/
