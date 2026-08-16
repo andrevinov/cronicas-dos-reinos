@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -102,6 +103,38 @@ class EntradaTransactionalBarrierTest(unittest.TestCase):
             turno.validate_player_protocol("Ren procura Kethra Dunn."),
             "Ren procura Kethra Dunn.",
         )
+
+    def test_falha_de_protocolo_acontece_antes_de_qualquer_escrita(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            (repo / "runtime").mkdir(parents=True)
+            (repo / "sessoes/003").mkdir(parents=True)
+            (repo / "runtime/contexto.yaml").write_text(
+                "sessao:\n  numero: 3\n",
+                encoding="utf-8",
+            )
+            transcript = repo / "sessoes/003/transcricao.md"
+            pending = repo / "runtime/eventos-pendentes.jsonl"
+            transcript.write_text("# Sessão 003\n", encoding="utf-8")
+            pending.write_text("", encoding="utf-8")
+            before_transcript = transcript.read_bytes()
+            before_pending = pending.read_bytes()
+
+            for player in ("[Continue a sessão 3.]", "Ren procura {nome do contato}."):
+                with self.subTest(player=player):
+                    with self.assertRaises(turno.TransactionError):
+                        turno.register_transaction(
+                            repo,
+                            {
+                                "jogador": player,
+                                "narracao": "Texto que não pode ser persistido.",
+                                "resumo": "Não deve existir.",
+                                "modo": "interacao",
+                                "deltas": [],
+                            },
+                        )
+                    self.assertEqual(transcript.read_bytes(), before_transcript)
+                    self.assertEqual(pending.read_bytes(), before_pending)
 
 
 class EntradaContractTest(unittest.TestCase):
