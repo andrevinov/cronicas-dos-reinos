@@ -38,11 +38,11 @@ class MemoriasFragmentadasTest(unittest.TestCase):
             data = (ROOT / rel).read_bytes()
             self.assertEqual(migration.git_blob_sha(data), expected, rel.as_posix())
 
-    def test_todas_as_relacoes_possuem_fragmento_atual_e_historico(self):
+    def test_todas_as_relacoes_legadas_continuam_presentes_e_novas_podem_surgir(self):
         legacy = load_yaml(ROOT / migration.REL_LEGACY)["relacoes"]
         index = load_yaml(ROOT / migration.REL_INDEX)["relacoes"]
-        self.assertEqual(set(index), set(legacy))
-        self.assertEqual(len(index), 34)
+        self.assertTrue(set(legacy).issubset(set(index)))
+        self.assertGreaterEqual(len(index), len(legacy))
         for entity_id, entry in index.items():
             current = ROOT / entry["arquivo"]
             historical = ROOT / entry["historico"]
@@ -64,11 +64,11 @@ class MemoriasFragmentadasTest(unittest.TestCase):
         self.assertEqual(historical["relacao"], legacy)
         self.assertLess((ROOT / entry["arquivo"]).stat().st_size, 6 * 1024)
 
-    def test_todos_os_medidores_de_npc_possuem_fragmento(self):
+    def test_todos_os_medidores_legados_continuam_presentes_e_novos_podem_surgir(self):
         legacy = load_yaml(ROOT / migration.NPC_LEGACY)["npcs"]
         index = load_yaml(ROOT / migration.NPC_INDEX)["npcs"]
-        self.assertEqual(set(index), set(legacy))
-        self.assertEqual(len(index), 14)
+        self.assertTrue(set(legacy).issubset(set(index)))
+        self.assertGreaterEqual(len(index), len(legacy))
         for entity_id, entry in index.items():
             fragment = ROOT / entry["arquivo"]
             self.assertTrue(fragment.is_file(), entity_id)
@@ -82,12 +82,20 @@ class MemoriasFragmentadasTest(unittest.TestCase):
         self.assertGreater(len(order), 50)
         self.assertIn(3, manifest["conhecimento"]["sessoes_indexadas"])
 
-    def test_recorte_ativo_aponta_para_a_sessao_corrente(self):
+    def test_recorte_ativo_e_coerente_com_o_indice_sem_exigir_escrita_por_turno(self):
         active = load_yaml(ROOT / reindex.ACTIVE)
         state = load_yaml(ROOT / "estado/estado-atual.yaml")
+        index = load_yaml(ROOT / reindex.INDEX)
         current_session = state["campanha"]["sessao_atual"]
-        self.assertEqual(active["sessao_atual_da_campanha"], current_session)
-        self.assertEqual(active["sessao_mais_recente_indexada"], current_session)
+        indexed_sessions = {
+            int(session)
+            for section in (index.get("sessoes") or {}, index.get("incrementais") or {})
+            for session in section
+        }
+        latest_indexed = max(indexed_sessions) if indexed_sessions else None
+        self.assertIsInstance(active["sessao_atual_da_campanha"], int)
+        self.assertLessEqual(active["sessao_atual_da_campanha"], current_session)
+        self.assertEqual(active["sessao_mais_recente_indexada"], latest_indexed)
         self.assertLessEqual((ROOT / reindex.ACTIVE).stat().st_size, reindex.MAX_ACTIVE)
 
     def test_roteadores_monoliticos_ficaram_pequenos(self):

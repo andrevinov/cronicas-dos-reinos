@@ -5,6 +5,8 @@ import sys
 import unittest
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).parents[1]
 TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
@@ -18,18 +20,33 @@ sys.modules[spec.name] = mod
 spec.loader.exec_module(mod)
 
 
+def load_yaml(path: Path):
+    with path.open("r", encoding="utf-8") as handle:
+        return yaml.safe_load(handle)
+
+
 class AuditoriaFinalTest(unittest.TestCase):
     def test_hot_only_resume_reconstructs_current_scene_without_transcript(self):
         result = mod.gate_hot_only_resume(ROOT)
         self.assertFalse(result["transcricao_lida"])
         self.assertLessEqual(result["bytes_saida"], 8192)
         snapshot = result["snapshot"]
-        self.assertEqual(snapshot["sessao"], 3)
-        self.assertEqual(snapshot["personagem"], "Ren Kagehira")
-        self.assertEqual(snapshot["nivel"], 6)
-        self.assertEqual(snapshot["pv"], {"atuais": 45, "maximos": 45})
-        self.assertEqual(snapshot["ki"], {"atuais": 5, "maximos": 6})
-        self.assertEqual(snapshot["ca"], 17)
+        state = load_yaml(ROOT / "estado/estado-atual.yaml")
+        resources = state["recursos"]
+        expected_pv = {
+            "atuais": resources["pontos_de_vida"]["atuais"],
+            "maximos": resources["pontos_de_vida"]["maximos"],
+        }
+        expected_ki = {
+            "atuais": resources["ki"]["atuais"],
+            "maximos": resources["ki"]["maximos"],
+        }
+        self.assertEqual(snapshot["sessao"], state["campanha"]["sessao_atual"])
+        self.assertEqual(snapshot["personagem"], state["personagem"]["nome"])
+        self.assertEqual(snapshot["nivel"], state["personagem"]["nivel"])
+        self.assertEqual(snapshot["pv"], expected_pv)
+        self.assertEqual(snapshot["ki"], expected_ki)
+        self.assertEqual(snapshot["ca"], resources["classe_de_armadura"])
         self.assertTrue(snapshot["resumo_imediato"])
         self.assertFalse(any("transcricao" in str(source) for source in result["fontes"]))
 

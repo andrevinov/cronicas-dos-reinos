@@ -22,7 +22,8 @@ TRANSCRIPT_MARKER_PREFIX = "turno-transacional:"
 ALLOWED_OPS = {"set", "inc", "append", "remove", "registrar"}
 ALLOWED_VISIBILITY = {"operacional", "narrador"}
 TARGET_RE = re.compile(r"^[a-z][a-z0-9_]*(?::[a-z0-9_]+)?$")
-MAX_SUMMARY_CHARS = 1600
+MAX_SUMMARY_CHARS = 500
+MAX_ACCEPTED_SUMMARY_CHARS = 1600
 MAX_DELTAS = 64
 MAX_HIDDEN_ROLLS = 32
 
@@ -36,6 +37,14 @@ def normalize(text: Any) -> str:
     raw = "".join(ch for ch in raw if not unicodedata.combining(ch))
     raw = raw.lower().replace("_", " ").replace("-", " ")
     return " ".join(re.findall(r"[a-z0-9]+", raw))
+
+
+def compact_summary(summary: str) -> str:
+    """Mantém o resumo como ponteiro operacional, nunca como segunda transcrição."""
+    compact = " ".join(summary.split())
+    if len(compact) <= MAX_SUMMARY_CHARS:
+        return compact
+    return compact[: MAX_SUMMARY_CHARS - 1].rstrip() + "…"
 
 
 def transaction_marker(transaction_id: str) -> str:
@@ -115,9 +124,9 @@ def validate_pending_record(record: Any) -> dict[str, Any]:
     summary = record.get("resumo", "")
     if not isinstance(summary, str):
         raise TransactionError("resumo pendente precisa ser string")
-    if len(summary) > MAX_SUMMARY_CHARS:
+    if len(summary) > MAX_ACCEPTED_SUMMARY_CHARS:
         raise TransactionError(
-            f"resumo pendente excede {MAX_SUMMARY_CHARS} caracteres: {len(summary)}"
+            f"resumo pendente excede {MAX_ACCEPTED_SUMMARY_CHARS} caracteres: {len(summary)}"
         )
 
     deltas = record.get("deltas", [])
@@ -146,14 +155,14 @@ def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str,
     if not isinstance(summary, str):
         raise TransactionError("resumo da transação precisa ser string")
     if not summary.strip():
-        narration = str(transaction.get("narracao") or "").strip()
-        summary = " ".join(narration.split())[:500]
+        summary = str(transaction.get("narracao") or "").strip()
+    summary = compact_summary(summary)
 
     record: dict[str, Any] = {
         "versao": SCHEMA_VERSION,
         "id": transaction_id,
         "sessao": session,
-        "resumo": summary.strip(),
+        "resumo": summary,
         "deltas": transaction.get("deltas") or [],
     }
     for key in ("modo", "tempo_mundo", "rolagens_ocultas", "tags"):

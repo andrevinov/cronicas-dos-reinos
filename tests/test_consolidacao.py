@@ -91,7 +91,7 @@ class ConsolidacaoTest(unittest.TestCase):
         self._write_yaml(
             "estado/tempo.yaml",
             {
-                "data_atual": {"valor": "7 Eleasis, 1372 DR"},
+                "data_atual": "7 Eleasis, 1372 DR",
                 "hora_aproximada": "08:03",
                 "periodo_do_dia": "manhã",
                 "clima": "úmido",

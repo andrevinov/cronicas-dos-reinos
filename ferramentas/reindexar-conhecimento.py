@@ -224,7 +224,7 @@ def generate(root: Path) -> None:
     latest = current_session if current_session in sessions else (known_sessions[-1] if known_sessions else None)
     priority_words = ("masao", "ravens bluff", "pistas atuais")
     priority_topics = [entry for entry in topics if any(word in normalize(entry["titulo"]) for word in priority_words)]
-    recent = sessions.get(latest, [])[-8:] if latest else []
+    recent = sessions.get(latest, [])[-4:] if latest else []
     write_yaml(root / ACTIVE, {
         "schema_conhecimento_ativo": SCHEMA,
         "natureza": "roteador_derivado",

@@ -27,6 +27,13 @@ class TransactionSchemaTest(unittest.TestCase):
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": "-1"}
             )
 
+    def test_pending_summary_is_compacted_to_operational_limit(self):
+        summary = ("Ren observa uma situação longa com muitos detalhes narrativos. " * 30).strip()
+        record = mod.build_pending_record({"jogador": "A", "narracao": "B", "resumo": summary}, 3)
+        self.assertLessEqual(len(record["resumo"]), mod.MAX_SUMMARY_CHARS)
+        self.assertTrue(record["resumo"].endswith("…"))
+        self.assertNotIn("\n", record["resumo"])
+
     def test_pending_loader_rejects_duplicate_ids(self):
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
