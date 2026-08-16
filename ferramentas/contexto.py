@@ -389,7 +389,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_MAX_BYTES,
         help="orçamento solicitado; a política de cada nível pode impor teto menor",
     )
-    parser.add_argument("--sem-log", action="store_true", help="não registra telemetria local")
+    parser.add_argument(
+        "--log-local",
+        action="store_true",
+        help="opcional: registra metadados locais da consulta; desligado por padrão",
+    )
+    parser.add_argument(
+        "--sem-log",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("status", help="L1: somente contexto quente efetivo")
     sub.add_parser("cena", help="L2: contexto quente + cena efetiva")
@@ -509,7 +518,7 @@ def main() -> int:
 
     text, truncated = fit_budget(data, effective_max, args.json)
     output_bytes = len(text.encode("utf-8"))
-    if not args.sem_log:
+    if args.log_local and not args.sem_log:
         try:
             log_query(repo, data, output_bytes, truncated)
         except OSError:
