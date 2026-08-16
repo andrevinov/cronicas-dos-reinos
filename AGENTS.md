@@ -75,6 +75,7 @@ Material reservado só entra com `--reservado` e motivo concreto. **Nunca abrir 
 Leia no máximo os documentos especializados necessários:
 
 - fundamentos, autoridade, segredo, agência → `docs/agente/fundamentos.md`;
+- ON/OFF/RECALL e parser da janela → `docs/agente/protocolo-de-entrada.md`;
 - escada L0–L5, tetos, `--apos`, `--motivo` → `docs/agente/escada-de-acesso.md`;
 - acesso, preparação, operação transacional → `docs/agente/acesso-e-operacoes.md`;
 - consolidação, checkpoint canônico, ledger, staging, recuperação → `docs/agente/consolidacao-transacional.md`;
@@ -90,9 +91,11 @@ Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao
 
 ## 6. Narração ao vivo — protocolo transacional obrigatório
 
+Linguagem da janela: texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = **RECALL**. OFF é meta, não avança nem é registrado; responder OFF também entre colchetes. RECALL só completa fato que Ren legitimamente sabe, nunca vontade/emoção/estratégia/segredo, e deve ser substituído antes do turno. Se não puder ser resolvido, parar sem rolar nem avançar. Em mensagem mista, somente ON resolvido entra em `jogador`. Detalhes: `docs/agente/protocolo-de-entrada.md`.
+
 Fluxo normal:
 
-`ação → contexto disponível → consulta se necessária → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → ação ON → contexto necessário → rolagens → narração → turno.py registrar → fim`.
 
 Durante **cada avanço comum**:
 
