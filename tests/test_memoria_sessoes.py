@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import tempfile
 import unittest
@@ -10,6 +11,7 @@ sys.path.insert(0, str(TOOLS))
 
 import contexto
 import sessoes
+import transacoes
 
 try:
     import yaml
@@ -70,6 +72,21 @@ class MemoriaSessoesTest(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def _write_pending(self, *, txid: str = "teste-pendente") -> None:
+        record = transacoes.build_pending_record(
+            {
+                "id": txid,
+                "resumo": "Turno ainda não consolidado.",
+                "modo": "exploracao",
+                "deltas": [],
+            },
+            3,
+        )
+        (self.repo / "runtime/eventos-pendentes.jsonl").write_text(
+            json.dumps(record, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+        )
+
     def test_bootstrap_cria_handoff_pequeno_sem_prosa_de_transcricao(self):
         path, handoff = sessoes.bootstrap_current(self.repo)
         self.assertTrue(path.is_file())
@@ -90,6 +107,23 @@ class MemoriaSessoesTest(unittest.TestCase):
         self.assertIn("Resumo", serialized)
         self.assertNotIn("agulha violeta", serialized.lower())
         self.assertNotIn("sessoes/001/transcricao.md", sources)
+
+    def test_indice_pode_ficar_no_checkpoint_enquanto_transcricao_ativa_cresce(self):
+        sessoes.write_index(self.repo)
+        transcript = self.repo / "sessoes/003/transcricao.md"
+        before = transcript.stat().st_size
+        with transcript.open("a", encoding="utf-8") as handle:
+            handle.write("\n**Jogador**\n\nRen avança.\n\n**Narrador**\n\nA cena continua.\n")
+        self.assertGreater(transcript.stat().st_size, before)
+        self._write_pending()
+        self.assertEqual(sessoes.check(self.repo), [])
+
+    def test_indice_desatualizado_sem_transacao_pendente_continua_falhando(self):
+        sessoes.write_index(self.repo)
+        with (self.repo / "sessoes/003/transcricao.md").open("a", encoding="utf-8") as handle:
+            handle.write("\ntexto sem transação correspondente\n")
+        errors = sessoes.check(self.repo)
+        self.assertTrue(any("desatualizado" in error for error in errors))
 
     def test_busca_historica_so_le_transcricao_com_escalada_explicita(self):
         without = contexto.generic_search(
