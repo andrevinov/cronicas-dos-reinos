@@ -111,6 +111,29 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertIsNotNone(data["resultado"]["medidores"])
         self.assertIsNotNone(data["resultado"]["relacao"])
 
+    def test_recurso_broche_combina_mecanica_e_disponibilidade_em_l2(self):
+        data = mod.command_resource(REPO, "Broche do Semblante Humilde")
+        self.assertTrue(data["resultado"]["encontrado"])
+        self.assertEqual(data["nivel"], "L2")
+        self.assertEqual(data["resultado"]["mecanica"]["tipo"], "item")
+        self.assertEqual(
+            data["resultado"]["disponibilidade"]["id"],
+            "broche_do_semblante_humilde",
+        )
+        self.assertIn("personagens/jogador/ficha.yaml", data["fontes"])
+        self.assertIn("estado/estado-atual.yaml", data["fontes"])
+        rendered, _ = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
+        self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
+
+    def test_recurso_passos_sem_pegadas_encontra_custo_sem_busca_ampla(self):
+        data = mod.command_resource(REPO, "passos sem pegadas")
+        self.assertTrue(data["resultado"]["encontrado"])
+        mechanic = data["resultado"]["mecanica"]
+        self.assertEqual(mechanic["dados"]["nome"], "passos sem pegadas")
+        self.assertEqual(mechanic["dados"]["custo"], 2)
+        self.assertEqual(data["resultado"]["disponibilidade"]["id"], "passos_sem_pegadas")
+        self.assertEqual(data["nivel"], "L2")
+
     def test_knowledge_lookup_finds_masao_without_returning_whole_file(self):
         data = mod.command_knowledge(REPO, "Masao")
         self.assertTrue(data["resultado"]["encontrado"])
