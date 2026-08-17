@@ -101,7 +101,7 @@ def classify(
     """Classifica uma consulta e informa a declaração de escalada exigida."""
     if command == "status":
         return AccessDecision("L1", None)
-    if command in {"cena", "retomada", "npc", "local", "relacao", "conhecimento", "regra"}:
+    if command in {"cena", "retomada", "npc", "local", "relacao", "recurso", "conhecimento", "regra"}:
         return AccessDecision("L2", None)
     if command == "sessao":
         term = (session_term or "").strip().lower()
