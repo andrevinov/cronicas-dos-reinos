@@ -194,18 +194,24 @@ def _is_routed_context(command: str) -> bool:
     return "ferramentas/contexto.py" in lower or "ferramentas/contexto-buscar-muitos.py" in lower
 
 
-def _is_raw_read(name: str, command: str, category: str) -> bool:
-    if category != "read_search" or _is_routed_context(command) or _is_help_command(command):
-        return False
-    lower = f" {name} {command} ".lower()
+def _looks_like_raw_read(command: str) -> bool:
+    lower = f" {command} ".lower()
     if any(marker in lower for marker in RAW_READ_MARKERS):
         return True
     return bool(re.search(r"(?:^|[;&|\s])cat\s+[^>|]+", lower))
 
 
+def _is_raw_read(name: str, command: str, category: str) -> bool:
+    if category != "read_search" or _is_routed_context(command) or _is_help_command(command):
+        return False
+    return _looks_like_raw_read(f"{name} {command}")
+
+
 def _is_schema_discovery(command: str, mentioned_paths: list[str]) -> bool:
     if _is_help_command(command):
         return True
+    if not _looks_like_raw_read(command):
+        return False
     return any(path.startswith("ferramentas/") and path.endswith(".py") for path in mentioned_paths)
 
 
@@ -299,12 +305,10 @@ def _tool_success(payload: dict[str, Any], output_text: str) -> bool | None:
         return True
     if status in {"failure", "failed", "error", "cancelled", "canceled"}:
         return False
-
     for pattern in EXIT_CODE_RES:
         match = pattern.search(output_text)
         if match:
             return int(match.group(1)) == 0
-
     stripped = output_text.strip()
     lower = stripped.lower()
     if not stripped:
@@ -478,7 +482,7 @@ def _match_output_call(turn: dict[str, Any], payload: dict[str, Any]) -> dict[st
     cid = _call_id(payload)
     if cid and cid in turn["calls_by_id"]:
         call = turn["call_records"][turn["calls_by_id"][cid]]
-        if call.get("success") is None and not call.get("output_seen"):
+        if not call.get("output_seen"):
             return call
     for call in turn["call_records"]:
         if not call.get("output_seen"):
@@ -675,7 +679,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
         "narration_detection": {
             "legacy_prompt": LEGACY_NARRATION_PROMPT,
             "custom_regex": narration_regex,
-            "also_detected_by": "successful or attempted turno.py registrar command (excluding --help)",
+            "also_detected_by": "turno.py registrar command (excluding --help)",
         },
     }
 
