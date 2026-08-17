@@ -29,6 +29,7 @@ PATH_RE = re.compile(
 )
 ACCESS_LEVEL_RE = re.compile(r"(?:^|[\s\"'])nivel(?:\"|')?\s*[:=]\s*[\"']?(L4T|L[1-4])", re.I | re.M)
 LEVEL_ORDER = {"L0": 0, "L1": 1, "L2": 2, "L3": 3, "L4": 4, "L4T": 5, "UNCLASSIFIED": 6}
+TEMP_TURN_FILE = ".turno-temporario.json"
 
 CANONICAL_WRITE_PREFIXES = (
     "estado/",
@@ -99,6 +100,7 @@ def _new_turn() -> dict[str, Any]:
         "write_paths": [],
         "canonical_write_paths": [],
         "transcript_read_calls": 0,
+        "temporary_turn_file_calls": 0,
         "access_levels": [],
         "narration_signal_tool": False,
     }
@@ -169,6 +171,10 @@ def _paths(text: str) -> list[str]:
 
 def _is_canonical_write(path: str) -> bool:
     return any(path == prefix or path.startswith(prefix) for prefix in CANONICAL_WRITE_PREFIXES)
+
+
+def _uses_temporary_turn_file(raw_input: str) -> bool:
+    return TEMP_TURN_FILE in raw_input.lower()
 
 
 def _classify_tool(name: str, raw_input: str) -> str:
@@ -291,6 +297,8 @@ def _summarize(selected: list[dict[str, Any]]) -> dict[str, Any]:
     write_touches = len(write_paths)
     canonical_touches = len(canonical_paths)
     transcript_reads = sum(int(turn.get("transcript_read_calls") or 0) for turn in selected)
+    temporary_calls = sum(int(turn.get("temporary_turn_file_calls") or 0) for turn in selected)
+    temporary_turns = sum(1 for turn in selected if int(turn.get("temporary_turn_file_calls") or 0))
     access = Counter(_turn_access_level(turn) for turn in selected)
     no_read_turns = sum(1 for turn in selected if not int(turn["tool_categories"].get("read_search", 0)))
 
@@ -326,6 +334,11 @@ def _summarize(selected: list[dict[str, Any]]) -> dict[str, Any]:
         "canonical_write_target_touches": canonical_touches,
         "avg_canonical_write_target_touches_per_turn": round(canonical_touches / n, 3) if n else 0,
         "transcript_read_calls": transcript_reads,
+        "violations": {
+            "temporary_turn_file_calls": temporary_calls,
+            "turns_with_temporary_turn_file": temporary_turns,
+        },
+        "fraction_turns_without_temporary_turn_file": round((n - temporary_turns) / n, 6) if n else 0,
         "turns_without_read_search": no_read_turns,
         "fraction_turns_without_read_search": round(no_read_turns / n, 6) if n else 0,
         "max_access_level_by_turn": dict(sorted(access.items(), key=lambda kv: LEVEL_ORDER.get(kv[0], 99))),
@@ -423,6 +436,8 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
                     turn["tool_calls"][name] += 1
                     turn["tool_categories"][category] += 1
                     turn["patch_payload_bytes"] += _patch_payload_size(name, raw_input)
+                    if _uses_temporary_turn_file(raw_input):
+                        turn["temporary_turn_file_calls"] += 1
 
                     patch_files = PATCH_FILE_RE.findall(raw_input)
                     turn["patch_files"].extend(patch_files)
@@ -482,6 +497,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
                 "tool categories",
                 "path mentions",
                 "write targets inferred from known repo tools",
+                "temporary turn-file use inferred from tool input",
                 "access-level classification when not present in tool output",
             ],
             "billing_warning": "Token counters describe rollout traffic; they are not a billing/quota formula.",
@@ -515,6 +531,10 @@ def _human(report: dict[str, Any]) -> str:
     narr = report["narration_turns"]
     cats = narr.get("tool_categories") or {}
     access = narr.get("max_access_level_by_turn") or {}
+    violations = narr.get("violations") or {}
+    temporary_calls = int(violations.get("temporary_turn_file_calls") or 0)
+    temporary_turns = int(violations.get("turns_with_temporary_turn_file") or 0)
+    temp_status = "OK" if temporary_calls == 0 else "VIOLAÇÃO"
     lines = [
         f"Rollout: {report['source'].get('filename')}",
         f"Sessão Codex: {report['source'].get('session_id')}",
@@ -531,6 +551,7 @@ def _human(report: dict[str, Any]) -> str:
         f"Categorias: read/search={cats.get('read_search', 0)}, write={cats.get('write', 0)}, dice={cats.get('dice', 0)}, validation={cats.get('validation', 0)}, other={cats.get('other', 0)}",
         f"Escritas observadas/inferidas: {narr['write_target_touches']} alvos | {narr['avg_write_target_touches_per_turn']} alvos/turno | canônicas={narr['canonical_write_target_touches']}",
         f"Leituras de transcrição: {narr['transcript_read_calls']}",
+        f"Arquivo temporário de turno: {temp_status} | {TEMP_TURN_FILE} em {temporary_calls} chamada(s), {temporary_turns} turno(s)",
         f"Turnos sem read/search: {narr['fraction_turns_without_read_search']:.1%}",
         f"Nível máximo por turno: {access}",
         f"Turnos L0–L2: {narr['fraction_turns_l0_l2']:.1%}",
