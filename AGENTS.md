@@ -66,6 +66,8 @@ Escada de leitura:
 - **L4T:** `buscar ... --historico --transcricoes --apos L4 --motivo "lacuna"` — teto 16 KiB;
 - **L5:** fonte oficial externa/autorizada, somente se a memória interna não resolver.
 
+Se **2–5 lacunas concretas pertencem à mesma decisão**, não faça vários `contexto.py buscar`. Agrupe em uma única chamada a `python3 ferramentas/contexto-buscar-muitos.py "termo 1" "termo 2" ... --apos L2 --motivo "lacuna/decisão concreta"`. O lote usa o mesmo degrau L3/L4/L4T e **um único orçamento global de saída**. Não agrupar curiosidades ou perguntas independentes apenas para economizar chamadas.
+
 Alvo histórico já conhecido pode saltar busca ampla: `contexto.py sessao 2 --apos L2 --motivo "..."`. Isso economiza uma inferência/tool round; não autoriza busca especulativa.
 
 Material reservado só entra com `--reservado` e motivo concreto. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.** Política completa: `docs/agente/escada-de-acesso.md`.
