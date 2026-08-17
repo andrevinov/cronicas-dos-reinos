@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import re
 from pathlib import Path
 from typing import Any
@@ -67,6 +68,11 @@ def build_runtime_from_documents(
     localizacao = require_mapping(estado.get("localizacao"), "estado.localizacao")
     tempo_estado = require_mapping(estado.get("tempo"), "estado.tempo")
     recursos = require_mapping(estado.get("recursos"), "estado.recursos")
+    efeitos_temporarios_raw = estado.get("efeitos_temporarios")
+    if efeitos_temporarios_raw is None:
+        efeitos_temporarios: dict[str, Any] = {}
+    else:
+        efeitos_temporarios = require_mapping(efeitos_temporarios_raw, "estado.efeitos_temporarios")
 
     pv = require_mapping(recursos.get("pontos_de_vida"), "estado.recursos.pontos_de_vida")
     ki = require_mapping(recursos.get("ki"), "estado.recursos.ki")
@@ -138,6 +144,8 @@ def build_runtime_from_documents(
             "regras": "regras/",
         },
     }
+    if efeitos_temporarios:
+        contexto["efeitos_temporarios"] = copy.deepcopy(efeitos_temporarios)
 
     cena = {
         "versao_runtime": RUNTIME_VERSION,
@@ -166,6 +174,8 @@ def build_runtime_from_documents(
             "conhecimento": "personagens/jogador/conhecimento.md",
         },
     }
+    if efeitos_temporarios:
+        cena["efeitos_temporarios"] = copy.deepcopy(efeitos_temporarios)
 
     ficha_personagem = require_mapping(ficha.get("personagem"), "ficha.personagem")
     ficha_identidade = require_mapping(ficha.get("identidade"), "ficha.identidade")

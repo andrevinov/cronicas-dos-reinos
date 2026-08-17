@@ -35,6 +35,7 @@ if str(TOOLS_DIR) not in sys.path:
 
 import contexto_core as core
 import politica_acesso as politica
+import recursos
 import sessoes as memoria_sessoes
 import texturas
 import transacoes
@@ -95,6 +96,7 @@ def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
         "sessao",
         "personagem",
         "recursos",
+        "efeitos_temporarios",
         "tempo",
         "localizacao",
         "sobreposicao_transacional",
@@ -109,6 +111,7 @@ def _resume_scene_view(scene: dict[str, Any]) -> dict[str, Any]:
         "localizacao",
         "tempo",
         "mecanica_imediata",
+        "efeitos_temporarios",
         "sobreposicao_transacional",
     ):
         if key in scene:
@@ -157,7 +160,9 @@ def command_status(repo: Path) -> dict[str, Any]:
     context = data.get("resultado")
     if not isinstance(context, dict):
         return data
-    effective, _, _ = transacoes.overlay_runtime(context, None, _pending(repo))
+    records = _pending(repo)
+    effective, _, _ = transacoes.overlay_runtime(context, None, records)
+    recursos.apply_pending_effects(effective, None, records)
     data["resultado"] = effective
     if _has_overlay(effective):
         _add_pending_source(data)
@@ -171,9 +176,11 @@ def command_scene(repo: Path) -> dict[str, Any]:
     scene = result.get("cena") if isinstance(result, dict) else None
     if not isinstance(context, dict) or not isinstance(scene, dict):
         return data
+    records = _pending(repo)
     effective_context, effective_scene, _ = transacoes.overlay_runtime(
-        context, scene, _pending(repo)
+        context, scene, records
     )
+    recursos.apply_pending_effects(effective_context, effective_scene, records)
     data["resultado"] = {"contexto": effective_context, "cena": effective_scene}
     if _has_overlay(effective_context):
         _add_pending_source(data)
@@ -187,6 +194,7 @@ def command_resume(repo: Path) -> dict[str, Any]:
     records = _pending(repo)
     if isinstance(context, dict) and isinstance(scene, dict):
         effective_context, effective_scene, _ = transacoes.overlay_runtime(context, scene, records)
+        recursos.apply_pending_effects(effective_context, effective_scene, records)
         result["contexto"] = _resume_context_view(effective_context)
         result["cena"] = _resume_scene_view(effective_scene or {})
     result["memoria_consolidada"] = _resume_memory_view(result.get("memoria_consolidada"))
@@ -306,6 +314,10 @@ def command_local(repo: Path, term: str) -> dict[str, Any]:
     if texture is None:
         result["candidatos"] = candidates
     return envelope("local", term, "L2", sources or [texturas.INDEX_PATH.as_posix()], result)
+
+
+def command_resource(repo: Path, term: str) -> dict[str, Any]:
+    return recursos.command_resource(repo, term, _pending(repo))
 
 
 def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
@@ -516,6 +528,7 @@ def build_parser() -> argparse.ArgumentParser:
         ("npc", "L2: medidores, relação atual e textura compacta de um NPC"),
         ("local", "L2: paleta narrativa compacta de um lugar conhecido"),
         ("relacao", "L2: relação atual com uma entidade"),
+        ("recurso", "L2: item, habilidade ou recurso da ficha + disponibilidade atual"),
         ("conhecimento", "L2: o que Ren sabe sobre um assunto"),
         ("regra", "L2: trechos das regras internas sobre um assunto"),
     ):
@@ -591,6 +604,8 @@ def main() -> int:
             data = command_local(repo, args.termo)
         elif args.command == "relacao":
             data = command_relation(repo, args.termo)
+        elif args.command == "recurso":
+            data = command_resource(repo, args.termo)
         elif args.command == "conhecimento":
             data = command_knowledge(repo, args.termo)
         elif args.command == "regra":
