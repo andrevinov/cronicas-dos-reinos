@@ -61,12 +61,10 @@ Escada de leitura:
 - **L0:** contexto atual, nenhuma leitura;
 - **L1:** `contexto.py status` — teto 4 KiB;
 - **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
-- **L3:** `buscar "termo" --apos L2 --motivo "lacuna concreta"` — teto 8 KiB;
+- **L3:** `buscar "termo" --apos L2 --motivo "lacuna"` — teto 8 KiB; para 2–5 lacunas da mesma decisão, usar `ferramentas/contexto-buscar-muitos.py` em uma chamada/orçamento, nunca para perguntas independentes;
 - **L4:** `buscar ... --historico --apos L3 --motivo "lacuna"` — teto 12 KiB, ainda sem transcrições;
 - **L4T:** `buscar ... --historico --transcricoes --apos L4 --motivo "lacuna"` — teto 16 KiB;
 - **L5:** fonte oficial externa/autorizada, somente se a memória interna não resolver.
-
-Se **2–5 lacunas concretas pertencem à mesma decisão**, não faça vários `contexto.py buscar`. Agrupe em uma única chamada a `python3 ferramentas/contexto-buscar-muitos.py "termo 1" "termo 2" ... --apos L2 --motivo "lacuna/decisão concreta"`. O lote usa o mesmo degrau L3/L4/L4T e **um único orçamento global de saída**. Não agrupar curiosidades ou perguntas independentes apenas para economizar chamadas.
 
 Alvo histórico já conhecido pode saltar busca ampla: `contexto.py sessao 2 --apos L2 --motivo "..."`. Isso economiza uma inferência/tool round; não autoriza busca especulativa.
 
