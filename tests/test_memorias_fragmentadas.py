@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -26,6 +27,51 @@ contexto = load_module("contexto_step6", "ferramentas/contexto.py")
 def load_yaml(path: Path):
     with path.open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle)
+
+
+def build_knowledge_fixture(root: Path, *, active_matches: bool) -> tuple[str, str]:
+    knowledge = root / "personagens/jogador/conhecimento"
+    active_rel = "personagens/jogador/conhecimento/incrementais/sessao-999/atual.md"
+    historical_rel = "personagens/jogador/conhecimento/descobertas/sessao-003/historico.md"
+    active_path = root / active_rel
+    historical_path = root / historical_rel
+    active_path.parent.mkdir(parents=True, exist_ok=True)
+    historical_path.parent.mkdir(parents=True, exist_ok=True)
+
+    active_path.write_text(
+        (
+            "# Ponte Baixa\n\nInformação operacional recente sobre Ponte Baixa.\n"
+            if active_matches
+            else "# Outro assunto\n\nInformação recente sem relação com a consulta.\n"
+        ),
+        encoding="utf-8",
+    )
+    historical_path.write_text(
+        "# Ponte Baixa\n\nInformação fragmentada antiga sobre Ponte Baixa.\n",
+        encoding="utf-8",
+    )
+
+    knowledge.mkdir(parents=True, exist_ok=True)
+    (knowledge / "index.yaml").write_text("schema_conhecimento: 2\n", encoding="utf-8")
+    (knowledge / "ativo.yaml").write_text(
+        yaml.safe_dump(
+            {
+                "schema_conhecimento_ativo": 2,
+                "topicos_prioritarios": [],
+                "descobertas_recentes": [],
+                "incrementais_recentes": [
+                    {
+                        "titulo": "Informação corrente",
+                        "arquivos": [active_rel],
+                    }
+                ],
+            },
+            allow_unicode=True,
+            sort_keys=False,
+        ),
+        encoding="utf-8",
+    )
+    return active_rel, historical_rel
 
 
 class MemoriasFragmentadasTest(unittest.TestCase):
@@ -119,12 +165,37 @@ class MemoriasFragmentadasTest(unittest.TestCase):
         self.assertNotIn("estado/relacoes.yaml", data["fontes"])
         self.assertTrue(any(path.startswith("estado/npcs/") for path in data["fontes"]))
 
-    def test_contexto_conhecimento_encontra_sessao_003_sem_monolito(self):
+    def test_contexto_conhecimento_prioriza_recorte_ativo_quando_ha_acerto_forte(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            active_rel, historical_rel = build_knowledge_fixture(repo, active_matches=True)
+            data = contexto.command_knowledge(repo, "ponte baixa")
+
+        self.assertTrue(data["resultado"]["encontrado"])
+        self.assertIn(active_rel, data["fontes"])
+        self.assertNotIn(historical_rel, data["fontes"])
+        self.assertNotIn("personagens/jogador/conhecimento.md", data["fontes"])
+
+    def test_contexto_conhecimento_faz_fallback_para_fragmentos_quando_ativo_nao_resolve(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            active_rel, historical_rel = build_knowledge_fixture(repo, active_matches=False)
+            data = contexto.command_knowledge(repo, "ponte baixa")
+
+        self.assertTrue(data["resultado"]["encontrado"])
+        self.assertIn(historical_rel, data["fontes"])
+        self.assertNotIn(active_rel, data["fontes"])
+        self.assertNotIn("personagens/jogador/conhecimento.md", data["fontes"])
+
+    def test_contexto_conhecimento_real_nao_depende_de_sessao_fixa(self):
         data = contexto.command_knowledge(ROOT, "ponte baixa")
         self.assertTrue(data["resultado"]["encontrado"])
         self.assertNotIn("personagens/jogador/conhecimento.md", data["fontes"])
         self.assertTrue(
-            any("conhecimento/descobertas/sessao-003" in path for path in data["fontes"]),
+            any(
+                path.startswith("personagens/jogador/conhecimento/") and path.endswith(".md")
+                for path in data["fontes"]
+            ),
             data["fontes"],
         )
         rendered, _ = contexto.fit_budget(data, contexto.DEFAULT_MAX_BYTES, False)

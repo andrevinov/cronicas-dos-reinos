@@ -192,7 +192,17 @@ jobs:
           grep -q "cenario/texturas/npcs/iria_doss.yaml" /tmp/contexto-iria.yaml
           grep -q "cenario/texturas/locais/casa_iria_doss.yaml" /tmp/contexto-local.yaml
           grep -q "estado/relacoes/kethra_dunn.yaml" /tmp/contexto-relacao.yaml
-          grep -q "conhecimento/descobertas/sessao-003" /tmp/contexto-conhecimento-recente.yaml
+          python - <<'PY'
+          import yaml
+          report = yaml.safe_load(open('/tmp/contexto-conhecimento-recente.yaml', encoding='utf-8'))
+          assert report['resultado']['encontrado'] is True, report
+          sources = report.get('fontes') or []
+          assert 'personagens/jogador/conhecimento.md' not in sources, sources
+          assert any(
+              source.startswith('personagens/jogador/conhecimento/') and source.endswith('.md')
+              for source in sources
+          ), sources
+          PY
 
       - name: Integridade estrutural e semântica
         run: python ferramentas/verificar-integridade.py
