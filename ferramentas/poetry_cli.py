@@ -96,6 +96,14 @@ def rollout_comparar() -> int:
     return _run_script("comparar-rollouts.py")
 
 
+def rollout_benchmark() -> int:
+    return _run_script("benchmark-rollouts.py")
+
+
+def preflight() -> int:
+    return _run_script("preflight.py")
+
+
 def testes() -> int:
     repo = _repo_root()
     return subprocess.run(
