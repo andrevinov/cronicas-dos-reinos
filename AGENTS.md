@@ -145,7 +145,7 @@ Detalhes: `docs/agente/consolidacao-transacional.md` e `docs/agente/memoria-de-s
 
 ## 8. Regras, dados e segredos
 
-Quando houver dúvida de regra, parar assim que resolvida. Preferir `contexto.py regra "assunto"`. Ordem conceitual: resumo interno → decisão anterior equivalente → regra da casa → fonte oficial.
+Quando houver dúvida de regra, parar assim que resolvida. Preferir `contexto.py regra "assunto"`. Ordem conceitual: resumo interno → decisão anterior → regra da casa → fonte oficial.
 
 Definir dificuldade/modificadores antes do dado. Nunca falsificar resultado. Usar `rolar-dados.py` e, para lotes independentes, `rolar-lote.py`.
 
