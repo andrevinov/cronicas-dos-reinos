@@ -1,0 +1,43 @@
+name: Preflight da campanha
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependências de teste
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Gate local completo
+        run: python ferramentas/preflight.py
+
+      - name: Smoke test do benchmark final
+        run: |
+          python ferramentas/benchmark-rollouts.py \
+            tests/fixtures/rollout-step11-mini.jsonl \
+            --min-turnos 1 \
+            --json > /tmp/benchmark-final.json
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/benchmark-final.json', encoding='utf-8'))
+          assert report['status'] == 'APROVADO', report
+          assert report['aprovado'] is True, report
+          assert report['metricas']['max_successful_write_calls_per_turn'] == 1, report
+          assert report['metricas']['max_write_target_touches_per_turn'] == 2, report
+          assert report['metricas']['schema_discovery_calls'] == 0, report
+          assert report['metricas']['temporary_turn_file_calls'] == 0, report
+          assert all(rule['ok'] is True for rule in report['regras']), report
+          PY
