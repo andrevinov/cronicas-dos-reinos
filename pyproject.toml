@@ -51,6 +51,12 @@ rollout = "ferramentas.poetry_cli:rollout"
 # Compara um ou mais rollouts novos com a baseline pré-refatoração.
 rollout-comparar = "ferramentas.poetry_cli:rollout_comparar"
 
+# Aplica o gate final de eficiência a uma amostra real pós-refatoração.
+rollout-benchmark = "ferramentas.poetry_cli:rollout_benchmark"
+
+# Executa o gate local completo antes de push/merge.
+preflight = "ferramentas.poetry_cli:preflight"
+
 # Executa a suíte unitária completa do repositório.
 testes = "ferramentas.poetry_cli:testes"
 

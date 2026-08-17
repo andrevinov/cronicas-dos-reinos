@@ -1,0 +1,98 @@
+{
+  "schema_benchmark_final": 1,
+  "amostra_minima_turnos_narrativos": 5,
+  "observacao": "Gate de aceitação pós-refatoração. Deve ser aplicado a avanços comuns reais; fronteiras de sessão/manutenção devem ser avaliadas separadamente.",
+  "regras": [
+    {
+      "id": "reducao_input_bruto",
+      "metrica": "raw_input_reduction",
+      "operador": ">=",
+      "valor": 0.70,
+      "rotulo": "reduzir ao menos 70% do input bruto por avanço"
+    },
+    {
+      "id": "inferencia_por_turno",
+      "metrica": "inference_events_per_turn",
+      "operador": "<=",
+      "valor": 5.0,
+      "rotulo": "ficar em no máximo 5 inferências por avanço"
+    },
+    {
+      "id": "tools_por_turno",
+      "metrica": "tool_calls_per_turn",
+      "operador": "<=",
+      "valor": 5.0,
+      "rotulo": "ficar em no máximo 5 tool calls por avanço"
+    },
+    {
+      "id": "writer_unico_por_turno",
+      "metrica": "max_successful_write_calls_per_turn",
+      "operador": "<=",
+      "valor": 1,
+      "rotulo": "usar no máximo um writer bem-sucedido em cada avanço comum"
+    },
+    {
+      "id": "dois_alvos_por_turno",
+      "metrica": "max_write_target_touches_per_turn",
+      "operador": "<=",
+      "valor": 2,
+      "rotulo": "tocar no máximo dois alvos de escrita em cada avanço comum"
+    },
+    {
+      "id": "sem_escrita_canonica",
+      "metrica": "canonical_write_target_touches",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não escrever diretamente em cânone durante avanço comum"
+    },
+    {
+      "id": "sem_tentativa_transcricao_fria",
+      "metrica": "attempted_transcript_read_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não tentar ler transcrição bruta durante avanço comum"
+    },
+    {
+      "id": "sem_transcricao_fria",
+      "metrica": "transcript_read_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não concluir leitura de transcrição bruta durante avanço comum"
+    },
+    {
+      "id": "sem_temp_turno",
+      "metrica": "temporary_turn_file_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não usar arquivo temporário de turno"
+    },
+    {
+      "id": "sem_descoberta_schema",
+      "metrica": "schema_discovery_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não investigar interface/schema das ferramentas durante narração"
+    },
+    {
+      "id": "sem_writer_falho",
+      "metrica": "failed_write_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não ter chamadas de escrita com falha"
+    },
+    {
+      "id": "sem_writer_desconhecido",
+      "metrica": "unknown_write_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não aceitar writer sem resultado observável no benchmark final"
+    },
+    {
+      "id": "l0_l2_limpo",
+      "metrica": "fraction_turns_l0_l2",
+      "operador": ">=",
+      "valor": 0.80,
+      "rotulo": "resolver ao menos 80% dos avanços em L0–L2 sem RAW"
+    }
+  ]
+}
