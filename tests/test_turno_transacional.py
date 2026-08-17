@@ -3,12 +3,14 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-TOOLS = Path(__file__).parents[1] / "ferramentas"
+ROOT = Path(__file__).parents[1]
+TOOLS = ROOT / "ferramentas"
 sys.path.insert(0, str(TOOLS))
 MODULE_PATH = TOOLS / "turno.py"
 spec = importlib.util.spec_from_file_location("turno", MODULE_PATH)
@@ -21,6 +23,14 @@ import transacoes
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def tree_hashes(repo: Path) -> dict[str, str]:
+    return {
+        path.relative_to(repo).as_posix(): sha(path)
+        for path in repo.rglob("*")
+        if path.is_file()
+    }
 
 
 class TurnoTransactionalTest(unittest.TestCase):
@@ -79,6 +89,41 @@ class TurnoTransactionalTest(unittest.TestCase):
             self.assertEqual(before[path], sha(path), f"arquivo canônico foi alterado: {path}")
         self.assertIn("**Jogador**", (repo / "sessoes/003/transcricao.md").read_text(encoding="utf-8"))
         self.assertEqual(len(transacoes.load_pending(repo)), 1)
+
+    def test_cli_stdin_is_single_persistence_operation_without_temp_file(self):
+        repo = self.make_repo()
+        before = tree_hashes(repo)
+        process = subprocess.run(
+            [sys.executable, str(MODULE_PATH), "--repo", str(repo), "registrar"],
+            input=json.dumps(self.transaction(), ensure_ascii=False),
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(process.returncode, 0, process.stderr or process.stdout)
+        self.assertIn("OK — turno transacional registrado", process.stdout)
+
+        after = tree_hashes(repo)
+        changed = {
+            path
+            for path in set(before) | set(after)
+            if before.get(path) != after.get(path)
+        }
+        self.assertEqual(
+            changed,
+            {"sessoes/003/transcricao.md", "runtime/eventos-pendentes.jsonl"},
+        )
+        self.assertFalse(
+            any(".turno-temporario" in path for path in after),
+            sorted(after),
+        )
+        self.assertEqual(len(transacoes.load_pending(repo)), 1)
+
+    def test_agents_hot_path_requires_stdin_and_forbids_temp_file(self):
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("turno.py registrar <<'JSON'", agents)
+        self.assertIn(".turno-temporario.json", agents)
+        self.assertIn("não criar", agents.lower())
 
     def test_rerun_is_idempotent(self):
         repo = self.make_repo()

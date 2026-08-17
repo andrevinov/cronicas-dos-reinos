@@ -103,7 +103,7 @@ Durante **cada avanço comum**:
 - não regenerar runtime nem handoff;
 - não executar `git status`, `git diff`, commit, auditoria ampla ou suíte global por rotina;
 - não executar `analisar-rollout.py`, `comparar-rollouts.py` ou criar telemetria durante o avanço; medição é pós-hoc;
-- registrar jogador + narrador + deltas em uma única chamada a `ferramentas/turno.py registrar`;
+- registrar jogador + narrador + deltas por stdin numa única chamada: `python3 ferramentas/turno.py registrar <<'JSON'` → JSON com `jogador`, `narracao`, `resumo`, `modo`, `deltas` → `JSON`; não abrir TTY, não criar `.turno-temporario.json`, não usar `--arquivo` nem consultar `--help` no avanço;
 - essa chamada altera somente a transcrição atual e `runtime/eventos-pendentes.jsonl`;
 - **`narracao` é a cena completa para o jogador; `resumo` é compressão operacional; `deltas` são apenas mudanças persistentes**;
 - não encurtar `narracao` para fazê-la caber no tamanho desejado do resumo ou do buffer;
