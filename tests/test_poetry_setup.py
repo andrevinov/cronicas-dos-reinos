@@ -32,6 +32,8 @@ class PoetrySetupTest(unittest.TestCase):
             "dados-lote",
             "rollout",
             "rollout-comparar",
+            "rollout-benchmark",
+            "preflight",
             "testes",
         }
         self.assertEqual(set(scripts), expected)
@@ -56,6 +58,8 @@ class PoetrySetupTest(unittest.TestCase):
             "rolar-lote.py",
             "analisar-rollout.py",
             "comparar-rollouts.py",
+            "benchmark-rollouts.py",
+            "preflight.py",
         }
         for name in targets:
             self.assertTrue((ROOT / "ferramentas" / name).is_file(), name)
