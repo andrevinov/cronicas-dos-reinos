@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Memória compacta de sessões e política de transcrições frias.
+"""Memória compacta de sessões, ciclo de vida e política de transcrições frias.
 
 A transcrição continua sendo o registro completo e o destino append-only da
 narração, mas deixa de ser uma fonte de leitura normal. Este módulo mantém:
 
 - `sessoes/index.yaml`: índice barato de sessões e artefatos compactos;
 - `sessoes/NNN/handoff.yaml`: checkpoint pequeno para retomada;
+- `iniciar`: abertura transacional de N+1 após encerramento explícito;
 - validações que impedem novas sessões de copiar trechos da anterior.
 
 O módulo não interpreta transcrições para produzir fatos. Handoffs novos são
@@ -31,6 +32,8 @@ except ImportError as exc:
     raise SystemExit(
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
+
+import ciclo_sessoes
 
 INDEX_SCHEMA = 1
 HANDOFF_SCHEMA = 1
@@ -262,13 +265,7 @@ def read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def _live_transcript_drift_allowed(repo: Path, actual: Any, expected: Any) -> bool:
-    """Aceita só a defasagem de bytes causada por turnos após o checkpoint.
-
-    O índice continua representando o último checkpoint. Enquanto a sessão atual
-    tiver eventos pendentes, a única divergência tolerável é a transcrição ativa ter
-    crescido por append (e, consequentemente, o total de bytes de transcrições).
-    Qualquer outro campo divergente continua falhando.
-    """
+    """Aceita só a defasagem de bytes causada por turnos após o checkpoint."""
     if not isinstance(actual, dict) or not isinstance(expected, dict):
         return False
     active = current_session(repo)
@@ -404,10 +401,12 @@ def bootstrap_current(repo: Path) -> tuple[Path, dict[str, Any]]:
     context = load_yaml(repo / "runtime/contexto.yaml") or {}
     scene = load_yaml(repo / "runtime/cena.yaml") or {}
     ledger = read_jsonl(repo / "sessoes" / f"{session:03d}" / "consolidacoes.jsonl")
+    lifecycle = ciclo_sessoes.status(repo)
+    kind = "sessao" if lifecycle.get("status") == ciclo_sessoes.STATUS_BETWEEN else "bootstrap"
     handoff = build_handoff(
         repo,
         session=session,
-        kind="bootstrap",
+        kind=kind,
         context=context,
         scene=scene,
         ledger=ledger,
@@ -417,6 +416,10 @@ def bootstrap_current(repo: Path) -> tuple[Path, dict[str, Any]]:
     path.write_text(dump_yaml(handoff), encoding="utf-8")
     write_index(repo)
     return path, handoff
+
+
+def start_next(repo: Path, *, fail_after: int | None = None) -> dict[str, Any]:
+    return ciclo_sessoes.iniciar(repo, fail_after=fail_after)
 
 
 def write_index(repo: Path) -> dict[str, Any]:
@@ -551,15 +554,18 @@ def check(repo: Path) -> list[str]:
                         f"sessão {session:03d} copia trecho de sessão anterior; usar handoff/contexto.py retomada"
                     )
                     break
-    return errors
+    errors.extend(ciclo_sessoes.check(repo))
+    return list(dict.fromkeys(errors))
 
 
 def status(repo: Path) -> dict[str, Any]:
     index = build_index(repo)
     active = current_session(repo)
     entry = (index.get("sessoes") or {}).get(f"{active:03d}") or {}
+    lifecycle = ciclo_sessoes.status(repo)
     return {
         "sessao_atual": active,
+        "status_campanha": lifecycle.get("status"),
         "sessoes": (index.get("totais") or {}).get("sessoes"),
         "bytes_transcricoes_frias": (index.get("totais") or {}).get("bytes_transcricoes"),
         "handoff_atual": entry.get("handoff"),
@@ -573,9 +579,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     sub = parser.add_subparsers(dest="comando", required=True)
     sub.add_parser("bootstrap-atual", help="cria handoff derivado da sessão corrente e reindexa")
+    sub.add_parser("iniciar", help="abre N+1 após checkpoint de encerramento, sem copiar transcrição")
     sub.add_parser("reindexar", help="regenera sessoes/index.yaml sem ler transcrições")
-    sub.add_parser("check", help="valida índice, handoffs e política de arquivos frios")
-    sub.add_parser("status", help="mostra metadados da memória de sessões")
+    sub.add_parser("check", help="valida índice, ciclo, handoffs e política de arquivos frios")
+    sub.add_parser("status", help="mostra metadados da memória e ciclo de sessões")
     show = sub.add_parser("sessao", help="mostra memória compacta de uma sessão sem abrir a transcrição")
     show.add_argument("numero", type=int)
     return parser
@@ -588,6 +595,13 @@ def main() -> int:
         if args.comando == "bootstrap-atual":
             path, _ = bootstrap_current(repo)
             print(f"OK — handoff atual criado em {path.relative_to(repo)} e índice regenerado.")
+            return 0
+        if args.comando == "iniciar":
+            result = start_next(repo)
+            print(
+                f"OK — sessão {result['sessao_iniciada']:03d} iniciada | "
+                f"transcricao={result.get('transcricao', transcript_rel(result['sessao_iniciada']).as_posix())}"
+            )
             return 0
         if args.comando == "reindexar":
             data = write_index(repo)
@@ -603,7 +617,7 @@ def main() -> int:
                 for error in errors:
                     print(f"- {error}")
                 return 1
-            print("OK — índice, handoffs e política de transcrições frias estão íntegros.")
+            print("OK — índice, ciclo, handoffs e política de transcrições frias estão íntegros.")
             return 0
         if args.comando == "status":
             print(json.dumps(status(repo), ensure_ascii=False, indent=2))
@@ -613,7 +627,14 @@ def main() -> int:
             print(dump_yaml({"fontes": sources, "resultado": data}), end="")
             return 0
         raise SessionMemoryError(f"comando desconhecido: {args.comando}")
-    except (OSError, yaml.YAMLError, SessionMemoryError, ValueError) as exc:
+    except (
+        OSError,
+        yaml.YAMLError,
+        SessionMemoryError,
+        ciclo_sessoes.SessionLifecycleError,
+        ciclo_sessoes.consolidar.ConsolidationError,
+        ValueError,
+    ) as exc:
         print(f"FALHA NA MEMÓRIA DE SESSÕES — {exc}")
         return 1
 
