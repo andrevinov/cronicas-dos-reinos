@@ -60,7 +60,7 @@ Escada de leitura:
 
 - **L0:** contexto atual, nenhuma leitura;
 - **L1:** `contexto.py status` — teto 4 KiB;
-- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
+- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra` ou sessão atual — teto 8 KiB;
 - **L3:** `buscar "termo" --apos L2 --motivo "lacuna concreta"` — teto 8 KiB;
 - **L4:** `buscar ... --historico --apos L3 --motivo "lacuna"` — teto 12 KiB, ainda sem transcrições;
 - **L4T:** `buscar ... --historico --transcricoes --apos L4 --motivo "lacuna"` — teto 16 KiB;
@@ -107,7 +107,7 @@ Durante **cada avanço comum**:
 - essa chamada altera somente a transcrição atual e `runtime/eventos-pendentes.jsonl`;
 - **`narracao` é a cena completa para o jogador; `resumo` é compressão operacional; `deltas` são apenas mudanças persistentes**;
 - não encurtar `narracao` para fazê-la caber no tamanho desejado do resumo ou do buffer;
-- registrar apenas deltas persistentes realmente ocorridos;
+- registrar apenas deltas persistentes realmente ocorridos; efeito temporário usa `set efeitos_temporarios.<id>` e, ao consumir/expirar, `remove` no mesmo caminho;
 - não copiar a narração inteira para o JSONL;
 - não repetir bloco completo de PV/CA/Ki/dinheiro/hora/localização quando nada relevante mudou;
 - rolagens ocultas relevantes ficam no registro transacional reservado até consolidação.
