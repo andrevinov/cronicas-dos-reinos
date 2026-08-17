@@ -70,12 +70,20 @@ def load_yaml(path: Path) -> Any:
         return yaml.safe_load(handle)
 
 
-def current_session(repo: Path) -> int:
+def current_session_info(repo: Path) -> tuple[int, str | None]:
     runtime = load_yaml(repo / "runtime/contexto.yaml") or {}
-    session = ((runtime.get("sessao") or {}).get("numero")) if isinstance(runtime, dict) else None
+    session_data = runtime.get("sessao") if isinstance(runtime, dict) else None
+    if not isinstance(session_data, dict):
+        raise TransactionError("runtime/contexto.yaml não define sessão atual válida")
+    session = session_data.get("numero")
     if not isinstance(session, int) or session < 1:
         raise TransactionError("runtime/contexto.yaml não define sessão atual válida")
-    return session
+    status = session_data.get("status")
+    return session, status if isinstance(status, str) else None
+
+
+def current_session(repo: Path) -> int:
+    return current_session_info(repo)[0]
 
 
 def read_transaction(path: Path | None) -> dict[str, Any]:
@@ -103,12 +111,17 @@ def validate_player_protocol(player: str) -> str:
 
 
 def normalize_transaction(repo: Path, transaction: dict[str, Any]) -> tuple[dict[str, Any], int]:
-    session = transaction.get("sessao", current_session(repo))
+    active, status = current_session_info(repo)
+    session = transaction.get("sessao", active)
     if not isinstance(session, int) or session < 1:
         raise TransactionError("sessao precisa ser inteiro positivo")
-    active = current_session(repo)
     if session != active:
         raise TransactionError(f"transação é da sessão {session}, mas runtime está na sessão {active}")
+    if status is not None and status != "em_sessao":
+        raise TransactionError(
+            f"campanha não está em sessão ativa ({status}); execute ferramentas/sessoes.py iniciar "
+            "antes de registrar novo turno"
+        )
 
     narration = transaction.get("narracao")
     if not isinstance(narration, str) or not narration.strip():
@@ -305,11 +318,13 @@ def check_transactions(repo: Path) -> list[str]:
 
 def status(repo: Path) -> dict[str, Any]:
     records = load_pending(repo)
+    session, session_status = current_session_info(repo)
     return {
         "eventos_pendentes": len(records),
         "bytes_pendentes": (repo / PENDING_PATH).stat().st_size if (repo / PENDING_PATH).exists() else 0,
         "ultima_transacao": records[-1]["id"] if records else None,
-        "sessao_atual": current_session(repo),
+        "sessao_atual": session,
+        "status_sessao": session_status,
     }
 
 

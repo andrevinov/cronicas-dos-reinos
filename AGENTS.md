@@ -139,7 +139,7 @@ python3 ferramentas/checkpoint.py recuperar
 
 `consolidar.py` continua sendo o motor de baixo nível do journal/staging e não inventa fatos, não incrementa sessão e não escolhe progressão pelo jogador.
 
-Ao abrir uma sessão nova, **nunca copiar o último trecho da sessão anterior**. Use `contexto.py retomada`, handoff e artefatos compactos.
+`checkpoint.py sessao` deixa N em `entre_sessoes`; abra N+1 com `sessoes.py iniciar`. **Nunca copie transcrição anterior.**
 
 Detalhes: `docs/agente/consolidacao-transacional.md` e `docs/agente/memoria-de-sessoes.md`.
 

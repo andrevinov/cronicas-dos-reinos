@@ -5,8 +5,12 @@
 é a porta operacional da Etapa 9: depois que a consolidação termina, deriva
 `handoff.yaml` e `sessoes/index.yaml` do runtime e do ledger já instalados.
 
+No fechamento de sessão, a consolidação é seguida por uma pequena transação de
+ciclo que mantém N como sessão corrente e muda `campanha.status` para
+`entre_sessoes`. Só `sessoes.py iniciar` avança para N+1.
+
 Se o processo cair após o cânone e antes do handoff, nenhum delta é reaplicado:
-basta executar o comando novamente ou `sessoes.py bootstrap-atual`, pois a memória
+basta executar o comando novamente ou `checkpoint.py recuperar`, pois a memória
 de sessão é cache derivado, não fonte de verdade.
 
 Desde o ajuste de autoridade temporal, `estado/tempo.yaml:prazo_relevante` é a
@@ -29,6 +33,7 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import ciclo_sessoes
 import consolidar
 import sessoes
 import transacoes
@@ -83,23 +88,56 @@ def refresh_memory(repo: Path, kind: str) -> dict[str, Any]:
     }
 
 
+def _lifecycle_journal_kind(repo: Path) -> str | None:
+    journal = ciclo_sessoes._journal(repo)
+    if not journal:
+        return None
+    kind = journal.get("tipo")
+    return str(kind) if kind is not None else None
+
+
 def checkpoint(repo: Path, kind: str) -> dict[str, Any]:
+    journal_kind = _lifecycle_journal_kind(repo)
+    if journal_kind == ciclo_sessoes.START_KIND:
+        raise ciclo_sessoes.SessionLifecycleError(
+            "início de sessão interrompido; repita `sessoes.py iniciar` antes de fazer checkpoint"
+        )
+    if journal_kind == ciclo_sessoes.CLOSE_KIND and kind != "sessao":
+        raise ciclo_sessoes.SessionLifecycleError(
+            "encerramento de sessão interrompido; execute checkpoint.py recuperar antes de checkpoint de cena"
+        )
+
     canonical = consolidar.consolidate(repo, kind)
-    effective_kind = canonical.get("tipo") or kind
-    if effective_kind not in {"cena", "sessao"}:
-        effective_kind = kind
+    lifecycle: dict[str, Any] | None = None
+    if kind == "sessao":
+        lifecycle = ciclo_sessoes.encerrar(repo)
+        effective_kind = "sessao"
+    else:
+        effective_kind = canonical.get("tipo") or kind
+        if effective_kind not in {"cena", "sessao"}:
+            effective_kind = kind
     memory = refresh_memory(repo, effective_kind)
-    return {"canonico": canonical, "memoria": memory}
+    return {"canonico": canonical, "ciclo": lifecycle, "memoria": memory}
 
 
 def recover(repo: Path) -> dict[str, Any]:
+    journal_kind = _lifecycle_journal_kind(repo)
     canonical = consolidar.resume_consolidation(repo)
     if canonical is None:
-        memory = refresh_memory(repo, "bootstrap")
-        return {"canonico": {"sem_journal": True}, "memoria": memory}
-    kind = canonical.get("tipo") or "cena"
-    memory = refresh_memory(repo, kind if kind in {"cena", "sessao"} else "cena")
-    return {"canonico": canonical, "memoria": memory}
+        lifecycle = ciclo_sessoes.status(repo)
+        kind = "sessao" if lifecycle.get("status") == ciclo_sessoes.STATUS_BETWEEN else "bootstrap"
+        memory = refresh_memory(repo, kind)
+        return {"canonico": {"sem_journal": True}, "ciclo": lifecycle, "memoria": memory}
+
+    kind = canonical.get("tipo") or journal_kind or "cena"
+    if kind == ciclo_sessoes.CLOSE_KIND:
+        memory_kind = "sessao"
+    elif kind == ciclo_sessoes.START_KIND:
+        memory_kind = "bootstrap"
+    else:
+        memory_kind = kind if kind in {"cena", "sessao"} else "cena"
+    memory = refresh_memory(repo, memory_kind)
+    return {"canonico": canonical, "ciclo": ciclo_sessoes.status(repo), "memoria": memory}
 
 
 def _current_handoff_errors(repo: Path) -> list[str]:
@@ -136,12 +174,18 @@ def _current_handoff_errors(repo: Path) -> list[str]:
             f"handoff da sessão {session:03d} diverge de runtime/ledger; "
             "execute ferramentas/checkpoint.py recuperar"
         )
+    lifecycle = ciclo_sessoes.status(repo)
+    if lifecycle.get("status") == ciclo_sessoes.STATUS_BETWEEN and kind != "sessao":
+        errors.append(
+            f"sessão {session:03d} está entre_sessoes, mas o handoff não é de encerramento"
+        )
     return errors
 
 
 def check(repo: Path) -> list[str]:
     errors = list(consolidar.check(repo))
     errors.extend(sessoes.check(repo))
+    errors.extend(ciclo_sessoes.check(repo))
     errors.extend(_current_handoff_errors(repo))
     return list(dict.fromkeys(errors))
 
@@ -149,6 +193,7 @@ def check(repo: Path) -> list[str]:
 def status(repo: Path) -> dict[str, Any]:
     return {
         "consolidacao": consolidar.status(repo),
+        "ciclo_sessao": ciclo_sessoes.status(repo),
         "memoria_sessoes": sessoes.status(repo),
     }
 
@@ -158,10 +203,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     sub = parser.add_subparsers(dest="comando", required=True)
     sub.add_parser("cena", help="consolida checkpoint de cena e atualiza handoff/índice")
-    sub.add_parser("sessao", help="consolida encerramento e atualiza handoff/índice")
-    sub.add_parser("recuperar", help="recupera journal canônico e reconstrói memória compacta")
-    sub.add_parser("status", help="mostra estado do cânone e da memória de sessões")
-    sub.add_parser("check", help="valida consolidação e memória fria")
+    sub.add_parser("sessao", help="consolida e encerra N, deixando a campanha entre_sessoes")
+    sub.add_parser("recuperar", help="recupera journal canônico/ciclo e reconstrói memória compacta")
+    sub.add_parser("status", help="mostra estado do cânone, ciclo e memória de sessões")
+    sub.add_parser("check", help="valida consolidação, ciclo e memória fria")
     return parser
 
 
@@ -176,9 +221,11 @@ def main() -> int:
             if canonical.get("sem_pendencias"):
                 prefix = "sem novos deltas; memória compacta atualizada"
             elif canonical.get("recuperada"):
-                prefix = "consolidação interrompida recuperada e memória atualizada"
+                prefix = "operação interrompida recuperada e memória atualizada"
             else:
                 prefix = "consolidação concluída e memória atualizada"
+            if args.comando == "sessao":
+                prefix += "; sessão encerrada (entre_sessoes)"
             print(
                 f"OK — {prefix}: sessão {memory['sessao']:03d} | "
                 f"handoff={memory['handoff']}"
@@ -198,7 +245,7 @@ def main() -> int:
                 for error in errors:
                     print(f"- {error}")
                 return 1
-            print("OK — consolidação e memória fria estão íntegras.")
+            print("OK — consolidação, ciclo e memória fria estão íntegros.")
             return 0
         raise ValueError(f"comando desconhecido: {args.comando}")
     except (
@@ -207,6 +254,7 @@ def main() -> int:
         yaml.YAMLError,
         transacoes.TransactionError,
         consolidar.ConsolidationError,
+        ciclo_sessoes.SessionLifecycleError,
         sessoes.SessionMemoryError,
     ) as exc:
         print(f"FALHA DE CHECKPOINT — {exc}")
