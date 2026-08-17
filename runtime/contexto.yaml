@@ -7,7 +7,7 @@ fontes_canonicas:
 sessao:
   numero: 6
   status: em_sessao
-  modo_de_cena: inicio_sessao_006_ponto_morto_pell
+  modo_de_cena: deslocamento_para_posicao_de_vigilancia
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -22,11 +22,11 @@ recursos:
     maximos: 6
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 35
+  dinheiro_po: 34
 tempo:
   data: 9 Eleasis, 1372 DR
-  hora_aproximada: 08:48 de 9 Eleasis
-  periodo: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
+  hora_aproximada: 18:15 de 9 Eleasis
+  periodo: meio da tarde de 9 Eleasis, durante reconhecimento dos arredores da Red Sail
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: arredores da Silver Lily, Ravens Bluff
-  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
+  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml

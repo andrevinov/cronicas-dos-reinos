@@ -84,3 +84,38 @@ eventos_pos_migracao:
     valor: 'Novo ponto morto acordado em 8 Eleasis: garrafa suja profundamente enfiada no vão junto à parede sob
       a escada dos fundos da Silver Lily. Papel dentro significa entrega; Ren retira a mensagem, deixa a garrafa
       e deposita depois os bônus devidos. Se a garrafa sumir, o caminho morreu.'
+- transacao: s006-bb8843b70523b7f1
+  sessao: 6
+  resumo: 'Ren assume a aparência de um bêbado junto à escada da Silver Lily, retira discretamente a garrafa e lê
+    a nota de Pell. Pell não conseguiu identificar proprietários confiáveis, dívida urgente ou risco explorável
+    nos três imóveis: a Lança Torta passa por cobradores contraditórios, os Três Martelos têm escrituras fragmentadas
+    e o Salgueiro Seco é administrado por intermediário sem vulnerabilidade aparente. Os três rumores sobre Brass
+    são incompatíveis e não confirmados. Pell declara honestamente que não obteve informação que mereça os bônus
+    e pede que Ren não deixe moedas extras. Às 08:52, Ren permanece junto à escada com o bilhete; propriedades e
+    rota de Brass seguem sem solução.'
+  deltas:
+  - alvo: relacao:pell
+    caminho: status
+    op: set
+    valor: Pell entregou no novo ponto morto um relatório honesto, porém inconclusivo, sobre os três imóveis e Brass;
+      não reivindicou os bônus prometidos
+  - alvo: relacao:pell
+    caminho: confianca
+    op: set
+    valor: Pell demonstrou discrição e honestidade ao separar rumores de informação confirmada e recusar pagamento
+      extra por resultados insuficientes
+- transacao: s006-4b4c90070cae69ba
+  sessao: 6
+  resumo: 'Ren deixa 1 PO como novo adiantamento para Pell, ficando com 34 PO, e mantém os mesmos objetivos e bônus.
+    Depois vigia a Casa do Salgueiro Seco da manhã ao começo da tarde. Com 13 contra CD 14 em Investigação, não
+    obtém o ponto alto ideal e usa um sótão com o pátio traseiro parcialmente oculto. Com 25 contra CD 14 em Furtividade,
+    permanece indetectado. Percepção 7 contra CD 14 e Investigação 14 contra CD 15 produzem quadro incompleto: a
+    casa principal parece vazia ou raramente usada; o jardineiro provavelmente mora numa dependência junto ao muro;
+    um escriturário com fólio preto visita por vinte minutos e deixa um envelope, mas Ren não identifica seu nome
+    nem o proprietário. Às 13:36, Ren segue oculto diante da propriedade.'
+  deltas:
+  - alvo: relacao:pell
+    caminho: status
+    op: set
+    valor: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
+      e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass

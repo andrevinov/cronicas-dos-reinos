@@ -6,7 +6,9 @@ relacao:
   nome: Dain 'Brass' Mord
   tipo: intermediário/figura operacional da Red Sail
   local: The Red Sail Tavern; visto nos fundos por Ren em 4 Eleasis
-  status: observado por Ren; acompanhado; possível alerta baixo sobre observador no galpão de cordame
+  status: Brass permanece sem reconhecer Ren nesta aproximação; Ren ouviu discretamente uma mudança de protocolo
+    e a intenção de Brass cruzar a ponte baixa depois do segundo sino após o poente com dois homens para encontrar
+    Rook
   atitude_para_ren: hostil ou interessada, ainda não confrontada diretamente
   confianca: nenhuma
   respeito: desconhecido

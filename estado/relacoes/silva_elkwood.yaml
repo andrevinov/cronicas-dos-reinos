@@ -6,13 +6,14 @@ relacao:
   nome: Silva Elkwood
   tipo: clériga de Chauntea / contato potencial de abrigo
   local: Jack Mooney & Sons Circus
-  status: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
-    mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
-    consumível.
+  status: Silva sabe que Ren pretende usar o rosto coberto e pintura negra durante a vigilância, aprovou que ele
+    priorize fugir e não expor aliados e permitiu uma visita de dez minutos a Nera; exigiu que ele não volte ao
+    circo com cauda e não faça promessas absolutas
   atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
     mas rejeita que ele assuma sozinho o direito de escolher todos os custos
   confianca: moderada e vigilante
-  respeito: alto
+  respeito: alto e reforçado pela decisão de Ren de não atacar Brass, informar Luath e preparar uma rota de fuga
+    antes da vigilância
   motivo_atual: Ao amanhecer, leu a mensagem curta de Luath informando que o pacote reservado passou para Tyr sem
     nome externo. Ela acompanhou a conversa com Jack e reforça, junto dele, que qualquer acesso aos Vell passa por
     ela quando houver risco de olho externo.

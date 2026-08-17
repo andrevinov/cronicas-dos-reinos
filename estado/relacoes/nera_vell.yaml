@@ -6,11 +6,12 @@ relacao:
   nome: Nera Vell
   tipo: testemunha protegida / gravadora de selos
   local: depósito de figurino velho, perto do canto de Ren; normalmente na carroça verde de Silva Elkwood
-  status: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
-    tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo, bem
-    e com saudades.
-  atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
-  confianca: moderada em situação de crise
+  status: Nera sabe que Ren seguirá Brass por uma viela, tentará ouvir uma conversa com Velis e pretende acompanhá-los
+    para dentro da Ponte Baixa, fugindo se descoberto. Ela percebe que os homens de Luath estarão apenas na superfície,
+    aceitou esperar e avisará Silva para acionar Luath se Ren não voltar no tempo combinado
+  atitude_para_ren: amorosa, assustada, zangada com as promessas absolutas e determinada a não ser protegida pela
+    ignorância
+  confianca: afetiva e real, mas pressionada pela tendência de Ren a desaparecer e prometer resultados que não controla
   respeito: prático
   motivo_atual: Nera ficou parcialmente aliviada por entender que os inimigos ainda têm uma palavra de pressão,
     mas não uma porta confirmada até ela. Ela reforçou que o circo não deve ensinar onde ela dorme.
@@ -25,6 +26,8 @@ relacao:
   acordos:
   - Ren decidiu tirar Tavin de perigo e recuperar o livro de provas.
   - Ren prometeu dar um jeito de checar a situação de Nera e Tavin e entrar em contato.
+  - Se Ren não voltar no tempo que indicar, Nera avisará Silva, que acionará Luath; ninguém deixará o esconderijo
+    para procurá-lo nem exporá o circo.
   riscos:
   - Nera ouviu Ren falar sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu.
   - Nera percebeu que a lembrança das cerejeiras toca saudade e dor, embora Ren não tenha transformado isso em explicação

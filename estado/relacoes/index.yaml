@@ -133,16 +133,15 @@ relacoes:
   pell:
     nome: Pell
     tipo: mensageiro local
-    status: Pell recebeu 4 PO adiantadas para investigar proprietários, dívidas, riscos e necessidades ligados à
-      Estalagem da Lança Torta, ao Pátio dos Três Martelos e à Casa do Salgueiro Seco, com prioridade para esta
-      última; também tentará escutar rotas de Brass. Entrega prevista à noite em nova garrafa sob a escada dos fundos
-      da Silver Lily.
+    status: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
+      e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass
     atitude_para_ren: assustado, oportunista e cooperativo por pagamento
-    confianca: muito baixa
+    confianca: Pell demonstrou discrição e honestidade ao separar rumores de informação confirmada e recusar pagamento
+      extra por resultados insuficientes
     respeito: baixo, mas crescente por medo e utilidade
     arquivo: estado/relacoes/pell.yaml
     historico: historico/relacoes/pell.yaml
-    bytes_fragmento: 3744
+    bytes_fragmento: 3750
     campos_atuais: 11
   peta:
     nome: Peta
@@ -158,15 +157,17 @@ relacoes:
   nera_vell:
     nome: Nera Vell
     tipo: testemunha protegida / gravadora de selos
-    status: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
-      tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo,
-      bem e com saudades.
-    atitude_para_ren: assustada, grata, pragmática e emocionalmente implicada
-    confianca: moderada em situação de crise
+    status: Nera sabe que Ren seguirá Brass por uma viela, tentará ouvir uma conversa com Velis e pretende acompanhá-los
+      para dentro da Ponte Baixa, fugindo se descoberto. Ela percebe que os homens de Luath estarão apenas na superfície,
+      aceitou esperar e avisará Silva para acionar Luath se Ren não voltar no tempo combinado
+    atitude_para_ren: amorosa, assustada, zangada com as promessas absolutas e determinada a não ser protegida pela
+      ignorância
+    confianca: afetiva e real, mas pressionada pela tendência de Ren a desaparecer e prometer resultados que não
+      controla
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 2882
+    bytes_fragmento: 3258
     campos_atuais: 11
   tavin_vell:
     nome: Tavin Vell
@@ -205,13 +206,15 @@ relacoes:
   luath:
     nome: Luath
     tipo: sargento da City Guard / supervisor possível da Night Watch
-    status: contato operacional cauteloso
+    status: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo
+      livre; deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
     atitude_para_ren: cautelosa, direta e avaliadora
     confianca: moderada operacional
-    respeito: prático crescente, contido por cautela
+    respeito: prático crescente; Luath reconhece que Ren conteve a vingança diante de Brass e trouxe a informação
+      antes de agir
     arquivo: estado/relacoes/luath.yaml
     historico: historico/relacoes/luath.yaml
-    bytes_fragmento: 4501
+    bytes_fragmento: 4739
     campos_atuais: 11
   sirrus_melandor:
     nome: Sirrus Melandor
@@ -242,16 +245,17 @@ relacoes:
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
-    status: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
-      mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
-      consumível.
+    status: Silva sabe que Ren pretende usar o rosto coberto e pintura negra durante a vigilância, aprovou que ele
+      priorize fugir e não expor aliados e permitiu uma visita de dez minutos a Nera; exigiu que ele não volte ao
+      circo com cauda e não faça promessas absolutas
     atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
       mas rejeita que ele assuma sozinho o direito de escolher todos os custos
     confianca: moderada e vigilante
-    respeito: alto
+    respeito: alto e reforçado pela decisão de Ren de não atacar Brass, informar Luath e preparar uma rota de fuga
+      antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 3146
+    bytes_fragmento: 3294
     campos_atuais: 10
   jack_mooney:
     nome: Jack Mooney
@@ -311,13 +315,15 @@ relacoes:
   dain_brass_mord:
     nome: Dain 'Brass' Mord
     tipo: intermediário/figura operacional da Red Sail
-    status: observado por Ren; acompanhado; possível alerta baixo sobre observador no galpão de cordame
+    status: Brass permanece sem reconhecer Ren nesta aproximação; Ren ouviu discretamente uma mudança de protocolo
+      e a intenção de Brass cruzar a ponte baixa depois do segundo sino após o poente com dois homens para encontrar
+      Rook
     atitude_para_ren: hostil ou interessada, ainda não confrontada diretamente
     confianca: nenhuma
     respeito: desconhecido
     arquivo: estado/relacoes/dain_brass_mord.yaml
     historico: historico/relacoes/dain_brass_mord.yaml
-    bytes_fragmento: 2509
+    bytes_fragmento: 2648
     campos_atuais: 10
   rusk_cinza:
     nome: Rusk 'Cinza'

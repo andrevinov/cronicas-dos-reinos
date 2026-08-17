@@ -52,3 +52,17 @@ eventos_pos_migracao:
     valor: Brass não apareceu na Red Sail durante a vigilância de Ren entre aproximadamente 20:20 e 23:20 de 7 Eleasis;
       os fundos operaram com pares, iluminação de controle e vigilância reforçada, impedindo mapear uma rota limpa
       de abdução.
+- transacao: s006-0a853ae691375c38
+  sessao: 6
+  resumo: 'Ren rejeita atacar Brass em público para não se expor nem comprometer Nera e Tavin. Ativa o Broche do
+    Semblante Humilde, cujo uso fica gasto até o próximo amanhecer, e passa perto da porta carregando corda. Furtividade
+    com vantagem 20 contra CD 15 e Percepção 25 contra CD 15 permitem que se aproxime sem ser marcado e ouça Brass:
+    o barril seco e o menino foram abandonados para papéis; depois do segundo sino após o poente, Brass pretende
+    cruzar a ponte baixa com dois homens para encontrar Rook. U…'
+  deltas:
+  - alvo: relacao:dain_brass_mord
+    caminho: status
+    op: set
+    valor: Brass permanece sem reconhecer Ren nesta aproximação; Ren ouviu discretamente uma mudança de protocolo
+      e a intenção de Brass cruzar a ponte baixa depois do segundo sino após o poente com dois homens para encontrar
+      Rook

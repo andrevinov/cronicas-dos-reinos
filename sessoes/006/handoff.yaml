@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 6
 checkpoint:
-  tipo: bootstrap
-  estado: retomavel
-  modo: inicio_sessao_006_ponto_morto_pell
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: deslocamento_para_posicao_de_vigilancia
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -19,11 +19,11 @@ checkpoint:
       maximos: 6
     ca: 17
     deslocamento: 55 pés
-    dinheiro_po: 35
+    dinheiro_po: 34
   tempo:
     data: 9 Eleasis, 1372 DR
-    hora_aproximada: 08:48 de 9 Eleasis
-    periodo: manhã de 9 Eleasis, após a operação noturna na Casa de Pesos
+    hora_aproximada: 18:15 de 9 Eleasis
+    periodo: meio da tarde de 9 Eleasis, durante reconhecimento dos arredores da Red Sail
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
     plano: Material
@@ -31,15 +31,64 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: arredores da Silver Lily, Ravens Bluff
-    ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+    area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
+    ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
 continuidade:
-  resumo_imediato: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível. Chegou
-    sem cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação da Casa
-    de Pesos prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
-  prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, armas e vestígios do porão foram
-    preservados. Ren está diante da mensagem de Pell ainda fechada.
-eventos_recentes: []
+  resumo_imediato: Ren se despediu de Nera, tomou banho e deixou o circo vestido com seu traje oriental de infiltração,
+    rosto pintado de negro e coberto até o nariz, wakizashi e shuriken equipados. Segue para assumir posição na
+    escada junto à ferraria antes do movimento de Brass. Nera conhece o plano geral e, se Ren se atrasar, avisará
+    Silva para acionar Luath sem expor o circo.
+  prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa
+    e um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo
+    sino após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes
+    do amanhecer de 10 Eleasis.
+eventos_recentes:
+- batch: s006-cena-efe633d4784d29c1
+  transacao: s006-9576cbb4e5a3441b
+  resumo: Ren reconhece que o capanga de Brass pronunciou Masao com familiaridade, não como estrangeiro repetindo
+    um nome recém-ouvido, e mantém o disfarce sem denunciar a reação. Vai ao posto e relata tudo a Luath por volta
+    de 16:14. Luath considera a pronúncia sinal de circulação habitual do nome, aprova a decisão de não atacar na
+    Red Sail e decide colocar dois observadores sem uniforme nas cabeceiras da ponte baixa, com um…
+- batch: s006-cena-efe633d4784d29c1
+  transacao: s006-bc4cb0427970a035
+  resumo: 'Ren propõe seguir Brass de perto, ocultar-se e fugir se descoberto, priorizando informação e a segurança
+    de terceiros. Luath aceita: seus homens manterão vigilância distante e seguirão Brass, Rook ou o papel, enquanto
+    Ren poderá aproximar-se para escutar. Luath exige retirada imediata se Ren for percebido e pede que ele escolha
+    entre iniciar a perseguição perto da Red Sail ou esperar na Ponte Baixa.'
+- batch: s006-cena-efe633d4784d29c1
+  transacao: s006-e31458b424cd5aba
+  resumo: 'Investigação com vantagem 23 contra CD 15: Ren identifica no mapa um corredor urbano contínuo especialmente
+    favorável a seguir pessoas furtivamente.'
+- batch: s006-cena-efe633d4784d29c1
+  transacao: s006-68ded1450eea78c3
+  resumo: Ren escolhe iniciar a perseguição na escada próxima à ferraria, usar o corredor de bancas e divisões da
+    rua para ouvir Brass e continuar seguindo-o ao entrar na Ponte Baixa, fugindo se detectado ou atacado e lutando
+    apenas em risco de morte. Luath aceita o trajeto, ajusta seus observadores para deixá-lo livre e avisa que nenhum
+    guarda o seguirá para dentro da Ponte Baixa.
+- batch: s006-cena-efe633d4784d29c1
+  transacao: s006-46564096af22be4b
+  resumo: Ren encerra o planejamento com Luath, percorre fisicamente o corredor escolhido e obtém Investigação 24
+    contra CD 14, preparando com excelência pontos de cobertura, transição e respiração; recebe vantagem no primeiro
+    teste da operação em que esse conhecimento ajude a manter o acompanhamento sem exposição. No circo, come uma
+    refeição leve e relata tudo a Silva. Ela aprova sua contenção diante de Brass, alerta que den…
+- batch: s006-cena-4776093abe027ceb
+  transacao: s006-ad3f5f66cb5cc414
+  resumo: Ren explica a Silva que usará rosto coberto e pintura negra e que, se visto, não exporá Nera, Tavin, Silva,
+    Maerra, Kethra, Colm ou Luath. Silva aceita a preparação, reforça que Ren não deve voltar ao circo com cauda
+    e permite uma visita de dez minutos a Nera no depósito de figurinos velhos. Ela exige que Ren conte o bastante
+    para não deixar Nera no escuro e evite promessas absolutas. Ren chega diante de Nera, com S…
+- batch: s006-cena-4776093abe027ceb
+  transacao: s006-0e4e5f891ba71027
+  resumo: 'Ren promete a Nera que voltará depois de uma ação noturna. A promessa desencadeia a raiva, o medo e a
+    saudade acumulados dela: Nera o confronta pelas ausências e promessas absolutas, beija-o com intensidade e declara
+    que o ama. Ren corresponde no nível emocional que ela inicia. Nera pede informação suficiente para distinguir
+    o plano de uma possível despedida.'
+- batch: s006-cena-4776093abe027ceb
+  transacao: s006-9c43e3ef3a278db5
+  resumo: Ren conta a Nera que seguirá Brass e Velis até a Ponte Baixa, fugirá se descoberto e contará com a proteção
+    distante dos homens de Luath. Nera reconhece que os guardas não estarão com ele lá embaixo, aceita esperar e
+    promete avisar Silva e Luath sem expor o circo caso Ren se atrase. Após a despedida, Ren toma banho, veste seu
+    traje oriental de infiltração, pinta e cobre o rosto, equipa wakizashi e shuriken e deixa o…
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

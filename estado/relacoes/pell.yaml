@@ -6,11 +6,11 @@ relacao:
   nome: Pell
   tipo: mensageiro local
   local: circuito Silver Lily / Rua da Corda / Fishtown
-  status: Pell recebeu 4 PO adiantadas para investigar proprietários, dívidas, riscos e necessidades ligados à Estalagem
-    da Lança Torta, ao Pátio dos Três Martelos e à Casa do Salgueiro Seco, com prioridade para esta última; também
-    tentará escutar rotas de Brass. Entrega prevista à noite em nova garrafa sob a escada dos fundos da Silver Lily.
+  status: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
+    e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass
   atitude_para_ren: assustado, oportunista e cooperativo por pagamento
-  confianca: muito baixa
+  confianca: Pell demonstrou discrição e honestidade ao separar rumores de informação confirmada e recusar pagamento
+    extra por resultados insuficientes
   respeito: baixo, mas crescente por medo e utilidade
   motivo_atual: 'Ganhar os bônus prometidos sem ser visto perguntando diretamente: 1 PO por informação imobiliária
     realmente interessante e 2 PO por paradeiro ou caminhos de Brass.'

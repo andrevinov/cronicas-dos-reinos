@@ -1,23 +1,26 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 6
-modo: inicio_sessao_006_ponto_morto_pell
+modo: deslocamento_para_posicao_de_vigilancia
 localizacao:
-  area: arredores da Silver Lily, Ravens Bluff
-  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
+  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
 tempo:
   data: 9 Eleasis, 1372 DR
-  hora_aproximada: 08:48 de 9 Eleasis
+  hora_aproximada: 18:15 de 9 Eleasis
 mecanica_imediata:
   pv: 45/45
   ki: 6/6
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren completou descanso longo e está com 45/45 PV, 6/6 Ki, 35 PO e o Broche disponível. Chegou sem
-  cauda ao ponto morto de Pell; a garrafa contém uma mensagem dobrada ainda não aberta. A operação da Casa de Pesos
-  prendeu suspeitos e preservou provas, apesar de incêndio grave no pavimento superior.
-prazos_e_alertas: A Casa de Pesos foi parcialmente incendiada, mas suspeitos, armas e vestígios do porão foram preservados.
-  Ren está diante da mensagem de Pell ainda fechada.
+resumo_imediato: Ren se despediu de Nera, tomou banho e deixou o circo vestido com seu traje oriental de infiltração,
+  rosto pintado de negro e coberto até o nariz, wakizashi e shuriken equipados. Segue para assumir posição na escada
+  junto à ferraria antes do movimento de Brass. Nera conhece o plano geral e, se Ren se atrasar, avisará Silva para
+  acionar Luath sem expor o circo.
+prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa e
+  um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo sino
+  após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes do amanhecer
+  de 10 Eleasis.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
   handoff: sessoes/006/handoff.yaml

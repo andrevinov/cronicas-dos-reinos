@@ -301,3 +301,37 @@ eventos_pos_migracao:
     valor: Silva sabe da pista da Casa de Pesos e que Ren pretende apenas vigiar. Considera uma casa própria potencialmente
       mais segura que o circo, mas advertiu que um dojo deve tratar alunos como pessoas com escolha, não como defesa
       consumível.
+- transacao: s006-46564096af22be4b
+  sessao: 6
+  resumo: Ren encerra o planejamento com Luath, percorre fisicamente o corredor escolhido e obtém Investigação 24
+    contra CD 14, preparando com excelência pontos de cobertura, transição e respiração; recebe vantagem no primeiro
+    teste da operação em que esse conhecimento ajude a manter o acompanhamento sem exposição. No circo, come uma
+    refeição leve e relata tudo a Silva. Ela aprova sua contenção diante de Brass, alerta que dentro da Ponte Baixa
+    ele estará sozinho e pergunta qual rosto usará, pois o broche…
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva sabe que Ren ouviu Brass abandonar o protocolo do barril seco e afastar o menino dos papéis, que
+      Brass encontrará Rook depois do segundo sino após o poente e que o nome de Masao circula entre os homens.
+      Ela conhece o plano de vigilância com Luath, aprova a contenção de Ren e teme que ele entre sozinho na Ponte
+      Baixa; perguntou qual disfarce ele usará com o broche gasto
+  - alvo: relacao:silva_elkwood
+    caminho: respeito
+    op: set
+    valor: alto e reforçado pela decisão de Ren de não atacar Brass, informar Luath e preparar uma rota de fuga
+      antes da vigilância
+- transacao: s006-ad3f5f66cb5cc414
+  sessao: 6
+  resumo: Ren explica a Silva que usará rosto coberto e pintura negra e que, se visto, não exporá Nera, Tavin, Silva,
+    Maerra, Kethra, Colm ou Luath. Silva aceita a preparação, reforça que Ren não deve voltar ao circo com cauda
+    e permite uma visita de dez minutos a Nera no depósito de figurinos velhos. Ela exige que Ren conte o bastante
+    para não deixar Nera no escuro e evite promessas absolutas. Ren chega diante de Nera, com Silva guardando o
+    acesso à distância.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva sabe que Ren pretende usar o rosto coberto e pintura negra durante a vigilância, aprovou que ele
+      priorize fugir e não expor aliados e permitiu uma visita de dez minutos a Nera; exigiu que ele não volte ao
+      circo com cauda e não faça promessas absolutas

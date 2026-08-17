@@ -185,3 +185,43 @@ eventos_pos_migracao:
     valor: fisicamente bem e sob proteção de Silva; dorme mal, está assustada e zangada com a separação, mas não
       tentou sair e continua seguindo o protocolo. Recebeu o bilhete de Ren e soube por Silva que ele está vivo,
       bem e com saudades.
+- transacao: s006-0e4e5f891ba71027
+  sessao: 6
+  resumo: 'Ren promete a Nera que voltará depois de uma ação noturna. A promessa desencadeia a raiva, o medo e a
+    saudade acumulados dela: Nera o confronta pelas ausências e promessas absolutas, beija-o com intensidade e declara
+    que o ama. Ren corresponde no nível emocional que ela inicia. Nera pede informação suficiente para distinguir
+    o plano de uma possível despedida.'
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera reencontrou Ren antes de uma operação noturna. Reagiu intensamente à promessa de retorno, confrontou
+      suas ausências e promessas absolutas, beijou-o e declarou que o ama; quer informação suficiente para saber
+      o que é plano e o que pode ser despedida
+  - alvo: relacao:nera_vell
+    caminho: atitude_para_ren
+    op: set
+    valor: amorosa, assustada, zangada com as promessas absolutas e determinada a não ser protegida pela ignorância
+  - alvo: relacao:nera_vell
+    caminho: confianca
+    op: set
+    valor: afetiva e real, mas pressionada pela tendência de Ren a desaparecer e prometer resultados que não controla
+- transacao: s006-9c43e3ef3a278db5
+  sessao: 6
+  resumo: Ren conta a Nera que seguirá Brass e Velis até a Ponte Baixa, fugirá se descoberto e contará com a proteção
+    distante dos homens de Luath. Nera reconhece que os guardas não estarão com ele lá embaixo, aceita esperar e
+    promete avisar Silva e Luath sem expor o circo caso Ren se atrase. Após a despedida, Ren toma banho, veste seu
+    traje oriental de infiltração, pinta e cobre o rosto, equipa wakizashi e shuriken e deixa o circo rumo à escada
+    da ferraria.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera sabe que Ren seguirá Brass por uma viela, tentará ouvir uma conversa com Velis e pretende acompanhá-los
+      para dentro da Ponte Baixa, fugindo se descoberto. Ela percebe que os homens de Luath estarão apenas na superfície,
+      aceitou esperar e avisará Silva para acionar Luath se Ren não voltar no tempo combinado
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Se Ren não voltar no tempo que indicar, Nera avisará Silva, que acionará Luath; ninguém deixará o esconderijo
+      para procurá-lo nem exporá o circo.

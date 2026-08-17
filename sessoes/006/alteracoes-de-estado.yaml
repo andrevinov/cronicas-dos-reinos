@@ -1,0 +1,129 @@
+schema_alteracoes_transacionais: 1
+sessao: 6
+status: em_andamento
+fonte: sessoes/006/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 6
+  modo: inicio_sessao_006_ponto_morto_pell
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 35
+  data: 9 Eleasis, 1372 DR
+  hora: 08:48 de 9 Eleasis
+  area: arredores da Silver Lily, Ravens Bluff
+  ponto_exato: atrás da Silver Lily, diante da garrafa escondida sob a escada do novo ponto morto de Pell
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 6
+  modo: deslocamento_para_posicao_de_vigilancia
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 34
+  data: 9 Eleasis, 1372 DR
+  hora: 18:15 de 9 Eleasis
+  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
+  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
+  nivel_ficha: 6
+consolidacoes:
+- id: s006-cena-b11d9d2db984fe4a
+  tipo: cena
+  transacoes:
+  - s006-bb8843b70523b7f1
+  - s006-4b4c90070cae69ba
+  - s006-ae9c9c798f3fd161
+  - s006-8edd2c5c0424c556
+  - s006-09ed59d2c65e6089
+  deltas: 37
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/pell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/pell.yaml
+  - narrador/sessoes/006/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-09ed59d2c65e6089.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-4b4c90070cae69ba.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-8edd2c5c0424c556.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-ae9c9c798f3fd161.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-bb8843b70523b7f1.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md
+- id: s006-cena-33bc0c2f1ec36047
+  tipo: cena
+  transacoes:
+  - s006-0a853ae691375c38
+  deltas: 8
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/dain_brass_mord.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/dain_brass_mord.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-0a853ae691375c38.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md
+- id: s006-cena-efe633d4784d29c1
+  tipo: cena
+  transacoes:
+  - s006-9576cbb4e5a3441b
+  - s006-bc4cb0427970a035
+  - s006-e31458b424cd5aba
+  - s006-68ded1450eea78c3
+  - s006-46564096af22be4b
+  deltas: 28
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/luath.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/luath.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-46564096af22be4b.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-68ded1450eea78c3.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-9576cbb4e5a3441b.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-bc4cb0427970a035.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-e31458b424cd5aba.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md
+- id: s006-cena-4776093abe027ceb
+  tipo: cena
+  transacoes:
+  - s006-ad3f5f66cb5cc414
+  - s006-0e4e5f891ba71027
+  - s006-9c43e3ef3a278db5
+  deltas: 18
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md

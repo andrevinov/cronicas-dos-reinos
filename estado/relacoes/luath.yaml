@@ -6,10 +6,12 @@ relacao:
   nome: Luath
   tipo: sargento da City Guard / supervisor possível da Night Watch
   local: posto da City Guard / Night Watch
-  status: contato operacional cauteloso
+  status: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo livre;
+    deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
   atitude_para_ren: cautelosa, direta e avaliadora
   confianca: moderada operacional
-  respeito: prático crescente, contido por cautela
+  respeito: prático crescente; Luath reconhece que Ren conteve a vingança diante de Brass e trouxe a informação
+    antes de agir
   motivo_atual: 'Antes de se despedir, Ren comparou Luath aos Miburo/Shinsengumi de Kozakura: homens do bakufu odiados
     por criminosos, não santos, mas honrados e ainda de pé quando a cidade fingia não ver a sujeira. Luath recebeu
     o respeito de modo seco, sem transformar isso em intimidade, mas a fala reforçou camaradagem institucional.'

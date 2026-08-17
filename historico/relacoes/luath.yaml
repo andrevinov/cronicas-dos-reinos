@@ -172,3 +172,48 @@ relacao:
     a prova em disputa política.
   - Ren comparou Luath aos Miburo/Shinsengumi de Kozakura, oferecendo respeito pessoal por sua honra prática dentro
     de uma cidade suja.
+eventos_pos_migracao:
+- transacao: s006-9576cbb4e5a3441b
+  sessao: 6
+  resumo: Ren reconhece que o capanga de Brass pronunciou Masao com familiaridade, não como estrangeiro repetindo
+    um nome recém-ouvido, e mantém o disfarce sem denunciar a reação. Vai ao posto e relata tudo a Luath por volta
+    de 16:14. Luath considera a pronúncia sinal de circulação habitual do nome, aprova a decisão de não atacar na
+    Red Sail e decide colocar dois observadores sem uniforme nas cabeceiras da ponte baixa, com um terceiro homem
+    como mensageiro. Eles observarão a troca e seguirão o papel e Ro…
+  deltas:
+  - alvo: relacao:luath
+    caminho: status
+    op: set
+    valor: Luath recebeu de Ren a rota e o horário declarados por Brass, valorizou sua contenção na Red Sail e preparará
+      vigilância discreta na ponte baixa; exige saber o plano de Ren e não autoriza sequestro ou interrogatório
+      clandestino
+  - alvo: relacao:luath
+    caminho: respeito
+    op: set
+    valor: prático crescente; Luath reconhece que Ren conteve a vingança diante de Brass e trouxe a informação antes
+      de agir
+- transacao: s006-bc4cb0427970a035
+  sessao: 6
+  resumo: 'Ren propõe seguir Brass de perto, ocultar-se e fugir se descoberto, priorizando informação e a segurança
+    de terceiros. Luath aceita: seus homens manterão vigilância distante e seguirão Brass, Rook ou o papel, enquanto
+    Ren poderá aproximar-se para escutar. Luath exige retirada imediata se Ren for percebido e pede que ele escolha
+    entre iniciar a perseguição perto da Red Sail ou esperar na Ponte Baixa.'
+  deltas:
+  - alvo: relacao:luath
+    caminho: status
+    op: set
+    valor: Luath aceitou a proposta de vigilância próxima de Ren, mantendo seus próprios homens à distância; exige
+      retirada imediata se Ren for descoberto e aguarda a escolha entre acompanhar Brass desde a Red Sail ou esperar
+      na Ponte Baixa
+- transacao: s006-68ded1450eea78c3
+  sessao: 6
+  resumo: Ren escolhe iniciar a perseguição na escada próxima à ferraria, usar o corredor de bancas e divisões da
+    rua para ouvir Brass e continuar seguindo-o ao entrar na Ponte Baixa, fugindo se detectado ou atacado e lutando
+    apenas em risco de morte. Luath aceita o trajeto, ajusta seus observadores para deixá-lo livre e avisa que nenhum
+    guarda o seguirá para dentro da Ponte Baixa.
+  deltas:
+  - alvo: relacao:luath
+    caminho: status
+    op: set
+    valor: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo livre;
+      deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
