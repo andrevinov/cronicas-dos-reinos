@@ -46,11 +46,18 @@
       "rotulo": "não escrever diretamente em cânone durante avanço comum"
     },
     {
+      "id": "sem_tentativa_transcricao_fria",
+      "metrica": "attempted_transcript_read_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não tentar ler transcrição bruta durante avanço comum"
+    },
+    {
       "id": "sem_transcricao_fria",
       "metrica": "transcript_read_calls",
       "operador": "==",
       "valor": 0,
-      "rotulo": "não ler transcrição bruta durante avanço comum"
+      "rotulo": "não concluir leitura de transcrição bruta durante avanço comum"
     },
     {
       "id": "sem_temp_turno",
@@ -72,6 +79,13 @@
       "operador": "==",
       "valor": 0,
       "rotulo": "não ter chamadas de escrita com falha"
+    },
+    {
+      "id": "sem_writer_desconhecido",
+      "metrica": "unknown_write_calls",
+      "operador": "==",
+      "valor": 0,
+      "rotulo": "não aceitar writer sem resultado observável no benchmark final"
     },
     {
       "id": "l0_l2_limpo",
