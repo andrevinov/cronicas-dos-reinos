@@ -1,0 +1,11 @@
+schema_conhecimento_incremental: 1
+sessao: 7
+fragmentos:
+- transacao: s007-c19422149078ef8d
+  titulo: Ren transferiu formalmente o documento falsificado à Casa de Tyr. A auditoria encontrou a cadeia anterior
+    sem ruptura visível e confirmou que o original preservado por Tyr mantém a retenção anulada do volume 13, enquanto
+    a peça recuperada diz que a carga nunca foi retida. Ambos foram selados separadamente; Ren permanece testemunha
+    reservada e Shizune foi classificada como risco operacional não confirmado.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-007/tx-s007-c19422149078ef8d.md
+  bytes: 839
+quantidade: 1

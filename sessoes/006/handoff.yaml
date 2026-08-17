@@ -4,7 +4,7 @@ sessao: 6
 checkpoint:
   tipo: sessao
   estado: sessao_encerrada
-  modo: deslocamento_para_posicao_de_vigilancia
+  modo: sessao_encerrada_aguardando_relato_a_luath
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -15,15 +15,15 @@ checkpoint:
       atuais: 45
       maximos: 45
     ki:
-      atuais: 6
+      atuais: 3
       maximos: 6
     ca: 17
     deslocamento: 55 pés
     dinheiro_po: 34
   tempo:
     data: 9 Eleasis, 1372 DR
-    hora_aproximada: 18:15 de 9 Eleasis
-    periodo: meio da tarde de 9 Eleasis, durante reconhecimento dos arredores da Red Sail
+    hora_aproximada: 21:38 de 9 Eleasis
+    periodo: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
     plano: Material
@@ -31,64 +31,65 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
-    ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
+    area: posto da Night Watch, Ravens Bluff
+    ponto_exato: sala privada de trabalho de Luath, com a porta trancada, imediatamente antes do relato da operação
 continuidade:
-  resumo_imediato: Ren se despediu de Nera, tomou banho e deixou o circo vestido com seu traje oriental de infiltração,
-    rosto pintado de negro e coberto até o nariz, wakizashi e shuriken equipados. Segue para assumir posição na
-    escada junto à ferraria antes do movimento de Brass. Nera conhece o plano geral e, se Ren se atrasar, avisará
-    Silva para acionar Luath sem expor o circo.
+  resumo_imediato: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu em
+    sala privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren; ele
+    ainda não decidiu formalmente entregá-lo.
   prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa
     e um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo
     sino após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes
     do amanhecer de 10 Eleasis.
 eventos_recentes:
-- batch: s006-cena-efe633d4784d29c1
-  transacao: s006-9576cbb4e5a3441b
-  resumo: Ren reconhece que o capanga de Brass pronunciou Masao com familiaridade, não como estrangeiro repetindo
-    um nome recém-ouvido, e mantém o disfarce sem denunciar a reação. Vai ao posto e relata tudo a Luath por volta
-    de 16:14. Luath considera a pronúncia sinal de circulação habitual do nome, aprova a decisão de não atacar na
-    Red Sail e decide colocar dois observadores sem uniforme nas cabeceiras da ponte baixa, com um…
-- batch: s006-cena-efe633d4784d29c1
-  transacao: s006-bc4cb0427970a035
-  resumo: 'Ren propõe seguir Brass de perto, ocultar-se e fugir se descoberto, priorizando informação e a segurança
-    de terceiros. Luath aceita: seus homens manterão vigilância distante e seguirão Brass, Rook ou o papel, enquanto
-    Ren poderá aproximar-se para escutar. Luath exige retirada imediata se Ren for percebido e pede que ele escolha
-    entre iniciar a perseguição perto da Red Sail ou esperar na Ponte Baixa.'
-- batch: s006-cena-efe633d4784d29c1
-  transacao: s006-e31458b424cd5aba
-  resumo: 'Investigação com vantagem 23 contra CD 15: Ren identifica no mapa um corredor urbano contínuo especialmente
-    favorável a seguir pessoas furtivamente.'
-- batch: s006-cena-efe633d4784d29c1
-  transacao: s006-68ded1450eea78c3
-  resumo: Ren escolhe iniciar a perseguição na escada próxima à ferraria, usar o corredor de bancas e divisões da
-    rua para ouvir Brass e continuar seguindo-o ao entrar na Ponte Baixa, fugindo se detectado ou atacado e lutando
-    apenas em risco de morte. Luath aceita o trajeto, ajusta seus observadores para deixá-lo livre e avisa que nenhum
-    guarda o seguirá para dentro da Ponte Baixa.
-- batch: s006-cena-efe633d4784d29c1
-  transacao: s006-46564096af22be4b
-  resumo: Ren encerra o planejamento com Luath, percorre fisicamente o corredor escolhido e obtém Investigação 24
-    contra CD 14, preparando com excelência pontos de cobertura, transição e respiração; recebe vantagem no primeiro
-    teste da operação em que esse conhecimento ajude a manter o acompanhamento sem exposição. No circo, come uma
-    refeição leve e relata tudo a Silva. Ela aprova sua contenção diante de Brass, alerta que den…
-- batch: s006-cena-4776093abe027ceb
-  transacao: s006-ad3f5f66cb5cc414
-  resumo: Ren explica a Silva que usará rosto coberto e pintura negra e que, se visto, não exporá Nera, Tavin, Silva,
-    Maerra, Kethra, Colm ou Luath. Silva aceita a preparação, reforça que Ren não deve voltar ao circo com cauda
-    e permite uma visita de dez minutos a Nera no depósito de figurinos velhos. Ela exige que Ren conte o bastante
-    para não deixar Nera no escuro e evite promessas absolutas. Ren chega diante de Nera, com S…
-- batch: s006-cena-4776093abe027ceb
-  transacao: s006-0e4e5f891ba71027
-  resumo: 'Ren promete a Nera que voltará depois de uma ação noturna. A promessa desencadeia a raiva, o medo e a
-    saudade acumulados dela: Nera o confronta pelas ausências e promessas absolutas, beija-o com intensidade e declara
-    que o ama. Ren corresponde no nível emocional que ela inicia. Nera pede informação suficiente para distinguir
-    o plano de uma possível despedida.'
-- batch: s006-cena-4776093abe027ceb
-  transacao: s006-9c43e3ef3a278db5
-  resumo: Ren conta a Nera que seguirá Brass e Velis até a Ponte Baixa, fugirá se descoberto e contará com a proteção
-    distante dos homens de Luath. Nera reconhece que os guardas não estarão com ele lá embaixo, aceita esperar e
-    promete avisar Silva e Luath sem expor o circo caso Ren se atrase. Após a despedida, Ren toma banho, veste seu
-    traje oriental de infiltração, pinta e cobre o rosto, equipa wakizashi e shuriken e deixa o…
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-2db022b9c86d13a8
+  resumo: Ren permite que Rook conclua a falsificação e continua ouvindo. Rook menciona Nera e Tavin; Brass afirma
+    que sua rede seguiu Tyr, Maerra, a velha casa de Lathander e quartos já vazios, mas não possui o endereço atual
+    dos Vell e suspendeu a busca até surgir novo rastro. Intuição 18 contra CD 15 indica que Brass acredita nisso,
+    sem provar o que Masao ou outros agentes sabem. Rook chama outro agente de “homem de Masao”…
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-734f6c9b0e064745
+  resumo: Ren abandona a cauda de Brass e segue Rook com Passos sem Pegadas e Passo Sombrio. Obtém Furtividade 36
+    contra CD 18 com vantagem, atravessa o contravigia e chega sem ser percebido ao anel de ferro seco. Rook prende
+    ali o documento falsificado e continua andando. Uma linha negra recolhe o pacote até um telhado. Percepção 22
+    com vantagem supera a coleta furtiva e permite a Ren identificar Kurobane Jinzaburō, o Corvo…
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-9ffad5fa9720bec3
+  resumo: 'Ren usa Passo Sombrio para alcançar a cumeeira e abre combate contra Kurobane fora da Ponte Baixa. Kurobane
+    começa surpreendido. Ambos obtêm iniciativa 18; no desempate, Kurobane vence 11 contra 9, perde o primeiro turno
+    pela surpresa, mas recupera a reação antes dos ataques de Ren. Ren acerta dois golpes desarmados: o primeiro
+    causa 8, reduzido a 4 por Esquiva Sobrenatural, e o segundo causa 5. Kurobane sofre 9 e f…'
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-9e6123f17312d200
+  resumo: Ren cobre os sessenta pés, salta o vão entre telhados e ataca Kurobane enquanto o provoca em kozakurano.
+    A voadora erra, mas o segundo golpe acerta por 9, reduzido a 4 pela Esquiva Sobrenatural; Kurobane fica com
+    39/52 PV. Kurobane responde em kozakurano chamando Ren pelo nome, identificando-o como irmão de Aiko e sobrinho
+    de Tadatsune e alegando que Masao esperava que o último Kagehira se tornasse interessante. Afi…
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-5b1dbaf869ce4a81
+  resumo: 'Ren gasta 1 Ki em Passo do Vento, alcança Kurobane e pergunta em kozakurano o que Masao quer em Ravens
+    Bluff. Ren acerta dois golpes: 9 reduzido a 4 por Esquiva Sobrenatural e mais 7, deixando Kurobane com 28/52
+    PV. Kurobane responde que ele quer o documento, enquanto Masao quer uma cidade capaz de esquecer o que entrou
+    nela: registros decidem quem existe, túneis para onde pessoas e cargas vão, e Ravens Bluff seria…'
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-882ae9f602813a13
+  resumo: 'Ren supera a lona negra, obtém Percepção 20 contra CD 15 e recupera a rota de Kurobane pelas marcas frescas.
+    Alcança o Corvo e acerta dois golpes: 9 reduzido a 4 pela Esquiva Sobrenatural e mais 5, deixando Kurobane com
+    19/52 PV. No turno seguinte, Kurobane desengaja, usa Fast Hands para prender o documento a uma linha de contrapeso
+    e o envia cerca de cinquenta pés na direção oposta, rumo à abertura superior de outr…'
+- batch: s006-cena-dbcc82ef8ec21077
+  transacao: s006-e45a7f7184600596
+  resumo: 'Ren abandona a perseguição a Kurobane e prioriza o documento. Usa Passo Sombrio sem custo de Ki para
+    alcançar a abertura do armazém e obtém Acrobacia 24 contra CD 14, interceptando a linha de contrapeso e recuperando
+    o pacote intacto. Confirma a folha alterada por Rook: a marca de retenção foi rompida e o volume 13 agora declara
+    que a carga nunca foi retida. Kurobane escapa pelos depósitos do canal com 19/52 PV, sem…'
+- batch: s006-sessao-31ca3f85f98ffa07
+  transacao: s006-f957df0ce9040e84
+  resumo: Ren abandona a perseguição, guarda o documento falsificado e deixa os depósitos sob Passos sem Pegadas.
+    Obtém Furtividade 21 contra CD 16 e Percepção 16 contra CD 15, chegando ao posto da Night Watch sem cauda identificável.
+    Às 21:38, Luath o recebe numa sala privada, tranca a porta e pede que comece o relato do princípio. Ren está
+    ileso, com 3 Ki, mantém o documento sob sua própria custódia e ainda não realizou o r…
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

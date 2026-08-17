@@ -450,3 +450,467 @@ O wakizashi encontra seu lugar sem bater contra a bainha. Os shuriken ficam dist
 Quando Ren deixa o circo, o sol já desceu e as sombras das carroças se alongam pela rua. A cidade ainda não é noite, mas começa a oferecer os primeiros intervalos escuros entre uma porta e outra.
 
 Nenhum espectador anuncia Kage. Nenhuma música acompanha sua saída. Há apenas um homem de rosto oculto deixando para trás a última lona do circo e tomando o caminho da escada junto à ferraria.
+
+<!-- turno-transacional:s006-c9d1bbadb14c83ae -->
+**Jogador**
+
+Ren desloca-se para a região da escada, com o manto por cima do corpo, olhar baixo, ainda sem usar poderes, apenas mantendo discrição, andando pelas sombras.
+
+Quando chegar no ponto da escada, Ren observará até não haver nenhum traunseunte pela região. Depois se posicionará e ficará vigiando a aproximação de Brass. Quando ele chegar, Ren usará Passos sem Pegadas e irá segui-lo pelo caminho outrora ensaiado, ouvindo tudo que ele falar.
+**Narrador**
+
+O caminho até a ferraria não exige de Ren nenhum prodígio. Enquanto ainda há olhos na rua, o manto faz dele apenas mais uma silhueta curvada contra a umidade; quando as janelas diminuem e as bancas fechadas projetam sombras mais compridas, ele abandona o centro das pedras e segue pelas margens. Ninguém se detém. Ninguém muda o passo por causa dele.
+
+A escada está vazia quando Ren a alcança. Ele espera mesmo assim. Primeiro passa um carregador com um gancho ao ombro. Depois, duas mulheres dividindo um cesto entre si. Por fim, um rapaz fecha os postigos da ferraria, despeja água escura na sarjeta e some pela porta lateral. Quando o ferrolho bate, resta apenas o carvão abafado dentro da oficina, um brilho rubro escapando por uma fresta e o som distante da cidade recolhendo o dia.
+
+Ren ocupa o ponto que ensaiou. Dali, as divisões da rua voltam a existir exatamente como ele as memorizou: o desnível depois da banca torta, o toldo baixo que quebra a linha de visão, o intervalo de três respirações entre uma carroça e a parede caiada. Ele não precisa procurar abrigo; apenas reconhecer cada um.
+
+O poente desaparece. O primeiro sino se espalha sobre os telhados. Mais tarde vem o segundo, grave, e seu eco ainda está morrendo quando três homens entram no corredor.
+
+Brass vem no meio. Usa um casaco cinza-escuro fechado até o pescoço e mantém a mão esquerda perto do peito, onde o tecido forma o pequeno volume achatado de algo guardado por dentro. Um dos acompanhantes é largo, de capa curta e botas de cais. O outro, mais magro, caminha meio passo atrás e olha vitrines escuras sem parecer interessado nelas. Não há menino, barril ou mensageiro visível. Exatamente dois homens.
+
+Ren deixa o ki correr. A sombra ao redor dele não engrossa nem se torna sobrenaturalmente escura; é o mundo que parece perder interesse por sua passagem. O manto deixa de roçar a alvenaria. A sola encontra água sem produzir o pequeno estalo que deveria acompanhá-la. Quando Brass e os dois homens passam abaixo da escada, Ren já não está onde um observador esperaria encontrá-lo.
+
+Ele os acompanha pelo corredor ensaiado com precisão absoluta. Uma banca se interpõe quando o homem magro olha para trás. Uma carroça vazia cruza a rua quando o homem largo muda de lado. Ren não corre atrás deles: chega às coberturas antes que elas se tornem necessárias.
+
+— Rook pode ter levado a convocação a Tyr — murmura o homem largo.
+
+Brass não vira o rosto.
+
+— Levou. É por isso que vem.
+
+— E se trouxer guarda?
+
+— Então não assina nada e dorme numa cela. Se vier sozinho, olha o treze e se lembra de qual mão anulou a retenção.
+
+O homem magro deixa escapar uma respiração curta, quase uma risada.
+
+— E o papel?
+
+A mão de Brass toca uma vez o volume sob o casaco.
+
+— Rook reconhece a correção e leva para cima. Harrow continua sendo o nome que Tyr deve ouvir. O restante não precisa de nome na rua.
+
+Nenhum deles torna a falar durante o trecho seguinte. Ren ouve tudo o que existe para ouvir: couro molhado, moedas ou chaves batendo no bolso do homem largo, a respiração nasal de Brass, nenhuma quarta passada escondida junto ao trio. Mais adiante, as casas comprimem a rua e o cheiro muda — menos carvão, mais água parada, madeira encharcada e resíduos antigos trazidos do canal. A entrada da Ponte Baixa se abre adiante como uma boca entre muros.
+
+É ali que o ensaio deixa de proteger todo o caminho.
+
+Brass para antes da descida inferior. O homem magro segue com ele; o homem largo permanece no patamar, de costas para a parede, onde consegue observar tanto a rua quanto os primeiros degraus.
+
+— Conte até trinta — ordena Brass, baixo. — Se aparecer alguém atrás de nós, não assobie. Segure aqui em cima.
+
+Brass e o homem magro começam a descer. Entre Ren e eles fica o vigia, ocupando o ponto estreito onde as coberturas do corredor terminam. O resultado da perseguição ainda favorece Ren: ele permanece completamente oculto, Passos sem Pegadas continua ativo e o homem não demonstrou tê-lo percebido. Mas seguir Brass agora exige ultrapassar essa sentinela ou encontrar outra passagem para a parte baixa.
+
+**Furtividade:** 16 e 9 no d20, com vantagem; 16 + 17 = **33** contra CD 16 — sucesso.
+
+**Percepção:** 17 + 6 = **23** contra CD 15 — sucesso.
+
+Brass desaparece degrau a degrau na escuridão inferior. O vigia inicia a contagem em silêncio. O que Ren faz?
+
+<!-- turno-transacional:s006-38c6b4a28522849f -->
+**Jogador**
+
+Ren usa Passo sombrio pra ir da sombra atual para a reentrância, e continuar sua perseguição, buscando ainda estar perto o suficiente para a audição, mas mais cauteloso no novo caminho.
+**Narrador**
+
+O vigia ainda conta quando Ren fixa os olhos na reentrância além dele.
+
+A sombra junto ao muro acolhe Ren por um instante — e a escada entre os dois pontos deixa de importar. Não há salto, corrida ou tecido passando pelo campo de visão do homem. Uma escuridão entrega Ren à outra. Quando a sentinela chega ao onze, ele já está trinta e cinco pés abaixo, comprimido contra a pedra fria da reentrância.
+
+O homem no patamar não interrompe a contagem.
+
+Ren retoma a cauda sem pressa. A parte baixa não oferece o corredor generoso das bancas: aqui, as passagens se estreitam entre pilares, paredes de contenção e depósitos antigos. Água escorre por juntas escuras da alvenaria. O som viaja de forma traiçoeira — algumas passadas parecem próximas demais, outras desaparecem sob o ruído do canal —, mas Ren escolhe cada apoio antes de transferir o peso e mantém Brass ao alcance dos ouvidos.
+
+A disciplina sombria apaga o pouco que seus movimentos ainda poderiam denunciar. Quando o acompanhante de Brass examina uma passagem lateral, Ren já está imóvel atrás de um pilar. Quando Brass olha por cima do ombro, encontra apenas uma faixa de muro úmido e a boca vazia da escada.
+
+Os dois seguem até o arco oeste da antiga Casa de Pesos. Ren conhece aquele lugar: a porta de serviço sob o arco, usada nas noites dos registros corrigidos; além dela, o circuito de salas onde papéis eram secos, envelhecidos e preparados para voltar à circulação.
+
+Uma figura espera no recuo da porta. Mesmo sob a luz miserável de uma lanterna quase fechada, Ren reconhece Velis Rook. Ele segura uma pasta achatada contra o ventre e não consegue manter as mãos quietas sobre o couro.
+
+— Você disse dois homens — sussurra Rook.
+
+Brass aproxima-se sem oferecer cumprimento.
+
+— Eu cruzei com dois. Um deles está contando degraus.
+
+O acompanhante magro ocupa a lateral do arco, de onde pode vigiar a passagem inferior. Brass retira do casaco o papel que vinha carregando e o abre sobre uma saliência seca da pedra. Rook se inclina.
+
+— Esta não é a folha que saiu da alfândega.
+
+— É a folha que vai voltar.
+
+— A marca de retenção ainda está inteira.
+
+— Você a rompe.
+
+Rook demora a responder. Seu polegar percorre a margem do documento sem tocá-la por completo.
+
+— E o treze?
+
+— A entrada deixa de ser “retenção anulada”. A carga nunca foi retida. Mesma mão, mesma correção.
+
+— Isso deixa Harrow sozinho em toda a cadeia.
+
+Brass finalmente olha diretamente para ele.
+
+— É por isso que Harrow é útil.
+
+Rook lança uma olhada para o interior da Casa de Pesos.
+
+— Tyr tem uma cópia selada.
+
+— A casa do leste cuida do que está selado. Você cuida da sua mão. Depois leva a correção para cima, como foi mandado.
+
+Rook abre a pasta. Dentro há um pequeno tinteiro travado, uma pena curta e instrumentos de escrita. Brass mantém uma das mãos sobre o papel. O homem magro continua vigiando a passagem; o outro permanece atrás de Ren, no alto da escada. Nenhum deles percebeu a presença entre os pilares.
+
+**Furtividade:** 1 e 12 no d20, com vantagem; 12 + 17 = **29** contra CD 17 — sucesso.
+
+**Percepção:** 18 + 6 = **24** contra CD 16 — sucesso.
+
+Rook molha a ponta da pena. A alteração do documento está prestes a começar. Ren permanece oculto, perto o bastante para ouvir até a respiração irregular do escrivão. O que ele faz?
+
+<!-- turno-transacional:s006-2db022b9c86d13a8 -->
+**Jogador**
+
+Ren continua observando e ouvindo. Não irá impedir a alteração do documento. Um dos seus maiores interesses é em pistas sobre "o homem de Masao". Ren sabe que a Juppongatana existe, sabe que Masao foi preso no passado em Gifu e depois fugiu, mas ele não sabe se a Juppongatana se desfez, se morreu, se continua leal a Masao. "Homem de Masao", que Ren ouvira de um dos capangas de Brass, pode representar desde alguém que trabalha pra ele hoje, ou até um dos lendários Dez Espadas. Se um desses homens e mulheres (ou todos) estiverem em Ravens Bluff... o problema se torna ainda maior do que apenas Masao.
+
+A segunda pista que Ren procura é sobre onde Masao realmente está. Quais são os quartéis generais dele na cidade, como ele os tem usado. Isso seria ouro.
+
+A última pista que Ren procura é algo que confirme que a verdadeira localização de Nera e Tavin é desconhecida. Seria paz de espírito pra ele.
+**Narrador**
+
+A pena toca o papel.
+
+Rook trabalha devagar no início, como se a hesitação ainda pudesse absolvê-lo. A ponta abre a marca de retenção com um risco fino; depois ele ajusta a postura, prende a respiração e começa a reconstruir as letras. A prática vence o medo. O traço fica mais firme. Brass observa sem ajudá-lo, enquanto o homem magro continua voltado para a passagem inferior.
+
+Ren não se move. Deixa que o documento seja alterado.
+
+— Se Tyr comparar isto com o que está selado, não dura uma manhã — murmura Rook.
+
+— A casa do leste cuida do que está selado — responde Brass. — Termine.
+
+Rook raspa uma fibra levantada com a lateral de uma pequena lâmina e sopra o resíduo para longe.
+
+— E os Vell? A moça conhece o livro. O rapaz ouviu nomes.
+
+A resposta de Brass vem sem a pausa de quem precisa construir uma tranquilização.
+
+— Não temos o endereço. Seguimos Tyr, Maerra, a velha casa de Lathander e quartos que já estavam vazios. Nada. Ninguém gasta outro cobre procurando os dois até deixarem rastro novo.
+
+O ombro de Rook cede um pouco, mas sua mão continua trabalhando.
+
+— O homem de Masao poderia encontrá-los.
+
+Brass se inclina imediatamente sobre ele. Sua voz desce quase a um sopro.
+
+— Não o chame assim. O Corvo faz trabalhos para o velho; não pertence a homem nenhum. E, se o Corvo tivesse sido mandado atrás das testemunhas, você não estaria perguntando por elas.
+
+A palavra permanece sob o arco: **Corvo**.
+
+Ren conhece um nome ligado às Dez Espadas — Kurobane Jinzaburō, o Corvo do Estreito, ladrão de mensagens, senhor de telhados, cordas e fugas preparadas. A coincidência é precisa demais para ser ignorada, mas ainda não é prova. “Corvo” pode ser título emprestado, código local ou uma referência deliberada ao homem verdadeiro. O que Brass confirma é mais limitado e, por isso mesmo, sólido: existe um agente chamado Corvo trabalhando atualmente para Masao, e Brass o considera independente, não um servo comum.
+
+Rook ergue os olhos da folha.
+
+— Então você consegue chegar ao velho?
+
+Brass solta uma expiração curta pelo nariz.
+
+— Eu consigo deixar palavra para cima. O Corvo escolhe a rota. A Red Sail é uma porta, não a casa dele. Os quartos mudam, os mensageiros mudam e ninguém deste lado recebe um mapa.
+
+— Mas Masao está na cidade?
+
+— Se eu soubesse onde ele dorme, não contaria a você. Se soubesse que saiu, também não. Termine a folha.
+
+Não é a localização que Ren queria. É, contudo, uma definição útil da estrutura: Brass não aparenta ter acesso direto a Masao; a Red Sail funciona como ponto de passagem, não como quartel pessoal; e o Corvo controla ao menos uma parte do caminho entre as células locais e o velho.
+
+Rook termina a última linha. Aplica pó secante, espera, sopra o excesso e devolve o documento. Brass compara a mão nova com outra anotação na margem. Satisfeito, dobra a folha duas vezes e a coloca novamente diante do escrivão.
+
+— Suba sozinho. No anel de ferro seco, prenda o pacote e continue andando. Não olhe para os telhados.
+
+Rook guarda o papel dentro da pasta. Brass e o homem magro começam a seguir pela passagem inferior, afastando-se na direção do canal. Rook permanece sob o arco, contando o tempo antes de tomar a escada de volta — a rota do documento e do possível Corvo. O segundo homem de Brass continua no patamar superior.
+
+A operação se divide diante de Ren.
+
+**Percepção:** 13 + 6 = **19** — nenhuma presença adicional foi identificada nos acessos ou telhados.
+
+**Intuição:** 12 + 6 = **18** contra CD 15 — Brass parece sincero dentro dos limites do que sabe. Ele acredita que sua rede não possui a localização atual de Nera e Tavin e realmente não demonstra conhecer um endereço direto de Masao. Isso não prova o que Masao ou o Corvo sabem independentemente.
+
+Brass se afasta por baixo. Rook leva o papel para cima. Ren permanece oculto entre os pilares, com Passos sem Pegadas ativo. A quem ele segue?
+
+<!-- turno-transacional:s006-734f6c9b0e064745 -->
+**Jogador**
+
+Ren continuará seguindo Rook. Ele quer ver quem vai receber esse documento. Se ele precisar cruzar sombra, cruzará.
+**Narrador**
+
+Ren deixa Brass desaparecer pela passagem inferior. O papel segue com Rook — e Ren segue o papel.
+
+O escrivão fecha a pasta contra o peito e toma a escada. Quando se aproxima do patamar, o homem largo termina sua espera e se afasta apenas o suficiente para deixá-lo passar. Não trocam palavra nem olhar. O vigia permanece ocupando a passagem depois que Rook sobe.
+
+Ren não tenta atravessar o espaço entre os dois. Escolhe uma sombra projetada pelo contraforte, além do patamar, e deixa que a escuridão dobre a distância. O vigia continua olhando para baixo enquanto Ren reaparece acima dele, já abrigado pela face oposta do muro.
+
+Rook avança pelas ruas superiores com a pressa contida de alguém que sabe que correr chamaria atenção. O caminho é curto, mas quebrado: uma viela úmida, dois lances de degraus, uma passarela de madeira entre depósitos e uma subida junto ao muro externo da antiga Casa de Pesos. Ren acompanha de cobertura em cobertura. Passos sem Pegadas engole o contato das solas; Passo Sombrio elimina as duas travessias em que não existe abrigo suficiente.
+
+Rook não olha para trás. Também não olha para cima.
+
+O “anel de ferro seco” está fixado sob uma viga saliente, acima da altura dos olhos, num trecho onde a chuva não alcança a parede. Não é um esconderijo: qualquer pessoa que examinasse o lugar com atenção veria o aro. A segurança está no movimento contínuo.
+
+Rook passa por ele sem parar. Sua mão sobe uma única vez, prende à ferragem um laço curto ligado ao pacote e volta para a pasta vazia. Três passos depois, dobra uma esquina. Continua andando.
+
+Ren permanece.
+
+A rua não entrega ninguém. Nenhuma porta abre. Nenhuma figura se aproxima do anel. Por um instante, existe apenas o pacote pendurado sob a viga.
+
+Então uma linha negra, quase fina demais para conservar a própria forma, desce da escuridão acima. Um pequeno gancho envolve o laço. O pacote começa a subir sem tocar a parede.
+
+Ren já sabe onde olhar.
+
+Ele acompanha a linha até o beiral, distingue uma mão estreita controlando a tensão e encontra a silhueta deitada sobre a inclinação do telhado. O homem é magro, de musculatura seca, vestido como marinheiro de Kozakura. Sobre os ombros, um haori feito de retalhos negros se abre com o vento como uma asa incompleta. Outra corda já está presa a uma chaminé distante, preparando a fuga antes mesmo que a coleta termine.
+
+O homem recolhe o pacote, testa o peso com dois dedos e abre o lacre sem rasgá-lo. Há humor tranquilo no canto de sua boca, não a tensão de um mensageiro subalterno.
+
+O título ouvido sob o arco. A linha negra. O telhado. A roupa kozakurana. A fuga preparada.
+
+Desta vez, as peças não deixam espaço razoável para uma coincidência local.
+
+**Kurobane Jinzaburō, o Corvo do Estreito. Uma das Dez Espadas. Em Ravens Bluff. Trabalhando para Masao.**
+
+Ele não demonstrou perceber Ren. Está cerca de quarenta pés adiante e acima, agachado junto ao beiral, com o documento falsificado aberto nas mãos. Rook continua se afastando pela rua. O homem de Brass permanece abaixo e atrás. Kurobane ainda não iniciou a fuga, mas toda a rota dela já parece preparada.
+
+**Furtividade:** 2 e 19 no d20, com vantagem; 19 + 17 = **36** contra CD 18 — sucesso.
+
+**Percepção:** 9 e 16 no d20, com vantagem; 16 + 6 = **22** — Ren identifica o coletor apesar da tentativa furtiva.
+
+O Corvo inclina o papel para captar a pouca luz que escapa de uma janela distante. Ren tem diante de si a confirmação que procurava — e apenas alguns instantes antes que Kurobane volte a se mover. O que ele faz?
+
+<!-- turno-transacional:s006-9ffad5fa9720bec3 -->
+**Jogador**
+
+Ren combinou com Luath não fazer nada na ponte seca. E não o fez.
+
+Mas com Kurobane Jinzaburo diante dele, fora da ponte, recebendo um documento falsificado? Aí é algo bem diferente.
+
+Ren usa Passagem das Sombras para a sombra junto da cumeeira. E de lá atacará Kurobane diretamente.
+**Narrador**
+
+Ren fixa a sombra junto à cumeeira.
+
+O telhado desaparece entre um passo e o seguinte. A escuridão junto ao muro entrega Ren à faixa negra atrás da chaminé, já sobre as telhas inclinadas e a poucos passos do Corvo.
+
+Kurobane ainda está lendo o documento quando percebe que já não está sozinho.
+
+Os dois reagem no mesmo instante. O Corvo tem reflexos extraordinários: seus dedos abandonam o papel, o joelho gira e o haori negro começa a se abrir. Mas a surpresa lhe rouba o primeiro momento. Ele não consegue agir antes de Ren encurtar a distância.
+
+O primeiro golpe vem favorecido pela própria passagem entre sombras. Ren atinge as costelas com força suficiente para arrancar o ar do peito de Kurobane — mas o Corvo torce o corpo no instante do impacto, transforma parte da força em rotação e deixa o golpe atravessá-lo de raspão. O que causaria oito pontos de dano se reduz a quatro pela Esquiva Sobrenatural.
+
+Ren não lhe oferece espaço. O segundo golpe alcança o centro do peito antes que o haori termine de abrir. Desta vez Kurobane recebe todo o impacto e desliza uma bota pelas telhas molhadas, perdendo meio passo em direção ao beiral.
+
+O documento não cai. Num movimento quase insolente, o Corvo o dobra contra o próprio corpo e o prende sob o haori. Quando levanta o rosto, há dor na respiração — e um sorriso curto.
+
+— Ah — diz ele em kozakurano. — Então era você.
+
+A surpresa terminou. Kurobane não tenta responder com uma luta justa. O haori se abre como uma asa diante de Ren; não para atacar, mas para quebrar a leitura do corpo durante um único passo lateral. O Corvo abandona o alcance sem oferecer abertura, agarra a corda que já havia preparado e se lança para fora do telhado.
+
+A linha estica. Kurobane descreve um arco sobre a rua, toca a parede de um depósito com os dois pés e transforma a queda em corrida. Quando Ren recupera uma linha limpa de visão, o Corvo já atravessou para outro telhado, sessenta pés adiante, com o documento ainda preso sob a roupa.
+
+Ele não venceu Ren na troca. Não tentou. Seu objetivo é sair com o papel.
+
+**Iniciativa:** Ren 18; Kurobane 18. No desempate, Ren 9 e Kurobane 11. O Corvo age primeiro, mas perde o turno inicial pela surpresa; sua reação retorna antes dos ataques de Ren.
+
+**Primeiro golpe:** 10 e 16 no d20, com vantagem; 16 + 7 = **23** contra CA 16. Acerto por 8 de dano, reduzido a **4** pela Esquiva Sobrenatural.
+
+**Segundo golpe:** 16 + 7 = **23** contra CA 16. Acerto por **5** de dano.
+
+Kurobane sofreu **9 de dano** e está com **43/52 PV**. Ren permanece com 45/45 PV e 4/6 Ki. Passos sem Pegadas continua ativo.
+
+É o turno de Ren na segunda rodada. Kurobane está sessenta pés adiante, sobre outro telhado, ainda visível e com uma rota de fuga preparada sob os pés. O que Ren faz?
+
+<!-- turno-transacional:s006-9e6123f17312d200 -->
+**Jogador**
+
+Ren irá atacar novamente Kurobane. Pulará para o outro telhado dando uma voadora e tentando acertar outro golpe. E enquanto isso, fala em kozakurano: "Kurobane Jinzaburo! Eu nunca pensei que o veria aqui, tão distante de Kozakura! Ainda é um passarinho na gaiola do demônio do seu chefe, não é?"
+**Narrador**
+
+Ren corre pela inclinação do telhado. Cinquenta e cinco pés de telhas molhadas, uma chaminé baixa e o vazio breve entre dois edifícios passam sob seus passos. No último apoio ele se lança, corpo quase paralelo às cumeeiras, o calcanhar apontado para o peito do Corvo.
+
+— Kurobane Jinzaburō! Nunca pensei que o veria aqui, tão distante de Kozakura! Ainda é um passarinho na gaiola do demônio do seu chefe, não é?
+
+A provocação atravessa a rua em kozakurano.
+
+Kurobane reconhece o próprio nome antes de a voadora alcançá-lo. Ele solta a corda, abaixa o ombro e deixa o calcanhar de Ren cortar apenas o haori negro. A aterrissagem de Ren faz as telhas gemerem, mas não lhe rouba o equilíbrio. O segundo golpe vem imediatamente, curto e ascendente, atingindo Kurobane abaixo das costelas.
+
+O Corvo recolhe o corpo ao redor do impacto e rola com ele. Nove pontos de força se tornam quatro pela reação perfeita; ainda assim, sua respiração se quebra por um instante.
+
+Quando Kurobane se endireita, o sorriso já voltou. Ele responde em kozakurano, sem qualquer esforço para fingir ignorância:
+
+— A gaiola? Masao não põe correntes em mim, Ren Kagehira. Ele paga por portas que ninguém mais alcança. Eu escolho o caminho.
+
+O uso do nome é deliberado. Kurobane abre distância pela cumeeira, mas continua falando enquanto recua.
+
+— Seu nome chegou antes de você. O irmão de Aiko. O sobrinho de Tadatsune. Masao disse que o último Kagehira sobreviveria tempo bastante para se tornar interessante.
+
+Isso confirma o alcance do briefing, não necessariamente a verdade da última frase. Kurobane sabe quem Ren é, conhece seus vínculos com Aiko e Tadatsune e recebeu informações diretamente da cadeia de Masao. O tom continua provocador demais para que cada afirmação seja aceita sem cautela.
+
+O Corvo abre o haori com a mão livre. Uma lâmina pequena sai de dentro dos retalhos negros e voa na direção dos olhos de Ren — não como golpe desesperado, mas para obrigá-lo a proteger o rosto enquanto a distância aumenta. Ren inclina a cabeça. O metal passa longe, bate numa chaminé e desaparece na rua.
+
+Kurobane termina o movimento trinta pés adiante, sobre a mesma linha de telhados. O documento permanece seguro sob o haori. Ele ainda não tenta desaparecer: mantém Ren à vista, corpo inclinado para a próxima fuga e uma das mãos próxima de outra corda preparada.
+
+**Voadora:** 6 + 7 = **13** contra CA 16 — erro.
+
+**Segundo golpe:** 9 + 7 = **16** contra CA 16 — acerto por 9, reduzido a **4** pela Esquiva Sobrenatural. Kurobane está com **39/52 PV**.
+
+**Shigure de Kurobane:** 2 + 7 = **9** contra CA 17 — erro.
+
+Ren continua com **45/45 PV**, **4/6 Ki** e Passos sem Pegadas ativo. É novamente o turno de Ren, na terceira rodada. Kurobane está trinta pés adiante com o documento. O que Ren faz?
+
+<!-- turno-transacional:s006-5b1dbaf869ce4a81 -->
+**Jogador**
+
+Ren liga Passo do Vento e aproxima-se rapidamente de Kurobane. Em kozakurano:
+
+"O que vocês querem em Ravens Bluff? O que querem nessa cidade?"
+
+Ren irá atacá-lo novamente.
+**Narrador**
+
+O ki corre pelas pernas de Ren e o telhado se comprime sob sua velocidade. Kurobane tinha trinta pés de vantagem; por um instante, parece não ter nenhuma.
+
+Ren atravessa a cumeeira antes que o Corvo alcance a próxima corda.
+
+— O que vocês querem em Ravens Bluff? O que querem nessa cidade?
+
+O primeiro golpe atinge Kurobane no flanco. Outra vez o Corvo consegue girar com o impacto, usando o próprio avanço para roubar parte da força: nove pontos se reduzem a quatro. Mas Ren já está dentro de sua guarda. O segundo golpe entra por baixo do haori e alcança o abdômen sem redução. Kurobane recua dois passos, uma das botas quebrando a borda de uma telha.
+
+O sorriso permanece, agora mais estreito. Há sangue no canto de sua boca.
+
+— Eu? — responde ele em kozakurano, tocando o documento sob o haori. — Quero este papel.
+
+Ren mantém a pressão. Kurobane procura a rota seguinte com um olhar rápido, mas responde à pergunta maior enquanto se desloca.
+
+— Masao quer uma cidade capaz de esquecer o que entrou nela. Registros decidem quem existe. Túneis decidem para onde essas pessoas e cargas vão. Ravens Bluff é uma fechadura construída sobre portas mais antigas.
+
+A mão do Corvo encontra uma pequena argola presa entre as telhas.
+
+— E o seu demônio coleciona chaves.
+
+Kurobane puxa. Uma vela de lona negra, dobrada acima da rua entre dois depósitos, despenca subitamente entre os combatentes. Não é improviso; a amarra já estava cortada quase por completo, esperando aquele movimento. O tecido encerado bloqueia a linha de visão e espalha água acumulada sobre as telhas.
+
+O Corvo abandona o alcance sem oferecer abertura. Ren ouve a corda tensionar do outro lado, depois três passadas rápidas descendo a inclinação e o impacto leve de alguém alcançando uma cobertura inferior. Quando contorna o primeiro trecho de lona com os olhos, Kurobane já percorreu cerca de sessenta pés de sua fuga e desapareceu atrás do telhado seguinte.
+
+Ren conhece a direção, mas já não possui linha de visão direta. O documento continua com o Corvo.
+
+**Primeiro golpe:** 10 + 7 = **17** contra CA 16 — acerto por 9, reduzido a **4** pela Esquiva Sobrenatural.
+
+**Segundo golpe:** 13 + 7 = **20** contra CA 16 — acerto por **7**.
+
+Kurobane sofreu **11 de dano** e está com **28/52 PV**. Ren permanece com **45/45 PV** e agora tem **3/6 Ki**. Passos sem Pegadas continua ativo.
+
+É o turno de Ren na quarta rodada. A lona negra divide os telhados; além dela, a rota desce para coberturas inferiores em direção aos depósitos próximos do canal. Kurobane não está visível, mas ainda não teve tempo suficiente para apagar todos os sinais de sua passagem. O que Ren faz?
+
+<!-- turno-transacional:s006-882ae9f602813a13 -->
+**Jogador**
+
+Ren irá até o outro telhado, tentando encontrá-lo. Se encontrar, tentará atacar.
+**Narrador**
+
+Ren atravessa a lona negra com o ombro, deixa o tecido escorrer pelas costas e alcança a borda do telhado. Por um instante há três rotas possíveis para baixo.
+
+Então ele vê o que Kurobane não teve tempo de apagar: uma calha torcida recentemente, a vibração residual numa corda presa ao beiral e uma telha quebrada que ainda desliza pela inclinação. Ren segue os sinais sem reduzir o passo.
+
+Salta para a cobertura inferior no instante em que Kurobane alcança outra linha preparada.
+
+O Corvo olha por cima do ombro. Dessa vez, a surpresa não é encontrar Ren — é encontrá-lo tão perto.
+
+O primeiro golpe acerta junto ao ombro. Kurobane tenta absorver o impacto na mesma rotação usada antes, reduzindo nove pontos a quatro, mas o movimento o coloca exatamente onde Ren precisa para o segundo ataque. A mão de Ren atinge o centro das costas. O Corvo tropeça, cai sobre uma das mãos e só evita escorregar do telhado porque prende o pé numa junção da calha.
+
+Por um instante, o documento quase escapa de dentro do haori. Kurobane o segura contra o corpo. Quando se levanta, a respiração já não esconde a dor.
+
+— Você bate bem — diz ele em kozakurano. — Mas ainda está olhando para o pássaro.
+
+O Corvo abandona o alcance sem oferecer abertura. Em vez de tentar outra corrida longa, arranca do beiral uma linha negra que Ren não havia distinguido entre as sombras. Com uma mão prende o pacote a um pequeno gancho; com a outra remove um pino de osso.
+
+Um contrapeso cai dentro do depósito.
+
+A corda dispara. O documento é arrancado das mãos de Kurobane e corre pelo alto, atravessando a rua na direção de uma abertura escura no andar superior de outro armazém. Ao mesmo tempo, o Corvo segue pela inclinação oposta, trinta pés em direção ao canal.
+
+Ren vê os dois.
+
+Kurobane está ferido, trinta pés adiante e descendo para outra rota de fuga. O documento está cerca de cinquenta pés na direção contrária, deslizando rapidamente pela linha; ainda pode ser interceptado antes de desaparecer pela abertura, mas apenas se Ren abandonar o Corvo agora.
+
+**Percepção:** 14 + 6 = **20** contra CD 15 — Ren recupera a rota de Kurobane.
+
+**Primeiro golpe:** 19 + 7 = **26** contra CA 16 — acerto por 9, reduzido a **4** pela Esquiva Sobrenatural.
+
+**Segundo golpe:** 15 + 7 = **22** contra CA 16 — acerto por **5**.
+
+Kurobane está com **19/52 PV**. Ren continua com **45/45 PV**, **3/6 Ki** e Passos sem Pegadas ativo.
+
+É o turno de Ren na quinta rodada. De um lado, Kurobane. Do outro, o documento em movimento. O que ele faz?
+
+<!-- turno-transacional:s006-e45a7f7184600596 -->
+**Jogador**
+
+Ren priorizará o documento: é a prova do que aconteceu hoje e ajudaria Luath e Halessa.
+**Narrador**
+
+Ren escolhe o papel.
+
+Kurobane continua descendo em direção ao canal, mas Ren já voltou os olhos para a abertura do armazém. A sombra ao redor dela é profunda, desocupada e está dentro do alcance.
+
+Uma escuridão entrega Ren à outra.
+
+Ele reaparece junto à abertura um instante antes do pacote. A linha de contrapeso vem rápida, cantando baixo contra a ferragem. Ren firma um pé na moldura, projeta o corpo para fora e fecha a mão sobre a corda. O primeiro puxão tenta arrancá-lo do apoio; ele acompanha o movimento, gira o punho e usa a própria tensão para trazer o pacote contra o peito.
+
+O gancho se solta. O contrapeso despenca sozinho dentro do depósito com um estrondo distante.
+
+O documento fica nas mãos de Ren.
+
+Do outro lado dos telhados, o haori negro de Kurobane aparece uma última vez sobre uma calha inferior. O Corvo olha para trás, vê a escolha e deixa escapar uma risada curta.
+
+— Boa escolha, Kagehira!
+
+Então salta. A corda seguinte o leva para trás dos depósitos voltados ao canal. Quando Ren torna a encontrar o ponto, resta apenas a oscilação de uma linha vazia e o ruído da água abaixo. Kurobane está ferido, mas sua rota preparada cumpriu a função: ele escapa.
+
+Ren abre o pacote apenas o suficiente para confirmar o conteúdo. É a mesma folha que Brass levou sob o casaco e Rook alterou sob o arco oeste. A tinta ainda conserva um brilho úmido nos traços mais fundos. A marca de retenção foi rompida; a entrada do volume 13 agora declara que a carga nunca foi retida. A mão de Rook está ali, assim como a falsidade que Brass ordenou e Kurobane veio recolher.
+
+Não é uma prova perfeita por si só. Luath e Halessa ainda precisarão relacioná-la às cópias seladas, ao testemunho de Ren e aos movimentos observados naquela noite. Mas o papel é físico, recente e comparável. A cadeia inimiga tentou colocá-lo de volta em circulação — e falhou.
+
+Algumas janelas começam a abrir nas ruas próximas. A lona derrubada, o contrapeso dentro do depósito e a corrida sobre as telhas produziram ruído suficiente para despertar curiosidade. Nenhum guarda chegou ainda. Passos sem Pegadas continua ativo, e Ren ainda possui alguns instantes para abandonar a área sem deixar uma rota comum.
+
+**Acrobacia:** 17 + 7 = **24** contra CD 14 — sucesso. O documento é recuperado intacto.
+
+O combate termina. Ren está com **45/45 PV**, **3/6 Ki** e Passos sem Pegadas ativo. Kurobane escapou com **19/52 PV**, sem o documento.
+
+Ren permanece junto à abertura superior do armazém, com a prova nas mãos. O que ele faz?
+
+<!-- turno-transacional:s006-f957df0ce9040e84 -->
+**Jogador**
+
+Ren sairá da perseguição. Irá até Luath sem deixar cauda.
+**Narrador**
+
+Ren guarda o documento sob o manto e abandona os telhados antes que a curiosidade nas janelas se transforme em testemunhas úteis.
+
+Passos sem Pegadas ainda envolve seus movimentos. Ele não toma a rota mais curta até Luath. Desce primeiro por uma parede cega, cruza um pátio de carroças pelo lado oposto ao posto e usa as últimas ruas movimentadas para quebrar qualquer leitura simples de destino. Para duas vezes em sombras profundas. Na primeira, observa reflexos em vidros escuros; na segunda, espera o bastante para ouvir passos que tentem imitar sua pausa.
+
+Ninguém acompanha.
+
+Kurobane não retorna. Nenhum homem da Red Sail emerge dos depósitos. Os observadores de Luath permanecem longe o bastante para não formar uma corrente involuntária até Ren. Quando ele finalmente muda de direção para o posto da Night Watch, sua passagem não oferece rastro comum nem cauda identificável.
+
+A prova permanece seca contra seu corpo.
+
+Por volta das 21h38, Ren alcança a entrada lateral do posto. O guarda de serviço reconhece o protocolo combinado, não pede nome e o conduz para dentro. Luath está acordado numa pequena sala de trabalho, ainda vestido para a operação da noite. Há um mapa aberto diante dele e três marcadores nas posições destinadas aos observadores da Ponte Baixa.
+
+Ele ergue os olhos quando Ren entra. Primeiro verifica o rosto coberto. Depois as mãos, as roupas e a ausência de ferimentos. Por fim, seu olhar encontra o volume discreto do pacote sob o manto.
+
+Luath fecha o mapa, levanta-se e tranca a porta.
+
+— Comece do princípio.
+
+O documento falsificado continua sob a custódia de Ren. Do lado de fora, a Night Watch segue trabalhando sem saber ainda que uma das Dez Espadas cruzou seus telhados naquela noite. Dentro da sala, Ren chegou sozinho, ileso e com a prova que Brass, Rook e Kurobane tentaram colocar em circulação.
+
+**Furtividade:** 4 + 17 = **21** contra CD 16 — sucesso.
+
+**Percepção:** 10 + 6 = **16** contra CD 15 — Ren confirma que não trouxe cauda até Luath.
+
+A sessão termina aqui, às 21h38 de 9 Eleasis de 1372 DR, no posto da Night Watch, imediatamente antes do relato completo de Ren a Luath.

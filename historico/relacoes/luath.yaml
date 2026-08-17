@@ -217,3 +217,28 @@ eventos_pos_migracao:
     op: set
     valor: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo livre;
       deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
+- transacao: s007-d8fcf7042ade170d
+  sessao: 7
+  resumo: Ren prestou a Luath um relato completo da operação, identificou Kurobane Jinzaburō como uma das Dez Espadas
+    de Masao e alertou para a intenção de alterar um documento em pasta selada de Tyr. Luath elevou a ameaça, enviou
+    um mensageiro discreto para abrir audiência reservada com Halessa e perguntou qual será a custódia do documento
+    falsificado.
+  deltas:
+  - alvo: relacao:luath
+    caminho: status
+    op: set
+    valor: Luath recebeu o relato completo de Ren sobre Kurobane, os Red Sail, o clã do leste e a tentativa planejada
+      de alterar um documento na pasta selada de Tyr; enviou mensageiro discreto para solicitar audiência reservada
+      com Halessa Vorn.
+- transacao: s007-5b916178927cb36d
+  sessao: 7
+  resumo: Ren mostrou a Luath o documento falsificado e declarou que o entregará diretamente a Halessa, que possui
+    o original. Luath aceitou orientar seus homens a não abordar membros identificados das Dez Espadas, recusou
+    suspeita indiscriminada contra estrangeiros e preparará descrições por método e conduta. Ren chegou sem incidente
+    à Casa de Tyr; Halessa restringiu o acesso à pasta original e pediu o relato exato antes de receber o documento.
+  deltas:
+  - alvo: relacao:luath
+    caminho: status
+    op: set
+    valor: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada;
+      recusou suspeita indiscriminada contra estrangeiros e usará descrições, métodos e conduta.

@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 6
-  status: em_sessao
-  modo_de_cena: deslocamento_para_posicao_de_vigilancia
+  numero: 7
+  status: entre_sessoes
+  modo_de_cena: sessao_encerrada_aguardando_relato_a_luath
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -18,15 +18,15 @@ recursos:
     atuais: 45
     maximos: 45
   ki:
-    atuais: 6
+    atuais: 3
     maximos: 6
   ca: 17
   deslocamento: 55 pés
   dinheiro_po: 34
 tempo:
   data: 9 Eleasis, 1372 DR
-  hora_aproximada: 18:15 de 9 Eleasis
-  periodo: meio da tarde de 9 Eleasis, durante reconhecimento dos arredores da Red Sail
+  hora_aproximada: 05:19 de 10 Eleasis
+  periodo: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
-  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -45,7 +45,7 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/006/handoff.yaml
-  transcricao_fria: sessoes/006/transcricao.md
+  handoff_atual: sessoes/007/handoff.yaml
+  transcricao_fria: sessoes/007/transcricao.md
   narrador: narrador/
   regras: regras/

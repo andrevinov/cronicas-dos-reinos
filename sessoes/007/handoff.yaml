@@ -1,0 +1,99 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 7
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: sessao_encerrada_aguardando_relato_a_luath
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 3
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 34
+  tempo:
+    data: 9 Eleasis, 1372 DR
+    hora_aproximada: 05:19 de 10 Eleasis
+    periodo: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Casa do Salgueiro Seco, Ravens Bluff
+    ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
+continuidade:
+  resumo_imediato: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu em
+    sala privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren; ele
+    ainda não decidiu formalmente entregá-lo.
+  prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa
+    e um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo
+    sino após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes
+    do amanhecer de 10 Eleasis.
+eventos_recentes:
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-ed361e25388a6c3d
+  resumo: 'Ren declarou a cadeia conhecida do documento: Velis o falsificou diante de Brass e um homem não identificado
+    da Red Sail, deixou-o num aro junto ao muro externo da antiga Casa de Pesos, Kurobane o recolheu com kuroito
+    e Ren o tomou dele. Halessa confirmou que o nome de Ren ficará fora do relatório circulante e retido em anexo
+    selado, reuniu dois custódios e pediu o último elo antes do recebimento formal.'
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-13d5d581f09a3589
+  resumo: Ren declarou que ninguém tocou o documento depois que o tomou de Kurobane e que Luath apenas o viu. Halessa
+    registrou a continuidade da custódia e deixou pronta a bandeja para a transferência formal, aguardando Ren depositar
+    a peça e declarar a entrega à Casa de Tyr.
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-c19422149078ef8d
+  resumo: Ren transferiu formalmente o documento falsificado à Casa de Tyr. A auditoria encontrou a cadeia anterior
+    sem ruptura visível e confirmou que o original preservado por Tyr mantém a retenção anulada do volume 13, enquanto
+    a peça recuperada diz que a carga nunca foi retida. Ambos foram selados separadamente; Ren permanece testemunha
+    reservada e Shizune foi classificada como risco operacional não confirmado.
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-8b4bf4d8aaab2e4b
+  resumo: Ren tentou confortar Halessa, despediu-se e deixou a investigação e os documentos com Tyr. Halessa afirmou
+    que futuras mensagens passarão primeiro por Luath para preservar a discrição. Ren atravessou a cidade sem incidente
+    e chegou ao circo pouco depois da meia-noite de 10 Eleasis; ainda precisa cumprir o compromisso na Casa do Salgueiro
+    Seco antes do amanhecer.
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-07eaabf6fe6e0cc4
+  resumo: Ren contou a Silva tudo sobre Brass, Velis, a busca suspensa pelos Vell, Kurobane e a possível presença
+    de Shizune. Silva percebeu que Ren se sente consolado por seus inimigos finalmente terem nomes, provas e reconhecimento
+    institucional, mas alertou que isso não significa apoio sem limites. Ela reforçou o protocolo do circo contra
+    ordens escritas e mensageiros desconhecidos, confirmou Nera e Tavin seguros e oferece…
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-0a9d0081f6a2b656
+  resumo: Ren comeu e pediu humildemente a orientação de Silva sobre acordar Nera e Tavin. Silva permitiu uma visita
+    cuidadosa a Nera, orientou que Tavin permaneça dormindo salvo se despertar sozinho e reforçou que a busca suspensa
+    traz conforto limitado, não segurança absoluta. Silva ainda não foi informada por Ren sobre o compromisso na
+    Casa do Salgueiro Seco.
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-04ecbb3c5786e103
+  resumo: Ren agradeceu a Silva, conteve um gesto de toque e entrou silenciosamente para ver Nera sem acordar Tavin.
+    Nera estava desperta, abraçou Ren e ouviu que Brass suspendeu a busca sem localizar os Vell, mas que Kurobane
+    e possivelmente Shizune representam ameaças maiores. Ren explicou seu alívio por Luath e Halessa agora reconhecerem
+    Masao e seus agentes como ameaças reais; Nera lembrou que já acreditava nele e pergunt…
+- batch: s007-sessao-91058e4a22ecbbfc
+  transacao: s007-b5add2887bc7320f
+  resumo: Ren contou a Nera que trabalharia antes do amanhecer como Shinta numa propriedade murada que talvez pudesse
+    se tornar uma casa segura. Nera apoiou a esperança, mas exigiu que proteção não se torne prisão e aceitou apenas
+    a promessa de Ren voltar quando puder e avisar quando não puder. Ren dormiu poucas horas, sem completar descanso
+    longo, vestiu a persona de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clare…
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/007/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

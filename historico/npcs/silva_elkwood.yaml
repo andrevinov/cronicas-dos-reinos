@@ -27,3 +27,21 @@ eventos_pos_migracao:
     caminho: medidores.vinculo
     op: inc
     valor: 1
+- transacao: s007-07eaabf6fe6e0cc4
+  sessao: 7
+  resumo: Ren contou a Silva tudo sobre Brass, Velis, a busca suspensa pelos Vell, Kurobane e a possível presença
+    de Shizune. Silva percebeu que Ren se sente consolado por seus inimigos finalmente terem nomes, provas e reconhecimento
+    institucional, mas alertou que isso não significa apoio sem limites. Ela reforçou o protocolo do circo contra
+    ordens escritas e mensageiros desconhecidos, confirmou Nera e Tavin seguros e ofereceu comida antes do compromisso
+    na Casa do Salgueiro Seco.
+  deltas:
+  - alvo: npc:silva_elkwood
+    caminho: medidores.risco_percebido
+    op: inc
+    valor: 1
+  - alvo: npc:silva_elkwood
+    caminho: leitura_atual
+    op: set
+    valor: Silva continua gostando de Ren e confiando em sua intenção e competência, mas agora sabe que Kurobane
+      está em Ravens Bluff e que Kajiwara Shizune pode ameaçar documentos e identidades. Percebeu que Ren encontra
+      algum consolo em Masao e seus agentes finalmente serem reconhecidos como ameaças reais por Luath e Halessa.

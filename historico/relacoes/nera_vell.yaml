@@ -225,3 +225,31 @@ eventos_pos_migracao:
     op: append
     valor: Se Ren não voltar no tempo que indicar, Nera avisará Silva, que acionará Luath; ninguém deixará o esconderijo
       para procurá-lo nem exporá o circo.
+- transacao: s007-04ecbb3c5786e103
+  sessao: 7
+  resumo: Ren agradeceu a Silva, conteve um gesto de toque e entrou silenciosamente para ver Nera sem acordar Tavin.
+    Nera estava desperta, abraçou Ren e ouviu que Brass suspendeu a busca sem localizar os Vell, mas que Kurobane
+    e possivelmente Shizune representam ameaças maiores. Ren explicou seu alívio por Luath e Halessa agora reconhecerem
+    Masao e seus agentes como ameaças reais; Nera lembrou que já acreditava nele e perguntou quanto tempo ele pode
+    ficar.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera estava acordada quando Ren voltou, abraçou-o e ouviu seu relato. Sabe que Brass suspendeu a busca
+      sem localizar os Vell, que Ren enfrentou Kurobane e que Shizune pode estar ativa; perguntou quanto tempo Ren
+      pode permanecer com ela.
+- transacao: s007-b5add2887bc7320f
+  sessao: 7
+  resumo: Ren contou a Nera que trabalharia antes do amanhecer como Shinta numa propriedade murada que talvez pudesse
+    se tornar uma casa segura. Nera apoiou a esperança, mas exigiu que proteção não se torne prisão e aceitou apenas
+    a promessa de Ren voltar quando puder e avisar quando não puder. Ren dormiu poucas horas, sem completar descanso
+    longo, vestiu a persona de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, aguardando o jardineiro
+    abrir o portão.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera sabe que Ren trabalhará sob o nome Shinta numa propriedade murada que ele considera possível casa
+      futura. Ela apoiou a esperança, exigiu que proteção não vire prisão e aceitou a promessa limitada de Ren voltar
+      quando puder e avisar quando não puder.

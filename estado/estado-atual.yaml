@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: em_sessao
-  sessao_atual: 6
-  modo_de_cena_atual: deslocamento_para_posicao_de_vigilancia
+  status: entre_sessoes
+  sessao_atual: 7
+  modo_de_cena_atual: sessao_encerrada_aguardando_relato_a_luath
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,12 +18,11 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
-  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
-  descricao_operacional: Ren se despediu de Nera, tomou banho e deixou o circo vestido com seu traje oriental de
-    infiltração, rosto pintado de negro e coberto até o nariz, wakizashi e shuriken equipados. Segue para assumir
-    posição na escada junto à ferraria antes do movimento de Brass. Nera conhece o plano geral e, se Ren se atrasar,
-    avisará Silva para acionar Luath sem expor o circo.
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
+  descricao_operacional: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu
+    em sala privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren;
+    ele ainda não decidiu formalmente entregá-lo.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -34,8 +33,8 @@ tempo:
   dia_do_mes: 9
   dezena: 1
   dia_da_dezena: 9
-  periodo_do_dia: meio da tarde de 9 Eleasis, durante reconhecimento dos arredores da Red Sail
-  hora_aproximada: 18:15 de 9 Eleasis
+  periodo_do_dia: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
+  hora_aproximada: 05:19 de 10 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -48,7 +47,7 @@ recursos:
     maximos: 6
     dado: d8
   ki:
-    atuais: 6
+    atuais: 3
     maximos: 6
     recarga: descanso curto ou longo
   classe_de_armadura: 17
@@ -58,7 +57,7 @@ recursos:
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 9 Eleasis
-    passos_sem_pegadas: disponível mediante gasto de 2 Ki
+    passos_sem_pegadas: ativo por concentração desde cerca de 20:47 de 9 Eleasis; duração máxima até cerca de 21:47
     silencio: disponível mediante gasto de 2 Ki
 ponteiros:
   tempo_atual: estado/tempo.yaml
@@ -66,7 +65,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/006/transcricao.md
+  transcricao_atual: sessoes/007/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -98,6 +97,8 @@ equipamento_em_posse:
   - mapa público da Escada das Sete Águas, comprado de Brunna Torkel
   - 'cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída
     baixa para drenagem, parede raspada, ar seco e marca apagada'
+  - documento falsificado do volume 13, recuperado de Kurobane em 9 Eleasis; marca de retenção rompida e entrada
+    alterada para declarar que a carga nunca foi retida
   outros:
   - figurino de O Vento da Noite guardado com Dessa Wren
   - roupa de cidadão menor limpo guardada no circo
@@ -146,3 +147,4 @@ pendencias:
 disponibilidades:
   broche_do_semblante_humilde: usado em 9 Eleasis; indisponível até o próximo amanhecer; efeito de aparência humilde
     e comum ativo até cerca de 16:29, salvo dispensa anterior
+combate_atual: null

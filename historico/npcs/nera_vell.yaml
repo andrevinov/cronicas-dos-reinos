@@ -1,0 +1,26 @@
+schema_historico_npc: 2
+id: nera_vell
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s007-04ecbb3c5786e103
+  sessao: 7
+  resumo: Ren agradeceu a Silva, conteve um gesto de toque e entrou silenciosamente para ver Nera sem acordar Tavin.
+    Nera estava desperta, abraçou Ren e ouviu que Brass suspendeu a busca sem localizar os Vell, mas que Kurobane
+    e possivelmente Shizune representam ameaças maiores. Ren explicou seu alívio por Luath e Halessa agora reconhecerem
+    Masao e seus agentes como ameaças reais; Nera lembrou que já acreditava nele e perguntou quanto tempo ele pode
+    ficar.
+  deltas:
+  - alvo: npc:nera_vell
+    caminho: medidores.confianca
+    op: inc
+    valor: 1
+  - alvo: npc:nera_vell
+    caminho: medidores.risco_percebido
+    op: inc
+    valor: 1
+  - alvo: npc:nera_vell
+    caminho: leitura_atual
+    op: set
+    valor: Nera viu Ren cumprir a promessa de voltar, recebeu dele informação suficiente sobre a busca suspensa
+      de Brass, Kurobane e a possível presença de Shizune. Continua assustada com a escala da vingança, mas entende
+      o alívio de Ren por Luath e Halessa finalmente reconhecerem seus inimigos como ameaças reais.

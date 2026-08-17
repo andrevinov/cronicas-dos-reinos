@@ -9,12 +9,13 @@ npcs:
     grupo: Vell / protegidos no circo
     medidores:
       vinculo: 8
-      confianca: 7
-      risco_percebido: 8
+      confianca: 8
+      risco_percebido: 9
     natureza_do_vinculo: romântico explícito, protetivo e vulnerável
     subtexto_romantico: claro
     arquivo: estado/npcs/nera_vell.yaml
-    bytes_fragmento: 1743
+    bytes_fragmento: 1810
+    historico: historico/npcs/nera_vell.yaml
   tavin_vell:
     nome: Tavin Vell
     grupo: Vell / protegidos no circo
@@ -32,11 +33,11 @@ npcs:
     medidores:
       vinculo: 8
       confianca: 8
-      risco_percebido: 9
+      risco_percebido: 10
     natureza_do_vinculo: protetivo, quase maternal e prático
     subtexto_romantico: nenhum
     arquivo: estado/npcs/silva_elkwood.yaml
-    bytes_fragmento: 1639
+    bytes_fragmento: 1738
     historico: historico/npcs/silva_elkwood.yaml
   jack_mooney:
     nome: Jack Mooney
@@ -66,11 +67,12 @@ npcs:
     medidores:
       vinculo: 4
       confianca: 7
-      risco_percebido: 8
+      risco_percebido: 9
     natureza_do_vinculo: respeito operacional cauteloso
     subtexto_romantico: nenhum
     arquivo: estado/npcs/luath.yaml
-    bytes_fragmento: 1859
+    bytes_fragmento: 1750
+    historico: historico/npcs/luath.yaml
   kethra_dunn:
     nome: Kethra Dunn
     grupo: Narwhal Manor / Colm-Dent

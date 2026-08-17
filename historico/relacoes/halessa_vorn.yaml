@@ -157,3 +157,66 @@ eventos_pos_migracao:
     caminho: ofertas
     op: append
     valor: Concedeu a Ren saída pela porta reservada dos peticionários, sem registro público de sua partida.
+- transacao: s007-5b916178927cb36d
+  sessao: 7
+  resumo: Ren mostrou a Luath o documento falsificado e declarou que o entregará diretamente a Halessa, que possui
+    o original. Luath aceitou orientar seus homens a não abordar membros identificados das Dez Espadas, recusou
+    suspeita indiscriminada contra estrangeiros e preparará descrições por método e conduta. Ren chegou sem incidente
+    à Casa de Tyr; Halessa restringiu o acesso à pasta original e pediu o relato exato antes de receber o documento.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Alertada pela ficha urgente de Luath, Halessa restringiu qualquer acesso à pasta original e recebeu Ren
+      em câmara reservada com uma juramentada como testemunha.
+- transacao: s007-1fc5008c5e3ea696
+  sessao: 7
+  resumo: Ren relatou a Halessa a alteração feita por Velis, a afirmação de que o clã do leste cuidaria de Tyr,
+    o confronto com Kurobane e a possível atuação de Kajiwara Shizune. Halessa distinguiu fatos, identificação e
+    inferência, iniciou uma auditoria segregada da cadeia de custódia e pediu que Ren deposite o documento e declare
+    sua procedência e manuseio para recebimento formal.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Halessa foi informada sobre a alteração feita por Velis, a frase de que o clã do leste cuidaria de Tyr,
+      Kurobane Jinzaburō e a possível atuação de Kajiwara Shizune; iniciou auditoria segregada da cadeia de custódia
+      antes de receber formalmente a cópia falsificada.
+- transacao: s007-ed361e25388a6c3d
+  sessao: 7
+  resumo: 'Ren declarou a cadeia conhecida do documento: Velis o falsificou diante de Brass e um homem não identificado
+    da Red Sail, deixou-o num aro junto ao muro externo da antiga Casa de Pesos, Kurobane o recolheu com kuroito
+    e Ren o tomou dele. Halessa confirmou que o nome de Ren ficará fora do relatório circulante e retido em anexo
+    selado, reuniu dois custódios e pediu o último elo antes do recebimento formal.'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Halessa registrou a cadeia declarada do documento falsificado, manterá Ren como testemunha reservada
+      no relatório circulante e sua identidade em anexo selado; dois custódios foram reunidos para o recebimento
+      e auditoria.
+- transacao: s007-c19422149078ef8d
+  sessao: 7
+  resumo: Ren transferiu formalmente o documento falsificado à Casa de Tyr. A auditoria encontrou a cadeia anterior
+    sem ruptura visível e confirmou que o original preservado por Tyr mantém a retenção anulada do volume 13, enquanto
+    a peça recuperada diz que a carga nunca foi retida. Ambos foram selados separadamente; Ren permanece testemunha
+    reservada e Shizune foi classificada como risco operacional não confirmado.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Halessa recebeu formalmente o documento falsificado de Ren, preservou sua identidade em anexo reservado
+      e confirmou por auditoria que o original de Tyr não corresponde à falsificação; as duas peças estão sob cadeias
+      e selos separados.
+- transacao: s007-8b4bf4d8aaab2e4b
+  sessao: 7
+  resumo: Ren tentou confortar Halessa, despediu-se e deixou a investigação e os documentos com Tyr. Halessa afirmou
+    que futuras mensagens passarão primeiro por Luath para preservar a discrição. Ren atravessou a cidade sem incidente
+    e chegou ao circo pouco depois da meia-noite de 10 Eleasis; ainda precisa cumprir o compromisso na Casa do Salgueiro
+    Seco antes do amanhecer.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada
+      e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.

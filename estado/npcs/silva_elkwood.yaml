@@ -7,18 +7,16 @@ npc:
   medidores:
     vinculo: 8
     confianca: 8
-    risco_percebido: 9
+    risco_percebido: 10
   natureza_do_vinculo: protetivo, quase maternal e prático
   subtexto_romantico: nenhum
   observacao_afetiva: 'Silva pode gostar muito de Ren e ainda tratá-lo com secura. O calor dela deve aparecer como
     comida, limites, checagem de cauda, cuidado com sono e proteção dos Vell, não como flerte.
 
     '
-  leitura_atual: 'Silva gosta de Ren mais do que sua fala seca admite e confia bastante em sua intenção e competência
-    prática. O risco percebido continua muito alto porque Ren atrai inimigos para perto dos Vell, do livro e do
-    circo.
-
-    '
+  leitura_atual: Silva continua gostando de Ren e confiando em sua intenção e competência, mas agora sabe que Kurobane
+    está em Ravens Bluff e que Kajiwara Shizune pode ameaçar documentos e identidades. Percebeu que Ren encontra
+    algum consolo em Masao e seus agentes finalmente serem reconhecidos como ameaças reais por Luath e Halessa.
   tom_atual: 'Dura, seca e prática, mas não fria. A fala dela deve incluir cuidado concreto, humor cansado, pequenos
     gestos de proteção e reconhecimento quando Ren age com autocontrole.
 

@@ -6,8 +6,8 @@ relacao:
   nome: Luath
   tipo: sargento da City Guard / supervisor possível da Night Watch
   local: posto da City Guard / Night Watch
-  status: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo livre;
-    deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
+  status: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada;
+    recusou suspeita indiscriminada contra estrangeiros e usará descrições, métodos e conduta.
   atitude_para_ren: cautelosa, direta e avaliadora
   confianca: moderada operacional
   respeito: prático crescente; Luath reconhece que Ren conteve a vingança diante de Brass e trouxe a informação

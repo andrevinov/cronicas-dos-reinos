@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 6
-sessao_mais_recente_indexada: 6
+sessao_atual_da_campanha: 7
+sessao_mais_recente_indexada: 7
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,70 +34,11 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Ren recupera sua história com uma explicação coerente, postura humilde e sotaque reforçado. Enganação
-    com vantagem 15 contra CD 14 tem sucesso: o jardineiro passa a aceitá-lo como um estrangeiro pobre à procura
-    de trabalho, embora mantenha cautela. Ele revela que a proprietária é uma mulher que não mora na casa e que
-    recados e dinheiro chegam por um escriturário, já partido naquele dia. Oferece a Ren trabalho externo no amanhecer
-    seguinte por 2 PP e uma refeição, sem acesso à casa, prometendo m…'
+- titulo: Ren transferiu formalmente o documento falsificado à Casa de Tyr. A auditoria encontrou a cadeia anterior
+    sem ruptura visível e confirmou que o original preservado por Tyr mantém a retenção anulada do volume 13, enquanto
+    a peça recuperada diz que a carga nunca foi retida. Ambos foram selados separadamente; Ren permanece testemunha
+    reservada e Shizune foi classificada como risco operacional não confirmado.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-8edd2c5c0424c556.md
-  bytes: 1088
-  transacao: s006-8edd2c5c0424c556
-- titulo: 'Ren fornece ao jardineiro o nome falso Shinta, ou Shin, aceita o trabalho para o amanhecer seguinte e
-    parte mantendo a persona pobre. Com Furtividade 26 contra CD 14, mistura-se a grupos de trabalhadores e chega
-    à Red Sail sem cauda identificável. Investiga outros ângulos, mas obtém 8 contra CD 15: confirma que pode alcançar
-    Brass, porém não encontra rota segura para retirar um prisioneiro. Por volta de 15:28, Brass aparece nos fundos
-    da Red Sail com dois acompanhantes e um homem à porta; está…'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-09ed59d2c65e6089.md
-  bytes: 1462
-  transacao: s006-09ed59d2c65e6089
-- titulo: 'Ren rejeita atacar Brass em público para não se expor nem comprometer Nera e Tavin. Ativa o Broche do
-    Semblante Humilde, cujo uso fica gasto até o próximo amanhecer, e passa perto da porta carregando corda. Furtividade
-    com vantagem 20 contra CD 15 e Percepção 25 contra CD 15 permitem que se aproxime sem ser marcado e ouça Brass:
-    o barril seco e o menino foram abandonados para papéis; depois do segundo sino após o poente, Brass pretende
-    cruzar a ponte baixa com dois homens para encontrar Rook. U…'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-0a853ae691375c38.md
-  bytes: 1144
-  transacao: s006-0a853ae691375c38
-- titulo: Ren reconhece que o capanga de Brass pronunciou Masao com familiaridade, não como estrangeiro repetindo
-    um nome recém-ouvido, e mantém o disfarce sem denunciar a reação. Vai ao posto e relata tudo a Luath por volta
-    de 16:14. Luath considera a pronúncia sinal de circulação habitual do nome, aprova a decisão de não atacar na
-    Red Sail e decide colocar dois observadores sem uniforme nas cabeceiras da ponte baixa, com um terceiro homem
-    como mensageiro. Eles observarão a troca e seguirão o papel e Ro…
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-9576cbb4e5a3441b.md
-  bytes: 1107
-  transacao: s006-9576cbb4e5a3441b
-- titulo: 'Ren propõe seguir Brass de perto, ocultar-se e fugir se descoberto, priorizando informação e a segurança
-    de terceiros. Luath aceita: seus homens manterão vigilância distante e seguirão Brass, Rook ou o papel, enquanto
-    Ren poderá aproximar-se para escutar. Luath exige retirada imediata se Ren for percebido e pede que ele escolha
-    entre iniciar a perseguição perto da Red Sail ou esperar na Ponte Baixa.'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-bc4cb0427970a035.md
-  bytes: 862
-  transacao: s006-bc4cb0427970a035
-- titulo: 'Investigação com vantagem 23 contra CD 15: Ren identifica no mapa um corredor urbano contínuo especialmente
-    favorável a seguir pessoas furtivamente.'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-e31458b424cd5aba.md
-  bytes: 532
-  transacao: s006-e31458b424cd5aba
-- titulo: Ren escolhe iniciar a perseguição na escada próxima à ferraria, usar o corredor de bancas e divisões da
-    rua para ouvir Brass e continuar seguindo-o ao entrar na Ponte Baixa, fugindo se detectado ou atacado e lutando
-    apenas em risco de morte. Luath aceita o trajeto, ajusta seus observadores para deixá-lo livre e avisa que nenhum
-    guarda o seguirá para dentro da Ponte Baixa.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-68ded1450eea78c3.md
-  bytes: 876
-  transacao: s006-68ded1450eea78c3
-- titulo: Ren encerra o planejamento com Luath, percorre fisicamente o corredor escolhido e obtém Investigação 24
-    contra CD 14, preparando com excelência pontos de cobertura, transição e respiração; recebe vantagem no primeiro
-    teste da operação em que esse conhecimento ajude a manter o acompanhamento sem exposição. No circo, come uma
-    refeição leve e relata tudo a Silva. Ela aprova sua contenção diante de Brass, alerta que dentro da Ponte Baixa
-    ele estará sozinho e pergunta qual rosto usará, pois o broche…
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-46564096af22be4b.md
-  bytes: 864
-  transacao: s006-46564096af22be4b
+  - personagens/jogador/conhecimento/incrementais/sessao-007/tx-s007-c19422149078ef8d.md
+  bytes: 839
+  transacao: s007-c19422149078ef8d

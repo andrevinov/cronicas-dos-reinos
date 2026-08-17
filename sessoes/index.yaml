@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 6
+sessao_atual: 7
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 6
-  bytes_transcricoes: 1362689
+  sessoes: 7
+  bytes_transcricoes: 1437710
 sessoes:
   '001':
     natureza: historica
@@ -122,19 +122,19 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   '006':
-    natureza: atual
+    natureza: historica
     handoff: sessoes/006/handoff.yaml
     compactos:
     - arquivo: sessoes/006/handoff.yaml
-      bytes: 5963
+      bytes: 6199
     - arquivo: sessoes/006/resumo.md
-      bytes: 7270
+      bytes: 12479
     - arquivo: sessoes/006/alteracoes-de-estado.yaml
-      bytes: 4572
+      bytes: 6226
     - arquivo: sessoes/006/consequencias.md
-      bytes: 572
+      bytes: 1989
     - arquivo: sessoes/006/consolidacoes.jsonl
-      bytes: 14190
+      bytes: 25315
     ordem_de_leitura:
     - sessoes/006/handoff.yaml
     - sessoes/006/resumo.md
@@ -142,6 +142,30 @@ sessoes:
     - sessoes/006/consequencias.md
     transcricao:
       arquivo: sessoes/006/transcricao.md
-      bytes: 37905
+      bytes: 72580
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  '007':
+    natureza: atual
+    handoff: sessoes/007/handoff.yaml
+    compactos:
+    - arquivo: sessoes/007/handoff.yaml
+      bytes: 5880
+    - arquivo: sessoes/007/resumo.md
+      bytes: 4845
+    - arquivo: sessoes/007/alteracoes-de-estado.yaml
+      bytes: 2294
+    - arquivo: sessoes/007/consequencias.md
+      bytes: 2177
+    - arquivo: sessoes/007/consolidacoes.jsonl
+      bytes: 8779
+    ordem_de_leitura:
+    - sessoes/007/handoff.yaml
+    - sessoes/007/resumo.md
+    - sessoes/007/alteracoes-de-estado.yaml
+    - sessoes/007/consequencias.md
+    transcricao:
+      arquivo: sessoes/007/transcricao.md
+      bytes: 40346
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

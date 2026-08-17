@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 6
-status: em_andamento
+status: encerrada
 fonte: sessoes/006/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 6
@@ -18,17 +18,17 @@ checkpoint_inicial:
   nivel_ficha: 6
 checkpoint_atual:
   sessao: 6
-  modo: deslocamento_para_posicao_de_vigilancia
+  modo: sessao_encerrada_aguardando_relato_a_luath
   personagem: Ren Kagehira
   nivel: 6
   pv: 45/45
-  ki: 6/6
+  ki: 3/6
   ca: 17
   dinheiro_po: 34
   data: 9 Eleasis, 1372 DR
-  hora: 18:15 de 9 Eleasis
-  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
-  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
+  hora: 21:38 de 9 Eleasis
+  area: posto da Night Watch, Ravens Bluff
+  ponto_exato: sala privada de trabalho de Luath, com a porta trancada, imediatamente antes do relato da operação
   nivel_ficha: 6
 consolidacoes:
 - id: s006-cena-b11d9d2db984fe4a
@@ -123,6 +123,50 @@ consolidacoes:
   - estado/tempo.yaml
   - historico/relacoes/nera_vell.yaml
   - historico/relacoes/silva_elkwood.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md
+- id: s006-cena-dbcc82ef8ec21077
+  tipo: cena
+  transacoes:
+  - s006-c9d1bbadb14c83ae
+  - s006-38c6b4a28522849f
+  - s006-2db022b9c86d13a8
+  - s006-734f6c9b0e064745
+  - s006-9ffad5fa9720bec3
+  - s006-9e6123f17312d200
+  - s006-5b1dbaf869ce4a81
+  - s006-882ae9f602813a13
+  - s006-e45a7f7184600596
+  deltas: 63
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - narrador/sessoes/006/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-2db022b9c86d13a8.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-38c6b4a28522849f.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-5b1dbaf869ce4a81.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-734f6c9b0e064745.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-9e6123f17312d200.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-c9d1bbadb14c83ae.md
+  - personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-e45a7f7184600596.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/006/alteracoes-de-estado.yaml
+  - sessoes/006/consequencias.md
+  - sessoes/006/consolidacoes.jsonl
+  - sessoes/006/resumo.md
+- id: s006-sessao-31ca3f85f98ffa07
+  tipo: sessao
+  transacoes:
+  - s006-f957df0ce9040e84
+  deltas: 7
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
   - sessoes/006/alteracoes-de-estado.yaml
   - sessoes/006/consequencias.md
   - sessoes/006/consolidacoes.jsonl

@@ -87,4 +87,60 @@ fragmentos:
     ele estará sozinho e pergunta qual rosto usará, pois o broche…
   arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-46564096af22be4b.md
   bytes: 864
-quantidade: 11
+- transacao: s006-c9d1bbadb14c83ae
+  titulo: Ren alcança sem incidente a escada junto à ferraria e espera até pouco depois do segundo sino após o poente.
+    Brass surge com dois homens. Ren gasta 2 Ki, ativa Passos sem Pegadas e obtém Furtividade 33 contra CD 16 com
+    vantagem pelo corredor ensaiado, seguindo sem ser detectado; Percepção 23 contra CD 15 permite ouvir toda a
+    conversa. Brass carrega um papel sob o casaco e diz que Rook deve reconhecer a correção ligada ao volume 13,
+    lembrar quem anulou a retenção e levá-la para cima, mantendo Ha…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-c9d1bbadb14c83ae.md
+  bytes: 973
+- transacao: s006-38c6b4a28522849f
+  titulo: 'Ren usa Passo Sombrio sem custo de Ki para atravessar o contravigia e reaparece na reentrância trinta
+    e cinco pés além. Sob Passos sem Pegadas, obtém Furtividade 29 contra CD 17 com vantagem e Percepção 24 contra
+    CD 16, mantendo a cauda e ouvindo tudo. Brass encontra Velis Rook sob o arco oeste da Casa de Pesos. Brass apresenta
+    uma folha substituta que deve voltar à alfândega: Rook deve romper a marca de retenção e alterar o volume 13
+    para que a carga conste como nunca retida, deixando Harrow s…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-38c6b4a28522849f.md
+  bytes: 1127
+- transacao: s006-2db022b9c86d13a8
+  titulo: Ren permite que Rook conclua a falsificação e continua ouvindo. Rook menciona Nera e Tavin; Brass afirma
+    que sua rede seguiu Tyr, Maerra, a velha casa de Lathander e quartos já vazios, mas não possui o endereço atual
+    dos Vell e suspendeu a busca até surgir novo rastro. Intuição 18 contra CD 15 indica que Brass acredita nisso,
+    sem provar o que Masao ou outros agentes sabem. Rook chama outro agente de “homem de Masao”; Brass o corrige
+    para “Corvo”, dizendo que ele trabalha para o velho sem perten…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-2db022b9c86d13a8.md
+  bytes: 1818
+- transacao: s006-734f6c9b0e064745
+  titulo: Ren abandona a cauda de Brass e segue Rook com Passos sem Pegadas e Passo Sombrio. Obtém Furtividade 36
+    contra CD 18 com vantagem, atravessa o contravigia e chega sem ser percebido ao anel de ferro seco. Rook prende
+    ali o documento falsificado e continua andando. Uma linha negra recolhe o pacote até um telhado. Percepção 22
+    com vantagem supera a coleta furtiva e permite a Ren identificar Kurobane Jinzaburō, o Corvo do Estreito, uma
+    das Dez Espadas, por sua aparência kozakurana, haori de retalho…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-734f6c9b0e064745.md
+  bytes: 1003
+- transacao: s006-9e6123f17312d200
+  titulo: Ren cobre os sessenta pés, salta o vão entre telhados e ataca Kurobane enquanto o provoca em kozakurano.
+    A voadora erra, mas o segundo golpe acerta por 9, reduzido a 4 pela Esquiva Sobrenatural; Kurobane fica com
+    39/52 PV. Kurobane responde em kozakurano chamando Ren pelo nome, identificando-o como irmão de Aiko e sobrinho
+    de Tadatsune e alegando que Masao esperava que o último Kagehira se tornasse interessante. Afirma não ser prisioneiro
+    de Masao, mas um agente independente pago para alcançar…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-9e6123f17312d200.md
+  bytes: 987
+- transacao: s006-5b1dbaf869ce4a81
+  titulo: 'Ren gasta 1 Ki em Passo do Vento, alcança Kurobane e pergunta em kozakurano o que Masao quer em Ravens
+    Bluff. Ren acerta dois golpes: 9 reduzido a 4 por Esquiva Sobrenatural e mais 7, deixando Kurobane com 28/52
+    PV. Kurobane responde que ele quer o documento, enquanto Masao quer uma cidade capaz de esquecer o que entrou
+    nela: registros decidem quem existe, túneis para onde pessoas e cargas vão, e Ravens Bluff seria uma fechadura
+    sobre portas antigas. No turno seguinte, Kurobane desengaja, acion…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-5b1dbaf869ce4a81.md
+  bytes: 1074
+- transacao: s006-e45a7f7184600596
+  titulo: 'Ren abandona a perseguição a Kurobane e prioriza o documento. Usa Passo Sombrio sem custo de Ki para
+    alcançar a abertura do armazém e obtém Acrobacia 24 contra CD 14, interceptando a linha de contrapeso e recuperando
+    o pacote intacto. Confirma a folha alterada por Rook: a marca de retenção foi rompida e o volume 13 agora declara
+    que a carga nunca foi retida. Kurobane escapa pelos depósitos do canal com 19/52 PV, sem o documento. O combate
+    termina; Ren permanece ileso, com 3 Ki e Passos sem Pega…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-006/tx-s006-e45a7f7184600596.md
+  bytes: 991
+quantidade: 18

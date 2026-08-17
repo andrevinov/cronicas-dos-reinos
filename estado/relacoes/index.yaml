@@ -157,9 +157,9 @@ relacoes:
   nera_vell:
     nome: Nera Vell
     tipo: testemunha protegida / gravadora de selos
-    status: Nera sabe que Ren seguirá Brass por uma viela, tentará ouvir uma conversa com Velis e pretende acompanhá-los
-      para dentro da Ponte Baixa, fugindo se descoberto. Ela percebe que os homens de Luath estarão apenas na superfície,
-      aceitou esperar e avisará Silva para acionar Luath se Ren não voltar no tempo combinado
+    status: Nera sabe que Ren trabalhará sob o nome Shinta numa propriedade murada que ele considera possível casa
+      futura. Ela apoiou a esperança, exigiu que proteção não vire prisão e aceitou a promessa limitada de Ren voltar
+      quando puder e avisar quando não puder.
     atitude_para_ren: amorosa, assustada, zangada com as promessas absolutas e determinada a não ser protegida pela
       ignorância
     confianca: afetiva e real, mas pressionada pela tendência de Ren a desaparecer e prometer resultados que não
@@ -167,7 +167,7 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 3258
+    bytes_fragmento: 3201
     campos_atuais: 11
   tavin_vell:
     nome: Tavin Vell
@@ -206,15 +206,15 @@ relacoes:
   luath:
     nome: Luath
     tipo: sargento da City Guard / supervisor possível da Night Watch
-    status: Luath aceitou o trajeto de perseguição escolhido por Ren e ajustará seus observadores para deixá-lo
-      livre; deixou claro que nenhum guarda seguirá Ren para dentro da Ponte Baixa
+    status: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada;
+      recusou suspeita indiscriminada contra estrangeiros e usará descrições, métodos e conduta.
     atitude_para_ren: cautelosa, direta e avaliadora
     confianca: moderada operacional
     respeito: prático crescente; Luath reconhece que Ren conteve a vingança diante de Brass e trouxe a informação
       antes de agir
     arquivo: estado/relacoes/luath.yaml
     historico: historico/relacoes/luath.yaml
-    bytes_fragmento: 4739
+    bytes_fragmento: 4758
     campos_atuais: 11
   sirrus_melandor:
     nome: Sirrus Melandor
@@ -230,8 +230,8 @@ relacoes:
   halessa_vorn:
     nome: Irmã Halessa Vorn
     tipo: ouvidora juramentada de Tyr
-    status: Após um desacordo franco sobre urgência e limites, Halessa manteve a operação da Casa de Pesos, protegeu
-      a saída discreta de Ren e deixou aberta cooperação futura condicionada a planejamento prévio
+    status: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada
+      e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
     atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
       a urgência e de preservar sua discrição apesar do desacordo
     confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,
@@ -240,14 +240,13 @@ relacoes:
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 3873
+    bytes_fragmento: 3864
     campos_atuais: 10
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
-    status: Silva sabe que Ren pretende usar o rosto coberto e pintura negra durante a vigilância, aprovou que ele
-      priorize fugir e não expor aliados e permitiu uma visita de dez minutos a Nera; exigiu que ele não volte ao
-      circo com cauda e não faça promessas absolutas
+    status: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
+      sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
     atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
       mas rejeita que ele assuma sozinho o direito de escolher todos os custos
     confianca: moderada e vigilante
@@ -255,7 +254,7 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 3294
+    bytes_fragmento: 3225
     campos_atuais: 10
   jack_mooney:
     nome: Jack Mooney

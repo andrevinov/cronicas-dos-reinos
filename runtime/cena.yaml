@@ -1,30 +1,29 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 6
-modo: deslocamento_para_posicao_de_vigilancia
+sessao: 7
+modo: sessao_encerrada_aguardando_relato_a_luath
 localizacao:
-  area: ruas de Ravens Bluff entre o Jack Mooney & Sons Circus e a ferraria do corredor de vigilância
-  ponto_exato: além da última lona do circo, seguindo em direção à escada próxima à ferraria
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
 tempo:
   data: 9 Eleasis, 1372 DR
-  hora_aproximada: 18:15 de 9 Eleasis
+  hora_aproximada: 05:19 de 10 Eleasis
 mecanica_imediata:
   pv: 45/45
-  ki: 6/6
+  ki: 3/6
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren se despediu de Nera, tomou banho e deixou o circo vestido com seu traje oriental de infiltração,
-  rosto pintado de negro e coberto até o nariz, wakizashi e shuriken equipados. Segue para assumir posição na escada
-  junto à ferraria antes do movimento de Brass. Nera conhece o plano geral e, se Ren se atrasar, avisará Silva para
-  acionar Luath sem expor o circo.
+resumo_imediato: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu em sala
+  privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren; ele ainda
+  não decidiu formalmente entregá-lo.
 prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa e
   um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo sino
   após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes do amanhecer
   de 10 Eleasis.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/006/handoff.yaml
+  handoff: sessoes/007/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/006/transcricao.md
+  transcricao_fria: sessoes/007/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md

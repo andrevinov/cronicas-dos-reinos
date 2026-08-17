@@ -7,19 +7,16 @@ npc:
   medidores:
     vinculo: 4
     confianca: 7
-    risco_percebido: 8
+    risco_percebido: 9
   natureza_do_vinculo: respeito operacional cauteloso
   subtexto_romantico: nenhum
   observacao_afetiva: 'Se o vínculo com Luath subir, deve virar camaradagem institucional, confiança de campo ou
     respeito duro, não intimidade sentimental rápida.
 
     '
-  leitura_atual: 'Luath respeita a utilidade operacional de Ren, especialmente depois dos barris, de Sarbreen e
-    da entrega das evidências da Ponte Baixa. A escolha de Ren por fonte reservada, em vez de assinatura heroica
-    ou mentira nominal, reforçou a confiança prática. A comparação com os Miburo/Shinsengumi criou uma primeira
-    camaradagem institucional, ainda seca e contida. Ren segue marcado como risco de justiça privada.
-
-    '
+  leitura_atual: Luath recebeu de Ren um relato completo da operação, considera confirmada a presença em Ravens
+    Bluff de Kurobane Jinzaburō, uma das Dez Espadas de Masao, e passou a tratar a cadeia de custódia de Tyr como
+    ameaçada. Mantém a distinção institucional entre fatos confirmados e hipóteses sobre os demais agentes.
   tom_atual: 'Seco, institucional e objetivo. Deve poder reconhecer competência sem virar aliado caloroso; quando
     impõe limite, o limite vem da guarda, da cidade e da cadeia de custódia, não de antipatia pessoal.
 

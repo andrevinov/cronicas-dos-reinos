@@ -335,3 +335,28 @@ eventos_pos_migracao:
     valor: Silva sabe que Ren pretende usar o rosto coberto e pintura negra durante a vigilância, aprovou que ele
       priorize fugir e não expor aliados e permitiu uma visita de dez minutos a Nera; exigiu que ele não volte ao
       circo com cauda e não faça promessas absolutas
+- transacao: s007-07eaabf6fe6e0cc4
+  sessao: 7
+  resumo: Ren contou a Silva tudo sobre Brass, Velis, a busca suspensa pelos Vell, Kurobane e a possível presença
+    de Shizune. Silva percebeu que Ren se sente consolado por seus inimigos finalmente terem nomes, provas e reconhecimento
+    institucional, mas alertou que isso não significa apoio sem limites. Ela reforçou o protocolo do circo contra
+    ordens escritas e mensageiros desconhecidos, confirmou Nera e Tavin seguros e ofereceu comida antes do compromisso
+    na Casa do Salgueiro Seco.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva recebeu o relato completo de Ren sobre Brass, Velis, Kurobane e Shizune; confirmou Nera e Tavin
+      seguros e reforçou o protocolo do circo contra ordens escritas e mensageiros desconhecidos.
+- transacao: s007-0a9d0081f6a2b656
+  sessao: 7
+  resumo: Ren comeu e pediu humildemente a orientação de Silva sobre acordar Nera e Tavin. Silva permitiu uma visita
+    cuidadosa a Nera, orientou que Tavin permaneça dormindo salvo se despertar sozinho e reforçou que a busca suspensa
+    traz conforto limitado, não segurança absoluta. Silva ainda não foi informada por Ren sobre o compromisso na
+    Casa do Salgueiro Seco.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
+      sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
