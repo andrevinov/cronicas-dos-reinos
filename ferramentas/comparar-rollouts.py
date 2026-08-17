@@ -74,6 +74,13 @@ def _baseline_narration(data: dict[str, Any]) -> dict[str, Any]:
         "write_target_touches": write_touches,
         "canonical_write_target_touches": canonical_touches,
         "transcript_read_calls": transcript_reads,
+        "routed_context_calls": narr.get("routed_context_calls"),
+        "raw_read_calls": narr.get("raw_read_calls"),
+        "schema_discovery_calls": narr.get("schema_discovery_calls"),
+        "successful_write_calls": narr.get("successful_write_calls"),
+        "failed_write_calls": narr.get("failed_write_calls"),
+        "attempted_write_target_touches": narr.get("attempted_write_target_touches"),
+        "fraction_turns_with_raw_read": narr.get("fraction_turns_with_raw_read"),
         "fraction_turns_without_read_search": narr.get("fraction_turns_without_read_search"),
         "fraction_turns_l0_l2": narr.get("fraction_turns_l0_l2"),
         "peak_input_tokens": narr.get("peak_input_tokens"),
@@ -93,9 +100,16 @@ def _aggregate_after(reports: list[dict[str, Any]]) -> dict[str, Any]:
         "output_tokens": 0,
         "reasoning_output_tokens": 0,
         "tool_output_bytes": 0,
+        "routed_context_calls": 0,
+        "raw_read_calls": 0,
+        "schema_discovery_calls": 0,
+        "successful_write_calls": 0,
+        "failed_write_calls": 0,
+        "attempted_write_target_touches": 0,
         "write_target_touches": 0,
         "canonical_write_target_touches": 0,
         "transcript_read_calls": 0,
+        "turns_with_raw_read": 0,
         "turns_without_read_search": 0,
         "l0_l2_turns": 0,
         "peak_input_tokens": 0,
@@ -115,13 +129,22 @@ def _aggregate_after(reports: list[dict[str, Any]]) -> dict[str, Any]:
             "output_tokens",
             "reasoning_output_tokens",
             "tool_output_bytes",
+            "routed_context_calls",
+            "raw_read_calls",
+            "schema_discovery_calls",
+            "successful_write_calls",
+            "failed_write_calls",
+            "attempted_write_target_touches",
             "write_target_touches",
             "canonical_write_target_touches",
             "transcript_read_calls",
+            "turns_with_raw_read",
             "turns_without_read_search",
         ):
             total[key] += int(narr.get(key) or 0)
-        total["peak_input_tokens"] = max(total["peak_input_tokens"], int(narr.get("peak_input_tokens") or 0))
+        total["peak_input_tokens"] = max(
+            total["peak_input_tokens"], int(narr.get("peak_input_tokens") or 0)
+        )
         total["tool_categories"].update(narr.get("tool_categories") or {})
         distribution = narr.get("max_access_level_by_turn") or {}
         total["access_distribution"].update(distribution)
@@ -134,6 +157,7 @@ def _aggregate_after(reports: list[dict[str, Any]]) -> dict[str, Any]:
         )
     total["tool_categories"] = dict(sorted(total["tool_categories"].items()))
     total["access_distribution"] = dict(total["access_distribution"])
+    total["fraction_turns_with_raw_read"] = total["turns_with_raw_read"] / total["turns"]
     total["fraction_turns_without_read_search"] = total["turns_without_read_search"] / total["turns"]
     total["fraction_turns_l0_l2"] = total["l0_l2_turns"] / total["turns"]
     total["cached_fraction"] = (
@@ -156,11 +180,20 @@ def _normalized(data: dict[str, Any]) -> dict[str, float | int | None]:
         "write_calls_per_turn": _per_turn(categories.get("write"), turns),
         "dice_calls_per_turn": _per_turn(categories.get("dice"), turns),
         "validation_calls_per_turn": _per_turn(categories.get("validation"), turns),
+        "routed_context_calls_per_turn": _per_turn(data.get("routed_context_calls"), turns),
+        "raw_read_calls_per_turn": _per_turn(data.get("raw_read_calls"), turns),
+        "schema_discovery_calls_per_turn": _per_turn(data.get("schema_discovery_calls"), turns),
+        "successful_write_calls_per_turn": _per_turn(data.get("successful_write_calls"), turns),
+        "failed_write_calls_per_turn": _per_turn(data.get("failed_write_calls"), turns),
+        "attempted_write_target_touches_per_turn": _per_turn(
+            data.get("attempted_write_target_touches"), turns
+        ),
         "write_target_touches_per_turn": _per_turn(data.get("write_target_touches"), turns),
         "canonical_write_target_touches_per_turn": _per_turn(
             data.get("canonical_write_target_touches"), turns
         ),
         "transcript_read_calls_per_turn": _per_turn(data.get("transcript_read_calls"), turns),
+        "fraction_turns_with_raw_read": data.get("fraction_turns_with_raw_read"),
         "fraction_turns_without_read_search": data.get("fraction_turns_without_read_search"),
         "fraction_turns_l0_l2": data.get("fraction_turns_l0_l2"),
         "peak_input_tokens": data.get("peak_input_tokens"),
@@ -242,10 +275,7 @@ def compare(
     return {
         "schema_version": 1,
         "kind": "rollout_before_after",
-        "baseline": {
-            "source": baseline.get("source"),
-            "narration": before,
-        },
+        "baseline": {"source": baseline.get("source"), "narration": before},
         "after": {
             "rollouts": [report.get("source") for report in reports],
             "narration": after,
@@ -287,11 +317,12 @@ def _human(report: dict[str, Any]) -> str:
         ("Input não-cache aprox. / turno", "uncached_input_tokens_per_turn"),
         ("Inferências / turno", "inference_events_per_turn"),
         ("Tool calls / turno", "tool_calls_per_turn"),
-        ("Read/search / turno", "read_search_calls_per_turn"),
-        ("Writes / turno", "write_calls_per_turn"),
-        ("Alvos escritos / turno", "write_target_touches_per_turn"),
-        ("Escritas canônicas / turno", "canonical_write_target_touches_per_turn"),
-        ("Leituras de transcript / turno", "transcript_read_calls_per_turn"),
+        ("Read/search tentados / turno", "read_search_calls_per_turn"),
+        ("Writes tentados / turno", "write_calls_per_turn"),
+        ("Writes concluídos / turno", "successful_write_calls_per_turn"),
+        ("Alvos escritos concluídos / turno", "write_target_touches_per_turn"),
+        ("Escritas canônicas concluídas / turno", "canonical_write_target_touches_per_turn"),
+        ("Leituras de transcript concluídas / turno", "transcript_read_calls_per_turn"),
     ]
     lines = [
         "COMPARAÇÃO PRÉ × PÓS-REFATORAÇÃO",
@@ -307,8 +338,12 @@ def _human(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            f"Contexto roteado / turno: {_fmt_number(after.get('routed_context_calls_per_turn'))}",
+            f"Leituras cruas / turno: {_fmt_number(after.get('raw_read_calls_per_turn'))}",
+            f"Descoberta schema/help / turno: {_fmt_number(after.get('schema_discovery_calls_per_turn'))}",
+            f"Turnos com leitura crua: {_fmt_pct(after.get('fraction_turns_with_raw_read'))}",
             f"Turnos sem read/search: {_fmt_pct(after.get('fraction_turns_without_read_search'))}",
-            f"Turnos com acesso máximo L0–L2: {_fmt_pct(after.get('fraction_turns_l0_l2'))}",
+            f"Turnos com acesso L0–L2 limpo: {_fmt_pct(after.get('fraction_turns_l0_l2'))}",
             f"Distribuição de acesso: {report['after'].get('access_distribution')}",
             "",
             "METAS",
