@@ -74,6 +74,64 @@ class ContextoTransactionalTest(unittest.TestCase):
         self.assertIn("runtime/eventos-pendentes.jsonl", status["fontes"])
         self.assertEqual(before, (repo / "runtime/contexto.yaml").read_bytes())
 
+    def test_efeito_temporario_aparece_e_some_antes_do_checkpoint(self):
+        repo = self.make_repo()
+        effect = {
+            "nome": "Ensaio do corredor",
+            "efeito": "vantagem no primeiro teste relevante para manter o acompanhamento sem exposição",
+            "origem": "Investigação 24 durante o reconhecimento físico",
+            "gatilho_consumo": "primeiro teste da operação em que o conhecimento ajude",
+            "expira": "ao fim da operação de perseguição",
+        }
+        self.append_event(
+            repo,
+            {
+                "versao": 1,
+                "id": "efeito-set",
+                "sessao": 3,
+                "resumo": "Ren memoriza o corredor de perseguição.",
+                "deltas": [
+                    {
+                        "alvo": "estado",
+                        "op": "set",
+                        "caminho": "efeitos_temporarios.vantagem_corredor",
+                        "valor": effect,
+                    }
+                ],
+            },
+        )
+        status = mod.command_status(repo)
+        scene = mod.command_scene(repo)
+        self.assertEqual(
+            status["resultado"]["efeitos_temporarios"]["vantagem_corredor"]["nome"],
+            "Ensaio do corredor",
+        )
+        self.assertIn("vantagem_corredor", scene["resultado"]["cena"]["efeitos_temporarios"])
+
+        self.append_event(
+            repo,
+            {
+                "versao": 1,
+                "id": "efeito-remove",
+                "sessao": 3,
+                "resumo": "A vantagem preparada foi consumida.",
+                "deltas": [
+                    {
+                        "alvo": "estado",
+                        "op": "remove",
+                        "caminho": "efeitos_temporarios.vantagem_corredor",
+                    }
+                ],
+            },
+        )
+        status_after = mod.command_status(repo)
+        scene_after = mod.command_scene(repo)
+        self.assertNotIn("vantagem_corredor", status_after["resultado"].get("efeitos_temporarios", {}))
+        self.assertNotIn(
+            "vantagem_corredor",
+            scene_after["resultado"]["cena"].get("efeitos_temporarios", {}),
+        )
+
     def test_relation_uses_fragment_plus_pending_delta(self):
         repo = self.make_repo()
         (repo / "estado/relacoes/index.yaml").write_text(
