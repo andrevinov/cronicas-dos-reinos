@@ -170,6 +170,67 @@ class RolloutTelemetryTest(unittest.TestCase):
         path.write_text("\n".join(rows) + "\n", encoding="utf-8")
         return path
 
+    def make_temp_file_rollout(self) -> Path:
+        self.temp = tempfile.TemporaryDirectory()
+        path = Path(self.temp.name) / "rollout-temp-turn.jsonl"
+        patch_add = (
+            "*** Begin Patch\n"
+            "*** Add File: .turno-temporario.json\n"
+            "+{\"narracao\":\"ok\"}\n"
+            "*** End Patch"
+        )
+        patch_delete = (
+            "*** Begin Patch\n"
+            "*** Delete File: .turno-temporario.json\n"
+            "*** End Patch"
+        )
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "t1"}),
+            record(
+                "response_item",
+                {
+                    "type": "message",
+                    "role": "user",
+                    "content": [{"type": "input_text", "text": mod.LEGACY_NARRATION_PROMPT}],
+                    "internal_chat_message_metadata_passthrough": {"turn_id": "t1"},
+                },
+            ),
+            record(
+                "response_item",
+                {
+                    "type": "custom_tool_call",
+                    "name": "apply_patch",
+                    "input": patch_add,
+                    "internal_chat_message_metadata_passthrough": {"turn_id": "t1"},
+                },
+            ),
+            record(
+                "response_item",
+                {
+                    "type": "function_call",
+                    "name": "exec_command",
+                    "arguments": json.dumps(
+                        {
+                            "cmd": "python3 ferramentas/turno.py registrar "
+                            "--arquivo .turno-temporario.json"
+                        }
+                    ),
+                    "internal_chat_message_metadata_passthrough": {"turn_id": "t1"},
+                },
+            ),
+            record(
+                "response_item",
+                {
+                    "type": "custom_tool_call",
+                    "name": "apply_patch",
+                    "input": patch_delete,
+                    "internal_chat_message_metadata_passthrough": {"turn_id": "t1"},
+                },
+            ),
+        ]
+        path.write_text("\n".join(rows) + "\n", encoding="utf-8")
+        return path
+
     def tearDown(self):
         if hasattr(self, "temp"):
             self.temp.cleanup()
@@ -196,7 +257,19 @@ class RolloutTelemetryTest(unittest.TestCase):
         self.assertEqual(narr["transcript_read_calls"], 0)
         self.assertEqual(narr["max_access_level_by_turn"], {"L1": 1})
         self.assertEqual(narr["fraction_turns_l0_l2"], 1.0)
+        self.assertEqual(narr["violations"]["temporary_turn_file_calls"], 0)
+        self.assertEqual(narr["violations"]["turns_with_temporary_turn_file"], 0)
         self.assertGreater(narr["tool_output_bytes"], 0)
+
+    def test_temporary_turn_file_is_explicit_operational_violation(self):
+        report = mod.analyze(self.make_temp_file_rollout())
+        narr = report["narration_turns"]
+        self.assertEqual(narr["turns"], 1)
+        self.assertEqual(narr["violations"]["temporary_turn_file_calls"], 3)
+        self.assertEqual(narr["violations"]["turns_with_temporary_turn_file"], 1)
+        self.assertEqual(narr["fraction_turns_without_temporary_turn_file"], 0.0)
+        self.assertIn("VIOLAÇÃO", mod._human(report))
+        self.assertIn(".turno-temporario.json", mod._human(report))
 
     def test_apply_patch_extracts_target_and_payload(self):
         patch = "*** Begin Patch\n*** Update File: estado/estado-atual.yaml\n@@\n-a\n+b\n*** End Patch"
