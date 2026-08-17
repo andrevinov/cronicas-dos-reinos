@@ -57,9 +57,16 @@ class CompareRolloutsTest(unittest.TestCase):
                     "dice": turns,
                     "other": turns,
                 },
+                "routed_context_calls": turns,
+                "raw_read_calls": 0,
+                "schema_discovery_calls": 0,
+                "successful_write_calls": turns,
+                "failed_write_calls": 0,
+                "attempted_write_target_touches": turns * 2,
                 "write_target_touches": turns * 2,
                 "canonical_write_target_touches": 0,
                 "transcript_read_calls": 0,
+                "turns_with_raw_read": 0,
                 "turns_without_read_search": 0,
                 "peak_input_tokens": 25000,
                 "max_access_level_by_turn": {"L1": turns},
@@ -74,6 +81,8 @@ class CompareRolloutsTest(unittest.TestCase):
         self.assertEqual(after["input_tokens_per_turn"], 20000)
         self.assertEqual(after["inference_events_per_turn"], 3)
         self.assertEqual(after["tool_calls_per_turn"], 4)
+        self.assertEqual(after["routed_context_calls_per_turn"], 1)
+        self.assertEqual(after["successful_write_calls_per_turn"], 1)
         self.assertEqual(after["write_target_touches_per_turn"], 2)
         self.assertEqual(result["delta"]["input_tokens_per_turn"]["reduction_fraction"], 0.8)
 
@@ -83,6 +92,23 @@ class CompareRolloutsTest(unittest.TestCase):
         self.assertEqual(result["after"]["narration"]["inference_events_per_turn"], 3)
         self.assertEqual(result["after"]["access_distribution"], {"L1": 8})
         self.assertEqual(result["after"]["narration"]["fraction_turns_l0_l2"], 1.0)
+
+    def test_raw_turns_remain_outside_clean_l0_l2_and_are_visible(self):
+        report = self.report(2)
+        narr = report["narration_turns"]
+        narr["raw_read_calls"] = 2
+        narr["schema_discovery_calls"] = 1
+        narr["turns_with_raw_read"] = 2
+        narr["max_access_level_by_turn"] = {"L2+RAW": 2}
+        result = mod.compare(self.baseline(), [report])
+        after = result["after"]["narration"]
+        self.assertEqual(after["raw_read_calls_per_turn"], 1)
+        self.assertEqual(after["schema_discovery_calls_per_turn"], 0.5)
+        self.assertEqual(after["fraction_turns_with_raw_read"], 1.0)
+        self.assertEqual(after["fraction_turns_l0_l2"], 0.0)
+        human = mod._human(result)
+        self.assertIn("Leituras cruas / turno", human)
+        self.assertIn("L0–L2 limpo", human)
 
     def test_target_evaluation_uses_reduction_and_after_metrics(self):
         targets = {
@@ -113,6 +139,8 @@ class CompareRolloutsTest(unittest.TestCase):
         delta = result["delta"]["tool_output_bytes_per_turn"]
         self.assertIsNone(delta["before"])
         self.assertIsNone(delta["reduction_fraction"])
+        self.assertIsNone(result["delta"]["raw_read_calls_per_turn"]["before"])
+        self.assertIsNone(result["delta"]["successful_write_calls_per_turn"]["before"])
 
 
 if __name__ == "__main__":

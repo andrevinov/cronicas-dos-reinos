@@ -141,22 +141,35 @@ jobs:
           python - <<'PY'
           import json
           report = json.load(open('/tmp/rollout-step11.json', encoding='utf-8'))
-          assert report['schema_version'] == 2
+          assert report['schema_version'] == 3
           n = report['narration_turns']
           assert n['turns'] == 1
           assert n['inference_events'] == 3
           assert n['tool_calls'] == 3
+          assert n['routed_context_calls'] == 1
+          assert n['raw_read_calls'] == 0
+          assert n['schema_discovery_calls'] == 0
+          assert n['attempted_write_calls'] == 1
+          assert n['successful_write_calls'] == 1
+          assert n['failed_write_calls'] == 0
           assert n['write_target_touches'] == 2
+          assert n['attempted_write_target_touches'] == 2
           assert n['canonical_write_target_touches'] == 0
           assert n['max_access_level_by_turn'] == {'L1': 1}
+          assert n['fraction_turns_with_raw_read'] == 0.0
           assert n['fraction_turns_l0_l2'] == 1.0
           PY
           python ferramentas/comparar-rollouts.py tests/fixtures/rollout-step11-mini.jsonl --json > /tmp/comparacao-step11.json
           python - <<'PY'
           import json
           report = json.load(open('/tmp/comparacao-step11.json', encoding='utf-8'))
+          after = report['after']['narration']
           assert report['interpretation']['raw_input_reduction'] > 0.70
-          assert report['after']['narration']['write_target_touches_per_turn'] == 2.0
+          assert after['routed_context_calls_per_turn'] == 1.0
+          assert after['raw_read_calls_per_turn'] == 0.0
+          assert after['successful_write_calls_per_turn'] == 1.0
+          assert after['write_target_touches_per_turn'] == 2.0
+          assert after['fraction_turns_l0_l2'] == 1.0
           assert all(item['passed'] is True for item in report['targets'])
           PY
           rm -f runtime/consultas-contexto.jsonl
