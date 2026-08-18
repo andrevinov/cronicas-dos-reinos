@@ -1,0 +1,36 @@
+schema_agente: 2
+natureza: reservado
+id: wetuji
+nome: Wetuji
+tipo: npc
+estado: latente
+objetivo_atual: Não executar ação local em Ravens Bluff enquanto sua chegada não estiver estabelecida; sua função canônica envolve teste marcial e interferência por curiosidade própria.
+recursos:
+  - teste marcial e interferência por curiosidade própria
+restricoes:
+  - não presumir presença em Ravens Bluff sem fato canônico de chegada
+  - não transformar marco futuro de aparição em ação já ocorrida
+presenca:
+  referencia: Ravens Bluff
+  estado: indeterminado
+  detalhe: A presença atual em Ravens Bluff não está estabelecida; o agente permanece inelegível para ação física local até uma chegada ou presença ser canonizada.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Membro da Juppongatana só se torna elegível para ação física em Ravens Bluff quando presença ou presença oculta for estabelecida canonicamente.
+conhecimento: []
+plano_atual:
+  estado: sem_plano_registrado
+  acao: null
+  prazo_ou_oportunidade: Reavaliar somente quando uma chegada, viagem ou presença em Ravens Bluff for estabelecida canonicamente.
+fontes_canonicas:
+  - narrador/juppongatana/membros.md
+  - narrador/juppongatana/marcos-de-aparicao.md
+  - narrador/verdade-da-campanha.md
