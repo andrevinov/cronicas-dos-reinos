@@ -1,0 +1,427 @@
+schema_snapshot_mundo_vivo: 1
+origem:
+  sessao: 8
+  descricao: >-
+    Recorte operacional congelado do estado real da campanha ao fim da sessão 8,
+    usado apenas para regressão do Mundo Vivo. Não é fonte canônica da campanha.
+  head_referencia: 05a51d9202614f02db93ee9e4831620a2a5ffa4e
+  tempo: '10 Eleasis, 1372 DR 17:42'
+  nivel_ren: 6
+  hashes_fontes:
+    estado/tempo.yaml: 50f835f398f06fe1fdea240dd0ff58f01af08a0e
+    narrador/mundo/estado.yaml: f8c4d828593debdd38d2cdfded4b2f4b401598da
+    narrador/mundo/agenda.yaml: a905396082b116d6a8a206d1e70f27d513172f35
+    narrador/mundo/ciclo-npcs.yaml: ad6b2fc188b0ce452277be4599e40b478e888739
+    narrador/direcoes/index.yaml: ce2fa65870c928ed09565e6a36f7abb20ca31330
+    narrador/direcoes/estado.yaml: e3a5a0da62faad6df37abef66d96d3abc94b54fe
+    narrador/entradas/index.yaml: f437766948b3a5e72c5e9a3c4fcb068c09c414e9
+    narrador/entradas/estado.yaml: 228d818629e21f2229bebe56d6694c2c1f5906f4
+    narrador/agentes-leves/index.yaml: 4801bed2faa9a8d069edbde0394aa069f5f7020c
+    narrador/agentes-leves/estado.yaml: 5895eb075fba01bb22d7dda196dec602c8225684
+    narrador/agentes/index.yaml: 6875f6fee4fd6c01872182a4606908bad47b4eae
+    narrador/eventos/index.yaml: ea5e323bee7b5817975a14441cc8aaef88a6ff6a
+    narrador/eventos/estado.yaml: c26957f32859baedd5471d1acbcf13a99a36f90b
+    narrador/eventos/interacoes.yaml: 51270b6c0037754fef9645d84ecf53ae5502de2a
+arquivos:
+  estado/tempo.yaml:
+    schema_tempo: 1
+    natureza: tempo_atual
+    data_atual: '10 Eleasis, 1372 DR'
+    hora_aproximada: '17:42 de 10 Eleasis'
+
+  runtime/contexto.yaml:
+    sessao:
+      numero: 8
+      status: entre_sessoes
+    personagem:
+      nome: Ren Kagehira
+      nivel: 6
+
+  narrador/mundo/estado.yaml:
+    schema_estado_mundo: 1
+    natureza: controle_reservado
+    descricao: Cursor e fila operacional do motor determinístico; não é fonte independente de fatos da campanha.
+    processado_ate:
+      data: '10 Eleasis, 1372 DR'
+      hora: '17:42'
+    pendencias: []
+    concluidas_recentes: []
+
+  narrador/mundo/agenda.yaml:
+    schema_agenda_mundo: 1
+    natureza: reservado
+    hora_amanhecer: '06:00'
+    descricao: Agenda operacional congelada para regressão da sessão 8.
+    reavaliacoes:
+      red_sail:
+        cadencia: amanhecer
+        intervalo_dias: 1
+        inicio: '11 Eleasis, 1372 DR'
+        motivo: A busca ativa da Red Sail produz decisões operacionais diárias mesmo sem nova iniciativa de Ren.
+      night_watch:
+        cadencia: amanhecer
+        intervalo_dias: 1
+        inicio: '11 Eleasis, 1372 DR'
+        motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar prioridades a cada novo dia.
+      casa_de_tyr:
+        cadencia: amanhecer
+        intervalo_dias: 2
+        inicio: '11 Eleasis, 1372 DR'
+        motivo: A investigação reservada de Tyr continua fora da presença de Ren, mas não exige releitura diária completa.
+      kurobane_jinzaburo:
+        cadencia: amanhecer
+        intervalo_dias: 2
+        inicio: '12 Eleasis, 1372 DR'
+        motivo: Kurobane está canonicamente presente em Ravens Bluff e pode procurar novas janelas para documentos, mensagens ou extração.
+      masao_hirasawa:
+        cadencia: amanhecer
+        intervalo_dias: 3
+        inicio: '12 Eleasis, 1372 DR'
+        motivo: O plano estratégico de Masao continua em movimento, mas sua escala não exige reavaliação a cada amanhecer.
+    agendamentos: []
+
+  narrador/mundo/ciclo-npcs.yaml:
+    schema_ciclo_npcs: 1
+    natureza: controle_reservado
+    descricao: Registro terminal congelado; nenhuma morte sincronizada neste snapshot.
+    mortos: {}
+
+  narrador/direcoes/index.yaml:
+    schema_direcoes: 1
+    natureza: reservado
+    descricao: Índice congelado das direções canônicas no snapshot da sessão 8.
+    direcoes:
+      ponte_de_kozakura:
+        nome: Ponte de Kozakura
+        arquivo: narrador/direcoes/ponte_de_kozakura.yaml
+        avaliacao:
+          cadencia: amanhecer
+          intervalo_dias: 2
+          inicio: '12 Eleasis, 1372 DR'
+        ativacao: null
+      shin_kozakura:
+        nome: Shin-Kozakura
+        arquivo: narrador/direcoes/shin_kozakura.yaml
+        avaliacao:
+          cadencia: amanhecer
+          intervalo_dias: 7
+          inicio: '11 Eleasis, 1372 DR'
+        ativacao:
+          depende_de:
+            direcao: ponte_de_kozakura
+            marco: perda_controle_exclusivo
+
+  narrador/direcoes/estado.yaml:
+    schema_estado_direcoes: 1
+    natureza: controle_reservado
+    descricao: Estado congelado das direções na sessão 8.
+    direcoes:
+      ponte_de_kozakura:
+        estado: ativa
+        marco_atual: coisas_plausiveis
+        marcos_concluidos: []
+        historico_recente: []
+      shin_kozakura:
+        estado: latente
+        marco_atual: uso_controlado
+        marcos_concluidos: []
+        historico_recente: []
+
+  narrador/entradas/index.yaml:
+    schema_entradas: 1
+    natureza: reservado
+    descricao: Ordem de aparição congelada no snapshot da sessão 8.
+    cadencia_padrao_dias: 3
+    candidatos:
+      shen_meihua:
+        nome: Shen Meihua
+        ordem: 1
+        nivel_minimo_normal: 6
+        arquivo: narrador/entradas/shen_meihua.yaml
+      tsukishiro_joen:
+        nome: Tsukishiro Jōen
+        ordem: 2
+        nivel_minimo_normal: 7
+        arquivo: narrador/entradas/tsukishiro_joen.yaml
+      dame_jenilynn_leyland:
+        nome: Dame Jenilynn Leyland
+        ordem: 3
+        nivel_minimo_normal: 8
+        arquivo: narrador/entradas/dame_jenilynn_leyland.yaml
+      kagehira_hotaru:
+        nome: Kagehira Hotaru
+        ordem: 4
+        nivel_minimo_normal: 9
+        arquivo: narrador/entradas/kagehira_hotaru.yaml
+      tadasu_no_kami:
+        nome: Tadasu no Kami
+        ordem: 5
+        nivel_minimo_normal: 11
+        arquivo: narrador/entradas/tadasu_no_kami.yaml
+
+  narrador/entradas/estado.yaml:
+    schema_estado_entradas: 1
+    natureza: controle_reservado
+    descricao: Controle congelado de elegibilidade de aparição.
+    candidatos:
+      shen_meihua:
+        estado: latente
+        antecipado: false
+        proxima_avaliacao:
+          data: '11 Eleasis, 1372 DR'
+          hora: '06:00'
+        historico_recente: []
+      tsukishiro_joen:
+        estado: latente
+        antecipado: false
+        proxima_avaliacao: null
+        historico_recente: []
+      dame_jenilynn_leyland:
+        estado: latente
+        antecipado: false
+        proxima_avaliacao: null
+        historico_recente: []
+      kagehira_hotaru:
+        estado: latente
+        antecipado: false
+        proxima_avaliacao: null
+        historico_recente: []
+      tadasu_no_kami:
+        estado: latente
+        antecipado: false
+        proxima_avaliacao: null
+        historico_recente: []
+
+  narrador/agentes-leves/index.yaml:
+    schema_agentes_leves: 1
+    natureza: reservado
+    descricao: NPCs recorrentes leves congelados no snapshot da sessão 8.
+    orcamento:
+      max_novas_por_checkpoint: 1
+      max_pendencias_abertas: 2
+      ordenacao: mais_atrasado_prioridade_id
+    agentes:
+      luath:
+        nome: Luath
+        perfil_operacional: recorrente_leve
+        estado: ativo
+        prioridade: 3
+        intervalo_dias: 3
+        inicio:
+          data: '13 Eleasis, 1372 DR'
+          hora: '06:00'
+        arquivo: narrador/agentes-leves/luath.yaml
+      silva_elkwood:
+        nome: Silva Elkwood
+        perfil_operacional: recorrente_leve
+        estado: ativo
+        prioridade: 2
+        intervalo_dias: 4
+        inicio:
+          data: '14 Eleasis, 1372 DR'
+          hora: '06:00'
+        arquivo: narrador/agentes-leves/silva_elkwood.yaml
+      maerra_thandrel:
+        nome: Irmã Maerra Thandrel
+        perfil_operacional: recorrente_leve
+        estado: ativo
+        prioridade: 2
+        intervalo_dias: 5
+        inicio:
+          data: '15 Eleasis, 1372 DR'
+          hora: '06:00'
+        arquivo: narrador/agentes-leves/maerra_thandrel.yaml
+
+  narrador/agentes-leves/estado.yaml:
+    schema_estado_agentes_leves: 1
+    natureza: controle_reservado
+    descricao: Próximas reavaliações congeladas no snapshot da sessão 8.
+    agentes:
+      luath:
+        estado: ativo
+        proxima_avaliacao:
+          data: '13 Eleasis, 1372 DR'
+          hora: '06:00'
+      silva_elkwood:
+        estado: ativo
+        proxima_avaliacao:
+          data: '14 Eleasis, 1372 DR'
+          hora: '06:00'
+      maerra_thandrel:
+        estado: ativo
+        proxima_avaliacao:
+          data: '15 Eleasis, 1372 DR'
+          hora: '06:00'
+
+  narrador/agentes/index.yaml:
+    schema_agentes: 2
+    natureza: reservado
+    descricao: Recorte dos agentes relevantes aos dois amanheceres de regressão.
+    agentes:
+      masao_hirasawa:
+        nome: Masao Hirasawa
+        tipo: npc
+        estado: ativo
+        presenca: indeterminado
+        atuacao_local: permite_rede
+        arquivo: narrador/agentes/masao_hirasawa.yaml
+      kurobane_jinzaburo:
+        nome: Kurobane Jinzaburō
+        tipo: npc
+        estado: ativo
+        presenca: presente
+        atuacao_local: exige_presenca_fisica
+        arquivo: narrador/agentes/kurobane_jinzaburo.yaml
+      red_sail:
+        nome: Red Sail
+        tipo: faccao
+        estado: ativo
+        presenca: distribuida
+        atuacao_local: estrutura_local
+        arquivo: narrador/agentes/red_sail.yaml
+      night_watch:
+        nome: Night Watch
+        tipo: instituicao
+        estado: ativo
+        presenca: ancorada
+        atuacao_local: estrutura_local
+        arquivo: narrador/agentes/night_watch.yaml
+      casa_de_tyr:
+        nome: Casa de Tyr
+        tipo: instituicao
+        estado: ativo
+        presenca: ancorada
+        atuacao_local: estrutura_local
+        arquivo: narrador/agentes/casa_de_tyr.yaml
+
+  narrador/eventos/index.yaml:
+    schema_eventos_mundo: 1
+    natureza: reservado
+    descricao: Baralho congelado para regressão do snapshot da sessão 8.
+    semente: '1372DR:RavensBluff:RenKagehira'
+    inicio:
+      data: '11 Eleasis, 1372 DR'
+      hora: '06:00'
+    ocorrencia:
+      fichas:
+      - {id: rotina_01, resultado: rotina}
+      - {id: rotina_02, resultado: rotina}
+      - {id: rotina_03, resultado: rotina}
+      - {id: rotina_04, resultado: rotina}
+      - {id: rotina_05, resultado: rotina}
+      - {id: rotina_06, resultado: rotina}
+      - {id: rotina_07, resultado: rotina}
+      - {id: evento_01, resultado: evento}
+      - {id: evento_02, resultado: evento}
+      - {id: evento_03, resultado: evento}
+    cartas:
+      incendio_urbano_localizado:
+        nome: Incêndio urbano localizado
+        categoria: crise_urbana
+        escala: bairro
+        tags: [fogo, resgate, logistica, autoridades]
+        arquivo: narrador/eventos/cartas/incendio_urbano_localizado.yaml
+      inspecao_portuaria_reforcada:
+        nome: Inspeção portuária reforçada
+        categoria: controle_institucional
+        escala: cidade
+        tags: [porto, fiscalizacao, comercio, documentos]
+        arquivo: narrador/eventos/cartas/inspecao_portuaria_reforcada.yaml
+      chuva_torrencial_e_alagamentos:
+        nome: Chuva torrencial e alagamentos
+        categoria: ambiente
+        escala: cidade
+        tags: [clima, deslocamento, logistica, atraso]
+        arquivo: narrador/eventos/cartas/chuva_torrencial_e_alagamentos.yaml
+      procissao_local:
+        nome: Procissão ou celebração local
+        categoria: vida_civica
+        escala: bairro
+        tags: [multidao, religiao, ruas, vida_civica]
+        arquivo: narrador/eventos/cartas/procissao_local.yaml
+      acidente_no_porto:
+        nome: Acidente no porto
+        categoria: acidente
+        escala: bairro
+        tags: [porto, acidente, comercio, logistica]
+        arquivo: narrador/eventos/cartas/acidente_no_porto.yaml
+      disputa_entre_guildas:
+        nome: Disputa entre guildas ou ofícios
+        categoria: tensao_economica
+        escala: cidade
+        tags: [guildas, comercio, politica_local, protesto]
+        arquivo: narrador/eventos/cartas/disputa_entre_guildas.yaml
+      escassez_pontual:
+        nome: Escassez pontual de mercadoria
+        categoria: economia
+        escala: cidade
+        tags: [comercio, precos, fornecimento, logistica]
+        arquivo: narrador/eventos/cartas/escassez_pontual.yaml
+      chegada_de_viajantes_incomuns:
+        nome: Chegada de viajantes incomuns
+        categoria: movimento_de_pessoas
+        escala: cidade
+        tags: [viajantes, porto, estrangeiros, rumor]
+        arquivo: narrador/eventos/cartas/chegada_de_viajantes_incomuns.yaml
+      surto_de_doenca_leve:
+        nome: Surto de doença leve
+        categoria: saude_publica
+        escala: bairro
+        tags: [saude, templos, trabalho, rotina]
+        arquivo: narrador/eventos/cartas/surto_de_doenca_leve.yaml
+      boato_que_move_multidao:
+        nome: Boato que move uma multidão
+        categoria: rumor_publico
+        escala: bairro
+        tags: [rumor, multidao, ruas, informacao]
+        arquivo: narrador/eventos/cartas/boato_que_move_multidao.yaml
+
+  narrador/eventos/estado.yaml:
+    schema_estado_eventos_mundo: 1
+    natureza: controle_reservado
+    descricao: Curso congelado dos dois baralhos na sessão 8.
+    processado_ate:
+      data: '10 Eleasis, 1372 DR'
+      hora: '06:00'
+    ocorrencia:
+      ciclo: 0
+      restantes: []
+    eventos:
+      ciclo: 0
+      restantes: []
+    historico_recente: []
+
+  narrador/eventos/interacoes.yaml:
+    schema_interacoes_eventos: 1
+    natureza: roteador_reservado
+    descricao: Sensibilidades operacionais congeladas no snapshot da sessão 8.
+    orcamento:
+      max_estrategicos_por_evento: 2
+      max_leves_por_evento: 1
+      ordenacao: coincidencias_prioridade_id
+    estrategicos:
+      red_sail:
+        prioridade: 5
+        tags: [porto, comercio, documentos, fiscalizacao, fornecimento, precos, estrangeiros, rumor, logistica]
+      night_watch:
+        prioridade: 5
+        tags: [autoridades, fiscalizacao, protesto, multidao, rumor, acidente, ruas, estrangeiros, resgate, porto]
+      casa_de_tyr:
+        prioridade: 3
+        tags: [documentos, fiscalizacao, autoridades, informacao]
+      kurobane_jinzaburo:
+        prioridade: 3
+        tags: [documentos, rumor, estrangeiros, deslocamento]
+      masao_hirasawa:
+        prioridade: 2
+        tags: [documentos, rumor, estrangeiros, comercio]
+    leves:
+      luath:
+        prioridade: 3
+        tags: [autoridades, fiscalizacao, protesto, multidao, rumor, acidente, ruas, estrangeiros, informacao, porto, resgate]
+      silva_elkwood:
+        prioridade: 2
+        tags: [fogo, resgate, logistica, clima, deslocamento, precos, fornecimento, saude, trabalho, rotina, rumor, multidao]
+      maerra_thandrel:
+        prioridade: 2
+        tags: [resgate, religiao, saude, templos, trabalho, rotina, multidao]
