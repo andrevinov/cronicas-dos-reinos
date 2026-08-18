@@ -18,7 +18,7 @@ presenca:
   estado: presente
   detalhe: Kurobane foi encontrado e perseguido em Ravens Bluff; até haver saída ou viagem registrada, permanece elegível para ações físicas locais.
   fonte: sessoes/007/handoff.yaml
-  evidencia: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
+  evidencia: Kurobane o recolheu com kuroito e Ren o tomou dele.
 mobilidade:
   estado: sem_deslocamento_registrado
   origem: null
