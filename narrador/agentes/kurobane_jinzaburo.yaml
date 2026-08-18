@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: kurobane_jinzaburo
 nome: Kurobane Jinzaburō
@@ -13,15 +13,30 @@ restricoes:
   - evita matar quando isso não traz vantagem
   - prefere vencer o objetivo da operação em vez de buscar luta justa
   - depende de janela física de acesso ao alvo ou à rota da mensagem
+presenca:
+  referencia: Ravens Bluff
+  estado: presente
+  detalhe: Kurobane foi encontrado e perseguido em Ravens Bluff; até haver saída ou viagem registrada, permanece elegível para ações físicas locais.
+  fonte: sessoes/007/handoff.yaml
+  evidencia: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Ações locais dependem da presença física na área de referência.
 conhecimento:
   - id: funcao_documental
     fato: Sua função na Juppongatana é alcance, furto, infiltração vertical, roubo de mensagens e extração de documentos.
     fonte: narrador/juppongatana/membros.md
-    evidencia: "Função na Juppongatana: alcance, furto, infiltração vertical, roubo de mensagens e extração de documentos."
+    evidencia: 'Função na Juppongatana: alcance, furto, infiltração vertical, roubo de mensagens e extração de documentos.'
   - id: objetivo_contra_provas
     fato: Uma operação típica sua em Ravens Bluff é roubar, substituir ou copiar documento antes que vire prova útil contra Masao.
     fonte: narrador/juppongatana/marcos-de-aparicao.md
-    evidencia: "Objetivo: roubar, substituir ou copiar documento antes que vire prova útil contra Masao"
+    evidencia: 'Objetivo: roubar, substituir ou copiar documento antes que vire prova útil contra Masao'
 plano_atual:
   estado: aguardando_oportunidade
   acao: Identificar uma nova janela de acesso a prova, mensagem ou cadeia documental que ameace Masao.
@@ -29,3 +44,4 @@ plano_atual:
 fontes_canonicas:
   - narrador/juppongatana/membros.md
   - narrador/juppongatana/marcos-de-aparicao.md
+  - sessoes/007/handoff.yaml
