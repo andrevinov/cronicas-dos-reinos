@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: kajiwara_shizune
 nome: Kajiwara Shizune
@@ -13,6 +13,21 @@ restricoes:
   - prefere arruinar, desacreditar ou prender legalmente a matar sem ganho estrutural
   - evita exposição pessoal quando papel, identidade ou terceiro podem resolver
   - não transformar suspeitas ainda não confirmadas em fato canônico
+presenca:
+  referencia: Ravens Bluff
+  estado: indeterminado
+  detalhe: Há sinais compatíveis com sua atuação, mas a presença física de Shizune em Ravens Bluff ainda não foi fixada como fato canônico nesta camada.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Enquanto a presença permanecer indeterminada, Shizune não é elegível para novas ações físicas locais; sinais existentes não bastam para canonizar sua chegada.
 conhecimento:
   - id: valor_do_selo
     fato: Shizune entende especialmente bem o valor do Selo da Lua Velada.
