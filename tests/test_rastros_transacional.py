@@ -142,6 +142,34 @@ class RastrosTransacionaisTest(unittest.TestCase):
         self.assertIn("narrador/rastros/index.yaml", batch["arquivos_afetados"])
         self.assertEqual(batch["deltas"], 2)
 
+    def test_queda_no_meio_recupera_conhecimento_e_rastro_do_mesmo_journal(self):
+        prepared = self.prepared()
+        self.base.register(
+            "tx-rastro-crash",
+            prepared["deltas_transacionais"],
+            summary="Ren descobre o rastro antes de uma queda simulada.",
+        )
+        with self.assertRaises(consolidar.ConsolidationError):
+            consolidar.consolidate(self.repo, "cena", fail_after=1)
+        self.assertTrue((self.repo / consolidar.JOURNAL_PATH).is_file())
+
+        recovered = consolidar.consolidate(self.repo, "cena")
+        self.assertTrue(recovered["recuperada"])
+        self.assertFalse((self.repo / consolidar.JOURNAL_PATH).exists())
+        self.assertEqual(
+            self.read_yaml("narrador/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
+            "descoberto",
+        )
+        fragment = self.repo / "personagens/jogador/conhecimento/incrementais/sessao-003/tx-tx-rastro-crash.md"
+        self.assertTrue(fragment.is_file())
+        self.assertIn(
+            "Alguém passou recentemente por ali trazendo lama azul nas botas.",
+            fragment.read_text(encoding="utf-8"),
+        )
+        ledger = consolidar.load_ledger(self.repo, 3)
+        self.assertEqual(len(ledger), 1)
+        self.assertEqual(ledger[0]["rastros_descobertos"], [self.trace_id])
+
     def test_conhecimento_mais_forte_que_o_rastro_falha_antes_do_stage(self):
         prepared = self.prepared()
         pair = prepared["deltas_transacionais"]
