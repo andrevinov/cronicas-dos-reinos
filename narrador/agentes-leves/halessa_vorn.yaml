@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: halessa_vorn
+nome: Irmã Halessa Vorn
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Manter cadeia de custódia, triagem reservada e comunicação institucional do caso sob responsabilidade de Tyr.
+  fonte: estado/relacoes/halessa_vorn.yaml
+  evidencia: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+objetivo_atual:
+  descricao: Preservar prova e testemunhas sem expor Ren ou o circo, mantendo cooperação futura condicionada a objetivo, rota e limites prévios.
+  fonte: estado/relacoes/halessa_vorn.yaml
+  evidencia: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+iniciativas_possiveis:
+- descricao: Mobilizar preservação institucional urgente quando prova ou local sob o caso correr risco concreto.
+  fonte: estado/relacoes/halessa_vorn.yaml
+  evidencia: Mobilizou preservação urgente da Casa de Pesos com Luath e duas testemunhas de Tyr, sem aguardar o amanhecer.
+- descricao: Negociar futura cooperação clandestina apenas se Ren apresentar antes objetivo, rota e limites.
+  fonte: estado/relacoes/halessa_vorn.yaml
+  evidencia: Admite discutir futura cooperação clandestina se Ren apresentar antes da ação o objetivo, a rota e os limites que aceita observar.
+regra_de_reavaliacao: Rotina jurídica e custódia são o padrão; só criar mudança persistente diante de nova prova, ameaça à cadeia de custódia, necessidade de contato protegido ou proposta concreta de cooperação.
+fontes_canonicas:
+- estado/relacoes/halessa_vorn.yaml
