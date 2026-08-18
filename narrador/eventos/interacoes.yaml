@@ -93,3 +93,44 @@ leves:
     - trabalho
     - rotina
     - multidao
+  kethra_dunn:
+    prioridade: 3
+    tags:
+    - rumor
+    - informacao
+    - documentos
+    - estrangeiros
+  bram_vask:
+    prioridade: 2
+    tags:
+    - comercio
+    - precos
+    - rumor
+    - ruas
+    - fornecimento
+    - documentos
+  halessa_vorn:
+    prioridade: 2
+    tags:
+    - autoridades
+    - fiscalizacao
+    - documentos
+    - informacao
+    - templos
+  jack_mooney:
+    prioridade: 2
+    tags:
+    - fogo
+    - resgate
+    - comercio
+    - precos
+    - multidao
+    - rumor
+  pell:
+    prioridade: 2
+    tags:
+    - rumor
+    - informacao
+    - ruas
+    - porto
+    - comercio
