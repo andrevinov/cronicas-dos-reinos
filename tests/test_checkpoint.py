@@ -59,6 +59,7 @@ class CheckpointMemoryTest(unittest.TestCase):
             result = checkpoint.checkpoint(self.repo, "cena")
 
         self.assertEqual(result["canonico"], fake)
+        self.assertFalse(result["mundo"]["configurado"])
         self.assertTrue((self.repo / "sessoes/003/handoff.yaml").is_file())
         self.assertTrue((self.repo / "sessoes/index.yaml").is_file())
         handoff = yaml.safe_load((self.repo / "sessoes/003/handoff.yaml").read_text(encoding="utf-8"))
