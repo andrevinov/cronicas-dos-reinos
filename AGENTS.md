@@ -1,4 +1,4 @@
-# AGENTS.md — roteador operacional de Crônicas dos Reinos
+# AGENTS.md — roteador operacional
 
 Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa exigir.
 
