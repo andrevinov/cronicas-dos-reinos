@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: masao_hirasawa
 nome: Masao Hirasawa
@@ -14,6 +14,21 @@ restricoes:
   - evitar exposição suficiente para provocar coalizão regional preparada
   - preservar, se possível, o controle exclusivo da Ponte de Kozakura
   - não tratar Ren como ameaça central antes que os fatos obriguem essa revisão
+presenca:
+  referencia: Ravens Bluff
+  estado: indeterminado
+  detalhe: A localização física atual de Masao não está fixada por esta camada; sua rede local pode operar sem exigir sua presença física.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: permite_rede
+  escopo: Ravens Bluff
+  observacao: Masao pode ordenar, financiar ou redirecionar operações em Ravens Bluff por sua rede mesmo quando sua presença física estiver indeterminada.
 conhecimento:
   - id: ravens_bluff_primeiro_degrau
     fato: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo úteis ao primeiro degrau do plano.
