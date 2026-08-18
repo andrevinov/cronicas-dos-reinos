@@ -1,6 +1,13 @@
 schema_relogio: 1
 id: rastro_fraco_no_pomar
 natureza: reservado
+vinculo_agencial:
+  tipo: pressao
+  estado: ativo
+  operacao: red_sail_reconstruir_cadeia_colm
+  agente_principal: red_sail
+  papel_agente: explorador
+  agentes_relacionados: []
 relogio:
   titulo: Rastro fraco no pomar
   progresso: 1

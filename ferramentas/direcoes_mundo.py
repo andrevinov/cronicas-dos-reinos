@@ -2,9 +2,10 @@
 """Integra camadas canônicas de baixa frequência à fila do Mundo Vivo.
 
 Lifecycle de NPCs roda primeiro: uma morte já consolidada desliga agenda e
-pendências antes que direções, entradas, agentes leves ou `mundo.py` possam
-reconsiderar o NPC. As demais camadas nunca fazem acontecimentos ocorrerem
-sozinhas.
+pendências antes que outras camadas reconsiderem o NPC. Em seguida, relógios
+sincronizam pressão→consequência e recompõem seu roteador derivado. Direções,
+entradas e agentes recorrentes leves observam o mesmo checkpoint antes de
+``mundo.py`` mover o cursor. Nenhuma camada faz acontecimentos ocorrerem sozinha.
 """
 from __future__ import annotations
 
@@ -17,6 +18,7 @@ import ciclo_npcs
 import direcoes
 import entradas
 import mundo
+import relogios
 
 
 def _direction_pending_id(kind: str, direction_id: str, when: mundo.WorldInstant) -> str:
@@ -66,15 +68,20 @@ def _activation_records(index, direction_state, world_state, when):
         if activation is None:
             continue
         dep = activation["depende_de"]
-        result.append({
-            "id": _direction_pending_id("ativar_direcao", direction_id, when),
-            "tipo": "ativar_direcao",
-            "direcao": direction_id,
-            "agentes_afetados": [],
-            "disparado_em": mundo.instant_parts(when),
-            "motivo": f"A dependência canônica {dep['direcao']}.{dep['marco']} foi satisfeita; avaliar a ativação sem escolher cena automaticamente.",
-            "origem": f"direcoes:{direction_id}.ativacao",
-        })
+        result.append(
+            {
+                "id": _direction_pending_id("ativar_direcao", direction_id, when),
+                "tipo": "ativar_direcao",
+                "direcao": direction_id,
+                "agentes_afetados": [],
+                "disparado_em": mundo.instant_parts(when),
+                "motivo": (
+                    f"A dependência canônica {dep['direcao']}.{dep['marco']} foi satisfeita; "
+                    "avaliar a ativação sem escolher cena automaticamente."
+                ),
+                "origem": f"direcoes:{direction_id}.ativacao",
+            }
+        )
     return result
 
 
@@ -101,15 +108,20 @@ def _evaluation_records(index, direction_state, world_state, agenda, start, end)
         if not due:
             continue
         when = due[-1]
-        result.append({
-            "id": _direction_pending_id("avaliar_direcao", direction_id, when),
-            "tipo": "avaliar_direcao",
-            "direcao": direction_id,
-            "agentes_afetados": [],
-            "disparado_em": mundo.instant_parts(when),
-            "motivo": f"Reavaliar o marco {current.get('marco_atual')} da direção {meta['nome']} contra os fatos canônicos já ocorridos; cadência não implica avanço.",
-            "origem": f"direcoes:{direction_id}.avaliacao",
-        })
+        result.append(
+            {
+                "id": _direction_pending_id("avaliar_direcao", direction_id, when),
+                "tipo": "avaliar_direcao",
+                "direcao": direction_id,
+                "agentes_afetados": [],
+                "disparado_em": mundo.instant_parts(when),
+                "motivo": (
+                    f"Reavaliar o marco {current.get('marco_atual')} da direção {meta['nome']} "
+                    "contra os fatos canônicos já ocorridos; cadência não implica avanço."
+                ),
+                "origem": f"direcoes:{direction_id}.avaliacao",
+            }
+        )
     return result
 
 
@@ -124,6 +136,17 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     if ciclo_npcs.configured(repo):
         lifecycle_result = {"configurado": True, **ciclo_npcs.sync(repo)}
 
+    clocks_result = {
+        "ok": True,
+        "configurado": False,
+        "pressoes_ativas": 0,
+        "consequencias_resolvidas": 0,
+        "resolvidos_agora": [],
+        "roteador_alterado": False,
+    }
+    if relogios.configured(repo):
+        clocks_result = {"configurado": True, **relogios.sync(repo)}
+
     index = direcoes.load_index(repo)
     direction_state = direcoes.load_state(repo, index)
     world_state = mundo.load_world_state(repo)
@@ -134,8 +157,17 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
         raise direcoes.DirectionError("cursor do Mundo Vivo está à frente do tempo canônico")
 
     emitted = _activation_records(index, direction_state, world_state, canonical)
-    emitted.extend(_evaluation_records(index, direction_state, world_state, agenda, cursor, canonical))
-    emitted.sort(key=lambda item: (mundo.parse_instant(item["disparado_em"]["data"], item["disparado_em"]["hora"]).minute, item["id"]))
+    emitted.extend(
+        _evaluation_records(index, direction_state, world_state, agenda, cursor, canonical)
+    )
+    emitted.sort(
+        key=lambda item: (
+            mundo.parse_instant(
+                item["disparado_em"]["data"], item["disparado_em"]["hora"]
+            ).minute,
+            item["id"],
+        )
+    )
     added = mundo._merge_pending(world_state, emitted)
     if added:
         mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
@@ -156,6 +188,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     return {
         "ok": True,
         "ciclo_npcs": lifecycle_result,
+        "relogios": clocks_result,
         "novas_pendencias": [
             *added,
             *(entry_result.get("novas_pendencias") or []),
@@ -167,6 +200,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
         "agentes_leves_adiados": light_result.get("adiados_por_orcamento") or [],
         "fontes_lidas": [
             *(lifecycle_result.get("fontes_lidas") or []),
+            *(clocks_result.get("fontes_expostas") or []),
             direcoes.INDEX_PATH.as_posix(),
             direcoes.STATE_PATH.as_posix(),
             mundo.WORLD_STATE_PATH.as_posix(),
@@ -184,7 +218,17 @@ def check_repo(repo: Path) -> dict[str, Any]:
     try:
         if ciclo_npcs.configured(repo):
             lifecycle_check = ciclo_npcs.validate_repo(repo)
-            errors.extend(f"ciclo de NPCs: {error}" for error in lifecycle_check.get("erros") or [])
+            errors.extend(
+                f"ciclo de NPCs: {error}"
+                for error in lifecycle_check.get("erros") or []
+            )
+        if relogios.configured(repo):
+            clocks_check = relogios.validate_repo(repo)
+            errors.extend(
+                f"relógios: {error}"
+                for error in clocks_check.get("erros") or []
+            )
+
         index = direcoes.load_index(repo)
         known = set(index["direcoes"])
         world_state = mundo.load_world_state(repo)
@@ -192,19 +236,27 @@ def check_repo(repo: Path) -> dict[str, Any]:
             if item.get("tipo") in {"avaliar_direcao", "ativar_direcao"}:
                 direction_id = item.get("direcao")
                 if direction_id not in known:
-                    errors.append(f"pendência do mundo referencia direção inexistente: {direction_id}")
+                    errors.append(
+                        f"pendência do mundo referencia direção inexistente: {direction_id}"
+                    )
         if _entries_configured(repo):
             entry_check = entradas.check_world(repo)
-            errors.extend(f"entradas: {error}" for error in entry_check.get("erros") or [])
+            errors.extend(
+                f"entradas: {error}" for error in entry_check.get("erros") or []
+            )
         if _light_agents_configured(repo):
             light_check = agentes_leves.check_world(repo)
-            errors.extend(f"agentes leves: {error}" for error in light_check.get("erros") or [])
+            errors.extend(
+                f"agentes leves: {error}"
+                for error in light_check.get("erros") or []
+            )
     except (
         agentes_leves.LightAgentError,
         ciclo_npcs.LifecycleError,
         direcoes.DirectionError,
         entradas.EntryError,
         mundo.WorldEngineError,
+        relogios.ClockError,
     ) as exc:
         errors.append(str(exc))
     return {"ok": not errors, "erros": list(dict.fromkeys(errors))}
