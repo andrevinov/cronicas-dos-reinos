@@ -1,0 +1,13 @@
+schema_estado_eventos_mundo: 1
+natureza: controle_reservado
+descricao: Curso dos dois baralhos; não é conhecimento de Ren nem registro de fatos que já aconteceram.
+processado_ate:
+  data: 10 Eleasis, 1372 DR
+  hora: 06:00
+ocorrencia:
+  ciclo: 0
+  restantes: []
+eventos:
+  ciclo: 0
+  restantes: []
+historico_recente: []

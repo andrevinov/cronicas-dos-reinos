@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: surto_de_doenca_leve
+nome: Surto de doença leve
+categoria: saude_publica
+escala: bairro
+premissa: Uma doença comum e não catastrófica circula acima do normal em uma área da cidade, aumentando procura
+  por repouso e cuidados.
+pergunta_de_resolucao: Onde o surto está concentrado, qual sua gravidade real e que serviços ficam mais pressionados?
+guardrails:
+- Não criar epidemia letal, praga mágica ou morte automática.
+- Não atingir NPC nomeado sem resolução explícita.
+- A carta pode produzir apenas sobrecarga local e rumores.
+tags:
+- saude
+- templos
+- trabalho
+- rotina

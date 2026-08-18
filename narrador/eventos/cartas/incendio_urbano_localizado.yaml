@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: incendio_urbano_localizado
+nome: Incêndio urbano localizado
+categoria: crise_urbana
+escala: bairro
+premissa: Um incêndio atinge uma construção ou pequeno conjunto de construções em uma área plausível de Ravens
+  Bluff.
+pergunta_de_resolucao: Onde o fogo começou, quão grave ele realmente é e que traços duráveis deixa no mundo?
+guardrails:
+- Não colocar o incêndio automaticamente perto de Ren ou de seus aliados.
+- Não destruir local canônico importante sem causa e resolução explícitas.
+- A carta cria uma oportunidade de acontecimento; detalhes só viram cânone ao serem registrados.
+tags:
+- fogo
+- resgate
+- logistica
+- autoridades

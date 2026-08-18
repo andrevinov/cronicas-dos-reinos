@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: escassez_pontual
+nome: Escassez pontual de mercadoria
+categoria: economia
+escala: cidade
+premissa: Uma mercadoria comum fica temporariamente mais difícil ou cara de obter por atraso, compra concentrada
+  ou problema de fornecimento.
+pergunta_de_resolucao: Qual mercadoria foi afetada, qual causa plausível existe e quem sente primeiro a mudança?
+guardrails:
+- Não escolher item crítico da ficha de Ren por conveniência.
+- Não transformar escassez curta em fome ou colapso sem causa adicional.
+- Preços e duração só mudam se forem registrados como consequência.
+tags:
+- comercio
+- precos
+- fornecimento
+- logistica

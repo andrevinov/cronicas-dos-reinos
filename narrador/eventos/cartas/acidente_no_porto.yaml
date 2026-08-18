@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: acidente_no_porto
+nome: Acidente no porto
+categoria: acidente
+escala: bairro
+premissa: Uma operação de carga, embarcação ou estrutura portuária sofre um acidente que interrompe uma parte
+  do fluxo local.
+pergunta_de_resolucao: Que tipo de acidente ocorreu, qual trecho foi afetado e quanto tempo leva para normalizar?
+guardrails:
+- Não afundar embarcação canônica específica sem suporte.
+- Não presumir sabotagem.
+- Manter a escala localizada salvo consequência registrada depois.
+tags:
+- porto
+- acidente
+- comercio
+- logistica

@@ -1,0 +1,81 @@
+schema_eventos_mundo: 1
+natureza: reservado
+descricao: Baralho determinístico sem reposição para acontecimentos de fundo em Ravens Bluff; sorteio não cria
+  cânone por si só.
+semente: 1372DR:RavensBluff:RenKagehira
+inicio:
+  data: 11 Eleasis, 1372 DR
+  hora: 06:00
+ocorrencia:
+  fichas:
+  - id: rotina_01
+    resultado: rotina
+  - id: rotina_02
+    resultado: rotina
+  - id: rotina_03
+    resultado: rotina
+  - id: rotina_04
+    resultado: rotina
+  - id: rotina_05
+    resultado: rotina
+  - id: rotina_06
+    resultado: rotina
+  - id: rotina_07
+    resultado: rotina
+  - id: evento_01
+    resultado: evento
+  - id: evento_02
+    resultado: evento
+  - id: evento_03
+    resultado: evento
+cartas:
+  incendio_urbano_localizado:
+    nome: Incêndio urbano localizado
+    categoria: crise_urbana
+    escala: bairro
+    arquivo: narrador/eventos/cartas/incendio_urbano_localizado.yaml
+  inspecao_portuaria_reforcada:
+    nome: Inspeção portuária reforçada
+    categoria: controle_institucional
+    escala: cidade
+    arquivo: narrador/eventos/cartas/inspecao_portuaria_reforcada.yaml
+  chuva_torrencial_e_alagamentos:
+    nome: Chuva torrencial e alagamentos
+    categoria: ambiente
+    escala: cidade
+    arquivo: narrador/eventos/cartas/chuva_torrencial_e_alagamentos.yaml
+  procissao_local:
+    nome: Procissão ou celebração local
+    categoria: vida_civica
+    escala: bairro
+    arquivo: narrador/eventos/cartas/procissao_local.yaml
+  acidente_no_porto:
+    nome: Acidente no porto
+    categoria: acidente
+    escala: bairro
+    arquivo: narrador/eventos/cartas/acidente_no_porto.yaml
+  disputa_entre_guildas:
+    nome: Disputa entre guildas ou ofícios
+    categoria: tensao_economica
+    escala: cidade
+    arquivo: narrador/eventos/cartas/disputa_entre_guildas.yaml
+  escassez_pontual:
+    nome: Escassez pontual de mercadoria
+    categoria: economia
+    escala: cidade
+    arquivo: narrador/eventos/cartas/escassez_pontual.yaml
+  chegada_de_viajantes_incomuns:
+    nome: Chegada de viajantes incomuns
+    categoria: movimento_de_pessoas
+    escala: cidade
+    arquivo: narrador/eventos/cartas/chegada_de_viajantes_incomuns.yaml
+  surto_de_doenca_leve:
+    nome: Surto de doença leve
+    categoria: saude_publica
+    escala: bairro
+    arquivo: narrador/eventos/cartas/surto_de_doenca_leve.yaml
+  boato_que_move_multidao:
+    nome: Boato que move uma multidão
+    categoria: rumor_publico
+    escala: bairro
+    arquivo: narrador/eventos/cartas/boato_que_move_multidao.yaml
