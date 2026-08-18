@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: pell
+nome: Pell
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Circular como mensageiro local e sobreviver por informação, pagamento e discrição.
+  fonte: estado/relacoes/pell.yaml
+  evidencia: mensageiro local
+objetivo_atual:
+  descricao: Ganhar os bônus prometidos sem ser visto perguntando diretamente por alvos ligados à Red Sail e a Brass.
+  fonte: estado/relacoes/pell.yaml
+  evidencia: 'Ganhar os bônus prometidos sem ser visto perguntando diretamente: 1 PO por informação imobiliária realmente interessante e 2 PO por paradeiro ou caminhos de Brass.'
+iniciativas_possiveis:
+- descricao: Procurar informação pagável por vias indiretas e deixar relatório quando houver algo concreto.
+  fonte: estado/relacoes/pell.yaml
+  evidencia: Ren reforçou que informações sobre a Red Sail sempre serão pagas
+- descricao: Fugir ou vender informação sobre Ren se uma ameaça concreta superar o incentivo de continuar cooperando.
+  fonte: estado/relacoes/pell.yaml
+  evidencia: Se for ameaçado, Pell deve tentar fugir ou vender a informação sobre Ren para quem pagar primeiro.
+regra_de_reavaliacao: Mensageria e autopreservação são o padrão; só criar iniciativa quando surgir informação concreta com valor, ameaça direta ou oportunidade de pagamento que justifique o risco.
+fontes_canonicas:
+- estado/relacoes/pell.yaml
