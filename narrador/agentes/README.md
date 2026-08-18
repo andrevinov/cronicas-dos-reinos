@@ -1,95 +1,46 @@
 # Agentes autônomos
 
-Camada operacional reservada para NPCs, facções e instituições capazes de agir
-fora da presença de Ren.
+Camada operacional reservada para NPCs, facções e instituições capazes de agir fora da presença de Ren.
 
-Ela **não substitui** `narrador/masao/`, `narrador/juppongatana/`, relógios,
-relações, sessões ou qualquer outra fonte canônica. Os fragmentos daqui apenas
-condensam o estado de agência necessário para responder rapidamente:
+Ela **não substitui** `narrador/masao/`, `narrador/juppongatana/`, relógios, relações, sessões ou qualquer outra fonte canônica. Os fragmentos daqui apenas condensam o estado de agência necessário para responder rapidamente: objetivo, recursos, restrições, presença, mobilidade, atuação local, conhecimento e plano corrente.
 
-- o que o agente quer agora;
-- quais recursos importam para esse objetivo;
-- quais restrições limitam sua ação;
-- o que ele realmente sabe;
-- qual plano está ativo;
-- qual prazo ou oportunidade pode disparar uma revisão.
+## Presença e mobilidade
 
-## Contrato
+`presenca.estado` pode ser `presente`, `presente_oculto`, `fora_da_area`, `em_viagem`, `indeterminado`, `distribuida` ou `ancorada`. Presença concreta de NPC (`presente`, `presente_oculto`, `fora_da_area`, `em_viagem`) exige `fonte` e `evidencia`, para impedir que uma suspeita vire chegada canônica apenas por conveniência narrativa.
 
-Cada agente fica em um YAML próprio. `index.yaml` contém somente metadados de
-roteamento para que consultar um agente não carregue os demais.
+`mobilidade.estado` pode ser `sem_deslocamento_registrado`, `chegada_planejada`, `saida_planejada`, `em_deslocamento` ou `nao_aplicavel`. Chegada, saída e viagem são estado do mundo. Se Kurobane sair para outra cidade, por exemplo, a mobilidade deve ser registrada e ele deixa de estar elegível para ação física em Ravens Bluff durante a ausência.
 
-Campos obrigatórios do fragmento:
+## Elegibilidade local
 
-```yaml
-schema_agente: 1
-natureza: reservado
-id: exemplo
-nome: Exemplo
-tipo: npc # npc | faccao | instituicao
-estado: ativo # ativo | latente | inativo
-objetivo_atual: ...
-recursos: [...]
-restricoes: [...]
-conhecimento:
-  - id: fato_estavel
-    fato: ...
-    fonte: caminho/canonico.md
-    evidencia: trecho curto existente na fonte
-plano_atual:
-  estado: em_execucao
-  acao: ...
-  prazo_ou_oportunidade: ...
-fontes_canonicas:
-  - caminho/canonico.md
-```
+`atuacao_local.regra` define a relação entre presença e agência: `exige_presenca_fisica`, `permite_rede`, `estrutura_local` ou `depende_de_membros_presentes`. `ferramentas/agentes.py mostrar` calcula `elegibilidade_local` como `sim`, `nao` ou `condicional`; o valor é derivado, não persistido.
 
-Estados possíveis de `plano_atual.estado`:
+Membro individual da Juppongatana só pode executar ação física em Ravens Bluff se estiver `presente` ou `presente_oculto`. Estado `indeterminado`, `fora_da_area` ou `em_viagem` bloqueia essa ação. Agentes `latente` ou `inativo` também ficam inelegíveis.
 
-- `em_execucao`;
-- `aguardando_oportunidade`;
-- `requer_reavaliacao`;
-- `sem_plano_registrado`.
+## Presença não é conhecimento de Ren
 
-`sem_plano_registrado` exige `acao: null`. Não inventar um plano apenas para
-preencher o campo.
+`presenca` pertence ao domínio reservado do narrador. Marcar alguém como `presente_oculto` não cria conhecimento para Ren e não exige que a narração anuncie a chegada. Ren só passa a saber por percepção, descoberta, comunicação ou inferência legítima registrada pelas camadas normais de conhecimento.
 
-## Proveniência do conhecimento
+## Juppongatana
 
-Todo item em `conhecimento` precisa apontar para uma `fonte` declarada em
-`fontes_canonicas` e trazer uma `evidencia` curta localizável nessa fonte.
-`ferramentas/agentes.py validar` verifica mecanicamente essas referências.
+Os dez membros possuem fragmentos individuais. Kurobane já tem presença canonicamente estabelecida em Ravens Bluff. A presença de Shizune permanece indeterminada: os sinais atuais não são promovidos a confirmação. Os demais começam `latente` e `indeterminado`; isso não afirma onde estão, apenas impede ação física local antes que chegada/presença seja estabelecida.
 
-Isso não prova interpretação semântica perfeita, mas impede que a camada de
-agência acumule fatos sem qualquer sustentação no cânone existente.
+O coletivo `juppongatana` usa `depende_de_membros_presentes`: sua existência não significa que todos estejam na cidade nem autoriza operações individuais sem consultar o membro correspondente.
 
-## Uso econômico
+## Economia de contexto
 
-Consulta dirigida:
+`index.yaml` guarda apenas metadados mínimos, presença resumida e regra de atuação local. A consulta dirigida continua abrindo somente índice + fragmento:
 
 ```bash
 python3 ferramentas/agentes.py mostrar shizune
-python3 ferramentas/agentes.py mostrar red_sail
+python3 ferramentas/agentes.py mostrar pan_chu
 ```
 
-Essas consultas abrem apenas:
-
-1. `narrador/agentes/index.yaml`;
-2. o fragmento solicitado.
-
-Elas não percorrem outros agentes nem abrem as fontes canônicas.
-
-Validação ampla, reservada a manutenção/CI:
+A validação ampla permanece fora do loop narrativo:
 
 ```bash
 python3 ferramentas/agentes.py validar
 ```
 
-A validação percorre todos os fragmentos e suas fontes. Não deve ser executada a
-cada turno de narração.
-
 ## Limite desta etapa
 
-Esta camada registra **agência possível e estado operacional**, mas ainda não
-decide quando o mundo deve processar ações. O agendamento temporal e o futuro
-motor de mundo pertencem às etapas seguintes.
+Esta camada registra agência possível, presença e mobilidade, mas ainda não decide quando o mundo deve processar ações, iniciar viagens ou consumar chegadas. O agendamento temporal e o futuro `mundo.py` pertencem à etapa seguinte.
