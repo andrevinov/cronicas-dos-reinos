@@ -1,0 +1,58 @@
+schema_direcao: 1
+natureza: reservado
+id: shin_kozakura
+nome: Shin-Kozakura
+estatuto: canonica_obrigatoria
+principio: >-
+  Depois que Masao perder o controle exclusivo da Ponte de Kozakura, uma
+  comunidade kozakurana permanente surgirá em Ravens Bluff ao longo de semanas,
+  meses e anos; forma, conflitos e agentes concretos permanecem emergentes.
+fontes_canonicas:
+  - narrador/ponte-de-kozakura/README.md
+  - narrador/ponte-de-kozakura/shin-kozakura.md
+marcos:
+  - id: uso_controlado
+    ordem: 1
+    titulo: Uso controlado da passagem
+    fonte: narrador/ponte-de-kozakura/shin-kozakura.md
+    evidencia: '### Fase 1: uso controlado'
+    criterio_para_avancar: >-
+      A passagem já suporta fluxo legítimo pequeno e vigiado, com autoridades,
+      intérpretes, guardas ou escribas tentando regular quem atravessa.
+    guardrails:
+      - Não transformar a abertura em trânsito irrestrito.
+      - Burocracia e criminalidade devem crescer junto com a oportunidade.
+  - id: casas_adaptadas
+    ordem: 2
+    titulo: Casas adaptadas
+    fonte: narrador/ponte-de-kozakura/shin-kozakura.md
+    evidencia: '### Fase 2: casas adaptadas'
+    criterio_para_avancar: >-
+      Kozakuranos passam a permanecer em Ravens Bluff e adaptar imóveis locais
+      para comércio, hospedagem, culto e vida cotidiana.
+    guardrails:
+      - Ainda é presença em estruturas ravenians, não o bairro arquitetônico final.
+      - Tensões com guildas, templos e moradores fazem parte da fase.
+  - id: construcao_deliberada
+    ordem: 3
+    titulo: Construção deliberadamente kozakurana
+    fonte: narrador/ponte-de-kozakura/shin-kozakura.md
+    evidencia: '### Fase 3: construção deliberada'
+    criterio_para_avancar: >-
+      A rota é estável o bastante para atravessarem artesãos, arquitetos,
+      materiais e técnicas capazes de construir deliberadamente como em Kozakura.
+    guardrails:
+      - A forma física deve tentar reproduzir Kozakura de verdade.
+      - Não reduzir o bairro a fachada turística ou exotismo decorativo.
+  - id: cultura_nova
+    ordem: 4
+    titulo: Cultura nova
+    fonte: narrador/ponte-de-kozakura/shin-kozakura.md
+    evidencia: '### Fase 4: cultura nova'
+    criterio_para_avancar: >-
+      A comunidade já produz práticas híbridas, relações próprias e identidade
+      local suficiente para Shin-Kozakura existir como terceira coisa entre
+      Kozakura e Ravens Bluff.
+    guardrails:
+      - Não apagar Ravens Bluff nem transformar Kozakura em decoração.
+      - A consolidação do nome deve emergir dos próprios kozakuranos.

@@ -1,0 +1,68 @@
+schema_direcao: 1
+natureza: reservado
+id: ponte_de_kozakura
+nome: Ponte de Kozakura
+estatuto: canonica_obrigatoria
+principio: >-
+  A passagem permanente entre Ravens Bluff e Kozakura será revelada ao longo da
+  campanha, mas forma, momento, responsáveis e consequências emergem do jogo.
+fontes_canonicas:
+  - narrador/ponte-de-kozakura/README.md
+  - narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+marcos:
+  - id: coisas_plausiveis
+    ordem: 1
+    titulo: Coisas plausíveis
+    fonte: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    evidencia: '## Fase 1: coisas plausíveis'
+    criterio_para_avancar: >-
+      Há sinais materiais orientais suficientes para que o padrão exista no
+      mundo, ainda com explicações marítimas plausíveis caso a caso.
+    guardrails:
+      - Não permitir que uma pista isolada prove a existência da passagem.
+      - Nem toda mercadoria oriental pertence à operação de Masao.
+  - id: contabilidade_impossivel
+    ordem: 2
+    titulo: Contabilidade impossível
+    fonte: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    evidencia: '## Fase 2: contabilidade impossível'
+    criterio_para_avancar: >-
+      Investigadores ou agentes do mundo começam a comparar casos e encontram
+      volumes, datas, manifestos ou conservação incompatíveis com a rota comum.
+    guardrails:
+      - A inconsistência pode inicialmente parecer fraude, erro ou contrabando.
+      - Shizune e Kurobane podem interferir sem que a ponte seja revelada.
+  - id: pessoas_sem_porto
+    ordem: 3
+    titulo: Pessoas sem porto
+    fonte: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    evidencia: '## Fase 3: pessoas sem porto'
+    criterio_para_avancar: >-
+      A anomalia deixa de ser apenas material: pessoas recentes de Kozakura
+      surgem sem rota marítima coerente ou alguém cruza nos dois sentidos.
+    guardrails:
+      - Nem todo recém-chegado serve Masao.
+      - Presença sem porto não significa conhecimento imediato de Ren.
+  - id: descoberta_da_passagem
+    ordem: 4
+    titulo: Descoberta da passagem
+    fonte: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    evidencia: '## Fase 4: descoberta da passagem'
+    criterio_para_avancar: >-
+      A existência física da passagem está legitimamente estabelecida no mundo
+      por descoberta, captura de infraestrutura, investigação ou outro caminho
+      causal sustentado pela campanha.
+    guardrails:
+      - Não transportar Ren contra sua escolha.
+      - A passagem precisa manter custo, risco, controle e consequência.
+  - id: perda_controle_exclusivo
+    ordem: 5
+    titulo: Perda do controle exclusivo de Masao
+    fonte: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    evidencia: '## Fase 5: ameaça controlada'
+    criterio_para_avancar: >-
+      Masao deixa de ser o único controlador operacional da passagem e outros
+      atores conseguem vigiá-la, disputá-la ou utilizá-la legitimamente.
+    guardrails:
+      - Masao ainda pode infiltrar, corromper ou sabotar a rota.
+      - O marco é perda de monopólio, não neutralização completa da ameaça.
