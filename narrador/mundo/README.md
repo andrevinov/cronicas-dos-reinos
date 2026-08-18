@@ -40,6 +40,10 @@ turno persiste transcrição + delta
 
 Nenhuma camada usa prosa ou delta não consolidado como fato.
 
+Quando uma cena contém descoberta de rastro, ela continua usando o **mesmo writer
+de turno**. O par `conhecimento + rastro:estado` fica no buffer normal e entra no
+mesmo staging/journal da consolidação; não há uma terceira escrita no turno.
+
 ## Economia de contexto
 
 - agentes estratégicos: o motor nunca abre fragmentos automaticamente;
@@ -49,7 +53,9 @@ Nenhuma camada usa prosa ou delta não consolidado como fato.
 - relógios: roteador derivado por agente;
 - eventos: índice + estado; em dia `rotina` nem o roteador de interações é lido;
 - rastros: `candidatos` usa só índice + localização canônica + tempo; o fragmento
-  entra apenas depois que um ID relevante foi encontrado.
+  entra apenas depois que um ID relevante foi encontrado;
+- transações sem `rastro:*`: delegam imediatamente ao consolidator legado, sem
+  abrir índice ou fragmento de rastro.
 
 Lookup dirigido:
 
@@ -119,16 +125,16 @@ revelar segredo ou escolher autoria. Detalhes: `../eventos/README.md`.
 
 ## Verdade reservada → rastro → conhecimento
 
-O passo 7 estabelece uma barreira explícita:
+Os passos 7 e 8 fecham a barreira completa:
 
 ```text
 fato canônico reservado
         ↓ pode deixar
 rastro observável
         ↓ se Ren perceber/investigar
-descoberta
-        ↓ transação
-conhecimento de Ren
+descoberta no turno
+        ↓ mesma consolidação/journal
+conhecimento de Ren + rastro marcado descoberto
 ```
 
 Um fato off-screen **não cria conhecimento automaticamente**. O rastro registra
@@ -137,9 +143,23 @@ redigida por `rastros.py mostrar`.
 
 `rastros.py candidatos` filtra por tempo, cidade/área/ponto, modo de acesso e tags
 sem abrir fragmentos. Rastros de `investigacao` não aparecem na consulta automática.
-`preparar-descoberta` é somente leitura e devolve um delta sugerido para
-`alvo: conhecimento`; ele não o instala. A integração atômica entre descoberta,
-transação e consumo/arquivamento do rastro pertence ao passo 8.
 
-A instalação começa com índice vazio: nenhuma pista antiga é recriada
-retroativamente. Detalhes: `../rastros/README.md`.
+Quando Ren efetivamente descobre um rastro, `preparar-descoberta` produz dois deltas
+inseparáveis:
+
+1. `conhecimento / registrar`, contendo exatamente `fato_observavel` e fonte pública
+   `rastro:<id>`;
+2. `rastro:<id> / set estado=descoberto`, reservado ao narrador.
+
+O schema recusa pares incompletos **antes** das duas escritas do turno. No
+checkpoint, o consolidator reabre somente o rastro descoberto, confirma que o texto
+público não excede a evidência observável e inclui conhecimento + índice de rastros
+no **mesmo plano staged e no mesmo journal**. Se houver queda durante a instalação,
+a recuperação do journal termina exatamente o lote já preparado.
+
+Depois da consolidação, o rastro deixa de aparecer em `candidatos`, mas seu
+fragmento continua disponível para consulta explícita sem revelar a origem secreta.
+O ledger do batch registra `rastros_descobertos`.
+
+A instalação começou com índice vazio: nenhuma pista antiga foi recriada
+retroativamente. Detalhes e comando `descobrir`: `../rastros/README.md`.
