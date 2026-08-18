@@ -1,8 +1,8 @@
 # Motor reservado do Mundo Vivo
 
 Esta pasta guarda somente o **controle determinístico** do mundo que continua em
-movimento fora da presença de Ren. Ela não substitui agentes, direções, sessões,
-relógios, relações ou qualquer outra fonte canônica.
+movimento fora da presença de Ren. Ela não substitui agentes, direções, entradas,
+sessões, relógios, relações ou qualquer outra fonte canônica.
 
 ## Arquivos
 
@@ -66,6 +66,7 @@ A ordem é obrigatória:
 turno persiste transcrição + delta
 → checkpoint consolida o novo tempo canônico
 → direções canônicas avaliam o intervalo sem avançar marcos
+→ entradas elegíveis de aliados são filtradas sem fazer ninguém aparecer
 → mundo.py processa até esse tempo
 → handoff/índice são reconstruídos
 ```
@@ -82,8 +83,10 @@ raro em que o marcador já existe na transcrição e o evento não está mais no
 buffer. Se o ID já aparece no ledger, a operação é considerada consolidada e não
 é reaplicada.
 
-Pendências de direção usam IDs estáveis. Se houver falha depois que uma delas foi
-criada e antes do cursor do mundo avançar, repetir o checkpoint não a duplica.
+Pendências de direção e entrada usam IDs estáveis. Se houver falha depois que uma
+delas foi criada e antes do cursor do mundo avançar, repetir o checkpoint não a
+duplica. A próxima avaliação de entrada também avança deterministicamente três
+dias, impedindo que o mesmo aliado volte a ser consultado em todo checkpoint.
 
 ## Economia de contexto
 
@@ -97,6 +100,11 @@ A camada de direções, executada apenas em checkpoints, lê somente
 as fontes canônicas para decidir se uma avaliação venceu.** O fragmento só entra
 depois, quando existe uma pendência concreta a resolver.
 
+A camada de entradas segue a mesma regra: lê apenas índice, estado, nível atual e
+tempo. Mantém **um único candidato normal por vez** e no máximo uma antecipação
+extraordinária. O fragmento individual do aliado só é aberto depois que existe
+`avaliar_entrada`.
+
 Exemplo de saída conceitual:
 
 ```yaml
@@ -105,6 +113,9 @@ agentes_reconsiderar:
 
 direcoes_reconsiderar:
   - ponte_de_kozakura
+
+entradas_reconsiderar:
+  - shen_meihua
 ```
 
 Só depois disso o narrador usa consultas dirigidas:
@@ -112,6 +123,7 @@ Só depois disso o narrador usa consultas dirigidas:
 ```bash
 python3 ferramentas/agentes.py mostrar red_sail
 python3 ferramentas/direcoes.py mostrar ponte_de_kozakura
+python3 ferramentas/entradas.py mostrar shen_meihua
 ```
 
 ## Direções narrativas canônicas
@@ -140,15 +152,40 @@ A implementação inicial possui duas direções encadeadas:
 
 Detalhes e comandos ficam em `narrador/direcoes/README.md`.
 
+## Entrada e aparição de aliados
+
+`avaliar_entrada` significa somente que chegou uma janela razoável para consultar
+um aliado futuro. **Não significa que ele chegou.** O narrador abre apenas o
+fragmento indicado e compara seus gatilhos com os fatos já ocorridos.
+
+O caminho padrão segue a ordem canônica Shen → Jōen → Jenilynn → Hotaru → Tadasu.
+Só o primeiro ainda não presente fica agendado. O nível mínimo normal é uma
+filtragem operacional derivada da janela preferencial de cada aliado; se ainda não
+for suficiente, a avaliação é adiada automaticamente por três dias sem abrir o
+fragmento.
+
+A ordem continua sendo preferência, não trilho. Quando investigação, pedido de
+ajuda, risco ou ação de antagonista justificarem furá-la, usar `entradas.py
+antecipar <id> --origem ... --nota ...`. Só uma antecipação pode existir por vez e
+ela será avaliada no próximo amanhecer. Nada disso produz entrada automática.
+
+Depois que o aliado **realmente apareceu em cena**, usar `entradas.py confirmar`
+com origem e nota. Isso marca a entrada como cumprida e agenda o próximo candidato
+normal para o amanhecer seguinte. A pendência correspondente continua sendo
+fechada por `mundo.py concluir`.
+
+Detalhes: `narrador/entradas/README.md`.
+
 ## Cadência não é ação
 
-Uma cadência de amanhecer significa **reavaliar**, não obrigar agente ou direção a
-avançar nem garantir que Ren perceberá qualquer coisa. O narrador ainda deve
-respeitar conhecimento, presença, mobilidade, recursos, restrições e causalidade.
+Uma cadência de amanhecer significa **reavaliar**, não obrigar agente, direção ou
+entrada a avançar nem garantir que Ren perceberá qualquer coisa. O narrador ainda
+deve respeitar conhecimento, presença, mobilidade, recursos, restrições e
+causalidade.
 
 Cadências podem ser espaçadas conforme a escala: uma facção em busca ativa pode
 ser reconsiderada diariamente; um antagonista estratégico, a cada vários dias;
-uma direção histórica, ainda mais lentamente.
+uma direção histórica ou uma entrada futura, ainda mais lentamente.
 
 ## Agendamentos determinísticos
 
