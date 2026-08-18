@@ -29,6 +29,10 @@ narrador/
 │   ├── README.md
 │   ├── index.yaml
 │   └── <agente>.yaml
+├── mundo/
+│   ├── README.md
+│   ├── agenda.yaml
+│   └── estado.yaml
 ├── aliados/
 │   ├── README.md
 │   ├── personagens.md
@@ -76,13 +80,22 @@ atravessar várias horas relevantes.
 
 `agentes/` é a camada operacional fragmentada para NPCs, facções e instituições
 capazes de agir fora da presença de Ren. Ela não substitui as fontes canônicas:
-cada fragmento aponta para elas e registra somente objetivo atual, recursos,
-restrições, conhecimento sustentado e plano corrente.
+cada fragmento aponta para elas e registra objetivo atual, recursos, restrições,
+conhecimento sustentado, presença, mobilidade e plano corrente.
 
 Durante narração, consultar um agente de forma dirigida com
 `python3 ferramentas/agentes.py mostrar <id-ou-nome>`. A validação ampla
 `python3 ferramentas/agentes.py validar` pertence a manutenção/CI e não ao loop
 normal de cada turno.
+
+## Mundo Vivo
+
+`mundo/` guarda a agenda determinística, o cursor de processamento e as decisões
+pendentes. `checkpoint.py cena` e `checkpoint.py sessao` sincronizam o motor
+depois que o tempo já foi consolidado. Além disso, `turno.py registrar` promove
+checkpoint de cena automaticamente quando o tempo efetivo acumula pelo menos duas
+horas desde o último cursor ou atravessa o amanhecer configurado. Passagens
+pequenas continuam no fluxo transacional comum.
 
 ## Antagonistas maiores
 
