@@ -1,6 +1,6 @@
-schema_agentes: 1
+schema_agentes: 2
 natureza: reservado
-descricao: Índice mínimo de agentes capazes de agir fora da presença de Ren.
+descricao: Índice mínimo de agentes capazes de agir fora da presença de Ren, com presença resumida para pré-filtragem sem abrir todos os fragmentos.
 consulta_recomendada: python3 ferramentas/agentes.py mostrar <id-ou-nome>
 validacao: python3 ferramentas/agentes.py validar
 agentes:
@@ -8,34 +8,104 @@ agentes:
     nome: Masao Hirasawa
     tipo: npc
     estado: ativo
+    presenca: indeterminado
+    atuacao_local: permite_rede
     arquivo: narrador/agentes/masao_hirasawa.yaml
   juppongatana:
     nome: Juppongatana
     tipo: faccao
     estado: ativo
+    presenca: distribuida
+    atuacao_local: depende_de_membros_presentes
     arquivo: narrador/agentes/juppongatana.yaml
   kurobane_jinzaburo:
     nome: Kurobane Jinzaburō
     tipo: npc
     estado: ativo
+    presenca: presente
+    atuacao_local: exige_presenca_fisica
     arquivo: narrador/agentes/kurobane_jinzaburo.yaml
   kajiwara_shizune:
     nome: Kajiwara Shizune
     tipo: npc
     estado: ativo
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
     arquivo: narrador/agentes/kajiwara_shizune.yaml
+  pan_chu:
+    nome: Pan Chu
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/pan_chu.yaml
+  sawagejo_cho:
+    nome: Sawagejō Chō
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/sawagejo_cho.yaml
+  yukyuzan_anji:
+    nome: Yūkyūzan Anji
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/yukyuzan_anji.yaml
+  uonuma_usui:
+    nome: Uonuma Usui
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/uonuma_usui.yaml
+  kureha_shiranui:
+    nome: Kureha Shiranui
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/kureha_shiranui.yaml
+  amagiri_seishiro:
+    nome: Amagiri Seishirō
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/amagiri_seishiro.yaml
+  wetuji:
+    nome: Wetuji
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/wetuji.yaml
+  fuji:
+    nome: Fuji
+    tipo: npc
+    estado: latente
+    presenca: indeterminado
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/fuji.yaml
   red_sail:
     nome: Red Sail
     tipo: faccao
     estado: ativo
+    presenca: distribuida
+    atuacao_local: estrutura_local
     arquivo: narrador/agentes/red_sail.yaml
   night_watch:
     nome: Night Watch
     tipo: instituicao
     estado: ativo
+    presenca: ancorada
+    atuacao_local: estrutura_local
     arquivo: narrador/agentes/night_watch.yaml
   casa_de_tyr:
     nome: Casa de Tyr
     tipo: instituicao
     estado: ativo
+    presenca: ancorada
+    atuacao_local: estrutura_local
     arquivo: narrador/agentes/casa_de_tyr.yaml
