@@ -83,11 +83,13 @@ Durante cada avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime/handoff nem executar Git, testes ou telemetria;
-- registrar jogador+narrador+deltas por stdin em uma chamada de `turno.py registrar`;
+- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório e não usar arquivo temporário;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
 - `narracao` é a cena completa; `resumo` é compressão; `deltas` são apenas mudanças persistentes;
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
 - rolagens ocultas relevantes permanecem reservadas até consolidação.
+
+Telemetria é estritamente pós-hoc: `analisar-rollout.py` e `comparar-rollouts.py` nunca rodam durante o avanço narrativo ao vivo.
 
 Quando NPC/local precisar de textura e o contexto não bastar, preferir `contexto.py npc` / `contexto.py local`. Não consultar textura a cada turno. `contexto.py retomada` retoma sem reler transcrição.
 
