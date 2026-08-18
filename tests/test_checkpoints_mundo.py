@@ -100,10 +100,7 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
     def test_duas_horas_acumuladas_disparam_checkpoint(self):
         prior = transacoes.build_pending_record(self.tx("18:42 de 10 Eleasis"), 3)
         current = transacoes.build_pending_record(
-            {
-                **self.tx("19:42 de 10 Eleasis"),
-                "id": "segundo-avanco",
-            },
+            {**self.tx("19:42 de 10 Eleasis"), "id": "segundo-avanco"},
             3,
         )
         trigger = turno.detect_world_checkpoint(self.repo, [prior], current)
@@ -177,10 +174,7 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
         (self.repo / "sessoes/003/transcricao.md").write_text(
             f"# Sessão 003\n\n{marker}\n**Narrador**\n\ntexto\n", encoding="utf-8"
         )
-        ledger = {
-            "id": "batch-1",
-            "transacoes": [record["id"]],
-        }
+        ledger = {"id": "batch-1", "transacoes": [record["id"]]}
         (self.repo / "sessoes/003/consolidacoes.jsonl").write_text(
             json.dumps(ledger, ensure_ascii=False) + "\n", encoding="utf-8"
         )
@@ -234,6 +228,21 @@ class CheckpointWorldIntegrationTest(unittest.TestCase):
         ):
             result = checkpoint.checkpoint(self.repo, "cena")
         self.assertEqual(order[:2], ["canonico", "mundo"])
+        self.assertTrue(result["mundo"]["configurado"])
+
+    def test_checkpoint_de_sessao_tambem_sincroniza_mundo(self):
+        fake = {"sessao": 3, "tipo": "sessao", "sem_pendencias": True}
+        with patch.object(checkpoint.consolidar, "consolidate", return_value=fake), patch.object(
+            checkpoint.ciclo_sessoes,
+            "encerrar",
+            return_value={"status": "entre_sessoes"},
+        ), patch.object(
+            checkpoint,
+            "sync_world",
+            return_value={"configurado": True, "alterou": False, "novas_pendencias": []},
+        ) as sync:
+            result = checkpoint.checkpoint(self.repo, "sessao")
+        sync.assert_called_once_with(self.repo)
         self.assertTrue(result["mundo"]["configurado"])
 
     def test_checkpoint_sem_motor_configurado_continua_compativel(self):
