@@ -105,6 +105,7 @@ class OportunidadesSinteticasTest(unittest.TestCase):
             "pendencias_avaliacao": {},
             "missoes": {},
             "sementes_consumidas": [],
+            "encontros_recentes": [],
             "historico_recente": [],
         }
         self.profile_a = self.profile(
@@ -289,7 +290,12 @@ class OportunidadesSinteticasTest(unittest.TestCase):
 
     def test_descartar_semente_impede_repeticao(self):
         self.force_gate("oportunidade")
-        first = oportunidades.encounter(self.repo, "npc_a", now=self.now)["pendencia"]
+        first = oportunidades.encounter(
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="encontro-1",
+        )["pendencia"]
         first_need = first["necessidade_id"]
         oportunidades.evaluate(
             self.repo,
@@ -300,7 +306,12 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         )
 
         self.force_gate("oportunidade")
-        second = oportunidades.encounter(self.repo, "npc_a", now=self.now)["pendencia"]
+        second = oportunidades.encounter(
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="encontro-2",
+        )["pendencia"]
         self.assertNotEqual(second["necessidade_id"], first_need)
 
     def test_limite_de_ativas_bloqueia_gate_sem_abrir_perfil(self):
@@ -319,6 +330,33 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         self.assertEqual(result["motivo"], "limite_de_sidequests_ativas")
         self.assertEqual(
             result["fontes_lidas"],
+            [
+                "narrador/oportunidades/index.yaml",
+                "narrador/oportunidades/estado.yaml",
+            ],
+        )
+
+    def test_mesmo_encontro_nao_sorteia_duas_vezes(self):
+        self.force_gate("nada")
+        first = oportunidades.encounter(
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="sessao-1:cena-2:npc-a",
+        )
+        self.assertEqual(first["motivo"], "gate_sem_oportunidade")
+        self.assertEqual(self.read_state()["gate"]["sorteios"], 1)
+
+        second = oportunidades.encounter(
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="sessao-1:cena-2:npc-a",
+        )
+        self.assertEqual(second["motivo"], "encontro_ja_processado")
+        self.assertEqual(self.read_state()["gate"]["sorteios"], 1)
+        self.assertEqual(
+            second["fontes_lidas"],
             [
                 "narrador/oportunidades/index.yaml",
                 "narrador/oportunidades/estado.yaml",

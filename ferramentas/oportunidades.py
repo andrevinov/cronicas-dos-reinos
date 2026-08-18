@@ -223,6 +223,9 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
     consumed = alist(data.get("sementes_consumidas"), "sementes_consumidas")
     if len(consumed) != len(set(consumed)):
         raise OpportunityError("sementes_consumidas contém duplicatas")
+    encounters = alist(data.get("encontros_recentes"), "encontros_recentes")
+    if len(encounters) > MAX_HISTORY or len(encounters) != len(set(encounters)):
+        raise OpportunityError("encontros_recentes inválido")
     history = alist(data.get("historico_recente"), "historico_recente")
     if len(history) > MAX_HISTORY:
         raise OpportunityError("histórico recente grande demais")
@@ -449,11 +452,22 @@ def _blocked_for_npc(state: dict[str, Any], npc_id: str) -> str | None:
     return None
 
 
+def _encounter_key(
+    npc_id: str,
+    now: mundo.WorldInstant,
+    encounter_id: str | None,
+) -> str:
+    if encounter_id is not None:
+        return text(encounter_id, "encontro_id")
+    return f"auto:{npc_id}:{now.minute}"
+
+
 def encounter(
     repo: Path,
     npc_id: str,
     *,
     now: mundo.WorldInstant | None = None,
+    encounter_id: str | None = None,
 ) -> dict[str, Any]:
     index = load_index(repo)
     sources = [INDEX.as_posix(), STATE.as_posix()]
@@ -471,6 +485,18 @@ def encounter(
     current, time_sources = _now(repo, now)
     sources.extend(time_sources)
     changed = prune_expired(state, current)
+    encounter_key = _encounter_key(npc_id, current, encounter_id)
+    if encounter_key in state["encontros_recentes"]:
+        if changed:
+            atomic(repo / STATE, state)
+        return {
+            "ok": True,
+            "resultado": "interacao_normal",
+            "motivo": "encontro_ja_processado",
+            "npc_id": npc_id,
+            "encontro_id": encounter_key,
+            "fontes_lidas": list(dict.fromkeys(sources)),
+        }
 
     budget = index["orcamento"]
     active, opened = _mission_counts(state)
@@ -512,6 +538,8 @@ def encounter(
             "fontes_lidas": list(dict.fromkeys(sources)),
         }
 
+    state["encontros_recentes"].append(encounter_key)
+    state["encontros_recentes"] = state["encontros_recentes"][-MAX_HISTORY:]
     token, result = draw_gate(state, index)
     if result == "nada":
         atomic(repo / STATE, state)
@@ -521,6 +549,7 @@ def encounter(
             "motivo": "gate_sem_oportunidade",
             "ficha": token,
             "npc_id": npc_id,
+            "encontro_id": encounter_key,
             "fontes_lidas": list(dict.fromkeys(sources)),
         }
 
@@ -552,6 +581,7 @@ def encounter(
         "resultado": "avaliar_sidequest",
         "ficha": token,
         "npc_id": npc_id,
+        "encontro_id": encounter_key,
         "pendencia": pending,
         "instrucao": (
             "Avaliar se a semente faz sentido com o estado canônico atual do NPC. "
@@ -902,6 +932,7 @@ def main() -> int:
 
     p_enc = sub.add_parser("encontro")
     p_enc.add_argument("npc_id")
+    p_enc.add_argument("--encontro-id")
     p_enc.add_argument("--data")
     p_enc.add_argument("--hora")
 
@@ -944,7 +975,12 @@ def main() -> int:
     repo = args.repo.resolve()
     try:
         if args.cmd == "encontro":
-            result = encounter(repo, args.npc_id, now=_instant_arg(args.data, args.hora))
+            result = encounter(
+                repo,
+                args.npc_id,
+                now=_instant_arg(args.data, args.hora),
+                encounter_id=args.encontro_id,
+            )
         elif args.cmd == "avaliar":
             result = evaluate(
                 repo,

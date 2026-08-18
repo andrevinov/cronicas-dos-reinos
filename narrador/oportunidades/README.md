@@ -72,7 +72,8 @@ Além do gate:
 - máximo de **3 em aberto** (`oferecida`, `aceita`, `adiada`);
 - máximo de **1 pendência global de avaliação**;
 - NPC com side quest em aberto não gera outra;
-- semente descartada ou usada é consumida e não reaparece como missão duplicada.
+- semente descartada ou usada é consumida e não reaparece como missão duplicada;
+- um `encontro_id` estável torna o gate idempotente: a mesma cena/NPC nunca sorteia duas vezes.
 
 Recusas ficam registradas. Uma semente marcada `pode_reabrir: true` pode ser
 reaberta explicitamente no futuro, preservando o mesmo ID em vez de criar cópia.
@@ -146,7 +147,7 @@ A integração automática com o pipeline de encontro/lifecycle permanece para a
 etapa final de integração. Hoje a porta explícita é:
 
 ```bash
-python3 ferramentas/oportunidades.py encontro maerra_thandrel
+python3 ferramentas/oportunidades.py encontro maerra_thandrel --encontro-id "sessao-009:cena-03:maerra"
 python3 ferramentas/oportunidades.py avaliar sq-... oferecer --motivo "..."
 python3 ferramentas/oportunidades.py responder sq-... aceitar
 python3 ferramentas/oportunidades.py finalizar sq-... concluida --motivo "..."
