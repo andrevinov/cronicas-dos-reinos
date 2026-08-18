@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: juppongatana
 nome: Juppongatana
@@ -12,6 +12,21 @@ restricoes:
   - não é exército nem gangue comum
   - membros possuem lealdades, medos, dívidas e interesses diferentes
   - operações individuais não devem ser presumidas a partir do coletivo
+presenca:
+  referencia: Ravens Bluff
+  estado: distribuida
+  detalhe: O coletivo não possui uma única localização física; a presença operacional depende dos membros individualmente.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: nao_aplicavel
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: depende_de_membros_presentes
+  escopo: Ravens Bluff
+  observacao: O coletivo não autoriza presumir que todos os membros estão em Ravens Bluff. Ação local depende de membros individualmente presentes e de coordenação explícita.
 conhecimento:
   - id: natureza_do_circulo
     fato: A Juppongatana é o círculo de elite de Masao, não um exército ou uma gangue comum.
@@ -29,3 +44,4 @@ fontes_canonicas:
   - narrador/juppongatana/README.md
   - narrador/juppongatana/membros.md
   - narrador/juppongatana/marcos-de-aparicao.md
+  - narrador/verdade-da-campanha.md
