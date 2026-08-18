@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""Checkpoint canônico + atualização reconstruível da memória compacta.
+"""Checkpoint canônico + memória compacta + sincronização do Mundo Vivo.
 
 `consolidar.py` continua responsável pela transação canônica atômica. Este wrapper
-é a porta operacional da Etapa 9: depois que a consolidação termina, deriva
-`handoff.yaml` e `sessoes/index.yaml` do runtime e do ledger já instalados.
+é a porta operacional: depois que a consolidação termina, o Mundo Vivo é
+sincronizado até o novo tempo canônico e só então são derivados `handoff.yaml` e
+`sessoes/index.yaml`.
 
 No fechamento de sessão, a consolidação é seguida por uma pequena transação de
 ciclo que mantém N como sessão corrente e muda `campanha.status` para
 `entre_sessoes`. Só `sessoes.py iniciar` avança para N+1.
 
-Se o processo cair após o cânone e antes do handoff, nenhum delta é reaplicado:
-basta executar o comando novamente ou `checkpoint.py recuperar`, pois a memória
-de sessão é cache derivado, não fonte de verdade.
+Se o processo cair após o cânone e antes do handoff ou da sincronização do mundo,
+nenhum delta é reaplicado: basta executar o comando novamente ou
+`checkpoint.py recuperar`. O cursor determinístico de `mundo.py` é idempotente.
 
 Desde o ajuste de autoridade temporal, `estado/tempo.yaml:prazo_relevante` é a
 representação canônica única de prazos/alertas temporais. O campo legado homônimo
@@ -35,6 +36,7 @@ except ImportError as exc:
 
 import ciclo_sessoes
 import consolidar
+import mundo
 import sessoes
 import transacoes
 
@@ -59,6 +61,26 @@ def _atomic_text(path: Path, text: str) -> None:
         os.fsync(handle.fileno())
         temp = Path(handle.name)
     os.replace(temp, path)
+
+
+def _world_configured(repo: Path) -> bool:
+    return all(
+        (repo / path).is_file()
+        for path in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH)
+    )
+
+
+def sync_world(repo: Path) -> dict[str, Any]:
+    """Sincroniza somente depois do cânone; tolera fixtures legadas sem Mundo Vivo."""
+    if not _world_configured(repo):
+        return {
+            "configurado": False,
+            "alterou": False,
+            "novas_pendencias": [],
+            "agentes_reconsiderar": [],
+        }
+    result = mundo.process_to_canonical(repo)
+    return {"configurado": True, **result}
 
 
 def refresh_memory(repo: Path, kind: str) -> dict[str, Any]:
@@ -116,8 +138,13 @@ def checkpoint(repo: Path, kind: str) -> dict[str, Any]:
         effective_kind = canonical.get("tipo") or kind
         if effective_kind not in {"cena", "sessao"}:
             effective_kind = kind
+
+    # Ordem deliberada: primeiro o tempo vira cânone, depois o motor o processa.
+    # Assim mundo.py nunca precisa adivinhar tempo a partir de prosa ou de deltas
+    # ainda não instalados.
+    world = sync_world(repo)
     memory = refresh_memory(repo, effective_kind)
-    return {"canonico": canonical, "ciclo": lifecycle, "memoria": memory}
+    return {"canonico": canonical, "ciclo": lifecycle, "mundo": world, "memoria": memory}
 
 
 def recover(repo: Path) -> dict[str, Any]:
@@ -126,8 +153,14 @@ def recover(repo: Path) -> dict[str, Any]:
     if canonical is None:
         lifecycle = ciclo_sessoes.status(repo)
         kind = "sessao" if lifecycle.get("status") == ciclo_sessoes.STATUS_BETWEEN else "bootstrap"
+        world = sync_world(repo)
         memory = refresh_memory(repo, kind)
-        return {"canonico": {"sem_journal": True}, "ciclo": lifecycle, "memoria": memory}
+        return {
+            "canonico": {"sem_journal": True},
+            "ciclo": lifecycle,
+            "mundo": world,
+            "memoria": memory,
+        }
 
     kind = canonical.get("tipo") or journal_kind or "cena"
     if kind == ciclo_sessoes.CLOSE_KIND:
@@ -136,8 +169,14 @@ def recover(repo: Path) -> dict[str, Any]:
         memory_kind = "bootstrap"
     else:
         memory_kind = kind if kind in {"cena", "sessao"} else "cena"
+    world = sync_world(repo)
     memory = refresh_memory(repo, memory_kind)
-    return {"canonico": canonical, "ciclo": ciclo_sessoes.status(repo), "memoria": memory}
+    return {
+        "canonico": canonical,
+        "ciclo": ciclo_sessoes.status(repo),
+        "mundo": world,
+        "memoria": memory,
+    }
 
 
 def _current_handoff_errors(repo: Path) -> list[str]:
@@ -187,13 +226,22 @@ def check(repo: Path) -> list[str]:
     errors.extend(sessoes.check(repo))
     errors.extend(ciclo_sessoes.check(repo))
     errors.extend(_current_handoff_errors(repo))
+    if _world_configured(repo):
+        world = mundo.check_repo(repo)
+        errors.extend(f"mundo vivo: {error}" for error in world.get("erros") or [])
     return list(dict.fromkeys(errors))
 
 
 def status(repo: Path) -> dict[str, Any]:
+    world = (
+        {"configurado": True, **mundo.status_view(repo)}
+        if _world_configured(repo)
+        else {"configurado": False}
+    )
     return {
         "consolidacao": consolidar.status(repo),
         "ciclo_sessao": ciclo_sessoes.status(repo),
+        "mundo": world,
         "memoria_sessoes": sessoes.status(repo),
     }
 
@@ -202,11 +250,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     sub = parser.add_subparsers(dest="comando", required=True)
-    sub.add_parser("cena", help="consolida checkpoint de cena e atualiza handoff/índice")
-    sub.add_parser("sessao", help="consolida e encerra N, deixando a campanha entre_sessoes")
-    sub.add_parser("recuperar", help="recupera journal canônico/ciclo e reconstrói memória compacta")
-    sub.add_parser("status", help="mostra estado do cânone, ciclo e memória de sessões")
-    sub.add_parser("check", help="valida consolidação, ciclo e memória fria")
+    sub.add_parser("cena", help="consolida cena, sincroniza mundo e atualiza handoff/índice")
+    sub.add_parser("sessao", help="consolida, sincroniza mundo e encerra N em entre_sessoes")
+    sub.add_parser("recuperar", help="recupera journal, sincroniza mundo e reconstrói memória")
+    sub.add_parser("status", help="mostra cânone, ciclo, mundo e memória de sessões")
+    sub.add_parser("check", help="valida consolidação, ciclo, Mundo Vivo e memória fria")
     return parser
 
 
@@ -218,6 +266,7 @@ def main() -> int:
             result = checkpoint(repo, args.comando)
             canonical = result["canonico"]
             memory = result["memoria"]
+            world = result["mundo"]
             if canonical.get("sem_pendencias"):
                 prefix = "sem novos deltas; memória compacta atualizada"
             elif canonical.get("recuperada"):
@@ -226,6 +275,8 @@ def main() -> int:
                 prefix = "consolidação concluída e memória atualizada"
             if args.comando == "sessao":
                 prefix += "; sessão encerrada (entre_sessoes)"
+            if world.get("configurado") and world.get("novas_pendencias"):
+                prefix += f"; Mundo Vivo gerou {len(world['novas_pendencias'])} pendência(s)"
             print(
                 f"OK — {prefix}: sessão {memory['sessao']:03d} | "
                 f"handoff={memory['handoff']}"
@@ -245,7 +296,7 @@ def main() -> int:
                 for error in errors:
                     print(f"- {error}")
                 return 1
-            print("OK — consolidação, ciclo e memória fria estão íntegros.")
+            print("OK — consolidação, ciclo, Mundo Vivo e memória fria estão íntegros.")
             return 0
         raise ValueError(f"comando desconhecido: {args.comando}")
     except (
@@ -256,6 +307,7 @@ def main() -> int:
         consolidar.ConsolidationError,
         ciclo_sessoes.SessionLifecycleError,
         sessoes.SessionMemoryError,
+        mundo.WorldEngineError,
     ) as exc:
         print(f"FALHA DE CHECKPOINT — {exc}")
         return 1
