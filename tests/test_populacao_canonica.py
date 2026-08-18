@@ -19,11 +19,18 @@ class PopulacaoCanonicaTest(unittest.TestCase):
         result = populacao.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["relacoes"], 35)
+        self.assertEqual(result["estrategicos"], 1)
         self.assertEqual(result["promovidos"], 8)
         self.assertEqual(result["representados"], 6)
-        self.assertEqual(result["persistentes"], 21)
+        self.assertEqual(result["persistentes"], 20)
 
-    def test_promocoes_vem_do_canone_existente(self):
+    def test_promocao_estrategica_vem_do_canone_existente(self):
+        data = populacao.load_population(ROOT)["classificacoes"]
+        self.assertEqual(set(data["promovidos_agentes_estrategicos"]), {"corven_dalm"})
+        self.assertNotIn("corven_dalm", data["promovidos_agentes_leves"])
+        self.assertNotIn("corven_dalm", data["persistentes_sem_agenda"])
+
+    def test_promocoes_leves_vem_do_canone_existente(self):
         data = populacao.load_population(ROOT)["classificacoes"]
         self.assertEqual(
             set(data["promovidos_agentes_leves"]),
@@ -39,7 +46,7 @@ class PopulacaoCanonicaTest(unittest.TestCase):
             },
         )
 
-    def test_subordinados_nao_duplicam_scheduler_do_agente_pai(self):
+    def test_subordinados_nao_duplicam_camada_do_agente_pai(self):
         data = populacao.load_population(ROOT)["classificacoes"]["representados_por_agente"]
         self.assertEqual(data["dain_brass_mord"], "red_sail")
         self.assertEqual(data["rusk_cinza"], "red_sail")
@@ -50,9 +57,13 @@ class PopulacaoCanonicaTest(unittest.TestCase):
     def test_personagens_importantes_podem_continuar_sem_agenda(self):
         data = populacao.load_population(ROOT)["classificacoes"]
         persistent = set(data["persistentes_sem_agenda"])
-        self.assertTrue({"nera_vell", "colm_dunn", "corven_dalm", "peta"} <= persistent)
+        self.assertTrue({"nera_vell", "colm_dunn", "peta"} <= persistent)
 
-    def test_primeiras_reavaliacoes_foram_escalonadas_sem_rajada(self):
+    def test_promocao_estrategica_nao_cria_cadencia_automaticamente(self):
+        agenda = yaml.safe_load((ROOT / "narrador/mundo/agenda.yaml").read_text(encoding="utf-8"))
+        self.assertNotIn("corven_dalm", agenda["reavaliacoes"])
+
+    def test_primeiras_reavaliacoes_leves_foram_escalonadas_sem_rajada(self):
         index = yaml.safe_load((ROOT / "narrador/agentes-leves/index.yaml").read_text(encoding="utf-8"))
         starts = {
             agent_id: meta["inicio"]["data"]
