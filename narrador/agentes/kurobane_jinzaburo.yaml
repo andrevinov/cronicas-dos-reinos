@@ -1,0 +1,47 @@
+schema_agente: 2
+natureza: reservado
+id: kurobane_jinzaburo
+nome: Kurobane Jinzaburō
+tipo: npc
+estado: ativo
+objetivo_atual: Proteger a circulação de informação útil a Masao por furto, troca, plantio ou remoção de documentos e mensagens.
+recursos:
+  - infiltração vertical e fuga preparada
+  - kuroito, ganchos, lâminas pequenas e terreno instável
+  - experiência em roubo de correspondência, cargas diplomáticas e documentos
+restricoes:
+  - evita matar quando isso não traz vantagem
+  - prefere vencer o objetivo da operação em vez de buscar luta justa
+  - depende de janela física de acesso ao alvo ou à rota da mensagem
+presenca:
+  referencia: Ravens Bluff
+  estado: presente
+  detalhe: Kurobane foi encontrado e perseguido em Ravens Bluff; até haver saída ou viagem registrada, permanece elegível para ações físicas locais.
+  fonte: sessoes/007/handoff.yaml
+  evidencia: Kurobane o recolheu com kuroito e Ren o tomou dele.
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Ações locais dependem da presença física na área de referência.
+conhecimento:
+  - id: funcao_documental
+    fato: Sua função na Juppongatana é alcance, furto, infiltração vertical, roubo de mensagens e extração de documentos.
+    fonte: narrador/juppongatana/membros.md
+    evidencia: 'Função na Juppongatana: alcance, furto, infiltração vertical, roubo de mensagens e extração de documentos.'
+  - id: objetivo_contra_provas
+    fato: Uma operação típica sua em Ravens Bluff é roubar, substituir ou copiar documento antes que vire prova útil contra Masao.
+    fonte: narrador/juppongatana/marcos-de-aparicao.md
+    evidencia: 'Objetivo: roubar, substituir ou copiar documento antes que vire prova útil contra Masao'
+plano_atual:
+  estado: aguardando_oportunidade
+  acao: Identificar uma nova janela de acesso a prova, mensagem ou cadeia documental que ameace Masao.
+  prazo_ou_oportunidade: Quando uma prova relevante precisar circular, ser guardada, copiada ou transportada.
+fontes_canonicas:
+  - narrador/juppongatana/membros.md
+  - narrador/juppongatana/marcos-de-aparicao.md
+  - sessoes/007/handoff.yaml

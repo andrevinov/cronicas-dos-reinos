@@ -1,0 +1,26 @@
+schema_agente_leve: 1
+natureza: reservado
+id: bram_vask
+nome: Bram Vask
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Operar a loja de penhores, cobrança e contatos indiretos no Lower Trades.
+  fonte: estado/relacoes/bram_vask.yaml
+  evidencia: agiota / dono de loja de penhores e cobrança
+objetivo_atual:
+  descricao: Responder à pressão sofrida sem se expor diretamente, ocultando rastros e procurando quem retirou Colm de seu alcance.
+  fonte: estado/relacoes/bram_vask.yaml
+  evidencia: Bram não parece contido; a dupla pressão pode gerar resposta indireta, ocultação de registros ou busca por quem o ameaçou.
+iniciativas_possiveis:
+- descricao: Espalhar rumor sobre um novo cobrador perigoso atuando no Lower Trades.
+  fonte: estado/relacoes/bram_vask.yaml
+  evidencia: Bram pode espalhar rumor sobre novo cobrador perigoso atuando no Lower Trades.
+- descricao: Comprar lembranças nas ruas para estreitar a rota seguida por Colm e seus protetores.
+  fonte: estado/relacoes/bram_vask.yaml
+  evidencia: Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças.
+- descricao: Usar intermediários para manter distância entre ele e ações de busca ou captura.
+  fonte: estado/relacoes/bram_vask.yaml
+  evidencia: Bram Vask pagou a pergunta sobre Colm/Dent, mas não veio pessoalmente; segundo ele, um homem de mãos limpas organizou a compra/captura.
+regra_de_reavaliacao: Cobrança e autopreservação são o padrão; só criar iniciativa extraordinária quando houver nova pista, ameaça à própria rede ou oportunidade concreta de resposta indireta.
+fontes_canonicas:
+- estado/relacoes/bram_vask.yaml

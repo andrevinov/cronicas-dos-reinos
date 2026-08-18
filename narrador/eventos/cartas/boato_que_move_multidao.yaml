@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: boato_que_move_multidao
+nome: Boato que move uma multidão
+categoria: rumor_publico
+escala: bairro
+premissa: Um boato suficientemente atraente leva muita gente a se deslocar para um mercado, rua, cais, templo
+  ou outro ponto plausível.
+pergunta_de_resolucao: Que boato ganhou força, por que é crível e o que acontece quando a multidão chega?
+guardrails:
+- O boato não precisa ser verdadeiro.
+- Não revelar segredo reservado como fato público.
+- Não usar automaticamente Masao, Ren ou a Ponte como assunto.
+tags:
+- rumor
+- multidao
+- ruas
+- informacao

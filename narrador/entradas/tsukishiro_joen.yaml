@@ -1,0 +1,21 @@
+schema_entrada: 1
+natureza: reservado
+id: tsukishiro_joen
+nome: Tsukishiro Jōen
+ordem: 2
+nivel_minimo_normal: 7
+janela_preferencial: Ren nível 7-9, após Shen já ter cruzado seu caminho e depois de Ren sofrer uma derrota, ferimento sério ou limite claro diante de agente especializado.
+gatilhos_fortes:
+  - Ren sobreviver por pouco a membro da Juppongatana ou outro inimigo que exponha o limite atual do Getsuei-ryū
+  - Ren insistir em enfrentar a Juppongatana sem treinamento suficiente
+  - Meihua encontrar rastro de um velho mestre procurando Ren
+forma_preferencial: Jōen procura Ren depois de uma luta brutal, reconhece Tadatsune no treinamento incompleto e decide terminar a formação.
+funcao_imediata: Transformar sobrevivência em progresso marcial e introduzir Mukyoku Tsukikage-ryū, Shukuchi Ichiho, Kū no Ma e Getsumei.
+ancoras:
+  - fonte: narrador/aliados/README.md
+    evidencia: '2. **Tsukishiro Jōen**, a Lua Vazia;'
+  - fonte: narrador/aliados/marcos-de-aparicao.md
+    evidencia: '**Janela preferencial:** Ren nível 7-9, após Shen já ter cruzado seu caminho e depois de Ren sofrer uma derrota, ferimento sério ou limite claro diante de agente especializado.'
+fontes_canonicas:
+  - narrador/aliados/README.md
+  - narrador/aliados/marcos-de-aparicao.md

@@ -1,6 +1,14 @@
 schema_relogio: 1
 id: operacao_preservacao_casa_pesos
 natureza: reservado
+vinculo_agencial:
+  tipo: consequencia
+  estado: resolvido
+  operacao: night_watch_preservar_casa_pesos
+  agente_principal: night_watch
+  papel_agente: executor
+  agentes_relacionados:
+  - casa_de_tyr
 relogio:
   titulo: Operação de preservação da Casa de Pesos
   progresso: 3

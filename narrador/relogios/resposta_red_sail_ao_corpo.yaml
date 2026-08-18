@@ -1,6 +1,13 @@
 schema_relogio: 1
 id: resposta_red_sail_ao_corpo
 natureza: reservado
+vinculo_agencial:
+  tipo: consequencia
+  estado: resolvido
+  operacao: red_sail_reconstruir_cadeia_colm
+  agente_principal: red_sail
+  papel_agente: origem
+  agentes_relacionados: []
 relogio:
   titulo: Resposta da Red Sail ao corpo na estrada
   progresso: 4

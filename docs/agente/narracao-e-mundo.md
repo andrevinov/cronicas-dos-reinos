@@ -32,6 +32,42 @@ Quando um NPC presente precisar de voz, gesto ou presença e isso não estiver n
 
 Facções relevantes devem possuir objetivos, liderança, recursos, área de influência, aliados, inimigos, conhecimento, planos, operações e reação ao personagem. Elas podem agir fora de cena. Reavaliar planos quando Ren interfere, recursos mudam, alianças mudam, informação é revelada, tempo avança ou outro agente interfere.
 
+## Agentes autônomos
+
+Quando a decisão narrativa depender do **objetivo, conhecimento, recursos, restrições, presença, mobilidade ou plano corrente de um agente importante**, consultar a camada reservada e fragmentada em `narrador/agentes/` por meio de:
+
+```bash
+python3 ferramentas/agentes.py mostrar <id-ou-nome>
+```
+
+A consulta dirigida abre somente o índice e o fragmento solicitado. Não abrir todos os agentes, suas fontes canônicas ou a pasta inteira por precaução. A camada de agentes é uma condensação operacional: arquivos como `narrador/masao/`, `narrador/juppongatana/`, relações, relógios e sessões continuam sendo as fontes canônicas apontadas pelos fragmentos.
+
+`elegibilidade_local` é derivada de `estado`, `presenca` e `atuacao_local`. Um NPC que exige presença física só pode executar ação física em Ravens Bluff se estiver `presente` ou `presente_oculto`; `indeterminado`, `fora_da_area` e `em_viagem` bloqueiam a ação local. `presente_oculto` continua sendo verdade reservada do narrador e **não cria conhecimento para Ren**. Agentes capazes de atuar por rede e instituições locais seguem regras próprias documentadas no fragmento.
+
+Para a Juppongatana, nunca presumir que a existência do coletivo significa que todos os membros estão em Ravens Bluff. Consultar o membro individual. Chegadas, saídas e viagens precisam virar estado canônico de presença/mobilidade antes de alterar sua elegibilidade local.
+
+`python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema, mobilidade e proveniência. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
+
+A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. A cadência de reavaliação vem do Mundo Vivo; não transformar uma pendência em obrigação de agir.
+
+## Agentes recorrentes leves
+
+NPCs recorrentes como Luath, Silva e Maerra podem continuar vivendo fora da presença de Ren sem receber o peso operacional de um antagonista estratégico. Para eles, usar `narrador/agentes-leves/`. **Rotina é o padrão**: emprego, culto, cuidado, patrulha e obrigações ordinárias continuam acontecendo sem gerar cena nem atualização por si mesmos.
+
+A camada leve só entra no fluxo quando o checkpoint cruza um amanhecer. Checkpoints diurnos de passagem de horas não consultam seu índice. Mesmo no amanhecer, Python seleciona candidatos usando somente índice + estado + tempo + fila do Mundo Vivo e não abre fragmentos.
+
+O orçamento é obrigatório: no máximo **1 nova reavaliação leve por checkpoint** e no máximo **2 pendências leves abertas simultaneamente**. Se vários NPCs estiverem vencidos, ordenar deterministicamente por mais atrasado, maior prioridade e ID; os demais continuam vencidos. Intervalos perdidos são condensados em uma única reavaliação.
+
+Quando aparecer `reavaliar_agente_leve`, consultar **somente o NPC indicado**:
+
+```bash
+python3 ferramentas/agentes_leves.py mostrar <id-ou-nome>
+```
+
+Se não houver causa concreta para uma iniciativa excepcional, concluir a pendência como nenhuma mudança extraordinária. Não abrir todos os agentes leves, não consultar suas relações canônicas por precaução e não inventar ação apenas porque a cadência venceu. `agentes_leves.py validar` pertence a manutenção/CI.
+
+Night Watch e Luath exemplificam a separação: Night Watch continua agente institucional estratégico; Luath é o indivíduo recorrente. A ação de uma camada não implica automaticamente a ação da outra.
+
 ## Relógios e forças em movimento
 
 Relógios podem representar conflitos ativos com identificador, progresso, limite, visibilidade, descrição, causas de avanço/regressão e consequência no limite. Não avançar arbitrariamente: cada mudança precisa de causa. Relógio oculto não deve ser revelado sem sinais perceptíveis.

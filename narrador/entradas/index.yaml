@@ -1,0 +1,32 @@
+schema_entradas: 1
+natureza: reservado
+descricao: >-
+  Índice mínimo de aliados futuros cuja entrada em cena precisa ser avaliada sem
+  transformar a ordem preferencial em trilho.
+cadencia_padrao_dias: 3
+candidatos:
+  shen_meihua:
+    nome: Shen Meihua
+    ordem: 1
+    nivel_minimo_normal: 6
+    arquivo: narrador/entradas/shen_meihua.yaml
+  tsukishiro_joen:
+    nome: Tsukishiro Jōen
+    ordem: 2
+    nivel_minimo_normal: 7
+    arquivo: narrador/entradas/tsukishiro_joen.yaml
+  dame_jenilynn_leyland:
+    nome: Dame Jenilynn Leyland
+    ordem: 3
+    nivel_minimo_normal: 8
+    arquivo: narrador/entradas/dame_jenilynn_leyland.yaml
+  kagehira_hotaru:
+    nome: Kagehira Hotaru
+    ordem: 4
+    nivel_minimo_normal: 9
+    arquivo: narrador/entradas/kagehira_hotaru.yaml
+  tadasu_no_kami:
+    nome: Tadasu no Kami
+    ordem: 5
+    nivel_minimo_normal: 11
+    arquivo: narrador/entradas/tadasu_no_kami.yaml

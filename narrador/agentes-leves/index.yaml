@@ -1,0 +1,90 @@
+schema_agentes_leves: 1
+natureza: reservado
+descricao: >-
+  NPCs recorrentes cuja rotina é o padrão. A camada existe para permitir ações
+  ocasionais fora de cena sem abrir dezenas de fragmentos a cada checkpoint.
+orcamento:
+  max_novas_por_checkpoint: 1
+  max_pendencias_abertas: 2
+  ordenacao: mais_atrasado_prioridade_id
+agentes:
+  kethra_dunn:
+    nome: Kethra Dunn
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 4
+    intervalo_dias: 3
+    inicio:
+      data: '11 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/kethra_dunn.yaml
+  bram_vask:
+    nome: Bram Vask
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 4
+    intervalo_dias: 3
+    inicio:
+      data: '12 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/bram_vask.yaml
+  luath:
+    nome: Luath
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 3
+    inicio:
+      data: '13 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/luath.yaml
+  silva_elkwood:
+    nome: Silva Elkwood
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 2
+    intervalo_dias: 4
+    inicio:
+      data: '14 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/silva_elkwood.yaml
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 2
+    intervalo_dias: 5
+    inicio:
+      data: '15 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/maerra_thandrel.yaml
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 4
+    inicio:
+      data: '16 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/halessa_vorn.yaml
+  jack_mooney:
+    nome: Jack Mooney
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 5
+    inicio:
+      data: '17 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/jack_mooney.yaml
+  pell:
+    nome: Pell
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 4
+    inicio:
+      data: '18 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/pell.yaml

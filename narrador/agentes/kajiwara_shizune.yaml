@@ -1,0 +1,47 @@
+schema_agente: 2
+natureza: reservado
+id: kajiwara_shizune
+nome: Kajiwara Shizune
+tipo: npc
+estado: ativo
+objetivo_atual: Neutralizar credibilidade, identidade e valor probatório dos inimigos de Masao por guerra administrativa antes de recorrer a confronto direto.
+recursos:
+  - falsificação de ordens, salvo-condutos, recibos e registros
+  - mensagens cifradas, disfarce social e autoridade fabricada
+  - capacidade de ferir elos laterais da cadeia de informação
+restricoes:
+  - prefere arruinar, desacreditar ou prender legalmente a matar sem ganho estrutural
+  - evita exposição pessoal quando papel, identidade ou terceiro podem resolver
+  - não transformar suspeitas ainda não confirmadas em fato canônico
+presenca:
+  referencia: Ravens Bluff
+  estado: indeterminado
+  detalhe: Há sinais compatíveis com sua atuação, mas a presença física de Shizune em Ravens Bluff ainda não foi fixada como fato canônico nesta camada.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Enquanto a presença permanecer indeterminada, Shizune não é elegível para novas ações físicas locais; sinais existentes não bastam para canonizar sua chegada.
+conhecimento:
+  - id: valor_do_selo
+    fato: Shizune entende especialmente bem o valor do Selo da Lua Velada.
+    fonte: narrador/juppongatana/membros.md
+    evidencia: Shizune é a inimiga que entende melhor o valor do **Selo da Lua Velada**.
+  - id: vetor_de_ataque
+    fato: Credibilidade, provas, aliados e identidade pública de Ren são vetores preferenciais de ataque.
+    fonte: narrador/juppongatana/membros.md
+    evidencia: Deve atacar a credibilidade de Ren, suas provas, seus aliados e sua identidade pública antes de aparecer como combatente.
+plano_atual:
+  estado: aguardando_oportunidade
+  acao: Explorar registros, identidade ou cadeia documental que permitam transformar prova em dúvida ou aliado em risco administrativo.
+  prazo_ou_oportunidade: Quando Tyr, Night Watch, guildas, alfândega ou outro registro der peso institucional às informações de Ren.
+fontes_canonicas:
+  - narrador/juppongatana/membros.md
+  - narrador/juppongatana/marcos-de-aparicao.md
+  - sessoes/008/consequencias.md

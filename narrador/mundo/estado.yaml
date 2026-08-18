@@ -1,0 +1,8 @@
+schema_estado_mundo: 1
+natureza: controle_reservado
+descricao: Cursor e fila operacional do motor determinístico; não é fonte independente de fatos da campanha.
+processado_ate:
+  data: '10 Eleasis, 1372 DR'
+  hora: '17:42'
+pendencias: []
+concluidas_recentes: []

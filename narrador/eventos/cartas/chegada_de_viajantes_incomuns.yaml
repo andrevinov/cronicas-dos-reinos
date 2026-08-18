@@ -1,0 +1,20 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: chegada_de_viajantes_incomuns
+nome: Chegada de viajantes incomuns
+categoria: movimento_de_pessoas
+escala: cidade
+premissa: Um pequeno grupo de viajantes chama atenção por origem, profissão, comportamento ou circunstância
+  de chegada pouco comum.
+pergunta_de_resolucao: Quem são, por que sua chegada chama atenção e eles importam para algo ou apenas enriquecem
+  o pano de fundo?
+guardrails:
+- Não usar esta carta para forçar a entrada de aliado ou antagonista já controlado por outra camada.
+- Não assumir origem kozakurana nem acionar a Ponte de Kozakura automaticamente.
+- Pode terminar como simples textura sem consequência.
+tags:
+- viajantes
+- porto
+- estrangeiros
+- rumor

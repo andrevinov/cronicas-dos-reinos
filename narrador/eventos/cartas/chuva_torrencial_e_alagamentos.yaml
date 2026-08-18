@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: chuva_torrencial_e_alagamentos
+nome: Chuva torrencial e alagamentos
+categoria: ambiente
+escala: cidade
+premissa: Uma chuva forte causa alagamentos, lama e atrasos desiguais em partes de Ravens Bluff.
+pergunta_de_resolucao: Quais áreas sofrem mais, quanto tempo o transtorno dura e que rotas ficam temporariamente
+  piores?
+guardrails:
+- Não substituir automaticamente o clima canônico corrente; resolver a transição de forma temporalmente plausível.
+- Não bloquear toda a cidade.
+- Efeitos persistentes precisam ser registrados explicitamente.
+tags:
+- clima
+- deslocamento
+- logistica
+- atraso

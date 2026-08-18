@@ -1,0 +1,22 @@
+schema_entrada: 1
+natureza: reservado
+id: shen_meihua
+nome: Shen Meihua
+ordem: 1
+nivel_minimo_normal: 6
+janela_preferencial: Ren nível 6-7, ainda em Ravens Bluff.
+gatilhos_fortes:
+  - primeira pressão direta de Shizune contra documentos, Tyr, Luath, Narwhal ou o nome Kage/Kagehira
+  - Ren ser ferido seriamente por agente melhor preparado
+  - uma anomalia da Ponte de Kozakura aparecer como mercadoria, pessoa ou remédio que não cabe em manifesto de navio
+forma_preferencial: Erro mútuo; Ren acredita ter encontrado agente de Masao e Meihua acredita que Ren é o assassino enviado por Shizune.
+funcao_imediata: Salvar Ren de uma morte lenta, identificar a assinatura de Shizune em documentos e abrir uma rede de inteligência oriental em Faerûn.
+sinal_antes: Uma sutura impossível, um guarda adormecido sem ferimento, um frasco oriental usado corretamente ou uma ordem falsa marcada por detalhe que só uma especialista de Shou Lung percebe.
+ancoras:
+  - fonte: narrador/aliados/README.md
+    evidencia: '1. **Shen Meihua**, a Agulha de Jade;'
+  - fonte: narrador/aliados/marcos-de-aparicao.md
+    evidencia: '**Janela preferencial:** Ren nível 6-7, ainda em Ravens Bluff.'
+fontes_canonicas:
+  - narrador/aliados/README.md
+  - narrador/aliados/marcos-de-aparicao.md

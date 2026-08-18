@@ -1,0 +1,25 @@
+schema_direcoes: 1
+natureza: reservado
+descricao: >-
+  Índice pequeno das direções narrativas canônicas. Direção define um destino
+  obrigatório de longo prazo, mas não prescreve cena, data ou solução.
+direcoes:
+  ponte_de_kozakura:
+    nome: Ponte de Kozakura
+    arquivo: narrador/direcoes/ponte_de_kozakura.yaml
+    avaliacao:
+      cadencia: amanhecer
+      intervalo_dias: 2
+      inicio: '12 Eleasis, 1372 DR'
+    ativacao: null
+  shin_kozakura:
+    nome: Shin-Kozakura
+    arquivo: narrador/direcoes/shin_kozakura.yaml
+    avaliacao:
+      cadencia: amanhecer
+      intervalo_dias: 7
+      inicio: '11 Eleasis, 1372 DR'
+    ativacao:
+      depende_de:
+        direcao: ponte_de_kozakura
+        marco: perda_controle_exclusivo

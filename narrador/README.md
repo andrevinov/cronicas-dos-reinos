@@ -25,6 +25,14 @@ Informações desta pasta só devem migrar para arquivos públicos quando Ren de
 ```text
 narrador/
 ├── verdade-da-campanha.md
+├── agentes/
+│   ├── README.md
+│   ├── index.yaml
+│   └── <agente>.yaml
+├── mundo/
+│   ├── README.md
+│   ├── agenda.yaml
+│   └── estado.yaml
 ├── aliados/
 │   ├── README.md
 │   ├── personagens.md
@@ -67,6 +75,27 @@ O arquivo reservado `segredos/canone.md` registra acontecimentos externos e
 reações de mundo que podem avançar independentemente das ações imediatas de Ren.
 Ele deve ser consultado ao abrir um novo dia no mundo ou quando uma sessão
 atravessar várias horas relevantes.
+
+## Agentes autônomos
+
+`agentes/` é a camada operacional fragmentada para NPCs, facções e instituições
+capazes de agir fora da presença de Ren. Ela não substitui as fontes canônicas:
+cada fragmento aponta para elas e registra objetivo atual, recursos, restrições,
+conhecimento sustentado, presença, mobilidade e plano corrente.
+
+Durante narração, consultar um agente de forma dirigida com
+`python3 ferramentas/agentes.py mostrar <id-ou-nome>`. A validação ampla
+`python3 ferramentas/agentes.py validar` pertence a manutenção/CI e não ao loop
+normal de cada turno.
+
+## Mundo Vivo
+
+`mundo/` guarda a agenda determinística, o cursor de processamento e as decisões
+pendentes. `checkpoint.py cena` e `checkpoint.py sessao` sincronizam o motor
+depois que o tempo já foi consolidado. Além disso, `turno.py registrar` promove
+checkpoint de cena automaticamente quando o tempo efetivo acumula pelo menos duas
+horas desde o último cursor ou atravessa o amanhecer configurado. Passagens
+pequenas continuam no fluxo transacional comum.
 
 ## Antagonistas maiores
 

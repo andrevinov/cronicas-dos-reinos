@@ -1,0 +1,19 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: procissao_local
+nome: Procissão ou celebração local
+categoria: vida_civica
+escala: bairro
+premissa: Uma procissão, celebração religiosa ou festa comunitária ocupa ruas de um bairro por parte do dia.
+pergunta_de_resolucao: Qual comunidade está envolvida, onde ocorre e que mudanças temporárias produz no fluxo
+  de pessoas?
+guardrails:
+- Não escolher automaticamente uma fé ligada a Ren ou a seus aliados.
+- Não transformar a celebração em conflito sem causa adicional.
+- O evento pode ser apenas textura de mundo se nada relevante o interceptar.
+tags:
+- multidao
+- religiao
+- ruas
+- vida_civica

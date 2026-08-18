@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: luath
+nome: Luath
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Cumprir funções de sargento da City Guard/Night Watch e administrar ocorrências, custódia, vigilância e cadeia institucional.
+  fonte: estado/relacoes/luath.yaml
+  evidencia: sargento da City Guard / supervisor possível da Night Watch
+objetivo_atual:
+  descricao: Manter a resposta da guarda disciplinada contra as Dez Espadas sem transformar estrangeiros em suspeitos por origem.
+  fonte: estado/relacoes/luath.yaml
+  evidencia: recusou suspeita indiscriminada contra estrangeiros e usará descrições, métodos e conduta.
+iniciativas_possiveis:
+  - descricao: Reforçar vigilância discreta quando uma pista puder ser preservada sem queimar a operação.
+    fonte: estado/relacoes/luath.yaml
+    evidencia: pode colocar vigilância discreta na superfície da Escada, no depósito sem tabuleta e em possíveis saídas baixas.
+  - descricao: Reagir institucionalmente se custódia, prova ou testemunha sob sua responsabilidade sofrer interferência.
+    fonte: estado/relacoes/luath.yaml
+    evidencia: Luath agora possui dois prisioneiros ligados aos barris e ao acesso de Sarbreen
+regra_de_reavaliacao: Rotina policial é o padrão; só criar mudança persistente quando nova informação, pressão institucional, ameaça a prova/testemunha ou oportunidade concreta justificar iniciativa.
+fontes_canonicas:
+  - estado/relacoes/luath.yaml

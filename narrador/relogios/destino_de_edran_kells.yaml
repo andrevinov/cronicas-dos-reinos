@@ -1,6 +1,14 @@
 schema_relogio: 1
 id: destino_de_edran_kells
 natureza: reservado
+vinculo_agencial:
+  tipo: consequencia
+  estado: resolvido
+  operacao: tyr_investigar_casa_pesos
+  agente_principal: casa_de_tyr
+  papel_agente: afetado
+  agentes_relacionados:
+  - night_watch
 relogio:
   titulo: Destino de Edran Kells
   progresso: 1

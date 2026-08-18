@@ -1,0 +1,45 @@
+schema_agente: 2
+natureza: reservado
+id: red_sail
+nome: Red Sail
+tipo: faccao
+estado: ativo
+objetivo_atual: Identificar a cadeia que protege Colm e conter interferências de Kage sem expor mais da própria rede do que o necessário.
+recursos:
+  - coordenação de Brass em Narwhal
+  - homens de campo e busca dirigida
+  - acesso a curandeiros, carroças, propriedades e circuitos criminais como alvos de investigação
+restricoes:
+  - ainda não conhece a casa de Iria, o lagar nem a cadeia rural
+  - buscas muito abertas aumentam exposição e podem chamar atenção institucional
+presenca:
+  referencia: Ravens Bluff
+  estado: distribuida
+  detalhe: A Red Sail opera como rede local, não como um único corpo em um ponto da cidade.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: nao_aplicavel
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: estrutura_local
+  escopo: Ravens Bluff
+  observacao: A facção é uma estrutura distribuída em Ravens Bluff; sua atuação local não depende da presença física de um único NPC.
+conhecimento:
+  - id: ligacao_corpo_colm
+    fato: A Red Sail ligou a morte do homem da estrada à retirada de Colm.
+    fonte: narrador/relogios/resposta_red_sail_ao_corpo.yaml
+    evidencia: A Red Sail ligou a morte do homem da estrada à retirada de Colm
+  - id: lacuna_cadeia_rural
+    fato: A facção ainda não localizou a casa de Iria, o lagar ou a cadeia rural.
+    fonte: narrador/relogios/resposta_red_sail_ao_corpo.yaml
+    evidencia: Ainda não possui a casa de Iria, o lagar ou a cadeia rural.
+plano_atual:
+  estado: em_execucao
+  acao: Ampliar a busca dirigida para curandeiros, carroças e propriedades abandonadas a leste.
+  prazo_ou_oportunidade: Enquanto a retirada de Colm ainda puder ser reconstruída por rastros logísticos e testemunhas.
+fontes_canonicas:
+  - narrador/relogios/resposta_red_sail_ao_corpo.yaml
+  - sessoes/008/handoff.yaml

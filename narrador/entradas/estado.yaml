@@ -1,0 +1,33 @@
+schema_estado_entradas: 1
+natureza: controle_reservado
+descricao: >-
+  Controle de elegibilidade de aparição. Presente só deve ser registrado depois
+  que a entrada efetivamente aconteceu em jogo.
+candidatos:
+  shen_meihua:
+    estado: latente
+    antecipado: false
+    proxima_avaliacao:
+      data: 11 Eleasis, 1372 DR
+      hora: '06:00'
+    historico_recente: []
+  tsukishiro_joen:
+    estado: latente
+    antecipado: false
+    proxima_avaliacao: null
+    historico_recente: []
+  dame_jenilynn_leyland:
+    estado: latente
+    antecipado: false
+    proxima_avaliacao: null
+    historico_recente: []
+  kagehira_hotaru:
+    estado: latente
+    antecipado: false
+    proxima_avaliacao: null
+    historico_recente: []
+  tadasu_no_kami:
+    estado: latente
+    antecipado: false
+    proxima_avaliacao: null
+    historico_recente: []

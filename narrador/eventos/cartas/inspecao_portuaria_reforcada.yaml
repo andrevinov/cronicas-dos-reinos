@@ -1,0 +1,20 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: inspecao_portuaria_reforcada
+nome: Inspeção portuária reforçada
+categoria: controle_institucional
+escala: cidade
+premissa: Autoridades ou administradores do porto intensificam temporariamente inspeções de cargas, tripulações
+  ou documentação.
+pergunta_de_resolucao: Qual causa plausível motivou a fiscalização e quais rotas ou atividades passam a enfrentar
+  atrito?
+guardrails:
+- Não presumir corrupção nem autoria de uma facção específica.
+- Não revelar contrabando ou segredo que ainda não tenha suporte canônico.
+- A duração e o alcance dependem da resolução atual.
+tags:
+- porto
+- fiscalizacao
+- comercio
+- documentos

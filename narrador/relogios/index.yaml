@@ -1,5 +1,7 @@
 schema_relogios: 1
 natureza: reservado
+vinculos_agenciais: narrador/relogios/vinculos.yaml
+consulta_recomendada: python3 ferramentas/relogios.py por-agente <id-ou-nome>
 relogios:
   resposta_red_sail_ao_corpo:
     arquivo: narrador/relogios/resposta_red_sail_ao_corpo.yaml

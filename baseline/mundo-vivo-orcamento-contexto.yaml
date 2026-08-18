@@ -1,0 +1,41 @@
+schema_orcamento_contexto_mundo_vivo: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Impedir que o Mundo Vivo cresça silenciosamente no contexto do modelo. Python
+  pode ler controles compactos; fragmentos narrativos só entram depois de seleção
+  dirigida.
+limites:
+  lookup_dirigido:
+    max_fontes: 4
+    max_fragmentos_narrativos: 1
+    max_payload_bytes: 12288
+    proibir_transcricao: true
+  evento:
+    max_agentes_estrategicos: 2
+    max_agentes_leves: 1
+    max_agentes_total: 3
+  checkpoint_automatico:
+    max_fragmentos_narrativos_expostos: 0
+  arquivos_quentes:
+    max_bytes_por_roteador: 16384
+    max_bytes_total_roteadores: 65536
+  turno_comum:
+    max_alvos_escrita: 2
+    max_escritas_canonicas: 0
+arquivos_quentes:
+  - narrador/agentes/index.yaml
+  - narrador/agentes-leves/index.yaml
+  - narrador/agentes-leves/estado.yaml
+  - narrador/entradas/index.yaml
+  - narrador/entradas/estado.yaml
+  - narrador/direcoes/index.yaml
+  - narrador/direcoes/estado.yaml
+  - narrador/relogios/index.yaml
+  - narrador/relogios/vinculos.yaml
+  - narrador/eventos/index.yaml
+  - narrador/eventos/estado.yaml
+  - narrador/eventos/interacoes.yaml
+  - narrador/rastros/index.yaml
+  - narrador/mundo/agenda.yaml
+  - narrador/mundo/estado.yaml
+  - narrador/mundo/ciclo-npcs.yaml

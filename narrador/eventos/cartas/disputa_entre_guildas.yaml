@@ -1,0 +1,20 @@
+schema_evento_mundo: 1
+natureza: reservado
+estatuto: molde_nao_canonico_ate_resolucao
+id: disputa_entre_guildas
+nome: Disputa entre guildas ou ofícios
+categoria: tensao_economica
+escala: cidade
+premissa: Dois grupos profissionais entram em atrito por preço, acesso, jurisdição ou contrato, gerando tensão
+  pública limitada.
+pergunta_de_resolucao: Quais interesses estão em choque e o conflito fica em negociação, boicote, protesto
+  ou confronto menor?
+guardrails:
+- Não canonizar uma guilda importante inexistente sem necessidade.
+- Não escalar para guerra urbana automaticamente.
+- A carta não escolhe vencedor.
+tags:
+- guildas
+- comercio
+- politica_local
+- protesto
