@@ -1,35 +1,43 @@
 # Rastros observáveis
 
-Esta camada separa **verdade do mundo** de **conhecimento de Ren**.
+Esta camada separa **verdade do mundo** de **conhecimento de Ren** e, desde o passo 8, fecha a descoberta pelo mesmo pipeline transacional da narração.
 
 ```text
 fato canônico reservado
         ↓ pode deixar
 rastro observável
-        ↓ se Ren realmente perceber/investigar
-descoberta
-        ↓ pelo pipeline transacional
-conhecimento de Ren
+        ↓ Ren percebe/investiga
+descoberta no turno
+        ↓ mesma consolidação
+conhecimento de Ren + rastro marcado como descoberto
 ```
 
-Um fato off-screen não cria conhecimento automaticamente. Um rastro também não é
-conhecimento: ele é somente uma evidência disponível no mundo.
+Um fato off-screen não cria conhecimento automaticamente. Um rastro também não é conhecimento: ele é somente evidência disponível no mundo.
 
-## Estrutura
+## Estrutura e custo
 
-- `index.yaml`: roteador compacto dos rastros ativos; contém apenas metadados
-  suficientes para filtrar por tempo, lugar, acesso e tags;
-- `itens/<id>.yaml`: fragmento individual com a manifestação observável;
-- a causa verdadeira fica em `origem`, com fonte/evidência canônicas, e **não é
-  exposta por `mostrar`**.
+- `index.yaml`: roteador pequeno; filtra por tempo, lugar, acesso, tags e estado;
+- `itens/<id>.yaml`: manifestação observável individual;
+- `estado: ativo|descoberto` fica apenas no índice para impedir reapresentação automática;
+- a causa verdadeira fica em `origem` e **não é exposta por `mostrar`**;
+- o índice começa vazio: nenhuma pista antiga é reconstruída retroativamente.
 
-O índice começa vazio. A instalação não reconstrói rastros retroativamente a partir
-das sessões já jogadas.
+`candidatos` usa somente índice + localização canônica + tempo. Não abre fragmentos:
 
-## Registro
+```bash
+python3 ferramentas/rastros.py candidatos
+python3 ferramentas/rastros.py candidatos --acesso investigacao --tag lama
+```
 
-Depois que uma ação, consequência ou acontecimento realmente virou cânone e deixou
-uma evidência, registrar por stdin:
+Depois de obter um ID relevante:
+
+```bash
+python3 ferramentas/rastros.py mostrar <id>
+```
+
+## Registro de um rastro
+
+Só registrar depois que o fato que o originou já virou cânone. A fonte precisa existir e a evidência precisa aparecer literalmente nela. Controles operacionais, estado do baralho e cartas não resolvidas são rejeitados como origem.
 
 ```bash
 cat <<'YAML' | python3 ferramentas/rastros.py registrar
@@ -56,51 +64,50 @@ origem:
 YAML
 ```
 
-A origem precisa existir e a evidência precisa aparecer literalmente nela. Controles
-operacionais e moldes não resolvidos (`narrador/mundo/estado.yaml`,
-`narrador/eventos/estado.yaml`, cartas do baralho) são rejeitados como fonte.
+## Descoberta transacional — passo 8
 
-## Descoberta barata
+`preparar-descoberta` é somente leitura e devolve **dois deltas inseparáveis**:
 
-Ao entrar numa área, consultar primeiro somente o índice:
-
-```bash
-python3 ferramentas/rastros.py candidatos
-```
-
-Por padrão aparecem apenas rastros de acesso `automatico`. Uma busca deliberada usa:
-
-```bash
-python3 ferramentas/rastros.py candidatos --acesso investigacao --tag lama
-```
-
-Essa filtragem usa localização canônica + tempo + índice. **Não abre fragmentos.**
-Se houver um ID relevante, só então:
-
-```bash
-python3 ferramentas/rastros.py mostrar <id>
-```
-
-`mostrar` expõe apenas a evidência observável; a causa reservada é redigida.
-
-## Conhecimento
+1. `conhecimento / registrar` com exatamente o `fato_observavel`;
+2. `rastro:<id> / set estado=descoberto` com visibilidade `narrador`.
 
 ```bash
 python3 ferramentas/rastros.py preparar-descoberta <id>
 ```
 
-Esse comando é somente leitura. Ele produz um `delta_sugerido` para
-`alvo: conhecimento`, mas **não o instala** e não marca o rastro como descoberto.
-A integração atômica entre descoberta, transação do turno e encerramento/consumo do
-rastro pertence ao passo 8.
+O schema transacional rejeita um par incompleto antes das duas escritas de `turno.py`. Também rejeita duplicatas e qualquer mutação diferente de `estado=descoberto` para esse alvo reservado.
 
-Portanto, nesta etapa:
+O caminho recomendado, quando a cena já resolveu a percepção/investigação, é registrar a descoberta diretamente pelo writer normal:
 
-- fato ≠ rastro;
-- rastro ≠ conhecimento;
-- presença no mesmo lugar ≠ descoberta para rastros de `investigacao`;
-- abrir um rastro não revela sua causa verdadeira;
-- nenhuma operação desta camada escreve em `personagens/jogador/conhecimento/`.
+```bash
+python3 ferramentas/rastros.py descobrir <id> <<'JSON'
+{
+  "jogador": "Ren examina as marcas junto à porta.",
+  "narracao": "A lama é recente, mas não identifica quem passou por ali.",
+  "resumo": "Ren percebe um rastro de lama azul.",
+  "modo": "exploração"
+}
+JSON
+```
+
+`descobrir` apenas prepara o par e chama `turno.register_transaction`; portanto o hot path continua sendo **transcrição + buffer pendente**, as mesmas duas escritas de qualquer turno. O rastro ainda permanece `ativo` até o próximo checkpoint/consolidação.
+
+Também é válido usar `turno.py registrar` diretamente, desde que os dois deltas produzidos por `preparar-descoberta` sejam incluídos juntos.
+
+## Consolidação atômica
+
+No checkpoint, `consolidar.py` valida novamente a descoberta:
+
+- o rastro precisa existir e ainda estar `ativo`;
+- o texto público precisa ser **idêntico** a `fato_observavel`;
+- a fonte pública precisa ser somente `rastro:<id>`;
+- a origem reservada nunca é copiada para conhecimento.
+
+Depois disso, o conhecimento incremental e `narrador/rastros/index.yaml` entram no **mesmo plano de staging/journal**. Só então a instalação começa. Se houver queda no meio, o mecanismo de recuperação já existente instala ou repara exatamente o mesmo lote.
+
+O ledger registra `rastros_descobertos` e inclui o índice de rastros em `arquivos_afetados`.
+
+Depois de consolidado, um rastro `descoberto` deixa de aparecer em `candidatos`, evitando repetição de contexto. O fragmento continua consultável explicitamente para referência, sem expor a causa reservada.
 
 ## Escopos e acessos
 
@@ -108,10 +115,9 @@ Escopos: `cidade`, `area`, `ponto`.
 
 Acessos:
 
-- `automatico`: pode ser apresentado quando Ren está no escopo correto;
-- `investigacao`: só entra após busca deliberada;
-- `interacao`: exige contato/uso do objeto ou pessoa;
-- `rumor`: exige um canal social plausível.
+- `automatico`: pode ser apresentado no escopo correto;
+- `investigacao`: exige busca deliberada;
+- `interacao`: exige contato/uso plausível;
+- `rumor`: exige canal social plausível.
 
-A filtragem é determinística; testes, perícias e interpretação narrativa continuam
-pertencendo à resolução da cena.
+Filtragem é determinística; testes, perícias e interpretação narrativa continuam pertencendo à resolução da cena.
