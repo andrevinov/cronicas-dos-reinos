@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 7
+sessao_atual: 8
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 7
-  bytes_transcricoes: 1437710
+  sessoes: 8
+  bytes_transcricoes: 1484107
 sessoes:
   '001':
     natureza: historica
@@ -146,17 +146,19 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   '007':
-    natureza: atual
+    natureza: historica
     handoff: sessoes/007/handoff.yaml
     compactos:
     - arquivo: sessoes/007/handoff.yaml
-      bytes: 5880
+      bytes: 6073
     - arquivo: sessoes/007/resumo.md
       bytes: 4845
     - arquivo: sessoes/007/alteracoes-de-estado.yaml
-      bytes: 2294
+      bytes: 2297
     - arquivo: sessoes/007/consequencias.md
       bytes: 2177
+    - arquivo: sessoes/007/correcoes-de-continuidade.md
+      bytes: 2490
     - arquivo: sessoes/007/consolidacoes.jsonl
       bytes: 8779
     ordem_de_leitura:
@@ -167,5 +169,29 @@ sessoes:
     transcricao:
       arquivo: sessoes/007/transcricao.md
       bytes: 40346
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  008:
+    natureza: atual
+    handoff: sessoes/008/handoff.yaml
+    compactos:
+    - arquivo: sessoes/008/handoff.yaml
+      bytes: 6016
+    - arquivo: sessoes/008/resumo.md
+      bytes: 5647
+    - arquivo: sessoes/008/alteracoes-de-estado.yaml
+      bytes: 2878
+    - arquivo: sessoes/008/consequencias.md
+      bytes: 2039
+    - arquivo: sessoes/008/consolidacoes.jsonl
+      bytes: 10891
+    ordem_de_leitura:
+    - sessoes/008/handoff.yaml
+    - sessoes/008/resumo.md
+    - sessoes/008/alteracoes-de-estado.yaml
+    - sessoes/008/consequencias.md
+    transcricao:
+      arquivo: sessoes/008/transcricao.md
+      bytes: 46397
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

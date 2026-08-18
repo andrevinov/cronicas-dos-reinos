@@ -49,7 +49,7 @@ relacoes:
     respeito: prático e cauteloso
     arquivo: estado/relacoes/kethra_dunn.yaml
     historico: historico/relacoes/kethra_dunn.yaml
-    bytes_fragmento: 3753
+    bytes_fragmento: 3966
     campos_atuais: 10
   colm_dunn:
     nome: Colm Dunn
@@ -133,15 +133,15 @@ relacoes:
   pell:
     nome: Pell
     tipo: mensageiro local
-    status: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
-      e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass
+    status: Pell recebeu no ponto morto os 3 PO de bônus pelo relatório sobre Tomas Rell e a rota de Brass; Ren
+      reforçou que informações sobre a Red Sail sempre serão pagas
     atitude_para_ren: assustado, oportunista e cooperativo por pagamento
     confianca: Pell demonstrou discrição e honestidade ao separar rumores de informação confirmada e recusar pagamento
       extra por resultados insuficientes
     respeito: baixo, mas crescente por medo e utilidade
     arquivo: estado/relacoes/pell.yaml
     historico: historico/relacoes/pell.yaml
-    bytes_fragmento: 3750
+    bytes_fragmento: 4058
     campos_atuais: 11
   peta:
     nome: Peta
@@ -196,12 +196,13 @@ relacoes:
     nome: Irmã Maerra Thandrel
     tipo: sacerdotisa de Lathander / abrigo potencial
     status: ativa, em cena; abrigo provisório concedido às sete crianças resgatadas
-    atitude_para_ren: cautelosa, disposta a agir, moralmente firme e mais aberta após o resgate de Peta
+    atitude_para_ren: amiga pastoral, moralmente firme e abertamente preocupada com Ren; confiança alta em sua proteção
+      de vulneráveis
     confianca: moderada-alta em pauta de proteção de vulneráveis
     respeito: cauteloso, crescente
     arquivo: estado/relacoes/maerra_thandrel.yaml
     historico: historico/relacoes/maerra_thandrel.yaml
-    bytes_fragmento: 2921
+    bytes_fragmento: 2959
     campos_atuais: 11
   luath:
     nome: Luath
@@ -265,7 +266,7 @@ relacoes:
     respeito: inicial, baseado em competencia, audacia e honestidade parcial
     arquivo: estado/relacoes/jack_mooney.yaml
     historico: historico/relacoes/jack_mooney.yaml
-    bytes_fragmento: 5313
+    bytes_fragmento: 5543
     campos_atuais: 11
   corven_dalm:
     nome: Corven Dalm

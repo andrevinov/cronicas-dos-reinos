@@ -202,3 +202,16 @@ eventos_pos_migracao:
     op: set
     valor: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição de contato
       direto sob observação crescente
+- transacao: s008-34c0c7aff53bd232
+  sessao: 8
+  resumo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
+    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
+    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
+    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferentes em duas visitas
+    e era obedecida por Velis. Ela não confirma Shizune, mas obse…
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Kethra observará discretamente a mulher Cinza-Azul. Se voltar a vê-la, amarrará um fio azul na dobradiça
+      inferior do portão de carvão; sem o fio, Ren não deve procurá-la nem inventar novo contato.

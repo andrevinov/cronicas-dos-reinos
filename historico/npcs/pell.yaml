@@ -23,3 +23,15 @@ eventos_pos_migracao:
     caminho: medidores.risco_percebido
     op: inc
     valor: 1
+- transacao: s008-34c0c7aff53bd232
+  sessao: 8
+  resumo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
+    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
+    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
+    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferentes em duas visitas
+    e era obedecida por Velis. Ela não confirma Shizune, mas obse…
+  deltas:
+  - alvo: npc:pell
+    caminho: medidores.confianca
+    op: inc
+    valor: 1

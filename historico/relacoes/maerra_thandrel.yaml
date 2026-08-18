@@ -91,3 +91,15 @@ relacao:
   - 'Aconselhou Ren antes da Ponte Baixa: desconfiar do seco onde deveria haver água, procurar cal, sal, carvão,
     pano encerado, ar quente, ralo tampado e sinais de preservação de papel, além de deixar marca ou caminho de
     volta para Luath.'
+eventos_pos_migracao:
+- transacao: s008-6bf626492029fd0e
+  sessao: 8
+  resumo: Ren brincou que precisava de um baú de sorte e esclareceu que viera apenas prevenir uma amiga, sem pedir
+    interrogatório ou item mágico. Maerra respondeu com humor, reconheceu que Ren sempre prioriza as crianças antes
+    de pedir ajuda, aceitou explicitamente a amizade e lhe deu uma bênção sem efeito mecânico.
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: atitude_para_ren
+    op: set
+    valor: amiga pastoral, moralmente firme e abertamente preocupada com Ren; confiança alta em sua proteção de
+      vulneráveis

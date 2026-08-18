@@ -7,7 +7,7 @@ npc:
   medidores:
     vinculo: 6
     confianca: 7
-    risco_percebido: 8
+    risco_percebido: 9
   natureza_do_vinculo: aliança prática cautelosa
   subtexto_romantico: possivel
   observacao_afetiva: 'Não há queda atual de Kethra por Ren. Se Colm/Dent for confirmado seguro, o risco cair e

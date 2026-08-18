@@ -6,7 +6,7 @@ npc:
   grupo: Silver Lily / Red Sail periférica
   medidores:
     vinculo: 3
-    confianca: 3
+    confianca: 4
     risco_percebido: 8
   natureza_do_vinculo: transacional, medroso e oportunista
   subtexto_romantico: nenhum

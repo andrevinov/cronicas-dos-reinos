@@ -1,0 +1,26 @@
+schema_historico_npc: 2
+id: maerra_thandrel
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s008-4b70c3262d912431
+  sessao: 8
+  resumo: Ren manteve a persona de Shinta durante um trajeto inicialmente voltado às docas, mudou gradualmente para
+    o Temple District e abandonou a persona ao entrar na Casa da Aurora Menor, ainda desarmado. Maerra informou
+    que as sete crianças permanecem vivas, alimentadas, sem febre e sem tentativas externas de contato, embora ainda
+    apresentem sinais de trauma. Após ouvir o relato sobre os Vell, Ponte Baixa, Casa dos Pesos, Velis, Brass, Luath,
+    Halessa e Kurobane, ela reforçou as precauções do abrigo e…
+  deltas:
+  - alvo: npc:maerra_thandrel
+    caminho: medidores.confianca
+    op: inc
+    valor: 1
+- transacao: s008-6bf626492029fd0e
+  sessao: 8
+  resumo: Ren brincou que precisava de um baú de sorte e esclareceu que viera apenas prevenir uma amiga, sem pedir
+    interrogatório ou item mágico. Maerra respondeu com humor, reconheceu que Ren sempre prioriza as crianças antes
+    de pedir ajuda, aceitou explicitamente a amizade e lhe deu uma bênção sem efeito mecânico.
+  deltas:
+  - alvo: npc:maerra_thandrel
+    caminho: medidores.vinculo
+    op: inc
+    valor: 1

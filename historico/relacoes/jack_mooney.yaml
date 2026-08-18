@@ -270,3 +270,17 @@ relacao:
     que ele vinha tentando preservar.
   - Jack aceitou a saída falsa porque protege a versão pública de Kage, mas a Casa Veyr pode ter ficado com suspeita
     de truque.
+eventos_pos_migracao:
+- transacao: s008-168d6c13de60e7db
+  sessao: 8
+  resumo: Ren desistiu de agir contra Bram em público e obteve 25 contra CD 14 em Furtividade para retornar ao circo
+    sem cauda. Comeu, marcou com Jack a próxima apresentação pública de Kage para 17 Eleasis ao cair da tarde e
+    completou sono mais meditação como descanso curto, recuperando Ki para 6/6 sem completar descanso longo. Às
+    17:42, permanece desarmado no circo; o broche segue indisponível até o próximo amanhecer.
+  deltas:
+  - alvo: relacao:jack_mooney
+    caminho: acordos_oferecidos
+    op: append
+    valor: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona dos Mooney, com
+      anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack e custando pelo menos
+      80 PO.

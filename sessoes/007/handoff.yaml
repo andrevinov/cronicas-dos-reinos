@@ -4,7 +4,7 @@ sessao: 7
 checkpoint:
   tipo: sessao
   estado: sessao_encerrada
-  modo: sessao_encerrada_aguardando_relato_a_luath
+  modo: aguardando_jardineiro_casa_do_salgueiro_seco
   personagem:
     nome: Ren Kagehira
     nivel: 6
@@ -21,9 +21,9 @@ checkpoint:
     deslocamento: 55 pés
     dinheiro_po: 34
   tempo:
-    data: 9 Eleasis, 1372 DR
+    data: 10 Eleasis, 1372 DR
     hora_aproximada: 05:19 de 10 Eleasis
-    periodo: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
+    periodo: primeiro clarear da manhã de 10 Eleasis, antes do trabalho de Shinta na Casa do Salgueiro Seco
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
     plano: Material
@@ -34,13 +34,14 @@ checkpoint:
     area: Casa do Salgueiro Seco, Ravens Bluff
     ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
 continuidade:
-  resumo_imediato: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu em
-    sala privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren; ele
-    ainda não decidiu formalmente entregá-lo.
-  prazos_e_alertas: Antes do poente, Luath colocará dois observadores sem uniforme nas cabeceiras da ponte baixa
-    e um terceiro homem distante como mensageiro. Se o plano não mudar, Brass cruzará a ponte depois do segundo
-    sino após o poente com dois homens para encontrar Rook. Ren prometeu trabalho na Casa do Salgueiro Seco antes
-    do amanhecer de 10 Eleasis.
+  resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com
+    Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
+    Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
+    pudesse e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu
+    a persona de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o
+    portão.
+  prazos_e_alertas: Nenhum prazo imediato adicional permaneceu pendente neste checkpoint; a vigilância de Luath,
+    o encontro de Brass e Rook e a perseguição de Kurobane na Ponte Baixa já haviam ocorrido na noite de 9 Eleasis.
 eventos_recentes:
 - batch: s007-sessao-91058e4a22ecbbfc
   transacao: s007-ed361e25388a6c3d

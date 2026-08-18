@@ -1,0 +1,98 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 8
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 6
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 31.200000000000003
+  tempo:
+    data: 10 Eleasis, 1372 DR
+    hora_aproximada: 17:42 de 10 Eleasis
+    periodo: primeiro clarear da manhã de 10 Eleasis, antes do trabalho de Shinta na Casa do Salgueiro Seco
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: depósito de figurino velho do circo, após sono e meditação
+continuidade:
+  resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
+    Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico. Nera
+    apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando pudesse
+    e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu a persona
+    de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o portão.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-4b70c3262d912431
+  resumo: Ren manteve a persona de Shinta durante um trajeto inicialmente voltado às docas, mudou gradualmente para
+    o Temple District e abandonou a persona ao entrar na Casa da Aurora Menor, ainda desarmado. Maerra informou
+    que as sete crianças permanecem vivas, alimentadas, sem febre e sem tentativas externas de contato, embora ainda
+    apresentem sinais de trauma. Após ouvir o relato sobre os Vell, Ponte Baixa, Casa dos Pesos,…
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-6bf626492029fd0e
+  resumo: Ren brincou que precisava de um baú de sorte e esclareceu que viera apenas prevenir uma amiga, sem pedir
+    interrogatório ou item mágico. Maerra respondeu com humor, reconheceu que Ren sempre prioriza as crianças antes
+    de pedir ajuda, aceitou explicitamente a amizade e lhe deu uma bênção sem efeito mecânico.
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-06dff4b1b582acce
+  resumo: 'Ren despediu-se de Maerra prometendo ajuda mútua e chegou sem ser observado ao novo ponto morto de Pell,
+    com 16 contra CD 13 em Furtividade. Pell deixou informação acionável: Tomas Rell, escriturário com selo de três
+    juncos, leva dinheiro e ordens à Casa do Salgueiro Seco e deve voltar após o meio-dia de 11 Eleasis; Brass reunirá
+    dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente…'
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-34c0c7aff53bd232
+  resumo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
+    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
+    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
+    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferent…
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-a66b3388689b9eb5
+  resumo: Ren seguiu a cobertura criada por Kethra e deixou Narwhal Manor como um trabalhador repreendido, sem ser
+    chamado ou seguido. Às 11:38 de 10 Eleasis, o Broche do Semblante Humilde continua ativo e expirará às 12:19.
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-5d91899852ec0306
+  resumo: Ren chegou à loja de Bram Vask e obteve 23 contra CD 13 em Furtividade e 14 contra CD 14 em Investigação.
+    Sem ser percebido, confirmou Bram dentro, um vigia externo, outra presença entre a entrada e o balcão e alguém
+    no piso superior; a porta traseira foi reforçada e recebeu alarme simples. Às 12:08, restam cerca de onze minutos
+    do Broche do Semblante Humilde.
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-4af5c82d8d3fe82f
+  resumo: Ren manteve cativeiro apenas como hipótese e tentou encontrar um posto oculto com alcance auditivo sobre
+    a loja de Bram. Obteve 14 contra CD 15 em Investigação e não encontrou posição que reunisse proximidade, ocultação
+    e rota segura. O broche expirou às 12:19 sem expor a transformação; às 12:26, Ren permanece fora de vista junto
+    ao vendedor de ferragens.
+- batch: s008-cena-0251de7c16487251
+  transacao: s008-168d6c13de60e7db
+  resumo: Ren desistiu de agir contra Bram em público e obteve 25 contra CD 14 em Furtividade para retornar ao circo
+    sem cauda. Comeu, marcou com Jack a próxima apresentação pública de Kage para 17 Eleasis ao cair da tarde e
+    completou sono mais meditação como descanso curto, recuperando Ki para 6/6 sem completar descanso longo. Às
+    17:42, permanece desarmado no circo; o broche segue indisponível até o próximo amanhecer.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/008/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

@@ -6,8 +6,8 @@ relacao:
   nome: Pell
   tipo: mensageiro local
   local: circuito Silver Lily / Rua da Corda / Fishtown
-  status: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
-    e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass
+  status: Pell recebeu no ponto morto os 3 PO de bônus pelo relatório sobre Tomas Rell e a rota de Brass; Ren reforçou
+    que informações sobre a Red Sail sempre serão pagas
   atitude_para_ren: assustado, oportunista e cooperativo por pagamento
   confianca: Pell demonstrou discrição e honestidade ao separar rumores de informação confirmada e recusar pagamento
     extra por resultados insuficientes
@@ -27,6 +27,10 @@ relacao:
   - Pell deixou bilhete no meio da tarde de 4 Eleasis dizendo que Brass não fica sozinho hoje.
   - Pell apontou uma janela entre o sino de seis e o de sete nos fundos da Red Sail, no movimento do barril seco
     da cozinha, com um homem entrando antes e outro saindo depois.
+  - Tomas Rell, escriturário da Galeria dos Escribas com selo de três juncos, leva dinheiro e ordens à Casa do Salgueiro
+    Seco e deve voltar depois do meio-dia de 11 Eleasis.
+  - Brass reunirá dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente e seguirá
+    pela Rua da Corda até a cabeceira oeste da Ponte Baixa.
   limites:
   - Pell pediu pagamento para continuar 'não lembrando'.
   - Pell aceitou 1 PO de Ren pela informação.

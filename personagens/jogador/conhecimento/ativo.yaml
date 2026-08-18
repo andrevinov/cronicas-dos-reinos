@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 7
-sessao_mais_recente_indexada: 7
+sessao_atual_da_campanha: 8
+sessao_mais_recente_indexada: 8
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,11 +34,47 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: Ren transferiu formalmente o documento falsificado à Casa de Tyr. A auditoria encontrou a cadeia anterior
-    sem ruptura visível e confirmou que o original preservado por Tyr mantém a retenção anulada do volume 13, enquanto
-    a peça recuperada diz que a carga nunca foi retida. Ambos foram selados separadamente; Ren permanece testemunha
-    reservada e Shizune foi classificada como risco operacional não confirmado.
+- titulo: 'Shinta comeu apressadamente, guardou as duas pratas com satisfação e confirmou que voltará no clarear
+    seguinte. O jardineiro suavizou ligeiramente, reiterou que Shinta deve bater duas vezes e esperar sem procurar
+    outra entrada. Ren deixou a propriedade e, após horas no terreno, conhece três serviços externos visíveis que
+    poderia oferecer: telhas e ripa cedendo no estábulo, um galho morto alto sobre o telhado e uma tábua rachada
+    no portão interno.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-007/tx-s007-c19422149078ef8d.md
-  bytes: 839
-  transacao: s007-c19422149078ef8d
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-7d9be532456a4376.md
+  bytes: 1003
+  transacao: s008-7d9be532456a4376
+- titulo: Ren manteve a persona de Shinta durante um trajeto inicialmente voltado às docas, mudou gradualmente para
+    o Temple District e abandonou a persona ao entrar na Casa da Aurora Menor, ainda desarmado. Maerra informou
+    que as sete crianças permanecem vivas, alimentadas, sem febre e sem tentativas externas de contato, embora ainda
+    apresentem sinais de trauma. Após ouvir o relato sobre os Vell, Ponte Baixa, Casa dos Pesos, Velis, Brass, Luath,
+    Halessa e Kurobane, ela reforçou as precauções do abrigo e…
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-4b70c3262d912431.md
+  bytes: 925
+  transacao: s008-4b70c3262d912431
+- titulo: 'Ren despediu-se de Maerra prometendo ajuda mútua e chegou sem ser observado ao novo ponto morto de Pell,
+    com 16 contra CD 13 em Furtividade. Pell deixou informação acionável: Tomas Rell, escriturário com selo de três
+    juncos, leva dinheiro e ordens à Casa do Salgueiro Seco e deve voltar após o meio-dia de 11 Eleasis; Brass reunirá
+    dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente e seguirá pela Rua da
+    Corda à cabeceira oeste da Ponte Baixa. Pell cobra 3 PO e…'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-06dff4b1b582acce.md
+  bytes: 1252
+  transacao: s008-06dff4b1b582acce
+- titulo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
+    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
+    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
+    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferentes em duas visitas
+    e era obedecida por Velis. Ela não confirma Shizune, mas obse…
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-34c0c7aff53bd232.md
+  bytes: 1310
+  transacao: s008-34c0c7aff53bd232
+- titulo: Ren chegou à loja de Bram Vask e obteve 23 contra CD 13 em Furtividade e 14 contra CD 14 em Investigação.
+    Sem ser percebido, confirmou Bram dentro, um vigia externo, outra presença entre a entrada e o balcão e alguém
+    no piso superior; a porta traseira foi reforçada e recebeu alarme simples. Às 12:08, restam cerca de onze minutos
+    do Broche do Semblante Humilde.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-5d91899852ec0306.md
+  bytes: 1060
+  transacao: s008-5d91899852ec0306

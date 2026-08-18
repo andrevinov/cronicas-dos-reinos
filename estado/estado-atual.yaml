@@ -3,8 +3,8 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 7
-  modo_de_cena_atual: sessao_encerrada_aguardando_relato_a_luath
+  sessao_atual: 8
+  modo_de_cena_atual: fim_de_descanso_curto_no_circo_antes_do_poente
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,23 +18,26 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa do Salgueiro Seco, Ravens Bluff
-  ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
-  descricao_operacional: Ren deixou os depósitos sem cauda e chegou ileso ao posto da Night Watch. Luath o recebeu
-    em sala privada e pediu o relato desde o princípio. O documento falsificado permanece sob a custódia de Ren;
-    ele ainda não decidiu formalmente entregá-lo.
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
+    com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
+    Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
+    pudesse e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu
+    a persona de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o
+    portão.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 9 Eleasis, 1372 DR
+  data_exata: 10 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 9
+  dia_do_mes: 10
   dezena: 1
-  dia_da_dezena: 9
-  periodo_do_dia: noite de 9 Eleasis, após a perseguição de Kurobane nos telhados da Ponte Baixa
-  hora_aproximada: 05:19 de 10 Eleasis
+  dia_da_dezena: 10
+  periodo_do_dia: primeiro clarear da manhã de 10 Eleasis, antes do trabalho de Shinta na Casa do Salgueiro Seco
+  hora_aproximada: 17:42 de 10 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -47,17 +50,16 @@ recursos:
     maximos: 6
     dado: d8
   ki:
-    atuais: 3
+    atuais: 6
     maximos: 6
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 34
+    po: 31.200000000000003
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 9 Eleasis
-    passos_sem_pegadas: ativo por concentração desde cerca de 20:47 de 9 Eleasis; duração máxima até cerca de 21:47
+    broche_do_semblante_humilde: usado em 10 Eleasis; indisponível até o amanhecer de 11 Eleasis
     silencio: disponível mediante gasto de 2 Ki
 ponteiros:
   tempo_atual: estado/tempo.yaml
@@ -65,7 +67,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/007/transcricao.md
+  transcricao_atual: sessoes/008/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -97,8 +99,6 @@ equipamento_em_posse:
   - mapa público da Escada das Sete Águas, comprado de Brunna Torkel
   - 'cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída
     baixa para drenagem, parede raspada, ar seco e marca apagada'
-  - documento falsificado do volume 13, recuperado de Kurobane em 9 Eleasis; marca de retenção rompida e entrada
-    alterada para declarar que a carga nunca foi retida
   outros:
   - figurino de O Vento da Noite guardado com Dessa Wren
   - roupa de cidadão menor limpo guardada no circo
@@ -114,8 +114,7 @@ objetivos:
   - descobrir por que Aiko Kagehira foi morta
   - descobrir o que restou da Juppongatana/Dez Espadas
   imediatos:
-  - resolver o turno de Ren contra o homem de mãos limpas e, se possível, descobrir sua identidade
-  - considerar as três testemunhas antes de violência letal ou magia visível
+  - cumprir o compromisso de trabalho como Shinta na Casa do Salgueiro Seco
   - confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos a Iria Doss
   - preservar o sigilo da fonte reservada no pacote entregue a Tyr
   - manter Nera, Tavin e o livro original protegidos no circo
@@ -135,16 +134,20 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren está dentro da casa de Iria com Iria Doss, Mera Fumaça e Colm Dunn. Colm está consciente e estável,
-    embora fraco e com irritação pulmonar. Iria aguarda a resposta de Ren ao preço de 3 PO.
-  risco_imediato: 'alto e localizado: violência letal terá testemunhas e o confronto pode atrair trabalhadores,
-    patrulha ou aliados do alvo.'
+  cena_atual: Ren está diante do portão lateral da Casa do Salgueiro Seco, sob a persona de Shinta, aguardando o
+    jardineiro ao primeiro clarear depois de dormir poucas horas sem completar descanso longo.
+  risco_imediato: nenhum perigo imediato confirmado; a cobertura de Shinta ainda precisa ser preservada durante
+    o trabalho.
 pendencias:
-- resolver o combate atual
-- decidir se o homem de mãos limpas deve ser capturado vivo
+- apresentar-se ao jardineiro e iniciar o trabalho combinado na Casa do Salgueiro Seco
 - confirmar depois se Mera e Colm/Dent chegaram a Iria Doss
 - descobrir o nome/posição real do homem de mãos limpas no circuito de Bram/Narwhal
 disponibilidades:
-  broche_do_semblante_humilde: usado em 9 Eleasis; indisponível até o próximo amanhecer; efeito de aparência humilde
-    e comum ativo até cerca de 16:29, salvo dispensa anterior
+  broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 10 Eleasis
 combate_atual: null
+efeitos_temporarios:
+  ren_desarmado:
+    descricao: Ren abandonou a persona de Shinta, mas continua usando vestes simples e sem portar nenhuma de suas
+      armas.
+    duracao: até Ren recuperar ou voltar a portar suas armas
+    inicio: 09:10 de 10 Eleasis

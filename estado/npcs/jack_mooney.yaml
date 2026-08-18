@@ -6,7 +6,7 @@ npc:
   grupo: Jack Mooney & Sons Circus
   medidores:
     vinculo: 5
-    confianca: 6
+    confianca: 7
     risco_percebido: 7
   natureza_do_vinculo: profissional, patronal e utilitário
   subtexto_romantico: nenhum

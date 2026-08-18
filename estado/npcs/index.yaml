@@ -44,23 +44,25 @@ npcs:
     grupo: Jack Mooney & Sons Circus
     medidores:
       vinculo: 5
-      confianca: 6
+      confianca: 7
       risco_percebido: 7
     natureza_do_vinculo: profissional, patronal e utilitário
     subtexto_romantico: nenhum
     arquivo: estado/npcs/jack_mooney.yaml
     bytes_fragmento: 1595
+    historico: historico/npcs/jack_mooney.yaml
   maerra_thandrel:
     nome: Irmã Maerra Thandrel
     grupo: Casa da Aurora Menor / Lathander
     medidores:
-      vinculo: 6
-      confianca: 8
+      vinculo: 7
+      confianca: 9
       risco_percebido: 6
     natureza_do_vinculo: pastoral, moral e protetivo
     subtexto_romantico: nenhum
     arquivo: estado/npcs/maerra_thandrel.yaml
     bytes_fragmento: 1642
+    historico: historico/npcs/maerra_thandrel.yaml
   luath:
     nome: Luath
     grupo: City Guard / Night Watch
@@ -79,7 +81,7 @@ npcs:
     medidores:
       vinculo: 6
       confianca: 7
-      risco_percebido: 8
+      risco_percebido: 9
     natureza_do_vinculo: aliança prática cautelosa
     subtexto_romantico: possivel
     arquivo: estado/npcs/kethra_dunn.yaml
@@ -90,7 +92,7 @@ npcs:
     grupo: Silver Lily / Red Sail periférica
     medidores:
       vinculo: 3
-      confianca: 3
+      confianca: 4
       risco_percebido: 8
     natureza_do_vinculo: transacional, medroso e oportunista
     subtexto_romantico: nenhum

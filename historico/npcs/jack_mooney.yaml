@@ -1,0 +1,15 @@
+schema_historico_npc: 2
+id: jack_mooney
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s008-168d6c13de60e7db
+  sessao: 8
+  resumo: Ren desistiu de agir contra Bram em público e obteve 25 contra CD 14 em Furtividade para retornar ao circo
+    sem cauda. Comeu, marcou com Jack a próxima apresentação pública de Kage para 17 Eleasis ao cair da tarde e
+    completou sono mais meditação como descanso curto, recuperando Ki para 6/6 sem completar descanso longo. Às
+    17:42, permanece desarmado no circo; o broche segue indisponível até o próximo amanhecer.
+  deltas:
+  - alvo: npc:jack_mooney
+    caminho: medidores.confianca
+    op: inc
+    valor: 1

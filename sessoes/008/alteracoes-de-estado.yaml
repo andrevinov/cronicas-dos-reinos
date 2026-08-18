@@ -1,0 +1,86 @@
+schema_alteracoes_transacionais: 1
+sessao: 8
+status: em_andamento
+fonte: sessoes/008/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 8
+  modo: aguardando_jardineiro_casa_do_salgueiro_seco
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 3/6
+  ca: 17
+  dinheiro_po: 34
+  data: 10 Eleasis, 1372 DR
+  hora: 05:19 de 10 Eleasis
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: diante do portão lateral da Casa do Salgueiro Seco, aguardando o jardineiro ao primeiro clarear
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 8
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 31.200000000000003
+  data: 10 Eleasis, 1372 DR
+  hora: 17:42 de 10 Eleasis
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  nivel_ficha: 6
+consolidacoes:
+- id: s008-cena-0251de7c16487251
+  tipo: cena
+  transacoes:
+  - s008-d6595b8a23049d60
+  - s008-8a334d41988be4a5
+  - s008-a50a38768b887c0e
+  - s008-9ae57ff2e1d83ad8
+  - s008-08a45882c72d2e23
+  - s008-7d9be532456a4376
+  - s008-4b70c3262d912431
+  - s008-6bf626492029fd0e
+  - s008-06dff4b1b582acce
+  - s008-34c0c7aff53bd232
+  - s008-a66b3388689b9eb5
+  - s008-5d91899852ec0306
+  - s008-4af5c82d8d3fe82f
+  - s008-168d6c13de60e7db
+  deltas: 72
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/jack_mooney.yaml
+  - estado/npcs/kethra_dunn.yaml
+  - estado/npcs/maerra_thandrel.yaml
+  - estado/npcs/pell.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/jack_mooney.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/relacoes/pell.yaml
+  - estado/tempo.yaml
+  - historico/npcs/jack_mooney.yaml
+  - historico/npcs/kethra_dunn.yaml
+  - historico/npcs/maerra_thandrel.yaml
+  - historico/npcs/pell.yaml
+  - historico/relacoes/jack_mooney.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - historico/relacoes/pell.yaml
+  - narrador/sessoes/008/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-008/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-06dff4b1b582acce.md
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-34c0c7aff53bd232.md
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-4b70c3262d912431.md
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-5d91899852ec0306.md
+  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-7d9be532456a4376.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/008/alteracoes-de-estado.yaml
+  - sessoes/008/consequencias.md
+  - sessoes/008/consolidacoes.jsonl
+  - sessoes/008/resumo.md

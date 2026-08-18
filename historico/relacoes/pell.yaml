@@ -119,3 +119,39 @@ eventos_pos_migracao:
     op: set
     valor: Pell recebeu 1 PO de novo adiantamento pelo ponto morto para continuar investigando os mesmos três imóveis
       e Brass, mantendo os bônus de 1 PO por informação imobiliária relevante e 2 PO por rota confirmada de Brass
+- transacao: s008-06dff4b1b582acce
+  sessao: 8
+  resumo: 'Ren despediu-se de Maerra prometendo ajuda mútua e chegou sem ser observado ao novo ponto morto de Pell,
+    com 16 contra CD 13 em Furtividade. Pell deixou informação acionável: Tomas Rell, escriturário com selo de três
+    juncos, leva dinheiro e ordens à Casa do Salgueiro Seco e deve voltar após o meio-dia de 11 Eleasis; Brass reunirá
+    dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente e seguirá pela Rua da
+    Corda à cabeceira oeste da Ponte Baixa. Pell cobra 3 PO e…'
+  deltas:
+  - alvo: relacao:pell
+    caminho: status
+    op: set
+    valor: Pell entregou informação imobiliária acionável sobre Tomas Rell e confirmou a rota de Brass até a Ponte
+      Baixa; Ren deve 3 PO nos bônus prometidos
+  - alvo: relacao:pell
+    caminho: informacoes_compartilhadas_por_pell
+    op: append
+    valor: Tomas Rell, escriturário da Galeria dos Escribas com selo de três juncos, leva dinheiro e ordens à Casa
+      do Salgueiro Seco e deve voltar depois do meio-dia de 11 Eleasis.
+  - alvo: relacao:pell
+    caminho: informacoes_compartilhadas_por_pell
+    op: append
+    valor: Brass reunirá dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente
+      e seguirá pela Rua da Corda até a cabeceira oeste da Ponte Baixa.
+- transacao: s008-34c0c7aff53bd232
+  sessao: 8
+  resumo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
+    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
+    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
+    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferentes em duas visitas
+    e era obedecida por Velis. Ela não confirma Shizune, mas obse…
+  deltas:
+  - alvo: relacao:pell
+    caminho: status
+    op: set
+    valor: Pell recebeu no ponto morto os 3 PO de bônus pelo relatório sobre Tomas Rell e a rota de Brass; Ren reforçou
+      que informações sobre a Red Sail sempre serão pagas

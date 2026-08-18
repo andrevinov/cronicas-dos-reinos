@@ -5,8 +5,8 @@ npc:
   nome: Irmã Maerra Thandrel
   grupo: Casa da Aurora Menor / Lathander
   medidores:
-    vinculo: 6
-    confianca: 8
+    vinculo: 7
+    confianca: 9
     risco_percebido: 6
   natureza_do_vinculo: pastoral, moral e protetivo
   subtexto_romantico: nenhum

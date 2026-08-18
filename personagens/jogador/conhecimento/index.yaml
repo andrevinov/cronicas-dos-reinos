@@ -71,3 +71,6 @@ incrementais:
   '7':
     index: personagens/jogador/conhecimento/incrementais/sessao-007/index.yaml
     quantidade: 1
+  '8':
+    index: personagens/jogador/conhecimento/incrementais/sessao-008/index.yaml
+    quantidade: 5
