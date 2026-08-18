@@ -1,0 +1,21 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: nera_vell
+nome: Nera Vell
+fonte_npc: estado/relacoes/nera_vell.yaml
+necessidades:
+- id: material_de_gravura
+  tipo: aquisicao
+  semente: Nera pode precisar de material, ferramenta ou componente ligado ao ofício de gravação que seja difícil para ela obter nas circunstâncias atuais.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: true
+  consequencia_sem_ren: Nera pode improvisar, comprar por outra mão ou adiar o trabalho.
+- id: pequena_pendencia_de_vida
+  tipo: problema_cotidiano
+  semente: Nera pode pedir ajuda com uma pendência cotidiana concreta que devolva alguma normalidade à vida dela, sem transformar sua relação com Ren em dispensadora de missões.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: true
+  consequencia_sem_ren: A pendência pode continuar, ser resolvida por outra pessoa ou perder importância.

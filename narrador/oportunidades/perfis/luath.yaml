@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: luath
+nome: Luath
+fonte_npc: estado/relacoes/luath.yaml
+necessidades:
+- id: verificacao_de_pista
+  tipo: investigacao
+  semente: Luath pode precisar que uma pista que a guarda não consegue perseguir discretamente seja verificada sem transformar Ren em policial informal.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: A pista pode esfriar, ser assumida pela guarda ou levar a outra consequência.
+- id: testemunha_em_risco
+  tipo: protecao
+  semente: Uma testemunha ou informante pode precisar de proteção ou deslocamento curto, se houver base canônica para esse risco no encontro.
+  janela:
+    tipo: temporal
+    duracao_horas: 24
+  pode_reabrir: false
+  consequencia_sem_ren: A guarda pode realocar a pessoa, perder contato ou assumir o risco por conta própria.

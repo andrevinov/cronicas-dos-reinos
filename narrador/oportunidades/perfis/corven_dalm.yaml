@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: corven_dalm
+nome: Corven Dalm
+fonte_npc: estado/relacoes/corven_dalm.yaml
+necessidades:
+- id: servico_por_contrato
+  tipo: trabalho_profissional
+  semente: Corven pode propor um serviço delimitado por contrato que teste discrição, negociação ou infiltração sem revelar automaticamente seu verdadeiro patrono.
+  janela:
+    tipo: temporal
+    duracao_horas: 72
+  pode_reabrir: false
+  consequencia_sem_ren: Corven pode contratar outra mão, alterar o teste ou retirar a oportunidade.
+- id: aquisicao_de_interesse
+  tipo: aquisicao
+  semente: Corven pode querer que Ren obtenha por meios negociados ou discretos um objeto não definido previamente, desde que o narrador o conecte a interesses já sustentados pelo cânone.
+  janela:
+    tipo: enquanto_condicao
+    condicao: o objeto ou acesso continuar relevante para o contratante
+  pode_reabrir: false
+  consequencia_sem_ren: O contratante pode buscar outro agente ou perder a oportunidade.

@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: maerra_thandrel
+nome: Irmã Maerra Thandrel
+fonte_npc: estado/relacoes/maerra_thandrel.yaml
+necessidades:
+- id: protecao_vulneravel
+  tipo: protecao
+  semente: Alguém vulnerável ligado ao trabalho pastoral de Maerra pode precisar de proteção breve ou escolta, se o estado atual do abrigo sustentar isso.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: A pessoa pode receber proteção de outra fonte, permanecer exposta ou mudar de abrigo.
+- id: pessoa_ausente
+  tipo: busca
+  semente: Uma pessoa esperada pelo abrigo ou templo pode não ter aparecido; Maerra pode pedir uma busca discreta se isso combinar com o cânone do momento.
+  janela:
+    tipo: enquanto_condicao
+    condicao: a pessoa continuar ausente
+  pode_reabrir: true
+  consequencia_sem_ren: Outra pessoa pode encontrá-la, o problema pode se resolver sozinho ou a ausência pode ganhar consequências.

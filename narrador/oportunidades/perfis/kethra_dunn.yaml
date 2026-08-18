@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: kethra_dunn
+nome: Kethra Dunn
+fonte_npc: estado/relacoes/kethra_dunn.yaml
+necessidades:
+- id: rota_de_servico_comprometida
+  tipo: investigacao
+  semente: Algo na rotina de serviço de Kethra pode ter ficado arriscado demais; ela pode precisar que Ren descubra por quê sem expô-la.
+  janela:
+    tipo: enquanto_condicao
+    condicao: o risco na rotina de serviço ainda existir
+  pode_reabrir: true
+  consequencia_sem_ren: A rota pode permanecer comprometida, ser abandonada ou forçar Kethra a procurar outra solução.
+- id: entrega_discreta
+  tipo: entrega
+  semente: Kethra pode precisar que algo pequeno e legítimo atravesse discretamente uma cadeia de serviço sem ligar seu nome ao destinatário.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: A entrega pode perder utilidade, seguir por outra mão ou deixar de acontecer.
