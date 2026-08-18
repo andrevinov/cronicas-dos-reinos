@@ -125,14 +125,18 @@ class ContextoRepositoryTest(unittest.TestCase):
         rendered, _ = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
-    def test_recurso_passos_sem_pegadas_encontra_custo_sem_busca_ampla(self):
+    def test_recurso_passos_sem_pegadas_encontra_custo_sem_disponibilidade_explicita(self):
         data = mod.command_resource(REPO, "passos sem pegadas")
         self.assertTrue(data["resultado"]["encontrado"])
         mechanic = data["resultado"]["mecanica"]
         self.assertEqual(mechanic["dados"]["nome"], "passos sem pegadas")
         self.assertEqual(mechanic["dados"]["custo"], 2)
-        self.assertEqual(data["resultado"]["disponibilidade"]["id"], "passos_sem_pegadas")
+        self.assertIsNone(data["resultado"]["disponibilidade"])
         self.assertEqual(data["nivel"], "L2")
+        self.assertEqual(
+            data["fontes"],
+            ["personagens/jogador/ficha.yaml", "estado/estado-atual.yaml"],
+        )
 
     def test_knowledge_lookup_finds_masao_without_returning_whole_file(self):
         data = mod.command_knowledge(REPO, "Masao")
