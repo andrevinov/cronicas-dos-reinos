@@ -22,10 +22,10 @@ spec2.loader.exec_module(low)
 
 
 class AgentesLevesRepositoryTest(unittest.TestCase):
-    def test_repositorio_real_valida_tres_agentes_leves(self):
+    def test_repositorio_real_valida_oito_agentes_leves(self):
         result = light.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade"], 3)
+        self.assertEqual(result["quantidade"], 8)
 
     def test_status_real_nao_abre_fragmentos(self):
         result = light.status_view(ROOT)
