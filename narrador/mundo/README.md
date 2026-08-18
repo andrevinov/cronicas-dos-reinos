@@ -1,8 +1,8 @@
 # Motor reservado do Mundo Vivo
 
 Esta pasta guarda somente o **controle determinístico** do mundo que continua em
-movimento fora da presença de Ren. Ela não substitui agentes, direções, entradas,
-sessões, relógios, relações ou qualquer outra fonte canônica.
+movimento fora da presença de Ren. Ela não substitui agentes, agentes leves,
+direções, entradas, sessões, relógios, relações ou qualquer outra fonte canônica.
 
 ## Arquivos
 
@@ -67,6 +67,7 @@ turno persiste transcrição + delta
 → checkpoint consolida o novo tempo canônico
 → direções canônicas avaliam o intervalo sem avançar marcos
 → entradas elegíveis de aliados são filtradas sem fazer ninguém aparecer
+→ se houve amanhecer, agentes leves vencidos passam pelo orçamento determinístico
 → mundo.py processa até esse tempo
 → handoff/índice são reconstruídos
 ```
@@ -83,15 +84,15 @@ raro em que o marcador já existe na transcrição e o evento não está mais no
 buffer. Se o ID já aparece no ledger, a operação é considerada consolidada e não
 é reaplicada.
 
-Pendências de direção e entrada usam IDs estáveis. Se houver falha depois que uma
-delas foi criada e antes do cursor do mundo avançar, repetir o checkpoint não a
-duplica. A próxima avaliação de entrada também avança deterministicamente três
-dias, impedindo que o mesmo aliado volte a ser consultado em todo checkpoint.
+Pendências de direção, entrada e agentes leves usam IDs estáveis. Se houver falha
+depois que uma delas foi criada e antes de seu controle reservado ser atualizado,
+repetir o checkpoint não a duplica. A camada leve também repara
+`proxima_avaliacao` ao reconhecer no Mundo Vivo um ID que já foi criado.
 
 ## Economia de contexto
 
 O motor lê agenda, cursor e tempo. Quando nada vence, **não lê sequer o índice de
-agentes**. Quando alguma pendência de agente vence, consulta no máximo
+agentes**. Quando alguma pendência de agente estratégico vence, consulta no máximo
 `narrador/agentes/index.yaml` para validar IDs e devolve apenas quem precisa de
 reconsideração. Ele nunca abre automaticamente os fragmentos dos agentes.
 
@@ -105,6 +106,12 @@ tempo. Mantém **um único candidato normal por vez** e no máximo uma antecipa�
 extraordinária. O fragmento individual do aliado só é aberto depois que existe
 `avaliar_entrada`.
 
+A camada de agentes leves é ainda mais restritiva. Ela só é consultada quando o
+intervalo do checkpoint **atravessa o amanhecer**. Um checkpoint de duas horas no
+meio do dia não lê `narrador/agentes-leves/`. Mesmo no amanhecer, a seleção lê só
+índice + estado + tempo + fila do Mundo Vivo; nenhum fragmento de NPC entra no
+contexto antes de uma pendência concreta.
+
 Exemplo de saída conceitual:
 
 ```yaml
@@ -116,6 +123,9 @@ direcoes_reconsiderar:
 
 entradas_reconsiderar:
   - shen_meihua
+
+agentes_leves_reconsiderar:
+  - luath
 ```
 
 Só depois disso o narrador usa consultas dirigidas:
@@ -124,6 +134,7 @@ Só depois disso o narrador usa consultas dirigidas:
 python3 ferramentas/agentes.py mostrar red_sail
 python3 ferramentas/direcoes.py mostrar ponte_de_kozakura
 python3 ferramentas/entradas.py mostrar shen_meihua
+python3 ferramentas/agentes_leves.py mostrar luath
 ```
 
 ## Direções narrativas canônicas
@@ -176,16 +187,51 @@ fechada por `mundo.py concluir`.
 
 Detalhes: `narrador/entradas/README.md`.
 
+## Agentes recorrentes leves
+
+`reavaliar_agente_leve` existe para NPCs importantes que possuem emprego, rotina,
+obrigações e vida própria, mas não precisam do peso operacional de Masao, uma
+facção ou uma instituição. **Rotina é o resultado padrão.** Uma pendência leve não
+obriga o NPC a fazer algo inesperado.
+
+Ao receber uma pendência leve, consultar somente o NPC indicado:
+
+```bash
+python3 ferramentas/agentes_leves.py mostrar <id-ou-nome>
+```
+
+O fragmento traz rotina, objetivo atual, iniciativas possíveis e regra de
+reavaliação. Se o estado atual não oferecer uma causa concreta para iniciativa,
+concluir a pendência com nenhuma mudança extraordinária. Não inventar ação só
+porque o scheduler chamou o NPC.
+
+O orçamento atual é rígido:
+
+- no máximo **1 nova reavaliação leve por checkpoint**;
+- no máximo **2 pendências leves abertas simultaneamente**;
+- seleção por **mais atrasado → maior prioridade → ID**;
+- vencidos não selecionados continuam vencidos e serão reconsiderados depois;
+- vários ciclos perdidos são condensados em uma única avaliação;
+- checkpoints que não cruzam amanhecer nem carregam a camada.
+
+A primeira população é deliberadamente pequena e escalonada: Luath a cada 3 dias,
+Silva Elkwood a cada 4 e Maerra Thandrel a cada 5. Night Watch continua sendo
+agente institucional estratégico; Luath é o indivíduo recorrente, portanto as duas
+camadas não significam a mesma decisão.
+
+Detalhes: `narrador/agentes-leves/README.md`.
+
 ## Cadência não é ação
 
-Uma cadência de amanhecer significa **reavaliar**, não obrigar agente, direção ou
-entrada a avançar nem garantir que Ren perceberá qualquer coisa. O narrador ainda
-deve respeitar conhecimento, presença, mobilidade, recursos, restrições e
-causalidade.
+Uma cadência de amanhecer significa **reavaliar**, não obrigar agente, direção,
+entrada ou NPC leve a avançar nem garantir que Ren perceberá qualquer coisa. O
+narrador ainda deve respeitar conhecimento, presença, mobilidade, recursos,
+restrições, rotina e causalidade.
 
 Cadências podem ser espaçadas conforme a escala: uma facção em busca ativa pode
 ser reconsiderada diariamente; um antagonista estratégico, a cada vários dias;
-uma direção histórica ou uma entrada futura, ainda mais lentamente.
+um NPC recorrente, ainda mais espaçadamente; uma direção histórica ou uma entrada
+futura, conforme sua própria escala.
 
 ## Agendamentos determinísticos
 
