@@ -104,7 +104,7 @@ Durante **cada avanço comum**:
 - não executar `git status`, `git diff`, commit, auditoria ampla ou suíte global por rotina;
 - não executar `analisar-rollout.py`, `comparar-rollouts.py` ou criar telemetria durante o avanço; medição é pós-hoc;
 - registrar jogador + narrador + deltas por stdin numa única chamada: `python3 ferramentas/turno.py registrar <<'JSON'` → JSON com `jogador`, `narracao`, `resumo`, `modo`, `deltas` → `JSON`; não abrir TTY, não criar `.turno-temporario.json`, não usar `--arquivo` nem consultar `--help` no avanço;
-- em avanço comum, essa chamada altera somente a transcrição atual e `runtime/eventos-pendentes.jsonl`; se o tempo efetivo acumular 120 minutos desde o cursor do Mundo Vivo ou cruzar o amanhecer, `turno.py` promove automaticamente checkpoint de cena depois dessas duas escritas;
+- normalmente essa chamada altera só transcrição + `runtime/eventos-pendentes.jsonl`; tempo significativo pode promover checkpoint automático — detalhes em `narrador/mundo/README.md`;
 - **`narracao` é a cena completa para o jogador; `resumo` é compressão operacional; `deltas` são apenas mudanças persistentes**;
 - não encurtar `narracao` para fazê-la caber no tamanho desejado do resumo ou do buffer;
 - registrar apenas deltas persistentes realmente ocorridos; efeito temporário usa `set efeitos_temporarios.<id>` e, ao consumir/expirar, `remove` no mesmo caminho;
@@ -118,18 +118,18 @@ Quando um NPC ou local presente precisar de matéria-prima descritiva e o contex
 
 Para rolagens independentes já conhecidas, preferir `ferramentas/rolar-lote.py`. Rolagens condicionais continuam separadas.
 
-Meta para **avanço comum**: duas escritas — transcrição + buffer. Checkpoint temporal é exceção deliberada, disparada pela mesma chamada somente quando a passagem de tempo for significativa.
+Meta de avanço comum: **duas escritas** — transcrição + buffer; checkpoint temporal é exceção deliberada.
 
 ## 7. Checkpoint de cena e sessão
 
-Fazer checkpoint em **fronteira de cena importante**, quando um estado consolidado for útil, e sempre antes de considerar a sessão encerrada. Não fazer depois de cada turno. Passagem temporal significativa já é detectada por `turno.py`: não chamar `checkpoint.py cena` separadamente só porque passaram duas horas ou houve amanhecer.
+Fazer checkpoint em **fronteira de cena importante**, quando um estado consolidado for útil, e sempre antes de considerar a sessão encerrada. Não fazer depois de cada turno. Tempo significativo é promovido automaticamente por `turno.py`.
 
 ```bash
 python3 ferramentas/checkpoint.py cena
 python3 ferramentas/checkpoint.py sessao
 ```
 
-`checkpoint.py` chama o motor canônico `consolidar.py`; depois da instalação atômica, sincroniza `ferramentas/mundo.py` até o novo tempo canônico e então reconstrói `sessoes/NNN/handoff.yaml` e `sessoes/index.yaml`. Handoff/índice são cache derivado; o cursor do Mundo Vivo é idempotente.
+`checkpoint.py` consolida, sincroniza o Mundo Vivo até o novo tempo canônico e reconstrói handoff/índice. Falha posterior à instalação não reaplica deltas.
 
 Se uma consolidação for interrompida, **não narrar, consultar contexto nem registrar novo turno**. Recuperar primeiro:
 
@@ -164,7 +164,6 @@ python3 ferramentas/turno.py check
 python3 ferramentas/consolidar.py check
 python3 ferramentas/sessoes.py check
 python3 ferramentas/checkpoint.py check
-python3 ferramentas/mundo.py check
 python3 ferramentas/migrar-estado-atual.py --check
 python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
