@@ -18,26 +18,41 @@ class AgentesRepositoryTest(unittest.TestCase):
     def test_repositorio_valida_camadas_de_agentes(self):
         result = mod.validate_repo(REPO)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade"], 7)
+        self.assertEqual(result["quantidade"], 15)
 
     def test_consulta_de_um_agente_le_apenas_indice_e_fragmento(self):
         result = mod.load_agent(REPO, "Shizune")
         self.assertEqual(result["agente_id"], "kajiwara_shizune")
         self.assertEqual(
             result["fontes_lidas"],
-            [
-                "narrador/agentes/index.yaml",
-                "narrador/agentes/kajiwara_shizune.yaml",
-            ],
+            ["narrador/agentes/index.yaml", "narrador/agentes/kajiwara_shizune.yaml"],
         )
-        self.assertNotIn(
-            "narrador/agentes/masao_hirasawa.yaml",
-            result["fontes_lidas"],
-        )
+        self.assertNotIn("narrador/agentes/masao_hirasawa.yaml", result["fontes_lidas"])
 
-    def test_indice_permanece_pequeno(self):
+    def test_indice_permanece_pequeno_mesmo_com_todos_os_juppongatana(self):
         size = (REPO / mod.INDEX_PATH).stat().st_size
         self.assertLessEqual(size, 4096)
+
+    def test_kurobane_presente_esta_habilitado_localmente(self):
+        result = mod.load_agent(REPO, "Kurobane")
+        self.assertEqual(result["resultado"]["presenca"]["estado"], "presente")
+        self.assertEqual(result["elegibilidade_local"], "sim")
+
+    def test_shizune_indeterminada_nao_ganha_acao_fisica_local(self):
+        result = mod.load_agent(REPO, "Shizune")
+        self.assertEqual(result["resultado"]["presenca"]["estado"], "indeterminado")
+        self.assertEqual(result["elegibilidade_local"], "nao")
+
+    def test_pan_chu_existe_como_agente_latente_sem_canonizar_chegada(self):
+        result = mod.load_agent(REPO, "Pan Chu")
+        self.assertEqual(result["agente_id"], "pan_chu")
+        self.assertEqual(result["resultado"]["estado"], "latente")
+        self.assertEqual(result["resultado"]["presenca"]["estado"], "indeterminado")
+        self.assertEqual(result["elegibilidade_local"], "nao")
+
+    def test_coletivo_juppongatana_depende_de_membros_presentes(self):
+        result = mod.load_agent(REPO, "Juppongatana")
+        self.assertEqual(result["elegibilidade_local"], "condicional")
 
 
 class AgentesValidationTest(unittest.TestCase):
@@ -47,23 +62,25 @@ class AgentesValidationTest(unittest.TestCase):
         (repo / "narrador/agentes").mkdir(parents=True)
         (repo / "fontes").mkdir()
         (repo / "fontes/canone.md").write_text(
-            "O agente sabe que a ponte existe.\n",
+            "O agente sabe que a ponte existe.\nO agente chegou a Ravens Bluff.\n",
             encoding="utf-8",
         )
         (repo / "narrador/agentes/index.yaml").write_text(
-            """schema_agentes: 1
+            """schema_agentes: 2
 natureza: reservado
 agentes:
   teste:
     nome: Agente Teste
     tipo: npc
     estado: ativo
+    presenca: presente
+    atuacao_local: exige_presenca_fisica
     arquivo: narrador/agentes/teste.yaml
 """,
             encoding="utf-8",
         )
         (repo / "narrador/agentes/teste.yaml").write_text(
-            """schema_agente: 1
+            """schema_agente: 2
 natureza: reservado
 id: teste
 nome: Agente Teste
@@ -74,6 +91,21 @@ recursos:
   - informação
 restricoes:
   - cautela
+presenca:
+  referencia: Ravens Bluff
+  estado: presente
+  detalhe: O agente chegou e está na cidade.
+  fonte: fontes/canone.md
+  evidencia: O agente chegou a Ravens Bluff.
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Precisa estar fisicamente presente.
 conhecimento:
   - id: ponte
     fato: A ponte existe.
@@ -98,13 +130,7 @@ fontes_canonicas:
     def test_referencia_para_fragmento_inexistente_falha(self):
         repo = self._repo_minimo()
         index = repo / "narrador/agentes/index.yaml"
-        index.write_text(
-            index.read_text(encoding="utf-8").replace(
-                "narrador/agentes/teste.yaml",
-                "narrador/agentes/inexistente.yaml",
-            ),
-            encoding="utf-8",
-        )
+        index.write_text(index.read_text(encoding="utf-8").replace("narrador/agentes/teste.yaml", "narrador/agentes/inexistente.yaml"), encoding="utf-8")
         result = mod.validate_repo(repo)
         self.assertFalse(result["ok"])
         self.assertIn("arquivo inexistente", result["erros"][0])
@@ -112,13 +138,7 @@ fontes_canonicas:
     def test_conhecimento_sem_evidencia_na_fonte_falha(self):
         repo = self._repo_minimo()
         agent = repo / "narrador/agentes/teste.yaml"
-        agent.write_text(
-            agent.read_text(encoding="utf-8").replace(
-                "O agente sabe que a ponte existe.",
-                "Evidência inventada que não está na fonte.",
-            ),
-            encoding="utf-8",
-        )
+        agent.write_text(agent.read_text(encoding="utf-8").replace("O agente sabe que a ponte existe.", "Evidência inventada que não está na fonte."), encoding="utf-8")
         result = mod.validate_repo(repo)
         self.assertFalse(result["ok"])
         self.assertIn("não possui evidência", result["erros"][0])
@@ -126,31 +146,55 @@ fontes_canonicas:
     def test_conhecimento_nao_pode_usar_fonte_nao_declarada(self):
         repo = self._repo_minimo()
         agent = repo / "narrador/agentes/teste.yaml"
-        agent.write_text(
-            agent.read_text(encoding="utf-8").replace(
-                "fonte: fontes/canone.md",
-                "fonte: fontes/outra.md",
-            ),
-            encoding="utf-8",
-        )
-        (repo / "fontes/outra.md").write_text(
-            "O agente sabe que a ponte existe.\n",
-            encoding="utf-8",
-        )
+        agent.write_text(agent.read_text(encoding="utf-8").replace("fonte: fontes/canone.md", "fonte: fontes/outra.md", 1), encoding="utf-8")
+        (repo / "fontes/outra.md").write_text("O agente chegou a Ravens Bluff.\n", encoding="utf-8")
         result = mod.validate_repo(repo)
         self.assertFalse(result["ok"])
-        self.assertIn("fonte não declarada", result["erros"][0])
+        self.assertIn("presença usa fonte não declarada", result["erros"][0])
 
     def test_id_do_fragmento_precisa_coincidir_com_indice(self):
         repo = self._repo_minimo()
         agent = repo / "narrador/agentes/teste.yaml"
-        agent.write_text(
-            agent.read_text(encoding="utf-8").replace("id: teste", "id: outro"),
-            encoding="utf-8",
-        )
+        agent.write_text(agent.read_text(encoding="utf-8").replace("id: teste", "id: outro"), encoding="utf-8")
         result = mod.validate_repo(repo)
         self.assertFalse(result["ok"])
         self.assertIn("não coincide", result["erros"][0])
+
+    def test_presenca_concreta_sem_fonte_falha(self):
+        repo = self._repo_minimo()
+        agent = repo / "narrador/agentes/teste.yaml"
+        text = agent.read_text(encoding="utf-8")
+        text = text.replace("  fonte: fontes/canone.md\n  evidencia: O agente chegou a Ravens Bluff.\n", "  fonte: null\n  evidencia: null\n")
+        agent.write_text(text, encoding="utf-8")
+        result = mod.validate_repo(repo)
+        self.assertFalse(result["ok"])
+        self.assertIn("presença concreta", result["erros"][0])
+
+    def test_em_viagem_bloqueia_acao_local_direta(self):
+        repo = self._repo_minimo()
+        index = repo / "narrador/agentes/index.yaml"
+        index.write_text(index.read_text(encoding="utf-8").replace("presenca: presente", "presenca: em_viagem"), encoding="utf-8")
+        agent = repo / "narrador/agentes/teste.yaml"
+        text = agent.read_text(encoding="utf-8")
+        text = text.replace("  estado: presente\n", "  estado: em_viagem\n", 1)
+        text = text.replace("  estado: sem_deslocamento_registrado\n  origem: null\n  destino: null\n  prazo: null\n", "  estado: em_deslocamento\n  origem: Ravens Bluff\n  destino: Calaunt\n  prazo: duas semanas\n")
+        agent.write_text(text, encoding="utf-8")
+        result = mod.load_agent(repo, "teste")
+        self.assertEqual(result["elegibilidade_local"], "nao")
+
+    def test_presenca_oculta_nao_cria_conhecimento_para_ren(self):
+        repo = self._repo_minimo()
+        index = repo / "narrador/agentes/index.yaml"
+        index.write_text(index.read_text(encoding="utf-8").replace("presenca: presente", "presenca: presente_oculto"), encoding="utf-8")
+        agent = repo / "narrador/agentes/teste.yaml"
+        text = agent.read_text(encoding="utf-8").replace("  estado: presente\n", "  estado: presente_oculto\n", 1)
+        start = text.index("conhecimento:\n")
+        end = text.index("plano_atual:\n")
+        text = text[:start] + "conhecimento: []\n" + text[end:]
+        agent.write_text(text, encoding="utf-8")
+        result = mod.load_agent(repo, "teste")
+        self.assertEqual(result["elegibilidade_local"], "sim")
+        self.assertEqual(result["resultado"]["conhecimento"], [])
 
 
 if __name__ == "__main__":
