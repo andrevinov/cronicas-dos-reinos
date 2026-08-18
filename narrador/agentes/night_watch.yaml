@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: night_watch
 nome: Night Watch
@@ -13,6 +13,21 @@ restricoes:
   - não abordar membros identificados das Dez Espadas sem força preparada
   - agir dentro da corrente institucional da guarda
   - evitar batida formal quando ela destruiria uma pista ainda útil
+presenca:
+  referencia: Ravens Bluff
+  estado: ancorada
+  detalhe: A Night Watch é uma instituição local de Ravens Bluff e sua presença operacional é estrutural.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: nao_aplicavel
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: estrutura_local
+  escopo: Ravens Bluff
+  observacao: A instituição permanece elegível para ação local enquanto estiver ativa; disponibilidade de indivíduos como Luath é uma restrição separada.
 conhecimento:
   - id: protocolo_dez_espadas
     fato: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada e recusará suspeita indiscriminada contra estrangeiros.
