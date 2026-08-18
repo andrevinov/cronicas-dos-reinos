@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: kethra_dunn
+nome: Kethra Dunn
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Cumprir sua rotina de serviço em Narwhal Manor sem criar novo padrão de contato com Ren.
+  fonte: estado/relacoes/kethra_dunn.yaml
+  evidencia: funcionária de serviço de Narwhal Manor / fonte potencial
+objetivo_atual:
+  descricao: Preservar a própria cobertura enquanto observa discretamente a mulher Cinza-Azul e sinaliza apenas por protocolo seguro.
+  fonte: estado/relacoes/kethra_dunn.yaml
+  evidencia: Kethra observará discretamente a mulher Cinza-Azul. Se voltar a vê-la, amarrará um fio azul na dobradiça inferior do portão de carvão; sem o fio, Ren não deve procurá-la nem inventar novo contato.
+iniciativas_possiveis:
+- descricao: Sinalizar nova aparição da mulher Cinza-Azul pelo fio azul no portão de carvão.
+  fonte: estado/relacoes/kethra_dunn.yaml
+  evidencia: Kethra observará discretamente a mulher Cinza-Azul. Se voltar a vê-la, amarrará um fio azul na dobradiça inferior do portão de carvão; sem o fio, Ren não deve procurá-la nem inventar novo contato.
+- descricao: Aumentar a colaboração com Ren se Colm permanecer seguro e Bram não ligar o resgate a ela.
+  fonte: estado/relacoes/kethra_dunn.yaml
+  evidencia: Kethra deve colaborar com Ren com mais abertura se Colm permanecer seguro e se Bram não ligar o resgate a ela.
+regra_de_reavaliacao: Rotina e discrição são o padrão; só produzir mudança persistente diante de nova observação, risco concreto à cobertura ou oportunidade segura de sinalização.
+fontes_canonicas:
+- estado/relacoes/kethra_dunn.yaml
