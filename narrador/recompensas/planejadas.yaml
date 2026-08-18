@@ -1,0 +1,4 @@
+schema_recompensas_planejadas: 1
+natureza: reservado
+regra: recompensas_de_arco_e_autorais_exigem_planejamento_explicito
+por_local: {}

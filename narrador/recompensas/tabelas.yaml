@@ -1,0 +1,332 @@
+schema_tabelas_recompensas: 1
+natureza: reservado
+gerador: deterministico_v1
+tiers:
+  '1':
+    min: 1
+    max: 2
+    categorias:
+    - dinheiro
+    - dinheiro
+    - gema
+    - consumivel
+    - ferramenta
+    - curiosidade
+  '2':
+    min: 1
+    max: 3
+    categorias:
+    - dinheiro
+    - gema
+    - consumivel
+    - consumivel
+    - ferramenta
+    - pergaminho
+    - curiosidade
+    - item_magico_menor
+  '3':
+    min: 2
+    max: 3
+    categorias:
+    - dinheiro
+    - gema
+    - gema
+    - consumivel
+    - pergaminho
+    - pergaminho
+    - item_magico_menor
+    - item_magico_menor
+    - curiosidade
+  '4':
+    min: 2
+    max: 3
+    categorias:
+    - gema
+    - consumivel
+    - pergaminho
+    - pergaminho
+    - item_magico_menor
+    - item_magico_menor
+    - item_magico_menor
+    - curiosidade
+bonus_periculosidade:
+  baixa: 0
+  media: 0
+  alta: 1
+  letal: 1
+condicoes:
+- id: busca_deliberada
+  texto: investigar deliberadamente recipientes, nichos ou mobiliário compatíveis com a área
+  posses:
+  - ambiente
+- id: ocultacao_fisica
+  texto: perceber e superar uma ocultação física, compartimento falso ou acesso disfarçado
+  posses:
+  - ambiente
+- id: guardiao_local
+  texto: derrotar, enganar ou negociar com o guardião local que controla a recompensa
+  posses:
+  - guardiao_local
+- id: acesso_restrito
+  texto: obter acesso legítimo ou clandestino à parte restrita onde a recompensa está guardada
+  posses:
+  - ambiente
+  - ocupante_local
+- id: seguir_pista_local
+  texto: seguir uma pista concreta dentro da própria área até o ponto onde a recompensa foi deixada
+  posses:
+  - ambiente
+catalogo:
+  dinheiro:
+  - id: bolsa_moedas
+    nome: Bolsa de moedas misturadas
+    descricao: Uma pequena soma em moedas correntes, reunida para despesas imediatas.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 4
+    importancia: comum
+    tags:
+    - dinheiro
+    - tesouro
+  - id: reserva_comercial
+    nome: Reserva de caixa
+    descricao: Dinheiro separado para pagamentos, compras ou acertos locais.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - dinheiro
+    - comercio
+  - id: cofre_portatil
+    nome: Cofre portátil de valores
+    descricao: Uma reserva compacta de moedas e pequenos títulos sem relevância de arco por si só.
+    valor_aproximado: alto
+    tier_min: 3
+    tier_max: 4
+    importancia: especial
+    tags:
+    - dinheiro
+    - tesouro
+  gema:
+  - id: pedras_ornamentais
+    nome: Pedras ornamentais
+    descricao: Um pequeno lote de pedras trabalhadas, úteis como valor portátil.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 3
+    importancia: comum
+    tags:
+    - gema
+    - tesouro
+  - id: gema_semipreciosa
+    nome: Gema semipreciosa
+    descricao: Uma pedra de boa qualidade e fácil revenda em centros urbanos.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - gema
+    - tesouro
+  - id: gema_lapidada
+    nome: Gema lapidada de qualidade
+    descricao: Uma pedra cuidadosamente lapidada, valiosa sem carregar importância de arco intrínseca.
+    valor_aproximado: alto
+    tier_min: 3
+    tier_max: 4
+    importancia: especial
+    tags:
+    - gema
+    - tesouro
+  consumivel:
+  - id: pocao_cura
+    nome: Poção de cura
+    descricao: Um consumível mágico de recuperação compatível com aventuras de baixo e médio nível.
+    valor_aproximado: moderado
+    tier_min: 1
+    tier_max: 4
+    importancia: comum
+    tags:
+    - consumivel
+    - cura
+    - magia
+  - id: antitoxina
+    nome: Antitoxina
+    descricao: Um preparado alquímico útil quando venenos se tornam um risco concreto.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 3
+    importancia: comum
+    tags:
+    - consumivel
+    - alquimia
+  - id: fogo_alquimico
+    nome: Fogo alquímico
+    descricao: Um frasco alquímico perigoso, útil como recurso situacional.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - consumivel
+    - alquimia
+    - combate
+  - id: pocao_escalada
+    nome: Poção de escalada
+    descricao: Um consumível mágico voltado a mobilidade e exploração.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - consumivel
+    - exploracao
+    - magia
+  ferramenta:
+  - id: kit_curandeiro
+    nome: Kit de curandeiro
+    descricao: Suprimentos práticos de primeiros socorros e estabilização.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 4
+    importancia: comum
+    tags:
+    - ferramenta
+    - cura
+  - id: equipamento_escalada
+    nome: Equipamento de escalada
+    descricao: Cordas, pitões e acessórios reunidos para deslocamento vertical.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 3
+    importancia: comum
+    tags:
+    - ferramenta
+    - exploracao
+  - id: ferramentas_ladrao
+    nome: Ferramentas de ladrão
+    descricao: Um conjunto portátil para lidar com fechaduras e mecanismos delicados.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - ferramenta
+    - infiltracao
+  pergaminho:
+  - id: pergaminho_detectar_magia
+    nome: Pergaminho de Detectar Magia
+    descricao: Um pergaminho arcano de utilidade investigativa.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 3
+    importancia: comum
+    tags:
+    - pergaminho
+    - magia
+    - investigacao
+  - id: pergaminho_queda_suave
+    nome: Pergaminho de Queda Suave
+    descricao: Um pergaminho voltado a sobrevivência e mobilidade.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 3
+    importancia: comum
+    tags:
+    - pergaminho
+    - magia
+    - mobilidade
+  - id: pergaminho_passo_nebuloso
+    nome: Pergaminho de Passo Nebuloso
+    descricao: Um pergaminho mágico de deslocamento curto e tático.
+    valor_aproximado: alto
+    tier_min: 3
+    tier_max: 4
+    importancia: especial
+    tags:
+    - pergaminho
+    - magia
+    - mobilidade
+  - id: pergaminho_dissipar_magia
+    nome: Pergaminho de Dissipar Magia
+    descricao: Um pergaminho de resposta a efeitos mágicos ativos.
+    valor_aproximado: alto
+    tier_min: 4
+    tier_max: 4
+    importancia: especial
+    tags:
+    - pergaminho
+    - magia
+  item_magico_menor:
+  - id: bolsa_carga
+    nome: Bolsa de Carga
+    descricao: Um item mágico utilitário apropriado para exploração e transporte.
+    valor_aproximado: alto
+    tier_min: 2
+    tier_max: 4
+    importancia: especial
+    tags:
+    - item_magico
+    - utilidade
+  - id: bastao_imovel
+    nome: Bastão Imóvel
+    descricao: Um item mágico de utilidade criativa, sem função de arco definida.
+    valor_aproximado: alto
+    tier_min: 3
+    tier_max: 4
+    importancia: especial
+    tags:
+    - item_magico
+    - utilidade
+  - id: manto_elfico
+    nome: Manto Élfico
+    descricao: Um item mágico associado a ocultação e furtividade.
+    valor_aproximado: alto
+    tier_min: 3
+    tier_max: 4
+    importancia: especial
+    tags:
+    - item_magico
+    - furtividade
+  - id: globo_luz
+    nome: Globo de Luz
+    descricao: Um pequeno item mágico de iluminação e utilidade.
+    valor_aproximado: moderado
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - item_magico
+    - utilidade
+  curiosidade:
+  - id: ficha_comercial
+    nome: Ficha comercial estrangeira
+    descricao: Um marcador de comércio curioso, sem ligação de arco por si só.
+    valor_aproximado: baixo
+    tier_min: 1
+    tier_max: 4
+    importancia: comum
+    tags:
+    - curiosidade
+    - comercio
+  - id: entalhe_marfin
+    nome: Pequeno entalhe de marfim
+    descricao: Um objeto decorativo de boa feitura e origem não estabelecida.
+    valor_aproximado: moderado
+    tier_min: 1
+    tier_max: 4
+    importancia: comum
+    tags:
+    - curiosidade
+    - objeto_vendavel
+  - id: sinete_sem_contexto
+    nome: Sinete mercantil sem contexto
+    descricao: Um sinete antigo de interesse local potencial, mas sem importância de arco definida pelo gerador.
+    valor_aproximado: baixo
+    tier_min: 2
+    tier_max: 4
+    importancia: comum
+    tags:
+    - curiosidade
+    - comercio
