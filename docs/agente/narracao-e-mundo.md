@@ -32,6 +32,20 @@ Quando um NPC presente precisar de voz, gesto ou presença e isso não estiver n
 
 Facções relevantes devem possuir objetivos, liderança, recursos, área de influência, aliados, inimigos, conhecimento, planos, operações e reação ao personagem. Elas podem agir fora de cena. Reavaliar planos quando Ren interfere, recursos mudam, alianças mudam, informação é revelada, tempo avança ou outro agente interfere.
 
+## Agentes autônomos
+
+Quando a decisão narrativa depender do **objetivo, conhecimento, recursos, restrições ou plano corrente de um agente importante**, consultar a camada reservada e fragmentada em `narrador/agentes/` por meio de:
+
+```bash
+python3 ferramentas/agentes.py mostrar <id-ou-nome>
+```
+
+A consulta dirigida abre somente o índice e o fragmento solicitado. Não abrir todos os agentes, suas fontes canônicas ou a pasta inteira por precaução. A camada de agentes é uma condensação operacional: arquivos como `narrador/masao/`, `narrador/juppongatana/`, relações, relógios e sessões continuam sendo as fontes canônicas apontadas pelos fragmentos.
+
+`python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema e proveniência do conhecimento. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
+
+A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. O motor temporal que decidirá quando reavaliar agentes é uma camada separada; até lá, não transformar a consulta dirigida em ritual por turno.
+
 ## Relógios e forças em movimento
 
 Relógios podem representar conflitos ativos com identificador, progresso, limite, visibilidade, descrição, causas de avanço/regressão e consequência no limite. Não avançar arbitrariamente: cada mudança precisa de causa. Relógio oculto não deve ser revelado sem sinais perceptíveis.
