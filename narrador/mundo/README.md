@@ -1,90 +1,57 @@
 # Motor reservado do Mundo Vivo
 
-Esta pasta guarda o **controle determinístico** do mundo que continua em movimento fora da presença de Ren. Ela não substitui agentes, agentes leves, direções, entradas, relógios, eventos, relações ou qualquer outra fonte canônica.
+Esta pasta guarda o **controle determinístico** do mundo que continua em movimento
+fora da presença de Ren. Ela não substitui agentes, agentes leves, direções,
+entradas, relógios, eventos, rastros, relações ou conhecimento.
 
-O princípio central é simples: **existir no mundo não significa entrar no contexto**. Python faz filtragem, agendamento, sorteio reprodutível e deduplicação; o narrador só abre o fragmento específico depois que surge uma pendência concreta.
+Princípio central: **existir no mundo não significa entrar no contexto nem no
+conhecimento do personagem**. Python agenda, filtra, sorteia, roteia e deduplica;
+o narrador abre somente o fragmento apontado por uma necessidade concreta.
 
 ## Arquivos centrais
 
-- `agenda.yaml`: cadências de reavaliação e agendamentos determinísticos;
+- `agenda.yaml`: cadências e agendamentos determinísticos;
 - `estado.yaml`: cursor do motor e fila de decisões pendentes;
 - `ciclo-npcs.yaml`: registro terminal de NPCs mortos;
-- `../eventos/`: baralho determinístico de acontecimentos mundiais.
+- `../eventos/`: baralho mundial e roteamento evento↔agentes;
+- `../rastros/`: evidências observáveis separadas da verdade reservada.
 
-`estado.yaml` é controle reservado. Um item em `pendencias` significa **“avaliar isto”**, nunca “isto já aconteceu”.
+`estado.yaml` é controle reservado. Uma pendência significa **“avaliar isto”**,
+nunca “isto já aconteceu”.
 
-## Comandos do motor
+## Checkpoints
 
-```bash
-python3 ferramentas/mundo.py status
-python3 ferramentas/mundo.py pendentes
-python3 ferramentas/mundo.py amanhecer
-python3 ferramentas/mundo.py avancar
-python3 ferramentas/mundo.py concluir <id>
-python3 ferramentas/mundo.py check
-```
-
-`amanhecer` e `avancar` não alteram `estado/tempo.yaml`; processam somente o intervalo que a campanha já alcançou canonicamente.
-
-## Checkpoints por passagem significativa de tempo
-
-O Mundo Vivo é sincronizado em:
-
-1. `checkpoint.py cena` explícito;
-2. `checkpoint.py sessao`;
-3. checkpoint automático quando o tempo efetivo fica **120 minutos ou mais** à frente do cursor ou cruza o amanhecer configurado.
-
-A medida é acumulada. Quatro avanços de 30 minutos disparam no quarto; uma caminhada de cinco minutos continua no hot path de duas escritas.
-
-A ordem operacional é:
+O Mundo Vivo é sincronizado em `checkpoint.py cena`, `checkpoint.py sessao` e
+automaticamente quando o tempo efetivo fica 120 minutos à frente do cursor ou
+cruza o amanhecer. Passagens menores continuam no hot path de duas escritas.
 
 ```text
 turno persiste transcrição + delta
 → checkpoint consolida o novo cânone
 → lifecycle desliga NPCs mortos
 → relógios sincronizam pressão → consequência
-→ direções canônicas avaliam o intervalo
+→ direções avaliam marcos
 → entradas de aliados são filtradas
-→ agentes leves passam pelo orçamento quando houve amanhecer
+→ agentes leves passam pelo orçamento no amanhecer
 → baralho mundial processa os amanheceres alcançados
 → mundo.py move o cursor e processa agenda determinística
 → handoff/índice são reconstruídos
 ```
 
-Nenhuma dessas camadas usa prosa ou delta não consolidado como fato.
-
-## Idempotência
-
-Retries reconhecem transações já consolidadas pelo ledger da sessão. Pendências de agentes, direções, entradas, agentes leves e eventos usam IDs estáveis.
-
-O baralho grava a pendência do Mundo Vivo antes de avançar seu próprio cursor. Se o processo cair entre as duas escritas, o retry produz o mesmo sorteio, encontra o ID já existente e apenas repara o estado do baralho.
+Nenhuma camada usa prosa ou delta não consolidado como fato.
 
 ## Economia de contexto
 
-O motor principal lê agenda, cursor e tempo. Quando nenhum agente estratégico vence, não abre seus fragmentos.
+- agentes estratégicos: o motor nunca abre fragmentos automaticamente;
+- direções: índice + estado;
+- entradas: índice + estado + nível + tempo;
+- agentes leves: somente ao cruzar amanhecer e com orçamento rígido;
+- relógios: roteador derivado por agente;
+- eventos: índice + estado; em dia `rotina` nem o roteador de interações é lido;
+- rastros: `candidatos` usa só índice + localização canônica + tempo; o fragmento
+  entra apenas depois que um ID relevante foi encontrado.
 
-Direções usam apenas índice + estado para saber se há algo a reavaliar. Entradas usam índice + estado + nível + tempo. Agentes leves só entram no scheduler quando o intervalo cruza amanhecer e têm orçamento rígido. Relógios possuem roteador derivado por agente. O baralho mundial lê índice + estado + tempo + fila, **sem abrir nenhuma carta durante o sorteio**.
-
-Exemplo de saída operacional:
-
-```yaml
-agentes_reconsiderar:
-  - red_sail
-
-direcoes_reconsiderar:
-  - ponte_de_kozakura
-
-entradas_reconsiderar:
-  - shen_meihua
-
-agentes_leves_reconsiderar:
-  - luath
-
-eventos_reconsiderar:
-  - acidente_no_porto
-```
-
-Só então o narrador faz lookup dirigido:
+Lookup dirigido:
 
 ```bash
 python3 ferramentas/agentes.py mostrar red_sail
@@ -92,72 +59,87 @@ python3 ferramentas/direcoes.py mostrar ponte_de_kozakura
 python3 ferramentas/entradas.py mostrar shen_meihua
 python3 ferramentas/agentes_leves.py mostrar luath
 python3 ferramentas/eventos_mundo.py mostrar acidente_no_porto
+python3 ferramentas/rastros.py mostrar <id>
 ```
 
-## Agentes e cadências
+## Agentes, cadências e lifecycle
 
-Cadência significa **reavaliar**, não agir. Presença, mobilidade, recursos, conhecimento e restrições continuam mandando. Uma facção em busca ativa pode vencer diariamente; um antagonista estratégico, em dias alternados; um NPC recorrente, bem menos frequentemente.
+Cadência significa **reavaliar**, não agir. Presença, mobilidade, recursos,
+conhecimento e restrições continuam mandando. `agenda.yaml` aceita
+`reavaliar_agente`, `movimento` e `expiracao`; movimento vencido não teletransporta
+ninguém.
 
-Agendamentos determinísticos em `agenda.yaml` continuam aceitando:
+Morte canônica (`npc:<id> -> vida.estado: morto`) é sincronizada antes dos
+schedulers. O NPC perde agenda, atividade estratégica/leve, entrada futura e
+pendências incompatíveis. `morto` é terminal. Detalhes: `CICLO-NPCS.md`.
 
-- `reavaliar_agente`;
-- `movimento`;
-- `expiracao`.
+## Relógios
 
-Um `movimento` vencido não teletransporta ninguém: cria apenas uma decisão a resolver.
-
-## Lifecycle de NPCs
-
-Morte canônica (`npc:<id> -> vida.estado: morto`) é sincronizada antes dos schedulers. O NPC é desligado de agenda, agentes estratégicos/leves, entradas futuras e pendências incompatíveis. `morto` é terminal; ausência posterior do campo não ressuscita ninguém.
-
-Detalhes: `CICLO-NPCS.md`.
-
-## Relógios como pressão de agentes
-
-Relógios não possuem agência. A cadeia é:
+Relógios não possuem agência:
 
 ```text
 agente → operação → pressão → consequência
 ```
 
-Uma pressão ativa que alcança o limite vira consequência resolvida e sai da lista de pressões vivas. A passagem do tempo, sozinha, não incrementa relógios.
+Passagem do tempo sozinha não incrementa pressão. Ao alcançar o limite, a pressão
+vira consequência resolvida. Consulta barata:
+`python3 ferramentas/relogios.py por-agente red_sail`.
 
-Consulta barata por agente:
+## Direções e entradas
 
-```bash
-python3 ferramentas/relogios.py por-agente red_sail
-```
+Direção é trajetória obrigatória de longo prazo sem cena, data ou executor
+prescritos. A implementação inicial encadeia Ponte de Kozakura e Shin-Kozakura.
+Detalhes: `../direcoes/README.md`.
 
-## Direções narrativas canônicas
-
-Direção é trajetória obrigatória de longo prazo sem cena, data ou executor prescritos. A fila usa `avaliar_direcao` e `ativar_direcao`; nenhuma das duas avança a história automaticamente.
-
-A implementação inicial encadeia **Ponte de Kozakura** e **Shin-Kozakura**. Detalhes: `../direcoes/README.md`.
-
-## Entrada e aparição de aliados
-
-`avaliar_entrada` significa apenas que a janela de um aliado futuro merece consulta. O caminho normal é Shen → Jōen → Jenilynn → Hotaru → Tadasu; somente um candidato normal fica em foco. Ordem e nível filtram barato, mas não tornam a aparição automática.
-
-`antecipar` pode furar a ordem com origem/nota rastreáveis; `confirmar` só é usado depois que a aparição realmente ocorreu. Detalhes: `../entradas/README.md`.
+`avaliar_entrada` apenas indica que um aliado futuro merece consulta. Caminho
+normal: Shen → Jōen → Jenilynn → Hotaru → Tadasu. `antecipar` pode furar a ordem
+com proveniência; `confirmar` só ocorre depois da aparição real. Detalhes:
+`../entradas/README.md`.
 
 ## Agentes recorrentes leves
 
-NPC leve tem **rotina como padrão**. O orçamento atual permite no máximo 1 nova reavaliação leve por checkpoint e 2 pendências leves abertas. Seleção: mais atrasado → maior prioridade → ID. Ciclos perdidos são condensados em uma única avaliação.
+Rotina é o padrão. Há no máximo 1 nova reavaliação leve por checkpoint e 2 abertas;
+seleção por mais atrasado → maior prioridade → ID. População inicial: Luath, Silva
+Elkwood e Maerra Thandrel. Detalhes: `../agentes-leves/README.md`.
 
-A população inicial é Luath, Silva Elkwood e Maerra Thandrel. Detalhes: `../agentes-leves/README.md`.
+## Baralho e interação com agentes
 
-## Baralho de eventos mundiais
+Dois baralhos determinísticos sem reposição controlam o acaso. A urna de ocorrência
+tem **7 `rotina` + 3 `evento`** por ciclo de dez amanheceres; o segundo baralho tem
+dez cartas e só é consultado quando sai `evento`. A ordem é derivada por SHA-256;
+não usa `random`, relógio do sistema ou entropia externa.
 
-O acaso do mundo é implementado por **dois baralhos determinísticos sem reposição** em `narrador/eventos/`.
+**Sorteio não é cânone.** Uma carta gera uma única pendência. Suas tags são cruzadas
+com `narrador/eventos/interacoes.yaml`; no máximo **2 agentes estratégicos + 1
+agente leve** são apontados como candidatos, por tags coincidentes → prioridade →
+ID. Candidato não significa ação, conhecimento ou consequência.
 
-A urna de ocorrência possui 10 fichas por ciclo: **7 `rotina` e 3 `evento`**. Portanto, cada bloco de dez amanheceres contém exatamente três oportunidades de evento, em ordem pseudoaleatória reprodutível. Só quando sai `evento` o segundo baralho fornece uma carta concreta.
+Cartas não podem forçar aliados/Juppongatana, ativar a Ponte, matar NPC nomeado,
+revelar segredo ou escolher autoria. Detalhes: `../eventos/README.md`.
 
-O baralho de cartas possui inicialmente dez moldes. Uma carta não volta antes que todas as outras tenham sido consumidas. A ordem de cada ciclo é calculada por SHA-256 a partir de semente persistente + nome do baralho + número do ciclo + ID; não há `random`, relógio do sistema ou entropia externa.
+## Verdade reservada → rastro → conhecimento
 
-**Sorteio não é cânone.** Ele gera `evento_mundial` com ID, categoria e escala. O narrador abre somente aquela carta e resolve sua manifestação no estado atual; a resolução pode ser apenas textura. Apenas fatos posteriormente registrados pelo pipeline transacional tornam-se canônicos.
+O passo 7 estabelece uma barreira explícita:
 
-As cartas não podem, por si só, forçar entrada de aliado/Juppongatana, ativar a Ponte de Kozakura, matar NPC nomeado, revelar segredo ou escolher autoria. Interação entre eventos e agentes pertence à etapa seguinte do Mundo Vivo.
+```text
+fato canônico reservado
+        ↓ pode deixar
+rastro observável
+        ↓ se Ren perceber/investigar
+descoberta
+        ↓ transação
+conhecimento de Ren
+```
 
-O estado inicial é retroativamente neutro: a camada começa a produzir sorteios somente a partir do primeiro amanhecer futuro alcançado após sua instalação.
+Um fato off-screen **não cria conhecimento automaticamente**. O rastro registra
+somente a manifestação observável; sua origem canônica permanece reservada e é
+redigida por `rastros.py mostrar`.
 
-Detalhes e comandos: `../eventos/README.md`.
+`rastros.py candidatos` filtra por tempo, cidade/área/ponto, modo de acesso e tags
+sem abrir fragmentos. Rastros de `investigacao` não aparecem na consulta automática.
+`preparar-descoberta` é somente leitura e devolve um delta sugerido para
+`alvo: conhecimento`; ele não o instala. A integração atômica entre descoberta,
+transação e consumo/arquivamento do rastro pertence ao passo 8.
+
+A instalação começa com índice vazio: nenhuma pista antiga é recriada
+retroativamente. Detalhes: `../rastros/README.md`.
