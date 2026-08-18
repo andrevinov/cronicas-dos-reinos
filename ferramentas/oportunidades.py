@@ -386,7 +386,7 @@ def _window_expired(window: Any, now: mundo.WorldInstant) -> bool:
     raw = window.get("expira_em")
     if not isinstance(raw, dict):
         return False
-    return _parse_parts(raw, "janela.expira_em") <= now
+    return _parse_parts(raw, "janela.expira_em").minute <= now.minute
 
 
 def _history(state: dict[str, Any], item: dict[str, Any]) -> None:
@@ -436,7 +436,10 @@ def prune_expired(state: dict[str, Any], now: mundo.WorldInstant) -> bool:
         changed = True
 
     cooldown = state.get("cooldown_ate")
-    if cooldown is not None and _parse_parts(cooldown, "cooldown_ate") <= now:
+    if (
+        cooldown is not None
+        and _parse_parts(cooldown, "cooldown_ate").minute <= now.minute
+    ):
         state["cooldown_ate"] = None
         changed = True
     return changed
