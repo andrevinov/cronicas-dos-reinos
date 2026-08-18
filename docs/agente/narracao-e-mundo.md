@@ -48,7 +48,25 @@ Para a Juppongatana, nunca presumir que a existência do coletivo significa que 
 
 `python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema, mobilidade e proveniência. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
 
-A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. O motor temporal que decidirá quando reavaliar agentes é uma camada separada; até lá, não transformar a consulta dirigida em ritual por turno.
+A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. A cadência de reavaliação vem do Mundo Vivo; não transformar uma pendência em obrigação de agir.
+
+## Agentes recorrentes leves
+
+NPCs recorrentes como Luath, Silva e Maerra podem continuar vivendo fora da presença de Ren sem receber o peso operacional de um antagonista estratégico. Para eles, usar `narrador/agentes-leves/`. **Rotina é o padrão**: emprego, culto, cuidado, patrulha e obrigações ordinárias continuam acontecendo sem gerar cena nem atualização por si mesmos.
+
+A camada leve só entra no fluxo quando o checkpoint cruza um amanhecer. Checkpoints diurnos de passagem de horas não consultam seu índice. Mesmo no amanhecer, Python seleciona candidatos usando somente índice + estado + tempo + fila do Mundo Vivo e não abre fragmentos.
+
+O orçamento é obrigatório: no máximo **1 nova reavaliação leve por checkpoint** e no máximo **2 pendências leves abertas simultaneamente**. Se vários NPCs estiverem vencidos, ordenar deterministicamente por mais atrasado, maior prioridade e ID; os demais continuam vencidos. Intervalos perdidos são condensados em uma única reavaliação.
+
+Quando aparecer `reavaliar_agente_leve`, consultar **somente o NPC indicado**:
+
+```bash
+python3 ferramentas/agentes_leves.py mostrar <id-ou-nome>
+```
+
+Se não houver causa concreta para uma iniciativa excepcional, concluir a pendência como nenhuma mudança extraordinária. Não abrir todos os agentes leves, não consultar suas relações canônicas por precaução e não inventar ação apenas porque a cadência venceu. `agentes_leves.py validar` pertence a manutenção/CI.
+
+Night Watch e Luath exemplificam a separação: Night Watch continua agente institucional estratégico; Luath é o indivíduo recorrente. A ação de uma camada não implica automaticamente a ação da outra.
 
 ## Relógios e forças em movimento
 
