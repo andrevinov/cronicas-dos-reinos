@@ -13,6 +13,7 @@ o narrador abre somente o fragmento apontado por uma necessidade concreta.
 - `agenda.yaml`: cadências e agendamentos determinísticos;
 - `estado.yaml`: cursor do motor e fila de decisões pendentes;
 - `ciclo-npcs.yaml`: registro terminal de NPCs mortos;
+- `../populacao-canonica.yaml`: inventário frio que classifica o cânone existente antes de criar novos schedulers;
 - `../eventos/`: baralho mundial e roteamento evento↔agentes;
 - `../rastros/`: evidências observáveis separadas da verdade reservada.
 
@@ -54,6 +55,7 @@ mesmo staging/journal da consolidação; não há uma terceira escrita no turno.
 - eventos: índice + estado; em dia `rotina` nem o roteador de interações é lido;
 - rastros: `candidatos` usa só índice + localização canônica + tempo; o fragmento
   entra apenas depois que um ID relevante foi encontrado;
+- população canônica: inventário frio usado apenas em manutenção/CI, nunca no checkpoint;
 - transações sem `rastro:*`: delegam imediatamente ao consolidator legado, sem
   abrir índice ou fragmento de rastro.
 
@@ -102,11 +104,20 @@ normal: Shen → Jōen → Jenilynn → Hotaru → Tadasu. `antecipar` pode fura
 com proveniência; `confirmar` só ocorre depois da aparição real. Detalhes:
 `../entradas/README.md`.
 
-## Agentes recorrentes leves
+## Agentes recorrentes leves e população canônica
 
 Rotina é o padrão. Há no máximo 1 nova reavaliação leve por checkpoint e 2 abertas;
-seleção por mais atrasado → maior prioridade → ID. População inicial: Luath, Silva
-Elkwood e Maerra Thandrel. Detalhes: `../agentes-leves/README.md`.
+seleção por mais atrasado → maior prioridade → ID.
+
+O passo 11 classifica **todas as 35 relações atuais** antes de agendar novos atores:
+
+- **8 agentes leves:** Kethra Dunn, Bram Vask, Luath, Silva Elkwood, Maerra Thandrel, Halessa Vorn, Jack Mooney e Pell;
+- **6 representados por agente-pai:** Brass, Rusk e o homem capturado pela Red Sail; Sirrus pela Casa de Tyr; Noll por Bram; Tobb por Jack;
+- **21 persistentes sem agenda:** continuam canônicos e capazes de agir quando cena/evento os alcançar, mas sem despertador periódico.
+
+As primeiras reavaliações dos oito leves foram escalonadas de **11 a 18 Eleasis**, uma estreia por amanhecer, sem alterar o orçamento. Colisões futuras são resolvidas pelo orçamento determinístico já existente.
+
+O inventário `../populacao-canonica.yaml` e `ferramentas/populacao.py` pertencem somente a manutenção/CI. Eles garantem cobertura 35/35 e impedem que um subordinado ganhe scheduler duplicado do agente-pai. Detalhes: `../agentes-leves/README.md`.
 
 ## Baralho e interação com agentes
 
