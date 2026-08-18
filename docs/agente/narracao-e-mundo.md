@@ -34,7 +34,7 @@ Facções relevantes devem possuir objetivos, liderança, recursos, área de inf
 
 ## Agentes autônomos
 
-Quando a decisão narrativa depender do **objetivo, conhecimento, recursos, restrições ou plano corrente de um agente importante**, consultar a camada reservada e fragmentada em `narrador/agentes/` por meio de:
+Quando a decisão narrativa depender do **objetivo, conhecimento, recursos, restrições, presença, mobilidade ou plano corrente de um agente importante**, consultar a camada reservada e fragmentada em `narrador/agentes/` por meio de:
 
 ```bash
 python3 ferramentas/agentes.py mostrar <id-ou-nome>
@@ -42,7 +42,11 @@ python3 ferramentas/agentes.py mostrar <id-ou-nome>
 
 A consulta dirigida abre somente o índice e o fragmento solicitado. Não abrir todos os agentes, suas fontes canônicas ou a pasta inteira por precaução. A camada de agentes é uma condensação operacional: arquivos como `narrador/masao/`, `narrador/juppongatana/`, relações, relógios e sessões continuam sendo as fontes canônicas apontadas pelos fragmentos.
 
-`python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema e proveniência do conhecimento. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
+`elegibilidade_local` é derivada de `estado`, `presenca` e `atuacao_local`. Um NPC que exige presença física só pode executar ação física em Ravens Bluff se estiver `presente` ou `presente_oculto`; `indeterminado`, `fora_da_area` e `em_viagem` bloqueiam a ação local. `presente_oculto` continua sendo verdade reservada do narrador e **não cria conhecimento para Ren**. Agentes capazes de atuar por rede e instituições locais seguem regras próprias documentadas no fragmento.
+
+Para a Juppongatana, nunca presumir que a existência do coletivo significa que todos os membros estão em Ravens Bluff. Consultar o membro individual. Chegadas, saídas e viagens precisam virar estado canônico de presença/mobilidade antes de alterar sua elegibilidade local.
+
+`python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema, mobilidade e proveniência. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
 
 A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. O motor temporal que decidirá quando reavaliar agentes é uma camada separada; até lá, não transformar a consulta dirigida em ritual por turno.
 
