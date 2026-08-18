@@ -65,7 +65,7 @@ Lookup dirigido:
 python3 ferramentas/agentes.py mostrar red_sail
 python3 ferramentas/direcoes.py mostrar ponte_de_kozakura
 python3 ferramentas/entradas.py mostrar shen_meihua
-python3 ferramentas/agentes_leves.py mostrar luath
+python3 ferramentas/agentes-leves.py mostrar luath
 python3 ferramentas/eventos_mundo.py mostrar acidente_no_porto
 python3 ferramentas/rastros.py mostrar <id>
 ```
@@ -104,20 +104,33 @@ normal: Shen → Jōen → Jenilynn → Hotaru → Tadasu. `antecipar` pode fura
 com proveniência; `confirmar` só ocorre depois da aparição real. Detalhes:
 `../entradas/README.md`.
 
-## Agentes recorrentes leves e população canônica
+## Classificação de NPCs e agentes recorrentes leves
 
 Rotina é o padrão. Há no máximo 1 nova reavaliação leve por checkpoint e 2 abertas;
 seleção por mais atrasado → maior prioridade → ID.
 
-O passo 11 classifica **todas as 35 relações atuais** antes de agendar novos atores:
+A classificação v2 mantém cobertura explícita das **35 relações atuais** e separa
+quatro destinos operacionais:
 
+- **1 agente estratégico:** Corven Dalm;
 - **8 agentes leves:** Kethra Dunn, Bram Vask, Luath, Silva Elkwood, Maerra Thandrel, Halessa Vorn, Jack Mooney e Pell;
 - **6 representados por agente-pai:** Brass, Rusk e o homem capturado pela Red Sail; Sirrus pela Casa de Tyr; Noll por Bram; Tobb por Jack;
-- **21 persistentes sem agenda:** continuam canônicos e capazes de agir quando cena/evento os alcançar, mas sem despertador periódico.
+- **20 persistentes sem agenda:** continuam canônicos e capazes de agir quando cena/evento os alcançar, mas sem camada autônoma própria.
 
-As primeiras reavaliações dos oito leves foram escalonadas de **11 a 18 Eleasis**, uma estreia por amanhecer, sem alterar o orçamento. Colisões futuras são resolvidas pelo orçamento determinístico já existente.
+Corven foi promovido porque o cânone atual já lhe dá objetivo próprio, recursos e
+alavancas informacionais, restrições, presença local e um plano em execução. A
+promoção estratégica **não cria cadência automaticamente**: ele só entra em agenda
+quando houver uma decisão explícita que justifique reavaliação periódica. Assim, a
+v2 melhora a agência sem adicionar despertador ao checkpoint.
 
-O inventário `../populacao-canonica.yaml` e `ferramentas/populacao.py` pertencem somente a manutenção/CI. Eles garantem cobertura 35/35 e impedem que um subordinado ganhe scheduler duplicado do agente-pai. Detalhes: `../agentes-leves/README.md`.
+As primeiras reavaliações dos oito leves continuam escalonadas de **11 a 18 Eleasis**,
+uma estreia por amanhecer, sem alterar o orçamento. Colisões futuras são resolvidas
+pelo orçamento determinístico já existente.
+
+O inventário `../populacao-canonica.yaml` e `ferramentas/populacao.py` pertencem
+somente a manutenção/CI. Eles garantem cobertura 35/35, exclusividade entre as
+quatro classes e impedem que um subordinado ganhe camada autônoma duplicada do
+agente-pai. Detalhes: `../agentes-leves/README.md` e `../agentes/README.md`.
 
 ## Baralho e interação com agentes
 
