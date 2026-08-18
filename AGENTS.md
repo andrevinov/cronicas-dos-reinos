@@ -83,7 +83,7 @@ Durante cada avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime/handoff nem executar Git, testes ou telemetria;
-- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; nunca criar `.turno-temporario.json` nem outro arquivo temporário para o turno;
+- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário para o turno;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
 - `narracao` é a cena completa; `resumo` é compressão; `deltas` são apenas mudanças persistentes;
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
