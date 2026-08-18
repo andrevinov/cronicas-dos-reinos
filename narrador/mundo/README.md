@@ -35,6 +35,48 @@ alcançou em `estado/tempo.yaml`.
   seu resultado, inclusive quando o resultado foi "nenhuma mudança";
 - `check` é somente leitura e pertence a manutenção/CI.
 
+## Checkpoints por passagem significativa de tempo
+
+O fluxo normal agora sincroniza este motor em três situações:
+
+1. todo `checkpoint.py cena` explícito;
+2. todo `checkpoint.py sessao`;
+3. automaticamente, quando `turno.py registrar` percebe que o tempo efetivo ficou
+   **120 minutos ou mais** à frente do cursor do Mundo Vivo ou atravessou o
+   amanhecer configurado em `agenda.yaml`.
+
+A medida é acumulada desde `estado.yaml -> processado_ate`. Portanto quatro
+avanços de 30 minutos promovem checkpoint quando o quarto completa duas horas;
+não é necessário que uma única ação dure duas horas.
+
+Passagens pequenas continuam baratas. Uma caminhada de cinco minutos escreve
+somente transcrição + buffer, como antes. Descanso curto também não recebe
+tratamento especial só por ter `modo: descanso`; um descanso realmente longo será
+capturado pela passagem temporal. Quando uma exploração longa também muda
+`localizacao.*`, o checkpoint é classificado como `viagem_longa` apenas para
+explicar a causa operacional.
+
+A ordem é obrigatória:
+
+```text
+turno persiste transcrição + delta
+→ checkpoint consolida o novo tempo canônico
+→ mundo.py processa até esse tempo
+→ handoff/índice são reconstruídos
+```
+
+Assim o motor nunca usa prosa, estimativa ou delta não consolidado como se já fosse
+cânone.
+
+## Idempotência entre turno e checkpoint
+
+Como um checkpoint temporal pode limpar `runtime/eventos-pendentes.jsonl` dentro
+da mesma execução de `turno.py`, retries precisam reconhecer transações já
+instaladas. `turno.py` consulta `sessoes/NNN/consolidacoes.jsonl` somente no caminho
+raro em que o marcador já existe na transcrição e o evento não está mais no
+buffer. Se o ID já aparece no ledger, a operação é considerada consolidada e não
+é reaplicada.
+
 ## Economia de contexto
 
 O motor lê agenda, cursor e tempo. Quando nada vence, **não lê sequer o índice de
