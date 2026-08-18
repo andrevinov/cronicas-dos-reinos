@@ -1,0 +1,39 @@
+schema_orcamento_integracao_mundo_vivo: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Fechar a integração de recompensas e side quests sem transformar gatilhos
+  reativos em scans ou schedulers do hot path.
+limites:
+  encontro_bloqueado:
+    max_fontes: 3
+    max_fragmentos_narrativos: 0
+  encontro_gate_nada:
+    max_fontes: 3
+    max_fragmentos_narrativos: 0
+  encontro_oportunidade:
+    max_fontes: 4
+    max_fragmentos_narrativos: 1
+  local_mapa_existente:
+    max_fontes: 2
+    max_fragmentos_narrativos: 0
+  local_mapa_novo:
+    max_fontes: 4
+    max_fragmentos_narrativos: 0
+  checkpoint_lifecycle:
+    max_fragmentos_narrativos_expostos: 0
+  efeitos_sidequest:
+    max_efeitos_por_decisao: 6
+    max_fragmentos_narrativos: 0
+  arquivos_quentes:
+    max_bytes_por_roteador: 16384
+    max_bytes_total_novos: 32768
+arquivos_quentes_novos:
+  - narrador/recompensas/index.yaml
+  - narrador/oportunidades/index.yaml
+  - narrador/oportunidades/estado.yaml
+invariantes:
+  scan_geral_por_turno: 0
+  geracao_recompensa_repetida: 0
+  sidequest_fora_de_encontro: 0
+  max_fragmentos_por_decisao: 1
+  turno_comum_continua_duas_escritas: true
