@@ -1,0 +1,95 @@
+schema_interacoes_eventos: 1
+natureza: roteador_reservado
+descricao: Sensibilidades operacionais usadas apenas para pré-selecionar agentes que podem ser afetados por uma
+  carta; não cria fato, ação nem conhecimento.
+orcamento:
+  max_estrategicos_por_evento: 2
+  max_leves_por_evento: 1
+  ordenacao: coincidencias_prioridade_id
+estrategicos:
+  red_sail:
+    prioridade: 5
+    tags:
+    - porto
+    - comercio
+    - documentos
+    - fiscalizacao
+    - fornecimento
+    - precos
+    - estrangeiros
+    - rumor
+    - logistica
+  night_watch:
+    prioridade: 5
+    tags:
+    - autoridades
+    - fiscalizacao
+    - protesto
+    - multidao
+    - rumor
+    - acidente
+    - ruas
+    - estrangeiros
+    - resgate
+    - porto
+  casa_de_tyr:
+    prioridade: 3
+    tags:
+    - documentos
+    - fiscalizacao
+    - autoridades
+    - informacao
+  kurobane_jinzaburo:
+    prioridade: 3
+    tags:
+    - documentos
+    - rumor
+    - estrangeiros
+    - deslocamento
+  masao_hirasawa:
+    prioridade: 2
+    tags:
+    - documentos
+    - rumor
+    - estrangeiros
+    - comercio
+leves:
+  luath:
+    prioridade: 3
+    tags:
+    - autoridades
+    - fiscalizacao
+    - protesto
+    - multidao
+    - rumor
+    - acidente
+    - ruas
+    - estrangeiros
+    - informacao
+    - porto
+    - resgate
+  silva_elkwood:
+    prioridade: 2
+    tags:
+    - fogo
+    - resgate
+    - logistica
+    - clima
+    - deslocamento
+    - precos
+    - fornecimento
+    - saude
+    - trabalho
+    - rotina
+    - rumor
+    - multidao
+  maerra_thandrel:
+    prioridade: 2
+    tags:
+    - resgate
+    - religiao
+    - saude
+    - templos
+    - trabalho
+    - rotina
+    - multidao
