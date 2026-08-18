@@ -8,6 +8,26 @@ orcamento:
   max_pendencias_abertas: 2
   ordenacao: mais_atrasado_prioridade_id
 agentes:
+  kethra_dunn:
+    nome: Kethra Dunn
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 4
+    intervalo_dias: 3
+    inicio:
+      data: '11 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/kethra_dunn.yaml
+  bram_vask:
+    nome: Bram Vask
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 4
+    intervalo_dias: 3
+    inicio:
+      data: '12 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/bram_vask.yaml
   luath:
     nome: Luath
     perfil_operacional: recorrente_leve
@@ -38,3 +58,33 @@ agentes:
       data: '15 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/maerra_thandrel.yaml
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 4
+    inicio:
+      data: '16 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/halessa_vorn.yaml
+  jack_mooney:
+    nome: Jack Mooney
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 5
+    inicio:
+      data: '17 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/jack_mooney.yaml
+  pell:
+    nome: Pell
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 4
+    inicio:
+      data: '18 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/pell.yaml
