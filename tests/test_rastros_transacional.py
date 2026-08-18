@@ -22,6 +22,10 @@ class RastrosTransacionaisTest(unittest.TestCase):
         self.base = test_consolidacao.ConsolidacaoTest("test_cena_aplica_recursos_espelha_ficha_e_limpa_buffer")
         self.base.setUp()
         self.repo = self.base.repo
+        tempo = self.base._read_yaml("estado/tempo.yaml")
+        tempo["schema_tempo"] = 1
+        tempo["natureza"] = "tempo_atual"
+        self.base._write_yaml("estado/tempo.yaml", tempo)
         self.base._write_yaml(
             "narrador/rastros/index.yaml",
             {
