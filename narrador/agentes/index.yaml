@@ -1,0 +1,41 @@
+schema_agentes: 1
+natureza: reservado
+descricao: Índice mínimo de agentes capazes de agir fora da presença de Ren.
+consulta_recomendada: python3 ferramentas/agentes.py mostrar <id-ou-nome>
+validacao: python3 ferramentas/agentes.py validar
+agentes:
+  masao_hirasawa:
+    nome: Masao Hirasawa
+    tipo: npc
+    estado: ativo
+    arquivo: narrador/agentes/masao_hirasawa.yaml
+  juppongatana:
+    nome: Juppongatana
+    tipo: faccao
+    estado: ativo
+    arquivo: narrador/agentes/juppongatana.yaml
+  kurobane_jinzaburo:
+    nome: Kurobane Jinzaburō
+    tipo: npc
+    estado: ativo
+    arquivo: narrador/agentes/kurobane_jinzaburo.yaml
+  kajiwara_shizune:
+    nome: Kajiwara Shizune
+    tipo: npc
+    estado: ativo
+    arquivo: narrador/agentes/kajiwara_shizune.yaml
+  red_sail:
+    nome: Red Sail
+    tipo: faccao
+    estado: ativo
+    arquivo: narrador/agentes/red_sail.yaml
+  night_watch:
+    nome: Night Watch
+    tipo: instituicao
+    estado: ativo
+    arquivo: narrador/agentes/night_watch.yaml
+  casa_de_tyr:
+    nome: Casa de Tyr
+    tipo: instituicao
+    estado: ativo
+    arquivo: narrador/agentes/casa_de_tyr.yaml

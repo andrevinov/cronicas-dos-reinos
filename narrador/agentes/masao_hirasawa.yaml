@@ -1,0 +1,32 @@
+schema_agente: 1
+natureza: reservado
+id: masao_hirasawa
+nome: Masao Hirasawa
+tipo: npc
+estado: ativo
+objetivo_atual: Consolidar Ravens Bluff como primeiro degrau de infraestrutura, preservando rotas, documentos, crime urbano e acesso subterrâneo sem expor cedo o projeto maior.
+recursos:
+  - intermediários locais e autoridades corrompidas
+  - selos falsos, documentos, carga e pressão sobre testemunhas
+  - Red Sail, Narwhal e rotas baixas
+  - Juppongatana como círculo de especialistas
+restricoes:
+  - evitar exposição suficiente para provocar coalizão regional preparada
+  - preservar, se possível, o controle exclusivo da Ponte de Kozakura
+  - não tratar Ren como ameaça central antes que os fatos obriguem essa revisão
+conhecimento:
+  - id: ravens_bluff_primeiro_degrau
+    fato: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo úteis ao primeiro degrau do plano.
+    fonte: narrador/masao/plano.md
+    evidencia: Ravens Bluff lhe dá porto, crime, guildas, documentos e acesso subterrâneo.
+  - id: ren_ainda_nao_central
+    fato: Masao ainda não considera Ren a ameaça central ao projeto.
+    fonte: narrador/masao/plano.md
+    evidencia: Masao ainda pensa grande demais para considerar Ren ameaça central.
+plano_atual:
+  estado: em_execucao
+  acao: Operar por intermediários, selos falsos, Red Sail, Narwhal, documentos, carga, pó alquímico, rotas baixas e pressão sobre testemunhas.
+  prazo_ou_oportunidade: Enquanto a infraestrutura de Ravens Bluff puder ser consolidada antes de exposição institucional ampla.
+fontes_canonicas:
+  - narrador/masao/plano.md
+  - narrador/verdade-da-campanha.md

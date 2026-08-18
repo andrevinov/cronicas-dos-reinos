@@ -1,0 +1,27 @@
+schema_agente: 1
+natureza: reservado
+id: night_watch
+nome: Night Watch
+tipo: instituicao
+estado: ativo
+objetivo_atual: Conter crimes e agentes ligados a Masao sem transformar a investigação em suspeita indiscriminada nem queimar fontes e entradas prematuramente.
+recursos:
+  - patrulhas, custódia provisória e vigilância discreta
+  - Luath como coordenador operacional ligado ao caso
+  - capacidade de encaminhar material e cooperar com Tyr
+restricoes:
+  - não abordar membros identificados das Dez Espadas sem força preparada
+  - agir dentro da corrente institucional da guarda
+  - evitar batida formal quando ela destruiria uma pista ainda útil
+conhecimento:
+  - id: protocolo_dez_espadas
+    fato: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada e recusará suspeita indiscriminada contra estrangeiros.
+    fonte: estado/relacoes/luath.yaml
+    evidencia: Luath orientará a Night Watch a não abordar membros identificados das Dez Espadas sem força preparada; recusou suspeita indiscriminada contra estrangeiros e usará descrições, métodos e conduta.
+plano_atual:
+  estado: em_execucao
+  acao: Usar vigilância e resposta preparada em vez de batidas indiscriminadas, preservando a cadeia de prova e a discrição das fontes.
+  prazo_ou_oportunidade: Enquanto a investigação puder avançar sem queimar entradas, testemunhas ou a identidade reservada de Ren.
+fontes_canonicas:
+  - estado/relacoes/luath.yaml
+  - sessoes/007/handoff.yaml

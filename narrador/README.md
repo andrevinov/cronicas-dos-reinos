@@ -25,6 +25,10 @@ Informações desta pasta só devem migrar para arquivos públicos quando Ren de
 ```text
 narrador/
 ├── verdade-da-campanha.md
+├── agentes/
+│   ├── README.md
+│   ├── index.yaml
+│   └── <agente>.yaml
 ├── aliados/
 │   ├── README.md
 │   ├── personagens.md
@@ -67,6 +71,18 @@ O arquivo reservado `segredos/canone.md` registra acontecimentos externos e
 reações de mundo que podem avançar independentemente das ações imediatas de Ren.
 Ele deve ser consultado ao abrir um novo dia no mundo ou quando uma sessão
 atravessar várias horas relevantes.
+
+## Agentes autônomos
+
+`agentes/` é a camada operacional fragmentada para NPCs, facções e instituições
+capazes de agir fora da presença de Ren. Ela não substitui as fontes canônicas:
+cada fragmento aponta para elas e registra somente objetivo atual, recursos,
+restrições, conhecimento sustentado e plano corrente.
+
+Durante narração, consultar um agente de forma dirigida com
+`python3 ferramentas/agentes.py mostrar <id-ou-nome>`. A validação ampla
+`python3 ferramentas/agentes.py validar` pertence a manutenção/CI e não ao loop
+normal de cada turno.
 
 ## Antagonistas maiores
 

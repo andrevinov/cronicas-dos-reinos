@@ -1,0 +1,31 @@
+schema_agente: 1
+natureza: reservado
+id: juppongatana
+nome: Juppongatana
+tipo: faccao
+estado: ativo
+objetivo_atual: Empregar especializações raras em favor do projeto de Masao sem funcionar como exército convencional.
+recursos:
+  - dez especialistas distribuídos entre alcance, transporte, armas, autoridade, corpo, percepção, rito, tempo, adaptação e força
+  - capacidade de infiltração, extração, falsificação, violência seletiva e operações de alta especialização
+restricoes:
+  - não é exército nem gangue comum
+  - membros possuem lealdades, medos, dívidas e interesses diferentes
+  - operações individuais não devem ser presumidas a partir do coletivo
+conhecimento:
+  - id: natureza_do_circulo
+    fato: A Juppongatana é o círculo de elite de Masao, não um exército ou uma gangue comum.
+    fonte: narrador/juppongatana/README.md
+    evidencia: Ela é o círculo de elite de **Masao Hirasawa**. Não é um exército, nem uma gangue comum, nem uma lista de capangas.
+  - id: lealdades_variaveis
+    fato: Os membros podem manter relações muito diferentes com Masao.
+    fonte: narrador/juppongatana/README.md
+    evidencia: Cada membro pode ter lealdade, medo, dívida, obsessão ou acordo diferente com Masao.
+plano_atual:
+  estado: sem_plano_registrado
+  acao: null
+  prazo_ou_oportunidade: O coletivo só recebe plano próprio quando houver coordenação explícita; ações específicas pertencem aos membros.
+fontes_canonicas:
+  - narrador/juppongatana/README.md
+  - narrador/juppongatana/membros.md
+  - narrador/juppongatana/marcos-de-aparicao.md

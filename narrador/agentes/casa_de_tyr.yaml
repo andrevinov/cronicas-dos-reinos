@@ -1,0 +1,31 @@
+schema_agente: 1
+natureza: reservado
+id: casa_de_tyr
+nome: Casa de Tyr
+tipo: instituicao
+estado: ativo
+objetivo_atual: Preservar prova, cadeia de custódia e testemunhas do caso Masao sem transformar Ren em agente clandestino informal da instituição.
+recursos:
+  - custódia formal de documentos e audiências reservadas
+  - Halessa Vorn e outros juramentados
+  - cooperação com Luath e capacidade de convocar Sirrus Melandor
+restricoes:
+  - exige objetivo, rota e limites antes de cooperação clandestina futura
+  - protege testemunha reservada sem conceder abrigo ou acesso irrestrito
+  - crise institucional ou urbana pode reduzir a velocidade prática das respostas
+conhecimento:
+  - id: custodia_separada
+    fato: Halessa mantém original e falsificação sob custódias separadas e preservará Ren como testemunha reservada.
+    fonte: estado/relacoes/halessa_vorn.yaml
+    evidencia: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+  - id: limite_cooperacao_clandestina
+    fato: Tyr não aceita cooperação clandestina sem planejamento prévio de objetivo, rota e limites.
+    fonte: estado/relacoes/halessa_vorn.yaml
+    evidencia: Admite discutir futura cooperação clandestina se Ren apresentar antes da ação o objetivo, a rota e os limites que aceita observar.
+plano_atual:
+  estado: em_execucao
+  acao: Manter as provas sob custódia formal, preservar a discrição de Ren e fazer contatos futuros passarem primeiro por Luath.
+  prazo_ou_oportunidade: Enquanto o caso permanecer em investigação reservada e novas ações puderem comprometer cadeia de custódia ou testemunhas.
+fontes_canonicas:
+  - estado/relacoes/halessa_vorn.yaml
+  - sessoes/007/handoff.yaml
