@@ -37,7 +37,7 @@ alcançou em `estado/tempo.yaml`.
 
 ## Checkpoints por passagem significativa de tempo
 
-O fluxo normal agora sincroniza este motor em três situações:
+O fluxo normal sincroniza este motor em três situações:
 
 1. todo `checkpoint.py cena` explícito;
 2. todo `checkpoint.py sessao`;
@@ -55,6 +55,10 @@ tratamento especial só por ter `modo: descanso`; um descanso realmente longo se
 capturado pela passagem temporal. Quando uma exploração longa também muda
 `localizacao.*`, o checkpoint é classificado como `viagem_longa` apenas para
 explicar a causa operacional.
+
+Fronteiras de cena importantes continuam usando `checkpoint.py cena` mesmo sem
+salto temporal. O fechamento de sessão sempre usa `checkpoint.py sessao`; ambos
+sincronizam o mundo depois da consolidação.
 
 A ordem é obrigatória:
 
