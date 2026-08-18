@@ -1,0 +1,49 @@
+schema_populacao_canonica: 1
+natureza: inventario_reservado
+origem: estado/relacoes/index.yaml
+descricao: >-
+  Classificação fria dos relacionamentos canônicos atuais para decidir quem ganha
+  scheduler no Mundo Vivo. Importância narrativa não implica agenda periódica.
+regra: >-
+  Promover somente quem já possui motivação, rotina e iniciativa autônoma
+  sustentadas pelo cânone; usar agente-pai quando a ação individual já pertence a
+  uma operação institucional/faccional; manter o restante persistente sem agenda.
+classificacoes:
+  promovidos_agentes_leves:
+  - bram_vask
+  - halessa_vorn
+  - jack_mooney
+  - kethra_dunn
+  - luath
+  - maerra_thandrel
+  - pell
+  - silva_elkwood
+  representados_por_agente:
+    dain_brass_mord: red_sail
+    homem_red_sail_capturado: red_sail
+    noll: bram_vask
+    rusk_cinza: red_sail
+    sirrus_melandor: casa_de_tyr
+    tobb_marlin: jack_mooney
+  persistentes_sem_agenda:
+  - brunna_torkel
+  - colm_dunn
+  - corven_dalm
+  - dessa_wren
+  - dorra_hest
+  - edran_vale
+  - harl_venn
+  - hessa_morn
+  - iria_doss
+  - lysa_renn
+  - mara_tharle
+  - mera_fumaca
+  - merrit_tealeaf
+  - mira_dane
+  - nera_vell
+  - peta
+  - sella_rove
+  - sorn_kel
+  - tavin_vell
+  - velha_sella
+  - velis_rook
