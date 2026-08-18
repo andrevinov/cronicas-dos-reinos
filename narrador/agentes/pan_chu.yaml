@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: pan_chu
 nome: Pan Chu
@@ -14,6 +14,8 @@ presenca:
   referencia: Ravens Bluff
   estado: indeterminado
   detalhe: A presença atual em Ravens Bluff não está estabelecida; o agente permanece inelegível para ação física local até uma chegada ou presença ser canonizada.
+  fonte: null
+  evidencia: null
 mobilidade:
   estado: sem_deslocamento_registrado
   origem: null
