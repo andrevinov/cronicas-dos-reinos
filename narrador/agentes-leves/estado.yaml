@@ -1,0 +1,19 @@
+schema_estado_agentes_leves: 1
+natureza: controle_reservado
+descricao: Próxima reavaliação dos NPCs leves; não é conhecimento de Ren.
+agentes:
+  luath:
+    estado: ativo
+    proxima_avaliacao:
+      data: '13 Eleasis, 1372 DR'
+      hora: '06:00'
+  silva_elkwood:
+    estado: ativo
+    proxima_avaliacao:
+      data: '14 Eleasis, 1372 DR'
+      hora: '06:00'
+  maerra_thandrel:
+    estado: ativo
+    proxima_avaliacao:
+      data: '15 Eleasis, 1372 DR'
+      hora: '06:00'

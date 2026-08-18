@@ -1,0 +1,40 @@
+schema_agentes_leves: 1
+natureza: reservado
+descricao: >-
+  NPCs recorrentes cuja rotina é o padrão. A camada existe para permitir ações
+  ocasionais fora de cena sem abrir dezenas de fragmentos a cada checkpoint.
+orcamento:
+  max_novas_por_checkpoint: 1
+  max_pendencias_abertas: 2
+  ordenacao: mais_atrasado_prioridade_id
+agentes:
+  luath:
+    nome: Luath
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 3
+    intervalo_dias: 3
+    inicio:
+      data: '13 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/luath.yaml
+  silva_elkwood:
+    nome: Silva Elkwood
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 2
+    intervalo_dias: 4
+    inicio:
+      data: '14 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/silva_elkwood.yaml
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    perfil_operacional: recorrente_leve
+    estado: ativo
+    prioridade: 2
+    intervalo_dias: 5
+    inicio:
+      data: '15 Eleasis, 1372 DR'
+      hora: '06:00'
+    arquivo: narrador/agentes-leves/maerra_thandrel.yaml

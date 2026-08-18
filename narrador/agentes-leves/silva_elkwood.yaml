@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: silva_elkwood
+nome: Silva Elkwood
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Exercer suas funções de clériga de Chauntea junto ao circo e proteger a rotina civil do acampamento.
+  fonte: estado/relacoes/silva_elkwood.yaml
+  evidencia: clériga de Chauntea / contato potencial de abrigo
+objetivo_atual:
+  descricao: Proteger Nera e Tavin de observação e manter controle cuidadoso sobre quem consegue acesso a eles.
+  fonte: estado/relacoes/silva_elkwood.yaml
+  evidencia: Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no acampamento.
+iniciativas_possiveis:
+  - descricao: Manter o circo quieto ou ajustar sua rotina quando isso proteger pessoas vulneráveis.
+    fonte: estado/relacoes/silva_elkwood.yaml
+    evidencia: Silva manteve a rotina do circo quieta enquanto Ren completava descanso curto antes do amanhecer de 7 Eleasis.
+  - descricao: Entregar ou reter mensagens dirigidas aos Vell conforme o risco de exposição.
+    fonte: estado/relacoes/silva_elkwood.yaml
+    evidencia: Silva guarda um recado de Ren para entregar diretamente a Nera
+regra_de_reavaliacao: O trabalho pastoral e a rotina do circo continuam sem cena; só registrar ação nova se segurança dos Vell, do acampamento ou informação relevante oferecer causa concreta.
+fontes_canonicas:
+  - estado/relacoes/silva_elkwood.yaml

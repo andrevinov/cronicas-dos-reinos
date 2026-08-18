@@ -1,0 +1,23 @@
+schema_agente_leve: 1
+natureza: reservado
+id: maerra_thandrel
+nome: Irmã Maerra Thandrel
+perfil_operacional: recorrente_leve
+rotina_padrao:
+  descricao: Exercer suas funções de sacerdotisa de Lathander na Casa da Aurora Menor e cuidar do abrigo sob sua responsabilidade.
+  fonte: estado/relacoes/maerra_thandrel.yaml
+  evidencia: sacerdotisa de Lathander / abrigo potencial
+objetivo_atual:
+  descricao: Manter protegidas as sete crianças resgatadas e priorizar segurança de testemunhas sobre vingança privada.
+  fonte: estado/relacoes/maerra_thandrel.yaml
+  evidencia: abrigo provisório concedido às sete crianças resgatadas
+iniciativas_possiveis:
+  - descricao: Encaminhar alertas discretos a aliados institucionais quando a proteção dos vulneráveis exigir.
+    fonte: estado/relacoes/maerra_thandrel.yaml
+    evidencia: Colocou em curso ficha curta a Halessa alertando para risco de Velis ter sido instruído antes da oitiva
+  - descricao: Pressionar por encaminhamento a Luath ou Tyr quando Ren carregar risco demais sozinho.
+    fonte: estado/relacoes/maerra_thandrel.yaml
+    evidencia: Maerra pode pressionar por encaminhamento a Luath ou Tyr.
+regra_de_reavaliacao: Rotina religiosa, abrigo e cuidado pastoral são o padrão; só registrar iniciativa extraordinária quando segurança, testemunhas ou dever moral produzirem motivo concreto.
+fontes_canonicas:
+  - estado/relacoes/maerra_thandrel.yaml

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Integra camadas canônicas de baixa frequência à fila do Mundo Vivo.
 
-Direções e entradas de aliados observam o intervalo antes de `mundo.py` mover o
-cursor. Nenhuma delas abre fragmentos ou faz acontecimentos ocorrerem sozinha.
+Direções, entradas de aliados e agentes recorrentes leves observam checkpoints
+antes de `mundo.py` mover o cursor. Nenhuma camada abre fragmentos ou faz
+acontecimentos ocorrerem sozinha.
 """
 from __future__ import annotations
 
@@ -10,6 +11,7 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
+import agentes_leves
 import direcoes
 import entradas
 import mundo
@@ -30,6 +32,23 @@ def _pending_direction_ids(world_state: dict[str, Any]) -> set[str]:
 
 def _entries_configured(repo: Path) -> bool:
     return (repo / entradas.INDEX).is_file() and (repo / entradas.STATE).is_file()
+
+
+def _light_agents_configured(repo: Path) -> bool:
+    return (repo / agentes_leves.INDEX).is_file() and (repo / agentes_leves.STATE).is_file()
+
+
+def _crossed_dawn(
+    agenda: dict[str, Any], start: mundo.WorldInstant, end: mundo.WorldInstant
+) -> bool:
+    if end <= start:
+        return False
+    dawn = mundo._dawn_minute(agenda)
+    for day_index in mundo._iter_day_indices(start, end):
+        when = mundo.WorldInstant(day_index * 1440 + dawn)
+        if start < when <= end:
+            return True
+    return False
 
 
 def _activation_records(index, direction_state, world_state, when):
@@ -113,11 +132,26 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     if _entries_configured(repo):
         entry_result = entradas.process_checkpoint(repo)
 
+    light_result = {
+        "novas_pendencias": [],
+        "agentes_leves_reconsiderar": [],
+        "adiados_por_orcamento": [],
+        "fontes_lidas": [],
+    }
+    if _light_agents_configured(repo) and _crossed_dawn(agenda, cursor, canonical):
+        light_result = agentes_leves.process_checkpoint(repo)
+
     return {
         "ok": True,
-        "novas_pendencias": [*added, *(entry_result.get("novas_pendencias") or [])],
+        "novas_pendencias": [
+            *added,
+            *(entry_result.get("novas_pendencias") or []),
+            *(light_result.get("novas_pendencias") or []),
+        ],
         "direcoes_reconsiderar": sorted({item["direcao"] for item in added}),
         "entradas_reconsiderar": entry_result.get("entradas_reconsiderar") or [],
+        "agentes_leves_reconsiderar": light_result.get("agentes_leves_reconsiderar") or [],
+        "agentes_leves_adiados": light_result.get("adiados_por_orcamento") or [],
         "fontes_lidas": [
             direcoes.INDEX_PATH.as_posix(),
             direcoes.STATE_PATH.as_posix(),
@@ -125,6 +159,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             mundo.AGENDA_PATH.as_posix(),
             mundo.TIME_PATH.as_posix(),
             *(entry_result.get("fontes_lidas") or []),
+            *(light_result.get("fontes_lidas") or []),
         ],
     }
 
@@ -144,6 +179,14 @@ def check_repo(repo: Path) -> dict[str, Any]:
         if _entries_configured(repo):
             entry_check = entradas.check_world(repo)
             errors.extend(f"entradas: {error}" for error in entry_check.get("erros") or [])
-    except (direcoes.DirectionError, entradas.EntryError, mundo.WorldEngineError) as exc:
+        if _light_agents_configured(repo):
+            light_check = agentes_leves.check_world(repo)
+            errors.extend(f"agentes leves: {error}" for error in light_check.get("erros") or [])
+    except (
+        agentes_leves.LightAgentError,
+        direcoes.DirectionError,
+        entradas.EntryError,
+        mundo.WorldEngineError,
+    ) as exc:
         errors.append(str(exc))
     return {"ok": not errors, "erros": list(dict.fromkeys(errors))}
