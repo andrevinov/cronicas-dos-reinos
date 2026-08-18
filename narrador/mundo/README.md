@@ -1,8 +1,8 @@
 # Motor reservado do Mundo Vivo
 
 Esta pasta guarda somente o **controle determinístico** do mundo que continua em
-movimento fora da presença de Ren. Ela não substitui agentes, sessões, relógios,
-relações ou qualquer outra fonte canônica.
+movimento fora da presença de Ren. Ela não substitui agentes, direções, sessões,
+relógios, relações ou qualquer outra fonte canônica.
 
 ## Arquivos
 
@@ -65,6 +65,7 @@ A ordem é obrigatória:
 ```text
 turno persiste transcrição + delta
 → checkpoint consolida o novo tempo canônico
+→ direções canônicas avaliam o intervalo sem avançar marcos
 → mundo.py processa até esse tempo
 → handoff/índice são reconstruídos
 ```
@@ -81,37 +82,73 @@ raro em que o marcador já existe na transcrição e o evento não está mais no
 buffer. Se o ID já aparece no ledger, a operação é considerada consolidada e não
 é reaplicada.
 
+Pendências de direção usam IDs estáveis. Se houver falha depois que uma delas foi
+criada e antes do cursor do mundo avançar, repetir o checkpoint não a duplica.
+
 ## Economia de contexto
 
 O motor lê agenda, cursor e tempo. Quando nada vence, **não lê sequer o índice de
-agentes**. Quando alguma pendência vence, consulta no máximo
-`narrador/agentes/index.yaml` para validar IDs e devolve apenas os agentes que
-precisam de reconsideração. Ele nunca abre automaticamente os fragmentos dos
-agentes.
+agentes**. Quando alguma pendência de agente vence, consulta no máximo
+`narrador/agentes/index.yaml` para validar IDs e devolve apenas quem precisa de
+reconsideração. Ele nunca abre automaticamente os fragmentos dos agentes.
+
+A camada de direções, executada apenas em checkpoints, lê somente
+`narrador/direcoes/index.yaml` + `estado.yaml`. **Não abre fragmento de direção nem
+as fontes canônicas para decidir se uma avaliação venceu.** O fragmento só entra
+depois, quando existe uma pendência concreta a resolver.
 
 Exemplo de saída conceitual:
 
 ```yaml
 agentes_reconsiderar:
   - red_sail
-  - night_watch
+
+direcoes_reconsiderar:
+  - ponte_de_kozakura
 ```
 
-Só depois disso o narrador pode usar uma consulta dirigida:
+Só depois disso o narrador usa consultas dirigidas:
 
 ```bash
 python3 ferramentas/agentes.py mostrar red_sail
+python3 ferramentas/direcoes.py mostrar ponte_de_kozakura
 ```
+
+## Direções narrativas canônicas
+
+Direção canônica não é agente nem relógio. Ela registra um destino de longo prazo
+que deve existir na campanha sem prescrever **como, quando ou por quem** cada
+marco será alcançado.
+
+A fila usa dois tipos:
+
+- `avaliar_direcao`: reexaminar se o marco atual já está sustentado pelos fatos;
+- `ativar_direcao`: uma direção latente teve sua dependência satisfeita e pode
+  começar, mas continua exigindo decisão explícita do narrador.
+
+Nenhum desses tipos avança a história sozinho. Ao receber `avaliar_direcao`, ler
+somente a direção indicada. Se os critérios ainda não estão sustentados, concluir
+a pendência sem mudança. Se estão, registrar o fato que realmente ocorreu e então
+usar `direcoes.py avancar` com origem e nota rastreáveis. `ativar_direcao` segue o
+mesmo princípio com `direcoes.py ativar`.
+
+A implementação inicial possui duas direções encadeadas:
+
+- **Ponte de Kozakura**: ativa, começando por `coisas_plausiveis`;
+- **Shin-Kozakura**: latente, só pode ser ativada depois de concluído o marco
+  `perda_controle_exclusivo` da Ponte.
+
+Detalhes e comandos ficam em `narrador/direcoes/README.md`.
 
 ## Cadência não é ação
 
-Uma cadência de amanhecer significa **reavaliar o plano**, não obrigar o agente a
-agir nem garantir que Ren perceberá qualquer coisa. O narrador ainda deve respeitar
-conhecimento, presença, mobilidade, recursos, restrições e causalidade.
+Uma cadência de amanhecer significa **reavaliar**, não obrigar agente ou direção a
+avançar nem garantir que Ren perceberá qualquer coisa. O narrador ainda deve
+respeitar conhecimento, presença, mobilidade, recursos, restrições e causalidade.
 
 Cadências podem ser espaçadas conforme a escala: uma facção em busca ativa pode
-ser reconsiderada diariamente, enquanto um antagonista estratégico pode ser
-reconsiderado a cada vários dias.
+ser reconsiderada diariamente; um antagonista estratégico, a cada vários dias;
+uma direção histórica, ainda mais lentamente.
 
 ## Agendamentos determinísticos
 
