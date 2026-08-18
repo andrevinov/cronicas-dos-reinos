@@ -2,8 +2,9 @@
 """Classifica o cânone já existente antes de criar novos atores do Mundo Vivo.
 
 Esta ferramenta é de manutenção/CI, não pertence ao hot path. Ela garante que
-cada relação atual tenha uma decisão explícita: agente leve, coberta por um
-agente-pai ou persistente sem agenda. Importância narrativa não implica scheduler.
+cada relação atual tenha uma decisão explícita: agente estratégico, agente leve,
+coberta por um agente-pai ou persistente sem agenda. Importância narrativa não
+implica scheduler e a promoção estratégica não cria cadência por si só.
 """
 from __future__ import annotations
 
@@ -53,13 +54,14 @@ def _ids(value: Any, label: str) -> list[str]:
 
 def load_population(repo: Path) -> dict[str, Any]:
     data = _map(_load(repo / POPULATION), POPULATION.as_posix())
-    if data.get("schema_populacao_canonica") != 1:
-        raise PopulationError("inventário deve usar schema_populacao_canonica: 1")
+    if data.get("schema_populacao_canonica") != 2:
+        raise PopulationError("inventário deve usar schema_populacao_canonica: 2")
     if data.get("natureza") != "inventario_reservado":
         raise PopulationError("inventário deve ter natureza: inventario_reservado")
     if data.get("origem") != RELATIONS.as_posix():
         raise PopulationError("inventário deve declarar estado/relacoes/index.yaml como origem")
     classes = _map(data.get("classificacoes"), "classificacoes")
+    _ids(classes.get("promovidos_agentes_estrategicos"), "promovidos_agentes_estrategicos")
     _ids(classes.get("promovidos_agentes_leves"), "promovidos_agentes_leves")
     _ids(classes.get("persistentes_sem_agenda"), "persistentes_sem_agenda")
     represented = _map(classes.get("representados_por_agente"), "representados_por_agente")
@@ -73,7 +75,13 @@ def load_population(repo: Path) -> dict[str, Any]:
 
 def validate_repo(repo: Path) -> dict[str, Any]:
     errors: list[str] = []
-    counts = {"relacoes": 0, "promovidos": 0, "representados": 0, "persistentes": 0}
+    counts = {
+        "relacoes": 0,
+        "estrategicos": 0,
+        "promovidos": 0,
+        "representados": 0,
+        "persistentes": 0,
+    }
     try:
         population = load_population(repo)
         relation_doc = _map(_load(repo / RELATIONS), RELATIONS.as_posix())
@@ -85,54 +93,91 @@ def validate_repo(repo: Path) -> dict[str, Any]:
 
         strategic_doc = _map(_load(repo / STRATEGIC), STRATEGIC.as_posix())
         light_doc = _map(_load(repo / LIGHT), LIGHT.as_posix())
-        strategic = set(_map(strategic_doc.get("agentes"), "agentes estratégicos"))
-        light = set(_map(light_doc.get("agentes"), "agentes leves"))
+        strategic_meta = _map(strategic_doc.get("agentes"), "agentes estratégicos")
+        light_meta = _map(light_doc.get("agentes"), "agentes leves")
+        strategic = set(strategic_meta)
+        light = set(light_meta)
 
         classes = population["classificacoes"]
-        promoted = set(_ids(classes["promovidos_agentes_leves"], "promovidos_agentes_leves"))
+        promoted_strategic = set(
+            _ids(classes["promovidos_agentes_estrategicos"], "promovidos_agentes_estrategicos")
+        )
+        promoted_light = set(_ids(classes["promovidos_agentes_leves"], "promovidos_agentes_leves"))
         persistent = set(_ids(classes["persistentes_sem_agenda"], "persistentes_sem_agenda"))
         represented = dict(classes["representados_por_agente"])
         represented_ids = set(represented)
 
-        overlaps = (promoted & persistent) | (promoted & represented_ids) | (persistent & represented_ids)
+        groups = [promoted_strategic, promoted_light, persistent, represented_ids]
+        overlaps: set[str] = set()
+        for index, left in enumerate(groups):
+            for right in groups[index + 1 :]:
+                overlaps |= left & right
         if overlaps:
             raise PopulationError("classificações sobrepostas: " + ", ".join(sorted(overlaps)))
 
-        classified = promoted | persistent | represented_ids
+        classified = promoted_strategic | promoted_light | persistent | represented_ids
         relation_ids = set(relations)
         missing = sorted(relation_ids - classified)
         extra = sorted(classified - relation_ids)
         if missing or extra:
             raise PopulationError(f"cobertura incompleta; ausentes={missing}, extras={extra}")
 
-        if not promoted <= light:
-            raise PopulationError("promovidos ausentes do índice leve: " + ", ".join(sorted(promoted - light)))
+        if not promoted_strategic <= strategic:
+            raise PopulationError(
+                "estratégicos promovidos ausentes do índice estratégico: "
+                + ", ".join(sorted(promoted_strategic - strategic))
+            )
+        invalid_strategic_types = sorted(
+            agent_id
+            for agent_id in promoted_strategic
+            if not isinstance(strategic_meta.get(agent_id), dict)
+            or strategic_meta[agent_id].get("tipo") != "npc"
+        )
+        if invalid_strategic_types:
+            raise PopulationError(
+                "relações promovidas a estratégico devem apontar para agentes tipo npc: "
+                + ", ".join(invalid_strategic_types)
+            )
+        relation_strategic = relation_ids & strategic
+        if relation_strategic != promoted_strategic:
+            raise PopulationError(
+                "relações estratégicas divergem do inventário; "
+                f"somente_indice={sorted(relation_strategic-promoted_strategic)}, "
+                f"somente_inventario={sorted(promoted_strategic-relation_strategic)}"
+            )
+
+        if not promoted_light <= light:
+            raise PopulationError(
+                "promovidos ausentes do índice leve: " + ", ".join(sorted(promoted_light - light))
+            )
         relation_light = relation_ids & light
-        if relation_light != promoted:
+        if relation_light != promoted_light:
             raise PopulationError(
                 "relações agendadas como leves divergem do inventário; "
-                f"somente_indice={sorted(relation_light-promoted)}, somente_inventario={sorted(promoted-relation_light)}"
+                f"somente_indice={sorted(relation_light-promoted_light)}, "
+                f"somente_inventario={sorted(promoted_light-relation_light)}"
             )
 
-        scheduled = strategic | light
-        invalid_persistent = sorted(persistent & scheduled)
+        autonomous = strategic | light
+        invalid_persistent = sorted(persistent & autonomous)
         if invalid_persistent:
             raise PopulationError(
-                "persistentes sem agenda aparecem em scheduler: " + ", ".join(invalid_persistent)
+                "persistentes sem agenda aparecem em camada autônoma: " + ", ".join(invalid_persistent)
             )
 
-        known_parents = strategic | light
+        known_parents = autonomous
         for child, parent in represented.items():
             if child == parent:
                 raise PopulationError(f"{child}: não pode representar a si mesmo")
-            if child in scheduled:
-                raise PopulationError(f"{child}: representado por agente não deve possuir scheduler próprio")
+            if child in autonomous:
+                raise PopulationError(f"{child}: representado por agente não deve possuir camada autônoma própria")
             if parent not in known_parents:
                 raise PopulationError(f"{child}: agente-pai inexistente: {parent}")
 
         counts = {
             "relacoes": len(relation_ids),
-            "promovidos": len(promoted),
+            "estrategicos": len(promoted_strategic),
+            "promovidos": len(promoted_light),
             "representados": len(represented_ids),
             "persistentes": len(persistent),
         }
