@@ -20,7 +20,15 @@ placeholders RECALL (`{...}`) precisam ser separados/resolvidos antes desta port
 se vazarem até aqui, a transação é recusada antes de qualquer escrita.
 
 A operação é idempotente. Se houver interrupção entre as duas escritas, repetir a
-mesma entrada repara somente o lado ausente sem duplicar o outro.
+mesma entrada repara somente o lado ausente sem duplicar o outro. Desde o Mundo
+Vivo, a idempotência também reconhece uma transação já instalada no ledger após
+checkpoint.
+
+Passagens pequenas de tempo continuam no hot path comum. Quando o tempo efetivo
+acumula pelo menos duas horas desde o último cursor do Mundo Vivo, ou atravessa o
+amanhecer configurado, o próprio registro promove uma fronteira de cena: primeiro
+persiste transcrição + delta, depois consolida o cânone e só então sincroniza o
+motor do mundo. Não há checkpoint extra para uma caminhada de poucos minutos.
 """
 from __future__ import annotations
 
@@ -31,7 +39,7 @@ import re
 import sys
 import tempfile
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 try:
     import yaml
@@ -51,6 +59,11 @@ from transacoes import (
 )
 
 MAX_PENDING_BYTES = 512 * 1024
+SIGNIFICANT_WORLD_MINUTES = 120
+WORLD_AGENDA_PATH = Path("narrador/mundo/agenda.yaml")
+WORLD_STATE_PATH = Path("narrador/mundo/estado.yaml")
+TIME_PATH = Path("estado/tempo.yaml")
+LEDGER_NAME = "consolidacoes.jsonl"
 
 # Aviso heurístico, nunca bloqueio. A meta é impedir que um painel completo de
 # estado seja copiado para a transcrição a cada avanço sem necessidade.
@@ -223,6 +236,161 @@ def _atomic_write(path: Path, content: str) -> None:
     os.replace(temp_path, path)
 
 
+def _transaction_in_ledger(repo: Path, session: int, transaction_id: str) -> bool:
+    """Consulta o ledger só no caminho raro de retry após consolidação."""
+    path = repo / "sessoes" / f"{session:03d}" / LEDGER_NAME
+    if not path.is_file():
+        return False
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            item = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise TransactionError(f"ledger inválido em {path.relative_to(repo)}:{number}: {exc}") from exc
+        if transaction_id in (item.get("transacoes") or []):
+            return True
+    return False
+
+
+def _has_time_delta(record: dict[str, Any]) -> bool:
+    for delta in record.get("deltas") or []:
+        if not isinstance(delta, dict) or delta.get("op") != "set":
+            continue
+        target = delta.get("alvo")
+        path = delta.get("caminho")
+        if target == "tempo" and path in {"data_atual", "data", "hora_aproximada"}:
+            return True
+        if target == "estado" and path in {"tempo.data_exata", "tempo.hora_aproximada"}:
+            return True
+    return False
+
+
+def _apply_time_deltas(snapshot: dict[str, Any], records: Iterable[dict[str, Any]]) -> None:
+    for record in records:
+        for delta in record.get("deltas") or []:
+            if not isinstance(delta, dict) or delta.get("op") != "set":
+                continue
+            if delta.get("visibilidade", "operacional") == "narrador":
+                continue
+            target = delta.get("alvo")
+            path = delta.get("caminho")
+            value = delta.get("valor")
+            if target == "tempo":
+                if path in {"data_atual", "data"}:
+                    snapshot["data_atual"] = value
+                elif path == "hora_aproximada":
+                    snapshot["hora_aproximada"] = value
+            elif target == "estado":
+                if path == "tempo.data_exata":
+                    snapshot["data_atual"] = value
+                elif path == "tempo.hora_aproximada":
+                    snapshot["hora_aproximada"] = value
+
+
+def _location_changed(record: dict[str, Any]) -> bool:
+    for delta in record.get("deltas") or []:
+        if not isinstance(delta, dict):
+            continue
+        target = str(delta.get("alvo") or "")
+        path = str(delta.get("caminho") or "")
+        if target == "estado" and path.startswith("localizacao."):
+            return True
+    return False
+
+
+def _crossed_daily_minute(start_minute: int, end_minute: int, minute_of_day: int) -> bool:
+    if end_minute <= start_minute:
+        return False
+    start_day = start_minute // 1440
+    end_day = end_minute // 1440
+    for day in range(start_day, end_day + 1):
+        instant = day * 1440 + minute_of_day
+        if start_minute < instant <= end_minute:
+            return True
+    return False
+
+
+def detect_world_checkpoint(
+    repo: Path,
+    prior_records: Iterable[dict[str, Any]],
+    current_record: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Detecta marco temporal sem tool call extra e sem abrir fragmentos de agentes.
+
+    O relógio de referência é o cursor do Mundo Vivo, não apenas a duração deste
+    turno. Assim vários avanços pequenos acumulam e o primeiro que completar duas
+    horas promove o checkpoint.
+    """
+    if not _has_time_delta(current_record):
+        return None
+    required = [repo / TIME_PATH, repo / WORLD_AGENDA_PATH, repo / WORLD_STATE_PATH]
+    if not all(path.is_file() for path in required):
+        return None
+
+    try:
+        import mundo
+
+        time_data = load_yaml(repo / TIME_PATH) or {}
+        if not isinstance(time_data, dict):
+            raise TransactionError("estado/tempo.yaml inválido para checkpoint temporal")
+        effective = dict(time_data)
+        _apply_time_deltas(effective, [*prior_records, current_record])
+        date_text = effective.get("data_atual") or effective.get("data")
+        hour_text = effective.get("hora_aproximada")
+        after = mundo.parse_instant(str(date_text), str(hour_text))
+
+        world_state = mundo.load_world_state(repo)
+        cursor_data = world_state["processado_ate"]
+        cursor = mundo.parse_instant(cursor_data["data"], cursor_data["hora"])
+        if after.minute <= cursor.minute:
+            return None
+
+        gap = after.minute - cursor.minute
+        agenda = mundo.load_agenda(repo)
+        dawn_text = str(agenda["hora_amanhecer"])
+        match = re.fullmatch(r"([01]?\d|2[0-3]):([0-5]\d)", dawn_text)
+        if not match:
+            raise TransactionError(f"hora_amanhecer inválida: {dawn_text}")
+        dawn = int(match.group(1)) * 60 + int(match.group(2))
+        crossed_dawn = _crossed_daily_minute(cursor.minute, after.minute, dawn)
+
+        if crossed_dawn:
+            reason = "amanhecer"
+        elif gap >= SIGNIFICANT_WORLD_MINUTES:
+            mode = str(current_record.get("modo") or "")
+            if mode == "descanso" and gap >= 360:
+                reason = "descanso_longo"
+            elif mode == "exploração" and _location_changed(current_record):
+                reason = "viagem_longa"
+            else:
+                reason = "passagem_horas"
+        else:
+            return None
+
+        return {
+            "motivo": reason,
+            "minutos_desde_checkpoint": gap,
+            "tempo_efetivo": mundo.instant_parts(after),
+        }
+    except (OSError, ValueError, yaml.YAMLError) as exc:
+        if isinstance(exc, TransactionError):
+            raise
+        raise TransactionError(f"não foi possível avaliar checkpoint temporal do mundo: {exc}") from exc
+
+
+def _run_scene_checkpoint(repo: Path) -> dict[str, Any]:
+    try:
+        import checkpoint
+
+        return checkpoint.checkpoint(repo, "cena")
+    except Exception as exc:  # a transação já pode estar persistida; retry deve reparar
+        raise TransactionError(
+            "turno registrado, mas checkpoint temporal falhou; repita a mesma operação "
+            "ou execute ferramentas/checkpoint.py recuperar"
+        ) from exc
+
+
 def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, Any]:
     # A validação ON/OFF/RECALL ocorre dentro de normalize_transaction e, portanto,
     # antes de qualquer leitura destinada a preparar uma escrita ou de qualquer
@@ -252,8 +420,15 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
             f"id {transaction_id} já existe com conteúdo diferente; não sobrescrever silenciosamente"
         )
 
+    consolidated = False
+    if marker_count == 1 and existing_record is None:
+        consolidated = _transaction_in_ledger(repo, session, transaction_id)
+
+    prior_records = [item for item in existing_records if item.get("id") != transaction_id]
+    temporal_trigger = None if consolidated else detect_world_checkpoint(repo, prior_records, record)
+
     need_transcript = marker_count == 0
-    need_pending = existing_record is None
+    need_pending = existing_record is None and not consolidated
     if need_pending:
         candidate_pending = _append_jsonl(pending_text, record)
         if len(candidate_pending.encode("utf-8")) > MAX_PENDING_BYTES:
@@ -274,6 +449,22 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
     if need_transcript:
         _atomic_write(transcript_path, candidate_transcript)
 
+    checkpoint_world: dict[str, Any] | None = None
+    if temporal_trigger is not None:
+        checkpoint_result = _run_scene_checkpoint(repo)
+        world = checkpoint_result.get("mundo") or {}
+        checkpoint_world = {
+            "disparado": True,
+            **temporal_trigger,
+            "novas_pendencias": len(world.get("novas_pendencias") or []),
+            "agentes_reconsiderar": world.get("agentes_reconsiderar") or [],
+        }
+    elif consolidated:
+        checkpoint_world = {
+            "disparado": False,
+            "ja_consolidado": True,
+        }
+
     return {
         "id": transaction_id,
         "sessao": session,
@@ -282,8 +473,10 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         "deltas": len(record.get("deltas", [])),
         "transcricao_escrita": need_transcript,
         "evento_escrito": need_pending,
-        "reparo_parcial": need_transcript != need_pending,
+        "reparo_parcial": need_transcript != need_pending and not consolidated,
         "ja_registrada": not need_transcript and not need_pending,
+        "consolidada": consolidated,
+        "checkpoint_mundo": checkpoint_world,
         "avisos": narration_warnings(normalized),
     }
 
@@ -352,10 +545,18 @@ def main() -> int:
                 "OK — turno transacional registrado: "
                 f"{result['id']} | deltas={result['deltas']} | "
                 f"transcrição={'sim' if result['transcricao_escrita'] else 'já existia'} | "
-                f"evento={'sim' if result['evento_escrito'] else 'já existia'}"
+                f"evento={'sim' if result['evento_escrito'] else ('consolidado' if result['consolidada'] else 'já existia')}"
             )
             if result["reparo_parcial"]:
                 print("OK — inconsistência parcial anterior foi reparada de forma idempotente.")
+            world = result.get("checkpoint_mundo") or {}
+            if world.get("disparado"):
+                agents = ", ".join(world.get("agentes_reconsiderar") or []) or "nenhum"
+                print(
+                    "MUNDO — checkpoint temporal: "
+                    f"{world.get('motivo')} | atraso={world.get('minutos_desde_checkpoint')} min | "
+                    f"novas_pendencias={world.get('novas_pendencias', 0)} | agentes={agents}"
+                )
             for warning in result.get("avisos", []):
                 print(f"AVISO — {warning}")
             return 0
