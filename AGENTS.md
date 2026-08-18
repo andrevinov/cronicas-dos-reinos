@@ -1,6 +1,6 @@
 # AGENTS.md — roteador operacional de Crônicas dos Reinos
 
-Este arquivo contém apenas instruções que precisam estar disponíveis em praticamente qualquer tarefa. O detalhamento está em `docs/agente/` e deve ser lido **somente quando a tarefa exigir**.
+Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa exigir.
 
 ## 1. Fonte de verdade
 
