@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: casa_de_tyr
 nome: Casa de Tyr
@@ -13,6 +13,21 @@ restricoes:
   - exige objetivo, rota e limites antes de cooperação clandestina futura
   - protege testemunha reservada sem conceder abrigo ou acesso irrestrito
   - crise institucional ou urbana pode reduzir a velocidade prática das respostas
+presenca:
+  referencia: Ravens Bluff
+  estado: ancorada
+  detalhe: A Casa de Tyr é uma instituição local e sua presença operacional em Ravens Bluff é estrutural.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: nao_aplicavel
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: estrutura_local
+  escopo: Ravens Bluff
+  observacao: A instituição permanece elegível para ação local enquanto estiver ativa; disponibilidade de Halessa ou outros indivíduos é tratada separadamente.
 conhecimento:
   - id: custodia_separada
     fato: Halessa mantém original e falsificação sob custódias separadas e preservará Ren como testemunha reservada.
