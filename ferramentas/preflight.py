@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Gate local único antes de push/merge.
 
-Executa, em sequência, os contratos que precisam permanecer verdes para a
-campanha ser considerada íntegra e retomável. Todos os comandos são read-only ou
-usam explicitamente modo ``--check``; o preflight não consolida, não avança sessão
-e não altera cânone.
+Executa, em sequência, contratos read-only/check da campanha. O preflight não
+consolida, não avança sessão e não altera cânone.
 """
 from __future__ import annotations
 
@@ -15,7 +13,6 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -55,6 +52,21 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
             Check("consolidação", (python, "ferramentas/consolidar.py", "check"), "operação"),
             Check("memória de sessões", (python, "ferramentas/sessoes.py", "check"), "operação"),
             Check("checkpoint", (python, "ferramentas/checkpoint.py", "check"), "operação"),
+            Check(
+                "recompensas determinísticas",
+                (python, "ferramentas/recompensas.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
+                "oportunidades de sidequest",
+                (python, "ferramentas/oportunidades.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
+                "integração reativa",
+                (python, "ferramentas/interacoes_mundo.py", "check"),
+                "mundo vivo",
+            ),
             Check(
                 "estado atual separado do histórico",
                 (python, "ferramentas/migrar-estado-atual.py", "--check"),
@@ -105,7 +117,12 @@ def run_check(repo: Path, check: Check) -> Result:
     return Result(check, code, elapsed)
 
 
-def run_preflight(repo: Path, *, incluir_testes: bool = True, fail_fast: bool = False) -> list[Result]:
+def run_preflight(
+    repo: Path,
+    *,
+    incluir_testes: bool = True,
+    fail_fast: bool = False,
+) -> list[Result]:
     results: list[Result] = []
     for check in checks(incluir_testes=incluir_testes):
         result = run_check(repo, check)
@@ -147,7 +164,11 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_parser().parse_args()
     repo = args.repo.resolve()
-    results = run_preflight(repo, incluir_testes=not args.sem_testes, fail_fast=args.fail_fast)
+    results = run_preflight(
+        repo,
+        incluir_testes=not args.sem_testes,
+        fail_fast=args.fail_fast,
+    )
     print(_summary(results))
     return 0 if results and all(item.ok for item in results) else 1
 
