@@ -1,4 +1,4 @@
-schema_agente: 1
+schema_agente: 2
 natureza: reservado
 id: red_sail
 nome: Red Sail
@@ -12,6 +12,21 @@ recursos:
 restricoes:
   - ainda não conhece a casa de Iria, o lagar nem a cadeia rural
   - buscas muito abertas aumentam exposição e podem chamar atenção institucional
+presenca:
+  referencia: Ravens Bluff
+  estado: distribuida
+  detalhe: A Red Sail opera como rede local, não como um único corpo em um ponto da cidade.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: nao_aplicavel
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: estrutura_local
+  escopo: Ravens Bluff
+  observacao: A facção é uma estrutura distribuída em Ravens Bluff; sua atuação local não depende da presença física de um único NPC.
 conhecimento:
   - id: ligacao_corpo_colm
     fato: A Red Sail ligou a morte do homem da estrada à retirada de Colm.
