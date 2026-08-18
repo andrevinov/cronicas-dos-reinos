@@ -1,0 +1,21 @@
+schema_entrada: 1
+natureza: reservado
+id: tadasu_no_kami
+nome: Tadasu no Kami
+ordem: 5
+nivel_minimo_normal: 11
+janela_preferencial: Apenas depois de Hotaru estar em cena ou claramente pressentida, salvo necessidade extraordinária; idealmente nível 11+ ou após quase morte ligada ao Círculo Interno ou ao primeiro sinal claro do Kokuten.
+gatilhos_fortes:
+  - Ren quase morre enfrentando a camada ritual ou metafísica de Masao
+  - Hotaru e Jōen entendem que o conflito do clã toca uma sentença maior
+  - Masao ou Kureha deixa claro que o alvo final é o deus que condenou Masao
+forma_preferencial: Encontro liminar de quase morte; Tadasu não recruta Ren nem ordena vingança, mas oferece escolha e o Selo da Retificação.
+funcao_imediata: Revelar que Tadasu condenou Masao, que a sentença permanece aberta e que Ren é a Testemunha, não campeão escolhido.
+ancoras:
+  - fonte: narrador/aliados/README.md
+    evidencia: '5. **Tadasu no Kami**, manifestado como o Dragão Branco da Justiça.'
+  - fonte: narrador/aliados/marcos-de-aparicao.md
+    evidencia: '**Janela preferencial:** apenas depois de Hotaru estar em cena ou claramente pressentida, salvo necessidade extraordinária de campanha. Idealmente nível 11+ ou após uma quase morte ligada ao Círculo Interno, Kureha, Seishirō, Wetuji ou ao primeiro sinal claro do Kokuten.'
+fontes_canonicas:
+  - narrador/aliados/README.md
+  - narrador/aliados/marcos-de-aparicao.md

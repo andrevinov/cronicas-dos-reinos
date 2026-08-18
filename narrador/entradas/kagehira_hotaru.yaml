@@ -1,0 +1,21 @@
+schema_entrada: 1
+natureza: reservado
+id: kagehira_hotaru
+nome: Kagehira Hotaru
+ordem: 4
+nivel_minimo_normal: 9
+janela_preferencial: Ren nível 9-11, depois que o nome Kage, o Vento da Noite, o Getsuei-ryū ou pistas sobre sobreviventes Kagehira tiverem cruzado círculos orientais.
+gatilhos_fortes:
+  - Ren usar técnicas Kagehira em público ou diante de observador oriental
+  - Chō, Shizune ou outro membro da Juppongatana demonstrar interesse em Ren como Kagehira, não apenas como artista Kage
+  - Ren buscar respostas sobre sobreviventes do clã
+forma_preferencial: Luta e reconhecimento; Hotaru rastreia Ren achando que Masao usa o nome Kagehira como isca, e uma forma antiga prova que ambos carregam a mesma casa.
+funcao_imediata: Mudar a campanha de vingança pura para sobrevivência e reconstrução, trazendo códigos, refúgios, técnicas e memória de clã.
+ancoras:
+  - fonte: narrador/aliados/README.md
+    evidencia: '4. **Kagehira Hotaru**, o Último Vaga-Lume;'
+  - fonte: narrador/aliados/marcos-de-aparicao.md
+    evidencia: '**Janela preferencial:** Ren nível 9-11, depois que o nome Kage, o Vento da Noite, o Getsuei-ryū ou pistas sobre sobreviventes Kagehira tiverem cruzado círculos orientais.'
+fontes_canonicas:
+  - narrador/aliados/README.md
+  - narrador/aliados/marcos-de-aparicao.md
