@@ -3,7 +3,6 @@
 from __future__ import annotations
 import argparse, hashlib, os, tempfile, unicodedata
 from pathlib import Path
-from typing import Any
 import yaml
 import mundo
 
@@ -11,7 +10,8 @@ INDEX=Path("narrador/entradas/index.yaml")
 STATE=Path("narrador/entradas/estado.yaml")
 RUNTIME=Path("runtime/contexto.yaml")
 DIR=Path("narrador/entradas")
-VALID={"latente","presente"}
+VALID={"latente","presente","inviavel"}
+TERMINAIS={"presente","inviavel"}
 
 class EntryError(ValueError): pass
 
@@ -68,7 +68,8 @@ def load_state(repo,index=None):
     anticipated=[]
     for cid,s in states.items():
         if not isinstance(s,dict) or s.get("estado") not in VALID or not isinstance(s.get("antecipado"),bool): raise EntryError(f"{cid}: estado inválido")
-        if s["estado"]=="presente" and s["antecipado"]: raise EntryError(f"{cid}: presente antecipado")
+        if s["estado"] in TERMINAIS and s["antecipado"]: raise EntryError(f"{cid}: estado terminal antecipado")
+        if s["estado"] in TERMINAIS and s.get("proxima_avaliacao") is not None: raise EntryError(f"{cid}: estado terminal agendado")
         if s["antecipado"]: anticipated.append(cid)
         parse_due(s.get("proxima_avaliacao"),cid+".proxima_avaliacao")
         if not isinstance(s.get("historico_recente"),list): raise EntryError(f"{cid}: histórico inválido")
@@ -76,8 +77,8 @@ def load_state(repo,index=None):
     return d
 
 def ordered(index): return [cid for cid,_ in sorted(index["candidatos"].items(),key=lambda x:x[1]["ordem"])]
-def normal(index,state): return next((cid for cid in ordered(index) if state["candidatos"][cid]["estado"]!="presente"),None)
-def anticipated(state): return next((cid for cid,s in state["candidatos"].items() if s["antecipado"] and s["estado"]!="presente"),None)
+def normal(index,state): return next((cid for cid in ordered(index) if state["candidatos"][cid]["estado"]=="latente"),None)
+def anticipated(state): return next((cid for cid,s in state["candidatos"].items() if s["antecipado"] and s["estado"]=="latente"),None)
 def focus(index,state): return anticipated(state) or normal(index,state)
 
 def resolve(index,q):
@@ -102,6 +103,7 @@ def record(action,origin,note,when): return {"acao":action,"em":mundo.instant_pa
 
 def mutate(repo,q,action,origin,note):
     index=load_index(repo); state=load_state(repo,index); cid,_=resolve(index,q); cur=state["candidatos"][cid]; now,_=mundo.load_canonical_time(repo)
+    if cur["estado"]=="inviavel": raise EntryError(f"{cid} está inviável e não pode entrar em cena")
     if cur["estado"]=="presente":
         if action=="confirmar": return {"ok":True,"alterou":False,"candidato":cid}
         raise EntryError(f"{cid} já está presente")
@@ -133,14 +135,15 @@ def validate_fragment(repo,cid,meta,full):
 
 def show(repo,q):
     index=load_index(repo); state=load_state(repo,index); cid,meta=resolve(index,q); d=validate_fragment(repo,cid,meta,False); lv=level(repo)
-    return {"candidato":cid,"estado":state["candidatos"][cid],"caminho_normal":cid==normal(index,state),"elegivel_por_nivel":lv>=meta["nivel_minimo_normal"],"fontes_lidas":[str(INDEX),str(STATE),meta["arquivo"],str(RUNTIME)],"resultado":d}
+    return {"candidato":cid,"estado":state["candidatos"][cid],"caminho_normal":cid==normal(index,state),"elegivel_por_nivel":state["candidatos"][cid]["estado"]=="latente" and lv>=meta["nivel_minimo_normal"],"fontes_lidas":[str(INDEX),str(STATE),meta["arquivo"],str(RUNTIME)],"resultado":d}
 
 def status(repo):
     index=load_index(repo); state=load_state(repo,index); n=normal(index,state); a=anticipated(state); f=a or n; lv=level(repo); detail=None
     if f:
         m=index["candidatos"][f]; s=state["candidatos"][f]
         detail={"id":f,"nome":m["nome"],"via":"antecipacao" if a else "ordem_preferencial","nivel_atual":lv,"nivel_minimo_normal":m["nivel_minimo_normal"],"elegivel_por_nivel":lv>=m["nivel_minimo_normal"],"proxima_avaliacao":s["proxima_avaliacao"]}
-    return {"candidato_normal":n,"candidato_antecipado":a,"candidato_em_foco":detail,"fontes_lidas":[str(INDEX),str(STATE),str(RUNTIME)]}
+    inviaveis=[cid for cid,s in state["candidatos"].items() if s["estado"]=="inviavel"]
+    return {"candidato_normal":n,"candidato_antecipado":a,"candidato_em_foco":detail,"inviaveis":inviaveis,"fontes_lidas":[str(INDEX),str(STATE),str(RUNTIME)]}
 
 def validate(repo):
     errors=[]
@@ -149,8 +152,8 @@ def validate(repo):
         for cid,m in index["candidatos"].items(): validate_fragment(repo,cid,m,True)
         n=normal(index,state)
         for cid,s in state["candidatos"].items():
-            if s["estado"]=="presente" and s["proxima_avaliacao"] is not None: errors.append(f"{cid}: presente agendado")
-            if cid!=n and not s["antecipado"] and s["proxima_avaliacao"] is not None: errors.append(f"{cid}: fora da ordem agendado")
+            if s["estado"] in TERMINAIS and s["proxima_avaliacao"] is not None: errors.append(f"{cid}: terminal agendado")
+            if cid!=n and not s["antecipado"] and s["estado"]=="latente" and s["proxima_avaliacao"] is not None: errors.append(f"{cid}: fora da ordem agendado")
     except (EntryError,mundo.WorldEngineError) as e: errors.append(str(e))
     return {"ok":not errors,"quantidade":len(index["candidatos"]) if "index" in locals() else 0,"erros":errors}
 
@@ -196,7 +199,10 @@ def main(argv=None):
         elif a.cmd=="validar": r=validate(repo)
         elif a.cmd=="mostrar": r=show(repo,a.candidato)
         else: r=mutate(repo,a.candidato,a.cmd,a.origem,a.nota)
-        print(yaml.safe_dump(r,allow_unicode=True,sort_keys=False),end=""); return 0 if r.get("ok",True) else 1
-    except (EntryError,mundo.WorldEngineError) as e: print(f"erro: {e}"); return 1
+        print(yaml.safe_dump(r,allow_unicode=True,sort_keys=False),end="")
+        return 0 if r.get("ok",True) else 1
+    except (EntryError,mundo.WorldEngineError) as e:
+        print(f"erro: {e}")
+        return 1
 
 if __name__=="__main__": raise SystemExit(main())

@@ -1,0 +1,6 @@
+schema_ciclo_npcs: 1
+natureza: controle_reservado
+descricao: >-
+  Registro terminal de NPCs mortos para o Mundo Vivo. Ausência neste mapa não
+  afirma que o NPC está vivo; apenas mortes canônicas já sincronizadas entram aqui.
+mortos: {}

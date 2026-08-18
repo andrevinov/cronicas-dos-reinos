@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Integra camadas canônicas de baixa frequência à fila do Mundo Vivo.
 
-Direções, entradas de aliados e agentes recorrentes leves observam checkpoints
-antes de `mundo.py` mover o cursor. Nenhuma camada abre fragmentos ou faz
-acontecimentos ocorrerem sozinha.
+Lifecycle de NPCs roda primeiro: uma morte já consolidada desliga agenda e
+pendências antes que direções, entradas, agentes leves ou `mundo.py` possam
+reconsiderar o NPC. As demais camadas nunca fazem acontecimentos ocorrerem
+sozinhas.
 """
 from __future__ import annotations
 
@@ -12,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import agentes_leves
+import ciclo_npcs
 import direcoes
 import entradas
 import mundo
@@ -112,6 +114,16 @@ def _evaluation_records(index, direction_state, world_state, agenda, start, end)
 
 
 def process_checkpoint(repo: Path) -> dict[str, Any]:
+    lifecycle_result = {
+        "ok": True,
+        "configurado": False,
+        "mortos": [],
+        "novos_mortos": [],
+        "pendencias_canceladas": [],
+    }
+    if ciclo_npcs.configured(repo):
+        lifecycle_result = {"configurado": True, **ciclo_npcs.sync(repo)}
+
     index = direcoes.load_index(repo)
     direction_state = direcoes.load_state(repo, index)
     world_state = mundo.load_world_state(repo)
@@ -143,6 +155,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
 
     return {
         "ok": True,
+        "ciclo_npcs": lifecycle_result,
         "novas_pendencias": [
             *added,
             *(entry_result.get("novas_pendencias") or []),
@@ -153,6 +166,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
         "agentes_leves_reconsiderar": light_result.get("agentes_leves_reconsiderar") or [],
         "agentes_leves_adiados": light_result.get("adiados_por_orcamento") or [],
         "fontes_lidas": [
+            *(lifecycle_result.get("fontes_lidas") or []),
             direcoes.INDEX_PATH.as_posix(),
             direcoes.STATE_PATH.as_posix(),
             mundo.WORLD_STATE_PATH.as_posix(),
@@ -168,6 +182,9 @@ def check_repo(repo: Path) -> dict[str, Any]:
     result = direcoes.validate_repo(repo)
     errors = list(result.get("erros") or [])
     try:
+        if ciclo_npcs.configured(repo):
+            lifecycle_check = ciclo_npcs.validate_repo(repo)
+            errors.extend(f"ciclo de NPCs: {error}" for error in lifecycle_check.get("erros") or [])
         index = direcoes.load_index(repo)
         known = set(index["direcoes"])
         world_state = mundo.load_world_state(repo)
@@ -184,6 +201,7 @@ def check_repo(repo: Path) -> dict[str, Any]:
             errors.extend(f"agentes leves: {error}" for error in light_check.get("erros") or [])
     except (
         agentes_leves.LightAgentError,
+        ciclo_npcs.LifecycleError,
         direcoes.DirectionError,
         entradas.EntryError,
         mundo.WorldEngineError,
