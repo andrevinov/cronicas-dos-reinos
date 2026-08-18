@@ -6,10 +6,15 @@ invariante pequeno e barato: toda descoberta de rastro precisa transportar, na
 mesma transação, o conhecimento observável e a mudança reservada do rastro para
 ``descoberto``. Assim o caminho normal recusa pares incompletos antes das duas
 escritas de ``turno.py``.
+
+O regex legado de alvos permanece intacto. A única exceção aceita por este wrapper
+é o formato determinístico ``rastro:rastro-<16 hex>``.
 """
 from __future__ import annotations
 
 from collections import Counter
+import json
+import re
 from typing import Any
 
 import _transacoes_core as _base
@@ -21,6 +26,29 @@ for _name in dir(_base):
 TRACE_PREFIX = "rastro:"
 TRACE_KNOWLEDGE_TYPE = "rastro_descoberto"
 TRACE_DISCOVERED_STATE = "descoberto"
+TRACE_TARGET_RE = re.compile(r"^rastro:rastro-[0-9a-f]{16}$")
+
+
+def validate_delta(delta: Any) -> dict[str, Any]:
+    if not isinstance(delta, dict):
+        raise TransactionError("cada delta precisa ser objeto JSON")
+    target = delta.get("alvo")
+    if not isinstance(target, str):
+        raise TransactionError(f"alvo de delta inválido: {target!r}")
+    if not target.startswith(TRACE_PREFIX):
+        return _base.validate_delta(delta)
+    if not TRACE_TARGET_RE.fullmatch(target):
+        raise TransactionError(f"alvo de rastro inválido: {target!r}")
+    if (
+        delta.get("op") != "set"
+        or delta.get("caminho") != "estado"
+        or delta.get("valor") != TRACE_DISCOVERED_STATE
+        or delta.get("visibilidade", "operacional") != "narrador"
+    ):
+        raise TransactionError(
+            f"{target} só aceita set estado=descoberto com visibilidade narrador"
+        )
+    return delta
 
 
 def _trace_discovery_pairs(deltas: list[dict[str, Any]]) -> tuple[Counter[str], Counter[str]]:
@@ -35,8 +63,8 @@ def _trace_discovery_pairs(deltas: list[dict[str, Any]]) -> tuple[Counter[str], 
             value = delta.get("valor")
             if isinstance(value, dict) and value.get("tipo") == TRACE_KNOWLEDGE_TYPE:
                 trace_id = value.get("rastro")
-                if not isinstance(trace_id, str) or not trace_id:
-                    raise TransactionError("conhecimento de rastro precisa de rastro válido")
+                if not isinstance(trace_id, str) or not re.fullmatch(r"rastro-[0-9a-f]{16}", trace_id):
+                    raise TransactionError("conhecimento de rastro precisa de id determinístico válido")
                 text = value.get("texto")
                 if not isinstance(text, str) or not text.strip():
                     raise TransactionError(f"descoberta {trace_id} precisa de texto observável")
@@ -48,18 +76,8 @@ def _trace_discovery_pairs(deltas: list[dict[str, Any]]) -> tuple[Counter[str], 
             continue
 
         if target.startswith(TRACE_PREFIX):
+            validate_delta(delta)
             trace_id = target.split(":", 1)[1]
-            if not trace_id:
-                raise TransactionError("alvo de rastro sem id")
-            if (
-                op != "set"
-                or delta.get("caminho") != "estado"
-                or delta.get("valor") != TRACE_DISCOVERED_STATE
-                or delta.get("visibilidade", "operacional") != "narrador"
-            ):
-                raise TransactionError(
-                    f"{target} só aceita set estado=descoberto com visibilidade narrador"
-                )
             state[trace_id] += 1
 
     return knowledge, state
@@ -77,19 +95,93 @@ def validate_trace_discovery_pairs(deltas: list[dict[str, Any]]) -> None:
 
 
 def validate_pending_record(record: Any) -> dict[str, Any]:
-    validated = _base.validate_pending_record(record)
-    validate_trace_discovery_pairs(validated.get("deltas") or [])
-    return validated
+    if not isinstance(record, dict):
+        raise TransactionError("registro pendente precisa ser objeto JSON")
+    if record.get("versao") != SCHEMA_VERSION:
+        raise TransactionError(f"versão transacional inesperada: {record.get('versao')!r}")
+    transaction_id = record.get("id")
+    if not isinstance(transaction_id, str) or not transaction_id.strip():
+        raise TransactionError("registro pendente sem id válido")
+    session = record.get("sessao")
+    if not isinstance(session, int) or session < 1:
+        raise TransactionError("registro pendente sem sessao inteira positiva")
+    summary = record.get("resumo", "")
+    if not isinstance(summary, str):
+        raise TransactionError("resumo pendente precisa ser string")
+    if len(summary) > MAX_ACCEPTED_SUMMARY_CHARS:
+        raise TransactionError(
+            f"resumo pendente excede {MAX_ACCEPTED_SUMMARY_CHARS} caracteres: {len(summary)}"
+        )
+
+    deltas = record.get("deltas", [])
+    if not isinstance(deltas, list):
+        raise TransactionError("deltas precisa ser lista")
+    if len(deltas) > MAX_DELTAS:
+        raise TransactionError(f"transação excede {MAX_DELTAS} deltas")
+    for delta in deltas:
+        validate_delta(delta)
+    validate_trace_discovery_pairs(deltas)
+
+    hidden = record.get("rolagens_ocultas", [])
+    if not isinstance(hidden, list) or any(not isinstance(item, str) for item in hidden):
+        raise TransactionError("rolagens_ocultas precisa ser lista de strings")
+    if len(hidden) > MAX_HIDDEN_ROLLS:
+        raise TransactionError(f"transação excede {MAX_HIDDEN_ROLLS} rolagens ocultas")
+
+    mode = record.get("modo")
+    if mode is not None and not isinstance(mode, str):
+        raise TransactionError("modo precisa ser string quando presente")
+    return record
 
 
 def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str, Any]:
-    record = _base.build_pending_record(transaction, session)
-    validate_trace_discovery_pairs(record.get("deltas") or [])
+    transaction_id = stable_transaction_id(transaction, session)
+    summary = transaction.get("resumo") or ""
+    if not isinstance(summary, str):
+        raise TransactionError("resumo da transação precisa ser string")
+    if not summary.strip():
+        summary = str(transaction.get("narracao") or "").strip()
+    summary = compact_summary(summary)
+
+    record: dict[str, Any] = {
+        "versao": SCHEMA_VERSION,
+        "id": transaction_id,
+        "sessao": session,
+        "resumo": summary,
+        "deltas": transaction.get("deltas") or [],
+    }
+    for key in ("modo", "tempo_mundo", "rolagens_ocultas", "tags"):
+        value = transaction.get(key)
+        if value not in (None, [], ""):
+            record[key] = value
+    validate_pending_record(record)
     return record
 
 
 def load_pending(repo):
-    records = _base.load_pending(repo)
-    for record in records:
-        validate_trace_discovery_pairs(record.get("deltas") or [])
+    if (repo / CONSOLIDATION_JOURNAL).exists():
+        raise TransactionError(
+            "consolidação em andamento; execute ferramentas/consolidar.py recuperar antes de ler ou registrar novos turnos"
+        )
+    path = repo / PENDING_PATH
+    if not path.exists():
+        return []
+    records: list[dict[str, Any]] = []
+    ids: set[str] = set()
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise TransactionError(f"JSONL inválido em {PENDING_PATH}:{number}: {exc}") from exc
+        try:
+            validate_pending_record(record)
+        except TransactionError as exc:
+            raise TransactionError(f"{PENDING_PATH}:{number}: {exc}") from exc
+        transaction_id = record["id"]
+        if transaction_id in ids:
+            raise TransactionError(f"id transacional duplicado em {PENDING_PATH}: {transaction_id}")
+        ids.add(transaction_id)
+        records.append(record)
     return records
