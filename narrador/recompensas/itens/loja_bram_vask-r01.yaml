@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: loja_bram_vask-r01
+local_id: loja_bram_vask
+tipo: dinheiro
+nome: Reserva de caixa
+descricao: Dinheiro separado para pagamentos, compras ou acertos locais.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- dinheiro
+- comercio
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: reserva_comercial
+  slot: 1
+  chave: 8eb5f60dbb5ae6945fd17de8

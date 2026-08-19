@@ -1,12 +1,22 @@
 schema_estado_oportunidades: 1
 natureza: controle_reservado
 gate:
-  ciclo: 0
-  restantes: []
-  sorteios: 0
+  ciclo: 1
+  restantes:
+  - nada_02
+  - nada_05
+  - nada_07
+  - nada_04
+  - oportunidade_01
+  - nada_06
+  - oportunidade_02
+  sorteios: 3
 cooldown_ate: null
 pendencias_avaliacao: {}
 missoes: {}
 sementes_consumidas: []
-encontros_recentes: []
+encontros_recentes:
+- sessao-009:cena-retorno-bram:silva
+- sessao-009:cena-retorno-narwhal:kethra
+- sessao-009:cena-retorno-tyr-documentos:halessa
 historico_recente: []

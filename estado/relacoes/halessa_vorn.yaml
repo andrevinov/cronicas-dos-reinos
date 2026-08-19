@@ -6,8 +6,9 @@ relacao:
   nome: Irmã Halessa Vorn
   tipo: ouvidora juramentada de Tyr
   local: Casa de Tyr, Temple District
-  status: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada
-    e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+  status: 'Halessa atualizou Ren pessoalmente: original e falsificação seguem em custódias separadas e lacradas;
+    Luath e Maerra confirmaram elementos independentes da cadeia; Tyr aguarda resposta reservada da guardiã atual
+    do registro autêntico antes de atribuir autoria ou validar ordens.'
   atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
     a urgência e de preservar sua discrição apesar do desacordo
   confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,

@@ -1,0 +1,34 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: quintal_vizinho_casa_salgueiro_seco
+tier: 1
+periculosidade: baixa
+geracao:
+  modo: deterministico_v1
+  chave: fe6fdc77279db04fb03310b0
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: quintal_vizinho_casa_salgueiro_seco-r01
+  tipo: dinheiro
+  estado: oculto
+  condicao_de_descoberta: obter acesso legítimo ou clandestino à parte restrita onde
+    a recompensa está guardada
+  posse:
+    tipo: papel_local
+    papel: ocupante
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/quintal_vizinho_casa_salgueiro_seco-r01.yaml
+- id: quintal_vizinho_casa_salgueiro_seco-r02
+  tipo: curiosidade
+  estado: oculto
+  condicao_de_descoberta: perceber e superar uma ocultação física, compartimento falso
+    ou acesso disfarçado
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/quintal_vizinho_casa_salgueiro_seco-r02.yaml

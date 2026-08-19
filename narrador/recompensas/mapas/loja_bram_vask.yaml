@@ -1,0 +1,34 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: loja_bram_vask
+tier: 2
+periculosidade: alta
+geracao:
+  modo: deterministico_v1
+  chave: a3b9d6e285f00b61b2dcac7b
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: loja_bram_vask-r01
+  tipo: dinheiro
+  estado: oculto
+  condicao_de_descoberta: investigar deliberadamente recipientes, nichos ou mobiliário
+    compatíveis com a área
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/loja_bram_vask-r01.yaml
+- id: loja_bram_vask-r02
+  tipo: ferramenta
+  estado: oculto
+  condicao_de_descoberta: obter acesso legítimo ou clandestino à parte restrita onde
+    a recompensa está guardada
+  posse:
+    tipo: papel_local
+    papel: ocupante
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/loja_bram_vask-r02.yaml

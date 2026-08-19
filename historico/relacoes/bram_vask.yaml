@@ -74,3 +74,21 @@ relacao:
     o ameaçou.
   - Se a fala do besteiro for verdadeira, Bram terceirizou a ação no Fire River por meio de intermediário mais limpo
     e talvez mais perigoso juridicamente.
+eventos_pos_migracao:
+- transacao: s009-ef5b3f7fb1ff5010
+  sessao: 9
+  resumo: Ren declarou que não viera salvar Noll, mas impor a Bram o afastamento de Colm. Socou um armário do patamar,
+    acertando CA 15 e causando 9 de dano, destruindo portas, prateleiras e uma lateral. Bram prometeu explicitamente
+    que Colm Dunn não está mais em seus livros, que não enviará homens nem comprará perguntas sobre seu paradeiro.
+    Ren advertiu que não daria terceira chance. Bram não impediu sua saída. Às 23:07, Ren deixou a loja pela fachada
+    destruída com 41/45 PV e 2/6 Ki; Bram permanece vivo…
+  deltas:
+  - alvo: relacao:bram_vask
+    caminho: atitude_para_ren
+    op: set
+    valor: amedrontada, hostil e coagida a evitar Colm Dunn
+  - alvo: relacao:bram_vask
+    caminho: motivo_atual
+    op: set
+    valor: Após ser ferido e ter a loja invadida, Bram prometeu sob coerção retirar Colm Dunn de seus livros, não
+      enviar homens atrás dele e não comprar novas perguntas sobre seu paradeiro.

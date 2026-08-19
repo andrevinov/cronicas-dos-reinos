@@ -1,0 +1,179 @@
+schema_alteracoes_transacionais: 1
+sessao: 9
+status: encerrada
+fonte: sessoes/009/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 9
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 6/6
+  ca: 17
+  dinheiro_po: 31.200000000000003
+  data: 10 Eleasis, 1372 DR
+  hora: 17:42 de 10 Eleasis
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 9
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 4/6
+  ca: 17
+  dinheiro_po: 31.400000000000002
+  data: 11 Eleasis, 1372 DR
+  hora: 15:30 de 11 Eleasis
+  area: Casa de Tyr, Temple District, Ravens Bluff
+  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+  nivel_ficha: 6
+consolidacoes:
+- id: s009-cena-20a0a15d04439c94
+  tipo: cena
+  transacoes:
+  - s009-7677ad0ffaba8523
+  - s009-92757084ceeaff8b
+  - s009-e604533216536b25
+  - s009-4df7caa8694aac6c
+  - s009-5cca4c5c603041fb
+  - s009-6d0dc5d5ec2e417e
+  - s009-fc6d3767da00fbc1
+  - s009-80faeaaa3b107d18
+  deltas: 26
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-5cca4c5c603041fb.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-6d0dc5d5ec2e417e.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-80faeaaa3b107d18.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-92757084ceeaff8b.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-e604533216536b25.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-fc6d3767da00fbc1.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md
+- id: s009-cena-2c052e09d7c5531a
+  tipo: cena
+  transacoes:
+  - s009-4bb12aa610c6e280
+  - s009-cc40678713592b0a
+  - s009-efc89396fc8f7a8e
+  - s009-dadb5a9a2abd5bea
+  - s009-e67e923bd753dc24
+  - s009-67bbc62a44fbba79
+  - s009-0269b7c52eab3270
+  - s009-5acf7b8ede8988c0
+  - s009-ac0bd4ad929882fd
+  - s009-ef5b3f7fb1ff5010
+  deltas: 25
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/bram_vask.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/bram_vask.yaml
+  - narrador/sessoes/009/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-5acf7b8ede8988c0.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ac0bd4ad929882fd.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ef5b3f7fb1ff5010.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md
+- id: s009-cena-e88f24cc96d105f4
+  tipo: cena
+  transacoes:
+  - s009-70d4adf84124fbeb
+  - s009-209223121e5c9f03
+  - s009-7e757bea950254ca
+  deltas: 17
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md
+- id: s009-cena-0de28ba58db48b63
+  tipo: cena
+  transacoes:
+  - s009-ea4f55887d62a759
+  - s009-4f3d23c9de8191fe
+  - s009-673fee1cfcdb2309
+  - s009-19d84613aea3b234
+  deltas: 12
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-19d84613aea3b234.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md
+- id: s009-cena-7b4ed68e92f8070c
+  tipo: cena
+  transacoes:
+  - s009-6f7c4e5653d04ba1
+  - s009-2ac41f3793cc68f8
+  - s009-06fa751cf7bf8efa
+  - s009-b1f560e70c62d1a3
+  - s009-915d24d545054c1f
+  deltas: 27
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2ac41f3793cc68f8.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-6f7c4e5653d04ba1.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-b1f560e70c62d1a3.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md
+- id: s009-sessao-8247832a9d3af7bc
+  tipo: sessao
+  transacoes:
+  - s009-2c29f704b70935e8
+  - s009-d555024ef2ea4d16
+  deltas: 7
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2c29f704b70935e8.md
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-d555024ef2ea4d16.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/009/alteracoes-de-estado.yaml
+  - sessoes/009/consequencias.md
+  - sessoes/009/consolidacoes.jsonl
+  - sessoes/009/resumo.md

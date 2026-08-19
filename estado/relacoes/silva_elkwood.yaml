@@ -8,14 +8,14 @@ relacao:
   local: Jack Mooney & Sons Circus
   status: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
     sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
-  atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
-    mas rejeita que ele assuma sozinho o direito de escolher todos os custos
+  atitude_para_ren: favorável, protetiva e severamente vigilante; valoriza a honestidade e o cuidado com a cauda,
+    mas rejeita tratar a invasão como simples recado
   confianca: moderada e vigilante
   respeito: alto e reforçado pela decisão de Ren de não atacar Brass, informar Luath e preparar uma rota de fuga
     antes da vigilância
-  motivo_atual: Ao amanhecer, leu a mensagem curta de Luath informando que o pacote reservado passou para Tyr sem
-    nome externo. Ela acompanhou a conversa com Jack e reforça, junto dele, que qualquer acesso aos Vell passa por
-    ela quando houver risco de olho externo.
+  motivo_atual: Silva ouviu o relato integral da invasão à loja de Bram. Reconhece que Ren verificou um possível
+    refém, rompeu a cauda e contou a verdade antes de procurar os Vell, mas considera que a violência apenas extraiu
+    uma promessa sob medo e pode deslocar a resposta de Bram.
   documentos:
   - Silva abriu e leu o bilhete curto e selado de Maerra.
   riscos:

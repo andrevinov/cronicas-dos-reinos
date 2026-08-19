@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 8
-sessao_mais_recente_indexada: 8
+sessao_atual_da_campanha: 9
+sessao_mais_recente_indexada: 9
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,47 +34,72 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Shinta comeu apressadamente, guardou as duas pratas com satisfação e confirmou que voltará no clarear
-    seguinte. O jardineiro suavizou ligeiramente, reiterou que Shinta deve bater duas vezes e esperar sem procurar
-    outra entrada. Ren deixou a propriedade e, após horas no terreno, conhece três serviços externos visíveis que
-    poderia oferecer: telhas e ripa cedendo no estábulo, um galho morto alto sobre o telhado e uma tábua rachada
-    no portão interno.'
+- titulo: 'Ren pressionou Bram a abrir a porta e obteve 17 contra CD 14 em Intimidação com vantagem. No próprio
+    turno, Bram destrancou e abriu a cela improvisada, recuando cerca de 10 pés em direção ao outro aposento sem
+    largar faca ou chave. O prisioneiro foi confirmado como Noll: está consciente, mais magro, com hematomas e um
+    pulso algemado por corrente curta a uma argola no piso. Noll reconheceu Ren. Ren permanece na escada com 41/45
+    PV e 2/6 Ki; Bram está a cerca de 40 pés, com 10/22 PV.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-7d9be532456a4376.md
-  bytes: 1003
-  transacao: s008-7d9be532456a4376
-- titulo: Ren manteve a persona de Shinta durante um trajeto inicialmente voltado às docas, mudou gradualmente para
-    o Temple District e abandonou a persona ao entrar na Casa da Aurora Menor, ainda desarmado. Maerra informou
-    que as sete crianças permanecem vivas, alimentadas, sem febre e sem tentativas externas de contato, embora ainda
-    apresentem sinais de trauma. Após ouvir o relato sobre os Vell, Ponte Baixa, Casa dos Pesos, Velis, Brass, Luath,
-    Halessa e Kurobane, ela reforçou as precauções do abrigo e…
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ac0bd4ad929882fd.md
+  bytes: 854
+  transacao: s009-ac0bd4ad929882fd
+- titulo: Ren declarou que não viera salvar Noll, mas impor a Bram o afastamento de Colm. Socou um armário do patamar,
+    acertando CA 15 e causando 9 de dano, destruindo portas, prateleiras e uma lateral. Bram prometeu explicitamente
+    que Colm Dunn não está mais em seus livros, que não enviará homens nem comprará perguntas sobre seu paradeiro.
+    Ren advertiu que não daria terceira chance. Bram não impediu sua saída. Às 23:07, Ren deixou a loja pela fachada
+    destruída com 41/45 PV e 2/6 Ki; Bram permanece vivo…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-4b70c3262d912431.md
-  bytes: 925
-  transacao: s008-4b70c3262d912431
-- titulo: 'Ren despediu-se de Maerra prometendo ajuda mútua e chegou sem ser observado ao novo ponto morto de Pell,
-    com 16 contra CD 13 em Furtividade. Pell deixou informação acionável: Tomas Rell, escriturário com selo de três
-    juncos, leva dinheiro e ordens à Casa do Salgueiro Seco e deve voltar após o meio-dia de 11 Eleasis; Brass reunirá
-    dois homens no pátio de cal atrás da Rua dos Tanoeiros depois do segundo sino do poente e seguirá pela Rua da
-    Corda à cabeceira oeste da Ponte Baixa. Pell cobra 3 PO e…'
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ef5b3f7fb1ff5010.md
+  bytes: 862
+  transacao: s009-ef5b3f7fb1ff5010
+- titulo: Shinta completou o serviço normal do segundo dia com Atletismo 15 contra CD 12, limpando o canal oeste,
+    reassentando pedras e refazendo a pilha de lenha. Depois ofereceu ajuda com três problemas vistos na véspera;
+    o jardineiro aceitou e escolheu o galho morto sobre o estábulo. Shinta e ele removeram o galho com Atletismo
+    14 contra CD 14, sem danos. O jardineiro decidiu recomendar Shinta ao escriturário. Shinta recebeu refeição
+    e 2 PP; são cerca de 11:50 de 11 Eleasis.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-06dff4b1b582acce.md
-  bytes: 1252
-  transacao: s008-06dff4b1b582acce
-- titulo: Ren pagou os 3 PO devidos a Pell e reforçou que informações sobre a Red Sail sempre serão recompensadas.
-    Usou o Broche do Semblante Humilde e obteve 24 contra CD 16 em Furtividade para abordar Kethra sem exposição.
-    Kethra relatou que uma mulher chamada pelos criados de Cinza-Azul entrou como figura ligada às contas, ganhou
-    autoridade, deu ordens sobre o corredor treze, aparentou idades e traços ligeiramente diferentes em duas visitas
-    e era obedecida por Velis. Ela não confirma Shizune, mas obse…
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-19d84613aea3b234.md
+  bytes: 843
+  transacao: s009-19d84613aea3b234
+- titulo: Shinta aceitou as 2 PP, comeu e deixou a Casa do Salgueiro Seco de maneira natural perto do meio-dia.
+    Ren procurou durante a saída um ponto para vigiar e ouvir o encontro do jardineiro com o escriturário, mas obteve
+    Investigação 11 contra CD 14. Identificou posições que oferecem visão ou audição, mas nenhuma combina ambas
+    com ocultação; uma busca melhor exigiria contornar a propriedade ou acessar terreno vizinho.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-34c0c7aff53bd232.md
-  bytes: 1310
-  transacao: s008-34c0c7aff53bd232
-- titulo: Ren chegou à loja de Bram Vask e obteve 23 contra CD 13 em Furtividade e 14 contra CD 14 em Investigação.
-    Sem ser percebido, confirmou Bram dentro, um vigia externo, outra presença entre a entrada e o balcão e alguém
-    no piso superior; a porta traseira foi reforçada e recebeu alarme simples. Às 12:08, restam cerca de onze minutos
-    do Broche do Semblante Humilde.
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-6f7c4e5653d04ba1.md
+  bytes: 978
+  transacao: s009-6f7c4e5653d04ba1
+- titulo: Shinta contornou todo o quarteirão procurando posição de vigilância, mas obteve Investigação 12 contra
+    CD 13. Confirmou que não há ponto público próximo que combine ocultação, visão e audição. O melhor ângulo exigiria
+    invadir o quintal habitado de um vizinho e ainda perderia o encontro se ele prosseguisse para dentro. Às 12:15,
+    Ren não viu o escriturário chegar.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-008/tx-s008-5d91899852ec0306.md
-  bytes: 1060
-  transacao: s008-5d91899852ec0306
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2ac41f3793cc68f8.md
+  bytes: 917
+  transacao: s009-2ac41f3793cc68f8
+- titulo: Ren aguardou oculto até cerca de 13:20. Passos sem Pegadas expirou às 13:15, mas ele obteve Furtividade
+    26 contra CD 13 e não foi percebido. Tomas Rell chegou em uma charrete com pasta selada pelos três juncos e
+    uma pequena caixa. Com Percepção 23 contra CD 14, Ren ouviu o jardineiro recomendar Shinta. Tomas determinou
+    que Shinta se apresente amanhã, 12 Eleasis, depois da segunda hora da manhã, na entrada de entregas da Galeria
+    dos Escribas sob a placa dos três juncos, para conversar antes de e…
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-b1f560e70c62d1a3.md
+  bytes: 1188
+  transacao: s009-b1f560e70c62d1a3
+- titulo: Kethra confirmou que não voltou a ver a mulher de cinza-azulado desde o último relato e não ouviu notícia
+    de que ela tenha retornado a Narwhal Manor. A última ação concreta continua sendo a ordem para apagar o corredor
+    treze e não falar de tintureiro, cesto ou barril. Kethra ressaltou que isso não prova que a mulher deixou Ravens
+    Bluff; ela pode estar agindo por intermediários.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2c29f704b70935e8.md
+  bytes: 932
+  transacao: s009-2c29f704b70935e8
+- titulo: Ren sustentou a cobertura ao sair de Kethra com Enganação 19 contra CD 14; o assistente interpretou o
+    contato como Kethra lidando com um carregador obtuso, sem identificar Ren ou gerar alarme imediato. Ren chegou
+    à Casa de Tyr por volta das 15:25 e falou reservadamente com Halessa. Ela confirmou que original e falsificação
+    estão separados e com lacres íntegros; Luath confirmou a cópia parcial e Maerra confirmou lacre, abertura e
+    cadeia de custódia. Tyr enviou consulta reservada à guardiã atual…
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-d555024ef2ea4d16.md
+  bytes: 1280
+  transacao: s009-d555024ef2ea4d16

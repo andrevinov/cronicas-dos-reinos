@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: jack_mooney_sons_circus-r02
+local_id: jack_mooney_sons_circus
+tipo: dinheiro
+nome: Bolsa de moedas misturadas
+descricao: Uma pequena soma em moedas correntes, reunida para despesas imediatas.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- dinheiro
+- tesouro
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: bolsa_moedas
+  slot: 2
+  chave: e54dfc4d407d4cebb5617a48

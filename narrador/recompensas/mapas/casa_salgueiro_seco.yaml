@@ -1,0 +1,33 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: casa_salgueiro_seco
+tier: 2
+periculosidade: baixa
+geracao:
+  modo: deterministico_v1
+  chave: e2fa039a85604cea75ee16a6
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: casa_salgueiro_seco-r01
+  tipo: pergaminho
+  estado: oculto
+  condicao_de_descoberta: seguir uma pista concreta dentro da própria área até o ponto
+    onde a recompensa foi deixada
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/casa_salgueiro_seco-r01.yaml
+- id: casa_salgueiro_seco-r02
+  tipo: dinheiro
+  estado: oculto
+  condicao_de_descoberta: seguir uma pista concreta dentro da própria área até o ponto
+    onde a recompensa foi deixada
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/casa_salgueiro_seco-r02.yaml

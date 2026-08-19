@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_de_tyr-r02
+local_id: casa_de_tyr
+tipo: consumivel
+nome: Antitoxina
+descricao: Um preparado alquímico útil quando venenos se tornam um risco concreto.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- consumivel
+- alquimia
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: antitoxina
+  slot: 2
+  chave: c0802339b5bdfc2ae0183512

@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 8
+  numero: 9
   status: entre_sessoes
   modo_de_cena: fim_de_descanso_curto_no_circo_antes_do_poente
 personagem:
@@ -18,15 +18,15 @@ recursos:
     atuais: 45
     maximos: 45
   ki:
-    atuais: 6
+    atuais: 4
     maximos: 6
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 31.200000000000003
+  dinheiro_po: 31.400000000000002
 tempo:
-  data: 10 Eleasis, 1372 DR
-  hora_aproximada: 17:42 de 10 Eleasis
-  periodo: primeiro clarear da manhã de 10 Eleasis, antes do trabalho de Shinta na Casa do Salgueiro Seco
+  data: 11 Eleasis, 1372 DR
+  hora_aproximada: 15:30 de 11 Eleasis
+  periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  area: Casa de Tyr, Temple District, Ravens Bluff
+  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -45,13 +45,18 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/008/handoff.yaml
-  transcricao_fria: sessoes/008/transcricao.md
+  handoff_atual: sessoes/009/handoff.yaml
+  transcricao_fria: sessoes/009/transcricao.md
   narrador: narrador/
   regras: regras/
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren abandonou a persona de Shinta, mas continua usando vestes simples e sem portar nenhuma de suas
-      armas.
+    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
+      oculto sob as camadas.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 09:10 de 10 Eleasis
+  broche_do_semblante_humilde:
+    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
+      perfeitamente.
+    duracao: até aproximadamente 15:45 de 11 Eleasis
+    inicio: 14:45 de 11 Eleasis

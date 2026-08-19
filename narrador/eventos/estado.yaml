@@ -1,13 +1,28 @@
 schema_estado_eventos_mundo: 1
 natureza: controle_reservado
-descricao: Curso dos dois baralhos; não é conhecimento de Ren nem registro de fatos que já aconteceram.
+descricao: Curso dos dois baralhos; não é conhecimento de Ren nem registro de fatos
+  que já aconteceram.
 processado_ate:
-  data: 10 Eleasis, 1372 DR
+  data: 11 Eleasis, 1372 DR
   hora: 06:00
 ocorrencia:
-  ciclo: 0
-  restantes: []
+  ciclo: 1
+  restantes:
+  - evento_03
+  - rotina_06
+  - rotina_05
+  - rotina_07
+  - rotina_01
+  - rotina_03
+  - evento_01
+  - evento_02
+  - rotina_04
 eventos:
   ciclo: 0
   restantes: []
-historico_recente: []
+historico_recente:
+- amanhecer:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  ficha_ocorrencia: rotina_02
+  resultado: rotina

@@ -1,0 +1,20 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_vizinha_loja_bram_vask-r02
+local_id: casa_vizinha_loja_bram_vask
+tipo: consumivel
+nome: Fogo alquímico
+descricao: Um frasco alquímico perigoso, útil como recurso situacional.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- consumivel
+- alquimia
+- combate
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: fogo_alquimico
+  slot: 2
+  chave: d66f6acee8a151aef59b23cc

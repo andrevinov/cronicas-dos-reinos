@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: quintal_vizinho_casa_salgueiro_seco-r02
+local_id: quintal_vizinho_casa_salgueiro_seco
+tipo: curiosidade
+nome: Pequeno entalhe de marfim
+descricao: Um objeto decorativo de boa feitura e origem não estabelecida.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- curiosidade
+- objeto_vendavel
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: entalhe_marfin
+  slot: 2
+  chave: b43acd05521fc76691b591ec

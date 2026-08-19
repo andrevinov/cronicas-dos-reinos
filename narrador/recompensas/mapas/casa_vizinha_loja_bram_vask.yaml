@@ -1,0 +1,35 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: casa_vizinha_loja_bram_vask
+tier: 2
+periculosidade: alta
+geracao:
+  modo: deterministico_v1
+  chave: 6ca1e17206cb95df9aa2031a
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: casa_vizinha_loja_bram_vask-r01
+  tipo: pergaminho
+  estado: oculto
+  condicao_de_descoberta: derrotar, enganar ou negociar com o guardião local que controla
+    a recompensa
+  posse:
+    tipo: papel_local
+    papel: guardiao
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/casa_vizinha_loja_bram_vask-r01.yaml
+- id: casa_vizinha_loja_bram_vask-r02
+  tipo: consumivel
+  estado: oculto
+  condicao_de_descoberta: derrotar, enganar ou negociar com o guardião local que controla
+    a recompensa
+  posse:
+    tipo: papel_local
+    papel: guardiao
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/casa_vizinha_loja_bram_vask-r02.yaml

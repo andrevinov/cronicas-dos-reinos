@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 8
+sessao_atual: 9
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 8
-  bytes_transcricoes: 1484107
+  sessoes: 9
+  bytes_transcricoes: 1559803
 sessoes:
   '001':
     natureza: historica
@@ -172,7 +172,7 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   008:
-    natureza: atual
+    natureza: historica
     handoff: sessoes/008/handoff.yaml
     compactos:
     - arquivo: sessoes/008/handoff.yaml
@@ -193,5 +193,29 @@ sessoes:
     transcricao:
       arquivo: sessoes/008/transcricao.md
       bytes: 46397
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  009:
+    natureza: atual
+    handoff: sessoes/009/handoff.yaml
+    compactos:
+    - arquivo: sessoes/009/handoff.yaml
+      bytes: 6316
+    - arquivo: sessoes/009/resumo.md
+      bytes: 15002
+    - arquivo: sessoes/009/alteracoes-de-estado.yaml
+      bytes: 6254
+    - arquivo: sessoes/009/consequencias.md
+      bytes: 2067
+    - arquivo: sessoes/009/consolidacoes.jsonl
+      bytes: 27161
+    ordem_de_leitura:
+    - sessoes/009/handoff.yaml
+    - sessoes/009/resumo.md
+    - sessoes/009/alteracoes-de-estado.yaml
+    - sessoes/009/consequencias.md
+    transcricao:
+      arquivo: sessoes/009/transcricao.md
+      bytes: 75696
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

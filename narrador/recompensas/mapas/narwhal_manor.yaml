@@ -1,0 +1,24 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: narwhal_manor
+tier: 2
+periculosidade: media
+geracao:
+  modo: deterministico_v1
+  chave: 590ae1e849728604f40e758d
+  imutavel: true
+  procedurais: 1
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: narwhal_manor-r01
+  tipo: pergaminho
+  estado: oculto
+  condicao_de_descoberta: derrotar, enganar ou negociar com o guardião local que controla
+    a recompensa
+  posse:
+    tipo: papel_local
+    papel: guardiao
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/narwhal_manor-r01.yaml

@@ -220,3 +220,17 @@ eventos_pos_migracao:
     op: set
     valor: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada
       e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+- transacao: s009-d555024ef2ea4d16
+  sessao: 9
+  resumo: Ren sustentou a cobertura ao sair de Kethra com Enganação 19 contra CD 14; o assistente interpretou o
+    contato como Kethra lidando com um carregador obtuso, sem identificar Ren ou gerar alarme imediato. Ren chegou
+    à Casa de Tyr por volta das 15:25 e falou reservadamente com Halessa. Ela confirmou que original e falsificação
+    estão separados e com lacres íntegros; Luath confirmou a cópia parcial e Maerra confirmou lacre, abertura e
+    cadeia de custódia. Tyr enviou consulta reservada à guardiã atual…
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: status
+    op: set
+    valor: 'Halessa atualizou Ren pessoalmente: original e falsificação seguem em custódias separadas e lacradas;
+      Luath e Maerra confirmaram elementos independentes da cadeia; Tyr aguarda resposta reservada da guardiã atual
+      do registro autêntico antes de atribuir autoria ou validar ordens.'

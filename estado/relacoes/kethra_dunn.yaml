@@ -6,9 +6,9 @@ relacao:
   nome: Kethra Dunn
   tipo: funcionária de serviço de Narwhal Manor / fonte potencial
   local: fundos de Narwhal Manor, avistada por Ren no fim da manhã de 7 Eleasis
-  status: Kethra sabe que Colm foi entregue vivo e estável a uma cadeia compartimentada cujo destino Ren também
-    desconhece. Ela não conseguiu instalar o cinzeiro porque a saída de lixo passou a ser contada. Um escriturário
-    viu um trabalhador disfarçado procurá-la diretamente.
+  status: Kethra recebeu de Ren o relato completo da invasão à loja de Bram, da promessa arrancada sobre Colm e
+    de Noll deixado acorrentado. Ela ficou aliviada por não haver mortos nem menção ao nome dela, mas considera
+    a promessa frágil e teme retaliação indireta.
   atitude_para_ren: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição de
     contato direto sob observação crescente
   confianca: baixa, mas real em termos práticos
@@ -49,6 +49,8 @@ relacao:
     e imediatas.
   - 'Contatos presenciais na lateral de Narwhal continuam arriscados: o Broche ajudou nesta manhã, mas repetição
     pode criar padrão.'
+  - Um assistente de Narwhal viu um trabalhador desconhecido, sob a aparência do Broche, romper o fluxo normal para
+    procurar Kethra diretamente. Ele não identificou Ren, mas o padrão de contato com Kethra voltou a ser observado.
 conteudo_mais_antigo_no_historico:
   informacoes_observadas_por_ren: 29
   riscos: 3

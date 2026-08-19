@@ -7,12 +7,11 @@ relacao:
   tipo: agiota / dono de loja de penhores e cobrança
   local: loja de Bram Vask, Lower Trades
   status: vivo, intimidado, sem o caderno de contas; provável resposta indireta em andamento
-  atitude_para_ren: amedrontada e hostil
+  atitude_para_ren: amedrontada, hostil e coagida a evitar Colm Dunn
   confianca: nenhuma
   respeito: medo prático
-  motivo_atual: Bram não fez cena pública com a criança, mas fechou a loja e começou a se mover nos fundos. No ponto
-    preparado da estrada do Fire River, um besteiro rendido por Ren afirmou que Bram Vask pagou a pergunta sobre
-    Colm/Dent, mas não veio pessoalmente; segundo ele, um homem de mãos limpas organizou a compra/captura.
+  motivo_atual: Após ser ferido e ter a loja invadida, Bram prometeu sob coerção retirar Colm Dunn de seus livros,
+    não enviar homens atrás dele e não comprar novas perguntas sobre seu paradeiro.
   informacoes_observadas_por_ren:
   - Houve movimento pequeno e mal confirmado perto dos fundos da loja, mas Ren não identificou natureza, destinatário
     ou ligação com Bram.

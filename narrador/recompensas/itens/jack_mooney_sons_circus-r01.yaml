@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: jack_mooney_sons_circus-r01
+local_id: jack_mooney_sons_circus
+tipo: item_magico_menor
+nome: Globo de Luz
+descricao: Um pequeno item mágico de iluminação e utilidade.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- item_magico
+- utilidade
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: globo_luz
+  slot: 1
+  chave: d11fb4c2d6f91b1167e2d595

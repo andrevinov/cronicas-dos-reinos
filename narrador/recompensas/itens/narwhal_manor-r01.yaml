@@ -1,0 +1,20 @@
+schema_recompensa: 1
+natureza: reservado
+id: narwhal_manor-r01
+local_id: narwhal_manor
+tipo: pergaminho
+nome: Pergaminho de Queda Suave
+descricao: Um pergaminho voltado a sobrevivência e mobilidade.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- pergaminho
+- magia
+- mobilidade
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: pergaminho_queda_suave
+  slot: 1
+  chave: d49c903571a49a506a0a0d0b

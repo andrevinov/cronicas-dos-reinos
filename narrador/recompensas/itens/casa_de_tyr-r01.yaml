@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_de_tyr-r01
+local_id: casa_de_tyr
+tipo: ferramenta
+nome: Kit de curandeiro
+descricao: Suprimentos práticos de primeiros socorros e estabilização.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- ferramenta
+- cura
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: kit_curandeiro
+  slot: 1
+  chave: 8f56617e58359a0f47eb0333

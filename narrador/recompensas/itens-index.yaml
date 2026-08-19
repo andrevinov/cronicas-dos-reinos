@@ -1,4 +1,60 @@
 schema_indice_itens_recompensa: 1
 natureza: reservado
 regra: lookup_dirigido_sem_scan
-recompensas: {}
+recompensas:
+  loja_bram_vask-r01:
+    local_id: loja_bram_vask
+    mapa: narrador/recompensas/mapas/loja_bram_vask.yaml
+    arquivo: narrador/recompensas/itens/loja_bram_vask-r01.yaml
+  loja_bram_vask-r02:
+    local_id: loja_bram_vask
+    mapa: narrador/recompensas/mapas/loja_bram_vask.yaml
+    arquivo: narrador/recompensas/itens/loja_bram_vask-r02.yaml
+  casa_vizinha_loja_bram_vask-r01:
+    local_id: casa_vizinha_loja_bram_vask
+    mapa: narrador/recompensas/mapas/casa_vizinha_loja_bram_vask.yaml
+    arquivo: narrador/recompensas/itens/casa_vizinha_loja_bram_vask-r01.yaml
+  casa_vizinha_loja_bram_vask-r02:
+    local_id: casa_vizinha_loja_bram_vask
+    mapa: narrador/recompensas/mapas/casa_vizinha_loja_bram_vask.yaml
+    arquivo: narrador/recompensas/itens/casa_vizinha_loja_bram_vask-r02.yaml
+  jack_mooney_sons_circus-r01:
+    local_id: jack_mooney_sons_circus
+    mapa: narrador/recompensas/mapas/jack_mooney_sons_circus.yaml
+    arquivo: narrador/recompensas/itens/jack_mooney_sons_circus-r01.yaml
+  jack_mooney_sons_circus-r02:
+    local_id: jack_mooney_sons_circus
+    mapa: narrador/recompensas/mapas/jack_mooney_sons_circus.yaml
+    arquivo: narrador/recompensas/itens/jack_mooney_sons_circus-r02.yaml
+  casa_salgueiro_seco-r01:
+    local_id: casa_salgueiro_seco
+    mapa: narrador/recompensas/mapas/casa_salgueiro_seco.yaml
+    arquivo: narrador/recompensas/itens/casa_salgueiro_seco-r01.yaml
+  casa_salgueiro_seco-r02:
+    local_id: casa_salgueiro_seco
+    mapa: narrador/recompensas/mapas/casa_salgueiro_seco.yaml
+    arquivo: narrador/recompensas/itens/casa_salgueiro_seco-r02.yaml
+  quintal_vizinho_casa_salgueiro_seco-r01:
+    local_id: quintal_vizinho_casa_salgueiro_seco
+    mapa: narrador/recompensas/mapas/quintal_vizinho_casa_salgueiro_seco.yaml
+    arquivo: narrador/recompensas/itens/quintal_vizinho_casa_salgueiro_seco-r01.yaml
+  quintal_vizinho_casa_salgueiro_seco-r02:
+    local_id: quintal_vizinho_casa_salgueiro_seco
+    mapa: narrador/recompensas/mapas/quintal_vizinho_casa_salgueiro_seco.yaml
+    arquivo: narrador/recompensas/itens/quintal_vizinho_casa_salgueiro_seco-r02.yaml
+  narwhal_manor-r01:
+    local_id: narwhal_manor
+    mapa: narrador/recompensas/mapas/narwhal_manor.yaml
+    arquivo: narrador/recompensas/itens/narwhal_manor-r01.yaml
+  casa_de_tyr-r01:
+    local_id: casa_de_tyr
+    mapa: narrador/recompensas/mapas/casa_de_tyr.yaml
+    arquivo: narrador/recompensas/itens/casa_de_tyr-r01.yaml
+  casa_de_tyr-r02:
+    local_id: casa_de_tyr
+    mapa: narrador/recompensas/mapas/casa_de_tyr.yaml
+    arquivo: narrador/recompensas/itens/casa_de_tyr-r02.yaml
+  casa_de_tyr-r03:
+    local_id: casa_de_tyr
+    mapa: narrador/recompensas/mapas/casa_de_tyr.yaml
+    arquivo: narrador/recompensas/itens/casa_de_tyr-r03.yaml

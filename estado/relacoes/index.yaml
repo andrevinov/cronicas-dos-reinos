@@ -40,16 +40,16 @@ relacoes:
   kethra_dunn:
     nome: Kethra Dunn
     tipo: funcionária de serviço de Narwhal Manor / fonte potencial
-    status: Kethra sabe que Colm foi entregue vivo e estável a uma cadeia compartimentada cujo destino Ren também
-      desconhece. Ela não conseguiu instalar o cinzeiro porque a saída de lixo passou a ser contada. Um escriturário
-      viu um trabalhador disfarçado procurá-la diretamente.
+    status: Kethra recebeu de Ren o relato completo da invasão à loja de Bram, da promessa arrancada sobre Colm
+      e de Noll deixado acorrentado. Ela ficou aliviada por não haver mortos nem menção ao nome dela, mas considera
+      a promessa frágil e teme retaliação indireta.
     atitude_para_ren: aliviada e mais confiante porque Colm está seguro, mas irritada e alarmada com a repetição
       de contato direto sob observação crescente
     confianca: baixa, mas real em termos práticos
     respeito: prático e cauteloso
     arquivo: estado/relacoes/kethra_dunn.yaml
     historico: historico/relacoes/kethra_dunn.yaml
-    bytes_fragmento: 3966
+    bytes_fragmento: 4192
     campos_atuais: 10
   colm_dunn:
     nome: Colm Dunn
@@ -112,12 +112,12 @@ relacoes:
     nome: Bram Vask
     tipo: agiota / dono de loja de penhores e cobrança
     status: vivo, intimidado, sem o caderno de contas; provável resposta indireta em andamento
-    atitude_para_ren: amedrontada e hostil
+    atitude_para_ren: amedrontada, hostil e coagida a evitar Colm Dunn
     confianca: nenhuma
     respeito: medo prático
     arquivo: estado/relacoes/bram_vask.yaml
     historico: historico/relacoes/bram_vask.yaml
-    bytes_fragmento: 3403
+    bytes_fragmento: 3293
     campos_atuais: 10
   noll:
     nome: Noll
@@ -231,8 +231,9 @@ relacoes:
   halessa_vorn:
     nome: Irmã Halessa Vorn
     tipo: ouvidora juramentada de Tyr
-    status: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada
-      e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+    status: 'Halessa atualizou Ren pessoalmente: original e falsificação seguem em custódias separadas e lacradas;
+      Luath e Maerra confirmaram elementos independentes da cadeia; Tyr aguarda resposta reservada da guardiã atual
+      do registro autêntico antes de atribuir autoria ou validar ordens.'
     atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
       a urgência e de preservar sua discrição apesar do desacordo
     confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,
@@ -241,21 +242,21 @@ relacoes:
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 3864
+    bytes_fragmento: 3957
     campos_atuais: 10
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
     status: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
       sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
-    atitude_para_ren: favorável, protetiva e francamente aconselhadora; reconhece o cansaço e a sinceridade de Ren,
-      mas rejeita que ele assuma sozinho o direito de escolher todos os custos
+    atitude_para_ren: favorável, protetiva e severamente vigilante; valoriza a honestidade e o cuidado com a cauda,
+      mas rejeita tratar a invasão como simples recado
     confianca: moderada e vigilante
     respeito: alto e reforçado pela decisão de Ren de não atacar Brass, informar Luath e preparar uma rota de fuga
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 3225
+    bytes_fragmento: 3223
     campos_atuais: 10
   jack_mooney:
     nome: Jack Mooney

@@ -5,40 +5,40 @@ agentes:
   kethra_dunn:
     estado: ativo
     proxima_avaliacao:
-      data: '11 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 14 Eleasis, 1372 DR
+      hora: 06:00
   bram_vask:
     estado: ativo
     proxima_avaliacao:
-      data: '12 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 12 Eleasis, 1372 DR
+      hora: 06:00
   luath:
     estado: ativo
     proxima_avaliacao:
-      data: '13 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 13 Eleasis, 1372 DR
+      hora: 06:00
   silva_elkwood:
     estado: ativo
     proxima_avaliacao:
-      data: '14 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 14 Eleasis, 1372 DR
+      hora: 06:00
   maerra_thandrel:
     estado: ativo
     proxima_avaliacao:
-      data: '15 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 15 Eleasis, 1372 DR
+      hora: 06:00
   halessa_vorn:
     estado: ativo
     proxima_avaliacao:
-      data: '16 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 16 Eleasis, 1372 DR
+      hora: 06:00
   jack_mooney:
     estado: ativo
     proxima_avaliacao:
-      data: '17 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 17 Eleasis, 1372 DR
+      hora: 06:00
   pell:
     estado: ativo
     proxima_avaliacao:
-      data: '18 Eleasis, 1372 DR'
-      hora: '06:00'
+      data: 18 Eleasis, 1372 DR
+      hora: 06:00

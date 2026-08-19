@@ -360,3 +360,22 @@ eventos_pos_migracao:
     op: set
     valor: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
       sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
+- transacao: s009-209223121e5c9f03
+  sessao: 9
+  resumo: Ren retornou ao circo por uma rota indireta, usando Passos sem Pegadas e Passo Sombrio, sem trazer cauda.
+    Chegou pouco antes da meia-noite, tomou banho e deixou Passos sem Pegadas expirar às 00:07. Depois procurou
+    Silva e relatou integralmente a vigilância, a invasão, o combate, Noll e a promessa extraída de Bram, explicando
+    o medo por Colm, Kethra e um possível inocente. Silva reconheceu que verificar o refém e romper a cauda foram
+    decisões corretas, mas advertiu que a violência produziu apena…
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: motivo_atual
+    op: set
+    valor: Silva ouviu o relato integral da invasão à loja de Bram. Reconhece que Ren verificou um possível refém,
+      rompeu a cauda e contou a verdade antes de procurar os Vell, mas considera que a violência apenas extraiu
+      uma promessa sob medo e pode deslocar a resposta de Bram.
+  - alvo: relacao:silva_elkwood
+    caminho: atitude_para_ren
+    op: set
+    valor: favorável, protetiva e severamente vigilante; valoriza a honestidade e o cuidado com a cauda, mas rejeita
+      tratar a invasão como simples recado

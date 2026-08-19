@@ -215,3 +215,23 @@ eventos_pos_migracao:
     op: append
     valor: Kethra observará discretamente a mulher Cinza-Azul. Se voltar a vê-la, amarrará um fio azul na dobradiça
       inferior do portão de carvão; sem o fio, Ren não deve procurá-la nem inventar novo contato.
+- transacao: s009-915d24d545054c1f
+  sessao: 9
+  resumo: 'Após Tomas deixar a Casa do Salgueiro Seco, Ren esperou e saiu do quintal com Furtividade 13 contra CD
+    13, sem ser visto. Chegou a Narwhal Manor por volta das 14:45 e ativou o Broche do Semblante Humilde, válido
+    por uma hora. A aproximação de Kethra falhou com Furtividade 11 contra CD 16 apesar da vantagem: um assistente
+    viu um trabalhador desconhecido procurá-la, embora o Broche tenha ocultado a identidade real de Ren. Kethra
+    criou cobertura com um cesto e ouviu o relato completo sobre Bram, N…'
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: status
+    op: set
+    valor: Kethra recebeu de Ren o relato completo da invasão à loja de Bram, da promessa arrancada sobre Colm e
+      de Noll deixado acorrentado. Ela ficou aliviada por não haver mortos nem menção ao nome dela, mas considera
+      a promessa frágil e teme retaliação indireta.
+  - alvo: relacao:kethra_dunn
+    caminho: riscos
+    op: append
+    valor: Um assistente de Narwhal viu um trabalhador desconhecido, sob a aparência do Broche, romper o fluxo normal
+      para procurar Kethra diretamente. Ele não identificou Ren, mas o padrão de contato com Kethra voltou a ser
+      observado.

@@ -1,16 +1,16 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 8
+sessao: 9
 modo: fim_de_descanso_curto_no_circo_antes_do_poente
 localizacao:
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  area: Casa de Tyr, Temple District, Ravens Bluff
+  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
 tempo:
-  data: 10 Eleasis, 1372 DR
-  hora_aproximada: 17:42 de 10 Eleasis
+  data: 11 Eleasis, 1372 DR
+  hora_aproximada: 15:30 de 11 Eleasis
 mecanica_imediata:
   pv: 45/45
-  ki: 6/6
+  ki: 4/6
   ca: 17
   deslocamento: 55 pés
 resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
@@ -23,14 +23,19 @@ prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clare
   de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/008/handoff.yaml
+  handoff: sessoes/009/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/008/transcricao.md
+  transcricao_fria: sessoes/009/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren abandonou a persona de Shinta, mas continua usando vestes simples e sem portar nenhuma de suas
-      armas.
+    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
+      oculto sob as camadas.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 09:10 de 10 Eleasis
+  broche_do_semblante_humilde:
+    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
+      perfeitamente.
+    duracao: até aproximadamente 15:45 de 11 Eleasis
+    inicio: 14:45 de 11 Eleasis

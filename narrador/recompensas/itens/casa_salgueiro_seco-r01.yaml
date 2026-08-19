@@ -1,0 +1,20 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_salgueiro_seco-r01
+local_id: casa_salgueiro_seco
+tipo: pergaminho
+nome: Pergaminho de Detectar Magia
+descricao: Um pergaminho arcano de utilidade investigativa.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- pergaminho
+- magia
+- investigacao
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: pergaminho_detectar_magia
+  slot: 1
+  chave: e73423048b51152623113106

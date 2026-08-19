@@ -10,4 +10,46 @@ regras:
   reroll: proibido
   item_existir_nao_significa_descoberta: true
   recompensa_de_arco_procedural: proibida
-mapas: {}
+mapas:
+  loja_bram_vask:
+    arquivo: narrador/recompensas/mapas/loja_bram_vask.yaml
+    tier: 2
+    periculosidade: alta
+    quantidade: 2
+    chave_geracao: a3b9d6e285f00b61b2dcac7b
+  casa_vizinha_loja_bram_vask:
+    arquivo: narrador/recompensas/mapas/casa_vizinha_loja_bram_vask.yaml
+    tier: 2
+    periculosidade: alta
+    quantidade: 2
+    chave_geracao: 6ca1e17206cb95df9aa2031a
+  jack_mooney_sons_circus:
+    arquivo: narrador/recompensas/mapas/jack_mooney_sons_circus.yaml
+    tier: 2
+    periculosidade: baixa
+    quantidade: 2
+    chave_geracao: 9452d80e8ef740eaa780e529
+  casa_salgueiro_seco:
+    arquivo: narrador/recompensas/mapas/casa_salgueiro_seco.yaml
+    tier: 2
+    periculosidade: baixa
+    quantidade: 2
+    chave_geracao: e2fa039a85604cea75ee16a6
+  quintal_vizinho_casa_salgueiro_seco:
+    arquivo: narrador/recompensas/mapas/quintal_vizinho_casa_salgueiro_seco.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 2
+    chave_geracao: fe6fdc77279db04fb03310b0
+  narwhal_manor:
+    arquivo: narrador/recompensas/mapas/narwhal_manor.yaml
+    tier: 2
+    periculosidade: media
+    quantidade: 1
+    chave_geracao: 590ae1e849728604f40e758d
+  casa_de_tyr:
+    arquivo: narrador/recompensas/mapas/casa_de_tyr.yaml
+    tier: 2
+    periculosidade: baixa
+    quantidade: 3
+    chave_geracao: 7631ac832cb6899655818133

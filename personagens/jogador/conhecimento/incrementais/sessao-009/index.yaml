@@ -1,0 +1,119 @@
+schema_conhecimento_incremental: 1
+sessao: 9
+fragmentos:
+- transacao: s009-92757084ceeaff8b
+  titulo: Ren examinou os prédios vizinhos à loja de Bram em busca de um posto próximo, oculto e com alcance auditivo.
+    Obteve 7 contra CD 15 em Investigação. Os acessos externos próximos que encontrou eram expostos ou atravessavam
+    propriedade ocupada; as posições seguras ficavam longe demais para ouvir diálogos normais. Às 18:42, continua
+    oculto fora do perímetro, sem ativar Passos sem Pegadas ou gastar Ki.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-92757084ceeaff8b.md
+  bytes: 805
+- transacao: s009-e604533216536b25
+  titulo: Ren decidiu usar a casa vizinha como possível aproximação à loja de Bram e examinou seus acessos. Obteve
+    10 contra CD 13 em Investigação. Identificou porta frontal exposta, porta traseira próxima ao perímetro de Bram
+    e janela superior alcançável por uma subida incerta, mas não determinou qual opção é menos vigiada ou ocupada.
+    Às 18:54, permanece oculto do lado de fora; não tocou acessos nem gastou Ki.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-e604533216536b25.md
+  bytes: 844
+- transacao: s009-5cca4c5c603041fb
+  titulo: Ren usou Passo Sombrio para alcançar o tonel e obteve 31 contra CD 15 em Furtividade com vantagem e Passos
+    sem Pegadas. Com 20 contra CD 13 em Investigação, confirmou que a porta traseira da casa vizinha não tinha barra
+    ou corrente interna. Abriu silenciosamente a fechadura com ferramentas de ladrão, obtendo 17 contra CD 14, entreabriu
+    a porta e usou uma sombra interna para entrar por Passo Sombrio. Às 18:57, está oculto atrás da mesa no cômodo
+    de serviço; a porta ficou quase fechada, porém des…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-5cca4c5c603041fb.md
+  bytes: 864
+- transacao: s009-6d0dc5d5ec2e417e
+  titulo: 'Ren atravessou furtivamente o cômodo de serviço com 29 contra CD 15. Com 19 contra CD 14 em Investigação,
+    encontrou um esconderijo estreito atrás do armário junto à parede compartilhada e uma falha de argamassa que
+    transmite vibração. Obteve 8 contra CD 15 em Percepção: não distinguiu palavras, vozes ou batidas claras e não
+    pode concluir se a loja está vazia ou se há refém. Às 19:03, permanece oculto no vão; Passos sem Pegadas continua
+    ativo.'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-6d0dc5d5ec2e417e.md
+  bytes: 866
+- transacao: s009-fc6d3767da00fbc1
+  titulo: Ren perfurou silenciosamente a argamassa rachada com a lima, obtendo 15 contra CD 13 em Destreza com ferramentas
+    de ladrão. O canal passou a transmitir ar. Com 13 contra CD 12 em Percepção, ouviu e reconheceu Bram Vask ordenando
+    a outro homem que deixasse água do lado de fora, não abrisse sozinho e ignorasse eventuais batidas. Isso confirma
+    Bram na loja às 19:12 e indica um homem confinado atrás de uma porta, provavelmente no piso superior; a identidade
+    e condição do prisioneiro seguem desconhe…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-fc6d3767da00fbc1.md
+  bytes: 979
+- transacao: s009-80faeaaa3b107d18
+  titulo: Ren saiu da casa vizinha sem ser percebido, obtendo 33 contra CD 15 em Furtividade com vantagem e retornando
+    pela cadeia de Passo Sombrio. Falhou em encontrar um posto alto seguro, com 5 contra CD 14 em Investigação,
+    e vigiou de uma cobertura parcial ao nível da rua. Passos sem Pegadas expirou às 19:54. Um homem saiu pela frente
+    às 20:26 e conversou brevemente com o vigia antes de partir; mais tarde o vigia desapareceu durante uma obstrução
+    visual. Com 12 contra CD 15 em Percepção com desvantag…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-80faeaaa3b107d18.md
+  bytes: 1005
+- transacao: s009-5acf7b8ede8988c0
+  titulo: Ren exigiu a identidade do prisioneiro e ordenou que Bram abrisse a porta. Bram afirmou que o homem é
+    Noll, seu antigo braço, e alegou tê-lo trancado após Noll tentar tomar dinheiro e vender seu nome depois do
+    resgate de Colm. Ren ainda não confirmou visualmente a identidade nem a veracidade do motivo. Bram aproximou
+    a chave da fechadura, mas não abriu. A troca não consumiu a ação de Ren; ele continua a 30 pés, e Bram permanece
+    com 10/22 PV.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-5acf7b8ede8988c0.md
+  bytes: 852
+- transacao: s009-ac0bd4ad929882fd
+  titulo: 'Ren pressionou Bram a abrir a porta e obteve 17 contra CD 14 em Intimidação com vantagem. No próprio
+    turno, Bram destrancou e abriu a cela improvisada, recuando cerca de 10 pés em direção ao outro aposento sem
+    largar faca ou chave. O prisioneiro foi confirmado como Noll: está consciente, mais magro, com hematomas e um
+    pulso algemado por corrente curta a uma argola no piso. Noll reconheceu Ren. Ren permanece na escada com 41/45
+    PV e 2/6 Ki; Bram está a cerca de 40 pés, com 10/22 PV.'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ac0bd4ad929882fd.md
+  bytes: 854
+- transacao: s009-ef5b3f7fb1ff5010
+  titulo: Ren declarou que não viera salvar Noll, mas impor a Bram o afastamento de Colm. Socou um armário do patamar,
+    acertando CA 15 e causando 9 de dano, destruindo portas, prateleiras e uma lateral. Bram prometeu explicitamente
+    que Colm Dunn não está mais em seus livros, que não enviará homens nem comprará perguntas sobre seu paradeiro.
+    Ren advertiu que não daria terceira chance. Bram não impediu sua saída. Às 23:07, Ren deixou a loja pela fachada
+    destruída com 41/45 PV e 2/6 Ki; Bram permanece vivo…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-ef5b3f7fb1ff5010.md
+  bytes: 862
+- transacao: s009-19d84613aea3b234
+  titulo: Shinta completou o serviço normal do segundo dia com Atletismo 15 contra CD 12, limpando o canal oeste,
+    reassentando pedras e refazendo a pilha de lenha. Depois ofereceu ajuda com três problemas vistos na véspera;
+    o jardineiro aceitou e escolheu o galho morto sobre o estábulo. Shinta e ele removeram o galho com Atletismo
+    14 contra CD 14, sem danos. O jardineiro decidiu recomendar Shinta ao escriturário. Shinta recebeu refeição
+    e 2 PP; são cerca de 11:50 de 11 Eleasis.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-19d84613aea3b234.md
+  bytes: 843
+- transacao: s009-6f7c4e5653d04ba1
+  titulo: Shinta aceitou as 2 PP, comeu e deixou a Casa do Salgueiro Seco de maneira natural perto do meio-dia.
+    Ren procurou durante a saída um ponto para vigiar e ouvir o encontro do jardineiro com o escriturário, mas obteve
+    Investigação 11 contra CD 14. Identificou posições que oferecem visão ou audição, mas nenhuma combina ambas
+    com ocultação; uma busca melhor exigiria contornar a propriedade ou acessar terreno vizinho.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-6f7c4e5653d04ba1.md
+  bytes: 978
+- transacao: s009-2ac41f3793cc68f8
+  titulo: Shinta contornou todo o quarteirão procurando posição de vigilância, mas obteve Investigação 12 contra
+    CD 13. Confirmou que não há ponto público próximo que combine ocultação, visão e audição. O melhor ângulo exigiria
+    invadir o quintal habitado de um vizinho e ainda perderia o encontro se ele prosseguisse para dentro. Às 12:15,
+    Ren não viu o escriturário chegar.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2ac41f3793cc68f8.md
+  bytes: 917
+- transacao: s009-b1f560e70c62d1a3
+  titulo: Ren aguardou oculto até cerca de 13:20. Passos sem Pegadas expirou às 13:15, mas ele obteve Furtividade
+    26 contra CD 13 e não foi percebido. Tomas Rell chegou em uma charrete com pasta selada pelos três juncos e
+    uma pequena caixa. Com Percepção 23 contra CD 14, Ren ouviu o jardineiro recomendar Shinta. Tomas determinou
+    que Shinta se apresente amanhã, 12 Eleasis, depois da segunda hora da manhã, na entrada de entregas da Galeria
+    dos Escribas sob a placa dos três juncos, para conversar antes de e…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-b1f560e70c62d1a3.md
+  bytes: 1188
+- transacao: s009-2c29f704b70935e8
+  titulo: Kethra confirmou que não voltou a ver a mulher de cinza-azulado desde o último relato e não ouviu notícia
+    de que ela tenha retornado a Narwhal Manor. A última ação concreta continua sendo a ordem para apagar o corredor
+    treze e não falar de tintureiro, cesto ou barril. Kethra ressaltou que isso não prova que a mulher deixou Ravens
+    Bluff; ela pode estar agindo por intermediários.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-2c29f704b70935e8.md
+  bytes: 932
+- transacao: s009-d555024ef2ea4d16
+  titulo: Ren sustentou a cobertura ao sair de Kethra com Enganação 19 contra CD 14; o assistente interpretou o
+    contato como Kethra lidando com um carregador obtuso, sem identificar Ren ou gerar alarme imediato. Ren chegou
+    à Casa de Tyr por volta das 15:25 e falou reservadamente com Halessa. Ela confirmou que original e falsificação
+    estão separados e com lacres íntegros; Luath confirmou a cópia parcial e Maerra confirmou lacre, abertura e
+    cadeia de custódia. Tyr enviou consulta reservada à guardiã atual…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-009/tx-s009-d555024ef2ea4d16.md
+  bytes: 1280
+quantidade: 15

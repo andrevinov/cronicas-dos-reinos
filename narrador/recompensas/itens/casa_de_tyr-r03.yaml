@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_de_tyr-r03
+local_id: casa_de_tyr
+tipo: ferramenta
+nome: Equipamento de escalada
+descricao: Cordas, pitões e acessórios reunidos para deslocamento vertical.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- ferramenta
+- exploracao
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: equipamento_escalada
+  slot: 3
+  chave: b2d3b762cd47fc8e229f94f4

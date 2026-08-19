@@ -1,8 +1,61 @@
 schema_estado_mundo: 1
 natureza: controle_reservado
-descricao: Cursor e fila operacional do motor determinístico; não é fonte independente de fatos da campanha.
+descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
+  de fatos da campanha.
 processado_ate:
-  data: '10 Eleasis, 1372 DR'
-  hora: '17:42'
-pendencias: []
+  data: 11 Eleasis, 1372 DR
+  hora: '15:30'
+pendencias:
+- id: mundo-d11f76d42770dca4
+  tipo: avaliar_entrada
+  entrada: shen_meihua
+  agentes_afetados: []
+  disparado_em:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  motivo: Avaliar entrada de Shen Meihua sem fazê-la acontecer automaticamente.
+  origem: entradas:shen_meihua
+- id: mundo-09ec9128f524d868
+  tipo: reavaliar_agente_leve
+  agente_leve: kethra_dunn
+  agentes_afetados: []
+  disparado_em:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  motivo: Reavaliar Kethra Dunn fora de cena. Rotina é o padrão; só registrar iniciativa
+    se o estado atual oferecer causa concreta.
+  origem: agentes-leves:kethra_dunn.cadencia
+- id: mundo-49c42554d41071b8
+  tipo: reavaliar_agente
+  agente: night_watch
+  agentes_afetados:
+  - night_watch
+  disparado_em:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar
+    prioridades a cada novo dia.
+  origem: agenda:reavaliacoes.night_watch
+- id: mundo-8eefae9b75f120f1
+  tipo: reavaliar_agente
+  agente: casa_de_tyr
+  agentes_afetados:
+  - casa_de_tyr
+  disparado_em:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  motivo: A investigação reservada de Tyr continua fora da presença de Ren, mas não
+    exige releitura diária completa.
+  origem: agenda:reavaliacoes.casa_de_tyr
+- id: mundo-be5346fd978581a9
+  tipo: reavaliar_agente
+  agente: red_sail
+  agentes_afetados:
+  - red_sail
+  disparado_em:
+    data: 11 Eleasis, 1372 DR
+    hora: 06:00
+  motivo: A busca ativa da Red Sail produz decisões operacionais diárias mesmo sem
+    nova iniciativa de Ren.
+  origem: agenda:reavaliacoes.red_sail
 concluidas_recentes: []

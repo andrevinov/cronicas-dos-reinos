@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: loja_bram_vask-r02
+local_id: loja_bram_vask
+tipo: ferramenta
+nome: Equipamento de escalada
+descricao: Cordas, pitões e acessórios reunidos para deslocamento vertical.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- ferramenta
+- exploracao
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: equipamento_escalada
+  slot: 2
+  chave: c79b0bea557fc7a8853b0538

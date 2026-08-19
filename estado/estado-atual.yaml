@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 8
+  sessao_atual: 9
   modo_de_cena_atual: fim_de_descanso_curto_no_circo_antes_do_poente
 personagem:
   nome: Ren Kagehira
@@ -18,8 +18,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: depósito de figurino velho do circo, após sono e meditação
+  area: Casa de Tyr, Temple District, Ravens Bluff
+  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
   descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
     com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
     Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
@@ -29,15 +29,15 @@ localizacao:
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 10 Eleasis, 1372 DR
+  data_exata: 11 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 10
-  dezena: 1
-  dia_da_dezena: 10
-  periodo_do_dia: primeiro clarear da manhã de 10 Eleasis, antes do trabalho de Shinta na Casa do Salgueiro Seco
-  hora_aproximada: 17:42 de 10 Eleasis
+  dia_do_mes: 11
+  dezena: 2
+  dia_da_dezena: 1
+  periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+  hora_aproximada: 15:30 de 11 Eleasis
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -46,20 +46,20 @@ recursos:
     atuais: 45
     maximos: 45
   dados_de_vida:
-    atuais: 6
+    atuais: 5
     maximos: 6
     dado: d8
   ki:
-    atuais: 6
+    atuais: 4
     maximos: 6
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 31.200000000000003
+    po: 31.400000000000002
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: usado em 10 Eleasis; indisponível até o amanhecer de 11 Eleasis
+    broche_do_semblante_humilde: usado em 11 Eleasis; indisponível até o amanhecer de 12 Eleasis
     silencio: disponível mediante gasto de 2 Ki
 ponteiros:
   tempo_atual: estado/tempo.yaml
@@ -67,7 +67,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/008/transcricao.md
+  transcricao_atual: sessoes/009/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -147,7 +147,12 @@ disponibilidades:
 combate_atual: null
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren abandonou a persona de Shinta, mas continua usando vestes simples e sem portar nenhuma de suas
-      armas.
+    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
+      oculto sob as camadas.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 09:10 de 10 Eleasis
+  broche_do_semblante_humilde:
+    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
+      perfeitamente.
+    duracao: até aproximadamente 15:45 de 11 Eleasis
+    inicio: 14:45 de 11 Eleasis

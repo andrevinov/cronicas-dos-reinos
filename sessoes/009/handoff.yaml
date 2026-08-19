@@ -1,0 +1,101 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 9
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 4
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 31.400000000000002
+  tempo:
+    data: 11 Eleasis, 1372 DR
+    hora_aproximada: 15:30 de 11 Eleasis
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Casa de Tyr, Temple District, Ravens Bluff
+    ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+continuidade:
+  resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
+    Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico. Nera
+    apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando pudesse
+    e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu a persona
+    de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o portão.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s009-cena-0de28ba58db48b63
+  transacao: s009-19d84613aea3b234
+  resumo: Shinta completou o serviço normal do segundo dia com Atletismo 15 contra CD 12, limpando o canal oeste,
+    reassentando pedras e refazendo a pilha de lenha. Depois ofereceu ajuda com três problemas vistos na véspera;
+    o jardineiro aceitou e escolheu o galho morto sobre o estábulo. Shinta e ele removeram o galho com Atletismo
+    14 contra CD 14, sem danos. O jardineiro decidiu recomendar Shinta ao escriturário. Shinta receb…
+- batch: s009-cena-7b4ed68e92f8070c
+  transacao: s009-6f7c4e5653d04ba1
+  resumo: Shinta aceitou as 2 PP, comeu e deixou a Casa do Salgueiro Seco de maneira natural perto do meio-dia.
+    Ren procurou durante a saída um ponto para vigiar e ouvir o encontro do jardineiro com o escriturário, mas obteve
+    Investigação 11 contra CD 14. Identificou posições que oferecem visão ou audição, mas nenhuma combina ambas
+    com ocultação; uma busca melhor exigiria contornar a propriedade ou acessar terreno vizinho.
+- batch: s009-cena-7b4ed68e92f8070c
+  transacao: s009-2ac41f3793cc68f8
+  resumo: Shinta contornou todo o quarteirão procurando posição de vigilância, mas obteve Investigação 12 contra
+    CD 13. Confirmou que não há ponto público próximo que combine ocultação, visão e audição. O melhor ângulo exigiria
+    invadir o quintal habitado de um vizinho e ainda perderia o encontro se ele prosseguisse para dentro. Às 12:15,
+    Ren não viu o escriturário chegar.
+- batch: s009-cena-7b4ed68e92f8070c
+  transacao: s009-06fa751cf7bf8efa
+  resumo: Ren gastou 2 Ki e ativou Passos sem Pegadas às 12:15, obtendo Furtividade 19 contra CD 13 para entrar
+    sem ser percebido no quintal vizinho. Posicionou-se atrás do abrigo de lenha, com visão parcial da entrada lateral
+    da Casa do Salgueiro Seco e possibilidade de ouvir falas normais junto ao portão. O efeito dura com concentração
+    até cerca de 13:15.
+- batch: s009-cena-7b4ed68e92f8070c
+  transacao: s009-b1f560e70c62d1a3
+  resumo: Ren aguardou oculto até cerca de 13:20. Passos sem Pegadas expirou às 13:15, mas ele obteve Furtividade
+    26 contra CD 13 e não foi percebido. Tomas Rell chegou em uma charrete com pasta selada pelos três juncos e
+    uma pequena caixa. Com Percepção 23 contra CD 14, Ren ouviu o jardineiro recomendar Shinta. Tomas determinou
+    que Shinta se apresente amanhã, 12 Eleasis, depois da segunda hora da manhã, na entrada de entrega…
+- batch: s009-cena-7b4ed68e92f8070c
+  transacao: s009-915d24d545054c1f
+  resumo: 'Após Tomas deixar a Casa do Salgueiro Seco, Ren esperou e saiu do quintal com Furtividade 13 contra CD
+    13, sem ser visto. Chegou a Narwhal Manor por volta das 14:45 e ativou o Broche do Semblante Humilde, válido
+    por uma hora. A aproximação de Kethra falhou com Furtividade 11 contra CD 16 apesar da vantagem: um assistente
+    viu um trabalhador desconhecido procurá-la, embora o Broche tenha ocultado a identidade real de…'
+- batch: s009-sessao-8247832a9d3af7bc
+  transacao: s009-2c29f704b70935e8
+  resumo: Kethra confirmou que não voltou a ver a mulher de cinza-azulado desde o último relato e não ouviu notícia
+    de que ela tenha retornado a Narwhal Manor. A última ação concreta continua sendo a ordem para apagar o corredor
+    treze e não falar de tintureiro, cesto ou barril. Kethra ressaltou que isso não prova que a mulher deixou Ravens
+    Bluff; ela pode estar agindo por intermediários.
+- batch: s009-sessao-8247832a9d3af7bc
+  transacao: s009-d555024ef2ea4d16
+  resumo: Ren sustentou a cobertura ao sair de Kethra com Enganação 19 contra CD 14; o assistente interpretou o
+    contato como Kethra lidando com um carregador obtuso, sem identificar Ren ou gerar alarme imediato. Ren chegou
+    à Casa de Tyr por volta das 15:25 e falou reservadamente com Halessa. Ela confirmou que original e falsificação
+    estão separados e com lacres íntegros; Luath confirmou a cópia parcial e Maerra confirmou lacr…
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/009/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes
