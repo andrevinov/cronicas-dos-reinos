@@ -24,11 +24,11 @@ class ContextoTransactionalTest(unittest.TestCase):
         (repo / "estado/relacoes").mkdir(parents=True)
         (repo / "personagens/jogador/conhecimento/topicos").mkdir(parents=True)
         (repo / "runtime/contexto.yaml").write_text(
-            """sessao:\n  numero: 3\n  modo_de_cena: combate\nrecursos:\n  pv:\n    atuais: 45\n    maximos: 45\n  ki:\n    atuais: 5\n    maximos: 6\n  ca: 17\n  deslocamento: 55 pés\n  dinheiro_po: 45\ntempo:\n  data: 7 Eleasis\n  hora_aproximada: '08:03'\nlocalizacao:\n  area: estrada\n  ponto_exato: cerca\n""",
+            """sessao:\n  numero: 3\n  modo_de_cena: combate\nrecursos:\n  pv:\n    atuais: 45\n    maximos: 45\n  ki:\n    atuais: 5\n    maximos: 6\n  ca: 17\n  deslocamento: 55 pés\n  dinheiro_po: 45\ntempo:\n  data: 7 Eleasis, 1372 DR\n  hora_aproximada: '08:03'\nlocalizacao:\n  area: estrada\n  ponto_exato: cerca\n""",
             encoding="utf-8",
         )
         (repo / "runtime/cena.yaml").write_text(
-            """sessao: 3\nmodo: combate\nlocalizacao:\n  area: estrada\n  ponto_exato: cerca\ntempo:\n  data: 7 Eleasis\n  hora_aproximada: '08:03'\nmecanica_imediata:\n  pv: 45/45\n  ki: 5/6\n  ca: 17\n  deslocamento: 55 pés\nresumo_imediato: antes\nprazos_e_alertas: antes\n""",
+            """sessao: 3\nmodo: combate\nlocalizacao:\n  area: estrada\n  ponto_exato: cerca\ntempo:\n  data: 7 Eleasis, 1372 DR\n  hora_aproximada: '08:03'\nmecanica_imediata:\n  pv: 45/45\n  ki: 5/6\n  ca: 17\n  deslocamento: 55 pés\nresumo_imediato: antes\nprazos_e_alertas: antes\n""",
             encoding="utf-8",
         )
         (repo / "runtime/eventos-pendentes.jsonl").write_text("", encoding="utf-8")
@@ -62,15 +62,21 @@ class ContextoTransactionalTest(unittest.TestCase):
                 "resumo": "Ren gasta Ki e avança.",
                 "deltas": [
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
-                    {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": "08:04"},
+                    {
+                        "alvo": "tempo",
+                        "op": "instante",
+                        "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:04"},
+                    },
                 ],
             },
         )
         status = mod.command_status(repo)
         scene = mod.command_scene(repo)
         self.assertEqual(status["resultado"]["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(status["resultado"]["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(status["resultado"]["tempo"]["hora_aproximada"], "08:04")
         self.assertEqual(scene["resultado"]["cena"]["mecanica_imediata"]["ki"], "3/6")
+        self.assertEqual(scene["resultado"]["cena"]["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertIn("runtime/eventos-pendentes.jsonl", status["fontes"])
         self.assertEqual(before, (repo / "runtime/contexto.yaml").read_bytes())
 

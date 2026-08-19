@@ -50,6 +50,80 @@ class TransactionSchemaTest(unittest.TestCase):
             with self.assertRaises(mod.TransactionError):
                 mod.load_pending(repo)
 
+    def test_instante_atomico_e_um_unico_delta_valido(self):
+        record = mod.build_pending_record(
+            {
+                "jogador": "A",
+                "narracao": "B",
+                "deltas": [
+                    {
+                        "alvo": "tempo",
+                        "op": "instante",
+                        "valor": {"data": "11 Eleasis, 1372 DR", "hora": "05:10"},
+                    }
+                ],
+            },
+            3,
+        )
+        self.assertEqual(
+            record["deltas"],
+            [
+                {
+                    "alvo": "tempo",
+                    "op": "instante",
+                    "valor": {"data": "11 Eleasis, 1372 DR", "hora": "05:10"},
+                }
+            ],
+        )
+
+    def test_par_legado_completo_e_normalizado_para_um_instante(self):
+        record = mod.build_pending_record(
+            {
+                "jogador": "A",
+                "narracao": "B",
+                "deltas": [
+                    {"alvo": "tempo", "op": "set", "caminho": "data_atual", "valor": "11 Eleasis, 1372 DR"},
+                    {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": "05:10"},
+                ],
+            },
+            3,
+        )
+        self.assertEqual(len(record["deltas"]), 1)
+        self.assertEqual(record["deltas"][0]["op"], "instante")
+        self.assertEqual(record["deltas"][0]["valor"]["hora"], "05:10")
+
+    def test_hora_legada_isolada_ou_com_data_embutida_e_rejeitada(self):
+        for value in ("05:10", "05:10 de 11 Eleasis"):
+            with self.subTest(value=value), self.assertRaises(mod.TransactionError):
+                mod.build_pending_record(
+                    {
+                        "jogador": "A",
+                        "narracao": "B",
+                        "deltas": [
+                            {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": value}
+                        ],
+                    },
+                    3,
+                )
+
+    def test_instante_nao_pode_ser_misturado_com_espelho_legado(self):
+        with self.assertRaises(mod.TransactionError):
+            mod.build_pending_record(
+                {
+                    "jogador": "A",
+                    "narracao": "B",
+                    "deltas": [
+                        {
+                            "alvo": "tempo",
+                            "op": "instante",
+                            "valor": {"data": "11 Eleasis, 1372 DR", "hora": "05:10"},
+                        },
+                        {"alvo": "estado", "op": "set", "caminho": "tempo.data_exata", "valor": "11 Eleasis, 1372 DR"},
+                    ],
+                },
+                3,
+            )
+
 
 class TransactionOverlayTest(unittest.TestCase):
     def base_runtime(self):
@@ -62,14 +136,14 @@ class TransactionOverlayTest(unittest.TestCase):
                 "deslocamento": "55 pés",
                 "dinheiro_po": 45,
             },
-            "tempo": {"data": "7 Eleasis", "hora_aproximada": "08:03", "periodo": "manhã", "clima": "névoa"},
+            "tempo": {"data": "7 Eleasis, 1372 DR", "hora_aproximada": "08:03", "periodo": "manhã", "clima": "névoa"},
             "localizacao": {"area": "estrada", "ponto_exato": "cerca"},
         }
         scene = {
             "sessao": 3,
             "modo": "exploração",
             "localizacao": {"area": "estrada", "ponto_exato": "cerca"},
-            "tempo": {"data": "7 Eleasis", "hora_aproximada": "08:03"},
+            "tempo": {"data": "7 Eleasis, 1372 DR", "hora_aproximada": "08:03"},
             "mecanica_imediata": {"pv": "45/45", "ki": "5/6", "ca": 17, "deslocamento": "55 pés"},
             "resumo_imediato": "antes",
             "prazos_e_alertas": "antes",
@@ -88,23 +162,30 @@ class TransactionOverlayTest(unittest.TestCase):
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -7},
                     {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "junto ao alvo"},
-                    {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": "08:04"},
+                    {
+                        "alvo": "tempo",
+                        "op": "instante",
+                        "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:04"},
+                    },
                     {"alvo": "estado", "op": "set", "caminho": "campanha.modo_de_cena_atual", "valor": "combate"},
                     {"alvo": "estado", "op": "set", "caminho": "localizacao.descricao_operacional", "valor": "É o turno de Ren."},
                 ],
             }
         ]
         effective, effective_scene, applied = mod.overlay_runtime(context, scene, records)
-        self.assertGreaterEqual(applied, 5)
+        self.assertGreaterEqual(applied, 6)
         self.assertEqual(effective["recursos"]["ki"]["atuais"], 3)
         self.assertEqual(effective["recursos"]["pv"]["atuais"], 38)
         self.assertEqual(effective["localizacao"]["ponto_exato"], "junto ao alvo")
+        self.assertEqual(effective["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(effective["tempo"]["hora_aproximada"], "08:04")
         self.assertEqual(effective["sessao"]["modo_de_cena"], "combate")
+        self.assertEqual(effective_scene["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(effective_scene["mecanica_imediata"]["pv"], "38/45")
         self.assertEqual(effective_scene["mecanica_imediata"]["ki"], "3/6")
         self.assertEqual(effective_scene["resumo_imediato"], "É o turno de Ren.")
         self.assertEqual(effective["sobreposicao_transacional"]["ultima_transacao"], "turno-1")
+        self.assertEqual(records[0]["deltas"][3]["op"], "instante")
 
     def test_relation_and_npc_are_overlaid_without_touching_history(self):
         records = [

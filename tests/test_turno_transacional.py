@@ -79,7 +79,11 @@ class TurnoTransactionalTest(unittest.TestCase):
             self.transaction(
                 delta=[
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1},
-                    {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": "08:04"},
+                    {
+                        "alvo": "tempo",
+                        "op": "instante",
+                        "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:04"},
+                    },
                 ]
             ),
         )
@@ -88,7 +92,12 @@ class TurnoTransactionalTest(unittest.TestCase):
         for path in protected:
             self.assertEqual(before[path], sha(path), f"arquivo canônico foi alterado: {path}")
         self.assertIn("**Jogador**", (repo / "sessoes/003/transcricao.md").read_text(encoding="utf-8"))
-        self.assertEqual(len(transacoes.load_pending(repo)), 1)
+        records = transacoes.load_pending(repo)
+        self.assertEqual(len(records), 1)
+        self.assertEqual(
+            [delta for delta in records[0]["deltas"] if delta.get("alvo") == "tempo"],
+            [{"alvo": "tempo", "op": "instante", "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:04"}}],
+        )
 
     def test_cli_stdin_is_single_persistence_operation_without_temp_file(self):
         repo = self.make_repo()
