@@ -32,9 +32,6 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
                 "recursos": {
                     "pv": {"atuais": 27, "maximos": 39},
                     "ki": {"atuais": 3, "maximos": 6},
-                    "disponibilidades": {
-                        "broche_do_semblante_humilde": "disponível",
-                    },
                 },
                 "tempo": {"data": "11 Eleasis, 1372 DR", "hora_aproximada": "14:37"},
                 "localizacao": {"area": "cais", "ponto_exato": "navio no cais"},
@@ -44,6 +41,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
                             "nome": "Broche do Semblante Humilde",
                             "caminho_disponibilidade": "recursos.disponibilidades.broche_do_semblante_humilde",
                             "efeito_temporario": "broche_do_semblante_humilde",
+                            "disponibilidade": "disponível",
                         }
                     }
                 },
@@ -69,7 +67,10 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
     def _write(self, rel: str, value) -> None:
         path = self.repo / rel
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(yaml.safe_dump(value, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        path.write_text(
+            yaml.safe_dump(value, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
 
     def _append_pending(self, record: dict) -> None:
         with (self.repo / "runtime/eventos-pendentes.jsonl").open("a", encoding="utf-8") as handle:
@@ -121,7 +122,9 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
 
     def test_efeito_ativo_aparece_mesmo_quando_item_ja_foi_gasto(self):
         context = yaml.safe_load((self.repo / "runtime/contexto.yaml").read_text(encoding="utf-8"))
-        context["recursos"]["disponibilidades"]["broche_do_semblante_humilde"] = "indisponível até amanhã"
+        context["rodape"]["itens_magicos"]["broche_do_semblante_humilde"]["disponibilidade"] = (
+            "indisponível até amanhã"
+        )
         context["efeitos_temporarios"] = {
             "broche_do_semblante_humilde": {"duracao": "até 15:37"}
         }
@@ -161,7 +164,8 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         context = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
         items = ((context.get("rodape") or {}).get("itens_magicos") or {})
         self.assertEqual(set(items), {"broche_do_semblante_humilde"})
-        self.assertIn("disponibilidades", context.get("recursos") or {})
+        self.assertNotIn("disponibilidades", context.get("recursos") or {})
+        self.assertIn("disponibilidade", items["broche_do_semblante_humilde"])
 
     def test_rodape_real_e_compacto(self):
         footer = rodape_turno.build(ROOT)
