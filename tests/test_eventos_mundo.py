@@ -25,12 +25,15 @@ class EventosRepoTest(unittest.TestCase):
         self.assertEqual(router["orcamento"]["max_estrategicos_por_evento"], 2)
         self.assertEqual(router["orcamento"]["max_leves_por_evento"], 1)
 
-    def test_estado_inicial_sem_retroatividade(self):
+    def test_estado_real_nao_processa_alem_do_tempo_canonico(self):
         result = eventos_mundo.status(ROOT)
-        self.assertEqual(result["processado_ate"]["data"], "10 Eleasis, 1372 DR")
-        self.assertEqual(result["ocorrencia"]["ciclo"], 0)
-        self.assertEqual(result["eventos"]["ciclo"], 0)
-        self.assertEqual(result["historico_recente"], [])
+        processed = eventos_mundo.instant(result["processado_ate"], "processado_ate")
+        current, _ = mundo.load_canonical_time(ROOT)
+        self.assertLessEqual(processed, current)
+        self.assertLessEqual(len(result["historico_recente"]), eventos_mundo.MAX_HISTORY)
+        for i, item in enumerate(result["historico_recente"]):
+            dawn = eventos_mundo.instant(item["amanhecer"], f"historico_recente[{i}].amanhecer")
+            self.assertLessEqual(dawn, processed)
 
     def test_urna_real_e_sete_por_tres(self):
         index = eventos_mundo.load_index(ROOT)

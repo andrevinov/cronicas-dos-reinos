@@ -25,9 +25,17 @@ Vivo, a idempotência também reconhece uma transação já instalada no ledger 
 checkpoint.
 
 Data+hora são um único fato transacional: mudanças novas chegam ao buffer como
-`{"alvo":"tempo","op":"instante","valor":{"data":"...","hora":"HH:MM"}}`.
+{"alvo":"tempo","op":"instante","valor":{"data":"...","hora":"HH:MM"}}.
 O checkpoint temporal lê esse mesmo instante; não existe janela em que a hora
 avance sem a data correspondente.
+
+Pendências de avaliação do Mundo Vivo formam uma barreira causal: um novo avanço
+de Ren não pode ser registrado enquanto elas estiverem abertas. O hot path lê
+somente um marcador derivado minúsculo; o estado reservado completo só é conferido
+quando o marcador aponta bloqueio. Retry/recuperação permanece sempre permitido.
+Uma avaliação que gere mudança canônica usa uma transação sem ação do jogador,
+modo: mundo e tag resolver-pendencia-mundo:<id>; essa transação força
+checkpoint antes de a pendência ser concluída.
 
 Passagens pequenas de tempo continuam no hot path comum. Quando o tempo efetivo
 acumula pelo menos duas horas desde o último cursor do Mundo Vivo, ou atravessa o
@@ -53,6 +61,7 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import barreira_mundo
 import entrada
 import tempo_transacional
 from transacoes import (
@@ -383,7 +392,7 @@ def _run_scene_checkpoint(repo: Path) -> dict[str, Any]:
         return checkpoint.checkpoint(repo, "cena")
     except Exception as exc:  # a transação já pode estar persistida; retry deve reparar
         raise TransactionError(
-            "turno registrado, mas checkpoint temporal falhou; repita a mesma operação "
+            "turno registrado, mas checkpoint do mundo falhou; repita a mesma operação "
             "ou execute ferramentas/checkpoint.py recuperar"
         ) from exc
 
@@ -421,11 +430,22 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
     if marker_count == 1 and existing_record is None:
         consolidated = _transaction_in_ledger(repo, session, transaction_id)
 
+    need_transcript = marker_count == 0
+    need_pending = existing_record is None and not consolidated
+    retry = not (need_transcript and need_pending)
+    try:
+        authorization = barreira_mundo.authorize_registration(
+            repo,
+            normalized,
+            retry=retry,
+        )
+    except barreira_mundo.WorldPendingBarrierError as exc:
+        raise TransactionError(str(exc)) from exc
+    resolution_id = authorization.get("pendencia_resolvida")
+
     prior_records = [item for item in existing_records if item.get("id") != transaction_id]
     temporal_trigger = None if consolidated else detect_world_checkpoint(repo, prior_records, record)
 
-    need_transcript = marker_count == 0
-    need_pending = existing_record is None and not consolidated
     if need_pending:
         candidate_pending = _append_jsonl(pending_text, record)
         if len(candidate_pending.encode("utf-8")) > MAX_PENDING_BYTES:
@@ -447,20 +467,36 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         _atomic_write(transcript_path, candidate_transcript)
 
     checkpoint_world: dict[str, Any] | None = None
-    if temporal_trigger is not None:
+    force_resolution_checkpoint = resolution_id is not None and not consolidated
+    if temporal_trigger is not None or force_resolution_checkpoint:
         checkpoint_result = _run_scene_checkpoint(repo)
         world = checkpoint_result.get("mundo") or {}
         checkpoint_world = {
             "disparado": True,
-            **temporal_trigger,
+            "motivo": (
+                temporal_trigger["motivo"]
+                if temporal_trigger is not None
+                else "resolucao_pendencia_mundo"
+            ),
             "novas_pendencias": len(world.get("novas_pendencias") or []),
             "agentes_reconsiderar": world.get("agentes_reconsiderar") or [],
         }
+        if temporal_trigger is not None:
+            checkpoint_world.update(
+                {
+                    "minutos_desde_checkpoint": temporal_trigger["minutos_desde_checkpoint"],
+                    "tempo_efetivo": temporal_trigger["tempo_efetivo"],
+                }
+            )
+        if resolution_id is not None:
+            checkpoint_world["pendencia_mundo"] = resolution_id
     elif consolidated:
         checkpoint_world = {
             "disparado": False,
             "ja_consolidado": True,
         }
+        if resolution_id is not None:
+            checkpoint_world["pendencia_mundo"] = resolution_id
 
     return {
         "id": transaction_id,
@@ -473,6 +509,7 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         "reparo_parcial": need_transcript != need_pending and not consolidated,
         "ja_registrada": not need_transcript and not need_pending,
         "consolidada": consolidated,
+        "pendencia_mundo": resolution_id,
         "checkpoint_mundo": checkpoint_world,
         "avisos": narration_warnings(normalized),
     }
@@ -515,6 +552,7 @@ def status(repo: Path) -> dict[str, Any]:
         "ultima_transacao": records[-1]["id"] if records else None,
         "sessao_atual": session,
         "status_sessao": session_status,
+        "barreira_mundo": barreira_mundo.load_status(repo),
     }
 
 
@@ -549,10 +587,23 @@ def main() -> int:
             world = result.get("checkpoint_mundo") or {}
             if world.get("disparado"):
                 agents = ", ".join(world.get("agentes_reconsiderar") or []) or "nenhum"
+                if world.get("motivo") == "resolucao_pendencia_mundo":
+                    print(
+                        "MUNDO — checkpoint de resolução: "
+                        f"{world.get('pendencia_mundo')} | "
+                        f"novas_pendencias={world.get('novas_pendencias', 0)} | agentes={agents}"
+                    )
+                else:
+                    print(
+                        "MUNDO — checkpoint temporal: "
+                        f"{world.get('motivo')} | atraso={world.get('minutos_desde_checkpoint')} min | "
+                        f"novas_pendencias={world.get('novas_pendencias', 0)} | agentes={agents}"
+                    )
+            pending_world = result.get("pendencia_mundo")
+            if pending_world and world.get("disparado"):
                 print(
-                    "MUNDO — checkpoint temporal: "
-                    f"{world.get('motivo')} | atraso={world.get('minutos_desde_checkpoint')} min | "
-                    f"novas_pendencias={world.get('novas_pendencias', 0)} | agentes={agents}"
+                    "MUNDO — mudança da avaliação foi canonizada; conclua a pendência com: "
+                    f"python3 ferramentas/barreira_mundo.py concluir {pending_world} --nota '<resultado da avaliação>'"
                 )
             for warning in result.get("avisos", []):
                 print(f"AVISO — {warning}")
@@ -570,7 +621,12 @@ def main() -> int:
             print(json.dumps(status(repo), ensure_ascii=False, indent=2))
             return 0
         raise TransactionError(f"comando desconhecido: {args.comando}")
-    except (OSError, TransactionError, yaml.YAMLError) as exc:
+    except (
+        OSError,
+        TransactionError,
+        yaml.YAMLError,
+        barreira_mundo.WorldPendingBarrierError,
+    ) as exc:
         print(f"FALHA DE TURNO — {exc}", file=sys.stderr)
         return 1
 

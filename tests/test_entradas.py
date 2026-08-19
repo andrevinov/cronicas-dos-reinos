@@ -14,16 +14,28 @@ class EntradasRepositoryTest(unittest.TestCase):
         r=entradas.validate(ROOT)
         self.assertTrue(r["ok"],r["erros"]); self.assertEqual(r["quantidade"],5)
 
-    def test_estado_inicial_so_agenda_shen(self):
+    def test_estado_real_agenda_apenas_candidatos_permitidos(self):
         index=entradas.load_index(ROOT); state=entradas.load_state(ROOT,index)
-        self.assertEqual(entradas.normal(index,state),"shen_meihua")
-        self.assertEqual(state["candidatos"]["shen_meihua"]["proxima_avaliacao"],{"data":"11 Eleasis, 1372 DR","hora":"06:00"})
-        for cid in entradas.ordered(index)[1:]: self.assertIsNone(state["candidatos"][cid]["proxima_avaliacao"])
+        normal=entradas.normal(index,state); antecipado=entradas.anticipated(state); foco=entradas.focus(index,state)
+        agendados={cid for cid in entradas.ordered(index) if state["candidatos"][cid]["proxima_avaliacao"] is not None}
+        permitidos={cid for cid in (normal,antecipado) if cid is not None}
+        self.assertTrue(agendados <= permitidos,(agendados,permitidos))
+        if foco is None:
+            self.assertEqual(agendados,set())
+        else:
+            self.assertIn(foco,agendados)
 
-    def test_status_real_identifica_shen_sem_abrir_fragmentos(self):
+    def test_status_real_reflete_foco_sem_abrir_fragmentos(self):
+        index=entradas.load_index(ROOT); state=entradas.load_state(ROOT,index)
+        normal=entradas.normal(index,state); foco=entradas.focus(index,state); nivel=entradas.level(ROOT)
         r=entradas.status(ROOT)
-        self.assertEqual(r["candidato_normal"],"shen_meihua"); self.assertEqual(r["candidato_em_foco"]["nivel_atual"],6)
-        self.assertTrue(r["candidato_em_foco"]["elegivel_por_nivel"])
+        self.assertEqual(r["candidato_normal"],normal)
+        if foco is None:
+            self.assertIsNone(r["candidato_em_foco"])
+        else:
+            detalhe=r["candidato_em_foco"]
+            self.assertEqual(detalhe["id"],foco); self.assertEqual(detalhe["nivel_atual"],nivel)
+            self.assertEqual(detalhe["elegivel_por_nivel"],nivel>=index["candidatos"][foco]["nivel_minimo_normal"])
         self.assertEqual(r["fontes_lidas"],["narrador/entradas/index.yaml","narrador/entradas/estado.yaml","runtime/contexto.yaml"])
 
     def test_consulta_de_jenilynn_e_fragmentada(self):

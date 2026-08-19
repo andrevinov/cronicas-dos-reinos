@@ -17,11 +17,15 @@ import recompensas
 
 
 class RecompensasRepoTest(unittest.TestCase):
-    def test_repo_real_valida_vazio_sem_criar_mapa(self):
+    def test_repo_real_valida_mapas_persistidos(self):
+        index = recompensas.load_index(ROOT)
         result = recompensas.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["mapas"], 0)
-        self.assertEqual(result["recompensas"], 0)
+        self.assertEqual(result["mapas"], len(index["mapas"]))
+        self.assertEqual(
+            result["recompensas"],
+            sum(meta["quantidade"] for meta in index["mapas"].values()),
+        )
 
     def test_local_sem_mapa_custa_so_indice(self):
         result = recompensas.consult(ROOT, "sarbreen_setor_a")
@@ -32,8 +36,13 @@ class RecompensasRepoTest(unittest.TestCase):
         )
 
     def test_status_tambem_e_so_indice(self):
+        index = recompensas.load_index(ROOT)
         result = recompensas.status(ROOT)
-        self.assertEqual(result["mapas"], 0)
+        self.assertEqual(result["mapas"], len(index["mapas"]))
+        self.assertEqual(
+            result["recompensas_indexadas"],
+            sum(meta["quantidade"] for meta in index["mapas"].values()),
+        )
         self.assertEqual(result["fontes_lidas"], ["narrador/recompensas/index.yaml"])
 
 
@@ -52,6 +61,25 @@ class RecompensasSinteticasTest(unittest.TestCase):
         target.mkdir(parents=True, exist_ok=True)
         for name in ("index.yaml", "itens-index.yaml", "tabelas.yaml", "planejadas.yaml"):
             shutil.copy2(ROOT / "narrador/recompensas" / name, target / name)
+
+        # Fixtures sintéticos herdam schema/seed/tabelas da campanha, mas nunca o
+        # estado vivo. Referências persistidas para mapas/itens reais tornariam o
+        # sandbox dependente dos artefatos da sessão atual.
+        index_path = target / "index.yaml"
+        index = yaml.safe_load(index_path.read_text(encoding="utf-8"))
+        index["mapas"] = {}
+        index_path.write_text(
+            yaml.safe_dump(index, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
+
+        items_path = target / "itens-index.yaml"
+        items = yaml.safe_load(items_path.read_text(encoding="utf-8"))
+        items["recompensas"] = {}
+        items_path.write_text(
+            yaml.safe_dump(items, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
 
     @staticmethod
     def _all_yaml_bytes(repo: Path) -> dict[str, bytes]:

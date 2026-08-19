@@ -4,6 +4,20 @@ objetivo: >-
   Fechar a integração de recompensas e side quests sem transformar gatilhos
   reativos em scans ou schedulers do hot path.
 limites:
+  abertura_cena:
+    max_npcs_por_chamada: 12
+    max_fragmentos_narrativos: 1
+    max_leituras_tempo: 1
+    identidade_antes_de_mutacao: true
+    ordenacao_encontros_simultaneos: id_canonico
+    local_sem_npc_nao_le_oportunidades: true
+    npc_sem_perfil_nao_le_tempo: true
+  resolucao_npc_id_exato:
+    max_fontes: 1
+    max_fragmentos_narrativos: 0
+  resolucao_npc_alias_ou_erro:
+    max_fontes: 2
+    max_fragmentos_narrativos: 0
   encontro_bloqueado:
     max_fontes: 3
     max_fragmentos_narrativos: 0
@@ -36,4 +50,5 @@ invariantes:
   geracao_recompensa_repetida: 0
   sidequest_fora_de_encontro: 0
   max_fragmentos_por_decisao: 1
+  gatilhos_reativos_porta_preferencial_unica: true
   turno_comum_continua_duas_escritas: true
