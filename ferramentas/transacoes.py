@@ -217,4 +217,24 @@ def overlay_runtime(
     scene: dict[str, Any] | None,
     records: Iterable[dict[str, Any]],
 ) -> tuple[dict[str, Any], dict[str, Any] | None, int]:
-    return _base.overlay_runtime(context, scene, tempo_transacional.expand_records(records))
+    expanded = tempo_transacional.expand_records(records)
+    context_out, scene_out, applied = _base.overlay_runtime(context, scene, expanded)
+
+    session = ((context_out.get("sessao") or {}).get("numero"))
+    current = _base.pending_for_session(expanded, session if isinstance(session, int) else None)
+    for record in current:
+        for delta in record.get("deltas") or []:
+            if delta.get("visibilidade", "operacional") == "narrador":
+                continue
+            if delta.get("op") == "registrar":
+                continue
+            target = delta.get("alvo")
+            path = delta.get("caminho")
+            if (
+                target == "estado"
+                and isinstance(path, str)
+                and path.startswith("recursos.disponibilidades.")
+            ):
+                _base._apply_mapped(context_out, path, delta)
+                applied += 1
+    return context_out, scene_out, applied
