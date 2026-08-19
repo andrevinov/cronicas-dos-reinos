@@ -75,11 +75,13 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa da cena se houver gatilho → rolagens → narração → turno.py registrar → fim`.
 
-**Barreira de pendências é pré-narração.** Antes de qualquer novo avanço ON, ler somente `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: consultar `python3 ferramentas/mundo.py pendentes` e resolver a fila primeiro. Pendência significa “avaliar”, não “aconteceu”. Avaliação sem mudança termina com `barreira_mundo.py concluir <id> --nota ...`; se produzir mudança canônica, registrar antes uma transação sem `jogador`, com `modo: mundo` e tag `resolver-pendencia-mundo:<id>`, deixar o checkpoint canonizar e então concluir. O writer repete a mesma trava, mas ela não substitui esta checagem anterior ao texto.
+**Barreira de pendências é pré-narração.** Antes de novo avanço ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar antes transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
+**Gatilho reativo não é rotina.** Ao começar cena, entrar/explorar local, iniciar encontro ou mudar o elenco, preferir uma chamada a `ferramentas/cena_mundo.py abrir`. Informar `cena_id` estável, local só se houve entrada/exploração e NPCs cujo encontro começou. Repetir `cena_id` é seguro; NPC novo pode ser acrescentado com o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
+
+Em encontros simultâneos, a porta resolve todos os NPCs antes de mutar, colapsa aliases e ordena por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado de uma camada.
 
 **Antes de narrar uma intenção que comprime um intervalo relevante de tempo** — por exemplo dormir, esperar, vigiar por horas, viajar por período prolongado ou executar trabalho que salta diretamente para um horário posterior — consultar uma única vez a primeira fronteira causal:
 
@@ -105,12 +107,13 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nenhum deles faz scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; a abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; nenhum dos dois faz scan por turno.
 
 ### Recompensas e side quests
 
-- `interacoes_mundo.py local <id> --acao entrar|explorar ...` garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>` passa pelo gate raro; **potencial ≠ oferta**.
+- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros numa só porta.
+- `interacoes_mundo.py local <id> --acao entrar|explorar ...` continua como primitiva: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
+- `interacoes_mundo.py encontro <npc> --encontro-id <id>` continua como primitiva: passa pelo gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
 - Efeito de side quest: `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**. Rastro/recompensa ficam em `pos_canonico` e só são materializados depois que o fato-base virou cânone.
 - Agente novo nunca nasce silenciosamente de quest: passa antes pela classificação NPC v2.
