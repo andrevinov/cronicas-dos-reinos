@@ -17,8 +17,11 @@ from __future__ import annotations
 
 import argparse
 import copy
+import difflib
 import json
+import re
 import sys
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -44,6 +47,7 @@ VALID_EFFECTS = {"agente", "operacao", "pressao", "consequencia", "rastro", "rec
 MAX_EFFECTS = 6
 OPEN_MISSIONS = oportunidades.OPEN_STATES
 TERMINAL_MISSIONS = oportunidades.TERMINAL_STATES
+MIN_ALIAS_CHARS = 3
 
 
 class IntegrationError(ValueError):
@@ -104,6 +108,160 @@ def _compact_sources(values: list[str]) -> list[str]:
     return list(dict.fromkeys(values))
 
 
+def _normalize_npc_ref(value: Any) -> str:
+    raw = _text(value, "referência de NPC").casefold()
+    folded = unicodedata.normalize("NFKD", raw)
+    plain = "".join(char for char in folded if not unicodedata.combining(char))
+    normalized = re.sub(r"[^a-z0-9]+", "_", plain).strip("_")
+    if not normalized:
+        raise IntegrationError("referência de NPC não contém identificador utilizável")
+    return normalized
+
+
+def _entity_matches(query: str, entities: dict[str, str]) -> tuple[list[str], str | None]:
+    exact: set[str] = set()
+    aliases: set[str] = set()
+    for npc_id, name in entities.items():
+        normalized_id = _normalize_npc_ref(npc_id)
+        normalized_name = _normalize_npc_ref(name)
+        if query in {normalized_id, normalized_name}:
+            exact.add(npc_id)
+            continue
+        if len(query) < MIN_ALIAS_CHARS:
+            continue
+        tokens = {
+            *normalized_id.split("_"),
+            *normalized_name.split("_"),
+        }
+        if query in tokens or normalized_id.startswith(query + "_") or normalized_name.startswith(query + "_"):
+            aliases.add(npc_id)
+    if exact:
+        return sorted(exact), "nome_ou_id_normalizado"
+    if aliases:
+        return sorted(aliases), "alias_univoco"
+    return [], None
+
+
+def _relation_entities(repo: Path) -> tuple[dict[str, str], list[str]]:
+    path = repo / RELATIONS
+    if not path.is_file():
+        return {}, []
+    data = _map(_load(path), RELATIONS.as_posix())
+    relations = _map(data.get("relacoes"), "relacoes")
+    result: dict[str, str] = {}
+    for npc_id, raw_meta in relations.items():
+        meta = _map(raw_meta, f"relacoes.{npc_id}")
+        result[_text(npc_id, "id de relação")] = _text(meta.get("nome"), f"relacoes.{npc_id}.nome")
+    return result, [RELATIONS.as_posix()]
+
+
+def _suggest_npc(query: str, entities: dict[str, str]) -> list[str]:
+    labels: dict[str, set[str]] = {}
+    for npc_id, name in entities.items():
+        normalized_id = _normalize_npc_ref(npc_id)
+        normalized_name = _normalize_npc_ref(name)
+        candidates = {
+            normalized_id,
+            normalized_name,
+            *normalized_id.split("_"),
+            *normalized_name.split("_"),
+        }
+        for label in candidates:
+            if len(label) < MIN_ALIAS_CHARS:
+                continue
+            labels.setdefault(label, set()).add(npc_id)
+    close = difflib.get_close_matches(query, sorted(labels), n=5, cutoff=0.72)
+    suggestions: list[str] = []
+    for label in close:
+        for npc_id in sorted(labels[label]):
+            if npc_id not in suggestions:
+                suggestions.append(npc_id)
+            if len(suggestions) >= 3:
+                return suggestions
+    return suggestions
+
+
+def resolve_encounter_npc(
+    repo: Path,
+    supplied: str,
+    index: dict[str, Any],
+) -> dict[str, Any]:
+    """Resolve ID/nome curto sem transformar desconhecido em 'sem perfil'.
+
+    Caminho barato: ID exato de perfil usa somente o índice de oportunidades.
+    Nome completo normalizado também é resolvido ali. Só aliases parciais ou IDs
+    fora dos perfis consultam o índice canônico de relações; nenhum fragmento é
+    aberto.
+    """
+    raw = _text(supplied, "npc_id")
+    profiles = _map(index.get("perfis"), "perfis")
+    sources = [OPPORTUNITY_INDEX.as_posix()]
+
+    if raw in profiles:
+        return {
+            "npc_id": raw,
+            "recebido": raw,
+            "resolucao": "id_exato",
+            "fontes_lidas": sources,
+        }
+
+    query = _normalize_npc_ref(raw)
+    profile_entities = {
+        npc_id: _text(meta.get("nome"), f"perfis.{npc_id}.nome")
+        for npc_id, meta in profiles.items()
+        if isinstance(meta, dict)
+    }
+    profile_matches, profile_mode = _entity_matches(query, profile_entities)
+    if profile_mode == "nome_ou_id_normalizado":
+        if len(profile_matches) != 1:
+            raise IntegrationError(
+                f"referência de NPC ambígua {raw!r}: " + ", ".join(profile_matches)
+            )
+        return {
+            "npc_id": profile_matches[0],
+            "recebido": raw,
+            "resolucao": profile_mode,
+            "fontes_lidas": sources,
+        }
+
+    relations, relation_sources = _relation_entities(repo)
+    sources.extend(relation_sources)
+    known = dict(relations)
+    for npc_id, name in profile_entities.items():
+        known.setdefault(npc_id, name)
+
+    matches, mode = _entity_matches(query, known)
+    if len(matches) == 1:
+        return {
+            "npc_id": matches[0],
+            "recebido": raw,
+            "resolucao": mode or "id_canonico",
+            "fontes_lidas": _compact_sources(sources),
+        }
+    if len(matches) > 1:
+        raise IntegrationError(
+            f"referência de NPC ambígua {raw!r}: "
+            + ", ".join(matches)
+            + "; use o ID estável completo"
+        )
+
+    suggestions = _suggest_npc(query, known)
+    suffix = f"; sugestão: {', '.join(suggestions)}" if suggestions else ""
+    raise IntegrationError(
+        f"NPC desconhecido para encontro: {raw!r}{suffix}. "
+        "Identificador desconhecido nunca equivale a NPC canônico sem perfil."
+    )
+
+
+def _resolution_fields(resolution: dict[str, Any]) -> dict[str, Any]:
+    if resolution["recebido"] == resolution["npc_id"]:
+        return {}
+    return {
+        "npc_id_recebido": resolution["recebido"],
+        "resolucao_id": resolution["resolucao"],
+    }
+
+
 def local_event(
     repo: Path,
     place: str,
@@ -160,6 +318,10 @@ def encounter_event(
         index = oportunidades.load_index(repo)
     except oportunidades.OpportunityError as exc:
         raise IntegrationError(str(exc)) from exc
+
+    resolution = resolve_encounter_npc(repo, npc_id, index)
+    npc_id = resolution["npc_id"]
+    resolution_fields = _resolution_fields(resolution)
     meta = index["perfis"].get(npc_id)
     if not isinstance(meta, dict) or meta.get("estado") != "ativo":
         return {
@@ -167,7 +329,8 @@ def encounter_event(
             "resultado": "interacao_normal",
             "motivo": "npc_sem_perfil_ativo",
             "npc_id": npc_id,
-            "fontes_lidas": [OPPORTUNITY_INDEX.as_posix()],
+            **resolution_fields,
+            "fontes_lidas": resolution["fontes_lidas"],
         }
 
     try:
@@ -178,7 +341,7 @@ def encounter_event(
     except oportunidades.OpportunityError as exc:
         raise IntegrationError(str(exc)) from exc
 
-    sources = [OPPORTUNITY_INDEX.as_posix(), OPPORTUNITY_STATE.as_posix(), *time_sources]
+    sources = [*resolution["fontes_lidas"], OPPORTUNITY_STATE.as_posix(), *time_sources]
     if key in state["encontros_recentes"]:
         if changed:
             oportunidades.atomic(repo / OPPORTUNITY_STATE, state)
@@ -187,6 +350,7 @@ def encounter_event(
             "resultado": "interacao_normal",
             "motivo": "encontro_ja_processado",
             "npc_id": npc_id,
+            **resolution_fields,
             "encontro_id": key,
             "fontes_lidas": _compact_sources(sources),
         }
@@ -200,6 +364,7 @@ def encounter_event(
             "resultado": "interacao_normal",
             "motivo": blocked,
             "npc_id": npc_id,
+            **resolution_fields,
             "ativas": active,
             "em_aberto": opened,
             "cooldown_ate": state.get("cooldown_ate"),
@@ -218,6 +383,7 @@ def encounter_event(
             "motivo": "gate_sem_oportunidade",
             "ficha": token,
             "npc_id": npc_id,
+            **resolution_fields,
             "encontro_id": key,
             "fontes_lidas": _compact_sources(sources),
         }
@@ -237,6 +403,7 @@ def encounter_event(
             "motivo": "oportunidade_sem_necessidade_disponivel",
             "ficha": token,
             "npc_id": npc_id,
+            **resolution_fields,
             "encontro_id": key,
             "fontes_lidas": _compact_sources(sources),
         }
@@ -271,6 +438,7 @@ def encounter_event(
         "resultado": "avaliar_sidequest",
         "ficha": token,
         "npc_id": npc_id,
+        **resolution_fields,
         "encontro_id": key,
         "pendencia": pending,
         "instrucao": (

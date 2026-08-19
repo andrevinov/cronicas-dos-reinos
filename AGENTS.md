@@ -75,9 +75,21 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa da cena se houver gatilho → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
 
-**Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
+**Barreira de pendências é pré-narração.** Antes de novo avanço ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar antes transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
+
+**Gatilho reativo não é rotina.** Ao começar cena, entrar/explorar local, iniciar encontro ou mudar o elenco, preferir uma chamada a `ferramentas/cena_mundo.py abrir`. Informar `cena_id` estável, local só se houve entrada/exploração e NPCs cujo encontro começou. Repetir `cena_id` é seguro; NPC novo pode ser acrescentado com o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
+
+Em encontros simultâneos, a porta resolve todos os NPCs antes de mutar, colapsa aliases e ordena por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado de uma camada.
+
+**Antes de narrar uma intenção que comprime um intervalo relevante de tempo** — por exemplo dormir, esperar, vigiar por horas, viajar por período prolongado ou executar trabalho que salta diretamente para um horário posterior — consultar uma única vez a primeira fronteira causal:
+
+```bash
+python3 ferramentas/fronteira_mundo.py --data "11 Eleasis, 1372 DR" --hora "11:50"
+```
+
+Se `interromper: false`, narrar normalmente até o alvo. Se `interromper: true`, **não narrar além de `fronteira`**: preservar o restante da intenção de Ren, resolver somente o trecho até aquele instante, registrar/checkpointar e deixar o Mundo Vivo processar as camadas vencidas antes de continuar o tempo restante. Uma fronteira é uma necessidade de processamento, não um acontecimento automático. **Não chamar** `fronteira_mundo.py` em turno curto/comum sem compressão temporal; a consulta existe para saltos deliberados de tempo e lê apenas roteadores/estados compactos.
 
 Durante cada avanço comum:
 
@@ -99,12 +111,13 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. O rodapé acrescenta apenas leitura local dos snapshots/runtime já quentes; não cria tool call nem escrita. Gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nunca são scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; a abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; o rodapé lê apenas snapshots/runtime já quentes e não cria tool call nem escrita; nenhum deles faz scan por turno.
 
 ### Recompensas e side quests
 
-- `interacoes_mundo.py local <id> --acao entrar|explorar ...` garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>` passa pelo gate raro; **potencial ≠ oferta**.
+- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros numa só porta.
+- `interacoes_mundo.py local <id> --acao entrar|explorar ...` continua como primitiva: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
+- `interacoes_mundo.py encontro <npc> --encontro-id <id>` continua como primitiva: passa pelo gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
 - Efeito de side quest: `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**. Rastro/recompensa ficam em `pos_canonico` e só são materializados depois que o fato-base virou cânone.
 - Agente novo nunca nasce silenciosamente de quest: passa antes pela classificação NPC v2.
@@ -121,7 +134,7 @@ python3 ferramentas/checkpoint.py cena
 python3 ferramentas/checkpoint.py sessao
 ```
 
-Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → memória. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
+Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Se o Mundo Vivo deixar avaliações abertas, o checkpoint materializa o bloqueio do próximo avanço; não resolve semanticamente nenhuma delas. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
 
 Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
 

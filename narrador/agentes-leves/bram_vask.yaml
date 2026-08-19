@@ -20,7 +20,7 @@ iniciativas_possiveis:
   evidencia: Se Bram comprar lembranças nas ruas próximas, pode descobrir a direção geral dos pátios de carroças.
 - descricao: Usar intermediários para manter distância entre ele e ações de busca ou captura.
   fonte: estado/relacoes/bram_vask.yaml
-  evidencia: Bram Vask pagou a pergunta sobre Colm/Dent, mas não veio pessoalmente; segundo ele, um homem de mãos limpas organizou a compra/captura.
+  evidencia: Se a fala do besteiro for verdadeira, Bram terceirizou a ação no Fire River por meio de intermediário mais limpo e talvez mais perigoso juridicamente.
 regra_de_reavaliacao: Cobrança e autopreservação são o padrão; só criar iniciativa extraordinária quando houver nova pista, ameaça à própria rede ou oportunidade concreta de resposta indireta.
 fontes_canonicas:
 - estado/relacoes/bram_vask.yaml
