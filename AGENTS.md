@@ -75,11 +75,21 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → abertura reativa da cena se houver fronteira → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa da cena se houver gatilho → rolagens → narração → turno.py registrar → fim`.
+
+**Barreira de pendências é pré-narração.** Antes de qualquer novo avanço ON, ler somente `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: consultar `python3 ferramentas/mundo.py pendentes` e resolver a fila primeiro. Pendência significa “avaliar”, não “aconteceu”. Avaliação sem mudança termina com `barreira_mundo.py concluir <id> --nota ...`; se produzir mudança canônica, registrar antes uma transação sem `jogador`, com `modo: mundo` e tag `resolver-pendencia-mundo:<id>`, deixar o checkpoint canonizar e então concluir. O writer repete a mesma trava, mas ela não substitui esta checagem anterior ao texto.
 
 **Gatilho reativo não é rotina.** Quando começa uma cena, Ren entra/explora um local, inicia encontro com NPC ou o elenco presente muda substancialmente, preferir **uma única chamada** a `ferramentas/cena_mundo.py abrir`. Informar `cena_id` estável, o local somente se houve entrada/exploração real e os NPCs cujo encontro começou nessa fronteira. Repetir a mesma `cena_id` é seguro: NPC já processado não consome outro gate; NPC recém-chegado pode ser acrescentado numa nova chamada com o mesmo ID. Turno sem fronteira/gatilho não consulta recompensa/oportunidade.
 
 Para encontros simultâneos, a porta resolve todos os NPCs antes de mutar, colapsa aliases duplicados e ordena por ID canônico. Typo/ambiguidade falha antes de mapa/gate. As primitivas `interacoes_mundo.py local` e `interacoes_mundo.py encontro` permanecem para manutenção/testes ou quando for deliberadamente necessário acionar só uma camada.
+
+**Antes de narrar uma intenção que comprime um intervalo relevante de tempo** — por exemplo dormir, esperar, vigiar por horas, viajar por período prolongado ou executar trabalho que salta diretamente para um horário posterior — consultar uma única vez a primeira fronteira causal:
+
+```bash
+python3 ferramentas/fronteira_mundo.py --data "11 Eleasis, 1372 DR" --hora "11:50"
+```
+
+Se `interromper: false`, narrar normalmente até o alvo. Se `interromper: true`, **não narrar além de `fronteira`**: preservar o restante da intenção de Ren, resolver somente o trecho até aquele instante, registrar/checkpointar e deixar o Mundo Vivo processar as camadas vencidas antes de continuar o tempo restante. Uma fronteira é uma necessidade de processamento, não um acontecimento automático. **Não chamar** `fronteira_mundo.py` em turno curto/comum sem compressão temporal; a consulta existe para saltos deliberados de tempo e lê apenas roteadores/estados compactos.
 
 Durante cada avanço comum:
 
@@ -97,7 +107,7 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. Abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; nunca é scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; a abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; nenhum dos dois faz scan por turno.
 
 ### Recompensas e side quests
 
@@ -120,7 +130,7 @@ python3 ferramentas/checkpoint.py cena
 python3 ferramentas/checkpoint.py sessao
 ```
 
-Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → memória. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
+Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Se o Mundo Vivo deixar avaliações abertas, o checkpoint materializa o bloqueio do próximo avanço; não resolve semanticamente nenhuma delas. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
 
 Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
 

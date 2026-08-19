@@ -30,6 +30,7 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import barreira_mundo
 import ciclo_sessoes
 import consolidar
 import direcoes
@@ -83,6 +84,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
             "agentes_reconsiderar": [],
             "direcoes_reconsiderar": [],
             "integracao_reativa": {"configurado": False, "alterou": False},
+            "barreira_pendencias": {"configurado": False, "bloqueado": False, "quantidade": 0},
         }
 
     direction_result: dict[str, Any] = {
@@ -97,6 +99,11 @@ def sync_world(repo: Path) -> dict[str, Any]:
         integration_result = interacoes_mundo.sync_lifecycle(repo)
 
     result = mundo.process_to_canonical(repo)
+    barrier = (
+        barreira_mundo.sync(repo)
+        if (repo / mundo.WORLD_STATE_PATH).is_file()
+        else {"configurado": False, "bloqueado": False, "quantidade": 0}
+    )
     new_pending = [
         *(direction_result.get("novas_pendencias") or []),
         *(result.get("novas_pendencias") or []),
@@ -107,6 +114,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
         "novas_pendencias": new_pending,
         "direcoes_reconsiderar": direction_result.get("direcoes_reconsiderar") or [],
         "integracao_reativa": integration_result,
+        "barreira_pendencias": barrier,
     }
 
 
@@ -253,6 +261,8 @@ def check(repo: Path) -> list[str]:
     if _world_configured(repo):
         world = mundo.check_repo(repo)
         errors.extend(f"mundo vivo: {error}" for error in world.get("erros") or [])
+        barrier = barreira_mundo.check(repo)
+        errors.extend(f"barreira do mundo: {error}" for error in barrier.get("erros") or [])
     if _directions_configured(repo):
         direction_check = direcoes_mundo.check_repo(repo)
         errors.extend(f"direções: {error}" for error in direction_check.get("erros") or [])
@@ -275,10 +285,16 @@ def status(repo: Path) -> dict[str, Any]:
         if _directions_configured(repo)
         else {"configurado": False}
     )
+    barrier = (
+        barreira_mundo.load_status(repo)
+        if _world_configured(repo)
+        else {"configurado": False, "bloqueado": False, "quantidade": 0}
+    )
     return {
         "consolidacao": consolidar.status(repo),
         "ciclo_sessao": ciclo_sessoes.status(repo),
         "mundo": world,
+        "barreira_pendencias": barrier,
         "direcoes": directions,
         "integracao_reativa": {"configurado": _integration_configured(repo)},
         "memoria_sessoes": sessoes.status(repo),
@@ -316,6 +332,9 @@ def main() -> int:
                 prefix += "; sessão encerrada (entre_sessoes)"
             if world.get("configurado") and world.get("novas_pendencias"):
                 prefix += f"; Mundo Vivo gerou {len(world['novas_pendencias'])} pendência(s)"
+            barrier = world.get("barreira_pendencias") or {}
+            if barrier.get("bloqueado"):
+                prefix += f"; próximo turno bloqueado por {barrier.get('quantidade', 0)} pendência(s)"
             print(
                 f"OK — {prefix}: sessão {memory['sessao']:03d} | "
                 f"handoff={memory['handoff']}"
@@ -335,7 +354,7 @@ def main() -> int:
                 for error in errors:
                     print(f"- {error}")
                 return 1
-            print("OK — consolidação, Mundo Vivo, integração reativa e memória fria estão íntegros.")
+            print("OK — consolidação, Mundo Vivo, barreira, integração reativa e memória fria estão íntegros.")
             return 0
         raise ValueError(f"comando desconhecido: {args.comando}")
     except (
@@ -349,6 +368,7 @@ def main() -> int:
         mundo.WorldEngineError,
         direcoes.DirectionError,
         interacoes_mundo.IntegrationError,
+        barreira_mundo.WorldPendingBarrierError,
     ) as exc:
         print(f"FALHA DE CHECKPOINT — {exc}")
         return 1
