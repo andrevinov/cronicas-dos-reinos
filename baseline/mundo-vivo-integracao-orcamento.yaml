@@ -4,6 +4,12 @@ objetivo: >-
   Fechar a integração de recompensas e side quests sem transformar gatilhos
   reativos em scans ou schedulers do hot path.
 limites:
+  resolucao_npc_id_exato:
+    max_fontes: 1
+    max_fragmentos_narrativos: 0
+  resolucao_npc_alias_ou_erro:
+    max_fontes: 2
+    max_fragmentos_narrativos: 0
   encontro_bloqueado:
     max_fontes: 3
     max_fragmentos_narrativos: 0
