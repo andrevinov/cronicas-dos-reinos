@@ -32,10 +32,40 @@ python3 ferramentas/interacoes_mundo.py encontro maerra_thandrel \
 
 O `encontro_id` identifica a conversa inteira. Não gerar um novo ID a cada fala.
 
+### Resolução do NPC
+
+Preferir sempre o **ID estável completo**. Esse é o caminho mais barato: um ID de
+perfil exato é reconhecido somente com `narrador/oportunidades/index.yaml`.
+
+A porta tolera nome/alias humano sem criar identidade paralela:
+
+```text
+nera       -> nera_vell
+Nera Vell  -> nera_vell
+```
+
+Nome completo normalizado pode ser resolvido no próprio índice de oportunidades.
+Alias parcial consulta no máximo o índice canônico `estado/relacoes/index.yaml`
+para provar que a referência é **globalmente unívoca**, sem abrir fragmentos.
+
+Por isso:
+
+```text
+dunn  -> ERRO: colm_dunn ou kethra_dunn
+nrea  -> ERRO: NPC desconhecido; sugestão nera_vell
+```
+
+Um NPC canônico realmente conhecido, mas sem perfil de oportunidade, continua
+retornando `npc_sem_perfil_ativo`. Um identificador desconhecido **nunca** recebe
+essa resposta. Ambiguidade ou typo falham antes de consumir o gate e pedem o ID
+estável. O resultado usa sempre o ID canônico resolvido em cooldown, idempotência,
+necessidades e missões.
+
 A ordem barata é:
 
 ```text
-perfil existe no índice?
+resolver ID/nome do NPC
+→ perfil existe no índice?
 → orçamento/cooldown permitem?
 → encontro já foi processado?
 → gate global 8 nada / 2 oportunidade
@@ -117,6 +147,8 @@ Invariantes:
 
 - zero scan de recompensas/NPCs por turno comum;
 - gate de side quest somente no início de encontro elegível;
+- ID exato de perfil não abre o índice canônico de relações;
+- alias/typo abre no máximo oportunidades + índice de relações, nunca fragmento;
 - ficha `nada` abre zero perfis;
 - ficha `oportunidade` abre no máximo um perfil;
 - mapa existente nunca relê tabelas nem rerrola;
