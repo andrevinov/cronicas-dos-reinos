@@ -75,7 +75,7 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
 
 **Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
 
@@ -88,7 +88,10 @@ Durante cada avanço comum:
 - `narracao` é a cena completa; `resumo` é compressão; `deltas` são apenas mudanças persistentes;
 - **se o instante corrente mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir a data no campo `hora`;**
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
-- rolagens ocultas relevantes permanecem reservadas até consolidação.
+- rolagens ocultas relevantes permanecem reservadas até consolidação;
+- **a última linha `RODAPE_CANONICO — ...` devolvida por `turno.py registrar` deve ser reproduzida verbatim como última linha visível da resposta narrativa; não recalcular, corrigir, resumir, traduzir nem reformatar essa linha.**
+
+O rodapé é apresentação derivada, não nova fonte canônica. Ele usa o runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra somente itens mágicos explicitamente registrados que estejam disponíveis ou com efeito ativo. Não abrir estado/ficha para conferir o rodapé.
 
 Telemetria: **medição é pós-hoc**. `analisar-rollout.py` e `comparar-rollouts.py` nunca rodam durante o avanço narrativo ao vivo.
 
@@ -96,7 +99,7 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. Gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nunca são scan por turno.
+Meta de avanço comum: **duas escritas**. O rodapé acrescenta apenas leitura local dos snapshots/runtime já quentes; não cria tool call nem escrita. Gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nunca são scan por turno.
 
 ### Recompensas e side quests
 
