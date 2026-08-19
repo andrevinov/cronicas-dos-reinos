@@ -11,6 +11,10 @@ A representação persistida continua sendo um único delta. Para compatibilidad
 com o overlay e consolidator legados, a expansão para os espelhos físicos é feita
 somente em memória. Assim uma transação nunca pode instalar a nova hora sem a
 nova data (ou vice-versa).
+
+Compatibilidade de entrada: a porta de turno pode fornecer a data corrente como
+fallback para um legado **somente de hora** quando o valor é HH:MM puro. Isso é
+normalizado antes da persistência. Hora com data/prosa embutida nunca é aceita.
 """
 from __future__ import annotations
 
@@ -106,7 +110,7 @@ def _legacy_kind(delta: Any) -> str | None:
     return None
 
 
-def _validate_legacy_parts(deltas: Iterable[dict[str, Any]]) -> dict[str, str] | None:
+def _legacy_values(deltas: Iterable[dict[str, Any]]) -> tuple[list[str], list[str], bool]:
     dates: list[str] = []
     hours: list[str] = []
     seen = False
@@ -117,24 +121,51 @@ def _validate_legacy_parts(deltas: Iterable[dict[str, Any]]) -> dict[str, str] |
         seen = True
         if delta.get("op") != "set":
             raise AtomicTimeError(
-                "data/hora canônicas só aceitam set legado pareado ou a operação tempo/instante"
+                "data/hora canônicas só aceitam set legado ou a operação tempo/instante"
             )
         if delta.get("visibilidade", "operacional") != "operacional":
             raise AtomicTimeError("data/hora canônicas não aceitam visibilidade narrador")
         value = _text(delta.get("valor"), f"tempo legado {kind}")
         (dates if kind == "data" else hours).append(value)
+    return dates, hours, seen
+
+
+def _legacy_parts(
+    deltas: Iterable[dict[str, Any]],
+    *,
+    fallback_date: str | None = None,
+    allow_hour_only: bool = False,
+) -> dict[str, str] | None:
+    dates, hours, seen = _legacy_values(deltas)
     if not seen:
         return None
-    if not dates or not hours:
-        raise AtomicTimeError(
-            "mudança de data/hora incompleta: use um único delta tempo/instante com {data, hora}"
-        )
-    if len(set(dates)) != 1 or len(set(hours)) != 1:
+    if len(set(dates)) > 1 or len(set(hours)) > 1:
         raise AtomicTimeError("deltas temporais legados divergem entre si")
+    if not hours:
+        raise AtomicTimeError(
+            "mudança temporal com data isolada é inválida; use tempo/instante com {data, hora}"
+        )
+    if not dates:
+        hour = hours[0]
+        if not CLOCK_RE.fullmatch(hour):
+            raise AtomicTimeError(
+                "hora legada isolada só pode ser HH:MM puro; data/prosa embutida é proibida"
+            )
+        if fallback_date is not None:
+            return _canonical_parts(fallback_date, hour)
+        if allow_hour_only:
+            return None
+        raise AtomicTimeError(
+            "mudança de hora sem data explícita precisa ser normalizada pela porta de turno"
+        )
     return _canonical_parts(dates[0], hours[0])
 
 
-def validate_record_contract(deltas: Iterable[dict[str, Any]]) -> None:
+def validate_record_contract(
+    deltas: Iterable[dict[str, Any]],
+    *,
+    allow_legacy_hour_only: bool = False,
+) -> None:
     values = list(deltas)
     atomic = [delta for delta in values if is_atomic_delta(delta)]
     legacy = [delta for delta in values if _legacy_kind(delta) is not None]
@@ -145,27 +176,35 @@ def validate_record_contract(deltas: Iterable[dict[str, Any]]) -> None:
     if atomic:
         validate_atomic_delta(atomic[0])
     elif legacy:
-        _validate_legacy_parts(legacy)
+        _legacy_parts(values, allow_hour_only=allow_legacy_hour_only)
 
 
-def normalize_new_deltas(deltas: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Normaliza escrita nova; par legado completo vira um único delta atômico."""
+def normalize_new_deltas(
+    deltas: Iterable[dict[str, Any]],
+    *,
+    fallback_date: str | None = None,
+) -> list[dict[str, Any]]:
+    """Normaliza escrita nova para exatamente um delta atômico quando há tempo."""
     values = [copy.deepcopy(delta) for delta in deltas]
-    validate_record_contract(values)
     atomic = [delta for delta in values if is_atomic_delta(delta)]
-    if atomic:
-        return values
-
     legacy_positions = [i for i, delta in enumerate(values) if _legacy_kind(delta) is not None]
+    if len(atomic) > 1:
+        raise AtomicTimeError("uma transação pode conter no máximo um instante temporal")
+    if atomic and legacy_positions:
+        raise AtomicTimeError("não misture tempo/instante com deltas legados de data/hora")
+    if atomic:
+        validate_atomic_delta(atomic[0])
+        return values
     if not legacy_positions:
         return values
-    canonical = _validate_legacy_parts(values)
+
+    canonical = _legacy_parts(values, fallback_date=fallback_date)
     assert canonical is not None
     first = min(legacy_positions)
-    filtered = [delta for i, delta in enumerate(values) if i not in set(legacy_positions)]
+    positions = set(legacy_positions)
+    filtered = [delta for i, delta in enumerate(values) if i not in positions]
     atomic_delta = {"alvo": ATOMIC_TARGET, "op": ATOMIC_OP, "valor": canonical}
-    # Reconstitui a posição relativa do primeiro fato temporal sem manter duplicatas.
-    before_count = sum(i < first and i not in set(legacy_positions) for i in range(len(values)))
+    before_count = sum(i < first and i not in positions for i in range(len(values)))
     filtered.insert(before_count, atomic_delta)
     return filtered
 
