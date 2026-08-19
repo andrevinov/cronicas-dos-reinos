@@ -140,7 +140,7 @@ class CenaMundoTest(unittest.TestCase):
         )["gate"]["sorteios"]
 
     def test_ordena_encontros_simultaneos_e_deriva_ids_estaveis(self):
-        fake = lambda npc_id, **kwargs: {
+        fake = lambda _repo, npc_id, **kwargs: {
             "ok": True,
             "resultado": "interacao_normal",
             "motivo": "gate_sem_oportunidade",
