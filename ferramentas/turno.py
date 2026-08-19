@@ -24,6 +24,11 @@ mesma entrada repara somente o lado ausente sem duplicar o outro. Desde o Mundo
 Vivo, a idempotência também reconhece uma transação já instalada no ledger após
 checkpoint.
 
+Data+hora são um único fato transacional: mudanças novas chegam ao buffer como
+`{"alvo":"tempo","op":"instante","valor":{"data":"...","hora":"HH:MM"}}`.
+O checkpoint temporal lê esse mesmo instante; não existe janela em que a hora
+avance sem a data correspondente.
+
 Passagens pequenas de tempo continuam no hot path comum. Quando o tempo efetivo
 acumula pelo menos duas horas desde o último cursor do Mundo Vivo, ou atravessa o
 amanhecer configurado, o próprio registro promove uma fronteira de cena: primeiro
@@ -49,6 +54,7 @@ except ImportError as exc:
     ) from exc
 
 import entrada
+import tempo_transacional
 from transacoes import (
     PENDING_PATH,
     TransactionError,
@@ -254,20 +260,11 @@ def _transaction_in_ledger(repo: Path, session: int, transaction_id: str) -> boo
 
 
 def _has_time_delta(record: dict[str, Any]) -> bool:
-    for delta in record.get("deltas") or []:
-        if not isinstance(delta, dict) or delta.get("op") != "set":
-            continue
-        target = delta.get("alvo")
-        path = delta.get("caminho")
-        if target == "tempo" and path in {"data_atual", "data", "hora_aproximada"}:
-            return True
-        if target == "estado" and path in {"tempo.data_exata", "tempo.hora_aproximada"}:
-            return True
-    return False
+    return tempo_transacional.has_instant_change(record.get("deltas") or [])
 
 
 def _apply_time_deltas(snapshot: dict[str, Any], records: Iterable[dict[str, Any]]) -> None:
-    for record in records:
+    for record in tempo_transacional.expand_records(records):
         for delta in record.get("deltas") or []:
             if not isinstance(delta, dict) or delta.get("op") != "set":
                 continue
@@ -373,7 +370,7 @@ def detect_world_checkpoint(
             "minutos_desde_checkpoint": gap,
             "tempo_efetivo": mundo.instant_parts(after),
         }
-    except (OSError, ValueError, yaml.YAMLError) as exc:
+    except (OSError, ValueError, yaml.YAMLError, tempo_transacional.AtomicTimeError) as exc:
         if isinstance(exc, TransactionError):
             raise
         raise TransactionError(f"não foi possível avaliar checkpoint temporal do mundo: {exc}") from exc
