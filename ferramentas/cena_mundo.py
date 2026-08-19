@@ -83,13 +83,13 @@ def _local_spec(
 def _resolve_npcs(
     repo: Path,
     refs: list[str],
-) -> tuple[list[dict[str, Any]], list[dict[str, str]], list[str]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, str]], list[str], bool]:
     if len(refs) > MAX_SCENE_NPCS:
         raise SceneGateError(
             f"abertura de cena aceita no máximo {MAX_SCENE_NPCS} referências de NPC"
         )
     if not refs:
-        return [], [], []
+        return [], [], [], False
     try:
         index = oportunidades.load_index(repo)
     except oportunidades.OpportunityError as exc:
@@ -113,7 +113,12 @@ def _resolve_npcs(
     # Encontros que começam simultaneamente precisam de ordem independente da
     # ordem acidental dos argumentos do CLI.
     ordered = [unique[npc_id] for npc_id in sorted(unique)]
-    return ordered, duplicates, list(dict.fromkeys(sources))
+    has_active_profile = any(
+        isinstance(index["perfis"].get(item["npc_id"]), dict)
+        and index["perfis"][item["npc_id"]].get("estado") == "ativo"
+        for item in ordered
+    )
+    return ordered, duplicates, list(dict.fromkeys(sources)), has_active_profile
 
 
 def _encounter_id(scene_id: str, npc_id: str) -> str:
@@ -159,11 +164,13 @@ def open_scene(
 
     # Fase 1: resolução somente-leitura. Se houver typo/ambiguidade, nenhum mapa
     # ou gate é tocado.
-    resolutions, duplicates, resolution_sources = _resolve_npcs(repo, npc_refs)
+    resolutions, duplicates, resolution_sources, has_active_profile = _resolve_npcs(
+        repo, npc_refs
+    )
 
     current = now
     time_sources: list[str] = []
-    if resolutions and current is None:
+    if has_active_profile and current is None:
         try:
             current, time_sources = interacoes_mundo._now(repo, None)
         except interacoes_mundo.IntegrationError as exc:
