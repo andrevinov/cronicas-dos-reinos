@@ -59,6 +59,18 @@ def require_mapping(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
+def footer_magic_items(disponibilidades: dict[str, Any]) -> dict[str, Any]:
+    """Projeta só o estado-base necessário ao rodapé, fora de ``recursos``.
+
+    ``caminho_disponibilidade`` continua apontando para a árvore de recursos para
+    que deltas pendentes de uso tenham precedência no overlay do próprio turno.
+    """
+    items = copy.deepcopy(FOOTER_MAGIC_ITEMS)
+    for item_id, item in items.items():
+        item["disponibilidade"] = copy.deepcopy(disponibilidades.get(item_id))
+    return items
+
+
 def build_runtime_from_documents(
     estado: dict[str, Any],
     tempo_arquivo: dict[str, Any],
@@ -130,7 +142,6 @@ def build_runtime_from_documents(
             "ca": recursos.get("classe_de_armadura"),
             "deslocamento": recursos.get("deslocamento"),
             "dinheiro_po": dinheiro.get("po"),
-            "disponibilidades": copy.deepcopy(disponibilidades),
         },
         "tempo": {
             "data": data,
@@ -142,7 +153,9 @@ def build_runtime_from_documents(
             key: localizacao.get(key)
             for key in ("plano", "mundo", "continente", "regiao", "cidade", "area", "ponto_exato")
         },
-        "rodape": {"itens_magicos": copy.deepcopy(FOOTER_MAGIC_ITEMS)},
+        # Estado exclusivo de apresentação fica fora de ``recursos`` para não
+        # inflar/invadir o handoff de memória fria.
+        "rodape": {"itens_magicos": footer_magic_items(disponibilidades)},
         "ponteiros": {
             "ficha": personagem.get("arquivo_ficha") or "personagens/jogador/ficha.yaml",
             "estado_completo": "estado/estado-atual.yaml",
