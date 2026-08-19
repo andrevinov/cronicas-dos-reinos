@@ -61,13 +61,35 @@ A consolidação posterior sincroniza os destinos canônicos necessários.
 
 Manter cronologia consistente. Registrar quando relevante data do mundo, hora aproximada, duração de viagens, descansos, prazos, eventos marcados, estações, duração de efeitos e avanço de planos externos.
 
-Durante uma sessão ativa, tempo novo deve entrar primeiro como delta de `tempo` ou de `estado.tempo`, por exemplo:
+### Data + hora são um único fato
+
+Durante sessão ativa, uma mudança do instante corrente deve entrar como **um único delta atômico**:
 
 ```json
-{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:17 de 7 Eleasis"}
+{
+  "alvo": "tempo",
+  "op": "instante",
+  "valor": {
+    "data": "11 Eleasis, 1372 DR",
+    "hora": "05:10"
+  }
+}
 ```
 
-`contexto.py` aplica esse delta imediatamente ao estado efetivo. `estado/tempo.yaml` continua representando o último checkpoint consolidado até a consolidação em lote.
+Regras obrigatórias:
+
+- `hora` contém somente `HH:MM`;
+- nunca escrever `"05:10 de 11 Eleasis"` em `hora`;
+- não enviar data e hora como fatos independentes;
+- mudança de dia exige a nova `data` explicitamente no mesmo `instante`;
+- uma transação aceita no máximo um `tempo/instante`;
+- não misturar `tempo/instante` com deltas diretos para `tempo.data_atual`, `tempo.hora_aproximada`, `estado.tempo.data_exata` ou `estado.tempo.hora_aproximada`.
+
+Um par legado completo e consistente de data+hora pode ser normalizado pela camada transacional para o formato novo, mas **o JSONL novo permanece com um único delta temporal**. Um campo isolado, uma data divergente ou hora com data/prosa embutida falha antes das duas escritas do turno.
+
+`contexto.py` expande o instante somente em memória para projetar data+hora imediatamente. Na consolidação, o mesmo delta é expandido apenas dentro do plano de staging; `estado/tempo.yaml`, `estado/estado-atual.yaml` e runtime são derivados juntos e instalados pelo journal multiarquivo existente. Portanto não existe estado persistente válido em que apenas metade do instante novo foi instalada.
+
+Os arquivos canônicos antigos podem ainda conter `hora_aproximada` com texto histórico do tipo `15:30 de 11 Eleasis`. Isso é tolerado para leitura/migração; **novas escritas não usam esse formato**.
 
 ### Autoridade de prazos e alertas temporais
 
