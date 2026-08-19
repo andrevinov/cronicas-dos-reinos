@@ -86,6 +86,7 @@ Durante cada avanço comum:
 - registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário para o turno;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
 - `narracao` é a cena completa; `resumo` é compressão; `deltas` são apenas mudanças persistentes;
+- **se o instante corrente mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir a data no campo `hora`;**
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
 - rolagens ocultas relevantes permanecem reservadas até consolidação.
 
