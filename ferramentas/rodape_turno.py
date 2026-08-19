@@ -24,7 +24,6 @@ CONTEXT_PATH = Path("runtime/contexto.yaml")
 SCENE_PATH = Path("runtime/cena.yaml")
 PREFIX = "RODAPE_CANONICO — "
 CLOCK_RE = re.compile(r"\b([01]?\d|2[0-3]):([0-5]\d)\b")
-MONTH_DATE_RE = re.fullmatch
 
 
 class FooterError(ValueError):
@@ -131,10 +130,18 @@ def build(repo: Path) -> str:
     clock = _clock(tempo.get("hora_aproximada"))
     place = location.get("ponto_exato") or location.get("area")
     place_text = _text(place, "localização")
-    pv_text = f"PV {pv.get('atuais')}/{pv.get('maximos')}"
-    ki_text = f"Ki {ki.get('atuais')}/{ki.get('maximos')}"
     if None in (pv.get("atuais"), pv.get("maximos"), ki.get("atuais"), ki.get("maximos")):
         raise FooterError("PV/Ki incompletos no runtime")
+    pv_text = f"PV {pv.get('atuais')}/{pv.get('maximos')}"
+    ki_text = f"Ki {ki.get('atuais')}/{ki.get('maximos')}"
 
     segments = [date, clock, place_text, pv_text, ki_text, *_magic_segments(context)]
     return PREFIX + " · ".join(str(item) for item in segments)
+
+
+def build_safe(repo: Path) -> str:
+    """Rodapé nunca invalida uma transação que já foi persistida."""
+    try:
+        return build(repo)
+    except (FooterError, transacoes.TransactionError, OSError) as exc:
+        return PREFIX + f"indisponível ({' '.join(str(exc).split())})"
