@@ -75,9 +75,11 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → abertura reativa da cena se houver fronteira → rolagens → narração → turno.py registrar → fim`.
 
-**Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
+**Gatilho reativo não é rotina.** Quando começa uma cena, Ren entra/explora um local, inicia encontro com NPC ou o elenco presente muda substancialmente, preferir **uma única chamada** a `ferramentas/cena_mundo.py abrir`. Informar `cena_id` estável, o local somente se houve entrada/exploração real e os NPCs cujo encontro começou nessa fronteira. Repetir a mesma `cena_id` é seguro: NPC já processado não consome outro gate; NPC recém-chegado pode ser acrescentado numa nova chamada com o mesmo ID. Turno sem fronteira/gatilho não consulta recompensa/oportunidade.
+
+Para encontros simultâneos, a porta resolve todos os NPCs antes de mutar, colapsa aliases duplicados e ordena por ID canônico. Typo/ambiguidade falha antes de mapa/gate. As primitivas `interacoes_mundo.py local` e `interacoes_mundo.py encontro` permanecem para manutenção/testes ou quando for deliberadamente necessário acionar só uma camada.
 
 Durante cada avanço comum:
 
@@ -95,12 +97,13 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. Gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nunca são scan por turno.
+Meta de avanço comum: **duas escritas**. Abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; nunca é scan por turno.
 
 ### Recompensas e side quests
 
-- `interacoes_mundo.py local <id> --acao entrar|explorar ...` garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>` passa pelo gate raro; **potencial ≠ oferta**.
+- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros numa só porta.
+- `interacoes_mundo.py local <id> --acao entrar|explorar ...` continua como primitiva: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
+- `interacoes_mundo.py encontro <npc> --encontro-id <id>` continua como primitiva: passa pelo gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
 - Efeito de side quest: `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**. Rastro/recompensa ficam em `pos_canonico` e só são materializados depois que o fato-base virou cânone.
 - Agente novo nunca nasce silenciosamente de quest: passa antes pela classificação NPC v2.
