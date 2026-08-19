@@ -21,6 +21,16 @@ CONTEXT_PATH = Path("runtime/contexto.yaml")
 SCENE_PATH = Path("runtime/cena.yaml")
 EVENTS_PATH = Path("runtime/eventos-pendentes.jsonl")
 
+# Registro explícito e pequeno: só itens mágicos cujo estado deve aparecer no
+# rodapé mecânico. Não há scan/inferência sobre o inventário.
+FOOTER_MAGIC_ITEMS = {
+    "broche_do_semblante_humilde": {
+        "nome": "Broche do Semblante Humilde",
+        "caminho_disponibilidade": "recursos.disponibilidades.broche_do_semblante_humilde",
+        "efeito_temporario": "broche_do_semblante_humilde",
+    }
+}
+
 
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
@@ -49,6 +59,18 @@ def require_mapping(value: Any, label: str) -> dict[str, Any]:
     return value
 
 
+def footer_magic_items(disponibilidades: dict[str, Any]) -> dict[str, Any]:
+    """Projeta só o estado-base necessário ao rodapé, fora de ``recursos``.
+
+    ``caminho_disponibilidade`` continua apontando para a árvore de recursos para
+    que deltas pendentes de uso tenham precedência no overlay do próprio turno.
+    """
+    items = copy.deepcopy(FOOTER_MAGIC_ITEMS)
+    for item_id, item in items.items():
+        item["disponibilidade"] = copy.deepcopy(disponibilidades.get(item_id))
+    return items
+
+
 def build_runtime_from_documents(
     estado: dict[str, Any],
     tempo_arquivo: dict[str, Any],
@@ -68,6 +90,8 @@ def build_runtime_from_documents(
     localizacao = require_mapping(estado.get("localizacao"), "estado.localizacao")
     tempo_estado = require_mapping(estado.get("tempo"), "estado.tempo")
     recursos = require_mapping(estado.get("recursos"), "estado.recursos")
+    disponibilidades_raw = recursos.get("disponibilidades") or {}
+    disponibilidades = require_mapping(disponibilidades_raw, "estado.recursos.disponibilidades")
     efeitos_temporarios_raw = estado.get("efeitos_temporarios")
     if efeitos_temporarios_raw is None:
         efeitos_temporarios: dict[str, Any] = {}
@@ -129,6 +153,9 @@ def build_runtime_from_documents(
             key: localizacao.get(key)
             for key in ("plano", "mundo", "continente", "regiao", "cidade", "area", "ponto_exato")
         },
+        # Estado exclusivo de apresentação fica fora de ``recursos`` para não
+        # inflar/invadir o handoff de memória fria.
+        "rodape": {"itens_magicos": footer_magic_items(disponibilidades)},
         "ponteiros": {
             "ficha": personagem.get("arquivo_ficha") or "personagens/jogador/ficha.yaml",
             "estado_completo": "estado/estado-atual.yaml",

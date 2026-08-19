@@ -36,6 +36,13 @@ localizacao:
   cidade: Ravens Bluff
   area: Casa de Tyr, Temple District, Ravens Bluff
   ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+rodape:
+  itens_magicos:
+    broche_do_semblante_humilde:
+      nome: Broche do Semblante Humilde
+      caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
+      efeito_temporario: broche_do_semblante_humilde
+      disponibilidade: usado em 11 Eleasis; indisponível até o amanhecer de 12 Eleasis
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
