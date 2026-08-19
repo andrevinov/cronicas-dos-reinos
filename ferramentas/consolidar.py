@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Consolidação legado + descoberta atômica de rastros.
+"""Consolidação legado + rastros + instante temporal atômico.
 
 ``_consolidar_core.py`` preserva o consolidator já testado. Este wrapper intercepta
-somente lotes que contêm `rastro:<id>`: valida a evidência observável, deixa o
-núcleo preparar o conhecimento e acrescenta o estado do rastro ao *mesmo* plano
-de staging/journal antes de qualquer instalação.
+somente lotes que exigem extensão:
+
+- `rastro:<id>` é validado e instalado no mesmo journal do conhecimento;
+- `tempo/instante` permanece um único delta persistido e é expandido **somente em
+  memória** para os espelhos físicos (`tempo.data_atual`, `tempo.data`,
+  `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
+  multi-arquivo antes de qualquer instalação.
 """
 from __future__ import annotations
 
@@ -16,6 +20,7 @@ from typing import Any
 import _consolidar_core as _base
 import rastros
 import _rastros_core as _rastros_base
+import tempo_transacional
 import transacoes
 
 for _name in dir(_base):
@@ -96,18 +101,29 @@ def _prepare_trace_index(
     return index, discovered
 
 
-def _sanitized_pending(
-    pending_all: list[dict[str, Any]], session: int, process_ids: set[str]
+def _prepared_pending(
+    pending_all: list[dict[str, Any]],
+    session: int,
+    process_ids: set[str],
+    *,
+    strip_traces: bool,
 ) -> list[dict[str, Any]]:
+    """Transforma somente o lote atual; pendências de outras sessões ficam byte-lógicas iguais."""
     result = copy.deepcopy(pending_all)
     for record in result:
         if record.get("sessao") != session or record.get("id") not in process_ids:
             continue
-        record["deltas"] = [
-            delta
-            for delta in record.get("deltas") or []
-            if not str(delta.get("alvo") or "").startswith(transacoes.TRACE_PREFIX)
-        ]
+        deltas = list(record.get("deltas") or [])
+        if strip_traces:
+            deltas = [
+                delta
+                for delta in deltas
+                if not str(delta.get("alvo") or "").startswith(transacoes.TRACE_PREFIX)
+            ]
+        try:
+            record["deltas"] = tempo_transacional.expand_atomic_deltas(deltas)
+        except tempo_transacional.AtomicTimeError as exc:
+            raise ConsolidationError(str(exc)) from exc
     return result
 
 
@@ -117,8 +133,9 @@ def _patch_ledger_and_artifacts(
     kind: str,
     records: list[dict[str, Any]],
     discovered: list[str],
+    atomic_instants: int,
 ) -> None:
-    if not discovered or not plan.get("batch"):
+    if not plan.get("batch"):
         return
     session = plan["sessao"]
     ledger_rel = Path("sessoes") / f"{session:03d}" / _base.LEDGER_NAME
@@ -132,11 +149,18 @@ def _patch_ledger_and_artifacts(
     batch = next((item for item in ledger if item.get("id") == plan["batch"]), None)
     if batch is None:
         raise ConsolidationError("batch recém-criado não encontrado no ledger staged")
+
+    # O ledger descreve a transação persistida, não a expansão interna usada pelo
+    # consolidator legado.
     batch["deltas"] = sum(len(record.get("deltas") or []) for record in records)
-    batch["rastros_descobertos"] = list(dict.fromkeys(discovered))
-    affected = set(batch.get("arquivos_afetados") or [])
-    affected.add(rastros.INDEX.as_posix())
-    batch["arquivos_afetados"] = sorted(affected)
+    if atomic_instants:
+        batch["instantes_atomicos"] = atomic_instants
+    if discovered:
+        batch["rastros_descobertos"] = list(dict.fromkeys(discovered))
+        affected = set(batch.get("arquivos_afetados") or [])
+        affected.add(rastros.INDEX.as_posix())
+        batch["arquivos_afetados"] = sorted(affected)
+
     plan["outputs"][ledger_rel.as_posix()] = _base.jsonl_text(ledger)
     _base._session_artifacts(
         repo,
@@ -152,29 +176,51 @@ def _patch_ledger_and_artifacts(
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     trace_records = [record for record in records if _trace_delta_ids(record)]
-    if not trace_records:
+    atomic_instants = tempo_transacional.atomic_count(records)
+    if not trace_records and not atomic_instants:
         return _original_build_plan(repo, kind)
 
-    trace_index, discovered = _prepare_trace_index(repo, trace_records)
+    trace_index: dict[str, Any] | None = None
+    discovered: list[str] = []
+    if trace_records:
+        trace_index, discovered = _prepare_trace_index(repo, trace_records)
+
     process_ids = {record["id"] for record in records}
-    sanitized = _sanitized_pending(pending_all, session, process_ids)
+    prepared = _prepared_pending(
+        pending_all,
+        session,
+        process_ids,
+        strip_traces=bool(trace_records),
+    )
 
     old_loader = transacoes.load_pending
-    transacoes.load_pending = lambda _repo: copy.deepcopy(sanitized)
+    transacoes.load_pending = lambda _repo: copy.deepcopy(prepared)
     try:
         plan = _original_build_plan(repo, kind)
     finally:
         transacoes.load_pending = old_loader
 
     if plan is None:
-        raise ConsolidationError("descoberta de rastro ficou sem plano de consolidação")
+        raise ConsolidationError("lote estendido ficou sem plano de consolidação")
 
-    trace_bytes = _base.dump_yaml(trace_index)
-    if len(trace_bytes) > rastros.MAX_INDEX_BYTES:
-        raise ConsolidationError("índice de rastros excederia o teto operacional durante descoberta")
-    plan["outputs"][rastros.INDEX.as_posix()] = trace_bytes
-    _patch_ledger_and_artifacts(repo, plan, kind, records, discovered)
-    plan["rastros_descobertos"] = list(dict.fromkeys(discovered))
+    if trace_index is not None:
+        trace_bytes = _base.dump_yaml(trace_index)
+        if len(trace_bytes) > rastros.MAX_INDEX_BYTES:
+            raise ConsolidationError("índice de rastros excederia o teto operacional durante descoberta")
+        plan["outputs"][rastros.INDEX.as_posix()] = trace_bytes
+
+    _patch_ledger_and_artifacts(
+        repo,
+        plan,
+        kind,
+        records,
+        discovered,
+        atomic_instants,
+    )
+    if discovered:
+        plan["rastros_descobertos"] = list(dict.fromkeys(discovered))
+    if atomic_instants:
+        plan["instantes_atomicos"] = atomic_instants
     return plan
 
 
