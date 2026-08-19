@@ -75,7 +75,9 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → gatilho reativo se houver → rolagens → narração → turno.py registrar → fim`.
+
+**Barreira de pendências é pré-narração.** Antes de qualquer novo avanço ON, ler somente `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: consultar `python3 ferramentas/mundo.py pendentes` e resolver a fila primeiro. Pendência significa “avaliar”, não “aconteceu”. Avaliação sem mudança termina com `barreira_mundo.py concluir <id> --nota ...`; se produzir mudança canônica, registrar antes uma transação sem `jogador`, com `modo: mundo` e tag `resolver-pendencia-mundo:<id>`, deixar o checkpoint canonizar e então concluir. O writer repete a mesma trava, mas ela não substitui esta checagem anterior ao texto.
 
 **Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
 
@@ -103,7 +105,7 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. Gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nunca são scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; gatilhos reativos escrevem apenas seus pequenos controles quando realmente ocorrem; nenhum deles faz scan por turno.
 
 ### Recompensas e side quests
 
@@ -125,7 +127,7 @@ python3 ferramentas/checkpoint.py cena
 python3 ferramentas/checkpoint.py sessao
 ```
 
-Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → memória. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
+Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Se o Mundo Vivo deixar avaliações abertas, o checkpoint materializa o bloqueio do próximo avanço; não resolve semanticamente nenhuma delas. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
 
 Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
 
