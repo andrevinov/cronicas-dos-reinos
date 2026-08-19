@@ -79,6 +79,14 @@ Fluxo normal:
 
 **Gatilho reativo não é rotina.** Somente quando a ação realmente inicia entrada/exploração de um local ou encontro elegível com NPC, usar uma vez a porta `ferramentas/interacoes_mundo.py`. `encontro_id` permanece estável por toda a mesma cena/conversa. Turno sem esses gatilhos não consulta recompensas/oportunidades.
 
+**Antes de narrar uma intenção que comprime um intervalo relevante de tempo** — por exemplo dormir, esperar, vigiar por horas, viajar por período prolongado ou executar trabalho que salta diretamente para um horário posterior — consultar uma única vez a primeira fronteira causal:
+
+```bash
+python3 ferramentas/fronteira_mundo.py --data "11 Eleasis, 1372 DR" --hora "11:50"
+```
+
+Se `interromper: false`, narrar normalmente até o alvo. Se `interromper: true`, **não narrar além de `fronteira`**: preservar o restante da intenção de Ren, resolver somente o trecho até aquele instante, registrar/checkpointar e deixar o Mundo Vivo processar as camadas vencidas antes de continuar o tempo restante. Uma fronteira é uma necessidade de processamento, não um acontecimento automático. **Não chamar** `fronteira_mundo.py` em turno curto/comum sem compressão temporal; a consulta existe para saltos deliberados de tempo e lê apenas roteadores/estados compactos.
+
 Durante cada avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
