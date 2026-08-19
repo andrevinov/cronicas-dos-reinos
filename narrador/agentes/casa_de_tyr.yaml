@@ -30,9 +30,9 @@ atuacao_local:
   observacao: A instituição permanece elegível para ação local enquanto estiver ativa; disponibilidade de Halessa ou outros indivíduos é tratada separadamente.
 conhecimento:
   - id: custodia_separada
-    fato: Halessa mantém original e falsificação sob custódias separadas e preservará Ren como testemunha reservada.
+    fato: Original e falsificação seguem em custódias separadas e lacradas; Luath e Maerra confirmaram elementos independentes da cadeia.
     fonte: estado/relacoes/halessa_vorn.yaml
-    evidencia: Halessa mantém o original e a falsificação sob custódias separadas, preservará Ren como testemunha reservada e fará qualquer contato futuro passar primeiro por Luath para não expor o circo.
+    evidencia: 'Halessa atualizou Ren pessoalmente: original e falsificação seguem em custódias separadas e lacradas; Luath e Maerra confirmaram elementos independentes da cadeia; Tyr aguarda resposta reservada da guardiã atual do registro autêntico antes de atribuir autoria ou validar ordens.'
   - id: limite_cooperacao_clandestina
     fato: Tyr não aceita cooperação clandestina sem planejamento prévio de objetivo, rota e limites.
     fonte: estado/relacoes/halessa_vorn.yaml
