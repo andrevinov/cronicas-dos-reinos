@@ -1,0 +1,22 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: brunna_torkel
+nome: Brunna Torkel
+fonte_npc: estado/relacoes/brunna_torkel.yaml
+necessidades:
+- id: trecho_de_sarbreen
+  tipo: exploracao
+  semente: Brunna pode conhecer um trecho, acesso ou medição de Sarbreen que valha verificar em campo, sem que a semente determine o que existe lá.
+  janela:
+    tipo: enquanto_condicao
+    condicao: o acesso continuar utilizável
+  pode_reabrir: false
+  consequencia_sem_ren: Outra equipe pode explorar, o acesso pode fechar ou a informação pode envelhecer.
+- id: medicao_duvidosa
+  tipo: investigacao
+  semente: Uma medição, relato de porão ou inconsistência de rota pode incomodar Brunna o bastante para ela pedir confirmação.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: true
+  consequencia_sem_ren: Brunna pode refazer a medição, descartar a dúvida ou procurar outro explorador.

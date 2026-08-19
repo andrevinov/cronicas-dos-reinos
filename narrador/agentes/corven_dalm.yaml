@@ -1,0 +1,53 @@
+schema_agente: 2
+natureza: reservado
+id: corven_dalm
+nome: Corven Dalm
+tipo: npc
+estado: ativo
+objetivo_atual: >-
+  Medir Ren/Kage, a gravadora e sua reação a Masao sem expor o patrono real,
+  usando informação controlada e a janela da Ponte Baixa como alavanca de teste.
+recursos:
+  - posição de procurador da Casa Veyr e capacidade de operar por contrato e etiqueta
+  - informação acionável sobre a Ponte Baixa e a janela antes da segunda maré
+  - leitura social e informacional suficiente para reconhecer a máscara performática de Kage
+restricoes:
+  - preservar a identidade e os interesses do patrono real enquanto mede Ren
+  - ação física local exige presença efetiva em Ravens Bluff
+  - não resolver como fato a ambiguidade canônica sobre falar por Masao, contra Masao ou por outro interesse local
+presenca:
+  referencia: Ravens Bluff
+  estado: presente
+  detalhe: Corven está canonicamente em cena, a sós com Ren/Kage, no camarim funcional do circo.
+  fonte: estado/relacoes/corven_dalm.yaml
+  evidencia: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Corven pode agir diretamente enquanto sua presença local estiver canonicamente estabelecida; ausência ou viagem bloqueiam ação física local.
+conhecimento:
+  - id: veio_medir_ren
+    fato: Corven declarou que veio medir a sombra de Kage, a gravadora e a relação de Ren com Masao.
+    fonte: estado/relacoes/corven_dalm.yaml
+    evidencia: Dalm declarou que veio medir se a sombra era truque, se a gravadora era corrente e se Masao era lâmina na mão de Ren ou anzol em sua garganta.
+  - id: janela_segunda_mare
+    fato: Corven considera relevante uma janela que se encerra antes da segunda maré.
+    fonte: estado/relacoes/corven_dalm.yaml
+    evidencia: Dalm disse que a janela relevante é antes da segunda maré.
+  - id: rede_conhece_alavancas_sem_localizacao
+    fato: A rede de Corven sabe da existência de uma gravadora e de um menino como alavancas, mas ainda não sabe onde dormem.
+    fonte: estado/relacoes/corven_dalm.yaml
+    evidencia: Dalm disse que a rede sabe que existe uma gravadora e um menino como alavanca, mas ainda não sabe onde eles dormem.
+plano_atual:
+  estado: em_execucao
+  acao: >-
+    Continuar medindo Ren/Kage por negociação e informação controlada, preservando
+    o patrono real e usando a janela da Ponte Baixa como teste antes da segunda maré.
+  prazo_ou_oportunidade: Antes da segunda maré, enquanto a conversa privada e a pista da Ponte Baixa ainda servirem como alavanca.
+fontes_canonicas:
+  - estado/relacoes/corven_dalm.yaml

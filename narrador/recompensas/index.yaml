@@ -1,0 +1,13 @@
+schema_recompensas: 1
+natureza: reservado
+semente: cronicas-dos-reinos-recompensas-v1
+orcamento:
+  max_procedurais_por_mapa: 4
+  max_totais_por_mapa: 8
+regras:
+  geracao: sha256_seed_local_tier_periculosidade
+  mapa_gerado_uma_vez: true
+  reroll: proibido
+  item_existir_nao_significa_descoberta: true
+  recompensa_de_arco_procedural: proibida
+mapas: {}

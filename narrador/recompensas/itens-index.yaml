@@ -1,0 +1,4 @@
+schema_indice_itens_recompensa: 1
+natureza: reservado
+regra: lookup_dirigido_sem_scan
+recompensas: {}

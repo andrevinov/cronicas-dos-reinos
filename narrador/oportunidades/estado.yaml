@@ -1,0 +1,12 @@
+schema_estado_oportunidades: 1
+natureza: controle_reservado
+gate:
+  ciclo: 0
+  restantes: []
+  sorteios: 0
+cooldown_ate: null
+pendencias_avaliacao: {}
+missoes: {}
+sementes_consumidas: []
+encontros_recentes: []
+historico_recente: []

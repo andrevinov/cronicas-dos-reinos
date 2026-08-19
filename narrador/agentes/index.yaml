@@ -88,6 +88,13 @@ agentes:
     presenca: indeterminado
     atuacao_local: exige_presenca_fisica
     arquivo: narrador/agentes/fuji.yaml
+  corven_dalm:
+    nome: Corven Dalm
+    tipo: npc
+    estado: ativo
+    presenca: presente
+    atuacao_local: exige_presenca_fisica
+    arquivo: narrador/agentes/corven_dalm.yaml
   red_sail:
     nome: Red Sail
     tipo: faccao

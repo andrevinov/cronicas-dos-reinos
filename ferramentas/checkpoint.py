@@ -2,7 +2,7 @@
 """Checkpoint canônico + memória compacta + sincronização do Mundo Vivo.
 
 `consolidar.py` continua responsável pela transação canônica atômica. Este wrapper
-é a porta operacional: depois que a consolidação termina, direções canônicas e o
+é a porta operacional: depois que a consolidação termina, direções, lifecycle e o
 Mundo Vivo são sincronizados até o novo tempo canônico e só então são derivados
 `handoff.yaml` e `sessoes/index.yaml`.
 
@@ -12,12 +12,7 @@ ciclo que mantém N como sessão corrente e muda `campanha.status` para
 
 Se o processo cair após o cânone e antes do handoff ou da sincronização do mundo,
 nenhum delta é reaplicado: basta executar o comando novamente ou
-`checkpoint.py recuperar`. O cursor determinístico de `mundo.py` e os IDs das
-pendências de direção são idempotentes.
-
-Desde o ajuste de autoridade temporal, `estado/tempo.yaml:prazo_relevante` é a
-representação canônica única de prazos/alertas temporais. O campo legado homônimo
-aninhado em `estado/estado-atual.yaml` não participa mais da checagem de espelho.
+`checkpoint.py recuperar`.
 """
 from __future__ import annotations
 
@@ -39,6 +34,7 @@ import ciclo_sessoes
 import consolidar
 import direcoes
 import direcoes_mundo
+import interacoes_mundo
 import mundo
 import sessoes
 import transacoes
@@ -73,6 +69,10 @@ def _directions_configured(repo: Path) -> bool:
     return (repo / direcoes.INDEX_PATH).is_file() and (repo / direcoes.STATE_PATH).is_file()
 
 
+def _integration_configured(repo: Path) -> bool:
+    return interacoes_mundo.configured(repo)
+
+
 def sync_world(repo: Path) -> dict[str, Any]:
     """Sincroniza depois do cânone; tolera fixtures legadas sem Mundo Vivo."""
     if not _world_configured(repo):
@@ -82,6 +82,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
             "novas_pendencias": [],
             "agentes_reconsiderar": [],
             "direcoes_reconsiderar": [],
+            "integracao_reativa": {"configurado": False, "alterou": False},
         }
 
     direction_result: dict[str, Any] = {
@@ -89,9 +90,11 @@ def sync_world(repo: Path) -> dict[str, Any]:
         "direcoes_reconsiderar": [],
     }
     if _directions_configured(repo):
-        # Direções precisam enxergar o intervalo antigo -> novo antes que
-        # mundo.py mova seu cursor até o tempo canônico recém-consolidado.
         direction_result = direcoes_mundo.process_checkpoint(repo)
+
+    integration_result: dict[str, Any] = {"configurado": False, "alterou": False}
+    if _integration_configured(repo):
+        integration_result = interacoes_mundo.sync_lifecycle(repo)
 
     result = mundo.process_to_canonical(repo)
     new_pending = [
@@ -103,6 +106,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
         **result,
         "novas_pendencias": new_pending,
         "direcoes_reconsiderar": direction_result.get("direcoes_reconsiderar") or [],
+        "integracao_reativa": integration_result,
     }
 
 
@@ -162,9 +166,6 @@ def checkpoint(repo: Path, kind: str) -> dict[str, Any]:
         if effective_kind not in {"cena", "sessao"}:
             effective_kind = kind
 
-    # Ordem deliberada: primeiro o tempo vira cânone; então as direções observam
-    # o intervalo e o Mundo Vivo move seu cursor. Nenhuma camada usa prosa ou
-    # deltas ainda não instalados como se fossem fatos.
     world = sync_world(repo)
     memory = refresh_memory(repo, effective_kind)
     return {"canonico": canonical, "ciclo": lifecycle, "mundo": world, "memoria": memory}
@@ -255,6 +256,11 @@ def check(repo: Path) -> list[str]:
     if _directions_configured(repo):
         direction_check = direcoes_mundo.check_repo(repo)
         errors.extend(f"direções: {error}" for error in direction_check.get("erros") or [])
+    if _integration_configured(repo):
+        integration = interacoes_mundo.check_repo(repo)
+        errors.extend(
+            f"integração reativa: {error}" for error in integration.get("erros") or []
+        )
     return list(dict.fromkeys(errors))
 
 
@@ -274,6 +280,7 @@ def status(repo: Path) -> dict[str, Any]:
         "ciclo_sessao": ciclo_sessoes.status(repo),
         "mundo": world,
         "direcoes": directions,
+        "integracao_reativa": {"configurado": _integration_configured(repo)},
         "memoria_sessoes": sessoes.status(repo),
     }
 
@@ -286,7 +293,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("sessao", help="consolida, sincroniza mundo/direções e encerra N")
     sub.add_parser("recuperar", help="recupera journal, sincroniza mundo/direções e reconstrói memória")
     sub.add_parser("status", help="mostra cânone, ciclo, mundo, direções e memória")
-    sub.add_parser("check", help="valida consolidação, ciclo, Mundo Vivo, direções e memória fria")
+    sub.add_parser("check", help="valida consolidação, Mundo Vivo, integração e memória fria")
     return parser
 
 
@@ -328,7 +335,7 @@ def main() -> int:
                 for error in errors:
                     print(f"- {error}")
                 return 1
-            print("OK — consolidação, ciclo, Mundo Vivo, direções e memória fria estão íntegros.")
+            print("OK — consolidação, Mundo Vivo, integração reativa e memória fria estão íntegros.")
             return 0
         raise ValueError(f"comando desconhecido: {args.comando}")
     except (
@@ -341,6 +348,7 @@ def main() -> int:
         sessoes.SessionMemoryError,
         mundo.WorldEngineError,
         direcoes.DirectionError,
+        interacoes_mundo.IntegrationError,
     ) as exc:
         print(f"FALHA DE CHECKPOINT — {exc}")
         return 1

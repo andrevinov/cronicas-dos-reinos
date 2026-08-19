@@ -1,0 +1,22 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: bram_vask
+nome: Bram Vask
+fonte_npc: estado/relacoes/bram_vask.yaml
+necessidades:
+- id: garantia_desaparecida
+  tipo: aquisicao
+  semente: Bram pode ter interesse em recuperar uma garantia ou objeto de valor cuja perda afete seus negócios, sem que isso implique que Ren concorde com seus métodos.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: false
+  consequencia_sem_ren: Bram pode contratar cobradores, aceitar a perda ou retaliar por vias próprias.
+- id: favor_negociado
+  tipo: favor
+  semente: Bram pode propor um favor limitado em troca de informação, dívida reduzida ou outra vantagem concreta, cabendo ao narrador manter o pedido compatível com seu papel de agiota.
+  janela:
+    tipo: temporal
+    duracao_horas: 72
+  pode_reabrir: false
+  consequencia_sem_ren: Bram pode procurar outro intermediário ou endurecer sua posição.

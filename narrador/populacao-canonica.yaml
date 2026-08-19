@@ -1,14 +1,21 @@
-schema_populacao_canonica: 1
+schema_populacao_canonica: 2
 natureza: inventario_reservado
 origem: estado/relacoes/index.yaml
 descricao: >-
-  Classificação fria dos relacionamentos canônicos atuais para decidir quem ganha
-  scheduler no Mundo Vivo. Importância narrativa não implica agenda periódica.
+  Classificação fria dos relacionamentos canônicos atuais para decidir qual camada
+  operacional cada NPC merece no Mundo Vivo. Importância narrativa não implica
+  agenda periódica.
 regra: >-
-  Promover somente quem já possui motivação, rotina e iniciativa autônoma
-  sustentadas pelo cânone; usar agente-pai quando a ação individual já pertence a
-  uma operação institucional/faccional; manter o restante persistente sem agenda.
+  Promover a agente estratégico somente quem já possui objetivo autônomo,
+  recursos ou alavancas, restrições próprias e decisão/plano capazes de produzir
+  consequências além de uma rotina recorrente; promover a agente leve quem possui
+  rotina e iniciativa ocasionais; usar agente-pai quando a ação individual já
+  pertence a uma operação institucional/faccional; manter o restante persistente
+  sem agenda. Ser estratégico não cria cadência automaticamente: agendamento
+  temporal permanece uma decisão explícita e separada.
 classificacoes:
+  promovidos_agentes_estrategicos:
+  - corven_dalm
   promovidos_agentes_leves:
   - bram_vask
   - halessa_vorn
@@ -28,7 +35,6 @@ classificacoes:
   persistentes_sem_agenda:
   - brunna_torkel
   - colm_dunn
-  - corven_dalm
   - dessa_wren
   - dorra_hest
   - edran_vale

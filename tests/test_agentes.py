@@ -18,7 +18,7 @@ class AgentesRepositoryTest(unittest.TestCase):
     def test_repositorio_valida_camadas_de_agentes(self):
         result = mod.validate_repo(REPO)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade"], 15)
+        self.assertEqual(result["quantidade"], 16)
 
     def test_consulta_de_um_agente_le_apenas_indice_e_fragmento(self):
         result = mod.load_agent(REPO, "Shizune")
@@ -28,6 +28,19 @@ class AgentesRepositoryTest(unittest.TestCase):
             ["narrador/agentes/index.yaml", "narrador/agentes/kajiwara_shizune.yaml"],
         )
         self.assertNotIn("narrador/agentes/masao_hirasawa.yaml", result["fontes_lidas"])
+
+    def test_corven_promovido_le_apenas_indice_e_fragmento_estrategico(self):
+        result = mod.load_agent(REPO, "Corven")
+        self.assertEqual(result["agente_id"], "corven_dalm")
+        self.assertEqual(result["elegibilidade_local"], "sim")
+        self.assertEqual(
+            result["fontes_lidas"],
+            ["narrador/agentes/index.yaml", "narrador/agentes/corven_dalm.yaml"],
+        )
+        self.assertEqual(
+            result["resultado"]["fontes_canonicas"],
+            ["estado/relacoes/corven_dalm.yaml"],
+        )
 
     def test_indice_permanece_pequeno_mesmo_com_todos_os_juppongatana(self):
         size = (REPO / mod.INDEX_PATH).stat().st_size

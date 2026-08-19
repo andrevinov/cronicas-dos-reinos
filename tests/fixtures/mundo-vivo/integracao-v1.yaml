@@ -1,0 +1,33 @@
+schema_snapshot_integracao_mundo_vivo: 1
+natureza: regressao_especifica
+origem:
+  passo: 4
+  descricao: integração final de recompensas, side quests, lifecycle e orçamento
+sidequests:
+  gate:
+    nada: 8
+    oportunidade: 2
+  max_ativas: 2
+  max_em_aberto: 3
+  max_pendencias_avaliacao: 1
+  cooldown_dias:
+    - 2
+    - 3
+  gatilho: encontro_com_npc
+  scheduler: proibido
+recompensas:
+  max_procedurais_por_mapa: 4
+  max_totais_por_mapa: 8
+  reroll: proibido
+  recompensa_arco_procedural: proibida
+integracao:
+  mapa: entrada_ou_exploracao
+  oportunidade: inicio_de_encontro_elegivel
+  lifecycle: checkpoint_pos_canonico
+  efeitos_transacionais:
+    - pressao
+    - consequencia
+  efeitos_pos_canonico:
+    - rastro
+    - recompensa
+  agente_novo: taxonomia_npc_v2

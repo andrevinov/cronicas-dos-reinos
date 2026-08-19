@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: halessa_vorn
+nome: Irmã Halessa Vorn
+fonte_npc: estado/relacoes/halessa_vorn.yaml
+necessidades:
+- id: prova_independente
+  tipo: investigacao
+  semente: Halessa pode precisar de confirmação independente para uma peça de evidência que não pode tratar como verdade só por suspeita.
+  janela:
+    tipo: temporal
+    duracao_horas: 72
+  pode_reabrir: false
+  consequencia_sem_ren: A investigação institucional pode seguir mais devagar, mudar de prioridade ou perder a janela.
+- id: objeto_sob_custodia
+  tipo: aquisicao
+  semente: Halessa pode precisar obter legitimamente um documento, registro ou objeto antes que outra parte o retire de circulação, se isso for compatível com o caso vigente.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: Tyr pode buscar mandado, negociar por outra via ou perder acesso ao objeto.

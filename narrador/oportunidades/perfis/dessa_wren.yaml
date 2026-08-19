@@ -1,0 +1,22 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: dessa_wren
+nome: Dessa Wren
+fonte_npc: estado/relacoes/dessa_wren.yaml
+necessidades:
+- id: material_de_guarda_roupa
+  tipo: aquisicao
+  semente: Dessa pode precisar de tecido, ferragem, pigmento ou peça de figurino difícil de conseguir a tempo de um trabalho.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: Ela pode improvisar, substituir o material ou perder o trabalho.
+- id: servico_de_bastidor
+  tipo: trabalho_profissional
+  semente: Dessa pode precisar de ajuda prática para resolver um problema de guarda-roupa, transporte ou acesso ligado ao circo.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: true
+  consequencia_sem_ren: Ela pode contratar outra pessoa, improvisar ou deixar o problema para depois.

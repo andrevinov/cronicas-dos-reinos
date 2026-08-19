@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: silva_elkwood
+nome: Silva Elkwood
+fonte_npc: estado/relacoes/silva_elkwood.yaml
+necessidades:
+- id: deslocamento_seguro
+  tipo: protecao
+  semente: Silva pode precisar mover uma pessoa vulnerável entre dois pontos seguros sem transformar proteção em prisão.
+  janela:
+    tipo: temporal
+    duracao_horas: 48
+  pode_reabrir: false
+  consequencia_sem_ren: A pessoa pode permanecer onde está, seguir com outra escolta ou enfrentar risco maior.
+- id: socorro_rural
+  tipo: resgate
+  semente: Uma necessidade de socorro ligada à rede rural ou de abrigo de Silva pode exigir ajuda física pontual, caso o cânone atual dê motivo concreto.
+  janela:
+    tipo: enquanto_condicao
+    condicao: a necessidade de socorro continuar ativa
+  pode_reabrir: true
+  consequencia_sem_ren: A rede pode resolver sem Ren, perder a janela ou sofrer uma consequência que ainda precisa ser narrativamente resolvida.

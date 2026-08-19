@@ -1,0 +1,22 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: jack_mooney
+nome: Jack Mooney
+fonte_npc: estado/relacoes/jack_mooney.yaml
+necessidades:
+- id: problema_de_bastidor
+  tipo: investigacao
+  semente: Jack pode suspeitar de um problema de bastidor que ameaça espetáculo, equipe ou reputação e pedir a Kage uma verificação discreta.
+  janela:
+    tipo: temporal
+    duracao_horas: 24
+  pode_reabrir: false
+  consequencia_sem_ren: Jack pode cancelar a atração, resolver internamente ou deixar o problema crescer.
+- id: trabalho_especial
+  tipo: trabalho_profissional
+  semente: Jack pode ter um trabalho de circo que exige a combinação incomum de furtividade, presença cênica ou disciplina de Ren/Kage.
+  janela:
+    tipo: a_qualquer_momento
+  pode_reabrir: true
+  consequencia_sem_ren: Jack pode contratar outro artista, guarda ou especialista, ou simplesmente abandonar a ideia.

@@ -1,0 +1,23 @@
+schema_perfil_oportunidades: 1
+natureza: reservado
+estatuto: sementes_nao_canonicas_ate_resolucao
+npc_id: pell
+nome: Pell
+fonte_npc: estado/relacoes/pell.yaml
+necessidades:
+- id: mensagem_arriscada
+  tipo: entrega
+  semente: Pell pode ter uma mensagem ou pequeno pacote que paga bem demais para a rota parecer confortável, mas que ainda cabe ao narrador tornar concreto.
+  janela:
+    tipo: temporal
+    duracao_horas: 24
+  pode_reabrir: false
+  consequencia_sem_ren: Pell pode tentar outro mensageiro, perder o pagamento ou abandonar a entrega.
+- id: fonte_sumida
+  tipo: investigacao
+  semente: Uma fonte ou ponto de informação habitual de Pell pode ter parado de responder; ele pode pedir ajuda para descobrir o motivo sem transformar rumor em fato.
+  janela:
+    tipo: enquanto_condicao
+    condicao: a fonte ou ponto continuar sem responder
+  pode_reabrir: true
+  consequencia_sem_ren: Pell pode perder a fonte, descobrir a resposta por outra via ou ficar sem a informação.
