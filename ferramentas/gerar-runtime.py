@@ -21,6 +21,16 @@ CONTEXT_PATH = Path("runtime/contexto.yaml")
 SCENE_PATH = Path("runtime/cena.yaml")
 EVENTS_PATH = Path("runtime/eventos-pendentes.jsonl")
 
+# Registro explícito e pequeno: só itens mágicos cujo estado deve aparecer no
+# rodapé mecânico. Não há scan/inferência sobre o inventário.
+FOOTER_MAGIC_ITEMS = {
+    "broche_do_semblante_humilde": {
+        "nome": "Broche do Semblante Humilde",
+        "caminho_disponibilidade": "recursos.disponibilidades.broche_do_semblante_humilde",
+        "efeito_temporario": "broche_do_semblante_humilde",
+    }
+}
+
 
 def load_yaml(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
@@ -68,6 +78,8 @@ def build_runtime_from_documents(
     localizacao = require_mapping(estado.get("localizacao"), "estado.localizacao")
     tempo_estado = require_mapping(estado.get("tempo"), "estado.tempo")
     recursos = require_mapping(estado.get("recursos"), "estado.recursos")
+    disponibilidades_raw = recursos.get("disponibilidades") or {}
+    disponibilidades = require_mapping(disponibilidades_raw, "estado.recursos.disponibilidades")
     efeitos_temporarios_raw = estado.get("efeitos_temporarios")
     if efeitos_temporarios_raw is None:
         efeitos_temporarios: dict[str, Any] = {}
@@ -118,6 +130,7 @@ def build_runtime_from_documents(
             "ca": recursos.get("classe_de_armadura"),
             "deslocamento": recursos.get("deslocamento"),
             "dinheiro_po": dinheiro.get("po"),
+            "disponibilidades": copy.deepcopy(disponibilidades),
         },
         "tempo": {
             "data": data,
@@ -129,6 +142,7 @@ def build_runtime_from_documents(
             key: localizacao.get(key)
             for key in ("plano", "mundo", "continente", "regiao", "cidade", "area", "ponto_exato")
         },
+        "rodape": {"itens_magicos": copy.deepcopy(FOOTER_MAGIC_ITEMS)},
         "ponteiros": {
             "ficha": personagem.get("arquivo_ficha") or "personagens/jogador/ficha.yaml",
             "estado_completo": "estado/estado-atual.yaml",
