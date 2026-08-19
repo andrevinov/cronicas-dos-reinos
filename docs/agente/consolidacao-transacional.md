@@ -55,7 +55,11 @@ Deltas `estado`, `tempo` e `ficha` são aplicados em memória. Campos que repres
 - data, hora, período, clima e prazo entre estado e tempo;
 - nível, PV, Ki, CA e dinheiro entre estado e ficha.
 
-Se dois deltas do mesmo lote tentarem impor valores incompatíveis às duas representações, a consolidação falha antes de escrever.
+**Data + hora usam um contrato especial:** o buffer persiste um único delta `tempo/instante` com `{data, hora}`. Antes de chamar o núcleo legado, `consolidar.py` expande esse delta somente na cópia em memória para os campos físicos de `estado/tempo.yaml`; `sync_mirrors` deriva então `estado/estado-atual.yaml:tempo.*`. O ledger volta a contar o delta original, não os espelhos internos. Todos esses bytes, incluindo runtime, entram no mesmo staging/journal.
+
+Portanto, se houver queda durante a instalação, o journal bloqueia operação normal até `consolidar.py recuperar` concluir os bytes já preparados. Não existe checkpoint considerado válido com a nova hora e a data antiga.
+
+Se dois deltas do mesmo lote tentarem impor valores incompatíveis às duas representações, a consolidação falha antes de escrever. `tempo/instante` não pode ser misturado com escrita direta de seus espelhos.
 
 ### Relações e NPCs
 
