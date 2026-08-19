@@ -4,9 +4,9 @@ Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa e
 
 ## 1. Fonte de verdade
 
-O repositório é a memória canônica da campanha. Não depender apenas da conversa para fatos persistentes. Respeitar `campanha.yaml`, regras/fontes autorizadas, ficha e estado. Todo texto novo usa português e UTF-8.
+O repositório é a memória canônica da campanha. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, regras/fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots derivados. Durante sessão ativa, `runtime/eventos-pendentes.jsonl` é a sobreposição posterior ao checkpoint; `contexto.py` combina base + pendências. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots derivados. Em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o último checkpoint; `contexto.py` combina base + pendências. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
 
 ## 2. Invariantes inegociáveis
 
@@ -35,7 +35,7 @@ Runtime, handoffs, índices e consultas são projeções/roteadores, não cânon
 
 **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls, arquivos quentes, duplicação e reescritas; não comprima a experiência literária só para produzir menos texto.
 
-Antes de nova leitura, pergunte se o que já existe basta. Depois de cada consulta, faça a mesma pergunta. **Se for suficiente, pare.** A escada é controle de escalada, não checklist.
+Antes de nova leitura, pergunte se o que já existe basta. Depois de cada consulta, faça o mesmo. **Se for suficiente, pare.** A escada é controle de escalada, não checklist.
 
 Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
 
@@ -43,9 +43,9 @@ Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou tran
 - **L1:** `contexto.py status` — 4 KiB;
 - **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, sessão atual — 8 KiB;
 - **L3:** `buscar ... --apos L2 --motivo ...` — 8 KiB; 2–5 lacunas: `contexto-buscar-muitos.py`;
-- **L4:** histórico estruturado — 12 KiB, ainda sem transcrição;
+- **L4:** histórico estruturado — 12 KiB, sem transcrição;
 - **L4T:** transcrição, somente após L4 — 16 KiB;
-- **L5:** fonte oficial externa/autorizada, somente se a memória interna não resolver.
+- **L5:** fonte oficial externa/autorizada, só se a memória interna não resolver.
 
 Alvo histórico conhecido pode saltar busca ampla. Material reservado exige motivo concreto. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
 
@@ -75,35 +75,35 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa da cena se houver gatilho → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa se houver → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
 
-**Barreira de pendências é pré-narração.** Antes de novo avanço ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar antes transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
+**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Ao começar cena, entrar/explorar local, iniciar encontro ou mudar o elenco, preferir uma chamada a `ferramentas/cena_mundo.py abrir`. Informar `cena_id` estável, local só se houve entrada/exploração e NPCs cujo encontro começou. Repetir `cena_id` é seguro; NPC novo pode ser acrescentado com o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
+**Gatilho reativo não é rotina.** Em começo de cena, entrada/exploração, encontro ou mudança de elenco, preferir `ferramentas/cena_mundo.py abrir` com `cena_id` estável, local só se entrou/explorou e NPCs cujo encontro começou. Repetir o ID é seguro; NPC novo usa o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
 
-Em encontros simultâneos, a porta resolve todos os NPCs antes de mutar, colapsa aliases e ordena por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado de uma camada.
+Em encontros simultâneos, resolver todos os NPCs antes de mutar, colapsar aliases e ordenar por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado.
 
-**Antes de narrar uma intenção que comprime um intervalo relevante de tempo** — por exemplo dormir, esperar, vigiar por horas, viajar por período prolongado ou executar trabalho que salta diretamente para um horário posterior — consultar uma única vez a primeira fronteira causal:
+**Antes de narrar intenção que comprime tempo** — dormir, esperar, vigiar por horas, viajar/trabalhar por período prolongado — consultar uma vez:
 
 ```bash
 python3 ferramentas/fronteira_mundo.py --data "11 Eleasis, 1372 DR" --hora "11:50"
 ```
 
-Se `interromper: false`, narrar normalmente até o alvo. Se `interromper: true`, **não narrar além de `fronteira`**: preservar o restante da intenção de Ren, resolver somente o trecho até aquele instante, registrar/checkpointar e deixar o Mundo Vivo processar as camadas vencidas antes de continuar o tempo restante. Uma fronteira é uma necessidade de processamento, não um acontecimento automático. **Não chamar** `fronteira_mundo.py` em turno curto/comum sem compressão temporal; a consulta existe para saltos deliberados de tempo e lê apenas roteadores/estados compactos.
+Se `interromper: true`, **não narrar além de `fronteira`**: preservar a intenção restante, resolver só até ali, registrar/checkpointar e processar o Mundo Vivo antes de continuar. Se `false`, seguir até o alvo. Fronteira pede processamento; não cria fato. **Não chamar** em turno curto/comum.
 
 Durante cada avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime/handoff nem executar Git, testes ou telemetria;
-- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário para o turno;
+- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
-- `narracao` é a cena completa; `resumo` é compressão; `deltas` são apenas mudanças persistentes;
-- **se o instante corrente mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir a data no campo `hora`;**
+- `narracao` é a cena; `resumo` é compressão; `deltas` são mudanças persistentes;
+- se o instante mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir data em `hora`;
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
 - rolagens ocultas relevantes permanecem reservadas até consolidação;
-- **a última linha `RODAPE_CANONICO — ...` devolvida por `turno.py registrar` deve ser reproduzida verbatim como última linha visível da resposta narrativa; não recalcular, corrigir, resumir, traduzir nem reformatar essa linha.**
+- a última linha `RODAPE_CANONICO — ...` de `turno.py registrar` deve ser reproduzida verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.
 
-O rodapé é apresentação derivada, não nova fonte canônica. Ele usa o runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra somente itens mágicos explicitamente registrados que estejam disponíveis ou com efeito ativo. Não abrir estado/ficha para conferir o rodapé.
+O rodapé é derivado, não cânone. Usa runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra só itens mágicos explicitamente registrados que estejam disponíveis ou ativos. Não abrir estado/ficha para conferi-lo.
 
 Telemetria: **medição é pós-hoc**. `analisar-rollout.py` e `comparar-rollouts.py` nunca rodam durante o avanço narrativo ao vivo.
 
@@ -111,19 +111,19 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. A barreira acrescenta só a leitura do marcador runtime minúsculo; a abertura reativa escreve apenas os pequenos controles das camadas realmente acionadas; o rodapé lê apenas snapshots/runtime já quentes e não cria tool call nem escrita; nenhum deles faz scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; abertura reativa escreve controles das camadas acionadas; rodapé lê runtime quente sem tool call/escrita; nenhum faz scan por turno.
 
 ### Recompensas e side quests
 
-- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros numa só porta.
-- `interacoes_mundo.py local <id> --acao entrar|explorar ...` continua como primitiva: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>` continua como primitiva: passa pelo gate raro; **potencial ≠ oferta**.
+- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros.
+- `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
+- `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
-- Efeito de side quest: `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**. Rastro/recompensa ficam em `pos_canonico` e só são materializados depois que o fato-base virou cânone.
-- Agente novo nunca nasce silenciosamente de quest: passa antes pela classificação NPC v2.
-- O checkpoint apenas invalida quest giver morto; não sorteia side quests nem gera loot.
+- `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**; rastro/recompensa ficam em `pos_canonico` até o fato-base virar cânone.
+- Agente novo passa antes pela classificação NPC v2.
+- Checkpoint só invalida quest giver morto; não sorteia side quests nem gera loot.
 
-Detalhes completos: `docs/agente/integracao-reativa.md`.
+Detalhes: `docs/agente/integracao-reativa.md`.
 
 ## 7. Checkpoint de cena e sessão
 
@@ -134,7 +134,7 @@ python3 ferramentas/checkpoint.py cena
 python3 ferramentas/checkpoint.py sessao
 ```
 
-Tempo significativo pode promover checkpoint automático. A ordem é cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Se o Mundo Vivo deixar avaliações abertas, o checkpoint materializa o bloqueio do próximo avanço; não resolve semanticamente nenhuma delas. A integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
+Tempo significativo pode promover checkpoint automático. Ordem: cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Pendência aberta bloqueia o próximo avanço; checkpoint não a resolve semanticamente. Integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
 
 Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
 
