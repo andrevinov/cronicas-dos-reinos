@@ -99,7 +99,11 @@ def sync_world(repo: Path) -> dict[str, Any]:
         integration_result = interacoes_mundo.sync_lifecycle(repo)
 
     result = mundo.process_to_canonical(repo)
-    barrier = barreira_mundo.sync(repo)
+    barrier = (
+        barreira_mundo.sync(repo)
+        if (repo / mundo.WORLD_STATE_PATH).is_file()
+        else {"configurado": False, "bloqueado": False, "quantidade": 0}
+    )
     new_pending = [
         *(direction_result.get("novas_pendencias") or []),
         *(result.get("novas_pendencias") or []),
