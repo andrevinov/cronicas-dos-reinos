@@ -79,28 +79,39 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(yaml.safe_dump(value, allow_unicode=True, sort_keys=False), encoding="utf-8")
 
-    def tx(self, hour: str, *, mode: str = "exploração", extra_deltas=None):
+    def tx(
+        self,
+        hour: str,
+        *,
+        data: str = "10 Eleasis, 1372 DR",
+        mode: str = "exploração",
+        extra_deltas=None,
+    ):
         deltas = [
-            {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": hour}
+            {
+                "alvo": "tempo",
+                "op": "instante",
+                "valor": {"data": data, "hora": hour},
+            }
         ]
         deltas.extend(extra_deltas or [])
         return {
             "jogador": "Ren continua sua ação.",
             "narracao": "O tempo passa enquanto Ren prossegue.",
-            "resumo": f"O tempo avança até {hour}.",
+            "resumo": f"O tempo avança até {data} {hour}.",
             "modo": mode,
             "deltas": deltas,
         }
 
     def test_cinco_minutos_nao_disparam_checkpoint(self):
-        record = transacoes.build_pending_record(self.tx("17:47 de 10 Eleasis"), 3)
+        record = transacoes.build_pending_record(self.tx("17:47"), 3)
         trigger = turno.detect_world_checkpoint(self.repo, [], record)
         self.assertIsNone(trigger)
 
     def test_duas_horas_acumuladas_disparam_checkpoint(self):
-        prior = transacoes.build_pending_record(self.tx("18:42 de 10 Eleasis"), 3)
+        prior = transacoes.build_pending_record(self.tx("18:42"), 3)
         current = transacoes.build_pending_record(
-            {**self.tx("19:42 de 10 Eleasis"), "id": "segundo-avanco"},
+            {**self.tx("19:42"), "id": "segundo-avanco"},
             3,
         )
         trigger = turno.detect_world_checkpoint(self.repo, [prior], current)
@@ -128,7 +139,10 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
                 "concluidas_recentes": [],
             },
         )
-        record = transacoes.build_pending_record(self.tx("06:10 de 11 Eleasis"), 3)
+        record = transacoes.build_pending_record(
+            self.tx("06:10", data="11 Eleasis, 1372 DR"),
+            3,
+        )
         trigger = turno.detect_world_checkpoint(self.repo, [], record)
         self.assertIsNotNone(trigger)
         self.assertEqual(trigger["motivo"], "amanhecer")
@@ -137,7 +151,7 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
     def test_viagem_longa_e_classificada_quando_localizacao_muda(self):
         record = transacoes.build_pending_record(
             self.tx(
-                "20:00 de 10 Eleasis",
+                "20:00",
                 extra_deltas=[
                     {
                         "alvo": "estado",
@@ -161,13 +175,13 @@ class TemporalCheckpointTurnTest(unittest.TestCase):
                 "mundo": {"configurado": True, "novas_pendencias": [], "agentes_reconsiderar": []},
             },
         ) as run:
-            result = turno.register_transaction(self.repo, self.tx("19:42 de 10 Eleasis"))
+            result = turno.register_transaction(self.repo, self.tx("19:42"))
         run.assert_called_once_with(self.repo)
         self.assertTrue(result["checkpoint_mundo"]["disparado"])
         self.assertEqual(result["checkpoint_mundo"]["motivo"], "passagem_horas")
 
     def test_reexecucao_de_turno_ja_consolidado_nao_recoloca_evento(self):
-        tx = self.tx("19:42 de 10 Eleasis")
+        tx = self.tx("19:42")
         normalized, session = turno.normalize_transaction(self.repo, tx)
         record = transacoes.build_pending_record(normalized, session)
         marker = transacoes.transaction_marker(record["id"])
