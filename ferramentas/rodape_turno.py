@@ -105,7 +105,13 @@ def _magic_segments(context: dict[str, Any]) -> list[str]:
         if isinstance(effect_id, str) and effect_id in effects:
             result.append(f"{name.strip()} ativo")
             continue
-        if isinstance(path, str) and _available(_get_path(context, path)):
+        # Deltas do turno podem materializar ``recursos.disponibilidades`` apenas
+        # no overlay efetivo. Sem delta, usa-se o estado-base guardado no próprio
+        # registro do rodapé, que não entra na memória fria.
+        availability = _get_path(context, path) if isinstance(path, str) else None
+        if availability is None:
+            availability = item.get("disponibilidade")
+        if _available(availability):
             result.append(f"{name.strip()} disponível")
     return result
 
