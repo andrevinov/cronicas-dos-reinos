@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
-"""Extensão transacional para descobertas de rastros do Mundo Vivo.
+"""Extensões transacionais: rastros pareados e instante temporal atômico.
 
-O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta um
-invariante pequeno e barato: toda descoberta de rastro precisa transportar, na
-mesma transação, o conhecimento observável e a mudança reservada do rastro para
-``descoberto``. Assim o caminho normal recusa pares incompletos antes das duas
-escritas de ``turno.py``.
+O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
+dois invariantes baratos:
 
-O regex legado de alvos permanece intacto. A única exceção aceita por este wrapper
-é o formato determinístico ``rastro:rastro-<16 hex>``.
+- descoberta de rastro transporta conhecimento + mudança reservada no mesmo lote;
+- data+hora de mundo são persistidas como **um único delta** `tempo/instante`.
+
+Deltas antigos de data+hora, quando chegam juntos e consistentes a uma escrita
+nova, são normalizados antes de tocar o JSONL. Um delta isolado de data ou hora é
+recusado. Overlays antigos recebem expansão somente em memória.
 """
 from __future__ import annotations
 
 from collections import Counter
+import copy
 import json
 import re
-from typing import Any
+from typing import Any, Iterable
 
 import _transacoes_core as _base
+import tempo_transacional
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -32,6 +35,12 @@ TRACE_TARGET_RE = re.compile(r"^rastro:rastro-[0-9a-f]{16}$")
 def validate_delta(delta: Any) -> dict[str, Any]:
     if not isinstance(delta, dict):
         raise TransactionError("cada delta precisa ser objeto JSON")
+    if tempo_transacional.is_atomic_delta(delta):
+        try:
+            return tempo_transacional.validate_atomic_delta(delta)
+        except tempo_transacional.AtomicTimeError as exc:
+            raise TransactionError(str(exc)) from exc
+
     target = delta.get("alvo")
     if not isinstance(target, str):
         raise TransactionError(f"alvo de delta inválido: {target!r}")
@@ -120,6 +129,10 @@ def validate_pending_record(record: Any) -> dict[str, Any]:
         raise TransactionError(f"transação excede {MAX_DELTAS} deltas")
     for delta in deltas:
         validate_delta(delta)
+    try:
+        tempo_transacional.validate_record_contract(deltas)
+    except tempo_transacional.AtomicTimeError as exc:
+        raise TransactionError(str(exc)) from exc
     validate_trace_discovery_pairs(deltas)
 
     hidden = record.get("rolagens_ocultas", [])
@@ -142,13 +155,17 @@ def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str,
     if not summary.strip():
         summary = str(transaction.get("narracao") or "").strip()
     summary = compact_summary(summary)
+    try:
+        normalized_deltas = tempo_transacional.normalize_new_deltas(transaction.get("deltas") or [])
+    except tempo_transacional.AtomicTimeError as exc:
+        raise TransactionError(str(exc)) from exc
 
     record: dict[str, Any] = {
         "versao": SCHEMA_VERSION,
         "id": transaction_id,
         "sessao": session,
         "resumo": summary,
-        "deltas": transaction.get("deltas") or [],
+        "deltas": normalized_deltas,
     }
     for key in ("modo", "tempo_mundo", "rolagens_ocultas", "tags"):
         value = transaction.get(key)
@@ -185,3 +202,19 @@ def load_pending(repo):
         ids.add(transaction_id)
         records.append(record)
     return records
+
+
+def overlay_target(
+    payload: dict[str, Any],
+    records: Iterable[dict[str, Any]],
+    target: str,
+) -> tuple[dict[str, Any], int]:
+    return _base.overlay_target(payload, tempo_transacional.expand_records(records), target)
+
+
+def overlay_runtime(
+    context: dict[str, Any],
+    scene: dict[str, Any] | None,
+    records: Iterable[dict[str, Any]],
+) -> tuple[dict[str, Any], dict[str, Any] | None, int]:
+    return _base.overlay_runtime(context, scene, tempo_transacional.expand_records(records))
