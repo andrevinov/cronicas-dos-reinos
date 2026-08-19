@@ -182,10 +182,20 @@ class ConsolidacaoTest(unittest.TestCase):
             [
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -4},
-                {"alvo": "tempo", "op": "set", "caminho": "hora_aproximada", "valor": "08:07"},
+                {
+                    "alvo": "tempo",
+                    "op": "instante",
+                    "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:07"},
+                },
                 {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "ponte"},
             ],
         )
+        pending = transacoes.load_pending(self.repo)
+        self.assertEqual(
+            [delta for delta in pending[0]["deltas"] if delta.get("alvo") == "tempo"],
+            [{"alvo": "tempo", "op": "instante", "valor": {"data": "7 Eleasis, 1372 DR", "hora": "08:07"}}],
+        )
+
         result = mod.consolidate(self.repo, "cena")
         self.assertFalse(result["recuperada"])
         self.assertEqual(len(result["transacoes"]), 1)
@@ -198,8 +208,13 @@ class ConsolidacaoTest(unittest.TestCase):
         self.assertEqual(sheet["recursos_de_classe"]["ki"]["pontos_atuais"], 3)
         self.assertEqual(state["recursos"]["pontos_de_vida"]["atuais"], 41)
         self.assertEqual(sheet["combate"]["pontos_de_vida"]["atuais"], 41)
+        self.assertEqual(time["data_atual"], "7 Eleasis, 1372 DR")
+        self.assertEqual(time["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(time["hora_aproximada"], "08:07")
+        self.assertEqual(state["tempo"]["data_exata"], "7 Eleasis, 1372 DR")
         self.assertEqual(state["tempo"]["hora_aproximada"], "08:07")
+        self.assertEqual(runtime["tempo"]["data"], "7 Eleasis, 1372 DR")
+        self.assertEqual(runtime["tempo"]["hora_aproximada"], "08:07")
         self.assertEqual(runtime["recursos"]["ki"]["atuais"], 3)
         self.assertEqual(runtime["localizacao"]["ponto_exato"], "ponte")
         self.assertEqual((self.repo / "runtime/eventos-pendentes.jsonl").read_text(encoding="utf-8"), "")
@@ -207,6 +222,8 @@ class ConsolidacaoTest(unittest.TestCase):
         ledger = mod.load_ledger(self.repo, 3)
         self.assertEqual(len(ledger), 1)
         self.assertEqual(ledger[0]["transacoes"], ["tx-recursos"])
+        self.assertEqual(ledger[0]["instantes_atomicos"], 1)
+        self.assertEqual(ledger[0]["deltas"], 4)
 
         again = mod.consolidate(self.repo, "cena")
         self.assertTrue(again["sem_pendencias"])
