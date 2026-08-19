@@ -34,6 +34,10 @@ acumula pelo menos duas horas desde o último cursor do Mundo Vivo, ou atravessa
 amanhecer configurado, o próprio registro promove uma fronteira de cena: primeiro
 persiste transcrição + delta, depois consolida o cânone e só então sincroniza o
 motor do mundo. Não há checkpoint extra para uma caminhada de poucos minutos.
+
+Depois de persistir e de qualquer checkpoint automático, o CLI emite por último
+`RODAPE_CANONICO — ...`. A linha é derivada do runtime efetivo e deve ser copiada
+verbatim pelo narrador; o modelo não recalcula data, local, PV, Ki ou itens mágicos.
 """
 from __future__ import annotations
 
@@ -54,6 +58,7 @@ except ImportError as exc:
     ) from exc
 
 import entrada
+import rodape_turno
 import tempo_transacional
 from transacoes import (
     PENDING_PATH,
@@ -556,6 +561,7 @@ def main() -> int:
                 )
             for warning in result.get("avisos", []):
                 print(f"AVISO — {warning}")
+            print(rodape_turno.build_safe(repo))
             return 0
         if args.comando == "check":
             errors = check_transactions(repo)
