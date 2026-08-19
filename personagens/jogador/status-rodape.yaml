@@ -1,0 +1,7 @@
+schema_status_rodape: 1
+natureza: configuracao_operacional
+itens_magicos:
+  broche_do_semblante_humilde:
+    nome: Broche do Semblante Humilde
+    caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
+    efeito_temporario: broche_do_semblante_humilde
