@@ -168,8 +168,13 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         self.assertIn("disponibilidade", items["broche_do_semblante_humilde"])
 
     def test_rodape_real_e_compacto(self):
+        context = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
         footer = rodape_turno.build(ROOT)
-        self.assertTrue(footer.startswith("RODAPE_CANONICO — 11 de Eleasis · 15:30 · "))
+        raw_date = context["tempo"]["data"].split(",", 1)[0]
+        day, month = raw_date.split(maxsplit=1)
+        expected_clock = context["tempo"]["hora_aproximada"]
+        self.assertTrue(footer.startswith("RODAPE_CANONICO — "))
+        self.assertIn(f"{day} de {month} · {expected_clock} · ", footer)
         self.assertIn("PV 45/45 · Ki 4/6", footer)
         self.assertIn("Broche do Semblante Humilde ativo", footer)
         self.assertLess(len(footer.encode("utf-8")), 512)
