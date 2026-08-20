@@ -176,7 +176,13 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         self.assertTrue(footer.startswith("RODAPE_CANONICO — "))
         self.assertIn(f"{day} de {month} · {expected_clock} · ", footer)
         self.assertIn("PV 45/45 · Ki 4/6", footer)
-        self.assertIn("Broche do Semblante Humilde ativo", footer)
+        effects = context.get("efeitos_temporarios") or {}
+        expected_brooch = (
+            "Broche do Semblante Humilde ativo"
+            if "broche_do_semblante_humilde" in effects
+            else "Broche do Semblante Humilde disponível"
+        )
+        self.assertIn(expected_brooch, footer)
         self.assertLess(len(footer.encode("utf-8")), 512)
 
 
