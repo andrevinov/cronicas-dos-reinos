@@ -18,6 +18,9 @@ relacao:
     uma promessa sob medo e pode deslocar a resposta de Bram.
   documentos:
   - Silva abriu e leu o bilhete curto e selado de Maerra.
+  - Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando que Sirrus autorizou
+    a convocação suplementar de Velis para o primeiro sino após o anoitecer e a vigilância coordenada nos limites
+    definidos. Ren ainda não recebeu essa confirmação.
   riscos:
   - Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria.
   - Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath.
@@ -42,5 +45,19 @@ relacao:
     e estrutura antes de concluir que a morte de Bram resolveria o problema.
   - 'Silva guarda um recado de Ren para entregar diretamente a Nera: ele pede que não se encontrem por enquanto,
     que ela não se arrisque e assina ''Com amor, R.'''
+  informacoes_recebidas_por_silva:
+  - Ren contou o plano coordenado com Halessa para pressionar e seguir Velis, confessou a vontade de eliminar os
+    agentes de Masao e explicou que pretende respeitar os limites dos aliados enquanto pondera quando será necessário
+    escalar.
+  - Nera retornou dos aposentos de Ren às 05:00 conforme combinado, por vontade própria e sem sinal de medo ou risco
+    imediato. Silva sabe que Ren dormiu apenas cerca de quatro horas antes de partir como Shinta.
+  acordos:
+  - Silva receberá e verificará pessoalmente a ficha reservada de Tyr sobre a operação de 12 Eleasis, procurará
+    Ren sem divulgar o motivo ao circo e, se Shizune for confirmada, reforçará discretamente protocolos de recados,
+    selos, deslocamentos e proteção dos Vell.
+  momentos_de_vinculo:
+  - Ren expôs a Silva seu conflito entre o treinamento para neutralizar ameaças e o respeito pela vida aprendido
+    com seus aliados. Silva respondeu sem condenação ou indulgência, reconhecendo que a preocupação dele com o efeito
+    da vingança é uma razão para continuar confiando nele.
 conteudo_mais_antigo_no_historico:
   riscos: 54

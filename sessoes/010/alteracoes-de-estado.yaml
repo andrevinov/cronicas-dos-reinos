@@ -1,0 +1,176 @@
+schema_alteracoes_transacionais: 1
+sessao: 10
+status: em_andamento
+fonte: sessoes/010/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 10
+  modo: fim_de_descanso_curto_no_circo_antes_do_poente
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 4/6
+  ca: 17
+  dinheiro_po: 31.400000000000002
+  data: 11 Eleasis, 1372 DR
+  hora: 15:30 de 11 Eleasis
+  area: Casa de Tyr, Temple District, Ravens Bluff
+  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 10
+  modo: experiencia_supervisionada_de_shinta_no_patio_de_entregas
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 4/6
+  ca: 17
+  dinheiro_po: 31.400000000000002
+  data: 12 Eleasis, 1372 DR
+  hora: '12:00'
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
+  nivel_ficha: 6
+consolidacoes:
+- id: s010-cena-7be3b62b27b46ab3
+  tipo: cena
+  transacoes:
+  - s010-50babd7d2c9deadb
+  - s010-cfb22238c5545eed
+  - s010-d4ec23d2cdec580f
+  - s010-505fc229bde67803
+  - s010-a26cc464046689b7
+  - s010-ac9ec7639aeef29f
+  - s010-f943d9db51b17cb9
+  deltas: 32
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-505fc229bde67803.md
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-50babd7d2c9deadb.md
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-a26cc464046689b7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-f943d9db51b17cb9.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-3ad576bdbd31fe58
+  tipo: cena
+  transacoes:
+  - s010-1ea0f49c7e9b9acc
+  - s010-8554d393e6abfdea
+  - s010-4a9785670eaaf423
+  - s010-eec93c267fd299ee
+  deltas: 15
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-13a2587c6024b28b
+  tipo: cena
+  transacoes:
+  - s010-eadea92ad2d01550
+  deltas: 7
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-eadea92ad2d01550.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-1c625ebd9028bb65
+  tipo: cena
+  transacoes:
+  - s010-0fc4886437555359
+  deltas: 8
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-d7bed2c1ed8564e0
+  tipo: cena
+  transacoes:
+  - s010-ef1d62e536c03471
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-0964b2fa01295266
+  tipo: cena
+  transacoes:
+  - s010-a5ae991cebc953f5
+  deltas: 1
+  arquivos_afetados:
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-bca528ab28078036
+  tipo: cena
+  transacoes:
+  - s010-d378bc71abdbea61
+  deltas: 4
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-1d115e2475841fca
+  tipo: cena
+  transacoes:
+  - s010-eb1db9ba09302bd7
+  - s010-8e275ac3d83b3b4e
+  - s010-0a74120791f2e27e
+  - s010-db8b75fded05109b
+  - s010-6592ef153ee1ad0a
+  deltas: 14
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md

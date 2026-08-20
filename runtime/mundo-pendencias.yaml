@@ -1,7 +1,5 @@
 schema_barreira_mundo: 1
 natureza: runtime_derivado
-bloqueado: true
-quantidade: 5
-disparo_mais_antigo:
-  data: 11 Eleasis, 1372 DR
-  hora: '06:00'
+bloqueado: false
+quantidade: 0
+disparo_mais_antigo: null

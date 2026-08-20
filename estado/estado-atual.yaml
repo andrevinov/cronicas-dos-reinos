@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: entre_sessoes
-  sessao_atual: 9
-  modo_de_cena_atual: fim_de_descanso_curto_no_circo_antes_do_poente
+  status: em_sessao
+  sessao_atual: 10
+  modo_de_cena_atual: experiencia_supervisionada_de_shinta_no_patio_de_entregas
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,8 +18,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa de Tyr, Temple District, Ravens Bluff
-  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
   descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
     com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
     Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
@@ -29,7 +29,7 @@ localizacao:
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 11 Eleasis, 1372 DR
+  data_exata: 12 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -37,7 +37,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: 15:30 de 11 Eleasis
+  hora_aproximada: '12:00'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -59,7 +59,7 @@ recursos:
     po: 31.400000000000002
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: usado em 11 Eleasis; indisponível até o amanhecer de 12 Eleasis
+    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 12 Eleasis
     silencio: disponível mediante gasto de 2 Ki
 ponteiros:
   tempo_atual: estado/tempo.yaml
@@ -67,7 +67,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/009/transcricao.md
+  transcricao_atual: sessoes/010/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -147,12 +147,21 @@ disponibilidades:
 combate_atual: null
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
-      oculto sob as camadas.
+    descricao: Ren está desarmado e vestido como Shinta; espadas, shurikens e ferramentas de ladrão ficaram em seus
+      aposentos no circo. Ele leva apenas o Broche do Semblante Humilde oculto e inativo.
     duracao: até Ren recuperar ou voltar a portar suas armas
-    inicio: 09:10 de 10 Eleasis
-  broche_do_semblante_humilde:
-    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
-      perfeitamente.
-    duracao: até aproximadamente 15:45 de 11 Eleasis
-    inicio: 14:45 de 11 Eleasis
+    inicio: 05:15 de 12 Eleasis
+  descanso_longo_incompleto:
+    descricao: Ren dormiu cerca de quatro horas depois de várias noites de sono insuficiente; não completou descanso
+      longo e não recebeu recuperação mecânica.
+    duracao: até completar um descanso longo
+    inicio: 00:45 de 12 Eleasis
+coberturas:
+  shinta_ryoushi:
+    capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
+    estado_diante_de_tomas: não desmascarada, mas aceita somente para experiência supervisionada no pátio de entregas;
+      sem pastas seladas, rotas externas ou acesso sem supervisão
+    nome: Shinta Ryoushi
+    origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
+    avaliacao_pratica: diligente e competente durante toda a manhã no pátio de entregas; supervisão passou de conferência
+      total para amostragem, mas documentos selados, rotas e acesso sensível permanecem proibidos

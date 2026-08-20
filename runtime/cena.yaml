@@ -1,13 +1,13 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 9
-modo: fim_de_descanso_curto_no_circo_antes_do_poente
+sessao: 10
+modo: experiencia_supervisionada_de_shinta_no_patio_de_entregas
 localizacao:
-  area: Casa de Tyr, Temple District, Ravens Bluff
-  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
 tempo:
-  data: 11 Eleasis, 1372 DR
-  hora_aproximada: 15:30 de 11 Eleasis
+  data: 12 Eleasis, 1372 DR
+  hora_aproximada: '12:00'
 mecanica_imediata:
   pv: 45/45
   ki: 4/6
@@ -23,19 +23,19 @@ prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clare
   de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/009/handoff.yaml
+  handoff: sessoes/010/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/009/transcricao.md
+  transcricao_fria: sessoes/010/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
-      oculto sob as camadas.
+    descricao: Ren está desarmado e vestido como Shinta; espadas, shurikens e ferramentas de ladrão ficaram em seus
+      aposentos no circo. Ele leva apenas o Broche do Semblante Humilde oculto e inativo.
     duracao: até Ren recuperar ou voltar a portar suas armas
-    inicio: 09:10 de 10 Eleasis
-  broche_do_semblante_humilde:
-    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
-      perfeitamente.
-    duracao: até aproximadamente 15:45 de 11 Eleasis
-    inicio: 14:45 de 11 Eleasis
+    inicio: 05:15 de 12 Eleasis
+  descanso_longo_incompleto:
+    descricao: Ren dormiu cerca de quatro horas depois de várias noites de sono insuficiente; não completou descanso
+      longo e não recebeu recuperação mecânica.
+    duracao: até completar um descanso longo
+    inicio: 00:45 de 12 Eleasis

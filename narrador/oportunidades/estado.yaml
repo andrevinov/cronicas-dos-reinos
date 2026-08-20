@@ -3,20 +3,30 @@ natureza: controle_reservado
 gate:
   ciclo: 1
   restantes:
-  - nada_02
-  - nada_05
-  - nada_07
-  - nada_04
-  - oportunidade_01
   - nada_06
   - oportunidade_02
-  sorteios: 3
+  sorteios: 8
 cooldown_ate: null
 pendencias_avaliacao: {}
 missoes: {}
-sementes_consumidas: []
+sementes_consumidas:
+- nera_vell:pequena_pendencia_de_vida
 encontros_recentes:
 - sessao-009:cena-retorno-bram:silva
 - sessao-009:cena-retorno-narwhal:kethra
 - sessao-009:cena-retorno-tyr-documentos:halessa
-historico_recente: []
+- scene:sessao-010:maerra-casa-aurora:npc:maerra_thandrel
+- scene:sessao-010:retorno-halessa-plano-velis:npc:halessa_vorn
+- scene:sessao-010:retorno-circo-contravigilancia:npc:silva_elkwood
+- scene:sessao-010:retorno-circo-contravigilancia:npc:nera_vell
+- scene:sessao-010:nera-nos-aposentos-de-ren:npc:nera_vell
+historico_recente:
+- tipo: avaliacao_descartada
+  id: sq-ec78a67de83ed965
+  npc_id: nera_vell
+  motivo: A cena é um encontro íntimo e de descanso já iniciado por Ren e Nera; inserir
+    uma pendência cotidiana agora desviaria o vínculo e transformaria Nera em dispensadora
+    de tarefa.
+  em:
+    data: 11 Eleasis, 1372 DR
+    hora: '20:30'

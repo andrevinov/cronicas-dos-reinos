@@ -379,3 +379,54 @@ eventos_pos_migracao:
     op: set
     valor: favorável, protetiva e severamente vigilante; valoriza a honestidade e o cuidado com a cauda, mas rejeita
       tratar a invasão como simples recado
+- transacao: s010-f943d9db51b17cb9
+  sessao: 10
+  resumo: Depois do banho, Ren atualizou Silva sobre a operação coordenada com Halessa e confessou sua vontade de
+    eliminar os agentes de Masao, o conflito com os valores aprendidos em Ravens Bluff e o receio de que contenção
+    institucional seja insuficiente. Silva confirmou que receberá e verificará a ficha de Tyr, definiu medidas discretas
+    caso Shizune seja confirmada e explicou que respeito pela vida não exclui força necessária, mas exige prova,
+    limite e responsabilidade. Ela disse que Ren precisa const…
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Ren contou o plano coordenado com Halessa para pressionar e seguir Velis, confessou a vontade de eliminar
+      os agentes de Masao e explicou que pretende respeitar os limites dos aliados enquanto pondera quando será
+      necessário escalar.
+  - alvo: relacao:silva_elkwood
+    caminho: acordos
+    op: append
+    valor: Silva receberá e verificará pessoalmente a ficha reservada de Tyr sobre a operação de 12 Eleasis, procurará
+      Ren sem divulgar o motivo ao circo e, se Shizune for confirmada, reforçará discretamente protocolos de recados,
+      selos, deslocamentos e proteção dos Vell.
+  - alvo: relacao:silva_elkwood
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren expôs a Silva seu conflito entre o treinamento para neutralizar ameaças e o respeito pela vida aprendido
+      com seus aliados. Silva respondeu sem condenação ou indulgência, reconhecendo que a preocupação dele com o
+      efeito da vingança é uma razão para continuar confiando nele.
+- transacao: s010-0fc4886437555359
+  sessao: 10
+  resumo: Ren dormiu cerca de quatro horas ao lado de Nera, sem completar descanso longo, e a acompanhou de volta
+    a Silva às 05:00. Vestiu-se novamente como Shinta, deixou todas as armas e ferramentas no circo e levou apenas
+    o Broche do Semblante Humilde oculto e inativo. Às 05:45 chegou pela entrada habitual da Casa do Salgueiro Seco
+    para o trabalho normal, sem revelar ao jardineiro ou a Tomas que ouvira a instrução da véspera.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Nera retornou dos aposentos de Ren às 05:00 conforme combinado, por vontade própria e sem sinal de medo
+      ou risco imediato. Silva sabe que Ren dormiu apenas cerca de quatro horas antes de partir como Shinta.
+- transacao: s010-6592ef153ee1ad0a
+  sessao: 10
+  resumo: Shinta trabalhou diligentemente até o meio-dia, aprendendo a conferir recibos abertos, registrar contagens
+    e organizar volumes sem reclamar, adivinhar ou buscar documentos proibidos. A supervisão diminuiu de conferência
+    total para amostragem, embora selos e papéis sensíveis continuem fora de alcance. Tomas avaliou que o trabalho
+    de Shinta é melhor que sua fala e condicionou as 4 PP e o retorno no dia seguinte a uma tarde igualmente boa.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: documentos
+    op: append
+    valor: Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando que Sirrus
+      autorizou a convocação suplementar de Velis para o primeiro sino após o anoitecer e a vigilância coordenada
+      nos limites definidos. Ren ainda não recebeu essa confirmação.

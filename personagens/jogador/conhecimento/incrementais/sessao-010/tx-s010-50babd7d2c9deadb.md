@@ -1,0 +1,5 @@
+### Sessão 010: Ren foi da Casa de Tyr à Casa da Aurora Menor e contou a Maerra que invadiu a loja de Bram, feriu-o, tomou seu caderno e o coagiu a abandonar a perseguição a Colm. Maerra reconheceu a proteção obtida, advertiu que Bram pode reagir por intermediários e propôs três linhas não confirmadas para procurar Shizune: instituições que dão autoridade a documentos, oficinas capazes de preparar papéis e selos, e redes de passagem e identidades. O efeito do Broche do Semblante Humilde terminou durante a conv…
+
+<!-- origem-transacao:s010-50babd7d2c9deadb -->
+
+- **hipoteses_de_atuacao_de_shizune_fora_de_narwhal:** Maerra propôs como linhas de investigação não confirmadas: instituições onde documentos ganham autoridade; oficinas e comércios capazes de preparar papel, tinta, cera e selos, sobretudo um espaço seco oculto em atividade úmida; e redes de passagem como pátios, depósitos, mensageiros e hospedarias. Sugeriu seguir documentos semelhantes ao volume 13 e as mãos que tocaram as ordens antes de procurar diretamente pela mulher.

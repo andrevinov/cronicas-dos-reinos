@@ -1,0 +1,98 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 10
+checkpoint:
+  tipo: cena
+  estado: retomavel
+  modo: experiencia_supervisionada_de_shinta_no_patio_de_entregas
+  personagem:
+    nome: Ren Kagehira
+    nivel: 6
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 45
+    ki:
+      atuais: 4
+      maximos: 6
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 31.400000000000002
+  tempo:
+    data: 12 Eleasis, 1372 DR
+    hora_aproximada: '12:00'
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Casa do Salgueiro Seco, Ravens Bluff
+    ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
+continuidade:
+  resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
+    Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico. Nera
+    apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando pudesse
+    e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu a persona
+    de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o portão.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s010-cena-d7bed2c1ed8564e0
+  transacao: s010-ef1d62e536c03471
+  resumo: Shinta iniciou alegremente o terceiro dia de trabalho, recolhendo folhas e galhos no caminho lateral.
+    Às 06:00, o jardineiro ainda não mencionou Tomas Rell; a rotina de trabalho e a reação planejada de surpresa
+    permanecem pendentes após a fronteira do Mundo Vivo.
+- batch: s010-cena-0964b2fa01295266
+  transacao: s010-a5ae991cebc953f5
+  resumo: Uma procissão mercantil de Waukeen foi organizada no Lower Trades para 12 Eleasis, aproximadamente entre
+    10:00 e 13:00, alterando o fluxo de ruas e desviando temporariamente algumas patrulhas sem criar conflito.
+- batch: s010-cena-bca528ab28078036
+  transacao: s010-d378bc71abdbea61
+  resumo: Após o amanhecer, Shinta concluiu o serviço rotineiro com disposição. Pouco antes da segunda hora, o jardineiro
+    informou pela primeira vez que Tomas Rell queria vê-lo; Shinta demonstrou surpresa e alegria genuínas, perguntando
+    se seria contratado. No horário estipulado, foi à entrada de entrega sem revelar conhecimento prévio. Tomas
+    o recebeu e anunciou que começaria com perguntas para avaliar seu trabalho próximo a…
+- batch: s010-cena-1d115e2475841fca
+  transacao: s010-eb1db9ba09302bd7
+  resumo: 'Shinta declarou humildemente que trabalha e permanece calado. Tomas advertiu que responder tudo pode
+    ser tão perigoso quanto falar demais e iniciou a entrevista com três pontos: nome completo, origem e trabalho
+    anterior; capacidade de ler, contar e copiar; e como reagiria a uma oferta de suborno para revelar a rota de
+    uma pasta fechada.'
+- batch: s010-cena-1d115e2475841fca
+  transacao: s010-8e275ac3d83b3b4e
+  resumo: 'Shinta apresentou a cobertura Shinta Ryoushi, pescador de uma vila estrangeira, alfabetizado em Comum
+    pela leitura e capaz de escrever em sua língua. Enganação com vantagem resultou em 12 contra CD 14: Tomas não
+    descobriu Ren, mas considerou a resposta sobre harmonia ensaiada e evasiva. Confirmou a alfabetização de Shinta,
+    aumentou a cautela e exigiu uma resposta concreta sobre recusar o suborno, relatar a tentativa…'
+- batch: s010-cena-1d115e2475841fca
+  transacao: s010-0a74120791f2e27e
+  resumo: 'Shinta tentou esclarecer que jamais venderia segredo por ouro e demonstrou abatimento diante da possibilidade
+    de perder o emprego. Enganação 4 contra CD 13 falhou: Tomas interpretou a postura como apelo à compaixão em
+    vez de resposta operacional. Não desmascarou Ren, mas negou acesso a pastas seladas, rotas externas e trabalho
+    sem supervisão. Ofereceu um dia de experiência no pátio de entregas, à vista de um assiste…'
+- batch: s010-cena-1d115e2475841fca
+  transacao: s010-db8b75fded05109b
+  resumo: Shinta aceitou com entusiasmo o dia de experiência e começou imediatamente no pátio de entregas. Tomas
+    corrigiu seu nome e explicou que discrição significa limitar informação a quem precisa saber. Em Investigação
+    15 contra CD 12, Shinta conferiu corretamente recibos abertos e volumes, separando uma marca ambígua em vez
+    de adivinhar. Tomas aprovou o julgamento e manteve o trabalho supervisionado e sem acesso a selos…
+- batch: s010-cena-1d115e2475841fca
+  transacao: s010-6592ef153ee1ad0a
+  resumo: Shinta trabalhou diligentemente até o meio-dia, aprendendo a conferir recibos abertos, registrar contagens
+    e organizar volumes sem reclamar, adivinhar ou buscar documentos proibidos. A supervisão diminuiu de conferência
+    total para amostragem, embora selos e papéis sensíveis continuem fora de alcance. Tomas avaliou que o trabalho
+    de Shinta é melhor que sua fala e condicionou as 4 PP e o retorno no dia seguinte a uma…
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/010/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

@@ -76,3 +76,14 @@ eventos_pos_migracao:
     op: set
     valor: fisicamente bem e mais estável sob o nome de cobertura Timo; ajuda em tarefas pequenas, ainda espera
       Ren voltar e soube por Silva que ele está vivo, bem e com saudades.
+- transacao: s010-1ea0f49c7e9b9acc
+  sessao: 10
+  resumo: Ren terminou a refeição, agradeceu a Silva e pediu para ver Nera e Tavin. Silva permitiu a visita, advertindo-o
+    a não colocar sobre Tavin o peso da ameaça de Shizune. Na carroça verde, Tavin recebeu Ren com um abraço e Nera
+    demonstrou alívio por ele ter voltado, percebendo em seguida sua preocupação e perguntando o que aconteceu.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ao ver Ren retornar à carroça verde, Tavin abandonou a tarefa que fazia e o abraçou imediatamente, reforçando
+      a associação de Ren com retorno e segurança.

@@ -167,8 +167,8 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 3201
-    campos_atuais: 11
+    bytes_fragmento: 5513
+    campos_atuais: 14
   tavin_vell:
     nome: Tavin Vell
     tipo: testemunha jovem
@@ -179,8 +179,8 @@ relacoes:
     respeito: medo respeitoso com simpatia
     arquivo: estado/relacoes/tavin_vell.yaml
     historico: historico/relacoes/tavin_vell.yaml
-    bytes_fragmento: 1851
-    campos_atuais: 10
+    bytes_fragmento: 2044
+    campos_atuais: 11
   velha_sella:
     nome: Velha Sella
     tipo: contato cauteloso / moradora de Fishtown
@@ -202,8 +202,8 @@ relacoes:
     respeito: cauteloso, crescente
     arquivo: estado/relacoes/maerra_thandrel.yaml
     historico: historico/relacoes/maerra_thandrel.yaml
-    bytes_fragmento: 2959
-    campos_atuais: 11
+    bytes_fragmento: 3442
+    campos_atuais: 13
   luath:
     nome: Luath
     tipo: sargento da City Guard / supervisor possível da Night Watch
@@ -242,8 +242,8 @@ relacoes:
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 3957
-    campos_atuais: 10
+    bytes_fragmento: 5461
+    campos_atuais: 13
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
@@ -256,8 +256,8 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 3223
-    campos_atuais: 10
+    bytes_fragmento: 4635
+    campos_atuais: 13
   jack_mooney:
     nome: Jack Mooney
     tipo: dono do circo / autoridade local do acampamento / patrono condicional

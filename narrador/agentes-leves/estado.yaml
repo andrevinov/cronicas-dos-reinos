@@ -10,7 +10,7 @@ agentes:
   bram_vask:
     estado: ativo
     proxima_avaliacao:
-      data: 12 Eleasis, 1372 DR
+      data: 15 Eleasis, 1372 DR
       hora: 06:00
   luath:
     estado: ativo

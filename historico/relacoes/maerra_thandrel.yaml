@@ -103,3 +103,27 @@ eventos_pos_migracao:
     op: set
     valor: amiga pastoral, moralmente firme e abertamente preocupada com Ren; confiança alta em sua proteção de
       vulneráveis
+- transacao: s010-50babd7d2c9deadb
+  sessao: 10
+  resumo: 'Ren foi da Casa de Tyr à Casa da Aurora Menor e contou a Maerra que invadiu a loja de Bram, feriu-o,
+    tomou seu caderno e o coagiu a abandonar a perseguição a Colm. Maerra reconheceu a proteção obtida, advertiu
+    que Bram pode reagir por intermediários e propôs três linhas não confirmadas para procurar Shizune: instituições
+    que dão autoridade a documentos, oficinas capazes de preparar papéis e selos, e redes de passagem e identidades.
+    O efeito do Broche do Semblante Humilde terminou durante a conv…'
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: informacoes_recebidas_por_maerra
+    op: append
+    valor: Ren contou que invadiu a loja de Bram Vask, feriu-o, tomou seu caderno de contas e o coagiu a retirar
+      Colm de seus livros, não enviar homens atrás dele e não comprar novas perguntas sobre seu paradeiro.
+- transacao: s010-d4ec23d2cdec580f
+  sessao: 10
+  resumo: Ren agradeceu Maerra com entusiasmo e um beijo afetuoso na testa. Maerra reagiu com surpresa e humor,
+    mas advertiu que qualquer nova pressão sobre Velis deve parecer necessária à investigação, sem denunciar a mão
+    de Ren. Ren voltou à Casa de Tyr e foi recebido novamente por Halessa, que lhe pediu que apresentasse sua proposta.
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren, autenticamente feliz com a ideia construída pelos dois, segurou carinhosamente a cabeça de Maerra
+      e beijou sua testa antes de partir. Maerra recebeu o gesto com surpresa, humor e afeto pastoral.

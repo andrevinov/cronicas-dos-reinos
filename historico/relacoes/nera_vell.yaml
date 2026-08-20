@@ -253,3 +253,96 @@ eventos_pos_migracao:
     valor: Nera sabe que Ren trabalhará sob o nome Shinta numa propriedade murada que ele considera possível casa
       futura. Ela apoiou a esperança, exigiu que proteção não vire prisão e aceitou a promessa limitada de Ren voltar
       quando puder e avisar quando não puder.
+- transacao: s010-1ea0f49c7e9b9acc
+  sessao: 10
+  resumo: Ren terminou a refeição, agradeceu a Silva e pediu para ver Nera e Tavin. Silva permitiu a visita, advertindo-o
+    a não colocar sobre Tavin o peso da ameaça de Shizune. Na carroça verde, Tavin recebeu Ren com um abraço e Nera
+    demonstrou alívio por ele ter voltado, percebendo em seguida sua preocupação e perguntando o que aconteceu.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren voltou ao circo sem trazer cauda e pediu a Silva para ver Nera e Tavin; Nera recebeu sua presença
+      com alívio e reconheceu novamente que ele cumpriu a promessa limitada de voltar.
+- transacao: s010-8554d393e6abfdea
+  sessao: 10
+  resumo: Ren abraçou Tavin e Nera, confirmou que ambos estavam bem e conversou com eles sobre as tarefas leves
+    e discretas no circo. Tavin descreveu orgulhosamente seu trabalho separando fivelas, enquanto Nera explicou
+    que Silva limita o esforço e a exposição dos dois. Nera percebeu o sinal de que Ren guardava algo diante de
+    Tavin e indicou discretamente que poderiam conversar depois, sem pressioná-lo ou alertar o menino.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Durante uma conversa leve com Tavin, Nera percebeu pelo olhar de Ren que ele guardava algo que não queria
+      dizer diante do menino. Sem expô-lo, apertou sua mão e indicou discretamente que conversariam quando Tavin
+      terminasse o turno.
+- transacao: s010-4a9785670eaaf423
+  sessao: 10
+  resumo: Ren disse diante de Nera e Tavin que permaneceria no circo para descansar após cinco noites mal dormidas
+    e sinalizou discretamente que desejava receber Nera em seus aposentos depois que Tavin dormisse. Nera entendeu
+    o convite, respondeu de forma clara que quer conversar e passar a noite com Ren, e disse que pedirá autorização
+    a Silva, condicionando a visita à segurança e à vontade de ambos no momento.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Nera entendeu o convite discreto de Ren e afirmou que deseja conversar e passar a noite com ele em seus
+      aposentos depois que Tavin dormir. Ela pedirá autorização a Silva; a visita permanece condicionada à segurança
+      e ao consentimento de ambos no momento.
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren convidou Nera, de maneira tímida e respeitando sua escolha, para uma noite privada de conversa e
+      intimidade. Nera correspondeu com desejo claro, humor afetuoso e preocupação com as cinco noites de pouco
+      sono dele.
+- transacao: s010-eec93c267fd299ee
+  sessao: 10
+  resumo: Ren combinou com Nera que a levaria de volta às cinco da manhã, despediu-se dela e de Tavin e foi aos
+    próprios aposentos. Durante a espera, realizou manutenção das espadas, shurikens e ferramentas de ladrão, recuperando
+    o acesso às armas e encerrando o estado de estar desarmado como Shinta. Por volta das 20:30, Nera chegou após
+    obter autorização de Silva até as 05:00 e, no limiar, confirmou novamente se Ren ainda desejava sua companhia.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Silva autorizou Nera a visitar os aposentos de Ren durante a noite de 11 para 12 Eleasis, com retorno
+      acompanhado às 05:00 e interrupção imediata se surgir risco no acampamento. Nera compareceu por vontade própria
+      e voltou a confirmar o consentimento de Ren no limiar.
+- transacao: s010-eadea92ad2d01550
+  sessao: 10
+  resumo: Ren e Nera confirmaram novamente o consentimento, declararam amor um pelo outro e passaram algumas horas
+    em intimidade consensual, tratada com corte de cena. Depois, Ren contou sobre Tadatsune, a Lua como guardiã
+    dos Kagehira, seu medo de perder Nera e como o amor mudou sua relação com a vingança. Nera disse que não salvou
+    Ren sozinha, recusou carregar a responsabilidade pela alma dele, afirmou que escolheu conscientemente o risco
+    e declarou que só se arrependeria se Ren decidisse por ela ou us…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: marcos_da_relacao
+    op: append
+    valor: Ren e Nera fizeram amor consensualmente pela primeira vez nos aposentos dele e, depois, declararam amor
+      e conversaram com franqueza sobre medo, vingança, escolha e o direito de Nera decidir os próprios riscos.
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas_por_nera
+    op: append
+    valor: Ren explicou que Tadatsune ensinava que a vida de um shinobi pertence ao escuro e que a Lua, símbolo
+      e guardiã dos Kagehira, seria seu único amor. Confessou que antes aceitaria descartar corpo e alma para destruir
+      Masao, mas agora sente medo por Nera e deseja voltar todos os dias.
+  - alvo: relacao:nera_vell
+    caminho: informacoes_compartilhadas_por_nera
+    op: append
+    valor: Nera afirmou que ama Ren, que escolheu conscientemente visitá-lo e assumir riscos, e que não quer ser
+      tratada como responsável por salvar a alma dele. Disse que poderia se arrepender se Ren decidisse por ela,
+      escondesse o risco ou usasse seu nome para justificar crueldade, mas não de tê-lo escolhido.
+- transacao: s010-0fc4886437555359
+  sessao: 10
+  resumo: Ren dormiu cerca de quatro horas ao lado de Nera, sem completar descanso longo, e a acompanhou de volta
+    a Silva às 05:00. Vestiu-se novamente como Shinta, deixou todas as armas e ferramentas no circo e levou apenas
+    o Broche do Semblante Humilde oculto e inativo. Às 05:45 chegou pela entrada habitual da Casa do Salgueiro Seco
+    para o trabalho normal, sem revelar ao jardineiro ou a Tomas que ouvira a instrução da véspera.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Ren cumpriu o combinado e acompanhou Nera de volta à carroça de Silva às 05:00 de 12 Eleasis; Nera pediu
+      apenas que ele voltasse, sem exigir promessa absoluta.

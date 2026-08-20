@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 9
-  status: entre_sessoes
-  modo_de_cena: fim_de_descanso_curto_no_circo_antes_do_poente
+  numero: 10
+  status: em_sessao
+  modo_de_cena: experiencia_supervisionada_de_shinta_no_patio_de_entregas
 personagem:
   nome: Ren Kagehira
   nivel: 6
@@ -24,8 +24,8 @@ recursos:
   deslocamento: 55 pés
   dinheiro_po: 31.400000000000002
 tempo:
-  data: 11 Eleasis, 1372 DR
-  hora_aproximada: 15:30 de 11 Eleasis
+  data: 12 Eleasis, 1372 DR
+  hora_aproximada: '12:00'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,15 +34,15 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa de Tyr, Temple District, Ravens Bluff
-  ponto_exato: câmara lateral reservada da Casa de Tyr, diante de Halessa Vorn
+  area: Casa do Salgueiro Seco, Ravens Bluff
+  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
       nome: Broche do Semblante Humilde
       caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
       efeito_temporario: broche_do_semblante_humilde
-      disponibilidade: usado em 11 Eleasis; indisponível até o amanhecer de 12 Eleasis
+      disponibilidade: disponível; uso renovado no amanhecer de 12 Eleasis
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -52,18 +52,18 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/009/handoff.yaml
-  transcricao_fria: sessoes/009/transcricao.md
+  handoff_atual: sessoes/010/handoff.yaml
+  transcricao_fria: sessoes/010/transcricao.md
   narrador: narrador/
   regras: regras/
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren está desarmado e vestido como Shinta, com roupas modestas de trabalhador e o ferimento do ombro
-      oculto sob as camadas.
+    descricao: Ren está desarmado e vestido como Shinta; espadas, shurikens e ferramentas de ladrão ficaram em seus
+      aposentos no circo. Ele leva apenas o Broche do Semblante Humilde oculto e inativo.
     duracao: até Ren recuperar ou voltar a portar suas armas
-    inicio: 09:10 de 10 Eleasis
-  broche_do_semblante_humilde:
-    descricao: Ren está sob efeito semelhante a Disfarçar-se, com aparência humilde e comum sem imitar pessoa específica
-      perfeitamente.
-    duracao: até aproximadamente 15:45 de 11 Eleasis
-    inicio: 14:45 de 11 Eleasis
+    inicio: 05:15 de 12 Eleasis
+  descanso_longo_incompleto:
+    descricao: Ren dormiu cerca de quatro horas depois de várias noites de sono insuficiente; não completou descanso
+      longo e não recebeu recuperação mecânica.
+    duracao: até completar um descanso longo
+    inicio: 00:45 de 12 Eleasis

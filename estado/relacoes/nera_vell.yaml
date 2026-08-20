@@ -23,11 +23,22 @@ relacao:
   - Tavin ouviu as palavras 'Narwhal', 'segunda maré' e 'se vier sozinho'.
   - Nera reconheceu a impressão protegida da falsa lua velada na pasta de Velis como derivada do trabalho que foi
     obrigada a fazer, mas prensada com cera de arquivo.
+  - Nera afirmou que ama Ren, que escolheu conscientemente visitá-lo e assumir riscos, e que não quer ser tratada
+    como responsável por salvar a alma dele. Disse que poderia se arrepender se Ren decidisse por ela, escondesse
+    o risco ou usasse seu nome para justificar crueldade, mas não de tê-lo escolhido.
   acordos:
   - Ren decidiu tirar Tavin de perigo e recuperar o livro de provas.
   - Ren prometeu dar um jeito de checar a situação de Nera e Tavin e entrar em contato.
   - Se Ren não voltar no tempo que indicar, Nera avisará Silva, que acionará Luath; ninguém deixará o esconderijo
     para procurá-lo nem exporá o circo.
+  - Nera entendeu o convite discreto de Ren e afirmou que deseja conversar e passar a noite com ele em seus aposentos
+    depois que Tavin dormir. Ela pedirá autorização a Silva; a visita permanece condicionada à segurança e ao consentimento
+    de ambos no momento.
+  - Silva autorizou Nera a visitar os aposentos de Ren durante a noite de 11 para 12 Eleasis, com retorno acompanhado
+    às 05:00 e interrupção imediata se surgir risco no acampamento. Nera compareceu por vontade própria e voltou
+    a confirmar o consentimento de Ren no limiar.
+  - Ren cumpriu o combinado e acompanhou Nera de volta à carroça de Silva às 05:00 de 12 Eleasis; Nera pediu apenas
+    que ele voltasse, sem exigir promessa absoluta.
   riscos:
   - Nera ouviu Ren falar sobre Kozakura, o Clã Kagehira e o Kagehira Getsuei-ryu.
   - Nera percebeu que a lembrança das cerejeiras toca saudade e dor, embora Ren não tenha transformado isso em explicação
@@ -43,5 +54,20 @@ relacao:
     sem nome externo de Ren, Nera ou Tavin.
   - Nera entende que os inimigos ainda parecem possuir palavras de pressão sobre ela e Tavin, mas não demonstraram
     saber a porta exata onde os Vell dormem.
+  momentos_de_vinculo:
+  - Ren voltou ao circo sem trazer cauda e pediu a Silva para ver Nera e Tavin; Nera recebeu sua presença com alívio
+    e reconheceu novamente que ele cumpriu a promessa limitada de voltar.
+  - Durante uma conversa leve com Tavin, Nera percebeu pelo olhar de Ren que ele guardava algo que não queria dizer
+    diante do menino. Sem expô-lo, apertou sua mão e indicou discretamente que conversariam quando Tavin terminasse
+    o turno.
+  - Ren convidou Nera, de maneira tímida e respeitando sua escolha, para uma noite privada de conversa e intimidade.
+    Nera correspondeu com desejo claro, humor afetuoso e preocupação com as cinco noites de pouco sono dele.
+  marcos_da_relacao:
+  - Ren e Nera fizeram amor consensualmente pela primeira vez nos aposentos dele e, depois, declararam amor e conversaram
+    com franqueza sobre medo, vingança, escolha e o direito de Nera decidir os próprios riscos.
+  informacoes_recebidas_por_nera:
+  - Ren explicou que Tadatsune ensinava que a vida de um shinobi pertence ao escuro e que a Lua, símbolo e guardiã
+    dos Kagehira, seria seu único amor. Confessou que antes aceitaria descartar corpo e alma para destruir Masao,
+    mas agora sente medo por Nera e deseja voltar todos os dias.
 conteudo_mais_antigo_no_historico:
   riscos: 43

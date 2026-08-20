@@ -3,59 +3,101 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 11 Eleasis, 1372 DR
-  hora: '15:30'
-pendencias:
+  data: 12 Eleasis, 1372 DR
+  hora: '12:00'
+pendencias: []
+concluidas_recentes:
 - id: mundo-d11f76d42770dca4
   tipo: avaliar_entrada
-  entrada: shen_meihua
-  agentes_afetados: []
   disparado_em:
     data: 11 Eleasis, 1372 DR
     hora: 06:00
-  motivo: Avaliar entrada de Shen Meihua sem fazê-la acontecer automaticamente.
-  origem: entradas:shen_meihua
+  nota: Shen Meihua está elegível, mas a cena atual não oferece entrada orgânica;
+    manter latente até novo gatilho ou próxima avaliação.
 - id: mundo-09ec9128f524d868
   tipo: reavaliar_agente_leve
-  agente_leve: kethra_dunn
-  agentes_afetados: []
   disparado_em:
     data: 11 Eleasis, 1372 DR
     hora: 06:00
-  motivo: Reavaliar Kethra Dunn fora de cena. Rotina é o padrão; só registrar iniciativa
-    se o estado atual oferecer causa concreta.
-  origem: agentes-leves:kethra_dunn.cadencia
+  nota: 'Rotina mantida: Kethra não observou nova aparição da mulher Cinza-Azul e
+    preserva a própria cobertura.'
 - id: mundo-49c42554d41071b8
   tipo: reavaliar_agente
-  agente: night_watch
-  agentes_afetados:
-  - night_watch
   disparado_em:
     data: 11 Eleasis, 1372 DR
     hora: 06:00
-  motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar
-    prioridades a cada novo dia.
-  origem: agenda:reavaliacoes.night_watch
+  agente: night_watch
+  nota: Night Watch mantém vigilância e resposta preparada; nenhuma causa concreta
+    exige mudança extraordinária nesta reavaliação.
 - id: mundo-8eefae9b75f120f1
   tipo: reavaliar_agente
-  agente: casa_de_tyr
-  agentes_afetados:
-  - casa_de_tyr
   disparado_em:
     data: 11 Eleasis, 1372 DR
     hora: 06:00
-  motivo: A investigação reservada de Tyr continua fora da presença de Ren, mas não
-    exige releitura diária completa.
-  origem: agenda:reavaliacoes.casa_de_tyr
+  agente: casa_de_tyr
+  nota: Casa de Tyr mantém custódia, investigação reservada e discrição; nenhuma mudança
+    adicional exigida.
 - id: mundo-be5346fd978581a9
   tipo: reavaliar_agente
-  agente: red_sail
-  agentes_afetados:
-  - red_sail
   disparado_em:
     data: 11 Eleasis, 1372 DR
     hora: 06:00
-  motivo: A busca ativa da Red Sail produz decisões operacionais diárias mesmo sem
-    nova iniciativa de Ren.
-  origem: agenda:reavaliacoes.red_sail
-concluidas_recentes: []
+  agente: red_sail
+  nota: Red Sail mantém a busca dirigida já em execução; não localizou a casa de Iria,
+    o lagar ou a cadeia rural nesta avaliação.
+- id: mundo-7720576ed0131a36
+  tipo: evento_mundial
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Procissão mercantil de Waukeen canonizada no Lower Trades entre cerca de 10:00
+    e 13:00, com fluxo de carroças reduzido e desvio temporário de patrulhas; sem
+    conflito automático.
+- id: mundo-a3f05ac7c7dfd3f3
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Os sinais orientais e documentais permanecem individualmente plausíveis por
+    rota marítima, fraude ou contrabando; ainda não satisfazem o marco de contabilidade
+    impossível.
+- id: mundo-7742df22984e0343
+  tipo: reavaliar_agente_leve
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Bram mantém resposta indireta e autopreservação já registradas; não surgiu
+    nova pista além das pressões já incorporadas ao estado, portanto nenhuma iniciativa
+    extraordinária adicional.
+- id: mundo-0284db21c0818af3
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: Night Watch mantém vigilância e resposta preparada; apenas acomoda o desvio
+    temporário de patrulhas causado pela procissão já canonizada.
+- id: mundo-1192e37a4d60f445
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: Red Sail mantém a busca dirigida por curandeiros, carroças e propriedades
+    a leste; nenhuma nova informação localiza a cadeia rural nesta avaliação.
+- id: mundo-b2515a73a964037b
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: Kurobane permanece aguardando janela documental; a futura convocação de Velis
+    ainda não é conhecida por ele e não oferece causa legítima para ação agora.
+- id: mundo-cbb7767ad71e336e
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 12 Eleasis, 1372 DR
+    hora: 06:00
+  agente: masao_hirasawa
+  nota: Masao mantém o plano estratégico por rede e intermediários; nenhuma mudança
+    de escala ou conhecimento justifica nova ação específica neste amanhecer.

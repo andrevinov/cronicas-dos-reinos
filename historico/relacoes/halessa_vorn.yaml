@@ -234,3 +234,55 @@ eventos_pos_migracao:
     valor: 'Halessa atualizou Ren pessoalmente: original e falsificação seguem em custódias separadas e lacradas;
       Luath e Maerra confirmaram elementos independentes da cadeia; Tyr aguarda resposta reservada da guardiã atual
       do registro autêntico antes de atribuir autoria ou validar ordens.'
+- transacao: s010-505fc229bde67803
+  sessao: 10
+  resumo: Ren apresentou a Halessa a suspeita de que a mulher Cinza-Azul seja Shizune, relatou que uma fonte a viu
+    ganhar autoridade em Narwhal e que ele próprio a viu instruir Velis antes da oitiva. Halessa recusou fabricar
+    uma isca falsa, mas reconheceu fundamento para uma convocação suplementar legítima e aceitou levar o plano adiante
+    se Ren concordar com observação apenas, janela e encerramento definidos, nenhuma invasão ou captura solitária,
+    e informar sua disponibilidade e rota de retorno.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas_por_halessa
+    op: append
+    valor: Ren relatou, sem nomear a fonte, que uma mulher Cinza-Azul ganhou autoridade rapidamente em Narwhal Manor
+      e que ele a viu instruir Velis antes da primeira oitiva; apresentou a hipótese de que ela seja Kajiwara Shizune.
+  - alvo: relacao:halessa_vorn
+    caminho: ofertas
+    op: append
+    valor: Halessa aceitou preparar e coordenar uma convocação suplementar legítima de Velis se Ren concordar com
+      observação apenas, janela e ponto de encerramento definidos, nenhuma entrada no destino, contato, furto ou
+      captura solitária, e informar disponibilidade e rota de retorno.
+- transacao: s010-a26cc464046689b7
+  sessao: 10
+  resumo: 'Ren aceitou a crítica de Halessa, prometeu não atacar Velis ou Shizune salvo para sobreviver e propôs
+    atuar disfarçado amanhã à noite. Halessa recusou colocá-lo junto ao portador de Tyr, mas firmou acordo provisório:
+    buscará autorização de Sirrus para uma convocação suplementar no primeiro sino após o anoitecer de 12 Eleasis
+    e enviará confirmação antes do meio-dia. A vigilância terá duas horas, começará apenas se Velis sair, será limitada
+    a observação e identificação, e terminará diante de cont…'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: acordos
+    op: append
+    valor: 'Acordo provisório para 12 Eleasis: Halessa buscará autorização de Sirrus para entregar a Velis convocação
+      suplementar no primeiro sino após o anoitecer e enviará confirmação reservada a Ren antes do meio-dia. Ren
+      observará separado do portador por no máximo duas horas, sem invasão, contato, furto ou captura; romperá diante
+      de contravigilância e retornará à Casa de Tyr ou a Luath.'
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ao ouvir a brincadeira de Ren sobre ser um bicho-papão de Kozakura, Halessa conteve um sorriso e sustentou
+      o olhar dele por um instante além do estritamente profissional; o sinal permaneceu sutil e ambíguo.
+- transacao: s010-6592ef153ee1ad0a
+  sessao: 10
+  resumo: Shinta trabalhou diligentemente até o meio-dia, aprendendo a conferir recibos abertos, registrar contagens
+    e organizar volumes sem reclamar, adivinhar ou buscar documentos proibidos. A supervisão diminuiu de conferência
+    total para amostragem, embora selos e papéis sensíveis continuem fora de alcance. Tomas avaliou que o trabalho
+    de Shinta é melhor que sua fala e condicionou as 4 PP e o retorno no dia seguinte a uma tarde igualmente boa.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: acordos
+    op: append
+    valor: Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada para o primeiro sino após
+      o anoitecer de 12 Eleasis. Halessa enviou a ficha reservada de confirmação a Silva antes do meio-dia, cumprindo
+      o combinado; Ren ainda não foi informado.
