@@ -1,0 +1,131 @@
+schema_arco: 4
+natureza: reservado
+estatuto: contrato_orquestrador_de_arco
+id: parte_1_uma_ponte_para_kozakura
+titulo: Parte 1 — Uma Ponte para Kozakura
+principio: Este contrato limita o espaço estratégico permitido nesta parte da crônica e orquestra fontes especializadas.
+  Masao tenta converter Ravens Bluff em infraestrutura própria; Ren pode impedir, atrasar ou redirecionar esse processo.
+  Habilitado significa somente que a peça pode ser considerada. Acontecimento, descoberta e consequência continuam
+  separados.
+inicio:
+  tipo: fato_canonico
+  marcador: chegada_de_ren_a_ravens_bluff
+  fonte: campanha.yaml
+termino:
+  tipo: marco_direcao
+  marcador: perda_controle_exclusivo
+  fonte: narrador/direcoes/ponte_de_kozakura.yaml
+orquestracao:
+  fontes:
+    plano_mestre:
+      tipo: documento_reservado
+      arquivo: narrador/masao/plano.md
+    marcos_antagonistas:
+      tipo: documento_reservado
+      arquivo: narrador/juppongatana/marcos-de-aparicao.md
+    principios_parte_1:
+      tipo: documento_reservado
+      arquivo: narrador/arcos/parte_1/principios-de-conducao.yaml
+    pressao_ravens_bluff:
+      tipo: documento_reservado
+      arquivo: narrador/arcos/parte_1/pressao-ravens-bluff.yaml
+    descoberta_consequencias:
+      tipo: documento_reservado
+      arquivo: narrador/arcos/parte_1/descoberta-e-consequencias.yaml
+    vida_civil:
+      tipo: documento_reservado
+      arquivo: narrador/arcos/parte_1/vida-civil.yaml
+    marcos_aliados:
+      tipo: documento_reservado
+      arquivo: narrador/aliados/marcos-de-aparicao.md
+  plano_mestre:
+    agente: masao_hirasawa
+    objetivo: dominar_ravens_bluff_e_preservar_ponte
+    referencia: plano_mestre
+habilitacoes:
+  politica_nao_listados: bloqueados
+  antagonistas:
+  - kurobane_jinzaburo
+  - kajiwara_shizune
+  - pan_chu
+  - sawagejo_cho
+  aliados:
+  - shen_meihua
+  - tsukishiro_joen
+  direcoes:
+  - ponte_de_kozakura
+  - golden_lily_em_ravens_bluff
+linhas_operacionais:
+  impedir_consolidacao_de_provas:
+    objetivo: impedir_consolidacao_de_provas
+    executores:
+    - kurobane_jinzaburo
+    - kajiwara_shizune
+    referencia: plano_mestre
+  proteger_cadeia_logistica:
+    objetivo: proteger_cadeia_logistica
+    executores:
+    - kurobane_jinzaburo
+    - pan_chu
+    referencia: plano_mestre
+  mapear_rede_de_apoio_de_ren:
+    objetivo: identificar_rede_de_apoio_de_ren
+    executores:
+    - kajiwara_shizune
+    - kurobane_jinzaburo
+    - sawagejo_cho
+    referencia: principios_parte_1
+  mascarar_origem_kozakuriana:
+    objetivo: desacreditar_origem_kozakuriana_das_anomalias
+    executores:
+    - kajiwara_shizune
+    - pan_chu
+    referencia: plano_mestre
+  preservar_monopolio_da_ponte:
+    objetivo: proteger_uso_clandestino_e_exclusivo_da_ponte
+    executores:
+    - masao_hirasawa
+    - pan_chu
+    - kurobane_jinzaburo
+    referencia: plano_mestre
+  expandir_presenca_de_masao:
+    objetivo: aumentar_homens_armas_drogas_e_infraestrutura_em_ravens_bluff
+    executores:
+    - masao_hirasawa
+    - pan_chu
+    - kajiwara_shizune
+    referencia: pressao_ravens_bluff
+  ocupar_espaco_urbano:
+    objetivo: substituir_gradualmente_moradores_e_controle_imobiliario_por_rede_de_masao
+    executores:
+    - masao_hirasawa
+    - kajiwara_shizune
+    referencia: pressao_ravens_bluff
+  desgastar_autoridade_de_ravens_bluff:
+    objetivo: saturar_e_deslegitimar_capacidade_de_resposta_das_autoridades
+    executores:
+    - masao_hirasawa
+    - kajiwara_shizune
+    - pan_chu
+    - sawagejo_cho
+    referencia: pressao_ravens_bluff
+  pressionar_ren_por_vinculos:
+    objetivo: converter_vinculos_conhecidos_de_ren_em_pressao_sem_onisciencia
+    executores:
+    - kajiwara_shizune
+    - kurobane_jinzaburo
+    - sawagejo_cho
+    referencia: principios_parte_1
+  pressionar_identidade_marcial_de_ren:
+    objetivo: forcar_ren_a_expor_capacidade_rotinas_e_limites_marciais
+    executores:
+    - sawagejo_cho
+    - kurobane_jinzaburo
+    referencia: principios_parte_1
+  sustentar_cobertura_maritima:
+    objetivo: fazer_o_porto_parecer_explicacao_suficiente_para_fluxo_oriental
+    executores:
+    - pan_chu
+    - kajiwara_shizune
+    - masao_hirasawa
+    referencia: plano_mestre

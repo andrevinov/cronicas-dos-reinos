@@ -1,0 +1,34 @@
+schema_marcos_aparicao: 1
+natureza: roteador_reservado
+descricao: Índice operacional mínimo dos marcos de primeira aparição. Não substitui o documento canônico longo;
+  apenas permite filtrar aparições sem abri-lo em cada cena. Marco elegível não é presença nem aparição.
+fonte_canonica: narrador/juppongatana/marcos-de-aparicao.md
+regras:
+  elegivel_nao_e_aparicao: true
+  consumido_nao_bloqueia_reaparicao: true
+  nao_listado_em_arco_habilitado: bloqueado
+marcos:
+  kurobane_jinzaburo:
+    arco: parte_1_uma_ponte_para_kozakura
+    grupo: antagonistas
+    nivel_minimo: 6
+    secao_fonte: '### Kurobane Jinzaburō'
+    condicao_id: provas_comecam_a_circular
+  kajiwara_shizune:
+    arco: parte_1_uma_ponte_para_kozakura
+    grupo: antagonistas
+    nivel_minimo: 6
+    secao_fonte: '### Kajiwara Shizune'
+    condicao_id: informacao_ganha_peso_institucional
+  sawagejo_cho:
+    arco: parte_1_uma_ponte_para_kozakura
+    grupo: antagonistas
+    nivel_minimo: 7
+    secao_fonte: '### Sawagejō Chō'
+    condicao_id: identidade_marcial_de_ren_chama_atencao
+  pan_chu:
+    arco: parte_1_uma_ponte_para_kozakura
+    grupo: antagonistas
+    nivel_minimo: 6
+    secao_fonte: '### Pan Chu'
+    condicao_id: chegada_golden_lily_ou_investigacao_maritima

@@ -1,8 +1,7 @@
 schema_estado_direcoes: 1
 natureza: controle_reservado
-descricao: >-
-  Progresso operacional das direções canônicas. Não é conhecimento de Ren nem
-  substitui os fatos efetivamente ocorridos em sessão.
+descricao: Progresso operacional das direções canônicas. Não é conhecimento de Ren nem substitui os fatos efetivamente
+  ocorridos em sessão.
 direcoes:
   ponte_de_kozakura:
     estado: ativa
@@ -12,5 +11,10 @@ direcoes:
   shin_kozakura:
     estado: latente
     marco_atual: uso_controlado
+    marcos_concluidos: []
+    historico_recente: []
+  golden_lily_em_ravens_bluff:
+    estado: ativa
+    marco_atual: rumores_de_grande_navio
     marcos_concluidos: []
     historico_recente: []

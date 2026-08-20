@@ -2,12 +2,13 @@
 """Porta única para gatilhos reativos na abertura/alteração de uma cena.
 
 Objetivo: reduzir omissões de orquestração. Em vez de o narrador lembrar de chamar
-separadamente recompensa local e gate de sidequest para cada NPC, esta porta
-recebe o conjunto operacional da cena e despacha somente os gatilhos presentes.
+separadamente recompensa local, gate de sidequest e descoberta contextual, esta
+porta recebe o conjunto operacional da cena e despacha somente os gatilhos
+presentes.
 
 Não é scheduler e não roda por turno comum. A mesma ``cena_id`` pode ser chamada
-novamente quando o elenco/local muda: encontros já processados viram no-op por
-idempotência e somente NPCs recém-chegados consomem novo gate.
+novamente quando o elenco/local/contexto muda: encontros já processados viram
+no-op por idempotência e a descoberta contextual permanece puramente read-only.
 """
 from __future__ import annotations
 
@@ -19,6 +20,7 @@ from typing import Any
 
 import yaml
 
+import contexto_cena
 import interacoes_mundo
 import mundo
 import oportunidades
@@ -125,10 +127,19 @@ def _encounter_id(scene_id: str, npc_id: str) -> str:
     return f"scene:{scene_id}:npc:{npc_id}"
 
 
-def _summary(encounters: list[dict[str, Any]], local: dict[str, Any] | None) -> dict[str, int]:
+def _summary(
+    encounters: list[dict[str, Any]],
+    local: dict[str, Any] | None,
+    contextual: dict[str, Any],
+) -> dict[str, int]:
     return {
         "gatilhos_locais": 1 if local is not None else 0,
         "encontros": len(encounters),
+        "candidatos_contextuais": len(contextual.get("candidatos") or []),
+        "presencas_contextuais": len(contextual.get("presencas") or []),
+        "entradas_contextuais": len(contextual.get("entradas") or []),
+        "operacoes_contextuais": len(contextual.get("operacoes") or []),
+        "direcoes_contextuais": len(contextual.get("direcoes") or []),
         "gates_sem_oportunidade": sum(
             item.get("motivo") == "gate_sem_oportunidade" for item in encounters
         ),
@@ -153,20 +164,38 @@ def open_scene(
     action: str | None = None,
     tier: int | None = None,
     danger: str | None = None,
+    context_tags: list[str] | None = None,
     now: mundo.WorldInstant | None = None,
 ) -> dict[str, Any]:
-    """Valida toda identidade antes de mutar e despacha gatilhos da cena."""
+    """Valida identidade/contexto antes de mutar e despacha gatilhos da cena."""
     scene_id = _scene_id(scene_id)
     npc_refs = list(npcs or [])
+    raw_context_tags = list(context_tags or [])
+    try:
+        normalized_context_tags = contexto_cena.normalize_tags(raw_context_tags)
+    except contexto_cena.ContextSceneError as exc:
+        raise SceneGateError(str(exc)) from exc
     local_spec = _local_spec(place, action, tier, danger)
-    if local_spec is None and not npc_refs:
-        raise SceneGateError("abertura de cena exige ao menos um gatilho local ou NPC")
+    if local_spec is None and not npc_refs and not normalized_context_tags:
+        raise SceneGateError(
+            "abertura de cena exige ao menos um gatilho local, NPC ou tag contextual"
+        )
 
-    # Fase 1: resolução somente-leitura. Se houver typo/ambiguidade, nenhum mapa
-    # ou gate é tocado.
+    # Fase 1: resolução somente-leitura. Se houver typo/ambiguidade/configuração
+    # contextual inválida, nenhum mapa ou gate é tocado.
     resolutions, duplicates, resolution_sources, has_active_profile = _resolve_npcs(
         repo, npc_refs
     )
+    canonical_npcs = [item["npc_id"] for item in resolutions]
+    try:
+        contextual = contexto_cena.select_candidates(
+            repo,
+            normalized_context_tags,
+            scene_id=scene_id,
+            exclude_ids=canonical_npcs,
+        )
+    except contexto_cena.ContextSceneError as exc:
+        raise SceneGateError(str(exc)) from exc
 
     current = now
     time_sources: list[str] = []
@@ -177,7 +206,11 @@ def open_scene(
             raise SceneGateError(str(exc)) from exc
 
     local_result: dict[str, Any] | None = None
-    sources = [*resolution_sources, *time_sources]
+    sources = [
+        *resolution_sources,
+        *(contextual.get("fontes_lidas") or []),
+        *time_sources,
+    ]
     if local_spec is not None:
         try:
             local_result = interacoes_mundo.local_event(
@@ -212,13 +245,23 @@ def open_scene(
         "cena_id": scene_id,
         "local": local_result,
         "npcs_recebidos": npc_refs,
-        "npcs_canonicos": [item["npc_id"] for item in resolutions],
+        "npcs_canonicos": canonical_npcs,
         "duplicatas_colapsadas": duplicates,
+        "contexto_tags": contextual["tags"],
+        "contexto_arco": contextual.get("arco"),
+        "candidatos_contextuais": contextual["candidatos"],
+        "presencas_contextuais": contextual.get("presencas") or [],
+        "entradas_contextuais": contextual.get("entradas") or [],
+        "operacoes_contextuais": contextual.get("operacoes") or [],
+        "direcoes_contextuais": contextual.get("direcoes") or [],
         "encontros": encounters,
-        "resumo": _summary(encounters, local_result),
+        "resumo": _summary(encounters, local_result, contextual),
         "regra": (
             "Repetir a mesma cena_id é seguro. NPC já processado não consome novo gate; "
-            "NPC recém-chegado na mesma cena usa um encontro_id derivado estável."
+            "NPC recém-chegado usa encontro_id estável. Descoberta contextual respeita "
+            "o arco corrente. Candidatos de presença, entrada de aliado, operação e direção são somente "
+            "obrigações de avaliar: não estabelecem aparição, não executam linha operacional "
+            "e não avançam direção canônica."
         ),
         "fontes_lidas": list(dict.fromkeys(sources)),
     }
@@ -239,9 +282,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    abrir = sub.add_parser("abrir", help="despacha local + NPCs de uma fronteira de cena")
+    abrir = sub.add_parser(
+        "abrir",
+        help="despacha local + NPCs + descoberta contextual de uma fronteira de cena",
+    )
     abrir.add_argument("--cena-id", required=True)
     abrir.add_argument("--npc", action="append", default=[])
+    abrir.add_argument(
+        "--contexto-tag",
+        action="append",
+        default=[],
+        help="rótulo já estabelecido pela cena; máximo 8, sem busca semântica",
+    )
     abrir.add_argument("--local")
     abrir.add_argument("--acao", choices=sorted(interacoes_mundo.VALID_LOCAL_ACTIONS))
     abrir.add_argument("--tier", type=int)
@@ -263,12 +315,14 @@ def main(argv: list[str] | None = None) -> int:
             action=args.acao,
             tier=args.tier,
             danger=args.periculosidade,
+            context_tags=args.contexto_tag,
             now=_instant_arg(args.data, args.hora),
         )
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except (
         SceneGateError,
+        contexto_cena.ContextSceneError,
         interacoes_mundo.IntegrationError,
         oportunidades.OpportunityError,
         recompensas.RewardMapError,

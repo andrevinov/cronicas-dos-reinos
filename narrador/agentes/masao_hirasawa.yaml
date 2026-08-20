@@ -4,20 +4,27 @@ id: masao_hirasawa
 nome: Masao Hirasawa
 tipo: npc
 estado: ativo
-objetivo_atual: Consolidar Ravens Bluff como primeiro degrau de infraestrutura, preservando rotas, documentos, crime urbano e acesso subterrâneo sem expor cedo o projeto maior.
+objetivo_atual: 'Dominar progressivamente Ravens Bluff como primeiro degrau de infraestrutura:
+  trazer homens, armas e recursos, ocupar espaço urbano, saturar autoridades e preservar
+  o controle exclusivo da Ponte de Kozakura enquanto o porto de Pan Chu oferece cobertura
+  plausível.'
 recursos:
-  - intermediários locais e autoridades corrompidas
-  - selos falsos, documentos, carga e pressão sobre testemunhas
-  - Red Sail, Narwhal e rotas baixas
-  - Juppongatana como círculo de especialistas
+- intermediários locais e autoridades corrompidas
+- selos falsos, documentos, carga e pressão sobre testemunhas
+- Red Sail, Narwhal, rotas baixas e aquisição de imóveis
+- Juppongatana como círculo de especialistas autônomos
+- homens remanescentes em Kozakura capazes de atravessar a Ponte quando a logística
+  permitir
 restricoes:
-  - evitar exposição suficiente para provocar coalizão regional preparada
-  - preservar, se possível, o controle exclusivo da Ponte de Kozakura
-  - não tratar Ren como ameaça central antes que os fatos obriguem essa revisão
+- evitar exposição suficiente para provocar coalizão regional preparada cedo demais
+- preservar, se possível, o controle exclusivo da Ponte de Kozakura
+- não tratar Ren como ameaça central antes que fatos obriguem revisão
+- não desperdiçar Juppongatana como tropa comum quando especialistas ou células bastam
 presenca:
   referencia: Ravens Bluff
   estado: indeterminado
-  detalhe: A localização física atual de Masao não está fixada por esta camada; sua rede local pode operar sem exigir sua presença física.
+  detalhe: A localização física atual de Masao não está fixada; sua rede local pode
+    operar sem exigir sua presença física.
   fonte: null
   evidencia: null
 mobilidade:
@@ -28,20 +35,127 @@ mobilidade:
 atuacao_local:
   regra: permite_rede
   escopo: Ravens Bluff
-  observacao: Masao pode ordenar, financiar ou redirecionar operações em Ravens Bluff por sua rede mesmo quando sua presença física estiver indeterminada.
+  observacao: Masao pode financiar, ordenar ou redirecionar operações por sua rede
+    mesmo quando presença física estiver indeterminada.
 conhecimento:
-  - id: ravens_bluff_primeiro_degrau
-    fato: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo úteis ao primeiro degrau do plano.
-    fonte: narrador/masao/plano.md
-    evidencia: Ravens Bluff lhe dá porto, crime, guildas, documentos e acesso subterrâneo.
-  - id: ren_ainda_nao_central
-    fato: Masao ainda não considera Ren a ameaça central ao projeto.
-    fonte: narrador/masao/plano.md
-    evidencia: Masao ainda pensa grande demais para considerar Ren ameaça central.
+- id: ravens_bluff_primeiro_degrau
+  fato: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo
+    úteis ao primeiro degrau do plano.
+  fonte: narrador/masao/plano.md
+  evidencia: Ravens Bluff lhe dá porto, crime, guildas, documentos e acesso subterrâneo.
+- id: ren_ainda_nao_central
+  fato: Masao ainda não considera Ren a ameaça central ao projeto.
+  fonte: narrador/masao/plano.md
+  evidencia: Masao ainda pensa grande demais para considerar Ren ameaça central.
 plano_atual:
   estado: em_execucao
-  acao: Operar por intermediários, selos falsos, Red Sail, Narwhal, documentos, carga, pó alquímico, rotas baixas e pressão sobre testemunhas.
-  prazo_ou_oportunidade: Enquanto a infraestrutura de Ravens Bluff puder ser consolidada antes de exposição institucional ampla.
+  acao: 'Converter presença clandestina em infraestrutura: pessoas, imóveis, rotas,
+    documentos, porto, violência delegada e Ponte.'
+  prazo_ou_oportunidade: Enquanto Ravens Bluff puder ser consolidada antes de exposição
+    institucional/regional ampla.
+metodos_operacionais:
+  preservar_monopolio_da_ponte:
+  - id: compartimentar_acesso_ao_portal
+    abordagem: Separar chaves, guias, horários, guardas e conhecimento de rota para
+      que perder um elo não entregue o uso operacional completo da Ponte.
+    modalidade: indireta
+    tags:
+    - ponte
+    - segredo
+    - compartimentacao
+    - rotas
+    - controle
+  - id: repor_controle_por_corrupcao_ou_sabotagem
+    abordagem: Se terceiros ganharem acesso parcial, tentar recuperar exclusividade
+      por infiltração, suborno, sabotagem ou mudança de procedimento antes de expor
+      Masao diretamente.
+    modalidade: mista
+    tags:
+    - ponte
+    - corrupcao
+    - sabotagem
+    - controle
+    - infiltracao
+  expandir_presenca_de_masao:
+  - id: trazer_celulas_em_lotes_pequenos
+    abordagem: Mover homens e especialistas em grupos pequenos pelo portal e pelo
+      mar, distribuindo a chegada no tempo para evitar aparência imediata de exército
+      estrangeiro; se Masao conservar as rotas por tempo suficiente, essas ondas podem
+      acumular dezenas e eventualmente centenas de homens armados sem existir um único
+      desembarque revelador.
+    modalidade: mista
+    tags:
+    - estrangeiros
+    - ponte
+    - porto
+    - celulas
+    - milicia
+  - id: financiar_infraestrutura_local
+    abordagem: Comprar, alugar, coagir ou capturar depósitos, casas, oficinas e negócios
+      capazes de sustentar pessoal sem depender de um quartel central fácil de atacar.
+    modalidade: indireta
+    tags:
+    - imoveis
+    - dinheiro
+    - infraestrutura
+    - ocupacao
+    - rede
+  ocupar_espaco_urbano:
+  - id: substituir_moradores_gradualmente
+    abordagem: Usar compra, dívida, ameaça, desaparecimento ou documentação para esvaziar
+      imóveis e instalar homens ou intermediários da rede sem declarar ocupação formal.
+    modalidade: mista
+    tags:
+    - imoveis
+    - moradores
+    - despejo
+    - ocupacao
+    - pressao
+  - id: formar_enclave_sem_nome
+    abordagem: Concentrar serviços, proteção, estoque e alojamento em algumas ruas
+      até que a rede controle rotina local antes que autoridades percebam um território
+      informal.
+    modalidade: indireta
+    tags:
+    - bairro
+    - milicia
+    - infraestrutura
+    - ocupacao
+    - controle
+  desgastar_autoridade_de_ravens_bluff:
+  - id: saturar_capacidade_de_resposta
+    abordagem: Gerar crimes, falsos problemas, intimidação e disputas em pontos suficientes
+      para que Night Watch e outras instituições precisem escolher o que deixam sem
+      resposta.
+    modalidade: indireta
+    tags:
+    - crime
+    - night_watch
+    - sobrecarga
+    - autoridade
+    - pressao
+  - id: forcar_reacao_politicamente_cara
+    abordagem: Criar situações em que repressão aberta afete comércio, moradores ou
+      interesses nobres, aumentando custo de qualquer resposta ampla contra a rede.
+    modalidade: indireta
+    tags:
+    - nobres
+    - comercio
+    - autoridade
+    - politica
+    - pressao
+  sustentar_cobertura_maritima:
+  - id: atribuir_fluxo_ao_golden_lily
+    abordagem: Usar a existência real do Golden Lily e de comércio oriental para tornar
+      o porto a hipótese mais simples para armas, pessoas e mercadorias, mesmo quando
+      parte do fluxo veio pela Ponte.
+    modalidade: indireta
+    tags:
+    - golden_lily
+    - porto
+    - cobertura
+    - carga_oriental
+    - ponte
 fontes_canonicas:
-  - narrador/masao/plano.md
-  - narrador/verdade-da-campanha.md
+- narrador/masao/plano.md
+- narrador/verdade-da-campanha.md

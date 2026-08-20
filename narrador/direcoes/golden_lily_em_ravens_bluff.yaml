@@ -1,0 +1,50 @@
+schema_direcao: 1
+natureza: reservado
+id: golden_lily_em_ravens_bluff
+nome: Golden Lily em Ravens Bluff
+estatuto: canonica_obrigatoria
+principio: O Golden Lily chegará a Ravens Bluff e se tornará peça marítima real do primeiro arco; forma da reação
+  política, sucesso do contrabando e eventual confronto emergem do jogo.
+fontes_canonicas:
+- narrador/arcos/parte_1/golden-lily.md
+marcos:
+- id: rumores_de_grande_navio
+  ordem: 1
+  titulo: Rumores de um grande navio oriental
+  fonte: narrador/arcos/parte_1/golden-lily.md
+  evidencia: '## Relógio canônico'
+  criterio_para_avancar: O mundo possui sinais suficientes de que uma grande embarcação oriental está a caminho
+    ou esperada, sem exigir que Ren saiba disso.
+  guardrails:
+  - Não revelar contrabando pela simples notícia da viagem.
+  - Não exigir presença de Ren no porto.
+- id: chegada_do_golden_lily
+  ordem: 2
+  titulo: Chegada do Golden Lily
+  fonte: narrador/arcos/parte_1/golden-lily.md
+  evidencia: '## Aparência pública'
+  criterio_para_avancar: O Golden Lily fisicamente alcançou e ancorou ou manobrou em Ravens Bluff, salvo impedimento
+    causal anterior registrado em jogo.
+  guardrails:
+  - A chegada comercial pode ser legítima em parte.
+  - Não fazer a chegada provar a Ponte.
+- id: cobertura_comercial_estabelecida
+  ordem: 3
+  titulo: Cobertura comercial estabelecida
+  fonte: narrador/arcos/parte_1/golden-lily.md
+  evidencia: '## Função secreta'
+  criterio_para_avancar: O navio realiza atividade comercial suficiente para ser uma explicação plausível do fluxo
+    oriental enquanto sua função clandestina permanece possível.
+  guardrails:
+  - Contrabando precisa de causa e oportunidade concretas.
+  - Nem toda carga do navio pertence a Masao.
+- id: presenca_maritima_de_masao
+  ordem: 4
+  titulo: Presença marítima de Masao
+  fonte: narrador/arcos/parte_1/golden-lily.md
+  evidencia: '## Contestação'
+  criterio_para_avancar: Pan Chu e o Golden Lily tornaram-se capacidade logística/política real de Masao na cidade,
+    ainda que contestada, tolerada ou parcialmente limitada.
+  guardrails:
+  - Bombardeio exige tentativa real de coerção ou outra escalada compatível.
+  - Cormyr ou ajuda externa são respostas possíveis, não obrigatórias.

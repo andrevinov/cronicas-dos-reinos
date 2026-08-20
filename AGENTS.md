@@ -81,6 +81,8 @@ Fluxo normal:
 
 **Gatilho reativo não é rotina.** Em começo de cena, entrada/exploração, encontro ou mudança de elenco, preferir `ferramentas/cena_mundo.py abrir` com `cena_id` estável, local só se entrou/explorou e NPCs cujo encontro começou. Repetir o ID é seguro; NPC novo usa o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
 
+**Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `direcoes.py avaliar-destino <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
+
 Em encontros simultâneos, resolver todos os NPCs antes de mutar, colapsar aliases e ordenar por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado.
 
 **Antes de narrar intenção que comprime tempo** — dormir, esperar, vigiar por horas, viajar/trabalhar por período prolongado — consultar uma vez:

@@ -1,0 +1,51 @@
+schema_controle_arco_mundo: 1
+natureza: roteador_reservado
+descricao: Classifica somente agentes estratégicos cuja autonomia precisa respeitar o Contrato de Arco. Agentes
+  ausentes deste mapa continuam livres do guardrail.
+agentes_estrategicos:
+  masao_hirasawa:
+    grupo: antagonistas
+    requer_linha_para_acao: false
+  juppongatana:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+  kurobane_jinzaburo:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  kajiwara_shizune:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  pan_chu:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  sawagejo_cho:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  yukyuzan_anji:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  uonuma_usui:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  kureha_shiranui:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  amagiri_seishiro:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  wetuji:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true
+  fuji:
+    grupo: antagonistas
+    requer_linha_para_acao: true
+    requer_estado_ativo_para_acao: true

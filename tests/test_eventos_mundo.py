@@ -67,6 +67,10 @@ class EventosRepoTest(unittest.TestCase):
                 "narrador/eventos/interacoes.yaml",
                 "narrador/agentes/index.yaml",
                 "narrador/agentes-leves/index.yaml",
+                "narrador/arcos/index.yaml",
+                "narrador/arcos/estado.yaml",
+                "narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml",
+                "narrador/arcos/controle-mundo.yaml",
             ],
         )
 

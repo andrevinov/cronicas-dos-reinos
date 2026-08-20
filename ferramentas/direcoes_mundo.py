@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 import agentes_leves
+import arco_mundo
 import ciclo_npcs
 import direcoes
 import entradas
@@ -57,10 +58,12 @@ def _crossed_dawn(agenda, start, end):
     )
 
 
-def _activation_records(index, state, world_state, when):
+def _activation_records(index, state, world_state, when, arc_ctx=None, repo=None):
     pending = _pending_direction_ids(world_state)
     result = []
     for direction_id, meta in index["direcoes"].items():
+        if arc_ctx is not None and not arco_mundo.direction_gate(repo, direction_id, ctx=arc_ctx)["permitido"]:
+            continue
         current = state["direcoes"][direction_id]
         if (
             current["estado"] != "latente"
@@ -77,6 +80,8 @@ def _activation_records(index, state, world_state, when):
                 "id": _direction_pending_id("ativar_direcao", direction_id, when),
                 "tipo": "ativar_direcao",
                 "direcao": direction_id,
+                "papel": "restricao_destino",
+                "executavel": False,
                 "agentes_afetados": [],
                 "disparado_em": mundo.instant_parts(when),
                 "motivo": (
@@ -90,13 +95,15 @@ def _activation_records(index, state, world_state, when):
     return result
 
 
-def _evaluation_records(index, state, world_state, agenda, start, end):
+def _evaluation_records(index, state, world_state, agenda, start, end, arc_ctx=None, repo=None):
     if end <= start:
         return []
     pending = _pending_direction_ids(world_state)
     dawn = mundo._dawn_minute(agenda)
     result = []
     for direction_id, meta in index["direcoes"].items():
+        if arc_ctx is not None and not arco_mundo.direction_gate(repo, direction_id, ctx=arc_ctx)["permitido"]:
+            continue
         current = state["direcoes"][direction_id]
         if current["estado"] != "ativa" or direction_id in pending:
             continue
@@ -119,6 +126,8 @@ def _evaluation_records(index, state, world_state, agenda, start, end):
                     ),
                     "tipo": "avaliar_direcao",
                     "direcao": direction_id,
+                    "papel": "restricao_destino",
+                    "executavel": False,
                     "agentes_afetados": [],
                     "disparado_em": mundo.instant_parts(when),
                     "motivo": (
@@ -167,6 +176,14 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     index = direcoes.load_index(repo)
     direction_state = direcoes.load_state(repo, index)
     world_state = mundo.load_world_state(repo)
+    try:
+        arc_ctx = arco_mundo.context(repo)
+        arc_cleanup = arco_mundo.prune_pending(repo, world_state, ctx=arc_ctx)
+    except arco_mundo.ArcWorldError as exc:
+        raise direcoes.DirectionError(str(exc)) from exc
+    world_state = arc_cleanup["estado"]
+    if arc_cleanup["alterou"]:
+        mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
     agenda = mundo.load_agenda(repo)
     canonical, _ = mundo.load_canonical_time(repo)
     cursor = mundo._state_cursor(world_state)
@@ -175,10 +192,10 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             "cursor do Mundo Vivo está à frente do tempo canônico"
         )
 
-    emitted = _activation_records(index, direction_state, world_state, canonical)
+    emitted = _activation_records(index, direction_state, world_state, canonical, arc_ctx=arc_ctx, repo=repo)
     emitted.extend(
         _evaluation_records(
-            index, direction_state, world_state, agenda, cursor, canonical
+            index, direction_state, world_state, agenda, cursor, canonical, arc_ctx=arc_ctx, repo=repo
         )
     )
     emitted.sort(
@@ -233,6 +250,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     return {
         "ok": True,
         "ciclo_npcs": lifecycle,
+        "guardrail_arco": {"pendencias_removidas": arc_cleanup["pendencias_removidas"], "eventos_atualizados": arc_cleanup["eventos_atualizados"]},
         "eventos_limpeza_mortos": event_cleanup,
         "relogios": clocks,
         "eventos_mundo": events,
@@ -246,6 +264,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             {item["direcao"] for item in added}
         ),
         "entradas_reconsiderar": entry.get("entradas_reconsiderar") or [],
+        "entradas_contextuais_abertas": ([entry["janela_contextual_aberta"]] if entry.get("janela_contextual_aberta") else []),
         "agentes_leves_reconsiderar": (
             light.get("agentes_leves_reconsiderar") or []
         ),
@@ -265,6 +284,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             mundo.WORLD_STATE_PATH.as_posix(),
             mundo.AGENDA_PATH.as_posix(),
             mundo.TIME_PATH.as_posix(),
+            *arc_ctx["fontes_lidas"],
             *(entry.get("fontes_lidas") or []),
             *(light.get("fontes_lidas") or []),
             *(events.get("fontes_lidas") or []),
@@ -321,6 +341,7 @@ def check_repo(repo: Path) -> dict[str, Any]:
         entradas.EntryError,
         eventos_mundo.WorldEventError,
         mundo.WorldEngineError,
+        arco_mundo.ArcWorldError,
         relogios.ClockError,
     ) as exc:
         errors.append(str(exc))

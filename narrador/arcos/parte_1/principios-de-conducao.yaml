@@ -1,0 +1,33 @@
+schema_principios_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+principio: Uma Ponte para Kozakura é uma máquina de pressão, não uma sequência de missões. O mundo age, Ren interfere
+  ou não, e descoberta é consequência de investigação legítima.
+juppongatana:
+  aparicao:
+    estatuto: evento_revelacao
+    tom: dramatico_contido
+    regras:
+    - a primeira aparição deve mudar a leitura da ameaça
+    - evitar entrada gratuita só para exibir poder
+    - feito lendário altera o tabuleiro, não apenas números de combate
+  autonomia:
+    nunca_sabotar_masao: true
+    nao_sao_minions_passivos: true
+    podem_escolher_metodo_alvo_momento: true
+    alvo_pessoal_exige_conhecimento_canonico: true
+    podem_agir_fora_da_presenca_de_ren: true
+  pressao:
+    pode_ameacar_vinculos_conhecidos: true
+    pode_agir_abertamente_ou_oculto_conforme_personalidade: true
+    ren_nao_precisa_descobrir_autor: true
+cidade:
+  autoridades_devem_sentir_pressao: true
+  reacao_externa_e_possivel_nao_obrigatoria: true
+  problemas_podem_preceder_explicacao: true
+jogador:
+  nao_forcar_descoberta: true
+  nao_forcar_sequestro: true
+  nao_forcar_romance: true
+  nao_forcar_duelo: true
+  acoes_de_ren_podem_mudar_ordem_e_forma: true

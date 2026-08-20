@@ -4,19 +4,21 @@ id: kajiwara_shizune
 nome: Kajiwara Shizune
 tipo: npc
 estado: ativo
-objetivo_atual: Neutralizar credibilidade, identidade e valor probatório dos inimigos de Masao por guerra administrativa antes de recorrer a confronto direto.
+objetivo_atual: Neutralizar credibilidade, identidade e valor probatório dos inimigos de Masao por guerra administrativa
+  antes de recorrer a confronto direto.
 recursos:
-  - falsificação de ordens, salvo-condutos, recibos e registros
-  - mensagens cifradas, disfarce social e autoridade fabricada
-  - capacidade de ferir elos laterais da cadeia de informação
+- falsificação de ordens, salvo-condutos, recibos e registros
+- mensagens cifradas, disfarce social e autoridade fabricada
+- capacidade de ferir elos laterais da cadeia de informação
 restricoes:
-  - prefere arruinar, desacreditar ou prender legalmente a matar sem ganho estrutural
-  - evita exposição pessoal quando papel, identidade ou terceiro podem resolver
-  - não transformar suspeitas ainda não confirmadas em fato canônico
+- prefere arruinar, desacreditar ou prender legalmente a matar sem ganho estrutural
+- evita exposição pessoal quando papel, identidade ou terceiro podem resolver
+- não transformar suspeitas ainda não confirmadas em fato canônico
 presenca:
   referencia: Ravens Bluff
   estado: indeterminado
-  detalhe: Há sinais compatíveis com sua atuação, mas a presença física de Shizune em Ravens Bluff ainda não foi fixada como fato canônico nesta camada.
+  detalhe: Há sinais compatíveis com sua atuação, mas a presença física de Shizune em Ravens Bluff ainda não foi
+    fixada como fato canônico nesta camada.
   fonte: null
   evidencia: null
 mobilidade:
@@ -27,21 +29,216 @@ mobilidade:
 atuacao_local:
   regra: exige_presenca_fisica
   escopo: Ravens Bluff
-  observacao: Enquanto a presença permanecer indeterminada, Shizune não é elegível para novas ações físicas locais; sinais existentes não bastam para canonizar sua chegada.
+  observacao: Enquanto a presença permanecer indeterminada, Shizune não é elegível para novas ações físicas locais;
+    sinais existentes não bastam para canonizar sua chegada.
 conhecimento:
-  - id: valor_do_selo
-    fato: Shizune entende especialmente bem o valor do Selo da Lua Velada.
-    fonte: narrador/juppongatana/membros.md
-    evidencia: Shizune é a inimiga que entende melhor o valor do **Selo da Lua Velada**.
-  - id: vetor_de_ataque
-    fato: Credibilidade, provas, aliados e identidade pública de Ren são vetores preferenciais de ataque.
-    fonte: narrador/juppongatana/membros.md
-    evidencia: Deve atacar a credibilidade de Ren, suas provas, seus aliados e sua identidade pública antes de aparecer como combatente.
+- id: valor_do_selo
+  fato: Shizune entende especialmente bem o valor do Selo da Lua Velada.
+  fonte: narrador/juppongatana/membros.md
+  evidencia: Shizune é a inimiga que entende melhor o valor do **Selo da Lua Velada**.
+- id: vetor_de_ataque
+  fato: Credibilidade, provas, aliados e identidade pública de Ren são vetores preferenciais de ataque.
+  fonte: narrador/juppongatana/membros.md
+  evidencia: Deve atacar a credibilidade de Ren, suas provas, seus aliados e sua identidade pública antes de aparecer
+    como combatente.
 plano_atual:
   estado: aguardando_oportunidade
-  acao: Explorar registros, identidade ou cadeia documental que permitam transformar prova em dúvida ou aliado em risco administrativo.
-  prazo_ou_oportunidade: Quando Tyr, Night Watch, guildas, alfândega ou outro registro der peso institucional às informações de Ren.
+  acao: Explorar registros, identidade ou cadeia documental que permitam transformar prova em dúvida ou aliado em
+    risco administrativo.
+  prazo_ou_oportunidade: Quando Tyr, Night Watch, guildas, alfândega ou outro registro der peso institucional às
+    informações de Ren.
+metodos_operacionais:
+  impedir_consolidacao_de_provas:
+  - id: invalidar_valor_probatorio
+    abordagem: Criar contradição administrativa, vício de cadeia de custódia ou autoridade concorrente que reduza
+      o valor institucional de uma prova sem precisar removê-la fisicamente.
+    modalidade: indireta
+    tags:
+    - documentos
+    - registros
+    - cadeia_custodia
+    - autoridade
+    - prova
+  - id: fabricar_registro_contraditorio
+    abordagem: Introduzir ordem, recibo, autorização ou registro plausível que ofereça uma explicação concorrente
+      e force aliados de Ren a gastar tempo provando qual versão é legítima.
+    modalidade: indireta
+    tags:
+    - falsificacao
+    - registros
+    - autorizacao
+    - documentos
+    - burocracia
+  mapear_rede_de_apoio_de_ren:
+  - id: correlacionar_registros_e_identidades
+    abordagem: Cruzar nomes, contratos, autorizações, endereços e cadeias de custódia para inferir quais pessoas
+      e instituições sustentam Ren sem abordá-las diretamente.
+    modalidade: indireta
+    tags:
+    - registros
+    - identidade
+    - contratos
+    - aliados
+    - burocracia
+  - id: pressionar_elo_lateral
+    abordagem: Criar risco administrativo para um aliado secundário e observar quem intervém, quem assina por ele
+      e quais instituições se expõem para protegê-lo.
+    modalidade: indireta
+    tags:
+    - aliados
+    - autoridade
+    - registros
+    - identidade
+    - pressao
+  mascarar_origem_kozakuriana:
+  - id: fabricar_explicacao_administrativa
+    abordagem: Produzir documentação e narrativa burocrática que reenquadrem anomalias orientais como contrabando,
+      erro de manifesto, carga reexportada ou fraude comercial comum.
+    modalidade: indireta
+    tags:
+    - manifesto
+    - alfandega
+    - registros
+    - contrabando
+    - origem
+  - id: fragmentar_cadeia_de_proveniencia
+    abordagem: Distribuir versões documentais compatíveis o bastante para impedir que origem, rota e responsável
+      sejam demonstrados por uma única cadeia de registros.
+    modalidade: indireta
+    tags:
+    - proveniencia
+    - documentos
+    - registros
+    - rota
+    - falsificacao
+  expandir_presenca_de_masao:
+  - id: fabricar_identidades_para_celulas
+    abordagem: Criar identidades, autorizações, vínculos laborais ou registros plausíveis que permitam a homens
+      de Masao existir administrativamente na cidade sem revelar sua origem real.
+    modalidade: indireta
+    tags:
+    - identidade
+    - registros
+    - estrangeiros
+    - autorizacao
+    - infiltracao
+  - id: legalizar_cobertura_de_carga
+    abordagem: Produzir documentação suficiente para que armas, drogas ou material de apoio pareçam carga, estoque
+      ou propriedade de intermediários legítimos até investigação mais profunda.
+    modalidade: indireta
+    tags:
+    - documentos
+    - carga
+    - contrabando
+    - alfandega
+    - cobertura
+  ocupar_espaco_urbano:
+  - id: forjar_titulo_ou_despejo
+    abordagem: Criar ou explorar título, dívida, aluguel, ordem de despejo ou cadeia registral que pressione moradores
+      a sair sem precisar de invasão aberta.
+    modalidade: indireta
+    tags:
+    - imoveis
+    - escritura
+    - despejo
+    - registros
+    - propriedade
+  - id: tornar_morador_administrativamente_vulneravel
+    abordagem: Acumular multas, exigências, acusações ou contradições documentais em torno de um imóvel até que
+      vender ou abandonar o local pareça a opção menos perigosa.
+    modalidade: indireta
+    tags:
+    - imoveis
+    - burocracia
+    - pressao
+    - moradores
+    - registros
+  desgastar_autoridade_de_ravens_bluff:
+  - id: produzir_ordens_contraditorias
+    abordagem: Fazer duas autoridades legítimas receberem documentos incompatíveis e obrigá-las a gastar confiança
+      e tempo decidindo qual cadeia administrativa foi comprometida.
+    modalidade: indireta
+    tags:
+    - autoridade
+    - night_watch
+    - tyr
+    - ordens
+    - documentos
+  - id: comprometer_procedimento_sem_expor_autora
+    abordagem: Alterar, restaurar ou substituir um elo documental depois que alguém o viu, de modo que a instituição
+      precise escolher entre suspeitar da testemunha e admitir falha de segurança interna.
+    modalidade: indireta
+    tags:
+    - prova
+    - registros
+    - seguranca
+    - credibilidade
+    - infiltracao
+  pressionar_ren_por_vinculos:
+  - id: transformar_aliado_em_risco_administrativo
+    abordagem: Se conhecer canonicamente um vínculo de Ren, fabricar ou explorar problema legal, contratual ou identitário
+      ao redor dessa pessoa para obrigar Ren a escolher onde gastar credibilidade.
+    modalidade: indireta
+    tags:
+    - vinculo_conhecido
+    - aliados
+    - documentos
+    - chantagem
+    - autoridade
+  - id: usar_vinculo_como_isca_documental
+    abordagem: Criar registro ou convocação plausível em torno de pessoa conhecida por Ren e observar quem aparece,
+      quem assina e qual rede de proteção se revela.
+    modalidade: indireta
+    tags:
+    - vinculo_conhecido
+    - isca
+    - registros
+    - aliados
+    - vigilancia
+  sustentar_cobertura_maritima:
+  - id: fechar_manifesto_plausivel
+    abordagem: Fazer porto, alfândega, recibos e intermediários contarem uma história marítima coerente o bastante
+      para explicar parte do fluxo oriental sem explicar tudo.
+    modalidade: indireta
+    tags:
+    - manifesto
+    - porto
+    - alfandega
+    - navio_oriental
+    - cobertura
+  - id: distribuir_origem_entre_intermediarios
+    abordagem: Fragmentar a proveniência de carga e pessoas por procuradores, depósitos e revendas para que nenhuma
+      tabela simples mostre volume incompatível com o porto.
+    modalidade: indireta
+    tags:
+    - proveniencia
+    - porto
+    - registros
+    - carga
+    - intermediarios
 fontes_canonicas:
-  - narrador/juppongatana/membros.md
-  - narrador/juppongatana/marcos-de-aparicao.md
-  - sessoes/008/consequencias.md
+- narrador/juppongatana/membros.md
+- narrador/juppongatana/marcos-de-aparicao.md
+- sessoes/008/consequencias.md
+autonomia_estrategica:
+  papel_no_arco: guerra_administrativa_que_faz_instituicoes_duvidarem_da_realidade
+  iniciativa: alta
+  regra_masao: nao_sabotar_plano_mestre
+  regra_conhecimento_vinculos: exige_conhecimento_canonico
+  impulsos:
+  - corrigir_a_realidade_administrativa_depois_que_ren_a_observa
+  - atacar_credibilidade_antes_do_corpo
+  - transformar_aliado_secundario_em_ponto_de_pressao
+  feito_lendario:
+    principio: Quando demonstrar excelência, mudar a posição narrativa do conflito sem precisar de espetáculo gratuito.
+    exemplos_nao_obrigatorios:
+    - documento visto adulterado por Ren aparece restaurado ou substituído dentro de instituição segura, deixando
+      a própria instituição sem resposta simples
+    - ordens legítimas e falsas se cruzam de forma que cumprir uma delas parece violar a outra
+  escaladas_condicionais:
+  - id: instituicao_confia_em_ren
+    quando: Tyr, Night Watch, guilda ou autoridade passa a dar peso às informações de Ren.
+    abordagem: Pode atacar a cadeia de custódia, identidade ou procedimento em vez de confrontar Ren.
+  - id: vinculo_conhecido
+    quando: Shizune conhece canonicamente relação ou dependência importante de Ren.
+    abordagem: Pode criar risco administrativo ao redor do vínculo sem presumir conhecimento que ainda não possui.
