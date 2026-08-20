@@ -16,6 +16,31 @@ if str(TOOLS) not in sys.path:
 import arco_mundo
 
 
+class ArcWorldCompatibilityTest(unittest.TestCase):
+    def test_camada_inteiramente_ausente_preserva_modulos_legados(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            ctx = arco_mundo.context(repo)
+            self.assertFalse(ctx["configurado"])
+            self.assertEqual(ctx["fontes_lidas"], [])
+            self.assertTrue(
+                arco_mundo.strategic_agent_gate(
+                    repo, "qualquer_agente", purpose="reavaliacao", ctx=ctx
+                )["permitido"]
+            )
+            self.assertTrue(arco_mundo.direction_gate(repo, "qualquer_direcao", ctx=ctx)["permitido"])
+            self.assertTrue(arco_mundo.entry_gate(repo, "qualquer_entrada", ctx=ctx)["permitido"])
+
+    def test_configuracao_parcial_falha_fechada(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            path = repo / "narrador/arcos/index.yaml"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("schema_arcos: 1\n", encoding="utf-8")
+            with self.assertRaises(arco_mundo.ArcWorldError):
+                arco_mundo.context(repo)
+
+
 class ArcWorldGuardTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -156,6 +181,7 @@ class ArcWorldGuardTest(unittest.TestCase):
     def test_validacao_confirma_registro_controlado_e_plano_mestre(self):
         result = arco_mundo.validate(self.repo)
         self.assertTrue(result["ok"])
+        self.assertTrue(result["configurado"])
         self.assertGreaterEqual(result["agentes_controlados"], 10)
 
 
