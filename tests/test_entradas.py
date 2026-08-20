@@ -22,7 +22,7 @@ class EntradasRepositoryTest(unittest.TestCase):
         self.assertTrue(agendados <= permitidos,(agendados,permitidos))
         if foco is None:
             self.assertEqual(agendados,set())
-        else:
+        elif agendados:
             self.assertIn(foco,agendados)
 
     def test_status_real_reflete_foco_sem_abrir_fragmentos(self):
@@ -63,11 +63,15 @@ class EntradasSyntheticTest(unittest.TestCase):
         p=self.repo/rel; p.parent.mkdir(parents=True,exist_ok=True); p.write_text(yaml.safe_dump(obj,allow_unicode=True,sort_keys=False),encoding="utf-8")
     def read(self,rel): return yaml.safe_load((self.repo/rel).read_text(encoding="utf-8"))
 
-    def test_checkpoint_gera_uma_unica_avaliacao_e_avanca_cadencia(self):
+    def test_checkpoint_abre_janela_contextual_sem_pendencia(self):
         r=entradas.process_checkpoint(self.repo)
-        self.assertEqual(r["entradas_reconsiderar"],["a"]); self.assertEqual(len(r["novas_pendencias"]),1)
-        self.assertEqual(r["novas_pendencias"][0]["tipo"],"avaliar_entrada")
-        self.assertEqual(self.read("narrador/entradas/estado.yaml")["candidatos"]["a"]["proxima_avaliacao"],{"data":"14 Eleasis, 1372 DR","hora":"06:00"})
+        self.assertEqual(r["entradas_reconsiderar"],[])
+        self.assertEqual(r["novas_pendencias"],[])
+        self.assertEqual(r["janela_contextual_aberta"],"a")
+        state=self.read("narrador/entradas/estado.yaml")["candidatos"]["a"]
+        self.assertIsNone(state["proxima_avaliacao"])
+        self.assertEqual(state["historico_recente"][-1]["acao"],"abrir_janela_contextual")
+        self.assertEqual(self.read("narrador/mundo/estado.yaml")["pendencias"],[])
         self.assertNotIn("narrador/entradas/a.yaml",r["fontes_lidas"])
 
     def test_nivel_baixo_adia_sem_criar_pendencia(self):
@@ -75,12 +79,18 @@ class EntradasSyntheticTest(unittest.TestCase):
         r=entradas.process_checkpoint(self.repo)
         self.assertEqual(r["novas_pendencias"],[]); self.assertEqual(r["adiada_por_nivel"],"a")
         self.assertEqual(self.read("narrador/mundo/estado.yaml")["pendencias"],[])
+        self.assertEqual(self.read("narrador/entradas/estado.yaml")["candidatos"]["a"]["proxima_avaliacao"],{"data":"14 Eleasis, 1372 DR","hora":"06:00"})
 
-    def test_pendencia_aberta_nao_duplica(self):
-        entradas.process_checkpoint(self.repo)
+    def test_janela_aberta_nao_duplica_historico_nem_pendencia(self):
+        first=entradas.process_checkpoint(self.repo)
+        self.assertEqual(first["janela_contextual_aberta"],"a")
         t=self.read("estado/tempo.yaml"); t["data_atual"]="14 Eleasis, 1372 DR"; t["hora_aproximada"]="06:00 de 14 Eleasis"; self.write("estado/tempo.yaml",t)
         r=entradas.process_checkpoint(self.repo)
-        self.assertEqual(r["novas_pendencias"],[]); self.assertEqual(len(self.read("narrador/mundo/estado.yaml")["pendencias"]),1)
+        self.assertEqual(r["novas_pendencias"],[])
+        self.assertEqual(r["janela_contextual_aberta"],"a")
+        self.assertEqual(self.read("narrador/mundo/estado.yaml")["pendencias"],[])
+        history=self.read("narrador/entradas/estado.yaml")["candidatos"]["a"]["historico_recente"]
+        self.assertEqual([x["acao"] for x in history].count("abrir_janela_contextual"),1)
 
     def test_confirmar_primeiro_libera_segundo_no_proximo_amanhecer(self):
         r=entradas.mutate(self.repo,"a","confirmar","sessao:9","A entrou em cena.")
@@ -93,7 +103,10 @@ class EntradasSyntheticTest(unittest.TestCase):
         st=self.read("narrador/entradas/estado.yaml"); self.assertEqual(entradas.focus(entradas.load_index(self.repo),st),"b")
         with self.assertRaises(entradas.EntryError): entradas.mutate(self.repo,"a","antecipar","x","y")
         t=self.read("estado/tempo.yaml"); t["data_atual"]="12 Eleasis, 1372 DR"; t["hora_aproximada"]="06:00 de 12 Eleasis"; self.write("estado/tempo.yaml",t)
-        r=entradas.process_checkpoint(self.repo); self.assertEqual(r["entradas_reconsiderar"],["b"])
+        r=entradas.process_checkpoint(self.repo)
+        self.assertEqual(r["entradas_reconsiderar"],[])
+        self.assertEqual(r["novas_pendencias"],[])
+        self.assertEqual(r["janela_contextual_aberta"],"b")
 
     def test_confirmacao_exige_origem_e_nota(self):
         with self.assertRaises(entradas.EntryError): entradas.mutate(self.repo,"a","confirmar","","")
