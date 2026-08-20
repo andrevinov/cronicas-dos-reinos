@@ -28,10 +28,10 @@ def digest(path: Path) -> str:
 
 
 class DirectionsRepositoryTest(unittest.TestCase):
-    def test_repositorio_real_valida_duas_direcoes(self):
+    def test_repositorio_real_valida_tres_direcoes(self):
         result = direcoes.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade"], 2)
+        self.assertEqual(result["quantidade"], 3)
 
     def test_consulta_shin_kozakura_e_fragmentada(self):
         result = direcoes.show(ROOT, "Shin-Kozakura")
@@ -55,6 +55,7 @@ class DirectionsRepositoryTest(unittest.TestCase):
         self.assertEqual(by_id["shin_kozakura"]["estado"], "latente")
         self.assertEqual(by_id["shin_kozakura"]["marco_atual"], "uso_controlado")
         self.assertFalse(by_id["shin_kozakura"]["ativacao_satisfeita"])
+        self.assertEqual(by_id["golden_lily_em_ravens_bluff"]["estado"], "ativa")
 
 
 class DirectionsSyntheticTest(unittest.TestCase):
@@ -64,6 +65,14 @@ class DirectionsSyntheticTest(unittest.TestCase):
         (self.repo / "narrador/direcoes").mkdir(parents=True)
         (self.repo / "fontes").mkdir(parents=True)
         (self.repo / "estado").mkdir(parents=True)
+        # Esta suíte testa o motor de direções isoladamente. O gate de arco possui
+        # cobertura própria em test_direcoes_destino.py e test_arco_mundo.py.
+        self._arc_gate = patch.object(
+            direcoes.direcoes_destino,
+            "ensure_direction_allowed",
+            return_value={"permitido": True, "arco_id": None, "fontes_lidas": []},
+        )
+        self._arc_gate.start()
         self._yaml(
             "narrador/direcoes/index.yaml",
             {
@@ -121,6 +130,7 @@ class DirectionsSyntheticTest(unittest.TestCase):
         )
 
     def tearDown(self):
+        self._arc_gate.stop()
         self.temp.cleanup()
 
     def _yaml(self, rel: str, value) -> None:
