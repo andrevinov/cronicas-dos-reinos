@@ -1,0 +1,12 @@
+schema_arcos: 1
+natureza: roteador_reservado
+descricao: >-
+  Índice mínimo dos contratos de arco. A camada existe acima do Mundo Vivo para
+  dizer quais peças pertencem à parte corrente da crônica; não cria fatos nem
+  substitui as fontes narrativas apontadas pelos contratos.
+arcos:
+  parte_1_uma_ponte_para_kozakura:
+    titulo: 'Parte 1 — Uma Ponte para Kozakura'
+    ordem: 1
+    arquivo: narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml
+    proximo: null

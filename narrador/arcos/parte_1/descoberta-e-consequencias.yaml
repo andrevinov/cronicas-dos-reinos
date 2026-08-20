@@ -1,0 +1,24 @@
+schema_descoberta_consequencias: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+regra_central: Acontecer no mundo não concede conhecimento a Ren. Ações relevantes fora de cena devem produzir consequência
+  ou rastro suficiente para poderem repercutir sem revelar automaticamente causa ou autor.
+canais_validos:
+- efeito_publico
+- rastro_material
+- reacao_institucional
+- rumor
+- testemunha
+- mudanca_economica
+- mudanca_de_rotina
+regras:
+  min_canais_para_acao_relevante: 1
+  identidade_do_autor_pode_ficar_oculta: true
+  consequencia_pode_chegar_antes_da_causa: true
+  feito_lendario_deve_ter_repercussao: true
+  rumor_nao_e_fato: true
+  ren_nao_e_notificado_automaticamente: true
+exemplo_shizune_nao_obrigatorio:
+  descricao: Ren leva a Tyr uma acusação documental e encontra o documento já restaurado ou substituído; a instituição
+    passa a ter de considerar erro de Ren ou comprometimento interno.
+  estatuto: exemplo_de_escala_lendaria_nao_evento_canonico

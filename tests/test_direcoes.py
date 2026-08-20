@@ -164,13 +164,24 @@ class DirectionsSyntheticTest(unittest.TestCase):
     def test_avanco_e_sequencial_e_rastreavel(self):
         public = self.repo / "estado/tempo.yaml"
         before = digest(public)
-        result = direcoes.advance(self.repo, "ponte", "Sessão teste", "As pistas se acumularam.")
+        fact = self.repo / "fontes/fato-avanco.md"
+        fact.write_text("As pistas se acumularam em comparação documental.", encoding="utf-8")
+        result = direcoes.advance(
+            self.repo,
+            "ponte",
+            "fontes/fato-avanco.md",
+            "As pistas se acumularam.",
+            "pistas se acumularam em comparação documental",
+        )
         self.assertEqual(result["marco_concluido"], "pistas")
         self.assertEqual(result["proximo_marco"], "controle_perdido")
+        self.assertEqual(result["papel"], "restricao_destino")
         self.assertEqual(before, digest(public))
         state = direcoes.load_state(self.repo)
         self.assertEqual(state["direcoes"]["ponte"]["marcos_concluidos"], ["pistas"])
-        self.assertEqual(state["direcoes"]["ponte"]["historico_recente"][-1]["origem"], "Sessão teste")
+        history = state["direcoes"]["ponte"]["historico_recente"][-1]
+        self.assertEqual(history["origem"], "fontes/fato-avanco.md")
+        self.assertEqual(history["fato_base"]["fonte"], "fontes/fato-avanco.md")
 
     def test_bairro_nao_ativa_antes_da_dependencia(self):
         with self.assertRaises(direcoes.DirectionError):

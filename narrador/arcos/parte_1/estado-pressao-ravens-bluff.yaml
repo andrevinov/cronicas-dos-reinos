@@ -1,0 +1,19 @@
+schema_estado_pressao_ravens_bluff: 1
+natureza: controle_reservado
+arco: parte_1_uma_ponte_para_kozakura
+frentes:
+  custo_de_vida:
+    nivel: 0
+    historico_recente: []
+  ocupacao_imobiliaria:
+    nivel: 0
+    historico_recente: []
+  crime_e_milicias:
+    nivel: 0
+    historico_recente: []
+  desgaste_da_autoridade:
+    nivel: 0
+    historico_recente: []
+  presenca_oriental:
+    nivel: 0
+    historico_recente: []

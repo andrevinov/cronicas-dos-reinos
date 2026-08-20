@@ -23,6 +23,8 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import direcoes_destino
+
 INDEX_PATH = Path("narrador/direcoes/index.yaml")
 STATE_PATH = Path("narrador/direcoes/estado.yaml")
 DIRECTIONS_DIR = Path("narrador/direcoes")
@@ -175,6 +177,10 @@ def load_fragment(repo: Path, direction_id: str, meta: dict[str, Any]) -> dict[s
         raise DirectionError(f"id do fragmento {data.get('id')!r} não coincide com índice {direction_id!r}")
     if data.get("nome") != meta.get("nome"):
         raise DirectionError(f"nome de {direction_id} diverge entre índice e fragmento")
+    try:
+        direcoes_destino.validate_destination_shape(data, direction_id=direction_id)
+    except direcoes_destino.DestinationDirectionError as exc:
+        raise DirectionError(str(exc)) from exc
     statute = _text(data.get("estatuto"), f"{direction_id}.estatuto")
     if statute not in VALID_STATUTES:
         raise DirectionError(f"estatuto inválido para {direction_id}: {statute}")
@@ -386,6 +392,10 @@ def activate(repo: Path, query: str, origin: str, note: str) -> dict[str, Any]:
     index = load_index(repo)
     state = load_state(repo, index)
     direction_id, _ = resolve(index, query)
+    try:
+        direcoes_destino.ensure_direction_allowed(repo, direction_id)
+    except direcoes_destino.DestinationDirectionError as exc:
+        raise DirectionError(str(exc)) from exc
     current = state["direcoes"][direction_id]
     if current["estado"] != "latente":
         raise DirectionError(f"direção {direction_id} não está latente: {current['estado']}")
@@ -398,10 +408,14 @@ def activate(repo: Path, query: str, origin: str, note: str) -> dict[str, Any]:
     return {"ok": True, "direcao": direction_id, "estado": "ativa", "marco_atual": current["marco_atual"]}
 
 
-def advance(repo: Path, query: str, origin: str, note: str) -> dict[str, Any]:
+def advance(repo: Path, query: str, origin: str, note: str, evidence: str | None = None) -> dict[str, Any]:
     index = load_index(repo)
     state = load_state(repo, index)
     direction_id, meta = resolve(index, query)
+    try:
+        direcoes_destino.ensure_direction_allowed(repo, direction_id)
+    except direcoes_destino.DestinationDirectionError as exc:
+        raise DirectionError(str(exc)) from exc
     current = state["direcoes"][direction_id]
     if current["estado"] != "ativa":
         raise DirectionError(f"direção {direction_id} não está ativa: {current['estado']}")
@@ -413,6 +427,10 @@ def advance(repo: Path, query: str, origin: str, note: str) -> dict[str, Any]:
     index_current = ordered.index(milestone)
     if current["marcos_concluidos"] != ordered[:index_current]:
         raise DirectionError(f"progresso inconsistente antes de avançar {direction_id}")
+    try:
+        proof = direcoes_destino.verify_advance_evidence(repo, origin, evidence)
+    except direcoes_destino.DestinationDirectionError as exc:
+        raise DirectionError(str(exc)) from exc
 
     current["marcos_concluidos"].append(milestone)
     if index_current + 1 < len(ordered):
@@ -425,13 +443,25 @@ def advance(repo: Path, query: str, origin: str, note: str) -> dict[str, Any]:
         current["estado"] = "concluida"
         new_state = "concluida"
     current["historico_recente"].append(
-        _history(repo, "avancar", origin, note, marco_concluido=milestone, proximo_marco=next_milestone)
+        _history(
+            repo,
+            "avancar",
+            origin,
+            note,
+            marco_concluido=milestone,
+            proximo_marco=next_milestone,
+            fato_base=proof,
+            papel="restricao_destino",
+        )
     )
     current["historico_recente"] = current["historico_recente"][-MAX_HISTORY:]
     _atomic_yaml(repo / STATE_PATH, state)
     return {
         "ok": True,
         "direcao": direction_id,
+        "papel": "restricao_destino",
+        "executavel": False,
+        "fato_base": proof,
         "marco_concluido": milestone,
         "proximo_marco": next_milestone,
         "estado": new_state,
@@ -445,6 +475,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("status")
     show_parser = sub.add_parser("mostrar")
     show_parser.add_argument("direcao")
+    destination_parser = sub.add_parser("avaliar-destino")
+    destination_parser.add_argument("direcao")
     sub.add_parser("validar")
     activate_parser = sub.add_parser("ativar")
     activate_parser.add_argument("direcao")
@@ -452,8 +484,9 @@ def build_parser() -> argparse.ArgumentParser:
     activate_parser.add_argument("--nota", required=True)
     advance_parser = sub.add_parser("avancar")
     advance_parser.add_argument("direcao")
-    advance_parser.add_argument("--origem", required=True)
-    advance_parser.add_argument("--nota", required=True)
+    advance_parser.add_argument("--origem", required=True, help="arquivo canônico que contém o fato-base")
+    advance_parser.add_argument("--evidencia", required=True, help="trecho literal do fato-base dentro de --origem")
+    advance_parser.add_argument("--nota", required=True, help="por que o fato-base satisfaz o critério do marco")
     return parser
 
 
@@ -469,10 +502,15 @@ def main(argv: list[str] | None = None) -> int:
             result = status_view(repo)
         elif args.comando == "mostrar":
             result = show(repo, args.direcao)
+        elif args.comando == "avaliar-destino":
+            try:
+                result = direcoes_destino.project(repo, args.direcao)
+            except direcoes_destino.DestinationDirectionError as exc:
+                raise DirectionError(str(exc)) from exc
         elif args.comando == "ativar":
             result = activate(repo, args.direcao, args.origem, args.nota)
         elif args.comando == "avancar":
-            result = advance(repo, args.direcao, args.origem, args.nota)
+            result = advance(repo, args.direcao, args.origem, args.nota, args.evidencia)
         else:
             result = validate_repo(repo)
         print(_dump(result), end="")

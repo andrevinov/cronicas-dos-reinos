@@ -1,34 +1,62 @@
 schema_agenda_mundo: 1
 natureza: reservado
-hora_amanhecer: '06:00'
-descricao: >-
-  Agenda operacional do motor determinístico. Reavaliar um agente não significa
-  fazê-lo agir; significa apenas pedir ao narrador que reconsidere seu plano com
-  base no estado atual, sem abrir agentes não relacionados.
+hora_amanhecer: 06:00
+descricao: Agenda operacional do motor determinístico. Reavaliar um agente não significa fazê-lo agir; significa
+  apenas pedir ao narrador que reconsidere seu plano com base no estado atual, sem abrir agentes não relacionados.
 reavaliacoes:
   red_sail:
     cadencia: amanhecer
     intervalo_dias: 1
-    inicio: '11 Eleasis, 1372 DR'
+    inicio: 11 Eleasis, 1372 DR
     motivo: A busca ativa da Red Sail produz decisões operacionais diárias mesmo sem nova iniciativa de Ren.
   night_watch:
     cadencia: amanhecer
     intervalo_dias: 1
-    inicio: '11 Eleasis, 1372 DR'
-    motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar prioridades a cada novo dia.
+    inicio: 11 Eleasis, 1372 DR
+    motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar prioridades a cada novo
+      dia.
   casa_de_tyr:
     cadencia: amanhecer
     intervalo_dias: 2
-    inicio: '11 Eleasis, 1372 DR'
+    inicio: 11 Eleasis, 1372 DR
     motivo: A investigação reservada de Tyr continua fora da presença de Ren, mas não exige releitura diária completa.
   kurobane_jinzaburo:
     cadencia: amanhecer
     intervalo_dias: 2
-    inicio: '12 Eleasis, 1372 DR'
-    motivo: Kurobane está canonicamente presente em Ravens Bluff e pode procurar novas janelas para documentos, mensagens ou extração.
+    inicio: 12 Eleasis, 1372 DR
+    motivo: Kurobane está canonicamente presente em Ravens Bluff e pode procurar novas janelas para documentos,
+      mensagens ou extração.
   masao_hirasawa:
     cadencia: amanhecer
     intervalo_dias: 3
-    inicio: '12 Eleasis, 1372 DR'
+    inicio: 12 Eleasis, 1372 DR
     motivo: O plano estratégico de Masao continua em movimento, mas sua escala não exige reavaliação a cada amanhecer.
-agendamentos: []
+  kajiwara_shizune:
+    cadencia: amanhecer
+    intervalo_dias: 2
+    inicio: 13 Eleasis, 1372 DR
+    motivo: Shizune reconsidera guerra administrativa e pressão institucional quando estiver ativa; reavaliar não
+      implica ação física ou descoberta.
+  sawagejo_cho:
+    cadencia: amanhecer
+    intervalo_dias: 2
+    inicio: 13 Eleasis, 1372 DR
+    motivo: Após sua primeira aparição tornar Chō ativo, sua curiosidade marcial e pressão pessoal continuam autônomas;
+      antes disso o guardrail de arco o filtra.
+  pan_chu:
+    cadencia: amanhecer
+    intervalo_dias: 1
+    inicio: 28 Eleasis, 1372 DR
+    motivo: Depois da chegada do Golden Lily e ativação de Pan Chu, presença marítima, logística e contestação de
+      autoridade merecem reavaliação diária; antes disso o guardrail o filtra.
+agendamentos:
+- id: chegada_golden_lily_27_eleasis
+  tipo: movimento
+  em:
+    data: 27 Eleasis, 1372 DR
+    hora: '10:00'
+  agente: pan_chu
+  agentes_afetados:
+  - pan_chu
+  motivo: 'Relógio canônico da Parte 1: avaliar a chegada física do Golden Lily a Ravens Bluff. Ren não precisa
+    estar presente nem descobrir o evento automaticamente.'

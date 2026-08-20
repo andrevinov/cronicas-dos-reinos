@@ -1,8 +1,7 @@
 schema_direcoes: 1
 natureza: reservado
-descricao: >-
-  Índice pequeno das direções narrativas canônicas. Direção define um destino
-  obrigatório de longo prazo, mas não prescreve cena, data ou solução.
+descricao: Índice pequeno das direções narrativas canônicas. Direção define um destino obrigatório de longo prazo,
+  mas não prescreve cena, data ou solução.
 direcoes:
   ponte_de_kozakura:
     nome: Ponte de Kozakura
@@ -10,7 +9,7 @@ direcoes:
     avaliacao:
       cadencia: amanhecer
       intervalo_dias: 2
-      inicio: '12 Eleasis, 1372 DR'
+      inicio: 12 Eleasis, 1372 DR
     ativacao: null
   shin_kozakura:
     nome: Shin-Kozakura
@@ -18,8 +17,16 @@ direcoes:
     avaliacao:
       cadencia: amanhecer
       intervalo_dias: 7
-      inicio: '11 Eleasis, 1372 DR'
+      inicio: 11 Eleasis, 1372 DR
     ativacao:
       depende_de:
         direcao: ponte_de_kozakura
         marco: perda_controle_exclusivo
+  golden_lily_em_ravens_bluff:
+    nome: Golden Lily em Ravens Bluff
+    arquivo: narrador/direcoes/golden_lily_em_ravens_bluff.yaml
+    avaliacao:
+      cadencia: amanhecer
+      intervalo_dias: 2
+      inicio: 13 Eleasis, 1372 DR
+    ativacao: null

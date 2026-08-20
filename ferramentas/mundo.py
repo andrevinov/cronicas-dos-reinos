@@ -37,6 +37,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import agentes
+import arco_mundo
 
 TIME_PATH = Path("estado/tempo.yaml")
 AGENDA_PATH = Path("narrador/mundo/agenda.yaml")
@@ -477,6 +478,11 @@ def process_until(repo: Path, target: WorldInstant) -> dict[str, Any]:
         }
 
     emitted = collect_triggers(agenda, cursor, target)
+    try:
+        arc_filter = arco_mundo.filter_world_triggers(repo, emitted)
+    except arco_mundo.ArcWorldError as exc:
+        raise WorldEngineError(str(exc)) from exc
+    emitted = arc_filter["permitidos"]
     extra_sources = _validate_agent_ids_if_needed(repo, emitted)
     added = _merge_pending(state, emitted)
     state["processado_ate"] = instant_parts(target)
@@ -488,7 +494,8 @@ def process_until(repo: Path, target: WorldInstant) -> dict[str, Any]:
         "processado_ate": instant_parts(target),
         "novas_pendencias": added,
         "agentes_reconsiderar": sorted(_referenced_agents(added)),
-        "fontes_lidas": [*base_sources, *extra_sources],
+        "bloqueados_pelo_arco": arc_filter["bloqueados"],
+        "fontes_lidas": list(dict.fromkeys([*base_sources, *arc_filter["fontes_lidas"], *extra_sources])),
     }
 
 
@@ -536,10 +543,14 @@ def pending_view(repo: Path) -> dict[str, Any]:
     }
 
 
-def _next_trigger(agenda: dict[str, Any], after: WorldInstant) -> dict[str, Any] | None:
+def _next_trigger(repo: Path, agenda: dict[str, Any], after: WorldInstant) -> dict[str, Any] | None:
     horizon = WorldInstant(after.minute + 367 * 1440)
     candidates = _recurrence_triggers(agenda, after, horizon)
     candidates.extend(_scheduled_triggers(agenda, after, horizon))
+    try:
+        candidates = arco_mundo.filter_world_triggers(repo, candidates)["permitidos"]
+    except arco_mundo.ArcWorldError as exc:
+        raise WorldEngineError(str(exc)) from exc
     if not candidates:
         return None
     candidates.sort(
@@ -561,7 +572,7 @@ def status_view(repo: Path) -> dict[str, Any]:
         "atraso_minutos": max(0, canonical.minute - cursor.minute),
         "pendencias": len(state["pendencias"]),
         "agentes_reconsiderar": sorted(_referenced_agents(state["pendencias"])),
-        "proximo_disparo": _next_trigger(agenda, cursor),
+        "proximo_disparo": _next_trigger(repo, agenda, cursor),
         "fontes_lidas": [TIME_PATH.as_posix(), AGENDA_PATH.as_posix(), WORLD_STATE_PATH.as_posix()],
     }
 

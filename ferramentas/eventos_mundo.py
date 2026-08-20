@@ -20,6 +20,7 @@ from typing import Any
 import yaml
 
 import mundo
+import arco_mundo
 
 INDEX = Path("narrador/eventos/index.yaml")
 STATE = Path("narrador/eventos/estado.yaml")
@@ -295,15 +296,30 @@ def _rank(
 def routing_context(repo: Path) -> dict[str, Any]:
     strategic, light = _load_operational_indexes(repo)
     router = load_interactions(repo, (strategic, light))
+    try:
+        arc_ctx = arco_mundo.context(repo)
+        filtered = {}
+        blocked = []
+        for agent_id, meta in strategic["agentes"].items():
+            gate = arco_mundo.strategic_agent_gate(repo, agent_id, purpose="evento", ctx=arc_ctx)
+            if gate["permitido"]:
+                filtered[agent_id] = meta
+            else:
+                blocked.append({"agente": agent_id, "motivo": gate["motivo"]})
+        strategic = {**strategic, "agentes": filtered}
+    except arco_mundo.ArcWorldError as exc:
+        raise WorldEventError(str(exc)) from exc
     return {
         "router": router,
         "strategic": strategic,
         "light": light,
-        "fontes_lidas": [
+        "agentes_estrategicos_bloqueados_pelo_arco": blocked,
+        "fontes_lidas": list(dict.fromkeys([
             INTERACTIONS.as_posix(),
             STRATEGIC_INDEX.as_posix(),
             LIGHT_INDEX.as_posix(),
-        ],
+            *arc_ctx["fontes_lidas"],
+        ])),
     }
 
 

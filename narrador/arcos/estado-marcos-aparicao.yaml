@@ -1,0 +1,28 @@
+schema_estado_marcos_aparicao: 1
+natureza: controle_reservado
+descricao: Estado pequeno da segunda trava de aparição. Bloqueado significa que o marco narrativo ainda não amadureceu;
+  elegível permite somente avaliação contextual; consumido significa que a primeira aparição já ocorreu e não bloqueia
+  reaparições futuras.
+marcos:
+  kurobane_jinzaburo:
+    estado: consumido
+    origem: sessoes/007/handoff.yaml
+    nota: A primeira aparição de Kurobane em Ravens Bluff já ocorreu canonicamente.
+    historico_recente: []
+  kajiwara_shizune:
+    estado: elegivel
+    origem: narrador/agentes/kajiwara_shizune.yaml
+    nota: O plano corrente de Shizune já aguarda uma janela institucional; o marco permite avaliar uma primeira
+      aparição sem estabelecer sua presença.
+    historico_recente: []
+  sawagejo_cho:
+    estado: bloqueado
+    origem: narrador/juppongatana/marcos-de-aparicao.md
+    nota: O marco de primeira aparição permanece bloqueado até amadurecer no jogo.
+    historico_recente: []
+  pan_chu:
+    estado: elegivel
+    origem: narrador/arcos/parte_1/golden-lily.md
+    nota: A chegada do Golden Lily possui relógio canônico próprio; elegível permite avaliar a chegada quando o
+      agendamento for alcançado, não antecipa presença.
+    historico_recente: []

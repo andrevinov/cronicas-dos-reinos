@@ -5,6 +5,7 @@ import argparse, hashlib, os, tempfile, unicodedata
 from pathlib import Path
 import yaml
 import mundo
+import arco_mundo
 
 INDEX=Path("narrador/entradas/index.yaml")
 STATE=Path("narrador/entradas/estado.yaml")
@@ -102,7 +103,11 @@ def next_dawn(repo):
 def record(action,origin,note,when): return {"acao":action,"em":mundo.instant_parts(when),"origem":text(origin,"origem"),"nota":text(note,"nota")}
 
 def mutate(repo,q,action,origin,note):
-    index=load_index(repo); state=load_state(repo,index); cid,_=resolve(index,q); cur=state["candidatos"][cid]; now,_=mundo.load_canonical_time(repo)
+    index=load_index(repo); state=load_state(repo,index); cid,_=resolve(index,q)
+    try: arc_gate=arco_mundo.entry_gate(repo,cid)
+    except arco_mundo.ArcWorldError as e: raise EntryError(str(e)) from e
+    if not arc_gate["permitido"]: raise EntryError(f"{cid} está bloqueado pelo Contrato de Arco corrente")
+    cur=state["candidatos"][cid]; now,_=mundo.load_canonical_time(repo)
     if cur["estado"]=="inviavel": raise EntryError(f"{cid} está inviável e não pode entrar em cena")
     if cur["estado"]=="presente":
         if action=="confirmar": return {"ok":True,"alterou":False,"candidato":cid}
@@ -162,19 +167,29 @@ def pending_id(cid,when): return "mundo-"+hashlib.sha256(f"avaliar_entrada|{cid}
 def process_checkpoint(repo):
     index=load_index(repo); state=load_state(repo,index); ws=mundo.load_world_state(repo); now,_=mundo.load_canonical_time(repo); cid=focus(index,state)
     sources=[str(INDEX),str(STATE),str(RUNTIME),str(mundo.WORLD_STATE_PATH),str(mundo.TIME_PATH)]
-    if not cid: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"fontes_lidas":sources}
-    cur=state["candidatos"][cid]; due=parse_due(cur["proxima_avaliacao"],cid+".proxima_avaliacao")
-    if due is None or due>now: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"fontes_lidas":sources}
-    cadence=index["cadencia_padrao_dias"]; cur["proxima_avaliacao"]=mundo.instant_parts(mundo.WorldInstant(due.minute+cadence*1440))
-    opened={x.get("entrada") for x in ws["pendencias"] if x.get("tipo")=="avaliar_entrada"}
-    if cid in opened: atomic(repo/STATE,state); return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"fontes_lidas":sources}
-    meta=index["candidatos"][cid]; lv=level(repo)
-    if not cur["antecipado"] and lv<meta["nivel_minimo_normal"]: atomic(repo/STATE,state); return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"adiada_por_nivel":cid,"fontes_lidas":sources}
-    rec={"id":pending_id(cid,due),"tipo":"avaliar_entrada","entrada":cid,"agentes_afetados":[],"disparado_em":mundo.instant_parts(due),"motivo":f"Avaliar entrada de {meta['nome']} sem fazê-la acontecer automaticamente.","origem":f"entradas:{cid}"}
-    added=mundo._merge_pending(ws,[rec])
-    if added: mundo._atomic_write_yaml(repo/mundo.WORLD_STATE_PATH,ws)
+    if not cid: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"fontes_lidas":sources}
+    try: arc_gate=arco_mundo.entry_gate(repo,cid)
+    except arco_mundo.ArcWorldError as e: raise EntryError(str(e)) from e
+    sources=list(dict.fromkeys([*sources,*arc_gate["fontes_lidas"]]))
+    if not arc_gate["permitido"]: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"bloqueada_pelo_arco":cid,"fontes_lidas":sources}
+    cur=state["candidatos"][cid]; meta=index["candidatos"][cid]; lv=level(repo); due=parse_due(cur["proxima_avaliacao"],cid+".proxima_avaliacao")
+    if due is None:
+        aberta=any(isinstance(x,dict) and x.get("acao")=="abrir_janela_contextual" for x in cur.get("historico_recente") or [])
+        if not aberta: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"fontes_lidas":sources}
+        if not cur["antecipado"] and lv<meta["nivel_minimo_normal"]: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"adiada_por_nivel":cid,"fontes_lidas":sources}
+        return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":cid,"fontes_lidas":sources}
+    if due>now: return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"fontes_lidas":sources}
+    cadence=index["cadencia_padrao_dias"]
+    if not cur["antecipado"] and lv<meta["nivel_minimo_normal"]:
+        cur["proxima_avaliacao"]=mundo.instant_parts(mundo.WorldInstant(due.minute+cadence*1440)); atomic(repo/STATE,state)
+        return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":None,"adiada_por_nivel":cid,"fontes_lidas":sources}
+    cur["proxima_avaliacao"]=None
+    cur["historico_recente"].append(record("abrir_janela_contextual","sistema:entradas",f"A cadência tornou {meta['nome']} elegível para descoberta contextual; nenhuma aparição foi criada.",due)); cur["historico_recente"]=cur["historico_recente"][-24:]
+    legadas=[x for x in ws["pendencias"] if x.get("tipo")=="avaliar_entrada" and x.get("entrada")==cid]
+    if legadas:
+        ws["pendencias"]=[x for x in ws["pendencias"] if not (x.get("tipo")=="avaliar_entrada" and x.get("entrada")==cid)]; mundo._atomic_write_yaml(repo/mundo.WORLD_STATE_PATH,ws)
     atomic(repo/STATE,state)
-    return {"ok":True,"novas_pendencias":added,"entradas_reconsiderar":[cid] if added else [],"fontes_lidas":sources}
+    return {"ok":True,"novas_pendencias":[],"entradas_reconsiderar":[],"janela_contextual_aberta":cid,"pendencias_legadas_removidas":[x.get("id") for x in legadas],"fontes_lidas":sources}
 
 def check_world(repo):
     r=validate(repo); errors=list(r["erros"])

@@ -1,0 +1,158 @@
+schema_pressao_ravens_bluff: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+principio: Frentes medem consequências acumuladas da estratégia de Masao. Nível não
+  sobe por calendário; sobe apenas quando fatos canônicos sustentam a mudança. Ren
+  pode jamais conhecer a causa correta.
+regras:
+  nivel_minimo: 0
+  nivel_maximo: 4
+  mudanca_maxima_por_registro: 1
+  avanco_automatico: false
+  reducao_possivel_por_intervencao: true
+  descoberta_da_causa_automatica: false
+frentes:
+  custo_de_vida:
+    nome: Custo de vida e distorção comercial
+    linhas_relacionadas:
+    - proteger_cadeia_logistica
+    - expandir_presenca_de_masao
+    - sustentar_cobertura_maritima
+    niveis:
+    - nivel: 0
+      titulo: mercado normal
+      sinais:
+      - sem pressão atribuível ao arco
+    - nivel: 1
+      titulo: raridades e prêmio oriental
+      sinais:
+      - alguns produtos orientais valorizam e lotes comuns somem de pontos específicos
+      - mercadores notam compradores novos com muito dinheiro
+    - nivel: 2
+      titulo: escassez localizada
+      sinais:
+      - alimentos, madeira, metal ou aluguel sobem em áreas usadas pela rede
+      - pequenos comerciantes reclamam de compras em bloco e intermediários
+    - nivel: 3
+      titulo: inflação de bairro
+      sinais:
+      - famílias e oficinas começam a abandonar áreas pressionadas
+      - guildas e nobres cobram resposta política
+    - nivel: 4
+      titulo: economia de ocupação
+      sinais:
+      - preço e disponibilidade já refletem presença organizada estrangeira
+      - autoridades precisam escolher entre repressão, subsídio ou negociação
+  ocupacao_imobiliaria:
+    nome: Ocupação e expulsão residencial
+    linhas_relacionadas:
+    - ocupar_espaco_urbano
+    - expandir_presenca_de_masao
+    niveis:
+    - nivel: 0
+      titulo: sem padrão
+      sinais:
+      - nenhuma ocupação coordenada registrada
+    - nivel: 1
+      titulo: compras discretas
+      sinais:
+      - casas e depósitos trocam de dono por procuradores e dinheiro rápido
+    - nivel: 2
+      titulo: pressão sobre moradores
+      sinais:
+      - despejos, ameaças ou títulos contraditórios começam a se concentrar em poucas
+        ruas
+    - nivel: 3
+      titulo: quarteirões alterados
+      sinais:
+      - moradores somem ou são expulsos e grupos orientais passam a viver em conjunto
+      - a pressão alcança também ruas caras ou áreas nobres quando imóveis estratégicos
+        interessam à rede
+    - nivel: 4
+      titulo: enclave coercitivo
+      sinais:
+      - uma área da cidade já funciona sob medo e controle informal da rede de Masao
+  crime_e_milicias:
+    nome: Crime, capangas e milícias
+    linhas_relacionadas:
+    - expandir_presenca_de_masao
+    - desgastar_autoridade_de_ravens_bluff
+    niveis:
+    - nivel: 0
+      titulo: criminalidade basal
+      sinais:
+      - nenhum aumento coordenado atribuído ao arco
+    - nivel: 1
+      titulo: capangas isolados
+      sinais:
+      - homens orientais armados aparecem como guarda-costas, estivadores ou cobradores
+    - nivel: 2
+      titulo: células de rua
+      sinais:
+      - grupos passam a proteger cargas, casas e negócios e desafiam criminosos locais
+    - nivel: 3
+      titulo: milícias reconhecíveis
+      sinais:
+      - Night Watch precisa deslocar patrulhas para crimes e intimidação ligados às
+        mesmas células
+    - nivel: 4
+      titulo: força paralela
+      sinais:
+      - grupos armados conseguem negar ruas, docas ou imóveis à autoridade comum por
+        períodos reais
+  desgaste_da_autoridade:
+    nome: Desgaste da Night Watch e legitimidade institucional
+    linhas_relacionadas:
+    - desgastar_autoridade_de_ravens_bluff
+    - impedir_consolidacao_de_provas
+    niveis:
+    - nivel: 0
+      titulo: capacidade normal
+      sinais:
+      - instituições mantêm rotina sem sobrecarga atribuível ao arco
+    - nivel: 1
+      titulo: mais ocorrências e contradições
+      sinais:
+      - Night Watch recebe mais crimes e Tyr/guildas encontram documentos conflitantes
+    - nivel: 2
+      titulo: sobrecarga seletiva
+      sinais:
+      - patrulhas e investigadores deixam outras tarefas descobertas para responder
+        à pressão
+    - nivel: 3
+      titulo: crise de confiança
+      sinais:
+      - nobres, comerciantes ou templos questionam publicamente a capacidade das autoridades
+    - nivel: 4
+      titulo: pedido de ajuda externa
+      sinais:
+      - facções locais convocam apoio regional, naval, mágico ou mercenário para restaurar
+        autoridade
+  presenca_oriental:
+    nome: Presença material e humana de Kozakura
+    linhas_relacionadas:
+    - expandir_presenca_de_masao
+    - sustentar_cobertura_maritima
+    - preservar_monopolio_da_ponte
+    niveis:
+    - nivel: 0
+      titulo: exótico raro
+      sinais:
+      - itens e viajantes orientais ainda cabem em comércio distante normal
+    - nivel: 1
+      titulo: fluxo crescente
+      sinais:
+      - armas, tecidos, drogas, selos e estrangeiros aparecem com frequência nova
+    - nivel: 2
+      titulo: volume difícil de explicar
+      sinais:
+      - porto e hospedarias não explicam todo o fluxo observado
+    - nivel: 3
+      titulo: pessoas sem porto
+      sinais:
+      - chegadas recentes e grupos instalados não possuem rota marítima coerente
+    - nivel: 4
+      titulo: infraestrutura de ocupação
+      sinais:
+      - homens, material e serviços de Masao já podem ser repostos em escala dentro
+        da cidade

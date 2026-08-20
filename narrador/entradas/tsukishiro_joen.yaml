@@ -4,18 +4,24 @@ id: tsukishiro_joen
 nome: Tsukishiro Jōen
 ordem: 2
 nivel_minimo_normal: 7
-janela_preferencial: Ren nível 7-9, após Shen já ter cruzado seu caminho e depois de Ren sofrer uma derrota, ferimento sério ou limite claro diante de agente especializado.
+janela_preferencial: Ren nível 7-9, depois de Shen cruzar seu caminho e quando uma derrota, quase-morte ou limite
+  técnico mostrar que o Getsuei-ryū incompleto não basta.
 gatilhos_fortes:
-  - Ren sobreviver por pouco a membro da Juppongatana ou outro inimigo que exponha o limite atual do Getsuei-ryū
-  - Ren insistir em enfrentar a Juppongatana sem treinamento suficiente
-  - Meihua encontrar rastro de um velho mestre procurando Ren
-forma_preferencial: Jōen procura Ren depois de uma luta brutal, reconhece Tadatsune no treinamento incompleto e decide terminar a formação.
-funcao_imediata: Transformar sobrevivência em progresso marcial e introduzir Mukyoku Tsukikage-ryū, Shukuchi Ichiho, Kū no Ma e Getsumei.
+- Ren sobreviver por pouco a Chō, Pan Chu ou outro Juppongatana e a diferença técnica ficar clara
+- Ren estar realmente perdendo um confronto em que salvamento é causalmente plausível e Jōen já tiver como rastreá-lo
+- Ren insistir em enfrentar a Juppongatana sem completar formação
+- Shen encontrar rastro de um velho mestre procurando Ren
+forma_preferencial: Jōen pode chegar depois de uma luta brutal para recolher o sobrevivente ou, se presença prévia
+  e causalidade permitirem, intervir num instante de quase-morte; jamais aparece do nada apenas porque o combate
+  ficou difícil.
+funcao_imediata: Transformar sobrevivência em progresso marcial e terminar a formação de Ren sem se tornar botão
+  de resgate recorrente.
 ancoras:
-  - fonte: narrador/aliados/README.md
-    evidencia: '2. **Tsukishiro Jōen**, a Lua Vazia;'
-  - fonte: narrador/aliados/marcos-de-aparicao.md
-    evidencia: '**Janela preferencial:** Ren nível 7-9, após Shen já ter cruzado seu caminho e depois de Ren sofrer uma derrota, ferimento sério ou limite claro diante de agente especializado.'
+- fonte: narrador/aliados/README.md
+  evidencia: 2. **Tsukishiro Jōen**, a Lua Vazia;
+- fonte: narrador/aliados/marcos-de-aparicao.md
+  evidencia: '**Janela preferencial:** Ren nível 7-9, após Shen já ter cruzado seu caminho e depois de Ren sofrer
+    uma derrota, ferimento sério ou limite claro diante de agente especializado.'
 fontes_canonicas:
-  - narrador/aliados/README.md
-  - narrador/aliados/marcos-de-aparicao.md
+- narrador/aliados/README.md
+- narrador/aliados/marcos-de-aparicao.md

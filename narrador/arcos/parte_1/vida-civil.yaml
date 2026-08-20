@@ -1,0 +1,32 @@
+schema_vida_civil_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+regra: Estas são oportunidades recorrentes de vida e relação; nenhuma acontece só porque está cadastrada.
+dojo:
+  estado_inicial: aguarda_local_adequado
+  condicao_para_criar: Ren obtém posse ou uso legítimo de local adequado e decide fundar o dojo.
+  night_watch:
+    possibilidade: negociar contrato para treinar guardas quando o dojo estiver funcional
+    automatico: false
+    efeitos_possiveis:
+    - renda recorrente
+    - laços com Luath e Night Watch
+    - maior exposição pública da capacidade marcial de Ren
+circo_e_kage:
+  continua_disponivel: true
+  regra_de_cobertura: Ren pode continuar apresentações e negar que seja Kage; a cidade cheia de estrangeiros sustenta
+    ambiguidade até fatos quebrarem a cobertura.
+integracao_aliados:
+  shen_meihua:
+  - pode buscar trabalho médico, hospitalar ou ligado a templo
+  - Silva, Maerra ou autoridades médicas podem aprovar, desconfiar ou repreendê-la conforme conduta
+  - pode criar rede própria independente de Ren
+  tsukishiro_joen:
+  - deve construir rotina e relações em Ravens Bluff, não existir apenas durante treino
+  - Luath, Maerra, Silva, Shen e outros podem produzir amizade, atrito e humor cultural conforme cenas reais
+relacoes:
+  romance_possivel_com_outros_npcs: true
+  automatico: false
+  regra: Interesse depende de personalidade, alinhamento, oportunidade e conhecimento. Saber ou não da relação de
+    Ren com Nera é fato separado; nenhuma personagem recebe essa informação automaticamente.
+  nao_transformar_em_harem_por_padrao: true

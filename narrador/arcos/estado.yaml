@@ -1,0 +1,8 @@
+schema_estado_arcos: 2
+natureza: controle_reservado
+descricao: >-
+  Ponteiro operacional do contrato de arco corrente. Não é fonte independente de
+  fatos da campanha e não avança por passagem de tempo.
+arco_atual: parte_1_uma_ponte_para_kozakura
+estado: ativo
+historico_transicoes: []

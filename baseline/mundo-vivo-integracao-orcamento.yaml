@@ -1,17 +1,41 @@
 schema_orcamento_integracao_mundo_vivo: 1
 natureza: contrato_de_regressao
-objetivo: >-
-  Fechar a integração de recompensas e side quests sem transformar gatilhos
-  reativos em scans ou schedulers do hot path.
+objetivo: Fechar a integração de recompensas, side quests e descoberta contextual sem transformar gatilhos reativos
+  em scans ou schedulers do hot path.
 limites:
   abertura_cena:
     max_npcs_por_chamada: 12
+    max_tags_contextuais: 8
+    max_candidatos_contextuais: 4
     max_fragmentos_narrativos: 1
     max_leituras_tempo: 1
     identidade_antes_de_mutacao: true
+    contexto_antes_de_mutacao: true
+    filtro_arco_antes_de_estado_agente: true
     ordenacao_encontros_simultaneos: id_canonico
+    ordenacao_candidatos_contextuais: coincidencias_prioridade_id
     local_sem_npc_nao_le_oportunidades: true
     npc_sem_perfil_nao_le_tempo: true
+    max_presencas_contextuais: 2
+    max_operacoes_contextuais: 2
+    max_direcoes_contextuais: 1
+    descoberta_contextual_tipos:
+    - presenca
+    - entrada
+    - operacao
+    - direcao
+    marco_aparicao_antes_de_estado_agente: true
+    max_entradas_contextuais: 1
+  descoberta_contextual_sem_match:
+    max_fontes: 1
+    max_fragmentos_narrativos: 0
+  descoberta_contextual_bloqueada_pelo_arco:
+    max_fontes: 4
+    max_fragmentos_narrativos: 0
+  descoberta_contextual_com_match:
+    max_fontes: 11
+    max_fragmentos_narrativos: 0
+    max_payload_bytes: 8192
   resolucao_npc_id_exato:
     max_fontes: 1
     max_fragmentos_narrativos: 0
@@ -41,14 +65,96 @@ limites:
   arquivos_quentes:
     max_bytes_por_roteador: 16384
     max_bytes_total_novos: 32768
+  linhas_operacionais_arco:
+    max_linhas_por_arco: 12
+    max_executores_por_linha: 6
+    max_fontes_consulta_dirigida: 3
+    max_fragmentos_narrativos: 0
+  traducao_linha_por_agente:
+    max_fontes: 5
+    max_fragmentos_narrativos: 1
+    max_metodos_por_linha_agente: 4
+    max_tags_por_metodo: 8
+  guardrail_arco_mundo:
+    max_fontes_controle: 4
+    max_fragmentos_narrativos: 0
+    reavaliacao_controlada_exige_linha: true
+    movimento_controlado_exige_habilitacao: true
+    evento_nao_e_cancelado_por_agente_bloqueado: true
+  marcos_aparicao:
+    max_fontes_gate: 6
+    max_fragmentos_narrativos: 0
+    estados:
+    - bloqueado
+    - elegivel
+    - consumido
+    nivel_minimo_obrigatorio: true
+  entradas_contextuais:
+    max_fontes_gate: 7
+    max_fragmentos_narrativos: 0
+    max_candidatos_por_cena: 1
+    ordem_preferencial_obrigatoria: true
+    janela_temporal_obrigatoria: true
+    nivel_minimo_obrigatorio: true
+  direcoes_como_destino:
+    max_fontes_avaliacao_dirigida: 7
+    max_fragmentos_narrativos: 1
+    executor_proibido: true
+    acao_proibida: true
+    metodo_proibido: true
+    avanco_exige_fonte_e_evidencia_literal: true
 arquivos_quentes_novos:
-  - narrador/recompensas/index.yaml
-  - narrador/oportunidades/index.yaml
-  - narrador/oportunidades/estado.yaml
+- narrador/recompensas/index.yaml
+- narrador/oportunidades/index.yaml
+- narrador/oportunidades/estado.yaml
+- narrador/mundo/contextos-cena.yaml
+- narrador/arcos/index.yaml
+- narrador/arcos/estado.yaml
+- narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml
+- narrador/arcos/controle-mundo.yaml
+- narrador/arcos/marcos-aparicao.yaml
+- narrador/arcos/estado-marcos-aparicao.yaml
 invariantes:
   scan_geral_por_turno: 0
+  scan_semantico_contextual: 0
   geracao_recompensa_repetida: 0
   sidequest_fora_de_encontro: 0
   max_fragmentos_por_decisao: 1
   gatilhos_reativos_porta_preferencial_unica: true
+  candidato_contextual_nao_e_canonico: true
+  candidato_fora_do_arco_nao_e_exposto: true
+  grupo_arco_explicito_em_cada_binding: true
   turno_comum_continua_duas_escritas: true
+  contrato_arco_acima_do_mundo_vivo: true
+  nao_listado_no_arco_e_bloqueado: true
+  contrato_arco_e_orquestrador_nao_deposito: true
+  fragmento_especializado_so_por_resolucao_dirigida: true
+  linha_operacional_nao_e_acao: true
+  executor_linha_subordinado_ao_arco: true
+  linha_inexistente_nao_vira_operacao_generica: true
+  metodo_operacional_nao_e_acao: true
+  executor_sem_linha_nao_abre_fragmento: true
+  traducao_operacional_fica_no_fragmento_do_agente: true
+  operacao_contextual_nao_escolhe_executor: true
+  direcao_contextual_nao_avanca: true
+  operacao_contextual_nao_abre_agente: true
+  direcao_contextual_so_ativa: true
+  scheduler_respeita_contrato_arco: true
+  direcao_fora_do_arco_nao_gera_pendencia: true
+  entrada_fora_do_arco_nao_gera_pendencia: true
+  agente_controlado_sem_linha_nao_age_autonomamente: true
+  fronteira_temporal_ignora_peca_bloqueada: true
+  evento_mundial_preservado_ao_podar_agente: true
+  aparicao_exige_arco_marco_contexto: true
+  marco_elegivel_nao_e_aparicao: true
+  marco_consumido_nao_bloqueia_reaparicao: true
+  marco_bloqueado_para_antes_do_indice_agente: true
+  entrada_contextual_exige_arco_ordem_janela_nivel: true
+  entrada_contextual_nao_confirma_aparicao: true
+  cadencia_entrada_abre_janela_nao_pendencia: true
+  ordem_preferencial_de_aliados_nao_e_furada: true
+  fronteira_de_entrada_abre_janela_sem_bloquear_turno_seguinte: true
+  direcao_e_restricao_destino_nao_acao: true
+  direcao_nao_pode_ser_linha_operacional: true
+  avanco_direcao_exige_fato_base_literal: true
+  ativacao_manual_respeita_contrato_arco: true

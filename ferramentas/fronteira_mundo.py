@@ -17,6 +17,7 @@ from typing import Any
 import yaml
 
 import agentes_leves
+import arco_mundo
 import direcoes
 import entradas
 import eventos_mundo
@@ -75,6 +76,8 @@ def _add(
 
 
 def _agenda_candidates(
+    repo: Path,
+    arc_ctx: dict[str, Any],
     agenda: dict[str, Any],
     start: mundo.WorldInstant,
     target: mundo.WorldInstant,
@@ -82,6 +85,8 @@ def _agenda_candidates(
 ) -> None:
     dawn = mundo._dawn_minute(agenda)
     for agent_id, rule in (agenda.get("reavaliacoes") or {}).items():
+        if not arco_mundo.strategic_agent_gate(repo, agent_id, purpose="reavaliacao", ctx=arc_ctx)["permitido"]:
+            continue
         when = _first_due_dawn(
             start,
             target,
@@ -92,12 +97,18 @@ def _agenda_candidates(
         _add(candidates, start, target, when, "agentes_estrategicos", agent_id)
 
     for item in agenda.get("agendamentos") or []:
+        agent_id = item.get("agente")
+        if item.get("tipo") in {"reavaliar_agente", "movimento"} and agent_id:
+            purpose = "reavaliacao" if item["tipo"] == "reavaliar_agente" else "movimento"
+            if not arco_mundo.strategic_agent_gate(repo, agent_id, purpose=purpose, ctx=arc_ctx)["permitido"]:
+                continue
         when = mundo.parse_instant(item["em"]["data"], item["em"]["hora"])
         _add(candidates, start, target, when, "agendamentos", str(item["id"]))
 
 
 def _direction_candidates(
     repo: Path,
+    arc_ctx: dict[str, Any],
     agenda: dict[str, Any],
     world_state: dict[str, Any],
     start: mundo.WorldInstant,
@@ -117,6 +128,8 @@ def _direction_candidates(
     }
     dawn = mundo._dawn_minute(agenda)
     for direction_id, meta in index["direcoes"].items():
+        if not arco_mundo.direction_gate(repo, direction_id, ctx=arc_ctx)["permitido"]:
+            continue
         current = state["direcoes"][direction_id]
         if current.get("estado") != "ativa" or direction_id in pending:
             continue
@@ -133,6 +146,7 @@ def _direction_candidates(
 
 def _entry_candidates(
     repo: Path,
+    arc_ctx: dict[str, Any],
     world_state: dict[str, Any],
     start: mundo.WorldInstant,
     target: mundo.WorldInstant,
@@ -146,6 +160,8 @@ def _entry_candidates(
     sources.extend([entradas.INDEX.as_posix(), entradas.STATE.as_posix()])
     candidate_id = entradas.focus(index, state)
     if not candidate_id:
+        return
+    if not arco_mundo.entry_gate(repo, candidate_id, ctx=arc_ctx)["permitido"]:
         return
     already_open = {
         str(item.get("entrada"))
@@ -228,9 +244,14 @@ def next_boundary(repo: Path, target: mundo.WorldInstant) -> dict[str, Any]:
     candidates: list[tuple[int, str, str]] = []
 
     if target > start:
-        _agenda_candidates(agenda, start, target, candidates)
-        _direction_candidates(repo, agenda, world_state, start, target, candidates, sources)
-        _entry_candidates(repo, world_state, start, target, candidates, sources)
+        try:
+            arc_ctx = arco_mundo.context(repo)
+        except arco_mundo.ArcWorldError as exc:
+            raise BoundaryError(str(exc)) from exc
+        sources.extend(arc_ctx["fontes_lidas"])
+        _agenda_candidates(repo, arc_ctx, agenda, start, target, candidates)
+        _direction_candidates(repo, arc_ctx, agenda, world_state, start, target, candidates, sources)
+        _entry_candidates(repo, arc_ctx, world_state, start, target, candidates, sources)
         _light_candidates(repo, world_state, start, target, candidates, sources)
         _event_candidates(repo, agenda, start, target, candidates, sources)
 

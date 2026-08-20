@@ -1,9 +1,7 @@
 schema_orcamento_contexto_mundo_vivo: 1
 natureza: contrato_de_regressao
-objetivo: >-
-  Impedir que o Mundo Vivo cresça silenciosamente no contexto do modelo. Python
-  pode ler controles compactos; fragmentos narrativos só entram depois de seleção
-  dirigida.
+objetivo: Impedir que o Mundo Vivo cresça silenciosamente no contexto do modelo. Python pode ler controles compactos;
+  fragmentos narrativos só entram depois de seleção dirigida.
 limites:
   lookup_dirigido:
     max_fontes: 4
@@ -22,20 +20,49 @@ limites:
   turno_comum:
     max_alvos_escrita: 2
     max_escritas_canonicas: 0
+  traducao_operacional_agente:
+    max_fontes: 5
+    max_fragmentos_narrativos: 1
+    max_metodos_expostos: 4
+  descoberta_contextual:
+    max_candidatos_total: 4
+    max_presencas: 2
+    max_operacoes: 2
+    max_direcoes: 1
+    max_fragmentos_narrativos: 0
+    marco_aparicao_obrigatorio_para_antagonista: true
+  guardrail_arco_checkpoint:
+    max_fontes_controle: 4
+    max_fragmentos_narrativos: 0
+  marcos_aparicao:
+    max_fontes_gate: 6
+    max_fragmentos_narrativos: 0
+  direcao_destino_dirigida:
+    max_fontes: 7
+    max_fragmentos_narrativos: 1
+    executavel: false
+    avanco_exige_evidencia_literal: true
 arquivos_quentes:
-  - narrador/agentes/index.yaml
-  - narrador/agentes-leves/index.yaml
-  - narrador/agentes-leves/estado.yaml
-  - narrador/entradas/index.yaml
-  - narrador/entradas/estado.yaml
-  - narrador/direcoes/index.yaml
-  - narrador/direcoes/estado.yaml
-  - narrador/relogios/index.yaml
-  - narrador/relogios/vinculos.yaml
-  - narrador/eventos/index.yaml
-  - narrador/eventos/estado.yaml
-  - narrador/eventos/interacoes.yaml
-  - narrador/rastros/index.yaml
-  - narrador/mundo/agenda.yaml
-  - narrador/mundo/estado.yaml
-  - narrador/mundo/ciclo-npcs.yaml
+- narrador/agentes/index.yaml
+- narrador/agentes-leves/index.yaml
+- narrador/agentes-leves/estado.yaml
+- narrador/entradas/index.yaml
+- narrador/entradas/estado.yaml
+- narrador/direcoes/index.yaml
+- narrador/direcoes/estado.yaml
+- narrador/relogios/index.yaml
+- narrador/relogios/vinculos.yaml
+- narrador/eventos/index.yaml
+- narrador/eventos/estado.yaml
+- narrador/eventos/interacoes.yaml
+- narrador/rastros/index.yaml
+- narrador/mundo/agenda.yaml
+- narrador/mundo/estado.yaml
+- narrador/mundo/ciclo-npcs.yaml
+- narrador/mundo/contextos-cena.yaml
+- narrador/arcos/index.yaml
+- narrador/arcos/estado.yaml
+- narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml
+- narrador/arcos/controle-mundo.yaml
+- narrador/arcos/marcos-aparicao.yaml
+- narrador/arcos/estado-marcos-aparicao.yaml

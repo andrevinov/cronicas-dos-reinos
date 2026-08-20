@@ -1,0 +1,267 @@
+schema_contextos_cena: 3
+natureza: roteador_reservado
+descricao: Índice reverso mínimo para perguntar quais peças merecem avaliação quando uma nova cena já possui propriedades
+  contextuais concretas. Pode apontar presença de agente, entrada orgânica de aliado, linha operacional do arco
+  ou direção canônica. Candidato nunca é presença, entrada, ação, avanço de direção ou fato canônico.
+orcamento:
+  max_tags_por_cena: 8
+  max_presencas: 2
+  max_operacoes: 2
+  max_direcoes: 1
+  max_candidatos_total: 4
+  ordenacao: coincidencias_prioridade_tipo_id
+  max_entradas: 1
+regras:
+  scan_semantico: proibido
+  abrir_fragmento_antes_da_selecao: proibido
+  candidato_nao_e_fato: true
+  presenca_antagonista_exige_marco_aparicao: true
+  marco_elegivel_nao_e_aparicao: true
+  operacao_nao_escolhe_executor: true
+  direcao_nao_avanca_automaticamente: true
+  entrada_aliado_exige_arco_ordem_janela_nivel: true
+  entrada_elegivel_nao_e_aparicao: true
+candidatos:
+  presenca_kajiwara_shizune:
+    tipo: presenca
+    alvo: kajiwara_shizune
+    grupo_arco: antagonistas
+    prioridade: 100
+    min_coincidencias: 2
+    tags:
+    - documentos
+    - escrituracao
+    - registros
+    - escritorio
+    - trabalho_administrativo
+    - administracao
+    - identidade
+    - burocracia
+    - guildas
+    - alfandega
+    - provas
+  entrada_shen_meihua:
+    tipo: entrada
+    alvo: shen_meihua
+    prioridade: 98
+    min_coincidencias: 1
+    tags:
+    - pressao_shizune
+    - ferimento_grave
+    - anomalia_ponte
+    - ordem_falsa_oriental
+    - surra_grave
+    - quase_morte
+    - derrota_cho
+    - derrota_pan_chu
+    - ferimento_pos_duelo
+  entrada_tsukishiro_joen:
+    tipo: entrada
+    alvo: tsukishiro_joen
+    prioridade: 88
+    min_coincidencias: 1
+    tags:
+    - derrota_grave
+    - limite_getsuei_ryu
+    - meihua_rastro_mestre
+    - surra_grave
+    - quase_morte
+    - derrota_cho
+    - derrota_pan_chu
+    - salvamento_marcial
+  operacao_impedir_consolidacao_de_provas:
+    tipo: operacao
+    alvo: impedir_consolidacao_de_provas
+    prioridade: 90
+    min_coincidencias: 2
+    tags:
+    - provas
+    - documentos
+    - registros
+    - cadeia_custodia
+    - testemunhas
+    - instituicao
+    - burocracia
+  operacao_mapear_rede_de_apoio_de_ren:
+    tipo: operacao
+    alvo: mapear_rede_de_apoio_de_ren
+    prioridade: 70
+    min_coincidencias: 2
+    tags:
+    - aliados
+    - testemunhas
+    - registros
+    - night_watch
+    - tyr
+    - contatos
+    - protecao
+  operacao_proteger_cadeia_logistica:
+    tipo: operacao
+    alvo: proteger_cadeia_logistica
+    prioridade: 80
+    min_coincidencias: 2
+    tags:
+    - carga
+    - armazem
+    - porto
+    - transporte
+    - rota
+    - contrabando
+    - logistica
+  operacao_preservar_monopolio_da_ponte:
+    tipo: operacao
+    alvo: preservar_monopolio_da_ponte
+    prioridade: 95
+    min_coincidencias: 2
+    tags:
+    - kozakura
+    - anomalia
+    - carga_oriental
+    - manifesto
+    - pessoas_sem_porto
+    - ponte
+    - rota_impossivel
+    - contabilidade
+  direcao_ponte_de_kozakura:
+    tipo: direcao
+    alvo: ponte_de_kozakura
+    prioridade: 85
+    min_coincidencias: 2
+    tags:
+    - kozakura
+    - carga_oriental
+    - manifesto
+    - registros
+    - contabilidade
+    - pessoas_sem_porto
+    - anomalia
+    - rota_impossivel
+    - documentos
+  presenca_sawagejo_cho:
+    tipo: presenca
+    alvo: sawagejo_cho
+    grupo_arco: antagonistas
+    prioridade: 96
+    min_coincidencias: 2
+    tags:
+    - kage
+    - circo
+    - armas_exoticas
+    - armeiro
+    - mercado_oriental
+    - duelo
+    - getsuei_ryu
+    - desafio_marcial
+  presenca_pan_chu:
+    tipo: presenca
+    alvo: pan_chu
+    grupo_arco: antagonistas
+    prioridade: 94
+    min_coincidencias: 2
+    tags:
+    - porto
+    - navio_oriental
+    - golden_lily
+    - carga_oriental
+    - contrabando
+    - rota_maritima
+    - doca
+    - red_sail
+  operacao_expandir_presenca_de_masao:
+    tipo: operacao
+    alvo: expandir_presenca_de_masao
+    prioridade: 82
+    min_coincidencias: 2
+    tags:
+    - estrangeiros
+    - armas
+    - drogas
+    - milicia
+    - porto
+    - ponte
+    - imoveis
+    - contrabando
+  operacao_ocupar_espaco_urbano:
+    tipo: operacao
+    alvo: ocupar_espaco_urbano
+    prioridade: 76
+    min_coincidencias: 2
+    tags:
+    - imoveis
+    - despejo
+    - moradores
+    - bairro
+    - escritura
+    - propriedade
+    - ameaca
+    - ocupacao
+  operacao_desgastar_autoridade:
+    tipo: operacao
+    alvo: desgastar_autoridade_de_ravens_bluff
+    prioridade: 84
+    min_coincidencias: 2
+    tags:
+    - night_watch
+    - tyr
+    - autoridade
+    - crime
+    - patrulha
+    - nobres
+    - porto
+    - ordem_publica
+  operacao_pressao_vinculos:
+    tipo: operacao
+    alvo: pressionar_ren_por_vinculos
+    prioridade: 92
+    min_coincidencias: 2
+    tags:
+    - nera
+    - tavin
+    - aliado_proximo
+    - familia
+    - vinculo_conhecido
+    - refem
+    - ameaca
+    - chantagem
+  operacao_pressao_marcial:
+    tipo: operacao
+    alvo: pressionar_identidade_marcial_de_ren
+    prioridade: 89
+    min_coincidencias: 2
+    tags:
+    - kage
+    - getsuei_ryu
+    - duelo
+    - armas
+    - circo
+    - treino
+    - dojo
+    - desafio_marcial
+  operacao_cobertura_maritima:
+    tipo: operacao
+    alvo: sustentar_cobertura_maritima
+    prioridade: 83
+    min_coincidencias: 2
+    tags:
+    - porto
+    - manifesto
+    - navio_oriental
+    - golden_lily
+    - carga_oriental
+    - alfandega
+    - contrabando
+    - rota_maritima
+  direcao_golden_lily:
+    tipo: direcao
+    alvo: golden_lily_em_ravens_bluff
+    prioridade: 91
+    min_coincidencias: 2
+    tags:
+    - porto
+    - navio_oriental
+    - golden_lily
+    - carga_oriental
+    - rota_maritima
+    - doca
+    - comercio_oriental
+    - contrabando
