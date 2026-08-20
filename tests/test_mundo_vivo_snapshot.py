@@ -68,21 +68,21 @@ class MundoVivoSnapshotRealTest(unittest.TestCase):
         self.assertEqual(origin["tempo"], "10 Eleasis, 1372 DR 17:42")
         self.assertEqual(origin["nivel_ren"], 6)
 
-        # Primeiro amanhecer após o estado real congelado: Shen entra em janela,
-        # três instituições/facções vencem na agenda e o baralho tira rotina.
+        # Primeiro amanhecer após o estado real congelado: a cadência de Shen abre
+        # uma janela contextual sem criar pendência bloqueante; três
+        # instituições/facções vencem na agenda e o baralho tira rotina.
         self._advance_time("11 Eleasis, 1372 DR", "06:05")
         first = checkpoint.sync_world(self.repo)
         self.assertTrue(first["configurado"])
-        self.assertEqual(len(first["novas_pendencias"]), 4)
+        self.assertEqual(len(first["novas_pendencias"]), 3)
 
         pending = self._pending()
-        self.assertEqual(len(pending), 4)
+        self.assertEqual(len(pending), 3)
         self.assertEqual(
             {item["agente"] for item in self._of_type(pending, "reavaliar_agente")},
             {"red_sail", "night_watch", "casa_de_tyr"},
         )
-        entries = self._of_type(pending, "avaliar_entrada")
-        self.assertEqual([item["entrada"] for item in entries], ["shen_meihua"])
+        self.assertEqual(self._of_type(pending, "avaliar_entrada"), [])
         self.assertEqual(self._of_type(pending, "avaliar_direcao"), [])
         self.assertEqual(self._of_type(pending, "evento_mundial"), [])
 
@@ -94,9 +94,13 @@ class MundoVivoSnapshotRealTest(unittest.TestCase):
         self.assertEqual(event_state["historico_recente"][0]["resultado"], "rotina")
 
         entry_state = self._read_yaml("narrador/entradas/estado.yaml")
-        self.assertEqual(
-            entry_state["candidatos"]["shen_meihua"]["proxima_avaliacao"],
-            {"data": "14 Eleasis, 1372 DR", "hora": "06:00"},
+        shen = entry_state["candidatos"]["shen_meihua"]
+        self.assertIsNone(shen["proxima_avaliacao"])
+        self.assertTrue(
+            any(
+                isinstance(item, dict) and item.get("acao") == "abrir_janela_contextual"
+                for item in shen["historico_recente"]
+            )
         )
         self.assertEqual(
             mundo.load_world_state(self.repo)["processado_ate"],
