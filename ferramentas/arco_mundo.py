@@ -13,6 +13,10 @@ filtra peças que outras camadas já pretendiam reconsiderar, respondendo antes:
 O objetivo é impedir que scheduler, evento ou fronteira temporal contornem o
 Contrato de Arco. Peças não controladas por arco (Night Watch, Red Sail, Casa de
 Tyr, agentes leves etc.) permanecem livres e não pagam semântica de habilitação.
+
+Compatibilidade: ferramentas e fixtures que não configuram a camada de arcos
+continuam funcionando sem filtro. Se qualquer arquivo do contrato existir, porém,
+a configuração deve estar completa; configuração parcial falha de forma fechada.
 """
 from __future__ import annotations
 
@@ -56,6 +60,26 @@ def _text(value: Any, label: str) -> str:
     return value.strip()
 
 
+def configured(repo: Path) -> bool:
+    """Retorna False só quando a camada inteira está ausente.
+
+    Um fixture isolado pode não conhecer Contrato de Arco. Já um repositório que
+    começou a configurá-lo deve possuir índice, estado e controle do Mundo Vivo;
+    ausência parcial é erro de integração, não motivo para desligar o guardrail.
+    """
+    required = (arcos.INDEX, arcos.STATE, CONTROL)
+    present = [(repo / path).is_file() for path in required]
+    if not any(present):
+        return False
+    if not all(present):
+        missing = [path.as_posix() for path, exists in zip(required, present) if not exists]
+        raise ArcWorldError(
+            "camada de Contrato de Arco parcialmente configurada; ausentes: "
+            + ", ".join(missing)
+        )
+    return True
+
+
 def load_control(repo: Path) -> dict[str, Any]:
     data = _map(_load(repo / CONTROL), CONTROL.as_posix())
     if data.get("schema_controle_arco_mundo") != 1:
@@ -83,12 +107,24 @@ def load_control(repo: Path) -> dict[str, Any]:
 
 
 def context(repo: Path) -> dict[str, Any]:
+    if not configured(repo):
+        return {
+            "configurado": False,
+            "arco": None,
+            "controle": {
+                "schema_controle_arco_mundo": 1,
+                "natureza": "roteador_reservado",
+                "agentes_estrategicos": {},
+            },
+            "fontes_lidas": [],
+        }
     try:
         info = arcos.current(repo)
     except arcos.ArcContractError as exc:
         raise ArcWorldError(str(exc)) from exc
     control = load_control(repo)
     return {
+        "configurado": True,
         "arco": info,
         "controle": control,
         "fontes_lidas": list(dict.fromkeys([*info["fontes_lidas"], CONTROL.as_posix()])),
@@ -133,6 +169,17 @@ def strategic_agent_gate(
         raise ArcWorldError(f"finalidade inválida: {purpose}")
     agent_id = _text(agent_id, "agent_id")
     ctx = ctx or context(repo)
+    if not ctx.get("configurado", True):
+        return {
+            "permitido": True,
+            "agente": agent_id,
+            "finalidade": purpose,
+            "controlado_pelo_arco": False,
+            "motivo": "contrato_de_arco_nao_configurado",
+            "linhas_operacionais": [],
+            "arco_id": None,
+            "fontes_lidas": [],
+        }
     info = ctx["arco"]
     controlled = ctx["controle"]["agentes_estrategicos"].get(agent_id)
     if not isinstance(controlled, dict):
@@ -243,6 +290,14 @@ def strategic_agent_gate(
 def direction_gate(repo: Path, direction_id: str, *, ctx: dict[str, Any] | None = None) -> dict[str, Any]:
     direction_id = _text(direction_id, "direction_id")
     ctx = ctx or context(repo)
+    if not ctx.get("configurado", True):
+        return {
+            "permitido": True,
+            "direcao": direction_id,
+            "motivo": "contrato_de_arco_nao_configurado",
+            "arco_id": None,
+            "fontes_lidas": [],
+        }
     info = ctx["arco"]
     allowed = direction_id in set(info["habilitacoes"]["direcoes"])
     return {
@@ -257,6 +312,14 @@ def direction_gate(repo: Path, direction_id: str, *, ctx: dict[str, Any] | None 
 def entry_gate(repo: Path, entry_id: str, *, ctx: dict[str, Any] | None = None) -> dict[str, Any]:
     entry_id = _text(entry_id, "entry_id")
     ctx = ctx or context(repo)
+    if not ctx.get("configurado", True):
+        return {
+            "permitido": True,
+            "entrada": entry_id,
+            "motivo": "contrato_de_arco_nao_configurado",
+            "arco_id": None,
+            "fontes_lidas": [],
+        }
     info = ctx["arco"]
     allowed = entry_id in set(info["habilitacoes"]["aliados"])
     return {
@@ -375,6 +438,14 @@ def prune_pending(
 
 
 def validate(repo: Path) -> dict[str, Any]:
+    if not configured(repo):
+        return {
+            "ok": True,
+            "configurado": False,
+            "arco_id": None,
+            "agentes_controlados": 0,
+            "fontes_lidas": [],
+        }
     control = load_control(repo)
     try:
         info = arcos.current(repo)
@@ -397,6 +468,7 @@ def validate(repo: Path) -> dict[str, Any]:
         )
     return {
         "ok": True,
+        "configurado": True,
         "arco_id": info["id"],
         "agentes_controlados": len(control["agentes_estrategicos"]),
         "fontes_lidas": list(dict.fromkeys([*info["fontes_lidas"], CONTROL.as_posix(), STRATEGIC_INDEX.as_posix(), marcos_aparicao.INDEX.as_posix(), marcos_aparicao.STATE.as_posix()])),
