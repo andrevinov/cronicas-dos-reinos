@@ -157,8 +157,12 @@ class LocalMicroeventDeckTest(unittest.TestCase):
         cycle_before = state_before["locais"][local_id]["ocorrencia"]["ciclo"]
 
         profile = dict(self.ecology["perfis"][local_id])
-        profile["tags"] = ["documentos"]
-        profile["canais_microevento"] = ["documentos"]
+        profile["tags"] = ["documentos", "carga"]
+        profile["canais_microevento"] = ["documentos", "carga"]
+        self.assertGreaterEqual(
+            len(micro.eligible_cards(self.index, profile)),
+            micro.MIN_ELIGIBLE_PER_LOCAL,
+        )
         planned = micro.plan(
             self.repo,
             local_id=local_id,
