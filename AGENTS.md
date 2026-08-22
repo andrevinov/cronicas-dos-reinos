@@ -61,7 +61,7 @@ Leia no máximo o documento especializado necessário:
 - retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`;
-- **entrada em local, exploração, encontro com NPC, recompensas e side quests → `docs/agente/integracao-reativa.md`;**
+- **entrada em local, exploração, encontro com NPC, recompensas e side quests → `docs/agente/integracao-reativa-v2.md`;**
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa/edição/Git → `docs/agente/pesquisa-e-manutencao.md`;
@@ -127,7 +127,7 @@ Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; p
 - Agente novo passa antes pela classificação NPC v2.
 - Checkpoint só invalida quest giver morto; não sorteia side quests nem gera loot.
 
-Detalhes: `docs/agente/integracao-reativa.md`.
+Detalhes: `docs/agente/integracao-reativa-v2.md`.
 
 ## 7. Checkpoint de cena e sessão
 
