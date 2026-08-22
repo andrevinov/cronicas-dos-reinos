@@ -1,12 +1,15 @@
-schema_agentes_leves: 1
+schema_agentes_leves: 2
 natureza: reservado
 descricao: >-
   NPCs recorrentes cuja rotina é o padrão. A camada existe para permitir ações
   ocasionais fora de cena sem abrir dezenas de fragmentos a cada checkpoint.
+  Schema 2 declara fontes causais compactas para reutilizar no-op explícito sem
+  reabrir perfil enquanto sua base canônica permanecer byte a byte igual.
 orcamento:
   max_novas_por_checkpoint: 1
   max_pendencias_abertas: 2
   ordenacao: mais_atrasado_prioridade_id
+  max_checks_cache_negativo_por_checkpoint: 1
 agentes:
   kethra_dunn:
     nome: Kethra Dunn
@@ -18,6 +21,9 @@ agentes:
       data: '11 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/kethra_dunn.yaml
+    perfil_blob_git: 1f8137310ac478aa444659662d5328fd0e4d34e9
+    fontes_causais:
+    - estado/relacoes/kethra_dunn.yaml
   bram_vask:
     nome: Bram Vask
     perfil_operacional: recorrente_leve
@@ -28,6 +34,9 @@ agentes:
       data: '12 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/bram_vask.yaml
+    perfil_blob_git: 49091c850f930220e2b3fb20984067e8d30f581c
+    fontes_causais:
+    - estado/relacoes/bram_vask.yaml
   luath:
     nome: Luath
     perfil_operacional: recorrente_leve
@@ -38,6 +47,9 @@ agentes:
       data: '13 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/luath.yaml
+    perfil_blob_git: 05a11c872ae79ded873eaaefeed50a6265a53f07
+    fontes_causais:
+    - estado/relacoes/luath.yaml
   silva_elkwood:
     nome: Silva Elkwood
     perfil_operacional: recorrente_leve
@@ -48,6 +60,9 @@ agentes:
       data: '14 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/silva_elkwood.yaml
+    perfil_blob_git: 3dda2685fa00052d7048db6f5e9f97052bdd1247
+    fontes_causais:
+    - estado/relacoes/silva_elkwood.yaml
   maerra_thandrel:
     nome: Irmã Maerra Thandrel
     perfil_operacional: recorrente_leve
@@ -58,6 +73,9 @@ agentes:
       data: '15 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/maerra_thandrel.yaml
+    perfil_blob_git: f63401ace71e28e31db90eaa3af292361de7ce0e
+    fontes_causais:
+    - estado/relacoes/maerra_thandrel.yaml
   halessa_vorn:
     nome: Irmã Halessa Vorn
     perfil_operacional: recorrente_leve
@@ -68,6 +86,9 @@ agentes:
       data: '16 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/halessa_vorn.yaml
+    perfil_blob_git: 570e3a671efbeee80463694acf9b2ae27fa29e51
+    fontes_causais:
+    - estado/relacoes/halessa_vorn.yaml
   jack_mooney:
     nome: Jack Mooney
     perfil_operacional: recorrente_leve
@@ -78,6 +99,9 @@ agentes:
       data: '17 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/jack_mooney.yaml
+    perfil_blob_git: 387d075e0b0cf51689a1b13aa1d9e61606868671
+    fontes_causais:
+    - estado/relacoes/jack_mooney.yaml
   pell:
     nome: Pell
     perfil_operacional: recorrente_leve
@@ -88,3 +112,6 @@ agentes:
       data: '18 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/pell.yaml
+    perfil_blob_git: 26a93b8fa3aee097eb5c4ce2c35dcc1ccf4d462f
+    fontes_causais:
+    - estado/relacoes/pell.yaml
