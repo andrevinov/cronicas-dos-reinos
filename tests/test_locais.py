@@ -78,6 +78,52 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def _write_ecology(self, local_ids: list[str]) -> None:
+        path = self.repo / "cenario/locais/ecologia.yaml"
+        profile = {
+            "familia": "fixture",
+            "acesso": "controlado",
+            "ritmo_baseline": {
+                "amanhecer": 1,
+                "dia": 2,
+                "anoitecer": 1,
+                "noite": 0,
+            },
+            "tags": ["trabalho"],
+            "atores_comuns": ["trabalhador"],
+            "canais_microevento": ["rotina"],
+        }
+        path.write_text(
+            yaml.safe_dump(
+                {
+                    "schema_ecologia_local": 1,
+                    "natureza": "roteador_operacional_nao_canonico",
+                    "estatuto": "restricao_de_plausibilidade",
+                    "escala_ritmo": {
+                        0: "quase_inativo",
+                        1: "baixo",
+                        2: "medio",
+                        3: "alto",
+                    },
+                    "periodos": ["amanhecer", "dia", "anoitecer", "noite"],
+                    "regras": {
+                        "exige_local_canonico": True,
+                        "cobertura_total_do_registro": True,
+                        "atores_sao_papeis_nao_npcs": True,
+                        "perfil_nao_estabelece_presenca": True,
+                        "perfil_nao_cria_evento": True,
+                        "perfil_nao_cria_conhecimento": True,
+                        "microevento_futuro_deve_respeitar_tags_e_canais": True,
+                        "estado_canonico_prevalece": True,
+                    },
+                    "perfis": {local_id: profile for local_id in local_ids},
+                },
+                allow_unicode=True,
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+
     def test_alias_ambiguo_falha_explicitamente(self):
         self._write_registry(
             {
@@ -109,6 +155,7 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
                 }
             }
         )
+        self._write_ecology(["setor_a"])
         contextual = {
             "tags": [],
             "arco": None,
@@ -158,9 +205,14 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
         self.assertEqual(result["local"]["local_id"], "setor_a")
         self.assertEqual(result["local"]["local_ref_recebido"], "setor_antigo")
         self.assertEqual(result["local"]["resolucao_local"], "alias_canonico")
+        self.assertEqual(result["local"]["ecologia"]["familia"], "fixture")
         self.assertEqual(
             result["fontes_lidas"],
-            ["cenario/locais/index.yaml", "narrador/recompensas/index.yaml"],
+            [
+                "cenario/locais/index.yaml",
+                "cenario/locais/ecologia.yaml",
+                "narrador/recompensas/index.yaml",
+            ],
         )
 
     def test_local_desconhecido_falha_antes_de_mutar(self):
