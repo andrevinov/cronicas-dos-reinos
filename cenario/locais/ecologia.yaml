@@ -1,0 +1,105 @@
+schema_ecologia_local: 1
+natureza: roteador_operacional_nao_canonico
+estatuto: restricao_de_plausibilidade
+observacao: >-
+  Estes perfis descrevem a ecologia cotidiana plausível de cada local canônico.
+  São filtros operacionais derivados, não fatos novos: não estabelecem presença,
+  evento, segredo, horário real nem comportamento de NPC nomeado. Estado canônico,
+  cena atual, arco e eventos pendentes sempre prevalecem.
+escala_ritmo:
+  0: quase_inativo
+  1: baixo
+  2: medio
+  3: alto
+periodos:
+- amanhecer
+- dia
+- anoitecer
+- noite
+regras:
+  exige_local_canonico: true
+  cobertura_total_do_registro: true
+  atores_sao_papeis_nao_npcs: true
+  perfil_nao_estabelece_presenca: true
+  perfil_nao_cria_evento: true
+  perfil_nao_cria_conhecimento: true
+  microevento_futuro_deve_respeitar_tags_e_canais: true
+  estado_canonico_prevalece: true
+perfis:
+  loja_bram_vask:
+    familia: comercio_varejista
+    acesso: semipublico
+    ritmo_baseline: {amanhecer: 1, dia: 3, anoitecer: 2, noite: 0}
+    tags: [comercio, estoque, atendimento, entrega, rua_urbana]
+    atores_comuns: [comerciante, ajudante, cliente, fornecedor, carregador]
+    canais_microevento: [rotina, atendimento, entrega, abastecimento, manutencao]
+  casa_vizinha_loja_bram_vask:
+    familia: residencia_urbana
+    acesso: privado
+    ritmo_baseline: {amanhecer: 1, dia: 2, anoitecer: 2, noite: 1}
+    tags: [residencia, vizinhanca, rua_urbana]
+    atores_comuns: [morador, visitante, vizinho, entregador]
+    canais_microevento: [rotina, vizinhanca, entrega, manutencao]
+  jack_mooney_sons_circus:
+    familia: acampamento_espetaculo
+    acesso: controlado
+    ritmo_baseline: {amanhecer: 1, dia: 2, anoitecer: 3, noite: 2}
+    tags: [espetaculo, acampamento, trabalho, publico, animais, logistica]
+    atores_comuns: [artista, trabalhador, cuidador_animais, fornecedor, visitante, publico]
+    canais_microevento: [rotina, ensaio, espetaculo, entrega, animal, manutencao]
+  casa_salgueiro_seco:
+    familia: propriedade_privada
+    acesso: controlado
+    ritmo_baseline: {amanhecer: 2, dia: 3, anoitecer: 2, noite: 1}
+    tags: [residencia, jardim, servico, entrega, propriedade]
+    atores_comuns: [morador, jardineiro, empregado, entregador, visitante_autorizado]
+    canais_microevento: [rotina, jardim, trabalho, entrega, manutencao]
+  quintal_vizinho_casa_salgueiro_seco:
+    familia: residencia_exterior
+    acesso: privado
+    ritmo_baseline: {amanhecer: 1, dia: 2, anoitecer: 2, noite: 1}
+    tags: [residencia, quintal, vizinhanca, exterior]
+    atores_comuns: [morador, empregado, vizinho]
+    canais_microevento: [rotina, vizinhanca, manutencao]
+  narwhal_manor:
+    familia: mansao_privada
+    acesso: controlado
+    ritmo_baseline: {amanhecer: 1, dia: 3, anoitecer: 2, noite: 1}
+    tags: [residencia, mansao, servico, estabulo, seguranca, entrega]
+    atores_comuns: [morador, criado, trabalhador_estabulo, guarda, entregador, visitante_autorizado]
+    canais_microevento: [rotina, trabalho, estabulo, seguranca, entrega, manutencao]
+  casa_de_tyr:
+    familia: templo_institucional
+    acesso: semipublico
+    ritmo_baseline: {amanhecer: 2, dia: 3, anoitecer: 2, noite: 1}
+    tags: [templo, institucional, culto, atendimento, seguranca, mensageria]
+    atores_comuns: [clerigo, guarda, peticionario, mensageiro, visitante]
+    canais_microevento: [culto, atendimento, mensageria, seguranca, rotina]
+  antiga_casa_copias_portadas_azuis:
+    familia: imovel_baixa_atividade
+    acesso: privado
+    ritmo_baseline: {amanhecer: 0, dia: 1, anoitecer: 1, noite: 0}
+    tags: [imovel_baixa_atividade, oficina_antiga, rua_urbana]
+    atores_comuns: [passante, vizinho, prestador_ocasional]
+    canais_microevento: [vizinhanca, manutencao, transito]
+  casa_iria_doss:
+    familia: residencia_cuidado
+    acesso: privado
+    ritmo_baseline: {amanhecer: 1, dia: 2, anoitecer: 2, noite: 1}
+    tags: [residencia, cuidado, atendimento, vizinhanca]
+    atores_comuns: [morador, paciente, acompanhante, vizinho]
+    canais_microevento: [cuidado, atendimento, rotina, vizinhanca]
+  lavadouro_dos_tres_tanques:
+    familia: servico_comunitario
+    acesso: semipublico
+    ritmo_baseline: {amanhecer: 2, dia: 3, anoitecer: 2, noite: 0}
+    tags: [servico, agua, lavagem, comunitario, vizinhanca]
+    atores_comuns: [trabalhador, cliente, carregador_agua, vizinho]
+    canais_microevento: [rotina, atendimento, abastecimento, vizinhanca, manutencao]
+  galeria_dos_escribas:
+    familia: entreposto_documental
+    acesso: controlado
+    ritmo_baseline: {amanhecer: 2, dia: 3, anoitecer: 2, noite: 0}
+    tags: [trabalho, entrega, documentos, carga, comercio, acesso_controlado]
+    atores_comuns: [trabalhador, conferente, carregador, entregador, supervisor, fornecedor]
+    canais_microevento: [trabalho, entrega, documentos, carga, abastecimento, manutencao]
