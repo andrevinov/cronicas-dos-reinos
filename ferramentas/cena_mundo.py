@@ -22,6 +22,7 @@ import yaml
 
 import contexto_cena
 import interacoes_mundo
+import locais
 import mundo
 import oportunidades
 import recompensas
@@ -50,6 +51,7 @@ def _scene_id(value: Any) -> str:
 
 
 def _local_spec(
+    repo: Path,
     place: str | None,
     action: str | None,
     tier: int | None,
@@ -63,8 +65,8 @@ def _local_spec(
             "gatilho local exige --local, --acao, --tier e --periculosidade juntos"
         )
     try:
-        local_id = recompensas.local_id(place)
-    except recompensas.RewardMapError as exc:
+        resolution = locais.resolve(repo, place)
+    except locais.LocationError as exc:
         raise SceneGateError(str(exc)) from exc
     if action not in interacoes_mundo.VALID_LOCAL_ACTIONS:
         raise SceneGateError("acao local deve ser entrar ou explorar")
@@ -75,10 +77,13 @@ def _local_spec(
             "periculosidade deve ser uma de: " + ", ".join(sorted(recompensas.VALID_DANGER))
         )
     return {
-        "local_id": local_id,
+        "local_id": resolution["local_id"],
+        "local_ref_recebido": resolution["recebido"],
+        "resolucao_local": resolution["resolucao"],
         "acao": action,
         "tier": tier,
         "periculosidade": danger,
+        "fontes_lidas": resolution["fontes_lidas"],
     }
 
 
@@ -175,7 +180,7 @@ def open_scene(
         normalized_context_tags = contexto_cena.normalize_tags(raw_context_tags)
     except contexto_cena.ContextSceneError as exc:
         raise SceneGateError(str(exc)) from exc
-    local_spec = _local_spec(place, action, tier, danger)
+    local_spec = _local_spec(repo, place, action, tier, danger)
     if local_spec is None and not npc_refs and not normalized_context_tags:
         raise SceneGateError(
             "abertura de cena exige ao menos um gatilho local, NPC ou tag contextual"
@@ -207,6 +212,7 @@ def open_scene(
 
     local_result: dict[str, Any] | None = None
     sources = [
+        *(local_spec.get("fontes_lidas") if local_spec is not None else []),
         *resolution_sources,
         *(contextual.get("fontes_lidas") or []),
         *time_sources,
@@ -222,6 +228,8 @@ def open_scene(
             )
         except interacoes_mundo.IntegrationError as exc:
             raise SceneGateError(str(exc)) from exc
+        local_result["local_ref_recebido"] = local_spec["local_ref_recebido"]
+        local_result["resolucao_local"] = local_spec["resolucao_local"]
         sources.extend(local_result.get("fontes_lidas") or [])
 
     encounters: list[dict[str, Any]] = []
@@ -324,6 +332,7 @@ def main(argv: list[str] | None = None) -> int:
         SceneGateError,
         contexto_cena.ContextSceneError,
         interacoes_mundo.IntegrationError,
+        locais.LocationError,
         oportunidades.OpportunityError,
         recompensas.RewardMapError,
         mundo.WorldEngineError,

@@ -42,6 +42,10 @@ limites:
   resolucao_npc_alias_ou_erro:
     max_fontes: 2
     max_fragmentos_narrativos: 0
+  resolucao_local:
+    max_fontes: 1
+    max_fragmentos_narrativos: 0
+    alias_antes_de_mutacao: true
   encontro_bloqueado:
     max_fontes: 3
     max_fragmentos_narrativos: 0
@@ -52,10 +56,10 @@ limites:
     max_fontes: 4
     max_fragmentos_narrativos: 1
   local_mapa_existente:
-    max_fontes: 2
+    max_fontes: 3
     max_fragmentos_narrativos: 0
   local_mapa_novo:
-    max_fontes: 4
+    max_fontes: 5
     max_fragmentos_narrativos: 0
   checkpoint_lifecycle:
     max_fragmentos_narrativos_expostos: 0
@@ -104,6 +108,7 @@ limites:
     metodo_proibido: true
     avanco_exige_fonte_e_evidencia_literal: true
 arquivos_quentes_novos:
+- cenario/locais/index.yaml
 - narrador/recompensas/index.yaml
 - narrador/oportunidades/index.yaml
 - narrador/oportunidades/estado.yaml
@@ -121,6 +126,10 @@ invariantes:
   sidequest_fora_de_encontro: 0
   max_fragmentos_por_decisao: 1
   gatilhos_reativos_porta_preferencial_unica: true
+  local_reativo_resolve_alias_antes_de_recompensa: true
+  alias_local_nao_cria_mapa_novo: true
+  local_persistido_exige_id_canonico: true
+  registro_local_nao_roda_no_turno_comum: true
   candidato_contextual_nao_e_canonico: true
   candidato_fora_do_arco_nao_e_exposto: true
   grupo_arco_explicito_em_cada_binding: true
