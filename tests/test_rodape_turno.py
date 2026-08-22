@@ -173,9 +173,14 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         raw_date = context["tempo"]["data"].split(",", 1)[0]
         day, month = raw_date.split(maxsplit=1)
         expected_clock = context["tempo"]["hora_aproximada"]
+        pv = context["recursos"]["pv"]
+        ki = context["recursos"]["ki"]
         self.assertTrue(footer.startswith("RODAPE_CANONICO — "))
         self.assertIn(f"{day} de {month} · {expected_clock} · ", footer)
-        self.assertIn("PV 45/45 · Ki 4/6", footer)
+        self.assertIn(
+            f"PV {pv['atuais']}/{pv['maximos']} · Ki {ki['atuais']}/{ki['maximos']}",
+            footer,
+        )
         effects = context.get("efeitos_temporarios") or {}
         expected_brooch = (
             "Broche do Semblante Humilde ativo"
