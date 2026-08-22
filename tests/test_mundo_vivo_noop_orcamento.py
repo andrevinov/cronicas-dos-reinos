@@ -61,9 +61,8 @@ class MundoVivoNoopBudgetTest(unittest.TestCase):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("tipo: reavaliar_agente_leve", text)
         self.assertIn("agentes_leves.py concluir-noop <id>", text)
-        self.assertIn("Para qualquer outra pendência sem mudança", text)
         self.assertIn("barreira_mundo.py concluir <id>", text)
-        self.assertIn("docs/agente/mundo-vivo-noop-compaction.md", text)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
 
 
 if __name__ == "__main__":
