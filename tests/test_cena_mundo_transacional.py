@@ -230,6 +230,7 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
         )
         registry_path = self.repo / "cenario/locais/index.yaml"
         registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
+        synthetic_ids = ("local_transacional", "local_descartado", "local_stale")
         registry["locais"]["local_transacional"] = {
             "nome": "Local Transacional",
             "aliases": ["local de teste transacional"],
@@ -244,6 +245,27 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
         }
         registry_path.write_text(
             yaml.safe_dump(registry, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
+
+        ecology_path = self.repo / "cenario/locais/ecologia.yaml"
+        ecology = yaml.safe_load(ecology_path.read_text(encoding="utf-8"))
+        for local_id in synthetic_ids:
+            ecology["perfis"][local_id] = {
+                "familia": "fixture_transacional",
+                "acesso": "controlado",
+                "ritmo_baseline": {
+                    "amanhecer": 1,
+                    "dia": 2,
+                    "anoitecer": 1,
+                    "noite": 0,
+                },
+                "tags": ["trabalho"],
+                "atores_comuns": ["trabalhador"],
+                "canais_microevento": ["rotina"],
+            }
+        ecology_path.write_text(
+            yaml.safe_dump(ecology, allow_unicode=True, sort_keys=False),
             encoding="utf-8",
         )
 
@@ -273,6 +295,7 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
             danger="baixa",
         )
         self.assertEqual(self._tree_digest(), before)
+        self.assertEqual(preview["local"]["ecologia"]["familia"], "fixture_transacional")
         self.assertFalse(preview["local"]["mapa_criado"])
         self.assertTrue(preview["local"]["mapa_seria_criado"])
         self.assertNotIn("local_transacional", self._reward_index()["mapas"])
@@ -347,10 +370,13 @@ class TransactionalSceneBudgetContractTest(unittest.TestCase):
         self.assertEqual(data["schema_cena_transacional"], 1)
         self.assertEqual(data["preparar"]["max_escritas_repo"], 0)
         self.assertTrue(data["preparar"]["idempotente"])
+        self.assertTrue(data["preparar"]["calcula_ecologia_local"])
         self.assertTrue(data["confirmar"]["exige_preparacao_id"])
         self.assertTrue(data["confirmar"]["revalida_fontes"])
         self.assertEqual(data["invariantes"]["arquivo_preparacao_persistido"], 0)
         self.assertEqual(data["invariantes"]["novo_scheduler"], 0)
+        self.assertTrue(data["invariantes"]["ecologia_local_e_fonte_do_fingerprint"])
+        self.assertTrue(data["invariantes"]["ecologia_local_nao_estabelece_fato"])
 
 
 if __name__ == "__main__":

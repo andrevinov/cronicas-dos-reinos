@@ -1,0 +1,34 @@
+schema_orcamento_ecologia_local: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Fornecer restrições de plausibilidade por local canônico sem gerar cena,
+  estabelecer presença, consultar tempo ou abrir fragmentos narrativos.
+limites:
+  max_perfis: 32
+  max_bytes_por_perfil: 2048
+  max_tags_por_perfil: 8
+  max_atores_comuns: 6
+  max_canais_microevento: 6
+  max_fontes_lookup_publico: 2
+  max_fontes_extras_em_cena_local: 1
+  max_fragmentos_narrativos: 0
+  max_leituras_tempo: 0
+  max_escritas: 0
+  max_schedulers_novos: 0
+invariantes:
+  cobertura_total_do_registro_local: true
+  alias_resolve_antes_da_ecologia: true
+  lookup_canonico_nao_reabre_registro: true
+  perfil_e_operacional_nao_canonico: true
+  perfil_nao_estabelece_presenca: true
+  ator_comum_e_papel_nao_npc_nomeado: true
+  perfil_nao_cria_evento: true
+  perfil_nao_cria_conhecimento: true
+  ritmo_e_baseline_relativa_nao_relogio: true
+  cena_local_nao_le_tempo_por_causa_da_ecologia: true
+  cena_sem_local_nao_le_ecologia: true
+  ecologia_entra_no_fingerprint_da_preparacao: true
+  mudanca_de_ecologia_invalida_preparacao_antiga: true
+  estado_canonico_e_eventos_pendentes_prevalecem: true
+  microeventos_da_task_12_devem_filtrar_por_tags_e_canais: true
+  nenhum_microevento_e_sorteado_nesta_task: true
