@@ -35,7 +35,7 @@ Runtime, handoffs, índices e consultas são projeções/roteadores, não cânon
 
 **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação; não comprima a experiência literária.
 
-Antes de ler de novo, veja se o contexto basta. Após cada consulta, **se for suficiente, pare**. A escada controla escalada; não é checklist. Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
+Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** A escada controla escalada; não é checklist. Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -107,7 +107,7 @@ Durante cada avanço comum:
 
 O rodapé é derivado, não cânone. Usa runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra só itens mágicos explicitamente registrados que estejam disponíveis ou ativos. Não abrir estado/ficha para conferi-lo.
 
-Telemetria é **pós-hoc**: `analisar-rollout.py` e `comparar-rollouts.py` não rodam durante avanço ao vivo.
+Telemetria: **medição é pós-hoc**; `analisar-rollout.py` e `comparar-rollouts.py` não rodam durante avanço ao vivo.
 
 Se faltar textura de NPC/local, preferir `contexto.py npc` / `contexto.py local`; não consultar a cada turno. `contexto.py retomada` não relê transcrição.
 
