@@ -1,44 +1,54 @@
-schema_estado_agentes_leves: 1
+schema_estado_agentes_leves: 2
 natureza: controle_reservado
-descricao: Próxima reavaliação dos NPCs leves; não é conhecimento de Ren.
+descricao: >-
+  Próxima reavaliação e cache negativo causal dos NPCs leves; não é conhecimento
+  de Ren. Cache começa nulo e só nasce de concluir-noop explícito.
 agentes:
   kethra_dunn:
     estado: ativo
     proxima_avaliacao:
       data: 17 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   bram_vask:
     estado: ativo
     proxima_avaliacao:
       data: 15 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   luath:
     estado: ativo
     proxima_avaliacao:
       data: 16 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   silva_elkwood:
     estado: ativo
     proxima_avaliacao:
       data: 14 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   maerra_thandrel:
     estado: ativo
     proxima_avaliacao:
       data: 15 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   halessa_vorn:
     estado: ativo
     proxima_avaliacao:
       data: 16 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   jack_mooney:
     estado: ativo
     proxima_avaliacao:
       data: 17 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null
   pell:
     estado: ativo
     proxima_avaliacao:
       data: 18 Eleasis, 1372 DR
       hora: 06:00
+    cache_negativo: null

@@ -1,0 +1,35 @@
+schema_orcamento_mundo_vivo_noop: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Reutilizar avaliações negativas explícitas de agentes leves quando sua base
+  causal permanece idêntica, sem esconder mudança canônica nem aumentar o hot path comum.
+limites:
+  max_checks_cache_negativo_por_checkpoint: 1
+  max_fontes_causais_por_agente: 2
+  max_bytes_por_fonte_causal: 32768
+  max_novas_pendencias_leves_por_checkpoint: 1
+  max_pendencias_leves_abertas: 2
+  max_escritas_cache_hit: 1
+  max_escritas_concluir_noop: 2
+  fragmentos_abertos_cache_hit: 0
+  fragmentos_abertos_para_assinatura: 0
+  leituras_causais_sem_cache: 0
+  schedulers_adicionados: 0
+invariantes:
+  cache_so_nasce_de_noop_explicito: true
+  cache_restrito_a_agentes_leves: true
+  cache_nao_e_fato_canonico: true
+  cache_nao_cria_acao: true
+  cache_nao_remove_pendencia_estrategica: true
+  cache_nao_afeta_direcao: true
+  cache_nao_afeta_evento_mundial: true
+  mudanca_de_fonte_causal_invalida_cache: true
+  mudanca_versionada_de_perfil_invalida_cache: true
+  fonte_causal_e_declarada_no_indice_compacto: true
+  fontes_causais_cobrem_exatamente_fontes_canonicas_do_perfil: true
+  cache_hit_avanca_so_proxima_avaliacao: true
+  historico_de_cache_e_compactado_em_contadores: true
+  cache_stale_falha_aberto_para_avaliacao: true
+  cache_ausente_preserva_comportamento_anterior: true
+  concluir_noop_e_idempotente: true
+  queda_entre_escritas_mantem_pendencia_bloqueante: true

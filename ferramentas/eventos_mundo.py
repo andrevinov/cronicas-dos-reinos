@@ -204,7 +204,7 @@ def _load_operational_indexes(repo: Path) -> tuple[dict[str, Any], dict[str, Any
         strategic.get("agentes"), dict
     ):
         raise WorldEventError("índice de agentes estratégicos inválido")
-    if light.get("schema_agentes_leves") != 1 or not isinstance(
+    if light.get("schema_agentes_leves") not in {1, 2} or not isinstance(
         light.get("agentes"), dict
     ):
         raise WorldEventError("índice de agentes leves inválido")
