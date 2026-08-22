@@ -1,0 +1,148 @@
+schema_microeventos_locais: 1
+natureza: reservado
+estatuto: moldes_nao_canonicos_ate_narracao
+semente: 1372DR:RavensBluff:microeventos-locais
+observacao: >-
+  Baralho reativo de pequena escala. Sorteio seleciona apenas uma obrigação de avaliar
+  textura local; não cria fato, presença nomeada, combate, missão, recompensa ou segredo.
+ocorrencia:
+  fichas:
+  - id: rotina_01
+    resultado: rotina
+  - id: rotina_02
+    resultado: rotina
+  - id: rotina_03
+    resultado: rotina
+  - id: microevento_01
+    resultado: microevento
+regras:
+  acionamento: abertura_ou_mudanca_material_de_cena_local
+  scheduler: proibido
+  um_sorteio_por_cena_e_local: true
+  exige_intersecao_de_canal_e_tag: true
+  carta_e_candidata_nao_fato: true
+  carta_incompativel_com_canone_pode_ser_descartada_sem_reroll: true
+  npc_nomeado_automatico: proibido
+  combate_automatico: proibido
+  quest_automatica: proibido
+  recompensa_automatica: proibido
+  segredo_automatico: proibido
+guardrails_globais:
+- Usar somente papéis anônimos compatíveis com a ecologia, salvo NPC já estabelecido por outra fonte.
+- Não transformar inconveniência cotidiana em combate, crime grave, pista secreta, missão ou recompensa automática.
+- Estado canônico, arco, cena aceita e pendências prevalecem; incompatibilidade consome a carta sem rerrolar outra.
+cartas:
+  entrega_atrasada:
+    nome: Entrega pequena chega fora do compasso
+    categoria: fluxo
+    canais: [entrega, carga, abastecimento]
+    tags: [entrega, comercio, carga, logistica, servico, propriedade, mansao, documentos]
+    premissa: Uma entrega ordinária chega um pouco antes ou depois do esperado e obriga pessoas do local a reorganizar o fluxo por alguns minutos.
+  entrega_domestica_breve:
+    nome: Entrega doméstica breve
+    categoria: fluxo
+    canais: [entrega, rotina]
+    tags: [residencia, vizinhanca, propriedade, mansao]
+    premissa: Um volume ou recado doméstico precisa ser recebido sem alterar de modo duradouro a rotina do lugar.
+  manutencao_pequena:
+    nome: Pequena manutenção pede atenção
+    categoria: manutencao
+    canais: [manutencao]
+    tags: [estoque, residencia, acampamento, jardim, quintal, mansao, templo, oficina_antiga]
+    premissa: Algo banal do espaço físico precisa de ajuste, limpeza ou reparo curto antes que a rotina siga normalmente.
+  ajuste_area_trabalho:
+    nome: Área de trabalho precisa ser reorganizada
+    categoria: manutencao
+    canais: [manutencao, trabalho]
+    tags: [servico, trabalho, agua, documentos, carga, comercio, comunitario]
+    premissa: Uma área de trabalho fica momentaneamente desconfortável ou desorganizada e exige uma correção simples de quem já está ali.
+  duvida_atendimento:
+    nome: Dúvida comum prende o atendimento
+    categoria: servico
+    canais: [atendimento]
+    tags: [atendimento, comercio, cuidado, servico, comunitario, institucional]
+    premissa: Uma dúvida ordinária toma alguns minutos de atenção e forma uma pequena espera ou interrupção no serviço normal.
+  interrupcao_vizinhanca:
+    nome: Vizinhanca interrompe por um instante
+    categoria: movimento
+    canais: [vizinhanca, transito]
+    tags: [vizinhanca, rua_urbana, residencia, quintal, comunitario]
+    premissa: Uma interação banal de vizinhança ou passagem desvia a atenção de quem está no entorno por um momento.
+  ensaio_repetido:
+    nome: Trecho de ensaio precisa ser repetido
+    categoria: trabalho
+    canais: [ensaio, espetaculo]
+    tags: [espetaculo, acampamento, publico, trabalho]
+    premissa: Um número, marcação ou preparação de espetáculo precisa ser repetido por um erro pequeno e visível.
+  animal_inquieto:
+    nome: Animal fica inquieto por alguns minutos
+    categoria: ambiente
+    canais: [animal, estabulo]
+    tags: [animais, estabulo, acampamento, mansao]
+    premissa: Um animal comum do local exige contenção, água ou reposicionamento sem perigo extraordinário.
+  jardim_exige_atencao:
+    nome: Jardim exige uma correção pequena
+    categoria: manutencao
+    canais: [jardim, trabalho, manutencao]
+    tags: [jardim, propriedade, residencia, servico]
+    premissa: Folhas, terra, água ou uma planta exigem um cuidado breve que desloca a rotina de quem trabalha no exterior.
+  mensagem_sem_destino:
+    nome: Mensagem procura o destinatário correto
+    categoria: fluxo
+    canais: [mensageria, entrega]
+    tags: [mensageria, institucional, templo, entrega, comercio, mansao, documentos]
+    premissa: Um mensageiro ou recado legítimo precisa ser encaminhado à pessoa ou setor correto antes de seguir adiante.
+  checagem_acesso:
+    nome: Checagem comum de acesso
+    categoria: controle
+    canais: [seguranca, rotina]
+    tags: [seguranca, acesso_controlado, mansao, institucional, propriedade]
+    premissa: Uma entrada, saída ou identidade rotineira recebe uma conferência breve sem elevar automaticamente o alerta do local.
+  documento_sem_destino_claro:
+    nome: Documento aguarda classificação
+    categoria: trabalho
+    canais: [documentos, trabalho]
+    tags: [documentos, carga, trabalho, institucional, comercio]
+    premissa: Um papel ou registro ordinário chega sem destino imediatamente óbvio e precisa ser separado para conferência normal.
+  carga_marca_confusa:
+    nome: Marca de carga causa pequena dúvida
+    categoria: trabalho
+    canais: [carga, trabalho, entrega]
+    tags: [carga, comercio, entrega, logistica, trabalho, documentos]
+    premissa: Uma marca, contagem ou indicação ambígua em carga comum exige conferência antes que o fluxo prossiga.
+  abastecimento_incompleto:
+    nome: Abastecimento chega incompleto
+    categoria: fluxo
+    canais: [abastecimento, entrega]
+    tags: [estoque, agua, comercio, servico, comunitario, carga, logistica]
+    premissa: Um insumo cotidiano chega em quantidade menor que a esperada e obriga uma adaptação pequena, sem criar escassez ampla.
+  cuidado_prioritario:
+    nome: Cuidado simples ganha prioridade
+    categoria: servico
+    canais: [cuidado, atendimento]
+    tags: [cuidado, atendimento, residencia]
+    premissa: Uma necessidade comum de cuidado precisa ser atendida antes de outra tarefa igualmente rotineira.
+  demanda_culto:
+    nome: Pequena demanda de culto ou orientação
+    categoria: servico
+    canais: [culto, atendimento]
+    tags: [culto, templo, institucional, atendimento]
+    premissa: Uma pessoa busca orientação, rito simples ou informação institucional sem urgência nem revelação extraordinária.
+  passagem_rua:
+    nome: Passagem breve chama atenção da rua
+    categoria: movimento
+    canais: [transito, vizinhanca]
+    tags: [rua_urbana, oficina_antiga, vizinhanca, exterior]
+    premissa: Uma carroça, trabalhador ou pequeno grupo precisa passar pelo entorno e muda o fluxo da rua por instantes.
+  rotina_servico_reordenada:
+    nome: Rotina de serviço muda de ordem
+    categoria: trabalho
+    canais: [rotina, trabalho, atendimento]
+    tags: [servico, trabalho, atendimento, comercio, comunitario, mansao, propriedade]
+    premissa: Duas tarefas comuns trocam de ordem por conveniência imediata, criando apenas uma pequena janela de movimento local.
+  publico_acumula_e_escoa:
+    nome: Público se acumula e logo se dispersa
+    categoria: fluxo
+    canais: [espetaculo, rotina]
+    tags: [publico, espetaculo, acampamento]
+    premissa: Um pequeno grupo se concentra por alguns minutos antes de se dispersar, alterando circulação e atenção sem incidente maior.
