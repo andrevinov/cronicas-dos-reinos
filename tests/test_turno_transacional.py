@@ -240,8 +240,9 @@ class TurnoTransactionalTest(unittest.TestCase):
         repo = self.make_repo()
         tx = self.transaction()
         tx["narracao"] = (
-            "PV 45/45. CA 17. Ki 5/6. 45 PO. Hora aproximada 08:04. "
-            "Localização: estrada do Fire River. Ren encara o adversário."
+            "MECÂNICA — PV 45/45. CA 17. Ki 5/6. 45 PO. Hora aproximada 08:04. "
+            "Localização: estrada do Fire River.\n"
+            "Ren encara o adversário."
         )
         result = mod.register_transaction(repo, tx)
         self.assertEqual(len(result["avisos"]), 1)
