@@ -60,6 +60,14 @@ class ConversationalRoleRepositoryTest(unittest.TestCase):
             "espelho_afetivo",
         )
 
+    def test_perfil_nao_desambigua_sobrenome_canonico_ambiguo(self):
+        data = contexto.command_npc(ROOT, "Dunn")
+        result = data["resultado"]
+        self.assertFalse(result["encontrado"])
+        self.assertIsNone(result.get("textura_narrativa"))
+        self.assertIn("Kethra Dunn", result.get("candidatos") or [])
+        self.assertIn("Colm Dunn", result.get("candidatos") or [])
+
     def test_iria_combina_textura_existente_com_papel_conversacional(self):
         data = contexto.command_npc(ROOT, "Iria Doss")
         texture = data["resultado"]["textura_narrativa"]
