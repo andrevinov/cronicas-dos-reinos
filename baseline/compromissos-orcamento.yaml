@@ -1,0 +1,22 @@
+schema_orcamento_compromissos: 1
+natureza: contrato_de_regressao
+objetivo: Preservar compromissos futuros em L1/L2 sem criar scheduler, scan ou escrita extra no turno comum.
+limites:
+  max_resumo_chars: 220
+  max_descricao_janela_chars: 160
+  max_envolvidos: 6
+  max_itens_quentes: 4
+  max_fragmentos_narrativos: 0
+  escritas_extras_turno_comum: 0
+invariantes:
+  compromisso_e_estado_corrente_nao_scheduler: true
+  registro_usa_mesma_transacao_do_turno: true
+  set_substitui_registro_inteiro: true
+  remove_fecha_sem_acumular_estado_terminal: true
+  situacao_temporal_e_derivada_read_only: true
+  janela_encerrada_nao_muta_canone: true
+  compromisso_pendente_visivel_em_l1_l2: true
+  compromisso_nao_duplica_runtime_cena: true
+  turno_sem_compromisso_nao_tem_leitura_extra: true
+  tempo_estruturado_usa_data_hora: true
+  omitidos_quentes_expoem_somente_ids_ate_checkpoint: true
