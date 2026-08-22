@@ -26,7 +26,6 @@ def appointment(summary: str = "Encontrar Sella no mercador de cal") -> dict:
         "tipo": "encontro",
         "resumo": summary,
         "envolvidos": ["ren", "sella_rove"],
-        "local_id": "mercador_cal_rua_cal",
         "janela": {
             "inicio": {"data": "14 Eleasis, 1372 DR", "hora": "21:20"},
             "fim": {"data": "14 Eleasis, 1372 DR", "hora": "21:50"},
@@ -54,6 +53,12 @@ class CommitmentSchemaTest(unittest.TestCase):
                     "valor": "texto",
                 }
             )
+
+    def test_local_id_nao_entra_ate_passar_pelo_registro_canonico(self):
+        value = appointment()
+        value["local_id"] = "mercador_cal_rua_cal"
+        with self.assertRaises(compromissos.CommitmentError):
+            compromissos.validate_record(value)
 
     def test_janela_invertida_falha_antes_de_virar_registro_pendente(self):
         value = appointment()
