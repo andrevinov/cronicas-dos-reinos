@@ -70,6 +70,12 @@ def _score(key: str, entry: dict[str, Any], term: str) -> int:
     values = [value for value in values if value]
     if query in values:
         return 100
+    # Um papel conversacional nunca pode resolver identidade por aproximação.
+    # Prefixo/substring como "Dunn" poderia escolher Kethra só porque Colm não
+    # possui perfil, embora a identidade canônica seja ambígua. Para entradas com
+    # papel, somente ID, nome completo ou alias explicitamente declarado valem.
+    if entry.get("papel_conversacional") is not None:
+        return 0
     if any(value.startswith(query) for value in values):
         return 85
     if any(query in value for value in values):
