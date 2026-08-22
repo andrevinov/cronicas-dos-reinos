@@ -1,0 +1,25 @@
+schema_orcamento_diegetico: 1
+natureza: contrato_de_regressao
+objetivo: Impedir linguagem mecânica na ficção sem adicionar busca, arquivo ou escrita ao hot path.
+limites:
+  max_categorias_regex: 7
+  max_violacoes_reportadas: 8
+  leituras_extras_turno_comum: 0
+  escritas_extras_turno_comum: 0
+  fragmentos_narrativos_lidos: 0
+invariantes:
+  validacao_e_pura: true
+  falha_antes_de_transcricao_e_buffer: true
+  fala_npc_e_prosa_usam_mesma_trava: true
+  mecanica_explicita_exige_linha_marcada: true
+  prefixo_mecanico: 'MECÂNICA —'
+  pv_hp_proibidos_na_prosa: true
+  ca_ac_proibidos_na_prosa: true
+  cd_dc_proibidos_na_prosa: true
+  nivel_mecanico_proibido_na_prosa: true
+  pontos_ki_proibidos_na_prosa: true
+  slots_proibidos_na_prosa: true
+  bonus_mecanico_proibido_na_prosa: true
+  palavra_ki_sem_contagem_continua_diegética: true
+  resumo_deltas_rolagens_e_rodape_continuam_mecanicos: true
+  transcricoes_historicas_nao_sao_varridas: true

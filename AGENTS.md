@@ -58,7 +58,7 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
-- NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`;
+- NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
 - **local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;**
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -99,7 +99,7 @@ Durante cada avanço comum:
 - não regenerar runtime/handoff nem executar Git, testes ou telemetria;
 - registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
-- `narracao` é a cena; `resumo` é compressão; `deltas` são mudanças persistentes;
+- `narracao` é diegética; mecânica explícita usa linha `MECÂNICA — ...`; `resumo` comprime; `deltas` persistem;
 - se o instante mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir data em `hora`;
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
 - rolagens ocultas relevantes permanecem reservadas até consolidação;

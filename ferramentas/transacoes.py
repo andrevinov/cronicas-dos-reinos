@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extensões transacionais: rastros, tempo atômico e compromissos estruturados.
+"""Extensões transacionais: rastros, tempo, compromissos e prosa diegética.
 
 O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
 invariantes baratos sem aumentar o número normal de escritas:
@@ -7,7 +7,9 @@ invariantes baratos sem aumentar o número normal de escritas:
 - descoberta de rastro transporta conhecimento + mudança reservada no mesmo lote;
 - data+hora de mundo são persistidas como **um único delta** `tempo/instante`;
 - compromissos futuros entram como `estado/compromissos.<id>` inteiro e são
-  projetados em memória antes da consolidação.
+  projetados em memória antes da consolidação;
+- a prosa de `narracao` não aceita vocabulário mecânico explícito fora de linhas
+  próprias `MECÂNICA — ...`.
 
 Deltas antigos de data+hora, quando chegam juntos e consistentes a uma escrita
 nova, são normalizados antes de tocar o JSONL. Um delta isolado de data ou hora é
@@ -23,6 +25,7 @@ from typing import Any, Iterable
 
 import _transacoes_core as _base
 import compromissos
+import diegetico
 import tempo_transacional
 
 for _name in dir(_base):
@@ -157,6 +160,13 @@ def validate_pending_record(record: Any) -> dict[str, Any]:
 
 
 def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str, Any]:
+    narration = transaction.get("narracao")
+    if isinstance(narration, str) and narration.strip():
+        try:
+            diegetico.validate_narration(narration)
+        except diegetico.DiegeticMechanicsError as exc:
+            raise TransactionError(str(exc)) from exc
+
     transaction_id = stable_transaction_id(transaction, session)
     summary = transaction.get("resumo") or ""
     if not isinstance(summary, str):
