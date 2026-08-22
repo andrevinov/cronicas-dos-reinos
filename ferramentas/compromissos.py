@@ -64,7 +64,10 @@ def _instant(value: Any, label: str) -> tuple[dict[str, str], mundo.WorldInstant
 def validate_record(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise CommitmentError("compromisso deve ser objeto")
-    allowed = {"tipo", "resumo", "envolvidos", "janela", "local_id"}
+    # Local estruturado fica deliberadamente fora da v1. Quando for introduzido,
+    # deverá passar pelo Canonical Location Registry; aceitar apenas snake_case
+    # aqui reabriria a classe de inconsistência eliminada pela Task 1.
+    allowed = {"tipo", "resumo", "envolvidos", "janela"}
     extra = sorted(set(value) - allowed)
     if extra:
         raise CommitmentError("campos desconhecidos no compromisso: " + ", ".join(extra))
@@ -85,10 +88,6 @@ def validate_record(value: Any) -> dict[str, Any]:
         raise CommitmentError("envolvidos não pode conter duplicatas")
     if normalized:
         result["envolvidos"] = normalized
-
-    local_id = value.get("local_id")
-    if local_id is not None:
-        result["local_id"] = _entity(local_id, "local_id")
 
     raw_window = value.get("janela")
     if raw_window is not None:
