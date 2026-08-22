@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import contextlib
+import io
 import sys
 import unittest
 from pathlib import Path
@@ -11,7 +13,35 @@ TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
+import cena_mundo
 import contexto_cena
+
+
+class TypedContextTagCliTest(unittest.TestCase):
+    def test_cli_normaliza_tag_tipadas_na_borda(self):
+        args = cena_mundo.build_parser().parse_args(
+            [
+                "abrir",
+                "--cena-id",
+                "typed-cli",
+                "--contexto-tag",
+                "Assunto:Escrituração",
+            ]
+        )
+        self.assertEqual(args.contexto_tag, ["assunto:escrituracao"])
+
+    def test_cli_rejeita_tag_legada_sem_namespace(self):
+        with contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):
+                cena_mundo.build_parser().parse_args(
+                    [
+                        "abrir",
+                        "--cena-id",
+                        "legacy-cli",
+                        "--contexto-tag",
+                        "documentos",
+                    ]
+                )
 
 
 class TypedContextTagBudgetTest(unittest.TestCase):
