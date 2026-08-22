@@ -257,7 +257,7 @@ class FronteiraMundoTest(unittest.TestCase):
 class FronteiraRouterContractTest(unittest.TestCase):
     def test_agents_exige_fronteira_antes_de_comprimir_horas(self):
         agents = (Path(__file__).parents[1] / "AGENTS.md").read_text(encoding="utf-8")
-        self.assertIn("fronteira_mundo.py", agents)
+        self.assertIn("endpoints.py fronteira", agents)
         self.assertIn("antes de narrar", agents.lower())
         self.assertIn("dormir", agents.lower())
         self.assertIn("não chamar", agents.lower())
