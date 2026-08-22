@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Extensões transacionais: rastros pareados e instante temporal atômico.
+"""Extensões transacionais: rastros, tempo atômico e compromissos estruturados.
 
 O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
-dois invariantes baratos:
+invariantes baratos sem aumentar o número normal de escritas:
 
 - descoberta de rastro transporta conhecimento + mudança reservada no mesmo lote;
-- data+hora de mundo são persistidas como **um único delta** `tempo/instante`.
+- data+hora de mundo são persistidas como **um único delta** `tempo/instante`;
+- compromissos futuros entram como `estado/compromissos.<id>` inteiro e são
+  projetados em memória antes da consolidação.
 
 Deltas antigos de data+hora, quando chegam juntos e consistentes a uma escrita
 nova, são normalizados antes de tocar o JSONL. Um delta isolado de data ou hora é
@@ -20,6 +22,7 @@ import re
 from typing import Any, Iterable
 
 import _transacoes_core as _base
+import compromissos
 import tempo_transacional
 
 for _name in dir(_base):
@@ -39,6 +42,11 @@ def validate_delta(delta: Any) -> dict[str, Any]:
         try:
             return tempo_transacional.validate_atomic_delta(delta)
         except tempo_transacional.AtomicTimeError as exc:
+            raise TransactionError(str(exc)) from exc
+    if compromissos.is_commitment_delta(delta):
+        try:
+            return compromissos.validate_delta(delta)
+        except compromissos.CommitmentError as exc:
             raise TransactionError(str(exc)) from exc
 
     target = delta.get("alvo")
@@ -237,4 +245,6 @@ def overlay_runtime(
             ):
                 _base._apply_mapped(context_out, path, delta)
                 applied += 1
+
+    applied += compromissos.apply_pending_to_runtime(context_out, scene_out, current)
     return context_out, scene_out, applied
