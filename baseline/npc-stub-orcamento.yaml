@@ -1,0 +1,23 @@
+schema_orcamento_npc_stub: 1
+natureza: contrato_de_regressao
+objetivo: Persistir identidade mínima de NPC nomeado sem criar scheduler, sidequest ou custo no turno comum.
+limites:
+  max_stubs_por_cena: 6
+  max_fontes_para_npc_novo: 3
+  max_escritas_preparar: 0
+  max_fragmentos_narrativos: 0
+  index_npcs_max_bytes: 49152
+invariantes:
+  preparar_e_read_only: true
+  confirmar_materializa_stub: true
+  id_derivado_deterministicamente_do_nome: true
+  stub_inicial: persistente_sem_agenda
+  stub_nao_e_agente_estrategico: true
+  stub_nao_e_agente_leve: true
+  stub_nao_cria_scheduler: true
+  stub_nao_cria_perfil_sidequest: true
+  npc_novo_nao_sorteia_sidequest: true
+  alias_ambiguo_falha: true
+  typo_proximo_falha: true
+  figurante_anonimo_nao_cria_stub: true
+  turno_comum_sem_leitura_adicional: true
