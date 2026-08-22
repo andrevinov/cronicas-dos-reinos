@@ -1,0 +1,45 @@
+schema_orcamento_microeventos_locais: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Inserir pequenas variações locais determinísticas sem scheduler, scan de mundo,
+  fragmento narrativo adicional ou fato automático.
+limites:
+  max_cartas_catalogo: 24
+  max_bytes_catalogo: 16384
+  max_bytes_estado: 16384
+  max_tags_por_carta: 8
+  max_canais_por_carta: 4
+  max_chars_premissa: 260
+  max_historico_recente: 64
+  min_cartas_compativeis_por_local: 2
+  ocorrencia_rotina: 3
+  ocorrencia_microevento: 1
+  max_candidatos_por_cena_local: 1
+  max_fontes_adicionais_na_cena_local: 2
+  max_fragmentos_narrativos_adicionais: 0
+  max_leituras_tempo_adicionais: 0
+  max_escritas_preparar: 0
+  max_escritas_confirmar_baralho: 1
+  max_schedulers_novos: 0
+  max_scans_repo_por_sorteio: 0
+invariantes:
+  somente_gatilho_local: true
+  alias_resolvido_antes_do_baralho: true
+  ecologia_filtra_por_canal_e_tag: true
+  baralho_ocorrencia_sem_reposicao: true
+  baralho_cartas_sem_reposicao_por_pool: true
+  cena_local_recente_e_idempotente: true
+  carta_e_candidata_nao_fato: true
+  veto_por_canone_nao_rerrola: true
+  npc_nomeado_automatico: false
+  combate_automatico: false
+  quest_automatica: false
+  recompensa_automatica: false
+  segredo_automatico: false
+  nenhum_evento_retroativo_na_migracao: true
+  preparacao_simula_sem_consumir: true
+  confirmacao_consumo_unico: true
+  estado_microevento_entra_no_fingerprint: true
+  camada_inteiramente_ausente_preserva_fixture_legado: true
+  configuracao_parcial_falha_fechada: true
+  task_13_pode_aplicar_pressao_de_seca_sem_reescrever_catalogo: true
