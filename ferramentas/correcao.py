@@ -130,6 +130,13 @@ def _append_jsonl(path: Path, record: dict[str, Any]) -> None:
     _atomic_write(path, text)
 
 
+def _current_session_number(repo: Path) -> int:
+    try:
+        return turno.current_session_info(repo)[0]
+    except transacoes.TransactionError as exc:
+        raise CorrectionError(str(exc)) from exc
+
+
 def _session(repo: Path) -> int:
     try:
         session, status = turno.current_session_info(repo)
@@ -172,8 +179,12 @@ def _target_status(repo: Path, session: int, target: str) -> dict[str, Any]:
         raise CorrectionError("uma correção não pode corrigir outra correção automaticamente")
 
     ids = _transcript_ids(repo, session)
-    if target not in ids:
-        raise CorrectionError(f"transação não aparece na transcrição da sessão {session:03d}: {target}")
+    if ids.count(target) != 1:
+        if target not in ids:
+            raise CorrectionError(
+                f"transação não aparece na transcrição da sessão {session:03d}: {target}"
+            )
+        raise CorrectionError(f"transação alvo possui marcador duplicado na transcrição: {target}")
     normal_ids = [item for item in ids if not item.startswith(CORRECTION_PREFIX)]
     if not normal_ids or normal_ids[-1] != target:
         later = normal_ids[normal_ids.index(target) + 1 :] if target in normal_ids else []
@@ -545,6 +556,13 @@ def apply_correction(
     prior = _read_jsonl(corrections_path)
     existing = next((item for item in prior if item.get("id") == correction_id), None)
     if existing is not None:
+        journal = _read_json(repo / JOURNAL)
+        if journal is not None:
+            if journal.get("id") != correction_id:
+                raise CorrectionError(
+                    "auditoria da correção existe, mas o journal pertence a outra operação; não limpar automaticamente"
+                )
+            (repo / JOURNAL).unlink(missing_ok=True)
         return {
             "ok": True,
             "fase": "correcao_ja_aplicada",
@@ -610,7 +628,7 @@ def check(repo: Path) -> dict[str, Any]:
             f"correção interrompida em {JOURNAL}; repita `correcao.py aplicar` antes de avançar a campanha"
         )
     try:
-        session = _session(repo)
+        session = _current_session_number(repo)
         transcript = _transcript_path(repo, session).read_text(encoding="utf-8")
         ledger_ids = consolidar.consolidated_ids(_ledger_batches(repo, session))
         seen: set[str] = set()
@@ -624,6 +642,8 @@ def check(repo: Path) -> dict[str, Any]:
             seen.add(cid)
             if item.get("nao_e_evento_novo") is not True:
                 errors.append(f"{cid}: correção perdeu marcador nao_e_evento_novo")
+            if item.get("transacao_corretiva") != cid:
+                errors.append(f"{cid}: auditoria aponta para transação corretiva divergente")
             if cid not in ledger_ids:
                 errors.append(f"{cid}: transação corretiva não está consolidada")
             if transcript.count(transacoes.transaction_marker(cid)) != 1:
