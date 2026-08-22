@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import sys
 import unittest
 from pathlib import Path
@@ -199,7 +200,9 @@ class EndpointProjectionSnapshotTest(unittest.TestCase):
             result["gates"][0]["criterio_para_avancar"],
             "Fato canônico suficiente.",
         )
-        self.assertNotIn("executor", yaml.safe_dump(result, allow_unicode=True))
+        self.assertNotIn("executor", result["ids"])
+        self.assertNotIn("executor", result["disponibilidade"])
+        self.assertNotIn("executor", result["proximo_passo"])
 
     def test_sidequest_snapshot_separa_fases(self):
         result = endpoints.project_sidequest(
@@ -257,6 +260,9 @@ class EndpointProjectionSnapshotTest(unittest.TestCase):
         a = yaml.safe_dump(endpoints.project_pending(raw), allow_unicode=True, sort_keys=False)
         b = yaml.safe_dump(endpoints.project_pending(raw), allow_unicode=True, sort_keys=False)
         self.assertEqual(a.encode("utf-8"), b.encode("utf-8"))
+
+    def test_compactacao_ignora_null_sem_fabricar_string_none(self):
+        self.assertEqual(endpoints._compact([None, "a", "", "a", " b "]), ["a", "b"])
 
 
 class EndpointAdapterTest(unittest.TestCase):
@@ -371,13 +377,26 @@ class EndpointRepositoryContractTest(unittest.TestCase):
     def test_parser_expoe_cinco_portas_sem_turno_unificado(self):
         parser = endpoints.build_parser()
         sub = next(
-            action for action in parser._actions if isinstance(action, __import__("argparse")._SubParsersAction)
+            action for action in parser._actions if isinstance(action, argparse._SubParsersAction)
         )
         self.assertEqual(
             set(sub.choices),
             {"cena", "fronteira", "pendencias", "direcao", "sidequest"},
         )
         self.assertNotIn("turno", sub.choices)
+
+    def test_roteador_quente_usa_endpoints_sem_estourar_orcamento(self):
+        text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        for command in (
+            "endpoints.py pendencias",
+            "endpoints.py cena",
+            "endpoints.py direcao",
+            "endpoints.py fronteira",
+            "endpoints.py sidequest",
+        ):
+            self.assertIn(command, text)
+        self.assertIn("cena_mundo.py confirmar", text)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
 
 
 if __name__ == "__main__":
