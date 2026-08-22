@@ -1,0 +1,35 @@
+schema_orcamento_tags_contextuais_tipadas: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Separar localização, assunto, ação, pessoa e risco sem aumentar scans,
+  fragmentos ou candidatos da descoberta contextual.
+limites:
+  tipos_tags: 5
+  max_tags_por_cena: 8
+  max_presencas: 2
+  max_entradas: 1
+  max_operacoes: 2
+  max_direcoes: 1
+  max_candidatos_total: 4
+  leituras_extras_sem_match: 0
+  fragmentos_narrativos_adicionais: 0
+  schedulers_adicionais: 0
+invariantes:
+  namespace_obrigatorio: true
+  tipos_fechados:
+  - local
+  - assunto
+  - acao
+  - pessoa
+  - risco
+  valor_conhecido_pertence_a_um_namespace: true
+  tag_legada_sem_namespace_e_rejeitada: true
+  presenca_binding_exige_local: true
+  presenca_match_exige_local: true
+  assunto_sem_local_nao_cria_presenca: true
+  operacao_pode_reagir_sem_local: true
+  direcao_pode_reagir_sem_local: true
+  entrada_pode_reagir_sem_local: true
+  ranking_existente_preservado: true
+  scan_semantico_contextual: 0
+  candidato_continua_nao_canonico: true
