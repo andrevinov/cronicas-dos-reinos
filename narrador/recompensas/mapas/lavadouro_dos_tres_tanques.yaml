@@ -1,0 +1,35 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: lavadouro_dos_tres_tanques
+tier: 1
+periculosidade: baixa
+geracao:
+  modo: deterministico_v1
+  chave: cd5fde8bd80b1ffec872833b
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: lavadouro_dos_tres_tanques-r01
+  tipo: gema
+  estado: oculto
+  condicao_de_descoberta: derrotar, enganar ou negociar com o guardião local que controla
+    a recompensa
+  posse:
+    tipo: papel_local
+    papel: guardiao
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/lavadouro_dos_tres_tanques-r01.yaml
+- id: lavadouro_dos_tres_tanques-r02
+  tipo: consumivel
+  estado: oculto
+  condicao_de_descoberta: derrotar, enganar ou negociar com o guardião local que controla
+    a recompensa
+  posse:
+    tipo: papel_local
+    papel: guardiao
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/lavadouro_dos_tres_tanques-r02.yaml

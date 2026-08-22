@@ -66,3 +66,27 @@ recompensas:
     local_id: antiga_casa_copias_portadas_azuis
     mapa: narrador/recompensas/mapas/antiga_casa_copias_portadas_azuis.yaml
     arquivo: narrador/recompensas/itens/antiga_casa_copias_portadas_azuis-r02.yaml
+  casa_do_salgueiro_seco-r01:
+    local_id: casa_do_salgueiro_seco
+    mapa: narrador/recompensas/mapas/casa_do_salgueiro_seco.yaml
+    arquivo: narrador/recompensas/itens/casa_do_salgueiro_seco-r01.yaml
+  casa_iria_doss-r01:
+    local_id: casa_iria_doss
+    mapa: narrador/recompensas/mapas/casa_iria_doss.yaml
+    arquivo: narrador/recompensas/itens/casa_iria_doss-r01.yaml
+  lavadouro_dos_tres_tanques-r01:
+    local_id: lavadouro_dos_tres_tanques
+    mapa: narrador/recompensas/mapas/lavadouro_dos_tres_tanques.yaml
+    arquivo: narrador/recompensas/itens/lavadouro_dos_tres_tanques-r01.yaml
+  lavadouro_dos_tres_tanques-r02:
+    local_id: lavadouro_dos_tres_tanques
+    mapa: narrador/recompensas/mapas/lavadouro_dos_tres_tanques.yaml
+    arquivo: narrador/recompensas/itens/lavadouro_dos_tres_tanques-r02.yaml
+  jack_mooney_and_sons_circus-r01:
+    local_id: jack_mooney_and_sons_circus
+    mapa: narrador/recompensas/mapas/jack_mooney_and_sons_circus.yaml
+    arquivo: narrador/recompensas/itens/jack_mooney_and_sons_circus-r01.yaml
+  jack_mooney_and_sons_circus-r02:
+    local_id: jack_mooney_and_sons_circus
+    mapa: narrador/recompensas/mapas/jack_mooney_and_sons_circus.yaml
+    arquivo: narrador/recompensas/itens/jack_mooney_and_sons_circus-r02.yaml

@@ -15,7 +15,7 @@ agentes:
   luath:
     estado: ativo
     proxima_avaliacao:
-      data: 13 Eleasis, 1372 DR
+      data: 16 Eleasis, 1372 DR
       hora: 06:00
   silva_elkwood:
     estado: ativo

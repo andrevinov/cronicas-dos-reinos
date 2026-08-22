@@ -2,14 +2,14 @@
 
 Este arquivo existe para consulta rápida durante a narração.
 
-Ren é um monge do **Caminho da Sombra**, nível 6. A campanha usa a base mecânica da 5e clássica. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
+Ren é um monge do **Caminho da Sombra**, nível 7. A campanha usa a base mecânica da 5e clássica. Ele não é um assassino invencível nem um mago completo. Ele é rápido, furtivo, difícil de encurralar e muito bom em escolher quando lutar.
 
 ---
 
 ## Números rápidos
 
 * CA: 17, sem armadura;
-* PV: 45;
+* PV máximos: 52;
 * deslocamento: 55 pés;
 * bônus de proficiência: +3;
 * iniciativa: +4;
@@ -19,7 +19,7 @@ Ren é um monge do **Caminho da Sombra**, nível 6. A campanha usa a base mecân
 * Intuição: +6;
 * Investigação: +4;
 * CD de ki: 14;
-* pontos de ki: 6 por descanso curto ou longo.
+* pontos de ki: 7 por descanso curto ou longo.
 
 ---
 
@@ -78,7 +78,7 @@ Com Artes Marciais, isso pode virar dois ataques na ação e um golpe desarmado 
 
 ## Ki
 
-Ren tem 6 pontos de ki.
+Ren tem 7 pontos de ki.
 
 Eles voltam em descanso curto ou longo.
 
@@ -266,11 +266,9 @@ Se reduzir o dano a zero e puder segurar o projétil, pode gastar 1 ki para arre
 
 **Duração:** somente aquela queda.
 
-No nível 6, Ren reduz o dano de queda em **30**.
+No nível 7, Ren reduz o dano de queda em **35**.
 
 Uso típico: telhados, mastros, carroças, muralhas baixas, saltos ruins e fugas urbanas em terreno vertical.
-
-Observação de manutenção: `ficha.yaml` ainda registra redução 25, valor do nível 5. O resumo usa o valor correto para monge de nível 6; a ficha deve ser alinhada separadamente.
 
 ## Golpes Potencializados por Ki
 
@@ -279,6 +277,26 @@ Observação de manutenção: `ficha.yaml` ainda registra redução 25, valor do
 Os golpes desarmados de Ren contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos.
 
 Uso típico: enfrentar criaturas sobrenaturais, mortos-vivos, espíritos materializados, construtos menores ou inimigos protegidos contra armas comuns.
+
+---
+
+## Evasão
+
+É passiva e não gasta ki.
+
+Quando Ren é submetido a um efeito que permite uma salvaguarda de Destreza para sofrer apenas metade do dano, ele não sofre dano se tiver sucesso e sofre apenas metade se falhar.
+
+Uso típico: explosões, armadilhas, sopros e outras ameaças de área que testem Destreza.
+
+---
+
+## Quietude da Mente
+
+**Ativação:** ação.
+
+Ren pode usar a própria ação para encerrar um efeito que o esteja deixando amedrontado ou enfeitiçado.
+
+Isso não impede que o efeito seja aplicado inicialmente e não remove condições diferentes dessas duas.
 
 ---
 

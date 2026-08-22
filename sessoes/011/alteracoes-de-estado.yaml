@@ -1,0 +1,124 @@
+schema_alteracoes_transacionais: 1
+sessao: 11
+status: em_andamento
+fonte: sessoes/011/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 11
+  modo: conversa_privada_com_nera_apos_operacao_velis
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 2/6
+  ca: 17
+  dinheiro_po: 29.8
+  data: 12 Eleasis, 1372 DR
+  hora: '22:35'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no depósito de figurinos velhos do circo, encerrando a conversa privada com Nera
+  nivel_ficha: 6
+checkpoint_atual:
+  sessao: 11
+  modo: retorno_ao_circo_apos_recado_a_sella
+  personagem: Ren Kagehira
+  nivel: 6
+  pv: 45/45
+  ki: 4/6
+  ca: 17
+  dinheiro_po: 30.18
+  data: 13 Eleasis, 1372 DR
+  hora: '20:50'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: limite do acampamento dos Mooney, chegando sem cauda
+  nivel_ficha: 6
+consolidacoes:
+- id: s011-cena-bab7d32884a65855
+  tipo: cena
+  transacoes:
+  - s011-f186de59301bb182
+  deltas: 10
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/011/alteracoes-de-estado.yaml
+  - sessoes/011/consequencias.md
+  - sessoes/011/consolidacoes.jsonl
+  - sessoes/011/resumo.md
+- id: s011-cena-0d5e2868a94bee66
+  tipo: cena
+  transacoes:
+  - s011-76aad113722f9e2f
+  - s011-79f80e7e0a6d45e4
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/011/alteracoes-de-estado.yaml
+  - sessoes/011/consequencias.md
+  - sessoes/011/consolidacoes.jsonl
+  - sessoes/011/resumo.md
+- id: s011-cena-da0cb3ab284cce68
+  tipo: cena
+  transacoes:
+  - s011-95d45c2be4535aa7
+  - s011-288d00d7f96db183
+  - s011-f09d85efd5b8e2a2
+  deltas: 12
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-288d00d7f96db183.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/011/alteracoes-de-estado.yaml
+  - sessoes/011/consequencias.md
+  - sessoes/011/consolidacoes.jsonl
+  - sessoes/011/resumo.md
+- id: s011-cena-172abbaaa9334bf9
+  tipo: cena
+  transacoes:
+  - s011-a3f15739e67895e1
+  - s011-ebb7c212cde681f8
+  - s011-da1e4c09d300fd1a
+  - s011-da0ac09695c97458
+  deltas: 24
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - narrador/sessoes/011/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da0ac09695c97458.md
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da1e4c09d300fd1a.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/011/alteracoes-de-estado.yaml
+  - sessoes/011/consequencias.md
+  - sessoes/011/consolidacoes.jsonl
+  - sessoes/011/resumo.md
+- id: s011-cena-54cce28252a3f796
+  tipo: cena
+  transacoes:
+  - s011-d2c2431c03a1d962
+  - s011-3a0da49868f240e7
+  - s011-8061dad1f99026ba
+  - s011-a3826577e8865e15
+  deltas: 17
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/sella_rove.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/sella_rove.yaml
+  - narrador/sessoes/011/rolagens-ocultas.md
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-3a0da49868f240e7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-d2c2431c03a1d962.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/011/alteracoes-de-estado.yaml
+  - sessoes/011/consequencias.md
+  - sessoes/011/consolidacoes.jsonl
+  - sessoes/011/resumo.md

@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: casa_do_salgueiro_seco-r01
+local_id: casa_do_salgueiro_seco
+tipo: dinheiro
+nome: Bolsa de moedas misturadas
+descricao: Uma pequena soma em moedas correntes, reunida para despesas imediatas.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- dinheiro
+- tesouro
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: bolsa_moedas
+  slot: 1
+  chave: f9fa84f06a206953d974c6b8

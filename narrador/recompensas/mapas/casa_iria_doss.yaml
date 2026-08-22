@@ -1,0 +1,24 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: casa_iria_doss
+tier: 1
+periculosidade: baixa
+geracao:
+  modo: deterministico_v1
+  chave: 3c31ce29cf6139c7c6fbd7f0
+  imutavel: true
+  procedurais: 1
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: casa_iria_doss-r01
+  tipo: consumivel
+  estado: oculto
+  condicao_de_descoberta: obter acesso legítimo ou clandestino à parte restrita onde
+    a recompensa está guardada
+  posse:
+    tipo: papel_local
+    papel: ocupante
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/casa_iria_doss-r01.yaml

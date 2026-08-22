@@ -80,3 +80,6 @@ incrementais:
   '10':
     index: personagens/jogador/conhecimento/incrementais/sessao-010/index.yaml
     quantidade: 6
+  '11':
+    index: personagens/jogador/conhecimento/incrementais/sessao-011/index.yaml
+    quantidade: 5

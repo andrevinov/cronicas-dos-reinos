@@ -59,3 +59,27 @@ mapas:
     periculosidade: media
     quantidade: 2
     chave_geracao: a435a1fb10c43136008f7df4
+  casa_do_salgueiro_seco:
+    arquivo: narrador/recompensas/mapas/casa_do_salgueiro_seco.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 1
+    chave_geracao: 07e91ecbbae973823d7c514f
+  casa_iria_doss:
+    arquivo: narrador/recompensas/mapas/casa_iria_doss.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 1
+    chave_geracao: 3c31ce29cf6139c7c6fbd7f0
+  lavadouro_dos_tres_tanques:
+    arquivo: narrador/recompensas/mapas/lavadouro_dos_tres_tanques.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 2
+    chave_geracao: cd5fde8bd80b1ffec872833b
+  jack_mooney_and_sons_circus:
+    arquivo: narrador/recompensas/mapas/jack_mooney_and_sons_circus.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 2
+    chave_geracao: 4e28c29b7a3686e3b69a2003

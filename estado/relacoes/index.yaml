@@ -89,12 +89,14 @@ relacoes:
     nome: Sella Rove
     tipo: lavadeira / contato de Kethra
     status: ativa; ajudou a preparar a saída de Colm/Dent do lavadouro
-    atitude_para_ren: desconfiada e prática
+    atitude_para_ren: cautelosa e mais resistente à retórica de Ren; considerou a fala sobre arrependimento futuro
+      uma pressão disfarçada. Mantém o compromisso de levar uma única mensagem a Kethra, mas rejeita tornar o lavadouro
+      ou sua rotina uma ponte recorrente.
     confianca: nenhuma
     respeito: nenhum
     arquivo: estado/relacoes/sella_rove.yaml
     historico: historico/relacoes/sella_rove.yaml
-    bytes_fragmento: 2093
+    bytes_fragmento: 2327
     campos_atuais: 10
   dorra_hest:
     nome: Dorra Hest

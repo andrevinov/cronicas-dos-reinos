@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: lavadouro_dos_tres_tanques-r02
+local_id: lavadouro_dos_tres_tanques
+tipo: consumivel
+nome: Antitoxina
+descricao: Um preparado alquímico útil quando venenos se tornam um risco concreto.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- consumivel
+- alquimia
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: antitoxina
+  slot: 2
+  chave: 182aa5779eaceb94aefa3c2a

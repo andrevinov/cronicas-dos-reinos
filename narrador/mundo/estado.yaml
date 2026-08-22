@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 12 Eleasis, 1372 DR
-  hora: '22:35'
+  data: 13 Eleasis, 1372 DR
+  hora: '20:50'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -101,3 +101,49 @@ concluidas_recentes:
   agente: masao_hirasawa
   nota: Masao mantém o plano estratégico por rede e intermediários; nenhuma mudança
     de escala ou conhecimento justifica nova ação específica neste amanhecer.
+- id: mundo-0190569f29c73c2f
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Nenhum fato canônico novo sustenta avançar o marco rumores_de_grande_navio;
+    direção permanece inalterada.
+- id: mundo-75b82d0d5394f8e1
+  tipo: reavaliar_agente_leve
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Luath segue sua rotina policial; não há nova ameaça a prova, testemunha ou
+    oportunidade concreta que justifique iniciativa excepcional.
+- id: mundo-5e98eda50fb4f9b1
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail mantém a busca dirigida já em execução; a reavaliação diária não
+    produziu mudança persistente nova.
+- id: mundo-80f8e0b9b30dd403
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém vigilância e resposta preparada conforme o plano atual;
+    nenhum fato novo altera prioridades.
+- id: mundo-d4f006b02b3f1048
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: Shizune permanece com presença física indeterminada e inelegível para nova
+    ação local; nenhuma mudança canônica.
+- id: mundo-ecca1c97616f6c95
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 13 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: A Casa de Tyr mantém custódia, discrição e contatos pelo canal estabelecido;
+    nenhuma nova iniciativa excepcional.

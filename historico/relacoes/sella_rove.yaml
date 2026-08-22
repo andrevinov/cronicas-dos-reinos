@@ -38,3 +38,17 @@ relacao:
   - Sella pode retirar sua ajuda se Ren demorar a mover Colm ou trouxer violência para o lavadouro.
   - A ajuda de Sella reduziu o risco imediato, mas não apagou o rastro fraco deixado na saída lateral.
   - Sella pode fechar a porta para Ren se ele usar o lavadouro como base de recados.
+eventos_pos_migracao:
+- transacao: s011-a3826577e8865e15
+  sessao: 11
+  resumo: Sella interpretou a fala de Ren sobre arrependimento futuro como pressão disfarçada de aviso. Ela manteve
+    a decisão de levar uma única mensagem a Kethra, mas afirmou que já se posicionou ao proteger Colm, despistar
+    perguntas e preservar o lavadouro, recusando trabalhar como ferramenta recorrente de Ren. Ren saiu agradecendo.
+    Não havia vigilância ativa na saída; Passos sem Pegadas não foi usado, e ele voltou ao circo às 20:50 sem cauda.
+  deltas:
+  - alvo: relacao:sella_rove
+    caminho: atitude_para_ren
+    op: set
+    valor: cautelosa e mais resistente à retórica de Ren; considerou a fala sobre arrependimento futuro uma pressão
+      disfarçada. Mantém o compromisso de levar uma única mensagem a Kethra, mas rejeita tornar o lavadouro ou sua
+      rotina uma ponte recorrente.

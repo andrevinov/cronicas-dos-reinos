@@ -3,13 +3,13 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 10
-  modo_de_cena_atual: conversa_privada_com_nera_apos_operacao_velis
+  sessao_atual: 11
+  modo_de_cena_atual: retorno_ao_circo_apos_recado_a_sella
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
   status: ativo
-  nivel: 6
+  nivel: 7
   classe: Monge
   subclasse: Caminho da Sombra
 localizacao:
@@ -19,7 +19,7 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: no depósito de figurinos velhos do circo, encerrando a conversa privada com Nera
+  ponto_exato: limite do acampamento dos Mooney, chegando sem cauda
   descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
     com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
     Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
@@ -29,7 +29,7 @@ localizacao:
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 12 Eleasis, 1372 DR
+  data_exata: 13 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -37,38 +37,38 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '22:35'
+  hora_aproximada: '20:50'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
 recursos:
   pontos_de_vida:
     atuais: 45
-    maximos: 45
+    maximos: 52
   dados_de_vida:
-    atuais: 5
-    maximos: 6
+    atuais: 7
+    maximos: 7
     dado: d8
   ki:
-    atuais: 2
-    maximos: 6
+    atuais: 4
+    maximos: 7
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 29.8
+    po: 30.18
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: indisponível; uso gasto em 12 Eleasis e renovável no próximo amanhecer
+    broche_do_semblante_humilde: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer
     silencio: disponível mediante gasto de 2 Ki
-    traje_shinta_bem_vestido: pago e separado por Dessa; pronto para uso na manhã de 13 Eleasis
+    traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/010/transcricao.md
+  transcricao_atual: sessoes/011/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -152,16 +152,6 @@ efeitos_temporarios:
       ferramentas de ladrão e objetos coerentes com o velho erudito.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 05:15 de 12 Eleasis
-  descanso_longo_incompleto:
-    descricao: Ren dormiu cerca de quatro horas depois de várias noites de sono insuficiente; não completou descanso
-      longo e não recebeu recuperação mecânica.
-    duracao: até completar um descanso longo
-    inicio: 00:45 de 12 Eleasis
-  disfarce_velho_erudito:
-    descricao: Nera ajudou a remover a maior parte do disfarce de velho erudito; ainda restam maquiagem e fixadores
-      que Ren precisa limpar nos próprios aposentos. A aparência já não serve para infiltração convincente.
-    duracao: até Ren concluir a remoção
-    inicio: 22:35 de 12 Eleasis
   narwhal_alerta_para_observador_idoso:
     descricao: A segurança de Narwhal Manor não reconheceu Ren, mas suspeita que um velho erudito vigiava a entrada.
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
@@ -178,11 +168,21 @@ efeitos_temporarios:
       que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
     duracao: conhecimento persistente
     inicio: 20:51 de 12 Eleasis
+  recado_unico_sella_para_kethra:
+    descricao: 'Sella Rove aceitou, sem pagamento, levar a Kethra uma única mensagem: Ren quer saber o que ela ouviu
+      sobre Velis depois da convocação, se a mulher de cinza-azulado apareceu e se aceita criar um novo ponto morto.
+      Sella não aceitou ser ponte recorrente nem revelou endereço. Ren deve aguardar resposta em 14 Eleasis, vinte
+      minutos depois do segundo sino após o poente, do outro lado da Rua da Cal junto ao mercador de cal fechado;
+      partir se ela não aparecer em meia hora.'
+    duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
+    inicio: 20:12 de 13 Eleasis
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
-    estado_diante_de_tomas: não desmascarada, mas aceita somente para experiência supervisionada no pátio de entregas;
-      sem pastas seladas, rotas externas ou acesso sem supervisão
+    estado_diante_de_tomas: não desmascarada; aceita na lista regular do pátio de entregas da Galeria dos Escribas.
+      Concluiu em 13 Eleasis um dia completo sem erro atribuível, recebeu 4 PP e teve o trabalho declarado confiável
+      por Tomas; a supervisão direta diminuiu. Retorno confirmado para 14 e 15 Eleasis depois do primeiro sino.
+      Permanece sem acesso a documentos fechados, rotas de pastas, salas internas ou à Casa do Salgueiro Seco.
     nome: Shinta Ryoushi
     origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
     avaliacao_pratica: aprovado para retornar após o primeiro sino de 13 Eleasis diretamente à entrada de entrega;

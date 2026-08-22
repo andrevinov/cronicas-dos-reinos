@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 10
-sessao_mais_recente_indexada: 10
+sessao_atual_da_campanha: 11
+sessao_mais_recente_indexada: 11
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,56 +34,48 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Ren foi da Casa de Tyr à Casa da Aurora Menor e contou a Maerra que invadiu a loja de Bram, feriu-o,
-    tomou seu caderno e o coagiu a abandonar a perseguição a Colm. Maerra reconheceu a proteção obtida, advertiu
-    que Bram pode reagir por intermediários e propôs três linhas não confirmadas para procurar Shizune: instituições
-    que dão autoridade a documentos, oficinas capazes de preparar papéis e selos, e redes de passagem e identidades.
-    O efeito do Broche do Semblante Humilde terminou durante a conv…'
+- titulo: 'Shinta pagou 2 PC por uma refeição simples durante a pausa. Com Intuição 13 contra CD 13, identificou
+    Sella, conferente das tabuletas, como a melhor combinação entre receptividade e posição no fluxo cotidiano da
+    Galeria. Sem pedir informação ou recrutá-la, obteve Persuasão 15 contra CD 11 e criou familiaridade inicial:
+    Sella aprovou seu trabalho, apresentou-se pelo primeiro nome e deixou aberto que ele se sente ao lado dela no
+    dia seguinte. Ela ainda não é informante nem espiã.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-50babd7d2c9deadb.md
-  bytes: 1075
-  transacao: s010-50babd7d2c9deadb
-- titulo: Ren apresentou a Halessa a suspeita de que a mulher Cinza-Azul seja Shizune, relatou que uma fonte a viu
-    ganhar autoridade em Narwhal e que ele próprio a viu instruir Velis antes da oitiva. Halessa recusou fabricar
-    uma isca falsa, mas reconheceu fundamento para uma convocação suplementar legítima e aceitou levar o plano adiante
-    se Ren concordar com observação apenas, janela e encerramento definidos, nenhuma invasão ou captura solitária,
-    e informar sua disponibilidade e rota de retorno.
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-288d00d7f96db183.md
+  bytes: 994
+  transacao: s011-288d00d7f96db183
+- titulo: Ren completou a história com os nomes inventados Arthur Donovan e Jost Anon, mas obteve Enganação 1 contra
+    CD 16. Um funcionário consultou o registro e declarou que Arthur não consta entre remetentes, procuradores ou
+    conferentes autorizados da Galeria. Jost Anon foi anotado como visitante suspeito; dois funcionários fecharam
+    a saída mais direta e exigiram que ele espere na entrada principal enquanto verificam a história. A identidade
+    real de Ren permanece protegida pelo Broche. Kethra retirou-s…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-505fc229bde67803.md
-  bytes: 1003
-  transacao: s010-505fc229bde67803
-- titulo: 'Ren aceitou a crítica de Halessa, prometeu não atacar Velis ou Shizune salvo para sobreviver e propôs
-    atuar disfarçado amanhã à noite. Halessa recusou colocá-lo junto ao portador de Tyr, mas firmou acordo provisório:
-    buscará autorização de Sirrus para uma convocação suplementar no primeiro sino após o anoitecer de 12 Eleasis
-    e enviará confirmação antes do meio-dia. A vigilância terá duas horas, começará apenas se Velis sair, será limitada
-    a observação e identificação, e terminará diante de cont…'
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da1e4c09d300fd1a.md
+  bytes: 867
+  transacao: s011-da1e4c09d300fd1a
+- titulo: Os funcionários de Narwhal recusaram o pretexto e permitiram que Jost Anon partisse, mantendo o nome falso
+    registrado. Ren percebeu um acompanhante com Percepção 24 contra CD 14; sua primeira tentativa de despistá-lo
+    falhou com Furtividade 15 contra CD 16, acionando a intenção condicional. Ren gastou 2 Ki em Passos sem Pegadas
+    e obteve Furtividade 21 contra CD 16, rompendo a vigilância e assumindo posição distante. O Broche expirou às
+    18:00 e Passos sem Pegadas pouco depois. Até 19:10, Kethra n…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-a26cc464046689b7.md
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da0ac09695c97458.md
+  bytes: 868
+  transacao: s011-da0ac09695c97458
+- titulo: 'Ren chegou discretamente à casa de Iria Doss com Furtividade 22 contra CD 14 e foi reconhecido como o
+    homem que trouxe Colm com Mera. Iria esclareceu que nunca conheceu Kethra: recebeu Colm de Mera e Ren, sabe
+    apenas que havia uma irmã em Narwhal e não conhece o endereço nem com quem Kethra mora. Sem destino, o deslocamento
+    posterior foi interrompido. Iria também lembrou Ren da dívida pendente de 3 PO pelo tratamento, comida e abrigo
+    de Colm.'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-d2c2431c03a1d962.md
+  bytes: 767
+  transacao: s011-d2c2431c03a1d962
+- titulo: 'Correção explícita: Ren não visitou Iria Doss. O primeiro abrigo de Colm foi o Lavadouro dos Três Tanques,
+    sob os cuidados de Sella Rove, amiga de Kethra; Iria pertence ao resgate posterior no Fire River. Ren chegou
+    discretamente ao lavadouro com Furtividade 22 contra CD 14. Sella o reconheceu e confirmou saber onde Kethra
+    dorme, mas recusou revelar endereço ou companhia doméstica sem conhecer a urgência, oferecendo-se para avaliar
+    e transmitir a mensagem. A cena para nessa interrupção.'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-3a0da49868f240e7.md
   bytes: 1038
-  transacao: s010-a26cc464046689b7
-- titulo: Depois do banho, Ren atualizou Silva sobre a operação coordenada com Halessa e confessou sua vontade de
-    eliminar os agentes de Masao, o conflito com os valores aprendidos em Ravens Bluff e o receio de que contenção
-    institucional seja insuficiente. Silva confirmou que receberá e verificará a ficha de Tyr, definiu medidas discretas
-    caso Shizune seja confirmada e explicou que respeito pela vida não exclui força necessária, mas exige prova,
-    limite e responsabilidade. Ela disse que Ren precisa const…
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-f943d9db51b17cb9.md
-  bytes: 925
-  transacao: s010-f943d9db51b17cb9
-- titulo: Ren e Nera confirmaram novamente o consentimento, declararam amor um pelo outro e passaram algumas horas
-    em intimidade consensual, tratada com corte de cena. Depois, Ren contou sobre Tadatsune, a Lua como guardiã
-    dos Kagehira, seu medo de perder Nera e como o amor mudou sua relação com a vingança. Nera disse que não salvou
-    Ren sozinha, recusou carregar a responsabilidade pela alma dele, afirmou que escolheu conscientemente o risco
-    e declarou que só se arrependeria se Ren decidisse por ela ou us…
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-eadea92ad2d01550.md
-  bytes: 921
-  transacao: s010-eadea92ad2d01550
-- titulo: Shinta trabalhou diligentemente e em silêncio durante toda a tarde, mantendo organização mesmo quando
-    carroças atrasadas chegaram juntas após a procissão. O assistente reduziu a supervisão direta, embora a caixa
-    selada permanecesse proibida. Tomas pagou 4 PP, reconheceu o bom serviço e autorizou Shinta a retornar amanhã
-    depois do primeiro sino diretamente à entrada de entrega, ainda sob supervisão e sem acesso a selos fechados.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-75125365f44b1e57.md
-  bytes: 968
-  transacao: s010-75125365f44b1e57
+  transacao: s011-3a0da49868f240e7

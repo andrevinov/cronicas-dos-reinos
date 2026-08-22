@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: lavadouro_dos_tres_tanques-r01
+local_id: lavadouro_dos_tres_tanques
+tipo: gema
+nome: Pedras ornamentais
+descricao: Um pequeno lote de pedras trabalhadas, úteis como valor portátil.
+valor_aproximado: baixo
+importancia: comum
+origem: procedural
+tags:
+- gema
+- tesouro
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: pedras_ornamentais
+  slot: 1
+  chave: 61e465802e4205bc5a8dfaae

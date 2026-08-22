@@ -10,7 +10,7 @@ rotina_padrao:
 objetivo_atual:
   descricao: Preservar a cooperação futura apenas sob objetivo, rota e limites acordados antes de nova ação clandestina.
   fonte: estado/relacoes/halessa_vorn.yaml
-  evidencia: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao, mas exige objetivo, rota e limites acordados antes de qualquer ação clandestina futura'
+  evidencia: nova quebra semelhante encerrará coordenação clandestina com Tyr
 iniciativas_possiveis:
 - descricao: Mobilizar preservação institucional urgente quando prova ou local sob o caso correr risco concreto.
   fonte: estado/relacoes/halessa_vorn.yaml
