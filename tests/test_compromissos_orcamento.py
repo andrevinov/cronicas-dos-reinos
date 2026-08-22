@@ -25,6 +25,7 @@ class CommitmentBudgetContractTest(unittest.TestCase):
         self.assertTrue(inv["compromisso_pendente_visivel_em_l1_l2"])
         self.assertTrue(inv["compromisso_nao_duplica_runtime_cena"])
         self.assertTrue(inv["turno_sem_compromisso_nao_tem_leitura_extra"])
+        self.assertTrue(inv["local_id_proibido_ate_resolucao_pelo_registro_canonico"])
 
 
 if __name__ == "__main__":
