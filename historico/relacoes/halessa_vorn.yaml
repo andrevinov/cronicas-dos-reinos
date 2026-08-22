@@ -286,3 +286,128 @@ eventos_pos_migracao:
     valor: Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada para o primeiro sino após
       o anoitecer de 12 Eleasis. Halessa enviou a ficha reservada de confirmação a Silva antes do meio-dia, cumprindo
       o combinado; Ren ainda não foi informado.
+- transacao: s010-3794fc30beeb92b1
+  sessao: 10
+  resumo: Nera recusou pagamento pelo auxílio e aceitou pedir dinheiro se precisar, pedindo que Ren preserve recursos
+    e volte para ela retirar o disfarce. Ren partiu sem armas, levando apenas ferramentas de ladrão. Na Casa de
+    Tyr, o disfarce enganou inicialmente os guardas e surpreendeu Halessa. Ela o apresentou ao oficial Garran Holt,
+    que definiu sua posição na entrega. Ao primeiro sino após o anoitecer, ambos estão prontos para sair sob os
+    limites acordados.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: acordos
+    op: remove
+    valor: Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada para o primeiro sino após
+      o anoitecer de 12 Eleasis. Halessa enviou a ficha reservada de confirmação a Silva antes do meio-dia, cumprindo
+      o combinado; Ren ainda não foi informado.
+  - alvo: relacao:halessa_vorn
+    caminho: acordos
+    op: append
+    valor: Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada no primeiro sino após o
+      anoitecer de 12 Eleasis. Silva entregou a confirmação a Ren; às 19:10 ele apresentou-se a Halessa e ao oficial
+      Garran Holt para cumprir a operação dentro dos limites acordados.
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas_por_halessa
+    op: append
+    valor: Ren informou pela própria preparação que gastou o Broche do Semblante Humilde ao romper uma possível
+      cauda e substituiu o recurso mágico por um disfarce mundano excepcional de velho erudito.
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Halessa não reconheceu Ren imediatamente sob o disfarce de velho erudito; ao confirmar sua identidade
+      pelo selo e contexto, reprimiu um quase sorriso e avaliou o trabalho como convincente antes de retomar o profissionalismo.
+- transacao: s010-1d322ae2e10047ec
+  sessao: 10
+  resumo: 'Correção explícita: Halessa não revelou a Garran que Ren possuía ou gastou recurso mágico, nem mencionou
+    a contravigilância. Ela apenas confirmou a identidade verificada do auxiliar e a adequação do disfarce. O registro
+    que atribuía a Ren essa informação diante de Halessa foi removido.'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas_por_halessa
+    op: remove
+    valor: Ren informou pela própria preparação que gastou o Broche do Semblante Humilde ao romper uma possível
+      cauda e substituiu o recurso mágico por um disfarce mundano excepcional de velho erudito.
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: 'Correção de continuidade: diante do oficial Garran Holt, Halessa protegeu os métodos e recursos de Ren,
+      confirmando apenas que a identidade do auxiliar havia sido verificada e que o disfarce era convincente.'
+- transacao: s010-c969aa0a454deb11
+  sessao: 10
+  resumo: Ren brincou com Halessa mantendo a voz do velho; ela respondeu com divertimento contido. Seguiu dois passos
+    atrás de Garran até Narwhal Manor. Velis não reconheceu Ren sob o disfarce e recebeu a convocação pessoalmente.
+    Ao ler o anexo, mostrou tensão, perguntou se poderia consultar alguém e assinou a ciência. Garran retirou-se;
+    Velis voltou para dentro. Às 19:35 começa a janela de duas horas de vigilância, sem mensageiro ou contato ainda
+    exposto.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Antes de partir com Garran, Ren brincou no personagem do velho que estava velho demais para improvisar
+      uma prisão; Halessa respondeu que sua aparência finalmente combinava com a prudência prometida, contendo divertimento
+      sem perder o profissionalismo.
+- transacao: s010-9bd1eb647da39bc0
+  sessao: 10
+  resumo: Ren tentou convencer o guarda de que era um velho descansando, mas obteve Enganação 11 contra CD 13; sua
+    identidade permaneceu oculta, porém Narwhal manteve a suspeita. Após quebrar a visão, Ren gastou 2 Ki em Passos
+    sem Pegadas e obteve Furtividade 18 contra CD 16, despistando os guardas e assumindo nova posição. Ficou cerca
+    de dez minutos sem observar as saídas. Narwhal está alerta, e Ren continuou apesar do limite acordado de romper
+    sob contravigilância.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: riscos
+    op: append
+    valor: Sem conhecimento de Tyr, Ren continuou a vigilância de Velis após uma verificação clara de contravigilância,
+      ultrapassando o limite acordado de romper e retornar se fosse testado.
+- transacao: s010-2d93b2a36e0f064f
+  sessao: 10
+  resumo: Ren aceitou que seguira uma isca e preservou Kethra como possível fonte interna. Retirou-se sem ser visto
+    enquanto Passos sem Pegadas durou e voltou como velho à Casa de Tyr. Com Percepção 15 contra CD 14, localizou
+    Halessa e uma sombra possível, mas confirmou que havia um acólito e circulação interna; por não ser estritamente
+    seguro e contrariar o protocolo da ficha, entrou formalmente. Às 21:20, Halessa o recebeu em sala reservada
+    e pediu o relato completo.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren retornou à Casa de Tyr quinze minutos antes do fim da janela, sem ferimentos e com o disfarce preservado.
+      Embora tenha localizado uma sombra pela qual poderia tentar entrar, respeitou a ficha de retorno e o procedimento
+      formal ao perceber que a sala não oferecia segurança estrita.
+- transacao: s010-e49df4e854184f27
+  sessao: 10
+  resumo: Ren relatou integralmente a operação, exceto a identidade de sua carta na manga. Halessa reconheceu o
+    valor da isca confirmada, mas recusou tratar Shizune como certeza e censurou Ren por voltar à vigilância após
+    contravigilância. A honestidade preservou a coordenação, porém nova quebra encerrará operações clandestinas
+    conjuntas. Halessa aceitou proteger a fonte não revelada, mas Tyr não agirá sobre ela sem fato verificável.
+    O flerte permaneceu sutil ao falar da porta deixada aberta.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas_por_halessa
+    op: append
+    valor: Ren relatou a reação de Velis, a detecção do velho por um guarda, o reposicionamento sob Passos sem Pegadas,
+      o portador sem libré e a escuta que confirmou a antiga casa de cópias como isca; uma mensagem considerada
+      importante seguiu rota desconhecida.
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas_por_halessa
+    op: append
+    valor: Ren afirmou manter uma carta na manga contra Narwhal, mas não revelou sua natureza ou identidade. Halessa
+      aceitou não exigir a fonte, estabelecendo que Tyr só poderá agir quando Ren trouxer fato observável suficiente
+      para avaliação.
+  - alvo: relacao:halessa_vorn
+    caminho: confianca
+    op: set
+    valor: 'condicional e tensionada: Halessa preserva confiança na honestidade posterior, competência e retorno
+      de Ren, mas ele violou o limite de ruptura ao retomar a vigilância depois de contravigilância clara; nova
+      quebra semelhante encerrará coordenação clandestina com Tyr'
+  - alvo: relacao:halessa_vorn
+    caminho: acordos
+    op: append
+    valor: Após o debriefing de 12 Eleasis, Halessa estabeleceu que nova violação deliberada de contingência numa
+      operação coordenada encerrará a participação de Tyr em ações clandestinas com Ren. A informação obtida não
+      autorizou retroativamente a quebra.
+  - alvo: relacao:halessa_vorn
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ao ouvir Ren agradecer por não ter surgido de uma sombra e confessar preferir sombras a portas, Halessa
+      respondeu que a porta havia sido deixada aberta para ele; a frase carregou por um instante interesse pessoal
+      sutil antes de ela retomar o profissionalismo.

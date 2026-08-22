@@ -1,16 +1,16 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 10
-modo: experiencia_supervisionada_de_shinta_no_patio_de_entregas
+modo: conversa_privada_com_nera_apos_operacao_velis
 localizacao:
-  area: Casa do Salgueiro Seco, Ravens Bluff
-  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no depósito de figurinos velhos do circo, encerrando a conversa privada com Nera
 tempo:
   data: 12 Eleasis, 1372 DR
-  hora_aproximada: '12:00'
+  hora_aproximada: '22:35'
 mecanica_imediata:
   pv: 45/45
-  ki: 4/6
+  ki: 2/6
   ca: 17
   deslocamento: 55 pés
 resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
@@ -30,8 +30,8 @@ consulta_profunda_somente_se_necessaria:
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren está desarmado e vestido como Shinta; espadas, shurikens e ferramentas de ladrão ficaram em seus
-      aposentos no circo. Ele leva apenas o Broche do Semblante Humilde oculto e inativo.
+    descricao: Ren partiu para a operação sem espadas, shurikens ou qualquer arma; leva sob o disfarce apenas suas
+      ferramentas de ladrão e objetos coerentes com o velho erudito.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 05:15 de 12 Eleasis
   descanso_longo_incompleto:
@@ -39,3 +39,24 @@ efeitos_temporarios:
       longo e não recebeu recuperação mecânica.
     duracao: até completar um descanso longo
     inicio: 00:45 de 12 Eleasis
+  disfarce_velho_erudito:
+    descricao: Nera ajudou a remover a maior parte do disfarce de velho erudito; ainda restam maquiagem e fixadores
+      que Ren precisa limpar nos próprios aposentos. A aparência já não serve para infiltração convincente.
+    duracao: até Ren concluir a remoção
+    inicio: 22:35 de 12 Eleasis
+  narwhal_alerta_para_observador_idoso:
+    descricao: A segurança de Narwhal Manor não reconheceu Ren, mas suspeita que um velho erudito vigiava a entrada.
+      Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
+    duracao: até a segurança encerrar o alerta ou a situação mudar
+    inicio: 19:50 de 12 Eleasis
+  lacuna_dez_minutos_vigilancia_velis:
+    descricao: Ren perdeu visão das saídas de Narwhal Manor durante aproximadamente dez minutos enquanto despistava
+      o guarda e se reposicionava; não sabe se Velis ou um mensageiro saiu nesse intervalo.
+    duracao: até obter informação que confirme ou descarte uma saída nesse intervalo
+    inicio: 19:55 de 12 Eleasis
+  pista_endereco_portador_velis:
+    descricao: Ren confirmou por escuta que a antiga casa de cópias de portadas azul-escuras é uma isca de contravigilância.
+      O portador sabia do velho observado em Narwhal e foi enviado para atrair qualquer perseguidor; uma voz afirmou
+      que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
+    duracao: conhecimento persistente
+    inicio: 20:51 de 12 Eleasis

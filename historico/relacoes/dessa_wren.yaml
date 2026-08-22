@@ -73,3 +73,34 @@ relacao:
   - Se os disfarces voltarem ligados a sangue ou crime evidente, Dessa dirá que foram roubados dela.
   - Dessa entende disfarce teatral e roupas comuns, mas não é especialista em espionagem real.
   - A versão teatral de Kara-Tur feita por Dessa será adaptação local, não reconstrução cultural autêntica.
+eventos_pos_migracao:
+- transacao: s010-49ca439ffbb6d852
+  sessao: 10
+  resumo: 'Ren retornou ao circo após romper contato, tomou banho e pediu a Dessa um conjunto limpo e modesto para
+    Shinta; ela separou peças por 6 PP, ainda sem pagamento. Ren revelou a Silva a cobertura Shinta, os dois empregos,
+    a casa e a contravigilância. Silva entregou a confirmação selada de Tyr: Sirrus autorizou a convocação de Velis
+    no primeiro sino após o anoitecer. Ela aprovou a ruptura de cauda, mas alertou que o broche está gasto e Halessa
+    deve saber.'
+  deltas:
+  - alvo: relacao:dessa_wren
+    caminho: pedidos_pendentes
+    op: append
+    valor: Em 12 Eleasis, Dessa separou para um suposto homem pobre recém-empregado um conjunto limpo e modesto
+      de camisa, calças e colete por 6 PP; Ren ainda não confirmou nem pagou.
+- transacao: s010-dcc59e91eb4e492a
+  sessao: 10
+  resumo: Ren pagou 2 PO a Dessa pelo auxílio e pelo traje de Shinta para amanhã. Com seu kit de disfarce, Dessa
+    e Nera, obteve 22 contra CD 15 e tornou-se um velho erudito de Ravens Bluff, alterando idade, origem aparente,
+    silhueta e postura. O disfarce é excelente em interação comum, mas vulnerável a toque, chuva, suor intenso ou
+    inspeção prolongada. Ren não comeu durante a preparação.
+  deltas:
+  - alvo: relacao:dessa_wren
+    caminho: pedidos_pendentes
+    op: remove
+    valor: Em 12 Eleasis, Dessa separou para um suposto homem pobre recém-empregado um conjunto limpo e modesto
+      de camisa, calças e colete por 6 PP; Ren ainda não confirmou nem pagou.
+  - alvo: relacao:dessa_wren
+    caminho: acordos
+    op: append
+    valor: Em 12 Eleasis, Dessa recebeu 2 PO pelo auxílio qualificado no disfarce de velho erudito de Ren e pelo
+      conjunto limpo e respeitável de Shinta, separado para a manhã seguinte.

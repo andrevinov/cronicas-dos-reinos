@@ -346,3 +346,56 @@ eventos_pos_migracao:
     op: append
     valor: Ren cumpriu o combinado e acompanhou Nera de volta à carroça de Silva às 05:00 de 12 Eleasis; Nera pediu
       apenas que ele voltasse, sem exigir promessa absoluta.
+- transacao: s010-dcc59e91eb4e492a
+  sessao: 10
+  resumo: Ren pagou 2 PO a Dessa pelo auxílio e pelo traje de Shinta para amanhã. Com seu kit de disfarce, Dessa
+    e Nera, obteve 22 contra CD 15 e tornou-se um velho erudito de Ravens Bluff, alterando idade, origem aparente,
+    silhueta e postura. O disfarce é excelente em interação comum, mas vulnerável a toque, chuva, suor intenso ou
+    inspeção prolongada. Ren não comeu durante a preparação.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Nera ajudou Dessa e Ren a construir o disfarce de velho erudito, usando sua precisão de gravadora para
+      corrigir linhas, idade aparente e a leitura dos traços do rosto; disse preferir o rosto verdadeiro de Ren
+      e notou, preocupada, que ele não comeu.
+- transacao: s010-3794fc30beeb92b1
+  sessao: 10
+  resumo: Nera recusou pagamento pelo auxílio e aceitou pedir dinheiro se precisar, pedindo que Ren preserve recursos
+    e volte para ela retirar o disfarce. Ren partiu sem armas, levando apenas ferramentas de ladrão. Na Casa de
+    Tyr, o disfarce enganou inicialmente os guardas e surpreendeu Halessa. Ela o apresentou ao oficial Garran Holt,
+    que definiu sua posição na entrega. Ao primeiro sino após o anoitecer, ambos estão prontos para sair sob os
+    limites acordados.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Antes da operação contra Velis, Nera recusou pagamento pelo auxílio no disfarce. Ren ofereceu compartilhar
+      todo o dinheiro caso ela precise; Nera aceitou pedir ajuda sem falso orgulho, mas pediu transparência sobre
+      quanto resta e que ele preserve recursos para suas próprias saídas.
+- transacao: s010-8e757d25f5de5aaa
+  sessao: 10
+  resumo: Silva permitiu vinte minutos com Nera, sem acordar Tavin nem dormirem juntos. Ren contou a operação inteira,
+    admitiu a quebra do limite e revelou que Kethra Dunn é a fonte interna preservada de Halessa. Nera recusou tratá-la
+    como carta ou peça e pediu que qualquer novo contato proteja sua sobrevivência. Ren reconheceu Kethra como aliada.
+    Nera ajudou a remover parte do disfarce, reiterou que Ren voltou inteiro e mandou-o comer e dormir. Às 22:35,
+    o descanso ainda não começou.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas_por_nera
+    op: append
+    valor: 'Ren contou integralmente a operação de Velis: a convocação, a detecção do velho, a violação do limite
+      de ruptura, o portador-isca, a escuta na casa de cópias, a mensagem verdadeira perdida e as censuras de Halessa
+      e Silva.'
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas_por_nera
+    op: append
+    valor: Ren revelou que Kethra Dunn trabalha dentro de Narwhal Manor, ajudou-o por causa de Colm/Dent e é a fonte
+      interna que ele manteve oculta de Halessa. Nera sabe que o antigo ponto morto morreu e que novo contato exigirá
+      proteção contra padrão rastreável.
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Nera recusou tratar Kethra como carta ou peça e pediu que Ren proteja a sobrevivência dela antes de usar
+      a informação. Ren reconheceu Kethra como aliada. Nera ajudou a remover parte do disfarce, falou do medo de
+      vê-lo manipulado por escolhas sem combate e encerrou a visita para que ele pudesse comer e dormir.

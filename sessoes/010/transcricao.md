@@ -911,3 +911,952 @@ Ele devolve a tábua ao assistente e indica um banco sob o telhado.
 — Refeição. Depois continuamos até o serviço acabar. Se a tarde for igual à manhã, você recebe as quatro pratas e volta amanhã.
 
 Uma tigela de ensopado simples, pão escuro e água são colocados diante de Shinta. Ele ainda não ganhou acesso a selos, rotas ou papéis sensíveis. Contudo, ao fim da primeira metade do dia, Tomas já o trata como um trabalhador em experiência — não apenas como um homem contando uma história ruim no portão.
+
+<!-- turno-transacional:s010-75125365f44b1e57 -->
+**Jogador**
+
+Ren come, e logo após comer já volta diligentemente para sua função. Continua fazendo tudo o mais organizado possível, se animando sempre que acerta, mas concentrado e silencioso.
+**Narrador**
+
+Shinta termina a refeição sem prolongar o intervalo. Devolve a tigela, limpa o lugar onde se sentou e retorna à mesa alta antes que o assistente precise chamá-lo.
+
+A tarde começa com recibos, marcas e volumes semelhantes aos da manhã. Shinta já não precisa repetir mentalmente cada etapa. Confere a casa, o número e o peso; separa qualquer ambiguidade; registra a contagem; leva o volume à fila correta. Sempre que o assistente confirma um lote sem encontrar erro, uma alegria breve aparece no rosto dele — pequena demais para interromper o trabalho, sincera demais para passar inteiramente despercebida.
+
+O assistente percebe.
+
+— Você gosta mesmo quando acerta.
+
+Shinta apenas sorri e volta ao próximo recibo.
+
+Depois que a procissão mercantil libera as ruas do Lower Trades, as carroças atrasadas chegam quase juntas. O pátio enche rapidamente. Shinta abandona a mesa quando mandam, ajuda na balança, reorganiza filas e retorna aos registros sem perder a ordem anterior. Não tenta mostrar serviço falando; mostra permanecendo onde é necessário.
+
+Com o passar das horas, o assistente deixa a tábua encerada diretamente com ele. Ainda confere amostras e mantém a caixa selada fora de alcance, mas já não vigia cada movimento das mãos de Shinta.
+
+No fim da tarde, o último volume é levado ao depósito. Shinta limpa a superfície da mesa, reúne os recibos abertos na ordem em que os recebeu e entrega a tábua sem precisar ser lembrado.
+
+Tomas aparece pouco depois. Examina a contagem final, consulta o assistente e abre uma pequena bolsa.
+
+Quatro peças de prata caem na mão de Shinta.
+
+— Você trabalhou bem — diz o escriturário. — Melhor do que falou esta manhã.
+
+Desta vez, não há censura suficiente para apagar o reconhecimento.
+
+— Pode voltar amanhã. Depois do primeiro sino, venha diretamente a esta entrada. Não antes. Você continua sob supervisão e continua longe de selo fechado até eu decidir o contrário.
+
+Tomas recolhe a bolsa.
+
+— Pontualidade, ordem e silêncio. Mantenha os três e talvez eu encontre uso permanente para você.
+
+O convite é real, mas limitado. Shinta conquistou mais um dia e uma melhora prática na confiança; não conquistou ainda acesso sensível.
+
+O portão permanece aberto para sua saída. São aproximadamente quatro horas da tarde.
+
+<!-- turno-transacional:s010-5282e950048322e1 -->
+**Jogador**
+
+Shinta se despede, muito agradecido e visivelmente animado.
+
+"Shinta vai comprar roupa nova, amanhã Shinta não vem com trapo velho, Shinta tem emprego melhor. Obrigado, senhor Tomas!"
+
+E Shinta continua no papel de Shinta, andando tranquilamente pelas ruas, rodando, evitando calda. Depois de 40 minutos andando a esmo, Shinta se dirige ao circo, ainda no personagem, mas gradativamente voltando a ser Ren.
+**Narrador**
+
+A alegria de Shinta é visível demais para ser confundida com cortesia. Ele fecha os dedos ao redor das quatro moedas e se curva diante de Tomas.
+
+— Shinta vai comprar roupa nova, amanhã Shinta não vem com trapo velho, Shinta tem emprego melhor. Obrigado, senhor Tomas!
+
+Tomas olha primeiro para as roupas e depois para as moedas.
+
+— Limpas bastam. Não gaste o primeiro pagamento inteiro tentando parecer alguém que recebe o dobro.
+
+É o mais próximo que o escriturário chega de um conselho pessoal.
+
+Shinta agradece novamente e deixa a propriedade pelo portão de serviço. Nas ruas, mantém os ombros de trabalhador, o passo tranquilo e a curiosidade inofensiva de quem acaba de receber dinheiro e ainda decide onde gastá-lo. Para diante de uma banca de roupas usadas, examina uma camisa sem comprar, atravessa uma praça pequena e toma uma rua que não aponta diretamente para lugar algum.
+
+Quarenta minutos passam entre desvios, pausas e mudanças graduais de direção.
+
+**Contravigilância de Shinta até o circo — Furtividade: d20 5 + 7 = 12 contra CD 14. Falha.**
+
+Não surge um perseguidor claro. O problema é um padrão que Ren não consegue eliminar.
+
+Uma pequena carroça coberta por lona parda passa por ele perto da banca de roupas. Reaparece duas ruas depois, agora parada diante de um armazém. Mais tarde, quando Shinta começa a orientar o trajeto para o circo, ele vê uma cobertura parda semelhante atravessar uma rua paralela. Pode ser a mesma carroça. Pode ser apenas um dos muitos veículos iguais usados por entregadores da cidade.
+
+Um homem de barrete escuro também aparece duas vezes no campo de visão, mas nunca acompanha uma mudança suficiente para provar intenção.
+
+Ren testa mais uma curva. Nenhum deles surge imediatamente atrás.
+
+Ainda assim, o caminho não está limpo pelos padrões que ele próprio estabeleceu. A falha não revela uma cauda; revela que ele não pode garantir sua ausência.
+
+Às cinco da tarde, Ren está a poucas ruas dos terrenos do circo, protegido da visão direta do acampamento por um lavadouro e uma fileira de depósitos baixos. Por fora, continua sendo Shinta. Por dentro, a postura do trabalhador começa a ceder lugar à atenção de Ren.
+
+O circo está próximo, mas ele ainda não expôs sua entrada. O padrão ambíguo permanece sem resolução.
+
+<!-- turno-transacional:s010-bb8ddf4783638be7 -->
+**Jogador**
+
+Com seu caminho não limpo, Ren entra na loja mais lotada que vê, como se estivesse procurando algo pra comprar. Se mistura no meio da multidão e, ali no meio, quando tem garantia de ter quebrado a linha de visão, toca no Broche do Semblante Humilde.
+
+E sai de lá, fazendo outra forma de andar.
+
+Depois se esconde e fica vigiando por alguns minutos. Talvez seus perseguidores (se tiver algum) se interessem em entender como o estrangeiro pode ter sumido dentro daquela loja. Assim ele fica espiando pra saber se algum curioso aparece.
+**Narrador**
+
+Ren escolhe uma loja de tecidos que parece pequena demais para a quantidade de gente dentro dela. Duas mesas cobertas de retalhos baratos foram empurradas para perto da porta, atraindo criados, artesãos e mulheres que discutem preços enquanto um caixeiro tenta impedir que mãos diferentes misturem três pilhas recém-separadas.
+
+Shinta entra como quem viu uma pechincha.
+
+Ele pega um tecido grosso, pergunta o preço com seu sotaque carregado, devolve-o com pesar e permite que o movimento da loja o carregue para o fundo. Um homem passa entre ele e a porta. Depois uma mulher com dois cestos. Ren muda de corredor, acompanha um grupo por alguns passos e deixa uma coluna de prateleiras encobri-lo.
+
+**Ruptura de contato na loja — Furtividade: d20 com vantagem [9, 1] → 9 + 7 = 16 contra CD 14. Sucesso.**
+
+Quando nenhuma linha reta alcança a entrada, os dedos de Ren encontram o broche sob as vestes.
+
+O metal esfria contra sua pele. A mudança não produz clarão nem movimento dramático: Shinta apenas deixa de estar ali. No lugar dele há um homem comum de Ravens Bluff, cabelos castanhos sem brilho, rosto estreito e cansado, roupa ilusoriamente remendada em tons pardos. Alguém que poderia carregar caixas em qualquer armazém e ser esquecido antes de dobrar a esquina.
+
+Ren abandona também o andar do pescador estrangeiro. Sai com passos curtos, um ombro ligeiramente mais baixo que o outro e a pressa resignada de quem ainda tem uma entrega a fazer.
+
+Ninguém na loja reage à sua passagem.
+
+Ele contorna o quarteirão e encontra posição atrás de uma escada externa, entre barris vazios e a parede de uma oficina. Dali, por uma abertura estreita, consegue vigiar a entrada sem se oferecer às pessoas que saem.
+
+**Vigiar a reação ao desaparecimento de Shinta — Percepção: d20 7 + 6 = 13 contra CD 15. Falha.**
+
+Durante os minutos seguintes, a loja engole e devolve gente demais.
+
+Uma mulher para à porta e examina a rua, mas logo chama uma criança que se demorou junto à banca vizinha. Um rapaz entra, sai sem pacote e volta pouco depois acompanhado por outro homem. Perto do fim da espera, um barrete escuro atravessa o fluxo de pedestres do outro lado da rua — longe demais, por pouco tempo demais, para Ren reconhecer o rosto sob ele ou afirmar que seja o mesmo homem visto durante o trajeto.
+
+Ninguém inicia uma busca evidente por Shinta. A carroça de lona parda não aparece.
+
+Ren não descobre se havia uma cauda. Também não consegue separar, com segurança, um observador frustrado da multidão comum. Mas uma coisa está resolvida: caso alguém estivesse mantendo contato apenas pela visão, esse contato foi quebrado. Quem entrou naquela loja seguindo Shinta não teria motivo para associá-lo ao homem apagado que agora observa das sombras.
+
+Pouco depois das cinco e dez, Ren continua desarmado, com o disfarce humilde do broche ativo. O caminho até o circo já não carrega a figura de Shinta consigo.
+
+<!-- turno-transacional:s010-49ca439ffbb6d852 -->
+**Jogador**
+
+Ren volta para o circo. Toma banho, fala com Dessa, pedindo a ela roupas para um homem pobre que conseguiu um emprego melhor. Depois Silva. Conta a ela sobre Shinta (ela não sabia ainda), sobre a casa que está tentando conseguir, do emprego com o jardineiro, do emprego com o escriturário e da impressão que teve de estar sendo seguido e de como fez pra não levar cauda pro circo.
+**Narrador**
+
+A figura apagada criada pelo broche percorre as últimas ruas sem repetir o caminho de Shinta. Ren chega aos fundos do circo pelo lado das carroças de abastecimento, acompanha por alguns instantes dois carregadores e, protegido entre uma lona de reparos e a traseira de um carroção, deixa o disfarce mágico se desfazer.
+
+O homem de Ravens Bluff desaparece. Ren entra no acampamento sem trazer consigo nenhum observador que consiga associar aquela entrada ao estrangeiro da Casa do Salgueiro Seco.
+
+Ele vai primeiro aos próprios aposentos. A água do banho escurece com a poeira das ruas e o cheiro do trabalho nos depósitos. Quando sai, as roupas de Shinta ficam separadas das demais — ainda úteis, mas já insuficientes para o homem que deverá apresentar-se amanhã como empregado de um escriturário.
+
+Dessa está diante de uma arara baixa, inspecionando a costura interna de um casaco de palco, quando Ren faz o pedido: roupas para um homem pobre que conseguiu um emprego melhor.
+
+Ela não levanta os olhos imediatamente.
+
+— Pobre de verdade ou pobre como um nobre imagina que um pobre se veste?
+
+Dessa finalmente o examina, dos cabelos ainda úmidos aos pés.
+
+— Não responda. Se conseguiu emprego melhor, precisa parecer limpo, cuidadoso e ligeiramente orgulhoso da única roupa boa que possui. Camisa sem manchas, calças resistentes e um colete que já pertenceu a alguém mais largo. Nada que pareça fantasia.
+
+Ela afasta três peças da arara, compara uma delas aos ombros de Ren e estreita os olhos.
+
+— Curiosamente, esse homem pobre tem quase exatamente as suas medidas.
+
+A provocação vem acompanhada de um meio sorriso, mas ela não pergunta o nome do homem nem a finalidade do disfarce.
+
+— Seis pratas pelo conjunto. Posso deixá-lo pronto antes de você precisar dele. Se quiser botas que não denunciem seus pés, isso é outra conversa.
+
+Dessa mantém as peças separadas, aguardando apenas a confirmação e o pagamento.
+
+Silva está perto de sua carroça, terminando de amarrar um pequeno embrulho de ervas secas. Ela olha para Ren uma vez, nota o banho recente e faz um gesto para que ele entre antes mesmo que comece o relato.
+
+Ele conta sobre Shinta Ryoushi: o pescador estrangeiro que lê melhor do que fala; a casa que tenta conseguir; o jardineiro que lhe deu trabalho; Tomas, o escriturário, que o testou e acabou contratando-o para o pátio de entregas. Explica também o padrão incerto nas ruas, a carroça de lona parda, o homem de barrete escuro, a loja cheia e o uso do broche para romper qualquer associação visual antes de voltar ao circo.
+
+Silva escuta sem interromper. Quando Ren termina, ela permanece alguns instantes com os braços cruzados.
+
+— Shinta — repete. — Claro. Ren, Kage e o bicho-papão de Kozakura evidentemente não estavam lhe dando nomes suficientes.
+
+O humor seco dura apenas um instante.
+
+— Um emprego verdadeiro é uma boa cobertura. Dois empregos verdadeiros são duas vezes mais pessoas capazes de notar quando sua história não fecha. Tomas desconfiou de alguma coisa?
+
+Ren já havia descrito a cautela do escriturário, o acesso limitado e o trabalho supervisionado. Silva absorve isso com um pequeno movimento de cabeça.
+
+— Então ele não confia em Shinta. Ainda. Isso é mais seguro do que um homem que entrega as chaves no primeiro dia. Não tente apressá-lo.
+
+Sobre a possível cauda, a avaliação dela é mais cuidadosa.
+
+— Você não provou que alguém o seguia. Mas também não trouxe a dúvida até nossas carroças. Mudou a aparência fora daqui, rompeu contato e só então entrou. Foi a decisão certa.
+
+Silva abre uma caixa estreita guardada sob o banco. De dentro dela, retira uma ficha dobrada, marcada com o selo reservado da Casa de Tyr.
+
+— Isto chegou antes do meio-dia. Eu verifiquei o selo e guardei até você voltar.
+
+Ela entrega o documento a Ren.
+
+— Sirrus autorizou. Velis Rook receberá uma convocação suplementar no primeiro sino depois do anoitecer. Halessa terá o oficial de justiça e o lugar de auxiliar que prometeu a você. Os limites continuam os mesmos: observar, seguir e voltar. Nada de entrar, roubar, capturar ou transformar uma rua em campo de batalha.
+
+O olhar de Silva desce até o ponto onde o broche costuma ficar escondido.
+
+— Mas você acabou de gastar seu melhor disfarce. Ele não estará disponível outra vez antes do amanhecer.
+
+Ela inclina a cabeça na direção do espaço de Dessa.
+
+— Pelo menos falou com a pessoa certa antes de vir até mim. Se pretende ficar irreconhecível para Velis, terá de fazer isso com tecido, postura e distância. E deverá avisar Halessa de que a magia não está mais disponível; ela precisa saber exatamente com que recurso está contando.
+
+Silva volta a cruzar os braços.
+
+— Agora você tem pouco tempo para comer, preparar uma aparência que Velis nunca tenha visto e decidir como chegará à Casa de Tyr sem levar Shinta, Kage ou o circo consigo.
+
+<!-- turno-transacional:s010-dcc59e91eb4e492a -->
+**Jogador**
+
+Ren se juntará a Dessa e Nera e, junto com seu próprio kit de disfarce, se disfarcará de um homem velho, desses que vive a ler livros, removendo com maquiagem o aspecto oriental dos olhos. Ele nem irá comer, só produzir o disfarce, o melhor que puder. Dará duas moedas de ouro a Dessa pelo auxílio no disfarce e também pelas roupas de "Shinta bem vestido" do próximo dia.
+**Narrador**
+
+Sim. A combinação das três habilidades produz mais do que maquiagem competente: Ren conhece o próprio rosto e tem proficiência com o kit; Dessa sabe alterar silhueta, idade aparente e posição social; Nera possui a precisão de mãos de uma gravadora e percebe os pequenos traços que fazem uma falsificação parecer artificial.
+
+Ren encontra as duas no espaço de figurinos. Coloca duas moedas de ouro na mesa de Dessa: pagamento tanto pelo auxílio imediato quanto pelo conjunto limpo e respeitável que Shinta usará no dia seguinte.
+
+Dessa recolhe as moedas, morde uma delas por hábito teatral e aponta para um banco.
+
+— Por esse preço, seu pobre homem terá até cotovelos honestos. Sente-se.
+
+Nera aproxima-se por trás de Ren e toca por um instante o rosto ainda sem maquiagem.
+
+— Eu prefiro este — diz em voz baixa. Então olha para os materiais espalhados. — Mas posso ajudar a escondê-lo.
+
+O trabalho começa pela estrutura, não pelas cores. Dessa troca as roupas leves por camadas que quebram o contorno atlético de Ren: camisa folgada, colete de lã escura e um casaco antigo, bem conservado nos pontos que um homem cuidadoso remendaria. Acrescenta volume discreto na cintura e retira visualmente largura dos ombros. Depois encontra uma gola que força o pescoço para a frente sem impedir seus movimentos.
+
+— Um velho que vive entre livros não precisa parecer fraco — explica ela. — Precisa parecer alguém cujo corpo passou quarenta anos dobrado sobre uma mesa.
+
+Nera trabalha no rosto com pincéis finos. Em vez de simplesmente cobrir os olhos de Ren, ela altera a leitura ao redor deles: redesenha as sobrancelhas, aprofunda as órbitas com sombra, suaviza os marcadores de origem e acrescenta o peso irregular das pálpebras envelhecidas. Ren orienta onde a maquiagem precisa acompanhar os próprios músculos para não se romper quando falar.
+
+Linhas de idade surgem na testa, junto ao nariz e ao redor da boca. Pequenas manchas quebram a uniformidade jovem da pele. Dessa mistura fios grisalhos aos cabelos e reduz o brilho deles com pó. Um par de lentes simples, uma mancha antiga de tinta em dois dedos e unhas cuidadosamente descuidadas completam a história.
+
+Nera faz Ren virar o rosto para a luz, examina-o e apaga uma linha.
+
+— Esta estava bonita demais — diz. — Parecia desenhada.
+
+Dessa ajusta o casaco enquanto Ren experimenta o peso do novo corpo. As duas corrigem não apenas a aparência, mas o espaço que ele deve ocupar: o centro de gravidade um pouco adiante, passos econômicos, mãos que procuram apoio antes de o corpo precisar e olhos acostumados a aproximar letras pequenas.
+
+**Preparar o disfarce de velho erudito — Inteligência com kit de disfarce, auxílio de Dessa e Nera: d20 com vantagem [11, 18] → 18 + 4 = 22 contra CD 15. Sucesso.**
+
+Quando terminam, não há sobre a cadeira um jovem de Kozakura fingindo velhice.
+
+Há um homem idoso de Ravens Bluff, magro sob roupas gastas, mas dignas, com o rosto marcado por décadas de leitura à luz ruim. A maquiagem reconfigura a leitura dos olhos sem parecer uma camada aplicada sobre eles. O cabelo, a gola e a postura impedem que a atenção se detenha no formato real do rosto. Até as mãos contam a mesma história: tinta, papel e uma tremura pequena que pode desaparecer quando ele precisar agir.
+
+A transformação resiste bem a uma conversa e a observação comum. Chuva, suor intenso, toque direto no rosto ou uma inspeção paciente ainda podem ameaçá-la; maquiagem mundana não possui a perfeição física da magia. Mas Velis teria de procurar Ren naquele velho para começar a encontrá-lo.
+
+Nera havia deixado comida ao alcance da mão. Permanece intocada durante todo o trabalho. Quando percebe isso, ela não discute diante de Dessa; apenas lança a Ren um olhar que promete retomar o assunto depois.
+
+Dessa separa, em outro embrulho, a camisa, as calças e o colete de Shinta.
+
+— Isto fica pronto para amanhã. O velho, por outro lado, está pronto agora.
+
+Já passa das seis e meia. O broche continua gasto, mas Ren dispõe de um disfarce mundano excepcional — construído para sobreviver não apenas à primeira impressão, mas ao tempo necessário para estar junto do oficial de justiça sem oferecer a Velis um rosto conhecido.
+
+<!-- turno-transacional:s010-3794fc30beeb92b1 -->
+**Jogador**
+
+Antes de ir, Ren brinca com Nera.
+
+"Quanto esse senhor precisa pagar à essa bela jovem seladora por seus serviços artísticos?"
+
+Depois que ela responder, Ren explica que, se ela precisar de dinheiro, o dinheiro dele é dela. Basta falar.
+
+Se Nera não pedir nada, Ren sairá para encontrar o encarregado de Tyr que irá conduzir a ordem a Velis. Ren levará seu kit de ladrão consigo, mas não levará arma alguma.
+**Narrador**
+
+Nera percorre o disfarce com um olhar crítico, da raiz grisalha dos cabelos às mãos manchadas de tinta. Quando o velho erudito lhe pergunta o preço de seus serviços, ela apoia um dedo no queixo, como se calculasse uma soma difícil.
+
+— Para esse senhor? Nada. Não o conheço.
+
+O olhar dela sobe até os olhos alterados pela maquiagem.
+
+— Para você, também nada. Eu quis ajudar.
+
+Quando Ren explica que, se ela precisar de dinheiro, o dinheiro dele é dela, o humor no rosto de Nera se desfaz numa expressão mais terna e séria.
+
+— Se eu precisar, eu falo. Não vou fingir orgulho enquanto você tem como ajudar. Mas não me deixe sem saber quanto lhe resta, Ren. Dinheiro também é uma saída, e você precisa continuar tendo saídas.
+
+Ela segura a gola do velho entre dois dedos e a endireita.
+
+— Minha cobrança é que volte com esse rosto ainda inteiro. Quero ser eu a tirá-lo de você.
+
+Nera não pede moeda alguma.
+
+Ren recolhe suas ferramentas de ladrão e as distribui sob o casaco, onde o volume desaparece entre o estojo de lentes, papéis sem importância e objetos que um velho estudioso poderia carregar. Espadas e shurikens permanecem nos aposentos. Não há lâmina oculta em suas roupas.
+
+Ele deixa o circo ainda encurvado, tomando uma rota que não repete a entrada de Shinta. O homem idoso avança sem pressa em direção ao Temple District, resmungando uma vez diante de uma carroça que lhe toma a passagem e parando sob um lampião para aproximar dos olhos uma folha sem valor.
+
+As primeiras luzes já ardem nas fachadas quando ele chega à Casa de Tyr.
+
+O guarda da entrada não reconhece Ren. Mesmo depois de examinar a ficha reservada trazida por ele, observa o velho mais uma vez antes de chamar um acólito e mandá-lo conduzir o visitante a uma antecâmara lateral.
+
+Halessa está ali com outro homem. O oficial de justiça veste um casaco marrom reforçado nos ombros e carrega um tubo de couro preso por duas tiras. Uma pequena placa de ferro com a balança de Tyr identifica sua função. É um homem de meia-idade, rosto largo, cabelo começando a rarear e postura de quem prefere portas abertas por autoridade a portas derrubadas por força.
+
+Halessa olha para o visitante idoso. Seu olhar passa por ele, retorna e permanece por alguns segundos sobre o rosto transformado.
+
+— A ficha — pede.
+
+Ela confere o selo, examina novamente os olhos de Ren e só então a compreensão aparece. É pequena: uma alteração na respiração, seguida de um quase sorriso que ela reprime antes que se forme por inteiro.
+
+— Ren?
+
+O oficial de justiça vira o rosto para ela e depois para o velho.
+
+Halessa recupera imediatamente o tom profissional.
+
+— Este é o auxiliar que mencionei. E este é Garran Holt, oficial encarregado da convocação.
+
+Garran mede o velho de cima a baixo.
+
+— Disseram-me que o auxiliar saberia não ser lembrado. Não disseram que ele pareceria ter idade para ter redigido as primeiras leis da cidade.
+
+— O recurso mágico precisou ser gasto durante uma contravigilância — esclarece Halessa. — Ele veio informar a mudança, como deveria. Este disfarce é mundano.
+
+A atenção dela permanece por um instante sobre o trabalho de maquiagem, avaliando a transformação com interesse difícil de classificar antes de voltar ao documento nas mãos de Garran.
+
+— E convincente.
+
+O primeiro sino depois do anoitecer começa a ressoar do lado de fora.
+
+Garran retira do tubo uma ordem dobrada, presa por selo amarelo e cordão branco.
+
+— Vamos até o endereço onde Velis Rook deve ser encontrado. Você anda dois passos atrás e à minha esquerda. Não fala com o convocado, não toca na ordem e não entra em lugar algum que eu não tenha autoridade para atravessar. Quando a entrega terminar, eu retorno por uma rota direta. Você faz o que veio fazer.
+
+Halessa completa:
+
+— Duas horas, contadas a partir da entrega. Se houver contravigilância, você rompe. Se Shizune aparecer, você observa e volta. Não improvisa uma prisão, não procura provas entrando em propriedade e não transforma suspeita em sentença.
+
+Ela estende a Ren uma pequena ficha de retorno marcada apenas com o símbolo de Tyr.
+
+— Mostre isto na entrada quando voltar. Eu estarei esperando ou deixarei alguém que saiba recebê-lo.
+
+Garran prende o tubo sob o braço e dirige-se à porta. À luz da antecâmara, Ren continua parecendo apenas o velho erudito chamado para auxiliar um oficial em alguma minúcia documental. Suas ferramentas estão escondidas. Nenhuma arma foi levada.
+
+O sino ainda ressoa quando chega o momento de partir.
+
+<!-- turno-transacional:s010-1d322ae2e10047ec -->
+**Narrador**
+
+**CORREÇÃO EXPLÍCITA DE CONTINUIDADE — cena da Casa de Tyr, 12 Eleasis, 19:10.**
+
+A fala em que Halessa explicava diante de Garran Holt que Ren havia gastado um recurso mágico durante uma contravigilância não aconteceu. Halessa preservou os métodos, recursos e movimentos anteriores de Ren. Diante do oficial, ela limitou-se a confirmar que o velho era o auxiliar autorizado, que sua identidade havia sido verificada e que o disfarce era adequado à operação. Garran não foi informado sobre o Broche do Semblante Humilde nem sobre a contravigilância realizada antes do retorno ao circo.
+
+<!-- turno-transacional:s010-c969aa0a454deb11 -->
+**Jogador**
+
+Ren, completamente no personagem, fala pra Halessa: "estou muito velho pra tentar improvisar a prisão de quem quer que seja, moça", e sorri de leve.
+
+Ren caminha tal como o Garran solicitou, e vai determinado de arrancar de Velis a posição de Shizune.
+**Narrador**
+
+O velho erudito recebe a ficha de retorno entre dois dedos manchados de tinta e responde a Halessa com uma voz mais fina, cansada pelo peso imaginário dos anos:
+
+— Estou muito velho pra tentar improvisar a prisão de quem quer que seja, moça.
+
+O sorriso é pequeno.
+
+Halessa sustenta o olhar dele. Por um instante, a severidade profissional perde terreno para o divertimento que ela tenta conter.
+
+— Ótimo — responde. — Pela primeira vez, sua aparência combina com a prudência que está prometendo.
+
+Garran solta uma expiração curta pelo nariz, sem decidir se ouviu uma brincadeira entre conhecidos ou apenas a excentricidade de um auxiliar idoso.
+
+Eles partem.
+
+Ren conserva exatamente a posição determinada: dois passos atrás e à esquerda do oficial. Não acelera quando Garran acelera, não corrige o homem quando ele escolhe uma rua mais movimentada e não permite que o corpo jovem apareça sob o casaco. A cada travessia, o velho olha primeiro para o chão irregular; diante das luzes mais fortes, estreita os olhos como quem enxerga pior à distância.
+
+O caminho deixa o Temple District e atravessa ruas onde estabelecimentos começam a fechar as portas. Garran não conversa. Uma vez, confere o tubo sob o braço. Outra, olha para trás apenas o suficiente para verificar que seu auxiliar mantém a posição.
+
+Narwhal Manor surge adiante com janelas iluminadas em dois andares e movimento reduzido no portão de serviço. Garran não toma a entrada principal. Apresenta a placa de ferro a um criado junto à lateral e anuncia, sem elevar a voz:
+
+— Convocação suplementar da Casa de Tyr para Velis Rook. Entrega pessoal e recibo de ciência.
+
+O criado tenta receber o documento em nome da casa.
+
+— Pessoal — repete Garran.
+
+Há uma espera de vários minutos. Ren permanece ligeiramente curvado, segurando alguns papéis contra o peito. Um guarda da propriedade observa Garran, depois o velho, e perde o interesse. Nada no auxiliar sugere o homem que já apagara uma lâmpada com um shuriken e arrancara uma pasta das mãos de Velis naquele mesmo lugar.
+
+Velis aparece enfim na porta lateral.
+
+Ele veste roupa de trabalho sem o casaco externo, como se tivesse sido chamado de uma escrivaninha. O cabelo foi empurrado para trás às pressas. Seus olhos pousam primeiro na placa de Garran, depois no tubo de couro e, por último, no auxiliar idoso.
+
+O olhar passa por Ren sem reconhecimento.
+
+Garran rompe o selo externo do tubo, preservando o selo da ordem, e mostra a identificação do destinatário.
+
+— Velis Rook?
+
+— Sim.
+
+— Por autoridade da Casa de Tyr, fica notificado a comparecer para esclarecimentos suplementares e apresentar os registros especificados no anexo. Leia antes de assinar a ciência.
+
+Velis recebe a ordem. A mão permanece firme até ele alcançar as primeiras linhas. Então o polegar começa a pressionar a borda do papel com força excessiva.
+
+Seus olhos percorrem o texto uma vez, voltam ao anexo e se detêm numa passagem específica. Ren não consegue ler as palavras daquela distância, mas vê a mudança: os lábios de Velis se comprimem e sua respiração fica mais curta.
+
+— Quando devo comparecer?
+
+— O horário está na ordem.
+
+— Posso consultar alguém antes?
+
+Garran não demonstra surpresa.
+
+— Pode buscar aconselhamento. Isso não altera o prazo, a obrigação de preservar os registros nem os termos da convocação.
+
+Velis olha brevemente para dentro da mansão. Não para o guarda, não para o criado: para o corredor além deles.
+
+— Isto surgiu por causa do meu depoimento anterior?
+
+— Minhas atribuições são entregar a ordem, registrar sua ciência e informar que dúvidas formais devem ser apresentadas à Casa de Tyr.
+
+Garran oferece a pequena prancha de recibo. Velis assina. A primeira letra sai mais funda que as demais.
+
+O oficial confere a assinatura, entrega a via destinada ao convocado e guarda o recibo no tubo. Depois faz um gesto quase imperceptível para Ren: a função de auxiliar terminou.
+
+Eles se afastam juntos por meia quadra. Na primeira esquina, Garran continua pela rota direta que prometeu tomar. Não olha para trás nem reconhece Ren com uma despedida que pudesse associá-los.
+
+Ren permanece sob a pele do velho.
+
+À distância, a porta lateral de Narwhal Manor já se fechou atrás de Velis. Nenhuma pessoa saiu imediatamente depois da entrega. Nenhum mensageiro foi despachado diante dos olhos de Ren. A convocação produziu uma reação evidente — mas ainda não revelou para quem Velis levará o problema.
+
+São aproximadamente sete e trinta e cinco. A partir da ciência assinada, as duas horas acordadas com Halessa começaram a correr.
+
+<!-- turno-transacional:s010-b252ac8404c6dc6a -->
+**Jogador**
+
+Ren fica ali, como velho, sentado em algum lugar discreto, de onde ele possa observar as idas e vindas em Narwhal Manor.
+
+Se ele ver Velis saindo ou alguém saindo com cara de quem vai entregar algo a alguém, Ren seguirá, tentando determinar se é realmente a convocação de Velis.
+**Narrador**
+
+Ren não permanece na esquina em que Garran o deixou. O velho atravessa devagar para o outro lado da rua e encontra o degrau largo de uma encadernadora já fechada, protegido em parte por um toldo recolhido. Dali ele enxerga a entrada lateral de Narwhal Manor entre duas carroças estacionadas.
+
+Tira do casaco um dos papéis sem importância, aproxima-o dos olhos e começa a lê-lo como se aguardasse alguém atrasado. A postura é perfeita. O rosto continua sendo o de um erudito idoso. O problema não está no personagem, mas na posição.
+
+**Manter vigilância discreta sobre Narwhal Manor — Furtividade: d20 2 + 7 = 9 contra CD 14. Falha.**
+
+O degrau parece discreto visto da rua. Para alguém acostumado a guardar a mansão, ele oferece uma linha conveniente demais para a porta de serviço.
+
+Durante os primeiros minutos, há apenas movimento comum: um criado leva um balde para dentro, uma mulher com avental sai para despejar água e dois trabalhadores atravessam o pátio sem deixar a propriedade. Velis não reaparece. Nenhum mensageiro parte diante dos olhos de Ren.
+
+Então o guarda que havia perdido o interesse pelo velho durante a entrega volta à entrada lateral.
+
+Ele não olha diretamente para Ren de imediato. Examina primeiro a rua na direção tomada por Garran, troca duas palavras com outro homem dentro do portão e apoia uma mão na grade. Só depois seus olhos percorrem as fachadas opostas e encontram o velho sentado diante da encadernadora.
+
+O guarda desaparece para dentro.
+
+Menos de dois minutos depois, surge pelo portão principal, agora vestindo um casaco comum por cima das cores da casa. Não toma o caminho mais curto até Ren. Caminha meia quadra na direção contrária, atravessa entre duas carroças e retorna pelo lado do toldo, testando se o velho acompanha movimento ou mantém atenção na entrada lateral.
+
+O disfarce impede reconhecimento. Não impede que o comportamento de um vigia seja percebido como vigilância.
+
+Pouco antes das oito, o homem para a alguns passos do degrau. Seu tom é cortês, mas a posição escolhida bloqueia parcialmente a visão de Ren para Narwhal Manor.
+
+— A loja fechou há algum tempo, senhor. Está esperando alguém?
+
+Nada relevante saiu da mansão antes da abordagem. Se Velis enviou alguma comunicação por outro meio, Ren ainda não teve como observá-la.
+
+A presença do guarda e o percurso que ele fez são compatíveis com uma verificação de contravigilância. A identidade de Ren permanece segura; sua posição, não. A janela concedida por Halessa continua correndo, mas a vigilância naquele ponto foi comprometida.
+
+<!-- turno-transacional:s010-9bd1eb647da39bc0 -->
+**Jogador**
+
+"Na verdade, estava descansando um pouco antes de ir. Eu moro depois do Temple District, é uma caminhada pesada pra um senhor como eu", Ren fala. E se despede, caminhando na direção contrária.
+
+Quando a mulher parar de olhá-lo, Ren liga Passos sem Pegadas, e busca uma posição próxima, mas agora mais oculto.
+**Narrador**
+
+O velho ergue os olhos do papel com a demora de quem precisa primeiro encontrar o foco.
+
+— Na verdade, estava descansando um pouco antes de ir. Eu moro depois do Temple District, é uma caminhada pesada pra um senhor como eu.
+
+Ele dobra a folha, guarda-a dentro do casaco e se levanta apoiando uma mão no joelho.
+
+**Convencer o guarda com a história do velho cansado — Enganação: d20 11 + 0 = 11 contra CD 13. Falha.**
+
+O guarda abre espaço para deixá-lo passar, mas não oferece a cortesia automática de quem aceitou uma explicação banal.
+
+— Uma caminhada pesada — repete.
+
+Seus olhos descem por um instante até as botas de Ren, depois retornam ao rosto envelhecido. Ele não reconhece quem existe sob a maquiagem, mas também não acredita inteiramente que aquele velho escolheu por acaso o único degrau fechado com visão direta para a entrada lateral.
+
+Ren se despede e caminha na direção contrária à mansão. O guarda permanece junto ao toldo. Mesmo sem olhar para trás diretamente, Ren encontra o reflexo do homem numa janela escura: ele continua observando até que o velho dobre a segunda esquina.
+
+A linha de visão se quebra.
+
+Ren espera mais alguns passos, entra na sombra estreita entre uma cocheira e uma oficina fechada e gasta o Ki. A escuridão parece absorver o ruído ao redor dele. Poeira e palha deixam de responder aos pés; o casaco velho passa próximo da parede sem roçá-la.
+
+**Passos sem Pegadas: 2 Ki.**
+
+Ele abandona o ritmo cansado apenas onde ninguém pode vê-lo, contorna o quarteirão por ruas menores e retorna ao perímetro de Narwhal por um ângulo diferente.
+
+**Reposicionar-se sob Passos sem Pegadas — Furtividade: d20 1 + 17 = 18 contra CD 16. Sucesso.**
+
+O resultado seria ruim sem a arte sombria. Com ela, é suficiente.
+
+Ren encontra um recuo entre um depósito de carvão e o muro lateral de uma casa comercial, oculto por barris vazios e por uma escada externa. Dali consegue ver a rua da entrada de serviço de Narwhal Manor e parte do caminho até o portão principal, embora não possua a visão ampla do degrau anterior.
+
+O guarda tenta confirmar o trajeto do velho. Surge na esquina alguns minutos depois, procura movimento na direção do Temple District e não encontra pegadas, som ou silhueta. Outro homem aproxima-se dele vindo da mansão. Os dois conversam brevemente e retornam separados.
+
+Eles perderam Ren. Não esqueceram o observador.
+
+Durante o reposicionamento, Ren ficou cerca de dez minutos sem visão das saídas. Se Velis ou um mensageiro deixou Narwhal nesse intervalo, ele não tem como saber. Quando a vigilância recomeça, a segurança da propriedade está mais alerta e o velho suspeito já foi descrito a pelo menos um segundo homem.
+
+Ren continua irreconhecível e agora está bem escondido. Passos sem Pegadas permanece ativo sob sua concentração. Mas, ao continuar depois de uma verificação clara de contravigilância, ele ultrapassou o limite de ruptura acordado com Halessa — fato que Tyr ainda não conhece.
+
+São aproximadamente oito e cinco. Restam noventa minutos da janela original.
+
+<!-- turno-transacional:s010-66014a31daa0bd64 -->
+**Jogador**
+
+Ren continua vigilante. Sua esperança é que, se algo dentro de Narwhal acontecer, ele pode pedir a Kethra no outro dia pra relatar. Se acontecer fora, ele pegará.
+**Narrador**
+
+Ren aceita a limitação da nova posição. O que ocorre além das paredes ficará para Kethra, se ela tiver visto algo e se puder falar no dia seguinte. Sua atenção se concentra no que atravessa os portões.
+
+Os minutos passam lentamente. A atividade comum da mansão diminui, mas não cessa. Um carro de entrega recolhe caixas vazias. Dois criados encerram uma discussão junto ao portão principal. O guarda que abordou o velho reaparece uma vez e examina as fachadas opostas sem encontrar Ren.
+
+Passos sem Pegadas mantém o recuo silencioso. Nem mesmo os ratos junto ao depósito de carvão reagem à presença dele.
+
+Por volta das oito e vinte, a porta lateral abre novamente.
+
+Sai um rapaz magro, talvez com pouco mais de vinte anos, vestido com um casaco cinzento comum e botas próprias para caminhada. Não usa as cores de Narwhal. Carrega uma pasta fina debaixo do braço, mas seu modo de segurá-la deixa claro que está vazia ou quase vazia.
+
+Velis aparece atrás dele apenas por um instante.
+
+Não cruza a porta. Inclina-se para dizer algo que Ren não consegue ouvir e introduz dois dedos entre a manga e o pulso do rapaz. Quando recolhe a mão, uma pequena dobra clara desapareceu dentro do punho do mensageiro.
+
+**Identificar uma saída ligada à convocação de Velis — Percepção: d20 11 + 6 = 17 contra CD 15. Sucesso.**
+
+Não é uma prova do conteúdo, mas a sequência é forte: Velis entrega discretamente um papel a um homem sem libré, pouco depois de perguntar ao oficial se poderia consultar alguém. O rapaz não segue a rotina de um criado liberado do turno. Antes de escolher uma direção, olha para três pontos da rua e usa a vitrine escura de uma loja para examinar o espaço atrás de si.
+
+Ren deixa que ele obtenha distância. Depois abandona o recuo sem produzir som ou rastro.
+
+**Seguir o portador de Narwhal sob Passos sem Pegadas — Furtividade: d20 5 + 17 = 22 contra CD 16. Sucesso.**
+
+O mensageiro é cauteloso. Muda de lado duas vezes, atravessa uma hospedaria pela sala comum e sai pela porta do pátio, para diante de uma banca ainda aberta sem comprar nada e faz uma volta que não encurta seu caminho. Nenhuma dessas manobras encontra Ren.
+
+A arte sombria permite ao velho desaparecer entre intervalos impossíveis: atrás de uma carroça no primeiro olhar, sob uma sacada no segundo, já atravessando outra sombra quando o mensageiro procura reflexos.
+
+A rota termina numa travessa estreita, pouco movimentada àquela hora. O rapaz aproxima-se de uma casa comercial de três andares, fechada para negócios. As portadas são azul-escuras; acima da porta há apenas uma placa desbotada mostrando uma pena sobre três linhas onduladas. Nenhum nome permanece legível.
+
+Ele bate quatro vezes: duas, uma pausa, depois mais duas.
+
+Uma abertura estreita desliza na porta. O rapaz mostra o rosto e é admitido. Não entrega o papel no limiar. A porta fecha atrás dele.
+
+Ren alcança uma posição do outro lado da travessa sem ter sido percebido. Da fachada, ele pode determinar que o térreo já funcionou como casa de cópias ou escritório de escrita. Há luz fraca no segundo andar, invisível da rua exceto por uma linha sob as portadas. Nenhuma mulher de vestes cinza-azuladas aparece. Nenhum rosto conhecido recebe o mensageiro diante dele.
+
+O endereço está legitimamente ligado a um portador que recebeu algo de Velis após a convocação. Isso não basta para provar quem o aguarda lá dentro.
+
+São aproximadamente oito e quarenta e dois. Passos sem Pegadas ainda protege Ren por alguns minutos. O mensageiro permanece dentro da casa de portadas azuis, e a janela de vigilância acordada com Halessa continua correndo.
+
+<!-- turno-transacional:s010-9cf8817277ffcb0f -->
+**Jogador**
+
+Ren procura locais por onde aproximar furtivamente do local e tentar uma escuta, talvez próximo de uma janela, ou venesiana, ou abertura para ventilação.
+**Narrador**
+
+Ren observa a fachada antes de deixar seu esconderijo. O antigo escritório de cópias tem janelas fechadas no térreo, duas portadas no andar superior e uma passagem estreita entre a parede lateral e o prédio vizinho. Uma calha desce por esse intervalo até uma caixa de coleta junto ao chão.
+
+Ele procura marcas de uso, pontos cegos e alguma abertura que conduza som sem expô-lo.
+
+**Mapear uma abertura segura para escuta — Investigação: d20 6 + 4 = 10 contra CD 14. Falha.**
+
+A única possibilidade que encontra é uma veneziana estreita na parede lateral, provavelmente ligada a um depósito do térreo. Duas lâminas estão empenadas e deixam uma fresta suficiente para o som. Também é o ponto mais evidente para alguém que estivesse procurando exatamente uma abertura de escuta.
+
+Ren não identifica uma rota melhor.
+
+Ainda protegido por Passos sem Pegadas, ele atravessa a travessa quando nenhuma janela tem ângulo direto, encosta-se à parede vizinha e entra lateralmente no corredor. O velho parece desaparecer entre uma sombra e outra. Nem poeira, cascalho ou tecido denunciam sua passagem.
+
+**Aproximar-se da veneziana sob Passos sem Pegadas — Furtividade: d20 16 + 17 = 33 contra CD 18. Sucesso.**
+
+Se alguém está esperando um perseguidor, não percebe Ren.
+
+Ele se acomoda abaixo da veneziana, sem tocá-la, e aproxima o ouvido da madeira. No primeiro instante ouve apenas passos no piso superior e o estalo de uma cadeira no cômodo além da parede. Depois distingue três vozes masculinas.
+
+**Escutar através da veneziana — Percepção: d20 13 + 6 = 19 contra CD 14. Sucesso.**
+
+A primeira pertence ao rapaz que saiu de Narwhal.
+
+— O velho não veio. Sumiu depois da segunda esquina.
+
+Outra voz, mais grave, responde:
+
+— O homem do portão também perdeu o rastro?
+
+— Não encontrou nem pegada.
+
+Há uma pausa. Alguém caminha até perto da porta da frente, testa o ferrolho e retorna.
+
+A terceira voz fala de algum ponto mais afastado, talvez junto à escada:
+
+— Então não presumam que foi embora. Se seguiu o rapaz, vai querer uma janela, uma saída dos fundos ou um rosto para levar de volta.
+
+O mensageiro pergunta:
+
+— Quanto tempo fico?
+
+— Até o sino ou até alguém se mostrar. Depois volte pela rota comum.
+
+Papel roça sobre madeira. A voz do rapaz baixa, mas Ren ainda consegue distinguir a pergunta:
+
+— E a mensagem?
+
+A resposta vem imediata.
+
+— A que importa não passou pela sua mão.
+
+Silêncio.
+
+A casa não é o destino confiável que aparentava ser. O portador foi enviado para oferecer uma rota visível a qualquer pessoa que tivesse mantido a vigilância depois da abordagem em Narwhal. Os homens lá dentro ainda não sabem que Ren chegou à veneziana; estão esperando que ele cometa um erro que sua magia evitou.
+
+A frase final também confirma algo mais desagradável: existia outra comunicação, considerada importante por eles, que seguiu um caminho diferente. Ela pode ter deixado Narwhal durante os dez minutos em que Ren perdeu visão, ter sido transmitida por alguém que ele classificou como movimento comum ou ter usado um meio inteiramente interno. A escuta não permite distinguir qual possibilidade.
+
+Nenhuma das vozes é feminina. Nenhuma menciona Shizune pelo nome.
+
+São aproximadamente oito e cinquenta e um. Passos sem Pegadas ainda durará poucos minutos. Ren permanece oculto junto à veneziana de uma casa preparada para revelar perseguidores, mas agora conhece a natureza da isca sem ter sido descoberto por ela.
+
+<!-- turno-transacional:s010-2d93b2a36e0f064f -->
+**Jogador**
+
+Ren entende que foi enganado. Isso fere seu orgulho shinobi por um lado. Por outro, ele entende que, diante de tantas possibilidades que seus inimigos trazem, ser enganado é uma das mais tranquilas.
+
+Eles não sabem, mas ele ainda tem Kethra. Se Shizune ousar aparecer em Narwhal Manor, Ren saberá.
+
+Ren se afasta discretamente do local. Ele já deve ter perdido a mensagem verdadeira. Não faz sentido correr o risco. Irá com Passos sem Pegadas até onde der. Mais uma vez, avaliará se consegue ver Halessa em alguma das janelas da Casa de Tyr que tenha uma sombra possível dele atravessar. É uma forma de ninguém ver o contato e, se for estritamente seguro, ele a usará. Se não, apenas entrará como velho.
+**Narrador**
+
+O orgulho de Ren reconhece o golpe antes que a razão o aceite por completo. Ele seguiu o portador certo, venceu todas as precauções do rapaz e chegou à janela sem ser percebido — mas o caminho inteiro havia sido oferecido para que alguém o seguisse.
+
+Ser enganado dói. Ainda assim, entre as muitas formas pelas quais os agentes de Masao poderiam responder, fazê-lo perseguir uma mensagem falsa está entre as menos destrutivas.
+
+E eles não sabem tudo.
+
+Kethra permanece dentro de Narwhal Manor. Se Shizune atravessar aqueles corredores, der ordens aos empregados ou voltar a ocupar a autoridade que conquistou ali, existe uma possibilidade de que Ren descubra depois. A rota externa foi perdida; a fonte interna ainda existe.
+
+Ele não toca na veneziana nem espera outra frase. Recua pelo mesmo corredor lateral enquanto Passos sem Pegadas continua ativo. Os três homens permanecem atentos a uma janela que nunca range, a um cascalho que nunca se move e a uma silhueta que não aparece.
+
+Ren cruza a travessa dentro da sombra de uma carroça e deixa o quarteirão por uma direção diferente da usada pelo mensageiro. Durante os minutos restantes da arte sombria, não produz pegadas nem oferece som a qualquer pessoa colocada para observar as saídas.
+
+Às oito e cinquenta e cinco, a magia termina. O mundo volta a responder aos pés de Ren.
+
+Ele já está longe o suficiente para retomar o passo econômico do velho erudito. A partir dali, não tenta desaparecer: torna-se novamente uma pessoa banal em via pública, caminhando para o Temple District com papéis sob o braço e cansaço cuidadosamente representado no corpo.
+
+Nenhum dos homens da casa de cópias o vê partir. Nenhuma cauda se apresenta no caminho.
+
+Quando a Casa de Tyr surge entre os edifícios do distrito, Ren não vai diretamente à porta. Primeiro percorre a lateral do complexo, procurando as janelas pelas quais já reconhece parte da disposição interna.
+
+**Avaliar uma entrada por Passo Sombrio na Casa de Tyr — Percepção: d20 9 + 6 = 15 contra CD 14. Sucesso.**
+
+Ele encontra Halessa através de uma janela estreita no primeiro andar. Ela está inclinada sobre uma mesa, conferindo papéis junto a um lampião baixo. Uma estante projeta sombra suficiente para receber um Passo Sombrio.
+
+Mas a sala não está vazia.
+
+Um acólito trabalha numa mesa menor, quase fora do ângulo da rua. Além disso, o ponto escuro fica junto à passagem usada por quem entra pelo corredor interno. Ren conseguiria atravessar a janela sem barreira física, mas não poderia garantir que surgiria sem ser visto ou sem provocar uma reação defensiva dentro de uma casa de justiça.
+
+Halessa também lhe entregou uma ficha e instruiu que a apresentasse na entrada. Contornar esse procedimento não seria estritamente seguro, mesmo que fosse possível.
+
+Ren não usa o Passo Sombrio.
+
+O velho contorna o edifício, sobe os degraus da entrada e mostra a ficha marcada com a balança de Tyr. O guarda confere o símbolo, observa demoradamente o disfarce e chama o mesmo acólito que conduziu Ren antes da operação.
+
+Desta vez, ele é levado a uma sala reservada no térreo. Halessa chega pouco depois, fecha a porta e só então permite que o profissionalismo revele uma pequena medida de alívio.
+
+Seus olhos verificam primeiro o rosto, depois as roupas e as mãos de Ren, procurando sangue, dano ou sinal de que o disfarce foi comprometido.
+
+— Você voltou antes do fim da janela — diz. — Então encontrou alguma coisa ou soube a hora de parar.
+
+Ela puxa uma cadeira para o velho, mas permanece em pé diante da mesa.
+
+— Conte desde a saída de Garran.
+
+São aproximadamente nove e vinte. Restam quinze minutos do prazo original, mas a vigilância terminou com o retorno de Ren à Casa de Tyr.
+
+<!-- turno-transacional:s010-e49df4e854184f27 -->
+**Jogador**
+
+Ren conta. Explica que foi enganado: seguiu a pista, mas a pista não era a pista verdadeira.
+
+"Eles estão ficando mais sofisticados. Estão ficando parecidos com as cortes de Kozakura, cheias de intrigas, mensagens falsas e papelotes com veneno ou coisa pior. Estão sendo bem treinados. Certamente é Shizune."
+
+Ren sorri.
+
+"Mas eles ainda não nos venceram completamente. Ainda tenho uma carta na manga."
+
+Ren não revela. Se Halessa perguntar, ele diz que poderá revelar se essa carta se mostrar efetiva. Mas por enquanto, manterá silêncio.
+
+Depois brinca com Halessa.
+
+"Agradeça por eu não ter aparecido aqui dentro usando minhas artes de bicho papão", Ren fala. "Cada dia que passa sinto que essa cidade tá mais vigiada do que antes... e prefiro o conforto de uma sombra mágica do que o receio de uma porta da frente."
+**Narrador**
+
+Ren conta desde a saída de Garran.
+
+Velis perguntando se podia consultar alguém. Os quinze minutos diante de Narwhal. O guarda que identificou a posição do velho e fez um percurso para testar sua atenção. A desculpa mal recebida, Passos sem Pegadas, o retorno por outro ângulo. O portador sem libré, a entrega discreta no punho da manga, a cauda pelas ruas e, por fim, a casa de cópias.
+
+Ele relata também a escuta: três homens esperando que o perseguidor procurasse uma janela, o mensageiro enviado como isca e a frase que confirmou que a comunicação importante havia seguido outra rota.
+
+Halessa não o interrompe. Registra poucas palavras numa folha separada, usando abreviações que não expõem nomes nem métodos. Quando Ren termina a parte factual, ela pousa a pena.
+
+— Então fui enganado — resume Ren. — Segui a pista, mas a pista não era a pista verdadeira.
+
+— Você confirmou que era uma pista falsa — corrige Halessa. — Não é a mesma coisa que voltar sem nada.
+
+Ren fala das cortes de Kozakura, das intrigas, mensagens falsas e papelotes envenenados. Afirma que os inimigos estão sendo bem treinados e conclui:
+
+— Certamente é Shizune.
+
+Halessa apoia as duas mãos na mesa.
+
+— Certamente, não. Coerentemente com Shizune, sim. Você já a viu preparar Velis para um depoimento e agora encontrou uma resposta organizada à vigilância. Isso fortalece a hipótese de que ele recebe orientação treinada. Ainda não prova quem criou o procedimento, quem enviou a mensagem verdadeira ou se ela está na cidade neste momento.
+
+Ela aponta para as anotações.
+
+— O que podemos afirmar é suficiente: Narwhal reconheceu a possibilidade de uma cauda, montou uma saída visível, empregou um portador capaz de verificar perseguição e preparou um endereço para identificar quem continuasse. A outra mensagem existiu. O destino permanece desconhecido.
+
+Então vem a parte que Halessa não deixa passar.
+
+— O guarda testou sua vigilância às sete e cinquenta. Nosso acordo dizia que você romperia diante de contravigilância.
+
+Não há ira na voz dela. Há precisão.
+
+— Você rompeu o contato imediato e depois voltou. Isso não é a mesma coisa que encerrar a operação. O fato de ter escapado e extraído uma informação valiosa não transforma o limite em sugestão.
+
+Halessa sustenta o olhar de Ren sob o rosto do velho.
+
+— Se tivesse omitido isso no retorno, nossa coordenação terminaria hoje. Você contou a verdade, e isso importa. Mas, se repetir a escolha numa operação de Tyr, não voltarei a colocar um oficial, uma ordem legítima ou outra pessoa dentro de um plano cuja contingência você decide ignorar depois que começa.
+
+O limite fica posto sem apagar o mérito nem absolver a quebra.
+
+Ren sorri.
+
+— Mas eles ainda não nos venceram completamente. Ainda tenho uma carta na manga.
+
+Halessa inclina ligeiramente a cabeça.
+
+— Qual?
+
+Ren mantém o silêncio sobre Kethra. Diz apenas que poderá revelar a carta se ela se mostrar efetiva; até lá, não falará.
+
+Halessa o observa por alguns segundos, procurando não o segredo, mas o risco ao redor dele.
+
+— Então essa carta não existe para Tyr — decide. — Não vou exigir que exponha uma fonte apenas para satisfazer minha curiosidade. Mas também não pedirá que eu fundamente uma ordem, uma acusação ou a segurança de alguém em algo que não posso avaliar.
+
+Ela recolhe a ficha de retorno e a coloca sobre as anotações.
+
+— Se funcionar, traga o fato observável. Podemos discutir a proteção da fonte depois.
+
+Ren muda o tom.
+
+— Agradeça por eu não ter aparecido aqui dentro usando minhas artes de bicho-papão. Cada dia que passa sinto que essa cidade tá mais vigiada do que antes... e prefiro o conforto de uma sombra mágica do que o receio de uma porta da frente.
+
+O olhar de Halessa vai até a parede, aproximadamente na direção da janela pela qual Ren a havia observado. Quando retorna, há divertimento contido nele.
+
+— Eu agradeço. Surgir de uma sombra dentro de uma casa de justiça é uma excelente maneira de descobrir quanto tempo nossos guardas levam para apontar armas para um velho inofensivo.
+
+Ela faz uma pausa curta.
+
+— E não precisava recear esta porta. Eu a deixei aberta para você.
+
+A frase permanece entre o profissional e algo um pouco mais pessoal por apenas um instante. Halessa é a primeira a recuar para o trabalho.
+
+— A cidade pode estar mais vigiada. Também é possível que seus inimigos tenham começado a reconhecer seus métodos, mesmo quando não reconhecem seu rosto. Hoje eles procuraram o observador que insistiria em vencer a disputa. Na próxima vez, teremos de lhes oferecer alguém que saiba perder de maneira convincente.
+
+Ela recolhe as anotações e alinha as bordas do papel.
+
+— Por esta noite, a operação terminou. Temos a confirmação de que Velis reagiu, a prova observável de uma estrutura de contravigilância e um endereço que não deve ser tocado novamente. Não temos Shizune.
+
+O sino seguinte começa a soar ao longe. A janela de duas horas termina com Ren ainda na sala reservada, vivo, não identificado e de volta — mas com o acordo entre ele e Halessa mais estreito do que antes.
+
+<!-- turno-transacional:s010-c29574c5e17a0c14 -->
+**Jogador**
+
+Ren decide voltar para o circo, se não for impedido. Ele realmente precisa de uma noite completa de sono.
+
+Conversará com Silva. Contará tudo que aconteceu.
+**Narrador**
+
+Halessa não impede Ren de partir. Apenas guarda as anotações da operação numa pasta sem identificação externa e repete, antes de abrir a porta da sala reservada:
+
+— Durma antes de decidir que precisa corrigir esta derrota ainda hoje.
+
+O velho erudito deixa a Casa de Tyr pela mesma entrada que usou para voltar. A essa altura não há razão para tentar parecer invisível: ele é apenas um auxiliar idoso dispensado depois de uma tarefa documental. Caminha pelas ruas noturnas sem repetir exatamente a rota da ida, mantendo o corpo curvado e a atenção nos reflexos das vitrines.
+
+Nenhuma cauda se apresenta. Os homens da casa de cópias jamais o viram, e qualquer observador de Narwhal procura um velho que desapareceu perto da mansão, não alguém saindo formalmente da Casa de Tyr quase duas horas depois.
+
+Pouco depois das dez, Ren alcança os fundos do circo. O vigia demora alguns segundos para aceitar que o homem de cabelos grisalhos conhece o caminho interno melhor do que deveria. Ren não atravessa o acampamento aberto: segue pelas sombras das carroças até o espaço de Silva.
+
+Ela está acordada.
+
+Silva ergue os olhos de uma caneca quando o velho aparece à entrada. A mão dela começa a mover-se para o símbolo de Chauntea, mas para quando reconhece a postura que existe sob a postura falsa.
+
+— Entre antes que alguém decida oferecer sopa ao avô de Dessa.
+
+Ren fecha a entrada e conta tudo que ocorreu na operação.
+
+Silva não toma notas. Escuta com os cotovelos apoiados nos joelhos e a caneca esquecida entre as mãos. A expressão dela endurece quando Ren descreve o guarda de Narwhal testando sua vigilância. Não melhora quando ele explica que ativou Passos sem Pegadas, voltou para outra posição e seguiu o portador.
+
+Ela ouve até o fim: a casa de cópias, a veneziana, os três homens, a mensagem verdadeira seguindo por outro caminho e o retorno para Halessa. Também ouve a censura da tyrrana e o limite colocado para qualquer operação futura.
+
+Quando Ren termina, Silva pousa a caneca.
+
+— Halessa está certa.
+
+Não há satisfação na frase.
+
+— Você prometeu romper diante de contravigilância. Não prometeu romper por duas esquinas, gastar metade do Ki que lhe restava e voltar por outro lado.
+
+Silva levanta uma mão antes que a conversa se transforme numa repetição do julgamento de Tyr.
+
+— E também está certa sobre outra coisa: você não voltou sem nada. Confirmou que Velis reagiu, que Narwhal possui um procedimento para caudas e que alguém enviou uma comunicação por uma rota diferente. Isso é informação. Não é Shizune.
+
+Ela examina o disfarce novamente, agora procurando rachaduras na maquiagem e não identidade.
+
+— O mais preocupante não é que enganaram você. É que prepararam a mentira rápido e usaram seu orgulho como parte do mecanismo. Esperavam que o perseguidor insistisse depois de ser notado. Você insistiu.
+
+A dureza da avaliação não esconde o alívio de que Ren esteja sentado diante dela.
+
+— Ainda assim, você ouviu a armadilha sem ser visto, saiu antes de tentar vencer três homens só para provar que podia e contou a Halessa exatamente onde descumpriu o acordo. São essas três decisões que impedem esta noite de ser um desastre.
+
+Silva se levanta, abre um pequeno armário e coloca sobre a mesa pão escuro, queijo e uma tigela tampada. Não empurra nada para a mão de Ren nem ordena que coma. Apenas deixa a comida ali.
+
+— Você dormiu quatro horas. Trabalhou o dia inteiro. Gastou o broche, gastou dois Ki, não comeu durante o disfarce e passou parte da noite encolhido diante de duas casas que queriam encontrá-lo.
+
+Ela aponta para a tigela e depois para os aposentos dele.
+
+— Eu não vou discutir estratégia com você até o amanhecer. Tire esse rosto sem arrancar metade da pele, coma alguma coisa se conseguir e durma.
+
+O tom baixa um pouco.
+
+— Nera está segura. Tavin também. Ninguém precisa de você acordado nesta noite.
+
+Silva recolhe a caneca.
+
+— E amanhã você decide o que fazer com a mensagem perdida. Depois de dormir, talvez consiga admitir que sobreviver a uma derrota pequena também é trabalho de shinobi.
+
+São aproximadamente dez e dez. Ren está de volta ao circo, sem cauda observada, ainda sob o disfarce de velho e com suas ferramentas de ladrão ocultas. A comida está diante dele; seus aposentos e uma noite completa de sono estão próximos, mas o descanso ainda não começou.
+
+<!-- turno-transacional:s010-8e757d25f5de5aaa -->
+**Jogador**
+
+Ren pergunta se pode ver Nera. Promete ser rápido. Sem dormir juntos essa noite.
+**Narrador**
+
+Silva olha para Ren, depois para a comida intocada e por fim para o rosto envelhecido.
+
+— Nera ainda está acordada. Tavin, não. Você tem vinte minutos, fala baixo e depois vai para seus aposentos. Sozinho.
+
+Ela enfatiza a última palavra sem qualquer censura sobre a noite anterior. É apenas a condição desta noite.
+
+— E leve isto.
+
+Silva entrega a Ren um pano limpo e um pequeno frasco de óleo para remover a maquiagem.
+
+Nera espera no depósito de figurinos velhos, perto do canto reservado de Ren. Quando o velho entra, ela não o reconhece no primeiro instante. Então ele fecha a porta, abandona um pouco da curvatura e fala com a própria voz:
+
+— Sou eu.
+
+O alívio de Nera aparece antes do sorriso.
+
+— Eu sei que ajudei a fazer isso, mas ainda não gosto de ver você usando o rosto de outro homem.
+
+Ela se aproxima, examina a maquiagem intacta e toca apenas a gola do casaco.
+
+— Você voltou. Agora me conte.
+
+Ren começa pela convocação. Explica a reação de Velis, a pergunta sobre aconselhamento e o início da vigilância. Conta como o guarda percebeu o velho diante da encadernadora, como a desculpa não convenceu e como ele deveria ter encerrado a operação naquele momento.
+
+— Mas você não encerrou — diz Nera.
+
+— Não. Rompi o contato, usei Passos sem Pegadas e voltei por outro lado.
+
+Ele relata o portador, o papel escondido na manga, a rota complicada, a casa de portadas azuis e a escuta pela veneziana. Não embeleza o resultado.
+
+— Eles queriam que eu o seguisse. A casa inteira era uma isca. A mensagem verdadeira saiu por outra rota enquanto eu estava ocupado — ou durante os minutos em que perdi Narwhal de vista.
+
+Nera permanece em silêncio por algum tempo.
+
+— Então fizeram com você o que um falsificador faz com um selo ruim — diz por fim. — Não precisavam fazê-lo acreditar para sempre. Só precisavam fazer você gastar tempo suficiente com a coisa errada.
+
+— Sim.
+
+— E você chegou até a janela sem que percebessem.
+
+— Cheguei.
+
+— Isso não torna a escolha certa.
+
+Ren olha para ela através dos olhos envelhecidos.
+
+— Halessa disse o mesmo. Silva também.
+
+Nera aperta os lábios, contendo uma resposta que provavelmente faria dela a terceira voz da mesma sentença.
+
+— Não vou julgá-lo pela terceira vez. Só preciso saber se, quando você combina um limite comigo, vai tratá-lo como tratou o de Halessa.
+
+— Não quero fazer isso.
+
+— Não foi o que perguntei.
+
+A frase não vem dura. Vem vulnerável.
+
+Ren responde depois de um instante:
+
+— O que aconteceu hoje me mostrou que meu orgulho ainda pode ser usado para me conduzir. Não posso prometer que nunca vou errar. Posso prometer que não vou esconder de você quando acontecer.
+
+Nera aceita a resposta com um movimento pequeno de cabeça. Não é absolvição nem recusa; é algo que pode ser sustentado por ações futuras.
+
+— E Shizune?
+
+— Não encontrei. Mas disse a Halessa que ainda tenho uma carta na manga.
+
+— Que carta?
+
+Desta vez, Ren não guarda o segredo.
+
+— Kethra Dunn. Ela trabalha dentro de Narwhal. Eu ajudei o irmão dela, Colm — ou Dent, o nome que ele usa para se esconder. Kethra já me contou sobre a mulher de cinza-azulado dando ordens e sobre coisas que ouviu nos corredores. Tínhamos um ponto morto nos fundos da mansão, mas ele morreu. Para falar com ela novamente, preciso encontrá-la sem criar outro padrão.
+
+Nera observa Ren com atenção renovada.
+
+— Halessa não sabe?
+
+— Não. Disse apenas que tinha uma carta. Se Kethra confirmar que Shizune apareceu ou voltou a dar ordens, eu levo o fato sem entregar o nome dela antes de saber como protegê-la.
+
+Nera abaixa a voz ainda mais.
+
+— Então não a chame de carta quando falar comigo.
+
+Ren não reage de imediato.
+
+— Ela é uma pessoa dentro da casa dos seus inimigos. Uma pessoa que pode morrer se alguém perceber que está olhando para o lado errado.
+
+— Tem razão — responde Ren. — Kethra é uma aliada. Não uma peça.
+
+Nera pega o pano e o frasco que Silva entregou, mas não começa a remover a maquiagem sem pedir.
+
+— Quer ajuda com isso?
+
+— Quero. Mas Silva mandou eu ser rápido.
+
+— Silva mandou você dormir. A parte de ser rápido foi para conseguir levá-lo até a cama antes do amanhecer.
+
+Nera umedece o pano depois da permissão e começa pelas têmporas, onde os fios grisalhos foram presos. O velho vai desaparecendo em pequenas partes enquanto eles terminam a conversa.
+
+— Eu fiquei com medo — admite ela. — Não porque achei que você perderia uma luta. Porque não havia luta para vencer. Só corredores, mensagens e gente tentando fazer você escolher errado.
+
+— Isso também me assusta mais do que deveria.
+
+— Talvez devesse assustar. Medo não é sempre uma ordem para fugir. Às vezes é só a parte de você que percebeu o preço.
+
+Ela remove uma das linhas profundas ao redor dos olhos. O rosto jovem de Ren reaparece de forma desigual sob o velho.
+
+— Você voltou — repete Nera. — Enganado, repreendido e ainda inteiro. Por esta noite, chega.
+
+Quando o tempo combinado termina, a maior parte da maquiagem foi retirada, embora ainda reste trabalho para Ren concluir nos próprios aposentos. Nera segura a mão dele por alguns segundos.
+
+— Vá comer. Depois durma. Amanhã, se ainda achar que deve procurar Kethra, pense primeiro numa forma que não transforme a sobrevivência dela em mais uma prova da sua habilidade.
+
+Ela se despede sem pedir para acompanhá-lo e sem tentar prolongar a noite. Tavin continua dormindo. Silva não precisa vir buscá-los.
+
+São aproximadamente dez e trinta e cinco. Ren contou a Nera toda a operação e confiou a ela a identidade da fonte que manteve oculta de Tyr. O descanso ainda não começou.

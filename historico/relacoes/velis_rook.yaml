@@ -56,3 +56,64 @@ eventos_pos_migracao:
     op: set
     valor: compareceu à primeira oitiva de Tyr, apresentou contradições preservadas e nomeou M. Harrow antes da
       pergunta correspondente; deve permanecer disponível à Casa de Tyr, mas não está preso
+- transacao: s010-c969aa0a454deb11
+  sessao: 10
+  resumo: Ren brincou com Halessa mantendo a voz do velho; ela respondeu com divertimento contido. Seguiu dois passos
+    atrás de Garran até Narwhal Manor. Velis não reconheceu Ren sob o disfarce e recebeu a convocação pessoalmente.
+    Ao ler o anexo, mostrou tensão, perguntou se poderia consultar alguém e assinou a ciência. Garran retirou-se;
+    Velis voltou para dentro. Às 19:35 começa a janela de duas horas de vigilância, sem mensageiro ou contato ainda
+    exposto.
+  deltas:
+  - alvo: relacao:velis_rook
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Em 12 Eleasis, Velis recebeu pessoalmente a convocação suplementar de Tyr em Narwhal Manor. Ao ler o
+      anexo, tensionou-se, perguntou se poderia consultar alguém, assinou a ciência e voltou para dentro da mansão;
+      não reconheceu Ren sob o disfarce de velho erudito.
+  - alvo: relacao:velis_rook
+    caminho: riscos
+    op: append
+    valor: A convocação suplementar agora impõe prazo e preservação de registros; Velis sabe que pode buscar aconselhamento,
+      mas qualquer contato que faça ainda não foi identificado por Ren.
+- transacao: s010-66014a31daa0bd64
+  sessao: 10
+  resumo: Ren manteve a vigilância e obteve Percepção 17 contra CD 15. Viu Velis entregar discretamente um papel
+    a um rapaz sem libré, pouco depois da convocação. Sob Passos sem Pegadas, obteve Furtividade 22 contra CD 16
+    e seguiu o portador por rota cautelosa até uma antiga casa de cópias de três andares, com portadas azul-escuras
+    e placa de pena sobre ondas. O mensageiro entrou após batida codificada. O endereço está ligado a Velis, mas
+    o destinatário não foi identificado.
+  deltas:
+  - alvo: relacao:velis_rook
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Às 20:20 de 12 Eleasis, Ren viu Velis entregar discretamente um pequeno papel a um portador sem libré.
+      Seguiu o rapaz sem ser detectado até uma antiga casa de cópias de portadas azul-escuras, onde ele entrou mediante
+      batida codificada; o destinatário não foi visto.
+- transacao: s010-9cf8817277ffcb0f
+  sessao: 10
+  resumo: 'Ren falhou em Investigação 10 contra CD 14 e escolheu a veneziana mais óbvia, mas Passos sem Pegadas
+    permitiu Furtividade 33 contra CD 18. Com Percepção 19 contra CD 14, ouviu três homens: o portador relatou que
+    o velho sumiu; eles esperavam que um perseguidor procurasse janela ou saída e revelaram que a mensagem importante
+    não passou pela mão do rapaz. Ren descobriu que a casa é uma isca de contravigilância e que outra comunicação
+    seguiu caminho desconhecido.'
+  deltas:
+  - alvo: relacao:velis_rook
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Ao escutar a casa alcançada pelo portador, Ren descobriu que o rapaz fazia parte de uma isca preparada
+      após a detecção do velho em Narwhal. Três homens aguardavam que um perseguidor procurasse janela ou saída;
+      um deles afirmou que a mensagem importante não passou pela mão do portador. A rota real continua desconhecida.
+- transacao: s010-e49df4e854184f27
+  sessao: 10
+  resumo: Ren relatou integralmente a operação, exceto a identidade de sua carta na manga. Halessa reconheceu o
+    valor da isca confirmada, mas recusou tratar Shizune como certeza e censurou Ren por voltar à vigilância após
+    contravigilância. A honestidade preservou a coordenação, porém nova quebra encerrará operações clandestinas
+    conjuntas. Halessa aceitou proteger a fonte não revelada, mas Tyr não agirá sobre ela sem fato verificável.
+    O flerte permaneceu sutil ao falar da porta deixada aberta.
+  deltas:
+  - alvo: relacao:velis_rook
+    caminho: riscos
+    op: append
+    valor: Tyr agora sabe, pelo relato de Ren, que a resposta de Velis à convocação acionou uma isca de contravigilância
+      e que uma segunda comunicação importante seguiu rota ainda desconhecida; isso fortalece a hipótese de orientação
+      treinada, mas não prova Shizune.

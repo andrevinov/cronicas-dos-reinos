@@ -4,7 +4,7 @@ descricao: Cursor e fila operacional do motor determinístico; não é fonte ind
   de fatos da campanha.
 processado_ate:
   data: 12 Eleasis, 1372 DR
-  hora: '12:00'
+  hora: '22:35'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4

@@ -18,9 +18,9 @@ relacao:
     uma promessa sob medo e pode deslocar a resposta de Bram.
   documentos:
   - Silva abriu e leu o bilhete curto e selado de Maerra.
-  - Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando que Sirrus autorizou
-    a convocação suplementar de Velis para o primeiro sino após o anoitecer e a vigilância coordenada nos limites
-    definidos. Ren ainda não recebeu essa confirmação.
+  - Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando a convocação
+    suplementar de Velis; às 17:45, entregou a confirmação a Ren e informou que Sirrus autorizou a vigilância coordenada
+    nos limites definidos.
   riscos:
   - Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria.
   - Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath.
@@ -45,12 +45,22 @@ relacao:
     e estrutura antes de concluir que a morte de Bram resolveria o problema.
   - 'Silva guarda um recado de Ren para entregar diretamente a Nera: ele pede que não se encontrem por enquanto,
     que ela não se arrisque e assina ''Com amor, R.'''
+  - Silva sabe que Ren retomou a vigilância após contravigilância clara, violando o limite acordado com Halessa.
+    Reconhece que ele permaneceu não identificado, saiu sem atacar, retornou antes do prazo e confessou a quebra,
+    mas considera que Narwhal explorou previsivelmente o orgulho dele.
   informacoes_recebidas_por_silva:
   - Ren contou o plano coordenado com Halessa para pressionar e seguir Velis, confessou a vontade de eliminar os
     agentes de Masao e explicou que pretende respeitar os limites dos aliados enquanto pondera quando será necessário
     escalar.
   - Nera retornou dos aposentos de Ren às 05:00 conforme combinado, por vontade própria e sem sinal de medo ou risco
     imediato. Silva sabe que Ren dormiu apenas cerca de quatro horas antes de partir como Shinta.
+  - Em 12 Eleasis, Ren revelou a cobertura de Shinta Ryoushi, a tentativa de obter uma casa, os empregos com o jardineiro
+    e com Tomas no pátio de entregas e os limites de acesso impostos pelo escriturário.
+  - Ren relatou a possível cauda após o trabalho como Shinta e explicou que rompeu a linha de visão numa loja lotada,
+    gastou o Broche do Semblante Humilde e só então retornou ao circo sob outra aparência.
+  - 'Ren relatou integralmente a operação contra Velis: a reação à convocação, a detecção do velho, a quebra do
+    limite de ruptura, o portador usado como isca, a escuta na antiga casa de cópias e a existência de outra mensagem
+    por rota desconhecida.'
   acordos:
   - Silva receberá e verificará pessoalmente a ficha reservada de Tyr sobre a operação de 12 Eleasis, procurará
     Ren sem divulgar o motivo ao circo e, se Shizune for confirmada, reforçará discretamente protocolos de recados,
@@ -59,5 +69,11 @@ relacao:
   - Ren expôs a Silva seu conflito entre o treinamento para neutralizar ameaças e o respeito pela vida aprendido
     com seus aliados. Silva respondeu sem condenação ou indulgência, reconhecendo que a preocupação dele com o efeito
     da vingança é uma razão para continuar confiando nele.
+  - 'Após o retorno da operação de Velis, Silva combinou censura direta com cuidado concreto: deixou comida, confirmou
+    que Nera e Tavin estavam seguros e recusou discutir nova estratégia antes que Ren removesse o disfarce e dormisse
+    uma noite completa.'
+  informacoes_compartilhadas_por_silva:
+  - Sirrus autorizou que Velis Rook receba convocação suplementar no primeiro sino após o anoitecer de 12 Eleasis,
+    com Ren junto ao oficial de justiça como auxiliar, sujeito aos limites acordados com Halessa.
 conteudo_mais_antigo_no_historico:
   riscos: 54

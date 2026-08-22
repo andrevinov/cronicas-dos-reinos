@@ -35,7 +35,7 @@ relacoes:
     respeito: nenhum
     arquivo: estado/relacoes/velis_rook.yaml
     historico: historico/relacoes/velis_rook.yaml
-    bytes_fragmento: 2853
+    bytes_fragmento: 4232
     campos_atuais: 10
   kethra_dunn:
     nome: Kethra Dunn
@@ -167,7 +167,7 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 5513
+    bytes_fragmento: 6919
     campos_atuais: 14
   tavin_vell:
     nome: Tavin Vell
@@ -236,13 +236,14 @@ relacoes:
       do registro autêntico antes de atribuir autoria ou validar ordens.'
     atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
       a urgência e de preservar sua discrição apesar do desacordo
-    confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,
-      mas exige objetivo, rota e limites acordados antes de qualquer ação clandestina futura'
+    confianca: 'condicional e tensionada: Halessa preserva confiança na honestidade posterior, competência e retorno
+      de Ren, mas ele violou o limite de ruptura ao retomar a vigilância depois de contravigilância clara; nova
+      quebra semelhante encerrará coordenação clandestina com Tyr'
     respeito: real pela capacidade de infiltração, contenção não letal e retorno imediato com provas; ainda insuficiente
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 5461
+    bytes_fragmento: 7856
     campos_atuais: 13
   silva_elkwood:
     nome: Silva Elkwood
@@ -256,8 +257,8 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 4635
-    campos_atuais: 13
+    bytes_fragmento: 6126
+    campos_atuais: 14
   jack_mooney:
     nome: Jack Mooney
     tipo: dono do circo / autoridade local do acampamento / patrono condicional
@@ -289,8 +290,8 @@ relacoes:
     respeito: profissional inicial
     arquivo: estado/relacoes/dessa_wren.yaml
     historico: historico/relacoes/dessa_wren.yaml
-    bytes_fragmento: 3004
-    campos_atuais: 11
+    bytes_fragmento: 3213
+    campos_atuais: 12
   merrit_tealeaf:
     nome: Merrit Tealeaf
     tipo: halfling contorcionista / sabotadora confessa da corda alta

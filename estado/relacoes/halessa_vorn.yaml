@@ -11,8 +11,9 @@ relacao:
     do registro autêntico antes de atribuir autoria ou validar ordens.'
   atitude_para_ren: firme e sem indulgência diante da ironia, mas capaz de reconhecer que Ren está correto sobre
     a urgência e de preservar sua discrição apesar do desacordo
-  confianca: 'condicional: Halessa confia na competência, franqueza posterior e compromisso de Ren contra Masao,
-    mas exige objetivo, rota e limites acordados antes de qualquer ação clandestina futura'
+  confianca: 'condicional e tensionada: Halessa preserva confiança na honestidade posterior, competência e retorno
+    de Ren, mas ele violou o limite de ruptura ao retomar a vigilância depois de contravigilância clara; nova quebra
+    semelhante encerrará coordenação clandestina com Tyr'
   respeito: real pela capacidade de infiltração, contenção não letal e retorno imediato com provas; ainda insuficiente
     para aceitá-lo como agente clandestino coordenado de Tyr
   motivo_atual: 'Na manhã seguinte ao Benefício da Lona Aberta, uma ficha reservada de Tyr chegou a Silva Elkwood
@@ -52,19 +53,43 @@ relacao:
   - A crise no Harbor District pode reduzir a velocidade prática de respostas e extratos, mesmo com o caso preservado.
   - Halessa não aceitará usar Ren como agente clandestino enquanto ele apresentar operações consumadas em vez de
     negociar objetivo, limites e rota antes da ação.
+  - Sem conhecimento de Tyr, Ren continuou a vigilância de Velis após uma verificação clara de contravigilância,
+    ultrapassando o limite acordado de romper e retornar se fosse testado.
   informacoes_recebidas_por_halessa:
   - Ren relatou, sem nomear a fonte, que uma mulher Cinza-Azul ganhou autoridade rapidamente em Narwhal Manor e
     que ele a viu instruir Velis antes da primeira oitiva; apresentou a hipótese de que ela seja Kajiwara Shizune.
+  - Ren relatou a reação de Velis, a detecção do velho por um guarda, o reposicionamento sob Passos sem Pegadas,
+    o portador sem libré e a escuta que confirmou a antiga casa de cópias como isca; uma mensagem considerada importante
+    seguiu rota desconhecida.
+  - Ren afirmou manter uma carta na manga contra Narwhal, mas não revelou sua natureza ou identidade. Halessa aceitou
+    não exigir a fonte, estabelecendo que Tyr só poderá agir quando Ren trouxer fato observável suficiente para
+    avaliação.
   acordos:
   - 'Acordo provisório para 12 Eleasis: Halessa buscará autorização de Sirrus para entregar a Velis convocação suplementar
     no primeiro sino após o anoitecer e enviará confirmação reservada a Ren antes do meio-dia. Ren observará separado
     do portador por no máximo duas horas, sem invasão, contato, furto ou captura; romperá diante de contravigilância
     e retornará à Casa de Tyr ou a Luath.'
-  - Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada para o primeiro sino após o anoitecer
-    de 12 Eleasis. Halessa enviou a ficha reservada de confirmação a Silva antes do meio-dia, cumprindo o combinado;
-    Ren ainda não foi informado.
+  - Sirrus autorizou a convocação suplementar de Velis e a vigilância coordenada no primeiro sino após o anoitecer
+    de 12 Eleasis. Silva entregou a confirmação a Ren; às 19:10 ele apresentou-se a Halessa e ao oficial Garran
+    Holt para cumprir a operação dentro dos limites acordados.
+  - Após o debriefing de 12 Eleasis, Halessa estabeleceu que nova violação deliberada de contingência numa operação
+    coordenada encerrará a participação de Tyr em ações clandestinas com Ren. A informação obtida não autorizou
+    retroativamente a quebra.
   momentos_de_vinculo:
   - Ao ouvir a brincadeira de Ren sobre ser um bicho-papão de Kozakura, Halessa conteve um sorriso e sustentou o
     olhar dele por um instante além do estritamente profissional; o sinal permaneceu sutil e ambíguo.
+  - Halessa não reconheceu Ren imediatamente sob o disfarce de velho erudito; ao confirmar sua identidade pelo selo
+    e contexto, reprimiu um quase sorriso e avaliou o trabalho como convincente antes de retomar o profissionalismo.
+  - 'Correção de continuidade: diante do oficial Garran Holt, Halessa protegeu os métodos e recursos de Ren, confirmando
+    apenas que a identidade do auxiliar havia sido verificada e que o disfarce era convincente.'
+  - Antes de partir com Garran, Ren brincou no personagem do velho que estava velho demais para improvisar uma prisão;
+    Halessa respondeu que sua aparência finalmente combinava com a prudência prometida, contendo divertimento sem
+    perder o profissionalismo.
+  - Ren retornou à Casa de Tyr quinze minutos antes do fim da janela, sem ferimentos e com o disfarce preservado.
+    Embora tenha localizado uma sombra pela qual poderia tentar entrar, respeitou a ficha de retorno e o procedimento
+    formal ao perceber que a sala não oferecia segurança estrita.
+  - Ao ouvir Ren agradecer por não ter surgido de uma sombra e confessar preferir sombras a portas, Halessa respondeu
+    que a porta havia sido deixada aberta para ele; a frase carregou por um instante interesse pessoal sutil antes
+    de ela retomar o profissionalismo.
 conteudo_mais_antigo_no_historico:
   ofertas: 1

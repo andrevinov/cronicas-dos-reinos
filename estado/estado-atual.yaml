@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: em_sessao
+  status: entre_sessoes
   sessao_atual: 10
-  modo_de_cena_atual: experiencia_supervisionada_de_shinta_no_patio_de_entregas
+  modo_de_cena_atual: conversa_privada_com_nera_apos_operacao_velis
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,8 +18,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa do Salgueiro Seco, Ravens Bluff
-  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no depósito de figurinos velhos do circo, encerrando a conversa privada com Nera
   descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
     com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
     Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
@@ -37,7 +37,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '12:00'
+  hora_aproximada: '22:35'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -50,17 +50,18 @@ recursos:
     maximos: 6
     dado: d8
   ki:
-    atuais: 4
+    atuais: 2
     maximos: 6
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 31.400000000000002
+    po: 29.8
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 12 Eleasis
+    broche_do_semblante_humilde: indisponível; uso gasto em 12 Eleasis e renovável no próximo amanhecer
     silencio: disponível mediante gasto de 2 Ki
+    traje_shinta_bem_vestido: pago e separado por Dessa; pronto para uso na manhã de 13 Eleasis
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml
@@ -147,8 +148,8 @@ disponibilidades:
 combate_atual: null
 efeitos_temporarios:
   ren_desarmado:
-    descricao: Ren está desarmado e vestido como Shinta; espadas, shurikens e ferramentas de ladrão ficaram em seus
-      aposentos no circo. Ele leva apenas o Broche do Semblante Humilde oculto e inativo.
+    descricao: Ren partiu para a operação sem espadas, shurikens ou qualquer arma; leva sob o disfarce apenas suas
+      ferramentas de ladrão e objetos coerentes com o velho erudito.
     duracao: até Ren recuperar ou voltar a portar suas armas
     inicio: 05:15 de 12 Eleasis
   descanso_longo_incompleto:
@@ -156,6 +157,27 @@ efeitos_temporarios:
       longo e não recebeu recuperação mecânica.
     duracao: até completar um descanso longo
     inicio: 00:45 de 12 Eleasis
+  disfarce_velho_erudito:
+    descricao: Nera ajudou a remover a maior parte do disfarce de velho erudito; ainda restam maquiagem e fixadores
+      que Ren precisa limpar nos próprios aposentos. A aparência já não serve para infiltração convincente.
+    duracao: até Ren concluir a remoção
+    inicio: 22:35 de 12 Eleasis
+  narwhal_alerta_para_observador_idoso:
+    descricao: A segurança de Narwhal Manor não reconheceu Ren, mas suspeita que um velho erudito vigiava a entrada.
+      Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
+    duracao: até a segurança encerrar o alerta ou a situação mudar
+    inicio: 19:50 de 12 Eleasis
+  lacuna_dez_minutos_vigilancia_velis:
+    descricao: Ren perdeu visão das saídas de Narwhal Manor durante aproximadamente dez minutos enquanto despistava
+      o guarda e se reposicionava; não sabe se Velis ou um mensageiro saiu nesse intervalo.
+    duracao: até obter informação que confirme ou descarte uma saída nesse intervalo
+    inicio: 19:55 de 12 Eleasis
+  pista_endereco_portador_velis:
+    descricao: Ren confirmou por escuta que a antiga casa de cópias de portadas azul-escuras é uma isca de contravigilância.
+      O portador sabia do velho observado em Narwhal e foi enviado para atrair qualquer perseguidor; uma voz afirmou
+      que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
+    duracao: conhecimento persistente
+    inicio: 20:51 de 12 Eleasis
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
@@ -163,5 +185,6 @@ coberturas:
       sem pastas seladas, rotas externas ou acesso sem supervisão
     nome: Shinta Ryoushi
     origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
-    avaliacao_pratica: diligente e competente durante toda a manhã no pátio de entregas; supervisão passou de conferência
-      total para amostragem, mas documentos selados, rotas e acesso sensível permanecem proibidos
+    avaliacao_pratica: aprovado para retornar após o primeiro sino de 13 Eleasis diretamente à entrada de entrega;
+      diligência, organização e silêncio reconhecidos, com supervisão reduzida para amostragem, mas acesso a selos
+      fechados, rotas e documentos sensíveis ainda proibido

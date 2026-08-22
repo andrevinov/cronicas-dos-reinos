@@ -430,3 +430,64 @@ eventos_pos_migracao:
     valor: Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando que Sirrus
       autorizou a convocação suplementar de Velis para o primeiro sino após o anoitecer e a vigilância coordenada
       nos limites definidos. Ren ainda não recebeu essa confirmação.
+- transacao: s010-49ca439ffbb6d852
+  sessao: 10
+  resumo: 'Ren retornou ao circo após romper contato, tomou banho e pediu a Dessa um conjunto limpo e modesto para
+    Shinta; ela separou peças por 6 PP, ainda sem pagamento. Ren revelou a Silva a cobertura Shinta, os dois empregos,
+    a casa e a contravigilância. Silva entregou a confirmação selada de Tyr: Sirrus autorizou a convocação de Velis
+    no primeiro sino após o anoitecer. Ela aprovou a ruptura de cauda, mas alertou que o broche está gasto e Halessa
+    deve saber.'
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Em 12 Eleasis, Ren revelou a cobertura de Shinta Ryoushi, a tentativa de obter uma casa, os empregos
+      com o jardineiro e com Tomas no pátio de entregas e os limites de acesso impostos pelo escriturário.
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Ren relatou a possível cauda após o trabalho como Shinta e explicou que rompeu a linha de visão numa
+      loja lotada, gastou o Broche do Semblante Humilde e só então retornou ao circo sob outra aparência.
+  - alvo: relacao:silva_elkwood
+    caminho: documentos
+    op: remove
+    valor: Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando que Sirrus
+      autorizou a convocação suplementar de Velis para o primeiro sino após o anoitecer e a vigilância coordenada
+      nos limites definidos. Ren ainda não recebeu essa confirmação.
+  - alvo: relacao:silva_elkwood
+    caminho: documentos
+    op: append
+    valor: Antes do meio-dia de 12 Eleasis, Silva recebeu e verificou a ficha reservada de Tyr confirmando a convocação
+      suplementar de Velis; às 17:45, entregou a confirmação a Ren e informou que Sirrus autorizou a vigilância
+      coordenada nos limites definidos.
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_compartilhadas_por_silva
+    op: append
+    valor: Sirrus autorizou que Velis Rook receba convocação suplementar no primeiro sino após o anoitecer de 12
+      Eleasis, com Ren junto ao oficial de justiça como auxiliar, sujeito aos limites acordados com Halessa.
+- transacao: s010-c29574c5e17a0c14
+  sessao: 10
+  resumo: 'Halessa liberou Ren e recomendou que dormisse. Ele retornou ao circo ainda como velho, sem cauda observada,
+    e relatou toda a operação a Silva sem nova revelação sobre Kethra. Silva concordou com Halessa: a isca confirmou
+    capacidade de contravigilância e outra mensagem, mas não Shizune; Ren violou o limite ao voltar. Ela reconheceu
+    que ele ouviu sem ser visto, retirou-se e contou a verdade. Às 22:10 deixou comida e ordenou que removesse o
+    disfarce e dormisse; o descanso ainda não começou.'
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: 'Ren relatou integralmente a operação contra Velis: a reação à convocação, a detecção do velho, a quebra
+      do limite de ruptura, o portador usado como isca, a escuta na antiga casa de cópias e a existência de outra
+      mensagem por rota desconhecida.'
+  - alvo: relacao:silva_elkwood
+    caminho: riscos
+    op: append
+    valor: Silva sabe que Ren retomou a vigilância após contravigilância clara, violando o limite acordado com Halessa.
+      Reconhece que ele permaneceu não identificado, saiu sem atacar, retornou antes do prazo e confessou a quebra,
+      mas considera que Narwhal explorou previsivelmente o orgulho dele.
+  - alvo: relacao:silva_elkwood
+    caminho: momentos_de_vinculo
+    op: append
+    valor: 'Após o retorno da operação de Velis, Silva combinou censura direta com cuidado concreto: deixou comida,
+      confirmou que Nera e Tavin estavam seguros e recusou discutir nova estratégia antes que Ren removesse o disfarce
+      e dormisse uma noite completa.'

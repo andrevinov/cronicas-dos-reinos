@@ -1,0 +1,19 @@
+schema_recompensa: 1
+natureza: reservado
+id: antiga_casa_copias_portadas_azuis-r02
+local_id: antiga_casa_copias_portadas_azuis
+tipo: item_magico_menor
+nome: Globo de Luz
+descricao: Um pequeno item mágico de iluminação e utilidade.
+valor_aproximado: moderado
+importancia: comum
+origem: procedural
+tags:
+- item_magico
+- utilidade
+geracao:
+  modo: procedural_deterministica
+  gerador: deterministico_v1
+  template: globo_luz
+  slot: 2
+  chave: ff12a1725b383e9614dd90a9

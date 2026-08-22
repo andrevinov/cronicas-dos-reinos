@@ -53,3 +53,9 @@ mapas:
     periculosidade: baixa
     quantidade: 3
     chave_geracao: 7631ac832cb6899655818133
+  antiga_casa_copias_portadas_azuis:
+    arquivo: narrador/recompensas/mapas/antiga_casa_copias_portadas_azuis.yaml
+    tier: 2
+    periculosidade: media
+    quantidade: 2
+    chave_geracao: a435a1fb10c43136008f7df4

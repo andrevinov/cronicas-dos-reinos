@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 10
-status: em_andamento
+status: encerrada
 fonte: sessoes/010/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 10
@@ -18,17 +18,17 @@ checkpoint_inicial:
   nivel_ficha: 6
 checkpoint_atual:
   sessao: 10
-  modo: experiencia_supervisionada_de_shinta_no_patio_de_entregas
+  modo: conversa_privada_com_nera_apos_operacao_velis
   personagem: Ren Kagehira
   nivel: 6
   pv: 45/45
-  ki: 4/6
+  ki: 2/6
   ca: 17
-  dinheiro_po: 31.400000000000002
+  dinheiro_po: 29.8
   data: 12 Eleasis, 1372 DR
-  hora: '12:00'
-  area: Casa do Salgueiro Seco, Ravens Bluff
-  ponto_exato: pátio de entregas da Casa do Salgueiro Seco, sob supervisão
+  hora: '22:35'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no depósito de figurinos velhos do circo, encerrando a conversa privada com Nera
   nivel_ficha: 6
 consolidacoes:
 - id: s010-cena-7be3b62b27b46ab3
@@ -170,6 +170,97 @@ consolidacoes:
   - estado/tempo.yaml
   - historico/relacoes/halessa_vorn.yaml
   - historico/relacoes/silva_elkwood.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-bb775ebc87c78f34
+  tipo: cena
+  transacoes:
+  - s010-75125365f44b1e57
+  deltas: 4
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-010/tx-s010-75125365f44b1e57.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-6cd8f7f33af8e18a
+  tipo: cena
+  transacoes:
+  - s010-5282e950048322e1
+  - s010-bb8ddf4783638be7
+  - s010-49ca439ffbb6d852
+  - s010-dcc59e91eb4e492a
+  deltas: 33
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/dessa_wren.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/dessa_wren.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-cena-c741b4db8a4c5e53
+  tipo: cena
+  transacoes:
+  - s010-3794fc30beeb92b1
+  - s010-1d322ae2e10047ec
+  - s010-c969aa0a454deb11
+  - s010-b252ac8404c6dc6a
+  - s010-9bd1eb647da39bc0
+  - s010-66014a31daa0bd64
+  deltas: 39
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/velis_rook.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/velis_rook.yaml
+  - narrador/sessoes/010/rolagens-ocultas.md
+  - personagens/jogador/ficha.yaml
+  - sessoes/010/alteracoes-de-estado.yaml
+  - sessoes/010/consequencias.md
+  - sessoes/010/consolidacoes.jsonl
+  - sessoes/010/resumo.md
+- id: s010-sessao-45bdcd560e688f1d
+  tipo: sessao
+  transacoes:
+  - s010-9cf8817277ffcb0f
+  - s010-2d93b2a36e0f064f
+  - s010-e49df4e854184f27
+  - s010-c29574c5e17a0c14
+  - s010-8e757d25f5de5aaa
+  deltas: 34
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/relacoes/velis_rook.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - historico/relacoes/velis_rook.yaml
   - sessoes/010/alteracoes-de-estado.yaml
   - sessoes/010/consequencias.md
   - sessoes/010/consolidacoes.jsonl

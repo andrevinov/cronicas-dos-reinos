@@ -1,0 +1,33 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: antiga_casa_copias_portadas_azuis
+tier: 2
+periculosidade: media
+geracao:
+  modo: deterministico_v1
+  chave: a435a1fb10c43136008f7df4
+  imutavel: true
+  procedurais: 2
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: antiga_casa_copias_portadas_azuis-r01
+  tipo: dinheiro
+  estado: oculto
+  condicao_de_descoberta: obter acesso legítimo ou clandestino à parte restrita onde
+    a recompensa está guardada
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/antiga_casa_copias_portadas_azuis-r01.yaml
+- id: antiga_casa_copias_portadas_azuis-r02
+  tipo: item_magico_menor
+  estado: oculto
+  condicao_de_descoberta: investigar deliberadamente recipientes, nichos ou mobiliário
+    compatíveis com a área
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/antiga_casa_copias_portadas_azuis-r02.yaml

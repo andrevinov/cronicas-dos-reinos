@@ -58,3 +58,11 @@ recompensas:
     local_id: casa_de_tyr
     mapa: narrador/recompensas/mapas/casa_de_tyr.yaml
     arquivo: narrador/recompensas/itens/casa_de_tyr-r03.yaml
+  antiga_casa_copias_portadas_azuis-r01:
+    local_id: antiga_casa_copias_portadas_azuis
+    mapa: narrador/recompensas/mapas/antiga_casa_copias_portadas_azuis.yaml
+    arquivo: narrador/recompensas/itens/antiga_casa_copias_portadas_azuis-r01.yaml
+  antiga_casa_copias_portadas_azuis-r02:
+    local_id: antiga_casa_copias_portadas_azuis
+    mapa: narrador/recompensas/mapas/antiga_casa_copias_portadas_azuis.yaml
+    arquivo: narrador/recompensas/itens/antiga_casa_copias_portadas_azuis-r02.yaml

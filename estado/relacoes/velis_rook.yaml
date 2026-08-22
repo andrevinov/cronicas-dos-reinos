@@ -29,6 +29,15 @@ relacao:
   - Papel encontrado na balança velha tem marca d'água parcial compatível com o circuito de Narwhal Manor, mas não
     identifica Velis Rook como o homem de mãos limpas.
   - Ren confirmou visualmente durante a perseguição que o homem de mãos limpas não é Velis Rook.
+  - Em 12 Eleasis, Velis recebeu pessoalmente a convocação suplementar de Tyr em Narwhal Manor. Ao ler o anexo,
+    tensionou-se, perguntou se poderia consultar alguém, assinou a ciência e voltou para dentro da mansão; não reconheceu
+    Ren sob o disfarce de velho erudito.
+  - Às 20:20 de 12 Eleasis, Ren viu Velis entregar discretamente um pequeno papel a um portador sem libré. Seguiu
+    o rapaz sem ser detectado até uma antiga casa de cópias de portadas azul-escuras, onde ele entrou mediante batida
+    codificada; o destinatário não foi visto.
+  - Ao escutar a casa alcançada pelo portador, Ren descobriu que o rapaz fazia parte de uma isca preparada após
+    a detecção do velho em Narwhal. Três homens aguardavam que um perseguidor procurasse janela ou saída; um deles
+    afirmou que a mensagem importante não passou pela mão do portador. A rota real continua desconhecida.
   riscos:
   - Velis sabe que alguém tentou tomar seus papéis na porta lateral.
   - Velis ainda não identificou Ren com certeza como o oriental que procura Masao, mas viu um rosto e uma mão perto
@@ -38,5 +47,10 @@ relacao:
     de como a ordem o alcança.
   - Se Tyr associar o homem de capuz visto no perímetro a Ren, Sirrus pode ler isso como tentativa de contornar
     a negativa de acompanhar a oitiva.
+  - A convocação suplementar agora impõe prazo e preservação de registros; Velis sabe que pode buscar aconselhamento,
+    mas qualquer contato que faça ainda não foi identificado por Ren.
+  - Tyr agora sabe, pelo relato de Ren, que a resposta de Velis à convocação acionou uma isca de contravigilância
+    e que uma segunda comunicação importante seguiu rota ainda desconhecida; isso fortalece a hipótese de orientação
+    treinada, mas não prova Shizune.
 conteudo_mais_antigo_no_historico:
   informacoes_observadas_por_ren: 2
