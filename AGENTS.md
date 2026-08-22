@@ -58,7 +58,7 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
-- NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
+- NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; no-op repetido de agente leve → `docs/agente/mundo-vivo-noop-compaction.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
 - **local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;**
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -75,7 +75,7 @@ Fluxo normal:
 
 `entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
 
-**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
+**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Se `tipo: reavaliar_agente_leve` e a avaliação explícita concluir rotina sem mudança extraordinária, usar `python3 ferramentas/agentes_leves.py concluir-noop <id> --nota ...`; isso instala o cache causal reservado e conclui a pendência. Para qualquer outra pendência sem mudança, usar `barreira_mundo.py concluir <id> --nota ...`. Com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
 **Gatilho reativo não é rotina.** Em abertura/mudança material, use `cena_mundo.py preparar` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. `preparar`/`abrir` são read-only: calculam sem criar mapa ou consumir gate.
 
