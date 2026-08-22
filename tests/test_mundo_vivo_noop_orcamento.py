@@ -57,6 +57,14 @@ class MundoVivoNoopBudgetTest(unittest.TestCase):
         self.assertTrue(inv["concluir_noop_e_idempotente"])
         self.assertTrue(inv["queda_entre_escritas_mantem_pendencia_bloqueante"])
 
+    def test_roteador_operacional_usa_concluir_noop_so_para_agente_leve(self):
+        text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("tipo: reavaliar_agente_leve", text)
+        self.assertIn("agentes_leves.py concluir-noop <id>", text)
+        self.assertIn("Para qualquer outra pendência sem mudança", text)
+        self.assertIn("barreira_mundo.py concluir <id>", text)
+        self.assertIn("docs/agente/mundo-vivo-noop-compaction.md", text)
+
 
 if __name__ == "__main__":
     unittest.main()
