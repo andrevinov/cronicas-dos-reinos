@@ -2,6 +2,7 @@
 """Extensão da abertura transacional de cena com stubs persistentes de NPC."""
 from __future__ import annotations
 
+import argparse
 import copy
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,8 @@ import npc_stubs
 for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
+
+_base_build_parser = _core.build_parser
 
 
 def _resolve_npcs(
@@ -211,6 +214,7 @@ def open_scene(
         "regra": (
             "NPC já processado não consome novo gate; NPC recém-chegado usa encontro_id estável. "
             "NPC nomeado sem identidade pode receber stub persistente_sem_agenda somente na confirmação. "
+            "Tags contextuais usam namespace tipo:valor; presença exige coincidência local explícita. "
             "Candidatos contextuais são somente obrigações de avaliar: não estabelecem aparição, "
             "não executam linha operacional e não avançam direção canônica."
         ),
@@ -275,14 +279,41 @@ def confirm_scene(
     return committed
 
 
+def _context_tag_arg(value: str) -> str:
+    """Valida e normaliza `--contexto-tag` já na borda do argparse."""
+    try:
+        return _core.contexto_cena.normalize_tag(value)
+    except _core.contexto_cena.ContextSceneError as exc:
+        raise argparse.ArgumentTypeError(str(exc)) from exc
+
+
+def _configure_context_tag_actions(parser: argparse.ArgumentParser) -> None:
+    for action in parser._actions:
+        if action.dest == "contexto_tag":
+            action.type = _context_tag_arg
+            action.help = (
+                "tag contextual tipada tipo:valor; tipos: local, assunto, acao, pessoa, risco; "
+                "máximo 8, sem busca semântica"
+            )
+        if isinstance(action, argparse._SubParsersAction):
+            for subparser in action.choices.values():
+                _configure_context_tag_actions(subparser)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = _base_build_parser()
+    _configure_context_tag_actions(parser)
+    return parser
+
+
 # As funções do core resolvem nomes no próprio namespace; redirecionar os símbolos
 # faz prepare_scene/main reutilizarem todo o contrato existente sem duplicar CLI.
 _core._resolve_npcs = _resolve_npcs
 _core.open_scene = open_scene
 _core.confirm_scene = confirm_scene
+_core.build_parser = build_parser
 
 prepare_scene = _core.prepare_scene
-build_parser = _core.build_parser
 main = _core.main
 
 
