@@ -181,13 +181,14 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
             f"PV {pv['atuais']}/{pv['maximos']} · Ki {ki['atuais']}/{ki['maximos']}",
             footer,
         )
+        item = context["rodape"]["itens_magicos"]["broche_do_semblante_humilde"]
         effects = context.get("efeitos_temporarios") or {}
-        expected_brooch = (
-            "Broche do Semblante Humilde ativo"
-            if "broche_do_semblante_humilde" in effects
-            else "Broche do Semblante Humilde disponível"
-        )
-        self.assertIn(expected_brooch, footer)
+        if "broche_do_semblante_humilde" in effects:
+            self.assertIn("Broche do Semblante Humilde ativo", footer)
+        elif rodape_turno._available(item.get("disponibilidade")):
+            self.assertIn("Broche do Semblante Humilde disponível", footer)
+        else:
+            self.assertNotIn("Broche do Semblante Humilde", footer)
         self.assertLess(len(footer.encode("utf-8")), 512)
 
 
