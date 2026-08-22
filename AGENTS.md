@@ -75,23 +75,23 @@ Fluxo normal:
 
 `entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
 
-**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: se `tipo: reavaliar_agente_leve`, use `agentes_leves.py concluir-noop <id>`; demais, `barreira_mundo.py concluir <id> --nota ...`. Com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
+**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/endpoints.py pendencias` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: se `tipo: reavaliar_agente_leve`, use `agentes_leves.py concluir-noop <id>`; demais, `barreira_mundo.py concluir <id> --nota ...`. Com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Em abertura/mudança material, use `cena_mundo.py preparar` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. `preparar`/`abrir` são read-only: calculam sem criar mapa ou consumir gate.
+**Gatilho reativo não é rotina.** Em abertura/mudança material, use `endpoints.py cena` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. A porta é read-only: calcula sem criar mapa ou consumir gate.
 
 Após `turno.py registrar`, confirme a cena aceita com `cena_mundo.py confirmar --preparacao-id <id>` e os mesmos parâmetros. Não confirme cena corrigida/abandonada. Preparação obsoleta falha fechada; refaça. Sem gatilho, não consultar recompensa/oportunidade.
 
-**Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `direcoes.py avaliar-destino <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
+**Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `endpoints.py direcao <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
 
 Em encontros simultâneos, resolver todos os NPCs antes de mutar, colapsar aliases e ordenar por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado.
 
 **Antes de narrar intenção que comprime tempo** — dormir, esperar, vigiar por horas, viajar/trabalhar por período prolongado — consultar uma vez:
 
 ```bash
-python3 ferramentas/fronteira_mundo.py --data "11 Eleasis, 1372 DR" --hora "11:50"
+python3 ferramentas/endpoints.py fronteira --data "11 Eleasis, 1372 DR" --hora "11:50"
 ```
 
-Se `interromper: true`, **não narrar além de `fronteira`**: preservar a intenção restante, resolver só até ali, registrar/checkpointar e processar o Mundo Vivo antes de continuar. Se `false`, seguir até o alvo. Fronteira pede processamento; não cria fato. **Não chamar** em turno curto/comum.
+Se o gate retornar `interromper`, **não narrar além da fronteira**: preservar a intenção restante, resolver só até ali, registrar/checkpointar e processar o Mundo Vivo antes de continuar. Se `livre`, seguir até o alvo. Fronteira pede processamento; não cria fato. **Não chamar** em turno curto/comum.
 
 Durante cada avanço comum:
 
@@ -121,7 +121,7 @@ Meta comum: **duas escritas**. Preparação escreve zero; `confirmar` só após 
 - `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
 - `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
-- `interacoes_mundo.py preparar-sidequest <id>` devolve deltas de pressão/consequência para o **mesmo turno**; rastro/recompensa ficam em `pos_canonico` até o fato-base virar cânone.
+- `endpoints.py sidequest <id>` devolve deltas de turno e efeitos `pos_canonico` já separados; rastro/recompensa só materializam depois do fato-base canônico.
 - Agente novo passa antes pela classificação NPC v2.
 - Checkpoint só invalida quest giver morto; não sorteia side quests nem gera loot.
 
