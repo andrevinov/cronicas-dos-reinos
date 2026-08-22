@@ -23,11 +23,10 @@ Compromissos ativos vivem em `estado/estado-atual.yaml:compromissos`:
 compromissos:
   resposta_sella:
     tipo: encontro
-    resumo: Encontrar Sella para receber a resposta autorizada por Kethra.
+    resumo: Encontrar Sella no mercador de cal para receber a resposta autorizada por Kethra.
     envolvidos:
     - ren
     - sella_rove
-    local_id: mercador_cal_rua_cal
     janela:
       inicio:
         data: 14 Eleasis, 1372 DR
@@ -45,6 +44,8 @@ compromissos:
 
 O registro é deliberadamente curto. Não copie conversa, justificativas longas ou cronologia para dentro dele.
 
+A v1 **não possui `local_id`**. Enquanto não houver integração repo-aware com o Canonical Location Registry, o local fica no resumo/descrição. Aceitar um identificador de local apenas porque ele “parece” snake_case reabriria a classe de inconsistência eliminada pela Task 1. Uma extensão futura só deve adicionar local estruturado passando pela mesma resolução canônica obrigatória.
+
 ## Escrita durante a sessão
 
 Criar ou reagendar substitui **o registro inteiro** no mesmo JSON enviado a `turno.py registrar`:
@@ -56,7 +57,7 @@ Criar ou reagendar substitui **o registro inteiro** no mesmo JSON enviado a `tur
   "caminho": "compromissos.resposta_sella",
   "valor": {
     "tipo": "encontro",
-    "resumo": "Encontrar Sella para receber a resposta de Kethra.",
+    "resumo": "Encontrar Sella no mercador de cal para receber a resposta de Kethra.",
     "envolvidos": ["ren", "sella_rove"],
     "janela": {
       "inicio": {"data": "14 Eleasis, 1372 DR", "hora": "21:20"},
