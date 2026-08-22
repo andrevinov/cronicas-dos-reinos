@@ -68,11 +68,21 @@ def _list(value: Any, label: str) -> list[Any]:
     return value
 
 
-def _compact(values: Iterable[str]) -> list[str]:
-    return list(dict.fromkeys(str(value) for value in values if str(value)))
+def _compact(values: Iterable[Any]) -> list[str]:
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        if value is None:
+            continue
+        text = str(value).strip()
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        result.append(text)
+    return result
 
 
-def _bounded(values: Iterable[str]) -> tuple[list[str], int]:
+def _bounded(values: Iterable[Any]) -> tuple[list[str], int]:
     compact = _compact(values)
     return compact[:MAX_LIST_ITEMS], max(0, len(compact) - MAX_LIST_ITEMS)
 
