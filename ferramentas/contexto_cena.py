@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 """Descoberta contextual inversa, determinística e barata para abertura de cenas.
 
-A camada recebe apenas tags explícitas já sustentadas pela cena e cruza um
-roteador reservado pequeno. Ela pode apontar três classes independentes de
-candidato:
+Tags contextuais usam namespace obrigatório ``tipo:valor``. O vocabulário de tipos
+é fechado em ``local``, ``assunto``, ``acao``, ``pessoa`` e ``risco``. Isso separa
+sobre o que a cena fala de onde ela ocorre: candidatos de presença exigem uma
+coincidência ``local:*`` explícita, enquanto operações, entradas e direções podem
+continuar reagindo a assunto/ação/pessoa/risco sem fabricar interseção física.
 
-- presença/aparição de agente;
-- entrada orgânica de aliado futuro;
-- linha operacional do arco;
-- direção narrativa canônica.
-
-Em todos os casos, candidato significa **avaliar**, nunca executar. A seleção
-respeita primeiro o Contrato de Arco e, para antagonistas, o marco mínimo de
-aparição. Presença consulta somente controles compactos + índice resumido de agentes; operação para nos controles do arco; direção consulta somente o
-estado operacional de direções. Nenhum fragmento narrativo é aberto nesta etapa.
+Candidato significa **avaliar**, nunca executar. Nenhum fragmento narrativo é
+aberto nesta etapa.
 """
 from __future__ import annotations
 
@@ -39,6 +34,10 @@ MAX_OPERATION_CANDIDATES = 2
 MAX_DIRECTION_CANDIDATES = 1
 MAX_ENTRY_CANDIDATES = 1
 MAX_CONTEXT_CANDIDATES = 4
+
+TAG_TYPES = ("local", "assunto", "acao", "pessoa", "risco")
+VALID_TAG_TYPES = set(TAG_TYPES)
+LOCAL_TAG_PREFIX = "local:"
 
 VALID_TYPES = {"presenca", "entrada", "operacao", "direcao"}
 ARC_GROUPS = ("antagonistas", "aliados")
@@ -96,15 +95,37 @@ def _strict_keys(data: dict[str, Any], allowed: set[str], label: str) -> None:
         )
 
 
-def normalize_tag(value: Any) -> str:
-    """Normaliza rótulo humano para chave ASCII estável sem interpretação semântica."""
-    raw = _text(value, "tag contextual").casefold()
+def _normalize_atom(value: Any, label: str) -> str:
+    raw = _text(value, label).casefold()
     folded = unicodedata.normalize("NFKD", raw)
     plain = "".join(ch for ch in folded if not unicodedata.combining(ch))
     normalized = re.sub(r"[^a-z0-9]+", "_", plain).strip("_")
     if not normalized:
-        raise ContextSceneError("tag contextual não contém identificador utilizável")
+        raise ContextSceneError(f"{label} não contém identificador utilizável")
     return normalized
+
+
+def split_tag(value: Any) -> tuple[str, str]:
+    """Valida e normaliza uma tag ``tipo:valor`` sem inferir semântica."""
+    raw = _text(value, "tag contextual")
+    if raw.count(":") != 1:
+        raise ContextSceneError(
+            "tag contextual deve usar namespace obrigatório tipo:valor "
+            "(local, assunto, acao, pessoa ou risco)"
+        )
+    raw_type, raw_value = raw.split(":", 1)
+    tag_type = _normalize_atom(raw_type, "tipo da tag contextual")
+    if tag_type not in VALID_TAG_TYPES:
+        raise ContextSceneError(
+            f"tipo de tag contextual inválido: {tag_type}; use " + ", ".join(TAG_TYPES)
+        )
+    tag_value = _normalize_atom(raw_value, "valor da tag contextual")
+    return tag_type, tag_value
+
+
+def normalize_tag(value: Any) -> str:
+    tag_type, tag_value = split_tag(value)
+    return f"{tag_type}:{tag_value}"
 
 
 def normalize_tags(values: Iterable[Any] | None) -> list[str]:
@@ -126,15 +147,42 @@ def normalize_tags(values: Iterable[Any] | None) -> list[str]:
 
 def _candidate_id(value: Any, label: str) -> str:
     value = _text(value, label)
-    if normalize_tag(value) != value:
+    if _normalize_atom(value, label) != value:
         raise ContextSceneError(f"{label} deve usar chave já normalizada: {value}")
     return value
 
 
+def _router_vocabulary(router: dict[str, Any]) -> dict[str, str]:
+    vocabulary: dict[str, str] = {}
+    for binding_id, meta in router["candidatos"].items():
+        for tag in meta["tags"]:
+            tag_type, tag_value = split_tag(tag)
+            previous = vocabulary.get(tag_value)
+            if previous is not None and previous != tag_type:
+                raise ContextSceneError(
+                    f"valor contextual {tag_value!r} aparece em namespaces diferentes: "
+                    f"{previous} e {tag_type} (binding {binding_id})"
+                )
+            vocabulary[tag_value] = tag_type
+    return vocabulary
+
+
+def _validate_input_vocabulary(tags: list[str], router: dict[str, Any]) -> None:
+    vocabulary = _router_vocabulary(router)
+    for tag in tags:
+        tag_type, tag_value = split_tag(tag)
+        expected = vocabulary.get(tag_value)
+        if expected is not None and expected != tag_type:
+            raise ContextSceneError(
+                f"tag contextual {tag!r} usa namespace {tag_type}, mas o valor "
+                f"{tag_value!r} pertence a {expected} no vocabulário do roteador"
+            )
+
+
 def load_router(repo: Path) -> dict[str, Any]:
     data = _map(_load(repo / ROUTER), ROUTER.as_posix())
-    if data.get("schema_contextos_cena") != 3:
-        raise ContextSceneError("roteador contextual deve usar schema_contextos_cena: 3")
+    if data.get("schema_contextos_cena") != 4:
+        raise ContextSceneError("roteador contextual deve usar schema_contextos_cena: 4")
     if data.get("natureza") != "roteador_reservado":
         raise ContextSceneError("roteador contextual deve ter natureza: roteador_reservado")
 
@@ -150,13 +198,12 @@ def load_router(repo: Path) -> dict[str, Any]:
     for field, ceiling in required_budget.items():
         value = budget.get(field)
         if not isinstance(value, int) or isinstance(value, bool) or not 1 <= value <= ceiling:
-            raise ContextSceneError(
-                f"orcamento.{field} deve ficar entre 1 e {ceiling}"
-            )
+            raise ContextSceneError(f"orcamento.{field} deve ficar entre 1 e {ceiling}")
     if budget.get("ordenacao") != "coincidencias_prioridade_tipo_id":
         raise ContextSceneError("ordenação contextual inválida")
 
     candidates = _map(data.get("candidatos"), "contextos_cena.candidatos")
+    vocabulary: dict[str, str] = {}
     for binding_id, raw_meta in candidates.items():
         binding_id = _candidate_id(binding_id, "id de binding contextual")
         meta = _map(raw_meta, f"candidatos.{binding_id}")
@@ -201,13 +248,25 @@ def load_router(repo: Path) -> dict[str, Any]:
             )
         if normalized != tags:
             raise ContextSceneError(
-                f"candidatos.{binding_id}.tags deve usar chaves já normalizadas"
+                f"candidatos.{binding_id}.tags deve usar chaves tipadas já normalizadas"
             )
         if minimum > len(tags):
             raise ContextSceneError(
                 f"candidatos.{binding_id}.min_coincidencias excede quantidade de tags"
             )
-        # força validação sem reter cópia normalizada paralela
+        if kind == "presenca" and not any(tag.startswith(LOCAL_TAG_PREFIX) for tag in tags):
+            raise ContextSceneError(
+                f"candidatos.{binding_id} de presença deve declarar ao menos uma tag local:<id>"
+            )
+        for tag in tags:
+            tag_type, tag_value = split_tag(tag)
+            previous = vocabulary.get(tag_value)
+            if previous is not None and previous != tag_type:
+                raise ContextSceneError(
+                    f"valor contextual {tag_value!r} aparece em namespaces diferentes: "
+                    f"{previous} e {tag_type}"
+                )
+            vocabulary[tag_value] = tag_type
         _ = target
     return data
 
@@ -252,15 +311,12 @@ def load_directions_state(repo: Path) -> dict[str, Any]:
 
 
 def _evaluation_mode(meta: dict[str, Any]) -> str | None:
-    """Decide apenas se o agente merece avaliação; nunca estabelece sua presença."""
     if meta.get("estado") != "ativo":
         return None
-
     presence = meta.get("presenca")
     rule = meta.get("atuacao_local")
     if rule not in VALID_LOCAL_RULES:
         raise ContextSceneError(f"regra de atuação local inválida no índice: {rule}")
-
     if rule == "exige_presenca_fisica":
         if presence in {"presente", "presente_oculto"}:
             return "presenca_confirmada"
@@ -277,7 +333,6 @@ def _evaluation_mode(meta: dict[str, Any]) -> str | None:
 
 
 def _arc_line_catalog(repo: Path) -> tuple[dict[str, str], list[str]]:
-    """Catálogo frio para validar bindings de linhas em todos os arcos."""
     try:
         index = arcos.load_index(repo)
         catalog: dict[str, str] = {}
@@ -297,29 +352,20 @@ def _arc_line_catalog(repo: Path) -> tuple[dict[str, str], list[str]]:
 
 
 def validate(repo: Path) -> dict[str, Any]:
-    """Validação fria/CI dos bindings sem abrir fragmentos narrativos."""
     router = load_router(repo)
     sources = [ROUTER.as_posix()]
 
     presence_targets = {
-        meta["alvo"]
-        for meta in router["candidatos"].values()
-        if meta["tipo"] == "presenca"
+        meta["alvo"] for meta in router["candidatos"].values() if meta["tipo"] == "presenca"
     }
     entry_targets = {
-        meta["alvo"]
-        for meta in router["candidatos"].values()
-        if meta["tipo"] == "entrada"
+        meta["alvo"] for meta in router["candidatos"].values() if meta["tipo"] == "entrada"
     }
     operation_targets = {
-        meta["alvo"]
-        for meta in router["candidatos"].values()
-        if meta["tipo"] == "operacao"
+        meta["alvo"] for meta in router["candidatos"].values() if meta["tipo"] == "operacao"
     }
     direction_targets = {
-        meta["alvo"]
-        for meta in router["candidatos"].values()
-        if meta["tipo"] == "direcao"
+        meta["alvo"] for meta in router["candidatos"].values() if meta["tipo"] == "direcao"
     }
 
     if presence_targets:
@@ -337,12 +383,22 @@ def validate(repo: Path) -> dict[str, Any]:
         except aliados_contextuais.AllyContextError as exc:
             raise ContextSceneError(str(exc)) from exc
         if not ally_validation["ok"]:
-            raise ContextSceneError("entradas contextuais inválidas: " + "; ".join(ally_validation["erros"]))
+            raise ContextSceneError(
+                "entradas contextuais inválidas: " + "; ".join(ally_validation["erros"])
+            )
         entry_index = aliados_contextuais.load_index(repo)
-        sources.extend([aliados_contextuais.INDEX.as_posix(), aliados_contextuais.STATE.as_posix(), aliados_contextuais.RUNTIME.as_posix()])
+        sources.extend(
+            [
+                aliados_contextuais.INDEX.as_posix(),
+                aliados_contextuais.STATE.as_posix(),
+                aliados_contextuais.RUNTIME.as_posix(),
+            ]
+        )
         missing = sorted(entry_targets - set(entry_index["candidatos"]))
         if missing:
-            raise ContextSceneError("binding contextual referencia aliado inexistente: " + ", ".join(missing))
+            raise ContextSceneError(
+                "binding contextual referencia aliado inexistente: " + ", ".join(missing)
+            )
 
     if operation_targets:
         catalog, arc_sources = _arc_line_catalog(repo)
@@ -384,6 +440,7 @@ def validate(repo: Path) -> dict[str, Any]:
             kind: sum(1 for meta in router["candidatos"].values() if meta["tipo"] == kind)
             for kind in sorted(VALID_TYPES)
         },
+        "tipos_tags": list(TAG_TYPES),
         "arco": {"arco_id": current_arc["id"], "titulo": current_arc["titulo"]},
         "fontes_lidas": list(dict.fromkeys(sources)),
     }
@@ -398,6 +455,10 @@ def _prefilter(
             continue
         matches = sorted(wanted & set(rule["tags"]))
         if len(matches) < int(rule.get("min_coincidencias", 1)):
+            continue
+        if rule["tipo"] == "presenca" and not any(
+            match.startswith(LOCAL_TAG_PREFIX) for match in matches
+        ):
             continue
         result.append((binding_id, rule, matches))
     return result
@@ -418,7 +479,12 @@ def _filter_by_arc(
         for _, rule, _ in candidates
     )
     if not needs_arc:
-        return candidates, {"aplicado": False, "bloqueados": 0, "bloqueados_por_tipo": {}}, [], None
+        return (
+            candidates,
+            {"aplicado": False, "bloqueados": 0, "bloqueados_por_tipo": {}},
+            [],
+            None,
+        )
 
     try:
         info = arcos.current(repo)
@@ -449,14 +515,13 @@ def _filter_by_arc(
             continue
         kept.append((binding_id, rule, matches))
 
-    blocked_total = sum(blocked_by_type.values())
     return (
         kept,
         {
             "aplicado": True,
             "arco_id": info["id"],
             "titulo": info["titulo"],
-            "bloqueados": blocked_total,
+            "bloqueados": sum(blocked_by_type.values()),
             "bloqueados_por_tipo": blocked_by_type,
             "politica": info["habilitacoes"]["politica_nao_listados"],
         },
@@ -484,15 +549,15 @@ def _presence_rows(
     milestone_sources: list[str] = []
     if controlled_targets:
         try:
-            checked = marcos_aparicao.gates(
-                repo, controlled_targets, arc_info=arc_info
-            )
+            checked = marcos_aparicao.gates(repo, controlled_targets, arc_info=arc_info)
         except marcos_aparicao.AppearanceMilestoneError as exc:
             raise ContextSceneError(str(exc)) from exc
         milestone_results = checked["resultados"]
         milestone_sources = checked["fontes_lidas"]
 
-    allowed_entries: list[tuple[str, dict[str, Any], list[str], dict[str, Any] | None]] = []
+    allowed_entries: list[
+        tuple[str, dict[str, Any], list[str], dict[str, Any] | None]
+    ] = []
     for binding_id, rule, matches in entries:
         milestone = None
         if rule.get("grupo_arco") == "antagonistas":
@@ -546,8 +611,8 @@ def _presence_rows(
             "avaliacao_id": f"scene:{scene_id}:contexto:presenca:{target}",
             "consulta_dirigida": f"python3 ferramentas/agentes.py mostrar {target}",
             "regra": (
-                "candidato de presença exige avaliação narrativa; não estabelece "
-                "presença, aparição, conhecimento ou ação"
+                "candidato de presença exige coincidência local explícita e avaliação narrativa; "
+                "não estabelece presença, aparição, conhecimento ou ação"
             ),
         }
         rows.append((len(matches), int(rule["prioridade"]), binding_id, item))
@@ -656,9 +721,7 @@ def _direction_rows(
         direction_id = rule["alvo"]
         current = directions.get(direction_id)
         if not isinstance(current, dict):
-            raise ContextSceneError(
-                f"estado não contém direção contextual: {direction_id}"
-            )
+            raise ContextSceneError(f"estado não contém direção contextual: {direction_id}")
         if current.get("estado") != "ativa":
             continue
         milestone = _text(
@@ -700,7 +763,7 @@ def select_candidates(
     scene_id: str,
     exclude_ids: Iterable[str] | None = None,
 ) -> dict[str, Any]:
-    """Pré-seleciona presença + operação + direção sem abrir fragmentos narrativos."""
+    """Pré-seleciona presença + entrada + operação + direção sem scans narrativos."""
     normalized = normalize_tags(tags)
     empty = {
         "presencas": [],
@@ -719,6 +782,7 @@ def select_candidates(
         }
 
     router = load_router(repo)
+    _validate_input_vocabulary(normalized, router)
     budget = router["orcamento"]
     if len(normalized) > budget["max_tags_por_cena"]:
         raise ContextSceneError(
@@ -732,7 +796,7 @@ def select_candidates(
             **empty,
             "arco": {"aplicado": False, "bloqueados": 0, "bloqueados_por_tipo": {}},
             "fontes_lidas": [ROUTER.as_posix()],
-            "regra": "nenhuma afinidade contextual atingiu o limiar mínimo",
+            "regra": "nenhuma afinidade contextual tipada atingiu o limiar mínimo",
         }
 
     kept, arc_meta, arc_sources, arc_info = _filter_by_arc(repo, prefiltered)
@@ -778,17 +842,13 @@ def select_candidates(
     )
     selected_rows = selected_rows[: int(budget["max_candidatos_total"])]
     candidates = [row[3] for row in selected_rows]
-    presences = [item for item in candidates if item["tipo"] == "presenca"]
-    entries = [item for item in candidates if item["tipo"] == "entrada"]
-    operations = [item for item in candidates if item["tipo"] == "operacao"]
-    directions = [item for item in candidates if item["tipo"] == "direcao"]
 
     return {
         "tags": normalized,
-        "presencas": presences,
-        "entradas": entries,
-        "operacoes": operations,
-        "direcoes": directions,
+        "presencas": [item for item in candidates if item["tipo"] == "presenca"],
+        "entradas": [item for item in candidates if item["tipo"] == "entrada"],
+        "operacoes": [item for item in candidates if item["tipo"] == "operacao"],
+        "direcoes": [item for item in candidates if item["tipo"] == "direcao"],
         "candidatos": candidates,
         "arco": arc_meta,
         "fontes_lidas": list(
@@ -803,8 +863,8 @@ def select_candidates(
             )
         ),
         "regra": (
-            "Python pré-seleciona presença, entrada de aliado, linha operacional e direção; presença antagonista "
-            "também precisa passar pelo marco mínimo de aparição. Cada item é somente obrigação de avaliar. Nenhuma presença/entrada é estabelecida, nenhuma "
-            "operação é executada e nenhuma direção avança automaticamente."
+            "Python pré-seleciona presença, entrada de aliado, linha operacional e direção. "
+            "Presença exige coincidência local:* e antagonista também passa pelo marco mínimo. "
+            "Cada item é somente obrigação de avaliar; nada é canonizado ou executado automaticamente."
         ),
     }
