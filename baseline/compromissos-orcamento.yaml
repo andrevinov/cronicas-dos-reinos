@@ -20,3 +20,4 @@ invariantes:
   turno_sem_compromisso_nao_tem_leitura_extra: true
   tempo_estruturado_usa_data_hora: true
   omitidos_quentes_expoem_somente_ids_ate_checkpoint: true
+  local_id_proibido_ate_resolucao_pelo_registro_canonico: true
