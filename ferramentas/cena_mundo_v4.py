@@ -31,6 +31,13 @@ def _local_spec(
     spec = _base_local_spec(repo, place, action, tier, danger)
     if spec is None:
         return None
+
+    # Fixtures legados sem a camada de identidade de locais continuam podendo
+    # exercitar outras regras. Produção (ou fixture que declarou registro local)
+    # permanece fail-closed: se há local canônico, o perfil ecológico é obrigatório.
+    if spec.get("resolucao_local") == "fixture_sem_registro":
+        return spec
+
     try:
         ecology = ecologia_local.lookup_canonical(repo, spec["local_id"])
     except ecologia_local.LocalEcologyError as exc:
@@ -181,7 +188,8 @@ def open_scene(
             raise _core.SceneGateError(str(exc)) from exc
         local_result["local_ref_recebido"] = local_spec["local_ref_recebido"]
         local_result["resolucao_local"] = local_spec["resolucao_local"]
-        local_result["ecologia"] = copy.deepcopy(local_spec["ecologia"])
+        if isinstance(local_spec.get("ecologia"), dict):
+            local_result["ecologia"] = copy.deepcopy(local_spec["ecologia"])
         sources.extend(local_result.get("fontes_lidas") or [])
 
     encounters: list[dict[str, Any]] = []
