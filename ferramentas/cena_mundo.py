@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-"""Porta única para gatilhos reativos na abertura/alteração de uma cena.
+"""Porta transacional para gatilhos reativos na abertura/alteração de uma cena.
 
-Objetivo: reduzir omissões de orquestração. Em vez de o narrador lembrar de chamar
-separadamente recompensa local, gate de sidequest e descoberta contextual, esta
-porta recebe o conjunto operacional da cena e despacha somente os gatilhos
-presentes.
+A narração ao vivo usa duas fases:
 
-Não é scheduler e não roda por turno comum. A mesma ``cena_id`` pode ser chamada
-novamente quando o elenco/local/contexto muda: encontros já processados viram
-no-op por idempotência e a descoberta contextual permanece puramente read-only.
+- ``preparar``: calcula contexto, mapa de recompensa e gates de encontro contra
+  sombras em memória, sem persistir qualquer efeito;
+- ``confirmar``: refaz a preparação, valida seu identificador e só então aplica
+  as mesmas primitivas mutantes já existentes.
+
+``open_scene`` permanece como primitiva de baixo nível para manutenção/testes e
+é deliberadamente mutante. O CLI não a expõe diretamente.
 """
 from __future__ import annotations
 
 import argparse
+import copy
+import hashlib
+import json
 import re
 import sys
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import yaml
 
@@ -29,6 +34,7 @@ import recompensas
 
 MAX_SCENE_NPCS = 12
 SCENE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,119}$")
+PREPARATION_PREFIX = "scene-prep-"
 
 
 class SceneGateError(ValueError):
@@ -117,8 +123,6 @@ def _resolve_npcs(
             continue
         unique[canonical] = resolution
 
-    # Encontros que começam simultaneamente precisam de ordem independente da
-    # ordem acidental dos argumentos do CLI.
     ordered = [unique[npc_id] for npc_id in sorted(unique)]
     has_active_profile = any(
         isinstance(index["perfis"].get(item["npc_id"]), dict)
@@ -172,7 +176,7 @@ def open_scene(
     context_tags: list[str] | None = None,
     now: mundo.WorldInstant | None = None,
 ) -> dict[str, Any]:
-    """Valida identidade/contexto antes de mutar e despacha gatilhos da cena."""
+    """Primitiva mutante: valida tudo primeiro e depois despacha os efeitos."""
     scene_id = _scene_id(scene_id)
     npc_refs = list(npcs or [])
     raw_context_tags = list(context_tags or [])
@@ -186,8 +190,7 @@ def open_scene(
             "abertura de cena exige ao menos um gatilho local, NPC ou tag contextual"
         )
 
-    # Fase 1: resolução somente-leitura. Se houver typo/ambiguidade/configuração
-    # contextual inválida, nenhum mapa ou gate é tocado.
+    # Toda identidade/configuração é validada antes do primeiro efeito.
     resolutions, duplicates, resolution_sources, has_active_profile = _resolve_npcs(
         repo, npc_refs
     )
@@ -265,14 +268,195 @@ def open_scene(
         "encontros": encounters,
         "resumo": _summary(encounters, local_result, contextual),
         "regra": (
-            "Repetir a mesma cena_id é seguro. NPC já processado não consome novo gate; "
-            "NPC recém-chegado usa encontro_id estável. Descoberta contextual respeita "
-            "o arco corrente. Candidatos de presença, entrada de aliado, operação e direção são somente "
-            "obrigações de avaliar: não estabelecem aparição, não executam linha operacional "
-            "e não avançam direção canônica."
+            "NPC já processado não consome novo gate; NPC recém-chegado usa encontro_id estável. "
+            "Candidatos contextuais são somente obrigações de avaliar: não estabelecem aparição, "
+            "não executam linha operacional e não avançam direção canônica."
         ),
         "fontes_lidas": list(dict.fromkeys(sources)),
     }
+
+
+def _validate_preview_install(path: Path, data: dict[str, Any]) -> None:
+    """Mantém a validação de órfão divergente sem instalar arquivo novo."""
+    if not path.exists():
+        return
+    dump = getattr(recompensas, "_dump", None)
+    if dump is None:
+        return
+    rendered = dump(data)
+    if path.read_text(encoding="utf-8") != rendered:
+        raise recompensas.RewardMapError(
+            f"artefato já existe com conteúdo divergente: {path}"
+        )
+
+
+@contextmanager
+def _preview_effects(repo: Path) -> Iterator[None]:
+    """Substitui somente as portas de escrita por sombras em memória.
+
+    O gate de sidequest precisa enxergar, dentro da mesma preparação, as mudanças
+    simuladas pelo NPC anterior. Por isso ``load_state`` e ``atomic`` compartilham
+    uma sombra sequencial. Nenhuma alteração toca o repositório.
+    """
+    patched: list[tuple[Any, str, Any]] = []
+    shadow_state: dict[str, Any] | None = None
+
+    def replace(module: Any, name: str, value: Any) -> Any | None:
+        if not hasattr(module, name):
+            return None
+        original = getattr(module, name)
+        patched.append((module, name, original))
+        setattr(module, name, value)
+        return original
+
+    original_load_state = getattr(oportunidades, "load_state", None)
+
+    if original_load_state is not None:
+        def shadow_load_state(repo_arg: Path, index: dict[str, Any]) -> dict[str, Any]:
+            nonlocal shadow_state
+            if shadow_state is None:
+                shadow_state = copy.deepcopy(original_load_state(repo_arg, index))
+            return copy.deepcopy(shadow_state)
+
+        replace(oportunidades, "load_state", shadow_load_state)
+
+    if hasattr(oportunidades, "atomic"):
+        def shadow_opportunity_atomic(path: Path, data: dict[str, Any]) -> None:
+            nonlocal shadow_state
+            state_path = repo / getattr(oportunidades, "STATE", Path("__missing__"))
+            if Path(path) == state_path:
+                shadow_state = copy.deepcopy(data)
+
+        replace(oportunidades, "atomic", shadow_opportunity_atomic)
+
+    if hasattr(recompensas, "install_once"):
+        replace(recompensas, "install_once", _validate_preview_install)
+    if hasattr(recompensas, "atomic"):
+        replace(recompensas, "atomic", lambda _path, _data: None)
+
+    try:
+        yield
+    finally:
+        for module, name, original in reversed(patched):
+            setattr(module, name, original)
+
+
+def _source_fingerprints(repo: Path, sources: list[str]) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for raw in sorted(dict.fromkeys(str(item) for item in sources)):
+        rel = Path(raw)
+        if rel.is_absolute() or ".." in rel.parts:
+            result.append({"fonte": raw, "sha256": None})
+            continue
+        path = repo / rel
+        digest = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+        result.append({"fonte": raw, "sha256": digest})
+    return result
+
+
+def _preparation_id(repo: Path, preview: dict[str, Any]) -> str:
+    payload = {
+        "resultado": preview,
+        "fontes": _source_fingerprints(repo, preview.get("fontes_lidas") or []),
+    }
+    rendered = json.dumps(
+        payload,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return PREPARATION_PREFIX + hashlib.sha256(rendered.encode("utf-8")).hexdigest()[:20]
+
+
+def prepare_scene(
+    repo: Path,
+    *,
+    scene_id: str,
+    npcs: list[str] | None = None,
+    place: str | None = None,
+    action: str | None = None,
+    tier: int | None = None,
+    danger: str | None = None,
+    context_tags: list[str] | None = None,
+    now: mundo.WorldInstant | None = None,
+) -> dict[str, Any]:
+    """Calcula exatamente o que a confirmação faria, sem escrever no repo."""
+    with _preview_effects(repo):
+        simulated = open_scene(
+            repo,
+            scene_id=scene_id,
+            npcs=npcs,
+            place=place,
+            action=action,
+            tier=tier,
+            danger=danger,
+            context_tags=context_tags,
+            now=now,
+        )
+
+    preparation_id = _preparation_id(repo, simulated)
+    result = copy.deepcopy(simulated)
+    result["gatilho"] = "preparacao_cena_reativa"
+    result["fase"] = "preparacao"
+    result["preparacao_id"] = preparation_id
+    result["mutacoes_aplicadas"] = False
+    if isinstance(result.get("local"), dict) and "mapa_criado" in result["local"]:
+        result["local"]["mapa_seria_criado"] = bool(result["local"]["mapa_criado"])
+        result["local"]["mapa_criado"] = False
+    result["regra_confirmacao"] = (
+        "Narrar somente a cena aceita. Depois, confirmar com o mesmo conjunto de parâmetros "
+        "e este preparacao_id. Preparação abandonada não deixa estado residual."
+    )
+    return result
+
+
+def confirm_scene(
+    repo: Path,
+    *,
+    preparation_id: str,
+    scene_id: str,
+    npcs: list[str] | None = None,
+    place: str | None = None,
+    action: str | None = None,
+    tier: int | None = None,
+    danger: str | None = None,
+    context_tags: list[str] | None = None,
+    now: mundo.WorldInstant | None = None,
+) -> dict[str, Any]:
+    """Revalida uma preparação e aplica os efeitos somente se ela ainda é atual."""
+    expected = _text(preparation_id, "preparacao_id")
+    fresh = prepare_scene(
+        repo,
+        scene_id=scene_id,
+        npcs=npcs,
+        place=place,
+        action=action,
+        tier=tier,
+        danger=danger,
+        context_tags=context_tags,
+        now=now,
+    )
+    if fresh["preparacao_id"] != expected:
+        raise SceneGateError(
+            "preparação de cena ficou obsoleta; refaça `cena_mundo.py preparar` antes de confirmar"
+        )
+
+    committed = open_scene(
+        repo,
+        scene_id=scene_id,
+        npcs=npcs,
+        place=place,
+        action=action,
+        tier=tier,
+        danger=danger,
+        context_tags=context_tags,
+        now=now,
+    )
+    committed["fase"] = "confirmacao"
+    committed["preparacao_id"] = expected
+    committed["preparacao_revalidada"] = True
+    committed["mutacoes_aplicadas"] = True
+    return committed
 
 
 def _instant_arg(data: str | None, hour: str | None) -> mundo.WorldInstant | None:
@@ -286,28 +470,48 @@ def _instant_arg(data: str | None, hour: str | None) -> mundo.WorldInstant | Non
         raise SceneGateError(str(exc)) from exc
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
-    sub = parser.add_subparsers(dest="cmd", required=True)
-    abrir = sub.add_parser(
-        "abrir",
-        help="despacha local + NPCs + descoberta contextual de uma fronteira de cena",
-    )
-    abrir.add_argument("--cena-id", required=True)
-    abrir.add_argument("--npc", action="append", default=[])
-    abrir.add_argument(
+def _add_scene_args(parser: argparse.ArgumentParser, *, confirmation: bool = False) -> None:
+    parser.add_argument("--cena-id", required=True)
+    parser.add_argument("--npc", action="append", default=[])
+    parser.add_argument(
         "--contexto-tag",
         action="append",
         default=[],
         help="rótulo já estabelecido pela cena; máximo 8, sem busca semântica",
     )
-    abrir.add_argument("--local")
-    abrir.add_argument("--acao", choices=sorted(interacoes_mundo.VALID_LOCAL_ACTIONS))
-    abrir.add_argument("--tier", type=int)
-    abrir.add_argument("--periculosidade", choices=sorted(recompensas.VALID_DANGER))
-    abrir.add_argument("--data")
-    abrir.add_argument("--hora")
+    parser.add_argument("--local")
+    parser.add_argument("--acao", choices=sorted(interacoes_mundo.VALID_LOCAL_ACTIONS))
+    parser.add_argument("--tier", type=int)
+    parser.add_argument("--periculosidade", choices=sorted(recompensas.VALID_DANGER))
+    parser.add_argument("--data")
+    parser.add_argument("--hora")
+    if confirmation:
+        parser.add_argument("--preparacao-id", required=True)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
+    sub = parser.add_subparsers(dest="cmd", required=True)
+
+    preparar = sub.add_parser(
+        "preparar",
+        help="calcula local + NPCs + contexto sem persistir efeitos",
+    )
+    _add_scene_args(preparar)
+
+    # Compatibilidade operacional: o antigo verbo passa a ser seguro/read-only.
+    abrir = sub.add_parser(
+        "abrir",
+        help="alias legado de preparar; não persiste efeitos",
+    )
+    _add_scene_args(abrir)
+
+    confirmar = sub.add_parser(
+        "confirmar",
+        help="revalida a preparação aceita e só então persiste os efeitos",
+    )
+    _add_scene_args(confirmar, confirmation=True)
     return parser
 
 
@@ -315,17 +519,26 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     repo = args.repo.resolve()
     try:
-        result = open_scene(
-            repo,
-            scene_id=args.cena_id,
-            npcs=args.npc,
-            place=args.local,
-            action=args.acao,
-            tier=args.tier,
-            danger=args.periculosidade,
-            context_tags=args.contexto_tag,
-            now=_instant_arg(args.data, args.hora),
-        )
+        kwargs = {
+            "scene_id": args.cena_id,
+            "npcs": args.npc,
+            "place": args.local,
+            "action": args.acao,
+            "tier": args.tier,
+            "danger": args.periculosidade,
+            "context_tags": args.contexto_tag,
+            "now": _instant_arg(args.data, args.hora),
+        }
+        if args.cmd in {"preparar", "abrir"}:
+            result = prepare_scene(repo, **kwargs)
+            if args.cmd == "abrir":
+                result["alias_cli"] = "abrir->preparar"
+        else:
+            result = confirm_scene(
+                repo,
+                preparation_id=args.preparacao_id,
+                **kwargs,
+            )
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except (

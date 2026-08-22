@@ -4,7 +4,7 @@ Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa e
 
 ## 1. Fonte de verdade
 
-O repositório é a memória canônica da campanha. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, regras/fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
+O repositório é a memória canônica. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
 
 `runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots derivados. Em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o último checkpoint; `contexto.py` combina base + pendências. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
 
@@ -33,11 +33,9 @@ Runtime, handoffs, índices e consultas são projeções/roteadores, não cânon
 
 **Nunca leia por precaução. Leia para responder a uma lacuna concreta.**
 
-**Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls, arquivos quentes, duplicação e reescritas; não comprima a experiência literária só para produzir menos texto.
+**Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação; não comprima a experiência literária.
 
-Antes de nova leitura, pergunte se o que já existe basta. Depois de cada consulta, faça o mesmo. **Se for suficiente, pare.** A escada é controle de escalada, não checklist.
-
-Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
+Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** A escada controla escalada; não é checklist. Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -47,7 +45,7 @@ Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou tran
 - **L4T:** transcrição, somente após L4 — 16 KiB;
 - **L5:** fonte oficial externa/autorizada, só se a memória interna não resolver.
 
-Alvo histórico conhecido pode saltar busca ampla. Material reservado exige motivo concreto. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
+Alvo histórico conhecido pode saltar busca ampla; material reservado exige motivo. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
 
 ## 5. Roteamento por tarefa
 
@@ -61,7 +59,7 @@ Leia no máximo o documento especializado necessário:
 - retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`;
-- **entrada em local, exploração, encontro com NPC, recompensas e side quests → `docs/agente/integracao-reativa.md`;**
+- **local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;**
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa/edição/Git → `docs/agente/pesquisa-e-manutencao.md`;
@@ -75,11 +73,13 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa se houver → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
 
 **Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Em começo de cena, entrada/exploração, encontro ou mudança de elenco, preferir `ferramentas/cena_mundo.py abrir` com `cena_id` estável, local só se entrou/explorou e NPCs cujo encontro começou. Repetir o ID é seguro; NPC novo usa o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
+**Gatilho reativo não é rotina.** Em abertura/mudança material, use `cena_mundo.py preparar` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. `preparar`/`abrir` são read-only: calculam sem criar mapa ou consumir gate.
+
+Após `turno.py registrar`, confirme a cena aceita com `cena_mundo.py confirmar --preparacao-id <id>` e os mesmos parâmetros. Não confirme cena corrigida/abandonada. Preparação obsoleta falha fechada; refaça. Sem gatilho, não consultar recompensa/oportunidade.
 
 **Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `direcoes.py avaliar-destino <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
 
@@ -107,17 +107,17 @@ Durante cada avanço comum:
 
 O rodapé é derivado, não cânone. Usa runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra só itens mágicos explicitamente registrados que estejam disponíveis ou ativos. Não abrir estado/ficha para conferi-lo.
 
-Telemetria: **medição é pós-hoc**. `analisar-rollout.py` e `comparar-rollouts.py` nunca rodam durante o avanço narrativo ao vivo.
+Telemetria: **medição é pós-hoc**; `analisar-rollout.py` e `comparar-rollouts.py` não rodam durante avanço ao vivo.
 
-Quando NPC/local precisar de textura e o contexto não bastar, preferir `contexto.py npc` / `contexto.py local`. Não consultar textura a cada turno. `contexto.py retomada` retoma sem reler transcrição.
+Se faltar textura de NPC/local, preferir `contexto.py npc` / `contexto.py local`; não consultar a cada turno. `contexto.py retomada` não relê transcrição.
 
-Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
+Para rolagens independentes, usar `rolar-lote.py`; condicionais ficam separadas.
 
-Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; abertura reativa escreve controles das camadas acionadas; rodapé lê runtime quente sem tool call/escrita; nenhum faz scan por turno.
+Meta comum: **duas escritas**. Preparação escreve zero; `confirmar` só após turno aceito. Rodapé só lê; nenhum faz scan.
 
 ### Recompensas e side quests
 
-- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros.
+- Cena reativa segue o `preparar`/`confirmar` acima; primitivas abaixo são manutenção/teste.
 - `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
 - `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
@@ -125,7 +125,7 @@ Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; a
 - Agente novo passa antes pela classificação NPC v2.
 - Checkpoint só invalida quest giver morto; não sorteia side quests nem gera loot.
 
-Detalhes: `docs/agente/integracao-reativa.md`.
+Detalhes: `docs/agente/integracao-reativa-v2.md`.
 
 ## 7. Checkpoint de cena e sessão
 
@@ -150,7 +150,7 @@ Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir 
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade do repo sem pedido.
 
-Após alteração canônica manual, regenerar runtime/memória somente se a retomada mudou. O checkpoint normal já faz isso.
+Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; o checkpoint normal já faz isso.
 
 Verificações de manutenção:
 
@@ -169,7 +169,7 @@ python3 ferramentas/gerar-runtime.py --check
 python3 ferramentas/verificar-integridade.py
 ```
 
-Essa suíte pertence a manutenção/checkpoint/CI, nunca a cada ação de Ren.
+Essa suíte é de manutenção/checkpoint/CI, nunca de cada ação de Ren.
 
 ## 10. Cobertura do manual anterior
 
