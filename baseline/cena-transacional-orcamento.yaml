@@ -6,6 +6,7 @@ preparar:
   idempotente: true
   usa_estado_shadow_em_memoria: true
   calcula_local_recompensas: true
+  calcula_ecologia_local: true
   calcula_gates_sidequest: true
   calcula_contexto: true
   arquivo_temporario_persistido: false
@@ -21,5 +22,7 @@ invariantes:
   scan_geral_por_preparacao: 0
   sem_confirmacao_sem_mapa_novo: true
   sem_confirmacao_sem_consumo_gate: true
+  ecologia_local_e_fonte_do_fingerprint: true
+  ecologia_local_nao_estabelece_fato: true
   candidatos_contextuais_continuam_nao_canonicos: true
   mapa_existir_continua_nao_significar_descoberta: true
