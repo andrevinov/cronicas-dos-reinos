@@ -75,11 +75,13 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → abertura reativa se houver → rolagens → narração → turno.py registrar → copiar RODAPE_CANONICO → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
 
 **Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/mundo.py pendentes` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: `barreira_mundo.py concluir <id> --nota ...`; com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Em começo de cena, entrada/exploração, encontro ou mudança de elenco, preferir `ferramentas/cena_mundo.py abrir` com `cena_id` estável, local só se entrou/explorou e NPCs cujo encontro começou. Repetir o ID é seguro; NPC novo usa o mesmo ID. Sem gatilho, não consultar recompensa/oportunidade.
+**Gatilho reativo não é rotina.** Em começo de cena, entrada/exploração, encontro ou mudança de elenco, usar `ferramentas/cena_mundo.py preparar` com `cena_id` estável, local só se entrou/explorou e NPCs cujo encontro começou. `preparar` é estritamente read-only: calcula loot, gates e candidatos, mas não cria mapa nem consome gate. O antigo verbo `abrir` é apenas alias read-only de `preparar`.
+
+Se a cena preparada for efetivamente narrada e registrada por `turno.py registrar`, executar `ferramentas/cena_mundo.py confirmar --preparacao-id <id>` com os mesmos parâmetros. Só `confirmar` materializa os efeitos reativos. Se a cena for corrigida/abandonada, **não confirmar**. Preparação obsoleta falha fechada e deve ser refeita. Repetir a preparação é seguro; NPC novo usa o mesmo `cena_id`. Sem gatilho, não consultar recompensa/oportunidade.
 
 **Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `direcoes.py avaliar-destino <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
 
@@ -113,11 +115,11 @@ Quando NPC/local precisar de textura e o contexto não bastar, preferir `context
 
 Para rolagens independentes já conhecidas, usar `rolar-lote.py`; condicionais continuam separadas.
 
-Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; abertura reativa escreve controles das camadas acionadas; rodapé lê runtime quente sem tool call/escrita; nenhum faz scan por turno.
+Meta de avanço comum: **duas escritas**. A barreira só lê marcador runtime; preparação reativa escreve **zero** arquivos; confirmação reativa só ocorre depois de a cena aceita estar registrada e escreve apenas os controles das camadas acionadas; rodapé lê runtime quente sem tool call/escrita; nenhum faz scan por turno.
 
 ### Recompensas e side quests
 
-- Preferir `cena_mundo.py abrir --cena-id <id> ...` para despachar local + encontros.
+- Preferir `cena_mundo.py preparar --cena-id <id> ...`; depois do `turno.py registrar`, usar `cena_mundo.py confirmar --preparacao-id <id> ...` somente para a cena aceita.
 - `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
 - `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
