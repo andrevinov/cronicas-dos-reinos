@@ -173,16 +173,22 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         raw_date = context["tempo"]["data"].split(",", 1)[0]
         day, month = raw_date.split(maxsplit=1)
         expected_clock = context["tempo"]["hora_aproximada"]
+        pv = context["recursos"]["pv"]
+        ki = context["recursos"]["ki"]
         self.assertTrue(footer.startswith("RODAPE_CANONICO — "))
         self.assertIn(f"{day} de {month} · {expected_clock} · ", footer)
-        self.assertIn("PV 45/45 · Ki 4/6", footer)
-        effects = context.get("efeitos_temporarios") or {}
-        expected_brooch = (
-            "Broche do Semblante Humilde ativo"
-            if "broche_do_semblante_humilde" in effects
-            else "Broche do Semblante Humilde disponível"
+        self.assertIn(
+            f"PV {pv['atuais']}/{pv['maximos']} · Ki {ki['atuais']}/{ki['maximos']}",
+            footer,
         )
-        self.assertIn(expected_brooch, footer)
+        item = context["rodape"]["itens_magicos"]["broche_do_semblante_humilde"]
+        effects = context.get("efeitos_temporarios") or {}
+        if "broche_do_semblante_humilde" in effects:
+            self.assertIn("Broche do Semblante Humilde ativo", footer)
+        elif rodape_turno._available(item.get("disponibilidade")):
+            self.assertIn("Broche do Semblante Humilde disponível", footer)
+        else:
+            self.assertNotIn("Broche do Semblante Humilde", footer)
         self.assertLess(len(footer.encode("utf-8")), 512)
 
 

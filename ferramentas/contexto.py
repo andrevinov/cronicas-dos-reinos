@@ -85,6 +85,29 @@ def _add_sources(data: dict[str, Any], sources: list[str]) -> None:
     data["fontes"] = list(dict.fromkeys(current + sources))
 
 
+def _resume_effects_view(effects: Any) -> dict[str, Any] | None:
+    """Mantém efeitos ativos úteis sem duplicar prosa longa no pacote de retomada."""
+    if not isinstance(effects, dict) or not effects:
+        return None
+    result: dict[str, Any] = {}
+    ordered = sorted(effects.items(), key=lambda item: str(item[0]))
+    for effect_id, raw in ordered[:8]:
+        if isinstance(raw, dict):
+            compact: dict[str, Any] = {}
+            if "descricao" in raw:
+                compact["descricao"] = truncate_text(raw.get("descricao", ""), 180)
+            if "duracao" in raw:
+                compact["duracao"] = truncate_text(raw.get("duracao", ""), 120)
+            if "inicio" in raw:
+                compact["inicio"] = truncate_text(raw.get("inicio", ""), 80)
+            result[str(effect_id)] = compact
+        else:
+            result[str(effect_id)] = truncate_text(raw, 180)
+    if len(ordered) > 8:
+        result["_omitidos"] = len(ordered) - 8
+    return result
+
+
 def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
     """Recorte efetivo necessário para retomar sem estourar o orçamento L2.
 
@@ -96,12 +119,15 @@ def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
         "sessao",
         "personagem",
         "recursos",
-        "efeitos_temporarios",
         "tempo",
         "localizacao",
         "sobreposicao_transacional",
     )
-    return {key: context[key] for key in keys if key in context}
+    result = {key: context[key] for key in keys if key in context}
+    effects = _resume_effects_view(context.get("efeitos_temporarios"))
+    if effects is not None:
+        result["efeitos_temporarios"] = effects
+    return result
 
 
 def _resume_scene_view(scene: dict[str, Any]) -> dict[str, Any]:
@@ -111,7 +137,6 @@ def _resume_scene_view(scene: dict[str, Any]) -> dict[str, Any]:
         "localizacao",
         "tempo",
         "mecanica_imediata",
-        "efeitos_temporarios",
         "sobreposicao_transacional",
     ):
         if key in scene:
