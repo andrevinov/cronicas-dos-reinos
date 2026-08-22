@@ -1,0 +1,45 @@
+schema_endpoints_deterministicos: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Fazer Python entregar decisões operacionais já estruturadas sem nova decisão
+  narrativa, leitura auxiliar, escrita ou crescimento arbitrário de contexto.
+portas:
+  - cena.preparar
+  - mundo.fronteira
+  - mundo.pendencias
+  - direcao.avaliar_destino
+  - sidequest.preparar_efeitos
+campos_obrigatorios:
+  - ids
+  - filtros
+  - disponibilidade
+  - gates
+  - modificadores
+  - deltas_previstos
+  - proximo_passo
+limites:
+  max_bytes_por_endpoint: 6144
+  max_itens_lista_generica: 16
+  max_chamadas_subjacentes_por_endpoint: 1
+  max_leituras_adicionais_da_projecao: 0
+  max_escritas_por_endpoint: 0
+  max_schedulers_novos: 0
+  max_fragmentos_extras_abertos_pela_projecao: 0
+invariantes:
+  resultado_subjacente_nao_e_recalculado: true
+  adaptador_nao_decide_acao_narrativa: true
+  adaptador_nao_cria_fato_canonico: true
+  adaptador_nao_altera_rng: true
+  adaptador_nao_altera_seed: true
+  mesma_entrada_mesmo_estado_mesmos_bytes: true
+  filtros_sao_explicitos: true
+  gates_sao_explicitos: true
+  modificadores_sao_lista_estruturada_mesmo_quando_vazia: true
+  deltas_previstos_separam_turno_de_pos_canonico: true
+  proximo_passo_e_mecanico: true
+  portas_legadas_continuam_disponiveis: true
+  cli_unificada_da_task_21_nao_e_implementada_aqui: true
+meta_rollout:
+  objetivo: reduzir inferencias_e_tool_calls_de_orquestracao
+  medicao: pos_hoc
+  proibido_inventar_reducao_sem_rollout: true
