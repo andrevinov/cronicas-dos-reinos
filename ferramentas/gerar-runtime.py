@@ -15,6 +15,7 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import compromissos
 
 RUNTIME_VERSION = 2
 CONTEXT_PATH = Path("runtime/contexto.yaml")
@@ -116,6 +117,7 @@ def build_runtime_from_documents(
     # checkpoint. A autoridade passa a ser estado/tempo.yaml; o campo legado do
     # estado atual é aceito apenas como fallback durante a migração.
     prazo_relevante = tempo_arquivo.get("prazo_relevante") or tempo_estado.get("prazo_relevante")
+    compromissos_view = compromissos.runtime_bundle(estado.get("compromissos") or {}, data, hora)
 
     contexto = {
         "versao_runtime": RUNTIME_VERSION,
@@ -173,6 +175,8 @@ def build_runtime_from_documents(
     }
     if efeitos_temporarios:
         contexto["efeitos_temporarios"] = copy.deepcopy(efeitos_temporarios)
+    if compromissos_view is not None:
+        contexto["compromissos"] = copy.deepcopy(compromissos_view)
 
     cena = {
         "versao_runtime": RUNTIME_VERSION,
@@ -203,6 +207,8 @@ def build_runtime_from_documents(
     }
     if efeitos_temporarios:
         cena["efeitos_temporarios"] = copy.deepcopy(efeitos_temporarios)
+    if compromissos_view is not None:
+        cena["compromissos"] = copy.deepcopy(compromissos_view)
 
     ficha_personagem = require_mapping(ficha.get("personagem"), "ficha.personagem")
     ficha_identidade = require_mapping(ficha.get("identidade"), "ficha.identidade")
