@@ -37,7 +37,9 @@ class DiegeticGuardUnitTest(unittest.TestCase):
         cases = {
             "pv": "O homem ainda tem 8 PV.",
             "ca": "A armadura dele concede CA 18.",
+            "ca_nome": "A Classe de Armadura dele é dezoito.",
             "cd": "A fechadura tem CD 15.",
+            "cd_nome": "A Classe de Dificuldade da fechadura é quinze.",
             "nivel": "Ele é um guerreiro de nível 7.",
             "ki": "Ren ainda possui 4 pontos de Ki.",
             "slots": "A maga gastou todos os slots de magia.",
