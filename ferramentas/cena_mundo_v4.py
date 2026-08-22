@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extensão da abertura transacional de cena com stubs persistentes de NPC."""
+"""Extensão da abertura transacional com stubs persistentes e ecologia local."""
 from __future__ import annotations
 
 import argparse
@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import _cena_mundo_core as _core
+import ecologia_local
 import npc_stubs
 
 # Reexporta a API legado para que imports existentes continuem funcionando.
@@ -16,6 +17,30 @@ for _name in dir(_core):
         globals()[_name] = getattr(_core, _name)
 
 _base_build_parser = _core.build_parser
+_base_local_spec = _core._local_spec
+
+
+def _local_spec(
+    repo: Path,
+    place: str | None,
+    action: str | None,
+    tier: int | None,
+    danger: str | None,
+) -> dict[str, Any] | None:
+    """Anexa ecologia somente depois de o local já estar canonizado."""
+    spec = _base_local_spec(repo, place, action, tier, danger)
+    if spec is None:
+        return None
+    try:
+        ecology = ecologia_local.lookup_canonical(repo, spec["local_id"])
+    except ecologia_local.LocalEcologyError as exc:
+        raise _core.SceneGateError(str(exc)) from exc
+    spec = copy.deepcopy(spec)
+    spec["ecologia"] = copy.deepcopy(ecology["perfil"])
+    spec["fontes_lidas"] = list(
+        dict.fromkeys([*(spec.get("fontes_lidas") or []), *ecology["fontes_lidas"]])
+    )
+    return spec
 
 
 def _resolve_npcs(
@@ -156,6 +181,7 @@ def open_scene(
             raise _core.SceneGateError(str(exc)) from exc
         local_result["local_ref_recebido"] = local_spec["local_ref_recebido"]
         local_result["resolucao_local"] = local_spec["resolucao_local"]
+        local_result["ecologia"] = copy.deepcopy(local_spec["ecologia"])
         sources.extend(local_result.get("fontes_lidas") or [])
 
     encounters: list[dict[str, Any]] = []
@@ -214,6 +240,7 @@ def open_scene(
         "regra": (
             "NPC já processado não consome novo gate; NPC recém-chegado usa encontro_id estável. "
             "NPC nomeado sem identidade pode receber stub persistente_sem_agenda somente na confirmação. "
+            "Ecologia local restringe plausibilidade, mas não estabelece presença ou evento. "
             "Tags contextuais usam namespace tipo:valor; presença exige coincidência local explícita. "
             "Candidatos contextuais são somente obrigações de avaliar: não estabelecem aparição, "
             "não executam linha operacional e não avançam direção canônica."
@@ -308,6 +335,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 # As funções do core resolvem nomes no próprio namespace; redirecionar os símbolos
 # faz prepare_scene/main reutilizarem todo o contrato existente sem duplicar CLI.
+_core._local_spec = _local_spec
 _core._resolve_npcs = _resolve_npcs
 _core.open_scene = open_scene
 _core.confirm_scene = confirm_scene
