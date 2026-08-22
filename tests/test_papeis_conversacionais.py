@@ -54,6 +54,11 @@ class ConversationalRoleRepositoryTest(unittest.TestCase):
         self.assertFalse(any(source.startswith("narrador/agentes/") for source in data["fontes"]))
         rendered, _ = contexto.fit_budget(data, contexto.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), contexto.DEFAULT_MAX_BYTES)
+        delivered = yaml.safe_load(rendered)
+        self.assertEqual(
+            delivered["resultado"]["textura_narrativa"]["papel_conversacional"]["papel"],
+            "espelho_afetivo",
+        )
 
     def test_iria_combina_textura_existente_com_papel_conversacional(self):
         data = contexto.command_npc(ROOT, "Iria Doss")
