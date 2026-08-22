@@ -1,10 +1,11 @@
-schema_texturas: 1
+schema_texturas: 2
 natureza: roteador_narrativo_nao_canonico
 limite_fragmento_bytes: 2048
 observacao: >-
-  Paletas são matéria-prima descritiva opcional. Não substituem estado, relações,
-  cenário canônico, segredos ou eventos pendentes; sugestões só viram fato quando
-  aparecem legitimamente na ficção.
+  Paletas e papéis conversacionais são matéria-prima interpretativa opcional. Não
+  substituem estado, relações, cenário canônico, segredos ou eventos pendentes;
+  sugestões só viram fato quando aparecem legitimamente na ficção. Um papel
+  conversacional orienta o ângulo de uma resposta, nunca concede conhecimento ao NPC.
 npcs:
   iria_doss:
     nome: Iria Doss
@@ -12,6 +13,140 @@ npcs:
       - Iria
       - curandeira Iria
     arquivo: cenario/texturas/npcs/iria_doss.yaml
+    papel_conversacional:
+      papel: clinico_pratico
+      prioriza:
+        - sinais observáveis do corpo antes de histórias e culpados
+        - repouso, risco e custo concreto do tratamento
+      forma_de_responder:
+        - diagnosticar só até onde os sinais permitem e dar instruções concretas
+        - reduzir dramatização quando uma observação prática resolve a dúvida
+      evita:
+        - certeza mágica ou diagnóstico sem evidência
+        - virar estrategista, espiã ou autoridade institucional por conveniência
+      limite_de_autoridade: aconselha sobre cuidado e risco físico apenas com o que Iria legitimamente observa ou sabe
+  nera_vell:
+    nome: Nera Vell
+    aliases:
+      - Nera
+    papel_conversacional:
+      papel: espelho_afetivo
+      prioriza:
+        - autonomia de quem Ren tenta proteger
+        - verdade sem promessas absolutas
+        - um futuro possível sem transformar amor em justificativa para crueldade
+      forma_de_responder:
+        - devolver a Ren a pergunta sobre o que ele está decidindo pelos outros
+        - reconhecer medo e afeto sem tratá-los como prova de que uma escolha é correta
+      evita:
+        - aprovar violência só porque nasce de amor, medo ou vingança
+        - oferecer conhecimento técnico de infiltração que Nera não possui
+      limite_de_autoridade: aconselha a partir do que viveu, escolheu e sabe; não conhece segredos só porque Ren precisa de uma resposta
+  silva_elkwood:
+    nome: Silva Elkwood
+    aliases:
+      - Silva
+    papel_conversacional:
+      papel: guardia_pragmatica
+      prioriza:
+        - vidas, rotina segura e exposição dos vulneráveis
+        - verdade verificável antes de conclusões ou escalada
+        - sono, cauda, rota de saída e consequências práticas
+      forma_de_responder:
+        - combinar cuidado concreto com censura quando Ren ultrapassa limites
+        - separar intenção protetiva de resultado realmente seguro
+      evita:
+        - promessas absolutas como substituto de plano
+        - aceitar violência ou intuição como prova de que o problema terminou
+      limite_de_autoridade: orienta segurança e cuidado a partir do que Silva recebeu ou observou; não valida hipóteses secretas por afeto
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    aliases:
+      - Maerra
+      - Irmã Maerra
+    papel_conversacional:
+      papel: pastoral_moral
+      prioriza:
+        - proteção de vulneráveis antes da vingança privada
+        - meios que ainda deixem caminho de volta, testemunha ou reparação
+        - a moldura moral e perceptiva por trás da pergunta de Ren
+      forma_de_responder:
+        - reenquadrar a premissa antes de dar uma resposta pronta
+        - apontar sinais concretos e alternativas de ajuda quando existirem
+      evita:
+        - sermão automático ou certeza divina inventada
+        - chamar vingança de necessidade só porque Ren está ferido
+      limite_de_autoridade: aconselha moralmente e pastoralmente sem fabricar revelação, profecia ou conhecimento que Maerra não recebeu
+  luath:
+    nome: Luath
+    aliases:
+      - Sargento Luath
+    papel_conversacional:
+      papel: operacional_civico
+      prioriza:
+        - prova utilizável, preparação e risco público
+        - o que uma ação queima, preserva ou torna impossível depois
+        - força suficiente quando confronto institucional for inevitável
+      forma_de_responder:
+        - perguntar o que pode ser provado e quem ficará exposto se Ren agir
+        - distinguir vigilância, investigação e captura em vez de tratá-las como uma coisa só
+      evita:
+        - suspeita indiscriminada contra estrangeiros ou grupos inteiros
+        - transformar justiça privada de Ren em extensão informal da guarda
+      limite_de_autoridade: fala pelo que Luath sabe e pode sustentar dentro de sua corrente institucional; não promete controle sobre superiores
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    aliases:
+      - Halessa
+      - Irmã Halessa
+    papel_conversacional:
+      papel: institucional_probatorio
+      prioriza:
+        - cadeia de custódia, fato observável e limites combinados antes da ação
+        - coordenação prévia quando Ren quer que Tyr participe das consequências
+        - separar informação útil de autorização institucional
+      forma_de_responder:
+        - testar a afirmação de Ren contra o que pode ser demonstrado ou registrado
+        - formular limites, janela e ponto de encerramento antes de cooperar
+      evita:
+        - autorização retroativa porque uma quebra produziu informação útil
+        - intimidade ou respeito pessoal substituírem procedimento
+      limite_de_autoridade: representa o que Halessa e Tyr realmente receberam ou autorizaram; não transforma hipótese de Ren em prova
+  jack_mooney:
+    nome: Jack Mooney
+    aliases:
+      - Jack
+      - Jack Mooney
+    papel_conversacional:
+      papel: patrono_pragmatico
+      prioriza:
+        - filtros do circo, exposição da equipe e controle de acesso
+        - preço, timing, escassez e poder de barganha
+        - uma saída que preserve a versão pública de Kage
+      forma_de_responder:
+        - converter problema abstrato em custo, acesso, testemunhas e rota de saída
+        - avaliar se o risco compra alguma vantagem concreta para o circo ou para Ren
+      evita:
+        - sermão moral quando a questão é operacional ou comercial
+        - deixar patrono ou inimigo separar Kage dos filtros dos Mooney
+      limite_de_autoridade: aconselha como patrono e homem de circo; não conhece a rede secreta de Ren além do que recebeu
+  kethra_dunn:
+    nome: Kethra Dunn
+    aliases:
+      - Kethra
+    papel_conversacional:
+      papel: sobrevivencia_civil
+      prioriza:
+        - não criar padrão observável de contato
+        - segurança concreta de Colm e de quem vive sob Narwhal
+        - nomes, horários e rotas que continuam utilizáveis depois da conversa
+      forma_de_responder:
+        - perguntar quem pode estar olhando e qual detalhe denuncia o contato
+        - puxar Ren de volta para demandas imediatas quando ele fala em dor ou vingança como prova
+      evita:
+        - heroísmo que gaste a cobertura ou a vida dela sem consentimento
+        - tratar suspeita, ressentimento ou desejo de Ren como fato confirmado
+      limite_de_autoridade: fala como civil infiltrada pela circunstância, só sobre o que viu, ouviu ou arriscou pessoalmente
 locais:
   casa_iria_doss:
     nome: casa de Iria Doss

@@ -4,6 +4,10 @@
 Paletas em ``cenario/texturas`` são apoio descritivo opcional. Elas não substituem
 estado, relações, segredos, regras nem eventos pendentes e permanecem pequenas para
 que presença literária não exija busca ampla no repositório.
+
+Papéis conversacionais compactos podem viver inline no mesmo índice já consultado
+por ``contexto.py npc``. Eles orientam o ângulo de resposta de NPCs recorrentes sem
+criar conhecimento, roteiro ou nova leitura de fragmento.
 """
 from __future__ import annotations
 
@@ -24,6 +28,23 @@ import locais
 INDEX_PATH = Path("cenario/texturas/index.yaml")
 MAX_FRAGMENT_BYTES = 2 * 1024
 KINDS = {"npcs", "locais"}
+CONVERSATION_ROLES = {
+    "clinico_pratico",
+    "espelho_afetivo",
+    "guardia_pragmatica",
+    "institucional_probatorio",
+    "operacional_civico",
+    "pastoral_moral",
+    "patrono_pragmatico",
+    "sobrevivencia_civil",
+}
+CONVERSATION_LIST_FIELDS = ("prioriza", "forma_de_responder", "evita")
+MAX_CONVERSATION_ITEMS = 3
+MAX_CONVERSATION_TEXT = 220
+CONVERSATION_AUTHORITY = (
+    "Perfil interpretativo: orienta o ângulo da resposta quando o NPC legitimamente "
+    "pode aconselhar. Não cria conhecimento, fato, segredo, competência ou decisão."
+)
 
 
 def load_yaml(path: Path) -> Any:
@@ -49,6 +70,12 @@ def _score(key: str, entry: dict[str, Any], term: str) -> int:
     values = [value for value in values if value]
     if query in values:
         return 100
+    # Um papel conversacional nunca pode resolver identidade por aproximação.
+    # Prefixo/substring como "Dunn" poderia escolher Kethra só porque Colm não
+    # possui perfil, embora a identidade canônica seja ambígua. Para entradas com
+    # papel, somente ID, nome completo ou alias explicitamente declarado valem.
+    if entry.get("papel_conversacional") is not None:
+        return 0
     if any(value.startswith(query) for value in values):
         return 85
     if any(query in value for value in values):
@@ -59,12 +86,59 @@ def _score(key: str, entry: dict[str, Any], term: str) -> int:
     return 0
 
 
+def _conversation_profile(value: Any, label: str) -> dict[str, Any]:
+    if not isinstance(value, dict):
+        raise ValueError(f"{label} precisa ser mapa")
+    allowed = {"papel", *CONVERSATION_LIST_FIELDS, "limite_de_autoridade"}
+    extra = sorted(set(value) - allowed)
+    if extra:
+        raise ValueError(f"{label} possui campos desconhecidos: {', '.join(extra)}")
+
+    role = value.get("papel")
+    if role not in CONVERSATION_ROLES:
+        raise ValueError(f"{label}.papel inválido: {role!r}")
+
+    result: dict[str, Any] = {"papel": role}
+    for field in CONVERSATION_LIST_FIELDS:
+        items = value.get(field)
+        if (
+            not isinstance(items, list)
+            or not items
+            or len(items) > MAX_CONVERSATION_ITEMS
+            or any(not isinstance(item, str) or not item.strip() for item in items)
+        ):
+            raise ValueError(
+                f"{label}.{field} deve ter 1–{MAX_CONVERSATION_ITEMS} textos não vazios"
+            )
+        compact = [" ".join(item.split()) for item in items]
+        if any(len(item) > MAX_CONVERSATION_TEXT for item in compact):
+            raise ValueError(
+                f"{label}.{field} excede {MAX_CONVERSATION_TEXT} caracteres por item"
+            )
+        result[field] = compact
+
+    authority = value.get("limite_de_autoridade")
+    if not isinstance(authority, str) or not authority.strip():
+        raise ValueError(f"{label}.limite_de_autoridade precisa ser texto não vazio")
+    authority = " ".join(authority.split())
+    if len(authority) > MAX_CONVERSATION_TEXT:
+        raise ValueError(
+            f"{label}.limite_de_autoridade excede {MAX_CONVERSATION_TEXT} caracteres"
+        )
+    result["limite_de_autoridade"] = authority
+    return result
+
+
 def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, list[str], list[str]]:
     """Retorna paleta compacta, fontes e candidatos sem varrer o cenário inteiro.
 
     Locais são normalizados pelo registro canônico antes de consultar a textura.
     Assim um alias pode encontrar a paleta correta, mas nunca cria uma segunda
     identidade operacional para o mesmo lugar.
+
+    Para NPCs, uma entrada pode conter só ``papel_conversacional``. Nesse caso o
+    resultado usa apenas o índice que já seria lido pela consulta e não abre
+    fragmento narrativo adicional.
     """
     if kind not in KINDS:
         raise ValueError(f"tipo de textura inválido: {kind}")
@@ -120,36 +194,61 @@ def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, lis
         raise ValueError(
             f"textura local {key!r} diverge do id canônico {canonical['local_id']!r}"
         )
-    rel = entry.get("arquivo")
-    if not isinstance(rel, str):
-        raise ValueError(f"textura sem arquivo no índice: {kind}.{key}")
-    path = repo / rel
-    if not path.is_file():
-        raise ValueError(f"fragmento de textura indexado ausente: {rel}")
-    size = path.stat().st_size
-    limit = int(index.get("limite_fragmento_bytes") or MAX_FRAGMENT_BYTES)
-    if size > limit:
-        raise ValueError(f"fragmento de textura excede {limit} bytes: {rel} ({size})")
 
-    payload = load_yaml(path)
-    if not isinstance(payload, dict):
-        raise ValueError(f"fragmento de textura inválido: {rel}")
-    result = {
+    conversation: dict[str, Any] | None = None
+    if entry.get("papel_conversacional") is not None:
+        if kind != "npcs":
+            raise ValueError(f"papel conversacional só é válido para NPC: {kind}.{key}")
+        conversation = _conversation_profile(
+            entry["papel_conversacional"],
+            f"{INDEX_PATH.as_posix()}:npcs.{key}.papel_conversacional",
+        )
+
+    rel = entry.get("arquivo")
+    payload: dict[str, Any] = {}
+    fragment_sources: list[str] = []
+    if rel is not None:
+        if not isinstance(rel, str):
+            raise ValueError(f"arquivo de textura inválido no índice: {kind}.{key}")
+        path = repo / rel
+        if not path.is_file():
+            raise ValueError(f"fragmento de textura indexado ausente: {rel}")
+        size = path.stat().st_size
+        limit = int(index.get("limite_fragmento_bytes") or MAX_FRAGMENT_BYTES)
+        if size > limit:
+            raise ValueError(f"fragmento de textura excede {limit} bytes: {rel} ({size})")
+        raw_payload = load_yaml(path)
+        if not isinstance(raw_payload, dict):
+            raise ValueError(f"fragmento de textura inválido: {rel}")
+        payload = raw_payload
+        fragment_sources.append(rel)
+    elif conversation is None:
+        raise ValueError(f"textura sem arquivo nem papel conversacional: {kind}.{key}")
+
+    result: dict[str, Any] = {
         "id": key,
         "nome": payload.get("nome") or entry.get("nome"),
-        "natureza": payload.get("natureza"),
-        "autoridade": payload.get("autoridade"),
-        "paleta": {
-            k: v
-            for k, v in payload.items()
-            if k not in {"schema_textura", "natureza", "id", "nome", "autoridade"}
-        },
+        "natureza": payload.get("natureza")
+        or ("papel_conversacional_sugestivo" if conversation is not None else None),
+        "autoridade": payload.get("autoridade")
+        or (CONVERSATION_AUTHORITY if conversation is not None else None),
     }
+    if conversation is not None:
+        result["papel_conversacional"] = conversation
+
+    palette = {
+        k: v
+        for k, v in payload.items()
+        if k not in {"schema_textura", "natureza", "id", "nome", "autoridade"}
+    }
+    if palette:
+        result["paleta"] = palette
+
     if canonical is not None:
         result["local_ref_recebido"] = canonical["recebido"]
         result["resolucao_local"] = canonical["resolucao"]
     return result, list(
-        dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix(), rel])
+        dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix(), *fragment_sources])
     ), []
 
 
@@ -162,6 +261,8 @@ def validate(repo: Path) -> list[str]:
         index = load_yaml(index_file) or {}
     except Exception as exc:
         return [f"índice de texturas inválido: {exc}"]
+    if index.get("schema_texturas") not in {1, 2}:
+        errors.append(f"schema_texturas inesperado: {index.get('schema_texturas')!r}")
     limit = int(index.get("limite_fragmento_bytes") or MAX_FRAGMENT_BYTES)
     for kind in KINDS:
         mapping = index.get(kind) or {}
@@ -175,20 +276,42 @@ def validate(repo: Path) -> list[str]:
                         errors.append(f"textura usa local_id não canônico: {key}")
                 except locais.LocationError as exc:
                     errors.append(f"registro canônico de locais inválido: {exc}")
-            if not isinstance(entry, dict) or not isinstance(entry.get("arquivo"), str):
+            if not isinstance(entry, dict):
                 errors.append(f"textura inválida no índice: {kind}.{key}")
                 continue
-            path = repo / entry["arquivo"]
+
+            conversation = entry.get("papel_conversacional")
+            if conversation is not None:
+                if kind != "npcs":
+                    errors.append(f"papel conversacional fora de NPC: {kind}.{key}")
+                else:
+                    try:
+                        _conversation_profile(
+                            conversation,
+                            f"{INDEX_PATH.as_posix()}:npcs.{key}.papel_conversacional",
+                        )
+                    except ValueError as exc:
+                        errors.append(str(exc))
+
+            rel = entry.get("arquivo")
+            if rel is None:
+                if conversation is None:
+                    errors.append(f"textura sem arquivo nem papel conversacional: {kind}.{key}")
+                continue
+            if not isinstance(rel, str):
+                errors.append(f"arquivo de textura inválido no índice: {kind}.{key}")
+                continue
+            path = repo / rel
             if not path.is_file():
-                errors.append(f"fragmento de textura ausente: {entry['arquivo']}")
+                errors.append(f"fragmento de textura ausente: {rel}")
                 continue
             if path.stat().st_size > limit:
-                errors.append(f"fragmento de textura grande demais: {entry['arquivo']}")
+                errors.append(f"fragmento de textura grande demais: {rel}")
             try:
                 payload = load_yaml(path)
             except Exception as exc:
-                errors.append(f"fragmento de textura inválido {entry['arquivo']}: {exc}")
+                errors.append(f"fragmento de textura inválido {rel}: {exc}")
                 continue
             if not isinstance(payload, dict) or payload.get("id") != key:
-                errors.append(f"id de textura divergente: {entry['arquivo']}")
+                errors.append(f"id de textura divergente: {rel}")
     return errors
