@@ -49,7 +49,11 @@ class ContratoNarrativoTest(unittest.TestCase):
         limit = int(index["limite_fragmento_bytes"])
         for kind in ("npcs", "locais"):
             for entry in index[kind].values():
-                self.assertLessEqual((REPO / entry["arquivo"]).stat().st_size, limit)
+                rel = entry.get("arquivo")
+                if rel is None:
+                    self.assertIn("papel_conversacional", entry)
+                    continue
+                self.assertLessEqual((REPO / rel).stat().st_size, limit)
 
 
 class ContextoNarrativoTest(unittest.TestCase):
