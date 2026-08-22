@@ -1,0 +1,20 @@
+schema_orcamento_papeis_conversacionais: 1
+natureza: contrato_de_regressao
+objetivo: Dar ângulos de conselho consistentes a NPCs recorrentes sem agente, scheduler ou leitura narrativa adicional.
+limites:
+  perfis_iniciais: 8
+  max_itens_por_lista: 3
+  max_texto_chars: 220
+  fragmentos_adicionais_para_perfil_inline: 0
+  leituras_extras_status_cena: 0
+  ferramentas_extras_turno_comum: 0
+invariantes:
+  perfil_e_opt_in: true
+  perfil_inline_reusa_indice_de_texturas_ja_consultado: true
+  papel_nao_cria_conhecimento: true
+  papel_nao_substitui_relacao_atual: true
+  papel_nao_abre_agente_estrategico: true
+  papel_nao_cria_scheduler: true
+  resposta_continua_emergente_nao_scriptada: true
+  ausencia_de_perfil_preserva_comportamento_anterior: true
+  consulta_npc_com_perfil_continua_l2: true
