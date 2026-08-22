@@ -19,6 +19,8 @@ except ImportError as exc:  # pragma: no cover
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import locais
+
 INDEX_PATH = Path("cenario/texturas/index.yaml")
 MAX_FRAGMENT_BYTES = 2 * 1024
 KINDS = {"npcs", "locais"}
@@ -58,28 +60,44 @@ def _score(key: str, entry: dict[str, Any], term: str) -> int:
 
 
 def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, list[str], list[str]]:
-    """Retorna paleta compacta, fontes e candidatos sem varrer o cenário inteiro."""
+    """Retorna paleta compacta, fontes e candidatos sem varrer o cenário inteiro.
+
+    Locais são normalizados pelo registro canônico antes de consultar a textura.
+    Assim um alias pode encontrar a paleta correta, mas nunca cria uma segunda
+    identidade operacional para o mesmo lugar.
+    """
     if kind not in KINDS:
         raise ValueError(f"tipo de textura inválido: {kind}")
+
+    query_term = term
+    canonical: dict[str, Any] | None = None
+    canonical_sources: list[str] = []
+    if kind == "locais":
+        canonical = locais.resolve(repo, term)
+        query_term = canonical["local_id"]
+        canonical_sources = list(canonical["fontes_lidas"])
+
     index_file = repo / INDEX_PATH
     if not index_file.is_file():
-        return None, [], []
+        return None, canonical_sources, []
     index = load_yaml(index_file) or {}
     mapping = index.get(kind) if isinstance(index, dict) else None
     if not isinstance(mapping, dict):
-        return None, [INDEX_PATH.as_posix()], []
+        return None, list(dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix()])), []
 
     ranked: list[tuple[int, str, dict[str, Any]]] = []
     for key, raw_entry in mapping.items():
         if not isinstance(raw_entry, dict):
             continue
-        score = _score(str(key), raw_entry, term)
+        score = _score(str(key), raw_entry, query_term)
         if score:
             ranked.append((score, str(key), raw_entry))
     ranked.sort(key=lambda item: (-item[0], item[1]))
 
     if not ranked:
-        query_tokens = set(normalize(term).split())
+        if kind == "locais" and canonical is not None:
+            return None, list(dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix()])), []
+        query_tokens = set(normalize(query_term).split())
         candidates: list[str] = []
         for entry in mapping.values():
             if not isinstance(entry, dict):
@@ -93,9 +111,15 @@ def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, lis
     best = ranked[0]
     ties = [item for item in ranked if item[0] == best[0]]
     if len(ties) > 1 and best[0] < 100:
-        return None, [INDEX_PATH.as_posix()], [str(item[2].get("nome") or item[1]) for item in ties[:8]]
+        return None, list(dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix()])), [
+            str(item[2].get("nome") or item[1]) for item in ties[:8]
+        ]
 
     _, key, entry = best
+    if kind == "locais" and canonical is not None and key != canonical["local_id"]:
+        raise ValueError(
+            f"textura local {key!r} diverge do id canônico {canonical['local_id']!r}"
+        )
     rel = entry.get("arquivo")
     if not isinstance(rel, str):
         raise ValueError(f"textura sem arquivo no índice: {kind}.{key}")
@@ -121,7 +145,12 @@ def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, lis
             if k not in {"schema_textura", "natureza", "id", "nome", "autoridade"}
         },
     }
-    return result, [INDEX_PATH.as_posix(), rel], []
+    if canonical is not None:
+        result["local_ref_recebido"] = canonical["recebido"]
+        result["resolucao_local"] = canonical["resolucao"]
+    return result, list(
+        dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix(), rel])
+    ), []
 
 
 def validate(repo: Path) -> list[str]:
@@ -140,6 +169,12 @@ def validate(repo: Path) -> list[str]:
             errors.append(f"cenario/texturas/index.yaml: {kind} não é mapa")
             continue
         for key, entry in mapping.items():
+            if kind == "locais":
+                try:
+                    if not locais.is_canonical(repo, key):
+                        errors.append(f"textura usa local_id não canônico: {key}")
+                except locais.LocationError as exc:
+                    errors.append(f"registro canônico de locais inválido: {exc}")
             if not isinstance(entry, dict) or not isinstance(entry.get("arquivo"), str):
                 errors.append(f"textura inválida no índice: {kind}.{key}")
                 continue

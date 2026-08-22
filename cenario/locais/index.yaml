@@ -1,0 +1,58 @@
+schema_locais: 1
+natureza: roteador_canonico
+regra: alias_nunca_cria_novo_local
+observacao: >-
+  Este índice define identidade operacional de locais. Nome, grafia alternativa ou
+  alias resolvem para um único id canônico antes de qualquer efeito derivado. A
+  entrada no registro não cria presença, descoberta, recompensa ou fato novo.
+locais:
+  loja_bram_vask:
+    nome: Loja de Bram Vask
+    aliases:
+    - loja do Bram
+    - loja de Bram
+  casa_vizinha_loja_bram_vask:
+    nome: Casa vizinha à loja de Bram Vask
+    aliases:
+    - casa vizinha da loja de Bram
+  jack_mooney_sons_circus:
+    nome: Jack Mooney & Sons Circus
+    aliases:
+    - jack_mooney_and_sons_circus
+    - Jack Mooney and Sons Circus
+    - circo de Jack Mooney
+  casa_salgueiro_seco:
+    nome: Casa do Salgueiro Seco
+    aliases:
+    - casa_do_salgueiro_seco
+    - Casa Salgueiro Seco
+  quintal_vizinho_casa_salgueiro_seco:
+    nome: Quintal vizinho à Casa do Salgueiro Seco
+    aliases:
+    - quintal vizinho do Salgueiro Seco
+  narwhal_manor:
+    nome: Narwhal Manor
+    aliases:
+    - mansão Narwhal
+    - mansao Narwhal
+  casa_de_tyr:
+    nome: Casa de Tyr
+    aliases:
+    - templo de Tyr
+  antiga_casa_copias_portadas_azuis:
+    nome: Antiga casa das cópias de portadas azuis
+    aliases:
+    - casa das cópias de portadas azuis
+  casa_iria_doss:
+    nome: Casa de Iria Doss
+    aliases:
+    - casa de Iria
+    - abrigo de Iria
+  lavadouro_dos_tres_tanques:
+    nome: Lavadouro dos Três Tanques
+    aliases:
+    - lavadouro dos tres tanques
+  galeria_dos_escribas:
+    nome: Galeria dos Escribas
+    aliases:
+    - galeria de escribas
