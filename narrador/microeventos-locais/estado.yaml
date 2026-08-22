@@ -1,0 +1,20 @@
+schema_estado_microeventos_locais: 1
+natureza: controle_reservado
+observacao: >-
+  Estado operacional do baralho local. Começa vazio: nenhum microevento é inferido
+  retroativamente. Apenas a confirmação de uma cena local consome fichas.
+locais:
+  loja_bram_vask: &vazio
+    ocorrencia: {ciclo: 0, restantes: []}
+    cartas: {ciclo: 0, assinatura_pool: null, restantes: []}
+  casa_vizinha_loja_bram_vask: *vazio
+  jack_mooney_sons_circus: *vazio
+  casa_salgueiro_seco: *vazio
+  quintal_vizinho_casa_salgueiro_seco: *vazio
+  narwhal_manor: *vazio
+  casa_de_tyr: *vazio
+  antiga_casa_copias_portadas_azuis: *vazio
+  casa_iria_doss: *vazio
+  lavadouro_dos_tres_tanques: *vazio
+  galeria_dos_escribas: *vazio
+historico_recente: []
