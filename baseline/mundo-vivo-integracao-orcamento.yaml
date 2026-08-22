@@ -66,6 +66,14 @@ limites:
   efeitos_sidequest:
     max_efeitos_por_decisao: 6
     max_fragmentos_narrativos: 0
+  correcao_canonica:
+    preparacao_escritas: 0
+    max_mapas_invalidados: 4
+    somente_ponta_causal: true
+    deltas_automaticos:
+    - set
+    - remove
+    scheduler_novo: false
   arquivos_quentes:
     max_bytes_por_roteador: 16384
     max_bytes_total_novos: 32768
@@ -134,6 +142,10 @@ invariantes:
   candidato_fora_do_arco_nao_e_exposto: true
   grupo_arco_explicito_em_cada_binding: true
   turno_comum_continua_duas_escritas: true
+  correcao_canonica_fora_do_hot_path: true
+  correcao_canonica_nao_e_evento_novo: true
+  correcao_antiga_exige_replay_manual: true
+  mapa_descoberto_nao_e_invalidado_automaticamente: true
   contrato_arco_acima_do_mundo_vivo: true
   nao_listado_no_arco_e_bloqueado: true
   contrato_arco_e_orquestrador_nao_deposito: true
