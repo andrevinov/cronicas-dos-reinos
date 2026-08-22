@@ -38,12 +38,16 @@ RULES: tuple[Rule, ...] = (
     ),
     Rule(
         "ca_ac",
-        re.compile(r"(?<![\w])(?:CA|AC)(?![\w])|\bclasse\s+de\s+armadura\b|\barmor\s+class\b"),
+        re.compile(
+            r"(?<![\w])(?:CA|AC)(?![\w])|(?i:\bclasse\s+de\s+armadura\b|\barmor\s+class\b)"
+        ),
         "CA/AC e classe de armadura",
     ),
     Rule(
         "cd_dc",
-        re.compile(r"(?<![\w])(?:CD|DC)(?![\w])|\bclasse\s+de\s+dificuldade\b|\bdifficulty\s+class\b"),
+        re.compile(
+            r"(?<![\w])(?:CD|DC)(?![\w])|(?i:\bclasse\s+de\s+dificuldade\b|\bdifficulty\s+class\b)"
+        ),
         "CD/DC e classe de dificuldade",
     ),
     Rule(
