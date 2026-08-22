@@ -33,6 +33,7 @@ TRACE_PREFIX = "rastro:"
 TRACE_KNOWLEDGE_TYPE = "rastro_descoberto"
 TRACE_DISCOVERED_STATE = "descoberto"
 TRACE_TARGET_RE = re.compile(r"^rastro:rastro-[0-9a-f]{16}$")
+HOT_COMMITMENTS = 4
 
 
 def validate_delta(delta: Any) -> dict[str, Any]:
@@ -220,6 +221,21 @@ def overlay_target(
     return _base.overlay_target(payload, tempo_transacional.expand_records(records), target)
 
 
+def _compact_commitments(bundle: Any) -> Any:
+    if not isinstance(bundle, dict):
+        return bundle
+    items = bundle.get("itens")
+    if not isinstance(items, dict) or len(items) <= HOT_COMMITMENTS:
+        return bundle
+    keys = list(items)
+    keep = keys[:HOT_COMMITMENTS]
+    dropped = keys[HOT_COMMITMENTS:]
+    result = copy.deepcopy(bundle)
+    result["itens"] = {key: copy.deepcopy(items[key]) for key in keep}
+    result["omitidos"] = list(dict.fromkeys([*(result.get("omitidos") or []), *dropped]))
+    return result
+
+
 def overlay_runtime(
     context: dict[str, Any],
     scene: dict[str, Any] | None,
@@ -246,5 +262,7 @@ def overlay_runtime(
                 _base._apply_mapped(context_out, path, delta)
                 applied += 1
 
-    applied += compromissos.apply_pending_to_runtime(context_out, scene_out, current)
+    applied += compromissos.apply_pending_to_runtime(context_out, None, current)
+    if "compromissos" in context_out:
+        context_out["compromissos"] = _compact_commitments(context_out["compromissos"])
     return context_out, scene_out, applied
