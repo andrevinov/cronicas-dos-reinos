@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 11
-sessao_mais_recente_indexada: 11
+sessao_atual_da_campanha: 12
+sessao_mais_recente_indexada: 12
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,48 +34,21 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Shinta pagou 2 PC por uma refeição simples durante a pausa. Com Intuição 13 contra CD 13, identificou
-    Sella, conferente das tabuletas, como a melhor combinação entre receptividade e posição no fluxo cotidiano da
-    Galeria. Sem pedir informação ou recrutá-la, obteve Persuasão 15 contra CD 11 e criou familiaridade inicial:
-    Sella aprovou seu trabalho, apresentou-se pelo primeiro nome e deixou aberto que ele se sente ao lado dela no
-    dia seguinte. Ela ainda não é informante nem espiã.'
+- titulo: 'Shinta trabalhou sem observar pessoas ou áreas alheias à tarefa. Obteve Investigação 10 contra CD 12:
+    acertou a maioria dos lotes, mas registrou dezessete rolos onde uma corda dupla ocultava o décimo oitavo. Sella
+    detectou e corrigiu a divergência antes do fechamento; Tomas exigiu que o erro não se repita. No intervalo,
+    uma conversa estritamente profissional revelou que trabalhadores consistentes podem ser movidos das cargas comuns
+    para a mesa de devoluções, onde discrepâncias e padrões de reme…'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-288d00d7f96db183.md
-  bytes: 994
-  transacao: s011-288d00d7f96db183
-- titulo: Ren completou a história com os nomes inventados Arthur Donovan e Jost Anon, mas obteve Enganação 1 contra
-    CD 16. Um funcionário consultou o registro e declarou que Arthur não consta entre remetentes, procuradores ou
-    conferentes autorizados da Galeria. Jost Anon foi anotado como visitante suspeito; dois funcionários fecharam
-    a saída mais direta e exigiram que ele espere na entrada principal enquanto verificam a história. A identidade
-    real de Ren permanece protegida pelo Broche. Kethra retirou-s…
+  - personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-410f9763b39f0117.md
+  bytes: 980
+  transacao: s012-410f9763b39f0117
+- titulo: A prática e a correção reduziram a CD do trabalho vespertino de Shinta de 12 para 11, mas ele obteve Investigação
+    7 e colocou um fardo com marca borrada na fileira errada. O erro foi corrigido antes da saída; Tomas manteve
+    o trabalho de 15 Eleasis, pagou 4 PP, mas avisou que futuras chamadas dependem de um dia sem presunções. Ren
+    deixou a Galeria, realizou contravigilância funcional sem cauda ativa, desfez Shinta e chegou limpo ao ponto
+    combinado às 21:20. Sella Rove transmitiu que Kethra não o…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da1e4c09d300fd1a.md
-  bytes: 867
-  transacao: s011-da1e4c09d300fd1a
-- titulo: Os funcionários de Narwhal recusaram o pretexto e permitiram que Jost Anon partisse, mantendo o nome falso
-    registrado. Ren percebeu um acompanhante com Percepção 24 contra CD 14; sua primeira tentativa de despistá-lo
-    falhou com Furtividade 15 contra CD 16, acionando a intenção condicional. Ren gastou 2 Ki em Passos sem Pegadas
-    e obteve Furtividade 21 contra CD 16, rompendo a vigilância e assumindo posição distante. O Broche expirou às
-    18:00 e Passos sem Pegadas pouco depois. Até 19:10, Kethra n…
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-da0ac09695c97458.md
-  bytes: 868
-  transacao: s011-da0ac09695c97458
-- titulo: 'Ren chegou discretamente à casa de Iria Doss com Furtividade 22 contra CD 14 e foi reconhecido como o
-    homem que trouxe Colm com Mera. Iria esclareceu que nunca conheceu Kethra: recebeu Colm de Mera e Ren, sabe
-    apenas que havia uma irmã em Narwhal e não conhece o endereço nem com quem Kethra mora. Sem destino, o deslocamento
-    posterior foi interrompido. Iria também lembrou Ren da dívida pendente de 3 PO pelo tratamento, comida e abrigo
-    de Colm.'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-d2c2431c03a1d962.md
-  bytes: 767
-  transacao: s011-d2c2431c03a1d962
-- titulo: 'Correção explícita: Ren não visitou Iria Doss. O primeiro abrigo de Colm foi o Lavadouro dos Três Tanques,
-    sob os cuidados de Sella Rove, amiga de Kethra; Iria pertence ao resgate posterior no Fire River. Ren chegou
-    discretamente ao lavadouro com Furtividade 22 contra CD 14. Sella o reconheceu e confirmou saber onde Kethra
-    dorme, mas recusou revelar endereço ou companhia doméstica sem conhecer a urgência, oferecendo-se para avaliar
-    e transmitir a mensagem. A cena para nessa interrupção.'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-011/tx-s011-3a0da49868f240e7.md
-  bytes: 1038
-  transacao: s011-3a0da49868f240e7
+  - personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-3b2bbc08db9443e5.md
+  bytes: 838
+  transacao: s012-3b2bbc08db9443e5

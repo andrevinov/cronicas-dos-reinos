@@ -3,17 +3,17 @@ natureza: controle_reservado
 gate:
   ciclo: 2
   restantes:
-  - oportunidade_01
-  - oportunidade_02
   - nada_02
   - nada_04
-  sorteios: 16
+  sorteios: 18
 cooldown_ate: null
 pendencias_avaliacao: {}
 missoes: {}
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
 - silva_elkwood:deslocamento_seguro
+- silva_elkwood:socorro_rural
+- nera_vell:material_de_gravura
 encontros_recentes:
 - sessao-009:cena-retorno-bram:silva
 - sessao-009:cena-retorno-narwhal:kethra
@@ -31,6 +31,8 @@ encontros_recentes:
 - scene:sessao-010:retorno-circo-apos-operacao-velis:npc:silva_elkwood
 - scene:sessao-010:retorno-circo-apos-operacao-velis:npc:nera_vell
 - scene:sessao-011:narwhal-kethra-pos-velis:npc:kethra_dunn
+- scene:sessao-012:retorno-circo-relato-silva:npc:silva_elkwood
+- scene:sessao-012:convite-noturno-nera:npc:nera_vell
 historico_recente:
 - tipo: avaliacao_descartada
   id: sq-ec78a67de83ed965
@@ -50,3 +52,20 @@ historico_recente:
   em:
     data: 12 Eleasis, 1372 DR
     hora: '17:10'
+- tipo: avaliacao_descartada
+  id: sq-bd2aa890653cefe9
+  npc_id: silva_elkwood
+  motivo: A cena trata do relato operacional de Ren, do trabalho na Galeria e da busca
+    por abrigo; o cânone atual não apresenta pedido, vítima ou urgência concreta de
+    socorro rural ligada a Silva.
+  em:
+    data: 13 Eleasis, 1372 DR
+    hora: '20:50'
+- tipo: avaliacao_descartada
+  id: sq-a8d9be1620d268e3
+  npc_id: nera_vell
+  motivo: Não há no cânone atual falta concreta de ferramenta ou material de gravação,
+    e a cena iniciada é um convite íntimo sem vínculo natural com aquisição de suprimentos.
+  em:
+    data: 13 Eleasis, 1372 DR
+    hora: '21:40'

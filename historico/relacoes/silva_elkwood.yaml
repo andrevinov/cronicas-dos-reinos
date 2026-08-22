@@ -491,3 +491,42 @@ eventos_pos_migracao:
     valor: 'Após o retorno da operação de Velis, Silva combinou censura direta com cuidado concreto: deixou comida,
       confirmou que Nera e Tavin estavam seguros e recusou discutir nova estratégia antes que Ren removesse o disfarce
       e dormisse uma noite completa.'
+- transacao: s012-6891b200261cdbb8
+  sessao: 12
+  resumo: Após banhar-se e confirmar que voltou sem cauda, Ren relatou a Silva seu dia como Shinta na Galeria, a
+    vaga regular e o plano de alcançar a dona da Casa do Salgueiro Seco para negociar um possível abrigo seguro
+    para Nera e Tavin. Também contou a tentativa fracassada de contato com Kethra em Narwhal, o registro de Jost
+    Anon, a cauda rompida com Passos sem Pegadas e o acordo limitado com Sella Rove. Silva reconheceu o potencial
+    da casa, mas advertiu Ren a separar trabalho, acesso e abrigo, não ex…
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Em 13 Eleasis, Ren relatou o primeiro dia regular de Shinta na Galeria dos Escribas, a familiaridade
+      inicial com a conferente Sella e o plano de alcançar a dona da Casa do Salgueiro Seco para negociar um possível
+      abrigo seguro para Nera e Tavin.
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas_por_silva
+    op: append
+    valor: Ren contou a tentativa fracassada de falar com Kethra em Narwhal sob o Broche, o registro dos nomes falsos
+      Jost Anon e Arthur Donovan ligados a uma alegação sobre a Galeria, a cauda rompida com Passos sem Pegadas
+      e o acordo de mensagem única com Sella Rove.
+- transacao: s012-c03d1772fea8cfac
+  sessao: 12
+  resumo: Enquanto comia, Ren pediu a Silva permissão para ver Nera e convidá-la a dormir em seu quarto, explicando
+    que queria aproveitar a calma antes que Ravens Bluff piorasse. Silva permitiu que ele fizesse o convite, mas
+    deixou claro que a decisão pertence somente a Nera, sem pressão pelo medo do futuro, e que os cuidados de Tavin
+    e a liberdade de Nera sair a qualquer momento devem permanecer assegurados.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: acordos
+    op: append
+    valor: Na noite de 13 Eleasis, Silva permitiu que Ren convidasse Nera a dormir em seu quarto, deixando explícito
+      que a escolha pertence somente a Nera, que não deve haver pressão ligada ao medo do futuro e que os cuidados
+      de Tavin e a liberdade de Nera sair a qualquer momento precisam permanecer assegurados.
+  - alvo: relacao:silva_elkwood
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren admitiu com vergonha que desejava aproveitar uma noite de calma com Nera antes que Ravens Bluff piorasse.
+      Silva respondeu com humor cuidadoso e limites claros, distinguindo sua permissão logística da autonomia de
+      Nera.

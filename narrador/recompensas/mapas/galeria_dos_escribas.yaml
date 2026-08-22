@@ -1,0 +1,23 @@
+schema_mapa_recompensas: 1
+natureza: reservado
+local_id: galeria_dos_escribas
+tier: 1
+periculosidade: baixa
+geracao:
+  modo: deterministico_v1
+  chave: fb857a74d4f9c04ec911f6d8
+  imutavel: true
+  procedurais: 1
+  planejadas: 0
+regra_descoberta: existir_no_mapa_nao_significa_que_ren_encontrou
+recompensas:
+- id: galeria_dos_escribas-r01
+  tipo: dinheiro
+  estado: oculto
+  condicao_de_descoberta: perceber e superar uma ocultação física, compartimento falso
+    ou acesso disfarçado
+  posse:
+    tipo: ambiente
+  importancia: comum
+  origem: procedural
+  arquivo: narrador/recompensas/itens/galeria_dos_escribas-r01.yaml

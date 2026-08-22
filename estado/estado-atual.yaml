@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 11
+  sessao_atual: 12
   modo_de_cena_atual: retorno_ao_circo_apos_recado_a_sella
 personagem:
   nome: Ren Kagehira
@@ -18,8 +18,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: limite do acampamento dos Mooney, chegando sem cauda
+  area: Rua da Cal, Lower Trades, Ravens Bluff
+  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
   descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
     com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
     Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
@@ -29,7 +29,7 @@ localizacao:
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 13 Eleasis, 1372 DR
+  data_exata: 14 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -37,26 +37,26 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '20:50'
+  hora_aproximada: '21:20'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
 recursos:
   pontos_de_vida:
-    atuais: 45
+    atuais: 52
     maximos: 52
   dados_de_vida:
-    atuais: 7
+    atuais: 5
     maximos: 7
     dado: d8
   ki:
-    atuais: 4
+    atuais: 7
     maximos: 7
     recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 30.18
+    po: 30.58
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer
@@ -68,7 +68,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/011/transcricao.md
+  transcricao_atual: sessoes/012/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:

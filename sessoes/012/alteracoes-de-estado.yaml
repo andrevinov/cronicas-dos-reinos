@@ -1,0 +1,108 @@
+schema_alteracoes_transacionais: 1
+sessao: 12
+status: em_andamento
+fonte: sessoes/012/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 12
+  modo: retorno_ao_circo_apos_recado_a_sella
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  ki: 4/7
+  ca: 17
+  dinheiro_po: 30.18
+  data: 13 Eleasis, 1372 DR
+  hora: '20:50'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: limite do acampamento dos Mooney, chegando sem cauda
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 12
+  modo: retorno_ao_circo_apos_recado_a_sella
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  ki: 7/7
+  ca: 17
+  dinheiro_po: 30.58
+  data: 14 Eleasis, 1372 DR
+  hora: '21:20'
+  area: Rua da Cal, Lower Trades, Ravens Bluff
+  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
+  nivel_ficha: 7
+consolidacoes:
+- id: s012-cena-ca119894fa4e3eb0
+  tipo: cena
+  transacoes:
+  - s012-6891b200261cdbb8
+  - s012-c03d1772fea8cfac
+  - s012-8053c8c39545c051
+  - s012-9334ab1c45506270
+  deltas: 16
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - sessoes/012/alteracoes-de-estado.yaml
+  - sessoes/012/consequencias.md
+  - sessoes/012/consolidacoes.jsonl
+  - sessoes/012/resumo.md
+- id: s012-cena-0a18be38fdba6019
+  tipo: cena
+  transacoes:
+  - s012-6036a6c40a910f01
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/012/alteracoes-de-estado.yaml
+  - sessoes/012/consequencias.md
+  - sessoes/012/consolidacoes.jsonl
+  - sessoes/012/resumo.md
+- id: s012-cena-48743278b43b5dce
+  tipo: cena
+  transacoes:
+  - s012-5b957d0df07c4456
+  - s012-410f9763b39f0117
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-012/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-410f9763b39f0117.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/012/alteracoes-de-estado.yaml
+  - sessoes/012/consequencias.md
+  - sessoes/012/consolidacoes.jsonl
+  - sessoes/012/resumo.md
+- id: s012-cena-0b82182afb9aecdc
+  tipo: cena
+  transacoes:
+  - s012-3b2bbc08db9443e5
+  deltas: 8
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/kethra_dunn.yaml
+  - estado/relacoes/sella_rove.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/kethra_dunn.yaml
+  - historico/relacoes/sella_rove.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-012/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-3b2bbc08db9443e5.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/012/alteracoes-de-estado.yaml
+  - sessoes/012/consequencias.md
+  - sessoes/012/consolidacoes.jsonl
+  - sessoes/012/resumo.md

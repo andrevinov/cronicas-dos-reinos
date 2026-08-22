@@ -90,3 +90,7 @@ recompensas:
     local_id: jack_mooney_and_sons_circus
     mapa: narrador/recompensas/mapas/jack_mooney_and_sons_circus.yaml
     arquivo: narrador/recompensas/itens/jack_mooney_and_sons_circus-r02.yaml
+  galeria_dos_escribas-r01:
+    local_id: galeria_dos_escribas
+    mapa: narrador/recompensas/mapas/galeria_dos_escribas.yaml
+    arquivo: narrador/recompensas/itens/galeria_dos_escribas-r01.yaml

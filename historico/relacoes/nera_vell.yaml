@@ -399,3 +399,58 @@ eventos_pos_migracao:
     valor: Nera recusou tratar Kethra como carta ou peça e pediu que Ren proteja a sobrevivência dela antes de usar
       a informação. Ren reconheceu Kethra como aliada. Nera ajudou a remover parte do disfarce, falou do medo de
       vê-lo manipulado por escolhas sem combate e encerrou a visita para que ele pudesse comer e dormir.
+- transacao: s012-8053c8c39545c051
+  sessao: 12
+  resumo: Ren convidou Nera, timidamente e sem pressão, a dormir em seu quarto naquela noite. Nera confirmou que
+    Tavin estava acomodado, aceitou por vontade própria e deixou claro que escolheu ir porque queria estar com Ren,
+    não por medo do que poderia acontecer à cidade; ambos preservaram a liberdade dela de retornar se Tavin precisasse.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Na noite de 13 Eleasis, Nera aceitou por vontade própria dormir no quarto de Ren depois de acomodar Tavin,
+      preservando a liberdade de retornar durante a noite se ele precisasse dela.
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Ren convidou Nera timidamente e sem pressão para dormir com ele. Nera aceitou porque desejava estar com
+      Ren e sentira sua falta, recusando enquadrar a intimidade apenas como calma roubada antes de uma possível
+      desgraça.
+- transacao: s012-9334ab1c45506270
+  sessao: 12
+  resumo: Ren e Nera foram juntos ao quarto-depósito, reafirmaram afeto e fizeram amor consensualmente antes de
+    conversar abraçados. Ren contou o trabalho de Shinta, o plano para a Casa do Salgueiro Seco, a tentativa frustrada
+    de alcançar Kethra, o acordo com Sella Rove e sua esperança de encontrar Shizune na Galeria. Nera apoiou com
+    cautela a busca da casa, defendeu a autonomia e o risco de Kethra, e advertiu Ren a não sacrificar Shinta num
+    confronto imediato com Shizune. Ren contou a parábola do homem…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas_por_nera
+    op: append
+    valor: Ren relatou o primeiro dia regular de Shinta na Galeria dos Escribas, a familiaridade inicial com a conferente
+      Sella, a esperança de alcançar a dona da Casa do Salgueiro Seco e negociar um possível porto seguro, e a possibilidade
+      de encontrar Shizune no ambiente da Galeria.
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas_por_nera
+    op: append
+    valor: Ren contou a tentativa fracassada de falar com Kethra em Narwhal, o registro de Jost Anon, a cauda rompida
+      com Passos sem Pegadas e o acordo limitado pelo qual Sella Rove levará uma única mensagem a Kethra.
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Após passarem a noite juntos por escolha mútua, Ren comparou-se ao homem da parábola que prova um morango
+      enquanto está preso entre tigres. Nera reconheceu a doçura do presente, mas pediu que Ren não a trate como
+      último consolo nem desista de procurar uma saída e um futuro compartilhado.
+- transacao: s012-6036a6c40a910f01
+  sessao: 12
+  resumo: 'Ren dormiu cinco horas com Nera, despertou às 04:30 e meditou por meia hora, completando um descanso
+    curto, mas não longo. Gastou dois Dados de Vida: recuperou 4 PV no primeiro e 7 no segundo, usando apenas três
+    do segundo para chegar a 52/52; restam 5/7 Dados de Vida, e o Ki voltou a 7/7. Ren acompanhou Nera de volta
+    à carroça verde e preparou o disfarce de Shinta. Às 06:00, a fronteira do Mundo Vivo interrompeu a intenção
+    antes de sua saída para a Galeria.'
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: acordos
+    op: append
+    valor: Ren acompanhou Nera de volta à carroça verde antes do amanhecer de 14 Eleasis, preservando os cuidados
+      de Tavin conforme combinado.

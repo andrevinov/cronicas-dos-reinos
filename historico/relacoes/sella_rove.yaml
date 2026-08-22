@@ -52,3 +52,16 @@ eventos_pos_migracao:
     valor: cautelosa e mais resistente à retórica de Ren; considerou a fala sobre arrependimento futuro uma pressão
       disfarçada. Mantém o compromisso de levar uma única mensagem a Kethra, mas rejeita tornar o lavadouro ou sua
       rotina uma ponte recorrente.
+- transacao: s012-3b2bbc08db9443e5
+  sessao: 12
+  resumo: A prática e a correção reduziram a CD do trabalho vespertino de Shinta de 12 para 11, mas ele obteve Investigação
+    7 e colocou um fardo com marca borrada na fileira errada. O erro foi corrigido antes da saída; Tomas manteve
+    o trabalho de 15 Eleasis, pagou 4 PP, mas avisou que futuras chamadas dependem de um dia sem presunções. Ren
+    deixou a Galeria, realizou contravigilância funcional sem cauda ativa, desfez Shinta e chegou limpo ao ponto
+    combinado às 21:20. Sella Rove transmitiu que Kethra não o…
+  deltas:
+  - alvo: relacao:sella_rove
+    caminho: status
+    op: set
+    valor: 'Sella cumpriu a intermediação única prometida: transmitiu a resposta autorizada de Kethra e encerrou
+      o canal, recusando novas consultas; o único sinal futuro continua sendo o fio azul escolhido por Kethra.'

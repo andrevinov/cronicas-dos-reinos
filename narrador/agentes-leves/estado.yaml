@@ -5,7 +5,7 @@ agentes:
   kethra_dunn:
     estado: ativo
     proxima_avaliacao:
-      data: 14 Eleasis, 1372 DR
+      data: 17 Eleasis, 1372 DR
       hora: 06:00
   bram_vask:
     estado: ativo

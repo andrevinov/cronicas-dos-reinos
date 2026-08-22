@@ -6,10 +6,15 @@ candidatos:
   shen_meihua:
     estado: latente
     antecipado: false
-    proxima_avaliacao:
-      data: 14 Eleasis, 1372 DR
-      hora: 06:00
-    historico_recente: []
+    proxima_avaliacao: null
+    historico_recente:
+    - acao: abrir_janela_contextual
+      em:
+        data: 14 Eleasis, 1372 DR
+        hora: 06:00
+      origem: sistema:entradas
+      nota: A cadência tornou Shen Meihua elegível para descoberta contextual; nenhuma
+        aparição foi criada.
   tsukishiro_joen:
     estado: latente
     antecipado: false

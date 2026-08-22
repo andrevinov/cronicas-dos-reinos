@@ -83,3 +83,9 @@ mapas:
     periculosidade: baixa
     quantidade: 2
     chave_geracao: 4e28c29b7a3686e3b69a2003
+  galeria_dos_escribas:
+    arquivo: narrador/recompensas/mapas/galeria_dos_escribas.yaml
+    tier: 1
+    periculosidade: baixa
+    quantidade: 1
+    chave_geracao: fb857a74d4f9c04ec911f6d8

@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 13 Eleasis, 1372 DR
-  hora: '20:50'
+  data: 14 Eleasis, 1372 DR
+  hora: '21:20'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -147,3 +147,46 @@ concluidas_recentes:
   agente: casa_de_tyr
   nota: A Casa de Tyr mantém custódia, discrição e contatos pelo canal estabelecido;
     nenhuma nova iniciativa excepcional.
+- id: mundo-eafb540abc8f7fb1
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  nota: O marco corrente continua sustentado apenas como padrão de coisas plausíveis;
+    o amanhecer não acrescentou fato canônico nem evidência literal capaz de avançar
+    a direção.
+- id: mundo-51ba87b47066d7d9
+  tipo: reavaliar_agente_leve
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Kethra mantém a rotina e a cobertura em Narwhal. Às 06:00 não há nova observação
+    canônica da mulher Cinza-Azul nem sinal seguro já materializado; nenhuma iniciativa
+    extraordinária.
+- id: mundo-2ac84f5961aa4d11
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail mantém a busca dirigida já em execução por curandeiros, carroças
+    e propriedades a leste. O relógio associado já está resolvido e não há nova pista
+    canônica nesta cadência para alterar progresso ou conhecimento.
+- id: mundo-6b7ae5ec230e03ad
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: Kurobane permanece aguardando oportunidade. Nenhuma nova janela física de
+    acesso a prova, mensagem ou cadeia documental conhecida por ele foi estabelecida
+    canonicamente até este amanhecer.
+- id: mundo-ca3f3d760334f244
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém vigilância e resposta preparada, preservando fontes e
+    cadeia de prova. Nenhum fato novo nesta cadência exige mudança de prioridade ou
+    nova ação canônica.

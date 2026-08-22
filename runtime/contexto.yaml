@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 11
+  numero: 12
   status: entre_sessoes
   modo_de_cena: retorno_ao_circo_apos_recado_a_sella
 personagem:
@@ -15,17 +15,17 @@ personagem:
   subclasse: Caminho da Sombra
 recursos:
   pv:
-    atuais: 45
+    atuais: 52
     maximos: 52
   ki:
-    atuais: 4
+    atuais: 7
     maximos: 7
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 30.18
+  dinheiro_po: 30.58
 tempo:
-  data: 13 Eleasis, 1372 DR
-  hora_aproximada: '20:50'
+  data: 14 Eleasis, 1372 DR
+  hora_aproximada: '21:20'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: limite do acampamento dos Mooney, chegando sem cauda
+  area: Rua da Cal, Lower Trades, Ravens Bluff
+  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/011/handoff.yaml
-  transcricao_fria: sessoes/011/transcricao.md
+  handoff_atual: sessoes/012/handoff.yaml
+  transcricao_fria: sessoes/012/transcricao.md
   narrador: narrador/
   regras: regras/
 efeitos_temporarios:

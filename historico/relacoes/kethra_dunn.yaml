@@ -235,3 +235,22 @@ eventos_pos_migracao:
     valor: Um assistente de Narwhal viu um trabalhador desconhecido, sob a aparência do Broche, romper o fluxo normal
       para procurar Kethra diretamente. Ele não identificou Ren, mas o padrão de contato com Kethra voltou a ser
       observado.
+- transacao: s012-3b2bbc08db9443e5
+  sessao: 12
+  resumo: A prática e a correção reduziram a CD do trabalho vespertino de Shinta de 12 para 11, mas ele obteve Investigação
+    7 e colocou um fardo com marca borrada na fileira errada. O erro foi corrigido antes da saída; Tomas manteve
+    o trabalho de 15 Eleasis, pagou 4 PP, mas avisou que futuras chamadas dependem de um dia sem presunções. Ren
+    deixou a Galeria, realizou contravigilância funcional sem cauda ativa, desfez Shinta e chegou limpo ao ponto
+    combinado às 21:20. Sella Rove transmitiu que Kethra não o…
+  deltas:
+  - alvo: relacao:kethra_dunn
+    caminho: informacoes_observadas_por_ren
+    op: append
+    valor: Por mensagem verbal transmitida por Sella Rove em 14 Eleasis, Kethra informou que não ouviu nada concreto
+      de Velis após a convocação e não voltou a ver a mulher Cinza-Azul. Reiterou que usará um fio azul na dobradiça
+      inferior do portão de carvão se a vir novamente; sem o fio, Ren não deve procurar contato.
+  - alvo: relacao:kethra_dunn
+    caminho: riscos
+    op: append
+    valor: Kethra recusou criar novo ponto morto enquanto estiver recente a tentativa observada de um desconhecido
+      alcançá-la dentro de Narwhal Manor.

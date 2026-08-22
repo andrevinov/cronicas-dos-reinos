@@ -1,0 +1,20 @@
+schema_conhecimento_incremental: 1
+sessao: 12
+fragmentos:
+- transacao: s012-410f9763b39f0117
+  titulo: 'Shinta trabalhou sem observar pessoas ou áreas alheias à tarefa. Obteve Investigação 10 contra CD 12:
+    acertou a maioria dos lotes, mas registrou dezessete rolos onde uma corda dupla ocultava o décimo oitavo. Sella
+    detectou e corrigiu a divergência antes do fechamento; Tomas exigiu que o erro não se repita. No intervalo,
+    uma conversa estritamente profissional revelou que trabalhadores consistentes podem ser movidos das cargas comuns
+    para a mesa de devoluções, onde discrepâncias e padrões de reme…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-410f9763b39f0117.md
+  bytes: 980
+- transacao: s012-3b2bbc08db9443e5
+  titulo: A prática e a correção reduziram a CD do trabalho vespertino de Shinta de 12 para 11, mas ele obteve Investigação
+    7 e colocou um fardo com marca borrada na fileira errada. O erro foi corrigido antes da saída; Tomas manteve
+    o trabalho de 15 Eleasis, pagou 4 PP, mas avisou que futuras chamadas dependem de um dia sem presunções. Ren
+    deixou a Galeria, realizou contravigilância funcional sem cauda ativa, desfez Shinta e chegou limpo ao ponto
+    combinado às 21:20. Sella Rove transmitiu que Kethra não o…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-012/tx-s012-3b2bbc08db9443e5.md
+  bytes: 838
+quantidade: 2
