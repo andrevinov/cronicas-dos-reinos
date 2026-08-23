@@ -33,7 +33,7 @@ Ren é bom em:
 * perceber mentiras, emboscadas e detalhes fora do lugar;
 * notar passivamente detalhes e inconsistências que outras pessoas deixam passar;
 * ler lábios quando consegue ver a boca e entende o idioma falado;
-* sustentar identidades falsas e imitar voz ou sons que estudou;
+* sustentar identidades diferentes da própria e imitar voz ou sons que estudou;
 * mover-se rápido por ruas, telhados baixos, becos e docas;
 * lutar sem armadura;
 * atacar e sair de alcance;
@@ -323,13 +323,15 @@ Talento bônus retroativo de criação. Não consome o talento Móvel, o ASI do 
 
 Actor elevou Carisma de 10 para 11; o modificador continua +0.
 
-Quando Ren tenta **se passar por outra pessoa**, ele tem vantagem em testes de Enganação e Atuação pertinentes à impersonação. Isso não dá vantagem a toda mentira ou performance genérica.
+Quando Ren tenta **passar-se por uma pessoa diferente de Ren Kagehira**, ele tem vantagem em testes de Enganação e Atuação usados para estabelecer ou sustentar essa outra identidade. A identidade pode ser **inventada**, como Shinta Ryoushi, uma persona genérica ou uma pessoa real específica.
 
-Ren também pode imitar a fala de uma pessoa ou sons feitos por outra criatura depois de ouvi-los por pelo menos 1 minuto. Se alguém desconfiar da imitação, pode usar Sabedoria (Intuição) contra Carisma (Enganação) de Ren para perceber que é falsa.
+Isso significa, por exemplo, que uma Enganação para responder a perguntas como Shinta ou uma Atuação para manter os modos de Shinta recebe vantagem. Actor não dá vantagem a uma mentira que Ren conte assumidamente como Ren nem a uma performance que não tente convencer terceiros de que ele é outra pessoa.
 
-Uso típico: sustentar Shinta ou outra persona em conversa, reproduzir a voz de alguém estudado, copiar um chamado ou som de criatura e combinar voz convincente com kit de disfarce ou outra cobertura visual.
+O **mimetismo é um benefício separado**. Ren pode imitar a fala de uma pessoa ou sons feitos por outra criatura depois de ouvi-los por pelo menos 1 minuto. Ele não precisa usar mimetismo, nem ter ouvido uma pessoa específica, para receber a vantagem ao sustentar uma identidade inventada. Se alguém desconfiar de uma imitação, pode usar Sabedoria (Intuição) contra Carisma (Enganação) de Ren para perceber que é falsa.
 
-Na CLI, uma rolagem realmente ligada a impersonação usa `--actor-impersonacao`; o rolador aplica a vantagem antes do RNG e combina corretamente com eventual desvantagem.
+Uso típico: sustentar Shinta ou outra persona em conversa, assumir uma identidade genérica plausível, passar-se por uma pessoa real específica, reproduzir uma voz estudada, copiar um chamado ou som de criatura e combinar Actor com kit de disfarce ou outra cobertura visual.
+
+Na CLI, um teste ligado a estabelecer ou sustentar outra identidade usa `--actor-outra-identidade`; o rolador aplica a vantagem antes do RNG e combina corretamente com eventual desvantagem.
 
 ---
 
@@ -372,7 +374,7 @@ Cria uma aparência humilde e comum, útil para passar despercebido. Não permit
 
 Pode permanecer ativo junto com Visão no Escuro e com qualquer uma das Artes Sombrias de concentração.
 
-Actor pode complementar uma cobertura visual com voz e atuação, mas **não transforma o Broche em cópia visual perfeita de uma pessoa específica**.
+Actor pode complementar uma cobertura visual com identidade, voz e atuação, mas **não transforma o Broche em cópia visual perfeita de uma pessoa específica**.
 
 ---
 
@@ -392,7 +394,7 @@ Ren também só tem **uma ação bônus por turno**. Portanto Passo Sombrio, Raj
 
 Ataque Atordoante não usa ação bônus: ele pode ser aplicado a um acerto mesmo depois de Passo Sombrio, Rajada de Golpes ou um ataque normal.
 
-Actor e Observant são passivos e não consomem ação, ação bônus, reação, ki ou concentração. Seus gatilhos continuam precisando existir na ficção: Actor exige impersonação real; leitura labial exige visão da boca e idioma compreendido.
+Actor e Observant são passivos e não consomem ação, ação bônus, reação, ki ou concentração. Seus gatilhos continuam precisando existir na ficção: Actor exige que Ren esteja tentando passar-se por uma pessoa diferente de si mesmo; leitura labial exige visão da boca e idioma compreendido.
 
 ---
 
@@ -408,7 +410,7 @@ Ren fica disfarçado, enxerga no escuro normal, sobe para Furtividade +17, não 
 
 **Kit de disfarce ou cobertura visual + Actor.**
 
-A aparência e a voz continuam camadas distintas. Quando Ren está realmente impersonando outra pessoa, Actor dá vantagem ao teste social pertinente e permite reproduzir uma voz previamente estudada.
+A aparência e a identidade continuam camadas distintas. Quando Ren está tentando convencer terceiros de que é outra pessoa — inclusive uma identidade inventada como Shinta — Actor dá vantagem ao teste de Enganação ou Atuação pertinente. Mimetismo de voz pode complementar a cobertura, mas não é requisito para a vantagem.
 
 ### Vigilância sem áudio
 
@@ -457,7 +459,8 @@ Limites importantes:
 * só possui uma ação bônus por turno;
 * escuridão mágica pode atrapalhar Ren e aliados;
 * Passo Sombrio depende de luz baixa ou escuridão, linha de visão e ação bônus;
-* Actor não dá vantagem a mentira genérica fora de impersonação;
+* Actor não dá vantagem a mentira genérica ou performance sem troca/sustentação de identidade;
+* mimetismo de Actor é separado da vantagem de outra identidade;
 * Observant não soma +5 aos testes ativos;
 * leitura labial depende de ver a boca e compreender o idioma;
 * não é invisível o tempo todo;
