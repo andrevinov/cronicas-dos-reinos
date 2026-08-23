@@ -497,7 +497,10 @@ def _budget_v2_plan(index, tables, ecology, tier, danger):
     family = text(ecology.get("familia"), "ecologia.familia")
     profile = cfg["perfis_familia"].get(family)
     if not isinstance(profile, dict):
-        raise RewardMapError(f"família ecológica sem perfil Reward Budget v2: {family}")
+        # Ecologias sintéticas de fixtures anteriores à v2 continuam exercitando
+        # o gerador legado. A cobertura das famílias canônicas reais é exigida
+        # pelo check frio do repositório abaixo.
+        return None
     tier_key = str(tier)
     points = max(1, int(cfg["pontos_por_tier"][tier_key]) + int(cfg["bonus_risco"][danger]) + int(profile["modificador_pontos"]))
     ceiling_rank = min(max(VALUE_RANK.values()), VALUE_RANK[profile["teto_valor_base"]] + int(cfg["aumento_teto_valor_risco"][danger]))
@@ -1070,8 +1073,28 @@ def validate_repo(repo: Path) -> dict[str, Any]:
     try:
         index = load_index(repo)
         item_index = load_item_index(repo)
-        load_tables(repo)
+        tables = load_tables(repo)
         load_planned(repo)
+        if (
+            tables.get("schema_tabelas_recompensas") == 2
+            and (repo / ecologia_local.INDEX).is_file()
+        ):
+            try:
+                ecology_index = ecologia_local.load_index(repo)
+            except ecologia_local.LocalEcologyError as exc:
+                raise RewardMapError(str(exc)) from exc
+            families = {
+                profile["familia"]
+                for profile in ecology_index["perfis"].values()
+                if isinstance(profile, dict) and isinstance(profile.get("familia"), str)
+            }
+            configured = set(tables["orcamento_v2"]["perfis_familia"])
+            missing = sorted(families - configured)
+            if missing:
+                raise RewardMapError(
+                    "famílias ecológicas canônicas sem perfil Reward Budget v2: "
+                    + ", ".join(missing)
+                )
         seen: dict[str, tuple[str, str]] = {}
 
         for place, meta in index["mapas"].items():

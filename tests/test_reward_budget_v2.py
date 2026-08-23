@@ -135,9 +135,8 @@ class RewardBudgetV2PureTest(unittest.TestCase):
             self.assertNotEqual(fragment["importancia"], "arco")
             self.assertEqual(fragment["geracao"]["gerador"], recompensas.GENERATOR_V2)
 
-    def test_unknown_ecology_family_fails_closed(self):
-        with self.assertRaisesRegex(recompensas.RewardMapError, "sem perfil Reward Budget v2"):
-            self.plan("familia_inventada", 2, "media")
+    def test_unknown_synthetic_ecology_family_falls_back_to_v1(self):
+        self.assertIsNone(self.plan("familia_inventada", 2, "media"))
 
     def test_place_and_risk_change_budget_without_reroll_semantics(self):
         small = self.plan("residencia_exterior", 2, "baixa")

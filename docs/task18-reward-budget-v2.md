@@ -15,7 +15,7 @@ O custo de um item é `custo_valor + custo_importancia`. A seleção é um ranki
 
 ## Plausibilidade espacial
 
-A ecologia já carregada pela cena fornece `familia`. O perfil v2 da família define categorias permitidas, modificador de pontos e teto-base de valor. Uma família ecológica nova precisa receber perfil explícito antes de gerar loot v2; a ausência falha fechada em vez de cair em loot genérico.
+A ecologia já carregada pela cena fornece `familia`. O perfil v2 da família define categorias permitidas, modificador de pontos e teto-base de valor. O `check` frio exige perfil explícito para toda família ecológica canônica do repositório e falha se uma nova família real ficar descoberta. Ecologias sintéticas de fixtures antigas podem continuar no gerador v1 para preservar regressões legadas.
 
 ## Compatibilidade
 
