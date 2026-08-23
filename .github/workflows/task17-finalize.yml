@@ -1,0 +1,46 @@
+name: Task 17 finalize
+
+on:
+  push:
+    branches:
+      - task/protected-core-network
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: task/protected-core-network
+      - name: Finalize protected-core integration
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('ferramentas/eventos_mundo.py')
+          text = path.read_text(encoding='utf-8')
+          old = '''            "agentes_evento_reconsiderar": [],\n            "agentes_leves_evento_reconsiderar": [],\n            "fontes_lidas": sources,\n'''
+          new = '''            "agentes_evento_reconsiderar": [],\n            "agentes_leves_evento_reconsiderar": [],\n            "nucleo_protegido_evento_reconsiderar": [],\n            "fontes_lidas": sources,\n'''
+          if text.count(old) != 1:
+              raise SystemExit('unexpected no-due return shape')
+          text = text.replace(old, new, 1)
+          old = '''    except (WorldEventError, mundo.WorldEngineError) as exc:\n        errors.append(str(exc))\n'''
+          new = '''    except (\n        WorldEventError,\n        mundo.WorldEngineError,\n        rede_protegida.ProtectedNetworkError,\n    ) as exc:\n        errors.append(str(exc))\n'''
+          if text.count(old) != 1:
+              raise SystemExit('unexpected validate_repo exception block')
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+          compile(text, str(path), 'exec')
+          PY
+          git diff --check
+      - name: Commit and remove workflow
+        run: |
+          git rm .github/workflows/task17-finalize.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ferramentas/eventos_mundo.py
+          git commit -m 'Task 17: fechar robustez do gate procedural'
+          git push origin HEAD:task/protected-core-network
