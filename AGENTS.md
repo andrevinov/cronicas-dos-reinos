@@ -67,7 +67,7 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal: `entrada → ON/OFF/RECALL → barreira → contexto necessário → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
 
-**Porta operacional preferencial:** `poetry run cronica preparar ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. Primitivas antigas ficam só para manutenção/reparo.
+**Porta operacional preferencial.** `poetry run cronica preparar ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. Primitivas antigas ficam só para manutenção/reparo.
 
 **Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, não narrar a nova ação: usar `endpoints.py pendencias`. Pendência é avaliação, não fato. Se `tipo: reavaliar_agente_leve` e nada mudou, `agentes_leves.py concluir-noop <id>`; demais no-op: `barreira_mundo.py concluir <id> --nota ...`. Com mudança: transação `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpoint e conclusão. O writer repete a trava.
 
@@ -79,7 +79,7 @@ As primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registra
 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-Antes de comprimir tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar só até a fronteira, registrar/checkpointar, processar Mundo Vivo e depois continuar. Não chamar em turno curto.
+**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar só até a fronteira, registrar/checkpointar, processar Mundo Vivo e depois continuar. Não chamar em turno curto.
 
 Durante avanço comum:
 
@@ -90,7 +90,7 @@ Durante avanço comum:
 - instante muda com um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - o valor `rodape_canonico` de `cronica concluir` deve ser reproduzido verbatim como última linha visível.
 
-Rodapé é derivado, não cânone. Telemetria é **pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante avanço ao vivo. Textura de NPC/local: `contexto.py npc|local`, só quando houver lacuna. Rolagens independentes: `rolar-lote.py`; condicionais ficam separadas.
+Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante avanço ao vivo. Textura de NPC/local: `contexto.py npc|local`, só quando houver lacuna. Rolagens independentes: `rolar-lote.py`; condicionais ficam separadas.
 
 Meta: **2 chamadas por turno** (`cronica preparar` + `cronica concluir`); não decompor sem necessidade de reparo.
 
