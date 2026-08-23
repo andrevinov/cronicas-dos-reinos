@@ -67,11 +67,12 @@ capacidades_contextuais:
     percepcao: 21
     investigacao: 20
   actor:
-    vantagem_impersonacao:
+    vantagem_outra_identidade:
     - enganacao
     - atuacao
-    flag_rolagem: --actor-impersonacao
-    mimetismo: fala/sons ouvidos por pelo menos 1 minuto; ouvinte pode opor Intuição a Enganação
+    gatilho: Ren tenta passar-se por uma pessoa diferente de Ren Kagehira; a identidade pode ser real ou inventada, como Shinta Ryoushi
+    flag_rolagem: --actor-outra-identidade
+    mimetismo_separado: fala/sons ouvidos por pelo menos 1 minuto; não é pré-requisito para a vantagem; ouvinte pode opor Intuição a Enganação
   observant:
     leitura_labial: se vir a boca e entender o idioma
     bonus_passivos: 5
