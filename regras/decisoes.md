@@ -63,3 +63,13 @@ Este arquivo registra interpretações recorrentes adotadas durante a campanha.
 - Justificativa: isso preserva o valor tático enorme da habilidade sem transformá-la em invisibilidade, voo, teleporte sem limite ou Passos sem Pegadas permanente.
 - Aplicação futura: à noite, em ruínas, becos, telhados e interiores com penumbra, Ren deve ser claramente mais difícil de cercar, seguir ou forçar por rotas previsíveis. Em áreas iluminadas, vigiadas ou sem linha de visão, o narrador deve descrever os limites concretos antes de rolar.
 - Estado: permanente.
+
+## DEC-0007 — Actor e Observant como talentos bônus retroativos de criação
+
+- Sessão de origem: ajuste de criação durante a sessão 013.
+- Contexto: o jogador não conhecia o subsistema de talentos quando Ren foi criado e a campanha acabou exigindo de forma excepcionalmente frequente investigação documental, vigilância, disfarces e sustentação de identidades. Actor e Observant são escolhidos como compensação de criação coerente com esse perfil, não como recompensa obtida dentro da ficção.
+- Regra oficial: na 5e clássica, Actor aumenta Carisma em 1, concede vantagem em Enganação e Atuação quando o personagem tenta se passar por outra pessoa e permite imitar fala ou sons depois de ouvi-los por pelo menos 1 minuto; um ouvinte desconfiado pode opor Sabedoria (Intuição) à Carisma (Enganação) do imitador. Observant aumenta Inteligência ou Sabedoria em 1, permite leitura labial quando se vê a boca e se entende o idioma e concede +5 a Percepção passiva e Investigação passiva.
+- Decisão adotada: Ren recebe Actor e Observant como **talentos bônus retroativos de criação**. Eles não consomem o talento Móvel do Humano Variante, não substituem o aumento de atributos do nível 4 e não gastam ASI/talento futuro. Actor aplica +1 Carisma (10 → 11). Observant escolhe Inteligência e aplica +1 Inteligência (13 → 14), preservando Sabedoria 17, CA 17 e CD de ki 14.
+- Aplicação mecânica: Investigação ativa passa de +4 para +5 pela nova Inteligência; História, Religião, Arcana e Natureza passam de +1 para +2; salvaguarda de Inteligência passa de +1 para +2. Percepção ativa permanece +6. Percepção passiva passa de 16 para 21; Investigação passiva passa de 14 para 20. Enganação e Atuação permanecem +0, mas recebem vantagem quando o contexto for realmente impersonação de outra pessoa.
+- Continuidade: os talentos são tratados como parte do build de Ren desde a criação, porém **não reescrevem cenas, rolagens, descobertas ou falhas já canonizadas**. Nenhuma informação passada é concedida retroativamente; os efeitos mecânicos e narrativos passam a ser aplicados prospectivamente a partir deste ajuste.
+- Estado: permanente.
