@@ -1,0 +1,81 @@
+schema_progressao_juppongatana: 1
+natureza: reservado
+estatuto: espinha_de_marcos_niveis_8_a_17
+base_nivel: 7
+ultimo_nivel: 17
+neutralizacoes_necessarias: 10
+ordem_dos_membros: livre
+regra_nivel: nivel_desbloqueado = base_nivel + quantidade_de_membros_unicos_neutralizados
+faixa_niveis:
+- 8
+- 9
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+- 16
+- 17
+tipos_duraveis:
+- morte_confirmada
+- prisao_ou_confinamento_estavel
+- incapacitacao_duravel
+- ruptura_definitiva_com_masao
+- expulsao_ou_exilio_operacional
+nao_conta:
+- derrota_temporaria
+- fuga_do_encontro
+- objetivo_frustrado
+- ferimento_sem_incapacitacao_duravel
+- exposicao_de_identidade_ou_plano
+- primeiro_contato
+- sobrevivencia_ao_duelo
+regras:
+  um_membro_so_conta_uma_vez: true
+  neutralizacao_nao_exige_morte: true
+  resultado_precisa_ser_canonico_e_duravel: true
+  fonte_e_evidencia_literal_obrigatorias: true
+  simples_vitoria_em_cena_nao_conta: true
+  ordem_de_neutralizacao_nao_e_trilho: true
+  aparicao_nao_define_ordem_de_progressao: true
+  nenhuma_neutralizacao_retroativa_na_instalacao: true
+  kurobane_frustrado_antes_da_task_nao_conta: true
+  retorno_futuro_nao_revoga_nivel_ja_conquistado: true
+  retorno_futuro_nao_permite_contar_o_mesmo_membro_de_novo: true
+  niveis_8_a_17_usam_esta_espinha: true
+  outros_marcos_na_faixa_nao_substituem_neutralizacao: true
+  nivel_mecanico_nao_e_aplicado_automaticamente: true
+  aplicacao_mecanica_segue_regras_progressao: true
+  depois_do_nivel_17_progressao_geral_reassume: true
+membros:
+  kurobane_jinzaburo:
+    nome: Kurobane Jinzaburō
+    circulo: externo
+  pan_chu:
+    nome: Pan Chu
+    circulo: externo
+  sawagejo_cho:
+    nome: Sawagejō Chō
+    circulo: externo
+  kajiwara_shizune:
+    nome: Kajiwara Shizune
+    circulo: externo
+  yukyuzan_anji:
+    nome: Yūkyūzan Anji
+    circulo: meio
+  uonuma_usui:
+    nome: Uonuma Usui
+    circulo: meio
+  kureha_shiranui:
+    nome: Kureha Shiranui
+    circulo: meio
+  amagiri_seishiro:
+    nome: Amagiri Seishirō
+    circulo: interno
+  wetuji:
+    nome: Wetuji
+    circulo: interno
+  fuji:
+    nome: Fuji
+    circulo: interno
