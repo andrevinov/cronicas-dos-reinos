@@ -1,0 +1,40 @@
+schema_orcamento_presenca_incidental: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Permitir coincidências plausíveis com NPCs recorrentes sem scheduler, estado
+  próprio, scan, fragmento narrativo ou deslocamento de candidatos contextuais já
+  selecionados.
+limites:
+  max_perfis: 8
+  perfis_iniciais: 5
+  max_candidatos_por_cena: 1
+  divisor_janela: 4
+  slots_ativos: 1
+  max_locais_por_perfil: 2
+  max_periodos_por_local: 4
+  max_motivos_por_local: 4
+  max_fontes_adicionais_com_now_explicito: 1
+  max_fontes_adicionais_sem_now_explicito: 2
+  max_fragmentos_narrativos_selecao: 0
+  max_escritas_repo: 0
+  max_estados_novos: 0
+  max_schedulers_novos: 0
+  max_scans_repo: 0
+integracao_contextual:
+  max_presencas_total_preservado: 2
+  max_candidatos_total_preservado: 4
+  incidental_nunca_desloca_candidato_anterior: true
+  incidental_entra_depois_de_presenca_contextual: true
+invariantes:
+  candidato_nao_e_presenca: true
+  candidato_nao_cria_acao: true
+  candidato_nao_cria_dialogo: true
+  candidato_nao_cria_conhecimento: true
+  candidato_nao_dispara_encontro: true
+  candidato_nao_dispara_sidequest: true
+  janela_independe_de_scene_id: true
+  local_precisa_ser_canonico: true
+  ancora_precisa_existir_em_fonte_canonica: true
+  motivo_precisa_ser_compativel_com_ecologia: true
+  canon_forte_prevalece: true
+  configuracao_e_tempo_participam_do_fingerprint_quando_consultados: true
