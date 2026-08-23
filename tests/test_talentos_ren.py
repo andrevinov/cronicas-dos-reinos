@@ -53,9 +53,15 @@ class RenFeatCanonTest(unittest.TestCase):
 
     def test_observant_escolhe_inteligencia_sem_buff_de_combate_indireto(self):
         attrs = self.sheet["atributos"]
-        self.assertEqual((attrs["inteligencia"]["valor"], attrs["inteligencia"]["modificador"]), (14, 2))
+        self.assertEqual(
+            (attrs["inteligencia"]["valor"], attrs["inteligencia"]["modificador"]),
+            (14, 2),
+        )
         self.assertEqual(attrs["inteligencia"]["bonus_salvaguarda"], 2)
-        self.assertEqual((attrs["sabedoria"]["valor"], attrs["sabedoria"]["modificador"]), (17, 3))
+        self.assertEqual(
+            (attrs["sabedoria"]["valor"], attrs["sabedoria"]["modificador"]),
+            (17, 3),
+        )
         self.assertEqual(self.sheet["combate"]["classe_de_armadura"]["valor"], 17)
         self.assertEqual(self.sheet["recursos_de_classe"]["ki"]["cd"], 14)
 
@@ -63,7 +69,10 @@ class RenFeatCanonTest(unittest.TestCase):
         attrs = self.sheet["atributos"]
         skills = self.sheet["pericias"]
         senses = self.sheet["sentidos"]
-        self.assertEqual((attrs["carisma"]["valor"], attrs["carisma"]["modificador"]), (11, 0))
+        self.assertEqual(
+            (attrs["carisma"]["valor"], attrs["carisma"]["modificador"]),
+            (11, 0),
+        )
         self.assertEqual(skills["investigacao"], 5)
         self.assertEqual(skills["percepcao"], 6)
         for skill in ("historia", "religiao", "arcana", "natureza"):
@@ -74,9 +83,22 @@ class RenFeatCanonTest(unittest.TestCase):
         self.assertEqual(senses["investigacao_passiva"], 20)
         self.assertEqual(senses["intuicao_passiva"], 16)
 
-    def test_decisao_proibe_reescrever_o_passado(self):
+    def test_actor_aceita_identidade_inventada_e_separa_mimetismo(self):
+        actor = self.sheet["talentos"]["actor"]
+        self.assertIn("pessoa diferente de Ren Kagehira", actor["vantagem_outra_identidade"])
+        self.assertIn("Shinta Ryoushi", actor["identidades_validas"])
+        self.assertIn("inventada", actor["identidades_validas"])
+        self.assertIn("pessoa real específica", actor["identidades_validas"])
+        self.assertIn("benefício separado", actor["observacao"])
+        self.assertIn("não é pré-requisito", actor["observacao"])
+        self.assertIn("assumidamente como Ren", actor["observacao"])
+
+    def test_decisao_congela_gatilho_e_proibe_reescrever_o_passado(self):
         text = (ROOT / "regras/decisoes.md").read_text(encoding="utf-8")
         self.assertIn("DEC-0007", text)
+        self.assertIn("pessoa diferente de Ren Kagehira", text)
+        self.assertIn("Shinta Ryoushi", text)
+        self.assertIn("A vantagem e o mimetismo são benefícios separados", text)
         self.assertIn("não reescrevem cenas, rolagens, descobertas ou falhas já canonizadas", text)
         self.assertIn("não consomem o talento Móvel", text)
 
@@ -100,16 +122,26 @@ class RenFeatRollerTest(unittest.TestCase):
         self.assertEqual(core.REN_PASSIVES["percepcao"], 21)
         self.assertEqual(core.REN_PASSIVES["investigacao"], 20)
 
-    def test_actor_so_entra_quando_impersonacao_e_declarada(self):
+    def test_actor_so_entra_quando_outra_identidade_e_declarada(self):
+        # Sem a declaração contextual, representa uma mentira feita assumidamente
+        # como Ren: Actor não deve inventar vantagem.
         normal, _ = roller.prepare_argv(["ren", "pericia", "enganacao"])
         self.assertNotIn("--vantagem", normal)
+
+        # A flag representa que o teste serve para estabelecer/sustentar uma
+        # pessoa diferente de Ren — inclusive uma identidade inventada como Shinta.
         actor, _ = roller.prepare_argv(
             ["ren", "pericia", "enganacao", roller.ACTOR_FLAG]
         )
+        self.assertEqual(roller.ACTOR_FLAG, "--actor-outra-identidade")
         self.assertIn("--vantagem", actor)
         self.assertNotIn(roller.ACTOR_FLAG, actor)
 
-    def test_actor_funciona_para_atuacao_mas_nao_outras_pericias(self):
+    def test_actor_funciona_para_atuacao_de_identidade_mas_nao_performance_comum(self):
+        # Atuação comum, sem tentativa de passar-se por outra pessoa, não ganha Actor.
+        normal, _ = roller.prepare_argv(["ren", "pericia", "atuacao"])
+        self.assertNotIn("--vantagem", normal)
+
         actor, _ = roller.prepare_argv(
             ["ren", "pericia", "atuacao", roller.ACTOR_FLAG]
         )
@@ -154,7 +186,7 @@ class RenFeatRollerTest(unittest.TestCase):
             text = stdout.getvalue()
             self.assertIn("d20 com vantagem [4, 17] -> 17", text)
             self.assertIn("Sucesso", text)
-            self.assertIn("Actor: vantagem de impersonação aplicada", text)
+            self.assertIn("Actor: vantagem por outra identidade aplicada", text)
         finally:
             roller._core.RNG = old_rng
 
@@ -185,13 +217,18 @@ class RenFeatRollerTest(unittest.TestCase):
 
 
 class RenFeatHotContextTest(unittest.TestCase):
-    def test_runtime_quente_expoe_capacidades_sem_abrir_ficha(self):
+    def test_runtime_quente_expoe_gatilho_sem_ambiguidade(self):
         runtime = yaml.safe_load(
             (ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8")
         )
         cap = runtime["capacidades_contextuais"]
+        actor = cap["actor"]
         self.assertEqual(cap["passivos"], {"percepcao": 21, "investigacao": 20})
-        self.assertEqual(cap["actor"]["flag_rolagem"], "--actor-impersonacao")
+        self.assertEqual(actor["flag_rolagem"], "--actor-outra-identidade")
+        self.assertEqual(actor["vantagem_outra_identidade"], ["enganacao", "atuacao"])
+        self.assertIn("real ou inventada", actor["gatilho"])
+        self.assertIn("Shinta Ryoushi", actor["gatilho"])
+        self.assertIn("não é pré-requisito", actor["mimetismo_separado"])
         self.assertIn("leitura_labial", cap["observant"])
 
     def test_l1_nao_descarta_actor_observant(self):
@@ -199,19 +236,22 @@ class RenFeatHotContextTest(unittest.TestCase):
             (ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8")
         )
         compact = politica_acesso._compact_l1_result(runtime)
+        actor = compact["capacidades_contextuais"]["actor"]
         self.assertEqual(
             compact["capacidades_contextuais"]["passivos"]["percepcao"], 21
         )
-        self.assertEqual(
-            compact["capacidades_contextuais"]["actor"]["flag_rolagem"],
-            "--actor-impersonacao",
-        )
+        self.assertEqual(actor["flag_rolagem"], "--actor-outra-identidade")
+        self.assertIn("Shinta Ryoushi", actor["gatilho"])
 
     def test_retomada_carrega_capacidades_no_mesmo_pacote(self):
         snapshot = retomada_cronica.current_snapshot(ROOT)
         cap = snapshot["capacidades_contextuais"]
         self.assertEqual(cap["passivos"]["investigacao"], 20)
-        self.assertEqual(cap["actor"]["vantagem_impersonacao"], ["enganacao", "atuacao"])
+        self.assertEqual(
+            cap["actor"]["vantagem_outra_identidade"],
+            ["enganacao", "atuacao"],
+        )
+        self.assertIn("inventada", cap["actor"]["gatilho"])
 
 
 if __name__ == "__main__":
