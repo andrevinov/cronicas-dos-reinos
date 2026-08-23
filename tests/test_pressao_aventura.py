@@ -199,10 +199,11 @@ class AdventurePressureIntegrationTest(unittest.TestCase):
         )
         self.assertEqual(result["fontes_lidas"], preview["fontes_lidas"])
 
-    def test_status_real_comeca_sem_seca_retroativa(self):
+    def test_status_real_reflete_historico_persistido_sem_retroatividade(self):
+        state = micro.load_state(ROOT, micro.load_index(ROOT))
+        expected = pressure.status_from_history(list(state.get("historico_recente") or []))
         result = pressure.status(ROOT)
-        self.assertEqual(result["pressao_aventura"]["nivel"], 0)
-        self.assertEqual(result["pressao_aventura"]["cenas_secas_consecutivas"], 0)
+        self.assertEqual(result["pressao_aventura"], expected)
         self.assertEqual(
             result["fontes_lidas"],
             [micro.INDEX.as_posix(), micro.STATE.as_posix()],
