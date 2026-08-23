@@ -1,0 +1,382 @@
+schema_eventos_canonicos_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+principio: >-
+  A Parte 1 continua aberta, reativa e apoiada pelo Mundo Vivo, mas possui uma espinha
+  canônica datada. Na data de ativação, o núcleo do acontecimento deve entrar no mundo
+  salvo impossibilidade causal real já produzida pelo jogo. Forma, caminho até a cena,
+  decisões de Ren, testes necessários e resultado final continuam emergentes.
+regras:
+  data_e_ativacao:
+    datas_sem_hora: a hora 06:00 é somente a fronteira determinística em que o evento se torna devido; não prescreve a hora diegética da cena
+    data_com_hora: quando houver hora canônica explícita, ela deve ser respeitada dentro da tolerância causal normal
+  prioridade:
+    evento_devido_pode_interromper_rotina: true
+    evento_devido_pode_fechar_temporariamente_outras_linhas: true
+    coexistencia_com_outros_eventos: permitida_quando_causalmente_compativel
+    regra: >-
+      Quando um evento está devido, o narrador deve procurar a primeira forma plausível de
+      materializar seu núcleo antes de permitir que rotina, side quest ou plano voluntário
+      de Ren empurre o acontecimento para fora do horizonte dramático.
+  impossibilidade:
+    criterio: impossibilidade_causal_real
+    nao_basta:
+    - inconveniência para a linha que Ren queria seguir
+    - falta de um teste de Percepção ou Enganação que só serviria para autorizar o evento
+    - o narrador preferir esperar oportunidade mais elegante
+    - Ren não ter tomado iniciativa relacionada
+    atraso: >-
+      Se a forma preferencial for impossível, adaptar a forma preservando o núcleo. Se o
+      próprio núcleo estiver temporariamente impossível, manter a pendência aberta; a
+      pressão aumenta no dia seguinte em vez de transformar o evento em no-op.
+  testes:
+    regra: >-
+      Fatos autorais já ganhos por vigilância, preparação, estrutura institucional ou
+      capacidade da rede não exigem rolagem só para existirem. Testar apenas incertezas
+      relevantes dentro do acontecimento: perceber detalhe oculto, resistir, vencer luta,
+      escapar, provar algo, salvar alguém ou obter vantagem adicional.
+  agencia_de_ren:
+    nunca_escrever_decisao_do_jogador: true
+    mundo_pode_forcar_situacao: true
+    mundo_pode_criar_urgencia_e_custo_real: true
+    escolhas_reservadas_ao_jogador:
+    - acompanhar ou resistir a um convite quando houver alternativa física real
+    - render-se, fugir, atacar, negociar ou investigar
+    - poupar ou matar adversário derrotado
+    - acreditar ou não em personagem
+    - escolher método de infiltração ou combate
+  conhecimento:
+    acontecer_nao_notifica_ren: true
+    fonte: narrador/arcos/parte_1/descoberta-e-consequencias.yaml
+  resolucao_operacional: >-
+    A pendência temporal é concluída quando o núcleo do evento entrou canonicamente em
+    jogo por transação de mundo. Isso não significa que a aventura terminou: um evento
+    pode continuar por muitos turnos ou atravessar dias, e seu desfecho deve ser persistido
+    pelos mecanismos normais da sessão.
+  fim_do_arco: >-
+    A sequência culmina em 11 Eleint com descoberta material da Ponte, primeiro encontro
+    de Ren com Masao e perda do controle exclusivo de Masao sobre a passagem. O resultado
+    pode ser terrível para Ren; terminar a Parte 1 não exige vitória limpa, morte de todos
+    os antagonistas nem captura de Shizune.
+
+conhecimento_progressivo_da_rede:
+- a_partir_de: 16 Eleasis, 1372 DR
+  fato: A rede sabe que o homem de aparência trabalhadora que passa diariamente pela rota observada é Ren Kagehira.
+  limite: Ainda não decorre daí saber onde ele trabalha, onde dorme, que é Kage ou quais vínculos protege.
+- a_partir_de: 18 Eleasis, 1372 DR
+  fato: A rede pode consolidar que Shinta da Galeria dos Escribas é Ren Kagehira, caso isso ainda não tenha emergido antes por causa canônica equivalente.
+  limite: Identidade profissional não entrega automaticamente circo, Kage ou todos os aliados.
+- a_partir_de: 7 Eleint, 1372 DR
+  fato: A rede possui informação suficiente para ligar Ren, Shinta, Kage e o circo e para Chō explorar publicamente essas compartimentações.
+  limite: Conhecimento de cada vínculo pessoal ainda precisa de rastro causal; este marco não concede onisciência sobre toda relação de Ren.
+
+preparacoes_canonicas_fora_de_cena:
+- ate: 26 Eleasis, 1372 DR
+  fato: A escalada no porto já produziu pedido, autorização ou mobilização suficientes para que três fragatas de Cormyr possam alcançar Ravens Bluff em 29 Eleasis sem surgirem do nada.
+  conhecimento_de_ren: não automático
+
+
+eventos:
+  emboscada_do_restaurante:
+    titulo: A velha e os três homens
+    agendamento_id: canon_parte1_16_eleasis_emboscada
+    ativacao: {data: 16 Eleasis, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Uma senhora aborda Ren em sua rota habitual sob disfarce de trabalhador e pede ajuda ao rapaz forte para recolocar a placa pesada de um restaurante.
+    - A abordagem é uma operação preparada: a rede já identificou que aquele trabalhador recorrente é Ren Kagehira.
+    - Ren é levado ou pressionado a lidar com três homens de organização criminosa kozakurana semelhante à yakuza dentro ou imediatamente ao redor do restaurante.
+    - Pelo menos um dos três deve ser um desafio individual sério, aproximadamente referência de nível 4; os outros podem ser claramente inferiores.
+    forma_preferencial:
+    - Se Ren percebe a intenção e se recusa a entrar, a velha segura sua mão e diz que ele não quer envolver as pessoas na rua, chamando-o de Ren Kagehira.
+    - O confronto ocorre dentro do restaurante, longe da multidão.
+    guardrails:
+    - Não exigir teste para a rede reconhecer o disfarce que já observou repetidamente.
+    - A rede ainda não sabe automaticamente que Ren trabalha na Galeria dos Escribas.
+    - Não escrever que Ren entra voluntariamente; se ele resiste, a ameaça aos transeuntes cria pressão, não controle mental.
+    - Os atacantes não precisam conhecer a Ponte, comando superior ou todos os motivos da operação.
+
+  shinta_incriminado:
+    titulo: O documento desaparecido da Galeria
+    agendamento_id: canon_parte1_18_eleasis_shinta
+    ativacao: {data: 18 Eleasis, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Um documento realmente importante desaparece de dentro da Galeria dos Escribas e Shinta é incriminado de forma plausível.
+    - Luath entra no caso e reconhece Shinta como Ren; o procedimento pode exigir custódia provisória, mas a confiança operacional anterior continua existindo.
+    - A acusação é explorada por uma tentativa séria de assassinar Ren ou eliminá-lo enquanto ele está institucionalmente vulnerável.
+    - Depois do episódio, Luath possui fundamento para perceber que a acusação e a vulnerabilidade de custódia foram usadas como parte de uma operação contra Ren.
+    forma_preferencial:
+    - Se Ren coopera com a custódia, um homem com chaves válidas ou convincentes entra na área das celas e tenta matá-lo; o combate na cela deve ser desafio real.
+    guardrails:
+    - Não obrigar Ren a render-se, permanecer preso ou escolher fuga.
+    - Se a cena exata da cela se tornar impossível por escolha de Ren ou condição do mundo, deslocar a tentativa de assassinato para outra vulnerabilidade diretamente criada pela acusação sem apagar o núcleo.
+    - A partir daqui a rede pode conhecer Galeria e Shinta como parte da identidade operacional de Ren.
+
+  halessa_admite_a_teia:
+    titulo: Halessa deixa Tyr para falar sem paredes
+    agendamento_id: canon_parte1_19_eleasis_halessa
+    ativacao: {data: 19 Eleasis, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Halessa procura Ren e tenta levá-lo para uma conversa fora da Casa de Tyr com uma desculpa deliberadamente ruim; seu nervosismo é perceptível, não um teste necessário para a cena existir.
+    - Ela informa que Sirrus produziu ou está prestes a produzir parecer inconclusivo sobre as provas ligadas à Red Sail, e que Velis ainda não foi formalmente absolvido, mas está perto disso.
+    - Novos documentos e ordens entraram na cadeia, inclusive material que Halessa não conseguiu inspecionar; ela teme que Sirrus encerre em breve a investigação.
+    - Halessa passa a tratar Shizune como explicação provável para a manipulação administrativa, reconhecendo que a hipótese de Ren ganhou peso.
+    - Halessa promete permanecer vigilante e avisar Ren se Velis for absolvido.
+    forma_preferencial:
+    - A conversa ocorre andando pelas ruas para reduzir o risco de paredes, registros e ouvintes de Tyr.
+    guardrails:
+    - Halessa já conhecia a hipótese Shizune; não narrar que só agora ouviu ou começou do zero a acreditar nela.
+    - Sirrus deve poder estar sendo enganado ou cercado por documentação, não comprado ou secretamente aliado de Masao sem novo fato canônico.
+    - Ren pode recusar acompanhá-la; nesse caso Halessa precisa encontrar outra forma urgente e plausível de transmitir o núcleo.
+
+  arsenal_da_night_watch:
+    titulo: O arsenal e o estandarte da Night Watch
+    agendamento_id: canon_parte1_20_eleasis_arsenal
+    ativacao: {data: 20 Eleasis, 1372 DR, hora: '06:00'}
+    janela: pode_durar_um_ou_mais_dias
+    nucleo_obrigatorio:
+    - O arsenal da Night Watch é roubado e as pistas materiais apontam para uma seção de Sarbreen.
+    - Entre os itens levados está um estandarte mágico associado à fundação da Night Watch; sua perda causa crise real de moral.
+    - Luath pede ajuda a Ren para acompanhar uma equipe numa incursão em Sarbreen para recuperar armas e estandarte.
+    - A seção contém armadilhas, recompensas ou achados úteis, capangas de Masao em vários graus de competência e uma criatura perigosa colocada para guardar o núcleo do saque.
+    forma_preferencial:
+    - A incursão funciona como dungeon curta com progressão espacial e retorno possível, não como uma única rolagem abstrata.
+    guardrails:
+    - Não obrigar Ren a aceitar a missão; a crise existe mesmo sem ele e a Night Watch tenta agir.
+    - O estandarte não concede bônus global abstrato a toda a guarda da cidade.
+    - Referência mecânica preferencial do estandarte: enquanto erguido por membro da Night Watch, aliados da Night Watch a até 30 pés recebem +2 em salvaguardas contra amedrontado e enfeitiçado; o valor simbólico pode ser maior que o bônus.
+    - A criatura guardiã deve desafiar o grupo disponível, não existir para matar Ren por decreto.
+
+  veneno_em_tyr:
+    titulo: O livro envenenado e a escriturária impossível
+    agendamento_id: canon_parte1_22_eleasis_veneno
+    ativacao: {data: 22 Eleasis, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Uma pessoa de Tyr desaparecida em 21 Eleasis é confirmada morta em 22 Eleasis; a causa é envenenamento e a exposição ocorreu dentro de Tyr.
+    - Halessa pede que Ren investigue por dentro sob identidade de enviado especial ou cobertura institucional equivalente.
+    - A primeira explicação plausível aponta para comida e coloca a cozinheira em posição suspeita, mas o vetor real é veneno aplicado na dobra de uma página do livro que a vítima manuseava diariamente.
+    - Uma escriturária tenta remover ou fazer desaparecer o livro; ela é Kajiwara Shizune sob identidade de cobertura.
+    - Se Shizune é encurralada, Kurobane e outros homens preparados podem tentar extrair Shizune e o livro, com sucesso ou fracasso decidido pelo jogo.
+    forma_preferencial:
+    - Ren descobre a verdade por investigação material, comportamento da escriturária e relação entre hábito da vítima e a página contaminada.
+    guardrails:
+    - Não exigir que Ren seja enganado pela pista da cozinha; ela deve ser forte o bastante para existir, não inevitável.
+    - Shizune pode ser capturada, neutralizada, escapar ou permanecer livre em Ravens Bluff.
+    - Este evento encerra somente a obrigação canônica de Shizune na Parte 1. Se ela continuar disponível, o Mundo Vivo pode usá-la normalmente depois de 22 Eleasis.
+    - Não criar compromisso de eliminar, expulsar ou retirar Shizune de Ravens Bluff.
+    - Recompensa ou marco por vencer Shizune só existe se Ren efetivamente realizar feito que a justifique; sobreviver ao calendário não concede progresso por ela.
+
+  pessoas_sem_porto_e_ken:
+    titulo: Pessoas sem porto e Ken Takakura
+    agendamento_id: canon_parte1_25_eleasis_pessoas_ken
+    ativacao: {data: 25 Eleasis, 1372 DR, hora: '06:00'}
+    janela: pode_durar_um_ou_mais_dias
+    nucleo_obrigatorio:
+    - Ren percebe pela primeira vez que rostos de Kozakura e de outras partes de Kara-Tur deixaram de ser raridade absoluta em Ravens Bluff.
+    - Alguns recém-chegados afirmam ter vindo de navio na noite anterior, mas uma investigação suficiente mostra que pelo menos parte deles não possui desembarque marítimo coerente.
+    - Ken Takakura, artista marcial estrangeiro e não ligado a Masao, procura Kage no circo porque acredita que ele é artista marcial de sua terra e quer desafiá-lo formalmente.
+    - Ken é aproximadamente monge de nível 6 e busca um duelo marcial, não assassinato.
+    forma_preferencial:
+    - Se o circo nega sua entrada, Ken força passagem sem matar nem ferir gravemente, dominando e imobilizando quem tenta contê-lo.
+    - Ken aceita lutar na lona grande sob acordo de que, se perder, deixará Ren e o circo em paz para sempre.
+    guardrails:
+    - Nem todo kozakurano ou karaturano recém-chegado serve Masao; preservar comércio, migração, curiosidade e pessoas independentes.
+    - Ren pode acreditar inicialmente que Ken serve Masao, mas o mundo deve conter meios reais de descobrir que isso é falso.
+    - Não obrigar Ren a aceitar o duelo; a insistência de Ken cria situação, não decisão do jogador.
+    - O aumento de estrangeiros deve alimentar o marco pessoas_sem_porto sem, sozinho, provar a Ponte.
+
+  chegada_de_shen_meihua:
+    titulo: Shen Meihua entra na guerra
+    agendamento_id: canon_parte1_26_eleasis_shen
+    ativacao: {data: 26 Eleasis, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Shen Meihua aparece diretamente na vida de Ren; ela já estava em Ravens Bluff havia algum tempo.
+    - Ela assistiu ou obteve observação suficiente de Kage para reconhecer sinais Kagehira e sabe que Masao representa uma ameaça que também quer deter.
+    - Shen oferece conhecimento, medicina e inteligência em vez de resolver a guerra por Ren.
+    forma_preferencial:
+    - Se Ren saiu ferido da luta com Ken, Shen cuida de suas feridas e usa isso como primeira abertura de confiança.
+    guardrails:
+    - A aparição de Shen é canônica mesmo se Ren não estiver ferido; tratamento médico é forma preferencial, não pré-condição.
+    - Shen não deve derrotar Juppongatana por Ren nem roubar sua agência.
+    - Sem exigir que Ren saiba, até o fim deste dia a mobilização naval que explica a chegada de Cormyr em 29 Eleasis já precisa existir no mundo.
+
+  chegada_golden_lily:
+    titulo: O Lírio Dourado entra em Ravens Bluff
+    agendamento_id: chegada_golden_lily_27_eleasis
+    ativacao: {data: 27 Eleasis, 1372 DR, hora: '10:00'}
+    janela: hora_canonica_aproximada
+    nucleo_obrigatorio:
+    - O Golden Lily alcança Ravens Bluff por volta de 10:00 salvo fato causal anterior que tenha tornado a viagem fisicamente impossível.
+    - O navio é enorme mesmo para os padrões de Ravens Bluff, fortemente armado e imediatamente passa a integrar a paisagem urbana do porto.
+    - Enviados de Pan Chu apresentam a embarcação como navio de comércio que veio comprar e vender; essa atividade comercial é real, ainda que também forneça cobertura à rede de Masao.
+    forma_preferencial:
+    - A chegada é vista primeiro como espetáculo portuário e oportunidade econômica antes que toda sua ameaça fique evidente.
+    guardrails:
+    - Ren não precisa estar no porto nem recebe a notícia automaticamente.
+    - A chegada não prova a Ponte e nem toda carga do navio é ilícita.
+
+  feira_oriental_do_porto:
+    titulo: O porto vira uma feira estrangeira
+    agendamento_id: canon_parte1_28_eleasis_feira
+    ativacao: {data: 28 Eleasis, 1372 DR, hora: '06:00'}
+    janela: dia_inteiro
+    nucleo_obrigatorio:
+    - O distrito do porto é tomado por atividade estrangeira intensa: tecidos, especiarias, livros, serviços, objetos curiosos e itens mágicos aparecem em bancas, armazéns e negociações.
+    - Moradores, mercadores e curiosos de Ravens Bluff vêm em grande número para comprar, vender e trocar.
+    - Pelo menos oito brigas, tumultos ou ocorrências relevantes exigem intervenção ao longo do dia, mantendo a Night Watch sobrecarregada.
+    forma_preferencial:
+    - A cidade experimenta simultaneamente fascínio econômico e atrito social; o porto parece vivo, não apenas ocupado militarmente.
+    guardrails:
+    - Muitos estrangeiros devem ser comerciantes, artesãos, viajantes ou trabalhadores legítimos sem vínculo com Masao.
+    - Não transformar etnia ou origem em marcador automático de culpa.
+    - A sobrecarga da Night Watch deve alimentar desgaste da autoridade por consequência observável.
+
+  cerco_naval_de_cormyr:
+    titulo: Três fragatas e o refém chamado Ravens Bluff
+    agendamento_id: canon_parte1_29_eleasis_cormyr
+    ativacao: {data: 29 Eleasis, 1372 DR, hora: '06:00'}
+    janela: pode_durar_varios_dias
+    nucleo_obrigatorio:
+    - Três fragatas de Cormyr chegam ao porto após mobilização já estabelecida e exigem a retirada imediata do Golden Lily.
+    - Pan Chu se recusa e dispara contra uma das fragatas de modo a demonstrar que aceitar coerção custará sangue.
+    - Quando Cormyr se prepara para responder, Pan Chu atira contra Ravens Bluff e derruba um monumento conhecido, causando poucas mortes civis e feridos suficientes para tornar a ameaça inequívoca.
+    - A mensagem estratégica é clara: bombardear o Golden Lily pode significar que Pan Chu descarregará seus canhões sobre a cidade.
+    - Enquanto Pan Chu permanecer no comando e capaz de cumprir a ameaça, as fragatas permanecem na região sem atacar o Golden Lily.
+    forma_preferencial:
+    - Oficiais cormyrianos desembarcam, conversam com Night Watch e autoridades, traçam planos, avaliam evacuação e bloqueio e transformam o impasse em fonte contínua de exaustão para Luath.
+    guardrails:
+    - Cormyr não desaparece depois da demonstração; a força permanece como pressão estratégica inerte, não solução automática.
+    - Os oficiais podem planejar e pressionar, mas não iniciam bombardeio enquanto julgarem provável massacre de civis.
+    - Se Pan Chu for completamente derrotado, o capitão sucessor pode manter o navio por poucos dias e então tentar fugir; qualquer represália futura de Masao contra ele pertence a outro fato, não é automática aqui.
+    - A escala da destruição deve ser suficiente para chantagear a cidade, não para arrasar Ravens Bluff por espetáculo.
+
+  casa_de_cha_e_drogas:
+    titulo: A droga proibida e os trilhos de Sarbreen
+    agendamento_id: canon_parte1_30_eleasis_drogas
+    ativacao: {data: 30 Eleasis, 1372 DR, hora: '06:00'}
+    janela: pode_durar_um_ou_mais_dias
+    nucleo_obrigatorio:
+    - Luath mostra a Ren uma droga que ele reconhece como kozakurana, altamente viciante e proibida em sua terra; vendedores já foram presos em Ravens Bluff.
+    - Luath pede investigação discreta de uma casa de chá estrangeira que parece ser ponto central de distribuição, preferindo não envolver a guarda de imediato.
+    - O local contém agentes de Masao e homens ligados a Pan Chu, além de carga de drogas destinada a desaparecer em Sarbreen.
+    - Um ninja competente de estilo não ortodoxo protege a retirada no fundo do complexo e oferece combate sério a Ren.
+    - Enquanto o especialista segura Ren, Kurobane e capangas carregam caixas em pequenas carroças sobre trilhos antigos que entram em Sarbreen; quanto mais cedo a resistência é quebrada, maior a fração de carga que pode permanecer para apreensão.
+    forma_preferencial:
+    - Capangas aceitam se sacrificar ou atrasar Ren para garantir a fuga de Kurobane e da carga restante.
+    guardrails:
+    - Os trilhos são infraestrutura antiga reaproveitada de Sarbreen, não tecnologia convenientemente inventada naquele instante.
+    - Não garantir vitória de Ren contra o ninja nem captura de Kurobane.
+    - Kurobane prioriza extração e fuga, coerente com sua função; não deve abandonar o objetivo para oferecer duelo justo.
+
+  sequestro_de_kethra:
+    titulo: Kethra no Golden Lily
+    agendamento_id: canon_parte1_01_eleint_kethra
+    ativacao: {data: 1 Eleint, 1372 DR, hora: '06:00'}
+    janela: prazo_ate_a_noite
+    nucleo_obrigatorio:
+    - Kethra é sequestrada e levada para o Golden Lily; rastros já acumulados até aqui sustentam que a rede conseguiu chegar até ela.
+    - Sella presencia ou obtém conhecimento direto do sequestro, tenta intervir e é poupada deliberadamente para transmitir uma mensagem a Ren.
+    - A mensagem informa que Kethra está com Pan Chu no Golden Lily e estabelece que Ren deve se entregar no navio até a noite de 1 Eleint se quiser mantê-la viva.
+    - Kethra está amarrada na cabine de Pan Chu quando Ren tem oportunidade de alcançá-la; infiltração, negociação, combate e outras abordagens permanecem abertas.
+    forma_preferencial:
+    - Sella pode procurar Ren diretamente ou informar Colm quando ele volta do Fire River e procura Kethra; Colm então tenta chegar até Ren.
+    guardrails:
+    - A mensagem pode encontrar Ren na Galeria, na rua ou em outro ponto que Sella/Colm conheçam causalmente, mas não deve ser entregue no circo; a rede ainda não ganha essa localização por conveniência.
+    - Não obrigar Ren a embarcar, render-se ou escolher abordagem específica.
+    - Derrotar Pan Chu não faz o Golden Lily desaparecer automaticamente do porto.
+    - Se Pan Chu já estiver morto ou incapaz por fato anterior, preservar núcleo do sequestro adaptando o carcereiro/comando sem ressuscitá-lo ou negar a consequência anterior.
+
+  cho_na_cela:
+    titulo: Sawagejō Chō pede para ver Ren
+    agendamento_id: canon_parte1_03_eleint_cho
+    ativacao: {data: 3 Eleint, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - Luath informa que a guarda prendeu no dia anterior um homem de Kozakura que afirma conhecer Ren e exige ou pede para vê-lo.
+    - O preso é Sawagejō Chō; esta é a primeira conversa direta entre ele e Ren.
+    - Chō não conhece Ren pessoalmente de antes, mas conhece sua fama, o nome Kagehira ou reputação marcial suficiente para avaliá-lo com curiosidade obsessiva.
+    forma_preferencial:
+    - Chō pode ter facilitado a própria prisão por arrogância, curiosidade ou decisão impulsiva, sem transformar a guarda inteira em incompetente.
+    guardrails:
+    - A cena é encontro e avaliação, não obrigação de duelo imediato.
+    - Esta entrada torna Chō elegível como presença recorrente da Parte 1, mas não libera membros posteriores da Juppongatana.
+
+  extracao_de_cho:
+    titulo: O rombo na sede da guarda
+    agendamento_id: canon_parte1_04_eleint_fuga_cho
+    ativacao: {data: 4 Eleint, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - A sede da guarda é atacada por força suficiente para abrir um grande rombo na área das celas e extrair Chō.
+    - A ruptura permite que outros criminosos escapem junto com ele, ainda que não fossem o objetivo estratégico original.
+    - Luath pede ajuda para recapturar fugitivos enquanto a Night Watch absorve novo golpe de autoridade e capacidade.
+    forma_preferencial:
+    - O ataque é rápido, preparado e voltado à extração de Chō; a fuga coletiva é consequência lateral cara para a cidade.
+    guardrails:
+    - Não apresentar Masao como alguém que gastou recursos para libertar criminosos aleatórios por bondade ou caos gratuito.
+    - Chō pode colaborar com a própria fuga e agir de modo que complique o plano de seus aliados.
+
+  duelo_publico_de_cho:
+    titulo: Chō desmonta as identidades de Ren em praça pública
+    agendamento_id: canon_parte1_07_eleint_duelo_cho
+    ativacao: {data: 7 Eleint, 1372 DR, hora: '06:00'}
+    janela: pode_ocupar_o_dia
+    nucleo_obrigatorio:
+    - Chō, acompanhado por capangas e por Kurobane se este estiver vivo e disponível, sequestra Tavin e exige uma luta pública com Ren em lugar central da cidade para devolvê-lo.
+    - A partir deste ponto a rede de Masao sabe o suficiente sobre o circo para usá-lo como vetor; isso não retroage para eventos anteriores.
+    - Durante a confrontação, Chō expõe publicamente as conexões entre Ren, Shinta da Galeria, Kage do circo, o incêndio da Red Sail e a atuação clandestina/vigilante de Ren, chamando-o de shinobi e assassino de Kozakura e acusando Tyr e Night Watch de protegê-lo.
+    - Ren recebe espaço real para responder, negar, contextualizar, acusar Masao ou deixar Chō falar; a multidão reage ao que efetivamente presencia e sabe.
+    - Tsukishiro Jōen entra canonicamente na vida de Ren neste dia: se Ren perde ou fica incapaz, Jōen intervém para impedir sua morte, salvar Tavin e levá-lo a Shen; se Ren vence, Jōen pode ter observado e se apresentar depois da luta.
+    forma_preferencial:
+    - Chō quer espetáculo e avaliação marcial mais do que eficiência estratégica, podendo atrapalhar Masao ao tornar o conflito público.
+    guardrails:
+    - Não escrever que Ren poupa Chō. Se Chō estiver derrotado em praça pública, matar o homem diante da multidão deve ter custo moral, legal e político enorme, mas a escolha final pertence ao jogador.
+    - Não garantir que a multidão acredite automaticamente em Ren ou Chō; reputação emerge do confronto, provas e comportamento visível.
+    - Jōen não deve resolver uma vitória que Ren já conquistou; sua aparição é obrigatória, sua intervenção física só é necessária se Ren/Tavin precisarem dela.
+
+  ataque_a_casa_da_aurora_menor:
+    titulo: A cidade sem guarda chega à Casa da Aurora Menor
+    agendamento_id: canon_parte1_09_eleint_aurora
+    ativacao: {data: 9 Eleint, 1372 DR, hora: '06:00'}
+    janela: ao_longo_do_dia
+    nucleo_obrigatorio:
+    - O nível de criminalidade de Ravens Bluff sobe de maneira visível após semanas de sobrecarga e perda de autoridade.
+    - A Casa da Aurora Menor é atacada ou sofre tentativa séria de invasão, colocando Maerra e pessoas sob sua proteção em perigo concreto.
+    - Ren recebe a crise por visão direta, mensageiro desesperado ou outro canal causal rápido o bastante para poder tentar intervir.
+    forma_preferencial:
+    - A cena mostra que o dano de Masao já produz ecologia criminosa própria: oportunistas percebem ruas e instituições menos protegidas.
+    guardrails:
+    - Os atacantes não precisam servir Masao e preferencialmente podem ser criminosos oportunistas explorando a fraqueza institucional.
+    - Não garantir que Ren chegue a tempo de impedir todo dano; dar oportunidade real, não resultado escrito.
+
+  descida_a_ponte_e_masao:
+    titulo: A Ponte, Masao e a Lâmina do Intervalo
+    agendamento_id: canon_parte1_11_eleint_final
+    ativacao: {data: 11 Eleint, 1372 DR, hora: '06:00'}
+    janela: final_da_parte_1_pode_durar_varios_turnos
+    nucleo_obrigatorio:
+    - Luath e Halessa apresentam ou consolidam com Ren a conclusão de que pessoas e material estão chegando a Ravens Bluff por uma passagem sob Sarbreen, não apenas pelo mar.
+    - Ren, Luath, soldados e aliados disponíveis descem pelos túneis em direção à infraestrutura física da Ponte; o grupo e método exatos podem variar conforme baixas, alianças e descobertas anteriores.
+    - Kurobane, Pan Chu e Chō que ainda estiverem vivos, livres, presentes e capazes podem defender setores ou rotas sucessivas. Nenhum morto é ressuscitado e nenhum capturado é libertado apenas para preencher sala.
+    - Ao final da progressão, Ren encontra Masao Hirasawa fisicamente pela primeira vez. Masao deixa claro que considera Ravens Bluff já incorporada ao próprio projeto e não acredita que Ren ou as forças locais tenham capacidade de detê-lo.
+    - Masao está acompanhado por Amagiri Seishirō. A presença de Seishirō é uma exceção canônica de revelação: não ativa o Círculo Interno como população normal da Parte 1.
+    - Masao parte sem tratar a Ponte como posição que valha defender a qualquer custo. Para ele, homens, dinheiro, especialistas, armas e infraestrutura importantes já atravessaram; manter monopólio ali tornou-se custo dispensável.
+    - Seishirō demonstra uma diferença de escala brutal, massacra parte substancial da força e tenta matar Ren. Ren pode tentar salvar Luath ou outra testemunha; se fisicamente possível, ao menos uma testemunha além de Ren deve sobreviver ao encontro para que a revelação não dependa apenas da palavra dele.
+    - Jōen, que não precisa ter descido com a expedição, chega para impedir que Seishirō mate seu discípulo e tornar possível a retirada ou sobrevivência dos remanescentes.
+    - Ao fim, a existência física da Ponte está estabelecida e Masao já não detém controle operacional exclusivo sobre ela, encerrando a Parte 1 mesmo que Ren tenha sofrido derrota grave.
+    forma_preferencial:
+    - Os Juppongatana externos sobreviventes defendem posições com objetivos concretos de atraso, extração ou proteção; não ficam parados em salas como chefes esperando Ren.
+    - Masao conversa com desprezo calmo, revela o suficiente de sua pretensão sobre a cidade para redefinir a escala do conflito e sai porque não considera necessário provar nada a Ren.
+    - Seishirō transforma a retirada em sobrevivência, não em boss fight balanceada.
+    guardrails:
+    - Não ativar Anji, Usui, Kureha, Wetuji ou Fuji só porque Seishirō apareceu.
+    - Não tratar Seishirō como encontro equilibrado para Ren nível atual; esta cena apresenta uma barreira impossível e o teto de ameaça futuro.
+    - Não obrigar Ren a abandonar Luath ou aliados nem escrever sua reação diante do massacre.
+    - A origem da Ponte permanece desconhecida. Tecnologia anã antiga pode ser hipótese de personagem ou pista futura, mas não é fato canônico neste arco.
+    - A passagem existe fisicamente e é poderosa/permanente no estado atual da campanha; sua engenharia, criador e história não são revelados aqui.
+    - Perda de controle exclusivo pode ocorrer porque Masao deliberadamente abandona a posição depois de obter o que queria; não exige que Ren o derrote pelo portal.
+    - Masao ainda pode tentar infiltrar, sabotar ou explorar a passagem em arcos futuros; fim da Parte 1 significa perda do monopólio, não purificação definitiva.
