@@ -1,0 +1,47 @@
+schema_orcamento_ecologia_transito_urbano: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Dar textura determinística a deslocamentos materiais por Ravens Bluff usando o
+  mesmo baralho de microeventos locais, sem cadastrar ruas, criar scheduler ou
+  acrescentar uma chamada operacional ao turno.
+limites:
+  max_novos_catalogos: 0
+  max_novos_arquivos_estado: 0
+  max_novos_schedulers: 0
+  max_novos_endpoints: 0
+  max_novos_algoritmos_baralho: 0
+  max_novos_rng: 0
+  max_chamadas_orquestracao_por_turno: 2
+  max_fontes_transito_preparar: 4
+  max_escritas_transito_preparar: 0
+  max_escritas_transito_confirmar: 1
+  max_fragmentos_narrativos_adicionais: 0
+  max_scans_repo_por_deslocamento: 0
+  max_historico_transito_recente: 16
+  max_candidatos_por_deslocamento: 1
+  ocorrencia_rotina: 3
+  ocorrencia_microevento: 1
+invariantes:
+  usa_cronica_preparar_concluir: true
+  usa_catalogo_microeventos_locais_existente: true
+  usa_estado_microeventos_locais_existente: true
+  usa_ordenamento_sha256_existente: true
+  usa_baralho_sem_reposicao_existente: true
+  transito_nao_e_local_canonico: true
+  nenhuma_rua_e_cadastrada_por_aproximacao: true
+  preparacao_e_read_only: true
+  confirmacao_consumo_unico: true
+  retry_mesma_cena_e_idempotente: true
+  frentes_pressao_apenas_filtram_textura: true
+  transito_nao_avanca_pressao: true
+  transito_nao_revela_causa_da_pressao: true
+  pressao_nao_altera_frequencia_3_para_1: true
+  historico_transito_nao_alimenta_pressao_de_seca_local: true
+  npc_nomeado_automatico: false
+  combate_automatico: false
+  quest_automatica: false
+  recompensa_automatica: false
+  pista_automatica: false
+  segredo_automatico: false
+  veto_por_canone_nao_rerrola: true
+  transito_e_gatilho_reativo_sao_tickets_separados: true
