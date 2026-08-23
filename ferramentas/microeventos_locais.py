@@ -4,6 +4,10 @@
 A camada só é acionada quando uma cena já possui gatilho local canônico. Ela usa
 um baralho de ocorrência (rotina/microevento) e um baralho de cartas filtrado pela
 ecologia do local. Sorteio é candidato operacional, não fato canônico.
+
+A Task 13 adiciona pressão global de seca derivada do próprio histórico recente:
+o baralho-base continua 3:1, mas algumas fichas de rotina podem ser promovidas
+quando muitas cenas locais seguidas não produziram sequer candidato de incidente.
 """
 from __future__ import annotations
 
@@ -21,6 +25,7 @@ import yaml
 
 import ecologia_local
 import locais
+import pressao_aventura
 
 INDEX = Path("narrador/microeventos-locais/index.yaml")
 STATE = Path("narrador/microeventos-locais/estado.yaml")
@@ -207,6 +212,28 @@ def _validate_deck(deck: Any, label: str, *, allowed: set[str], card_deck: bool)
     return deck
 
 
+def _validate_pressure_history(item: dict[str, Any], label: str) -> None:
+    base = item.get("resultado_base")
+    pressure = item.get("pressao_aventura")
+    if base is None and pressure is None:
+        return
+    if base not in VALID_RESULTS:
+        raise LocalMicroeventError(f"{label}.resultado_base inválido")
+    pressure = _map(pressure, f"{label}.pressao_aventura")
+    level = pressure.get("nivel")
+    dry = pressure.get("cenas_secas_antes")
+    promoted = pressure.get("promovido")
+    if level not in {0, 1, 2, 3}:
+        raise LocalMicroeventError(f"{label}.pressao_aventura.nivel inválido")
+    if not isinstance(dry, int) or isinstance(dry, bool) or dry < 0:
+        raise LocalMicroeventError(f"{label}.pressao_aventura.cenas_secas_antes inválido")
+    if not isinstance(promoted, bool):
+        raise LocalMicroeventError(f"{label}.pressao_aventura.promovido deve ser booleano")
+    expected = "microevento" if promoted else base
+    if item.get("resultado") != expected:
+        raise LocalMicroeventError(f"{label}: resultado diverge da pressão registrada")
+
+
 def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any]:
     index = index or load_index(repo)
     path = repo / STATE
@@ -242,6 +269,7 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
         card_id = item.get("carta_id")
         if card_id is not None and card_id not in card_ids:
             raise LocalMicroeventError("histórico referencia carta inexistente")
+        _validate_pressure_history(item, f"historico_recente[{i}]")
     return data
 
 
@@ -340,10 +368,19 @@ def _public_result(
         "cartas_elegiveis": len(eligible),
         "fontes_lidas": [INDEX.as_posix(), STATE.as_posix()],
         "regra": (
-            "Carta é candidata não canônica. Se conflitar com estado, arco, cena ou pendência, "
-            "descartar a manifestação sem sortear substituta."
+            "Carta é candidata não canônica. Pressão de seca só pode promover a chance de candidato; "
+            "se conflitar com estado, arco, cena ou pendência, descartar a manifestação sem sortear substituta."
         ),
     }
+    pressure = history.get("pressao_aventura")
+    if isinstance(pressure, dict):
+        payload["pressao_aventura"] = {
+            "nivel": pressure["nivel"],
+            "nome": pressure.get("nome", pressao_aventura.LEVEL_NAMES[pressure["nivel"]]),
+            "cenas_secas_antes": pressure["cenas_secas_antes"],
+            "promovido": pressure["promovido"],
+        }
+        payload["resultado_base"] = history.get("resultado_base")
     if result != "microevento":
         return payload
 
@@ -353,8 +390,6 @@ def _public_result(
         raise LocalMicroeventError(f"histórico referencia carta ausente: {card_id}")
     match = next((item for item in eligible if item["id"] == card_id), None)
     if match is None:
-        # O histórico pode sobreviver a uma alteração posterior da ecologia; a carta
-        # continua consumida, mas não deve ser reapresentada como compatível.
         payload["resultado"] = "rotina"
         payload["motivo"] = "carta_historica_nao_compativel_com_ecologia_atual"
         return payload
@@ -406,13 +441,25 @@ def plan(
     local_state = planned["locais"][local_id]
     token_id = _draw_occurrence(local_state["ocorrencia"], index, local_id)
     token = next(item for item in index["ocorrencia"]["fichas"] if item["id"] == token_id)
+    pressure = pressao_aventura.apply(
+        list(state.get("historico_recente") or []),
+        token_id=token_id,
+        base_result=token["resultado"],
+    )
     history: dict[str, Any] = {
         "cena_id": scene_id,
         "local_id": local_id,
         "ficha_ocorrencia": token_id,
-        "resultado": token["resultado"],
+        "resultado_base": token["resultado"],
+        "resultado": pressure["resultado"],
+        "pressao_aventura": {
+            "nivel": pressure["nivel"],
+            "nome": pressure["nome"],
+            "cenas_secas_antes": pressure["cenas_secas_consecutivas"],
+            "promovido": pressure["promovido"],
+        },
     }
-    if token["resultado"] == "microevento":
+    if pressure["resultado"] == "microevento":
         history["carta_id"] = _draw_card(local_state["cartas"], index, local_id, eligible)
     planned["historico_recente"].append(history)
     planned["historico_recente"] = planned["historico_recente"][-MAX_HISTORY:]
@@ -454,11 +501,13 @@ def simulate(repo: Path, local_ref: str, scene_id: str) -> dict[str, Any]:
 def status(repo: Path, local_ref: str | None = None) -> dict[str, Any]:
     index = load_index(repo)
     state = load_state(repo, index)
+    pressure = pressao_aventura.status_from_history(list(state.get("historico_recente") or []))
     if local_ref is None:
         return {
             "ok": True,
             "locais": len(state["locais"]),
             "historico_recente": len(state["historico_recente"]),
+            "pressao_aventura": pressure,
             "fontes_lidas": [INDEX.as_posix(), STATE.as_posix()],
         }
     try:
@@ -480,6 +529,7 @@ def status(repo: Path, local_ref: str | None = None) -> dict[str, Any]:
             "ciclo": item["cartas"]["ciclo"],
             "restantes": len(item["cartas"]["restantes"]),
         },
+        "pressao_aventura": pressure,
         "fontes_lidas": list(
             dict.fromkeys([*resolution["fontes_lidas"], INDEX.as_posix(), STATE.as_posix()])
         ),
@@ -506,8 +556,16 @@ def validate_repo(repo: Path) -> dict[str, Any]:
                 errors.append(
                     f"{local_id}: somente {count} cartas compatíveis; mínimo {MIN_ELIGIBLE_PER_LOCAL}"
                 )
+        pressure = pressao_aventura.status_from_history(list(state.get("historico_recente") or []))
+        if pressure["nivel"] not in {0, 1, 2, 3}:
+            errors.append("pressão de aventura inválida")
         card_count = len(index["cartas"])
-    except (LocalMicroeventError, ecologia_local.LocalEcologyError, locais.LocationError) as exc:
+    except (
+        LocalMicroeventError,
+        ecologia_local.LocalEcologyError,
+        locais.LocationError,
+        pressao_aventura.AdventurePressureError,
+    ) as exc:
         errors.append(str(exc))
     return {
         "ok": not errors,
@@ -531,7 +589,7 @@ def build_parser() -> argparse.ArgumentParser:
     sim.add_argument("--cena-id", required=True)
     stat = sub.add_parser("status", help="mostra estado compacto sem abrir cartas adicionais")
     stat.add_argument("local", nargs="?")
-    sub.add_parser("check", help="valida catálogo, estado e compatibilidade ecológica")
+    sub.add_parser("check", help="valida catálogo, estado, ecologia e pressão de seca")
     return parser
 
 
