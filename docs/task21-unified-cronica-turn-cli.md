@@ -1,10 +1,20 @@
 # Task 21 — Unified `cronica` Turn CLI
 
-`cronica` é a porta operacional preferencial para o ciclo normal de um turno. Ela **não substitui** `endpoints.py`, `cena_mundo.py` nem `turno.py`; apenas reduz a orquestração necessária entre essas portas já estabilizadas.
+`cronica` é a porta operacional preferencial para o ciclo normal de um turno. Ela **não substitui** `endpoints.py`, `cena_mundo.py` nem `turno.py`; reduz a orquestração entre essas autoridades.
 
 ## Fluxo normal: duas chamadas
 
 ### 1. Preparar
+
+Todo turno pode começar apenas com um ID estável:
+
+```bash
+cronica preparar --cena-id s013-retorno-circo
+```
+
+Se **não existe gatilho reativo real**, essa chamada emite um **ticket neutro** read-only. Não chama endpoint de cena, não confirma cena inexistente e, sobretudo, não exige inventar tag/local/NPC para satisfazer a CLI.
+
+Quando há entrada/exploração material de local, novo encontro de NPC ou tag contextual já pertinente, a mesma porta recebe os gatilhos reais. Exemplo local:
 
 ```bash
 cronica preparar \
@@ -15,21 +25,20 @@ cronica preparar \
   --periculosidade media
 ```
 
-`preparar` chama o endpoint determinístico de cena uma única vez e devolve:
+O quarteto local é atômico: `--local`, `--acao`, `--tier` e `--periculosidade` aparecem juntos ou são todos omitidos. Tier e risco não são inferidos silenciosamente pela CLI. Tags contextuais usam namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:` e só devem ser fornecidas quando já forem pertinentes à situação.
 
-- IDs/gates/modificadores compactos da Task 10;
-- o `preparacao_id` transacional;
-- um `ticket` opaco com os parâmetros exatos da cena.
+Em preparação **reativa**, `preparar` chama o endpoint determinístico de cena uma única vez. Em preparação **neutra**, chama zero endpoints. Ambas devolvem:
 
-O ticket é JSON canônico comprimido + checksum SHA-256 truncado. Ele não é salvo em `runtime/` nem em qualquer outro arquivo. Abandonar uma preparação continua deixando **zero resíduo**.
+- ticket autocontido com checksum;
+- IDs/gates/modificadores compactos quando existirem;
+- `reativa: true|false`;
+- `contrato_conclusao`, com os cinco campos JSON exatos e a regra para mecânica explícita.
 
-Quando `--data/--hora` foram fornecidos, o ticket preserva o instante explícito. Quando não foram, ele preserva `null`: a conclusão volta a consultar o tempo canônico e, se o mundo mudou, o `preparacao_id` fica obsoleto como antes.
+A saída de `preparar` é suficiente para a segunda fase. O hot path não precisa chamar `cronica concluir --help`, abrir documentação ou ler implementação para redescobrir a transação.
 
-As três evidências da Task 20 (`preparacao`, `informacao`, `adequacao`) também viajam no ticket apenas para correlação/auditoria. Elas não alteram a confirmação da cena nem congelam RNG.
+Quando `--data/--hora` foram fornecidos, o ticket preserva o instante explícito. Quando não foram, preserva `null`. As evidências da Task 20 (`preparacao`, `informacao`, `adequacao`) também viajam no ticket; no ticket neutro a rubrica continua pura e não exige cena artificial.
 
 ### 2. Narrar e concluir
-
-Depois de produzir a narração aceita:
 
 ```bash
 cronica concluir --ticket '<ticket>' <<'JSON'
@@ -43,51 +52,63 @@ cronica concluir --ticket '<ticket>' <<'JSON'
 JSON
 ```
 
-`concluir` faz, dentro da mesma chamada:
+Se a narração precisar exibir CD/CA/rolagem ou outra mecânica explícita, usar uma linha própria começando exatamente por:
 
-1. **pré-validação read-only da transação** usando as mesmas funções do registrador;
-2. **revalidação + confirmação da cena** usando `cena_mundo.confirm_scene`;
-3. **registro do turno** usando `turno.register_transaction`;
-4. emissão do rodapé canônico seguro.
+```text
+MECÂNICA — ...
+```
 
-A confirmação vem antes do registro porque `turno.register_transaction` pode disparar checkpoint temporal. Assim, uma passagem de horas ou amanhecer não altera o mundo entre a preparação narrada e a confirmação dessa própria cena.
+Em ticket **reativo**, `concluir` executa:
+
+1. pré-validação read-only da transação;
+2. revalidação + confirmação da cena;
+3. registro por `turno.register_transaction`;
+4. rodapé canônico.
+
+Em ticket **neutro**, não existe cena a confirmar: faz pré-validação → registro → rodapé. Isso preserva duas chamadas por turno sem fabricar mutação reativa.
+
+A confirmação reativa continua antes do registro porque o registrador pode disparar checkpoint temporal. Assim uma passagem de horas/amanhecer não envelhece a preparação da própria cena.
 
 ## Portas explícitas de reparo
 
-O fluxo normal deve preferir `concluir`, mas as fases continuam acessíveis:
+O fluxo normal prefere `concluir`, mas continuam disponíveis:
 
 ```bash
 cronica registrar --ticket '<ticket>' < turno.json
 cronica confirmar --ticket '<ticket>'
 ```
 
-`registrar` revalida o ticket antes de escrever. Se `concluir` já confirmou a cena e uma falha rara ocorreu depois, a mensagem de erro retorna `fase: falha_parcial`; nesse caso específico:
+Para cena reativa já confirmada seguida de falha rara de registro:
 
 ```bash
 cronica registrar --ticket '<ticket>' --reparo-pos-confirmacao < turno.json
 ```
 
-Esse modo não revalida a cena porque ela já foi confirmada; ele apenas reutiliza a idempotência de `turno.py` para terminar/reparar o registro. A mesma flag também é necessária se um operador escolher deliberadamente `cronica confirmar` como passo isolado e depois quiser registrar a transação correspondente: depois da confirmação, o estado da cena pode legitimamente divergir do fingerprint prévio.
+Ticket neutro não produz `falha_parcial` de confirmação porque nenhuma confirmação ocorreu.
 
 ## Compatibilidade
 
-Continuam disponíveis e válidos:
+Continuam disponíveis e válidos para manutenção/reparo:
 
 - `endpoints.py cena`;
 - `cena_mundo.py preparar|confirmar`;
 - `turno.py registrar`;
-- os respectivos atalhos Poetry existentes.
+- atalhos Poetry existentes.
 
-A Task 21 não cria um sexto endpoint, não move regras de recompensa/sidequest/mundo, não cria estado próprio e não muda o schema dos endpoints.
+Não há sexto endpoint, estado novo, scheduler, scan ou semântica paralela. O ticket neutro é apenas a representação explícita de “este turno não possui gatilho reativo”.
 
-## Telemetria
+## Rolagens comuns
 
-`analisar-rollout.py` reconhece as portas mutantes da nova CLI: `cronica concluir`, `cronica registrar` e `cronica confirmar` são classificadas como writes. `cronica preparar` permanece não-mutante. Para `concluir` e `registrar`, a telemetria continua inferindo os mesmos dois alvos operacionais conhecidos do writer de turno (`sessoes/NNN/transcricao.md` e `runtime/eventos-pendentes.jsonl`).
+Quando a perícia e a CD já estão definidas, a assinatura pública é estável:
 
-Isso permite comparar rollouts antigos e novos sem chamar o novo orquestrador de `other` e sem inventar ganhos antes de medi-los.
+```bash
+poetry run rolar-dados ren pericia furtividade --cd 13 --label 'Furtividade de Ren'
+```
 
-## Custo
+Vantagem/desvantagem e evidências de abordagem são acrescentadas somente quando pertinentes. Não há razão para cascata de `--help` no hot path quando o roteador já forneceu a assinatura.
 
-O hot path preferencial passa a exigir **duas chamadas operacionais**: `preparar` e `concluir`. O ticket elimina a repetição de NPCs, local, ação, tier, risco, tags, instante e modificadores entre as fases.
+## Telemetria e custo
 
-A orquestração adiciona zero arquivos persistentes, zero schedulers, zero scans e zero semântica nova de turno. Qualquer ganho real de inferências/tokens deve ser medido depois em rollout; o contrato proíbe declarar redução percentual sem essa amostra.
+`cronica preparar` permanece read-only. `concluir`/`registrar` continuam writers dos mesmos alvos operacionais do turno; `confirmar` só é mutante para ticket reativo. A preparação custa **0 ou 1 endpoint**, nunca mais de um; conclusão custa **0 ou 1 confirmação** e exatamente o registro necessário.
+
+O alvo segue duas chamadas de orquestração por turno: `preparar` + `concluir`, além de rolagens/consultas materialmente necessárias. Ganho real continua sendo medido pós-hoc; nenhuma redução percentual é inferida sem rollout.
