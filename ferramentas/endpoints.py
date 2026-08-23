@@ -6,10 +6,10 @@ camada acrescenta a qualidade da abordagem somente ao campo ``modificadores`` j�
 reservado, sem novo endpoint, nova leitura ou mudança de schema.
 
 No caminho raro em que a barreira do Mundo Vivo está bloqueada, o endpoint de
-pendências também projeta candidatos autônomos de pressão de Ravens Bluff. A
-projeção é read-only: calendário/reavaliação não vira fato; ela apenas entrega ao
-narrador linha, método e frente que podem ser materializados se o agente realmente
-puder agir.
+pendências também projeta candidatos autônomos de pressão de Ravens Bluff e,
+quando houver, o núcleo dos eventos canônicos datados da Parte 1. Tudo permanece
+read-only: a projeção informa o que está devido; a materialização exige transação
+de mundo e checkpoint normal.
 """
 from __future__ import annotations
 
@@ -21,12 +21,14 @@ from typing import Any
 import yaml
 
 import _endpoints_core as _base
+import eventos_canonicos
 import pressao_ravens_bluff
 import qualidade_abordagem
 
 _ORIGINAL_PROJECT_SCENE = _base.project_scene
 _ORIGINAL_BUILD_PARSER = _base.build_parser
 MAX_PRESSURE_CANDIDATES = 4
+MAX_CANONICAL_EVENTS = 3
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -103,54 +105,85 @@ def scene(
 
 def project_pending(result: dict[str, Any]) -> dict[str, Any]:
     projected = _base.project_pending(result)
+
+    canonical = result.get("eventos_canonicos")
+    events = list(canonical.get("eventos") or []) if isinstance(canonical, dict) else []
+    if events:
+        visible_events = events[:MAX_CANONICAL_EVENTS]
+        projected["ids"]["eventos_canonicos"] = [
+            item.get("evento") for item in visible_events if item.get("evento")
+        ]
+        for item in visible_events:
+            projected["gates"].append(
+                {
+                    "tipo": "evento_canonico_datado",
+                    "resultado": "devido",
+                    "pendencia": item.get("pendencia"),
+                    "evento": item.get("evento"),
+                    "titulo": item.get("titulo"),
+                    "data": item.get("data"),
+                    "janela": item.get("janela"),
+                    "atraso_dias": item.get("atraso_dias"),
+                    "nucleo_obrigatorio": list(item.get("nucleo_obrigatorio") or [])[:5],
+                    "guardrails": list(item.get("guardrails") or [])[:5],
+                    "regra": "núcleo obrigatório; forma e resultado flexíveis; nunca escrever decisão de Ren",
+                }
+            )
+        projected["proximo_passo"]["evento_canonico"] = (
+            "materialize o núcleo na primeira forma causal plausível por transação modo:mundo com a tag "
+            "resolver-pendencia-mundo:<id>; depois conclua pela barreira com --transacao. "
+            "Não use --sem-mudanca: se o núcleo estiver temporariamente impossível, mantenha a pendência aberta."
+        )
+
     integration = result.get("pressao_ravens_bluff")
     candidates = (
         list(integration.get("candidatos") or [])
         if isinstance(integration, dict)
         else []
     )
-    if not candidates:
-        return projected
-
-    visible = candidates[:MAX_PRESSURE_CANDIDATES]
-    projected["ids"]["pressao_ravens_bluff"] = [
-        item.get("pendencia") for item in visible if item.get("pendencia")
-    ]
-    for item in visible:
-        projected["gates"].append(
-            {
-                "tipo": "pressao_ravens_bluff_autonoma",
-                "resultado": "candidato",
-                "pendencia": item.get("pendencia"),
-                "agente": item.get("agente"),
-                "linha": item.get("linha"),
-                "metodo": item.get("metodo"),
-                "frente": item.get("frente"),
-                "de": item.get("de"),
-                "para": item.get("para"),
-                "titulo_destino": item.get("titulo_destino"),
-                "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
-            }
+    if candidates:
+        visible = candidates[:MAX_PRESSURE_CANDIDATES]
+        projected["ids"]["pressao_ravens_bluff"] = [
+            item.get("pendencia") for item in visible if item.get("pendencia")
+        ]
+        for item in visible:
+            projected["gates"].append(
+                {
+                    "tipo": "pressao_ravens_bluff_autonoma",
+                    "resultado": "candidato",
+                    "pendencia": item.get("pendencia"),
+                    "agente": item.get("agente"),
+                    "linha": item.get("linha"),
+                    "metodo": item.get("metodo"),
+                    "frente": item.get("frente"),
+                    "de": item.get("de"),
+                    "para": item.get("para"),
+                    "titulo_destino": item.get("titulo_destino"),
+                    "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
+                }
+            )
+        projected["proximo_passo"]["pressao_ravens_bluff"] = (
+            "se o candidato for legal para o agente, materialize a ação de mundo; depois conclua "
+            "a pendência informando transação, linha e método. Se houver bloqueio canônico real, use --sem-mudanca."
         )
-    projected["proximo_passo"]["pressao_ravens_bluff"] = (
-        "se o candidato for legal para o agente, materialize a ação de mundo; depois conclua "
-        "a pendência informando transação, linha e método. Se houver bloqueio canônico real, use --sem-mudanca."
-    )
+
     _base.validate_endpoint(projected)
     return projected
 
 
 def pending(repo: Path) -> dict[str, Any]:
     raw = _base.mundo.pending_view(repo)
-    integration = pressao_ravens_bluff.pending_candidates(
-        repo, list(raw.get("pendencias") or [])
-    )
-    raw["pressao_ravens_bluff"] = integration
+    pendings = list(raw.get("pendencias") or [])
+    pressure = pressao_ravens_bluff.pending_candidates(repo, pendings)
+    canonical = eventos_canonicos.pending_projection(repo, pendings)
+    raw["pressao_ravens_bluff"] = pressure
+    raw["eventos_canonicos"] = canonical
     raw["fontes_lidas"] = list(
         dict.fromkeys(
             [
                 *(raw.get("fontes_lidas") or []),
-                *(integration.get("fontes_lidas") or []),
+                *(pressure.get("fontes_lidas") or []),
+                *(canonical.get("fontes_lidas") or []),
             ]
         )
     )
@@ -213,6 +246,7 @@ def main(argv: list[str] | None = None) -> int:
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except (
+        eventos_canonicos.CanonicalEventError,
         pressao_ravens_bluff.PressureError,
         qualidade_abordagem.ApproachQualityError,
         _base.EndpointError,
