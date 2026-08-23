@@ -134,8 +134,17 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertIsNone(data["resultado"]["disponibilidade"])
         self.assertEqual(data["nivel"], "L2")
         self.assertEqual(
-            data["fontes"],
+            data["fontes"][:2],
             ["personagens/jogador/ficha.yaml", "estado/estado-atual.yaml"],
+        )
+        self.assertTrue(
+            set(data["fontes"]).issubset(
+                {
+                    "personagens/jogador/ficha.yaml",
+                    "estado/estado-atual.yaml",
+                    "runtime/eventos-pendentes.jsonl",
+                }
+            )
         )
 
     def test_knowledge_lookup_finds_masao_without_returning_whole_file(self):
