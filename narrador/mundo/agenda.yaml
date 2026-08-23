@@ -139,4 +139,4 @@ agendamentos:
   tipo: expiracao
   evento_canonico: descida_a_ponte_e_masao
   em: {data: '11 Eleint, 1372 DR', hora: '06:00'}
-  motivo: A Parte 1 converge na Ponte: sobreviventes do círculo externo, primeiro encontro com Masao, revelação excepcional de Seishirō e perda do monopólio da passagem.
+  motivo: 'A Parte 1 converge na Ponte: sobreviventes do círculo externo, primeiro encontro com Masao, revelação excepcional de Seishirō e perda do monopólio da passagem.'
