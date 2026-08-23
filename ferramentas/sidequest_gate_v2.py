@@ -233,13 +233,19 @@ def encounter_event(
     except (oportunidades.OpportunityError, SidequestGateV2Error) as exc:
         raise integration.IntegrationError(str(exc)) from exc
 
-    with _adapt_draw(repo) as gate:
-        result = _BASE_ENCOUNTER_EVENT(
-            repo,
-            npc_id,
-            now=now,
-            encounter_id=encounter_id,
-        )
+    try:
+        with _adapt_draw(repo) as gate:
+            result = _BASE_ENCOUNTER_EVENT(
+                repo,
+                npc_id,
+                now=now,
+                encounter_id=encounter_id,
+            )
+    except oportunidades.OpportunityError as exc:
+        # O orquestrador original já normaliza seus próprios erros. Esta captura
+        # cobre apenas falhas introduzidas dentro do draw adaptado (ex.: camada de
+        # pressão parcialmente configurada), preservando a API pública da integração.
+        raise integration.IntegrationError(str(exc)) from exc
 
     if not gate:
         return result
