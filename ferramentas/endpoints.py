@@ -17,6 +17,9 @@ import yaml
 import _endpoints_core as _base
 import qualidade_abordagem
 
+_ORIGINAL_PROJECT_SCENE = _base.project_scene
+_ORIGINAL_BUILD_PARSER = _base.build_parser
+
 for _name in dir(_base):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_base, _name)
@@ -42,7 +45,7 @@ def project_scene(
     approach_informacao: str | None = None,
     approach_adequacao: str | None = None,
 ) -> dict[str, Any]:
-    result = _base.project_scene(preview)
+    result = _ORIGINAL_PROJECT_SCENE(preview)
     quality = _quality(
         preparacao=approach_preparacao,
         informacao=approach_informacao,
@@ -108,7 +111,7 @@ def _add_approach_flags(parser: argparse.ArgumentParser) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = _base.build_parser()
+    parser = _ORIGINAL_BUILD_PARSER()
     sub = next(
         action
         for action in parser._actions
@@ -161,12 +164,6 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERRO: {exc}", file=sys.stderr)
         return 2
 
-
-# Qualquer chamada interna ao módulo-base que resolva os nomes globais também vê
-# as versões da Task 20; isso mantém wrappers/imports legados coerentes.
-_base.project_scene = project_scene
-_base.scene = scene
-_base.build_parser = build_parser
 
 if __name__ == "__main__":
     raise SystemExit(main())
