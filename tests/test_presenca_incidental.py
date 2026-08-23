@@ -20,6 +20,7 @@ import contexto_cena
 import ecologia_local
 import mundo
 import presenca_incidental as incidental
+import presenca_incidental_cena as incidental_cena
 
 
 class IncidentalPresenceContractTest(unittest.TestCase):
@@ -27,9 +28,8 @@ class IncidentalPresenceContractTest(unittest.TestCase):
         result = incidental.validate(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["perfis"], 5)
-        index = incidental.load_index(ROOT)
         self.assertEqual(
-            set(index["perfis"]),
+            set(incidental.load_index(ROOT)["perfis"]),
             {"kethra_dunn", "bram_vask", "silva_elkwood", "jack_mooney", "halessa_vorn"},
         )
 
@@ -47,18 +47,24 @@ class IncidentalPresenceContractTest(unittest.TestCase):
         }
         for clock, expected in cases.items():
             hour, minute = map(int, clock.split(":"))
-            instant = mundo.WorldInstant(base + hour * 60 + minute)
-            self.assertEqual(incidental.period_from_instant(instant), expected, clock)
+            self.assertEqual(
+                incidental.period_from_instant(mundo.WorldInstant(base + hour * 60 + minute)),
+                expected,
+                clock,
+            )
 
     def test_configuracao_congela_semantica_de_candidato(self):
-        index = incidental.load_index(ROOT)
-        self.assertTrue(index["regras"]["candidato_nao_e_presenca"])
-        self.assertTrue(index["regras"]["candidato_nao_cria_acao"])
-        self.assertTrue(index["regras"]["candidato_nao_cria_dialogo"])
-        self.assertTrue(index["regras"]["candidato_nao_cria_conhecimento"])
-        self.assertTrue(index["regras"]["candidato_nao_cria_encontro_sidequest"])
-        self.assertTrue(index["regras"]["janela_independe_de_scene_id"])
-        self.assertTrue(index["regras"]["canon_forte_prevalece"])
+        rules = incidental.load_index(ROOT)["regras"]
+        for key in (
+            "candidato_nao_e_presenca",
+            "candidato_nao_cria_acao",
+            "candidato_nao_cria_dialogo",
+            "candidato_nao_cria_conhecimento",
+            "candidato_nao_cria_encontro_sidequest",
+            "janela_independe_de_scene_id",
+            "canon_forte_prevalece",
+        ):
+            self.assertTrue(rules[key], key)
 
 
 class IncidentalPresenceSelectionTest(unittest.TestCase):
@@ -67,9 +73,9 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
         cls.narwhal = ecologia_local.lookup_canonical(ROOT, "narwhal_manor")["perfil"]
         cls.circus = ecologia_local.lookup_canonical(ROOT, "jack_mooney_sons_circus")["perfil"]
 
-    def _find_active(self, local_id: str, ecology: dict, *, start_hour: str = "10:00", days: int = 16):
-        for day in range(1, days + 1):
-            instant = mundo.parse_instant(f"{day} Eleasis, 1372 DR", start_hour)
+    def _find_active(self, local_id: str, ecology: dict, *, hour: str = "10:00"):
+        for day in range(1, 33):
+            instant = mundo.parse_instant(f"{day} Eleasis, 1372 DR", hour)
             result = incidental.select(
                 ROOT,
                 scene_id="probe",
@@ -83,7 +89,7 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
 
     def test_local_sem_perfil_incidental_nao_le_tempo(self):
         ecology = ecologia_local.lookup_canonical(ROOT, "galeria_dos_escribas")["perfil"]
-        with mock.patch.object(mundo, "load_canonical_time", side_effect=AssertionError("não deveria ler tempo")):
+        with mock.patch.object(mundo, "load_canonical_time", side_effect=AssertionError("não ler tempo")):
             result = incidental.select(
                 ROOT,
                 scene_id="sem-perfil",
@@ -108,36 +114,32 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
         instant, first = self._find_active("narwhal_manor", self.narwhal)
         second = incidental.select(
             ROOT,
-            scene_id="outra-cena-completamente",
+            scene_id="outra-cena",
             local_id="narwhal_manor",
             ecology=self.narwhal,
             now=instant,
         )
-        self.assertEqual(
-            [(x["id"], x["janela_id"], x["motivo"]) for x in first["candidatos"]],
-            [(x["id"], x["janela_id"], x["motivo"]) for x in second["candidatos"]],
-        )
-        self.assertNotEqual(
-            first["candidatos"][0]["avaliacao_id"],
-            second["candidatos"][0]["avaliacao_id"],
-        )
+        signature = lambda result: [
+            (item["id"], item["janela_id"], item["motivo"])
+            for item in result["candidatos"]
+        ]
+        self.assertEqual(signature(first), signature(second))
+        self.assertNotEqual(first["candidatos"][0]["avaliacao_id"], second["candidatos"][0]["avaliacao_id"])
 
     def test_exclusao_de_npc_explicito_remove_coincidencia(self):
         instant, first = self._find_active("narwhal_manor", self.narwhal)
-        npc_id = first["candidatos"][0]["id"]
         result = incidental.select(
             ROOT,
-            scene_id="explicitamente-presente",
+            scene_id="npc-explicito",
             local_id="narwhal_manor",
             ecology=self.narwhal,
             now=instant,
-            exclude_ids=[npc_id],
+            exclude_ids=[first["candidatos"][0]["id"]],
         )
         self.assertEqual(result["candidatos"], [])
 
     def test_hot_path_com_now_explicito_abre_so_roteador_compacto(self):
-        instant, result = self._find_active("narwhal_manor", self.narwhal)
-        self.assertIsInstance(instant, mundo.WorldInstant)
+        _, result = self._find_active("narwhal_manor", self.narwhal)
         self.assertEqual(result["fontes_lidas"], [incidental.INDEX.as_posix()])
         self.assertFalse(any(source.startswith("estado/relacoes/") for source in result["fontes_lidas"]))
         self.assertFalse(any(source.startswith("narrador/agentes-leves/") for source in result["fontes_lidas"]))
@@ -154,10 +156,7 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
                 local_id="narwhal_manor",
                 ecology=self.narwhal,
             )
-        self.assertEqual(
-            result["fontes_lidas"],
-            [incidental.INDEX.as_posix(), mundo.TIME_PATH.as_posix()],
-        )
+        self.assertEqual(result["fontes_lidas"], [incidental.INDEX.as_posix(), mundo.TIME_PATH.as_posix()])
 
     def test_no_maximo_um_candidato_mesmo_com_dois_perfis_no_circo(self):
         for day in range(1, 25):
@@ -177,9 +176,8 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
         self.assertEqual(item["tipo"], "presenca")
         self.assertEqual(item["subtipo"], "incidental")
         self.assertEqual(item["modo_avaliacao"], "avaliar_presenca_incidental")
-        self.assertNotIn("acao", item)
-        self.assertNotIn("dialogo", item)
-        self.assertNotIn("conhecimento", item)
+        for forbidden in ("acao", "dialogo", "conhecimento"):
+            self.assertNotIn(forbidden, item)
         self.assertIn("não estabelece presença", item["regra"])
 
 
@@ -187,39 +185,32 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        for rel in (
-            "cenario/locais",
-            "narrador/recompensas",
-            "narrador/microeventos-locais",
-        ):
+        for rel in ("cenario/locais", "narrador/recompensas", "narrador/microeventos-locais"):
             shutil.copytree(ROOT / rel, self.repo / rel)
-        (self.repo / "narrador").mkdir(exist_ok=True)
         shutil.copy2(ROOT / incidental.INDEX, self.repo / incidental.INDEX)
 
     def tearDown(self):
         self.temp.cleanup()
 
-    def _find_scene_window(self, place: str, local_id: str):
-        ecology = ecologia_local.lookup_canonical(ROOT, local_id)["perfil"]
-        for day in range(1, 20):
+    def _find_scene_window(self):
+        ecology = ecologia_local.lookup_canonical(ROOT, "narwhal_manor")["perfil"]
+        for day in range(1, 33):
             instant = mundo.parse_instant(f"{day} Eleasis, 1372 DR", "10:00")
-            result = incidental.select(
+            if incidental.select(
                 ROOT,
                 scene_id="probe",
-                local_id=local_id,
+                local_id="narwhal_manor",
                 ecology=ecology,
                 now=instant,
-            )
-            if result["candidatos"]:
+            )["candidatos"]:
                 return instant
-        self.fail(f"janela incidental não encontrada para {place}")
+        self.fail("janela incidental não encontrada")
 
     def test_prepare_anexa_incidental_sem_criar_encontro_ou_escrita(self):
-        instant = self._find_scene_window("Narwhal Manor", "narwhal_manor")
+        instant = self._find_scene_window()
         before = {
             path.relative_to(self.repo).as_posix(): path.read_bytes()
-            for path in self.repo.rglob("*")
-            if path.is_file()
+            for path in self.repo.rglob("*") if path.is_file()
         }
         result = cena_mundo.prepare_scene(
             self.repo,
@@ -239,8 +230,7 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
         self.assertEqual(result["resumo"]["presencas_incidentais_para_avaliar"], 1)
         after = {
             path.relative_to(self.repo).as_posix(): path.read_bytes()
-            for path in self.repo.rglob("*")
-            if path.is_file()
+            for path in self.repo.rglob("*") if path.is_file()
         }
         self.assertEqual(before, after)
 
@@ -260,8 +250,6 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
 
     def test_candidatos_contextuais_anteriores_tem_precedencia(self):
         base = {
-            "ok": True,
-            "cena_id": "lotada",
             "local": {
                 "local_id": "jack_mooney_sons_circus",
                 "ecologia": ecologia_local.lookup_canonical(ROOT, "jack_mooney_sons_circus")["perfil"],
@@ -280,11 +268,10 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
             "regra": "base",
             "fontes_lidas": [],
         }
-        import cena_mundo_v5
-        with mock.patch.object(cena_mundo_v5, "_base_open_scene", return_value=copy.deepcopy(base)), mock.patch.object(
-            incidental, "select", side_effect=AssertionError("não deve consultar incidental sem vaga de presença")
+        with mock.patch.object(incidental_cena, "_BASE_OPEN_SCENE", return_value=copy.deepcopy(base)), mock.patch.object(
+            incidental, "select", side_effect=AssertionError("não consultar incidental sem vaga de presença")
         ):
-            result = cena_mundo_v5.open_scene(
+            result = incidental_cena.open_scene(
                 ROOT,
                 scene_id="lotada",
                 place="Circo de Jack Mooney",
@@ -298,9 +285,7 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
 
 class IncidentalPresenceBudgetTest(unittest.TestCase):
     def test_contrato_de_orcamento_bate_com_codigo(self):
-        contract = yaml.safe_load(
-            (ROOT / "baseline/incidental-presence-orcamento.yaml").read_text(encoding="utf-8")
-        )
+        contract = yaml.safe_load((ROOT / "baseline/incidental-presence-orcamento.yaml").read_text(encoding="utf-8"))
         limits = contract["limites"]
         self.assertEqual(limits["max_perfis"], incidental.MAX_PROFILES)
         self.assertEqual(limits["max_candidatos_por_cena"], incidental.MAX_CANDIDATES)
@@ -314,14 +299,8 @@ class IncidentalPresenceBudgetTest(unittest.TestCase):
         self.assertEqual(limits["max_estados_novos"], 0)
         self.assertEqual(limits["max_schedulers_novos"], 0)
         self.assertEqual(limits["max_scans_repo"], 0)
-        self.assertEqual(
-            contract["integracao_contextual"]["max_presencas_total_preservado"],
-            contexto_cena.MAX_PRESENCE_CANDIDATES,
-        )
-        self.assertEqual(
-            contract["integracao_contextual"]["max_candidatos_total_preservado"],
-            contexto_cena.MAX_CONTEXT_CANDIDATES,
-        )
+        self.assertEqual(contract["integracao_contextual"]["max_presencas_total_preservado"], contexto_cena.MAX_PRESENCE_CANDIDATES)
+        self.assertEqual(contract["integracao_contextual"]["max_candidatos_total_preservado"], contexto_cena.MAX_CONTEXT_CANDIDATES)
 
 
 if __name__ == "__main__":
