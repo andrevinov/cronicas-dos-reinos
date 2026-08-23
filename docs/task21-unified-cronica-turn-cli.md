@@ -67,7 +67,7 @@ cronica confirmar --ticket '<ticket>'
 cronica registrar --ticket '<ticket>' --reparo-pos-confirmacao < turno.json
 ```
 
-Esse modo não revalida a cena porque ela já foi confirmada; ele apenas reutiliza a idempotência de `turno.py` para terminar/reparar o registro.
+Esse modo não revalida a cena porque ela já foi confirmada; ele apenas reutiliza a idempotência de `turno.py` para terminar/reparar o registro. A mesma flag também é necessária se um operador escolher deliberadamente `cronica confirmar` como passo isolado e depois quiser registrar a transação correspondente: depois da confirmação, o estado da cena pode legitimamente divergir do fingerprint prévio.
 
 ## Compatibilidade
 
@@ -79,6 +79,12 @@ Continuam disponíveis e válidos:
 - os respectivos atalhos Poetry existentes.
 
 A Task 21 não cria um sexto endpoint, não move regras de recompensa/sidequest/mundo, não cria estado próprio e não muda o schema dos endpoints.
+
+## Telemetria
+
+`analisar-rollout.py` reconhece as portas mutantes da nova CLI: `cronica concluir`, `cronica registrar` e `cronica confirmar` são classificadas como writes. `cronica preparar` permanece não-mutante. Para `concluir` e `registrar`, a telemetria continua inferindo os mesmos dois alvos operacionais conhecidos do writer de turno (`sessoes/NNN/transcricao.md` e `runtime/eventos-pendentes.jsonl`).
+
+Isso permite comparar rollouts antigos e novos sem chamar o novo orquestrador de `other` e sem inventar ganhos antes de medi-los.
 
 ## Custo
 
