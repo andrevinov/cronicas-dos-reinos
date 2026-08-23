@@ -1,0 +1,39 @@
+schema_orcamento_progressao_juppongatana: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Vincular os níveis 8–17 a dez neutralizações duráveis e únicas da Juppongatana
+  sem scan histórico, XP por encontro, auto-level mecânico ou contagem dupla.
+limites:
+  nivel_base: 7
+  ultimo_nivel: 17
+  neutralizacoes_maximas: 10
+  max_fontes_status: 3
+  max_fontes_preparacao: 4
+  max_fontes_check_sem_milestones: 4
+  max_escritas_confirmacao: 1
+  max_bytes_estado: 16384
+  max_evidencia_chars: 320
+  max_nota_chars: 320
+  max_scans_repo: 0
+  max_schedulers_novos: 0
+  max_fragmentos_narrativos: 0
+semantica:
+  ordem_dos_membros: livre
+  formula_nivel: 7 + membros_unicos_neutralizados
+  primeiro_milestone: nivel_8
+  decimo_milestone: nivel_17
+  neutralizacao_nao_exige_morte: true
+  simples_derrota_nao_conta: true
+  membro_so_conta_uma_vez: true
+  kurobane_pre_task_nao_recebe_credito_retroativo: true
+  retorno_futuro_nao_revoga_milestone: true
+  retorno_futuro_nao_gera_segundo_milestone: true
+  faixa_8_17_reservada_a_espinha: true
+  depois_17_progressao_geral_reassume: true
+transacao:
+  preparar_e_read_only: true
+  confirmar_revalida_fingerprint: true
+  fonte_canonica_obrigatoria: true
+  evidencia_literal_obrigatoria: true
+  nivel_mecanico_nao_e_aplicado_automaticamente: true
+  unico_arquivo_mutado_pelo_gate: narrador/juppongatana/estado-progressao.yaml
