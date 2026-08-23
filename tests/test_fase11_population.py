@@ -54,13 +54,15 @@ class Phase11PopulationTest(unittest.TestCase):
         disc=yaml.safe_load((ROOT/'narrador/arcos/parte_1/descoberta-e-consequencias.yaml').read_text(encoding='utf-8'))
         self.assertEqual(disc['exemplo_shizune_nao_obrigatorio']['estatuto'],'exemplo_de_escala_lendaria_nao_evento_canonico')
 
-    def test_pan_chu_pode_resistir_expulsao_e_cormyr_permanece_opcional(self):
+    def test_pan_chu_mantem_cormyr_inerte_enquanto_ameaca_civis(self):
         pan=yaml.safe_load((ROOT/'narrador/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
         ms=metodos_agentes.for_line(pan,'desgastar_autoridade_de_ravens_bluff')
         self.assertTrue(any('armamento naval' in m['abordagem'].lower() for m in ms))
         src=(ROOT/'narrador/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
-        self.assertIn('pode ser chamada',src)
-        self.assertIn('não é convocado automaticamente',src)
+        self.assertIn('três fragatas de Cormyr',src)
+        self.assertIn('as fragatas **não atacam**',src)
+        self.assertIn('negociam com a Night Watch',src)
+        self.assertIn('Se Pan Chu for completamente derrotado',src)
 
     def test_pan_chu_tem_relogio_canonico_sem_presenca_antecipada(self):
         state=yaml.safe_load((ROOT/'narrador/arcos/estado-marcos-aparicao.yaml').read_text(encoding='utf-8'))
