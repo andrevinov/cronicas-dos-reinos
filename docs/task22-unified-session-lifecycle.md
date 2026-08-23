@@ -4,13 +4,15 @@ Task 22 completa a transformação de `cronica` na porta operacional principal d
 
 ## Sessão
 
-### Status
+### Status / retomada
 
 ```bash
 cronica sessao status
 ```
 
-Resume lifecycle, journals, checkpoint/memória e se existe nível já desbloqueado por milestone.
+Além de lifecycle/journal/progressão, a porta pública devolve `retomada`: uma projeção quente de data, hora, localização, recursos e último resumo explícito. Ela usa runtime estruturado + overlay de eventos pendentes ou ledger/handoff e **não abre transcrição**. Campos livres legados como `periodo_do_dia` ou prazos textuais não entram nessa projeção justamente porque podem envelhecer sem que data/hora/deltas estejam errados.
+
+Se `retomada` responder à lacuna, parar. Não chamar `contexto.py retomada`, abrir handoff cru ou ler implementação apenas para reconstruir o mesmo presente.
 
 ### Checkpoint de cena
 
@@ -18,7 +20,7 @@ Resume lifecycle, journals, checkpoint/memória e se existe nível já desbloque
 cronica sessao checkpoint
 ```
 
-É apenas uma porta de alto nível para a autoridade já existente `checkpoint.checkpoint(repo, "cena")`. Consolidação, lifecycle, Mundo Vivo, direções e regeneração de handoff/índice continuam pertencendo aos módulos atuais.
+É apenas uma porta de alto nível para `checkpoint.checkpoint(repo, "cena")`. Consolidação, lifecycle, Mundo Vivo, direções e regeneração derivada continuam pertencendo aos módulos atuais.
 
 ### Encerrar
 
@@ -26,9 +28,7 @@ cronica sessao checkpoint
 cronica sessao encerrar
 ```
 
-Delega **exatamente** a `checkpoint.checkpoint(repo, "sessao")`. Portanto produz os mesmos bytes que o fluxo anterior: consolida o buffer, encerra N como `entre_sessoes`, sincroniza mundo/lifecycle/direções, atualiza runtime e materializa handoff/índice de encerramento.
-
-O comando só responde sucesso depois de `checkpoint.check` confirmar que a campanha ficou formalmente retomável. Se houver level-up desbloqueado e ainda não aplicado, o próximo passo o aponta explicitamente.
+Delega **exatamente** a `checkpoint.checkpoint(repo, "sessao")`: consolida o buffer, encerra N como `entre_sessoes`, sincroniza mundo/lifecycle/direções, atualiza runtime e materializa handoff/índice. Só responde sucesso depois de `checkpoint.check` confirmar estado retomável.
 
 ### Iniciar
 
@@ -36,7 +36,14 @@ O comando só responde sucesso depois de `checkpoint.check` confirmar que a camp
 cronica sessao iniciar
 ```
 
-Delega **exatamente** a `sessoes.start_next`. A operação continua usando o journal/staging canônico já existente, cria somente N+1 e nunca copia a transcrição anterior. A nova transcrição nasce apenas com o cabeçalho da sessão.
+Delega **exatamente** a `sessoes.start_next`, usando o journal/staging canônico, criando somente N+1 e nunca copiando a transcrição anterior. A nova transcrição nasce apenas com cabeçalho.
+
+A porta pública acrescenta ao resultado duas projeções read-only:
+
+- `recap_sessao_anterior`: últimos resumos explícitos do handoff compacto de N;
+- `retomada`: presente estruturado de N+1.
+
+Esses blocos existem para que o pedido “inicie uma sessão e resuma a anterior” seja atendido pela **mesma chamada que abre a sessão**. Não há chamada obrigatória posterior a `contexto.py retomada` nem leitura de transcrição/handoff cru.
 
 ### Recuperar
 
@@ -44,13 +51,13 @@ Delega **exatamente** a `sessoes.start_next`. A operação continua usando o jou
 cronica sessao recuperar
 ```
 
-Delega a `checkpoint.recover`. Não existe journal paralelo da Task 22. Uma queda durante consolidação, encerramento, início ou progressão mecânica usa a mesma rota de recuperação já testada no repositório.
+Delega a `checkpoint.recover`. Não existe journal paralelo da Task 22. Uma queda durante consolidação, encerramento, início ou progressão mecânica usa a mesma rota de recuperação já testada.
 
 ## Progressão mecânica
 
-O lifecycle não decide que Ren ganhou um nível. Primeiro precisa existir um milestone registrado. Na faixa 8–17 isso significa uma entrada válida da Task 19 em `narrador/juppongatana/estado-progressao.yaml`.
+O lifecycle não decide que Ren ganhou nível. Primeiro precisa existir um milestone registrado. Na faixa 8–17 isso significa uma entrada válida da Task 19 em `narrador/juppongatana/estado-progressao.yaml`.
 
-Depois do encerramento da sessão, um plano mecânico completo pode ser aplicado em uma única operação:
+Depois do encerramento, um plano mecânico completo pode ser aplicado em uma única operação:
 
 ```bash
 cronica progressao aplicar <<'YAML'
@@ -76,13 +83,13 @@ escolhas_pendentes: []
 YAML
 ```
 
-O plano informa **o que muda mecanicamente**, mas não controla `identidade.nivel`: esse campo é reservado ao lifecycle. O comando exige que `nivel_novo` seja exatamente o próximo nível e que `milestone_preparacao_id` corresponda ao registro que o desbloqueia.
+O plano informa **o que muda mecanicamente**, mas não controla `identidade.nivel`: esse campo é reservado ao lifecycle. `nivel_novo` precisa ser exatamente o próximo nível e `milestone_preparacao_id` precisa corresponder ao registro que o desbloqueia.
 
-A primeira versão aplica automaticamente somente a faixa protegida 8–17. Depois do 17, a progressão geral volta a depender do sistema de marcos e pode receber uma extensão posterior sem relaxar o gate atual.
+A primeira versão aplica automaticamente somente a faixa protegida 8–17.
 
 ## Atomicidade do level-up
 
-Antes da primeira escrita, a CLI calcula todos os documentos finais. Em um único journal/staging ela instala:
+Antes da primeira escrita, a CLI calcula todos os documentos finais. Em um único journal/staging instala:
 
 1. `estado/estado-atual.yaml`;
 2. `personagens/jogador/ficha.yaml`;
@@ -93,13 +100,11 @@ Antes da primeira escrita, a CLI calcula todos os documentos finais. Em um únic
 7. `sessoes/NNN/handoff.yaml`;
 8. `sessoes/index.yaml`.
 
-Os espelhos entre estado e ficha são sincronizados pelo mesmo mecanismo do consolidador. Assim nível, PV, Ki, CA e dinheiro não podem ficar divergentes quando o plano mexer nesses campos.
-
-Se o processo cair depois de uma ou mais escritas staged, o journal permanece e `cronica sessao recuperar` ou o legado `checkpoint.py recuperar` termina os mesmos bytes sem recalcular o level-up.
+Os espelhos entre estado e ficha são sincronizados pelo mesmo mecanismo do consolidador. Se cair após uma ou mais escritas staged, `cronica sessao recuperar` ou `checkpoint.py recuperar` termina os mesmos bytes sem recalcular o level-up.
 
 ## Equivalência e compatibilidade
 
-As primitivas anteriores continuam válidas:
+Continuam válidos:
 
 - `checkpoint.py cena|sessao|recuperar`;
 - `sessoes.py iniciar`;
@@ -107,8 +112,8 @@ As primitivas anteriores continuam válidas:
 - `progressao_juppongatana.py ...`;
 - toda a Task 21, preservada em `_cronica_turn_core.py`.
 
-Testes com repositórios gêmeos comparam os bytes produzidos pelo lifecycle unificado com os bytes produzidos pelas operações legadas. A Task 22 não ganha permissão para produzir uma versão “equivalente o bastante”.
+As projeções read-only de recap/retomada não mudam os bytes canônicos produzidos por abrir/fechar sessão; apenas evitam que o agente reabra fontes já resumidas.
 
 ## Benchmark
 
-A telemetria pós-hoc reconhece `cronica sessao checkpoint|encerrar|iniciar|recuperar` e `cronica progressao aplicar` como operações mutantes. Ganho percentual de ferramentas ou inferências só será declarado depois de um rollout real; a implementação apenas reduz a quantidade de comandos que o agente precisa orquestrar manualmente.
+A telemetria pós-hoc reconhece `cronica sessao checkpoint|encerrar|iniciar|recuperar` e `cronica progressao aplicar` como operações mutantes. Ganho percentual de ferramentas ou inferências só será declarado depois de rollout real; a implementação não inventa economia por estimativa.
