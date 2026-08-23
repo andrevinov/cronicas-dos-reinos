@@ -53,8 +53,9 @@ class CronicaTicketTest(unittest.TestCase):
 
     def test_ticket_alterado_falha_checksum_ou_decodificacao(self):
         token, _ = cronica.encode_ticket(self.payload())
-        replacement = "A" if token[-1] != "A" else "B"
-        corrupted = token[:-1] + replacement
+        prefix, digest, body = token.split(".", 2)
+        replacement = "0" if digest[0] != "0" else "1"
+        corrupted = f"{prefix}.{replacement}{digest[1:]}.{body}"
         with self.assertRaises(cronica.CronicaError):
             cronica.decode_ticket(corrupted)
 
