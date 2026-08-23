@@ -257,6 +257,20 @@ candidatos:
     - acao:treino
     - assunto:dojo
     - acao:desafio_marcial
+  operacao_neutralizar_ren:
+    tipo: operacao
+    alvo: neutralizar_ren_sem_expor_a_rede
+    prioridade: 93
+    min_coincidencias: 2
+    tags:
+    - pessoa:kage
+    - acao:interferencia_de_ren
+    - risco:ren_expoe_rede
+    - risco:ren_compromete_operacao
+    - risco:ren_aproxima_ponte
+    - assunto:ren_contrainteligencia
+    - assunto:ren_intermediario_comprometido
+    - assunto:ren_interferencia_repetida
   operacao_cobertura_maritima:
     tipo: operacao
     alvo: sustentar_cobertura_maritima

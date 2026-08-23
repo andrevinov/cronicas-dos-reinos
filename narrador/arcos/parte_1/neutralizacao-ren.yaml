@@ -1,0 +1,48 @@
+schema_neutralizacao_ren: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+estatuto: restricao_operacional_nao_canonica
+principio: >-
+  Neutralizar Ren significa reduzir sua capacidade de interferir no plano sem
+  revelar desnecessariamente comando, rotas, células ou a Ponte. A linha não
+  torna Ren ameaça central, não ordena sua morte e não estabelece que qualquer
+  tentativa já aconteceu.
+condicao_de_uso:
+  exige_evidencia_canonica_de_interferencia: true
+  nao_basta:
+  - Ren existir em Ravens Bluff
+  - a reputação de Kage ou do Getsuei-ryū ser conhecida
+  - um agente simplesmente desejar confronto
+  sinais_compativeis:
+  - Ren comprometeu operação, prova, rota ou intermediário relevante
+  - Ren repetiu interferências que aumentam custo ou risco da rede
+  - Ren está perto de expor ligação entre células, infraestrutura ou Ponte
+  - uma instituição passou a amplificar de forma concreta a interferência de Ren
+guardrails:
+  habilitado_nao_significa_escolhido: true
+  neutralizacao_nao_significa_morte: true
+  sucesso_nao_e_automatico: true
+  fato_so_existe_apos_resolucao: true
+  preservar_compartimentacao_da_rede: true
+  evitar_assinatura_que_identifique_masao: true
+  conhecimento_do_agente_limita_identidades_vinculos_e_rotas: true
+  metodo_fisico_exige_presenca_e_acesso_validos: true
+  nao_forcar_captura: true
+  nao_forcar_duelo: true
+  nao_forcar_sequestro_de_vinculo: true
+vetores_permitidos:
+- isolamento_operacional
+- descredito_ou_impedimento_institucional
+- privacao_temporaria_de_meios
+- desvio_de_tempo_e_atencao
+- deslocamento_induzido
+- captura_ou_contenção_somente_se_emergir_causalmente
+- violencia_seletiva_somente_quando_o_metodo_e_o_contexto_a_sustentarem
+criterio_de_sigilo: >-
+  Um método falha ao espírito da linha se para impedir Ren ele entrega conexão
+  rastreável entre executor, célula, rota, Ponte ou comando de Masao que valha
+  mais para Ren do que a neutralização pretendida.
+relacao_com_masao: >-
+  Esta linha não substitui o ponto cego do plano mestre: Masao ainda pode pensar
+  grande demais para tratar Ren como ameaça central. Neutralização localizada é
+  compatível com delegar um incômodo crescente sem reorganizar o projeto ao redor dele.

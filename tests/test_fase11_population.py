@@ -17,10 +17,10 @@ class Phase11PopulationTest(unittest.TestCase):
         self.assertEqual(set(arc['habilitacoes']['direcoes']),{'ponte_de_kozakura','golden_lily_em_ravens_bluff'})
         self.assertNotIn('golden_lily_em_ravens_bluff',arc['linhas_operacionais'])
 
-    def test_onze_linhas_cobrem_pressao_urbana_marcial_e_maritima(self):
+    def test_doze_linhas_cobrem_pressao_urbana_marcial_maritima_e_neutralizacao(self):
         arc=arcos.load_contract(ROOT,'parte_1_uma_ponte_para_kozakura')
-        self.assertEqual(len(arc['linhas_operacionais']),11)
-        for line in ('expandir_presenca_de_masao','ocupar_espaco_urbano','desgastar_autoridade_de_ravens_bluff','pressionar_ren_por_vinculos','pressionar_identidade_marcial_de_ren','sustentar_cobertura_maritima'):
+        self.assertEqual(len(arc['linhas_operacionais']),12)
+        for line in ('expandir_presenca_de_masao','ocupar_espaco_urbano','desgastar_autoridade_de_ravens_bluff','pressionar_ren_por_vinculos','pressionar_identidade_marcial_de_ren','sustentar_cobertura_maritima','neutralizar_ren_sem_expor_a_rede'):
             self.assertIn(line,arc['linhas_operacionais'])
 
     def test_todo_executor_tem_metodo_sem_acao_concreta_schema(self):

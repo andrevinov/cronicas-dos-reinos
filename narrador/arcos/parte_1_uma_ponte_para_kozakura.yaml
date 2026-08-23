@@ -38,6 +38,9 @@ orquestracao:
     marcos_aliados:
       tipo: documento_reservado
       arquivo: narrador/aliados/marcos-de-aparicao.md
+    neutralizacao_ren:
+      tipo: documento_reservado
+      arquivo: narrador/arcos/parte_1/neutralizacao-ren.yaml
   plano_mestre:
     agente: masao_hirasawa
     objetivo: dominar_ravens_bluff_e_preservar_ponte
@@ -129,3 +132,10 @@ linhas_operacionais:
     - kajiwara_shizune
     - masao_hirasawa
     referencia: plano_mestre
+  neutralizar_ren_sem_expor_a_rede:
+    objetivo: reduzir_capacidade_de_interferencia_de_ren_sem_revelar_comando_rotas_ou_ponte
+    executores:
+    - masao_hirasawa
+    - kajiwara_shizune
+    - kurobane_jinzaburo
+    referencia: neutralizacao_ren

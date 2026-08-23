@@ -216,6 +216,29 @@ metodos_operacionais:
     - registros
     - carga
     - intermediarios
+  neutralizar_ren_sem_expor_a_rede:
+  - id: isolar_identidade_operacional_conhecida
+    abordagem: Sobre identidades de Ren que conheça canonicamente, acumular contradições, restrições e suspeitas que
+      reduzam acesso institucional ou mobilidade sem criar uma trilha documental única que revele coordenação superior.
+    modalidade: indireta
+    tags:
+    - ren
+    - neutralizacao
+    - identidade
+    - burocracia
+    - sigilo_rede
+    - impedimento
+  - id: transformar_interferencia_em_problema_institucional
+    abordagem: Reenquadrar uma interferência comprovada de Ren como questão legal, contratual ou procedimental para
+      que terceiros legítimos consumam sua credibilidade e tempo enquanto a autoria real permanece compartimentada.
+    modalidade: indireta
+    tags:
+    - ren
+    - neutralizacao
+    - autoridade
+    - credibilidade
+    - sigilo_rede
+    - interferencia
 fontes_canonicas:
 - narrador/juppongatana/membros.md
 - narrador/juppongatana/marcos-de-aparicao.md

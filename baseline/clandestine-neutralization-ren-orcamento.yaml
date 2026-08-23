@@ -1,0 +1,40 @@
+schema_orcamento_neutralizacao_ren: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Habilitar pressão direta contra Ren como 12ª linha operacional sem transformar
+  a linha em assassinato automático, scheduler, ameaça onisciente ou exposição gratuita da rede.
+limites:
+  max_linhas_operacionais_no_arco: 12
+  executores_da_linha: 3
+  max_metodos_por_executor: 2
+  max_tags_por_metodo: 8
+  max_fragmentos_para_traduzir_um_executor: 1
+  max_fontes_resolver_linha: 3
+  max_fontes_resolver_metodo: 5
+  max_schedulers_novos: 0
+  max_estados_novos: 0
+  max_scans_novos: 0
+contexto:
+  min_coincidencias: 2
+  max_operacoes_expostas_por_cena: 2
+  exige_tag_de_interferencia_alem_de_pessoa_kage: true
+invariantes:
+  linha_id: neutralizar_ren_sem_expor_a_rede
+  linha_e_problema_nao_acao: true
+  habilitado_nao_significa_escolhido: true
+  exige_evidencia_canonica_de_interferencia: true
+  ren_nao_vira_ameaca_central_automaticamente: true
+  neutralizacao_nao_significa_morte: true
+  morte_nao_e_resultado_padrao: true
+  captura_nao_e_forcada: true
+  duelo_nao_e_forcado: true
+  vinculo_nao_e_alvo_implicito: true
+  conhecimento_limita_metodo: true
+  presenca_limita_metodo_fisico: true
+  compartimentacao_da_rede_e_prioridade: true
+  executor_nao_e_escolhido_pelo_contexto: true
+  metodo_nao_e_escolhido_pelo_contexto: true
+  resultado_nao_e_canonico_antes_de_resolucao: true
+  pan_chu_nao_e_executor: true
+  sawagejo_cho_nao_e_executor: true
+  estado_vivo_da_campanha_nao_e_migrado: true
