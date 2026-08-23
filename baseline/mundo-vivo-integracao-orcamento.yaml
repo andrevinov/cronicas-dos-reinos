@@ -50,11 +50,20 @@ limites:
     max_fontes: 3
     max_fragmentos_narrativos: 0
   encontro_gate_nada:
-    max_fontes: 3
+    max_fontes: 4
     max_fragmentos_narrativos: 0
   encontro_oportunidade:
-    max_fontes: 4
+    max_fontes: 5
     max_fragmentos_narrativos: 1
+  sidequest_gate_v2:
+    max_fontes_pressao_por_ficha_nada: 1
+    max_promocoes_nada_por_ciclo: 3
+    max_draws_por_encontro: 1
+    max_rerolls: 0
+    max_schedulers_novos: 0
+    base_nada: 8
+    base_oportunidade: 2
+    oportunidades_efetivas_max_nivel_critico: 5
   local_mapa_existente:
     max_fontes: 3
     max_fragmentos_narrativos: 0
@@ -142,6 +151,11 @@ invariantes:
   candidato_fora_do_arco_nao_e_exposto: true
   grupo_arco_explicito_em_cada_binding: true
   turno_comum_continua_duas_escritas: true
+  sidequest_gate_v2_preserva_baralho_base: true
+  sidequest_pressao_so_promove_ficha_consumida: true
+  sidequest_pressao_nao_rerrola: true
+  sidequest_pressao_nao_fura_orcamento: true
+  sidequest_potencial_nao_e_oferta: true
   correcao_canonica_fora_do_hot_path: true
   correcao_canonica_nao_e_evento_novo: true
   correcao_antiga_exige_replay_manual: true
