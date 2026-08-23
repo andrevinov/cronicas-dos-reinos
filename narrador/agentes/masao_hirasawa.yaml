@@ -156,6 +156,29 @@ metodos_operacionais:
     - cobertura
     - carga_oriental
     - ponte
+  neutralizar_ren_sem_expor_a_rede:
+  - id: compartimentar_pressao_sobre_ren
+    abordagem: Distribuir entre intermediários desconectados medidas de contenção, desvio ou impedimento para reduzir
+      a capacidade de Ren interferir sem permitir que um único elo conheça comando, rota e finalidade completos.
+    modalidade: indireta
+    tags:
+    - ren
+    - neutralizacao
+    - compartimentacao
+    - sigilo_rede
+    - intermediarios
+    - pressao
+  - id: converter_interferencia_em_custo
+    abordagem: Transformar interferências comprovadas de Ren em custo de tempo, acesso, dinheiro ou mobilidade por
+      células e instituições de cobertura, preferindo desgaste cumulativo a uma demonstração que revele a rede.
+    modalidade: indireta
+    tags:
+    - ren
+    - neutralizacao
+    - desgaste
+    - sigilo_rede
+    - cobertura
+    - interferencia
 fontes_canonicas:
 - narrador/masao/plano.md
 - narrador/verdade-da-campanha.md
