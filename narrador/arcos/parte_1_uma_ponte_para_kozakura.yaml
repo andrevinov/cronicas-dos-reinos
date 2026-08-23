@@ -28,9 +28,6 @@ orquestracao:
     principios_parte_1:
       tipo: documento_reservado
       arquivo: narrador/arcos/parte_1/principios-de-conducao.yaml
-    eventos_canonicos:
-      tipo: calendario_reservado
-      arquivo: narrador/arcos/parte_1/eventos-canonicos.yaml
     pressao_ravens_bluff:
       tipo: documento_reservado
       arquivo: narrador/arcos/parte_1/pressao-ravens-bluff.yaml
