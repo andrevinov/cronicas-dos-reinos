@@ -1,8 +1,12 @@
 schema_agenda_mundo: 1
 natureza: reservado
 hora_amanhecer: 06:00
-descricao: Agenda operacional do motor determinístico. Reavaliar um agente não significa fazê-lo agir; significa
-  apenas pedir ao narrador que reconsidere seu plano com base no estado atual, sem abrir agentes não relacionados.
+descricao: >-
+  Agenda operacional do motor determinístico. Reavaliar um agente não significa fazê-lo
+  agir; significa apenas pedir ao narrador que reconsidere seu plano com base no estado
+  atual, sem abrir agentes não relacionados. Agendamentos com evento_canonico pertencem
+  à espinha datada do arco: a hora 06:00, quando usada, somente torna o evento devido
+  naquele dia e não prescreve o relógio diegético da cena.
 reavaliacoes:
   red_sail:
     cadencia: amanhecer
@@ -13,8 +17,7 @@ reavaliacoes:
     cadencia: amanhecer
     intervalo_dias: 1
     inicio: 11 Eleasis, 1372 DR
-    motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar prioridades a cada novo
-      dia.
+    motivo: A Night Watch mantém investigação e vigilância próprias e deve reconsiderar prioridades a cada novo dia.
   casa_de_tyr:
     cadencia: amanhecer
     intervalo_dias: 2
@@ -24,8 +27,7 @@ reavaliacoes:
     cadencia: amanhecer
     intervalo_dias: 2
     inicio: 12 Eleasis, 1372 DR
-    motivo: Kurobane está canonicamente presente em Ravens Bluff e pode procurar novas janelas para documentos,
-      mensagens ou extração.
+    motivo: Kurobane está canonicamente presente em Ravens Bluff e pode procurar novas janelas para documentos, mensagens ou extração.
   masao_hirasawa:
     cadencia: amanhecer
     intervalo_dias: 3
@@ -35,28 +37,105 @@ reavaliacoes:
     cadencia: amanhecer
     intervalo_dias: 2
     inicio: 13 Eleasis, 1372 DR
-    motivo: Shizune reconsidera guerra administrativa e pressão institucional quando estiver ativa; reavaliar não
-      implica ação física ou descoberta.
+    motivo: Shizune reconsidera guerra administrativa e pressão institucional quando estiver ativa; reavaliar não implica ação física ou descoberta.
   sawagejo_cho:
     cadencia: amanhecer
     intervalo_dias: 2
     inicio: 13 Eleasis, 1372 DR
-    motivo: Após sua primeira aparição tornar Chō ativo, sua curiosidade marcial e pressão pessoal continuam autônomas;
-      antes disso o guardrail de arco o filtra.
+    motivo: Após sua primeira aparição tornar Chō ativo, sua curiosidade marcial e pressão pessoal continuam autônomas; antes disso o guardrail de arco o filtra.
   pan_chu:
     cadencia: amanhecer
     intervalo_dias: 1
     inicio: 28 Eleasis, 1372 DR
-    motivo: Depois da chegada do Golden Lily e ativação de Pan Chu, presença marítima, logística e contestação de
-      autoridade merecem reavaliação diária; antes disso o guardrail o filtra.
+    motivo: Depois da chegada do Golden Lily e ativação de Pan Chu, presença marítima, logística e contestação de autoridade merecem reavaliação diária; antes disso o guardrail o filtra.
 agendamentos:
+- id: canon_parte1_16_eleasis_emboscada
+  tipo: evento_canonico
+  evento_canonico: emboscada_do_restaurante
+  em: {data: 16 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: A rede materializa a primeira abordagem direta baseada na rotina diária reconhecida de Ren.
+- id: canon_parte1_18_eleasis_shinta
+  tipo: evento_canonico
+  evento_canonico: shinta_incriminado
+  em: {data: 18 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Shinta é incriminado e a vulnerabilidade institucional de Ren é explorada para tentativa de eliminação.
+- id: canon_parte1_19_eleasis_halessa
+  tipo: evento_canonico
+  evento_canonico: halessa_admite_a_teia
+  em: {data: 19 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Halessa comunica que a manipulação documental em Tyr está perto de vencer a investigação formal.
+- id: canon_parte1_20_eleasis_arsenal
+  tipo: evento_canonico
+  evento_canonico: arsenal_da_night_watch
+  em: {data: 20 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: O roubo do arsenal e do estandarte força uma incursão da Night Watch em Sarbreen.
+- id: canon_parte1_22_eleasis_veneno
+  tipo: evento_canonico
+  evento_canonico: veneno_em_tyr
+  em: {data: 22 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Uma morte por veneno dentro de Tyr expõe a operação documental de Shizune sem obrigar sua captura ou retirada.
+- id: canon_parte1_25_eleasis_pessoas_ken
+  tipo: evento_canonico
+  evento_canonico: pessoas_sem_porto_e_ken
+  em: {data: 25 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Pessoas sem desembarque coerente tornam a anomalia humana visível e Ken Takakura procura Kage independentemente de Masao.
+- id: canon_parte1_26_eleasis_shen
+  tipo: evento_canonico
+  evento_canonico: chegada_de_shen_meihua
+  em: {data: 26 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Shen Meihua cruza diretamente a vida de Ren e entra como primeira aliada canônica do arco.
 - id: chegada_golden_lily_27_eleasis
   tipo: movimento
+  evento_canonico: chegada_golden_lily
   em:
     data: 27 Eleasis, 1372 DR
     hora: '10:00'
   agente: pan_chu
   agentes_afetados:
   - pan_chu
-  motivo: 'Relógio canônico da Parte 1: avaliar a chegada física do Golden Lily a Ravens Bluff. Ren não precisa
-    estar presente nem descobrir o evento automaticamente.'
+  motivo: 'Relógio canônico da Parte 1: avaliar a chegada física do Golden Lily a Ravens Bluff. Ren não precisa estar presente nem descobrir o evento automaticamente.'
+- id: canon_parte1_28_eleasis_feira
+  tipo: evento_canonico
+  evento_canonico: feira_oriental_do_porto
+  em: {data: 28 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Comércio real e fluxo estrangeiro ocupam o porto enquanto a Night Watch é saturada por ocorrências.
+- id: canon_parte1_29_eleasis_cormyr
+  tipo: evento_canonico
+  evento_canonico: cerco_naval_de_cormyr
+  em: {data: 29 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: Três fragatas de Cormyr chegam após mobilização prévia e o impasse naval transforma Ravens Bluff em refém de Pan Chu.
+- id: canon_parte1_30_eleasis_drogas
+  tipo: evento_canonico
+  evento_canonico: casa_de_cha_e_drogas
+  em: {data: 30 Eleasis, 1372 DR, hora: '06:00'}
+  motivo: A distribuição de droga kozakurana conecta Pan Chu, células de Masao e infraestrutura antiga de Sarbreen.
+- id: canon_parte1_01_eleint_kethra
+  tipo: evento_canonico
+  evento_canonico: sequestro_de_kethra
+  em: {data: 1 Eleint, 1372 DR, hora: '06:00'}
+  motivo: A rede converte rastros acumulados de Kethra em sequestro e ultimato a Ren no Golden Lily.
+- id: canon_parte1_03_eleint_cho
+  tipo: evento_canonico
+  evento_canonico: cho_na_cela
+  em: {data: 3 Eleint, 1372 DR, hora: '06:00'}
+  motivo: Chō entra diretamente na vida de Ren por uma primeira conversa sob custódia da guarda.
+- id: canon_parte1_04_eleint_fuga_cho
+  tipo: evento_canonico
+  evento_canonico: extracao_de_cho
+  em: {data: 4 Eleint, 1372 DR, hora: '06:00'}
+  motivo: Uma extração preparada de Chō rompe as celas e agrava a crise de autoridade da Night Watch.
+- id: canon_parte1_07_eleint_duelo_cho
+  tipo: evento_canonico
+  evento_canonico: duelo_publico_de_cho
+  em: {data: 7 Eleint, 1372 DR, hora: '06:00'}
+  motivo: Chō sequestra Tavin, força o conflito para o espaço público e desmonta as identidades compartimentadas de Ren; Jōen entra no arco.
+- id: canon_parte1_09_eleint_aurora
+  tipo: evento_canonico
+  evento_canonico: ataque_a_casa_da_aurora_menor
+  em: {data: 9 Eleint, 1372 DR, hora: '06:00'}
+  motivo: A degradação da autoridade permite que violência urbana alcance a Casa da Aurora Menor e Maerra.
+- id: canon_parte1_11_eleint_final
+  tipo: evento_canonico
+  evento_canonico: descida_a_ponte_e_masao
+  em: {data: 11 Eleint, 1372 DR, hora: '06:00'}
+  motivo: A Parte 1 converge na Ponte: sobreviventes do círculo externo, primeiro encontro com Masao, revelação excepcional de Seishirō e perda do monopólio da passagem.
