@@ -33,14 +33,15 @@ class LocalMicroeventRepositoryTest(unittest.TestCase):
         self.assertEqual(len(state["locais"]), 11)
 
     def test_estado_real_nao_inventa_microeventos_retroativos(self):
+        raw = yaml.safe_load((ROOT / micro.STATE).read_text(encoding="utf-8"))
         state = micro.load_state(ROOT, micro.load_index(ROOT))
-        self.assertEqual(state["historico_recente"], [])
-        for item in state["locais"].values():
-            self.assertEqual(item["ocorrencia"], {"ciclo": 0, "restantes": []})
-            self.assertEqual(
-                item["cartas"],
-                {"ciclo": 0, "assinatura_pool": None, "restantes": []},
-            )
+        # O loader só valida o que foi persistido; jogar uma cena real pode
+        # legitimamente tornar histórico/decks não vazios sem virar retroatividade.
+        self.assertEqual(state, raw)
+        self.assertLessEqual(len(state["historico_recente"]), micro.MAX_HISTORY)
+        for event in state["historico_recente"]:
+            self.assertIn(event["local_id"], state["locais"])
+            self.assertIn(event["resultado"], {"rotina", "microevento"})
 
     def test_todo_local_tem_pool_ecologicamente_compativel(self):
         index = micro.load_index(ROOT)
@@ -226,6 +227,9 @@ class LocalMicroeventSceneIntegrationTest(unittest.TestCase):
         ))
 
     def test_confirmar_consumo_unico_e_revalida_estado_do_baralho(self):
+        history_before = len(
+            micro.load_state(self.repo, micro.load_index(self.repo))["historico_recente"]
+        )
         preview = cena_mundo.prepare_scene(
             self.repo,
             scene_id="micro-confirm",
@@ -250,7 +254,7 @@ class LocalMicroeventSceneIntegrationTest(unittest.TestCase):
             preview["local"]["microevento_local"]["resultado"],
         )
         state = micro.load_state(self.repo, micro.load_index(self.repo))
-        self.assertEqual(len(state["historico_recente"]), 1)
+        self.assertEqual(len(state["historico_recente"]), history_before + 1)
 
     def test_estado_do_baralho_mudando_invalida_preparacao(self):
         preview = cena_mundo.prepare_scene(
