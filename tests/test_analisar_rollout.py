@@ -287,6 +287,25 @@ class RolloutTelemetryTest(unittest.TestCase):
                     ["sessoes/NNN/transcricao.md", "runtime/eventos-pendentes.jsonl"],
                 )
 
+    def test_cronica_session_lifecycle_e_progressao_sao_classificados_corretamente(self):
+        writers = [
+            "cronica sessao checkpoint",
+            "cronica sessao encerrar",
+            "cronica sessao iniciar",
+            "cronica sessao recuperar",
+            "cronica progressao aplicar",
+            "python3 ferramentas/cronica.py sessao encerrar",
+            "python3 ferramentas/cronica.py progressao aplicar",
+        ]
+        for command in writers:
+            with self.subTest(command=command):
+                raw = json.dumps({"cmd": command})
+                self.assertEqual(mod._classify_tool("exec_command", raw), "write")
+        for command in ("cronica sessao status", "cronica progressao status"):
+            with self.subTest(command=command):
+                raw = json.dumps({"cmd": command})
+                self.assertNotEqual(mod._classify_tool("exec_command", raw), "write")
+
     def test_batch_context_search_is_detected_as_l3(self):
         command = (
             "python3 ferramentas/contexto-buscar-muitos.py 'menino' 'barril seco' "
