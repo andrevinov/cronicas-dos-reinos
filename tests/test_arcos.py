@@ -493,7 +493,7 @@ class ArcosBundleTest(unittest.TestCase):
     def test_parte_1_real_tem_linhas_operacionais_curadas_e_compactas(self):
         result = arcos.operational_lines(ROOT)
         by_id = {line["id"]: line for line in result["linhas"]}
-        self.assertEqual(len(by_id), 11)
+        self.assertEqual(len(by_id), 12)
         self.assertEqual(
             by_id["impedir_consolidacao_de_provas"]["executores"],
             ["kurobane_jinzaburo", "kajiwara_shizune"],
