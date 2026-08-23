@@ -72,6 +72,51 @@ def footer_magic_items(disponibilidades: dict[str, Any]) -> dict[str, Any]:
     return items
 
 
+def character_context_capabilities(ficha: dict[str, Any]) -> dict[str, Any] | None:
+    """Projeta só capacidades que o narrador precisa lembrar no hot path.
+
+    Sem Actor/Observant a função não acrescenta nada, preservando fixtures antigas.
+    A ficha segue sendo a autoridade; o runtime apenas evita relê-la em cada cena.
+    """
+    talents = ficha.get("talentos")
+    if not isinstance(talents, dict) or not ({"actor", "observant"} & set(talents)):
+        return None
+    attributes = ficha.get("atributos") or {}
+    skills = ficha.get("pericias") or {}
+    senses = ficha.get("sentidos") or {}
+
+    def modifier(name: str):
+        raw = attributes.get(name) if isinstance(attributes, dict) else None
+        return raw.get("modificador") if isinstance(raw, dict) else None
+
+    result: dict[str, Any] = {
+        "atributos": {
+            "inteligencia": modifier("inteligencia"),
+            "carisma": modifier("carisma"),
+        },
+        "pericias": {
+            "investigacao": skills.get("investigacao") if isinstance(skills, dict) else None,
+            "percepcao": skills.get("percepcao") if isinstance(skills, dict) else None,
+        },
+        "passivos": {
+            "percepcao": senses.get("percepcao_passiva") if isinstance(senses, dict) else None,
+            "investigacao": senses.get("investigacao_passiva") if isinstance(senses, dict) else None,
+        },
+    }
+    if "actor" in talents:
+        result["actor"] = {
+            "vantagem_impersonacao": ["enganacao", "atuacao"],
+            "flag_rolagem": "--actor-impersonacao",
+            "mimetismo": "fala/sons ouvidos por pelo menos 1 minuto; ouvinte pode opor Intuição a Enganação",
+        }
+    if "observant" in talents:
+        result["observant"] = {
+            "leitura_labial": "se vir a boca e entender o idioma",
+            "bonus_passivos": 5,
+        }
+    return result
+
+
 def build_runtime_from_documents(
     estado: dict[str, Any],
     tempo_arquivo: dict[str, Any],
@@ -123,6 +168,7 @@ def build_runtime_from_documents(
     compromissos_view = compromissos.runtime_bundle(
         estado.get("compromissos") or {}, data, hora, limit=4
     )
+    capacidades = character_context_capabilities(ficha)
 
     contexto = {
         "versao_runtime": RUNTIME_VERSION,
@@ -178,6 +224,8 @@ def build_runtime_from_documents(
             "regras": "regras/",
         },
     }
+    if capacidades is not None:
+        contexto["capacidades_contextuais"] = capacidades
     if efeitos_temporarios:
         contexto["efeitos_temporarios"] = copy.deepcopy(efeitos_temporarios)
     if compromissos_view is not None:
