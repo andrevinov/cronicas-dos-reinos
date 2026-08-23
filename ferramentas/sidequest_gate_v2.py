@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""Gate v2 raro, determinístico e sensível à pressão de seca.
+"""Adaptador v2 do gate raro de sidequests.
 
-A camada preserva o baralho-base 8 nada : 2 oportunidade. Só depois de uma
-ficha-base `nada` já ter sido consumida consulta a Adventure Drought Pressure.
-A pressão pode promover a ficha corrente, sem reroll, reset ou reordenação.
-O resultado continua sendo apenas potencial de sidequest, nunca oferta automática.
+Preserva a orquestração existente de `interacoes_mundo.encounter_event`: bloqueios,
+perfil, necessidade, persistência e orçamento continuam em uma única implementação.
+Este módulo intercepta somente o sorteio 8:2 já existente e pode promover a ficha
+`nada` corrente conforme a Adventure Drought Pressure, sem reroll ou reset.
 """
 from __future__ import annotations
 
 import argparse
 import copy
 import hashlib
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import yaml
 
 import interacoes_mundo as integration
-import mundo
 import oportunidades
 import pressao_aventura
 
@@ -26,6 +26,8 @@ PROMOTION_ORDER = "sha256_seed_token"
 EXPECTED_PROMOTIONS = {0: 0, 1: 1, 2: 2, 3: 3}
 MAX_PROMOTIONS = 3
 
+# Capturado antes de `cena_mundo.py` instalar este adaptador como porta preferencial.
+_BASE_ENCOUNTER_EVENT = integration.encounter_event
 _PRESSURE_CACHE: dict[tuple[str, tuple[Any, ...]], dict[str, Any]] = {}
 
 
@@ -56,6 +58,7 @@ def _contract(index: dict[str, Any]) -> dict[str, Any]:
         raise SidequestGateV2Error("fonte da pressão do gate v2 inválida")
     if pressure.get("ordenacao_promovidos") != PROMOTION_ORDER:
         raise SidequestGateV2Error("ordenação de promoção do gate v2 inválida")
+
     raw = pressure.get("promocoes_nada_por_nivel")
     if not isinstance(raw, dict):
         raise SidequestGateV2Error("promocoes_nada_por_nivel deve ser mapa")
@@ -121,7 +124,7 @@ def _pressure_signature(repo: Path) -> tuple[Any, ...]:
 
 
 def pressure_for_gate(repo: Path) -> dict[str, Any]:
-    """No máximo uma leitura do mesmo estado de pressão por processo/versão do arquivo."""
+    """Lê no máximo uma vez a mesma versão do estado de pressão por processo."""
     repo = repo.resolve()
     signature = _pressure_signature(repo)
     key = (str(repo), signature)
@@ -132,7 +135,6 @@ def pressure_for_gate(repo: Path) -> dict[str, Any]:
         result = pressao_aventura.status_for_gate(repo)
     except pressao_aventura.AdventurePressureError as exc:
         raise SidequestGateV2Error(str(exc)) from exc
-    # Descarta versões antigas do mesmo repo para manter cache minúsculo.
     for old in [item for item in _PRESSURE_CACHE if item[0] == str(repo)]:
         _PRESSURE_CACHE.pop(old, None)
     _PRESSURE_CACHE[key] = copy.deepcopy(result)
@@ -143,10 +145,13 @@ def draw_gate_v2(
     repo: Path,
     state: dict[str, Any],
     index: dict[str, Any],
+    *,
+    base_draw=None,
 ) -> dict[str, Any]:
-    """Consome exatamente uma ficha-base e opcionalmente a promove em memória."""
+    """Consome exatamente uma ficha-base e opcionalmente promove essa mesma ficha."""
     contract = _contract(index)
-    token, base = oportunidades.draw_gate(state, index)
+    draw = base_draw or oportunidades.draw_gate
+    token, base = draw(state, index)
     result = {
         "versao": contract["versao"],
         "ficha": token,
@@ -192,165 +197,70 @@ def _provenance(gate: dict[str, Any]) -> dict[str, Any]:
     return value
 
 
+@contextmanager
+def _adapt_draw(repo: Path) -> Iterator[dict[str, Any]]:
+    """Adapta só `draw_gate`; toda a orquestração continua em interacoes_mundo."""
+    original = oportunidades.draw_gate
+    captured: dict[str, Any] = {}
+
+    def draw(state: dict[str, Any], index: dict[str, Any]) -> tuple[str, str]:
+        try:
+            gate = draw_gate_v2(repo, state, index, base_draw=original)
+        except SidequestGateV2Error as exc:
+            raise oportunidades.OpportunityError(str(exc)) from exc
+        captured.clear()
+        captured.update(gate)
+        return gate["ficha"], gate["resultado"]
+
+    oportunidades.draw_gate = draw
+    try:
+        yield captured
+    finally:
+        oportunidades.draw_gate = original
+
+
 def encounter_event(
     repo: Path,
     npc_id: str,
     *,
-    now: mundo.WorldInstant | None = None,
+    now=None,
     encounter_id: str | None = None,
 ) -> dict[str, Any]:
-    """Porta preferencial v2; mantém as barreiras do v1 antes de consultar pressão."""
+    """Executa o encontro existente com somente o sorteio adaptado para v2."""
     try:
         index = oportunidades.load_index(repo)
         _contract(index)
     except (oportunidades.OpportunityError, SidequestGateV2Error) as exc:
         raise integration.IntegrationError(str(exc)) from exc
 
-    resolution = integration.resolve_encounter_npc(repo, npc_id, index)
-    npc_id = resolution["npc_id"]
-    resolution_fields = integration._resolution_fields(resolution)
-    meta = index["perfis"].get(npc_id)
-    if not isinstance(meta, dict) or meta.get("estado") != "ativo":
-        return {
-            "ok": True,
-            "resultado": "interacao_normal",
-            "motivo": "npc_sem_perfil_ativo",
-            "npc_id": npc_id,
-            **resolution_fields,
-            "fontes_lidas": resolution["fontes_lidas"],
-        }
+    with _adapt_draw(repo) as gate:
+        result = _BASE_ENCOUNTER_EVENT(
+            repo,
+            npc_id,
+            now=now,
+            encounter_id=encounter_id,
+        )
 
-    try:
-        state = oportunidades.load_state(repo, index)
-        current, time_sources = integration._now(repo, now)
-        changed = oportunidades.prune_expired(state, current)
-        key = oportunidades._encounter_key(npc_id, current, encounter_id)
-    except oportunidades.OpportunityError as exc:
-        raise integration.IntegrationError(str(exc)) from exc
+    if not gate:
+        return result
 
-    sources = [
-        *resolution["fontes_lidas"],
-        integration.OPPORTUNITY_STATE.as_posix(),
-        *time_sources,
-    ]
-    if key in state["encontros_recentes"]:
-        if changed:
-            oportunidades.atomic(repo / integration.OPPORTUNITY_STATE, state)
-        return {
-            "ok": True,
-            "resultado": "interacao_normal",
-            "motivo": "encontro_ja_processado",
-            "npc_id": npc_id,
-            **resolution_fields,
-            "encontro_id": key,
-            "fontes_lidas": integration._compact_sources(sources),
-        }
-
-    blocked, active, opened = integration._encounter_block(state, index, npc_id)
-    if blocked is not None:
-        if changed:
-            oportunidades.atomic(repo / integration.OPPORTUNITY_STATE, state)
-        return {
-            "ok": True,
-            "resultado": "interacao_normal",
-            "motivo": blocked,
-            "npc_id": npc_id,
-            **resolution_fields,
-            "ativas": active,
-            "em_aberto": opened,
-            "cooldown_ate": state.get("cooldown_ate"),
-            "fontes_lidas": integration._compact_sources(sources),
-        }
-
-    state["encontros_recentes"].append(key)
-    state["encontros_recentes"] = state["encontros_recentes"][-oportunidades.MAX_HISTORY :]
-    try:
-        gate = draw_gate_v2(repo, state, index)
-    except SidequestGateV2Error as exc:
-        raise integration.IntegrationError(str(exc)) from exc
-    sources.extend(gate.get("fontes_lidas") or [])
     provenance = _provenance(gate)
-
-    if gate["resultado"] == "nada":
-        oportunidades.atomic(repo / integration.OPPORTUNITY_STATE, state)
-        return {
-            "ok": True,
-            "resultado": "interacao_normal",
-            "motivo": "gate_sem_oportunidade",
-            "ficha": gate["ficha"],
-            "gate_v2": provenance,
-            "npc_id": npc_id,
-            **resolution_fields,
-            "encontro_id": key,
-            "fontes_lidas": integration._compact_sources(sources),
-        }
-
-    try:
-        profile = oportunidades.load_profile(repo, npc_id, index)
-        available = oportunidades._available_needs(state, profile, npc_id)
-    except oportunidades.OpportunityError as exc:
-        raise integration.IntegrationError(str(exc)) from exc
-    profile_path = index["perfis"][npc_id]["arquivo"]
-    sources.append(profile_path)
-    if not available:
-        oportunidades.atomic(repo / integration.OPPORTUNITY_STATE, state)
-        return {
-            "ok": True,
-            "resultado": "interacao_normal",
-            "motivo": "oportunidade_sem_necessidade_disponivel",
-            "ficha": gate["ficha"],
-            "gate_v2": provenance,
-            "npc_id": npc_id,
-            **resolution_fields,
-            "encontro_id": key,
-            "fontes_lidas": integration._compact_sources(sources),
-        }
-
-    need = oportunidades.choose_need(index["_seed"], npc_id, available)
-    raw_id = (
-        f"{index['_seed']}|{npc_id}|{need['id']}|"
-        f"{state['gate']['ciclo']}|{state['gate']['sorteios']}"
+    result = copy.deepcopy(result)
+    result["gate_v2"] = provenance
+    result["fontes_lidas"] = list(
+        dict.fromkeys([*(result.get("fontes_lidas") or []), *(gate.get("fontes_lidas") or [])])
     )
-    pending_id = "sq-" + hashlib.sha256(raw_id.encode()).hexdigest()[:16]
-    pending = {
-        "id": pending_id,
-        "estado": "potencial",
-        "npc_id": npc_id,
-        "npc_nome": index["perfis"][npc_id]["nome"],
-        "necessidade_id": need["id"],
-        "tipo": need["tipo"],
-        "semente": need["semente"],
-        "janela": oportunidades._window_at(need, current),
-        "pode_reabrir": need["pode_reabrir"],
-        "consequencia_sem_ren": need["consequencia_sem_ren"],
-        "fonte_npc": profile["fonte_npc"],
-        "gerada_em": mundo.instant_parts(current),
-        "regra": "potencial_nao_significa_oferecida",
-        "origem_gate": provenance,
-    }
-    state["pendencias_avaliacao"][pending_id] = pending
-    oportunidades.atomic(repo / integration.OPPORTUNITY_STATE, state)
-    promoted = bool(gate["promovido_por_pressao"])
-    return {
-        "ok": True,
-        "resultado": "avaliar_sidequest",
-        "motivo": (
+    if result.get("resultado") == "avaliar_sidequest":
+        result["motivo"] = (
             "gate_v2_promovido_por_pressao"
-            if promoted
+            if gate["promovido_por_pressao"]
             else "gate_oportunidade_base"
-        ),
-        "ficha": gate["ficha"],
-        "gate_v2": provenance,
-        "npc_id": npc_id,
-        **resolution_fields,
-        "encontro_id": key,
-        "pendencia": pending,
-        "instrucao": (
-            "Avaliar a semente contra o cânone atual. Pressão só abriu a avaliação; "
+        )
+        result["instrucao"] = (
+            "Avaliar a semente contra o cânone atual. Pressão só pode abrir a avaliação; "
             "só oferecer após decisão explícita. Potencial não é fala nem missão."
-        ),
-        "fontes_lidas": integration._compact_sources(sources),
-    }
+        )
+    return result
 
 
 def check(repo: Path) -> dict[str, Any]:
