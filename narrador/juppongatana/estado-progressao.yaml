@@ -1,0 +1,5 @@
+schema_estado_progressao_juppongatana: 1
+natureza: estado_reservado
+base_nivel: 7
+retroatividade_aplicada: false
+neutralizacoes: []

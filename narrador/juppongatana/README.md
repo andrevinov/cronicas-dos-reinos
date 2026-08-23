@@ -48,10 +48,30 @@ acordo diferente com Masao.
 
 ---
 
+## Progressão de Ren
+
+A partir do nível 7, a faixa **8–17** usa a Juppongatana como espinha de milestones.
+Cada membro único neutralizado de forma canônica e durável desbloqueia exatamente
+um nível, em ordem de conquista — não em ordem fixa de membro.
+
+Neutralização não exige morte, mas precisa retirar de modo persistente a capacidade
+do membro servir à estrutura de Masao. Derrota temporária, fuga, objetivo frustrado,
+ferimento recuperável ou primeiro contato não contam.
+
+Os marcos de aparição continuam independentes: eles definem quando um encontro se
+torna plausível, não a sequência em que Ren deve vencer as Dez Espadas.
+
+Consultar `progressao.yaml`, `estado-progressao.yaml` e
+`ferramentas/progressao_juppongatana.py`.
+
+---
+
 ## Arquivos
 
 * `membros.md`: fichas canônicas consolidadas.
 * `marcos-de-aparicao.md`: momentos previstos para cruzarem a vida de Ren.
+* `progressao.yaml`: contrato reservado da faixa de níveis 8–17.
+* `estado-progressao.yaml`: ledger compacto de neutralizações duráveis já consumidas.
 * `imagens/`: imagens extraídas do documento interno.
 
 ---
