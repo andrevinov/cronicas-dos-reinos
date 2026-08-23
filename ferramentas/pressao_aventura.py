@@ -105,7 +105,10 @@ def status(repo: Path) -> dict[str, Any]:
     return {
         "ok": True,
         "pressao_aventura": result,
-        "fontes_lidas": [microeventos_locais.STATE.as_posix()],
+        "fontes_lidas": [
+            microeventos_locais.INDEX.as_posix(),
+            microeventos_locais.STATE.as_posix(),
+        ],
     }
 
 
