@@ -24,9 +24,12 @@ jobs:
           lines = path.read_text(encoding='utf-8').splitlines()
           start = next(i for i, line in enumerate(lines) if "python3 - <<'PY'" in line) + 1
           end = next(i for i in range(start, len(lines)) if lines[i].strip() == 'PY')
+          prefix = '          '
           body = lines[start:end]
-          indent = min(len(line) - len(line.lstrip()) for line in body if line.strip())
-          code = '\n'.join(line[indent:] if line.strip() else '' for line in body) + '\n'
+          code = '\n'.join(
+              line[len(prefix):] if line.startswith(prefix) else line
+              for line in body
+          ) + '\n'
           compile(code, 'task18_patch.py', 'exec')
           exec(compile(code, 'task18_patch.py', 'exec'), {'__name__': '__main__'})
           PY
