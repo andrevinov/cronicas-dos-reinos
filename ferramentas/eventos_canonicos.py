@@ -19,6 +19,7 @@ import mundo
 CATALOG = Path("narrador/arcos/parte_1/eventos-canonicos.yaml")
 SCHEMA = 1
 ARC = "parte_1_uma_ponte_para_kozakura"
+SCHEDULE_ORIGIN_PREFIX = "agenda:agendamentos."
 
 
 class CanonicalEventError(ValueError):
@@ -81,33 +82,44 @@ def load_catalog(repo: Path) -> dict[str, Any]:
     return data
 
 
+def _schedule_id_from_pending(pending: dict[str, Any]) -> str | None:
+    origin = pending.get("origem")
+    if not isinstance(origin, str) or not origin.startswith(SCHEDULE_ORIGIN_PREFIX):
+        return None
+    schedule_id = origin[len(SCHEDULE_ORIGIN_PREFIX):].strip()
+    return schedule_id or None
+
+
 def event_for_pending(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
-    event_id = pending.get("evento_canonico")
-    if not isinstance(event_id, str) or not event_id.strip():
+    schedule_id = _schedule_id_from_pending(pending)
+    if schedule_id is None:
         return None
     catalog = load_catalog(repo)
-    event = catalog["eventos"].get(event_id)
-    if not isinstance(event, dict):
-        raise CanonicalEventError(f"pendência referencia evento canônico inexistente: {event_id}")
-    return {"id": event_id, **event}
+    for event_id, event in catalog["eventos"].items():
+        if event.get("agendamento_id") == schedule_id:
+            return {"id": event_id, **event}
+    return None
 
 
 def pending_projection(repo: Path, pendings: list[dict[str, Any]]) -> dict[str, Any]:
-    relevant = [item for item in pendings if isinstance(item, dict) and item.get("evento_canonico")]
-    if not relevant:
+    resolved: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for pending in pendings:
+        if not isinstance(pending, dict):
+            continue
+        event = event_for_pending(repo, pending)
+        if event is not None:
+            resolved.append((pending, event))
+    if not resolved:
         return {"eventos": [], "fontes_lidas": []}
-    catalog = load_catalog(repo)
     now, _ = mundo.load_canonical_time(repo)
     projected: list[dict[str, Any]] = []
-    for pending in relevant:
-        event_id = str(pending["evento_canonico"])
-        event = _map(catalog["eventos"].get(event_id), f"evento {event_id}")
+    for pending, event in resolved:
         activation = mundo.parse_instant(event["ativacao"]["data"], event["ativacao"]["hora"])
         overdue_minutes = max(0, now.minute - activation.minute)
         projected.append(
             {
                 "pendencia": pending.get("id"),
-                "evento": event_id,
+                "evento": event["id"],
                 "titulo": event.get("titulo"),
                 "data": event["ativacao"]["data"],
                 "janela": event.get("janela", "ao_longo_do_dia"),
@@ -126,8 +138,10 @@ def pending_projection(repo: Path, pendings: list[dict[str, Any]]) -> dict[str, 
 def validate(repo: Path) -> dict[str, Any]:
     errors: list[str] = []
     sources = [CATALOG.as_posix(), mundo.AGENDA_PATH.as_posix()]
+    count = 0
     try:
         catalog = load_catalog(repo)
+        count = len(catalog["eventos"])
         agenda = mundo.load_agenda(repo)
         schedules = {
             str(item.get("id")): item
@@ -148,10 +162,11 @@ def validate(repo: Path) -> dict[str, Any]:
                 raise CanonicalEventError(f"agendamento {schedule_id} não aponta para {event_id}")
             if schedule.get("em") != event.get("ativacao"):
                 raise CanonicalEventError(f"data do agendamento {schedule_id} diverge do catálogo")
-            if schedule.get("tipo") not in {"evento_canonico", "movimento"}:
-                raise CanonicalEventError(f"tipo inválido para evento canônico {event_id}")
-            if schedule.get("tipo") == "movimento" and event_id != "chegada_golden_lily":
-                raise CanonicalEventError("somente a chegada física do Golden Lily reutiliza tipo movimento")
+            if event_id == "chegada_golden_lily":
+                if schedule.get("tipo") != "movimento" or schedule.get("agente") != "pan_chu":
+                    raise CanonicalEventError("Golden Lily deve reutilizar o movimento físico de Pan Chu")
+            elif schedule.get("tipo") != "expiracao":
+                raise CanonicalEventError(f"evento canônico {event_id} deve usar agendamento genérico expiracao")
         dangling = [
             str(item.get("evento_canonico"))
             for item in agenda.get("agendamentos") or []
@@ -165,7 +180,7 @@ def validate(repo: Path) -> dict[str, Any]:
         errors.append(str(exc))
     return {
         "ok": not errors,
-        "eventos": 0 if errors else len(load_catalog(repo)["eventos"]),
+        "eventos": count,
         "erros": errors,
         "fontes_lidas": sources,
     }
