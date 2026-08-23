@@ -1,0 +1,56 @@
+name: Debug access ladder
+
+on:
+  push:
+    branches: [fix/rollout-cronica-hot-path]
+
+permissions:
+  contents: write
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/rollout-cronica-hot-path
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Diagnosticar cada sentinela
+        shell: bash
+        run: |
+          set -u
+          probe() { echo "==> $1"; shift; "$@"; rc=$?; echo "<== rc=$rc"; return 0; }
+          probe politica test -f ferramentas/politica_acesso.py
+          probe doc test -f docs/agente/escada-de-acesso.md
+          probe baseline test -f baseline/escada-acesso-step-10.md
+          probe marker_doc grep -q 'docs/agente/escada-de-acesso.md' AGENTS.md
+          probe marker_l4t grep -q 'L4T' AGENTS.md
+          probe marker_apos grep -q -- '--apos L2' AGENTS.md
+          echo '==> status'
+          python ferramentas/contexto.py --sem-log --max-bytes 16000 status > /tmp/acesso-l1.yaml; echo "rc=$? bytes=$(wc -c < /tmp/acesso-l1.yaml)"; cat /tmp/acesso-l1.yaml
+          echo '==> cena'
+          python ferramentas/contexto.py --sem-log cena > /tmp/acesso-l2.yaml; echo "rc=$? bytes=$(wc -c < /tmp/acesso-l2.yaml)"; cat /tmp/acesso-l2.yaml
+          echo '==> local'
+          python ferramentas/contexto.py --sem-log local 'casa de Iria Doss' > /tmp/acesso-local.yaml; echo "rc=$? bytes=$(wc -c < /tmp/acesso-local.yaml)"; cat /tmp/acesso-local.yaml
+          echo '==> l3 sem motivo (espera falhar)'
+          python ferramentas/contexto.py --sem-log buscar 'ponte baixa' > /tmp/acesso-sem-motivo.txt 2>&1; echo "rc=$?"; cat /tmp/acesso-sem-motivo.txt
+          echo '==> l3'
+          python ferramentas/contexto.py --sem-log buscar 'ponte baixa' --apos L2 --motivo 'As consultas dirigidas não localizaram o domínio da pista.' > /tmp/acesso-l3.yaml; echo "rc=$?"; cat /tmp/acesso-l3.yaml
+          echo '==> l4 errado (espera falhar)'
+          python ferramentas/contexto.py --sem-log buscar 'ponte baixa' --historico --apos L2 --motivo 'A busca corrente não resolveu a origem histórica necessária.' > /tmp/acesso-l4-errado.txt 2>&1; echo "rc=$?"; cat /tmp/acesso-l4-errado.txt
+          echo '==> l4'
+          python ferramentas/contexto.py --sem-log buscar 'ponte baixa' --historico --apos L3 --motivo 'A busca corrente não resolveu a origem histórica necessária.' > /tmp/acesso-l4.yaml; echo "rc=$? bytes=$(wc -c < /tmp/acesso-l4.yaml)"; cat /tmp/acesso-l4.yaml
+          echo '==> salto'
+          python ferramentas/contexto.py --sem-log sessao 2 --apos L2 --motivo 'A pergunta aponta diretamente para a sessão 002 e seu resumo.' > /tmp/acesso-salto.yaml; echo "rc=$?"; cat /tmp/acesso-salto.yaml
+      - name: Remover workflow temporario
+        if: always()
+        run: |
+          rm .github/workflows/zz-debug-access-ladder.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/workflows/zz-debug-access-ladder.yml
+          git commit -m 'ci: remover diagnostico temporario de acesso'
+          git push origin HEAD:fix/rollout-cronica-hot-path
