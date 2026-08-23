@@ -53,13 +53,13 @@ class SidequestGateV2RepositoryTest(unittest.TestCase):
         self.assertFalse((ROOT / "ferramentas/cena_mundo_v5.py").exists())
         self.assertIsNot(gate_v2._BASE_ENCOUNTER_EVENT, gate_v2.encounter_event)
 
-    def test_check_real_e_verde_e_pressao_sem_retroatividade(self):
+    def test_check_real_e_verde_e_pressao_derivada_sem_retroatividade(self):
         result = gate_v2.check(ROOT)
+        expected = pressao_aventura.status_for_gate(ROOT)["pressao_aventura"]
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["versao"], 2)
         self.assertEqual(result["gate_base"], {"nada": 8, "oportunidade": 2})
-        self.assertEqual(result["pressao_atual"]["nivel"], 0)
-        self.assertEqual(result["pressao_atual"]["cenas_secas_consecutivas"], 0)
+        self.assertEqual(result["pressao_atual"], expected)
 
 
 class SidequestGateV2SyntheticTest(unittest.TestCase):

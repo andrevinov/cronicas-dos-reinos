@@ -9,12 +9,16 @@ fluxo_preferencial:
   fase_2: cronica concluir
   preparar_e_read_only: true
   concluir_confirma_antes_de_registrar: true
+  concluir_confirma_antes_de_registrar_quando_reativo: true
+  concluir_neutro_registra_sem_confirmacao_falsa: true
   transacao_e_prevalidada_antes_da_primeira_mutacao: true
 limites:
   max_ticket_chars: 4096
   max_saida_preparacao_bytes: 8192
   max_chamadas_endpoint_preparar: 1
+  max_chamadas_endpoint_preparar_sem_gatilho: 0
   max_chamadas_confirmacao_concluir: 1
+  max_chamadas_confirmacao_concluir_neutro: 0
   max_chamadas_registro_concluir: 1
   max_escritas_novas_da_orquestracao: 0
   max_arquivos_runtime_novos: 0
@@ -24,7 +28,7 @@ limites:
   max_endpoints_novos: 0
 portas:
   preparar: read_only
-  concluir: confirmar_e_registrar
+  concluir: confirmar_se_reativo_e_registrar
   registrar: reparo_ou_uso_avancado
   confirmar: reparo_ou_uso_avancado
 invariantes:
@@ -32,6 +36,12 @@ invariantes:
   ticket_tem_checksum: true
   ticket_carrega_parametros_exatos_da_cena: true
   ticket_nao_congela_tempo_quando_tempo_nao_foi_fornecido: true
+  turno_sem_gatilho_emite_ticket_neutro: true
+  turno_sem_gatilho_nao_inventa_tag_local_ou_npc: true
+  turno_sem_gatilho_nao_chama_endpoint_de_cena: true
+  ticket_neutro_nao_confirma_cena_inexistente: true
+  preparar_expoe_contrato_json_de_conclusao: true
+  preparar_expoe_regra_de_linha_mecanica: true
   preparacao_obsoleta_falha_antes_do_registro_no_fluxo_concluir: true
   checkpoint_temporal_do_turno_ocorre_depois_da_confirmacao_da_cena: true
   falha_de_registro_apos_confirmacao_e_exposta_como_parcial: true

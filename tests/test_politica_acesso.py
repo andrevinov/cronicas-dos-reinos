@@ -113,6 +113,48 @@ class PoliticaAcessoTest(unittest.TestCase):
         self.assertTrue(data["controle_acesso"]["pare_se_suficiente"])
         self.assertEqual(data["controle_acesso"]["proximo_nivel"], "L2")
 
+    def test_status_l1_compacta_prosa_livre_sem_perder_estado_estruturado(self):
+        result = {
+            "sessao": {"numero": 13, "status": "em_sessao"},
+            "personagem": {"nome": "Ren Kagehira", "nivel": 7},
+            "recursos": {"pv": {"atuais": 52, "maximos": 52}, "ki": {"atuais": 7, "maximos": 7}},
+            "tempo": {
+                "data": "14 Eleasis, 1372 DR",
+                "hora_aproximada": "22:00",
+                "periodo": "texto livre antigo " * 100,
+            },
+            "localizacao": {
+                "area": "Jack Mooney & Sons Circus, Ravens Bluff",
+                "ponto_exato": "fundos do acampamento",
+                "descricao_operacional": "prosa longa " * 200,
+            },
+            "efeitos_temporarios": {
+                f"efeito_{i}": {
+                    "nome": f"Efeito {i}",
+                    "descricao": "descrição longa " * 80,
+                    "duracao": "até mudar",
+                }
+                for i in range(8)
+            },
+            "sobreposicao_transacional": {"eventos_pendentes": 1, "ultima_transacao": "tx"},
+        }
+        decision = policy.classify("status")
+        data, budget = policy.decorate(
+            {"consulta": {"comando": "status"}, "resultado": result},
+            decision,
+            requested_budget=16000,
+            after=None,
+            reason=None,
+        )
+        compact = data["resultado"]
+        self.assertEqual(budget, 4096)
+        self.assertEqual(compact["personagem"]["nome"], "Ren Kagehira")
+        self.assertEqual(compact["tempo"], {"data": "14 Eleasis, 1372 DR", "hora_aproximada": "22:00"})
+        self.assertEqual(compact["localizacao"]["area"], "Jack Mooney & Sons Circus, Ravens Bluff")
+        self.assertNotIn("descricao_operacional", compact["localizacao"])
+        self.assertEqual(compact["efeitos_temporarios"]["efeito_0"]["nome"], "Efeito 0")
+        self.assertTrue(data["controle_acesso"]["pare_se_suficiente"])
+
 
 if __name__ == "__main__":
     unittest.main()
