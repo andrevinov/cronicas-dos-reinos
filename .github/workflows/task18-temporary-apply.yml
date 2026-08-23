@@ -26,10 +26,19 @@ jobs:
           end = next(i for i in range(start, len(lines)) if lines[i].strip() == 'PY')
           prefix = '          '
           body = lines[start:end]
-          code = '\n'.join(
-              line[len(prefix):] if line.startswith(prefix) else line
-              for line in body
-          ) + '\n'
+          normalized = []
+          in_raw = False
+          for line in body:
+              if in_raw:
+                  normalized.append(line)
+                  if line.strip() == "'''":
+                      in_raw = False
+                  continue
+              line = line[len(prefix):] if line.startswith(prefix) else line
+              normalized.append(line)
+              if "= r'''" in line:
+                  in_raw = True
+          code = '\n'.join(normalized) + '\n'
           compile(code, 'task18_patch.py', 'exec')
           exec(compile(code, 'task18_patch.py', 'exec'), {'__name__': '__main__'})
           PY
