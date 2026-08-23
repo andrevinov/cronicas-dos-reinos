@@ -260,6 +260,33 @@ class RolloutTelemetryTest(unittest.TestCase):
             ["sessoes/NNN/transcricao.md", "runtime/eventos-pendentes.jsonl"],
         )
 
+    def test_cronica_mutacoes_sao_writers_e_preparar_nao_e(self):
+        writers = [
+            "python3 ferramentas/cronica.py concluir --ticket abc",
+            "python3 ferramentas/cronica.py registrar --ticket abc",
+            "python3 ferramentas/cronica.py confirmar --ticket abc",
+            "poetry run cronica concluir --ticket abc",
+            "cronica registrar --ticket abc",
+        ]
+        for command in writers:
+            with self.subTest(command=command):
+                raw = json.dumps({"cmd": command})
+                self.assertEqual(mod._classify_tool("exec_command", raw), "write")
+        prepare = json.dumps({"cmd": "cronica preparar --cena-id x"})
+        self.assertNotEqual(mod._classify_tool("exec_command", prepare), "write")
+
+    def test_cronica_concluir_e_registrar_inferem_alvos_do_turno(self):
+        for command in (
+            "cronica concluir --ticket abc",
+            "python3 ferramentas/cronica.py registrar --ticket abc",
+        ):
+            with self.subTest(command=command):
+                raw = json.dumps({"cmd": command})
+                self.assertEqual(
+                    mod._infer_write_paths("exec_command", raw),
+                    ["sessoes/NNN/transcricao.md", "runtime/eventos-pendentes.jsonl"],
+                )
+
     def test_batch_context_search_is_detected_as_l3(self):
         command = (
             "python3 ferramentas/contexto-buscar-muitos.py 'menino' 'barril seco' "
