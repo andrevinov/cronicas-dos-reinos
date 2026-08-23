@@ -1,0 +1,79 @@
+name: Task 22 surface patch
+
+on:
+  push:
+    branches:
+      - task/unified-session-lifecycle
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: task/unified-session-lifecycle
+          fetch-depth: 0
+      - name: Apply surface integrations
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new, count=1):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              found = text.count(old)
+              if found != count:
+                  raise SystemExit(f'{path}: expected {count} matches, found {found}')
+              p.write_text(text.replace(old, new, count), encoding='utf-8')
+
+          # Task21 regression: public parser grows, preserved core stays exactly Task21.
+          replace(
+              'tests/test_cronica_cli.py',
+              '''        self.assertEqual(\n            set(sub.choices),\n            {"preparar", "concluir", "registrar", "confirmar"},\n        )\n        self.assertIn(\n''',
+              '''        self.assertEqual(\n            set(sub.choices),\n            {"preparar", "concluir", "registrar", "confirmar", "sessao", "progressao"},\n        )\n        legacy = cronica._ORIGINAL_BUILD_PARSER()\n        legacy_sub = next(\n            action\n            for action in legacy._actions\n            if isinstance(action, argparse._SubParsersAction)\n        )\n        self.assertEqual(\n            set(legacy_sub.choices),\n            {"preparar", "concluir", "registrar", "confirmar"},\n        )\n        self.assertIn(\n'''
+          )
+
+          # Post-hoc telemetry must recognize high-level lifecycle writes.
+          replace(
+              'ferramentas/analisar-rollout.py',
+              '''    "cronica confirmar",\n    "checkpoint.py cena",\n''',
+              '''    "cronica confirmar",\n    "cronica.py sessao checkpoint",\n    "cronica.py sessao encerrar",\n    "cronica.py sessao iniciar",\n    "cronica.py sessao recuperar",\n    "cronica.py progressao aplicar",\n    "cronica sessao checkpoint",\n    "cronica sessao encerrar",\n    "cronica sessao iniciar",\n    "cronica sessao recuperar",\n    "cronica progressao aplicar",\n    "checkpoint.py cena",\n'''
+          )
+
+          marker = '''    def test_batch_context_search_is_detected_as_l3(self):\n'''
+          addition = '''    def test_cronica_session_lifecycle_e_progressao_sao_classificados_corretamente(self):\n        writers = [\n            "cronica sessao checkpoint",\n            "cronica sessao encerrar",\n            "cronica sessao iniciar",\n            "cronica sessao recuperar",\n            "cronica progressao aplicar",\n            "python3 ferramentas/cronica.py sessao encerrar",\n            "python3 ferramentas/cronica.py progressao aplicar",\n        ]\n        for command in writers:\n            with self.subTest(command=command):\n                raw = json.dumps({"cmd": command})\n                self.assertEqual(mod._classify_tool("exec_command", raw), "write")\n        for command in ("cronica sessao status", "cronica progressao status"):\n            with self.subTest(command=command):\n                raw = json.dumps({"cmd": command})\n                self.assertNotEqual(mod._classify_tool("exec_command", raw), "write")\n\n'''
+          p = Path('tests/test_analisar_rollout.py')
+          text = p.read_text(encoding='utf-8')
+          if text.count(marker) != 1:
+              raise SystemExit('test_analisar_rollout.py: marker mismatch')
+          p.write_text(text.replace(marker, addition + marker, 1), encoding='utf-8')
+
+          # Operational README: one compact high-level section, no duplicate mechanics.
+          marker = '''## Schema dos deltas\n'''
+          addition = '''## Lifecycle unificado da campanha\n\nDepois da Task 22, `cronica` também é a porta preferencial para sessão e level-up:\n\n```bash\ncronica sessao status\ncronica sessao checkpoint\ncronica sessao encerrar\ncronica progressao status\ncronica progressao aplicar < plano-nivel.yaml\ncronica sessao iniciar\ncronica sessao recuperar\n```\n\n`encerrar`, `checkpoint`, `iniciar` e `recuperar` delegam às mesmas autoridades anteriores (`checkpoint.py`/`sessoes.py`); não existe segundo lifecycle. Abertura continua criando somente N+1 e nunca copia a transcrição anterior.\n\nNa faixa 8–17, `cronica progressao aplicar` exige o milestone correspondente já registrado pela Task 19. O plano mecânico informa alterações da ficha e o novo resumo de poderes, mas não pode escolher `identidade.nivel`; o lifecycle força exatamente o próximo nível desbloqueado. Ficha, espelhos, resumo, experiência, runtime, handoff e índice entram no mesmo journal recuperável.\n\nAs primitivas antigas continuam disponíveis para diagnóstico/manutenção.\n\n'''
+          p = Path('ferramentas/README.md')
+          text = p.read_text(encoding='utf-8')
+          if text.count(marker) != 1:
+              raise SystemExit('README marker mismatch')
+          p.write_text(text.replace(marker, addition + marker, 1), encoding='utf-8')
+
+          for file in (
+              'ferramentas/analisar-rollout.py',
+              'tests/test_analisar_rollout.py',
+              'tests/test_cronica_cli.py',
+          ):
+              compile(Path(file).read_text(encoding='utf-8'), file, 'exec')
+          PY
+          git diff --check
+      - name: Commit integrations and remove temporary workflow
+        run: |
+          git rm .github/workflows/task22-surface-patch.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ferramentas/analisar-rollout.py ferramentas/README.md tests/test_analisar_rollout.py tests/test_cronica_cli.py
+          git commit -m 'Task 22: integrar lifecycle à CLI e telemetria'
+          git push origin HEAD:task/unified-session-lifecycle
