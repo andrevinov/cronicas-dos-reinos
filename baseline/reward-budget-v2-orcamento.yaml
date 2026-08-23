@@ -1,0 +1,43 @@
+schema_reward_budget_v2_orcamento: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Fazer novas recompensas procedurais respeitarem simultaneamente local, tier,
+  risco e importância sem rerrolar mapas existentes nem aumentar o hot path comum.
+aplicacao:
+  mapas_v1_persistidos: preservados_sem_regeneracao
+  novos_mapas_com_ecologia: deterministico_v2
+  fixture_sem_ecologia: legado_v1_compativel
+limites:
+  max_procedurais_por_mapa: 4
+  max_totais_por_mapa: 8
+  max_pontos_tier: 8
+  max_bonus_risco: 3
+  max_modificador_local: 2
+  max_custo_importancia_especial: 2
+  max_custo_item: 5
+  max_fontes_extras_cena_com_ecologia_precarregada: 0
+  max_fontes_extras_geracao_direta: 1
+  max_fragmentos_narrativos_extras: 0
+  max_schedulers_novos: 0
+  max_estados_novos: 0
+  max_scans_repo: 0
+formula:
+  pontos_total: pontos_tier + bonus_risco + modificador_local
+  custo_item: custo_valor + custo_importancia
+  teto_valor: teto_local_base + aumento_por_risco_limitado_a_alto
+  selecao: ranking_sha256_deterministico_sem_reroll
+invariantes:
+  local_restringe_categorias: true
+  local_restringe_teto_de_valor: true
+  risco_aumenta_pontos_sem_rebaixar_orcamento: true
+  risco_pode_aumentar_teto_de_valor: true
+  importancia_especial_custa_mais_que_comum: true
+  recompensa_procedural_de_arco_proibida: true
+  planejada_autoral_ou_de_quest_fica_fora_do_budget_procedural: true
+  item_existir_nao_significa_descoberta: true
+  mapa_gerado_uma_vez: true
+  reroll_proibido: true
+  mapa_existente_nao_le_tabelas_nem_ecologia: true
+  ecologia_precarregada_na_cena_nao_e_relida: true
+  familia_local_nova_sem_perfil_v2_falha_fechada: true
+  nenhum_npc_sidequest_ou_scheduler_e_acordado: true

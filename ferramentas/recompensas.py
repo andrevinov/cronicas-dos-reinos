@@ -23,6 +23,8 @@ from typing import Any
 
 import yaml
 
+import ecologia_local
+
 INDEX = Path("narrador/recompensas/index.yaml")
 ITEM_INDEX = Path("narrador/recompensas/itens-index.yaml")
 TABLES = Path("narrador/recompensas/tabelas.yaml")
@@ -31,6 +33,12 @@ MAPS_DIR = Path("narrador/recompensas/mapas")
 ITEMS_DIR = Path("narrador/recompensas/itens")
 
 GENERATOR = "deterministico_v1"
+GENERATOR_V2 = "deterministico_v2"
+VALID_GENERATORS = {GENERATOR, GENERATOR_V2}
+VALUE_RANK = {"baixo": 1, "moderado": 2, "alto": 3}
+VALUE_BY_RANK = {value: key for key, value in VALUE_RANK.items()}
+V2_VALUE_COST = {"baixo": 1, "moderado": 2, "alto": 3}
+V2_IMPORTANCE_COST = {"comum": 0, "especial": 2}
 VALID_DANGER = {"baixa", "media", "alta", "letal"}
 VALID_STATES = {"oculto", "descoberto", "obtido", "indisponivel"}
 VALID_IMPORTANCE = {"comum", "especial", "arco"}
@@ -200,7 +208,7 @@ def load_item_index(repo: Path) -> dict[str, Any]:
 def load_tables(repo: Path) -> dict[str, Any]:
     data = amap(load(repo / TABLES), str(TABLES))
     if (
-        data.get("schema_tabelas_recompensas") != 1
+        data.get("schema_tabelas_recompensas") not in {1, 2}
         or data.get("natureza") != "reservado"
         or data.get("gerador") != GENERATOR
     ):
@@ -285,6 +293,8 @@ def load_tables(repo: Path) -> dict[str, Any]:
             tags = alist(template.get("tags"), f"{tid}.tags")
             for tag in tags:
                 text(tag, f"{tid}.tags")
+    if data.get("schema_tabelas_recompensas") == 2:
+        _validate_budget_v2(data)
     return data
 
 
@@ -353,10 +363,19 @@ def _pick_template(
     return ordered[0]
 
 
-def generation_key(seed: str, place: str, tier: int, danger: str) -> str:
-    return hashlib.sha256(
-        f"{seed}|{place}|{tier}|{danger}|{GENERATOR}".encode("utf-8")
-    ).hexdigest()[:24]
+def generation_key(
+    seed: str,
+    place: str,
+    tier: int,
+    danger: str,
+    *,
+    generator: str = GENERATOR,
+    family: str | None = None,
+) -> str:
+    parts = [seed, place, str(tier), danger, generator]
+    if family is not None:
+        parts.append(family)
+    return hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()[:24]
 
 
 def _procedural_possession(seed: str, namespace: str, condition: dict[str, Any]) -> dict[str, str]:
@@ -414,6 +433,101 @@ def _validate_planned_spec(value: Any, label: str) -> dict[str, Any]:
     return spec
 
 
+def _signed_integer(value: Any, label: str, minimum: int, maximum: int) -> int:
+    if not isinstance(value, int) or isinstance(value, bool) or not minimum <= value <= maximum:
+        raise RewardMapError(f"{label} deve ser inteiro entre {minimum} e {maximum}")
+    return value
+
+
+def _validate_budget_v2(tables: dict[str, Any]) -> dict[str, Any]:
+    cfg = amap(tables.get("orcamento_v2"), "orcamento_v2")
+    expected = {
+        "gerador", "pontos_por_tier", "max_itens_por_tier", "bonus_risco",
+        "aumento_teto_valor_risco", "custo_valor", "custo_importancia", "perfis_familia",
+    }
+    if set(cfg) != expected:
+        raise RewardMapError(f"orcamento_v2 possui campos divergentes: {sorted(set(cfg) ^ expected)}")
+    if cfg.get("gerador") != GENERATOR_V2:
+        raise RewardMapError("orcamento_v2.gerador deve ser deterministico_v2")
+    tier_keys = set(tables["tiers"])
+    for field in ("pontos_por_tier", "max_itens_por_tier"):
+        values = amap(cfg.get(field), f"orcamento_v2.{field}")
+        if set(values) != tier_keys:
+            raise RewardMapError(f"orcamento_v2.{field} deve cobrir todos os tiers")
+        for tier, value in values.items():
+            integer(value, f"orcamento_v2.{field}.{tier}", 1)
+    if any(value > 4 for value in cfg["max_itens_por_tier"].values()):
+        raise RewardMapError("orcamento_v2.max_itens_por_tier não pode exceder 4")
+    for field in ("bonus_risco", "aumento_teto_valor_risco"):
+        values = amap(cfg.get(field), f"orcamento_v2.{field}")
+        if set(values) != VALID_DANGER:
+            raise RewardMapError(f"orcamento_v2.{field} deve cobrir todos os riscos")
+        for danger, value in values.items():
+            integer(value, f"orcamento_v2.{field}.{danger}", 0)
+    if amap(cfg.get("custo_valor"), "orcamento_v2.custo_valor") != V2_VALUE_COST:
+        raise RewardMapError("orcamento_v2.custo_valor diverge do contrato")
+    if amap(cfg.get("custo_importancia"), "orcamento_v2.custo_importancia") != V2_IMPORTANCE_COST:
+        raise RewardMapError("orcamento_v2.custo_importancia diverge do contrato")
+    profiles = amap(cfg.get("perfis_familia"), "orcamento_v2.perfis_familia")
+    if not profiles:
+        raise RewardMapError("orcamento_v2.perfis_familia vazio")
+    catalog = set(tables["catalogo"])
+    for family, raw in profiles.items():
+        family = text(family, "familia")
+        profile = amap(raw, f"orcamento_v2.perfis_familia.{family}")
+        if set(profile) != {"modificador_pontos", "teto_valor_base", "categorias"}:
+            raise RewardMapError(f"perfil v2 de {family} possui campos divergentes")
+        _signed_integer(profile["modificador_pontos"], f"{family}.modificador_pontos", -2, 2)
+        ceiling = text(profile["teto_valor_base"], f"{family}.teto_valor_base")
+        if ceiling not in VALUE_RANK:
+            raise RewardMapError(f"{family}: teto_valor_base inválido")
+        categories = alist(profile["categorias"], f"{family}.categorias")
+        if not categories or len(categories) != len(set(categories)):
+            raise RewardMapError(f"{family}: categorias vazias ou duplicadas")
+        unknown = {text(item, f"{family}.categorias") for item in categories} - catalog
+        if unknown:
+            raise RewardMapError(f"{family}: categorias fora do catálogo: {sorted(unknown)}")
+    return cfg
+
+
+def _budget_v2_plan(index, tables, ecology, tier, danger):
+    if tables.get("schema_tabelas_recompensas") != 2 or not isinstance(ecology, dict):
+        return None
+    cfg = _validate_budget_v2(tables)
+    family = text(ecology.get("familia"), "ecologia.familia")
+    profile = cfg["perfis_familia"].get(family)
+    if not isinstance(profile, dict):
+        # Ecologias sintéticas de fixtures anteriores à v2 continuam exercitando
+        # o gerador legado. A cobertura das famílias canônicas reais é exigida
+        # pelo check frio do repositório abaixo.
+        return None
+    tier_key = str(tier)
+    points = max(1, int(cfg["pontos_por_tier"][tier_key]) + int(cfg["bonus_risco"][danger]) + int(profile["modificador_pontos"]))
+    ceiling_rank = min(max(VALUE_RANK.values()), VALUE_RANK[profile["teto_valor_base"]] + int(cfg["aumento_teto_valor_risco"][danger]))
+    max_items = min(int(cfg["max_itens_por_tier"][tier_key]), int(index["orcamento"]["max_procedurais_por_mapa"]))
+    allowed = set(profile["categorias"])
+    weighted_categories = [category for category in tables["tiers"][tier_key]["categorias"] if category in allowed]
+    if not weighted_categories:
+        raise RewardMapError(f"{family}: nenhuma categoria v2 compatível com tier {tier}")
+    return {
+        "familia": family,
+        "pontos_total": points,
+        "teto_valor": VALUE_BY_RANK[ceiling_rank],
+        "teto_valor_rank": ceiling_rank,
+        "max_itens": max_items,
+        "categorias_ponderadas": weighted_categories,
+    }
+
+
+def _template_budget_cost(template, tables):
+    cfg = tables["orcamento_v2"]
+    value = text(template.get("valor_aproximado"), f"{template.get('id')}.valor_aproximado")
+    importance = text(template.get("importancia"), f"{template.get('id')}.importancia")
+    if value not in cfg["custo_valor"] or importance not in cfg["custo_importancia"]:
+        raise RewardMapError(f"template {template.get('id')}: custo Reward Budget v2 indefinido")
+    return int(cfg["custo_valor"][value]) + int(cfg["custo_importancia"][importance])
+
+
 def _procedural_count(
     index: dict[str, Any],
     tables: dict[str, Any],
@@ -432,7 +546,7 @@ def _procedural_count(
     return min(total, index["orcamento"]["max_procedurais_por_mapa"])
 
 
-def _procedural_entries(
+def _procedural_entries_v1(
     index: dict[str, Any],
     tables: dict[str, Any],
     place: str,
@@ -511,6 +625,61 @@ def _procedural_entries(
     return map_entries, fragments
 
 
+def _procedural_entries_v2(index, tables, place, tier, danger, plan):
+    seed = index["semente"]
+    remaining = int(plan["pontos_total"])
+    used_templates = set()
+    map_entries = []
+    fragments = {}
+    weighted = []
+    for weight, category in enumerate(plan["categorias_ponderadas"]):
+        for template in _eligible_templates(tables, category, tier):
+            value = text(template.get("valor_aproximado"), f"{template['id']}.valor_aproximado")
+            if value not in VALUE_RANK or VALUE_RANK[value] > plan["teto_valor_rank"]:
+                continue
+            weighted.append((weight, category, template, _template_budget_cost(template, tables)))
+    if not weighted:
+        raise RewardMapError(f"{place}: Reward Budget v2 não encontrou template plausível para {plan['familia']}")
+    for offset in range(plan["max_itens"]):
+        slot = offset + 1
+        ordered = sorted(
+            weighted,
+            key=lambda item: hashlib.sha256(
+                f"{seed}|{place}|{tier}|{danger}|{GENERATOR_V2}|{plan['familia']}|slot|{slot}|peso|{item[0]}|categoria|{item[1]}|template|{item[2]['id']}".encode("utf-8")
+            ).hexdigest(),
+        )
+        chosen = next((item for item in ordered if item[2]["id"] not in used_templates and item[3] <= remaining), None)
+        if chosen is None:
+            break
+        _, category, template, cost = chosen
+        used_templates.add(template["id"])
+        remaining -= cost
+        condition = _choice(seed, f"{place}|{tier}|{danger}|{GENERATOR_V2}|condicao|{slot}", list(tables["condicoes"]))
+        possession = _procedural_possession(seed, f"{place}|{tier}|{danger}|{GENERATOR_V2}|posse|{slot}", condition)
+        rid = reward_id(f"{place}-r{slot:02d}")
+        item_path = (ITEMS_DIR / f"{rid}.yaml").as_posix()
+        map_entries.append({
+            "id": rid, "tipo": category, "estado": "oculto",
+            "condicao_de_descoberta": condition["texto"], "posse": possession,
+            "importancia": template["importancia"], "origem": "procedural", "arquivo": item_path,
+        })
+        fragments[rid] = {
+            "schema_recompensa": 1, "natureza": "reservado", "id": rid,
+            "local_id": place, "tipo": category, "nome": template["nome"],
+            "descricao": template["descricao"], "valor_aproximado": template["valor_aproximado"],
+            "importancia": template["importancia"], "origem": "procedural", "tags": list(template["tags"]),
+            "geracao": {
+                "modo": "procedural_deterministica", "gerador": GENERATOR_V2,
+                "template": template["id"], "slot": slot, "custo_orcamento": cost,
+                "familia_local": plan["familia"],
+                "chave": hashlib.sha256(
+                    f"{seed}|{place}|{tier}|{danger}|{GENERATOR_V2}|{plan['familia']}|item|{slot}|{template['id']}".encode("utf-8")
+                ).hexdigest()[:24],
+            },
+        }
+    return map_entries, fragments
+
+
 def _planned_entries(
     planned: dict[str, Any],
     place: str,
@@ -558,6 +727,8 @@ def generate_map(
     place: str,
     tier: int,
     danger: str,
+    *,
+    ecology: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
     place = local_id(place)
     if danger not in VALID_DANGER:
@@ -566,9 +737,11 @@ def generate_map(
     if str(tier) not in tables["tiers"]:
         raise RewardMapError(f"tier sem tabela: {tier}")
 
-    procedural_entries, procedural_fragments = _procedural_entries(
-        index, tables, place, tier, danger
-    )
+    budget_v2 = _budget_v2_plan(index, tables, ecology, tier, danger)
+    if budget_v2 is None:
+        procedural_entries, procedural_fragments = _procedural_entries_v1(index, tables, place, tier, danger)
+    else:
+        procedural_entries, procedural_fragments = _procedural_entries_v2(index, tables, place, tier, danger, budget_v2)
     planned_entries, planned_fragments = _planned_entries(planned, place)
     entries = procedural_entries + planned_entries
     if len(entries) > index["orcamento"]["max_totais_por_mapa"]:
@@ -581,20 +754,26 @@ def generate_map(
         raise RewardMapError(f"{place}: IDs de recompensa duplicados")
 
     fragments = {**procedural_fragments, **planned_fragments}
-    key = generation_key(index["semente"], place, tier, danger)
+    generator = GENERATOR_V2 if budget_v2 is not None else GENERATOR
+    key = generation_key(index["semente"], place, tier, danger, generator=generator, family=budget_v2["familia"] if budget_v2 is not None else None)
+    generation = {
+        "modo": generator, "chave": key, "imutavel": True,
+        "procedurais": len(procedural_entries), "planejadas": len(planned_entries),
+    }
+    if budget_v2 is not None:
+        spent = sum(int(fragment["geracao"]["custo_orcamento"]) for fragment in procedural_fragments.values())
+        generation["orcamento_v2"] = {
+            "familia_local": budget_v2["familia"], "pontos_total": budget_v2["pontos_total"],
+            "pontos_gastos": spent, "pontos_restantes": budget_v2["pontos_total"] - spent,
+            "teto_valor": budget_v2["teto_valor"], "max_itens": budget_v2["max_itens"],
+        }
     result = {
         "schema_mapa_recompensas": 1,
         "natureza": "reservado",
         "local_id": place,
         "tier": tier,
         "periculosidade": danger,
-        "geracao": {
-            "modo": GENERATOR,
-            "chave": key,
-            "imutavel": True,
-            "procedurais": len(procedural_entries),
-            "planejadas": len(planned_entries),
-        },
+        "geracao": generation,
         "regra_descoberta": "existir_no_mapa_nao_significa_que_ren_encontrou",
         "recompensas": entries,
     }
@@ -623,12 +802,23 @@ def validate_map(
     ):
         raise RewardMapError(f"{place}: mapa diverge do índice")
     generation = amap(data.get("geracao"), f"{place}.geracao")
-    if (
-        generation.get("modo") != GENERATOR
-        or generation.get("chave") != meta.get("chave_geracao")
-        or generation.get("imutavel") is not True
-    ):
+    generator = generation.get("modo")
+    if (generator not in VALID_GENERATORS or generation.get("chave") != meta.get("chave_geracao") or generation.get("imutavel") is not True):
         raise RewardMapError(f"{place}: metadados de geração inválidos")
+    if generator == GENERATOR_V2:
+        budget = amap(generation.get("orcamento_v2"), f"{place}.geracao.orcamento_v2")
+        required = {"familia_local", "pontos_total", "pontos_gastos", "pontos_restantes", "teto_valor", "max_itens"}
+        if set(budget) != required:
+            raise RewardMapError(f"{place}: resumo Reward Budget v2 inválido")
+        total = integer(budget["pontos_total"], f"{place}.pontos_total", 1)
+        spent = integer(budget["pontos_gastos"], f"{place}.pontos_gastos", 0)
+        remaining = integer(budget["pontos_restantes"], f"{place}.pontos_restantes", 0)
+        if spent + remaining != total:
+            raise RewardMapError(f"{place}: aritmética Reward Budget v2 inválida")
+        if text(budget["teto_valor"], f"{place}.teto_valor") not in VALUE_RANK:
+            raise RewardMapError(f"{place}: teto de valor v2 inválido")
+        integer(budget["max_itens"], f"{place}.max_itens", 1)
+        text(budget["familia_local"], f"{place}.familia_local")
     if data.get("regra_descoberta") != "existir_no_mapa_nao_significa_que_ren_encontrou":
         raise RewardMapError(f"{place}: regra de descoberta ausente")
     entries = alist(data.get("recompensas"), f"{place}.recompensas")
@@ -692,15 +882,14 @@ def validate_fragment(repo: Path, rid: str, raw: str) -> dict[str, Any]:
     generation = amap(data.get("geracao"), f"{rid}.geracao")
     mode = text(generation.get("modo"), f"{rid}.geracao.modo")
     if origin == "procedural":
-        if (
-            mode != "procedural_deterministica"
-            or generation.get("gerador") != GENERATOR
-            or not isinstance(generation.get("slot"), int)
-            or generation.get("slot") < 1
-        ):
+        generator = generation.get("gerador")
+        if (mode != "procedural_deterministica" or generator not in VALID_GENERATORS or not isinstance(generation.get("slot"), int) or generation.get("slot") < 1):
             raise RewardMapError(f"{rid}: proveniência procedural inválida")
         text(generation.get("template"), f"{rid}.geracao.template")
         text(generation.get("chave"), f"{rid}.geracao.chave")
+        if generator == GENERATOR_V2:
+            integer(generation.get("custo_orcamento"), f"{rid}.geracao.custo_orcamento", 1)
+            text(generation.get("familia_local"), f"{rid}.geracao.familia_local")
     elif mode != "planejada":
         raise RewardMapError(f"{rid}: recompensa não procedural deve ser planejada")
     return data
@@ -750,7 +939,14 @@ def consult(repo: Path, place: str) -> dict[str, Any]:
     }
 
 
-def ensure(repo: Path, place: str, tier: int, danger: str) -> dict[str, Any]:
+def ensure(
+    repo: Path,
+    place: str,
+    tier: int,
+    danger: str,
+    *,
+    ecology: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     place = local_id(place)
     if danger not in VALID_DANGER:
         raise RewardMapError("periculosidade deve ser baixa, media, alta ou letal")
@@ -767,10 +963,18 @@ def ensure(repo: Path, place: str, tier: int, danger: str) -> dict[str, Any]:
             "fontes_lidas": [INDEX.as_posix(), existing["arquivo"]],
         }
 
+    ecology_sources: list[str] = []
+    if ecology is None and (repo / ecologia_local.INDEX).is_file():
+        try:
+            ecology_lookup = ecologia_local.lookup_canonical(repo, place)
+        except ecologia_local.LocalEcologyError as exc:
+            raise RewardMapError(str(exc)) from exc
+        ecology = ecology_lookup["perfil"]
+        ecology_sources.extend(ecology_lookup["fontes_lidas"])
     tables = load_tables(repo)
     planned = load_planned(repo)
     item_index = load_item_index(repo)
-    data, fragments = generate_map(index, tables, planned, place, tier, danger)
+    data, fragments = generate_map(index, tables, planned, place, tier, danger, ecology=ecology)
     map_path = (MAPS_DIR / f"{place}.yaml").as_posix()
 
     for item in data["recompensas"]:
@@ -812,6 +1016,7 @@ def ensure(repo: Path, place: str, tier: int, danger: str) -> dict[str, Any]:
             TABLES.as_posix(),
             PLANNED.as_posix(),
             ITEM_INDEX.as_posix(),
+            *ecology_sources,
         ],
         "arquivos_criados": [
             map_path,
@@ -868,8 +1073,28 @@ def validate_repo(repo: Path) -> dict[str, Any]:
     try:
         index = load_index(repo)
         item_index = load_item_index(repo)
-        load_tables(repo)
+        tables = load_tables(repo)
         load_planned(repo)
+        if (
+            tables.get("schema_tabelas_recompensas") == 2
+            and (repo / ecologia_local.INDEX).is_file()
+        ):
+            try:
+                ecology_index = ecologia_local.load_index(repo)
+            except ecologia_local.LocalEcologyError as exc:
+                raise RewardMapError(str(exc)) from exc
+            families = {
+                profile["familia"]
+                for profile in ecology_index["perfis"].values()
+                if isinstance(profile, dict) and isinstance(profile.get("familia"), str)
+            }
+            configured = set(tables["orcamento_v2"]["perfis_familia"])
+            missing = sorted(families - configured)
+            if missing:
+                raise RewardMapError(
+                    "famílias ecológicas canônicas sem perfil Reward Budget v2: "
+                    + ", ".join(missing)
+                )
         seen: dict[str, tuple[str, str]] = {}
 
         for place, meta in index["mapas"].items():

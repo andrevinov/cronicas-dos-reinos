@@ -201,6 +201,16 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
             action="entrar",
             tier=1,
             danger="baixa",
+            ecology={
+                "familia": "fixture",
+                "acesso": "controlado",
+                "ritmo_baseline": {
+                    "amanhecer": 1, "dia": 2, "anoitecer": 1, "noite": 0
+                },
+                "tags": ["trabalho"],
+                "atores_comuns": ["trabalhador"],
+                "canais_microevento": ["rotina"],
+            },
         )
         self.assertEqual(result["local"]["local_id"], "setor_a")
         self.assertEqual(result["local"]["local_ref_recebido"], "setor_antigo")

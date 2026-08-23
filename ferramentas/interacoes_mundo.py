@@ -270,12 +270,13 @@ def local_event(
     action: str,
     tier: int,
     danger: str,
+    ecology: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Garante/reutiliza o mapa apenas em entrada ou exploração real."""
     if action not in VALID_LOCAL_ACTIONS:
         raise IntegrationError("acao local deve ser entrar ou explorar")
     try:
-        result = recompensas.ensure(repo, place, tier, danger)
+        result = recompensas.ensure(repo, place, tier, danger, ecology=ecology)
     except recompensas.RewardMapError as exc:
         raise IntegrationError(str(exc)) from exc
     return {
