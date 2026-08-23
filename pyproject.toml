@@ -18,6 +18,9 @@ entrada = "ferramentas.poetry_cli:entrada"
 # Consulta o estado efetivo sem abrir arquivos grandes desnecessariamente.
 contexto = "ferramentas.poetry_cli:contexto"
 
+# Porta unificada preferencial do ciclo preparar -> narrar -> concluir.
+cronica = "ferramentas.poetry_cli:cronica"
+
 # Registra um avanço narrativo: transcrição + deltas pendentes.
 turno = "ferramentas.poetry_cli:turno"
 
