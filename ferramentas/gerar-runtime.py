@@ -105,9 +105,16 @@ def character_context_capabilities(ficha: dict[str, Any]) -> dict[str, Any] | No
     }
     if "actor" in talents:
         result["actor"] = {
-            "vantagem_impersonacao": ["enganacao", "atuacao"],
-            "flag_rolagem": "--actor-impersonacao",
-            "mimetismo": "fala/sons ouvidos por pelo menos 1 minuto; ouvinte pode opor Intuição a Enganação",
+            "vantagem_outra_identidade": ["enganacao", "atuacao"],
+            "gatilho": (
+                "Ren tenta passar-se por uma pessoa diferente de Ren Kagehira; "
+                "a identidade pode ser real ou inventada, como Shinta Ryoushi"
+            ),
+            "flag_rolagem": "--actor-outra-identidade",
+            "mimetismo_separado": (
+                "fala/sons ouvidos por pelo menos 1 minuto; não é pré-requisito para a vantagem; "
+                "ouvinte pode opor Intuição a Enganação"
+            ),
         }
     if "observant" in talents:
         result["observant"] = {
