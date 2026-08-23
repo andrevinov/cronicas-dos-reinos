@@ -205,7 +205,7 @@ relacoes:
     respeito: cauteloso, crescente
     arquivo: estado/relacoes/maerra_thandrel.yaml
     historico: historico/relacoes/maerra_thandrel.yaml
-    bytes_fragmento: 3442
+    bytes_fragmento: 4238
     campos_atuais: 13
   luath:
     nome: Luath

@@ -127,3 +127,32 @@ eventos_pos_migracao:
     op: append
     valor: Ren, autenticamente feliz com a ideia construída pelos dois, segurou carinhosamente a cabeça de Maerra
       e beijou sua testa antes de partir. Maerra recebeu o gesto com surpresa, humor e afeto pastoral.
+- transacao: s013-c3c3e23032c2a174
+  sessao: 13
+  resumo: Ren foi até a Casa da Aurora Menor ainda vestido como Shinta e relatou a Maerra o trabalho na Galeria,
+    o plano envolvendo a Casa do Salgueiro Seco, a convocação de Velis, a dificuldade de contato com Kethra, a escassez
+    de respostas, sua sensação de solidão e a decisão de permanecer atento enquanto segue vivendo. Maerra distinguiu
+    solidão de ausência de apoio, aconselhou respeito ao sinal de Kethra e ao trabalho institucional de Tyr, e apoiou
+    a vida prática sem confundir vigilância com abandono…
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: informacoes_recebidas_por_maerra
+    op: append
+    valor: Em 15 Eleasis, Ren contou a Maerra sobre o trabalho como Shinta na Galeria dos Escribas, sua intenção
+      de avaliar a Casa do Salgueiro Seco como possível abrigo para Nera e Tavin, a convocação de Velis e a falta
+      de respostas concretas, a intermediação encerrada de Sella e o sinal do fio azul escolhido por Kethra. Também
+      revelou sentir-se sozinho carregando os vários fios da ameaça e decidiu permanecer atento enquanto continua
+      trabalhando, preparando Kage e vivendo.
+- transacao: s013-f0adc2d21169bfec
+  sessao: 13
+  resumo: Ren agradeceu Maerra, perguntou pelas crianças e soube que elas permanecem seguras, alimentadas e sem
+    nova ameaça imediata, embora a recuperação do trauma ainda varie entre elas. Ren tomou a mão de Maerra e agradeceu
+    por tudo; ela o convidou a voltar também quando precisar falar, não apenas para entregar algo ou salvar alguém.
+    Ren saiu ainda como Shinta.
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Em 15 Eleasis, após receber conselho e notícia de que as crianças permaneciam seguras, Ren tomou a mão
+      de Maerra e agradeceu por tudo. Maerra recebeu o gesto com afeto pastoral e o convidou a voltar também quando
+      precisasse falar, não apenas para entregar algo ou salvar alguém.

@@ -4,7 +4,7 @@ sessao: 13
 checkpoint:
   tipo: cena
   estado: retomavel
-  modo: shinta_expediente_concluido_15_eleasis
+  modo: ponto_morto_de_pell_verificado_sem_nova_mensagem
   personagem:
     nome: Ren Kagehira
     nivel: 7
@@ -22,7 +22,7 @@ checkpoint:
     dinheiro_po: 30.979999999999997
   tempo:
     data: 15 Eleasis, 1372 DR
-    hora_aproximada: '17:30'
+    hora_aproximada: '21:10'
     periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
@@ -31,41 +31,17 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: Galeria dos Escribas, Ravens Bluff
-    ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
+    area: arredores da The Silver Lily, Ravens Bluff
+    ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
 continuidade:
-  resumo_imediato: Shinta dedicou a tarde exclusivamente à conferência documental, combinou precisão e ritmo e concluiu
-    o dia sem repetir presunções ou erros de registro. Sua continuidade no trabalho foi preservada, e Ren não realizou
-    investigação paralela nem descobriu nova pista.
+  resumo_imediato: 'Ren consultou discretamente o ponto morto de Pell na traseira da The Silver Lily e o recompôs
+    sem perder detalhes. O canal permanecia ativo e sem sinal de violação, mas não havia informação nova. Os 3 PO
+    já haviam sido pagos na sessão 8, e a última mensagem de Ren permanece: "qualquer informação sobre as velas
+    será sempre bem paga aqui".'
   prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
     manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
     de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 eventos_recentes:
-- batch: s013-cena-2036ebe446e8d233
-  transacao: s013-e6cdd6b173f6a143
-  resumo: Ren entrou no circo, tomou banho e procurou Silva. Falou de sua frustração com pessoas que parecem não
-    compreender o perigo e reconheceu que sua condição de estrangeiro pode afetar esse julgamento. Silva distinguiu
-    perceber o perigo de aceitar a resposta de Ren e perguntou se ele deseja apenas ser ouvido ou pensar no próximo
-    passo.
-- batch: s013-cena-2036ebe446e8d233
-  transacao: s013-aaabfe4217bedf7d
-  resumo: Ren expôs a Silva seu plano de concentrar-se no trabalho de Shinta, na apresentação de Kage e na proteção
-    prática dos seus, deixando os agentes de Masao se moverem. Silva distinguiu paciência de cegueira, aconselhou
-    que Ren não transforme cada identidade em armadilha e reforçou que os protegidos também definem a medida da
-    própria segurança. Com permissão condicionada à escolha de Nera, Ren deu-lhe um boa-noite breve…
-- batch: s013-cena-2036ebe446e8d233
-  transacao: s013-ea3a2b1181189941
-  resumo: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira das 06:00 de 15
-    Eleasis. O descanso longo ainda não foi completado.
-- batch: s013-cena-e53cfafcc674ff0f
-  transacao: s013-db467730f2c7e584
-  resumo: Ren continuou dormindo após a fronteira das 06:00 e completou oito horas de sono às 06:50 de 15 Eleasis.
-    Concluiu um descanso longo, mantendo PV e Ki completos e recuperando os dois Dados de Vida que faltavam.
-- batch: s013-cena-e53cfafcc674ff0f
-  transacao: s013-f6296d32869f19d0
-  resumo: Após completar o descanso longo, Ren vestiu a identidade de Shinta e seguiu sua rota habitual até a Galeria
-    dos Escribas. Chegou à entrada de serviço às 07:25, sem interrupções ou escrutínio especial, pronto para o expediente
-    mantido por Tomas.
 - batch: s013-cena-e53cfafcc674ff0f
   transacao: s013-6df8c569dc491b82
   resumo: 'Shinta entrou animado na Galeria, cumprimentou os trabalhadores e executou diligentemente a conferência
@@ -84,6 +60,34 @@ eventos_recentes:
     precisão e ritmo, recuperou parte do atraso matinal e concluiu o dia sem novas presunções ou erros de registro,
     preservando sua continuidade no trabalho. Recebeu 4 PP, elevando o dinheiro de Ren para 30,98 PO. Nenhuma investigação
     paralela foi feita e nenhuma pista foi descoberta.
+- batch: s013-cena-5f3e9d5927391988
+  transacao: s013-ca472eb2346d5b94
+  resumo: Após o expediente, Shinta percorreu vielas procurando obras ou adaptações de imóveis que pudessem sustentar
+    a rede de Masao. Obteve Investigação 8 contra CD 15. Encontrou muitos sinais urbanos ambíguos, mas nenhum padrão
+    ou evidência que pudesse ligar legitimamente aos capangas de Masao; a busca foi inconclusiva e não prova ausência
+    da rede.
+- batch: s013-cena-5f3e9d5927391988
+  transacao: s013-c3c3e23032c2a174
+  resumo: Ren foi até a Casa da Aurora Menor ainda vestido como Shinta e relatou a Maerra o trabalho na Galeria,
+    o plano envolvendo a Casa do Salgueiro Seco, a convocação de Velis, a dificuldade de contato com Kethra, a escassez
+    de respostas, sua sensação de solidão e a decisão de permanecer atento enquanto segue vivendo. Maerra distinguiu
+    solidão de ausência de apoio, aconselhou respeito ao sinal de Kethra e ao trabalho inst…
+- batch: s013-cena-8f7b18ceed219fba
+  transacao: s013-f0adc2d21169bfec
+  resumo: Ren agradeceu Maerra, perguntou pelas crianças e soube que elas permanecem seguras, alimentadas e sem
+    nova ameaça imediata, embora a recuperação do trauma ainda varie entre elas. Ren tomou a mão de Maerra e agradeceu
+    por tudo; ela o convidou a voltar também quando precisar falar, não apenas para entregar algo ou salvar alguém.
+    Ren saiu ainda como Shinta.
+- batch: s013-cena-8f7b18ceed219fba
+  transacao: s013-1d5b5ccd809742a1
+  resumo: Ren foi da Casa da Aurora Menor até a traseira da Silver Lily ainda como Shinta. Obteve Investigação 21
+    contra CD 13 para consultar e recompor discretamente o ponto morto de Pell. O canal permanecia ativo e sem sinais
+    de violação, mas não continha informação nova. Ren não depositou os 3 PO ainda devidos a Pell e não deixou nova
+    mensagem.
+- batch: s013-cena-8f7b18ceed219fba
+  transacao: corr-s013-01546d4e425576d6
+  resumo: 'Correção canônica de s013-1d5b5ccd809742a1: Corrige o estado do ponto morto de Pell: pagamento já quitado
+    e oferta contínua por informações sobre as velas.'
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

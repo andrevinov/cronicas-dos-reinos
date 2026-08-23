@@ -212,3 +212,138 @@ Ao final do expediente, uma amostra das folhas é conferida. Os totais fecham. A
 MECÂNICA — Pagamento do expediente: 4 PP, equivalentes a 0,4 PO; total de Ren passa a 30,98 PO.
 
 Às cinco e meia, o pagamento é entregue e o expediente se encerra. Shinta fica junto à saída de serviço da Galeria com o trabalho de hoje concluído. Nenhuma pista sobre Masao foi procurada; nenhuma foi descoberta.
+
+<!-- turno-transacional:s013-ca472eb2346d5b94 -->
+**Jogador**
+
+Shinta sai da Galeria, andando por vielas da cidade. Ele pretende, nas suas observâncias, encontrar algum sinal de construção que possa ser dos capangas de Masao.
+**Narrador**
+
+Shinta deixa a Galeria junto do fluxo dos trabalhadores dispensados e permite que esse fluxo o carregue por algumas ruas antes de começar a escolher as vielas. Não abandona a aparência do empregado recém-saído do expediente. Apenas reduz o passo diante de oficinas, pátios fechados e fachadas antigas onde alguma mudança recente poderia esconder-se sob a rotina da cidade.
+
+Ren procura sinais específicos: argamassa nova em parede velha, madeira entregue em quantidade incompatível com o negócio da porta, reforços internos vistos por uma janela, acessos de porão alargados, ferragens recentes em imóveis que parecem vazios. Não procura um símbolo de Masao. Procura infraestrutura — algo capaz de alojar homens, esconder carga ou sustentar movimento sem chamar atenção.
+
+MECÂNICA — Investigação: 2 + 6 = 8 contra CD 15 — falha.
+
+Ravens Bluff lhe oferece sinais demais. Uma parede remendada pode esconder um depósito ou apenas impedir que um quarto desabe. Tábuas novas desaparecem por um portão estreito, mas o pátio além pertence a uma oficina que trabalha até tarde. Uma porta de porão recebeu dobradiças pesadas; o prédio acima vende mercadoria suficiente para justificar segurança. Em outra viela, pó de pedra e marcas de carroça indicam obra recente, mas nenhum detalhe distingue expansão clandestina de reparo comum.
+
+Ren observa, compara e continua. Sem uma área mais estreita, um fornecedor conhecido, um padrão de aquisição ou uma descrição de homens ligados à rede, cada indício produz duas ou três explicações ordinárias. Quando tenta relacionar distâncias e tipos de obra, a cidade já lhe deu exemplos suficientes para formar qualquer desenho que ele queira enxergar — e nenhum bastante sólido para confiar nele.
+
+Às sete da noite, a luz começa a abandonar as vielas. Shinta percorreu uma faixa útil da cidade, mas não encontrou sinal que possa atribuir legitimamente aos capangas de Masao. A busca também não demonstra que a rede esteja ausente: apenas que, sem uma pista inicial, suas construções não se separam do crescimento, dos reparos e da decadência cotidiana de Ravens Bluff.
+
+Ele termina numa viela comercial próxima das ruas que percorreu, cercado por portas fechando e trabalhadores recolhendo ferramentas. Tem possibilidades demais e evidência nenhuma.
+
+<!-- turno-transacional:s013-c3c3e23032c2a174 -->
+**Jogador**
+
+Ren irá até Maerra. Vai reportar os últimos dias: o trabalho como Shinta, suas intenções com a Casa do Salgueiro Seco, a convocação de Velis, a falta de respostas sobre tudo, a dificuldade de chegar em Kethra. A sensação de que ele está sozinho nisso tudo. E a recente decisão de ficar apenas atento e seguir com a vida.
+**Narrador**
+
+Ren deixa as vielas e segue para o Temple District ainda vestido como Shinta. À medida que se aproxima das casas religiosas, oficinas e depósitos cedem espaço a fachadas cuidadas, pequenos pátios e luzes mantidas acesas para quem chega depois do anoitecer.
+
+Na Casa da Aurora Menor, o trabalhador desconhecido que pede para falar com Irmã Maerra recebe primeiro um olhar cauteloso. O pedido chega até ela, porém, e Maerra vem recebê-lo. Precisa de poucos instantes de voz e proximidade para compreender quem está por trás das roupas simples. Não pronuncia o nome de Ren diante de terceiros. Apenas o conduz a um lugar onde a conversa não precisa competir com outros ouvidos.
+
+Ali, Ren relata os últimos dias. Conta sobre Shinta e a Galeria dos Escribas: a oportunidade de trabalho, os erros, o esforço para corrigir-se e o expediente finalmente concluído sem novas presunções. Explica suas intenções quanto à Casa do Salgueiro Seco e a esperança de encontrar um lugar mais seguro para Nera e Tavin sem converter segurança em prisão.
+
+Volta então a Velis: a convocação, a investigação entregue a Tyr e o silêncio que veio depois. Fala da dificuldade de alcançar Kethra, da resposta vazia que precisou atravessar Sella — nada concreto sobre Velis, nenhum novo sinal da mulher Cinza-Azul, nenhum ponto morto enquanto a tentativa observada em Narwhal ainda estiver recente. Conta também sobre o fio azul que Kethra poderá deixar no portão de carvão se houver algo que justifique contato.
+
+Por fim, fala da falta de respostas em toda parte. Da sensação de estar sozinho carregando os fios sem saber quais ainda conduzem a alguma coisa. E conta sua decisão recente: parar de perseguir cada sombra, permanecer atento e continuar vivendo — trabalhar como Shinta, preparar Kage e proteger os seus na medida que puder.
+
+Maerra o escuta sem interromper o relato e sem tentar corrigir a palavra “sozinho” antes de compreender o que ela significa para ele. Quando Ren termina, a sacerdotisa permanece alguns momentos com as mãos apoiadas sobre a mesa.
+
+— Há uma diferença entre estar sozinho e ser o único a enxergar o desenho inteiro — diz ela. — Talvez você seja, neste momento, a única pessoa que carrega todos esses nomes na mesma cabeça. Isso é solidão verdadeira. Mas não significa que ninguém esteja sustentando parte do peso.
+
+Ela enumera sem triunfalismo: Tyr guarda as provas e trabalha segundo ritmos que Ren não controla; Luath conhece a ameaça e tenta manter a guarda de pé; Silva protege pessoas dentro dos limites do circo; Kethra escolheu um sinal que preserva a própria segurança; Maerra continua ali, ouvindo e agindo onde sua autoridade alcança.
+
+— Nenhum de nós está fazendo tudo o que você faria. Isso não é o mesmo que não fazer nada. Também não é o mesmo que obedecer ao seu medo. Se todos se movessem na velocidade da sua urgência, seus inimigos talvez precisassem apenas esperar que vocês se chocassem uns contra os outros.
+
+Maerra inclina-se um pouco, a firmeza sem dureza.
+
+— Sobre Kethra: respeite o fio azul. Ela lhe deu uma forma de não procurá-la. Isso também é uma resposta, ainda que seja a resposta que mais exige paciência. Sobre Velis: você entregou a prova. Continue disponível, mas não destrua a cadeia porque o silêncio institucional lhe parece vazio. E sobre a Casa do Salgueiro Seco: procure uma possibilidade, não uma salvação pronta. Uma casa só será segura se as pessoas que viverão nela puderem escolhê-la e se quem a controla puder sustentá-la.
+
+A última parte recebe uma pausa maior.
+
+— Sua decisão de continuar vivendo me parece sensata. Mas não a trate como abandono da vigilância, nem transforme a vigilância em outra maneira de deixar de viver. Trabalhe. Prepare Kage. Esteja com as pessoas que ama. Deixe que os fatos novos precisem encontrar você também.
+
+Maerra não promete que respostas virão. Não afirma que Ren está errado sobre o perigo e não tenta arrancar dele a sensação de solidão com uma frase piedosa. Apenas coloca limites ao redor dela.
+
+— Você não precisa fingir que o peso desapareceu — conclui. — Precisa lembrar que carregá-lo sozinho não é a única forma de provar que o compreendeu.
+
+Do lado de fora, a noite já se instalou sobre o Temple District. Dentro da Casa da Aurora Menor, a conversa termina sem plano secreto, convocação ou nova pista — apenas com Maerra agora informada sobre os últimos movimentos de Ren e com seu conselho entregue sem exigir decisão imediata.
+
+<!-- turno-transacional:s013-f0adc2d21169bfec -->
+**Jogador**
+
+Ren agradece Maerra pelo bom conselho. Pergunta se as crianças estão bem. E depois de ouvi-la pega em sua mão, agradece por tudo, e sai.
+**Narrador**
+
+Ren agradece pelo conselho e, antes de partir, pergunta pelas crianças.
+
+Maerra não responde depressa com um “sim” destinado apenas a tranquilizá-lo.
+
+— Estão seguras — diz primeiro. — Estão alimentadas, abrigadas e fora do alcance de quem as mantinha presas. Isso é verdade. “Bem” levará mais tempo.
+
+Ela explica que algumas já conseguem participar das pequenas rotinas da casa, ajudar em tarefas simples e discutir por coisas comuns. Outras ainda despertam assustadas, guardam comida ou observam portas como se esperassem que alguém viesse buscá-las. Não houve nova ameaça nem piora que exija ação imediata; o trabalho agora é devolver-lhes dias comuns sem exigir gratidão, relato ou coragem antes da hora.
+
+— Elas não precisam ser resgatadas outra vez esta noite — conclui Maerra. — Precisam continuar descobrindo que a manhã seguinte pode ser parecida com a anterior.
+
+Depois de ouvi-la, Ren toma a mão de Maerra e agradece por tudo. Ela recebe o gesto sem afastar-se. Fecha a outra mão sobre a dele por um instante, firme e quente.
+
+— Volte quando precisar falar — responde. — Não apenas quando tiver alguma coisa para entregar ou alguém para salvar.
+
+Maerra solta a mão dele antes que a despedida se transforme em outra promessa. Ren deixa a sala, atravessa a Casa da Aurora Menor e sai novamente para a noite do Temple District, ainda sob a aparência de Shinta.
+
+<!-- turno-transacional:s013-1d5b5ccd809742a1 -->
+**Jogador**
+
+Ren irá até o ponto morto de Pell na traseira da Silver Lily, ver se há alguma informação.
+**Narrador**
+
+Da Casa da Aurora Menor, Ren atravessa a cidade ainda como Shinta. Segue por ruas onde um trabalhador voltando tarde não chama atenção, aproximando-se da Silver Lily sem transformar o destino numa linha reta fácil de recordar.
+
+Quando alcança as proximidades da hospedagem, não vai imediatamente aos fundos. Passa adiante, observa o movimento comum ao redor do prédio e retorna por outra via somente quando a traseira pode ser alcançada sem dividir o espaço com criados, hóspedes ou entregadores.
+
+MECÂNICA — Investigação: 15 + 6 = 21 contra CD 13 — sucesso.
+
+Ren examina o ponto morto segundo o protocolo já conhecido, atento primeiro à disposição externa e depois ao conteúdo. Nada indica violação grosseira, substituição apressada ou uso por alguém que desconheça o arranjo. Ele abre o esconderijo com cuidado suficiente para preservar a ordem das peças e verifica cada espaço onde Pell costuma deixar material.
+
+Não há bilhete novo. Nenhum nome, endereço, horário ou aviso foi acrescentado desde a última troca. A obrigação anterior também não mudou: Pell ainda espera o depósito de 3 PO pelos resultados já entregues, mas Ren não deixa pagamento nesta visita.
+
+Depois de confirmar a ausência de informação, Ren recompõe o ponto morto como o encontrou. Não deixa pergunta, cobrança ou novo pedido. Quando se afasta da traseira da Silver Lily, o canal permanece ativo e limpo, mas vazio.
+
+Às nove e dez da noite, Ren está novamente do lado de fora, numa posição discreta próxima aos fundos da hospedagem. A visita produziu certeza sobre o ponto — não uma nova pista.
+
+<!-- turno-transacional:corr-s013-01546d4e425576d6 -->
+**Narrador**
+
+CORREÇÃO CANÔNICA — Ren já havia pago integralmente os 3 PO a Pell na sessão 8. A última mensagem deixada no ponto morto dizia: "qualquer informação sobre as velas será sempre bem paga aqui". A consulta atual encontrou o canal ativo, limpo e sem mensagem nova; nenhuma dívida permaneceu. Retifica s013-1d5b5ccd809742a1; não representa um novo acontecimento do mundo.
+
+<!-- turno-transacional:s013-befafc23db3af451 -->
+**Jogador**
+
+Ren volta ao circo depois de mais um dia sem avanços, em sua visão. Mesmo caminho de sempre: banho, Silva. Pede para ver Nera. Pergunta se ela quer dormir com ele hoje.
+**Narrador**
+
+Ren deixa os fundos da Silver Lily e toma o caminho do circo. Na conta que faz para si, termina mais um dia sem avanço: trabalho cumprido, pontos verificados, pessoas avisadas — e nenhuma resposta nova sobre Masao, Velis ou a rede que continua escondida dentro da cidade.
+
+A viagem transcorre sob a aparência de Shinta. Quando as lonas dos Mooney surgem na noite, um ruído seco rompe por alguns instantes a rotina do acampamento: uma das mulas se inquieta quando uma aba de lona, solta pelo vento, estala perto de sua cabeça. Um cuidador segura o cabresto, outro prende novamente o tecido, e Ren espera o espaço abrir antes de passar. O incidente termina em resmungos, palha revolvida e trabalho comum. Nada mais.
+
+No quarto-depósito, Ren guarda as roupas de Shinta e desfaz os sinais visíveis do trabalhador da Galeria. Depois segue ao banho. A água remove suor, poeira e o cheiro das vielas percorridas desde o fim do expediente. Quando sai, não traz consigo nenhuma das identidades públicas que usou durante o dia.
+
+Ren procura Silva e pede para ver Nera. Ela o observa por um instante — limpo, inteiro, sem urgência de sangue na roupa ou perseguição atrás dele — e olha na direção da carroça verde.
+
+— Ela está acordada. Pode pedir. A resposta continua sendo dela.
+
+Ren se aproxima da carroça, chama baixo e espera. Nera abre a cortina pouco depois. Ao reconhecê-lo, deixa escapar primeiro um sorriso pequeno, depois um olhar mais atento, como se procurasse no rosto dele a parte do dia que não foi dita.
+
+Ren pergunta se ela quer dormir com ele naquela noite.
+
+Nera não responde por hábito nem porque Silva permitiu a aproximação. Olha brevemente para o interior da carroça, onde Tavin já está acomodado, e então volta a atenção para Ren.
+
+— Quero — diz. — Hoje eu quero. Mas, se Tavin precisar de mim durante a noite, eu volto para cá.
+
+Não há desculpa na condição, apenas o limite prático que acompanha a escolha dela. Nera fecha a cortina por um momento para preparar o necessário e torna a aparecer.
+
+— E esta noite você não precisa me trazer um resultado — acrescenta, mais baixo. — Só venha dormir.
+
+Às dez e vinte, ela está diante de Ren junto à carroça verde, pronta para acompanhá-lo por vontade própria. O dia que ele considera vazio termina, ao menos por enquanto, sem que precise ser transformado em outra investigação.

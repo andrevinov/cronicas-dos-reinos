@@ -3,7 +3,6 @@ natureza: controle_reservado
 gate:
   ciclo: 3
   restantes:
-  - oportunidade_01
   - nada_07
   - nada_06
   - nada_08
@@ -12,9 +11,29 @@ gate:
   - nada_04
   - nada_02
   - oportunidade_02
-  sorteios: 21
+  sorteios: 22
 cooldown_ate: null
-pendencias_avaliacao: {}
+pendencias_avaliacao:
+  sq-5ca38554df96dc88:
+    id: sq-5ca38554df96dc88
+    estado: potencial
+    npc_id: maerra_thandrel
+    npc_nome: Irmã Maerra Thandrel
+    necessidade_id: pessoa_ausente
+    tipo: busca
+    semente: Uma pessoa esperada pelo abrigo ou templo pode não ter aparecido; Maerra
+      pode pedir uma busca discreta se isso combinar com o cânone do momento.
+    janela:
+      tipo: enquanto_condicao
+      condicao: a pessoa continuar ausente
+    pode_reabrir: true
+    consequencia_sem_ren: Outra pessoa pode encontrá-la, o problema pode se resolver
+      sozinho ou a ausência pode ganhar consequências.
+    fonte_npc: estado/relacoes/maerra_thandrel.yaml
+    gerada_em:
+      data: 15 Eleasis, 1372 DR
+      hora: '17:30'
+    regra: potencial_nao_significa_oferecida
 missoes: {}
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
@@ -43,6 +62,7 @@ encontros_recentes:
 - scene:s013-banho-e-conversa-com-silva:npc:silva_elkwood
 - scene:s013-conselho-silva-e-boa-noite-nera:npc:nera_vell
 - scene:s013-conselho-silva-e-boa-noite-nera:npc:silva_elkwood
+- scene:s013-relato-dos-ultimos-dias-a-maerra:npc:maerra_thandrel
 historico_recente:
 - tipo: avaliacao_descartada
   id: sq-ec78a67de83ed965

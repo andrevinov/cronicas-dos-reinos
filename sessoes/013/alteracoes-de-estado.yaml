@@ -18,7 +18,7 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 13
-  modo: shinta_expediente_concluido_15_eleasis
+  modo: ponto_morto_de_pell_verificado_sem_nova_mensagem
   personagem: Ren Kagehira
   nivel: 7
   pv: 52/52
@@ -26,9 +26,9 @@ checkpoint_atual:
   ca: 17
   dinheiro_po: 30.979999999999997
   data: 15 Eleasis, 1372 DR
-  hora: '17:30'
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
+  hora: '21:10'
+  area: arredores da The Silver Lily, Ravens Bluff
+  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
   nivel_ficha: 7
 consolidacoes:
 - id: s013-cena-2036ebe446e8d233
@@ -70,6 +70,39 @@ consolidacoes:
   - estado/estado-atual.yaml
   - estado/tempo.yaml
   - personagens/jogador/ficha.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-5f3e9d5927391988
+  tipo: cena
+  transacoes:
+  - s013-ca472eb2346d5b94
+  - s013-c3c3e23032c2a174
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-8f7b18ceed219fba
+  tipo: cena
+  transacoes:
+  - s013-f0adc2d21169bfec
+  - s013-1d5b5ccd809742a1
+  - corr-s013-01546d4e425576d6
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
   - sessoes/013/alteracoes-de-estado.yaml
   - sessoes/013/consequencias.md
   - sessoes/013/consolidacoes.jsonl

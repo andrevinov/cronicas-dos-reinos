@@ -4,7 +4,7 @@ historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
   sessao_atual: 13
-  modo_de_cena_atual: shinta_expediente_concluido_15_eleasis
+  modo_de_cena_atual: ponto_morto_de_pell_verificado_sem_nova_mensagem
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,11 +18,12 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
-  descricao_operacional: Shinta dedicou a tarde exclusivamente à conferência documental, combinou precisão e ritmo
-    e concluiu o dia sem repetir presunções ou erros de registro. Sua continuidade no trabalho foi preservada, e
-    Ren não realizou investigação paralela nem descobriu nova pista.
+  area: arredores da The Silver Lily, Ravens Bluff
+  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
+  descricao_operacional: 'Ren consultou discretamente o ponto morto de Pell na traseira da The Silver Lily e o recompôs
+    sem perder detalhes. O canal permanecia ativo e sem sinal de violação, mas não havia informação nova. Os 3 PO
+    já haviam sido pagos na sessão 8, e a última mensagem de Ren permanece: "qualquer informação sobre as velas
+    será sempre bem paga aqui".'
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -34,7 +35,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '17:30'
+  hora_aproximada: '21:10'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.

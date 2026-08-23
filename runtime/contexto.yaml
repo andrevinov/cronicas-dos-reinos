@@ -7,7 +7,7 @@ fontes_canonicas:
 sessao:
   numero: 13
   status: em_sessao
-  modo_de_cena: shinta_expediente_concluido_15_eleasis
+  modo_de_cena: ponto_morto_de_pell_verificado_sem_nova_mensagem
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -25,7 +25,7 @@ recursos:
   dinheiro_po: 30.979999999999997
 tempo:
   data: 15 Eleasis, 1372 DR
-  hora_aproximada: '17:30'
+  hora_aproximada: '21:10'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
+  area: arredores da The Silver Lily, Ravens Bluff
+  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -70,9 +70,11 @@ capacidades_contextuais:
     vantagem_outra_identidade:
     - enganacao
     - atuacao
-    gatilho: Ren tenta passar-se por uma pessoa diferente de Ren Kagehira; a identidade pode ser real ou inventada, como Shinta Ryoushi
+    gatilho: Ren tenta passar-se por uma pessoa diferente de Ren Kagehira; a identidade pode ser real ou inventada,
+      como Shinta Ryoushi
     flag_rolagem: --actor-outra-identidade
-    mimetismo_separado: fala/sons ouvidos por pelo menos 1 minuto; não é pré-requisito para a vantagem; ouvinte pode opor Intuição a Enganação
+    mimetismo_separado: fala/sons ouvidos por pelo menos 1 minuto; não é pré-requisito para a vantagem; ouvinte
+      pode opor Intuição a Enganação
   observant:
     leitura_labial: se vir a boca e entender o idioma
     bonus_passivos: 5

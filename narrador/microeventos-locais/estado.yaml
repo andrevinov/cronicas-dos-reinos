@@ -23,12 +23,19 @@ locais:
     ocorrencia:
       ciclo: 1
       restantes:
-      - microevento_01
       - rotina_03
     cartas:
-      ciclo: 0
-      assinatura_pool: null
-      restantes: []
+      ciclo: 1
+      assinatura_pool: 4cf96967c4975a6f244c956ad251e45eddccd1bdc3e5def76920545d1926cea1
+      restantes:
+      - manutencao_pequena
+      - carga_marca_confusa
+      - ajuste_area_trabalho
+      - ensaio_repetido
+      - entrega_atrasada
+      - publico_acumula_e_escoa
+      - rotina_servico_reordenada
+      - abastecimento_incompleto
   casa_salgueiro_seco:
     ocorrencia:
       ciclo: 0
@@ -127,3 +134,14 @@ historico_recente:
     nome: normal
     cenas_secas_antes: 2
     promovido: false
+- cena_id: s013-retorno-circo-convite-nera-15-eleasis
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: microevento_01
+  resultado_base: microevento
+  resultado: microevento
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 3
+    promovido: false
+  carta_id: animal_inquieto
