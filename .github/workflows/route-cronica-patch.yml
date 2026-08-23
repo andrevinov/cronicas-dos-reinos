@@ -1,0 +1,139 @@
+name: Route live play through cronica
+
+on:
+  push:
+    branches:
+      - fix/route-codex-through-cronica
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/route-codex-through-cronica
+          fetch-depth: 0
+      - name: Patch operational routing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace(path: str, old: str, new: str) -> None:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected one match, found {count}: {old[:80]!r}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          agents = 'AGENTS.md'
+          replace(
+              agents,
+              '- consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;\n- retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;',
+              '- consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;\n- lifecycle unificado de turno/sessão/progressão → `docs/task21-unified-cronica-turn-cli.md` e `docs/task22-unified-session-lifecycle.md`;\n- retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;',
+          )
+          replace(
+              agents,
+              '`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.',
+              '`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → cronica preparar → rolagens → narração → cronica concluir → copiar RODAPE_CANONICO → fim`.\n\n**Porta operacional preferencial.** Em avanço ON normal, usar `poetry run cronica preparar ...` antes da resolução/narração e `poetry run cronica concluir --ticket <ticket>` depois que a resposta estiver aceita. `turno.py`, `endpoints.py cena` e `cena_mundo.py confirmar` permanecem primitivas de manutenção, teste e reparo; não são o hot path normal.',
+          )
+          replace(
+              agents,
+              '**Gatilho reativo não é rotina.** Em abertura/mudança material, use `endpoints.py cena` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. A porta é read-only: calcula sem criar mapa ou consumir gate.\n\nApós `turno.py registrar`, confirme a cena aceita com `cena_mundo.py confirmar --preparacao-id <id>` e os mesmos parâmetros. Não confirme cena corrigida/abandonada. Preparação obsoleta falha fechada; refaça. Sem gatilho, não consultar recompensa/oportunidade.',
+              '**Gatilho reativo não é rotina.** `cronica preparar` é a porta normal e recebe `cena_id` estável; inclua local só ao entrar/explorar, NPCs cujo encontro começou e tags realmente pertinentes. A preparação continua read-only: calcula sem criar mapa ou consumir gate. Sem gatilho material, não inventar local/NPC/tag nem consultar recompensa/oportunidade.\n\nDepois da narração aceita, enviar a transação para `cronica concluir --ticket <ticket>`. O orquestrador revalida/confirma a preparação e registra o turno na ordem segura em uma única chamada pós-narração. Não concluir cena corrigida/abandonada. Preparação obsoleta falha fechada; executar `cronica preparar` novamente.',
+          )
+          replace(
+              agents,
+              '- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<\'JSON\'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;',
+              '- enviar jogador+narrador+deltas por stdin para `poetry run cronica concluir --ticket <ticket> <<\'JSON\'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;',
+          )
+          replace(
+              agents,
+              '- a última linha `RODAPE_CANONICO — ...` de `turno.py registrar` deve ser reproduzida verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.',
+              '- o valor `rodape_canonico` devolvido por `cronica concluir` deve ser reproduzido verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.',
+          )
+          replace(
+              agents,
+              'Meta comum: **duas escritas**. Preparação escreve zero; `confirmar` só após turno aceito. Rodapé só lê; nenhum faz scan.',
+              'Meta comum: **duas chamadas operacionais de turno** (`cronica preparar` + `cronica concluir`). Preparação escreve zero; conclusão só ocorre após turno aceito. Não decompor o fluxo em primitivas antigas sem necessidade de manutenção/reparo.',
+          )
+          replace(
+              agents,
+              '- Cena reativa segue o `preparar`/`confirmar` acima; primitivas abaixo são manutenção/teste.',
+              '- Cena reativa segue `cronica preparar`/`cronica concluir`; primitivas abaixo são manutenção/teste.',
+          )
+          replace(
+              agents,
+              '```bash\npython3 ferramentas/checkpoint.py cena\npython3 ferramentas/checkpoint.py sessao\n```',
+              '```bash\npoetry run cronica sessao checkpoint\npoetry run cronica sessao encerrar\n```',
+          )
+          replace(
+              agents,
+              'Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.',
+              'Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `poetry run cronica sessao recuperar`; `checkpoint.py recuperar` permanece fallback de manutenção.\n\nQuando o jogador pedir para **iniciar uma nova sessão**, não pedir que ele rode CLI manualmente: o narrador executa `poetry run cronica sessao status`; se estiver `entre_sessoes`, executa `poetry run cronica sessao iniciar`, e então usa `contexto.py retomada`/handoff para recapitular e abrir a cena. Se já estiver `em_sessao`, apenas retomar; nunca pular uma sessão. A nova transcrição é criada pelo lifecycle e nunca copia a anterior.\n\nLevel-up mecânico entre sessões usa `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`. Na faixa 8–17, nunca alterar a ficha sem milestone da Juppongatana previamente registrado; as primitivas de progressão ficam para manutenção/diagnóstico.',
+          )
+
+          protocol = 'narracao/protocolo-de-sessao.md'
+          replace(
+              protocol,
+              '## Abertura de sessão\n\nA abertura deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico quando necessário e uma deixa clara para Ren agir.\n\nPara reconstruir continuidade, usar primeiro:',
+              '## Abertura de sessão\n\nA abertura deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico quando necessário e uma deixa clara para Ren agir.\n\nQuando André pedir para **iniciar uma nova sessão**, a operação é do narrador, não do jogador. Primeiro verificar:\n\n```bash\npoetry run cronica sessao status\n```\n\nSe a campanha estiver `entre_sessoes`, executar:\n\n```bash\npoetry run cronica sessao iniciar\n```\n\nSe já estiver `em_sessao`, não criar N+1: apenas retomar a sessão ativa. Nunca pedir que André execute esses comandos manualmente como pré-requisito para jogar.\n\nPara reconstruir continuidade e produzir o recap, usar primeiro:',
+          )
+          replace(
+              protocol,
+              'Somente **ON já resolvido** pode ser enviado como campo `jogador` para `turno.py registrar`. `ferramentas/entrada.py` é o parser/validador determinístico; texto ON comum não precisa pagar um tool call só para classificação.',
+              'Somente **ON já resolvido** pode ser enviado como campo `jogador` da transação entregue a `cronica concluir`. `turno.py registrar` permanece a primitiva subjacente de manutenção/reparo. `ferramentas/entrada.py` é o parser/validador determinístico; texto ON comum não precisa pagar um tool call só para classificação.',
+          )
+          replace(
+              protocol,
+              '→ consultar somente a lacuna necessária\n→ resolver rolagens do ON\n→ produzir narração\n→ registrar somente ON resolvido + narração + deltas\n→ devolver controle ao jogador',
+              '→ consultar somente a lacuna necessária\n→ `cronica preparar` a cena/turno (read-only)\n→ resolver rolagens do ON\n→ produzir narração\n→ `cronica concluir` com ON resolvido + narração + deltas\n→ devolver controle ao jogador',
+          )
+          replace(
+              protocol,
+              'Persistir com uma única chamada:\n\n```bash\npython3 ferramentas/turno.py registrar <<\'JSON\'\n{\n  "jogador": "Ren ...",\n  "narracao": "...",\n  "resumo": "Resumo curto do que mudou.",\n  "modo": "combate",\n  "deltas": []\n}\nJSON\n```\n\nO registrador recusa `jogador` contendo OFF ou RECALL não resolvido antes de qualquer escrita. Ele escreve somente:\n\n1. `sessoes/NNN/transcricao.md`;\n2. `runtime/eventos-pendentes.jsonl`.\n\nA prosa completa fica só na transcrição. O JSONL guarda ID, sessão, resumo, deltas e eventualmente rolagens ocultas.',
+              'O hot path usa **duas chamadas operacionais**. Antes de resolver/publicar o turno:\n\n```bash\npoetry run cronica preparar --cena-id <id-estavel> ...\n```\n\nGuardar o `ticket` retornado. Depois que a narração estiver aceita, concluir por stdin:\n\n```bash\npoetry run cronica concluir --ticket \'<ticket>\' <<\'JSON\'\n{\n  "jogador": "Ren ...",\n  "narracao": "...",\n  "resumo": "Resumo curto do que mudou.",\n  "modo": "combate",\n  "deltas": []\n}\nJSON\n```\n\n`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita, revalida/confirma a preparação e usa o registrador transacional existente. A suboperação de registro mantém a prosa completa apenas em `sessoes/NNN/transcricao.md` e o resumo/deltas em `runtime/eventos-pendentes.jsonl`; a confirmação reativa pode materializar somente os efeitos já previstos pela preparação.\n\n`turno.py registrar`, `endpoints.py cena` e `cena_mundo.py confirmar` continuam disponíveis para manutenção, teste e reparo, não como fluxo normal.',
+          )
+          replace(
+              protocol,
+              '```bash\npython3 ferramentas/checkpoint.py cena\n```',
+              '```bash\npoetry run cronica sessao checkpoint\n```',
+          )
+          replace(
+              protocol,
+              '```bash\npython3 ferramentas/checkpoint.py sessao\n```',
+              '```bash\npoetry run cronica sessao encerrar\n```',
+          )
+          replace(
+              protocol,
+              '`progressao` pode registrar marco/recompensa, mas isso não autoriza escolher opção de nível pelo jogador. Mudanças mecânicas efetivas precisam de delta próprio.',
+              '`progressao` pode registrar marco/recompensa, mas isso não autoriza escolher opção de nível pelo jogador. Quando houver level-up legítimo entre sessões, usar `cronica progressao status` e `cronica progressao aplicar`; na faixa 8–17 a ficha não pode mudar sem o milestone correspondente já registrado pela Task 19.',
+          )
+          replace(
+              protocol,
+              '```bash\npython3 ferramentas/checkpoint.py recuperar\n```',
+              '```bash\npoetry run cronica sessao recuperar\n```',
+          )
+          replace(
+              protocol,
+              'A recuperação canônica usa os bytes já staged e não reaplica incrementos. Depois reconstrói handoff/índice.\n\nSe **não** houver journal canônico, mas handoff/índice estiverem ausentes ou desatualizados, o mesmo comando pode reconstruir apenas a memória derivada sem alterar fatos da campanha.',
+              'A recuperação canônica usa os bytes já staged e não reaplica incrementos. Depois reconstrói handoff/índice. `checkpoint.py recuperar` continua sendo a primitiva de fallback para manutenção.\n\nSe **não** houver journal canônico, mas handoff/índice estiverem ausentes ou desatualizados, o mesmo comando pode reconstruir apenas a memória derivada sem alterar fatos da campanha.',
+          )
+
+          test = Path('tests/test_cronica_operational_router.py')
+          test.write_text('''from __future__ import annotations\n\nimport unittest\nfrom pathlib import Path\n\nROOT = Path(__file__).parents[1]\n\n\nclass CronicaOperationalRouterTest(unittest.TestCase):\n    def test_agents_declara_cronica_como_hot_path(self):\n        text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")\n        self.assertIn("**Porta operacional preferencial.**", text)\n        self.assertIn("poetry run cronica preparar", text)\n        self.assertIn("poetry run cronica concluir --ticket", text)\n        self.assertIn("poetry run cronica sessao iniciar", text)\n        self.assertIn("poetry run cronica sessao encerrar", text)\n        self.assertIn("poetry run cronica progressao aplicar", text)\n        self.assertIn("não pedir que ele rode CLI manualmente", text)\n\n    def test_protocolo_de_sessao_nao_exige_cli_manual_do_jogador(self):\n        text = (ROOT / "narracao/protocolo-de-sessao.md").read_text(encoding="utf-8")\n        self.assertIn("a operação é do narrador, não do jogador", text)\n        self.assertIn("poetry run cronica sessao status", text)\n        self.assertIn("poetry run cronica sessao iniciar", text)\n        self.assertIn("poetry run cronica preparar", text)\n        self.assertIn("poetry run cronica concluir --ticket", text)\n        self.assertIn("poetry run cronica sessao checkpoint", text)\n        self.assertIn("poetry run cronica sessao encerrar", text)\n        self.assertIn("poetry run cronica sessao recuperar", text)\n\n\nif __name__ == "__main__":\n    unittest.main()\n''', encoding='utf-8')
+          PY
+          git diff --check
+          python3 -m unittest tests.test_cronica_operational_router -v
+      - name: Commit routing patch and remove workflow
+        run: |
+          git rm .github/workflows/route-cronica-patch.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add AGENTS.md narracao/protocolo-de-sessao.md tests/test_cronica_operational_router.py
+          git commit -m 'Roteador: usar cronica como fluxo operacional preferencial'
+          git push origin HEAD:fix/route-codex-through-cronica
