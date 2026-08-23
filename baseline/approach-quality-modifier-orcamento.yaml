@@ -1,0 +1,45 @@
+schema_orcamento_qualidade_abordagem: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Calcular um modificador pré-rolagem 0/+1/+2/+3 com custo constante e sem
+  leitura, escrita, reroll ou novo endpoint.
+limites:
+  criterios: 3
+  bonus_minimo: 0
+  bonus_maximo: 3
+  max_evidencia_chars_por_criterio: 180
+  max_leituras_por_avaliacao: 0
+  max_escritas_por_avaliacao: 0
+  max_chamadas_rng_adicionais: 0
+  max_rerolls: 0
+  max_endpoints_novos: 0
+  max_leituras_adicionais_endpoint: 0
+  max_escritas_endpoint: 0
+  max_schedulers_novos: 0
+  max_estados_novos: 0
+  max_scans_repo: 0
+integracao:
+  campo_endpoint_existente: modificadores
+  schema_endpoint_permanece: 1
+  portas_endpoint_permanecem: 5
+  dados_base_permanece_um_unico_motor: true
+  lote_nao_cria_segundo_rng: true
+escopo:
+  d20_generico_jogador: true
+  pericia_ren: true
+  ataque: false
+  salvaguarda: false
+  iniciativa: false
+  dano: false
+  npc: false
+invariantes:
+  rubrica: [preparacao, informacao, adequacao]
+  cada_criterio_vale_um: true
+  decisao_antes_do_dado: true
+  bonus_da_ficha_independente: true
+  nao_altera_cd: true
+  nao_muda_vantagem_desvantagem: true
+  impossivel_continua_impossivel: true
+  mesma_evidencia_nao_duplica_ponto: true
+  mesma_circunstancia_nao_duplica_mecanica: true
+  saida_sem_abordagem_permanece_compativel: true
