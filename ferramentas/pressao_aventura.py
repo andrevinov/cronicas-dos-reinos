@@ -5,10 +5,10 @@ A pressão é uma heurística operacional, não cânone. Ela mede quantas cenas 
 confirmadas consecutivas terminaram sem sequer produzir um candidato de
 microevento. Não usa relógio, sessão, transcrição ou inferência semântica.
 
-O efeito só existe quando outra cena local já está sendo preparada: níveis mais
-altos podem promover algumas fichas `rotina_*` do baralho de ocorrência para
-`microevento`. Nada é criado fora da abertura de cena e o resultado continua
-sendo apenas candidato sujeito aos guardrails do baralho local.
+O efeito primário existe quando outra cena local já está sendo preparada: níveis
+mais altos podem promover algumas fichas `rotina_*` do baralho de ocorrência para
+`microevento`. O Side Quest Gate v2 também pode consultar a mesma pressão como
+modificador de raridade, sem criar encontro, oferta ou missão por conta própria.
 """
 from __future__ import annotations
 
@@ -27,6 +27,7 @@ PROMOTED_ROUTINE_TOKENS = {
     3: {"rotina_01", "rotina_02", "rotina_03"},
 }
 MAX_DRY_STREAK_REPORTED = 64
+MICROEVENT_STATE = Path("narrador/microeventos-locais/estado.yaml")
 
 
 class AdventurePressureError(ValueError):
@@ -68,7 +69,7 @@ def status_from_history(history: list[Any]) -> dict[str, Any]:
         "critica": level == 3,
         "regra": (
             "Mede ausência de candidatos locais, não ausência de fatos canônicos. "
-            "Só modifica o próximo sorteio quando uma cena local já existe."
+            "Só modifica um gate reativo que já tenha sido legitimamente acionado."
         ),
     }
 
@@ -95,8 +96,53 @@ def apply(
     }
 
 
+def _gate_history(repo: Path) -> tuple[list[Any], list[str], bool]:
+    """Lê só o estado já existente; não abre catálogo/ecologia para o gate v2."""
+    path = repo / MICROEVENT_STATE
+    layer_dir = path.parent
+    if not layer_dir.exists():
+        return [], [], False
+    if not path.is_file():
+        raise AdventurePressureError(
+            "camada de microeventos locais declarada parcialmente: estado ausente"
+        )
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    except (OSError, yaml.YAMLError) as exc:
+        raise AdventurePressureError(str(exc)) from exc
+    if not isinstance(data, dict):
+        raise AdventurePressureError("estado de microeventos locais deve ser mapa")
+    if (
+        data.get("schema_estado_microeventos_locais") != 1
+        or data.get("natureza") != "controle_reservado"
+    ):
+        raise AdventurePressureError("estado de microeventos locais inválido")
+    history = data.get("historico_recente")
+    if not isinstance(history, list) or len(history) > MAX_DRY_STREAK_REPORTED:
+        raise AdventurePressureError("historico_recente de microeventos inválido")
+    for i, raw in enumerate(history):
+        if not isinstance(raw, dict):
+            raise AdventurePressureError(f"historico_recente[{i}] deve ser mapa")
+        if raw.get("resultado") not in {"rotina", "microevento"}:
+            raise AdventurePressureError(
+                f"historico_recente[{i}].resultado inválido para pressão"
+            )
+    return history, [MICROEVENT_STATE.as_posix()], True
+
+
+def status_for_gate(repo: Path) -> dict[str, Any]:
+    """Consulta mínima para gates reativos; camada ausente equivale a nível zero."""
+    history, sources, configured = _gate_history(repo)
+    return {
+        "ok": True,
+        "configurado": configured,
+        "pressao_aventura": status_from_history(history),
+        "fontes_lidas": sources,
+    }
+
+
 def status(repo: Path) -> dict[str, Any]:
-    # Import local evita ciclo de importação: microeventos_locais usa este módulo.
+    # A consulta de manutenção valida o subsistema completo; o gate usa status_for_gate.
     import microeventos_locais
 
     index = microeventos_locais.load_index(repo)

@@ -2,6 +2,7 @@ schema_oportunidades: 1
 natureza: reservado
 semente: cronicas-dos-reinos-oportunidades-v1
 gate:
+  versao: 2
   modo: baralho_sem_reposicao_sha256
   fichas:
   - id: nada_01
@@ -24,6 +25,15 @@ gate:
     resultado: oportunidade
   - id: oportunidade_02
     resultado: oportunidade
+  pressao_aventura:
+    origem: adventure_drought_pressure
+    fonte: narrador/microeventos-locais/estado.yaml
+    ordenacao_promovidos: sha256_seed_token
+    promocoes_nada_por_nivel:
+      0: 0
+      1: 1
+      2: 2
+      3: 3
 orcamento:
   max_ativas: 2
   max_em_aberto: 3
@@ -38,6 +48,9 @@ regras:
   necessidade_nao_e_oferta: true
   oferta_nao_e_aceite: true
   consequencia_sem_ren_nao_e_automatica: true
+  pressao_aventura_modula_gate: true
+  pressao_nao_fura_orcamento: true
+  pressao_nao_rerrola: true
 perfis:
   kethra_dunn:
     nome: Kethra Dunn
