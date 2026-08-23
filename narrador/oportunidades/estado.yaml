@@ -1,11 +1,18 @@
 schema_estado_oportunidades: 1
 natureza: controle_reservado
 gate:
-  ciclo: 2
+  ciclo: 3
   restantes:
-  - nada_02
+  - oportunidade_01
+  - nada_07
+  - nada_06
+  - nada_08
+  - nada_05
+  - nada_01
   - nada_04
-  sorteios: 18
+  - nada_02
+  - oportunidade_02
+  sorteios: 21
 cooldown_ate: null
 pendencias_avaliacao: {}
 missoes: {}
@@ -33,6 +40,9 @@ encontros_recentes:
 - scene:sessao-011:narwhal-kethra-pos-velis:npc:kethra_dunn
 - scene:sessao-012:retorno-circo-relato-silva:npc:silva_elkwood
 - scene:sessao-012:convite-noturno-nera:npc:nera_vell
+- scene:s013-banho-e-conversa-com-silva:npc:silva_elkwood
+- scene:s013-conselho-silva-e-boa-noite-nera:npc:nera_vell
+- scene:s013-conselho-silva-e-boa-noite-nera:npc:silva_elkwood
 historico_recente:
 - tipo: avaliacao_descartada
   id: sq-ec78a67de83ed965

@@ -4,7 +4,7 @@ historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
   sessao_atual: 13
-  modo_de_cena_atual: retorno_ao_circo_apos_recado_a_sella
+  modo_de_cena_atual: sono_ate_fronteira_do_amanhecer
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,18 +18,14 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Rua da Cal, Lower Trades, Ravens Bluff
-  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
-  descricao_operacional: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação
-    com Halessa, Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico.
-    Nera apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando
-    pudesse e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu
-    a persona de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o
-    portão.
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no catre do quarto-depósito de Ren, adormecido
+  descricao_operacional: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira
+    das 06:00 de 15 Eleasis; o descanso longo permanece em andamento.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 14 Eleasis, 1372 DR
+  data_exata: 15 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -37,7 +33,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '21:20'
+  hora_aproximada: 06:00
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.

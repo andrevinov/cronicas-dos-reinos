@@ -23,7 +23,6 @@ locais:
     ocorrencia:
       ciclo: 1
       restantes:
-      - rotina_01
       - microevento_01
       - rotina_03
     cartas:
@@ -104,4 +103,14 @@ historico_recente:
     nivel: 0
     nome: normal
     cenas_secas_antes: 0
+    promovido: false
+- cena_id: s013-banho-e-conversa-com-silva
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_01
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 1
     promovido: false

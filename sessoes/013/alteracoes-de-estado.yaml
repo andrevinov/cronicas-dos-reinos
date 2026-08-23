@@ -1,0 +1,48 @@
+schema_alteracoes_transacionais: 1
+sessao: 13
+status: em_andamento
+fonte: sessoes/013/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 13
+  modo: retorno_ao_circo_apos_recado_a_sella
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  ki: 7/7
+  ca: 17
+  dinheiro_po: 30.58
+  data: 14 Eleasis, 1372 DR
+  hora: '21:20'
+  area: Rua da Cal, Lower Trades, Ravens Bluff
+  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 13
+  modo: sono_ate_fronteira_do_amanhecer
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  ki: 7/7
+  ca: 17
+  dinheiro_po: 30.58
+  data: 15 Eleasis, 1372 DR
+  hora: 06:00
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no catre do quarto-depósito de Ren, adormecido
+  nivel_ficha: 7
+consolidacoes:
+- id: s013-cena-2036ebe446e8d233
+  tipo: cena
+  transacoes:
+  - s013-cb1e63c34d6a89f8
+  - s013-e6cdd6b173f6a143
+  - s013-aaabfe4217bedf7d
+  - s013-ea3a2b1181189941
+  deltas: 17
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md

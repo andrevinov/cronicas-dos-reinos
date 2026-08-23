@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 14 Eleasis, 1372 DR
-  hora: '21:20'
+  data: 15 Eleasis, 1372 DR
+  hora: 06:00
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -190,3 +190,57 @@ concluidas_recentes:
   nota: A Night Watch mantém vigilância e resposta preparada, preservando fontes e
     cadeia de prova. Nenhum fato novo nesta cadência exige mudança de prioridade ou
     nova ação canônica.
+- id: mundo-3abf6eec1eaf1217
+  tipo: reavaliar_agente_leve
+  agente_leve: silva_elkwood
+  disparado_em:
+    data: 14 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+- id: mundo-49c09b624214d95b
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Nenhum novo fato canônico nesta janela satisfaz o critério do marco rumores_de_grande_navio;
+    cadência não implica avanço.
+- id: mundo-0d4ac66ae536069d
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: A custódia e a investigação reservada da Casa de Tyr continuam conforme o
+    plano atual; nenhum fato novo exige mudança canônica.
+- id: mundo-217551337123c65e
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém vigilância e resposta preparada; nenhuma nova informação
+    nesta janela altera suas prioridades canônicas.
+- id: mundo-245ee99f979c6238
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A busca dirigida da Red Sail continua, mas o relógio anterior já está resolvido
+    e nenhuma nova pista concreta exige delta canônico neste amanhecer.
+- id: mundo-28e66117dc395111
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  agente: masao_hirasawa
+  nota: O plano estratégico de Masao permanece em execução; a cadência diária, sem
+    novo fato causal, não exige mutação canônica.
+- id: mundo-8ccad321e24f9210
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: Shizune continua aguardando oportunidade canônica e sem presença física local
+    fixada; nenhum novo fato autoriza iniciativa ou mutação.

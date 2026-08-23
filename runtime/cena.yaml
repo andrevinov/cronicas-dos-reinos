@@ -1,23 +1,20 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 13
-modo: retorno_ao_circo_apos_recado_a_sella
+modo: sono_ate_fronteira_do_amanhecer
 localizacao:
-  area: Rua da Cal, Lower Trades, Ravens Bluff
-  ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: no catre do quarto-depósito de Ren, adormecido
 tempo:
-  data: 14 Eleasis, 1372 DR
-  hora_aproximada: '21:20'
+  data: 15 Eleasis, 1372 DR
+  hora_aproximada: 06:00
 mecanica_imediata:
   pv: 52/52
   ki: 7/7
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
-  Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico. Nera apoiou
-  a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando pudesse e
-  avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu a persona de
-  Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o portão.
+resumo_imediato: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira das 06:00
+  de 15 Eleasis; o descanso longo permanece em andamento.
 prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
   manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
   de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
