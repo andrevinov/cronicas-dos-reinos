@@ -37,6 +37,22 @@ O avanço não precisa ocorrer em intervalos iguais.
 
 ---
 
+## Faixa 8–17 — espinha da Juppongatana
+
+A partir do nível 7 atual, os níveis **8 a 17** usam uma espinha especial de dez marcos: cada membro **único** da Juppongatana neutralizado de forma **canônica e durável** desbloqueia exatamente o próximo nível.
+
+A ordem dos membros é livre. O primeiro neutralizado desbloqueia o nível 8; o segundo, o 9; e assim sucessivamente até o décimo desbloquear o 17. Marcos de aparição não impõem ordem de neutralização.
+
+Neutralização não exige morte. Podem contar morte confirmada, prisão ou confinamento estável, incapacitação durável, ruptura definitiva com Masao ou expulsão/exílio operacional. Não contam derrota temporária, fuga, objetivo frustrado, ferimento recuperável, exposição, primeiro contato ou simples sobrevivência ao duelo.
+
+Nenhum crédito retroativo é concedido na instalação desta regra: a frustração anterior de Kurobane não foi neutralização durável e o ledger começa em 0/10.
+
+Outros grandes marcos continuam relevantes para história, aliados, reputação, recursos e estrutura de arco, mas **não substituem** uma neutralização da Juppongatana para consumir um dos níveis 8–17. Depois do nível 17, a progressão geral por marcos narrativos reassume.
+
+O milestone é registrado por `ferramentas/progressao_juppongatana.py`, mas o nível mecânico não é aplicado automaticamente. Depois do desbloqueio, seguir a seção **Progressão mecânica** abaixo.
+
+---
+
 ## Quando subir de nível
 
 Subir de nível preferencialmente:
@@ -74,6 +90,8 @@ O registro deve conter:
 * escolhas pendentes;
 * arquivos atualizados.
 
+Para níveis 8–17, o registro de experiência deve apontar também para o milestone correspondente em `narrador/juppongatana/estado-progressao.yaml`.
+
 ---
 
 ## XP como apoio
@@ -99,4 +117,3 @@ Ao subir de nível:
 7. registrar o marco.
 
 Habilidades novas devem ser interpretadas de forma coerente com a história de Ren, especialmente treinamento monástico, técnicas de sombra, contatos locais e experiência real adquirida em Ravens Bluff.
-
