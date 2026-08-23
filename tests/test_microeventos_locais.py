@@ -109,17 +109,33 @@ class LocalMicroeventDeckTest(unittest.TestCase):
         )
 
     def test_quatro_cenas_consumidas_tem_exatamente_um_microevento(self):
+        local_id = "galeria_dos_escribas"
+        occurrence_before = dict(
+            micro.load_state(self.repo, self.index)["locais"][local_id]["ocorrencia"]
+        )
         results = [
-            self._commit("galeria_dos_escribas", f"scene-{i}")
+            self._commit(local_id, f"scene-{i}")
             for i in range(1, 5)
         ]
         self.assertEqual(
             sum(item["resultado"] == "avaliar_microevento" for item in results),
             1,
         )
-        state = micro.load_state(self.repo, self.index)
-        self.assertEqual(state["locais"]["galeria_dos_escribas"]["ocorrencia"]["ciclo"], 1)
-        self.assertEqual(state["locais"]["galeria_dos_escribas"]["ocorrencia"]["restantes"], [])
+
+        # O fixture copia o estado vivo da campanha, então o baralho pode já estar
+        # no meio de um ciclo. Derive o estado esperado em vez de congelar ciclo 1.
+        deck_size = len(self.index["ocorrencia"]["fichas"])
+        expected_cycle = occurrence_before["ciclo"]
+        expected_remaining = len(occurrence_before["restantes"])
+        for _ in results:
+            if expected_remaining == 0:
+                expected_cycle += 1
+                expected_remaining = deck_size
+            expected_remaining -= 1
+
+        occurrence_after = micro.load_state(self.repo, self.index)["locais"][local_id]["ocorrencia"]
+        self.assertEqual(occurrence_after["ciclo"], expected_cycle)
+        self.assertEqual(len(occurrence_after["restantes"]), expected_remaining)
 
     def test_cartas_nao_repetem_antes_de_esgotar_pool(self):
         cards: list[str] = []
