@@ -185,6 +185,7 @@ def project_scene(preview: dict[str, Any]) -> dict[str, Any]:
     encounters = list(preview.get("encontros") or [])
     sidequests = []
     gates: list[dict[str, Any]] = []
+    modifiers: list[dict[str, Any]] = []
     encounter_ids: list[str] = []
     for item in encounters:
         if not isinstance(item, dict):
@@ -274,12 +275,33 @@ def project_scene(preview: dict[str, Any]) -> dict[str, Any]:
     if local is not None and isinstance(local.get("microevento_local"), dict):
         micro = local["microevento_local"]
         card = micro.get("carta") if isinstance(micro.get("carta"), dict) else None
+        pressure = (
+            micro.get("pressao_aventura")
+            if isinstance(micro.get("pressao_aventura"), dict)
+            else None
+        )
         filters.append("baralho_microevento_local")
         gate: dict[str, Any] = {
             "tipo": "microevento_local",
             "resultado": micro.get("resultado"),
         }
         micro_view: dict[str, Any] = {"resultado": micro.get("resultado")}
+        if pressure is not None:
+            pressure_view = {
+                "nivel": pressure.get("nivel"),
+                "nome": pressure.get("nome"),
+                "cenas_secas_antes": pressure.get("cenas_secas_antes"),
+                "promovido": bool(pressure.get("promovido")),
+            }
+            micro_view["pressao_aventura"] = pressure_view
+            gate["pressao_nivel"] = pressure.get("nivel")
+            if int(pressure.get("nivel") or 0) > 0:
+                modifiers.append(
+                    {
+                        "tipo": "pressao_seca_aventura",
+                        **pressure_view,
+                    }
+                )
         if card is not None:
             ids["microevento_local"] = card.get("id")
             gate["carta_id"] = card.get("id")
@@ -310,7 +332,7 @@ def project_scene(preview: dict[str, Any]) -> dict[str, Any]:
         filtros=filters,
         disponibilidade=availability,
         gates=gates,
-        modificadores=[],
+        modificadores=modifiers,
         deltas_previstos=[],
         proximo_passo=next_step,
         fontes_lidas=list(preview.get("fontes_lidas") or []),
