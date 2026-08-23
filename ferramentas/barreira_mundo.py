@@ -11,6 +11,13 @@ mudança, pode ser concluída diretamente. Se gera mudança canônica, o narrado
 pode registrar uma transação sem ação do jogador, com ``modo: mundo`` e uma tag
 ``resolver-pendencia-mundo:<id>``; ``turno.py`` força checkpoint antes de permitir
 que a pendência seja concluída.
+
+Quando a pendência possui candidato autônomo de pressão em Ravens Bluff, a
+conclusão fica causalmente fechada: ou recebe a transação consolidada + linha +
+método usados, para aplicar no máximo uma frente de pressão, ou declara
+explicitamente ``--sem-mudanca`` com um bloqueio canônico concreto. Ausência de
+ação de Ren ou mera ausência de fato novo não são bloqueios válidos para um plano
+autônomo já elegível.
 """
 from __future__ import annotations
 
@@ -29,12 +36,22 @@ except ImportError as exc:  # pragma: no cover
     ) from exc
 
 import mundo
+import pressao_ravens_bluff
 
 BARRIER_PATH = Path("runtime/mundo-pendencias.yaml")
 SCHEMA = 1
 NATURE = "runtime_derivado"
 RESOLUTION_TAG_PREFIX = "resolver-pendencia-mundo:"
 PENDING_ID_RE = re.compile(r"^mundo-[0-9a-f]{16}$")
+INVALID_AUTONOMOUS_NOOP_PHRASES = (
+    "ren não fez",
+    "ren nao fez",
+    "sem ação de ren",
+    "sem acao de ren",
+    "nenhuma iniciativa de ren",
+    "nenhum fato novo",
+    "sem novo fato",
+)
 
 
 class WorldPendingBarrierError(ValueError):
@@ -161,7 +178,11 @@ def resolution_pending_id(transaction: dict[str, Any]) -> str | None:
     tags = transaction.get("tags") or []
     if not isinstance(tags, list) or any(not isinstance(item, str) for item in tags):
         raise WorldPendingBarrierError("tags de transação devem ser lista de strings")
-    matches = [item[len(RESOLUTION_TAG_PREFIX):] for item in tags if item.startswith(RESOLUTION_TAG_PREFIX)]
+    matches = [
+        item[len(RESOLUTION_TAG_PREFIX):]
+        for item in tags
+        if item.startswith(RESOLUTION_TAG_PREFIX)
+    ]
     if not matches:
         return None
     if len(matches) != 1:
@@ -194,14 +215,24 @@ def authorize_registration(
         status = refresh_if_blocked(repo)
 
     if retry:
-        return {"ok": True, "retry": True, "pendencia_resolvida": resolution_id, "barreira": status}
+        return {
+            "ok": True,
+            "retry": True,
+            "pendencia_resolvida": resolution_id,
+            "barreira": status,
+        }
 
     if not status.get("configurado") or not status.get("bloqueado"):
         if resolution_id is not None:
             raise WorldPendingBarrierError(
                 f"transação declara {resolution_id}, mas não há pendência bloqueante no marcador"
             )
-        return {"ok": True, "retry": False, "pendencia_resolvida": None, "barreira": status}
+        return {
+            "ok": True,
+            "retry": False,
+            "pendencia_resolvida": None,
+            "barreira": status,
+        }
 
     if resolution_id is not None:
         state = mundo.load_world_state(repo)
@@ -218,17 +249,98 @@ def authorize_registration(
     quantity = int(status.get("quantidade") or 0)
     raise WorldPendingBarrierError(
         f"Mundo Vivo possui {quantity} pendência(s) não resolvida(s). "
-        "Antes de registrar novo turno de Ren, execute `python3 ferramentas/mundo.py pendentes`, "
-        "avalie as pendências e conclua cada uma com `python3 ferramentas/barreira_mundo.py concluir <id> --nota ...`. "
+        "Antes de registrar novo turno de Ren, execute `python3 ferramentas/endpoints.py pendencias`, "
+        "avalie somente as pendências indicadas e conclua cada uma pela barreira. "
         "Se uma avaliação produzir mudança canônica, registre antes uma transação sem `jogador`, com `modo: mundo` "
         f"e tag `{RESOLUTION_TAG_PREFIX}<id>`."
     )
 
 
-def conclude(repo: Path, pending_id: str, note: str | None = None) -> dict[str, Any]:
+def _pending_item(repo: Path, pending_id: str) -> dict[str, Any]:
+    state = mundo.load_world_state(repo)
+    matches = [item for item in state.get("pendencias") or [] if item.get("id") == pending_id]
+    if not matches:
+        raise WorldPendingBarrierError(f"pendência não encontrada: {pending_id}")
+    return matches[0]
+
+
+def _validate_autonomous_noop(note: str | None) -> str:
+    if not isinstance(note, str) or len(" ".join(note.split())) < 20:
+        raise WorldPendingBarrierError(
+            "--sem-mudanca em candidato autônomo exige --nota com bloqueio canônico concreto"
+        )
+    normalized = " ".join(note.lower().split())
+    if any(phrase in normalized for phrase in INVALID_AUTONOMOUS_NOOP_PHRASES):
+        raise WorldPendingBarrierError(
+            "ausência de ação de Ren ou de fato externo novo não bloqueia um plano autônomo; "
+            "aponte restrição, falta de recurso, conhecimento, presença ou oportunidade canônica concreta"
+        )
+    return note.strip()
+
+
+def conclude(
+    repo: Path,
+    pending_id: str,
+    note: str | None = None,
+    *,
+    transaction_id: str | None = None,
+    line_id: str | None = None,
+    method_id: str | None = None,
+    no_change: bool = False,
+) -> dict[str, Any]:
+    pending = _pending_item(repo, pending_id)
+    try:
+        candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)
+    except pressao_ravens_bluff.PressureError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+
+    action_values = (transaction_id, line_id, method_id)
+    has_action = any(value is not None for value in action_values)
+    if has_action and not all(isinstance(value, str) and value.strip() for value in action_values):
+        raise WorldPendingBarrierError(
+            "conclusão com mudança exige --transacao, --linha e --metodo juntos"
+        )
+    if has_action and no_change:
+        raise WorldPendingBarrierError("--sem-mudanca não pode ser combinado com resolução canônica")
+
+    pressure_result: dict[str, Any]
+    if candidate is not None:
+        if not has_action and not no_change:
+            raise WorldPendingBarrierError(
+                "pendência possui candidato autônomo de pressão; conclua a mudança com "
+                "--transacao <id> --linha <linha> --metodo <metodo> --nota ... ou declare "
+                "--sem-mudanca --nota <bloqueio canônico concreto>"
+            )
+        if no_change:
+            note = _validate_autonomous_noop(note)
+            pressure_result = {
+                "ok": True,
+                "alterou": False,
+                "candidato": candidate,
+                "motivo": "bloqueio canônico explícito informado pelo narrador",
+            }
+        else:
+            try:
+                pressure_result = pressao_ravens_bluff.apply_world_resolution(
+                    repo,
+                    pending,
+                    str(transaction_id),
+                    str(line_id),
+                    str(method_id),
+                    note or "ação autônoma consolidada pelo Mundo Vivo",
+                )
+            except pressao_ravens_bluff.PressureError as exc:
+                raise WorldPendingBarrierError(str(exc)) from exc
+    else:
+        pressure_result = {
+            "ok": True,
+            "alterou": False,
+            "motivo": "pendência sem candidato elegível de pressão",
+        }
+
     result = mundo.conclude(repo, pending_id, note)
     barrier = sync(repo)
-    return {**result, "barreira": barrier}
+    return {**result, "pressao_ravens_bluff": pressure_result, "barreira": barrier}
 
 
 def check(repo: Path) -> dict[str, Any]:
@@ -266,6 +378,10 @@ def main(argv: list[str] | None = None) -> int:
     done = sub.add_parser("concluir")
     done.add_argument("id")
     done.add_argument("--nota")
+    done.add_argument("--transacao")
+    done.add_argument("--linha")
+    done.add_argument("--metodo")
+    done.add_argument("--sem-mudanca", action="store_true")
     args = parser.parse_args(argv)
     repo = args.repo.resolve()
     try:
@@ -274,7 +390,15 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "sincronizar":
             result = sync(repo)
         elif args.command == "concluir":
-            result = conclude(repo, args.id, args.nota)
+            result = conclude(
+                repo,
+                args.id,
+                args.nota,
+                transaction_id=args.transacao,
+                line_id=args.linha,
+                method_id=args.metodo,
+                no_change=args.sem_mudanca,
+            )
         else:
             result = check(repo)
         print(_dump(result), end="")

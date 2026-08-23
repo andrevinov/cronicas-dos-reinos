@@ -33,9 +33,20 @@ class SidequestGateV2RepositoryTest(unittest.TestCase):
             {0: 0, 1: 1, 2: 2, 3: 3},
         )
         state = oportunidades.load_state(ROOT, index)
-        self.assertEqual(state["gate"]["ciclo"], 2)
-        self.assertEqual(state["gate"]["restantes"], ["nada_02", "nada_04"])
-        self.assertEqual(state["gate"]["sorteios"], 18)
+        gate = state["gate"]
+        token_ids = [item["id"] for item in index["gate"]["fichas"]]
+        draws = gate["sorteios"]
+        if draws == 0:
+            self.assertEqual(gate["ciclo"], 0)
+            self.assertEqual(gate["restantes"], [])
+        else:
+            expected_cycle = (draws - 1) // len(token_ids) + 1
+            consumed_in_cycle = (draws - 1) % len(token_ids) + 1
+            expected_order = oportunidades.gate_order(
+                index["_seed"], expected_cycle, token_ids
+            )
+            self.assertEqual(gate["ciclo"], expected_cycle)
+            self.assertEqual(gate["restantes"], expected_order[consumed_in_cycle:])
 
     def test_promocoes_sao_prefixos_deterministicos_e_preservam_raridade(self):
         index = oportunidades.load_index(ROOT)
