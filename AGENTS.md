@@ -6,7 +6,7 @@ Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa e
 
 O repositório é a memória canônica. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são snapshots derivados. Em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o último checkpoint; `contexto.py` combina base + pendências. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados. Em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o último checkpoint; `contexto.py` combina base + pendências. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
 
 ## 2. Invariantes inegociáveis
 
@@ -15,11 +15,9 @@ O repositório é a memória canônica. Não depender só da conversa para fatos
 3. Não garantir vitória nem alterar dificuldade/capacidade/resultado depois da rolagem.
 4. O mundo continua fora da presença de Ren; NPCs e facções têm objetivos próprios.
 5. Conhecimento do narrador, NPCs, facções, Ren e jogador são camadas diferentes.
-6. Rumor não é fato; possibilidade futura não é cânone.
-7. Segredo só é revelado por descoberta legítima.
-8. Sessão concluída é histórico; correção relevante é explícita.
-9. Efeito persistente deve continuar rastreável.
-10. Preparação serve ao jogo e nunca o substitui.
+6. Rumor não é fato; possibilidade futura não é cânone; segredo exige descoberta legítima.
+7. Sessão concluída é histórico; correção relevante é explícita; efeito persistente continua rastreável.
+8. Preparação serve ao jogo e nunca o substitui.
 
 Detalhes: `docs/agente/fundamentos.md`.
 
@@ -31,11 +29,9 @@ Runtime, handoffs, índices e consultas são projeções/roteadores, não cânon
 
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução. Leia para responder a uma lacuna concreta.**
+**Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação; não comprima a experiência literária.
 
-**Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação; não comprima a experiência literária.
-
-Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** A escada controla escalada; não é checklist. Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
+Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** Preferir `ferramentas/contexto.py`; não abrir pasta inteira, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -45,25 +41,23 @@ Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for su
 - **L4T:** transcrição, somente após L4 — 16 KiB;
 - **L5:** fonte oficial externa/autorizada, só se a memória interna não resolver.
 
-Alvo histórico conhecido pode saltar busca ampla; material reservado exige motivo. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
+Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
 
 ## 5. Roteamento por tarefa
 
 Leia no máximo o documento especializado necessário:
 
-- autoridade, segredo, agência → `docs/agente/fundamentos.md`;
+- autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
-- L0–L5 e tetos → `docs/agente/escada-de-acesso.md`;
-- acesso/operação → `docs/agente/acesso-e-operacoes.md`;
+- L0–L5 → `docs/agente/escada-de-acesso.md`; acesso/operação → `docs/agente/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
-- retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
+- retomada/handoffs e lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
-- **local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;**
+- local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
-- pesquisa/edição/Git → `docs/agente/pesquisa-e-manutencao.md`;
-- telemetria/benchmark → `docs/agente/telemetria-rollouts.md`.
+- pesquisa/Git → `docs/agente/pesquisa-e-manutencao.md`; telemetria → `docs/agente/telemetria-rollouts.md`.
 
 Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao.md`. Limites: `narracao/limites.md`.
 
@@ -71,105 +65,66 @@ Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao
 
 Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = **RECALL**. OFF não avança nem é registrado; RECALL só completa fato que Ren legitimamente sabe, nunca vontade/emoção/estratégia/segredo. Resolver antes do turno.
 
-Fluxo normal:
+Fluxo normal: `entrada → ON/OFF/RECALL → barreira → contexto necessário → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
+**Porta operacional preferencial.** `poetry run cronica preparar ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. Primitivas antigas ficam só para manutenção/reparo.
 
-**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/endpoints.py pendencias` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: se `tipo: reavaliar_agente_leve`, use `agentes_leves.py concluir-noop <id>`; demais, `barreira_mundo.py concluir <id> --nota ...`. Com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
+**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, não narrar a nova ação: usar `endpoints.py pendencias`. Pendência é avaliação, não fato. Se `tipo: reavaliar_agente_leve` e nada mudou, `agentes_leves.py concluir-noop <id>`; demais no-op: `barreira_mundo.py concluir <id> --nota ...`. Com mudança: transação `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpoint e conclusão. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Em abertura/mudança material, use `endpoints.py cena` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. A porta é read-only: calcula sem criar mapa ou consumir gate.
+**Cena reativa:** `cronica preparar` recebe `cena_id` estável e só local/NPC/tags pertinentes; é read-only. Sem gatilho, não inventar dados nem consultar recompensa. Após narração aceita, `cronica concluir --ticket <ticket>` revalida/confirma e registra. Cena abandonada não conclui; ticket obsoleto exige novo preparo.
 
-Após `turno.py registrar`, confirme a cena aceita com `cena_mundo.py confirmar --preparacao-id <id>` e os mesmos parâmetros. Não confirme cena corrigida/abandonada. Preparação obsoleta falha fechada; refaça. Sem gatilho, não consultar recompensa/oportunidade.
+As primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` continuam disponíveis para diagnóstico/reparo. Para compatibilidade de manutenção, o writer legado usa stdin (`turno.py registrar <<'JSON'`); nunca crie arquivo intermediário.
 
-**Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `endpoints.py direcao <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
+**Direção canônica é destino, nunca ação.** Se a cena apontar direção, usar `endpoints.py direcao <id>`; direção não escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
-Em encontros simultâneos, resolver todos os NPCs antes de mutar, colapsar aliases e ordenar por ID canônico. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local` e `interacoes_mundo.py encontro` ficam como primitivas de manutenção/teste ou acionamento deliberado.
+Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-**Antes de narrar intenção que comprime tempo** — dormir, esperar, vigiar por horas, viajar/trabalhar por período prolongado — consultar uma vez:
+**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar só até a fronteira, registrar/checkpointar, processar Mundo Vivo e depois continuar. Não chamar em turno curto.
 
-```bash
-python3 ferramentas/endpoints.py fronteira --data "11 Eleasis, 1372 DR" --hora "11:50"
-```
-
-Se o gate retornar `interromper`, **não narrar além da fronteira**: preservar a intenção restante, resolver só até ali, registrar/checkpointar e processar o Mundo Vivo antes de continuar. Se `livre`, seguir até o alvo. Fronteira pede processamento; não cria fato. **Não chamar** em turno curto/comum.
-
-Durante cada avanço comum:
+Durante avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
-- não regenerar runtime/handoff nem executar Git, testes ou telemetria;
-- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
-- normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
-- `narracao` é diegética; mecânica explícita usa linha `MECÂNICA — ...`; `resumo` comprime; `deltas` persistem;
-- se o instante mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir data em `hora`;
-- não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
-- rolagens ocultas relevantes permanecem reservadas até consolidação;
-- a última linha `RODAPE_CANONICO — ...` de `turno.py registrar` deve ser reproduzida verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.
+- não regenerar runtime/handoff nem rodar Git, testes ou telemetria;
+- enviar jogador+narrador+deltas por stdin para `poetry run cronica concluir --ticket <ticket> <<'JSON'`; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
+- prosa completa fica na transcrição; JSONL recebe resumo/deltas/rolagens ocultas necessárias;
+- instante muda com um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
+- o valor `rodape_canonico` de `cronica concluir` deve ser reproduzido verbatim como última linha visível.
 
-O rodapé é derivado, não cânone. Usa runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra só itens mágicos explicitamente registrados que estejam disponíveis ou ativos. Não abrir estado/ficha para conferi-lo.
+Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante avanço ao vivo. Textura de NPC/local: `contexto.py npc|local`, só quando houver lacuna. Rolagens independentes: `rolar-lote.py`; condicionais ficam separadas.
 
-Telemetria: **medição é pós-hoc**; `analisar-rollout.py` e `comparar-rollouts.py` não rodam durante avanço ao vivo.
-
-Se faltar textura de NPC/local, preferir `contexto.py npc` / `contexto.py local`; não consultar a cada turno. `contexto.py retomada` não relê transcrição.
-
-Para rolagens independentes, usar `rolar-lote.py`; condicionais ficam separadas.
-
-Meta comum: **duas escritas**. Preparação escreve zero; `confirmar` só após turno aceito. Rodapé só lê; nenhum faz scan.
+Meta: **2 chamadas por turno** (`cronica preparar` + `cronica concluir`); não decompor sem necessidade de reparo.
 
 ### Recompensas e side quests
 
-- Cena reativa segue o `preparar`/`confirmar` acima; primitivas abaixo são manutenção/teste.
-- `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
-- Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
-- `endpoints.py sidequest <id>` devolve deltas de turno e efeitos `pos_canonico` já separados; rastro/recompensa só materializam depois do fato-base canônico.
-- Agente novo passa antes pela classificação NPC v2.
-- Checkpoint só invalida quest giver morto; não sorteia side quests nem gera loot.
-
-Detalhes: `docs/agente/integracao-reativa-v2.md`.
+- Cena reativa segue `cronica preparar`/`cronica concluir`; primitivas abaixo são manutenção/teste.
+- `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
+- `interacoes_mundo.py encontro <npc> --encontro-id <id>`: potencial ≠ oferta; oferta/aceite/recusa ficam explícitos em `oportunidades.py`.
+- `endpoints.py sidequest <id>` separa deltas de turno e efeitos pós-cânone; rastro/recompensa só materializam após fato-base canônico.
+- Agente novo passa pela classificação NPC v2; checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 
-Fazer checkpoint em fronteira importante e sempre antes de encerrar sessão, não após cada turno:
+Fronteira importante: `poetry run cronica sessao checkpoint`. Encerramento: `poetry run cronica sessao encerrar`. Ordem: cânone → Mundo Vivo/lifecycle → barreira → memória; pendência aberta bloqueia próximo avanço.
 
-```bash
-python3 ferramentas/checkpoint.py cena
-python3 ferramentas/checkpoint.py sessao
-```
+Journal interrompido: não narrar; `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback).
 
-Tempo significativo pode promover checkpoint automático. Ordem: cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Pendência aberta bloqueia o próximo avanço; checkpoint não a resolve semanticamente. Integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
+Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: o narrador executa `poetry run cronica sessao status`; se `entre_sessoes`, executa `poetry run cronica sessao iniciar` e recapitula via `contexto.py retomada`/handoff. Se já `em_sessao`, apenas retoma. Nunca pular sessão nem copiar transcrição anterior.
 
-Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
+Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana já registrado.
+
+Primitivas equivalentes continuam disponíveis para manutenção: `checkpoint.py cena`, `checkpoint.py sessao`, `sessoes.py iniciar`, `checkpoint.py recuperar`.
 
 ## 8. Regras, dados e segredos
 
-Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir CD/modificadores antes da rolagem; nunca falsificar resultado. Usar `rolar-dados.py` e `rolar-lote.py`.
+Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir CD/modificadores antes da rolagem; nunca falsificar resultado. Usar `rolar-dados.py`/`rolar-lote.py`.
 
-`narrador/` é reservado. Busca padrão não inclui esse domínio. Deltas reservados não podem vazar para domínio público; rolagens ocultas e relógios mecânicos permanecem reservados.
+`narrador/` é reservado. Busca padrão não inclui esse domínio. Deltas reservados não vazam para domínio público; rolagens ocultas e relógios mecânicos permanecem reservados.
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade do repo sem pedido.
+Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade sem pedido. Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; checkpoint normal já faz isso.
 
-Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; o checkpoint normal já faz isso.
-
-Verificações de manutenção:
-
-```bash
-python3 ferramentas/turno.py check
-python3 ferramentas/consolidar.py check
-python3 ferramentas/sessoes.py check
-python3 ferramentas/checkpoint.py check
-python3 ferramentas/recompensas.py check
-python3 ferramentas/oportunidades.py check
-python3 ferramentas/interacoes_mundo.py check
-python3 ferramentas/migrar-estado-atual.py --check
-python3 ferramentas/migrar-memorias-fragmentadas.py --check
-python3 ferramentas/reindexar-conhecimento.py --check
-python3 ferramentas/gerar-runtime.py --check
-python3 ferramentas/verificar-integridade.py
-```
-
-Essa suíte é de manutenção/checkpoint/CI, nunca de cada ação de Ren.
+Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `recompensas.py check`, `oportunidades.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
