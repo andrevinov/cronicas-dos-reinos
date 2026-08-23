@@ -1,0 +1,53 @@
+schema_adventure_drought_pressure: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Reduzir sequências longas de cenas locais sem sequer candidato de incidente,
+  aumentando deterministicamente a pressão sem scheduler, relógio ou novo estado.
+metrica:
+  nome: cenas_locais_confirmadas_sem_candidato_microevento
+  fonte: narrador/microeventos-locais/estado.yaml#historico_recente
+  semantica: operacional_nao_canonica
+niveis:
+  normal:
+    nivel: 0
+    minimo_secas: 0
+    fichas_rotina_promoviveis: []
+  leve:
+    nivel: 1
+    minimo_secas: 4
+    fichas_rotina_promoviveis: [rotina_03]
+  alta:
+    nivel: 2
+    minimo_secas: 6
+    fichas_rotina_promoviveis: [rotina_02, rotina_03]
+  critica:
+    nivel: 3
+    minimo_secas: 8
+    fichas_rotina_promoviveis: [rotina_01, rotina_02, rotina_03]
+limites:
+  max_nivel: 3
+  max_seca_reportada: 64
+  max_fontes_adicionais_hot_path: 0
+  max_leituras_tempo_adicionais: 0
+  max_escritas_adicionais: 0
+  max_schedulers_novos: 0
+  max_scans_semanticos: 0
+  max_candidatos_adicionais_por_cena: 0
+invariantes:
+  baralho_base_permanece_3_rotina_1_microevento: true
+  pressao_nao_reseta_nem_reordena_deck: true
+  pressao_so_promove_resultado_da_ficha_ja_sorteada: true
+  pressao_so_atua_em_cena_local_ja_acionada: true
+  pressao_nao_cria_cena: true
+  pressao_nao_cria_fato_canonico: true
+  pressao_nao_cria_npc_nomeado: true
+  pressao_nao_cria_combate: true
+  pressao_nao_cria_sidequest: true
+  pressao_nao_cria_recompensa: true
+  pressao_nao_cria_segredo: true
+  candidato_microevento_alivia_seca_operacional: true
+  veto_canônico_continua_sem_reroll: true
+  mesma_historia_mesma_ficha_mesmo_resultado: true
+  historico_existente_e_a_unica_memoria: true
+  nenhum_backfill_retroativo: true
+  task_14_pode_consultar_pressao_sem_mudar_este_contrato: true
