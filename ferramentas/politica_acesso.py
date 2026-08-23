@@ -90,6 +90,84 @@ def _validate_reason(reason: str | None) -> str:
     return reason.strip() if reason else ""
 
 
+def _truncate(value: Any, limit: int = 140) -> Any:
+    if not isinstance(value, str):
+        return value
+    text = " ".join(value.split())
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 1)].rstrip() + "…"
+
+
+def _compact_small(value: Any, *, depth: int = 3) -> Any:
+    """Compactação estrutural pequena usada só pela projeção L1."""
+    if depth <= 0:
+        if isinstance(value, (dict, list)):
+            return "[… omitido …]"
+        return _truncate(value, 100)
+    if isinstance(value, dict):
+        out: dict[str, Any] = {}
+        for index, (key, item) in enumerate(value.items()):
+            if index >= 8:
+                out["_omitidos"] = len(value) - index
+                break
+            out[str(key)] = _compact_small(item, depth=depth - 1)
+        return out
+    if isinstance(value, list):
+        result = [_compact_small(item, depth=depth - 1) for item in value[:4]]
+        if len(value) > 4:
+            result.append(f"… {len(value) - 4} item(ns) omitido(s)")
+        return result
+    return _truncate(value, 120)
+
+
+def _compact_l1_result(value: Any) -> Any:
+    """Mantém o estado quente útil sem deixar um pending apagar o contrato L1.
+
+    Runtime completo continua disponível internamente; a política só projeta a
+    resposta pública. Prosa temporal livre e ponteiros são omitidos do L1 porque
+    não são necessários para decidir se uma consulta L2 deve acontecer.
+    """
+    if not isinstance(value, dict):
+        return value
+    out: dict[str, Any] = {}
+    for key in ("sessao", "personagem", "recursos"):
+        if key in value:
+            out[key] = value[key]
+
+    time = value.get("tempo")
+    if isinstance(time, dict):
+        out["tempo"] = {
+            key: time.get(key)
+            for key in ("data", "hora_aproximada")
+            if key in time
+        }
+
+    location = value.get("localizacao")
+    if isinstance(location, dict):
+        out["localizacao"] = {
+            key: location.get(key)
+            for key in ("area", "ponto_exato")
+            if key in location
+        }
+
+    effects = value.get("efeitos_temporarios")
+    if isinstance(effects, dict) and effects:
+        compact_effects: dict[str, Any] = {}
+        ordered = sorted(effects.items(), key=lambda item: str(item[0]))
+        for effect_id, raw in ordered[:8]:
+            compact_effects[str(effect_id)] = _compact_small(raw, depth=2)
+        if len(ordered) > 8:
+            compact_effects["_omitidos"] = len(ordered) - 8
+        out["efeitos_temporarios"] = compact_effects
+
+    if "compromissos" in value:
+        out["compromissos"] = _compact_small(value["compromissos"], depth=4)
+    if "sobreposicao_transacional" in value:
+        out["sobreposicao_transacional"] = value["sobreposicao_transacional"]
+    return out
+
+
 def classify(
     command: str,
     *,
@@ -163,6 +241,8 @@ def decorate(
 ) -> tuple[dict[str, Any], int]:
     budget = effective_budget(decision.level, requested_budget)
     out = dict(data)
+    if decision.level == "L1" and out.get("consulta", {}).get("comando") == "status":
+        out["resultado"] = _compact_l1_result(out.get("resultado"))
     out["nivel"] = decision.level
     out["controle_acesso"] = {
         "teto_bytes": budget,
