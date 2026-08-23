@@ -2,7 +2,7 @@
 """Porta pública de dados com modificadores contextuais pré-rolagem.
 
 O motor anterior foi preservado em ``_rolar_dados_core.py``. Esta camada interpreta
-qualidade da abordagem e o gatilho de impersonação do talento Actor antes do RNG,
+qualidade da abordagem e o gatilho de outra identidade do talento Actor antes do RNG,
 então delega exatamente uma vez ao motor existente.
 """
 from __future__ import annotations
@@ -26,7 +26,7 @@ APPROACH_FLAGS = {
     "--abordagem-informacao": "informacao",
     "--abordagem-adequacao": "adequacao",
 }
-ACTOR_FLAG = "--actor-impersonacao"
+ACTOR_FLAG = "--actor-outra-identidade"
 ACTOR_SKILLS = {"enganacao", "atuacao"}
 
 
@@ -130,7 +130,12 @@ def _bump_integer_flag(argv: list[str], flag: str, amount: int) -> list[str]:
 
 
 def _apply_actor(argv: list[str]) -> tuple[list[str], str | None]:
-    """Converte Actor em vantagem somente quando o chamador declara impersonação."""
+    """Aplica Actor quando Ren tenta passar-se por uma pessoa diferente de si mesmo.
+
+    A outra identidade pode ser inventada (como Shinta), genérica ou uma pessoa real
+    específica. O mimetismo de voz/sons é outro benefício do talento e não é
+    pré-requisito para esta vantagem.
+    """
     count = argv.count(ACTOR_FLAG)
     if count > 1:
         raise FeatContextError(f"{ACTOR_FLAG} não pode ser repetido")
@@ -140,12 +145,14 @@ def _apply_actor(argv: list[str]) -> tuple[list[str], str | None]:
     clean = [token for token in argv if token != ACTOR_FLAG]
     if len(clean) < 3 or clean[0] != "ren" or clean[1] not in {"pericia", "skill"}:
         raise FeatContextError(
-            "Actor só se aplica a `ren pericia enganacao|atuacao` quando Ren tenta se passar por outra pessoa"
+            "Actor só se aplica a `ren pericia enganacao|atuacao` quando Ren tenta "
+            "passar-se por uma pessoa diferente de Ren Kagehira, real ou inventada"
         )
     skill = _core.normalize_key(clean[2])
     if skill not in ACTOR_SKILLS:
         raise FeatContextError(
-            "Actor só concede vantagem a Enganação ou Atuação em contexto de impersonação"
+            "Actor só concede vantagem a Enganação ou Atuação ao estabelecer ou "
+            "sustentar outra identidade"
         )
 
     has_advantage = "--vantagem" in clean
@@ -154,11 +161,11 @@ def _apply_actor(argv: list[str]) -> tuple[list[str], str | None]:
         raise FeatContextError("vantagem e desvantagem não podem ser declaradas juntas")
     if has_disadvantage:
         clean.remove("--desvantagem")
-        return clean, "Actor: vantagem de impersonação cancelou a desvantagem; rolagem normal"
+        return clean, "Actor: vantagem por outra identidade cancelou a desvantagem; rolagem normal"
     if has_advantage:
-        return clean, "Actor: vantagem de impersonação já estava representada"
+        return clean, "Actor: vantagem por outra identidade já estava representada"
     clean.append("--vantagem")
-    return clean, "Actor: vantagem de impersonação aplicada"
+    return clean, "Actor: vantagem por outra identidade aplicada"
 
 
 def _prepare_argv_context(argv: list[str]) -> tuple[list[str], dict[str, Any], str | None]:
