@@ -168,7 +168,7 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         self.assertIn("disponibilidade", items["broche_do_semblante_humilde"])
 
     def test_rodape_real_e_compacto(self):
-        context = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
+        context, _ = rodape_turno.effective_runtime(ROOT)
         footer = rodape_turno.build(ROOT)
         raw_date = context["tempo"]["data"].split(",", 1)[0]
         day, month = raw_date.split(maxsplit=1)
