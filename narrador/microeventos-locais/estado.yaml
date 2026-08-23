@@ -145,3 +145,83 @@ historico_recente:
     cenas_secas_antes: 3
     promovido: false
   carta_id: animal_inquieto
+transitos:
+  ravens_bluff:
+    ocorrencia:
+      ciclo: 2
+      restantes:
+      - rotina_01
+      - microevento_01
+    cartas:
+      ciclo: 1
+      assinatura_pool: 1b9e88cb7e5de6dc5811ae26a1e8a14865d9e828de0ac53ea146b89db7fe1b07
+      restantes:
+      - passagem_rua
+historico_transito_recente:
+- cena_id: s013-shinta-transito-galeria-fronteira-0600
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: cafe78137b902437b97bc0935c82fa39107088df0564efbfdcd10ec8ca6ce404
+  carta_id: interrupcao_vizinhanca
+- cena_id: s013-shinta-transito-galeria-pos-amanhecer
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: ea3032cc2e1d194926f9829f32cd7758108e2f8b5a027d82b9f2b33f5f2065cc
+- cena_id: s013-shinta-retoma-trajeto-apos-emboscada
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 95b9983a2e7aba1a6a5638d0fb26443a405cc3ac47ca8b06a71f9cd3ec09f9d2
+- cena_id: s013-shinta-galeria-ate-narwhal
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 0bd35408cfd6c48f0ab96585d8c43bae35cc0e6d67630494547a27f9e773268c
+- cena_id: s013-narwhal-ate-casa-aurora-menor
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 3acc52fd4d09732c97fad17e58a77e1f41527774dfbc88e5bf368ba7510d4708
+- cena_id: s013-casa-aurora-ate-circo-noite-16-eleasis
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 79c62c333d9c7175769ad4b055496eb2d27e5e5173eda5b664566e749394fc4e

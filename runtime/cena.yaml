@@ -1,22 +1,21 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 13
-modo: ponto_morto_de_pell_verificado_sem_nova_mensagem
+modo: ren_com_nera_e_silva_apos_relatar_emboscada
 localizacao:
-  area: arredores da The Silver Lily, Ravens Bluff
-  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
 tempo:
-  data: 15 Eleasis, 1372 DR
-  hora_aproximada: '21:10'
+  data: 16 Eleasis, 1372 DR
+  hora_aproximada: '20:25'
 mecanica_imediata:
-  pv: 52/52
-  ki: 7/7
+  pv: 44/52
+  ki: 5/7
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: 'Ren consultou discretamente o ponto morto de Pell na traseira da The Silver Lily e o recompôs
-  sem perder detalhes. O canal permanecia ativo e sem sinal de violação, mas não havia informação nova. Os 3 PO
-  já haviam sido pagos na sessão 8, e a última mensagem de Ren permanece: "qualquer informação sobre as velas será
-  sempre bem paga aqui".'
+resumo_imediato: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de escolher,
+  discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera à carroça
+  verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
 prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
   manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
   de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.

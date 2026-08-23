@@ -6,8 +6,8 @@ fontes_canonicas:
   ficha: personagens/jogador/ficha.yaml
 sessao:
   numero: 13
-  status: em_sessao
-  modo_de_cena: ponto_morto_de_pell_verificado_sem_nova_mensagem
+  status: entre_sessoes
+  modo_de_cena: ren_com_nera_e_silva_apos_relatar_emboscada
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -15,17 +15,17 @@ personagem:
   subclasse: Caminho da Sombra
 recursos:
   pv:
-    atuais: 52
+    atuais: 44
     maximos: 52
   ki:
-    atuais: 7
+    atuais: 5
     maximos: 7
   ca: 17
   deslocamento: 55 pés
   dinheiro_po: 30.979999999999997
 tempo:
-  data: 15 Eleasis, 1372 DR
-  hora_aproximada: '21:10'
+  data: 16 Eleasis, 1372 DR
+  hora_aproximada: '20:25'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: arredores da The Silver Lily, Ravens Bluff
-  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:

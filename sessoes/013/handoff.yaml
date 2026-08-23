@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 13
 checkpoint:
-  tipo: cena
-  estado: retomavel
-  modo: ponto_morto_de_pell_verificado_sem_nova_mensagem
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
   personagem:
     nome: Ren Kagehira
     nivel: 7
@@ -12,17 +12,17 @@ checkpoint:
     subclasse: Caminho da Sombra
   recursos:
     pv:
-      atuais: 52
+      atuais: 44
       maximos: 52
     ki:
-      atuais: 7
+      atuais: 5
       maximos: 7
     ca: 17
     deslocamento: 55 pés
     dinheiro_po: 30.979999999999997
   tempo:
-    data: 15 Eleasis, 1372 DR
-    hora_aproximada: '21:10'
+    data: 16 Eleasis, 1372 DR
+    hora_aproximada: '20:25'
     periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
@@ -31,63 +31,61 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: arredores da The Silver Lily, Ravens Bluff
-    ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
 continuidade:
-  resumo_imediato: 'Ren consultou discretamente o ponto morto de Pell na traseira da The Silver Lily e o recompôs
-    sem perder detalhes. O canal permanecia ativo e sem sinal de violação, mas não havia informação nova. Os 3 PO
-    já haviam sido pagos na sessão 8, e a última mensagem de Ren permanece: "qualquer informação sobre as velas
-    será sempre bem paga aqui".'
+  resumo_imediato: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de escolher,
+    discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera à carroça
+    verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
   prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
     manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
     de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 eventos_recentes:
-- batch: s013-cena-e53cfafcc674ff0f
-  transacao: s013-6df8c569dc491b82
-  resumo: 'Shinta entrou animado na Galeria, cumprimentou os trabalhadores e executou diligentemente a conferência
-    documental. Obteve Investigação 7 contra CD 11 apesar do bônus de preparação: evitou novas presunções e não
-    deixou erros nos registros concluídos, mas conferiu em excesso, perdeu ritmo e teve parte do lote redistribuída.
-    Às 12:20, recebeu a orientação de combinar precisão e velocidade no período da tarde.'
-- batch: s013-cena-ba7bca64bad34f95
-  transacao: s013-1e00dfc584d62759
-  resumo: Durante o intervalo, Shinta afirmou que não falharia à tarde, comeu e conversou normalmente com Sella
-    sobre rotinas de conferência e hábitos da Galeria. Ren permaneceu atento a possíveis sinais ligados à rede de
-    Masao, mas Sella não mencionou nem demonstrou qualquer informação legitimamente relevante. O intervalo terminou
-    sem nova pista.
-- batch: s013-cena-ba7bca64bad34f95
-  transacao: s013-d4933fa5e5382a84
-  resumo: Shinta dedicou toda a tarde exclusivamente ao trabalho e obteve Investigação 16 contra CD 11. Combinou
-    precisão e ritmo, recuperou parte do atraso matinal e concluiu o dia sem novas presunções ou erros de registro,
-    preservando sua continuidade no trabalho. Recebeu 4 PP, elevando o dinheiro de Ren para 30,98 PO. Nenhuma investigação
-    paralela foi feita e nenhuma pista foi descoberta.
-- batch: s013-cena-5f3e9d5927391988
-  transacao: s013-ca472eb2346d5b94
-  resumo: Após o expediente, Shinta percorreu vielas procurando obras ou adaptações de imóveis que pudessem sustentar
-    a rede de Masao. Obteve Investigação 8 contra CD 15. Encontrou muitos sinais urbanos ambíguos, mas nenhum padrão
-    ou evidência que pudesse ligar legitimamente aos capangas de Masao; a busca foi inconclusiva e não prova ausência
-    da rede.
-- batch: s013-cena-5f3e9d5927391988
-  transacao: s013-c3c3e23032c2a174
-  resumo: Ren foi até a Casa da Aurora Menor ainda vestido como Shinta e relatou a Maerra o trabalho na Galeria,
-    o plano envolvendo a Casa do Salgueiro Seco, a convocação de Velis, a dificuldade de contato com Kethra, a escassez
-    de respostas, sua sensação de solidão e a decisão de permanecer atento enquanto segue vivendo. Maerra distinguiu
-    solidão de ausência de apoio, aconselhou respeito ao sinal de Kethra e ao trabalho inst…
-- batch: s013-cena-8f7b18ceed219fba
-  transacao: s013-f0adc2d21169bfec
-  resumo: Ren agradeceu Maerra, perguntou pelas crianças e soube que elas permanecem seguras, alimentadas e sem
-    nova ameaça imediata, embora a recuperação do trauma ainda varie entre elas. Ren tomou a mão de Maerra e agradeceu
-    por tudo; ela o convidou a voltar também quando precisar falar, não apenas para entregar algo ou salvar alguém.
-    Ren saiu ainda como Shinta.
-- batch: s013-cena-8f7b18ceed219fba
-  transacao: s013-1d5b5ccd809742a1
-  resumo: Ren foi da Casa da Aurora Menor até a traseira da Silver Lily ainda como Shinta. Obteve Investigação 21
-    contra CD 13 para consultar e recompor discretamente o ponto morto de Pell. O canal permanecia ativo e sem sinais
-    de violação, mas não continha informação nova. Ren não depositou os 3 PO ainda devidos a Pell e não deixou nova
-    mensagem.
-- batch: s013-cena-8f7b18ceed219fba
-  transacao: corr-s013-01546d4e425576d6
-  resumo: 'Correção canônica de s013-1d5b5ccd809742a1: Corrige o estado do ponto morto de Pell: pagamento já quitado
-    e oferta contínua por informações sobre as velas.'
+- batch: s013-cena-d872245b9bf5b835
+  transacao: s013-0aaab7e4d027967b
+  resumo: Ren verificou a dobradiça inferior do portão de carvão de Narwhal Manor enquanto caminhava e obteve Percepção
+    21 contra CD 14. Não havia fio azul às 17:46; pelo protocolo, Kethra não sinalizou ter visto novamente a mulher
+    Cinza-Azul, e Ren não deve procurar contato. Ele passou pela propriedade sem desacelerar nem olhar para trás.
+- batch: s013-cena-d872245b9bf5b835
+  transacao: s013-88adeb259fa8bbc1
+  resumo: Depois de passar por Narwhal Manor, Ren caminhou até a Casa da Aurora Menor no Temple District, mantendo
+    a postura de Shinta apesar das contusões. Chegou às 18:35 para procurar Maerra e receber tratamento antes de
+    voltar ao circo, evitando preocupar Nera e Silva.
+- batch: s013-cena-d872245b9bf5b835
+  transacao: s013-cd41effcd6e192cc
+  resumo: Ren chegou à Casa da Aurora Menor ainda como Shinta e recebeu tratamento reservado de Maerra. Ela confirmou
+    contusões no ombro e costelas sem sinais imediatos de fratura ou lesão interna e conjurou Curar Ferimentos,
+    restaurando 5 PV; Ren ficou com 44/52 PV. As dores restantes são leves e não denunciam luta à observação casual.
+    Maerra percebeu que ele evitou Silva e Nera para não preocupá-las e pediu que Ren explicas…
+- batch: s013-cena-d872245b9bf5b835
+  transacao: s013-b0a216b3af925997
+  resumo: 'Ren relatou a Maerra a emboscada por três homens kozakuranos, sua decisão de levar a luta para dentro
+    e seu medo de que Masao esteja trazendo forças lentamente. Maerra separou fato de hipótese: três homens, reconhecimento
+    de Shinta e uso da rota são fatos; a escala e a data de chegada exigem rastros. Ren priorizou verificar Nera
+    e Tavin. Doou à Casa da Aurora Menor os 4 PP recebidos pelo dia, reduzindo seu dinheiro…'
+- batch: s013-sessao-75d8e502c370bb37
+  transacao: s013-293f371afd5ef259
+  resumo: Ren caminhou da Casa da Aurora Menor até o Jack Mooney & Sons Circus, sem correr e mantendo a aparência
+    de Shinta. Chegou pelo caminho de serviço às 20:00; o acampamento apresenta atividade noturna habitual, mas
+    Ren ainda não confirmou pessoalmente Nera e Tavin.
+- batch: s013-sessao-75d8e502c370bb37
+  transacao: s013-ec4fce8693e4595b
+  resumo: Ren entrou no circo pelo caminho de serviço e confirmou pessoalmente que Nera e Tavin estão fisicamente
+    bem e seguindo a rotina normal junto à carroça verde de Silva. Não há sinal visível de que a emboscada tenha
+    alcançado o acampamento. Nera reconheceu Ren sob Shinta e percebeu que há algo incomum, embora ainda não tenha
+    formulado a pergunta.
+- batch: s013-sessao-75d8e502c370bb37
+  transacao: s013-8ed72ceafda55d67
+  resumo: Ren brincou com Tavin, abraçou Nera e então relatou integralmente a ela e Silva a emboscada, o reconhecimento
+    de Shinta como Ren, a luta, o tratamento de Maerra e sua suspeita de que Masao possa estar trazendo homens de
+    Kozakura. Nera rejeitou ser tranquilizada antes de receber os fatos, mas reconheceu que Ren fez certo ao contar.
+    Silva separou fatos de hipóteses e decidiu mudar Nera e Tavin de lugar dentro do acamp…
+- batch: s013-sessao-75d8e502c370bb37
+  transacao: s013-23b040cb421a0bf9
+  resumo: Ren tranquilizou Nera, minimizou os golpes sofridos e reafirmou que atravessariam juntos a tempestade
+    que se aproximava. Nera acolheu o afeto e o compromisso de permanecerem juntos, mas lembrou que Ren fora ferido
+    o bastante para procurar Maerra, recusou a ordem de obedecer e explicou que seguirá a medida de Silva por escolha
+    própria. Também rejeitou garantias absolutas e pediu que Ren lhe conte quando algo começar…
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

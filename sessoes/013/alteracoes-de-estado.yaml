@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 13
-status: em_andamento
+status: encerrada
 fonte: sessoes/013/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 13
@@ -18,17 +18,17 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 13
-  modo: ponto_morto_de_pell_verificado_sem_nova_mensagem
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
   personagem: Ren Kagehira
   nivel: 7
-  pv: 52/52
-  ki: 7/7
+  pv: 44/52
+  ki: 5/7
   ca: 17
   dinheiro_po: 30.979999999999997
-  data: 15 Eleasis, 1372 DR
-  hora: '21:10'
-  area: arredores da The Silver Lily, Ravens Bluff
-  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
+  data: 16 Eleasis, 1372 DR
+  hora: '20:25'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
   nivel_ficha: 7
 consolidacoes:
 - id: s013-cena-2036ebe446e8d233
@@ -103,6 +103,181 @@ consolidacoes:
   - estado/relacoes/maerra_thandrel.yaml
   - estado/tempo.yaml
   - historico/relacoes/maerra_thandrel.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-45e669e34ba250df
+  tipo: cena
+  transacoes:
+  - s013-befafc23db3af451
+  - s013-ee11ec65629de20a
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-8476192c4a15e179
+  tipo: cena
+  transacoes:
+  - s013-7f60c7f1a98a843d
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-c11f65aaff67571d
+  tipo: cena
+  transacoes:
+  - s013-2d6d677e7a95b351
+  deltas: 1
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-8e6052625766bb32
+  tipo: cena
+  transacoes:
+  - s013-31a8947c5e6fc521
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-f766fc9aea6a555b
+  tipo: cena
+  transacoes:
+  - s013-060270bc614d96e6
+  - s013-3d246930f5b68662
+  - s013-dbb55fa4e50434b7
+  - s013-cdb9b7d0c135b7b8
+  - corr-s013-713f17f54349c64a
+  deltas: 16
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-3d246930f5b68662.md
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-dbb55fa4e50434b7.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-263de5277db62a3a
+  tipo: cena
+  transacoes:
+  - s013-74ca4c6327a8af92
+  - s013-5072b005b8c18ff0
+  deltas: 8
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-5072b005b8c18ff0.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-92338e628905b7b4
+  tipo: cena
+  transacoes:
+  - s013-3cd84f1b132f8036
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-16b1f69d23aee350
+  tipo: cena
+  transacoes:
+  - s013-f6035d769263814d
+  - corr-s013-75de60b8d89d3149
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-f6035d769263814d.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-f6be06b97ce54b98
+  tipo: cena
+  transacoes:
+  - s013-66ce284d33628885
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-d872245b9bf5b835
+  tipo: cena
+  transacoes:
+  - s013-e866235fc283a39a
+  - s013-0aaab7e4d027967b
+  - s013-88adeb259fa8bbc1
+  - s013-cd41effcd6e192cc
+  - s013-b0a216b3af925997
+  deltas: 21
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-0aaab7e4d027967b.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-sessao-75d8e502c370bb37
+  tipo: sessao
+  transacoes:
+  - s013-293f371afd5ef259
+  - s013-ec4fce8693e4595b
+  - s013-8ed72ceafda55d67
+  - s013-23b040cb421a0bf9
+  deltas: 13
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-ec4fce8693e4595b.md
+  - personagens/jogador/conhecimento/index.yaml
   - sessoes/013/alteracoes-de-estado.yaml
   - sessoes/013/consequencias.md
   - sessoes/013/consolidacoes.jsonl

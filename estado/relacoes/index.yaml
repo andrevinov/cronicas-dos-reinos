@@ -170,7 +170,7 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 8300
+    bytes_fragmento: 9342
     campos_atuais: 14
   tavin_vell:
     nome: Tavin Vell

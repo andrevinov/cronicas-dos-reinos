@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: em_sessao
+  status: entre_sessoes
   sessao_atual: 13
-  modo_de_cena_atual: ponto_morto_de_pell_verificado_sem_nova_mensagem
+  modo_de_cena_atual: ren_com_nera_e_silva_apos_relatar_emboscada
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,16 +18,15 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: arredores da The Silver Lily, Ravens Bluff
-  ponto_exato: numa posição discreta próxima aos fundos da The Silver Lily, após recompor o ponto morto de Pell
-  descricao_operacional: 'Ren consultou discretamente o ponto morto de Pell na traseira da The Silver Lily e o recompôs
-    sem perder detalhes. O canal permanecia ativo e sem sinal de violação, mas não havia informação nova. Os 3 PO
-    já haviam sido pagos na sessão 8, e a última mensagem de Ren permanece: "qualquer informação sobre as velas
-    será sempre bem paga aqui".'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
+  descricao_operacional: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de
+    escolher, discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera
+    à carroça verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 15 Eleasis, 1372 DR
+  data_exata: 16 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -35,20 +34,20 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '21:10'
+  hora_aproximada: '20:25'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
 recursos:
   pontos_de_vida:
-    atuais: 52
+    atuais: 44
     maximos: 52
   dados_de_vida:
     atuais: 7
     maximos: 7
     dado: d8
   ki:
-    atuais: 7
+    atuais: 5
     maximos: 7
     recarga: descanso curto ou longo
   classe_de_armadura: 17
@@ -186,3 +185,4 @@ coberturas:
     avaliacao_pratica: aprovado para retornar após o primeiro sino de 13 Eleasis diretamente à entrada de entrega;
       diligência, organização e silêncio reconhecidos, com supervisão reduzida para amostragem, mas acesso a selos
       fechados, rotas e documentos sensíveis ainda proibido
+modo: combate_no_restaurante

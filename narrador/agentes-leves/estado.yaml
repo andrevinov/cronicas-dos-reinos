@@ -12,9 +12,16 @@ agentes:
   bram_vask:
     estado: ativo
     proxima_avaliacao:
-      data: 15 Eleasis, 1372 DR
+      data: 18 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: fdfaea40a45c7a70338e8668a6fe763bc783906f3098f65df6f3c9e748d00f4a
+      pendencia_origem: mundo-050f1a0efdbe5a14
+      confirmado_em:
+        data: 16 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   luath:
     estado: ativo
     proxima_avaliacao:

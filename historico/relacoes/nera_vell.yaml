@@ -454,3 +454,43 @@ eventos_pos_migracao:
     op: append
     valor: Ren acompanhou Nera de volta à carroça verde antes do amanhecer de 14 Eleasis, preservando os cuidados
       de Tavin conforme combinado.
+- transacao: s013-befafc23db3af451
+  sessao: 13
+  resumo: Ren retornou ao circo ainda como Shinta, passou por um breve incidente cotidiano com uma mula inquieta
+    e tomou banho após guardar o disfarce. Interpretando o dia como mais um sem avanços, pediu a Silva para ver
+    Nera e perguntou se ela queria dormir com ele. Nera aceitou por vontade própria, preservando a condição de voltar
+    à carroça se Tavin precisar dela, e pediu que Ren apenas viesse dormir, sem trazer outro resultado.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Na noite de 15 Eleasis, Ren perguntou se Nera queria dormir com ele. Nera aceitou por vontade própria,
+      deixou claro que voltaria à carroça se Tavin precisasse dela e pediu que Ren apenas viesse dormir, sem transformar
+      a noite em busca por outro resultado.
+- transacao: s013-ee11ec65629de20a
+  sessao: 13
+  resumo: Ren e Nera foram ao quarto-depósito e fizeram amor de forma consensual, apaixonada e sem pressa. Depois,
+    Ren disse sentir que tudo mudaria a partir do dia seguinte, que seus inimigos começariam a se mover e prometeu
+    proteger Nera, Tavin e Silva para que vencessem juntos. Nera acolheu o vínculo, mas recusou a garantia absoluta;
+    pediu verdade, decisões compartilhadas e o direito de todos escolherem como enfrentar o risco.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: 'Na noite de 15 Eleasis, Ren e Nera fizeram amor consensualmente e sem pressa. Depois, Ren disse sentir
+      uma mudança iminente e prometeu impedir que algo acontecesse a Nera, Tavin ou Silva. Nera afirmou querer vencer
+      e construir futuro com ele, mas recusou segurança absoluta: pediu que Ren compartilhe o perigo, não decida
+      sozinho o risco dos outros e permaneça ao lado deles em vez de tentar enfrentar tudo à frente.'
+- transacao: s013-7f60c7f1a98a843d
+  sessao: 13
+  resumo: Ren reafirmou a Nera que decidiu ficar com ela. Nera confirmou que o escolheu, mas preservou o direito
+    de ter medo, discordar e exigir que ele volte. Ren dormiu cerca de 4h45 junto dela, sem completar descanso longo,
+    acordou às 04:30 e meditou por meia hora. Às 05:00, levou Nera de volta à carroça verde, vestiu-se como Shinta
+    e deixou o circo às 05:25 rumo ao trabalho.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: momentos_de_vinculo
+    op: append
+    valor: Na madrugada de 16 Eleasis, Ren afirmou que decidiu ficar com Nera. Ela confirmou que o escolheu, mas
+      preservou o direito de ter medo, discordar e exigir que ele não suporte tudo sozinho; pediu que o amor servisse
+      como razão para voltar. Dormiram juntos até 04:30, e Ren a acompanhou de volta à carroça às 05:00.

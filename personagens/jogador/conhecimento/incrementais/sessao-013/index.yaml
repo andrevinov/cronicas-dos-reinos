@@ -1,0 +1,46 @@
+schema_conhecimento_incremental: 1
+sessao: 13
+fragmentos:
+- transacao: s013-3d246930f5b68662
+  titulo: Ren aceitou ajudar no papel de Shinta e examinou a mulher e o restaurante, mas não percebeu a emboscada
+    (Percepção 14 contra CD 18). Ao erguer a placa, foi cercado por três homens kozakuranos; o mais perigoso o chamou
+    pelo nome e ordenou que entrasse para conversar. Ren sabe agora que a operação reconhece Shinta como Ren.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-3d246930f5b68662.md
+  bytes: 623
+- transacao: s013-dbb55fa4e50434b7
+  titulo: Ren entrou voluntariamente no restaurante para tirar o confronto da rua, abandonou a atuação de Shinta
+    e assumiu guarda de combate. Os três homens se distribuíram pelo salão; dois mostraram armas e o líder, aparentemente
+    um lutador experiente, disse que são um aviso para que Ren abandone suas investigações, ameaçando espancá-lo
+    se recusar. Eles não revelaram nomes nem confirmaram vínculo com Masao e ainda não atacaram.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-dbb55fa4e50434b7.md
+  bytes: 750
+- transacao: s013-5072b005b8c18ff0
+  titulo: Ren não perseguiu os dois subordinados nem interrogou ou revistou o líder inconsciente. Concluiu que formular
+    perguntas sobre circo, Nera ou a extensão do comprometimento de Shinta revelaria suas próprias vulnerabilidades.
+    Registrou como fato estranho ter encontrado três homens de aparência e língua kozakuranas operando juntos em
+    Ravens Bluff, além de Kurobane; isso não prova origem ou escala. Recompôs a atuação de Shinta, ocultando de
+    observação casual as contusões, e chegou à Galeria dos Escr…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-5072b005b8c18ff0.md
+  bytes: 924
+- transacao: s013-f6035d769263814d
+  titulo: 'Durante o almoço, Shinta observou discretamente a Galeria sob uma atuação de curiosidade inofensiva (Atuação
+    18 contra CD 13 com Actor) e não despertou suspeita. Ren mapeou o fluxo visível entre pátio, mesas comuns, devoluções
+    e a porta interna usada para volumes lacrados. Com Percepção 18 contra CD 15 e leitura labial, não identificou
+    conversa sobre Ren, Masao, o circo ou a emboscada, mas viu Tomas e Sella avaliarem positivamente Shinta: se
+    a tarde continuar limpa, pretendem colocá-lo na rotaç…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-f6035d769263814d.md
+  bytes: 1127
+- transacao: s013-0aaab7e4d027967b
+  titulo: Ren verificou a dobradiça inferior do portão de carvão de Narwhal Manor enquanto caminhava e obteve Percepção
+    21 contra CD 14. Não havia fio azul às 17:46; pelo protocolo, Kethra não sinalizou ter visto novamente a mulher
+    Cinza-Azul, e Ren não deve procurar contato. Ele passou pela propriedade sem desacelerar nem olhar para trás.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-0aaab7e4d027967b.md
+  bytes: 686
+- transacao: s013-ec4fce8693e4595b
+  titulo: Ren entrou no circo pelo caminho de serviço e confirmou pessoalmente que Nera e Tavin estão fisicamente
+    bem e seguindo a rotina normal junto à carroça verde de Silva. Não há sinal visível de que a emboscada tenha
+    alcançado o acampamento. Nera reconheceu Ren sob Shinta e percebeu que há algo incomum, embora ainda não tenha
+    formulado a pergunta.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-013/tx-s013-ec4fce8693e4595b.md
+  bytes: 702
+quantidade: 6

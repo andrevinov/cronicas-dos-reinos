@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 15 Eleasis, 1372 DR
-  hora: '21:10'
+  data: 16 Eleasis, 1372 DR
+  hora: '20:25'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -244,3 +244,51 @@ concluidas_recentes:
   agente: kajiwara_shizune
   nota: Shizune continua aguardando oportunidade canônica e sem presença física local
     fixada; nenhum novo fato autoriza iniciativa ou mutação.
+- id: mundo-3bb90f49a7f3fc7d
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  nota: 'O marco continua não executável: há sinais materiais orientais plausíveis,
+    mas nenhuma correlação canônica nova que prove ou avance a direção.'
+- id: mundo-050f1a0efdbe5a14
+  tipo: reavaliar_agente_leve
+  agente_leve: bram_vask
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+- id: mundo-62d023ce3a53facb
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail mantém a busca dirigida já em curso, mas nenhum fato canônico novo
+    fornece hoje alvo, testemunha ou rastro específico para uma mudança persistente.
+- id: mundo-c6f0ef02e2dd3723
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém vigilância e cadeia institucional já estabelecidas; não
+    surgiu informação canônica nova que justifique alterar prioridades ou queimar
+    entradas.
+- id: mundo-c884ed21bcc898fd
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: Kurobane permanece à procura de uma janela documental, mas não há rota de
+    prova ou mensagem canonicamente acessível que sustente uma iniciativa material
+    neste amanhecer.
+- id: mundo-501e9838c30e325b
+  tipo: expiracao
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  nota: A abordagem da senhora e da placa foi posta em posição na rota recorrente
+    de Ren, com três homens kozakuranos no restaurante; a rede reconhece o disfarce
+    recorrente, sem conhecer automaticamente o emprego.
