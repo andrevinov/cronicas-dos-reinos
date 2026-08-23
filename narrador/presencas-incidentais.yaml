@@ -1,0 +1,72 @@
+schema_presenca_incidental: 1
+natureza: roteador_operacional_nao_canonico
+estatuto: candidato_de_coincidencia
+seed: presenca-incidental-v1
+descricao: >-
+  Perfis opt-in para coincidências plausíveis com NPCs recorrentes em locais onde
+  sua rotina canônica já os ancora. Uma seleção significa somente avaliar se o
+  NPC está incidentalmente presente; não estabelece presença, ação, diálogo,
+  conhecimento, encontro ou sidequest.
+orcamento:
+  max_perfis: 8
+  max_candidatos_por_cena: 1
+  divisor_janela: 4
+  slots_ativos: [0]
+  max_locais_por_perfil: 2
+  max_periodos_por_local: 4
+  max_motivos_por_local: 4
+regras:
+  exige_agente_leve_ativo: true
+  exige_local_canonico: true
+  exige_periodo_compativel: true
+  exige_motivo_compativel_com_ecologia: true
+  candidato_nao_e_presenca: true
+  candidato_nao_cria_acao: true
+  candidato_nao_cria_dialogo: true
+  candidato_nao_cria_conhecimento: true
+  candidato_nao_cria_encontro_sidequest: true
+  sem_scheduler: true
+  sem_estado_proprio: true
+  janela_independe_de_scene_id: true
+  canon_forte_prevalece: true
+perfis:
+  kethra_dunn:
+    nome: Kethra Dunn
+    fonte_canonica: estado/relacoes/kethra_dunn.yaml
+    locais:
+      narwhal_manor:
+        periodos: [dia]
+        motivos: [servico, trabalho]
+        evidencia_local: fundos de Narwhal Manor
+  bram_vask:
+    nome: Bram Vask
+    fonte_canonica: estado/relacoes/bram_vask.yaml
+    locais:
+      loja_bram_vask:
+        periodos: [dia, anoitecer]
+        motivos: [comercio, atendimento]
+        evidencia_local: loja de Bram Vask, Lower Trades
+  silva_elkwood:
+    nome: Silva Elkwood
+    fonte_canonica: estado/relacoes/silva_elkwood.yaml
+    locais:
+      jack_mooney_sons_circus:
+        periodos: [amanhecer, dia, anoitecer]
+        motivos: [trabalho, rotina]
+        evidencia_local: Jack Mooney & Sons Circus
+  jack_mooney:
+    nome: Jack Mooney
+    fonte_canonica: estado/relacoes/jack_mooney.yaml
+    locais:
+      jack_mooney_sons_circus:
+        periodos: [dia, anoitecer]
+        motivos: [espetaculo, trabalho]
+        evidencia_local: Jack Mooney & Sons Circus
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    fonte_canonica: estado/relacoes/halessa_vorn.yaml
+    locais:
+      casa_de_tyr:
+        periodos: [dia, anoitecer]
+        motivos: [institucional, atendimento]
+        evidencia_local: Casa de Tyr, Temple District
