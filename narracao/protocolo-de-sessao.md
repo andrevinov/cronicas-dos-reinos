@@ -50,17 +50,9 @@ poetry run cronica sessao iniciar
 
 Se já estiver `em_sessao`, não criar N+1: apenas retomar a sessão ativa. Nunca pedir que André execute esses comandos manualmente como pré-requisito para jogar.
 
-Para reconstruir continuidade e produzir o recap, usar primeiro:
+`cronica sessao status` e `cronica sessao iniciar` já devolvem um bloco `retomada`; `iniciar` também devolve `recap_sessao_anterior`. Use esses blocos primeiro. Eles projetam data/hora/localização atuais e resumos explícitos de pending/ledger/handoff sem abrir transcrição e sem carregar prosa temporal envelhecida.
 
-```bash
-python3 ferramentas/contexto.py retomada
-```
-
-Se precisar de uma sessão específica:
-
-```bash
-python3 ferramentas/contexto.py sessao 2
-```
+Se esses blocos responderem à lacuna, **pare**: não chamar `contexto.py retomada`, não abrir handoff cru e não ler implementação para reconstruir o mesmo presente. `contexto.py sessao <N>` continua disponível somente quando faltar um fato histórico específico.
 
 **Nunca copiar o último trecho da sessão anterior para a nova transcrição.** Também não abrir a transcrição anterior por rotina. Handoff, runtime, deltas e artefatos compactos existem justamente para impedir essa duplicação.
 
@@ -127,13 +119,13 @@ entrada
 → devolver controle ao jogador
 ```
 
-O hot path usa **duas chamadas operacionais**. Antes de resolver/publicar o turno:
+O hot path usa **duas chamadas de orquestração**. Um turno comum sem gatilho reativo pode usar somente:
 
 ```bash
-poetry run cronica preparar --cena-id <id-estavel> ...
+poetry run cronica preparar --cena-id <id-estavel>
 ```
 
-Guardar o `ticket` retornado. Depois que a narração estiver aceita, concluir por stdin:
+Isso emite ticket neutro: não inventar tag/local/NPC. Quando houver entrada/exploração real, novo encontro ou tag contextual já pertinente, acrescente apenas esses gatilhos. Gatilho local usa `--local`, `--acao`, `--tier` e `--periculosidade` juntos; não há inferência silenciosa de tier/risco. A saída de `preparar` traz `contrato_conclusao` com o JSON exato; não chamar `--help` nem abrir código-fonte para redescobri-lo. Depois que a narração estiver aceita, concluir por stdin:
 
 ```bash
 poetry run cronica concluir --ticket '<ticket>' <<'JSON'
@@ -147,7 +139,7 @@ poetry run cronica concluir --ticket '<ticket>' <<'JSON'
 JSON
 ```
 
-`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita, revalida/confirma a preparação e usa o registrador transacional existente. A suboperação de registro mantém a prosa completa apenas em `sessoes/NNN/transcricao.md` e o resumo/deltas em `runtime/eventos-pendentes.jsonl`; a confirmação reativa pode materializar somente os efeitos já previstos pela preparação.
+`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita. Ticket reativo revalida/confirma e registra; ticket neutro pré-valida e registra sem fabricar confirmação. Mecânica explícita na narração usa linha própria iniciada por `MECÂNICA — `. A prosa completa fica em `sessoes/NNN/transcricao.md` e resumo/deltas em `runtime/eventos-pendentes.jsonl`.
 
 `turno.py registrar`, `endpoints.py cena` e `cena_mundo.py confirmar` continuam disponíveis para manutenção, teste e reparo, não como fluxo normal.
 
@@ -193,7 +185,7 @@ Cada transação recebe ID estável e marcador interno na transcrição. Repetir
 python3 ferramentas/turno.py check
 ```
 
-Sem journal de consolidação, runtime + handoff + buffer + transcrição append-only preservam a sessão. Para **ler** o que é necessário à retomada, usar `contexto.py retomada`.
+Sem journal de consolidação, runtime + handoff + buffer + transcrição append-only preservam a sessão. Para **ler** o presente necessário à retomada, usar primeiro `cronica sessao status`; só escalar para `contexto.py` se a projeção quente não responder à lacuna.
 
 ---
 
@@ -220,6 +212,14 @@ Surpresa se houver → iniciativa → posição → ação de Ren → rolagens/c
 ## Rolagens
 
 Para rolagens visíveis, usar `ferramentas/rolar-dados.py`. Quando duas ou mais rolagens independentes já forem necessárias, usar uma chamada a `ferramentas/rolar-lote.py`. Não antecipar rolagens condicionais.
+
+Se a perícia e a CD já forem conhecidas, usar diretamente a assinatura estável:
+
+```bash
+poetry run rolar-dados ren pericia <nome> --cd <N> --label '<rótulo>'
+```
+
+Não fazer cascata de `--help` para redescobrir uma assinatura já fornecida pelo roteador.
 
 Rolagens ocultas relevantes ficam no campo `rolagens_ocultas` da transação. Isso evita uma terceira escrita durante o turno. No checkpoint canônico elas são transferidas em lote para:
 
@@ -351,8 +351,8 @@ Sem journal, `turno.py check` valida a persistência dos eventos pendentes. Para
 
 ```text
 L0
-→ contexto.py retomada
-→ contexto.py cena/entidade se houver lacuna específica
+→ cronica sessao status
+→ contexto.py cena/entidade somente se houver lacuna específica
 → histórico estruturado se necessário
 → transcrição somente como última escalada
 ```
