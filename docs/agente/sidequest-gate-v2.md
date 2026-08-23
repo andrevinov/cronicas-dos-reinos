@@ -84,7 +84,7 @@ Pressão não pode:
 
 ## Proveniência
 
-Todo potencial produzido pela porta v2 carrega `origem_gate` com:
+A resposta do gate v2 carrega `gate_v2` com:
 
 - versão;
 - ficha-base;
@@ -93,10 +93,12 @@ Todo potencial produzido pela porta v2 carrega `origem_gate` com:
 - se houve promoção;
 - pressão usada, quando consultada.
 
-A resposta do encontro usa `motivo: gate_v2_promovido_por_pressao` quando a
-pressão foi decisiva; oportunidade-base usa `gate_oportunidade_base`.
+Quando a pressão foi decisiva, o encontro retorna
+`motivo: gate_v2_promovido_por_pressao`; oportunidade-base usa
+`gate_oportunidade_base`. A pendência continua com o schema v1 existente: a
+proveniência operacional não cria um novo fato canônico dentro da missão.
 
-## Hot path e custo
+## Integração sem duplicação
 
 O hot path continua sendo:
 
@@ -104,9 +106,23 @@ O hot path continua sendo:
 python3 ferramentas/endpoints.py cena ...
 ```
 
-`cena_mundo.py` passa a carregar `cena_mundo_v5`, que troca somente a porta de
-encontro pela implementação v2; preparação, ecologia, microeventos, recompensas
-e stubs continuam nas camadas anteriores.
+`cena_mundo.py` continua baseado em `cena_mundo_v4`. Ele apenas instala o
+adaptador v2 na porta dirigida de encontro. O adaptador intercepta temporariamente
+`oportunidades.draw_gate`, chama o **mesmo** `interacoes_mundo.encounter_event`
+existente e restaura o sorteador em `finally`.
+
+Assim, bloqueios, resolução de NPC, abertura de perfil, escolha de necessidade,
+persistência e orçamento continuam com uma única implementação. A Task 14 não
+cria `cena_mundo_v5` nem uma segunda orquestração de encontros.
+
+A CLI de manutenção explicitamente v2 é:
+
+```bash
+python3 ferramentas/sidequest_gate_v2.py encontro <npc> --encontro-id <id>
+python3 ferramentas/sidequest_gate_v2.py check
+```
+
+## Hot path e custo
 
 A consulta de pressão lê somente `narrador/microeventos-locais/estado.yaml` e é
 cacheada por versão do arquivo durante o processo. Em fixtures antigos sem a
@@ -115,6 +131,7 @@ falha fechada.
 
 Não há scheduler, scan global, reroll ou escrita adicional. A única escrita do
 encontro continua sendo o mesmo `narrador/oportunidades/estado.yaml` já usado
-pelo v1.
+pelo v1. A fonte de pressão entra em `fontes_lidas`, logo também participa do
+fingerprint transacional da preparação de cena.
 
 Contrato de regressão: `baseline/sidequest-gate-v2-orcamento.yaml`.
