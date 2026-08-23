@@ -3,10 +3,17 @@ natureza: reservado
 arco: parte_1_uma_ponte_para_kozakura
 estatuto: restricao_operacional_nao_canonica
 principio: >-
-  Neutralizar Ren significa reduzir sua capacidade de interferir no plano sem
-  revelar desnecessariamente comando, rotas, células ou a Ponte. A linha não
-  torna Ren ameaça central, não ordena sua morte e não estabelece que qualquer
-  tentativa já aconteceu.
+  Neutralizar Ren significa reduzir sua capacidade de interferir no plano sem revelar
+  desnecessariamente comando, rotas, células ou a Ponte. Esta linha governa escolhas
+  autônomas do Mundo Vivo e não substitui os eventos canônicos datados explicitamente
+  definidos para a Parte 1.
+escopo:
+  aplica_a: acoes_autonomas_nao_prescritas_pelo_calendario_canonico
+  nao_veta: narrador/arcos/parte_1/eventos-canonicos.yaml
+  regra: >-
+    Quando o calendário canônico fixa sequestro, duelo, captura tentada ou violência,
+    usar os guardrails específicos daquele evento. Fora desses eventos, permanecem os
+    limites conservadores abaixo.
 condicao_de_uso:
   exige_evidencia_canonica_de_interferencia: true
   nao_basta:
@@ -27,9 +34,9 @@ guardrails:
   evitar_assinatura_que_identifique_masao: true
   conhecimento_do_agente_limita_identidades_vinculos_e_rotas: true
   metodo_fisico_exige_presenca_e_acesso_validos: true
-  nao_forcar_captura: true
-  nao_forcar_duelo: true
-  nao_forcar_sequestro_de_vinculo: true
+  fora_de_evento_canonico_nao_forcar_captura: true
+  fora_de_evento_canonico_nao_forcar_duelo: true
+  fora_de_evento_canonico_nao_forcar_sequestro_de_vinculo: true
 vetores_permitidos:
 - isolamento_operacional
 - descredito_ou_impedimento_institucional
@@ -39,10 +46,10 @@ vetores_permitidos:
 - captura_ou_contenção_somente_se_emergir_causalmente
 - violencia_seletiva_somente_quando_o_metodo_e_o_contexto_a_sustentarem
 criterio_de_sigilo: >-
-  Um método falha ao espírito da linha se para impedir Ren ele entrega conexão
-  rastreável entre executor, célula, rota, Ponte ou comando de Masao que valha
-  mais para Ren do que a neutralização pretendida.
+  Um método falha ao espírito da linha se para impedir Ren ele entrega conexão rastreável
+  entre executor, célula, rota, Ponte ou comando de Masao que valha mais para Ren do que
+  a neutralização pretendida.
 relacao_com_masao: >-
-  Esta linha não substitui o ponto cego do plano mestre: Masao ainda pode pensar
-  grande demais para tratar Ren como ameaça central. Neutralização localizada é
-  compatível com delegar um incômodo crescente sem reorganizar o projeto ao redor dele.
+  Esta linha não substitui o ponto cego do plano mestre: Masao ainda pode pensar grande
+  demais para tratar Ren como ameaça central. Neutralização localizada é compatível com
+  delegar um incômodo crescente sem reorganizar o projeto ao redor dele.

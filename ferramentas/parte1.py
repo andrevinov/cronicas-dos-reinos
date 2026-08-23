@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 from typing import Any
 import yaml
-import arcos, autonomia_juppongatana, pressao_ravens_bluff, contexto_cena
+import arcos, autonomia_juppongatana, pressao_ravens_bluff, contexto_cena, eventos_canonicos
 
 ARC='parte_1_uma_ponte_para_kozakura'
 EXPECTED_ANT={'kurobane_jinzaburo','kajiwara_shizune','pan_chu','sawagejo_cho'}
@@ -36,6 +36,9 @@ def validate_story_files(repo:Path):
     a=mp(j.get('autonomia'),'autonomia')
     for flag in ('nunca_sabotar_masao','nao_sao_minions_passivos','alvo_pessoal_exige_conhecimento_canonico','podem_agir_fora_da_presenca_de_ren'):
         if a.get(flag) is not True: raise PartOneError(f'princípio ausente: {flag}')
+    jogador=mp(p.get('jogador'),'jogador')
+    if jogador.get('nunca_escrever_decisao_de_ren') is not True: raise PartOneError('agência de Ren perdeu guardrail')
+    if jogador.get('evento_canonico_pode_forcar_situacao') is not True: raise PartOneError('evento canônico não possui prioridade operacional')
     if d.get('schema_descoberta_consequencias')!=1 or d.get('arco')!=ARC: raise PartOneError('contrato de descoberta inválido')
     rules=mp(d.get('regras'),'descoberta.regras')
     if rules.get('ren_nao_e_notificado_automaticamente') is not True or rules.get('feito_lendario_deve_ter_repercussao') is not True: raise PartOneError('descoberta/consequência perdeu guardrail')
@@ -52,7 +55,7 @@ def validate_runtime_hooks(repo:Path):
     schedules=[x for x in ag.get('agendamentos') or [] if isinstance(x,dict) and x.get('id')=='chegada_golden_lily_27_eleasis']
     if len(schedules)!=1: raise PartOneError('agendamento canônico Golden Lily ausente/duplicado')
     s=schedules[0]
-    if s.get('tipo')!='movimento' or s.get('agente')!='pan_chu' or s.get('em')!={'data':'27 Eleasis, 1372 DR','hora':'10:00'}: raise PartOneError('agendamento Golden Lily divergente')
+    if s.get('tipo')!='movimento' or s.get('agente')!='pan_chu' or s.get('em')!={'data':'27 Eleasis, 1372 DR','hora':'10:00'} or s.get('evento_canonico')!='chegada_golden_lily': raise PartOneError('agendamento Golden Lily divergente')
     rec=mp(ag.get('reavaliacoes'),'reavaliacoes')
     for aid in ('kajiwara_shizune','sawagejo_cho','pan_chu'):
         if aid not in rec: raise PartOneError(f'reavaliação autônoma ausente: {aid}')
@@ -76,14 +79,16 @@ def validate(repo:Path):
         if not pr['ok'] or pr['frentes']!=5: raise PartOneError('pressão urbana inválida: '+'; '.join(pr.get('erros') or []))
         cv=contexto_cena.validate(repo); sources+=cv.get('fontes_lidas') or []
         if not cv['ok']: raise PartOneError('roteador contextual inválido')
+        ce=eventos_canonicos.validate(repo); sources+=ce.get('fontes_lidas') or []
+        if not ce['ok'] or ce['eventos']!=17: raise PartOneError('calendário canônico da Parte 1 inválido: '+'; '.join(ce.get('erros') or []))
         sources+=validate_story_files(repo); sources+=validate_runtime_hooks(repo)
-    except (PartOneError,arcos.ArcContractError,autonomia_juppongatana.AutonomyError,pressao_ravens_bluff.PressureError,contexto_cena.ContextSceneError) as e: errors.append(str(e))
+    except (PartOneError,arcos.ArcContractError,autonomia_juppongatana.AutonomyError,pressao_ravens_bluff.PressureError,contexto_cena.ContextSceneError,eventos_canonicos.CanonicalEventError) as e: errors.append(str(e))
     return {'ok':not errors,'arco':ARC,'erros':errors,'fontes_lidas':list(dict.fromkeys(sources))}
 def status(repo:Path):
     v=validate(repo)
     if not v['ok']: return v
     arc=arcos.current(repo); pressure=pressao_ravens_bluff.status(repo)
-    return {'ok':True,'titulo':arc['titulo'],'antagonistas':arc['habilitacoes']['antagonistas'],'aliados':arc['habilitacoes']['aliados'],'direcoes':arc['habilitacoes']['direcoes'],'linhas_operacionais':list(arc['linhas_operacionais']),'pressao':[{k:x[k] for k in ('id','nivel','titulo')} for x in pressure['frentes']],'regra':'status é mapa de possibilidades e pressões, não sequência de cenas','fontes_lidas':list(dict.fromkeys([*v['fontes_lidas'],*pressure['fontes_lidas']]))}
+    return {'ok':True,'titulo':arc['titulo'],'antagonistas':arc['habilitacoes']['antagonistas'],'aliados':arc['habilitacoes']['aliados'],'direcoes':arc['habilitacoes']['direcoes'],'linhas_operacionais':list(arc['linhas_operacionais']),'eventos_canonicos':17,'pressao':[{k:x[k] for k in ('id','nivel','titulo')} for x in pressure['frentes']],'regra':'mundo aberto entre e durante eventos; núcleos datados obrigatórios, forma e resultado emergentes','fontes_lidas':list(dict.fromkeys([*v['fontes_lidas'],*pressure['fontes_lidas']]))}
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__); p.add_argument('--repo',type=Path,default=Path.cwd()); p.add_argument('cmd',choices=['validar','status']); a=p.parse_args(argv); r=validate(a.repo.resolve()) if a.cmd=='validar' else status(a.repo.resolve()); print(yaml.safe_dump(r,allow_unicode=True,sort_keys=False),end=''); return 0 if r.get('ok') else 1
 if __name__=='__main__': raise SystemExit(main())

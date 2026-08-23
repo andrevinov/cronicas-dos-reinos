@@ -6,14 +6,15 @@ camada acrescenta a qualidade da abordagem somente ao campo ``modificadores`` j�
 reservado, sem novo endpoint, nova leitura ou mudança de schema.
 
 No caminho raro em que a barreira do Mundo Vivo está bloqueada, o endpoint de
-pendências também projeta candidatos autônomos de pressão de Ravens Bluff. A
-projeção é read-only: calendário/reavaliação não vira fato; ela apenas entrega ao
-narrador linha, método e frente que podem ser materializados se o agente realmente
-puder agir.
+pendências também projeta candidatos autônomos de pressão de Ravens Bluff e,
+quando houver, o núcleo do próximo evento canônico datado da Parte 1. Tudo
+permanece read-only: a projeção informa o que está devido; a materialização exige
+transação de mundo e checkpoint normal.
 """
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import sys
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,7 @@ import qualidade_abordagem
 _ORIGINAL_PROJECT_SCENE = _base.project_scene
 _ORIGINAL_BUILD_PARSER = _base.build_parser
 MAX_PRESSURE_CANDIDATES = 4
+MAX_CANONICAL_EVENTS = 1
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -44,6 +46,29 @@ def _quality(
         informacao=informacao,
         adequacao=adequacao,
     )
+
+
+def _canonical_module(repo: Path):
+    """Carrega o calendário somente no caminho raro em que ele existe no repo."""
+    catalog = repo / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+    if not catalog.is_file():
+        return None
+    try:
+        import eventos_canonicos
+        return eventos_canonicos
+    except ModuleNotFoundError as exc:
+        if exc.name != "eventos_canonicos":
+            raise
+        module_path = Path(__file__).with_name("eventos_canonicos.py")
+        spec = importlib.util.spec_from_file_location("eventos_canonicos", module_path)
+        if spec is None or spec.loader is None:
+            raise _base.EndpointError(
+                "não foi possível carregar ferramentas/eventos_canonicos.py"
+            ) from exc
+        module = importlib.util.module_from_spec(spec)
+        sys.modules.setdefault("eventos_canonicos", module)
+        spec.loader.exec_module(module)
+        return module
 
 
 def project_scene(
@@ -103,54 +128,92 @@ def scene(
 
 def project_pending(result: dict[str, Any]) -> dict[str, Any]:
     projected = _base.project_pending(result)
+
+    canonical = result.get("eventos_canonicos")
+    events = list(canonical.get("eventos") or []) if isinstance(canonical, dict) else []
+    if events:
+        visible_events = events[:MAX_CANONICAL_EVENTS]
+        projected["ids"]["eventos_canonicos"] = [
+            item.get("evento") for item in visible_events if item.get("evento")
+        ]
+        for item in visible_events:
+            projected["gates"].append(
+                {
+                    "tipo": "evento_canonico_datado",
+                    "resultado": "devido",
+                    "pendencia": item.get("pendencia"),
+                    "evento": item.get("evento"),
+                    "titulo": item.get("titulo"),
+                    "data": item.get("data"),
+                    "janela": item.get("janela"),
+                    "atraso_dias": item.get("atraso_dias"),
+                    "nucleo_obrigatorio": list(item.get("nucleo_obrigatorio") or [])[:3],
+                    "guardrails": list(item.get("guardrails") or [])[:3],
+                    "regra": "núcleo obrigatório; forma e resultado flexíveis; nunca escrever decisão de Ren",
+                }
+            )
+        projected["proximo_passo"]["evento_canonico"] = (
+            "materialize o núcleo na primeira forma causal plausível por transação modo:mundo com a tag "
+            "resolver-pendencia-mundo:<id>; depois conclua pela barreira com --transacao. "
+            "Não use --sem-mudanca: se o núcleo estiver temporariamente impossível, mantenha a pendência aberta."
+        )
+
     integration = result.get("pressao_ravens_bluff")
     candidates = (
         list(integration.get("candidatos") or [])
         if isinstance(integration, dict)
         else []
     )
-    if not candidates:
-        return projected
-
-    visible = candidates[:MAX_PRESSURE_CANDIDATES]
-    projected["ids"]["pressao_ravens_bluff"] = [
-        item.get("pendencia") for item in visible if item.get("pendencia")
-    ]
-    for item in visible:
-        projected["gates"].append(
-            {
-                "tipo": "pressao_ravens_bluff_autonoma",
-                "resultado": "candidato",
-                "pendencia": item.get("pendencia"),
-                "agente": item.get("agente"),
-                "linha": item.get("linha"),
-                "metodo": item.get("metodo"),
-                "frente": item.get("frente"),
-                "de": item.get("de"),
-                "para": item.get("para"),
-                "titulo_destino": item.get("titulo_destino"),
-                "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
-            }
+    if candidates:
+        visible = candidates[:MAX_PRESSURE_CANDIDATES]
+        projected["ids"]["pressao_ravens_bluff"] = [
+            item.get("pendencia") for item in visible if item.get("pendencia")
+        ]
+        for item in visible:
+            projected["gates"].append(
+                {
+                    "tipo": "pressao_ravens_bluff_autonoma",
+                    "resultado": "candidato",
+                    "pendencia": item.get("pendencia"),
+                    "agente": item.get("agente"),
+                    "linha": item.get("linha"),
+                    "metodo": item.get("metodo"),
+                    "frente": item.get("frente"),
+                    "de": item.get("de"),
+                    "para": item.get("para"),
+                    "titulo_destino": item.get("titulo_destino"),
+                    "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
+                }
+            )
+        projected["proximo_passo"]["pressao_ravens_bluff"] = (
+            "se o candidato for legal para o agente, materialize a ação de mundo; depois conclua "
+            "a pendência informando transação, linha e método. Se houver bloqueio canônico real, use --sem-mudanca."
         )
-    projected["proximo_passo"]["pressao_ravens_bluff"] = (
-        "se o candidato for legal para o agente, materialize a ação de mundo; depois conclua "
-        "a pendência informando transação, linha e método. Se houver bloqueio canônico real, use --sem-mudanca."
-    )
+
     _base.validate_endpoint(projected)
     return projected
 
 
 def pending(repo: Path) -> dict[str, Any]:
     raw = _base.mundo.pending_view(repo)
-    integration = pressao_ravens_bluff.pending_candidates(
-        repo, list(raw.get("pendencias") or [])
-    )
-    raw["pressao_ravens_bluff"] = integration
+    pendings = list(raw.get("pendencias") or [])
+    pressure = pressao_ravens_bluff.pending_candidates(repo, pendings)
+    canonical_module = _canonical_module(repo)
+    if canonical_module is None:
+        canonical = {"eventos": [], "fontes_lidas": []}
+    else:
+        try:
+            canonical = canonical_module.pending_projection(repo, pendings)
+        except canonical_module.CanonicalEventError as exc:
+            raise _base.EndpointError(str(exc)) from exc
+    raw["pressao_ravens_bluff"] = pressure
+    raw["eventos_canonicos"] = canonical
     raw["fontes_lidas"] = list(
         dict.fromkeys(
             [
                 *(raw.get("fontes_lidas") or []),
-                *(integration.get("fontes_lidas") or []),
+                *(pressure.get("fontes_lidas") or []),
+                *(canonical.get("fontes_lidas") or []),
             ]
         )
     )

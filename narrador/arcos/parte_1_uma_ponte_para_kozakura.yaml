@@ -3,10 +3,12 @@ natureza: reservado
 estatuto: contrato_orquestrador_de_arco
 id: parte_1_uma_ponte_para_kozakura
 titulo: Parte 1 — Uma Ponte para Kozakura
-principio: Este contrato limita o espaço estratégico permitido nesta parte da crônica e orquestra fontes especializadas.
-  Masao tenta converter Ravens Bluff em infraestrutura própria; Ren pode impedir, atrasar ou redirecionar esse processo.
-  Habilitado significa somente que a peça pode ser considerada. Acontecimento, descoberta e consequência continuam
-  separados.
+principio: >-
+  Este contrato limita o espaço estratégico permitido nesta parte da crônica e
+  orquestra fontes especializadas. Masao tenta converter Ravens Bluff em infraestrutura
+  própria; Ren pode impedir, atrasar ou redirecionar esse processo. Habilitado significa
+  somente que a peça pode ser considerada. A espinha canônica datada define núcleos que
+  entram no mundo; descoberta, escolha de Ren e desfecho continuam separados.
 inicio:
   tipo: fato_canonico
   marcador: chegada_de_ren_a_ravens_bluff
@@ -43,7 +45,7 @@ orquestracao:
       arquivo: narrador/arcos/parte_1/neutralizacao-ren.yaml
   plano_mestre:
     agente: masao_hirasawa
-    objetivo: dominar_ravens_bluff_e_preservar_ponte
+    objetivo: dominar_ravens_bluff_e_preservar_ponte_enquanto_for_estrategicamente_util
     referencia: plano_mestre
 habilitacoes:
   politica_nao_listados: bloqueados
@@ -85,7 +87,7 @@ linhas_operacionais:
     - pan_chu
     referencia: plano_mestre
   preservar_monopolio_da_ponte:
-    objetivo: proteger_uso_clandestino_e_exclusivo_da_ponte
+    objetivo: proteger_uso_clandestino_e_exclusivo_da_ponte_enquanto_o_monopolio_valer_o_custo
     executores:
     - masao_hirasawa
     - pan_chu
