@@ -21,6 +21,7 @@ import yaml
 
 import mundo
 import arco_mundo
+import rede_protegida
 
 INDEX = Path("narrador/eventos/index.yaml")
 STATE = Path("narrador/eventos/estado.yaml")
@@ -309,16 +310,26 @@ def routing_context(repo: Path) -> dict[str, Any]:
         strategic = {**strategic, "agentes": filtered}
     except arco_mundo.ArcWorldError as exc:
         raise WorldEventError(str(exc)) from exc
+    try:
+        protected = (
+            rede_protegida.load_policy(repo)
+            if rede_protegida.configured(repo)
+            else None
+        )
+    except rede_protegida.ProtectedNetworkError as exc:
+        raise WorldEventError(str(exc)) from exc
     return {
         "router": router,
         "strategic": strategic,
         "light": light,
+        "rede_protegida": protected,
         "agentes_estrategicos_bloqueados_pelo_arco": blocked,
         "fontes_lidas": list(dict.fromkeys([
             INTERACTIONS.as_posix(),
             STRATEGIC_INDEX.as_posix(),
             LIGHT_INDEX.as_posix(),
             *arc_ctx["fontes_lidas"],
+            *([rede_protegida.INDEX.as_posix()] if protected is not None else []),
         ])),
     }
 
@@ -340,7 +351,15 @@ def route_agents(tags: list[str], context: dict[str, Any]) -> dict[str, list[str
         eligible=_light_eligible,
         limit=budget["max_leves_por_evento"],
     )
-    return {"estrategicos": strategic, "leves": light}
+    policy = context.get("rede_protegida")
+    if not isinstance(policy, dict):
+        return {"estrategicos": strategic, "leves": light}
+    partition = rede_protegida.partition_candidates(policy, light)
+    return {
+        "estrategicos": strategic,
+        "leves": partition["afetados"],
+        "nucleo_protegido": partition["nucleo_protegido"],
+    }
 
 
 def deck_order(seed: str, deck: str, cycle: int, ids: list[str]) -> list[str]:
@@ -451,24 +470,29 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
                 routing = routing_context(repo)
                 sources.extend(routing["fontes_lidas"])
             affected = route_agents(meta["tags"], routing)
-            emitted.append(
-                {
-                    "id": pending_id(card_id, when),
-                    "tipo": "evento_mundial",
-                    "evento": card_id,
-                    "categoria": meta["categoria"],
-                    "escala": meta["escala"],
-                    "agentes_afetados": affected["estrategicos"],
-                    "agentes_leves_afetados": affected["leves"],
-                    "disparado_em": mundo.instant_parts(when),
-                    "motivo": (
-                        f"Carta mundial '{meta['nome']}' sorteada sem reposição; "
-                        "resolver a manifestação e seus possíveis efeitos sobre os "
-                        "agentes pré-filtrados sem criar cânone automaticamente."
-                    ),
-                    "origem": f"eventos:{card_id}",
-                }
-            )
+            pending = {
+                "id": pending_id(card_id, when),
+                "tipo": "evento_mundial",
+                "evento": card_id,
+                "categoria": meta["categoria"],
+                "escala": meta["escala"],
+                "agentes_afetados": affected["estrategicos"],
+                "agentes_leves_afetados": affected["leves"],
+                "disparado_em": mundo.instant_parts(when),
+                "motivo": (
+                    f"Carta mundial '{meta['nome']}' sorteada sem reposição; "
+                    "resolver a manifestação e seus possíveis efeitos sobre os "
+                    "agentes pré-filtrados sem criar cânone automaticamente."
+                ),
+                "origem": f"eventos:{card_id}",
+            }
+            core = affected.get("nucleo_protegido") or []
+            if core:
+                pending["nucleo_protegido_reconsiderar"] = core
+                pending["protecao_rede_central"] = rede_protegida.event_guard(
+                    routing["rede_protegida"], core
+                )
+            emitted.append(pending)
         state["historico_recente"].append(history)
         state["historico_recente"] = state["historico_recente"][-MAX_HISTORY:]
         state["processado_ate"] = mundo.instant_parts(when)
@@ -491,6 +515,13 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             for agent in item.get("agentes_leves_afetados") or []
         }
     )
+    protected_ids = sorted(
+        {
+            agent
+            for item in added
+            for agent in item.get("nucleo_protegido_reconsiderar") or []
+        }
+    )
     return {
         "ok": True,
         "alterou": True,
@@ -501,6 +532,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
         "eventos_reconsiderar": [item["evento"] for item in added],
         "agentes_evento_reconsiderar": strategic_ids,
         "agentes_leves_evento_reconsiderar": light_ids,
+        "nucleo_protegido_evento_reconsiderar": protected_ids,
         "fontes_lidas": list(dict.fromkeys(sources)),
     }
 
@@ -515,7 +547,11 @@ def prune_dead_candidates(repo: Path, dead: set[str]) -> dict[str, Any]:
         if not isinstance(item, dict) or item.get("tipo") != "evento_mundial":
             continue
         changed = False
-        for field in ("agentes_afetados", "agentes_leves_afetados"):
+        for field in (
+            "agentes_afetados",
+            "agentes_leves_afetados",
+            "nucleo_protegido_reconsiderar",
+        ):
             values = item.get(field)
             if not isinstance(values, list):
                 continue
@@ -626,6 +662,21 @@ def validate_repo(repo: Path) -> dict[str, Any]:
         known_light = set(light["agentes"])
         max_strategic = router["orcamento"]["max_estrategicos_por_evento"]
         max_light = router["orcamento"]["max_leves_por_evento"]
+        protected_policy = (
+            rede_protegida.load_policy(repo)
+            if rede_protegida.configured(repo)
+            else None
+        )
+        protected_ids = (
+            rede_protegida.protected_ids(protected_policy)
+            if isinstance(protected_policy, dict)
+            else set()
+        )
+        if isinstance(protected_policy, dict):
+            validation = rede_protegida.validate(repo)
+            errors.extend(
+                f"rede protegida: {error}" for error in validation["erros"]
+            )
         for item in world_state.get("pendencias") or []:
             if item.get("tipo") != "evento_mundial":
                 continue
@@ -633,11 +684,21 @@ def validate_repo(repo: Path) -> dict[str, Any]:
                 errors.append(f"evento inexistente: {item.get('evento')}")
             strategic_ids = item.get("agentes_afetados") or []
             light_ids = item.get("agentes_leves_afetados") or []
+            protected_pending = item.get("nucleo_protegido_reconsiderar") or []
             if set(strategic_ids) - known_strategic:
                 errors.append("evento referencia agente estratégico inexistente")
             if set(light_ids) - known_light:
                 errors.append("evento referencia agente leve inexistente")
-            if len(strategic_ids) > max_strategic or len(light_ids) > max_light:
+            if set(protected_pending) - known_light:
+                errors.append("evento referencia núcleo protegido inexistente")
+            if set(protected_pending) - protected_ids:
+                errors.append("evento marca NPC não protegido como núcleo protegido")
+            if set(light_ids) & protected_ids:
+                errors.append("evento marca núcleo protegido como afetado diretamente")
+            if (
+                len(strategic_ids) > max_strategic
+                or len(light_ids) + len(protected_pending) > max_light
+            ):
                 errors.append("evento excede orçamento de interações agenciais")
 
         now, _ = mundo.load_canonical_time(repo)

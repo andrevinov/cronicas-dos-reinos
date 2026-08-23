@@ -33,6 +33,7 @@ import oportunidades
 import rastros
 import recompensas
 import relogios
+import rede_protegida
 
 OPPORTUNITY_INDEX = oportunidades.INDEX
 OPPORTUNITY_STATE = oportunidades.STATE
@@ -852,6 +853,24 @@ def prepare_sidequest_effects(
 
         if kind == "consequencia":
             value = copy.deepcopy(_map(effect.get("valor"), "efeito.consequencia.valor"))
+            if rede_protegida.configured(repo):
+                try:
+                    guarded = rede_protegida.guard_consequence(
+                        repo, value, origem="sidequest"
+                    )
+                except rede_protegida.ProtectedNetworkError as exc:
+                    raise IntegrationError(str(exc)) from exc
+                value = guarded["valor"]
+                sources.extend(guarded["fontes_lidas"])
+                if guarded["alvos_protegidos"]:
+                    links.append(
+                        {
+                            "tipo": "rede_protegida",
+                            "alvos": guarded["alvos_protegidos"],
+                            "impacto_maximo": "moderada",
+                            "reversibilidade_exigida": "reversivel",
+                        }
+                    )
             value.setdefault("origem_sidequest", mission_id)
             deltas.append({"alvo": "consequencia", "op": "registrar", "valor": value})
             continue
@@ -945,6 +964,11 @@ def check_repo(repo: Path) -> dict[str, Any]:
     opportunities = oportunidades.validate_repo(repo)
     errors.extend(f"recompensas: {item}" for item in rewards.get("erros") or [])
     errors.extend(f"oportunidades: {item}" for item in opportunities.get("erros") or [])
+    if rede_protegida.configured(repo):
+        protected = rede_protegida.validate(repo)
+        errors.extend(
+            f"rede_protegida: {item}" for item in protected.get("erros") or []
+        )
 
     try:
         index = oportunidades.load_index(repo)

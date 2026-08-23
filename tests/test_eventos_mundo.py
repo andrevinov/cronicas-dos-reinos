@@ -60,7 +60,8 @@ class EventosRepoTest(unittest.TestCase):
             context,
         )
         self.assertEqual(routed["estrategicos"], ["red_sail", "night_watch"])
-        self.assertEqual(routed["leves"], ["luath"])
+        self.assertEqual(routed["leves"], [])
+        self.assertEqual(routed["nucleo_protegido"], ["luath"])
         self.assertEqual(
             context["fontes_lidas"],
             [
@@ -71,6 +72,7 @@ class EventosRepoTest(unittest.TestCase):
                 "narrador/arcos/estado.yaml",
                 "narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml",
                 "narrador/arcos/controle-mundo.yaml",
+                "narrador/mundo/rede-protegida.yaml",
             ],
         )
 
@@ -81,7 +83,8 @@ class EventosRepoTest(unittest.TestCase):
             eventos_mundo.routing_context(ROOT),
         )
         self.assertEqual(routed["estrategicos"], [])
-        self.assertEqual(routed["leves"], ["maerra_thandrel"])
+        self.assertEqual(routed["leves"], [])
+        self.assertEqual(routed["nucleo_protegido"], ["maerra_thandrel"])
 
 
 class EventosSinteticosTest(unittest.TestCase):
