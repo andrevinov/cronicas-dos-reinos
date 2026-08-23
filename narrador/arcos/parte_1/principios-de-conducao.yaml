@@ -1,16 +1,30 @@
 schema_principios_parte_1: 1
 natureza: reservado
 arco: parte_1_uma_ponte_para_kozakura
-principio: Uma Ponte para Kozakura é uma máquina de pressão, não uma sequência de missões. O mundo age, Ren interfere
-  ou não, e descoberta é consequência de investigação legítima.
+principio: >-
+  Uma Ponte para Kozakura é uma máquina de pressão com espinha canônica datada,
+  não uma fila de missões fechadas. O Mundo Vivo continua agindo entre, ao redor e
+  durante os marcos. Quando uma data canônica vence, o núcleo do acontecimento entra
+  no mundo salvo impossibilidade causal real; sua forma, o método de Ren e o resultado
+  continuam emergentes.
+eventos_canonicos:
+  fonte: narrador/arcos/parte_1/eventos-canonicos.yaml
+  nucleo_obrigatorio: true
+  forma_flexivel: true
+  resultado_pre_escrito: false
+  testes_nao_autorizam_fato_autoral: true
+  prioridade_sobre_rotina_quando_devido: true
+  atraso_somente_por_impossibilidade_causal_real: true
+  regra_atraso: manter pendencia aberta e aumentar pressão; não converter em no-op
 juppongatana:
   aparicao:
     estatuto: evento_revelacao
     tom: dramatico_contido
     regras:
     - a primeira aparição deve mudar a leitura da ameaça
-    - evitar entrada gratuita só para exibir poder
+    - evitar entrada gratuita só para exibir poder, salvo exceção canônica de revelação explicitamente registrada
     - feito lendário altera o tabuleiro, não apenas números de combate
+    - Seishirō em 11 Eleint é exceção de revelação e não desbloqueia o Círculo Interno como população normal
   autonomia:
     nunca_sabotar_masao: true
     nao_sao_minions_passivos: true
@@ -23,11 +37,16 @@ juppongatana:
     ren_nao_precisa_descobrir_autor: true
 cidade:
   autoridades_devem_sentir_pressao: true
-  reacao_externa_e_possivel_nao_obrigatoria: true
+  reacao_externa_pode_ser_canonica_quando_agendada: true
   problemas_podem_preceder_explicacao: true
+  ocorrencia_nao_concede_conhecimento_automatico_a_ren: true
 jogador:
-  nao_forcar_descoberta: true
-  nao_forcar_sequestro: true
+  nunca_escrever_decisao_de_ren: true
+  evento_canonico_pode_forcar_situacao: true
+  evento_canonico_pode_interromper_linha_voluntaria: true
+  nao_forcar_descoberta_automatica: true
   nao_forcar_romance: true
-  nao_forcar_duelo: true
-  acoes_de_ren_podem_mudar_ordem_e_forma: true
+  sequestro_ou_duelo_so_podem_ser_forcados_como_situacao_quando_o_evento_canonico_ou_causa_do_mundo_os_sustenta: true
+  resposta_de_ren_permanece_livre: true
+  acoes_de_ren_podem_mudar_forma_e_desfecho: true
+  acoes_de_ren_nao_apagam_nucleo_ja_causado: true
