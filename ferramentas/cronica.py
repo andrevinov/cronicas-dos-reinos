@@ -3,8 +3,9 @@
 
 A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 ``ciclo_cronica.py``. A camada pública acrescenta apenas ergonomia observada em
-rollout real: turno neutro sem gatilho inventado, retomada compacta limpa e
-transporte de ticket tolerante a whitespace acidental no corpo base64.
+rollout real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot
+path, retomada compacta limpa e transporte de ticket tolerante a whitespace
+acidental no corpo base64.
 """
 from __future__ import annotations
 
@@ -100,6 +101,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser = _ORIGINAL_BUILD_PARSER()
     root = _subparsers(parser)
 
+    prepare_parser = root.choices["preparar"]
+    prepare_parser.add_argument(
+        "--transito-urbano",
+        choices=[_hot.URBAN_TRANSIT_SCOPE],
+        help=(
+            "deslocamento material pela malha urbana; usa o mesmo preparar/concluir, "
+            "sem criar local canônico nem chamada adicional"
+        ),
+    )
+
     session = root.add_parser(
         "sessao",
         help="lifecycle de alto nível: checkpoint, encerrar, iniciar, recuperar e status",
@@ -167,6 +178,7 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_preparacao=args.abordagem_preparacao,
             approach_informacao=args.abordagem_informacao,
             approach_adequacao=args.abordagem_adequacao,
+            urban_transit=getattr(args, "transito_urbano", None),
         )
     if args.cmd == "concluir":
         return conclude(repo, args.ticket, turno.read_transaction(args.arquivo))
