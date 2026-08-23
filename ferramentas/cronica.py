@@ -31,6 +31,31 @@ _ORIGINAL_BUILD_PARSER = _core.build_parser
 _ORIGINAL_MAIN = _core.main
 
 
+def conclude(*args, **kwargs):
+    """Delega ao core preservando o hook público de preflight da Task 21.
+
+    Testes/extensões anteriores podiam monkeypatchar ``cronica._preflight_registration``.
+    Como a implementação agora vive no core, espelhamos esse hook apenas durante a
+    chamada e restauramos o core em ``finally``.
+    """
+    original = _core._preflight_registration
+    _core._preflight_registration = globals()["_preflight_registration"]
+    try:
+        return _core.conclude(*args, **kwargs)
+    finally:
+        _core._preflight_registration = original
+
+
+def register(*args, **kwargs):
+    """Delega ao core preservando o hook público de revalidação da Task 21."""
+    original = _core._revalidate_ticket
+    _core._revalidate_ticket = globals()["_revalidate_ticket"]
+    try:
+        return _core.register(*args, **kwargs)
+    finally:
+        _core._revalidate_ticket = original
+
+
 def _subparsers(parser: argparse.ArgumentParser) -> argparse._SubParsersAction:
     return next(
         action
