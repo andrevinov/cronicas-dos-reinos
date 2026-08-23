@@ -7,6 +7,7 @@ sys.path.insert(0, str(TOOLS))
 
 import arcos
 import autonomia_juppongatana
+import eventos_canonicos
 import pressao_ravens_bluff
 
 arc = arcos.load_contract(ROOT, 'parte_1_uma_ponte_para_kozakura')
@@ -26,12 +27,19 @@ for agent_id in arc['habilitacoes']['antagonistas']:
 pressure = pressao_ravens_bluff.validate(ROOT)
 assert pressure['ok'] and pressure['frentes'] == 5, pressure
 
+canonical = eventos_canonicos.validate(ROOT)
+assert canonical['ok'] and canonical['eventos'] == 17, canonical
+
 pan = yaml.safe_load((ROOT / 'narrador/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
 assert pan['estado'] == 'latente'
 assert '27 Eleasis' in pan['plano_atual']['prazo_ou_oportunidade']
 
 golden = (ROOT / 'narrador/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
 assert '27 Eleasis' in golden and '10:00' in golden
-assert 'não é convocado automaticamente' in golden
+assert '29 Eleasis' in golden and 'não atacam' in golden
+
+catalog = eventos_canonicos.load_catalog(ROOT)['eventos']
+assert catalog['sequestro_de_kethra']['ativacao']['data'] == '1 Eleint, 1372 DR'
+assert 'descida_a_ponte_e_masao' in catalog
 
 print('smoke população Parte 1: OK')
