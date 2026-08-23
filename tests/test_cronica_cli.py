@@ -311,6 +311,16 @@ class CronicaParserAndBudgetTest(unittest.TestCase):
         )
         self.assertEqual(
             set(sub.choices),
+            {"preparar", "concluir", "registrar", "confirmar", "sessao", "progressao"},
+        )
+        legacy = cronica._ORIGINAL_BUILD_PARSER()
+        legacy_sub = next(
+            action
+            for action in legacy._actions
+            if isinstance(action, argparse._SubParsersAction)
+        )
+        self.assertEqual(
+            set(legacy_sub.choices),
             {"preparar", "concluir", "registrar", "confirmar"},
         )
         self.assertIn(

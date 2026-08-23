@@ -71,6 +71,26 @@ python3 ferramentas/turno.py status
 
 O registro é idempotente. Se houver interrupção entre as duas escritas, repetir a mesma entrada repara apenas o lado ausente.
 
+## Lifecycle unificado da campanha
+
+Depois da Task 22, `cronica` também é a porta preferencial para sessão e level-up:
+
+```bash
+cronica sessao status
+cronica sessao checkpoint
+cronica sessao encerrar
+cronica progressao status
+cronica progressao aplicar < plano-nivel.yaml
+cronica sessao iniciar
+cronica sessao recuperar
+```
+
+`encerrar`, `checkpoint`, `iniciar` e `recuperar` delegam às mesmas autoridades anteriores (`checkpoint.py`/`sessoes.py`); não existe segundo lifecycle. Abertura continua criando somente N+1 e nunca copia a transcrição anterior.
+
+Na faixa 8–17, `cronica progressao aplicar` exige o milestone correspondente já registrado pela Task 19. O plano mecânico informa alterações da ficha e o novo resumo de poderes, mas não pode escolher `identidade.nivel`; o lifecycle força exatamente o próximo nível desbloqueado. Ficha, espelhos, resumo, experiência, runtime, handoff e índice entram no mesmo journal recuperável.
+
+As primitivas antigas continuam disponíveis para diagnóstico/manutenção.
+
 ## Schema dos deltas
 
 Operações: `set`, `inc`, `append`, `remove`, `registrar`.

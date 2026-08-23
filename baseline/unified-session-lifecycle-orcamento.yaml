@@ -1,0 +1,57 @@
+schema_unified_session_lifecycle_orcamento: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Encapsular início, encerramento, checkpoint, progressão e regeneração derivada
+  na mesma CLI sem duplicar as autoridades já existentes.
+fluxos:
+  encerrar:
+    chamadas_operacionais: 1
+    autoridade: checkpoint.checkpoint(sessao)
+  iniciar:
+    chamadas_operacionais: 1
+    autoridade: sessoes.start_next
+  checkpoint:
+    chamadas_operacionais: 1
+    autoridade: checkpoint.checkpoint(cena)
+  recuperar:
+    chamadas_operacionais: 1
+    autoridade: checkpoint.recover
+  progressao:
+    chamadas_operacionais: 1
+    journal: runtime/consolidacao-em-andamento.json
+limites:
+  max_alteracoes_ficha: 32
+  max_plano_progressao_bytes: 131072
+  max_resumo_poderes_bytes: 65536
+  max_escolhas_pendentes: 12
+  max_outputs_progressao: 8
+  max_journals_novos: 0
+  max_arquivos_runtime_novos: 0
+  max_schedulers_novos: 0
+  max_estados_paralelos_novos: 0
+  max_scans_repo: 0
+invariantes:
+  fechar_delega_mesma_autoridade_legada: true
+  iniciar_delega_mesma_autoridade_legada: true
+  checkpoint_delega_mesma_autoridade_legada: true
+  recovery_reutiliza_journal_existente: true
+  fechar_e_abrir_produzem_mesmos_bytes_do_fluxo_legado: true
+  nova_sessao_nunca_copia_transcricao_anterior: true
+  nova_sessao_e_n_mais_1: true
+  level_up_exige_entre_sessoes: true
+  level_up_exige_proximo_nivel: true
+  level_up_8_a_17_exige_milestone_task19_registrado: true
+  milestone_preparacao_id_precisa_corresponder: true
+  plano_nao_controla_identidade_nivel: true
+  nivel_e_forcado_pelo_lifecycle: true
+  espelhos_estado_ficha_sao_sincronizados: true
+  ficha_resumo_experiencia_runtime_handoff_indice_sao_atomicos: true
+  falha_intermediaria_da_progressao_e_recuperavel_por_checkpoint_recover: true
+  runtime_e_handoff_permanecem_derivados: true
+  clis_legadas_permanecem_disponiveis: true
+  task21_permanece_byte_logica_no_core: true
+meta_rollout:
+  objetivo: reduzir_ferramentas_no_fim_inicio_e_level_up
+  medicao: pos_hoc
+  benchmark_deve_reconhecer_cronica_sessao_e_progressao: true
+  proibido_inventar_reducao_sem_rollout_real: true
