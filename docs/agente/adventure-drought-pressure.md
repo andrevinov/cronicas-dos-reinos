@@ -92,6 +92,6 @@ Consulta read-only:
 python3 ferramentas/pressao_aventura.py status
 ```
 
-A resposta lê somente o estado já existente do Local Microevent Deck.
+A consulta valida o catálogo e o estado do Local Microevent Deck e lê somente esses dois arquivos reservados. Isso é uma porta de manutenção/inspeção; não é chamada adicional do hot path.
 
 Contrato de regressão: `baseline/adventure-drought-pressure-orcamento.yaml`.
