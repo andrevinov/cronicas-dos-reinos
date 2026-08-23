@@ -56,6 +56,25 @@ ponteiros:
   transcricao_fria: sessoes/013/transcricao.md
   narrador: narrador/
   regras: regras/
+capacidades_contextuais:
+  atributos:
+    inteligencia: 2
+    carisma: 0
+  pericias:
+    investigacao: 5
+    percepcao: 6
+  passivos:
+    percepcao: 21
+    investigacao: 20
+  actor:
+    vantagem_impersonacao:
+    - enganacao
+    - atuacao
+    flag_rolagem: --actor-impersonacao
+    mimetismo: fala/sons ouvidos por pelo menos 1 minuto; ouvinte pode opor Intuição a Enganação
+  observant:
+    leitura_labial: se vir a boca e entender o idioma
+    bonus_passivos: 5
 efeitos_temporarios:
   ren_desarmado:
     descricao: Ren partiu para a operação sem espadas, shurikens ou qualquer arma; leva sob o disfarce apenas suas
