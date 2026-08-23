@@ -1,0 +1,164 @@
+name: Patch L1 compact status
+
+on:
+  push:
+    branches: [fix/rollout-cronica-hot-path]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/rollout-cronica-hot-path
+      - name: Aplicar correção e regressão
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('ferramentas/contexto.py')
+          text = path.read_text(encoding='utf-8')
+          anchor = '''def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
+'''
+          insert = '''def _status_effects_view(effects: Any) -> dict[str, Any] | None:
+    """Recorte L1: preserva semântica dos efeitos sem carregar prosa ilimitada."""
+    if not isinstance(effects, dict) or not effects:
+        return None
+    result: dict[str, Any] = {}
+    ordered = sorted(effects.items(), key=lambda item: str(item[0]))
+    for effect_id, raw in ordered[:8]:
+        if isinstance(raw, dict):
+            compact: dict[str, Any] = {}
+            for key, item in list(raw.items())[:8]:
+                compact[str(key)] = compact_value(
+                    item,
+                    string_limit=120,
+                    list_limit=3,
+                    depth=2,
+                )
+            result[str(effect_id)] = compact
+        else:
+            result[str(effect_id)] = truncate_text(raw, 140)
+    if len(ordered) > 8:
+        result["_omitidos"] = len(ordered) - 8
+    return result
+
+
+def _status_context_view(context: dict[str, Any]) -> dict[str, Any]:
+    """L1 estrutural pequeno mesmo quando há deltas pendentes reais."""
+    result: dict[str, Any] = {}
+    for key in ("sessao", "personagem", "recursos", "sobreposicao_transacional"):
+        if key in context:
+            result[key] = context[key]
+    time = context.get("tempo")
+    if isinstance(time, dict):
+        result["tempo"] = {
+            key: time.get(key)
+            for key in ("data", "hora_aproximada")
+            if key in time
+        }
+    location = context.get("localizacao")
+    if isinstance(location, dict):
+        result["localizacao"] = {
+            key: location.get(key)
+            for key in ("area", "ponto_exato")
+            if key in location
+        }
+    effects = _status_effects_view(context.get("efeitos_temporarios"))
+    if effects is not None:
+        result["efeitos_temporarios"] = effects
+    if "compromissos" in context:
+        result["compromissos"] = compact_value(
+            context["compromissos"],
+            string_limit=140,
+            list_limit=4,
+            depth=4,
+        )
+    return result
+
+
+'''
+          if anchor not in text:
+              raise SystemExit('anchor de status não encontrado')
+          text = text.replace(anchor, insert + anchor, 1)
+          old = '''    effective, _, _ = transacoes.overlay_runtime(context, None, records)
+    recursos.apply_pending_effects(effective, None, records)
+    data["resultado"] = effective
+    if _has_overlay(effective):
+'''
+          new = '''    effective, _, _ = transacoes.overlay_runtime(context, None, records)
+    recursos.apply_pending_effects(effective, None, records)
+    data["resultado"] = _status_context_view(effective)
+    if _has_overlay(effective):
+'''
+          if old not in text:
+              raise SystemExit('command_status esperado não encontrado')
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+
+          core = Path('ferramentas/contexto_core.py')
+          text = core.read_text(encoding='utf-8')
+          old = '''    fallback = {
+        "consulta": envelope.get("consulta"),
+        "nivel": envelope.get("nivel"),
+        "fontes": envelope.get("fontes", []),
+        "resultado": {
+            "aviso": "Resultado excedeu o orçamento de contexto. Refine a consulta para uma entidade ou termo mais específico."
+        },
+        "truncado_por_orcamento": True,
+    }
+    return serialize(fallback, as_json), True
+'''
+          new = '''    fallback = {
+        "consulta": envelope.get("consulta"),
+        "nivel": envelope.get("nivel"),
+        "fontes": envelope.get("fontes", []),
+        "resultado": {
+            "aviso": "Resultado excedeu o orçamento de contexto. Refine a consulta para uma entidade ou termo mais específico."
+        },
+        "truncado_por_orcamento": True,
+    }
+    if envelope.get("controle_acesso") is not None:
+        fallback["controle_acesso"] = envelope.get("controle_acesso")
+    return serialize(fallback, as_json), True
+'''
+          if old not in text:
+              raise SystemExit('fallback esperado não encontrado')
+          core.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          test = Path('tests/test_contexto.py')
+          text = test.read_text(encoding='utf-8')
+          old = '''        if data["resultado"].get("sobreposicao_transacional"):
+            self.assertIn("runtime/eventos-pendentes.jsonl", data["fontes"])
+'''
+          new = '''        if data["resultado"].get("sobreposicao_transacional"):
+            self.assertIn("runtime/eventos-pendentes.jsonl", data["fontes"])
+        decision = mod.politica.classify("status")
+        decorated, budget = mod.politica.decorate(
+            data,
+            decision,
+            requested_budget=16000,
+            after=None,
+            reason=None,
+        )
+        rendered, _ = mod.fit_budget(decorated, budget, False)
+        parsed = mod.yaml.safe_load(rendered)
+        self.assertLessEqual(len(rendered.encode("utf-8")), 4096)
+        self.assertEqual(parsed["controle_acesso"]["teto_bytes"], 4096)
+        self.assertTrue(parsed["controle_acesso"]["pare_se_suficiente"])
+        self.assertEqual(parsed["resultado"]["personagem"]["nome"], "Ren Kagehira")
+'''
+          if old not in text:
+              raise SystemExit('teste status esperado não encontrado')
+          test.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          Path('.github/workflows/zz-patch-l1.yml').unlink()
+          PY
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add ferramentas/contexto.py ferramentas/contexto_core.py tests/test_contexto.py .github/workflows/zz-patch-l1.yml
+          git commit -m 'Contexto: preservar contrato L1 com pending real'
+          git push origin HEAD:fix/rollout-cronica-hot-path
