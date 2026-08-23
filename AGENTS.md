@@ -56,6 +56,7 @@ Leia no máximo o documento especializado necessário:
 - L0–L5 e tetos → `docs/agente/escada-de-acesso.md`;
 - acesso/operação → `docs/agente/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
+- lifecycle unificado de turno/sessão/progressão → `docs/task21-unified-cronica-turn-cli.md` e `docs/task22-unified-session-lifecycle.md`;
 - retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
@@ -73,13 +74,15 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = *
 
 Fluxo normal:
 
-`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → preparar cena reativa se houver → rolagens → narração → turno.py registrar → confirmar preparação reativa → copiar RODAPE_CANONICO → fim`.
+`entrada → separar ON/OFF/RECALL → resolver RECALL → checar barreira do Mundo Vivo → contexto necessário → cronica preparar → rolagens → narração → cronica concluir → copiar RODAPE_CANONICO → fim`.
+
+**Porta operacional preferencial.** Em avanço ON normal, usar `poetry run cronica preparar ...` antes da resolução/narração e `poetry run cronica concluir --ticket <ticket>` depois que a resposta estiver aceita. `turno.py`, `endpoints.py cena` e `cena_mundo.py confirmar` permanecem primitivas de manutenção, teste e reparo; não são o hot path normal.
 
 **Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, **não narrar a nova ação de Ren**: executar `python3 ferramentas/endpoints.py pendencias` e resolver a fila. Pendência é avaliação, não fato. Sem mudança: se `tipo: reavaliar_agente_leve`, use `agentes_leves.py concluir-noop <id>`; demais, `barreira_mundo.py concluir <id> --nota ...`. Com mudança: registrar transação sem `jogador`, `modo: mundo`, tag `resolver-pendencia-mundo:<id>`, checkpointar e concluir. O writer repete a trava.
 
-**Gatilho reativo não é rotina.** Em abertura/mudança material, use `endpoints.py cena` com `cena_id` estável; inclua local só ao entrar/explorar e NPCs cujo encontro começou. A porta é read-only: calcula sem criar mapa ou consumir gate.
+**Gatilho reativo não é rotina.** `cronica preparar` é a porta normal e recebe `cena_id` estável; inclua local só ao entrar/explorar, NPCs cujo encontro começou e tags realmente pertinentes. A preparação continua read-only: calcula sem criar mapa ou consumir gate. Sem gatilho material, não inventar local/NPC/tag nem consultar recompensa/oportunidade.
 
-Após `turno.py registrar`, confirme a cena aceita com `cena_mundo.py confirmar --preparacao-id <id>` e os mesmos parâmetros. Não confirme cena corrigida/abandonada. Preparação obsoleta falha fechada; refaça. Sem gatilho, não consultar recompensa/oportunidade.
+Depois da narração aceita, enviar a transação para `cronica concluir --ticket <ticket>`. O orquestrador revalida/confirma a preparação e registra o turno na ordem segura em uma única chamada pós-narração. Não concluir cena corrigida/abandonada. Preparação obsoleta falha fechada; executar `cronica preparar` novamente.
 
 **Direção canônica é restrição de destino, nunca ação.** Quando a abertura contextual apontar uma direção, usar `endpoints.py direcao <id>` para ler somente o marco corrente, seu critério e guardrails. Direção nunca escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige arquivo canônico em `--origem`, trecho literal em `--evidencia` e nota interpretativa; conveniência narrativa não é evidência.
 
@@ -97,13 +100,13 @@ Durante cada avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime/handoff nem executar Git, testes ou telemetria;
-- registrar jogador+narrador+deltas por stdin com `python3 ferramentas/turno.py registrar <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
+- enviar jogador+narrador+deltas por stdin para `poetry run cronica concluir --ticket <ticket> <<'JSON'`; stdin é obrigatório; **não criar** `.turno-temporario.json` nem outro arquivo temporário;
 - normalmente só transcrição + `runtime/eventos-pendentes.jsonl` são escritos;
 - `narracao` é diegética; mecânica explícita usa linha `MECÂNICA — ...`; `resumo` comprime; `deltas` persistem;
 - se o instante mudar, usar um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data canônica>","hora":"HH:MM"}}`; nunca separar data/hora nem embutir data em `hora`;
 - não copiar narração inteira para o JSONL nem painel mecânico completo sem necessidade;
 - rolagens ocultas relevantes permanecem reservadas até consolidação;
-- a última linha `RODAPE_CANONICO — ...` de `turno.py registrar` deve ser reproduzida verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.
+- o valor `rodape_canonico` devolvido por `cronica concluir` deve ser reproduzido verbatim como última linha visível; não recalcular, corrigir, resumir, traduzir ou reformatar.
 
 O rodapé é derivado, não cânone. Usa runtime efetivo pós-deltas para data, hora, local, PV e Ki e mostra só itens mágicos explicitamente registrados que estejam disponíveis ou ativos. Não abrir estado/ficha para conferi-lo.
 
@@ -113,11 +116,11 @@ Se faltar textura de NPC/local, preferir `contexto.py npc` / `contexto.py local`
 
 Para rolagens independentes, usar `rolar-lote.py`; condicionais ficam separadas.
 
-Meta comum: **duas escritas**. Preparação escreve zero; `confirmar` só após turno aceito. Rodapé só lê; nenhum faz scan.
+Meta comum: **duas chamadas operacionais de turno** (`cronica preparar` + `cronica concluir`). Preparação escreve zero; conclusão só ocorre após turno aceito. Não decompor o fluxo em primitivas antigas sem necessidade de manutenção/reparo.
 
 ### Recompensas e side quests
 
-- Cena reativa segue o `preparar`/`confirmar` acima; primitivas abaixo são manutenção/teste.
+- Cena reativa segue `cronica preparar`/`cronica concluir`; primitivas abaixo são manutenção/teste.
 - `interacoes_mundo.py local <id> --acao entrar|explorar ...`: garante/reutiliza mapa; **item existir ≠ Ren encontrar**.
 - `interacoes_mundo.py encontro <npc> --encontro-id <id>`: gate raro; **potencial ≠ oferta**.
 - Oferta/aceite/recusa continuam explícitos em `oportunidades.py`.
@@ -132,13 +135,17 @@ Detalhes: `docs/agente/integracao-reativa-v2.md`.
 Fazer checkpoint em fronteira importante e sempre antes de encerrar sessão, não após cada turno:
 
 ```bash
-python3 ferramentas/checkpoint.py cena
-python3 ferramentas/checkpoint.py sessao
+poetry run cronica sessao checkpoint
+poetry run cronica sessao encerrar
 ```
 
 Tempo significativo pode promover checkpoint automático. Ordem: cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Pendência aberta bloqueia o próximo avanço; checkpoint não a resolve semanticamente. Integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.
 
-Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `checkpoint.py recuperar`. `sessoes.py iniciar` é a única porta que avança N para N+1.
+Se houver journal interrompido, **não narrar nem registrar novo turno**. Executar `poetry run cronica sessao recuperar`; `checkpoint.py recuperar` permanece fallback de manutenção.
+
+Quando o jogador pedir para **iniciar uma nova sessão**, não pedir que ele rode CLI manualmente: o narrador executa `poetry run cronica sessao status`; se estiver `entre_sessoes`, executa `poetry run cronica sessao iniciar`, e então usa `contexto.py retomada`/handoff para recapitular e abrir a cena. Se já estiver `em_sessao`, apenas retomar; nunca pular uma sessão. A nova transcrição é criada pelo lifecycle e nunca copia a anterior.
+
+Level-up mecânico entre sessões usa `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`. Na faixa 8–17, nunca alterar a ficha sem milestone da Juppongatana previamente registrado; as primitivas de progressão ficam para manutenção/diagnóstico.
 
 ## 8. Regras, dados e segredos
 

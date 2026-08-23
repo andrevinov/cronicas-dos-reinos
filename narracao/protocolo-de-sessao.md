@@ -36,7 +36,21 @@ runtime/eventos-pendentes.jsonl
 
 A abertura deve conter recap curto, localização, situação imediata, elementos perceptíveis relevantes, NPCs/ameaças, estado crítico quando necessário e uma deixa clara para Ren agir.
 
-Para reconstruir continuidade, usar primeiro:
+Quando André pedir para **iniciar uma nova sessão**, a operação é do narrador, não do jogador. Primeiro verificar:
+
+```bash
+poetry run cronica sessao status
+```
+
+Se a campanha estiver `entre_sessoes`, executar:
+
+```bash
+poetry run cronica sessao iniciar
+```
+
+Se já estiver `em_sessao`, não criar N+1: apenas retomar a sessão ativa. Nunca pedir que André execute esses comandos manualmente como pré-requisito para jogar.
+
+Para reconstruir continuidade e produzir o recap, usar primeiro:
 
 ```bash
 python3 ferramentas/contexto.py retomada
@@ -70,7 +84,7 @@ texto normal = ON
 
 ON, OFF e RECALL podem coexistir na mesma mensagem. Separar os canais antes de resolver a ficção. Se qualquer RECALL não puder ser resolvido de forma legítima e não ambígua, parar sem rolar, avançar ou registrar e explicar a lacuna em OFF.
 
-Somente **ON já resolvido** pode ser enviado como campo `jogador` para `turno.py registrar`. `ferramentas/entrada.py` é o parser/validador determinístico; texto ON comum não precisa pagar um tool call só para classificação.
+Somente **ON já resolvido** pode ser enviado como campo `jogador` da transação entregue a `cronica concluir`. `turno.py registrar` permanece a primitiva subjacente de manutenção/reparo. `ferramentas/entrada.py` é o parser/validador determinístico; texto ON comum não precisa pagar um tool call só para classificação.
 
 Contrato completo: `docs/agente/protocolo-de-entrada.md`.
 
@@ -106,16 +120,23 @@ entrada
 → resolver RECALL
 → usar contexto já presente
 → consultar somente a lacuna necessária
+→ `cronica preparar` a cena/turno (read-only)
 → resolver rolagens do ON
 → produzir narração
-→ registrar somente ON resolvido + narração + deltas
+→ `cronica concluir` com ON resolvido + narração + deltas
 → devolver controle ao jogador
 ```
 
-Persistir com uma única chamada:
+O hot path usa **duas chamadas operacionais**. Antes de resolver/publicar o turno:
 
 ```bash
-python3 ferramentas/turno.py registrar <<'JSON'
+poetry run cronica preparar --cena-id <id-estavel> ...
+```
+
+Guardar o `ticket` retornado. Depois que a narração estiver aceita, concluir por stdin:
+
+```bash
+poetry run cronica concluir --ticket '<ticket>' <<'JSON'
 {
   "jogador": "Ren ...",
   "narracao": "...",
@@ -126,12 +147,9 @@ python3 ferramentas/turno.py registrar <<'JSON'
 JSON
 ```
 
-O registrador recusa `jogador` contendo OFF ou RECALL não resolvido antes de qualquer escrita. Ele escreve somente:
+`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita, revalida/confirma a preparação e usa o registrador transacional existente. A suboperação de registro mantém a prosa completa apenas em `sessoes/NNN/transcricao.md` e o resumo/deltas em `runtime/eventos-pendentes.jsonl`; a confirmação reativa pode materializar somente os efeitos já previstos pela preparação.
 
-1. `sessoes/NNN/transcricao.md`;
-2. `runtime/eventos-pendentes.jsonl`.
-
-A prosa completa fica só na transcrição. O JSONL guarda ID, sessão, resumo, deltas e eventualmente rolagens ocultas.
+`turno.py registrar`, `endpoints.py cena` e `cena_mundo.py confirmar` continuam disponíveis para manutenção, teste e reparo, não como fluxo normal.
 
 ### Proibição de write amplification
 
@@ -226,7 +244,7 @@ Imagens pedidas durante sessão ficam em `sessoes/NNN/imagens/` e são referenci
 Não consolidar por cronômetro nem depois de cada ação. Fazer checkpoint quando houver **fronteira de cena importante** e um estado canônico for útil: fim de combate relevante, saída de local perigoso, descanso/transição forte, mudança clara de objetivo ou antes de pausa operacional longa.
 
 ```bash
-python3 ferramentas/checkpoint.py cena
+poetry run cronica sessao checkpoint
 ```
 
 O fluxo possui duas fases:
@@ -243,7 +261,7 @@ Handoff e índice são cache reconstruível. Se houver queda depois da primeira 
 Antes de declarar a sessão encerrada:
 
 ```bash
-python3 ferramentas/checkpoint.py sessao
+poetry run cronica sessao encerrar
 ```
 
 O motor canônico mantém, conforme houver conteúdo real:
@@ -301,7 +319,7 @@ Mudança de relação atualiza somente o fragmento corrente da entidade e regist
 
 Consequências só entram no artefato automático quando houver delta explícito `consequencia`.
 
-`progressao` pode registrar marco/recompensa, mas isso não autoriza escolher opção de nível pelo jogador. Mudanças mecânicas efetivas precisam de delta próprio.
+`progressao` pode registrar marco/recompensa, mas isso não autoriza escolher opção de nível pelo jogador. Quando houver level-up legítimo entre sessões, usar `cronica progressao status` e `cronica progressao aplicar`; na faixa 8–17 a ficha não pode mudar sem o milestone correspondente já registrado pela Task 19.
 
 Relógios reservados usam `relogio:<id>` e permanecem em `narrador/relogios/`. Delta com `visibilidade: narrador` não pode ser instalado em domínio público.
 
@@ -318,10 +336,10 @@ runtime/consolidacao-em-andamento.json
 não narrar, não usar `contexto.py` e não registrar novo turno. Recuperar primeiro:
 
 ```bash
-python3 ferramentas/checkpoint.py recuperar
+poetry run cronica sessao recuperar
 ```
 
-A recuperação canônica usa os bytes já staged e não reaplica incrementos. Depois reconstrói handoff/índice.
+A recuperação canônica usa os bytes já staged e não reaplica incrementos. Depois reconstrói handoff/índice. `checkpoint.py recuperar` continua sendo a primitiva de fallback para manutenção.
 
 Se **não** houver journal canônico, mas handoff/índice estiverem ausentes ou desatualizados, o mesmo comando pode reconstruir apenas a memória derivada sem alterar fatos da campanha.
 
