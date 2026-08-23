@@ -17,7 +17,9 @@ Ren é um monge do **Caminho da Sombra**, nível 7. A campanha usa a base mecân
 * Acrobacia: +7;
 * Percepção: +6;
 * Intuição: +6;
-* Investigação: +4;
+* Investigação: +5;
+* Percepção passiva: **21**;
+* Investigação passiva: **20**;
 * CD de ki: 14;
 * pontos de ki: 7 por descanso curto ou longo.
 
@@ -29,6 +31,9 @@ Ren é bom em:
 
 * entrar em lugares sem chamar atenção;
 * perceber mentiras, emboscadas e detalhes fora do lugar;
+* notar passivamente detalhes e inconsistências que outras pessoas deixam passar;
+* ler lábios quando consegue ver a boca e entende o idioma falado;
+* sustentar identidades falsas e imitar voz ou sons que estudou;
 * mover-se rápido por ruas, telhados baixos, becos e docas;
 * lutar sem armadura;
 * atacar e sair de alcance;
@@ -82,7 +87,7 @@ Ren tem 7 pontos de ki.
 
 Eles voltam em descanso curto ou longo.
 
-A CD de ki é a dificuldade que inimigos precisam superar contra algumas técnicas de Ren. Ela é calculada como `8 + bônus de proficiência + Sabedoria`; para Ren no nível 6, isso dá `8 + 3 + 3 = 14`.
+A CD de ki é a dificuldade que inimigos precisam superar contra algumas técnicas de Ren. Ela é calculada como `8 + bônus de proficiência + Sabedoria`; para Ren no nível 7, isso dá `8 + 3 + 3 = 14`.
 
 ### Rajada de Golpes
 
@@ -312,6 +317,43 @@ Uso típico: bater e sair, atravessar inimigos, evitar ficar preso em combate.
 
 ---
 
+## Talento: Actor
+
+Talento bônus retroativo de criação. Não consome o talento Móvel, o ASI do nível 4 nem progressão futura.
+
+Actor elevou Carisma de 10 para 11; o modificador continua +0.
+
+Quando Ren tenta **se passar por outra pessoa**, ele tem vantagem em testes de Enganação e Atuação pertinentes à impersonação. Isso não dá vantagem a toda mentira ou performance genérica.
+
+Ren também pode imitar a fala de uma pessoa ou sons feitos por outra criatura depois de ouvi-los por pelo menos 1 minuto. Se alguém desconfiar da imitação, pode usar Sabedoria (Intuição) contra Carisma (Enganação) de Ren para perceber que é falsa.
+
+Uso típico: sustentar Shinta ou outra persona em conversa, reproduzir a voz de alguém estudado, copiar um chamado ou som de criatura e combinar voz convincente com kit de disfarce ou outra cobertura visual.
+
+Na CLI, uma rolagem realmente ligada a impersonação usa `--actor-impersonacao`; o rolador aplica a vantagem antes do RNG e combina corretamente com eventual desvantagem.
+
+---
+
+## Talento: Observant
+
+Talento bônus retroativo de criação. A escolha de atributo foi **Inteligência**, que passou de 13 para 14.
+
+Consequências numéricas:
+
+* Investigação ativa: +5;
+* História, Religião, Arcana e Natureza: +2;
+* salvaguarda de Inteligência: +2;
+* Percepção ativa continua +6;
+* Percepção passiva: **21**;
+* Investigação passiva: **20**.
+
+O bônus de +5 de Observant vale para **Percepção passiva e Investigação passiva**, não para os testes ativos.
+
+Além disso, quando Ren consegue ver a boca de uma criatura e entende o idioma que ela está falando, pode interpretar a fala lendo os lábios.
+
+Uso típico: vigilância à distância, reuniões vistas mas não ouvidas, notar detalhes ambientais sem declarar busca constante, perceber inconsistências documentais e reconhecer padrões durante trabalho de investigação.
+
+---
+
 ## Broche do Semblante Humilde
 
 Item mágico emprestado por Maerra/Lathander.
@@ -329,6 +371,8 @@ Item mágico emprestado por Maerra/Lathander.
 Cria uma aparência humilde e comum, útil para passar despercebido. Não permite imitar uma pessoa específica com perfeição e continua sendo uma alteração visual: contato físico ou inspeção cuidadosa pode revelar inconsistências.
 
 Pode permanecer ativo junto com Visão no Escuro e com qualquer uma das Artes Sombrias de concentração.
+
+Actor pode complementar uma cobertura visual com voz e atuação, mas **não transforma o Broche em cópia visual perfeita de uma pessoa específica**.
 
 ---
 
@@ -348,6 +392,8 @@ Ren também só tem **uma ação bônus por turno**. Portanto Passo Sombrio, Raj
 
 Ataque Atordoante não usa ação bônus: ele pode ser aplicado a um acerto mesmo depois de Passo Sombrio, Rajada de Golpes ou um ataque normal.
 
+Actor e Observant são passivos e não consomem ação, ação bônus, reação, ki ou concentração. Seus gatilhos continuam precisando existir na ficção: Actor exige impersonação real; leitura labial exige visão da boca e idioma compreendido.
+
 ---
 
 ## Combos rápidos
@@ -357,6 +403,18 @@ Ataque Atordoante não usa ação bônus: ele pode ser aplicado a um acerto mesm
 **Visão no Escuro + Broche + Passos sem Pegadas.**
 
 Ren fica disfarçado, enxerga no escuro normal, sobe para Furtividade +17, não deixa rastros e ainda pode usar Passo Sombrio quando houver sombras adequadas.
+
+### Persona convincente
+
+**Kit de disfarce ou cobertura visual + Actor.**
+
+A aparência e a voz continuam camadas distintas. Quando Ren está realmente impersonando outra pessoa, Actor dá vantagem ao teste social pertinente e permite reproduzir uma voz previamente estudada.
+
+### Vigilância sem áudio
+
+**Observant + linha de visão clara para a boca.**
+
+Se Ren entende o idioma, pode acompanhar a fala por leitura labial. Percepção passiva 21 e Investigação passiva 20 também devem ser consideradas antes de pedir busca ativa apenas para detalhes que o valor passivo já resolve.
 
 ### Entrada muda
 
@@ -399,6 +457,9 @@ Limites importantes:
 * só possui uma ação bônus por turno;
 * escuridão mágica pode atrapalhar Ren e aliados;
 * Passo Sombrio depende de luz baixa ou escuridão, linha de visão e ação bônus;
+* Actor não dá vantagem a mentira genérica fora de impersonação;
+* Observant não soma +5 aos testes ativos;
+* leitura labial depende de ver a boca e compreender o idioma;
 * não é invisível o tempo todo;
 * magia de sombra é forte, mas custa recursos.
 
