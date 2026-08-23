@@ -15,7 +15,8 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import cena_mundo
-import cena_mundo_v5
+import cena_mundo_v4
+import interacoes_mundo
 import mundo
 import oportunidades
 import pressao_aventura
@@ -27,7 +28,10 @@ class SidequestGateV2RepositoryTest(unittest.TestCase):
         index = oportunidades.load_index(ROOT)
         contract = gate_v2._contract(index)
         self.assertEqual(contract["versao"], 2)
-        self.assertEqual(contract["promocoes_nada_por_nivel"], {0: 0, 1: 1, 2: 2, 3: 3})
+        self.assertEqual(
+            contract["promocoes_nada_por_nivel"],
+            {0: 0, 1: 1, 2: 2, 3: 3},
+        )
         state = oportunidades.load_state(ROOT, index)
         self.assertEqual(state["gate"]["ciclo"], 2)
         self.assertEqual(state["gate"]["restantes"], ["nada_02", "nada_04"])
@@ -40,12 +44,14 @@ class SidequestGateV2RepositoryTest(unittest.TestCase):
         self.assertTrue(set(sets[1]) <= set(sets[2]) <= set(sets[3]))
         self.assertEqual([2 + len(value) for value in sets], [2, 3, 4, 5])
 
-    def test_cena_publica_usa_v5_e_gate_v2(self):
+    def test_cena_publica_permanece_v4_e_adapta_so_encontro(self):
         self.assertIs(
-            cena_mundo_v5._v4._core.interacoes_mundo.encounter_event,
+            cena_mundo_v4._core.interacoes_mundo.encounter_event,
             gate_v2.encounter_event,
         )
-        self.assertIs(cena_mundo.prepare_scene, cena_mundo_v5.prepare_scene)
+        self.assertIs(cena_mundo.prepare_scene, cena_mundo_v4.prepare_scene)
+        self.assertFalse((ROOT / "ferramentas/cena_mundo_v5.py").exists())
+        self.assertIsNot(gate_v2._BASE_ENCOUNTER_EVENT, gate_v2.encounter_event)
 
     def test_check_real_e_verde_e_pressao_sem_retroatividade(self):
         result = gate_v2.check(ROOT)
@@ -160,11 +166,17 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
             {
                 "schema_relacoes": 2,
                 "relacoes": {
-                    "npc_a": {"nome": "NPC A", "arquivo": "estado/relacoes/npc_a.yaml"}
+                    "npc_a": {
+                        "nome": "NPC A",
+                        "arquivo": "estado/relacoes/npc_a.yaml",
+                    }
                 },
             },
         )
-        self._write("estado/relacoes/npc_a.yaml", {"schema_relacao": 2, "id": "npc_a"})
+        self._write(
+            "estado/relacoes/npc_a.yaml",
+            {"schema_relacao": 2, "id": "npc_a"},
+        )
         self.set_pressure(0)
 
     def tearDown(self):
@@ -180,7 +192,9 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
 
     def read_state(self):
         return yaml.safe_load(
-            (self.repo / "narrador/oportunidades/estado.yaml").read_text(encoding="utf-8")
+            (self.repo / "narrador/oportunidades/estado.yaml").read_text(
+                encoding="utf-8"
+            )
         )
 
     def set_pressure(self, streak: int) -> None:
@@ -210,7 +224,9 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         self._write("narrador/oportunidades/estado.yaml", state)
 
     def promoted(self, level: int) -> list[str]:
-        return gate_v2.promoted_nada_tokens(oportunidades.load_index(self.repo), level)
+        return gate_v2.promoted_nada_tokens(
+            oportunidades.load_index(self.repo), level
+        )
 
     def test_oportunidade_base_nao_le_pressao(self):
         self.force_token("oportunidade_01")
@@ -220,7 +236,10 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
             side_effect=AssertionError("pressão não deveria ser lida"),
         ):
             result = gate_v2.encounter_event(
-                self.repo, "npc_a", now=self.now, encounter_id="base-op"
+                self.repo,
+                "npc_a",
+                now=self.now,
+                encounter_id="base-op",
             )
         self.assertEqual(result["resultado"], "avaliar_sidequest")
         self.assertEqual(result["motivo"], "gate_oportunidade_base")
@@ -232,21 +251,31 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         token = self.promoted(3)[0]
         self.force_token(token)
         result = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="normal"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="normal",
         )
         self.assertEqual(result["resultado"], "interacao_normal")
         self.assertEqual(result["motivo"], "gate_sem_oportunidade")
         self.assertEqual(result["gate_v2"]["resultado_base"], "nada")
         self.assertFalse(result["gate_v2"]["promovido_por_pressao"])
-        self.assertIn("narrador/microeventos-locais/estado.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/oportunidades/perfis/npc_a.yaml", result["fontes_lidas"])
+        self.assertIn(
+            "narrador/microeventos-locais/estado.yaml", result["fontes_lidas"]
+        )
+        self.assertNotIn(
+            "narrador/oportunidades/perfis/npc_a.yaml", result["fontes_lidas"]
+        )
 
     def test_pressao_critica_promove_nada_mas_so_cria_potencial(self):
         self.set_pressure(8)
         token = self.promoted(3)[0]
         self.force_token(token)
         result = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="critico"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="critico",
         )
         self.assertEqual(result["resultado"], "avaliar_sidequest")
         self.assertEqual(result["motivo"], "gate_v2_promovido_por_pressao")
@@ -255,10 +284,11 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         self.assertTrue(result["gate_v2"]["promovido_por_pressao"])
         self.assertEqual(result["gate_v2"]["pressao_aventura"]["nivel"], 3)
         self.assertEqual(result["pendencia"]["estado"], "potencial")
-        self.assertEqual(result["pendencia"]["origem_gate"], result["gate_v2"])
         state = self.read_state()
         self.assertEqual(state["missoes"], {})
         self.assertEqual(len(state["pendencias_avaliacao"]), 1)
+        persisted = next(iter(state["pendencias_avaliacao"].values()))
+        self.assertNotIn("origem_gate", persisted)
 
     def test_critica_ainda_deixa_cinco_resultados_nada_no_ciclo(self):
         self.set_pressure(8)
@@ -271,7 +301,10 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         )
         self.force_token(unpromoted)
         result = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="critico-nada"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="critico-nada",
         )
         self.assertEqual(result["resultado"], "interacao_normal")
         self.assertFalse(result["gate_v2"]["promovido_por_pressao"])
@@ -289,25 +322,36 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
             side_effect=AssertionError("pressão não deveria ser lida"),
         ):
             result = gate_v2.encounter_event(
-                self.repo, "npc_a", now=self.now, encounter_id="bloqueado"
+                self.repo,
+                "npc_a",
+                now=self.now,
+                encounter_id="bloqueado",
             )
         self.assertEqual(result["motivo"], "cooldown_global_de_oferta")
         self.assertEqual(self.read_state()["gate"]["sorteios"], 0)
+        self.assertNotIn("gate_v2", result)
 
     def test_mesmo_encontro_nao_relanca_gate_v2(self):
         self.set_pressure(8)
         token = self.promoted(3)[0]
         self.force_token(token)
         first = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="idem"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="idem",
         )
         self.assertEqual(first["resultado"], "avaliar_sidequest")
         draws = self.read_state()["gate"]["sorteios"]
         second = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="idem"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="idem",
         )
         self.assertEqual(second["motivo"], "encontro_ja_processado")
         self.assertEqual(self.read_state()["gate"]["sorteios"], draws)
+        self.assertNotIn("gate_v2", second)
 
     def test_camadas_de_pressao_ausentes_equivalem_nivel_zero(self):
         shutil.rmtree(self.repo / "narrador/microeventos-locais")
@@ -315,11 +359,18 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         token = self.promoted(3)[0]
         self.force_token(token)
         result = gate_v2.encounter_event(
-            self.repo, "npc_a", now=self.now, encounter_id="legacy"
+            self.repo,
+            "npc_a",
+            now=self.now,
+            encounter_id="legacy",
         )
         self.assertEqual(result["resultado"], "interacao_normal")
-        self.assertFalse(result["gate_v2"]["pressao_aventura"]["configurada"])
-        self.assertNotIn("narrador/microeventos-locais/estado.yaml", result["fontes_lidas"])
+        self.assertFalse(
+            result["gate_v2"]["pressao_aventura"]["configurada"]
+        )
+        self.assertNotIn(
+            "narrador/microeventos-locais/estado.yaml", result["fontes_lidas"]
+        )
 
     def test_configuracao_parcial_de_pressao_falha_sem_persistir_draw(self):
         shutil.rmtree(self.repo / "narrador/microeventos-locais")
@@ -328,9 +379,12 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         token = self.promoted(3)[0]
         self.force_token(token)
         before = (self.repo / "narrador/oportunidades/estado.yaml").read_bytes()
-        with self.assertRaises(Exception):
+        with self.assertRaises(interacoes_mundo.IntegrationError):
             gate_v2.encounter_event(
-                self.repo, "npc_a", now=self.now, encounter_id="parcial"
+                self.repo,
+                "npc_a",
+                now=self.now,
+                encounter_id="parcial",
             )
         after = (self.repo / "narrador/oportunidades/estado.yaml").read_bytes()
         self.assertEqual(before, after)
@@ -341,8 +395,16 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         state_a = oportunidades.load_state(self.repo, index)
         state_b = oportunidades.load_state(self.repo, index)
         promoted = gate_v2.promoted_nada_tokens(index, 2)
-        state_a["gate"] = {"ciclo": 1, "restantes": [promoted[0]], "sorteios": 0}
-        state_b["gate"] = {"ciclo": 1, "restantes": [promoted[1]], "sorteios": 0}
+        state_a["gate"] = {
+            "ciclo": 1,
+            "restantes": [promoted[0]],
+            "sorteios": 0,
+        }
+        state_b["gate"] = {
+            "ciclo": 1,
+            "restantes": [promoted[1]],
+            "sorteios": 0,
+        }
         original = pressao_aventura.status_for_gate
         with mock.patch.object(
             gate_v2.pressao_aventura,
@@ -353,6 +415,22 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
             gate_v2.draw_gate_v2(self.repo, state_b, index)
         self.assertEqual(call.call_count, 1)
 
+    def test_adaptador_chama_orquestrador_existente_uma_vez(self):
+        self.force_token("oportunidade_01")
+        with mock.patch.object(
+            gate_v2,
+            "_BASE_ENCOUNTER_EVENT",
+            wraps=gate_v2._BASE_ENCOUNTER_EVENT,
+        ) as call:
+            result = gate_v2.encounter_event(
+                self.repo,
+                "npc_a",
+                now=self.now,
+                encounter_id="single-orchestrator",
+            )
+        self.assertEqual(result["resultado"], "avaliar_sidequest")
+        self.assertEqual(call.call_count, 1)
+
     def test_preview_shadow_nao_persiste_potencial_promovido(self):
         self.set_pressure(8)
         token = self.promoted(3)[0]
@@ -360,7 +438,10 @@ class SidequestGateV2SyntheticTest(unittest.TestCase):
         before = (self.repo / "narrador/oportunidades/estado.yaml").read_bytes()
         with cena_mundo._preview_effects(self.repo):
             result = gate_v2.encounter_event(
-                self.repo, "npc_a", now=self.now, encounter_id="preview"
+                self.repo,
+                "npc_a",
+                now=self.now,
+                encounter_id="preview",
             )
         self.assertEqual(result["resultado"], "avaliar_sidequest")
         self.assertEqual(
@@ -379,8 +460,14 @@ class SidequestGateV2BudgetTest(unittest.TestCase):
         self.assertEqual(data["schema_orcamento_sidequest_gate_v2"], 1)
         self.assertEqual(data["gate_base"]["nada"], 8)
         self.assertEqual(data["gate_base"]["oportunidade"], 2)
-        self.assertEqual(data["pressao"]["promocoes_nada_por_nivel"], {0: 0, 1: 1, 2: 2, 3: 3})
-        self.assertEqual(data["pressao"]["oportunidades_efetivas_max_por_ciclo"], {0: 2, 1: 3, 2: 4, 3: 5})
+        self.assertEqual(
+            data["pressao"]["promocoes_nada_por_nivel"],
+            {0: 0, 1: 1, 2: 2, 3: 3},
+        )
+        self.assertEqual(
+            data["pressao"]["oportunidades_efetivas_max_por_ciclo"],
+            {0: 2, 1: 3, 2: 4, 3: 5},
+        )
         self.assertEqual(data["limites"]["max_draws_base_por_encontro"], 1)
         self.assertEqual(data["limites"]["max_rerolls"], 0)
         self.assertEqual(data["limites"]["max_schedulers_novos"], 0)
@@ -398,7 +485,9 @@ class SidequestGateV2BudgetTest(unittest.TestCase):
         self.assertEqual(v2["max_draws_por_encontro"], 1)
         self.assertEqual(v2["max_rerolls"], 0)
         self.assertEqual(data["limites"]["encontro_gate_nada"]["max_fontes"], 4)
-        self.assertEqual(data["limites"]["encontro_oportunidade"]["max_fontes"], 5)
+        self.assertEqual(
+            data["limites"]["encontro_oportunidade"]["max_fontes"], 5
+        )
 
 
 if __name__ == "__main__":
