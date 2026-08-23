@@ -171,6 +171,29 @@ metodos_operacionais:
     - getsuei_ryu
     - pressao
     - observacao
+  neutralizar_ren_sem_expor_a_rede:
+  - id: privar_ren_de_meios_sem_assinatura
+    abordagem: Se uma janela física válida existir, retirar temporariamente mensagem, ferramenta, prova ou acesso que
+      Ren esteja usando para interferir, priorizando uma ausência explicável e uma rota de fuga que não aponte para a rede.
+    modalidade: fisica
+    tags:
+    - ren
+    - neutralizacao
+    - furto
+    - sigilo_rede
+    - extracao
+    - interferencia
+  - id: desviar_ren_do_objetivo
+    abordagem: Criar uma perda, pista material ou perturbação de rota capaz de puxar Ren para longe do ponto que ameaça
+      a operação, buscando fazê-lo perder tempo e posição sem oferecer confronto ou autoria úteis.
+    modalidade: fisica
+    tags:
+    - ren
+    - neutralizacao
+    - desvio
+    - sigilo_rede
+    - rota
+    - fuga
 fontes_canonicas:
 - narrador/juppongatana/membros.md
 - narrador/juppongatana/marcos-de-aparicao.md
