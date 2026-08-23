@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Extensão da abertura transacional com stubs persistentes e ecologia local."""
+"""Extensão da abertura transacional com stubs, ecologia e microeventos locais."""
 from __future__ import annotations
 
 import argparse
 import copy
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 import _cena_mundo_core as _core
 import ecologia_local
+import microeventos_locais
 import npc_stubs
 
 # Reexporta a API legado para que imports existentes continuem funcionando.
@@ -18,6 +20,19 @@ for _name in dir(_core):
 
 _base_build_parser = _core.build_parser
 _base_local_spec = _core._local_spec
+_base_preview_effects = _core._preview_effects
+
+
+@contextmanager
+def _preview_effects(repo: Path) -> Iterator[None]:
+    """Inclui o estado do baralho local na sombra transacional da preparação."""
+    original_atomic = microeventos_locais.atomic
+    microeventos_locais.atomic = lambda _path, _data: None
+    try:
+        with _base_preview_effects(repo):
+            yield
+    finally:
+        microeventos_locais.atomic = original_atomic
 
 
 def _local_spec(
@@ -123,6 +138,31 @@ def _resolve_npcs(
     return ordered, duplicates, list(dict.fromkeys(sources)), has_active_profile
 
 
+def _microevent_plan(
+    repo: Path,
+    scene_id: str,
+    local_spec: dict[str, Any] | None,
+) -> dict[str, Any] | None:
+    if local_spec is None or not isinstance(local_spec.get("ecologia"), dict):
+        return None
+    layer_dir = repo / microeventos_locais.INDEX.parent
+    if not layer_dir.exists():
+        # Compatibilidade para fixtures antigas que modelam local/ecologia, mas não
+        # exercitam a camada de microeventos. Configuração parcial continua falhando.
+        return None
+    if not microeventos_locais.configured(repo):
+        raise _core.SceneGateError("camada de microeventos locais declarada parcialmente")
+    try:
+        return microeventos_locais.plan(
+            repo,
+            local_id=local_spec["local_id"],
+            scene_id=scene_id,
+            profile=local_spec["ecologia"],
+        )
+    except microeventos_locais.LocalMicroeventError as exc:
+        raise _core.SceneGateError(str(exc)) from exc
+
+
 def open_scene(
     repo: Path,
     *,
@@ -168,12 +208,17 @@ def open_scene(
         except _core.interacoes_mundo.IntegrationError as exc:
             raise _core.SceneGateError(str(exc)) from exc
 
+    # O microevento é totalmente calculado/validado antes da primeira mutação.
+    micro_plan = _microevent_plan(repo, scene_id, local_spec)
+    micro_public = micro_plan["publico"] if micro_plan is not None else None
+
     local_result: dict[str, Any] | None = None
     sources = [
         *(local_spec.get("fontes_lidas") if local_spec is not None else []),
         *resolution_sources,
         *(contextual.get("fontes_lidas") or []),
         *time_sources,
+        *(micro_public.get("fontes_lidas") if isinstance(micro_public, dict) else []),
     ]
     if local_spec is not None:
         try:
@@ -190,6 +235,8 @@ def open_scene(
         local_result["resolucao_local"] = local_spec["resolucao_local"]
         if isinstance(local_spec.get("ecologia"), dict):
             local_result["ecologia"] = copy.deepcopy(local_spec["ecologia"])
+        if isinstance(micro_public, dict):
+            local_result["microevento_local"] = copy.deepcopy(micro_public)
         sources.extend(local_result.get("fontes_lidas") or [])
 
     encounters: list[dict[str, Any]] = []
@@ -227,6 +274,21 @@ def open_scene(
         encounters.append(result)
         sources.extend(result.get("fontes_lidas") or [])
 
+    # Só depois das primitivas existentes terem sido aceitas o sorteio local é
+    # consumido. Na preparação, atomic() está sombreado e esta escrita vira no-op.
+    if micro_plan is not None:
+        try:
+            microeventos_locais.commit_plan(repo, micro_plan)
+        except microeventos_locais.LocalMicroeventError as exc:
+            raise _core.SceneGateError(str(exc)) from exc
+
+    summary = _core._summary(encounters, local_result, contextual)
+    summary["microeventos_para_avaliar"] = (
+        1
+        if isinstance(micro_public, dict)
+        and micro_public.get("resultado") == "avaliar_microevento"
+        else 0
+    )
     return {
         "ok": True,
         "gatilho": "abertura_cena_reativa",
@@ -244,14 +306,14 @@ def open_scene(
         "operacoes_contextuais": contextual.get("operacoes") or [],
         "direcoes_contextuais": contextual.get("direcoes") or [],
         "encontros": encounters,
-        "resumo": _core._summary(encounters, local_result, contextual),
+        "resumo": summary,
         "regra": (
             "NPC já processado não consome novo gate; NPC recém-chegado usa encontro_id estável. "
             "NPC nomeado sem identidade pode receber stub persistente_sem_agenda somente na confirmação. "
-            "Ecologia local restringe plausibilidade, mas não estabelece presença ou evento. "
-            "Tags contextuais usam namespace tipo:valor; presença exige coincidência local explícita. "
-            "Candidatos contextuais são somente obrigações de avaliar: não estabelecem aparição, "
-            "não executam linha operacional e não avançam direção canônica."
+            "Ecologia local restringe plausibilidade; microevento local é candidato e nunca fato por sorteio. "
+            "Carta incompatível com cânone forte é descartada sem rerroll. Tags contextuais usam namespace "
+            "tipo:valor; presença exige coincidência local explícita. Candidatos contextuais são somente "
+            "obrigações de avaliar: não estabelecem aparição, não executam linha operacional e não avançam direção."
         ),
         "fontes_lidas": list(dict.fromkeys(sources)),
     }
@@ -343,6 +405,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 # As funções do core resolvem nomes no próprio namespace; redirecionar os símbolos
 # faz prepare_scene/main reutilizarem todo o contrato existente sem duplicar CLI.
+_core._preview_effects = _preview_effects
 _core._local_spec = _local_spec
 _core._resolve_npcs = _resolve_npcs
 _core.open_scene = open_scene

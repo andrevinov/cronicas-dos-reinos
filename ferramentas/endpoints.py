@@ -252,6 +252,50 @@ def project_scene(preview: dict[str, Any]) -> dict[str, Any]:
         isinstance(item, dict) and item.get("resultado") == "avaliar_sidequest"
         for item in encounters
     )
+    availability: dict[str, Any] = {
+        "confirmacao": bool(preview.get("preparacao_id")),
+        "local_solicitado": local is not None,
+        "npcs": len(preview.get("npcs_canonicos") or []),
+        "candidatos_contextuais": len(preview.get("candidatos_contextuais") or []),
+        "sidequests_para_avaliar": sidequest_count,
+    }
+
+    if local is not None and isinstance(local.get("ecologia"), dict):
+        ecology = local["ecologia"]
+        filters.append("ecologia_local")
+        availability["ecologia_local"] = {
+            "familia": ecology.get("familia"),
+            "acesso": ecology.get("acesso"),
+            "tags": list(ecology.get("tags") or []),
+            "atores_comuns": list(ecology.get("atores_comuns") or []),
+            "canais_microevento": list(ecology.get("canais_microevento") or []),
+        }
+
+    if local is not None and isinstance(local.get("microevento_local"), dict):
+        micro = local["microevento_local"]
+        card = micro.get("carta") if isinstance(micro.get("carta"), dict) else None
+        filters.append("baralho_microevento_local")
+        gate: dict[str, Any] = {
+            "tipo": "microevento_local",
+            "resultado": micro.get("resultado"),
+        }
+        micro_view: dict[str, Any] = {"resultado": micro.get("resultado")}
+        if card is not None:
+            ids["microevento_local"] = card.get("id")
+            gate["carta_id"] = card.get("id")
+            micro_view["carta"] = {
+                "id": card.get("id"),
+                "nome": card.get("nome"),
+                "categoria": card.get("categoria"),
+                "premissa": card.get("premissa"),
+                "canais_compativeis": list(card.get("canais_compativeis") or []),
+                "tags_compativeis": list(card.get("tags_compativeis") or []),
+                "atores_comuns": list(card.get("atores_comuns") or []),
+                "guardrails": list(card.get("guardrails") or []),
+            }
+        gates.append(gate)
+        availability["microevento_local"] = micro_view
+
     next_step: dict[str, Any] = {
         "acao": "registrar_turno_e_confirmar_preparacao",
         "porta_confirmacao": "cena_mundo.py confirmar",
@@ -264,13 +308,7 @@ def project_scene(preview: dict[str, Any]) -> dict[str, Any]:
         "cena.preparar",
         ids=ids,
         filtros=filters,
-        disponibilidade={
-            "confirmacao": bool(preview.get("preparacao_id")),
-            "local_solicitado": local is not None,
-            "npcs": len(preview.get("npcs_canonicos") or []),
-            "candidatos_contextuais": len(preview.get("candidatos_contextuais") or []),
-            "sidequests_para_avaliar": sidequest_count,
-        },
+        disponibilidade=availability,
         gates=gates,
         modificadores=[],
         deltas_previstos=[],
