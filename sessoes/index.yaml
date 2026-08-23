@@ -7,7 +7,7 @@ politica:
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
   sessoes: 13
-  bytes_transcricoes: 1767116
+  bytes_transcricoes: 1778125
 sessoes:
   '001':
     natureza: historica
@@ -299,15 +299,15 @@ sessoes:
     handoff: sessoes/013/handoff.yaml
     compactos:
     - arquivo: sessoes/013/handoff.yaml
-      bytes: 3313
+      bytes: 5288
     - arquivo: sessoes/013/resumo.md
-      bytes: 1602
+      bytes: 3336
     - arquivo: sessoes/013/alteracoes-de-estado.yaml
-      bytes: 1210
+      bytes: 2001
     - arquivo: sessoes/013/consequencias.md
-      bytes: 257
+      bytes: 256
     - arquivo: sessoes/013/consolidacoes.jsonl
-      bytes: 2439
+      bytes: 6553
     ordem_de_leitura:
     - sessoes/013/handoff.yaml
     - sessoes/013/resumo.md
@@ -315,6 +315,6 @@ sessoes:
     - sessoes/013/consequencias.md
     transcricao:
       arquivo: sessoes/013/transcricao.md
-      bytes: 10166
+      bytes: 21175
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

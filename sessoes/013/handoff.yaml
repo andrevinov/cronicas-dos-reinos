@@ -4,7 +4,7 @@ sessao: 13
 checkpoint:
   tipo: cena
   estado: retomavel
-  modo: sono_ate_fronteira_do_amanhecer
+  modo: shinta_expediente_concluido_15_eleasis
   personagem:
     nome: Ren Kagehira
     nivel: 7
@@ -19,10 +19,10 @@ checkpoint:
       maximos: 7
     ca: 17
     deslocamento: 55 pés
-    dinheiro_po: 30.58
+    dinheiro_po: 30.979999999999997
   tempo:
     data: 15 Eleasis, 1372 DR
-    hora_aproximada: 06:00
+    hora_aproximada: '17:30'
     periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
@@ -31,19 +31,16 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: Jack Mooney & Sons Circus, Ravens Bluff
-    ponto_exato: no catre do quarto-depósito de Ren, adormecido
+    area: Galeria dos Escribas, Ravens Bluff
+    ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
 continuidade:
-  resumo_imediato: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira das 06:00
-    de 15 Eleasis; o descanso longo permanece em andamento.
+  resumo_imediato: Shinta dedicou a tarde exclusivamente à conferência documental, combinou precisão e ritmo e concluiu
+    o dia sem repetir presunções ou erros de registro. Sua continuidade no trabalho foi preservada, e Ren não realizou
+    investigação paralela nem descobriu nova pista.
   prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
     manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
     de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 eventos_recentes:
-- batch: s013-cena-2036ebe446e8d233
-  transacao: s013-cb1e63c34d6a89f8
-  resumo: Ren retornou discretamente da Rua da Cal ao Jack Mooney & Sons Circus. Obteve Furtividade 27 contra CD
-    13, não percebeu aproximação nem cauda e alcançou os fundos do acampamento sem ser notado às 22:00.
 - batch: s013-cena-2036ebe446e8d233
   transacao: s013-e6cdd6b173f6a143
   resumo: Ren entrou no circo, tomou banho e procurou Silva. Falou de sua frustração com pessoas que parecem não
@@ -60,6 +57,33 @@ eventos_recentes:
   transacao: s013-ea3a2b1181189941
   resumo: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira das 06:00 de 15
     Eleasis. O descanso longo ainda não foi completado.
+- batch: s013-cena-e53cfafcc674ff0f
+  transacao: s013-db467730f2c7e584
+  resumo: Ren continuou dormindo após a fronteira das 06:00 e completou oito horas de sono às 06:50 de 15 Eleasis.
+    Concluiu um descanso longo, mantendo PV e Ki completos e recuperando os dois Dados de Vida que faltavam.
+- batch: s013-cena-e53cfafcc674ff0f
+  transacao: s013-f6296d32869f19d0
+  resumo: Após completar o descanso longo, Ren vestiu a identidade de Shinta e seguiu sua rota habitual até a Galeria
+    dos Escribas. Chegou à entrada de serviço às 07:25, sem interrupções ou escrutínio especial, pronto para o expediente
+    mantido por Tomas.
+- batch: s013-cena-e53cfafcc674ff0f
+  transacao: s013-6df8c569dc491b82
+  resumo: 'Shinta entrou animado na Galeria, cumprimentou os trabalhadores e executou diligentemente a conferência
+    documental. Obteve Investigação 7 contra CD 11 apesar do bônus de preparação: evitou novas presunções e não
+    deixou erros nos registros concluídos, mas conferiu em excesso, perdeu ritmo e teve parte do lote redistribuída.
+    Às 12:20, recebeu a orientação de combinar precisão e velocidade no período da tarde.'
+- batch: s013-cena-ba7bca64bad34f95
+  transacao: s013-1e00dfc584d62759
+  resumo: Durante o intervalo, Shinta afirmou que não falharia à tarde, comeu e conversou normalmente com Sella
+    sobre rotinas de conferência e hábitos da Galeria. Ren permaneceu atento a possíveis sinais ligados à rede de
+    Masao, mas Sella não mencionou nem demonstrou qualquer informação legitimamente relevante. O intervalo terminou
+    sem nova pista.
+- batch: s013-cena-ba7bca64bad34f95
+  transacao: s013-d4933fa5e5382a84
+  resumo: Shinta dedicou toda a tarde exclusivamente ao trabalho e obteve Investigação 16 contra CD 11. Combinou
+    precisão e ritmo, recuperou parte do atraso matinal e concluiu o dia sem novas presunções ou erros de registro,
+    preservando sua continuidade no trabalho. Recebeu 4 PP, elevando o dinheiro de Ren para 30,98 PO. Nenhuma investigação
+    paralela foi feita e nenhuma pista foi descoberta.
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

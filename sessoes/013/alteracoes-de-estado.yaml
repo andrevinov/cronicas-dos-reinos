@@ -18,17 +18,17 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 13
-  modo: sono_ate_fronteira_do_amanhecer
+  modo: shinta_expediente_concluido_15_eleasis
   personagem: Ren Kagehira
   nivel: 7
   pv: 52/52
   ki: 7/7
   ca: 17
-  dinheiro_po: 30.58
+  dinheiro_po: 30.979999999999997
   data: 15 Eleasis, 1372 DR
-  hora: 06:00
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: no catre do quarto-depósito de Ren, adormecido
+  hora: '17:30'
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
   nivel_ficha: 7
 consolidacoes:
 - id: s013-cena-2036ebe446e8d233
@@ -42,6 +42,34 @@ consolidacoes:
   arquivos_afetados:
   - estado/estado-atual.yaml
   - estado/tempo.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-e53cfafcc674ff0f
+  tipo: cena
+  transacoes:
+  - s013-db467730f2c7e584
+  - s013-f6296d32869f19d0
+  - s013-6df8c569dc491b82
+  deltas: 14
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/013/alteracoes-de-estado.yaml
+  - sessoes/013/consequencias.md
+  - sessoes/013/consolidacoes.jsonl
+  - sessoes/013/resumo.md
+- id: s013-cena-ba7bca64bad34f95
+  tipo: cena
+  transacoes:
+  - s013-1e00dfc584d62759
+  - s013-d4933fa5e5382a84
+  deltas: 9
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
   - sessoes/013/alteracoes-de-estado.yaml
   - sessoes/013/consequencias.md
   - sessoes/013/consolidacoes.jsonl

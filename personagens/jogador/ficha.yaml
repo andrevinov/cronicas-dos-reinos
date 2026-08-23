@@ -281,7 +281,7 @@ equipamento:
     a Disfarçar-se em si por 1 hora, com aparência humilde/comum e sem imitar pessoa específica com perfeição; uso
     renovado no amanhecer de 7 Eleasis e disponível
   dinheiro:
-    po: 30.58
+    po: 30.979999999999997
 vinculos:
   regiao_inicial: Ravens Bluff
   entrada_na_cidade: chegada pelo porto

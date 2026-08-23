@@ -4,7 +4,7 @@ historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: em_sessao
   sessao_atual: 13
-  modo_de_cena_atual: sono_ate_fronteira_do_amanhecer
+  modo_de_cena_atual: shinta_expediente_concluido_15_eleasis
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,10 +18,11 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: no catre do quarto-depósito de Ren, adormecido
-  descricao_operacional: Ren recolheu-se ao quarto-depósito e dormiu sem perturbação perceptível até a fronteira
-    das 06:00 de 15 Eleasis; o descanso longo permanece em andamento.
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
+  descricao_operacional: Shinta dedicou a tarde exclusivamente à conferência documental, combinou precisão e ritmo
+    e concluiu o dia sem repetir presunções ou erros de registro. Sua continuidade no trabalho foi preservada, e
+    Ren não realizou investigação paralela nem descobriu nova pista.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -33,7 +34,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: 06:00
+  hora_aproximada: '17:30'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -42,7 +43,7 @@ recursos:
     atuais: 52
     maximos: 52
   dados_de_vida:
-    atuais: 5
+    atuais: 7
     maximos: 7
     dado: d8
   ki:
@@ -52,7 +53,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 30.58
+    po: 30.979999999999997
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer

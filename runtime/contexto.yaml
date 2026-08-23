@@ -7,7 +7,7 @@ fontes_canonicas:
 sessao:
   numero: 13
   status: em_sessao
-  modo_de_cena: sono_ate_fronteira_do_amanhecer
+  modo_de_cena: shinta_expediente_concluido_15_eleasis
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -22,10 +22,10 @@ recursos:
     maximos: 7
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 30.58
+  dinheiro_po: 30.979999999999997
 tempo:
   data: 15 Eleasis, 1372 DR
-  hora_aproximada: 06:00
+  hora_aproximada: '17:30'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: no catre do quarto-depósito de Ren, adormecido
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: junto à saída de serviço da Galeria dos Escribas, após concluir e receber pelo expediente
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:

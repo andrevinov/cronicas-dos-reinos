@@ -87,8 +87,11 @@ locais:
       restantes: []
   galeria_dos_escribas:
     ocorrencia:
-      ciclo: 0
-      restantes: []
+      ciclo: 1
+      restantes:
+      - microevento_01
+      - rotina_01
+      - rotina_02
     cartas:
       ciclo: 0
       assinatura_pool: null
@@ -113,4 +116,14 @@ historico_recente:
     nivel: 0
     nome: normal
     cenas_secas_antes: 1
+    promovido: false
+- cena_id: s013-shinta-expediente-manha-15-eleasis
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: rotina_03
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 2
     promovido: false

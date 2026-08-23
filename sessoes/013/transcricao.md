@@ -120,3 +120,95 @@ Os cinquenta minutos restantes passam sob a claridade crescente que começa a de
 MECÂNICA — Descanso longo concluído: PV 52/52; Ki 7/7; 2 Dados de Vida recuperados, de 5/7 para 7/7.
 
 Do lado de fora, o circo começa a acordar em camadas: passos na terra, arreios movidos, vozes baixas e o primeiro trabalho do dia. Ren tem diante de si a manhã de Shinta e o expediente que Tomas manteve para ele na Galeria dos Escribas.
+
+<!-- turno-transacional:s013-f6296d32869f19d0 -->
+**Jogador**
+
+Ren levanta. Veste suas roupas de Shinta e vai fazer seu percurso até a Galeria dos Escribas.
+**Narrador**
+
+Ren se levanta com o corpo enfim livre do peso dos repousos incompletos. No quarto-depósito, veste as roupas de Shinta peça por peça, não como quem se fantasia, mas como quem retoma uma rotina: tecido simples, objetos nos lugares esperados, nada que destoe do trabalhador que já foi visto por dois dias na Galeria. Suas armas continuam fora do conjunto.
+
+Diante do pequeno reflexo disponível, ajusta os detalhes visíveis e deixa que a postura acompanhe as roupas. Shinta não precisa esconder-se nas sombras. Precisa apenas pertencer à manhã: alguém a caminho de um expediente que quase perdeu por erros próprios e que ainda tem uma oportunidade de conservar.
+
+O circo fica para trás enquanto Ravens Bluff desperta. Carroças de entrega disputam as ruas com varredores, aprendizes carregam cestos grandes demais para os braços e as primeiras oficinas abrem portadas ainda úmidas do sereno. Ren segue o percurso já aprendido, sem desvios investigativos e sem procurar rostos que não façam parte do trabalho.
+
+Ninguém o detém. Para os poucos que lhe dedicam um olhar, há somente Shinta caminhando para mais um dia de serviço.
+
+Às sete e vinte e cinco, a Galeria dos Escribas surge adiante com a atividade matinal já começando a ocupar a entrada de serviço. Trabalhadores chegam, cargas aguardam conferência e vozes chamam números entre madeira, corda e papel. Ren alcança o lugar como Shinta, a tempo de apresentar-se para o expediente que Tomas manteve — um dia em que não poderá presumir diante de contagens ou marcas duvidosas.
+
+<!-- turno-transacional:s013-6df8c569dc491b82 -->
+**Jogador**
+
+Shinta chega, animado como sempre. Cumprimenta todos, sorrindo. Assume seu lugar no escritório e se inteira de seu serviço. E começa a executá-lo diligentemente.
+**Narrador**
+
+Shinta atravessa a entrada de serviço com o mesmo ânimo aberto dos dias anteriores. Cumprimenta carregadores, conferentes e escriturários conforme passa, distribuindo sorrisos sem exigir que sejam devolvidos. Alguns respondem com um aceno curto; outros já estão ocupados demais com cordas, pranchetas e números. Sella ergue os olhos de uma folha de carga e lhe oferece um cumprimento discreto, estritamente profissional.
+
+No escritório, o trabalho da manhã está separado em pequenos montes: recibos de entrada, cópias destinadas ao arquivo e relações de carga que precisam ser comparadas antes de seguirem para as mesas seguintes. Shinta se inteira das instruções, pergunta quando uma marca não está clara e começa. Desta vez, não confia na primeira impressão. Conta novamente. Confere selos. Segue cada referência até a linha correspondente.
+
+MECÂNICA — Investigação: 2 + 4 + 1 pela abordagem diligente = 7 contra CD 11 — falha.
+
+O problema não nasce de descuido. Nasce do excesso oposto. Uma mancha que poderia ser resolvida pela tabela de abreviações faz Shinta retornar ao começo do lote. Uma soma já confirmada recebe uma terceira conferência. Quando duas folhas usam traços ligeiramente diferentes para a mesma casa comercial, ele interrompe o fluxo para pedir validação em vez de arriscar outra presunção.
+
+Os registros que passam por suas mãos não saem adulterados, mas saem devagar. À medida que a manhã avança, o monte à esquerda diminui pouco e o da mesa vizinha começa a receber parte do que deveria ter sido concluído por ele. Sella percebe o atraso antes de qualquer supervisor precisar anunciá-lo. Aproxima-se, examina duas das folhas e aponta com a unha para a coluna lateral.
+
+— Esta marca aqui diz quando a segunda conferência é obrigatória. Se não estiver marcada, uma vez basta. Você está tratando cada linha como se alguém a tivesse preparado para enganá-lo.
+
+Ela não assume o serviço de Shinta, mas mostra onde a rotina já contém a resposta e volta ao próprio lugar. Ele continua trabalhando diligentemente. Ainda assim, o tempo perdido não retorna.
+
+Quando o intervalo chega, às doze e vinte, uma parte do lote precisou ser redistribuída para que o escritório não carregasse o atraso até a tarde. O supervisor percorre o que Shinta concluiu, constata que não há contagem inventada nem marca presumida, e deixa o peso da avaliação onde ele pode senti-lo.
+
+— Você parou de adivinhar. Isso é melhora. Agora precisa aprender a confirmar sem parar o salão. Depois do intervalo, faça as duas coisas.
+
+Shinta conservou a precisão que lhe foi exigida, mas não o ritmo. A metade da tarde ainda poderá decidir se este será o primeiro dia completo que Tomas esperava dele.
+
+<!-- turno-transacional:s013-1e00dfc584d62759 -->
+**Jogador**
+
+"Shinta não irá falhar a tarde", e faz um olhar determinado. Ren lembra que foi treinado pra tanta coisa... não vai ser esse servicinho banal que vai engoli-lo no seu disfarce.
+
+Shinta come no intervalo. Puxa assunto normal com Sella. Fica apenas observante se ela vai falar algo interessante ou relevante à sua busca por agentes de Masao e sinais de infiltração da rede dele.
+**Narrador**
+
+— Shinta não irá falhar à tarde.
+
+A determinação aparece no olhar antes mesmo que a frase termine. Sella, que já recolhia suas próprias folhas para o intervalo, sustenta esse olhar por um instante.
+
+— Então não discuta com a manhã — responde. — Aprenda com ela e coma alguma coisa.
+
+Ren leva a decisão consigo para o banco do intervalo. Foi treinado para atravessar sombras, suportar dor, medir adversários e converter o próprio corpo em arma. A lembrança não torna o serviço menor nem os números mais obedientes, mas impede que a frustração da manhã assuma o tamanho de uma derrota. Shinta come. O trabalho continuará existindo quando o intervalo terminar.
+
+Sella se acomoda perto o bastante para uma conversa normal, sem a intimidade de uma confidente. Shinta não menciona Kethra, Narwhal, Masao ou a mulher Cinza-Azul. Puxa assuntos que pertencem ao lugar: o ritmo do escritório, as abreviações que mudam entre fornecedores, a diferença entre o que um carregador chama de lote e o que um escriturário aceita registrar como um.
+
+Ela responde no mesmo registro. Explica que a Galeria sobrevive menos pela elegância dos escribas do que pela capacidade de fazer três pessoas diferentes chamarem a mesma carga pelo mesmo nome. Comenta que todo trabalhador novo perde tempo tentando descobrir uma lógica secreta onde quase sempre existe apenas hábito antigo, tinta ruim e alguém que escreveu depressa demais.
+
+Ren escuta além das palavras sem forçar a conversa. Observa mudanças de tom, pausas antes de nomes, algum cuidado incomum quando o assunto toca entregas, registros ou gente recém-chegada. Nada se destaca. Sella não menciona carga oriental, ordens estranhas, compradores ocultos, novos homens ou qualquer detalhe que possa ser ligado legitimamente aos agentes de Masao. Também não parece conduzir a conversa para longe de algum ponto específico; mantém apenas a cautela profissional de sempre.
+
+O intervalo oferece comida, orientação prática e conversa comum — não uma pista. Quando o movimento ao redor começa a anunciar a retomada do expediente, Sella se levanta e recolhe suas coisas.
+
+— Uma conferência quando a marca mandar — lembra ela. — Duas quando houver dúvida verdadeira. E nenhuma terceira só porque você está zangado com a segunda.
+
+Ela retorna à mesa. A promessa de Shinta permanece dele. A tarde ainda não lhe concedeu resultado algum.
+
+<!-- turno-transacional:s013-d4933fa5e5382a84 -->
+**Jogador**
+
+Shinta volta ao seu trabalho, atento e focado. Não olhará outras coisas, pessoas, nem investigará nada. Ele só fará seu trabalho.
+**Narrador**
+
+Shinta retorna à mesa quando o intervalo termina. Não leva consigo a irritação da manhã como justificativa nem a determinação como espetáculo. Apenas organiza o primeiro lote, localiza a marca que define o procedimento e começa.
+
+Desta vez, sua atenção permanece estreita. Uma linha, uma referência, uma conferência. Quando a marca exige uma segunda leitura, ele a faz. Quando não exige, confia no procedimento e passa adiante. Uma dúvida verdadeira é separada para confirmação; uma insegurança sem evidência não ganha o direito de interromper o salão.
+
+MECÂNICA — Investigação: 11 + 4 + 1 pela abordagem atenta e focada = 16 contra CD 11 — sucesso.
+
+O ritmo aparece pouco a pouco. Não é pressa. É continuidade. Os montes mudam de lado na mesa sem que folhas retornem por contagem presumida, fardo mal classificado ou verificação repetida sem necessidade. O atraso da manhã deixa de crescer e, antes que a luz nas janelas comece a perder força, Shinta já absorveu parte do trabalho que fora redistribuído.
+
+Ele cumpre exatamente a decisão tomada: não acompanha conversas alheias, não observa quem entra ou sai, não procura padrões ocultos nos nomes que não sejam exigidos pela tarefa. Se outras histórias atravessam a Galeria naquela tarde, Ren não tenta tomá-las para si. Para todos ao redor, existe apenas um trabalhador concentrado em merecer o lugar que recebeu.
+
+Ao final do expediente, uma amostra das folhas é conferida. Os totais fecham. As marcas duvidosas foram encaminhadas pelo procedimento correto. O ritmo da tarde é considerado suficiente, e o desempenho da manhã permanece como lentidão corrigida — não como outra presunção. Shinta completa o dia sem repetir os erros que haviam colocado suas futuras chamadas em dúvida. Seu nome não é retirado do trabalho por falha disciplinar.
+
+MECÂNICA — Pagamento do expediente: 4 PP, equivalentes a 0,4 PO; total de Ren passa a 30,98 PO.
+
+Às cinco e meia, o pagamento é entregue e o expediente se encerra. Shinta fica junto à saída de serviço da Galeria com o trabalho de hoje concluído. Nenhuma pista sobre Masao foi procurada; nenhuma foi descoberta.
