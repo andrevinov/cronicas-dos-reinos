@@ -1,0 +1,66 @@
+schema_rede_protegida: 1
+natureza: guardrail_reservado
+estatuto: protecao_contra_escalada_procedural
+descricao: >-
+  Núcleo atual da rede de apoio de Ren que pode sofrer consequências reais do
+  cânone, combate, escolhas do jogador e ações dirigidas do arco, mas não deve
+  receber por sorteio procedural uma consequência grave ou irreversível.
+orcamento:
+  max_membros: 8
+  max_alvos_por_consequencia: 4
+  max_fontes_hot_path: 1
+  impacto_procedural_maximo: moderada
+regras:
+  protecao_e_por_origem_nao_imortalidade: true
+  combate_resolvido_fica_fora_deste_gate: true
+  escolha_do_jogador_fica_fora_deste_gate: true
+  acao_canonica_do_arco_fica_fora_deste_gate: true
+  evento_mundial_pode_gerar_reacao_mas_nao_afetar_diretamente_o_nucleo: true
+  sidequest_procedural_exige_gravidade_reversibilidade_e_alvos: true
+  consequencia_grave_procedural_no_nucleo_e_bloqueada: true
+  consequencia_nao_reversivel_procedural_no_nucleo_e_bloqueada: true
+  vida_e_liberdade_nao_sao_alvos_procedurais_diretos_do_nucleo: true
+  microevento_local_permanece_candidato_sem_npc_nomeado: true
+  presenca_incidental_permanece_candidato_sem_consequencia: true
+  sem_scheduler: true
+  sem_estado_proprio: true
+gravidades:
+- leve
+- moderada
+- grave
+reversibilidades:
+- reversivel
+- incerta
+- irreversivel
+classes_impacto:
+- social
+- material
+- logistico
+- juridico
+- saude
+- liberdade
+- vida
+classes_proibidas_no_nucleo:
+- liberdade
+- vida
+membros:
+  nera_vell:
+    nome: Nera Vell
+    grupo: nucleo_afetivo
+    fonte: estado/relacoes/nera_vell.yaml
+  tavin_vell:
+    nome: Tavin Vell
+    grupo: nucleo_afetivo
+    fonte: estado/relacoes/tavin_vell.yaml
+  silva_elkwood:
+    nome: Silva Elkwood
+    grupo: nucleo_apoio
+    fonte: estado/relacoes/silva_elkwood.yaml
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    grupo: nucleo_apoio
+    fonte: estado/relacoes/maerra_thandrel.yaml
+  luath:
+    nome: Luath
+    grupo: nucleo_apoio
+    fonte: estado/relacoes/luath.yaml
