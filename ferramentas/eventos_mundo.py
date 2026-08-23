@@ -437,6 +437,7 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             "eventos_reconsiderar": [],
             "agentes_evento_reconsiderar": [],
             "agentes_leves_evento_reconsiderar": [],
+            "nucleo_protegido_evento_reconsiderar": [],
             "fontes_lidas": sources,
         }
 
@@ -704,7 +705,11 @@ def validate_repo(repo: Path) -> dict[str, Any]:
         now, _ = mundo.load_canonical_time(repo)
         if instant(state["processado_ate"], "processado_ate") > now:
             errors.append("estado de eventos além do tempo canônico")
-    except (WorldEventError, mundo.WorldEngineError) as exc:
+    except (
+        WorldEventError,
+        mundo.WorldEngineError,
+        rede_protegida.ProtectedNetworkError,
+    ) as exc:
         errors.append(str(exc))
     return {
         "ok": not errors,
