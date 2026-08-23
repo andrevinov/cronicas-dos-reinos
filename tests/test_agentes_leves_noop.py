@@ -30,11 +30,27 @@ class LightAgentNoopRepositoryTest(unittest.TestCase):
         self.assertTrue(validated["ok"], validated["erros"])
         self.assertEqual(validated["schema"], 2)
 
-    def test_estado_real_nao_inventa_cache_retroativo(self):
-        state = light.load_state(ROOT, light.load_index(ROOT))
-        self.assertTrue(
-            all(item["cache_negativo"] is None for item in state["agentes"].values())
-        )
+    def test_cache_real_so_existe_com_noop_causal_concluido_e_assinatura_atual(self):
+        index = light.load_index(ROOT)
+        state = light.load_state(ROOT, index)
+        world = light.mundo.load_world_state(ROOT)
+        completed = {
+            item.get("id"): item
+            for item in world.get("concluidas_recentes") or []
+            if isinstance(item, dict) and item.get("id")
+        }
+        for agent_id, item in state["agentes"].items():
+            cache = item.get("cache_negativo")
+            if cache is None:
+                continue
+            origin = cache["pendencia_origem"]
+            self.assertIn(origin, completed)
+            conclusion = completed[origin]
+            self.assertEqual(conclusion.get("tipo"), "reavaliar_agente_leve")
+            self.assertEqual(conclusion.get("resultado"), light.NOOP_RESULT)
+            self.assertEqual(conclusion.get("agente_leve"), agent_id)
+            signature, _ = light.causal_signature(ROOT, agent_id, index["agentes"][agent_id])
+            self.assertEqual(cache["assinatura_causal"], signature)
 
 
 class LightAgentNoopSyntheticTest(unittest.TestCase):
