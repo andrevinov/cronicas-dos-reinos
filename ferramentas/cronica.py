@@ -3,7 +3,8 @@
 
 A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 ``ciclo_cronica.py``. A camada pública acrescenta apenas ergonomia observada em
-rollout real: turno neutro sem gatilho inventado e retomada compacta limpa.
+rollout real: turno neutro sem gatilho inventado, retomada compacta limpa e
+transporte de ticket tolerante a whitespace acidental no corpo base64.
 """
 from __future__ import annotations
 
@@ -31,6 +32,24 @@ for _name in dir(_core):
 
 _ORIGINAL_BUILD_PARSER = _core.build_parser
 _ORIGINAL_MAIN = _core.main
+_ORIGINAL_B64_DECODE = _core._b64_decode
+
+
+def _b64_decode(value: str) -> bytes:
+    """Torna o transporte do corpo base64 robusto a wrap/cópia com whitespace.
+
+    Base64url não usa whitespace como dado. Compactá-lo antes do helper legado
+    calcular padding evita que quebras de linha, espaços ou tabs inseridos no
+    transporte alterem ``len(value)`` e produzam padding incorreto. Checksum,
+    zlib, schema e todos os demais guardrails continuam no decoder original.
+    """
+    compact = "".join(value.split())
+    return _ORIGINAL_B64_DECODE(compact)
+
+
+# ``cronica_hotpath`` e as funções da Task 21 compartilham o mesmo módulo core;
+# trocar apenas o helper mantém um único decoder e evita motor paralelo.
+_core._b64_decode = _b64_decode
 
 
 def prepare(*args, **kwargs):
