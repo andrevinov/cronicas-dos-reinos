@@ -1,0 +1,84 @@
+name: Compact cronica router
+
+on:
+  push:
+    branches:
+      - fix/route-codex-through-cronica
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/route-codex-through-cronica
+          fetch-depth: 0
+      - name: Compact router and update legacy assertion
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace(path: str, old: str, new: str) -> None:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{path}: expected one match, found {count}: {old[:90]!r}')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          path = 'AGENTS.md'
+          replace(
+              path,
+              '- consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;\n- lifecycle unificado de turno/sessão/progressão → `docs/task21-unified-cronica-turn-cli.md` e `docs/task22-unified-session-lifecycle.md`;\n- retomada/handoffs → `docs/agente/memoria-de-sessoes.md`;',
+              '- consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;\n- retomada/handoffs e lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;',
+          )
+          replace(
+              path,
+              '**Porta operacional preferencial.** Em avanço ON normal, usar `poetry run cronica preparar ...` antes da resolução/narração e `poetry run cronica concluir --ticket <ticket>` depois que a resposta estiver aceita. `turno.py`, `endpoints.py cena` e `cena_mundo.py confirmar` permanecem primitivas de manutenção, teste e reparo; não são o hot path normal.',
+              '**Porta operacional preferencial:** `poetry run cronica preparar ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. Primitivas antigas ficam só para manutenção/reparo.',
+          )
+          replace(
+              path,
+              '**Gatilho reativo não é rotina.** `cronica preparar` é a porta normal e recebe `cena_id` estável; inclua local só ao entrar/explorar, NPCs cujo encontro começou e tags realmente pertinentes. A preparação continua read-only: calcula sem criar mapa ou consumir gate. Sem gatilho material, não inventar local/NPC/tag nem consultar recompensa/oportunidade.\n\nDepois da narração aceita, enviar a transação para `cronica concluir --ticket <ticket>`. O orquestrador revalida/confirma a preparação e registra o turno na ordem segura em uma única chamada pós-narração. Não concluir cena corrigida/abandonada. Preparação obsoleta falha fechada; executar `cronica preparar` novamente.',
+              '**Cena reativa:** `cronica preparar` recebe `cena_id` estável e só local/NPC/tags pertinentes; é read-only. Sem gatilho, não inventar dados nem consultar recompensa. Após narração aceita, `cronica concluir --ticket <ticket>` revalida/confirma e registra. Cena abandonada não conclui; ticket obsoleto exige novo preparo.',
+          )
+          replace(
+              path,
+              'Meta comum: **duas chamadas operacionais de turno** (`cronica preparar` + `cronica concluir`). Preparação escreve zero; conclusão só ocorre após turno aceito. Não decompor o fluxo em primitivas antigas sem necessidade de manutenção/reparo.',
+              'Meta: **2 chamadas por turno** (`cronica preparar` + `cronica concluir`); não decompor sem necessidade de reparo.',
+          )
+          replace(
+              path,
+              'Tempo significativo pode promover checkpoint automático. Ordem: cânone → lifecycle/Mundo Vivo → barreira de pendências → memória. Pendência aberta bloqueia o próximo avanço; checkpoint não a resolve semanticamente. Integração reativa no checkpoint só propaga morte canônica para oportunidades; não executa gates.\n\nSe houver journal interrompido, **não narrar nem registrar novo turno**. Executar `poetry run cronica sessao recuperar`; `checkpoint.py recuperar` permanece fallback de manutenção.\n\nQuando o jogador pedir para **iniciar uma nova sessão**, não pedir que ele rode CLI manualmente: o narrador executa `poetry run cronica sessao status`; se estiver `entre_sessoes`, executa `poetry run cronica sessao iniciar`, e então usa `contexto.py retomada`/handoff para recapitular e abrir a cena. Se já estiver `em_sessao`, apenas retomar; nunca pular uma sessão. A nova transcrição é criada pelo lifecycle e nunca copia a anterior.\n\nLevel-up mecânico entre sessões usa `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`. Na faixa 8–17, nunca alterar a ficha sem milestone da Juppongatana previamente registrado; as primitivas de progressão ficam para manutenção/diagnóstico.',
+              'Tempo significativo pode promover checkpoint. Ordem: cânone → Mundo Vivo/lifecycle → barreira → memória; pendência aberta bloqueia o próximo avanço.\n\nJournal interrompido: não narrar; usar `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback). Ao pedido **“inicie uma sessão”**, não pedir CLI ao jogador: o narrador roda `cronica sessao status`, inicia se `entre_sessoes` e recapitula via `contexto.py retomada`; se já `em_sessao`, só retoma. Nunca copiar transcrição anterior.\n\nLevel-up entre sessões: `poetry run cronica progressao status|aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.',
+          )
+
+          replace(
+              'tests/test_turno_transacional.py',
+              '        self.assertIn("turno.py registrar <<\'JSON\'", agents)\n',
+              '        self.assertIn("cronica concluir --ticket <ticket> <<\'JSON\'", agents)\n',
+          )
+
+          # Keep the hot router inside its existing hard budget; do not raise the contract.
+          agents = Path('AGENTS.md')
+          raw = agents.read_bytes()
+          lines = agents.read_text(encoding='utf-8').splitlines()
+          if len(raw) > 12288:
+              raise SystemExit(f'AGENTS still too large: {len(raw)} bytes')
+          if len(lines) > 180:
+              raise SystemExit(f'AGENTS still too long: {len(lines)} lines')
+          PY
+          git diff --check
+          python3 -m unittest tests.test_cronica_operational_router tests.test_turno_transacional -v
+      - name: Commit compact routing and remove workflow
+        run: |
+          git rm .github/workflows/route-cronica-compact.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add AGENTS.md tests/test_turno_transacional.py
+          git commit -m 'Roteador: compactar fluxo cronica dentro do orçamento'
+          git push origin HEAD:fix/route-codex-through-cronica
