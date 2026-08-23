@@ -4,6 +4,12 @@
 O contrato original da Task 10 está preservado em ``_endpoints_core.py``. Esta
 camada acrescenta a qualidade da abordagem somente ao campo ``modificadores`` já
 reservado, sem novo endpoint, nova leitura ou mudança de schema.
+
+No caminho raro em que a barreira do Mundo Vivo está bloqueada, o endpoint de
+pendências também projeta candidatos autônomos de pressão de Ravens Bluff. A
+projeção é read-only: calendário/reavaliação não vira fato; ela apenas entrega ao
+narrador linha, método e frente que podem ser materializados se o agente realmente
+puder agir.
 """
 from __future__ import annotations
 
@@ -15,10 +21,12 @@ from typing import Any
 import yaml
 
 import _endpoints_core as _base
+import pressao_ravens_bluff
 import qualidade_abordagem
 
 _ORIGINAL_PROJECT_SCENE = _base.project_scene
 _ORIGINAL_BUILD_PARSER = _base.build_parser
+MAX_PRESSURE_CANDIDATES = 4
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -74,8 +82,6 @@ def scene(
     approach_informacao: str | None = None,
     approach_adequacao: str | None = None,
 ) -> dict[str, Any]:
-    # Continua exatamente uma chamada subjacente. A rubrica é pura e trabalha
-    # apenas sobre evidência fornecida pelo narrador antes da rolagem.
     preview = _base.cena_mundo.prepare_scene(
         repo,
         scene_id=scene_id,
@@ -93,6 +99,62 @@ def scene(
         approach_informacao=approach_informacao,
         approach_adequacao=approach_adequacao,
     )
+
+
+def project_pending(result: dict[str, Any]) -> dict[str, Any]:
+    projected = _base.project_pending(result)
+    integration = result.get("pressao_ravens_bluff")
+    candidates = (
+        list(integration.get("candidatos") or [])
+        if isinstance(integration, dict)
+        else []
+    )
+    if not candidates:
+        return projected
+
+    visible = candidates[:MAX_PRESSURE_CANDIDATES]
+    projected["ids"]["pressao_ravens_bluff"] = [
+        item.get("pendencia") for item in visible if item.get("pendencia")
+    ]
+    for item in visible:
+        projected["gates"].append(
+            {
+                "tipo": "pressao_ravens_bluff_autonoma",
+                "resultado": "candidato",
+                "pendencia": item.get("pendencia"),
+                "agente": item.get("agente"),
+                "linha": item.get("linha"),
+                "metodo": item.get("metodo"),
+                "frente": item.get("frente"),
+                "de": item.get("de"),
+                "para": item.get("para"),
+                "titulo_destino": item.get("titulo_destino"),
+                "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
+            }
+        )
+    projected["proximo_passo"]["pressao_ravens_bluff"] = (
+        "se o candidato for legal para o agente, materialize a ação de mundo; depois conclua "
+        "a pendência informando transação, linha e método. Se houver bloqueio canônico real, use --sem-mudanca."
+    )
+    _base.validate_endpoint(projected)
+    return projected
+
+
+def pending(repo: Path) -> dict[str, Any]:
+    raw = _base.mundo.pending_view(repo)
+    integration = pressao_ravens_bluff.pending_candidates(
+        repo, list(raw.get("pendencias") or [])
+    )
+    raw["pressao_ravens_bluff"] = integration
+    raw["fontes_lidas"] = list(
+        dict.fromkeys(
+            [
+                *(raw.get("fontes_lidas") or []),
+                *(integration.get("fontes_lidas") or []),
+            ]
+        )
+    )
+    return project_pending(raw)
 
 
 def _add_approach_flags(parser: argparse.ArgumentParser) -> None:
@@ -143,7 +205,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "fronteira":
             result = _base.boundary(repo, date=args.data, hour=args.hora)
         elif args.cmd == "pendencias":
-            result = _base.pending(repo)
+            result = pending(repo)
         elif args.cmd == "direcao":
             result = _base.direction(repo, args.direcao)
         else:
@@ -151,6 +213,7 @@ def main(argv: list[str] | None = None) -> int:
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except (
+        pressao_ravens_bluff.PressureError,
         qualidade_abordagem.ApproachQualityError,
         _base.EndpointError,
         _base.cena_mundo.SceneGateError,
