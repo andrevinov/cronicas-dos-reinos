@@ -1,0 +1,295 @@
+name: Task 18 apply Reward Budget v2
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: task/reward-budget-v2
+          fetch-depth: 0
+      - name: Apply v2 implementation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new, expected=1):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              found = text.count(old)
+              if found != expected:
+                  raise SystemExit(f'{path}: expected {expected} matches, found {found}')
+              p.write_text(text.replace(old, new, expected), encoding='utf-8')
+
+          replace('narrador/recompensas/tabelas.yaml', 'schema_tabelas_recompensas: 1\n', 'schema_tabelas_recompensas: 2\n')
+          replace(
+              'narrador/recompensas/tabelas.yaml',
+              '''bonus_periculosidade:\n  baixa: 0\n  media: 0\n  alta: 1\n  letal: 1\ncondicoes:\n''',
+              '''bonus_periculosidade:\n  baixa: 0\n  media: 0\n  alta: 1\n  letal: 1\norcamento_v2:\n  gerador: deterministico_v2\n  pontos_por_tier: {'1': 2, '2': 4, '3': 6, '4': 8}\n  max_itens_por_tier: {'1': 2, '2': 3, '3': 3, '4': 4}\n  bonus_risco: {baixa: 0, media: 1, alta: 2, letal: 3}\n  aumento_teto_valor_risco: {baixa: 0, media: 0, alta: 1, letal: 1}\n  custo_valor: {baixo: 1, moderado: 2, alto: 3}\n  custo_importancia: {comum: 0, especial: 2}\n  perfis_familia:\n    comercio_varejista:\n      modificador_pontos: 0\n      teto_valor_base: moderado\n      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]\n    residencia_urbana:\n      modificador_pontos: -1\n      teto_valor_base: baixo\n      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]\n    acampamento_espetaculo:\n      modificador_pontos: 0\n      teto_valor_base: moderado\n      categorias: [dinheiro, consumivel, ferramenta, curiosidade]\n    propriedade_privada:\n      modificador_pontos: 1\n      teto_valor_base: moderado\n      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]\n    residencia_exterior:\n      modificador_pontos: -1\n      teto_valor_base: baixo\n      categorias: [dinheiro, ferramenta, curiosidade]\n    mansao_privada:\n      modificador_pontos: 2\n      teto_valor_base: alto\n      categorias: [dinheiro, gema, consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]\n    templo_institucional:\n      modificador_pontos: 1\n      teto_valor_base: alto\n      categorias: [consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]\n    imovel_baixa_atividade:\n      modificador_pontos: -1\n      teto_valor_base: baixo\n      categorias: [dinheiro, ferramenta, curiosidade]\n    residencia_cuidado:\n      modificador_pontos: 0\n      teto_valor_base: moderado\n      categorias: [dinheiro, consumivel, ferramenta, curiosidade]\n    servico_comunitario:\n      modificador_pontos: -1\n      teto_valor_base: baixo\n      categorias: [dinheiro, consumivel, ferramenta, curiosidade]\n    entreposto_documental:\n      modificador_pontos: 1\n      teto_valor_base: moderado\n      categorias: [dinheiro, gema, ferramenta, pergaminho, curiosidade]\ncondicoes:\n'''
+          )
+
+          replace('ferramentas/recompensas.py', 'import yaml\n\nINDEX = Path(', 'import yaml\n\nimport ecologia_local\n\nINDEX = Path(')
+          replace(
+              'ferramentas/recompensas.py',
+              'GENERATOR = "deterministico_v1"\nVALID_DANGER = {"baixa", "media", "alta", "letal"}\n',
+              'GENERATOR = "deterministico_v1"\nGENERATOR_V2 = "deterministico_v2"\nVALID_GENERATORS = {GENERATOR, GENERATOR_V2}\nVALUE_RANK = {"baixo": 1, "moderado": 2, "alto": 3}\nVALUE_BY_RANK = {value: key for key, value in VALUE_RANK.items()}\nV2_VALUE_COST = {"baixo": 1, "moderado": 2, "alto": 3}\nV2_IMPORTANCE_COST = {"comum": 0, "especial": 2}\nVALID_DANGER = {"baixa", "media", "alta", "letal"}\n'
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    if (\n        data.get("schema_tabelas_recompensas") != 1\n        or data.get("natureza") != "reservado"\n        or data.get("gerador") != GENERATOR\n    ):\n''',
+              '''    if (\n        data.get("schema_tabelas_recompensas") not in {1, 2}\n        or data.get("natureza") != "reservado"\n        or data.get("gerador") != GENERATOR\n    ):\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''            for tag in tags:\n                text(tag, f"{tid}.tags")\n    return data\n\n\ndef load_planned''',
+              '''            for tag in tags:\n                text(tag, f"{tid}.tags")\n    if data.get("schema_tabelas_recompensas") == 2:\n        _validate_budget_v2(data)\n    return data\n\n\ndef load_planned'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''def generation_key(seed: str, place: str, tier: int, danger: str) -> str:\n    return hashlib.sha256(\n        f"{seed}|{place}|{tier}|{danger}|{GENERATOR}".encode("utf-8")\n    ).hexdigest()[:24]\n''',
+              '''def generation_key(\n    seed: str,\n    place: str,\n    tier: int,\n    danger: str,\n    *,\n    generator: str = GENERATOR,\n    family: str | None = None,\n) -> str:\n    parts = [seed, place, str(tier), danger, generator]\n    if family is not None:\n        parts.append(family)\n    return hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()[:24]\n'''
+          )
+
+          path = Path('ferramentas/recompensas.py')
+          text = path.read_text(encoding='utf-8')
+          marker = 'def _procedural_count(\n    index: dict[str, Any],\n'
+          if text.count(marker) != 1:
+              raise SystemExit('procedural_count marker mismatch')
+          helpers = r'''def _signed_integer(value: Any, label: str, minimum: int, maximum: int) -> int:
+    if not isinstance(value, int) or isinstance(value, bool) or not minimum <= value <= maximum:
+        raise RewardMapError(f"{label} deve ser inteiro entre {minimum} e {maximum}")
+    return value
+
+
+def _validate_budget_v2(tables: dict[str, Any]) -> dict[str, Any]:
+    cfg = amap(tables.get("orcamento_v2"), "orcamento_v2")
+    expected = {
+        "gerador", "pontos_por_tier", "max_itens_por_tier", "bonus_risco",
+        "aumento_teto_valor_risco", "custo_valor", "custo_importancia", "perfis_familia",
+    }
+    if set(cfg) != expected:
+        raise RewardMapError(f"orcamento_v2 possui campos divergentes: {sorted(set(cfg) ^ expected)}")
+    if cfg.get("gerador") != GENERATOR_V2:
+        raise RewardMapError("orcamento_v2.gerador deve ser deterministico_v2")
+    tier_keys = set(tables["tiers"])
+    for field in ("pontos_por_tier", "max_itens_por_tier"):
+        values = amap(cfg.get(field), f"orcamento_v2.{field}")
+        if set(values) != tier_keys:
+            raise RewardMapError(f"orcamento_v2.{field} deve cobrir todos os tiers")
+        for tier, value in values.items():
+            integer(value, f"orcamento_v2.{field}.{tier}", 1)
+    if any(value > 4 for value in cfg["max_itens_por_tier"].values()):
+        raise RewardMapError("orcamento_v2.max_itens_por_tier não pode exceder 4")
+    for field in ("bonus_risco", "aumento_teto_valor_risco"):
+        values = amap(cfg.get(field), f"orcamento_v2.{field}")
+        if set(values) != VALID_DANGER:
+            raise RewardMapError(f"orcamento_v2.{field} deve cobrir todos os riscos")
+        for danger, value in values.items():
+            integer(value, f"orcamento_v2.{field}.{danger}", 0)
+    if amap(cfg.get("custo_valor"), "orcamento_v2.custo_valor") != V2_VALUE_COST:
+        raise RewardMapError("orcamento_v2.custo_valor diverge do contrato")
+    if amap(cfg.get("custo_importancia"), "orcamento_v2.custo_importancia") != V2_IMPORTANCE_COST:
+        raise RewardMapError("orcamento_v2.custo_importancia diverge do contrato")
+    profiles = amap(cfg.get("perfis_familia"), "orcamento_v2.perfis_familia")
+    if not profiles:
+        raise RewardMapError("orcamento_v2.perfis_familia vazio")
+    catalog = set(tables["catalogo"])
+    for family, raw in profiles.items():
+        family = text(family, "familia")
+        profile = amap(raw, f"orcamento_v2.perfis_familia.{family}")
+        if set(profile) != {"modificador_pontos", "teto_valor_base", "categorias"}:
+            raise RewardMapError(f"perfil v2 de {family} possui campos divergentes")
+        _signed_integer(profile["modificador_pontos"], f"{family}.modificador_pontos", -2, 2)
+        ceiling = text(profile["teto_valor_base"], f"{family}.teto_valor_base")
+        if ceiling not in VALUE_RANK:
+            raise RewardMapError(f"{family}: teto_valor_base inválido")
+        categories = alist(profile["categorias"], f"{family}.categorias")
+        if not categories or len(categories) != len(set(categories)):
+            raise RewardMapError(f"{family}: categorias vazias ou duplicadas")
+        unknown = {text(item, f"{family}.categorias") for item in categories} - catalog
+        if unknown:
+            raise RewardMapError(f"{family}: categorias fora do catálogo: {sorted(unknown)}")
+    return cfg
+
+
+def _budget_v2_plan(index, tables, ecology, tier, danger):
+    if tables.get("schema_tabelas_recompensas") != 2 or not isinstance(ecology, dict):
+        return None
+    cfg = _validate_budget_v2(tables)
+    family = text(ecology.get("familia"), "ecologia.familia")
+    profile = cfg["perfis_familia"].get(family)
+    if not isinstance(profile, dict):
+        raise RewardMapError(f"família ecológica sem perfil Reward Budget v2: {family}")
+    tier_key = str(tier)
+    points = max(1, int(cfg["pontos_por_tier"][tier_key]) + int(cfg["bonus_risco"][danger]) + int(profile["modificador_pontos"]))
+    ceiling_rank = min(max(VALUE_RANK.values()), VALUE_RANK[profile["teto_valor_base"]] + int(cfg["aumento_teto_valor_risco"][danger]))
+    max_items = min(int(cfg["max_itens_por_tier"][tier_key]), int(index["orcamento"]["max_procedurais_por_mapa"]))
+    allowed = set(profile["categorias"])
+    weighted_categories = [category for category in tables["tiers"][tier_key]["categorias"] if category in allowed]
+    if not weighted_categories:
+        raise RewardMapError(f"{family}: nenhuma categoria v2 compatível com tier {tier}")
+    return {
+        "familia": family,
+        "pontos_total": points,
+        "teto_valor": VALUE_BY_RANK[ceiling_rank],
+        "teto_valor_rank": ceiling_rank,
+        "max_itens": max_items,
+        "categorias_ponderadas": weighted_categories,
+    }
+
+
+def _template_budget_cost(template, tables):
+    cfg = tables["orcamento_v2"]
+    value = text(template.get("valor_aproximado"), f"{template.get('id')}.valor_aproximado")
+    importance = text(template.get("importancia"), f"{template.get('id')}.importancia")
+    if value not in cfg["custo_valor"] or importance not in cfg["custo_importancia"]:
+        raise RewardMapError(f"template {template.get('id')}: custo Reward Budget v2 indefinido")
+    return int(cfg["custo_valor"][value]) + int(cfg["custo_importancia"][importance])
+
+
+'''
+          path.write_text(text.replace(marker, helpers + marker, 1), encoding='utf-8')
+
+          replace('ferramentas/recompensas.py', 'def _procedural_entries(\n', 'def _procedural_entries_v1(\n')
+
+          path = Path('ferramentas/recompensas.py')
+          text = path.read_text(encoding='utf-8')
+          marker = 'def _planned_entries(\n    planned: dict[str, Any],\n'
+          if text.count(marker) != 1:
+              raise SystemExit('planned marker mismatch')
+          v2 = r'''def _procedural_entries_v2(index, tables, place, tier, danger, plan):
+    seed = index["semente"]
+    remaining = int(plan["pontos_total"])
+    used_templates = set()
+    map_entries = []
+    fragments = {}
+    weighted = []
+    for weight, category in enumerate(plan["categorias_ponderadas"]):
+        for template in _eligible_templates(tables, category, tier):
+            value = text(template.get("valor_aproximado"), f"{template['id']}.valor_aproximado")
+            if value not in VALUE_RANK or VALUE_RANK[value] > plan["teto_valor_rank"]:
+                continue
+            weighted.append((weight, category, template, _template_budget_cost(template, tables)))
+    if not weighted:
+        raise RewardMapError(f"{place}: Reward Budget v2 não encontrou template plausível para {plan['familia']}")
+    for offset in range(plan["max_itens"]):
+        slot = offset + 1
+        ordered = sorted(
+            weighted,
+            key=lambda item: hashlib.sha256(
+                f"{seed}|{place}|{tier}|{danger}|{GENERATOR_V2}|{plan['familia']}|slot|{slot}|peso|{item[0]}|categoria|{item[1]}|template|{item[2]['id']}".encode("utf-8")
+            ).hexdigest(),
+        )
+        chosen = next((item for item in ordered if item[2]["id"] not in used_templates and item[3] <= remaining), None)
+        if chosen is None:
+            break
+        _, category, template, cost = chosen
+        used_templates.add(template["id"])
+        remaining -= cost
+        condition = _choice(seed, f"{place}|{tier}|{danger}|{GENERATOR_V2}|condicao|{slot}", list(tables["condicoes"]))
+        possession = _procedural_possession(seed, f"{place}|{tier}|{danger}|{GENERATOR_V2}|posse|{slot}", condition)
+        rid = reward_id(f"{place}-r{slot:02d}")
+        item_path = (ITEMS_DIR / f"{rid}.yaml").as_posix()
+        map_entries.append({
+            "id": rid, "tipo": category, "estado": "oculto",
+            "condicao_de_descoberta": condition["texto"], "posse": possession,
+            "importancia": template["importancia"], "origem": "procedural", "arquivo": item_path,
+        })
+        fragments[rid] = {
+            "schema_recompensa": 1, "natureza": "reservado", "id": rid,
+            "local_id": place, "tipo": category, "nome": template["nome"],
+            "descricao": template["descricao"], "valor_aproximado": template["valor_aproximado"],
+            "importancia": template["importancia"], "origem": "procedural", "tags": list(template["tags"]),
+            "geracao": {
+                "modo": "procedural_deterministica", "gerador": GENERATOR_V2,
+                "template": template["id"], "slot": slot, "custo_orcamento": cost,
+                "familia_local": plan["familia"],
+                "chave": hashlib.sha256(
+                    f"{seed}|{place}|{tier}|{danger}|{GENERATOR_V2}|{plan['familia']}|item|{slot}|{template['id']}".encode("utf-8")
+                ).hexdigest()[:24],
+            },
+        }
+    return map_entries, fragments
+
+
+'''
+          path.write_text(text.replace(marker, v2 + marker, 1), encoding='utf-8')
+
+          replace(
+              'ferramentas/recompensas.py',
+              '''def generate_map(\n    index: dict[str, Any],\n    tables: dict[str, Any],\n    planned: dict[str, Any],\n    place: str,\n    tier: int,\n    danger: str,\n) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n''',
+              '''def generate_map(\n    index: dict[str, Any],\n    tables: dict[str, Any],\n    planned: dict[str, Any],\n    place: str,\n    tier: int,\n    danger: str,\n    *,\n    ecology: dict[str, Any] | None = None,\n) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    procedural_entries, procedural_fragments = _procedural_entries(\n        index, tables, place, tier, danger\n    )\n    planned_entries, planned_fragments = _planned_entries(planned, place)\n''',
+              '''    budget_v2 = _budget_v2_plan(index, tables, ecology, tier, danger)\n    if budget_v2 is None:\n        procedural_entries, procedural_fragments = _procedural_entries_v1(index, tables, place, tier, danger)\n    else:\n        procedural_entries, procedural_fragments = _procedural_entries_v2(index, tables, place, tier, danger, budget_v2)\n    planned_entries, planned_fragments = _planned_entries(planned, place)\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    fragments = {**procedural_fragments, **planned_fragments}\n    key = generation_key(index["semente"], place, tier, danger)\n    result = {\n''',
+              '''    fragments = {**procedural_fragments, **planned_fragments}\n    generator = GENERATOR_V2 if budget_v2 is not None else GENERATOR\n    key = generation_key(index["semente"], place, tier, danger, generator=generator, family=budget_v2["familia"] if budget_v2 is not None else None)\n    generation = {\n        "modo": generator, "chave": key, "imutavel": True,\n        "procedurais": len(procedural_entries), "planejadas": len(planned_entries),\n    }\n    if budget_v2 is not None:\n        spent = sum(int(fragment["geracao"]["custo_orcamento"]) for fragment in procedural_fragments.values())\n        generation["orcamento_v2"] = {\n            "familia_local": budget_v2["familia"], "pontos_total": budget_v2["pontos_total"],\n            "pontos_gastos": spent, "pontos_restantes": budget_v2["pontos_total"] - spent,\n            "teto_valor": budget_v2["teto_valor"], "max_itens": budget_v2["max_itens"],\n        }\n    result = {\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''        "geracao": {\n            "modo": GENERATOR,\n            "chave": key,\n            "imutavel": True,\n            "procedurais": len(procedural_entries),\n            "planejadas": len(planned_entries),\n        },\n''',
+              '''        "geracao": generation,\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    if (\n        generation.get("modo") != GENERATOR\n        or generation.get("chave") != meta.get("chave_geracao")\n        or generation.get("imutavel") is not True\n    ):\n        raise RewardMapError(f"{place}: metadados de geração inválidos")\n''',
+              '''    generator = generation.get("modo")\n    if (generator not in VALID_GENERATORS or generation.get("chave") != meta.get("chave_geracao") or generation.get("imutavel") is not True):\n        raise RewardMapError(f"{place}: metadados de geração inválidos")\n    if generator == GENERATOR_V2:\n        budget = amap(generation.get("orcamento_v2"), f"{place}.geracao.orcamento_v2")\n        required = {"familia_local", "pontos_total", "pontos_gastos", "pontos_restantes", "teto_valor", "max_itens"}\n        if set(budget) != required:\n            raise RewardMapError(f"{place}: resumo Reward Budget v2 inválido")\n        total = integer(budget["pontos_total"], f"{place}.pontos_total", 1)\n        spent = integer(budget["pontos_gastos"], f"{place}.pontos_gastos", 0)\n        remaining = integer(budget["pontos_restantes"], f"{place}.pontos_restantes", 0)\n        if spent + remaining != total:\n            raise RewardMapError(f"{place}: aritmética Reward Budget v2 inválida")\n        if text(budget["teto_valor"], f"{place}.teto_valor") not in VALUE_RANK:\n            raise RewardMapError(f"{place}: teto de valor v2 inválido")\n        integer(budget["max_itens"], f"{place}.max_itens", 1)\n        text(budget["familia_local"], f"{place}.familia_local")\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    if origin == "procedural":\n        if (\n            mode != "procedural_deterministica"\n            or generation.get("gerador") != GENERATOR\n            or not isinstance(generation.get("slot"), int)\n            or generation.get("slot") < 1\n        ):\n            raise RewardMapError(f"{rid}: proveniência procedural inválida")\n        text(generation.get("template"), f"{rid}.geracao.template")\n        text(generation.get("chave"), f"{rid}.geracao.chave")\n''',
+              '''    if origin == "procedural":\n        generator = generation.get("gerador")\n        if (mode != "procedural_deterministica" or generator not in VALID_GENERATORS or not isinstance(generation.get("slot"), int) or generation.get("slot") < 1):\n            raise RewardMapError(f"{rid}: proveniência procedural inválida")\n        text(generation.get("template"), f"{rid}.geracao.template")\n        text(generation.get("chave"), f"{rid}.geracao.chave")\n        if generator == GENERATOR_V2:\n            integer(generation.get("custo_orcamento"), f"{rid}.geracao.custo_orcamento", 1)\n            text(generation.get("familia_local"), f"{rid}.geracao.familia_local")\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              'def ensure(repo: Path, place: str, tier: int, danger: str) -> dict[str, Any]:\n',
+              '''def ensure(\n    repo: Path,\n    place: str,\n    tier: int,\n    danger: str,\n    *,\n    ecology: dict[str, Any] | None = None,\n) -> dict[str, Any]:\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''    tables = load_tables(repo)\n    planned = load_planned(repo)\n    item_index = load_item_index(repo)\n    data, fragments = generate_map(index, tables, planned, place, tier, danger)\n''',
+              '''    ecology_sources: list[str] = []\n    if ecology is None and (repo / ecologia_local.INDEX).is_file():\n        try:\n            ecology_lookup = ecologia_local.lookup_canonical(repo, place)\n        except ecologia_local.LocalEcologyError as exc:\n            raise RewardMapError(str(exc)) from exc\n        ecology = ecology_lookup["perfil"]\n        ecology_sources.extend(ecology_lookup["fontes_lidas"])\n    tables = load_tables(repo)\n    planned = load_planned(repo)\n    item_index = load_item_index(repo)\n    data, fragments = generate_map(index, tables, planned, place, tier, danger, ecology=ecology)\n'''
+          )
+          replace(
+              'ferramentas/recompensas.py',
+              '''        "fontes_lidas": [\n            INDEX.as_posix(),\n            TABLES.as_posix(),\n            PLANNED.as_posix(),\n            ITEM_INDEX.as_posix(),\n        ],\n        "arquivos_criados": [\n''',
+              '''        "fontes_lidas": [\n            INDEX.as_posix(),\n            TABLES.as_posix(),\n            PLANNED.as_posix(),\n            ITEM_INDEX.as_posix(),\n            *ecology_sources,\n        ],\n        "arquivos_criados": [\n'''
+          )
+
+          replace(
+              'ferramentas/interacoes_mundo.py',
+              '''def local_event(\n    repo: Path,\n    place: str,\n    *,\n    action: str,\n    tier: int,\n    danger: str,\n) -> dict[str, Any]:\n''',
+              '''def local_event(\n    repo: Path,\n    place: str,\n    *,\n    action: str,\n    tier: int,\n    danger: str,\n    ecology: dict[str, Any] | None = None,\n) -> dict[str, Any]:\n'''
+          )
+          replace('ferramentas/interacoes_mundo.py', '        result = recompensas.ensure(repo, place, tier, danger)\n', '        result = recompensas.ensure(repo, place, tier, danger, ecology=ecology)\n')
+          replace(
+              'ferramentas/cena_mundo_v4.py',
+              '''                tier=local_spec["tier"],\n                danger=local_spec["periculosidade"],\n            )\n''',
+              '''                tier=local_spec["tier"],\n                danger=local_spec["periculosidade"],\n                ecology=(local_spec.get("ecologia") if isinstance(local_spec.get("ecologia"), dict) else None),\n            )\n'''
+          )
+
+          for file in ('ferramentas/recompensas.py', 'ferramentas/interacoes_mundo.py', 'ferramentas/cena_mundo_v4.py'):
+              compile(Path(file).read_text(encoding='utf-8'), file, 'exec')
+          PY
+          git diff --check
+      - name: Commit patch
+        run: |
+          git rm .github/workflows/task18-apply.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ferramentas/recompensas.py ferramentas/interacoes_mundo.py ferramentas/cena_mundo_v4.py narrador/recompensas/tabelas.yaml
+          git commit -m 'Task 18: implementar Reward Budget v2'
+          git push origin HEAD:task/reward-budget-v2
