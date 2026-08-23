@@ -5,8 +5,8 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 12
-  status: entre_sessoes
+  numero: 13
+  status: em_sessao
   modo_de_cena: retorno_ao_circo_apos_recado_a_sella
 personagem:
   nome: Ren Kagehira
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/012/handoff.yaml
-  transcricao_fria: sessoes/012/transcricao.md
+  handoff_atual: sessoes/013/handoff.yaml
+  transcricao_fria: sessoes/013/transcricao.md
   narrador: narrador/
   regras: regras/
 efeitos_temporarios:

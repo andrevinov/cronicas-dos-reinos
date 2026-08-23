@@ -1,0 +1,53 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 13
+checkpoint:
+  tipo: bootstrap
+  estado: retomavel
+  modo: retorno_ao_circo_apos_recado_a_sella
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    ki:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 30.58
+  tempo:
+    data: 14 Eleasis, 1372 DR
+    hora_aproximada: '21:20'
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Rua da Cal, Lower Trades, Ravens Bluff
+    ponto_exato: diante do mercador de cal de portadas fechadas, em conversa breve com Sella Rove
+continuidade:
+  resumo_imediato: Após entregar formalmente o documento falsificado à Casa de Tyr e deixar a investigação com Halessa,
+    Ren voltou ao circo, relatou as ameaças a Silva e compartilhou com Nera um momento íntimo e romântico. Nera
+    apoiou a esperança de uma casa segura sem aceitar que proteção se torne prisão; Ren prometeu voltar quando pudesse
+    e avisar quando não pudesse. Depois de dormir poucas horas, sem completar descanso longo, Ren vestiu a persona
+    de Shinta e chegou à Casa do Salgueiro Seco ao primeiro clarear, onde aguarda o jardineiro abrir o portão.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes: []
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/013/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

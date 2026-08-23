@@ -2,8 +2,8 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: entre_sessoes
-  sessao_atual: 12
+  status: em_sessao
+  sessao_atual: 13
   modo_de_cena_atual: retorno_ao_circo_apos_recado_a_sella
 personagem:
   nome: Ren Kagehira
@@ -68,7 +68,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/012/transcricao.md
+  transcricao_atual: sessoes/013/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
