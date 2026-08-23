@@ -1,0 +1,61 @@
+schema_qualidade_abordagem: 1
+natureza: regra_da_mesa
+titulo: Approach Quality Modifier
+objetivo: >-
+  Recompensar abordagens que realmente favorecem um teste de habilidade sem
+  substituir a ficha, alterar a CD ou transformar uma ação impossível em possível.
+escopo:
+  aplica:
+  - teste_d20_generico_do_jogador
+  - teste_de_pericia_de_ren
+  nao_aplica:
+  - ataque
+  - salvaguarda
+  - iniciativa
+  - dano
+  - rolagem_de_npc
+rubrica:
+  preparacao:
+    bonus: 1
+    criterio: >-
+      Houve preparação concreta anterior ao teste — recurso, posicionamento,
+      ensaio, ferramenta, tempo investido ou condição criada — e ela favorece
+      diretamente este teste específico.
+  informacao:
+    bonus: 1
+    criterio: >-
+      O plano usa informação relevante já obtida sobre alvo, ambiente, rotina,
+      fraqueza, procedimento ou contexto, e essa informação favorece diretamente
+      este teste específico.
+  adequacao:
+    bonus: 1
+    criterio: >-
+      O método escolhido se ajusta de forma particularmente boa ao obstáculo em
+      vez de ser apenas uma tentativa genérica, e essa adequação favorece este
+      teste específico.
+niveis:
+  0: direta
+  1: preparada
+  2: forte
+  3: excepcional
+guardrails:
+  avaliar_antes_do_rng: true
+  max_bonus: 3
+  sem_bonus_negativo: true
+  cada_criterio_no_maximo_uma_vez: true
+  mesma_evidencia_nao_pode_pontuar_duas_vezes: true
+  evidencia_precisa_ser_especifica_ao_teste: true
+  bonus_da_ficha_permanece_independente: true
+  vantagem_e_desvantagem_permanecem_independentes: true
+  bonus_extra_circunstancial_permanece_independente: true
+  mesma_circunstancia_nao_pode_ser_contada_em_duas_mecanicas: true
+  nao_altera_cd: true
+  nao_cria_sucesso_automatico: true
+  nao_cria_falha_automatica: true
+  nao_torna_acao_impossivel_possivel: true
+  acao_impossivel_nao_deve_ser_rolada: true
+  sem_reroll: true
+  sem_bonus_retroativo_apos_ver_o_dado: true
+  sem_estado_persistente: true
+  sem_scheduler: true
+  sem_scan: true
