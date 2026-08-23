@@ -1,6 +1,6 @@
 # Golden Lily em Ravens Bluff
 
-Arquivo reservado ao narrador. Esta é uma direção canônica da Parte 1, não uma cena prescrita.
+Arquivo reservado ao narrador. Esta direção continua definindo o papel marítimo do navio; a espinha datada da Parte 1 fica em `narrador/arcos/parte_1/eventos-canonicos.yaml`.
 
 ## Relógio canônico
 
@@ -14,11 +14,15 @@ O navio deve inicialmente ser plausível como oportunidade econômica: grande em
 
 Pan Chu também oferece a Masao uma rota marítima de armas, drogas, pessoal, retirada e explicação falsa para a crescente presença oriental. Por algum tempo, autoridades e investigadores devem poder acreditar que o porto explica o que está acontecendo.
 
-## Contestação
+## Contestação e 29 Eleasis
 
-Pan Chu não reconhece automaticamente uma ordem de expulsão como autoridade suficiente sobre seu navio. Se Ravens Bluff tentar removê-lo à força e Masao ainda exigir a presença do Golden Lily, Pan Chu pode responder com força naval, inclusive demonstração destrutiva contra estrutura militar ou portuária. Isso é possibilidade condicionada, não obrigação de cena.
+A escalada da Parte 1 fixa que a reação externa amadurece até **29 Eleasis**. A mobilização deve existir antes disso no mundo para que três fragatas de Cormyr não apareçam sem causa. Nesse dia, elas alcançam Ravens Bluff e exigem a retirada do Golden Lily.
 
-Uma força de Cormyr ou outra potência naval pode ser chamada se a escalada política sustentar isso. Se ocorrer, Pan Chu deve ser adversário naval sério e pode derrotar uma tentativa de expulsão; Cormyr não é convocado automaticamente só para produzir espetáculo.
+Pan Chu recusa a ordem, demonstra poder contra uma das fragatas e, quando Cormyr ameaça responder, volta os canhões contra Ravens Bluff e destrói um monumento conhecido, causando mortes e feridos civis em escala limitada mas suficiente para tornar a chantagem inequívoca: se atacarem o navio, ele pode bombardear a cidade.
+
+Enquanto Pan Chu permanecer vivo, no comando e capaz de cumprir a ameaça, as fragatas **não atacam**. Elas ficam na região, seus oficiais desembarcam, negociam com a Night Watch e outras autoridades, estudam bloqueio e evacuação e procuram uma solução que não transforme Ravens Bluff em alvo. O impasse deve cansar e pressionar Luath em vez de funcionar como resgate externo.
+
+Se Pan Chu for completamente derrotado por acontecimentos anteriores ou posteriores, seu sucessor não herda automaticamente a mesma disposição. O novo capitão pode permanecer por alguns dias e então fugir. Qualquer punição futura de Masao contra esse sucessor exige fato próprio.
 
 ## Regra de descoberta
 
