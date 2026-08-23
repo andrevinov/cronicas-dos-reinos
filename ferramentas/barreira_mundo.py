@@ -27,8 +27,10 @@ autônomo já elegível.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import os
 import re
+import sys
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -40,7 +42,6 @@ except ImportError as exc:  # pragma: no cover
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
-import eventos_canonicos
 import mundo
 import pressao_ravens_bluff
 
@@ -284,10 +285,33 @@ def _validate_autonomous_noop(note: str | None) -> str:
     return note.strip()
 
 
-def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
+def _canonical_module(repo: Path):
+    catalog = repo / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+    if not catalog.is_file():
+        return None
     try:
-        return eventos_canonicos.event_for_pending(repo, pending)
-    except eventos_canonicos.CanonicalEventError as exc:
+        import eventos_canonicos
+        return eventos_canonicos
+    except ModuleNotFoundError as exc:
+        if exc.name != "eventos_canonicos":
+            raise
+        module_path = Path(__file__).with_name("eventos_canonicos.py")
+        spec = importlib.util.spec_from_file_location("eventos_canonicos", module_path)
+        if spec is None or spec.loader is None:
+            raise WorldPendingBarrierError("não foi possível carregar ferramentas/eventos_canonicos.py") from exc
+        module = importlib.util.module_from_spec(spec)
+        sys.modules.setdefault("eventos_canonicos", module)
+        spec.loader.exec_module(module)
+        return module
+
+
+def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
+    module = _canonical_module(repo)
+    if module is None:
+        return None
+    try:
+        return module.event_for_pending(repo, pending)
+    except module.CanonicalEventError as exc:
         raise WorldPendingBarrierError(str(exc)) from exc
 
 
