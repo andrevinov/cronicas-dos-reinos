@@ -1,0 +1,59 @@
+schema_orcamento_sidequest_gate_v2: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Tornar o gate raro de sidequests sensível à seca de aventura sem criar missão,
+  oferta, scheduler, reroll ou scan adicional do mundo.
+gate_base:
+  total_fichas: 10
+  nada: 8
+  oportunidade: 2
+  sem_reposicao: true
+pressao:
+  fonte: narrador/microeventos-locais/estado.yaml
+  promocoes_nada_por_nivel:
+    0: 0
+    1: 1
+    2: 2
+    3: 3
+  oportunidades_efetivas_max_por_ciclo:
+    0: 2
+    1: 3
+    2: 4
+    3: 5
+  ordenacao_promovidos: sha256_seed_token
+limites:
+  max_fontes_adicionais_por_gate_nada: 1
+  max_fragmentos_narrativos_por_decisao: 1
+  max_draws_base_por_encontro: 1
+  max_promocoes_por_draw: 1
+  max_pendencias_avaliacao: 1
+  max_sidequests_ativas: 2
+  max_sidequests_em_aberto: 3
+  cooldown_oferta_dias: [2, 3]
+  max_schedulers_novos: 0
+  max_scans_gerais: 0
+  max_rerolls: 0
+invariantes:
+  somente_encontro_npc_elegivel: true
+  pressao_so_e_lida_depois_de_barreiras: true
+  ficha_oportunidade_base_nao_le_pressao: true
+  pressao_nao_reordena_baralho: true
+  pressao_nao_reseta_baralho: true
+  pressao_nao_fura_pendencia_global: true
+  pressao_nao_fura_limite_ativas: true
+  pressao_nao_fura_limite_em_aberto: true
+  pressao_nao_fura_cooldown: true
+  oportunidade_continua_potencial: true
+  potencial_nao_e_oferta: true
+  oferta_nao_e_aceite: true
+  promocao_nao_cria_npc: true
+  promocao_nao_cria_combate: true
+  promocao_nao_cria_recompensa: true
+  promocao_nao_cria_pista_ou_segredo: true
+  mesmo_encontro_e_idempotente: true
+  camada_pressao_ausente_em_fixture_legado_equivale_nivel_zero: true
+  camada_pressao_parcial_falha_fechada: true
+  estado_gate_existente_nao_e_reinicializado: true
+  estado_real_nao_recebe_seca_retroativa: true
+  hot_path_preferencial_continua_endpoints_cena: true
+  cli_legada_nao_e_porta_preferencial: true
