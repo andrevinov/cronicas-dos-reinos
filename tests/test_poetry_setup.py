@@ -21,6 +21,7 @@ class PoetrySetupTest(unittest.TestCase):
         expected = {
             "entrada",
             "contexto",
+            "cronica",
             "turno",
             "checkpoint",
             "consolidar",
@@ -47,6 +48,7 @@ class PoetrySetupTest(unittest.TestCase):
         targets = {
             "entrada.py",
             "contexto.py",
+            "cronica.py",
             "turno.py",
             "checkpoint.py",
             "consolidar.py",

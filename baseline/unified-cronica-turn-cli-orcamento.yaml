@@ -1,0 +1,54 @@
+schema_orcamento_cronica_turn_cli: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Reduzir a orquestração do hot path de turno sem mover semântica das portas
+  determinísticas, do registrador transacional ou da confirmação de cena.
+fluxo_preferencial:
+  chamadas_operacionais_por_turno: 2
+  fase_1: cronica preparar
+  fase_2: cronica concluir
+  preparar_e_read_only: true
+  concluir_confirma_antes_de_registrar: true
+  transacao_e_prevalidada_antes_da_primeira_mutacao: true
+limites:
+  max_ticket_chars: 4096
+  max_saida_preparacao_bytes: 8192
+  max_chamadas_endpoint_preparar: 1
+  max_chamadas_confirmacao_concluir: 1
+  max_chamadas_registro_concluir: 1
+  max_escritas_novas_da_orquestracao: 0
+  max_arquivos_runtime_novos: 0
+  max_schedulers_novos: 0
+  max_estados_novos: 0
+  max_scans_repo: 0
+  max_endpoints_novos: 0
+portas:
+  preparar: read_only
+  concluir: confirmar_e_registrar
+  registrar: reparo_ou_uso_avancado
+  confirmar: reparo_ou_uso_avancado
+invariantes:
+  ticket_autocontido_sem_persistencia: true
+  ticket_tem_checksum: true
+  ticket_carrega_parametros_exatos_da_cena: true
+  ticket_nao_congela_tempo_quando_tempo_nao_foi_fornecido: true
+  preparacao_obsoleta_falha_antes_do_registro_no_fluxo_concluir: true
+  checkpoint_temporal_do_turno_ocorre_depois_da_confirmacao_da_cena: true
+  falha_de_registro_apos_confirmacao_e_exposta_como_parcial: true
+  reparo_pos_confirmacao_e_explicito: true
+  clis_legadas_continuam_disponiveis: true
+  endpoint_schema_permanece_1: true
+  quantidade_endpoints_permanece_5: true
+  sem_nova_semantica_de_cena: true
+  sem_nova_semantica_transacional: true
+  abordagem_task20_e_transportada_no_ticket: true
+  nenhum_resultado_de_rng_e_embutido_no_ticket: true
+meta_rollout:
+  objetivo: reduzir_tools_e_inferencias_de_orquestracao
+  medicao: pos_hoc
+  cronica_preparar_e_writer: false
+  cronica_concluir_e_writer: true
+  cronica_registrar_e_writer: true
+  cronica_confirmar_e_writer: true
+  concluir_e_registrar_inferem_alvos_operacionais_do_turno: true
+  proibido_inventar_reducao_sem_rollout: true

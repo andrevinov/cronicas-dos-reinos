@@ -72,6 +72,12 @@ RAW_READ_MARKERS = (
 )
 WRITE_MARKERS = (
     "turno.py registrar",
+    "cronica.py concluir",
+    "cronica.py registrar",
+    "cronica.py confirmar",
+    "cronica concluir",
+    "cronica registrar",
+    "cronica confirmar",
     "checkpoint.py cena",
     "checkpoint.py sessao",
     "checkpoint.py recuperar",
@@ -279,7 +285,13 @@ def _infer_write_paths(name: str, raw_input: str) -> list[str]:
         patch_paths = PATCH_FILE_RE.findall(raw_input)
         if patch_paths:
             paths = list(dict.fromkeys(patch_paths))
-    if "turno.py registrar" in lower:
+    if (
+        "turno.py registrar" in lower
+        or "cronica.py concluir" in lower
+        or "cronica.py registrar" in lower
+        or "cronica concluir" in lower
+        or "cronica registrar" in lower
+    ):
         paths.extend(["sessoes/NNN/transcricao.md", "runtime/eventos-pendentes.jsonl"])
     if "gerar-runtime.py" in lower and "--check" not in lower:
         paths.extend(["runtime/contexto.yaml", "runtime/cena.yaml"])
