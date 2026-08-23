@@ -116,6 +116,9 @@ def current_snapshot(repo: Path) -> dict[str, Any]:
     commitments = effective_context.get("compromissos")
     if commitments:
         result["compromissos"] = commitments
+    capabilities = effective_context.get("capacidades_contextuais")
+    if capabilities:
+        result["capacidades_contextuais"] = capabilities
     return result
 
 

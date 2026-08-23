@@ -32,8 +32,16 @@ criacao:
     destreza: 1
     sabedoria: 1
   talento_inicial: Móvel
+  talentos_bonus_retroativos:
+  - Actor
+  - Observant
+  ajustes_talentos_bonus:
+    carisma: 1
+    inteligencia: 1
+  escolha_observant: Inteligência
+  regra_talentos_bonus: regras/decisoes.md#dec-0007--actor-e-observant-como-talentos-bonus-retroativos-de-criacao
   suplementos_mecanicos_opcionais: nenhum
-  observacao: Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional.
+  observacao: Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional. Actor e Observant são talentos bônus retroativos de criação por decisão de mesa; não consomem o talento racial Móvel, o ASI do nível 4 nem escolhas futuras de progressão.
   escolhas:
     pericia_humano_variante: Investigação
     pericias_monge:
@@ -63,17 +71,17 @@ atributos:
     salvaguarda_proficiente: false
     bonus_salvaguarda: 2
   inteligencia:
-    valor: 13
-    modificador: 1
+    valor: 14
+    modificador: 2
     salvaguarda_proficiente: false
-    bonus_salvaguarda: 1
+    bonus_salvaguarda: 2
   sabedoria:
     valor: 17
     modificador: 3
     salvaguarda_proficiente: false
     bonus_salvaguarda: 3
   carisma:
-    valor: 10
+    valor: 11
     modificador: 0
     salvaguarda_proficiente: false
     bonus_salvaguarda: 0
@@ -115,23 +123,23 @@ pericias:
   furtividade: 7
   intuicao: 6
   percepcao: 6
-  investigacao: 4
+  investigacao: 5
   atletismo: 1
-  historia: 1
-  religiao: 1
-  arcana: 1
+  historia: 2
+  religiao: 2
+  arcana: 2
   enganacao: 0
   intimidacao: 0
   persuasao: 0
   sobrevivencia: 3
   medicina: 3
-  natureza: 1
+  natureza: 2
   prestidigitacao: 4
   atuacao: 0
   lidar_com_animais: 3
 sentidos:
-  percepcao_passiva: 16
-  investigacao_passiva: 14
+  percepcao_passiva: 21
+  investigacao_passiva: 20
   intuicao_passiva: 16
 proficiencias:
   armaduras: []
@@ -224,6 +232,22 @@ talentos:
     resumo: Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque
       de oportunidade dela pelo resto do turno, acertando ou errando.
     observacao: Ajuda Ren a bater e reposicionar, essencial para campanha solo.
+  actor:
+    origem: talento bônus retroativo de criação
+    ajuste_atributo: +1 Carisma
+    vantagem_outra_identidade: Ren tem vantagem em testes de Carisma (Enganação) e Carisma (Atuação) ao tentar passar-se por uma pessoa diferente de Ren Kagehira.
+    identidades_validas: A outra identidade pode ser inventada, como Shinta Ryoushi, uma persona genérica ou uma pessoa real específica.
+    mimetismo: Pode imitar a fala de outra pessoa ou sons feitos por outra criatura depois de ouvi-los por pelo menos 1 minuto.
+    deteccao_mimetismo: Um ouvinte desconfiado pode testar Sabedoria (Intuição) contra Carisma (Enganação) de Ren para perceber que a imitação é falsa.
+    observacao: Mimetismo é um benefício separado e não é pré-requisito para a vantagem. Actor não concede vantagem a uma mentira feita assumidamente como Ren nem a uma performance que não estabeleça ou sustente outra identidade.
+  observant:
+    origem: talento bônus retroativo de criação
+    escolha_atributo: Inteligência
+    ajuste_atributo: +1 Inteligência
+    leitura_labial: Se Ren puder ver a boca de uma criatura enquanto ela fala um idioma que ele entende, pode interpretar o que ela está dizendo pelos lábios.
+    bonus_percepcao_passiva: 5
+    bonus_investigacao_passiva: 5
+    observacao: O +5 afeta apenas os valores passivos; testes ativos usam os bônus normais da ficha.
 aumentos_de_atributo:
   nivel_4:
     escolha: +1 Destreza, +1 Sabedoria

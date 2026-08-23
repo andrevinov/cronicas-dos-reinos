@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Porta pública de dados com Approach Quality Modifier pré-rolagem.
+"""Porta pública de dados com modificadores contextuais pré-rolagem.
 
-O motor anterior foi preservado em ``_rolar_dados_core.py``. Esta camada só
-interpreta três evidências estruturadas antes do RNG, soma o bônus resultante ao
-modificador circunstancial apropriado e então delega exatamente uma vez ao motor
-existente.
+O motor anterior foi preservado em ``_rolar_dados_core.py``. Esta camada interpreta
+qualidade da abordagem e o gatilho de outra identidade do talento Actor antes do RNG,
+então delega exatamente uma vez ao motor existente.
 """
 from __future__ import annotations
 
@@ -27,6 +26,12 @@ APPROACH_FLAGS = {
     "--abordagem-informacao": "informacao",
     "--abordagem-adequacao": "adequacao",
 }
+ACTOR_FLAG = "--actor-outra-identidade"
+ACTOR_SKILLS = {"enganacao", "atuacao"}
+
+
+class FeatContextError(ValueError):
+    """Uso incoerente de um talento contextual antes da rolagem."""
 
 
 def _extract_approach(argv: list[str]) -> tuple[list[str], dict[str, Any]]:
@@ -124,28 +129,73 @@ def _bump_integer_flag(argv: list[str], flag: str, amount: int) -> list[str]:
     return result
 
 
-def prepare_argv(argv: list[str]) -> tuple[list[str], dict[str, Any]]:
-    """Valida abordagem e calcula argv final antes de qualquer chamada ao RNG."""
-    clean, quality = _extract_approach(list(argv))
+def _apply_actor(argv: list[str]) -> tuple[list[str], str | None]:
+    """Aplica Actor quando Ren tenta passar-se por uma pessoa diferente de si mesmo.
+
+    A outra identidade pode ser inventada (como Shinta), genérica ou uma pessoa real
+    específica. O mimetismo de voz/sons é outro benefício do talento e não é
+    pré-requisito para esta vantagem.
+    """
+    count = argv.count(ACTOR_FLAG)
+    if count > 1:
+        raise FeatContextError(f"{ACTOR_FLAG} não pode ser repetido")
+    if count == 0:
+        return list(argv), None
+
+    clean = [token for token in argv if token != ACTOR_FLAG]
+    if len(clean) < 3 or clean[0] != "ren" or clean[1] not in {"pericia", "skill"}:
+        raise FeatContextError(
+            "Actor só se aplica a `ren pericia enganacao|atuacao` quando Ren tenta "
+            "passar-se por uma pessoa diferente de Ren Kagehira, real ou inventada"
+        )
+    skill = _core.normalize_key(clean[2])
+    if skill not in ACTOR_SKILLS:
+        raise FeatContextError(
+            "Actor só concede vantagem a Enganação ou Atuação ao estabelecer ou "
+            "sustentar outra identidade"
+        )
+
+    has_advantage = "--vantagem" in clean
+    has_disadvantage = "--desvantagem" in clean
+    if has_advantage and has_disadvantage:
+        raise FeatContextError("vantagem e desvantagem não podem ser declaradas juntas")
+    if has_disadvantage:
+        clean.remove("--desvantagem")
+        return clean, "Actor: vantagem por outra identidade cancelou a desvantagem; rolagem normal"
+    if has_advantage:
+        return clean, "Actor: vantagem por outra identidade já estava representada"
+    clean.append("--vantagem")
+    return clean, "Actor: vantagem por outra identidade aplicada"
+
+
+def _prepare_argv_context(argv: list[str]) -> tuple[list[str], dict[str, Any], str | None]:
+    clean, actor_note = _apply_actor(list(argv))
+    clean, quality = _extract_approach(clean)
     bonus = int(quality["bonus"])
     if bonus:
         clean = _bump_integer_flag(clean, _approach_bonus_flag(clean), bonus)
+    return clean, quality, actor_note
+
+
+def prepare_argv(argv: list[str]) -> tuple[list[str], dict[str, Any]]:
+    """Compatibilidade: devolve argv final + qualidade, já incluindo Actor quando declarado."""
+    clean, quality, _ = _prepare_argv_context(argv)
     return clean, quality
 
 
 def main(argv: list[str] | None = None) -> int:
     raw = list(sys.argv[1:] if argv is None else argv)
     try:
-        adjusted, quality = prepare_argv(raw)
-    except qualidade_abordagem.ApproachQualityError as exc:
+        adjusted, quality, actor_note = _prepare_argv_context(raw)
+    except (qualidade_abordagem.ApproachQualityError, FeatContextError) as exc:
         print(f"Erro: {exc}", file=sys.stderr)
         return 2
 
-    if int(quality["bonus"]) == 0:
+    if int(quality["bonus"]) == 0 and actor_note is None:
         return _core.main(adjusted)
 
-    # Com abordagem, capturamos somente stdout para anexar a auditoria na mesma
-    # linha. stderr e o código de saída do motor permanecem intactos.
+    # Captura somente stdout para anexar a auditoria contextual na mesma linha.
+    # stderr e o código de saída do motor permanecem intactos.
     buffer = io.StringIO()
     with contextlib.redirect_stdout(buffer):
         status = _core.main(adjusted)
@@ -154,11 +204,19 @@ def main(argv: list[str] | None = None) -> int:
         if output:
             print(output)
         return status
-    note = qualidade_abordagem.annotation(quality)
-    if output:
-        print(f"{output} {note}.")
-    elif note:
-        print(note + ".")
+
+    notes: list[str] = []
+    if int(quality["bonus"]) != 0:
+        notes.append(qualidade_abordagem.annotation(quality))
+    if actor_note:
+        notes.append(f"[{actor_note}]")
+    suffix = " ".join(notes)
+    if output and suffix:
+        print(f"{output} {suffix}.")
+    elif output:
+        print(output)
+    elif suffix:
+        print(suffix + ".")
     return 0
 
 
