@@ -7,13 +7,14 @@ reservado, sem novo endpoint, nova leitura ou mudança de schema.
 
 No caminho raro em que a barreira do Mundo Vivo está bloqueada, o endpoint de
 pendências também projeta candidatos autônomos de pressão de Ravens Bluff e,
-quando houver, o núcleo dos eventos canônicos datados da Parte 1. Tudo permanece
-read-only: a projeção informa o que está devido; a materialização exige transação
-de mundo e checkpoint normal.
+quando houver, o núcleo do próximo evento canônico datado da Parte 1. Tudo
+permanece read-only: a projeção informa o que está devido; a materialização exige
+transação de mundo e checkpoint normal.
 """
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import sys
 from pathlib import Path
 from typing import Any
@@ -21,14 +22,13 @@ from typing import Any
 import yaml
 
 import _endpoints_core as _base
-import eventos_canonicos
 import pressao_ravens_bluff
 import qualidade_abordagem
 
 _ORIGINAL_PROJECT_SCENE = _base.project_scene
 _ORIGINAL_BUILD_PARSER = _base.build_parser
 MAX_PRESSURE_CANDIDATES = 4
-MAX_CANONICAL_EVENTS = 3
+MAX_CANONICAL_EVENTS = 1
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -46,6 +46,29 @@ def _quality(
         informacao=informacao,
         adequacao=adequacao,
     )
+
+
+def _canonical_module(repo: Path):
+    """Carrega o calendário somente no caminho raro em que ele existe no repo."""
+    catalog = repo / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+    if not catalog.is_file():
+        return None
+    try:
+        import eventos_canonicos
+        return eventos_canonicos
+    except ModuleNotFoundError as exc:
+        if exc.name != "eventos_canonicos":
+            raise
+        module_path = Path(__file__).with_name("eventos_canonicos.py")
+        spec = importlib.util.spec_from_file_location("eventos_canonicos", module_path)
+        if spec is None or spec.loader is None:
+            raise _base.EndpointError(
+                "não foi possível carregar ferramentas/eventos_canonicos.py"
+            ) from exc
+        module = importlib.util.module_from_spec(spec)
+        sys.modules.setdefault("eventos_canonicos", module)
+        spec.loader.exec_module(module)
+        return module
 
 
 def project_scene(
@@ -124,8 +147,8 @@ def project_pending(result: dict[str, Any]) -> dict[str, Any]:
                     "data": item.get("data"),
                     "janela": item.get("janela"),
                     "atraso_dias": item.get("atraso_dias"),
-                    "nucleo_obrigatorio": list(item.get("nucleo_obrigatorio") or [])[:5],
-                    "guardrails": list(item.get("guardrails") or [])[:5],
+                    "nucleo_obrigatorio": list(item.get("nucleo_obrigatorio") or [])[:3],
+                    "guardrails": list(item.get("guardrails") or [])[:3],
                     "regra": "núcleo obrigatório; forma e resultado flexíveis; nunca escrever decisão de Ren",
                 }
             )
@@ -175,7 +198,14 @@ def pending(repo: Path) -> dict[str, Any]:
     raw = _base.mundo.pending_view(repo)
     pendings = list(raw.get("pendencias") or [])
     pressure = pressao_ravens_bluff.pending_candidates(repo, pendings)
-    canonical = eventos_canonicos.pending_projection(repo, pendings)
+    canonical_module = _canonical_module(repo)
+    if canonical_module is None:
+        canonical = {"eventos": [], "fontes_lidas": []}
+    else:
+        try:
+            canonical = canonical_module.pending_projection(repo, pendings)
+        except canonical_module.CanonicalEventError as exc:
+            raise _base.EndpointError(str(exc)) from exc
     raw["pressao_ravens_bluff"] = pressure
     raw["eventos_canonicos"] = canonical
     raw["fontes_lidas"] = list(
@@ -246,7 +276,6 @@ def main(argv: list[str] | None = None) -> int:
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except (
-        eventos_canonicos.CanonicalEventError,
         pressao_ravens_bluff.PressureError,
         qualidade_abordagem.ApproachQualityError,
         _base.EndpointError,
