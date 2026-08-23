@@ -46,4 +46,9 @@ invariantes:
 meta_rollout:
   objetivo: reduzir_tools_e_inferencias_de_orquestracao
   medicao: pos_hoc
+  cronica_preparar_e_writer: false
+  cronica_concluir_e_writer: true
+  cronica_registrar_e_writer: true
+  cronica_confirmar_e_writer: true
+  concluir_e_registrar_inferem_alvos_operacionais_do_turno: true
   proibido_inventar_reducao_sem_rollout: true
