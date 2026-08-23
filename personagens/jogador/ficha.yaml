@@ -235,10 +235,11 @@ talentos:
   actor:
     origem: talento bônus retroativo de criação
     ajuste_atributo: +1 Carisma
-    vantagem_impersonacao: Ren tem vantagem em testes de Carisma (Enganação) e Carisma (Atuação) ao tentar se passar por outra pessoa.
+    vantagem_outra_identidade: Ren tem vantagem em testes de Carisma (Enganação) e Carisma (Atuação) ao tentar passar-se por uma pessoa diferente de Ren Kagehira.
+    identidades_validas: A outra identidade pode ser inventada, como Shinta Ryoushi, uma persona genérica ou uma pessoa real específica.
     mimetismo: Pode imitar a fala de outra pessoa ou sons feitos por outra criatura depois de ouvi-los por pelo menos 1 minuto.
     deteccao_mimetismo: Um ouvinte desconfiado pode testar Sabedoria (Intuição) contra Carisma (Enganação) de Ren para perceber que a imitação é falsa.
-    observacao: Não concede vantagem a toda mentira ou performance; o gatilho mecânico é impersonação de outra pessoa.
+    observacao: Mimetismo é um benefício separado e não é pré-requisito para a vantagem. Actor não concede vantagem a uma mentira feita assumidamente como Ren nem a uma performance que não estabeleça ou sustente outra identidade.
   observant:
     origem: talento bônus retroativo de criação
     escolha_atributo: Inteligência
