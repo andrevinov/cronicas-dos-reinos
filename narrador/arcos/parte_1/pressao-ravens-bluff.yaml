@@ -156,3 +156,116 @@ frentes:
       sinais:
       - homens, material e serviços de Masao já podem ser repostos em escala dentro
         da cidade
+integracao_mundo_vivo:
+  max_frentes_por_resolucao: 1
+  ausencia_de_acao_de_ren_bloqueia: false
+  regra: >-
+    Reavaliar um agente não sobe pressão por calendário. Quando a reavaliação produz
+    uma ação canônica compatível com uma rota abaixo, a própria resolução pode subir
+    no máximo uma frente. A ausência de nova iniciativa de Ren nunca é motivo para
+    impedir um plano autônomo que já possui recursos, conhecimento e oportunidade.
+  rotas:
+  - agente: masao_hirasawa
+    linha: expandir_presenca_de_masao
+    metodo: trazer_celulas_em_lotes_pequenos
+    efeitos:
+    - frente: crime_e_milicias
+      niveis_destino: [1, 2]
+    - frente: presenca_oriental
+      niveis_destino: [1, 2, 3]
+  - agente: masao_hirasawa
+    linha: expandir_presenca_de_masao
+    metodo: financiar_infraestrutura_local
+    efeitos:
+    - frente: ocupacao_imobiliaria
+      niveis_destino: [1]
+    - frente: custo_de_vida
+      niveis_destino: [1, 2]
+  - agente: masao_hirasawa
+    linha: ocupar_espaco_urbano
+    metodo: substituir_moradores_gradualmente
+    efeitos:
+    - frente: ocupacao_imobiliaria
+      niveis_destino: [1, 2, 3]
+  - agente: masao_hirasawa
+    linha: ocupar_espaco_urbano
+    metodo: formar_enclave_sem_nome
+    efeitos:
+    - frente: ocupacao_imobiliaria
+      niveis_destino: [3, 4]
+  - agente: masao_hirasawa
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: saturar_capacidade_de_resposta
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [1, 2, 3]
+    - frente: crime_e_milicias
+      niveis_destino: [3, 4]
+  - agente: masao_hirasawa
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: forcar_reacao_politicamente_cara
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [3, 4]
+  - agente: kajiwara_shizune
+    linha: ocupar_espaco_urbano
+    metodo: forjar_titulo_ou_despejo
+    efeitos:
+    - frente: ocupacao_imobiliaria
+      niveis_destino: [1, 2, 3]
+  - agente: kajiwara_shizune
+    linha: ocupar_espaco_urbano
+    metodo: tornar_morador_administrativamente_vulneravel
+    efeitos:
+    - frente: ocupacao_imobiliaria
+      niveis_destino: [1, 2]
+  - agente: kajiwara_shizune
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: produzir_ordens_contraditorias
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [1, 2]
+  - agente: kajiwara_shizune
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: comprometer_procedimento_sem_expor_autora
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [1, 2]
+  - agente: pan_chu
+    linha: expandir_presenca_de_masao
+    metodo: desembarcar_pessoal_sob_cobertura
+    efeitos:
+    - frente: crime_e_milicias
+      niveis_destino: [1, 2]
+    - frente: presenca_oriental
+      niveis_destino: [1, 2, 3]
+  - agente: pan_chu
+    linha: expandir_presenca_de_masao
+    metodo: misturar_armas_e_drogas_em_carga_real
+    efeitos:
+    - frente: presenca_oriental
+      niveis_destino: [1, 2]
+  - agente: pan_chu
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: recusar_expulsao_sob_risco_calculado
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [3, 4]
+  - agente: pan_chu
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: demonstrar_poder_naval
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [4]
+  - agente: sawagejo_cho
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: violencia_publica_como_desafio
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [1, 2, 3]
+  - agente: sawagejo_cho
+    linha: desgastar_autoridade_de_ravens_bluff
+    metodo: matar_por_capricho_sem_ocultar_recado
+    efeitos:
+    - frente: desgaste_da_autoridade
+      niveis_destino: [1]
