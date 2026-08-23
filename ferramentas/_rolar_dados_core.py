@@ -52,22 +52,40 @@ class AttackProfile:
     damage_type: str
 
 
+REN_ABILITIES: dict[str, int] = {
+    "forca": 1,
+    "destreza": 4,
+    "constituicao": 2,
+    "inteligencia": 2,
+    "sabedoria": 3,
+    "carisma": 0,
+}
+
+REN_ABILITY_LABELS: dict[str, str] = {
+    "forca": "Força",
+    "destreza": "Destreza",
+    "constituicao": "Constituição",
+    "inteligencia": "Inteligência",
+    "sabedoria": "Sabedoria",
+    "carisma": "Carisma",
+}
+
 REN_SKILLS: dict[str, int] = {
     "acrobacia": 7,
     "furtividade": 7,
     "intuicao": 6,
     "percepcao": 6,
-    "investigacao": 4,
+    "investigacao": 5,
     "atletismo": 1,
-    "historia": 1,
-    "religiao": 1,
-    "arcana": 1,
+    "historia": 2,
+    "religiao": 2,
+    "arcana": 2,
     "enganacao": 0,
     "intimidacao": 0,
     "persuasao": 0,
     "sobrevivencia": 3,
     "medicina": 3,
-    "natureza": 1,
+    "natureza": 2,
     "prestidigitacao": 4,
     "atuacao": 0,
     "lidar_com_animais": 3,
@@ -94,11 +112,23 @@ REN_SKILL_LABELS: dict[str, str] = {
     "lidar_com_animais": "Lidar com Animais",
 }
 
+REN_PASSIVES: dict[str, int] = {
+    "percepcao": 21,
+    "investigacao": 20,
+    "intuicao": 16,
+}
+
+REN_PASSIVE_LABELS: dict[str, str] = {
+    "percepcao": "Percepção passiva",
+    "investigacao": "Investigação passiva",
+    "intuicao": "Intuição passiva",
+}
+
 REN_SAVES: dict[str, int] = {
     "forca": 4,
     "destreza": 7,
     "constituicao": 2,
-    "inteligencia": 1,
+    "inteligencia": 2,
     "sabedoria": 3,
     "carisma": 0,
 }
@@ -292,9 +322,17 @@ def cmd_d20(args: argparse.Namespace) -> int:
 
 
 def cmd_ren_list(_: argparse.Namespace) -> int:
-    print("Perícias de Ren:")
+    print("Atributos de Ren:")
+    for name, bonus in sorted(REN_ABILITIES.items()):
+        print(f"- {name}: {REN_ABILITY_LABELS[name]} {signed(bonus).replace(' ', '')}")
+
+    print("\nPerícias de Ren:")
     for name, bonus in sorted(REN_SKILLS.items()):
         print(f"- {name}: {REN_SKILL_LABELS[name]} {signed(bonus).replace(' ', '')}")
+
+    print("\nValores passivos de Ren:")
+    for name, value in sorted(REN_PASSIVES.items()):
+        print(f"- {name}: {REN_PASSIVE_LABELS[name]} {value}")
 
     print("\nSalvaguardas de Ren:")
     for name, bonus in sorted(REN_SAVES.items()):
@@ -306,11 +344,25 @@ def cmd_ren_list(_: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_ren_ability(args: argparse.Namespace) -> int:
+    key = resolve_key(REN_ABILITIES, args.atributo, "Atributo")
+    bonus = REN_ABILITIES[key] + args.bonus_extra
+    label = args.label or f"Teste de {REN_ABILITY_LABELS[key]} (Ren)"
+    print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
+    return 0
+
+
 def cmd_ren_skill(args: argparse.Namespace) -> int:
     key = resolve_key(REN_SKILLS, args.nome, "Perícia")
     bonus = REN_SKILLS[key] + args.bonus_extra
     label = args.label or f"Teste de {REN_SKILL_LABELS[key]} (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
+    return 0
+
+
+def cmd_ren_passive(args: argparse.Namespace) -> int:
+    key = resolve_key(REN_PASSIVES, args.nome, "Valor passivo")
+    print(f"{REN_PASSIVE_LABELS[key]} (Ren): {REN_PASSIVES[key]}.")
     return 0
 
 
@@ -404,6 +456,14 @@ def build_parser() -> argparse.ArgumentParser:
     ren_list_parser = ren_subparsers.add_parser("listar", aliases=["list"], help="lista atalhos de Ren")
     ren_list_parser.set_defaults(func=cmd_ren_list)
 
+    ability_parser = ren_subparsers.add_parser("atributo", aliases=["ability"], help="rola teste de atributo de Ren")
+    ability_parser.add_argument("atributo", help="nome do atributo")
+    add_cd(ability_parser)
+    ability_parser.add_argument("--bonus-extra", type=int, default=0, help="modificador circunstancial adicional")
+    ability_parser.add_argument("--label", help="rótulo exibido na saída")
+    add_advantage_flags(ability_parser)
+    ability_parser.set_defaults(func=cmd_ren_ability)
+
     skill_parser = ren_subparsers.add_parser("pericia", aliases=["skill"], help="rola perícia de Ren")
     skill_parser.add_argument("nome", help="nome da perícia")
     add_cd(skill_parser)
@@ -411,6 +471,10 @@ def build_parser() -> argparse.ArgumentParser:
     skill_parser.add_argument("--label", help="rótulo exibido na saída")
     add_advantage_flags(skill_parser)
     skill_parser.set_defaults(func=cmd_ren_skill)
+
+    passive_parser = ren_subparsers.add_parser("passivo", aliases=["passive"], help="consulta valor passivo de Ren")
+    passive_parser.add_argument("nome", help="percepcao, investigacao ou intuicao")
+    passive_parser.set_defaults(func=cmd_ren_passive)
 
     save_parser = ren_subparsers.add_parser("salvaguarda", aliases=["save"], help="rola salvaguarda de Ren")
     save_parser.add_argument("atributo", help="atributo da salvaguarda")
