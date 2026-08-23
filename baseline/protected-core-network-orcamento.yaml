@@ -1,0 +1,33 @@
+schema_orcamento_rede_protegida: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Impedir escalada grave ou irreversível contra o núcleo atual de Ren quando a
+  origem é procedural, sem conceder imunidade contra cânone, combate ou escolhas.
+limites:
+  max_membros: 8
+  membros_iniciais: 5
+  max_alvos_por_consequencia: 4
+  max_fontes_hot_path: 1
+  impacto_procedural_maximo_nucleo: moderada
+  max_fragmentos_narrativos_adicionais: 0
+  max_escritas_adicionais: 0
+  max_estados_novos: 0
+  max_schedulers_novos: 0
+  max_scans_repo: 0
+custos:
+  sidequest_sem_consequencia_fontes_adicionais: 0
+  sidequest_com_consequencia_fontes_adicionais: 1
+  evento_rotina_fontes_adicionais: 0
+  evento_sorteado_com_roteamento_fontes_adicionais: 1
+  microevento_local_fontes_adicionais: 0
+  presenca_incidental_fontes_adicionais: 0
+invariantes:
+  protecao_por_origem_nao_por_imortalidade: true
+  grave_procedural_bloqueado_no_nucleo: true
+  nao_reversivel_procedural_bloqueado_no_nucleo: true
+  vida_e_liberdade_procedurais_bloqueadas_no_nucleo: true
+  evento_pode_gerar_reacao_sem_marcar_nucleo_como_afetado: true
+  ranking_de_evento_nao_busca_substituto_quando_topo_e_protegido: true
+  npc_fora_do_nucleo_nao_recebe_plot_armor: true
+  combate_escolha_e_arco_ficam_fora_do_gate: true
+  nenhuma_migracao_retroativa_de_estado: true
