@@ -12,6 +12,11 @@ pode registrar uma transação sem ação do jogador, com ``modo: mundo`` e uma 
 ``resolver-pendencia-mundo:<id>``; ``turno.py`` força checkpoint antes de permitir
 que a pendência seja concluída.
 
+Eventos canônicos datados são a exceção ao no-op: quando uma pendência corresponde
+ao catálogo da Parte 1, ela só pode ser concluída depois de uma transação de mundo
+materializar seu núcleo. Se a forma preferencial for impossível, a forma muda; se
+o núcleo estiver temporariamente impossível, a pendência permanece aberta.
+
 Quando a pendência possui candidato autônomo de pressão em Ravens Bluff, a
 conclusão fica causalmente fechada: ou recebe a transação consolidada + linha +
 método usados, para aplicar no máximo uma frente de pressão, ou declara
@@ -35,6 +40,7 @@ except ImportError as exc:  # pragma: no cover
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import eventos_canonicos
 import mundo
 import pressao_ravens_bluff
 
@@ -278,6 +284,13 @@ def _validate_autonomous_noop(note: str | None) -> str:
     return note.strip()
 
 
+def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
+    try:
+        return eventos_canonicos.event_for_pending(repo, pending)
+    except eventos_canonicos.CanonicalEventError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+
+
 def conclude(
     repo: Path,
     pending_id: str,
@@ -289,10 +302,59 @@ def conclude(
     no_change: bool = False,
 ) -> dict[str, Any]:
     pending = _pending_item(repo, pending_id)
+    canonical_event = _canonical_event(repo, pending)
     try:
         candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)
     except pressao_ravens_bluff.PressureError as exc:
         raise WorldPendingBarrierError(str(exc)) from exc
+
+    if canonical_event is not None:
+        if no_change:
+            raise WorldPendingBarrierError(
+                "evento canônico datado não aceita --sem-mudanca; adapte a forma ou mantenha a pendência aberta se o núcleo estiver realmente impossível"
+            )
+        if not isinstance(transaction_id, str) or not transaction_id.strip():
+            raise WorldPendingBarrierError(
+                "evento canônico datado só pode ser concluído após transação de mundo que materialize seu núcleo; informe --transacao"
+            )
+        pressure_args = (line_id, method_id)
+        if any(value is not None for value in pressure_args) and not all(
+            isinstance(value, str) and value.strip() for value in pressure_args
+        ):
+            raise WorldPendingBarrierError(
+                "ao acoplar pressão urbana a evento canônico, informe --linha e --metodo juntos"
+            )
+        if candidate is not None and line_id and method_id:
+            try:
+                pressure_result = pressao_ravens_bluff.apply_world_resolution(
+                    repo,
+                    pending,
+                    transaction_id.strip(),
+                    line_id.strip(),
+                    method_id.strip(),
+                    note or "evento canônico materializado e pressão urbana consolidada",
+                )
+            except pressao_ravens_bluff.PressureError as exc:
+                raise WorldPendingBarrierError(str(exc)) from exc
+        else:
+            pressure_result = {
+                "ok": True,
+                "alterou": False,
+                "candidato": candidate,
+                "motivo": "evento canônico materializado; nenhuma frente foi acoplada nesta conclusão",
+            }
+        result = mundo.conclude(repo, pending_id, note or f"núcleo canônico materializado: {canonical_event['id']}")
+        barrier = sync(repo)
+        return {
+            **result,
+            "evento_canonico": {
+                "id": canonical_event["id"],
+                "titulo": canonical_event["titulo"],
+                "estado": "materializado_em_jogo",
+            },
+            "pressao_ravens_bluff": pressure_result,
+            "barreira": barrier,
+        }
 
     action_values = (transaction_id, line_id, method_id)
     has_action = any(value is not None for value in action_values)
