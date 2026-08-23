@@ -131,7 +131,7 @@ def _compact_l1_result(value: Any) -> Any:
     if not isinstance(value, dict):
         return value
     out: dict[str, Any] = {}
-    for key in ("sessao", "personagem", "recursos"):
+    for key in ("sessao", "personagem", "recursos", "capacidades_contextuais"):
         if key in value:
             out[key] = value[key]
 
