@@ -1,4 +1,4 @@
-schema_tabelas_recompensas: 1
+schema_tabelas_recompensas: 2
 natureza: reservado
 gerador: deterministico_v1
 tiers:
@@ -54,6 +54,59 @@ bonus_periculosidade:
   media: 0
   alta: 1
   letal: 1
+orcamento_v2:
+  gerador: deterministico_v2
+  pontos_por_tier: {'1': 2, '2': 4, '3': 6, '4': 8}
+  max_itens_por_tier: {'1': 2, '2': 3, '3': 3, '4': 4}
+  bonus_risco: {baixa: 0, media: 1, alta: 2, letal: 3}
+  aumento_teto_valor_risco: {baixa: 0, media: 0, alta: 1, letal: 1}
+  custo_valor: {baixo: 1, moderado: 2, alto: 3}
+  custo_importancia: {comum: 0, especial: 2}
+  perfis_familia:
+    comercio_varejista:
+      modificador_pontos: 0
+      teto_valor_base: moderado
+      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+    residencia_urbana:
+      modificador_pontos: -1
+      teto_valor_base: baixo
+      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+    acampamento_espetaculo:
+      modificador_pontos: 0
+      teto_valor_base: moderado
+      categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+    propriedade_privada:
+      modificador_pontos: 1
+      teto_valor_base: moderado
+      categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+    residencia_exterior:
+      modificador_pontos: -1
+      teto_valor_base: baixo
+      categorias: [dinheiro, ferramenta, curiosidade]
+    mansao_privada:
+      modificador_pontos: 2
+      teto_valor_base: alto
+      categorias: [dinheiro, gema, consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]
+    templo_institucional:
+      modificador_pontos: 1
+      teto_valor_base: alto
+      categorias: [consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]
+    imovel_baixa_atividade:
+      modificador_pontos: -1
+      teto_valor_base: baixo
+      categorias: [dinheiro, ferramenta, curiosidade]
+    residencia_cuidado:
+      modificador_pontos: 0
+      teto_valor_base: moderado
+      categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+    servico_comunitario:
+      modificador_pontos: -1
+      teto_valor_base: baixo
+      categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+    entreposto_documental:
+      modificador_pontos: 1
+      teto_valor_base: moderado
+      categorias: [dinheiro, gema, ferramenta, pergaminho, curiosidade]
 condicoes:
 - id: busca_deliberada
   texto: investigar deliberadamente recipientes, nichos ou mobiliário compatíveis com a área

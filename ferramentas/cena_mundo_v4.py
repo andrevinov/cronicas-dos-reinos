@@ -228,6 +228,7 @@ def open_scene(
                 action=local_spec["acao"],
                 tier=local_spec["tier"],
                 danger=local_spec["periculosidade"],
+                ecology=(local_spec.get("ecologia") if isinstance(local_spec.get("ecologia"), dict) else None),
             )
         except _core.interacoes_mundo.IntegrationError as exc:
             raise _core.SceneGateError(str(exc)) from exc
