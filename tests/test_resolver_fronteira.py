@@ -336,6 +336,7 @@ class ResolverFronteiraApplyTest(unittest.TestCase):
         pending_id = "mundo-1111111111111111"
         current = {
             "lote_id": "frn1." + "b" * resolver_fronteira.BATCH_HEX,
+            "quantidade": 0,
             "itens": [],
         }
         payload = {
