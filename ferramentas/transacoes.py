@@ -9,6 +9,7 @@ invariantes baratos sem aumentar o número normal de escritas:
 - compromissos futuros entram como `estado/compromissos.<id>` inteiro e são
   projetados em memória antes da consolidação;
 - afinidade/confiança só mudam incrementalmente com fato canônico e fonte;
+- criação atômica de NPC + relação normaliza o primeiro medidor como bootstrap;
 - a prosa de `narracao` não aceita vocabulário mecânico explícito fora de linhas
   próprias `MECÂNICA — ...`.
 
@@ -186,6 +187,11 @@ def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str,
         normalized_deltas = tempo_transacional.normalize_new_deltas(transaction.get("deltas") or [])
     except tempo_transacional.AtomicTimeError as exc:
         raise TransactionError(str(exc)) from exc
+    normalized_deltas = estado_relacional.normalize_new_entity_bootstrap(
+        normalized_deltas,
+        summary=summary,
+        transaction_id=transaction_id,
+    )
 
     record: dict[str, Any] = {
         "versao": SCHEMA_VERSION,
