@@ -30,6 +30,7 @@ STATE_FIELD = "reconhecimento_identidade"
 SCHEMA = 1
 MAX_EDGES = 4
 MAX_EVIDENCE = 3
+MAX_SOURCE_CHARS = 60
 MAX_STATE_BYTES = 1800
 EVIDENCE_TYPES = {"atuacao", "fisica", "contextual", "contradicao", "testemunho"}
 ACTOR_RESULTS = {"sucesso", "falha", "nao_aplicavel"}
@@ -97,7 +98,12 @@ def _edge_key(item: dict[str, Any], *, confirmed: bool = False) -> tuple[str, st
 def _validate_source(value: Any, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise IdentitySuspicionError(f"{label} exige fonte canônica rastreável")
-    return value.strip()
+    source = value.strip()
+    if len(source) > MAX_SOURCE_CHARS:
+        raise IdentitySuspicionError(
+            f"{label}.fonte excede {MAX_SOURCE_CHARS} caracteres; use referência canônica compacta"
+        )
+    return source
 
 
 def validate_state(value: Any, registry: dict[str, Any]) -> dict[str, Any]:
@@ -114,10 +120,14 @@ def validate_state(value: Any, registry: dict[str, Any]) -> dict[str, Any]:
     identities = set(registry["identidades"])
     suspicions = value.get("suspeitas")
     confirmations = value.get("confirmacoes")
-    if not isinstance(suspicions, list) or len(suspicions) > MAX_EDGES:
-        raise IdentitySuspicionError(f"suspeitas deve ser lista com no máximo {MAX_EDGES} arestas")
-    if not isinstance(confirmations, list) or len(confirmations) > MAX_EDGES:
-        raise IdentitySuspicionError(f"confirmacoes deve ser lista com no máximo {MAX_EDGES} arestas")
+    if not isinstance(suspicions, list):
+        raise IdentitySuspicionError("suspeitas deve ser lista")
+    if not isinstance(confirmations, list):
+        raise IdentitySuspicionError("confirmacoes deve ser lista")
+    if len(suspicions) + len(confirmations) > MAX_EDGES:
+        raise IdentitySuspicionError(
+            f"reconhecimento_identidade aceita no máximo {MAX_EDGES} arestas totais"
+        )
 
     suspicion_keys: set[tuple[str, str]] = set()
     evidence_ids: set[str] = set()
@@ -151,7 +161,11 @@ def validate_state(value: Any, registry: dict[str, Any]) -> dict[str, Any]:
             if evidence_type not in EVIDENCE_TYPES:
                 raise IdentitySuspicionError(f"tipo de evidência inválido: {evidence_type!r}")
             clean_evidences.append(
-                {"id": evidence_id, "tipo": evidence_type, "fonte": _validate_source(evidence.get("fonte"), "evidência")}
+                {
+                    "id": evidence_id,
+                    "tipo": evidence_type,
+                    "fonte": _validate_source(evidence.get("fonte"), "evidência"),
+                }
             )
         normalized_suspicions.append(
             {"observada": observed, "possivel": possible, "evidencias": clean_evidences}
@@ -174,7 +188,11 @@ def validate_state(value: Any, registry: dict[str, Any]) -> dict[str, Any]:
             )
         confirmation_keys.add(key)
         normalized_confirmations.append(
-            {"observada": observed, "identidade": identity, "fonte": _validate_source(item.get("fonte"), "confirmação")}
+            {
+                "observada": observed,
+                "identidade": identity,
+                "fonte": _validate_source(item.get("fonte"), "confirmação"),
+            }
         )
 
     result = {
@@ -318,7 +336,6 @@ def validate_transition(
             raise IdentitySuspicionError("Actor bem-sucedido impede evidência puramente performática")
         return new
 
-    # Confirmação é um fato qualitativamente diferente; número de pistas nunca basta.
     if delta.get("confirmacao_canonica") is not True:
         raise IdentitySuspicionError("confirmação exige fato canônico explícito")
     added = [key for key in new_c if key not in old_c]
@@ -327,7 +344,6 @@ def validate_transition(
     key = added[0]
     if new_c[key]["fonte"] != str(delta["fonte"]).strip():
         raise IdentitySuspicionError("fonte da confirmação deve coincidir com a fonte do delta")
-    # A aresta equivalente pode desaparecer ao confirmar; outras suspeitas permanecem byte-lógicas.
     expected_s = copy.deepcopy(old_s)
     expected_s.pop(key, None)
     if new_s != expected_s:
@@ -410,21 +426,47 @@ def propose_evidence(
     state = validate_state(payload.get(STATE_FIELD), registry)
     key = (observed_id, possible_id)
     if key in _confirmation_map(state):
-        return {"schema_reconhecimento_identidade": SCHEMA, "npc": entity_id, "resultado": "sem_delta", "motivo": "identidade já confirmada"}
+        return {
+            "schema_reconhecimento_identidade": SCHEMA,
+            "npc": entity_id,
+            "resultado": "sem_delta",
+            "motivo": "identidade já confirmada",
+        }
     current = _suspicion_map(state).get(key)
     old_e = list((current or {}).get("evidencias") or [])
     if len(old_e) >= MAX_EVIDENCE:
-        return {"schema_reconhecimento_identidade": SCHEMA, "npc": entity_id, "resultado": "sem_delta", "motivo": "suspeita já está forte; novas pistas não promovem confirmação"}
+        return {
+            "schema_reconhecimento_identidade": SCHEMA,
+            "npc": entity_id,
+            "resultado": "sem_delta",
+            "motivo": "suspeita já está forte; novas pistas não promovem confirmação",
+        }
     eid = evidence_id(entity_id, observed_id, possible_id, evidence_type, source, fact)
     if any(evidence["id"] == eid for item in state["suspeitas"] for evidence in item["evidencias"]):
-        return {"schema_reconhecimento_identidade": SCHEMA, "npc": entity_id, "resultado": "sem_delta", "motivo": "mesma evidência já registrada"}
+        return {
+            "schema_reconhecimento_identidade": SCHEMA,
+            "npc": entity_id,
+            "resultado": "sem_delta",
+            "motivo": "mesma evidência já registrada",
+        }
     new = copy.deepcopy(state)
     mapping = _suspicion_map(new)
     if key in mapping:
         mapping[key]["evidencias"].append({"id": eid, "tipo": evidence_type, "fonte": source})
     else:
+        if len(new["suspeitas"]) + len(new["confirmacoes"]) >= MAX_EDGES:
+            return {
+                "schema_reconhecimento_identidade": SCHEMA,
+                "npc": entity_id,
+                "resultado": "sem_delta",
+                "motivo": "orçamento de arestas de identidade já atingido; não abrir nova hipótese",
+            }
         new["suspeitas"].append(
-            {"observada": observed_id, "possivel": possible_id, "evidencias": [{"id": eid, "tipo": evidence_type, "fonte": source}]}
+            {
+                "observada": observed_id,
+                "possivel": possible_id,
+                "evidencias": [{"id": eid, "tipo": evidence_type, "fonte": source}],
+            }
         )
     new = validate_state(new, registry)
     delta = {
@@ -469,10 +511,25 @@ def propose_confirmation(
     state = validate_state(payload.get(STATE_FIELD), registry)
     key = (observed_id, identity_id)
     if key in _confirmation_map(state):
-        return {"schema_reconhecimento_identidade": SCHEMA, "npc": entity_id, "resultado": "sem_delta", "motivo": "identidade já confirmada"}
+        return {
+            "schema_reconhecimento_identidade": SCHEMA,
+            "npc": entity_id,
+            "resultado": "sem_delta",
+            "motivo": "identidade já confirmada",
+        }
     new = copy.deepcopy(state)
+    equivalent = any(_edge_key(item) == key for item in new["suspeitas"])
+    if not equivalent and len(new["suspeitas"]) + len(new["confirmacoes"]) >= MAX_EDGES:
+        return {
+            "schema_reconhecimento_identidade": SCHEMA,
+            "npc": entity_id,
+            "resultado": "sem_delta",
+            "motivo": "orçamento de arestas de identidade já atingido; consolide hipótese antes de abrir confirmação nova",
+        }
     new["suspeitas"] = [item for item in new["suspeitas"] if _edge_key(item) != key]
-    new["confirmacoes"].append({"observada": observed_id, "identidade": identity_id, "fonte": source})
+    new["confirmacoes"].append(
+        {"observada": observed_id, "identidade": identity_id, "fonte": source}
+    )
     new = validate_state(new, registry)
     delta = {
         "alvo": f"npc:{entity_id}",
@@ -538,7 +595,9 @@ def build_parser() -> argparse.ArgumentParser:
     evidence.add_argument("--fonte", required=True)
     evidence.add_argument("--actor", choices=sorted(ACTOR_RESULTS), default="nao_aplicavel")
 
-    confirmation = sub.add_parser("confirmar", help="prepara confirmação explícita; suspeita forte não chama isto sozinha")
+    confirmation = sub.add_parser(
+        "confirmar", help="prepara confirmação explícita; suspeita forte não chama isto sozinha"
+    )
     confirmation.add_argument("npc")
     confirmation.add_argument("--observada", required=True)
     confirmation.add_argument("--identidade", required=True)
