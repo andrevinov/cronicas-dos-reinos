@@ -51,9 +51,9 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/mundo/diálogo/identidade/reputação → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`;
+- NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`;
+- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
-- local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa/Git/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
@@ -78,9 +78,9 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Direção canônica é destino, nunca ação.** Se a cena apontar direção, usar `endpoints.py direcao <id>`; direção não escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
-Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
+Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de qualquer efeito. `interacoes_mundo.py` fica para manutenção/efeitos deliberados.
 
-**Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional`; conselho exige gatilho. Conversa casual, discordância ou preocupação não viram sermão automático.
+**Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional` e `iniciativa_social`; conselho exige gatilho. Iniciativa social nunca cria presença, segredo, side quest ou ação de Ren.
 
 **Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
 
@@ -105,11 +105,11 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 ### Recompensas e side quests
 
-- Cena reativa segue `cronica preparar`/`cronica concluir`; primitivas abaixo são manutenção/teste.
+- Cena reativa segue `cronica preparar`/`cronica concluir`.
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
-- `interacoes_mundo.py encontro <npc> --encontro-id <id>`: potencial ≠ oferta; oferta/aceite/recusa ficam em `oportunidades.py`.
-- `endpoints.py sidequest <id>` separa deltas e efeitos pós-cânone; rastro/recompensa só materializam após fato-base.
-- Agente novo passa pela classificação NPC v2; checkpoint não sorteia side quest nem loot.
+- **Task 31:** encontro com NPC não sorteia nem gera side quest. Não reativar perfis procedurais; nova side quest exige fonte canônica explícita.
+- `oportunidades.py` preserva somente lifecycle explícito de missão; `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base.
+- Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 
@@ -133,7 +133,7 @@ Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir 
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade sem pedido. Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; checkpoint normal já faz isso.
 
-Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
