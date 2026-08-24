@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-5623f84e1cdf
+npc_id: maerra_thandrel
+tipo: mediacao
+titulo: Duas Promessas Incompatíveis
+objetivo: Ajudar duas pessoas protegidas pela rede de Maerra a encontrar um acordo quando cumprir a promessa de
+  uma ameaça quebrar a segurança da outra.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Maerra separa os caminhos das duas pessoas e aceita uma solução mais segura, porém mais dolorosa.
+oferta:
+  recusa_permitida: true
+  premissa: Maerra vê um conflito em que autoridade religiosa sozinha pioraria a conversa e considera Ren capaz
+    de ouvir sem ocupar o centro.
+  pedido: 'Ela pede presença e mediação, não julgamento: ajudar cada lado a formular o que realmente consegue prometer.'
+  guardrails:
+  - Ren não decide por nenhuma das partes.
+  - Não há resposta moral única pré-escrita.
+  - A mediação pode terminar sem acordo.
+efeitos: []

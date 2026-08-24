@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-dc8a4799e9ec
+npc_id: pell
+tipo: investigacao
+titulo: A Mesa Vazia
+objetivo: Verificar por que um ponto de informação que Pell usa deixou de responder, sem transformar o sumiço em
+  crime antes de haver evidência.
+janela:
+  tipo: enquanto_condicao
+  condicao: o ponto de informação continuar sem resposta
+pode_reabrir: false
+consequencia_sem_ren: Pell perde a fonte e passa a vender informação mais velha e menos confiável.
+oferta:
+  recusa_permitida: true
+  premissa: Uma rotina informal falhou duas vezes e Pell não quer ser visto fazendo perguntas onde costuma apenas
+    ouvir.
+  pedido: Ele pede que Ren observe o lugar e descubra se a fonte mudou de hábito, foi pressionada ou simplesmente
+    o cortou.
+  guardrails:
+  - Ausência não prova sequestro nem morte.
+  - A fonte pode ter escolhido desaparecer de Pell.
+  - Ren decide o grau de envolvimento.
+efeitos: []

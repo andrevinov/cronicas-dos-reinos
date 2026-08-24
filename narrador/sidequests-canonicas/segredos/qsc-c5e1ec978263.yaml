@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-c5e1ec978263
+npc_id: pell
+tipo: segredo_pessoal
+titulo: O Pagador que Pell Não Quer Nomear
+objetivo: Ajudar Pell a sair de uma obrigação de informação que começou a parecer maior que o dinheiro envolvido.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Pell aceita o risco, muda de esconderijo ou vende outra informação para comprar tempo.
+oferta:
+  recusa_permitida: true
+  premissa: Só depois de confiar mais em Ren, Pell admite que um pagador antigo reapareceu com perguntas que ele
+    não consegue responder sem se expor.
+  pedido: 'Ele pede uma saída prática: descobrir o que o pagador realmente quer ou criar uma forma segura de encerrar
+    o acordo.'
+  guardrails:
+  - O pagador não é automaticamente ligado a Masao.
+  - Pell continua oportunista mesmo ao pedir ajuda.
+  - Ren pode recusar sem assumir a dívida.
+efeitos: []

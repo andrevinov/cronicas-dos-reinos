@@ -1,0 +1,13 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-c5e1ec978263
+npc_id: pell
+detalhe: narrador/sidequests-canonicas/segredos/qsc-c5e1ec978263.yaml
+condicoes:
+  relacao:
+    confianca_min: 5
+    risco_min: 6
+  conhecimento:
+  - arquivo: personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
+    termo: apoio externo
+    presente: true

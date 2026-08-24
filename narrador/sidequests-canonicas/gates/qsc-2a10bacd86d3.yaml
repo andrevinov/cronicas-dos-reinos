@@ -1,0 +1,15 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-2a10bacd86d3
+npc_id: bram_vask
+detalhe: narrador/sidequests-canonicas/segredos/qsc-2a10bacd86d3.yaml
+condicoes:
+  locais:
+  - loja_bram_vask
+  relacao:
+    afinidade_max: 2
+    confianca_max: 2
+    risco_min: 8
+  identidade:
+    persona_relacional:
+    - ren

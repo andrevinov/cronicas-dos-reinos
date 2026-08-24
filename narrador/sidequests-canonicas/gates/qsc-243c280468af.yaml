@@ -1,0 +1,16 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-243c280468af
+npc_id: kethra_dunn
+detalhe: narrador/sidequests-canonicas/segredos/qsc-243c280468af.yaml
+condicoes:
+  relacao:
+    afinidade_min: 7
+    confianca_min: 8
+  conhecimento:
+  - arquivo: personagens/jogador/conhecimento/topicos/07-pistas-atuais.md
+    termo: identidade falsa
+    presente: true
+  identidade:
+    persona_relacional:
+    - ren

@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-2a10bacd86d3
+npc_id: bram_vask
+tipo: mediacao
+titulo: Três Assinaturas e Nenhuma Boa Saída
+objetivo: Intermediar uma saída limitada entre Bram e um devedor cuja situação começou a atrair gente mais perigosa
+  que o próprio agiota.
+janela:
+  tipo: temporal
+  duracao_horas: 30
+pode_reabrir: false
+consequencia_sem_ren: Bram abandona a mediação e terceiriza a cobrança para alguém menos preocupado com dano colateral.
+oferta:
+  recusa_permitida: true
+  premissa: Bram prefere um acordo que preserve dinheiro e reputação a descobrir se Ren realmente voltaria a quebrar
+    sua operação.
+  pedido: Ele pede que Ren leve uma proposta única e volte com sim, não ou contraproposta — sem agir como cobrador
+    de Bram.
+  guardrails:
+  - Ren não é obrigado a defender os termos de Bram.
+  - O devedor mantém agência para recusar a proposta.
+  - A missão não autoriza coerção física automática.
+efeitos: []

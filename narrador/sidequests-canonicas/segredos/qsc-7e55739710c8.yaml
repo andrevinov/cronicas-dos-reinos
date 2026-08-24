@@ -1,0 +1,25 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-7e55739710c8
+npc_id: kethra_dunn
+tipo: investigacao
+titulo: O Ponto que Parou de Respirar
+objetivo: Verificar discretamente por que uma rota de serviço usada por Kethra se tornou arriscada sem expor o papel
+  dela em Narwhal Manor.
+janela:
+  tipo: temporal
+  duracao_horas: 36
+pode_reabrir: false
+consequencia_sem_ren: Kethra abandona a rota, muda o próprio protocolo e perde uma fonte prática de mobilidade por
+  algum tempo.
+oferta:
+  recusa_permitida: true
+  premissa: Um detalhe repetido da rotina deixou de acontecer no horário e do modo esperados; Kethra não sabe se
+    é acaso, vigilância ou mudança interna.
+  pedido: Kethra pede uma verificação curta fora da mansão e quer apenas sinais observáveis, sem confronto em nome
+    dela.
+  guardrails:
+  - Ren decide aceitar, adiar ou recusar.
+  - Kethra não pede invasão frontal de Narwhal Manor.
+  - Ausência de prova permanece ausência de prova.
+efeitos: []
