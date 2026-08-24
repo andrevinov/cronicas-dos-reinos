@@ -10,7 +10,11 @@ from pathlib import Path
 from typing import Any, Callable
 
 import cena_mundo_v4 as _v4
+import entradas
+import estado_relacional
+import mundo
 import torneio_clandestino
+import transacoes
 
 _core = _v4._core
 _BASE_OPEN_SCENE: Callable[..., dict[str, Any]] | None = None
@@ -48,7 +52,13 @@ def open_scene(
         return result
     try:
         candidate = torneio_clandestino.invitation_candidate(repo, now=now)
-    except torneio_clandestino.TournamentError as exc:
+    except (
+        torneio_clandestino.TournamentError,
+        entradas.EntryError,
+        estado_relacional.RelationshipStateError,
+        transacoes.TransactionError,
+        mundo.WorldEngineError,
+    ) as exc:
         raise _core.SceneGateError(str(exc)) from exc
     result["fontes_lidas"] = list(
         dict.fromkeys([*(result.get("fontes_lidas") or []), *(candidate.get("fontes_lidas") or [])])
