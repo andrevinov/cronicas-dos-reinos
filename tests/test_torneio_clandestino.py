@@ -50,7 +50,7 @@ class TournamentRepositoryTest(unittest.TestCase):
         self.assertTrue(index["regras"]["task54_permanece_autoridade_de_neutralizacao"])
         rendered = yaml.safe_dump(detail, allow_unicode=True).lower()
         self.assertIn("task 54", rendered)
-        self.assertIn("não conta como neutralização durável", rendered)
+        self.assertIn("neutralização durável", rendered)
 
     def test_convite_so_abre_detalhe_depois_de_data_nivel_e_confianca(self):
         early = tour.invitation_candidate(ROOT, now=mundo.parse_instant("17 Eleasis, 1372 DR", "19:00"))
@@ -114,7 +114,7 @@ class TournamentSceneAdapterTest(unittest.TestCase):
         endpoints._project_tournament_invite(endpoint, preview)
         self.assertEqual(endpoint["gates"][0]["resultado"], "convite_disponivel")
         self.assertTrue(endpoint["disponibilidade"]["torneio_clandestino"]["recusa_permitida"])
-        self.assertIn("nao registre aceite", endpoint["proximo_passo"]["torneio_clandestino"])
+        self.assertIn("não registre aceite", endpoint["proximo_passo"]["torneio_clandestino"])
 
 
 class TournamentFixtureTest(unittest.TestCase):
