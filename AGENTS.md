@@ -35,7 +35,7 @@ Antes de reler, veja se o contexto basta. Após cada consulta: **Se for suficien
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
-- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, sessão atual — 8 KiB;
+- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, `reputacao`, sessão atual — 8 KiB;
 - **L3:** `buscar ... --apos L2 --motivo ...` — 8 KiB; 2–5 lacunas: `contexto-buscar-muitos.py`;
 - **L4:** histórico estruturado — 12 KiB, sem transcrição;
 - **L4T:** transcrição, somente após L4 — 16 KiB;
@@ -53,7 +53,7 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/mundo/diálogo/identidade → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`;
+- NPC/mundo/diálogo/identidade/reputação → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
@@ -85,6 +85,8 @@ Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar
 **Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional`; conselho exige gatilho. Conversa casual, discordância ou preocupação não viram sermão automático.
 
 **Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
+
+**Reputação pública:** reputação ≠ fama ≠ opinião individual. Não consultar ou atualizar por rotina. Aplauso, rumor, boa rolagem ou reconhecimento privado de identidade não criam reputação cívica. Quando um fato canônico for realmente público, socialmente relevante e atribuído a Ren/Shinta/Kage, `reputacao_publica.py evento` prepara o delta; registrar apenas os públicos explicitamente atingidos. Personas não compartilham reputação automaticamente. Use `contexto.py reputacao <persona>` somente quando a reação social ampla da cidade for uma lacuna real.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
