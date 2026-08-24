@@ -1,0 +1,27 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: pessoas_sem_porto_e_ken
+titulo: Gente que chegou sem deixar cais
+janela: pode_durar_um_ou_mais_dias
+categorias:
+- ponte_kozakura
+- identidade
+- oportunidade_heroica
+nucleo_obrigatorio:
+- Rostos e mercadorias de Kozakura e outras regiões de Kara-Tur tornam-se menos raros em Ravens Bluff, e uma fração
+  relevante das histórias de desembarque não fecha com registros portuários.
+- Ken Takakura, artista marcial estrangeiro sem vínculo com Masao, procura Kage por fama marcial e cria uma situação
+  de desafio, curiosidade e possível amizade ou rivalidade.
+- A anomalia humana e logística passa a ser investigável sem, sozinha, provar a existência ou localização da Ponte.
+forma_preferencial:
+- 'Usar Ken como contraste: um homem de Kara-Tur pode ser inconveniente, orgulhoso ou perigoso sem pertencer à conspiração.'
+guardrails:
+- Não tratar origem étnica como culpa.
+- Não obrigar Ren a aceitar duelo, revelar identidade ou confiar em Ken.
+- Ken não serve secretamente Masao por conveniência posterior.
+- Task 28 decide suspeitas e reconhecimento; Kage não vira Ren automaticamente para todos os presentes.
+adaptacao:
+- Se Kage estiver publicamente indisponível, Ken procura a pista mais plausível e pode deixar desafio ou procurar
+  outra apresentação.
+- Se Ren evita o contato, a anomalia dos recém-chegados permanece como fato independente.

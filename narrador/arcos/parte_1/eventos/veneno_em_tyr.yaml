@@ -1,0 +1,30 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: veneno_em_tyr
+titulo: Uma página que não devia matar
+janela: ao_longo_do_dia
+categorias:
+- crise
+- juppongatana
+- identidade
+nucleo_obrigatorio:
+- Uma morte ou envenenamento grave dentro da cadeia administrativa de Tyr cria investigação material cujo vetor
+  real está ligado a um objeto documental manipulado.
+- Uma identidade de cobertura ligada a Shizune tenta remover, substituir ou tornar inútil a peça que permitiria
+  reconstruir o vetor.
+- Ren pode receber acesso institucional para investigar; reconhecer, perseguir, capturar ou perder a agente continua
+  resultado aberto.
+forma_preferencial:
+- Construir a investigação por hábitos, cadeia de manuseio, resíduos e comportamento, com pelo menos uma explicação
+  inicial plausível mas refutável.
+guardrails:
+- Não exigir que Ren caia na pista falsa.
+- Shizune não é automaticamente reconhecida como Shizune; Task 28 e evidência observável continuam valendo.
+- Shizune pode escapar, ser presa, morrer, romper com Masao ou permanecer ativa; o calendário não escolhe.
+- Neutralização durável de Shizune, se ocorrer, deve passar pela Task 54; sobreviver à data não concede nível.
+adaptacao:
+- Se Shizune já estiver neutralizada de forma durável, a operação usa material preparado anteriormente ou subordinado
+  plausível e não a ressuscita.
+- Se a vítima prevista estiver indisponível, preservar o envenenamento documental e a tentativa de apagar a cadeia
+  sem contradizer o passado.

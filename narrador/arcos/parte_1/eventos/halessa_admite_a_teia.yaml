@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: halessa_admite_a_teia
+titulo: Halessa escolhe uma rua sem paredes
+janela: ao_longo_do_dia
+categorias:
+- masao
+- identidade
+- ponte_kozakura
+nucleo_obrigatorio:
+- Halessa procura Ren ou cria canal seguro equivalente para dizer que a manipulação documental em Tyr não é episódio
+  isolado e que novas peças continuam entrando na cadeia administrativa.
+- Ela passa a tratar uma operação coordenada ligada à rede oriental como hipótese séria, mas distingue hipótese,
+  evidência e certeza.
+- A conversa entrega a Ren uma pergunta investigável sobre origem, volume ou trânsito dos documentos, não a resposta
+  pronta sobre a Ponte.
+forma_preferencial:
+- Preferir deslocamento por rua, templo secundário ou outro espaço em que Halessa possa reduzir risco institucional
+  sem parecer onisciente.
+guardrails:
+- 'Halessa não começa do zero: preservar tudo que ela já sabia ou suspeitava.'
+- Sirrus pode estar enganado, pressionado ou cercado por papelada; não o transformar em traidor sem novo fato.
+- Não confirmar Shizune, Masao ou Ponte apenas porque Halessa os considera hipóteses.
+adaptacao:
+- Se Ren recusar encontro privado, Halessa transmite o núcleo por mensagem ou encontro breve compatível com sua
+  segurança.
+- Se a situação em Tyr já tiver mudado por jogo, atualizar o detalhe institucional preservando a existência de manipulação
+  coordenada e de uma pista investigável.

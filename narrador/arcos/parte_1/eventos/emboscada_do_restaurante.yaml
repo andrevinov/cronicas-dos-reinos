@@ -1,0 +1,24 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: emboscada_do_restaurante
+titulo: A velha e os três homens
+janela: ao_longo_do_dia
+nucleo_obrigatorio:
+- Uma senhora aborda Ren em sua rota habitual sob disfarce de trabalhador e pede ajuda ao rapaz forte para recolocar
+  a placa pesada de um restaurante.
+- A abordagem é uma operação preparada; a rede já identificou que aquele trabalhador recorrente é Ren Kagehira.
+- Ren é levado ou pressionado a lidar com três homens de organização criminosa kozakurana semelhante à yakuza dentro
+  ou imediatamente ao redor do restaurante.
+- Pelo menos um dos três deve ser desafio individual sério, aproximadamente referência de nível 4; os outros podem
+  ser claramente inferiores.
+forma_preferencial:
+- Se Ren percebe a intenção e se recusa a entrar, a velha segura sua mão e diz que ele não quer envolver as pessoas
+  na rua, chamando-o de Ren Kagehira.
+- O confronto ocorre dentro do restaurante, longe da multidão.
+guardrails:
+- Não exigir teste para a rede reconhecer o disfarce que já observou repetidamente.
+- A rede ainda não sabe automaticamente que Ren trabalha na Galeria dos Escribas.
+- Não escrever que Ren entra voluntariamente; se ele resiste, a ameaça aos transeuntes cria pressão, não controle
+  mental.
+- Os atacantes não precisam conhecer a Ponte, comando superior ou todos os motivos da operação.

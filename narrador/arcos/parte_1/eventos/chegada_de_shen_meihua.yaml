@@ -1,0 +1,26 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: chegada_de_shen_meihua
+titulo: A médica que vinha observando a guerra
+janela: ao_longo_do_dia
+categorias:
+- aliado
+- masao
+nucleo_obrigatorio:
+- Shen Meihua entra diretamente no espaço de decisão de Ren depois de já ter reunido motivos próprios para agir
+  contra a rede de Masao.
+- Ela oferece inteligência, medicina, contatos e leitura cultural; não oferece vitória pronta nem obediência incondicional.
+- O encontro estabelece uma janela real de cooperação, cuja confiança e intimidade dependem do que Ren fizer dali
+  em diante.
+forma_preferencial:
+- Preferir uma entrada que aproveite ferimento, investigação, pista compartilhada ou risco observado, em vez de
+  simples apresentação expositiva.
+guardrails:
+- Shen não derrota antagonistas por Ren.
+- Aparecer não altera afinidade/confiança por decreto; Task 26 exige fatos canônicos.
+- A presença de Shen não confirma automaticamente todos os segredos que ela suspeita.
+adaptacao:
+- Se Ren estiver ileso ou fora da rota preferencial, Shen usa outra causa já disponível para contato.
+- Se uma janela anterior já tiver trazido Shen, este evento consolida cooperação e nova informação útil em vez de
+  repetir primeira apresentação.
