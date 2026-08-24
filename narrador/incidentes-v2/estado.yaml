@@ -1,0 +1,8 @@
+schema_estado_incidentes_mundo: 1
+natureza: controle_reservado
+cidade: ravens_bluff
+global:
+  ocorrencia: {ciclo: 0, restantes: []}
+  cartas: {ciclo: 0, assinatura_pool: null, restantes: []}
+locais: {}
+historico_recente: []

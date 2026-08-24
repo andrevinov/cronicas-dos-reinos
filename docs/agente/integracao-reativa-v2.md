@@ -1,6 +1,6 @@
 # Integração reativa v2 — preparação transacional de cena
 
-Orientação vigente para entrada/exploração de local, começo de encontro, descoberta contextual, recompensas e lifecycle de side quests. A camada continua **reativa**: não é scheduler e não roda em turno comum.
+Orientação vigente para entrada/exploração de local, começo de encontro, descoberta contextual, recompensas, incidentes e lifecycle de side quests. A camada continua **reativa**: não é scheduler e não roda em turno comum.
 
 ## 1. Porta ao vivo: preparar → registrar → confirmar
 
@@ -15,9 +15,9 @@ python3 ferramentas/cena_mundo.py preparar \
   --contexto-tag assunto:documentos
 ```
 
-`preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual como fato e não cria arquivo de preparação.
+`preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual ou incidente como fato e não cria arquivo de preparação.
 
-Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar sidequests canônicas previamente escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo.
+Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar sidequests canônicas previamente escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo. Task 34 projeta condições persistentes; Task 35 pode usar esse contexto para selecionar um incidente sério sem criar uma segunda camada ambiental.
 
 Se a cena for aceita, resolver rolagens, narrar e registrar o turno normalmente. Só depois confirmar com os mesmos parâmetros. `confirmar` refaz a preparação read-only e valida fingerprint; se fonte relevante mudou, falha antes da escrita.
 
@@ -34,6 +34,8 @@ scene:<cena_id>:npc:<npc_id_canonico>
 Encontros simultâneos são resolvidos por ID canônico. A resolução de NPC continua determinística e falha em typo/ambiguidade antes de qualquer mutação.
 
 Não existe mais sombra sequencial do antigo baralho de oportunidades. Para sidequest canônica, refs de NPCs explícitos são reunidas e ordenadas deterministicamente por prioridade + ID; no máximo seis gates são avaliados e no máximo um detalhe é aberto por cena.
+
+Incidentes usam a mesma `cena_id` com `local_id` canônico. Retry do mesmo par reutiliza o resultado e não consome novamente os baralhos.
 
 ## 3. Local e recompensas
 
@@ -148,7 +150,31 @@ No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera 
 
 A Task 32 entregou engine/schema vazio por desenho; a Task 33 fornece conteúdo reservado e roteamento dirigido. Isso não muda a autoridade do engine nem força aparição, oferta ou aceite.
 
-## 8. Orçamento e invariantes
+## 8. Incidentes sérios — Task 35
+
+A Task 35 roda somente quando a preparação já possui um `local_id` canônico. Ela é instalada depois da Task 34 e reutiliza a ecologia do local e `condicoes_mundo` já projetadas.
+
+Fluxo:
+
+```text
+local canônico
+→ condições persistentes Task34 já projetadas
+→ baralho municipal 11 rotina : 1 incidente
+   → se não materializar candidato, baralho local 7 rotina : 1 incidente
+→ no máximo um incidente sério
+```
+
+Condição persistente **não aumenta a frequência**. Marcadores como `chuva_forte`, `multidao`, `precos_tensionados` ou `patrulha_reforcada` apenas habilitam cartas compatíveis dentro do pool normal.
+
+Um incidente é candidato até entrar na narração aceita. O endpoint expõe de forma compacta tipo, severidade, premissa, rotas observáveis e papéis anônimos plausíveis. Ele não escolhe NPC nomeado e não cria automaticamente sidequest, recompensa, segredo, conhecimento, reputação ou relação.
+
+Incidente pode ser resolvido inteiramente na mesma cena. Ren pode intervir ou não quando houver escolha física real. Combate não é obrigatório; oposição esmagadora precisa deixar saída observável como fuga, cobertura, negociação ou ajuda.
+
+O Local Microevent Deck permanece separado e cotidiano. Task 35 não relaxa os vetos de combate/quest/recompensa dos microeventos.
+
+Detalhes: `docs/task35-world-local-incidents-v2.md`.
+
+## 9. Orçamento e invariantes
 
 Contratos relevantes:
 
@@ -157,7 +183,8 @@ Contratos relevantes:
 - `baseline/tags-contextuais-tipadas-orcamento.yaml`;
 - `baseline/retire-procedural-sidequest-gate-orcamento.yaml`;
 - `baseline/canonical-secret-quest-engine-orcamento.yaml`;
-- `baseline/secret-npc-quest-catalog-orcamento.yaml`.
+- `baseline/secret-npc-quest-catalog-orcamento.yaml`;
+- `baseline/world-local-incidents-v2-orcamento.yaml`.
 
 Invariantes atuais:
 
@@ -180,4 +207,10 @@ Invariantes atuais:
 - 12 quest-givers recorrentes × 3 quests;
 - terceira quest sempre depende de condição canônica real, sem `hot` persistido;
 - nova oferta revalida o gate antes de escrever;
-- lifecycle, efeitos persistentes, rastros e recompensas permanecem reutilizados.
+- lifecycle, efeitos persistentes, rastros e recompensas permanecem reutilizados;
+- cena sem local: 0 leituras Task35;
+- cena espacial: 2 leituras pequenas Task35;
+- no máximo 1 incidente sério por cena;
+- condição Task34 muda pool, nunca frequência Task35;
+- incidente não cria sidequest/NPC nomeado/recompensa automaticamente;
+- microevento local continua camada de textura separada.

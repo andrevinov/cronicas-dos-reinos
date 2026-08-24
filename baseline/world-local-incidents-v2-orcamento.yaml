@@ -1,0 +1,32 @@
+schema_orcamento_incidentes_mundo: 1
+task: 35
+nome: World & Local Incidents v2
+limites:
+  chamadas_extras_turno: 0
+  leituras_task35_cena_sem_local: 0
+  leituras_task35_cena_espacial: 2
+  max_incidentes_por_cena: 1
+  max_cartas: 32
+  max_historico: 48
+  max_index_bytes: 24576
+  max_estado_bytes: 16384
+  schedulers_novos: 0
+  scans_globais: 0
+invariantes:
+  baralho_global_deterministico: true
+  baralho_local_deterministico: true
+  condicao_muda_pool_nao_frequencia: true
+  incidente_e_candidato_ate_narracao: true
+  preparacao_nao_escreve: true
+  confirmacao_consumo_idempotente: true
+  no_maximo_um_incidente_por_cena: true
+  npc_nomeado_automatico_proibido: true
+  sidequest_automatica_proibida: true
+  recompensa_automatica_proibida: true
+  segredo_automatico_proibido: true
+  conhecimento_automatico_proibido: true
+  combate_obrigatorio_proibido: true
+  ren_pode_nao_intervir: true
+  ameaca_desproporcional_tem_saida_observavel: true
+  task34_reutilizada_sem_estado_ambiental_paralelo: true
+  microevento_local_permanece_textura_separada: true
