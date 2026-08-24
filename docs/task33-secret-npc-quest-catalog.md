@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-A Task 32 entregou o motor e entrou em produção com catálogo real vazio por desenho. A Task 33 popula esse motor sem reativar o antigo Side Quest Gate procedural e sem transformar o roteador quente em spoiler.
+A Task 32 entregou o motor e entrou em produção com catálogo real vazio por desenho. A Task 33 popula esse motor sem reativar o antigo Side Quest Gate procedural e sem transformar um roteador quente em spoiler.
 
 O conjunto recorrente é o mesmo grupo de doze NPCs que já possuía curadoria de oportunidade antes da Task 31. Os perfis procedurais antigos continuam `inativo` e servem somente como registro histórico/caracterização; nenhuma semente antiga é promovida automaticamente a cânone.
 
@@ -18,9 +18,29 @@ O catálogo reservado contém:
 
 Esta documentação deliberadamente não lista IDs, títulos, premissas, pedidos, objetivos, consequências ou combinações NPC→quest.
 
-## Roteador spoiler-light
+## Roteamento spoiler-light e fragmentado
 
-`narrador/oportunidades/index.yaml` continua sendo a única porta quente. Sob `sidequests_canonicas.por_npc`, cada entrada contém somente:
+A primeira implementação colocou as referências opacas diretamente em `narrador/oportunidades/index.yaml`. O catálogo completo faria esse arquivo ultrapassar o teto quente já congelado. A Task 33 portanto **não aumentou o orçamento**: fragmentou o roteamento por NPC.
+
+O índice de oportunidades mantém somente a declaração compacta de que o engine usa:
+
+```yaml
+sidequests_canonicas:
+  schema_sidequests_canonicas: 1
+  engine: canonical_secret_quest_engine_task32
+  detalhes_somente_apos_gate: true
+  scheduler: proibido
+  rng: proibido
+  roteamento: fragmentado_por_npc_task33
+```
+
+Quando — e somente quando — um quest-giver catalogado entra como NPC explícito da cena, a camada abre um único fragmento dirigido sob:
+
+```text
+narrador/sidequests-canonicas/roteadores/<npc_id>.yaml
+```
+
+Esse fragmento contém exatamente três refs e cada ref possui somente:
 
 ```yaml
 - id: qsc-<opaco>
@@ -28,22 +48,22 @@ Esta documentação deliberadamente não lista IDs, títulos, premissas, pedidos
   prioridade: <inteiro>
 ```
 
-O roteador não contém título, tipo, premissa, pedido, objetivo, consequência ou efeito.
+NPC fora do catálogo não abre nenhum roteador Task 33. O índice quente não carrega IDs de quests, títulos ou conteúdo narrativo.
 
 Os gates reservados continuam estritamente mecânicos: identidade da quest/NPC, ponteiro para detalhe e condições de elegibilidade. Conteúdo narrativo só existe nos detalhes em `narrador/sidequests-canonicas/segredos/` e só pode ser carregado pelo engine da Task 32 depois que o gate passar.
 
-## Três por NPC, no máximo duas quentes
+## Três por NPC, no máximo duas quentes no snapshot de implantação
 
 A terceira quest não possui `hot: false` nem trava artificial equivalente.
 
-No checkpoint atual da campanha, cada um dos doze quest-givers possui exatamente duas possibilidades mecanicamente quentes quando as condições de cena correspondentes são satisfeitas. A terceira permanece fria porque exige uma mudança real e observável, como:
+No snapshot em que a Task 33 foi implantada — **17 Eleasis, 1372 DR** — cada um dos doze quest-givers possuía exatamente duas possibilidades mecanicamente quentes quando as condições espaciais correspondentes eram satisfeitas. A terceira dependia de uma mudança real e observável, como:
 
 - relação mais forte;
 - data futura;
 - conhecimento específico;
 - combinação adicional de identidade/mundo.
 
-Assim, a campanha pode desbloquear conteúdo organicamente sem scan, sorteio ou manutenção manual de uma fila de quests.
+Esse número não é uma regra eterna. A própria campanha pode legitimamente liberar a terceira quest depois. O contrato permanente é que o desbloqueio venha de um gate canônico real e nunca de uma flag `hot`, sorteio ou manutenção manual de fila.
 
 `hot` é uma propriedade **derivada** do estado corrente. Nunca é persistida.
 
@@ -70,7 +90,7 @@ Cada NPC recebe três tipos diferentes. Isso evita que todo quest-giver se compo
 
 Os antigos `narrador/oportunidades/perfis/*.yaml` ajudaram somente a preservar voz, profissão e classe de problemas plausíveis para cada NPC. Eles continuam com estatuto de sementes não canônicas e seus registros no índice permanecem inativos.
 
-Uma quest da Task 33 é um conteúdo novo e deliberadamente autorado, com:
+Uma quest da Task 33 é conteúdo novo e deliberadamente autorado, com:
 
 - gate canônico explícito;
 - detalhe reservado próprio;
@@ -88,8 +108,9 @@ A sequência continua sendo a da Task 32:
 
 ```text
 NPC explícito
-→ refs opacas
-→ gate determinístico
+→ índice compacto identifica que há catálogo para aquele NPC
+→ um roteador opaco dirigido
+→ gates determinísticos
 → no máximo um detalhe reservado
 → disponibilidade
 → NPC pode ou não fazer o pedido na ficção
@@ -109,15 +130,28 @@ O catálogo inicial não precisa fabricar recompensa mecânica para justificar c
 
 Contrato: `baseline/secret-npc-quest-catalog-orcamento.yaml`.
 
-A população do catálogo altera conteúdo frio, não a arquitetura:
+A população do catálogo preserva os tetos existentes:
 
 - 0 scheduler novo;
 - 0 RNG novo;
 - 0 estado persistente novo;
 - 0 scan global;
-- 3 refs por quest-giver, abaixo do teto de 4 da Task 32;
-- no máximo 6 gates por cena e 1 detalhe lido continuam sendo tetos da Task 32;
-- encontro com NPC sem refs continua com zero leituras Task 32 adicionais.
+- índice de oportunidades continua abaixo do teto quente legado;
+- NPC catalogado: no máximo 1 leitura adicional para seu roteador opaco;
+- NPC fora do catálogo: 0 leituras Task 33 adicionais;
+- 3 refs no roteador dirigido, abaixo do teto de 4 da Task 32;
+- no máximo 6 gates por cena e 1 detalhe lido continuam sendo tetos da Task 32.
+
+A fragmentação é justamente a razão pela qual 36 quests podem existir sem transformar o catálogo inteiro em contexto quente.
+
+## Compatibilidade com a Task 32
+
+O algoritmo da Task 32 permanece a autoridade. Seu motor original foi preservado como core e o wrapper público aceita dois formatos:
+
+- fixtures/compatibilidade da Task 32 podem continuar usando `por_npc` inline;
+- o repositório real da Task 33 usa roteamento fragmentado por NPC.
+
+Os casos sintéticos da Task 32 continuam executados na suíte. A mudança de armazenamento não altera semântica de gate, oferta, recusa, lifecycle ou efeitos.
 
 ## Sigilo operacional
 
