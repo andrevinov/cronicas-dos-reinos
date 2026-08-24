@@ -1,0 +1,28 @@
+schema_premio_torneio_clandestino: 1
+natureza: reservado
+torneio: circuito_subterraneo_parte1
+parcial:
+  gatilho: alcancar_semifinal
+  forma: >-
+    Um intermediário do circuito oferece a Ren acesso a uma anotação de apostas e pagamentos que mostra que algumas
+    noites são financiadas por dinheiro oriental que não nasce do próprio torneio.
+  informacao: >-
+    A anotação revela um ponto de entrega e um apelido de intermediário ligados a pagamentos de teste de lutadores
+    orientais. A estrutura é compatível com uma célula logística a serviço da rede de Masao, mas não identifica por
+    si só qual membro da Juppongatana ordenou cada pagamento.
+  utilidade: pista_material_para_investigacao
+integral:
+  gatilho: vencer_final
+  forma: >-
+    O prêmio profundo inclui acesso temporário ao livro de apostas reservado e a uma instrução de pagamento que o
+    organizador não percebe como politicamente relevante.
+  informacao: >-
+    O conjunto permite correlacionar um intermediário do circuito, um ponto de entrega e uma assinatura operacional
+    oriental recorrente com a rede de Masao e com movimentação de pessoal usada pela Juppongatana em Ravens Bluff.
+    É uma pista forte e acionável, não prova automática de identidade, localização presente ou culpa institucional.
+  utilidade: pista_forte_sobre_logistica_masao_juppongatana
+guardrails:
+- abrir este arquivo não torna a informação conhecida por Ren
+- a informação só vira conhecimento após ser efetivamente entregue/narrada e registrada pelo pipeline normal
+- não criar neutralização Juppongatana, reputação, relação ou side quest automaticamente
+- se fatos anteriores já tornaram uma parte redundante, adaptar a utilidade para uma correlação ainda não conhecida sem contradizer o passado
