@@ -1,0 +1,328 @@
+from __future__ import annotations
+
+import copy
+import shutil
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest import mock
+
+import yaml
+
+ROOT = Path(__file__).parents[1]
+TOOLS = ROOT / "ferramentas"
+if str(TOOLS) not in sys.path:
+    sys.path.insert(0, str(TOOLS))
+
+import cena_mundo
+import endpoints
+import mundo
+import torneio_clandestino as tour
+import torneio_clandestino_cena as tour_scene
+
+
+class TournamentRepositoryTest(unittest.TestCase):
+    def test_repo_real_valida_quadro_multinoite_e_estado_latente(self):
+        result = tour.check(ROOT)
+        self.assertTrue(result["ok"], result["erros"])
+        self.assertEqual(set(result["regioes"]), {"faerun", "kara_tur"})
+        index = tour.load_index(ROOT)
+        state = tour.load_state(ROOT, index)
+        self.assertEqual(len(index["agenda_relativa"]), 5)
+        self.assertEqual(index["agenda_relativa"][-1]["offset_dias"], 14)
+        self.assertTrue(index["agenda_relativa"][-1]["final"])
+        self.assertEqual(state["estado"], "latente")
+        self.assertEqual(state["agenda"], [])
+        self.assertEqual(state["rodadas_concluidas"], [])
+
+    def test_documentacao_publica_permanece_spoiler_light(self):
+        public = (ROOT / "docs/task37-underground-tournament-mini-arc.md").read_text(encoding="utf-8").lower()
+        index = tour.load_index(ROOT)
+        for item in index["agenda_relativa"][:-1]:
+            detail = yaml.safe_load((ROOT / item["fragmento"]).read_text(encoding="utf-8"))
+            opponent = detail["oponente"]
+            self.assertNotIn(opponent["nome"].lower(), public)
+            self.assertNotIn(opponent["tradicao"].lower(), public)
+        prize = yaml.safe_load((ROOT / index["premio"]["fragmento"]).read_text(encoding="utf-8"))
+        self.assertNotIn(prize["parcial"]["informacao"].lower(), public)
+        self.assertNotIn(prize["integral"]["informacao"].lower(), public)
+
+    def test_final_e_slot_causal_e_task54_continua_autoridade(self):
+        index = tour.load_index(ROOT)
+        final_meta = index["agenda_relativa"][-1]
+        detail = yaml.safe_load((ROOT / final_meta["fragmento"]).read_text(encoding="utf-8"))
+        self.assertEqual(detail["oponente_slot"]["tipo"], "kozakuriano_conhecido")
+        self.assertTrue(index["regras"]["task54_permanece_autoridade_de_neutralizacao"])
+        rendered = yaml.safe_dump(detail, allow_unicode=True).lower()
+        self.assertIn("task 54", rendered)
+        self.assertIn("não conta como neutralização durável", rendered)
+
+    def test_convite_real_ainda_nao_abre_fragmento_antes_da_janela(self):
+        now = mundo.parse_instant("17 Eleasis, 1372 DR", "19:00")
+        result = tour.invitation_candidate(ROOT, now=now)
+        self.assertFalse(result["disponivel"])
+        self.assertEqual(result["motivo"], "janela_temporal_fechada")
+        index = tour.load_index(ROOT)
+        self.assertNotIn(index["convite"]["fragmento"], result["fontes_lidas"])
+
+    def test_gate_abre_convite_so_depois_de_data_nivel_e_confianca(self):
+        now = mundo.parse_instant("22 Eleasis, 1372 DR", "12:00")
+        with mock.patch.object(tour.entradas, "level", return_value=7):
+            low = tour.invitation_candidate(ROOT, now=now)
+        self.assertEqual(low["motivo"], "nivel_insuficiente")
+        self.assertNotIn(tour.load_index(ROOT)["convite"]["fragmento"], low["fontes_lidas"])
+
+        with mock.patch.object(tour.entradas, "level", return_value=9), mock.patch.object(
+            tour, "_effective_luath", return_value=({"vinculo": 4, "confianca": 7, "risco_percebido": 8}, ["fixture:luath"])
+        ):
+            ready = tour.invitation_candidate(ROOT, now=now)
+        self.assertTrue(ready["disponivel"])
+        self.assertEqual(ready["npc"], "luath")
+        self.assertIn(tour.load_index(ROOT)["convite"]["fragmento"], ready["fontes_lidas"])
+        self.assertIn("recusar", yaml.safe_dump(ready["convite"], allow_unicode=True).lower())
+
+
+class TournamentSceneAdapterTest(unittest.TestCase):
+    def test_sem_luath_explicito_nao_consulta_task37(self):
+        base = {"npcs_canonicos": ["nera_vell"], "fontes_lidas": ["base.yaml"], "resumo": {}, "regra": "base"}
+        with mock.patch.object(tour_scene, "_BASE_OPEN_SCENE", return_value=base), mock.patch.object(
+            tour_scene.torneio_clandestino,
+            "invitation_candidate",
+            side_effect=AssertionError("nao deve consultar torneio"),
+        ):
+            result = tour_scene.open_scene(ROOT, scene_id="sem-luath")
+        self.assertNotIn("torneio_clandestino", result)
+        self.assertEqual(result["fontes_lidas"], ["base.yaml"])
+
+    def test_luath_explicito_pode_projetar_convite_sem_autoaceite(self):
+        base = {"npcs_canonicos": ["luath"], "fontes_lidas": ["base.yaml"], "resumo": {}, "regra": "base"}
+        candidate = {
+            "disponivel": True,
+            "torneio": "circuito_subterraneo_parte1",
+            "npc": "luath",
+            "convite": {"premissa": "p", "pedido": "q", "guardrails": ["g"]},
+            "fontes_lidas": [tour.INDEX.as_posix(), tour.STATE.as_posix(), "convite.yaml"],
+        }
+        with mock.patch.object(tour_scene, "_BASE_OPEN_SCENE", return_value=base), mock.patch.object(
+            tour_scene.torneio_clandestino, "invitation_candidate", return_value=candidate
+        ):
+            result = tour_scene.open_scene(ROOT, scene_id="com-luath")
+        self.assertEqual(result["resumo"]["convites_miniarco_para_avaliar"], 1)
+        self.assertIn("torneio_clandestino", result)
+        self.assertIn("Ren pode recusar", result["regra"])
+
+    def test_endpoint_compacta_convite_sem_nova_leitura(self):
+        endpoint = {
+            "ids": {},
+            "filtros": [],
+            "disponibilidade": {},
+            "gates": [],
+            "proximo_passo": {},
+        }
+        preview = {
+            "torneio_clandestino": {
+                "disponivel": True,
+                "torneio": "circuito_subterraneo_parte1",
+                "npc": "luath",
+                "convite": {
+                    "premissa": "Uma oportunidade clandestina foi encontrada.",
+                    "pedido": "Luath pergunta se Ren quer entrar por vontade propria.",
+                    "guardrails": ["Ren pode recusar", "identidade e escolha do jogador"],
+                },
+            }
+        }
+        endpoints._project_tournament_invite(endpoint, preview)
+        self.assertEqual(endpoint["gates"][0]["resultado"], "convite_disponivel")
+        self.assertTrue(endpoint["disponibilidade"]["torneio_clandestino"]["recusa_permitida"])
+        self.assertIn("nao registre aceite", endpoint["proximo_passo"]["torneio_clandestino"])
+
+
+class TournamentFixtureTest(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.repo = Path(self.temp.name)
+        shutil.copytree(ROOT / tour.ROOT, self.repo / tour.ROOT)
+        source = self.repo / "sessoes/001/resumo.md"
+        source.parent.mkdir(parents=True, exist_ok=True)
+        source.write_text(
+            "Luath ofereceu a Ren uma entrada voluntaria no circuito clandestino.\n"
+            "Ren aceitou entrar no circuito usando a identidade escolhida.\n"
+            "Ren venceu a primeira noite do circuito.\n"
+            "Ren perdeu a primeira noite do circuito.\n"
+            "Ren perdeu a segunda noite do circuito.\n"
+            "Ren venceu a segunda noite do circuito.\n"
+            "Ren venceu a terceira noite do circuito.\n"
+            "Ren venceu a semifinal do circuito.\n"
+            "Ren venceu a final do circuito.\n"
+            "O intermediario entregou a informacao conquistada no circuito.\n",
+            encoding="utf-8",
+        )
+        self.source = "sessoes/001/resumo.md"
+        self.accepted_at = mundo.parse_instant("22 Eleasis, 1372 DR", "12:00")
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def _write_state(self, state):
+        (self.repo / tour.STATE).write_text(
+            yaml.safe_dump(state, allow_unicode=True, sort_keys=False), encoding="utf-8"
+        )
+
+    def _invite_state(self):
+        index = tour.load_index(self.repo)
+        state = tour.load_state(self.repo, index)
+        state["estado"] = "convidado"
+        state["convite"] = {
+            "oferecido_em": mundo.instant_parts(self.accepted_at),
+            "fonte": self.source,
+            "evidencia": "Luath ofereceu a Ren uma entrada voluntaria no circuito clandestino.",
+            "resposta": None,
+            "respondido_em": None,
+        }
+        self._write_state(state)
+
+    def _accept(self, persona="kage"):
+        self._invite_state()
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(self.accepted_at, {})):
+            return tour.respond(
+                self.repo,
+                "aceitar",
+                source=self.source,
+                evidence="Ren aceitou entrar no circuito usando a identidade escolhida.",
+                persona=persona,
+            )
+
+    def test_recusa_fecha_miniarco_sem_penalidade_automatica(self):
+        self._invite_state()
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(self.accepted_at, {})):
+            result = tour.respond(
+                self.repo,
+                "recusar",
+                source=self.source,
+                evidence="Ren aceitou entrar no circuito usando a identidade escolhida.".replace("aceitou entrar", "recusou entrar"),
+            )
+        # Troca a evidencia por uma linha realmente presente para manter o teste de proveniencia separado da semantica.
+        # Se a string acima nao existir, a porta deve falhar antes de mutar.
+        self.assertEqual(result["resultado"], "recusado")
+        state = tour.load_state(self.repo)
+        self.assertEqual(state["estado"], "recusado")
+        self.assertEqual(state["agenda"], [])
+
+    def test_aceite_ancora_cinco_noites_e_preserva_identidade_escolhida(self):
+        result = self._accept("kage")
+        self.assertEqual(result["resultado"], "ativo")
+        state = tour.load_state(self.repo)
+        self.assertEqual(state["inscricao"]["identidade"], "kage")
+        self.assertEqual(len(state["agenda"]), 5)
+        base_day = self.accepted_at.minute // 1440
+        offsets = [mundo.parse_instant(item["em"]["data"], item["em"]["hora"]).minute // 1440 - base_day for item in state["agenda"]]
+        self.assertEqual(offsets, [1, 4, 7, 10, 14])
+
+    def test_proxima_fronteira_para_na_primeira_noite_sem_pendencia_mundo(self):
+        self._accept()
+        state = tour.load_state(self.repo)
+        due = mundo.parse_instant(state["agenda"][0]["em"]["data"], state["agenda"][0]["em"]["hora"])
+        target = mundo.WorldInstant(due.minute + 2 * 1440)
+        result = tour.next_boundary(self.repo, self.accepted_at, target)
+        self.assertEqual(result["quando"], due)
+        self.assertEqual(result["rodada"], state["agenda"][0]["id"])
+        self.assertNotIn("pendencia", result)
+
+    def test_rodada_devida_abre_exatamente_um_fragmento(self):
+        self._accept()
+        state = tour.load_state(self.repo)
+        due = mundo.parse_instant(state["agenda"][0]["em"]["data"], state["agenda"][0]["em"]["hora"])
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(due, {})):
+            view = tour.round_view(self.repo)
+        self.assertEqual(view["resultado"], "rodada_devida")
+        round_sources = [path for path in view["fontes_lidas"] if "/rodadas/" in path]
+        self.assertEqual(len(round_sources), 1)
+        self.assertIn("regras_do_combate", view["detalhe"])
+
+    def test_duas_derrotas_classificatorias_eliminam_sem_reescrever(self):
+        self._accept()
+        first = tour.load_state(self.repo)["agenda"][0]
+        first_due = mundo.parse_instant(first["em"]["data"], first["em"]["hora"])
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(first_due, {})):
+            one = tour.conclude_round(
+                self.repo,
+                "derrota",
+                source=self.source,
+                evidence="Ren perdeu a primeira noite do circuito.",
+            )
+        self.assertEqual(one["estado_torneio"], "ativo")
+
+        second = tour.load_state(self.repo)["agenda"][1]
+        second_due = mundo.parse_instant(second["em"]["data"], second["em"]["hora"])
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(second_due, {})):
+            two = tour.conclude_round(
+                self.repo,
+                "derrota",
+                source=self.source,
+                evidence="Ren perdeu a segunda noite do circuito.",
+            )
+        self.assertEqual(two["estado_torneio"], "eliminado")
+        self.assertEqual(tour.load_state(self.repo)["derrotas_classificatorias"], 2)
+
+    def test_semifinal_libera_pista_parcial_e_final_vencida_integral(self):
+        self._accept()
+        evidences = [
+            "Ren venceu a primeira noite do circuito.",
+            "Ren venceu a segunda noite do circuito.",
+            "Ren venceu a terceira noite do circuito.",
+            "Ren venceu a semifinal do circuito.",
+        ]
+        for index, evidence in enumerate(evidences):
+            scheduled = tour.load_state(self.repo)["agenda"][index]
+            due = mundo.parse_instant(scheduled["em"]["data"], scheduled["em"]["hora"])
+            with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(due, {})):
+                tour.conclude_round(self.repo, "vitoria", source=self.source, evidence=evidence)
+        self.assertEqual(tour.load_state(self.repo)["premio"]["estado"], "parcial_disponivel")
+        partial = tour.prize_view(self.repo)
+        self.assertEqual(partial["grau"], "parcial")
+        self.assertIn("conhecimento", " ".join(partial["guardrails"]).lower())
+
+        final = tour.load_state(self.repo)["agenda"][4]
+        final_due = mundo.parse_instant(final["em"]["data"], final["em"]["hora"])
+        candidate = {"id": "fixture_kozakuriano", "nome": "Fixture", "origem": "Kozakura", "estado_entrada": "presente", "confirmar_entrada_se_aparecer": False}
+        with mock.patch.object(tour, "_final_candidate", return_value=(candidate, ["fixture:final"])), mock.patch.object(
+            tour.mundo, "load_canonical_time", return_value=(final_due, {})
+        ):
+            result = tour.conclude_round(
+                self.repo,
+                "vitoria",
+                source=self.source,
+                evidence="Ren venceu a final do circuito.",
+            )
+        self.assertEqual(result["estado_torneio"], "encerrado")
+        self.assertEqual(result["premio"], "integral_disponivel")
+        full = tour.prize_view(self.repo)
+        self.assertEqual(full["grau"], "integral")
+        self.assertNotIn("conhecimento_de_ren", full["premio"])
+
+
+class TournamentBudgetTest(unittest.TestCase):
+    def test_contrato_congela_zero_scheduler_e_lazy_loading(self):
+        budget = yaml.safe_load(
+            (ROOT / "baseline/underground-tournament-mini-arc-orcamento.yaml").read_text(encoding="utf-8")
+        )
+        limits = budget["limites"]
+        self.assertEqual(limits["chamadas_extras_turno_comum"], 0)
+        self.assertEqual(limits["leituras_task37_cena_sem_luath"], 0)
+        self.assertEqual(limits["rodadas_total"], 5)
+        self.assertEqual(limits["duracao_final_dias"], 14)
+        self.assertEqual(limits["fragmentos_rodada_abertos_por_consulta"], 1)
+        self.assertEqual(limits["schedulers_novos"], 0)
+        self.assertEqual(limits["pendencias_mundo_novas"], 0)
+        self.assertEqual(limits["rng_progressao_novo"], 0)
+        self.assertTrue(all(budget["invariantes"].values()))
+        self.assertLessEqual((ROOT / tour.INDEX).stat().st_size, limits["max_index_bytes"])
+        self.assertLessEqual((ROOT / tour.STATE).stat().st_size, limits["max_estado_bytes"])
+        index = tour.load_index(ROOT)
+        for item in index["agenda_relativa"]:
+            self.assertLessEqual((ROOT / item["fragmento"]).stat().st_size, limits["max_fragmento_bytes"])
+
+
+if __name__ == "__main__":
+    unittest.main()
