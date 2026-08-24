@@ -1,0 +1,33 @@
+schema_orcamento_pending_gate_cronica: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Incorporar a barreira barata de pendencias ao inicio de cronica preparar para
+  impedir narracao desperdicada e remover a leitura manual do marcador do hot path.
+limites:
+  max_leituras_caminho_livre: 1
+  max_leituras_caminho_bloqueado: 2
+  max_saida_bloqueada_bytes: 2048
+  max_escritas_preparar: 0
+  max_chamadas_hotpath_quando_bloqueado: 0
+  max_tickets_emitidos_quando_bloqueado: 0
+  max_endpoints_novos: 0
+  max_schedulers_novos: 0
+  max_estados_novos: 0
+  max_scans_repo: 0
+invariantes:
+  gate_roda_antes_da_preparacao_de_cena: true
+  caminho_livre_preserva_saida_da_task21: true
+  caminho_livre_le_somente_marcador: true
+  marcador_bloqueado_confirma_estado_autoritativo: true
+  confirmacao_bloqueada_e_read_only: true
+  marcador_stale_bloqueado_nao_cria_deadlock: true
+  bloqueio_nao_emite_ticket: true
+  bloqueio_nao_expoe_contrato_de_conclusao: true
+  bloqueio_nao_narra: true
+  task23_permanece_autoridade_de_resolucao_em_lote: true
+  cronica_preparar_nao_resolve_pendencias: true
+  cronica_concluir_nao_resolve_pendencias: true
+  writer_mantem_barreira_como_defesa_final: true
+  marcador_livre_nao_forca_leitura_do_estado_mundo: true
+  sem_nova_semantica_de_cena: true
+  sem_nova_semantica_transacional: true
