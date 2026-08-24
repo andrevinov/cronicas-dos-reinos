@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-"""Porta de cena v4 com gate procedural aposentado e presença incidental."""
+"""Porta de cena v4 com gate aposentado, presença incidental e quests canônicas."""
 from __future__ import annotations
 
 import cena_mundo_v4 as _v4
 import presenca_incidental_cena as _incidental
 import sidequest_gate_v2 as _gate_v2
+import sidequests_canonicas_cena as _canonical_quests
 
-# O nome sidequest_gate_v2 permanece por compatibilidade, mas desde a Task 31 o
-# adaptador só resolve o NPC e confirma que encontro não gera sidequest procedural.
-# Presença incidental continua read-only e não cria sidequest por si mesma.
+# Task31 mantém o procedural morto. Task32 recebe apenas refs opacas do encontro
+# explícito; presença incidental é instalada antes e nunca fornece refs de quest.
 _v4._core.interacoes_mundo.encounter_event = _gate_v2.encounter_event
 _incidental.install()
+_canonical_quests.install()
 
 for _name in dir(_v4):
     if not _name.startswith("__"):
