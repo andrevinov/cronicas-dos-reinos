@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-e2fbe59593b6
+npc_id: halessa_vorn
+tipo: mediacao
+titulo: A Pessoa que Não Quer Falar com Tyr
+objetivo: Criar uma conversa segura entre Halessa e uma pessoa que rejeita contato institucional, sem prometer resultado
+  nem imunidade.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Halessa respeita a recusa e procura outra base probatória.
+oferta:
+  recusa_permitida: true
+  premissa: Com um pouco mais de vínculo pessoal, Halessa admite que a presença dela própria fechou uma porta que
+    Ren talvez consiga reabrir sem mentira.
+  pedido: 'Ela pede que Ren ofereça uma conversa voluntária e transmita exatamente os limites: nenhum acordo já
+    está feito.'
+  guardrails:
+  - Ren não pode prometer imunidade que Tyr não ofereceu.
+  - A pessoa pode recusar contato.
+  - Mediação não é coerção por amizade.
+efeitos: []

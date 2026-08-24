@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-640f9c8277a7
+npc_id: luath
+tipo: protecao
+titulo: Uma Testemunha sem Insígnia
+objetivo: Ajudar a deslocar uma testemunha por um trecho em que uma escolta uniformizada denunciaria o destino.
+janela:
+  tipo: temporal
+  duracao_horas: 10
+pode_reabrir: false
+consequencia_sem_ren: A guarda muda o destino, reforça a escolta e perde discrição operacional.
+oferta:
+  recusa_permitida: true
+  premissa: A cadeia de custódia precisa de discrição por poucas horas, mas Luath não pode oficialmente apagar a
+    presença da guarda.
+  pedido: Ele propõe que Ren componha uma camada civil de proteção e siga o plano de retirada se algo mudar.
+  guardrails:
+  - A testemunha não é isca.
+  - Ren não recebe autoridade sobre depoimento ou custódia.
+  - A missão pode ser abortada sem combate.
+efeitos: []

@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-fbf6fff0386a
+npc_id: luath
+tipo: investigacao
+titulo: A Pista que Não Pode Usar Uniforme
+objetivo: Verificar uma observação ligada à mobilidade de Kurobane sem transformar Ren em agente informal da guarda.
+janela:
+  tipo: temporal
+  duracao_horas: 20
+pode_reabrir: false
+consequencia_sem_ren: A Night Watch espera base formal, a pista esfria ou outra patrulha a encontra de modo menos
+  discreto.
+oferta:
+  recusa_permitida: true
+  premissa: Luath recebeu informação que seria destruída pela presença visível de um guarda e não tem base para
+    uma diligência formal.
+  pedido: 'Ele pede apenas confirmação observável: ver se um padrão existe e voltar; qualquer intervenção exige
+    um novo fato.'
+  guardrails:
+  - Luath não delega poder de prisão a Ren.
+  - Confirmar padrão não autoriza confronto.
+  - Kurobane não aparece só porque a quest foi aceita.
+efeitos: []

@@ -1,0 +1,14 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-e2fbe59593b6
+npc_id: halessa_vorn
+detalhe: narrador/sidequests-canonicas/segredos/qsc-e2fbe59593b6.yaml
+condicoes:
+  locais:
+  - casa_de_tyr
+  relacao:
+    afinidade_min: 5
+    confianca_min: 6
+  identidade:
+    persona_relacional:
+    - ren

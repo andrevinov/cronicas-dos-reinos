@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-2791b6f43771
+npc_id: halessa_vorn
+tipo: aquisicao
+titulo: Antes que o Registro Mude de Mãos
+objetivo: Obter acesso legítimo a uma cópia, recibo ou objeto documental antes que uma transferência administrativa
+  o torne inacessível.
+janela:
+  tipo: temporal
+  duracao_horas: 16
+pode_reabrir: false
+consequencia_sem_ren: Tyr tenta uma requisição formal mais lenta ou perde a janela de comparação.
+oferta:
+  recusa_permitida: true
+  premissa: Halessa identificou uma janela burocrática estreita em que a peça ainda pode ser consultada sem mandado
+    mais amplo.
+  pedido: Ela pede que Ren use um caminho legal disponível a civis e traga apenas o que tiver direito de copiar
+    ou receber.
+  guardrails:
+  - A missão não autoriza furto nem violação de lacre.
+  - Não obter o documento é um resultado possível.
+  - Halessa não pede falsificação.
+efeitos: []

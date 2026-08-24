@@ -1,0 +1,13 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-640f9c8277a7
+npc_id: luath
+detalhe: narrador/sidequests-canonicas/segredos/qsc-640f9c8277a7.yaml
+condicoes:
+  relacao:
+    afinidade_min: 4
+    confianca_min: 7
+    risco_min: 8
+  identidade:
+    persona_relacional:
+    - ren

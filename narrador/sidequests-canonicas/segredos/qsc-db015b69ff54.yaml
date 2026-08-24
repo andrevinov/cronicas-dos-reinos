@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-db015b69ff54
+npc_id: luath
+tipo: trabalho_profissional
+titulo: Um Olho Civil na Cadeia de Custódia
+objetivo: Executar uma tarefa civil delimitada de verificação documental em paralelo a uma operação da guarda sem
+  acesso indevido a prova protegida.
+janela:
+  tipo: temporal
+  duracao_horas: 30
+pode_reabrir: false
+consequencia_sem_ren: Luath usa pessoal próprio, aceita menor discrição e reduz o espaço operacional dado a Ren.
+oferta:
+  recusa_permitida: true
+  premissa: Se a confiança institucional crescer, Luath considera útil separar o que Ren pode observar do que só
+    a guarda pode tocar.
+  pedido: Ele oferece um papel específico, com começo e fim, para detectar incoerências externas enquanto agentes
+    preservam a prova.
+  guardrails:
+  - Ren não recebe acesso irrestrito a interrogatórios ou evidência selada.
+  - O trabalho tem limites institucionais explícitos.
+  - Recusar não torna Ren suspeito.
+efeitos: []
