@@ -72,7 +72,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag pertinente usa `--contexto-tag` (`--tag` é alias) e namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só existe ao **entrar/explorar** e usa `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Deslocamento urbano material usa `--transito-urbano ravens_bluff`; não combinar trânsito com local/NPC/tag.
 
-**Barreira de pendências vive dentro de `cronica preparar`.** Não leia o marcador antes do turno. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia o marcador antes do turno. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
 **Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only. Após narração aceita, `cronica concluir` revalida/confirma se reativa e registra. Ticket neutro não fabrica confirmação; cena abandonada não conclui; preparação obsoleta exige novo preparo.
 
@@ -97,7 +97,7 @@ Durante avanço comum:
 
 Rolagem comum conhecida: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'` (vantagem/desvantagem ou abordagem só quando pertinente); não redescobrir assinatura via `--help`.
 
-Rodapé é derivado, não cânone. Telemetria é **pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
+Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
 
 Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além do materialmente necessário. Não decompor em primitivas sem reparo real.
 
@@ -115,7 +115,7 @@ Fronteira importante: `poetry run cronica sessao checkpoint`. Encerramento: `poe
 
 Journal interrompido: não narrar; `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback).
 
-Ao pedido **“inicie uma sessão”**, o narrador executa `poetry run cronica sessao status`; se `entre_sessoes`, executa `poetry run cronica sessao iniciar`. Use o `recap_sessao_anterior`/`retomada` devolvido; não leia handoff cru/transcrição se bastar. Se já `em_sessao`, o status traz a retomada quente. Nunca pular sessão nem copiar transcrição anterior.
+Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: o narrador executa `poetry run cronica sessao status`; se `entre_sessoes`, executa `poetry run cronica sessao iniciar`. Use o `recap_sessao_anterior`/`retomada` devolvido; não leia handoff cru/transcrição se bastar. Se já `em_sessao`, o status traz a retomada quente. Nunca pular sessão nem copiar transcrição anterior.
 
 Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
 
