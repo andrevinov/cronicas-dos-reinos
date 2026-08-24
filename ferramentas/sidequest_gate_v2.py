@@ -2,10 +2,13 @@
 """Compatibilidade da Task 31: o Side Quest Gate procedural esta aposentado.
 
 O nome do modulo permanece porque ``cena_mundo.py`` ja o usa como adaptador da
-porta de encontro. A implementacao nova resolve apenas a identidade do NPC e
-retorna interacao normal. Nao abre estado de oportunidades, perfil procedural,
-pressao de aventura, tempo nem baralho; portanto um encontro jamais gera side
-quest por acaso.
+porta de encontro. No repo real, a implementacao nova resolve apenas a identidade
+do NPC e retorna interacao normal: nao abre estado de oportunidades, perfil
+procedural, pressao de aventura, tempo nem baralho.
+
+Fixtures/repositórios antigos que ainda nao declaram a aposentadoria usam o motor
+legado capturado na importacao. Isso preserva testes e migracoes historicas sem
+reativar o gate na campanha atual.
 
 O lifecycle de missoes continua em ``oportunidades.py`` para fontes canonicas
 explicitas. O catalogo/engine canonico e responsabilidade da Task 32.
@@ -23,6 +26,7 @@ import oportunidades
 
 RETIREMENT = "gate_procedural_retirado_task31"
 NEW_SOURCE = "canonica_explicita"
+_BASE_ENCOUNTER_EVENT = integration.encounter_event
 
 
 class SidequestGateV2Error(ValueError):
@@ -52,7 +56,11 @@ def _retirement_contract(index: dict[str, Any]) -> None:
     profiles = index.get("perfis")
     if not isinstance(profiles, dict):
         raise SidequestGateV2Error("perfis procedurais ausentes para auditoria")
-    active = [npc_id for npc_id, meta in profiles.items() if isinstance(meta, dict) and meta.get("estado") == "ativo"]
+    active = [
+        npc_id
+        for npc_id, meta in profiles.items()
+        if isinstance(meta, dict) and meta.get("estado") == "ativo"
+    ]
     if active:
         raise SidequestGateV2Error(
             "perfil procedural ainda ativo apos Task 31: " + ", ".join(sorted(active))
@@ -66,9 +74,21 @@ def encounter_event(
     now=None,
     encounter_id: str | None = None,
 ) -> dict[str, Any]:
-    """Resolve o NPC e encerra sem sorteio, perfil, estado ou escrita."""
+    """Repo Task31: resolve sem gate. Fixture legado: preserva comportamento antigo."""
     try:
         index = oportunidades.load_index(repo)
+    except oportunidades.OpportunityError as exc:
+        raise integration.IntegrationError(str(exc)) from exc
+
+    if index.get("estatuto_operacional") != RETIREMENT:
+        return _BASE_ENCOUNTER_EVENT(
+            repo,
+            npc_id,
+            now=now,
+            encounter_id=encounter_id,
+        )
+
+    try:
         _retirement_contract(index)
         resolution = integration.resolve_encounter_npc(repo, npc_id, index)
     except (oportunidades.OpportunityError, SidequestGateV2Error) as exc:
