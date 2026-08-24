@@ -2,10 +2,11 @@
 """CLI operacional unificada de turno, sessão e progressão.
 
 A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
-``ciclo_cronica.py``. A camada pública acrescenta apenas ergonomia observada em
-rollout real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot
-path, retomada compacta limpa e transporte de ticket tolerante a whitespace
-acidental no corpo base64.
+``ciclo_cronica.py``. A camada pública acrescenta ergonomia observada em rollout
+real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
+retomada compacta limpa, transporte de ticket tolerante a whitespace acidental no
+corpo base64 e, desde a Task 24, o gate read-only de pendências antes de qualquer
+preparação de turno.
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ import ciclo_cronica
 import ciclo_sessoes
 import consolidar
 import cronica_hotpath as _hot
+import cronica_pending_gate as _pending_gate
 import progressao_juppongatana
 import retomada_cronica
 import sessoes
@@ -54,6 +56,13 @@ _core._b64_decode = _b64_decode
 
 
 def prepare(*args, **kwargs):
+    """Aplica a barreira barata antes de delegar à preparação de turno existente."""
+    repo = args[0] if args else kwargs.get("repo")
+    if repo is None:
+        raise _core.CronicaError("cronica preparar exige raiz do repositório")
+    gate = _pending_gate.prepare_gate(Path(repo))
+    if gate is not None:
+        return gate
     return _hot.prepare(*args, **kwargs)
 
 

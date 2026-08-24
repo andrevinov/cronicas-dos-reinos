@@ -52,7 +52,7 @@ Leia no máximo o documento especializado necessário:
 - L0–L5 → `docs/agente/escada-de-acesso.md`; acesso/operação → `docs/agente/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/handoffs e lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
-- fronteira/lote de pendências → `docs/task23-batch-world-boundary-resolution.md`;
+- fronteira/pendências → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
@@ -66,13 +66,13 @@ Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao
 
 Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = **RECALL**. OFF não avança nem é registrado; RECALL só completa fato que Ren legitimamente sabe, nunca vontade/emoção/estratégia/segredo.
 
-Fluxo normal: `entrada → ON/OFF/RECALL → barreira → contexto necessário → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
+Fluxo normal: `entrada → ON/OFF/RECALL → cronica preparar (gate + preparação) → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
 
-**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. A saída de `preparar` contém o contrato JSON de conclusão e é autoritativa: **não chamar `--help`, não usar `sed`/`rg` para ler implementação e não abrir código-fonte para redescobrir sintaxe já fornecida**.
+**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket <ticket>`. Se `preparar` emitir ticket, sua saída é autoritativa: **não chamar `--help`, não usar `sed`/`rg` para ler implementação e não abrir código-fonte para redescobrir sintaxe já fornecida**.
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag só entra se uma tag tipada pertinente (`local:`, `assunto:`, `acao:`, `pessoa:`, `risco:`) já existir. Gatilho local só existe ao **entrar/explorar** e usa `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Em **deslocamento urbano material por Ravens Bluff** que mereça turno próprio, use na mesma porta `--transito-urbano ravens_bluff`: não cria `local_id` nem terceira chamada. Não combinar trânsito com local/NPC/tag no mesmo ticket; a cena reativa fica no turno seguinte.
 
-**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se bloqueado, não narrar nem decompor: `resolver_fronteira.py preparar`, avaliar **todos** os itens na mesma inferência e enviar juntos os no-ops por `resolver_fronteira.py aplicar`. Itens omitidos ficam abertos; depois seguir só `requer_resolucao`. Evento canônico nunca aceita no-op. Candidato autônomo só aceita `sem_mudanca` por bloqueio canônico concreto; ausência de ação de Ren/fato novo não basta. Fallback de reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` usa `agentes_leves.py concluir-noop <id>`; demais usam `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia o marcador antes do turno. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
 **Cena reativa:** `cronica preparar` recebe somente gatilhos reais; é read-only. Depois da narração aceita, `cronica concluir` revalida/confirma se a preparação for reativa e registra. Ticket neutro não fabrica confirmação. Cena abandonada não conclui; preparação reativa obsoleta exige novo preparo.
 
@@ -82,7 +82,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar até a fronteira, registrar/checkpointar, resolver no-ops em lote e materializar só `requer_resolucao`. Não chamar em turno curto.
+**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`, que barra pendências. Não chamar em turno curto.
 
 Durante avanço comum:
 
