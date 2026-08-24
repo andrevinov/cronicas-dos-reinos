@@ -8,6 +8,7 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 - consulta de sessão sem abrir transcrição;
 - textura narrativa compacta e dirigida para NPCs/locais;
 - diálogo relacional projetado a partir dos medidores já carregados;
+- reputação pública dirigida por persona, sem score global ou leitura por rotina;
 - busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
   `--historico --transcricoes`;
 - política mecânica de L1–L4T com teto de bytes e justificativa para escaladas.
@@ -38,6 +39,7 @@ import contexto_core as core
 import dialogo_relacional
 import politica_acesso as politica
 import recursos
+import reputacao_publica
 import sessoes as memoria_sessoes
 import texturas
 import transacoes
@@ -380,6 +382,19 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
     return data
 
 
+def command_reputation(repo: Path, term: str, public: str | None = None) -> dict[str, Any]:
+    result = reputacao_publica.show(repo, term, public)
+    sources = [
+        reputacao_publica.AUDIENCE_REGISTRY.as_posix(),
+        reputacao_publica.IDENTITY_REGISTRY.as_posix(),
+        reputacao_publica.STATE_FILE.as_posix(),
+    ]
+    data = envelope("reputacao", term, "L2", sources, result)
+    if result.get("deltas_pendentes_aplicados"):
+        _add_pending_source(data)
+    return data
+
+
 def _iter_text_files(root: Path) -> Iterable[Path]:
     if not root.exists():
         return
@@ -576,6 +591,10 @@ def build_parser() -> argparse.ArgumentParser:
         child = sub.add_parser(name, help=help_text)
         child.add_argument("termo")
 
+    reputation = sub.add_parser("reputacao", help="L2: reputação pública de Ren, Shinta ou Kage")
+    reputation.add_argument("termo")
+    reputation.add_argument("--publico", help="opcional: limita a consulta a um público social")
+
     search = sub.add_parser("buscar", help="L3/L4/L4T: busca limitada e escalonada")
     search.add_argument("termo")
     search.add_argument("--reservado", action="store_true", help="inclui narrador/; exige motivo")
@@ -649,6 +668,8 @@ def main() -> int:
             data = command_resource(repo, args.termo)
         elif args.command == "conhecimento":
             data = command_knowledge(repo, args.termo)
+        elif args.command == "reputacao":
+            data = command_reputation(repo, args.termo, args.publico)
         elif args.command == "regra":
             data = command_rule(repo, args.termo)
         elif args.command == "buscar":
@@ -675,6 +696,7 @@ def main() -> int:
         yaml.YAMLError,
         memoria_sessoes.SessionMemoryError,
         politica.AccessPolicyError,
+        reputacao_publica.PublicReputationError,
     ) as exc:
         print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
         return 1
