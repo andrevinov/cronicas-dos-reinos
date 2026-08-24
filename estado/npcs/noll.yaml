@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: noll
+npc:
+  nome: Noll
+  grupo: cobrança de Bram Vask
+  medidores:
+    vinculo: 1
+    confianca: 1
+    risco_percebido: 9
+  natureza_do_vinculo: hostilidade e medo prático após derrota
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/noll.yaml

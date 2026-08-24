@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: edran_vale
+npc:
+  nome: Edran Vale
+  grupo: contato local
+  medidores:
+    vinculo: 4
+    confianca: 3
+    risco_percebido: 5
+  natureza_do_vinculo: cautela local e tensão sem hostilidade aberta
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/edran_vale.yaml

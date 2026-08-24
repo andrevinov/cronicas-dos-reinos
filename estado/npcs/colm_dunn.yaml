@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: colm_dunn
+npc:
+  nome: Colm Dunn
+  grupo: família Dunn / Colm-Dent
+  medidores:
+    vinculo: 6
+    confianca: 6
+    risco_percebido: 6
+  natureza_do_vinculo: gratidão cautelosa após resgate e franqueza limitada
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/colm_dunn.yaml

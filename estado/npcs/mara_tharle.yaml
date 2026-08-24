@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: mara_tharle
+npc:
+  nome: Mara Tharle
+  grupo: testemunha local
+  medidores:
+    vinculo: 3
+    confianca: 2
+    risco_percebido: 7
+  natureza_do_vinculo: medo e desconfiança de uma testemunha vulnerável
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/mara_tharle.yaml

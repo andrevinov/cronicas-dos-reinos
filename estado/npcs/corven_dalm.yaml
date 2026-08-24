@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: corven_dalm
+npc:
+  nome: Corven Dalm
+  grupo: Casa Veyr
+  medidores:
+    vinculo: 3
+    confianca: 2
+    risco_percebido: 6
+  natureza_do_vinculo: provocação calculada com respeito tático sem confiança
+  identidade_relacional: kage
+  fonte_relacional: estado/relacoes/corven_dalm.yaml

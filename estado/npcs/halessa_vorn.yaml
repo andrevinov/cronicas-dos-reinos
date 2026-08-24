@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: halessa_vorn
+npc:
+  nome: Irmã Halessa Vorn
+  grupo: Casa de Tyr
+  medidores:
+    vinculo: 4
+    confianca: 6
+    risco_percebido: 8
+  natureza_do_vinculo: confiança operacional real sob limite de ruptura explícito
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/halessa_vorn.yaml

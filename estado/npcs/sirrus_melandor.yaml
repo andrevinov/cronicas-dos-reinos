@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: sirrus_melandor
+npc:
+  nome: Sirrus Melandor
+  grupo: Casa de Tyr
+  medidores:
+    vinculo: 4
+    confianca: 3
+    risco_percebido: 5
+  natureza_do_vinculo: avaliação institucional rígida com respeito ainda inicial
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/sirrus_melandor.yaml

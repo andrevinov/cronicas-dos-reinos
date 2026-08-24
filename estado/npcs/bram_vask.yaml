@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: bram_vask
+npc:
+  nome: Bram Vask
+  grupo: cobrança / loja de penhores
+  medidores:
+    vinculo: 1
+    confianca: 1
+    risco_percebido: 9
+  natureza_do_vinculo: hostilidade e medo após coerção direta
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/bram_vask.yaml

@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: dorra_hest
+npc:
+  nome: Dorra Hest
+  grupo: fornos de cal / carroças
+  medidores:
+    vinculo: 3
+    confianca: 2
+    risco_percebido: 5
+  natureza_do_vinculo: relação instrumental comprada por utilidade imediata
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/dorra_hest.yaml

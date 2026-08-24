@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: peta
+npc:
+  nome: Peta
+  grupo: criança resgatada / testemunha em recuperação
+  medidores:
+    vinculo: 6
+    confianca: 4
+    risco_percebido: 7
+  natureza_do_vinculo: gratidão frágil atravessada por trauma e medo
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/peta.yaml
