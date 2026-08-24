@@ -30,7 +30,11 @@ class CanonicalSecretQuestRepositoryTest(unittest.TestCase):
         index = oportunidades.load_index(ROOT)
         router = index["sidequests_canonicas"]
         self.assertEqual(router["engine"], canonical.ENGINE_ID)
-        self.assertTrue(router["por_npc"])
+        self.assertEqual(router["roteamento"], canonical.FRAGMENTED_ROUTING)
+        self.assertNotIn("por_npc", router)
+        mapping, sources = canonical.catalog_refs(ROOT, index)
+        self.assertTrue(mapping)
+        self.assertEqual(len(sources), len(mapping))
         result = canonical.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertGreater(result["quest_givers"], 0)
@@ -53,6 +57,9 @@ class CanonicalSecretQuestRepositoryTest(unittest.TestCase):
         self.assertNotIn("sidequest_canonica", preview)
         self.assertFalse(
             any("sidequests-canonicas/gates" in item for item in preview["fontes_lidas"])
+        )
+        self.assertFalse(
+            any("sidequests-canonicas/roteadores" in item for item in preview["fontes_lidas"])
         )
 
     def test_endpoint_projeta_pedido_sem_autoaceite(self):
