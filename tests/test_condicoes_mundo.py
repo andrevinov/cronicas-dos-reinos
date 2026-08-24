@@ -17,6 +17,7 @@ import cena_mundo
 import cena_mundo_v4
 import condicoes_mundo as conditions
 import condicoes_mundo_cena
+import incidentes_mundo_cena
 import mundo
 
 
@@ -266,9 +267,10 @@ class PersistentConditionSceneTest(unittest.TestCase):
         self.assertEqual(result["resumo"]["condicoes_persistentes_ativas"], 1)
         self.assertIn("não impõem teste", result["regra"])
 
-    def test_porta_publica_instala_adapter_task34_por_ultimo(self):
-        self.assertIs(cena_mundo_v4._core.open_scene, condicoes_mundo_cena.open_scene)
-        self.assertIs(cena_mundo.open_scene, condicoes_mundo_cena.open_scene)
+    def test_porta_publica_instala_task35_depois_da_task34(self):
+        self.assertIs(cena_mundo_v4._core.open_scene, incidentes_mundo_cena.open_scene)
+        self.assertIs(cena_mundo.open_scene, incidentes_mundo_cena.open_scene)
+        self.assertIs(incidentes_mundo_cena._BASE_OPEN_SCENE, condicoes_mundo_cena.open_scene)
 
 
 class PersistentConditionRepositoryAndBudgetTest(unittest.TestCase):

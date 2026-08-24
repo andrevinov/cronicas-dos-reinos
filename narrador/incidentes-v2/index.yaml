@@ -1,0 +1,243 @@
+schema_incidentes_mundo: 1
+natureza: reservado
+estatuto: candidatos_serios_nao_canonicos_ate_narracao
+cidade: ravens_bluff
+semente: incidentes-v2-ravens-bluff
+frequencia:
+  global:
+    fichas:
+    - {id: g01, resultado: rotina}
+    - {id: g02, resultado: rotina}
+    - {id: g03, resultado: rotina}
+    - {id: g04, resultado: rotina}
+    - {id: g05, resultado: rotina}
+    - {id: g06, resultado: rotina}
+    - {id: g07, resultado: rotina}
+    - {id: g08, resultado: rotina}
+    - {id: g09, resultado: rotina}
+    - {id: g10, resultado: rotina}
+    - {id: g11, resultado: rotina}
+    - {id: g12, resultado: incidente}
+  local:
+    fichas:
+    - {id: l01, resultado: rotina}
+    - {id: l02, resultado: rotina}
+    - {id: l03, resultado: rotina}
+    - {id: l04, resultado: rotina}
+    - {id: l05, resultado: rotina}
+    - {id: l06, resultado: rotina}
+    - {id: l07, resultado: rotina}
+    - {id: l08, resultado: incidente}
+regras:
+  ordem: global_depois_local_se_global_nao_materializa
+  max_incidentes_por_cena: 1
+  incidente_e_candidato_ate_narracao: true
+  condicao_persistente_muda_pool_nao_frequencia: true
+  sem_npc_nomeado_automatico: true
+  sem_sidequest_automatica: true
+  sem_recompensa_automatica: true
+  sem_segredo_automatico: true
+  sem_conhecimento_automatico: true
+  scheduler: proibido
+  reroll_por_incompatibilidade: proibido
+  ren_pode_nao_intervir: true
+  combate_nao_e_obrigatorio: true
+  ameaca_desproporcional_exige_saida_observavel: true
+guardrails_globais:
+- O incidente apresenta uma situação; nunca escreve decisão, emoção ou resposta de Ren.
+- Intervenção imediata pode resolver toda a situação sem criar side quest, recompensa ou compromisso posterior.
+- NPCs nomeados só entram por outra camada canônica; aqui os participantes são papéis anônimos plausíveis da ecologia.
+- Se violência surgir, calibrar oposição ao contexto; ameaça esmagadora precisa deixar fuga, negociação, cobertura ou outra saída observável.
+cartas:
+  perseguicao_cruza_cena:
+    nome: Perseguição atravessa a cena
+    tipo: perseguicao
+    escopos: [global]
+    acessos: [publico, semipublico, controlado]
+    canais: []
+    tags: []
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Duas ou mais pessoas surgem em perseguição real, com risco de atropelar, derrubar ou envolver terceiros no caminho.
+    rotas: [intervir, proteger_terceiros, observar, pedir_ajuda, deixar_passar]
+  tumulto_movel:
+    nome: Tumulto móvel
+    tipo: tumulto
+    escopos: [global]
+    acessos: [publico, semipublico]
+    canais: []
+    tags: [publico, rua_urbana, comunitario]
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Uma discussão coletiva deixa de ser apenas barulho e passa a ameaçar pessoas, mercadorias ou acesso ao local.
+    rotas: [separar, proteger, negociar, chamar_autoridade, afastar_se]
+  problema_com_guarda:
+    nome: Problema com a guarda
+    tipo: guarda
+    escopos: [global]
+    acessos: [publico, semipublico, controlado]
+    canais: [seguranca, atendimento, transito]
+    tags: [seguranca, institucional, rua_urbana]
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Uma abordagem de autoridade degrada para impasse físico ou injustiça observável antes que a situação esteja resolvida.
+    rotas: [intermediar, testemunhar, ajudar_alvo, ajudar_guarda, afastar_se]
+  carroca_fora_de_controle:
+    nome: Carroça fora de controle
+    tipo: acidente
+    escopos: [global]
+    acessos: [publico, semipublico]
+    canais: [transito, entrega, carga]
+    tags: [rua_urbana, carga, entrega]
+    condicoes_necessarias: []
+    severidade: alta
+    intervencao: imediata
+    premissa: Animal, eixo ou carga falha e uma carroça ameaça gente ou estrutura próxima em poucos instantes.
+    rotas: [conter_veiculo, retirar_pessoas, abrir_caminho, alertar, buscar_ajuda]
+  briga_publica:
+    nome: Briga que deixa de ser só discussão
+    tipo: briga
+    escopos: [global, local]
+    acessos: [publico, semipublico, controlado]
+    canais: [atendimento, espetaculo, culto, transito, vizinhanca]
+    tags: [publico, comunitario, comercio, espetaculo, rua_urbana]
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Uma briga entre pessoas comuns cruza o limite em que alguém pode se ferir seriamente ou atingir um terceiro.
+    rotas: [separar, intimidar, negociar, proteger_terceiro, chamar_ajuda, nao_intervir]
+  furto_em_andamento:
+    nome: Furto em andamento
+    tipo: roubo
+    escopos: [local]
+    acessos: [publico, semipublico, controlado]
+    canais: [atendimento, entrega, carga, documentos, espetaculo]
+    tags: [comercio, estoque, carga, documentos, publico, entrega]
+    condicoes_necessarias: []
+    severidade: baixa
+    intervencao: imediata
+    premissa: Ren tem oportunidade real de perceber alguém tentando levar algo de valor enquanto proprietários ou responsáveis estão distraídos.
+    rotas: [interpelar, alertar_responsavel, seguir_suspeito, observar, ignorar]
+  extorsao_local:
+    nome: Cobrança coercitiva
+    tipo: extorsao
+    escopos: [local]
+    acessos: [publico, semipublico, controlado]
+    canais: [atendimento, entrega, abastecimento, seguranca]
+    tags: [comercio, servico, entrega, seguranca, trabalho]
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Uma cobrança aparentemente comercial revela coerção concreta contra trabalhador, comerciante ou prestador que tenta não escalar a situação.
+    rotas: [questionar, intimidar_agressor, negociar, buscar_testemunha, chamar_autoridade, nao_intervir]
+  acidente_de_trabalho:
+    nome: Acidente de trabalho
+    tipo: acidente
+    escopos: [local]
+    acessos: [publico, semipublico, controlado, privado]
+    canais: [trabalho, manutencao, carga, estabulo, entrega, abastecimento]
+    tags: [trabalho, carga, servico, estabulo, entrega, propriedade]
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Uma tarefa rotineira falha de modo súbito e deixa alguém preso, caído ou exposto a dano adicional imediato.
+    rotas: [socorrer, estabilizar_perigo, chamar_ajuda, coordenar_presentes, nao_intervir]
+  incendio_local:
+    nome: Fogo fora de controle
+    tipo: incendio
+    escopos: [local]
+    acessos: [publico, semipublico, controlado, privado]
+    canais: [manutencao, rotina, trabalho, espetaculo]
+    tags: [residencia, trabalho, acampamento, comercio, imovel_baixa_atividade, propriedade]
+    condicoes_necessarias: []
+    severidade: alta
+    intervencao: imediata
+    premissa: Chama, braseiro ou material inflamável sai do controle e ameaça se espalhar antes de uma resposta organizada.
+    rotas: [apagar, evacuar, remover_combustivel, buscar_agua, chamar_ajuda, recuar]
+  desabamento_parcial:
+    nome: Estrutura cedendo
+    tipo: desabamento
+    escopos: [local]
+    acessos: [publico, semipublico, controlado, privado]
+    canais: [manutencao, trabalho, carga, vizinhanca]
+    tags: [imovel_baixa_atividade, trabalho, carga, servico, exterior, propriedade]
+    condicoes_necessarias: []
+    severidade: alta
+    intervencao: imediata
+    premissa: Piso, cobertura, andaime ou parede mostra falha já em curso e coloca pelo menos uma pessoa em perigo concreto.
+    rotas: [retirar_pessoas, sustentar_estrutura, isolar_area, chamar_ajuda, recuar]
+  crianca_em_perigo:
+    nome: Criança em perigo imediato
+    tipo: crianca_em_perigo
+    escopos: [local]
+    acessos: [publico, semipublico, controlado]
+    canais: [vizinhanca, atendimento, animal, manutencao, abastecimento]
+    tags: [comunitario, vizinhanca, publico, agua, animais, residencia]
+    condicoes_necessarias: []
+    severidade: alta
+    intervencao: imediata
+    premissa: Uma criança fica exposta a perigo físico simples e urgente, sem que um adulto capaz já esteja resolvendo a situação.
+    rotas: [socorrer, alertar, remover_perigo, chamar_responsavel, pedir_ajuda]
+  ferido_sem_ajuda:
+    nome: Ferido sem assistência suficiente
+    tipo: ferimento
+    escopos: [global, local]
+    acessos: [publico, semipublico, controlado, privado]
+    canais: [atendimento, cuidado, vizinhanca, trabalho, transito, seguranca]
+    tags: []
+    condicoes_necessarias: []
+    severidade: moderada
+    intervencao: imediata
+    premissa: Alguém está ferido de verdade e a ajuda disponível é insuficiente ou ainda não chegou.
+    rotas: [primeiros_socorros, proteger_ferido, buscar_curandeiro, perguntar_o_que_ocorreu, nao_intervir]
+  queda_em_piso_molhado:
+    nome: Acidente agravado por chuva
+    tipo: acidente
+    escopos: [global, local]
+    acessos: [publico, semipublico, controlado]
+    canais: [transito, entrega, carga, rotina]
+    tags: [rua_urbana, entrega, carga, exterior]
+    condicoes_necessarias: [chuva_forte]
+    severidade: moderada
+    intervencao: imediata
+    premissa: Piso encharcado ou visibilidade ruim transforma movimento normal em queda ou colisão com risco de dano adicional.
+    rotas: [socorrer, interromper_fluxo, sinalizar_perigo, buscar_ajuda, seguir]
+  confusao_de_multidao:
+    nome: Pressão de multidão
+    tipo: tumulto
+    escopos: [global, local]
+    acessos: [publico, semipublico]
+    canais: [espetaculo, culto, atendimento, transito]
+    tags: [publico, espetaculo, comunitario, templo, rua_urbana]
+    condicoes_necessarias: [multidao]
+    severidade: alta
+    intervencao: imediata
+    premissa: Densidade e pânico localizado fazem a multidão pressionar pessoas contra passagem, grade, carroça ou parede.
+    rotas: [abrir_saida, acalmar, retirar_vulneravel, coordenar_fluxo, chamar_ajuda, recuar]
+  conflito_de_abastecimento:
+    nome: Disputa por abastecimento
+    tipo: extorsao
+    escopos: [global, local]
+    acessos: [publico, semipublico, controlado]
+    canais: [abastecimento, atendimento, entrega]
+    tags: [comercio, servico, estoque, entrega]
+    condicoes_necessarias: [precos_tensionados]
+    severidade: moderada
+    intervencao: imediata
+    premissa: Escassez ou preços tensionados transformam uma entrega ou fila em coerção concreta entre compradores, fornecedor e responsáveis.
+    rotas: [mediar, proteger_carga, organizar_fila, chamar_autoridade, nao_intervir]
+  abordagem_de_toque_recolher:
+    nome: Abordagem sob toque de recolher
+    tipo: guarda
+    escopos: [global]
+    acessos: [publico, semipublico, controlado]
+    canais: [seguranca, transito]
+    tags: [seguranca, institucional, rua_urbana]
+    condicoes_necessarias: [patrulha_reforcada]
+    severidade: moderada
+    intervencao: imediata
+    premissa: Patrulheiros contêm alguém sob regra excepcional e a abordagem ameaça escalar por medo, erro ou resistência.
+    rotas: [observar, intermediar, cooperar_com_guarda, ajudar_abordado, afastar_se]

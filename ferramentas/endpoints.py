@@ -2,9 +2,10 @@
 """Endpoints determinísticos com contratos operacionais endurecidos.
 
 O contrato original da Task 10 está preservado em ``_endpoints_core.py``. Esta
-camada acrescenta qualidade de abordagem, projeções raras de Mundo Vivo e, desde
-a Task 32, a sidequest canônica já selecionada pela preparação de cena. Nenhuma
-dessas projeções adiciona leitura ao endpoint: só compacta dados já calculados.
+camada acrescenta qualidade de abordagem, projeções raras de Mundo Vivo,
+sidequest canônica selecionada pela cena e incidentes sérios da Task 35.
+Nenhuma dessas projeções adiciona leitura ao endpoint: só compacta dados já
+calculados pela preparação.
 """
 from __future__ import annotations
 
@@ -25,6 +26,9 @@ _ORIGINAL_PROJECT_SCENE = _base.project_scene
 _ORIGINAL_BUILD_PARSER = _base.build_parser
 MAX_PRESSURE_CANDIDATES = 4
 MAX_CANONICAL_EVENTS = 1
+MAX_INCIDENT_ROUTES = 4
+MAX_INCIDENT_ACTORS = 4
+MAX_INCIDENT_GUARDRAILS = 2
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -122,6 +126,47 @@ def _project_canonical_sidequest(
     )
 
 
+def _project_incident(
+    result: dict[str, Any],
+    preview: dict[str, Any],
+) -> None:
+    selected = preview.get("incidente_mundo")
+    if not isinstance(selected, dict) or selected.get("resultado") != "avaliar_incidente":
+        return
+    incident = selected.get("incidente")
+    if not isinstance(incident, dict):
+        return
+    incident_id = incident.get("id")
+    result["ids"]["incidente_mundo"] = incident_id
+    if "incidentes_mundo_v2" not in result["filtros"]:
+        result["filtros"].append("incidentes_mundo_v2")
+    result["disponibilidade"]["incidente_mundo"] = {
+        "id": incident_id,
+        "tipo": incident.get("tipo"),
+        "severidade": incident.get("severidade"),
+        "premissa": incident.get("premissa"),
+        "rotas_observaveis": list(incident.get("rotas_observaveis") or [])[:MAX_INCIDENT_ROUTES],
+        "atores_comuns": list(incident.get("atores_comuns") or [])[:MAX_INCIDENT_ACTORS],
+        "guardrails": list(incident.get("guardrails") or [])[:MAX_INCIDENT_GUARDRAILS],
+    }
+    result["gates"].append(
+        {
+            "tipo": "incidente_mundo_v2",
+            "resultado": "avaliar_incidente",
+            "id": incident_id,
+            "origem": selected.get("origem"),
+            "regra": (
+                "candidato até ser narrado; intervenção pode terminar na cena; "
+                "não cria sidequest, recompensa ou ação de Ren"
+            ),
+        }
+    )
+    result["proximo_passo"]["incidente_mundo"] = (
+        "se a situação entrar na narração, apresente perigo e saídas observáveis e devolva agência a Ren; "
+        "não transforme o incidente em missão por padrão"
+    )
+
+
 def project_scene(
     preview: dict[str, Any],
     *,
@@ -142,6 +187,7 @@ def project_scene(
         if "qualidade_abordagem_pre_rolagem" not in result["filtros"]:
             result["filtros"].append("qualidade_abordagem_pre_rolagem")
     _project_canonical_sidequest(result, preview)
+    _project_incident(result, preview)
     _base.validate_endpoint(result)
     return result
 
