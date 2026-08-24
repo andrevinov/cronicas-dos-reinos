@@ -11,6 +11,7 @@ continua usando ``contexto npc <nome>`` e não ganha chamada adicional.
 from __future__ import annotations
 
 import argparse
+import copy
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -102,6 +103,60 @@ def is_relationship_delta(delta: Any) -> bool:
     )
 
 
+def _entity_id(delta: dict[str, Any]) -> str:
+    return str(delta["alvo"]).split(":", 1)[1]
+
+
+def _created_ids(deltas: Iterable[dict[str, Any]], prefix: str) -> set[str]:
+    result: set[str] = set()
+    for delta in deltas:
+        target = delta.get("alvo")
+        if not isinstance(target, str) or not target.startswith(prefix + ":"):
+            continue
+        if delta.get("op") != "set" or delta.get("caminho") != "nome":
+            continue
+        value = delta.get("valor")
+        if isinstance(value, str) and value.strip():
+            result.add(target.split(":", 1)[1])
+    return result
+
+
+def normalize_new_entity_bootstrap(
+    deltas: Iterable[dict[str, Any]],
+    *,
+    summary: str,
+    transaction_id: str,
+) -> list[dict[str, Any]]:
+    """Compatibilidade estreita para criação atômica de NPC + relação.
+
+    Antes da Task 26, uma transação que criava simultaneamente ``npc:<id>`` e
+    ``relacao:<id>`` podia definir o primeiro medidor com ``set`` simples. Isso é
+    uma inicialização, não uma mudança posterior. Quando a criação das duas
+    entidades está explícita no mesmo lote e o resumo é concreto, normalizamos o
+    delta para o contrato v1 antes de persistir no JSONL.
+
+    Um ``set`` isolado para NPC já existente nunca é normalizado aqui.
+    """
+    values = [copy.deepcopy(delta) for delta in deltas]
+    created_npcs = _created_ids(values, "npc")
+    created_relations = _created_ids(values, "relacao")
+    fact = summary.strip() if isinstance(summary, str) and len(summary.strip()) >= 20 else None
+
+    for delta in values:
+        if not is_relationship_delta(delta) or delta.get("op") != "set":
+            continue
+        entity_id = _entity_id(delta)
+        if entity_id not in created_npcs or entity_id not in created_relations:
+            continue
+        if delta.get("inicializacao") is not None:
+            continue
+        delta["inicializacao"] = True
+        if fact is not None:
+            delta.setdefault("fato_canonico", fact)
+        delta.setdefault("fonte", f"transacao:{transaction_id}")
+    return values
+
+
 def _evidence(delta: dict[str, Any], axis: str) -> None:
     fact = delta.get("fato_canonico")
     source = delta.get("fonte")
@@ -167,10 +222,16 @@ def validate_batch(repo: Path, records: Iterable[dict[str, Any]]) -> int:
     Só abre índice/fragmentos quando o lote realmente contém afinidade/confiança.
     Vários deltas pendentes para o mesmo NPC são aplicados em memória na ordem do
     ledger, garantindo limites 0..10 e inicialização única de valores ``null``.
+    Um NPC novo pode inicializar os eixos no mesmo lote em que ``npc:<id>`` e
+    ``relacao:<id>`` são explicitamente criados.
     """
+    record_list = list(records)
     relational: list[dict[str, Any]] = []
-    for record in records:
+    all_deltas: list[dict[str, Any]] = []
+    for record in record_list:
         for delta in record.get("deltas") or []:
+            if isinstance(delta, dict):
+                all_deltas.append(delta)
             if is_relationship_delta(delta):
                 validate_relationship_delta(delta)
                 relational.append(delta)
@@ -180,12 +241,25 @@ def validate_batch(repo: Path, records: Iterable[dict[str, Any]]) -> int:
     npc_index = _load_yaml(repo / NPC_INDEX)
     if not isinstance(npc_index, dict) or not isinstance(npc_index.get("npcs"), dict):
         raise RelationshipStateError("estado/npcs/index.yaml inválido")
+    created_npcs = _created_ids(all_deltas, "npc")
+    created_relations = _created_ids(all_deltas, "relacao")
     working: dict[str, dict[str, Any]] = {}
 
     for delta in relational:
-        entity_id = str(delta["alvo"]).split(":", 1)[1]
+        entity_id = _entity_id(delta)
         if entity_id not in working:
-            working[entity_id] = _load_meters(repo, npc_index, entity_id)
+            if entity_id in npc_index["npcs"]:
+                working[entity_id] = _load_meters(repo, npc_index, entity_id)
+            elif entity_id in created_npcs and entity_id in created_relations:
+                working[entity_id] = {
+                    "vinculo": None,
+                    "confianca": None,
+                    "risco_percebido": None,
+                }
+            else:
+                raise RelationshipStateError(
+                    f"{entity_id}: estado relacional não existe e o lote não cria NPC + relação explicitamente"
+                )
         meters = working[entity_id]
         stored = "vinculo" if delta["caminho"] == "medidores.vinculo" else "confianca"
         axis = RELATIONAL_PATHS[str(delta["caminho"])]
@@ -306,10 +380,10 @@ def check(repo: Path) -> list[str]:
             continue
         try:
             meters = validate_meters(payload.get("medidores"), entity_id=entity_id)
+            indexed = validate_meters(entry.get("medidores"), entity_id=f"{entity_id}.indice")
         except RelationshipStateError as exc:
             errors.append(str(exc))
             continue
-        indexed = entry.get("medidores")
         if indexed != meters:
             errors.append(f"{entity_id}: medidores do índice divergem do fragmento")
 
