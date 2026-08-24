@@ -15,14 +15,23 @@ import populacao
 
 
 class PopulacaoCanonicaTest(unittest.TestCase):
-    def test_todas_as_35_relacoes_recebem_classificacao_explicita(self):
+    def test_todas_as_relacoes_recebem_classificacao_explicita(self):
         result = populacao.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["relacoes"], 35)
+        relation_doc = yaml.safe_load(
+            (ROOT / "estado/relacoes/index.yaml").read_text(encoding="utf-8")
+        )
+        self.assertEqual(result["relacoes"], relation_doc["quantidade"])
         self.assertEqual(result["estrategicos"], 1)
         self.assertEqual(result["promovidos"], 8)
         self.assertEqual(result["representados"], 6)
-        self.assertEqual(result["persistentes"], 20)
+        self.assertEqual(
+            result["persistentes"],
+            result["relacoes"]
+            - result["estrategicos"]
+            - result["promovidos"]
+            - result["representados"],
+        )
 
     def test_promocao_estrategica_vem_do_canone_existente(self):
         data = populacao.load_population(ROOT)["classificacoes"]
@@ -58,6 +67,7 @@ class PopulacaoCanonicaTest(unittest.TestCase):
         data = populacao.load_population(ROOT)["classificacoes"]
         persistent = set(data["persistentes_sem_agenda"])
         self.assertTrue({"nera_vell", "colm_dunn", "peta"} <= persistent)
+        self.assertIn("sella_conferente_galeria", persistent)
 
     def test_promocao_estrategica_nao_cria_cadencia_automaticamente(self):
         agenda = yaml.safe_load((ROOT / "narrador/mundo/agenda.yaml").read_text(encoding="utf-8"))
