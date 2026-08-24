@@ -1,0 +1,37 @@
+schema_publicos_reputacao: 1
+cidade: ravens_bluff
+natureza: registro_canonico_de_publicos_sociais
+fonte_estrutura_social: cenario/regioes/ravens-bluff/faccoes.md
+observacao: >-
+  Publico social nao e uma faccao homogenea nem substitui opiniao individual de NPC.
+  Ele representa uma esfera na qual feitos publicamente atribuidos a uma persona podem
+  produzir uma posicao social compartilhada em linhas gerais.
+publicos:
+  populacao_geral:
+    nome: Populacao geral
+    aliases: [cidade, cidadaos, povo, populacao]
+    descricao: Moradores, trabalhadores, vizinhos e frequentadores comuns de Ravens Bluff.
+  autoridades_civicas:
+    nome: Autoridades civicas
+    aliases: [autoridades, guarda, city guard, night watch, chancelaria]
+    descricao: Guarda, Night Watch, justica, gabinete e demais estruturas publicas de ordem e governo.
+  porto_e_comercio:
+    nome: Porto e comercio
+    aliases: [porto, comercio, mercadores, guildas, harbor]
+    descricao: Mercadores, guildas, estivadores, capitaes, fiscais e interesses economicos ligados ao porto.
+  templos_e_comunidade:
+    nome: Templos e comunidade
+    aliases: [templos, clero, comunidade, fieis]
+    descricao: Templos, clerigos e redes comunitarias de cuidado, juramento, protecao e assistencia.
+  circo_e_artes:
+    nome: Circo e artes
+    aliases: [circo, artistas, bardos, fellowship of bards]
+    descricao: Artistas, publico de espetaculos, bardos e circuitos culturais da cidade.
+  redes_informais:
+    nome: Redes informais
+    aliases: [redes discretas, informais, contrabando, criminal guilds]
+    descricao: Redes informais e discretas que circulam fora das instituicoes civicas e comerciais formais.
+regras:
+  publico_nao_e_opiniao_individual: true
+  publico_nao_compartilha_conhecimento_secreto_automaticamente: true
+  reputacoes_de_personas_nao_se_fundem_automaticamente: true
