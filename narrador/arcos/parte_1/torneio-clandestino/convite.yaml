@@ -14,11 +14,13 @@ forma_de_apresentacao:
 - Luath deve apresentar o torneio como oportunidade real, não missão obrigatória nem ordem da Night Watch.
 - Explicar que são várias noites ao longo de aproximadamente duas semanas e que retirada é sempre possível.
 - Não revelar o quadro completo, o adversário final ou a informação reservada do prêmio antes de Ren avançar.
-- Se Ren perguntar sobre risco, responder concretamente: ferimentos são possíveis; morte deliberada viola o circuito,
+- >-
+  Se Ren perguntar sobre risco, responder concretamente: ferimentos são possíveis; morte deliberada viola o circuito,
   mas clandestinidade reduz garantias institucionais.
 identidade:
   regra: Ren escolhe o nome/persona de inscrição somente ao aceitar.
-  actor: Uma persona performada pode se beneficiar de Actor quando a regra do talento realmente se aplicar; estilo,
+  actor: >-
+    Uma persona performada pode se beneficiar de Actor quando a regra do talento realmente se aplicar; estilo,
     corpo, equipamento, conhecimento e outras pistas continuam podendo gerar evidência para a Task 28.
 guardrails:
 - convite não é side quest e não cria lifecycle em oportunidades.py
