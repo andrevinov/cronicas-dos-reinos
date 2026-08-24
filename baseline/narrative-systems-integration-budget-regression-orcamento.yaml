@@ -1,0 +1,86 @@
+schema_orcamento_integracao_sistemas_narrativos: 1
+task: 38
+nome: Narrative Systems Integration & Budget Regression
+natureza: contrato_de_regressao
+objetivo: >-
+  Provar que as camadas narrativas das Tasks 23-37 coexistem sem criar um novo
+  motor, scheduler, scan global, wake-all de NPCs ou terceira orquestracao ritual
+  no turno comum.
+camadas:
+  turno_neutro:
+    chamadas_orquestracao: 2
+    fases:
+    - cronica_preparar
+    - cronica_concluir
+  npc_relacao_iniciativa:
+    fragmentos_npc_por_consulta_max: 1
+    fragmentos_relacao_por_consulta_max: 1
+    fontes_extras_iniciativa: 0
+    leituras_iniciativa_status_cena: 0
+  presenca_social_local:
+    candidatos_incidentais_por_cena_max: 1
+    wake_all_npcs: false
+    candidato_nao_e_iniciativa: true
+  sidequests_canonicas:
+    detalhes_lidos_quando_gate_bloqueia: 0
+    detalhes_por_cena_max: 1
+    scans_globais: 0
+  incidentes:
+    leituras_cena_sem_local: 0
+    leituras_cena_espacial: 2
+    incidentes_por_cena_max: 1
+    scans_globais: 0
+  condicoes_persistentes:
+    leituras_cena_sem_local: 0
+    leituras_cena_espacial: 1
+    estado_bytes_max: 12288
+    projecao_publica_item_bytes_max: 2048
+  canon_principal:
+    fragmentos_turno_sem_evento_devido: 0
+    fragmentos_por_evento_devido_max: 1
+    scans_globais_hot_path: 0
+  fronteira_mundo:
+    pendencias_por_lote_max: 16
+    chamadas_preparar: 1
+    chamadas_aplicar: 1
+    scans_globais_adicionados: 0
+  torneio_clandestino:
+    chamadas_extras_turno_comum: 0
+    fragmentos_rodada_por_consulta_max: 1
+    pendencias_mundo_novas: 0
+limites:
+  schedulers_novos_task38: 0
+  estados_persistentes_novos_task38: 0
+  endpoints_novos_task38: 0
+  scans_repo_task38: 0
+  chamadas_telemetria_durante_turno: 0
+  schema_rollout_preservado: 3
+  schema_extensao_sistemas_narrativos: 1
+fontes_de_regressao:
+  turno_neutro: baseline/unified-cronica-turn-cli-orcamento.yaml
+  fronteira_mundo: baseline/batch-world-boundary-resolution-orcamento.yaml
+  iniciativa_social: baseline/npc-social-initiative-orcamento.yaml
+  presenca_incidental: baseline/incidental-presence-orcamento.yaml
+  sidequests_canonicas: baseline/canonical-secret-quest-engine-orcamento.yaml
+  condicoes_persistentes: baseline/persistent-world-conditions-orcamento.yaml
+  incidentes: baseline/world-local-incidents-v2-orcamento.yaml
+  canon_principal: baseline/secret-canon-v2-orcamento.yaml
+  torneio_clandestino: baseline/underground-tournament-mini-arc-orcamento.yaml
+invariantes:
+  task38_nao_adiciona_motor_narrativo: true
+  task38_nao_adiciona_estado_de_campanha: true
+  task38_nao_adiciona_scheduler: true
+  task38_nao_adiciona_endpoint: true
+  task38_nao_adiciona_scan_global: true
+  telemetria_permanece_pos_hoc: true
+  turno_neutro_permanece_duas_orquestracoes: true
+  relacao_e_iniciativa_reutilizam_mesma_consulta_npc: true
+  iniciativa_social_nao_acorda_populacao_local: true
+  presenca_incidental_continua_apenas_candidata: true
+  sidequest_bloqueada_nao_abre_detalhe_secreto: true
+  incidente_nao_varre_catalogo_por_arquivo: true
+  condicao_persistente_permanece_compacta: true
+  canon_futuro_so_abre_fragmento_quando_devido: true
+  noops_de_fronteira_continuam_em_lote: true
+  torneio_nao_cria_pendencia_de_mundo: true
+  sistemas_narrativos_nao_controlam_ren: true
