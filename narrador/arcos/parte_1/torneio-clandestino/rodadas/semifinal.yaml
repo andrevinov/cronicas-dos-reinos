@@ -1,0 +1,34 @@
+schema_rodada_torneio_clandestino: 1
+natureza: reservado
+id: semifinal
+ordem: 4
+fase: semifinal
+oponente:
+  id: yarek_dath
+  nome: Yarek Dath
+  origem: Thesk
+  regiao_macro: faerun
+  tradicao: escola de caravanas orientais de Thesk, misturando bastão curto de treino, chutes baixos e contra-ataque de escolta
+  personalidade: vigilante, profissional e acostumado a medir ameaça antes de exibir técnica
+premissa: >-
+  A semifinal introduz um lutador cuja técnica nasceu na fronteira comercial entre Faerûn e Kara-Tur. O duelo testa
+  adaptação a mudança de alcance e a alguém que reconhece diferenças entre tradição aprendida, tradição herdada e
+  improvisação de estrada.
+regras_do_combate:
+  letalidade: nao_letal_por_padrao
+  equipamento: bastao_curto_de_treino_permitido_com_equivalente_seguro_para_ren
+  fim: [rendicao, incapacitacao_nao_letal, saida_do_circulo, intervencao_do_arbitro]
+  escala: alta_mas_justa_para_nivel_9_11
+  ajuste: Definir ficha/estatísticas antes da primeira rolagem e nunca alterar dificuldade em resposta ao desempenho de Ren.
+rotas_de_ren:
+- aceitar a mudança de alcance
+- lutar desarmado contra arma de treino usando mobilidade e controle
+- escolher equipamento permitido se Ren possuir e desejar usá-lo
+- retirar-se antes ou durante o duelo
+pistas_identidade_possiveis:
+- experiência em rotas orientais permite notar coerência técnica, não biografia secreta
+- evidência real pode alimentar Task 28; a luta por si só não confirma Ren como Kage ou Shinta
+guardrails:
+- só vitória leva Ren à final como competidor
+- derrota pode liberar prêmio informacional parcial pela profundidade alcançada, mas não conhecimento automático
+- o prêmio só existe se for efetivamente entregue e narrado
