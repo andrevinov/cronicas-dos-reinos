@@ -2,9 +2,10 @@
 """Projeta condições persistentes na mesma cena reativa, sem novo motor.
 
 A camada só lê o estado compacto da Task 34 quando a cena já possui um local
-canônico explícito (gatilho local ou tag `local:`). Cenas somente-NPC continuam
-com zero leitura Task34. Condição é contexto observável; nunca cria evento,
-rolagem, penalidade ou presença automaticamente.
+canônico explícito (gatilho local ou tag `local:`) **e** o repo declara a camada.
+Fixtures/instalações legadas sem o arquivo preservam o fluxo anterior. Cenas
+somente-NPC continuam com zero leitura Task34. Condição é contexto observável;
+nunca cria evento, rolagem, penalidade ou presença automaticamente.
 """
 from __future__ import annotations
 
@@ -60,7 +61,7 @@ def open_scene(
         now=now,
     )
     local_id = _local_id(result)
-    if local_id is None:
+    if local_id is None or not (repo / condicoes_mundo.STATE).is_file():
         return result
     try:
         projection = condicoes_mundo.for_scene(repo, local_id, now=now)
