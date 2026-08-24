@@ -33,6 +33,13 @@ mutacao:
   revisao_automatica_por_fala: false
   revisao_automatica_por_rolagem: false
   variacao_normal_maxima_por_fato: 1
+  eixo_conhecido:
+    operacao: inc
+    valores_permitidos: [-1, 1]
+  eixo_desconhecido:
+    operacao: set
+    exige_inicializacao: true
+    regra: Só pode inicializar um valor atualmente null; nunca sobrescrever eixo já conhecido.
   exemplos_validos:
   - ajuda relevante com consequência real
   - promessa cumprida ou quebrada
