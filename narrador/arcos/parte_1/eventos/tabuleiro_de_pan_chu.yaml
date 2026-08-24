@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: tabuleiro_de_pan_chu
+titulo: Pan Chu oferece uma saída que cobra a cidade
+janela: ao_longo_do_dia
+categorias:
+- juppongatana
+- golden_lily
+- masao
+- oportunidade_heroica
+nucleo_obrigatorio:
+- Pan Chu cria uma proposta, chantagem ou janela operacional em que autoridades e Ren podem reduzir dano imediato
+  ao preço de conceder espaço, tempo ou informação ao Golden Lily.
+- A situação oferece um caminho concreto para alcançar Pan Chu ou o núcleo de comando do navio, mas não obriga Ren
+  a aceitar os termos nem garante duelo.
+- O estado da crise naval muda de modo observável conforme a resposta coletiva, produzindo consequência mesmo se
+  Ren não participar.
+forma_preferencial:
+- Fazer de Pan Chu um comandante pragmático e cruel que usa logística, reféns institucionais e terreno, não apenas
+  força pessoal.
+guardrails:
+- Pan Chu pode ser neutralizado aqui, escapar ou vencer; nenhuma opção é escrita antes do jogo.
+- Acesso ao navio não concede vitória nem informação total.
+- Neutralização durável só conta pela Task 54 após fato canônico.
+adaptacao:
+- Se Pan Chu já estiver neutralizado, o sucessor usa o mesmo dilema estratégico com menos autoridade e mais instabilidade.
+- Se o impasse naval já terminou, transformar a barganha em extração/logística remanescente do Golden Lily sem ressuscitar
+  a crise.

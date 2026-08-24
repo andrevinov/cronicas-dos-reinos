@@ -1,0 +1,41 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: descida_a_ponte_e_masao
+titulo: A Ponte e o homem que já passou por ela
+janela: final_da_parte_1_pode_durar_varios_turnos
+categorias:
+- ponte_kozakura
+- masao
+- juppongatana
+- oportunidade_heroica
+nucleo_obrigatorio:
+- A investigação acumulada torna possível uma operação física contra a infraestrutura principal da passagem sob
+  Sarbreen, com composição de grupo e método definidos pelo estado real da campanha.
+- Defensores externos ainda vivos, livres, presentes e capazes podem proteger rotas, retirada ou ativos; nenhum
+  antagonista é ressuscitado, libertado ou teleportado para preencher encontros.
+- Ren encontra Masao Hirasawa fisicamente pela primeira vez se Masao continuar capaz de comparecer; o encontro estabelece
+  sua pretensão sobre Ravens Bluff e a escala do projeto sem exigir que Ren aceite sua interpretação.
+- Amagiri Seishirō pode acompanhar Masao como exceção canônica de revelação e demonstrar diferença de escala esmagadora;
+  isso não ativa o Círculo Interno como população normal.
+- Ao fim da sequência, a existência e função operacional da Ponte ficam estabelecidas e Masao perde o monopólio
+  prático da passagem, por derrota, abandono calculado, ruptura logística ou outra causa coerente produzida pelo
+  jogo.
+forma_preferencial:
+- Tratar como operação com objetivos de atraso, evacuação, descoberta e sobrevivência; Masao não precisa defender
+  o portal como boss final se isso contrariar sua estratégia.
+guardrails:
+- Seishirō não é encontro equilibrado para Ren no nível atual; sinais de ameaça e rotas de retirada/negociação/stealth
+  precisam ser observáveis antes de consequência irreversível.
+- Jōen e Shen podem ajudar apenas porque sua presença foi estabelecida antes; não surgem do nada para cancelar derrota.
+- Não obrigar Ren a abandonar aliados, atacar Masao, lutar com Seishirō ou aceitar retirada.
+- Não ativar Anji, Usui, Kureha, Wetuji ou Fuji por causa desta cena.
+- A origem e engenharia histórica da Ponte permanecem segredo de arcos futuros.
+- Fim da Parte 1 é perda do monopólio e mudança de escala, não purificação total nem vitória limpa.
+adaptacao:
+- Se Masao estiver fisicamente impedido por fato canônico extraordinário, sua presença pode ser substituída por
+  comunicação/projeção preparada apenas se isso preservar causalidade; não ressuscitá-lo.
+- Se a Ponte já estiver sob controle parcial de Ravens Bluff, a operação final passa a quebrar a última capacidade
+  de monopólio/retirada da rede.
+- Se Seishirō estiver inviável por fato posterior impossível de prever na autoria, preservar a revelação de escala
+  por outro efeito canônico sem promover membros bloqueados.

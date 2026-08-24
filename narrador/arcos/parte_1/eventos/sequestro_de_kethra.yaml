@@ -1,0 +1,32 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: sequestro_de_kethra
+titulo: A operação contra o ponto cego
+janela: pode_durar_um_ou_mais_dias
+categorias:
+- crise
+- identidade
+- golden_lily
+- oportunidade_heroica
+nucleo_obrigatorio:
+- A rede executa uma operação séria contra Kethra ou contra o ambiente que a protege, baseada apenas em rastros
+  que tenha causalmente acumulado.
+- O objetivo adversário é transformar um vínculo de Ren em alavanca e criar um canal para o Golden Lily; sucesso,
+  fracasso, captura, fuga ou dano dependem das defesas e decisões reais.
+- Mesmo se o sequestro falhar, a operação deixa mensagem, rastro ou prisioneiro suficiente para tornar claro que
+  a guerra alcançou o círculo pessoal de Ren.
+forma_preferencial:
+- Se Kethra for capturada, o Golden Lily é destino provável e produz problema de resgate/negociação; se não for,
+  o navio continua ligado à operação por evidência ou comunicação recuperável.
+guardrails:
+- Não decretar captura só porque o evento tem ID legado de sequestro.
+- A Task 52 de rede protegida continua valendo; consequência grave incerta não pode ser imposta proceduralmente
+  sem caminho canônico.
+- Não entregar ao inimigo localização, identidade ou relação que ele não tenha causalmente descoberto.
+- Ren escolhe se e como responde.
+adaptacao:
+- Se Kethra estiver fora da área, morta ou protegida por fato que torne o alvo inviável, a operação atinge infraestrutura,
+  mensageiro ou decoy relacionado sem reescrever esse fato.
+- Se a rede não conhecer um vínculo suficiente, materializar uma tentativa de aquisição desse vínculo em vez de
+  onisciência retroativa.

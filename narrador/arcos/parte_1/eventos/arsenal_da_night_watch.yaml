@@ -1,0 +1,30 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: arsenal_da_night_watch
+titulo: O estandarte que não voltou para casa
+janela: pode_durar_um_ou_mais_dias
+categorias:
+- crise
+- oportunidade_heroica
+- juppongatana
+nucleo_obrigatorio:
+- Uma operação hostil retira da Night Watch armas e um símbolo histórico valioso, deixando uma trilha física que
+  aponta para infraestrutura subterrânea ou logística de Sarbreen.
+- A Night Watch precisa agir mesmo sem Ren; Luath pode pedir sua ajuda porque a missão combina perigo, discrição
+  e conhecimento que a guarda não domina.
+- A recuperação oferece oportunidade real de salvar agentes, recuperar patrimônio e descobrir algo útil sobre a
+  logística adversária, sem garantir nenhum desses resultados.
+forma_preferencial:
+- Tratar como incursão curta com espaço, escolhas e rotas de retirada; inimigos defendem objetivos concretos em
+  vez de esperar em salas.
+guardrails:
+- Ren pode recusar e a Night Watch ainda tenta responder.
+- Nenhuma recompensa, reputação ou marco Juppongatana é automático.
+- Se Kurobane ou outro membro aparecer, neutralização só conta pela Task 54 se o resultado durável realmente ocorrer.
+- A ameaça deve ser compatível com força disponível ou oferecer fuga/negociação/stealth observáveis.
+adaptacao:
+- Se o arsenal já estiver inacessível por mudança canônica, usar outro ativo institucional equivalente sem desfazer
+  o fato anterior.
+- Se o local subterrâneo escolhido estiver comprometido, mover a trilha para outra seção plausível de Sarbreen sem
+  criar teleporte conveniente.

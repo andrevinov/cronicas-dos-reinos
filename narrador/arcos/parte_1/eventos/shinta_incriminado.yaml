@@ -1,0 +1,30 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: shinta_incriminado
+titulo: O nome errado no documento certo
+janela: ao_longo_do_dia
+categorias:
+- identidade
+- masao
+- crise
+nucleo_obrigatorio:
+- Uma irregularidade real na Galeria dos Escribas é arranjada para que Shinta seja o suspeito institucional mais
+  conveniente, criando vulnerabilidade concreta sem transformar a acusação em prova de culpa.
+- A operação usa a identidade profissional como ponto de pressão e produz pelo menos um vetor material de perigo
+  contra Ren enquanto autoridades precisam decidir como tratá-lo.
+- Luath recebe elementos suficientes para perceber que alguém está explorando o procedimento, mas não recebe por
+  decreto a solução completa nem confirmação automática de todas as identidades de Ren.
+forma_preferencial:
+- A melhor forma é fazer a pressão nascer de documentação, acesso e rotina já plausíveis na Galeria, deixando Ren
+  escolher cooperação, fuga, investigação, confronto ou uso de aliados.
+guardrails:
+- Não escrever rendição, fuga, confissão ou violência voluntária de Ren.
+- Suspeita sobre Shinta e Ren deve alimentar a Task 28; não converter data em confirmação de identidade.
+- A tentativa de neutralização pode falhar completamente e ainda assim o núcleo está materializado se a vulnerabilidade
+  institucional e a operação hostil entraram em jogo.
+- Luath não perde confiança em Ren só porque o procedimento exige cautela.
+adaptacao:
+- Se custódia for causalmente impossível, deslocar o perigo para outra vulnerabilidade diretamente criada pela acusação.
+- Se o documento-alvo ou funcionário previsto estiver indisponível, preservar acusação plausível e cadeia institucional
+  sem ressuscitar nem apagar fatos anteriores.

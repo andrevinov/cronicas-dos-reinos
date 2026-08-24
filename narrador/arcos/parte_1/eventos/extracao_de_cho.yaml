@@ -1,0 +1,26 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: extracao_de_cho
+titulo: A parede que era mais barata que a testemunha
+janela: ao_longo_do_dia
+categorias:
+- crise
+- juppongatana
+- masao
+nucleo_obrigatorio:
+- A rede tenta impedir que Chō permaneça em posição institucionalmente útil para Ravens Bluff, por extração, destruição
+  de prova, resgate ou pressão equivalente.
+- A operação causa dano real à capacidade da Night Watch e pode libertar outros criminosos ou comprometer custódias
+  como consequência lateral.
+- Luath precisa responder à crise; Ren pode ajudar, perseguir, proteger pessoas ou ignorar, com resultados abertos.
+forma_preferencial:
+- Se Chō estiver detido, uma extração rápida e preparada é a forma preferencial; se não estiver, o alvo passa a
+  ser prova, testemunha ou estrutura ligada a ele.
+guardrails:
+- Não libertar Chō se ele estiver morto ou em confinamento durável que fatos canônicos tornem inacessível.
+- Masao não gasta recursos para libertar aleatórios por bondade; danos colaterais têm causa operacional.
+- A crise não garante fuga de Chō nem neutralização de atacantes.
+adaptacao:
+- Se Chō já estiver livre, materializar o ataque contra a cadeia de prova ou a capacidade de persegui-lo.
+- Se a sede da guarda estiver inutilizada por evento anterior, usar outro ponto de custódia/arquivo coerente.

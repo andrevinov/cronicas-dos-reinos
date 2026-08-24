@@ -1,0 +1,28 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: ataque_a_casa_da_aurora_menor
+titulo: A cidade ferida encontra uma casa pequena
+janela: ao_longo_do_dia
+categorias:
+- crise
+- oportunidade_heroica
+nucleo_obrigatorio:
+- A degradação acumulada de segurança em Ravens Bluff produz uma crise séria contra a Casa da Aurora Menor ou pessoas
+  sob sua proteção.
+- Os agressores podem ser oportunistas sem vínculo direto com Masao, mostrando que enfraquecer instituições cria
+  ecologia criminosa própria.
+- Ren recebe, se causalmente alcançável, uma oportunidade real de intervir; outras pessoas também agem e o mundo
+  não congela esperando por ele.
+forma_preferencial:
+- Construir a cena como resgate, defesa ou perseguição em ambiente civil, com prioridades concorrentes entre derrotar
+  agressores e proteger vulneráveis.
+guardrails:
+- Não garantir chegada a tempo, salvamento total ou ausência de feridos.
+- Maerra e protegidos não recebem plot armor absoluto; a Task 52 continua governando consequências graves incertas.
+- Reputação só muda por fatos observados e registrados.
+adaptacao:
+- Se a Casa estiver vazia ou protegida por fato novo, deslocar a crise para pessoas/serviço diretamente ligado a
+  ela sem negar a proteção existente.
+- Se incidente Task 35 compatível já tiver criado crise equivalente, ele pode satisfazer parte do núcleo em vez
+  de duplicar violência.

@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: cho_na_cela
+titulo: Chō decide que a guarda é uma sala de espera
+janela: ao_longo_do_dia
+categorias:
+- juppongatana
+- identidade
+nucleo_obrigatorio:
+- Sawagejō Chō entra diretamente na vida de Ren após se deixar capturar, ser capturado por excesso de confiança
+  ou criar situação equivalente em que a Night Watch consegue contê-lo temporariamente.
+- Chō quer observar Ren, medir sua reputação e falar sobre nomes, técnicas ou histórias que circulam em Kozakura;
+  ele não possui por decreto certeza de todas as identidades.
+- A conversa oferece pistas sobre a cultura interna da Juppongatana e sobre a personalidade de Chō sem transformá-lo
+  em expositor confiável.
+forma_preferencial:
+- 'Usar a contenção como inversão: Chō parece menos preocupado com estar preso do que os guardas gostariam, mas
+  a Night Watch não vira incompetente.'
+guardrails:
+- Primeiro contato não conta como neutralização.
+- Chō pode mentir, provocar e estar errado.
+- Não exigir duelo imediato nem resposta emocional específica de Ren.
+- Task 28 governa qualquer reconhecimento/ligação entre personas.
+adaptacao:
+- Se Chō já tiver aparecido por Mundo Vivo de forma equivalente, usar o evento para consolidar o encontro direto
+  e informação nova, não repetir apresentação.
+- Se contenção física for impossível pelo estado do mundo, criar encontro controlado pela Night Watch ou outra instituição
+  sem teleportá-lo para cela.

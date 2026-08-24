@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: feira_oriental_do_porto
+titulo: A cidade compra o que teme
+janela: dia_inteiro
+categorias:
+- golden_lily
+- crise
+- oportunidade_heroica
+nucleo_obrigatorio:
+- 'A presença comercial oriental altera o porto de forma visível: mercadorias, serviços, trabalhadores, curiosos
+  e oportunistas formam um mercado temporário de grande escala.'
+- A densidade de gente e a sobrecarga institucional criam múltiplas ocorrências; pelo menos uma situação séria oferece
+  a Ren oportunidade de ajudar pessoas se ele estiver causalmente ao alcance.
+- 'A cidade começa a produzir opiniões conflitantes sobre a nova presença: fascínio, lucro, medo e ressentimento
+  coexistem.'
+forma_preferencial:
+- Usar incidentes como consequência de escala urbana; alguns podem ser comuns e outros graves, sem atribuir todos
+  a Masao.
+guardrails:
+- Não transformar toda pessoa de Kara-Tur em agente.
+- Oportunidade heroica não significa que Ren chega a tempo nem que salva todos.
+- Se a Task 35 já materializou incidente compatível no mesmo período, ele pode satisfazer essa função sem duplicar
+  espetáculo.
+adaptacao:
+- Se Ren estiver longe do porto, a crise pode repercutir por mensageiro, reputação ou consequência e continuar existindo
+  sem teleportá-lo.
+- Condição persistente ativa pode colorir a feira sem ser sobrescrita.
