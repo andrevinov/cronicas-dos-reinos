@@ -1,0 +1,29 @@
+schema_orcamento_batch_fronteira: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Avaliar pendencias acumuladas numa fronteira temporal em um unico lote e concluir
+  todos os no-ops aprovados numa unica chamada mutante, sem esconder fato canonico.
+limites:
+  max_pendencias_por_lote: 16
+  max_fragmentos_dirigidos_por_pendencia: 1
+  max_orquestracoes_preparar: 1
+  max_orquestracoes_aplicar: 1
+  max_caracteres_nota: 800
+  escritas_preparar: 0
+  schedulers_adicionados: 0
+  estados_paralelos_adicionados: 0
+  scans_globais_adicionados: 0
+invariantes:
+  preparar_e_read_only: true
+  todas_decisoes_validam_antes_da_primeira_escrita: true
+  token_por_pendencia_detecta_staleness: true
+  itens_omitidos_permanecem_abertos: true
+  evento_canonico_nunca_aceita_noop: true
+  candidato_autonomo_exige_bloqueio_canonico_concreto_para_noop: true
+  agente_leve_reutiliza_cache_negativo_causal: true
+  cache_negativo_continua_restrito_a_agentes_leves: true
+  lote_nao_escolhe_acao_de_agente: true
+  lote_nao_cria_fato_canonico: true
+  lote_nao_decide_por_ren: true
+  retry_parcial_e_idempotente: true
+  fronteira_e_barreira_existentes_permanecem_fontes_de_semantica: true
