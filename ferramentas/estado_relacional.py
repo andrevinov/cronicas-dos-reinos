@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import yaml
 
@@ -102,21 +102,7 @@ def is_relationship_delta(delta: Any) -> bool:
     )
 
 
-def validate_relationship_delta(delta: Any) -> dict[str, Any]:
-    """Exige mudança incremental e evidência canônica nos dois eixos centrais.
-
-    A validação estrutural genérica do delta continua em ``transacoes``. Aqui são
-    congeladas apenas as restrições relacionais adicionais.
-    """
-    if not is_relationship_delta(delta):
-        raise RelationshipStateError("delta não aponta eixo relacional v1")
-    axis = RELATIONAL_PATHS[str(delta["caminho"])]
-    if delta.get("op") != "inc" or delta.get("valor") not in {-1, 1}:
-        raise RelationshipStateError(
-            f"mudança de {axis} deve usar op=inc e valor +1 ou -1; não use set nem salto múltiplo"
-        )
-    if delta.get("visibilidade", "operacional") != "operacional":
-        raise RelationshipStateError("estado relacional de NPC é operacional, não delta reservado")
+def _evidence(delta: dict[str, Any], axis: str) -> None:
     fact = delta.get("fato_canonico")
     source = delta.get("fonte")
     if not isinstance(fact, str) or len(fact.strip()) < 20:
@@ -125,6 +111,32 @@ def validate_relationship_delta(delta: Any) -> dict[str, Any]:
         )
     if not isinstance(source, str) or not source.strip():
         raise RelationshipStateError(f"mudança de {axis} exige fonte canônica rastreável")
+
+
+def validate_relationship_delta(delta: Any) -> dict[str, Any]:
+    """Congela forma do delta; o estado anterior é conferido no checkpoint."""
+    if not is_relationship_delta(delta):
+        raise RelationshipStateError("delta não aponta eixo relacional v1")
+    axis = RELATIONAL_PATHS[str(delta["caminho"])]
+    op = delta.get("op")
+    if op == "inc":
+        if delta.get("valor") not in {-1, 1}:
+            raise RelationshipStateError(
+                f"mudança de {axis} deve usar inc +1/-1; não use salto múltiplo"
+            )
+    elif op == "set":
+        if delta.get("inicializacao") is not True:
+            raise RelationshipStateError(
+                f"set em {axis} só é permitido para eixo null com inicializacao=true"
+            )
+        value = _axis(delta.get("valor"), f"inicializacao.{axis}")
+        if value is None:
+            raise RelationshipStateError(f"inicialização de {axis} exige valor conhecido 0..10")
+    else:
+        raise RelationshipStateError(f"mudança de {axis} aceita somente inc ou inicialização set")
+    if delta.get("visibilidade", "operacional") != "operacional":
+        raise RelationshipStateError("estado relacional de NPC é operacional, não delta reservado")
+    _evidence(delta, axis)
     return delta
 
 
@@ -136,6 +148,64 @@ def _indices(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     if not isinstance(relations, dict) or not isinstance(relations.get("relacoes"), dict):
         raise RelationshipStateError("estado/relacoes/index.yaml inválido")
     return npc, relations
+
+
+def _load_meters(repo: Path, npc_index: dict[str, Any], entity_id: str) -> dict[str, Any]:
+    entry = npc_index["npcs"].get(entity_id)
+    if not isinstance(entry, dict) or not isinstance(entry.get("arquivo"), str):
+        raise RelationshipStateError(f"{entity_id}: estado relacional não indexado")
+    doc = _load_yaml(repo / entry["arquivo"])
+    payload = doc.get("npc") if isinstance(doc, dict) else None
+    if not isinstance(payload, dict):
+        raise RelationshipStateError(f"{entity_id}: fragmento NPC inválido")
+    return validate_meters(payload.get("medidores"), entity_id=entity_id)
+
+
+def validate_batch(repo: Path, records: Iterable[dict[str, Any]]) -> int:
+    """Valida transições contra o estado consolidado antes do stage.
+
+    Só abre índice/fragmentos quando o lote realmente contém afinidade/confiança.
+    Vários deltas pendentes para o mesmo NPC são aplicados em memória na ordem do
+    ledger, garantindo limites 0..10 e inicialização única de valores ``null``.
+    """
+    relational: list[dict[str, Any]] = []
+    for record in records:
+        for delta in record.get("deltas") or []:
+            if is_relationship_delta(delta):
+                validate_relationship_delta(delta)
+                relational.append(delta)
+    if not relational:
+        return 0
+
+    npc_index = _load_yaml(repo / NPC_INDEX)
+    if not isinstance(npc_index, dict) or not isinstance(npc_index.get("npcs"), dict):
+        raise RelationshipStateError("estado/npcs/index.yaml inválido")
+    working: dict[str, dict[str, Any]] = {}
+
+    for delta in relational:
+        entity_id = str(delta["alvo"]).split(":", 1)[1]
+        if entity_id not in working:
+            working[entity_id] = _load_meters(repo, npc_index, entity_id)
+        meters = working[entity_id]
+        stored = "vinculo" if delta["caminho"] == "medidores.vinculo" else "confianca"
+        axis = RELATIONAL_PATHS[str(delta["caminho"])]
+        current = meters[stored]
+        if delta["op"] == "inc":
+            if current is None:
+                raise RelationshipStateError(
+                    f"{entity_id}.{axis} está desconhecida; inicialize com set + inicializacao=true antes de incrementar"
+                )
+            next_value = _axis(current + int(delta["valor"]), f"{entity_id}.{axis}")
+        else:
+            if current is not None:
+                raise RelationshipStateError(
+                    f"{entity_id}.{axis} já vale {current}; inicialização não pode sobrescrever eixo conhecido"
+                )
+            next_value = _axis(delta.get("valor"), f"{entity_id}.{axis}")
+            if next_value is None:
+                raise RelationshipStateError(f"{entity_id}.{axis}: inicialização não pode permanecer null")
+        meters[stored] = next_value
+    return len(relational)
 
 
 def lookup(repo: Path, term: str) -> dict[str, Any]:
@@ -205,6 +275,8 @@ def check(repo: Path) -> list[str]:
 
     npcs = npc_index["npcs"]
     relations = relation_index["relacoes"]
+    if npc_index.get("quantidade") != len(npcs):
+        errors.append("estado/npcs/index.yaml.quantidade diverge do número real de entradas")
     missing = sorted(set(relations) - set(npcs))
     if missing:
         errors.append("relações sem estado relacional: " + ", ".join(missing))
