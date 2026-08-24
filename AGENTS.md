@@ -2,7 +2,7 @@
 
 ## 1. Fonte de verdade
 
-O repo é a memória canônica; não dependa só da conversa. Respeite `campanha.yaml`, fontes autorizadas, ficha/estado. Texto novo: português/UTF-8.
+O repo é a memória canônica; não dependa só da conversa. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
 `runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
@@ -29,7 +29,7 @@ Runtime, handoffs, índices e consultas são projeções, não cânone independe
 
 **Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação, não a experiência literária.
 
-Antes de reler, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** Preferir portas públicas; não abrir implementação, pastas, histórico ou transcrição “só para conferir”.
+Antes de reler, veja se o contexto basta. **Se a consulta bastar, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -107,8 +107,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 - Cena reativa segue `cronica preparar`/`cronica concluir`.
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
-- **Task 31:** encontro com NPC não sorteia nem gera side quest. Não reativar perfis procedurais; nova side quest exige fonte canônica explícita.
-- `oportunidades.py` preserva somente lifecycle explícito de missão; `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base.
+- **Task 31:** encontro não gera side quest; perfis procedurais ficam inativos; nova side quest exige fonte canônica explícita.
+- `oportunidades.py` preserva lifecycle de missão; `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base.
 - Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
