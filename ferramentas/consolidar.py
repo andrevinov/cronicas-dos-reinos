@@ -9,8 +9,9 @@ somente lotes que exigem extensão:
   memória** para os espelhos físicos (`tempo.data_atual`, `tempo.data`,
   `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
   multi-arquivo antes de qualquer instalação;
+- afinidade/confiança são validadas contra o estado consolidado antes do stage;
 - qualquer fragmento NPC que o plano altere é revalidado na escala relacional
-  0..10/null antes do stage, impedindo overflow de afinidade/confiança.
+  0..10/null antes da instalação.
 """
 from __future__ import annotations
 
@@ -206,6 +207,11 @@ def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
 
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
+    try:
+        estado_relacional.validate_batch(repo, records)
+    except estado_relacional.RelationshipStateError as exc:
+        raise ConsolidationError(str(exc)) from exc
+
     trace_records = [record for record in records if _trace_delta_ids(record)]
     atomic_instants = tempo_transacional.atomic_count(records)
     if not trace_records and not atomic_instants:
