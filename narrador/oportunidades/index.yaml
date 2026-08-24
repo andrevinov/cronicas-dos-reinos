@@ -40,7 +40,7 @@ gate:
     estatuto: legado_congelado_nao_modula_sidequest
 orcamento:
   max_ativas: 2
-  max_em_aberto: 2
+  max_em_aberto: 3
   max_pendencias_avaliacao: 1
   cooldown_oferta_dias:
   - 2
