@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Porta de cena v4 com Side Quest Gate v2 e presença incidental."""
+"""Porta de cena v4 com gate procedural aposentado e presença incidental."""
 from __future__ import annotations
 
 import cena_mundo_v4 as _v4
 import presenca_incidental_cena as _incidental
 import sidequest_gate_v2 as _gate_v2
 
-# Os dois recursos permanecem adaptadores sobre a mesma cena v4. Primeiro a
-# porta de encontro v2, depois o wrapper read-only de presença incidental.
+# O nome sidequest_gate_v2 permanece por compatibilidade, mas desde a Task 31 o
+# adaptador só resolve o NPC e confirma que encontro não gera sidequest procedural.
+# Presença incidental continua read-only e não cria sidequest por si mesma.
 _v4._core.interacoes_mundo.encounter_event = _gate_v2.encounter_event
 _incidental.install()
 

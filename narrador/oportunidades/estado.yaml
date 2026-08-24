@@ -13,27 +13,7 @@ gate:
   - oportunidade_02
   sorteios: 22
 cooldown_ate: null
-pendencias_avaliacao:
-  sq-5ca38554df96dc88:
-    id: sq-5ca38554df96dc88
-    estado: potencial
-    npc_id: maerra_thandrel
-    npc_nome: Irmã Maerra Thandrel
-    necessidade_id: pessoa_ausente
-    tipo: busca
-    semente: Uma pessoa esperada pelo abrigo ou templo pode não ter aparecido; Maerra
-      pode pedir uma busca discreta se isso combinar com o cânone do momento.
-    janela:
-      tipo: enquanto_condicao
-      condicao: a pessoa continuar ausente
-    pode_reabrir: true
-    consequencia_sem_ren: Outra pessoa pode encontrá-la, o problema pode se resolver
-      sozinho ou a ausência pode ganhar consequências.
-    fonte_npc: estado/relacoes/maerra_thandrel.yaml
-    gerada_em:
-      data: 15 Eleasis, 1372 DR
-      hora: '17:30'
-    regra: potencial_nao_significa_oferecida
+pendencias_avaliacao: {}
 missoes: {}
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
@@ -99,3 +79,26 @@ historico_recente:
   em:
     data: 13 Eleasis, 1372 DR
     hora: '21:40'
+- tipo: avaliacao_aposentada_task31
+  id: sq-5ca38554df96dc88
+  npc_id: maerra_thandrel
+  motivo: Gate procedural retirado antes de qualquer oferta; o potencial nunca virou
+    cânone e não pode sobreviver como missão fantasma.
+  em:
+    data: 15 Eleasis, 1372 DR
+    hora: '17:30'
+legado_procedural:
+  estatuto: somente_auditoria_nao_operacional
+  gate_congelado:
+    ciclo: 3
+    sorteios: 22
+    restantes: 8
+  pendencias_aposentadas:
+    sq-5ca38554df96dc88:
+      estado_anterior: potencial
+      npc_id: maerra_thandrel
+      necessidade_id: pessoa_ausente
+      tipo: busca
+      semente: Uma pessoa esperada pelo abrigo ou templo pode não ter aparecido; Maerra
+        pode pedir uma busca discreta se isso combinar com o cânone do momento.
+      regra: nunca_foi_oferecida_nem_canonizada

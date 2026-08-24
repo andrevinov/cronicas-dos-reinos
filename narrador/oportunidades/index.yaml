@@ -1,9 +1,12 @@
 schema_oportunidades: 1
 natureza: reservado
 semente: cronicas-dos-reinos-oportunidades-v1
+estatuto_operacional: gate_procedural_retirado_task31
+nova_origem_sidequests: canonica_explicita
 gate:
   versao: 2
   modo: baralho_sem_reposicao_sha256
+  estatuto: legado_congelado_nao_operacional
   fichas:
   - id: nada_01
     resultado: nada
@@ -34,6 +37,7 @@ gate:
       1: 1
       2: 2
       3: 3
+    estatuto: legado_congelado_nao_modula_sidequest
 orcamento:
   max_ativas: 2
   max_em_aberto: 3
@@ -51,52 +55,56 @@ regras:
   pressao_aventura_modula_gate: true
   pressao_nao_fura_orcamento: true
   pressao_nao_rerrola: true
+  gate_procedural_operacional: false
+  encontro_nao_gera_nova_sidequest: true
+  fonte_nova_sidequest: canonica_explicita
+  perfis_procedurais_sao_legado: true
 perfis:
   kethra_dunn:
     nome: Kethra Dunn
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/kethra_dunn.yaml
   bram_vask:
     nome: Bram Vask
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/bram_vask.yaml
   pell:
     nome: Pell
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/pell.yaml
   maerra_thandrel:
     nome: Irmã Maerra Thandrel
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/maerra_thandrel.yaml
   luath:
     nome: Luath
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/luath.yaml
   halessa_vorn:
     nome: Irmã Halessa Vorn
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/halessa_vorn.yaml
   silva_elkwood:
     nome: Silva Elkwood
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/silva_elkwood.yaml
   jack_mooney:
     nome: Jack Mooney
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/jack_mooney.yaml
   corven_dalm:
     nome: Corven Dalm
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/corven_dalm.yaml
   nera_vell:
     nome: Nera Vell
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/nera_vell.yaml
   brunna_torkel:
     nome: Brunna Torkel
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/brunna_torkel.yaml
   dessa_wren:
     nome: Dessa Wren
-    estado: ativo
+    estado: inativo
     arquivo: narrador/oportunidades/perfis/dessa_wren.yaml
