@@ -1,0 +1,30 @@
+schema_orcamento_condicoes_persistentes: 1
+task: 34
+nome: Persistent World Conditions
+limites:
+  condicoes_abertas_max: 8
+  historico_recente_max: 16
+  locais_por_condicao_max: 8
+  sinais_por_condicao_max: 4
+  marcadores_por_condicao_max: 6
+  duracao_horas_max: 720
+  estado_bytes_max: 12288
+  leituras_extras_cena_sem_local: 0
+  leituras_estado_cena_espacial: 1
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  estado_inicial_nao_inventa_condicao_retroativa: true
+  clima_escassez_greve_festival_toque_recolher_porto_suportados: true
+  condicao_exige_fonte_canonica_nao_reservada: true
+  narrador_e_runtime_nao_canonizam_condicao: true
+  inicio_e_fim_usam_relogio_de_harptos_existente: true
+  expiracao_e_derivada_sem_scheduler: true
+  leitura_nao_escreve: true
+  cena_sem_contexto_espacial_nao_le_condicoes: true
+  cena_espacial_inclui_estado_no_fingerprint: true
+  condicao_nao_cria_penalidade_teste_evento_npc_sidequest: true
+  escopo_local_usa_ids_canonicos: true
+  projecao_publica_nao_expoe_fonte_ou_evidencia: true
+  historico_e_compacto: true
