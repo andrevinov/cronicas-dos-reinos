@@ -17,7 +17,7 @@ python3 ferramentas/cena_mundo.py preparar \
 
 `preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual como fato e não cria arquivo de preparação.
 
-Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar **refs canônicas opacas** já escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem.
+Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar **refs canônicas opacas** já escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo.
 
 Se a cena for aceita, resolver rolagens, narrar e registrar o turno normalmente. Só depois confirmar com os mesmos parâmetros. `confirmar` refaz a preparação read-only e valida fingerprint; se fonte relevante mudou, falha antes da escrita.
 
@@ -43,7 +43,7 @@ Para mapa inexistente, a preparação usa o mesmo gerador determinístico da con
 
 Para mapa existente, a mesma área é reutilizada. **Item existir no mapa não significa que Ren o encontrou.** Descoberta/obtenção dependem da cena e do pipeline canônico normal.
 
-## 4. Encontros e side quests — Tasks 31/32
+## 4. Encontros e side quests — Tasks 31–33
 
 Resolver identidade do NPC continua obrigatório.
 
@@ -63,6 +63,8 @@ resolver NPC explícito
 
 O engine canônico testa, com short-circuit: local → data → lifecycle/orçamento → relação → conhecimento → mundo → identidade. Relação/identidade enxergam deltas pendentes antes do checkpoint. Conhecimento e mundo usam fontes dirigidas, nunca scan global.
 
+A Task 33 mantém três quests reservadas por quest-giver recorrente. No checkpoint de implantação, no máximo duas ficam mecanicamente quentes por NPC; a terceira é fria por condição real de data, relação, conhecimento, mundo ou identidade. Não existe flag `hot` persistida.
+
 Presença incidental é instalada antes da camada canônica, mas não passa pelo encontro explícito e não recebe refs de quest. Estar no mesmo local não transforma NPC em quest-giver.
 
 Quando uma quest fica elegível, o endpoint projeta apenas o necessário para o NPC poder formular o pedido. **Disponível não significa oferecida.** Se o assunto não entrar na conversa, nada é persistido.
@@ -77,7 +79,7 @@ A porta revalida o gate e escreve uma vez. Retry é idempotente. O cooldown proc
 
 Toda quest canônica exige recusa permitida. Oferta/aceite/adiamento/recusa continuam no lifecycle de `oportunidades.py`.
 
-Detalhes: `docs/task31-retire-procedural-sidequest-gate.md` e `docs/task32-canonical-secret-quest-engine.md`.
+Detalhes: `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md` e `docs/task33-secret-npc-quest-catalog.md`.
 
 ## 5. Descoberta contextual — tags tipadas
 
@@ -141,7 +143,7 @@ A saída alimenta `interacoes_mundo.py preparar-sidequest <id>`; deltas de press
 
 No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera sidequest nem loot.
 
-A Task 32 entrega engine e schemas com catálogo real vazio. A Task 33 popula gates/detalhes sem alterar o algoritmo para forçar aparições.
+A Task 32 entregou engine/schema vazio por desenho; a Task 33 passou a fornecer conteúdo reservado. Isso não muda a autoridade do engine nem força aparição, oferta ou aceite.
 
 ## 8. Orçamento e invariantes
 
@@ -151,7 +153,8 @@ Contratos relevantes:
 - `baseline/cena-transacional-orcamento.yaml`;
 - `baseline/tags-contextuais-tipadas-orcamento.yaml`;
 - `baseline/retire-procedural-sidequest-gate-orcamento.yaml`;
-- `baseline/canonical-secret-quest-engine-orcamento.yaml`.
+- `baseline/canonical-secret-quest-engine-orcamento.yaml`;
+- `baseline/secret-npc-quest-catalog-orcamento.yaml`.
 
 Invariantes atuais:
 
@@ -169,5 +172,6 @@ Invariantes atuais:
 - presença incidental não aciona quest;
 - disponibilidade ≠ oferta ≠ aceite;
 - toda quest canônica permite recusa;
+- 12 quest-givers recorrentes × 3 quests; no máximo 2 quentes por NPC no checkpoint de implantação;
 - nova oferta revalida o gate antes de escrever;
 - lifecycle, efeitos persistentes, rastros e recompensas permanecem reutilizados.
