@@ -1,0 +1,13 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-93bab01aaa4e
+npc_id: silva_elkwood
+detalhe: narrador/sidequests-canonicas/segredos/qsc-93bab01aaa4e.yaml
+condicoes:
+  janela:
+    inicio:
+      data: 19 Eleasis, 1372 DR
+      hora: 06:00
+  relacao:
+    afinidade_min: 8
+    confianca_min: 8

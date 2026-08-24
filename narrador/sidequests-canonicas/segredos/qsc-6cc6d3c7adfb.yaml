@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-6cc6d3c7adfb
+npc_id: jack_mooney
+tipo: trabalho_profissional
+titulo: O Número que Precisa de um Homem Invisível
+objetivo: Executar um trabalho de bastidor em que presença cênica, disciplina física e discrição valem mais que
+  combate.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: false
+consequencia_sem_ren: Jack substitui o número por algo menos ambicioso ou contrata especialista externo.
+oferta:
+  recusa_permitida: true
+  premissa: Jack desenhou uma solução teatral que depende de alguém capaz de estar exatamente onde o público não
+    olha.
+  pedido: Ele oferece pagamento por um serviço delimitado durante uma apresentação ou montagem, com regras claras
+    de segurança.
+  guardrails:
+  - O trabalho não exige revelar Ren e Kage como a mesma pessoa.
+  - Contrato e pagamento são explícitos.
+  - O palco não vira cobertura automática para crime.
+efeitos: []

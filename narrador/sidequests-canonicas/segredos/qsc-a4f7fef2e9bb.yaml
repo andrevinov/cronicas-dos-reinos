@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-a4f7fef2e9bb
+npc_id: silva_elkwood
+tipo: protecao
+titulo: Duas Portas, Uma Pessoa
+objetivo: Mover uma pessoa vulnerável entre dois pontos seguros sem repetir a rota usada pelos Vell nem arrastar
+  risco ao circo.
+janela:
+  tipo: temporal
+  duracao_horas: 24
+pode_reabrir: false
+consequencia_sem_ren: A rede usa outra rota, adia a mudança ou concentra risco num ponto por mais tempo.
+oferta:
+  recusa_permitida: true
+  premissa: Silva precisa de uma escolta discreta que obedeça à lógica de separação de riscos que ela já exige de
+    Ren.
+  pedido: Ela pergunta se Ren consegue fazer o deslocamento sem improvisar heroísmo e sem trazer a pessoa de volta
+    ao acampamento se houver cauda.
+  guardrails:
+  - A pessoa protegida não é Nera ou Tavin automaticamente.
+  - Silva pode abortar a rota se detectar cauda.
+  - Ren não decide o destino da pessoa.
+efeitos: []

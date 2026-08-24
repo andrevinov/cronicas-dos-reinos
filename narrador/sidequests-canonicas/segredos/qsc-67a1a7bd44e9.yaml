@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-67a1a7bd44e9
+npc_id: jack_mooney
+tipo: mediacao
+titulo: Um Patrono Quer Mais do que Comprou
+objetivo: Negociar uma saída entre o circo e um patrono influente que tenta converter dinheiro em controle sobre
+  artistas ou bastidores.
+janela:
+  tipo: temporal
+  duracao_horas: 36
+pode_reabrir: false
+consequencia_sem_ren: Jack cede alguma vantagem comercial, rompe o contrato ou assume a disputa pessoalmente.
+oferta:
+  recusa_permitida: true
+  premissa: Se Jack passar a gostar um pouco mais de Ren, ele admite que uma presença externa à hierarquia do circo
+    pode ajudar a dizer não sem escalar para briga comercial.
+  pedido: Ele pede que Ren represente apenas um limite previamente combinado e volte se o patrono quiser negociar
+    de verdade.
+  guardrails:
+  - Ren não fala em nome dos artistas além do limite combinado.
+  - O patrono pode sair sem virar inimigo recorrente.
+  - Jack continua dono das decisões comerciais do circo.
+efeitos: []

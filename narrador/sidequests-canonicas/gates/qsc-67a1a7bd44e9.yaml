@@ -1,0 +1,11 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-67a1a7bd44e9
+npc_id: jack_mooney
+detalhe: narrador/sidequests-canonicas/segredos/qsc-67a1a7bd44e9.yaml
+condicoes:
+  locais:
+  - jack_mooney_sons_circus
+  relacao:
+    afinidade_min: 6
+    confianca_min: 7

@@ -1,0 +1,15 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-a4f7fef2e9bb
+npc_id: silva_elkwood
+detalhe: narrador/sidequests-canonicas/segredos/qsc-a4f7fef2e9bb.yaml
+condicoes:
+  locais:
+  - jack_mooney_sons_circus
+  relacao:
+    afinidade_min: 7
+    confianca_min: 7
+    risco_min: 9
+  identidade:
+    persona_relacional:
+    - ren

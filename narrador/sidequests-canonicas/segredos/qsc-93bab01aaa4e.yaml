@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-93bab01aaa4e
+npc_id: silva_elkwood
+tipo: segredo_pessoal
+titulo: Uma Porta que Silva Não Abre para o Circo
+objetivo: Resolver discretamente uma pendência antiga da própria Silva sem envolver Jack, Nera ou a rede de proteção
+  do circo.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Silva resolve sozinha, mais devagar, e fecha o assunto por orgulho.
+oferta:
+  recusa_permitida: true
+  premissa: Quando a pressão imediata baixar, Silva admite existir uma obrigação pessoal que ela vem adiando justamente
+    porque todo mundo depende dela.
+  pedido: Ela pede uma ajuda prática e limitada, sem transformar o favor em dívida afetiva.
+  guardrails:
+  - O pedido não usa os Vell como motivação automática.
+  - Não transforma cuidado maternal em controle.
+  - Ren pode recusar sem quebrar a relação.
+efeitos: []
