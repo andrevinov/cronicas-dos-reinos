@@ -1,0 +1,32 @@
+schema_rodada_torneio_clandestino: 1
+natureza: reservado
+id: ronda_01
+ordem: 1
+fase: classificatoria
+oponente:
+  id: toren_malk
+  nome: Toren Malk
+  origem: Damara
+  regiao_macro: faerun
+  tradicao: luta de acampamento mercenário, com clinch, quedas de quadril e boxe curto
+  personalidade: econômico, respeitoso e mais interessado em posição corporal do que em espetáculo
+premissa: >-
+  A abertura testa se Ren consegue lidar com força, base e agarramento sem depender de espaço amplo. O adversário
+  tenta encurtar distância, controlar o centro e vencer por queda, rendição ou incapacidade não letal.
+regras_do_combate:
+  letalidade: nao_letal_por_padrao
+  fim: [rendicao, incapacitacao_nao_letal, saida_do_circulo, intervencao_do_arbitro]
+  escala: desafiador_mas_justo_para_nivel_9_11
+  ajuste: Definir ficha/estatísticas antes da primeira rolagem e nunca escalar depois de ver resultado de Ren.
+rotas_de_ren:
+- lutar dentro das regras
+- estudar o adversário antes de se comprometer
+- tentar vitória por posicionamento, queda, controle ou desgaste
+- abandonar a luta e aceitar a consequência de classificação
+pistas_identidade_possiveis:
+- uso repetido de forma Kagehira pode ser observado por alguém que tenha referência real
+- aparência, equipamento e padrão de movimento não são apagados por Actor
+guardrails:
+- vitória não é garantida
+- derrota não muda relação/reputação automaticamente
+- não criar side quest, prêmio ou segredo por vencer esta luta isoladamente
