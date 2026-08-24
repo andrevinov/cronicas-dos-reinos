@@ -1,0 +1,23 @@
+schema_orcamento_reputacao_publica: 1
+task: 29
+nome: Public Reputation of Ren
+limites:
+  chamadas_extras_turno_comum: 0
+  max_publicos_por_evento: 3
+  max_registros_ativos: 8
+  max_estado_reputacao_bytes: 7168
+  max_fonte_chars: 60
+  schedulers_novos: 0
+  rng_novo: 0
+  arquivos_estado_paralelo_novos: 0
+invariantes:
+  reputacao_nao_e_fama: true
+  reputacao_nao_e_opiniao_individual: true
+  rumor_sozinho_nao_cria_marco: true
+  fato_publico_altera_no_maximo_um_marco_por_publico_e_persona: true
+  repetir_mesmo_tipo_de_feito_nao_farma_reputacao: true
+  heroi_local_exige_breadth_de_marcos: true
+  kage_shinta_e_ren_nao_compartilham_reputacao_automaticamente: true
+  confirmacao_privada_de_identidade_nao_e_atribuicao_publica: true
+  caminho_comum_nao_le_registro_de_publicos: true
+  estado_permanece_em_estado_atual_yaml: true
