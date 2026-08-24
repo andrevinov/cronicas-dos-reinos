@@ -56,10 +56,6 @@ def cronica() -> int:
     return _run_script("cronica.py")
 
 
-def fronteira() -> int:
-    return _run_script("fronteira_operacional.py")
-
-
 def turno() -> int:
     return _run_script("turno.py")
 
