@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extensões transacionais: rastros, tempo, compromissos, relações, identidades e prosa diegética.
+"""Extensões transacionais: rastros, tempo, compromissos, relações, identidades, reputação e prosa diegética.
 
 O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
 invariantes baratos sem aumentar o número normal de escritas:
@@ -10,6 +10,7 @@ invariantes baratos sem aumentar o número normal de escritas:
   projetados em memória antes da consolidação;
 - afinidade/confiança só mudam incrementalmente com fato canônico e fonte;
 - suspeita/confirmacao de identidade usam estado NPC compacto com evidência causal;
+- reputação pública só muda por fato público atribuído a uma persona e marco qualitativo;
 - criação atômica de NPC + relação normaliza o primeiro medidor como bootstrap;
 - a prosa de `narracao` não aceita vocabulário mecânico explícito fora de linhas
   próprias `MECÂNICA — ...`.
@@ -32,6 +33,7 @@ import compromissos
 import diegetico
 import estado_relacional
 import identidades
+import reputacao_publica
 import tempo_transacional
 
 for _name in dir(_base):
@@ -70,6 +72,21 @@ def validate_delta(delta: Any) -> dict[str, Any]:
             _base.validate_delta(delta)
             return identidades.validate_identity_delta(delta, registry)
         except identidades.IdentitySuspicionError as exc:
+            raise TransactionError(str(exc)) from exc
+    if reputacao_publica.touches_reputation(delta):
+        try:
+            repo = Path(__file__).resolve().parents[1]
+            audiences = reputacao_publica.load_audiences(repo)
+            identities_registry = reputacao_publica.load_identities(repo)
+            _base.validate_delta(delta)
+            if not reputacao_publica.is_reputation_delta(delta):
+                raise reputacao_publica.PublicReputationError(
+                    "mutacao direta do dominio de reputacao publica e proibida"
+                )
+            return reputacao_publica.validate_reputation_delta(
+                delta, audiences, identities_registry
+            )
+        except reputacao_publica.PublicReputationError as exc:
             raise TransactionError(str(exc)) from exc
 
     target = delta.get("alvo")

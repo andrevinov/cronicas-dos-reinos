@@ -1,12 +1,10 @@
 # AGENTS.md — roteador operacional
 
-Roteador global; detalhes ficam em `docs/agente/` sob demanda.
-
 ## 1. Fonte de verdade
 
-O repositório é a memória canônica. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
+O repo é a memória canônica; não dependa só da conversa. Respeite `campanha.yaml`, fontes autorizadas, ficha/estado. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o checkpoint. Estado/tempo são o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only e frias para leitura.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -23,7 +21,7 @@ Detalhes: `docs/agente/fundamentos.md`.
 
 ## 3. Hierarquia de autoridade
 
-Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado consolidados → pendências correntes → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
+Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
 Runtime, handoffs, índices e consultas são projeções, não cânone independente. Pendências têm precedência apenas temporal até consolidação.
 
@@ -35,7 +33,7 @@ Antes de reler, veja se o contexto basta. Após cada consulta: **Se for suficien
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
-- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, sessão atual — 8 KiB;
+- **L2:** `cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, `reputacao`, sessão atual — 8 KiB;
 - **L3:** `buscar ... --apos L2 --motivo ...` — 8 KiB; 2–5 lacunas: `contexto-buscar-muitos.py`;
 - **L4:** histórico estruturado — 12 KiB, sem transcrição;
 - **L4T:** transcrição, somente após L4 — 16 KiB;
@@ -53,7 +51,7 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/mundo/diálogo/identidade → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`;
+- NPC/mundo/diálogo/identidade/reputação → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
@@ -85,6 +83,8 @@ Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar
 **Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional`; conselho exige gatilho. Conversa casual, discordância ou preocupação não viram sermão automático.
 
 **Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
+
+**Reputação:** ≠ fama/opinião; não testar por rotina. Fato público relevante atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
