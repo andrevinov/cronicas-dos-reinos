@@ -74,7 +74,7 @@ Quando a informação puder ser conhecida, mostrar quando possível:
 
 Definir modificadores e dificuldade antes do dado, salvo efeitos legitimamente desencadeados depois. Nunca alterar resultado depois de conhecer o valor.
 
-Quando aplicável usar `python3 ferramentas/rolar-dados.py`; exemplos ficam em `ferramentas/README.md`. Rolagens abertas relevantes podem ir para a transcrição.
+Quando aplicável usar `poetry run dados`; exemplos detalhados ficam em `ferramentas/README.md`. Rolagens abertas relevantes podem ir para a transcrição. Não redescobrir a assinatura por `--help` quando o roteador já a forneceu.
 
 ## Rolagens ocultas
 
