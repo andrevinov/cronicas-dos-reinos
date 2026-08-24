@@ -1,0 +1,32 @@
+schema_retire_procedural_sidequest_gate: 1
+task: 31
+nome: Retire Procedural Side Quest Gate
+substitui_operacionalmente:
+- sidequest_gate_v2 8_nada_2_oportunidade
+- promocao_sidequest_por_adventure_drought_pressure
+limites:
+  draws_por_encontro: 0
+  leituras_pressao_por_encontro: 0
+  leituras_estado_oportunidades_por_encontro: 0
+  leituras_perfil_procedural_por_encontro: 0
+  escritas_oportunidades_por_encontro: 0
+  pendencias_procedurais_ativas: 0
+  perfis_procedurais_ativos: 0
+  schedulers_novos: 0
+  rng_novo: 0
+  max_sidequests_ativas_preservado: 2
+invariantes:
+  encontro_com_npc_nao_gera_sidequest: true
+  nova_sidequest_exige_fonte_canonica_explicita: true
+  baralho_8_2_fica_apenas_como_auditoria_legada: true
+  pressao_aventura_nao_modula_sidequest: true
+  pressao_aventura_continua_valida_para_microeventos: true
+  perfis_procedurais_ficam_inativos: true
+  pendencia_maerra_foi_aposentada_sem_canonizar: true
+  lifecycle_de_missoes_permanece_disponivel: true
+  aceitar_adiar_recusar_permanece_explicito: true
+  concluir_falhar_expirar_permanece_explicito: true
+  efeitos_persistentes_e_recompensas_nao_sao_removidos: true
+  nenhuma_sidequest_ativa_existente_e_perdida: true
+  nenhuma_fonte_secreta_da_task32_e_criada_aqui: true
+  sem_scheduler_sem_scan_sem_reroll: true
