@@ -19,4 +19,6 @@ qualificado_final: false
 premio:
   estado: indisponivel
   entregue_em: null
+  fonte: null
+  evidencia: null
 historico_recente: []
