@@ -1,0 +1,22 @@
+schema_estado_torneio_clandestino: 1
+natureza: estado_reservado
+id: circuito_subterraneo_parte1
+estado: latente
+convite:
+  oferecido_em: null
+  fonte: null
+  evidencia: null
+  resposta: null
+  respondido_em: null
+inscricao:
+  aceita_em: null
+  identidade: null
+  nome: null
+agenda: []
+rodadas_concluidas: []
+derrotas_classificatorias: 0
+qualificado_final: false
+premio:
+  estado: indisponivel
+  entregue_em: null
+historico_recente: []
