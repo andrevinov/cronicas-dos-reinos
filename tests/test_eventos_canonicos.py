@@ -19,25 +19,26 @@ import mundo
 
 
 class EventosCanonicosRepositoryTest(unittest.TestCase):
-    def test_repositorio_real_tem_dezessete_eventos_integrados(self):
+    def test_repositorio_real_tem_catalogo_v2_integrado(self):
         result = eventos_canonicos.validate(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["eventos"], 17)
+        self.assertEqual(result["schema"], 2)
+        self.assertEqual(result["eventos"], 21)
+        self.assertEqual(result["fragmentos"], 21)
 
-    def test_datas_chave_e_excecoes_estao_congeladas(self):
+    def test_passado_materializado_permanece_congelado(self):
         catalog = eventos_canonicos.load_catalog(ROOT)
-        events = catalog["eventos"]
+        secret = catalog["secret_canon_v2"]
+        self.assertEqual(set(secret["passado_congelado"]), {"emboscada_do_restaurante"})
+        event = eventos_canonicos.load_event(ROOT, "emboscada_do_restaurante", catalog=catalog)
+        self.assertEqual(event["ativacao"]["data"], "16 Eleasis, 1372 DR")
+        self.assertEqual(event["titulo"], "A velha e os três homens")
         self.assertEqual(
-            events["sequestro_de_kethra"]["ativacao"]["data"],
-            "1 Eleint, 1372 DR",
+            eventos_canonicos.event_digest(event),
+            secret["passado_congelado"]["emboscada_do_restaurante"],
         )
-        self.assertIn(
-            "não ativa o Círculo Interno",
-            " ".join(events["descida_a_ponte_e_masao"]["nucleo_obrigatorio"]),
-        )
-        shizune = " ".join(events["veneno_em_tyr"]["guardrails"])
-        self.assertIn("Mundo Vivo", shizune)
-        self.assertIn("Não criar compromisso de eliminar", shizune)
+        self.assertNotIn("categorias", event)
+        self.assertNotIn("adaptacao", event)
 
 
 class EventosCanonicosSyntheticTest(unittest.TestCase):
@@ -127,7 +128,7 @@ class EventosCanonicosSyntheticTest(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def test_catalogo_mapeia_pendencia_pelo_id_do_agendamento(self):
+    def test_catalogo_schema1_continua_compativel(self):
         event = eventos_canonicos.event_for_pending(self.repo, self.pending)
         self.assertIsNotNone(event)
         self.assertEqual(event["id"], "teste")
@@ -158,7 +159,10 @@ class EventosCanonicosSyntheticTest(unittest.TestCase):
             transaction_id="s003-canonico",
         )
         self.assertEqual(result["evento_canonico"]["id"], "teste")
-        self.assertEqual(result["evento_canonico"]["estado"], "materializado_em_jogo")
+        self.assertEqual(
+            result["evento_canonico"]["estado"],
+            "materializado_em_jogo",
+        )
         self.assertEqual(result["pendencias_restantes"], 0)
 
 
