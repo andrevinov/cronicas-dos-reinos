@@ -11,7 +11,6 @@ TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
-import mundo
 import oportunidades
 import sidequests_canonicas as canonical
 
@@ -30,6 +29,7 @@ RECURRING = {
     "brunna_torkel",
     "dessa_wren",
 }
+PROGRESSION_GATES = {"janela", "relacao", "conhecimento", "mundo", "identidade"}
 
 
 class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
@@ -110,30 +110,21 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
                 for forbidden in ("titulo:", "premissa:", "pedido:", "objetivo:", "efeitos:"):
                     self.assertNotIn(forbidden, gate_text)
 
-    def test_exatamente_duas_quests_estao_quentes_por_npc_no_checkpoint_atual(self):
-        current, _ = mundo.load_canonical_time(ROOT)
+    def test_terceira_quest_tem_desbloqueio_real_sem_acoplar_ci_ao_tempo_vivo(self):
+        """Task 33 nasceu com 2 hot por NPC, mas campanha futura deve poder liberar a 3ª.
+
+        Em vez de reler tempo/relação vivos para sempre, congela a propriedade de
+        design que importa: a referência de menor prioridade possui ao menos um
+        gate real de progressão. Assim avanço legítimo da campanha não quebra CI.
+        """
         for npc_id, refs in self.mapping.items():
-            hot = 0
-            blockers = []
-            for raw_ref in refs:
-                ref = {**raw_ref, "npc_id": npc_id}
-                gate, _ = canonical._load_gate(ROOT, ref)
-                places = list((gate.get("condicoes") or {}).get("locais") or [])
-                local_id = places[0] if places else None
-                ctx = canonical._Context(ROOT, current)
-                eligible, reason, _, _ = canonical._evaluate_gate(
-                    ctx,
-                    self.index,
-                    ref,
-                    local_id,
-                )
-                hot += int(eligible)
-                if not eligible:
-                    blockers.append(reason)
-            with self.subTest(npc=npc_id, blockers=blockers):
-                self.assertEqual(hot, 2)
-                self.assertEqual(len(blockers), 1)
-                self.assertIn(blockers[0], {"relacao", "data", "conhecimento", "mundo", "identidade"})
+            cold_ref = refs[-1]
+            ref = {**cold_ref, "npc_id": npc_id}
+            gate, _ = canonical._load_gate(ROOT, ref)
+            conditions = gate.get("condicoes") or {}
+            unlocks = set(conditions) & PROGRESSION_GATES
+            with self.subTest(npc=npc_id, unlocks=sorted(unlocks)):
+                self.assertTrue(unlocks)
 
     def test_hot_e_derivado_sem_booleano_artificial(self):
         for npc_id, refs in self.mapping.items():
