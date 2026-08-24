@@ -110,6 +110,7 @@ class UrbanTransitDeckTest(unittest.TestCase):
         original = micro.load_state(self.repo, micro.load_index(self.repo))
         local_state_before = copy.deepcopy(original["locais"])
         local_history_before = copy.deepcopy(original["historico_recente"])
+        transit_history_before = copy.deepcopy(original.get(transit.HISTORY_KEY, []))
 
         results = []
         for i in range(4):
@@ -128,7 +129,9 @@ class UrbanTransitDeckTest(unittest.TestCase):
         self.assertEqual(after["locais"], local_state_before)
         self.assertEqual(after["historico_recente"], local_history_before)
         self.assertIn(transit.STATE_KEY, after)
-        self.assertEqual(len(after[transit.HISTORY_KEY]), 4)
+        self.assertEqual(
+            len(after[transit.HISTORY_KEY]), len(transit_history_before) + 4
+        )
         self.assertEqual(self._pressure_bytes(), pressure_before)
 
     def test_retry_da_mesma_cena_nao_consume_de_novo(self):
