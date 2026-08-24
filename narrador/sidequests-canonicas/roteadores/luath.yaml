@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: luath
+refs:
+- id: qsc-fbf6fff0386a
+  gate: narrador/sidequests-canonicas/gates/qsc-fbf6fff0386a.yaml
+  prioridade: 96
+- id: qsc-640f9c8277a7
+  gate: narrador/sidequests-canonicas/gates/qsc-640f9c8277a7.yaml
+  prioridade: 80
+- id: qsc-db015b69ff54
+  gate: narrador/sidequests-canonicas/gates/qsc-db015b69ff54.yaml
+  prioridade: 59

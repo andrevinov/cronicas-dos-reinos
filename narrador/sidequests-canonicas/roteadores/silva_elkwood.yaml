@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: silva_elkwood
+refs:
+- id: qsc-a4f7fef2e9bb
+  gate: narrador/sidequests-canonicas/gates/qsc-a4f7fef2e9bb.yaml
+  prioridade: 93
+- id: qsc-9da3881a4b5a
+  gate: narrador/sidequests-canonicas/gates/qsc-9da3881a4b5a.yaml
+  prioridade: 76
+- id: qsc-93bab01aaa4e
+  gate: narrador/sidequests-canonicas/gates/qsc-93bab01aaa4e.yaml
+  prioridade: 57

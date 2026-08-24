@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: kethra_dunn
+refs:
+- id: qsc-7e55739710c8
+  gate: narrador/sidequests-canonicas/gates/qsc-7e55739710c8.yaml
+  prioridade: 92
+- id: qsc-fd0e626b9023
+  gate: narrador/sidequests-canonicas/gates/qsc-fd0e626b9023.yaml
+  prioridade: 78
+- id: qsc-243c280468af
+  gate: narrador/sidequests-canonicas/gates/qsc-243c280468af.yaml
+  prioridade: 56

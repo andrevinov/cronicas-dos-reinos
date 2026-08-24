@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: maerra_thandrel
+refs:
+- id: qsc-ba49e93df4a9
+  gate: narrador/sidequests-canonicas/gates/qsc-ba49e93df4a9.yaml
+  prioridade: 94
+- id: qsc-337acd40f1ed
+  gate: narrador/sidequests-canonicas/gates/qsc-337acd40f1ed.yaml
+  prioridade: 79
+- id: qsc-5623f84e1cdf
+  gate: narrador/sidequests-canonicas/gates/qsc-5623f84e1cdf.yaml
+  prioridade: 58

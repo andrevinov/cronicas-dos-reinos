@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: brunna_torkel
+refs:
+- id: qsc-afea4fb2e892
+  gate: narrador/sidequests-canonicas/gates/qsc-afea4fb2e892.yaml
+  prioridade: 87
+- id: qsc-de8ec49fac35
+  gate: narrador/sidequests-canonicas/gates/qsc-de8ec49fac35.yaml
+  prioridade: 68
+- id: qsc-6cbe9f539a11
+  gate: narrador/sidequests-canonicas/gates/qsc-6cbe9f539a11.yaml
+  prioridade: 48

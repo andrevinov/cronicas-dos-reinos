@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: pell
+refs:
+- id: qsc-d9a8dd926f9b
+  gate: narrador/sidequests-canonicas/gates/qsc-d9a8dd926f9b.yaml
+  prioridade: 90
+- id: qsc-dc8a4799e9ec
+  gate: narrador/sidequests-canonicas/gates/qsc-dc8a4799e9ec.yaml
+  prioridade: 72
+- id: qsc-c5e1ec978263
+  gate: narrador/sidequests-canonicas/gates/qsc-c5e1ec978263.yaml
+  prioridade: 51

@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: dessa_wren
+refs:
+- id: qsc-9e23a23eb1f5
+  gate: narrador/sidequests-canonicas/gates/qsc-9e23a23eb1f5.yaml
+  prioridade: 86
+- id: qsc-cbb5d266675e
+  gate: narrador/sidequests-canonicas/gates/qsc-cbb5d266675e.yaml
+  prioridade: 67
+- id: qsc-0bb62f5d27dc
+  gate: narrador/sidequests-canonicas/gates/qsc-0bb62f5d27dc.yaml
+  prioridade: 47
