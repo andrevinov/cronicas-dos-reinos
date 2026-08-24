@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Consolidação legado + rastros + instante temporal atômico.
+"""Consolidação legado + rastros + instante temporal atômico + relações tipadas.
 
 ``_consolidar_core.py`` preserva o consolidator já testado. Este wrapper intercepta
 somente lotes que exigem extensão:
@@ -8,7 +8,9 @@ somente lotes que exigem extensão:
 - `tempo/instante` permanece um único delta persistido e é expandido **somente em
   memória** para os espelhos físicos (`tempo.data_atual`, `tempo.data`,
   `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
-  multi-arquivo antes de qualquer instalação.
+  multi-arquivo antes de qualquer instalação;
+- qualquer fragmento NPC que o plano altere é revalidado na escala relacional
+  0..10/null antes do stage, impedindo overflow de afinidade/confiança.
 """
 from __future__ import annotations
 
@@ -18,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 import _consolidar_core as _base
+import estado_relacional
 import rastros
 import _rastros_core as _rastros_base
 import tempo_transacional
@@ -173,12 +176,42 @@ def _patch_ledger_and_artifacts(
     )
 
 
+def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
+    """Valida bytes já planejados; não adiciona leitura nem escrita ao lote."""
+    if plan is None:
+        return
+    prefix = "estado/npcs/"
+    for rel, raw in (plan.get("outputs") or {}).items():
+        if not rel.startswith(prefix) or not rel.endswith(".yaml"):
+            continue
+        if rel in {
+            estado_relacional.NPC_INDEX.as_posix(),
+            "estado/npcs/escala.yaml",
+            estado_relacional.CONTRACT.as_posix(),
+        }:
+            continue
+        try:
+            doc = _base.yaml.safe_load(raw.decode("utf-8"))
+        except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
+            raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
+        payload = doc.get("npc") if isinstance(doc, dict) else None
+        if not isinstance(payload, dict) or "medidores" not in payload:
+            continue
+        entity_id = str(doc.get("id") or Path(rel).stem)
+        try:
+            estado_relacional.validate_meters(payload["medidores"], entity_id=entity_id)
+        except estado_relacional.RelationshipStateError as exc:
+            raise ConsolidationError(str(exc)) from exc
+
+
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     trace_records = [record for record in records if _trace_delta_ids(record)]
     atomic_instants = tempo_transacional.atomic_count(records)
     if not trace_records and not atomic_instants:
-        return _original_build_plan(repo, kind)
+        plan = _original_build_plan(repo, kind)
+        _validate_relationship_outputs(plan)
+        return plan
 
     trace_index: dict[str, Any] | None = None
     discovered: list[str] = []
@@ -221,6 +254,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
         plan["rastros_descobertos"] = list(dict.fromkeys(discovered))
     if atomic_instants:
         plan["instantes_atomicos"] = atomic_instants
+    _validate_relationship_outputs(plan)
     return plan
 
 
