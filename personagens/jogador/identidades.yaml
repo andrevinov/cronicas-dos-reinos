@@ -1,0 +1,25 @@
+schema_identidades_ren: 1
+natureza: registro_canonico_de_personas_do_jogador
+principal: ren
+observacao: >-
+  Este registro identifica personas usadas por Ren. Ele não decide quem conhece a
+  verdade por trás delas. Suspeita de NPC e confirmação canônica são estados
+  separados e nunca são inferidos apenas porque duas personas pertencem ao jogador.
+identidades:
+  ren:
+    nome: Ren Kagehira
+    tipo: identidade_principal
+    aliases: [Ren, Ren Kagehira, Kagehira]
+  shinta:
+    nome: Shinta Ryoushi
+    tipo: cobertura
+    aliases: [Shinta, Shinta Ryoushi]
+  kage:
+    nome: Kage
+    tipo: persona_publica
+    aliases: [Kage]
+regras:
+  actor_nao_e_metamorfose: true
+  suspeita_nao_e_conhecimento_confirmado: true
+  suspeita_forte_nao_confirma_sozinha: true
+  confirmacao_exige_fato_canonico_explicito: true

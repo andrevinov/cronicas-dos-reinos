@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Consolidação legado + rastros + instante temporal atômico + relações tipadas.
+"""Consolidação legado + rastros + instante atômico + relações + identidades.
 
 ``_consolidar_core.py`` preserva o consolidator já testado. Este wrapper intercepta
 somente lotes que exigem extensão:
@@ -10,8 +10,9 @@ somente lotes que exigem extensão:
   `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
   multi-arquivo antes de qualquer instalação;
 - afinidade/confiança são validadas contra o estado consolidado antes do stage;
-- qualquer fragmento NPC que o plano altere é revalidado na escala relacional
-  0..10/null antes da instalação.
+- suspeita/confirmação de identidade só carrega seu registro quando o lote contém
+  um delta desse tipo e é validada contra o estado anterior;
+- qualquer fragmento NPC alterado é revalidado antes da instalação.
 """
 from __future__ import annotations
 
@@ -22,6 +23,7 @@ from typing import Any
 
 import _consolidar_core as _base
 import estado_relacional
+import identidades
 import rastros
 import _rastros_core as _rastros_base
 import tempo_transacional
@@ -52,6 +54,15 @@ def _trace_delta_ids(record: dict[str, Any]) -> list[str]:
         if target.startswith(transacoes.TRACE_PREFIX):
             result.append(target.split(":", 1)[1])
     return result
+
+
+def _has_identity_deltas(records: list[dict[str, Any]]) -> bool:
+    """Gate estrutural: fixtures/fluxos legados não abrem o registro da Task 28."""
+    return any(
+        identidades.is_identity_delta(delta)
+        for record in records
+        for delta in (record.get("deltas") or [])
+    )
 
 
 def _knowledge_value(record: dict[str, Any], trace_id: str) -> dict[str, Any]:
@@ -154,8 +165,6 @@ def _patch_ledger_and_artifacts(
     if batch is None:
         raise ConsolidationError("batch recém-criado não encontrado no ledger staged")
 
-    # O ledger descreve a transação persistida, não a expansão interna usada pelo
-    # consolidator legado.
     batch["deltas"] = sum(len(record.get("deltas") or []) for record in records)
     if atomic_instants:
         batch["instantes_atomicos"] = atomic_instants
@@ -178,7 +187,7 @@ def _patch_ledger_and_artifacts(
 
 
 def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
-    """Valida bytes já planejados; não adiciona leitura nem escrita ao lote."""
+    """Contrato preservado da Task 26: valida medidores staged sem leitura extra."""
     if plan is None:
         return
     prefix = "estado/npcs/"
@@ -205,18 +214,56 @@ def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
             raise ConsolidationError(str(exc)) from exc
 
 
+def _validate_identity_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
+    """Complementa a Task 26; só abre o registro se um fragmento staged tiver o campo."""
+    if plan is None:
+        return
+    registry: dict[str, Any] | None = None
+    prefix = "estado/npcs/"
+    for rel, raw in (plan.get("outputs") or {}).items():
+        if not rel.startswith(prefix) or not rel.endswith(".yaml"):
+            continue
+        if rel in {
+            estado_relacional.NPC_INDEX.as_posix(),
+            "estado/npcs/escala.yaml",
+            estado_relacional.CONTRACT.as_posix(),
+        }:
+            continue
+        try:
+            doc = _base.yaml.safe_load(raw.decode("utf-8"))
+        except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
+            raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
+        payload = doc.get("npc") if isinstance(doc, dict) else None
+        if not isinstance(payload, dict) or identidades.STATE_FIELD not in payload:
+            continue
+        entity_id = str(doc.get("id") or Path(rel).stem)
+        try:
+            if registry is None:
+                registry = identidades.load_registry(repo)
+            identidades.validate_state(payload[identidades.STATE_FIELD], registry)
+        except identidades.IdentitySuspicionError as exc:
+            raise ConsolidationError(f"{entity_id}: {exc}") from exc
+
+
+def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
+    _validate_relationship_outputs(plan)
+    _validate_identity_outputs(repo, plan)
+
+
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     try:
         estado_relacional.validate_batch(repo, records)
-    except estado_relacional.RelationshipStateError as exc:
+        if _has_identity_deltas(records):
+            identidades.validate_batch(repo, records)
+    except (estado_relacional.RelationshipStateError, identidades.IdentitySuspicionError) as exc:
         raise ConsolidationError(str(exc)) from exc
 
     trace_records = [record for record in records if _trace_delta_ids(record)]
     atomic_instants = tempo_transacional.atomic_count(records)
     if not trace_records and not atomic_instants:
         plan = _original_build_plan(repo, kind)
-        _validate_relationship_outputs(plan)
+        _validate_npc_outputs(repo, plan)
         return plan
 
     trace_index: dict[str, Any] | None = None
@@ -260,12 +307,10 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
         plan["rastros_descobertos"] = list(dict.fromkeys(discovered))
     if atomic_instants:
         plan["instantes_atomicos"] = atomic_instants
-    _validate_relationship_outputs(plan)
+    _validate_npc_outputs(repo, plan)
     return plan
 
 
-# O consolidator legado resolve `build_plan` no próprio módulo. Redirecioná-lo aqui
-# mantém stage/install/recovery byte a byte iguais e troca apenas o planejamento.
 _base.build_plan = build_plan
 
 

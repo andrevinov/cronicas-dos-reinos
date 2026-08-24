@@ -53,7 +53,7 @@ Leia no máximo o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/mundo/diálogo → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`;
+- NPC/mundo/diálogo/identidade → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
@@ -83,6 +83,8 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
 **Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional`; conselho exige gatilho. Conversa casual, discordância ou preocupação não viram sermão automático.
+
+**Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
