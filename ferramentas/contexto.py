@@ -7,6 +7,7 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 - retomada compacta por `sessoes/NNN/handoff.yaml`;
 - consulta de sessão sem abrir transcrição;
 - textura narrativa compacta e dirigida para NPCs/locais;
+- diálogo relacional projetado a partir dos medidores já carregados;
 - busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
   `--historico --transcricoes`;
 - política mecânica de L1–L4T com teto de bytes e justificativa para escaladas.
@@ -34,6 +35,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import contexto_core as core
+import dialogo_relacional
 import politica_acesso as politica
 import recursos
 import sessoes as memoria_sessoes
@@ -323,6 +325,20 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
         )
         relation["dados"] = effective
         applied_total += applied
+
+    # Task 27: usa somente o medidor já carregado e já sobreposto. O papel base,
+    # quando existe, informa personalidade; a relação apenas modula sua expressão.
+    if isinstance(med, dict) and isinstance(med.get("dados"), dict):
+        role: str | None = None
+        current_texture = result.get("textura_narrativa")
+        if isinstance(current_texture, dict):
+            conversation = current_texture.get("papel_conversacional")
+            if isinstance(conversation, dict) and isinstance(conversation.get("papel"), str):
+                role = conversation["papel"]
+        dialogue = dialogo_relacional.project(med["dados"], role=role)
+        if dialogue is not None:
+            dialogo_relacional.validate_projection(dialogue)
+            result["dialogo_relacional"] = dialogue
 
     if applied_total:
         result["deltas_pendentes_aplicados"] = applied_total
