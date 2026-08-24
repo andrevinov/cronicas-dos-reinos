@@ -21,6 +21,9 @@ contexto = "ferramentas.poetry_cli:contexto"
 # Porta unificada preferencial do ciclo preparar -> narrar -> concluir.
 cronica = "ferramentas.poetry_cli:cronica"
 
+# Consulta compacta de fronteira temporal; aceita aliases inequívocos de data.
+fronteira = "ferramentas.poetry_cli:fronteira"
+
 # Registra um avanço narrativo: transcrição + deltas pendentes.
 turno = "ferramentas.poetry_cli:turno"
 
@@ -42,11 +45,13 @@ runtime = "ferramentas.poetry_cli:runtime"
 # Valida/gerencia a memória compacta de sessões e handoffs.
 sessoes = "ferramentas.poetry_cli:sessoes"
 
-# Rolagem comum de dados da campanha.
+# Rolagem comum de dados; ambos os nomes executam a mesma ferramenta.
 dados = "ferramentas.poetry_cli:dados"
+rolar-dados = "ferramentas.poetry_cli:dados"
 
 # Agrupa várias rolagens independentes em uma única chamada.
 dados-lote = "ferramentas.poetry_cli:dados_lote"
+rolar-lote = "ferramentas.poetry_cli:dados_lote"
 
 # Analisa um rollout JSONL do Codex depois da sessão.
 rollout = "ferramentas.poetry_cli:rollout"
