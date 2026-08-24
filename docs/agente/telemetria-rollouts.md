@@ -4,11 +4,9 @@ Este documento define como medir o custo operacional de **Crônicas dos Reinos**
 
 ## Princípio
 
-A campanha não deve gastar uma interação para medir a própria interação.
+A campanha não deve gastar uma interação para medir a própria interação. Durante narração ao vivo, não criar `runtime/telemetria.jsonl`, não atualizar dashboards, não calcular médias e não executar analisadores de rollout.
 
-Durante narração ao vivo, não criar `runtime/telemetria.jsonl`, não atualizar dashboards, não calcular médias e não executar analisadores de rollout. O registro nativo do Codex já contém os eventos necessários para uma análise posterior.
-
-A telemetria normal é, portanto, **pós-hoc e somente leitura**:
+A telemetria normal é **pós-hoc e somente leitura**:
 
 ```text
 sessão de jogo
@@ -18,207 +16,194 @@ sessão de jogo
 → decisão de engenharia
 ```
 
-`contexto.py` também não grava mais `runtime/consultas-contexto.jsonl` por padrão. Esse log local existe somente como diagnóstico opt-in com `--log-local`.
+`contexto.py` também não grava `runtime/consultas-contexto.jsonl` por padrão. O log local, quando disponível, é apenas diagnóstico opt-in.
 
 ## Ferramentas
-
-### Analisar um rollout
 
 ```bash
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
-```
-
-A ferramenta não altera o repositório. Para guardar um relatório, redirecione explicitamente a saída para um caminho de sua escolha.
-
-### Comparar com a baseline pré-refatoração
-
-```bash
 python3 ferramentas/comparar-rollouts.py ~/.codex/sessions/.../rollout-novo.jsonl
 ```
 
-A baseline padrão é `baseline/rollout-2026-08-15.json` e as metas padrão estão em `baseline/metas-rollout-pos-refatoracao.json`.
+A baseline padrão é `baseline/rollout-2026-08-15.json` e as metas ficam em `baseline/metas-rollout-pos-refatoracao.json`. O comparador também aceita vários rollouts e normaliza os resultados por avanço narrativo.
 
-Também é possível combinar várias sessões pós-refatoração:
+## Schema público e extensão Task 38
 
-```bash
-python3 ferramentas/comparar-rollouts.py \
-  rollout-sessao-004.jsonl \
-  rollout-sessao-005.jsonl \
-  rollout-sessao-006.jsonl
+O relatório principal continua em **`schema_version: 3`**. A Task 38 não força consumidores existentes a migrar apenas para receber observabilidade adicional.
+
+Quando a extensão está presente, o relatório também contém:
+
+```text
+narrative_systems_schema: 1
 ```
 
-Os valores são agregados e normalizados **por avanço narrativo**, evitando que uma sessão maior pareça automaticamente mais cara.
+Ela acrescenta métricas de orquestração e atribuição de sistemas narrativos sem remover ou reinterpretar as métricas do schema 3.
+
+### Orquestração
+
+A extensão reconhece as fases `cronica preparar`, `cronica concluir`, `cronica registrar` e `cronica confirmar` e expõe:
+
+- `orchestration_calls`;
+- `avg_orchestration_calls_per_turn`;
+- `orchestration_phases`;
+- `cronica_pair_turns`;
+- `fraction_turns_with_cronica_pair`.
+
+Um turno conta como a dupla preferencial quando possui exatamente um `preparar` e um `concluir` como chamadas de orquestração. Rolagens materialmente necessárias entre as duas não deixam de ser válidas: elas são tools de mecânica, não uma terceira fase de orquestração.
+
+### Sistemas narrativos observados
+
+A extensão atribui chamadas/turnos a sete famílias:
+
+- `npc_social_initiative`;
+- `world_local_incidents`;
+- `canonical_secret_quests`;
+- `secret_canon`;
+- `batch_world_boundary`;
+- `persistent_world_conditions`;
+- `underground_tournament`.
+
+A atribuição usa o comando e marcadores do output da própria ferramenta. Isso permite que uma única chamada de `cronica preparar` seja marcada, por exemplo, como incidente + condição persistente + sidequest canônica **sem contar três tool calls**.
+
+Essa classificação é **inferência observacional**. Um marcador de `canonical_secret_quests` significa que aquela camada apareceu no fluxo observado; não significa que a quest foi oferecida, aceita ou canonizada. O mesmo vale para incidente, cânone futuro, torneio e demais sistemas.
+
+`narrative_system_calls` pode somar mais que `tool_calls` porque uma mesma chamada pode carregar mais de uma família. `narrative_system_turns` conta cada família no máximo uma vez por turno.
+
+## Compatibilidade operacional atualizada
+
+A Task 38 também fecha três lacunas da telemetria anterior:
+
+- `cronica concluir` e `cronica registrar` são sinais de avanço narrativo moderno, além do writer legado `turno.py registrar`;
+- `poetry run dados` e `poetry run dados-lote` são classificados como `dice`, mantendo compatibilidade com `rolar-dados.py` / `rolar-lote.py` antigos;
+- `contexto.py reputacao` é reconhecido como consulta L2.
 
 ## O que é medido diretamente pelo rollout
 
-São tratados como métricas nativas/exatas dentro do arquivo:
+São métricas nativas/exatas dentro do arquivo:
 
 - eventos de inferência (`token_count` / `last_token_usage`);
-- input tokens;
-- cached input tokens;
-- output tokens;
-- reasoning output tokens;
+- input tokens e cached input tokens;
+- output tokens e reasoning output tokens;
 - número de tool calls;
 - compactações;
 - tamanho do `AGENTS.md` observado em `world_state`, quando presente.
 
-O analisador também calcula média, pico e p95 de input por inferência, input não-cache aproximado (`input - cached`) e tool-output bytes anexados ao histórico do modelo.
+O analisador calcula ainda média, pico e p95 de input por inferência, input não-cache aproximado (`input - cached`) e tool-output bytes anexados ao histórico do modelo.
 
-`input - cached` é uma aproximação operacional. **Não é fórmula de faturamento nem de quota semanal.**
+`input - cached` é aproximação operacional. **Não é fórmula de faturamento nem de quota semanal.**
 
 ## O que é inferido pelo analisador
 
-Alguns dados não são syscall tracing e precisam ser classificados a partir dos comandos e resultados registrados:
+Além da extensão Task 38, continuam sendo inferências observacionais:
 
-- `read_search`, `write`, `dice`, `validation` e `other` como categorias de **tentativa**;
+- categorias `read_search`, `write`, `dice`, `validation` e `other`;
 - consultas roteadas por `contexto.py` / `contexto-buscar-muitos.py`;
 - leituras cruas com `rg`, `sed`, `grep`, `cat`, `find`, `ls`, `git show` ou equivalentes;
 - descoberta de interface/schema por `--help` ou leitura direta de `ferramentas/*.py`;
 - caminhos mencionados em operações de leitura/escrita;
-- alvos implícitos de ferramentas conhecidas, por exemplo `turno.py registrar` → transcrição + buffer;
+- alvos implícitos de writers conhecidos;
 - leitura de transcrição;
-- nível L1/L2/L3/L4/L4T quando o comando ou sua saída o identifica.
+- nível L1/L2/L3/L4/L4T;
+- fases de `cronica` e famílias narrativas da extensão.
 
-Desde o schema 3, o analisador também tenta correlacionar **chamada e resultado** pelo `call_id` nativo. Quando o ID não existe em um rollout antigo, usa pareamento FIFO apenas como fallback. Exit code, status explícito e respostas inequívocas (`OK`, `Done!`, `FALHA`) permitem separar:
+Desde o schema 3, chamada e resultado são correlacionados pelo `call_id` nativo quando possível, com FIFO apenas como fallback para rollouts antigos. Exit code, status explícito e respostas inequívocas permitem separar escrita tentada, concluída, falha e desconhecida.
 
-- escrita tentada;
-- escrita concluída;
-- escrita falha;
-- escrita cujo resultado não pôde ser determinado.
-
-`write_target_touches` e `canonical_write_target_touches` representam agora somente alvos de **escritas concluídas**. `attempted_write_target_touches` preserva a visão das tentativas. O mesmo princípio vale para `transcript_read_calls`, acompanhado por `attempted_transcript_read_calls`.
-
-Esses campos aparecem no relatório como **observational inference**. Servem para engenharia e regressão operacional, não para alegar precisão contábil absoluta.
+`write_target_touches` e `canonical_write_target_touches` contam apenas alvos de escritas concluídas. `attempted_write_target_touches` preserva as tentativas. O mesmo princípio vale para leitura de transcrição.
 
 ## Leitura roteada versus leitura crua
 
-Uma consulta L2 não deve esconder leitura direta feita no mesmo turno. Por isso o schema 3 mantém duas dimensões:
+Uma consulta L2 não esconde leitura direta no mesmo turno:
 
 ```text
-contexto roteado = uso da API operacional de contexto
+contexto roteado = API operacional de contexto
 leitura crua     = abertura/busca direta em arquivos
 ```
 
-Se um turno executa `contexto.py cena` e depois usa `rg` ou `sed`, sua classificação passa a ser, por exemplo, **`L2+RAW`**. Se só há leitura crua sem nível roteado identificável, aparece como `RAW`.
-
-Consequentemente, `fraction_turns_l0_l2` significa agora **L0–L2 limpo**: `L2+RAW` não satisfaz a meta. Isso impede que o acesso direto ao repositório seja mascarado por uma consulta barata feita antes dele.
+Se houver `contexto.py cena` seguido de `rg`/`sed`, o nível pode aparecer como `L2+RAW`. `fraction_turns_l0_l2` significa L0–L2 **limpo**; variantes `+RAW` não satisfazem a meta.
 
 ## Como um avanço narrativo é reconhecido
 
-Há duas rotas complementares:
+Há três rotas complementares:
 
-1. compatibilidade com o prompt legado usado na baseline de 15/08 e uma heurística textual pequena;
-2. presença de chamada real a `ferramentas/turno.py registrar`.
+1. prompt legado da baseline + heurística textual pequena;
+2. writer legado `turno.py registrar`;
+3. writers modernos `cronica concluir` / `cronica registrar`.
 
-`turno.py registrar --help` não é sinal de avanço narrativo nem escrita: é descoberta de interface.
+Chamadas com `--help` não contam como avanço nem escrita. Se a forma de pedir avanço mudar radicalmente, use `--narration-regex` no analisador/comparador.
 
-Se a forma de pedir avanço mudar radicalmente e `turno.py` não aparecer, use:
+## Métricas principais
 
-```bash
-python3 ferramentas/analisar-rollout.py rollout.jsonl \
-  --narration-regex 'regex que identifica os turnos desejados'
-```
+### Input bruto por avanço
 
-O comparador aceita a mesma opção.
+Meta técnica: redução de **75–85%**, com piso inicial de aprovação de **70%**.
 
-## Métricas mais importantes
+### Inferências por avanço
 
-### 1. Input bruto por avanço
+Baseline antiga: aproximadamente 15,6. Meta: **até 5**.
 
-É a soma de input tokens de todas as inferências pertencentes ao avanço, dividida pela quantidade de avanços.
+### Tool calls por avanço
 
-Meta técnica: redução de **75–85%**; piso inicial de aprovação: **70%**.
+Baseline antiga: aproximadamente 23,5. Meta inicial: **até 8** sem sacrificar regra, agência ou continuidade.
 
-### 2. Inferências por avanço
+### Orquestração por avanço
 
-É o melhor indicador simples de round-trip amplification.
+Contrato preferencial da Task 21/38: **2 chamadas de orquestração** (`preparar + concluir`) no turno comum. Esse número é diferente de tool calls totais: uma rolagem necessária continua sendo uma chamada adicional legítima.
 
-Baseline pré-refatoração: aproximadamente 15,6 por avanço narrativo. Meta: **até 5**.
+### Leitura roteada, crua e descoberta de schema
 
-### 3. Tool calls por avanço
+`routed_context_calls`, `raw_read_calls` e `schema_discovery_calls` localizam custo evitável sem confundir API operacional com investigação da infraestrutura.
 
-Baseline: aproximadamente 23,5. Meta inicial: **até 8**, sem sacrificar regra, agência ou continuidade.
+### Alvos de escrita
 
-### 4. Leitura roteada, crua e descoberta de schema
-
-`routed_context_calls` mede uso das portas de contexto; `raw_read_calls` mede acesso direto aos arquivos; `schema_discovery_calls` mede o custo de a IA precisar descobrir como usar as próprias ferramentas.
-
-Não existe número pré-refatoração confiável para essas três métricas, portanto a baseline aparece como `n/d`. No pós-refatoração, elas servem para localizar o próximo gargalo sem confundir API operacional com investigação da infraestrutura.
-
-### 5. Alvos de escrita por avanço
-
-A arquitetura transacional pretende manter o avanço comum em:
+O avanço comum pretende persistir apenas:
 
 ```text
 sessoes/NNN/transcricao.md
 runtime/eventos-pendentes.jsonl
 ```
 
-Meta: **até 2 alvos concluídos**, com **zero escrita canônica concluída** durante o turno comum. Uma tentativa que falhou permanece visível nos contadores de tentativa/falha, mas não é fingida como alteração persistida.
+Meta: **até 2 alvos concluídos** e zero escrita canônica concluída durante o turno comum.
 
-### 6. Leitura de transcrição
+### Leitura de transcrição
 
-Transcrição é L4T/evidência bruta, não memória operacional.
+Transcrição é L4T/evidência bruta, não memória operacional. Meta comum: praticamente zero; a regra agregada tolera até 0,05 leitura concluída por avanço.
 
-Meta de narração comum: praticamente zero; a regra automática aceita no máximo 0,05 leitura concluída por avanço para não transformar uma investigação histórica legítima isolada em falso alarme quando várias sessões forem agregadas.
+### Distribuição L0–L2 limpa
 
-### 7. Distribuição L0–L2 limpa
-
-O analisador calcula o nível máximo observado por avanço. L0 é inferido quando não há read/search observado naquele turno.
-
-Meta: **ao menos 80% dos avanços em L0–L2 limpo**.
-
-`L1+RAW`, `L2+RAW` etc. são deliberadamente excluídos desse percentual. Consultas antigas que não permitem determinar o nível nem caracterizar leitura crua aparecem como `UNCLASSIFIED`.
+Meta: **ao menos 80%** dos avanços em L0–L2 limpo.
 
 ## Baseline pré-refatoração
 
-`baseline/rollout-2026-08-15.json` preserva dois tipos de medição:
+`baseline/rollout-2026-08-15.json` combina contadores nativos com auditoria manual dos 13 avanços narrativos. Campos antigos sem precisão suficiente permanecem `n/d`; o comparador não inventa valores históricos.
 
-- contadores nativos exatos do rollout;
-- auditoria manual já realizada sobre os 13 avanços narrativos.
-
-A auditoria manual registra, entre outros, 203 inferências, 306 tool calls, 151 read/search, 63 write, 51 dice, 36 validation, 5 other, 109 alvos de escrita observados e aproximadamente 302.484 caracteres em payloads de patch.
-
-Campos que não foram preservados com precisão suficiente na baseline antiga — inclusive sucesso de writer, leitura crua separada e distribuição formal L0–L4T — ficam como `n/d` na comparação. **O comparador não inventa um número antigo.**
-
-## Metas e interpretação
-
-`baseline/metas-rollout-pos-refatoracao.json` contém os gates operacionais iniciais.
-
-O comparador exibe `OK`, `FALHA` ou `N/D` para cada regra. Uma falha não significa automaticamente regressão de campanha: serve como pista para abrir o rollout e entender o motivo.
-
-A meta de aproximadamente 65% de economia efetiva discutida durante a reforma **não é calculada automaticamente** porque a relação entre input bruto, cache e limites comerciais não é uma fórmula pública inferida pelo repositório. O comparador mostra separadamente redução de input bruto, input não-cache aproximado, rounds, tools e escrita.
+A meta informal de economia efetiva não é convertida automaticamente em faturamento/quota. O comparador mostra separadamente input bruto, não-cache aproximado, inferências, tools e escrita.
 
 ## Momento recomendado para medir
 
-Não medir depois de cada ação.
+Depois que a campanha estiver rodando:
 
-Depois que a campanha voltar:
-
-1. jogar uma sessão real com a arquitetura nova;
+1. jogar uma sessão real;
 2. localizar o rollout correspondente;
-3. executar o analisador e o comparador;
-4. não modificar a campanha por causa de um único outlier sem investigar o turno;
-5. após 2–3 sessões, comparar os rollouts em conjunto para obter uma média mais estável.
+3. executar analisador e comparador;
+4. investigar outliers antes de alterar a arquitetura;
+5. preferir 2–3 sessões para média mais estável.
+
+Não medir depois de cada ação.
 
 ## Privacidade e versionamento
 
-Rollouts podem conter conversa, caminhos locais, prompts, tool outputs e outros detalhes da sessão. O rollout bruto **não deve ser automaticamente copiado para o repositório**.
-
-Versione apenas baselines/relatórios derivados quando isso for deliberado e não expuser material que deva permanecer local.
-
-Nunca incluir `~/.codex/.env`, credenciais, tokens ou arquivos de autenticação.
+Rollouts podem conter conversa, caminhos locais, prompts e outputs. O bruto não deve ser copiado automaticamente ao repo. Versione apenas relatórios derivados quando isso for deliberado e seguro. Nunca incluir credenciais, tokens ou arquivos de autenticação.
 
 ## Invariantes
 
 - telemetria normal é pós-hoc;
-- nenhuma tool call extra é necessária durante um avanço apenas para medir o avanço;
-- `contexto.py` não grava log local por padrão;
-- baseline e rollout novo são comparados por turno narrativo;
-- métricas ausentes ficam ausentes;
-- falha de writer não vira escrita efetiva por inferência;
-- leitura crua não pode ser escondida por um nível L1/L2 roteado;
-- token traffic não é apresentado como faturamento;
-- o rollout bruto permanece fora do repo por padrão;
-- observabilidade nunca deve alterar o cânone da campanha.
+- nenhuma tool call extra é necessária durante avanço apenas para medir;
+- métricas ausentes permanecem ausentes;
+- falha de writer não vira escrita efetiva;
+- leitura crua não é mascarada por L1/L2 roteado;
+- atribuição de sistema não equivale a fato canônico;
+- uma chamada pode pertencer a múltiplos sistemas sem multiplicar `tool_calls`;
+- token traffic não é faturamento;
+- rollout bruto permanece fora do repo por padrão;
+- observabilidade nunca altera o cânone da campanha.
