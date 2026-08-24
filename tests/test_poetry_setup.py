@@ -39,6 +39,8 @@ class PoetrySetupTest(unittest.TestCase):
         }
         self.assertEqual(set(scripts), expected)
         self.assertTrue(all(value.startswith("ferramentas.poetry_cli:") for value in scripts.values()))
+        self.assertNotIn("rolar-dados", scripts)
+        self.assertNotIn("rolar-lote", scripts)
 
     def test_poetry_keeps_virtualenv_inside_repo(self):
         data = tomllib.loads((ROOT / "poetry.toml").read_text(encoding="utf-8"))

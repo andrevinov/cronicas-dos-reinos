@@ -4,9 +4,9 @@
 A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 ``ciclo_cronica.py``. A camada pública acrescenta ergonomia observada em rollout
 real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
-retomada compacta limpa, transporte de ticket tolerante a whitespace acidental no
-corpo base64 e, desde a Task 24, o gate read-only de pendências antes de qualquer
-preparação de turno.
+retomada compacta limpa, transporte de ticket tolerante a whitespace acidental,
+gate read-only de pendências e contratos operacionais tolerantes a aliases
+inequívocos sem relaxar checksum, cânone ou semântica transacional.
 """
 from __future__ import annotations
 
@@ -21,6 +21,7 @@ import checkpoint
 import ciclo_cronica
 import ciclo_sessoes
 import consolidar
+import contratos_operacionais as _contracts
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import progressao_juppongatana
@@ -36,23 +37,56 @@ for _name in dir(_core):
 _ORIGINAL_BUILD_PARSER = _core.build_parser
 _ORIGINAL_MAIN = _core.main
 _ORIGINAL_B64_DECODE = _core._b64_decode
+_ORIGINAL_DECODE_TICKET = _core.decode_ticket
+_ORIGINAL_INSTANT_ARG = _core._instant_arg
+_ORIGINAL_TRANSACTION_CONTRACT = _hot._transaction_contract
 
 
 def _b64_decode(value: str) -> bytes:
-    """Torna o transporte do corpo base64 robusto a wrap/cópia com whitespace.
-
-    Base64url não usa whitespace como dado. Compactá-lo antes do helper legado
-    calcular padding evita que quebras de linha, espaços ou tabs inseridos no
-    transporte alterem ``len(value)`` e produzam padding incorreto. Checksum,
-    zlib, schema e todos os demais guardrails continuam no decoder original.
-    """
+    """Torna o corpo base64 robusto a wrap/cópia com whitespace acidental."""
     compact = "".join(value.split())
     return _ORIGINAL_B64_DECODE(compact)
 
 
-# ``cronica_hotpath`` e as funções da Task 21 compartilham o mesmo módulo core;
-# trocar apenas o helper mantém um único decoder e evita motor paralelo.
+def _ticket_argument(value: str) -> str:
+    try:
+        return _contracts.explain_ticket_argument(value)
+    except _contracts.OperationalContractError as exc:
+        raise _core.CronicaError(str(exc)) from exc
+
+
+def decode_ticket(value: str) -> dict:
+    """Falha com instrução operacional quando ``ticket_id`` é usado como ticket."""
+    return _ORIGINAL_DECODE_TICKET(_ticket_argument(value))
+
+
+def _instant_arg(date: str | None, hour: str | None):
+    """Aceita aliases inequívocos de data na borda e preserva o instante canônico."""
+    if date is None and hour is None:
+        return None
+    if not date or not hour:
+        raise _core.CronicaError("--data e --hora devem ser usados juntos")
+    try:
+        normalized = _contracts.normalize_date(date)
+    except _contracts.OperationalContractError as exc:
+        raise _core.CronicaError(str(exc)) from exc
+    return _ORIGINAL_INSTANT_ARG(normalized, hour)
+
+
+def _transaction_contract() -> dict:
+    contract = _ORIGINAL_TRANSACTION_CONTRACT()
+    contract["disciplina"] = (
+        "Em --ticket use exatamente o campo `ticket:` completo, nunca `ticket_id`. "
+        "Não chamar --help nem ler implementação para redescobrir este contrato."
+    )
+    return contract
+
+
+# ``cronica_hotpath`` e a Task 21 compartilham o mesmo módulo core. Patchar as
+# portas de borda mantém um único decoder/parser sem criar motor paralelo.
 _core._b64_decode = _b64_decode
+_core.decode_ticket = decode_ticket
+_hot._transaction_contract = _transaction_contract
 
 
 def prepare(*args, **kwargs):
@@ -111,6 +145,15 @@ def build_parser() -> argparse.ArgumentParser:
     root = _subparsers(parser)
 
     prepare_parser = root.choices["preparar"]
+    # Alias de compatibilidade observado em rollout. ``--contexto-tag`` continua
+    # sendo o nome canônico e a validação tipada permanece na mesma camada.
+    prepare_parser.add_argument(
+        "--tag",
+        dest="contexto_tag",
+        action="append",
+        default=argparse.SUPPRESS,
+        help=argparse.SUPPRESS,
+    )
     prepare_parser.add_argument(
         "--transito-urbano",
         choices=[_hot.URBAN_TRANSIT_SCOPE],
@@ -189,16 +232,17 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_adequacao=args.abordagem_adequacao,
             urban_transit=getattr(args, "transito_urbano", None),
         )
+    token = _ticket_argument(args.ticket)
     if args.cmd == "concluir":
-        return conclude(repo, args.ticket, turno.read_transaction(args.arquivo))
+        return conclude(repo, token, turno.read_transaction(args.arquivo))
     if args.cmd == "registrar":
         return register(
             repo,
-            args.ticket,
+            token,
             turno.read_transaction(args.arquivo),
             revalidate=not args.reparo_pos_confirmacao,
         )
-    return confirm(repo, args.ticket)
+    return confirm(repo, token)
 
 
 def main(argv: list[str] | None = None) -> int:
