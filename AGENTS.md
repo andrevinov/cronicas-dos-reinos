@@ -51,7 +51,7 @@ Leia só o documento especializado necessário:
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`;
+- NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`, `docs/task34-persistent-world-conditions.md`;
 - local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
@@ -85,6 +85,8 @@ Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar
 **Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
 
 **Reputação:** ≠ fama/opinião; não testar por rotina. Fato público relevante atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
+
+**Condição multi-dia:** cena espacial projeta automaticamente. Só após fato canônico que estabeleça/encerre clima, escassez, greve, festival, toque de recolher ou problema portuário, use `condicoes_mundo.py registrar|encerrar` com fonte+evidência literal; não rodar por rotina.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
@@ -133,7 +135,7 @@ Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir 
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade sem pedido. Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; checkpoint normal já faz isso.
 
-Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
