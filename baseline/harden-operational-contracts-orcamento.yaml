@@ -26,5 +26,5 @@ invariantes:
   dados_e_comando_poetry_autoritativo: true
   dados_lote_e_comando_poetry_autoritativo: true
   nenhum_reinstall_do_poetry_e_exigido_para_o_hot_path: true
-  fronteira_operacional_reutiliza_endpoint_existente: true
+  endpoint_fronteira_existente_recebe_normalizacao_de_borda: true
   nenhuma_semantica_de_jogo_nova: true
