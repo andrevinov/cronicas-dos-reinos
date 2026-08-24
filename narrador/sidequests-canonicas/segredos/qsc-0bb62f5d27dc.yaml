@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-0bb62f5d27dc
+npc_id: dessa_wren
+tipo: favor
+titulo: Uma Roupa que Não Pode Voltar pelo Portão Principal
+objetivo: Ajudar Dessa a recuperar discretamente uma peça de alto valor artístico sem ligar o circo a uma disputa
+  privada de cliente.
+janela:
+  tipo: temporal
+  duracao_horas: 48
+pode_reabrir: false
+consequencia_sem_ren: Dessa abandona a peça, absorve o prejuízo e evita trabalhar novamente com o cliente.
+oferta:
+  recusa_permitida: true
+  premissa: Com relação mais forte, Dessa admite que uma peça importante ficou presa numa situação socialmente embaraçosa
+    e que envolver Jack tornaria tudo maior.
+  pedido: Ela pede recuperação negociada e discreta, oferecendo pagar o tempo e assumir o constrangimento se Ren
+    não conseguir.
+  guardrails:
+  - Favor não autoriza furto.
+  - A peça não contém pista secreta por design.
+  - Ren pode trazer apenas informação e encerrar o pedido.
+efeitos: []

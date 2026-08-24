@@ -1,0 +1,13 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-5623f84e1cdf
+npc_id: maerra_thandrel
+detalhe: narrador/sidequests-canonicas/segredos/qsc-5623f84e1cdf.yaml
+condicoes:
+  janela:
+    inicio:
+      data: 20 Eleasis, 1372 DR
+      hora: 06:00
+  relacao:
+    afinidade_min: 7
+    confianca_min: 9

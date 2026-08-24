@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-16aaf588c983
+npc_id: corven_dalm
+tipo: trabalho_profissional
+titulo: Contrato de Uma Noite
+objetivo: Cumprir um serviço delimitado de observação, negociação ou entrada discreta para Corven sem conhecer automaticamente
+  o patrono final.
+janela:
+  tipo: temporal
+  duracao_horas: 36
+pode_reabrir: false
+consequencia_sem_ren: Corven contrata outra mão e registra Kage como menos disponível para trabalho discreto.
+oferta:
+  recusa_permitida: true
+  premissa: Corven oferece um contrato pequeno o bastante para ser teste e valioso o bastante para medir o que Kage
+    faz quando não controla todas as peças.
+  pedido: Ele apresenta objetivo, limites e pagamento; Kage pode exigir termos melhores ou recusar sem revelar outra
+    identidade.
+  guardrails:
+  - Corven não revela automaticamente o verdadeiro patrono.
+  - O contrato não exige matar ou sequestrar.
+  - Kage pode recusar ou renegociar.
+efeitos: []

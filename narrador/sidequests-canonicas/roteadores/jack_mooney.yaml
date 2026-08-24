@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: jack_mooney
+refs:
+- id: qsc-6ad831bf612a
+  gate: narrador/sidequests-canonicas/gates/qsc-6ad831bf612a.yaml
+  prioridade: 91
+- id: qsc-6cc6d3c7adfb
+  gate: narrador/sidequests-canonicas/gates/qsc-6cc6d3c7adfb.yaml
+  prioridade: 73
+- id: qsc-67a1a7bd44e9
+  gate: narrador/sidequests-canonicas/gates/qsc-67a1a7bd44e9.yaml
+  prioridade: 52

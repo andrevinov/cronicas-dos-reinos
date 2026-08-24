@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-8c3ecee4bf17
+npc_id: halessa_vorn
+tipo: investigacao
+titulo: A Segunda Fonte
+objetivo: Obter confirmação independente para uma afirmação que Tyr não tratará como fato com uma única testemunha.
+janela:
+  tipo: temporal
+  duracao_horas: 40
+pode_reabrir: false
+consequencia_sem_ren: A investigação institucional segue mais devagar e a hipótese permanece marcada como não confirmada.
+oferta:
+  recusa_permitida: true
+  premissa: Halessa tem uma peça plausível, mas a própria disciplina dela impede que suspeita seja promovida a verdade.
+  pedido: Ela pede que Ren busque uma segunda fonte específica e volte com o que ouviu, inclusive se contradizer
+    a hipótese.
+  guardrails:
+  - Contradição é resultado válido.
+  - Ren não deve fabricar confirmação para agradar Tyr.
+  - A fonte mantém direito de não cooperar.
+efeitos: []

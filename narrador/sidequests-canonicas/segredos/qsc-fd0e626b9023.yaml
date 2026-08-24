@@ -1,0 +1,25 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-fd0e626b9023
+npc_id: kethra_dunn
+tipo: entrega
+titulo: A Janela sem Nome
+objetivo: Levar um pequeno invólucro legítimo a um intermediário de serviço sem criar um vínculo rastreável entre
+  destinatário e Kethra.
+janela:
+  tipo: temporal
+  duracao_horas: 18
+pode_reabrir: false
+consequencia_sem_ren: A mensagem perde a janela de utilidade e Kethra passa a depender de um canal mais lento e
+  menos seguro.
+oferta:
+  recusa_permitida: true
+  premissa: Kethra precisa fazer uma informação banal atravessar a cadeia de serviço sem usar os canais que passaram
+    a parecer previsíveis.
+  pedido: Ela pede que Ren faça uma única entrega, sem perguntar pelo conteúdo além do necessário para decidir se
+    aceita.
+  guardrails:
+  - Ren pode exigir contexto suficiente para decidir se participa.
+  - O invólucro não contém ordem para crime ou violência.
+  - Entrega não implica confiança sobre outros assuntos.
+efeitos: []

@@ -1,0 +1,21 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-243c280468af
+npc_id: kethra_dunn
+tipo: segredo_pessoal
+titulo: A Dívida de um Nome Antigo
+objetivo: Ajudar Kethra a confirmar o destino de uma pessoa ligada a uma identidade que ela evita mencionar em serviço.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Kethra encerra o assunto sozinha e torna essa parte da vida menos acessível a Ren.
+oferta:
+  recusa_permitida: true
+  premissa: Quando a confiança superar a cautela atual, Kethra admite que uma peça do passado pessoal dela pode
+    ter sido tocada pela mesma economia de nomes falsos que cerca a investigação de Ren.
+  pedido: Ela pede confirmação discreta de vida, paradeiro ou abandono — não resgate automático e não vingança.
+  guardrails:
+  - O segredo pertence a Kethra e não prova ligação com Masao.
+  - Ren decide quanto se envolve.
+  - A missão não converte intimidade em romance obrigatório.
+efeitos: []

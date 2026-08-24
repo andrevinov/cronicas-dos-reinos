@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-337acd40f1ed
+npc_id: maerra_thandrel
+tipo: protecao
+titulo: A Travessia Curta
+objetivo: Acompanhar uma pessoa vulnerável entre dois pontos seguros sem converter proteção em custódia.
+janela:
+  tipo: temporal
+  duracao_horas: 18
+pode_reabrir: false
+consequencia_sem_ren: Outra escolta assume, a mudança é adiada ou o destino seguro precisa ser trocado.
+oferta:
+  recusa_permitida: true
+  premissa: Maerra precisa mover alguém por poucas ruas e sabe que uma escolta ostensiva pode chamar mais atenção
+    que proteção.
+  pedido: Ela pergunta se Ren consegue acompanhar a travessia e seguir as escolhas da própria pessoa protegida.
+  guardrails:
+  - A pessoa protegida mantém agência e pode mudar de ideia.
+  - Proteção não autoriza interrogatório.
+  - Ren pode recusar sem perder vínculo automaticamente.
+efeitos: []

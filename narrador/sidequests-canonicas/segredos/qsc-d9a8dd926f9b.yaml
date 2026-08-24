@@ -1,0 +1,21 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-d9a8dd926f9b
+npc_id: pell
+tipo: entrega
+titulo: Moeda Demais para um Envelope
+objetivo: Entregar uma mensagem curta a um contato que Pell não quer visitar enquanto ainda há valor em chegar primeiro.
+janela:
+  tipo: temporal
+  duracao_horas: 12
+pode_reabrir: false
+consequencia_sem_ren: Pell tenta um mensageiro mais barato, perde o pagamento ou some por um ou dois dias.
+oferta:
+  recusa_permitida: true
+  premissa: Pell recebeu pagamento alto demais para uma rota simples e isso o assustou mais do que animou.
+  pedido: Ele oferece parte do pagamento para que Ren faça a entrega e não use o nome de Pell se algo parecer errado.
+  guardrails:
+  - Pell não sabe automaticamente o conteúdo ou a intenção do remetente.
+  - Ren pode abrir mão da entrega se descobrir risco incompatível.
+  - Aceitar não cria lealdade de Pell.
+efeitos: []

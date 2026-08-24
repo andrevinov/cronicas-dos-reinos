@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-6ad831bf612a
+npc_id: jack_mooney
+tipo: investigacao
+titulo: A Corda Cortada no Lugar Errado
+objetivo: Descobrir se uma sequência de pequenos problemas de bastidor é descuido, sabotagem comercial ou coincidência
+  antes do próximo espetáculo.
+janela:
+  tipo: temporal
+  duracao_horas: 18
+pode_reabrir: false
+consequencia_sem_ren: Jack cancela uma atração, reforça inspeções e perde dinheiro para comprar segurança.
+oferta:
+  recusa_permitida: true
+  premissa: Jack encontrou falhas que individualmente seriam rotina, mas juntas custam dinheiro e podem ferir alguém.
+  pedido: Ele pede que Ren observe equipe, equipamento e acesso sem acusar artista algum até haver evidência.
+  guardrails:
+  - Nenhum artista é culpado por design.
+  - Kage não precisa aparecer durante a investigação.
+  - Jack prefere perda financeira a risco grave ao público.
+efeitos: []

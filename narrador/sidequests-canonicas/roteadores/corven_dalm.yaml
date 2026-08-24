@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: corven_dalm
+refs:
+- id: qsc-16aaf588c983
+  gate: narrador/sidequests-canonicas/gates/qsc-16aaf588c983.yaml
+  prioridade: 89
+- id: qsc-674e58c3949e
+  gate: narrador/sidequests-canonicas/gates/qsc-674e58c3949e.yaml
+  prioridade: 70
+- id: qsc-1e94726bf70c
+  gate: narrador/sidequests-canonicas/gates/qsc-1e94726bf70c.yaml
+  prioridade: 50

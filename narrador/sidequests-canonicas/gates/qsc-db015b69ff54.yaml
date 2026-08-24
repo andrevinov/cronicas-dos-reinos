@@ -1,0 +1,16 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-db015b69ff54
+npc_id: luath
+detalhe: narrador/sidequests-canonicas/segredos/qsc-db015b69ff54.yaml
+condicoes:
+  relacao:
+    confianca_min: 8
+    risco_min: 8
+  conhecimento:
+  - arquivo: personagens/jogador/conhecimento/topicos/03-sobre-masao-e-as-dez-espadas.md
+    termo: Kajiwara Shizune
+    presente: true
+  identidade:
+    persona_relacional:
+    - ren

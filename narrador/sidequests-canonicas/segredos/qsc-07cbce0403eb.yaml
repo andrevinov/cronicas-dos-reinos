@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-07cbce0403eb
+npc_id: bram_vask
+tipo: investigacao
+titulo: O Penhor que Voltou Duas Vezes
+objetivo: Descobrir como o mesmo comprovante de penhor passou por duas mãos diferentes sem assumir que Bram está
+  dizendo toda a verdade.
+janela:
+  tipo: temporal
+  duracao_horas: 48
+pode_reabrir: false
+consequencia_sem_ren: Bram trata o caso como fraude interna, fecha acesso a parte da loja e pune a cadeia de confiança
+  por conta própria.
+oferta:
+  recusa_permitida: true
+  premissa: Uma duplicidade nos papéis da loja ameaça transformar um golpe pequeno em motivo para terceiros revistarem
+    os negócios de Bram.
+  pedido: Bram pede que Ren identifique a origem da duplicação antes de ele decidir quem cobrar ou denunciar.
+  guardrails:
+  - Bram é fonte interessada; sua versão não vira fato por ser quest-giver.
+  - Ren escolhe se compartilha o que descobrir.
+  - A investigação pode concluir que Bram está errado.
+efeitos: []

@@ -1,0 +1,17 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-fbf6fff0386a
+npc_id: luath
+detalhe: narrador/sidequests-canonicas/segredos/qsc-fbf6fff0386a.yaml
+condicoes:
+  relacao:
+    afinidade_min: 4
+    confianca_min: 7
+    risco_min: 8
+  conhecimento:
+  - arquivo: personagens/jogador/conhecimento/topicos/03-sobre-masao-e-as-dez-espadas.md
+    termo: Kurobane Jinzaburō
+    presente: true
+  identidade:
+    persona_relacional:
+    - ren

@@ -65,7 +65,7 @@ sidequests_canonicas:
   detalhes_somente_apos_gate: true
   scheduler: proibido
   rng: proibido
-  por_npc: {}
+  roteamento: fragmentado_por_npc_task33
 perfis:
   kethra_dunn:
     nome: Kethra Dunn

@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: bram_vask
+refs:
+- id: qsc-2a10bacd86d3
+  gate: narrador/sidequests-canonicas/gates/qsc-2a10bacd86d3.yaml
+  prioridade: 91
+- id: qsc-07cbce0403eb
+  gate: narrador/sidequests-canonicas/gates/qsc-07cbce0403eb.yaml
+  prioridade: 74
+- id: qsc-9da2b0cbb0df
+  gate: narrador/sidequests-canonicas/gates/qsc-9da2b0cbb0df.yaml
+  prioridade: 53

@@ -1,0 +1,10 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-337acd40f1ed
+npc_id: maerra_thandrel
+detalhe: narrador/sidequests-canonicas/segredos/qsc-337acd40f1ed.yaml
+condicoes:
+  relacao:
+    afinidade_min: 6
+    confianca_min: 8
+    risco_max: 7

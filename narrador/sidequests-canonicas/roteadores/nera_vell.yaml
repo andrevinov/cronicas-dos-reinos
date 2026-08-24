@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: nera_vell
+refs:
+- id: qsc-59780b42c22d
+  gate: narrador/sidequests-canonicas/gates/qsc-59780b42c22d.yaml
+  prioridade: 88
+- id: qsc-f485d1a16deb
+  gate: narrador/sidequests-canonicas/gates/qsc-f485d1a16deb.yaml
+  prioridade: 69
+- id: qsc-34a15214a101
+  gate: narrador/sidequests-canonicas/gates/qsc-34a15214a101.yaml
+  prioridade: 49

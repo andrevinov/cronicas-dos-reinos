@@ -1,0 +1,13 @@
+schema_roteador_sidequests_canonicas: 1
+natureza: reservado
+npc_id: halessa_vorn
+refs:
+- id: qsc-8c3ecee4bf17
+  gate: narrador/sidequests-canonicas/gates/qsc-8c3ecee4bf17.yaml
+  prioridade: 95
+- id: qsc-2791b6f43771
+  gate: narrador/sidequests-canonicas/gates/qsc-2791b6f43771.yaml
+  prioridade: 77
+- id: qsc-e2fbe59593b6
+  gate: narrador/sidequests-canonicas/gates/qsc-e2fbe59593b6.yaml
+  prioridade: 54

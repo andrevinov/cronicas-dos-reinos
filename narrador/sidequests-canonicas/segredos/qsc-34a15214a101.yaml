@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-34a15214a101
+npc_id: nera_vell
+tipo: segredo_pessoal
+titulo: A Gravura que Nera Nunca Terminou
+objetivo: Ajudar Nera a decidir o destino de um trabalho antigo que ela escondeu antes de conhecer Ren.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: true
+consequencia_sem_ren: Nera guarda novamente a peça e resolve o assunto em outro momento, sozinha.
+oferta:
+  recusa_permitida: true
+  premissa: Com confiança ainda maior, Nera mostra algo do próprio passado que não serve à vingança, ao livro ou
+    ao disfarce — e justamente por isso a deixa vulnerável.
+  pedido: Ela não pede que Ren decida por ela; pede ajuda para recuperar uma peça, encontrar uma pessoa ligada a
+    ela ou encerrar o trabalho.
+  guardrails:
+  - O segredo de Nera não existe para premiar romance.
+  - Ren não decide o significado do trabalho por ela.
+  - A missão pode terminar em escolha pessoal, não em combate.
+efeitos: []

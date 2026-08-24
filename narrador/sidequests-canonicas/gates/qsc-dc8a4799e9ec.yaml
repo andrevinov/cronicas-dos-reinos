@@ -1,0 +1,10 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-dc8a4799e9ec
+npc_id: pell
+detalhe: narrador/sidequests-canonicas/segredos/qsc-dc8a4799e9ec.yaml
+condicoes:
+  relacao:
+    afinidade_max: 4
+    confianca_max: 5
+    risco_min: 7

@@ -1,0 +1,9 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-de8ec49fac35
+npc_id: brunna_torkel
+detalhe: narrador/sidequests-canonicas/segredos/qsc-de8ec49fac35.yaml
+condicoes:
+  relacao:
+    afinidade_max: 4
+    confianca_max: 5

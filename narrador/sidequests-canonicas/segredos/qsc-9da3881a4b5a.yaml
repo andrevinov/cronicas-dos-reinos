@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-9da3881a4b5a
+npc_id: silva_elkwood
+tipo: resgate
+titulo: Chuva sobre a Estrada Baixa
+objetivo: Ajudar uma pequena rede rural ligada a Silva a retirar pessoas ou carga essencial de uma situação física
+  que piora rápido.
+janela:
+  tipo: temporal
+  duracao_horas: 14
+pode_reabrir: false
+consequencia_sem_ren: A rede local improvisa com menos mãos, perde bens ou precisa abandonar parte do que tentava
+  salvar.
+oferta:
+  recusa_permitida: true
+  premissa: 'Um recado prático chega ao circo: não é guerra, é uma emergência de estrada, água, animal ou estrutura
+    em que força e cabeça fria importam.'
+  pedido: Silva pede ajuda porque Ren pode chegar e trabalhar sem transformar o socorro em espetáculo.
+  guardrails:
+  - A emergência não escala automaticamente para conspiração.
+  - Prioridade é retirar vivos e estabilizar o risco.
+  - Ren pode recusar ou chegar tarde sem retcon.
+efeitos: []

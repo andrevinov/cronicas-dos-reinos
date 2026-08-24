@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-9da2b0cbb0df
+npc_id: bram_vask
+tipo: favor
+titulo: Um Favor com Recibo
+objetivo: Resolver um problema pequeno que Bram não consegue terceirizar sem revelar que ele perdeu controle sobre
+  uma parte de sua rede.
+janela:
+  tipo: temporal
+  duracao_horas: 72
+pode_reabrir: false
+consequencia_sem_ren: Bram procura outra mão e a oportunidade de uma relação menos hostil desaparece.
+oferta:
+  recusa_permitida: true
+  premissa: Se a relação deixar de ser puro medo, Bram testa se Ren aceita uma troca explícita e limitada em vez
+    de coerção.
+  pedido: Ele oferece quitar uma obrigação concreta ou abrir uma informação comercial em troca de um favor bem delimitado.
+  guardrails:
+  - A troca precisa ter contrapartida explícita.
+  - Ren pode recusar sem dívida automática.
+  - O favor não pode exigir violência contra inocentes.
+efeitos: []

@@ -1,0 +1,15 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-7e55739710c8
+npc_id: kethra_dunn
+detalhe: narrador/sidequests-canonicas/segredos/qsc-7e55739710c8.yaml
+condicoes:
+  locais:
+  - narwhal_manor
+  relacao:
+    afinidade_min: 5
+    confianca_min: 6
+    risco_min: 8
+  identidade:
+    persona_relacional:
+    - ren

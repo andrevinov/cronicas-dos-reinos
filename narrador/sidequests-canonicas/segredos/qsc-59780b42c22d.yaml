@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-59780b42c22d
+npc_id: nera_vell
+tipo: problema_cotidiano
+titulo: Uma Tarde que Não Precisa Salvar Ninguém
+objetivo: Ajudar Nera a resolver uma pendência simples de vida escondida sem converter cada momento entre os dois
+  em preparação para a guerra.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: false
+consequencia_sem_ren: Nera improvisa com Silva, Tavin ou o que tiver e a pendência perde importância.
+oferta:
+  recusa_permitida: true
+  premissa: 'Nera tem algo banal que se tornou difícil justamente porque não pode circular livremente: consertar,
+    buscar, trocar ou escolher uma coisa pequena.'
+  pedido: Ela pede ajuda com o assunto e deixa claro que quer normalidade, não proteção heroica.
+  guardrails:
+  - A quest é cotidiana de propósito.
+  - Não deve virar emboscada só para ganhar peso.
+  - Nera continua decidindo o que quer e o que revela.
+efeitos: []

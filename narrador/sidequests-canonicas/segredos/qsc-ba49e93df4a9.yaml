@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-ba49e93df4a9
+npc_id: maerra_thandrel
+tipo: busca
+titulo: Uma Cama que Ficou Arrumada
+objetivo: Encontrar uma pessoa esperada por uma rede de abrigo antes que a ausência precise ser tratada como emergência.
+janela:
+  tipo: temporal
+  duracao_horas: 24
+pode_reabrir: false
+consequencia_sem_ren: A rede de abrigo abre a busca por outras vias e perde parte da discrição que protegia a pessoa.
+oferta:
+  recusa_permitida: true
+  premissa: Uma cama foi preparada, uma refeição separada e ninguém chegou; Maerra tem poucos fatos e se recusa
+    a transformar preocupação em acusação.
+  pedido: Ela pede a Ren que refaça discretamente o último trecho conhecido e procure sinais antes de envolver mais
+    gente.
+  guardrails:
+  - A pessoa ausente pode ter escolhido outro destino.
+  - Ren não recebe autoridade sobre a pessoa procurada.
+  - Maerra quer vivos e segurança, não culpados.
+efeitos: []

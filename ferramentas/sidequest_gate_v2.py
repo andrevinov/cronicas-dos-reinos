@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Compatibilidade da Task 31 e roteamento opaco da Task 32.
+"""Compatibilidade Task31 e roteamento opaco Task32/33.
 
-O gate procedural continua aposentado. No repo atual, encontro resolve a identidade
-do NPC e consulta somente o roteador já carregado em oportunidades/index.yaml.
-Nenhum gate canônico, detalhe secreto, estado de oportunidades, pressão, tempo ou
-baralho é aberto aqui. Fixtures antigas sem marcador Task31 preservam o motor legado.
+O gate procedural continua aposentado. O índice quente só identifica o conjunto
+curado de quest-givers; quando o NPC explícito pertence a esse conjunto, a Task 33
+abre um único roteador reservado daquele NPC. Nenhum gate, detalhe, estado de
+oportunidades, pressão, tempo ou baralho é aberto aqui.
+
+Fixtures antigas sem marcador Task31 preservam o motor legado.
 """
 from __future__ import annotations
 
@@ -73,7 +75,7 @@ def _retirement_contract(index: dict[str, Any]) -> None:
             "perfil procedural ainda ativo apos Task 31: "
             + ", ".join(sorted(active))
         )
-    # Task32: valida somente o roteador compacto já carregado; não abre gates.
+    # Valida apenas o contrato compacto quente; fragmentos entram sob demanda.
     sidequests_canonicas._router(index)
 
 
@@ -101,7 +103,8 @@ def encounter_event(
     try:
         _retirement_contract(index)
         resolution = integration.resolve_encounter_npc(repo, npc_id, index)
-        refs = sidequests_canonicas.route_for_npc(
+        refs, route_sources = sidequests_canonicas.route_for_npc_with_sources(
+            repo,
             index,
             str(resolution["npc_id"]),
         )
@@ -126,10 +129,14 @@ def encounter_event(
                 "explicita pode ficar elegivel"
             ),
         },
-        "fontes_lidas": list(resolution.get("fontes_lidas") or []),
+        "fontes_lidas": list(
+            dict.fromkeys(
+                [*(resolution.get("fontes_lidas") or []), *route_sources]
+            )
+        ),
     }
     # Campo interno consumido pela camada de cena. Contém apenas id/path/prioridade
-    # opacos e nunca o gate ou o detalhe da missão.
+    # opacos e nunca gate ou detalhe da missão.
     if refs:
         result["_sidequest_canonica_refs"] = refs
     if encounter_id is not None:

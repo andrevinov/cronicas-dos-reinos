@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-de8ec49fac35
+npc_id: brunna_torkel
+tipo: investigacao
+titulo: O Porão que Cresceu no Papel
+objetivo: Conferir se uma inconsistência entre levantamento, relato de proprietário e espaço físico é erro técnico,
+  reforma escondida ou fraude.
+janela:
+  tipo: temporal
+  duracao_horas: 72
+pode_reabrir: false
+consequencia_sem_ren: Brunna registra a planta como não confiável e se recusa a assumir responsabilidade pelo levantamento.
+oferta:
+  recusa_permitida: true
+  premissa: Um cliente descreveu um porão que não cabe na planta que Brunna tem na frente.
+  pedido: Ela pede olhos e medidas no local, sem acusar o proprietário antes de confirmar que a geometria realmente
+    não fecha.
+  guardrails:
+  - Geometria estranha não prova passagem criminosa.
+  - Ren não precisa entrar em propriedade sem permissão.
+  - Erro de Brunna continua sendo resultado possível.
+efeitos: []
