@@ -1,7 +1,7 @@
 schema_relacoes: 2
 natureza: indice_relacoes_atuais
 historico_acumulado: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
-quantidade: 35
+quantidade: 36
 relacoes:
   edran_vale:
     nome: Edran Vale
@@ -418,3 +418,16 @@ relacoes:
     confianca: baixa; baseada no protocolo
     bytes_fragmento: 515
     campos_atuais: 6
+  sella_conferente_galeria:
+    arquivo: estado/relacoes/sella_conferente_galeria.yaml
+    historico: historico/relacoes/sella_conferente_galeria.yaml
+    nome: Sella
+    tipo: conferente das tabuletas da Galeria dos Escribas
+    status: ativa; organiza tabuletas e correções, e Tomas costuma aceitar suas marcações sem refazer cada conta
+    atitude_para_ren: Sella acredita que Shinta é um sobrevivente solitário de uma guerra em Kozakura e interpreta
+      sua preocupação com Tomas como gratidão pela primeira chance honesta recebida; mantém limites profissionais,
+      mas demonstra compaixão e familiaridade crescente.
+    confianca: profissional moderada em Shinta
+    respeito: profissional inicial
+    bytes_fragmento: 1993
+    campos_atuais: 11

@@ -1,0 +1,27 @@
+schema_conhecimento_incremental: 1
+sessao: 14
+fragmentos:
+- transacao: s014-75253932815a25bd
+  titulo: 'Sella confirmou que Tomas designou Shinta para a mesa de devoluções naquele dia e explicou os limites
+    do setor: conferir quantidade, destino e motivo de recusa sem corrigir documentos para fazê-los concordar; manter
+    documentos fechados e lacres intactos; levar dúvidas, lacres estranhos ou divergentes a ela ou Tomas; não atravessar
+    a porta interna. Às 06:55, Shinta está diante do primeiro lote de treinamento, ainda sem mover nada.'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-75253932815a25bd.md
+  bytes: 868
+- transacao: s014-47c77b4d1cbc3636
+  titulo: Shinta aceitou a avaliação sem se defender, pediu desculpas pelo atraso e chamou Sella de senpai, explicando
+    de modo simples a relação senpai-kouhai de Kozakura. Sella aceitou o termo com humor. Durante o almoço, Shinta
+    obteve Persuasão 18 contra CD 13 para fazê-la falar sobre Tomas. Sella disse que ele chega e trabalha sozinho,
+    costuma comer com a prancheta, não socializa com os carregadores após o expediente e nunca lhe apresentou ou
+    mencionou família; ressaltou que isso prova apenas que ela…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-47c77b4d1cbc3636.md
+  bytes: 988
+- transacao: s014-98bd372ad44b252d
+  titulo: 'Ren entrou no circo sem cauda, abandonou a postura de Shinta e procurou Silva. Ela relatou um dia cheio,
+    porém rotineiro, sem perguntas ou vigilância visível sobre Ren, Shinta ou os Vell. Nera passou o dia protegida
+    no depósito de figurino velho; Tavin circulou como Timo em tarefas supervisionadas, sem fixar a carroça verde
+    como lugar de dormir. Ambos estão fisicamente bem. Silva decidirá onde dormirão somente após a saída do público.
+    A apresentação de Kage está no horário: mesma versão segura,…'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-98bd372ad44b252d.md
+  bytes: 1113
+quantidade: 3

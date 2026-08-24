@@ -1,0 +1,9 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: sella_conferente_galeria
+npc:
+  nome: Sella
+  persistencia: persistente_sem_agenda
+  grupo: Galeria dos Escribas
+  status: ativa como conferente das tabuletas no pátio de entregas
+  local: Galeria dos Escribas, pátio de entregas

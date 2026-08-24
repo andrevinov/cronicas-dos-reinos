@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 13
+  numero: 14
   status: entre_sessoes
   modo_de_cena: ren_com_nera_e_silva_apos_relatar_emboscada
 personagem:
@@ -15,17 +15,17 @@ personagem:
   subclasse: Caminho da Sombra
 recursos:
   pv:
-    atuais: 44
+    atuais: 52
     maximos: 52
   ki:
-    atuais: 5
+    atuais: 7
     maximos: 7
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 30.979999999999997
+  dinheiro_po: 31.379999999999995
 tempo:
-  data: 16 Eleasis, 1372 DR
-  hora_aproximada: '20:25'
+  data: 17 Eleasis, 1372 DR
+  hora_aproximada: '18:25'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -35,7 +35,7 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: ao lado protegido da carroça verde de Silva, conversando com Nera e Silva
+  ponto_exato: picadeiro do Jack Mooney & Sons Circus
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/013/handoff.yaml
-  transcricao_fria: sessoes/013/transcricao.md
+  handoff_atual: sessoes/014/handoff.yaml
+  transcricao_fria: sessoes/014/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:

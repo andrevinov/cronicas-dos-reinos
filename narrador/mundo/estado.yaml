@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 16 Eleasis, 1372 DR
-  hora: '20:25'
+  data: 17 Eleasis, 1372 DR
+  hora: '18:25'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -292,3 +292,54 @@ concluidas_recentes:
   nota: A abordagem da senhora e da placa foi posta em posição na rota recorrente
     de Ren, com três homens kozakuranos no restaurante; a rede reconhece o disfarce
     recorrente, sem conhecer automaticamente o emprego.
+- id: mundo-a579af274540ec0e
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 15 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Nenhuma causa concreta para iniciativa extraordinária; Maerra mantém rotina
+    religiosa, abrigo e cuidado pastoral.
+- id: mundo-ccfdf574959f090c
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Nenhum novo fato canônico indica que a cidade já espere grande embarcação
+    oriental; o relógio de chegada em 27 Eleasis não basta para avançar rumores em
+    17 Eleasis.
+- id: mundo-16b168ad8f464b1b
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: A Casa de Tyr mantém custódia, cadeia de prova e contatos via Luath; não surgiu
+    fato novo que exija iniciativa extraordinária nesta janela.
+- id: mundo-73da4c5587a5c916
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém vigilância e resposta preparada; nenhum fato novo altera
+    prioridades ou autoriza batida sem queimar fontes.
+- id: mundo-a5dac75ef8adce72
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: 'Bloqueio canônico concreto: a presença física de Kajiwara Shizune em Ravens
+    Bluff permanece indeterminada e sua atuação local exige presença; não pode executar
+    forjar_titulo_ou_despejo nesta janela.'
+- id: mundo-b8292cd4725054eb
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: 'A Red Sail tomou decisão operacional diária: concentrou a busca em propriedades
+    abandonadas a leste, mantendo curandeiros e carroças como linhas secundárias,
+    sem localizar Iria, o lagar ou a cadeia rural; transação s014-e203bf6fcdfafc0a.'

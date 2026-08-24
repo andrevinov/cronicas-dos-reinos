@@ -1,0 +1,111 @@
+schema_historico_relacao: 2
+id: sella_conferente_galeria
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s014-47e2bdf191be3126
+  sessao: 14
+  resumo: 'Canonização estrutural de uma identidade já estabelecida nas sessões 11–13: Sella, conferente das tabuletas
+    da Galeria dos Escribas, é distinta de Sella Rove. Apenas o primeiro nome é conhecido. Ela possui familiaridade
+    profissional inicial com Shinta, não é informante e não concede acesso a documentos fechados ou salas internas.'
+  deltas:
+  - alvo: relacao:sella_conferente_galeria
+    caminho: nome
+    op: set
+    valor: Sella
+  - alvo: relacao:sella_conferente_galeria
+    caminho: tipo
+    op: set
+    valor: conferente das tabuletas da Galeria dos Escribas
+  - alvo: relacao:sella_conferente_galeria
+    caminho: local
+    op: set
+    valor: Galeria dos Escribas, pátio de entregas
+  - alvo: relacao:sella_conferente_galeria
+    caminho: status
+    op: set
+    valor: ativa; organiza tabuletas e correções, e Tomas costuma aceitar suas marcações sem refazer cada conta
+  - alvo: relacao:sella_conferente_galeria
+    caminho: atitude_para_ren
+    op: set
+    valor: familiaridade profissional inicial com Shinta; aprovou seu trabalho preciso e consistente
+  - alvo: relacao:sella_conferente_galeria
+    caminho: confianca
+    op: set
+    valor: inicial
+  - alvo: relacao:sella_conferente_galeria
+    caminho: respeito
+    op: set
+    valor: profissional inicial
+  - alvo: relacao:sella_conferente_galeria
+    caminho: motivo_atual
+    op: set
+    valor: Sella apresentou-se pelo primeiro nome, deixou aberto que Shinta se sentasse ao lado dela e explicou
+      que trabalho consistente pode levar à mesa de devoluções; ela não é informante nem espiã.
+  - alvo: relacao:sella_conferente_galeria
+    caminho: informacoes_observadas_por_ren
+    op: set
+    valor:
+    - Sella organiza tabuletas e correções no pátio de entregas.
+    - Carregadores e auxiliares consultam a ordem dela.
+    - Tomas costuma aceitar suas marcações sem refazer cada conta.
+    - Trabalhadores consistentes podem passar das cargas comuns para a mesa de devoluções.
+    - A mesa de devoluções não concede acesso a documentos fechados nem salas internas.
+  - alvo: relacao:sella_conferente_galeria
+    caminho: riscos
+    op: set
+    valor:
+    - Sella não é informante nem espiã.
+    - A familiaridade com Shinta é profissional e inicial.
+    - Ela não concede acesso a documentos fechados ou salas internas.
+- transacao: s014-f27f28f9c515e787
+  sessao: 14
+  resumo: Shinta reduziu o ritmo e aplicou uma abordagem forte, mas obteve Investigação 9 contra CD 13. Identificou
+    incorretamente marcas de transferência interna e uma abreviação antiga de depósito como possíveis divergências.
+    Como sempre explicou antes de mover, nenhum lote foi prejudicado, mas Sella precisou conferir tudo e absorver
+    parte da fila. Ao meio-dia, ela concluiu que Shinta é confiável para respeitar protocolo e admitir dúvida, porém
+    ainda não para classificar devoluções sem supervisão; dete…
+  deltas:
+  - alvo: relacao:sella_conferente_galeria
+    caminho: atitude_para_ren
+    op: set
+    valor: Sella considera Shinta confiável para respeitar protocolo, admitir dúvida e não mover material sem autorização,
+      mas ainda não confia em seu julgamento independente na mesa de devoluções.
+  - alvo: relacao:sella_conferente_galeria
+    caminho: motivo_atual
+    op: set
+    valor: Durante a manhã de teste na mesa de devoluções, Shinta evitou qualquer dano por seguir o protocolo, mas
+      falhou em duas avaliações de Investigação e exigiu conferência integral. Sella o devolveu aos recibos abertos
+      do pátio após a pausa, permitindo nova tentativa futura.
+- transacao: s014-21a856bd310023f8
+  sessao: 14
+  resumo: Shinta contou a Sella a história construída de que veio de Kozakura, perdeu toda a família numa guerra,
+    busca vida pacífica e é grato a Tomas por ter sido uma das poucas pessoas a tratá-lo como ser humano. Ren obteve
+    Enganação 17 contra CD 14, com vantagem de Ator e +2 pela abordagem forte. Sella acreditou na história e passou
+    a interpretar a curiosidade de Shinta como gratidão e preocupação genuínas. Ela o aconselhou a não transformar
+    Tomas em pai ou a gratidão em dívida, mas agradecê-lo por m…
+  deltas:
+  - alvo: relacao:sella_conferente_galeria
+    caminho: confianca
+    op: set
+    valor: profissional moderada em Shinta
+  - alvo: relacao:sella_conferente_galeria
+    caminho: atitude_para_ren
+    op: set
+    valor: Sella acredita que Shinta é um sobrevivente solitário de uma guerra em Kozakura e interpreta sua preocupação
+      com Tomas como gratidão pela primeira chance honesta recebida; mantém limites profissionais, mas demonstra
+      compaixão e familiaridade crescente.
+  - alvo: relacao:sella_conferente_galeria
+    caminho: motivo_atual
+    op: set
+    valor: Shinta aceitou a falha sem ocultá-la e contou uma história pessoal convincente sobre ter perdido a família
+      em Kozakura e buscado paz. Sella acreditou, aconselhou-o sobre Tomas e respondeu ao termo senpai chamando-o
+      de Shinta-kouhai.
+  - alvo: relacao:sella_conferente_galeria
+    caminho: crencas_de_sella_sobre_shinta
+    op: set
+    valor:
+    - Shinta veio de Kozakura.
+    - A família de Shinta morreu numa guerra e ele se considera o único sobrevivente.
+    - Shinta veio a Ravens Bluff tentando construir uma vida pacífica.
+    - Shinta encontrou hostilidade e portas fechadas por ser estrangeiro.
+    - A gratidão e preocupação de Shinta por Tomas vêm da chance de trabalho e do tratamento humano que recebeu.

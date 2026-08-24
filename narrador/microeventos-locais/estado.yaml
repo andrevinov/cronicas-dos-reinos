@@ -22,8 +22,7 @@ locais:
   jack_mooney_sons_circus:
     ocorrencia:
       ciclo: 1
-      restantes:
-      - rotina_03
+      restantes: []
     cartas:
       ciclo: 1
       assinatura_pool: 4cf96967c4975a6f244c956ad251e45eddccd1bdc3e5def76920545d1926cea1
@@ -96,13 +95,18 @@ locais:
     ocorrencia:
       ciclo: 1
       restantes:
-      - microevento_01
       - rotina_01
       - rotina_02
     cartas:
-      ciclo: 0
-      assinatura_pool: null
-      restantes: []
+      ciclo: 1
+      assinatura_pool: 9806f19877f3550106d0fad8cb9c39d2fd5f6fbc84a27dc3616126e0e4792ea7
+      restantes:
+      - ajuste_area_trabalho
+      - rotina_servico_reordenada
+      - entrega_atrasada
+      - abastecimento_incompleto
+      - carga_marca_confusa
+      - documento_sem_destino_claro
 historico_recente:
 - cena_id: s013-retorno-circo-apos-sella
   local_id: jack_mooney_sons_circus
@@ -145,18 +149,36 @@ historico_recente:
     cenas_secas_antes: 3
     promovido: false
   carta_id: animal_inquieto
+- cena_id: s014-galeria-trabalho-17-eleasis
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: microevento_01
+  resultado_base: microevento
+  resultado: microevento
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
+  carta_id: mensagem_sem_destino
+- cena_id: s014-ren-entra-circo-procura-silva
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_03
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
 transitos:
   ravens_bluff:
     ocorrencia:
       ciclo: 2
-      restantes:
-      - rotina_01
-      - microevento_01
+      restantes: []
     cartas:
       ciclo: 1
       assinatura_pool: 1b9e88cb7e5de6dc5811ae26a1e8a14865d9e828de0ac53ea146b89db7fe1b07
-      restantes:
-      - passagem_rua
+      restantes: []
 historico_transito_recente:
 - cena_id: s013-shinta-transito-galeria-fronteira-0600
   escopo_transito: ravens_bluff
@@ -225,3 +247,26 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: 79c62c333d9c7175769ad4b055496eb2d27e5e5173eda5b664566e749394fc4e
+- cena_id: s014-shinta-galeria-17-eleasis
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 7d2c2faa706f5a657098a70b7838205ab8caa13a3b905d60d2a795ec805e30b2
+- cena_id: s014-shinta-retorno-circo-17-eleasis
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 9f1515d7b8dea1dc8248b630e6278752dc6fcf7925aeb3fb180f4d211be7faec
+  carta_id: passagem_rua

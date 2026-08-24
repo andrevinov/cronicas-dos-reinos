@@ -44,9 +44,16 @@ agentes:
   maerra_thandrel:
     estado: ativo
     proxima_avaliacao:
-      data: 15 Eleasis, 1372 DR
+      data: 20 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: 262ba4b63f4f6e46342394d2f2ef088e4a857bb35e2402eb8f7efcec4c2bf01a
+      pendencia_origem: mundo-a579af274540ec0e
+      confirmado_em:
+        data: 17 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   halessa_vorn:
     estado: ativo
     proxima_avaliacao:

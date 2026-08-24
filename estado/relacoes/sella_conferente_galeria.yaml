@@ -1,0 +1,33 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: sella_conferente_galeria
+historico: historico/relacoes/sella_conferente_galeria.yaml
+relacao:
+  nome: Sella
+  tipo: conferente das tabuletas da Galeria dos Escribas
+  local: Galeria dos Escribas, pátio de entregas
+  status: ativa; organiza tabuletas e correções, e Tomas costuma aceitar suas marcações sem refazer cada conta
+  atitude_para_ren: Sella acredita que Shinta é um sobrevivente solitário de uma guerra em Kozakura e interpreta
+    sua preocupação com Tomas como gratidão pela primeira chance honesta recebida; mantém limites profissionais,
+    mas demonstra compaixão e familiaridade crescente.
+  confianca: profissional moderada em Shinta
+  respeito: profissional inicial
+  motivo_atual: Shinta aceitou a falha sem ocultá-la e contou uma história pessoal convincente sobre ter perdido
+    a família em Kozakura e buscado paz. Sella acreditou, aconselhou-o sobre Tomas e respondeu ao termo senpai chamando-o
+    de Shinta-kouhai.
+  informacoes_observadas_por_ren:
+  - Sella organiza tabuletas e correções no pátio de entregas.
+  - Carregadores e auxiliares consultam a ordem dela.
+  - Tomas costuma aceitar suas marcações sem refazer cada conta.
+  - Trabalhadores consistentes podem passar das cargas comuns para a mesa de devoluções.
+  - A mesa de devoluções não concede acesso a documentos fechados nem salas internas.
+  riscos:
+  - Sella não é informante nem espiã.
+  - A familiaridade com Shinta é profissional e inicial.
+  - Ela não concede acesso a documentos fechados ou salas internas.
+  crencas_de_sella_sobre_shinta:
+  - Shinta veio de Kozakura.
+  - A família de Shinta morreu numa guerra e ele se considera o único sobrevivente.
+  - Shinta veio a Ravens Bluff tentando construir uma vida pacífica.
+  - Shinta encontrou hostilidade e portas fechadas por ser estrangeiro.
+  - A gratidão e preocupação de Shinta por Tomas vêm da chance de trabalho e do tratamento humano que recebeu.

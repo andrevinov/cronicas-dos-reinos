@@ -1,0 +1,30 @@
+schema_historico_npc: 2
+id: sella_conferente_galeria
+origem: transacoes-pos-etapa-8
+eventos_pos_migracao:
+- transacao: s014-47e2bdf191be3126
+  sessao: 14
+  resumo: 'Canonização estrutural de uma identidade já estabelecida nas sessões 11–13: Sella, conferente das tabuletas
+    da Galeria dos Escribas, é distinta de Sella Rove. Apenas o primeiro nome é conhecido. Ela possui familiaridade
+    profissional inicial com Shinta, não é informante e não concede acesso a documentos fechados ou salas internas.'
+  deltas:
+  - alvo: npc:sella_conferente_galeria
+    caminho: nome
+    op: set
+    valor: Sella
+  - alvo: npc:sella_conferente_galeria
+    caminho: persistencia
+    op: set
+    valor: persistente_sem_agenda
+  - alvo: npc:sella_conferente_galeria
+    caminho: grupo
+    op: set
+    valor: Galeria dos Escribas
+  - alvo: npc:sella_conferente_galeria
+    caminho: status
+    op: set
+    valor: ativa como conferente das tabuletas no pátio de entregas
+  - alvo: npc:sella_conferente_galeria
+    caminho: local
+    op: set
+    valor: Galeria dos Escribas, pátio de entregas

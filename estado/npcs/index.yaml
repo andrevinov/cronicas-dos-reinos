@@ -2,7 +2,7 @@ schema_npcs: 2
 natureza: indice_medidores_npcs
 escala: estado/npcs/escala.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
-quantidade: 15
+quantidade: 16
 npcs:
   nera_vell:
     nome: Nera Vell
@@ -171,3 +171,9 @@ npcs:
     grupo: intermediário ligado a Bram Vask, à Red Sail e ao circuito da falsa lua
     historico: historico/npcs/homem_maos_limpas.yaml
     bytes_fragmento: 440
+  sella_conferente_galeria:
+    arquivo: estado/npcs/sella_conferente_galeria.yaml
+    nome: Sella
+    grupo: Galeria dos Escribas
+    historico: historico/npcs/sella_conferente_galeria.yaml
+    bytes_fragmento: 280

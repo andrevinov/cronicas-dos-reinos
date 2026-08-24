@@ -1,0 +1,92 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 14
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    ki:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 31.379999999999995
+  tempo:
+    data: 17 Eleasis, 1372 DR
+    hora_aproximada: '18:25'
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: picadeiro do Jack Mooney & Sons Circus
+continuidade:
+  resumo_imediato: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de escolher,
+    discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera à carroça
+    verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s014-cena-881a69d04b765f8a
+  transacao: s014-21a856bd310023f8
+  resumo: Shinta contou a Sella a história construída de que veio de Kozakura, perdeu toda a família numa guerra,
+    busca vida pacífica e é grato a Tomas por ter sido uma das poucas pessoas a tratá-lo como ser humano. Ren obteve
+    Enganação 17 contra CD 14, com vantagem de Ator e +2 pela abordagem forte. Sella acreditou na história e passou
+    a interpretar a curiosidade de Shinta como gratidão e preocupação genuínas. Ela o aconselh…
+- batch: s014-cena-881a69d04b765f8a
+  transacao: s014-c4d930d41a40ecda
+  resumo: 'Shinta retornou aos recibos abertos após a pausa e obteve Investigação 25 contra CD 12, com +2 pela abordagem
+    forte. Trabalhou até o sino do meio da tarde sem erros, aplicando corretamente as correções aprendidas na mesa
+    de devoluções. Tomas, após ouvir a avaliação equilibrada de Sella, autorizou nova tentativa em 18 Eleasis depois
+    do primeiro sino: dois lotes sob supervisão; se ambos estiverem corretos, Shinta cont…'
+- batch: s014-cena-214a08452885caaa
+  transacao: s014-1d352dc77e0f5425
+  resumo: Shinta agradeceu e se despediu de Tomas e Sella. Tomas confirmou a nova tentativa depois do primeiro sino
+    de 18 Eleasis; Sella voltou a chamá-lo de kouhai. Ren atravessou muitas ruas de Ravens Bluff como Shinta, usando
+    mudanças naturais de fluxo e um breve bloqueio causado por uma carroça para variar o trajeto. Não percebeu perseguição
+    nem sofreu interrupção relevante. Às 15:50, chegou ao caminho de serviço no limit…
+- batch: s014-cena-214a08452885caaa
+  transacao: s014-98bd372ad44b252d
+  resumo: Ren entrou no circo sem cauda, abandonou a postura de Shinta e procurou Silva. Ela relatou um dia cheio,
+    porém rotineiro, sem perguntas ou vigilância visível sobre Ren, Shinta ou os Vell. Nera passou o dia protegida
+    no depósito de figurino velho; Tavin circulou como Timo em tarefas supervisionadas, sem fixar a carroça verde
+    como lugar de dormir. Ambos estão fisicamente bem. Silva decidirá onde dormirão somente após…
+- batch: s014-cena-214a08452885caaa
+  transacao: s014-b115616a16d91dfc
+  resumo: Ren informou Silva apenas sobre a tentativa frustrada na nova função e a nova chance de amanhã, sem revelar
+    seu interesse por Tomas ou a conversa com Sella. Evitou procurar Nera, tomou banho e iniciou com Dessa a transformação
+    para Kage.
+- batch: s014-cena-214a08452885caaa
+  transacao: s014-ea85c466fff847ce
+  resumo: Com a cooperação de Ren e o trabalho de Dessa, a transformação física e psicológica em Kage foi concluída;
+    o Vento da Noite está pronto nos bastidores.
+- batch: s014-cena-214a08452885caaa
+  transacao: s014-2313497e3829b377
+  resumo: Sem interrupções antes do espetáculo, Ren passou o fim da tarde preparando corpo, atenção e presença como
+    Kage/Ame-no-Wakahiko. Às primeiras lamparinas, recebeu a chamada para o show.
+- batch: s014-sessao-8f31a895d38ef49b
+  transacao: s014-631d843bece289ca
+  resumo: Kage executou com sucesso a versão segura e ensaiada de O Vento da Noite. A apresentação foi fluida, tecnicamente
+    impecável e recebida com forte entusiasmo pelo público.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/014/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes
