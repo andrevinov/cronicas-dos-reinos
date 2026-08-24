@@ -186,8 +186,36 @@ def _patch_ledger_and_artifacts(
     )
 
 
-def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
-    """Valida bytes já planejados; registro de identidades é lazy e dirigido."""
+def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
+    """Contrato preservado da Task 26: valida medidores staged sem leitura extra."""
+    if plan is None:
+        return
+    prefix = "estado/npcs/"
+    for rel, raw in (plan.get("outputs") or {}).items():
+        if not rel.startswith(prefix) or not rel.endswith(".yaml"):
+            continue
+        if rel in {
+            estado_relacional.NPC_INDEX.as_posix(),
+            "estado/npcs/escala.yaml",
+            estado_relacional.CONTRACT.as_posix(),
+        }:
+            continue
+        try:
+            doc = _base.yaml.safe_load(raw.decode("utf-8"))
+        except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
+            raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
+        payload = doc.get("npc") if isinstance(doc, dict) else None
+        if not isinstance(payload, dict) or "medidores" not in payload:
+            continue
+        entity_id = str(doc.get("id") or Path(rel).stem)
+        try:
+            estado_relacional.validate_meters(payload["medidores"], entity_id=entity_id)
+        except estado_relacional.RelationshipStateError as exc:
+            raise ConsolidationError(str(exc)) from exc
+
+
+def _validate_identity_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
+    """Complementa a Task 26; só abre o registro se um fragmento staged tiver o campo."""
     if plan is None:
         return
     registry: dict[str, Any] | None = None
@@ -206,21 +234,20 @@ def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
         except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
             raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
         payload = doc.get("npc") if isinstance(doc, dict) else None
-        if not isinstance(payload, dict):
+        if not isinstance(payload, dict) or identidades.STATE_FIELD not in payload:
             continue
         entity_id = str(doc.get("id") or Path(rel).stem)
-        if "medidores" in payload:
-            try:
-                estado_relacional.validate_meters(payload["medidores"], entity_id=entity_id)
-            except estado_relacional.RelationshipStateError as exc:
-                raise ConsolidationError(str(exc)) from exc
-        if identidades.STATE_FIELD in payload:
-            try:
-                if registry is None:
-                    registry = identidades.load_registry(repo)
-                identidades.validate_state(payload[identidades.STATE_FIELD], registry)
-            except identidades.IdentitySuspicionError as exc:
-                raise ConsolidationError(f"{entity_id}: {exc}") from exc
+        try:
+            if registry is None:
+                registry = identidades.load_registry(repo)
+            identidades.validate_state(payload[identidades.STATE_FIELD], registry)
+        except identidades.IdentitySuspicionError as exc:
+            raise ConsolidationError(f"{entity_id}: {exc}") from exc
+
+
+def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
+    _validate_relationship_outputs(plan)
+    _validate_identity_outputs(repo, plan)
 
 
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
