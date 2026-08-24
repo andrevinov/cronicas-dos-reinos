@@ -10,7 +10,8 @@ somente lotes que exigem extensão:
   `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
   multi-arquivo antes de qualquer instalação;
 - afinidade/confiança são validadas contra o estado consolidado antes do stage;
-- suspeita/confirmacao de identidade também é validada contra o estado anterior;
+- suspeita/confirmação de identidade só carrega seu registro quando o lote contém
+  um delta desse tipo e é validada contra o estado anterior;
 - qualquer fragmento NPC alterado é revalidado antes da instalação.
 """
 from __future__ import annotations
@@ -53,6 +54,15 @@ def _trace_delta_ids(record: dict[str, Any]) -> list[str]:
         if target.startswith(transacoes.TRACE_PREFIX):
             result.append(target.split(":", 1)[1])
     return result
+
+
+def _has_identity_deltas(records: list[dict[str, Any]]) -> bool:
+    """Gate estrutural: fixtures/fluxos legados não abrem o registro da Task 28."""
+    return any(
+        identidades.is_identity_delta(delta)
+        for record in records
+        for delta in (record.get("deltas") or [])
+    )
 
 
 def _knowledge_value(record: dict[str, Any], trace_id: str) -> dict[str, Any]:
@@ -177,10 +187,10 @@ def _patch_ledger_and_artifacts(
 
 
 def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
-    """Valida bytes já planejados; não adiciona escrita ao lote."""
+    """Valida bytes já planejados; registro de identidades é lazy e dirigido."""
     if plan is None:
         return
-    registry = identidades.load_registry(repo)
+    registry: dict[str, Any] | None = None
     prefix = "estado/npcs/"
     for rel, raw in (plan.get("outputs") or {}).items():
         if not rel.startswith(prefix) or not rel.endswith(".yaml"):
@@ -206,6 +216,8 @@ def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
                 raise ConsolidationError(str(exc)) from exc
         if identidades.STATE_FIELD in payload:
             try:
+                if registry is None:
+                    registry = identidades.load_registry(repo)
                 identidades.validate_state(payload[identidades.STATE_FIELD], registry)
             except identidades.IdentitySuspicionError as exc:
                 raise ConsolidationError(f"{entity_id}: {exc}") from exc
@@ -215,7 +227,8 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     try:
         estado_relacional.validate_batch(repo, records)
-        identidades.validate_batch(repo, records)
+        if _has_identity_deltas(records):
+            identidades.validate_batch(repo, records)
     except (estado_relacional.RelationshipStateError, identidades.IdentitySuspicionError) as exc:
         raise ConsolidationError(str(exc)) from exc
 
