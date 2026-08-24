@@ -42,10 +42,10 @@ runtime = "ferramentas.poetry_cli:runtime"
 # Valida/gerencia a memória compacta de sessões e handoffs.
 sessoes = "ferramentas.poetry_cli:sessoes"
 
-# Forma autoritativa para rolagem comum no Poetry.
+# Rolagem comum de dados da campanha.
 dados = "ferramentas.poetry_cli:dados"
 
-# Forma autoritativa para lote de rolagens no Poetry.
+# Agrupa várias rolagens independentes em uma única chamada.
 dados-lote = "ferramentas.poetry_cli:dados_lote"
 
 # Analisa um rollout JSONL do Codex depois da sessão.
