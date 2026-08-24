@@ -7,13 +7,15 @@ modulam o papel conversacional existente.
 
 A regra central é negativa: relação não autoriza sermão automático. Conselho,
 censura ou moralização só entram quando há gatilho contextual concreto e o tema
-cabe no limite de autoridade do NPC.
+cabe no limite de autoridade do NPC. A Task 30 acrescenta ao mesmo payload uma
+permissão compacta de iniciativa social, sem nova leitura ou estado.
 """
 from __future__ import annotations
 
 from typing import Any
 
 import estado_relacional
+import iniciativa_social
 
 SCHEMA = 1
 LOW_MAX = 4
@@ -128,6 +130,9 @@ def project(npc_payload: Any, *, role: str | None = None) -> dict[str, Any] | No
             "Risco alto pode endurecer limite, urgência ou cautela, mas não apaga afeto/confiança "
             "nem autoriza censura repetitiva."
         )
+    social = iniciativa_social.project(npc_payload, relationship_mode=mode)
+    if social is not None:
+        result["iniciativa_social"] = social
     return result
 
 
@@ -150,4 +155,7 @@ def validate_projection(value: Any) -> dict[str, Any]:
     guardrail = advice.get("guardrail")
     if not isinstance(guardrail, str) or not guardrail.strip() or len(guardrail) > 320:
         raise ValueError("guardrail anti-sermão inválido")
+    social = value.get("iniciativa_social")
+    if social is not None:
+        iniciativa_social.validate_projection(social)
     return value

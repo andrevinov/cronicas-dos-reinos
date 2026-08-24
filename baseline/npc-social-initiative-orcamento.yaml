@@ -1,0 +1,28 @@
+schema_orcamento_iniciativa_social: 1
+task: 30
+nome: NPC Social Initiative
+limites:
+  chamadas_extras_por_consulta_npc: 0
+  fontes_extras_por_consulta_npc: 0
+  leituras_extras_status_cena: 0
+  schedulers_novos: 0
+  rng_novo: 0
+  estados_persistentes_novos: 0
+  max_escopos_por_modo: 3
+  max_saida_iniciativa_social_bytes: 700
+  max_saida_dialogo_relacional_com_iniciativa_bytes: 1800
+invariantes:
+  reutiliza_estado_relacional_task26: true
+  reutiliza_mesma_consulta_task27: true
+  aplica_deltas_pendentes_antes_da_iniciativa: true
+  presenca_ou_canal_legitimo_e_precondicao: true
+  iniciativa_nao_cria_presenca: true
+  iniciativa_nao_cria_encontro: true
+  iniciativa_nao_cria_conhecimento_ou_segredo: true
+  iniciativa_nao_cria_sidequest: true
+  iniciativa_nao_cria_compromisso: true
+  iniciativa_nao_controla_resposta_de_ren: true
+  conselho_continua_gated_pela_task27: true
+  identidade_relacional_e_respeitada: true
+  risco_alto_nao_cria_contato_sozinho: true
+  valor_desconhecido_nao_fabrica_espontaneidade: true
