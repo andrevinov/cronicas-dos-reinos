@@ -48,13 +48,16 @@ def _b64_decode(value: str) -> bytes:
     return _ORIGINAL_B64_DECODE(compact)
 
 
-def decode_ticket(value: str) -> dict:
-    """Falha com instrução operacional quando ``ticket_id`` é usado como ticket."""
+def _ticket_argument(value: str) -> str:
     try:
-        token = _contracts.explain_ticket_argument(value)
+        return _contracts.explain_ticket_argument(value)
     except _contracts.OperationalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
-    return _ORIGINAL_DECODE_TICKET(token)
+
+
+def decode_ticket(value: str) -> dict:
+    """Falha com instrução operacional quando ``ticket_id`` é usado como ticket."""
+    return _ORIGINAL_DECODE_TICKET(_ticket_argument(value))
 
 
 def _instant_arg(date: str | None, hour: str | None):
@@ -73,8 +76,8 @@ def _instant_arg(date: str | None, hour: str | None):
 def _transaction_contract() -> dict:
     contract = _ORIGINAL_TRANSACTION_CONTRACT()
     contract["disciplina"] = (
-        "Em --ticket use exatamente o campo `ticket:` completo, nunca `ticket_id`; "
-        "não chamar --help nem ler implementação para redescobrir este contrato."
+        "Em --ticket use exatamente o campo `ticket:` completo, nunca `ticket_id`. "
+        "Não chamar --help nem ler implementação para redescobrir este contrato."
     )
     return contract
 
@@ -229,16 +232,17 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_adequacao=args.abordagem_adequacao,
             urban_transit=getattr(args, "transito_urbano", None),
         )
+    token = _ticket_argument(args.ticket)
     if args.cmd == "concluir":
-        return conclude(repo, args.ticket, turno.read_transaction(args.arquivo))
+        return conclude(repo, token, turno.read_transaction(args.arquivo))
     if args.cmd == "registrar":
         return register(
             repo,
-            args.ticket,
+            token,
             turno.read_transaction(args.arquivo),
             revalidate=not args.reparo_pos_confirmacao,
         )
-    return confirm(repo, args.ticket)
+    return confirm(repo, token)
 
 
 def main(argv: list[str] | None = None) -> int:
