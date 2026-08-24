@@ -1,0 +1,32 @@
+schema_orcamento_dialogo_relacional: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Fazer afinidade, confiança e risco modularem a fala dos NPCs na mesma consulta
+  dirigida já existente, sem transformar relações em scheduler, roteiro ou sermão automático.
+limites:
+  chamadas_extras_por_consulta_npc: 0
+  fontes_extras_por_consulta_npc: 0
+  leituras_extras_status_cena: 0
+  schedulers_novos: 0
+  rng_novo: 0
+  estados_persistentes_novos: 0
+  modos_relacionais_principais: 4
+  modos_fallback: 1
+  gatilhos_conselho: 3
+  max_saida_dialogo_relacional_bytes: 1800
+invariantes:
+  usa_estado_relacional_task26: true
+  aplica_deltas_pendentes_antes_da_calibracao: true
+  papel_conversacional_permanece_base_de_personalidade: true
+  relacao_modula_tom_sem_criar_conhecimento: true
+  afinidade_alta_confianca_baixa_preserva_afeto_com_reserva: true
+  afinidade_baixa_confianca_alta_preserva_respeito_sem_intimidade: true
+  afinidade_alta_confianca_alta_permite_espontaneidade: true
+  afinidade_baixa_confianca_baixa_preserva_distancia: true
+  valor_desconhecido_nao_e_inventado: true
+  risco_alto_nao_apaga_afeto_ou_confianca: true
+  conselho_nao_e_iniciativa_padrao: true
+  sermao_automatico_e_proibido: true
+  censura_repetitiva_e_proibida: true
+  status_e_cena_nao_carregam_dialogo_relacional: true
+  nenhuma_fala_e_scriptada: true

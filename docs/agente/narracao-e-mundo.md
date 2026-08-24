@@ -26,7 +26,13 @@ NPC importante deve possuir, conforme relevância: objetivo atual, motivação, 
 
 NPCs podem mentir, errar, esquecer, mudar de opinião, acreditar em fatos falsos, agir por interesse próprio, recusar pedidos, guardar rancor, demonstrar gratidão e abandonar planos. Não fazê-los existir apenas para ajudar ou confrontar o protagonista. Mudança significativa de posição deve ter causa registrada.
 
-Quando um NPC presente precisar de voz, gesto ou presença e isso não estiver no contexto corrente, `contexto.py npc "Nome"` pode incluir uma paleta narrativa compacta junto da relação/medidores. Essa paleta é descritiva e sugestiva; não cria segredo, passado ou estatística.
+Quando um NPC presente precisar de voz, gesto ou presença e isso não estiver no contexto corrente, `contexto.py npc "Nome"` pode incluir paleta, papel conversacional e `dialogo_relacional` na mesma consulta L2. A paleta continua sugestiva; o papel descreve personalidade funcional; `dialogo_relacional` modula tom, abertura e discordância com base na afinidade/confiança efetivas, inclusive deltas pendentes.
+
+**Conselho não é iniciativa padrão.** Saudação, conversa casual, reencontro, brincadeira ou simples discordância não justificam sermão. Conselho/censura só entram quando Ren pede avaliação, o assunto cai diretamente na responsabilidade do NPC ou há risco imediato que torne silêncio artificial. Mesmo então, preferir uma observação concreta e dar espaço para resposta. Preocupação persistente não autoriza repetir a mesma bronca em toda interação.
+
+Risco percebido alto pode endurecer limites e urgência sem apagar afeto/confiança. Silva com afinidade e confiança altas continua alguém próxima mesmo quando considera Ren muito perigoso para si ou para os vulneráveis; esse risco não deve converter automaticamente cuidado em tutela moral.
+
+Detalhes: `docs/task26-npc-relationship-state-v1.md` e `docs/task27-relationship-aware-dialogue.md`.
 
 ## Facções
 
@@ -112,10 +118,12 @@ O registro pendente contém resumo curto e apenas deltas realmente ocorridos. Ex
 
 ```json
 {"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
-{"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04 de 7 Eleasis"}
-{"alvo":"relacao:kethra_dunn","op":"set","caminho":"confianca","valor":"moderada"}
+{"alvo":"tempo","op":"instante","valor":{"data":"7 Eleasis, 1372 DR","hora":"08:04"}}
+{"alvo":"npc:kethra_dunn","op":"inc","caminho":"medidores.confianca","valor":1,"fato_canonico":"Kethra viu Ren cumprir uma promessa relevante com consequência persistente.","fonte":"sessoes/NNN/transcricao.md"}
 {"alvo":"conhecimento","op":"registrar","valor":{"assunto":"balança velha","texto":"marca violeta sob a unha"}}
 ```
+
+Afinidade/confiança conhecidas só mudam normalmente por `inc +1|-1` com `fato_canonico` e `fonte`. Valor `null` usa a inicialização explícita da Task 26. Não usar o campo textual `relacao.<id>.confianca` como substituto da barra operacional.
 
 Não registrar um delta quando nada persistente mudou. Um turno pode ter `deltas: []` e ainda assim permanecer rastreável na transcrição.
 
@@ -183,9 +191,11 @@ Durante a sessão, uma consequência nova pode ser um delta `registrar` em `cons
 
 ## Relações
 
-Não reduzir necessariamente relações a um número único. Quando útil registrar confiança, respeito, medo, gratidão, lealdade, suspeita, ressentimento, dívida, interesse e rivalidade. Mudança significativa precisa de causa.
+A Task 26 usa dois eixos operacionais independentes: **afinidade** (`medidores.vinculo`) e **confiança** (`medidores.confianca`), ambos 0–10 ou `null` quando ainda não há base canônica. `risco_percebido` é um terceiro contexto, não uma média dos dois. A prosa de `estado/relacoes/` continua guardando respeito, medo, gratidão, dívida, rivalidade e outras nuances que não devem ser espremidas em uma única barra.
 
-Durante a sessão, registrar apenas o delta significativo (`relacao:<id>`), não recontar o histórico da relação. O histórico próprio é atualizado em consolidação.
+Mudança de afinidade/confiança precisa de fato canônico claro e fonte rastreável. Não recalcular por cada fala, elogio, bronca ou teste social isolado. Durante a sessão, o delta operacional usa `npc:<id>`; histórico e índices são atualizados na consolidação.
+
+A Task 27 projeta esses eixos na fala sem persistir estado adicional. Afinidade alta não implica confiança alta; confiança alta não implica amizade. Relação pode alterar intimidade, abertura e forma de discordar sem fornecer conhecimento que o NPC não possui.
 
 ## Camadas de conhecimento
 
