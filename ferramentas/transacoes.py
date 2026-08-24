@@ -23,6 +23,7 @@ from __future__ import annotations
 from collections import Counter
 import copy
 import json
+from pathlib import Path
 import re
 from typing import Any, Iterable
 
@@ -65,8 +66,6 @@ def validate_delta(delta: Any) -> dict[str, Any]:
             raise TransactionError(str(exc)) from exc
     if identidades.is_identity_delta(delta):
         try:
-            # O schema depende apenas do registro estático de identidades; a
-            # transição contra o estado anterior é validada no checkpoint.
             registry = identidades.load_registry(Path(__file__).resolve().parents[1])
             _base.validate_delta(delta)
             return identidades.validate_identity_delta(delta, registry)
