@@ -1,0 +1,32 @@
+schema_rodada_torneio_clandestino: 1
+natureza: reservado
+id: ronda_02
+ordem: 2
+fase: classificatoria
+oponente:
+  id: lin_xue
+  nome: Lin Xue
+  origem: Shou Lung
+  regiao_macro: kara_tur
+  tradicao: boxe monástico de linhas curtas, desvios mínimos e ataques em cadeia ao entrar na guarda
+  personalidade: serena, analítica e pouco impressionável com fama ou provocação
+premissa: >-
+  A segunda noite contrasta com a primeira: menos massa, mais tempo, precisão e mudança de ângulo. A adversária
+  tenta fazer Ren se comprometer cedo, responder ao vazio e perder iniciativa em sequências curtas.
+regras_do_combate:
+  letalidade: nao_letal_por_padrao
+  fim: [rendicao, incapacitacao_nao_letal, saida_do_circulo, intervencao_do_arbitro]
+  escala: desafiador_mas_justo_para_nivel_9_11
+  ajuste: Definir ficha/estatísticas antes da primeira rolagem e nunca escalar depois de ver resultado de Ren.
+rotas_de_ren:
+- aceitar troca técnica direta
+- quebrar ritmo em vez de competir velocidade por velocidade
+- explorar alcance, terreno e timing
+- abandonar a luta e aceitar a consequência de classificação
+pistas_identidade_possiveis:
+- uma lutadora de Kara-Tur pode reconhecer família de movimentos sem saber automaticamente quem Ren é
+- qualquer suspeita produzida pela cena continua passando pela Task 28
+guardrails:
+- origem oriental não concede conhecimento da história de Ren
+- vitória não revela patrocinadores nem quadro futuro
+- derrota não encerra o mini-arco automaticamente se ainda houver classificação possível
