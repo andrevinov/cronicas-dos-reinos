@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extensões transacionais: rastros, tempo, compromissos, relações e prosa diegética.
+"""Extensões transacionais: rastros, tempo, compromissos, relações, identidades e prosa diegética.
 
 O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
 invariantes baratos sem aumentar o número normal de escritas:
@@ -9,6 +9,7 @@ invariantes baratos sem aumentar o número normal de escritas:
 - compromissos futuros entram como `estado/compromissos.<id>` inteiro e são
   projetados em memória antes da consolidação;
 - afinidade/confiança só mudam incrementalmente com fato canônico e fonte;
+- suspeita/confirmacao de identidade usam estado NPC compacto com evidência causal;
 - criação atômica de NPC + relação normaliza o primeiro medidor como bootstrap;
 - a prosa de `narracao` não aceita vocabulário mecânico explícito fora de linhas
   próprias `MECÂNICA — ...`.
@@ -29,6 +30,7 @@ import _transacoes_core as _base
 import compromissos
 import diegetico
 import estado_relacional
+import identidades
 import tempo_transacional
 
 for _name in dir(_base):
@@ -60,6 +62,15 @@ def validate_delta(delta: Any) -> dict[str, Any]:
             _base.validate_delta(delta)
             return estado_relacional.validate_relationship_delta(delta)
         except estado_relacional.RelationshipStateError as exc:
+            raise TransactionError(str(exc)) from exc
+    if identidades.is_identity_delta(delta):
+        try:
+            # O schema depende apenas do registro estático de identidades; a
+            # transição contra o estado anterior é validada no checkpoint.
+            registry = identidades.load_registry(Path(__file__).resolve().parents[1])
+            _base.validate_delta(delta)
+            return identidades.validate_identity_delta(delta, registry)
+        except identidades.IdentitySuspicionError as exc:
             raise TransactionError(str(exc)) from exc
 
     target = delta.get("alvo")
