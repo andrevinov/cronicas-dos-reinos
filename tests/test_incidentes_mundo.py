@@ -15,6 +15,7 @@ if str(TOOLS) not in sys.path:
 
 import cena_mundo
 import ecologia_local
+import endpoints
 import incidentes_mundo as incidents
 
 
@@ -192,6 +193,45 @@ class IncidentSceneIntegrationTest(unittest.TestCase):
             incident = preview["incidente_mundo"]["incidente"]
             self.assertTrue(incident["rotas_observaveis"])
             self.assertTrue(incident["guardrails"])
+
+    def test_endpoint_quente_projeta_incidente_sem_nova_leitura(self):
+        preview = cena_mundo.prepare_scene(
+            self.repo,
+            scene_id="task35-endpoint",
+            place="Galeria dos Escribas",
+            action="entrar",
+            tier=1,
+            danger="baixa",
+        )
+        sources_before = list(preview["fontes_lidas"])
+        preview["incidente_mundo"] = {
+            "resultado": "avaliar_incidente",
+            "origem": "local",
+            "incidente": {
+                "id": "briga_publica",
+                "tipo": "briga",
+                "severidade": "moderada",
+                "premissa": "Uma discussão degrada e ameaça ferir terceiros próximos.",
+                "rotas_observaveis": ["separar", "negociar", "chamar_ajuda", "nao_intervir", "extra"],
+                "atores_comuns": ["trabalhador", "cliente", "guarda", "vizinho", "extra"],
+                "guardrails": [
+                    "Não escrever decisão de Ren.",
+                    "Não criar side quest automaticamente.",
+                    "Guardrail excedente não deve entrar no endpoint.",
+                ],
+            },
+        }
+        projected = endpoints.project_scene(preview)
+        self.assertEqual(projected["ids"]["incidente_mundo"], "briga_publica")
+        self.assertIn("incidentes_mundo_v2", projected["filtros"])
+        self.assertEqual(projected["gates"][-1]["tipo"], "incidente_mundo_v2")
+        view = projected["disponibilidade"]["incidente_mundo"]
+        self.assertEqual(view["tipo"], "briga")
+        self.assertEqual(len(view["rotas_observaveis"]), endpoints.MAX_INCIDENT_ROUTES)
+        self.assertEqual(len(view["atores_comuns"]), endpoints.MAX_INCIDENT_ACTORS)
+        self.assertEqual(len(view["guardrails"]), endpoints.MAX_INCIDENT_GUARDRAILS)
+        self.assertEqual(projected["fontes_lidas"], sources_before)
+        endpoints._base.validate_endpoint(projected)
 
     def test_confirmar_consumo_unico_do_baralho(self):
         preview = cena_mundo.prepare_scene(
