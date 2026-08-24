@@ -17,7 +17,7 @@ python3 ferramentas/cena_mundo.py preparar \
 
 `preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual como fato e não cria arquivo de preparação.
 
-Desde a Task 31, **encontro com NPC também não consome gate nem cria potencial de side quest**. O Side Quest Gate procedural foi aposentado; side quest nova exige fonte canônica explícita.
+Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar **refs canônicas opacas** já escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem.
 
 Se a cena for aceita, resolver rolagens, narrar e registrar o turno normalmente. Só depois confirmar com os mesmos parâmetros. `confirmar` refaz a preparação read-only e valida fingerprint; se fonte relevante mudou, falha antes da escrita.
 
@@ -33,7 +33,7 @@ scene:<cena_id>:npc:<npc_id_canonico>
 
 Encontros simultâneos são resolvidos por ID canônico. A resolução de NPC continua determinística e falha em typo/ambiguidade antes de qualquer mutação.
 
-A antiga sombra sequencial do baralho de oportunidades não existe mais no caminho operacional: todos os encontros produzem interação normal quanto a side quest. Isso reduz custo e elimina dependência da ordem de NPCs para geração de missão.
+Não existe mais sombra sequencial do antigo baralho de oportunidades. Para sidequest canônica, os refs dos NPCs explícitos são reunidos e ordenados deterministicamente por prioridade + ID; no máximo seis gates são avaliados e no máximo um detalhe é aberto por cena.
 
 ## 3. Local e recompensas
 
@@ -43,29 +43,41 @@ Para mapa inexistente, a preparação usa o mesmo gerador determinístico da con
 
 Para mapa existente, a mesma área é reutilizada. **Item existir no mapa não significa que Ren o encontrou.** Descoberta/obtenção dependem da cena e do pipeline canônico normal.
 
-## 4. Encontros e side quests — Task 31
+## 4. Encontros e side quests — Tasks 31/32
 
-Resolver identidade do NPC continua obrigatório, mas o fluxo antigo foi encerrado.
+Resolver identidade do NPC continua obrigatório.
 
 Fluxo atual:
 
 ```text
-resolver NPC
-→ interação normal
-→ ZERO sorteio de side quest
-→ ZERO abertura de perfil procedural
-→ ZERO pendência de avaliação gerada pelo encontro
+resolver NPC explícito
+→ ZERO sorteio procedural
+→ procurar refs opacas no índice já carregado
+   → sem refs: interação normal, ZERO custo Task32 adicional
+   → com refs: avaliar gates compactos
+      → nenhum passa: interação normal
+      → um passa: abrir exatamente um detalhe reservado
 ```
 
-O adaptador `sidequest_gate_v2.py` conserva esse nome só por compatibilidade com `cena_mundo.py`; ele agora devolve `gate_procedural_retirado` e não abre estado, pressão ou perfil procedural.
+`sidequest_gate_v2.py` conserva o nome por compatibilidade. Ele continua sem abrir estado, pressão, tempo, perfil procedural ou detalhe secreto; apenas transporta refs opacas quando existirem.
 
-Todos os perfis antigos em `narrador/oportunidades/index.yaml` estão `inativo`. O baralho 8:2 e sua integração histórica com Adventure Drought Pressure permanecem apenas como auditoria congelada.
+O engine canônico testa, com short-circuit: local → data → lifecycle/orçamento → relação → conhecimento → mundo → identidade. Relação/identidade enxergam deltas pendentes antes do checkpoint. Conhecimento e mundo usam fontes dirigidas, nunca scan global.
 
-Adventure Drought Pressure continua válida para **microeventos locais**; não modula mais side quest.
+Presença incidental é instalada antes da camada canônica, mas não passa pelo encontro explícito e não recebe refs de quest. Estar no mesmo local não transforma NPC em quest-giver.
 
-O lifecycle de missão continua em `oportunidades.py`: oferta, aceite, adiamento, recusa, conclusão, falha, expiração e reabertura quando permitida. A origem de uma nova side quest, porém, deve ser `canonica_explicita`. A Task 32 fornece essa origem.
+Quando uma quest fica elegível, o endpoint projeta apenas o necessário para o NPC poder formular o pedido. **Disponível não significa oferecida.** Se o assunto não entrar na conversa, nada é persistido.
 
-Detalhes: `docs/task31-retire-procedural-sidequest-gate.md`.
+Se o pedido realmente entrar na narração aceita, após `cronica concluir`:
+
+```bash
+poetry run python ferramentas/sidequests_canonicas.py oferecer <qsc-id> --npc <npc_id> [--local <local_id>]
+```
+
+A porta revalida o gate e escreve uma vez. Retry é idempotente. O cooldown procedural antigo não é reutilizado.
+
+Toda quest canônica exige recusa permitida. Oferta/aceite/adiamento/recusa continuam no lifecycle de `oportunidades.py`.
+
+Detalhes: `docs/task31-retire-procedural-sidequest-gate.md` e `docs/task32-canonical-secret-quest-engine.md`.
 
 ## 5. Descoberta contextual — tags tipadas
 
@@ -111,35 +123,51 @@ arcos.py metodos <linha> --executor <agente>
 
 Método continua repertório, não acontecimento.
 
-## 7. Side quest canônica aceita e pós-canônico
+## 7. Side quest aceita e pós-canônico
 
-Depois que uma side quest proveniente de fonte canônica explícita entra no lifecycle e é aceita, `interacoes_mundo.py preparar-sidequest <id>` continua preparando deltas de pressão/consequência para o mesmo turno.
+A resposta de Ren continua explícita:
 
-Rastro/recompensa que dependem de fato-base ficam em `pos_canonico` até o fato estar instalado. No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera side quest nem loot.
+```bash
+poetry run python ferramentas/oportunidades.py responder <sqc-id> aceitar|adiar|recusar
+```
 
-A Task 31 não cria catálogo ou conteúdo de quest. Tasks 32/33 fazem isso sem reativar o gate procedural.
+Efeitos secretos de uma quest canônica só podem ser abertos depois de `aceita`:
+
+```bash
+poetry run python ferramentas/sidequests_canonicas.py efeitos <sqc-id>
+```
+
+A saída alimenta `interacoes_mundo.py preparar-sidequest <id>`; deltas de pressão/consequência pertencem ao mesmo turno que narra o efeito. Rastro/recompensa ficam em `pos_canonico` até o fato-base existir.
+
+No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera sidequest nem loot.
+
+A Task 32 entrega engine e schemas com catálogo real vazio. A Task 33 popula gates/detalhes sem alterar o algoritmo para forçar aparições.
 
 ## 8. Orçamento e invariantes
 
 Contratos relevantes:
 
-- `baseline/mundo-vivo-integracao-orcamento.yaml` — legado geral da integração;
+- `baseline/mundo-vivo-integracao-orcamento.yaml`;
 - `baseline/cena-transacional-orcamento.yaml`;
 - `baseline/tags-contextuais-tipadas-orcamento.yaml`;
-- `baseline/retire-procedural-sidequest-gate-orcamento.yaml` — substitui operacionalmente as cláusulas antigas do gate 8:2.
+- `baseline/retire-procedural-sidequest-gate-orcamento.yaml`;
+- `baseline/canonical-secret-quest-engine-orcamento.yaml`.
 
 Invariantes atuais:
 
 - `preparar`: 0 escritas;
-- nenhum arquivo temporário de preparação;
-- nenhum scheduler novo;
+- nenhum scheduler/RNG novo;
 - confirmação exige `preparacao_id` e revalidação;
 - estado obsoleto falha antes da escrita;
 - turno sem gatilho reativo continua sem chamar esta camada;
-- presença exige coincidência `local:*`;
-- encontro com NPC faz 0 draws de side quest;
-- encontro faz 0 leitura de Adventure Drought Pressure para side quest;
-- encontro faz 0 leitura/escrita do estado de oportunidades para side quest;
+- encontro com NPC faz 0 draws de sidequest;
+- Adventure Drought Pressure não modula sidequest;
 - perfis procedurais ativos no repo: 0;
-- nova side quest exige fonte canônica explícita;
+- NPC sem ref canônica: 0 leituras Task32 adicionais;
+- gate falho: 0 leitura de detalhe;
+- no máximo 1 detalhe secreto por cena;
+- presença incidental não aciona quest;
+- disponibilidade ≠ oferta ≠ aceite;
+- toda quest canônica permite recusa;
+- nova oferta revalida o gate antes de escrever;
 - lifecycle, efeitos persistentes, rastros e recompensas permanecem reutilizados.

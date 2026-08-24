@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
-"""Compatibilidade da Task 31: o Side Quest Gate procedural esta aposentado.
+"""Compatibilidade da Task 31 e roteamento opaco da Task 32.
 
-O nome do modulo permanece porque ``cena_mundo.py`` ja o usa como adaptador da
-porta de encontro. No repo real, a implementacao nova resolve apenas a identidade
-do NPC e retorna interacao normal: nao abre estado de oportunidades, perfil
-procedural, pressao de aventura, tempo nem baralho.
-
-Fixtures/repositórios antigos que ainda nao declaram a aposentadoria usam o motor
-legado capturado na importacao. Isso preserva testes e migracoes historicas sem
-reativar o gate na campanha atual.
-
-O lifecycle de missoes continua em ``oportunidades.py`` para fontes canonicas
-explicitas. O catalogo/engine canonico e responsabilidade da Task 32.
+O gate procedural continua aposentado. No repo atual, encontro resolve a identidade
+do NPC e consulta somente o roteador já carregado em oportunidades/index.yaml.
+Nenhum gate canônico, detalhe secreto, estado de oportunidades, pressão, tempo ou
+baralho é aberto aqui. Fixtures antigas sem marcador Task31 preservam o motor legado.
 """
 from __future__ import annotations
 
@@ -23,6 +16,7 @@ import yaml
 
 import interacoes_mundo as integration
 import oportunidades
+import sidequests_canonicas
 
 RETIREMENT = "gate_procedural_retirado_task31"
 NEW_SOURCE = "canonica_explicita"
@@ -35,12 +29,21 @@ class SidequestGateV2Error(ValueError):
 
 def _retirement_contract(index: dict[str, Any]) -> None:
     if index.get("estatuto_operacional") != RETIREMENT:
-        raise SidequestGateV2Error("indice nao declara aposentadoria operacional da Task 31")
+        raise SidequestGateV2Error(
+            "indice nao declara aposentadoria operacional da Task 31"
+        )
     if index.get("nova_origem_sidequests") != NEW_SOURCE:
-        raise SidequestGateV2Error("nova origem de sidequests deve ser canonica_explicita")
+        raise SidequestGateV2Error(
+            "nova origem de sidequests deve ser canonica_explicita"
+        )
     gate = index.get("gate")
-    if not isinstance(gate, dict) or gate.get("estatuto") != "legado_congelado_nao_operacional":
-        raise SidequestGateV2Error("baralho legado precisa permanecer congelado e nao operacional")
+    if (
+        not isinstance(gate, dict)
+        or gate.get("estatuto") != "legado_congelado_nao_operacional"
+    ):
+        raise SidequestGateV2Error(
+            "baralho legado precisa permanecer congelado e nao operacional"
+        )
     rules = index.get("regras")
     if not isinstance(rules, dict):
         raise SidequestGateV2Error("regras de oportunidades ausentes")
@@ -52,10 +55,14 @@ def _retirement_contract(index: dict[str, Any]) -> None:
     }
     for key, expected in required.items():
         if rules.get(key) != expected:
-            raise SidequestGateV2Error(f"regra de aposentadoria divergente: {key}")
+            raise SidequestGateV2Error(
+                f"regra de aposentadoria divergente: {key}"
+            )
     profiles = index.get("perfis")
     if not isinstance(profiles, dict):
-        raise SidequestGateV2Error("perfis procedurais ausentes para auditoria")
+        raise SidequestGateV2Error(
+            "perfis procedurais ausentes para auditoria"
+        )
     active = [
         npc_id
         for npc_id, meta in profiles.items()
@@ -63,8 +70,11 @@ def _retirement_contract(index: dict[str, Any]) -> None:
     ]
     if active:
         raise SidequestGateV2Error(
-            "perfil procedural ainda ativo apos Task 31: " + ", ".join(sorted(active))
+            "perfil procedural ainda ativo apos Task 31: "
+            + ", ".join(sorted(active))
         )
+    # Task32: valida somente o roteador compacto já carregado; não abre gates.
+    sidequests_canonicas._router(index)
 
 
 def encounter_event(
@@ -74,7 +84,7 @@ def encounter_event(
     now=None,
     encounter_id: str | None = None,
 ) -> dict[str, Any]:
-    """Repo Task31: resolve sem gate. Fixture legado: preserva comportamento antigo."""
+    """Produção: resolve + roteia opacos. Fixture legado: motor histórico."""
     try:
         index = oportunidades.load_index(repo)
     except oportunidades.OpportunityError as exc:
@@ -91,7 +101,15 @@ def encounter_event(
     try:
         _retirement_contract(index)
         resolution = integration.resolve_encounter_npc(repo, npc_id, index)
-    except (oportunidades.OpportunityError, SidequestGateV2Error) as exc:
+        refs = sidequests_canonicas.route_for_npc(
+            index,
+            str(resolution["npc_id"]),
+        )
+    except (
+        oportunidades.OpportunityError,
+        SidequestGateV2Error,
+        sidequests_canonicas.CanonicalSidequestError,
+    ) as exc:
         raise integration.IntegrationError(str(exc)) from exc
 
     result: dict[str, Any] = {
@@ -102,10 +120,18 @@ def encounter_event(
         "sidequest": {
             "gate_procedural": "retirado",
             "nova_origem": NEW_SOURCE,
-            "regra": "encontro com NPC nao gera sidequest; aguarde fonte canonica explicita",
+            "engine": sidequests_canonicas.ENGINE_ID,
+            "regra": (
+                "encontro nao gera sidequest procedural; somente fonte canonica "
+                "explicita pode ficar elegivel"
+            ),
         },
         "fontes_lidas": list(resolution.get("fontes_lidas") or []),
     }
+    # Campo interno consumido pela camada de cena. Contém apenas id/path/prioridade
+    # opacos e nunca o gate ou o detalhe da missão.
+    if refs:
+        result["_sidequest_canonica_refs"] = refs
     if encounter_id is not None:
         result["encontro_id"] = encounter_id
     if resolution.get("recebido") != resolution.get("npc_id"):
@@ -119,39 +145,68 @@ def check(repo: Path) -> dict[str, Any]:
         index = oportunidades.load_index(repo)
         _retirement_contract(index)
         state = oportunidades.load_state(repo, index)
-    except (oportunidades.OpportunityError, SidequestGateV2Error) as exc:
+        canonical = sidequests_canonicas.check(repo)
+    except (
+        oportunidades.OpportunityError,
+        SidequestGateV2Error,
+        sidequests_canonicas.CanonicalSidequestError,
+    ) as exc:
         return {"ok": False, "erros": [str(exc)]}
 
     errors: list[str] = []
     if state.get("pendencias_avaliacao"):
         errors.append("pendencia procedural anterior ainda esta ativa")
     legacy = state.get("legado_procedural")
-    if not isinstance(legacy, dict) or legacy.get("estatuto") != "somente_auditoria_nao_operacional":
-        errors.append("estado nao preserva auditoria do gate procedural aposentado")
+    if (
+        not isinstance(legacy, dict)
+        or legacy.get("estatuto") != "somente_auditoria_nao_operacional"
+    ):
+        errors.append(
+            "estado nao preserva auditoria do gate procedural aposentado"
+        )
+    errors.extend(
+        f"sidequest_canonica: {item}"
+        for item in canonical.get("erros") or []
+    )
     return {
         "ok": not errors,
         "estatuto": RETIREMENT,
         "nova_origem_sidequests": NEW_SOURCE,
         "perfis_procedurais_ativos": 0,
         "pendencias_ativas": len(state.get("pendencias_avaliacao") or {}),
+        "sidequests_canonicas": {
+            "engine": sidequests_canonicas.ENGINE_ID,
+            "quest_givers": canonical.get("quest_givers", 0),
+            "quests_roteadas": canonical.get("quests_roteadas", 0),
+        },
         "baralho_legado": {
             "ciclo": state["gate"]["ciclo"],
             "sorteios": state["gate"]["sorteios"],
             "restantes": len(state["gate"]["restantes"]),
         },
         "erros": errors,
-        "fontes_lidas": [oportunidades.INDEX.as_posix(), oportunidades.STATE.as_posix()],
+        "fontes_lidas": [
+            oportunidades.INDEX.as_posix(),
+            oportunidades.STATE.as_posix(),
+        ],
     }
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument(
+        "--repo",
+        type=Path,
+        default=Path(__file__).resolve().parents[1],
+    )
     sub = parser.add_subparsers(dest="cmd", required=True)
-    encounter_parser = sub.add_parser("encontro", help="confirma que encontro nao gera sidequest procedural")
+    encounter_parser = sub.add_parser(
+        "encontro",
+        help="confirma aposentadoria e roteia somente refs canônicas opacas",
+    )
     encounter_parser.add_argument("npc")
     encounter_parser.add_argument("--encontro-id")
-    sub.add_parser("check", help="valida aposentadoria do gate procedural")
+    sub.add_parser("check", help="valida aposentadoria e engine canônico")
     return parser
 
 
@@ -163,11 +218,22 @@ def main(argv: list[str] | None = None) -> int:
             result = check(repo)
             code = 0 if result["ok"] else 1
         else:
-            result = encounter_event(repo, args.npc, encounter_id=args.encontro_id)
+            result = encounter_event(
+                repo,
+                args.npc,
+                encounter_id=args.encontro_id,
+            )
             code = 0
-        print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
+        print(
+            yaml.safe_dump(result, allow_unicode=True, sort_keys=False),
+            end="",
+        )
         return code
-    except (SidequestGateV2Error, integration.IntegrationError) as exc:
+    except (
+        SidequestGateV2Error,
+        integration.IntegrationError,
+        sidequests_canonicas.CanonicalSidequestError,
+    ) as exc:
         print(f"ERRO: {exc}")
         return 2
 

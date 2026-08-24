@@ -2,7 +2,7 @@
 
 ## 1. Fonte de verdade
 
-O repo é a memória canônica; não dependa só da conversa. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
+O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
 `runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
@@ -23,13 +23,13 @@ Detalhes: `docs/agente/fundamentos.md`.
 
 Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
-Runtime, handoffs, índices e consultas são projeções, não cânone independente. Pendências têm precedência apenas temporal até consolidação.
+Runtime/handoffs/índices/consultas são projeções. Pendências prevalecem só até consolidação.
 
 ## 4. Economia de contexto — obrigatória
 
 **Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação, não a experiência literária.
 
-Antes de reler, veja se o contexto basta. **Se for suficiente, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
+**Se for suficiente, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -37,13 +37,13 @@ Antes de reler, veja se o contexto basta. **Se for suficiente, pare.** Prefira p
 - **L3:** `buscar ... --apos L2 --motivo ...` — 8 KiB; 2–5 lacunas: `contexto-buscar-muitos.py`;
 - **L4:** histórico estruturado — 12 KiB, sem transcrição;
 - **L4T:** transcrição, somente após L4 — 16 KiB;
-- **L5:** fonte oficial externa/autorizada se a memória interna não resolver.
+- **L5:** fonte externa/autorizada se a memória interna não resolver.
 
 Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nunca abrir `transcricao.md` só para retomar sessão.**
 
 ## 5. Roteamento por tarefa
 
-Leia no máximo o documento especializado necessário:
+Leia só o documento especializado necessário:
 
 - autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
@@ -52,7 +52,7 @@ Leia no máximo o documento especializado necessário:
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`;
-- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`;
+- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -74,7 +74,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only. Após narração aceita, `cronica concluir` revalida/confirma se reativa e registra. Ticket neutro não fabrica confirmação; cena abandonada não conclui; preparação obsoleta exige novo preparo.
 
-Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` ficam para diagnóstico/reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json` nem intermediário.
+Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json` nem intermediário.
 
 **Direção canônica é destino, nunca ação.** Se a cena apontar direção, usar `endpoints.py direcao <id>`; direção não escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
@@ -99,7 +99,7 @@ Durante avanço comum:
 
 Rolagem comum conhecida: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'` (vantagem/desvantagem ou abordagem só quando pertinente); não redescobrir assinatura via `--help`.
 
-Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
+Rodapé é derivado. **medição é pós-hoc**: nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura: `contexto.py npc|local` só por lacuna; rolagens independentes: `poetry run dados-lote`.
 
 Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além do materialmente necessário. Não decompor em primitivas sem reparo real.
 
@@ -107,9 +107,9 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 - Cena reativa segue `cronica preparar`/`cronica concluir`.
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
-- **Task 31:** encontro não gera side quest; perfis procedurais ficam inativos; nova side quest exige fonte canônica explícita.
-- `oportunidades.py` preserva lifecycle de missão; `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base.
-- Checkpoint não sorteia side quest nem loot.
+- **Task 31:** encontro não sorteia side quest; perfis procedurais ficam inativos.
+- **Task 32:** só NPC explícito fornece refs; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona. Pedido narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle.
+- `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 

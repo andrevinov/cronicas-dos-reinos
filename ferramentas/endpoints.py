@@ -2,17 +2,9 @@
 """Endpoints determinísticos com contratos operacionais endurecidos.
 
 O contrato original da Task 10 está preservado em ``_endpoints_core.py``. Esta
-camada acrescenta a qualidade da abordagem somente ao campo ``modificadores`` já
-reservado, sem novo endpoint, nova leitura ou mudança de schema.
-
-No caminho raro em que a barreira do Mundo Vivo está bloqueada, o endpoint de
-pendências também projeta candidatos autônomos de pressão de Ravens Bluff e,
-quando houver, o núcleo do próximo evento canônico datado da Parte 1. Tudo
-permanece read-only: a projeção informa o que está devido; a materialização exige
-transação de mundo e checkpoint normal.
-
-A Task 25 endurece somente a borda CLI: representações inequívocas de data são
-normalizadas para Harptos canônico antes de chegar às mesmas funções existentes.
+camada acrescenta qualidade de abordagem, projeções raras de Mundo Vivo e, desde
+a Task 32, a sidequest canônica já selecionada pela preparação de cena. Nenhuma
+dessas projeções adiciona leitura ao endpoint: só compacta dados já calculados.
 """
 from __future__ import annotations
 
@@ -84,6 +76,52 @@ def _canonical_module(repo: Path):
         return module
 
 
+def _project_canonical_sidequest(
+    result: dict[str, Any],
+    preview: dict[str, Any],
+) -> None:
+    selected = preview.get("sidequest_canonica")
+    if not isinstance(selected, dict):
+        return
+    projection = selected.get("oferta")
+    if not isinstance(projection, dict):
+        return
+    offer = projection.get("oferta")
+    if not isinstance(offer, dict):
+        offer = {}
+
+    quest_id = selected.get("id")
+    npc_id = selected.get("npc_id")
+    result["ids"]["sidequest_canonica"] = quest_id
+    if "sidequest_canonica_task32" not in result["filtros"]:
+        result["filtros"].append("sidequest_canonica_task32")
+    result["disponibilidade"]["sidequest_canonica"] = {
+        "id": quest_id,
+        "npc_id": npc_id,
+        "tipo": projection.get("tipo"),
+        "titulo": projection.get("titulo"),
+        "objetivo": projection.get("objetivo"),
+        "premissa": offer.get("premissa"),
+        "pedido": offer.get("pedido"),
+        "guardrails": list(offer.get("guardrails") or [])[:3],
+        "recusa_permitida": True,
+    }
+    result["gates"].append(
+        {
+            "tipo": "sidequest_canonica",
+            "resultado": "disponivel",
+            "id": quest_id,
+            "npc_id": npc_id,
+            "modo": selected.get("modo"),
+            "regra": "disponível não é oferecida nem aceita; Ren controla a resposta",
+        }
+    )
+    result["proximo_passo"]["sidequest_canonica"] = (
+        "se o NPC realmente formular este pedido na narração aceita, depois de cronica concluir "
+        "registre a oferta com sidequests_canonicas.py oferecer <id> --npc <npc>; não autoaceite"
+    )
+
+
 def project_scene(
     preview: dict[str, Any],
     *,
@@ -98,9 +136,12 @@ def project_scene(
         adequacao=approach_adequacao,
     )
     if int(quality["bonus"]) > 0:
-        result["modificadores"].append(qualidade_abordagem.compact_modifier(quality))
+        result["modificadores"].append(
+            qualidade_abordagem.compact_modifier(quality)
+        )
         if "qualidade_abordagem_pre_rolagem" not in result["filtros"]:
             result["filtros"].append("qualidade_abordagem_pre_rolagem")
+    _project_canonical_sidequest(result, preview)
     _base.validate_endpoint(result)
     return result
 
@@ -143,11 +184,17 @@ def project_pending(result: dict[str, Any]) -> dict[str, Any]:
     projected = _base.project_pending(result)
 
     canonical = result.get("eventos_canonicos")
-    events = list(canonical.get("eventos") or []) if isinstance(canonical, dict) else []
+    events = (
+        list(canonical.get("eventos") or [])
+        if isinstance(canonical, dict)
+        else []
+    )
     if events:
         visible_events = events[:MAX_CANONICAL_EVENTS]
         projected["ids"]["eventos_canonicos"] = [
-            item.get("evento") for item in visible_events if item.get("evento")
+            item.get("evento")
+            for item in visible_events
+            if item.get("evento")
         ]
         for item in visible_events:
             projected["gates"].append(
@@ -160,9 +207,14 @@ def project_pending(result: dict[str, Any]) -> dict[str, Any]:
                     "data": item.get("data"),
                     "janela": item.get("janela"),
                     "atraso_dias": item.get("atraso_dias"),
-                    "nucleo_obrigatorio": list(item.get("nucleo_obrigatorio") or [])[:3],
+                    "nucleo_obrigatorio": list(
+                        item.get("nucleo_obrigatorio") or []
+                    )[:3],
                     "guardrails": list(item.get("guardrails") or [])[:3],
-                    "regra": "núcleo obrigatório; forma e resultado flexíveis; nunca escrever decisão de Ren",
+                    "regra": (
+                        "núcleo obrigatório; forma e resultado flexíveis; "
+                        "nunca escrever decisão de Ren"
+                    ),
                 }
             )
         projected["proximo_passo"]["evento_canonico"] = (
@@ -180,7 +232,9 @@ def project_pending(result: dict[str, Any]) -> dict[str, Any]:
     if candidates:
         visible = candidates[:MAX_PRESSURE_CANDIDATES]
         projected["ids"]["pressao_ravens_bluff"] = [
-            item.get("pendencia") for item in visible if item.get("pendencia")
+            item.get("pendencia")
+            for item in visible
+            if item.get("pendencia")
         ]
         for item in visible:
             projected["gates"].append(
@@ -195,7 +249,10 @@ def project_pending(result: dict[str, Any]) -> dict[str, Any]:
                     "de": item.get("de"),
                     "para": item.get("para"),
                     "titulo_destino": item.get("titulo_destino"),
-                    "regra": "ausência de iniciativa de Ren não bloqueia; no-op exige bloqueio canônico concreto",
+                    "regra": (
+                        "ausência de iniciativa de Ren não bloqueia; "
+                        "no-op exige bloqueio canônico concreto"
+                    ),
                 }
             )
         projected["proximo_passo"]["pressao_ravens_bluff"] = (
@@ -273,7 +330,10 @@ def main(argv: list[str] | None = None) -> int:
                 tier=args.tier,
                 danger=args.periculosidade,
                 context_tags=args.contexto_tag,
-                now=_base._instant_arg(_normalized_date(args.data), args.hora),
+                now=_base._instant_arg(
+                    _normalized_date(args.data),
+                    args.hora,
+                ),
                 approach_preparacao=args.abordagem_preparacao,
                 approach_informacao=args.abordagem_informacao,
                 approach_adequacao=args.abordagem_adequacao,
@@ -290,7 +350,10 @@ def main(argv: list[str] | None = None) -> int:
             result = _base.direction(repo, args.direcao)
         else:
             result = _base.sidequest(repo, args.id, _base._stdin())
-        print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
+        print(
+            yaml.safe_dump(result, allow_unicode=True, sort_keys=False),
+            end="",
+        )
         return 0
     except (
         pressao_ravens_bluff.PressureError,
