@@ -250,6 +250,8 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
         if outcome not in VALID_OUTCOMES:
             raise TournamentError("resultado de rodada invalido")
         _parts(item.get("concluida_em"), "rodada.concluida_em")
+        _text(item.get("fonte"), "rodada.fonte", MAX_SOURCE_CHARS)
+        _text(item.get("evidencia"), "rodada.evidencia", MAX_EVIDENCE_CHARS)
         if pos < 3 and outcome in LOSS_OUTCOMES:
             losses += 1
     if data.get("derrotas_classificatorias") != losses:
@@ -261,6 +263,12 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
     if prize.get("estado") not in VALID_PRIZES:
         raise TournamentError("estado de premio invalido")
     _parts(prize.get("entregue_em"), "premio.entregue_em")
+    if prize["estado"].endswith("_entregue"):
+        _text(prize.get("fonte"), "premio.fonte", MAX_SOURCE_CHARS)
+        _text(prize.get("evidencia"), "premio.evidencia", MAX_EVIDENCE_CHARS)
+    elif prize.get("fonte") is not None or prize.get("evidencia") is not None:
+        raise TournamentError("premio ainda nao entregue nao pode ter proveniencia de entrega")
+
     history = _list(data.get("historico_recente"), "historico_recente")
     if len(history) > MAX_HISTORY:
         raise TournamentError("historico do torneio excede teto")
@@ -425,6 +433,24 @@ def respond(
     return {"ok": True, "alterou": True, "resultado": "ativo", "proxima_rodada": state["agenda"][0]}
 
 
+def withdraw(repo: Path, *, source: str, evidence: str) -> dict[str, Any]:
+    index = load_index(repo)
+    state = load_state(repo, index)
+    source, evidence = _source_evidence(repo, source, evidence)
+    if state["estado"] == "abandonado":
+        return {"ok": True, "alterou": False, "resultado": "ja_abandonado"}
+    if state["estado"] != "ativo":
+        raise TournamentError("retirada so pode ser registrada enquanto o torneio esta ativo")
+    now = mundo.load_canonical_time(repo)[0]
+    state["estado"] = "abandonado"
+    _history(state, "retirada", now, "Ren decidiu retirar-se do circuito; nenhuma rodada futura foi presumida.")
+    # Proveniencia fica no historico em forma compacta sem criar outro ledger.
+    state["historico_recente"][-1]["fonte"] = source
+    state["historico_recente"][-1]["evidencia"] = evidence
+    _atomic(repo / STATE, state)
+    return {"ok": True, "alterou": True, "resultado": "abandonado"}
+
+
 def _completed_ids(state: dict[str, Any]) -> set[str]:
     return {item["id"] for item in state["rodadas_concluidas"]}
 
@@ -575,31 +601,71 @@ def round_view(repo: Path, *, now: mundo.WorldInstant | None = None) -> dict[str
     return result
 
 
-def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> dict[str, Any]:
+def _completed_match(
+    state: dict[str, Any],
+    round_id: str,
+    outcome: str,
+    source: str,
+    evidence: str,
+) -> dict[str, Any] | None:
+    existing = next((item for item in state["rodadas_concluidas"] if item.get("id") == round_id), None)
+    if existing is None:
+        return None
+    if (
+        existing.get("resultado") == outcome
+        and existing.get("fonte") == source
+        and existing.get("evidencia") == evidence
+    ):
+        return existing
+    raise TournamentError(f"rodada {round_id} ja foi concluida com outro resultado/proveniencia")
+
+
+def conclude_round(
+    repo: Path,
+    round_id: str,
+    outcome: str,
+    *,
+    source: str,
+    evidence: str,
+) -> dict[str, Any]:
     if outcome not in VALID_OUTCOMES:
         raise TournamentError("resultado deve ser vitoria|derrota|abandono|ausencia")
     index = load_index(repo)
     state = load_state(repo, index)
+    source, evidence = _source_evidence(repo, source, evidence)
+    existing = _completed_match(state, round_id, outcome, source, evidence)
+    if existing is not None:
+        return {
+            "ok": True,
+            "alterou": False,
+            "rodada": round_id,
+            "resultado": outcome,
+            "estado_torneio": state["estado"],
+            "premio": state["premio"]["estado"],
+            "proxima_rodada": _next_schedule(state) if state["estado"] == "ativo" else None,
+        }
     if state["estado"] != "ativo":
         raise TournamentError("nao ha rodada ativa para concluir")
-    source, evidence = _source_evidence(repo, source, evidence)
+    nxt = _next_schedule(state)
+    if nxt is None or nxt.get("id") != round_id:
+        raise TournamentError("conclusao precisa nomear exatamente a proxima rodada do quadro")
     view = round_view(repo)
     if view["resultado"] == "final_temporariamente_impossivel":
         raise TournamentError("final esta causalmente impossivel; nao conclua com substituto arbitrario")
-    if view["resultado"] != "rodada_devida":
-        raise TournamentError("nenhuma rodada esta devida no instante canonico")
-    rid = view["rodada"]
+    if view["resultado"] != "rodada_devida" or view.get("rodada") != round_id:
+        raise TournamentError("a rodada informada ainda nao esta devida no instante canonico")
+
     now = mundo.load_canonical_time(repo)[0]
     state["rodadas_concluidas"].append(
         {
-            "id": rid,
+            "id": round_id,
             "resultado": outcome,
             "concluida_em": mundo.instant_parts(now),
             "fonte": source,
             "evidencia": evidence,
         }
     )
-    position = [item["id"] for item in index["agenda_relativa"]].index(rid)
+    position = [item["id"] for item in index["agenda_relativa"]].index(round_id)
     if position < 3 and outcome in LOSS_OUTCOMES:
         state["derrotas_classificatorias"] += 1
 
@@ -608,7 +674,7 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
     elif position < 3:
         if state["derrotas_classificatorias"] >= 2:
             state["estado"] = "eliminado"
-    elif rid == "semifinal":
+    elif round_id == "semifinal":
         if outcome == "vitoria":
             state["qualificado_final"] = True
             state["premio"]["estado"] = "parcial_disponivel"
@@ -617,7 +683,7 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
             state["premio"]["estado"] = "parcial_disponivel"
         else:
             state["estado"] = "eliminado"
-    elif rid == "final":
+    elif round_id == "final":
         if not state["qualificado_final"]:
             raise TournamentError("estado incoerente: final sem qualificacao")
         if outcome == "vitoria":
@@ -629,11 +695,12 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
                 state["premio"]["estado"] = "parcial_disponivel"
         else:
             state["estado"] = "eliminado"
-    _history(state, "rodada_concluida", now, f"{rid}: {outcome}; nenhum resultado adicional foi inferido.")
+    _history(state, "rodada_concluida", now, f"{round_id}: {outcome}; nenhum resultado adicional foi inferido.")
     _atomic(repo / STATE, state)
     return {
         "ok": True,
-        "rodada": rid,
+        "alterou": True,
+        "rodada": round_id,
         "resultado": outcome,
         "estado_torneio": state["estado"],
         "premio": state["premio"]["estado"],
@@ -648,7 +715,13 @@ def prize_view(repo: Path) -> dict[str, Any]:
     if status == "indisponivel":
         return {"resultado": "indisponivel", "fontes_lidas": [STATE.as_posix()]}
     if status in {"parcial_entregue", "integral_entregue"}:
-        return {"resultado": "ja_entregue", "grau": status.split("_")[0], "fontes_lidas": [STATE.as_posix()]}
+        return {
+            "resultado": "ja_entregue",
+            "grau": status.split("_")[0],
+            "fonte": state["premio"].get("fonte"),
+            "evidencia": state["premio"].get("evidencia"),
+            "fontes_lidas": [STATE.as_posix()],
+        }
     fragment = index["premio"]["fragmento"]
     data = _map(_load(repo / fragment), fragment)
     if data.get("schema_premio_torneio_clandestino") != 1:
@@ -668,13 +741,24 @@ def deliver_prize(repo: Path, *, source: str, evidence: str) -> dict[str, Any]:
     state = load_state(repo, index)
     status = state["premio"]["estado"]
     if status in {"parcial_entregue", "integral_entregue"}:
-        return {"ok": True, "alterou": False, "resultado": "ja_entregue"}
+        return {
+            "ok": True,
+            "alterou": False,
+            "resultado": "ja_entregue",
+            "fonte": state["premio"].get("fonte"),
+            "evidencia": state["premio"].get("evidencia"),
+        }
     if status not in {"parcial_disponivel", "integral_disponivel"}:
         raise TournamentError("premio ainda nao esta disponivel")
     source, evidence = _source_evidence(repo, source, evidence)
     now = mundo.load_canonical_time(repo)[0]
     tier = "integral" if status == "integral_disponivel" else "parcial"
-    state["premio"] = {"estado": f"{tier}_entregue", "entregue_em": mundo.instant_parts(now)}
+    state["premio"] = {
+        "estado": f"{tier}_entregue",
+        "entregue_em": mundo.instant_parts(now),
+        "fonte": source,
+        "evidencia": evidence,
+    }
     _history(state, "premio_entregue", now, f"Premio {tier} foi efetivamente entregue; conhecimento ainda segue pipeline normal.")
     _atomic(repo / STATE, state)
     return {
@@ -773,8 +857,12 @@ def build_parser() -> argparse.ArgumentParser:
     response.add_argument("--evidencia", required=True)
     response.add_argument("--persona", choices=sorted(VALID_PERSONAS))
     response.add_argument("--nome")
+    withdraw_cmd = sub.add_parser("retirar")
+    withdraw_cmd.add_argument("--fonte", required=True)
+    withdraw_cmd.add_argument("--evidencia", required=True)
     sub.add_parser("rodada")
     done = sub.add_parser("concluir")
+    done.add_argument("rodada")
     done.add_argument("resultado", choices=sorted(VALID_OUTCOMES))
     done.add_argument("--fonte", required=True)
     done.add_argument("--evidencia", required=True)
@@ -805,10 +893,18 @@ def main(argv: list[str] | None = None) -> int:
                 persona=args.persona,
                 name=args.nome,
             )
+        elif args.cmd == "retirar":
+            result = withdraw(repo, source=args.fonte, evidence=args.evidencia)
         elif args.cmd == "rodada":
             result = round_view(repo)
         elif args.cmd == "concluir":
-            result = conclude_round(repo, args.resultado, source=args.fonte, evidence=args.evidencia)
+            result = conclude_round(
+                repo,
+                args.rodada,
+                args.resultado,
+                source=args.fonte,
+                evidence=args.evidencia,
+            )
         elif args.cmd == "premio":
             result = prize_view(repo)
         elif args.cmd == "entregar-premio":
