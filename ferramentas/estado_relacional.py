@@ -25,6 +25,10 @@ MAX_VALUE = 10
 MIN_VALUE = 0
 MAX_FRAGMENT_BYTES = 12 * 1024
 MAX_INDEX_BYTES = 24 * 1024
+RELATIONAL_PATHS = {
+    "medidores.vinculo": "afinidade",
+    "medidores.confianca": "confianca",
+}
 
 
 class RelationshipStateError(ValueError):
@@ -87,6 +91,41 @@ def project(meters: Any) -> dict[str, Any]:
         "confianca_faixa": _band(trust),
         "risco_percebido": normalized["risco_percebido"],
     }
+
+
+def is_relationship_delta(delta: Any) -> bool:
+    return (
+        isinstance(delta, dict)
+        and isinstance(delta.get("alvo"), str)
+        and str(delta["alvo"]).startswith("npc:")
+        and delta.get("caminho") in RELATIONAL_PATHS
+    )
+
+
+def validate_relationship_delta(delta: Any) -> dict[str, Any]:
+    """Exige mudança incremental e evidência canônica nos dois eixos centrais.
+
+    A validação estrutural genérica do delta continua em ``transacoes``. Aqui são
+    congeladas apenas as restrições relacionais adicionais.
+    """
+    if not is_relationship_delta(delta):
+        raise RelationshipStateError("delta não aponta eixo relacional v1")
+    axis = RELATIONAL_PATHS[str(delta["caminho"])]
+    if delta.get("op") != "inc" or delta.get("valor") not in {-1, 1}:
+        raise RelationshipStateError(
+            f"mudança de {axis} deve usar op=inc e valor +1 ou -1; não use set nem salto múltiplo"
+        )
+    if delta.get("visibilidade", "operacional") != "operacional":
+        raise RelationshipStateError("estado relacional de NPC é operacional, não delta reservado")
+    fact = delta.get("fato_canonico")
+    source = delta.get("fonte")
+    if not isinstance(fact, str) or len(fact.strip()) < 20:
+        raise RelationshipStateError(
+            f"mudança de {axis} exige fato_canonico concreto (mínimo 20 caracteres)"
+        )
+    if not isinstance(source, str) or not source.strip():
+        raise RelationshipStateError(f"mudança de {axis} exige fonte canônica rastreável")
+    return delta
 
 
 def _indices(repo: Path) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -184,7 +223,11 @@ def check(repo: Path) -> list[str]:
             continue
         if path.stat().st_size > MAX_FRAGMENT_BYTES:
             errors.append(f"{entity_id}: fragmento excede {MAX_FRAGMENT_BYTES} bytes")
-        doc = _load_yaml(path)
+        try:
+            doc = _load_yaml(path)
+        except RelationshipStateError as exc:
+            errors.append(str(exc))
+            continue
         payload = doc.get("npc") if isinstance(doc, dict) else None
         if not isinstance(payload, dict):
             errors.append(f"{entity_id}: payload npc inválido")
