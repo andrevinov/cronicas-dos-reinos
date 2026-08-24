@@ -1,0 +1,12 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-9e23a23eb1f5
+npc_id: dessa_wren
+detalhe: narrador/sidequests-canonicas/segredos/qsc-9e23a23eb1f5.yaml
+condicoes:
+  locais:
+  - jack_mooney_sons_circus
+  relacao:
+    afinidade_min: 5
+    confianca_min: 5
+    risco_max: 5

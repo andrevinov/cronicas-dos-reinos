@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-cbb5d266675e
+npc_id: dessa_wren
+tipo: trabalho_profissional
+titulo: Troca de Roupa em Quarenta Batidas
+objetivo: Ajudar Dessa a testar e executar uma troca de figurino ou retirada de bastidor que exige coordenação física
+  e tempo exato.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: false
+consequencia_sem_ren: Dessa reduz a ambição do número ou usa uma transição mais lenta e segura.
+oferta:
+  recusa_permitida: true
+  premissa: Uma montagem nova funciona no papel, mas Dessa precisa de alguém que entenda o corpo em movimento e
+    obedeça marcação sem improvisar.
+  pedido: Ela pede uma sessão curta de teste e, se funcionar, um serviço pago durante a apresentação.
+  guardrails:
+  - O teste não obriga Kage a se apresentar.
+  - Segurança de bastidor vence efeito visual.
+  - Dessa mantém autoridade técnica sobre o figurino.
+efeitos: []

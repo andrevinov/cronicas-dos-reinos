@@ -1,0 +1,13 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-6cbe9f539a11
+npc_id: brunna_torkel
+detalhe: narrador/sidequests-canonicas/segredos/qsc-6cbe9f539a11.yaml
+condicoes:
+  relacao:
+    confianca_min: 5
+    risco_max: 6
+  conhecimento:
+  - arquivo: personagens/jogador/conhecimento/topicos/06-sobre-ravens-bluff.md
+    termo: ruínas antigas sob a cidade
+    presente: true

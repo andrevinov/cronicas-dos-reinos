@@ -1,0 +1,24 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-6cbe9f539a11
+npc_id: brunna_torkel
+tipo: busca
+titulo: O Marcador sem Topógrafo
+objetivo: Encontrar um topógrafo ou assistente que deixou equipamento de marcação numa rota e não voltou no horário
+  combinado.
+janela:
+  tipo: temporal
+  duracao_horas: 20
+pode_reabrir: false
+consequencia_sem_ren: Brunna chama uma equipe maior, perde discrição e fecha temporariamente o acesso.
+oferta:
+  recusa_permitida: true
+  premissa: Quando Brunna confiar mais em Ren, ela admite que uma ausência ligada ao ofício preocupa mais do que
+    gostaria de demonstrar.
+  pedido: Ela pede que Ren siga marcadores técnicos, confirme a situação e priorize trazer a pessoa de volta se
+    houver escolha.
+  guardrails:
+  - A ausência não prova ataque.
+  - O topógrafo pode ter saído por decisão própria.
+  - Busca prioriza pessoa sobre descoberta subterrânea.
+efeitos: []

@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-afea4fb2e892
+npc_id: brunna_torkel
+tipo: exploracao
+titulo: Quatro Palmos Fora da Planta
+objetivo: Verificar em campo uma discrepância de medida em acesso subterrâneo sem presumir o que existe além dela.
+janela:
+  tipo: enquanto_condicao
+  condicao: o acesso medido continuar utilizável
+pode_reabrir: false
+consequencia_sem_ren: Brunna arquiva a discrepância ou manda outra equipe quando tiver dinheiro e gente suficiente.
+oferta:
+  recusa_permitida: true
+  premissa: Brunna encontrou quatro palmos de erro onde erro nenhum deveria sobreviver a duas medições diferentes.
+  pedido: Ela oferece pagamento técnico para que Ren confira um trecho acessível, marque referências e não avance
+    além do que conseguir sair com segurança.
+  guardrails:
+  - Discrepância não garante ruína, tesouro ou passagem secreta.
+  - Brunna quer medidas, não aventura por aventura.
+  - Ren decide até onde considera seguro explorar.
+efeitos: []

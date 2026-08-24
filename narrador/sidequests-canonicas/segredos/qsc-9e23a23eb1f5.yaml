@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-9e23a23eb1f5
+npc_id: dessa_wren
+tipo: aquisicao
+titulo: O Azul que Some à Luz de Lamparina
+objetivo: Conseguir um material de figurino específico antes que uma encomenda importante precise ser redesenhada.
+janela:
+  tipo: temporal
+  duracao_horas: 30
+pode_reabrir: false
+consequencia_sem_ren: Dessa redesenha o figurino, perde horas e simplifica a apresentação.
+oferta:
+  recusa_permitida: true
+  premissa: Dessa descobriu tarde demais que o substituto disponível muda de cor sob a iluminação do circo e arruína
+    um efeito inteiro.
+  pedido: Ela oferece moeda e especificação precisa; Ren pode comprar, trocar ou localizar um artesão que tenha
+    o material correto.
+  guardrails:
+  - O material é mundane e não vira item mágico por design.
+  - Ren escolhe o método de obtenção.
+  - Dessa aceita substituição se o efeito visual for preservado.
+efeitos: []
