@@ -36,6 +36,7 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
     def setUp(self):
         self.index = oportunidades.load_index(ROOT)
         self.router = self.index["sidequests_canonicas"]
+        self.mapping, self.route_sources = canonical.catalog_refs(ROOT, self.index)
 
     def _gate_and_detail(self, npc_id, raw_ref):
         ref = {**raw_ref, "npc_id": npc_id}
@@ -44,20 +45,21 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
         return ref, gate, detail, gate_source, detail_source
 
     def test_catalogo_tem_doze_quest_givers_e_trinta_e_seis_quests(self):
-        mapping = self.router["por_npc"]
-        self.assertEqual(set(mapping), RECURRING)
-        self.assertTrue(all(len(refs) == 3 for refs in mapping.values()))
-        self.assertEqual(sum(map(len, mapping.values())), 36)
+        self.assertEqual(set(self.mapping), RECURRING)
+        self.assertTrue(all(len(refs) == 3 for refs in self.mapping.values()))
+        self.assertEqual(sum(map(len, self.mapping.values())), 36)
+        self.assertEqual(len(self.route_sources), 12)
 
         checked = canonical.check(ROOT)
         self.assertTrue(checked["ok"], checked["erros"])
         self.assertEqual(checked["quest_givers"], 12)
         self.assertEqual(checked["quests_roteadas"], 36)
         self.assertEqual(checked["detalhes_expostos"], 0)
+        self.assertEqual(checked["roteadores_fragmentados"], 12)
 
     def test_cada_npc_tem_tres_tipos_e_catalogo_cobre_todo_lifecycle(self):
         global_types = set()
-        for npc_id, refs in self.router["por_npc"].items():
+        for npc_id, refs in self.mapping.items():
             local_types = set()
             for raw_ref in refs:
                 _, _, detail, _, _ = self._gate_and_detail(npc_id, raw_ref)
@@ -67,14 +69,30 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
                 self.assertEqual(len(local_types), 3)
         self.assertEqual(global_types, oportunidades.VALID_TYPES)
 
-    def test_roteador_e_gates_nao_expoem_spoilers(self):
+    def test_indice_quente_e_roteadores_fragmentados_nao_expoem_spoilers(self):
+        self.assertEqual(self.router["roteamento"], canonical.FRAGMENTED_ROUTING)
+        self.assertNotIn("por_npc", self.router)
         router_text = yaml.safe_dump(self.router, allow_unicode=True, sort_keys=False)
         for forbidden in ("titulo:", "premissa:", "pedido:", "objetivo:", "consequencia_sem_ren:"):
             self.assertNotIn(forbidden, router_text)
 
-        for npc_id, refs in self.router["por_npc"].items():
+        for npc_id, refs in self.mapping.items():
+            route_path = ROOT / canonical._route_path(npc_id)
+            route_doc = yaml.safe_load(route_path.read_text(encoding="utf-8"))
+            self.assertEqual(
+                set(route_doc),
+                {"schema_roteador_sidequests_canonicas", "natureza", "npc_id", "refs"},
+            )
+            self.assertEqual(route_doc["npc_id"], npc_id)
+            self.assertEqual(len(route_doc["refs"]), 3)
+            for raw in route_doc["refs"]:
+                self.assertEqual(set(raw), {"id", "gate", "prioridade"})
+            route_text = route_path.read_text(encoding="utf-8")
+            for forbidden in ("titulo:", "premissa:", "pedido:", "objetivo:"):
+                self.assertNotIn(forbidden, route_text)
+
             for raw_ref in refs:
-                self.assertEqual(set(raw_ref), {"id", "gate", "prioridade"})
+                self.assertEqual(set(raw_ref), {"id", "gate", "prioridade", "npc_id"})
                 ref = {**raw_ref, "npc_id": npc_id}
                 gate, _ = canonical._load_gate(ROOT, ref)
                 self.assertEqual(
@@ -94,7 +112,7 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
 
     def test_exatamente_duas_quests_estao_quentes_por_npc_no_checkpoint_atual(self):
         current, _ = mundo.load_canonical_time(ROOT)
-        for npc_id, refs in self.router["por_npc"].items():
+        for npc_id, refs in self.mapping.items():
             hot = 0
             blockers = []
             for raw_ref in refs:
@@ -118,7 +136,7 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
                 self.assertIn(blockers[0], {"relacao", "data", "conhecimento", "mundo", "identidade"})
 
     def test_hot_e_derivado_sem_booleano_artificial(self):
-        for npc_id, refs in self.router["por_npc"].items():
+        for npc_id, refs in self.mapping.items():
             for raw_ref in refs:
                 self.assertNotIn("hot", raw_ref)
                 ref = {**raw_ref, "npc_id": npc_id}
@@ -127,7 +145,7 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
                 self.assertNotIn("ativo", gate)
 
     def test_todas_as_quests_permitam_recusa_e_fiquem_reservadas(self):
-        for npc_id, refs in self.router["por_npc"].items():
+        for npc_id, refs in self.mapping.items():
             for raw_ref in refs:
                 _, gate, detail, gate_source, detail_source = self._gate_and_detail(npc_id, raw_ref)
                 self.assertTrue(detail["oferta"]["recusa_permitida"])
@@ -142,6 +160,11 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
         self.assertTrue(all(meta["estado"] == "inativo" for meta in profiles.values()))
         self.assertFalse(self.index["regras"]["gate_procedural_operacional"])
         self.assertEqual(self.index["gate"]["estatuto"], "legado_congelado_nao_operacional")
+
+    def test_npc_fora_do_catalogo_nao_abre_roteador_task33(self):
+        refs, sources = canonical.route_for_npc_with_sources(ROOT, self.index, "sorn_kel")
+        self.assertEqual(refs, [])
+        self.assertEqual(sources, [])
 
 
 class SecretNpcQuestCatalogBudgetTest(unittest.TestCase):
