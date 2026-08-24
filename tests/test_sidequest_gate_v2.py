@@ -16,6 +16,7 @@ import cena_mundo
 import cena_mundo_v4
 import oportunidades
 import sidequest_gate_v2 as retired
+import sidequests_canonicas
 
 
 class RetiredSidequestGateRepositoryTest(unittest.TestCase):
@@ -79,7 +80,14 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         self.assertEqual(result["resultado"], "interacao_normal")
         self.assertEqual(result["motivo"], "gate_procedural_retirado")
         self.assertEqual(result["sidequest"]["nova_origem"], "canonica_explicita")
-        self.assertEqual(result["fontes_lidas"], [oportunidades.INDEX.as_posix()])
+        self.assertEqual(
+            result["fontes_lidas"],
+            [
+                oportunidades.INDEX.as_posix(),
+                sidequests_canonicas._route_path("maerra_thandrel").as_posix(),
+            ],
+        )
+        self.assertNotIn(oportunidades.STATE.as_posix(), result["fontes_lidas"])
         self.assertEqual(state_path.read_bytes(), before)
 
     def test_alias_ainda_resolve_sem_reativar_gate(self):
