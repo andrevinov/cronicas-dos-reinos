@@ -19,6 +19,8 @@ for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
 
+_BASE_REGISTER = _core.register
+
 
 def condition_id(
     *,
@@ -165,7 +167,7 @@ def register(
             "fontes_lidas": sources,
         }
 
-    return _core.register(
+    return _BASE_REGISTER(
         repo,
         kind=kind,
         subject=subject_n,
