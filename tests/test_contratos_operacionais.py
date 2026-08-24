@@ -107,12 +107,22 @@ class OperationalTicketContractTest(unittest.TestCase):
             cronica.decode_ticket("ticket_id: 0123456789abcdef0123")
         self.assertIn("linha `ticket_id:`", str(caught.exception))
 
+    def test_ticket_id_falha_antes_de_tentar_ler_transacao(self):
+        _, digest = cronica.encode_ticket(self.payload())
+        args = argparse.Namespace(cmd="concluir", ticket=digest, arquivo=None)
+        with mock.patch.object(cronica.turno, "read_transaction") as read_transaction:
+            with self.assertRaises(cronica.CronicaError) as caught:
+                cronica._run_turn(ROOT, args)
+        read_transaction.assert_not_called()
+        self.assertIn("ticket_id", str(caught.exception))
+
     def test_preparacao_explica_ticket_sem_criar_novo_campo(self):
         with mock.patch.object(cronica._pending_gate, "prepare_gate", return_value=None):
             result = cronica.prepare(ROOT, scene_id="s025-ticket-hint")
         discipline = result["contrato_conclusao"]["disciplina"]
         self.assertIn("campo `ticket:` completo", discipline)
         self.assertIn("nunca `ticket_id`", discipline)
+        self.assertIn("Não chamar --help", discipline)
         self.assertNotIn("ticket_uso", result)
         self.assertLessEqual(
             len(yaml.safe_dump(result, allow_unicode=True, sort_keys=False).encode("utf-8")),
@@ -158,6 +168,16 @@ class OperationalBudgetContractTest(unittest.TestCase):
         self.assertEqual(limits["max_estados_novos"], 0)
         self.assertEqual(limits["max_scans_repo"], 0)
         self.assertTrue(all(data["invariantes"].values()))
+
+    def test_roteador_usa_formas_autoritativas_que_ja_funcionam_no_venv(self):
+        text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("poetry run dados ren pericia", text)
+        self.assertIn("poetry run dados-lote", text)
+        self.assertNotIn("poetry run rolar-dados", text)
+        self.assertNotIn("poetry run rolar-lote", text)
+        self.assertIn("ferramentas/fronteira_operacional.py", text)
+        self.assertIn("endpoints.py fronteira", text)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
 
 
 if __name__ == "__main__":
