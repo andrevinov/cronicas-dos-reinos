@@ -1,0 +1,30 @@
+schema_orcamento_estado_relacional: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Generalizar os medidores relacionais já existentes para toda relação atual sem
+  criar armazenamento paralelo nem custo ritualístico no hot path.
+limites:
+  eixos_relacionais_centrais: 2
+  escala_minima: 0
+  escala_maxima: 10
+  variacao_normal_maxima_por_fato: 1
+  max_indice_npcs_bytes: 24576
+  max_fragmento_npc_bytes: 12288
+  max_chamadas_extras_por_turno: 0
+  max_schedulers_novos: 0
+  max_estados_relacionais_paralelos: 0
+invariantes:
+  afinidade_reutiliza_medidores_vinculo: true
+  confianca_reutiliza_medidor_existente: true
+  risco_percebido_permanece_contexto_separado: true
+  prosa_de_relacao_permanece_nuance_canonica: true
+  toda_relacao_atual_tem_estado_relacional: true
+  desconhecido_pode_ser_null: true
+  eixo_conhecido_muda_somente_por_inc_mais_ou_menos_um: true
+  eixo_null_so_inicializa_com_set_explicito: true
+  mutacao_exige_fato_canonico_e_fonte: true
+  fala_ou_rolagem_isolada_nao_muta_estado: true
+  consolidacao_valida_limites_antes_do_stage: true
+  contexto_npc_nao_ganha_leitura_extra: true
+  sem_rng: true
+  sem_scheduler: true
