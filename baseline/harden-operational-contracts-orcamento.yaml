@@ -23,7 +23,8 @@ invariantes:
   data_ambigua_nao_e_adivinhada: true
   contexto_tag_permanece_flag_canonica: true
   tag_e_apenas_alias_de_compatibilidade: true
-  rolar_dados_e_alias_do_mesmo_wrapper_dados: true
-  rolar_lote_e_alias_do_mesmo_wrapper_dados_lote: true
+  dados_e_comando_poetry_autoritativo: true
+  dados_lote_e_comando_poetry_autoritativo: true
+  nenhum_reinstall_do_poetry_e_exigido_para_o_hot_path: true
   fronteira_operacional_reutiliza_endpoint_existente: true
   nenhuma_semantica_de_jogo_nova: true
