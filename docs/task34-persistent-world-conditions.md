@@ -48,7 +48,7 @@ Toda condição pertence a `ravens_bluff`.
 - `locais: []` significa cidade inteira;
 - uma lista de locais restringe a condição àqueles IDs canônicos.
 
-Aliases só são aceitos na borda do comando de registro; o estado persiste IDs resolvidos pelo registro de locais.
+Aliases são resolvidos pelo registro canônico tanto ao registrar quanto quando uma cena chega apenas por tag `local:`. O estado e a projeção usam sempre o mesmo `local_id` canônico; alias nunca cria um escopo paralelo.
 
 ## Tempo sem scheduler
 
@@ -66,7 +66,7 @@ Nenhuma escrita acontece quando o tempo cruza o fim. Não existe wake-up, job, a
 
 Quando uma escrita posterior ocorre, condições cujo fim previsto já passou podem ser compactadas para `historico_recente`. Isso mantém o estado pequeno sem exigir manutenção por turno.
 
-## Causalidade canônica
+## Causalidade canônica e replay-safe
 
 Registrar ou encerrar uma condição exige:
 
@@ -74,6 +74,15 @@ Registrar ou encerrar uma condição exige:
 - evidência textual literal existente nessa fonte.
 
 `narrador/` e `runtime/` são recusados como origem de fato: planejamento reservado e projeção derivada não podem canonizar uma condição sozinhos.
+
+A identidade causal de uma condição é derivada de **fonte + evidência literal**, não do horário em que o comando foi executado. Consequências:
+
+- repetir o mesmo comando enquanto a condição está aberta é idempotente;
+- executar novamente a evidência depois do `fim_previsto` não ressuscita a condição;
+- evidência já movida para o histórico continua consumida;
+- uma recorrência legítima — outra tempestade, outra greve, outro toque de recolher — exige um **novo fato canônico**, portanto nova evidência literal.
+
+A mesma evidência também não pode ser reutilizada para mudar tipo, assunto ou definição da condição.
 
 Exemplo após um fato já narrado/consolidado:
 
@@ -135,14 +144,14 @@ cena reativa
 → presença/sidequest/etc. existentes
 → detectar contexto espacial canônico
    → sem local/tag local: zero leitura Task34
-   → com local: ler condicoes-persistentes.yaml uma vez
+   → com local: resolver ID canônico e ler condicoes-persistentes.yaml uma vez
 → projetar somente condições ativas aplicáveis
 → incluir a fonte no fingerprint transacional
 ```
 
 Assim, se uma condição mudar entre `preparar` e `confirmar`, a preparação fica stale como qualquer outra fonte relevante.
 
-Uma cena somente com NPC não paga essa leitura. Um turno neutro também não toca a camada.
+Uma cena somente com NPC não paga essa leitura. Um turno neutro também não toca a camada. Fixtures/instalações sem o arquivo de estado preservam o fluxo anterior, em vez de interpretar ausência como “nenhuma condição canônica”.
 
 ## Marcadores
 
