@@ -1,0 +1,39 @@
+schema_rodada_torneio_clandestino: 1
+natureza: reservado
+id: final
+ordem: 5
+fase: final
+oponente_slot:
+  tipo: kozakuriano_conhecido
+  resolver_por: narrador/arcos/parte_1/torneio-clandestino/index.yaml#final.candidatos_prioridade
+premissa: >-
+  A última noite revela que o outro lado da chave foi reservado a um artista marcial de Kozakura que já possui
+  relação causal com a campanha. O encontro deve funcionar como luta e reconhecimento, não como exposição de
+  enciclopédia nem confirmação automática de identidade.
+regras_do_combate:
+  letalidade: nao_letal_por_padrao
+  fim: [rendicao, incapacitacao_nao_letal, saida_do_circulo, intervencao_do_arbitro]
+  escala: climax_marcial_justo_para_nivel_9_11
+  ajuste: Definir ficha/estatísticas antes da primeira rolagem e manter os números; o nome do oponente não autoriza dificuldade punitiva.
+rotas_de_ren:
+- lutar e tentar vencer
+- conversar antes ou durante pausas permitidas sem transformar diálogo em vitória automática
+- reconhecer, negar ou ocultar vínculos conforme sua própria decisão
+- retirar-se mesmo na final
+entrada_de_aliado:
+  regra: >-
+    Se o candidato final vier da camada de entradas e ainda estiver latente, a aparição precisa ser canonizada pelo
+    mecanismo de entradas depois que realmente ocorrer. O torneio é gatilho forte possível, não bypass de estado.
+identidade:
+  regra: >-
+    Reconhecimento de técnica pode produzir pista; equivalência entre personas continua na Task 28. Nenhum candidato
+    final recebe conhecimento que suas fontes canônicas não sustentem.
+progressao:
+  regra: >-
+    Se o candidato for Juppongatana, disputar ou até vencer a luta não conta como neutralização durável. Somente um
+    fato posterior que satisfaça a Task 54 pode gerar milestone.
+guardrails:
+- final não garante vitória nem reconciliação
+- candidato final não pode ser ressuscitado ou teleportado para cumprir o quadro
+- se nenhum candidato estiver causalmente disponível, a final precisa ser adaptada antes de avançar, não substituída por desconhecido arbitrário
+- informação do prêmio continua separada do resultado emocional ou relacional do encontro
