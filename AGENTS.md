@@ -82,7 +82,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto. `endpoints.py fronteira` é fallback estrito.
+**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/fronteira_operacional.py --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto. `endpoints.py fronteira` é fallback estrito.
 
 Durante avanço comum:
 
@@ -93,9 +93,9 @@ Durante avanço comum:
 - instante muda com um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - reproduzir `rodape_canonico` verbatim como última linha visível.
 
-Rolagem comum de perícia já conhecida: `poetry run rolar-dados ren pericia <nome> --cd <N> --label '<rótulo>'` (acrescente vantagem/desvantagem ou abordagem apenas quando pertinente); não descobrir a assinatura via `--help`. `dados` continua alias equivalente.
+Rolagem comum de perícia já conhecida: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'` (acrescente vantagem/desvantagem ou abordagem apenas quando pertinente); não descobrir a assinatura via `--help`.
 
-Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura de NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run rolar-lote`.
+Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura de NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
 
 Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além das rolagens/consultas materialmente necessárias. Não decompor em primitivas sem reparo real.
 
@@ -121,7 +121,7 @@ Primitivas equivalentes seguem disponíveis para manutenção: `checkpoint.py ce
 
 ## 8. Regras, dados e segredos
 
-Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir CD/modificadores antes da rolagem; nunca falsificar resultado. Use `poetry run rolar-dados`/`poetry run rolar-lote`.
+Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir CD/modificadores antes da rolagem; nunca falsificar resultado. Use `poetry run dados`/`poetry run dados-lote`.
 
 `narrador/` é reservado. Busca padrão não inclui esse domínio. Deltas reservados não vazam para domínio público; rolagens ocultas e relógios mecânicos permanecem reservados.
 
