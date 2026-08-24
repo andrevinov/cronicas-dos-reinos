@@ -46,7 +46,9 @@ def main(argv: list[str] | None = None) -> int:
         yaml.YAMLError,
     ) as exc:
         print(
-            "ERRO FRONTEIRA — " + str(exc) + "; use `poetry run fronteira --data <data> --hora HH:MM`",
+            "ERRO FRONTEIRA — "
+            + str(exc)
+            + "; use `poetry run python ferramentas/fronteira_operacional.py --data <data> --hora HH:MM`",
             file=sys.stderr,
         )
         return 2
