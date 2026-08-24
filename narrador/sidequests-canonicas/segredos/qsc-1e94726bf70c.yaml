@@ -1,0 +1,22 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-1e94726bf70c
+npc_id: corven_dalm
+tipo: segredo_pessoal
+titulo: O Patrono que Não Devia Ter o Mesmo Selo
+objetivo: Ajudar Corven a testar uma incoerência entre duas ordens recebidas sem presumir que a falsificação vem
+  de Shizune.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: false
+consequencia_sem_ren: Corven escolhe um lado sem confirmação externa e fecha a conversa sobre seu patrono.
+oferta:
+  recusa_permitida: true
+  premissa: Depois de confiar um pouco mais em Kage, Corven admite ter visto uma diferença documental que o coloca
+    entre obedecer e denunciar um patrono.
+  pedido: Ele pede uma comparação independente e quer saber apenas se a incoerência é real.
+  guardrails:
+  - Conhecer Shizune não prova autoria dela.
+  - Corven continua podendo omitir o nome do patrono.
+  - Kage decide o quanto quer tocar política de Casa Veyr.
+efeitos: []

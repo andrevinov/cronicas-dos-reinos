@@ -1,0 +1,12 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-34a15214a101
+npc_id: nera_vell
+detalhe: narrador/sidequests-canonicas/segredos/qsc-34a15214a101.yaml
+condicoes:
+  relacao:
+    afinidade_min: 8
+    confianca_min: 9
+  identidade:
+    persona_relacional:
+    - ren

@@ -1,0 +1,11 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-f485d1a16deb
+npc_id: nera_vell
+detalhe: narrador/sidequests-canonicas/segredos/qsc-f485d1a16deb.yaml
+condicoes:
+  locais:
+  - jack_mooney_sons_circus
+  relacao:
+    afinidade_min: 7
+    confianca_min: 7

@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-f485d1a16deb
+npc_id: nera_vell
+tipo: aquisicao
+titulo: A Ferramenta que Não Cabe no Esconderijo
+objetivo: Conseguir uma ferramenta ou material específico de gravação sem criar uma compra rastreável até o esconderijo
+  dos Vell.
+janela:
+  tipo: a_qualquer_momento
+pode_reabrir: false
+consequencia_sem_ren: Nera adapta o trabalho, demora mais ou abandona a etapa que dependia do material.
+oferta:
+  recusa_permitida: true
+  premissa: Nera consegue improvisar muita coisa, mas uma etapa do ofício pede algo que ela não tem e não quer pedir
+    a Jack.
+  pedido: Ela explica exatamente o que precisa e pede que Ren escolha se quer comprar, trocar ou achar outra solução
+    legítima.
+  guardrails:
+  - O material não é artefato nem pista de Masao por design.
+  - Ren escolhe o método de obtenção.
+  - A relação não transforma o pedido em obrigação.
+efeitos: []

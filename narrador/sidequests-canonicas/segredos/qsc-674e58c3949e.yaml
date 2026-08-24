@@ -1,0 +1,23 @@
+schema_sidequest_canonica: 1
+natureza: reservado
+id: qsc-674e58c3949e
+npc_id: corven_dalm
+tipo: aquisicao
+titulo: O Convite que Não Pode ser Comprado
+objetivo: Obter por negociação ou favor um acesso social que Corven não consegue comprar diretamente sem denunciar
+  seu interesse.
+janela:
+  tipo: temporal
+  duracao_horas: 48
+pode_reabrir: false
+consequencia_sem_ren: A janela social fecha e Corven procura um caminho mais caro e visível.
+oferta:
+  recusa_permitida: true
+  premissa: Há uma porta que abre por relação, não por moeda; Corven acha que Kage pode circular onde o nome Veyr
+    pesaria demais.
+  pedido: Ele pede um convite, apresentação ou senha social legítima — não furto de credencial.
+  guardrails:
+  - Acesso legítimo não vira licença para invadir área restrita.
+  - Kage pode dizer a verdade sobre o que está negociando dentro dos limites do contrato.
+  - Corven não controla a resposta do terceiro.
+efeitos: []

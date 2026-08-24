@@ -1,0 +1,12 @@
+schema_gate_sidequest_canonica: 1
+natureza: reservado
+id: qsc-674e58c3949e
+npc_id: corven_dalm
+detalhe: narrador/sidequests-canonicas/segredos/qsc-674e58c3949e.yaml
+condicoes:
+  relacao:
+    afinidade_max: 4
+    confianca_max: 3
+  identidade:
+    persona_relacional:
+    - kage
