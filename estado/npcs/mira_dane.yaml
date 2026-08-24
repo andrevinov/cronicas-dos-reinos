@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: mira_dane
+npc:
+  nome: Mira Dane
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 3
+    confianca: 2
+    risco_percebido: 5
+  natureza_do_vinculo: distância fria com reconhecimento técnico limitado
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/mira_dane.yaml

@@ -1,0 +1,62 @@
+schema_estado_relacional: 1
+natureza: contrato_operacional
+fonte_estado: estado/npcs/index.yaml
+fonte_nuance: estado/relacoes/index.yaml
+objetivo: >-
+  Tornar explícitos e compactos os dois eixos sociais centrais usados para calibrar
+  a relação de cada NPC com Ren (ou com a identidade pela qual ele é conhecido),
+  sem substituir a prosa canônica detalhada das relações.
+eixos:
+  afinidade:
+    campo_armazenado: medidores.vinculo
+    descricao: Boa vontade pessoal, simpatia, afeto ou antipatia dirigida ao personagem conhecido pelo NPC.
+  confianca:
+    campo_armazenado: medidores.confianca
+    descricao: Quanto o NPC acredita na palavra, julgamento, competência e previsibilidade do personagem conhecido.
+escala:
+  minimo: 0
+  maximo: 10
+  desconhecido: null
+  faixas:
+    0-2: adversa
+    3-4: baixa
+    '5': neutra
+    6-7: positiva
+    8-9: forte
+    '10': extrema
+contexto_adicional:
+  risco_percebido:
+    campo_armazenado: medidores.risco_percebido
+    regra: Modula limites e cautela, mas não substitui afinidade nem confiança.
+mutacao:
+  somente_por_fato_canonico_claro: true
+  revisao_automatica_por_fala: false
+  revisao_automatica_por_rolagem: false
+  variacao_normal_maxima_por_fato: 1
+  eixo_conhecido:
+    operacao: inc
+    valores_permitidos: [-1, 1]
+  eixo_desconhecido:
+    operacao: set
+    exige_inicializacao: true
+    regra: Só pode inicializar um valor atualmente null; nunca sobrescrever eixo já conhecido.
+  exemplos_validos:
+  - ajuda relevante com consequência real
+  - promessa cumprida ou quebrada
+  - lealdade ou abandono demonstrados
+  - mentira descoberta
+  - limite importante respeitado ou violado
+  - sacrifício, traição ou reparação significativa
+  exemplos_invalidos:
+  - conversa rotineira agradável ou desagradável
+  - um único teste social sem consequência persistente
+  - elogio, bronca ou sermão isolado
+  - inferência do narrador sem fato registrado
+bootstrap:
+  regra: >-
+    Valores iniciais devem refletir somente o cânone já persistido. Quando o cânone
+    não sustenta uma leitura, usar null em vez de inventar afinidade ou confiança.
+  cobertura: toda relação presente em estado/relacoes/index.yaml
+hot_path:
+  chamadas_extras_por_turno: 0
+  regra: contexto npc continua sendo a porta dirigida; este contrato não exige consulta adicional por turno.

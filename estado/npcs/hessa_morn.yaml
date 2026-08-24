@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: hessa_morn
+npc:
+  nome: Hessa Morn
+  grupo: rota rural compartimentada de Chauntea
+  medidores:
+    vinculo: 5
+    confianca: 4
+    risco_percebido: 5
+  natureza_do_vinculo: neutralidade profissional com confiança limitada ao protocolo
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/hessa_morn.yaml

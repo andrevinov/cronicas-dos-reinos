@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: mera_fumaca
+npc:
+  nome: Mera Fumaça
+  grupo: rota rural / proteção temporária de Colm-Dent
+  medidores:
+    vinculo: 6
+    confianca: 6
+    risco_percebido: 5
+  natureza_do_vinculo: cooperação pragmática reforçada por libertação e confiança operacional
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/mera_fumaca.yaml

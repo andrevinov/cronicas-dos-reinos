@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: tobb_marlin
+npc:
+  nome: Tobb Marlin
+  grupo: Jack Mooney & Sons Circus
+  medidores:
+    vinculo: 5
+    confianca: 4
+    risco_percebido: 5
+  natureza_do_vinculo: convivência profissional pragmática sob os filtros de Jack
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/tobb_marlin.yaml

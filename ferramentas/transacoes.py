@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extensões transacionais: rastros, tempo, compromissos e prosa diegética.
+"""Extensões transacionais: rastros, tempo, compromissos, relações e prosa diegética.
 
 O núcleo legado permanece em ``_transacoes_core.py``. Este wrapper acrescenta
 invariantes baratos sem aumentar o número normal de escritas:
@@ -8,6 +8,8 @@ invariantes baratos sem aumentar o número normal de escritas:
 - data+hora de mundo são persistidas como **um único delta** `tempo/instante`;
 - compromissos futuros entram como `estado/compromissos.<id>` inteiro e são
   projetados em memória antes da consolidação;
+- afinidade/confiança só mudam incrementalmente com fato canônico e fonte;
+- criação atômica de NPC + relação normaliza o primeiro medidor como bootstrap;
 - a prosa de `narracao` não aceita vocabulário mecânico explícito fora de linhas
   próprias `MECÂNICA — ...`.
 
@@ -26,6 +28,7 @@ from typing import Any, Iterable
 import _transacoes_core as _base
 import compromissos
 import diegetico
+import estado_relacional
 import tempo_transacional
 
 for _name in dir(_base):
@@ -51,6 +54,12 @@ def validate_delta(delta: Any) -> dict[str, Any]:
         try:
             return compromissos.validate_delta(delta)
         except compromissos.CommitmentError as exc:
+            raise TransactionError(str(exc)) from exc
+    if estado_relacional.is_relationship_delta(delta):
+        try:
+            _base.validate_delta(delta)
+            return estado_relacional.validate_relationship_delta(delta)
+        except estado_relacional.RelationshipStateError as exc:
             raise TransactionError(str(exc)) from exc
 
     target = delta.get("alvo")
@@ -178,6 +187,11 @@ def build_pending_record(transaction: dict[str, Any], session: int) -> dict[str,
         normalized_deltas = tempo_transacional.normalize_new_deltas(transaction.get("deltas") or [])
     except tempo_transacional.AtomicTimeError as exc:
         raise TransactionError(str(exc)) from exc
+    normalized_deltas = estado_relacional.normalize_new_entity_bootstrap(
+        normalized_deltas,
+        summary=summary,
+        transaction_id=transaction_id,
+    )
 
     record: dict[str, Any] = {
         "versao": SCHEMA_VERSION,

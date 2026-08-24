@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: sella_rove
+npc:
+  nome: Sella Rove
+  grupo: lavadouro / contato de Kethra
+  medidores:
+    vinculo: 3
+    confianca: 2
+    risco_percebido: 7
+  natureza_do_vinculo: cautela resistente; cooperação excepcional sem canal recorrente
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/sella_rove.yaml

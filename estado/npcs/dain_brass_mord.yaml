@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: dain_brass_mord
+npc:
+  nome: Dain 'Brass' Mord
+  grupo: Red Sail
+  medidores:
+    vinculo: 2
+    confianca: 1
+    risco_percebido: 8
+  natureza_do_vinculo: hostilidade ou interesse operacional sem confiança pessoal
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/dain_brass_mord.yaml

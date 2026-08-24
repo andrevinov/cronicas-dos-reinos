@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: velha_sella
+npc:
+  nome: Velha Sella
+  grupo: Fishtown / contato cauteloso
+  medidores:
+    vinculo: 4
+    confianca: 3
+    risco_percebido: 6
+  natureza_do_vinculo: cooperação limitada pela desconfiança e autoproteção
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/velha_sella.yaml

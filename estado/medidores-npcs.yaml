@@ -2,5 +2,6 @@ schema: 2
 natureza: roteador_fragmentado
 index: estado/npcs/index.yaml
 escala: estado/npcs/escala.yaml
+contrato_relacional: estado/npcs/relacionamento-v1.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
 consulta_recomendada: python3 ferramentas/contexto.py npc <nome>

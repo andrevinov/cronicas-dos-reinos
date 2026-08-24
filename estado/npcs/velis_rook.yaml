@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: velis_rook
+npc:
+  nome: Velis Rook
+  grupo: alfândega / registros de carga / oitiva de Tyr
+  medidores:
+    vinculo: 2
+    confianca: 1
+    risco_percebido: 8
+  natureza_do_vinculo: hostilidade assustada sob pressão institucional
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/velis_rook.yaml

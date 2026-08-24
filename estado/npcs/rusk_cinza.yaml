@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: rusk_cinza
+npc:
+  nome: Rusk 'Cinza'
+  grupo: Red Sail
+  medidores:
+    vinculo: null
+    confianca: 1
+    risco_percebido: null
+  natureza_do_vinculo: desconhecida; ainda não houve encontro suficiente para inferir afinidade
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/rusk_cinza.yaml

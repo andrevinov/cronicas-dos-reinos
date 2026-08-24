@@ -7,3 +7,11 @@ npc:
   grupo: Galeria dos Escribas
   status: ativa como conferente das tabuletas no pátio de entregas
   local: Galeria dos Escribas, pátio de entregas
+  medidores:
+    vinculo: 6
+    confianca: 6
+    risco_percebido: 4
+  natureza_do_vinculo: compaixão e familiaridade profissional crescentes com Shinta
+  subtexto_romantico: nenhum
+  identidade_relacional: shinta
+  fonte_relacional: estado/relacoes/sella_conferente_galeria.yaml

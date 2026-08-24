@@ -1,0 +1,13 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: homem_red_sail_capturado
+npc:
+  nome: homem Red Sail capturado
+  grupo: Red Sail
+  medidores:
+    vinculo: 1
+    confianca: 1
+    risco_percebido: 10
+  natureza_do_vinculo: medo hostil sob coerção direta
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/homem_red_sail_capturado.yaml
