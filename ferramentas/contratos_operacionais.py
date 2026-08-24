@@ -115,6 +115,13 @@ def explain_ticket_argument(value: Any) -> str:
             "--ticket exige o valor completo do campo `ticket:` devolvido por `cronica preparar`"
         )
     text = value.strip()
+    if text.startswith("ticket:"):
+        token = text[len("ticket:") :].strip()
+        if token.startswith("crn1."):
+            return token
+        raise OperationalContractError(
+            "a linha `ticket:` não contém um token `crn1.` completo; copie a linha inteira da saída de `cronica preparar`"
+        )
     if _TICKET_ID_RE.fullmatch(text):
         raise OperationalContractError(
             "foi fornecido apenas `ticket_id` (checksum de 20 caracteres). "
