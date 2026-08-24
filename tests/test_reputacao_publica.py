@@ -53,7 +53,7 @@ class PublicReputationRegistryTest(unittest.TestCase):
 
     def test_sucesso_artistico_de_kage_existente_nao_vira_reputacao_civica(self):
         summary = (ROOT / "sessoes/014/resumo.md").read_text(encoding="utf-8")
-        self.assertIn("forte entusiasmo do público", summary)
+        self.assertIn("forte entusiasmo pelo público", summary)
         projected = rep.show(ROOT, "kage")
         self.assertEqual(projected["leitura_da_cidade"], "sem_posicao_publica")
         self.assertEqual(projected["publicos"]["circo_e_artes"]["estado"], "estrangeiro_desconhecido")
