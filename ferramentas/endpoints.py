@@ -3,8 +3,8 @@
 
 O contrato original da Task 10 está preservado em ``_endpoints_core.py``. Esta
 camada acrescenta qualidade de abordagem, projeções raras de Mundo Vivo,
-sidequest canônica selecionada pela cena e incidentes sérios da Task 35.
-Nenhuma dessas projeções adiciona leitura ao endpoint: só compacta dados já
+sidequest canônica, incidentes sérios e o mini-arco opcional da Task 37.
+Nenhuma projeção de cena adiciona leitura ao endpoint: só compacta dados já
 calculados pela preparação.
 """
 from __future__ import annotations
@@ -19,6 +19,7 @@ import yaml
 
 import _endpoints_core as _base
 import contratos_operacionais
+import fronteira_torneio
 import pressao_ravens_bluff
 import qualidade_abordagem
 
@@ -29,6 +30,7 @@ MAX_CANONICAL_EVENTS = 1
 MAX_INCIDENT_ROUTES = 4
 MAX_INCIDENT_ACTORS = 4
 MAX_INCIDENT_GUARDRAILS = 2
+MAX_TOURNAMENT_GUARDRAILS = 3
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -126,6 +128,43 @@ def _project_canonical_sidequest(
     )
 
 
+def _project_tournament_invite(
+    result: dict[str, Any],
+    preview: dict[str, Any],
+) -> None:
+    selected = preview.get("torneio_clandestino")
+    if not isinstance(selected, dict) or selected.get("disponivel") is not True:
+        return
+    invite = selected.get("convite")
+    if not isinstance(invite, dict):
+        return
+    tournament_id = selected.get("torneio")
+    result["ids"]["torneio_clandestino"] = tournament_id
+    if "torneio_clandestino_task37" not in result["filtros"]:
+        result["filtros"].append("torneio_clandestino_task37")
+    result["disponibilidade"]["torneio_clandestino"] = {
+        "id": tournament_id,
+        "npc": selected.get("npc"),
+        "premissa": invite.get("premissa"),
+        "pedido": invite.get("pedido"),
+        "guardrails": list(invite.get("guardrails") or [])[:MAX_TOURNAMENT_GUARDRAILS],
+        "recusa_permitida": True,
+        "identidade_de_inscricao": "escolha_de_Ren_ao_aceitar",
+    }
+    result["gates"].append(
+        {
+            "tipo": "torneio_clandestino",
+            "resultado": "convite_disponivel",
+            "npc": selected.get("npc"),
+            "regra": "Luath pode fazer o convite; Ren decide se aceita e sob qual identidade se inscreve",
+        }
+    )
+    result["proximo_passo"]["torneio_clandestino"] = (
+        "se Luath realmente fizer o convite na narração aceita, depois de cronica concluir registre-o com "
+        "torneio_clandestino.py oferecer --fonte <fonte> --evidencia <trecho>; não registre aceite antes da resposta de Ren"
+    )
+
+
 def _project_incident(
     result: dict[str, Any],
     preview: dict[str, Any],
@@ -187,6 +226,7 @@ def project_scene(
         if "qualidade_abordagem_pre_rolagem" not in result["filtros"]:
             result["filtros"].append("qualidade_abordagem_pre_rolagem")
     _project_canonical_sidequest(result, preview)
+    _project_tournament_invite(result, preview)
     _project_incident(result, preview)
     _base.validate_endpoint(result)
     return result
@@ -336,6 +376,22 @@ def pending(repo: Path) -> dict[str, Any]:
     return project_pending(raw)
 
 
+def boundary(repo: Path, *, date: str, hour: str) -> dict[str, Any]:
+    projected = _base.boundary(repo, date=date, hour=hour)
+    try:
+        augmented = fronteira_torneio.augment_endpoint(
+            repo,
+            projected,
+            target_date=date,
+            target_hour=hour,
+        )
+    except (ValueError, _base.mundo.WorldEngineError) as exc:
+        raise _base.EndpointError(str(exc)) from exc
+    if augmented is not projected:
+        _base.validate_endpoint(augmented)
+    return augmented
+
+
 def _add_approach_flags(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--abordagem-preparacao",
@@ -385,7 +441,7 @@ def main(argv: list[str] | None = None) -> int:
                 approach_adequacao=args.abordagem_adequacao,
             )
         elif args.cmd == "fronteira":
-            result = _base.boundary(
+            result = boundary(
                 repo,
                 date=_normalized_date(args.data),
                 hour=args.hora,

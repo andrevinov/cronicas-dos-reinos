@@ -1,0 +1,40 @@
+schema_orcamento_torneio_clandestino: 1
+task: 37
+nome: Underground Tournament Mini-Arc
+limites:
+  chamadas_extras_turno_comum: 0
+  leituras_task37_cena_sem_luath: 0
+  fontes_max_convite_elegivel: 7
+  leituras_extras_fronteira_torneio_inativo: 1
+  leituras_extras_fronteira_torneio_ativo: 2
+  rodadas_total: 5
+  duracao_final_dias: 14
+  fragmentos_rodada_abertos_por_consulta: 1
+  max_index_bytes: 12288
+  max_fragmento_bytes: 6144
+  max_estado_bytes: 12288
+  max_historico: 24
+  schedulers_novos: 0
+  pendencias_mundo_novas: 0
+  rng_progressao_novo: 0
+invariantes:
+  convite_so_em_encontro_explicito_com_luath: true
+  convite_exige_data_nivel_e_confianca: true
+  convite_nao_e_aceite: true
+  recusa_e_retirada_sao_permitidas: true
+  identidade_de_inscricao_e_escolha_de_ren: true
+  agenda_nasce_somente_apos_aceite: true
+  fronteira_temporal_nao_cria_pendencia_de_mundo: true
+  rodada_nao_decide_comparecimento: true
+  derrota_e_ausencia_tem_consequencia: true
+  vitoria_nao_e_garantida: true
+  combate_nao_letal_por_padrao: true
+  dificuldade_e_fixada_antes_da_rolagem: true
+  tradicoes_faerun_e_kara_tur_presentes: true
+  final_usa_kozakuriano_causalmente_conhecido: true
+  final_nao_teleporta_nem_ressuscita_candidato: true
+  task28_permanece_autoridade_de_identidade: true
+  task54_permanece_autoridade_de_neutralizacao: true
+  premio_liga_masao_e_juppongatana_sem_auto_conhecimento: true
+  nenhum_oponente_vira_sidequest_automaticamente: true
+  documentacao_publica_spoiler_light: true

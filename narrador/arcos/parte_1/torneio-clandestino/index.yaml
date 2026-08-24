@@ -1,0 +1,69 @@
+schema_torneio_clandestino: 1
+natureza: reservado
+estatuto: mini_arco_opcional_multinoite
+id: circuito_subterraneo_parte1
+principio: >-
+  O torneio existe para criar uma linha marcial opcional, social e investigativa. Convite não é aceite;
+  aceite não garante vitória; derrota, ausência ou retirada têm consequência. O sistema nunca decide ação,
+  fala, identidade de inscrição ou resultado de Ren.
+convite:
+  npc: luath
+  data_minima: 21 Eleasis, 1372 DR
+  nivel_minimo: 9
+  confianca_minima: 6
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/convite.yaml
+  recusa_permitida: true
+  exige_encontro_explicito: true
+agenda_relativa:
+- id: ronda_01
+  offset_dias: 1
+  hora: '22:00'
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/rodadas/ronda_01.yaml
+- id: ronda_02
+  offset_dias: 4
+  hora: '23:00'
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/rodadas/ronda_02.yaml
+- id: ronda_03
+  offset_dias: 7
+  hora: '21:30'
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/rodadas/ronda_03.yaml
+- id: semifinal
+  offset_dias: 10
+  hora: '23:30'
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/rodadas/semifinal.yaml
+- id: final
+  offset_dias: 14
+  hora: '22:30'
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/rodadas/final.yaml
+  final: true
+final:
+  tipo: kozakuriano_conhecido
+  candidatos_prioridade:
+  - kagehira_hotaru
+  - tsukishiro_joen
+  - kurobane_jinzaburo
+  regra: >-
+    Resolver somente quando a final estiver devida. Preferir o primeiro candidato causalmente disponível;
+    candidato latente de entrada só pode aparecer se nível e Contrato de Arco permitirem. Aparição não muda
+    relação, identidade, reputação ou milestone por decreto.
+premio:
+  fragmento: narrador/arcos/parte_1/torneio-clandestino/premio.yaml
+  parcial_a_partir_de: semifinal
+  integral: final_vencida
+regras:
+  scheduler: proibido
+  rng_de_progressao: proibido
+  derrota_nao_e_reescrita: true
+  duas_derrotas_nas_tres_primeiras_eliminam: true
+  semifinal_exige_vitoria_para_final: true
+  retirada_sempre_permitida: true
+  ausencia_conta_como_derrota: true
+  combate_nao_e_letal_por_padrao: true
+  morte_intencional_nao_e_objetivo_do_torneio: true
+  identidade_de_inscricao_e_escolha_do_jogador: true
+  actor_nao_apaga_evidencia_fisica_ou_marcial: true
+  task28_permanece_autoridade_de_identidade: true
+  task54_permanece_autoridade_de_neutralizacao: true
+  premio_nao_vira_conhecimento_automatico: true
+  nenhum_oponente_automaticamente_vira_sidequest: true
+  rodada_so_abre_um_fragmento: true

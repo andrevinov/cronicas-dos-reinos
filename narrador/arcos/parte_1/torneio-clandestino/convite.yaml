@@ -1,0 +1,29 @@
+schema_convite_torneio_clandestino: 1
+natureza: reservado
+torneio: circuito_subterraneo_parte1
+npc: luath
+premissa: >-
+  Luath encontrou um circuito clandestino de lutas usado como território neutro por apostadores, carregadores,
+  intermediários do porto e gente que evita a Night Watch. Entrar com distintivo ou investigação aberta fecha
+  portas; um lutador competente pode alcançar salas, patrocinadores e conversas que um guarda não alcança.
+pedido: >-
+  Luath pergunta se Ren aceitaria se inscrever por vontade própria, sob a identidade que escolher, lutar apenas
+  enquanto quiser e observar quem financia as noites mais profundas do circuito. Ele deixa claro que pode recusar
+  sem dívida e que não quer que Ren provoque luta fora das regras do evento.
+forma_de_apresentacao:
+- Luath deve apresentar o torneio como oportunidade real, não missão obrigatória nem ordem da Night Watch.
+- Explicar que são várias noites ao longo de aproximadamente duas semanas e que retirada é sempre possível.
+- Não revelar o quadro completo, o adversário final ou a informação reservada do prêmio antes de Ren avançar.
+- >-
+  Se Ren perguntar sobre risco, responder concretamente: ferimentos são possíveis; morte deliberada viola o circuito,
+  mas clandestinidade reduz garantias institucionais.
+identidade:
+  regra: Ren escolhe o nome/persona de inscrição somente ao aceitar.
+  actor: >-
+    Uma persona performada pode se beneficiar de Actor quando a regra do talento realmente se aplicar; estilo,
+    corpo, equipamento, conhecimento e outras pistas continuam podendo gerar evidência para a Task 28.
+guardrails:
+- convite não é side quest e não cria lifecycle em oportunidades.py
+- Luath não decide que Ren aceita, participa ou investiga
+- relação funcional não autoriza sermão nem chantagem emocional
+- nenhum detalhe futuro do quadro é conhecimento de Ren antes de ser apresentado em jogo

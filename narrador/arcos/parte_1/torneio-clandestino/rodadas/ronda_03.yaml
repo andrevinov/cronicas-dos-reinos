@@ -1,0 +1,32 @@
+schema_rodada_torneio_clandestino: 1
+natureza: reservado
+id: ronda_03
+ordem: 3
+fase: classificatoria
+oponente:
+  id: samira_qadim
+  nome: Samira Qadim
+  origem: Calimshan
+  regiao_macro: faerun
+  tradicao: luta de poço baseada em pressão de parede, joelhadas controladas, varreduras e quebra de base
+  personalidade: teatral fora da luta e extremamente pragmática quando o sino toca
+premissa: >-
+  A terceira classificatória combina pressão física com leitura social do público. Samira usa o limite da arena,
+  finta intenção e tenta obrigar Ren a escolher entre ceder espaço e entrar no clinch.
+regras_do_combate:
+  letalidade: nao_letal_por_padrao
+  fim: [rendicao, incapacitacao_nao_letal, saida_do_circulo, intervencao_do_arbitro]
+  escala: desafiador_mas_justo_para_nivel_9_11
+  ajuste: Definir ficha/estatísticas antes da primeira rolagem e nunca escalar depois de ver resultado de Ren.
+rotas_de_ren:
+- contestar o centro da arena
+- usar mobilidade para negar a parede
+- aceitar clinch e buscar reversão
+- abandonar a luta e aceitar a consequência de classificação
+pistas_identidade_possiveis:
+- público e apostadores podem comparar hábitos entre noites, mas repetição só vira evidência se observada em jogo
+- inscrição sob persona não funde reputações de Ren, Kage ou Shinta automaticamente
+guardrails:
+- espetáculo do público não altera reputação pública sem fato social próprio da Task 29
+- vitória não concede intimidade com organizadores
+- nenhuma rolagem social substitui o resultado do combate
