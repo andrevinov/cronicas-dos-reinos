@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Endpoints determinísticos com Approach Quality Modifier opcional.
+"""Endpoints determinísticos com contratos operacionais endurecidos.
 
 O contrato original da Task 10 está preservado em ``_endpoints_core.py``. Esta
 camada acrescenta a qualidade da abordagem somente ao campo ``modificadores`` já
@@ -10,6 +10,9 @@ pendências também projeta candidatos autônomos de pressão de Ravens Bluff e,
 quando houver, o núcleo do próximo evento canônico datado da Parte 1. Tudo
 permanece read-only: a projeção informa o que está devido; a materialização exige
 transação de mundo e checkpoint normal.
+
+A Task 25 endurece somente a borda CLI: representações inequívocas de data são
+normalizadas para Harptos canônico antes de chegar às mesmas funções existentes.
 """
 from __future__ import annotations
 
@@ -22,6 +25,7 @@ from typing import Any
 import yaml
 
 import _endpoints_core as _base
+import contratos_operacionais
 import pressao_ravens_bluff
 import qualidade_abordagem
 
@@ -33,6 +37,15 @@ MAX_CANONICAL_EVENTS = 1
 for _name in dir(_base):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_base, _name)
+
+
+def _normalized_date(value: str | None) -> str | None:
+    if value is None:
+        return None
+    try:
+        return contratos_operacionais.normalize_date(value)
+    except contratos_operacionais.OperationalContractError as exc:
+        raise _base.EndpointError(str(exc)) from exc
 
 
 def _quality(
@@ -260,13 +273,17 @@ def main(argv: list[str] | None = None) -> int:
                 tier=args.tier,
                 danger=args.periculosidade,
                 context_tags=args.contexto_tag,
-                now=_base._instant_arg(args.data, args.hora),
+                now=_base._instant_arg(_normalized_date(args.data), args.hora),
                 approach_preparacao=args.abordagem_preparacao,
                 approach_informacao=args.abordagem_informacao,
                 approach_adequacao=args.abordagem_adequacao,
             )
         elif args.cmd == "fronteira":
-            result = _base.boundary(repo, date=args.data, hour=args.hora)
+            result = _base.boundary(
+                repo,
+                date=_normalized_date(args.data),
+                hour=args.hora,
+            )
         elif args.cmd == "pendencias":
             result = pending(repo)
         elif args.cmd == "direcao":
@@ -278,6 +295,7 @@ def main(argv: list[str] | None = None) -> int:
     except (
         pressao_ravens_bluff.PressureError,
         qualidade_abordagem.ApproachQualityError,
+        contratos_operacionais.OperationalContractError,
         _base.EndpointError,
         _base.cena_mundo.SceneGateError,
         _base.direcoes_destino.DestinationDirectionError,
