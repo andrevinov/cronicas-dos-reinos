@@ -2,10 +2,9 @@
 """Telemetria pós-hoc de rollout com atribuição de sistemas narrativos.
 
 O analisador schema 3 permanece congelado em ``_analisar_rollout_core.py``. Esta
-camada schema 4 preserva todas as métricas anteriores e acrescenta somente
-inferências observacionais sobre a dupla de orquestração ``cronica`` e sobre quais
-sistemas narrativos aparecem nos comandos/outputs. Nada aqui roda durante o jogo
-ou escreve no repositório.
+camada preserva o schema público anterior e acrescenta a extensão independente
+``narrative_systems_schema: 1`` para orquestração e sistemas narrativos. Nada aqui
+roda durante o jogo ou escreve no repositório.
 """
 from __future__ import annotations
 
@@ -29,12 +28,11 @@ for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
 
-SCHEMA_VERSION = 4
-_core.SCHEMA_VERSION = SCHEMA_VERSION
+SCHEMA_VERSION = _core.SCHEMA_VERSION
+NARRATIVE_SYSTEMS_SCHEMA = 1
 
 _BASE_CLASSIFY_TOOL = _core._classify_tool
 _BASE_ACCESS_LEVEL = _core._access_level_from_command
-_BASE_TURN_REGISTER = _core._is_turn_register
 _BASE_ANALYZE = _core.analyze
 _BASE_HUMAN = _core._human
 
@@ -137,11 +135,7 @@ def _is_turn_register(command: str) -> bool:
 def _orchestration_phase(command: str) -> str | None:
     lower = " ".join(command.casefold().split())
     for phase in ("preparar", "concluir", "registrar", "confirmar"):
-        patterns = (
-            f"cronica {phase}",
-            f"cronica.py {phase}",
-        )
-        if any(pattern in lower for pattern in patterns):
+        if f"cronica {phase}" in lower or f"cronica.py {phase}" in lower:
             return phase
     return None
 
@@ -306,7 +300,11 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     n = len(turns)
     observed = [system for system in NARRATIVE_SYSTEM_KEYS if system_turns[system]]
     orchestration_calls = sum(phases.values())
-    inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in turn["calls"]))
+    inactive = sum(
+        1
+        for turn in turns
+        if not any(call.get("narrative_systems") for call in turn["calls"])
+    )
     return {
         "orchestration_calls": orchestration_calls,
         "avg_orchestration_calls_per_turn": round(orchestration_calls / n, 3) if n else 0,
@@ -328,11 +326,9 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
 def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
     report = _BASE_ANALYZE(path, narration_regex)
     ordered, narration = _scan_observations(path, narration_regex)
-    all_observation = _observation_summary(ordered)
-    narration_observation = _observation_summary(narration)
-    report["schema_version"] = SCHEMA_VERSION
-    report["all_turns"].update(all_observation)
-    report["narration_turns"].update(narration_observation)
+    report["narrative_systems_schema"] = NARRATIVE_SYSTEMS_SCHEMA
+    report["all_turns"].update(_observation_summary(ordered))
+    report["narration_turns"].update(_observation_summary(narration))
 
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
@@ -368,7 +364,7 @@ def _human(report: dict[str, Any]) -> str:
         (
             "Orquestração: "
             f"{narr.get('avg_orchestration_calls_per_turn', 0)} chamada(s)/turno | "
-            f"dupla cronica preparar+concluir em "
+            "dupla cronica preparar+concluir em "
             f"{narr.get('fraction_turns_with_cronica_pair', 0):.1%} dos turnos"
         ),
         f"Sistemas observados por turno: {active}",
@@ -376,8 +372,6 @@ def _human(report: dict[str, Any]) -> str:
     return base + "\n" + "\n".join(extra) + "\n"
 
 
-# O core chama seus próprios globals; patchá-los mantém compatibilidade para quem
-# importa o analisador por ``importlib`` (inclusive comparar-rollouts.py).
 _core._classify_tool = _classify_tool
 _core._access_level_from_command = _access_level_from_command
 _core._is_turn_register = _is_turn_register
