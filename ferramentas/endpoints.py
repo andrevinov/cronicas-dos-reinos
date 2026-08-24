@@ -377,39 +377,19 @@ def pending(repo: Path) -> dict[str, Any]:
 
 
 def boundary(repo: Path, *, date: str, hour: str) -> dict[str, Any]:
+    projected = _base.boundary(repo, date=date, hour=hour)
     try:
-        raw = fronteira_torneio.query(repo, date, hour)
-    except _base.fronteira_mundo.BoundaryError:
-        raise
-    projected = _base.project_boundary(raw)
-    reasons = (
-        list((raw.get("fronteira") or {}).get("motivos") or [])
-        if isinstance(raw.get("fronteira"), dict)
-        else []
-    )
-    tournament = next(
-        (item for item in reasons if isinstance(item, dict) and item.get("camada") == "torneio_clandestino"),
-        None,
-    )
-    if tournament is not None:
-        ids = list(tournament.get("ids") or [])
-        projected["ids"]["torneio_clandestino"] = ids
-        projected["filtros"].append("compromisso_torneio_clandestino_task37")
-        projected["gates"].append(
-            {
-                "tipo": "torneio_clandestino",
-                "resultado": "rodada_devida",
-                "ids": ids,
-                "atrasada": bool(tournament.get("atrasada")),
-                "regra": "compromisso aceito por Ren; parar o tempo nao decide comparecimento nem resultado",
-            }
+        augmented = fronteira_torneio.augment_endpoint(
+            repo,
+            projected,
+            target_date=date,
+            target_hour=hour,
         )
-        projected["proximo_passo"]["torneio_clandestino"] = (
-            "pare no instante indicado; depois do checkpoint consulte `poetry run python ferramentas/torneio_clandestino.py rodada` "
-            "para abrir somente o fragmento devido. Ren ainda pode comparecer, faltar ou abandonar."
-        )
-    _base.validate_endpoint(projected)
-    return projected
+    except (ValueError, _base.mundo.WorldEngineError) as exc:
+        raise _base.EndpointError(str(exc)) from exc
+    if augmented is not projected:
+        _base.validate_endpoint(augmented)
+    return augmented
 
 
 def _add_approach_flags(parser: argparse.ArgumentParser) -> None:
