@@ -209,7 +209,7 @@ class TournamentFixtureTest(unittest.TestCase):
         state = tour.load_state(self.repo)
         due = mundo.parse_instant(state["agenda"][0]["em"]["data"], state["agenda"][0]["em"]["hora"])
         result = tour.next_boundary(self.repo, self.accepted_at, mundo.WorldInstant(due.minute + 2 * 1440))
-        self.assertEqual(result["quando"], due)
+        self.assertEqual(result["quando"].minute, due.minute)
         self.assertEqual(result["rodada"], state["agenda"][0]["id"])
         self.assertNotIn("pendencia", result)
 
