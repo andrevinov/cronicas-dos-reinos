@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Consolidação legado + rastros + instante atômico + relações + identidades.
+"""Consolidação legado + rastros + instante atômico + relações + identidades + reputação.
 
 ``_consolidar_core.py`` preserva o consolidator já testado. Este wrapper intercepta
 somente lotes que exigem extensão:
@@ -12,6 +12,7 @@ somente lotes que exigem extensão:
 - afinidade/confiança são validadas contra o estado consolidado antes do stage;
 - suspeita/confirmação de identidade só carrega seu registro quando o lote contém
   um delta desse tipo e é validada contra o estado anterior;
+- reputação pública só carrega públicos/personas quando o lote contém delta da Task 29;
 - qualquer fragmento NPC alterado é revalidado antes da instalação.
 """
 from __future__ import annotations
@@ -26,6 +27,7 @@ import estado_relacional
 import identidades
 import rastros
 import _rastros_core as _rastros_base
+import reputacao_publica
 import tempo_transacional
 import transacoes
 
@@ -60,6 +62,15 @@ def _has_identity_deltas(records: list[dict[str, Any]]) -> bool:
     """Gate estrutural: fixtures/fluxos legados não abrem o registro da Task 28."""
     return any(
         identidades.is_identity_delta(delta)
+        for record in records
+        for delta in (record.get("deltas") or [])
+    )
+
+
+def _has_reputation_deltas(records: list[dict[str, Any]]) -> bool:
+    """Gate estrutural: o caminho comum não abre públicos nem personas da Task 29."""
+    return any(
+        reputacao_publica.touches_reputation(delta)
         for record in records
         for delta in (record.get("deltas") or [])
     )
@@ -250,13 +261,40 @@ def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
     _validate_identity_outputs(repo, plan)
 
 
+def _validate_reputation_output(repo: Path, plan: dict[str, Any] | None) -> None:
+    """Revalida apenas o estado staged de lotes que realmente tocaram a Task 29."""
+    if plan is None:
+        return
+    raw = (plan.get("outputs") or {}).get(reputacao_publica.STATE_FILE.as_posix())
+    if raw is None:
+        raise ConsolidationError("lote de reputação não produziu estado/estado-atual.yaml staged")
+    try:
+        doc = _base.yaml.safe_load(raw.decode("utf-8"))
+        audiences = reputacao_publica.load_audiences(repo)
+        identities_registry = reputacao_publica.load_identities(repo)
+        if not isinstance(doc, dict):
+            raise reputacao_publica.PublicReputationError("estado staged inválido")
+        reputacao_publica.validate_state(
+            doc.get(reputacao_publica.STATE_ROOT), audiences, identities_registry
+        )
+    except (UnicodeDecodeError, _base.yaml.YAMLError, reputacao_publica.PublicReputationError) as exc:
+        raise ConsolidationError(f"reputação pública staged inválida: {exc}") from exc
+
+
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
+    has_reputation = _has_reputation_deltas(records)
     try:
         estado_relacional.validate_batch(repo, records)
         if _has_identity_deltas(records):
             identidades.validate_batch(repo, records)
-    except (estado_relacional.RelationshipStateError, identidades.IdentitySuspicionError) as exc:
+        if has_reputation:
+            reputacao_publica.validate_batch(repo, records)
+    except (
+        estado_relacional.RelationshipStateError,
+        identidades.IdentitySuspicionError,
+        reputacao_publica.PublicReputationError,
+    ) as exc:
         raise ConsolidationError(str(exc)) from exc
 
     trace_records = [record for record in records if _trace_delta_ids(record)]
@@ -264,6 +302,8 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     if not trace_records and not atomic_instants:
         plan = _original_build_plan(repo, kind)
         _validate_npc_outputs(repo, plan)
+        if has_reputation:
+            _validate_reputation_output(repo, plan)
         return plan
 
     trace_index: dict[str, Any] | None = None
@@ -308,6 +348,8 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     if atomic_instants:
         plan["instantes_atomicos"] = atomic_instants
     _validate_npc_outputs(repo, plan)
+    if has_reputation:
+        _validate_reputation_output(repo, plan)
     return plan
 
 
