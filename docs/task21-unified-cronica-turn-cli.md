@@ -12,6 +12,8 @@ Todo turno pode começar apenas com um ID estável:
 cronica preparar --cena-id s013-retorno-circo
 ```
 
+Desde a Task 24, esta mesma porta começa pelo **Pending Gate**. O caminho livre segue exatamente o contrato abaixo; se houver pendências reais do Mundo Vivo, `preparar` retorna `fase: bloqueada_pendencias_mundo`, não emite ticket nem autoriza narração. A fila é resolvida pela Task 23 e então o mesmo `cronica preparar` é repetido. Detalhes: `docs/task24-pending-gate-cronica-preparar.md`.
+
 Se **não existe gatilho reativo real**, essa chamada emite um **ticket neutro** read-only. Não chama endpoint de cena, não confirma cena inexistente e, sobretudo, não exige inventar tag/local/NPC para satisfazer a CLI.
 
 Quando há entrada/exploração material de local, novo encontro de NPC ou tag contextual já pertinente, a mesma porta recebe os gatilhos reais. Exemplo local:
@@ -95,7 +97,7 @@ Continuam disponíveis e válidos para manutenção/reparo:
 - `turno.py registrar`;
 - atalhos Poetry existentes.
 
-Não há sexto endpoint, estado novo, scheduler, scan ou semântica paralela. O ticket neutro é apenas a representação explícita de “este turno não possui gatilho reativo”.
+Não há sexto endpoint, estado novo, scheduler, scan ou semântica paralela. O ticket neutro é apenas a representação explícita de “este turno não possui gatilho reativo”. O Pending Gate da Task 24 também não cria endpoint: reutiliza o marcador derivado e a semântica da barreira já existente.
 
 ## Rolagens comuns
 
@@ -109,6 +111,6 @@ Vantagem/desvantagem e evidências de abordagem são acrescentadas somente quand
 
 ## Telemetria e custo
 
-`cronica preparar` permanece read-only. `concluir`/`registrar` continuam writers dos mesmos alvos operacionais do turno; `confirmar` só é mutante para ticket reativo. A preparação custa **0 ou 1 endpoint**, nunca mais de um; conclusão custa **0 ou 1 confirmação** e exatamente o registro necessário.
+`cronica preparar` permanece read-only. No caminho livre, a Task 24 acrescenta somente a leitura do marcador minúsculo de pendências; não acrescenta endpoint nem altera o ticket/saída da Task 21. `concluir`/`registrar` continuam writers dos mesmos alvos operacionais do turno; `confirmar` só é mutante para ticket reativo. A preparação custa **0 ou 1 endpoint**, nunca mais de um; conclusão custa **0 ou 1 confirmação** e exatamente o registro necessário.
 
 O alvo segue duas chamadas de orquestração por turno: `preparar` + `concluir`, além de rolagens/consultas materialmente necessárias. Ganho real continua sendo medido pós-hoc; nenhuma redução percentual é inferida sem rollout.
