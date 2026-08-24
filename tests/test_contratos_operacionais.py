@@ -92,6 +92,10 @@ class OperationalTicketContractTest(unittest.TestCase):
         self.assertEqual(cronica.decode_ticket(token), self.payload())
         self.assertEqual(cronica.ticket_id(token), digest)
 
+    def test_linha_ticket_completa_e_alias_inequivoco(self):
+        token, _ = cronica.encode_ticket(self.payload())
+        self.assertEqual(cronica.decode_ticket(f"ticket: {token}"), self.payload())
+
     def test_ticket_id_curto_falha_com_instrucao_autossuficiente(self):
         token, digest = cronica.encode_ticket(self.payload())
         self.assertTrue(token.startswith("crn1."))
