@@ -22,7 +22,6 @@ class PoetrySetupTest(unittest.TestCase):
             "entrada",
             "contexto",
             "cronica",
-            "fronteira",
             "turno",
             "checkpoint",
             "consolidar",
@@ -31,9 +30,7 @@ class PoetrySetupTest(unittest.TestCase):
             "runtime",
             "sessoes",
             "dados",
-            "rolar-dados",
             "dados-lote",
-            "rolar-lote",
             "rollout",
             "rollout-comparar",
             "rollout-benchmark",
@@ -42,8 +39,8 @@ class PoetrySetupTest(unittest.TestCase):
         }
         self.assertEqual(set(scripts), expected)
         self.assertTrue(all(value.startswith("ferramentas.poetry_cli:") for value in scripts.values()))
-        self.assertEqual(scripts["rolar-dados"], scripts["dados"])
-        self.assertEqual(scripts["rolar-lote"], scripts["dados-lote"])
+        self.assertNotIn("rolar-dados", scripts)
+        self.assertNotIn("rolar-lote", scripts)
 
     def test_poetry_keeps_virtualenv_inside_repo(self):
         data = tomllib.loads((ROOT / "poetry.toml").read_text(encoding="utf-8"))
@@ -54,7 +51,6 @@ class PoetrySetupTest(unittest.TestCase):
             "entrada.py",
             "contexto.py",
             "cronica.py",
-            "fronteira_operacional.py",
             "turno.py",
             "checkpoint.py",
             "consolidar.py",
@@ -86,18 +82,6 @@ class PoetrySetupTest(unittest.TestCase):
         self.assertEqual(args[0][2:], ["status"])
         self.assertEqual(kwargs["cwd"], ROOT)
         self.assertFalse(kwargs["check"])
-
-    def test_fronteira_wrapper_usa_porta_operacional(self):
-        with patch.object(sys, "argv", ["fronteira", "--data", "1372-08-17", "--hora", "06:00"]), patch(
-            "ferramentas.poetry_cli.subprocess.run"
-        ) as run:
-            run.return_value.returncode = 0
-            code = poetry_cli.fronteira()
-        self.assertEqual(code, 0)
-        args, kwargs = run.call_args
-        self.assertEqual(Path(args[0][1]), ROOT / "ferramentas/fronteira_operacional.py")
-        self.assertEqual(args[0][2:], ["--data", "1372-08-17", "--hora", "06:00"])
-        self.assertEqual(kwargs["cwd"], ROOT)
 
 
 if __name__ == "__main__":
