@@ -1,0 +1,28 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: cerco_naval_de_cormyr
+titulo: Cormyr aponta canhões para um problema impossível
+janela: pode_durar_varios_dias
+categorias:
+- golden_lily
+- crise
+- masao
+- oportunidade_heroica
+nucleo_obrigatorio:
+- Uma força naval de Cormyr chega após mobilização já plantada e exige contenção ou retirada do Golden Lily.
+- Pan Chu ou o comando do navio demonstra capacidade de atingir a cidade, tornando qualquer ataque direto um risco
+  político e civil real.
+- O impasse produz evacuações, feridos, patrulhas, negociações e planejamento; Ren pode agir em problemas concretos,
+  mas não recebe comando da crise por decreto.
+forma_preferencial:
+- Manter Cormyr como pressão estratégica e possível aliado imperfeito, não como solução externa que encerra o arco.
+guardrails:
+- A demonstração deve ferir a cidade o bastante para tornar a ameaça crível, sem devastação gratuita.
+- Oficiais de Cormyr não bombardeiam civis deliberadamente só para acelerar trama.
+- Neutralizar Pan Chu pode mudar o impasse, mas não apaga automaticamente tripulação, sucessão de comando ou consequências
+  diplomáticas.
+adaptacao:
+- Se Pan Chu já estiver neutralizado, o capitão sucessor escolhe entre manter ameaça, negociar ou fugir conforme
+  recursos; o evento adapta o impasse ao estado real.
+- Se o Golden Lily não puder usar o cais, o bloqueio e a ameaça operam a partir de ancoragem plausível.

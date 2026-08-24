@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: casa_de_cha_e_drogas
+titulo: Os trilhos que não constam dos manifestos
+janela: pode_durar_um_ou_mais_dias
+categorias:
+- juppongatana
+- masao
+- ponte_kozakura
+nucleo_obrigatorio:
+- Uma investigação de contrabando oriental revela que parte da carga não depende do cais e usa infraestrutura antiga
+  de Sarbreen para desaparecer ou reaparecer fora dos manifestos.
+- Kurobane ou sua célula usa a operação para proteger informação e logística, oferecendo a Ren uma oportunidade
+  real de confronto, perseguição ou descoberta sem garantir encontro frontal.
+- A pista física aponta para um sistema de trânsito subterrâneo maior do que um único esconderijo, mas ainda não
+  entrega a Ponte pronta.
+forma_preferencial:
+- Combinar investigação, perseguição e combate com objetivos de extração; adversários tentam salvar carga, pessoas
+  ou informação, não buscar duelo por esporte.
+guardrails:
+- Não garantir captura ou neutralização de Kurobane.
+- Se Kurobane já estiver neutralizado, sua célula continua apenas na medida em que fatos anteriores sustentem isso.
+- Qualquer neutralização durável passa pela Task 54.
+- Infraestrutura de Sarbreen deve reutilizar geografia plausível em vez de aparecer como tecnologia conveniente.
+adaptacao:
+- Se a casa de chá específica estiver comprometida, mover a ponta para outro intermediário comercial já plausível
+  sem apagar a cadeia logística.
+- Se Ren evitar investigação, Night Watch/aliados podem obter parte dos sinais e a rede continua operando.

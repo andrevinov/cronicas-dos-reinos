@@ -1,0 +1,30 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: chegada_golden_lily
+titulo: O Lírio Dourado entra no horizonte
+janela: hora_canonica_aproximada
+categorias:
+- golden_lily
+- masao
+- crise
+nucleo_obrigatorio:
+- O Golden Lily alcança Ravens Bluff e se torna presença física impossível de ignorar no porto, fortemente armado
+  e grande para os padrões locais.
+- A atividade comercial apresentada por seus enviados é real e atrai interesse econômico legítimo, enquanto o navio
+  também serve à logística de Pan Chu e da rede de Masao.
+- Autoridades e comerciantes precisam reagir ao navio; Ren só toma conhecimento se algum canal causal lhe trouxer
+  a informação.
+forma_preferencial:
+- Apresentar primeiro como espetáculo, oportunidade e problema diplomático simultaneamente, não como dungeon flutuante
+  esperando Ren.
+guardrails:
+- Chegada não prova a Ponte.
+- Nem toda carga, tripulante ou negociação é ilícita.
+- Pan Chu não precisa se expor pessoalmente só para o evento acontecer.
+- Não notificar Ren automaticamente.
+adaptacao:
+- Se Pan Chu estiver fisicamente incapaz por fato canônico extraordinário, o navio ainda pode chegar sob comando
+  sucessor preparado; não ressuscitá-lo.
+- Se o porto estiver fechado por condição persistente, adaptar ancoragem e logística mantendo a chegada física quando
+  ainda plausível.
