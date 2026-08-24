@@ -128,6 +128,7 @@ class TournamentFixtureTest(unittest.TestCase):
             "Luath ofereceu a Ren uma entrada voluntaria no circuito clandestino.\n"
             "Ren aceitou entrar no circuito usando a identidade escolhida.\n"
             "Ren recusou entrar no circuito clandestino.\n"
+            "Ren retirou-se voluntariamente do circuito clandestino.\n"
             "Ren venceu a primeira noite do circuito.\n"
             "Ren perdeu a primeira noite do circuito.\n"
             "Ren perdeu a segunda noite do circuito.\n"
@@ -165,6 +166,18 @@ class TournamentFixtureTest(unittest.TestCase):
             return tour.respond(
                 self.repo, "aceitar", source=self.source,
                 evidence="Ren aceitou entrar no circuito usando a identidade escolhida.", persona=persona,
+            )
+
+    def _conclude(self, position: int, outcome: str, evidence: str, *, now=None):
+        scheduled = tour.load_state(self.repo)["agenda"][position]
+        due = mundo.parse_instant(scheduled["em"]["data"], scheduled["em"]["hora"])
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(now or due, {})):
+            return tour.conclude_round(
+                self.repo,
+                scheduled["id"],
+                outcome,
+                source=self.source,
+                evidence=evidence,
             )
 
     def test_recusa_fecha_miniarco_sem_agenda_ou_penalidade_automatica(self):
@@ -209,14 +222,46 @@ class TournamentFixtureTest(unittest.TestCase):
         self.assertEqual(view["resultado"], "rodada_devida")
         self.assertEqual(len([p for p in view["fontes_lidas"] if "/rodadas/" in p]), 1)
 
+    def test_retry_atrasado_nao_conclui_a_rodada_seguinte(self):
+        self._accept()
+        second = tour.load_state(self.repo)["agenda"][1]
+        late = mundo.WorldInstant(mundo.parse_instant(second["em"]["data"], second["em"]["hora"]).minute + 30)
+        first = tour.load_state(self.repo)["agenda"][0]
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(late, {})):
+            one = tour.conclude_round(
+                self.repo, first["id"], "vitoria", source=self.source,
+                evidence="Ren venceu a primeira noite do circuito.",
+            )
+            retry = tour.conclude_round(
+                self.repo, first["id"], "vitoria", source=self.source,
+                evidence="Ren venceu a primeira noite do circuito.",
+            )
+        self.assertTrue(one["alterou"])
+        self.assertFalse(retry["alterou"])
+        state = tour.load_state(self.repo)
+        self.assertEqual([item["id"] for item in state["rodadas_concluidas"]], [first["id"]])
+
+    def test_retirada_entre_noites_e_sempre_registravel(self):
+        self._accept()
+        between = mundo.WorldInstant(self.accepted_at.minute + 6 * 60)
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(between, {})):
+            result = tour.withdraw(
+                self.repo,
+                source=self.source,
+                evidence="Ren retirou-se voluntariamente do circuito clandestino.",
+            )
+        self.assertEqual(result["resultado"], "abandonado")
+        state = tour.load_state(self.repo)
+        self.assertEqual(state["estado"], "abandonado")
+        later = mundo.WorldInstant(self.accepted_at.minute + 20 * 1440)
+        self.assertIsNone(tour.next_boundary(self.repo, between, later)["quando"])
+
     def test_duas_derrotas_classificatorias_eliminam_sem_reescrever(self):
         self._accept()
-        for index, evidence in enumerate(("Ren perdeu a primeira noite do circuito.", "Ren perdeu a segunda noite do circuito.")):
-            scheduled = tour.load_state(self.repo)["agenda"][index]
-            due = mundo.parse_instant(scheduled["em"]["data"], scheduled["em"]["hora"])
-            with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(due, {})):
-                result = tour.conclude_round(self.repo, "derrota", source=self.source, evidence=evidence)
-        self.assertEqual(result["estado_torneio"], "eliminado")
+        one = self._conclude(0, "derrota", "Ren perdeu a primeira noite do circuito.")
+        self.assertEqual(one["estado_torneio"], "ativo")
+        two = self._conclude(1, "derrota", "Ren perdeu a segunda noite do circuito.")
+        self.assertEqual(two["estado_torneio"], "eliminado")
         self.assertEqual(tour.load_state(self.repo)["derrotas_classificatorias"], 2)
 
     def test_semifinal_libera_pista_parcial_e_final_vencida_integral(self):
@@ -228,10 +273,7 @@ class TournamentFixtureTest(unittest.TestCase):
             "Ren venceu a semifinal do circuito.",
         ]
         for index, evidence in enumerate(evidences):
-            scheduled = tour.load_state(self.repo)["agenda"][index]
-            due = mundo.parse_instant(scheduled["em"]["data"], scheduled["em"]["hora"])
-            with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(due, {})):
-                tour.conclude_round(self.repo, "vitoria", source=self.source, evidence=evidence)
+            self._conclude(index, "vitoria", evidence)
         self.assertEqual(tour.load_state(self.repo)["premio"]["estado"], "parcial_disponivel")
         self.assertEqual(tour.prize_view(self.repo)["grau"], "parcial")
 
@@ -241,12 +283,34 @@ class TournamentFixtureTest(unittest.TestCase):
         with mock.patch.object(tour, "_final_candidate", return_value=(candidate, ["fixture:final"])), mock.patch.object(
             tour.mundo, "load_canonical_time", return_value=(due, {})
         ):
-            result = tour.conclude_round(self.repo, "vitoria", source=self.source, evidence="Ren venceu a final do circuito.")
+            result = tour.conclude_round(
+                self.repo, final["id"], "vitoria", source=self.source,
+                evidence="Ren venceu a final do circuito.",
+            )
         self.assertEqual(result["estado_torneio"], "encerrado")
         self.assertEqual(result["premio"], "integral_disponivel")
         full = tour.prize_view(self.repo)
         self.assertEqual(full["grau"], "integral")
         self.assertNotIn("conhecimento_de_ren", full["premio"])
+
+    def test_entrega_do_premio_preserva_proveniencia_e_retry(self):
+        self._accept()
+        state = tour.load_state(self.repo)
+        state["estado"] = "encerrado"
+        state["premio"]["estado"] = "integral_disponivel"
+        self._write_state(state)
+        delivered_at = mundo.WorldInstant(self.accepted_at.minute + 15 * 1440)
+        evidence = "O intermediario entregou a informacao conquistada no circuito."
+        with mock.patch.object(tour.mundo, "load_canonical_time", return_value=(delivered_at, {})):
+            first = tour.deliver_prize(self.repo, source=self.source, evidence=evidence)
+            retry = tour.deliver_prize(self.repo, source=self.source, evidence=evidence)
+        self.assertTrue(first["alterou"])
+        self.assertFalse(retry["alterou"])
+        self.assertEqual(retry["fonte"], self.source)
+        self.assertEqual(retry["evidencia"], evidence)
+        persisted = tour.load_state(self.repo)["premio"]
+        self.assertEqual(persisted["fonte"], self.source)
+        self.assertEqual(persisted["evidencia"], evidence)
 
 
 class TournamentBudgetTest(unittest.TestCase):
