@@ -59,6 +59,13 @@ regras:
   encontro_nao_gera_nova_sidequest: true
   fonte_nova_sidequest: canonica_explicita
   perfis_procedurais_sao_legado: true
+sidequests_canonicas:
+  schema_sidequests_canonicas: 1
+  engine: canonical_secret_quest_engine_task32
+  detalhes_somente_apos_gate: true
+  scheduler: proibido
+  rng: proibido
+  por_npc: {}
 perfis:
   kethra_dunn:
     nome: Kethra Dunn
