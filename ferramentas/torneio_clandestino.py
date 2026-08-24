@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Task 37 — mini-arco secreto de torneio clandestino, sem scheduler.
 
-O convite só aparece em encontro explícito com o NPC roteado. Aceite ancora cinco
-noites relativas ao instante canônico; ``fronteira_mundo`` usa esse estado somente
-quando há compressão temporal. Cada rodada abre exatamente um fragmento reservado.
-Nenhuma função decide fala, identidade, vitória ou ação de Ren.
+Convite só existe em encontro explícito com Luath. O aceite ancora cinco noites
+relativas ao instante canônico; a fronteira temporal só impede que compressões
+de tempo pulem uma noite aceita. Cada rodada abre um fragmento reservado e nada
+neste módulo decide fala, identidade, comparecimento, vitória ou ação de Ren.
 """
 from __future__ import annotations
 
@@ -29,7 +29,6 @@ import transacoes
 ROOT = Path("narrador/arcos/parte_1/torneio-clandestino")
 INDEX = ROOT / "index.yaml"
 STATE = ROOT / "estado.yaml"
-ROUNDS = ROOT / "rodadas"
 SCHEMA = 1
 STATE_SCHEMA = 1
 MAX_STATE_BYTES = 12 * 1024
@@ -86,6 +85,21 @@ def _text(value: Any, label: str, maximum: int | None = None) -> str:
     return result
 
 
+def _parts(value: Any, label: str) -> dict[str, str] | None:
+    if value is None:
+        return None
+    value = _map(value, label)
+    instant = mundo.parse_instant(
+        _text(value.get("data"), label + ".data"),
+        _text(value.get("hora"), label + ".hora"),
+    )
+    return mundo.instant_parts(instant)
+
+
+def _instant(value: dict[str, Any]) -> mundo.WorldInstant:
+    return mundo.parse_instant(str(value["data"]), str(value["hora"]))
+
+
 def _atomic(path: Path, data: dict[str, Any]) -> None:
     rendered = yaml.safe_dump(data, allow_unicode=True, sort_keys=False)
     size = len(rendered.encode("utf-8"))
@@ -117,6 +131,7 @@ def load_index(repo: Path) -> dict[str, Any]:
     if data.get("estatuto") != "mini_arco_opcional_multinoite":
         raise TournamentError("estatuto do torneio inesperado")
     _text(data.get("id"), "torneio.id")
+
     invite = _map(data.get("convite"), "convite")
     if invite.get("npc") != "luath" or invite.get("exige_encontro_explicito") is not True:
         raise TournamentError("convite deve permanecer dirigido a encontro explicito com Luath")
@@ -134,9 +149,9 @@ def load_index(repo: Path) -> dict[str, Any]:
         raise TournamentError(f"torneio precisa de exatamente {MAX_ROUNDS} rodadas")
     seen: set[str] = set()
     previous = 0
-    final_count = 0
-    for pos, item in enumerate(schedule, start=1):
-        item = _map(item, f"agenda_relativa[{pos - 1}]")
+    finals = 0
+    for pos, item in enumerate(schedule):
+        item = _map(item, f"agenda_relativa[{pos}]")
         rid = _text(item.get("id"), "rodada.id")
         if not ID_RE.fullmatch(rid) or rid in seen:
             raise TournamentError(f"id de rodada invalido/duplicado: {rid}")
@@ -147,8 +162,8 @@ def load_index(repo: Path) -> dict[str, Any]:
         previous = offset
         mundo._parse_clock(_text(item.get("hora"), f"{rid}.hora"))
         _safe_fragment(item.get("fragmento"), f"{rid}.fragmento")
-        final_count += int(item.get("final") is True)
-    if final_count != 1 or schedule[-1].get("final") is not True:
+        finals += int(item.get("final") is True)
+    if finals != 1 or schedule[-1].get("final") is not True:
         raise TournamentError("somente a ultima rodada pode ser final")
     if schedule[-1]["offset_dias"] not in {13, 14, 15}:
         raise TournamentError("mini-arco deve ocupar aproximadamente duas semanas")
@@ -159,6 +174,7 @@ def load_index(repo: Path) -> dict[str, Any]:
         raise TournamentError("final precisa de candidatos kozakurianos de fallback")
     prize = _map(data.get("premio"), "premio")
     _safe_fragment(prize.get("fragmento"), "premio.fragmento")
+
     rules = _map(data.get("regras"), "regras")
     required_true = {
         "derrota_nao_e_reescrita",
@@ -183,14 +199,6 @@ def load_index(repo: Path) -> dict[str, Any]:
     return data
 
 
-def _validate_when(value: Any, label: str) -> dict[str, str] | None:
-    if value is None:
-        return None
-    value = _map(value, label)
-    instant = mundo.parse_instant(_text(value.get("data"), label + ".data"), _text(value.get("hora"), label + ".hora"))
-    return mundo.instant_parts(instant)
-
-
 def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any]:
     index = index or load_index(repo)
     data = _map(_load(repo / STATE), STATE.as_posix())
@@ -200,20 +208,23 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
         raise TournamentError("metadados do estado do torneio invalidos")
     if data.get("estado") not in VALID_STATES:
         raise TournamentError("estado do mini-arco invalido")
+
     invite = _map(data.get("convite"), "estado.convite")
-    _validate_when(invite.get("oferecido_em"), "convite.oferecido_em")
-    _validate_when(invite.get("respondido_em"), "convite.respondido_em")
+    _parts(invite.get("oferecido_em"), "convite.oferecido_em")
+    _parts(invite.get("respondido_em"), "convite.respondido_em")
     if invite.get("resposta") not in {None, "aceitar", "recusar"}:
         raise TournamentError("convite.resposta invalida")
-    reg = _map(data.get("inscricao"), "inscricao")
-    _validate_when(reg.get("aceita_em"), "inscricao.aceita_em")
-    if reg.get("identidade") not in {None, *VALID_PERSONAS}:
+
+    signup = _map(data.get("inscricao"), "inscricao")
+    _parts(signup.get("aceita_em"), "inscricao.aceita_em")
+    if signup.get("identidade") is not None and signup.get("identidade") not in VALID_PERSONAS:
         raise TournamentError("identidade de inscricao invalida")
-    if reg.get("identidade") == "outra" and not isinstance(reg.get("nome"), str):
+    if signup.get("identidade") == "outra" and not isinstance(signup.get("nome"), str):
         raise TournamentError("inscricao em outra persona exige nome")
 
     schedule = _list(data.get("agenda"), "estado.agenda")
-    if data["estado"] in {"ativo", "eliminado", "abandonado", "encerrado"} and len(schedule) != MAX_ROUNDS:
+    terminal_after_start = {"ativo", "eliminado", "abandonado", "encerrado"}
+    if data["estado"] in terminal_after_start and len(schedule) != MAX_ROUNDS:
         raise TournamentError("estado iniciado precisa preservar cinco instantes de rodada")
     if data["estado"] in {"latente", "convidado", "recusado"} and schedule:
         raise TournamentError("estado nao iniciado nao pode possuir agenda de lutas")
@@ -222,7 +233,7 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
         item = _map(item, f"agenda[{pos}]")
         if item.get("id") != expected_ids[pos]:
             raise TournamentError("agenda materializada diverge da ordem secreta")
-        _validate_when(item.get("em"), f"agenda[{pos}].em")
+        _parts(item.get("em"), f"agenda[{pos}].em")
 
     completed = _list(data.get("rodadas_concluidas"), "rodadas_concluidas")
     if len(completed) > MAX_ROUNDS:
@@ -232,25 +243,24 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
     for pos, item in enumerate(completed):
         item = _map(item, f"rodadas_concluidas[{pos}]")
         rid = _text(item.get("id"), "rodada concluida.id")
-        if rid in seen or rid not in expected_ids:
-            raise TournamentError("rodada concluida invalida/duplicada")
+        if rid in seen or rid not in expected_ids or expected_ids.index(rid) != pos:
+            raise TournamentError("rodadas concluidas precisam ser unicas e preservar ordem")
         seen.add(rid)
-        if expected_ids.index(rid) != pos:
-            raise TournamentError("rodadas concluidas precisam preservar ordem")
         outcome = item.get("resultado")
         if outcome not in VALID_OUTCOMES:
             raise TournamentError("resultado de rodada invalido")
-        _validate_when(item.get("concluida_em"), "rodada.concluida_em")
+        _parts(item.get("concluida_em"), "rodada.concluida_em")
         if pos < 3 and outcome in LOSS_OUTCOMES:
             losses += 1
     if data.get("derrotas_classificatorias") != losses:
         raise TournamentError("contador de derrotas classificatorias diverge do historico")
     if not isinstance(data.get("qualificado_final"), bool):
         raise TournamentError("qualificado_final precisa ser booleano")
+
     prize = _map(data.get("premio"), "estado.premio")
     if prize.get("estado") not in VALID_PRIZES:
         raise TournamentError("estado de premio invalido")
-    _validate_when(prize.get("entregue_em"), "premio.entregue_em")
+    _parts(prize.get("entregue_em"), "premio.entregue_em")
     history = _list(data.get("historico_recente"), "historico_recente")
     if len(history) > MAX_HISTORY:
         raise TournamentError("historico do torneio excede teto")
@@ -273,7 +283,9 @@ def _source_evidence(repo: Path, source: Any, evidence: Any) -> tuple[str, str]:
 
 
 def _history(state: dict[str, Any], action: str, now: mundo.WorldInstant, note: str) -> None:
-    state["historico_recente"].append({"acao": action, "em": mundo.instant_parts(now), "nota": note})
+    state["historico_recente"].append(
+        {"acao": action, "em": mundo.instant_parts(now), "nota": note}
+    )
     state["historico_recente"] = state["historico_recente"][-MAX_HISTORY:]
 
 
@@ -300,7 +312,7 @@ def invitation_candidate(repo: Path, *, now: mundo.WorldInstant | None = None) -
         return {"disponivel": False, "motivo": "mini_arco_ja_decidido", "fontes_lidas": sources}
     now = now or mundo.load_canonical_time(repo)[0]
     minimum = mundo.parse_instant(index["convite"]["data_minima"], "00:00")
-    if now < minimum:
+    if now.minute < minimum.minute:
         return {"disponivel": False, "motivo": "janela_temporal_fechada", "fontes_lidas": sources}
     level = entradas.level(repo)
     sources.append(entradas.RUNTIME.as_posix())
@@ -310,7 +322,12 @@ def invitation_candidate(repo: Path, *, now: mundo.WorldInstant | None = None) -
     sources.extend(rel_sources)
     trust = meters["confianca"]
     if trust is None or trust < index["convite"]["confianca_minima"]:
-        return {"disponivel": False, "motivo": "confianca_luath_insuficiente", "confianca": trust, "fontes_lidas": list(dict.fromkeys(sources))}
+        return {
+            "disponivel": False,
+            "motivo": "confianca_luath_insuficiente",
+            "confianca": trust,
+            "fontes_lidas": list(dict.fromkeys(sources)),
+        }
     fragment = index["convite"]["fragmento"]
     invite = _map(_load(repo / fragment), fragment)
     if invite.get("schema_convite_torneio_clandestino") != 1 or invite.get("npc") != "luath":
@@ -340,7 +357,9 @@ def offer(repo: Path, *, source: str, evidence: str) -> dict[str, Any]:
         raise TournamentError(f"convite nao esta elegivel: {gate.get('motivo')}")
     now = mundo.load_canonical_time(repo)[0]
     state["estado"] = "convidado"
-    state["convite"].update({"oferecido_em": mundo.instant_parts(now), "fonte": source, "evidencia": evidence})
+    state["convite"].update(
+        {"oferecido_em": mundo.instant_parts(now), "fonte": source, "evidencia": evidence}
+    )
     _history(state, "convite_oferecido", now, "Luath apresentou o circuito; nenhuma resposta de Ren foi presumida.")
     _atomic(repo / STATE, state)
     return {"ok": True, "alterou": True, "resultado": "convidado"}
@@ -364,7 +383,7 @@ def respond(
         raise TournamentError("resposta deve ser aceitar ou recusar")
     index = load_index(repo)
     state = load_state(repo, index)
-    source, evidence = _source_evidence(repo, source, evidence)
+    _source_evidence(repo, source, evidence)
     if state["estado"] in {"recusado", "ativo", "eliminado", "abandonado", "encerrado"}:
         expected = "aceitar" if state["estado"] in {"ativo", "eliminado", "abandonado", "encerrado"} else "recusar"
         if state["convite"].get("resposta") == response == expected:
@@ -389,9 +408,16 @@ def respond(
     else:
         name = persona
     state["estado"] = "ativo"
-    state["inscricao"] = {"aceita_em": mundo.instant_parts(now), "identidade": persona, "nome": name}
+    state["inscricao"] = {
+        "aceita_em": mundo.instant_parts(now),
+        "identidade": persona,
+        "nome": name,
+    }
     state["agenda"] = [
-        {"id": item["id"], "em": mundo.instant_parts(_scheduled_instant(now, item["offset_dias"], item["hora"]))}
+        {
+            "id": item["id"],
+            "em": mundo.instant_parts(_scheduled_instant(now, item["offset_dias"], item["hora"])),
+        }
         for item in index["agenda_relativa"]
     ]
     _history(state, "inscricao_aceita", now, f"Ren aceitou participar sob a inscricao escolhida ({persona}); resultados permanecem abertos.")
@@ -408,11 +434,7 @@ def _next_schedule(state: dict[str, Any]) -> dict[str, Any] | None:
     return next((item for item in state["agenda"] if item["id"] not in done), None)
 
 
-def next_boundary(
-    repo: Path,
-    start: mundo.WorldInstant,
-    target: mundo.WorldInstant,
-) -> dict[str, Any]:
+def next_boundary(repo: Path, start: mundo.WorldInstant, target: mundo.WorldInstant) -> dict[str, Any]:
     if not (repo / STATE).is_file():
         return {"quando": None, "rodada": None, "fontes_lidas": []}
     raw = _map(_load(repo / STATE), STATE.as_posix())
@@ -421,49 +443,74 @@ def next_boundary(
     index = load_index(repo)
     state = load_state(repo, index)
     nxt = _next_schedule(state)
+    sources = [STATE.as_posix(), INDEX.as_posix()]
     if nxt is None:
-        return {"quando": None, "rodada": None, "fontes_lidas": [STATE.as_posix(), INDEX.as_posix()]}
-    due = mundo.parse_instant(nxt["em"]["data"], nxt["em"]["hora"])
-    if due <= start:
-        return {"quando": start, "rodada": nxt["id"], "atrasada": True, "fontes_lidas": [STATE.as_posix(), INDEX.as_posix()]}
-    if due <= target:
-        return {"quando": due, "rodada": nxt["id"], "atrasada": False, "fontes_lidas": [STATE.as_posix(), INDEX.as_posix()]}
-    return {"quando": None, "rodada": nxt["id"], "fontes_lidas": [STATE.as_posix(), INDEX.as_posix()]}
+        return {"quando": None, "rodada": None, "fontes_lidas": sources}
+    due = _instant(nxt["em"])
+    if due.minute <= start.minute:
+        return {"quando": start, "rodada": nxt["id"], "atrasada": True, "fontes_lidas": sources}
+    if due.minute <= target.minute:
+        return {"quando": due, "rodada": nxt["id"], "atrasada": False, "fontes_lidas": sources}
+    return {"quando": None, "rodada": nxt["id"], "fontes_lidas": sources}
+
+
+def _entry_candidate(
+    repo: Path,
+    candidate: str,
+    entry_index: dict[str, Any],
+    entry_state: dict[str, Any],
+    level: int,
+) -> tuple[dict[str, Any] | None, list[str]]:
+    meta = entry_index["candidatos"][candidate]
+    current = entry_state["candidatos"][candidate]
+    if current["estado"] == "inviavel":
+        return None, []
+    if current["estado"] == "presente":
+        return {
+            "id": candidate,
+            "nome": meta["nome"],
+            "origem": "Kozakura",
+            "estado_entrada": "presente",
+            "confirmar_entrada_se_aparecer": False,
+        }, []
+    if level < meta["nivel_minimo_normal"] or entradas.focus(entry_index, entry_state) != candidate:
+        return None, []
+    try:
+        gate = arco_mundo.entry_gate(repo, candidate)
+    except arco_mundo.ArcWorldError as exc:
+        raise TournamentError(str(exc)) from exc
+    if not gate["permitido"]:
+        return None, list(gate.get("fontes_lidas") or [])
+    return {
+        "id": candidate,
+        "nome": meta["nome"],
+        "origem": "Kozakura",
+        "estado_entrada": "latente",
+        "confirmar_entrada_se_aparecer": True,
+    }, list(gate.get("fontes_lidas") or [])
 
 
 def _final_candidate(repo: Path, index: dict[str, Any]) -> tuple[dict[str, Any] | None, list[str]]:
     sources: list[str] = []
     level = entradas.level(repo)
-    sources.append(entradas.RUNTIME.as_posix())
     entry_index = entradas.load_index(repo)
     entry_state = entradas.load_state(repo, entry_index)
-    sources.extend([entradas.INDEX.as_posix(), entradas.STATE.as_posix()])
+    sources.extend([entradas.RUNTIME.as_posix(), entradas.INDEX.as_posix(), entradas.STATE.as_posix()])
+    milestone_state = progressao_juppongatana.load_state(repo)
     neutralized = {
         item["membro"]
-        for item in progressao_juppongatana.load_state(repo).get("neutralizacoes") or []
+        for item in milestone_state.get("neutralizacoes") or []
         if isinstance(item, dict) and item.get("membro")
     }
     sources.append(progressao_juppongatana.STATE.as_posix())
+
     for candidate in index["final"]["candidatos_prioridade"]:
         if candidate in entry_index["candidatos"]:
-            meta = entry_index["candidatos"][candidate]
-            state = entry_state["candidatos"][candidate]
-            if state["estado"] == "inviavel" or level < meta["nivel_minimo_normal"]:
-                continue
-            try:
-                gate = arco_mundo.entry_gate(repo, candidate)
-            except arco_mundo.ArcWorldError as exc:
-                raise TournamentError(str(exc)) from exc
-            sources.extend(gate.get("fontes_lidas") or [])
-            if not gate["permitido"]:
-                continue
-            return {
-                "id": candidate,
-                "nome": meta["nome"],
-                "origem": "Kozakura",
-                "estado_entrada": state["estado"],
-                "confirmar_entrada_se_aparecer": state["estado"] == "latente",
-            }, list(dict.fromkeys(sources))
+            projected, extra = _entry_candidate(repo, candidate, entry_index, entry_state, level)
+            sources.extend(extra)
+            if projected is not None:
+                return projected, list(dict.fromkeys(sources))
+            continue
         if candidate == "kurobane_jinzaburo":
             if candidate in neutralized:
                 continue
@@ -495,8 +542,8 @@ def round_view(repo: Path, *, now: mundo.WorldInstant | None = None) -> dict[str
     if nxt is None:
         return {"resultado": "quadro_concluido", "fontes_lidas": sources}
     now = now or mundo.load_canonical_time(repo)[0]
-    due = mundo.parse_instant(nxt["em"]["data"], nxt["em"]["hora"])
-    if now < due:
+    due = _instant(nxt["em"])
+    if now.minute < due.minute:
         return {"resultado": "aguardando", "proxima_rodada": copy.deepcopy(nxt), "fontes_lidas": sources}
     meta = next(item for item in index["agenda_relativa"] if item["id"] == nxt["id"])
     fragment = meta["fragmento"]
@@ -504,11 +551,11 @@ def round_view(repo: Path, *, now: mundo.WorldInstant | None = None) -> dict[str
     if detail.get("schema_rodada_torneio_clandestino") != 1 or detail.get("id") != nxt["id"]:
         raise TournamentError(f"fragmento de rodada invalido: {nxt['id']}")
     sources.append(fragment)
-    result = {
+    result: dict[str, Any] = {
         "resultado": "rodada_devida",
         "rodada": nxt["id"],
         "em": copy.deepcopy(nxt["em"]),
-        "atrasada": now > due,
+        "atrasada": now.minute > due.minute,
         "inscricao": copy.deepcopy(state["inscricao"]),
         "detalhe": copy.deepcopy(detail),
         "fontes_lidas": sources,
@@ -518,7 +565,10 @@ def round_view(repo: Path, *, now: mundo.WorldInstant | None = None) -> dict[str
         sources.extend(candidate_sources)
         if candidate is None:
             result["resultado"] = "final_temporariamente_impossivel"
-            result["detalhe"] = {"id": "final", "regra": "nenhum kozakuriano conhecido esta causalmente disponivel; adaptar antes de avancar"}
+            result["detalhe"] = {
+                "id": "final",
+                "regra": "nenhum kozakuriano conhecido esta causalmente disponivel; adaptar antes de avancar",
+            }
         else:
             result["oponente_final"] = candidate
         result["fontes_lidas"] = list(dict.fromkeys(sources))
@@ -541,18 +591,23 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
     rid = view["rodada"]
     now = mundo.load_canonical_time(repo)[0]
     state["rodadas_concluidas"].append(
-        {"id": rid, "resultado": outcome, "concluida_em": mundo.instant_parts(now), "fonte": source, "evidencia": evidence}
+        {
+            "id": rid,
+            "resultado": outcome,
+            "concluida_em": mundo.instant_parts(now),
+            "fonte": source,
+            "evidencia": evidence,
+        }
     )
     position = [item["id"] for item in index["agenda_relativa"]].index(rid)
     if position < 3 and outcome in LOSS_OUTCOMES:
         state["derrotas_classificatorias"] += 1
+
     if outcome == "abandono":
         state["estado"] = "abandonado"
     elif position < 3:
         if state["derrotas_classificatorias"] >= 2:
             state["estado"] = "eliminado"
-        elif position == 2:
-            state["estado"] = "ativo"
     elif rid == "semifinal":
         if outcome == "vitoria":
             state["qualificado_final"] = True
@@ -561,7 +616,7 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
             state["estado"] = "eliminado"
             state["premio"]["estado"] = "parcial_disponivel"
         else:
-            state["estado"] = "abandonado" if outcome == "abandono" else "eliminado"
+            state["estado"] = "eliminado"
     elif rid == "final":
         if not state["qualificado_final"]:
             raise TournamentError("estado incoerente: final sem qualificacao")
@@ -573,7 +628,7 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
             if state["premio"]["estado"] == "indisponivel":
                 state["premio"]["estado"] = "parcial_disponivel"
         else:
-            state["estado"] = "abandonado" if outcome == "abandono" else "eliminado"
+            state["estado"] = "eliminado"
     _history(state, "rodada_concluida", now, f"{rid}: {outcome}; nenhum resultado adicional foi inferido.")
     _atomic(repo / STATE, state)
     return {
@@ -582,7 +637,7 @@ def conclude_round(repo: Path, outcome: str, *, source: str, evidence: str) -> d
         "resultado": outcome,
         "estado_torneio": state["estado"],
         "premio": state["premio"]["estado"],
-        "proxima_rodada": _next_schedule(state),
+        "proxima_rodada": _next_schedule(state) if state["estado"] == "ativo" else None,
     }
 
 
@@ -622,7 +677,13 @@ def deliver_prize(repo: Path, *, source: str, evidence: str) -> dict[str, Any]:
     state["premio"] = {"estado": f"{tier}_entregue", "entregue_em": mundo.instant_parts(now)}
     _history(state, "premio_entregue", now, f"Premio {tier} foi efetivamente entregue; conhecimento ainda segue pipeline normal.")
     _atomic(repo / STATE, state)
-    return {"ok": True, "alterou": True, "resultado": f"{tier}_entregue", "fonte": source, "evidencia": evidence}
+    return {
+        "ok": True,
+        "alterou": True,
+        "resultado": f"{tier}_entregue",
+        "fonte": source,
+        "evidencia": evidence,
+    }
 
 
 def status(repo: Path) -> dict[str, Any]:
@@ -631,16 +692,22 @@ def status(repo: Path) -> dict[str, Any]:
     return {
         "ok": True,
         "estado": state["estado"],
-        "convite": {"resposta": state["convite"]["resposta"], "oferecido_em": state["convite"]["oferecido_em"]},
+        "convite": {
+            "resposta": state["convite"]["resposta"],
+            "oferecido_em": state["convite"]["oferecido_em"],
+        },
         "inscricao": copy.deepcopy(state["inscricao"]),
-        "rodadas_concluidas": [{"id": item["id"], "resultado": item["resultado"]} for item in state["rodadas_concluidas"]],
-        "proxima_rodada": _next_schedule(state),
+        "rodadas_concluidas": [
+            {"id": item["id"], "resultado": item["resultado"]}
+            for item in state["rodadas_concluidas"]
+        ],
+        "proxima_rodada": _next_schedule(state) if state["estado"] == "ativo" else None,
         "premio": state["premio"]["estado"],
         "fontes_lidas": [INDEX.as_posix(), STATE.as_posix()],
     }
 
 
-def _validate_round(repo: Path, raw: dict[str, Any], position: int) -> tuple[str, str]:
+def _validate_round(repo: Path, raw: dict[str, Any], position: int) -> str:
     fragment = raw["fragmento"]
     data = _map(_load(repo / fragment), fragment)
     if data.get("schema_rodada_torneio_clandestino") != 1 or data.get("natureza") != "reservado":
@@ -648,15 +715,15 @@ def _validate_round(repo: Path, raw: dict[str, Any], position: int) -> tuple[str
     if data.get("id") != raw["id"] or data.get("ordem") != position + 1:
         raise TournamentError(f"fragmento diverge do indice: {raw['id']}")
     if raw.get("final") is True:
-        if data.get("oponente_slot", {}).get("tipo") != "kozakuriano_conhecido":
+        if _map(data.get("oponente_slot"), "final.oponente_slot").get("tipo") != "kozakuriano_conhecido":
             raise TournamentError("final precisa manter slot kozakuriano conhecido")
-        return "kara_tur", fragment
+        return "kara_tur"
     opponent = _map(data.get("oponente"), f"{raw['id']}.oponente")
     region = _text(opponent.get("regiao_macro"), f"{raw['id']}.regiao_macro")
     if region not in {"faerun", "kara_tur"}:
         raise TournamentError("oponente precisa pertencer a Faerun ou Kara-Tur")
     _text(opponent.get("tradicao"), f"{raw['id']}.tradicao")
-    return region, fragment
+    return region
 
 
 def check(repo: Path) -> dict[str, Any]:
@@ -666,8 +733,7 @@ def check(repo: Path) -> dict[str, Any]:
         index = load_index(repo)
         load_state(repo, index)
         for position, item in enumerate(index["agenda_relativa"]):
-            region, _ = _validate_round(repo, item, position)
-            regions.append(region)
+            regions.append(_validate_round(repo, item, position))
         if "faerun" not in regions or "kara_tur" not in regions:
             raise TournamentError("quadro precisa misturar tradicoes de Faerun e Kara-Tur")
         invite = _map(_load(repo / index["convite"]["fragmento"]), "convite")
@@ -692,19 +758,15 @@ def check(repo: Path) -> dict[str, Any]:
     return {"ok": not errors, "erros": errors, "regioes": sorted(set(regions))}
 
 
-def _dump(value: Any) -> str:
-    return yaml.safe_dump(value, allow_unicode=True, sort_keys=False)
-
-
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path.cwd())
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("status")
     sub.add_parser("convite")
-    offer_cmd = sub.add_parser("oferecer")
-    offer_cmd.add_argument("--fonte", required=True)
-    offer_cmd.add_argument("--evidencia", required=True)
+    offered = sub.add_parser("oferecer")
+    offered.add_argument("--fonte", required=True)
+    offered.add_argument("--evidencia", required=True)
     response = sub.add_parser("responder")
     response.add_argument("resposta", choices=["aceitar", "recusar"])
     response.add_argument("--fonte", required=True)
@@ -735,7 +797,14 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "oferecer":
             result = offer(repo, source=args.fonte, evidence=args.evidencia)
         elif args.cmd == "responder":
-            result = respond(repo, args.resposta, source=args.fonte, evidence=args.evidencia, persona=args.persona, name=args.nome)
+            result = respond(
+                repo,
+                args.resposta,
+                source=args.fonte,
+                evidence=args.evidencia,
+                persona=args.persona,
+                name=args.nome,
+            )
         elif args.cmd == "rodada":
             result = round_view(repo)
         elif args.cmd == "concluir":
@@ -746,9 +815,17 @@ def main(argv: list[str] | None = None) -> int:
             result = deliver_prize(repo, source=args.fonte, evidence=args.evidencia)
         else:
             result = check(repo)
-        print(_dump(result), end="")
+        print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0 if args.cmd != "check" or result["ok"] else 1
-    except (TournamentError, mundo.WorldEngineError, entradas.EntryError, estado_relacional.RelationshipStateError, transacoes.TransactionError, OSError, yaml.YAMLError) as exc:
+    except (
+        TournamentError,
+        mundo.WorldEngineError,
+        entradas.EntryError,
+        estado_relacional.RelationshipStateError,
+        transacoes.TransactionError,
+        OSError,
+        yaml.YAMLError,
+    ) as exc:
         print(f"erro: {exc}")
         return 1
 
