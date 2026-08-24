@@ -17,7 +17,7 @@ python3 ferramentas/cena_mundo.py preparar \
 
 `preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual como fato e não cria arquivo de preparação.
 
-Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar **refs canônicas opacas** já escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo.
+Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar sidequests canônicas previamente escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo.
 
 Se a cena for aceita, resolver rolagens, narrar e registrar o turno normalmente. Só depois confirmar com os mesmos parâmetros. `confirmar` refaz a preparação read-only e valida fingerprint; se fonte relevante mudou, falha antes da escrita.
 
@@ -33,7 +33,7 @@ scene:<cena_id>:npc:<npc_id_canonico>
 
 Encontros simultâneos são resolvidos por ID canônico. A resolução de NPC continua determinística e falha em typo/ambiguidade antes de qualquer mutação.
 
-Não existe mais sombra sequencial do antigo baralho de oportunidades. Para sidequest canônica, os refs dos NPCs explícitos são reunidos e ordenados deterministicamente por prioridade + ID; no máximo seis gates são avaliados e no máximo um detalhe é aberto por cena.
+Não existe mais sombra sequencial do antigo baralho de oportunidades. Para sidequest canônica, refs de NPCs explícitos são reunidas e ordenadas deterministicamente por prioridade + ID; no máximo seis gates são avaliados e no máximo um detalhe é aberto por cena.
 
 ## 3. Local e recompensas
 
@@ -52,18 +52,21 @@ Fluxo atual:
 ```text
 resolver NPC explícito
 → ZERO sorteio procedural
-→ procurar refs opacas no índice já carregado
-   → sem refs: interação normal, ZERO custo Task32 adicional
-   → com refs: avaliar gates compactos
-      → nenhum passa: interação normal
-      → um passa: abrir exatamente um detalhe reservado
+→ índice quente verifica somente se o NPC pertence ao catálogo Task33
+   → fora do catálogo: interação normal, ZERO leitura Task33 adicional
+   → catalogado: abrir um único roteador opaco daquele NPC
+      → avaliar até três refs desse NPC
+         → nenhum gate passa: interação normal
+         → um passa: abrir exatamente um detalhe reservado
 ```
 
-`sidequest_gate_v2.py` conserva o nome por compatibilidade. Ele continua sem abrir estado, pressão, tempo, perfil procedural ou detalhe secreto; apenas transporta refs opacas quando existirem.
+`narrador/oportunidades/index.yaml` não contém as 36 refs. Ele guarda apenas o marcador compacto `roteamento: fragmentado_por_npc_task33`. Cada quest-giver possui um fragmento sob `narrador/sidequests-canonicas/roteadores/<npc_id>.yaml`, lido somente quando aquele NPC é explicitamente encontrado. Cada ref contém apenas `id`, `gate` e `prioridade`.
 
-O engine canônico testa, com short-circuit: local → data → lifecycle/orçamento → relação → conhecimento → mundo → identidade. Relação/identidade enxergam deltas pendentes antes do checkpoint. Conhecimento e mundo usam fontes dirigidas, nunca scan global.
+`sidequest_gate_v2.py` conserva o nome por compatibilidade. Ele continua sem abrir estado, pressão, tempo, perfil procedural ou detalhe secreto. Para NPC catalogado, lê somente o roteador dirigido e transporta refs opacas para a camada canônica.
 
-A Task 33 mantém três quests reservadas por quest-giver recorrente. No checkpoint de implantação, no máximo duas ficam mecanicamente quentes por NPC; a terceira é fria por condição real de data, relação, conhecimento, mundo ou identidade. Não existe flag `hot` persistida.
+O engine testa, com short-circuit: local → data → lifecycle/orçamento → relação → conhecimento → mundo → identidade. Relação/identidade enxergam deltas pendentes antes do checkpoint. Conhecimento e mundo usam fontes dirigidas, nunca scan global.
+
+A Task 33 mantém três quests reservadas por quest-giver recorrente. No snapshot de implantação em **17 Eleasis, 1372 DR**, duas eram mecanicamente quentes por NPC quando a condição espacial correspondia; a terceira dependia de data, relação, conhecimento, mundo ou identidade. A campanha pode legitimamente desbloqueá-la depois. Não existe flag `hot` persistida.
 
 Presença incidental é instalada antes da camada canônica, mas não passa pelo encontro explícito e não recebe refs de quest. Estar no mesmo local não transforma NPC em quest-giver.
 
@@ -143,7 +146,7 @@ A saída alimenta `interacoes_mundo.py preparar-sidequest <id>`; deltas de press
 
 No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera sidequest nem loot.
 
-A Task 32 entregou engine/schema vazio por desenho; a Task 33 passou a fornecer conteúdo reservado. Isso não muda a autoridade do engine nem força aparição, oferta ou aceite.
+A Task 32 entregou engine/schema vazio por desenho; a Task 33 fornece conteúdo reservado e roteamento dirigido. Isso não muda a autoridade do engine nem força aparição, oferta ou aceite.
 
 ## 8. Orçamento e invariantes
 
@@ -166,12 +169,15 @@ Invariantes atuais:
 - encontro com NPC faz 0 draws de sidequest;
 - Adventure Drought Pressure não modula sidequest;
 - perfis procedurais ativos no repo: 0;
-- NPC sem ref canônica: 0 leituras Task32 adicionais;
+- índice de oportunidades permanece abaixo do teto quente legado;
+- NPC fora do catálogo: 0 leituras Task33 adicionais;
+- NPC catalogado: 1 roteador opaco dirigido antes dos gates;
 - gate falho: 0 leitura de detalhe;
 - no máximo 1 detalhe secreto por cena;
 - presença incidental não aciona quest;
 - disponibilidade ≠ oferta ≠ aceite;
 - toda quest canônica permite recusa;
-- 12 quest-givers recorrentes × 3 quests; no máximo 2 quentes por NPC no checkpoint de implantação;
+- 12 quest-givers recorrentes × 3 quests;
+- terceira quest sempre depende de condição canônica real, sem `hot` persistido;
 - nova oferta revalida o gate antes de escrever;
 - lifecycle, efeitos persistentes, rastros e recompensas permanecem reutilizados.
