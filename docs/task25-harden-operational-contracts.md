@@ -10,8 +10,8 @@ criar retries desnecessários:
 - usar uma data inequívoca como `1372-08-17` ou `17/08/1372` e cair no parser
   estrito de Harptos;
 - usar `--tag` para uma flag cujo nome canônico é `--contexto-tag`;
-- seguir a instrução `poetry run rolar-dados` quando o Poetry instalava somente
-  o atalho `dados`.
+- chamar `poetry run rolar-dados` embora o Poetry já possuísse a forma instalada
+  e estável `poetry run dados`.
 
 A Task 25 corrige essas bordas sem alterar qualquer regra narrativa ou mecânica.
 
@@ -52,10 +52,11 @@ Nos formatos numéricos, o número do mês é o índice do mês de Harptos; port
 Entradas vagas como “amanhã de manhã” não são adivinhadas.
 
 `cronica preparar --data ... --hora ...` usa essa normalização. Para compressão
-de tempo, a porta preferencial passa a ser:
+de tempo, a porta tolerante é executada pelo Python que já existe no ambiente do
+Poetry, sem exigir reinstalação do projeto:
 
 ```bash
-poetry run fronteira --data '1372-08-17' --hora 06:00
+poetry run python ferramentas/fronteira_operacional.py --data '1372-08-17' --hora 06:00
 ```
 
 Ela normaliza a data e delega ao mesmo endpoint `mundo.fronteira` já existente.
@@ -76,15 +77,15 @@ criada.
 
 ## Rolagens
 
-O Poetry agora instala aliases para a assinatura já documentada pelo roteador:
+A forma autoritativa passa a ser exatamente a que já está instalada no `.venv`:
 
 ```text
-poetry run rolar-dados
-poetry run rolar-lote
+poetry run dados
+poetry run dados-lote
 ```
 
-Eles apontam para os mesmos wrappers de `dados` e `dados-lote`; não existe segundo
-motor de RNG. Os nomes curtos anteriores continuam válidos.
+Esses wrappers continuam executando `rolar-dados.py` e `rolar-lote.py`; não existe
+segundo motor de RNG e nenhum `poetry install` adicional é necessário para a Task 25.
 
 ## Custo e escopo
 
@@ -93,7 +94,7 @@ Contrato: `baseline/harden-operational-contracts-orcamento.yaml`.
 - zero chamada operacional extra no turno livre;
 - zero endpoint novo;
 - zero scheduler/estado/scan;
-- aliases são resolvidos na borda antes das mesmas autoridades existentes;
+- aliases aceitos são resolvidos na borda antes das mesmas autoridades existentes;
 - nenhuma redução de custo é inventada sem novo rollout.
 
 A finalidade é remover retries, `--help`, leitura de código e tentativas de sintaxe
