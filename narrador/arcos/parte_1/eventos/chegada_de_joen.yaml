@@ -1,0 +1,27 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: chegada_de_joen
+titulo: O mestre chega tarde o bastante para não resolver o passado
+janela: ao_longo_do_dia
+categorias:
+- aliado
+- juppongatana
+nucleo_obrigatorio:
+- Tsukishiro Jōen entra diretamente na vida de Ren por causa própria, depois de seguir sinais suficientes da guerra
+  para alcançar Ravens Bluff.
+- Ele traz leitura marcial, história e advertências sobre a escala dos adversários, mas não assume comando das decisões
+  de Ren.
+- A chegada estabelece Jōen como recurso humano real antes da convergência final, permitindo que qualquer ajuda
+  futura decorra de presença já canonizada e não de deus ex machina.
+forma_preferencial:
+- Preferir encontro em consequência de uma pista, ferimento, testemunho marcial ou contato de Shen, mantendo Jōen
+  como pessoa que fez uma viagem e não teleportou.
+guardrails:
+- Jōen não concede nível, vitória nem neutralização.
+- A relação mestre-discípulo não autoriza controlar decisões, moralizar por rotina ou salvar Ren de toda consequência.
+- A presença de Jōen não libera membros posteriores da Juppongatana.
+adaptacao:
+- Se Jōen já tiver entrado antes por janela canônica equivalente, usar este evento para consolidar sua presença
+  e uma informação estratégica nova.
+- Se Shen estiver indisponível, a chegada deve continuar possível por trilha independente já preparada.

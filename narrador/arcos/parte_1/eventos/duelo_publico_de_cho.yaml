@@ -1,0 +1,33 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: duelo_publico_de_cho
+titulo: Chō transforma nomes em armas
+janela: pode_ocupar_o_dia
+categorias:
+- juppongatana
+- identidade
+- oportunidade_heroica
+- masao
+nucleo_obrigatorio:
+- Chō força um confronto público ou uma provocação pública em que acusa Ren de esconder vidas e nomes distintos
+  e tenta fazê-lo reagir diante de testemunhas.
+- As acusações usam apenas vínculos que a rede tenha reunido por evidência; itens não confirmados são apresentados
+  como provocação ou rumor, não como conhecimento divino.
+- Ren recebe espaço real para responder, negar, silenciar, negociar, lutar, retirar-se ou proteger terceiros; reputação
+  pública muda somente pelo que for observado e persistido.
+- A cena oferece oportunidade legítima de neutralizar Chō, mas também permite sua fuga, vitória ou retirada.
+forma_preferencial:
+- Chō quer espetáculo, avaliação marcial e reação emocional, mesmo quando isso é estrategicamente menos eficiente
+  que a preferência de Masao.
+guardrails:
+- Não sequestrar automaticamente um NPC protegido apenas para garantir duelo; ameaça ou refém só existe se causalmente
+  obtido.
+- Não escrever que Ren poupa, mata ou aceita lutar.
+- Task 29 recebe fatos públicos depois da cena; o evento não edita reputação diretamente.
+- Neutralização durável de Chō passa pela Task 54.
+adaptacao:
+- Se Chō estiver neutralizado antes da data, a rede usa material/rumor que ele já pôs em circulação para criar crise
+  pública menor; não o ressuscitar.
+- Se as personas já estiverem publicamente ligadas, deslocar o foco para legitimidade, acusações e custo político
+  em vez de repetir revelação.

@@ -1,0 +1,28 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: golpe_de_masao_antes_da_ponte
+titulo: Masao fecha as portas que já não precisa
+janela: pode_durar_dois_dias
+categorias:
+- masao
+- crise
+- ponte_kozakura
+nucleo_obrigatorio:
+- Ao perceber que a rede de Ravens Bluff está perto demais da rota subterrânea, Masao ordena uma retirada seletiva,
+  destruição de provas e sabotagem que sacrifica ativos locais para preservar pessoas e materiais mais valiosos.
+- A operação cria pelo menos uma crise urbana ou subterrânea que oferece escolha entre perseguir a rede e proteger
+  pessoas afetadas.
+- O movimento deixa claro que Masao pensa em escala maior que um único esconderijo e que algumas perdas em Ravens
+  Bluff são aceitáveis para ele.
+forma_preferencial:
+- 'Fazer a escalada parecer decisão estratégica fria: queimar pontes úteis para retirar o que importa, não vilania
+  aleatória.'
+guardrails:
+- Não destruir todas as pistas nem tornar a investigação impossível.
+- Ren escolhe entre prioridades; não escrever que abandona civis nem que persegue Masao.
+- Nenhum antagonista morto/capturado reaparece para executar a ordem.
+- A crise deve deixar ao menos uma rota observável de retirada, contenção ou resgate.
+adaptacao:
+- Se a rede já perdeu muitos ativos, reduzir escala e concentrar a sabotagem no que ainda existe.
+- Se a Ponte já estiver localizada, a operação passa a preparar abandono/defesa em profundidade sem apagar a descoberta.

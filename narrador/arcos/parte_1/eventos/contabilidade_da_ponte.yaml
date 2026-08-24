@@ -1,0 +1,29 @@
+schema_evento_canonico_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+id: contabilidade_da_ponte
+titulo: Carga demais para cais de menos
+janela: pode_durar_um_ou_mais_dias
+categorias:
+- ponte_kozakura
+- masao
+- identidade
+nucleo_obrigatorio:
+- Luath, Halessa, Shen ou outra combinação causal de aliados consegue cruzar registros de pessoas, carga, testemunhos
+  e trânsito subterrâneo e demonstrar uma discrepância material impossível de explicar apenas por contrabando marítimo
+  comum.
+- A discrepância aponta para uma rota sob Sarbreen com capacidade muito maior do que esconderijos conhecidos, criando
+  alvo concreto de investigação.
+- Ren pode receber as provas e discordar da interpretação; a existência da anomalia é canônica, a conclusão intelectual
+  dele não.
+forma_preferencial:
+- A prova deve ser composta por pelo menos dois canais independentes, como contabilidade e rastro físico, para que
+  a Ponte seja hipótese forte e não revelação arbitrária.
+guardrails:
+- Não revelar origem, criador ou engenharia da Ponte.
+- Não conceder automaticamente localização exata da passagem principal.
+- Se algum aliado estiver morto/indisponível, usar os sobreviventes e fontes já existentes sem ressuscitar ninguém.
+adaptacao:
+- Se Ren já tiver descoberto a Ponte por jogo, materializar a validação institucional e a escala logística em vez
+  de repetir descoberta.
+- Se registros foram destruídos, combinar rastro material, testemunhos e volume observado para preservar a discrepância.
