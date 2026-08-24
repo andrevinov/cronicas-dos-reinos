@@ -14,13 +14,14 @@ from typing import Any, Callable
 
 import cena_mundo_v4 as _v4
 import condicoes_mundo
+import locais
 
 _core = _v4._core
 _BASE_OPEN_SCENE: Callable[..., dict[str, Any]] | None = None
 _INSTALLED = False
 
 
-def _local_id(result: dict[str, Any]) -> str | None:
+def _local_id(repo: Path, result: dict[str, Any]) -> str | None:
     local = result.get("local")
     if isinstance(local, dict) and isinstance(local.get("local_id"), str):
         return local["local_id"]
@@ -29,8 +30,15 @@ def _local_id(result: dict[str, Any]) -> str | None:
         if not isinstance(tag, str) or not tag.startswith("local:"):
             continue
         value = tag.split(":", 1)[1].strip()
-        if value:
-            found.append(value)
+        if not value:
+            continue
+        try:
+            resolved = locais.resolve(repo, value)
+        except locais.LocationError as exc:
+            raise _core.SceneGateError(
+                f"tag local não resolve para registro canônico: {value!r}: {exc}"
+            ) from exc
+        found.append(resolved["local_id"])
     unique = list(dict.fromkeys(found))
     return unique[0] if len(unique) == 1 else None
 
@@ -60,8 +68,10 @@ def open_scene(
         context_tags=context_tags,
         now=now,
     )
-    local_id = _local_id(result)
-    if local_id is None or not (repo / condicoes_mundo.STATE).is_file():
+    if not (repo / condicoes_mundo.STATE).is_file():
+        return result
+    local_id = _local_id(repo, result)
+    if local_id is None:
         return result
     try:
         projection = condicoes_mundo.for_scene(repo, local_id, now=now)
