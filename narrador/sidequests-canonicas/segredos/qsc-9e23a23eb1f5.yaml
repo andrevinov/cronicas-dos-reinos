@@ -17,7 +17,7 @@ oferta:
   pedido: Ela oferece moeda e especificação precisa; Ren pode comprar, trocar ou localizar um artesão que tenha
     o material correto.
   guardrails:
-  - O material é mundane e não vira item mágico por design.
+  - O material é mundano e não vira item mágico por design.
   - Ren escolhe o método de obtenção.
   - Dessa aceita substituição se o efeito visual for preservado.
 efeitos: []
