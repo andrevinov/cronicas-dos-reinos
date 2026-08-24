@@ -144,15 +144,24 @@ O delta persiste somente o registro do par afetado:
   "alvo": "estado",
   "op": "set",
   "caminho": "reputacao_publica_ren.registros.populacao_geral.ren",
-  "valor": {"estado":"protetor","marcos":["resgate_publico"],"evidencias":{}},
+  "valor": {
+    "estado": "protetor",
+    "marcos": ["resgate_publico"],
+    "evidencias": {
+      "resgate_publico": {
+        "id": "rep-0123456789abcdef",
+        "fonte": "sessao:exemplo"
+      }
+    }
+  },
   "motivo_reputacao": "evento_publico",
   "tipo_reputacao": "resgate_publico",
   "publico_reputacao": "populacao_geral",
   "identidade_publica": "ren",
   "atribuicao_publica": true,
   "origem_reputacao": "fato_publico",
-  "fato_canonico": "...",
-  "fonte": "..."
+  "fato_canonico": "Ren realizou um resgate publicamente atribuído a ele.",
+  "fonte": "sessao:exemplo"
 }
 ```
 
