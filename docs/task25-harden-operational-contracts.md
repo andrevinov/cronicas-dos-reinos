@@ -23,11 +23,11 @@ falhando.
 
 `ticket_id` permanece somente como checksum/identificador diagnóstico. Ele não
 contém informação suficiente para reconstruir o ticket. Se for fornecido em
-`--ticket`, a CLI agora falha com instrução autoritativa para reutilizar exatamente
-o campo `ticket:` completo da saída de `cronica preparar`, em vez do erro genérico
-de prefixo que incentivava `--help` e leitura de implementação.
+`--ticket`, a CLI agora falha antes de ler a transação e instrui a reutilizar o
+campo `ticket:` completo da saída de `cronica preparar`.
 
-O `contrato_conclusao.disciplina` também explicita preventivamente essa distinção.
+A cópia literal `ticket: crn1...` é aceita por ser inequivocamente o mesmo token.
+O `contrato_conclusao.disciplina` explicita preventivamente essa distinção.
 
 ## Datas operacionais
 
@@ -51,16 +51,15 @@ Nos formatos numéricos, o número do mês é o índice do mês de Harptos; port
 `08 = Eleasis`. Isso **não** cria calendário gregoriano dentro da campanha.
 Entradas vagas como “amanhã de manhã” não são adivinhadas.
 
-`cronica preparar --data ... --hora ...` usa essa normalização. Para compressão
-de tempo, a porta tolerante é executada pelo Python que já existe no ambiente do
-Poetry, sem exigir reinstalação do projeto:
+`cronica preparar --data ... --hora ...` usa essa normalização. O endpoint de
+fronteira já existente também foi endurecido; não há nova porta:
 
 ```bash
-poetry run python ferramentas/fronteira_operacional.py --data '1372-08-17' --hora 06:00
+poetry run python ferramentas/endpoints.py fronteira --data '1372-08-17' --hora 06:00
 ```
 
-Ela normaliza a data e delega ao mesmo endpoint `mundo.fronteira` já existente.
-`endpoints.py fronteira` permanece disponível como primitiva/fallback estrito.
+A CLI normaliza a representação e delega ao mesmo `mundo.fronteira` da Task 10.
+Schema, projeção e cálculo da fronteira permanecem iguais.
 
 ## Tags contextuais
 
