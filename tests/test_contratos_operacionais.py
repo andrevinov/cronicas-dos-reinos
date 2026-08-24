@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
+import io
 import sys
 import unittest
 from pathlib import Path
@@ -15,7 +17,7 @@ if str(TOOLS) not in sys.path:
 
 import contratos_operacionais as contracts
 import cronica
-import fronteira_operacional
+import endpoints
 import mundo
 
 
@@ -49,15 +51,26 @@ class OperationalDateContractTest(unittest.TestCase):
         raw = "amanhã de manhã"
         self.assertEqual(contracts.normalize_date(raw), raw)
 
-    def test_fronteira_operacional_reutiliza_endpoint_existente_com_data_normalizada(self):
+    def test_endpoint_fronteira_existente_normaliza_sem_nova_porta(self):
         expected = {"schema_endpoint_deterministico": 1, "endpoint": "mundo.fronteira"}
-        with mock.patch.object(
-            fronteira_operacional.endpoints,
-            "boundary",
-            return_value=expected,
-        ) as boundary:
-            result = fronteira_operacional.query(ROOT, "1372-08-17", "06:00")
-        self.assertEqual(result, expected)
+        stdout = io.StringIO()
+        with (
+            mock.patch.object(endpoints._base, "boundary", return_value=expected) as boundary,
+            contextlib.redirect_stdout(stdout),
+        ):
+            code = endpoints.main(
+                [
+                    "--repo",
+                    str(ROOT),
+                    "fronteira",
+                    "--data",
+                    "1372-08-17",
+                    "--hora",
+                    "06:00",
+                ]
+            )
+        self.assertEqual(code, 0)
+        self.assertEqual(yaml.safe_load(stdout.getvalue()), expected)
         boundary.assert_called_once_with(
             ROOT,
             date="17 Eleasis, 1372 DR",
@@ -179,8 +192,7 @@ class OperationalBudgetContractTest(unittest.TestCase):
         self.assertIn("poetry run dados-lote", text)
         self.assertNotIn("poetry run rolar-dados", text)
         self.assertNotIn("poetry run rolar-lote", text)
-        self.assertIn("ferramentas/fronteira_operacional.py", text)
-        self.assertIn("endpoints.py fronteira", text)
+        self.assertIn("ferramentas/endpoints.py fronteira", text)
         self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
 
 
