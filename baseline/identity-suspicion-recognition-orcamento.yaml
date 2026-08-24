@@ -1,0 +1,28 @@
+schema_orcamento_identity_suspicion: 1
+natureza: contrato_de_regressao
+objetivo: >-
+  Permitir que NPCs acumulem suspeita sobre personas de Ren sem transformar Actor
+  em invisibilidade, sem promover suspeita a certeza e sem adicionar custo ao hot
+  path comum.
+limites:
+  max_arestas_suspeita_por_npc: 4
+  max_evidencias_por_aresta: 3
+  max_estado_bytes: 1800
+  chamadas_extras_por_encontro_comum: 0
+  fontes_extras_contexto_npc_sem_suspeita: 0
+  schedulers_novos: 0
+  rng_novo: 0
+  estado_paralelo_novo: 0
+  scans_repo: 0
+invariantes:
+  usa_fragmento_npc_existente: true
+  suspeita_e_crenca_nao_fato: true
+  suspeita_forte_nao_confirma: true
+  confirmacao_exige_fato_canonico: true
+  actor_so_bloqueia_evidencia_performatica: true
+  actor_nao_apaga_suspeita_existente: true
+  evidencia_fisica_contextual_contradicao_testemunho_ignoram_actor: true
+  uma_evidencia_por_fato: true
+  evidencia_idempotente: true
+  contexto_npc_enxerga_overlay_antes_checkpoint: true
+  nenhuma_suspeita_retroativa_inventada: true
