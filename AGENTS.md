@@ -29,7 +29,7 @@ Runtime, handoffs, índices e consultas são projeções, não cânone independe
 
 **Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação, não a experiência literária.
 
-Antes de reler, veja se o contexto basta. **Se a consulta bastar, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
+Antes de reler, veja se o contexto basta. **Se for suficiente, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
