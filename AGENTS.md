@@ -52,6 +52,7 @@ Leia no máximo o documento especializado necessário:
 - L0–L5 → `docs/agente/escada-de-acesso.md`; acesso/operação → `docs/agente/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
 - retomada/handoffs e lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
+- fronteira/lote de pendências → `docs/task23-batch-world-boundary-resolution.md`;
 - regras/rolagens → `docs/agente/regras-e-rolagens.md`;
 - NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
@@ -71,7 +72,7 @@ Fluxo normal: `entrada → ON/OFF/RECALL → barreira → contexto necessário �
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag só entra se uma tag tipada pertinente (`local:`, `assunto:`, `acao:`, `pessoa:`, `risco:`) já existir. Gatilho local só existe ao **entrar/explorar** e usa `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Em **deslocamento urbano material por Ravens Bluff** que mereça turno próprio, use na mesma porta `--transito-urbano ravens_bluff`: não cria `local_id` nem terceira chamada. Não combinar trânsito com local/NPC/tag no mesmo ticket; a cena reativa fica no turno seguinte.
 
-**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se `bloqueado: true`, não narrar: usar `endpoints.py pendencias`. Se `tipo: reavaliar_agente_leve` e nada mudou, `agentes_leves.py concluir-noop <id>`. Para candidato `pressao_ravens_bluff_autonoma`, **ausência de ação de Ren ou de fato externo novo não é motivo de no-op**: consulte só o agente indicado e suas restrições. Se houver bloqueio canônico real, `barreira_mundo.py concluir <id> --sem-mudanca --nota ...`; se houver ação, registre transação `modo: mundo` + tag `resolver-pendencia-mundo:<id>`, deixe o checkpoint consolidá-la e conclua com `--transacao <tx> --linha <linha> --metodo <metodo> --nota ...`. Demais no-op: `barreira_mundo.py concluir <id> --nota ...`. O writer repete a trava.
+**Barreira de pendências é pré-narração.** Antes de novo ON, ler `runtime/mundo-pendencias.yaml`. Se bloqueado, não narrar nem decompor a fila: chamar uma vez `resolver_fronteira.py preparar`, avaliar **todos** os itens na mesma inferência e enviar juntos os no-ops por `resolver_fronteira.py aplicar` via stdin, copiando `lote_id`, `id` e `token`. Itens omitidos ficam abertos; depois seguir só `requer_resolucao`. Evento canônico nunca aceita no-op. Candidato autônomo de pressão só aceita `sem_mudanca` por bloqueio canônico concreto; ausência de ação de Ren/fato novo não basta. Agente leve reutiliza o cache causal da Task 9. Primitivas individuais ficam para diagnóstico/reparo. O writer repete a trava.
 
 **Cena reativa:** `cronica preparar` recebe somente gatilhos reais; é read-only. Depois da narração aceita, `cronica concluir` revalida/confirma se a preparação for reativa e registra. Ticket neutro não fabrica confirmação. Cena abandonada não conclui; preparação reativa obsoleta exige novo preparo.
 
@@ -81,7 +82,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar só até a fronteira, registrar/checkpointar, processar Mundo Vivo e continuar. Não chamar em turno curto.
+**Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `endpoints.py fronteira --data ... --hora ...`. Se `interromper`, narrar até a fronteira, registrar/checkpointar, resolver no-ops em lote e materializar só `requer_resolucao`. Não chamar em turno curto.
 
 Durante avanço comum:
 
@@ -128,7 +129,7 @@ Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir 
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico sem justificativa nem mudar visibilidade sem pedido. Após alteração canônica manual, regenerar runtime/memória só se a retomada mudou; checkpoint normal já faz isso.
 
-Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `recompensas.py check`, `oportunidades.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
