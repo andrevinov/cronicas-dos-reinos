@@ -1,12 +1,10 @@
 # AGENTS.md — roteador operacional
 
-Roteador global; detalhes ficam em `docs/agente/` sob demanda.
-
 ## 1. Fonte de verdade
 
-O repositório é a memória canônica. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
+O repo é a memória canônica; não dependa só da conversa. Respeite `campanha.yaml`, fontes autorizadas, ficha/estado. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o checkpoint. Estado/tempo são o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only e frias para leitura.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -23,7 +21,7 @@ Detalhes: `docs/agente/fundamentos.md`.
 
 ## 3. Hierarquia de autoridade
 
-Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado consolidados → pendências correntes → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
+Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
 Runtime, handoffs, índices e consultas são projeções, não cânone independente. Pendências têm precedência apenas temporal até consolidação.
 
@@ -86,7 +84,7 @@ Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar
 
 **Identidades:** suspeita ≠ certeza. Não testar reconhecimento por rotina. Se surgir pista concreta ligando Ren/Shinta/Kage, `identidades.py evidencia` prepara o delta; Actor bem-sucedido bloqueia só pista `atuacao`, nunca física/contextual/testemunho. Confirmação exige fato canônico explícito via `identidades.py confirmar`.
 
-**Reputação pública:** reputação ≠ fama ≠ opinião individual. Não consultar ou atualizar por rotina. Aplauso, rumor, boa rolagem ou reconhecimento privado de identidade não criam reputação cívica. Quando um fato canônico for realmente público, socialmente relevante e atribuído a Ren/Shinta/Kage, `reputacao_publica.py evento` prepara o delta; registrar apenas os públicos explicitamente atingidos. Personas não compartilham reputação automaticamente. Use `contexto.py reputacao <persona>` somente quando a reação social ampla da cidade for uma lacuna real.
+**Reputação:** ≠ fama/opinião; não testar por rotina. Fato público relevante atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
