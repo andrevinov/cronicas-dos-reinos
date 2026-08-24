@@ -1,12 +1,12 @@
 # AGENTS.md — roteador operacional
 
-Roteador global. Detalhes ficam em `docs/agente/` e só entram quando a tarefa exigir.
+Roteador global; detalhes ficam em `docs/agente/` sob demanda.
 
 ## 1. Fonte de verdade
 
 O repositório é a memória canônica. Não depender só da conversa para fatos persistentes. Respeitar `campanha.yaml`, fontes autorizadas, ficha e estado. Texto novo usa português e UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados. Em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o último checkpoint. Estado/tempo descrevem o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only para escrita e frias para leitura.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; em sessão ativa, `runtime/eventos-pendentes.jsonl` sobrepõe o checkpoint. Estado/tempo são o presente consolidado; relações/NPCs/conhecimento são fragmentados; transcrições são append-only e frias para leitura.
 
 ## 2. Invariantes inegociáveis
 
@@ -25,13 +25,13 @@ Detalhes: `docs/agente/fundamentos.md`.
 
 Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado consolidados → pendências correntes → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
-Runtime, handoffs, índices e consultas são projeções/roteadores, não cânone independente. Pendências têm precedência apenas temporal até a consolidação.
+Runtime, handoffs, índices e consultas são projeções, não cânone independente. Pendências têm precedência apenas temporal até consolidação.
 
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação; não comprima a experiência literária.
+**Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura, busca, inferências, tool calls e duplicação, não a experiência literária.
 
-Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** Preferir portas públicas; não abrir implementação, pasta inteira, histórico ou transcrição “só para conferir”.
+Antes de reler, veja se o contexto basta. Após cada consulta: **Se for suficiente, pare.** Preferir portas públicas; não abrir implementação, pastas, histórico ou transcrição “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -41,7 +41,7 @@ Antes de ler de novo, veja se o contexto basta. Após cada consulta: **Se for su
 - **L4T:** transcrição, somente após L4 — 16 KiB;
 - **L5:** fonte oficial externa/autorizada se a memória interna não resolver.
 
-Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nunca abrir `transcricao.md` para simplesmente retomar uma sessão.**
+Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nunca abrir `transcricao.md` só para retomar sessão.**
 
 ## 5. Roteamento por tarefa
 
@@ -49,16 +49,16 @@ Leia no máximo o documento especializado necessário:
 
 - autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
-- L0–L5 → `docs/agente/escada-de-acesso.md`; acesso/operação → `docs/agente/acesso-e-operacoes.md`;
+- L0–L5/acesso → `docs/agente/escada-de-acesso.md`, `docs/agente/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/consolidacao-transacional.md`;
-- retomada/handoffs e lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
+- retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
-- NPC/facção/mundo → `docs/agente/narracao-e-mundo.md`; relação/diálogo → `docs/task26-npc-relationship-state-v1.md`, `docs/task27-relationship-aware-dialogue.md`;
-- regras/rolagens → `docs/agente/regras-e-rolagens.md`; mecânica diegética → `docs/agente/mecanica-diegetica.md`;
+- NPC/mundo/diálogo → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`;
+- regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - local/encontro/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
-- pesquisa/Git → `docs/agente/pesquisa-e-manutencao.md`; telemetria → `docs/agente/telemetria-rollouts.md`.
+- pesquisa/Git/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
 
 Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao.md`. Limites: `narracao/limites.md`.
 
@@ -66,23 +66,23 @@ Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao
 
 Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` dentro de ON = **RECALL**. OFF não avança nem é registrado; RECALL só completa fato que Ren legitimamente sabe, nunca vontade/emoção/estratégia/segredo.
 
-Fluxo normal: `entrada → ON/OFF/RECALL → cronica preparar (gate + preparação) → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
+Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
 
-**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use o campo `ticket:` completo, nunca `ticket_id`. Se `preparar` emitir ticket, sua saída é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
+**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`. Se `preparar` emitir ticket, sua saída é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag pertinente usa `--contexto-tag` (`--tag` é alias compatível) e namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só existe ao **entrar/explorar** e usa `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Em **deslocamento urbano material por Ravens Bluff** que mereça turno próprio, use `--transito-urbano ravens_bluff`: não cria `local_id` nem terceira chamada. Não combinar trânsito com local/NPC/tag; a cena reativa fica no turno seguinte.
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag pertinente usa `--contexto-tag` (`--tag` é alias) e namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só existe ao **entrar/explorar** e usa `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Deslocamento urbano material usa `--transito-urbano ravens_bluff`; não combinar trânsito com local/NPC/tag.
 
-**Barreira de pendências vive dentro de `cronica preparar`.** Não leia o marcador antes do turno. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia o marcador antes do turno. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
-**Cena reativa:** `cronica preparar` recebe somente gatilhos reais; é read-only. Depois da narração aceita, `cronica concluir` revalida/confirma se a preparação for reativa e registra. Ticket neutro não fabrica confirmação. Cena abandonada não conclui; preparação reativa obsoleta exige novo preparo.
+**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only. Após narração aceita, `cronica concluir` revalida/confirma se reativa e registra. Ticket neutro não fabrica confirmação; cena abandonada não conclui; preparação obsoleta exige novo preparo.
 
-Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` ficam para diagnóstico/reparo. Compatibilidade: writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json` nem arquivo intermediário.
+Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` ficam para diagnóstico/reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json` nem intermediário.
 
 **Direção canônica é destino, nunca ação.** Se a cena apontar direção, usar `endpoints.py direcao <id>`; direção não escolhe executor, método, alvo, cena ou momento. `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
 Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de mapa/gate. `interacoes_mundo.py local|encontro` ficam para manutenção/acionamento deliberado.
 
-**Fala de NPC:** se faltar tom/relação, `contexto.py npc "Nome"` já devolve papel + `dialogo_relacional`. Afinidade/confiança modulam intimidade e discordância; **conselho exige gatilho concreto**. Não transformar saudação, conversa casual ou preocupação recorrente em sermão/reprimenda automática.
+**Fala de NPC:** `contexto.py npc` já inclui `dialogo_relacional`; conselho exige gatilho. Conversa casual, discordância ou preocupação não viram sermão automático.
 
 **Antes de narrar** intenção que comprime tempo — dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado — consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos canônico, `AAAA-MM-DD` (mês = índice de Harptos) ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; a continuação volta por `cronica preparar`. Não chamar em turno curto.
 
@@ -90,16 +90,16 @@ Durante avanço comum:
 
 - não atualizar diretamente estado, ficha, relações, conhecimento, consequências, relógios ou NPCs;
 - não regenerar runtime/handoff nem rodar Git, testes ou telemetria;
-- concluir por stdin conforme `contrato_conclusao`; mecânica explícita na prosa usa linha própria `MECÂNICA — ...`;
+- concluir por stdin conforme `contrato_conclusao`; mecânica explícita usa linha própria `MECÂNICA — ...`;
 - prosa completa fica na transcrição; JSONL recebe resumo/deltas/rolagens ocultas necessárias;
-- instante muda com um único delta `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
+- instante muda com `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - reproduzir `rodape_canonico` verbatim como última linha visível.
 
-Rolagem comum de perícia já conhecida: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'` (acrescente vantagem/desvantagem ou abordagem apenas quando pertinente); não descobrir a assinatura via `--help`.
+Rolagem comum conhecida: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'` (vantagem/desvantagem ou abordagem só quando pertinente); não redescobrir assinatura via `--help`.
 
-Rodapé é derivado, não cânone. Telemetria: **medição é pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura de NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
+Rodapé é derivado, não cânone. Telemetria é **pós-hoc**; nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura NPC/local: `contexto.py npc|local` só por lacuna. Rolagens independentes: `poetry run dados-lote`.
 
-Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além das rolagens/consultas materialmente necessárias. Não decompor em primitivas sem reparo real.
+Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além do materialmente necessário. Não decompor em primitivas sem reparo real.
 
 ### Recompensas e side quests
 
@@ -115,17 +115,17 @@ Fronteira importante: `poetry run cronica sessao checkpoint`. Encerramento: `poe
 
 Journal interrompido: não narrar; `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback).
 
-Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: o narrador executa `poetry run cronica sessao status`; se `entre_sessoes`, executa `poetry run cronica sessao iniciar`. **Use o bloco `recap_sessao_anterior`/`retomada` devolvido pela própria CLI** para recapitular e abrir; não chamar `contexto.py retomada`, ler handoff cru ou abrir transcrição se esse bloco bastar. Se já `em_sessao`, `cronica sessao status` já devolve a retomada quente e a sessão apenas continua. Nunca pular sessão nem copiar transcrição anterior.
+Ao pedido **“inicie uma sessão”**, o narrador executa `poetry run cronica sessao status`; se `entre_sessoes`, executa `poetry run cronica sessao iniciar`. Use o `recap_sessao_anterior`/`retomada` devolvido; não leia handoff cru/transcrição se bastar. Se já `em_sessao`, o status traz a retomada quente. Nunca pular sessão nem copiar transcrição anterior.
 
 Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
 
-Primitivas equivalentes seguem disponíveis para manutenção: `checkpoint.py cena`, `checkpoint.py sessao`, `sessoes.py iniciar`, `checkpoint.py recuperar`.
+Primitivas de manutenção: `checkpoint.py cena|sessao|recuperar`, `sessoes.py iniciar`.
 
 ## 8. Regras, dados e segredos
 
 Dúvida de regra: parar quando resolvida; preferir `contexto.py regra`. Definir CD/modificadores antes da rolagem; nunca falsificar resultado. Use `poetry run dados`/`poetry run dados-lote`.
 
-`narrador/` é reservado. Busca padrão não inclui esse domínio. Deltas reservados não vazam para domínio público; rolagens ocultas e relógios mecânicos permanecem reservados.
+`narrador/` é reservado. Busca padrão não inclui esse domínio. Deltas reservados não vazam ao público; rolagens ocultas e relógios mecânicos permanecem reservados.
 
 ## 9. Alterações no repositório
 
