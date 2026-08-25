@@ -1,0 +1,149 @@
+schema_alteracoes_transacionais: 1
+sessao: 15
+status: em_andamento
+fonte: sessoes/015/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 15
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  ki: 7/7
+  ca: 17
+  dinheiro_po: 31.379999999999995
+  data: 17 Eleasis, 1372 DR
+  hora: '18:25'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: picadeiro do Jack Mooney & Sons Circus
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 15
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  ki: 7/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 18 Eleasis, 1372 DR
+  hora: 08:55
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
+  nivel_ficha: 7
+consolidacoes:
+- id: s015-cena-a836d9da7b5bdc33
+  tipo: cena
+  transacoes:
+  - s015-9e6e2350dc8ec2ee
+  - s015-319c712bbf83db12
+  - s015-2fe79858112f9cf2
+  - s015-c4848a79116a22d3
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-4b6e3307ea54ee34
+  tipo: cena
+  transacoes:
+  - s015-7d6445d977ef3db3
+  - s015-801f63e8999384b4
+  deltas: 2
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-cc409124f00e3d71
+  tipo: cena
+  transacoes:
+  - s015-b29491ba2ace66bb
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-172cd212839249f4
+  tipo: cena
+  transacoes:
+  - s015-8ac381bb835ff0d4
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-a0379e2f39025d34
+  tipo: cena
+  transacoes:
+  - s015-14801e1d8e717902
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-f879813b38d41328
+  tipo: cena
+  transacoes:
+  - s015-5df4b5e0000f6038
+  - corr-s015-c2f4988f7e6c0b28
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-b064ecd80456f868
+  tipo: cena
+  transacoes:
+  - s015-41b078c23d60e071
+  - s015-ae517f7c08f92732
+  - s015-f4ccdd782e3e39b2
+  - s015-58f64591b3e33e5c
+  - s015-2163bc93a62b5d56
+  deltas: 9
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-2163bc93a62b5d56.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-41b078c23d60e071.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f4ccdd782e3e39b2.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-e2d7b85440b5e3cf
+  tipo: cena
+  transacoes:
+  - s015-aa439f0e90a2adc4
+  - s015-b08fe70bdfbc66c5
+  - s015-661c0ad6a27a48b4
+  - s015-6bbca82fc945cd90
+  - s015-b0de240857bc3d16
+  - corr-s015-965ed24a47d1c376
+  deltas: 12
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-661c0ad6a27a48b4.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b08fe70bdfbc66c5.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md

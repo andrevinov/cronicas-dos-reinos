@@ -1,13 +1,13 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 14
+sessao: 15
 modo: ren_com_nera_e_silva_apos_relatar_emboscada
 localizacao:
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: picadeiro do Jack Mooney & Sons Circus
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
 tempo:
-  data: 17 Eleasis, 1372 DR
-  hora_aproximada: '18:25'
+  data: 18 Eleasis, 1372 DR
+  hora_aproximada: 08:55
 mecanica_imediata:
   pv: 52/52
   ki: 7/7
@@ -21,9 +21,9 @@ prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clare
   de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/014/handoff.yaml
+  handoff: sessoes/015/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/014/transcricao.md
+  transcricao_fria: sessoes/015/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:

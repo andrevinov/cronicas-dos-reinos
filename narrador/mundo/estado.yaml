@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 17 Eleasis, 1372 DR
-  hora: '18:25'
+  data: 18 Eleasis, 1372 DR
+  hora: 08:55
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -343,3 +343,69 @@ concluidas_recentes:
   nota: 'A Red Sail tomou decisão operacional diária: concentrou a busca em propriedades
     abandonadas a leste, mantendo curandeiros e carroças como linhas secundárias,
     sem localizar Iria, o lagar ou a cadeia rural; transação s014-e203bf6fcdfafc0a.'
+- id: mundo-d7d68ea1bf62011c
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Nenhuma nova prova, ameaça à cadeia de custódia, necessidade de contato protegido
+    ou proposta concreta de cooperação surgiu para Halessa; sua rotina jurídica permanece
+    suficiente.
+- id: mundo-646a8eb6495eb35a
+  tipo: evento_mundial
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  nota: A chegada sorteada não encontrou agente, pressão urbana ou efeito persistente
+    concreto que a diferencie do tráfego ordinário de viajantes no porto neste amanhecer.
+- id: mundo-8b06d1dddd09d50f
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail não adquiriu nova pista, recurso ou localização; mantém a busca
+    dirigida já em execução sem mudança persistente de plano ou conhecimento.
+- id: mundo-cfac4fd9ab497875
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Os fatos existentes continuam sustentando o marco coisas_plausiveis, mas nenhum
+    novo fato canônico desta fronteira satisfaz avanço de direção.
+- id: mundo-edb696824a74a22a
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: Embora haja matéria documental em formação, Kurobane não possui no contexto
+    assinado conhecimento da irregularidade, de Shinta ou de uma janela física de
+    acesso; falta oportunidade concreta para agir.
+- id: mundo-1cb96f9042ce03af
+  tipo: expiracao
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  nota: 'Irregularidade documental real materializada na Galeria: Shinta foi colocado
+    como responsável institucional conveniente sem prova de culpa nem confirmação
+    de outra identidade.'
+- id: mundo-5957787d15220212
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: Night Watch preservou a cadeia e iniciou observação discreta; Luath reconheceu
+    exploração do procedimento sem solução completa nem confirmação de identidades.
+- id: mundo-dc0262094a1df5f8
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  agente: masao_hirasawa
+  nota: A rede de Masao trouxe pequenas células armadas sob coberturas civis, criando
+    capangas isolados na malha urbana sem expor Masao nem empregar a Juppongatana
+    como tropa comum.

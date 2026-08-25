@@ -1,0 +1,9 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: tomas_rell
+npc:
+  nome: Tomas Rell
+  persistencia: persistente_sem_agenda
+  origem_identidade:
+    tipo: cena_confirmada
+    cena_id: s015-shinta-procura-supervisores-e-confere-lotes

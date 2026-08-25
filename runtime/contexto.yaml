@@ -5,8 +5,8 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 14
-  status: entre_sessoes
+  numero: 15
+  status: em_sessao
   modo_de_cena: ren_com_nera_e_silva_apos_relatar_emboscada
 personagem:
   nome: Ren Kagehira
@@ -22,10 +22,10 @@ recursos:
     maximos: 7
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 31.379999999999995
+  dinheiro_po: 39.379999999999995
 tempo:
-  data: 17 Eleasis, 1372 DR
-  hora_aproximada: '18:25'
+  data: 18 Eleasis, 1372 DR
+  hora_aproximada: 08:55
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: picadeiro do Jack Mooney & Sons Circus
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/014/handoff.yaml
-  transcricao_fria: sessoes/014/transcricao.md
+  handoff_atual: sessoes/015/handoff.yaml
+  transcricao_fria: sessoes/015/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:
