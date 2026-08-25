@@ -1,0 +1,97 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 15
+checkpoint:
+  tipo: cena
+  estado: retomavel
+  modo: ren_com_nera_e_silva_apos_relatar_emboscada
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Caminho da Sombra
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    ki:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 18 Eleasis, 1372 DR
+    hora_aproximada: 08:55
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Galeria dos Escribas, Ravens Bluff
+    ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
+continuidade:
+  resumo_imediato: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de escolher,
+    discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera à carroça
+    verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s015-cena-b064ecd80456f868
+  transacao: s015-58f64591b3e33e5c
+  resumo: 'Shinta conferiu diligentemente os dois lotes comuns com sucesso: confirmou uma falta de quantidade no
+    primeiro e preservou uma divergência de destino no segundo, sem corrigir documentos por suposição. O volume
+    lacrado continuou intocado e sem sua assinatura.'
+- batch: s015-cena-b064ecd80456f868
+  transacao: s015-2163bc93a62b5d56
+  resumo: Shinta manteve trabalho diligente e bem-sucedido, ganhando crédito profissional gradual na Galeria. Sella
+    retornou com Tomas e uma segunda via interna que falsamente registra Shinta recebendo e autorizando o volume
+    lacrado durante o período em que ele trabalhava sob observação. O livro local permanece vazio e o volume continua
+    na mesa. Tomas ainda não declarou culpa e pediu que Shinta identifique a assinatura e diga…
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: s015-aa439f0e90a2adc4
+  resumo: Shinta negou ter assinado ou autorizado o volume e manteve em segredo sua hipótese sobre Shizune. Tomas
+    distinguiu quem assina de quem já viu a assinatura, suspendeu temporariamente o trabalho para preservar o procedimento
+    e ofereceu uma amostra escrita testemunhada, explicitamente limitada à comparação. Se Shinta recusar, Tomas
+    registrará a recusa e chamará a Night Watch sem presumir culpa.
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: s015-b08fe70bdfbc66c5
+  resumo: Shinta forneceu voluntariamente uma amostra de assinatura sob declaração limitada e testemunho de Sella
+    e Tomas. A falsa assinatura se aproxima especialmente de um exemplar antigo arquivado na Galeria, sugerindo
+    acesso a registro interno ou cópia sem confirmar autoria. Tomas revelou que um representante da Night Watch
+    perguntou por Shinta e pelo volume antes de receber recado da Galeria; não há ordem de detenção. Sh…
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: s015-661c0ad6a27a48b4
+  resumo: Shinta acompanhou Tomas ao escritório, deixando Sella com o volume. Uma representante legítima da Night
+    Watch informou que Shinta não está detido, mas uma denúncia anterior ao contato da Galeria afirma que alguém
+    usando seu nome tentou pagar um carroceiro para desviar o volume antes da abertura. A denúncia contém descrição
+    ampla compatível e cópia da ordem irregular. Ela pediu que Shinta explique onde esteve e quem…
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: s015-6bbca82fc945cd90
+  resumo: Shinta negou verdadeiramente ter falado com o carroceiro, mas tentou sustentar que mora sozinho sem fornecer
+    local verificável. A representante da Night Watch percebeu a evasão e distinguiu falta de álibi de prova de
+    culpa. Ela pediu diretamente o endereço onde Shinta dormiu; a identidade profissional não possui resposta estabelecida
+    sem envolver pessoas ligadas a Ren.
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: s015-b0de240857bc3d16
+  resumo: A tentativa de Shinta de afirmar que sempre dorme na rua falhou. A representante da Night Watch considerou
+    a resposta uma evasão deliberada, mas distinguiu isso de prova do desvio e manteve a orientação de não deter
+    Shinta com base nos documentos contraditórios. Tomas suspendeu o acesso de Shinta aos registros naquele dia,
+    preservando no relatório seu trabalho correto. A agente ofereceu que ele corrija a afirmação o…
+- batch: s015-cena-e2d7b85440b5e3cf
+  transacao: corr-s015-965ed24a47d1c376
+  resumo: 'Correção canônica de s015-b0de240857bc3d16: Substitui a soltura inadequada por ordem de custódia provisória
+    coerente com a sociedade, a autoridade da Night Watch e as evidências disponíveis, preservando a agência de
+    Ren diante da detenção iminente.'
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/015/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

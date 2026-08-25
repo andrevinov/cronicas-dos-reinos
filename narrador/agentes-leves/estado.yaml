@@ -57,9 +57,16 @@ agentes:
   halessa_vorn:
     estado: ativo
     proxima_avaliacao:
-      data: 16 Eleasis, 1372 DR
+      data: 20 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: 172826b472a1f000c8b3826360adacad1da4659c9da929eb5d4e3f8d45471fab
+      pendencia_origem: mundo-d7d68ea1bf62011c
+      confirmado_em:
+        data: 18 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   jack_mooney:
     estado: ativo
     proxima_avaliacao:

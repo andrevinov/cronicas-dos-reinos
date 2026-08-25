@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: tomas_rell
+origem: npc-stub-automatico
+eventos_pos_migracao:
+- tipo: identidade_persistente_criada
+  cena_id: s015-shinta-procura-supervisores-e-confere-lotes
+  nome: Tomas Rell
+  classificacao_inicial: persistente_sem_agenda

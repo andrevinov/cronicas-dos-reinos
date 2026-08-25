@@ -1,0 +1,41 @@
+schema_conhecimento_incremental: 1
+sessao: 15
+fragmentos:
+- transacao: s015-41b078c23d60e071
+  titulo: Ren manteve em mente os dois kozakuranos armados, reconhecendo que não eram os três atacantes do restaurante
+    sem concluir ligação. Como Shinta, entrou na Galeria e encontrou na mesa de devoluções um volume lacrado direcionado
+    nominalmente a ele, embora seu acesso não autorize documentos fechados. O livro de custódia aguarda assinatura;
+    Ren ainda não tocou na pena nem no volume.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-41b078c23d60e071.md
+  bytes: 720
+- transacao: s015-f4ccdd782e3e39b2
+  titulo: Shinta pediu autorização a Sella antes de iniciar. Ela confirmou que os dois lotes comuns podem ser conferidos,
+    mas reconheceu que o volume lacrado não pertence à autorização dele, ordenou que não assine nem toque e suspendeu
+    o procedimento enquanto procura Tomas e verifica a origem da linha de custódia.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f4ccdd782e3e39b2.md
+  bytes: 636
+- transacao: s015-2163bc93a62b5d56
+  titulo: Shinta manteve trabalho diligente e bem-sucedido, ganhando crédito profissional gradual na Galeria. Sella
+    retornou com Tomas e uma segunda via interna que falsamente registra Shinta recebendo e autorizando o volume
+    lacrado durante o período em que ele trabalhava sob observação. O livro local permanece vazio e o volume continua
+    na mesa. Tomas ainda não declarou culpa e pediu que Shinta identifique a assinatura e diga quem já viu sua assinatura
+    profissional.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-2163bc93a62b5d56.md
+  bytes: 814
+- transacao: s015-b08fe70bdfbc66c5
+  titulo: Shinta forneceu voluntariamente uma amostra de assinatura sob declaração limitada e testemunho de Sella
+    e Tomas. A falsa assinatura se aproxima especialmente de um exemplar antigo arquivado na Galeria, sugerindo
+    acesso a registro interno ou cópia sem confirmar autoria. Tomas revelou que um representante da Night Watch
+    perguntou por Shinta e pelo volume antes de receber recado da Galeria; não há ordem de detenção. Shinta pode
+    falar no escritório ou pedir conversa aberta com Sella presente.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b08fe70bdfbc66c5.md
+  bytes: 940
+- transacao: s015-661c0ad6a27a48b4
+  titulo: Shinta acompanhou Tomas ao escritório, deixando Sella com o volume. Uma representante legítima da Night
+    Watch informou que Shinta não está detido, mas uma denúncia anterior ao contato da Galeria afirma que alguém
+    usando seu nome tentou pagar um carroceiro para desviar o volume antes da abertura. A denúncia contém descrição
+    ampla compatível e cópia da ordem irregular. Ela pediu que Shinta explique onde esteve e quem pode confirmar
+    seu percurso antes de entrar na Galeria.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-661c0ad6a27a48b4.md
+  bytes: 870
+quantidade: 5

@@ -9,8 +9,21 @@ frentes:
     nivel: 0
     historico_recente: []
   crime_e_milicias:
-    nivel: 0
-    historico_recente: []
+    nivel: 1
+    historico_recente:
+    - de: 0
+      para: 1
+      fonte: sessoes/015/consolidacoes.jsonl
+      evidencia: transacao:s015-14801e1d8e717902
+      origem: mundo:mundo-dc0262094a1df5f8
+      nota: A rede de Masao trouxe pequenas células armadas sob coberturas civis,
+        criando capangas isolados na malha urbana sem expor Masao nem empregar a Juppongatana
+        como tropa comum.
+      transacao: s015-14801e1d8e717902
+      pendencia_mundo: mundo-dc0262094a1df5f8
+      agente: masao_hirasawa
+      linha: expandir_presenca_de_masao
+      metodo: trazer_celulas_em_lotes_pequenos
   desgaste_da_autoridade:
     nivel: 0
     historico_recente: []

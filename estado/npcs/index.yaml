@@ -3,12 +3,15 @@ natureza: indice_medidores_npcs
 escala: estado/npcs/escala.yaml
 contrato_relacional: estado/npcs/relacionamento-v1.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
-quantidade: 37
+quantidade: 38
 npcs:
   nera_vell:
     nome: Nera Vell
     grupo: Vell / protegidos no circo
-    medidores: {vinculo: 8, confianca: 8, risco_percebido: 9}
+    medidores:
+      vinculo: 8
+      confianca: 8
+      risco_percebido: 9
     natureza_do_vinculo: romântico explícito, protetivo e vulnerável
     subtexto_romantico: claro
     arquivo: estado/npcs/nera_vell.yaml
@@ -17,7 +20,10 @@ npcs:
   tavin_vell:
     nome: Tavin Vell
     grupo: Vell / protegidos no circo
-    medidores: {vinculo: 7, confianca: 6, risco_percebido: 4}
+    medidores:
+      vinculo: 7
+      confianca: 6
+      risco_percebido: 4
     natureza_do_vinculo: fraternal, infantil e protetivo
     subtexto_romantico: inadequado
     arquivo: estado/npcs/tavin_vell.yaml
@@ -25,7 +31,10 @@ npcs:
   silva_elkwood:
     nome: Silva Elkwood
     grupo: Jack Mooney & Sons Circus / Chauntea
-    medidores: {vinculo: 8, confianca: 8, risco_percebido: 10}
+    medidores:
+      vinculo: 8
+      confianca: 8
+      risco_percebido: 10
     natureza_do_vinculo: protetivo, quase maternal e prático
     subtexto_romantico: nenhum
     arquivo: estado/npcs/silva_elkwood.yaml
@@ -34,7 +43,10 @@ npcs:
   jack_mooney:
     nome: Jack Mooney
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 5, confianca: 7, risco_percebido: 7}
+    medidores:
+      vinculo: 5
+      confianca: 7
+      risco_percebido: 7
     natureza_do_vinculo: profissional, patronal e utilitário
     subtexto_romantico: nenhum
     arquivo: estado/npcs/jack_mooney.yaml
@@ -43,7 +55,10 @@ npcs:
   maerra_thandrel:
     nome: Irmã Maerra Thandrel
     grupo: Casa da Aurora Menor / Lathander
-    medidores: {vinculo: 7, confianca: 9, risco_percebido: 6}
+    medidores:
+      vinculo: 7
+      confianca: 9
+      risco_percebido: 6
     natureza_do_vinculo: pastoral, moral e protetivo
     subtexto_romantico: nenhum
     arquivo: estado/npcs/maerra_thandrel.yaml
@@ -52,7 +67,10 @@ npcs:
   luath:
     nome: Luath
     grupo: City Guard / Night Watch
-    medidores: {vinculo: 4, confianca: 7, risco_percebido: 9}
+    medidores:
+      vinculo: 4
+      confianca: 7
+      risco_percebido: 9
     natureza_do_vinculo: respeito operacional cauteloso
     subtexto_romantico: nenhum
     arquivo: estado/npcs/luath.yaml
@@ -61,7 +79,10 @@ npcs:
   kethra_dunn:
     nome: Kethra Dunn
     grupo: Narwhal Manor / Colm-Dent
-    medidores: {vinculo: 6, confianca: 7, risco_percebido: 9}
+    medidores:
+      vinculo: 6
+      confianca: 7
+      risco_percebido: 9
     natureza_do_vinculo: aliança prática cautelosa
     subtexto_romantico: possivel
     arquivo: estado/npcs/kethra_dunn.yaml
@@ -70,7 +91,10 @@ npcs:
   pell:
     nome: Pell
     grupo: Silver Lily / Red Sail periférica
-    medidores: {vinculo: 3, confianca: 4, risco_percebido: 8}
+    medidores:
+      vinculo: 3
+      confianca: 4
+      risco_percebido: 8
     natureza_do_vinculo: transacional, medroso e oportunista
     subtexto_romantico: nenhum
     arquivo: estado/npcs/pell.yaml
@@ -79,7 +103,10 @@ npcs:
   brunna_torkel:
     nome: Brunna Torkel
     grupo: Medidas Torkel / Sarbreen
-    medidores: {vinculo: 3, confianca: 4, risco_percebido: 5}
+    medidores:
+      vinculo: 3
+      confianca: 4
+      risco_percebido: 5
     natureza_do_vinculo: profissional técnico e desconfiado
     subtexto_romantico: nenhum
     arquivo: estado/npcs/brunna_torkel.yaml
@@ -87,7 +114,10 @@ npcs:
   dessa_wren:
     nome: Dessa Wren
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 5, confianca: 5, risco_percebido: 4}
+    medidores:
+      vinculo: 5
+      confianca: 5
+      risco_percebido: 4
     natureza_do_vinculo: profissional, teatral e espirituoso
     subtexto_romantico: possivel
     arquivo: estado/npcs/dessa_wren.yaml
@@ -95,7 +125,10 @@ npcs:
   sorn_kel:
     nome: Sorn Kel
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 4, confianca: 5, risco_percebido: 5}
+    medidores:
+      vinculo: 4
+      confianca: 5
+      risco_percebido: 5
     natureza_do_vinculo: respeito técnico e profissional
     subtexto_romantico: nenhum
     arquivo: estado/npcs/sorn_kel.yaml
@@ -103,7 +136,10 @@ npcs:
   lysa_renn:
     nome: Lysa Renn
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 3, confianca: 3, risco_percebido: 5}
+    medidores:
+      vinculo: 3
+      confianca: 3
+      risco_percebido: 5
     natureza_do_vinculo: rivalidade defensiva, admiração possível e orgulho ferido
     subtexto_romantico: possivel
     arquivo: estado/npcs/lysa_renn.yaml
@@ -111,7 +147,10 @@ npcs:
   merrit_tealeaf:
     nome: Merrit Tealeaf
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 4, confianca: 4, risco_percebido: 6}
+    medidores:
+      vinculo: 4
+      confianca: 4
+      risco_percebido: 6
     natureza_do_vinculo: culpa, validação de palco e confiança frágil
     subtexto_romantico: nenhum
     arquivo: estado/npcs/merrit_tealeaf.yaml
@@ -119,7 +158,10 @@ npcs:
   harl_venn:
     nome: Harl Venn
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 3, confianca: 3, risco_percebido: 6}
+    medidores:
+      vinculo: 3
+      confianca: 3
+      risco_percebido: 6
     natureza_do_vinculo: respeito relutante, vergonha e cautela
     subtexto_romantico: nenhum
     arquivo: estado/npcs/harl_venn.yaml
@@ -133,7 +175,10 @@ npcs:
   sella_conferente_galeria:
     nome: Sella
     grupo: Galeria dos Escribas
-    medidores: {vinculo: 6, confianca: 6, risco_percebido: 4}
+    medidores:
+      vinculo: 6
+      confianca: 6
+      risco_percebido: 4
     natureza_do_vinculo: compaixão e familiaridade profissional crescentes com Shinta
     subtexto_romantico: nenhum
     arquivo: estado/npcs/sella_conferente_galeria.yaml
@@ -141,126 +186,195 @@ npcs:
   edran_vale:
     nome: Edran Vale
     grupo: contato local
-    medidores: {vinculo: 4, confianca: 3, risco_percebido: 5}
+    medidores:
+      vinculo: 4
+      confianca: 3
+      risco_percebido: 5
     natureza_do_vinculo: cautela local e tensão sem hostilidade aberta
     arquivo: estado/npcs/edran_vale.yaml
   mara_tharle:
     nome: Mara Tharle
     grupo: testemunha local
-    medidores: {vinculo: 3, confianca: 2, risco_percebido: 7}
+    medidores:
+      vinculo: 3
+      confianca: 2
+      risco_percebido: 7
     natureza_do_vinculo: medo e desconfiança de uma testemunha vulnerável
     arquivo: estado/npcs/mara_tharle.yaml
   velis_rook:
     nome: Velis Rook
     grupo: alfândega / registros de carga / oitiva de Tyr
-    medidores: {vinculo: 2, confianca: 1, risco_percebido: 8}
+    medidores:
+      vinculo: 2
+      confianca: 1
+      risco_percebido: 8
     natureza_do_vinculo: hostilidade assustada sob pressão institucional
     arquivo: estado/npcs/velis_rook.yaml
   colm_dunn:
     nome: Colm Dunn
     grupo: família Dunn / Colm-Dent
-    medidores: {vinculo: 6, confianca: 6, risco_percebido: 6}
+    medidores:
+      vinculo: 6
+      confianca: 6
+      risco_percebido: 6
     natureza_do_vinculo: gratidão cautelosa após resgate e franqueza limitada
     arquivo: estado/npcs/colm_dunn.yaml
   mera_fumaca:
     nome: Mera Fumaça
     grupo: rota rural / proteção temporária de Colm-Dent
-    medidores: {vinculo: 6, confianca: 6, risco_percebido: 5}
+    medidores:
+      vinculo: 6
+      confianca: 6
+      risco_percebido: 5
     natureza_do_vinculo: cooperação pragmática reforçada por libertação e confiança operacional
     arquivo: estado/npcs/mera_fumaca.yaml
   iria_doss:
     nome: Iria Doss
     grupo: cura rural / rota compartimentada
-    medidores: {vinculo: 5, confianca: 5, risco_percebido: 5}
+    medidores:
+      vinculo: 5
+      confianca: 5
+      risco_percebido: 5
     natureza_do_vinculo: neutralidade profissional cautelosa amparada pela palavra de Mera
     arquivo: estado/npcs/iria_doss.yaml
   sella_rove:
     nome: Sella Rove
     grupo: lavadouro / contato de Kethra
-    medidores: {vinculo: 3, confianca: 2, risco_percebido: 7}
+    medidores:
+      vinculo: 3
+      confianca: 2
+      risco_percebido: 7
     natureza_do_vinculo: cautela resistente; cooperação excepcional sem canal recorrente
     arquivo: estado/npcs/sella_rove.yaml
   dorra_hest:
     nome: Dorra Hest
     grupo: fornos de cal / carroças
-    medidores: {vinculo: 3, confianca: 2, risco_percebido: 5}
+    medidores:
+      vinculo: 3
+      confianca: 2
+      risco_percebido: 5
     natureza_do_vinculo: relação instrumental comprada por utilidade imediata
     arquivo: estado/npcs/dorra_hest.yaml
   bram_vask:
     nome: Bram Vask
     grupo: cobrança / loja de penhores
-    medidores: {vinculo: 1, confianca: 1, risco_percebido: 9}
+    medidores:
+      vinculo: 1
+      confianca: 1
+      risco_percebido: 9
     natureza_do_vinculo: hostilidade e medo após coerção direta
     arquivo: estado/npcs/bram_vask.yaml
   noll:
     nome: Noll
     grupo: cobrança de Bram Vask
-    medidores: {vinculo: 1, confianca: 1, risco_percebido: 9}
+    medidores:
+      vinculo: 1
+      confianca: 1
+      risco_percebido: 9
     natureza_do_vinculo: hostilidade e medo prático após derrota
     arquivo: estado/npcs/noll.yaml
   peta:
     nome: Peta
     grupo: criança resgatada / testemunha em recuperação
-    medidores: {vinculo: 6, confianca: 4, risco_percebido: 7}
+    medidores:
+      vinculo: 6
+      confianca: 4
+      risco_percebido: 7
     natureza_do_vinculo: gratidão frágil atravessada por trauma e medo
     arquivo: estado/npcs/peta.yaml
   velha_sella:
     nome: Velha Sella
     grupo: Fishtown / contato cauteloso
-    medidores: {vinculo: 4, confianca: 3, risco_percebido: 6}
+    medidores:
+      vinculo: 4
+      confianca: 3
+      risco_percebido: 6
     natureza_do_vinculo: cooperação limitada pela desconfiança e autoproteção
     arquivo: estado/npcs/velha_sella.yaml
   sirrus_melandor:
     nome: Sirrus Melandor
     grupo: Casa de Tyr
-    medidores: {vinculo: 4, confianca: 3, risco_percebido: 5}
+    medidores:
+      vinculo: 4
+      confianca: 3
+      risco_percebido: 5
     natureza_do_vinculo: avaliação institucional rígida com respeito ainda inicial
     arquivo: estado/npcs/sirrus_melandor.yaml
   halessa_vorn:
     nome: Irmã Halessa Vorn
     grupo: Casa de Tyr
-    medidores: {vinculo: 4, confianca: 6, risco_percebido: 8}
+    medidores:
+      vinculo: 4
+      confianca: 6
+      risco_percebido: 8
     natureza_do_vinculo: confiança operacional real sob limite de ruptura explícito
     arquivo: estado/npcs/halessa_vorn.yaml
   corven_dalm:
     nome: Corven Dalm
     grupo: Casa Veyr
-    medidores: {vinculo: 3, confianca: 2, risco_percebido: 6}
+    medidores:
+      vinculo: 3
+      confianca: 2
+      risco_percebido: 6
     natureza_do_vinculo: provocação calculada com respeito tático sem confiança
     arquivo: estado/npcs/corven_dalm.yaml
   homem_red_sail_capturado:
     nome: homem Red Sail capturado
     grupo: Red Sail
-    medidores: {vinculo: 1, confianca: 1, risco_percebido: 10}
+    medidores:
+      vinculo: 1
+      confianca: 1
+      risco_percebido: 10
     natureza_do_vinculo: medo hostil sob coerção direta
     arquivo: estado/npcs/homem_red_sail_capturado.yaml
   dain_brass_mord:
     nome: Dain 'Brass' Mord
     grupo: Red Sail
-    medidores: {vinculo: 2, confianca: 1, risco_percebido: 8}
+    medidores:
+      vinculo: 2
+      confianca: 1
+      risco_percebido: 8
     natureza_do_vinculo: hostilidade ou interesse operacional sem confiança pessoal
     arquivo: estado/npcs/dain_brass_mord.yaml
   rusk_cinza:
     nome: Rusk 'Cinza'
     grupo: Red Sail
-    medidores: {vinculo: null, confianca: 1, risco_percebido: null}
+    medidores:
+      vinculo: null
+      confianca: 1
+      risco_percebido: null
     natureza_do_vinculo: desconhecida; ainda não houve encontro suficiente para inferir afinidade
     arquivo: estado/npcs/rusk_cinza.yaml
   mira_dane:
     nome: Mira Dane
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 3, confianca: 2, risco_percebido: 5}
+    medidores:
+      vinculo: 3
+      confianca: 2
+      risco_percebido: 5
     natureza_do_vinculo: distância fria com reconhecimento técnico limitado
     arquivo: estado/npcs/mira_dane.yaml
   tobb_marlin:
     nome: Tobb Marlin
     grupo: Jack Mooney & Sons Circus
-    medidores: {vinculo: 5, confianca: 4, risco_percebido: 5}
+    medidores:
+      vinculo: 5
+      confianca: 4
+      risco_percebido: 5
     natureza_do_vinculo: convivência profissional pragmática sob os filtros de Jack
     arquivo: estado/npcs/tobb_marlin.yaml
   hessa_morn:
     nome: Hessa Morn
     grupo: rota rural compartimentada de Chauntea
-    medidores: {vinculo: 5, confianca: 4, risco_percebido: 5}
+    medidores:
+      vinculo: 5
+      confianca: 4
+      risco_percebido: 5
     natureza_do_vinculo: neutralidade profissional com confiança limitada ao protocolo
     arquivo: estado/npcs/hessa_morn.yaml
+  tomas_rell:
+    nome: Tomas Rell
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/tomas_rell.yaml
+    historico: historico/npcs/tomas_rell.yaml
+    bytes_fragmento: 232
