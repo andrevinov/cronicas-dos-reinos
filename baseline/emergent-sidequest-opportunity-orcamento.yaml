@@ -1,0 +1,27 @@
+schema_orcamento_emergent_sidequest_opportunity: 1
+natureza: contrato_de_regressao
+limites:
+  payload_bytes_max: 8192
+  intencoes_canonicas_max: 3
+  horizonte_intencoes_dias: 14
+  atores_causais_max: 6
+  juppongatana_possiveis_max: 4
+  escritas_planejar: 0
+  escritas_recusar: 0
+  leituras_sem_sinal: 0
+  leituras_recusar: 0
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+  estados_persistentes_novos: 0
+invariantes:
+  ancora_causal_explicita_obrigatoria: true
+  presenca_incidental_nao_aciona: true
+  limite_ativas_falha_antes_do_horizonte_secreto: true
+  task33_nao_e_varrida: true
+  fragmento_narrativo_task36_nao_e_aberto: true
+  transcript_nao_e_lido: true
+  recompensa_e_envelope_nao_sorteio: true
+  chamada_repetida_e_read_only_idempotente: true
+  pacote_nao_cria_oferece_ou_aceita_missao: true
+  pacote_nao_reescreve_task39: true
