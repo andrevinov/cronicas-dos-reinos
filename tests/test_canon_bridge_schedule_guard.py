@@ -18,7 +18,7 @@ class Task42ScheduleGuardTest(unittest.TestCase):
     def test_passado_materializado_usa_tipo_real_do_agendamento(self):
         event_id = "evento_sintetico"
         schedule_id = "agenda_sintetica"
-        activation = {"data": "19 Eleasis 1372 DR", "hora": "10:00"}
+        activation = {"data": "19 Eleasis, 1372 DR", "hora": "10:00"}
         base = mundo.parse_instant(activation["data"], activation["hora"])
         completed_id = mundo._pending_id(
             "movimento", f"agendamentos.{schedule_id}", base
