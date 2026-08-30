@@ -139,7 +139,10 @@ class PublicReputationRulesTest(unittest.TestCase):
 
 class PublicReputationEventTest(unittest.TestCase):
     @staticmethod
-    def _record(delta, txid="tx-reputacao", session=14):
+    def _record(delta, txid="tx-reputacao", session=None):
+        if session is None:
+            runtime = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
+            session = runtime["sessao"]["numero"]
         return {
             "versao": transacoes.SCHEMA_VERSION,
             "id": txid,

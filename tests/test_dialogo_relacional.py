@@ -81,11 +81,16 @@ class RelationshipDialogueRepositoryTest(unittest.TestCase):
         self.assertNotIn("ferramentas/dialogo_relacional.py", data["fontes"])
         self.assertNotIn("estado/npcs/relacionamento-v1.yaml", data["fontes"])
 
-    def test_luath_mostra_respeito_profissional_sem_intimidade(self):
-        dialogue = contexto.command_npc(ROOT, "Luath")["resultado"]["dialogo_relacional"]
-        self.assertEqual(dialogue["modo"], "baixa_afinidade_alta_confianca")
-        self.assertIn("respeito profissional", dialogue["tom"])
-        self.assertIn("sem intimidade", dialogue["tom"])
+    def test_luath_calibra_dialogo_pelo_estado_efetivo(self):
+        result = contexto.command_npc(ROOT, "Luath")["resultado"]
+        meters = result["medidores"]["dados"]["medidores"]
+        dialogue = result["dialogo_relacional"]
+        self.assertEqual(dialogue["afinidade"], meters["vinculo"])
+        self.assertEqual(dialogue["confianca"], meters["confianca"])
+        self.assertEqual(
+            dialogue["modo"],
+            dialogo_relacional.relationship_mode(meters["vinculo"], meters["confianca"]),
+        )
 
     def test_pell_sem_papel_opt_in_ainda_recebe_calibracao_relacional(self):
         data = contexto.command_npc(ROOT, "Pell")
