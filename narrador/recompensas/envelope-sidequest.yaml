@@ -1,0 +1,60 @@
+schema_envelope_sidequest: 1
+natureza: roteador_operacional_nao_canonico
+fonte_autoritativa: narrador/recompensas/tabelas.yaml
+geracao: proibida_task40
+regra: Este arquivo deriva somente limites do Reward Budget v2 para planejar uma sidequest; não sorteia, cria, descobre nem entrega recompensa.
+tiers:
+  '1': {pontos_base: 2, max_itens: 2}
+  '2': {pontos_base: 4, max_itens: 3}
+  '3': {pontos_base: 6, max_itens: 3}
+  '4': {pontos_base: 8, max_itens: 4}
+riscos:
+  baixa: {bonus_pontos: 0, aumento_teto_valor: 0}
+  media: {bonus_pontos: 1, aumento_teto_valor: 0}
+  alta: {bonus_pontos: 2, aumento_teto_valor: 1}
+  letal: {bonus_pontos: 3, aumento_teto_valor: 1}
+familias:
+  comercio_varejista:
+    modificador_pontos: 0
+    teto_valor_base: moderado
+    categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+  residencia_urbana:
+    modificador_pontos: -1
+    teto_valor_base: baixo
+    categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+  acampamento_espetaculo:
+    modificador_pontos: 0
+    teto_valor_base: moderado
+    categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+  propriedade_privada:
+    modificador_pontos: 1
+    teto_valor_base: moderado
+    categorias: [dinheiro, gema, consumivel, ferramenta, curiosidade]
+  residencia_exterior:
+    modificador_pontos: -1
+    teto_valor_base: baixo
+    categorias: [dinheiro, ferramenta, curiosidade]
+  mansao_privada:
+    modificador_pontos: 2
+    teto_valor_base: alto
+    categorias: [dinheiro, gema, consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]
+  templo_institucional:
+    modificador_pontos: 1
+    teto_valor_base: alto
+    categorias: [consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]
+  imovel_baixa_atividade:
+    modificador_pontos: -1
+    teto_valor_base: baixo
+    categorias: [dinheiro, ferramenta, curiosidade]
+  residencia_cuidado:
+    modificador_pontos: 0
+    teto_valor_base: moderado
+    categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+  servico_comunitario:
+    modificador_pontos: -1
+    teto_valor_base: baixo
+    categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+  entreposto_documental:
+    modificador_pontos: 1
+    teto_valor_base: moderado
+    categorias: [dinheiro, gema, ferramenta, pergaminho, curiosidade]
