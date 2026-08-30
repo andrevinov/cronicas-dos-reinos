@@ -4,7 +4,7 @@
 
 O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
+`runtime/contexto.yaml`/`runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -23,13 +23,13 @@ Detalhes: `docs/agente/fundamentos.md`.
 
 Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
-Runtime/handoffs/índices/consultas são projeções. Pendências prevalecem só até consolidação.
+Runtime/handoffs/índices/consultas são projeções; pendências prevalecem até consolidação.
 
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução. Leia para responder a uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leitura/tool calls, não a experiência literária.
+**Nunca leia por precaução; leia para uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leituras/tool calls, não a experiência literária.
 
-**Se for suficiente, pare.** Prefira portas públicas; não abra implementação, pastas, histórico ou transcrição “só para conferir”.
+**Se for suficiente, pare.** Prefira portas públicas; não abra fontes “só para conferir”.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -43,7 +43,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 
 ## 5. Roteamento por tarefa
 
-Leia só o documento especializado necessário:
+Leia só o documento necessário:
 
 - autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
@@ -58,7 +58,7 @@ Leia só o documento especializado necessário:
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa/Git/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
 
-Estilo: `narracao/guia-de-narrativa.md`. Sessões: `narracao/protocolo-de-sessao.md`. Limites: `narracao/limites.md`.
+Estilo: `narracao/guia-de-narrativa.md`; sessões: `narracao/protocolo-de-sessao.md`; limites: `narracao/limites.md`.
 
 ## 6. Narração ao vivo — protocolo transacional
 
@@ -78,7 +78,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Direção canônica é destino, nunca ação.** Use `endpoints.py direcao <id>`; `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
-Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases e ordenar por ID. Typo/ambiguidade falha antes de efeito.
+Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases/ordenar por ID; typo/ambiguidade falha antes de efeito.
 
 **Fala de NPC:** `contexto.py npc` inclui `dialogo_relacional` e `iniciativa_social`; conselho exige gatilho. Iniciativa não cria presença, segredo, side quest ou ação de Ren.
 
@@ -110,8 +110,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
 - **Task 31:** encontro não sorteia side quest; perfis procedurais inativos.
 - **Task 32:** quests autorais pré-escritas continuam disponíveis por NPC explícito; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona.
-- **Task 40:** conversa comum/incidental = nenhuma chamada; só com **âncora causal concreta** usar `oportunidade_sidequest.py planejar`; saída read-only, só autoriza pensar, nunca criar/oferecer quest.
-- **Task 41:** pacote Task40 útil → `sidequests_emergentes.py preparar` → narrar oferta → `cronica concluir` → materializar; sem oferta, não materializar. Nasce `oferecida` em `oportunidades.py`; NPCs novos, rewards/stakes e cânone ficam só declarados.
+- **Task 40:** conversa comum/incidental = nenhuma chamada; com **âncora causal concreta**, `oportunidade_sidequest.py planejar`; saída read-only: só autoriza pensar, nunca criar/oferecer quest.
+- **Task 41:** `sidequests_emergentes.py preparar` → narrar oferta → `cronica concluir` → materializar; sem oferta, não materializar. Nasce `oferecida` em `oportunidades.py`; rewards/stakes e cânone ficam só declarados.
 - Pedido Task32 já narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
@@ -134,9 +134,9 @@ Dúvida de regra: pare quando resolvida; prefira `contexto.py regra`. Defina CD/
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico nem mudar visibilidade sem justificativa. Regenerar runtime/memória só se retomada mudou; checkpoint normal já faz isso.
+Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato nem mudar visibilidade sem justificativa. Regenerar runtime/memória só se retomada mudou.
 
-Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
