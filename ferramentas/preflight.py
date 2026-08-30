@@ -58,6 +58,11 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
+                "recompensas de sidequest Task43",
+                (python, "ferramentas/recompensas_sidequest.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
                 "oportunidades de sidequest",
                 (python, "ferramentas/oportunidades.py", "check"),
                 "mundo vivo",
