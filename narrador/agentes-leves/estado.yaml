@@ -25,9 +25,16 @@ agentes:
   luath:
     estado: ativo
     proxima_avaliacao:
-      data: 16 Eleasis, 1372 DR
+      data: 22 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: 0dc053fbd6b047c7e12826ae08527557001b77d347555fdb6a4403b4ff961eb7
+      pendencia_origem: mundo-7794a98069bb033f
+      confirmado_em:
+        data: 19 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   silva_elkwood:
     estado: ativo
     proxima_avaliacao:

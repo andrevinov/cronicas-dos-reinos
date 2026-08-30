@@ -160,9 +160,8 @@ relacoes:
   nera_vell:
     nome: Nera Vell
     tipo: testemunha protegida / gravadora de selos
-    status: Nera sabe que Ren trabalhará sob o nome Shinta numa propriedade murada que ele considera possível casa
-      futura. Ela apoiou a esperança, exigiu que proteção não vire prisão e aceitou a promessa limitada de Ren voltar
-      quando puder e avisar quando não puder.
+    status: Ren e Nera tiveram uma despedida íntima e afetuosa antes de ele descansar e procurar Tomas. Ren reafirmou
+      seu amor e sua promessa de sempre voltar; Nera correspondeu ao amor, respondeu com humor e pediu que ele voltasse.
     atitude_para_ren: amorosa, assustada, zangada com as promessas absolutas e determinada a não ser protegida pela
       ignorância
     confianca: afetiva e real, mas pressionada pela tendência de Ren a desaparecer e prometer resultados que não
@@ -170,19 +169,19 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 9342
+    bytes_fragmento: 9297
     campos_atuais: 14
   tavin_vell:
     nome: Tavin Vell
     tipo: testemunha jovem
-    status: fisicamente bem e mais estável sob o nome de cobertura Timo; ajuda em tarefas pequenas, ainda espera
-      Ren voltar e soube por Silva que ele está vivo, bem e com saudades.
+    status: Ren abraçou Tavin em despedida e prometeu voltar à noite; Tavin perguntou se o retorno seria antes de
+      ele dormir.
     atitude_para_ren: assustado, grato e tentando obedecer
     confianca: baixa, mas crescendo
     respeito: medo respeitoso com simpatia
     arquivo: estado/relacoes/tavin_vell.yaml
     historico: historico/relacoes/tavin_vell.yaml
-    bytes_fragmento: 2044
+    bytes_fragmento: 1989
     campos_atuais: 11
   velha_sella:
     nome: Velha Sella
@@ -251,8 +250,9 @@ relacoes:
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
-    status: Silva permitiu que Ren visite Nera com cuidado, orientou que Tavin continue dormindo salvo se despertar
-      sozinho e exigiu verdade sem promessas absolutas; Ren acolheu sua orientação antes de agir.
+    status: Silva recebeu de Ren o relato completo da custódia, das conclusões sobre Kurobane e Masao, da contravigilância
+      com Luath e do ferimento na briga do circo; confirmou que Nera e Tavin permanecem seguros até onde o circo
+      pode verificar e ofereceu cuidar da costela de Ren.
     atitude_para_ren: favorável, protetiva e severamente vigilante; valoriza a honestidade e o cuidado com a cauda,
       mas rejeita tratar a invasão como simples recado
     confianca: moderada e vigilante
@@ -260,7 +260,7 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 7210
+    bytes_fragmento: 7290
     campos_atuais: 14
   jack_mooney:
     nome: Jack Mooney

@@ -5,9 +5,6 @@ global:
   ocorrencia:
     ciclo: 1
     restantes:
-    - g12
-    - g05
-    - g08
     - g03
     - g09
     - g10
@@ -17,16 +14,15 @@ global:
     - g07
     - g06
   cartas:
-    ciclo: 0
-    assinatura_pool: null
-    restantes: []
+    ciclo: 1
+    assinatura_pool: 86101a6f53a41dcf26f05d4f45844c2c2a0cb4d4f58dcfe708803c8d24bf6f8c
+    restantes:
+    - perseguicao_cruza_cena
 locais:
   galeria_dos_escribas:
     ocorrencia:
       ciclo: 1
       restantes:
-      - l04
-      - l02
       - l07
       - l06
       - l01
@@ -43,3 +39,21 @@ historico_recente:
   origem: null
   ficha_global: g11
   ficha_local: l03
+- cena_id: s15-ren-retorna-ao-circo
+  local_id: jack_mooney_sons_circus
+  resultado: avaliar_incidente
+  origem: global
+  ficha_global: g12
+  carta_id: briga_publica
+- cena_id: s15-ren-observa-galeria-por-tomas
+  local_id: galeria_dos_escribas
+  resultado: rotina
+  origem: null
+  ficha_global: g05
+  ficha_local: l04
+- cena_id: s15-ren-vigia-saidas-galeria-tomas
+  local_id: galeria_dos_escribas
+  resultado: rotina
+  origem: null
+  ficha_global: g08
+  ficha_local: l02

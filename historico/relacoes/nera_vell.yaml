@@ -494,3 +494,54 @@ eventos_pos_migracao:
     valor: Na madrugada de 16 Eleasis, Ren afirmou que decidiu ficar com Nera. Ela confirmou que o escolheu, mas
       preservou o direito de ter medo, discordar e exigir que ele não suporte tudo sozinho; pediu que o amor servisse
       como razão para voltar. Dormiram juntos até 04:30, e Ren a acompanhou de volta à carroça às 05:00.
+- transacao: s015-627e7732b8799369
+  sessao: 15
+  resumo: Ren foi à carroça verde e reencontrou Nera e Tavin após a noite inteira em que ambos permaneceram sem
+    informação confirmada sobre seu paradeiro ou segurança. Nera o abraçou com alívio, expressou de forma direta
+    o medo causado pelo desaparecimento e perguntou sobre a faixa nas costelas. Tavin abraçou Ren e perguntou se
+    ele ficaria algum tempo. Ren ainda não contou a eles o que aconteceu.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera reencontrou Ren depois de passar a noite inteira sem informação confirmada sobre seu paradeiro ou
+      segurança; recebeu-o com alívio e afeto, declarou uma vez o medo causado pelo desaparecimento e perguntou
+      sobre a contusão nas costelas.
+- transacao: s015-dc248816f02604bc
+  sessao: 15
+  resumo: Ren contou a Nera e Tavin o básico sobre a prisão de Shinta, a falsificação documental, sua hipótese de
+    envolvimento dos homens de Masao, a custódia de Luath e o ferimento na briga do circo. Nera distinguiu hipótese
+    de prova e recusou a promessa absoluta de que Ren sempre voltaria, pedindo que ele mantenha o acordo de voltar
+    quando puder, avisar quando não puder e contar a verdade ao retornar. Tavin perguntou se Ren ficaria até a refeição;
+    Nera perguntou destino, duração e quem saberia da saída…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera recebeu o relato básico da prisão de Shinta, da falsificação documental, da custódia de Luath e
+      do ferimento de Ren. Separou a hipótese sobre Masao de prova confirmada, recusou a promessa absoluta de retorno
+      e pediu destino, duração e canal de conhecimento para a saída daquela noite.
+- transacao: s015-f65fc2b7a7bbdf02
+  sessao: 15
+  resumo: Ren explicou a Nera que, se a falsificação tiver sido obra dos homens de Masao para retirar Shinta da
+    Galeria, Tomas e seus colegas podem estar em perigo e precisam ser avisados. Nera aceitou a necessidade do aviso,
+    mas perguntou como Ren pretende fazê-lo sem revelar a ligação entre Ren, Shinta, Tomas e o circo.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Nera compreendeu que Tomas e trabalhadores da Galeria podem estar em risco caso a falsificação tenha
+      servido para retirar Shinta do local; aceitou a necessidade do aviso e perguntou como Ren evitará ligar Ren,
+      Shinta, Tomas e o circo na mesma cadeia.
+- transacao: s015-468d35262c6b5157
+  sessao: 15
+  resumo: Ren e Nera tiveram uma despedida íntima e afetuosa atrás da carroça. Ren reafirmou seu amor e sua promessa
+    absoluta de sempre voltar; Nera correspondeu ao amor, respondeu à provocação com humor e pediu apenas que ele
+    voltasse, aceitando que descansasse antes de procurar Tomas. Ren abraçou Tavin e prometeu retornar à noite;
+    Tavin perguntou se seria antes de dormir.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: status
+    op: set
+    valor: Ren e Nera tiveram uma despedida íntima e afetuosa antes de ele descansar e procurar Tomas. Ren reafirmou
+      seu amor e sua promessa de sempre voltar; Nera correspondeu ao amor, respondeu com humor e pediu que ele voltasse.

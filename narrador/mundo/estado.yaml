@@ -3,8 +3,8 @@ natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
   de fatos da campanha.
 processado_ate:
-  data: 18 Eleasis, 1372 DR
-  hora: 08:55
+  data: 19 Eleasis, 1372 DR
+  hora: '17:35'
 pendencias: []
 concluidas_recentes:
 - id: mundo-d11f76d42770dca4
@@ -409,3 +409,65 @@ concluidas_recentes:
   nota: A rede de Masao trouxe pequenas células armadas sob coberturas civis, criando
     capangas isolados na malha urbana sem expor Masao nem empregar a Juppongatana
     como tropa comum.
+- id: mundo-7794a98069bb033f
+  tipo: reavaliar_agente_leve
+  agente_leve: luath
+  disparado_em:
+    data: 16 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Luath já está cumprindo a rotina institucional e conduzindo verificações;
+    não surgiu nova ameaça à custódia, prova ou testemunha que justifique outra iniciativa
+    persistente neste disparo.
+- id: mundo-6860f64096d5eac3
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém em execução vigilância discreta e resposta preparada;
+    o novo dia não trouxe fato canônico que altere prioridades ou autorize queimar
+    entradas e fontes.
+- id: mundo-74bb071cf4525aa8
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: 'Bloqueio canônico concreto: a presença física de Shizune em Ravens Bluff
+    permanece indeterminada e sua atuação local exige presença física; portanto ela
+    não pode iniciar nova falsificação imobiliária local neste disparo.'
+- id: mundo-af89942735c14eee
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Ainda não há fato canônico suficiente de que uma grande embarcação oriental
+    esteja a caminho ou seja esperada; o marco rumores_de_grande_navio permanece sustentado
+    sem avanço.
+- id: mundo-c076fdfb4bf01008
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail já amplia a busca dirigida pelos rastros logísticos conhecidos,
+    mas não recebeu nova pista concreta que permita localizar a casa de Iria, o lagar
+    ou a cadeia rural sem exposição excessiva.
+- id: mundo-f76cfa4f752f7bdf
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: A Casa de Tyr mantém provas e testemunhas sob custódia e aguarda a resposta
+    reservada já prevista; não há novo fato canônico que mude a investigação neste
+    disparo.
+- id: mundo-dc1c9736f7a707f0
+  tipo: evento_mundial
+  disparado_em:
+    data: 19 Eleasis, 1372 DR
+    hora: 06:00
+  nota: 'Evento materializado: boicote limitado entre estivadores e carroceiros por
+    taxas e prioridade de carga; Night Watch conteve confronto menor e iniciou negociação
+    sem vencedor.'

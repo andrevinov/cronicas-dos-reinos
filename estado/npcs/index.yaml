@@ -68,13 +68,13 @@ npcs:
     nome: Luath
     grupo: City Guard / Night Watch
     medidores:
-      vinculo: 4
+      vinculo: 5
       confianca: 7
       risco_percebido: 9
     natureza_do_vinculo: respeito operacional cauteloso
     subtexto_romantico: nenhum
     arquivo: estado/npcs/luath.yaml
-    bytes_fragmento: 1750
+    bytes_fragmento: 1965
     historico: historico/npcs/luath.yaml
   kethra_dunn:
     nome: Kethra Dunn

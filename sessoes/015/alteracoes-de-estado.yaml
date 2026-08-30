@@ -21,14 +21,14 @@ checkpoint_atual:
   modo: ren_com_nera_e_silva_apos_relatar_emboscada
   personagem: Ren Kagehira
   nivel: 7
-  pv: 52/52
+  pv: 48/52
   ki: 7/7
   ca: 17
   dinheiro_po: 39.379999999999995
-  data: 18 Eleasis, 1372 DR
-  hora: 08:55
+  data: 19 Eleasis, 1372 DR
+  hora: '17:35'
   area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
+  ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
   nivel_ficha: 7
 consolidacoes:
 - id: s015-cena-a836d9da7b5bdc33
@@ -143,6 +143,116 @@ consolidacoes:
   - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-661c0ad6a27a48b4.md
   - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b08fe70bdfbc66c5.md
   - personagens/jogador/conhecimento/index.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-c3dbc5009a016463
+  tipo: cena
+  transacoes:
+  - s015-1e72d848036d83a2
+  - s015-52dacccc1e51bf0c
+  - s015-236ff5d264bcefa3
+  - s015-7533fd23bf372842
+  - s015-9f05565d465ac550
+  - s015-f584b3c9e99b8acc
+  - s015-106b8c78942f3236
+  - s015-001ab4b7c17ba8ab
+  - s015-8e25b321eaac007d
+  - s015-15fdc1fb28aa0ee0
+  - s015-cf0e85cdb8de61ab
+  - s015-7afae3a68d967706
+  deltas: 25
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/luath.yaml
+  - estado/tempo.yaml
+  - historico/npcs/luath.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-8f9ca32765ccb122
+  tipo: cena
+  transacoes:
+  - s015-204f2d68a714a8db
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-794a6b08b02efc5a
+  tipo: cena
+  transacoes:
+  - s015-ccf5592e6d471b14
+  deltas: 1
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-520439289a8b2f21
+  tipo: cena
+  transacoes:
+  - s015-5d1edc7905dfe304
+  deltas: 1
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-328b0f3973a10f60
+  tipo: cena
+  transacoes:
+  - s015-700bd190313170a0
+  - s015-a7c8570e58683dcb
+  - s015-753ac1ed687602bc
+  - s015-b9efb101f924f5ab
+  - s015-9baf33d6f43f4413
+  - s015-9618abbcbfc4d44e
+  - s015-7db7027ef8854e37
+  - s015-7fbce3a1d7cbda64
+  - s015-627e7732b8799369
+  deltas: 24
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-96948cae75a7f1b8
+  tipo: cena
+  transacoes:
+  - s015-dc248816f02604bc
+  - s015-f65fc2b7a7bbdf02
+  - s015-1a1bf3bcaf7923d2
+  - s015-468d35262c6b5157
+  - s015-ad93ec5d17bfedb4
+  deltas: 18
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - personagens/jogador/ficha.yaml
   - sessoes/015/alteracoes-de-estado.yaml
   - sessoes/015/consequencias.md
   - sessoes/015/consolidacoes.jsonl

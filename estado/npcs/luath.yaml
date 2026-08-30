@@ -5,7 +5,7 @@ npc:
   nome: Luath
   grupo: City Guard / Night Watch
   medidores:
-    vinculo: 4
+    vinculo: 5
     confianca: 7
     risco_percebido: 9
   natureza_do_vinculo: respeito operacional cauteloso
@@ -34,3 +34,10 @@ npc:
   - Ren deixa corpos ligados à investigação
   - Ren pede cobertura para crime ou execução privada
   - a ligação pública entre Ren, Kage e a guarda fica clara demais
+  reconhecimento_identidade:
+    confirmacoes:
+    - fonte: sessao:015:cena:s015-ren-revela-identidade-a-luath
+      identidade: ren
+      observada: shinta
+    schema_reconhecimento_identidade: 1
+    suspeitas: []

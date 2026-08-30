@@ -530,3 +530,16 @@ eventos_pos_migracao:
     valor: Ren admitiu com vergonha que desejava aproveitar uma noite de calma com Nera antes que Ravens Bluff piorasse.
       Silva respondeu com humor cuidadoso e limites claros, distinguindo sua permissão logística da autonomia de
       Nera.
+- transacao: s015-7db7027ef8854e37
+  sessao: 15
+  resumo: Ren encontrou Silva no interior do circo e relatou toda a custódia, as conclusões sobre Masao e Kurobane,
+    o acordo de contravigilância com Luath, a ausência de cauda detectada e o ferimento na briga. Silva confirmou
+    que Nera e Tavin estão no circo e seguros até onde ela e o circo podem verificar, sem estranhos ou ameaça confirmada
+    procurando por eles. Reconheceu a cautela de Ren e ofereceu examinar sua costela antes que ele prossiga.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: status
+    op: set
+    valor: Silva recebeu de Ren o relato completo da custódia, das conclusões sobre Kurobane e Masao, da contravigilância
+      com Luath e do ferimento na briga do circo; confirmou que Nera e Tavin permanecem seguros até onde o circo
+      pode verificar e ofereceu cuidar da costela de Ren.

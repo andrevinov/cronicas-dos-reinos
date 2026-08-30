@@ -87,3 +87,52 @@ eventos_pos_migracao:
     op: append
     valor: Ao ver Ren retornar à carroça verde, Tavin abandonou a tarefa que fazia e o abraçou imediatamente, reforçando
       a associação de Ren com retorno e segurança.
+- transacao: s015-627e7732b8799369
+  sessao: 15
+  resumo: Ren foi à carroça verde e reencontrou Nera e Tavin após a noite inteira em que ambos permaneceram sem
+    informação confirmada sobre seu paradeiro ou segurança. Nera o abraçou com alívio, expressou de forma direta
+    o medo causado pelo desaparecimento e perguntou sobre a faixa nas costelas. Tavin abraçou Ren e perguntou se
+    ele ficaria algum tempo. Ren ainda não contou a eles o que aconteceu.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: status
+    op: set
+    valor: Tavin reencontrou Ren depois de uma noite sem saber onde ele estava ou se estava seguro; abraçou-o e
+      perguntou se ele ficaria algum tempo.
+- transacao: s015-dc248816f02604bc
+  sessao: 15
+  resumo: Ren contou a Nera e Tavin o básico sobre a prisão de Shinta, a falsificação documental, sua hipótese de
+    envolvimento dos homens de Masao, a custódia de Luath e o ferimento na briga do circo. Nera distinguiu hipótese
+    de prova e recusou a promessa absoluta de que Ren sempre voltaria, pedindo que ele mantenha o acordo de voltar
+    quando puder, avisar quando não puder e contar a verdade ao retornar. Tavin perguntou se Ren ficaria até a refeição;
+    Nera perguntou destino, duração e quem saberia da saída…
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: status
+    op: set
+    valor: Tavin soube que Ren permaneceu sob custódia de Luath e que sairá novamente à noite; perguntou se Ren
+      ficará com eles até a refeição.
+- transacao: s015-1a1bf3bcaf7923d2
+  sessao: 15
+  resumo: Ren decidiu procurar Tomas como Ren e explicar honestamente a necessidade da identidade de Shinta. Nera
+    aceitou o plano, lembrando que honestidade com Tomas não exige revelar o abrigo dos Vell ou o circo. Ren permaneceu
+    algum tempo entretendo Tavin com um jogo simples e depois chamou Nera, pelo olhar, para uma conversa privada
+    do lado de fora da carroça. Nera aceitou e aguardou que Ren conduzisse a despedida.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: status
+    op: set
+    valor: Ren cumpriu a promessa imediata de permanecer algum tempo e entreteve Tavin com um jogo simples antes
+      de conversar em particular com Nera.
+- transacao: s015-468d35262c6b5157
+  sessao: 15
+  resumo: Ren e Nera tiveram uma despedida íntima e afetuosa atrás da carroça. Ren reafirmou seu amor e sua promessa
+    absoluta de sempre voltar; Nera correspondeu ao amor, respondeu à provocação com humor e pediu apenas que ele
+    voltasse, aceitando que descansasse antes de procurar Tomas. Ren abraçou Tavin e prometeu retornar à noite;
+    Tavin perguntou se seria antes de dormir.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: status
+    op: set
+    valor: Ren abraçou Tavin em despedida e prometeu voltar à noite; Tavin perguntou se o retorno seria antes de
+      ele dormir.

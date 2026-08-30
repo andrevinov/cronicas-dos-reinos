@@ -95,7 +95,7 @@ combate:
     calculo: 10 + Destreza + Sabedoria, sem armadura
   pontos_de_vida:
     maximos: 52
-    atuais: 52
+    atuais: 48
     dados_de_vida: 7d8
     calculo: 8 + CON no nível 1; média 5 + CON nos níveis 2, 3, 4, 5, 6 e 7
   iniciativa: 4

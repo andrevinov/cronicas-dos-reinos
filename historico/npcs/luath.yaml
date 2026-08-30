@@ -19,3 +19,67 @@ eventos_pos_migracao:
     valor: Luath recebeu de Ren um relato completo da operação, considera confirmada a presença em Ravens Bluff
       de Kurobane Jinzaburō, uma das Dez Espadas de Masao, e passou a tratar a cadeia de custódia de Tyr como ameaçada.
       Mantém a distinção institucional entre fatos confirmados e hipóteses sobre os demais agentes.
+- transacao: s015-7533fd23bf372842
+  sessao: 15
+  resumo: Shinta entrou no posto sem resistência e foi encarcerado numa cela de retenção, ainda algemado. Luath
+    estava presente, percebeu imediatamente a identidade física entre Shinta e Ren e registrou internamente essa
+    possibilidade, mas não a revelou a Tomas nem à policial; assumiu a revisão do caso e suspendeu novos interrogatórios
+    até examinar os documentos.
+  deltas:
+  - actor_resultado: nao_aplicavel
+    alvo: npc:luath
+    caminho: reconhecimento_identidade
+    fato_canonico: Luath viu Shinta sob custódia a curta distância; apesar das roupas, postura e persona, o rosto,
+      o corpo e as proporções visíveis são os de Ren Kagehira, que Luath conhece pessoalmente.
+    fonte: sessao:015:cena:s015-shinta-entra-posto-e-luath
+    motivo_identidade: evidencia
+    op: set
+    valor:
+      confirmacoes: []
+      schema_reconhecimento_identidade: 1
+      suspeitas:
+      - evidencias:
+        - fonte: sessao:015:cena:s015-shinta-entra-posto-e-luath
+          id: ids-5e27eb9ce07c46a2
+          tipo: fisica
+        observada: shinta
+        possivel: ren
+- transacao: s015-106b8c78942f3236
+  sessao: 15
+  resumo: Ren confirmou a Luath que Shinta é sua persona e explicou a infiltração na Galeria contra os inimigos
+    comuns. Luath agora conhece canonicamente a identidade, considera comprovada a fabricação da acusação, mas não
+    sua autoria, e manteve o segredo diante dos demais. Ele pediu que Ren identifique quem sabia previamente do
+    trabalho de Shinta na Galeria.
+  deltas:
+  - actor_resultado: nao_aplicavel
+    alvo: npc:luath
+    caminho: reconhecimento_identidade
+    confirmacao_canonica: true
+    fato_canonico: 'Ren declarou diretamente a Luath, em conversa na cela: Você fala com Ren, Luath. Você não é
+      uma pessoa que eu precise enganar.'
+    fonte: sessao:015:cena:s015-ren-revela-identidade-a-luath
+    motivo_identidade: confirmacao
+    op: set
+    valor:
+      confirmacoes:
+      - fonte: sessao:015:cena:s015-ren-revela-identidade-a-luath
+        identidade: ren
+        observada: shinta
+      schema_reconhecimento_identidade: 1
+      suspeitas: []
+- transacao: s015-8e25b321eaac007d
+  sessao: 15
+  resumo: Ren confirmou que seu círculo próximo sabia do trabalho de Shinta na Galeria e atribuiu a Luath parte
+    de sua decisão de permanecer dentro da lei. Luath tratou a segurança dos protegidos como esperança plausível,
+    não certeza, e considerou outras fontes possíveis do vazamento. A afinidade institucional entre ambos aumentou;
+    confiando na palavra de Ren, Luath removeu as algemas, mas manteve a cela trancada e a custódia formal enquanto
+    prossegue nas verificações.
+  deltas:
+  - alvo: npc:luath
+    caminho: medidores.vinculo
+    fato_canonico: Ren disse a Luath que permanece voluntariamente sob custódia também porque o sargento o convenceu
+      a não se tornar um fora da lei como seus inimigos, e sustentou essa escolha quando ela lhe custou liberdade
+      e a cobertura de Shinta.
+    fonte: sessoes/015/transcricao.md
+    op: inc
+    valor: 1

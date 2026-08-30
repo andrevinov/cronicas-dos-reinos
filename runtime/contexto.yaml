@@ -15,7 +15,7 @@ personagem:
   subclasse: Caminho da Sombra
 recursos:
   pv:
-    atuais: 52
+    atuais: 48
     maximos: 52
   ki:
     atuais: 7
@@ -24,8 +24,8 @@ recursos:
   deslocamento: 55 pés
   dinheiro_po: 39.379999999999995
 tempo:
-  data: 18 Eleasis, 1372 DR
-  hora_aproximada: 08:55
+  data: 19 Eleasis, 1372 DR
+  hora_aproximada: '17:35'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -35,7 +35,7 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
+  ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -79,11 +79,6 @@ capacidades_contextuais:
     leitura_labial: se vir a boca e entender o idioma
     bonus_passivos: 5
 efeitos_temporarios:
-  ren_desarmado:
-    descricao: Ren partiu para a operação sem espadas, shurikens ou qualquer arma; leva sob o disfarce apenas suas
-      ferramentas de ladrão e objetos coerentes com o velho erudito.
-    duracao: até Ren recuperar ou voltar a portar suas armas
-    inicio: 05:15 de 12 Eleasis
   narwhal_alerta_para_observador_idoso:
     descricao: A segurança de Narwhal Manor não reconheceu Ren, mas suspeita que um velho erudito vigiava a entrada.
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
