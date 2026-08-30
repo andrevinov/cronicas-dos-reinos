@@ -179,7 +179,10 @@ def _deadline(doc: dict[str, Any]) -> mundo.WorldInstant | None:
     if not isinstance(raw, dict) or raw.get("tipo") != "temporal":
         return None
     end = _map(raw.get("expira_em"), "prazo.expira_em")
-    return mundo.parse_instant(_text(end.get("data"), "prazo.data"), _text(end.get("hora"), "prazo.hora"))
+    return mundo.parse_instant(
+        _text(end.get("data"), "prazo.data"),
+        _text(end.get("hora"), "prazo.hora"),
+    )
 
 
 def _final_locations(doc: dict[str, Any]) -> list[str]:
@@ -197,7 +200,9 @@ def _event_context(
     try:
         index = intencoes_canonicas.load_index(repo)
         catalog = eventos_canonicos.load_catalog(repo)
-        intent = intencoes_canonicas.load_intent(repo, event_id, index=index, catalog=catalog)
+        intent = intencoes_canonicas.load_intent(
+            repo, event_id, index=index, catalog=catalog
+        )
     except (
         intencoes_canonicas.CanonicalIntentError,
         eventos_canonicos.CanonicalEventError,
@@ -217,10 +222,33 @@ def _base_activation(catalog: dict[str, Any], event_id: str) -> mundo.WorldInsta
 
 
 def _schedule_id(catalog: dict[str, Any], event_id: str) -> str:
-    return _text(catalog["eventos"][event_id].get("agendamento_id"), "agendamento_id")
+    return _text(
+        catalog["eventos"][event_id].get("agendamento_id"), "agendamento_id"
+    )
 
 
-def _reservation_for_mission(state: dict[str, Any], mission_id: str) -> tuple[str, dict[str, Any]] | None:
+def _schedule(
+    repo: Path, catalog: dict[str, Any], event_id: str
+) -> dict[str, Any]:
+    schedule_id = _schedule_id(catalog, event_id)
+    schedule = next(
+        (
+            item
+            for item in mundo.load_agenda(repo).get("agendamentos") or []
+            if item.get("id") == schedule_id
+        ),
+        None,
+    )
+    if not isinstance(schedule, dict):
+        raise CanonBridgeError(
+            f"agendamento canônico inexistente para {event_id}: {schedule_id}"
+        )
+    return schedule
+
+
+def _reservation_for_mission(
+    state: dict[str, Any], mission_id: str
+) -> tuple[str, dict[str, Any]] | None:
     for event_id, raw in state["reservas"].items():
         if isinstance(raw, dict) and raw.get("mission_id") == mission_id:
             return str(event_id), raw
@@ -239,8 +267,12 @@ def _validate_relation(
         return None
     mode = RELATION_TO_MODE.get(raw_mode)
     if mode is None:
-        raise CanonBridgeError(f"relação Task41 não reconhecida pela Task42: {raw_mode}")
-    candidates = _list(relation.get("intencoes_candidatas"), "relacao_canone.intencoes_candidatas")
+        raise CanonBridgeError(
+            f"relação Task41 não reconhecida pela Task42: {raw_mode}"
+        )
+    candidates = _list(
+        relation.get("intencoes_candidatas"), "relacao_canone.intencoes_candidatas"
+    )
     if len(candidates) != 1 or not isinstance(candidates[0], str):
         raise CanonBridgeError(
             "Task42 exige exatamente uma intenção/evento alvo na candidatura não lateral"
@@ -252,28 +284,41 @@ def _validate_relation(
         raise CanonBridgeError("Task42 não cria ponte retroativa para evento já devido")
     contract = intent["contrato_rewrite"]
     if not contract["integracao_sidequest"]:
-        raise CanonBridgeError(f"{event_id}: intenção não aceita integração com sidequest")
+        raise CanonBridgeError(
+            f"{event_id}: intenção não aceita integração com sidequest"
+        )
     allowed = set(contract["modos_permitidos"])
     end = _deadline(doc)
     effective = base
     if mode in {"ponte", "convergente"}:
         if end is None:
-            raise CanonBridgeError(f"{mode} exige prazo temporal para criar âncora causal")
+            raise CanonBridgeError(
+                f"{mode} exige prazo temporal para criar âncora causal"
+            )
         gap = abs(end.minute - base.minute)
         if gap > MAX_CONVERGENCE_GAP_HOURS * 60:
             raise CanonBridgeError(
-                f"{mode} deve terminar a no máximo {MAX_CONVERGENCE_GAP_HOURS}h do evento canônico"
+                f"{mode} deve terminar a no máximo "
+                f"{MAX_CONVERGENCE_GAP_HOURS}h do evento canônico"
             )
         if mode == "convergente" and "satisfazer" not in allowed:
-            raise CanonBridgeError(f"{event_id}: convergência exige modo satisfazer na Task39")
+            raise CanonBridgeError(
+                f"{event_id}: convergência exige modo satisfazer na Task39"
+            )
     elif mode == "adiamento":
         if "adiar" not in allowed:
-            raise CanonBridgeError(f"{event_id}: contrato Task39 não permite adiar")
+            raise CanonBridgeError(
+                f"{event_id}: contrato Task39 não permite adiar"
+            )
         if end is None or end.minute <= base.minute:
-            raise CanonBridgeError("adiamento exige prazo temporal posterior à ativação padrão")
+            raise CanonBridgeError(
+                "adiamento exige prazo temporal posterior à ativação padrão"
+            )
         delay_minutes = end.minute - base.minute
         if delay_minutes > int(contract["atraso_maximo_horas"]) * 60:
-            raise CanonBridgeError("adiamento excede elasticidade temporal da intenção")
+            raise CanonBridgeError(
+                "adiamento excede elasticidade temporal da intenção"
+            )
         effective = end
     else:  # transformacao
         if "transformar" not in allowed or "satisfazer" not in allowed:
@@ -285,7 +330,10 @@ def _validate_relation(
     if isinstance(resolved, dict) and resolved.get("estado") == "satisfeita":
         raise CanonBridgeError(f"{event_id}: intenção já foi satisfeita")
     existing = state["reservas"].get(event_id)
-    if isinstance(existing, dict) and existing.get("mission_id") != mission.get("id"):
+    if (
+        isinstance(existing, dict)
+        and existing.get("mission_id") != mission.get("id")
+    ):
         raise CanonBridgeError(
             f"{event_id}: intenção já reservada por {existing.get('mission_id')}"
         )
@@ -304,7 +352,9 @@ def _validate_relation(
             "prazo": copy.deepcopy(doc.get("prazo")),
             "locais_fase_final": _final_locations(doc),
         },
-        "justificativa": _text(relation.get("justificativa"), "relacao_canone.justificativa"),
+        "justificativa": _text(
+            relation.get("justificativa"), "relacao_canone.justificativa"
+        ),
         "regra_agencia": "ancora_causal_nao_move_nem_decide_ren",
         "fontes_lidas": sources,
     }
@@ -322,56 +372,117 @@ def prepare_lifecycle_transition(
     doc, source = _quest_document(repo, mission)
     plan = _validate_relation(repo, mission, doc, now)
     if plan is None:
-        return {"acao": "lateral", "mission_id": mission["id"], "fontes_lidas": [source]}
+        return {
+            "acao": "lateral",
+            "mission_id": mission["id"],
+            "fontes_lidas": [source],
+        }
     plan["fontes_lidas"] = [source, *plan["fontes_lidas"], STATE.as_posix()]
     return plan
 
 
-def apply_lifecycle_transition(repo: Path, plan: dict[str, Any] | None) -> dict[str, Any]:
+def apply_lifecycle_transition(
+    repo: Path, plan: dict[str, Any] | None
+) -> dict[str, Any]:
     if plan is None or plan.get("acao") == "lateral":
-        return {"ok": True, "alterou": False, "resultado": "sem_reserva_canonica"}
+        return {
+            "ok": True,
+            "alterou": False,
+            "resultado": "sem_reserva_canonica",
+        }
     if plan.get("acao") != "reservar":
         raise CanonBridgeError("plano de transição Task42 inválido")
     state = load_state(repo)
     event_id = plan["evento_id"]
     existing = state["reservas"].get(event_id)
     if isinstance(existing, dict):
-        comparable = {key: value for key, value in plan.items() if key not in {"acao", "fontes_lidas"}}
+        comparable = {
+            key: value
+            for key, value in plan.items()
+            if key not in {"acao", "fontes_lidas"}
+        }
         if existing == comparable:
-            return {"ok": True, "alterou": False, "resultado": "reserva_ja_existia"}
+            return {
+                "ok": True,
+                "alterou": False,
+                "resultado": "reserva_ja_existia",
+            }
         raise CanonBridgeError(f"{event_id}: reserva concorrente/divergente")
-    record = {key: copy.deepcopy(value) for key, value in plan.items() if key not in {"acao", "fontes_lidas"}}
+    record = {
+        key: copy.deepcopy(value)
+        for key, value in plan.items()
+        if key not in {"acao", "fontes_lidas"}
+    }
     state["reservas"][event_id] = record
-    _history(state, {
-        "tipo": "reserva_criada", "evento_id": event_id,
-        "mission_id": record["mission_id"], "modo": record["modo"],
-        "em": copy.deepcopy(record["criada_em"]),
-    })
+    _history(
+        state,
+        {
+            "tipo": "reserva_criada",
+            "evento_id": event_id,
+            "mission_id": record["mission_id"],
+            "modo": record["modo"],
+            "em": copy.deepcopy(record["criada_em"]),
+        },
+    )
     _atomic(repo / STATE, state)
-    return {"ok": True, "alterou": True, "resultado": "reserva_criada", "evento_id": event_id}
+    return {
+        "ok": True,
+        "alterou": True,
+        "resultado": "reserva_criada",
+        "evento_id": event_id,
+    }
 
 
 def _world_event_status(
-    repo: Path, catalog: dict[str, Any], event_id: str, effective: mundo.WorldInstant | None = None
+    repo: Path,
+    catalog: dict[str, Any],
+    event_id: str,
+    effective: mundo.WorldInstant | None = None,
 ) -> dict[str, Any]:
     schedule_id = _schedule_id(catalog, event_id)
+    schedule = _schedule(repo, catalog, event_id)
     origin = f"agenda:agendamentos.{schedule_id}"
     world = mundo.load_world_state(repo)
-    pending = [item for item in world["pendencias"] if item.get("origem") == origin]
+    pending = [
+        item for item in world["pendencias"] if item.get("origem") == origin
+    ]
     base = _base_activation(catalog, event_id)
-    ids = {mundo._pending_id(catalog["eventos"][event_id].get("tipo", "expiracao"), f"agendamentos.{schedule_id}", base)}
-    if effective is not None:
-        schedule = next(
-            (item for item in mundo.load_agenda(repo).get("agendamentos") or [] if item.get("id") == schedule_id),
-            None,
+    ids = {
+        mundo._pending_id(
+            schedule["tipo"], f"agendamentos.{schedule_id}", base
         )
-        if isinstance(schedule, dict):
-            ids.add(mundo._pending_id(schedule["tipo"], f"agendamentos.{schedule_id}", effective))
-    completed = [item for item in world["concluidas_recentes"] if item.get("id") in ids]
-    return {"origin": origin, "pending": pending, "completed": completed, "world": world}
+    }
+    if effective is not None:
+        ids.add(
+            mundo._pending_id(
+                schedule["tipo"], f"agendamentos.{schedule_id}", effective
+            )
+        )
+    completed = [
+        item for item in world["concluidas_recentes"] if item.get("id") in ids
+    ]
+    return {
+        "origin": origin,
+        "pending": pending,
+        "completed": completed,
+        "world": world,
+    }
 
 
-def _ensure_fallback_pending(repo: Path, event_id: str, now: mundo.WorldInstant) -> bool:
+def _sync_barrier(repo: Path, world: dict[str, Any] | None = None) -> None:
+    try:
+        import barreira_mundo
+    except ImportError:
+        return
+    try:
+        barreira_mundo.sync(repo, world)
+    except barreira_mundo.WorldPendingBarrierError as exc:
+        raise CanonBridgeError(str(exc)) from exc
+
+
+def _ensure_fallback_pending(
+    repo: Path, event_id: str, now: mundo.WorldInstant
+) -> bool:
     _, catalog, _, _ = _event_context(repo, event_id)
     state = load_state(repo)
     if isinstance(state["resolucoes"].get(event_id), dict):
@@ -388,7 +499,8 @@ def _ensure_fallback_pending(repo: Path, event_id: str, now: mundo.WorldInstant)
     agenda = mundo.load_agenda(repo)
     trigger = next(
         (
-            item for item in mundo._scheduled_triggers(
+            item
+            for item in mundo._scheduled_triggers(
                 agenda, mundo.WorldInstant(base.minute - 1), base
             )
             if item.get("origem") == origin
@@ -396,17 +508,17 @@ def _ensure_fallback_pending(repo: Path, event_id: str, now: mundo.WorldInstant)
         None,
     )
     if trigger is None:
-        raise CanonBridgeError(f"não foi possível reconstruir fallback canônico de {event_id}")
-    if any(item.get("id") == trigger["id"] for item in world["concluidas_recentes"]):
+        raise CanonBridgeError(
+            f"não foi possível reconstruir fallback canônico de {event_id}"
+        )
+    if any(
+        item.get("id") == trigger["id"]
+        for item in world["concluidas_recentes"]
+    ):
         return False
     world["pendencias"].append(trigger)
     mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world)
-    try:
-        import barreira_mundo
-        barreira_mundo.sync(repo, world)
-    except (ImportError, Exception) as exc:
-        if exc.__class__.__module__ != "barreira_mundo":
-            raise
+    _sync_barrier(repo, world)
     return True
 
 
@@ -423,11 +535,16 @@ def _release(
         return False
     _ensure_fallback_pending(repo, event_id, now)
     del state["reservas"][event_id]
-    _history(state, {
-        "tipo": "reserva_liberada", "evento_id": event_id,
-        "mission_id": reservation.get("mission_id"), "motivo": reason,
-        "em": mundo.instant_parts(now),
-    })
+    _history(
+        state,
+        {
+            "tipo": "reserva_liberada",
+            "evento_id": event_id,
+            "mission_id": reservation.get("mission_id"),
+            "motivo": reason,
+            "em": mundo.instant_parts(now),
+        },
+    )
     return True
 
 
@@ -437,7 +554,10 @@ def apply_terminal_transition(
     outcome: str,
     now: mundo.WorldInstant,
 ) -> dict[str, Any]:
-    if mission.get("origem") != "sidequest_emergente" or not configured(repo):
+    if (
+        mission.get("origem") != "sidequest_emergente"
+        or not configured(repo)
+    ):
         return {"ok": True, "alterou": False}
     state = load_state(repo)
     found = _reservation_for_mission(state, mission["id"])
@@ -445,24 +565,36 @@ def apply_terminal_transition(
         return {"ok": True, "alterou": False}
     event_id, reservation = found
     changed = False
-    if outcome == "concluida" and reservation.get("modo") in {"convergente", "transformacao"}:
+    if (
+        outcome == "concluida"
+        and reservation.get("modo") in {"convergente", "transformacao"}
+    ):
         if reservation.get("estado") != "aguarda_evidencia":
             reservation["estado"] = "aguarda_evidencia"
             reservation["quest_concluida_em"] = mundo.instant_parts(now)
-            _history(state, {
-                "tipo": "reserva_aguarda_evidencia", "evento_id": event_id,
-                "mission_id": mission["id"], "em": mundo.instant_parts(now),
-            })
+            _history(
+                state,
+                {
+                    "tipo": "reserva_aguarda_evidencia",
+                    "evento_id": event_id,
+                    "mission_id": mission["id"],
+                    "em": mundo.instant_parts(now),
+                },
+            )
             changed = True
     else:
-        changed = _release(repo, state, event_id, reason=f"quest_{outcome}", now=now)
+        changed = _release(
+            repo, state, event_id, reason=f"quest_{outcome}", now=now
+        )
     if changed:
         _atomic(repo / STATE, state)
     return {"ok": True, "alterou": changed, "evento_id": event_id}
 
 
 def reconcile_lifecycle(
-    repo: Path, opportunity_state: dict[str, Any], now: mundo.WorldInstant
+    repo: Path,
+    opportunity_state: dict[str, Any],
+    now: mundo.WorldInstant,
 ) -> dict[str, Any]:
     if not configured(repo):
         return {"ok": True, "alterou": False, "liberadas": []}
@@ -472,10 +604,18 @@ def reconcile_lifecycle(
     for event_id, reservation in list(state["reservas"].items()):
         if not isinstance(reservation, dict):
             continue
-        mission = opportunity_state.get("missoes", {}).get(reservation.get("mission_id"))
+        mission = opportunity_state.get("missoes", {}).get(
+            reservation.get("mission_id")
+        )
         mission_state = mission.get("estado") if isinstance(mission, dict) else None
         if mission_state in TERMINAL_RELEASE or mission_state is None:
-            if _release(repo, state, event_id, reason=f"lifecycle_{mission_state or 'ausente'}", now=now):
+            if _release(
+                repo,
+                state,
+                event_id,
+                reason=f"lifecycle_{mission_state or 'ausente'}",
+                now=now,
+            ):
                 changed = True
                 released.append(event_id)
         elif mission_state == "concluida":
@@ -483,7 +623,13 @@ def reconcile_lifecycle(
                 if reservation.get("estado") != "aguarda_evidencia":
                     reservation["estado"] = "aguarda_evidencia"
                     changed = True
-            elif _release(repo, state, event_id, reason="lifecycle_concluida", now=now):
+            elif _release(
+                repo,
+                state,
+                event_id,
+                reason="lifecycle_concluida",
+                now=now,
+            ):
                 changed = True
                 released.append(event_id)
     if changed:
@@ -492,7 +638,10 @@ def reconcile_lifecycle(
 
 
 def effective_scheduled_triggers(
-    repo: Path, agenda: dict[str, Any], start: mundo.WorldInstant, end: mundo.WorldInstant
+    repo: Path,
+    agenda: dict[str, Any],
+    start: mundo.WorldInstant,
+    end: mundo.WorldInstant,
 ) -> list[dict[str, Any]]:
     """Aplica overlay sem criar scheduler ou editar agenda."""
     if not configured(repo):
@@ -513,10 +662,16 @@ def effective_scheduled_triggers(
             schedules.append(item)
             continue
         resolution = state["resolucoes"].get(event_id)
-        if isinstance(resolution, dict) and resolution.get("estado") == "satisfeita":
+        if (
+            isinstance(resolution, dict)
+            and resolution.get("estado") == "satisfeita"
+        ):
             continue
         reservation = state["reservas"].get(event_id)
-        if isinstance(reservation, dict) and reservation.get("modo") == "adiamento":
+        if (
+            isinstance(reservation, dict)
+            and reservation.get("modo") == "adiamento"
+        ):
             mission = opp_state["missoes"].get(reservation.get("mission_id"))
             if isinstance(mission, dict) and mission.get("estado") == "aceita":
                 item["em"] = copy.deepcopy(reservation["ativacao_efetiva"])
@@ -546,25 +701,31 @@ def event_overlay(repo: Path, event_id: str) -> dict[str, Any] | None:
         "modo": reservation.get("modo"),
         "ativacao_efetiva": copy.deepcopy(reservation.get("ativacao_efetiva")),
         "ancora_quest": copy.deepcopy(reservation.get("ancora_quest")),
-        "regra": "ponte causal orienta forma; nunca obriga Ren a estar ou agir na âncora",
+        "regra": (
+            "ponte causal orienta forma; nunca obriga Ren a estar ou agir na âncora"
+        ),
     }
 
 
-def _cleanup_satisfied_pending(repo: Path, event_id: str, catalog: dict[str, Any]) -> bool:
+def _cleanup_satisfied_pending(
+    repo: Path, event_id: str, catalog: dict[str, Any]
+) -> bool:
     schedule_id = _schedule_id(catalog, event_id)
     origin = f"agenda:agendamentos.{schedule_id}"
     world = mundo.load_world_state(repo)
-    matches = [item for item in world["pendencias"] if item.get("origem") == origin]
+    matches = [
+        item for item in world["pendencias"] if item.get("origem") == origin
+    ]
     changed = False
     for item in matches:
-        mundo.conclude(repo, item["id"], f"intenção canônica satisfeita via sidequest: {event_id}")
+        mundo.conclude(
+            repo,
+            item["id"],
+            f"intenção canônica satisfeita via sidequest: {event_id}",
+        )
         changed = True
     if changed:
-        try:
-            import barreira_mundo
-            barreira_mundo.sync(repo)
-        except ImportError:
-            pass
+        _sync_barrier(repo)
     return changed
 
 
@@ -584,16 +745,24 @@ def satisfy(
     except oportunidades.OpportunityError as exc:
         raise CanonBridgeError(str(exc)) from exc
     mission = opp["missoes"].get(mission_id)
-    if not isinstance(mission, dict) or mission.get("origem") != "sidequest_emergente":
-        raise CanonBridgeError("missão emergente inexistente para satisfação canônica")
+    if (
+        not isinstance(mission, dict)
+        or mission.get("origem") != "sidequest_emergente"
+    ):
+        raise CanonBridgeError(
+            "missão emergente inexistente para satisfação canônica"
+        )
     if mission.get("estado") != "concluida":
-        raise CanonBridgeError("somente sidequest concluída pode satisfazer intenção canônica")
+        raise CanonBridgeError(
+            "somente sidequest concluída pode satisfazer intenção canônica"
+        )
     state = load_state(repo)
     found = _reservation_for_mission(state, mission_id)
     if found is None:
         existing = next(
             (
-                (eid, raw) for eid, raw in state["resolucoes"].items()
+                (eid, raw)
+                for eid, raw in state["resolucoes"].items()
                 if isinstance(raw, dict) and raw.get("mission_id") == mission_id
             ),
             None,
@@ -603,54 +772,86 @@ def satisfy(
             _, catalog, _, _ = _event_context(repo, event_id)
             cleaned = _cleanup_satisfied_pending(repo, event_id, catalog)
             return {
-                "ok": True, "resultado": "ja_satisfeita", "evento_id": event_id,
-                "intencao_id": resolution.get("intencao_id"), "pendencia_limpa": cleaned,
+                "ok": True,
+                "resultado": "ja_satisfeita",
+                "evento_id": event_id,
+                "intencao_id": resolution.get("intencao_id"),
+                "pendencia_limpa": cleaned,
             }
-        raise CanonBridgeError("missão concluída não possui reserva canônica ativa")
+        raise CanonBridgeError(
+            "missão concluída não possui reserva canônica ativa"
+        )
     event_id, reservation = found
     if reservation.get("modo") not in {"convergente", "transformacao"}:
-        raise CanonBridgeError("somente convergência/transformação pode satisfazer intenção pela Task42")
+        raise CanonBridgeError(
+            "somente convergência/transformação pode satisfazer intenção pela Task42"
+        )
     _, catalog, intent, sources = _event_context(repo, event_id)
     contract = intent["contrato_rewrite"]
     if "satisfazer" not in set(contract["modos_permitidos"]):
-        raise CanonBridgeError(f"{event_id}: Task39 não permite satisfação alternativa")
+        raise CanonBridgeError(
+            f"{event_id}: Task39 não permite satisfação alternativa"
+        )
     criteria = list(intent["intencao_canonica"]["criterios_satisfacao"])
     raw = _list(evidences_raw, "evidencias")
     if len(raw) != len(criteria):
-        raise CanonBridgeError("satisfação exige uma evidência para cada critério canônico")
+        raise CanonBridgeError(
+            "satisfação exige uma evidência para cada critério canônico"
+        )
     normalized: list[dict[str, Any]] = []
     seen: set[str] = set()
     for pos, item in enumerate(raw):
         data = _map(item, f"evidencias[{pos}]")
         if set(data) != {"criterio", "fonte", "evidencia"}:
-            raise CanonBridgeError("evidência exige criterio, fonte e evidencia")
+            raise CanonBridgeError(
+                "evidência exige criterio, fonte e evidencia"
+            )
         criterion = _text(data["criterio"], f"evidencias[{pos}].criterio")
         if criterion not in criteria or criterion in seen:
-            raise CanonBridgeError("critério de satisfação desconhecido ou duplicado")
+            raise CanonBridgeError(
+                "critério de satisfação desconhecido ou duplicado"
+            )
         seen.add(criterion)
-        path, source = _safe_repo_path(repo, data["fonte"], f"evidencias[{pos}].fonte")
+        path, source = _safe_repo_path(
+            repo, data["fonte"], f"evidencias[{pos}].fonte"
+        )
         literal = _text(
-            data["evidencia"], f"evidencias[{pos}].evidencia",
-            minimum=8, maximum=MAX_EVIDENCE_CHARS,
+            data["evidencia"],
+            f"evidencias[{pos}].evidencia",
+            minimum=8,
+            maximum=MAX_EVIDENCE_CHARS,
         )
         content = path.read_text(encoding="utf-8")
         if literal not in content:
-            raise CanonBridgeError(f"evidência literal não encontrada em {source}")
-        normalized.append({
-            "criterio": criterion, "fonte": source, "evidencia": literal,
-            "sha256_fonte": hashlib.sha256(path.read_bytes()).hexdigest(),
-        })
+            raise CanonBridgeError(
+                f"evidência literal não encontrada em {source}"
+            )
+        normalized.append(
+            {
+                "criterio": criterion,
+                "fonte": source,
+                "evidencia": literal,
+                "sha256_fonte": hashlib.sha256(path.read_bytes()).hexdigest(),
+            }
+        )
     if seen != set(criteria):
-        raise CanonBridgeError("nem todos os critérios da intenção foram provados")
+        raise CanonBridgeError(
+            "nem todos os critérios da intenção foram provados"
+        )
 
     runtime = _world_event_status(
-        repo, catalog, event_id,
+        repo,
+        catalog,
+        event_id,
         mundo.parse_instant(
-            reservation["ativacao_efetiva"]["data"], reservation["ativacao_efetiva"]["hora"]
+            reservation["ativacao_efetiva"]["data"],
+            reservation["ativacao_efetiva"]["hora"],
         ),
     )
     if runtime["completed"]:
-        raise CanonBridgeError("realização padrão já foi materializada; Task42 não reescreve o passado")
+        raise CanonBridgeError(
+            "realização padrão já foi materializada; Task42 não reescreve o passado"
+        )
     resolution = {
         "estado": "satisfeita",
         "evento_id": event_id,
@@ -665,20 +866,36 @@ def satisfy(
     }
     state["resolucoes"][event_id] = resolution
     del state["reservas"][event_id]
-    _history(state, {
-        "tipo": "intencao_satisfeita", "evento_id": event_id,
-        "mission_id": mission_id, "modo": reservation["modo"],
-        "em": mundo.instant_parts(current),
-    })
+    _history(
+        state,
+        {
+            "tipo": "intencao_satisfeita",
+            "evento_id": event_id,
+            "mission_id": mission_id,
+            "modo": reservation["modo"],
+            "em": mundo.instant_parts(current),
+        },
+    )
     _atomic(repo / STATE, state)
     cleaned = _cleanup_satisfied_pending(repo, event_id, catalog)
     return {
-        "ok": True, "resultado": "intencao_satisfeita", "evento_id": event_id,
-        "intencao_id": resolution["intencao_id"], "realizacao_padrao": "suprimida",
+        "ok": True,
+        "resultado": "intencao_satisfeita",
+        "evento_id": event_id,
+        "intencao_id": resolution["intencao_id"],
+        "realizacao_padrao": "suprimida",
         "pendencia_limpa": cleaned,
-        "fontes_lidas": list(dict.fromkeys([STATE.as_posix(), oportunidades.INDEX.as_posix(),
-                                           oportunidades.STATE.as_posix(), *sources,
-                                           *[item["fonte"] for item in normalized]])),
+        "fontes_lidas": list(
+            dict.fromkeys(
+                [
+                    STATE.as_posix(),
+                    oportunidades.INDEX.as_posix(),
+                    oportunidades.STATE.as_posix(),
+                    *sources,
+                    *[item["fonte"] for item in normalized],
+                ]
+            )
+        ),
     }
 
 
@@ -688,18 +905,24 @@ def status(repo: Path) -> dict[str, Any]:
         "ok": True,
         "reservas": [
             {
-                "evento_id": event_id, "mission_id": raw.get("mission_id"),
-                "modo": raw.get("modo"), "estado": raw.get("estado"),
+                "evento_id": event_id,
+                "mission_id": raw.get("mission_id"),
+                "modo": raw.get("modo"),
+                "estado": raw.get("estado"),
                 "ativacao_efetiva": copy.deepcopy(raw.get("ativacao_efetiva")),
             }
-            for event_id, raw in sorted(state["reservas"].items()) if isinstance(raw, dict)
+            for event_id, raw in sorted(state["reservas"].items())
+            if isinstance(raw, dict)
         ],
         "satisfeitas": [
             {
-                "evento_id": event_id, "mission_id": raw.get("mission_id"),
-                "modo": raw.get("modo"), "resolvida_em": copy.deepcopy(raw.get("resolvida_em")),
+                "evento_id": event_id,
+                "mission_id": raw.get("mission_id"),
+                "modo": raw.get("modo"),
+                "resolvida_em": copy.deepcopy(raw.get("resolvida_em")),
             }
-            for event_id, raw in sorted(state["resolucoes"].items()) if isinstance(raw, dict)
+            for event_id, raw in sorted(state["resolucoes"].items())
+            if isinstance(raw, dict)
         ],
         "fontes_lidas": [STATE.as_posix()],
     }
@@ -718,41 +941,92 @@ def check(repo: Path) -> dict[str, Any]:
             reservations += 1
             reservation = _map(raw, f"reservas.{event_id}")
             if event_id in index["passado_congelado"]:
-                raise CanonBridgeError(f"{event_id}: passado congelado recebeu reserva")
-            intent = intencoes_canonicas.load_intent(repo, event_id, index=index, catalog=catalog)
-            if reservation.get("intencao_id") != intent["intencao_canonica"]["id"]:
-                raise CanonBridgeError(f"{event_id}: intenção da reserva diverge da Task39")
+                raise CanonBridgeError(
+                    f"{event_id}: passado congelado recebeu reserva"
+                )
+            intent = intencoes_canonicas.load_intent(
+                repo, event_id, index=index, catalog=catalog
+            )
+            if (
+                reservation.get("intencao_id")
+                != intent["intencao_canonica"]["id"]
+            ):
+                raise CanonBridgeError(
+                    f"{event_id}: intenção da reserva diverge da Task39"
+                )
             if reservation.get("modo") not in set(RELATION_TO_MODE.values()):
-                raise CanonBridgeError(f"{event_id}: modo de reserva inválido")
+                raise CanonBridgeError(
+                    f"{event_id}: modo de reserva inválido"
+                )
             if reservation.get("estado") not in RESERVATION_STATES:
-                raise CanonBridgeError(f"{event_id}: estado de reserva inválido")
+                raise CanonBridgeError(
+                    f"{event_id}: estado de reserva inválido"
+                )
             mission = opp["missoes"].get(reservation.get("mission_id"))
-            if not isinstance(mission, dict) or mission.get("origem") != "sidequest_emergente":
-                raise CanonBridgeError(f"{event_id}: reserva aponta missão emergente inexistente")
-            if mission.get("estado") == "aceita" and reservation["estado"] != "ativa":
-                raise CanonBridgeError(f"{event_id}: missão aceita deveria ter reserva ativa")
-            if mission.get("estado") == "concluida" and reservation["modo"] in {"convergente", "transformacao"}:
-                if reservation["estado"] != "aguarda_evidencia":
-                    raise CanonBridgeError(f"{event_id}: conclusão convergente aguarda evidência")
+            if (
+                not isinstance(mission, dict)
+                or mission.get("origem") != "sidequest_emergente"
+            ):
+                raise CanonBridgeError(
+                    f"{event_id}: reserva aponta missão emergente inexistente"
+                )
+            if (
+                mission.get("estado") == "aceita"
+                and reservation["estado"] != "ativa"
+            ):
+                raise CanonBridgeError(
+                    f"{event_id}: missão aceita deveria ter reserva ativa"
+                )
+            if (
+                mission.get("estado") == "concluida"
+                and reservation["modo"] in {"convergente", "transformacao"}
+                and reservation["estado"] != "aguarda_evidencia"
+            ):
+                raise CanonBridgeError(
+                    f"{event_id}: conclusão convergente aguarda evidência"
+                )
             if mission.get("estado") in TERMINAL_RELEASE:
-                raise CanonBridgeError(f"{event_id}: reserva presa a missão terminal")
+                raise CanonBridgeError(
+                    f"{event_id}: reserva presa a missão terminal"
+                )
         for event_id, raw in state["resolucoes"].items():
             resolutions += 1
             resolution = _map(raw, f"resolucoes.{event_id}")
             if event_id in state["reservas"]:
-                raise CanonBridgeError(f"{event_id}: intenção simultaneamente reservada e satisfeita")
+                raise CanonBridgeError(
+                    f"{event_id}: intenção simultaneamente reservada e satisfeita"
+                )
             if event_id in index["passado_congelado"]:
-                raise CanonBridgeError(f"{event_id}: passado congelado recebeu resolução Task42")
-            intent = intencoes_canonicas.load_intent(repo, event_id, index=index, catalog=catalog)
-            if resolution.get("estado") != "satisfeita" or resolution.get("realizacao_padrao") != "suprimida_somente_por_intencao_satisfeita":
+                raise CanonBridgeError(
+                    f"{event_id}: passado congelado recebeu resolução Task42"
+                )
+            intent = intencoes_canonicas.load_intent(
+                repo, event_id, index=index, catalog=catalog
+            )
+            if (
+                resolution.get("estado") != "satisfeita"
+                or resolution.get("realizacao_padrao")
+                != "suprimida_somente_por_intencao_satisfeita"
+            ):
                 raise CanonBridgeError(
                     f"{event_id}: realização padrão só pode ser suprimida por intenção satisfeita"
                 )
-            expected = set(intent["intencao_canonica"]["criterios_satisfacao"])
-            evidence = _list(resolution.get("evidencias"), f"resolucoes.{event_id}.evidencias")
-            got = {item.get("criterio") for item in evidence if isinstance(item, dict)}
+            expected = set(
+                intent["intencao_canonica"]["criterios_satisfacao"]
+            )
+            evidence = _list(
+                resolution.get("evidencias"),
+                f"resolucoes.{event_id}.evidencias",
+            )
+            got = {
+                item.get("criterio")
+                for item in evidence
+                if isinstance(item, dict)
+            }
             if got != expected:
-                raise CanonBridgeError(f"{event_id}: resolução não cobre todos os critérios")
+                raise CanonBridgeError(
+                    f"{event_id}: resolução não cobre todos os critérios"
+                )
     except (
         CanonBridgeError,
         intencoes_canonicas.CanonicalIntentError,
@@ -762,15 +1036,20 @@ def check(repo: Path) -> dict[str, Any]:
     ) as exc:
         errors.append(str(exc))
     return {
-        "ok": not errors, "erros": errors,
-        "reservas": reservations, "resolucoes": resolutions,
-        "max_state_bytes": MAX_STATE_BYTES, "schedulers_novos": 0,
-        "rng_novo": 0, "scans_globais": 0,
+        "ok": not errors,
+        "erros": errors,
+        "reservas": reservations,
+        "resolucoes": resolutions,
+        "max_state_bytes": MAX_STATE_BYTES,
+        "schedulers_novos": 0,
+        "rng_novo": 0,
+        "scans_globais": 0,
     }
 
 
 def _stdin() -> dict[str, Any]:
     import sys
+
     try:
         return _map(yaml.safe_load(sys.stdin.read()), "stdin")
     except yaml.YAMLError as exc:
@@ -783,7 +1062,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("status")
     sub.add_parser("check")
-    rec = sub.add_parser("reconciliar")
+    sub.add_parser("reconciliar")
     sat = sub.add_parser("satisfazer")
     sat.add_argument("mission_id")
     sat.add_argument("--nota", required=True)
@@ -802,15 +1081,28 @@ def main(argv: list[str] | None = None) -> int:
         else:
             payload = _stdin()
             result = satisfy(
-                repo, args.mission_id, payload.get("evidencias"),
+                repo,
+                args.mission_id,
+                payload.get("evidencias"),
                 note=args.nota,
             )
-        print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
+        print(
+            yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end=""
+        )
         return 0 if result.get("ok") else 1
     except (
-        CanonBridgeError, oportunidades.OpportunityError, mundo.WorldEngineError
+        CanonBridgeError,
+        oportunidades.OpportunityError,
+        mundo.WorldEngineError,
     ) as exc:
-        print(yaml.safe_dump({"ok": False, "erro": str(exc)}, allow_unicode=True, sort_keys=False), end="")
+        print(
+            yaml.safe_dump(
+                {"ok": False, "erro": str(exc)},
+                allow_unicode=True,
+                sort_keys=False,
+            ),
+            end="",
+        )
         return 2
 
 
