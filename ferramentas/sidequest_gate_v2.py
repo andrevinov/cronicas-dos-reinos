@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Compatibilidade Task31 e roteamento opaco Task32/33.
+"""Compatibilidade Task31/32/33 depois da integração emergente Task46.
 
-O gate procedural continua aposentado. O índice quente só identifica o conjunto
-curado de quest-givers; quando o NPC explícito pertence a esse conjunto, a Task 33
-abre um único roteador reservado daquele NPC. Nenhum gate, detalhe, estado de
-oportunidades, pressão, tempo ou baralho é aberto aqui.
+O gate procedural continua aposentado. Desde a Task46, encontros ao vivo não
+roteiam mais o catálogo Task33: o narrador só acorda Task40 por âncora causal
+explícita na mesma porta ``cronica preparar``. Task32/33 permanecem frios para
+compatibilidade, auditoria e quests já narradas.
 
-Fixtures antigas sem marcador Task31 preservam o motor legado.
+Fixtures antigas com o estatuto Task31 ainda preservam o roteamento opaco antigo;
+assim a migração não apaga a capacidade de auditar/reproduzir o legado.
 """
 from __future__ import annotations
 
@@ -21,7 +22,9 @@ import oportunidades
 import sidequests_canonicas
 
 RETIREMENT = "gate_procedural_retirado_task31"
-NEW_SOURCE = "canonica_explicita"
+INTEGRATED = "sidequests_emergentes_integradas_task46"
+LEGACY_SOURCE = "canonica_explicita"
+NEW_SOURCE = "emergente_causal_task40"
 _BASE_ENCOUNTER_EVENT = integration.encounter_event
 
 
@@ -29,15 +32,7 @@ class SidequestGateV2Error(ValueError):
     """Erro de contrato do adaptador de aposentadoria."""
 
 
-def _retirement_contract(index: dict[str, Any]) -> None:
-    if index.get("estatuto_operacional") != RETIREMENT:
-        raise SidequestGateV2Error(
-            "indice nao declara aposentadoria operacional da Task 31"
-        )
-    if index.get("nova_origem_sidequests") != NEW_SOURCE:
-        raise SidequestGateV2Error(
-            "nova origem de sidequests deve ser canonica_explicita"
-        )
+def _common_contract(index: dict[str, Any]) -> None:
     gate = index.get("gate")
     if (
         not isinstance(gate, dict)
@@ -52,7 +47,6 @@ def _retirement_contract(index: dict[str, Any]) -> None:
     required = {
         "gate_procedural_operacional": False,
         "encontro_nao_gera_nova_sidequest": True,
-        "fonte_nova_sidequest": NEW_SOURCE,
         "perfis_procedurais_sao_legado": True,
     }
     for key, expected in required.items():
@@ -62,9 +56,7 @@ def _retirement_contract(index: dict[str, Any]) -> None:
             )
     profiles = index.get("perfis")
     if not isinstance(profiles, dict):
-        raise SidequestGateV2Error(
-            "perfis procedurais ausentes para auditoria"
-        )
+        raise SidequestGateV2Error("perfis procedurais ausentes para auditoria")
     active = [
         npc_id
         for npc_id, meta in profiles.items()
@@ -72,11 +64,41 @@ def _retirement_contract(index: dict[str, Any]) -> None:
     ]
     if active:
         raise SidequestGateV2Error(
-            "perfil procedural ainda ativo apos Task 31: "
+            "perfil procedural ainda ativo apos aposentadoria: "
             + ", ".join(sorted(active))
         )
-    # Valida apenas o contrato compacto quente; fragmentos entram sob demanda.
-    sidequests_canonicas._router(index)
+
+
+def _retirement_contract(index: dict[str, Any]) -> str:
+    """Valida modo antigo ou integrado sem acordar Task33 no modo Task46."""
+    _common_contract(index)
+    status = index.get("estatuto_operacional")
+    rules = index["regras"]
+    if status == RETIREMENT:
+        if index.get("nova_origem_sidequests") != LEGACY_SOURCE:
+            raise SidequestGateV2Error(
+                "Task31 exige nova origem canonica_explicita"
+            )
+        if rules.get("fonte_nova_sidequest") != LEGACY_SOURCE:
+            raise SidequestGateV2Error("fonte Task31 divergente")
+        # Apenas o modo histórico abre o roteador Task32/33.
+        sidequests_canonicas._router(index)
+        return RETIREMENT
+    if status == INTEGRATED:
+        if index.get("nova_origem_sidequests") != NEW_SOURCE:
+            raise SidequestGateV2Error(
+                "Task46 exige origem emergente_causal_task40"
+            )
+        if rules.get("fonte_nova_sidequest") != NEW_SOURCE:
+            raise SidequestGateV2Error("fonte Task46 divergente")
+        if rules.get("task32_task33_origem_operacional") is not False:
+            raise SidequestGateV2Error("Task32/33 ainda aparecem como origem operacional")
+        if rules.get("task40_exige_ancora_causal_explicita") is not True:
+            raise SidequestGateV2Error("Task40 precisa exigir âncora causal explícita")
+        return INTEGRATED
+    raise SidequestGateV2Error(
+        f"estatuto de sidequest desconhecido: {status!r}"
+    )
 
 
 def encounter_event(
@@ -86,13 +108,14 @@ def encounter_event(
     now=None,
     encounter_id: str | None = None,
 ) -> dict[str, Any]:
-    """Produção: resolve + roteia opacos. Fixture legado: motor histórico."""
+    """Produção Task46: resolve NPC sem abrir Task33; legado Task31 preservado."""
     try:
         index = oportunidades.load_index(repo)
     except oportunidades.OpportunityError as exc:
         raise integration.IntegrationError(str(exc)) from exc
 
-    if index.get("estatuto_operacional") != RETIREMENT:
+    status = index.get("estatuto_operacional")
+    if status not in {RETIREMENT, INTEGRATED}:
         return _BASE_ENCOUNTER_EVENT(
             repo,
             npc_id,
@@ -101,13 +124,8 @@ def encounter_event(
         )
 
     try:
-        _retirement_contract(index)
+        mode = _retirement_contract(index)
         resolution = integration.resolve_encounter_npc(repo, npc_id, index)
-        refs, route_sources = sidequests_canonicas.route_for_npc_with_sources(
-            repo,
-            index,
-            str(resolution["npc_id"]),
-        )
     except (
         oportunidades.OpportunityError,
         SidequestGateV2Error,
@@ -115,14 +133,47 @@ def encounter_event(
     ) as exc:
         raise integration.IntegrationError(str(exc)) from exc
 
-    result: dict[str, Any] = {
+    if mode == INTEGRATED:
+        result: dict[str, Any] = {
+            "ok": True,
+            "resultado": "interacao_normal",
+            "motivo": "sidequests_emergentes_task46",
+            "npc_id": resolution["npc_id"],
+            "sidequest": {
+                "gate_procedural": "retirado",
+                "nova_origem": NEW_SOURCE,
+                "task32_task33": "legado_frio",
+                "regra": (
+                    "encontro por si só não gera nem roteia quest; somente uma âncora "
+                    "causal concreta sinalizada em cronica preparar acorda Task40"
+                ),
+            },
+            "fontes_lidas": list(resolution.get("fontes_lidas") or []),
+        }
+        if encounter_id is not None:
+            result["encontro_id"] = encounter_id
+        if resolution.get("recebido") != resolution.get("npc_id"):
+            result["npc_recebido"] = resolution.get("recebido")
+            result["resolucao_npc"] = resolution.get("resolucao")
+        return result
+
+    # Compatibilidade histórica Task31: refs opacas ainda podem ser auditadas.
+    try:
+        refs, route_sources = sidequests_canonicas.route_for_npc_with_sources(
+            repo,
+            index,
+            str(resolution["npc_id"]),
+        )
+    except sidequests_canonicas.CanonicalSidequestError as exc:
+        raise integration.IntegrationError(str(exc)) from exc
+    result = {
         "ok": True,
         "resultado": "interacao_normal",
         "motivo": "gate_procedural_retirado",
         "npc_id": resolution["npc_id"],
         "sidequest": {
             "gate_procedural": "retirado",
-            "nova_origem": NEW_SOURCE,
+            "nova_origem": LEGACY_SOURCE,
             "engine": sidequests_canonicas.ENGINE_ID,
             "regra": (
                 "encontro nao gera sidequest procedural; somente fonte canonica "
@@ -130,13 +181,9 @@ def encounter_event(
             ),
         },
         "fontes_lidas": list(
-            dict.fromkeys(
-                [*(resolution.get("fontes_lidas") or []), *route_sources]
-            )
+            dict.fromkeys([*(resolution.get("fontes_lidas") or []), *route_sources])
         ),
     }
-    # Campo interno consumido pela camada de cena. Contém apenas id/path/prioridade
-    # opacos e nunca gate ou detalhe da missão.
     if refs:
         result["_sidequest_canonica_refs"] = refs
     if encounter_id is not None:
@@ -150,8 +197,9 @@ def encounter_event(
 def check(repo: Path) -> dict[str, Any]:
     try:
         index = oportunidades.load_index(repo)
-        _retirement_contract(index)
+        mode = _retirement_contract(index)
         state = oportunidades.load_state(repo, index)
+        # Task32/33 continuam auditáveis, mas esta leitura só ocorre no check frio.
         canonical = sidequests_canonicas.check(repo)
     except (
         oportunidades.OpportunityError,
@@ -168,21 +216,23 @@ def check(repo: Path) -> dict[str, Any]:
         not isinstance(legacy, dict)
         or legacy.get("estatuto") != "somente_auditoria_nao_operacional"
     ):
-        errors.append(
-            "estado nao preserva auditoria do gate procedural aposentado"
-        )
+        errors.append("estado nao preserva auditoria do gate procedural aposentado")
     errors.extend(
         f"sidequest_canonica: {item}"
         for item in canonical.get("erros") or []
     )
     return {
         "ok": not errors,
-        "estatuto": RETIREMENT,
-        "nova_origem_sidequests": NEW_SOURCE,
+        "estatuto": mode,
+        "nova_origem_sidequests": (
+            NEW_SOURCE if mode == INTEGRATED else LEGACY_SOURCE
+        ),
+        "task32_task33_hot_path": False if mode == INTEGRATED else True,
         "perfis_procedurais_ativos": 0,
         "pendencias_ativas": len(state.get("pendencias_avaliacao") or {}),
         "sidequests_canonicas": {
             "engine": sidequests_canonicas.ENGINE_ID,
+            "estatuto": "legado_frio" if mode == INTEGRATED else "compatibilidade_task31",
             "quest_givers": canonical.get("quest_givers", 0),
             "quests_roteadas": canonical.get("quests_roteadas", 0),
         },
@@ -209,11 +259,11 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="cmd", required=True)
     encounter_parser = sub.add_parser(
         "encontro",
-        help="confirma aposentadoria e roteia somente refs canônicas opacas",
+        help="confirma aposentadoria; Task46 não roteia catálogo Task33 ao vivo",
     )
     encounter_parser.add_argument("npc")
     encounter_parser.add_argument("--encontro-id")
-    sub.add_parser("check", help="valida aposentadoria e engine canônico")
+    sub.add_parser("check", help="valida aposentadoria e legado frio")
     return parser
 
 
@@ -231,10 +281,7 @@ def main(argv: list[str] | None = None) -> int:
                 encounter_id=args.encontro_id,
             )
             code = 0
-        print(
-            yaml.safe_dump(result, allow_unicode=True, sort_keys=False),
-            end="",
-        )
+        print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return code
     except (
         SidequestGateV2Error,
