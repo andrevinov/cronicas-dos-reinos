@@ -99,8 +99,8 @@ def _spec_for(
             "modo": mode,
             "intencoes_candidatas": [candidate["evento_id"]],
             "justificativa": (
-                "O fim do mini-arco oferece uma ponte causal legítima para a intenção "
-                "sem decidir que Ren seguirá essa rota."
+                "A fase final do mini-arco coincide causalmente com a janela da intenção; "
+                "a reserva descreve apenas condições do mundo e não estabelece presença do jogador."
             ),
         }
     return spec
