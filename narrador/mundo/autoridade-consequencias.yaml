@@ -1,0 +1,47 @@
+schema_autoridade_consequencias: 1
+natureza: guardrail_reservado
+regra_fundamental: >-
+  Antagonistas perseguem objetivos de acordo com personalidade, conhecimento,
+  recursos e restrições canônicas; não preservam Ren ou NPCs por conveniência narrativa.
+regra_nao_amaciar: >-
+  O narrador não substitui consequência causalmente apropriada por outra artificialmente
+  mais branda apenas para preservar personagem, relacionamento ou conforto do jogador.
+autoridades:
+  procedural:
+    nucleo_protegido: guardrail_procedural
+    exige_evidencia_canonica: false
+    exige_vinculo_task42: false
+  sidequest_lateral:
+    nucleo_protegido: guardrail_procedural
+    exige_evidencia_canonica: true
+    exige_vinculo_task42: false
+  sidequest_canonica:
+    nucleo_protegido: risco_real_condicionado
+    exige_evidencia_canonica: true
+    exige_vinculo_task42: true
+  evento_canonico:
+    nucleo_protegido: risco_real
+    exige_evidencia_canonica: true
+    exige_vinculo_task42: false
+  acao_de_ren:
+    nucleo_protegido: risco_real
+    exige_evidencia_canonica: true
+    exige_vinculo_task42: false
+  combate_resolvido:
+    nucleo_protegido: risco_real
+    exige_evidencia_canonica: true
+    exige_vinculo_task42: false
+invariantes:
+  protecao_contra_arbitrariedade_nao_e_imunidade: true
+  sidequest_lateral_nao_mata_ou_sequestra_nucleo_por_autoria_livre: true
+  sidequest_canonica_exige_reserva_task42_ativa: true
+  evento_canonico_pode_colocar_nucleo_em_risco_real: true
+  acao_de_ren_nao_recebe_correcao_protetiva_oculta: true
+  combate_resolvido_nao_recebe_correcao_protetiva_oculta: true
+  antagonista_nao_ganha_conhecimento_nao_canonizado: true
+  antagonista_nao_ganha_capacidade_nao_declarada: true
+  escalada_obrigatoria_demonstrada_nao_pode_ser_amaciada_sem_bloqueio_causal: true
+  gravidade_por_si_so_nao_prova_competencia: true
+  sem_rng: true
+  sem_scheduler: true
+  sem_scan_global: true
