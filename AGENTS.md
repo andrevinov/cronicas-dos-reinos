@@ -4,7 +4,7 @@
 
 O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências prevalecem. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -23,7 +23,7 @@ Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências �
 
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução.** **Economia de contexto não é economia de prosa.** **Se for suficiente, pare.** Leia só para lacuna concreta; prefira portas públicas.
+**Nunca leia por precaução.** **Economia de contexto não é economia de prosa.** **Se for suficiente, pare.** Leia só para lacuna concreta.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -58,41 +58,41 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` em ON = **RECALL
 
 Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
 
-**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`. A saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
+**Porta preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag usa `--contexto-tag` (`--tag` é alias) e namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**: `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Deslocamento urbano material: `--transito-urbano ravens_bluff`; não combinar com local/NPC/tag.
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag: `--contexto-tag` (`--tag` é alias), namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**: `--local ... --acao entrar|explorar --tier N --periculosidade ...`. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
 
-**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar lote → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op; candidato autônomo exige bloqueio canônico concreto. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
-**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only. Após narração aceita, `cronica concluir` revalida/confirma e registra. Ticket neutro não fabrica confirmação; cena abandonada não conclui; preparação obsoleta exige novo preparo.
+**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; após narração aceita, `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo.
 
-Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json`.
+Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin; **não criar** `.turno-temporario.json`.
 
 **Direção canônica é destino, nunca ação.** Use `endpoints.py direcao <id>`; `direcoes.py avancar` exige fonte canônica, evidência literal e nota.
 
-Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases/ordenar por ID; typo/ambiguidade falha antes de efeito.
+Encontros simultâneos: resolver NPCs antes de mutar; colapsar aliases e ordenar por ID; ambiguidade falha antes de efeito.
 
 **Fala de NPC:** `contexto.py npc` inclui `dialogo_relacional` e `iniciativa_social`; conselho exige gatilho. Iniciativa não cria presença, segredo, side quest ou ação de Ren.
 
-**Identidades:** suspeita ≠ certeza. Não testar por rotina. Pista concreta Ren/Shinta/Kage → `identidades.py evidencia`; Actor bem-sucedido bloqueia só pista `atuacao`. Confirmação exige fato canônico via `identidades.py confirmar`.
+**Identidades:** suspeita ≠ certeza. Pista concreta Ren/Shinta/Kage → `identidades.py evidencia`; Actor bem-sucedido bloqueia só pista `atuacao`. Confirmação exige fato canônico via `identidades.py confirmar`.
 
-**Reputação:** ≠ fama/opinião; não testar por rotina. Fato público atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
+**Reputação:** ≠ fama/opinião. Fato público atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
 
-**Condição multi-dia:** cena espacial projeta automaticamente. Só após fato canônico de início/fim de clima, escassez, greve, festival, toque de recolher ou problema portuário, use `condicoes_mundo.py registrar|encerrar` com fonte+evidência literal.
+**Condição multi-dia:** cena espacial projeta automaticamente. Após fato canônico de início/fim, use `condicoes_mundo.py registrar|encerrar` com fonte+evidência literal.
 
-**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos, `AAAA-MM-DD` ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; continuação volta por `cronica preparar`. Não chamar em turno curto.
+**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto.
 
 Durante avanço comum:
 - não atualizar diretamente estado/ficha/relações/conhecimento/consequências/relógios/NPCs;
 - não regenerar runtime/handoff nem rodar Git, testes ou telemetria;
 - concluir conforme `contrato_conclusao`; mecânica explícita usa `MECÂNICA — ...`;
-- prosa completa fica na transcrição; JSONL recebe resumo/deltas/rolagens ocultas necessárias;
+- prosa completa fica na transcrição; JSONL recebe só resumo/deltas/rolagens necessárias;
 - instante: `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - `rodape_canonico` verbatim como última linha visível.
 
-Rolagem comum: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'`; não redescobrir assinatura via `--help`.
+Rolagem: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'`; não redescobrir assinatura via `--help`. Rolagens independentes: `poetry run dados-lote`.
 
-Rodapé é derivado. **medição é pós-hoc**: nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura: `contexto.py npc|local` só por lacuna; rolagens independentes: `poetry run dados-lote`.
+Rodapé é derivado. **medição é pós-hoc**: nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo. Textura `contexto.py npc|local` só por lacuna.
 
 Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além do materialmente necessário.
 
@@ -109,11 +109,11 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 ## 7. Checkpoint de cena e sessão
 
-Fronteira importante: `poetry run cronica sessao checkpoint`. Encerramento: `poetry run cronica sessao encerrar`. Ordem: cânone → Mundo Vivo/lifecycle → barreira → memória.
+Fronteira: `poetry run cronica sessao checkpoint`. Encerramento: `poetry run cronica sessao encerrar`. Ordem: cânone → Mundo Vivo/lifecycle → barreira → memória.
 
 Journal interrompido: não narrar; `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback).
 
-Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: execute `poetry run cronica sessao status`; se `entre_sessoes`, `poetry run cronica sessao iniciar`. Use `recap_sessao_anterior`/`retomada`; não leia handoff cru/transcrição se bastar. Se `em_sessao`, status traz retomada quente. Nunca pular sessão nem copiar transcrição anterior.
+Ao pedido **“inicie uma sessão”**, execute `poetry run cronica sessao status`; se `entre_sessoes`, `poetry run cronica sessao iniciar`. Use `recap_sessao_anterior`/`retomada`; não leia transcrição se bastar. Se `em_sessao`, use a retomada quente. Nunca pular sessão.
 
 Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
 
@@ -121,9 +121,9 @@ Primitivas: `checkpoint.py cena|sessao|recuperar`, `sessoes.py iniciar`.
 
 ## 8. Regras, dados e segredos
 
-Dúvida de regra: pare quando resolvida; prefira `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca falsifique resultado. Use `poetry run dados`/`poetry run dados-lote`.
+Dúvida de regra: prefira `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca falsifique resultado. Use `poetry run dados`/`poetry run dados-lote`.
 
-`narrador/` é reservado; busca padrão não inclui esse domínio. Deltas reservados não vazam; rolagens ocultas/relógios mecânicos permanecem reservados.
+`narrador/` é reservado; busca padrão não inclui esse domínio. Deltas reservados não vazam; rolagens ocultas/relógios permanecem reservados.
 
 ## 9. Alterações no repositório
 
