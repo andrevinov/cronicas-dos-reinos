@@ -27,10 +27,9 @@ import cronica_pending_gate as _pending_gate
 import progressao_juppongatana
 import retomada_cronica
 import sessoes
-import sidequests_integracao as _sidequests46
+import sidequests_integracao_runtime as _sidequests46
 import transacoes
 
-# Compatibilidade integral da Task 21.
 for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
@@ -44,7 +43,6 @@ _ORIGINAL_TRANSACTION_CONTRACT = _hot._transaction_contract
 
 
 def _b64_decode(value: str) -> bytes:
-    """Torna o corpo base64 robusto a wrap/cópia com whitespace acidental."""
     compact = "".join(value.split())
     return _ORIGINAL_B64_DECODE(compact)
 
@@ -57,12 +55,10 @@ def _ticket_argument(value: str) -> str:
 
 
 def decode_ticket(value: str) -> dict:
-    """Falha com instrução operacional quando ``ticket_id`` é usado como ticket."""
     return _ORIGINAL_DECODE_TICKET(_ticket_argument(value))
 
 
 def _instant_arg(date: str | None, hour: str | None):
-    """Aceita aliases inequívocos de data na borda e preserva o instante canônico."""
     if date is None and hour is None:
         return None
     if not date or not hour:
@@ -88,15 +84,12 @@ def _transaction_contract() -> dict:
     return contract
 
 
-# ``cronica_hotpath`` e a Task 21 compartilham o mesmo módulo core. Patchar as
-# portas de borda mantém um único decoder/parser sem criar motor paralelo.
 _core._b64_decode = _b64_decode
 _core.decode_ticket = decode_ticket
 _hot._transaction_contract = _transaction_contract
 
 
 def prepare(*args, **kwargs):
-    """Barreira barata; Task46 só acorda quando ``sidequest_signal`` foi fornecido."""
     repo = args[0] if args else kwargs.get("repo")
     if repo is None:
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
@@ -106,7 +99,6 @@ def prepare(*args, **kwargs):
         return gate
     base = _hot.prepare(*args, **kwargs)
     if signal is None:
-        # Invariante econômica Task46: caminho neutro byte-lógico continua o mesmo.
         return base
     try:
         return _sidequests46.integrate_prepare(
@@ -135,7 +127,7 @@ def _base_token(payload: dict) -> str:
 
 
 def confirm(repo: Path, token: str):
-    payload, meta = _task46_meta(token)
+    _, meta = _task46_meta(token)
     if meta is not None:
         raise _core.CronicaError(
             "ticket Task46 usa a porta transacional cronica concluir; não separe confirmar/registrar"
@@ -144,7 +136,6 @@ def confirm(repo: Path, token: str):
 
 
 def _conclude_base(repo: Path, token: str, transaction: dict):
-    """Preserva o hook público de preflight da Task21 no caminho existente."""
     original = _core._preflight_registration
     _core._preflight_registration = globals()["_preflight_registration"]
     try:
@@ -159,7 +150,6 @@ def _conclude_base(repo: Path, token: str, transaction: dict):
 
 
 def conclude(repo: Path, token: str, transaction: dict):
-    """Conclui turno e, quando sinalizado, instala a sidequest na mesma chamada."""
     payload, meta = _task46_meta(token)
     if meta is None:
         return _conclude_base(repo, token, transaction)
@@ -222,7 +212,6 @@ def conclude(repo: Path, token: str, transaction: dict):
 
 
 def register(*args, revalidate: bool = True, **kwargs):
-    """Preserva o hook Task21; ticket Task46 deve ser recuperado repetindo concluir."""
     token = args[1] if len(args) > 1 else kwargs.get("token")
     if isinstance(token, str):
         _, meta = _task46_meta(token)
@@ -253,10 +242,7 @@ def _subparsers(parser: argparse.ArgumentParser) -> argparse._SubParsersAction:
 def build_parser() -> argparse.ArgumentParser:
     parser = _ORIGINAL_BUILD_PARSER()
     root = _subparsers(parser)
-
     prepare_parser = root.choices["preparar"]
-    # Alias de compatibilidade observado em rollout. ``--contexto-tag`` continua
-    # sendo o nome canônico e a validação tipada permanece na mesma camada.
     prepare_parser.add_argument(
         "--tag",
         dest="contexto_tag",
