@@ -7,6 +7,7 @@ A camada é deliberadamente estreita:
 * todas as pendências são apresentadas num único lote determinístico;
 * ``aplicar`` recebe por stdin somente as decisões ``sem_mudanca`` do narrador;
 * eventos canônicos datados nunca aceitam no-op;
+* consequências Task45 ``resolver_sidequest`` nunca aceitam no-op genérico;
 * candidatos autônomos de pressão só aceitam no-op com bloqueio canônico concreto;
 * agentes leves usam ``conclude_noop`` para preservar o cache negativo causal;
 * itens omitidos permanecem abertos e são devolvidos como trabalho restante.
@@ -164,28 +165,35 @@ def _base_item(pending: dict[str, Any]) -> dict[str, Any]:
 
 def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
     sources = [mundo.WORLD_STATE_PATH.as_posix()]
-    canonical = barreira_mundo._canonical_event(repo, pending)
-    try:
-        pressure = pressao_ravens_bluff.candidate_for_pending(repo, pending)
-    except pressao_ravens_bluff.PressureError as exc:
-        raise BatchBoundaryError(str(exc)) from exc
-
     item = _base_item(pending)
     context: dict[str, Any] = {}
-
-    if canonical is not None:
-        item["classificacao"] = "requer_fato_canonico"
-        item["sem_mudanca_permitido"] = False
-        context["evento_canonico"] = _compact_canonical(canonical)
-    elif pressure is not None:
-        item["classificacao"] = "avaliar_candidato_autonomo"
-        item["sem_mudanca_permitido"] = "somente_bloqueio_canonico_concreto"
-        context["pressao_ravens_bluff"] = pressure
-    else:
-        item["classificacao"] = "avaliar_no_lote"
-        item["sem_mudanca_permitido"] = True
-
     pending_type = str(pending.get("tipo") or "")
+
+    # Task45 já fez o trabalho temporal e emitiu uma pendência causal explícita.
+    # Não reinterprete esse contrato como rotina/no-op e não abra outros motores
+    # apenas para decidir algo que só progressao_sidequests pode materializar.
+    if pending_type == "resolver_sidequest":
+        item["classificacao"] = "requer_resolucao_sidequest"
+        item["sem_mudanca_permitido"] = False
+    else:
+        canonical = barreira_mundo._canonical_event(repo, pending)
+        try:
+            pressure = pressao_ravens_bluff.candidate_for_pending(repo, pending)
+        except pressao_ravens_bluff.PressureError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+
+        if canonical is not None:
+            item["classificacao"] = "requer_fato_canonico"
+            item["sem_mudanca_permitido"] = False
+            context["evento_canonico"] = _compact_canonical(canonical)
+        elif pressure is not None:
+            item["classificacao"] = "avaliar_candidato_autonomo"
+            item["sem_mudanca_permitido"] = "somente_bloqueio_canonico_concreto"
+            context["pressao_ravens_bluff"] = pressure
+        else:
+            item["classificacao"] = "avaliar_no_lote"
+            item["sem_mudanca_permitido"] = True
+
     if pending_type == "reavaliar_agente" and pending.get("agente"):
         try:
             loaded = agentes.load_agent(repo, str(pending["agente"]))
@@ -256,8 +264,8 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
             "regra": (
                 "Avalie todos os itens nesta mesma inferência. Envie em `sem_mudanca` "
                 "somente os itens que realmente não criam fato; omita os que exigem ação. "
-                "Evento canônico nunca aceita no-op. Candidato autônomo exige bloqueio "
-                "canônico concreto."
+                "Evento canônico e consequência Task45 nunca aceitam no-op. Candidato "
+                "autônomo exige bloqueio canônico concreto."
             ),
             "entrada_aplicar": {
                 "lote_id": batch_id,
@@ -365,6 +373,10 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         if item.get("classificacao") == "requer_fato_canonico":
             raise BatchBoundaryError(
                 f"pendência {pending_id} é evento canônico e não aceita sem_mudanca"
+            )
+        if item.get("classificacao") == "requer_resolucao_sidequest":
+            raise BatchBoundaryError(
+                f"pendência {pending_id} exige resolução Task45 e não aceita sem_mudanca"
             )
         if item.get("classificacao") == "avaliar_candidato_autonomo":
             barreira_mundo._validate_autonomous_noop(decision["nota"])
