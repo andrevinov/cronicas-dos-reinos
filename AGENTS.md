@@ -110,9 +110,9 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
 - **Task 31:** encontro não sorteia side quest; perfis procedurais inativos.
 - **Task 32:** quests autorais pré-escritas continuam disponíveis por NPC explícito; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona.
-- **Task 40:** conversa comum/incidental = nenhuma chamada. Só após surgir **âncora causal concreta** (pedido, problema, pista, mensagem, consequência etc.) o narrador pode usar `oportunidade_sidequest.py planejar`; a resposta é read-only e só autoriza pensar, nunca criar/oferecer quest.
-- **Task 41:** se o pacote Task40 realmente sustenta um mini-arco, montar o schema completo e usar `sidequests_emergentes.py preparar` via stdin; preparar é read-only. Fluxo obrigatório: **Task41 preparar → narrar a oferta → `cronica concluir` → Task41 materializar** com a mesma spec e `preparacao_id`. Se a oferta não acontecer na ficção, não materializar. A quest nasce `oferecida` no lifecycle existente; `npcs_novos` continuam não presentes, recompensas/stakes continuam apenas declarados e relação com cânone continua candidatura até Tasks 42/43/45.
-- Pedido Task32 já narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. Quest Task41 materializada também usa o lifecycle de `oportunidades.py` para aceitar/adiar/recusar. `endpoints.py sidequest <id>` preserva efeitos pós-cânone de mecanismos já suportados. Checkpoint não sorteia side quest nem loot.
+- **Task 40:** conversa comum/incidental = nenhuma chamada; só com **âncora causal concreta** usar `oportunidade_sidequest.py planejar`; saída read-only, só autoriza pensar, nunca criar/oferecer quest.
+- **Task 41:** pacote Task40 útil → `sidequests_emergentes.py preparar` → narrar oferta → `cronica concluir` → materializar; sem oferta, não materializar. Nasce `oferecida` em `oportunidades.py`; NPCs novos, rewards/stakes e cânone ficam só declarados.
+- Pedido Task32 já narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 
@@ -136,7 +136,7 @@ Dúvida de regra: pare quando resolvida; prefira `contexto.py regra`. Defina CD/
 
 Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato histórico nem mudar visibilidade sem justificativa. Regenerar runtime/memória só se retomada mudou; checkpoint normal já faz isso.
 
-Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `sidequests_emergentes.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI, nunca por turno: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
