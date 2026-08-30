@@ -78,6 +78,19 @@ class LocalMicroeventDeckTest(unittest.TestCase):
         self.index = micro.load_index(self.repo)
         self.ecology = ecologia_local.load_index(self.repo)
 
+        # Os testes do algoritmo partem de um baralho virgem. O estado copiado
+        # da campanha pode estar no meio de um ciclo e com pressão de seca real.
+        state = micro.load_state(self.repo, self.index)
+        for local_state in state["locais"].values():
+            local_state["ocorrencia"] = {"ciclo": 0, "restantes": []}
+            local_state["cartas"] = {
+                "ciclo": 0,
+                "assinatura_pool": None,
+                "restantes": [],
+            }
+        state["historico_recente"] = []
+        micro.atomic(self.repo / micro.STATE, state)
+
     def tearDown(self):
         self.temp.cleanup()
 
@@ -122,8 +135,6 @@ class LocalMicroeventDeckTest(unittest.TestCase):
             1,
         )
 
-        # O fixture copia o estado vivo da campanha, então o baralho pode já estar
-        # no meio de um ciclo. Derive o estado esperado em vez de congelar ciclo 1.
         deck_size = len(self.index["ocorrencia"]["fichas"])
         expected_cycle = occurrence_before["ciclo"]
         expected_remaining = len(occurrence_before["restantes"])
