@@ -20,13 +20,14 @@ import sidequests_canonicas
 
 
 class RetiredSidequestGateRepositoryTest(unittest.TestCase):
-    def test_repositorio_declara_aposentadoria_e_perfis_inativos(self):
+    def test_repositorio_declara_task40_como_origem_e_perfis_inativos(self):
         index = oportunidades.load_index(ROOT)
-        self.assertEqual(index["estatuto_operacional"], retired.RETIREMENT)
-        self.assertEqual(index["nova_origem_sidequests"], "canonica_explicita")
+        self.assertEqual(index["estatuto_operacional"], retired.INTEGRATED)
+        self.assertEqual(index["nova_origem_sidequests"], retired.NEW_SOURCE)
         self.assertEqual(index["gate"]["estatuto"], "legado_congelado_nao_operacional")
         self.assertFalse(index["regras"]["gate_procedural_operacional"])
         self.assertTrue(index["regras"]["encontro_nao_gera_nova_sidequest"])
+        self.assertFalse(index["regras"]["task32_task33_origem_operacional"])
         self.assertEqual(
             [npc for npc, meta in index["perfis"].items() if meta["estado"] == "ativo"],
             [],
@@ -40,15 +41,8 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         legacy = state["legado_procedural"]
         self.assertEqual(legacy["estatuto"], "somente_auditoria_nao_operacional")
         self.assertIn("sq-5ca38554df96dc88", legacy["pendencias_aposentadas"])
-        self.assertTrue(
-            any(
-                item.get("tipo") == "avaliacao_aposentada_task31"
-                and item.get("id") == "sq-5ca38554df96dc88"
-                for item in state["historico_recente"]
-            )
-        )
 
-    def test_porta_de_cena_instala_adaptador_aposentado(self):
+    def test_porta_de_cena_mantem_adaptador_sem_rotear_task33(self):
         self.assertIs(
             cena_mundo_v4._core.interacoes_mundo.encounter_event,
             retired.encounter_event,
@@ -56,7 +50,7 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         self.assertIs(cena_mundo.prepare_scene, cena_mundo_v4.prepare_scene)
         self.assertFalse((ROOT / "ferramentas/cena_mundo_v5.py").exists())
 
-    def test_encontro_nao_sorteia_nao_le_estado_perfil_nem_pressao(self):
+    def test_encontro_task46_nao_sorteia_nao_le_estado_perfil_nem_task33(self):
         state_path = ROOT / oportunidades.STATE
         before = state_path.read_bytes()
         with mock.patch.object(
@@ -66,35 +60,39 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         ), mock.patch.object(
             oportunidades,
             "load_state",
-            side_effect=AssertionError("encontro aposentado nao deve abrir estado"),
+            side_effect=AssertionError("encontro Task46 nao deve abrir estado"),
         ), mock.patch.object(
             oportunidades,
             "load_profile",
-            side_effect=AssertionError("encontro aposentado nao deve abrir perfil"),
+            side_effect=AssertionError("encontro Task46 nao deve abrir perfil"),
+        ), mock.patch.object(
+            sidequests_canonicas,
+            "route_for_npc_with_sources",
+            side_effect=AssertionError("Task33 nao pode estar no hot path Task46"),
         ):
             result = retired.encounter_event(
                 ROOT,
                 "maerra_thandrel",
-                encounter_id="task31:maerra",
+                encounter_id="task46:maerra",
             )
         self.assertEqual(result["resultado"], "interacao_normal")
-        self.assertEqual(result["motivo"], "gate_procedural_retirado")
-        self.assertEqual(result["sidequest"]["nova_origem"], "canonica_explicita")
-        self.assertEqual(
-            result["fontes_lidas"],
-            [
-                oportunidades.INDEX.as_posix(),
-                sidequests_canonicas._route_path("maerra_thandrel").as_posix(),
-            ],
-        )
-        self.assertNotIn(oportunidades.STATE.as_posix(), result["fontes_lidas"])
+        self.assertEqual(result["motivo"], "sidequests_emergentes_task46")
+        self.assertEqual(result["sidequest"]["nova_origem"], retired.NEW_SOURCE)
+        self.assertEqual(result["sidequest"]["task32_task33"], "legado_frio")
+        self.assertEqual(result["fontes_lidas"], [oportunidades.INDEX.as_posix()])
+        self.assertNotIn("_sidequest_canonica_refs", result)
         self.assertEqual(state_path.read_bytes(), before)
 
-    def test_alias_ainda_resolve_sem_reativar_gate(self):
-        result = retired.encounter_event(ROOT, "Irmã Maerra")
+    def test_alias_ainda_resolve_sem_reativar_task33(self):
+        with mock.patch.object(
+            sidequests_canonicas,
+            "route_for_npc_with_sources",
+            side_effect=AssertionError("Task33 nao pode ser lida"),
+        ):
+            result = retired.encounter_event(ROOT, "Irmã Maerra")
         self.assertEqual(result["npc_id"], "maerra_thandrel")
         self.assertEqual(result["npc_recebido"], "Irmã Maerra")
-        self.assertEqual(result["motivo"], "gate_procedural_retirado")
+        self.assertEqual(result["motivo"], "sidequests_emergentes_task46")
         self.assertNotIn(oportunidades.STATE.as_posix(), result["fontes_lidas"])
 
     def test_primitiva_legada_do_repo_tambem_nao_gera_potencial(self):
@@ -110,11 +108,13 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         self.assertEqual(result["fontes_lidas"], [oportunidades.INDEX.as_posix()])
         self.assertEqual(state_path.read_bytes(), before)
 
-    def test_check_real_confirma_aposentadoria_sem_consultar_pressao(self):
+    def test_check_real_confirma_legado_frio_sem_task33_no_hotpath(self):
         result = retired.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["estatuto"], retired.RETIREMENT)
-        self.assertEqual(result["nova_origem_sidequests"], "canonica_explicita")
+        self.assertEqual(result["estatuto"], retired.INTEGRATED)
+        self.assertEqual(result["nova_origem_sidequests"], retired.NEW_SOURCE)
+        self.assertFalse(result["task32_task33_hot_path"])
+        self.assertEqual(result["sidequests_canonicas"]["estatuto"], "legado_frio")
         self.assertEqual(result["perfis_procedurais_ativos"], 0)
         self.assertEqual(result["pendencias_ativas"], 0)
         self.assertEqual(result["baralho_legado"]["sorteios"], 22)
