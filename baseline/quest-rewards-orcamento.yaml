@@ -1,0 +1,23 @@
+schema_orcamento_quest_rewards: 1
+natureza: contrato_de_regressao
+limites:
+  fragmento_por_quest_bytes_max: 24576
+  historico_recente_max: 32
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  sidequest_emergente_materializada_exige_contrato_recompensa: true
+  contrato_classifica_toda_recompensa_task41_exatamente_uma_vez: true
+  contrato_classifica_toda_perda_task41_exatamente_uma_vez: true
+  recompensa_principal_unica: true
+  descoberta_nao_e_obtencao: true
+  descoberta_pode_ser_perdida_permanentemente: true
+  item_magico_respeita_tier_e_reward_budget_v2: true
+  propriedade_e_direito_de_uso_exigem_prova_de_autoridade: true
+  perda_exige_contrato_e_evidencia_causal_literal: true
+  falha_nao_inventa_perda: true
+  efeitos_reais_usam_writer_transacional_existente: true
+  retry_e_checkpoint_nao_duplicam_efeito: true
+  propriedade_favor_acesso_e_outros_ativos_nao_viram_loot_monetizado: true
+  progressao_canonica_nao_substitui_task42: true
