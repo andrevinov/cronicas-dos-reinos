@@ -1,256 +1,13 @@
 schema_estado_mundo: 1
 natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente
-  de fatos da campanha.
+  de fatos da campanha. Conclusões antigas podem ser compactadas depois de consolidadas;
+  detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
   data: 19 Eleasis, 1372 DR
   hora: '17:35'
 pendencias: []
 concluidas_recentes:
-- id: mundo-d11f76d42770dca4
-  tipo: avaliar_entrada
-  disparado_em:
-    data: 11 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Shen Meihua está elegível, mas a cena atual não oferece entrada orgânica;
-    manter latente até novo gatilho ou próxima avaliação.
-- id: mundo-09ec9128f524d868
-  tipo: reavaliar_agente_leve
-  disparado_em:
-    data: 11 Eleasis, 1372 DR
-    hora: 06:00
-  nota: 'Rotina mantida: Kethra não observou nova aparição da mulher Cinza-Azul e
-    preserva a própria cobertura.'
-- id: mundo-49c42554d41071b8
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 11 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: Night Watch mantém vigilância e resposta preparada; nenhuma causa concreta
-    exige mudança extraordinária nesta reavaliação.
-- id: mundo-8eefae9b75f120f1
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 11 Eleasis, 1372 DR
-    hora: 06:00
-  agente: casa_de_tyr
-  nota: Casa de Tyr mantém custódia, investigação reservada e discrição; nenhuma mudança
-    adicional exigida.
-- id: mundo-be5346fd978581a9
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 11 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: Red Sail mantém a busca dirigida já em execução; não localizou a casa de Iria,
-    o lagar ou a cadeia rural nesta avaliação.
-- id: mundo-7720576ed0131a36
-  tipo: evento_mundial
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Procissão mercantil de Waukeen canonizada no Lower Trades entre cerca de 10:00
-    e 13:00, com fluxo de carroças reduzido e desvio temporário de patrulhas; sem
-    conflito automático.
-- id: mundo-a3f05ac7c7dfd3f3
-  tipo: avaliar_direcao
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Os sinais orientais e documentais permanecem individualmente plausíveis por
-    rota marítima, fraude ou contrabando; ainda não satisfazem o marco de contabilidade
-    impossível.
-- id: mundo-7742df22984e0343
-  tipo: reavaliar_agente_leve
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Bram mantém resposta indireta e autopreservação já registradas; não surgiu
-    nova pista além das pressões já incorporadas ao estado, portanto nenhuma iniciativa
-    extraordinária adicional.
-- id: mundo-0284db21c0818af3
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: Night Watch mantém vigilância e resposta preparada; apenas acomoda o desvio
-    temporário de patrulhas causado pela procissão já canonizada.
-- id: mundo-1192e37a4d60f445
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: Red Sail mantém a busca dirigida por curandeiros, carroças e propriedades
-    a leste; nenhuma nova informação localiza a cadeia rural nesta avaliação.
-- id: mundo-b2515a73a964037b
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  agente: kurobane_jinzaburo
-  nota: Kurobane permanece aguardando janela documental; a futura convocação de Velis
-    ainda não é conhecida por ele e não oferece causa legítima para ação agora.
-- id: mundo-cbb7767ad71e336e
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 12 Eleasis, 1372 DR
-    hora: 06:00
-  agente: masao_hirasawa
-  nota: Masao mantém o plano estratégico por rede e intermediários; nenhuma mudança
-    de escala ou conhecimento justifica nova ação específica neste amanhecer.
-- id: mundo-0190569f29c73c2f
-  tipo: avaliar_direcao
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Nenhum fato canônico novo sustenta avançar o marco rumores_de_grande_navio;
-    direção permanece inalterada.
-- id: mundo-75b82d0d5394f8e1
-  tipo: reavaliar_agente_leve
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Luath segue sua rotina policial; não há nova ameaça a prova, testemunha ou
-    oportunidade concreta que justifique iniciativa excepcional.
-- id: mundo-5e98eda50fb4f9b1
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: A Red Sail mantém a busca dirigida já em execução; a reavaliação diária não
-    produziu mudança persistente nova.
-- id: mundo-80f8e0b9b30dd403
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: A Night Watch mantém vigilância e resposta preparada conforme o plano atual;
-    nenhum fato novo altera prioridades.
-- id: mundo-d4f006b02b3f1048
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  agente: kajiwara_shizune
-  nota: Shizune permanece com presença física indeterminada e inelegível para nova
-    ação local; nenhuma mudança canônica.
-- id: mundo-ecca1c97616f6c95
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 13 Eleasis, 1372 DR
-    hora: 06:00
-  agente: casa_de_tyr
-  nota: A Casa de Tyr mantém custódia, discrição e contatos pelo canal estabelecido;
-    nenhuma nova iniciativa excepcional.
-- id: mundo-eafb540abc8f7fb1
-  tipo: avaliar_direcao
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  nota: O marco corrente continua sustentado apenas como padrão de coisas plausíveis;
-    o amanhecer não acrescentou fato canônico nem evidência literal capaz de avançar
-    a direção.
-- id: mundo-51ba87b47066d7d9
-  tipo: reavaliar_agente_leve
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Kethra mantém a rotina e a cobertura em Narwhal. Às 06:00 não há nova observação
-    canônica da mulher Cinza-Azul nem sinal seguro já materializado; nenhuma iniciativa
-    extraordinária.
-- id: mundo-2ac84f5961aa4d11
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: A Red Sail mantém a busca dirigida já em execução por curandeiros, carroças
-    e propriedades a leste. O relógio associado já está resolvido e não há nova pista
-    canônica nesta cadência para alterar progresso ou conhecimento.
-- id: mundo-6b7ae5ec230e03ad
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  agente: kurobane_jinzaburo
-  nota: Kurobane permanece aguardando oportunidade. Nenhuma nova janela física de
-    acesso a prova, mensagem ou cadeia documental conhecida por ele foi estabelecida
-    canonicamente até este amanhecer.
-- id: mundo-ca3f3d760334f244
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: A Night Watch mantém vigilância e resposta preparada, preservando fontes e
-    cadeia de prova. Nenhum fato novo nesta cadência exige mudança de prioridade ou
-    nova ação canônica.
-- id: mundo-3abf6eec1eaf1217
-  tipo: reavaliar_agente_leve
-  agente_leve: silva_elkwood
-  disparado_em:
-    data: 14 Eleasis, 1372 DR
-    hora: 06:00
-  resultado: rotina_sem_mudanca
-- id: mundo-49c09b624214d95b
-  tipo: avaliar_direcao
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  nota: Nenhum novo fato canônico nesta janela satisfaz o critério do marco rumores_de_grande_navio;
-    cadência não implica avanço.
-- id: mundo-0d4ac66ae536069d
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  agente: casa_de_tyr
-  nota: A custódia e a investigação reservada da Casa de Tyr continuam conforme o
-    plano atual; nenhum fato novo exige mudança canônica.
-- id: mundo-217551337123c65e
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: A Night Watch mantém vigilância e resposta preparada; nenhuma nova informação
-    nesta janela altera suas prioridades canônicas.
-- id: mundo-245ee99f979c6238
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: A busca dirigida da Red Sail continua, mas o relógio anterior já está resolvido
-    e nenhuma nova pista concreta exige delta canônico neste amanhecer.
-- id: mundo-28e66117dc395111
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  agente: masao_hirasawa
-  nota: O plano estratégico de Masao permanece em execução; a cadência diária, sem
-    novo fato causal, não exige mutação canônica.
-- id: mundo-8ccad321e24f9210
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  agente: kajiwara_shizune
-  nota: Shizune continua aguardando oportunidade canônica e sem presença física local
-    fixada; nenhum novo fato autoriza iniciativa ou mutação.
-- id: mundo-3bb90f49a7f3fc7d
-  tipo: avaliar_direcao
-  disparado_em:
-    data: 16 Eleasis, 1372 DR
-    hora: 06:00
-  nota: 'O marco continua não executável: há sinais materiais orientais plausíveis,
-    mas nenhuma correlação canônica nova que prove ou avance a direção.'
 - id: mundo-050f1a0efdbe5a14
   tipo: reavaliar_agente_leve
   agente_leve: bram_vask
@@ -258,40 +15,6 @@ concluidas_recentes:
     data: 15 Eleasis, 1372 DR
     hora: 06:00
   resultado: rotina_sem_mudanca
-- id: mundo-62d023ce3a53facb
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 16 Eleasis, 1372 DR
-    hora: 06:00
-  agente: red_sail
-  nota: A Red Sail mantém a busca dirigida já em curso, mas nenhum fato canônico novo
-    fornece hoje alvo, testemunha ou rastro específico para uma mudança persistente.
-- id: mundo-c6f0ef02e2dd3723
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 16 Eleasis, 1372 DR
-    hora: 06:00
-  agente: night_watch
-  nota: A Night Watch mantém vigilância e cadeia institucional já estabelecidas; não
-    surgiu informação canônica nova que justifique alterar prioridades ou queimar
-    entradas.
-- id: mundo-c884ed21bcc898fd
-  tipo: reavaliar_agente
-  disparado_em:
-    data: 16 Eleasis, 1372 DR
-    hora: 06:00
-  agente: kurobane_jinzaburo
-  nota: Kurobane permanece à procura de uma janela documental, mas não há rota de
-    prova ou mensagem canonicamente acessível que sustente uma iniciativa material
-    neste amanhecer.
-- id: mundo-501e9838c30e325b
-  tipo: expiracao
-  disparado_em:
-    data: 16 Eleasis, 1372 DR
-    hora: 06:00
-  nota: A abordagem da senhora e da placa foi posta em posição na rota recorrente
-    de Ren, com três homens kozakuranos no restaurante; a rede reconhece o disfarce
-    recorrente, sem conhecer automaticamente o emprego.
 - id: mundo-a579af274540ec0e
   tipo: reavaliar_agente_leve
   agente_leve: maerra_thandrel
@@ -299,50 +22,35 @@ concluidas_recentes:
     data: 15 Eleasis, 1372 DR
     hora: 06:00
   resultado: rotina_sem_mudanca
-  nota: Nenhuma causa concreta para iniciativa extraordinária; Maerra mantém rotina
-    religiosa, abrigo e cuidado pastoral.
 - id: mundo-ccfdf574959f090c
   tipo: avaliar_direcao
   disparado_em:
     data: 17 Eleasis, 1372 DR
     hora: 06:00
-  nota: Nenhum novo fato canônico indica que a cidade já espere grande embarcação
-    oriental; o relógio de chegada em 27 Eleasis não basta para avançar rumores em
-    17 Eleasis.
 - id: mundo-16b168ad8f464b1b
   tipo: reavaliar_agente
   disparado_em:
     data: 17 Eleasis, 1372 DR
     hora: 06:00
   agente: casa_de_tyr
-  nota: A Casa de Tyr mantém custódia, cadeia de prova e contatos via Luath; não surgiu
-    fato novo que exija iniciativa extraordinária nesta janela.
 - id: mundo-73da4c5587a5c916
   tipo: reavaliar_agente
   disparado_em:
     data: 17 Eleasis, 1372 DR
     hora: 06:00
   agente: night_watch
-  nota: A Night Watch mantém vigilância e resposta preparada; nenhum fato novo altera
-    prioridades ou autoriza batida sem queimar fontes.
 - id: mundo-a5dac75ef8adce72
   tipo: reavaliar_agente
   disparado_em:
     data: 17 Eleasis, 1372 DR
     hora: 06:00
   agente: kajiwara_shizune
-  nota: 'Bloqueio canônico concreto: a presença física de Kajiwara Shizune em Ravens
-    Bluff permanece indeterminada e sua atuação local exige presença; não pode executar
-    forjar_titulo_ou_despejo nesta janela.'
 - id: mundo-b8292cd4725054eb
   tipo: reavaliar_agente
   disparado_em:
     data: 17 Eleasis, 1372 DR
     hora: 06:00
   agente: red_sail
-  nota: 'A Red Sail tomou decisão operacional diária: concentrou a busca em propriedades
-    abandonadas a leste, mantendo curandeiros e carroças como linhas secundárias,
-    sem localizar Iria, o lagar ou a cadeia rural; transação s014-e203bf6fcdfafc0a.'
 - id: mundo-d7d68ea1bf62011c
   tipo: reavaliar_agente_leve
   agente_leve: halessa_vorn
@@ -350,65 +58,45 @@ concluidas_recentes:
     data: 16 Eleasis, 1372 DR
     hora: 06:00
   resultado: rotina_sem_mudanca
-  nota: Nenhuma nova prova, ameaça à cadeia de custódia, necessidade de contato protegido
-    ou proposta concreta de cooperação surgiu para Halessa; sua rotina jurídica permanece
-    suficiente.
 - id: mundo-646a8eb6495eb35a
   tipo: evento_mundial
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
-  nota: A chegada sorteada não encontrou agente, pressão urbana ou efeito persistente
-    concreto que a diferencie do tráfego ordinário de viajantes no porto neste amanhecer.
 - id: mundo-8b06d1dddd09d50f
   tipo: reavaliar_agente
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
   agente: red_sail
-  nota: A Red Sail não adquiriu nova pista, recurso ou localização; mantém a busca
-    dirigida já em execução sem mudança persistente de plano ou conhecimento.
 - id: mundo-cfac4fd9ab497875
   tipo: avaliar_direcao
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
-  nota: Os fatos existentes continuam sustentando o marco coisas_plausiveis, mas nenhum
-    novo fato canônico desta fronteira satisfaz avanço de direção.
 - id: mundo-edb696824a74a22a
   tipo: reavaliar_agente
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
   agente: kurobane_jinzaburo
-  nota: Embora haja matéria documental em formação, Kurobane não possui no contexto
-    assinado conhecimento da irregularidade, de Shinta ou de uma janela física de
-    acesso; falta oportunidade concreta para agir.
 - id: mundo-1cb96f9042ce03af
   tipo: expiracao
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
-  nota: 'Irregularidade documental real materializada na Galeria: Shinta foi colocado
-    como responsável institucional conveniente sem prova de culpa nem confirmação
-    de outra identidade.'
 - id: mundo-5957787d15220212
   tipo: reavaliar_agente
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
   agente: night_watch
-  nota: Night Watch preservou a cadeia e iniciou observação discreta; Luath reconheceu
-    exploração do procedimento sem solução completa nem confirmação de identidades.
 - id: mundo-dc0262094a1df5f8
   tipo: reavaliar_agente
   disparado_em:
     data: 18 Eleasis, 1372 DR
     hora: 06:00
   agente: masao_hirasawa
-  nota: A rede de Masao trouxe pequenas células armadas sob coberturas civis, criando
-    capangas isolados na malha urbana sem expor Masao nem empregar a Juppongatana
-    como tropa comum.
 - id: mundo-7794a98069bb033f
   tipo: reavaliar_agente_leve
   agente_leve: luath
@@ -416,58 +104,37 @@ concluidas_recentes:
     data: 16 Eleasis, 1372 DR
     hora: 06:00
   resultado: rotina_sem_mudanca
-  nota: Luath já está cumprindo a rotina institucional e conduzindo verificações;
-    não surgiu nova ameaça à custódia, prova ou testemunha que justifique outra iniciativa
-    persistente neste disparo.
 - id: mundo-6860f64096d5eac3
   tipo: reavaliar_agente
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
   agente: night_watch
-  nota: A Night Watch mantém em execução vigilância discreta e resposta preparada;
-    o novo dia não trouxe fato canônico que altere prioridades ou autorize queimar
-    entradas e fontes.
 - id: mundo-74bb071cf4525aa8
   tipo: reavaliar_agente
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
   agente: kajiwara_shizune
-  nota: 'Bloqueio canônico concreto: a presença física de Shizune em Ravens Bluff
-    permanece indeterminada e sua atuação local exige presença física; portanto ela
-    não pode iniciar nova falsificação imobiliária local neste disparo.'
 - id: mundo-af89942735c14eee
   tipo: avaliar_direcao
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
-  nota: Ainda não há fato canônico suficiente de que uma grande embarcação oriental
-    esteja a caminho ou seja esperada; o marco rumores_de_grande_navio permanece sustentado
-    sem avanço.
 - id: mundo-c076fdfb4bf01008
   tipo: reavaliar_agente
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
   agente: red_sail
-  nota: A Red Sail já amplia a busca dirigida pelos rastros logísticos conhecidos,
-    mas não recebeu nova pista concreta que permita localizar a casa de Iria, o lagar
-    ou a cadeia rural sem exposição excessiva.
 - id: mundo-f76cfa4f752f7bdf
   tipo: reavaliar_agente
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
   agente: casa_de_tyr
-  nota: A Casa de Tyr mantém provas e testemunhas sob custódia e aguarda a resposta
-    reservada já prevista; não há novo fato canônico que mude a investigação neste
-    disparo.
 - id: mundo-dc1c9736f7a707f0
   tipo: evento_mundial
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
-  nota: 'Evento materializado: boicote limitado entre estivadores e carroceiros por
-    taxas e prioridade de carga; Night Watch conteve confronto menor e iniciou negociação
-    sem vencedor.'

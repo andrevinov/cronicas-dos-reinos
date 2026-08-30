@@ -31,23 +31,21 @@ class AuditoriaFinalTest(unittest.TestCase):
         self.assertFalse(result["transcricao_lida"])
         self.assertLessEqual(result["bytes_saida"], 8192)
         snapshot = result["snapshot"]
-        state = load_yaml(ROOT / "estado/estado-atual.yaml")
-        resources = state["recursos"]
-        expected_pv = {
-            "atuais": resources["pontos_de_vida"]["atuais"],
-            "maximos": resources["pontos_de_vida"]["maximos"],
-        }
-        expected_ki = {
-            "atuais": resources["ki"]["atuais"],
-            "maximos": resources["ki"]["maximos"],
-        }
-        self.assertEqual(snapshot["sessao"], state["campanha"]["sessao_atual"])
-        self.assertEqual(snapshot["personagem"], state["personagem"]["nome"])
-        self.assertEqual(snapshot["nivel"], state["personagem"]["nivel"])
-        self.assertEqual(snapshot["pv"], expected_pv)
-        self.assertEqual(snapshot["ki"], expected_ki)
-        self.assertEqual(snapshot["ca"], resources["classe_de_armadura"])
-        self.assertTrue(snapshot["resumo_imediato"])
+
+        # A retomada é definida pelo estado operacional efetivo: checkpoint quente
+        # mais deltas ainda pendentes. Comparar com estado-atual puro fica obsoleto
+        # assim que a sessão avança antes do próximo checkpoint.
+        effective_context, effective_scene, _ = mod._effective_runtime(ROOT)
+        self.assertEqual(snapshot["sessao"], effective_context["sessao"]["numero"])
+        self.assertEqual(snapshot["personagem"], effective_context["personagem"]["nome"])
+        self.assertEqual(snapshot["nivel"], effective_context["personagem"]["nivel"])
+        self.assertEqual(snapshot["pv"], effective_context["recursos"]["pv"])
+        self.assertEqual(snapshot["ki"], effective_context["recursos"]["ki"])
+        self.assertEqual(snapshot["ca"], effective_context["recursos"]["ca"])
+        self.assertEqual(
+            snapshot["resumo_imediato"],
+            mod.contexto_core.truncate_text(effective_scene.get("resumo_imediato", ""), 1400),
+        )
         self.assertFalse(any("transcricao" in str(source) for source in result["fontes"]))
 
     def test_pending_overlay_is_visible_only_in_sandbox(self):
