@@ -21,7 +21,7 @@ materializacao:
 migracao:
   origem_operacional: emergente_causal_task40
   task32_task33: legado_frio
-  catalogo_task33_no_hot_path: false
+  catalogo_task33_no_hot_path: true
 infra:
   schedulers_novos: 0
   relogios_novos: 0
