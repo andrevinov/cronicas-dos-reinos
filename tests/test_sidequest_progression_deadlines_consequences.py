@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import yaml
 
@@ -158,6 +159,14 @@ class Task45Fixture(task43.Task43Fixture):
             },
         )
 
+    def fake_checkpoint(self):
+        return patch(
+            "turno._run_scene_checkpoint",
+            return_value={
+                "mundo": {"novas_pendencias": [], "agentes_reconsiderar": []}
+            },
+        )
+
 
 class Task45DeadlineTest(Task45Fixture):
     def test_aceita_com_prazo_ultrapassado_falha_e_emite_uma_pendencia(self):
@@ -279,34 +288,76 @@ class Task45ConsequenceTest(Task45Fixture):
         result = progression.finalize_failure(self.repo, mid)
         return result["pendencia"]["id"]
 
-    def test_consequencia_e_npc_aplicam_uma_vez_e_retry_repara(self):
+    def test_consequencia_e_npc_aplicam_uma_vez_e_retry_nao_duplica(self):
         mid, _ = self.setup_quest()
         self.add_messenger_canonical()
         pending_id = self._fail_and_pending(mid)
         proof = self.proof45(FAIL_TEXT)
-        first = progression.resolve_pending(
-            self.repo,
-            mid,
-            pending_id,
-            chosen_escalation_id="interceptar_mensageiro",
-            proofs={"interceptar_mensageiro": proof},
-            blocker=None,
-            narration="A célula alcança o Mensageiro Cinza antes que ele abandone a rota e o retira de circulação, materializando a interceptação que já estava prevista.",
-        )
-        second = progression.resolve_pending(
-            self.repo,
-            mid,
-            pending_id,
-            chosen_escalation_id="interceptar_mensageiro",
-            proofs={"interceptar_mensageiro": proof},
-            blocker=None,
-            narration="A mesma interceptação é reavaliada em retry e não pode criar uma segunda captura ou uma segunda consequência.",
-        )
+        with self.fake_checkpoint():
+            first = progression.resolve_pending(
+                self.repo,
+                mid,
+                pending_id,
+                chosen_escalation_id="interceptar_mensageiro",
+                proofs={"interceptar_mensageiro": proof},
+                blocker=None,
+                narration="A célula alcança o Mensageiro Cinza antes que ele abandone a rota e o retira de circulação, materializando a interceptação que já estava prevista.",
+            )
+            second = progression.resolve_pending(
+                self.repo,
+                mid,
+                pending_id,
+                chosen_escalation_id="interceptar_mensageiro",
+                proofs={"interceptar_mensageiro": proof},
+                blocker=None,
+                narration="A mesma interceptação é reavaliada em retry e não pode criar uma segunda captura ou uma segunda consequência.",
+            )
         pending = transacoes.load_pending(self.repo)
         self.assertEqual(len(pending), 1)
         npc_deltas = [d for d in pending[0]["deltas"] if d.get("alvo") == "npc:mensageiro_cinza_task41"]
         self.assertEqual(npc_deltas, [{"alvo": "npc:mensageiro_cinza_task41", "op": "set", "caminho": "vida.estado", "valor": "preso"}])
         self.assertEqual(first["transacao_id"], second["transacao_id"])
+        self.assertEqual(mundo.load_world_state(self.repo)["pendencias"], [])
+
+    def test_checkpoint_falho_deixa_pendencia_aberta_e_retry_reapresenta_mesma_transacao(self):
+        mid, _ = self.setup_quest()
+        self.add_messenger_canonical()
+        pending_id = self._fail_and_pending(mid)
+        proof = self.proof45(FAIL_TEXT)
+        with patch("turno._run_scene_checkpoint", side_effect=ValueError("checkpoint sintético caiu depois do stage")):
+            with self.assertRaisesRegex(progression.SidequestProgressionError, "checkpoint sintético"):
+                progression.resolve_pending(
+                    self.repo,
+                    mid,
+                    pending_id,
+                    chosen_escalation_id="interceptar_mensageiro",
+                    proofs={"interceptar_mensageiro": proof},
+                    blocker=None,
+                    narration="A primeira tentativa registra a consequência antes de uma falha sintética no checkpoint.",
+                )
+        staged = transacoes.load_pending(self.repo)
+        self.assertEqual(len(staged), 1)
+        original = copy.deepcopy(staged[0])
+        self.assertEqual(len(mundo.load_world_state(self.repo)["pendencias"]), 1)
+        view = progression.status(self.repo, mid)
+        self.assertEqual(view["terminal"]["resultado"], "falhada")
+        progress_path = self.repo / oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))["missoes"][mid]["progresso_sidequest"]
+        progress_doc = yaml.safe_load(progress_path.read_text(encoding="utf-8"))
+        self.assertEqual(progress_doc["estado"]["consequencias_ativadas"], {})
+
+        with self.fake_checkpoint():
+            repaired = progression.resolve_pending(
+                self.repo,
+                mid,
+                pending_id,
+                chosen_escalation_id="interceptar_mensageiro",
+                proofs={"interceptar_mensageiro": proof},
+                blocker=None,
+                narration="Texto diferente no retry não substitui a transação que já havia sido staged antes da queda.",
+            )
+        after = transacoes.load_pending(self.repo)
+        self.assertEqual(after, [original])
+        self.assertTrue(repaired["writer"]["ja_registrada"])
         self.assertEqual(mundo.load_world_state(self.repo)["pendencias"], [])
 
     def test_protected_core_continua_bloqueando_sidequest_lateral_grave(self):
@@ -365,7 +416,7 @@ class Task45BudgetAndCanonContractTest(unittest.TestCase):
             oportunidades.atomic(repo / oportunidades.STATE, state)
             oportunidades.respond(repo, "manual-0", "aceitar", now=now)
             oportunidades.respond(repo, "manual-1", "aceitar", now=now)
-            with self.assertRaisesRegex(oportunidades.OpportunityError, "limite de side quests ativas"):
+            with self.assertRaisesRegex(oportunidades.OpportunityError, "limite de sidequests ativas"):
                 oportunidades.respond(repo, "manual-2", "aceitar", now=now)
 
 
