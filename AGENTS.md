@@ -44,7 +44,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`, `docs/task34-persistent-world-conditions.md`;
-- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`;
+- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`, `docs/task45-sidequest-progression-deadlines-consequences.md`, `docs/task46-emergent-sidequests-integration-budget-regression.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -105,6 +105,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 42:** quest emergente não lateral usa `canon_bridge_runtime.py`; aceitar só reserva causal e nunca move Ren. Convergência/transformação só suprimem realização padrão com evidência; `reconciliar` libera fallback. Integração automática fica para Task 46.
 - **Task 43:** após materializar, registrar `contrato_recompensa` com `recompensas_sidequest.py` antes de resposta/lifecycle. Descoberta ≠ obtenção; sucesso/perda só materializam pelo writer transacional; perda exige contrato + evidência causal. Integração automática fica para Task 46.
 - **Task 44:** preparar `contrato_adversarial` junto da Task41 antes da oferta; após materializar, `integridade_adversarial.py` materializa antes do lifecycle. Capacidade/conhecimento precisam ser reais; lateral mantém Protected Core, vínculo Task42 pode autorizar risco canônico; `obrigatoria_se_condicao` não amacia sem bloqueio causal. Execução terminal: Task45; integração quente: Task46.
+- **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências já congeladas; `resolver_sidequest` nunca é no-op; recompensa continua Task43 e consequência grave continua Task44/Protected Core.
+- **Task 46:** no jogo ao vivo, as primitivas 40–45 acima ficam embutidas na mesma dupla: só com âncora causal use `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...`; autorar na mesma inferência e enviar quest+contratos no mesmo `cronica concluir` somente se a oferta foi narrada. Sem flag = zero Task40–45. Task32/33 = legado frio, nunca origem/hot path.
 - Pedido Task32 legado já narrado → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
@@ -129,7 +131,7 @@ Dúvida de regra: prefira `contexto.py regra`. Defina CD/modificadores antes da 
 
 Preservar UTF-8, histórico e formatos; não apagar fatos nem mudar visibilidade sem justificativa.
 
-Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `recompensas_sidequest.py check`, `integridade_adversarial.py check`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `recompensas_sidequest.py check`, `integridade_adversarial.py check`, `progressao_sidequests.py check`, `sidequests_integracao_check.py`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
