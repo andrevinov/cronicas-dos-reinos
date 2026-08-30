@@ -113,7 +113,7 @@ Fronteira: `poetry run cronica sessao checkpoint`. Encerramento: `poetry run cro
 
 Journal interrompido: não narrar; `poetry run cronica sessao recuperar` (`checkpoint.py recuperar` é fallback).
 
-Ao pedido **“inicie uma sessão”**, execute `poetry run cronica sessao status`; se `entre_sessoes`, `poetry run cronica sessao iniciar`. Use `recap_sessao_anterior`/`retomada`; não leia transcrição se bastar. Se `em_sessao`, use a retomada quente. Nunca pular sessão.
+Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: execute `poetry run cronica sessao status`; se `entre_sessoes`, `poetry run cronica sessao iniciar`. Use `recap_sessao_anterior`/`retomada`; não leia transcrição se bastar. Se `em_sessao`, use a retomada quente. Nunca pular sessão.
 
 Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
 
