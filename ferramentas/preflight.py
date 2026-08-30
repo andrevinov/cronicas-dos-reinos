@@ -63,6 +63,11 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
+                "canon bridge Task42",
+                (python, "ferramentas/canon_bridge_runtime.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
                 "integração reativa",
                 (python, "ferramentas/interacoes_mundo.py", "check"),
                 "mundo vivo",
