@@ -1,0 +1,1 @@
+Task45 regression fixtures cover deadline failure/expiration, factual progression, actor unavailability, reward gating, exactly-once consequence transactions, Protected Core authority and the existing max-2 active sidequest budget.

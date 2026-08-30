@@ -1,0 +1,28 @@
+schema_orcamento_progressao_sidequest: 1
+natureza: contrato_de_regressao
+limites:
+  fragmento_por_quest_bytes_max: 24576
+  projecao_pendencia_bytes_max: 8192
+  fatos_por_quest_max: 48
+  atores_por_quest_max: 24
+  pendencias_task45_max: 2
+  sidequests_aceitas_simultaneas_max: 2
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  progresso_e_por_fatos_canonicos_nao_checklist: true
+  task41_continua_autoridade_do_esqueleto_da_quest: true
+  task43_continua_autoridade_de_recompensas_e_perdas: true
+  task44_continua_autoridade_de_stakes_e_escaladas: true
+  prazo_usa_relogio_e_fronteira_existentes: true
+  prazo_vencido_nao_inventa_consequencia: true
+  consequencia_terminal_vira_pendencia_do_mundo_vivo: true
+  consequencia_so_materializa_com_prova_literal: true
+  consequencia_e_transacao_exactly_once: true
+  npc_indisponivel_invalida_funcao_incompativel: true
+  protected_core_continua_governado_pela_task44: true
+  recompensa_so_depois_de_sucesso_factual: true
+  falha_terminal_passa_pela_task42_sem_apagar_intencao: true
+  max_ativas_2_permanece_autoridade_de_oportunidades: true
+  task46_continua_autoridade_de_integracao_hot_path: true
