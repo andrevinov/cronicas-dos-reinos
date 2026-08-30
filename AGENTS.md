@@ -27,7 +27,7 @@ Runtime/handoffs/índices são projeções; pendências prevalecem até consolid
 
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução; leia para uma lacuna concreta.** Economize leituras/tool calls, não a experiência literária. **Se for suficiente, pare.** Prefira portas públicas; não abra fontes “só para conferir”.
+**Nunca leia por precaução.** **Economia de contexto não é economia de prosa.** **Se for suficiente, pare.** Leia só para lacuna concreta; prefira portas públicas.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
