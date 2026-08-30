@@ -14,8 +14,10 @@ Esta porta aplica correções de autoridade/recovery descobertas pelo CI da Task
 A regra funcional continua a mesma: ``sidequests_emergentes``/Task41 define a quest;
 ``recompensas_sidequest``/Task43 governa recompensas e perdas;
 ``integridade_adversarial``/Task44 governa stakes e Protected Core;
-``canon_bridge_runtime.finish``/Task42 governa o terminal canônico. Não há scheduler
-novo e a integração automática ao hot path continua reservada à Task46.
+``canon_bridge_runtime.finish``/Task42 governa o terminal canônico. Um desfecho
+adversarial devido entra no Mundo Vivo como pendência ``resolver_sidequest`` e só
+esta porta Task45 pode materializá-lo; ele nunca equivale a um no-op genérico. Não
+há scheduler novo e a integração automática ao hot path continua reservada à Task46.
 """
 from __future__ import annotations
 
