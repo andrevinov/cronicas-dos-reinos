@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: halessa_admite_a_teia
+intencao_canonica:
+  id: icp1-halessa_admite_a_teia
+  funcao: Elevar a manipulação documental de incidentes isolados para uma hipótese coordenada investigável,
+    sem entregar a solução da rede.
+  criterios_satisfacao:
+  - Uma fonte institucional confiável trata a manipulação coordenada como hipótese séria distinguindo
+    evidência de certeza.
+  - Ren recebe uma pergunta ou pista concreta que permita investigar origem, volume ou trânsito documental
+    sem receber a Ponte pronta.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 72
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

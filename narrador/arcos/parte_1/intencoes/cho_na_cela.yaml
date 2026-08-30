@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: cho_na_cela
+intencao_canonica:
+  id: icp1-cho_na_cela
+  funcao: Introduzir Chō diretamente como personalidade e fonte pouco confiável sobre a Juppongatana sem
+    transformar primeiro contato em derrota ou exposição garantida.
+  criterios_satisfacao:
+  - Chō entra em contato direto com Ren por contenção institucional temporária ou situação funcionalmente
+    equivalente.
+  - O encontro revela traços, provocações ou pistas sobre a cultura interna da Juppongatana sem conceder
+    conhecimento onisciente nem neutralização.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 72
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

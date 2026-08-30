@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: tabuleiro_de_pan_chu
+intencao_canonica:
+  id: icp1-tabuleiro_de_pan_chu
+  funcao: Dar a Pan Chu agência estratégica própria e transformar a crise naval em dilema de custo, acesso
+    e negociação.
+  criterios_satisfacao:
+  - Pan Chu ou comando equivalente cria uma barganha, chantagem ou janela operacional com custo real para
+    Ravens Bluff.
+  - A situação oferece acesso causal ao núcleo de comando e altera observavelmente a crise conforme a
+    resposta coletiva, sem obrigar decisão de Ren.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 48
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true
