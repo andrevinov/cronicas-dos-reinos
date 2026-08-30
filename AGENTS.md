@@ -4,7 +4,7 @@
 
 O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml`/`runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
+Runtime é derivado; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -17,13 +17,9 @@ O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes 
 7. Sessão concluída é histórico; correção relevante é explícita; efeito persistente continua rastreável.
 8. Preparação serve ao jogo e nunca o substitui.
 
-Detalhes: `docs/agente/fundamentos.md`.
-
 ## 3. Hierarquia de autoridade
 
 Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
-
-Runtime/handoffs/índices são projeções; pendências prevalecem até consolidação.
 
 ## 4. Economia de contexto — obrigatória
 
@@ -40,8 +36,6 @@ Runtime/handoffs/índices são projeções; pendências prevalecem até consolid
 Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nunca abrir `transcricao.md` só para retomar sessão.**
 
 ## 5. Roteamento por tarefa
-
-Leia só o documento necessário:
 
 - autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
@@ -133,7 +127,7 @@ Dúvida de regra: pare quando resolvida; prefira `contexto.py regra`. Defina CD/
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato nem mudar visibilidade sem justificativa. Regenerar runtime/memória só se retomada mudou.
+Preservar UTF-8, histórico e formatos; não apagar fatos nem mudar visibilidade sem justificativa.
 
 Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
