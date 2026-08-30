@@ -2,18 +2,20 @@
 """Task 45 — Sidequest Progression, Deadlines & Consequences.
 
 A implementação base permanece isolada em ``_progressao_sidequests_task45_base``.
-Esta porta aplica duas correções de autoridade/recovery descobertas pelo primeiro
-CI da Task45:
+Esta porta aplica correções de autoridade/recovery descobertas pelo CI da Task45:
 
 1. o lifecycle legado pode observar o mesmo prazo antes da Task45; nesse caso o
    mesmo desfecho terminal é reconciliado pela Task42, em vez de virar conflito;
-2. uma resolução de consequência pode ter sido staged antes de o checkpoint
-   automático falhar; o retry reapresenta *a mesma transação* até o checkpoint
-   concluir, sem duplicar morte, recompensa, evento ou consequência.
+2. uma resolução de consequência pode ser staged antes de o checkpoint automático
+   falhar; a Task45 guarda o payload transacional completo antes do writer e o retry
+   reapresenta exatamente esse payload até o checkpoint concluir, sem duplicar
+   morte, recompensa, evento ou consequência.
 
-A regra funcional continua a mesma: ``canon_bridge_runtime.finish`` governa o
-terminal canônico; ``integridade_adversarial`` governa stakes/Protected Core;
-``recompensas_sidequest`` governa recompensas/perdas; não há scheduler novo.
+A regra funcional continua a mesma: ``sidequests_emergentes``/Task41 define a quest;
+``recompensas_sidequest``/Task43 governa recompensas e perdas;
+``integridade_adversarial``/Task44 governa stakes e Protected Core;
+``canon_bridge_runtime.finish``/Task42 governa o terminal canônico. Não há scheduler
+novo e a integração automática ao hot path continua reservada à Task46.
 """
 from __future__ import annotations
 
@@ -135,6 +137,70 @@ def _transaction_state(
     return "absent", None
 
 
+def _recovery_transaction(
+    repo: Path,
+    doc: dict[str, Any],
+    rel: Path,
+    *,
+    txid: str,
+    mission: dict[str, Any],
+    pending_id: str,
+    chosen: str,
+    narration: str,
+    deltas: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Congela o payload completo antes do writer para reparar crash pós-stage."""
+    stored = doc["estado"].get("transacao_pendente")
+    if stored is not None:
+        if not isinstance(stored, dict) or stored.get("id") != txid:
+            raise _base.SidequestProgressionError(
+                "Task45 possui transação de recuperação divergente"
+            )
+        return copy.deepcopy(stored)
+
+    transaction = {
+        "id": txid,
+        "narracao": _base._text(narration, "narracao", 20, 2400),
+        "resumo": _base._text(
+            f"Sidequest {mission['quest_id']} materializa a consequência {chosen}.",
+            "resumo",
+            12,
+            500,
+        ),
+        "modo": "mundo",
+        "tags": [
+            "task45-sidequest",
+            f"missao:{mission['id']}",
+            f"resolver-pendencia-mundo:{pending_id}",
+        ],
+        "deltas": copy.deepcopy(deltas),
+    }
+    doc["estado"]["transacao_pendente"] = copy.deepcopy(transaction)
+    _base._atomic(repo / rel, doc)
+    return transaction
+
+
+def _assert_pending_matches_recovery(
+    recovery: dict[str, Any], pending_record: dict[str, Any]
+) -> None:
+    """Garante que o buffer staged veio exatamente do payload Task45 congelado."""
+    try:
+        expected = _base.transacoes.build_pending_record(
+            recovery, int(pending_record["sessao"])
+        )
+    except (
+        _base.transacoes.TransactionError,
+        KeyError,
+        TypeError,
+        ValueError,
+    ) as exc:
+        raise _base.SidequestProgressionError(str(exc)) from exc
+    if expected != pending_record:
+        raise _base.SidequestProgressionError(
+            "transação staged diverge do payload de recuperação Task45"
+        )
+
+
 def resolve_pending(
     repo: Path,
     mission_ref: str,
@@ -227,37 +293,25 @@ def resolve_pending(
             )
 
         txid = _base._txid(mid, pending_id, chosen)
+        transaction = _recovery_transaction(
+            repo,
+            doc,
+            rel,
+            txid=txid,
+            mission=mission,
+            pending_id=pending_id,
+            chosen=chosen,
+            narration=narration,
+            deltas=deltas,
+        )
         tx_state, pending_tx = _transaction_state(repo, txid)
-        if tx_state == "absent":
-            transaction = {
-                "id": txid,
-                "narracao": _base._text(
-                    narration, "narracao", 20, 2400
-                ),
-                "resumo": _base._text(
-                    f"Sidequest {mission['quest_id']} materializa a consequência {chosen}.",
-                    "resumo",
-                    12,
-                    500,
-                ),
-                "modo": "mundo",
-                "tags": [
-                    "task45-sidequest",
-                    f"missao:{mid}",
-                    f"resolver-pendencia-mundo:{pending_id}",
-                ],
-                "deltas": deltas,
-            }
-        elif tx_state == "pending":
-            # O writer escreve o delta antes do checkpoint. Se o checkpoint caiu,
-            # reapresentamos byte-logicamente a transação já staged; não usamos a
-            # nova narração do retry para evitar divergência de conteúdo.
+        if tx_state == "pending":
             if pending_tx is None:
                 raise _base.SidequestProgressionError(
-                    "estado pending sem transação recuperável"
+                    "estado pending sem registro staged recuperável"
                 )
-            transaction = pending_tx
-        else:
+            _assert_pending_matches_recovery(transaction, pending_tx)
+        elif tx_state == "consolidated":
             transaction = None
 
         if transaction is not None:
@@ -269,8 +323,9 @@ def resolve_pending(
                 yaml.YAMLError,
                 ValueError,
             ) as exc:
-                # Não grave ``consequencias_ativadas`` e não feche a pendência:
-                # o próximo retry deve reparar exatamente esta transação.
+                # O payload completo já está congelado no fragmento Task45. Não
+                # grave ``consequencias_ativadas`` nem feche a pendência; o retry
+                # reapresentará exatamente esse payload, inclusive a narração.
                 raise _base.SidequestProgressionError(str(exc)) from exc
         else:
             writer = {"ja_registrada": True, "consolidada": True}
@@ -287,6 +342,7 @@ def resolve_pending(
             },
         }
         doc["estado"]["consequencias_ativadas"][chosen] = activated
+        doc["estado"].pop("transacao_pendente", None)
         _base._history(
             doc,
             {
@@ -341,8 +397,8 @@ def resolve_pending(
     }
 
 
-# Monkey-patch somente as duas fronteiras de recovery. As demais regras continuam
-# na implementação base, inclusive progresso factual, budgets e CLI.
+# Monkey-patch somente as fronteiras de autoridade/recovery. As demais regras
+# continuam na implementação base, inclusive progresso factual, budgets e CLI.
 _base._terminalize = _terminalize
 _base.resolve_pending = resolve_pending
 
