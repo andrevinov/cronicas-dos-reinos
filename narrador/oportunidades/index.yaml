@@ -1,8 +1,8 @@
 schema_oportunidades: 1
 natureza: reservado
 semente: cronicas-dos-reinos-oportunidades-v1
-estatuto_operacional: gate_procedural_retirado_task31
-nova_origem_sidequests: canonica_explicita
+estatuto_operacional: sidequests_emergentes_integradas_task46
+nova_origem_sidequests: emergente_causal_task40
 gate:
   versao: 2
   modo: baralho_sem_reposicao_sha256
@@ -57,15 +57,20 @@ regras:
   pressao_nao_rerrola: true
   gate_procedural_operacional: false
   encontro_nao_gera_nova_sidequest: true
-  fonte_nova_sidequest: canonica_explicita
+  fonte_nova_sidequest: emergente_causal_task40
   perfis_procedurais_sao_legado: true
+  task32_task33_origem_operacional: false
+  task40_exige_ancora_causal_explicita: true
+  task46_duas_chamadas_preparar_concluir: true
 sidequests_canonicas:
   schema_sidequests_canonicas: 1
   engine: canonical_secret_quest_engine_task32
+  estatuto: legado_frio_task46
+  origem_operacional: false
   detalhes_somente_apos_gate: true
   scheduler: proibido
   rng: proibido
-  roteamento: fragmentado_por_npc_task33
+  roteamento: fragmentado_por_npc_task33_legado_frio
 perfis:
   kethra_dunn:
     nome: Kethra Dunn
