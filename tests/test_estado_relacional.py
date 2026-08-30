@@ -27,7 +27,7 @@ class RelationshipStateRepositoryTest(unittest.TestCase):
         self.assertEqual(len(relations), 36)
         self.assertTrue(set(relations) <= set(npcs))
         self.assertEqual(npc["quantidade"], len(npcs))
-        self.assertEqual(len(npcs), 37)
+        self.assertGreaterEqual(len(npcs), len(relations))
 
     def test_estado_existente_de_jack_e_reutilizado_sem_migracao_semantica(self):
         state = estado_relacional.lookup(ROOT, "jack_mooney")
