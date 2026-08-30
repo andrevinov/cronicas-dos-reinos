@@ -2,8 +2,8 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: entre_sessoes
-  sessao_atual: 14
+  status: em_sessao
+  sessao_atual: 15
   modo_de_cena_atual: ren_com_nera_e_silva_apos_relatar_emboscada
 personagem:
   nome: Ren Kagehira
@@ -18,15 +18,15 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: picadeiro do Jack Mooney & Sons Circus
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: escritório de Tomas Rell na Galeria dos Escribas
   descricao_operacional: Ren reafirmou a Nera que decidiu ficar com ela; Nera aceitou a decisão sem abrir mão de
     escolher, discordar e exigir seu retorno. Após cerca de 4h45 de sono e meia hora de meditação, Ren levou Nera
     à carroça verde, vestiu-se como Shinta e deixou o circo às 05:25 rumo à Galeria dos Escribas.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 17 Eleasis, 1372 DR
+  data_exata: 18 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -34,7 +34,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '18:25'
+  hora_aproximada: 08:55
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -53,7 +53,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 31.379999999999995
+    po: 39.379999999999995
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer
@@ -65,7 +65,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/014/transcricao.md
+  transcricao_atual: sessoes/015/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:

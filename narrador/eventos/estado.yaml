@@ -3,18 +3,16 @@ natureza: controle_reservado
 descricao: Curso dos dois baralhos; não é conhecimento de Ren nem registro de fatos
   que já aconteceram.
 processado_ate:
-  data: 17 Eleasis, 1372 DR
+  data: 18 Eleasis, 1372 DR
   hora: 06:00
 ocorrencia:
   ciclo: 1
   restantes:
-  - evento_01
   - evento_02
   - rotina_04
 eventos:
   ciclo: 1
   restantes:
-  - chegada_de_viajantes_incomuns
   - disputa_entre_guildas
   - chuva_torrencial_e_alagamentos
   - acidente_no_porto
@@ -60,3 +58,9 @@ historico_recente:
     hora: 06:00
   ficha_ocorrencia: rotina_03
   resultado: rotina
+- amanhecer:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  ficha_ocorrencia: evento_01
+  resultado: evento
+  evento: chegada_de_viajantes_incomuns

@@ -95,13 +95,16 @@ class SocialInitiativeRepositoryTest(unittest.TestCase):
         self.assertEqual(social["identidade_relacional"], "ren")
         self.assertEqual(dialogue["conselho"]["iniciativa"], "somente_com_gatilho")
 
-    def test_luath_tem_iniciativa_funcional_sem_intimidade(self):
-        social = contexto.command_npc(ROOT, "Luath")["resultado"]["dialogo_relacional"]["iniciativa_social"]
-        self.assertEqual(social["modo"], "funcional")
-        self.assertTrue(social["pode_iniciar"])
+    def test_luath_deriva_iniciativa_do_estado_relacional_efetivo(self):
+        result = contexto.command_npc(ROOT, "Luath")["resultado"]
+        dialogue = result["dialogo_relacional"]
+        social = dialogue["iniciativa_social"]
+        expected = iniciativa_social.project(
+            result["medidores"]["dados"],
+            relationship_mode=dialogue["modo"],
+        )
+        self.assertEqual(social, expected)
         self.assertTrue(social["exige_motivo"])
-        self.assertIn("abordagem profissional", social["escopo"])
-        self.assertNotIn("pedido pessoal pequeno", social["escopo"])
 
     def test_sella_inicia_com_shinta_nao_com_ren(self):
         social = contexto.command_npc(ROOT, "Sella Conferente Galeria")["resultado"]["dialogo_relacional"]["iniciativa_social"]

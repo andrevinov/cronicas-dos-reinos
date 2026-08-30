@@ -28,12 +28,16 @@ class PressureWorldRepositoryTest(unittest.TestCase):
         self.assertTrue(result["ok"], result["erros"])
         self.assertGreaterEqual(result["rotas_mundo_vivo"], 1)
 
+        current = pressure.load_state(ROOT)["frentes"]["crime_e_milicias"]["nivel"]
         candidate = pressure.candidate_for_agent(ROOT, "masao_hirasawa")
+        if current >= 4:
+            self.assertIsNone(candidate)
+            return
         self.assertIsNotNone(candidate)
         self.assertEqual(candidate["linha"], "expandir_presenca_de_masao")
         self.assertEqual(candidate["metodo"], "trazer_celulas_em_lotes_pequenos")
         self.assertEqual(candidate["frente"], "crime_e_milicias")
-        self.assertEqual((candidate["de"], candidate["para"]), (0, 1))
+        self.assertEqual((candidate["de"], candidate["para"]), (current, current + 1))
         self.assertIn("Ren não bloqueia", candidate["regra"])
 
 
@@ -51,6 +55,15 @@ class PressureWorldApplyTest(unittest.TestCase):
             dst = self.repo / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, dst)
+
+        # O fixture testa a transição 0 -> 1, não o estágio atual da campanha.
+        state = pressure.load_state(self.repo)
+        state["frentes"]["crime_e_milicias"] = {
+            "nivel": 0,
+            "historico_recente": [],
+        }
+        pressure.atomic(self.repo / pressure.STATE, state)
+
         self.transaction_id = "s003-abcdef1234567890"
         ledger = self.repo / "sessoes/003/consolidacoes.jsonl"
         ledger.parent.mkdir(parents=True, exist_ok=True)

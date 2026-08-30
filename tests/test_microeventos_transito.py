@@ -55,6 +55,14 @@ class UrbanTransitDeckTest(unittest.TestCase):
         shutil.copy2(ROOT / pressao.PROFILE, self.repo / pressao.PROFILE)
         shutil.copy2(ROOT / pressao.STATE, self.repo / pressao.STATE)
 
+        # Estes são testes do baralho de trânsito a partir da pressão basal, não
+        # snapshots do estágio corrente da campanha.
+        state = self._pressure_state()
+        for front in state["frentes"].values():
+            front["nivel"] = 0
+            front["historico_recente"] = []
+        self._write_pressure(state)
+
     def tearDown(self):
         self.temp.cleanup()
 

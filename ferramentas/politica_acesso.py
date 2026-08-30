@@ -100,7 +100,7 @@ def _truncate(value: Any, limit: int = 140) -> Any:
 
 
 def _compact_small(value: Any, *, depth: int = 3) -> Any:
-    """Compactação estrutural pequena usada só pela projeção L1."""
+    """Compactação estrutural pequena usada por projeções de acesso."""
     if depth <= 0:
         if isinstance(value, (dict, list)):
             return "[… omitido …]"
@@ -165,6 +165,113 @@ def _compact_l1_result(value: Any) -> Any:
         out["compromissos"] = _compact_small(value["compromissos"], depth=4)
     if "sobreposicao_transacional" in value:
         out["sobreposicao_transacional"] = value["sobreposicao_transacional"]
+    return out
+
+
+def _compact_resume_result(value: Any) -> Any:
+    """Projeta retomada L2 sem perder os tipos usados para reconstruir a cena.
+
+    ``command_resume`` pode permanecer rico para uso interno. Na fronteira de
+    acesso, removemos somente redundâncias e prosa longa antes do ``fit_budget``;
+    sessão, nível, PV, Ki e CA continuam com seus tipos originais.
+    """
+    if not isinstance(value, dict):
+        return value
+
+    out: dict[str, Any] = {}
+    if "sessao" in value:
+        out["sessao"] = value["sessao"]
+
+    context = value.get("contexto")
+    if isinstance(context, dict):
+        compact_context: dict[str, Any] = {
+            key: context[key]
+            for key in ("sessao", "personagem", "recursos")
+            if key in context
+        }
+        time = context.get("tempo")
+        if isinstance(time, dict):
+            compact_context["tempo"] = {
+                key: time.get(key)
+                for key in ("data", "hora_aproximada")
+                if key in time
+            }
+        location = context.get("localizacao")
+        if isinstance(location, dict):
+            compact_context["localizacao"] = {
+                key: location.get(key)
+                for key in ("area", "ponto_exato")
+                if key in location
+            }
+        effects = context.get("efeitos_temporarios")
+        if isinstance(effects, dict) and effects:
+            compact_context["efeitos_temporarios"] = {
+                str(effect_id): _compact_small(raw, depth=2)
+                for effect_id, raw in list(sorted(effects.items(), key=lambda item: str(item[0])))[:4]
+            }
+            if len(effects) > 4:
+                compact_context["efeitos_temporarios"]["_omitidos"] = len(effects) - 4
+        out["contexto"] = compact_context
+
+    scene = value.get("cena")
+    if isinstance(scene, dict):
+        compact_scene: dict[str, Any] = {
+            key: scene[key]
+            for key in ("modo", "mecanica_imediata")
+            if key in scene
+        }
+        if "resumo_imediato" in scene:
+            compact_scene["resumo_imediato"] = _truncate(scene.get("resumo_imediato"), 1000)
+        if "prazos_e_alertas" in scene:
+            compact_scene["prazos_e_alertas"] = _truncate(scene.get("prazos_e_alertas"), 500)
+        out["cena"] = compact_scene
+
+    memory = value.get("memoria_consolidada")
+    if isinstance(memory, dict):
+        compact_memory: dict[str, Any] = {}
+        checkpoint = memory.get("checkpoint")
+        if isinstance(checkpoint, dict):
+            compact_memory["checkpoint"] = {
+                key: checkpoint.get(key)
+                for key in ("tipo", "estado", "modo")
+                if key in checkpoint
+            }
+        recent = []
+        for item in list(memory.get("eventos_recentes") or [])[-2:]:
+            if not isinstance(item, dict):
+                continue
+            recent.append(
+                {
+                    "transacao": item.get("transacao"),
+                    "resumo": _truncate(item.get("resumo", ""), 180),
+                }
+            )
+        if recent:
+            compact_memory["eventos_recentes"] = recent
+        if compact_memory:
+            out["memoria_consolidada"] = compact_memory
+
+    transcript = value.get("transcricao")
+    if isinstance(transcript, dict):
+        out["transcricao"] = {
+            key: transcript.get(key)
+            for key in ("arquivo", "classe", "orientacao")
+            if key in transcript
+        }
+
+    pending = []
+    for item in list(value.get("eventos_pendentes_recentes") or [])[-4:]:
+        if not isinstance(item, dict):
+            continue
+        pending.append(
+            {
+                "id": item.get("id"),
+                "resumo": _truncate(item.get("resumo", ""), 200),
+                "modo": item.get("modo"),
+            }
+        )
+    if pending:
+        out["eventos_pendentes_recentes"] = pending
     return out
 
 
@@ -251,8 +358,11 @@ def decorate(
 ) -> tuple[dict[str, Any], int]:
     budget = effective_budget(decision.level, requested_budget)
     out = dict(data)
-    if decision.level == "L1" and out.get("consulta", {}).get("comando") == "status":
+    command = out.get("consulta", {}).get("comando")
+    if decision.level == "L1" and command == "status":
         out["resultado"] = _compact_l1_result(out.get("resultado"))
+    elif decision.level == "L2" and command == "retomada":
+        out["resultado"] = _compact_resume_result(out.get("resultado"))
     out["nivel"] = decision.level
     out["controle_acesso"] = {
         "teto_bytes": budget,

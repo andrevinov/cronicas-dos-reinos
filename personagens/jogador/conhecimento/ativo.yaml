@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 14
-sessao_mais_recente_indexada: 14
+sessao_atual_da_campanha: 15
+sessao_mais_recente_indexada: 15
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,29 +34,45 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Sella confirmou que Tomas designou Shinta para a mesa de devoluções naquele dia e explicou os limites
-    do setor: conferir quantidade, destino e motivo de recusa sem corrigir documentos para fazê-los concordar; manter
-    documentos fechados e lacres intactos; levar dúvidas, lacres estranhos ou divergentes a ela ou Tomas; não atravessar
-    a porta interna. Às 06:55, Shinta está diante do primeiro lote de treinamento, ainda sem mover nada.'
+- titulo: Ren manteve em mente os dois kozakuranos armados, reconhecendo que não eram os três atacantes do restaurante
+    sem concluir ligação. Como Shinta, entrou na Galeria e encontrou na mesa de devoluções um volume lacrado direcionado
+    nominalmente a ele, embora seu acesso não autorize documentos fechados. O livro de custódia aguarda assinatura;
+    Ren ainda não tocou na pena nem no volume.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-75253932815a25bd.md
-  bytes: 868
-  transacao: s014-75253932815a25bd
-- titulo: Shinta aceitou a avaliação sem se defender, pediu desculpas pelo atraso e chamou Sella de senpai, explicando
-    de modo simples a relação senpai-kouhai de Kozakura. Sella aceitou o termo com humor. Durante o almoço, Shinta
-    obteve Persuasão 18 contra CD 13 para fazê-la falar sobre Tomas. Sella disse que ele chega e trabalha sozinho,
-    costuma comer com a prancheta, não socializa com os carregadores após o expediente e nunca lhe apresentou ou
-    mencionou família; ressaltou que isso prova apenas que ela…
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-41b078c23d60e071.md
+  bytes: 720
+  transacao: s015-41b078c23d60e071
+- titulo: Shinta pediu autorização a Sella antes de iniciar. Ela confirmou que os dois lotes comuns podem ser conferidos,
+    mas reconheceu que o volume lacrado não pertence à autorização dele, ordenou que não assine nem toque e suspendeu
+    o procedimento enquanto procura Tomas e verifica a origem da linha de custódia.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-47c77b4d1cbc3636.md
-  bytes: 988
-  transacao: s014-47c77b4d1cbc3636
-- titulo: 'Ren entrou no circo sem cauda, abandonou a postura de Shinta e procurou Silva. Ela relatou um dia cheio,
-    porém rotineiro, sem perguntas ou vigilância visível sobre Ren, Shinta ou os Vell. Nera passou o dia protegida
-    no depósito de figurino velho; Tavin circulou como Timo em tarefas supervisionadas, sem fixar a carroça verde
-    como lugar de dormir. Ambos estão fisicamente bem. Silva decidirá onde dormirão somente após a saída do público.
-    A apresentação de Kage está no horário: mesma versão segura,…'
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f4ccdd782e3e39b2.md
+  bytes: 636
+  transacao: s015-f4ccdd782e3e39b2
+- titulo: Shinta manteve trabalho diligente e bem-sucedido, ganhando crédito profissional gradual na Galeria. Sella
+    retornou com Tomas e uma segunda via interna que falsamente registra Shinta recebendo e autorizando o volume
+    lacrado durante o período em que ele trabalhava sob observação. O livro local permanece vazio e o volume continua
+    na mesa. Tomas ainda não declarou culpa e pediu que Shinta identifique a assinatura e diga quem já viu sua assinatura
+    profissional.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-014/tx-s014-98bd372ad44b252d.md
-  bytes: 1113
-  transacao: s014-98bd372ad44b252d
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-2163bc93a62b5d56.md
+  bytes: 814
+  transacao: s015-2163bc93a62b5d56
+- titulo: Shinta forneceu voluntariamente uma amostra de assinatura sob declaração limitada e testemunho de Sella
+    e Tomas. A falsa assinatura se aproxima especialmente de um exemplar antigo arquivado na Galeria, sugerindo
+    acesso a registro interno ou cópia sem confirmar autoria. Tomas revelou que um representante da Night Watch
+    perguntou por Shinta e pelo volume antes de receber recado da Galeria; não há ordem de detenção. Shinta pode
+    falar no escritório ou pedir conversa aberta com Sella presente.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b08fe70bdfbc66c5.md
+  bytes: 940
+  transacao: s015-b08fe70bdfbc66c5
+- titulo: Shinta acompanhou Tomas ao escritório, deixando Sella com o volume. Uma representante legítima da Night
+    Watch informou que Shinta não está detido, mas uma denúncia anterior ao contato da Galeria afirma que alguém
+    usando seu nome tentou pagar um carroceiro para desviar o volume antes da abertura. A denúncia contém descrição
+    ampla compatível e cópia da ordem irregular. Ela pediu que Shinta explique onde esteve e quem pode confirmar
+    seu percurso antes de entrar na Galeria.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-661c0ad6a27a48b4.md
+  bytes: 870
+  transacao: s015-661c0ad6a27a48b4

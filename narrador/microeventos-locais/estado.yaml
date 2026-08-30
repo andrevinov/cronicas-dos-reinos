@@ -95,7 +95,6 @@ locais:
     ocorrencia:
       ciclo: 1
       restantes:
-      - rotina_01
       - rotina_02
     cartas:
       ciclo: 1
@@ -170,15 +169,27 @@ historico_recente:
     nome: normal
     cenas_secas_antes: 0
     promovido: false
+- cena_id: s015-shinta-entra-galeria-18-eleasis
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: rotina_01
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 1
+    promovido: false
 transitos:
   ravens_bluff:
     ocorrencia:
-      ciclo: 2
-      restantes: []
+      ciclo: 3
+      restantes:
+      - rotina_01
     cartas:
-      ciclo: 1
+      ciclo: 2
       assinatura_pool: 1b9e88cb7e5de6dc5811ae26a1e8a14865d9e828de0ac53ea146b89db7fe1b07
-      restantes: []
+      restantes:
+      - interrupcao_vizinhanca
 historico_transito_recente:
 - cena_id: s013-shinta-transito-galeria-fronteira-0600
   escopo_transito: ravens_bluff
@@ -270,3 +281,37 @@ historico_transito_recente:
     presenca_oriental: 0
   preparacao_fingerprint: 9f1515d7b8dea1dc8248b630e6278752dc6fcf7925aeb3fb180f4d211be7faec
   carta_id: passagem_rua
+- cena_id: s015-shinta-rumo-galeria-escribas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 0
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 1c23f2fafe8cc0cf42ff33798e5ff9badbd4f56724c4056ca596aaf108d4fc91
+  carta_id: passagem_rua
+- cena_id: s015-shinta-chegada-galeria-escribas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 4b61b2db31b18b13195a2f3496513a91c656260d6db6157ddb9ceb4c6357ed10
+- cena_id: s015-transferencia-shinta-posto-night-watch
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 621d3e900aeb998d62cf72eb558edb399aa141c4f4a5f52b528257b83ad389db

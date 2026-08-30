@@ -2,7 +2,44 @@ schema_estado_incidentes_mundo: 1
 natureza: controle_reservado
 cidade: ravens_bluff
 global:
-  ocorrencia: {ciclo: 0, restantes: []}
-  cartas: {ciclo: 0, assinatura_pool: null, restantes: []}
-locais: {}
-historico_recente: []
+  ocorrencia:
+    ciclo: 1
+    restantes:
+    - g12
+    - g05
+    - g08
+    - g03
+    - g09
+    - g10
+    - g01
+    - g04
+    - g02
+    - g07
+    - g06
+  cartas:
+    ciclo: 0
+    assinatura_pool: null
+    restantes: []
+locais:
+  galeria_dos_escribas:
+    ocorrencia:
+      ciclo: 1
+      restantes:
+      - l04
+      - l02
+      - l07
+      - l06
+      - l01
+      - l08
+      - l05
+    cartas:
+      ciclo: 0
+      assinatura_pool: null
+      restantes: []
+historico_recente:
+- cena_id: s015-shinta-entra-galeria-18-eleasis
+  local_id: galeria_dos_escribas
+  resultado: rotina
+  origem: null
+  ficha_global: g11
+  ficha_local: l03
