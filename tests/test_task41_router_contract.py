@@ -10,11 +10,11 @@ class Task41HotRouterContractTest(unittest.TestCase):
     def test_agents_exige_oferta_real_antes_de_materializar(self):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("docs/task41-emergent-sidequest-authoring-registry-v2.md", text)
-        self.assertIn("Task41 preparar → narrar a oferta → `cronica concluir` → Task41 materializar", text)
-        self.assertIn("Se a oferta não acontecer na ficção, não materializar", text)
-        self.assertIn("nasce `oferecida` no lifecycle existente", text)
-        self.assertIn("`npcs_novos` continuam não presentes", text)
-        self.assertIn("recompensas/stakes continuam apenas declarados", text)
+        self.assertIn("sidequests_emergentes.py preparar", text)
+        self.assertIn("narrar oferta → `cronica concluir` → materializar", text)
+        self.assertIn("sem oferta, não materializar", text)
+        self.assertIn("Nasce `oferecida` em `oportunidades.py`", text)
+        self.assertIn("rewards/stakes e cânone ficam só declarados", text)
 
     def test_documentacao_engine_e_orcamento_existem(self):
         self.assertTrue((ROOT / "docs/task41-emergent-sidequest-authoring-registry-v2.md").is_file())
@@ -27,6 +27,8 @@ class Task41HotRouterContractTest(unittest.TestCase):
         task41 = text.index("**Task 41:**")
         self.assertLess(task40, task41)
         self.assertIn("conversa comum/incidental = nenhuma chamada", text[task40:task41])
+        self.assertIn("âncora causal concreta", text[task40:task41])
+        self.assertIn("só autoriza pensar, nunca criar/oferecer quest", text[task40:task41])
 
 
 if __name__ == "__main__":
