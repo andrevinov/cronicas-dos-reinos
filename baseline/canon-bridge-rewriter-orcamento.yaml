@@ -1,0 +1,28 @@
+schema_orcamento_canon_bridge: 1
+natureza: contrato_de_regressao
+limites:
+  ledger_bytes_max: 12288
+  reservas_ativas_max: 2
+  intencoes_alvo_por_quest: 1
+  gap_ponte_convergencia_horas_max: 48
+  evidencias_por_criterio: 1
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+  edicoes_task36: 0
+  edicoes_task39: 0
+invariantes:
+  recusa_nao_reserva: true
+  lateral_nao_reserva: true
+  ponte_nao_move_ren: true
+  convergencia_nao_forca_presenca: true
+  conflito_mesma_intencao_falha_fechado: true
+  adiamento_respeita_elasticidade_task39: true
+  prazo_perdido_libera_fallback: true
+  satisfacao_exige_todos_criterios_com_evidencia_literal: true
+  planejamento_reservado_nao_serve_de_prova: true
+  realizacao_padrao_so_suprime_com_intencao_satisfeita: true
+  passado_congelado_imutavel: true
+  scheduler_unico_reutilizado: true
+  task36_permanece_inalterada: true
+  task39_permanece_inalterada: true

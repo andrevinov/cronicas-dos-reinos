@@ -4,7 +4,7 @@
 
 O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8.
 
-`runtime/contexto.yaml`/`runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
+`runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências sobrepõem checkpoint. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -17,19 +17,13 @@ O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes 
 7. Sessão concluída é histórico; correção relevante é explícita; efeito persistente continua rastreável.
 8. Preparação serve ao jogo e nunca o substitui.
 
-Detalhes: `docs/agente/fundamentos.md`.
-
 ## 3. Hierarquia de autoridade
 
 Em conflito: `AGENTS.md` → `campanha.yaml` → ficha/estado → pendências → sessões concluídas → `regras/decisoes.md` → regras da casa → resumos → fontes oficiais → possibilidades futuras.
 
-Runtime/handoffs/índices/consultas são projeções; pendências prevalecem até consolidação.
-
 ## 4. Economia de contexto — obrigatória
 
-**Nunca leia por precaução; leia para uma lacuna concreta.** **Economia de contexto não é economia de prosa.** Economize leituras/tool calls, não a experiência literária.
-
-**Se for suficiente, pare.** Prefira portas públicas; não abra fontes “só para conferir”.
+**Nunca leia por precaução.** **Economia de contexto não é economia de prosa.** **Se for suficiente, pare.** Leia só para lacuna concreta; prefira portas públicas.
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
@@ -43,8 +37,6 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 
 ## 5. Roteamento por tarefa
 
-Leia só o documento necessário:
-
 - autoridade/segredo/agência → `docs/agente/fundamentos.md`;
 - ON/OFF/RECALL → `docs/agente/protocolo-de-entrada.md`;
 - L0–L5/acesso → `docs/agente/escada-de-acesso.md`, `docs/agente/acesso-e-operacoes.md`;
@@ -52,7 +44,7 @@ Leia só o documento necessário:
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`, `docs/task34-persistent-world-conditions.md`;
-- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`;
+- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -86,7 +78,7 @@ Encontros simultâneos: resolver NPCs antes de mutar, colapsar aliases/ordenar p
 
 **Reputação:** ≠ fama/opinião; não testar por rotina. Fato público atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`. Nunca fundir Ren/Shinta/Kage automaticamente.
 
-**Condição multi-dia:** cena espacial projeta automaticamente. Só após fato canônico que estabeleça/encerre clima, escassez, greve, festival, toque de recolher ou problema portuário, use `condicoes_mundo.py registrar|encerrar` com fonte+evidência literal; não rodar por rotina.
+**Condição multi-dia:** cena espacial projeta automaticamente. Só após fato canônico de início/fim de clima, escassez, greve, festival, toque de recolher ou problema portuário, use `condicoes_mundo.py registrar|encerrar` com fonte+evidência literal.
 
 **Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar por período prolongado), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Aceita Harptos, `AAAA-MM-DD` ou `DD/MM/AAAA`. Se `interromper`, narrar até a fronteira e checkpointar; continuação volta por `cronica preparar`. Não chamar em turno curto.
 
@@ -112,6 +104,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 32:** quests autorais pré-escritas continuam disponíveis por NPC explícito; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona.
 - **Task 40:** conversa comum/incidental = nenhuma chamada; com **âncora causal concreta**, `oportunidade_sidequest.py planejar`; saída read-only: só autoriza pensar, nunca criar/oferecer quest.
 - **Task 41:** `sidequests_emergentes.py preparar` → narrar oferta → `cronica concluir` → materializar; sem oferta, não materializar. Nasce `oferecida` em `oportunidades.py`; rewards/stakes e cânone ficam só declarados.
+- **Task 42:** quest emergente não lateral usa `canon_bridge_runtime.py`; aceitar só reserva causal e nunca move Ren. Convergência/transformação só suprimem realização padrão com evidência; `reconciliar` libera fallback. Integração automática fica para Task 46.
 - Pedido Task32 já narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
@@ -134,9 +127,9 @@ Dúvida de regra: pare quando resolvida; prefira `contexto.py regra`. Defina CD/
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, referências, histórico e formatos canônicos. Não apagar fato nem mudar visibilidade sem justificativa. Regenerar runtime/memória só se retomada mudou.
+Preservar UTF-8, histórico e formatos; não apagar fatos nem mudar visibilidade sem justificativa.
 
-Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Manutenção/CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
 
 ## 10. Cobertura do manual anterior
 
