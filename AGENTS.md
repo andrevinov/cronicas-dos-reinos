@@ -52,7 +52,7 @@ Leia só o documento especializado necessário:
 - retomada/lifecycle `cronica` → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`, `docs/task34-persistent-world-conditions.md`;
-- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`;
+- local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
@@ -109,8 +109,9 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - Cena reativa segue `cronica preparar`/`cronica concluir`.
 - `interacoes_mundo.py local <id> --acao entrar|explorar`: item existir ≠ Ren encontrar.
 - **Task 31:** encontro não sorteia side quest; perfis procedurais inativos.
-- **Task 32:** só NPC explícito fornece refs; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona. Pedido narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle.
-- `endpoints.py sidequest <id>` preserva efeitos/pós-cânone após fato-base. Checkpoint não sorteia side quest nem loot.
+- **Task 32:** quests autorais pré-escritas continuam disponíveis por NPC explícito; disponibilidade ≠ oferta ≠ aceite; presença incidental não aciona.
+- **Task 40:** conversa comum/incidental = nenhuma chamada. Só após surgir **âncora causal concreta** (pedido, problema, pista, mensagem, consequência etc.) o narrador pode usar `oportunidade_sidequest.py planejar`; a resposta é read-only e só autoriza pensar, nunca criar/oferecer quest.
+- Pedido Task32 já narrado → após `cronica concluir`, `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 
