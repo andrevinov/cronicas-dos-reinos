@@ -54,7 +54,7 @@ Leia só o documento especializado necessário:
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, `docs/task27-relationship-aware-dialogue.md`, `docs/task28-identity-suspicion-recognition.md`, `docs/task29-public-reputation-ren.md`, `docs/task30-npc-social-initiative.md`, `docs/task34-persistent-world-conditions.md`;
 - local/recompensa/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task31-retire-procedural-sidequest-gate.md`, `docs/task32-canonical-secret-quest-engine.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`;
 - regras/rolagens/mecânica diegética → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
-- densidade literária → `narracao/guia-de-narrativa.md`;
+- densidade literária → `docs/agente/densidade-narrativa.md`;
 - ficha/recursos/tempo → `docs/agente/personagem-e-tempo.md`;
 - pesquisa/Git/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
 
