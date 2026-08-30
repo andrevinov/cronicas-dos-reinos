@@ -56,12 +56,23 @@ class UrbanTransitDeckTest(unittest.TestCase):
         shutil.copy2(ROOT / pressao.STATE, self.repo / pressao.STATE)
 
         # Estes são testes do baralho de trânsito a partir da pressão basal, não
-        # snapshots do estágio corrente da campanha.
+        # snapshots do estágio corrente da campanha. Isolamos tanto pressão quanto
+        # o cursor/baralho de trânsito já consumido pela sessão viva.
         state = self._pressure_state()
         for front in state["frentes"].values():
             front["nivel"] = 0
             front["historico_recente"] = []
         self._write_pressure(state)
+
+        micro_state = yaml.safe_load((self.repo / micro.STATE).read_text(encoding="utf-8"))
+        micro_state[transit.STATE_KEY] = {
+            transit.TRANSIT_SCOPE: transit._empty_scope_state()
+        }
+        micro_state[transit.HISTORY_KEY] = []
+        (self.repo / micro.STATE).write_text(
+            yaml.safe_dump(micro_state, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
 
     def tearDown(self):
         self.temp.cleanup()
