@@ -1,0 +1,28 @@
+schema_orcamento_integridade_adversarial: 1
+natureza: contrato_de_regressao
+limites:
+  contrato_por_quest_bytes_max: 24576
+  preparacao_saida_bytes_max: 8192
+  objetivos_antagonistas_max: 8
+  capacidades_max: 16
+  conhecimentos_max: 16
+  escaladas_max: 12
+  alvos_em_risco_max: 10
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  antagonista_persegue_objetivo_sem_preservacao_por_conveniencia: true
+  consequencia_nao_e_amaciada_por_conforto_do_jogador: true
+  gravidade_nao_substitui_competencia: true
+  capacidade_de_agente_precisa_existir_no_fragmento_canonico: true
+  conhecimento_de_agente_precisa_existir_no_fragmento_canonico: true
+  estado_sem_intervencao_e_congelado_antes_do_aceite: true
+  escaladas_e_tetos_sao_congelados_antes_do_aceite: true
+  escalada_obrigatoria_demonstrada_so_cede_a_bloqueio_causal: true
+  sidequest_lateral_preserva_guardrail_do_nucleo: true
+  sidequest_canonica_exige_reserva_task42_ativa: true
+  evento_canonico_acao_de_ren_e_combate_podem_expor_nucleo_sem_plot_armor: true
+  todo_efeito_grave_exige_prova_causal_literal: true
+  task45_continua_autoridade_de_execucao_terminal: true
+  task46_continua_autoridade_de_integracao_hot_path: true
