@@ -1,0 +1,44 @@
+schema_orcamento_emergent_sidequest_authoring_v2: 1
+natureza: contrato_de_regressao
+limites:
+  fragmento_bytes_max: 20480
+  preparacao_saida_bytes_max: 8192
+  fases_max: 6
+  locais_max: 8
+  npcs_existentes_max: 8
+  npcs_novos_max: 6
+  antagonistas_max: 6
+  juppongatana_max: 4
+  condicoes_sucesso_max: 5
+  condicoes_falha_max: 5
+  recompensas_max: 6
+  segredos_max: 6
+  bifurcacoes_max: 6
+  duracao_max_horas: 720
+  escritas_preparar: 0
+  escritas_sem_oferta: 0
+  escritas_materializar_max: 2
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+  transcricoes_hot: 0
+invariantes:
+  pacote_task40_obrigatorio: true
+  origem_causal_deve_corresponder_ao_pacote: true
+  agencia_de_ren_proibida_no_plano: true
+  antagonistas_obrigatorios: true
+  recompensas_obrigatorias: true
+  stakes_obrigatorios: true
+  oferta_deve_permitir_recusa: true
+  preparar_e_read_only: true
+  sem_oferta_narrada_nao_materializa: true
+  materializacao_revalida_preparacao: true
+  retry_materializacao_e_idempotente: true
+  lifecycle_existente_e_autoridade_de_estado: true
+  listar_nao_abre_fragmentos_completos: true
+  npc_novo_nao_ganha_presenca_automaticamente: true
+  recompensa_e_declarada_nao_concedida: true
+  stake_e_declarado_nao_executado: true
+  relacao_canone_e_candidatura_sem_rewrite: true
+  task33_nao_e_varrida: true
+  fragmento_narrativo_task36_nao_e_aberto: true
