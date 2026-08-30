@@ -104,7 +104,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 41:** `sidequests_emergentes.py preparar` → narrar oferta → `cronica concluir` → materializar; sem oferta, não materializar. Nasce `oferecida` em `oportunidades.py`; rewards/stakes e cânone ficam só declarados.
 - **Task 42:** quest emergente não lateral usa `canon_bridge_runtime.py`; aceitar só reserva causal e nunca move Ren. Convergência/transformação só suprimem realização padrão com evidência; `reconciliar` libera fallback. Integração automática fica para Task 46.
 - **Task 43:** após materializar, registrar `contrato_recompensa` com `recompensas_sidequest.py` antes de resposta/lifecycle. Descoberta ≠ obtenção; sucesso/perda só materializam pelo writer transacional; perda exige contrato + evidência causal. Integração automática fica para Task 46.
-- Pedido Task32 legado já narrado → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; Ren responde pelo lifecycle. Checkpoint não sorteia side quest nem loot.
+- Pedido Task32 legado já narrado → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos pós-cânone. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
 
