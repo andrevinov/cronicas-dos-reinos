@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: sequestro_de_kethra
+intencao_canonica:
+  id: icp1-sequestro_de_kethra
+  funcao: Fazer a guerra alcançar de modo causal o círculo pessoal de Ren e mostrar que vínculos descobertos
+    podem virar alavanca adversária.
+  criterios_satisfacao:
+  - A rede executa operação séria contra Kethra ou infraestrutura realmente ligada a ela usando somente
+    conhecimento causalmente adquirido.
+  - A operação deixa consequência, mensagem ou rastro que conecte a pressão pessoal à logística maior
+    mesmo se a captura pretendida fracassar.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 72
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

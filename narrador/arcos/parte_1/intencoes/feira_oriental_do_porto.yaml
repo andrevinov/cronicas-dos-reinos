@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: feira_oriental_do_porto
+intencao_canonica:
+  id: icp1-feira_oriental_do_porto
+  funcao: Mostrar a cidade sendo alterada pela escala da nova presença oriental e converter essa escala
+    em oportunidades e custos urbanos concretos.
+  criterios_satisfacao:
+  - A atividade comercial associada à nova presença muda visivelmente rotina, densidade e interesses do
+    porto.
+  - Pelo menos uma consequência séria ou oportunidade de ajuda nasce dessa escala, enquanto opiniões públicas
+    conflitantes permanecem plausíveis.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 48
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

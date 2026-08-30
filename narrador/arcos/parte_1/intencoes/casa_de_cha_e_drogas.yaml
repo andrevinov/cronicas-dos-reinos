@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: casa_de_cha_e_drogas
+intencao_canonica:
+  id: icp1-casa_de_cha_e_drogas
+  funcao: Converter suspeitas de contrabando em evidência de trânsito subterrâneo de escala maior que
+    esconderijos isolados.
+  criterios_satisfacao:
+  - Uma cadeia de contrabando revela carga ou pessoas entrando ou saindo da logística sem depender apenas
+    do cais.
+  - A investigação produz pista física para infraestrutura maior em Sarbreen e oposição ativa da rede,
+    sem entregar a Ponte pronta.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 96
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

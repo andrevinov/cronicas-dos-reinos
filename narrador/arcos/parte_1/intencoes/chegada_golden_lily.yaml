@@ -1,0 +1,30 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: chegada_golden_lily
+intencao_canonica:
+  id: icp1-chegada_golden_lily
+  funcao: Transformar o Golden Lily em presença física, econômica e estratégica incontornável em Ravens
+    Bluff.
+  criterios_satisfacao:
+  - O Golden Lily alcança uma posição marítima operacional junto a Ravens Bluff e passa a exigir reação
+    de autoridades e interesses locais.
+  - Comércio legítimo e função clandestina coexistem de modo canônico, sem fazer toda carga ou tripulante
+    ilícito nem notificar Ren automaticamente.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 24
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true

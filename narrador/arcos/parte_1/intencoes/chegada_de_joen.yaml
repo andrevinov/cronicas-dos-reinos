@@ -1,0 +1,29 @@
+schema_intencao_canonica_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+evento_id: chegada_de_joen
+intencao_canonica:
+  id: icp1-chegada_de_joen
+  funcao: Estabelecer Jōen como presença humana e marcial real antes do clímax, evitando ajuda futura
+    por deus ex machina.
+  criterios_satisfacao:
+  - Jōen alcança Ravens Bluff por uma cadeia causal de viagem e investigação própria.
+  - Sua presença cria recurso real de conselho, história ou capacidade marcial sem assumir decisões de
+    Ren nem conceder progressão automática.
+realizacao_padrao:
+  fonte: evento_canonico_task36
+  nucleo: nucleo_obrigatorio
+  forma: forma_preferencial
+contrato_rewrite:
+  preserva_intencao: true
+  sem_rewrite: realizacao_padrao
+  modos_permitidos:
+  - satisfazer
+  - transformar
+  - adiar
+  - reancorar
+  atraso_maximo_horas: 96
+  integracao_sidequest: true
+  satisfacao_antecipada: true
+  reancoragem_local: true
+  troca_de_atores: true
