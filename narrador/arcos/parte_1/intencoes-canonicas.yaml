@@ -1,0 +1,19 @@
+schema_intencoes_canonicas_parte_1: 1
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+fonte_eventos: narrador/arcos/parte_1/eventos-canonicos.yaml
+fronteira_de_instalacao:
+  data: 19 Eleasis, 1372 DR
+  hora: '17:35'
+passado_congelado:
+  emboscada_do_restaurante: ad5ac9e4ca6c2c6e10a3dda796929c20467362a23b0406f4522891086af50ab3
+  shinta_incriminado: e390869fc765831275bf308cea665538f74f1da689ec2a5167dd12a955ed2193
+raiz_intencoes: narrador/arcos/parte_1/intencoes
+modos_rewrite_permitidos:
+- satisfazer
+- transformar
+- adiar
+- reancorar
+regra_sem_rewrite: realizacao_padrao
+cancelamento_silencioso: proibido
+atraso_maximo_global_horas: 168

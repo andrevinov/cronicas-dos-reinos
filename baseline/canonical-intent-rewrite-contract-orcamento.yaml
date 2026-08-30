@@ -1,0 +1,31 @@
+schema_orcamento_canonical_intent_rewrite_contract: 1
+task: 39
+nome: Canonical Intent & Rewrite Contract
+limites:
+  eventos_total: 21
+  passado_congelado: 2
+  futuros_com_intencao: 19
+  indice_intencoes_bytes_max: 2048
+  fragmento_intencao_bytes_max: 2048
+  leituras_task39_turno_normal: 0
+  indices_consulta_intencao: 2
+  fragmentos_intencao_consulta_max: 1
+  fragmentos_evento_task36_consulta_intencao: 0
+  atraso_maximo_global_horas: 168
+  schedulers_novos: 0
+  estados_novos: 0
+  rng_novo: 0
+  scans_globais_hot_path: 0
+invariantes:
+  task36_permanece_realizacao_padrao: true
+  passado_materializado_congelado_por_digest: true
+  intencao_nao_pode_ser_cancelada_silenciosamente: true
+  rewrite_ainda_nao_possui_writer: true
+  sidequest_ainda_nao_reescreve_canon: true
+  turno_normal_nao_le_intencoes_task39: true
+  consulta_dirigida_nao_abre_fragmento_narrativo_task36: true
+  nenhum_scheduler_novo: true
+  nenhum_estado_paralelo: true
+  nenhum_rng_novo: true
+  nenhum_scan_global_no_hot_path: true
+  documentacao_publica_spoiler_light: true
