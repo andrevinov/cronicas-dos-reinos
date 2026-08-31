@@ -21,7 +21,7 @@ sidequest_emergente
     └── progressao
 ```
 
-A saída lista campos de topo, enums permitidos e o pequeno contexto necessário (intenções canônicas candidatas, Juppongatana disponível e envelope de recompensa). O agente não precisa abrir documentação, testes ou implementação para descobrir as quatro APIs internas.
+O contrato lista campos de topo e enums permitidos. Não duplica intenções, atores ou envelope: o pacote Task40 já está ao lado na mesma resposta e continua sendo o contexto autoral. O agente não precisa abrir documentação, testes ou implementação para descobrir as quatro APIs internas.
 
 ## Compilação sem nova autoridade
 
