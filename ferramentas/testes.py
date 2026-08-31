@@ -44,6 +44,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_tags_contextuais_tipadas.py",
     "test_transacoes.py",
     "test_test_execution_profiles.py",
+    "test_test_policy_contract.py",
 )
 
 # Os domínios são deliberadamente sobrepostos: uma regressão pode pertencer a

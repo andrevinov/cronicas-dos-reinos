@@ -44,7 +44,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34;
 - local/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`, `docs/task45-sidequest-progression-deadlines-consequences.md`, `docs/task46-emergent-sidequests-integration-budget-regression.md`, `docs/task47-explicit-opportunity-decision-gate.md`;
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
-- densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
+- densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
 
 Estilo: `narracao/guia-de-narrativa.md`; sessões: `narracao/protocolo-de-sessao.md`; limites: `narracao/limites.md`.
 
@@ -114,7 +114,16 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, histórico, formatos e visibilidade. CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `recompensas_sidequest.py check`, `integridade_adversarial.py check`, `progressao_sidequests.py check`, `sidequests_integracao_check.py`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+Preservar UTF-8, histórico e visibilidade. Testes: `docs/agente/politica-de-testes.md`.
+
+- estado vivo → invariantes/relações;
+- absoluto mutável → **fixtures/snapshots/cenários temporários/histórico imutável**;
+- **snapshot histórico** → natureza+motivo;
+- permanente → **nome de domínio**, não `test_taskNN_*`;
+- remoção → **propriedade protegida** + destino;
+- `ROOT`: preferir `TemporaryDirectory` se isolável.
+
+`auditar-testes.py`: heurística read-only; suspeito requer revisão, não veredito.
 
 ## 10. Cobertura do manual anterior
 
