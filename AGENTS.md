@@ -114,7 +114,7 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8/histórico/formatos/visibilidade. Testes: `docs/agente/politica-de-testes.md`; perfis: `docs/agente/perfis-de-testes.md`.
+Preservar UTF-8, histórico e visibilidade. Testes: `docs/agente/politica-de-testes.md`.
 
 - estado vivo → invariantes/relações;
 - absoluto mutável → **fixtures/snapshots/cenários temporários/histórico imutável**;
