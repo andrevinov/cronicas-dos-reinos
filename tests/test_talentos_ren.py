@@ -113,14 +113,15 @@ class RenFeatRollerTest(unittest.TestCase):
             self.calls += 1
             return next(self.values)
 
-    def test_core_espelha_atributos_pericias_salvaguarda_e_passivos(self):
-        self.assertEqual(core.REN_ABILITIES["inteligencia"], 2)
-        self.assertEqual(core.REN_ABILITIES["carisma"], 0)
-        self.assertEqual(core.REN_SKILLS["investigacao"], 5)
-        self.assertEqual(core.REN_SKILLS["percepcao"], 6)
-        self.assertEqual(core.REN_SAVES["inteligencia"], 2)
-        self.assertEqual(core.REN_PASSIVES["percepcao"], 21)
-        self.assertEqual(core.REN_PASSIVES["investigacao"], 20)
+    def test_core_consome_adaptador_da_ficha_canonica(self):
+        mechanics = core.load_ren_mechanics()
+        self.assertEqual(mechanics.abilities["inteligencia"], 2)
+        self.assertEqual(mechanics.abilities["carisma"], 0)
+        self.assertEqual(mechanics.skills["investigacao"], 5)
+        self.assertEqual(mechanics.skills["percepcao"], 6)
+        self.assertEqual(mechanics.saves["inteligencia"], 2)
+        self.assertEqual(mechanics.passives["percepcao"], 21)
+        self.assertEqual(mechanics.passives["investigacao"], 20)
 
     def test_actor_so_entra_quando_outra_identidade_e_declarada(self):
         # Sem a declaração contextual, representa uma mentira feita assumidamente

@@ -53,6 +53,12 @@ Para dúvida mecânica conhecida, `contexto regra <termo>` consulta primeiro ess
 
 Enquanto a cobertura do catálogo não for completa, termo não catalogado preserva o fallback textual anterior em `regras/*.md`, explicitamente marcado como `catalogada: false`. Esse fallback não ganha versão, executor ou autoridade por inferência. D&D 5.5e continua proibido como regra operacional enquanto `ruleset.atual` for `dnd_5e_2014`.
 
+## Ficha mecânica única de Ren
+
+`personagens/jogador/ficha.yaml` é a única fonte persistida dos números mecânicos de Ren. `ferramentas/ficha_ren.py` apenas valida e adapta essa ficha para os consumidores; não mantém cópia numérica própria. O rolador não deve declarar tabelas paralelas de atributos, perícias, passivos, salvaguardas, ataques, CA, iniciativa ou recursos de Ren.
+
+Qualquer comando `ren ...` carrega e valida a ficha antes de chamar o RNG. Ficha ausente ou mecanicamente inválida deve falhar fechado antes da rolagem, em vez de recorrer a valores Python antigos ou defaults silenciosos.
+
 ## Filosofia de fidelidade: aproximadamente 70%
 
 A meta de 70% representa filosofia, não métrica matemática. Aplicar regras quando elas sustentarem risco, tensão, estratégia, diferenciação de personagens, uso significativo de recursos, imparcialidade, consequência ou surpresa legítima.

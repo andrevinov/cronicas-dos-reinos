@@ -160,7 +160,7 @@ class ApproachQualityRollerTest(unittest.TestCase):
         self.assertEqual(result["bonus"], 1)
         index = adjusted.index("--bonus-extra")
         self.assertEqual(adjusted[index + 1], "2")
-        self.assertEqual(roller.REN_SKILLS["furtividade"], 7)
+        self.assertEqual(roller.load_ren_mechanics().skills["furtividade"], 7)
 
     def test_abordagem_nao_e_aceita_em_ataque_save_iniciativa_dano_ou_npc(self):
         commands = [
