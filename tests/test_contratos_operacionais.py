@@ -135,7 +135,11 @@ class OperationalTicketContractTest(unittest.TestCase):
 
     def test_preparacao_explica_ticket_sem_criar_novo_campo(self):
         with mock.patch.object(cronica._pending_gate, "prepare_gate", return_value=None):
-            result = cronica.prepare(ROOT, scene_id="s025-ticket-hint")
+            result = cronica.prepare(
+                ROOT,
+                scene_id="s025-ticket-hint",
+                sidequest_signal=None,
+            )
         discipline = result["contrato_conclusao"]["disciplina"]
         self.assertIn("campo `ticket:` completo", discipline)
         self.assertIn("nunca `ticket_id`", discipline)
@@ -150,7 +154,15 @@ class OperationalTicketContractTest(unittest.TestCase):
 class OperationalParserCompatibilityTest(unittest.TestCase):
     def _prepare(self, argv: list[str]):
         parser = cronica.build_parser()
-        return parser.parse_args(["preparar", "--cena-id", "s025-tags", *argv])
+        return parser.parse_args(
+            [
+                "preparar",
+                "--cena-id",
+                "s025-tags",
+                "--sem-oportunidade-sidequest",
+                *argv,
+            ]
+        )
 
     def test_tag_e_alias_da_flag_canonica(self):
         canonical = self._prepare(["--contexto-tag", "assunto:masao"])
