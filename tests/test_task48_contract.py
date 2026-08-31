@@ -41,13 +41,14 @@ class Task48ContractTest(unittest.TestCase):
         )
         self.assertTrue(all(contract["invariantes"].values()))
 
-    def test_router_documenta_task48_sem_criar_nova_porta(self):
+    def test_router_documenta_task48_sem_inchar_hot_context(self):
         agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        self.assertIn("docs/task48-stable-task40-snapshot-effective-clock.md", agents)
+        self.assertTrue((ROOT / "docs/task48-stable-task40-snapshot-effective-clock.md").is_file())
         self.assertIn("relógio efetivo + digest semântico", agents)
         self.assertIn("cronica preparar", agents)
         self.assertIn("cronica concluir", agents)
         self.assertIn("2 chamadas de orquestração por turno", agents)
+        self.assertLessEqual(len(agents.encode("utf-8")), 12 * 1024)
 
     def test_check_task46_agora_congela_invariantes_task48(self):
         result = integration.check(ROOT)
