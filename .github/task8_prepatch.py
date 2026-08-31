@@ -22,6 +22,10 @@ replacements = [
         'self.assertEqual(self.mechanics.speed, 55)',
         'self.assertEqual(self.sheet_raw["combate"]["deslocamento"]["total"], "55 pés")',
     ),
+    (
+        'self.assertEqual(damage.rolls, (4, 5))',
+        'self.assertEqual(damage.rolls, [4, 5])',
+    ),
 ]
 for old, new in replacements:
     if old in text:
