@@ -18,17 +18,18 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 15
-  modo: ren_com_nera_e_silva_apos_relatar_emboscada
+  modo: combate_na_oficina_da_antiga_calaria
   personagem: Ren Kagehira
   nivel: 7
-  pv: 52/52
-  ki: 5/7
+  pv: 45/52
+  ki: 1/7
   ca: 17
   dinheiro_po: 39.379999999999995
   data: 19 Eleasis, 1372 DR
-  hora: '20:00'
-  area: Temple District, Ravens Bluff
-  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
+  hora: '23:12'
+  area: Interior da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pavimento de trabalho da antiga calaria, diante do homem corpulento ferido, com as provas recuperadas
+    junto ao corpo
   nivel_ficha: 7
 consolidacoes:
 - id: s015-cena-a836d9da7b5bdc33
@@ -294,6 +295,90 @@ consolidacoes:
   arquivos_afetados:
   - estado/estado-atual.yaml
   - estado/tempo.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-7d16d39a8323aed6
+  tipo: cena
+  transacoes:
+  - s015-336a121bdf42ec0b
+  - s015-23d08c0199230401
+  - s015-ac5f51bf36b9bcb0
+  - s015-5a379524e5ebcd66
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-23d08c0199230401.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-5a379524e5ebcd66.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-c1a30bb632e3eea4
+  tipo: cena
+  transacoes:
+  - s015-dfac7caceb171e95
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-ea625f4044fc63c3
+  tipo: cena
+  transacoes:
+  - s015-5542475b666e5ce1
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-8ff59a380b8dad15
+  tipo: cena
+  transacoes:
+  - s015-3564509c99a7e0f7
+  - s015-2a2041184189b817
+  - s015-8d0c3f70275b31f9
+  - s015-721af3559946de51
+  - s015-b328e1370c3ba30e
+  - s015-f56cc419496b706d
+  - s015-b60133cb4da787ac
+  - s015-8672e799ed760cf3
+  - s015-c3ed5029f3a33e37
+  - s015-382f2d83f2bede52
+  - s015-9ba91955a29c616f
+  - s015-82098718fd464d36
+  - s015-cedae573fb3175e1
+  deltas: 40
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-2a2041184189b817.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-721af3559946de51.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-8672e799ed760cf3.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-8d0c3f70275b31f9.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-9ba91955a29c616f.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b328e1370c3ba30e.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b60133cb4da787ac.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-c3ed5029f3a33e37.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-cedae573fb3175e1.md
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f56cc419496b706d.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
   - sessoes/015/alteracoes-de-estado.yaml
   - sessoes/015/consequencias.md
   - sessoes/015/consolidacoes.jsonl

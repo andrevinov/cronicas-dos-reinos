@@ -142,7 +142,7 @@ def _plan_from_ticket(repo: Path, meta: dict[str, Any]) -> dict[str, Any]:
     signal = _map(meta.get("sinal"), "ticket.sinal")
     now_raw = _map(signal.get("agora"), "ticket.sinal.agora")
     try:
-        now = opportunity.mundo.parse_instant(str(now_raw.get("data")), str(now_raw.get("hora")))
+        opportunity.mundo.parse_instant(str(now_raw.get("data")), str(now_raw.get("hora")))
         package = opportunity.plan(
             repo,
             signaled=True,
@@ -154,13 +154,26 @@ def _plan_from_ticket(repo: Path, meta: dict[str, Any]) -> dict[str, Any]:
             local_id=signal.get("local_id"),
             danger=str(signal.get("periculosidade")),
             tier=signal.get("tier"),
-            now=now,
         )
     except (opportunity.EmergentSidequestOpportunityError, opportunity.mundo.WorldEngineError) as exc:
         raise EmergentSidequestIntegrationError(str(exc)) from exc
     if package.get("resultado") != "material_para_planejamento":
         raise EmergentSidequestIntegrationError(
             f"pacote Task40 deixou de estar disponível: {package.get('resultado')}"
+        )
+    current_now = _map(
+        _map(package.get("prazo_mundo"), "pacote.prazo_mundo").get("agora"),
+        "pacote.agora",
+    )
+    if {
+        "data": str(current_now.get("data")),
+        "hora": str(current_now.get("hora")),
+    } != {
+        "data": str(now_raw.get("data")),
+        "hora": str(now_raw.get("hora")),
+    }:
+        raise EmergentSidequestIntegrationError(
+            "tempo canônico mudou desde cronica preparar; descarte o ticket e prepare novamente"
         )
     if _digest(package) != meta.get("pacote_digest"):
         raise EmergentSidequestIntegrationError(

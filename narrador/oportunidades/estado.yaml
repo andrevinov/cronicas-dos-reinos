@@ -14,7 +14,40 @@ gate:
   sorteios: 22
 cooldown_ate: null
 pendencias_avaliacao: {}
-missoes: {}
+missoes:
+  sqe-47ea56e74d59f1c0:
+    id: sqe-47ea56e74d59f1c0
+    estado: aceita
+    origem: sidequest_emergente
+    quest_id: qse-c721ace29e628024
+    arquivo: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
+    npc_id: maerra_thandrel
+    necessidade_id: qse-c721ace29e628024
+    tipo: protecao
+    titulo: Sete Nomes Antes do Amanhecer
+    objetivo: Estabelecer a origem e a autoridade da ordem antes do amanhecer, preservando
+      o documento, a segurança das crianças e a cadeia testemunhal do mensageiro.
+    janela:
+      tipo: temporal
+      expira_em:
+        data: 20 Eleasis, 1372 DR
+        hora: 06:00
+    pode_reabrir: false
+    consequencia_sem_ren: Ao amanhecer, a ordem passa a produzir pressão administrativa
+      imediata sobre o abrigo e sua cadeia humana pode já ter sido removida.
+    oferecida_em:
+      data: 19 Eleasis, 1372 DR
+      hora: '20:00'
+    cena_oferta: s15-reavaliacao-maerra-necessidade-abrigo-v4
+    preparacao_id: sqe-prep-f782b49e6509d159712de111
+    recompensas_declaradas:
+    - contato_verificador_transferencias
+    contrato_recompensa: narrador/sidequests-emergentes/recompensas/qse-c721ace29e628024.yaml
+    progresso_sidequest: narrador/sidequests-emergentes/progresso/qse-c721ace29e628024.yaml
+    contrato_adversarial: narrador/sidequests-emergentes/stakes/qse-c721ace29e628024.yaml
+    ultima_decisao_em:
+      data: 19 Eleasis, 1372 DR
+      hora: '20:00'
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
 - silva_elkwood:deslocamento_seguro
@@ -87,6 +120,20 @@ historico_recente:
   em:
     data: 15 Eleasis, 1372 DR
     hora: '17:30'
+- tipo: sidequest_emergente_materializada_task46
+  id: sqe-47ea56e74d59f1c0
+  quest_id: qse-c721ace29e628024
+  npc_id: maerra_thandrel
+  em:
+    data: 19 Eleasis, 1372 DR
+    hora: '20:00'
+- tipo: resposta_sidequest
+  id: sqe-47ea56e74d59f1c0
+  de: oferecida
+  para: aceita
+  em:
+    data: 19 Eleasis, 1372 DR
+    hora: '20:00'
 legado_procedural:
   estatuto: somente_auditoria_nao_operacional
   gate_congelado:

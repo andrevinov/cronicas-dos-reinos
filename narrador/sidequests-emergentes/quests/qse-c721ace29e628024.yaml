@@ -1,0 +1,158 @@
+schema_sidequest_emergente: 2
+natureza: reservado
+id: qse-c721ace29e628024
+origem_engine: task41_emergent_sidequest_authoring_registry_v2
+pacote_task40_digest: ea47bb7a5ee0f46011bccec1910af353f2268300f12932015dc7188853ed9186
+spec_digest: ab9d4f485a05d911c684f238189d691981cf3516e0aaffac97fe62a26e9e0a8a
+preparacao_id: sqe-prep-f782b49e6509d159712de111
+oferta_materializada:
+  cena_id: s15-reavaliacao-maerra-necessidade-abrigo-v4
+  quest_giver_id: maerra_thandrel
+  resumo: Maerra apresentou a ordem irregular, pediu sua verificação antes do amanhecer
+    e deixou a decisão inteiramente sob controle de Ren.
+titulo: Sete Nomes Antes do Amanhecer
+tipo: protecao
+origem_causal:
+  tipo: conversa_npc
+  id: s15-reavaliacao-maerra-necessidade-abrigo-v4
+  npc_id: maerra_thandrel
+  ancora_tipo: necessidade
+  ancora: As sete crianças resgatadas dependem de abrigo provisório na Casa da Aurora
+    Menor; Ren pergunta diretamente a Maerra qual necessidade concreta ameaça a continuidade
+    dessa proteção.
+quest_giver:
+  tipo: npc_existente
+  id: maerra_thandrel
+  nome: Irmã Maerra Thandrel
+  legitimidade: Maerra dirige o abrigo provisório, recebeu pessoalmente a ordem e
+    possui autoridade para proteger as sete crianças enquanto verifica sua legitimidade.
+oferta:
+  premissa: Uma ordem administrativa sem a contramarca habitual determina a transferência
+    das sete crianças ao amanhecer.
+  pedido: Maerra pede que a origem e a autoridade da ordem sejam verificadas e que
+    a cadeia do documento e do mensageiro seja preservada.
+  recusa_permitida: true
+premissa: Uma ordem plausível, mas irregular, tenta mover sete crianças de um abrigo
+  provisório antes que sua autoridade possa ser confirmada; a ordem e seu risco existem
+  independentemente da resposta de Ren.
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+objetivo: Estabelecer a origem e a autoridade da ordem antes do amanhecer, preservando
+  o documento, a segurança das crianças e a cadeia testemunhal do mensageiro.
+locais:
+- id: casa_aurora_sete_nomes
+  tipo: proposto
+  nome: Casa da Aurora Menor
+  funcao: abrigo onde a ordem foi recebida e onde as crianças permanecem protegidas
+- id: rota_mensageiro_sete_nomes
+  tipo: proposto
+  nome: Rota do mensageiro da ordem
+  funcao: cadeia física a ser reconstruída sem presumir culpa do portador
+- id: arquivo_transferencias_caridade
+  tipo: proposto
+  nome: Arquivo de transferências de caridade
+  funcao: ponto institucional possível para confirmar a autoridade da ordem
+npcs_existentes:
+- id: maerra_thandrel
+  funcao: quest giver, guardiã das crianças e testemunha direta da entrega da ordem
+npcs_novos:
+- id: mensageiro_sete_nomes
+  nome: Mensageiro da Ordem
+  funcao: portador potencialmente inocente e testemunha da cadeia de entrega
+  estatuto: reservado_nao_presente
+- id: verificador_transferencias_sete_nomes
+  nome: Verificador de Transferências
+  funcao: fonte institucional potencial capaz de confirmar a autoridade documental
+  estatuto: reservado_nao_presente
+fases:
+- id: examinar_ordem
+  titulo: A contramarca ausente
+  situacao: A ordem está preservada com Maerra; seu formato e seus nomes parecem plausíveis,
+    mas falta uma contramarca habitual.
+  condicao_avanco: Os sinais materiais relevantes da ordem ficam registrados sem destruir
+    ou contaminar a evidência.
+  locais:
+  - casa_aurora_sete_nomes
+- id: rastrear_mensageiro
+  titulo: O portador da folha
+  situacao: O mensageiro partiu antes que Maerra percebesse a irregularidade e pode
+    conhecer apenas o ponto onde recebeu o envelope.
+  condicao_avanco: A identidade ou a rota do mensageiro é estabelecida por evidência
+    canônica, ou sua cadeia se torna comprovadamente inalcançável.
+  locais:
+  - casa_aurora_sete_nomes
+  - rota_mensageiro_sete_nomes
+- id: verificar_autoridade
+  titulo: Quem podia ordenar
+  situacao: A transferência só pode ser aceita ou recusada com segurança depois de
+    uma confirmação institucional independente.
+  condicao_avanco: Uma fonte institucional competente confirma, nega ou delimita a
+    autoridade documental da ordem antes do prazo.
+  locais:
+  - arquivo_transferencias_caridade
+antagonistas:
+- id: masao_hirasawa
+  tipo: ator_task40
+  funcao: pressão estratégica indireta por intermédio de documentação plausível e
+    agentes compartimentados
+  objetivo: Explorar os canais administrativos de Ravens Bluff para deslocar pessoas
+    vulneráveis sem expor a estrutura de comando.
+juppongatana: []
+condicoes_sucesso:
+- A autoridade ou a falsidade da ordem é estabelecida antes do prazo por evidência
+  institucional utilizável.
+- As sete crianças permanecem fora de uma transferência não verificada enquanto a
+  cadeia documental é preservada.
+condicoes_falha:
+- As crianças são transferidas por força da ordem antes que sua autoridade seja verificada.
+- A ordem e a cadeia de entrega tornam-se inutilizáveis antes de produzir uma conclusão
+  institucional.
+stakes:
+  em_risco:
+  - a segurança das sete crianças
+  - a integridade do documento
+  - a liberdade e o testemunho do mensageiro
+  consequencia_expiracao: Ao amanhecer, a ordem passa a produzir pressão administrativa
+    imediata sobre o abrigo e sua cadeia humana pode já ter sido removida.
+  perdas_possiveis: []
+recompensas:
+- id: contato_verificador_transferencias
+  tipo: contato
+  modo: sucesso
+  descricao: Um contato institucional capaz de verificar futuras ordens de transferência
+    e encaminhamentos de caridade.
+  condicao: A verificação é concluída e o profissional envolvido decide manter um
+    canal legítimo com os protetores do abrigo.
+  valor_aproximado: especial
+  autoridade_concedente: Maerra pode fazer a apresentação, e o próprio verificador
+    decide se mantém o contato.
+relacao_canone:
+  modo: candidata_ponte
+  intencoes_candidatas:
+  - halessa_admite_a_teia
+  justificativa: Uma ordem irregular confirmada por fonte institucional pode elevar
+    manipulações documentais isoladas a uma hipótese coordenada investigável sem revelar
+    autoria ou entregar a solução da rede.
+  autoridade: candidatura_somente_task42_pode_reescrever
+segredos:
+- A autoria, a oficina de origem e a cadeia de comando da ordem permanecem reservadas
+  até descoberta legítima.
+bifurcacoes:
+- id: ordem_legitima_irregular
+  se: A ordem tiver origem legítima, mas procedimento defeituoso.
+  efeito_no_mundo: A transferência é suspensa ou corrigida sem transformar erro administrativo
+    em conspiração.
+- id: mensageiro_desaparece
+  se: O mensageiro for removido antes de uma oitiva segura.
+  efeito_no_mundo: A investigação perde uma testemunha material, mas o documento e
+    a via institucional continuam disponíveis.
+guardrails_execucao:
+  agencia_de_ren: preservada
+  npcs_novos: nao_presentes_ate_canonizacao_em_cena
+  recompensas: declaradas_nao_concedidas_task43_45
+  stakes: declarados_nao_executados_task45
+  relacao_canone: candidatura_sem_rewrite_ate_task42
+  scheduler: proibido

@@ -34,45 +34,61 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: Ren manteve em mente os dois kozakuranos armados, reconhecendo que não eram os três atacantes do restaurante
-    sem concluir ligação. Como Shinta, entrou na Galeria e encontrou na mesa de devoluções um volume lacrado direcionado
-    nominalmente a ele, embora seu acesso não autorize documentos fechados. O livro de custódia aguarda assinatura;
-    Ren ainda não tocou na pena nem no volume.
+- titulo: 'Persuasão 17 contra CD 12 levou o mensageiro a revelar uma segunda voz no pátio: uma mulher falando Comum
+    local sem sotaque corrigiu ''retirada'' para ''transferência provisória'' e perguntou se os sete nomes estavam
+    certos; o homem respondeu ''como na lista''. O mensageiro viu apenas parte de uma manga cinza-azulada. Os elementos
+    são compatíveis, mas não confirmam, a Cinza-Azul/Shizune.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-41b078c23d60e071.md
-  bytes: 720
-  transacao: s015-41b078c23d60e071
-- titulo: Shinta pediu autorização a Sella antes de iniciar. Ela confirmou que os dois lotes comuns podem ser conferidos,
-    mas reconheceu que o volume lacrado não pertence à autorização dele, ordenou que não assine nem toque e suspendeu
-    o procedimento enquanto procura Tomas e verifica a origem da linha de custódia.
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-721af3559946de51.md
+  bytes: 809
+  transacao: s015-721af3559946de51
+- titulo: 'O mensageiro identificou a porta no fundo do pátio atrás do mercador de cal: madeira grossa caiada, portinhola
+    de ferro à altura do peito, calha preta à direita, lasca triangular na soleira e nicho de pagamento atrás de
+    um tijolo claro. Ren o liberou sob ameaça e desapareceu por Passo da Sombra quando ele olhou para trás. O mensageiro
+    partiu sem ver o rosto nem a direção de Ren.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f4ccdd782e3e39b2.md
-  bytes: 636
-  transacao: s015-f4ccdd782e3e39b2
-- titulo: Shinta manteve trabalho diligente e bem-sucedido, ganhando crédito profissional gradual na Galeria. Sella
-    retornou com Tomas e uma segunda via interna que falsamente registra Shinta recebendo e autorizando o volume
-    lacrado durante o período em que ele trabalhava sob observação. O livro local permanece vazio e o volume continua
-    na mesa. Tomas ainda não declarou culpa e pediu que Shinta identifique a assinatura e diga quem já viu sua assinatura
-    profissional.
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b328e1370c3ba30e.md
+  bytes: 864
+  transacao: s015-b328e1370c3ba30e
+- titulo: 'Ren se aproximou da porta caiada, confirmou suas características e descobriu duas rotas alternativas:
+    a veneziana pelo telhado e a abertura de carga sob o beiral. Não conseguiu determinar se há ocupantes ou vigilância.'
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-2163bc93a62b5d56.md
-  bytes: 814
-  transacao: s015-2163bc93a62b5d56
-- titulo: Shinta forneceu voluntariamente uma amostra de assinatura sob declaração limitada e testemunho de Sella
-    e Tomas. A falsa assinatura se aproxima especialmente de um exemplar antigo arquivado na Galeria, sugerindo
-    acesso a registro interno ou cópia sem confirmar autoria. Tomas revelou que um representante da Night Watch
-    perguntou por Shinta e pelo volume antes de receber recado da Galeria; não há ordem de detenção. Shinta pode
-    falar no escritório ou pedir conversa aberta com Sella presente.
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f56cc419496b706d.md
+  bytes: 868
+  transacao: s015-f56cc419496b706d
+- titulo: Ren usou Passo das Sombras para alcançar silenciosamente a veneziana. Descobriu que pode abri-la e restaurá-la
+    discretamente e visualizou uma área desocupada e em penumbra na passarela interna, válida para outro Passo das
+    Sombras, mas não determinou se há alguém nos pontos cegos.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b08fe70bdfbc66c5.md
-  bytes: 940
-  transacao: s015-b08fe70bdfbc66c5
-- titulo: Shinta acompanhou Tomas ao escritório, deixando Sella com o volume. Uma representante legítima da Night
-    Watch informou que Shinta não está detido, mas uma denúncia anterior ao contato da Galeria afirma que alguém
-    usando seu nome tentou pagar um carroceiro para desviar o volume antes da abertura. A denúncia contém descrição
-    ampla compatível e cópia da ordem irregular. Ela pediu que Shinta explique onde esteve e quem pode confirmar
-    seu percurso antes de entrar na Galeria.
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b60133cb4da787ac.md
+  bytes: 702
+  transacao: s015-b60133cb4da787ac
+- titulo: Ren usou Passo das Sombras para entrar silenciosamente no sótão da antiga calaria. Detectou um fio de
+    alarme na escada e sinais de pelo menos duas pessoas no andar inferior, sem ser percebido.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-661c0ad6a27a48b4.md
-  bytes: 870
-  transacao: s015-661c0ad6a27a48b4
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-8672e799ed760cf3.md
+  bytes: 594
+  transacao: s015-8672e799ed760cf3
+- titulo: 'Ren se aproximou sem ser percebido e observou os dois ocupantes: um falsificador local e uma mulher de
+    casaco cinza-azulado que também vigia os acessos. Não há guarda separado aparente. Ren ouviu confirmação de
+    que a oficina produziu a ordem, pagou o mensageiro e espera que uma carroça use o documento ao amanhecer para
+    levar os sete antes da resposta institucional.'
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-c3ed5029f3a33e37.md
+  bytes: 1227
+  transacao: s015-c3ed5029f3a33e37
+- titulo: Ren usou Passo das Sombras para escapar do agarrão e atacou a mulher duas vezes, causando 17 de dano não
+    letal. Ela não é reconhecida como Kajiwara Shizune e permanece consciente com 3/20 PV. Ao tentar correr para
+    a lamparina e a matriz, provoca um ataque de oportunidade; a reação de Ren está disponível.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-9ba91955a29c616f.md
+  bytes: 675
+  transacao: s015-9ba91955a29c616f
+- titulo: Ren gastou 1 Ki em Passo do Vento, salvou a matriz e um conjunto documental útil e recuou sem provocar
+    ataque. O homem acertou Ren com a besta por 7 de dano, mas Passos sem Pegadas foi mantido. No turno seguinte,
+    Ren acertou um de dois golpes; o homem está com 6/24 PV. Ren tem 45/52 PV, 1/7 Ki e ainda pode usar a ação bônus
+    para um golpe desarmado gratuito.
+  arquivos:
+  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-cedae573fb3175e1.md
+  bytes: 816
+  transacao: s015-cedae573fb3175e1

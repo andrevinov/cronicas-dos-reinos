@@ -1,0 +1,63 @@
+schema_integridade_adversarial: 1
+natureza: reservado
+quest_id: qse-c721ace29e628024
+mission_id: sqe-47ea56e74d59f1c0
+preparacao_id: adv-prep-5b442caddb8671bd81e51691
+contrato_digest: f21b78155a822cd95175fe783da338cce4bdb2276693072d619c6e67543b711e
+contrato:
+  objetivos_antagonistas:
+  - antagonista_id: masao_hirasawa
+    objetivo: Explorar os canais administrativos de Ravens Bluff para deslocar pessoas
+      vulneráveis sem expor a estrutura de comando.
+  capacidades_disponiveis:
+  - antagonista_id: masao_hirasawa
+    capacidade_id: compartimentar_pressao_sobre_ren
+    fonte: agente
+    descricao: Pressão compartimentada por intermediários permite testar uma ordem
+      e proteger a estrutura de comando.
+  conhecimentos_disponiveis:
+  - antagonista_id: masao_hirasawa
+    conhecimento_id: ravens_bluff_primeiro_degrau
+    fonte: agente
+    evidencia: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo
+      úteis ao primeiro degrau do plano.
+  estado_se_ren_nao_intervier: A ordem continua produzindo pressão sobre o abrigo
+    até o amanhecer, enquanto a célula responsável tenta impedir que o portador revele
+    uma cadeia útil.
+  escaladas_possiveis:
+  - id: interceptar_mensageiro_sete_nomes
+    antagonista_id: masao_hirasawa
+    condicao: A célula identifica que o mensageiro ainda está alcançável antes de
+      uma oitiva segura.
+    capacidade_id: compartimentar_pressao_sobre_ren
+    conhecimentos_requeridos:
+    - ravens_bluff_primeiro_degrau
+    alvos:
+    - mensageiro_sete_nomes
+    gravidade: moderada
+    reversibilidade: incerta
+    classe_impacto: liberdade
+    consequencia: Uma célula compartimentada pode interceptar e reter o mensageiro
+      antes que ele preste testemunho.
+    prioridade: preferencial
+    bloqueios_causais:
+    - O mensageiro alcança proteção material ou presta depoimento seguro antes que
+      a célula o localize.
+  consequencias_de_falha:
+  - interceptar_mensageiro_sete_nomes
+  consequencias_de_inacao:
+  - interceptar_mensageiro_sete_nomes
+  alvos_em_risco:
+  - id: mensageiro_sete_nomes
+    tipo: npc
+    gravidade_maxima: moderada
+    descricao: Portador potencialmente inocente e elo material da cadeia de entrega.
+  gravidade_maxima_causal: moderada
+guardrails:
+  sem_plot_armor_por_conveniencia: true
+  sem_onisciencia_de_antagonista: true
+  sem_escalada_sem_capacidade: true
+  sem_amaciamento_de_escalada_obrigatoria: true
+  consequencia_real_exige_evidencia_causal: true
+  execucao_terminal_reservada_task45: true
+historico_recente: []

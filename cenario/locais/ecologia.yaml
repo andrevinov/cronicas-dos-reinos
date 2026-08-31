@@ -103,3 +103,10 @@ perfis:
     tags: [trabalho, entrega, documentos, carga, comercio, acesso_controlado]
     atores_comuns: [trabalhador, conferente, carregador, entregador, supervisor, fornecedor]
     canais_microevento: [trabalho, entrega, documentos, carga, abastecimento, manutencao]
+  patio_calaria_rua_da_cal:
+    familia: entreposto_documental
+    acesso: privado
+    ritmo_baseline: {amanhecer: 1, dia: 3, anoitecer: 1, noite: 0}
+    tags: [oficina, deposito, cal, gesso, carga, acesso_servico, rua_urbana]
+    atores_comuns: [trabalhador, carregador, fornecedor, entregador, vizinho]
+    canais_microevento: [trabalho, carga, entrega, abastecimento, manutencao, vizinhanca]

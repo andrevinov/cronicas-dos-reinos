@@ -13,4 +13,5 @@ Consequências explicitamente registradas:
 - **Ren promete permanecer sob custódia como Shinta** — Ren deu sua palavra a Luath de que não fugirá da cela nem resistirá à lei de Ravens Bluff enquanto o caso de Shinta estiver sendo verificado. Luath aceitou a promessa, mas manteve a custódia formal.
 - **Luath limita a exposição de Tomas ao caso** — Luath decidiu instruir Tomas a preservar registros e não investigar suspeitos por conta própria, além de providenciar que ele retorne escoltado à Galeria após entregar seu depoimento e documentos.
 - **Luath retira as algemas de Shinta, mas mantém a custódia** — Confiando na palavra de Ren de que não fugirá, Luath mandou retirar suas algemas. A cela permanece trancada e Shinta continua formalmente sob custódia enquanto a Night Watch verifica a denúncia e os registros.
+- **Fogo sobre a mesa de falsificação** — Às 23:11 de 19 de Eleasis, o homem corpulento rompeu uma lamparina sobre a mesa da antiga calaria. Papéis e materiais de escrita começaram a queimar; a matriz permanecia visível e ainda não havia sido destruída no início do turno seguinte de Ren.
 <!-- consolidacao-automatica:fim -->

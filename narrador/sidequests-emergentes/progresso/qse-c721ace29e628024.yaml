@@ -1,0 +1,137 @@
+schema_progressao_sidequest: 1
+natureza: reservado
+mission_id: sqe-47ea56e74d59f1c0
+quest_id: qse-c721ace29e628024
+quest_file: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
+contrato_recompensa: narrador/sidequests-emergentes/recompensas/qse-c721ace29e628024.yaml
+contrato_adversarial: narrador/sidequests-emergentes/stakes/qse-c721ace29e628024.yaml
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+contrato:
+  regra_sucesso: todas
+  regra_falha: qualquer
+  dependencias_fases:
+  - fase_id: examinar_ordem
+    atores_necessarios:
+    - maerra_thandrel
+    substituicao_permitida: false
+  - fase_id: rastrear_mensageiro
+    atores_necessarios:
+    - mensageiro_sete_nomes
+    substituicao_permitida: true
+  - fase_id: verificar_autoridade
+    atores_necessarios:
+    - verificador_transferencias_sete_nomes
+    substituicao_permitida: true
+  efeitos_escaladas:
+  - escalada_id: interceptar_mensageiro_sete_nomes
+    efeitos_npc:
+    - npc_id: mensageiro_sete_nomes
+      estado: preso
+  escaladas_falha:
+  - interceptar_mensageiro_sete_nomes
+  escaladas_inacao:
+  - interceptar_mensageiro_sete_nomes
+atores_novos_reservados:
+- mensageiro_sete_nomes
+- verificador_transferencias_sete_nomes
+estado:
+  fases:
+    examinar_ordem:
+      estado: resolvida
+      fato_id: ordem_examinada_borda_polida
+      motivo_automatico: null
+    rastrear_mensageiro:
+      estado: resolvida
+      fato_id: provavel_mensageiro_localizado_rua_da_cal
+      motivo_automatico: null
+    verificar_autoridade:
+      estado: indeterminada
+      fato_id: null
+      motivo_automatico: null
+  condicoes_sucesso:
+    sucesso_01:
+      texto: A autoridade ou a falsidade da ordem é estabelecida antes do prazo por
+        evidência institucional utilizável.
+      estado: pendente
+      fato_id: null
+    sucesso_02:
+      texto: As sete crianças permanecem fora de uma transferência não verificada
+        enquanto a cadeia documental é preservada.
+      estado: pendente
+      fato_id: null
+  condicoes_falha:
+    falha_01:
+      texto: As crianças são transferidas por força da ordem antes que sua autoridade
+        seja verificada.
+      estado: pendente
+      fato_id: null
+    falha_02:
+      texto: A ordem e a cadeia de entrega tornam-se inutilizáveis antes de produzir
+        uma conclusão institucional.
+      estado: pendente
+      fato_id: null
+  atores:
+    maerra_thandrel:
+      estado: disponivel
+      vida_estado: null
+      fonte: estado/npcs/maerra_thandrel.yaml
+    mensageiro_sete_nomes:
+      estado: reservado_nao_presente
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+    verificador_transferencias_sete_nomes:
+      estado: reservado_nao_presente
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+    masao_hirasawa:
+      estado: disponibilidade_nao_rastreada
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+  fatos:
+    ordem_examinada_borda_polida:
+      id: ordem_examinada_borda_polida
+      descricao: A ordem foi examinada sem perda da evidência; Ren identificou dados
+        recentes, contramarca ausente e uma borda esquerda polida compatível, mas
+        não conclusiva, com o método atribuído à Cinza-Azul.
+      prova:
+        fonte: sessoes/015/transcricao.md
+        evidencia: na borda esquerda, porém, as fibras estão comprimidas e polidas
+          por passagens repetidas do polegar.
+      fases:
+        examinar_ordem: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+    provavel_mensageiro_localizado_rua_da_cal:
+      id: provavel_mensageiro_localizado_rua_da_cal
+      descricao: A busca urbana distinguiu o tipo de pó e localizou na Rua da Cal
+        um homem que corresponde integralmente à descrição de Maerra, estabelecendo
+        uma rota concreta para o provável mensageiro.
+      prova:
+        fonte: sessoes/015/transcricao.md
+        evidencia: O homem possui exatamente o conjunto descrito por Maerra, e as
+          costuras de suas botas ainda guardam o mesmo pó branco fino encontrado junto
+          ao pátio.
+      fases:
+        rastrear_mensageiro: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+  consequencias_ativadas: {}
+  terminal: null
+  historico_recente:
+  - tipo: fato_registrado
+    id: ordem_examinada_borda_polida
+    fonte: sessoes/015/transcricao.md
+  - tipo: fato_registrado
+    id: provavel_mensageiro_localizado_rua_da_cal
+    fonte: sessoes/015/transcricao.md
+guardrails:
+  progresso_por_fato_nao_checklist: true
+  prazo_usa_relogio_existente: true
+  sem_scheduler: true
+  consequencia_so_task44: true
+  recompensa_so_task43_apos_sucesso: true
+  canon_terminal_via_task42: true

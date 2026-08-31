@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: em_sessao
+  status: entre_sessoes
   sessao_atual: 15
-  modo_de_cena_atual: ren_com_nera_e_silva_apos_relatar_emboscada
+  modo_de_cena_atual: combate_na_oficina_da_antiga_calaria
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,8 +18,9 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Temple District, Ravens Bluff
-  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
+  area: Interior da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pavimento de trabalho da antiga calaria, diante do homem corpulento ferido, com as provas recuperadas
+    junto ao corpo
   descricao_operacional: Ren relatou as novidades a Maerra. Ela não trouxe nova ameaça ou missão; pediu apenas que
     ele comesse e ajudasse com duas jarras de água, mantendo a Casa fora das operações de investigação.
 tempo:
@@ -33,20 +34,20 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '20:00'
+  hora_aproximada: '23:12'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
 recursos:
   pontos_de_vida:
-    atuais: 52
+    atuais: 45
     maximos: 52
   dados_de_vida:
     atuais: 5
     maximos: 7
     dado: d8
   ki:
-    atuais: 5
+    atuais: 1
     maximos: 7
     recarga: descanso curto ou longo
   classe_de_armadura: 17
@@ -167,6 +168,11 @@ efeitos_temporarios:
       partir se ela não aparecer em meia hora.'
     duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
     inicio: 20:12 de 13 Eleasis
+  passos_sem_pegadas:
+    concentracao: true
+    descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
+    inicio: 22:30 de 19 Eleasis, 1372 DR
+    termino: 23:30 de 19 Eleasis, 1372 DR
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem

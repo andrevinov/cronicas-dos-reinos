@@ -4,15 +4,7 @@ cidade: ravens_bluff
 global:
   ocorrencia:
     ciclo: 1
-    restantes:
-    - g03
-    - g09
-    - g10
-    - g01
-    - g04
-    - g02
-    - g07
-    - g06
+    restantes: []
   cartas:
     ciclo: 1
     assinatura_pool: 86101a6f53a41dcf26f05d4f45844c2c2a0cb4d4f58dcfe708803c8d24bf6f8c
@@ -32,6 +24,16 @@ locais:
       ciclo: 0
       assinatura_pool: null
       restantes: []
+  patio_calaria_rua_da_cal:
+    ocorrencia:
+      ciclo: 1
+      restantes: []
+    cartas:
+      ciclo: 1
+      assinatura_pool: c64f618e46be741c0d9fff8459ba2029ba8be0bada5b038181e82d893a809235
+      restantes:
+      - desabamento_parcial
+      - ferido_sem_ajuda
 historico_recente:
 - cena_id: s015-shinta-entra-galeria-18-eleasis
   local_id: galeria_dos_escribas
@@ -57,3 +59,52 @@ historico_recente:
   origem: null
   ficha_global: g08
   ficha_local: l02
+- cena_id: s15-reconhecimento-patio-porta-caiada
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g03
+  ficha_local: l03
+- cena_id: s15-exame-veneziana-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g09
+  ficha_local: l04
+- cena_id: s15-infiltracao-sotao-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g10
+  ficha_local: l02
+- cena_id: s15-escuta-passarela-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g01
+  ficha_local: l07
+- cena_id: s15-emboscada-oficina-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g04
+  ficha_local: l06
+- cena_id: s15-salto-contra-mulher-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g02
+  ficha_local: l01
+- cena_id: s15-reacao-proteger-matriz-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: avaliar_incidente
+  origem: local
+  ficha_global: g07
+  ficha_local: l08
+  carta_id: acidente_de_trabalho
+- cena_id: s15-resgate-provas-mesa-calaria
+  local_id: patio_calaria_rua_da_cal
+  resultado: rotina
+  origem: null
+  ficha_global: g06
+  ficha_local: l05

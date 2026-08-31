@@ -1,16 +1,17 @@
 versao_runtime: 2
 natureza: derivado_descartavel
 sessao: 15
-modo: ren_com_nera_e_silva_apos_relatar_emboscada
+modo: combate_na_oficina_da_antiga_calaria
 localizacao:
-  area: Temple District, Ravens Bluff
-  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
+  area: Interior da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pavimento de trabalho da antiga calaria, diante do homem corpulento ferido, com as provas recuperadas
+    junto ao corpo
 tempo:
   data: 19 Eleasis, 1372 DR
-  hora_aproximada: '20:00'
+  hora_aproximada: '23:12'
 mecanica_imediata:
-  pv: 52/52
-  ki: 5/7
+  pv: 45/52
+  ki: 1/7
   ca: 17
   deslocamento: 55 pés
 resumo_imediato: Ren relatou as novidades a Maerra. Ela não trouxe nova ameaça ou missão; pediu apenas que ele comesse
@@ -50,3 +51,8 @@ efeitos_temporarios:
       partir se ela não aparecer em meia hora.'
     duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
     inicio: 20:12 de 13 Eleasis
+  passos_sem_pegadas:
+    concentracao: true
+    descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
+    inicio: 22:30 de 19 Eleasis, 1372 DR
+    termino: 23:30 de 19 Eleasis, 1372 DR

@@ -1565,3 +1565,516 @@ O humor cede espaço a uma última instrução prática:
 — Se Tomas ou Luath precisarem me alcançar, podem fazê-lo pelos canais normais da Casa. Mas não use este lugar como ponto de encontro para sua investigação. Há crianças e pessoas sem outro teto aqui. Avisos, sim. Caçadas, não.
 
 Maerra não apresenta nova ameaça, missão ou pedido perigoso. Ela acolheu o relato, confirmou que Ren pode continuar usando a Casa como canal legítimo para avisos e pediu apenas refeição e ajuda cotidiana, preservando o abrigo de qualquer operação.
+
+<!-- turno-transacional:s015-336a121bdf42ec0b -->
+**Jogador**
+
+Ren relata as novidades a Maerra e pergunta diretamente se ela precisa de alguma ajuda.
+**Narrador**
+
+RETIFICAÇÃO CANÔNICA DA RESPOSTA FINAL DE MAERRA — A afirmação anterior de que Maerra não possuía necessidade perigosa fica substituída pelo que ela revela depois de ouvir o relato documental de Ren.
+
+Maerra deixa que a brincadeira sobre as jarras permaneça por um instante. Quando Ren começa a se levantar, porém, ela não acompanha o movimento. Em vez disso, abre uma gaveta estreita sob a mesa e retira uma folha dobrada, ainda dentro de um envelope sem remetente visível.
+
+— Não. Isso não era toda a verdade — admite. — Eu ainda não sabia se devia colocar isto diante de você ou de Luath.
+
+A ordem traz o nome da Casa da Aurora Menor e determina que as sete crianças resgatadas sejam transferidas ao amanhecer para outro abrigo. O formato parece administrativo, os nomes estão corretos e o texto cita uma rotina de assistência reconhecível. Mas falta a contramarca que Maerra costuma encontrar em encaminhamentos legítimos. O mensageiro entregou o envelope pouco antes da chegada de Ren e partiu antes que ela notasse a ausência.
+
+Maerra não chama a ordem de falsificação. Ainda não. Também não afirma que Shizune, Kurobane ou Masao estejam por trás dela.
+
+— Se for erro legítimo, pode ser corrigido. Se não for, alguém descobriu que sete crianças podem ser removidas com uma folha convincente e uma carroça ao amanhecer. Não permitirei que saiam enquanto a autoridade desta ordem não for verificada.
+
+Maerra pousa a mão sobre a ordem. — Preciso que alguém descubra de onde ela veio antes do amanhecer e preserve o mensageiro e a cadeia do documento. Você pode recusar, Ren; se aceitar, não lhe direi como fazer.
+
+Ela mantém o documento consigo e deixa a decisão inteiramente com Ren.
+
+— O primeiro fato é a folha. O segundo é o mensageiro. Ele pode ser inocente e talvez conheça apenas o lugar onde recebeu o envelope. A Casa continuará protegendo as crianças mesmo se você disser não. Mas, quando o sol nascer, a cadeia pode ter desaparecido.
+
+A oferta está feita. Maerra pede que a origem e a autoridade da ordem sejam verificadas antes das seis da manhã de 20 Eleasis, que o documento permaneça preservado e que o mensageiro não seja tratado automaticamente como cúmplice. Ren ainda não aceitou nem recusou.
+
+<!-- turno-transacional:s015-23d08c0199230401 -->
+**Jogador**
+
+Ren aceita a missão oferecida por Maerra, examina a ordem em busca de indícios ligados a Shizune e pergunta pela aparência e procedência alegada do mensageiro.
+**Narrador**
+
+Maerra recebe o sorriso com uma expiração curta — quase uma risada, quase uma censura que ela já sabia inútil.
+
+— Eu imaginava que diria isso. Ainda assim, precisava lhe dar a escolha.
+
+Ela solta o papel apenas quando Ren estende a mão. A folha é de fibra local, cortada no padrão usado por escrivães da cidade; a tinta também não traz nada de kozakurano. O selo parece adequado à primeira vista, mas é genérico o bastante para conferir aparência de autoridade sem identificar claramente uma repartição responsável.
+
+MECÂNICA — Investigação 20 contra CD 16: sucesso.
+
+Ren percebe duas irregularidades adicionais. Os sete nomes foram copiados com espaçamento uniforme demais, como se viessem de uma relação recente mantida ao lado da folha, e não da memória de um funcionário. Mais importante, na borda esquerda, porém, as fibras estão comprimidas e polidas por passagens repetidas do polegar. É compatível com o hábito que Kethra descreveu na mulher Cinza-Azul: alisar a borda esquerda dos papéis antes de entregá-los.
+
+Compatível — não conclusivo. Qualquer copista cuidadoso poderia produzir marca semelhante, e nada no papel prova que Shizune o tenha tocado. Mas, combinado com a contramarca ausente e com os nomes atuais das crianças, o documento parece ter sido montado por alguém que teve acesso a informação legítima e imitou o restante do procedimento.
+
+Maerra espera que Ren termine antes de responder.
+
+— Um homem jovem. Humano, talvez vinte e poucos anos. Magro, cabelo castanho curto, rosto estreito. Falava como alguém daqui e parecia mais nervoso por estar atrasado do que por entregar a folha. Capa parda, estojo de couro preso ao ombro e manchas de tinta no polegar e no indicador direitos.
+
+Ela aponta para a parte inferior do documento, onde deveria haver o registro do portador.
+
+— Não forneceu nome pessoal. Disse apenas que vinha do arquivo de transferências mantido pela mesa de caridade do distrito. Afirmou que a carroça chegaria ao amanhecer e que o recibo poderia ser assinado nessa ocasião. Achei estranho, mas não impossível; às vezes os mensageiros recebem somente o destino e uma fórmula para repetir.
+
+Maerra fecha os dedos sobre o envelope vazio, pensando.
+
+— Havia pó branco e seco nas bordas das botas. Não lama. Cal ou gesso, talvez. E ele não pediu orientação para sair daqui. Conhecia o caminho, ou fingia muito bem conhecer.
+
+A ordem permanece nas mãos de Ren. Há agora três fios legítimos, nenhum deles uma resposta pronta: a borda polida que lembra o método da Cinza-Azul, o suposto arquivo de transferências e o mensageiro com pó branco nas botas.
+
+<!-- turno-transacional:s015-ac5f51bf36b9bcb0 -->
+**Jogador**
+
+Ren propõe a Rua da Cal como origem possível do pó, devolve a ordem a Maerra e exige que nenhuma criança seja entregue antes de seu retorno.
+**Narrador**
+
+— Rua da Cal — corrige Maerra suavemente, mais por hábito do que por censura.
+
+O nome faz sentido para Ren. Ele conhece os fornos para os quais o jardineiro da Casa do Salgueiro Seco certa vez o mandou procurar trabalho, o mercador de cal que fecha ao anoitecer e o Lavadouro dos Três Tanques. Cal ou gesso nas botas não provaria que o mensageiro veio de lá — há depósitos, pátios e trabalhadores que carregam o pó por outras ruas —, mas transforma a suposição numa linha geográfica plausível.
+
+Maerra inclina a cabeça.
+
+— Pode ser. O pó era claro e muito fino. Estava preso nas costuras, não apenas sobre as solas. Se ele passou pela Rua da Cal, esteve perto de algum lugar onde o material era descarregado ou trabalhado.
+
+Quando Ren devolve a ordem, Maerra a segura pelas extremidades, envolve-a novamente no envelope e o guarda entre duas folhas limpas, preservando as marcas que ele acabou de examinar.
+
+À advertência feita junto à saída, ela não hesita:
+
+— Nenhuma delas sairá. Não com um mensageiro, não com uma carroça e não por causa de outro papel. Se alguém vier antes de você, encontrará as portas fechadas e terá de explicar a ordem diante de mim.
+
+Ela sustenta o olhar de Ren.
+
+— Vá. Eu preservarei a folha e as crianças. Mas lembre-se: a Rua da Cal é uma hipótese, não um culpado.
+
+<!-- turno-transacional:s015-5a379524e5ebcd66 -->
+**Jogador**
+
+Ren percorre um circuito amplo por Ravens Bluff, observando fontes de pó branco, pontos de espera de mensageiros e, por fim, a Rua da Cal, enquanto mantém o rosto coberto pelo manto.
+**Narrador**
+
+Ren deixa a Casa da Aurora Menor sem pressa aparente, o manto cobrindo o rosto, e transforma a busca num circuito largo em vez de correr diretamente para a Rua da Cal.
+
+MECÂNICA — Investigação 19 contra CD 16: sucesso.
+MECÂNICA — Percepção 26 contra CD 17: sucesso.
+
+A primeira parte da volta produz muitos falsos positivos. Farinha junto a padarias, giz de marcação nas docas, gesso diante de duas reformas e cinza clara perto de uma olaria. Ren observa como cada material adere às botas. A farinha cobre a superfície; o giz fica em riscos; o gesso forma pequenas crostas. A cal fina entra nas costuras e permanece ali — exatamente como Maerra descreveu.
+
+Nos pontos onde mensageiros aguardam trabalho, o rosto estreito e a capa parda não aparecem de imediato. Ren, porém, aprende algo observando sem fazer perguntas: os correios que trabalham regularmente usam fichas, cordões ou placas do posto que os contratou. Mesmo os avulsos costumam fornecer um nome ao escrivão da fila. Um homem enviado por um verdadeiro arquivo de transferências dificilmente precisaria permanecer anônimo diante de Maerra.
+
+A volta termina na Rua da Cal. Os fornos estão baixando, mas alguns pátios ainda trabalham à luz amarela de lanternas. Carroças cobertas deixam rastros esbranquiçados; trabalhadores batem as roupas antes de entrar nas tavernas. Ren encontra o tipo certo de pó junto a um pátio estreito de preparação de argamassa, atrás do mercador de cal já fechado. É fino, seco e se prende às linhas das solas e às costuras do couro.
+
+Ele não precisa se aproximar do portão.
+
+Pouco depois das dez e meia, um homem sai da passagem lateral entre o pátio e o estabelecimento fechado. Jovem, magro, cabelo castanho curto, rosto estreito. Usa capa parda e traz um estojo de couro preso ao ombro. Ao ajustar a correia com a mão direita, a luz alcança manchas de tinta no polegar e no indicador.
+
+O homem possui exatamente o conjunto descrito por Maerra, e as costuras de suas botas ainda guardam o mesmo pó branco fino encontrado junto ao pátio.
+
+Isso não revela quem o contratou nem prova que conheça a falsificação. Mas a coincidência acumulada é forte o bastante para identificar o provável mensageiro.
+
+Ele não parece ter reconhecido Ren. Fecha a capa contra o vento, olha uma vez para cada extremidade da rua e começa a caminhar para leste, afastando-se do pátio num passo rápido, mas ainda não alarmado.
+
+<!-- turno-transacional:s015-dfac7caceb171e95 -->
+**Jogador**
+
+Ren gasta 2 Ki para ativar Passos sem Pegadas, segue o provável mensageiro e, quando ele entra numa passagem discreta, usa Passo da Sombra para tentar imobilizá-lo e ameaçá-lo com a wakizashi.
+**Narrador**
+
+Ren deixa o homem ganhar distância antes de começar a segui-lo. Sua técnica engole o ruído dos passos, o deslocamento do manto e até as pequenas marcas de sua passagem.
+
+MECÂNICA — Ren gasta 2 Ki e ativa Passos sem Pegadas até 23:30, enquanto mantiver concentração.
+
+O mensageiro mantém o passo rápido e olha para trás duas vezes. Nenhuma delas encontra Ren.
+
+MECÂNICA — Furtividade 29 contra CD 17: sucesso; 19 da rolagem normal, acrescido de +10 por Passos sem Pegadas.
+
+Ele segue para leste por cerca de vinte minutos, evita as avenidas mais claras e finalmente entra numa passagem de serviço estreita entre uma hospedaria barata e os fundos de uma oficina fechada. Não há ninguém visível no interior. Uma lanterna distante ilumina a entrada, mas o trecho central permanece mergulhado em penumbra.
+
+Há uma linha válida de sombras. Ren desaparece de uma delas e emerge atrás do homem por Passo da Sombra, sem precisar cruzar o espaço iluminado.
+
+A aproximação é perfeita. A contenção, não.
+
+MECÂNICA — Atletismo 3 contra CD 12: falha.
+
+Quando a mão de Ren sobe, o mensageiro inclina a cabeça por puro acaso. A palma encontra sua mandíbula em vez de selar completamente a boca. Ele se torce com violência, e a wakizashi raspa o colarinho sem cortar a pele. O estojo de couro bate contra a parede com um estalo seco.
+
+Um grito curto escapa antes que Ren consiga firmar o braço.
+
+A ameaça de morte vem baixa e imediata, acompanhada pelo brilho da lâmina. O homem, porém, já sentiu a abertura.
+
+MECÂNICA — Intimidação 9 contra CD 13: falha.
+
+Em vez de congelar, ele joga o peso para a frente, escapa do alcance da mão de Ren e dispara em direção à extremidade iluminada da passagem.
+
+— Socorro! Assassino!
+
+A palavra ecoa entre as paredes. Uma veneziana se abre acima deles, e alguém do outro lado da rua responde com um “Quem está aí?”. O mensageiro está a cerca de quinze pés de Ren e ainda corre em direção à rua movimentada. Não parece ter visto o rosto sob o capuz, mas viu a silhueta, a lâmina e sabe que foi seguido.
+
+Passos sem Pegadas continua ativo, e as sombras ainda oferecem a Ren uma saída — ou uma última oportunidade de alcançá-lo antes que ele chegue à luz.
+
+<!-- turno-transacional:s015-5542475b666e5ce1 -->
+**Jogador**
+
+Ren alcança o provável mensageiro, usa Rajada de Golpes com dano não letal para tentar nocauteá-lo e, caso consiga, imita improvisadamente sua voz para desfazer o alarme.
+**Narrador**
+
+Ren cobre os quinze pés antes que o mensageiro alcance a parte iluminada da passagem.
+
+O primeiro golpe entra abaixo das costelas, curto e controlado. O ar abandona os pulmões do homem e sua corrida se desfaz num tropeço.
+
+MECÂNICA — Golpe desarmado 19 contra CA 11: acerto; 5 de dano contundente não letal.
+
+Ren já havia lançado o corpo na sequência da Rajada. O golpe seguinte alcança a lateral da mandíbula com precisão devastadora.
+
+MECÂNICA — Ren gasta 1 Ki e usa Rajada de Golpes.
+MECÂNICA — Golpe desarmado crítico 27 contra CA 11: acerto; 14 de dano contundente não letal. O mensageiro cai inconsciente e estável.
+
+Ren segura o homem antes que o corpo atinja as pedras e o arrasta de volta ao trecho escuro. Os ataques restantes são interrompidos; não há sangue nem ferimento aberto, apenas a respiração pesada de alguém desacordado.
+
+A veneziana acima continua aberta. Passos se aproximam da extremidade da rua.
+
+Ren só possui o grito como amostra da voz — insuficiente para o mimetismo perfeito que seu talento permitiria depois de escutar alguém por mais tempo. Ainda assim, ele reproduz o tom e a aspereza que acabou de ouvir, confiando na distância, nas paredes e na expectativa dos ouvintes.
+
+— Ah, era você, Bud? Meu Deus, que susto, vamo sair daqui.
+
+MECÂNICA — Enganação 14 contra CD 14: sucesso, sem vantagem do Actor.
+
+Há um instante de silêncio.
+
+— Então parem com a gritaria! — reclama a voz da janela.
+
+A veneziana bate ao fechar. Os passos na rua desaceleram, alguém resmunga alguma coisa sobre bêbados e segue adiante. A mentira não apagaria o testemunho de quem tivesse visto a perseguição, mas neutraliza a reação imediata das únicas pessoas que responderam ao grito.
+
+O provável mensageiro está inconsciente nas mãos de Ren, oculto no trecho em penumbra. Seu estojo de couro continua preso ao ombro. Passos sem Pegadas permanece ativo.
+
+<!-- turno-transacional:s015-3564509c99a7e0f7 -->
+**Jogador**
+
+O jogador corrige a aplicação mecânica do talento Ator no teste de Enganação usado para passar-se pelo mensageiro.
+**Narrador**
+
+MECÂNICA — CORREÇÃO: o teste de Enganação 14 contra CD 14 recebeu vantagem do talento Ator, pois Ren tentou passar-se por outra pessoa. A exigência de ouvir a voz por um minuto pertence apenas ao mimetismo fiel e não é pré-requisito para a vantagem. Como o primeiro d20 já produziu sucesso, nenhum dado é rerrolado e o desfecho permanece inalterado.
+
+<!-- turno-transacional:s015-2a2041184189b817 -->
+**Jogador**
+
+Ren revista completamente o provável mensageiro e seu estojo antes de acordá-lo voltado para a parede. Sem revelar o rosto, ameaça matá-lo caso grite e promete deixá-lo viver se responder.
+**Narrador**
+
+Ren mantém o rapaz no trecho escuro e começa pelo corpo, trabalhando depressa sem rasgar papéis nem apagar marcas.
+
+Nos bolsos encontra quatro moedas de prata, sete de cobre, uma chave pequena de quarto, um canivete de trabalho e um pedaço de carvão usado para marcar entregas. Não há símbolo de repartição, placa de mensageiro oficial ou autorização emitida por qualquer arquivo.
+
+O estojo de couro contém um tinteiro pequeno, uma pena barata, barbante encerado, três recibos em branco e migalhas de pão. Há também uma tira de papel dobrada duas vezes, mantida no compartimento principal em vez de escondida:
+
+“Porta lateral depois do segundo sino. Levar o envelope à Casa da Aurora Menor. Dizer que a carroça vem ao amanhecer. Não esperar recibo. Voltar para receber o restante.”
+
+Não há assinatura, selo ou nome do contratante. A letra é comum e deliberadamente simples. O papel possui o mesmo pó fino encontrado nas botas, sobretudo na dobra externa.
+
+MECÂNICA — Investigação 13 contra CD 14: falha. Ren encontra todo o conteúdo exposto, mas não detecta qualquer compartimento ou ocultação deliberada.
+
+Só depois da revista Ren posiciona o homem com o rosto voltado para a parede. Afasta-se o suficiente para não ser atingido por um movimento brusco e o desperta mantendo a wakizashi onde ele possa sentir o frio do metal sem enxergar quem a segura.
+
+A consciência retorna aos poucos: primeiro a respiração áspera, depois um gemido abafado e, por fim, o corpo inteiro ficando rígido quando ele percebe a parede diante do rosto e a lâmina junto ao pescoço.
+
+— Você grita mais uma vez e morre. Se me der as respostas que eu quero, você vive.
+
+MECÂNICA — Intimidação com vantagem 19 contra CD 12: sucesso.
+
+O rapaz prende a respiração. As mãos se abrem devagar contra as pedras, mostrando que estão vazias.
+
+— Eu respondo — sussurra, ainda atordoado. — Tudo que eu souber. Não vou gritar.
+
+Ele não tenta virar a cabeça. A ameaça obteve sua cooperação imediata; ainda não estabeleceu se as respostas futuras serão verdadeiras, incompletas ou apenas aquilo que ele acredita ser verdade.
+
+<!-- turno-transacional:s015-8d0c3f70275b31f9 -->
+**Jogador**
+
+Ren pergunta quem mandou o mensageiro entregar a ordem à Casa da Aurora Menor e aproxima a wakizashi de seu pescoço.
+**Narrador**
+
+A wakizashi se aproxima até o metal tocar a pele, logo abaixo da orelha. O rapaz engole em seco sem mover a cabeça.
+
+— Não sei o nome. Juro que não sei.
+
+As palavras saem rápidas, mas baixas.
+
+— O serviço apareceu no quadro dos avulsos, no posto de mensageiros do Sino Leste. Preso com uma cavilha preta. A tira estava dobrada com duas moedas de prata. Quem deixasse a cavilha podia pegar o trabalho.
+
+Ele respira pela boca, tentando não encostar o pescoço na lâmina.
+
+— Fui à porta lateral do pátio da cal depois do segundo sino. Bati duas vezes, esperei e bati mais uma. Abriram só uma portinhola. Não vi rosto nenhum. Uma mão com luva de pano cinza me entregou o envelope. A voz era de homem... comum, daqui. Disse para eu falar que vinha do arquivo de transferências e que a carroça chegaria ao amanhecer.
+
+O relato explica por que ele repetiu uma procedência que não aparece na instrução encontrada no estojo.
+
+— Depois da entrega, voltei ao pátio. As outras duas pratas estavam num nicho ao lado da porta. Ninguém falou comigo. Eu estava indo embora quando...
+
+A frase morre. Ele não precisa terminar.
+
+O medo tornou a resposta imediata, não necessariamente verdadeira. Ainda assim, o relato contém detalhes verificáveis: o quadro de trabalhos do posto do Sino Leste, a cavilha preta, a sequência de batidas, a portinhola e o nicho de pagamento.
+
+<!-- turno-transacional:s015-721af3559946de51 -->
+**Jogador**
+
+Ren argumenta que o mensageiro não tem nada a perder revelando tudo o que sabe sobre os contratantes.
+**Narrador**
+
+O rapaz fica imóvel por alguns segundos. O argumento de Ren parece atravessar o pânico e alcançar alguma parte ainda capaz de calcular riscos.
+
+MECÂNICA — Persuasão 17 contra CD 12: sucesso.
+
+— Tinha outra pessoa lá dentro — admite enfim. — Eu não vi. Só ouvi.
+
+Ele força a memória, falando cada vez mais depressa.
+
+— Uma mulher. A voz vinha de mais longe que a do homem na portinhola. Ela falava como gente daqui, sem sotaque. Disse: “Não é retirada. É transferência provisória.” Depois perguntou se os sete nomes estavam certos.
+
+A respiração dele falha por um instante.
+
+— O homem respondeu: “Como na lista.” Foi então que abriu a portinhola e me deu o envelope. Eu vi apenas a mão dele... e, atrás, um pedaço da manga dela. Cinza com azul, ou azul muito escuro. A luz lá dentro era ruim.
+
+A descrição coincide com elementos que Ren já associa à mulher chamada de Cinza-Azul: voz feminina em Comum local sem sotaque, participação em procedimentos documentais e uma cor de vestimenta compatível. Não confirma Shizune. O mensageiro não viu rosto, idade ou qualquer traço capaz de identificar a mulher.
+
+— Eu não contei porque, quando peguei o envelope, o homem disse: “Você ouviu uma voz. A minha.” Entendi o recado. Achei que, se repetisse outra coisa, eles me encontrariam.
+
+Ele mantém as mãos abertas contra a parede.
+
+— É tudo. Pela vida da minha mãe, é tudo que ouvi.
+
+<!-- turno-transacional:s015-b328e1370c3ba30e -->
+**Jogador**
+
+Ren exige a descrição exata da porta, ameaça encontrar o mensageiro e sua mãe caso ele tenha mentido, manda-o sair normalmente e usa Passo da Sombra durante a distração para desaparecer sem ser visto.
+**Narrador**
+
+— É o mesmo pátio de onde você me viu sair — diz o rapaz. — Atrás do mercador de cal fechado, na passagem entre a loja e a oficina de reboco.
+
+Ele descreve sem tentar olhar para Ren:
+
+— Entre pelo corredor até o pátio. A porta fica na parede do fundo, à esquerda de uma calha preta. Madeira grossa coberta de cal branca. Não tem maçaneta do lado de fora. A portinhola é de ferro, mais ou menos na altura do peito.
+
+A voz ganha pressa à medida que surgem detalhes verificáveis.
+
+— Tem uma lasca triangular faltando na soleira. O nicho do pagamento fica um passo à direita, atrás de um tijolo mais claro que os outros. Eu bati duas vezes, esperei até ouvir metal se mexendo, depois bati uma. Foi assim.
+
+A descrição corresponde ao pátio estreito de preparação de argamassa que Ren já identificou. Agora ele possui a posição exata da porta, da portinhola e do esconderijo usado para o pagamento.
+
+Quando Ren menciona encontrá-lo — e encontrar sua mãe — caso tenha mentido, os ombros do rapaz se contraem.
+
+— Não menti.
+
+Ren manda que ele saia andando normalmente.
+
+O mensageiro obedece. Os primeiros passos são rígidos por causa da dor e do medo, mas ele força os braços a balançarem e reduz o ritmo antes de alcançar a parte iluminada. Passa sob a janela fechada sem correr.
+
+Perto da boca da passagem, a coragem falha por um instante. Ele olha para trás.
+
+Encontra apenas escuridão vazia.
+
+Ren já atravessou a cadeia de sombras por Passo da Sombra e reapareceu sob o beiral profundo de um antigo acesso de carga, fora da linha de visão do beco. Passos sem Pegadas apaga qualquer indicação mundana da direção tomada.
+
+O rapaz permanece parado por dois batimentos, olhando para o lugar onde deveria estar seu agressor. Então se vira e parte, um pouco mais rápido do que antes, sem ousar procurar novamente.
+
+Ren continua oculto nas proximidades do pátio. A porta de madeira caiada está a menos de uma quadra, além da passagem indicada.
+
+<!-- turno-transacional:s015-f56cc419496b706d -->
+**Jogador**
+
+Ren vai até próximo da porta e observa a porta, o prédio e outras formas de infiltração além da entrada direta.
+**Narrador**
+
+Ren avança pelo corredor estreito entre a loja fechada e a oficina de gesso, aproveitando cada recorte de sombra. O pó de cal torna o chão claro demais, mas Passos sem Pegadas impede que sua aproximação o denuncie.
+
+De perto, a porta corresponde exatamente à descrição: tábuas grossas cobertas por sucessivas demãos de cal, sem maçaneta externa; a portinhola de ferro fica à altura do peito. O pequeno lascado triangular marca a soleira. À direita, o tijolo mais claro esconde o nicho de pagamento — agora vazio. A porta abre para dentro e não exibe fechadura acessível deste lado: quem a utiliza normalmente precisa ser admitido por alguém no interior.
+
+Ren examina então o restante da construção. A frente da antiga loja dá para a Rua da Cal, mas suas folhas estão fechadas e barradas por dentro; seria a aproximação mais exposta. O cano negro junto à porta não suportaria seu peso. Há, porém, duas alternativas reais.
+
+A primeira está acima da oficina de gesso: o telhado mais baixo do prédio vizinho permite alcançar a água-furtada da calaria. Uma veneziana de ventilação, larga o bastante para a passagem de um homem esguio, tem uma lâmina empenada e dois pinos antigos. Alcançá-la exigiria escalar e trabalhar junto ao telhado, onde Ren poderia ser visto das janelas mais altas do outro lado da rua.
+
+A segunda é uma abertura de carga no fundo do pátio, quase escondida sob um beiral. Está fechada por uma folha de madeira horizontal, mas um dos gonzos inferiores se afastou da alvenaria. Parece possível criar uma passagem com força ou ferramenta — com risco de ruído e de deixar dano evidente.
+
+Quanto à presença lá dentro, o prédio não lhe dá certeza. Não há lamparina externa, conversa nem passos claros; ao mesmo tempo, o cheiro de cal, a espessura das paredes e os pequenos ruídos das oficinas vizinhas engolem qualquer sinal discreto. Ren não pode concluir que o lugar esteja vazio — nem localizar um vigia oculto, caso exista.
+
+MECÂNICA — Percepção: 12 contra CD 16; falha. Ren não determina presença ou vigilância interna.
+MECÂNICA — Investigação: 17 contra CD 15; sucesso. Ren identifica duas rotas alternativas viáveis e seus riscos.
+
+<!-- turno-transacional:s015-b60133cb4da787ac -->
+**Jogador**
+
+Ren usa Passo das Sombras para alcançar o telhado junto à veneziana e a examina.
+**Narrador**
+
+Da penumbra sob o beiral, Ren fixa os olhos na faixa escura junto à água-furtada. Um instante depois, a sombra o recebe. Ele reaparece agachado sobre o telhado baixo, com uma das mãos apoiada nas telhas para distribuir o peso — sem escalada, sem silhueta atravessando a parte exposta.
+
+A veneziana fica ao alcance de seus dedos. De perto, Ren confirma que a lâmina empenada não está simplesmente quebrada: um dos pinos encolheu dentro da madeira ressecada. Pressionando-o no ângulo certo, é possível erguer a lâmina alguns dedos sem arrancá-la nem produzir mais que um leve atrito. Depois, ela pode ser devolvida quase exatamente à posição anterior.
+
+Pela abertura estreita, Ren distingue um antigo sótão de secagem. Há uma passarela de madeira sob as vigas, sacos empilhados e, mais abaixo, o brilho abafado de alguma fonte de luz encoberta. A penumbra alcança uma porção desocupada da passarela a menos de nove metros dele. É um destino válido para Passo das Sombras: Ren pode entrar sem alargar a veneziana.
+
+O ângulo, contudo, revela apenas uma fatia do interior. Sacos, vigas e a própria passarela criam numerosos pontos cegos. Ren não vê ninguém, mas também não consegue verificar o restante do sótão nem determinar se existe alguém oculto além do campo estreito da veneziana.
+
+Nada reage à sua chegada ou ao exame. Se há alguém no prédio, Ren não denunciou sua posição.
+
+MECÂNICA — Passo das Sombras não consome Ki. Origem e destino estavam em penumbra, com linha de visão e dentro do alcance.
+MECÂNICA — Furtividade: 13 + 7 + 10 de Passos sem Pegadas = 30 contra CD 15; sucesso.
+MECÂNICA — Percepção: 12 contra CD 15; falha. Ren não resolve os pontos cegos nem determina presença no interior.
+MECÂNICA — Investigação: 22 contra CD 14; sucesso. Ren descobre como abrir e restaurar discretamente a lâmina e identifica um destino válido para teleporte.
+
+<!-- turno-transacional:s015-8672e799ed760cf3 -->
+**Jogador**
+
+Ren entra pela sombra mais próxima visível dentro do cômodo delimitado pela veneziana.
+**Narrador**
+
+Ren mantém a estreita abertura da veneziana apenas pelo tempo necessário para fixar a porção vazia da passarela. A sombra entre dois sacos empilhados se aprofunda — e ele desaparece do telhado.
+
+Ren surge agachado dentro do sótão, os pés assentando sobre a madeira sem fazê-la gemer. Atrás dele, a veneziana permanece praticamente como estava. O ar é seco, carregado de cal e gesso; respirar fundo arranharia a garganta.
+
+A passarela ocupa o comprimento do antigo espaço de secagem. Sacos velhos formam corredores estreitos sob as vigas. À direita, uma escada desce para o pavimento principal. Ren percebe antes de se mover que um fio escurecido cruza o primeiro degrau à altura do tornozelo. O fio acompanha o corrimão e desaparece para baixo — um alarme simples, preparado para reagir a quem use a escada sem procurá-lo.
+
+Pelas frestas da passarela vem o brilho de uma lamparina coberta. Também vêm dois sinais humanos distintos: o raspar ritmado de metal ou madeira sobre uma mesa e, mais distante, o deslocamento breve de uma cadeira. Então uma voz masculina murmura alguma coisa baixa demais para Ren distinguir; uma mulher responde com poucas palavras, igualmente abafadas. Há pelo menos duas pessoas no andar inferior.
+
+Nenhuma delas interrompe o que está fazendo. Ren entrou sem ser percebido. Dali, ele possui cobertura entre os sacos, visão parcial do andar inferior pelas frestas e uma rota de retorno pela mesma sombra junto à veneziana.
+
+MECÂNICA — Passo das Sombras não consome Ki. O destino previamente reconhecido continuava desocupado, visível e em penumbra.
+MECÂNICA — Furtividade: 15 + 7 + 10 de Passos sem Pegadas = 32 contra CD 15; sucesso. A chegada não foi detectada.
+MECÂNICA — Percepção: 14 contra CD 14; sucesso. Ren percebe o alarme no alto da escada e identifica ao menos duas pessoas no pavimento inferior.
+
+<!-- turno-transacional:s015-c3ed5029f3a33e37 -->
+**Jogador**
+
+Ren se aproxima o máximo possível para ouvir as duas pessoas ou ler seus lábios e determinar se há alguém dedicado à segurança.
+**Narrador**
+
+Ren evita a escada e o fio de alarme. Em vez disso, desliza pela passarela, distribuindo o peso junto às vigas e escolhendo cada tábua antes de tocá-la. O pó que recobre a madeira não guarda pegada alguma de sua passagem.
+
+Quase no centro do sótão, uma separação entre duas tábuas oferece um ângulo melhor. Ren se deita atrás de uma fileira de sacos e olha para o pavimento inferior.
+
+Há somente duas pessoas na área de trabalho. Um homem robusto, de traços locais, usa um avental manchado de gesso e trabalha diante de uma mesa coberta por folhas, cera e pequenas ferramentas. A mulher veste um casaco de trabalho cinza-azulado e mantém uma luva cinzenta na mão direita. Uma faca curta repousa em sua cintura. O rosto dela aparece apenas de perfil e não corresponde a ninguém que Ren reconheça.
+
+Não existe um guarda separado. Ren acompanha os ruídos, as sombras e os acessos por tempo suficiente para excluir uma terceira pessoa naquele pavimento. Contudo, a mulher acumula a função de segurança: trabalha pouco, conserva visão da porta lateral e interrompe-se regularmente para escutar o pátio. O homem também possui uma besta leve encostada sob a mesa, ao alcance da mão.
+
+Quando ele termina de enrolar uma folha, pergunta em voz baixa:
+
+— Ele voltou pelo restante?
+
+A mulher olha para a porta lateral antes de responder:
+
+— O nicho está vazio. Recolha a matriz.
+
+— E a carroça?
+
+— Usa a ordem uma vez, ao amanhecer. Depois, o papel não importa.
+
+O homem hesita, passando o polegar por uma pequena placa ou molde sobre a mesa.
+
+— A sacerdotisa vai pedir confirmação.
+
+A mulher responde sem elevar a voz:
+
+— Vai. A resposta chega depois que os sete já tiverem mudado de mãos.
+
+Eles não dizem nomes, não mencionam Masao e não identificam quem está acima deles. Mas a conversa liga aquela oficina diretamente à ordem, ao pagamento do mensageiro e à carroça esperada ao amanhecer.
+
+Nenhum dos dois olha para cima. Ren permanece oculto.
+
+MECÂNICA — Furtividade: 7 + 7 + 10 de Passos sem Pegadas = 24 contra CD 16; sucesso. Ren alcança o ponto de escuta sem ser detectado.
+MECÂNICA — Percepção: 18 contra CD 15; sucesso. Ren distingue a conversa, as armas, os acessos e confirma que não há um terceiro ocupante aparente no pavimento.
+
+<!-- turno-transacional:s015-382f2d83f2bede52 -->
+**Jogador**
+
+Ren usa Passo das Sombras para surgir na melhor sombra atrás do homem corpulento e o ataca com intenção não letal; só atacaria a mulher se sobrassem golpes depois de neutralizá-lo.
+**Narrador**
+
+Ren espera até que o homem se incline sobre a mesa. A sombra projetada atrás do avental se alonga junto aos pés dele — e Ren desaparece do sótão.
+
+O primeiro golpe chega antes que o homem compreenda que existe alguém às suas costas. Os dois pés de Ren atingem-lhe as costas e o lançam contra a borda da mesa. Cera, penas e folhas saltam. Antes que ele consiga se virar, Ren pousa e desfere um segundo golpe curto contra suas costelas, controlando ambos para não matar.
+
+O homem perde o ar, mas não cai. É mais resistente do que parecia. Ele se apoia na mesa, ainda consciente, enquanto a mulher apenas começa a reagir à aparição impossível de Ren.
+
+— Queima a matriz! — ele berra.
+
+A surpresa custa à mulher seu primeiro instante. Sua mão encontra o cabo da faca, mas ela ainda não alcança os papéis nem a pequena placa sobre a mesa.
+
+O homem reage primeiro. Em vez de procurar a besta, lança o corpo sobre Ren, tentando prendê-lo enquanto a comparsa recupera a iniciativa. Ren gira para escapar; o pó sob seus pés trai por um dedo o movimento. Embora não consiga dominar os braços do shinobi, o homem fecha uma das mãos no tecido e prende o corpo de Ren contra o seu.
+
+Ren está agarrado, não imobilizado: seu deslocamento fica impedido, mas ele ainda pode atacar normalmente, tentar escapar ou usar uma habilidade que não dependa de deslocamento. É novamente o turno de Ren. A mulher agirá depois dele e recebeu a ordem explícita de destruir a matriz.
+
+MECÂNICA — Iniciativa: homem 21; Ren 17; mulher 8. Os dois ocupantes começaram surpreendidos.
+MECÂNICA — Primeiro golpe não letal, com vantagem de Passo das Sombras: 23 contra CA 12; acerto, 5 de dano contundente.
+MECÂNICA — Segundo golpe não letal: 24 contra CA 12; acerto, 5 de dano contundente. O homem permanece consciente com 14/24 PV; nenhum golpe sobrou para a mulher.
+MECÂNICA — A mulher perdeu o primeiro turno pela surpresa.
+MECÂNICA — Agarrão do homem: Atletismo 9 contra Acrobacia 8; sucesso. Ren está agarrado, com deslocamento 0, mas não está impedido de atacar.
+MECÂNICA — Passo das Sombras não consumiu Ki. Passos sem Pegadas continua ativo.
+
+<!-- turno-transacional:s015-9ba91955a29c616f -->
+**Jogador**
+
+Ren usa Passo das Sombras para surgir ao lado da mulher e realiza seus ataques nela. Só falaria em kozakurano se confirmasse que ela é Kajiwara Shizune.
+**Narrador**
+
+A mão do homem ainda prende o tecido de Ren quando o corpo do shinobi se desfaz na sombra. Os dedos robustos se fecham no vazio.
+
+Ren reaparece junto à mulher, entre ela e a porta lateral. A curta distância elimina qualquer dúvida que o perfil visto do sótão pudesse deixar: aquele não é o rosto de Kajiwara Shizune. É uma mulher de feições locais, com pó claro acumulado junto aos cabelos e nenhuma marca que confirme a Senhora do Selo Negro. Ren não pronuncia o nome.
+
+Seu primeiro golpe atinge o braço que procurava a faca e o lança contra o corpo dela. O segundo vem girando baixo e sobe contra suas costelas, arrancando-lhe o ar e projetando-a contra a lateral da mesa. Ren controla a força para não matá-la.
+
+Ela quase desaba. Uma das mãos precisa apoiar-se na madeira; ainda assim, permanece consciente. Seus olhos não procuram Ren nem a saída — procuram a lamparina coberta, os papéis e a matriz.
+
+Em vez de atacar, a mulher tenta romper a distância e lançar-se para a mesa. Ela não se protege nem recua com cuidado. Ao abandonar o alcance de Ren dessa forma, oferece-lhe uma abertura imediata antes que possa tocar na lamparina ou na matriz.
+
+Ren ainda possui sua reação. Um ataque de oportunidade não letal pode ser feito agora contra a mulher; se acertar e causar ao menos três pontos de dano, ela cairá inconsciente antes de alcançar a mesa.
+
+MECÂNICA — Passo das Sombras encerra o agarrão sem teste e não consome Ki.
+MECÂNICA — Primeiro ataque, com vantagem de Passo das Sombras: 22 contra CA 14; acerto, 7 de dano contundente.
+MECÂNICA — Segundo ataque: 22 contra CA 14; acerto, 10 de dano contundente. A mulher permanece consciente com 3/20 PV.
+MECÂNICA — O rosto observado de perto não confirma Kajiwara Shizune; a fala condicional não ocorre.
+MECÂNICA — A mulher tenta sair do alcance sem usar Desengajar, provocando ataque de oportunidade. A reação de Ren ainda não foi gasta.
+
+<!-- turno-transacional:s015-82098718fd464d36 -->
+**Jogador**
+
+Ren realiza o ataque de oportunidade para impedir a mulher de alcançar a mesa. Se pudesse se deslocar antes do homem, colocaria o corpo entre ele e as provas.
+**Narrador**
+
+A mulher dá o primeiro passo em direção à lamparina. Ren gira sobre o calcanhar e acerta a lateral de seu pescoço com a medida exata de força. Ela perde o controle das pernas e cai antes de conseguir estender a mão sobre a mesa. Continua respirando, inconsciente e estável.
+
+Ren não pode aproveitar o movimento para atravessar a sala: o golpe consumiu sua reação, não lhe concedeu um novo turno. O homem já está junto às provas — e reage antes que Ren possa se reposicionar.
+
+Ele não tenta alcançar a besta. Agarra a lamparina coberta e a golpeia contra a borda da mesa. O reservatório se rompe. Óleo e chama se espalham pelas folhas soltas, subindo depressa entre a cera, as penas e os rolos de papel.
+
+A pequena matriz ainda está visível, caída perto da borda do foco de fogo. Não foi destruída, mas as primeiras chamas já lambem os papéis ao redor dela. O homem permanece do outro lado da mesa, ferido e ofegante.
+
+É o turno de Ren. Ele está a poucos passos da mesa. A mulher está inconsciente; a matriz ainda pode ser alcançada, mas o fogo começou a consumir a documentação.
+
+MECÂNICA — Ataque de oportunidade não letal: 15 contra CA 14; acerto, 10 de dano contundente. A mulher cai inconsciente e estável.
+MECÂNICA — A reação permite o ataque, mas não permite que Ren gaste deslocamento fora do próprio turno.
+MECÂNICA — Na iniciativa 21 da rodada seguinte, o homem usa sua ação para romper a lamparina sobre a mesa. O incêndio começou, mas a matriz ainda não foi destruída.
+MECÂNICA — Estado imediato: Ren 52/52 PV; homem 14/24 PV; mulher inconsciente e estável; reação de Ren gasta até o início do próximo turno; Passos sem Pegadas permanece ativo.
+
+<!-- turno-transacional:s015-cedae573fb3175e1 -->
+**Jogador**
+
+Ren gasta 1 Ki em Passo do Vento para Desengajar, pega a matriz, usa a ação para salvar os documentos e recua. No turno seguinte, ataca novamente o homem.
+**Narrador**
+
+Ren atravessa os poucos passos até a mesa antes que as chamas fechem o espaço. Com uma mão, arranca a pequena matriz da borda do óleo; com a outra, puxa de uma vez o rolo principal e usa uma folha grossa de feltro, deixada entre as ferramentas, para varrer e abafar o restante.
+
+A rapidez preserva quase todo o conjunto útil. Ren recupera uma matriz de madeira dura, entalhada em reverso; uma folha enrolada com o mesmo formato geral da ordem entregue a Maerra; três folhas de ensaio com impressões incompletas de selo; e um pequeno maço de instruções, chamuscado nas bordas, mas ainda legível. Papéis soltos sem escrita aproveitável continuam queimando sobre a mesa.
+
+O homem tenta fechar-lhe a passagem, mas Ren canaliza o ki nas pernas, desliza para fora de seu alcance e recua levando as provas junto ao corpo. Nenhum golpe o alcança durante o movimento.
+
+Quando a nova abertura surge, o homem arranca a besta debaixo da mesa e dispara. O virote atravessa o tecido e se enterra no ombro de Ren. A dor quebra o ritmo de sua respiração por um instante, mas não desfaz a concentração que sustenta Passos sem Pegadas.
+
+No turno seguinte, conforme havia decidido, Ren volta sobre ele. O primeiro golpe entra por baixo da guarda e atinge o centro do peito. O homem cambaleia, quase sem ar. O segundo passa junto ao rosto quando ele se deixa cair contra a mesa queimada.
+
+O homem ainda permanece consciente, muito ferido. Ren já realizou os dois ataques de sua ação, mas ainda possui a ação bônus deste turno. Como atacou, pode fazer gratuitamente mais um golpe desarmado por Artes Marciais.
+
+MECÂNICA — Ren gasta 1 Ki em Passo do Vento, ficando com 1/7, e usa Desengajar.
+MECÂNICA — A matriz é recolhida pela interação com objeto. Prestidigitação para salvar os documentos: 22 contra CD 14; sucesso. O conjunto probatório útil é preservado.
+MECÂNICA — Disparo de besta do homem: 19 contra CA 17; acerto, 7 de dano perfurante. Ren fica com 45/52 PV.
+MECÂNICA — Concentração em Passos sem Pegadas: Constituição 20 contra CD 10; sucesso.
+MECÂNICA — Primeiro ataque não letal de Ren: 22 contra CA 12; acerto, 8 de dano. O homem fica com 6/24 PV.
+MECÂNICA — Segundo ataque não letal de Ren: 10 contra CA 12; erro.
+MECÂNICA — Ren ainda possui sua ação bônus e pode realizar um golpe desarmado de Artes Marciais sem gastar Ki.

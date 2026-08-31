@@ -1,0 +1,49 @@
+schema_recompensas_sidequest: 1
+natureza: reservado
+mission_id: sqe-47ea56e74d59f1c0
+quest_id: qse-c721ace29e628024
+quest_file: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
+pacote_task40_digest: ea47bb7a5ee0f46011bccec1910af353f2268300f12932015dc7188853ed9186
+contrato_recompensa:
+  recompensa_principal:
+    id: contato_verificador_transferencias
+    tipo: contato
+    categoria: recompensa_principal
+    descricao: Um contato institucional capaz de verificar futuras ordens de transferência
+      e encaminhamentos de caridade.
+    condicao: A verificação é concluída e o profissional envolvido decide manter um
+      canal legítimo com os protetores do abrigo.
+    valor_aproximado: especial
+    efeito:
+      ativo_id: contato_verificador_transferencias
+      nome: Contato de verificação de transferências
+      descricao: Canal institucional legítimo para consultar futuras ordens de transferência
+        e encaminhamentos de caridade.
+    autoridade_concedente:
+      tipo: quest_giver
+      id: maerra_thandrel
+  recompensas_opcionais: []
+  recompensas_descobríveis: []
+  recompensas_condicionais: []
+  perdas_possiveis: []
+  orcamento:
+    tier: 2
+    periculosidade: media
+    pontos_disponiveis: 5
+    pontos_material: 0
+    max_itens: 3
+    itens: 0
+    teto_valor: refinar_quando_houver_local_canonico
+estado:
+  recompensas:
+    contato_verificador_transferencias:
+      estado: pendente
+      tentativas_descoberta: 0
+      transacao: null
+  perdas: {}
+  historico_recente: []
+guardrails:
+  descoberta_nao_e_obtencao: true
+  perda_exige_contrato_e_prova: true
+  efeito_real_transacional: true
+  scheduler: proibido
