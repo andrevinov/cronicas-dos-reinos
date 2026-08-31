@@ -54,18 +54,28 @@ class LiveTest(unittest.TestCase):
 """,
                 encoding="utf-8",
             )
+            (repo / "tests/test_revisado.py").write_text(
+                """
+import unittest
+class RevisadoTest(unittest.TestCase):
+    def test_puro(self):
+        self.assertTrue(True)
+""",
+                encoding="utf-8",
+            )
             (repo / "estado/estado-atual.yaml").write_text("sessao: 9\n", encoding="utf-8")
             (repo / "tests/live-state-freeze-review.yaml").write_text(
                 """schema_revisao_congelamento_estado_vivo: 1
 arquivos:
-  tests/test_outro.py:
+  tests/test_revisado.py:
     status: justificado
-    motivo: Este registro sintético existe apenas para demonstrar validação explícita.
+    motivo: Este registro sintético válido deixa deliberadamente o freeze novo sem revisão.
 """,
                 encoding="utf-8",
             )
-            with self.assertRaises(mod.LiveStateFreezeReviewError):
-                mod.check(repo)
+            report = mod.check(repo)
+            self.assertFalse(report["ok"])
+            self.assertEqual(report["nao_revisados"], ["tests/test_live.py"])
 
     def test_manifesto_rejeita_motivo_vazio(self):
         with tempfile.TemporaryDirectory() as temp:
