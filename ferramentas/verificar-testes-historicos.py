@@ -139,7 +139,11 @@ def check(repo: Path = ROOT) -> dict[str, Any]:
     entries = load_review(repo)
     auditor = _load_auditor()
     inventory = auditor.inventory(repo / "tests", repo)
-    current_historical = set(inventory["classificacoes"].get("task_historica", []))
+    current_historical = {
+        item["arquivo"]
+        for item in inventory["arquivos"]
+        if "task_historica" in item.get("classificacoes", [])
+    }
     allowed_current = {
         source
         for source, entry in entries.items()
