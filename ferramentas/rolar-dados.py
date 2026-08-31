@@ -159,13 +159,26 @@ def _apply_actor(argv: list[str]) -> tuple[list[str], str | None]:
     has_disadvantage = "--desvantagem" in clean
     if has_advantage and has_disadvantage:
         raise FeatContextError("vantagem e desvantagem não podem ser declaradas juntas")
-    if has_disadvantage:
-        clean.remove("--desvantagem")
-        return clean, "Actor: vantagem por outra identidade cancelou a desvantagem; rolagem normal"
-    if has_advantage:
-        return clean, "Actor: vantagem por outra identidade já estava representada"
-    clean.append("--vantagem")
-    return clean, "Actor: vantagem por outra identidade aplicada"
+
+    current = (
+        "desvantagem"
+        if has_disadvantage
+        else "vantagem"
+        if has_advantage
+        else "normal"
+    )
+    combined = _core.combine_roll_modes(current, "vantagem")
+    clean = [token for token in clean if token not in {"--vantagem", "--desvantagem"}]
+    if combined != "normal":
+        clean.append(f"--{combined}")
+
+    if current == "desvantagem":
+        note = "Actor: vantagem por outra identidade cancelou a desvantagem; rolagem normal"
+    elif current == "vantagem":
+        note = "Actor: vantagem por outra identidade já estava representada"
+    else:
+        note = "Actor: vantagem por outra identidade aplicada"
+    return clean, note
 
 
 def _prepare_argv_context(argv: list[str]) -> tuple[list[str], dict[str, Any], str | None]:

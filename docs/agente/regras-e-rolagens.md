@@ -59,6 +59,14 @@ Enquanto a cobertura do catálogo não for completa, termo não catalogado prese
 
 Qualquer comando `ren ...` carrega e valida a ficha antes de chamar o RNG. Ficha ausente ou mecanicamente inválida deve falhar fechado antes da rolagem, em vez de recorrer a valores Python antigos ou defaults silenciosos.
 
+## Núcleo mecânico 5.5e
+
+`ferramentas/mecanica_dnd_5_5e.py` concentra as primitivas mecânicas do ruleset alvo: dados, d20, vantagem/desvantagem, testes, salvaguardas, ataques, críticos e dano. O módulo é interno e genérico: não conhece Ren, ficha, campanha nem apresentação textual. `dados` permanece a CLI pública e adapta entradas/saídas para esse núcleo.
+
+Toda entrada mecânica que puder ser validada sem aleatoriedade deve falhar antes do RNG. Em particular, modo de rolagem, expressão de dados, modificadores e alvos inválidos não podem consumir dado. 1 e 20 naturais têm tratamento automático em jogadas de ataque; testes e salvaguardas continuam resolvidos pelo total contra a CD, sem sucesso/falha automática apenas pelo valor natural. Crítico dobra os dados de dano, não o modificador.
+
+A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate de migração não for concluído, seu uso por `dados` fica restrito às primitivas cuja semântica é compatível com o ruleset operacional. Nenhuma regra exclusiva de 5.5e pode entrar silenciosamente na narração antes da ativação final.
+
 ## Filosofia de fidelidade: aproximadamente 70%
 
 A meta de 70% representa filosofia, não métrica matemática. Aplicar regras quando elas sustentarem risco, tensão, estratégia, diferenciação de personagens, uso significativo de recursos, imparcialidade, consequência ou surpresa legítima.
