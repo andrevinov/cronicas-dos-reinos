@@ -28,6 +28,15 @@ jobs:
           else
             python .github/task7_apply.py
           fi
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('ferramentas/verificar-integridade.py')
+          text = path.read_text(encoding='utf-8')
+          old = '''import gate_adnd\n\n\nclass DuplicateKeyLoader'''
+          new = '''try:\n    import gate_adnd\nexcept ModuleNotFoundError:\n    import importlib.util\n\n    _gate_path = Path(__file__).with_name("gate_adnd.py")\n    _gate_spec = importlib.util.spec_from_file_location("gate_adnd", _gate_path)\n    if _gate_spec is None or _gate_spec.loader is None:\n        raise\n    gate_adnd = importlib.util.module_from_spec(_gate_spec)\n    _gate_spec.loader.exec_module(gate_adnd)\n\n\nclass DuplicateKeyLoader'''
+          if old in text:
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
       - name: Gate check
         run: python ferramentas/gate_adnd.py check
       - name: Targeted tests
