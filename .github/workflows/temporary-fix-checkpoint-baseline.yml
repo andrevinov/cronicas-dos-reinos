@@ -87,10 +87,10 @@ jobs:
 
           replace(
               "tests/test_quest_rewards_discoveries_losses.py",
-              "            shutil.copy2(ROOT / rel, dst)\n        shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)\n",
-              "            shutil.copy2(ROOT / rel, dst)\n"
+              "            dst = self.repo / rel; dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ROOT / rel, dst)\n        shutil.copytree(ROOT / \"cenario/locais\", self.repo / \"cenario/locais\")\n",
+              "            dst = self.repo / rel; dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ROOT / rel, dst)\n"
               "        task41.isolate_opportunity_state(self.repo)\n"
-              "        shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)\n",
+              "        shutil.copytree(ROOT / \"cenario/locais\", self.repo / \"cenario/locais\")\n",
           )
 
           replace(
