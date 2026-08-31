@@ -70,10 +70,9 @@ def _bytes(value: Any) -> int:
 
 def authoring_contract(package: dict[str, Any]) -> dict[str, Any]:
     """Contrato compacto que acompanha somente a preparação rara Task40."""
-    horizon = _map(package.get("horizonte_intencoes_canonicas"), "pacote.horizonte")
+    _map(package, "pacote Task40")
     contract = {
         "schema_capsula_autoral": SCHEMA,
-        "chave_transacao": "sidequest_emergente",
         "forma": {
             "sidequest_emergente": ["oferta", CAPSULE_KEY],
             "oferta": ["materializar=true", "evidencia", "resumo"],
@@ -105,26 +104,12 @@ def authoring_contract(package: dict[str, Any]) -> dict[str, Any]:
             "adversidade.fonte_conhecimento": sorted(adversarial.KNOWLEDGE_SOURCES),
             "progressao.regra": sorted(progress.SUCCESS_RULES | progress.FAILURE_RULES),
         },
-        "contexto": {
-            "intencoes_canonicas_disponiveis": [
-                item.get("evento_id")
-                for item in (horizon.get("compativeis") or [])
-                if isinstance(item, dict) and item.get("evento_id") is not None
-            ],
-            "juppongatana_disponiveis": [
-                item.get("id")
-                for item in (package.get("juppongatana_possiveis") or [])
-                if isinstance(item, dict) and item.get("id") is not None
-            ],
-            "tier_recompensa": (package.get("envelope_recompensa") or {}).get("tier"),
-            "teto_recompensa": (package.get("envelope_recompensa") or {}).get("teto_valor"),
-        },
         "regras": [
-            "preencha uma única cápsula; não consulte schemas internos Tasks41/43/44/45",
-            "não escreva escolha, fala, intenção ou emoção futura de Ren",
-            "a oferta só materializa se evidencia aparecer literalmente na narracao",
-            "envie um único JSON completo por stdin no mesmo cronica concluir; não use write_stdin interativo nem arquivo temporário",
-            "os validadores existentes continuam autoritativos e falham antes do writer",
+            "uma cápsula; não abra schemas Tasks41/43/44/45",
+            "não escreva ação/decisão/fala/emoção futura de Ren",
+            "oferta exige evidencia literal na narracao",
+            "um JSON por stdin no mesmo cronica concluir; sem write_stdin ou arquivo temporário",
+            "validadores existentes são autoritativos e rodam antes do writer",
         ],
     }
     size = _bytes(contract)
