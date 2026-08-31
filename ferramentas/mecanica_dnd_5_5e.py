@@ -226,8 +226,11 @@ def perform_save(
     return resolve_save_roll(roll, checked_target)
 
 
-def resolve_attack_roll(roll: D20Roll, armor_class: int) -> AttackResolution:
-    checked_ac = _integer(armor_class, "CA")
+def resolve_attack_roll(
+    roll: D20Roll,
+    armor_class: int | None,
+) -> AttackResolution:
+    checked_ac = _optional_integer(armor_class, "CA")
     natural = roll.chosen
     if natural == 1:
         return AttackResolution(
@@ -244,6 +247,14 @@ def resolve_attack_roll(roll: D20Roll, armor_class: int) -> AttackResolution:
             hit=True,
             critical=True,
             automatic="critico",
+        )
+    if checked_ac is None:
+        return AttackResolution(
+            roll=roll,
+            armor_class=None,
+            hit=None,
+            critical=False,
+            automatic=None,
         )
     return AttackResolution(
         roll=roll,
@@ -265,14 +276,6 @@ def perform_attack(
     checked_ac = _optional_integer(armor_class, "CA")
     checked_mode = validate_roll_mode(mode)
     roll = roll_d20(checked_bonus, checked_mode, rng=rng)
-    if checked_ac is None:
-        return AttackResolution(
-            roll=roll,
-            armor_class=None,
-            hit=None,
-            critical=False,
-            automatic=None,
-        )
     return resolve_attack_roll(roll, checked_ac)
 
 
