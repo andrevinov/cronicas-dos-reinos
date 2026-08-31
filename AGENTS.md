@@ -62,7 +62,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo.
 
-Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin; **não criar** `.turno-temporario.json`.
+Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json`.
 
 **Direção canônica é destino, nunca ação.** `endpoints.py direcao <id>`; `direcoes.py avancar` exige fonte canônica, evidência literal e nota. Encontros simultâneos: resolver NPCs antes de mutar; aliases colapsados/ordenados; ambiguidade falha antes de efeito.
 
@@ -103,7 +103,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 Ao pedido **“inicie uma sessão”**, **não pedir que ele rode CLI manualmente**: `poetry run cronica sessao status`; se `entre_sessoes`, `poetry run cronica sessao iniciar`. Use recap/retomada; não leia transcrição se bastar. Nunca pular sessão.
 
-Level-up entre sessões: `poetry run cronica progressao status|aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
+Level-up entre sessões: `poetry run cronica progressao status` e `poetry run cronica progressao aplicar`; níveis 8–17 exigem milestone Juppongatana registrado.
 
 ## 8. Regras, dados e segredos
 
