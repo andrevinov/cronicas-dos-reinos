@@ -45,4 +45,35 @@ if old_shadow not in text:
 text = text.replace(old_shadow, new_shadow, 1)
 
 path.write_text(text, encoding="utf-8")
+
+# O teste integrado da Task 7 precisa seguir o ruleset vivo após o cutover:
+# 5.5e entra no runtime e a ponte 2014, mesmo explicitamente declarada, é recusada
+# quando usada como destino mecânico corrente.
+test_path = Path("tests/test_gate_adnd.py")
+test_text = test_path.read_text(encoding="utf-8")
+old = '''        approved = dict(base)
+        approved["proveniencia"] = provenance_2014(fallback=True)
+        contract = mecanica_cronica.normalize_spec(ROOT, approved)
+        self.assertEqual(contract["proveniencia"]["edicao_origem"], "adnd_2e")
+        self.assertTrue(contract["proveniencia"]["fallback_2014"]["declarado"])
+
+        future = dict(base)
+        future["proveniencia"] = provenance_55()
+        with self.assertRaisesRegex(mecanica_cronica.MechanicalContractError, "gate AD&D"):
+            mecanica_cronica.normalize_spec(ROOT, future)'''
+new = '''        approved = dict(base)
+        approved["proveniencia"] = provenance_55()
+        contract = mecanica_cronica.normalize_spec(ROOT, approved)
+        self.assertEqual(contract["proveniencia"]["edicao_origem"], "adnd_2e")
+        self.assertEqual(contract["proveniencia"]["adaptado_para"], "dnd_5_5e")
+        self.assertNotIn("fallback_2014", contract["proveniencia"])
+
+        legacy = dict(base)
+        legacy["proveniencia"] = provenance_2014(fallback=True)
+        with self.assertRaisesRegex(mecanica_cronica.MechanicalContractError, "gate AD&D"):
+            mecanica_cronica.normalize_spec(ROOT, legacy)'''
+if old not in test_text:
+    raise SystemExit("Task 7 integration assertion marker not found")
+test_path.write_text(test_text.replace(old, new, 1), encoding="utf-8")
+
 print("Task 8 staging prepatch applied.")
