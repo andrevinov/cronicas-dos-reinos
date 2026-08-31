@@ -84,6 +84,10 @@ Por isso:
 
 ## Adaptação de material antigo
 
+A Task 7 separa formalmente lore de mecânica. Lore e aventura de AD&D podem ser usados sem envelope especial. Uma adaptação que produza números, testes, statblock, recurso ou outra mecânica ativa precisa declarar `proveniencia_mecanica` e passar por `ferramentas/gate_adnd.py` antes de chegar ao runtime. Adaptações persistentes entram em `regras/adaptacoes-mecanicas.yaml`.
+
+THAC0, CA descendente, categorias antigas de salvamento e outros campos mecânicos de AD&D nunca são persistidos como regra operacional; são somente insumo para construir uma equivalência moderna. Uma conversão para 2014 é fallback excepcional e exige declaração, motivo e decisão explícita.
+
 Ao adaptar material de AD&D para o ruleset atual:
 
 * preservar nomes, função no cenário, tom e conflito;

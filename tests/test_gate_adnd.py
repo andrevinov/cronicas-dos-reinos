@@ -13,6 +13,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import gate_adnd
+import mecanica_cronica
 
 
 class GateRepo:
@@ -198,6 +199,30 @@ class FormalADNDGateTest(unittest.TestCase):
                 },
             )
             self.assertEqual(errors, [])
+
+    def test_cronica_congela_proveniencia_aprovada_e_recusa_destino_nao_ativo(self) -> None:
+        base = {
+            "regras": ["teste_d20_basico"],
+            "obrigacoes": [
+                {
+                    "id": "teste_adaptado",
+                    "tipo": "teste",
+                    "regra": "teste_d20_basico",
+                    "bonus": 3,
+                    "alvo": 14,
+                }
+            ],
+        }
+        approved = dict(base)
+        approved["proveniencia"] = provenance_2014(fallback=True)
+        contract = mecanica_cronica.normalize_spec(ROOT, approved)
+        self.assertEqual(contract["proveniencia"]["edicao_origem"], "adnd_2e")
+        self.assertTrue(contract["proveniencia"]["fallback_2014"]["declarado"])
+
+        future = dict(base)
+        future["proveniencia"] = provenance_55()
+        with self.assertRaisesRegex(mecanica_cronica.MechanicalContractError, "gate AD&D"):
+            mecanica_cronica.normalize_spec(ROOT, future)
 
     def test_verificador_principal_chama_subgate_adnd(self) -> None:
         source = (ROOT / "ferramentas/verificar-integridade.py").read_text(encoding="utf-8")

@@ -17,6 +17,7 @@ from typing import Any
 import yaml
 
 import catalogo_regras
+import gate_adnd
 import mecanica_dnd_5_5e as dnd
 
 SCHEMA = 1
@@ -190,9 +191,18 @@ def normalize_spec(repo: Path, spec: dict[str, Any] | None) -> dict[str, Any] | 
     raw = _map(spec, "mecanica")
     if not raw:
         return None
-    extra = set(raw) - {"regras", "obrigacoes"}
+    extra = set(raw) - {"regras", "obrigacoes", "proveniencia"}
     if extra:
         raise MechanicalContractError(f"campos mecânicos desconhecidos: {sorted(extra)}")
+
+    provenance = None
+    if raw.get("proveniencia") is not None:
+        try:
+            provenance = gate_adnd.validate_runtime_provenance(
+                repo, raw["proveniencia"], raw
+            )
+        except gate_adnd.ADNDGateError as exc:
+            raise MechanicalContractError(f"gate AD&D: {exc}") from exc
 
     try:
         document = catalogo_regras.load_catalog(repo)
@@ -252,17 +262,20 @@ def normalize_spec(repo: Path, spec: dict[str, Any] | None) -> dict[str, Any] | 
         if available - spent < 0:
             raise MechanicalContractError(f"gasto deixaria {resource} negativo")
 
-    return {
+    contract = {
         "schema_mecanica_cronica": SCHEMA,
         "ruleset": _campaign_ruleset(repo),
         "regras": rules,
         "obrigacoes": obligations,
         "snapshot_recursos": snapshot_by_resource,
     }
+    if provenance is not None:
+        contract["proveniencia"] = provenance
+    return contract
 
 
 def public_summary(contract: dict[str, Any]) -> dict[str, Any]:
-    return {
+    summary = {
         "ruleset": contract["ruleset"],
         "regras": list(contract["regras"]),
         "obrigacoes": [
@@ -276,6 +289,16 @@ def public_summary(contract: dict[str, Any]) -> dict[str, Any]:
         ],
         "resolucao": "registrar uma resolução por obrigação em transacao.mecanica.resolucoes",
     }
+    provenance = contract.get("proveniencia")
+    if isinstance(provenance, dict):
+        summary["proveniencia"] = {
+            "edicao_origem": provenance.get("edicao_origem"),
+            "adaptado_para": provenance.get("adaptado_para"),
+            "fonte_mecanica": provenance.get("fonte_mecanica"),
+            **({"decisao": provenance["decisao"]} if provenance.get("decisao") else {}),
+            **({"fallback_2014": provenance["fallback_2014"]} if provenance.get("fallback_2014") else {}),
+        }
+    return summary
 
 
 def attach_to_prepare(

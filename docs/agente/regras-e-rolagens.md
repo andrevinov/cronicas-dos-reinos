@@ -45,6 +45,14 @@ A migração é prospectiva: preservar decisões antigas até substituição exp
 
 Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que entre em jogo é adaptada para o `ruleset.atual`. Assim, o alvo da conversão muda de 2014 para 5.5e somente quando a ativação final ocorrer.
 
+### Gate formal de material AD&D
+
+A Task 7 torna essa disciplina executável. Prosa narrativa de AD&D não paga gate nem precisa de versão mecânica. Qualquer material AD&D marcado como mecânico ativo/preparado deve declarar `proveniencia_mecanica.edicao_origem`, `adaptado_para` e `fonte_mecanica`; adaptações persistentes são registradas em `regras/adaptacoes-mecanicas.yaml`.
+
+O validador recusa transporte literal de THAC0, CA descendente, salvamentos antigos e campos equivalentes. Para material preparado, AD&D→5.5e é válido como alvo de migração. Para entrar no runtime, porém, `adaptado_para` precisa ser igual ao `ruleset.atual`. Enquanto 2014 estiver ativo, uso AD&D→2014 só passa com `fallback_2014` explicitamente declarado, com motivo e decisão; depois da Task 8 esse mesmo ticket/material deixa de ser elegível se o ruleset mudar.
+
+`cronica preparar --mecanica-json` aceita `proveniencia` somente quando houver esse vínculo com fonte antiga; o gate roda antes de o contrato ser anexado ao ticket. A ausência de `--mecanica-json` continua não abrindo nenhum material mecânico.
+
 ## Catálogo executável de regras
 
 `regras/catalogo.yaml` é o índice mecânico dirigido introduzido pela Task 2. Ele não substitui os manuais humanos nem muda a hierarquia da Task 1: cada entrada identifica `id`, aliases, domínio, ruleset, autoridade, fonte humana, resumo interno, executor, persistência e eventual regra da casa.

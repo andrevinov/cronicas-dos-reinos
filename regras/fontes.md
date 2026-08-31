@@ -29,6 +29,21 @@ Compatibilidade também é explícita:
 - depois da ativação, material 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e houver aprovação explícita;
 - material de AD&D é sempre adaptado para o ruleset atual, nunca aplicado mecanicamente de forma literal.
 
+### Gate formal AD&D → ruleset moderno
+
+A Task 7 torna essa última regra verificável. Conteúdo puramente narrativo de AD&D continua livre e não precisa carregar metadados mecânicos. Quando uma preparação de AD&D passa a conter **mecânica ativa ou preparada**, ela deve atravessar `ferramentas/gate_adnd.py` e declarar `proveniencia_mecanica` com:
+
+- `edicao_origem`: `adnd_1e` ou `adnd_2e`;
+- `adaptado_para`: o ruleset moderno da conversão;
+- `fonte_mecanica.ruleset` e `fonte_mecanica.referencia`: autoridade moderna usada para reconstruir os números;
+- `decisao`, quando uma decisão de campanha participar da conversão.
+
+`regras/adaptacoes-mecanicas.yaml` registra adaptações persistentes. THAC0, CA descendente, tabelas antigas de salvamento e campos equivalentes podem ser consultados como **entrada histórica de conversão**, mas não podem sobreviver no bloco mecânico preparado nem entrar no runtime.
+
+Durante a migração, `dnd_5_5e` é o destino preferencial para novas adaptações persistentes. Se uma adaptação precisar permanecer em `dnd_5e_2014`, ela deve declarar `fallback_2014.declarado=true`, motivo e decisão explícita. Isso impede que uma conversão provisória de 2014 sobreviva silenciosamente à ativação final.
+
+No runtime vale ainda uma segunda barreira: `adaptado_para` precisa coincidir com `sistema.ruleset.atual`. Portanto uma adaptação AD&D→5.5e pode ser preparada e validada agora, mas não roda em sessão enquanto 2014 continuar ativo.
+
 ---
 
 ## Catálogo estruturado de regras

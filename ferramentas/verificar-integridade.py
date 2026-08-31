@@ -19,6 +19,18 @@ try:
 except ImportError as exc:
     raise SystemExit("PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt") from exc
 
+try:
+    import gate_adnd
+except ModuleNotFoundError:
+    import importlib.util
+
+    _gate_path = Path(__file__).with_name("gate_adnd.py")
+    _gate_spec = importlib.util.spec_from_file_location("gate_adnd", _gate_path)
+    if _gate_spec is None or _gate_spec.loader is None:
+        raise
+    gate_adnd = importlib.util.module_from_spec(_gate_spec)
+    _gate_spec.loader.exec_module(gate_adnd)
+
 
 class DuplicateKeyLoader(yaml.SafeLoader):
     """SafeLoader que recusa chaves YAML duplicadas silenciosamente."""
@@ -88,12 +100,14 @@ REQUIRED_PATHS = (
     "regras/progressao.md",
     "regras/regras-da-casa.md",
     "regras/resolucao-de-acoes.md",
+    "regras/adaptacoes-mecanicas.yaml",
     "runtime/README.md",
     RUNTIME_CONTEXT,
     RUNTIME_SCENE,
     RUNTIME_EVENTS,
     "ferramentas/gerar-runtime.py",
     "ferramentas/texturas.py",
+    "ferramentas/gate_adnd.py",
     "cenario/texturas/index.yaml",
     HISTORICAL_BASELINE.as_posix(),
     *AGENT_DOCS,
@@ -342,6 +356,7 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
                 errors.append(f"YAML inválido em {rel}: {exc}")
 
     errors.extend(validate_agent_router(repo, yaml_docs))
+    errors.extend(gate_adnd.validate_repository(repo, yaml_docs))
 
     campanha = yaml_docs.get("campanha.yaml")
     estado = yaml_docs.get("estado/estado-atual.yaml")
