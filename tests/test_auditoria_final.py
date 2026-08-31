@@ -83,7 +83,12 @@ class AuditoriaFinalTest(unittest.TestCase):
         self.assertFalse(without_tests["suite_completa_executada"])
         self.assertEqual(without_tests["comandos"], 11)
         self.assertFalse(any("unittest" in command for command in executed))
-        self.assertTrue(any("verificar-integridade.py" in command for command in executed))
+        self.assertTrue(
+            any(
+                any("verificar-integridade.py" in part for part in command)
+                for command in executed
+            )
+        )
 
         executed.clear()
         with patch.object(mod, "run_command", side_effect=fake_run_command):
