@@ -22,7 +22,7 @@ sistema:
         requisitos:
           task_1_contrato: true
           task_2_catalogo: true
-          task_3_ficha_fonte_unica: false
+          task_3_ficha_fonte_unica: true
           task_4_nucleo_mecanico: false
           task_5_conversao_ren: false
           task_6_integracao_cronica: false
@@ -76,6 +76,7 @@ estrutura:
     limites_de_conteudo: "narracao/limites.md"
     ferramentas: "ferramentas/README.md"
     rolador_de_dados: "ferramentas/rolar-dados.py"
+    adaptador_ficha_ren: "ferramentas/ficha_ren.py"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
     regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
     regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"

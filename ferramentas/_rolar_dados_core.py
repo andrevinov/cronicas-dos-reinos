@@ -10,6 +10,8 @@ import unicodedata
 from dataclasses import dataclass
 from random import SystemRandom
 
+import ficha_ren
+
 
 RNG = SystemRandom()
 DICE_PATTERN = re.compile(r"^\s*(?:(\d*)d(\d+))\s*([+-]\s*\d+)?\s*$", re.IGNORECASE)
@@ -44,23 +46,6 @@ class D20Roll:
         return self.chosen + self.bonus
 
 
-@dataclass(frozen=True)
-class AttackProfile:
-    label: str
-    attack_bonus: int
-    damage: str
-    damage_type: str
-
-
-REN_ABILITIES: dict[str, int] = {
-    "forca": 1,
-    "destreza": 4,
-    "constituicao": 2,
-    "inteligencia": 2,
-    "sabedoria": 3,
-    "carisma": 0,
-}
-
 REN_ABILITY_LABELS: dict[str, str] = {
     "forca": "Força",
     "destreza": "Destreza",
@@ -68,27 +53,6 @@ REN_ABILITY_LABELS: dict[str, str] = {
     "inteligencia": "Inteligência",
     "sabedoria": "Sabedoria",
     "carisma": "Carisma",
-}
-
-REN_SKILLS: dict[str, int] = {
-    "acrobacia": 7,
-    "furtividade": 7,
-    "intuicao": 6,
-    "percepcao": 6,
-    "investigacao": 5,
-    "atletismo": 1,
-    "historia": 2,
-    "religiao": 2,
-    "arcana": 2,
-    "enganacao": 0,
-    "intimidacao": 0,
-    "persuasao": 0,
-    "sobrevivencia": 3,
-    "medicina": 3,
-    "natureza": 2,
-    "prestidigitacao": 4,
-    "atuacao": 0,
-    "lidar_com_animais": 3,
 }
 
 REN_SKILL_LABELS: dict[str, str] = {
@@ -112,25 +76,10 @@ REN_SKILL_LABELS: dict[str, str] = {
     "lidar_com_animais": "Lidar com Animais",
 }
 
-REN_PASSIVES: dict[str, int] = {
-    "percepcao": 21,
-    "investigacao": 20,
-    "intuicao": 16,
-}
-
 REN_PASSIVE_LABELS: dict[str, str] = {
     "percepcao": "Percepção passiva",
     "investigacao": "Investigação passiva",
     "intuicao": "Intuição passiva",
-}
-
-REN_SAVES: dict[str, int] = {
-    "forca": 4,
-    "destreza": 7,
-    "constituicao": 2,
-    "inteligencia": 2,
-    "sabedoria": 3,
-    "carisma": 0,
 }
 
 REN_SAVE_LABELS: dict[str, str] = {
@@ -142,11 +91,12 @@ REN_SAVE_LABELS: dict[str, str] = {
     "carisma": "Carisma",
 }
 
-REN_ATTACKS: dict[str, AttackProfile] = {
-    "golpe_desarmado": AttackProfile("Golpe desarmado", 7, "1d6+4", "contundente"),
-    "wakizashi": AttackProfile("Wakizashi", 7, "1d6+4", "perfurante"),
-    "shuriken": AttackProfile("Shuriken", 7, "1d4+4", "perfurante"),
-}
+AttackProfile = ficha_ren.AttackProfile
+CANONICAL_REN_SHEET = ficha_ren.DEFAULT_SHEET_PATH
+
+
+def load_ren_mechanics() -> ficha_ren.RenMechanics:
+    return ficha_ren.load(CANONICAL_REN_SHEET)
 
 
 def normalize_key(text: str) -> str:
@@ -322,68 +272,78 @@ def cmd_d20(args: argparse.Namespace) -> int:
 
 
 def cmd_ren_list(_: argparse.Namespace) -> int:
+    ren = load_ren_mechanics()
     print("Atributos de Ren:")
-    for name, bonus in sorted(REN_ABILITIES.items()):
+    for name, bonus in sorted(ren.abilities.items()):
         print(f"- {name}: {REN_ABILITY_LABELS[name]} {signed(bonus).replace(' ', '')}")
 
     print("\nPerícias de Ren:")
-    for name, bonus in sorted(REN_SKILLS.items()):
+    for name, bonus in sorted(ren.skills.items()):
         print(f"- {name}: {REN_SKILL_LABELS[name]} {signed(bonus).replace(' ', '')}")
 
     print("\nValores passivos de Ren:")
-    for name, value in sorted(REN_PASSIVES.items()):
+    for name, value in sorted(ren.passives.items()):
         print(f"- {name}: {REN_PASSIVE_LABELS[name]} {value}")
 
     print("\nSalvaguardas de Ren:")
-    for name, bonus in sorted(REN_SAVES.items()):
+    for name, bonus in sorted(ren.saves.items()):
         print(f"- {name}: {REN_SAVE_LABELS[name]} {signed(bonus).replace(' ', '')}")
 
     print("\nAtaques de Ren:")
-    for key, attack in sorted(REN_ATTACKS.items()):
-        print(f"- {key}: ataque {signed(attack.attack_bonus).replace(' ', '')}, dano {attack.damage} {attack.damage_type}")
+    for key, attack in sorted(ren.attacks.items()):
+        print(
+            f"- {key}: ataque {signed(attack.attack_bonus).replace(' ', '')}, "
+            f"dano {attack.damage} {attack.damage_type}"
+        )
     return 0
 
 
 def cmd_ren_ability(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_ABILITIES, args.atributo, "Atributo")
-    bonus = REN_ABILITIES[key] + args.bonus_extra
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.abilities, args.atributo, "Atributo")
+    bonus = ren.abilities[key] + args.bonus_extra
     label = args.label or f"Teste de {REN_ABILITY_LABELS[key]} (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
     return 0
 
 
 def cmd_ren_skill(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_SKILLS, args.nome, "Perícia")
-    bonus = REN_SKILLS[key] + args.bonus_extra
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.skills, args.nome, "Perícia")
+    bonus = ren.skills[key] + args.bonus_extra
     label = args.label or f"Teste de {REN_SKILL_LABELS[key]} (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
     return 0
 
 
 def cmd_ren_passive(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_PASSIVES, args.nome, "Valor passivo")
-    print(f"{REN_PASSIVE_LABELS[key]} (Ren): {REN_PASSIVES[key]}.")
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.passives, args.nome, "Valor passivo")
+    print(f"{REN_PASSIVE_LABELS[key]} (Ren): {ren.passives[key]}.")
     return 0
 
 
 def cmd_ren_save(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_SAVES, args.atributo, "Salvaguarda")
-    bonus = REN_SAVES[key] + args.bonus_extra
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.saves, args.atributo, "Salvaguarda")
+    bonus = ren.saves[key] + args.bonus_extra
     label = args.label or f"Salvaguarda de {REN_SAVE_LABELS[key]} (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
     return 0
 
 
 def cmd_ren_initiative(args: argparse.Namespace) -> int:
-    bonus = 4 + args.bonus_extra
+    ren = load_ren_mechanics()
+    bonus = ren.initiative + args.bonus_extra
     label = args.label or "Iniciativa (Ren)"
     print(format_check(label, roll_d20(bonus, current_mode(args)), None))
     return 0
 
 
 def cmd_ren_attack(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_ATTACKS, args.nome, "Ataque")
-    attack = REN_ATTACKS[key]
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.attacks, args.nome, "Ataque")
+    attack = ren.attacks[key]
     label = args.label or f"Ataque com {attack.label} (Ren)"
     print(
         format_attack(
@@ -399,12 +359,16 @@ def cmd_ren_attack(args: argparse.Namespace) -> int:
 
 
 def cmd_ren_damage(args: argparse.Namespace) -> int:
-    key = resolve_key(REN_ATTACKS, args.nome, "Ataque")
-    attack = REN_ATTACKS[key]
+    ren = load_ren_mechanics()
+    key = resolve_key(ren.attacks, args.nome, "Ataque")
+    attack = ren.attacks[key]
     spec = parse_dice(attack.damage)
     result = roll_dice(critical_spec(spec) if args.critico else spec)
     suffix = " crítico" if args.critico else ""
-    print(f"Dano com {attack.label} (Ren{suffix}): {format_dice_roll(result)} {attack.damage_type}.")
+    print(
+        f"Dano com {attack.label} (Ren{suffix}): "
+        f"{format_dice_roll(result)} {attack.damage_type}."
+    )
     return 0
 
 
