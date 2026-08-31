@@ -11,15 +11,17 @@ a migração.
 
 ### Turno comum
 
-Nada muda:
+Desde a Task47, o turno comum declara explicitamente a decisão negativa:
 
-1. `cronica preparar`
+1. `cronica preparar --cena-id <id> --sem-oportunidade-sidequest`
 2. narração
 3. `cronica concluir`
 
-Sem `--oportunidade-sidequest`, Task46 não chama Task40, não abre fragmento de
+`--sem-oportunidade-sidequest` significa que o narrador avaliou a cena e não viu
+âncora causal concreta. Essa decisão não chama Task40, não abre fragmento de
 sidequest, não lê horizonte canônico adicional e não acrescenta chamada de
-orquestração.
+orquestração. Omitir tanto a decisão positiva quanto a negativa é inválido pela
+Task47.
 
 ### Turno com oportunidade causal
 
