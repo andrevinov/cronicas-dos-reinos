@@ -6,7 +6,8 @@ A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
 retomada compacta limpa, transporte de ticket tolerante a whitespace acidental,
 gate read-only de pendências, contratos operacionais tolerantes a aliases
-ginequívocos e, na Task46, sidequests emergentes na mesma dupla preparar/concluir.
+inequívocos, sidequests emergentes Task46 e a decisão explícita Task47 antes de
+todo ``cronica preparar``.
 """
 from __future__ import annotations
 
@@ -40,6 +41,7 @@ _ORIGINAL_B64_DECODE = _core._b64_decode
 _ORIGINAL_DECODE_TICKET = _core.decode_ticket
 _ORIGINAL_INSTANT_ARG = _core._instant_arg
 _ORIGINAL_TRANSACTION_CONTRACT = _hot._transaction_contract
+_SIDEQUEST_DECISION_UNSET = object()
 
 
 def _b64_decode(value: str) -> bytes:
@@ -93,7 +95,12 @@ def prepare(*args, **kwargs):
     repo = args[0] if args else kwargs.get("repo")
     if repo is None:
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
-    signal = kwargs.pop("sidequest_signal", None)
+    signal = kwargs.pop("sidequest_signal", _SIDEQUEST_DECISION_UNSET)
+    if signal is _SIDEQUEST_DECISION_UNSET:
+        raise _core.CronicaError(
+            "Task47: cronica preparar exige decisão explícita de oportunidade de sidequest; "
+            "use sidequest_signal=None para descartar ou forneça a âncora causal"
+        )
     gate = _pending_gate.prepare_gate(Path(repo))
     if gate is not None:
         return gate
@@ -259,10 +266,19 @@ def build_parser() -> argparse.ArgumentParser:
             "sem criar local canônico nem chamada adicional"
         ),
     )
-    prepare_parser.add_argument(
+    sidequest_decision = prepare_parser.add_mutually_exclusive_group(required=True)
+    sidequest_decision.add_argument(
         "--oportunidade-sidequest",
         action="store_true",
         help="acorda Task40 somente quando a cena produziu âncora causal concreta",
+    )
+    sidequest_decision.add_argument(
+        "--sem-oportunidade-sidequest",
+        action="store_true",
+        help=(
+            "declara que a cena foi avaliada e não contém âncora causal concreta; "
+            "mantém zero leituras Task40–45"
+        ),
     )
     prepare_parser.add_argument("--sidequest-origem-tipo")
     prepare_parser.add_argument("--sidequest-origem-id")
@@ -308,16 +324,38 @@ def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
         "npc_id": getattr(args, "sidequest_npc", None),
     }
     enabled = bool(getattr(args, "oportunidade_sidequest", False))
-    if not enabled:
+    declined = bool(getattr(args, "sem_oportunidade_sidequest", False))
+    if enabled == declined:
+        raise _core.CronicaError(
+            "Task47: escolha exatamente uma decisão: --oportunidade-sidequest ou "
+            "--sem-oportunidade-sidequest"
+        )
+    if declined:
         if any(value is not None for value in fields.values()):
             raise _core.CronicaError(
-                "flags --sidequest-* exigem --oportunidade-sidequest; conversa comum não acorda Task40"
+                "flags --sidequest-* não podem acompanhar --sem-oportunidade-sidequest"
             )
         return None
     if fields["origem_id"] is None:
         fields["origem_id"] = args.cena_id
     if fields["npc_id"] is None and len(args.npc or []) == 1:
         fields["npc_id"] = args.npc[0]
+    missing = [
+        label
+        for key, label in (
+            ("origem_tipo", "--sidequest-origem-tipo"),
+            ("ancora_tipo", "--sidequest-ancora-tipo"),
+            ("ancora", "--sidequest-ancora"),
+        )
+        if fields[key] is None
+    ]
+    if fields["origem_tipo"] in {"conversa_npc", "consequencia_npc"} and fields["npc_id"] is None:
+        missing.append("--sidequest-npc ou exatamente um --npc")
+    if missing:
+        raise _core.CronicaError(
+            "Task47: --oportunidade-sidequest exige âncora causal completa; faltando: "
+            + ", ".join(missing)
+        )
     fields["local_id"] = args.local
     fields["periculosidade"] = args.periculosidade or "media"
     fields["tier"] = args.tier
