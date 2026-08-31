@@ -36,6 +36,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import contexto_core as core
+import catalogo_regras
 import dialogo_relacional
 import politica_acesso as politica
 import recursos
@@ -65,7 +66,6 @@ section_score = core.section_score
 search_markdown_files = core.search_markdown_files
 envelope = core.envelope
 log_query = core.log_query
-command_rule = core.command_rule
 
 
 def _pending(repo: Path) -> list[dict[str, Any]]:
@@ -382,6 +382,10 @@ def command_knowledge(repo: Path, term: str) -> dict[str, Any]:
     return data
 
 
+def command_rule(repo: Path, term: str) -> dict[str, Any]:
+    return catalogo_regras.command_rule(repo, term, fallback=core.command_rule)
+
+
 def command_reputation(repo: Path, term: str, public: str | None = None) -> dict[str, Any]:
     result = reputacao_publica.show(repo, term, public)
     sources = [
@@ -586,7 +590,7 @@ def build_parser() -> argparse.ArgumentParser:
         ("relacao", "L2: relação atual com uma entidade"),
         ("recurso", "L2: item, habilidade ou recurso da ficha + disponibilidade atual"),
         ("conhecimento", "L2: o que Ren sabe sobre um assunto"),
-        ("regra", "L2: trechos das regras internas sobre um assunto"),
+        ("regra", "L2 catalogada: identidade, versão, autoridade, executor e documentação da regra"),
     ):
         child = sub.add_parser(name, help=help_text)
         child.add_argument("termo")

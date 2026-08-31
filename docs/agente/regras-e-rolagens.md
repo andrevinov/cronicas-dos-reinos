@@ -45,6 +45,14 @@ A migração é prospectiva: preservar decisões antigas até substituição exp
 
 Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que entre em jogo é adaptada para o `ruleset.atual`. Assim, o alvo da conversão muda de 2014 para 5.5e somente quando a ativação final ocorrer.
 
+## Catálogo executável de regras
+
+`regras/catalogo.yaml` é o índice mecânico dirigido introduzido pela Task 2. Ele não substitui os manuais humanos nem muda a hierarquia da Task 1: cada entrada identifica `id`, aliases, domínio, ruleset, autoridade, fonte humana, resumo interno, executor, persistência e eventual regra da casa.
+
+Para dúvida mecânica conhecida, `contexto regra <termo>` consulta primeiro esse catálogo. Um acerto por `id` ou alias retorna em L2 a identidade da regra, o `ruleset` aplicável, sua autoridade, quem a executa e a seção humana que documenta a decisão. A fonte declarada precisa existir e a seção precisa continuar presente; divergência faz o catálogo falhar fechado.
+
+Enquanto a cobertura do catálogo não for completa, termo não catalogado preserva o fallback textual anterior em `regras/*.md`, explicitamente marcado como `catalogada: false`. Esse fallback não ganha versão, executor ou autoridade por inferência. D&D 5.5e continua proibido como regra operacional enquanto `ruleset.atual` for `dnd_5e_2014`.
+
 ## Filosofia de fidelidade: aproximadamente 70%
 
 A meta de 70% representa filosofia, não métrica matemática. Aplicar regras quando elas sustentarem risco, tensão, estratégia, diferenciação de personagens, uso significativo de recursos, imparcialidade, consequência ou surpresa legítima.

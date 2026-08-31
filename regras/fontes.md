@@ -31,6 +31,16 @@ Compatibilidade também é explícita:
 
 ---
 
+## Catálogo estruturado de regras
+
+`regras/catalogo.yaml` é um **índice executável**, não uma nova fonte de autoridade. Ele resolve IDs e aliases e declara, para cada regra catalogada, o ruleset, a autoridade, o executor, a persistência e a seção humana que documenta o resumo interno.
+
+Toda entrada precisa apontar para arquivo Markdown existente em `regras/` e para uma seção real desse arquivo. O catálogo não pode promover uma regra de `dnd_5_5e` enquanto `campanha.yaml` mantiver `dnd_5e_2014` como ruleset atual. Se houver conflito, vale a hierarquia mecânica abaixo; o catálogo deve falhar em vez de escolher uma versão silenciosamente.
+
+Termos ainda não catalogados podem usar temporariamente a busca textual legada. Esse fallback existe apenas para compatibilidade durante a migração e não deve inventar versão, executor ou autoridade que o catálogo ainda não declarou.
+
+---
+
 ## Regra geral
 
 Quando houver conflito **mecânico** entre fontes:

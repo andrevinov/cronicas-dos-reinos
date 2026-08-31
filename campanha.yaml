@@ -21,7 +21,7 @@ sistema:
         gate: "task_8_auditoria_final"
         requisitos:
           task_1_contrato: true
-          task_2_catalogo: false
+          task_2_catalogo: true
           task_3_ficha_fonte_unica: false
           task_4_nucleo_mecanico: false
           task_5_conversao_ren: false
@@ -66,6 +66,7 @@ estrutura:
   fonte_de_verdade: "repositorio"
   arquivos_referenciados:
     regras_e_fontes: "regras/fontes.md"
+    catalogo_regras: "regras/catalogo.yaml"
     dificuldade: "regras/dificuldade.md"
     progressao: "regras/progressao.md"
     regras_da_casa: "regras/regras-da-casa.md"

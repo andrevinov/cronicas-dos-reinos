@@ -1,0 +1,100 @@
+schema_catalogo_regras: 1
+natureza: indice_executavel
+contrato:
+  fonte_ruleset: campanha.yaml#sistema.ruleset
+  fallback_textual: true
+  nivel_consulta_catalogada: L2
+  max_resultado_l2_bytes: 8192
+regras:
+  - id: furtividade_oposta
+    aliases:
+      - furtividade
+      - stealth
+      - teste de furtividade
+      - furtividade contra percepcao
+    dominio: exploracao
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Testes resistidos
+    resumo_interno: >-
+      Quando Ren tenta passar despercebido sob oposição direta, resolver a oposição
+      entre Furtividade e Percepção conforme a situação da cena, usando rolagem oculta
+      quando expor o teste entregaria informação secreta.
+    executor: dados
+    persistencia: nenhuma
+    house_rule: null
+
+  - id: teste_d20_basico
+    aliases:
+      - teste d20
+      - teste de habilidade
+      - ability check
+    dominio: resolucao
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Fórmula básica
+    resumo_interno: >-
+      Testes usam d20 mais o modificador apropriado contra uma CD definida antes da
+      rolagem; ataques e salvaguardas usam seus bônus próprios contra a defesa aplicável.
+    executor: dados
+    persistencia: nenhuma
+    house_rule: null
+
+  - id: vantagem_desvantagem
+    aliases:
+      - vantagem
+      - desvantagem
+      - advantage disadvantage
+    dominio: resolucao
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Vantagem e desvantagem
+    resumo_interno: >-
+      Aplicar vantagem ou desvantagem somente quando a situação a justificar antes do
+      dado; quando ambas coexistirem, cancelar uma à outra.
+    executor: dados
+    persistencia: nenhuma
+    house_rule: null
+
+  - id: cd_rapidas_campanha
+    aliases:
+      - cds rapidas
+      - classe de dificuldade
+      - difficulty class
+    dominio: adjudicacao
+    ruleset: dnd_5e_2014
+    autoridade: regras_da_casa
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: CDs rápidas
+    resumo_interno: >-
+      A campanha usa uma escala operacional curta de CDs como referência inicial e
+      exige que a CD seja fixada antes da rolagem.
+    executor: narrador
+    persistencia: nenhuma
+    house_rule: cds_rapidas_operacionais
+
+  - id: sucesso_com_custo
+    aliases:
+      - sucesso a um custo
+      - success at a cost
+      - falha com progresso
+    dominio: adjudicacao
+    ruleset: dnd_5e_2014
+    autoridade: regras_da_casa
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Sucesso com custo
+    resumo_interno: >-
+      Quando uma falha simples apenas travaria a cena, o narrador pode converter o
+      resultado em progresso com custo coerente, sem apagar risco importante, combate
+      ou consequência de decisão ruim.
+    executor: narrador
+    persistencia: turno_transacional
+    house_rule: sucesso_com_custo_da_campanha
