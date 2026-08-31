@@ -73,6 +73,8 @@ capacidades_nivel_7:
     reducao_ren_nivel_7: 1d10 + 11
     redirecionar_se_reduzir_a_zero:
       custo_focus: 1
+      alcance_se_ataque_corpo_a_corpo_pes: 5
+      alcance_se_ataque_a_distancia_pes: 60
       cd_destreza: 14
       dano_falha: 2d8 + 4
       tipo: mesmo tipo do ataque original
