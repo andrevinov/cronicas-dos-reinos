@@ -243,9 +243,12 @@ def gate_structure(repo: Path) -> dict[str, Any]:
     return {"arquivos_criticos": len(EXPECTED_ENGINEERING_PATHS), "journal": "ausente"}
 
 
-def gate_baseline_and_regressions(repo: Path) -> dict[str, Any]:
+def gate_baseline_and_regressions(
+    repo: Path,
+    *,
+    incluir_testes: bool = True,
+) -> dict[str, Any]:
     commands = [
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
         [sys.executable, "ferramentas/migrar-estado-atual.py", "--check"],
         [sys.executable, "ferramentas/migrar-memorias-fragmentadas.py", "--check"],
         [sys.executable, "ferramentas/reindexar-conhecimento.py", "--check"],
@@ -258,9 +261,15 @@ def gate_baseline_and_regressions(repo: Path) -> dict[str, Any]:
         [sys.executable, "ferramentas/verificar-integridade.py"],
         [sys.executable, "ferramentas/verificar-integridade.py", "--verificar-baseline-historica"],
     ]
+    if incluir_testes:
+        commands.insert(
+            0,
+            [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
+        )
     results = [run_command(repo, command) for command in commands]
     return {
         "comandos": len(results),
+        "suite_completa_executada": incluir_testes,
         "baseline_historica": results[-1]["saida_final"],
         "observacao": "baseline preservada como evidência; estado vivo pode avançar depois da captura",
     }
@@ -439,12 +448,16 @@ def execute_gate(name: str, function: Callable[[Path], Any], repo: Path) -> Gate
         return GateResult(name, False, str(exc))
 
 
-def audit(repo: Path) -> dict[str, Any]:
+def audit(repo: Path, *, incluir_testes: bool = True) -> dict[str, Any]:
     before_digest, protected_files = protected_digest(repo)
     gates: list[GateResult] = []
+    regression_gate = lambda current_repo: gate_baseline_and_regressions(
+        current_repo,
+        incluir_testes=incluir_testes,
+    )
     for name, function in (
         ("estrutura_acumulada", gate_structure),
-        ("regressoes_e_baseline", gate_baseline_and_regressions),
+        ("regressoes_e_baseline", regression_gate),
         ("retomada_somente_camada_quente", gate_hot_only_resume),
         ("retomada_com_delta_pendente", gate_pending_overlay_resume),
         ("telemetria_pos_hoc", gate_telemetry_contract),
@@ -489,9 +502,14 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--json", action="store_true", help="emite relatório JSON completo")
+    parser.add_argument(
+        "--sem-testes",
+        action="store_true",
+        help="pula somente a suíte unittest; mantém todos os demais gates da auditoria",
+    )
     args = parser.parse_args()
     repo = args.repo.resolve()
-    report = audit(repo)
+    report = audit(repo, incluir_testes=not args.sem_testes)
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2))
     else:
