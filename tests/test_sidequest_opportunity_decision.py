@@ -1,13 +1,11 @@
 from __future__ import annotations
 
+import sys
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).parents[1]
-
-import sys
-
 TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
@@ -15,11 +13,11 @@ if str(TOOLS) not in sys.path:
 import cronica
 
 
-class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
+class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
     def test_cli_recusa_preparar_sem_decisao_explicita(self):
         parser = cronica.build_parser()
         with self.assertRaises(SystemExit):
-            parser.parse_args(["preparar", "--cena-id", "task47-sem-decisao"])
+            parser.parse_args(["preparar", "--cena-id", "sidequest-sem-decisao"])
 
     def test_cli_decisoes_sao_mutuamente_exclusivas(self):
         parser = cronica.build_parser()
@@ -28,7 +26,7 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
                 [
                     "preparar",
                     "--cena-id",
-                    "task47-conflito",
+                    "sidequest-conflito",
                     "--oportunidade-sidequest",
                     "--sem-oportunidade-sidequest",
                 ]
@@ -40,16 +38,16 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             patch.object(cronica._hot, "prepare") as hot,
         ):
             with self.assertRaisesRegex(cronica.CronicaError, "decisão explícita"):
-                cronica.prepare(ROOT, scene_id="task47-programatico-omitido")
+                cronica.prepare(ROOT, scene_id="sidequest-programatico-omitido")
         pending.assert_not_called()
         hot.assert_not_called()
 
-    def test_decisao_negativa_preserva_hotpath_exato_e_nao_acorda_task40(self):
+    def test_decisao_negativa_preserva_hotpath_e_nao_acorda_integracao_sidequest(self):
         sentinel = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
-            "ticket": "crn1.task47",
-            "ticket_id": "task47",
+            "ticket": "crn1.sidequest",
+            "ticket_id": "sidequest",
         }
         with (
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
@@ -57,12 +55,12 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             patch.object(
                 cronica._sidequests46,
                 "integrate_prepare",
-                side_effect=AssertionError("decisão negativa não pode acordar Task40/Task46"),
+                side_effect=AssertionError("decisão negativa não pode acordar integração de sidequest"),
             ) as emergent,
         ):
             result = cronica.prepare(
                 ROOT,
-                scene_id="task47-neutro",
+                scene_id="sidequest-neutro",
                 sidequest_signal=None,
             )
         self.assertIs(result, sentinel)
@@ -79,7 +77,7 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
         integrated = {**base, "sidequest_emergente": {"resultado": "material_para_planejamento"}}
         signal = {
             "origem_tipo": "conversa_npc",
-            "origem_id": "task47-maerra",
+            "origem_id": "sidequest-maerra",
             "ancora_tipo": "necessidade",
             "ancora": "Maerra mantém sete crianças sob abrigo e Ren pergunta se ela precisa de ajuda.",
             "npc_id": "maerra_thandrel",
@@ -94,7 +92,7 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
         ):
             result = cronica.prepare(
                 ROOT,
-                scene_id="task47-maerra",
+                scene_id="sidequest-maerra",
                 sidequest_signal=signal,
             )
         self.assertIs(result, integrated)
@@ -107,7 +105,7 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             [
                 "preparar",
                 "--cena-id",
-                "task47-incompleta",
+                "sidequest-incompleta",
                 "--oportunidade-sidequest",
             ]
         )
@@ -126,7 +124,7 @@ class Task47ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             [
                 "preparar",
                 "--cena-id",
-                "task47-negativa-com-ancora",
+                "sidequest-negativa-com-ancora",
                 "--sem-oportunidade-sidequest",
                 "--sidequest-ancora",
                 "isto não pode acompanhar a decisão negativa",

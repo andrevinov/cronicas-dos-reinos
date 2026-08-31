@@ -58,22 +58,22 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
-                "recompensas de sidequest Task43",
+                "recompensas de sidequest",
                 (python, "ferramentas/recompensas_sidequest.py", "check"),
                 "mundo vivo",
             ),
             Check(
-                "integridade adversarial Task44",
+                "integridade adversarial",
                 (python, "ferramentas/integridade_adversarial.py", "check"),
                 "mundo vivo",
             ),
             Check(
-                "progressão e consequências Task45",
+                "progressão e consequências de sidequest",
                 (python, "ferramentas/progressao_sidequests.py", "check"),
                 "mundo vivo",
             ),
             Check(
-                "integração sidequests Task46",
+                "integração de sidequests emergentes",
                 (python, "ferramentas/sidequests_integracao_check.py"),
                 "mundo vivo",
             ),
@@ -83,7 +83,7 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
-                "canon bridge Task42",
+                "canon bridge",
                 (python, "ferramentas/canon_bridge_runtime.py", "check"),
                 "mundo vivo",
             ),

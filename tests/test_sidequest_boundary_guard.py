@@ -13,7 +13,7 @@ if str(TOOLS) not in sys.path:
 import resolver_fronteira
 
 
-class Task45BoundaryGuardTest(unittest.TestCase):
+class SidequestBoundaryGuardTest(unittest.TestCase):
     def test_resolver_sidequest_e_projetada_sem_noop_e_sem_acordar_outros_motores(self):
         pending = {
             "id": "mundo-4545454545454545",
@@ -59,7 +59,7 @@ class Task45BoundaryGuardTest(unittest.TestCase):
                 {
                     "id": item["id"],
                     "token": token,
-                    "nota": "Tentativa de descartar consequência Task45 como no-op genérico.",
+                    "nota": "Tentativa de descartar consequência como no-op genérico.",
                 }
             ],
         }

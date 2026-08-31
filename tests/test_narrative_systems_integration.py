@@ -126,7 +126,7 @@ class NarrativeSystemsHotPathTest(unittest.TestCase):
         refs, _ = canonical.route_for_npc_with_sources(ROOT, index, npc_id)
         self.assertTrue(refs)
         with (
-            mock.patch.object(canonical._core, "_lifecycle_allows", return_value=(False, "task38_bloqueada")),
+            mock.patch.object(canonical._core, "_lifecycle_allows", return_value=(False, "historico_bloqueado")),
             mock.patch.object(canonical._core, "_load_detail", side_effect=AssertionError("detalhe frio não deve abrir")),
         ):
             result = canonical.select_from_refs(
@@ -146,7 +146,7 @@ class NarrativeSystemsHotPathTest(unittest.TestCase):
         ):
             result = incidents.plan(
                 ROOT,
-                scene_id="task38-incidente-sem-scan",
+                scene_id="integracao-incidente-sem-scan",
                 local_id="galeria_dos_escribas",
                 profile=profile,
                 conditions=[],

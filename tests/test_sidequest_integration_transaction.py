@@ -14,10 +14,10 @@ if str(TOOLS) not in sys.path:
 import cronica
 import oportunidades
 import sidequests_integracao_runtime as integration
-import test_adversarial_integrity as task44
-import test_emergent_sidequest_authoring_registry_v2 as task41
-import test_quest_rewards_discoveries_losses as task43
-import test_sidequest_progression_deadlines_consequences as task45
+import test_adversarial_integrity as adversarial_cases
+import test_emergent_sidequest_authoring_registry_v2 as authoring_cases
+import test_quest_rewards_discoveries_losses as reward_cases
+import test_sidequest_progression_deadlines_consequences as progression_cases
 
 
 OFFER_EVIDENCE = (
@@ -25,8 +25,8 @@ OFFER_EVIDENCE = (
 )
 
 
-def task46_block(package: dict) -> dict:
-    quest = copy.deepcopy(task41.quest_spec(package))
+def integration_block(package: dict) -> dict:
+    quest = copy.deepcopy(authoring_cases.quest_spec(package))
     return {
         "oferta": {
             "materializar": True,
@@ -36,18 +36,18 @@ def task46_block(package: dict) -> dict:
             ),
         },
         "quest": quest,
-        "contrato_recompensa": copy.deepcopy(task43.base_contract()),
-        "contrato_adversarial": copy.deepcopy(task44.adversarial_contract(quest)),
-        "contrato_progressao": copy.deepcopy(task45.progression_contract()),
+        "contrato_recompensa": copy.deepcopy(reward_cases.base_contract()),
+        "contrato_adversarial": copy.deepcopy(adversarial_cases.adversarial_contract(quest)),
+        "contrato_progressao": copy.deepcopy(progression_cases.progression_contract()),
     }
 
 
-def task46_ticket() -> str:
+def integration_ticket() -> str:
     payload = {
         "schema_cronica_ticket": cronica._core.SCHEMA,
-        "preparacao_id": "turn-neutral-task46",
+        "preparacao_id": "turn-neutral-sidequest-integration",
         "cena": cronica._core._request(
-            scene_id="task46:oferta",
+            scene_id="sidequest-integration:oferta",
             npcs=[],
             place=None,
             action=None,
@@ -68,7 +68,7 @@ def task46_ticket() -> str:
     return cronica._core.encode_ticket(payload)[0]
 
 
-class Task46TransactionTest(task45.Task45Fixture):
+class SidequestIntegrationTransactionTest(progression_cases.Task45Fixture):
     def transaction(self, *, with_sidequest: bool = True) -> dict:
         narration = (
             "Silva baixa a voz antes de explicar o risco. "
@@ -82,21 +82,21 @@ class Task46TransactionTest(task45.Task45Fixture):
             "deltas": [],
         }
         if with_sidequest:
-            tx[integration.TRANSACTION_KEY] = task46_block(self.package)
+            tx[integration.TRANSACTION_KEY] = integration_block(self.package)
         return tx
 
     def test_instalacao_completa_tem_um_commit_point_e_reusa_lifecycle(self):
-        block = task46_block(self.package)
+        block = integration_block(self.package)
         plan = integration.prepare_installation(
             self.repo,
             package=self.package,
             block=block,
-            offer_scene_id="task46:oferta",
+            offer_scene_id="sidequest-integration:oferta",
             offer_summary=block["oferta"]["resumo"],
         )
         journal = integration.begin_conclusion(
             self.repo,
-            ticket_id="ticket-task46-fixture",
+            ticket_id="ticket-sidequest-integration-fixture",
             transaction=self.transaction(),
             plan=plan,
         )
@@ -118,17 +118,17 @@ class Task46TransactionTest(task45.Task45Fixture):
         self.assertEqual(accepted["missoes"][plan["mission_id"]]["estado"], "aceita")
 
     def test_retry_da_instalacao_nao_duplica_missao_ou_fragmentos(self):
-        block = task46_block(self.package)
+        block = integration_block(self.package)
         plan = integration.prepare_installation(
             self.repo,
             package=self.package,
             block=block,
-            offer_scene_id="task46:oferta",
+            offer_scene_id="sidequest-integration:oferta",
             offer_summary=block["oferta"]["resumo"],
         )
         journal = integration.begin_conclusion(
             self.repo,
-            ticket_id="ticket-task46-retry",
+            ticket_id="ticket-sidequest-integration-retry",
             transaction=self.transaction(),
             plan=plan,
         )
@@ -141,7 +141,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         self.assertEqual(second["instalacoes_logicas"], 1)
 
     def test_cronica_concluir_sem_oferta_nao_cria_quest(self):
-        token = task46_ticket()
+        token = integration_ticket()
         tx = self.transaction(with_sidequest=False)
         before = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
         with (
@@ -165,7 +165,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         )
 
     def test_cronica_concluir_valida_antes_do_writer_e_instala_na_mesma_chamada(self):
-        token = task46_ticket()
+        token = integration_ticket()
         tx = self.transaction()
         with (
             patch.object(cronica._sidequests46, "recover_matching_journal", return_value=None),
@@ -186,7 +186,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         self.assertEqual(len(state["missoes"]), 1)
 
     def test_contrato_invalido_falha_antes_do_writer(self):
-        token = task46_ticket()
+        token = integration_ticket()
         tx = self.transaction()
         tx[integration.TRANSACTION_KEY]["contrato_progressao"]["regra_sucesso"] = "percentual_75"
         with (
@@ -202,7 +202,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         self.assertEqual(state["missoes"], {})
 
     def test_falha_do_writer_deixa_journal_e_retry_repara_sem_duplicar(self):
-        token = task46_ticket()
+        token = integration_ticket()
         tx = self.transaction()
         calls = [
             cronica.CronicaError("writer interrompido"),

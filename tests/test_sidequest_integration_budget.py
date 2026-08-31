@@ -16,13 +16,13 @@ import cronica
 import mundo
 import oportunidade_sidequest as opportunity
 import sidequests_integracao_runtime as integration
-import test_emergent_sidequest_authoring_registry_v2 as task41
+import test_emergent_sidequest_authoring_registry_v2 as authoring_cases
 
 
 def valid_ticket_payload(scene_id: str) -> dict:
     return {
         "schema_cronica_ticket": cronica._core.SCHEMA,
-        "preparacao_id": "fixture-task46",
+        "preparacao_id": "fixture-sidequest-integration",
         "cena": cronica._core._request(
             scene_id=scene_id,
             npcs=[],
@@ -39,8 +39,8 @@ def valid_ticket_payload(scene_id: str) -> dict:
     }
 
 
-class Task46NeutralBudgetTest(unittest.TestCase):
-    def test_turno_neutro_retorna_exatamente_hotpath_sem_acordar_task46(self):
+class SidequestNeutralBudgetTest(unittest.TestCase):
+    def test_turno_neutro_retorna_exatamente_hotpath_sem_acordar_integracao(self):
         sentinel = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
@@ -53,10 +53,10 @@ class Task46NeutralBudgetTest(unittest.TestCase):
             patch.object(
                 cronica._sidequests46,
                 "integrate_prepare",
-                side_effect=AssertionError("turno neutro não pode acordar Task46/Task40"),
+                side_effect=AssertionError("turno neutro não pode acordar integração de sidequest"),
             ) as emergent,
         ):
-            result = cronica.prepare(ROOT, scene_id="task46:neutro", sidequest_signal=None)
+            result = cronica.prepare(ROOT, scene_id="sidequest-integration:neutro", sidequest_signal=None)
         self.assertIs(result, sentinel)
         base.assert_called_once()
         emergent.assert_not_called()
@@ -80,10 +80,10 @@ class Task46NeutralBudgetTest(unittest.TestCase):
         self.assertEqual(contract["infra"]["scans_globais"], 0)
 
 
-class Task46OpportunityBudgetTest(unittest.TestCase):
+class SidequestOpportunityBudgetTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.package = task41.task40_package()
+        cls.package = authoring_cases.task40_package()
 
     def signal(self) -> dict:
         origin = self.package["origem"]
@@ -99,10 +99,10 @@ class Task46OpportunityBudgetTest(unittest.TestCase):
             "tier": reward["tier"],
         }
 
-    def test_mesma_chamada_preparar_entrega_pacote_limitado_sem_transcricao_task33(self):
+    def test_mesma_chamada_preparar_entrega_pacote_limitado_sem_transcricao_legada(self):
         now_raw = self.package["prazo_mundo"]["agora"]
         now = mundo.parse_instant(now_raw["data"], now_raw["hora"])
-        token, ticket_id = cronica._core.encode_ticket(valid_ticket_payload("task46:budget"))
+        token, ticket_id = cronica._core.encode_ticket(valid_ticket_payload("sidequest-integration:budget"))
         base = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
@@ -149,10 +149,17 @@ class Task46OpportunityBudgetTest(unittest.TestCase):
             self.assertNotIn("glob(", text)
             self.assertNotIn("Scheduler", text)
 
-    def test_preflight_executa_gate_task46(self):
-        text = (ROOT / "ferramentas/preflight.py").read_text(encoding="utf-8")
-        self.assertIn("integração sidequests Task46", text)
-        self.assertIn("sidequests_integracao_check.py", text)
+    def test_preflight_executa_gate_de_integracao_sidequest(self):
+        items = {
+            tuple(item.comando[1:]): item.nome
+            for item in __import__("ferramentas.preflight", fromlist=["checks"]).checks(
+                incluir_testes=False
+            )
+        }
+        self.assertEqual(
+            items[("ferramentas/sidequests_integracao_check.py",)],
+            "integração de sidequests emergentes",
+        )
         result = integration.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["contrato"]["chamadas_orquestracao"], 2)

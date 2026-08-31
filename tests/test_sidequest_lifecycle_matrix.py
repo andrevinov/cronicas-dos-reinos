@@ -20,14 +20,14 @@ import mundo
 import oportunidades
 import progressao_sidequests as progression
 import sidequests_integracao_runtime as integration
-import test_adversarial_integrity as task44
-import test_canon_bridge_rewriter as task42
-import test_emergent_sidequest_authoring_registry_v2 as task41
-import test_quest_rewards_discoveries_losses as task43
-import test_sidequest_progression_deadlines_consequences as task45
+import test_adversarial_integrity as adversarial_cases
+import test_canon_bridge_rewriter as bridge_cases
+import test_emergent_sidequest_authoring_registry_v2 as authoring_cases
+import test_quest_rewards_discoveries_losses as reward_cases
+import test_sidequest_progression_deadlines_consequences as progression_cases
 
 
-class Task46RolloutFixture(task45.Task45Fixture):
+class SidequestLifecycleFixture(progression_cases.Task45Fixture):
     def setUp(self):
         super().setUp()
         agenda = self.repo / mundo.AGENDA_PATH
@@ -56,27 +56,27 @@ class Task46RolloutFixture(task45.Task45Fixture):
         block = {
             "oferta": {
                 "materializar": True,
-                "evidencia": "Oferta fixture Task46",
+                "evidencia": "Oferta fixture de integração",
                 "resumo": "A oferta causal foi narrada explicitamente e a resposta permaneceu sob controle de Ren.",
             },
             "quest": copy.deepcopy(spec),
-            "contrato_recompensa": copy.deepcopy(task43.base_contract()),
-            "contrato_adversarial": copy.deepcopy(task44.adversarial_contract(spec)),
-            "contrato_progressao": copy.deepcopy(task45.progression_contract()),
+            "contrato_recompensa": copy.deepcopy(reward_cases.base_contract()),
+            "contrato_adversarial": copy.deepcopy(adversarial_cases.adversarial_contract(spec)),
+            "contrato_progressao": copy.deepcopy(progression_cases.progression_contract()),
         }
         plan = integration.prepare_installation(
             self.repo,
             package=package,
             block=block,
-            offer_scene_id=f"task46:matrix:{suffix}",
+            offer_scene_id=f"sidequest:matrix:{suffix}",
             offer_summary=block["oferta"]["resumo"],
         )
         journal = integration.begin_conclusion(
             self.repo,
-            ticket_id=f"ticket-task46-{suffix}",
+            ticket_id=f"ticket-sidequest-{suffix}",
             transaction={
-                "narracao": "Oferta fixture Task46",
-                "resumo": f"Materialização Task46 {suffix}",
+                "narracao": "Oferta fixture de integração",
+                "resumo": f"Materialização de sidequest {suffix}",
             },
             plan=plan,
         )
@@ -89,18 +89,18 @@ class Task46RolloutFixture(task45.Task45Fixture):
         return mundo.parse_instant(raw["data"], raw["hora"])
 
 
-class Task46RolloutMatrixTest(Task46RolloutFixture):
+class SidequestLifecycleMatrixTest(SidequestLifecycleFixture):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         base = cls.package
-        cls.bridge_candidate = task42._candidate(base, set())
-        cls.satisfy_candidate = task42._candidate(base, {"satisfazer"})
-        cls.delay_candidate = task42._candidate(base, {"adiar"})
+        cls.bridge_candidate = bridge_cases._candidate(base, set())
+        cls.satisfy_candidate = bridge_cases._candidate(base, {"satisfazer"})
+        cls.delay_candidate = bridge_cases._candidate(base, {"adiar"})
 
     def test_cenario_quest_lateral_aceita_nao_toca_canon_bridge(self):
         package = copy.deepcopy(self.package)
-        spec = task41.quest_spec(package)
+        spec = authoring_cases.quest_spec(package)
         mid = self.install_spec(package, spec, "lateral")
         before = (self.repo / canon_bridge.STATE).read_bytes()
         result = canon_bridge_runtime.respond(
@@ -113,18 +113,18 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
     def test_cenario_duas_ativas_continua_bloqueando_terceira(self):
         package = copy.deepcopy(self.package)
         for pos in (1, 2):
-            spec = task41.quest_spec(package)
+            spec = authoring_cases.quest_spec(package)
             spec["titulo"] += f" — Ativa {pos}"
             mid = self.install_spec(package, spec, f"ativa-{pos}")
             oportunidades.respond(self.repo, mid, "aceitar", now=self.now_for(package))
-        third = task41.quest_spec(package)
+        third = authoring_cases.quest_spec(package)
         third["titulo"] += " — Terceira"
         block = {
             "oferta": {"materializar": True, "evidencia": "Oferta", "resumo": "Terceira oferta causal que não pode furar o orçamento de duas sidequests aceitas."},
             "quest": third,
-            "contrato_recompensa": task43.base_contract(),
-            "contrato_adversarial": task44.adversarial_contract(third),
-            "contrato_progressao": task45.progression_contract(),
+            "contrato_recompensa": reward_cases.base_contract(),
+            "contrato_adversarial": adversarial_cases.adversarial_contract(third),
+            "contrato_progressao": progression_cases.progression_contract(),
         }
         with self.assertRaisesRegex(
             integration.EmergentSidequestIntegrationError,
@@ -134,14 +134,14 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
                 self.repo,
                 package=package,
                 block=block,
-                offer_scene_id="task46:matrix:third",
+                offer_scene_id="sidequest:matrix:third",
                 offer_summary=block["oferta"]["resumo"],
             )
 
     def test_cenario_ponte_reserva_canone_sem_mover_ren(self):
         candidate = self.bridge_candidate
-        package = task42._package_for(candidate)
-        spec = task42._spec_for(
+        package = bridge_cases._package_for(candidate)
+        spec = bridge_cases._spec_for(
             package,
             candidate,
             "candidata_ponte",
@@ -160,8 +160,8 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
 
     def test_cenario_recusada_nao_cria_reserva(self):
         candidate = self.bridge_candidate
-        package = task42._package_for(candidate)
-        spec = task42._spec_for(
+        package = bridge_cases._package_for(candidate)
+        spec = bridge_cases._spec_for(
             package,
             candidate,
             "candidata_ponte",
@@ -177,7 +177,7 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
 
     def test_cenario_expirada_sem_aceite_permanece_sem_consequencia_adversarial(self):
         package = copy.deepcopy(self.package)
-        spec = task41.quest_spec(package)
+        spec = authoring_cases.quest_spec(package)
         mid = self.install_spec(package, spec, "expirada")
         state = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
         deadline = state["missoes"][mid]["janela"]["expira_em"]
@@ -198,8 +198,8 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
 
     def test_cenario_concluida_pode_satisfazer_intencao_so_com_evidencia(self):
         candidate = self.satisfy_candidate
-        package = task42._package_for(candidate)
-        spec = task42._spec_for(
+        package = bridge_cases._package_for(candidate)
+        spec = bridge_cases._spec_for(
             package,
             candidate,
             "candidata_convergente",
@@ -212,9 +212,9 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
             self.repo,
             mid,
             fact_raw={
-                "id": "task46_sucesso_canonico",
+                "id": "sidequest_sucesso_canonico",
                 "descricao": "As condições objetivas da sidequest foram cumpridas por fatos canônicos.",
-                "prova": self.proof45(task45.FACT_TEXT),
+                "prova": self.proof45(progression_cases.FACT_TEXT),
                 "fases": {"entender_rota": "resolvida", "entrega_em_movimento": "resolvida"},
                 "condicoes_sucesso": {"sucesso_01": "satisfeita", "sucesso_02": "satisfeita"},
                 "condicoes_falha": {},
@@ -236,9 +236,9 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
         )
         intent = intencoes_canonicas.load_intent(self.repo, event_id)
         criteria = intent["intencao_canonica"]["criterios_satisfacao"]
-        evidence_rel = Path("sessoes/015/task46-prova-intencao.txt")
+        evidence_rel = Path("sessoes/015/prova-intencao-sidequest.txt")
         literals = [
-            f"PROVA TASK46 {pos}: fato canônico materializado independente do planejamento."
+            f"PROVA SIDEQUEST {pos}: fato canônico materializado independente do planejamento."
             for pos in range(len(criteria))
         ]
         path = self.repo / evidence_rel
@@ -262,12 +262,12 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
 
     def test_cenario_falha_libera_forma_sem_apagar_intencao(self):
         candidate = self.delay_candidate
-        package = task42._package_for(candidate)
+        package = bridge_cases._package_for(candidate)
         base = mundo.parse_instant(candidate["ativacao"]["data"], candidate["ativacao"]["hora"])
         delay = min(12, int(candidate["elasticidade"]["atraso_maximo_horas"]))
         self.assertGreater(delay, 0)
         effective = mundo.WorldInstant(base.minute + delay * 60)
-        spec = task42._spec_for(
+        spec = bridge_cases._spec_for(
             package,
             candidate,
             "candidata_adiamento",
