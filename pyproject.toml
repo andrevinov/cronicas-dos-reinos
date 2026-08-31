@@ -60,7 +60,16 @@ rollout-benchmark = "ferramentas.poetry_cli:rollout_benchmark"
 # Executa o gate local completo antes de push/merge.
 preflight = "ferramentas.poetry_cli:preflight"
 
-# Executa a suíte unitária completa do repositório.
+# Feedback curto para desenvolvimento: unidades, parsers, mecânicas e contratos pequenos.
+test-fast = "ferramentas.poetry_cli:test_fast"
+
+# Diagnóstico por um ou mais domínios: mecânica, crônica, sessões, sidequests, mundo, runtime.
+test-domain = "ferramentas.poetry_cli:test_domain"
+
+# Executa exatamente o mesmo discovery integral usado pelo gate de CI.
+test-full = "ferramentas.poetry_cli:test_full"
+
+# Alias legado da suíte completa; preservado por compatibilidade.
 testes = "ferramentas.poetry_cli:testes"
 
 [tool.poetry]
