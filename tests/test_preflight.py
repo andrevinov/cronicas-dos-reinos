@@ -33,6 +33,26 @@ class PreflightTest(unittest.TestCase):
         self.assertFalse(any(" checkpoint.py sessao" in command for command in commands))
         self.assertTrue(any("gerar-runtime.py --check" in command for command in commands))
 
+    def test_preflight_inclui_gates_de_sidequest_por_comando_estavel(self):
+        commands = {tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)}
+        expected = {
+            ("ferramentas/recompensas_sidequest.py", "check"),
+            ("ferramentas/integridade_adversarial.py", "check"),
+            ("ferramentas/progressao_sidequests.py", "check"),
+            ("ferramentas/sidequests_integracao_check.py",),
+            ("ferramentas/oportunidades.py", "check"),
+            ("ferramentas/canon_bridge_runtime.py", "check"),
+        }
+        self.assertTrue(expected <= commands)
+
+        names = {item.nome for item in preflight.checks(incluir_testes=False)}
+        self.assertIn("recompensas de sidequest", names)
+        self.assertIn("integridade adversarial", names)
+        self.assertIn("progressão e consequências de sidequest", names)
+        self.assertIn("integração de sidequests emergentes", names)
+        self.assertIn("canon bridge", names)
+        self.assertFalse(any("Task4" in name for name in names))
+
     def test_sem_testes_remove_apenas_unittest(self):
         full = preflight.checks(incluir_testes=True)
         short = preflight.checks(incluir_testes=False)
