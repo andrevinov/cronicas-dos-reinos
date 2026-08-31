@@ -1,4 +1,5 @@
 name: Temporary Task 7 AD&D gate
+# verification pass: run against already committed functional bytes
 
 on:
   push:
