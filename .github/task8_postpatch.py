@@ -10,7 +10,8 @@ text = text.replace('(\"Wakizashi\", 7, \"1d6+4\", \"perfurante\")', '(\"Wakizas
 path.write_text(text, encoding="utf-8")
 
 # Metadados de migração dentro da ficha descrevem capacidades removidas; não podem
-# reaparecer como recursos jogáveis na consulta `contexto recurso`.
+# reaparecer como recursos jogáveis na consulta `contexto recurso`, nem mesmo via
+# score do objeto-pai que contém a documentação.
 path = Path("ferramentas/recursos.py")
 text = path.read_text(encoding="utf-8")
 if 'NON_EXECUTABLE_RESOURCE_KEYS = {"removidas_na_5_5e"}' not in text:
@@ -30,6 +31,36 @@ if 'NON_EXECUTABLE_RESOURCE_KEYS = {"removidas_na_5_5e"}' not in text:
                 continue'''
     if old not in text:
         raise SystemExit("resource collector marker not found")
+    text = text.replace(old, new, 1)
+
+if "def _executable_payload(" not in text:
+    marker = '''def _candidate(
+    candidates: list[dict[str, Any]],
+'''
+    helper = '''def _executable_payload(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _executable_payload(child)
+            for key, child in value.items()
+            if str(key) not in NON_EXECUTABLE_RESOURCE_KEYS
+        }
+    if isinstance(value, list):
+        return [_executable_payload(child) for child in value]
+    return value
+
+
+def _candidate(
+    candidates: list[dict[str, Any]],
+'''
+    if marker not in text:
+        raise SystemExit("resource candidate marker not found")
+    text = text.replace(marker, helper, 1)
+    old = '''            "dados": value,
+'''
+    new = '''            "dados": _executable_payload(value),
+'''
+    if old not in text:
+        raise SystemExit("resource candidate payload marker not found")
     text = text.replace(old, new, 1)
 path.write_text(text, encoding="utf-8")
 
