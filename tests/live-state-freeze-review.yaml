@@ -53,3 +53,34 @@ arquivos:
     motivo: >-
       Atributos, perícias, passivos, CA e CD passam a ser derivados da ficha
       corrente e das fórmulas canônicas, preservando as escolhas históricas.
+revisoes_indiretas:
+  tests/test_progressao_juppongatana.py:
+    status: corrigido
+    motivo: >-
+      A progressão real deixa de exigir zero neutralizações, nível 7 e próximo
+      nível 8; todos esses campos são derivados do ledger e da ficha correntes.
+  tests/test_condicoes_mundo.py:
+    status: corrigido
+    motivo: >-
+      O estado real pode conter condições abertas e histórico; os contadores são
+      comparados ao estado persistido e aos limites do contrato.
+  tests/test_rastros.py:
+    status: corrigido
+    motivo: >-
+      O índice real pode acumular rastros legítimos; a validação confere apenas
+      coerência entre índice, status e limites de tamanho.
+  tests/test_direcoes.py:
+    status: corrigido
+    motivo: >-
+      Estados e marcos correntes das direções podem avançar; o status público é
+      comparado ao estado persistido e à regra de dependência atual.
+  tests/test_ciclo_npcs.py:
+    status: corrigido
+    motivo: >-
+      O registro real pode acumular mortes canônicas; o teste confere fonte,
+      terminalidade e coerência do status sem exigir lista vazia.
+  tests/test_agentes.py:
+    status: corrigido
+    motivo: >-
+      Presença, estado e elegibilidade de agentes vivos podem mudar; a
+      elegibilidade passa a ser recalculada pela regra sobre o fragmento atual.
