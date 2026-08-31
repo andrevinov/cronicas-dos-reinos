@@ -15,6 +15,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import _rolar_dados_core as core
+import ficha_ren
 import politica_acesso
 import retomada_cronica
 
@@ -53,35 +54,44 @@ class RenFeatCanonTest(unittest.TestCase):
 
     def test_observant_escolhe_inteligencia_sem_buff_de_combate_indireto(self):
         attrs = self.sheet["atributos"]
-        self.assertEqual(
-            (attrs["inteligencia"]["valor"], attrs["inteligencia"]["modificador"]),
-            (14, 2),
-        )
-        self.assertEqual(attrs["inteligencia"]["bonus_salvaguarda"], 2)
-        self.assertEqual(
-            (attrs["sabedoria"]["valor"], attrs["sabedoria"]["modificador"]),
-            (17, 3),
-        )
-        self.assertEqual(self.sheet["combate"]["classe_de_armadura"]["valor"], 17)
-        self.assertEqual(self.sheet["recursos_de_classe"]["focus"]["cd"], 14)
+        intelligence = attrs["inteligencia"]
+        wisdom = attrs["sabedoria"]
+        dexterity = attrs["destreza"]
+        proficiency = self.sheet["proficiencia"]["bonus"]
 
-    def test_actor_e_observant_produzem_os_numeros_corretos(self):
+        self.assertEqual(self.sheet["criacao"]["escolha_observant"], "Inteligência")
+        self.assertEqual(intelligence["modificador"], (intelligence["valor"] - 10) // 2)
+        self.assertEqual(wisdom["modificador"], (wisdom["valor"] - 10) // 2)
+        if not intelligence["salvaguarda_proficiente"]:
+            self.assertEqual(intelligence["bonus_salvaguarda"], intelligence["modificador"])
+        self.assertEqual(
+            self.sheet["combate"]["classe_de_armadura"]["valor"],
+            10 + dexterity["modificador"] + wisdom["modificador"],
+        )
+        self.assertEqual(
+            self.sheet["recursos_de_classe"]["focus"]["cd"],
+            8 + proficiency + wisdom["modificador"],
+        )
+
+    def test_actor_e_observant_produzem_relacoes_mecanicas_corretas(self):
         attrs = self.sheet["atributos"]
         skills = self.sheet["pericias"]
         senses = self.sheet["sentidos"]
-        self.assertEqual(
-            (attrs["carisma"]["valor"], attrs["carisma"]["modificador"]),
-            (11, 0),
-        )
-        self.assertEqual(skills["investigacao"], 5)
-        self.assertEqual(skills["percepcao"], 6)
+        proficiency = self.sheet["proficiencia"]["bonus"]
+        int_mod = attrs["inteligencia"]["modificador"]
+        wis_mod = attrs["sabedoria"]["modificador"]
+        cha_mod = attrs["carisma"]["modificador"]
+
+        self.assertEqual(attrs["carisma"]["modificador"], (attrs["carisma"]["valor"] - 10) // 2)
+        self.assertEqual(skills["investigacao"], int_mod + proficiency)
+        self.assertEqual(skills["percepcao"], wis_mod + proficiency)
         for skill in ("historia", "religiao", "arcana", "natureza"):
-            self.assertEqual(skills[skill], 2)
-        self.assertEqual(skills["enganacao"], 0)
-        self.assertEqual(skills["atuacao"], 0)
-        self.assertEqual(senses["percepcao_passiva"], 21)
-        self.assertEqual(senses["investigacao_passiva"], 20)
-        self.assertEqual(senses["intuicao_passiva"], 16)
+            self.assertEqual(skills[skill], int_mod)
+        self.assertEqual(skills["enganacao"], cha_mod)
+        self.assertEqual(skills["atuacao"], cha_mod)
+        self.assertEqual(senses["percepcao_passiva"], 10 + skills["percepcao"] + 5)
+        self.assertEqual(senses["investigacao_passiva"], 10 + skills["investigacao"] + 5)
+        self.assertEqual(senses["intuicao_passiva"], 10 + skills["intuicao"])
 
     def test_actor_aceita_identidade_inventada_e_separa_mimetismo(self):
         actor = self.sheet["talentos"]["actor"]
@@ -115,22 +125,16 @@ class RenFeatRollerTest(unittest.TestCase):
 
     def test_core_consome_adaptador_da_ficha_canonica(self):
         mechanics = core.load_ren_mechanics()
-        self.assertEqual(mechanics.abilities["inteligencia"], 2)
-        self.assertEqual(mechanics.abilities["carisma"], 0)
-        self.assertEqual(mechanics.skills["investigacao"], 5)
-        self.assertEqual(mechanics.skills["percepcao"], 6)
-        self.assertEqual(mechanics.saves["inteligencia"], 2)
-        self.assertEqual(mechanics.passives["percepcao"], 21)
-        self.assertEqual(mechanics.passives["investigacao"], 20)
+        sheet = ficha_ren.load(ROOT / "personagens/jogador/ficha.yaml")
+        self.assertEqual(mechanics.abilities, sheet.abilities)
+        self.assertEqual(mechanics.skills, sheet.skills)
+        self.assertEqual(mechanics.saves, sheet.saves)
+        self.assertEqual(mechanics.passives, sheet.passives)
 
     def test_actor_so_entra_quando_outra_identidade_e_declarada(self):
-        # Sem a declaração contextual, representa uma mentira feita assumidamente
-        # como Ren: Actor não deve inventar vantagem.
         normal, _ = roller.prepare_argv(["ren", "pericia", "enganacao"])
         self.assertNotIn("--vantagem", normal)
 
-        # A flag representa que o teste serve para estabelecer/sustentar uma
-        # pessoa diferente de Ren — inclusive uma identidade inventada como Shinta.
         actor, _ = roller.prepare_argv(
             ["ren", "pericia", "enganacao", roller.ACTOR_FLAG]
         )
@@ -139,7 +143,6 @@ class RenFeatRollerTest(unittest.TestCase):
         self.assertNotIn(roller.ACTOR_FLAG, actor)
 
     def test_actor_funciona_para_atuacao_de_identidade_mas_nao_performance_comum(self):
-        # Atuação comum, sem tentativa de passar-se por outra pessoa, não ganha Actor.
         normal, _ = roller.prepare_argv(["ren", "pericia", "atuacao"])
         self.assertNotIn("--vantagem", normal)
 
@@ -210,11 +213,12 @@ class RenFeatRollerTest(unittest.TestCase):
             roller._core.RNG = old_rng
 
     def test_passivo_e_consulta_sem_rng(self):
+        expected = core.load_ren_mechanics().passives["percepcao"]
         stdout = io.StringIO()
         with redirect_stdout(stdout):
             code = core.main(["ren", "passivo", "percepcao"])
         self.assertEqual(code, 0)
-        self.assertEqual(stdout.getvalue().strip(), "Percepção passiva (Ren): 21.")
+        self.assertEqual(stdout.getvalue().strip(), f"Percepção passiva (Ren): {expected}.")
 
 
 class RenFeatHotContextTest(unittest.TestCase):
@@ -222,9 +226,16 @@ class RenFeatHotContextTest(unittest.TestCase):
         runtime = yaml.safe_load(
             (ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8")
         )
+        mechanics = ficha_ren.load(ROOT / "personagens/jogador/ficha.yaml")
         cap = runtime["capacidades_contextuais"]
         actor = cap["actor"]
-        self.assertEqual(cap["passivos"], {"percepcao": 21, "investigacao": 20})
+        self.assertEqual(
+            cap["passivos"],
+            {
+                "percepcao": mechanics.passives["percepcao"],
+                "investigacao": mechanics.passives["investigacao"],
+            },
+        )
         self.assertEqual(actor["flag_rolagem"], "--actor-outra-identidade")
         self.assertEqual(actor["vantagem_outra_identidade"], ["enganacao", "atuacao"])
         self.assertIn("real ou inventada", actor["gatilho"])
@@ -237,20 +248,26 @@ class RenFeatHotContextTest(unittest.TestCase):
             (ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8")
         )
         compact = politica_acesso._compact_l1_result(runtime)
+        expected = runtime["capacidades_contextuais"]
         actor = compact["capacidades_contextuais"]["actor"]
         self.assertEqual(
-            compact["capacidades_contextuais"]["passivos"]["percepcao"], 21
+            compact["capacidades_contextuais"]["passivos"]["percepcao"],
+            expected["passivos"]["percepcao"],
         )
-        self.assertEqual(actor["flag_rolagem"], "--actor-outra-identidade")
+        self.assertEqual(actor["flag_rolagem"], expected["actor"]["flag_rolagem"])
         self.assertIn("Shinta Ryoushi", actor["gatilho"])
 
     def test_retomada_carrega_capacidades_no_mesmo_pacote(self):
+        runtime = yaml.safe_load(
+            (ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8")
+        )
         snapshot = retomada_cronica.current_snapshot(ROOT)
         cap = snapshot["capacidades_contextuais"]
-        self.assertEqual(cap["passivos"]["investigacao"], 20)
+        expected = runtime["capacidades_contextuais"]
+        self.assertEqual(cap["passivos"], expected["passivos"])
         self.assertEqual(
             cap["actor"]["vantagem_outra_identidade"],
-            ["enganacao", "atuacao"],
+            expected["actor"]["vantagem_outra_identidade"],
         )
         self.assertIn("inventada", cap["actor"]["gatilho"])
 

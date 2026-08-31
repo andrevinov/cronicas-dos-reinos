@@ -1,0 +1,50 @@
+schema_fixture_ren_5_5e_activation: 1
+natureza: snapshot_historico_isolado
+momento: ativacao_do_ruleset_5_5e
+observacao: >-
+  Fotografia mecânica do instante de ativação da migração. Estes números não
+  descrevem o estado vivo futuro de Ren e não devem ser comparados com a ficha
+  corrente depois que a campanha avançar.
+origem_2014:
+  nivel: 7
+  pontos_de_vida:
+    atuais: 45
+    maximos: 52
+    dados_de_vida: 7d8
+  ki:
+    atuais: 1
+    maximos: 7
+destino_5_5e:
+  nivel: 7
+  classe_de_armadura: 17
+  pontos_de_vida:
+    atuais: 45
+    maximos: 52
+    dados_de_vida: 7d8
+  focus:
+    atuais: 1
+    maximos: 7
+    cd: 14
+  deslocamento_total: 55 pés
+  pericias:
+    furtividade: 7
+  ataques:
+    golpe_desarmado:
+      bonus: 7
+      dano: 1d8+4
+    wakizashi:
+      bonus: 7
+      dano: 1d8+4
+    shuriken:
+      bonus: 7
+      dano: 1d4+4
+  passivos:
+    percepcao: 21
+    investigacao: 20
+    intuicao: 16
+efeito_legado_no_instante_da_ativacao:
+  id: passos_sem_pegadas
+  origem_ruleset: dnd_5e_2014
+  preservado_por_migracao: true
+  recastavel: false
+  termino: 23:30 de 19 Eleasis, 1372 DR

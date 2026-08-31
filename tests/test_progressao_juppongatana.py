@@ -17,19 +17,26 @@ import progressao_juppongatana as progression
 
 
 class JuppongatanaMilestoneRepositoryTest(unittest.TestCase):
-    def test_repo_real_comeca_em_zero_de_dez_no_nivel_sete(self):
+    def test_repo_real_reflete_progressao_corrente_sem_congelar_zero_de_dez(self):
         result = progression.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["membros"], 10)
-        self.assertEqual(result["neutralizacoes"], 0)
-        self.assertEqual(result["niveis_pendentes"], 0)
+        self.assertEqual(result["membros"], progression.MAX_NEUTRALIZATIONS)
 
+        state = progression.load_state(ROOT)
         status = progression.status(ROOT)
-        self.assertEqual(status["nivel_ficha"], 7)
-        self.assertEqual(status["neutralizacoes_duraveis"], 0)
-        self.assertEqual(status["nivel_desbloqueado_por_marcos"], 7)
-        self.assertEqual(status["proximo_nivel"], 8)
-        self.assertEqual(len(status["restantes"]), 10)
+        count = len(state["neutralizacoes"])
+        unlocked = progression.BASE_LEVEL + count
+        self.assertEqual(result["neutralizacoes"], count)
+        self.assertEqual(status["neutralizacoes_duraveis"], count)
+        self.assertEqual(status["nivel_desbloqueado_por_marcos"], unlocked)
+        self.assertEqual(
+            status["niveis_pendentes_de_aplicacao"],
+            max(0, unlocked - status["nivel_ficha"]),
+        )
+        self.assertEqual(len(status["restantes"]), progression.MAX_NEUTRALIZATIONS - count)
+        self.assertEqual(status["concluido"], count == progression.MAX_NEUTRALIZATIONS)
+        expected_next = unlocked + 1 if count < progression.MAX_NEUTRALIZATIONS else None
+        self.assertEqual(status["proximo_nivel"], expected_next)
         self.assertEqual(
             status["fontes_lidas"],
             [
@@ -46,12 +53,13 @@ class JuppongatanaMilestoneRepositoryTest(unittest.TestCase):
         self.assertEqual(policy["faixa_niveis"], list(range(8, 18)))
         self.assertEqual(policy["ordem_dos_membros"], "livre")
 
-    def test_estado_inicial_nao_da_credito_retroativo_a_kurobane(self):
+    def test_estado_nao_aplica_credito_retroativo_a_kurobane(self):
         state = progression.load_state(ROOT)
         self.assertFalse(state["retroatividade_aplicada"])
-        self.assertEqual(state["neutralizacoes"], [])
         policy = progression.load_policy(ROOT)
         self.assertTrue(policy["regras"]["kurobane_frustrado_antes_da_task_nao_conta"])
+        members = [item["membro"] for item in state["neutralizacoes"]]
+        self.assertEqual(len(members), len(set(members)))
 
 
 class JuppongatanaMilestoneSyntheticTest(unittest.TestCase):

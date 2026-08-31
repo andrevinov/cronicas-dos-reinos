@@ -1,0 +1,86 @@
+schema_revisao_congelamento_estado_vivo: 1
+origem: Task 1 — inventário e telemetria da suíte
+regra: >-
+  Todo arquivo marcado como congelamento_suspeito pela auditoria da Task 1
+  precisa de decisão semântica explícita. corrigido significa que assertions de
+  estado mutável foram tornadas relacionais ou movidas para fixture isolada;
+  justificado significa que o literal protege uma propriedade permanente e não
+  um valor corrente da campanha.
+arquivos:
+  tests/test_auditoria_final.py:
+    status: justificado
+    motivo: >-
+      A leitura direta do buffer pendente é comparada byte a byte antes/depois
+      para provar que a auditoria é read-only. Não fixa quantidade, sessão,
+      recurso ou conteúdo corrente.
+  tests/test_identidades_suspeita.py:
+    status: corrigido
+    motivo: >-
+      A ausência inicial de suspeita deixa de ser exigida no estado vivo de
+      Kethra e passa a ser exercitada a partir de estado vazio isolado.
+  tests/test_migracao_ren_5_5e.py:
+    status: corrigido
+    motivo: >-
+      HP, Focus e números do nível 7 no instante de ativação foram separados em
+      fixture histórica; a ficha viva é validada por estrutura e invariantes.
+  tests/test_papeis_conversacionais.py:
+    status: corrigido
+    motivo: >-
+      Os oito perfis inaugurais passam a ser subconjunto obrigatório, permitindo
+      novos perfis e novas relações sem congelar o conjunto corrente.
+  tests/test_populacao_canonica.py:
+    status: corrigido
+    motivo: >-
+      Contadores são derivados das fontes atuais, promoções históricas viram
+      subconjuntos e a ausência de scheduler é provada por não mutação.
+  tests/test_reputacao_publica.py:
+    status: corrigido
+    motivo: >-
+      Bootstrap sem reputação e separação entre personas passam a usar estado
+      isolado; consultas ao repo real só validam coerência do estado corrente.
+  tests/test_rodape_turno.py:
+    status: corrigido
+    motivo: >-
+      O runtime real não exige mais que exista exatamente um único item mágico;
+      o teste protege a presença e o contrato do registro conhecido.
+  tests/test_ruleset_5_5e_activation.py:
+    status: corrigido
+    motivo: >-
+      Focus atual e efeito temporário deixam de ser fixados; o snapshot exato da
+      ativação fica em fixture e o estado vivo é validado por consistência.
+  tests/test_talentos_ren.py:
+    status: corrigido
+    motivo: >-
+      Atributos, perícias, passivos, CA e CD passam a ser derivados da ficha
+      corrente e das fórmulas canônicas, preservando as escolhas históricas.
+revisoes_indiretas:
+  tests/test_progressao_juppongatana.py:
+    status: corrigido
+    motivo: >-
+      A progressão real deixa de exigir zero neutralizações, nível 7 e próximo
+      nível 8; todos esses campos são derivados do ledger e da ficha correntes.
+  tests/test_condicoes_mundo.py:
+    status: corrigido
+    motivo: >-
+      O estado real pode conter condições abertas e histórico; os contadores são
+      comparados ao estado persistido e aos limites do contrato.
+  tests/test_rastros.py:
+    status: corrigido
+    motivo: >-
+      O índice real pode acumular rastros legítimos; a validação confere apenas
+      coerência entre índice, status e limites de tamanho.
+  tests/test_direcoes.py:
+    status: corrigido
+    motivo: >-
+      Estados e marcos correntes das direções podem avançar; o status público é
+      comparado ao estado persistido e à regra de dependência atual.
+  tests/test_ciclo_npcs.py:
+    status: corrigido
+    motivo: >-
+      O registro real pode acumular mortes canônicas; o teste confere fonte,
+      terminalidade e coerência do status sem exigir lista vazia.
+  tests/test_agentes.py:
+    status: corrigido
+    motivo: >-
+      Presença, estado e elegibilidade de agentes vivos podem mudar; a
+      elegibilidade passa a ser recalculada pela regra sobre o fragmento atual.

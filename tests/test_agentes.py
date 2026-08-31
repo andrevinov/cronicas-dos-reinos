@@ -18,7 +18,7 @@ class AgentesRepositoryTest(unittest.TestCase):
     def test_repositorio_valida_camadas_de_agentes(self):
         result = mod.validate_repo(REPO)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade"], 16)
+        self.assertEqual(result["quantidade"], len(mod.load_index(REPO)["agentes"]))
 
     def test_consulta_de_um_agente_le_apenas_indice_e_fragmento(self):
         result = mod.load_agent(REPO, "Shizune")
@@ -32,7 +32,7 @@ class AgentesRepositoryTest(unittest.TestCase):
     def test_corven_promovido_le_apenas_indice_e_fragmento_estrategico(self):
         result = mod.load_agent(REPO, "Corven")
         self.assertEqual(result["agente_id"], "corven_dalm")
-        self.assertEqual(result["elegibilidade_local"], "sim")
+        self.assertEqual(result["elegibilidade_local"], mod.local_eligibility(result["resultado"]))
         self.assertEqual(
             result["fontes_lidas"],
             ["narrador/agentes/index.yaml", "narrador/agentes/corven_dalm.yaml"],
@@ -46,22 +46,22 @@ class AgentesRepositoryTest(unittest.TestCase):
         size = (REPO / mod.INDEX_PATH).stat().st_size
         self.assertLessEqual(size, 4096)
 
-    def test_kurobane_presente_esta_habilitado_localmente(self):
+    def test_kurobane_elegibilidade_reflete_presenca_corrente(self):
         result = mod.load_agent(REPO, "Kurobane")
-        self.assertEqual(result["resultado"]["presenca"]["estado"], "presente")
-        self.assertEqual(result["elegibilidade_local"], "sim")
+        self.assertIn(result["resultado"]["presenca"]["estado"], mod.VALID_PRESENCE_STATES)
+        self.assertEqual(result["elegibilidade_local"], mod.local_eligibility(result["resultado"]))
 
-    def test_shizune_indeterminada_nao_ganha_acao_fisica_local(self):
+    def test_shizune_elegibilidade_reflete_presenca_corrente(self):
         result = mod.load_agent(REPO, "Shizune")
-        self.assertEqual(result["resultado"]["presenca"]["estado"], "indeterminado")
-        self.assertEqual(result["elegibilidade_local"], "nao")
+        self.assertIn(result["resultado"]["presenca"]["estado"], mod.VALID_PRESENCE_STATES)
+        self.assertEqual(result["elegibilidade_local"], mod.local_eligibility(result["resultado"]))
 
-    def test_pan_chu_existe_como_agente_latente_sem_canonizar_chegada(self):
+    def test_pan_chu_existe_sem_congelar_estado_ou_chegada_correntes(self):
         result = mod.load_agent(REPO, "Pan Chu")
         self.assertEqual(result["agente_id"], "pan_chu")
-        self.assertEqual(result["resultado"]["estado"], "latente")
-        self.assertEqual(result["resultado"]["presenca"]["estado"], "indeterminado")
-        self.assertEqual(result["elegibilidade_local"], "nao")
+        self.assertIn(result["resultado"]["estado"], mod.VALID_STATES)
+        self.assertIn(result["resultado"]["presenca"]["estado"], mod.VALID_PRESENCE_STATES)
+        self.assertEqual(result["elegibilidade_local"], mod.local_eligibility(result["resultado"]))
 
     def test_coletivo_juppongatana_depende_de_membros_presentes(self):
         result = mod.load_agent(REPO, "Juppongatana")
