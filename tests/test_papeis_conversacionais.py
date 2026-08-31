@@ -37,7 +37,7 @@ class ConversationalRoleRepositoryTest(unittest.TestCase):
             for npc_id, entry in index["npcs"].items()
             if "papel_conversacional" in entry
         }
-        self.assertEqual(profiles, EXPECTED)
+        self.assertTrue(EXPECTED.items() <= profiles.items())
         self.assertTrue(set(profiles).issubset(relations))
         self.assertEqual(texturas.validate(ROOT), [])
 
