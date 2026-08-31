@@ -24,23 +24,25 @@ jobs:
 
           path = Path("tests/test_adversarial_integrity.py")
           text = path.read_text(encoding="utf-8")
-          old = '''    if canon:
-        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
-        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):
-'''
-          new = '''    if canon:
-        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
-        bridge_path = repo / canon_bridge.STATE
-        bridge = yaml.safe_load(bridge_path.read_text(encoding="utf-8")) or {}
-        bridge["reservas"] = {}
-        bridge["resolucoes"] = {}
-        bridge["historico_recente"] = []
-        bridge_path.write_text(
-            yaml.safe_dump(bridge, allow_unicode=True, sort_keys=False),
-            encoding="utf-8",
-        )
-        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):
-'''
+          old = (
+              '    if canon:\n'
+              '        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")\n'
+              '        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):\n'
+          )
+          new = (
+              '    if canon:\n'
+              '        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")\n'
+              '        bridge_path = repo / canon_bridge.STATE\n'
+              '        bridge = yaml.safe_load(bridge_path.read_text(encoding="utf-8")) or {}\n'
+              '        bridge["reservas"] = {}\n'
+              '        bridge["resolucoes"] = {}\n'
+              '        bridge["historico_recente"] = []\n'
+              '        bridge_path.write_text(\n'
+              '            yaml.safe_dump(bridge, allow_unicode=True, sort_keys=False),\n'
+              '            encoding="utf-8",\n'
+              '        )\n'
+              '        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):\n'
+          )
           if old not in text:
               raise SystemExit("Task44 canon fixture block not found")
           path.write_text(text.replace(old, new, 1), encoding="utf-8")
