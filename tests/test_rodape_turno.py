@@ -163,9 +163,11 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
     def test_runtime_real_expoe_registro_magico_sem_scan_de_inventario(self):
         context = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
         items = ((context.get("rodape") or {}).get("itens_magicos") or {})
-        self.assertEqual(set(items), {"broche_do_semblante_humilde"})
+        self.assertIn("broche_do_semblante_humilde", items)
         self.assertNotIn("disponibilidades", context.get("recursos") or {})
-        self.assertIn("disponibilidade", items["broche_do_semblante_humilde"])
+        for item_id, item in items.items():
+            self.assertIsInstance(item, dict, item_id)
+            self.assertIn("disponibilidade", item, item_id)
 
     def test_rodape_real_e_compacto(self):
         context, _ = rodape_turno.effective_runtime(ROOT)
