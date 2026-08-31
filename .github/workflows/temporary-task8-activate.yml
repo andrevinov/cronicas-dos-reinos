@@ -21,6 +21,22 @@ jobs:
           python-version: '3.12'
       - name: Dependencies
         run: python -m pip install 'PyYAML>=6,<7'
+      - name: Harden applicator matcher
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('.github/task8_apply.py')
+          text = path.read_text(encoding='utf-8')
+          text = text.replace(
+              '    ("    if ki_max < 0 or not 0 <= ki_current <= ki_max:\\n        raise RenSheetError(\\"recursos_de_classe.ki possui faixa inválida\\")\\n", "    if focus_max < 0 or not 0 <= focus_current <= focus_max:\\n        raise RenSheetError(\\"recursos_de_classe.focus possui faixa inválida\\")\\n"),',
+              '    ("    if ki_max < 0 or ki_current < 0 or ki_current > ki_max:\\n        raise RenSheetError(\\"recursos_de_classe.ki possui faixa inválida\\")\\n", "    if focus_max < 0 or focus_current < 0 or focus_current > focus_max:\\n        raise RenSheetError(\\"recursos_de_classe.focus possui faixa inválida\\")\\n"),',
+          )
+          text = text.replace(
+              '    ("        \\"ki\\": {\\n            \\"pontos_maximos\\": ki_max,\\n            \\"pontos_atuais\\": ki_current,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_maximos\\": focus_max,\\n            \\"pontos_atuais\\": focus_current,\\n            \\"cd\\": focus_dc,\\n        },"),',
+              '    ("        \\"ki\\": {\\n            \\"pontos_atuais\\": ki_current,\\n            \\"pontos_maximos\\": ki_max,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_atuais\\": focus_current,\\n            \\"pontos_maximos\\": focus_max,\\n            \\"cd\\": focus_dc,\\n        },"),',
+          )
+          path.write_text(text, encoding='utf-8')
+          PY
       - name: Apply cutover
         run: |
           if grep -q 'task_8_auditoria_final: true' campanha.yaml && test -f ferramentas/ruleset_5_5e.py; then
