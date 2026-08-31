@@ -105,7 +105,7 @@ Portanto o sucesso não significa apenas “o código diz que não lê a transcr
 
 Uma retomada também precisa funcionar se o processo morrer depois de um turno e antes do próximo checkpoint.
 
-A auditoria cria outro sandbox quente, injeta ali um delta sintético de Ki usando o mesmo schema de `transacoes.py` e exige que `contexto.py retomada` devolva:
+A auditoria cria outro sandbox quente, injeta ali um delta sintético de Focus usando o mesmo schema de `transacoes.py` e exige que `contexto.py retomada` devolva:
 
 - o recurso efetivo com o delta aplicado;
 - o resumo do evento pendente;

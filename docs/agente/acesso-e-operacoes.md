@@ -114,14 +114,14 @@ O registrador escreve apenas `sessoes/NNN/transcricao.md` e `runtime/eventos-pen
 
 Não atualizar na mesma interação, por rotina: estado, tempo, ficha, fragmentos de relação/NPC, conhecimento consolidado, consequências, relógios, handoff, índice de sessões ou arquivos separados de rolagens ocultas. Esses destinos pertencem ao checkpoint.
 
-Também não repetir em prosa o painel completo de PV/CA/Ki/dinheiro/hora/localização quando nada relevante mudou. Mostrar apenas mecânica necessária à decisão/resolução atual.
+Também não repetir em prosa o painel completo de PV/CA/Focus/dinheiro/hora/localização quando nada relevante mudou. Mostrar apenas mecânica necessária à decisão/resolução atual.
 
 ### O que vira delta
 
 Registrar somente mudança persistente ou necessária para continuidade:
 
 ```json
-{"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
+{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-1}
 {"alvo":"estado","op":"set","caminho":"localizacao.ponto_exato","valor":"junto à cerca"}
 {"alvo":"tempo","op":"set","caminho":"hora_aproximada","valor":"08:04"}
 {"alvo":"relacao:luath","op":"set","caminho":"confianca","valor":"moderada"}
@@ -194,7 +194,7 @@ Usar `contexto.py regra "assunto"`. Se ainda houver dúvida: decisão anterior e
 
 ### Atualização da ficha
 
-Durante jogo, dano, cura, Ki, moedas, munição e outros recursos entram como deltas; a ficha é sincronizada pela consolidação. Fora do loop narrativo, alteração canônica manual continua exigindo validação e regeneração do runtime quando aplicável.
+Durante jogo, dano, cura, Focus, moedas, munição e outros recursos entram como deltas; a ficha é sincronizada pela consolidação. Fora do loop narrativo, alteração canônica manual continua exigindo validação e regeneração do runtime quando aplicável.
 
 Depois de `checkpoint.py`, não regenerar runtime/handoff por rotina: o fluxo já os deixa coerentes.
 

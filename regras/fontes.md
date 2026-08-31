@@ -2,7 +2,7 @@
 
 Este arquivo define as fontes autorizadas para a campanha **Crônicas dos Reinos**.
 
-A campanha está em migração controlada de **D&D 5e 2014** para **D&D 5.5e**. Enquanto o gate final não for satisfeito, D&D 5e 2014 continua sendo o ruleset mecânico ativo; 5.5e é fonte de comparação, preparação e conversão, mas ainda não substitui a mecânica usada em sessão.
+A migração controlada de **D&D 5e 2014** para **D&D 5.5e** foi concluída. D&D 5.5e é o ruleset mecânico ativo; material 2014 permanece somente como histórico ou compatibilidade explicitamente aprovada.
 
 Materiais de AD&D, D&D 3e, D&D 4e e suplementos compatíveis continuam sendo usados principalmente como fontes de cenário, aventuras, personagens, lugares, facções, rumores e inspiração. Quando uma mecânica antiga precisar entrar em jogo, ela deve ser adaptada para o **ruleset atual** declarado em `campanha.yaml`.
 
@@ -16,17 +16,17 @@ A fonte de verdade executável para versão e migração é `campanha.yaml`, em 
 
 Estado inicial da migração:
 
-- ruleset atual: `dnd_5e_2014`;
+- ruleset atual: `dnd_5_5e`;
 - ruleset alvo: `dnd_5_5e`;
-- status: `em_andamento`;
-- ativação 5.5e: proibida até `task_8_auditoria_final` concluir todos os requisitos e o preflight completo.
+- status: `concluida`;
+- ativação 5.5e: concluída por `task_8_auditoria_final`, após integração e preflight completos.
 
 A migração é prospectiva. Ela **não reescreve sessões concluídas**, não recalcula resultados canonizados e não altera decisões antigas apenas para fazê-las parecer originadas em 5.5e. Uma decisão antiga pode ser substituída futuramente apenas por decisão explícita, com aplicação prospectiva.
 
 Compatibilidade também é explícita:
 
-- antes da ativação, material 5.5e serve somente à migração;
-- depois da ativação, material 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e houver aprovação explícita;
+- D&D 5.5e é a fonte mecânica corrente;
+- material 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e houver aprovação explícita;
 - material de AD&D é sempre adaptado para o ruleset atual, nunca aplicado mecanicamente de forma literal.
 
 ### Gate formal AD&D → ruleset moderno
@@ -50,7 +50,7 @@ No runtime vale ainda uma segunda barreira: `adaptado_para` precisa coincidir co
 
 `regras/catalogo.yaml` é um **índice executável**, não uma nova fonte de autoridade. Ele resolve IDs e aliases e declara, para cada regra catalogada, o ruleset, a autoridade, o executor, a persistência e a seção humana que documenta o resumo interno.
 
-Toda entrada precisa apontar para arquivo Markdown existente em `regras/` e para uma seção real desse arquivo. O catálogo não pode promover uma regra de `dnd_5_5e` enquanto `campanha.yaml` mantiver `dnd_5e_2014` como ruleset atual. Se houver conflito, vale a hierarquia mecânica abaixo; o catálogo deve falhar em vez de escolher uma versão silenciosamente.
+Toda entrada precisa apontar para arquivo Markdown existente em `regras/` e para uma seção real desse arquivo. O catálogo operacional deve declarar `dnd_5_5e`; qualquer entrada 2014 precisa sair do catálogo ativo e passar pela política explícita de compatibilidade. Se houver conflito, vale a hierarquia mecânica abaixo; o catálogo deve falhar em vez de escolher uma versão silenciosamente.
 
 Termos ainda não catalogados podem usar temporariamente a busca textual legada. Esse fallback existe apenas para compatibilidade durante a migração e não deve inventar versão, executor ou autoridade que o catálogo ainda não declarou.
 
@@ -73,9 +73,9 @@ O agente deve registrar qualquer adaptação relevante em `regras/decisoes.md` o
 
 ---
 
-## Regras-base ativas — D&D 5e 2014
+## Regras de compatibilidade — D&D 5e 2014
 
-Estas fontes continuam sustentando a resolução mecânica **até a ativação final de 5.5e**.
+Estas fontes deixaram de ser a base ativa e só podem sustentar fallback explicitamente aprovado.
 
 | Prioridade | Fonte | Uso na campanha | Arquivo local |
 | --- | --- | --- | --- |
@@ -83,13 +83,13 @@ Estas fontes continuam sustentando a resolução mecânica **até a ativação f
 | Alta | Manual dos Monstros, D&D 5e 2014 | estatísticas de criaturas, ameaças e referência para substituições de monstros antigos | `books/high_rules_dnd5e_monster-manual_pt-br.pdf` |
 | Baixa | Regras Básicas de D&D 5e 2014 | consulta rápida quando conveniente; não substitui os livros-base | `books/low_rules_dnd5e_basic-rules-player_v0-2_printer-friendly.pdf`, `books/low_rules_dnd5e_basic-rules-dm_v0-3_printer-friendly.pdf` |
 
-Enquanto `sistema.ruleset.atual` for `dnd_5e_2014`, nenhuma regra 5.5e entra automaticamente em uma sessão só por ser mais recente.
+Nenhuma regra 2014 retorna automaticamente a uma sessão apenas por existir em material legado.
 
 ---
 
-## Regras-base alvo — D&D 5.5e
+## Regras-base ativas — D&D 5.5e
 
-Estas fontes definem o ruleset para o qual a campanha está migrando. Durante as Tasks 1–7 elas podem orientar comparação e implementação; só se tornam autoridade mecânica corrente após o gate da Task 8.
+Estas fontes definem o ruleset mecânico ativo desde a conclusão da Task 8.
 
 | Prioridade alvo | Fonte | Uso após ativação | Arquivo local |
 | --- | --- | --- | --- |

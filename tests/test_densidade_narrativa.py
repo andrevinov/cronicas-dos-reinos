@@ -95,7 +95,7 @@ class AutoridadeTemporalTest(unittest.TestCase):
                 "nome": "Ren Kagehira",
                 "nivel": 6,
                 "classe": "Monge",
-                "subclasse": "Caminho da Sombra",
+                "subclasse": "Guerreiro das Sombras",
                 "arquivo_ficha": "personagens/jogador/ficha.yaml",
             },
             "localizacao": {
@@ -117,7 +117,7 @@ class AutoridadeTemporalTest(unittest.TestCase):
             },
             "recursos": {
                 "pontos_de_vida": {"atuais": 45, "maximos": 45},
-                "ki": {"atuais": 5, "maximos": 6},
+                "focus": {"atuais": 5, "maximos": 6},
                 "classe_de_armadura": 17,
                 "deslocamento": "55 pés",
                 "dinheiro": {"po": 45},

@@ -117,7 +117,7 @@ Não reduzir `narracao` ao tamanho desejado do `resumo`. Não copiar descrição
 O registro pendente contém resumo curto e apenas deltas realmente ocorridos. Exemplos:
 
 ```json
-{"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
+{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-1}
 {"alvo":"tempo","op":"instante","valor":{"data":"7 Eleasis, 1372 DR","hora":"08:04"}}
 {"alvo":"npc:kethra_dunn","op":"inc","caminho":"medidores.confianca","valor":1,"fato_canonico":"Kethra viu Ren cumprir uma promessa relevante com consequência persistente.","fonte":"sessoes/NNN/transcricao.md"}
 {"alvo":"conhecimento","op":"registrar","valor":{"assunto":"balança velha","texto":"marca violeta sob a unha"}}

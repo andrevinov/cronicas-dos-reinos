@@ -125,13 +125,19 @@ class ContextoRepositoryTest(unittest.TestCase):
         rendered, _ = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
-    def test_recurso_passos_sem_pegadas_encontra_custo_sem_disponibilidade_explicita(self):
+    def test_recurso_passos_sem_pegadas_encontra_apenas_efeito_legado_nao_recastavel(self):
         data = mod.command_resource(REPO, "passos sem pegadas")
         self.assertTrue(data["resultado"]["encontrado"])
-        mechanic = data["resultado"]["mecanica"]
-        self.assertEqual(mechanic["dados"]["nome"], "passos sem pegadas")
-        self.assertEqual(mechanic["dados"]["custo"], 2)
+        self.assertIsNone(data["resultado"]["mecanica"])
         self.assertIsNone(data["resultado"]["disponibilidade"])
+        effects = data["resultado"]["efeitos_temporarios_relacionados"]
+        self.assertEqual(len(effects), 1)
+        self.assertEqual(effects[0]["id"], "passos_sem_pegadas")
+        legacy = effects[0]["dados"]
+        self.assertEqual(legacy["origem_ruleset"], "dnd_5e_2014")
+        self.assertTrue(legacy["preservado_por_migracao"])
+        self.assertFalse(legacy["recastavel"])
+        self.assertEqual(legacy["termino"], "23:30 de 19 Eleasis, 1372 DR")
         self.assertEqual(data["nivel"], "L2")
         self.assertEqual(
             data["fontes"][:2],
@@ -171,7 +177,7 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertLessEqual(len(rendered_resume.encode("utf-8")), 8 * 1024)
         self.assertLessEqual(len(rendered_session.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
         self.assertIsInstance(
-            resume["resultado"]["contexto"]["recursos"]["ki"],
+            resume["resultado"]["contexto"]["recursos"]["focus"],
             dict,
         )
         self.assertNotIn("sessoes/003/transcricao.md", resume["fontes"])

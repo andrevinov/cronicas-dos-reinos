@@ -197,10 +197,10 @@ class CommitmentRuntimeGeneratorTest(unittest.TestCase):
     def _documents(self, commitments=None):
         state = {
             "campanha": {"sessao_atual": 12, "status": "em_sessao", "modo_de_cena_atual": "interacao"},
-            "personagem": {"nome": "Ren Kagehira", "nivel": 7, "classe": "Monge", "subclasse": "Caminho da Sombra"},
+            "personagem": {"nome": "Ren Kagehira", "nivel": 7, "classe": "Monge", "subclasse": "Guerreiro das Sombras"},
             "localizacao": {"plano": "Material", "mundo": "Toril", "continente": "Faerûn", "regiao": "The Vast", "cidade": "Ravens Bluff", "area": "Rua da Cal", "ponto_exato": "mercador", "descricao_operacional": "Ren aguarda."},
             "tempo": {"data_exata": "14 Eleasis, 1372 DR", "hora_aproximada": "21:30", "periodo_do_dia": "noite", "clima": "seco"},
-            "recursos": {"pontos_de_vida": {"atuais": 52, "maximos": 52}, "ki": {"atuais": 7, "maximos": 7}, "classe_de_armadura": 17, "deslocamento": "55 pés", "dinheiro": {"po": 30.58}, "disponibilidades": {}},
+            "recursos": {"pontos_de_vida": {"atuais": 52, "maximos": 52}, "focus": {"atuais": 7, "maximos": 7}, "classe_de_armadura": 17, "deslocamento": "55 pés", "dinheiro": {"po": 30.58}, "disponibilidades": {}},
         }
         if commitments is not None:
             state["compromissos"] = commitments

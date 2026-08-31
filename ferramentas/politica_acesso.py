@@ -173,7 +173,7 @@ def _compact_resume_result(value: Any) -> Any:
 
     ``command_resume`` pode permanecer rico para uso interno. Na fronteira de
     acesso, removemos somente redundâncias e prosa longa antes do ``fit_budget``;
-    sessão, nível, PV, Ki e CA continuam com seus tipos originais.
+    sessão, nível, PV, Focus e CA continuam com seus tipos originais.
     """
     if not isinstance(value, dict):
         return value

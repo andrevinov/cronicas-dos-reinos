@@ -51,8 +51,8 @@ class RenSheetSingleSourceTest(unittest.TestCase):
         self.assertEqual(
             [(item.label, item.attack_bonus, item.damage, item.damage_type) for item in mechanics.attacks.values()],
             [
-                ("Golpe desarmado", 7, "1d6+4", "contundente"),
-                ("Wakizashi", 7, "1d6+4", "perfurante"),
+                ("Golpe desarmado", 7, "1d8+4", "contundente"),
+                ("Wakizashi", 7, "1d8+4", "perfurante"),
                 ("Shuriken", 7, "1d4+4", "perfurante"),
             ],
         )
@@ -66,7 +66,7 @@ class RenSheetSingleSourceTest(unittest.TestCase):
             {"atuais": 45, "maximos": 52, "dados_de_vida": "7d8"},
         )
         self.assertEqual(
-            mechanics.resources["ki"],
+            mechanics.resources["focus"],
             {"pontos_atuais": 1, "pontos_maximos": 7, "cd": 14},
         )
         self.assertEqual(mechanics.resources["proficiencia"], {"bonus": 3})
@@ -82,8 +82,8 @@ class RenSheetSingleSourceTest(unittest.TestCase):
         changed["combate"]["ataques"][1]["bonus_ataque"] = 13
         changed["combate"]["ataques"][1]["dano"] = "2d8 + 5 cortante"
         changed["combate"]["pontos_de_vida"]["atuais"] = 44
-        changed["recursos_de_classe"]["ki"]["pontos_atuais"] = 3
-        changed["recursos_de_classe"]["ki"]["cd"] = 17
+        changed["recursos_de_classe"]["focus"]["pontos_atuais"] = 3
+        changed["recursos_de_classe"]["focus"]["cd"] = 17
 
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "ficha.yaml"
@@ -103,8 +103,8 @@ class RenSheetSingleSourceTest(unittest.TestCase):
         self.assertEqual(mechanics.attacks["wakizashi"].damage, "2d8+5")
         self.assertEqual(mechanics.attacks["wakizashi"].damage_type, "cortante")
         self.assertEqual(mechanics.resources["pontos_de_vida"]["atuais"], 44)
-        self.assertEqual(mechanics.resources["ki"]["pontos_atuais"], 3)
-        self.assertEqual(mechanics.resources["ki"]["cd"], 17)
+        self.assertEqual(mechanics.resources["focus"]["pontos_atuais"], 3)
+        self.assertEqual(mechanics.resources["focus"]["cd"], 17)
 
     def test_core_nao_mantem_tabelas_mecanicas_duplicadas(self) -> None:
         for name in (

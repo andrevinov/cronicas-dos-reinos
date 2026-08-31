@@ -60,13 +60,13 @@ RULES: tuple[Rule, ...] = (
         "nível mecânico",
     ),
     Rule(
-        "ki_pontos",
+        "focus_pontos",
         re.compile(
-            r"\bpontos?\s+de\s+ki\b|\bki\s+points?\b|\bki\s*[:=/]\s*\d+\b"
-            r"|\b\d+\s+(?:pontos?\s+de\s+)?ki\b",
+            r"\bpontos?\s+de\s+focus\b|\bfocus\s+points?\b|\bfocus\s*[:=/]\s*\d+\b"
+            r"|\b\d+\s+(?:pontos?\s+de\s+)?focus\b",
             re.IGNORECASE,
         ),
-        "contagem de pontos de Ki",
+        "contagem de pontos de Focus",
     ),
     Rule(
         "slots",

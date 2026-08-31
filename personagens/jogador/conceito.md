@@ -2,7 +2,7 @@
 
 Ren Kagehira é o personagem inicial de **Crônicas dos Reinos**.
 
-Ele é um humano de **Kozakura**, em Kara-Tur, treinado como agente furtivo de um clã de sombras. Em termos mecânicos, usa **Dungeons & Dragons 5e**, classe **Monge**, nível 6, subclasse **Caminho da Sombra**.
+Ele é um humano de **Kozakura**, em Kara-Tur, treinado como agente furtivo de um clã de sombras. Em termos mecânicos, usa **Dungeons & Dragons 5.5e**, classe **Monge**, nível 7, subclasse **Guerreiro das Sombras**.
 
 ---
 
@@ -39,7 +39,7 @@ Ele deve ser capaz de:
 
 * classe: Monge;
 * nível inicial: 3;
-* tradição monástica: Caminho da Sombra;
+* tradição monástica: Guerreiro das Sombras;
 * ancestralidade: Humano variante;
 * origem cultural: Kozakuran;
 * background customizado: Exilado de Clã;

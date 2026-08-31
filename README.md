@@ -64,7 +64,7 @@ Este repositório será dedicado exclusivamente a uma combinação específica d
 * período histórico;
 * conjunto de livros autorizados.
 
-A campanha usará **Dungeons & Dragons 5ª edição** como base mecânica.
+A campanha usa **Dungeons & Dragons 5.5e** como base mecânica.
 
 A edição está registrada em `campanha.yaml` e deverá ser tratada como parte fundamental do contrato da campanha.
 
@@ -72,7 +72,7 @@ O projeto não pretende ser um motor agnóstico capaz de executar simultaneament
 
 Embora algumas estruturas possam ser reutilizáveis, este repositório será construído especificamente para a campanha de Dungeons & Dragons em Forgotten Realms.
 
-Materiais de outras edições poderão ser usados como fontes de cenário, aventura, personagens, lugares e conflitos, mas suas mecânicas deverão ser adaptadas para 5e.
+Materiais de outras edições poderão ser usados como fontes de cenário, aventura, personagens, lugares e conflitos, mas suas mecânicas deverão ser adaptadas para 5.5e.
 
 ---
 

@@ -41,7 +41,7 @@ Como Ren é furtivo e móvel, muitas soluções fortes passam por:
 * atacar e reposicionar;
 * evitar luta desnecessária;
 * usar cobertura legal quando útil;
-* gastar ki em momentos decisivos.
+* gastar focus em momentos decisivos.
 
 Se Ren escolher confronto direto contra muitos inimigos ou uma autoridade poderosa, o mundo responderá de modo coerente.
 

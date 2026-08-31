@@ -11,7 +11,7 @@ personagem:
   status: ativo
   nivel: 7
   classe: Monge
-  subclasse: Caminho da Sombra
+  subclasse: Guerreiro das Sombras
 localizacao:
   plano: Material
   mundo: Toril
@@ -46,10 +46,6 @@ recursos:
     atuais: 5
     maximos: 7
     dado: d8
-  ki:
-    atuais: 1
-    maximos: 7
-    recarga: descanso curto ou longo
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
@@ -57,8 +53,11 @@ recursos:
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
-    silencio: disponível mediante gasto de 2 Ki
     traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
+  focus:
+    atuais: 1
+    maximos: 7
+    recarga: descanso curto ou longo
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml
@@ -173,6 +172,11 @@ efeitos_temporarios:
     descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
     inicio: 22:30 de 19 Eleasis, 1372 DR
     termino: 23:30 de 19 Eleasis, 1372 DR
+    origem_ruleset: dnd_5e_2014
+    preservado_por_migracao: true
+    recastavel: false
+    observacao_migracao: Efeito lançado legalmente antes do cutover; permanece somente até sua expiração original
+      e não pode ser renovado pela ficha 5.5e.
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem

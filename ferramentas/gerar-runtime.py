@@ -152,7 +152,7 @@ def build_runtime_from_documents(
         efeitos_temporarios = require_mapping(efeitos_temporarios_raw, "estado.efeitos_temporarios")
 
     pv = require_mapping(recursos.get("pontos_de_vida"), "estado.recursos.pontos_de_vida")
-    ki = require_mapping(recursos.get("ki"), "estado.recursos.ki")
+    focus = require_mapping(recursos.get("focus"), "estado.recursos.focus")
     dinheiro = require_mapping(recursos.get("dinheiro"), "estado.recursos.dinheiro")
 
     sessao = campanha.get("sessao_atual")
@@ -198,7 +198,7 @@ def build_runtime_from_documents(
         },
         "recursos": {
             "pv": {"atuais": pv.get("atuais"), "maximos": pv.get("maximos")},
-            "ki": {"atuais": ki.get("atuais"), "maximos": ki.get("maximos")},
+            "focus": {"atuais": focus.get("atuais"), "maximos": focus.get("maximos")},
             "ca": recursos.get("classe_de_armadura"),
             "deslocamento": recursos.get("deslocamento"),
             "dinheiro_po": dinheiro.get("po"),
@@ -250,7 +250,7 @@ def build_runtime_from_documents(
         "tempo": {"data": data, "hora_aproximada": hora},
         "mecanica_imediata": {
             "pv": f"{pv.get('atuais')}/{pv.get('maximos')}",
-            "ki": f"{ki.get('atuais')}/{ki.get('maximos')}",
+            "focus": f"{focus.get('atuais')}/{focus.get('maximos')}",
             "ca": recursos.get("classe_de_armadura"),
             "deslocamento": recursos.get("deslocamento"),
         },

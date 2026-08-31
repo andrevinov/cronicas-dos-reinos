@@ -37,7 +37,7 @@ class CorrectionTerminalRecoveryTest(unittest.TestCase):
                     "localizacao": {"area": "teste", "ponto_exato": "teste"},
                     "recursos": {
                         "pv": {"atuais": 45, "maximos": 45},
-                        "ki": {"atuais": 5, "maximos": 6},
+                        "focus": {"atuais": 5, "maximos": 6},
                     },
                 },
                 allow_unicode=True,

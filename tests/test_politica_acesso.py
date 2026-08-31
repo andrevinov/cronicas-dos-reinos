@@ -117,7 +117,7 @@ class PoliticaAcessoTest(unittest.TestCase):
         result = {
             "sessao": {"numero": 13, "status": "em_sessao"},
             "personagem": {"nome": "Ren Kagehira", "nivel": 7},
-            "recursos": {"pv": {"atuais": 52, "maximos": 52}, "ki": {"atuais": 7, "maximos": 7}},
+            "recursos": {"pv": {"atuais": 52, "maximos": 52}, "focus": {"atuais": 7, "maximos": 7}},
             "tempo": {
                 "data": "14 Eleasis, 1372 DR",
                 "hora_aproximada": "22:00",

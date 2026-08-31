@@ -184,15 +184,15 @@ def load(path: Path = DEFAULT_SHEET_PATH) -> RenMechanics:
         _required(data, "recursos_de_classe", "ficha"),
         "recursos_de_classe",
     )
-    ki = _mapping(
-        _required(class_resources, "ki", "recursos_de_classe"),
-        "recursos_de_classe.ki",
+    focus = _mapping(
+        _required(class_resources, "focus", "recursos_de_classe"),
+        "recursos_de_classe.focus",
     )
-    ki_max = _integer(ki, "pontos_maximos", "recursos_de_classe.ki")
-    ki_current = _integer(ki, "pontos_atuais", "recursos_de_classe.ki")
-    ki_dc = _integer(ki, "cd", "recursos_de_classe.ki")
-    if ki_max < 0 or ki_current < 0 or ki_current > ki_max:
-        raise RenSheetError("recursos_de_classe.ki possui faixa inválida")
+    focus_max = _integer(focus, "pontos_maximos", "recursos_de_classe.focus")
+    focus_current = _integer(focus, "pontos_atuais", "recursos_de_classe.focus")
+    focus_dc = _integer(focus, "cd", "recursos_de_classe.focus")
+    if focus_max < 0 or focus_current < 0 or focus_current > focus_max:
+        raise RenSheetError("recursos_de_classe.focus possui faixa inválida")
 
     proficiency = _mapping(_required(data, "proficiencia", "ficha"), "proficiencia")
     proficiency_bonus = _integer(proficiency, "bonus", "proficiencia")
@@ -203,10 +203,10 @@ def load(path: Path = DEFAULT_SHEET_PATH) -> RenMechanics:
             "maximos": hp_max,
             "dados_de_vida": hit_dice,
         },
-        "ki": {
-            "pontos_atuais": ki_current,
-            "pontos_maximos": ki_max,
-            "cd": ki_dc,
+        "focus": {
+            "pontos_atuais": focus_current,
+            "pontos_maximos": focus_max,
+            "cd": focus_dc,
         },
         "proficiencia": {"bonus": proficiency_bonus},
     }

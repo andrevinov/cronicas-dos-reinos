@@ -73,7 +73,7 @@ def make_session_repo(repo: Path) -> None:
                 "arquivo_ficha": "personagens/jogador/ficha.yaml",
                 "nivel": 7,
                 "classe": "Monge",
-                "subclasse": "Caminho da Sombra",
+                "subclasse": "Guerreiro das Sombras",
             },
             "localizacao": {
                 "plano": "Material",
@@ -93,7 +93,7 @@ def make_session_repo(repo: Path) -> None:
             },
             "recursos": {
                 "pontos_de_vida": {"atuais": 52, "maximos": 52},
-                "ki": {"atuais": 7, "maximos": 7},
+                "focus": {"atuais": 7, "maximos": 7},
                 "classe_de_armadura": 17,
                 "deslocamento": "55 pés",
                 "dinheiro": {"po": 34},
@@ -118,18 +118,18 @@ def make_session_repo(repo: Path) -> None:
         "personagens/jogador/ficha.yaml",
         {
             "personagem": {"nome": "Ren Kagehira"},
-            "identidade": {"nivel": 7, "classe": "Monge", "subclasse": "Caminho da Sombra"},
+            "identidade": {"nivel": 7, "classe": "Monge", "subclasse": "Guerreiro das Sombras"},
             "combate": {
                 "classe_de_armadura": {"valor": 17},
                 "pontos_de_vida": {"atuais": 52, "maximos": 52, "dados_de_vida": "7d8"},
             },
-            "recursos_de_classe": {"ki": {"pontos_atuais": 7, "pontos_maximos": 7}},
+            "recursos_de_classe": {"focus": {"pontos_atuais": 7, "pontos_maximos": 7}},
             "equipamento": {"dinheiro": {"po": 34}},
             "progressao": {"metodo": "marcos narrativos"},
         },
     )
     (repo / "personagens/jogador/resumo-de-poderes.md").write_text(
-        "# Resumo de poderes de Ren\n\nRen é um monge do Caminho da Sombra, nível 7.\n",
+        "# Resumo de poderes de Ren\n\nRen é um monge do Guerreiro das Sombras, nível 7.\n",
         encoding="utf-8",
     )
     write_yaml(
@@ -199,8 +199,8 @@ def progression_plan(prep: str = "a" * 24) -> dict:
             {"caminho": "combate.pontos_de_vida.maximos", "valor": 59},
             {"caminho": "combate.pontos_de_vida.atuais", "valor": 59},
             {"caminho": "combate.pontos_de_vida.dados_de_vida", "valor": "8d8"},
-            {"caminho": "recursos_de_classe.ki.pontos_maximos", "valor": 8},
-            {"caminho": "recursos_de_classe.ki.pontos_atuais", "valor": 8},
+            {"caminho": "recursos_de_classe.focus.pontos_maximos", "valor": 8},
+            {"caminho": "recursos_de_classe.focus.pontos_atuais", "valor": 8},
             {
                 "caminho": "aumentos_de_atributo.nivel_8",
                 "valor": {"escolha": "+2 Sabedoria", "motivo": "plano de teste"},
@@ -208,7 +208,7 @@ def progression_plan(prep: str = "a" * 24) -> dict:
         ],
         "resumo_de_poderes": (
             "# Resumo de poderes de Ren\n\n"
-            "Ren é um monge do Caminho da Sombra, nível 8.\n\n"
+            "Ren é um monge do Guerreiro das Sombras, nível 8.\n\n"
             "Este texto representa o resumo mecânico completo aprovado para o novo nível.\n"
         ),
         "marco": "Primeiro Juppongatana neutralizado de forma durável.",
@@ -328,8 +328,8 @@ class UnifiedProgressionTest(unittest.TestCase):
         self.assertEqual(state["personagem"]["nivel"], 8)
         self.assertEqual(sheet["combate"]["pontos_de_vida"]["maximos"], 59)
         self.assertEqual(state["recursos"]["pontos_de_vida"]["maximos"], 59)
-        self.assertEqual(sheet["recursos_de_classe"]["ki"]["pontos_maximos"], 8)
-        self.assertEqual(state["recursos"]["ki"]["maximos"], 8)
+        self.assertEqual(sheet["recursos_de_classe"]["focus"]["pontos_maximos"], 8)
+        self.assertEqual(state["recursos"]["focus"]["maximos"], 8)
         self.assertEqual(runtime["personagem"]["nivel"], 8)
         self.assertEqual(
             (repo / "personagens/jogador/resumo-de-poderes.md").read_text(encoding="utf-8"),

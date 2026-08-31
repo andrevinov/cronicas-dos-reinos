@@ -214,15 +214,16 @@ class FormalADNDGateTest(unittest.TestCase):
             ],
         }
         approved = dict(base)
-        approved["proveniencia"] = provenance_2014(fallback=True)
+        approved["proveniencia"] = provenance_55()
         contract = mecanica_cronica.normalize_spec(ROOT, approved)
         self.assertEqual(contract["proveniencia"]["edicao_origem"], "adnd_2e")
-        self.assertTrue(contract["proveniencia"]["fallback_2014"]["declarado"])
+        self.assertEqual(contract["proveniencia"]["adaptado_para"], "dnd_5_5e")
+        self.assertNotIn("fallback_2014", contract["proveniencia"])
 
-        future = dict(base)
-        future["proveniencia"] = provenance_55()
+        legacy = dict(base)
+        legacy["proveniencia"] = provenance_2014(fallback=True)
         with self.assertRaisesRegex(mecanica_cronica.MechanicalContractError, "gate AD&D"):
-            mecanica_cronica.normalize_spec(ROOT, future)
+            mecanica_cronica.normalize_spec(ROOT, legacy)
 
     def test_integridade_nao_confunde_mecanica_nativa_com_adnd(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

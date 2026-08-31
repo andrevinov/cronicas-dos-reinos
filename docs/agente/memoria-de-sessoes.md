@@ -123,7 +123,7 @@ Sessões legadas até a 003 podem conter esse padrão antigo; ele é preservado 
 
 ## Repetição de estado na prosa
 
-A transcrição não deve repetir a cada turno um bloco como PV + CA + Ki + dinheiro + munição + hora + localização quando esses valores não mudaram e não são taticamente necessários.
+A transcrição não deve repetir a cada turno um bloco como PV + CA + Focus + dinheiro + munição + hora + localização quando esses valores não mudaram e não são taticamente necessários.
 
 Mencione mecânica quando ela:
 

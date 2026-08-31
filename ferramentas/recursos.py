@@ -28,6 +28,8 @@ SHEET_PATH = Path("personagens/jogador/ficha.yaml")
 STATE_PATH = Path("estado/estado-atual.yaml")
 EFFECTS_ROOT = "efeitos_temporarios"
 
+NON_EXECUTABLE_RESOURCE_KEYS = {"removidas_na_5_5e"}
+
 RESOURCE_ROOTS: tuple[tuple[tuple[str, ...], str], ...] = (
     (("recursos_de_classe",), "habilidade"),
     (("talentos",), "talento"),
@@ -50,6 +52,18 @@ def _label_from_key(key: str) -> str:
     return key.replace("_", " ").replace("-", " ").strip()
 
 
+def _executable_payload(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _executable_payload(child)
+            for key, child in value.items()
+            if str(key) not in NON_EXECUTABLE_RESOURCE_KEYS
+        }
+    if isinstance(value, list):
+        return [_executable_payload(child) for child in value]
+    return value
+
+
 def _candidate(
     candidates: list[dict[str, Any]],
     *,
@@ -65,7 +79,7 @@ def _candidate(
             "nome": str(label).strip(),
             "tipo": kind,
             "caminho": ".".join(path),
-            "dados": value,
+            "dados": _executable_payload(value),
         }
     )
 
@@ -76,7 +90,7 @@ def _collect(value: Any, path: tuple[str, ...], kind: str, candidates: list[dict
         if isinstance(explicit_name, str) and explicit_name.strip():
             _candidate(candidates, label=explicit_name, value=value, path=path, kind=kind)
         for key, child in value.items():
-            if key == "nome":
+            if key == "nome" or str(key) in NON_EXECUTABLE_RESOURCE_KEYS:
                 continue
             child_path = path + (str(key),)
             if isinstance(child, dict):

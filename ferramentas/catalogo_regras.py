@@ -101,7 +101,7 @@ def validate_document(repo: Path, document: dict[str, Any]) -> dict[str, Any]:
         raise RuleCatalogError("regras precisa ser lista não vazia")
 
     current, target, hierarchy = _ruleset_contract(repo)
-    known_rulesets = {current, target}
+    known_rulesets = {current, target, "dnd_5e_2014", "dnd_5_5e"}
     seen_ids: set[str] = set()
     names: dict[str, str] = {}
 

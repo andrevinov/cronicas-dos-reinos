@@ -41,7 +41,7 @@ class DiegeticGuardUnitTest(unittest.TestCase):
             "cd": "A fechadura tem CD 15.",
             "cd_nome": "A Classe de Dificuldade da fechadura é quinze.",
             "nivel": "Ele é um guerreiro de nível 7.",
-            "ki": "Ren ainda possui 4 pontos de Ki.",
+            "focus": "Ren ainda possui 4 pontos de Focus.",
             "slots": "A maga gastou todos os slots de magia.",
             "bonus": "O guarda tem bônus de +5 no ataque.",
         }

@@ -347,7 +347,7 @@ sessoes:
     handoff: sessoes/015/handoff.yaml
     compactos:
     - arquivo: sessoes/015/handoff.yaml
-      bytes: 5090
+      bytes: 5097
     - arquivo: sessoes/015/resumo.md
       bytes: 30739
     - arquivo: sessoes/015/alteracoes-de-estado.yaml

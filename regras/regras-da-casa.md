@@ -8,9 +8,9 @@ Estas regras podem ser revisadas após uso em sessão.
 
 ## Base
 
-A campanha usa **D&D 5e 2014** como ruleset mecânico ativo durante a migração e tem **D&D 5.5e** como ruleset alvo.
+A campanha usa **D&D 5.5e** como ruleset mecânico ativo. A migração 5e 2014 → 5.5e foi concluída na Task 8.
 
-O contrato executável fica em `campanha.yaml`, em `sistema.ruleset`. Enquanto `sistema.ruleset.migracao.status` não for `concluida` e o gate `task_8_auditoria_final` não permitir a ativação, regras 5.5e podem ser consultadas para preparar a migração, mas **não substituem silenciosamente a mecânica ativa de 2014 em sessão**.
+O contrato executável fica em `campanha.yaml`, em `sistema.ruleset`. `dnd_5_5e` é a autoridade operacional; material 2014 só pode entrar como compatibilidade explicitamente aprovada.
 
 Material de AD&D e outras edições pode ser usado como cenário, aventura, NPC, local, item ou inspiração. A mecânica que **entrar em sessão** deve estar adaptada para o ruleset atual. Durante a migração, uma adaptação persistente pode ser preparada para 5.5e antecipadamente, mas permanece inelegível ao runtime até a ativação; uso 2014 derivado de AD&D é fallback explícito.
 
@@ -26,7 +26,7 @@ Quando duas fontes mecânicas entrarem em conflito, usar nesta ordem:
 4. compatibilidade aprovada explicitamente;
 5. fontes antigas/adaptadas.
 
-Durante a migração, D&D 5.5e é fonte de preparação, comparação e conversão, não autoridade mecânica da sessão.
+D&D 5.5e é a autoridade mecânica da sessão. D&D 5e 2014 só participa por fallback explicitamente registrado.
 
 Depois da ativação, conteúdo 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e seu uso tiver sido aprovado explicitamente. Compatibilidade nunca significa misturar versões por conveniência sem registrar a escolha.
 
@@ -64,7 +64,7 @@ python3 ferramentas/rolar-dados.py
 
 Rolagens ocultas podem ser usadas quando revelar o dado prejudicar o mistério.
 
-Até a ativação final da 5.5e, o rolador e a ficha continuam resolvendo a mecânica do ruleset 5e 2014.
+O rolador, a ficha, o runtime e a persistência resolvem a mecânica operacional em D&D 5.5e.
 
 ---
 
@@ -96,7 +96,7 @@ Ao adaptar material de AD&D para o ruleset atual:
 * evitar importar subsistemas antigos sem necessidade;
 * registrar decisões recorrentes em `regras/decisoes.md`, quando esse arquivo existir.
 
-A troca do alvo de adaptação para 5.5e ocorrerá automaticamente quando `sistema.ruleset.atual` for ativado como `dnd_5_5e`; não é necessário alterar o cânone de cenário para isso.
+O alvo de novas adaptações mecânicas é 5.5e. O cânone de cenário não muda por causa da edição mecânica.
 
 ---
 

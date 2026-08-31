@@ -89,3 +89,11 @@ Este arquivo registra interpretações recorrentes adotadas durante a campanha.
 - Continuidade: esta decisão **não reescreve sessões concluídas, rolagens, recursos gastos, descobertas, falhas, consequências ou descrições históricas**. Até o gate `task_8_auditoria_final`, a ficha 2014 continua operacional. O perfil 5.5e existe apenas como alvo materializado de migração; seus efeitos começam no primeiro estado canônico explicitamente promovido após a ativação.
 - Estado: permanente para a migração; staged e não operacional até a Task 8.
 
+## DEC-0009 — Ativação operacional do D&D 5.5e
+
+- Contexto: as Tasks 1–7 prepararam contrato, catálogo, fonte única da ficha, núcleo mecânico, conversão de Ren, integração causal do `cronica` e gate AD&D sem alterar o ruleset vivo.
+- Decisão: a Task 8 ativa prospectivamente `dnd_5_5e` como ruleset atual. A ficha canônica passa a usar Monge 7 / Guerreiro das Sombras e Focus; Ki 1/7 é convertido em Focus 1/7 sem restaurar recurso.
+- Consequência atual preservada: **Passos sem Pegadas** já estava ativo às 23:12 de 19 Eleasis por uma conjuração válida de 2014. O efeito permanece até sua expiração original às 23:30, marcado como legado não recastável. A ficha 5.5e não permite nova conjuração de Passos sem Pegadas nem Silêncio.
+- Compatibilidade: regras 2014 futuras só entram quando não houver equivalente 5.5e aplicável e houver aprovação explícita; material AD&D mecânico deve continuar atravessando o gate de proveniência.
+- Retroatividade: nenhuma sessão, rolagem, gasto, descoberta ou consequência anterior é recalculada ou reescrita.
+- Estado: permanente e prospectivo.

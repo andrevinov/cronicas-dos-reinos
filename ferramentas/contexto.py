@@ -116,7 +116,7 @@ def _resume_context_view(context: dict[str, Any]) -> dict[str, Any]:
     """Recorte efetivo necessário para retomar sem estourar o orçamento L2.
 
     A projeção é feita *depois* de aplicar os eventos pendentes, portanto mantém
-    tipos estruturados (PV/Ki continuam mapas, números continuam números) em vez
+    tipos estruturados (PV/Focus continuam mapas, números continuam números) em vez
     de depender da compactação genérica de `fit_budget`.
     """
     keys = (
