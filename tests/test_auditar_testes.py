@@ -139,7 +139,7 @@ class PuroTest(unittest.TestCase):
             "test_loader.py",
             """
 import unittest
-from pathlib import Path
+from pathlib import import Path
 
 ROOT = Path(__file__).parents[1]
 MODULE_PATH = ROOT / "ferramentas" / "modulo.py"
@@ -202,6 +202,34 @@ class ImportRootTest(unittest.TestCase):
 
         self.assertTrue(success, measurement["execucao"]["problemas"])
         self.assertEqual(measurement["execucao"]["testes_executados"], 1)
+
+    def test_medicao_captura_saida_dos_testes_sem_contaminar_relatorio(self):
+        self.write_test(
+            "test_saida.py",
+            """
+import sys
+import unittest
+
+class SaidaTest(unittest.TestCase):
+    def test_saida(self):
+        print("ruido stdout")
+        print("ruido stderr", file=sys.stderr)
+        self.assertTrue(True)
+""",
+        )
+
+        try:
+            measurement, success = audit.measure_suite(
+                self.tests,
+                top=5,
+                root=self.root,
+            )
+        finally:
+            sys.modules.pop("test_saida", None)
+
+        self.assertTrue(success, measurement["execucao"]["problemas"])
+        self.assertGreater(measurement["execucao"]["stdout_capturado_bytes"], 0)
+        self.assertGreater(measurement["execucao"]["stderr_capturado_bytes"], 0)
 
 
 if __name__ == "__main__":
