@@ -1,0 +1,73 @@
+name: Temporary Task 8 activation
+
+on:
+  push:
+    branches:
+      - task/activate-5-5e
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: task/activate-5-5e
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencies
+        run: python -m pip install 'PyYAML>=6,<7'
+      - name: Apply cutover
+        run: |
+          if grep -q 'task_8_auditoria_final: true' campanha.yaml && test -f ferramentas/ruleset_5_5e.py; then
+            echo 'Task 8 already applied'
+          else
+            python .github/task8_apply.py
+          fi
+      - name: Regenerate derived runtime
+        run: |
+          python ferramentas/gerar-runtime.py
+          python ferramentas/sessoes.py bootstrap-atual
+      - name: Guard historical surfaces
+        run: |
+          git fetch origin main
+          changed="$(git diff --name-only origin/main...HEAD; git diff --name-only)"
+          echo "$changed" | sort -u
+          bad="$(echo "$changed" | sort -u | grep -E '^(historico/|sessoes/[0-9]{3}/(transcricao\.md|consolidacoes\.jsonl)$|personagens/jogador/conhecimento/(descobertas|incrementais|topicos)/)' || true)"
+          if [ -n "$bad" ]; then
+            echo 'Historical/canonical cold files changed unexpectedly:'
+            echo "$bad"
+            exit 1
+          fi
+      - name: Task 8 consistency gate
+        run: python ferramentas/ruleset_5_5e.py check
+      - name: Targeted activation tests
+        run: |
+          python -m unittest discover -s tests -p 'test_ruleset_migration_contract.py' -v
+          python -m unittest discover -s tests -p 'test_migracao_ren_5_5e.py' -v
+          python -m unittest discover -s tests -p 'test_ruleset_5_5e_activation.py' -v
+          python -m unittest discover -s tests -p 'test_cronica_mecanica.py' -v
+          python -m unittest discover -s tests -p 'test_gate_adnd.py' -v
+          python -m unittest discover -s tests -p 'test_consolidacao.py' -v
+          python -m unittest discover -s tests -p 'test_checkpoint.py' -v
+          python -m unittest discover -s tests -p 'test_unified_session_lifecycle.py' -v
+      - name: Full unit suite
+        run: python -m unittest discover -s tests -v
+      - name: Full preflight
+        run: python ferramentas/preflight.py
+      - name: Commit functional cutover
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git reset .github/task8_apply.py .github/workflows/temporary-task8-audit.yml .github/workflows/temporary-task8-activate.yml || true
+          if git diff --cached --quiet; then
+            echo 'No functional changes to commit'
+          else
+            git commit -m 'feat: activate D&D 5.5e ruleset'
+            git push origin HEAD:task/activate-5-5e
+          fi
