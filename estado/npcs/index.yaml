@@ -377,4 +377,4 @@ npcs:
     persistencia: persistente_sem_agenda
     arquivo: estado/npcs/tomas_rell.yaml
     historico: historico/npcs/tomas_rell.yaml
-    bytes_fragmento: 232
+    bytes_fragmento: 452

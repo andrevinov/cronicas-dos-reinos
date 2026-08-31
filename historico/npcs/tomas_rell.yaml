@@ -6,3 +6,53 @@ eventos_pos_migracao:
   cena_id: s015-shinta-procura-supervisores-e-confere-lotes
   nome: Tomas Rell
   classificacao_inicial: persistente_sem_agenda
+- transacao: s015-1c556c51a27d7ea4
+  sessao: 15
+  resumo: 'Ren desfez o Broche e revelou o próprio rosto somente a Tomas, afirmando ser o homem que ele conheceu
+    no trabalho como Shinta. A Persuasão falhou com 3 contra CD 14: Tomas recusou permitir a entrada no lugar onde
+    dorme, mas não chamou a guarda nem encerrou a conversa. Ele aceita ouvir a explicação ali e considera possível
+    a ligação Shinta–Ren, ainda sem confirmação.'
+  deltas:
+  - actor_resultado: nao_aplicavel
+    alvo: npc:tomas_rell
+    caminho: reconhecimento_identidade
+    fato_canonico: O homem que abordou Tomas descreveu detalhes da contratação e acusação de Shinta, afirmou que
+      Tomas o acolheu sem conhecer sua identidade verdadeira e revelou sob o capuz um rosto diferente ao desfazer
+      um disfarce mágico.
+    fonte: sessao:015:cena:s15-ren-revela-identidade-a-tomas
+    motivo_identidade: evidencia
+    op: set
+    valor:
+      confirmacoes: []
+      schema_reconhecimento_identidade: 1
+      suspeitas:
+      - evidencias:
+        - fonte: sessao:015:cena:s15-ren-revela-identidade-a-tomas
+          id: ids-916e1690e80246f5
+          tipo: contextual
+        observada: shinta
+        possivel: ren
+- transacao: s015-ce791281887beec3
+  sessao: 15
+  resumo: Ren explicou sua identidade, sua profissão como shinobi, o uso de Shinta, a perseguição a um inimigo perigoso
+    e o risco sugerido pela falsificação. Obteve Persuasão 19 contra CD 13. Tomas acreditou na sinceridade de Ren,
+    confirmou Ren e Shinta como a mesma pessoa e aceitou a necessidade de cautela e proteção, mas distinguiu acesso
+    hostil de infiltração interna comprovada. Convidou Ren a entrar sob condições e pediu detalhes sobre o documento
+    e sobre a proteção oferecida.
+  deltas:
+  - actor_resultado: nao_aplicavel
+    alvo: npc:tomas_rell
+    caminho: reconhecimento_identidade
+    confirmacao_canonica: true
+    fato_canonico: Ren Kagehira revelou diretamente a Tomas que era o shinobi que trabalhara na Galeria como Shinta,
+      explicou a falsificação usada contra a persona e convenceu Tomas de sua sinceridade.
+    fonte: sessao:015:cena:s15-ren-explica-shinta-e-ameaca-a-tomas
+    motivo_identidade: confirmacao
+    op: set
+    valor:
+      confirmacoes:
+      - fonte: sessao:015:cena:s15-ren-explica-shinta-e-ameaca-a-tomas
+        identidade: ren
+        observada: shinta
+      schema_reconhecimento_identidade: 1
+      suspeitas: []

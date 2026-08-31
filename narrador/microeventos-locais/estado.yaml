@@ -218,9 +218,7 @@ transitos:
   ravens_bluff:
     ocorrencia:
       ciclo: 4
-      restantes:
-      - rotina_03
-      - rotina_02
+      restantes: []
     cartas:
       ciclo: 3
       assinatura_pool: e404bf52e23dbded870e2230d51894b43fe8749524a80ff472712898f65e5c32
@@ -386,3 +384,25 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: 1e493c9117ffe0e23c9e73d1b59ee1d037eb709b9a03a8d7dbad1eae7d322002
+- cena_id: s15-ren-afasta-se-da-casa-de-tomas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 9d66e3428ce9048e0167ba49d4c5f7ae9d0ec8bce39b307d94731c650d45a07b
+- cena_id: s15-ren-vai-ao-temple-district
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: c5b877ba0c9cf4216806d726e663fbe52642cf59ba1e71ed76721ee1d9f0f987

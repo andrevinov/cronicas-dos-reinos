@@ -7,3 +7,10 @@ npc:
   origem_identidade:
     tipo: cena_confirmada
     cena_id: s015-shinta-procura-supervisores-e-confere-lotes
+  reconhecimento_identidade:
+    confirmacoes:
+    - fonte: sessao:015:cena:s15-ren-explica-shinta-e-ameaca-a-tomas
+      identidade: ren
+      observada: shinta
+    schema_reconhecimento_identidade: 1
+    suspeitas: []

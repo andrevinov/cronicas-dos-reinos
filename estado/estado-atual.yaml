@@ -18,10 +18,10 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
-  descricao_operacional: Ren descansou, recuperou o ki, voltou a portar armas e chegou por rota nova diante da Galeria
-    para procurar Tomas Rell.
+  area: Temple District, Ravens Bluff
+  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
+  descricao_operacional: Ren relatou as novidades a Maerra. Ela não trouxe nova ameaça ou missão; pediu apenas que
+    ele comesse e ajudasse com duas jarras de água, mantendo a Casa fora das operações de investigação.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -33,20 +33,20 @@ tempo:
   dezena: 2
   dia_da_dezena: 1
   periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
-  hora_aproximada: '17:35'
+  hora_aproximada: '20:00'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
 recursos:
   pontos_de_vida:
-    atuais: 48
+    atuais: 52
     maximos: 52
   dados_de_vida:
-    atuais: 6
+    atuais: 5
     maximos: 7
     dado: d8
   ki:
-    atuais: 7
+    atuais: 5
     maximos: 7
     recarga: descanso curto ou longo
   classe_de_armadura: 17
@@ -55,7 +55,7 @@ recursos:
     po: 39.379999999999995
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer
+    broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
     silencio: disponível mediante gasto de 2 Ki
     traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
 ponteiros:
@@ -140,7 +140,7 @@ pendencias:
 - confirmar depois se Mera e Colm/Dent chegaram a Iria Doss
 - descobrir o nome/posição real do homem de mãos limpas no circuito de Bram/Narwhal
 disponibilidades:
-  broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 10 Eleasis
+  broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
 combate_atual: null
 efeitos_temporarios:
   narwhal_alerta_para_observador_idoso:

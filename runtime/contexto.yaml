@@ -15,17 +15,17 @@ personagem:
   subclasse: Caminho da Sombra
 recursos:
   pv:
-    atuais: 48
+    atuais: 52
     maximos: 52
   ki:
-    atuais: 7
+    atuais: 5
     maximos: 7
   ca: 17
   deslocamento: 55 pés
   dinheiro_po: 39.379999999999995
 tempo:
   data: 19 Eleasis, 1372 DR
-  hora_aproximada: '17:35'
+  hora_aproximada: '20:00'
   periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -34,15 +34,15 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
+  area: Temple District, Ravens Bluff
+  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
       nome: Broche do Semblante Humilde
       caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
       efeito_temporario: broche_do_semblante_humilde
-      disponibilidade: indisponível; uso gasto em 13 Eleasis e renovável no próximo amanhecer
+      disponibilidade: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml

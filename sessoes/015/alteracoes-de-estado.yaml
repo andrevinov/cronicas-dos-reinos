@@ -21,14 +21,14 @@ checkpoint_atual:
   modo: ren_com_nera_e_silva_apos_relatar_emboscada
   personagem: Ren Kagehira
   nivel: 7
-  pv: 48/52
-  ki: 7/7
+  pv: 52/52
+  ki: 5/7
   ca: 17
   dinheiro_po: 39.379999999999995
   data: 19 Eleasis, 1372 DR
-  hora: '17:35'
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
+  hora: '20:00'
+  area: Temple District, Ravens Bluff
+  ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
   nivel_ficha: 7
 consolidacoes:
 - id: s015-cena-a836d9da7b5bdc33
@@ -253,6 +253,47 @@ consolidacoes:
   - historico/relacoes/nera_vell.yaml
   - historico/relacoes/tavin_vell.yaml
   - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-5434a5284d90b712
+  tipo: cena
+  transacoes:
+  - s015-afcff724b28cb01c
+  - s015-286566e66b8bb4d1
+  - s015-5eb058dccfbf8589
+  - s015-51751a1fc28e8502
+  - s015-78d4c47bca814e58
+  - s015-1c556c51a27d7ea4
+  - s015-ce791281887beec3
+  - s015-a396ccacaaae444c
+  - s015-7449ed458a35e167
+  - s015-2fcd1a4747e37c59
+  - s015-9b2f0d0bd63499ff
+  - s015-c5c3e4fe47e00721
+  - s015-41d3fb9164c4f327
+  - s015-4532a15c1548cf77
+  deltas: 49
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/tomas_rell.yaml
+  - estado/tempo.yaml
+  - historico/npcs/tomas_rell.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/015/alteracoes-de-estado.yaml
+  - sessoes/015/consequencias.md
+  - sessoes/015/consolidacoes.jsonl
+  - sessoes/015/resumo.md
+- id: s015-cena-8b73c54285cd8f0d
+  tipo: cena
+  transacoes:
+  - s015-6edb9493256793af
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
   - sessoes/015/alteracoes-de-estado.yaml
   - sessoes/015/consequencias.md
   - sessoes/015/consolidacoes.jsonl

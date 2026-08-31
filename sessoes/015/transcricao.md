@@ -1393,3 +1393,175 @@ Tomas desliza a anotação coberta para junto de si.
 — Agora existe um canal para alcançá-lo e uma maneira lícita de encaminhar sua proposta sobre a Casa. Ainda preciso compreender por que escolheu o nome de Shizune. O que, além da profissão dela, liga essa mulher ao que aconteceu?
 
 Tomas conhece agora o nome e os métodos observados de Kurobane, aceitou o contato reservado por Luath e ofereceu encaminhar uma proposta limitada à Casa do Salgueiro Seco sem revelar a identidade de quem a controla. Ele preserva os deveres da Galeria e não promete que a proposta será aceita. Passos sem Pegadas permanece ativo até no máximo 19:17.
+
+<!-- turno-transacional:s015-2fcd1a4747e37c59 -->
+**Jogador**
+
+Ren aceita encaminhar uma carta, embora prefira conversar pessoalmente com a pessoa responsável pela Casa do Salgueiro Seco. Pede papel e pena a Tomas, redige uma proposta vaga de obter a propriedade em troca de serviços de valor semelhante e pergunta, sorrindo, se pode assinar como amigo de Tomas.
+**Narrador**
+
+Tomas fornece uma folha limpa, um pequeno tinteiro e uma pena de uso pessoal. Afasta de propósito os próprios papéis, deixando diante de Ren apenas aquilo que ele pode escrever sem enxergar correspondência alheia. Enquanto Ren redige, Tomas não tenta ler por cima de seu ombro; espera até que a pena seja pousada.
+
+Recebe então a folha pelas bordas e lê uma vez, silenciosamente. Na segunda leitura, detém-se em três pontos: digníssimo dono, em troca da casa e algo cujo valor se assemelhe.
+
+A pergunta final de Ren produz uma pausa. Tomas ergue os olhos para o leve sorriso dele.
+
+— Não — responde.
+
+A negativa é tão imediata que quase se torna cômica. Depois de um instante, o canto da boca de Tomas ameaça mover-se, mas não chega a formar um sorriso.
+
+— Ainda não. E, mesmo que fôssemos amigos antigos, amizade não é um selo que se empresta para aumentar o peso de uma proposta. Pode escrever por intermédio de Tomas Rell. Isso informa como a carta chegou sem afirmar que eu garanto tudo o que está nela.
+
+Ele devolve a folha e toca com a unha, sem marcar o papel, a primeira linha.
+
+— Eu usaria à pessoa responsável pela Casa do Salgueiro Seco. Não precisa adivinhar título, gênero ou propriedade formal.
+
+O dedo avança até o trecho seguinte.
+
+— E isto é ambíguo. Em troca da casa pode significar compra da escritura, arrendamento, cessão de uso ou abrigo temporário. O destinatário não saberá se o senhor oferece moeda, trabalho, informação ou algum serviço que seria melhor não conhecer. Depois de dizer que é espião, prometer conseguir algo de valor pode soar menos como proposta e mais como ameaça cuidadosamente escrita.
+
+Tomas não rasga nem corrige a carta. A decisão sobre as palavras continua sendo de Ren. Ele apenas oferece uma formulação alternativa, recitando-a no ritmo de quem já compôs muitas mensagens comerciais: 
+
+— Busco uma audiência privada para apresentar proposta referente ao uso ou à aquisição da Casa. Posso oferecer serviços de valor proporcional, cujos termos serão expostos antes de qualquer compromisso e poderão ser recusados livremente. Se houver interesse em ouvir a proposta, Tomas Rell poderá combinar um encontro.
+
+Ele empurra o tinteiro de volta para o alcance de Ren.
+
+— Pode manter sua versão se preferir. Eu a entregarei como prometi, desde que não use meu nome como garantia. Assine Ren Kagehira, use uma marca que possa confirmar depois ou escreva apenas interessado encaminhado por Tomas Rell. Mas amigo de Tomas ainda não.
+
+A última palavra vem seca, embora o quase sorriso anterior retire dela qualquer crueldade. A carta existe como rascunho sobre a mesa; ainda cabe a Ren escolher a redação e a assinatura definitivas antes de entregá-la a Tomas. Passos sem Pegadas permanece ativo até, no máximo, 19:17.
+
+<!-- turno-transacional:s015-9b2f0d0bd63499ff -->
+**Jogador**
+
+Ren aceita a redação sugerida por Tomas, entrega-lhe a carta e agradece pelo encaminhamento. Em seguida, oferece ajuda futura sem vinculá-la à carta: proteção, investigação ou infiltração para impedir que Tomas e os trabalhadores da Galeria sejam atingidos pelo conflito. Pergunta se Tomas tem certeza de que não precisa de nada.
+**Narrador**
+
+Ren passa a limpo a formulação sugerida e entrega a folha. Tomas lê a nova versão uma única vez. Não acrescenta assinatura, recomendação ou selo próprio ao texto. Dobra-a em três partes iguais e a guarda num compartimento interno da bolsa, separado dos documentos da Galeria.
+
+— Eu a encaminharei como proposta de uma pessoa com quem conversei diretamente — diz. — Se exigirem seu nome antes de aceitar um encontro, a pergunta voltará por mim. Não entregarei mais do que o necessário sem sua autorização.
+
+Depois da oferta de ajuda, Tomas permanece algum tempo em silêncio. A lamparina desenha uma linha de luz sobre a mesa entre os dois. Ele parece pesar menos a generosidade da promessa do que o perigo de aceitá-la sem limites.
+
+— Tenho certeza de que não quero um favor em branco — responde afinal. — Proteção, investigação e infiltração são três coisas muito diferentes. Qualquer homem que aceite as três sem definir propósito e limite merece o problema que receberá.
+
+Ele apoia a bolsa no chão, ainda ao alcance da mão.
+
+— Mas preciso de algumas coisas concretas. Primeiro: não volte amanhã à Galeria como Shinta ou sob um terceiro rosto. Seu acesso está suspenso, e qualquer nova identidade apenas confirmaria aos funcionários que existe algo maior sendo escondido.
+
+— Segundo: não procure Sella por conta própria. Ela testemunhou seu trabalho, preservou o volume e fez o procedimento correto. Isso já pode torná-la relevante para quem armou a falsificação. Aproximar-se dela secretamente só acrescentaria outra ligação perigosa.
+
+Tomas ergue o terceiro dedo.
+
+— Terceiro: quando sair daqui, não permita que ninguém transforme esta porta numa pista. O senhor chegou até minha casa sem que eu o conduzisse. Se consegue fazer isso, Kurobane talvez também consiga. Antes de me oferecer uma guerra inteira, ofereça-me uma noite em que ninguém novo descubra onde durmo.
+
+Ele baixa a mão, mas não encerra a conversa.
+
+— Amanhã falarei com Luath. Se houver algo que a Guarda não possa fazer e que exija realmente suas habilidades, usarei o recado dos Lobos de Mibu. Até lá, se descobrir uma ameaça imediata, avise Luath primeiro — salvo se não houver tempo sequer para isso. Não lhe pedirei que assista alguém morrer para preservar procedimento.
+
+Tomas olha diretamente para Ren.
+
+— E ainda quero os fatos específicos que o levaram a Shizune. Não as histórias sobre aquilo que ela seria capaz de fazer. Os fatos. Pode contá-los agora ou mandá-los por Luath depois. Mas não aja dentro da Galeria antes que tenhamos essa conversa.
+
+A recusa não é da ajuda de Ren, mas de uma autorização ilimitada. Tomas aceitou a carta e assumiu encaminhá-la; pediu distância operacional da Galeria e de Sella, discrição absoluta ao deixar seus aposentos e comunicação por Luath antes de qualquer intervenção, salvo perigo imediato. Passos sem Pegadas permanece ativo por cerca de seis minutos.
+
+<!-- turno-transacional:s015-c5c3e4fe47e00721 -->
+**Jogador**
+
+Ren aceita as condições de Tomas, promete que ninguém o verá sair, agradece e o chama de bom homem. Abre discretamente as venezianas até localizar uma sombra válida na rua, usa Ilusão Menor para fazer Tomas olhar para o outro lado e então atravessa as sombras por Passo da Sombra. Pretende usar o restante de Passos sem Pegadas para afastar-se discretamente ao máximo.
+**Narrador**
+
+Ren se levanta e mantém as mãos visíveis até afastar a cadeira. Tomas também se põe de pé, embora não tente acompanhá-lo até a porta.
+
+— Pode contar comigo para aquilo que prometi — responde ao agradecimento. — Espero que, quando as coisas ficarem mais sérias, ainda sejamos capazes de distinguir contar com alguém de entregar-lhe todas as decisões.
+
+Ren aproxima-se da janela. Com dois dedos, separa as venezianas apenas o suficiente para observar a rua sem expor o rosto. O poente já deixou sombras densas sob os beirais. Do outro lado, a menos de sessenta pés, uma faixa escura sob o toldo fechado de uma oficina oferece espaço desocupado, penumbra e linha de visão contínua: um destino válido para o Passo da Sombra.
+
+— Agradeço por tudo, Tomas. Você é um bom homem. Espero poder contar com você quando as coisas ficarem mais sérias do que já estão.
+
+Antes que Tomas responda, três batidas discretas soam do lado oposto da sala, junto à porta da escada. O escriturário volta imediatamente o rosto para o som impossível.
+
+Nesse único instante, Ren deixa a luz da lamparina. Sua silhueta toca a sombra junto à janela e desaparece sem deslocar a cortina ou forçar mais as venezianas.
+
+Quando Tomas olha novamente, encontra a sala vazia. Do outro lado da rua, sob o toldo escuro, Ren emerge sem ruído. Um casal dobra a esquina distante sem olhar naquela direção; ninguém nas janelas próximas reage, e nenhuma voz anuncia o súbito aparecimento.
+
+MECÂNICA — Ilusão Menor produz a distração sonora. Passo da Sombra atravessa menos de 60 pés entre dois pontos de penumbra visíveis e desocupados, sem custo de Ki. Furtividade: 13 no d20 + 7 + 10 de Passos sem Pegadas = 30 contra CD 14; sucesso. A residência de Tomas não é associada à saída de Ren.
+
+Lá dentro, Tomas encara por um momento as venezianas quase fechadas.
+
+— Naturalmente — murmura para a sala vazia.
+
+Ren já está fora, oculto sob Passos sem Pegadas. Restam aproximadamente cinco minutos de concentração para ampliar a distância antes que o efeito termine.
+
+<!-- turno-transacional:s015-41d3fb9164c4f327 -->
+**Jogador**
+
+Ren usa os minutos restantes de Passos sem Pegadas para afastar-se ao máximo e discretamente da residência de Tomas.
+**Narrador**
+
+Ren não toma o caminho mais rápido; toma aquele que não pode ser reconstruído. Deixa o toldo pela sombra da oficina, atravessa um pátio quando uma carroça oculta sua passagem e muda de direção duas vezes antes de cruzar uma rua mais larga junto a trabalhadores que encerram o expediente.
+
+Passos sem Pegadas apaga os sinais mais frágeis. A poeira não conserva solas, uma faixa de lama não recebe marca e nenhum cão ergue a cabeça por cheiro deixado no chão. Ren não corre de modo a chamar atenção; sua velocidade aparece nos intervalos em que ninguém está olhando.
+
+Ele atravessa sucessivamente uma viela de serviço, um pequeno largo comercial e o corredor entre dois armazéns fechados. Quando alcança um pátio vazio várias quadras distante, já não existe linha direta que conduza de volta à rua de Tomas. Nenhum observador sustentado surgiu atrás dele, e ninguém o obrigou a usar novamente o Passo da Sombra.
+
+Às 19:17, a concentração completa sua duração máxima. O silêncio sobrenatural ao redor de seus movimentos se desfaz. Ren permanece oculto pela cobertura comum do pátio, mas Passos sem Pegadas terminou.
+
+MECÂNICA — O sucesso anterior de Furtividade 30 contra CD 14 cobre a retirada completa. Passos sem Pegadas expira após 1 hora de concentração. Nenhuma cauda foi detectada e não surgiu rastro útil ligando Ren à residência de Tomas.
+
+<!-- turno-transacional:s015-4532a15c1548cf77 -->
+**Jogador**
+
+Ren segue ao Temple District para conversar com Maerra, contar-lhe as últimas novidades e verificar se ela precisa de algo.
+**Narrador**
+
+Ren deixa o pátio de serviço somente depois de escolher uma saída que não aponta de volta para Tomas. Sem a proteção mágica sobre os passos, ele retorna à discrição comum: capa fechada, ritmo compatível com o movimento da noite e nenhuma pressa que peça para ser lembrada.
+
+A cidade muda ao redor dele. As lojas começam a recolher placas e mercadorias; trabalhadores procuram comida e bebida; carroças vazias retornam em sentido contrário ao fluxo do dia. Ren atravessa ruas comerciais, contorna um trecho ainda congestionado por entregas tardias e segue por uma avenida onde o som das rodas gradualmente cede lugar ao de sinos.
+
+No Temple District, as primeiras lamparinas já ardem diante de nichos e pórticos. Peregrinos atrasados dividem as calçadas com acólitos carregando água, cestos e tecidos recolhidos antes da noite. Ninguém intercepta Ren, e nenhum observador sustenta seu trajeto.
+
+Ele chega à Casa da Aurora Menor por volta de 19:38. O edifício ainda não está fechado: luz morna atravessa as janelas inferiores, e a entrada destinada a necessitados e visitantes permanece acessível, embora o movimento seja menor que durante o dia. Ren ainda não sabe se Maerra está livre, ocupada ou fora do edifício; diante da entrada, pode anunciar-se sem precisar revelar de onde veio.
+
+<!-- turno-transacional:s015-6edb9493256793af -->
+**Jogador**
+
+Ren procura Maerra na Casa da Aurora Menor para contar as últimas novidades e verificar se a velha amiga precisa de alguma coisa.
+**Narrador**
+
+Um acólito jovem reconhece Ren na entrada e pede que espere apenas o tempo necessário para guardar uma cesta de roupas. Maerra aparece pouco depois por uma passagem lateral, com as mangas dobradas até os antebraços e uma pequena mancha de farinha junto ao punho.
+
+Ela olha primeiro para o rosto de Ren, depois para a maneira como ele sustenta o corpo. Não encontra ferimento novo ou exaustão grave.
+
+— Você tem um talento inconveniente para aparecer quando a comida está quase esfriando — diz. — Entre antes que transforme a porta num confessionário.
+
+Maerra o conduz a uma mesa lateral da sala comum, afastada do espaço onde alguns residentes terminam a refeição. Coloca diante dele uma tigela ainda quente e permanece do outro lado, ouvindo enquanto Ren relata os acontecimentos desde sua última conversa.
+
+Ele conta o trabalho de Shinta na Galeria, o volume lacrado e a falsa assinatura aproximada de um exemplar antigo; a denúncia feita antes que a própria Galeria chamasse a Night Watch; a custódia, a revelação da identidade a Luath e a libertação depois que o sargento considerou fabricada a acusação. Conta também que Kurobane está confirmado em Ravens Bluff e ligado à cadeia do documento anterior do volume treze, embora a autoria da armadilha contra Shinta permaneça sem prova.
+
+Ren relata a conversa com Tomas: a revelação de que Ren e Shinta são a mesma pessoa, a desconfiança inicial, o aviso sobre Masao e as Dez Espadas, o canal reservado pelos Lobos de Mibu e o compromisso de Tomas de procurar Luath antes de voltar à Galeria. Não fornece a localização de Nera, Tavin ou do circo. Por fim, conta que Tomas aceitou encaminhar a proposta à pessoa responsável pela Casa do Salgueiro Seco.
+
+Maerra não o interrompe até a tigela estar pela metade.
+
+— Primeiro: fico contente que Luath tenha reconhecido uma armadilha antes de permitir que o procedimento se tornasse condenação — diz. — Segundo: Kurobane ligado a um documento confirma um agente e um método. Não confirma que Masao durma em Ravens Bluff, nem que Shizune esteja sentada na Galeria. Você sabe disso; estou repetindo porque o medo gosta de transformar linhas prováveis em tinta permanente.
+
+Ela se inclina ligeiramente sobre a mesa.
+
+— Fez bem em contar a verdade a Tomas antes de pedir confiança. E ele fez bem em não lhe entregar a Galeria apenas porque acreditou na sua sinceridade. Um homem pode acreditar em você e ainda exigir provas. Isso é aliança, não rejeição.
+
+Ao ouvir sobre a carta, Maerra finalmente sorri.
+
+— Uma porta pedida, não tomada. Uma conversa solicitada, não uma identidade roubada dos registros. É um progresso considerável para alguém que chegou a esta cidade disposto a resolver tudo entrando por janelas.
+
+Quando Ren pergunta se ela precisa de alguma coisa, Maerra olha deliberadamente para a tigela diante dele.
+
+— De um shinobi, de um espião ou do último Kagehira? Nada esta noite. Não criarei trabalho perigoso apenas para fazer sua oferta parecer necessária.
+
+Ela aponta então para a passagem da cozinha.
+
+— De Ren, porém, preciso de duas coisas muito difíceis. Termine de comer. Depois leve as duas jarras grandes de água para a mesa das crianças. Há sete pequenos conspiradores ali que parecem acreditar que copos se enchem por intervenção divina, e Lathander ainda não me concedeu esse milagre.
+
+O humor cede espaço a uma última instrução prática: 
+
+— Se Tomas ou Luath precisarem me alcançar, podem fazê-lo pelos canais normais da Casa. Mas não use este lugar como ponto de encontro para sua investigação. Há crianças e pessoas sem outro teto aqui. Avisos, sim. Caçadas, não.
+
+Maerra não apresenta nova ameaça, missão ou pedido perigoso. Ela acolheu o relato, confirmou que Ren pode continuar usando a Casa como canal legítimo para avisos e pediu apenas refeição e ajuda cotidiana, preservando o abrigo de qualquer operação.

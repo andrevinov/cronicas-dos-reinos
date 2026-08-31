@@ -2,7 +2,7 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 15
 checkpoint:
-  tipo: cena
+  tipo: bootstrap
   estado: retomavel
   modo: ren_com_nera_e_silva_apos_relatar_emboscada
   personagem:
@@ -12,17 +12,17 @@ checkpoint:
     subclasse: Caminho da Sombra
   recursos:
     pv:
-      atuais: 48
+      atuais: 52
       maximos: 52
     ki:
-      atuais: 7
+      atuais: 5
       maximos: 7
     ca: 17
     deslocamento: 55 pés
     dinheiro_po: 39.379999999999995
   tempo:
     data: 19 Eleasis, 1372 DR
-    hora_aproximada: '17:35'
+    hora_aproximada: '20:00'
     periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
     clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   localizacao:
@@ -31,62 +31,61 @@ checkpoint:
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: Galeria dos Escribas, Ravens Bluff
-    ponto_exato: rua diante da Galeria dos Escribas, ainda do lado de fora
+    area: Temple District, Ravens Bluff
+    ponto_exato: mesa lateral da sala comum da Casa da Aurora Menor, diante de uma refeição quente
 continuidade:
-  resumo_imediato: Ren descansou, recuperou o ki, voltou a portar armas e chegou por rota nova diante da Galeria
-    para procurar Tomas Rell.
+  resumo_imediato: Ren relatou as novidades a Maerra. Ela não trouxe nova ameaça ou missão; pediu apenas que ele
+    comesse e ajudasse com duas jarras de água, mantendo a Casa fora das operações de investigação.
   prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
     manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
     de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
 eventos_recentes:
-- batch: s015-cena-328b0f3973a10f60
-  transacao: s015-7db7027ef8854e37
-  resumo: Ren encontrou Silva no interior do circo e relatou toda a custódia, as conclusões sobre Masao e Kurobane,
-    o acordo de contravigilância com Luath, a ausência de cauda detectada e o ferimento na briga. Silva confirmou
-    que Nera e Tavin estão no circo e seguros até onde ela e o circo podem verificar, sem estranhos ou ameaça confirmada
-    procurando por eles. Reconheceu a cautela de Ren e ofereceu examinar sua costela antes…
-- batch: s015-cena-328b0f3973a10f60
-  transacao: s015-7fbce3a1d7cbda64
-  resumo: Ren aceitou o tratamento mundano de Silva. Ela diagnosticou uma contusão sem sinais de costela quebrada
-    e aplicou compressa e faixa, sem recuperação imediata de PV. Silva autorizou Ren a visitar Nera e Tavin na carroça
-    verde e informou que lhes dissera apenas que Ren estava vivo e sob custódia de Luath; o restante ficou para
-    Ren contar.
-- batch: s015-cena-328b0f3973a10f60
-  transacao: s015-627e7732b8799369
-  resumo: Ren foi à carroça verde e reencontrou Nera e Tavin após a noite inteira em que ambos permaneceram sem
-    informação confirmada sobre seu paradeiro ou segurança. Nera o abraçou com alívio, expressou de forma direta
-    o medo causado pelo desaparecimento e perguntou sobre a faixa nas costelas. Tavin abraçou Ren e perguntou se
-    ele ficaria algum tempo. Ren ainda não contou a eles o que aconteceu.
-- batch: s015-cena-96948cae75a7f1b8
-  transacao: s015-dc248816f02604bc
-  resumo: Ren contou a Nera e Tavin o básico sobre a prisão de Shinta, a falsificação documental, sua hipótese de
-    envolvimento dos homens de Masao, a custódia de Luath e o ferimento na briga do circo. Nera distinguiu hipótese
-    de prova e recusou a promessa absoluta de que Ren sempre voltaria, pedindo que ele mantenha o acordo de voltar
-    quando puder, avisar quando não puder e contar a verdade ao retornar. Tavin perguntou se Ren…
-- batch: s015-cena-96948cae75a7f1b8
-  transacao: s015-f65fc2b7a7bbdf02
-  resumo: Ren explicou a Nera que, se a falsificação tiver sido obra dos homens de Masao para retirar Shinta da
-    Galeria, Tomas e seus colegas podem estar em perigo e precisam ser avisados. Nera aceitou a necessidade do aviso,
-    mas perguntou como Ren pretende fazê-lo sem revelar a ligação entre Ren, Shinta, Tomas e o circo.
-- batch: s015-cena-96948cae75a7f1b8
-  transacao: s015-1a1bf3bcaf7923d2
-  resumo: Ren decidiu procurar Tomas como Ren e explicar honestamente a necessidade da identidade de Shinta. Nera
-    aceitou o plano, lembrando que honestidade com Tomas não exige revelar o abrigo dos Vell ou o circo. Ren permaneceu
-    algum tempo entretendo Tavin com um jogo simples e depois chamou Nera, pelo olhar, para uma conversa privada
-    do lado de fora da carroça. Nera aceitou e aguardou que Ren conduzisse a despedida.
-- batch: s015-cena-96948cae75a7f1b8
-  transacao: s015-468d35262c6b5157
-  resumo: Ren e Nera tiveram uma despedida íntima e afetuosa atrás da carroça. Ren reafirmou seu amor e sua promessa
-    absoluta de sempre voltar; Nera correspondeu ao amor, respondeu à provocação com humor e pediu apenas que ele
-    voltasse, aceitando que descansasse antes de procurar Tomas. Ren abraçou Tavin e prometeu retornar à noite;
-    Tavin perguntou se seria antes de dormir.
-- batch: s015-cena-96948cae75a7f1b8
-  transacao: s015-ad93ec5d17bfedb4
-  resumo: Ren dormiu 1h30 e meditou por 30 minutos, completando descanso curto sem gastar Dado de Vida; manteve
-    48/52 PV e recuperou o ki para 7/7. Vestiu-se como Ren, recuperou armas e o Broche do Semblante Humilde e deixou
-    de estar desarmado. Seguiu por rota urbana nova, enfrentou apenas uma interrupção banal de passagem e chegou
-    diante da Galeria dos Escribas às 17:35, sem ainda saber se Tomas está no interior.
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-a396ccacaaae444c
+  resumo: 'Ren contou a Tomas sua história, a queda dos Kagehira, Masao, a Juppongatana, sua mudança da vingança
+    para a proteção de pessoas queridas e sua suspeita sobre Shizune. Tomas aceitou a gravidade do risco, mas separou
+    fatos de hipóteses: confirma a entrada oficial das provas na Night Watch e a denúncia anterior ao chamado da
+    Galeria; considera o encontro de Ren com uma Dez Espadas testemunho a detalhar; mantém Shizune…'
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-7449ed458a35e167
+  resumo: Ren identificou Kurobane Jinzaburō e relatou seus métodos e feitos observados em Ravens Bluff. Tomas reconheceu
+    que isso liga uma Dez Espadas à cadeia do volume 13, sem aceitar Kurobane como invencível nem Masao como fisicamente
+    localizado. Aceitou procurar Luath em privado como canal de emergência, repetindo a referência ao amigo estrangeiro
+    e ao lobo, com a cautela de não explicar a terceiros se Luath não compreen…
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-2fcd1a4747e37c59
+  resumo: Ren redigiu um primeiro rascunho de proposta à pessoa responsável pela Casa do Salgueiro Seco. Tomas recusou
+    permitir a assinatura amigo de Tomas, por não emprestar seu nome como endosso, mas autorizou por intermédio
+    de Tomas Rell. Alertou que dono, em troca da casa e serviços de valor semelhante são ambíguos e podem soar ameaçadores;
+    sugeriu redação clara sobre audiência, uso ou aquisição e termos recusáveis. O ras…
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-9b2f0d0bd63499ff
+  resumo: 'Ren entregou a Tomas a versão revisada da proposta para a Casa do Salgueiro Seco. Tomas guardou a carta
+    separada dos documentos da Galeria e prometeu encaminhá-la sem acrescentar endosso ou revelar mais do que o
+    necessário. Diante da oferta ampla de ajuda, recusou um favor em branco e pediu limites concretos: Ren não deve
+    retornar à Galeria como Shinta ou outra identidade, não deve procurar Sella secretamente, deve…'
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-c5c3e4fe47e00721
+  resumo: Ren despediu-se de Tomas, localizou uma sombra válida do outro lado da rua, distraiu-o com Ilusão Menor
+    e saiu dos aposentos por Passo da Sombra sem custo de Ki. Obteve Furtividade 30 contra CD 14 sob Passos sem
+    Pegadas; ninguém observou a saída nem associou Ren à residência. Ren está oculto do lado de fora, com cerca
+    de cinco minutos restantes do efeito.
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-41d3fb9164c4f327
+  resumo: Ren usou os cinco minutos restantes de Passos sem Pegadas para percorrer uma rota quebrada e afastar-se
+    várias quadras da residência de Tomas. Chegou a um pátio de serviço vazio sem ser observado, seguido ou deixar
+    rastro útil. Passos sem Pegadas expirou às 19:17.
+- batch: s015-cena-5434a5284d90b712
+  transacao: s015-4532a15c1548cf77
+  resumo: Ren deixou a região dos aposentos de Tomas por rota indireta e atravessou Ravens Bluff sem incidente até
+    o Temple District. Chegou à entrada da Casa da Aurora Menor às 19:38; o local ainda está aberto, mas a disponibilidade
+    de Maerra ainda não foi confirmada.
+- batch: s015-cena-8b73c54285cd8f0d
+  transacao: s015-6edb9493256793af
+  resumo: Ren chegou à Casa da Aurora Menor e contou a Maerra sobre a armadilha documental contra Shinta, a custódia
+    e libertação por Luath, Kurobane, a conversa com Tomas, o canal dos Lobos de Mibu e a carta para a Casa do Salgueiro
+    Seco, sem revelar o esconderijo dos protegidos. Maerra separou fatos de hipóteses, aprovou a honestidade com
+    Tomas e a proposta lícita pela Casa. Não apresentou missão nem perigo novo; pediu que…
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml
