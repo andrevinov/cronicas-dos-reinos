@@ -9,8 +9,40 @@ sistema:
   edicao:
     status: "definida"
     valor: "5ª edição"
-    base_mecanica: "D&D 5e classico"
-    observacao: "Material de AD&D e de outras edicoes pode ser usado como fonte de cenario e aventura, com adaptacao leve para 5e."
+    base_mecanica: "D&D 5e 2014"
+    observacao: "A campanha continua mecanicamente em D&D 5e 2014 enquanto a migração para D&D 5.5e não atravessar o gate final de ativação."
+  ruleset:
+    atual: "dnd_5e_2014"
+    alvo: "dnd_5_5e"
+    migracao:
+      status: "em_andamento"
+      ativacao:
+        permitida: false
+        gate: "task_8_auditoria_final"
+        requisitos:
+          task_1_contrato: true
+          task_2_catalogo: false
+          task_3_ficha_fonte_unica: false
+          task_4_nucleo_mecanico: false
+          task_5_conversao_ren: false
+          task_6_integracao_cronica: false
+          task_7_gate_adnd: false
+          integracao_completa: false
+          preflight_completo: false
+    hierarquia_mecanica:
+      - "decisoes_campanha"
+      - "regras_da_casa"
+      - "ruleset_atual"
+      - "compatibilidade_aprovada"
+      - "fontes_adaptadas"
+    compatibilidade:
+      uso_5_5e_antes_da_ativacao: "somente_migracao"
+      fallback_5e_2014_apos_ativacao: "somente_sem_equivalente_5_5e_e_com_aprovacao_explicita"
+      material_adnd: "adaptar_para_ruleset_atual"
+    preservacao_historica:
+      sessoes_concluidas: "preservar"
+      decisoes_existentes: "preservar_ate_substituicao_explicita_prospectiva"
+      reescrita_retroativa: false
 
 cenario:
   nome: "Forgotten Realms"
@@ -86,11 +118,15 @@ estrutura:
 fontes:
   status: "definidas_iniciais"
   arquivo_canonico: "regras/fontes.md"
-  observacao: "Regras-base em D&D 5e; materiais de AD&D e outras edicoes entram como fontes de cenario, aventura e inspiracao, com adaptacao quando necessario."
+  observacao: "O ruleset ativo é D&D 5e 2014 durante a migração; D&D 5.5e é o alvo e só se torna autoridade mecânica após o gate final. Materiais de AD&D e outras edições continuam sendo adaptados para o ruleset ativo."
   regras_base:
-    - "Livro do Jogador, D&D 5e"
-    - "Manual dos Monstros, D&D 5e"
-    - "Guia do Mestre 2024, como apoio secundario quando compativel"
+    - "Livro do Jogador, D&D 5e 2014"
+    - "Manual dos Monstros, D&D 5e 2014"
+    - "Guia do Mestre 2024/5.5e apenas como referência de migração enquanto o ruleset ativo for 2014"
+  regras_alvo:
+    - "Player's Handbook 2024 / D&D 5.5e"
+    - "Dungeon Master's Guide 2024 / D&D 5.5e"
+    - "Monster Manual 2025 / D&D 5.5e"
   candidatas_regionais:
     - "LC1 - Gateway to Ravens Bluff, The Living City"
     - "LC2 - Inside Ravens Bluff"

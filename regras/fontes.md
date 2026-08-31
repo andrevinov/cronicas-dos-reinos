@@ -2,39 +2,77 @@
 
 Este arquivo define as fontes autorizadas para a campanha **Crônicas dos Reinos**.
 
-A campanha usará **Dungeons & Dragons 5ª edição** como base mecânica. Materiais de AD&D, D&D 3e, D&D 4e e suplementos compatíveis serão usados principalmente como fontes de cenário, aventuras, personagens, lugares, facções, rumores e inspiração, com adaptação para 5e quando necessário.
+A campanha está em migração controlada de **D&D 5e 2014** para **D&D 5.5e**. Enquanto o gate final não for satisfeito, D&D 5e 2014 continua sendo o ruleset mecânico ativo; 5.5e é fonte de comparação, preparação e conversão, mas ainda não substitui a mecânica usada em sessão.
+
+Materiais de AD&D, D&D 3e, D&D 4e e suplementos compatíveis continuam sendo usados principalmente como fontes de cenário, aventuras, personagens, lugares, facções, rumores e inspiração. Quando uma mecânica antiga precisar entrar em jogo, ela deve ser adaptada para o **ruleset atual** declarado em `campanha.yaml`.
 
 Os PDFs locais em `books/` são material privado de consulta e não fazem parte do repositório versionado.
 
 ---
 
+## Contrato de ruleset
+
+A fonte de verdade executável para versão e migração é `campanha.yaml`, em `sistema.ruleset`.
+
+Estado inicial da migração:
+
+- ruleset atual: `dnd_5e_2014`;
+- ruleset alvo: `dnd_5_5e`;
+- status: `em_andamento`;
+- ativação 5.5e: proibida até `task_8_auditoria_final` concluir todos os requisitos e o preflight completo.
+
+A migração é prospectiva. Ela **não reescreve sessões concluídas**, não recalcula resultados canonizados e não altera decisões antigas apenas para fazê-las parecer originadas em 5.5e. Uma decisão antiga pode ser substituída futuramente apenas por decisão explícita, com aplicação prospectiva.
+
+Compatibilidade também é explícita:
+
+- antes da ativação, material 5.5e serve somente à migração;
+- depois da ativação, material 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e houver aprovação explícita;
+- material de AD&D é sempre adaptado para o ruleset atual, nunca aplicado mecanicamente de forma literal.
+
+---
+
 ## Regra geral
 
-Quando houver conflito entre fontes:
+Quando houver conflito **mecânico** entre fontes:
 
-1. decisões registradas da campanha prevalecem sobre material externo;
-2. regras de D&D 5e prevalecem para mecânica de jogo;
-3. material de Forgotten Realms prevalece para cenário;
-4. material regional de Ravens Bluff prevalece para detalhes locais;
+1. decisões registradas da campanha prevalecem;
+2. regras da casa prevalecem;
+3. regras oficiais do `ruleset_atual` prevalecem;
+4. compatibilidade só entra quando estiver aprovada explicitamente;
 5. fontes de outras edições devem ser adaptadas, não aplicadas literalmente;
 6. conteúdo opcional ou de terceiros só entra quando for aprovado ou preparado explicitamente.
+
+Para cenário, Forgotten Realms continua sendo a base ampla e material regional de Ravens Bluff prevalece para detalhes locais, sujeito ao período adotado de 1372 DR.
 
 O agente deve registrar qualquer adaptação relevante em `regras/decisoes.md` ou no arquivo de preparação correspondente.
 
 ---
 
-## Regras-base
+## Regras-base ativas — D&D 5e 2014
 
-Estas fontes sustentam a resolução mecânica da campanha.
+Estas fontes continuam sustentando a resolução mecânica **até a ativação final de 5.5e**.
 
 | Prioridade | Fonte | Uso na campanha | Arquivo local |
 | --- | --- | --- | --- |
-| Alta | Livro do Jogador, D&D 5e | criação de personagem, testes, combate, magia, equipamentos e regras centrais | `books/high_rules_dnd5e_players-handbook_pt-br.pdf` |
-| Alta | Manual dos Monstros, D&D 5e | estatísticas de criaturas, ameaças e referência para substituições de monstros antigos | `books/high_rules_dnd5e_monster-manual_pt-br.pdf` |
-| Média | Guia do Mestre 2024 | apoio ao narrador, tesouros, itens mágicos, estrutura de aventuras e adjudicação, desde que não contradiga a base 5e adotada | `books/high_rules_dnd2024_dungeon-masters-guide_en.pdf` |
-| Baixa | Regras Básicas de D&D 5e | consulta rápida quando conveniente; não substitui os livros-base | `books/low_rules_dnd5e_basic-rules-player_v0-2_printer-friendly.pdf`, `books/low_rules_dnd5e_basic-rules-dm_v0-3_printer-friendly.pdf` |
+| Alta | Livro do Jogador, D&D 5e 2014 | criação de personagem, testes, combate, magia, equipamentos e regras centrais | `books/high_rules_dnd5e_players-handbook_pt-br.pdf` |
+| Alta | Manual dos Monstros, D&D 5e 2014 | estatísticas de criaturas, ameaças e referência para substituições de monstros antigos | `books/high_rules_dnd5e_monster-manual_pt-br.pdf` |
+| Baixa | Regras Básicas de D&D 5e 2014 | consulta rápida quando conveniente; não substitui os livros-base | `books/low_rules_dnd5e_basic-rules-player_v0-2_printer-friendly.pdf`, `books/low_rules_dnd5e_basic-rules-dm_v0-3_printer-friendly.pdf` |
 
-Até decisão em contrário, a campanha deve tratar a 5e clássica como base principal, usando material de 2024 apenas como apoio secundário e compatível.
+Enquanto `sistema.ruleset.atual` for `dnd_5e_2014`, nenhuma regra 5.5e entra automaticamente em uma sessão só por ser mais recente.
+
+---
+
+## Regras-base alvo — D&D 5.5e
+
+Estas fontes definem o ruleset para o qual a campanha está migrando. Durante as Tasks 1–7 elas podem orientar comparação e implementação; só se tornam autoridade mecânica corrente após o gate da Task 8.
+
+| Prioridade alvo | Fonte | Uso após ativação | Arquivo local |
+| --- | --- | --- | --- |
+| Alta | Player's Handbook 2024 / D&D 5.5e | criação de personagem, classes, talentos, testes, combate, magia, equipamentos e regras centrais | cadastro local pendente |
+| Alta | Dungeon Master's Guide 2024 / D&D 5.5e | adjudicação, tesouros, itens mágicos e estrutura de aventuras | `books/high_rules_dnd2024_dungeon-masters-guide_en.pdf` |
+| Alta | Monster Manual 2025 / D&D 5.5e | estatísticas de criaturas, ameaças e referência principal para conversões de monstros antigos | cadastro local pendente |
+
+Se uma opção de 2014 não possuir equivalente 5.5e depois da ativação, ela não é descartada nem importada automaticamente: deve passar pela política explícita de compatibilidade da campanha.
 
 ---
 
@@ -65,8 +103,8 @@ possíveis conexões futuras entre Faerûn e os reinos orientais.
 | Alta, interna | Ponte de Kozakura | Documento aprovado de campanha para definir o eixo canônico de longo prazo da passagem permanente entre Ravens Bluff e Kozakura, suas anomalias graduais, a perda do controle exclusivo por Masao e a formação futura de Shin-Kozakura | `books/Ponte de Kozakura.pdf` |
 
 O livro deve ser usado como fonte de cenário e inspiração de campanha. Regras,
-níveis, magias, itens e estatísticas de AD&D devem ser adaptados para D&D 5e
-antes de aparecerem em jogo.
+níveis, magias, itens e estatísticas de AD&D devem ser adaptados para o ruleset
+atual antes de aparecerem em jogo.
 
 `Kara-Tur e Faerûn` não é suplemento oficial. Ele é fonte interna autorizada
 para decisões desta campanha: a lacuna de quinze anos de Kozakura, a função dos
@@ -144,27 +182,27 @@ Estas fontes podem enriquecer a campanha, mas não entram automaticamente como r
 | Média | Strixhaven: Curriculum of Chaos | escola arcana, facções acadêmicas, NPCs, rivalidades e estrutura de aventura adaptável para Faerûn | `books/medium_dnd5e_setting-adventure_strixhaven-curriculum-of-chaos.pdf` |
 | Média | Valda's Spire of Secrets | opções extras, ideias de personagens, classes, arquétipos e magia, mediante aprovação específica | `books/medium_dnd5e_third-party_valdas-spire-of-secrets.pdf` |
 | Média | Raças e Talentos | opções adicionais de personagem, mediante conferência e aprovação | `books/medium_rules_dnd5e_races-and-feats_pt-br.pdf` |
-| Média | Tesouros e Itens Mágicos | inspiração para recompensas, com ajuste de raridade e impacto pela lógica de 5e | `books/medium_rules_dnd5e_magic-items-and-treasure_pt-br.pdf` |
-| Baixa | Resumo das Classes | consulta rápida, sem autoridade contra o Livro do Jogador | `books/low_rules_dnd5e_class-summary_biblioteca-elfica_pt-br.pdf` |
+| Média | Tesouros e Itens Mágicos | inspiração para recompensas, com ajuste de raridade e impacto pela lógica do ruleset atual | `books/medium_rules_dnd5e_magic-items-and-treasure_pt-br.pdf` |
+| Baixa | Resumo das Classes | consulta rápida, sem autoridade contra os livros-base do ruleset atual | `books/low_rules_dnd5e_class-summary_biblioteca-elfica_pt-br.pdf` |
 
 Conteúdo de terceiros ou compilado não deve ser oferecido ao jogador como opção padrão sem aprovação.
 
 ---
 
-## Adaptação leve de AD&D para 5e
+## Adaptação leve de AD&D para o ruleset atual
 
 Ao usar material de AD&D:
 
 * preservar lugares, NPCs, facções, tramas, mapas, rumores, tesouros narrativos e consequências;
-* substituir estatísticas por criaturas equivalentes do Manual dos Monstros 5e sempre que possível;
-* recriar NPCs importantes com blocos simples de 5e, focando no papel deles em cena;
-* converter testes antigos para CDs de 5e usando dificuldade aproximada;
+* substituir estatísticas por criaturas equivalentes do bestiário principal do ruleset atual sempre que possível;
+* recriar NPCs importantes com blocos simples do ruleset atual, focando no papel deles em cena;
+* converter testes antigos para CDs do ruleset atual usando dificuldade aproximada;
 * ajustar encontros pela ameaça real ao personagem ou grupo, não pela matemática antiga;
-* converter tesouros para raridade, economia e progressão de 5e;
+* converter tesouros para raridade, economia e progressão do ruleset atual;
 * evitar importar restrições, classes, tabelas, THAC0, salvamentos antigos ou XP antigo de forma literal;
 * registrar apenas adaptações que possam voltar a ser relevantes.
 
-Escala sugerida de CDs em 5e:
+Enquanto o ruleset atual for 5e 2014, continua válida a escala prática já usada pela campanha:
 
 | Dificuldade | CD |
 | --- | --- |
@@ -174,11 +212,12 @@ Escala sugerida de CDs em 5e:
 | Muito difícil | 25 |
 | Quase impossível | 30 |
 
+A Task 7 tornará essa fronteira de adaptação verificável. Até lá, a regra operacional é simples: o material antigo aponta para `sistema.ruleset.atual`, portanto a mudança para 5.5e não exige reescrever aventuras ou cenário de AD&D; muda apenas o alvo mecânico das conversões futuras.
+
 Essa adaptação deve ser prática. O objetivo é fazer o material antigo funcionar em mesa, não criar uma conversão perfeita entre edições.
 
 ---
 
 ## Pendências
 
-Sem pendências críticas de fonte para a campanha atual. Novas fontes regionais
-devem ser registradas aqui quando passarem a sustentar preparação ou jogo.
+A migração mecânica para 5.5e é uma pendência controlada pelas Tasks 1–8. Novas fontes regionais devem ser registradas aqui quando passarem a sustentar preparação ou jogo; fontes 5.5e só passam a ser autoridade corrente no gate final de ativação.
