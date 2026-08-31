@@ -274,13 +274,18 @@ class PersistentConditionSceneTest(unittest.TestCase):
 
 
 class PersistentConditionRepositoryAndBudgetTest(unittest.TestCase):
-    def test_repo_real_comeca_vazio_e_valido_sem_retroatividade(self):
+    def test_repo_real_reflete_condicoes_correntes_sem_exigir_estado_vazio(self):
         state = conditions.load_state(ROOT)
-        self.assertEqual(state["condicoes"], {})
         result = conditions.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["condicoes_abertas"], 0)
-        self.assertEqual(result["ativas_agora"], 0)
+        self.assertEqual(result["condicoes_abertas"], len(state["condicoes"]))
+        self.assertEqual(result["historico_recente"], len(state["historico_recente"]))
+        self.assertLessEqual(result["condicoes_abertas"], conditions.MAX_CONDITIONS)
+        self.assertLessEqual(result["historico_recente"], conditions.MAX_HISTORY)
+        self.assertGreaterEqual(result["ativas_agora"], 0)
+        self.assertLessEqual(result["ativas_agora"], result["condicoes_abertas"])
+        self.assertFalse(result["scheduler"])
+        self.assertFalse(result["rng"])
 
     def test_contrato_congela_custo_e_sem_scheduler(self):
         budget = yaml.safe_load(
