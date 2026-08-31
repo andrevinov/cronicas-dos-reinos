@@ -92,7 +92,8 @@ class Task46RolloutFixture(task45.Task45Fixture):
 class Task46RolloutMatrixTest(Task46RolloutFixture):
     @classmethod
     def setUpClass(cls):
-        base = task41.task40_package()
+        super().setUpClass()
+        base = cls.package
         cls.bridge_candidate = task42._candidate(base, set())
         cls.satisfy_candidate = task42._candidate(base, {"satisfazer"})
         cls.delay_candidate = task42._candidate(base, {"adiar"})
