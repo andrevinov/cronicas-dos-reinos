@@ -16,7 +16,7 @@ spec.loader.exec_module(mod)
 
 
 class HistoricalTestReviewRepositoryTest(unittest.TestCase):
-    def test_todos_os_39_historicos_da_task1_possuem_destino(self):
+    def test_todos_os_39_historicos_originais_possuem_destino(self):
         report = mod.check(ROOT)
         self.assertTrue(report["ok"], report)
         self.assertEqual(report["originais"], 39)
