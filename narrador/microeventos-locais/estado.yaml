@@ -111,6 +111,14 @@ locais:
       - abastecimento_incompleto
       - carga_marca_confusa
       - documento_sem_destino_claro
+  patio_calaria_rua_da_cal:
+    ocorrencia:
+      ciclo: 0
+      restantes: []
+    cartas:
+      ciclo: 0
+      assinatura_pool: null
+      restantes: []
 historico_recente:
 - cena_id: s013-retorno-circo-apos-sella
   local_id: jack_mooney_sons_circus

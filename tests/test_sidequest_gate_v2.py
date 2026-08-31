@@ -37,7 +37,7 @@ class RetiredSidequestGateRepositoryTest(unittest.TestCase):
         index = oportunidades.load_index(ROOT)
         state = oportunidades.load_state(ROOT, index)
         self.assertEqual(state["pendencias_avaliacao"], {})
-        self.assertEqual(state["missoes"], {})
+        self.assertNotIn("sq-5ca38554df96dc88", state["missoes"])
         legacy = state["legado_procedural"]
         self.assertEqual(legacy["estatuto"], "somente_auditoria_nao_operacional")
         self.assertIn("sq-5ca38554df96dc88", legacy["pendencias_aposentadas"])

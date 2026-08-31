@@ -401,6 +401,7 @@ class Task45BudgetAndCanonContractTest(unittest.TestCase):
                 dst = repo / rel
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(ROOT / rel, dst)
+            task41.isolate_opportunity_state(repo)
             index = oportunidades.load_index(repo)
             state = oportunidades.load_state(repo, index)
             now = mundo.parse_instant("12 Eleasis, 1372 DR", "10:00")

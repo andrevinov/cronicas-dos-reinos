@@ -1,5 +1,40 @@
 schema_canon_bridge: 1
 natureza: controle_reservado
-reservas: {}
+reservas:
+  halessa_admite_a_teia:
+    evento_id: halessa_admite_a_teia
+    intencao_id: icp1-halessa_admite_a_teia
+    mission_id: sqe-47ea56e74d59f1c0
+    quest_id: qse-c721ace29e628024
+    modo: ponte
+    estado: ativa
+    criada_em:
+      data: 19 Eleasis, 1372 DR
+      hora: '20:00'
+    ativacao_padrao:
+      data: 21 Eleasis, 1372 DR
+      hora: 06:00
+    ativacao_efetiva:
+      data: 21 Eleasis, 1372 DR
+      hora: 06:00
+    ancora_quest:
+      prazo:
+        tipo: temporal
+        expira_em:
+          data: 20 Eleasis, 1372 DR
+          hora: 06:00
+      locais_fase_final:
+      - arquivo_transferencias_caridade
+    justificativa: Uma ordem irregular confirmada por fonte institucional pode elevar
+      manipulações documentais isoladas a uma hipótese coordenada investigável sem
+      revelar autoria ou entregar a solução da rede.
+    regra_agencia: ancora_causal_nao_move_nem_decide_ren
 resolucoes: {}
-historico_recente: []
+historico_recente:
+- tipo: reserva_criada
+  evento_id: halessa_admite_a_teia
+  mission_id: sqe-47ea56e74d59f1c0
+  modo: ponte
+  em:
+    data: 19 Eleasis, 1372 DR
+    hora: '20:00'

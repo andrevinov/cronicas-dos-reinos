@@ -121,6 +121,7 @@ class Task42Fixture(unittest.TestCase):
             target = self.repo / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, target)
+        task41_cases.isolate_opportunity_state(self.repo)
         shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)
         shutil.copytree(
             ROOT / "narrador/arcos/parte_1",
@@ -529,11 +530,12 @@ class Task42BudgetTest(unittest.TestCase):
         self.assertNotIn("eventos_canonicos.atomic", joined)
         self.assertNotIn("intencoes_canonicas.atomic", joined)
 
-    def test_estado_real_comeca_vazio_e_valido(self):
+    def test_estado_real_permanece_valido_com_reservas_canonicas(self):
         result = canon_bridge.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["reservas"], 0)
-        self.assertEqual(result["resolucoes"], 0)
+        state = canon_bridge.load_state(ROOT)
+        self.assertEqual(result["reservas"], len(state["reservas"]))
+        self.assertEqual(result["resolucoes"], len(state["resolucoes"]))
 
 
 if __name__ == "__main__":

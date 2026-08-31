@@ -20,6 +20,16 @@ import oportunidades
 import sidequests_emergentes as emergent
 
 
+def isolate_opportunity_state(repo: Path) -> None:
+    path = repo / oportunidades.STATE
+    state = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    state["missoes"] = {}
+    path.write_text(
+        yaml.safe_dump(state, allow_unicode=True, sort_keys=False),
+        encoding="utf-8",
+    )
+
+
 def task40_package() -> dict:
     return oportunidade_sidequest.plan(
         ROOT,
@@ -315,6 +325,7 @@ class Task41MaterializationTest(unittest.TestCase):
             target = self.repo / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, target)
+        isolate_opportunity_state(self.repo)
         shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)
 
     def tearDown(self):
