@@ -34,6 +34,13 @@ _BASE_EFFECTS = _core.effects_for_mission
 _BASE_CHECK = _core.check
 
 
+def _is_cold_metadata(raw: dict[str, Any]) -> bool:
+    return (
+        raw.get("estatuto") == "legado_frio_task46"
+        and raw.get("origem_operacional") is False
+    )
+
+
 def _router(index: dict[str, Any]) -> dict[str, Any]:
     raw = index.get(ROUTER_KEY)
     if not isinstance(raw, dict):
@@ -59,14 +66,14 @@ def _router(index: dict[str, Any]) -> dict[str, Any]:
         raise CanonicalSidequestError(
             "roteador fragmentado possui campos desconhecidos: " + ", ".join(sorted(extra))
         )
-    if routing == FRAGMENTED_ROUTING_COLD:
-        if raw.get("estatuto") != "legado_frio_task46" or raw.get("origem_operacional") is not False:
-            raise CanonicalSidequestError(
-                "roteador Task33 legado frio precisa declarar estatuto e origem_operacional=false"
-            )
-    elif raw.get("estatuto") is not None or raw.get("origem_operacional") is not None:
+    has_task46_metadata = "estatuto" in raw or "origem_operacional" in raw
+    if routing == FRAGMENTED_ROUTING_COLD and not _is_cold_metadata(raw):
         raise CanonicalSidequestError(
-            "metadados Task46 só são aceitos no roteamento legado frio"
+            "roteador Task33 legado frio precisa declarar estatuto e origem_operacional=false"
+        )
+    if routing == FRAGMENTED_ROUTING and has_task46_metadata and not _is_cold_metadata(raw):
+        raise CanonicalSidequestError(
+            "metadados Task46 do catálogo Task33 estão incompletos ou inválidos"
         )
     if not isinstance(index.get("perfis"), dict):
         raise CanonicalSidequestError("índice sem perfis para roteamento Task33")
@@ -258,7 +265,7 @@ def check(repo: Path) -> dict[str, Any]:
     result["roteadores_fragmentados"] = len(mapping)
     result["fontes_roteadores"] = len(sources)
     result["estatuto_task46"] = (
-        "legado_frio" if router.get("roteamento") == FRAGMENTED_ROUTING_COLD else "compatibilidade"
+        "legado_frio" if _is_cold_metadata(router) else "compatibilidade"
     )
     return result
 
