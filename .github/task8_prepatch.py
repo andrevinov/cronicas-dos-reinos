@@ -14,6 +14,14 @@ replacements = [
         '    ("        \\"ki\\": {\\n            \\"pontos_maximos\\": ki_max,\\n            \\"pontos_atuais\\": ki_current,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_maximos\\": focus_max,\\n            \\"pontos_atuais\\": focus_current,\\n            \\"cd\\": focus_dc,\\n        },"),',
         '    ("        \\"ki\\": {\\n            \\"pontos_atuais\\": ki_current,\\n            \\"pontos_maximos\\": ki_max,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_atuais\\": focus_current,\\n            \\"pontos_maximos\\": focus_max,\\n            \\"cd\\": focus_dc,\\n        },"),',
     ),
+    (
+        'self.mechanics.hit_points, {"atuais": 45, "maximos": 52}',
+        'self.mechanics.resources["pontos_de_vida"], {"atuais": 45, "maximos": 52, "dados_de_vida": "7d8"}',
+    ),
+    (
+        'self.assertEqual(self.mechanics.speed, 55)',
+        'self.assertEqual(self.sheet_raw["movimento"]["deslocamento_pes"], 55)',
+    ),
 ]
 for old, new in replacements:
     if old in text:
