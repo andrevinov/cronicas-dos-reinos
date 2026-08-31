@@ -18,6 +18,7 @@ import sys
 import time
 import unittest
 from collections import Counter, defaultdict
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from typing import Any
 
@@ -563,8 +564,11 @@ def measure_suite(
                 root=root,
             ),
         )
+        captured_stdout = io.StringIO()
+        captured_stderr = io.StringIO()
         started = time.perf_counter()
-        result = runner.run(suite)
+        with redirect_stdout(captured_stdout), redirect_stderr(captured_stderr):
+            result = runner.run(suite)
         total = time.perf_counter() - started
     finally:
         sys.path[:] = old_sys_path
@@ -601,6 +605,8 @@ def measure_suite(
         "pulados": len(result.skipped),
         "sucesso": result.wasSuccessful(),
         "problemas": result.problems,
+        "stdout_capturado_bytes": len(captured_stdout.getvalue().encode("utf-8")),
+        "stderr_capturado_bytes": len(captured_stderr.getvalue().encode("utf-8")),
     }
     measurement = {
         "execucao": execution,
