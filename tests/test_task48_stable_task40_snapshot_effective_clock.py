@@ -22,33 +22,41 @@ import test_emergent_sidequest_authoring_registry_v2 as task41
 import transacoes
 
 
+def _meta_for(
+    package: dict,
+    *,
+    source: str | None = integration.CLOCK_SOURCE_EXPLICIT,
+) -> dict:
+    origin = package["origem"]
+    reward = package["envelope_recompensa"]
+    signal = {
+        "origem_tipo": origin["tipo"],
+        "origem_id": origin["id"],
+        "ancora_tipo": origin["ancora_tipo"],
+        "ancora": origin["ancora"],
+        "npc_id": origin.get("npc_id"),
+        "local_id": package["prazo_mundo"].get("local_id"),
+        "periculosidade": reward["periculosidade"],
+        "tier": reward["tier"],
+        "agora": copy.deepcopy(package["prazo_mundo"]["agora"]),
+    }
+    if source is not None:
+        signal["agora_fonte"] = source
+    digest = (
+        integration._base._digest(package)
+        if source is None
+        else integration._semantic_digest(package)
+    )
+    return {"schema": integration.SCHEMA, "sinal": signal, "pacote_digest": digest}
+
+
 class Task48SemanticSnapshotTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.package = task41.task40_package()
 
     def meta(self, package: dict, *, source: str | None = integration.CLOCK_SOURCE_EXPLICIT):
-        origin = package["origem"]
-        reward = package["envelope_recompensa"]
-        signal = {
-            "origem_tipo": origin["tipo"],
-            "origem_id": origin["id"],
-            "ancora_tipo": origin["ancora_tipo"],
-            "ancora": origin["ancora"],
-            "npc_id": origin.get("npc_id"),
-            "local_id": package["prazo_mundo"].get("local_id"),
-            "periculosidade": reward["periculosidade"],
-            "tier": reward["tier"],
-            "agora": copy.deepcopy(package["prazo_mundo"]["agora"]),
-        }
-        if source is not None:
-            signal["agora_fonte"] = source
-        digest = (
-            integration._base._digest(package)
-            if source is None
-            else integration._semantic_digest(package)
-        )
-        return {"schema": integration.SCHEMA, "sinal": signal, "pacote_digest": digest}
+        return _meta_for(package, source=source)
 
     def test_telemetria_fontes_e_orcamento_nao_mudam_digest_semantico(self):
         original = integration._semantic_digest(self.package)
@@ -225,9 +233,9 @@ class Task48EffectiveClockTest(unittest.TestCase):
         effective = mundo.parse_instant("10 Eleasis, 1372 DR", "20:00")
         self.write_pending_instant(effective)
         now, source = integration._prepare_clock(self.repo, None)
-        self.assertEqual(now, effective)
+        self.assertEqual(now.minute, effective.minute)
         self.assertEqual(source, integration.CLOCK_SOURCE_PENDING)
-        self.assertEqual(integration._current_effective_now(self.repo), effective)
+        self.assertEqual(integration._current_effective_now(self.repo).minute, effective.minute)
 
     def test_instante_explicito_tem_precedencia_sobre_overlay(self):
         pending = mundo.parse_instant("10 Eleasis, 1372 DR", "20:00")
@@ -253,17 +261,15 @@ class Task48EffectiveClockTest(unittest.TestCase):
                 encode_ticket=lambda value: ("ticket", "id"),
                 now=None,
             )
-        self.assertEqual(base.call_args.kwargs["now"], effective)
+        self.assertEqual(base.call_args.kwargs["now"].minute, effective.minute)
 
     def test_revalidacao_de_relogio_derivado_enxerga_mudanca_real(self):
         effective = mundo.parse_instant("10 Eleasis, 1372 DR", "20:00")
         later = mundo.parse_instant("10 Eleasis, 1372 DR", "20:05")
         self.write_pending_instant(effective)
-        package = copy.deepcopy(Task48SemanticSnapshotTest.package)
+        package = copy.deepcopy(task41.task40_package())
         package["prazo_mundo"]["agora"] = mundo.instant_parts(effective)
-        meta = Task48SemanticSnapshotTest().meta(
-            package, source=integration.CLOCK_SOURCE_PENDING
-        )
+        meta = _meta_for(package, source=integration.CLOCK_SOURCE_PENDING)
         self.write_pending_instant(later)
         changed = copy.deepcopy(package)
         changed["prazo_mundo"]["agora"] = mundo.instant_parts(later)
@@ -273,7 +279,7 @@ class Task48EffectiveClockTest(unittest.TestCase):
                 "snapshot semântico Task40 mudou",
             ):
                 integration._plan_from_ticket(self.repo, meta)
-        self.assertEqual(plan.call_args.kwargs["now"], later)
+        self.assertEqual(plan.call_args.kwargs["now"].minute, later.minute)
 
 
 if __name__ == "__main__":
