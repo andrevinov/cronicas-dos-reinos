@@ -56,9 +56,9 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Task47 — decisão de oportunidade obrigatória.** Todo `cronica preparar` declara exatamente uma decisão: sem âncora causal concreta, acrescentar `--sem-oportunidade-sidequest`; com âncora concreta, usar `--oportunidade-sidequest` + origem/tipo/âncora. Nunca omitir as duas opções nem usar ambas. A negativa é uma decisão barata: mantém zero leituras Task40–45 e não altera o resultado do hot path.
+**Task47:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham; negativa = zero Task40–45.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag: `--contexto-tag` (`--tag` é alias), namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag, mantendo a mesma decisão Task47.
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag: `--contexto-tag` (`--tag` é alias), namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
 
 **Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
@@ -96,8 +96,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 43:** registrar `contrato_recompensa` com `recompensas_sidequest.py` antes de resposta/lifecycle. Descoberta ≠ obtenção; sucesso/perda só pelo writer transacional; perda exige contrato + evidência causal. Integração automática fica para Task 46.
 - **Task 44:** preparar `contrato_adversarial` junto da Task41 antes da oferta; `integridade_adversarial.py` materializa antes do lifecycle. Capacidade/conhecimento precisam ser reais; lateral mantém Protected Core, vínculo Task42 pode autorizar risco canônico; `obrigatoria_se_condicao` não amacia sem bloqueio causal. Execução terminal: Task45; integração quente: Task46.
 - **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências congeladas; `resolver_sidequest` nunca é no-op; recompensa = Task43, consequência grave = Task44/Protected Core.
-- **Task 46:** no jogo ao vivo, 40–45 ficam na mesma dupla: com âncora causal, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...`; autorar na mesma inferência e enviar quest+contratos no mesmo `cronica concluir` só se a oferta foi narrada. Decisão negativa explícita = zero Task40–45. Task32/33 = legado frio, nunca origem/hot path.
-- **Task 47:** todo `cronica preparar` precisa escolher entre `--sem-oportunidade-sidequest` e `--oportunidade-sidequest`. Ausência/conflito falham; oportunidade incompleta falha antes do hot path; `analisar-rollout.py` exige cobertura de decisão de 100%.
+- **Task 46:** 40–45 ficam na mesma dupla; com âncora, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...`; só materializar se a oferta foi narrada. Decisão negativa explícita = zero Task40–45. Task32/33 = legado frio, nunca origem/hot path.
+- **Task 47:** `analisar-rollout.py` exige 100% de cobertura da decisão.
 - Task32 já narrada → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
