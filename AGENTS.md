@@ -97,7 +97,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 44:** preparar `contrato_adversarial` junto da Task41 antes da oferta; `integridade_adversarial.py` materializa antes do lifecycle. Capacidade/conhecimento precisam ser reais; lateral mantém Protected Core, vínculo Task42 pode autorizar risco canônico; `obrigatoria_se_condicao` não amacia sem bloqueio causal. Execução terminal: Task45; integração quente: Task46.
 - **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências congeladas; `resolver_sidequest` nunca é no-op; recompensa = Task43, consequência grave = Task44/Protected Core.
 - **Task 46:** 40–45 ficam na mesma dupla; com âncora, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...` e enviar no mesmo `cronica concluir`; só materializar se a oferta foi narrada. Decisão negativa explícita = zero Task40–45 (`--sem-oportunidade-sidequest`). Task32/33 = legado frio, nunca origem/hot path.
-- **Task 47:** `analisar-rollout.py` exige 100% de cobertura da decisão.
+- **Task 47–48:** decisão auditada; relógio efetivo + digest semântico.
 - Task32 já narrada → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão
