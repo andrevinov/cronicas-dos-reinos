@@ -1,0 +1,47 @@
+schema_alteracoes_transacionais: 1
+sessao: 16
+status: encerrada
+fonte: sessoes/016/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 16
+  modo: combate_na_oficina_da_antiga_calaria
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 19 Eleasis, 1372 DR
+  hora: '23:12'
+  area: Interior da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pavimento de trabalho da antiga calaria, diante do homem corpulento ferido, com as provas recuperadas
+    junto ao corpo
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 16
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 19 Eleasis, 1372 DR
+  hora: '23:12'
+  area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
+  nivel_ficha: 7
+consolidacoes:
+- id: s016-sessao-8404fabfa1dce6ba
+  tipo: sessao
+  transacoes:
+  - s016-e01536ec1dddc1a6
+  - s016-0baa4e12037507c0
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/016/alteracoes-de-estado.yaml
+  - sessoes/016/consequencias.md
+  - sessoes/016/consolidacoes.jsonl
+  - sessoes/016/resumo.md

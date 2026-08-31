@@ -1,0 +1,58 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 16
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 52
+    focus:
+      atuais: 1
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 19 Eleasis, 1372 DR
+    hora_aproximada: '23:12'
+    periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
+    ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
+continuidade:
+  resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
+    documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
+  prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
+    manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
+    de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+eventos_recentes:
+- batch: s016-sessao-8404fabfa1dce6ba
+  transacao: s016-e01536ec1dddc1a6
+  resumo: Ren tentou nocautear o homem com o golpe desarmado bônus, mas errou. O homem permaneceu com 6/24 PV, usou
+    Desengajar e fugiu pela porta lateral para o pátio da cal; a mulher segue inconsciente e Ren conserva as provas.
+- batch: s016-sessao-8404fabfa1dce6ba
+  transacao: s016-0baa4e12037507c0
+  resumo: Ren alcançou o homem no pátio e o nocauteou de modo não letal com o segundo de seus ataques. O homem e
+    a mulher estão inconscientes e estáveis; Ren mantém a matriz e os documentos, e o combate terminou.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/016/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

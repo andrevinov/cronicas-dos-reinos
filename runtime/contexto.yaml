@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 15
+  numero: 16
   status: entre_sessoes
-  modo_de_cena: combate_na_oficina_da_antiga_calaria
+  modo_de_cena: patio_da_antiga_calaria_apos_combate
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -34,9 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Interior da antiga calaria, Rua da Cal, Ravens Bluff
-  ponto_exato: pavimento de trabalho da antiga calaria, diante do homem corpulento ferido, com as provas recuperadas
-    junto ao corpo
+  area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -53,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/015/handoff.yaml
-  transcricao_fria: sessoes/015/transcricao.md
+  handoff_atual: sessoes/016/handoff.yaml
+  transcricao_fria: sessoes/016/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:
