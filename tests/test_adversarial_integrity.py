@@ -135,6 +135,15 @@ def _copy_common(repo: Path, *, canon: bool = False) -> None:
         shutil.copy2(ROOT / rel, target)
     if canon:
         shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
+        bridge_path = repo / canon_bridge.STATE
+        bridge = yaml.safe_load(bridge_path.read_text(encoding="utf-8")) or {}
+        bridge["reservas"] = {}
+        bridge["resolucoes"] = {}
+        bridge["historico_recente"] = []
+        bridge_path.write_text(
+            yaml.safe_dump(bridge, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
         for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):
             target = repo / rel
             target.parent.mkdir(parents=True, exist_ok=True)
