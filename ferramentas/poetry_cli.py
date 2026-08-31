@@ -53,7 +53,7 @@ def contexto() -> int:
 
 
 def cronica() -> int:
-    return _run_script("cronica.py")
+    return _run_script("cronica_task49.py")
 
 
 def turno() -> int:

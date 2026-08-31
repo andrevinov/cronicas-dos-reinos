@@ -1,0 +1,22 @@
+schema_task49_orcamento: 1
+natureza: contrato_engenharia
+limites:
+  turno_neutro_leituras_task40_45: 0
+  chamadas_orquestracao_por_turno: 2
+  contrato_capsula_max_bytes: 3072
+  capsula_input_max_bytes: 65536
+  writers_novos: 0
+  schedulers_novos: 0
+  relogios_novos: 0
+  rng_novo: 0
+  scans_globais_novos: 0
+  estados_persistentes_novos: 0
+invariantes:
+  uma_interface_autoral: true
+  compilacao_deterministica_para_task46: true
+  validadores_task41_43_44_45_continuam_autoritativos: true
+  legado_task46_permanece_recuperavel: true
+  transporte_em_um_json_stdin: true
+  sem_write_stdin_interativo: true
+  sem_arquivo_temporario: true
+  neutro_sem_custo_task49: true
