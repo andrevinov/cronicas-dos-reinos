@@ -26,6 +26,12 @@ python3 ferramentas/rolar-dados.py ren listar
 
 `dados` continua sendo a interface pública. A matemática compartilhada de d20, testes, salvaguardas, ataques, vantagem/desvantagem, críticos e dano fica em `mecanica_dnd_5_5e.py`; consumidores operacionais não devem chamar esse módulo diretamente. Durante a migração, isso não ativa 5.5e por si só: `campanha.yaml` continua sendo a autoridade do ruleset em uso.
 
+### Mecânica vinculada ao turno
+
+Quando um turno tiver consequência mecânica persistente, `cronica preparar` pode receber `--mecanica-json` com as regras e obrigações. A resposta devolve os IDs canônicos e congela tudo no mesmo ticket. Depois da rolagem com `dados`, `cronica concluir` recebe um bloco `mecanica.resolucoes`; o writer só vê a transação depois da validação causal.
+
+Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Ki/Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
+
 ### Rolagens em lote
 
 Quando duas ou mais rolagens independentes já forem necessárias antes de conhecer qualquer resultado, usar `rolar-lote.py`:

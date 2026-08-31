@@ -308,8 +308,8 @@ class CronicaMechanicalContractTest(unittest.TestCase):
         budget = yaml.safe_load(
             (ROOT / "baseline/unified-cronica-turn-cli-orcamento.yaml").read_text(encoding="utf-8")
         )
-        self.assertEqual(budget["orcamento"]["chamadas_operacionais_por_turno"], 2)
-        self.assertEqual(budget["orcamento"]["novos_endpoints_deterministicos_max"], 0)
+        self.assertEqual(budget["fluxo_preferencial"]["chamadas_operacionais_por_turno"], 2)
+        self.assertEqual(budget["limites"]["max_endpoints_novos"], 0)
 
 
 class PublicCronicaMechanicalIntegrationTest(unittest.TestCase):

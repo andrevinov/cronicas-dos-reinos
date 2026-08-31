@@ -98,3 +98,54 @@ regras:
     executor: narrador
     persistencia: turno_transacional
     house_rule: sucesso_com_custo_da_campanha
+
+  - id: ataque_d20
+    aliases:
+      - jogada de ataque
+      - attack roll
+    dominio: combate
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Fórmula básica
+    resumo_interno: >-
+      Ataques usam d20 mais bônus de ataque contra CA; 1 e 20 naturais seguem a resolução de ataque do núcleo mecânico.
+    executor: dados
+    persistencia: nenhuma
+    house_rule: null
+
+  - id: salvaguarda_d20
+    aliases:
+      - jogada de salvaguarda
+      - saving throw
+    dominio: resolucao
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Fórmula básica
+    resumo_interno: >-
+      Salvaguardas usam d20 mais bônus de salvaguarda contra a CD fixada antes da rolagem.
+    executor: dados
+    persistencia: nenhuma
+    house_rule: null
+
+  - id: gasto_recurso_classe
+    aliases:
+      - gasto de recurso
+      - gastar ki
+      - gastar focus
+      - class resource spend
+    dominio: recursos
+    ruleset: dnd_5e_2014
+    autoridade: ruleset_atual
+    fonte:
+      arquivo: regras/resolucao-de-acoes.md
+      secao: Gasto de recursos de classe
+    resumo_interno: >-
+      Gastos de Ki/Focus exigem obrigação preparada, disponibilidade suficiente e delta compatível antes da persistência.
+    executor: cronica
+    persistencia: turno_transacional
+    house_rule: null
+

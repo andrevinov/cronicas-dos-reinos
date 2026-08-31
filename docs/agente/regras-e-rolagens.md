@@ -53,6 +53,14 @@ Para dúvida mecânica conhecida, `contexto regra <termo>` consulta primeiro ess
 
 Enquanto a cobertura do catálogo não for completa, termo não catalogado preserva o fallback textual anterior em `regras/*.md`, explicitamente marcado como `catalogada: false`. Esse fallback não ganha versão, executor ou autoridade por inferência. D&D 5.5e continua proibido como regra operacional enquanto `ruleset.atual` for `dnd_5e_2014`.
 
+## Contrato mecânico do turno
+
+`cronica preparar` aceita opcionalmente um contrato mecânico estruturado com IDs/aliases do `regras/catalogo.yaml` e obrigações do turno. Quando presente, o mesmo ticket congela ruleset, regras aplicáveis, parâmetros de teste/ataque/salvaguarda e snapshot de Ki/Focus necessário aos gastos.
+
+A rolagem continua fora de `cronica`, pela CLI `dados`. Em `cronica concluir`, a transação fornece os dados já rolados em `mecanica.resolucoes`; `cronica` os repassa ao núcleo mecânico para reconstruir deterministicamente escolhido, total e resultado. Só depois compara a consequência com os deltas e chama o writer.
+
+Gasto de Ki/Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
+
 ## Ficha mecânica única de Ren
 
 `personagens/jogador/ficha.yaml` é a única fonte persistida dos números mecânicos de Ren. `ferramentas/ficha_ren.py` apenas valida e adapta essa ficha para os consumidores; não mantém cópia numérica própria. O rolador não deve declarar tabelas paralelas de atributos, perícias, passivos, salvaguardas, ataques, CA, iniciativa ou recursos de Ren.
