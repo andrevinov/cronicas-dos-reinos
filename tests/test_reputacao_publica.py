@@ -19,6 +19,20 @@ import reputacao_publica as rep
 import transacoes
 
 
+def propose_from_empty(**kwargs):
+    with mock.patch.object(rep, "_effective_state", return_value=(rep.empty_state(), 0)):
+        return rep.propose_event(ROOT, **kwargs)
+
+
+def apply_delta(state, delta):
+    return rep.validate_transition(
+        state,
+        delta,
+        rep.load_audiences(ROOT),
+        rep.load_identities(ROOT),
+    )
+
+
 class PublicReputationRegistryTest(unittest.TestCase):
     def test_registro_real_tem_seis_publicos_compactos_e_tres_personas(self):
         audiences = rep.load_audiences(ROOT)
@@ -39,10 +53,23 @@ class PublicReputationRegistryTest(unittest.TestCase):
         self.assertEqual(rep.resolve_identity(identities, "Kage"), "kage")
         self.assertEqual(rep.check(ROOT), [])
 
-    def test_bootstrap_real_nao_inventa_reputacao_retroativa(self):
-        state = yaml.safe_load((ROOT / rep.STATE_FILE).read_text(encoding="utf-8"))
-        self.assertNotIn(rep.STATE_ROOT, state)
+    def test_estado_real_e_valido_sem_assumir_bootstrap_vazio(self):
+        audiences = rep.load_audiences(ROOT)
+        identities = rep.load_identities(ROOT)
+        state_doc = yaml.safe_load((ROOT / rep.STATE_FILE).read_text(encoding="utf-8"))
+        current = rep.validate_state(state_doc.get(rep.STATE_ROOT), audiences, identities)
         projected = rep.show(ROOT, "ren")
+        self.assertEqual(current["schema_reputacao_publica_ren"], rep.SCHEMA)
+        self.assertEqual(current["cidade"], "ravens_bluff")
+        self.assertEqual(projected["schema_reputacao_publica_ren"], rep.SCHEMA)
+        self.assertTrue(
+            all(item["estado"] in rep.LABELS for item in projected["publicos"].values())
+        )
+
+    def test_estado_vazio_projeta_bootstrap_sem_reputacao(self):
+        audiences = rep.load_audiences(ROOT)
+        identities = rep.load_identities(ROOT)
+        projected = rep.project(rep.empty_state(), "ren", audiences, identities)
         self.assertEqual(projected["leitura_da_cidade"], "sem_posicao_publica")
         self.assertTrue(
             all(
@@ -51,12 +78,15 @@ class PublicReputationRegistryTest(unittest.TestCase):
             )
         )
 
-    def test_sucesso_artistico_de_kage_existente_nao_vira_reputacao_civica(self):
+    def test_sucesso_artistico_historico_nao_e_bootstrap_automatico_de_reputacao(self):
         summary = (ROOT / "sessoes/014/resumo.md").read_text(encoding="utf-8")
         self.assertIn("forte entusiasmo pelo público", summary)
-        projected = rep.show(ROOT, "kage")
-        self.assertEqual(projected["leitura_da_cidade"], "sem_posicao_publica")
-        self.assertEqual(projected["publicos"]["circo_e_artes"]["estado"], "estrangeiro_desconhecido")
+        audiences = rep.load_audiences(ROOT)
+        identities = rep.load_identities(ROOT)
+        state_doc = yaml.safe_load((ROOT / rep.STATE_FILE).read_text(encoding="utf-8"))
+        current = rep.validate_state(state_doc.get(rep.STATE_ROOT), audiences, identities)
+        rendered = yaml.safe_dump(current, allow_unicode=True, sort_keys=False)
+        self.assertNotIn("sessoes/014/resumo.md", rendered)
 
 
 class PublicReputationRulesTest(unittest.TestCase):
@@ -76,8 +106,7 @@ class PublicReputationRulesTest(unittest.TestCase):
     def test_um_fato_nao_pode_saltar_varios_marcos(self):
         audiences = rep.load_audiences(ROOT)
         identities = rep.load_identities(ROOT)
-        proposal = rep.propose_event(
-            ROOT,
+        proposal = propose_from_empty(
             identity="ren",
             publics=["populacao_geral"],
             event_type="resgate_publico",
@@ -109,8 +138,7 @@ class PublicReputationRulesTest(unittest.TestCase):
         with self.assertRaises(transacoes.TransactionError):
             transacoes.validate_delta(malformed)
 
-        proposal = rep.propose_event(
-            ROOT,
+        proposal = propose_from_empty(
             identity="ren",
             publics=["autoridades_civicas"],
             event_type="colaboracao_institucional",
@@ -126,42 +154,35 @@ class PublicReputationRulesTest(unittest.TestCase):
         with mock.patch.object(rep, "load_audiences", side_effect=AssertionError("nao deve ler")):
             self.assertEqual(rep.validate_batch(ROOT, [{"deltas": []}]), 0)
 
-        proposal = rep.propose_event(
-            ROOT,
+        audiences = rep.load_audiences(ROOT)
+        identities = rep.load_identities(ROOT)
+        proposal = propose_from_empty(
             identity="ren",
             publics=["templos_e_comunidade"],
             event_type="consequencia_positiva_visivel",
             fact="A ajuda de Ren produziu diante do templo uma consequencia comunitaria positiva reconhecida publicamente.",
             source="teste:batch-reputacao",
         )
-        self.assertEqual(rep.validate_batch(ROOT, [{"deltas": proposal["deltas"]}]), 1)
+        state_doc = {rep.STATE_ROOT: None}
+        with (
+            mock.patch.object(rep, "load_audiences", return_value=audiences),
+            mock.patch.object(rep, "load_identities", return_value=identities),
+            mock.patch.object(rep, "_load", return_value=state_doc),
+        ):
+            self.assertEqual(rep.validate_batch(ROOT, [{"deltas": proposal["deltas"]}]), 1)
 
 
 class PublicReputationEventTest(unittest.TestCase):
-    @staticmethod
-    def _record(delta, txid="tx-reputacao", session=None):
-        if session is None:
-            runtime = yaml.safe_load((ROOT / "runtime/contexto.yaml").read_text(encoding="utf-8"))
-            session = runtime["sessao"]["numero"]
-        return {
-            "versao": transacoes.SCHEMA_VERSION,
-            "id": txid,
-            "sessao": session,
-            "resumo": "Fato publico alterou a reputacao de uma persona em Ravens Bluff.",
-            "deltas": [delta],
-        }
-
     def test_repetir_mesmo_tipo_nao_farma_reputacao(self):
-        first = rep.propose_event(
-            ROOT,
+        first = propose_from_empty(
             identity="ren",
             publics=["populacao_geral"],
             event_type="resgate_publico",
             fact="Ren resgatou uma crianca em plena rua e foi identificado pelo nome por varias testemunhas.",
             source="teste:resgate-um",
         )
-        pending = [self._record(first["deltas"][0])]
-        with mock.patch.object(transacoes, "load_pending", return_value=pending):
+        state = apply_delta(rep.empty_state(), first["deltas"][0])
+        with mock.patch.object(rep, "_effective_state", return_value=(state, 1)):
             second = rep.propose_event(
                 ROOT,
                 identity="ren",
@@ -174,16 +195,15 @@ class PublicReputationEventTest(unittest.TestCase):
         self.assertIn("nao aumenta reputacao", second["ignorados"][0]["motivo"])
 
     def test_dois_fatos_antes_do_checkpoint_acumulam(self):
-        first = rep.propose_event(
-            ROOT,
+        first = propose_from_empty(
             identity="ren",
             publics=["autoridades_civicas"],
             event_type="colaboracao_institucional",
             fact="A Night Watch confirmou diante de outros agentes que Ren cooperou numa entrega legalmente sensivel.",
             source="teste:pendente-um",
         )
-        pending = [self._record(first["deltas"][0], txid="tx-rep-1")]
-        with mock.patch.object(transacoes, "load_pending", return_value=pending):
+        state = apply_delta(rep.empty_state(), first["deltas"][0])
+        with mock.patch.object(rep, "_effective_state", return_value=(state, 1)):
             second = rep.propose_event(
                 ROOT,
                 identity="ren",
@@ -201,33 +221,32 @@ class PublicReputationEventTest(unittest.TestCase):
         self.assertEqual(second["deltas_pendentes_preexistentes"], 1)
 
     def test_kage_nao_transfere_reputacao_para_ren(self):
-        kage = rep.propose_event(
-            ROOT,
+        kage = propose_from_empty(
             identity="kage",
             publics=["circo_e_artes"],
             event_type="consequencia_positiva_visivel",
             fact="Uma intervencao publica atribuida a Kage beneficiou diretamente artistas e espectadores presentes.",
             source="teste:kage-isolado",
         )
-        pending = [self._record(kage["deltas"][0], txid="tx-kage")]
-        with mock.patch.object(transacoes, "load_pending", return_value=pending):
-            kage_view = rep.show(ROOT, "kage")
-            ren_view = rep.show(ROOT, "ren")
+        state = apply_delta(rep.empty_state(), kage["deltas"][0])
+        audiences = rep.load_audiences(ROOT)
+        identities = rep.load_identities(ROOT)
+        kage_view = rep.project(state, "kage", audiences, identities)
+        ren_view = rep.project(state, "ren", audiences, identities)
         self.assertEqual(kage_view["publicos"]["circo_e_artes"]["estado"], "pessoa_util")
         self.assertEqual(ren_view["publicos"]["circo_e_artes"]["estado"], "estrangeiro_desconhecido")
         self.assertEqual(ren_view["leitura_da_cidade"], "sem_posicao_publica")
 
     def test_esclarecimento_remove_so_o_negativo_sem_apagar_evidencia(self):
-        negative = rep.propose_event(
-            ROOT,
+        negative = propose_from_empty(
             identity="ren",
             publics=["porto_e_comercio"],
             event_type=rep.NEGATIVE_MARK,
             fact="Uma consequencia publica foi atribuida a Ren no porto e comerciantes passaram a trata-lo como risco.",
             source="teste:negativo-publico",
         )
-        pending = [self._record(negative["deltas"][0], txid="tx-negativo")]
-        with mock.patch.object(transacoes, "load_pending", return_value=pending):
+        state = apply_delta(rep.empty_state(), negative["deltas"][0])
+        with mock.patch.object(rep, "_effective_state", return_value=(state, 1)):
             cleared = rep.propose_event(
                 ROOT,
                 identity="ren",
@@ -247,24 +266,24 @@ class PublicReputationContextTest(unittest.TestCase):
     def test_contexto_expoe_reputacao_como_l2_sem_inchar_status(self):
         decision = politica_acesso.classify("reputacao")
         self.assertEqual(decision.level, "L2")
+        expected = rep.show(ROOT, "ren")
         data = contexto.command_reputation(ROOT, "ren")
         self.assertEqual(data["consulta"]["comando"], "reputacao")
-        self.assertEqual(data["resultado"]["leitura_da_cidade"], "sem_posicao_publica")
+        self.assertEqual(data["resultado"], expected)
         self.assertIn(rep.AUDIENCE_REGISTRY.as_posix(), data["fontes"])
         status = contexto.command_status(ROOT)["resultado"]
         self.assertNotIn(rep.STATE_ROOT, status)
 
     def test_contexto_ve_reputacao_pendente_antes_do_checkpoint(self):
-        proposal = rep.propose_event(
-            ROOT,
+        proposal = propose_from_empty(
             identity="shinta",
             publics=["porto_e_comercio"],
             event_type="colaboracao_institucional",
             fact="Shinta foi publicamente creditado por uma colaboracao profissional que evitou um problema comercial.",
             source="teste:overlay-contexto",
         )
-        pending = [PublicReputationEventTest._record(proposal["deltas"][0], txid="tx-shinta")]
-        with mock.patch.object(transacoes, "load_pending", return_value=pending):
+        state = apply_delta(rep.empty_state(), proposal["deltas"][0])
+        with mock.patch.object(rep, "_effective_state", return_value=(state, 1)):
             data = contexto.command_reputation(ROOT, "shinta", "porto")
         result = data["resultado"]
         self.assertEqual(result["publicos"]["porto_e_comercio"]["estado"], "pessoa_util")

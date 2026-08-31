@@ -47,15 +47,20 @@ class DirectionsRepositoryTest(unittest.TestCase):
         self.assertNotIn("narrador/direcoes/ponte_de_kozakura.yaml", result["fontes_lidas"])
         self.assertNotIn("narrador/ponte-de-kozakura/shin-kozakura.md", result["fontes_lidas"])
 
-    def test_estado_inicial_nao_avanca_historia_retroativamente(self):
+    def test_status_real_reflete_estado_persistido_sem_congelar_marcos_iniciais(self):
+        index = direcoes.load_index(ROOT)
+        state = direcoes.load_state(ROOT, index)
         status = direcoes.status_view(ROOT)
         by_id = {item["id"]: item for item in status["direcoes"]}
-        self.assertEqual(by_id["ponte_de_kozakura"]["estado"], "ativa")
-        self.assertEqual(by_id["ponte_de_kozakura"]["marco_atual"], "coisas_plausiveis")
-        self.assertEqual(by_id["shin_kozakura"]["estado"], "latente")
-        self.assertEqual(by_id["shin_kozakura"]["marco_atual"], "uso_controlado")
-        self.assertFalse(by_id["shin_kozakura"]["ativacao_satisfeita"])
-        self.assertEqual(by_id["golden_lily_em_ravens_bluff"]["estado"], "ativa")
+        self.assertEqual(set(by_id), set(state["direcoes"]))
+        for direction_id, current in state["direcoes"].items():
+            with self.subTest(direction=direction_id):
+                self.assertEqual(by_id[direction_id]["estado"], current["estado"])
+                self.assertEqual(by_id[direction_id]["marco_atual"], current.get("marco_atual"))
+                self.assertEqual(
+                    by_id[direction_id]["ativacao_satisfeita"],
+                    direcoes.dependency_satisfied(index, state, direction_id),
+                )
 
 
 class DirectionsSyntheticTest(unittest.TestCase):

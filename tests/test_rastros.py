@@ -16,11 +16,12 @@ import rastros
 
 
 class RastrosRepositoryTest(unittest.TestCase):
-    def test_repo_real_comeca_vazio_e_valido_sem_inferencia_retroativa(self):
+    def test_repo_real_reflete_rastros_correntes_sem_exigir_indice_vazio(self):
         result = rastros.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["quantidade_rastros"], 0)
-        self.assertEqual(rastros.status(ROOT)["quantidade_indexada"], 0)
+        status = rastros.status(ROOT)
+        self.assertEqual(result["quantidade_rastros"], status["quantidade_indexada"])
+        self.assertGreaterEqual(status["quantidade_indexada"], 0)
 
     def test_indice_real_permanece_minimo(self):
         path = ROOT / rastros.INDEX

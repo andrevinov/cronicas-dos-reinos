@@ -28,11 +28,11 @@ class IdentityRegistryTest(unittest.TestCase):
         self.assertTrue(registry["regras"]["suspeita_nao_e_conhecimento_confirmado"])
         self.assertEqual(identidades.check(ROOT), [])
 
-    def test_estado_real_nao_inventa_suspeita_retroativa(self):
-        doc = yaml.safe_load((ROOT / "estado/npcs/kethra_dunn.yaml").read_text(encoding="utf-8"))
-        self.assertNotIn(identidades.STATE_FIELD, doc["npc"])
-        result = contexto.command_npc(ROOT, "Kethra")["resultado"]
-        self.assertNotIn(identidades.STATE_FIELD, result["medidores"]["dados"])
+    def test_estado_vazio_nao_inventa_suspeita_retroativa(self):
+        registry = identidades.load_registry(ROOT)
+        state = identidades.validate_state(None, registry)
+        self.assertEqual(state, identidades.empty_state())
+        self.assertIsNone(identidades.project(state, registry))
 
 
 class IdentityEvidenceTest(unittest.TestCase):
@@ -121,7 +121,6 @@ class IdentityEvidenceTest(unittest.TestCase):
         first = identidades.propose_evidence(**kwargs)
         self.assertEqual(first["resultado"], "registrar_delta")
         state = first["delta"]["valor"]
-        # Reproduz a lógica de proposta sobre um estado já contendo a mesma evidência.
         eid = state["suspeitas"][0]["evidencias"][0]["id"]
         expected = identidades.evidence_id(
             "kethra_dunn", "kage", "ren", "fisica", kwargs["source"], kwargs["fact"]
