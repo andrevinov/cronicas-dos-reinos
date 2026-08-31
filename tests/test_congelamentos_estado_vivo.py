@@ -20,7 +20,7 @@ class LiveStateFreezeReviewRepositoryTest(unittest.TestCase):
         self.assertEqual(report["nao_revisados"], [])
         self.assertGreaterEqual(len(report["decisoes"]), len(report["revisados"]))
 
-    def test_nove_candidatos_originais_da_task1_tem_decisao_registrada(self):
+    def test_nove_candidatos_originais_tem_decisao_registrada(self):
         report = mod.check(ROOT)
         expected = {
             "tests/test_auditoria_final.py",
@@ -35,7 +35,7 @@ class LiveStateFreezeReviewRepositoryTest(unittest.TestCase):
         }
         self.assertEqual(set(report["decisoes"]), expected)
 
-    def test_revisao_manual_registra_freezes_indiretos_encontrados_na_task2(self):
+    def test_revisao_manual_registra_freezes_indiretos_adicionais(self):
         report = mod.check(ROOT)
         expected = {
             "tests/test_agentes.py",
