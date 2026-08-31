@@ -18,6 +18,33 @@ Manuais historicamente prioritários incluem `regras/fontes.md`, `regras/resoluc
 
 Durante a sessão, consultar primeiro o resumo interno pertinente. Livro oficial é nível de escalada, não rotina.
 
+## Contrato de ruleset e migração
+
+A autoridade sobre **qual versão de D&D está ativa** fica em `campanha.yaml`, em `sistema.ruleset`.
+
+Durante a migração iniciada pela Task 1:
+
+- `ruleset.atual = dnd_5e_2014`;
+- `ruleset.alvo = dnd_5_5e`;
+- material 5.5e pode ser consultado para comparação, preparação e conversão;
+- material 5.5e **não pode substituir silenciosamente** uma regra 2014 durante narração ao vivo;
+- a ativação de 5.5e exige `migracao.status = concluida`, `migracao.ativacao.permitida = true` e todos os requisitos do gate satisfeitos;
+- o gate final é `task_8_auditoria_final`.
+
+A hierarquia mecânica declarada em `campanha.yaml` é:
+
+1. decisões registradas da campanha;
+2. regras da casa;
+3. ruleset atual;
+4. compatibilidade aprovada explicitamente;
+5. fontes antigas/adaptadas.
+
+Depois da ativação, uma opção mecânica 5e 2014 só pode permanecer como fallback quando não houver equivalente 5.5e aplicável e houver aprovação explícita. Não misturar rulesets implicitamente.
+
+A migração é prospectiva: preservar decisões antigas até substituição explícita futura e **não reescrever sessões concluídas**, rolagens, recursos, descobertas ou consequências para simular aplicação retroativa de 5.5e.
+
+Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que entre em jogo é adaptada para o `ruleset.atual`. Assim, o alvo da conversão muda de 2014 para 5.5e somente quando a ativação final ocorrer.
+
 ## Filosofia de fidelidade: aproximadamente 70%
 
 A meta de 70% representa filosofia, não métrica matemática. Aplicar regras quando elas sustentarem risco, tensão, estratégia, diferenciação de personagens, uso significativo de recursos, imparcialidade, consequência ou surpresa legítima.
@@ -33,12 +60,13 @@ Parar assim que a dúvida estiver resolvida com segurança:
 1. aplicar o resumo canônico interno;
 2. verificar decisão anterior equivalente;
 3. verificar regras da casa;
-4. consultar fonte oficial autorizada;
-5. interpretar de modo coerente com a edição;
-6. simplificar pela regra de ouro;
-7. registrar a decisão se puder se repetir.
+4. consultar a fonte oficial do **ruleset atual**;
+5. usar compatibilidade previamente aprovada, quando existir;
+6. interpretar de modo coerente com o ruleset atual;
+7. simplificar pela regra de ouro;
+8. registrar a decisão se puder se repetir.
 
-Durante sessão, não paralisar o jogo por dúvida pequena. Se a pesquisa completa for longa, tomar decisão provisória claramente identificada, registrar a pendência, revisar depois, atualizar `regras/decisoes.md` e corrigir consequências somente quando necessário.
+Durante a migração, fonte 5.5e não entra no passo 4 enquanto `ruleset.atual` continuar `dnd_5e_2014`; ela é fonte de trabalho para a migração. Durante sessão, não paralisar o jogo por dúvida pequena. Se a pesquisa completa for longa, tomar decisão provisória claramente identificada, registrar a pendência, revisar depois, atualizar `regras/decisoes.md` e corrigir consequências somente quando necessário.
 
 ## Regra de ouro
 
