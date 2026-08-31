@@ -1,24 +1,24 @@
 campanha:
-  nome: "Crônicas dos Reinos"
-  status: "em_sessao"
-  idioma: "pt-BR"
-  codificacao: "UTF-8"
-
+  nome: Crônicas dos Reinos
+  status: em_sessao
+  idioma: pt-BR
+  codificacao: UTF-8
 sistema:
-  nome: "Dungeons & Dragons"
+  nome: Dungeons & Dragons
   edicao:
-    status: "definida"
-    valor: "5ª edição"
-    base_mecanica: "D&D 5e 2014"
-    observacao: "A campanha continua mecanicamente em D&D 5e 2014 enquanto a migração para D&D 5.5e não atravessar o gate final de ativação."
+    status: definida
+    valor: 5.5e
+    base_mecanica: D&D 5.5e
+    observacao: D&D 5.5e é o ruleset mecânico ativo. Material 2014 só entra como compatibilidade explicitamente
+      aprovada.
   ruleset:
-    atual: "dnd_5e_2014"
-    alvo: "dnd_5_5e"
+    atual: dnd_5_5e
+    alvo: dnd_5_5e
     migracao:
-      status: "em_andamento"
+      status: concluida
       ativacao:
-        permitida: false
-        gate: "task_8_auditoria_final"
+        permitida: true
+        gate: task_8_auditoria_final
         requisitos:
           task_1_contrato: true
           task_2_catalogo: true
@@ -27,18 +27,19 @@ sistema:
           task_5_conversao_ren: true
           task_6_integracao_cronica: true
           task_7_gate_adnd: true
-          integracao_completa: false
-          preflight_completo: false
+          integracao_completa: true
+          preflight_completo: true
+          task_8_auditoria_final: true
     hierarquia_mecanica:
-      - "decisoes_campanha"
-      - "regras_da_casa"
-      - "ruleset_atual"
-      - "compatibilidade_aprovada"
-      - "fontes_adaptadas"
+    - decisoes_campanha
+    - regras_da_casa
+    - ruleset_atual
+    - compatibilidade_aprovada
+    - fontes_adaptadas
     compatibilidade:
-      uso_5_5e_antes_da_ativacao: "somente_migracao"
-      fallback_5e_2014_apos_ativacao: "somente_sem_equivalente_5_5e_e_com_aprovacao_explicita"
-      material_adnd: "adaptar_para_ruleset_atual"
+      uso_5_5e_antes_da_ativacao: somente_migracao
+      fallback_5e_2014_apos_ativacao: somente_sem_equivalente_5_5e_e_com_aprovacao_explicita
+      material_adnd: adaptar_para_ruleset_atual
       gate_adnd:
         narrativa: livre
         mecanica_literal_runtime: proibida
@@ -46,181 +47,189 @@ sistema:
         alvo_preferencial_migracao: dnd_5_5e
         fallback_2014: exige_declaracao_motivo_e_decisao
     preservacao_historica:
-      sessoes_concluidas: "preservar"
-      decisoes_existentes: "preservar_ate_substituicao_explicita_prospectiva"
+      sessoes_concluidas: preservar
+      decisoes_existentes: preservar_ate_substituicao_explicita_prospectiva
       reescrita_retroativa: false
-
 cenario:
-  nome: "Forgotten Realms"
+  nome: Forgotten Realms
   periodo_historico:
-    status: "definido"
-    valor: "1372 DR"
-    nome_do_ano: "Ano da Magia Selvagem"
-    base_de_cenario: "Forgotten Realms Campaign Setting, D&D 3e"
-    observacao: "Material de Ravens Bluff de AD&D deve ser preservado como base regional e reconciliado com 1372 DR quando necessario."
+    status: definido
+    valor: 1372 DR
+    nome_do_ano: Ano da Magia Selvagem
+    base_de_cenario: Forgotten Realms Campaign Setting, D&D 3e
+    observacao: Material de Ravens Bluff de AD&D deve ser preservado como base regional e reconciliado com 1372
+      DR quando necessario.
   regiao_inicial:
-    nome: "Ravens Bluff"
-    tambem_conhecida_como: "The Living City"
-    status: "definida"
-    funcao_na_campanha: "base inicial"
-    intencao_de_uso: "sustentar varias sessoes locais antes da expansao gradual para outras regioes"
+    nome: Ravens Bluff
+    tambem_conhecida_como: The Living City
+    status: definida
+    funcao_na_campanha: base inicial
+    intencao_de_uso: sustentar varias sessoes locais antes da expansao gradual para outras regioes
   expansao_regional:
-    modo: "gradual"
-    criterio: "preparar novas regioes quando a campanha se aproximar delas"
-
+    modo: gradual
+    criterio: preparar novas regioes quando a campanha se aproximar delas
 estrutura:
-  fonte_de_verdade: "repositorio"
+  fonte_de_verdade: repositorio
   arquivos_referenciados:
-    regras_e_fontes: "regras/fontes.md"
-    catalogo_regras: "regras/catalogo.yaml"
-    dificuldade: "regras/dificuldade.md"
-    progressao: "regras/progressao.md"
-    regras_da_casa: "regras/regras-da-casa.md"
-    resolucao_de_acoes: "regras/resolucao-de-acoes.md"
-    guia_de_narrativa: "narracao/guia-de-narrativa.md"
-    protocolo_de_sessao: "narracao/protocolo-de-sessao.md"
-    limites_de_conteudo: "narracao/limites.md"
-    ferramentas: "ferramentas/README.md"
-    rolador_de_dados: "ferramentas/rolar-dados.py"
-    adaptador_ficha_ren: "ferramentas/ficha_ren.py"
-    migracao_ficha_ren_5_5e: "personagens/jogador/migracao-5-5e.yaml"
-    adaptador_ficha_ren_5_5e: "ferramentas/ficha_ren_5_5e.py"
-    personagem_resumo_poderes_5_5e: "personagens/jogador/resumo-de-poderes-5-5e.md"
-    nucleo_mecanico_5_5e: "ferramentas/mecanica_dnd_5_5e.py"
-    contrato_mecanico_cronica: "ferramentas/mecanica_cronica.py"
-    gate_adnd: "regras/adaptacoes-mecanicas.yaml"
-    validador_gate_adnd: "ferramentas/gate_adnd.py"
-    regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
-    regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
-    regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"
-    regiao_inicial_faccoes: "cenario/regioes/ravens-bluff/faccoes.md"
-    regiao_inicial_personagens: "cenario/regioes/ravens-bluff/personagens-iniciais.md"
-    regiao_inicial_rumores: "cenario/regioes/ravens-bluff/rumores-iniciais.md"
-    regiao_inicial_porto: "cenario/regioes/ravens-bluff/porto-e-primeiros-locais.md"
-    regiao_inicial_vinculos: "cenario/regioes/ravens-bluff/vinculos-de-personagem.md"
-    regiao_kara_tur_fontes: "cenario/regioes/kara-tur/fontes.md"
-    regiao_kara_tur_visao_geral: "cenario/regioes/kara-tur/visao-geral.md"
-    regiao_kara_tur_kozakura: "cenario/regioes/kara-tur/kozakura.md"
-    regiao_kara_tur_faccoes: "cenario/regioes/kara-tur/faccoes-e-antagonistas.md"
-    regiao_kara_tur_itens_treinamentos: "cenario/regioes/kara-tur/itens-e-treinamentos-5e.md"
-    personagem_conceito: "personagens/jogador/conceito.md"
-    personagem_ficha: "personagens/jogador/ficha.yaml"
-    personagem_historia: "personagens/jogador/historia.md"
-    personagem_conhecimento: "personagens/jogador/conhecimento.md"
-    personagem_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
-    area_do_narrador: "narrador/README.md"
-    juppongatana: "narrador/juppongatana/README.md"
-    juppongatana_membros: "narrador/juppongatana/membros.md"
-    juppongatana_marcos: "narrador/juppongatana/marcos-de-aparicao.md"
-    masao: "narrador/masao/README.md"
-    masao_plano: "narrador/masao/plano.md"
-    aliados_ren: "narrador/aliados/README.md"
-    aliados_ren_personagens: "narrador/aliados/personagens.md"
-    aliados_ren_tadasu: "narrador/aliados/tadasu-no-kami.md"
-    aliados_ren_marcos: "narrador/aliados/marcos-de-aparicao.md"
-    ponte_de_kozakura: "narrador/ponte-de-kozakura/README.md"
-    ponte_de_kozakura_anomalias: "narrador/ponte-de-kozakura/anomalias-e-revelacao.md"
-    shin_kozakura: "narrador/ponte-de-kozakura/shin-kozakura.md"
-    preparacao_sessao_atual: "narrador/sessoes/001/preparacao.md"
-    mapa_sessao_atual: "narrador/sessoes/001/mapa-e-salas.md"
-    npcs_sessao_atual: "narrador/sessoes/001/npcs.md"
-    relogios_sessao_atual: "narrador/sessoes/001/relogios.md"
-    estado_atual: "estado/estado-atual.yaml"
-    relacoes: "estado/relacoes.yaml"
-    medidores_npcs: "estado/medidores-npcs.yaml"
-    tempo_atual: "estado/tempo.yaml"
-
+    regras_e_fontes: regras/fontes.md
+    catalogo_regras: regras/catalogo.yaml
+    dificuldade: regras/dificuldade.md
+    progressao: regras/progressao.md
+    regras_da_casa: regras/regras-da-casa.md
+    resolucao_de_acoes: regras/resolucao-de-acoes.md
+    guia_de_narrativa: narracao/guia-de-narrativa.md
+    protocolo_de_sessao: narracao/protocolo-de-sessao.md
+    limites_de_conteudo: narracao/limites.md
+    ferramentas: ferramentas/README.md
+    rolador_de_dados: ferramentas/rolar-dados.py
+    adaptador_ficha_ren: ferramentas/ficha_ren.py
+    nucleo_mecanico_5_5e: ferramentas/mecanica_dnd_5_5e.py
+    contrato_mecanico_cronica: ferramentas/mecanica_cronica.py
+    gate_adnd: regras/adaptacoes-mecanicas.yaml
+    validador_gate_adnd: ferramentas/gate_adnd.py
+    regiao_inicial: cenario/regioes/ravens-bluff/visao-geral.md
+    regiao_inicial_fontes: cenario/regioes/ravens-bluff/fontes.md
+    regiao_inicial_lugares: cenario/regioes/ravens-bluff/lugares-iniciais.md
+    regiao_inicial_faccoes: cenario/regioes/ravens-bluff/faccoes.md
+    regiao_inicial_personagens: cenario/regioes/ravens-bluff/personagens-iniciais.md
+    regiao_inicial_rumores: cenario/regioes/ravens-bluff/rumores-iniciais.md
+    regiao_inicial_porto: cenario/regioes/ravens-bluff/porto-e-primeiros-locais.md
+    regiao_inicial_vinculos: cenario/regioes/ravens-bluff/vinculos-de-personagem.md
+    regiao_kara_tur_fontes: cenario/regioes/kara-tur/fontes.md
+    regiao_kara_tur_visao_geral: cenario/regioes/kara-tur/visao-geral.md
+    regiao_kara_tur_kozakura: cenario/regioes/kara-tur/kozakura.md
+    regiao_kara_tur_faccoes: cenario/regioes/kara-tur/faccoes-e-antagonistas.md
+    regiao_kara_tur_itens_treinamentos: cenario/regioes/kara-tur/itens-e-treinamentos-5e.md
+    personagem_conceito: personagens/jogador/conceito.md
+    personagem_ficha: personagens/jogador/ficha.yaml
+    personagem_historia: personagens/jogador/historia.md
+    personagem_conhecimento: personagens/jogador/conhecimento.md
+    personagem_resumo_poderes: personagens/jogador/resumo-de-poderes.md
+    area_do_narrador: narrador/README.md
+    juppongatana: narrador/juppongatana/README.md
+    juppongatana_membros: narrador/juppongatana/membros.md
+    juppongatana_marcos: narrador/juppongatana/marcos-de-aparicao.md
+    masao: narrador/masao/README.md
+    masao_plano: narrador/masao/plano.md
+    aliados_ren: narrador/aliados/README.md
+    aliados_ren_personagens: narrador/aliados/personagens.md
+    aliados_ren_tadasu: narrador/aliados/tadasu-no-kami.md
+    aliados_ren_marcos: narrador/aliados/marcos-de-aparicao.md
+    ponte_de_kozakura: narrador/ponte-de-kozakura/README.md
+    ponte_de_kozakura_anomalias: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
+    shin_kozakura: narrador/ponte-de-kozakura/shin-kozakura.md
+    preparacao_sessao_atual: narrador/sessoes/001/preparacao.md
+    mapa_sessao_atual: narrador/sessoes/001/mapa-e-salas.md
+    npcs_sessao_atual: narrador/sessoes/001/npcs.md
+    relogios_sessao_atual: narrador/sessoes/001/relogios.md
+    estado_atual: estado/estado-atual.yaml
+    relacoes: estado/relacoes.yaml
+    medidores_npcs: estado/medidores-npcs.yaml
+    tempo_atual: estado/tempo.yaml
+    registro_migracao_ficha_ren_5_5e: personagens/jogador/migracao-5-5e.yaml
+    gate_consistencia_5_5e: ferramentas/ruleset_5_5e.py
 fontes:
-  status: "definidas_iniciais"
-  arquivo_canonico: "regras/fontes.md"
-  observacao: "O ruleset ativo é D&D 5e 2014 durante a migração; D&D 5.5e é o alvo e só se torna autoridade mecânica após o gate final. Materiais de AD&D e outras edições continuam sendo adaptados para o ruleset ativo."
+  status: ruleset_5_5e_ativo
+  arquivo_canonico: regras/fontes.md
+  observacao: D&D 5.5e é a autoridade mecânica ativa. D&D 5e 2014 permanece somente como fonte histórica/compatibilidade
+    quando não houver equivalente aplicável e houver aprovação explícita. Materiais de AD&D são adaptados para 5.5e.
   regras_base:
-    - "Livro do Jogador, D&D 5e 2014"
-    - "Manual dos Monstros, D&D 5e 2014"
-    - "Guia do Mestre 2024/5.5e apenas como referência de migração enquanto o ruleset ativo for 2014"
+  - Player's Handbook 2024 / D&D 5.5e
+  - Dungeon Master's Guide 2024 / D&D 5.5e
+  - Monster Manual 2025 / D&D 5.5e
   regras_alvo:
-    - "Player's Handbook 2024 / D&D 5.5e"
-    - "Dungeon Master's Guide 2024 / D&D 5.5e"
-    - "Monster Manual 2025 / D&D 5.5e"
+  - Player's Handbook 2024 / D&D 5.5e
+  - Dungeon Master's Guide 2024 / D&D 5.5e
+  - Monster Manual 2025 / D&D 5.5e
   candidatas_regionais:
-    - "LC1 - Gateway to Ravens Bluff, The Living City"
-    - "LC2 - Inside Ravens Bluff"
-    - "LC3 - Nightwatch in the Living City"
-    - "LC4 - Port of Ravens Bluff"
-    - "The City of Ravens Bluff"
-    - "Kara-Tur: The Eastern Realms"
+  - LC1 - Gateway to Ravens Bluff, The Living City
+  - LC2 - Inside Ravens Bluff
+  - LC3 - Nightwatch in the Living City
+  - LC4 - Port of Ravens Bluff
+  - The City of Ravens Bluff
+  - 'Kara-Tur: The Eastern Realms'
   documentos_internos_aprovados:
-    - nome: "Kara-Tur e Faerûn"
-      arquivo: "books/Kara-Tur e Faerûn.pdf"
-      uso: "encaixe canônico de Ren, Masao e Clã Kagehira na lacuna de Kozakura entre 1357 DR e 1372 DR; relação geral entre Kara-Tur e Faerûn"
-    - nome: "Aliados para Ren"
-      arquivo: "books/Aliados para Ren.pdf"
-      uso: "aliados canônicos futuros de Ren; ordem preferencial de aparição; ponte entre Ren, Masao, Tyr, sobreviventes Kagehira e a divindade que condenou Masao"
-    - nome: "Ponte de Kozakura"
-      arquivo: "books/Ponte de Kozakura.pdf"
-      uso: "eixo narrativo canônico de longo prazo: anomalias de Kara-Tur em Ravens Bluff, descoberta de portal permanente para Kozakura e formação futura de Shin-Kozakura após Masao perder o controle exclusivo da passagem"
-
+  - nome: Kara-Tur e Faerûn
+    arquivo: books/Kara-Tur e Faerûn.pdf
+    uso: encaixe canônico de Ren, Masao e Clã Kagehira na lacuna de Kozakura entre 1357 DR e 1372 DR; relação geral
+      entre Kara-Tur e Faerûn
+  - nome: Aliados para Ren
+    arquivo: books/Aliados para Ren.pdf
+    uso: aliados canônicos futuros de Ren; ordem preferencial de aparição; ponte entre Ren, Masao, Tyr, sobreviventes
+      Kagehira e a divindade que condenou Masao
+  - nome: Ponte de Kozakura
+    arquivo: books/Ponte de Kozakura.pdf
+    uso: 'eixo narrativo canônico de longo prazo: anomalias de Kara-Tur em Ravens Bluff, descoberta de portal permanente
+      para Kozakura e formação futura de Shin-Kozakura após Masao perder o controle exclusivo da passagem'
+  regras_compatibilidade_2014:
+  - Livro do Jogador, D&D 5e 2014 — somente compatibilidade explicitamente aprovada
+  - Manual dos Monstros, D&D 5e 2014 — somente compatibilidade explicitamente aprovada
 jogador:
   personagem_inicial:
-    status: "definido"
-    nome: "Ren Kagehira"
-    conceito: "humano de Kozakura, monge do Caminho da Sombra, caçando um traidor de clã em Ravens Bluff"
-    arquivo_ficha: "personagens/jogador/ficha.yaml"
-    arquivo_conceito: "personagens/jogador/conceito.md"
-    arquivo_historia: "personagens/jogador/historia.md"
-    arquivo_conhecimento: "personagens/jogador/conhecimento.md"
-    arquivo_resumo_poderes: "personagens/jogador/resumo-de-poderes.md"
+    status: definido
+    nome: Ren Kagehira
+    conceito: humano de Kozakura, monge do Caminho da Sombra, caçando um traidor de clã em Ravens Bluff
+    arquivo_ficha: personagens/jogador/ficha.yaml
+    arquivo_conceito: personagens/jogador/conceito.md
+    arquivo_historia: personagens/jogador/historia.md
+    arquivo_conhecimento: personagens/jogador/conhecimento.md
+    arquivo_resumo_poderes: personagens/jogador/resumo-de-poderes.md
   nivel_inicial:
-    status: "definido"
+    status: definido
     valor: 3
   metodo_de_criacao:
-    status: "definido"
-    valor: "array solo melhorado"
-    atributos: [16, 15, 14, 13, 12, 10]
+    status: definido
+    valor: array solo melhorado
+    atributos:
+    - 16
+    - 15
+    - 14
+    - 13
+    - 12
+    - 10
   suplementos_opcionais_personagem:
-    status: "definido"
-    valor: "nenhum suplemento mecanico opcional no personagem inicial"
-
+    status: definido
+    valor: nenhum suplemento mecanico opcional no personagem inicial
 tom:
-  status: "definido_inicial"
+  status: definido_inicial
   diretrizes_iniciais:
-    - "mundo aberto"
-    - "consequencias persistentes"
-    - "agencia real do jogador"
-    - "preparacao local antes de expansao ampla"
-    - "direcao canonica de longo prazo para a Ponte de Kozakura e Shin-Kozakura"
-    - "campanha solo com aliados temporarios, recorrentes e canonicos sem roubar agencia de Ren"
-    - "furtividade, investigacao urbana e sobrevivencia"
-    - "jogo adulto com romance e intimidade consentida tratados por corte de cena"
-    - "violencia sombria permitida sem crueldade grafica gratuita"
+  - mundo aberto
+  - consequencias persistentes
+  - agencia real do jogador
+  - preparacao local antes de expansao ampla
+  - direcao canonica de longo prazo para a Ponte de Kozakura e Shin-Kozakura
+  - campanha solo com aliados temporarios, recorrentes e canonicos sem roubar agencia de Ren
+  - furtividade, investigacao urbana e sobrevivencia
+  - jogo adulto com romance e intimidade consentida tratados por corte de cena
+  - violencia sombria permitida sem crueldade grafica gratuita
   limites_de_conteudo:
-    status: "definido"
-    arquivo: "narracao/limites.md"
-
+    status: definido
+    arquivo: narracao/limites.md
 regras:
-  fidelidade_aproximada: "70%"
+  fidelidade_aproximada: 70%
   dificuldade:
-    status: "definida"
-    valor: "solo cautelosa, com risco real"
-    arquivo: "regras/dificuldade.md"
+    status: definida
+    valor: solo cautelosa, com risco real
+    arquivo: regras/dificuldade.md
   regras_da_casa:
-    status: "definida_inicial"
-    arquivo: "regras/regras-da-casa.md"
+    status: definida_inicial
+    arquivo: regras/regras-da-casa.md
   resolucao_de_acoes:
-    status: "definida_inicial"
-    arquivo: "regras/resolucao-de-acoes.md"
+    status: definida_inicial
+    arquivo: regras/resolucao-de-acoes.md
   progressao:
-    status: "definida"
-    metodo: "marcos narrativos"
-    arquivo: "regras/progressao.md"
+    status: definida
+    metodo: marcos narrativos
+    arquivo: regras/progressao.md
   protocolo_de_rolagens:
-    status: "definido_inicial"
-    arquivo: "narracao/protocolo-de-sessao.md"
-    ferramenta_padrao: "ferramentas/rolar-dados.py"
-
+    status: definido_inicial
+    arquivo: narracao/protocolo-de-sessao.md
+    ferramenta_padrao: ferramentas/rolar-dados.py
 preparacao:
   prioridades_atuais:
-    - "conduzir a sessão 003 a partir de 18:21 de 6 Eleasis, 1372 DR"
-    - "resolver como Kage prossegue após Jack cortar a provocação de Corven Dalm durante a apresentação fechada da Casa Veyr"
-    - "preservar o recado de Luath sobre luz, pedra molhada e sol apagado para investigação posterior"
-    - "manter ativos os fios de Sarbreen, Luath, Brass/Red Sail, Narwhal, Maerra/crianças, Kethra, Colm/Dent e a apresentação fechada da Casa Veyr"
+  - conduzir a sessão 003 a partir de 18:21 de 6 Eleasis, 1372 DR
+  - resolver como Kage prossegue após Jack cortar a provocação de Corven Dalm durante a apresentação fechada da
+    Casa Veyr
+  - preservar o recado de Luath sobre luz, pedra molhada e sol apagado para investigação posterior
+  - manter ativos os fios de Sarbreen, Luath, Brass/Red Sail, Narwhal, Maerra/crianças, Kethra, Colm/Dent e a apresentação
+    fechada da Casa Veyr

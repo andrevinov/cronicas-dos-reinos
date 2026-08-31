@@ -40,7 +40,7 @@ class AuditoriaFinalTest(unittest.TestCase):
         self.assertEqual(snapshot["personagem"], effective_context["personagem"]["nome"])
         self.assertEqual(snapshot["nivel"], effective_context["personagem"]["nivel"])
         self.assertEqual(snapshot["pv"], effective_context["recursos"]["pv"])
-        self.assertEqual(snapshot["ki"], effective_context["recursos"]["ki"])
+        self.assertEqual(snapshot["focus"], effective_context["recursos"]["focus"])
         self.assertEqual(snapshot["ca"], effective_context["recursos"]["ca"])
         self.assertEqual(
             snapshot["resumo_imediato"],

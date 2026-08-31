@@ -43,13 +43,13 @@ Durante narração, mudanças imediatas devem ser deltas mínimos. Exemplos:
 
 ```json
 {"alvo":"estado","op":"inc","caminho":"recursos.pontos_de_vida.atuais","valor":-7}
-{"alvo":"estado","op":"inc","caminho":"recursos.ki.atuais","valor":-1}
+{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-1}
 {"alvo":"estado","op":"inc","caminho":"recursos.dinheiro.po","valor":-2}
 ```
 
 Para item adquirido/perdido, usar `append`/`remove` no caminho pertinente quando isso for suficiente para a futura consolidação. Não editar simultaneamente ficha, estado, inventário e transcrição para registrar o mesmo fato.
 
-`contexto.py status` e `contexto.py cena` projetam deltas de PV, Ki, dinheiro, CA, deslocamento e outros campos suportados sobre o snapshot-base. Assim, o valor operacional permanece correto antes da consolidação.
+`contexto.py status` e `contexto.py cena` projetam deltas de PV, Focus, dinheiro, CA, deslocamento e outros campos suportados sobre o snapshot-base. Assim, o valor operacional permanece correto antes da consolidação.
 
 ## Descansos
 

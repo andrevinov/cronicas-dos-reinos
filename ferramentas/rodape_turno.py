@@ -129,19 +129,19 @@ def build(repo: Path) -> str:
     tempo = context.get("tempo") or {}
     resources = context.get("recursos") or {}
     pv = resources.get("pv") or {}
-    ki = resources.get("ki") or {}
+    focus = resources.get("focus") or {}
     location = (scene or {}).get("localizacao") or context.get("localizacao") or {}
 
     date = _date(tempo.get("data"))
     clock = _clock(tempo.get("hora_aproximada"))
     place = location.get("ponto_exato") or location.get("area")
     place_text = _text(place, "localização")
-    if None in (pv.get("atuais"), pv.get("maximos"), ki.get("atuais"), ki.get("maximos")):
-        raise FooterError("PV/Ki incompletos no runtime")
+    if None in (pv.get("atuais"), pv.get("maximos"), focus.get("atuais"), focus.get("maximos")):
+        raise FooterError("PV/Focus incompletos no runtime")
     pv_text = f"PV {pv.get('atuais')}/{pv.get('maximos')}"
-    ki_text = f"Ki {ki.get('atuais')}/{ki.get('maximos')}"
+    focus_text = f"Focus {focus.get('atuais')}/{focus.get('maximos')}"
 
-    segments = [date, clock, place_text, pv_text, ki_text, *_magic_segments(context)]
+    segments = [date, clock, place_text, pv_text, focus_text, *_magic_segments(context)]
     return PREFIX + " · ".join(str(item) for item in segments)
 
 

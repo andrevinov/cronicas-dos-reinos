@@ -109,6 +109,11 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
             ),
             Check("runtime derivado", (python, "ferramentas/gerar-runtime.py", "--check"), "estrutura"),
             Check(
+                "consistência ruleset D&D 5.5e",
+                (python, "ferramentas/ruleset_5_5e.py", "check"),
+                "integridade",
+            ),
+            Check(
                 "gate AD&D para ruleset moderno",
                 (python, "ferramentas/gate_adnd.py", "check"),
                 "integridade",

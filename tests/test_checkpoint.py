@@ -28,7 +28,7 @@ class CheckpointMemoryTest(unittest.TestCase):
             {
                 "sessao": {"numero": 3, "status": "em_sessao", "modo_de_cena": "combate"},
                 "personagem": {"nome": "Ren", "nivel": 6},
-                "recursos": {"pv": {"atuais": 40, "maximos": 45}, "ki": {"atuais": 3, "maximos": 6}, "ca": 17},
+                "recursos": {"pv": {"atuais": 40, "maximos": 45}, "focus": {"atuais": 3, "maximos": 6}, "ca": 17},
                 "tempo": {"data": "7 Eleasis", "hora_aproximada": "08:20"},
                 "localizacao": {"cidade": "Ravens Bluff", "area": "estrada", "ponto_exato": "ponte"},
             },
@@ -64,7 +64,7 @@ class CheckpointMemoryTest(unittest.TestCase):
         self.assertTrue((self.repo / "sessoes/index.yaml").is_file())
         handoff = yaml.safe_load((self.repo / "sessoes/003/handoff.yaml").read_text(encoding="utf-8"))
         self.assertEqual(handoff["checkpoint"]["tipo"], "cena")
-        self.assertEqual(handoff["checkpoint"]["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(handoff["checkpoint"]["recursos"]["focus"]["atuais"], 3)
 
     def test_refresh_e_idempotente_com_mesmo_runtime(self):
         first = checkpoint.refresh_memory(self.repo, "cena")

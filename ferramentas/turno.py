@@ -7,10 +7,10 @@ Uso preferencial em uma única chamada de ferramenta:
     {
       "jogador": "Ren tenta ...",
       "narracao": "...",
-      "resumo": "Ren alcança o alvo e gasta 1 Ki.",
+      "resumo": "Ren alcança o alvo e gasta 1 Focus.",
       "modo": "combate",
       "deltas": [
-        {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1}
+        {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -1}
       ]
     }
     JSON
@@ -45,7 +45,7 @@ motor do mundo. Não há checkpoint extra para uma caminhada de poucos minutos.
 
 Depois de persistir e de qualquer checkpoint automático, o CLI emite por último
 `RODAPE_CANONICO — ...`. A linha é derivada do runtime efetivo e deve ser copiada
-verbatim pelo narrador; o modelo não recalcula data, local, PV, Ki ou itens mágicos.
+verbatim pelo narrador; o modelo não recalcula data, local, PV, Focus ou itens mágicos.
 """
 from __future__ import annotations
 
@@ -90,7 +90,7 @@ LEDGER_NAME = "consolidacoes.jsonl"
 _STATUS_PATTERNS = {
     "pv": re.compile(r"(?:\bPV\b|pontos? de vida)", re.IGNORECASE),
     "ca": re.compile(r"(?:\bCA\b|classe de armadura)", re.IGNORECASE),
-    "ki": re.compile(r"\bki\b", re.IGNORECASE),
+    "focus": re.compile(r"\bki\b", re.IGNORECASE),
     "dinheiro": re.compile(r"(?:\bPO\b|peças? de ouro|dinheiro)", re.IGNORECASE),
     "hora": re.compile(r"(?:\b\d{1,2}:\d{2}\b|hora aproximada)", re.IGNORECASE),
     "localizacao": re.compile(r"(?:localiza(?:ção|cao)|posição atual|ponto exato)", re.IGNORECASE),
@@ -187,8 +187,8 @@ def _changed_status_categories(transaction: dict[str, Any]) -> set[str]:
         combined = f"{target.lower()} {path}"
         if "pontos_de_vida" in combined or ".pv" in combined:
             changed.add("pv")
-        if re.search(r"(?:^|[._])ki(?:$|[._])", path) or "recursos_de_classe.ki" in combined:
-            changed.add("ki")
+        if re.search(r"(?:^|[._])focus(?:$|[._])", path) or "recursos_de_classe.focus" in combined:
+            changed.add("focus")
         if "classe_de_armadura" in combined or "combate.ca" in combined:
             changed.add("ca")
         if "dinheiro" in combined or re.search(r"(?:^|[._])po(?:$|[._])", path):

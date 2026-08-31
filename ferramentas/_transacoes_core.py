@@ -309,8 +309,8 @@ def overlay_runtime(
     state_map = {
         "recursos.pontos_de_vida.atuais": "recursos.pv.atuais",
         "recursos.pontos_de_vida.maximos": "recursos.pv.maximos",
-        "recursos.ki.atuais": "recursos.ki.atuais",
-        "recursos.ki.maximos": "recursos.ki.maximos",
+        "recursos.focus.atuais": "recursos.focus.atuais",
+        "recursos.focus.maximos": "recursos.focus.maximos",
         "recursos.classe_de_armadura": "recursos.ca",
         "recursos.deslocamento": "recursos.deslocamento",
         "recursos.dinheiro.po": "recursos.dinheiro_po",
@@ -379,12 +379,12 @@ def overlay_runtime(
     if scene_out is not None:
         resources = context_out.get("recursos") or {}
         pv = resources.get("pv") or {}
-        ki = resources.get("ki") or {}
+        focus = resources.get("focus") or {}
         mechanics = scene_out.setdefault("mecanica_imediata", {})
         if pv.get("atuais") is not None and pv.get("maximos") is not None:
             mechanics["pv"] = f"{pv.get('atuais')}/{pv.get('maximos')}"
-        if ki.get("atuais") is not None and ki.get("maximos") is not None:
-            mechanics["ki"] = f"{ki.get('atuais')}/{ki.get('maximos')}"
+        if focus.get("atuais") is not None and focus.get("maximos") is not None:
+            mechanics["focus"] = f"{focus.get('atuais')}/{focus.get('maximos')}"
 
     if current_records:
         meta = {

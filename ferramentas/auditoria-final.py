@@ -53,6 +53,7 @@ EXPECTED_ENGINEERING_PATHS = (
     "ferramentas/texturas.py",
     "ferramentas/analisar-rollout.py",
     "ferramentas/comparar-rollouts.py",
+    "ferramentas/ruleset_5_5e.py",
     "baseline/estado-logico-2026-08-15.yaml",
     "baseline/rollout-2026-08-15.json",
     "baseline/metas-rollout-pos-refatoracao.json",
@@ -206,7 +207,7 @@ def _resume_snapshot(data: dict[str, Any]) -> dict[str, Any]:
         "personagem": ((context.get("personagem") or {}).get("nome")),
         "nivel": ((context.get("personagem") or {}).get("nivel")),
         "pv": ((context.get("recursos") or {}).get("pv")),
-        "ki": ((context.get("recursos") or {}).get("ki")),
+        "focus": ((context.get("recursos") or {}).get("focus")),
         "ca": ((context.get("recursos") or {}).get("ca")),
         "data": ((context.get("tempo") or {}).get("data")),
         "hora": ((context.get("tempo") or {}).get("hora_aproximada")),
@@ -253,6 +254,7 @@ def gate_baseline_and_regressions(repo: Path) -> dict[str, Any]:
         [sys.executable, "ferramentas/sessoes.py", "check"],
         [sys.executable, "ferramentas/checkpoint.py", "check"],
         [sys.executable, "ferramentas/gerar-runtime.py", "--check"],
+        [sys.executable, "ferramentas/ruleset_5_5e.py", "check"],
         [sys.executable, "ferramentas/verificar-integridade.py"],
         [sys.executable, "ferramentas/verificar-integridade.py", "--verificar-baseline-historica"],
     ]
@@ -292,7 +294,7 @@ def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
             "personagem": (((expected_context.get("personagem") or {}).get("nome")), snapshot["personagem"]),
             "nivel": (((expected_context.get("personagem") or {}).get("nivel")), snapshot["nivel"]),
             "pv": (((expected_context.get("recursos") or {}).get("pv")), snapshot["pv"]),
-            "ki": (((expected_context.get("recursos") or {}).get("ki")), snapshot["ki"]),
+            "focus": (((expected_context.get("recursos") or {}).get("focus")), snapshot["focus"]),
             "ca": (((expected_context.get("recursos") or {}).get("ca")), snapshot["ca"]),
             "data": (((expected_context.get("tempo") or {}).get("data")), snapshot["data"]),
             "hora": (((expected_context.get("tempo") or {}).get("hora_aproximada")), snapshot["hora"]),
@@ -320,9 +322,9 @@ def gate_hot_only_resume(repo: Path) -> dict[str, Any]:
 def gate_pending_overlay_resume(repo: Path) -> dict[str, Any]:
     base = load_yaml(repo / "runtime/contexto.yaml") or {}
     session = ((base.get("sessao") or {}).get("numero"))
-    base_ki = (((base.get("recursos") or {}).get("ki") or {}).get("atuais"))
-    if not isinstance(session, int) or not isinstance(base_ki, int):
-        raise AuditError("runtime atual não possui sessão/Ki adequados ao teste de overlay")
+    base_focus = (((base.get("recursos") or {}).get("focus") or {}).get("atuais"))
+    if not isinstance(session, int) or not isinstance(base_focus, int):
+        raise AuditError("runtime atual não possui sessão/Focus adequados ao teste de overlay")
 
     with tempfile.TemporaryDirectory(prefix="cronicas-retomada-pendente-") as tmp:
         sandbox = Path(tmp)
@@ -336,7 +338,7 @@ def gate_pending_overlay_resume(repo: Path) -> dict[str, Any]:
                     {
                         "alvo": "estado",
                         "op": "inc",
-                        "caminho": "recursos.ki.atuais",
+                        "caminho": "recursos.focus.atuais",
                         "valor": -1,
                     }
                 ],
@@ -349,10 +351,10 @@ def gate_pending_overlay_resume(repo: Path) -> dict[str, Any]:
         )
         data, output_bytes = invoke_resume(repo, sandbox)
         snapshot = _resume_snapshot(data)
-        effective_ki = ((snapshot.get("ki") or {}).get("atuais"))
-        if effective_ki != base_ki - 1:
+        effective_focus = ((snapshot.get("focus") or {}).get("atuais"))
+        if effective_focus != base_focus - 1:
             raise AuditError(
-                f"overlay pendente não apareceu na retomada: esperado Ki {base_ki - 1}, obtido {effective_ki}"
+                f"overlay pendente não apareceu na retomada: esperado Focus {base_focus - 1}, obtido {effective_focus}"
             )
         ids = [item.get("id") for item in snapshot.get("pendentes_recentes") or [] if isinstance(item, dict)]
         if record["id"] not in ids:
@@ -361,8 +363,8 @@ def gate_pending_overlay_resume(repo: Path) -> dict[str, Any]:
             raise AuditError("teste de overlay criou/leu transcrição inesperadamente")
         return {
             "bytes_saida": output_bytes,
-            "ki_base": base_ki,
-            "ki_efetivo": effective_ki,
+            "ki_base": base_focus,
+            "ki_efetivo": effective_focus,
             "evento": record["id"],
             "somente_sandbox": True,
         }
@@ -420,7 +422,7 @@ def baseline_snapshot(repo: Path) -> dict[str, Any]:
         "personagem": ((context.get("personagem") or {}).get("nome")),
         "nivel": ((context.get("personagem") or {}).get("nivel")),
         "pv": ((context.get("recursos") or {}).get("pv")),
-        "ki": ((context.get("recursos") or {}).get("ki")),
+        "focus": ((context.get("recursos") or {}).get("focus")),
         "ca": ((context.get("recursos") or {}).get("ca")),
         "data": ((context.get("tempo") or {}).get("data")),
         "hora": ((context.get("tempo") or {}).get("hora_aproximada")),
@@ -503,7 +505,7 @@ def main() -> int:
             "Retomada: "
             f"sessão {state.get('sessao')} | {state.get('personagem')} nv. {state.get('nivel')} | "
             f"PV {((state.get('pv') or {}).get('atuais'))}/{((state.get('pv') or {}).get('maximos'))} | "
-            f"Ki {((state.get('ki') or {}).get('atuais'))}/{((state.get('ki') or {}).get('maximos'))} | "
+            f"Focus {((state.get('focus') or {}).get('atuais'))}/{((state.get('focus') or {}).get('maximos'))} | "
             f"{state.get('area')} | {state.get('hora')}"
         )
     return 0 if report["pronto_para_retomar"] else 1

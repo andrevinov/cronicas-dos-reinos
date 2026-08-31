@@ -248,7 +248,7 @@ def _apply(document: dict[str, Any], delta: dict[str, Any], *, path: str | None 
 def snapshot(estado: dict[str, Any], tempo: dict[str, Any], ficha: dict[str, Any]) -> dict[str, Any]:
     recursos = estado.get("recursos") or {}
     pv = recursos.get("pontos_de_vida") or {}
-    ki = recursos.get("ki") or {}
+    focus = recursos.get("focus") or {}
     dinheiro = recursos.get("dinheiro") or {}
     personagem = estado.get("personagem") or {}
     campanha = estado.get("campanha") or {}
@@ -260,7 +260,7 @@ def snapshot(estado: dict[str, Any], tempo: dict[str, Any], ficha: dict[str, Any
         "personagem": personagem.get("nome"),
         "nivel": personagem.get("nivel"),
         "pv": f"{pv.get('atuais')}/{pv.get('maximos')}",
-        "ki": f"{ki.get('atuais')}/{ki.get('maximos')}",
+        "focus": f"{focus.get('atuais')}/{focus.get('maximos')}",
         "ca": recursos.get("classe_de_armadura"),
         "dinheiro_po": dinheiro.get("po"),
         "data": tempo_estado.get("data_exata") or ((tempo.get("data_atual") or {}).get("valor")),
@@ -282,8 +282,8 @@ SHEET_MIRRORS = (
     ("personagem.nivel", "identidade.nivel"),
     ("recursos.pontos_de_vida.atuais", "combate.pontos_de_vida.atuais"),
     ("recursos.pontos_de_vida.maximos", "combate.pontos_de_vida.maximos"),
-    ("recursos.ki.atuais", "recursos_de_classe.ki.pontos_atuais"),
-    ("recursos.ki.maximos", "recursos_de_classe.ki.pontos_maximos"),
+    ("recursos.focus.atuais", "recursos_de_classe.focus.pontos_atuais"),
+    ("recursos.focus.maximos", "recursos_de_classe.focus.pontos_maximos"),
     ("recursos.classe_de_armadura", "combate.classe_de_armadura.valor"),
     ("recursos.dinheiro.po", "equipamento.dinheiro.po"),
 )

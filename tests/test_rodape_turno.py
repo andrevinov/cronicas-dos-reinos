@@ -31,7 +31,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
                 "sessao": {"numero": 3, "status": "em_sessao", "modo_de_cena": "interação"},
                 "recursos": {
                     "pv": {"atuais": 27, "maximos": 39},
-                    "ki": {"atuais": 3, "maximos": 6},
+                    "focus": {"atuais": 3, "maximos": 6},
                 },
                 "tempo": {"data": "11 Eleasis, 1372 DR", "hora_aproximada": "14:37"},
                 "localizacao": {"area": "cais", "ponto_exato": "navio no cais"},
@@ -55,7 +55,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
                 "modo": "interação",
                 "localizacao": {"area": "cais", "ponto_exato": "navio no cais"},
                 "tempo": {"data": "11 Eleasis, 1372 DR", "hora_aproximada": "14:37"},
-                "mecanica_imediata": {"pv": "27/39", "ki": "3/6"},
+                "mecanica_imediata": {"pv": "27/39", "focus": "3/6"},
             },
         )
         (self.repo / "runtime/eventos-pendentes.jsonl").write_text("", encoding="utf-8")
@@ -80,7 +80,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
         footer = rodape_turno.build(self.repo)
         self.assertEqual(
             footer,
-            "RODAPE_CANONICO — 11 de Eleasis · 14:37 · navio no cais · PV 27/39 · Ki 3/6 · "
+            "RODAPE_CANONICO — 11 de Eleasis · 14:37 · navio no cais · PV 27/39 · Focus 3/6 · "
             "Broche do Semblante Humilde disponível",
         )
         self.assertLess(len(footer), 240)
@@ -93,7 +93,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
                 "resumo": "estado muda",
                 "deltas": [
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -5},
-                    {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
+                    {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -2},
                     {
                         "alvo": "tempo",
                         "op": "instante",
@@ -116,7 +116,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
         self.assertIn("14:42", footer)
         self.assertIn("convés do navio", footer)
         self.assertIn("PV 22/39", footer)
-        self.assertIn("Ki 1/6", footer)
+        self.assertIn("Focus 1/6", footer)
         self.assertNotIn("Broche do Semblante Humilde", footer)
         self.assertEqual(before, (self.repo / "runtime/contexto.yaml").read_bytes())
 
@@ -156,7 +156,7 @@ class RodapeTurnoSyntheticTest(unittest.TestCase):
         self.assertEqual(process.returncode, 0, process.stderr or process.stdout)
         lines = [line for line in process.stdout.splitlines() if line.strip()]
         self.assertTrue(lines[-1].startswith("RODAPE_CANONICO — "), process.stdout)
-        self.assertIn("11 de Eleasis · 14:37 · navio no cais · PV 27/39 · Ki 3/6", lines[-1])
+        self.assertIn("11 de Eleasis · 14:37 · navio no cais · PV 27/39 · Focus 3/6", lines[-1])
 
 
 class RodapeTurnoRepositoryTest(unittest.TestCase):
@@ -174,11 +174,11 @@ class RodapeTurnoRepositoryTest(unittest.TestCase):
         day, month = raw_date.split(maxsplit=1)
         expected_clock = context["tempo"]["hora_aproximada"]
         pv = context["recursos"]["pv"]
-        ki = context["recursos"]["ki"]
+        focus = context["recursos"]["focus"]
         self.assertTrue(footer.startswith("RODAPE_CANONICO — "))
         self.assertIn(f"{day} de {month} · {expected_clock} · ", footer)
         self.assertIn(
-            f"PV {pv['atuais']}/{pv['maximos']} · Ki {ki['atuais']}/{ki['maximos']}",
+            f"PV {pv['atuais']}/{pv['maximos']} · Focus {focus['atuais']}/{focus['maximos']}",
             footer,
         )
         item = context["rodape"]["itens_magicos"]["broche_do_semblante_humilde"]

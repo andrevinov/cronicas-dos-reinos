@@ -209,7 +209,7 @@ class CheckpointWorldIntegrationTest(unittest.TestCase):
             {
                 "sessao": {"numero": 3, "status": "em_sessao", "modo_de_cena": "exploração"},
                 "personagem": {"nome": "Ren", "nivel": 6},
-                "recursos": {"pv": {"atuais": 45, "maximos": 45}, "ki": {"atuais": 6, "maximos": 6}, "ca": 17},
+                "recursos": {"pv": {"atuais": 45, "maximos": 45}, "focus": {"atuais": 6, "maximos": 6}, "ca": 17},
                 "tempo": {"data": "10 Eleasis, 1372 DR", "hora_aproximada": "17:42"},
                 "localizacao": {"cidade": "Ravens Bluff", "area": "circo", "ponto_exato": "depósito"},
             },

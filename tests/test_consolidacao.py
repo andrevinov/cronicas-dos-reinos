@@ -60,7 +60,7 @@ class ConsolidacaoTest(unittest.TestCase):
                     "arquivo_ficha": "personagens/jogador/ficha.yaml",
                     "nivel": 6,
                     "classe": "Monge",
-                    "subclasse": "Caminho da Sombra",
+                    "subclasse": "Guerreiro das Sombras",
                 },
                 "localizacao": {
                     "plano": "Material",
@@ -81,7 +81,7 @@ class ConsolidacaoTest(unittest.TestCase):
                 },
                 "recursos": {
                     "pontos_de_vida": {"atuais": 45, "maximos": 45},
-                    "ki": {"atuais": 5, "maximos": 6},
+                    "focus": {"atuais": 5, "maximos": 6},
                     "classe_de_armadura": 17,
                     "deslocamento": "55 pés",
                     "dinheiro": {"po": 45},
@@ -107,7 +107,7 @@ class ConsolidacaoTest(unittest.TestCase):
                     "classe_de_armadura": {"valor": 17},
                     "pontos_de_vida": {"atuais": 45, "maximos": 45},
                 },
-                "recursos_de_classe": {"ki": {"pontos_atuais": 5, "pontos_maximos": 6}},
+                "recursos_de_classe": {"focus": {"pontos_atuais": 5, "pontos_maximos": 6}},
                 "equipamento": {"dinheiro": {"po": 45}},
                 "progressao": {"metodo": "marcos narrativos"},
             },
@@ -141,7 +141,7 @@ class ConsolidacaoTest(unittest.TestCase):
                 "personagem": {"nome": "Ren Kagehira", "nivel": 6},
                 "recursos": {
                     "pv": {"atuais": 45, "maximos": 45},
-                    "ki": {"atuais": 5, "maximos": 6},
+                    "focus": {"atuais": 5, "maximos": 6},
                     "ca": 17,
                     "dinheiro_po": 45,
                 },
@@ -156,7 +156,7 @@ class ConsolidacaoTest(unittest.TestCase):
                 "modo": "interacao",
                 "localizacao": {"area": "estrada", "ponto_exato": "cerca"},
                 "tempo": {"data": "7 Eleasis, 1372 DR", "hora_aproximada": "08:03"},
-                "mecanica_imediata": {"pv": "45/45", "ki": "5/6", "ca": 17},
+                "mecanica_imediata": {"pv": "45/45", "focus": "5/6", "ca": 17},
             },
         )
         (self.repo / "runtime/eventos-pendentes.jsonl").write_text("", encoding="utf-8")
@@ -180,7 +180,7 @@ class ConsolidacaoTest(unittest.TestCase):
         self.register(
             "tx-recursos",
             [
-                {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -2},
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -4},
                 {
                     "alvo": "tempo",
@@ -204,8 +204,8 @@ class ConsolidacaoTest(unittest.TestCase):
         sheet = self._read_yaml("personagens/jogador/ficha.yaml")
         time = self._read_yaml("estado/tempo.yaml")
         runtime = self._read_yaml("runtime/contexto.yaml")
-        self.assertEqual(state["recursos"]["ki"]["atuais"], 3)
-        self.assertEqual(sheet["recursos_de_classe"]["ki"]["pontos_atuais"], 3)
+        self.assertEqual(state["recursos"]["focus"]["atuais"], 3)
+        self.assertEqual(sheet["recursos_de_classe"]["focus"]["pontos_atuais"], 3)
         self.assertEqual(state["recursos"]["pontos_de_vida"]["atuais"], 41)
         self.assertEqual(sheet["combate"]["pontos_de_vida"]["atuais"], 41)
         self.assertEqual(time["data_atual"], "7 Eleasis, 1372 DR")
@@ -215,7 +215,7 @@ class ConsolidacaoTest(unittest.TestCase):
         self.assertEqual(state["tempo"]["hora_aproximada"], "08:07")
         self.assertEqual(runtime["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(runtime["tempo"]["hora_aproximada"], "08:07")
-        self.assertEqual(runtime["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(runtime["recursos"]["focus"]["atuais"], 3)
         self.assertEqual(runtime["localizacao"]["ponto_exato"], "ponte")
         self.assertEqual((self.repo / "runtime/eventos-pendentes.jsonl").read_text(encoding="utf-8"), "")
 
@@ -227,7 +227,7 @@ class ConsolidacaoTest(unittest.TestCase):
 
         again = mod.consolidate(self.repo, "cena")
         self.assertTrue(again["sem_pendencias"])
-        self.assertEqual(self._read_yaml("estado/estado-atual.yaml")["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(self._read_yaml("estado/estado-atual.yaml")["recursos"]["focus"]["atuais"], 3)
         self.assertEqual(len(mod.load_ledger(self.repo, 3)), 1)
 
     def test_entidades_conhecimento_e_consequencia_sao_consolidados(self):
@@ -278,7 +278,7 @@ class ConsolidacaoTest(unittest.TestCase):
         self.register(
             "tx-crash",
             [
-                {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -2},
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.dinheiro.po", "valor": -5},
             ],
         )
@@ -295,7 +295,7 @@ class ConsolidacaoTest(unittest.TestCase):
         self.assertFalse((self.repo / mod.JOURNAL_PATH).exists())
         self.assertFalse((self.repo / mod.STAGE_DIR).exists())
         state = self._read_yaml("estado/estado-atual.yaml")
-        self.assertEqual(state["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(state["recursos"]["focus"]["atuais"], 3)
         self.assertEqual(state["recursos"]["dinheiro"]["po"], 40)
         self.assertEqual((self.repo / "runtime/eventos-pendentes.jsonl").read_text(encoding="utf-8"), "")
         self.assertEqual(len(mod.load_ledger(self.repo, 3)), 1)

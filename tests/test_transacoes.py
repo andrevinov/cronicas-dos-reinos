@@ -24,7 +24,7 @@ class TransactionSchemaTest(unittest.TestCase):
     def test_invalid_increment_is_rejected(self):
         with self.assertRaises(mod.TransactionError):
             mod.validate_delta(
-                {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": "-1"}
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": "-1"}
             )
 
     def test_pending_summary_is_compacted_to_operational_limit(self):
@@ -131,7 +131,7 @@ class TransactionOverlayTest(unittest.TestCase):
             "sessao": {"numero": 3, "modo_de_cena": "exploração"},
             "recursos": {
                 "pv": {"atuais": 45, "maximos": 45},
-                "ki": {"atuais": 5, "maximos": 6},
+                "focus": {"atuais": 5, "maximos": 6},
                 "ca": 17,
                 "deslocamento": "55 pés",
                 "dinheiro_po": 45,
@@ -144,7 +144,7 @@ class TransactionOverlayTest(unittest.TestCase):
             "modo": "exploração",
             "localizacao": {"area": "estrada", "ponto_exato": "cerca"},
             "tempo": {"data": "7 Eleasis, 1372 DR", "hora_aproximada": "08:03"},
-            "mecanica_imediata": {"pv": "45/45", "ki": "5/6", "ca": 17, "deslocamento": "55 pés"},
+            "mecanica_imediata": {"pv": "45/45", "focus": "5/6", "ca": 17, "deslocamento": "55 pés"},
             "resumo_imediato": "antes",
             "prazos_e_alertas": "antes",
         }
@@ -159,7 +159,7 @@ class TransactionOverlayTest(unittest.TestCase):
                 "sessao": 3,
                 "resumo": "combate avançou",
                 "deltas": [
-                    {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
+                    {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -2},
                     {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -7},
                     {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "junto ao alvo"},
                     {
@@ -174,7 +174,7 @@ class TransactionOverlayTest(unittest.TestCase):
         ]
         effective, effective_scene, applied = mod.overlay_runtime(context, scene, records)
         self.assertGreaterEqual(applied, 6)
-        self.assertEqual(effective["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(effective["recursos"]["focus"]["atuais"], 3)
         self.assertEqual(effective["recursos"]["pv"]["atuais"], 38)
         self.assertEqual(effective["localizacao"]["ponto_exato"], "junto ao alvo")
         self.assertEqual(effective["tempo"]["data"], "7 Eleasis, 1372 DR")
@@ -182,7 +182,7 @@ class TransactionOverlayTest(unittest.TestCase):
         self.assertEqual(effective["sessao"]["modo_de_cena"], "combate")
         self.assertEqual(effective_scene["tempo"]["data"], "7 Eleasis, 1372 DR")
         self.assertEqual(effective_scene["mecanica_imediata"]["pv"], "38/45")
-        self.assertEqual(effective_scene["mecanica_imediata"]["ki"], "3/6")
+        self.assertEqual(effective_scene["mecanica_imediata"]["focus"], "3/6")
         self.assertEqual(effective_scene["resumo_imediato"], "É o turno de Ren.")
         self.assertEqual(effective["sobreposicao_transacional"]["ultima_transacao"], "turno-1")
         self.assertEqual(records[0]["deltas"][3]["op"], "instante")

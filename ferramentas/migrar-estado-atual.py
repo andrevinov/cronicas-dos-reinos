@@ -110,13 +110,15 @@ def build_current_state(
         for key in (
             "pontos_de_vida",
             "dados_de_vida",
-            "ki",
+            "focus",
             "classe_de_armadura",
             "deslocamento",
             "dinheiro",
         )
         if key in recursos
     }
+    if "focus" not in current_resources and "ki" in recursos:
+        current_resources["focus"] = deepcopy(recursos.get("ki"))
     # A lista antiga era um diário cumulativo. Só preservamos o final operacional.
     current_resources["condicoes"] = tail_items(recursos.get("condicoes"), 12)
 

@@ -22,14 +22,14 @@ Durante a sessão, consultar primeiro o resumo interno pertinente. Livro oficial
 
 A autoridade sobre **qual versão de D&D está ativa** fica em `campanha.yaml`, em `sistema.ruleset`.
 
-Durante a migração iniciada pela Task 1:
+Após a ativação concluída pela Task 8:
 
-- `ruleset.atual = dnd_5e_2014`;
+- `ruleset.atual = dnd_5_5e`;
 - `ruleset.alvo = dnd_5_5e`;
-- material 5.5e pode ser consultado para comparação, preparação e conversão;
-- material 5.5e **não pode substituir silenciosamente** uma regra 2014 durante narração ao vivo;
-- a ativação de 5.5e exige `migracao.status = concluida`, `migracao.ativacao.permitida = true` e todos os requisitos do gate satisfeitos;
-- o gate final é `task_8_auditoria_final`.
+- D&D 5.5e é a autoridade mecânica corrente;
+- material 2014 só entra por compatibilidade explicitamente aprovada;
+- `migracao.status = concluida` e `migracao.ativacao.permitida = true`;
+- o gate concluído foi `task_8_auditoria_final`.
 
 A hierarquia mecânica declarada em `campanha.yaml` é:
 
@@ -59,15 +59,15 @@ O validador recusa transporte literal de THAC0, CA descendente, salvamentos anti
 
 Para dúvida mecânica conhecida, `contexto regra <termo>` consulta primeiro esse catálogo. Um acerto por `id` ou alias retorna em L2 a identidade da regra, o `ruleset` aplicável, sua autoridade, quem a executa e a seção humana que documenta a decisão. A fonte declarada precisa existir e a seção precisa continuar presente; divergência faz o catálogo falhar fechado.
 
-Enquanto a cobertura do catálogo não for completa, termo não catalogado preserva o fallback textual anterior em `regras/*.md`, explicitamente marcado como `catalogada: false`. Esse fallback não ganha versão, executor ou autoridade por inferência. D&D 5.5e continua proibido como regra operacional enquanto `ruleset.atual` for `dnd_5e_2014`.
+Enquanto a cobertura do catálogo não for completa, termo não catalogado preserva o fallback textual anterior em `regras/*.md`, explicitamente marcado como `catalogada: false`. Esse fallback não ganha versão, executor ou autoridade por inferência. D&D 5.5e é a regra operacional; fallback textual não pode inventar autoridade 2014.
 
 ## Contrato mecânico do turno
 
-`cronica preparar` aceita opcionalmente um contrato mecânico estruturado com IDs/aliases do `regras/catalogo.yaml` e obrigações do turno. Quando presente, o mesmo ticket congela ruleset, regras aplicáveis, parâmetros de teste/ataque/salvaguarda e snapshot de Ki/Focus necessário aos gastos.
+`cronica preparar` aceita opcionalmente um contrato mecânico estruturado com IDs/aliases do `regras/catalogo.yaml` e obrigações do turno. Quando presente, o mesmo ticket congela ruleset, regras aplicáveis, parâmetros de teste/ataque/salvaguarda e snapshot de Focus/Focus necessário aos gastos.
 
 A rolagem continua fora de `cronica`, pela CLI `dados`. Em `cronica concluir`, a transação fornece os dados já rolados em `mecanica.resolucoes`; `cronica` os repassa ao núcleo mecânico para reconstruir deterministicamente escolhido, total e resultado. Só depois compara a consequência com os deltas e chama o writer.
 
-Gasto de Ki/Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
+Gasto de Focus/Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
 
 ## Ficha mecânica única de Ren
 
@@ -85,9 +85,9 @@ A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate d
 
 ## Perfil alvo 5.5e de Ren
 
-A Task 5 materializa a conversão de Ren sem furar o gate da Task 1. `personagens/jogador/migracao-5-5e.yaml` descreve a promoção prospectiva e `ferramentas/ficha_ren_5_5e.py` deriva uma visão mecânica completa a partir da ficha canônica **sem alterar a ficha ativa**. `personagens/jogador/resumo-de-poderes-5-5e.md` é documentação alvo e deve ser ignorado em narração ao vivo enquanto `ruleset.atual` continuar `dnd_5e_2014`.
+A Task 8 promoveu a conversão preparada na Task 5. `personagens/jogador/ficha.yaml` e `resumo-de-poderes.md` são agora as fontes operacionais 5.5e; `personagens/jogador/migracao-5-5e.yaml` permanece somente como registro auditável da promoção. Os shims staged da Task 5 foram removidos.
 
-O adaptador alvo deve sempre derivar PV atuais e a quantidade atual de Focus do estado efetivo: no gate final, Ki é mapeado 1:1 para Focus em vez de restaurar ou gastar recurso por efeito da migração. Os benefícios de criação preservados pela DEC-0008 são decisões de campanha canonizadas, não fallback silencioso de regras 2014.
+Na ativação, Focus foi mapeado 1:1 para Focus a partir do estado efetivo, sem restaurar nem gastar recurso. Daqui em diante a ficha e o estado usam somente Focus. Os benefícios de criação preservados pela DEC-0008 são decisões de campanha canonizadas, não fallback silencioso de regras 2014.
 
 ## Filosofia de fidelidade: aproximadamente 70%
 
@@ -110,7 +110,7 @@ Parar assim que a dúvida estiver resolvida com segurança:
 7. simplificar pela regra de ouro;
 8. registrar a decisão se puder se repetir.
 
-Durante a migração, fonte 5.5e não entra no passo 4 enquanto `ruleset.atual` continuar `dnd_5e_2014`; ela é fonte de trabalho para a migração. Durante sessão, não paralisar o jogo por dúvida pequena. Se a pesquisa completa for longa, tomar decisão provisória claramente identificada, registrar a pendência, revisar depois, atualizar `regras/decisoes.md` e corrigir consequências somente quando necessário.
+Fonte 5.5e ocupa o passo 4 como ruleset atual; fonte 2014 só entra no passo seguinte quando houver compatibilidade explicitamente aprovada. Durante sessão, não paralisar o jogo por dúvida pequena. Se a pesquisa completa for longa, tomar decisão provisória claramente identificada, registrar a pendência, revisar depois, atualizar `regras/decisoes.md` e corrigir consequências somente quando necessário.
 
 ## Regra de ouro
 

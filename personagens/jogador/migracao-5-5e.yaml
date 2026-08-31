@@ -3,11 +3,16 @@ personagem: Ren Kagehira
 base_canonica: personagens/jogador/ficha.yaml
 ruleset_origem: dnd_5e_2014
 ruleset_alvo: dnd_5_5e
-status: pronto_para_ativacao
+status: ativada
 ativacao:
   gate: task_8_auditoria_final
   aplica_antes_do_gate: false
   modo: promocao_prospectiva
+  concluida: true
+  ativada_em_task: task_8_auditoria_final
+  ruleset_ativo: dnd_5_5e
+  observacao: Registro histórico da migração. A ficha canônica ativa já contém o perfil 5.5e; este arquivo não é
+    fonte operacional.
 preservacao:
   sessoes_concluidas: imutaveis
   atributos_canonizados: preservar_sem_rebuild

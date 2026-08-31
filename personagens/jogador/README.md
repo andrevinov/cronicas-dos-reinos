@@ -22,4 +22,4 @@ python3 ferramentas/contexto.py conhecimento "assunto"
 
 Não abrir todos os fragmentos de `conhecimento/` preventivamente. A cópia monolítica anterior à Etapa 6 permanece somente em `historico/legado/` para auditoria e recuperação excepcional.
 
-Ren é um humano de Kozakura, monge do Caminho da Sombra, vindo a Ravens Bluff para caçar um traidor de seu clã.
+Ren é um humano de Kozakura, monge do Guerreiro das Sombras, vindo a Ravens Bluff para caçar um traidor de seu clã.

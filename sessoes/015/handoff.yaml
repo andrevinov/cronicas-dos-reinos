@@ -9,12 +9,12 @@ checkpoint:
     nome: Ren Kagehira
     nivel: 7
     classe: Monge
-    subclasse: Caminho da Sombra
+    subclasse: Guerreiro das Sombras
   recursos:
     pv:
       atuais: 45
       maximos: 52
-    ki:
+    focus:
       atuais: 1
       maximos: 7
     ca: 17

@@ -5,7 +5,7 @@ A faixa 8–17 usa dez milestones: cada membro único neutralizado de forma
 canônica e durável desbloqueia exatamente um nível. A ordem dos membros é livre.
 
 Este módulo NÃO aplica a progressão mecânica da ficha. Ele registra o milestone e
-expõe o nível devido; PV, ki, habilidades e escolhas continuam passando por
+expõe o nível devido; PV, focus, habilidades e escolhas continuam passando por
 ``regras/progressao.md``.
 """
 from __future__ import annotations

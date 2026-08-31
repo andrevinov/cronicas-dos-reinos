@@ -32,6 +32,19 @@ except ModuleNotFoundError:
     _gate_spec.loader.exec_module(gate_adnd)
 
 
+try:
+    import ruleset_5_5e
+except ModuleNotFoundError:
+    import importlib.util as _ruleset_importlib_util
+
+    _ruleset_path = Path(__file__).with_name("ruleset_5_5e.py")
+    _ruleset_spec = _ruleset_importlib_util.spec_from_file_location("ruleset_5_5e", _ruleset_path)
+    if _ruleset_spec is None or _ruleset_spec.loader is None:
+        raise
+    ruleset_5_5e = _ruleset_importlib_util.module_from_spec(_ruleset_spec)
+    _ruleset_spec.loader.exec_module(ruleset_5_5e)
+
+
 class DuplicateKeyLoader(yaml.SafeLoader):
     """SafeLoader que recusa chaves YAML duplicadas silenciosamente."""
 
@@ -270,7 +283,7 @@ def validate_runtime(
         state_time = estado.get("tempo") or {}
         state_resources = estado.get("recursos") or {}
         state_pv = state_resources.get("pontos_de_vida") or {}
-        state_ki = state_resources.get("ki") or {}
+        state_focus = state_resources.get("focus") or {}
         state_money = state_resources.get("dinheiro") or {}
 
         checks = [
@@ -280,8 +293,8 @@ def validate_runtime(
             ("nível", (contexto.get("personagem") or {}).get("nivel"), state_person.get("nivel")),
             ("PV atuais", ((contexto.get("recursos") or {}).get("pv") or {}).get("atuais"), state_pv.get("atuais")),
             ("PV máximos", ((contexto.get("recursos") or {}).get("pv") or {}).get("maximos"), state_pv.get("maximos")),
-            ("Ki atual", ((contexto.get("recursos") or {}).get("ki") or {}).get("atuais"), state_ki.get("atuais")),
-            ("Ki máximo", ((contexto.get("recursos") or {}).get("ki") or {}).get("maximos"), state_ki.get("maximos")),
+            ("Focus atual", ((contexto.get("recursos") or {}).get("focus") or {}).get("atuais"), state_focus.get("atuais")),
+            ("Focus máximo", ((contexto.get("recursos") or {}).get("focus") or {}).get("maximos"), state_focus.get("maximos")),
             ("CA", (contexto.get("recursos") or {}).get("ca"), state_resources.get("classe_de_armadura")),
             ("PO", (contexto.get("recursos") or {}).get("dinheiro_po"), state_money.get("po")),
             ("data", (contexto.get("tempo") or {}).get("data"), state_time.get("data_exata")),
@@ -357,6 +370,7 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
 
     errors.extend(validate_agent_router(repo, yaml_docs))
     errors.extend(gate_adnd.validate_repository(repo, yaml_docs))
+    errors.extend(ruleset_5_5e.validate(repo))
 
     campanha = yaml_docs.get("campanha.yaml")
     estado = yaml_docs.get("estado/estado-atual.yaml")
@@ -404,13 +418,13 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
         else:
             errors.append("PV atuais/máximos não são inteiros na ficha")
 
-        ki = ((ficha.get("recursos_de_classe") or {}).get("ki")) or {}
-        current_ki, max_ki = ki.get("pontos_atuais"), ki.get("pontos_maximos")
-        if isinstance(current_ki, int) and isinstance(max_ki, int):
-            if not 0 <= current_ki <= max_ki:
-                errors.append(f"Ki inválido: {current_ki}/{max_ki}")
+        focus = ((ficha.get("recursos_de_classe") or {}).get("focus")) or {}
+        current_focus, max_focus = focus.get("pontos_atuais"), focus.get("pontos_maximos")
+        if isinstance(current_focus, int) and isinstance(max_focus, int):
+            if not 0 <= current_focus <= max_focus:
+                errors.append(f"Focus inválido: {current_focus}/{max_focus}")
         else:
-            errors.append("Ki atual/máximo não é inteiro na ficha")
+            errors.append("Focus atual/máximo não é inteiro na ficha")
 
     if isinstance(campanha, dict) and isinstance(tempo, dict):
         periodo = (((campanha.get("cenario") or {}).get("periodo_historico")) or {}).get("valor")

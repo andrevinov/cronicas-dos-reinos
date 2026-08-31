@@ -164,6 +164,6 @@ Campanha solo não significa proteção automática.
 
 Todo gasto mecânico de recurso de classe precisa ser decidido antes de persistir a consequência. O turno só pode reduzir o recurso se o ticket preparado registrar a obrigação, o valor disponível naquele instante for suficiente e a resolução do turno confirmar o gasto.
 
-Enquanto o ruleset ativo for D&D 5e 2014, o recurso de Ren é **ki**. Quando a migração 5.5e for ativada, o mesmo contrato passa a proteger **Focus**. O writer nunca pode aceitar um gasto que deixe o recurso abaixo de zero.
+O recurso de classe ativo de Ren é **Focus**. O writer nunca pode aceitar um gasto que deixe Focus abaixo de zero. `ki` permanece apenas em registros históricos anteriores ao cutover.
 
 `cronica` valida a causalidade e a disponibilidade, mas não implementa a regra de D&D nem rola dados: resoluções de teste, salvaguarda e ataque são verificadas pelas primitivas do núcleo mecânico.

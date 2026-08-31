@@ -37,7 +37,7 @@ OUTCOMES = {
     "indeterminado",
     "aplicado",
 }
-PROTECTED_RESOURCES = {"ki", "focus"}
+PROTECTED_RESOURCES = {"focus"}
 
 
 class MechanicalContractError(ValueError):
@@ -519,7 +519,7 @@ def validate_transaction(
         for delta in deltas:
             if _protected_spend(delta) is not None:
                 raise MechanicalContractError(
-                    "gasto de Ki/Focus exige obrigação mecânica preparada no ticket"
+                    "gasto de Focus exige obrigação mecânica preparada no ticket"
                 )
         return transaction
 

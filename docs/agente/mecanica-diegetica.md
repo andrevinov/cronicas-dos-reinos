@@ -10,13 +10,13 @@ A prosa de `narracao` e qualquer fala de NPC dentro dela são **diegéticas**. N
 - CA / AC / classe de armadura;
 - CD / DC / classe de dificuldade;
 - nível mecânico de personagem/classe;
-- pontos ou contagem numérica de Ki;
+- pontos ou contagem numérica de Focus;
 - slots/espaços de magia;
 - bônus ou modificadores numéricos de regra.
 
 Em vez de “ele está com 3 PV”, narrar o que o mundo mostra: respiração curta, sangue, dificuldade de sustentar a guarda, perda de força etc. Em vez de um NPC dizer “minha CA é 18”, ele pode falar de armadura, treino, proteção ou confiança sem conhecer a abstração da ficha.
 
-A palavra **ki** continua permitida como conceito diegético quando não é usada como contador mecânico. “Ren sente o ki se concentrar no baixo ventre” é válido; “Ren ainda tem 4 Ki” não é.
+A palavra **ki** continua permitida como conceito diegético. O contador mecânico atual é **Focus**: “Ren sente o ki se concentrar no baixo ventre” é válido; “Ren ainda tem 4 Focus” não é.
 
 `nível` também continua palavra normal do idioma. “O nível da água subiu” é válido. O guardrail mira formas mecânicas como “nível 7”, “7º nível” ou “nível de personagem”.
 

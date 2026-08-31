@@ -45,9 +45,9 @@ class RulesCatalogContractTest(unittest.TestCase):
         with self.assertRaisesRegex(catalogo_regras.RuleCatalogError, "fonte inexistente"):
             catalogo_regras.validate_document(ROOT, document)
 
-    def test_conflito_de_versao_nao_promove_5_5e_antes_do_gate(self) -> None:
+    def test_conflito_de_versao_nao_reintroduz_2014_no_catalogo_ativo(self) -> None:
         document = copy.deepcopy(self.document)
-        document["regras"][0]["ruleset"] = "dnd_5_5e"
+        document["regras"][0]["ruleset"] = "dnd_5e_2014"
         with self.assertRaisesRegex(catalogo_regras.RuleCatalogError, "conflito de versão"):
             catalogo_regras.validate_document(ROOT, document)
 
@@ -64,7 +64,7 @@ class RulesCatalogContractTest(unittest.TestCase):
         self.assertTrue(result["catalogada"])
         self.assertEqual(data["nivel"], "L2")
         self.assertEqual(result["id"], "furtividade_oposta")
-        self.assertEqual(result["ruleset"], "dnd_5e_2014")
+        self.assertEqual(result["ruleset"], "dnd_5_5e")
         self.assertEqual(result["autoridade"], "ruleset_atual")
         self.assertEqual(result["executor"], "dados")
         self.assertEqual(result["persistencia"], "nenhuma")

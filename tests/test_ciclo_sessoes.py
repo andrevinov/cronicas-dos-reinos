@@ -60,7 +60,7 @@ class CicloSessoesTest(unittest.TestCase):
                     "arquivo_ficha": "personagens/jogador/ficha.yaml",
                     "nivel": 6,
                     "classe": "Monge",
-                    "subclasse": "Caminho da Sombra",
+                    "subclasse": "Guerreiro das Sombras",
                 },
                 "localizacao": {
                     "plano": "Material",
@@ -80,7 +80,7 @@ class CicloSessoesTest(unittest.TestCase):
                 },
                 "recursos": {
                     "pontos_de_vida": {"atuais": 45, "maximos": 45},
-                    "ki": {"atuais": 6, "maximos": 6},
+                    "focus": {"atuais": 6, "maximos": 6},
                     "classe_de_armadura": 17,
                     "deslocamento": "55 pés",
                     "dinheiro": {"po": 34},
@@ -108,7 +108,7 @@ class CicloSessoesTest(unittest.TestCase):
                     "classe_de_armadura": {"valor": 17},
                     "pontos_de_vida": {"atuais": 45, "maximos": 45},
                 },
-                "recursos_de_classe": {"ki": {"pontos_atuais": 6, "pontos_maximos": 6}},
+                "recursos_de_classe": {"focus": {"pontos_atuais": 6, "pontos_maximos": 6}},
                 "equipamento": {"dinheiro": {"po": 34}},
             },
         )

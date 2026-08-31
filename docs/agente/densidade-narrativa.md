@@ -146,7 +146,7 @@ Preferir:
 3. continuar a consequência ficcional;
 4. devolver o controle no ponto natural.
 
-Não repetir CA, PV, Ki, dinheiro, hora e localização por hábito quando não mudaram nem são necessários para a decisão.
+Não repetir CA, PV, Focus, dinheiro, hora e localização por hábito quando não mudaram nem são necessários para a decisão.
 
 ## Relação com a economia de tokens
 

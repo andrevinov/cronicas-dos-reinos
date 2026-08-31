@@ -63,7 +63,7 @@ class RenFeatCanonTest(unittest.TestCase):
             (17, 3),
         )
         self.assertEqual(self.sheet["combate"]["classe_de_armadura"]["valor"], 17)
-        self.assertEqual(self.sheet["recursos_de_classe"]["ki"]["cd"], 14)
+        self.assertEqual(self.sheet["recursos_de_classe"]["focus"]["cd"], 14)
 
     def test_actor_e_observant_produzem_os_numeros_corretos(self):
         attrs = self.sheet["atributos"]

@@ -2,15 +2,15 @@ personagem:
   nome: Ren Kagehira
   status: ativo
   campanha: Crônicas dos Reinos
-  sistema: Dungeons & Dragons 5e
-  fonte_mecanica_principal: Livro do Jogador, D&D 5e
+  sistema: Dungeons & Dragons 5.5e
+  fonte_mecanica_principal: Player's Handbook 2024 / D&D 5.5e
 identidade:
   ancestralidade: Humano variante
   cultura_origem: Kozakuran
   origem_geografica: Kozakura, Kara-Tur
   classe: Monge
   nivel: 7
-  subclasse: Caminho da Sombra
+  subclasse: Guerreiro das Sombras
   background: Exilado de Clã
   alinhamento: Leal Neutro
   idade: 24
@@ -41,9 +41,8 @@ criacao:
   escolha_observant: Inteligência
   regra_talentos_bonus: regras/decisoes.md#dec-0007--actor-e-observant-como-talentos-bonus-retroativos-de-criacao
   suplementos_mecanicos_opcionais: nenhum
-  observacao: Elementos de Kozakura e Kara-Tur são usados como cenário e cultura, não como pacote mecânico adicional.
-    Actor e Observant são talentos bônus retroativos de criação por decisão de mesa; não consomem o talento racial
-    Móvel, o ASI do nível 4 nem escolhas futuras de progressão.
+  observacao: 'A criação original permanece canonizada pela DEC-0008: Humano Variante, Móvel, Actor e Observant
+    não foram recomprados nem reconstruídos na ativação 5.5e. Elementos de Kozakura e Kara-Tur seguem como cenário/cultura.'
   escolhas:
     pericia_humano_variante: Investigação
     pericias_monge:
@@ -107,13 +106,13 @@ combate:
   ataques:
   - nome: Golpe desarmado
     bonus_ataque: 7
-    dano: 1d6 + 4 contundente
-    observacao: Conta como ataque marcial de monge.
+    dano: 1d8 + 4 contundente
+    observacao: Golpe Desarmado do Monge; Empowered Strikes também permite dano de Força.
   - nome: Wakizashi
     mecanica: espada curta
     bonus_ataque: 7
-    dano: 1d6 + 4 perfurante
-    observacao: Arma de monge; nome cultural é apenas descritivo.
+    dano: 1d8 + 4 perfurante
+    observacao: Mecanicamente espada curta e arma de Monge; o nome cultural é descritivo.
   - nome: Shuriken
     mecanica: dardo
     bonus_ataque: 7
@@ -156,12 +155,50 @@ recursos_de_classe:
   defesa_sem_armadura:
     resumo: CA = 10 + Destreza + Sabedoria enquanto não usa armadura nem escudo.
   artes_marciais:
-    dado: 1d6
-    resumo: Pode usar Destreza para ataques e dano com golpes desarmados e armas de monge; após atacar, pode fazer
-      um golpe desarmado como ação bônus.
+    dado: 1d8
+    resumo: Pode usar Destreza para ataques/dano com Golpes Desarmados e armas de Monge; o Golpe Desarmado de ação
+      bônus não exige usar a ação Atacar antes. Destreza também pode substituir Força para Agarrar/Empurrar.
   ataque_extra:
     resumo: Quando usa a ação Atacar no próprio turno, Ren pode fazer dois ataques em vez de um.
-  ki:
+  movimento_sem_armadura:
+    bonus: 15 pés
+    resumo: Move-se mais rápido enquanto não usa armadura nem escudo.
+  queda_lenta:
+    nivel: 4
+    reacao: true
+    reducao: 35
+    resumo: Ao cair, usa a reação para reduzir o dano de queda em 35.
+  evasao:
+    nivel: 7
+    resumo: Em efeito com salvaguarda de Destreza que normalmente causa metade no sucesso, sofre zero no sucesso
+      e metade na falha; não funciona enquanto Incapacitado.
+  artes_sombrias:
+    subclasse: Guerreiro das Sombras
+    nivel: 3
+    visao_no_escuro: 60 pés
+    ilusao_menor:
+      conhece: true
+      habilidade_conjuracao: Sabedoria
+    escuridao:
+      custo_focus: 1
+      acao: Magia
+      componentes: nenhum
+      concentracao: true
+      ve_dentro_da_propria_escuridao: true
+      mover_area_no_inicio_do_turno: até 60 pés
+    removidas_na_5_5e:
+    - Passos sem Pegadas
+    - Silêncio
+    - Visão no Escuro como magia paga com recurso
+  passo_sombrio:
+    subclasse: Guerreiro das Sombras
+    nivel: 6
+    custo_focus: 0
+    acao: ação bônus
+    alcance: 60 pés
+    origem_e_destino: luz baixa ou escuridão; destino desocupado e visível
+    resumo: Teleporta-se e recebe vantagem no próximo ataque corpo a corpo antes do fim do turno.
+  focus:
     pontos_maximos: 7
     pontos_atuais: 1
     cd: 14
@@ -170,65 +207,45 @@ recursos_de_classe:
     usos:
       rajada_de_golpes:
         custo: 1
-        resumo: Depois da ação Atacar, faz dois golpes desarmados como ação bônus.
+        resumo: Como ação bônus, faz dois Golpes Desarmados; não exige usar a ação Atacar antes.
       defesa_paciente:
-        custo: 1
-        resumo: Usa Esquivar como ação bônus.
+        gratuito: Desengajar como ação bônus
+        custo_focus: 1
+        resumo: Com 1 Focus, Desengajar e Esquivar como a mesma ação bônus.
       passo_do_vento:
-        custo: 1
-        resumo: Usa Desengajar ou Disparada como ação bônus; distância de salto dobrada no turno.
+        gratuito: Disparada como ação bônus
+        custo_focus: 1
+        resumo: Com 1 Focus, Desengajar e Disparada na mesma ação bônus e dobrar a distância de salto no turno.
       ataque_atordoante:
         custo: 1
-        resumo: Quando acerta um ataque corpo a corpo, pode tentar atordoar o alvo; o alvo faz salvaguarda de Constituição
-          contra CD de ki 14 ou fica atordoado até o fim do próximo turno de Ren.
-  movimento_sem_armadura:
-    bonus: 15 pés
-    resumo: Move-se mais rápido enquanto não usa armadura nem escudo.
-  golpes_potencializados_por_ki:
-    nivel: 6
-    resumo: Golpes desarmados contam como mágicos para superar resistência e imunidade a ataques e dano não mágicos.
-  aparar_projeteis:
+        limite: uma vez por turno
+        resumo: Depois de acertar com arma de Monge ou Golpe Desarmado, Constituição CD 14; na falha fica Atordoado
+          até o início do próximo turno de Ren; no sucesso tem deslocamento pela metade e o próximo ataque contra
+          ele antes disso tem vantagem.
+  metabolismo_sobrenatural:
+    nivel: 2
+    gatilho: ao rolar iniciativa
+    recupera_focus: todos os Focus gastos
+    cura: 7 + 1d8 PV no nível 7
+    recarga: 1 uso por descanso longo
+  desviar_ataques:
+    nivel: 3
     reacao: true
-    reducao: 1d10 + 10
-    resumo: Reduz dano de um ataque à distância com arma; se reduzir a zero, pode gastar 1 ki para arremessar o
-      projétil de volta.
-  queda_lenta:
-    nivel: 5
-    reacao: true
-    reducao: 35
-    resumo: Ao cair, pode usar a reação para reduzir o dano de queda em 35.
-  evasao:
-    nivel: 7
-    resumo: Quando um efeito permite salvaguarda de Destreza para sofrer metade do dano, Ren não sofre dano se tiver
-      sucesso e sofre apenas metade se falhar.
-  quietude_da_mente:
-    nivel: 7
-    acao: ação
-    resumo: Pode usar a própria ação para encerrar um efeito que o esteja deixando amedrontado ou enfeitiçado.
-  artes_sombrias:
-    subclasse: Caminho da Sombra
-    truque:
-      nome: ilusão menor
-      custo: 0
-    magias_com_ki:
-    - nome: escuridão
-      custo: 2
-    - nome: visão no escuro
-      custo: 2
-    - nome: passos sem pegadas
-      custo: 2
-    - nome: silêncio
-      custo: 2
-    resumo: Usa ki para criar cobertura, silêncio, furtividade sobrenatural e truques de distração.
-  passo_sombrio:
-    subclasse: Caminho da Sombra
+    reducao: 1d10 + 11
+    tipos:
+    - contundente
+    - perfurante
+    - cortante
+    redirecionar:
+      condicao: se a redução levar o dano a zero
+      custo_focus: 1
+      alcance_corpo_a_corpo: 5 pés
+      alcance_distancia: 60 pés
+      salvaguarda: Destreza CD 14
+      dano_falha: 2d8 + 4 do mesmo tipo do ataque original
+  golpes_potencializados:
     nivel: 6
-    custo: 0 ki
-    acao: ação bônus
-    alcance: 60 pés
-    resumo: Quando está em luz baixa ou escuridão, Ren pode teleportar-se para um espaço desocupado que consiga
-      ver e que também esteja em luz baixa ou escuridão. Depois, ganha vantagem no primeiro ataque corpo a corpo
-      que fizer antes do fim do turno.
+    resumo: Golpes Desarmados podem causar dano de Força ou o tipo normal.
 talentos:
   movel:
     resumo: Deslocamento aumenta em 10 pés; ao realizar ataque corpo a corpo contra uma criatura, não provoca ataque

@@ -53,7 +53,7 @@ python3 ferramentas/consolidar.py sessao
 Deltas `estado`, `tempo` e `ficha` são aplicados em memória. Campos que representam o mesmo fato são espelhados automaticamente quando necessário:
 
 - data, hora, período, clima e prazo entre estado e tempo;
-- nível, PV, Ki, CA e dinheiro entre estado e ficha.
+- nível, PV, Focus, CA e dinheiro entre estado e ficha.
 
 **Data + hora usam um contrato especial:** o buffer persiste um único delta `tempo/instante` com `{data, hora}`. Antes de chamar o núcleo legado, `consolidar.py` expande esse delta somente na cópia em memória para os campos físicos de `estado/tempo.yaml`; `sync_mirrors` deriva então `estado/estado-atual.yaml:tempo.*`. O ledger volta a contar o delta original, não os espelhos internos. Todos esses bytes, incluindo runtime, entram no mesmo staging/journal.
 

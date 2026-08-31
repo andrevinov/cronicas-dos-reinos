@@ -1,0 +1,15 @@
+id: sentinela_portuaria_convertida_task8
+mecanica_ativa: true
+proveniencia_mecanica:
+  edicao_origem: adnd_2e
+  adaptado_para: dnd_5_5e
+  fonte_mecanica:
+    ruleset: dnd_5_5e
+    referencia: equivalente sintético 5.5e usado somente no teste E2E da Task 8
+  decisao: TASK8-E2E-ADND
+mecanica:
+  ataque:
+    bonus: 4
+    ca_alvo: 15
+    dano: 1d6+2
+  observacao: Valores sintéticos; nenhuma estatística publicada foi transportada literalmente.

@@ -30,7 +30,7 @@ python3 ferramentas/rolar-dados.py ren listar
 
 Quando um turno tiver consequência mecânica persistente, `cronica preparar` pode receber `--mecanica-json` com as regras e obrigações. A resposta devolve os IDs canônicos e congela tudo no mesmo ticket. Depois da rolagem com `dados`, `cronica concluir` recebe um bloco `mecanica.resolucoes`; o writer só vê a transação depois da validação causal.
 
-Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Ki/Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
+Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Focus/Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
 
 Quando a mecânica foi preparada a partir de AD&D, o mesmo JSON acrescenta `proveniencia`. O gate exige edição de origem, destino moderno e fonte mecânica; números antigos literais são recusados antes do ticket. Uma adaptação 5.5e pode existir como preparação durante a migração, mas não entra no runtime enquanto 2014 estiver ativo.
 
@@ -66,10 +66,10 @@ python3 ferramentas/turno.py registrar <<'JSON'
 {
   "jogador": "Ren avança sobre o alvo.",
   "narracao": "...",
-  "resumo": "Ren alcança o alvo e gasta 1 Ki.",
+  "resumo": "Ren alcança o alvo e gasta 1 Focus.",
   "modo": "combate",
   "deltas": [
-    {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1}
+    {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -1}
   ]
 }
 JSON
@@ -160,7 +160,7 @@ Não usar depois de cada turno. O checkpoint deve ser muito menos frequente que 
 
 - valida transações pendentes;
 - calcula todos os documentos finais antes da primeira escrita;
-- sincroniza PV, Ki, CA, dinheiro, nível e tempo entre representações espelhadas;
+- sincroniza PV, Focus, CA, dinheiro, nível e tempo entre representações espelhadas;
 - atualiza apenas relações/NPCs realmente afetados e seus históricos;
 - materializa conhecimento incremental sem modificar fragmentos legados;
 - consolida consequência/progressão somente quando há delta explícito;

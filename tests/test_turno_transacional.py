@@ -78,7 +78,7 @@ class TurnoTransactionalTest(unittest.TestCase):
             repo,
             self.transaction(
                 delta=[
-                    {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1},
+                    {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -1},
                     {
                         "alvo": "tempo",
                         "op": "instante",
@@ -194,7 +194,7 @@ class TurnoTransactionalTest(unittest.TestCase):
             ),
             (
                 "descanso",
-                [{"alvo": "estado", "op": "set", "caminho": "recursos.ki.atuais", "valor": 6}],
+                [{"alvo": "estado", "op": "set", "caminho": "recursos.focus.atuais", "valor": 6}],
             ),
             (
                 "descoberta",
@@ -222,25 +222,25 @@ class TurnoTransactionalTest(unittest.TestCase):
             repo,
             self.transaction(
                 delta=[
-                    {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -2},
+                    {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -2},
                     {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "junto ao salgueiro"},
                 ]
             ),
         )
         base_context = {
             "sessao": {"numero": 3},
-            "recursos": {"ki": {"atuais": 5, "maximos": 6}, "pv": {"atuais": 45, "maximos": 45}},
+            "recursos": {"focus": {"atuais": 5, "maximos": 6}, "pv": {"atuais": 45, "maximos": 45}},
             "localizacao": {"ponto_exato": "estrada"},
         }
         effective, _, _ = transacoes.overlay_runtime(base_context, None, transacoes.load_pending(repo))
-        self.assertEqual(effective["recursos"]["ki"]["atuais"], 3)
+        self.assertEqual(effective["recursos"]["focus"]["atuais"], 3)
         self.assertEqual(effective["localizacao"]["ponto_exato"], "junto ao salgueiro")
 
     def test_warns_about_broad_unchanged_status_panel(self):
         repo = self.make_repo()
         tx = self.transaction()
         tx["narracao"] = (
-            "MECÂNICA — PV 45/45. CA 17. Ki 5/6. 45 PO. Hora aproximada 08:04. "
+            "MECÂNICA — PV 45/45. CA 17. Focus 5/6. 45 PO. Hora aproximada 08:04. "
             "Localização: estrada do Fire River.\n"
             "Ren encara o adversário."
         )
@@ -250,17 +250,17 @@ class TurnoTransactionalTest(unittest.TestCase):
 
     def test_short_or_changed_status_does_not_warn(self):
         short = self.transaction()
-        short["narracao"] = "PV 41/45 e Ki 4/6; Ren continua lutando."
+        short["narracao"] = "PV 41/45 e Focus 4/6; Ren continua lutando."
         self.assertEqual(mod.narration_warnings(short), [])
 
         changed = self.transaction(
             delta=[
                 {"alvo": "estado", "op": "inc", "caminho": "recursos.pontos_de_vida.atuais", "valor": -4},
-                {"alvo": "estado", "op": "inc", "caminho": "recursos.ki.atuais", "valor": -1},
+                {"alvo": "estado", "op": "inc", "caminho": "recursos.focus.atuais", "valor": -1},
                 {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "ponte"},
             ]
         )
-        changed["narracao"] = "PV 41/45. Ki 4/6. CA 17. Localização: ponte."
+        changed["narracao"] = "PV 41/45. Focus 4/6. CA 17. Localização: ponte."
         self.assertEqual(mod.narration_warnings(changed), [])
 
 
