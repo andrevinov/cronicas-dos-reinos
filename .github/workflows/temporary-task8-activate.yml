@@ -35,6 +35,18 @@ jobs:
               '    ("        \\"ki\\": {\\n            \\"pontos_maximos\\": ki_max,\\n            \\"pontos_atuais\\": ki_current,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_maximos\\": focus_max,\\n            \\"pontos_atuais\\": focus_current,\\n            \\"cd\\": focus_dc,\\n        },"),',
               '    ("        \\"ki\\": {\\n            \\"pontos_atuais\\": ki_current,\\n            \\"pontos_maximos\\": ki_max,\\n            \\"cd\\": ki_dc,\\n        },", "        \\"focus\\": {\\n            \\"pontos_atuais\\": focus_current,\\n            \\"pontos_maximos\\": focus_max,\\n            \\"cd\\": focus_dc,\\n        },"),',
           )
+          old = '''    shadow = class_resources.get("artes_sombrias") or {}
+    rendered_shadow = yaml.safe_dump(shadow, allow_unicode=True).casefold()
+    if "passos sem pegadas" in rendered_shadow or "silêncio" in rendered_shadow or "silencio" in rendered_shadow:
+        errors.append("Shadow Arts ativa ainda oferece magia removida da versão 2014")'''
+          new = '''    shadow = class_resources.get("artes_sombrias") or {}
+    active_shadow = {key: value for key, value in shadow.items() if key != "removidas_na_5_5e"}
+    rendered_shadow = yaml.safe_dump(active_shadow, allow_unicode=True).casefold()
+    if "passos sem pegadas" in rendered_shadow or "silêncio" in rendered_shadow or "silencio" in rendered_shadow:
+        errors.append("Shadow Arts ativa ainda oferece magia removida da versão 2014")'''
+          if old not in text:
+              raise SystemExit('Task 8 Shadow Arts validator marker not found')
+          text = text.replace(old, new, 1)
           path.write_text(text, encoding='utf-8')
           PY
       - name: Apply cutover
