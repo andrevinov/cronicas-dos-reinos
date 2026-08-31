@@ -59,6 +59,7 @@ class Task43Fixture(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory(); self.repo = Path(self.temp.name)
         for rel in (oportunidades.INDEX, oportunidades.STATE, emergent.NPC_INDEX, qr.STATE_PATH, qr.SHEET_PATH):
             dst = self.repo / rel; dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ROOT / rel, dst)
+        task41.isolate_opportunity_state(self.repo)
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
         (self.repo / "runtime").mkdir(parents=True, exist_ok=True)
         (self.repo / "runtime/contexto.yaml").write_text("sessao:\n  numero: 15\n  status: em_sessao\n", encoding="utf-8")

@@ -126,6 +126,7 @@ def _copy_common(repo: Path, *, canon: bool = False) -> None:
         target = repo / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / rel, target)
+    task41_cases.isolate_opportunity_state(repo)
     shutil.copytree(ROOT / locais.INDEX.parent, repo / locais.INDEX.parent)
     shutil.copytree(ROOT / "narrador/agentes", repo / "narrador/agentes")
     for rel in (adversarial.POLICY, rede_protegida.INDEX):
@@ -447,10 +448,16 @@ class Task44BudgetTest(unittest.TestCase):
         self.assertNotIn("rglob(", source)
         self.assertNotIn("glob(", source)
 
-    def test_repo_real_sem_sidequest_emergente_permanece_valido(self):
+    def test_repo_real_com_sidequests_emergentes_permanece_valido(self):
         result = adversarial.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["contratos"], 0)
+        state = oportunidades.load_state(ROOT, oportunidades.load_index(ROOT))
+        expected = sum(
+            1
+            for mission in state["missoes"].values()
+            if mission.get("origem") == "sidequest_emergente"
+        )
+        self.assertEqual(result["contratos"], expected)
 
 
 if __name__ == "__main__":

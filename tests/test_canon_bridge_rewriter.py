@@ -121,6 +121,7 @@ class Task42Fixture(unittest.TestCase):
             target = self.repo / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, target)
+        task41_cases.isolate_opportunity_state(self.repo)
         shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)
         shutil.copytree(
             ROOT / "narrador/arcos/parte_1",

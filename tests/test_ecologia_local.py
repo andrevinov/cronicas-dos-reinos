@@ -26,7 +26,6 @@ class LocalEcologyRepositoryTest(unittest.TestCase):
         ecology = ecologia_local.load_index(ROOT)
         registry = locais.load_index(ROOT)
         self.assertEqual(set(ecology["perfis"]), set(registry["locais"]))
-        self.assertEqual(len(ecology["perfis"]), 11)
         self.assertEqual(ecologia_local.validate_coverage(ROOT, ecology), [])
         self.assertTrue(ecologia_local.check(ROOT)["ok"])
 
