@@ -44,7 +44,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34;
 - local/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`, `docs/task45-sidequest-progression-deadlines-consequences.md`, `docs/task46-emergent-sidequests-integration-budget-regression.md`, `docs/task47-explicit-opportunity-decision-gate.md`;
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
-- densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/telemetria/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
+- densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
 
 Estilo: `narracao/guia-de-narrativa.md`; sessões: `narracao/protocolo-de-sessao.md`; limites: `narracao/limites.md`.
 
@@ -114,20 +114,16 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, histórico, formatos e visibilidade.
+Preservar UTF-8, histórico, formatos e visibilidade. **Testes:** `docs/agente/politica-de-testes.md`; perfis: `docs/agente/perfis-de-testes.md`.
 
-**Política permanente de testes:** `docs/agente/politica-de-testes.md`; perfis: `docs/agente/perfis-de-testes.md`.
+- estado vivo → invariantes/relações;
+- absoluto mutável → só **fixtures/snapshots/cenários temporários/histórico imutável**;
+- **snapshot histórico** → declarar natureza e motivo;
+- permanente → **nome de domínio**, não `test_taskNN_*`;
+- remoção → **propriedade protegida** + destino da cobertura;
+- `ROOT` só quando necessário; preferir `TemporaryDirectory` se isolável.
 
-- **estado vivo** → proteger com invariantes e relações entre fontes, nunca com fotografia acidental do dia;
-- valor absoluto mutável → apenas em **fixtures/snapshots/cenários temporários/histórico imutável**;
-- todo **snapshot histórico** declara natureza, instante e motivo do congelamento;
-- teste permanente usa **nome de domínio**, não `test_taskNN_*`, quando protege comportamento duradouro;
-- antes de remover teste, identificar a **propriedade protegida** e onde a cobertura continuará;
-- teste sobre `ROOT` só quando a integração real for necessária; quando isolável, preferir `TemporaryDirectory`.
-
-`ferramentas/auditar-testes.py` é heurística read-only: `congelamento_suspeito` exige revisão semântica, não é veredito automático. Registre correção/justificativa nos mecanismos de revisão existentes; não altere cânone ou estado vivo para fazer teste passar.
-
-CI: `turno.py check`, `consolidar.py check`, `sessoes.py check`, `checkpoint.py check`, `resolver_fronteira.py check`, `recompensas.py check`, `recompensas_sidequest.py check`, `integridade_adversarial.py check`, `progressao_sidequests.py check`, `sidequests_integracao_check.py`, `oportunidades.py check`, `canon_bridge_runtime.py check`, `sidequest_gate_v2.py check`, `condicoes_mundo.py check`, `interacoes_mundo.py check`, migrações `--check`, `gerar-runtime.py --check`, `verificar-integridade.py`.
+`auditar-testes.py` é heurística read-only: suspeito exige revisão semântica, não veredito. Gate local: `poetry run preflight`; suíte integral: `poetry run test-full`. CI mantém os gates obrigatórios.
 
 ## 10. Cobertura do manual anterior
 
