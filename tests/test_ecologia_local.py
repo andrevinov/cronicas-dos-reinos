@@ -25,6 +25,7 @@ class LocalEcologyRepositoryTest(unittest.TestCase):
     def test_repositorio_real_cobre_exatamente_os_locais_canonicos(self):
         ecology = ecologia_local.load_index(ROOT)
         registry = locais.load_index(ROOT)
+        # A cardinalidade evolui com o registro; a igualdade dos conjuntos é o contrato.
         self.assertEqual(set(ecology["perfis"]), set(registry["locais"]))
         self.assertEqual(ecologia_local.validate_coverage(ROOT, ecology), [])
         self.assertTrue(ecologia_local.check(ROOT)["ok"])
