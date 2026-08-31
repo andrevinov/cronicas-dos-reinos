@@ -105,7 +105,7 @@ def authoring_contract(package: dict[str, Any]) -> dict[str, Any]:
             "progressao.regra": sorted(progress.SUCCESS_RULES | progress.FAILURE_RULES),
         },
         "regras": [
-            "uma cápsula; não abra schemas Tasks41/43/44/45",
+            "uma cápsula; não consulte schemas internos Tasks41/43/44/45",
             "não escreva ação/decisão/fala/emoção futura de Ren",
             "oferta exige evidencia literal na narracao",
             "um JSON por stdin no mesmo cronica concluir; sem write_stdin ou arquivo temporário",
