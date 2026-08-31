@@ -23,7 +23,11 @@ jobs:
         run: python -m pip install 'PyYAML>=6,<7'
       - name: Apply Task 6
         run: |
-          python .github/task6_apply.py
+          if grep -q 'task_6_integracao_cronica: true' campanha.yaml && grep -q 'import mecanica_cronica as _mechanics' ferramentas/cronica.py; then
+            echo 'Task 6 already applied'
+          else
+            python .github/task6_apply.py
+          fi
           python - <<'PY'
           from pathlib import Path
           path = Path('tests/test_cronica_mecanica.py')
@@ -42,9 +46,12 @@ jobs:
         run: |
           python -m unittest discover -s tests -p 'test_cronica_mecanica.py'
           python -m unittest discover -s tests -p 'test_cronica_cli.py'
-          python -m unittest discover -s tests -p 'test_cronica_hotpath.py'
-          python -m unittest discover -s tests -p 'test_sidequests_integracao_runtime.py'
-          python -m unittest discover -s tests -p 'test_catalogo_regras.py'
+          python -m unittest discover -s tests -p 'test_cronica_hotpath_rollout.py'
+          python -m unittest discover -s tests -p 'test_cronica_transito_urbano.py'
+          python -m unittest discover -s tests -p 'test_task46_integration_transaction.py'
+          python -m unittest discover -s tests -p 'test_task46_budget_regression.py'
+          python -m unittest discover -s tests -p 'test_task47_explicit_opportunity_decision_gate.py'
+          python -m unittest discover -s tests -p 'test_rules_catalog.py'
           python -m unittest discover -s tests -p 'test_mecanica_dnd_5_5e.py'
       - name: Full unit suite
         run: python -m unittest discover -s tests
