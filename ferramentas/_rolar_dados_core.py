@@ -7,43 +7,20 @@ import argparse
 import re
 import sys
 import unicodedata
-from dataclasses import dataclass
 from random import SystemRandom
 
 import ficha_ren
+import mecanica_dnd_5_5e as mechanics
 
 
 RNG = SystemRandom()
-DICE_PATTERN = re.compile(r"^\s*(?:(\d*)d(\d+))\s*([+-]\s*\d+)?\s*$", re.IGNORECASE)
 
 
-@dataclass(frozen=True)
-class DiceSpec:
-    count: int
-    sides: int
-    modifier: int = 0
-
-
-@dataclass(frozen=True)
-class DiceRoll:
-    spec: DiceSpec
-    rolls: list[int]
-
-    @property
-    def total(self) -> int:
-        return sum(self.rolls) + self.spec.modifier
-
-
-@dataclass(frozen=True)
-class D20Roll:
-    rolls: list[int]
-    chosen: int
-    bonus: int
-    mode: str
-
-    @property
-    def total(self) -> int:
-        return self.chosen + self.bonus
+DiceSpec = mechanics.DiceSpec
+DiceRoll = mechanics.DiceRoll
+D20Roll = mechanics.D20Roll
+D20Test = mechanics.D20Test
+AttackResolution = mechanics.AttackResolution
 
 
 REN_ABILITY_LABELS: dict[str, str] = {
@@ -113,41 +90,39 @@ def signed(value: int) -> str:
 
 
 def parse_dice(expression: str) -> DiceSpec:
-    match = DICE_PATTERN.match(expression)
-    if not match:
-        raise ValueError(f"Expressão de dados inválida: {expression!r}. Use formatos como d20, 1d6 ou 2d6+3.")
-
-    count_text, sides_text, modifier_text = match.groups()
-    count = int(count_text) if count_text else 1
-    sides = int(sides_text)
-    modifier = int(modifier_text.replace(" ", "")) if modifier_text else 0
-
-    if count < 1:
-        raise ValueError("A quantidade de dados deve ser pelo menos 1.")
-    if sides < 2:
-        raise ValueError("O dado deve ter pelo menos 2 lados.")
-    if count > 100:
-        raise ValueError("Quantidade de dados alta demais para esta ferramenta.")
-
-    return DiceSpec(count=count, sides=sides, modifier=modifier)
+    return mechanics.parse_dice(expression)
 
 
 def roll_dice(spec: DiceSpec) -> DiceRoll:
-    return DiceRoll(spec=spec, rolls=[RNG.randint(1, spec.sides) for _ in range(spec.count)])
+    return mechanics.roll_dice(spec, rng=RNG)
 
 
 def roll_d20(bonus: int = 0, mode: str = "normal") -> D20Roll:
-    if mode == "normal":
-        rolls = [RNG.randint(1, 20)]
-        chosen = rolls[0]
-    else:
-        rolls = [RNG.randint(1, 20), RNG.randint(1, 20)]
-        chosen = max(rolls) if mode == "vantagem" else min(rolls)
-    return D20Roll(rolls=rolls, chosen=chosen, bonus=bonus, mode=mode)
+    return mechanics.roll_d20(bonus, mode, rng=RNG)
 
 
 def critical_spec(spec: DiceSpec) -> DiceSpec:
-    return DiceSpec(count=spec.count * 2, sides=spec.sides, modifier=spec.modifier)
+    return mechanics.critical_spec(spec)
+
+
+def combine_roll_modes(*modes: str) -> str:
+    return mechanics.combine_roll_modes(*modes)
+
+
+def perform_check(bonus: int = 0, cd: int | None = None, mode: str = "normal") -> D20Test:
+    return mechanics.perform_check(bonus, cd, mode, rng=RNG)
+
+
+def perform_save(bonus: int = 0, cd: int | None = None, mode: str = "normal") -> D20Test:
+    return mechanics.perform_save(bonus, cd, mode, rng=RNG)
+
+
+def perform_attack(attack_bonus: int, ca: int | None, mode: str = "normal") -> AttackResolution:
+    return mechanics.perform_attack(attack_bonus, ca, mode, rng=RNG)
+
+
+def roll_damage(expression: str, *, critical: bool = False) -> DiceRoll:
+    return mechanics.roll_damage(expression, critical=critical, rng=RNG)
 
 
 def format_dice_roll(roll: DiceRoll) -> str:
@@ -176,24 +151,25 @@ def format_d20_roll(roll: D20Roll) -> str:
 
 
 def format_check(label: str, roll: D20Roll, cd: int | None) -> str:
+    resolution = mechanics.resolve_check_roll(roll, cd)
     text = f"{label}: {format_d20_roll(roll)}"
-    if cd is not None:
-        result = "Sucesso" if roll.total >= cd else "Falha"
-        text += f" contra CD {cd}. {result}."
+    if resolution.success is not None:
+        result = "Sucesso" if resolution.success else "Falha"
+        text += f" contra CD {resolution.target}. {result}."
     else:
         text += "."
     return text
 
 
 def attack_result(roll: D20Roll, ca: int | None) -> tuple[str, bool, bool]:
-    natural = roll.chosen
     if ca is None:
         return "", False, False
-    if natural == 1:
+    resolution = mechanics.resolve_attack_roll(roll, ca)
+    if resolution.automatic == "falha":
         return "Falha automática.", False, False
-    if natural == 20:
+    if resolution.automatic == "critico":
         return "Acerto crítico.", True, True
-    if roll.total >= ca:
+    if resolution.hit:
         return "Acerto.", True, False
     return "Erro.", False, False
 
@@ -207,18 +183,20 @@ def format_attack(
     ca: int | None,
     mode: str,
 ) -> str:
-    attack_roll = roll_d20(attack_bonus, mode)
-    result_text, hit, critical = attack_result(attack_roll, ca)
-
+    resolution = perform_attack(attack_bonus, ca, mode)
+    attack_roll = resolution.roll
     text = f"{label}: {format_d20_roll(attack_roll)}"
+
+    hit = False
+    critical = False
     if ca is not None:
+        result_text, hit, critical = attack_result(attack_roll, ca)
         text += f" contra CA {ca}. {result_text}"
     else:
         text += "."
 
     if damage_expression and (hit or ca is None):
-        spec = parse_dice(damage_expression)
-        damage_roll = roll_dice(critical_spec(spec) if critical else spec)
+        damage_roll = roll_damage(damage_expression, critical=critical)
         prefix = "Dano crítico" if critical else "Dano"
         if ca is None:
             prefix = "Dano se acertar"
@@ -231,11 +209,12 @@ def format_attack(
 
 
 def current_mode(args: argparse.Namespace) -> str:
+    modes: list[str] = []
     if getattr(args, "vantagem", False):
-        return "vantagem"
+        modes.append("vantagem")
     if getattr(args, "desvantagem", False):
-        return "desvantagem"
-    return "normal"
+        modes.append("desvantagem")
+    return combine_roll_modes(*modes)
 
 
 def resolve_key(table: dict[str, object], name: str, kind: str) -> str:
@@ -265,9 +244,9 @@ def cmd_roll(args: argparse.Namespace) -> int:
 
 
 def cmd_d20(args: argparse.Namespace) -> int:
-    roll = roll_d20(args.bonus, current_mode(args))
+    result = perform_check(args.bonus, args.cd, current_mode(args))
     label = args.label or "Teste"
-    print(format_check(label, roll, args.cd))
+    print(format_check(label, result.roll, args.cd))
     return 0
 
 
@@ -303,7 +282,8 @@ def cmd_ren_ability(args: argparse.Namespace) -> int:
     key = resolve_key(ren.abilities, args.atributo, "Atributo")
     bonus = ren.abilities[key] + args.bonus_extra
     label = args.label or f"Teste de {REN_ABILITY_LABELS[key]} (Ren)"
-    print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
+    result = perform_check(bonus, args.cd, current_mode(args))
+    print(format_check(label, result.roll, args.cd))
     return 0
 
 
@@ -312,7 +292,8 @@ def cmd_ren_skill(args: argparse.Namespace) -> int:
     key = resolve_key(ren.skills, args.nome, "Perícia")
     bonus = ren.skills[key] + args.bonus_extra
     label = args.label or f"Teste de {REN_SKILL_LABELS[key]} (Ren)"
-    print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
+    result = perform_check(bonus, args.cd, current_mode(args))
+    print(format_check(label, result.roll, args.cd))
     return 0
 
 
@@ -328,7 +309,8 @@ def cmd_ren_save(args: argparse.Namespace) -> int:
     key = resolve_key(ren.saves, args.atributo, "Salvaguarda")
     bonus = ren.saves[key] + args.bonus_extra
     label = args.label or f"Salvaguarda de {REN_SAVE_LABELS[key]} (Ren)"
-    print(format_check(label, roll_d20(bonus, current_mode(args)), args.cd))
+    result = perform_save(bonus, args.cd, current_mode(args))
+    print(format_check(label, result.roll, args.cd))
     return 0
 
 
@@ -336,7 +318,8 @@ def cmd_ren_initiative(args: argparse.Namespace) -> int:
     ren = load_ren_mechanics()
     bonus = ren.initiative + args.bonus_extra
     label = args.label or "Iniciativa (Ren)"
-    print(format_check(label, roll_d20(bonus, current_mode(args)), None))
+    result = perform_check(bonus, None, current_mode(args))
+    print(format_check(label, result.roll, None))
     return 0
 
 
@@ -362,8 +345,7 @@ def cmd_ren_damage(args: argparse.Namespace) -> int:
     ren = load_ren_mechanics()
     key = resolve_key(ren.attacks, args.nome, "Ataque")
     attack = ren.attacks[key]
-    spec = parse_dice(attack.damage)
-    result = roll_dice(critical_spec(spec) if args.critico else spec)
+    result = roll_damage(attack.damage, critical=args.critico)
     suffix = " crítico" if args.critico else ""
     print(
         f"Dano com {attack.label} (Ren{suffix}): "
@@ -375,7 +357,8 @@ def cmd_ren_damage(args: argparse.Namespace) -> int:
 def cmd_npc_d20(args: argparse.Namespace) -> int:
     label_base = args.label or "Teste"
     label = f"{label_base} ({args.nome})" if args.nome else label_base
-    print(format_check(label, roll_d20(args.bonus, current_mode(args)), args.cd))
+    result = perform_check(args.bonus, args.cd, current_mode(args))
+    print(format_check(label, result.roll, args.cd))
     return 0
 
 
