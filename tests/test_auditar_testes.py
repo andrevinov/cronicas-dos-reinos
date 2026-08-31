@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -55,6 +56,7 @@ class LiveTest(unittest.TestCase):
         self.write_test(
             "test_isolado.py",
             """
+import sys
 import tempfile
 import unittest
 
@@ -131,6 +133,75 @@ class PuroTest(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(path.read_bytes(), before)
         self.assertEqual(sorted(p.name for p in self.tests.iterdir()), ["test_puro.py"])
+
+    def test_root_definido_apenas_para_carregar_modulo_nao_conta_como_repo_real(self):
+        self.write_test(
+            "test_loader.py",
+            """
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).parents[1]
+MODULE_PATH = ROOT / "ferramentas" / "modulo.py"
+
+class LoaderTest(unittest.TestCase):
+    def test_puro(self):
+        self.assertEqual(2 + 2, 4)
+""",
+        )
+
+        report = audit.inventory(self.tests, self.root)
+        item = report["arquivos"][0]
+
+        self.assertFalse(item["usa_repo_real"])
+        self.assertIn("unitario", item["classificacoes"])
+
+    def test_task_mencionada_apenas_em_string_nao_classifica_arquivo(self):
+        self.write_test(
+            "test_texto.py",
+            """
+import unittest
+
+EXEMPLO = "test_task42_router_contract.py"
+
+class TextoTest(unittest.TestCase):
+    def test_texto(self):
+        self.assertIn("task42", EXEMPLO)
+""",
+        )
+
+        report = audit.inventory(self.tests, self.root)
+        item = report["arquivos"][0]
+
+        self.assertNotIn("task_historica", item["classificacoes"])
+        self.assertNotIn("teste_transitorio", item["candidatos"])
+
+    def test_medicao_mantem_raiz_do_repo_importavel_como_unittest_cli(self):
+        (self.root / "support_module.py").write_text("VALUE = 42\n", encoding="utf-8")
+        self.write_test(
+            "test_import_raiz_auditoria.py",
+            """
+import unittest
+import support_module
+
+class ImportRootTest(unittest.TestCase):
+    def test_import(self):
+        self.assertEqual(support_module.VALUE, 42)
+""",
+        )
+
+        try:
+            measurement, success = audit.measure_suite(
+                self.tests,
+                top=5,
+                root=self.root,
+            )
+        finally:
+            sys.modules.pop("test_import_raiz_auditoria", None)
+            sys.modules.pop("support_module", None)
+
+        self.assertTrue(success, measurement["execucao"]["problemas"])
+        self.assertEqual(measurement["execucao"]["testes_executados"], 1)
 
 
 if __name__ == "__main__":
