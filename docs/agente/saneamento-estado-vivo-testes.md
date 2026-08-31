@@ -26,19 +26,28 @@ A decisão humana de cada candidato está em:
 tests/live-state-freeze-review.yaml
 ```
 
+Durante a revisão semântica, a Task 2 também encontrou freezes **indiretos**:
+testes que chamavam uma API contra `ROOT` e só então comparavam o resultado com
+o estado do dia. Como a Task 1 não executa fluxo de dados entre módulos, esses
+casos não apareciam nos nove candidatos automáticos. Eles ficam registrados em
+`revisoes_indiretas` no mesmo manifesto.
+
 O gate:
 
 ```bash
 python ferramentas/verificar-congelamentos-estado-vivo.py
 ```
 
-reexecuta o inventário da Task 1 e falha se surgir um novo suspeito sem decisão
-registrada. O manifesto aceita apenas:
+reexecuta o inventário da Task 1 e falha se surgir um novo suspeito direto sem
+decisão registrada. O manifesto aceita apenas:
 
 - `corrigido`: o valor mutável foi substituído por invariantes/relacionamentos
   ou por fixture isolada;
 - `justificado`: o literal protege uma propriedade permanente, não o valor
   corrente da campanha.
+
+As revisões indiretas são validadas estruturalmente pelo mesmo gate e ficam
+separadas das decisões automáticas para não fingir que a heurística as detecta.
 
 ## Correções realizadas
 
@@ -115,6 +124,40 @@ O runtime real não precisa possuir exatamente um item mágico para sempre. O
 Broche do Semblante Humilde continua protegido, mas itens adicionais podem ser
 adicionados sem quebrar o teste.
 
+### Progressão Juppongatana
+
+O repo real não precisa permanecer em `0/10`, nível 7 e próximo nível 8. O teste
+passa a derivar o número de neutralizações do ledger, o nível desbloqueado da
+regra `7 + neutralizações`, os níveis pendentes da ficha corrente e a lista de
+membros restantes. O cenário exato de dez neutralizações continua isolado na
+suíte sintética.
+
+### Condições persistentes e rastros
+
+Condições e rastros existem justamente para crescer durante a campanha. Os
+testes do repo real agora comparam contadores com o estado/index corrente e com
+os limites de orçamento; os cenários vazios continuam cobertos por fixtures
+temporárias.
+
+### Direções canônicas
+
+Ponte de Kozakura, Shin-Kozakura e outras direções podem avançar de marco. O
+teste do repo real deixa de exigir estados/marcos inaugurais e passa a exigir
+que a projeção de `status_view()` seja exatamente coerente com o estado
+persistido e com a dependência atual.
+
+### Ciclo de NPCs e agentes
+
+A primeira morte canônica não pode tornar a CI vermelha. O registro terminal de
+NPCs agora pode conter mortos, desde que o status reflita o registro e cada
+entrada mantenha fonte canônica válida.
+
+Da mesma forma, Kurobane, Shizune, Pan Chu e Corven podem mudar de presença ou
+estado. Os testes consultam o fragmento corrente e exigem que a elegibilidade
+local seja o resultado da regra `local_eligibility()`, em vez de congelar
+`presente`, `indeterminado`, `latente`, `sim` ou `não` do dia em que o teste foi
+escrito.
+
 ## O que permanece literal de propósito
 
 Fixtures sintéticas, contratos de orçamento, decisões históricas, IDs de regras
@@ -135,6 +178,10 @@ Uma mudança futura não deve fazer teste falhar simplesmente porque:
 - tempo ou cena avançaram;
 - uma suspeita legítima surgiu;
 - reputação pública mudou;
+- um Juppongatana foi neutralizado e Ren subiu de nível;
+- uma condição, rastro ou morte foi registrada;
+- uma direção avançou de marco;
+- presença/elegibilidade de um agente mudou de forma canônica;
 - novas relações, papéis, agentes ou itens foram acrescentados.
 
 Se um novo teste precisar congelar um valor histórico, o cenário deve ser
