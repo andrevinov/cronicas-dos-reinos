@@ -9,6 +9,30 @@ text = text.replace('(\"Golpe desarmado\", 7, \"1d6+4\", \"contundente\")', '(\"
 text = text.replace('(\"Wakizashi\", 7, \"1d6+4\", \"perfurante\")', '(\"Wakizashi\", 7, \"1d8+4\", \"perfurante\")')
 path.write_text(text, encoding="utf-8")
 
+# Metadados de migração dentro da ficha descrevem capacidades removidas; não podem
+# reaparecer como recursos jogáveis na consulta `contexto recurso`.
+path = Path("ferramentas/recursos.py")
+text = path.read_text(encoding="utf-8")
+if 'NON_EXECUTABLE_RESOURCE_KEYS = {"removidas_na_5_5e"}' not in text:
+    marker = 'RESOURCE_ROOTS: tuple[tuple[tuple[str, ...], str], ...] = (\n'
+    if marker not in text:
+        raise SystemExit("resource roots marker not found")
+    text = text.replace(
+        marker,
+        'NON_EXECUTABLE_RESOURCE_KEYS = {"removidas_na_5_5e"}\n\n' + marker,
+        1,
+    )
+    old = '''        for key, child in value.items():
+            if key == "nome":
+                continue'''
+    new = '''        for key, child in value.items():
+            if key == "nome" or str(key) in NON_EXECUTABLE_RESOURCE_KEYS:
+                continue'''
+    if old not in text:
+        raise SystemExit("resource collector marker not found")
+    text = text.replace(old, new, 1)
+path.write_text(text, encoding="utf-8")
+
 # Passos sem Pegadas não é mais recurso da ficha 5.5e; a consulta L2 ainda deve
 # encontrar o efeito já lançado, marcado como legado 2014 e não recastável.
 path = Path("tests/test_contexto.py")
