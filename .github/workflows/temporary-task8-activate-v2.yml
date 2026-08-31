@@ -25,6 +25,8 @@ jobs:
         run: python .github/task8_prepatch.py
       - name: Apply cutover
         run: python .github/task8_apply.py
+      - name: Update live assertions
+        run: python .github/task8_postpatch.py
       - name: Regenerate derived runtime
         run: |
           python ferramentas/gerar-runtime.py
@@ -61,6 +63,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
-          git reset .github/task8_apply.py .github/task8_prepatch.py .github/workflows/temporary-task8-audit.yml .github/workflows/temporary-task8-activate.yml .github/workflows/temporary-task8-activate-v2.yml || true
+          git reset .github/task8_apply.py .github/task8_prepatch.py .github/task8_postpatch.py .github/workflows/temporary-task8-audit.yml .github/workflows/temporary-task8-activate-v2.yml || true
           git commit -m 'feat: activate D&D 5.5e ruleset'
           git push origin HEAD:task/activate-5-5e
