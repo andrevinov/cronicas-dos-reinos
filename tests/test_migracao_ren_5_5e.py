@@ -77,7 +77,10 @@ class Ren55MigrationTest(unittest.TestCase):
         self.assertEqual(metabolism["recarga"], "1 uso por descanso longo")
         deflect = features["deflect_attacks"]
         self.assertEqual(deflect["reducao_ren_nivel_7"], "1d10 + 11")
-        self.assertEqual(deflect["redirecionar_se_reduzir_a_zero"]["dano_falha"], "2d8 + 4")
+        redirect = deflect["redirecionar_se_reduzir_a_zero"]
+        self.assertEqual(redirect["alcance_se_ataque_corpo_a_corpo_pes"], 5)
+        self.assertEqual(redirect["alcance_se_ataque_a_distancia_pes"], 60)
+        self.assertEqual(redirect["dano_falha"], "2d8 + 4")
         self.assertEqual(features["slow_fall"]["reducao_ren_nivel_7"], 35)
         stunning = features["stunning_strike"]
         self.assertEqual(stunning["limite"], "uma vez por turno")
