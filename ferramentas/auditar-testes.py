@@ -104,14 +104,19 @@ class _StaticVisitor(ast.NodeVisitor):
         self.names: set[str] = set()
         self.imports: set[str] = set()
         self.test_nodes: list[tuple[str, ast.AST]] = []
+        self.class_names: list[str] = []
         self.literal_assert_lines: list[int] = []
         self.read_paths: set[str] = set()
-        self.root_references = 0
+        self._function_depth = 0
+        self.runtime_root_references = 0
 
     def visit_Name(self, node: ast.Name) -> None:
         self.names.add(node.id)
-        if node.id in {"ROOT", "REPO", "REPO_ROOT", "ROOT_DIR"}:
-            self.root_references += 1
+        if (
+            self._function_depth > 0
+            and node.id in {"ROOT", "REPO", "REPO_ROOT", "ROOT_DIR"}
+        ):
+            self.runtime_root_references += 1
         self.generic_visit(node)
 
     def visit_Import(self, node: ast.Import) -> None:
@@ -141,15 +146,27 @@ class _StaticVisitor(ast.NodeVisitor):
                 self.bindings[node.target.id] = resolved
         self.generic_visit(node)
 
+    def visit_ClassDef(self, node: ast.ClassDef) -> None:
+        self.class_names.append(node.name)
+        self.generic_visit(node)
+
     def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
         if node.name.startswith("test"):
             self.test_nodes.append((node.name, node))
-        self.generic_visit(node)
+        self._function_depth += 1
+        try:
+            self.generic_visit(node)
+        finally:
+            self._function_depth -= 1
 
     def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
         if node.name.startswith("test"):
             self.test_nodes.append((node.name, node))
-        self.generic_visit(node)
+        self._function_depth += 1
+        try:
+            self.generic_visit(node)
+        finally:
+            self._function_depth -= 1
 
     def visit_Assert(self, node: ast.Assert) -> None:
         if _assertion_has_literal_equality(node):
@@ -221,41 +238,72 @@ def _test_fingerprint(node: ast.AST) -> str:
 
 def _classify(
     relpath: str,
-    source: str,
     visitor: _StaticVisitor,
     live_reads: list[str],
     uses_isolation: bool,
 ) -> list[str]:
-    haystack = f"{relpath}\n{source}".lower()
+    identifiers = " ".join(
+        [
+            relpath,
+            *visitor.class_names,
+            *(name for name, _node in visitor.test_nodes),
+        ]
+    ).lower()
     categories: set[str] = set()
 
     if live_reads:
         categories.add("estado_vivo")
-    if "contrato" in haystack or "contract" in haystack:
+    if "contrato" in identifiers or "contract" in identifiers:
         categories.add("contrato")
-    if any(token in haystack for token in ("snapshot", "historico", "histórico", "baseline_historica")):
+    if any(
+        token in identifiers
+        for token in ("snapshot", "historico", "histórico", "baseline_historica")
+    ):
         categories.add("snapshot_historico")
-    if any(token in haystack for token in ("regressao", "regressão", "regression")):
+    if any(
+        token in identifiers
+        for token in ("regressao", "regressão", "regression")
+    ):
         categories.add("regressao")
-    if Path(relpath).name.startswith("smoke_") or "smoke" in haystack:
+    if Path(relpath).name.startswith("smoke_") or "smoke" in identifiers:
         categories.add("smoke")
-    if any(token in haystack for token in ("budget", "orcamento", "orçamento", "performance", "benchmark", "latencia", "latência")):
+    if any(
+        token in identifiers
+        for token in (
+            "budget",
+            "orcamento",
+            "orçamento",
+            "performance",
+            "benchmark",
+            "latencia",
+            "latência",
+        )
+    ):
         categories.add("performance")
-    if any(token in haystack for token in ("migracao", "migração", "migration", "migrar")):
+    if any(
+        token in identifiers
+        for token in ("migracao", "migração", "migration", "migrar")
+    ):
         categories.add("migracao")
-    if TASK_RE.search(haystack):
+    if TASK_RE.search(identifiers):
         categories.add("task_historica")
 
     uses_subprocess = any(name.startswith("subprocess") for name in visitor.imports)
-    uses_real_repo = visitor.root_references > 0 or any(
-        path.startswith(("<ROOT>/", "estado/", "runtime/", "personagens/", "sessoes/"))
+    uses_real_repo = visitor.runtime_root_references > 0 or any(
+        path.startswith(("estado/", "runtime/", "personagens/", "sessoes/"))
         for path in visitor.read_paths
     )
-    if uses_subprocess or uses_real_repo or "integration" in haystack or "integracao" in haystack:
+    if (
+        uses_subprocess
+        or uses_real_repo
+        or "integration" in identifiers
+        or "integracao" in identifiers
+    ):
         categories.add("integracao")
 
     if not (uses_subprocess or uses_real_repo or live_reads) and (
-        uses_isolation or not categories.intersection({"integracao", "estado_vivo"})
+        uses_isolation
+        or not categories.intersection({"integracao", "estado_vivo"})
     ):
         categories.add("unitario")
 
@@ -291,8 +339,8 @@ def _scan_file(path: Path, root: Path) -> dict[str, Any]:
         or "/fixtures/" in source.replace("\\", "/")
     )
     live_reads = sorted(path for path in visitor.read_paths if _is_live_path(path))
-    uses_real_repo = visitor.root_references > 0 or bool(live_reads)
-    categories = _classify(relpath, source, visitor, live_reads, uses_isolation)
+    uses_real_repo = visitor.runtime_root_references > 0 or bool(live_reads)
+    categories = _classify(relpath, visitor, live_reads, uses_isolation)
 
     candidates: list[str] = []
     if live_reads and visitor.literal_assert_lines:
@@ -421,11 +469,20 @@ def inventory(tests_dir: Path = DEFAULT_TESTS_DIR, root: Path = ROOT) -> dict[st
 
 
 class _TimingResult(unittest.TextTestResult):
-    def __init__(self, stream: Any, descriptions: bool, verbosity: int) -> None:
+    def __init__(
+        self,
+        stream: Any,
+        descriptions: bool,
+        verbosity: int,
+        *,
+        root: Path = ROOT,
+    ) -> None:
         super().__init__(stream, descriptions, verbosity)
+        self.root = root
         self._starts: dict[str, float] = {}
         self.timings: list[dict[str, Any]] = []
         self.status_by_id: dict[str, str] = {}
+        self.problems: list[dict[str, str]] = []
 
     def startTest(self, test: unittest.case.TestCase) -> None:
         test_id = test.id()
@@ -435,10 +492,24 @@ class _TimingResult(unittest.TextTestResult):
 
     def addFailure(self, test: unittest.case.TestCase, err: Any) -> None:
         self.status_by_id[test.id()] = "failure"
+        self.problems.append(
+            {
+                "teste": test.id(),
+                "tipo": "failure",
+                "detalhe": self._exc_info_to_string(err, test),
+            }
+        )
         super().addFailure(test, err)
 
     def addError(self, test: unittest.case.TestCase, err: Any) -> None:
         self.status_by_id[test.id()] = "error"
+        self.problems.append(
+            {
+                "teste": test.id(),
+                "tipo": "error",
+                "detalhe": self._exc_info_to_string(err, test),
+            }
+        )
         super().addError(test, err)
 
     def addSkip(self, test: unittest.case.TestCase, reason: str) -> None:
@@ -452,7 +523,7 @@ class _TimingResult(unittest.TextTestResult):
         module_name = test.__class__.__module__
         module = sys.modules.get(module_name)
         module_file = getattr(module, "__file__", None)
-        arquivo = _relative(Path(module_file), ROOT) if module_file else None
+        arquivo = _relative(Path(module_file), self.root) if module_file else None
         self.timings.append(
             {
                 "teste": test_id,
@@ -464,22 +535,39 @@ class _TimingResult(unittest.TextTestResult):
         super().stopTest(test)
 
 
-def measure_suite(tests_dir: Path = DEFAULT_TESTS_DIR, top: int = 20) -> tuple[dict[str, Any], bool]:
+def measure_suite(
+    tests_dir: Path = DEFAULT_TESTS_DIR,
+    top: int = 20,
+    root: Path = ROOT,
+) -> tuple[dict[str, Any], bool]:
     """Executa a mesma discovery padrão e mede cada caso individualmente."""
     old_cwd = Path.cwd()
+    old_sys_path = list(sys.path)
     try:
-        os.chdir(ROOT)
-        suite = unittest.defaultTestLoader.discover(str(tests_dir), pattern=DISCOVERY_PATTERN)
+        os.chdir(root)
+        root_text = str(root.resolve())
+        if root_text not in sys.path:
+            sys.path.insert(0, root_text)
+        suite = unittest.defaultTestLoader.discover(
+            str(tests_dir),
+            pattern=DISCOVERY_PATTERN,
+        )
         stream = io.StringIO()
         runner = unittest.TextTestRunner(
             stream=stream,
             verbosity=0,
-            resultclass=_TimingResult,
+            resultclass=lambda stream, descriptions, verbosity: _TimingResult(
+                stream,
+                descriptions,
+                verbosity,
+                root=root,
+            ),
         )
         started = time.perf_counter()
         result = runner.run(suite)
         total = time.perf_counter() - started
     finally:
+        sys.path[:] = old_sys_path
         os.chdir(old_cwd)
 
     assert isinstance(result, _TimingResult)
@@ -512,6 +600,7 @@ def measure_suite(tests_dir: Path = DEFAULT_TESTS_DIR, top: int = 20) -> tuple[d
         "erros": len(result.errors),
         "pulados": len(result.skipped),
         "sucesso": result.wasSuccessful(),
+        "problemas": result.problems,
     }
     measurement = {
         "execucao": execution,
