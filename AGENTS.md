@@ -114,16 +114,16 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, histórico, formatos e visibilidade. **Testes:** `docs/agente/politica-de-testes.md`; perfis: `docs/agente/perfis-de-testes.md`.
+Preservar UTF-8/histórico/formatos/visibilidade. Testes: `docs/agente/politica-de-testes.md`; perfis: `docs/agente/perfis-de-testes.md`.
 
 - estado vivo → invariantes/relações;
-- absoluto mutável → só **fixtures/snapshots/cenários temporários/histórico imutável**;
-- **snapshot histórico** → declarar natureza e motivo;
+- absoluto mutável → **fixtures/snapshots/cenários temporários/histórico imutável**;
+- **snapshot histórico** → natureza+motivo;
 - permanente → **nome de domínio**, não `test_taskNN_*`;
-- remoção → **propriedade protegida** + destino da cobertura;
-- `ROOT` só quando necessário; preferir `TemporaryDirectory` se isolável.
+- remoção → **propriedade protegida** + destino;
+- `ROOT`: preferir `TemporaryDirectory` se isolável.
 
-`auditar-testes.py` é heurística read-only: suspeito exige revisão semântica, não veredito. Gate local: `poetry run preflight`; suíte integral: `poetry run test-full`. CI mantém os gates obrigatórios.
+`auditar-testes.py`: heurística read-only; suspeito requer revisão semântica, não veredito.
 
 ## 10. Cobertura do manual anterior
 
