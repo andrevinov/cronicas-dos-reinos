@@ -25,7 +25,7 @@ sistema:
           task_3_ficha_fonte_unica: true
           task_4_nucleo_mecanico: true
           task_5_conversao_ren: true
-          task_6_integracao_cronica: false
+          task_6_integracao_cronica: true
           task_7_gate_adnd: false
           integracao_completa: false
           preflight_completo: false
@@ -81,6 +81,7 @@ estrutura:
     adaptador_ficha_ren_5_5e: "ferramentas/ficha_ren_5_5e.py"
     personagem_resumo_poderes_5_5e: "personagens/jogador/resumo-de-poderes-5-5e.md"
     nucleo_mecanico_5_5e: "ferramentas/mecanica_dnd_5_5e.py"
+    contrato_mecanico_cronica: "ferramentas/mecanica_cronica.py"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
     regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
     regiao_inicial_lugares: "cenario/regioes/ravens-bluff/lugares-iniciais.md"

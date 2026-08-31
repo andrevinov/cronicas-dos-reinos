@@ -12,6 +12,7 @@ todo ``cronica preparar``.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -25,6 +26,7 @@ import consolidar
 import contratos_operacionais as _contracts
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
+import mecanica_cronica as _mechanics
 import progressao_juppongatana
 import retomada_cronica
 import sessoes
@@ -96,6 +98,7 @@ def prepare(*args, **kwargs):
     if repo is None:
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
     signal = kwargs.pop("sidequest_signal", _SIDEQUEST_DECISION_UNSET)
+    mechanical_spec = kwargs.pop("mechanical_spec", None)
     if signal is _SIDEQUEST_DECISION_UNSET:
         raise _core.CronicaError(
             "Task47: cronica preparar exige decisão explícita de oportunidade de sidequest; "
@@ -106,17 +109,35 @@ def prepare(*args, **kwargs):
         return gate
     base = _hot.prepare(*args, **kwargs)
     if signal is None:
-        return base
+        prepared = base
+    else:
+        try:
+            prepared = _sidequests46.integrate_prepare(
+                Path(repo),
+                base,
+                signal_raw=signal,
+                decode_ticket=decode_ticket,
+                encode_ticket=_core.encode_ticket,
+                now=kwargs.get("now"),
+            )
+        except _sidequests46.EmergentSidequestIntegrationError as exc:
+            raise _core.CronicaError(str(exc)) from exc
     try:
-        return _sidequests46.integrate_prepare(
+        output_budget = (
+            _sidequests46.MAX_COMBINED_PREP_BYTES
+            if "sidequest_emergente" in prepared
+            else _core.MAX_PREP_OUTPUT_BYTES
+        )
+        return _mechanics.attach_to_prepare(
             Path(repo),
-            base,
-            signal_raw=signal,
+            prepared,
+            mechanical_spec,
             decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket,
-            now=kwargs.get("now"),
+            max_ticket_chars=_core.MAX_TICKET_CHARS,
+            max_output_bytes=output_budget,
         )
-    except _sidequests46.EmergentSidequestIntegrationError as exc:
+    except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
 
 
@@ -158,12 +179,16 @@ def _conclude_base(repo: Path, token: str, transaction: dict):
 
 def conclude(repo: Path, token: str, transaction: dict):
     payload, meta = _task46_meta(token)
+    try:
+        mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
+    except _mechanics.MechanicalContractError as exc:
+        raise _core.CronicaError(str(exc)) from exc
     if meta is None:
-        return _conclude_base(repo, token, transaction)
+        return _conclude_base(repo, token, mechanical_writer_tx)
 
     ticket_id_original = _core.ticket_id(token)
     base_token = _base_token(payload)
-    writer_tx = _sidequests46.writer_transaction(transaction)
+    writer_tx = _sidequests46.writer_transaction(mechanical_writer_tx)
     try:
         journal = _sidequests46.recover_matching_journal(
             repo, ticket_id=ticket_id_original, transaction=transaction
@@ -219,20 +244,29 @@ def conclude(repo: Path, token: str, transaction: dict):
     return result
 
 
-def register(*args, revalidate: bool = True, **kwargs):
-    token = args[1] if len(args) > 1 else kwargs.get("token")
-    if isinstance(token, str):
-        _, meta = _task46_meta(token)
-        if meta is not None:
-            raise _core.CronicaError(
-                "reparo Task46 repete cronica concluir com a mesma transação; registrar isolado não instala a sidequest"
-            )
+def register(
+    repo: Path,
+    token: str,
+    transaction: dict,
+    *,
+    revalidate: bool = True,
+):
+    payload, meta = _task46_meta(token)
+    if meta is not None:
+        raise _core.CronicaError(
+            "reparo Task46 repete cronica concluir com a mesma transação; registrar isolado não instala a sidequest"
+        )
+    try:
+        writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
+    except _mechanics.MechanicalContractError as exc:
+        raise _core.CronicaError(str(exc)) from exc
     original = _core._revalidate_ticket
     _core._revalidate_ticket = globals()["_revalidate_ticket"]
     try:
         return _hot.register(
-            *args,
-            **kwargs,
+            repo,
+            token,
+            writer_tx,
             revalidate_ticket=revalidate,
         )
     finally:
@@ -264,6 +298,13 @@ def build_parser() -> argparse.ArgumentParser:
         help=(
             "deslocamento material pela malha urbana; usa o mesmo preparar/concluir, "
             "sem criar local canônico nem chamada adicional"
+        ),
+    )
+    prepare_parser.add_argument(
+        "--mecanica-json",
+        help=(
+            "JSON com regras e obrigações mecânicas; fica congelado no mesmo ticket "
+            "de preparar e não cria endpoint nem chamada de orquestração adicional"
         ),
     )
     sidequest_decision = prepare_parser.add_mutually_exclusive_group(required=True)
@@ -362,6 +403,19 @@ def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
     return fields
 
 
+def _mechanical_spec_from_args(args: argparse.Namespace) -> dict | None:
+    raw = getattr(args, "mecanica_json", None)
+    if raw is None:
+        return None
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise _core.CronicaError(f"--mecanica-json inválido: {exc.msg}") from exc
+    if not isinstance(data, dict):
+        raise _core.CronicaError("--mecanica-json precisa representar um objeto JSON")
+    return data
+
+
 def _run_session(repo: Path, command: str):
     if command == "status":
         return retomada_cronica.decorate_status(repo, ciclo_cronica.session_status(repo))
@@ -401,6 +455,7 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_informacao=args.abordagem_informacao,
             approach_adequacao=args.abordagem_adequacao,
             urban_transit=getattr(args, "transito_urbano", None),
+            mechanical_spec=_mechanical_spec_from_args(args),
             sidequest_signal=_sidequest_signal_from_args(args),
         )
     token = _ticket_argument(args.ticket)
