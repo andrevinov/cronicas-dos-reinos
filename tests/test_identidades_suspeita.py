@@ -30,9 +30,9 @@ class IdentityRegistryTest(unittest.TestCase):
 
     def test_estado_vazio_nao_inventa_suspeita_retroativa(self):
         registry = identidades.load_registry(ROOT)
-        projected = identidades.project(identidades.empty_state(), registry)
-        self.assertEqual(projected["suspeitas"], [])
-        self.assertEqual(projected["confirmacoes"], [])
+        state = identidades.validate_state(None, registry)
+        self.assertEqual(state, identidades.empty_state())
+        self.assertIsNone(identidades.project(state, registry))
 
 
 class IdentityEvidenceTest(unittest.TestCase):
