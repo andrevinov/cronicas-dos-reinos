@@ -18,11 +18,17 @@ import mundo
 
 
 class CicloNpcsRepositoryTest(unittest.TestCase):
-    def test_registro_real_comeca_valido_e_sem_mortes_retroativas(self):
+    def test_registro_real_reflete_mortes_canonicas_sem_exigir_lista_vazia(self):
         result = ciclo_npcs.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
+        registry = ciclo_npcs.load_registry(ROOT)
         status = ciclo_npcs.status(ROOT)
-        self.assertEqual(status["mortos"], [])
+        self.assertEqual(status["mortos"], sorted(registry["mortos"]))
+        self.assertEqual(status["quantidade"], len(registry["mortos"]))
+        self.assertEqual(status["fontes_lidas"], [ciclo_npcs.REGISTRY.as_posix()])
+        for npc_id, item in registry["mortos"].items():
+            self.assertEqual(item["estado"], "morto", npc_id)
+            self.assertTrue(item["fonte"], npc_id)
 
 
 class CicloNpcsSyntheticTest(unittest.TestCase):
