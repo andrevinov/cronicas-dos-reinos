@@ -228,7 +228,7 @@ jobs:
           test -f ferramentas/auditoria-final.py
           test -f docs/agente/auditoria-final.md
           test -f baseline/auditoria-final-step-12.md
-          python ferramentas/auditoria-final.py --json > /tmp/auditoria-final.json
+          python ferramentas/auditoria-final.py --json --sem-testes > /tmp/auditoria-final.json
           python - <<'PY'
           import json
           import yaml
@@ -239,6 +239,7 @@ jobs:
           assert all(gate['ok'] is True for gate in report['gates'])
           by_name = {gate['nome']: gate for gate in report['gates']}
           baseline = by_name['regressoes_e_baseline']['detalhe']
+          assert baseline['suite_completa_executada'] is False
           assert 'baseline histórica' in baseline['baseline_historica'].lower()
           hot = by_name['retomada_somente_camada_quente']['detalhe']
           assert hot['transcricao_lida'] is False

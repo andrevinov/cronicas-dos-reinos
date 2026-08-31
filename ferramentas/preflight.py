@@ -130,7 +130,7 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
             ),
             Check(
                 "auditoria final e retomada",
-                (python, "ferramentas/auditoria-final.py", "--json"),
+                (python, "ferramentas/auditoria-final.py", "--json", "--sem-testes"),
                 "retomada",
             ),
         ]
