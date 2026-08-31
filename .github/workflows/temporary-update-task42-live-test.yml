@@ -24,19 +24,23 @@ jobs:
 
           path = Path("tests/test_canon_bridge_rewriter.py")
           text = path.read_text(encoding="utf-8")
-          old = '''    def test_estado_real_comeca_vazio_e_valido(self):
-        result = canon_bridge.check(ROOT)
-        self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["reservas"], 0)
-        self.assertEqual(result["resolucoes"], 0)
-'''
-          new = '''    def test_estado_real_permanece_valido_com_reservas_canonicas(self):
-        result = canon_bridge.check(ROOT)
-        self.assertTrue(result["ok"], result["erros"])
-        state = canon_bridge.load_state(ROOT)
-        self.assertEqual(result["reservas"], len(state["reservas"]))
-        self.assertEqual(result["resolucoes"], len(state["resolucoes"]))
-'''
+          old = "\n".join([
+              "    def test_estado_real_comeca_vazio_e_valido(self):",
+              "        result = canon_bridge.check(ROOT)",
+              "        self.assertTrue(result[\"ok\"], result[\"erros\"])",
+              "        self.assertEqual(result[\"reservas\"], 0)",
+              "        self.assertEqual(result[\"resolucoes\"], 0)",
+              "",
+          ])
+          new = "\n".join([
+              "    def test_estado_real_permanece_valido_com_reservas_canonicas(self):",
+              "        result = canon_bridge.check(ROOT)",
+              "        self.assertTrue(result[\"ok\"], result[\"erros\"])",
+              "        state = canon_bridge.load_state(ROOT)",
+              "        self.assertEqual(result[\"reservas\"], len(state[\"reservas\"]))",
+              "        self.assertEqual(result[\"resolucoes\"], len(state[\"resolucoes\"]))",
+              "",
+          ])
           if old not in text:
               raise SystemExit("stale Task42 live-state assertion not found")
           path.write_text(text.replace(old, new, 1), encoding="utf-8")
