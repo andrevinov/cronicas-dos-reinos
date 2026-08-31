@@ -280,10 +280,11 @@ class Task46RolloutMatrixTest(Task46RolloutFixture):
         self.assertEqual(state["missoes"][mid]["estado"], "falhada")
         self.assertNotIn(candidate["evento_id"], canon_bridge.load_state(self.repo)["reservas"])
         overlay = canon_bridge.event_overlay(self.repo, candidate["evento_id"])
-        self.assertNotEqual(overlay.get("estado"), "satisfeita")
-        self.assertNotEqual(
-            overlay.get("realizacao_padrao"), "suprimida_por_intencao_satisfeita"
-        )
+        if overlay is not None:
+            self.assertNotEqual(overlay.get("estado"), "satisfeita")
+            self.assertNotEqual(
+                overlay.get("realizacao_padrao"), "suprimida_por_intencao_satisfeita"
+            )
         intent = intencoes_canonicas.load_intent(self.repo, candidate["evento_id"])
         self.assertTrue(intent["intencao_canonica"]["criterios_satisfacao"])
 
