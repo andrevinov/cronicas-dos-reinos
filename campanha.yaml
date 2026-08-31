@@ -24,7 +24,7 @@ sistema:
           task_2_catalogo: true
           task_3_ficha_fonte_unica: true
           task_4_nucleo_mecanico: true
-          task_5_conversao_ren: false
+          task_5_conversao_ren: true
           task_6_integracao_cronica: false
           task_7_gate_adnd: false
           integracao_completa: false
@@ -77,6 +77,9 @@ estrutura:
     ferramentas: "ferramentas/README.md"
     rolador_de_dados: "ferramentas/rolar-dados.py"
     adaptador_ficha_ren: "ferramentas/ficha_ren.py"
+    migracao_ficha_ren_5_5e: "personagens/jogador/migracao-5-5e.yaml"
+    adaptador_ficha_ren_5_5e: "ferramentas/ficha_ren_5_5e.py"
+    personagem_resumo_poderes_5_5e: "personagens/jogador/resumo-de-poderes-5-5e.md"
     nucleo_mecanico_5_5e: "ferramentas/mecanica_dnd_5_5e.py"
     regiao_inicial: "cenario/regioes/ravens-bluff/visao-geral.md"
     regiao_inicial_fontes: "cenario/regioes/ravens-bluff/fontes.md"
