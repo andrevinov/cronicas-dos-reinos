@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Confere se todo congelamento suspeito de estado vivo recebeu revisão semântica."""
+"""Confere se congelamentos de estado vivo receberam revisão semântica."""
 from __future__ import annotations
 
 import argparse
@@ -28,7 +28,7 @@ def _load_auditor():
     return module
 
 
-def load_review(repo: Path) -> dict[str, dict[str, str]]:
+def _load_document(repo: Path) -> dict[str, Any]:
     path = repo / REVIEW
     try:
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -36,12 +36,22 @@ def load_review(repo: Path) -> dict[str, dict[str, str]]:
         raise LiveStateFreezeReviewError(f"revisão ausente: {REVIEW.as_posix()}") from exc
     except yaml.YAMLError as exc:
         raise LiveStateFreezeReviewError(f"YAML inválido em {REVIEW.as_posix()}: {exc}") from exc
-
     if not isinstance(data, dict) or data.get("schema_revisao_congelamento_estado_vivo") != 1:
         raise LiveStateFreezeReviewError("revisão de estado vivo precisa usar schema 1")
-    files = data.get("arquivos")
-    if not isinstance(files, dict) or not files:
-        raise LiveStateFreezeReviewError("revisão precisa declarar arquivos")
+    return data
+
+
+def _validate_section(
+    repo: Path,
+    files: Any,
+    *,
+    label: str,
+    required: bool,
+) -> dict[str, dict[str, str]]:
+    if files is None and not required:
+        return {}
+    if not isinstance(files, dict) or (required and not files):
+        raise LiveStateFreezeReviewError(f"revisão precisa declarar {label}")
 
     clean: dict[str, dict[str, str]] = {}
     for rel, entry in files.items():
@@ -63,14 +73,35 @@ def load_review(repo: Path) -> dict[str, dict[str, str]]:
     return clean
 
 
+def load_review(repo: Path) -> dict[str, dict[str, str]]:
+    data = _load_document(repo)
+    return _validate_section(repo, data.get("arquivos"), label="arquivos", required=True)
+
+
+def load_indirect_review(repo: Path) -> dict[str, dict[str, str]]:
+    data = _load_document(repo)
+    return _validate_section(
+        repo,
+        data.get("revisoes_indiretas"),
+        label="revisoes_indiretas",
+        required=False,
+    )
+
+
 def check(repo: Path = ROOT) -> dict[str, Any]:
     repo = repo.resolve()
     auditor = _load_auditor()
     inventory = auditor.inventory(repo / "tests", repo)
     suspects = set(inventory["candidatos"]["congelamento_suspeito"])
     reviews = load_review(repo)
+    indirect = load_indirect_review(repo)
     reviewed = suspects.intersection(reviews)
     unreviewed = sorted(suspects - set(reviews))
+    overlap = sorted(set(reviews).intersection(indirect))
+    if overlap:
+        raise LiveStateFreezeReviewError(
+            "arquivo não pode aparecer como revisão direta e indireta: " + ", ".join(overlap)
+        )
     return {
         "schema_verificacao_congelamento_estado_vivo": 1,
         "ok": not unreviewed,
@@ -78,6 +109,7 @@ def check(repo: Path = ROOT) -> dict[str, Any]:
         "revisados": sorted(reviewed),
         "nao_revisados": unreviewed,
         "decisoes": {rel: reviews[rel] for rel in sorted(reviews)},
+        "revisoes_indiretas": {rel: indirect[rel] for rel in sorted(indirect)},
     }
 
 
@@ -96,8 +128,10 @@ def main(argv: list[str] | None = None) -> int:
             print(f"- {rel}")
         return 1
     print(
-        "OK — congelamentos suspeitos de estado vivo possuem revisão semântica explícita "
-        f"({len(report['revisados'])} heurísticos correntes; {len(report['decisoes'])} decisões registradas)."
+        "OK — congelamentos de estado vivo possuem revisão semântica explícita "
+        f"({len(report['revisados'])} heurísticos correntes; "
+        f"{len(report['decisoes'])} decisões da Task 1; "
+        f"{len(report['revisoes_indiretas'])} revisões indiretas)."
     )
     return 0
 
