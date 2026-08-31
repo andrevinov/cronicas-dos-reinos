@@ -123,7 +123,7 @@ Preservar UTF-8, histórico e visibilidade. Testes: `docs/agente/politica-de-tes
 - remoção → **propriedade protegida** + destino;
 - `ROOT`: preferir `TemporaryDirectory` se isolável.
 
-`auditar-testes.py`: heurística read-only; suspeito requer revisão semântica, não veredito.
+`auditar-testes.py`: heurística read-only; suspeito requer revisão, não veredito.
 
 ## 10. Cobertura do manual anterior
 
