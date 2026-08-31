@@ -2,9 +2,9 @@
 """Telemetria pós-hoc de rollout com atribuição de sistemas narrativos.
 
 O analisador schema 3 permanece congelado em ``_analisar_rollout_core.py``. Esta
-camada preserva o schema público anterior e acrescenta a extensão independente
-``narrative_systems_schema: 1`` para orquestração e sistemas narrativos. Nada aqui
-roda durante o jogo ou escreve no repositório.
+camada preserva o schema público anterior e acrescenta extensões independentes
+para orquestração/sistemas narrativos e, na Task47, cobertura da decisão explícita
+de oportunidade de sidequest. Nada aqui roda durante o jogo ou escreve no repo.
 """
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ for _name in dir(_core):
 
 SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 1
+OPPORTUNITY_DECISION_SCHEMA = 1
 
 _BASE_CLASSIFY_TOOL = _core._classify_tool
 _BASE_ACCESS_LEVEL = _core._access_level_from_command
@@ -159,6 +160,21 @@ def _orchestration_phase(command: str) -> str | None:
     return None
 
 
+def _sidequest_decision_from_command(command: str) -> str | None:
+    if _orchestration_phase(command) != "preparar":
+        return None
+    lower = " ".join(command.casefold().split())
+    opportunity = "--oportunidade-sidequest" in lower
+    declined = "--sem-oportunidade-sidequest" in lower
+    if opportunity and declined:
+        return "conflito"
+    if opportunity:
+        return "oportunidade"
+    if declined:
+        return "sem_oportunidade"
+    return "ausente"
+
+
 def _narrative_systems_from_command(command: str) -> set[str]:
     lower = command.casefold()
     result: set[str] = set()
@@ -240,6 +256,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "call_id": cid,
                     "command": command,
                     "orchestration_phase": _orchestration_phase(command),
+                    "sidequest_decision": _sidequest_decision_from_command(command),
                     "narrative_systems": _narrative_systems_from_command(command),
                     "output_seen": False,
                 }
@@ -272,6 +289,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
 
 def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     phases: Counter[str] = Counter()
+    decisions: Counter[str] = Counter()
     system_calls: Counter[str] = Counter()
     system_turns: Counter[str] = Counter()
     pair_turns = 0
@@ -283,6 +301,9 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
             if isinstance(phase, str):
                 phases[phase] += 1
                 per_turn_phases.append(phase)
+            decision = call.get("sidequest_decision")
+            if isinstance(decision, str):
+                decisions[decision] += 1
             for system in call.get("narrative_systems") or set():
                 if system in NARRATIVE_SYSTEM_KEYS:
                     system_calls[system] += 1
@@ -293,6 +314,9 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     n = len(turns)
     observed = [system for system in NARRATIVE_SYSTEM_KEYS if system_turns[system]]
     orchestration_calls = sum(phases.values())
+    prepare_calls = sum(decisions.values())
+    valid_decisions = decisions["oportunidade"] + decisions["sem_oportunidade"]
+    violations = decisions["ausente"] + decisions["conflito"]
     inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in turn["calls"]))
     return {
         "orchestration_calls": orchestration_calls,
@@ -300,6 +324,15 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         "orchestration_phases": dict(sorted(phases.items())),
         "cronica_pair_turns": pair_turns,
         "fraction_turns_with_cronica_pair": round(pair_turns / n, 6) if n else 0,
+        "sidequest_opportunity_decisions": {
+            key: int(decisions[key])
+            for key in ("oportunidade", "sem_oportunidade", "ausente", "conflito")
+        },
+        "sidequest_decision_prepare_calls": prepare_calls,
+        "sidequest_decision_valid": int(valid_decisions),
+        "sidequest_decision_violations": int(violations),
+        "sidequest_decision_coverage": round(valid_decisions / prepare_calls, 6) if prepare_calls else 1.0,
+        "task47_decision_gate_ok": violations == 0,
         "narrative_system_calls": {system: int(system_calls[system]) for system in NARRATIVE_SYSTEM_KEYS},
         "narrative_system_turns": {system: int(system_turns[system]) for system in NARRATIVE_SYSTEM_KEYS},
         "narrative_systems_observed": observed,
@@ -311,9 +344,25 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
 def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
     report = _BASE_ANALYZE(path, narration_regex)
     ordered, narration = _scan_observations(path, narration_regex)
+    all_summary = _observation_summary(ordered)
+    narration_summary = _observation_summary(narration)
     report["narrative_systems_schema"] = NARRATIVE_SYSTEMS_SCHEMA
-    report["all_turns"].update(_observation_summary(ordered))
-    report["narration_turns"].update(_observation_summary(narration))
+    report["opportunity_decision_schema"] = OPPORTUNITY_DECISION_SCHEMA
+    report["all_turns"].update(all_summary)
+    report["narration_turns"].update(narration_summary)
+    report["task47_opportunity_decision_gate"] = {
+        "schema": OPPORTUNITY_DECISION_SCHEMA,
+        "ok": all_summary["task47_decision_gate_ok"],
+        "prepare_calls": all_summary["sidequest_decision_prepare_calls"],
+        "valid_decisions": all_summary["sidequest_decision_valid"],
+        "violations": all_summary["sidequest_decision_violations"],
+        "coverage": all_summary["sidequest_decision_coverage"],
+        "decisions": all_summary["sidequest_opportunity_decisions"],
+        "regra": (
+            "todo cronica preparar deve declarar exatamente --oportunidade-sidequest "
+            "ou --sem-oportunidade-sidequest"
+        ),
+    }
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
     inferred = report.get("measurement", {}).get("observational_inference")
@@ -321,6 +370,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
         for label in (
             "preferred cronica orchestration phases inferred from command lines",
             "narrative-system attribution inferred from command and tool-output markers",
+            "Task47 sidequest-opportunity decision inferred from cronica preparar flags",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -333,6 +383,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
 def _human(report: dict[str, Any]) -> str:
     base = _BASE_HUMAN(report).rstrip("\n")
     narr = report.get("narration_turns") or {}
+    all_turns = report.get("all_turns") or {}
     systems = narr.get("narrative_system_turns") or {}
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
@@ -345,6 +396,11 @@ def _human(report: dict[str, Any]) -> str:
             f"{narr.get('avg_orchestration_calls_per_turn', 0)} chamada(s)/turno | "
             "dupla cronica preparar+concluir em "
             f"{narr.get('fraction_turns_with_cronica_pair', 0):.1%} dos turnos"
+        ),
+        (
+            "Task47: decisão de oportunidade em "
+            f"{all_turns.get('sidequest_decision_coverage', 1.0):.1%} dos preparar | "
+            f"violações={all_turns.get('sidequest_decision_violations', 0)}"
         ),
         f"Sistemas observados por turno: {active}",
     ]

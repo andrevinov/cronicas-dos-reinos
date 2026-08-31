@@ -59,7 +59,14 @@ class CronicaUrbanTransitTest(unittest.TestCase):
 
     def test_parser_publico_expoe_flag_na_mesma_porta_preparar(self):
         args = cronica.build_parser().parse_args(
-            ["preparar", "--cena-id", "move-1", "--transito-urbano", "ravens_bluff"]
+            [
+                "preparar",
+                "--cena-id",
+                "move-1",
+                "--transito-urbano",
+                "ravens_bluff",
+                "--sem-oportunidade-sidequest",
+            ]
         )
         self.assertEqual(args.cmd, "preparar")
         self.assertEqual(args.transito_urbano, "ravens_bluff")

@@ -42,7 +42,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - retomada/lifecycle → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34;
-- local/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`, `docs/task45-sidequest-progression-deadlines-consequences.md`, `docs/task46-emergent-sidequests-integration-budget-regression.md`;
+- local/side quest → `docs/agente/integracao-reativa-v2.md`, `docs/task40-emergent-sidequest-opportunity-boundary.md`, `docs/task41-emergent-sidequest-authoring-registry-v2.md`, `docs/task42-canon-bridge-rewriter.md`, `docs/task43-quest-rewards-discoveries-losses.md`, `docs/task44-adversarial-integrity-consequence-authority.md`, `docs/task45-sidequest-progression-deadlines-consequences.md`, `docs/task46-emergent-sidequests-integration-budget-regression.md`, `docs/task47-explicit-opportunity-decision-gate.md`;
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/telemetria → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`.
 
@@ -56,7 +56,9 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel>` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag: `--contexto-tag` (`--tag` é alias), namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
+**Task47:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham; negativa = zero Task40–45.
+
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest` emite ticket neutro. **Não inventar tag, local ou NPC.** Tag: `--contexto-tag` (`--tag` é alias), namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
 
 **Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
@@ -94,7 +96,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 43:** registrar `contrato_recompensa` com `recompensas_sidequest.py` antes de resposta/lifecycle. Descoberta ≠ obtenção; sucesso/perda só pelo writer transacional; perda exige contrato + evidência causal. Integração automática fica para Task 46.
 - **Task 44:** preparar `contrato_adversarial` junto da Task41 antes da oferta; `integridade_adversarial.py` materializa antes do lifecycle. Capacidade/conhecimento precisam ser reais; lateral mantém Protected Core, vínculo Task42 pode autorizar risco canônico; `obrigatoria_se_condicao` não amacia sem bloqueio causal. Execução terminal: Task45; integração quente: Task46.
 - **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências congeladas; `resolver_sidequest` nunca é no-op; recompensa = Task43, consequência grave = Task44/Protected Core.
-- **Task 46:** no jogo ao vivo, 40–45 ficam na mesma dupla: com âncora causal, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...`; autorar na mesma inferência e enviar quest+contratos no mesmo `cronica concluir` só se a oferta foi narrada. Sem flag = zero Task40–45. Task32/33 = legado frio, nunca origem/hot path.
+- **Task 46:** 40–45 ficam na mesma dupla; com âncora, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...` e enviar no mesmo `cronica concluir`; só materializar se a oferta foi narrada. Decisão negativa explícita = zero Task40–45 (`--sem-oportunidade-sidequest`). Task32/33 = legado frio, nunca origem/hot path.
+- **Task 47:** `analisar-rollout.py` exige 100% de cobertura da decisão.
 - Task32 já narrada → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão

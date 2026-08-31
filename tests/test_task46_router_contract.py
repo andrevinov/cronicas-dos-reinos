@@ -12,10 +12,12 @@ class Task46RouterContractTest(unittest.TestCase):
     def test_agents_declara_integracao_na_mesma_dupla(self):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("docs/task46-emergent-sidequests-integration-budget-regression.md", text)
+        self.assertIn("docs/task47-explicit-opportunity-decision-gate.md", text)
         block = text[text.index("**Task 46:**"):]
         self.assertIn("cronica preparar ... --oportunidade-sidequest", block)
         self.assertIn("mesmo `cronica concluir`", block)
-        self.assertIn("Sem flag = zero Task40–45", block)
+        self.assertIn("Decisão negativa explícita = zero Task40–45", block)
+        self.assertIn("--sem-oportunidade-sidequest", block)
         self.assertIn("Task32/33 = legado frio, nunca origem/hot path", block)
         self.assertIn("2 chamadas de orquestração por turno", text)
 
@@ -36,6 +38,8 @@ class Task46RouterContractTest(unittest.TestCase):
             "ferramentas/sidequests_integracao_check.py",
             "docs/task46-emergent-sidequests-integration-budget-regression.md",
             "baseline/emergent-sidequests-integration-orcamento.yaml",
+            "docs/task47-explicit-opportunity-decision-gate.md",
+            "baseline/explicit-opportunity-decision-gate-orcamento.yaml",
         ):
             self.assertTrue((ROOT / rel).is_file(), rel)
         preflight = (ROOT / "ferramentas/preflight.py").read_text(encoding="utf-8")

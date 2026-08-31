@@ -3,6 +3,7 @@ task: 46
 nome: Emergent Sidequests Integration & Budget Regression
 turno_neutro:
   chamadas_orquestracao: 2
+  decisao_task47: sem_oportunidade_sidequest
   leituras_task40_45: 0
   fragmentos_sidequest_emergente: 0
   leituras_horizonte_canonico_adicionais: 0
@@ -28,7 +29,7 @@ infra:
   rng_novo: 0
   scans_globais: 0
 invariantes:
-  - preparar_sem_oportunidade_nao_importa_semantica_de_sidequest_para_o_turno
+  - preparar_com_decisao_negativa_task47_nao_importa_semantica_de_sidequest_para_o_turno
   - pacote_task40_e_revalidado_por_digest_antes_de_escrita
   - contratos_task41_task43_task44_task45_validam_antes_do_writer
   - sem_oferta_narrada_nao_nasce_sidequest

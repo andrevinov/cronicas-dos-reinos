@@ -79,7 +79,11 @@ class CronicaPendingGateTest(unittest.TestCase):
     def test_caminho_livre_preserva_saida_byte_logica_da_preparacao(self):
         self._marker(blocked=False, quantity=0, oldest=None)
         expected = cronica._hot.prepare(self.repo, scene_id="s024-livre")
-        actual = cronica.prepare(self.repo, scene_id="s024-livre")
+        actual = cronica.prepare(
+            self.repo,
+            scene_id="s024-livre",
+            sidequest_signal=None,
+        )
         self.assertEqual(actual, expected)
         self.assertIn("ticket", actual)
         self.assertEqual(actual["fontes_lidas"], [])
@@ -97,6 +101,7 @@ class CronicaPendingGateTest(unittest.TestCase):
                 scene_id="s024-bloqueada",
                 place="incompleto",
                 urban_transit="ravens_bluff",
+                sidequest_signal=None,
             )
 
         hot.assert_not_called()
@@ -131,7 +136,11 @@ class CronicaPendingGateTest(unittest.TestCase):
         self.assertEqual(marker_path.read_bytes(), before)
 
         expected = cronica._hot.prepare(self.repo, scene_id="s024-stale")
-        actual = cronica.prepare(self.repo, scene_id="s024-stale")
+        actual = cronica.prepare(
+            self.repo,
+            scene_id="s024-stale",
+            sidequest_signal=None,
+        )
         self.assertEqual(actual, expected)
         self.assertEqual(marker_path.read_bytes(), before)
 
@@ -160,7 +169,14 @@ class CronicaPendingGateTest(unittest.TestCase):
         stdout = io.StringIO()
         with contextlib.redirect_stdout(stdout):
             code = cronica.main(
-                ["--repo", str(self.repo), "preparar", "--cena-id", "s024-cli"]
+                [
+                    "--repo",
+                    str(self.repo),
+                    "preparar",
+                    "--cena-id",
+                    "s024-cli",
+                    "--sem-oportunidade-sidequest",
+                ]
             )
         self.assertEqual(code, 0)
         result = yaml.safe_load(stdout.getvalue())

@@ -115,6 +115,7 @@ class CronicaPrepareTest(unittest.TestCase):
                 scene_id="scene-x",
                 context_tags=["local:porto"],
                 approach_preparacao="Ren preparou uma rota de fuga antes da abordagem.",
+                sidequest_signal=None,
             )
         scene.assert_called_once()
         self.assertEqual(result["fase"], "preparacao")
@@ -135,7 +136,12 @@ class CronicaPrepareTest(unittest.TestCase):
             repo = Path(temp)
             before = list(repo.rglob("*"))
             with mock.patch.object(cronica.endpoints, "scene", return_value=self.endpoint()):
-                cronica.prepare(repo, scene_id="scene-x", context_tags=["assunto:x"])
+                cronica.prepare(
+                    repo,
+                    scene_id="scene-x",
+                    context_tags=["assunto:x"],
+                    sidequest_signal=None,
+                )
             after = list(repo.rglob("*"))
         self.assertEqual(before, after)
 

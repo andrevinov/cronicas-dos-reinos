@@ -97,6 +97,8 @@ class Task46RolloutTelemetryTest(unittest.TestCase):
         self.assertEqual(narr["orchestration_calls"], 2)
         self.assertEqual(narr["tool_calls"], 2)
         self.assertEqual(narr["cronica_pair_turns"], 1)
+        self.assertEqual(narr["sidequest_decision_violations"], 0)
+        self.assertEqual(narr["sidequest_opportunity_decisions"]["oportunidade"], 1)
         systems = narr["narrative_system_turns"]
         for system in (
             "emergent_sidequest_opportunity",
@@ -111,12 +113,19 @@ class Task46RolloutTelemetryTest(unittest.TestCase):
         rows = [
             record("event_msg", {"type": "task_started", "turn_id": "neutral"}),
             user("neutral", "Ren observa a rua."),
-            call("neutral", "p1", "poetry run cronica preparar --cena-id neutral"),
+            call(
+                "neutral",
+                "p1",
+                "poetry run cronica preparar --cena-id neutral --sem-oportunidade-sidequest",
+            ),
             output("neutral", "p1", "Process exited with code 0\nfase: preparacao\n"),
             call("neutral", "c1", "poetry run cronica concluir --ticket crn1.fixture"),
             output("neutral", "c1", "Process exited with code 0\nfase: concluida\n"),
         ]
-        systems = mod.analyze(self._path(rows))["narration_turns"]["narrative_system_turns"]
+        narr = mod.analyze(self._path(rows))["narration_turns"]
+        self.assertEqual(narr["sidequest_decision_violations"], 0)
+        self.assertEqual(narr["sidequest_opportunity_decisions"]["sem_oportunidade"], 1)
+        systems = narr["narrative_system_turns"]
         for system in (
             "emergent_sidequest_opportunity",
             "emergent_sidequest_authoring",

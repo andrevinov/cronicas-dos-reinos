@@ -42,7 +42,11 @@ class NeutralTurnRegressionTest(unittest.TestCase):
 
     def test_turno_comum_nao_inventa_gatilho_nem_chama_endpoint(self):
         with mock.patch.object(cronica.endpoints, "scene") as endpoint:
-            result = cronica.prepare(ROOT, scene_id="s013-turno-comum")
+            result = cronica.prepare(
+                ROOT,
+                scene_id="s013-turno-comum",
+                sidequest_signal=None,
+            )
         endpoint.assert_not_called()
         self.assertFalse(result["reativa"])
         self.assertEqual(result["fontes_lidas"], [])
@@ -52,7 +56,11 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         self.assertEqual(payload["cena"]["npcs"], [])
 
     def test_saida_preparar_ensina_conclusao_sem_help_ou_leitura_de_codigo(self):
-        result = cronica.prepare(ROOT, scene_id="s013-autossuficiente")
+        result = cronica.prepare(
+            ROOT,
+            scene_id="s013-autossuficiente",
+            sidequest_signal=None,
+        )
         contract = result["contrato_conclusao"]
         self.assertIn("cronica concluir --ticket <ticket>", contract["comando"])
         self.assertEqual(
@@ -63,7 +71,11 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         self.assertIn("Não chamar --help", contract["disciplina"])
 
     def test_turno_neutro_conclui_sem_confirmacao_reativa_falsa(self):
-        prepared = cronica.prepare(ROOT, scene_id="s013-neutral-concluir")
+        prepared = cronica.prepare(
+            ROOT,
+            scene_id="s013-neutral-concluir",
+            sidequest_signal=None,
+        )
         order = []
 
         def preflight(_repo, _tx):
@@ -93,6 +105,7 @@ class NeutralTurnRegressionTest(unittest.TestCase):
                 ROOT,
                 scene_id="s013-local-incompleto",
                 danger="baixa",
+                sidequest_signal=None,
             )
         text = str(caught.exception)
         self.assertIn("gatilho local incompleto", text)
