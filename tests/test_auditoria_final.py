@@ -4,6 +4,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import yaml
 
@@ -65,6 +66,32 @@ class AuditoriaFinalTest(unittest.TestCase):
     def test_no_raw_rollout_is_tracked_outside_fixture(self):
         result = mod.gate_no_raw_rollout_tracked(ROOT)
         self.assertEqual(result["rollouts_brutos_versionados"], 0)
+
+    def test_regression_gate_pode_reusar_suite_externa_sem_perder_outros_checks(self):
+        executed: list[tuple[str, ...]] = []
+
+        def fake_run_command(repo: Path, args: list[str], **_kwargs):
+            executed.append(tuple(args))
+            return {
+                "comando": " ".join(args),
+                "saida_final": "OK — baseline histórica preservada",
+            }
+
+        with patch.object(mod, "run_command", side_effect=fake_run_command):
+            without_tests = mod.gate_baseline_and_regressions(ROOT, incluir_testes=False)
+
+        self.assertFalse(without_tests["suite_completa_executada"])
+        self.assertEqual(without_tests["comandos"], 11)
+        self.assertFalse(any("unittest" in command for command in executed))
+        self.assertTrue(any("verificar-integridade.py" in command for command in executed))
+
+        executed.clear()
+        with patch.object(mod, "run_command", side_effect=fake_run_command):
+            complete = mod.gate_baseline_and_regressions(ROOT)
+
+        self.assertTrue(complete["suite_completa_executada"])
+        self.assertEqual(complete["comandos"], 12)
+        self.assertEqual(sum("unittest" in command for command in executed), 1)
 
     def test_final_engineering_contract_exists(self):
         for rel in mod.EXPECTED_ENGINEERING_PATHS:
