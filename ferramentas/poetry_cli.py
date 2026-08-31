@@ -32,13 +32,13 @@ def _repo_root() -> Path:
     )
 
 
-def _run_script(filename: str) -> int:
+def _run_script(filename: str, *prefix_args: str) -> int:
     repo = _repo_root()
     script = repo / "ferramentas" / filename
     if not script.is_file():
         raise FileNotFoundError(f"ferramenta ausente: {script}")
     return subprocess.run(
-        [sys.executable, str(script), *sys.argv[1:]],
+        [sys.executable, str(script), *prefix_args, *sys.argv[1:]],
         cwd=repo,
         check=False,
     ).returncode
@@ -108,10 +108,18 @@ def preflight() -> int:
     return _run_script("preflight.py")
 
 
+def test_fast() -> int:
+    return _run_script("testes.py", "fast")
+
+
+def test_domain() -> int:
+    return _run_script("testes.py", "domain")
+
+
+def test_full() -> int:
+    return _run_script("testes.py", "full")
+
+
 def testes() -> int:
-    repo = _repo_root()
-    return subprocess.run(
-        [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
-        cwd=repo,
-        check=False,
-    ).returncode
+    """Alias legado de ``test-full``."""
+    return _run_script("testes.py", "full")
