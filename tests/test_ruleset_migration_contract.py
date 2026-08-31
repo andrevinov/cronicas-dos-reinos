@@ -24,6 +24,7 @@ class RulesetMigrationContractTest(unittest.TestCase):
         self.assertEqual(migration["status"], "em_andamento")
         self.assertEqual(migration["ativacao"]["gate"], "task_8_auditoria_final")
         self.assertTrue(migration["ativacao"]["requisitos"]["task_1_contrato"])
+        self.assertTrue(migration["ativacao"]["requisitos"]["task_7_gate_adnd"])
 
     def test_hierarquia_mecanica_e_estavel(self) -> None:
         self.assertEqual(
@@ -65,6 +66,11 @@ class RulesetMigrationContractTest(unittest.TestCase):
             compatibility["material_adnd"],
             "adaptar_para_ruleset_atual",
         )
+        gate = compatibility["gate_adnd"]
+        self.assertEqual(gate["narrativa"], "livre")
+        self.assertEqual(gate["mecanica_literal_runtime"], "proibida")
+        self.assertEqual(gate["alvo_preferencial_migracao"], "dnd_5_5e")
+        self.assertEqual(gate["fallback_2014"], "exige_declaracao_motivo_e_decisao")
 
     def test_sessoes_e_decisoes_antigas_sao_preservadas(self) -> None:
         preservation = self.ruleset["preservacao_historica"]

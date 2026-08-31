@@ -32,6 +32,16 @@ Quando um turno tiver consequência mecânica persistente, `cronica preparar` po
 
 Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Ki/Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
 
+Quando a mecânica foi preparada a partir de AD&D, o mesmo JSON acrescenta `proveniencia`. O gate exige edição de origem, destino moderno e fonte mecânica; números antigos literais são recusados antes do ticket. Uma adaptação 5.5e pode existir como preparação durante a migração, mas não entra no runtime enquanto 2014 estiver ativo.
+
+Verificação do registro de adaptações antigas:
+
+```bash
+python3 ferramentas/gate_adnd.py check
+```
+
+Material AD&D puramente narrativo não precisa ser registrado. Uso AD&D→2014 é fallback explícito e precisa carregar motivo + decisão.
+
 ### Rolagens em lote
 
 Quando duas ou mais rolagens independentes já forem necessárias antes de conhecer qualquer resultado, usar `rolar-lote.py`:

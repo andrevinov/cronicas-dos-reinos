@@ -1,0 +1,18 @@
+schema_gate_adnd: 1
+natureza: registro_adaptacoes_mecanicas
+contrato:
+  narrativa_adnd: livre
+  mecanica_adnd_literal_runtime: proibida
+  metadados_obrigatorios:
+    - edicao_origem
+    - adaptado_para
+    - fonte_mecanica
+  alvo_preferencial_migracao: dnd_5_5e
+  fallback_2014: exige_declaracao_motivo_e_decisao
+  regra: >-
+    Registrar aqui adaptações mecânicas persistentes derivadas de AD&D. Material
+    puramente narrativo, histórico, geográfico ou de aventura não precisa entrar
+    neste registro. Um item em preparação ou ativo nunca contém THAC0,
+    salvamentos antigos ou outro statblock AD&D literal: esses números são apenas
+    fonte de conversão e a mecânica registrada já pertence ao ruleset moderno.
+materiais: []

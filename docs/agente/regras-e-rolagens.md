@@ -43,7 +43,15 @@ Depois da ativação, uma opção mecânica 5e 2014 só pode permanecer como fal
 
 A migração é prospectiva: preservar decisões antigas até substituição explícita futura e **não reescrever sessões concluídas**, rolagens, recursos, descobertas ou consequências para simular aplicação retroativa de 5.5e.
 
-Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que entre em jogo é adaptada para o `ruleset.atual`. Assim, o alvo da conversão muda de 2014 para 5.5e somente quando a ativação final ocorrer.
+Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que **entre em jogo** é adaptada para o `ruleset.atual`. Durante a migração, novas adaptações persistentes podem ser preparadas diretamente para 5.5e; elas só se tornam elegíveis ao runtime quando `adaptado_para` coincidir com o ruleset ativo.
+
+### Gate formal de material AD&D
+
+A Task 7 torna essa disciplina executável. Prosa narrativa de AD&D não paga gate nem precisa de versão mecânica. Qualquer material AD&D marcado como mecânico ativo/preparado deve declarar `proveniencia_mecanica.edicao_origem`, `adaptado_para` e `fonte_mecanica`; adaptações persistentes são registradas em `regras/adaptacoes-mecanicas.yaml`.
+
+O validador recusa transporte literal de THAC0, CA descendente, salvamentos antigos e campos equivalentes. Para material preparado, AD&D→5.5e é válido como alvo de migração. Para entrar no runtime, porém, `adaptado_para` precisa ser igual ao `ruleset.atual`. Enquanto 2014 estiver ativo, uso AD&D→2014 só passa com `fallback_2014` explicitamente declarado, com motivo e decisão; depois da Task 8 esse mesmo ticket/material deixa de ser elegível se o ruleset mudar.
+
+`cronica preparar --mecanica-json` aceita `proveniencia` somente quando houver esse vínculo com fonte antiga; o gate roda antes de o contrato ser anexado ao ticket. A ausência de `--mecanica-json` continua não abrindo nenhum material mecânico.
 
 ## Catálogo executável de regras
 
