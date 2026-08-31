@@ -156,6 +156,7 @@ def conclude(repo: Path, token: str, transaction: dict):
 
     ticket_id_original = _core.ticket_id(token)
     base_token = _base_token(payload)
+    writer_tx = _sidequests46.writer_transaction(transaction)
     try:
         journal = _sidequests46.recover_matching_journal(
             repo, ticket_id=ticket_id_original, transaction=transaction
@@ -164,7 +165,7 @@ def conclude(repo: Path, token: str, transaction: dict):
             package = _sidequests46._plan_from_ticket(repo, meta)
             block, offer = _sidequests46._normalize_offer(transaction)
             if block is None:
-                result = _conclude_base(repo, base_token, transaction)
+                result = _conclude_base(repo, base_token, writer_tx)
                 result["ticket_id"] = ticket_id_original
                 result["sidequest_emergente"] = {
                     "resultado": "oferta_nao_materializada",
@@ -189,7 +190,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                 transaction=transaction,
                 plan=plan,
             )
-        result = _conclude_base(repo, base_token, transaction)
+        result = _conclude_base(repo, base_token, writer_tx)
         installed = _sidequests46.install(repo, journal)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
         raise _core.CronicaError(
