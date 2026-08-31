@@ -44,6 +44,12 @@ NARRATIVE_SYSTEM_KEYS = (
     "batch_world_boundary",
     "persistent_world_conditions",
     "underground_tournament",
+    "emergent_sidequest_opportunity",
+    "emergent_sidequest_authoring",
+    "quest_rewards",
+    "adversarial_integrity",
+    "sidequest_progression",
+    "canon_bridge",
 )
 
 _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
@@ -53,6 +59,12 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
     "batch_world_boundary": ("resolver_fronteira.py", "resolver-fronteira.py"),
     "persistent_world_conditions": ("condicoes_mundo.py", "condicoes-mundo.py"),
     "underground_tournament": ("torneio_clandestino.py", "torneio-clandestino.py"),
+    "emergent_sidequest_opportunity": ("oportunidade_sidequest.py", "oportunidade-sidequest.py"),
+    "emergent_sidequest_authoring": ("sidequests_emergentes.py", "sidequests-emergentes.py"),
+    "quest_rewards": ("recompensas_sidequest.py", "recompensas-sidequest.py"),
+    "adversarial_integrity": ("integridade_adversarial.py", "integridade-adversarial.py"),
+    "sidequest_progression": ("progressao_sidequests.py", "progressao-sidequests.py"),
+    "canon_bridge": ("canon_bridge_runtime.py", "canon-bridge-runtime.py"),
 }
 
 _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
@@ -85,6 +97,20 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "circuito_subterraneo_parte1",
         "torneio-clandestino/",
     ),
+    "emergent_sidequest_opportunity": (
+        "emergent_sidequest_opportunity",
+        "sidequest_emergente_task46",
+        "material_para_planejamento",
+    ),
+    "emergent_sidequest_authoring": (
+        "emergent_sidequest_authoring",
+        "sidequest_materializada",
+        "sidequest_emergente_materializada_task46",
+    ),
+    "quest_rewards": ("quest_rewards", "contrato_recompensa"),
+    "adversarial_integrity": ("adversarial_integrity", "contrato_adversarial"),
+    "sidequest_progression": ("sidequest_progression", "contrato_progressao"),
+    "canon_bridge": ("canon_bridge", "reserva_causal", "aguarda_evidencia"),
 }
 
 
@@ -92,12 +118,7 @@ def _is_dice_command(command: str) -> bool:
     lower = command.casefold()
     if any(marker in lower for marker in DICE_MARKERS):
         return True
-    return bool(
-        re.search(
-            r"(?:^|\s)(?:poetry\s+run\s+)?dados(?:-lote)?(?:\s|$)",
-            lower,
-        )
-    )
+    return bool(re.search(r"(?:^|\s)(?:poetry\s+run\s+)?dados(?:-lote)?(?:\s|$)", lower))
 
 
 def _classify_tool(name: str, raw_input: str) -> str:
@@ -112,9 +133,7 @@ def _access_level_from_command(command: str) -> str | None:
     if result is not None:
         return result
     lower = command.casefold()
-    if _core._is_routed_context(command) and re.search(
-        r"\bcontexto\.py\b.*\breputacao\b", lower
-    ):
+    if _core._is_routed_context(command) and re.search(r"\bcontexto\.py\b.*\breputacao\b", lower):
         return "L2"
     return None
 
@@ -145,6 +164,8 @@ def _narrative_systems_from_command(command: str) -> set[str]:
     result: set[str] = set()
     if "contexto.py" in lower and re.search(r"\bnpc\b", lower):
         result.add("npc_social_initiative")
+    if "cronica preparar" in lower and "--oportunidade-sidequest" in lower:
+        result.add("emergent_sidequest_opportunity")
     for system, markers in _SYSTEM_COMMAND_MARKERS.items():
         if any(marker in lower for marker in markers):
             result.add(system)
@@ -161,23 +182,11 @@ def _narrative_systems_from_output(output_text: str) -> set[str]:
 
 
 def _observation_turn() -> dict[str, Any]:
-    return {
-        "user_messages": [],
-        "narration_signal_tool": False,
-        "calls": [],
-        "calls_by_id": {},
-    }
+    return {"user_messages": [], "narration_signal_tool": False, "calls": [], "calls_by_id": {}}
 
 
-def _scan_observations(
-    path: Path,
-    narration_regex: str | None,
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    narration_re = (
-        re.compile(narration_regex, re.I | re.S)
-        if narration_regex
-        else DEFAULT_NARRATION_RE
-    )
+def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    narration_re = re.compile(narration_regex, re.I | re.S) if narration_regex else DEFAULT_NARRATION_RE
     turns: dict[str, dict[str, Any]] = {}
     order: list[str] = []
     current_turn: str | None = None
@@ -202,7 +211,6 @@ def _scan_observations(
             payload = record.get("payload") or {}
             if not isinstance(payload, dict):
                 continue
-
             if record_type == "event_msg" and payload.get("type") == "task_started":
                 current_turn = str(payload.get("turn_id") or "") or current_turn
                 if current_turn:
@@ -211,7 +219,6 @@ def _scan_observations(
                 current_turn = str(payload.get("turn_id") or "") or current_turn
                 if current_turn:
                     ensure(current_turn)
-
             if record_type != "response_item":
                 continue
             metadata = payload.get("internal_chat_message_metadata_passthrough") or {}
@@ -221,13 +228,11 @@ def _scan_observations(
                 continue
             turn = ensure(turn_id)
             item_type = payload.get("type")
-
             if item_type == "message" and payload.get("role") == "user":
                 text = _core._message_text(payload)
                 if text and not text.startswith("# AGENTS.md instructions"):
                     turn["user_messages"].append(text)
                 continue
-
             if item_type in {"function_call", "custom_tool_call"}:
                 command = _core._extract_command(_core._tool_input(payload))
                 cid = _core._call_id(payload)
@@ -245,7 +250,6 @@ def _scan_observations(
                 if _is_turn_register(command):
                     turn["narration_signal_tool"] = True
                 continue
-
             if item_type not in {"function_call_output", "custom_tool_call_output"}:
                 continue
             output_text = _core._tool_output(payload)
@@ -256,22 +260,13 @@ def _scan_observations(
                 if not candidate["output_seen"]:
                     matched = candidate
             if matched is None:
-                matched = next(
-                    (item for item in turn["calls"] if not item["output_seen"]),
-                    None,
-                )
+                matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
-                matched["narrative_systems"].update(
-                    _narrative_systems_from_output(output_text)
-                )
+                matched["narrative_systems"].update(_narrative_systems_from_output(output_text))
                 matched["output_seen"] = True
 
     ordered = [turns[turn_id] for turn_id in order]
-    narration = [
-        turn
-        for turn in ordered
-        if _core._is_narration_turn(turn, narration_re)
-    ]
+    narration = [turn for turn in ordered if _core._is_narration_turn(turn, narration_re)]
     return ordered, narration
 
 
@@ -280,7 +275,6 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     system_calls: Counter[str] = Counter()
     system_turns: Counter[str] = Counter()
     pair_turns = 0
-
     for turn in turns:
         per_turn_phases: list[str] = []
         per_turn_systems: set[str] = set()
@@ -296,27 +290,18 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         if Counter(per_turn_phases) == Counter({"preparar": 1, "concluir": 1}):
             pair_turns += 1
         system_turns.update(per_turn_systems)
-
     n = len(turns)
     observed = [system for system in NARRATIVE_SYSTEM_KEYS if system_turns[system]]
     orchestration_calls = sum(phases.values())
-    inactive = sum(
-        1
-        for turn in turns
-        if not any(call.get("narrative_systems") for call in turn["calls"])
-    )
+    inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in turn["calls"]))
     return {
         "orchestration_calls": orchestration_calls,
         "avg_orchestration_calls_per_turn": round(orchestration_calls / n, 3) if n else 0,
         "orchestration_phases": dict(sorted(phases.items())),
         "cronica_pair_turns": pair_turns,
         "fraction_turns_with_cronica_pair": round(pair_turns / n, 6) if n else 0,
-        "narrative_system_calls": {
-            system: int(system_calls[system]) for system in NARRATIVE_SYSTEM_KEYS
-        },
-        "narrative_system_turns": {
-            system: int(system_turns[system]) for system in NARRATIVE_SYSTEM_KEYS
-        },
+        "narrative_system_calls": {system: int(system_calls[system]) for system in NARRATIVE_SYSTEM_KEYS},
+        "narrative_system_turns": {system: int(system_turns[system]) for system in NARRATIVE_SYSTEM_KEYS},
         "narrative_systems_observed": observed,
         "turns_without_narrative_system_activity": inactive,
         "fraction_turns_without_narrative_system_activity": round(inactive / n, 6) if n else 0,
@@ -329,10 +314,8 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
     report["narrative_systems_schema"] = NARRATIVE_SYSTEMS_SCHEMA
     report["all_turns"].update(_observation_summary(ordered))
     report["narration_turns"].update(_observation_summary(narration))
-
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
-
     inferred = report.get("measurement", {}).get("observational_inference")
     if isinstance(inferred, list):
         for label in (
@@ -343,9 +326,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
                 inferred.append(label)
     detection = report.get("narration_detection")
     if isinstance(detection, dict):
-        detection["also_detected_by"] = (
-            "turno.py registrar or cronica concluir/registrar command (excluding --help)"
-        )
+        detection["also_detected_by"] = "turno.py registrar or cronica concluir/registrar command (excluding --help)"
     return report
 
 
@@ -354,9 +335,7 @@ def _human(report: dict[str, Any]) -> str:
     narr = report.get("narration_turns") or {}
     systems = narr.get("narrative_system_turns") or {}
     active = ", ".join(
-        f"{name}={systems.get(name, 0)}"
-        for name in NARRATIVE_SYSTEM_KEYS
-        if systems.get(name, 0)
+        f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
     extra = [
         "",

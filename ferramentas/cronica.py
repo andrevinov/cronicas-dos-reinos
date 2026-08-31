@@ -5,8 +5,8 @@ A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 ``ciclo_cronica.py``. A camada pública acrescenta ergonomia observada em rollout
 real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
 retomada compacta limpa, transporte de ticket tolerante a whitespace acidental,
-gate read-only de pendências e contratos operacionais tolerantes a aliases
-inequívocos sem relaxar checksum, cânone ou semântica transacional.
+gate read-only de pendências, contratos operacionais tolerantes a aliases
+ginequívocos e, na Task46, sidequests emergentes na mesma dupla preparar/concluir.
 """
 from __future__ import annotations
 
@@ -27,9 +27,9 @@ import cronica_pending_gate as _pending_gate
 import progressao_juppongatana
 import retomada_cronica
 import sessoes
+import sidequests_integracao_runtime as _sidequests46
 import transacoes
 
-# Compatibilidade integral da Task 21.
 for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
@@ -43,7 +43,6 @@ _ORIGINAL_TRANSACTION_CONTRACT = _hot._transaction_contract
 
 
 def _b64_decode(value: str) -> bytes:
-    """Torna o corpo base64 robusto a wrap/cópia com whitespace acidental."""
     compact = "".join(value.split())
     return _ORIGINAL_B64_DECODE(compact)
 
@@ -56,12 +55,10 @@ def _ticket_argument(value: str) -> str:
 
 
 def decode_ticket(value: str) -> dict:
-    """Falha com instrução operacional quando ``ticket_id`` é usado como ticket."""
     return _ORIGINAL_DECODE_TICKET(_ticket_argument(value))
 
 
 def _instant_arg(date: str | None, hour: str | None):
-    """Aceita aliases inequívocos de data na borda e preserva o instante canônico."""
     if date is None and hour is None:
         return None
     if not date or not hour:
@@ -79,47 +76,150 @@ def _transaction_contract() -> dict:
         "Em --ticket use exatamente o campo `ticket:` completo, nunca `ticket_id`. "
         "Não chamar --help nem ler implementação para redescobrir este contrato."
     )
+    contract["sidequest_emergente_task46"] = (
+        "Somente em ticket preparado com --oportunidade-sidequest, a transação pode "
+        "conter sidequest_emergente com oferta+quest+contratos Task43/44/45. "
+        "Sem oferta literal narrada, omita o bloco inteiro."
+    )
     return contract
 
 
-# ``cronica_hotpath`` e a Task 21 compartilham o mesmo módulo core. Patchar as
-# portas de borda mantém um único decoder/parser sem criar motor paralelo.
 _core._b64_decode = _b64_decode
 _core.decode_ticket = decode_ticket
 _hot._transaction_contract = _transaction_contract
 
 
 def prepare(*args, **kwargs):
-    """Aplica a barreira barata antes de delegar à preparação de turno existente."""
     repo = args[0] if args else kwargs.get("repo")
     if repo is None:
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
+    signal = kwargs.pop("sidequest_signal", None)
     gate = _pending_gate.prepare_gate(Path(repo))
     if gate is not None:
         return gate
-    return _hot.prepare(*args, **kwargs)
+    base = _hot.prepare(*args, **kwargs)
+    if signal is None:
+        return base
+    try:
+        return _sidequests46.integrate_prepare(
+            Path(repo),
+            base,
+            signal_raw=signal,
+            decode_ticket=decode_ticket,
+            encode_ticket=_core.encode_ticket,
+            now=kwargs.get("now"),
+        )
+    except _sidequests46.EmergentSidequestIntegrationError as exc:
+        raise _core.CronicaError(str(exc)) from exc
 
 
-def confirm(*args, **kwargs):
-    return _hot.confirm(*args, **kwargs)
+def _task46_meta(token: str) -> tuple[dict, dict | None]:
+    payload = decode_ticket(token)
+    try:
+        return payload, _sidequests46.ticket_meta(payload)
+    except _sidequests46.EmergentSidequestIntegrationError as exc:
+        raise _core.CronicaError(str(exc)) from exc
 
 
-def conclude(*args, **kwargs):
-    """Preserva o hook público de preflight da Task 21 também no hot path."""
+def _base_token(payload: dict) -> str:
+    token, _ = _core.encode_ticket(_sidequests46.strip_ticket_payload(payload))
+    return token
+
+
+def confirm(repo: Path, token: str):
+    _, meta = _task46_meta(token)
+    if meta is not None:
+        raise _core.CronicaError(
+            "ticket Task46 usa a porta transacional cronica concluir; não separe confirmar/registrar"
+        )
+    return _hot.confirm(repo, token)
+
+
+def _conclude_base(repo: Path, token: str, transaction: dict):
     original = _core._preflight_registration
     _core._preflight_registration = globals()["_preflight_registration"]
     try:
         return _hot.conclude(
-            *args,
-            **kwargs,
+            repo,
+            token,
+            transaction,
             preflight=globals()["_preflight_registration"],
         )
     finally:
         _core._preflight_registration = original
 
 
+def conclude(repo: Path, token: str, transaction: dict):
+    payload, meta = _task46_meta(token)
+    if meta is None:
+        return _conclude_base(repo, token, transaction)
+
+    ticket_id_original = _core.ticket_id(token)
+    base_token = _base_token(payload)
+    writer_tx = _sidequests46.writer_transaction(transaction)
+    try:
+        journal = _sidequests46.recover_matching_journal(
+            repo, ticket_id=ticket_id_original, transaction=transaction
+        )
+        if journal is None:
+            package = _sidequests46._plan_from_ticket(repo, meta)
+            block, offer = _sidequests46._normalize_offer(transaction)
+            if block is None:
+                result = _conclude_base(repo, base_token, writer_tx)
+                result["ticket_id"] = ticket_id_original
+                result["sidequest_emergente"] = {
+                    "resultado": "oferta_nao_materializada",
+                    "mutacoes_sidequest": 0,
+                    "regra": "oportunidade avaliada, mas nenhuma oferta foi narrada neste turno",
+                }
+                result.setdefault("sistemas_narrativos", []).append(
+                    "emergent_sidequest_opportunity"
+                )
+                return result
+            scene_id = str((_sidequests46._map(payload.get("cena"), "ticket.cena")).get("scene_id"))
+            plan = _sidequests46.prepare_installation(
+                repo,
+                package=package,
+                block=block,
+                offer_scene_id=scene_id,
+                offer_summary=offer["resumo"],
+            )
+            journal = _sidequests46.begin_conclusion(
+                repo,
+                ticket_id=ticket_id_original,
+                transaction=transaction,
+                plan=plan,
+            )
+        result = _conclude_base(repo, base_token, writer_tx)
+        installed = _sidequests46.install(repo, journal)
+    except _sidequests46.EmergentSidequestIntegrationError as exc:
+        raise _core.CronicaError(
+            f"Task46: {exc}. Se o turno já tiver sido registrado, repita o mesmo cronica concluir; "
+            "o journal recupera a instalação sem duplicar a narração ou a quest."
+        ) from exc
+
+    result["ticket_id"] = ticket_id_original
+    result["sidequest_emergente"] = installed
+    result.setdefault("sistemas_narrativos", []).extend(
+        [
+            "emergent_sidequest_opportunity",
+            "emergent_sidequest_authoring",
+            "quest_rewards",
+            "adversarial_integrity",
+            "sidequest_progression",
+        ]
+    )
+    return result
+
+
 def register(*args, revalidate: bool = True, **kwargs):
-    """Preserva o hook público de revalidação da Task 21."""
+    token = args[1] if len(args) > 1 else kwargs.get("token")
+    if isinstance(token, str):
+        _, meta = _task46_meta(token)
+        if meta is not None:
+            raise _core.CronicaError(
+                "reparo Task46 repete cronica concluir com a mesma transação; registrar isolado não instala a sidequest"
+            )
     original = _core._revalidate_ticket
     _core._revalidate_ticket = globals()["_revalidate_ticket"]
     try:
@@ -143,10 +243,7 @@ def _subparsers(parser: argparse.ArgumentParser) -> argparse._SubParsersAction:
 def build_parser() -> argparse.ArgumentParser:
     parser = _ORIGINAL_BUILD_PARSER()
     root = _subparsers(parser)
-
     prepare_parser = root.choices["preparar"]
-    # Alias de compatibilidade observado em rollout. ``--contexto-tag`` continua
-    # sendo o nome canônico e a validação tipada permanece na mesma camada.
     prepare_parser.add_argument(
         "--tag",
         dest="contexto_tag",
@@ -162,6 +259,16 @@ def build_parser() -> argparse.ArgumentParser:
             "sem criar local canônico nem chamada adicional"
         ),
     )
+    prepare_parser.add_argument(
+        "--oportunidade-sidequest",
+        action="store_true",
+        help="acorda Task40 somente quando a cena produziu âncora causal concreta",
+    )
+    prepare_parser.add_argument("--sidequest-origem-tipo")
+    prepare_parser.add_argument("--sidequest-origem-id")
+    prepare_parser.add_argument("--sidequest-ancora-tipo")
+    prepare_parser.add_argument("--sidequest-ancora")
+    prepare_parser.add_argument("--sidequest-npc")
 
     session = root.add_parser(
         "sessao",
@@ -190,6 +297,31 @@ def build_parser() -> argparse.ArgumentParser:
         help="plano YAML/JSON; sem esta opção, lê stdin",
     )
     return parser
+
+
+def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
+    fields = {
+        "origem_tipo": getattr(args, "sidequest_origem_tipo", None),
+        "origem_id": getattr(args, "sidequest_origem_id", None),
+        "ancora_tipo": getattr(args, "sidequest_ancora_tipo", None),
+        "ancora": getattr(args, "sidequest_ancora", None),
+        "npc_id": getattr(args, "sidequest_npc", None),
+    }
+    enabled = bool(getattr(args, "oportunidade_sidequest", False))
+    if not enabled:
+        if any(value is not None for value in fields.values()):
+            raise _core.CronicaError(
+                "flags --sidequest-* exigem --oportunidade-sidequest; conversa comum não acorda Task40"
+            )
+        return None
+    if fields["origem_id"] is None:
+        fields["origem_id"] = args.cena_id
+    if fields["npc_id"] is None and len(args.npc or []) == 1:
+        fields["npc_id"] = args.npc[0]
+    fields["local_id"] = args.local
+    fields["periculosidade"] = args.periculosidade or "media"
+    fields["tier"] = args.tier
+    return fields
 
 
 def _run_session(repo: Path, command: str):
@@ -231,6 +363,7 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_informacao=args.abordagem_informacao,
             approach_adequacao=args.abordagem_adequacao,
             urban_transit=getattr(args, "transito_urbano", None),
+            sidequest_signal=_sidequest_signal_from_args(args),
         )
     token = _ticket_argument(args.ticket)
     if args.cmd == "concluir":

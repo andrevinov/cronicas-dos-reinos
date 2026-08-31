@@ -2,8 +2,9 @@
 """Task 32 engine + Task 33 fragmented NPC quest catalog routing.
 
 Task 32 semantics remain in ``_sidequests_canonicas_task32.py``. Task 33 moves
-opaque refs out of the already-hot opportunities index into one tiny router per
-recurring quest-giver. NPCs without catalog entries still incur zero Task33 reads.
+opaque refs out of the opportunities index into one tiny router per recurring
+quest-giver. Desde a Task46, esse catálogo é legado frio: estas portas continuam
+funcionando quando chamadas explicitamente, mas encontros ao vivo não as acordam.
 """
 from __future__ import annotations
 
@@ -22,6 +23,7 @@ for _name in dir(_core):
 
 ROUTERS_DIR = Path("narrador/sidequests-canonicas/roteadores")
 FRAGMENTED_ROUTING = "fragmentado_por_npc_task33"
+FRAGMENTED_ROUTING_COLD = "fragmentado_por_npc_task33_legado_frio"
 ROUTER_FRAGMENT_SCHEMA = 1
 NPC_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_]{0,95}$")
 
@@ -32,28 +34,46 @@ _BASE_EFFECTS = _core.effects_for_mission
 _BASE_CHECK = _core.check
 
 
+def _is_cold_metadata(raw: dict[str, Any]) -> bool:
+    return (
+        raw.get("estatuto") == "legado_frio_task46"
+        and raw.get("origem_operacional") is False
+    )
+
+
 def _router(index: dict[str, Any]) -> dict[str, Any]:
     raw = index.get(ROUTER_KEY)
     if not isinstance(raw, dict):
         raise CanonicalSidequestError("índice de oportunidades não declara sidequests_canonicas")
     if isinstance(raw.get("por_npc"), dict):
         return _BASE_ROUTER(index)
+    routing = raw.get("roteamento")
     if (
         raw.get("schema_sidequests_canonicas") != 1
         or raw.get("engine") != ENGINE_ID
         or raw.get("detalhes_somente_apos_gate") is not True
         or raw.get("scheduler") != "proibido"
         or raw.get("rng") != "proibido"
-        or raw.get("roteamento") != FRAGMENTED_ROUTING
+        or routing not in {FRAGMENTED_ROUTING, FRAGMENTED_ROUTING_COLD}
     ):
         raise CanonicalSidequestError("roteador fragmentado de sidequests canônicas inválido")
-    extra = set(raw) - {
+    allowed = {
         "schema_sidequests_canonicas", "engine", "detalhes_somente_apos_gate",
-        "scheduler", "rng", "roteamento",
+        "scheduler", "rng", "roteamento", "estatuto", "origem_operacional",
     }
+    extra = set(raw) - allowed
     if extra:
         raise CanonicalSidequestError(
             "roteador fragmentado possui campos desconhecidos: " + ", ".join(sorted(extra))
+        )
+    has_task46_metadata = "estatuto" in raw or "origem_operacional" in raw
+    if routing == FRAGMENTED_ROUTING_COLD and not _is_cold_metadata(raw):
+        raise CanonicalSidequestError(
+            "roteador Task33 legado frio precisa declarar estatuto e origem_operacional=false"
+        )
+    if routing == FRAGMENTED_ROUTING and has_task46_metadata and not _is_cold_metadata(raw):
+        raise CanonicalSidequestError(
+            "metadados Task46 do catálogo Task33 estão incompletos ou inválidos"
         )
     if not isinstance(index.get("perfis"), dict):
         raise CanonicalSidequestError("índice sem perfis para roteamento Task33")
@@ -153,6 +173,8 @@ def _synthetic_inline_index(index: dict[str, Any], mapping: dict[str, list[dict[
     synthetic = copy.deepcopy(index)
     raw = synthetic[ROUTER_KEY]
     raw.pop("roteamento", None)
+    raw.pop("estatuto", None)
+    raw.pop("origem_operacional", None)
     raw["por_npc"] = {
         npc_id: [{key: ref[key] for key in ("id", "gate", "prioridade")} for ref in refs]
         for npc_id, refs in mapping.items()
@@ -242,6 +264,9 @@ def check(repo: Path) -> dict[str, Any]:
         result = _BASE_CHECK(repo)
     result["roteadores_fragmentados"] = len(mapping)
     result["fontes_roteadores"] = len(sources)
+    result["estatuto_task46"] = (
+        "legado_frio" if _is_cold_metadata(router) else "compatibilidade"
+    )
     return result
 
 
