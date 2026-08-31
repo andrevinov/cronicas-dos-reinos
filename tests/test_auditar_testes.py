@@ -139,7 +139,7 @@ class PuroTest(unittest.TestCase):
             "test_loader.py",
             """
 import unittest
-from pathlib import import Path
+from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 MODULE_PATH = ROOT / "ferramentas" / "modulo.py"
