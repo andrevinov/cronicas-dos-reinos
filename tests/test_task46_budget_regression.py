@@ -19,6 +19,26 @@ import sidequests_integracao_runtime as integration
 import test_emergent_sidequest_authoring_registry_v2 as task41
 
 
+def valid_ticket_payload(scene_id: str) -> dict:
+    return {
+        "schema_cronica_ticket": cronica._core.SCHEMA,
+        "preparacao_id": "fixture-task46",
+        "cena": cronica._core._request(
+            scene_id=scene_id,
+            npcs=[],
+            place=None,
+            action=None,
+            tier=None,
+            danger=None,
+            context_tags=[],
+            now=None,
+            approach_preparacao=None,
+            approach_informacao=None,
+            approach_adequacao=None,
+        ),
+    }
+
+
 class Task46NeutralBudgetTest(unittest.TestCase):
     def test_turno_neutro_retorna_exatamente_hotpath_sem_acordar_task46(self):
         sentinel = {
@@ -82,8 +102,7 @@ class Task46OpportunityBudgetTest(unittest.TestCase):
     def test_mesma_chamada_preparar_entrega_pacote_limitado_sem_transcricao_task33(self):
         now_raw = self.package["prazo_mundo"]["agora"]
         now = mundo.parse_instant(now_raw["data"], now_raw["hora"])
-        payload = {"cena": {"scene_id": "task46:budget"}, "preparacao_id": "fixture"}
-        token, ticket_id = cronica._core.encode_ticket(payload)
+        token, ticket_id = cronica._core.encode_ticket(valid_ticket_payload("task46:budget"))
         base = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
@@ -138,7 +157,7 @@ class Task46OpportunityBudgetTest(unittest.TestCase):
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["contrato"]["chamadas_orquestracao"], 2)
         self.assertEqual(result["contrato"]["pacote_autoral_max_bytes"], opportunity.MAX_PAYLOAD_BYTES)
-        self.assertEqual(result["contrato"]["intencoes_max"], opportunity.MAX_CANON_INTENTS)
+        self.assertEqual(result["contrato"]["intencoes_max"], opportunity.MAX_INTENT_FRAGMENTS)
 
 
 if __name__ == "__main__":
