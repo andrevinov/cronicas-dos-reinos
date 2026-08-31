@@ -35,6 +35,18 @@ class LiveStateFreezeReviewRepositoryTest(unittest.TestCase):
         }
         self.assertEqual(set(report["decisoes"]), expected)
 
+    def test_revisao_manual_registra_freezes_indiretos_encontrados_na_task2(self):
+        report = mod.check(ROOT)
+        expected = {
+            "tests/test_agentes.py",
+            "tests/test_ciclo_npcs.py",
+            "tests/test_condicoes_mundo.py",
+            "tests/test_direcoes.py",
+            "tests/test_progressao_juppongatana.py",
+            "tests/test_rastros.py",
+        }
+        self.assertEqual(set(report["revisoes_indiretas"]), expected)
+
 
 class LiveStateFreezeReviewSyntheticTest(unittest.TestCase):
     def test_suspeito_novo_sem_revisao_falha(self):
@@ -93,6 +105,27 @@ arquivos:
             )
             with self.assertRaises(mod.LiveStateFreezeReviewError):
                 mod.load_review(repo)
+
+    def test_revisao_direta_e_indireta_nao_podem_duplicar_o_mesmo_arquivo(self):
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            (repo / "tests").mkdir()
+            (repo / "tests/test_live.py").write_text("# teste\n", encoding="utf-8")
+            (repo / "tests/live-state-freeze-review.yaml").write_text(
+                """schema_revisao_congelamento_estado_vivo: 1
+arquivos:
+  tests/test_live.py:
+    status: corrigido
+    motivo: A decisão direta possui justificativa suficiente para o cenário sintético.
+revisoes_indiretas:
+  tests/test_live.py:
+    status: corrigido
+    motivo: A duplicação deliberada deve ser recusada pelo verificador da revisão.
+""",
+                encoding="utf-8",
+            )
+            with self.assertRaises(mod.LiveStateFreezeReviewError):
+                mod.check(repo)
 
 
 if __name__ == "__main__":
