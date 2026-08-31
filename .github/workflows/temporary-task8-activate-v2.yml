@@ -21,12 +21,15 @@ jobs:
           python-version: '3.12'
       - name: Dependencies
         run: python -m pip install 'PyYAML>=6,<7'
-      - name: Prepare applicator
-        run: python .github/task8_prepatch.py
-      - name: Apply cutover
-        run: python .github/task8_apply.py
-      - name: Update live assertions
-        run: python .github/task8_postpatch.py
+      - name: Apply Task 8 cutover if needed
+        run: |
+          if grep -q 'task_8_auditoria_final: true' campanha.yaml && test -f ferramentas/ruleset_5_5e.py; then
+            echo 'Task 8 functional cutover already committed.'
+          else
+            python .github/task8_prepatch.py
+            python .github/task8_apply.py
+            python .github/task8_postpatch.py
+          fi
       - name: Regenerate derived runtime
         run: |
           python ferramentas/gerar-runtime.py
@@ -55,7 +58,12 @@ jobs:
           python -m unittest discover -s tests -p 'test_checkpoint.py' -v
           python -m unittest discover -s tests -p 'test_unified_session_lifecycle.py' -v
       - name: Full unit suite
-        run: python -m unittest discover -s tests -v
+        run: |
+          set +e
+          python -m unittest discover -s tests -v > /tmp/full-tests.log 2>&1
+          code=$?
+          tail -n 180 /tmp/full-tests.log
+          exit $code
       - name: Full preflight
         run: python ferramentas/preflight.py
       - name: Commit functional cutover
@@ -64,5 +72,9 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git reset .github/task8_apply.py .github/task8_prepatch.py .github/task8_postpatch.py .github/workflows/temporary-task8-audit.yml .github/workflows/temporary-task8-activate-v2.yml || true
-          git commit -m 'feat: activate D&D 5.5e ruleset'
-          git push origin HEAD:task/activate-5-5e
+          if git diff --cached --quiet; then
+            echo 'No functional changes to commit.'
+          else
+            git commit -m 'feat: activate D&D 5.5e ruleset'
+            git push origin HEAD:task/activate-5-5e
+          fi
