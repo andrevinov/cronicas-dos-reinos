@@ -20,7 +20,7 @@ replacements = [
     ),
     (
         'self.assertEqual(self.mechanics.speed, 55)',
-        'self.assertEqual(self.sheet_raw["movimento"]["deslocamento_pes"], 55)',
+        'self.assertEqual(self.sheet_raw["combate"]["deslocamento"]["total"], "55 pés")',
     ),
 ]
 for old, new in replacements:
