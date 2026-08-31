@@ -1,0 +1,66 @@
+name: Auditoria da suíte de testes
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "ferramentas/auditar-testes.py"
+      - "tests/test_auditar_testes.py"
+      - "docs/agente/auditoria-suite-testes.md"
+      - ".github/workflows/auditoria-testes.yml"
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependências de teste
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Inventário e telemetria
+        shell: bash
+        run: |
+          set +e
+          python ferramentas/auditar-testes.py --medir --top 30 --json > /tmp/auditoria-testes.json
+          status=$?
+          set -e
+          python - <<'PY'
+          import json
+
+          report = json.load(open('/tmp/auditoria-testes.json', encoding='utf-8'))
+          resumo = {
+              'totais': report['totais'],
+              'classificacoes': report['classificacoes'],
+              'dependencias': {
+                  'repo_real': len(report['dependencias']['repo_real']),
+                  'temporarios_ou_fixtures_isoladas': len(
+                      report['dependencias']['temporarios_ou_fixtures_isoladas']
+                  ),
+                  'estado_vivo_direto': report['dependencias']['estado_vivo_direto'],
+              },
+              'candidatos': {
+                  nome: valores
+                  for nome, valores in report['candidatos'].items()
+                  if nome in {'congelamento_suspeito', 'teste_caro', 'teste_transitorio'}
+              },
+              'execucao': report['execucao'],
+              'mais_lentos': report['mais_lentos'],
+          }
+          print(json.dumps(resumo, ensure_ascii=False, indent=2))
+          PY
+          exit "$status"
+
+      - name: Publicar relatório completo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-testes
+          path: /tmp/auditoria-testes.json
+          if-no-files-found: error
