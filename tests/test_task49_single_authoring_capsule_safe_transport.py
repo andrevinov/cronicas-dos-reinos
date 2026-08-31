@@ -131,6 +131,47 @@ class Task49CronicaAdapterTest(unittest.TestCase):
         import cronica_task49 as task49
         self.task49 = task49
 
+    def _signal(self) -> dict:
+        origin = self.package["origem"]
+        reward = self.package["envelope_recompensa"]
+        return {
+            "origem_tipo": origin["tipo"],
+            "origem_id": origin["id"],
+            "ancora_tipo": origin["ancora_tipo"],
+            "ancora": origin["ancora"],
+            "npc_id": origin.get("npc_id"),
+            "local_id": self.package["prazo_mundo"].get("local_id"),
+            "periculosidade": reward["periculosidade"],
+            "tier": reward["tier"],
+        }
+
+    def _base_preparation(self) -> dict:
+        payload = {
+            "schema_cronica_ticket": self.task49._base._core.SCHEMA,
+            "preparacao_id": "fixture-task49-real-budget",
+            "cena": self.task49._base._core._request(
+                scene_id="task49:budget-real",
+                npcs=[],
+                place=None,
+                action=None,
+                tier=None,
+                danger=None,
+                context_tags=[],
+                now=None,
+                approach_preparacao=None,
+                approach_informacao=None,
+                approach_adequacao=None,
+            ),
+        }
+        token, ticket_id = self.task49._base._core.encode_ticket(payload)
+        return {
+            "schema_cronica_turno": 1,
+            "fase": "preparacao",
+            "ticket": token,
+            "ticket_id": ticket_id,
+            "sistemas_narrativos": [],
+        }
+
     def test_turno_neutro_permanece_byte_logicamente_inalterado(self):
         sentinel = {"fase": "preparacao", "ticket": "crn1.neutro", "ticket_id": "neutro"}
         with patch.object(self.task49, "_ORIGINAL_PREPARE", return_value=sentinel):
@@ -160,6 +201,28 @@ class Task49CronicaAdapterTest(unittest.TestCase):
             result["sidequest_emergente_task46"]["transporte_autoral"],
             "stdin_json_unico",
         )
+
+    def test_preparacao_rara_real_com_capsula_cabe_no_teto_task46(self):
+        now_raw = self.package["prazo_mundo"]["agora"]
+        now = integration._base.opportunity.mundo.parse_instant(
+            now_raw["data"], now_raw["hora"]
+        )
+        rare48 = integration.integrate_prepare(
+            ROOT,
+            self._base_preparation(),
+            signal_raw=self._signal(),
+            decode_ticket=self.task49._base.decode_ticket,
+            encode_ticket=self.task49._base._core.encode_ticket,
+            now=now,
+        )
+        result = self.task49._decorate_authoring_contract(rare48)
+        rendered = yaml.safe_dump(result, allow_unicode=True, sort_keys=False).encode("utf-8")
+        self.assertLessEqual(len(rendered), integration.MAX_COMBINED_PREP_BYTES)
+        self.assertEqual(
+            result["sidequest_emergente_task46"]["formato_autoral"],
+            "capsula_task49_v1",
+        )
+        self.assertIn("contrato_autoria_sidequest", result)
 
     def test_concluir_compila_capsula_antes_de_delegar_ao_task46(self):
         transaction = {
