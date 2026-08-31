@@ -1,0 +1,57 @@
+name: Temporary isolate Task42 fixture
+
+on:
+  push:
+    branches:
+      - fix/checkpoint-ci-baseline
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/checkpoint-ci-baseline
+          fetch-depth: 0
+
+      - name: Isolate live Task42 state from synthetic Task44 fixture
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("tests/test_adversarial_integrity.py")
+          text = path.read_text(encoding="utf-8")
+          old = '''    if canon:
+        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
+        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):
+'''
+          new = '''    if canon:
+        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
+        bridge_path = repo / canon_bridge.STATE
+        bridge = yaml.safe_load(bridge_path.read_text(encoding="utf-8")) or {}
+        bridge["reservas"] = {}
+        bridge["resolucoes"] = {}
+        bridge["historico_recente"] = []
+        bridge_path.write_text(
+            yaml.safe_dump(bridge, allow_unicode=True, sort_keys=False),
+            encoding="utf-8",
+        )
+        for rel in (mundo.TIME_PATH, mundo.AGENDA_PATH, mundo.WORLD_STATE_PATH):
+'''
+          if old not in text:
+              raise SystemExit("Task44 canon fixture block not found")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          Path(".github/workflows/temporary-isolate-task42-fixture.yml").unlink()
+          PY
+
+      - name: Commit repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "test: isolate Task42 state in Task44 fixtures"
+          git push origin HEAD:fix/checkpoint-ci-baseline
