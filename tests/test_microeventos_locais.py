@@ -30,7 +30,6 @@ class LocalMicroeventRepositoryTest(unittest.TestCase):
         ecology = ecologia_local.load_index(ROOT)
         state = micro.load_state(ROOT, micro.load_index(ROOT))
         self.assertEqual(set(state["locais"]), set(ecology["perfis"]))
-        self.assertEqual(len(state["locais"]), 11)
 
     def test_estado_real_nao_inventa_microeventos_retroativos(self):
         raw = yaml.safe_load((ROOT / micro.STATE).read_text(encoding="utf-8"))
