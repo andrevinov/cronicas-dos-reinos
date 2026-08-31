@@ -67,6 +67,12 @@ Toda entrada mecânica que puder ser validada sem aleatoriedade deve falhar ante
 
 A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate de migração não for concluído, seu uso por `dados` fica restrito às primitivas cuja semântica é compatível com o ruleset operacional. Nenhuma regra exclusiva de 5.5e pode entrar silenciosamente na narração antes da ativação final.
 
+## Perfil alvo 5.5e de Ren
+
+A Task 5 materializa a conversão de Ren sem furar o gate da Task 1. `personagens/jogador/migracao-5-5e.yaml` descreve a promoção prospectiva e `ferramentas/ficha_ren_5_5e.py` deriva uma visão mecânica completa a partir da ficha canônica **sem alterar a ficha ativa**. `personagens/jogador/resumo-de-poderes-5-5e.md` é documentação alvo e deve ser ignorado em narração ao vivo enquanto `ruleset.atual` continuar `dnd_5e_2014`.
+
+O adaptador alvo deve sempre derivar PV atuais e a quantidade atual de Focus do estado efetivo: no gate final, Ki é mapeado 1:1 para Focus em vez de restaurar ou gastar recurso por efeito da migração. Os benefícios de criação preservados pela DEC-0008 são decisões de campanha canonizadas, não fallback silencioso de regras 2014.
+
 ## Filosofia de fidelidade: aproximadamente 70%
 
 A meta de 70% representa filosofia, não métrica matemática. Aplicar regras quando elas sustentarem risco, tensão, estratégia, diferenciação de personagens, uso significativo de recursos, imparcialidade, consequência ou surpresa legítima.
