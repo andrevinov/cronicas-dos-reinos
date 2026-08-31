@@ -224,6 +224,25 @@ class FormalADNDGateTest(unittest.TestCase):
         with self.assertRaisesRegex(mecanica_cronica.MechanicalContractError, "gate AD&D"):
             mecanica_cronica.normalize_spec(ROOT, future)
 
+    def test_integridade_nao_confunde_mecanica_nativa_com_adnd(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            GateRepo(repo)
+            registry = yaml.safe_load(
+                (repo / gate_adnd.REGISTRY_PATH).read_text(encoding="utf-8")
+            )
+            errors = gate_adnd.validate_repository(
+                repo,
+                {
+                    gate_adnd.REGISTRY_PATH.as_posix(): registry,
+                    "regras/material-nativo.yaml": {
+                        "mecanica_ativa": True,
+                        "mecanica": {"armor_class": 17},
+                    },
+                },
+            )
+            self.assertEqual(errors, [])
+
     def test_verificador_principal_chama_subgate_adnd(self) -> None:
         source = (ROOT / "ferramentas/verificar-integridade.py").read_text(encoding="utf-8")
         self.assertIn("gate_adnd.validate_repository", source)

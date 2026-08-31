@@ -43,7 +43,7 @@ Depois da ativação, uma opção mecânica 5e 2014 só pode permanecer como fal
 
 A migração é prospectiva: preservar decisões antigas até substituição explícita futura e **não reescrever sessões concluídas**, rolagens, recursos, descobertas ou consequências para simular aplicação retroativa de 5.5e.
 
-Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que entre em jogo é adaptada para o `ruleset.atual`. Assim, o alvo da conversão muda de 2014 para 5.5e somente quando a ativação final ocorrer.
+Materiais de AD&D continuam seguindo a mesma regra conceitual: cenário e aventura podem ser preservados, mas qualquer mecânica que **entre em jogo** é adaptada para o `ruleset.atual`. Durante a migração, novas adaptações persistentes podem ser preparadas diretamente para 5.5e; elas só se tornam elegíveis ao runtime quando `adaptado_para` coincidir com o ruleset ativo.
 
 ### Gate formal de material AD&D
 

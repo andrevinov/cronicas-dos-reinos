@@ -12,7 +12,7 @@ A campanha usa **D&D 5e 2014** como ruleset mecânico ativo durante a migração
 
 O contrato executável fica em `campanha.yaml`, em `sistema.ruleset`. Enquanto `sistema.ruleset.migracao.status` não for `concluida` e o gate `task_8_auditoria_final` não permitir a ativação, regras 5.5e podem ser consultadas para preparar a migração, mas **não substituem silenciosamente a mecânica ativa de 2014 em sessão**.
 
-Material de AD&D e outras edições pode ser usado como cenário, aventura, NPC, local, item ou inspiração, mas suas mecânicas devem ser adaptadas para o **ruleset atual**. Antes da ativação final isso significa 5e 2014; depois da ativação, significa 5.5e.
+Material de AD&D e outras edições pode ser usado como cenário, aventura, NPC, local, item ou inspiração. A mecânica que **entrar em sessão** deve estar adaptada para o ruleset atual. Durante a migração, uma adaptação persistente pode ser preparada para 5.5e antecipadamente, mas permanece inelegível ao runtime até a ativação; uso 2014 derivado de AD&D é fallback explícito.
 
 ---
 

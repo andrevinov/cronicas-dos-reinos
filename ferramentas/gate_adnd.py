@@ -323,18 +323,13 @@ def validate_repository(repo: Path, yaml_docs: dict[str, Any] | None = None) -> 
             continue
         for node_path, node in _walk_maps(document):
             provenance = node.get("proveniencia_mecanica")
-            active = node.get("mecanica_ativa") is True
             origin_hint = None
             if isinstance(provenance, dict):
                 origin_hint = provenance.get("edicao_origem")
-            if not active and origin_hint not in ADND_EDITIONS:
-                continue
-            if active and provenance is None:
-                # Só reservamos a marca ``mecanica_ativa`` para artefatos que
-                # precisam declarar versão; isso faz a falha ser estrutural, não heurística.
-                errors.append(
-                    f"{rel}:{node_path}: material mecânico ativo sem proveniencia_mecanica/versão"
-                )
+            # Fora do registro dedicado, não sequestrar a chave genérica
+            # mecanica_ativa de material nativo. Só inspecionar documentos que
+            # já se identificam como derivados de AD&D.
+            if origin_hint not in ADND_EDITIONS:
                 continue
             try:
                 validate_material(repo, node, for_runtime=False)
