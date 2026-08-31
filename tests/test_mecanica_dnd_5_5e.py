@@ -120,6 +120,30 @@ class Dnd55MechanicsCoreTest(unittest.TestCase):
         self.assertTrue(result.critical)
         self.assertEqual(result.automatic, "critico")
 
+    def test_um_e_vinte_naturais_independem_de_conhecer_a_ca(self) -> None:
+        natural_one = mechanics.perform_attack(
+            attack_bonus=7,
+            armor_class=None,
+            rng=SequenceRng([1]),
+        )
+        natural_twenty = mechanics.perform_attack(
+            attack_bonus=7,
+            armor_class=None,
+            rng=SequenceRng([20]),
+        )
+        unresolved = mechanics.perform_attack(
+            attack_bonus=7,
+            armor_class=None,
+            rng=SequenceRng([12]),
+        )
+        self.assertEqual((natural_one.hit, natural_one.automatic), (False, "falha"))
+        self.assertEqual(
+            (natural_twenty.hit, natural_twenty.critical, natural_twenty.automatic),
+            (True, True, "critico"),
+        )
+        self.assertIsNone(unresolved.hit)
+        self.assertFalse(unresolved.critical)
+
     def test_ataque_comum_resolve_total_contra_ca(self) -> None:
         hit = mechanics.perform_attack(
             attack_bonus=7,
@@ -148,6 +172,25 @@ class Dnd55MechanicsCoreTest(unittest.TestCase):
             (critical.spec.count, critical.spec.modifier, critical.total),
             (2, 4, 12),
         )
+
+    def test_cli_ataque_critico_delega_ataque_e_dano_ao_nucleo(self) -> None:
+        fixed = SequenceRng([20, 3, 5])
+        old_rng = core.RNG
+        core.RNG = fixed
+        try:
+            text = core.format_attack(
+                label="Ataque",
+                attack_bonus=7,
+                damage_expression="1d6+4",
+                damage_type="cortante",
+                ca=99,
+                mode="normal",
+            )
+        finally:
+            core.RNG = old_rng
+        self.assertEqual(fixed.calls, 3)
+        self.assertIn("d20 20 + 7 = 27 contra CA 99. Acerto crítico.", text)
+        self.assertIn("Dano crítico: 2d6 [3, 5] + 4 = 12 cortante.", text)
 
     def test_entradas_invalidas_falham_antes_do_rng(self) -> None:
         cases = [
