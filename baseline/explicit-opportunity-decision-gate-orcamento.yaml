@@ -1,0 +1,37 @@
+schema_orcamento_task47: 1
+task: 47
+nome: Explicit Opportunity Decision Gate
+decisao:
+  obrigatoria_em_todo_cronica_preparar: true
+  exatamente_uma: true
+  positiva: oportunidade_sidequest
+  negativa: sem_oportunidade_sidequest
+turno_negativo:
+  chamadas_orquestracao: 2
+  leituras_task40_45: 0
+  fragmentos_sidequest_emergente: 0
+  leituras_horizonte_canonico_adicionais: 0
+  delta_saida_hotpath: 0
+turno_positivo:
+  chamadas_orquestracao: 2
+  chamadas_task40_na_preparacao: 1
+  validacao_ancora_antes_de_leituras: true
+telemetria:
+  cobertura_decisao_exigida: 1.0
+  decisoes_validas:
+    - oportunidade
+    - sem_oportunidade
+  violacoes:
+    - ausente
+    - conflito
+infra:
+  schedulers_novos: 0
+  relogios_novos: 0
+  rng_novo: 0
+  scans_globais_novos: 0
+  estados_persistentes_novos: 0
+invariantes:
+  - decisao_negativa_nao_acorda_task40_task46
+  - omissao_programatica_falha_antes_do_pending_gate
+  - oportunidade_incompleta_falha_antes_do_pending_gate
+  - task47_nao_altera_semantica_task40_task46
