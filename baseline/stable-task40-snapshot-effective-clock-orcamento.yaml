@@ -1,0 +1,26 @@
+schema_task48_orcamento: 1
+task: stable_task40_snapshot_effective_clock
+limites:
+  turno_neutro_leituras_task40_45: 0
+  chamadas_orquestracao_por_turno: 2
+  digest_semantico_sha256_hex_chars: 64
+  pacote_autoral_max_bytes: 8192
+  preparacao_rara_max_bytes: 16384
+  schedulers_novos: 0
+  relogios_novos: 0
+  rng_novo: 0
+  scans_globais_novos: 0
+  estados_persistentes_novos: 0
+campos_observacionais_fora_do_digest:
+  - fontes_lidas
+  - metricas
+  - orcamento_pacote
+invariantes:
+  instante_explicito_tem_precedencia: true
+  overlay_temporal_pendente_alimenta_task40: true
+  ausencia_de_overlay_preserva_relogio_lazy_task40: true
+  mudanca_temporal_real_invalida_ticket: true
+  mudanca_causal_invalida_ticket: true
+  telemetria_nao_invalida_ticket: true
+  ticket_task46_legado_permanece_compativel: true
+  checkpoint_intermediario_nao_e_obrigatorio: true
