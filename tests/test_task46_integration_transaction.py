@@ -44,8 +44,21 @@ def task46_block(package: dict) -> dict:
 
 def task46_ticket() -> str:
     payload = {
-        "cena": {"scene_id": "task46:oferta"},
+        "schema_cronica_ticket": cronica._core.SCHEMA,
         "preparacao_id": "turn-neutral-task46",
+        "cena": cronica._core._request(
+            scene_id="task46:oferta",
+            npcs=[],
+            place=None,
+            action=None,
+            tier=None,
+            danger=None,
+            context_tags=[],
+            now=None,
+            approach_preparacao=None,
+            approach_informacao=None,
+            approach_adequacao=None,
+        ),
         integration.TICKET_KEY: {
             "schema": integration.SCHEMA,
             "sinal": {},
@@ -96,6 +109,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         self.assertEqual(mission["estado"], "oferecida")
         self.assertEqual(mission["origem"], "sidequest_emergente")
         self.assertEqual(mission["contrato_recompensa"], plan["reward_path"])
+        self.assertEqual(mission["contrato_adversarial"], plan["adversarial_path"])
         self.assertEqual(mission["progresso_sidequest"], plan["progress_path"])
         for key in ("quest_path", "reward_path", "adversarial_path", "progress_path"):
             self.assertTrue((self.repo / plan[key]).is_file(), key)
@@ -142,6 +156,7 @@ class Task46TransactionTest(task45.Task45Fixture):
         ):
             result = cronica.conclude(self.repo, token, tx)
         base.assert_called_once()
+        self.assertNotIn(integration.TRANSACTION_KEY, base.call_args.args[2])
         install.assert_not_called()
         after = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
         self.assertEqual(before, after)
@@ -163,6 +178,8 @@ class Task46TransactionTest(task45.Task45Fixture):
         ):
             result = cronica.conclude(self.repo, token, tx)
         base.assert_called_once()
+        self.assertIn(integration.TRANSACTION_KEY, tx)
+        self.assertNotIn(integration.TRANSACTION_KEY, base.call_args.args[2])
         self.assertEqual(result["sidequest_emergente"]["resultado"], "sidequest_materializada")
         self.assertEqual(result["sidequest_emergente"]["instalacoes_logicas"], 1)
         state = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
@@ -187,7 +204,10 @@ class Task46TransactionTest(task45.Task45Fixture):
     def test_falha_do_writer_deixa_journal_e_retry_repara_sem_duplicar(self):
         token = task46_ticket()
         tx = self.transaction()
-        calls = [cronica.CronicaError("writer interrompido"), {"fase": "concluida", "sistemas_narrativos": []}]
+        calls = [
+            cronica.CronicaError("writer interrompido"),
+            {"fase": "concluida", "sistemas_narrativos": []},
+        ]
         with (
             patch.object(cronica._sidequests46, "_plan_from_ticket", return_value=self.package),
             patch.object(cronica, "_conclude_base", side_effect=calls),
