@@ -86,3 +86,9 @@ adversarios:
     funcao: hibrido
     arquivo: narrador/adversarios/fichas/arquetipo_predador_fendas_n6.yaml
     especialidades_arquivo: narrador/adversarios/especialidades/arquetipo_predador_fendas_n6.yaml
+  arquetipo_estrangulador_adaptado_5_5e:
+    nome: Estrangulador — adaptação 5.5e
+    tipo: criatura
+    funcao: hibrido
+    arquivo: narrador/adversarios/fichas/estrangulador_adaptado_5_5e.yaml
+    especialidades_arquivo: narrador/adversarios/especialidades/estrangulador_adaptado_5_5e.yaml

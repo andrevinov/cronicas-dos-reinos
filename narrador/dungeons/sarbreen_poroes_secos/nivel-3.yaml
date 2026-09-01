@@ -1,0 +1,81 @@
+schema_nivel_dungeon: 1
+natureza: preparacao_reservada_nao_materializada
+dungeon_id: sarbreen_poroes_secos
+numero: 3
+nome: Poço das Gavinhas
+entrada_area: n3_varanda_poco
+areas:
+- id: n3_varanda_poco
+  nome: Varanda do poço
+  tipo: entrada
+  descricao: Uma varanda semicircular acompanha um poço seco cercado por estalactites e antigos pontos de guincho.
+  sinais: [cordas minerais rompidas, restos abaixo, caminho de volta pelo poço lateral]
+  conexoes: [n3_arco_cego, n3_passarela_guincho]
+- id: n3_arco_cego
+  nome: Arco cego
+  tipo: encontro
+  descricao: Formação pétrea domina a rota curta e alcança a varanda e a passarela com gavinhas.
+  sinais: [ossos sem metal, sulcos radiais no pó, uma estalagmite limpa demais para o entorno]
+  conexoes: [n3_varanda_poco, n3_camara_sucos]
+- id: n3_passarela_guincho
+  nome: Passarela do guincho
+  tipo: travessia
+  descricao: Restos do guincho permitem cruzar fora do chão, mas exigem reativar uma trava manual.
+  sinais: [corrente de bronze íntegra, alavanca distante, queda visível sob a passarela]
+  conexoes: [n3_varanda_poco, n3_camara_sucos]
+- id: n3_camara_sucos
+  nome: Câmara dos resíduos minerais
+  tipo: descoberta
+  descricao: Calhas anãs recolhiam líquidos corrosivos ou solventes produzidos no poço.
+  sinais: [vidro antigo opaco, marcas de pinça, canal protegido da área de caça]
+  conexoes: [n3_arco_cego, n3_passarela_guincho, n3_elevador_contrapeso]
+- id: n3_elevador_contrapeso
+  nome: Elevador de contrapeso
+  tipo: perigo
+  descricao: Uma plataforma manual desce ao arquivo, equilibrada por pesos rachados no poço vizinho.
+  sinais: [trava dupla, um cabo bom e outro oxidado, nichos de parada a cada dez pés]
+  conexoes: [n3_camara_sucos]
+encontros:
+- id: estrangulador_do_arco
+  area_id: n3_arco_cego
+  condicao_materializacao: vestígios e observação confirmarem que o estrangulador ainda ocupa o arco cego
+  adversarios:
+  - {id: arquetipo_estrangulador_adaptado_5_5e, quantidade: 1}
+  objetivo: imobilizar à distância, puxar uma presa e impedir travessia pelo chão
+  sinalizacao: ossos sem metal, sulcos radiais e formação sem poeira oferecem pistas antes do primeiro ataque
+  avaliacao_referencia: {nivel: 7, vetor: combate, recursos: plenos, terreno: adversario, iniciativa: neutra, classificacao: letal}
+  alternativas: [reativar a passarela, distrair com alimento, cortar gavinhas, recuar ao poço lateral]
+  retirada: o estrangulador não abandona o poço; sair do alcance e voltar à varanda encerra sua perseguição
+perigos:
+- id: cabo_oxidado_elevador
+  area_id: n3_elevador_contrapeso
+  gatilho: soltar a trava principal sem distribuir peso ou prender o cabo oxidado
+  sinalizacao: diferença de cor, fibras metálicas soltas e nichos de parada mostram a falha possível
+  resolucao: {tipo: teste, atributo: ferramentas_de_ladrao_ou_atletismo, cd: 15}
+  falha:
+    dano: {formula: 4d6, tipo: contundente}
+    consequencia: a plataforma cai até o próximo nicho e fica presa; subida por emergência continua possível
+  sucesso: a plataforma desce controlada e pode retornar enquanto o mecanismo não for danificado
+  contrajogo: [descer pelos nichos com corda, travar o cabo secundário, reduzir a carga da plataforma]
+descobertas:
+- id: coleta_deliberada_de_solvente
+  area_id: n3_camara_sucos
+  condicao: estudar as calhas sem tocar o resíduo diretamente
+  resultado: mostra que habitantes anões exploravam um predador subterrâneo como fonte de solvente sem domesticá-lo
+  estatuto: possibilidade_ate_descoberta
+saidas:
+- id: recuo_nivel_2
+  area_id: n3_varanda_poco
+  destino: nivel_2
+  tipo: recuo
+  condicao: subir pelo poço lateral
+  sinalizacao: degraus de manutenção permanecem fora do alcance do arco cego
+- id: descida_nivel_4
+  area_id: n3_elevador_contrapeso
+  destino: nivel_4
+  tipo: progressao
+  condicao: descer pela plataforma ou pelos nichos de emergência
+  sinalizacao: marcas numeradas indicam um arquivo no estrato inferior
+descanso:
+  seguro: false
+  condicoes: [a câmara de resíduos quebra linha de visão, mas não sela o poço nem garante repouso]

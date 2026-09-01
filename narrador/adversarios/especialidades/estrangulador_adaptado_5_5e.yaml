@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: arquetipo_estrangulador_adaptado_5_5e
+especialidades:
+  emboscada_mineral:
+    nome: Emboscada mineral
+    dominio: camuflagem imóvel, leitura de vibração e controle de corredor
+    objetivo: Obter a primeira janela de alcance sem apagar sinais físicos ou garantir surpresa.
+    procedimentos:
+    - id: sustentar_aparencia
+      gatilho: permanece imóvel antes que uma criatura entre a 50 pés
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Furtividade, bonus: 5, oposicao: Percepção ou Investigação do observador}
+      resultado_sucesso: O observador não distingue o corpo da formação antes de outra pista ou mudança material.
+      resultado_falha: Poeira, sulcos, restos ou assimetria revelam que a formação merece cautela.
+      custo: null
+      limite: {tipo: condicional, valor: uma disputa por aproximação enquanto permanecer imóvel}
+    - id: escolher_perimetro
+      gatilho: dispõe de uma hora para ocupar poço, câmara ou corredor pétreo
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Sobrevivência, bonus: 6, cd: 15}
+      resultado_sucesso: Ocupa posição que cobre uma rota e conserva um limite de perseguição observável.
+      resultado_falha: Cobre a rota ou preserva ocultação, mas não ambas.
+      custo: null
+      limite: {tipo: condicional, valor: uma posição preparada por covil}
+    contrajogo: [Observar a distância, comparar poeira e formações, testar com objeto, usar cobertura total ou outra rota.]

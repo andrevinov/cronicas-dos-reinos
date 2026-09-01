@@ -19,6 +19,15 @@ autoridades:
   perfis_avaliacao_ameacas:
     arquivo: narrador/adversarios/ameacas.yaml
     escopo: patamares de combate e especialidade, sinalização e saídas plausíveis
+  contrato_dungeons:
+    arquivo: narrador/dungeons/contrato.yaml
+    escopo: schema, orçamentos e invariantes de preparação explorável
+  registro_dungeons:
+    arquivo: narrador/dungeons/index.yaml
+    escopo: ids, locais, estatutos e manifestos dirigidos de dungeons preparadas
+  piloto_sarbreen_poroes_secos:
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/manifesto.yaml
+    escopo: fronteira canônica, ativação, quatro níveis e recompensa final declarada
   elenco_juppongatana:
     arquivo: narrador/juppongatana/index.yaml
     escopo: ids, nomes, alcunhas, círculos e rotas dos membros

@@ -45,6 +45,13 @@ Para mapa inexistente, a preparação usa o mesmo gerador determinístico da con
 
 Para mapa existente, a mesma área é reutilizada. **Item existir no mapa não significa que Ren o encontrou.** Descoberta/obtenção dependem da cena e do pipeline canônico normal.
 
+Dungeon preparada usa o mesmo `local_id`, mas não entra automaticamente no pacote
+de todo local. Depois que um gatilho canônico confirma o acesso, consultar apenas o
+manifesto e o nível alcançado. O registro da dungeon não cria presença, encontro,
+descoberta ou recompensa; a porta reativa continua responsável por confirmar a
+cena, e o writer normal registra progresso factual. Checkpoint não povoa nível nem
+concede o prêmio final.
+
 ## 4. Encontros e side quests — Tasks 31–33
 
 Resolver identidade do NPC continua obrigatório.

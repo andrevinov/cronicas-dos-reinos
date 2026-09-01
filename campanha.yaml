@@ -111,6 +111,9 @@ estrutura:
     adversarios_indice: narrador/adversarios/index.yaml
     ameacas_contrato: narrador/adversarios/contrato-ameacas.yaml
     ameacas_perfis: narrador/adversarios/ameacas.yaml
+    dungeons_preparadas: narrador/dungeons/README.md
+    dungeons_contrato: narrador/dungeons/contrato.yaml
+    dungeons_indice: narrador/dungeons/index.yaml
     juppongatana: narrador/juppongatana/README.md
     juppongatana_elenco: narrador/juppongatana/index.yaml
     juppongatana_conducao: narrador/juppongatana/conducao.md

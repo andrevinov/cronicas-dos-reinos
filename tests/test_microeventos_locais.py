@@ -23,9 +23,10 @@ import microeventos_locais as micro
 
 class LocalMicroeventRepositoryTest(unittest.TestCase):
     def test_repositorio_real_valida_catalogo_estado_e_ecologia(self):
+        index = micro.load_index(ROOT)
         result = micro.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
-        self.assertEqual(result["cartas"], 19)
+        self.assertEqual(result["cartas"], len(index["cartas"]))
 
         ecology = ecologia_local.load_index(ROOT)
         state = micro.load_state(ROOT, micro.load_index(ROOT))

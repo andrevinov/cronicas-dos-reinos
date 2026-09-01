@@ -107,6 +107,10 @@ orcamento_v2:
       modificador_pontos: 1
       teto_valor_base: moderado
       categorias: [dinheiro, gema, ferramenta, pergaminho, curiosidade]
+    ruina_subterranea:
+      modificador_pontos: 1
+      teto_valor_base: alto
+      categorias: [dinheiro, gema, consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]
 condicoes:
 - id: busca_deliberada
   texto: investigar deliberadamente recipientes, nichos ou mobiliário compatíveis com a área

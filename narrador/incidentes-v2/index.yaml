@@ -162,8 +162,8 @@ cartas:
     tipo: desabamento
     escopos: [local]
     acessos: [publico, semipublico, controlado, privado]
-    canais: [manutencao, trabalho, carga, vizinhanca]
-    tags: [imovel_baixa_atividade, trabalho, carga, servico, exterior, propriedade]
+    canais: [manutencao, trabalho, carga, vizinhanca, estrutura]
+    tags: [imovel_baixa_atividade, trabalho, carga, servico, propriedade, subterraneo, ruina, estrutura]
     condicoes_necessarias: []
     severidade: alta
     intervencao: imediata
@@ -186,7 +186,7 @@ cartas:
     tipo: ferimento
     escopos: [global, local]
     acessos: [publico, semipublico, controlado, privado]
-    canais: [atendimento, cuidado, vizinhanca, trabalho, transito, seguranca]
+    canais: [atendimento, cuidado, vizinhanca, trabalho, transito, seguranca, ambiente]
     tags: []
     condicoes_necessarias: []
     severidade: moderada

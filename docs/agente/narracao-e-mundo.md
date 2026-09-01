@@ -89,6 +89,14 @@ criatura já sustentado pela cena/cânone e não copia personalidade, conhecimen
 objetivo ou presença. Depois da preparação, nem vínculo nem avaliação autorizam
 trocar PV, CA, CD, dano, recursos ou número de inimigos.
 
+Dungeon preparada é outra camada dirigida. Consultar o manifesto com
+`dungeons.py mostrar <id>` quando um acesso plausível entrar em pauta; abrir
+somente o nível atual com `dungeons.py nivel <id> <numero>`. Área, encontro,
+perigo e descoberta permanecem preparação até a ficção alcançá-los. Uma referência
+de adversário pede ficha/ameaça próprias apenas quando sua condição de
+materialização for satisfeita. Não carregar os quatro níveis para retomar ou para
+um turno fora da dungeon.
+
 A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. A cadência de reavaliação vem do Mundo Vivo; não transformar uma pendência em obrigação de agir.
 
 ## Agentes recorrentes leves

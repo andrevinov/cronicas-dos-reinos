@@ -1,0 +1,138 @@
+schema_adversario: 1
+natureza: reservado
+id: arquetipo_estrangulador_adaptado_5_5e
+nome: Estrangulador — adaptação 5.5e
+tipo: criatura
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: adaptado_edicao_anterior
+  referencia: Manual dos Monstros, D&D 5e 2014, p. 139; books/high_rules_dnd5e_monster-manual_pt-br.pdf
+  decisao: null
+  adaptacao: >-
+    Convertido para o contrato 5.5e da campanha: mantém identidade, CA, PV e
+    contrajogo das gavinhas, explicita sequência de ações, sinalização e recuperação.
+    Não estabelece presença, covil ou população até vínculo canônico com a cena.
+perfil: {tamanho: Grande, tipo_criatura: Monstruosidade, alinhamento: Neutro e Mau}
+escala: {categoria: elite, referencia: predador subterrâneo de nível de referência 8}
+defesas: {ca: 20, pv: 93, dados_vida: 11d10+33}
+movimento: {terrestre: 10, escalada: 10}
+atributos: {for: 18, des: 8, con: 17, int: 7, sab: 16, car: 6}
+bonus_proficiencia: 3
+iniciativa: -1
+salvaguardas: {con: 6, sab: 6}
+pericias: {furtividade: 5, percepcao: 6}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 16, especiais: [visao_no_escuro 60 pés]}
+idiomas: [nenhum]
+recursos: []
+tracos:
+- id: aparencia_falsa
+  nome: Aparência falsa
+  regra: Enquanto permanece imóvel e com o olho fechado, parece uma formação mineral comum até observação materialmente capaz de contestar a camuflagem.
+  contrajogo: [Procurar ausência de poeira, sulcos radiais, ossos sem metal ou mudança de posição entre observações.]
+- id: gavinhas_aderentes
+  nome: Gavinhas aderentes
+  regra: >-
+    Mantém até quatro gavinhas. Cada uma pode ser atacada separadamente (CA 20,
+    10 PV, imunidade a veneno e psíquico); destruí-la não causa dano ao corpo.
+    Uma criatura agarrada pode usar uma ação para escapar com Força ou Destreza CD 15.
+  contrajogo: [Atacar a gavinha, escapar do agarrão, usar cobertura total ou permanecer além de 50 pés.]
+- id: escalada_aracnidea
+  nome: Escalada aracnídea
+  regra: Escala pedra e teto sem teste, mas seu deslocamento continua 10 pés.
+  contrajogo: [Negar teto acessível, criar distância ou usar terreno que não sustente seu peso.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: variável
+  alvos: até três criaturas e uma criatura ao alcance da mordida
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: "Faz até três ataques de Gavinha, usa Molinete e faz uma Mordida contra alvo a 5 pés.", dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total, quebrar gavinhas e impedir que um alvo seja puxado até a mordida.]
+- id: mordida
+  nome: Mordida
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Mandíbulas pétreas esmagam a presa., dano: {formula: 4d8+4, tipo: perfurante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Não terminar o turno ao alcance da boca, impor desvantagem ou romper a gavinha que aproxima o alvo.]
+- id: gavinha
+  nome: Gavinha
+  ativacao: acao
+  gatilho: null
+  alcance: 50 pés
+  alvos: uma criatura Grande ou menor
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: O alvo fica Agarrado e Impedido; a gavinha não pode atingir outro alvo enquanto mantiver o agarrão., dano: null}
+  custo: null
+  limite: {tipo: condicional, valor: máximo de quatro gavinhas mantidas simultaneamente}
+  contrajogo: [Escapar com ação, destruir a gavinha, quebrar linha com cobertura total.]
+- id: molinete
+  nome: Molinete
+  ativacao: acao
+  gatilho: null
+  alcance: até 50 pés pelas gavinhas
+  alvos: cada criatura agarrada por uma gavinha
+  resolucao: {tipo: automatica, condicao: existir ao menos uma criatura agarrada}
+  efeitos:
+  - {quando: uso, regra: Puxa cada alvo agarrado até 25 pés em direção ao estrangulador., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Romper a gavinha antes do molinete, ancorar o alvo ou interpor cobertura total sólida.]
+acoes_bonus:
+- id: recompor_gavinha
+  nome: Recompor gavinha
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio estrangulador
+  resolucao: {tipo: automatica, condicao: ter menos de quatro gavinhas após uma delas ser destruída antes deste turno}
+  efeitos:
+  - {quando: uso, regra: "Produz uma gavinha substituta livre, sem restaurar PV ao corpo ou a outra gavinha.", dano: null}
+  custo: null
+  limite: {tipo: condicional, valor: uma gavinha por turno}
+  contrajogo: [Usar a janela criada pela gavinha destruída e não depender de eliminar todas ao mesmo tempo.]
+- id: fechar_o_olho
+  nome: Fechar o olho
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio estrangulador
+  resolucao: {tipo: automatica, condicao: não manter criatura agarrada e não ter se movido neste turno}
+  efeitos:
+  - {quando: uso, regra: Volta à postura imóvel de Aparência Falsa; isso não apaga a identificação de quem já o viu agir., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter observação da formação já identificada e marcar sua posição.]
+reacoes: []
+acoes_lendarias: []
+taticas:
+  abertura: [Permanece imóvel até uma presa entrar em alcance e então espalha gavinhas antes de puxar.]
+  prioridades: [Imobiliza alvos expostos e morde somente quem alcança a boca.]
+  adaptacoes: [Usa gavinhas para negar rotas quando a presa evita aproximação direta.]
+  uso_terreno: [Prefere teto alto, poço, cobertura pétrea e caminho estreito.]
+  evita: [Não persegue além do covil nem abandona posição para disputar espaço aberto.]
+retirada:
+  postura: luta_ate_incapacitado
+  gatilhos: [Presa abandona o alcance e o covil., Corpo é incapacitado.]
+  metodo: Solta alvos fora do covil e volta à imobilidade; não realiza perseguição longa.
+  custo_ou_risco: Perde a presa e revela o limite real de alcance.
+  sinais_observaveis: [Gavinhas deixam de avançar além do mesmo perímetro e o corpo permanece fixo.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/estrangulador_adaptado_5_5e.yaml
+  ids: [emboscada_mineral]

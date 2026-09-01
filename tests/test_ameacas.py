@@ -56,7 +56,13 @@ class ThreatRepositoryTest(unittest.TestCase):
                 for group in ("acoes", "acoes_bonus", "reacoes", "acoes_lendarias")
             )
             self.assertGreaterEqual(repertoire, 6, adversary_id)
-            self.assertEqual(sheet["proveniencia"]["origem"], "original_campanha")
+            self.assertIn(
+                sheet["proveniencia"]["origem"],
+                {"original_campanha", "adaptado_edicao_anterior"},
+            )
+            if sheet["proveniencia"]["origem"] == "adaptado_edicao_anterior":
+                self.assertTrue(sheet["proveniencia"]["adaptacao"])
+                self.assertTrue(sheet["proveniencia"]["referencia"])
             self.assertIn("presença", sheet["proveniencia"]["adaptacao"])
             for specialty_id in sheet["especialidades"]["ids"]:
                 detail = mod.adversarios.load_specialty(REPO, adversary_id, specialty_id)

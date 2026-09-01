@@ -1,0 +1,46 @@
+schema_contrato_dungeons: 1
+natureza: contrato_preparacao_dungeon_reservado
+ruleset: dnd_5_5e
+orcamento:
+  indice_max_bytes: 4096
+  manifesto_max_bytes: 8192
+  nivel_max_bytes: 8192
+  consulta_max_bytes: 8192
+  max_niveis: 8
+  max_areas_por_nivel: 8
+  max_encontros_por_nivel: 4
+  max_perigos_por_nivel: 4
+estatutos:
+- preparada_nao_materializada
+tipos_area:
+- entrada
+- exploracao
+- travessia
+- perigo
+- encontro
+- descoberta
+- recompensa
+tipos_resolucao_perigo:
+- teste
+- salvaguarda
+classificacoes_ameaca:
+- baixa
+- moderada
+- alta
+- letal
+- esmagadora
+invariantes:
+  registro_nao_materializa_dungeon: true
+  layout_preparado_nao_estabelece_descoberta: true
+  presenca_planejada_e_candidata_ate_cena: true
+  numeros_e_geografia_anteriores_a_rolagem: true
+  dificuldade_nao_muda_pos_rolagem: true
+  todo_perigo_tem_sinalizacao_e_contrajogo: true
+  todo_encontro_tem_objetivo_e_retirada: true
+  todo_nivel_tem_recuo_observavel: true
+  recompensa_exige_descoberta_e_obtencao: true
+  recompensa_nunca_e_automatica: true
+  progresso_usa_writer_canonico_existente: true
+  sem_estado_scheduler_ou_rng_proprio: true
+  consulta_dirigida_nao_abre_outros_niveis: true
+  turno_comum_nao_consulta_dungeon: true

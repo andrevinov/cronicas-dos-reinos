@@ -1,0 +1,58 @@
+schema_dungeon: 1
+natureza: preparacao_reservada_nao_materializada
+id: sarbreen_poroes_secos
+nome: Trecho dos Porões Secos de Sarbreen
+local_id: sarbreen_poroes_secos
+contrato: narrador/dungeons/contrato.yaml
+estatuto: preparada_nao_materializada
+escopo_canonico:
+  ancoras:
+  - estado/relacoes/brunna_torkel.yaml
+  - personagens/jogador/conhecimento/descobertas/sessao-003/011-sessao-003-busca-noturna-por-especialista-em-sarbreen.md
+  - personagens/jogador/conhecimento/descobertas/sessao-003/001-sessao-003-retorno-ao-circo-e-recado-de-luath-parte-01.md
+  fatos_preservados:
+  - Sarbreen é uma cidade anã quebrada sob Ravens Bluff, não uma masmorra única.
+  - Ren já explorou a passagem da Balança Velha; este trecho fica atrás de armazéns antigos e não reescreve aquela incursão.
+  - Ren possui uma cópia parcial que indica porões secos, duas entradas, saída baixa, parede raspada, ar seco e marca apagada.
+  nao_estabelece:
+  - que Ren já encontrou uma entrada utilizável para este trecho
+  - que criaturas, constructos ou ocupantes preparados estão presentes agora
+  - que a Ponte de Kozakura passa por este trecho ou será descoberta nele
+premissa: >-
+  Quatro estratos conectados de porões incorporados, galerias anãs, cisterna seca e
+  arquivo de contrapesos formam uma incursão completa. O local pode ser vinculado a
+  uma exploração, side quest ou trilha de arco somente por gatilho canônico concreto.
+ativacao:
+  exige_gatilho_canonico:
+  - Ren seguir a cópia dos porões secos ou obter outra evidência física compatível.
+  - A entrada real ser confirmada numa cena, sem transformar o mapa parcial em acesso automático.
+  materializacao: cada área, encontro, perigo e descoberta só vira fato quando alcançado ou produzido pelo jogo
+  nao_ativa:
+  - Ponte de Kozakura
+  - membro da Juppongatana
+  - aliado de resgate
+  - recompensa automática
+estrutura:
+  nivel_inicial: 1
+  niveis:
+  - numero: 1
+    nome: Porões Incorporados
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/nivel-1.yaml
+  - numero: 2
+    nome: Galeria das Fendas
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/nivel-2.yaml
+  - numero: 3
+    nome: Poço das Gavinhas
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/nivel-3.yaml
+  - numero: 4
+    nome: Arquivo do Contrapeso
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/nivel-4.yaml
+recompensa_final:
+  id: chave_de_pedreiro_de_sarbreen
+  fonte: narrador/recompensas/planejadas.yaml
+  condicao: alcançar o cofre de levantamento no nível 4 e retirar a peça depois de superar seu acesso
+  obtencao_automatica: false
+continuidade:
+  estado: nenhuma camada própria; progresso factual pertence ao estado, sessão e lifecycle canônicos
+  writer: turno transacional e ferramentas de recompensa existentes
+  checkpoint: não sorteia sala, encontro, monstro ou recompensa

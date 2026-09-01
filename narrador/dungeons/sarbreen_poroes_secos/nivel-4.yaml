@@ -1,0 +1,87 @@
+schema_nivel_dungeon: 1
+natureza: preparacao_reservada_nao_materializada
+dungeon_id: sarbreen_poroes_secos
+numero: 4
+nome: Arquivo do Contrapeso
+entrada_area: n4_base_elevador
+areas:
+- id: n4_base_elevador
+  nome: Base do elevador
+  tipo: entrada
+  descricao: A plataforma chega a um corredor seco com nichos de emergência até o nível superior.
+  sinais: [numeração anã repetida, retorno vertical visível, linhas rúnicas apagadas no piso]
+  conexoes: [n4_sala_ancoras]
+- id: n4_sala_ancoras
+  nome: Sala das âncoras
+  tipo: encontro
+  descricao: Três âncoras rúnicas cercam uma sentinela de pedra diante da porta do arquivo.
+  sinais: [circuitos visíveis, perímetro marcado, três âncoras alcançáveis por rotas diferentes]
+  conexoes: [n4_base_elevador, n4_galeria_servico, n4_porta_arquivo]
+- id: n4_galeria_servico
+  nome: Galeria de serviço
+  tipo: travessia
+  descricao: Canal estreito passa atrás das âncoras e expõe seus encaixes de manutenção.
+  sinais: [símbolos de desligamento, espaço para ferramenta longa, cobertura contra a sala]
+  conexoes: [n4_sala_ancoras, n4_porta_arquivo]
+- id: n4_porta_arquivo
+  nome: Porta do arquivo
+  tipo: perigo
+  descricao: A porta abre por dois contrapesos sincronizados; forçar apenas um dispara o outro.
+  sinais: [dois mostradores, trava central, marcas de abertura alternada malsucedida]
+  conexoes: [n4_sala_ancoras, n4_galeria_servico, n4_cofre_levantamento]
+- id: n4_cofre_levantamento
+  nome: Cofre de levantamento
+  tipo: recompensa
+  descricao: Armários de pedra guardam instrumentos, placas de medição e uma chave de pedreiro identificável.
+  sinais: [encaixe correspondente à chave, catálogo gravado, saída de manutenção selada por dentro]
+  conexoes: [n4_porta_arquivo, n4_saida_manutencao]
+- id: n4_saida_manutencao
+  nome: Saída baixa de manutenção
+  tipo: travessia
+  descricao: Um duto ascendente termina numa grelha distante dos armazéns, abrindo segunda rota à superfície.
+  sinais: [ar urbano, fuligem recente na extremidade alta, degraus de inspeção]
+  conexoes: [n4_cofre_levantamento]
+encontros:
+- id: sentinela_do_arquivo
+  area_id: n4_sala_ancoras
+  condicao_materializacao: a runa-mãe e a sentinela permanecerem funcionais quando a sala for alcançada
+  adversarios:
+  - {id: arquetipo_sentinela_runica_n7, quantidade: 1}
+  objetivo: impedir acesso ao arquivo e proteger as três âncoras sem perseguir além do perímetro
+  sinalizacao: circuitos, perímetro e âncoras mostram alcance, cargas e contrajogo antes da resolução
+  avaliacao_referencia: {nivel: 7, vetor: combate, recursos: gastos, terreno: adversario, iniciativa: neutra, classificacao: letal}
+  alternativas: [desativar âncoras pela galeria, sair do perímetro, bloquear runas de destino, recuar pelo elevador]
+  retirada: a sentinela não passa do perímetro; o elevador e os nichos continuam como saída observável
+perigos:
+- id: contrapesos_assincronos
+  area_id: n4_porta_arquivo
+  gatilho: mover um contrapeso sem sincronizar o segundo ou sem travar a lingueta central
+  sinalizacao: mostradores gêmeos e marcas de tentativas antigas revelam a exigência de sincronização
+  resolucao: {tipo: teste, atributo: ferramentas_de_ladrao_ou_investigacao, cd: 16}
+  falha:
+    dano: {formula: 3d10, tipo: contundente}
+    consequencia: a porta se fecha e exige nova abordagem; o corredor e a retirada permanecem livres
+  sucesso: a trava central segura ambos os pesos e abre acesso ao cofre
+  contrajogo: [usar duas pessoas ou apoio mecânico, travar um peso antes do outro, procurar o canal de serviço]
+descobertas:
+- id: arquivo_de_manutencao_local
+  area_id: n4_cofre_levantamento
+  condicao: ler as placas e comparar a numeração dos quatro estratos
+  resultado: documenta apenas este sistema de porões e contrapesos, sem fornecer mapa inteiro de Sarbreen
+  estatuto: possibilidade_ate_descoberta
+saidas:
+- id: recuo_nivel_3
+  area_id: n4_base_elevador
+  destino: nivel_3
+  tipo: recuo
+  condicao: usar plataforma ou nichos de emergência
+  sinalizacao: a coluna vertical permanece visível e numerada
+- id: saida_superficie_secundaria
+  area_id: n4_saida_manutencao
+  destino: superficie
+  tipo: recuo
+  condicao: abrir a grelha pelo interior depois de alcançar o cofre
+  sinalizacao: ar urbano e fuligem anunciam a superfície antes da subida
+descanso:
+  seguro: false
+  condicoes: [o cofre pode ser fechado depois de aberto, mas segurança depende do estado real das duas saídas]

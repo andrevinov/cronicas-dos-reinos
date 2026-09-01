@@ -1,4 +1,18 @@
 schema_recompensas_planejadas: 1
 natureza: reservado
 regra: recompensas_de_arco_e_autorais_exigem_planejamento_explicito
-por_local: {}
+por_local:
+  sarbreen_poroes_secos:
+  - id: chave_de_pedreiro_de_sarbreen
+    tipo: ferramenta
+    condicao_de_descoberta: alcançar o cofre de levantamento no nível 4 e retirar a peça depois de superar seu acesso
+    posse: {tipo: ambiente}
+    importancia: especial
+    origem: autoral
+    detalhe:
+      nome: Chave de pedreiro de Sarbreen
+      descricao: >-
+        Instrumento anão de bronze escuro que opera e mede encaixes de contrapeso
+        compatíveis neste trecho. Não abre toda Sarbreen nem a Ponte de Kozakura.
+      valor_aproximado: alto
+      tags: [ferramenta, sarbreen, exploracao, contrapeso]

@@ -36,6 +36,11 @@ exige vinculá-lo previamente a um ator ou criatura causalmente presente; o vín
 define identidade e contexto, mas não permite mudar seus números depois da
 preparação.
 
+Uma entrada pode adaptar criatura de edição anterior quando a fonte autorizada,
+o destino 5.5e e as mudanças estiverem explícitos. O Estrangulador preparado para
+Sarbreen mantém a criatura de Faerûn reconhecível, mas usa somente o contrato
+mecânico moderno; o PDF 2014 é fonte, não statblock de runtime.
+
 ## Avaliação pré-rolagem
 
 ```bash

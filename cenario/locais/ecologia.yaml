@@ -110,3 +110,10 @@ perfis:
     tags: [oficina, deposito, cal, gesso, carga, acesso_servico, rua_urbana]
     atores_comuns: [trabalhador, carregador, fornecedor, entregador, vizinho]
     canais_microevento: [trabalho, carga, entrega, abastecimento, manutencao, vizinhanca]
+  sarbreen_poroes_secos:
+    familia: ruina_subterranea
+    acesso: controlado
+    ritmo_baseline: {amanhecer: 0, dia: 0, anoitecer: 0, noite: 0}
+    tags: [subterraneo, ruina, pedra, drenagem, exploracao, estrutura]
+    atores_comuns: [explorador, intruso, trabalhador_manutencao, animal_subterraneo]
+    canais_microevento: [ambiente, estrutura, agua, vestigio]

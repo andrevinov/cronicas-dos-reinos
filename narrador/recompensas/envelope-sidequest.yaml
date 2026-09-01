@@ -58,3 +58,7 @@ familias:
     modificador_pontos: 1
     teto_valor_base: moderado
     categorias: [dinheiro, gema, ferramenta, pergaminho, curiosidade]
+  ruina_subterranea:
+    modificador_pontos: 1
+    teto_valor_base: alto
+    categorias: [dinheiro, gema, consumivel, ferramenta, pergaminho, curiosidade, item_magico_menor]

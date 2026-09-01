@@ -1,0 +1,71 @@
+schema_nivel_dungeon: 1
+natureza: preparacao_reservada_nao_materializada
+dungeon_id: sarbreen_poroes_secos
+numero: 1
+nome: Porões Incorporados
+entrada_area: n1_soleira_armazem
+areas:
+- id: n1_soleira_armazem
+  nome: Soleira sob os armazéns
+  tipo: entrada
+  descricao: Alvenaria humana recobre blocos anões; duas argolas de carga escondem a descida verdadeira.
+  sinais: [ar seco vindo de baixo, riscos recentes no reboco, espaço para recuar ao porão]
+  conexoes: [n1_corredor_medidas]
+- id: n1_corredor_medidas
+  nome: Corredor das medidas divergentes
+  tipo: exploracao
+  descricao: Marcas de levantamento não concordam com o comprimento visível do corredor.
+  sinais: [números raspados, pó deslocado junto à parede norte, eco curto demais]
+  conexoes: [n1_soleira_armazem, n1_sala_prumos, n1_dreno_baixo]
+- id: n1_sala_prumos
+  nome: Sala dos prumos caídos
+  tipo: perigo
+  descricao: Pesos de pedra e hastes de bronze sustentam um teto remendado por proprietários posteriores.
+  sinais: [fissuras limpas, um prumo ainda tenso, cascalho que cai antes da placa maior]
+  conexoes: [n1_corredor_medidas, n1_escada_seca]
+- id: n1_dreno_baixo
+  nome: Dreno lateral
+  tipo: travessia
+  descricao: Saída apertada segue para uma grelha urbana e oferece contorno lento do teto instável.
+  sinais: [corrente de ar úmido, marcas de joelho no lodo antigo, luz distante se a grelha estiver aberta]
+  conexoes: [n1_corredor_medidas, n1_escada_seca]
+- id: n1_escada_seca
+  nome: Escada seca
+  tipo: descoberta
+  descricao: Degraus anões descem em espiral, separados das fundações humanas por uma junta contínua.
+  sinais: [marca apagada num patamar, cheiro mineral, sulcos próprios para transporte por trenó]
+  conexoes: [n1_sala_prumos, n1_dreno_baixo]
+encontros: []
+perigos:
+- id: teto_de_contrapeso_cansado
+  area_id: n1_sala_prumos
+  gatilho: cruzar sob os pesos sem aliviar ou travar o prumo ainda tensionado
+  sinalizacao: fissuras, cascalho antecipado e o prumo vibrando tornam o risco observável antes da travessia
+  resolucao: {tipo: teste, atributo: ferramentas_de_ladrao_ou_investigacao, cd: 14}
+  falha:
+    dano: {formula: 3d8, tipo: contundente}
+    consequencia: a passagem direta fica bloqueada e o dreno lateral continua disponível
+  sucesso: o peso é descarregado ou travado e a passagem direta permanece aberta
+  contrajogo: [usar o dreno lateral, sustentar o teto com material adequado, recuar ao porão]
+descobertas:
+- id: levantamento_de_tres_epocas
+  area_id: n1_corredor_medidas
+  condicao: comparar deliberadamente as três camadas de marcação
+  resultado: evidencia que proprietários humanos mediram o mesmo vazio em épocas diferentes sem compreender toda a planta
+  estatuto: possibilidade_ate_descoberta
+saidas:
+- id: recuo_porao
+  area_id: n1_soleira_armazem
+  destino: superficie
+  tipo: recuo
+  condicao: voltar pela soleira confirmada
+  sinalizacao: luz, corda ou referência do porão permanecem visíveis desde a entrada
+- id: descida_nivel_2
+  area_id: n1_escada_seca
+  destino: nivel_2
+  tipo: progressao
+  condicao: descer a escada em espiral
+  sinalizacao: ar mais frio e sulcos de trenó anunciam a mudança de estrato
+descanso:
+  seguro: false
+  condicoes: [a soleira pode permitir pausa vigiada se a situação canônica da superfície continuar segura]

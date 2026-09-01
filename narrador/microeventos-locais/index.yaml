@@ -146,3 +146,15 @@ cartas:
     canais: [espetaculo, rotina]
     tags: [publico, espetaculo, acampamento]
     premissa: Um pequeno grupo se concentra por alguns minutos antes de se dispersar, alterando circulação e atenção sem incidente maior.
+  gotejamento_muda_compasso:
+    nome: Gotejamento muda de compasso
+    categoria: ambiente
+    canais: [ambiente, agua]
+    tags: [subterraneo, ruina, pedra, drenagem]
+    premissa: Água antiga encontra outro caminho e muda som, umidade ou aderência do piso sem produzir pista ou perigo automático.
+  poeira_cede_em_camada:
+    nome: Poeira antiga cede em camada
+    categoria: ambiente
+    canais: [ambiente, estrutura, vestigio]
+    tags: [subterraneo, ruina, pedra, exploracao, estrutura]
+    premissa: Uma camada de poeira ou grão mineral se solta com vibração comum e altera por instantes a leitura sensorial do espaço, sem estabelecer criatura ou passagem.

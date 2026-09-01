@@ -1,0 +1,81 @@
+schema_nivel_dungeon: 1
+natureza: preparacao_reservada_nao_materializada
+dungeon_id: sarbreen_poroes_secos
+numero: 2
+nome: Galeria das Fendas
+entrada_area: n2_patamar_treno
+areas:
+- id: n2_patamar_treno
+  nome: Patamar do trenó
+  tipo: entrada
+  descricao: Sulcos paralelos terminam diante de uma galeria cortada por rachaduras verticais.
+  sinais: [pedra polida por carga, teto alto fora do alcance da luz curta, retorno livre pela escada]
+  conexoes: [n2_pontes_pedra]
+- id: n2_pontes_pedra
+  nome: Pontes de pedra
+  tipo: travessia
+  descricao: Duas pontes estreitas cruzam fendas que também permitem um contorno inferior mais demorado.
+  sinais: [marcas de garras no teto, pedrinhas deslocadas de cima para baixo, ossos em pontos de queda]
+  conexoes: [n2_patamar_treno, n2_nicho_respiro, n2_contorno_inferior]
+- id: n2_nicho_respiro
+  nome: Nicho de respiro
+  tipo: encontro
+  descricao: Uma bolsa alta liga teto, paredes e duas fendas profundas ao mesmo espaço de caça.
+  sinais: [ar quente intermitente, ausência de insetos, ranhuras convergindo para o alto]
+  conexoes: [n2_pontes_pedra, n2_porta_lastro]
+- id: n2_contorno_inferior
+  nome: Contorno inferior
+  tipo: perigo
+  descricao: Passagem baixa evita o nicho principal, mas cruza pedra quebradiça sobre um poço curto.
+  sinais: [placas com bordas brancas, cascalho acumulado abaixo, apoio firme junto à parede]
+  conexoes: [n2_pontes_pedra, n2_porta_lastro]
+- id: n2_porta_lastro
+  nome: Porta do lastro
+  tipo: descoberta
+  descricao: Uma porta sem folha conserva encaixes para contrapesos removidos e leva ao estrato inferior.
+  sinais: [setas anãs de fluxo, marcas de reparo, corrente de ar que sobe do poço seguinte]
+  conexoes: [n2_nicho_respiro, n2_contorno_inferior]
+encontros:
+- id: predador_da_bolsa_alta
+  area_id: n2_nicho_respiro
+  condicao_materializacao: sinais de caça confirmarem que uma criatura usa atualmente a bolsa alta
+  adversarios:
+  - {id: arquetipo_predador_fendas_n6, quantidade: 1}
+  objetivo: separar uma presa, arrastá-la para a fenda e recuar quando ferido
+  sinalizacao: marcas no teto, ossos e respiração intermitente permitem suspeitar da emboscada antes do alcance das garras
+  avaliacao_referencia: {nivel: 7, vetor: combate, recursos: plenos, terreno: adversario, iniciativa: adversario, classificacao: alta}
+  alternativas: [usar o contorno inferior, produzir vibração falsa, bloquear fendas, recuar à escada]
+  retirada: a criatura procura as fendas; Ren mantém rota observável de volta ao patamar
+perigos:
+- id: placas_sobre_poco
+  area_id: n2_contorno_inferior
+  gatilho: apoiar peso na faixa central sem testar as placas
+  sinalizacao: bordas brancas e cascalho abaixo distinguem as placas frágeis
+  resolucao: {tipo: salvaguarda, atributo: destreza, cd: 14}
+  falha:
+    dano: {formula: 2d10, tipo: contundente}
+    consequencia: queda de 15 pés e separação momentânea no poço, sem apagar a rota de retorno
+  sucesso: alcança o apoio firme ou recua antes da ruptura completa
+  contrajogo: [testar o piso à distância, usar corda, seguir a faixa junto à parede]
+descobertas:
+- id: fluxo_de_carga_anao
+  area_id: n2_porta_lastro
+  condicao: examinar setas, sulcos e encaixes como um conjunto
+  resultado: revela que este trecho movia peso entre níveis por contrapesos, não por uma estrada contínua
+  estatuto: possibilidade_ate_descoberta
+saidas:
+- id: recuo_nivel_1
+  area_id: n2_patamar_treno
+  destino: nivel_1
+  tipo: recuo
+  condicao: subir pela escada seca
+  sinalizacao: os sulcos convergem de volta ao patamar conhecido
+- id: descida_nivel_3
+  area_id: n2_porta_lastro
+  destino: nivel_3
+  tipo: progressao
+  condicao: atravessar a porta do lastro e descer o poço lateral
+  sinalizacao: degraus de manutenção e uma corrente de ar tornam a descida explícita
+descanso:
+  seguro: false
+  condicoes: [o patamar pode ser defendido por pouco tempo, mas não bloqueia fendas nem ruído]

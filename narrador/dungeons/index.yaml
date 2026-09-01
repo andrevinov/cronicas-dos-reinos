@@ -1,0 +1,9 @@
+schema_indice_dungeons: 1
+natureza: reservado
+contrato: narrador/dungeons/contrato.yaml
+dungeons:
+  sarbreen_poroes_secos:
+    nome: Trecho dos Porões Secos de Sarbreen
+    local_id: sarbreen_poroes_secos
+    estatuto: preparada_nao_materializada
+    arquivo: narrador/dungeons/sarbreen_poroes_secos/manifesto.yaml

@@ -9,3 +9,9 @@
 - `python3 ferramentas/locais.py check` valida aliases e consumidores persistidos.
 
 Ao renomear um lugar em prosa, preserve o `local_id` anterior e acrescente o novo nome como alias. Trocar o ID de um mapa já gerado altera a chave determinística e não é uma operação de apresentação.
+
+Um local roteado pode corresponder a preparação reservada ainda não materializada.
+`sarbreen_poroes_secos`, por exemplo, dá identidade operacional a um trecho
+delimitado para que a porta de cena possa reconhecê-lo; não afirma que Ren encontrou
+a entrada ou que encontros preparados estão presentes. O manifesto reservado é a
+autoridade dessa fronteira.

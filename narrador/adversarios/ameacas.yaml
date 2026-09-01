@@ -86,3 +86,9 @@ perfis:
     vetores: [emboscada, escalada, perseguicao]
     sinalizacao: Marcas acima da linha dos olhos, silêncio súbito e fendas acessíveis.
     saidas_plausiveis: [área iluminada, espaço sem teto, bloquear as fendas]
+  arquetipo_estrangulador_adaptado_5_5e:
+    natureza: arquetipo_reutilizavel
+    patamares: {combate: 8, especialidade: 8}
+    vetores: [emboscada, alcance, imobilizacao]
+    sinalizacao: Ossos sem metal, sulcos radiais e formação pétrea limpa demais para o entorno.
+    saidas_plausiveis: [sair do alcance, usar cobertura total, destruir gavinhas, escolher outra rota]

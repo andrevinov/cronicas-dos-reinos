@@ -35,6 +35,11 @@ narrador/
 │   ├── index.yaml
 │   ├── fichas/
 │   └── especialidades/
+├── dungeons/
+│   ├── README.md
+│   ├── contrato.yaml
+│   ├── index.yaml
+│   └── <dungeon>/
 ├── mundo/
 │   ├── README.md
 │   ├── agenda.yaml
@@ -105,6 +110,14 @@ com `adversarios.py mostrar`; abrir uma especialidade não combativa apenas quan
 ela for materialmente relevante. Entradas `arquetipo_` são modelos reutilizáveis
 e não criam NPC, espécie ou presença. `ameacas.py avaliar` compara patamar e
 contexto antes da rolagem; não altera fichas nem injeta aliados.
+
+## Dungeons preparadas
+
+`dungeons/` fragmenta estruturas exploráveis por manifesto e nível. O índice não
+materializa acesso, encontro, criatura, descoberta ou recompensa. Usar
+`dungeons.py mostrar <id>` para o manifesto e `dungeons.py nivel <id> <n>` apenas
+quando aquele estrato for relevante; a consulta não abre fichas de adversário nem
+outros níveis. Progresso factual continua no writer e lifecycle existentes.
 
 ## Mundo Vivo
 

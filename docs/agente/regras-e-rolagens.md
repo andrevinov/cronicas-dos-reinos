@@ -111,6 +111,13 @@ tiver motivo causal para ajudar. Resultado letal/esmagador exige sinalização e
 saída observável, não intervenção automática. Arquétipos `arquetipo_` permanecem
 não canônicos até vínculo explícito com um ator ou criatura da ficção.
 
+`narrador/dungeons/contrato.yaml` exige que geografia, CD, dano, sinalização,
+contrajogo e saídas sejam definidos antes da rolagem. Cada encontro referencia um
+bloco completo e congela apenas uma avaliação de cenário controlado; na cena real,
+avaliar novamente com recursos, terreno, iniciativa, quantidade e aliados atuais.
+Nunca usar a classificação do manifesto para substituir a leitura pré-rolagem do
+contexto real ou para mudar números depois do dado.
+
 A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate de migração não for concluído, seu uso por `dados` fica restrito às primitivas cuja semântica é compatível com o ruleset operacional. Nenhuma regra exclusiva de 5.5e pode entrar silenciosamente na narração antes da ativação final.
 
 ## Perfil alvo 5.5e de Ren

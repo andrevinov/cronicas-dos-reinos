@@ -381,6 +381,9 @@ python3 ferramentas/adversarios.py validar
 python3 ferramentas/ameacas.py avaliar <id-ou-nome> --ren --vetor combate
 python3 ferramentas/ameacas.py avaliar <id-ou-nome> --nivel 7 --vetor especialidade
 python3 ferramentas/ameacas.py validar
+python3 ferramentas/dungeons.py mostrar <id-ou-nome>
+python3 ferramentas/dungeons.py nivel <id-ou-nome> <numero>
+python3 ferramentas/dungeons.py validar
 ```
 
 Os dois primeiros comandos abrem somente a ficha ou especialidade pedida; o
@@ -388,6 +391,11 @@ terceiro e o último são gates frios. A avaliação é read-only, pré-rolagem 
 cria encontros, aliados ou presença. `--ren` lê a ficha atual; a forma `--nivel`
 não lê estado vivo. Arquétipos reutilizáveis continuam sem existência ficcional
 até vínculo causal explícito.
+
+Dungeon preparada segue o mesmo princípio. `mostrar` abre manifesto e `nivel`
+abre um único estrato, sempre abaixo de 8 KiB; ambos devolvem referências opacas
+para adversários e não materializam presença. `validar` é gate frio e pode conferir
+grafo, ameaças e recompensa declarada.
 
 Baseline lógica:
 

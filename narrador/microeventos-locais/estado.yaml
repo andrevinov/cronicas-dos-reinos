@@ -119,6 +119,14 @@ locais:
       ciclo: 0
       assinatura_pool: null
       restantes: []
+  sarbreen_poroes_secos:
+    ocorrencia:
+      ciclo: 0
+      restantes: []
+    cartas:
+      ciclo: 0
+      assinatura_pool: null
+      restantes: []
 historico_recente:
 - cena_id: s013-retorno-circo-apos-sella
   local_id: jack_mooney_sons_circus
