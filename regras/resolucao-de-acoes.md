@@ -167,3 +167,16 @@ Todo gasto mecânico de recurso de classe precisa ser decidido antes de persisti
 O recurso de classe ativo de Ren é **Focus**. O writer nunca pode aceitar um gasto que deixe Focus abaixo de zero. `ki` permanece apenas em registros históricos anteriores ao cutover.
 
 `cronica` valida a causalidade e a disponibilidade, mas não implementa a regra de D&D nem rola dados: resoluções de teste, salvaguarda e ataque são verificadas pelas primitivas do núcleo mecânico.
+
+## Artes Sombrias — Escuridão
+
+No perfil ativo de Guerreiro das Sombras 5.5e, Ren pode conjurar **Escuridão**
+com uma ação de Magia, sem componentes, gastando **1 Focus**. A magia exige
+concentração; Ren enxerga dentro da área criada por esta característica e pode
+mover a área para um espaço a até 60 pés no início de cada turno enquanto ela
+persistir.
+
+O gasto é transacional: preparar `artes_sombrias_escuridao` ou usar o atalho
+`cronica preparar --gasto-focus 1`, confirmar a obrigação no `concluir` e aplicar
+o delta de `-1` em `recursos.focus.atuais`. A conjuração nunca deve existir só na
+prosa com o recurso inalterado.

@@ -130,6 +130,64 @@ def base_transaction(*, deltas=None, mechanical=None) -> dict:
 
 
 class CronicaMechanicalContractTest(unittest.TestCase):
+    def test_atalho_gasto_focus_compila_para_contrato_mecanico(self) -> None:
+        parser = cronica.build_parser()
+        args = parser.parse_args(
+            [
+                "preparar",
+                "--cena-id",
+                "atalho-focus",
+                "--sem-oportunidade-sidequest",
+                "--gasto-focus",
+                "1",
+            ]
+        )
+        self.assertEqual(
+            cronica._mechanical_spec_from_args(args),
+            {
+                "regras": ["gasto_recurso_classe"],
+                "obrigacoes": [
+                    {
+                        "id": "focus_spend",
+                        "tipo": "gasto_recurso",
+                        "regra": "gasto_recurso_classe",
+                        "recurso": "focus",
+                        "custo": 1,
+                    }
+                ],
+            },
+        )
+
+    def test_atalho_gasto_focus_recusa_custo_invalido_e_json_concorrente(self) -> None:
+        parser = cronica.build_parser()
+        invalid = parser.parse_args(
+            [
+                "preparar",
+                "--cena-id",
+                "atalho-focus-invalido",
+                "--sem-oportunidade-sidequest",
+                "--gasto-focus",
+                "0",
+            ]
+        )
+        with self.assertRaisesRegex(turn_core.CronicaError, "inteiro positivo"):
+            cronica._mechanical_spec_from_args(invalid)
+
+        conflict = parser.parse_args(
+            [
+                "preparar",
+                "--cena-id",
+                "atalho-focus-conflito",
+                "--sem-oportunidade-sidequest",
+                "--gasto-focus",
+                "1",
+                "--mecanica-json",
+                '{"regras":[],"obrigacoes":[]}',
+            ]
+        )
+        with self.assertRaisesRegex(turn_core.CronicaError, "mutuamente exclusivos"):
+            cronica._mechanical_spec_from_args(conflict)
+
     def test_turno_puramente_narrativo_nao_abre_catalogo_nem_estado(self) -> None:
         base = {"ticket": "irrelevante", "ticket_id": "x"}
         with mock.patch.object(
@@ -301,8 +359,31 @@ class CronicaMechanicalContractTest(unittest.TestCase):
             payload = turn_core.decode_ticket(result["ticket"])
             self.assertEqual(result["mecanica"]["regras"], ["teste_d20_basico"])
             self.assertEqual(result["mecanica"]["obrigacoes"][0]["id"], "checagem")
+            self.assertEqual(
+                result["mecanica"]["resolucao_modelo"]["resolucoes"][0]["obrigacao_id"],
+                "checagem",
+            )
             self.assertIn(mecanica_cronica.TICKET_KEY, payload)
             self.assertIn("mecanica", result["contrato_conclusao"]["campos"])
+
+    def test_modelo_de_resolucao_de_gasto_e_concreto(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            fixture = MechanicalRepo(repo)
+            contract = mecanica_cronica.normalize_spec(repo, fixture.spend_spec())
+            summary = mecanica_cronica.public_summary(contract)
+            self.assertEqual(
+                summary["resolucao_modelo"],
+                {
+                    "resolucoes": [
+                        {
+                            "obrigacao_id": "focus_darkness",
+                            "tipo": "gasto_recurso",
+                            "aplicado": True,
+                        }
+                    ]
+                },
+            )
 
     def test_meta_de_duas_chamadas_de_orquestracao_permanece(self) -> None:
         budget = yaml.safe_load(

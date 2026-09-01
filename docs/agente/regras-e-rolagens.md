@@ -67,7 +67,46 @@ Enquanto a cobertura do catálogo não for completa, termo não catalogado prese
 
 A rolagem continua fora de `cronica`, pela CLI `dados`. Em `cronica concluir`, a transação fornece os dados já rolados em `mecanica.resolucoes`; `cronica` os repassa ao núcleo mecânico para reconstruir deterministicamente escolhido, total e resultado. Só depois compara a consequência com os deltas e chama o writer.
 
-Gasto de Focus/Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
+Gasto de Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
+
+### Receita operacional para gasto de Focus
+
+Para um gasto simples, preferir o atalho, que gera uma obrigação `focus_spend` no
+mesmo ticket:
+
+```bash
+poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest --gasto-focus 1
+```
+
+`--gasto-focus` e `--mecanica-json` são mutuamente exclusivos. Quando a regra
+específica também precisa ficar congelada — por exemplo, Escuridão pelas Artes
+Sombrias — usar o contrato completo:
+
+```bash
+poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest \
+  --contexto-tag acao:escuridao \
+  --mecanica-json '{"regras":["artes_sombrias_escuridao"],"obrigacoes":[{"id":"focus_darkness","tipo":"gasto_recurso","regra":"artes_sombrias_escuridao","recurso":"focus","custo":1}]}'
+```
+
+O `cronica concluir` deve confirmar a obrigação e enviar exatamente o delta
+previsto pelo preparo:
+
+```json
+{
+  "deltas": [
+    {"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-1}
+  ],
+  "mecanica": {
+    "resolucoes": [
+      {"obrigacao_id":"focus_darkness","tipo":"gasto_recurso","aplicado":true}
+    ]
+  }
+}
+```
+
+A saída de `preparar` fornece `mecanica.resolucao_modelo` e repete o mesmo
+modelo em `contrato_conclusao.campos.mecanica`; copiar os IDs do ticket, sem
+recriá-los por memória. O atalho usa `obrigacao_id=focus_spend`.
 
 ## Ficha mecânica única de Ren
 

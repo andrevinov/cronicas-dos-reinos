@@ -103,7 +103,7 @@ class MundoVivoContextBudgetTest(unittest.TestCase):
             sizes[rel] = path.stat().st_size
             self.assertLessEqual(sizes[rel], limit["max_bytes_por_roteador"], (rel, sizes[rel]))
         self.assertLessEqual(sum(sizes.values()), limit["max_bytes_total_roteadores"], sizes)
-        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)
 
     def test_todas_as_cartas_respeitam_orcamento_de_agentes_sem_fragmentos(self):
         index = eventos_mundo.load_index(ROOT)

@@ -1,0 +1,75 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 18
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 52
+    focus:
+      atuais: 1
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 20 Eleasis, 1372 DR
+    hora_aproximada: 01:15
+    periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Casa da Aurora Menor, Temple District, Ravens Bluff
+    ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+continuidade:
+  resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
+    documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
+  prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 Eleasis. A investigação ainda precisa
+    de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado
+    terminal.
+eventos_recentes:
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-4bc40320a17823e7
+  resumo: Ren despediu-se de Maerra, reforçou que ela chamasse ajuda diante de qualquer problema e partiu com Luath
+    e seu grupo, que levavam a cativa e as provas sob custódia.
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-334397968c4a854b
+  resumo: Ren acompanhou a escolta na retaguarda direita e manteve vigilância ativa durante os primeiros minutos
+    do trânsito. Notou dois homens orientais armados observando a passagem, mas eles não sinalizaram, seguiram ou
+    atacaram o grupo.
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-26e6a9304fa06361
+  resumo: Ren manteve a posição e a vigilância. Uma carroça interrompeu brevemente o fluxo da rua; a escolta preservou
+    a formação e retomou a marcha sem abordagem, perseguição ou ataque.
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-55422a9264099f1f
+  resumo: Ren e a escolta chegaram sem ataque ao posto da City Guard usado pela Night Watch. Luath transferiu a
+    cativa e as provas para dentro do perímetro guardado sob sua supervisão.
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-c6c34e16f4dc8e41
+  resumo: Ren confiou a cativa e as provas a Luath, alertou para uma tentativa de resgate ou eliminação e agradeceu
+    pelo apoio. Luath reconheceu o valor de Ren ter trazido uma testemunha viva; Ren deixou o posto.
+- batch: s018-sessao-ffa4383fad12fe32
+  transacao: s018-1d02cdba370765ec
+  resumo: Ren usou Passo da Sombra por uma rota favorável de telhados até as proximidades do circo dos Mooney. A
+    travessia habitual dispensou teste; ele variou a rota e não detectou cauda acompanhando seus movimentos.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/018/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

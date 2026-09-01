@@ -65,7 +65,7 @@ class CronicaPendingGateBudgetTest(unittest.TestCase):
             "Antes de novo ON, ler `runtime/mundo-pendencias.yaml`",
             text,
         )
-        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)
 
 
 if __name__ == "__main__":

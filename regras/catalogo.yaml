@@ -132,3 +132,64 @@ regras:
   executor: cronica
   persistencia: turno_transacional
   house_rule: null
+  receita_operacional:
+    preparar:
+      atalho: --gasto-focus 1
+      mecanica_json:
+        regras:
+        - gasto_recurso_classe
+        obrigacoes:
+        - id: focus_spend
+          tipo: gasto_recurso
+          regra: gasto_recurso_classe
+          recurso: focus
+          custo: 1
+    concluir:
+      mecanica:
+        resolucoes:
+        - obrigacao_id: focus_spend
+          tipo: gasto_recurso
+          aplicado: true
+      deltas:
+      - alvo: estado
+        op: inc
+        caminho: recursos.focus.atuais
+        valor: -1
+- id: artes_sombrias_escuridao
+  aliases:
+  - escuridão das artes sombrias
+  - shadow arts darkness
+  - darkness guerreiro das sombras
+  dominio: magia
+  ruleset: dnd_5_5e
+  autoridade: ruleset_atual
+  fonte:
+    arquivo: regras/resolucao-de-acoes.md
+    secao: Artes Sombrias — Escuridão
+  resumo_interno: Ren conjura Escuridão com uma ação de Magia, sem componentes, gastando 1 Focus; mantém concentração,
+    enxerga dentro da área criada pela característica e pode movê-la até 60 pés no início de cada turno.
+  executor: cronica
+  persistencia: turno_transacional
+  house_rule: null
+  receita_operacional:
+    preparar:
+      mecanica_json:
+        regras:
+        - artes_sombrias_escuridao
+        obrigacoes:
+        - id: focus_darkness
+          tipo: gasto_recurso
+          regra: artes_sombrias_escuridao
+          recurso: focus
+          custo: 1
+    concluir:
+      mecanica:
+        resolucoes:
+        - obrigacao_id: focus_darkness
+          tipo: gasto_recurso
+          aplicado: true
+      deltas:
+      - alvo: estado
+        op: inc
+        caminho: recursos.focus.atuais
+        valor: -1

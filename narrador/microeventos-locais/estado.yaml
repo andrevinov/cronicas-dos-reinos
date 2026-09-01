@@ -233,59 +233,13 @@ historico_recente:
 transitos:
   ravens_bluff:
     ocorrencia:
-      ciclo: 5
+      ciclo: 6
       restantes: []
     cartas:
       ciclo: 3
       assinatura_pool: e404bf52e23dbded870e2230d51894b43fe8749524a80ff472712898f65e5c32
-      restantes:
-      - passagem_rua
+      restantes: []
 historico_transito_recente:
-- cena_id: s013-narwhal-ate-casa-aurora-menor
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_03
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 3acc52fd4d09732c97fad17e58a77e1f41527774dfbc88e5bf368ba7510d4708
-- cena_id: s013-casa-aurora-ate-circo-noite-16-eleasis
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_02
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 79c62c333d9c7175769ad4b055496eb2d27e5e5173eda5b664566e749394fc4e
-- cena_id: s014-shinta-galeria-17-eleasis
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_01
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 7d2c2faa706f5a657098a70b7838205ab8caa13a3b905d60d2a795ec805e30b2
-- cena_id: s014-shinta-retorno-circo-17-eleasis
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: microevento_01
-  resultado: microevento
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 9f1515d7b8dea1dc8248b630e6278752dc6fcf7925aeb3fb180f4d211be7faec
-  carta_id: passagem_rua
 - cena_id: s015-shinta-rumo-galeria-escribas
   escopo_transito: ravens_bluff
   ficha_ocorrencia: microevento_01
@@ -421,3 +375,48 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: e59dde7fca7f6993692c85a8a05d57daba7af5156f804b247b89098cab47d072
+- cena_id: s018-escolta-luath-vigilancia-no-transito
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 4e66f073d5f4541a3f0af7c5f5444426b702ab331185fb8b3e665f1cb619ad43
+- cena_id: s018-escolta-luath-continua-rota
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 51a4afb74ad3a23413f4c70e39b2c041007e58634679877a3ec377a2f22a0bac
+  carta_id: passagem_rua
+- cena_id: s018-chegada-posto-city-guard-night-watch
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: b8539bef033ec51c83efea05a350d93110b77c5ca03ad084352b0d969cf51aa1
+- cena_id: s018-passo-sombra-ate-circo-contravigilancia
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 52606e047fb5e4f72d4216e59d415e77fea57b59a03d7d41903252892632f81b

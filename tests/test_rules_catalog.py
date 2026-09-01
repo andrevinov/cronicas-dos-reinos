@@ -81,6 +81,47 @@ class RulesCatalogContractTest(unittest.TestCase):
             ["regras/catalogo.yaml", "campanha.yaml", "regras/resolucao-de-acoes.md"],
         )
 
+    def test_gasto_focus_expoe_receita_operacional_completa_em_l2(self) -> None:
+        data = contexto.command_rule(ROOT, "gastar focus")
+        result = data["resultado"]
+        recipe = result["receita_operacional"]
+        self.assertEqual(data["nivel"], "L2")
+        self.assertEqual(recipe["preparar"]["atalho"], "--gasto-focus 1")
+        obligation = recipe["preparar"]["mecanica_json"]["obrigacoes"][0]
+        self.assertEqual(obligation["id"], "focus_spend")
+        self.assertEqual(obligation["custo"], 1)
+        self.assertEqual(
+            recipe["concluir"]["deltas"],
+            [
+                {
+                    "alvo": "estado",
+                    "op": "inc",
+                    "caminho": "recursos.focus.atuais",
+                    "valor": -1,
+                }
+            ],
+        )
+        rendered, truncated = contexto.fit_budget(data, contexto.DEFAULT_MAX_BYTES, False)
+        self.assertFalse(truncated)
+        self.assertLessEqual(len(rendered.encode("utf-8")), contexto.DEFAULT_MAX_BYTES)
+
+    def test_escuridao_das_artes_sombrias_esta_catalogada_com_custo_e_receita(self) -> None:
+        data = contexto.command_rule(ROOT, "shadow arts darkness")
+        result = data["resultado"]
+        self.assertTrue(result["catalogada"])
+        self.assertEqual(result["id"], "artes_sombrias_escuridao")
+        self.assertEqual(result["ruleset"], "dnd_5_5e")
+        self.assertIn("1 Focus", result["resumo_interno"])
+        obligation = result["receita_operacional"]["preparar"]["mecanica_json"]["obrigacoes"][0]
+        self.assertEqual(obligation["id"], "focus_darkness")
+        self.assertEqual(obligation["regra"], "artes_sombrias_escuridao")
+
+    def test_receita_operacional_malformada_falha_fechado(self) -> None:
+        document = copy.deepcopy(self.document)
+        document["regras"][0]["receita_operacional"] = {"preparar": {}}
+        with self.assertRaisesRegex(catalogo_regras.RuleCatalogError, "receita_operacional"):
+            catalogo_regras.validate_document(ROOT, document)
+
     def test_documentacao_humana_e_ancora_obrigatoria(self) -> None:
         document = copy.deepcopy(self.document)
         document["regras"][0]["fonte"]["secao"] = "Seção que não existe"

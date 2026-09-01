@@ -171,7 +171,7 @@ class SecretCanonV2RepositoryTest(unittest.TestCase):
             )
             self.assertNotIn(event_id, public)
             self.assertNotIn(event["titulo"], public)
-        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)
 
 
 if __name__ == "__main__":

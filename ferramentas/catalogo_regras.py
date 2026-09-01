@@ -26,10 +26,59 @@ REQUIRED_FIELDS = {
 EXECUTORS = {"narrador", "dados", "cronica", "progressao"}
 PERSISTENCE = {"nenhuma", "turno_transacional", "checkpoint", "estado_canonico"}
 ID_RE = re.compile(r"^[a-z0-9_]+$")
+MAX_OPERATIONAL_RECIPE_BYTES = 4096
 
 
 class RuleCatalogError(ValueError):
     pass
+
+
+def _validate_operational_recipe(rule_id: str, raw: Any) -> None:
+    if not isinstance(raw, dict) or set(raw) != {"preparar", "concluir"}:
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional exige exatamente preparar e concluir"
+        )
+    prepare = raw["preparar"]
+    if not isinstance(prepare, dict) or not prepare:
+        raise RuleCatalogError(f"{rule_id}: receita_operacional.preparar precisa ser mapa")
+    unknown_prepare = set(prepare) - {"atalho", "mecanica_json"}
+    if unknown_prepare:
+        raise RuleCatalogError(
+            f"{rule_id}: campos desconhecidos em receita_operacional.preparar: "
+            f"{sorted(unknown_prepare)}"
+        )
+    shortcut = prepare.get("atalho")
+    if shortcut is not None and (not isinstance(shortcut, str) or not shortcut.strip()):
+        raise RuleCatalogError(f"{rule_id}: receita_operacional.preparar.atalho inválido")
+    mechanical = prepare.get("mecanica_json")
+    if mechanical is not None and not isinstance(mechanical, dict):
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional.preparar.mecanica_json precisa ser mapa"
+        )
+    if shortcut is None and mechanical is None:
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional.preparar exige atalho ou mecanica_json"
+        )
+
+    conclude = raw["concluir"]
+    if not isinstance(conclude, dict) or set(conclude) != {"mecanica", "deltas"}:
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional.concluir exige exatamente mecanica e deltas"
+        )
+    if not isinstance(conclude["mecanica"], dict):
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional.concluir.mecanica precisa ser mapa"
+        )
+    deltas = conclude["deltas"]
+    if not isinstance(deltas, list) or not deltas or not all(isinstance(item, dict) for item in deltas):
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional.concluir.deltas precisa ser lista não vazia de mapas"
+        )
+    rendered = yaml.safe_dump(raw, allow_unicode=True, sort_keys=False).encode("utf-8")
+    if len(rendered) > MAX_OPERATIONAL_RECIPE_BYTES:
+        raise RuleCatalogError(
+            f"{rule_id}: receita_operacional excede {MAX_OPERATIONAL_RECIPE_BYTES} bytes"
+        )
 
 
 def read_document(repo: Path) -> dict[str, Any]:
@@ -170,6 +219,8 @@ def validate_document(repo: Path, document: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(source, dict):
             raise RuleCatalogError(f"{rule_id}: fonte precisa ser mapa")
         _find_section(repo, source)
+        if rule.get("receita_operacional") is not None:
+            _validate_operational_recipe(rule_id, rule["receita_operacional"])
 
     contract = document.get("contrato") or {}
     if not isinstance(contract, dict):
@@ -246,6 +297,8 @@ def command_rule(
         "fonte": dict(rule["fonte"]),
         "documentacao": documentation,
     }
+    if rule.get("receita_operacional") is not None:
+        result["receita_operacional"] = rule["receita_operacional"]
     return core.envelope(
         "regra", term, "L2",
         [CATALOG_PATH.as_posix(), CAMPAIGN_PATH.as_posix(), documentation["arquivo"]],

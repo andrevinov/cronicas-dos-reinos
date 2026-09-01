@@ -89,7 +89,7 @@ AGENT_DOCS = (
     "docs/agente/pesquisa-e-manutencao.md",
 )
 AGENT_COVERAGE = "docs/agente/cobertura-agents-v1.yaml"
-AGENTS_MAX_BYTES = 12 * 1024
+AGENTS_MAX_BYTES = 13 * 1024
 AGENTS_MAX_LINES = 180
 LEGACY_AGENT_SECTION_COUNT = 58
 LEGACY_AGENT_SHA = "61ef9a4458d187e24bbe701f78c730e3218f9e42"

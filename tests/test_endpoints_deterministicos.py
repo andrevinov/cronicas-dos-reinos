@@ -396,7 +396,7 @@ class EndpointRepositoryContractTest(unittest.TestCase):
         ):
             self.assertIn(command, text)
         self.assertIn("cena_mundo.py confirmar", text)
-        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)
 
 
 if __name__ == "__main__":

@@ -464,6 +464,14 @@ def build_parser() -> argparse.ArgumentParser:
             "de preparar e não cria endpoint nem chamada de orquestração adicional"
         ),
     )
+    prepare_parser.add_argument(
+        "--gasto-focus",
+        type=int,
+        help=(
+            "atalho para preparar uma obrigação focus_spend com custo inteiro positivo; "
+            "é mutuamente exclusivo com --mecanica-json"
+        ),
+    )
     sidequest_decision = prepare_parser.add_mutually_exclusive_group(required=True)
     sidequest_decision.add_argument(
         "--oportunidade-sidequest",
@@ -562,6 +570,26 @@ def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
 
 def _mechanical_spec_from_args(args: argparse.Namespace) -> dict | None:
     raw = getattr(args, "mecanica_json", None)
+    focus_cost = getattr(args, "gasto_focus", None)
+    if raw is not None and focus_cost is not None:
+        raise _core.CronicaError(
+            "--gasto-focus e --mecanica-json são mutuamente exclusivos"
+        )
+    if focus_cost is not None:
+        if focus_cost <= 0:
+            raise _core.CronicaError("--gasto-focus exige inteiro positivo")
+        return {
+            "regras": ["gasto_recurso_classe"],
+            "obrigacoes": [
+                {
+                    "id": "focus_spend",
+                    "tipo": "gasto_recurso",
+                    "regra": "gasto_recurso_classe",
+                    "recurso": "focus",
+                    "custo": focus_cost,
+                }
+            ],
+        }
     if raw is None:
         return None
     try:

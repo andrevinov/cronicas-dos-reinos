@@ -275,6 +275,27 @@ def normalize_spec(repo: Path, spec: dict[str, Any] | None) -> dict[str, Any] | 
 
 
 def public_summary(contract: dict[str, Any]) -> dict[str, Any]:
+    resolution_model = {
+        "resolucoes": [
+            (
+                {
+                    "obrigacao_id": item["id"],
+                    "tipo": item["tipo"],
+                    "aplicado": True,
+                }
+                if item["tipo"] == "gasto_recurso"
+                else {
+                    "obrigacao_id": item["id"],
+                    "tipo": item["tipo"],
+                    "rolagens": "<dados rolados>",
+                    "escolhido": "<d20 escolhido>",
+                    "total": "<total>",
+                    "resultado": "<sucesso|falha>",
+                }
+            )
+            for item in contract["obrigacoes"]
+        ]
+    }
     summary = {
         "ruleset": contract["ruleset"],
         "regras": list(contract["regras"]),
@@ -288,6 +309,7 @@ def public_summary(contract: dict[str, Any]) -> dict[str, Any]:
             for item in contract["obrigacoes"]
         ],
         "resolucao": "registrar uma resolução por obrigação em transacao.mecanica.resolucoes",
+        "resolucao_modelo": resolution_model,
     }
     provenance = contract.get("proveniencia")
     if isinstance(provenance, dict):
@@ -333,9 +355,7 @@ def attach_to_prepare(
     if isinstance(conclusion, dict):
         fields = conclusion.setdefault("campos", {})
         if isinstance(fields, dict):
-            fields[TRANSACTION_KEY] = {
-                "resolucoes": "uma resolução estruturada por obrigação mecânica do ticket"
-            }
+            fields[TRANSACTION_KEY] = public_summary(contract)["resolucao_modelo"]
     size = len(yaml.safe_dump(decorated, allow_unicode=True, sort_keys=False).encode("utf-8"))
     if size > max_output_bytes:
         raise MechanicalContractError(

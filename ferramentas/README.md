@@ -30,7 +30,26 @@ python3 ferramentas/rolar-dados.py ren listar
 
 Quando um turno tiver consequência mecânica persistente, `cronica preparar` pode receber `--mecanica-json` com as regras e obrigações. A resposta devolve os IDs canônicos e congela tudo no mesmo ticket. Depois da rolagem com `dados`, `cronica concluir` recebe um bloco `mecanica.resolucoes`; o writer só vê a transação depois da validação causal.
 
-Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Focus/Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
+Para o gasto simples de Focus, `--gasto-focus N` gera a obrigação
+`focus_spend` sem exigir JSON manual:
+
+```bash
+cronica preparar --cena-id exemplo --sem-oportunidade-sidequest --gasto-focus 1
+```
+
+O equivalente completo, útil quando a regra específica deve ficar congelada,
+é:
+
+```bash
+cronica preparar --cena-id exemplo --sem-oportunidade-sidequest \
+  --mecanica-json '{"regras":["artes_sombrias_escuridao"],"obrigacoes":[{"id":"focus_darkness","tipo":"gasto_recurso","regra":"artes_sombrias_escuridao","recurso":"focus","custo":1}]}'
+```
+
+Na conclusão, usar o `mecanica.resolucao_modelo` devolvido pelo preparo e o
+delta `{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-1}`.
+Os caminhos `--gasto-focus` e `--mecanica-json` são mutuamente exclusivos.
+
+Turnos puramente narrativos omitem esse argumento e não pagam leituras mecânicas adicionais. Gastos de Focus nunca devem ser enviados como delta isolado sem obrigação preparada.
 
 Quando a mecânica foi preparada a partir de AD&D, o mesmo JSON acrescenta `proveniencia`. O gate exige edição de origem, destino moderno e fonte mecânica; números antigos literais são recusados antes do ticket. Uma adaptação 5.5e pode existir como preparação durante a migração, mas não entra no runtime enquanto 2014 estiver ativo.
 

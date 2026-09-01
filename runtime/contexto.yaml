@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 17
+  numero: 18
   status: entre_sessoes
   modo_de_cena: patio_da_antiga_calaria_apos_combate
 personagem:
@@ -25,7 +25,7 @@ recursos:
   dinheiro_po: 39.379999999999995
 tempo:
   data: 20 Eleasis, 1372 DR
-  hora_aproximada: 00:31
+  hora_aproximada: 01:15
   periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/017/handoff.yaml
-  transcricao_fria: sessoes/017/transcricao.md
+  handoff_atual: sessoes/018/handoff.yaml
+  transcricao_fria: sessoes/018/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:

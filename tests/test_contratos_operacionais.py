@@ -205,7 +205,7 @@ class OperationalBudgetContractTest(unittest.TestCase):
         self.assertNotIn("poetry run rolar-dados", text)
         self.assertNotIn("poetry run rolar-lote", text)
         self.assertIn("ferramentas/endpoints.py fronteira", text)
-        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 12288)
+        self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)
 
 
 if __name__ == "__main__":

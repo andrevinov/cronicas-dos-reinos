@@ -80,6 +80,7 @@ Durante avanço comum:
 - não atualizar diretamente estado/ficha/relações/conhecimento/consequências/relógios/NPCs;
 - não regenerar runtime/handoff nem rodar Git, testes ou telemetria;
 - concluir conforme `contrato_conclusao`; mecânica explícita usa `MECÂNICA — ...`;
+- gasto persistente de Focus precisa ser pré-comprometido no próprio ticket. Atalho comum: `cronica preparar ... --gasto-focus <N>`; caminho completo: `--mecanica-json '<json>'`. Nunca enviar apenas delta negativo. No `concluir`, confirmar a obrigação em `mecanica.resolucoes` e usar `{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-N}`. Exemplo completo e schema: `docs/agente/regras-e-rolagens.md`;
 - prosa completa fica na transcrição; JSONL só resumo/deltas/rolagens necessárias;
 - instante: `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - `rodape_canonico` verbatim como última linha visível.

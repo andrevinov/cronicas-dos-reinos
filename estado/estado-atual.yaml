@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 17
+  sessao_atual: 18
   modo_de_cena_atual: patio_da_antiga_calaria_apos_combate
 personagem:
   nome: Ren Kagehira
@@ -33,7 +33,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 9
   periodo_do_dia: noite de 19 Eleasis, logo após o combate na antiga calaria
-  hora_aproximada: 00:31
+  hora_aproximada: 01:15
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -63,7 +63,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/017/transcricao.md
+  transcricao_atual: sessoes/018/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:

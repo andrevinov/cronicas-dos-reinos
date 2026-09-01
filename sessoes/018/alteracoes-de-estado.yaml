@@ -1,0 +1,50 @@
+schema_alteracoes_transacionais: 1
+sessao: 18
+status: encerrada
+fonte: sessoes/018/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 18
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: 00:31
+  area: Casa da Aurora Menor, Temple District, Ravens Bluff
+  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 18
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: 01:15
+  area: Casa da Aurora Menor, Temple District, Ravens Bluff
+  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  nivel_ficha: 7
+consolidacoes:
+- id: s018-sessao-ffa4383fad12fe32
+  tipo: sessao
+  transacoes:
+  - s018-4bc40320a17823e7
+  - s018-334397968c4a854b
+  - s018-26e6a9304fa06361
+  - s018-55422a9264099f1f
+  - s018-c6c34e16f4dc8e41
+  - s018-1d02cdba370765ec
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/018/alteracoes-de-estado.yaml
+  - sessoes/018/consequencias.md
+  - sessoes/018/consolidacoes.jsonl
+  - sessoes/018/resumo.md
