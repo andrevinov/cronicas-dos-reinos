@@ -1,27 +1,27 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 18
-modo: patio_da_antiga_calaria_apos_combate
+sessao: 19
+modo: ren_desperto_apos_descanso_longo_no_circo
 localizacao:
-  area: Casa da Aurora Menor, Temple District, Ravens Bluff
-  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
 tempo:
   data: 20 Eleasis, 1372 DR
-  hora_aproximada: 01:15
+  hora_aproximada: 09:15
 mecanica_imediata:
-  pv: 45/52
-  focus: 1/7
+  pv: 52/52
+  focus: 7/7
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
-  documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
-prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 Eleasis. A investigação ainda precisa
-  de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado terminal.
+resumo_imediato: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo e despertou
+  às 09:15.
+prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+  o posto antes de seguir ao circo.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/018/handoff.yaml
+  handoff: sessoes/019/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/018/transcricao.md
+  transcricao_fria: sessoes/019/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:
@@ -30,13 +30,3 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  passos_sem_pegadas:
-    concentracao: true
-    descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
-    inicio: 22:30 de 19 Eleasis, 1372 DR
-    termino: 23:30 de 19 Eleasis, 1372 DR
-    origem_ruleset: dnd_5e_2014
-    preservado_por_migracao: true
-    recastavel: false
-    observacao_migracao: Efeito lançado legalmente antes do cutover; permanece somente até sua expiração original
-      e não pode ser renovado pela ficha 5.5e.

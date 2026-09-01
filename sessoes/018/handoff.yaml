@@ -4,7 +4,7 @@ sessao: 18
 checkpoint:
   tipo: sessao
   estado: sessao_encerrada
-  modo: patio_da_antiga_calaria_apos_combate
+  modo: telhados_proximos_ao_circo_antes_de_escuridao
   personagem:
     nome: Ren Kagehira
     nivel: 7
@@ -23,22 +23,22 @@ checkpoint:
   tempo:
     data: 20 Eleasis, 1372 DR
     hora_aproximada: 01:15
-    periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
-    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+    periodo: madrugada de 20 Eleasis, pouco depois de uma hora, nos telhados próximos ao circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   localizacao:
     plano: Material
     mundo: Toril
     continente: Faerûn
     regiao: The Vast
     cidade: Ravens Bluff
-    area: Casa da Aurora Menor, Temple District, Ravens Bluff
-    ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: sobre um telhado nas proximidades do circo dos Mooney, após chegar sem detectar cauda; Escuridão
+      ainda não foi conjurada
 continuidade:
-  resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
-    documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
-  prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 Eleasis. A investigação ainda precisa
-    de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado
-    terminal.
+  resumo_imediato: Ren chegou aos telhados próximos do circo por uma rota variada de Passo da Sombra sem detectar
+    cauda. Ele ainda não lançou Escuridão nem entrou no circo.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
 eventos_recentes:
 - batch: s018-sessao-ffa4383fad12fe32
   transacao: s018-4bc40320a17823e7
@@ -65,6 +65,11 @@ eventos_recentes:
   transacao: s018-1d02cdba370765ec
   resumo: Ren usou Passo da Sombra por uma rota favorável de telhados até as proximidades do circo dos Mooney. A
     travessia habitual dispensou teste; ele variou a rota e não detectou cauda acompanhando seus movimentos.
+- batch: s018-cena-20272c98c6ac2a15
+  transacao: corr-s018-d0b1541e3e0cfef2
+  resumo: 'Correção canônica de s018-1d02cdba370765ec: Corrige o checkpoint final da sessão 18 para os telhados
+    próximos ao circo, remove resíduos operacionais da calaria e preserva Escuridão como próximo passo ainda não
+    executado.'
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

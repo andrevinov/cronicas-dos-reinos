@@ -5,7 +5,7 @@ descricao: Cursor e fila operacional do motor determinístico; não é fonte ind
   detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
   data: 20 Eleasis, 1372 DR
-  hora: 01:15
+  hora: 09:15
 pendencias: []
 concluidas_recentes:
 - id: mundo-050f1a0efdbe5a14
@@ -138,3 +138,43 @@ concluidas_recentes:
   disparado_em:
     data: 19 Eleasis, 1372 DR
     hora: 06:00
+- id: mundo-1fb2a610d77e814c
+  tipo: reavaliar_agente_leve
+  agente_leve: kethra_dunn
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Nenhuma nova aparição da mulher Cinza-Azul, risco à cobertura ou oportunidade
+    segura de sinalização foi estabelecida; Kethra mantém a rotina discreta.
+- id: mundo-6608f72e45b670f7
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Os fatos recentes não demonstram a passagem nem eliminam explicações marítimas
+    plausíveis; o marco coisas_plausiveis permanece sustentado sem avanço.
+- id: mundo-ce4aff7fa22932d7
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: Kurobane não possui conhecimento canônico da custódia atual das provas nem
+    janela física confirmada de acesso ao posto da Night Watch.
+- id: mundo-103587c415f2caa7
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch formalizou a custódia separada da cativa e das provas e iniciou
+    verificação institucional sem presumir conclusão antes do exame.
+- id: mundo-6d75ff5b84a8889f
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail distribuiu busca dirigida por curandeiros, rotas de carroças e
+    propriedades abandonadas a leste, sem obter localização da cadeia rural.

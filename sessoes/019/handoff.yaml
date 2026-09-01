@@ -1,0 +1,66 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 19
+checkpoint:
+  tipo: cena
+  estado: retomavel
+  modo: ren_desperto_apos_descanso_longo_no_circo
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    focus:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 20 Eleasis, 1372 DR
+    hora_aproximada: 09:15
+    periodo: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+continuidade:
+  resumo_imediato: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo e despertou
+    às 09:15.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
+eventos_recentes:
+- batch: s019-cena-de65b8d690d7b2d1
+  transacao: s019-b0bc5dac3a939fd5
+  resumo: Ren gastou 1 Focus para criar Escuridão no telhado, ocultou visualmente sua partida, usou Passo da Sombra
+    para entrar no circo e adormeceu em seu espaço habitual. O tempo avançou até 06:00; o descanso longo ainda não
+    foi concluído.
+- batch: s019-cena-1bf8e62eb94c50f8
+  transacao: s019-e51d968b87fdc88e
+  resumo: Às 06:00, a Night Watch manteve a cativa sob guarda separada, inventariou as provas e iniciou verificação
+    institucional preservando a cadeia de custódia.
+- batch: s019-cena-b57da509faf3791e
+  transacao: s019-6c5012626fc664b5
+  resumo: Às 06:00, a Red Sail ampliou de forma dirigida a busca por Colm para curandeiros, rotas de carroças e
+    propriedades abandonadas a leste, sem localizar a cadeia rural.
+- batch: s019-cena-8a2fd0e0d8d22686
+  transacao: s019-186fa686d59b6319
+  resumo: Ren permaneceu adormecido após a fronteira das 06:00 e concluiu o descanso longo às 09:15. Recuperou todos
+    os PV, Focus e Dados de Vida; o Broche do Semblante Humilde voltou a ficar disponível.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/019/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

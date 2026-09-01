@@ -18,7 +18,7 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 18
-  modo: patio_da_antiga_calaria_apos_combate
+  modo: telhados_proximos_ao_circo_antes_de_escuridao
   personagem: Ren Kagehira
   nivel: 7
   pv: 45/52
@@ -27,8 +27,9 @@ checkpoint_atual:
   dinheiro_po: 39.379999999999995
   data: 20 Eleasis, 1372 DR
   hora: 01:15
-  area: Casa da Aurora Menor, Temple District, Ravens Bluff
-  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: sobre um telhado nas proximidades do circo dos Mooney, após chegar sem detectar cauda; Escuridão
+    ainda não foi conjurada
   nivel_ficha: 7
 consolidacoes:
 - id: s018-sessao-ffa4383fad12fe32
@@ -41,6 +42,18 @@ consolidacoes:
   - s018-c6c34e16f4dc8e41
   - s018-1d02cdba370765ec
   deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/018/alteracoes-de-estado.yaml
+  - sessoes/018/consequencias.md
+  - sessoes/018/consolidacoes.jsonl
+  - sessoes/018/resumo.md
+- id: s018-cena-20272c98c6ac2a15
+  tipo: cena
+  transacoes:
+  - corr-s018-d0b1541e3e0cfef2
+  deltas: 18
   arquivos_afetados:
   - estado/estado-atual.yaml
   - estado/tempo.yaml

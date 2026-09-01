@@ -1,0 +1,80 @@
+schema_alteracoes_transacionais: 1
+sessao: 19
+status: em_andamento
+fonte: sessoes/019/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 19
+  modo: telhados_proximos_ao_circo_antes_de_escuridao
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: 01:15
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: sobre um telhado nas proximidades do circo dos Mooney, após chegar sem detectar cauda; Escuridão
+    ainda não foi conjurada
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 19
+  modo: ren_desperto_apos_descanso_longo_no_circo
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: 09:15
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+  nivel_ficha: 7
+consolidacoes:
+- id: s019-cena-de65b8d690d7b2d1
+  tipo: cena
+  transacoes:
+  - s019-b0bc5dac3a939fd5
+  deltas: 9
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/019/alteracoes-de-estado.yaml
+  - sessoes/019/consequencias.md
+  - sessoes/019/consolidacoes.jsonl
+  - sessoes/019/resumo.md
+- id: s019-cena-1bf8e62eb94c50f8
+  tipo: cena
+  transacoes:
+  - s019-e51d968b87fdc88e
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/019/alteracoes-de-estado.yaml
+  - sessoes/019/consequencias.md
+  - sessoes/019/consolidacoes.jsonl
+  - sessoes/019/resumo.md
+- id: s019-cena-b57da509faf3791e
+  tipo: cena
+  transacoes:
+  - s019-6c5012626fc664b5
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/019/alteracoes-de-estado.yaml
+  - sessoes/019/consequencias.md
+  - sessoes/019/consolidacoes.jsonl
+  - sessoes/019/resumo.md
+- id: s019-cena-8a2fd0e0d8d22686
+  tipo: cena
+  transacoes:
+  - s019-186fa686d59b6319
+  deltas: 15
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/019/alteracoes-de-estado.yaml
+  - sessoes/019/consequencias.md
+  - sessoes/019/consolidacoes.jsonl
+  - sessoes/019/resumo.md

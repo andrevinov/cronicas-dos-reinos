@@ -117,3 +117,8 @@ Ainda assim, Ren não segue em linha reta. Alterna alturas, deixa passar interva
 Nada se repete. Os poucos movimentos abaixo pertencem à rotina noturna da cidade e desaparecem por caminhos próprios. Nenhuma figura acompanha as mudanças de direção de Ren; ninguém sobe atrás dele ou parece antecipar seus pontos de chegada.
 
 Pouco depois de uma hora da madrugada, as formas familiares do circo dos Mooney aparecem adiante. Ren alcança um telhado nas proximidades sem ter detectado cauda — o que não prova que nenhum inimigo exista na cidade, mas confirma que ninguém comum conseguiu acompanhá-lo por essa rota.
+
+<!-- turno-transacional:corr-s018-d0b1541e3e0cfef2 -->
+**Narrador**
+
+CORREÇÃO CANÔNICA — Às 01:15 de 20 Eleasis, Ren está sobre um telhado nas proximidades do Jack Mooney & Sons Circus, após chegar por uma rota variada de Passo da Sombra sem detectar cauda. Ele ainda não lançou Escuridão nem entrou no circo; sua intenção declarada é usar a magia para prosseguir com segurança. A cativa e as provas já foram entregues à Night Watch sob supervisão de Luath, e Passos sem Pegadas terminou às 23:30. Retifica s018-1d02cdba370765ec; não representa um novo acontecimento do mundo.

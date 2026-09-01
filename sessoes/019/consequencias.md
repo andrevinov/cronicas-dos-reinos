@@ -1,4 +1,4 @@
-# Consequências - Sessão 018
+# Consequências - Sessão 019
 
 ## Consolidação transacional automática
 <!-- consolidacao-automatica:inicio -->

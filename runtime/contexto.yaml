@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 18
-  status: entre_sessoes
-  modo_de_cena: patio_da_antiga_calaria_apos_combate
+  numero: 19
+  status: em_sessao
+  modo_de_cena: ren_desperto_apos_descanso_longo_no_circo
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -15,34 +15,34 @@ personagem:
   subclasse: Guerreiro das Sombras
 recursos:
   pv:
-    atuais: 45
+    atuais: 52
     maximos: 52
   focus:
-    atuais: 1
+    atuais: 7
     maximos: 7
   ca: 17
   deslocamento: 55 pés
   dinheiro_po: 39.379999999999995
 tempo:
   data: 20 Eleasis, 1372 DR
-  hora_aproximada: 01:15
-  periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
-  clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  hora_aproximada: 09:15
+  periodo: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
+  clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
 localizacao:
   plano: Material
   mundo: Toril
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa da Aurora Menor, Temple District, Ravens Bluff
-  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
       nome: Broche do Semblante Humilde
       caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
       efeito_temporario: broche_do_semblante_humilde
-      disponibilidade: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
+      disponibilidade: disponível; uso renovado no amanhecer de 20 Eleasis
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/018/handoff.yaml
-  transcricao_fria: sessoes/018/transcricao.md
+  handoff_atual: sessoes/019/handoff.yaml
+  transcricao_fria: sessoes/019/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:
@@ -84,13 +84,3 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  passos_sem_pegadas:
-    concentracao: true
-    descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
-    inicio: 22:30 de 19 Eleasis, 1372 DR
-    termino: 23:30 de 19 Eleasis, 1372 DR
-    origem_ruleset: dnd_5e_2014
-    preservado_por_migracao: true
-    recastavel: false
-    observacao_migracao: Efeito lançado legalmente antes do cutover; permanece somente até sua expiração original
-      e não pode ser renovado pela ficha 5.5e.

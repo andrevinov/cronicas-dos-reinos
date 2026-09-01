@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 18
+sessao_atual: 19
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 18
-  bytes_transcricoes: 2112926
+  sessoes: 19
+  bytes_transcricoes: 2117021
 sessoes:
   '001':
     natureza: historica
@@ -417,19 +417,19 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   018:
-    natureza: atual
+    natureza: historica
     handoff: sessoes/018/handoff.yaml
     compactos:
     - arquivo: sessoes/018/handoff.yaml
-      bytes: 3546
+      bytes: 3742
     - arquivo: sessoes/018/resumo.md
-      bytes: 1572
+      bytes: 1846
     - arquivo: sessoes/018/alteracoes-de-estado.yaml
-      bytes: 1409
+      bytes: 1739
     - arquivo: sessoes/018/consequencias.md
-      bytes: 257
+      bytes: 256
     - arquivo: sessoes/018/consolidacoes.jsonl
-      bytes: 2604
+      bytes: 4120
     ordem_de_leitura:
     - sessoes/018/handoff.yaml
     - sessoes/018/resumo.md
@@ -437,6 +437,30 @@ sessoes:
     - sessoes/018/consequencias.md
     transcricao:
       arquivo: sessoes/018/transcricao.md
-      bytes: 8812
+      bytes: 9410
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  019:
+    natureza: atual
+    handoff: sessoes/019/handoff.yaml
+    compactos:
+    - arquivo: sessoes/019/handoff.yaml
+      bytes: 2711
+    - arquivo: sessoes/019/resumo.md
+      bytes: 1266
+    - arquivo: sessoes/019/alteracoes-de-estado.yaml
+      bytes: 2172
+    - arquivo: sessoes/019/consequencias.md
+      bytes: 256
+    - arquivo: sessoes/019/consolidacoes.jsonl
+      bytes: 5878
+    ordem_de_leitura:
+    - sessoes/019/handoff.yaml
+    - sessoes/019/resumo.md
+    - sessoes/019/alteracoes-de-estado.yaml
+    - sessoes/019/consequencias.md
+    transcricao:
+      arquivo: sessoes/019/transcricao.md
+      bytes: 3497
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

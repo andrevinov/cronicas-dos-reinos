@@ -17,7 +17,7 @@ pendencias_avaliacao: {}
 missoes:
   sqe-47ea56e74d59f1c0:
     id: sqe-47ea56e74d59f1c0
-    estado: aceita
+    estado: falhada
     origem: sidequest_emergente
     quest_id: qse-c721ace29e628024
     arquivo: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
@@ -48,6 +48,10 @@ missoes:
     ultima_decisao_em:
       data: 19 Eleasis, 1372 DR
       hora: '20:00'
+    encerrada_em:
+      data: 20 Eleasis, 1372 DR
+      hora: 06:00
+    motivo_encerramento: janela_temporal_encerrada
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
 - silva_elkwood:deslocamento_seguro
@@ -134,6 +138,13 @@ historico_recente:
   em:
     data: 19 Eleasis, 1372 DR
     hora: '20:00'
+- tipo: missao_encerrada
+  id: sqe-47ea56e74d59f1c0
+  de: aceita
+  para: falhada
+  em:
+    data: 20 Eleasis, 1372 DR
+    hora: 06:00
 legado_procedural:
   estatuto: somente_auditoria_nao_operacional
   gate_congelado:

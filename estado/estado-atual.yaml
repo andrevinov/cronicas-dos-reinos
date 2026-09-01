@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: entre_sessoes
-  sessao_atual: 18
-  modo_de_cena_atual: patio_da_antiga_calaria_apos_combate
+  status: em_sessao
+  sessao_atual: 19
+  modo_de_cena_atual: ren_desperto_apos_descanso_longo_no_circo
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -18,10 +18,10 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Casa da Aurora Menor, Temple District, Ravens Bluff
-  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
-  descricao_operacional: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
-    documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+  descricao_operacional: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo
+    e despertou às 09:15.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -29,20 +29,22 @@ tempo:
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 19
+  dia_do_mes: 20
   dezena: 2
-  dia_da_dezena: 9
-  periodo_do_dia: noite de 19 Eleasis, logo após o combate na antiga calaria
-  hora_aproximada: 01:15
-  clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  dia_da_dezena: 10
+  periodo_do_dia: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
+  hora_aproximada: 09:15
+  clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
+  prazo_relevante: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
 recursos:
   pontos_de_vida:
-    atuais: 45
+    atuais: 52
     maximos: 52
   dados_de_vida:
-    atuais: 5
+    atuais: 7
     maximos: 7
     dado: d8
   classe_de_armadura: 17
@@ -51,10 +53,10 @@ recursos:
     po: 39.379999999999995
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
+    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
     traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
   focus:
-    atuais: 1
+    atuais: 7
     maximos: 7
     recarga: descanso curto ou longo
 ponteiros:
@@ -63,7 +65,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/018/transcricao.md
+  transcricao_atual: sessoes/019/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -110,11 +112,8 @@ objetivos:
   - descobrir por que Aiko Kagehira foi morta
   - descobrir o que restou da Juppongatana/Dez Espadas
   imediatos:
-  - escolha pendente de Ren sobre os dois ocupantes inconscientes da antiga calaria
-  - matriz e conjunto documental recuperados ainda sem destino definido
-  - verificação institucional da ordem pendente antes do prazo da transferência
-  - Peta e as demais crianças permanecem fora de transferência não verificada
-  - identidades de Ren, Shinta e Kage continuam separadas conforme o conhecimento de cada observador
+  - usar Escuridão para prosseguir no circo com segurança, conforme a intenção declarada de Ren; a magia ainda não
+    foi lançada
 vinculos_ativos:
   night_watch:
     contato: Luath
@@ -127,16 +126,11 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren está no pátio da antiga calaria, junto ao homem corpulento inconsciente; a mulher permanece inconsciente
-    no interior.
-  risco_imediato: a oficina foi comprometida, as provas ainda precisam de destino e os dois ocupantes podem recuperar
-    a consciência.
-pendencias:
-- decidir como lidar com os dois ocupantes inconscientes sem presumir ação de Ren
-- decidir o destino imediato da matriz e dos documentos recuperados
-- buscar verificação institucional da ordem antes de 06:00 de 20 Eleasis, se Ren prosseguir com a missão aceita
+  cena_atual: Ren despertou em seu espaço habitual no circo dos Mooney após completar um descanso longo.
+  risco_imediato: nenhuma ameaça imediata foi estabelecida dentro do espaço de descanso de Ren
+pendencias: []
 disponibilidades:
-  broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
+  broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
 combate_atual: null
 efeitos_temporarios:
   narwhal_alerta_para_observador_idoso:
@@ -144,16 +138,6 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  passos_sem_pegadas:
-    concentracao: true
-    descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
-    inicio: 22:30 de 19 Eleasis, 1372 DR
-    termino: 23:30 de 19 Eleasis, 1372 DR
-    origem_ruleset: dnd_5e_2014
-    preservado_por_migracao: true
-    recastavel: false
-    observacao_migracao: Efeito lançado legalmente antes do cutover; permanece somente até sua expiração original
-      e não pode ser renovado pela ficha 5.5e.
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
@@ -164,4 +148,4 @@ coberturas:
     origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
     avaliacao_pratica: Shinta concluiu trabalho regular na Galeria, mas a continuidade futura desse vínculo profissional
       não foi renegociada depois que Tomas soube que ele é Ren; as restrições de acesso históricas permanecem.
-modo: patio_da_antiga_calaria_apos_combate
+modo: ren_desperto_apos_descanso_longo_no_circo

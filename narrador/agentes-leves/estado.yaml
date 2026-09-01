@@ -6,9 +6,16 @@ agentes:
   kethra_dunn:
     estado: ativo
     proxima_avaliacao:
-      data: 17 Eleasis, 1372 DR
+      data: 23 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: 60cd85a3769bdeb82be1eb4eab910cfee3c37d5cc38532a6a5574f2747fb91a1
+      pendencia_origem: mundo-1fb2a610d77e814c
+      confirmado_em:
+        data: 20 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   bram_vask:
     estado: ativo
     proxima_avaliacao:
