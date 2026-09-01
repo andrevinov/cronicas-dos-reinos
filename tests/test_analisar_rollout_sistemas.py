@@ -235,6 +235,7 @@ class RolloutSidequestSystemsTest(RolloutFixture):
             "sidequest_progression",
             "active_sidequest_reassessment",
             "transactional_sidequest_progress",
+            "sidequest_success_reactions",
         ):
             self.assertEqual(systems[system], 0, system)
 
@@ -294,6 +295,28 @@ class RolloutSidequestSystemsTest(RolloutFixture):
         narr = mod.analyze(self.path(rows))["narration_turns"]
         self.assertEqual(
             narr["narrative_system_turns"]["transactional_sidequest_progress"],
+            1,
+        )
+
+    def test_reacao_causal_pos_sucesso_recebe_atribuicao_propria(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "reaction"}),
+            user("reaction", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "reaction",
+                "r1",
+                "poetry run python ferramentas/reacoes_sidequest.py preparar sqe-fixture",
+            ),
+            output(
+                "reaction",
+                "r1",
+                "Process exited with code 0\nreaction_id: rsq-11111111111111111111\n"
+                "classificacao: reacao_mundo\n",
+            ),
+        ]
+        narr = mod.analyze(self.path(rows))["narration_turns"]
+        self.assertEqual(
+            narr["narrative_system_turns"]["sidequest_success_reactions"],
             1,
         )
 

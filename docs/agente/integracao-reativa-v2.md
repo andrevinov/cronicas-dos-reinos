@@ -157,7 +157,23 @@ No checkpoint, lifecycle pode invalidar quest giver morto; checkpoint não gera 
 
 A Task 32 entregou engine/schema vazio por desenho; a Task 33 fornece conteúdo reservado e roteamento dirigido. Isso não muda a autoridade do engine nem força aparição, oferta ou aceite.
 
-## 8. Incidentes sérios — Task 35
+## 8. Reações causais após progresso ou sucesso — Task 50
+
+Task49 termina a missão e fixa o instante do fato; ela não inventa repercussão.
+Quando o fato novo sustentar resposta adversarial concreta, Task50 avalia
+exatamente `reacao_mundo`, `oportunidade_sucessora` ou `sem_reacao`.
+
+`reacoes_sidequest.py preparar` é read-only. Capacidade, conhecimento com prova,
+presença física quando exigida, recursos livres e autoridade Task44/Protected
+Core são gates reais. Direção ou ponte Task42 apenas relacionam o contrato; nunca
+suprem um gate. `materializar` preserva o SHA do contrato Task44 original.
+
+`reacao_mundo` usa a fila já existente. A fronteira exige
+`reacoes_sidequest.py comprometer` antes de narrar ou rolar e exige prova factual
+em `resolver`; não aceita no-op. `oportunidade_sucessora` não cria missão nem
+oferta e continua dependente da decisão Task47 e do lifecycle normal.
+
+## 9. Incidentes sérios — Task 35
 
 A Task 35 roda somente quando a preparação já possui um `local_id` canônico. Ela é instalada depois da Task 34 e reutiliza a ecologia do local e `condicoes_mundo` já projetadas.
 
@@ -181,7 +197,7 @@ O Local Microevent Deck permanece separado e cotidiano. Task 35 não relaxa os v
 
 Detalhes: `docs/task35-world-local-incidents-v2.md`.
 
-## 9. Orçamento e invariantes
+## 10. Orçamento e invariantes
 
 Contratos relevantes:
 
@@ -191,7 +207,8 @@ Contratos relevantes:
 - `baseline/retire-procedural-sidequest-gate-orcamento.yaml`;
 - `baseline/canonical-secret-quest-engine-orcamento.yaml`;
 - `baseline/secret-npc-quest-catalog-orcamento.yaml`;
-- `baseline/world-local-incidents-v2-orcamento.yaml`.
+- `baseline/world-local-incidents-v2-orcamento.yaml`;
+- `baseline/sidequest-success-reactions-orcamento.yaml`.
 
 Invariantes atuais:
 
@@ -221,3 +238,9 @@ Invariantes atuais:
 - condição Task34 muda pool, nunca frequência Task35;
 - incidente não cria sidequest/NPC nomeado/recompensa automaticamente;
 - microevento local continua camada de textura separada.
+- reação Task50 nasce somente de fato Task45/49 canônico;
+- contrato Task44 original permanece byte a byte idêntico;
+- ação do mundo não exige aceite de Ren, mas compromisso precede narração/rolagem;
+- oportunidade sucessora não é oferta automática;
+- capacidade, conhecimento, presença, recursos e Protected Core continuam gates;
+- reação usa checkpoint/fila existentes, sem RNG, scheduler ou scan global.

@@ -47,6 +47,10 @@ Cada fato possui:
 - substituição de ator, quando aplicável;
 - visibilidade; a fonte transacional é derivada do ID do turno, nunca escolhida pelo chamador.
 
+O writer também fixa `canonizado_em` com o instante consolidado do turno. Esse
+campo permite à Task50 abrir uma janela causal a partir de progresso excepcional
+sem inferir data de texto narrativo.
+
 ### Evidência da própria transação
 
 Antes da escrita, o integrador valida que o trecho de evidência existe
@@ -90,7 +94,8 @@ Depois de aplicar todos os fatos:
 3. usar `canon_bridge_runtime.finish` para o terminal;
 4. delegar recompensa à Task43 exatamente uma vez;
 5. registrar resultado e gatilho no fragmento Task45;
-6. não materializar reação pós-sucesso nesta Task.
+6. não materializar reação pós-sucesso nesta Task; a avaliação posterior pertence
+   exclusivamente à Task50.
 
 O terminal depende somente de fatos já registrados. Planejamento, resumo inferido ou possibilidade futura não satisfazem condições.
 

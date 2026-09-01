@@ -27,6 +27,12 @@ A Task 41 continua sendo a autora do mini-arco. Antes de a oferta virar uma miss
 
 O contrato não executa nada. Ele congela o espaço de consequência antes do aceite, para que o narrador não decida depois do resultado que um inimigo foi milagrosamente mais gentil — ou mais cruel — do que a situação permitia.
 
+Reações causadas por sucesso ou progresso excepcional pertencem à Task50. Elas
+ganham contrato novo somente depois do fato canônico e guardam o caminho e o
+SHA-256 do contrato Task44 original; não acrescentam bytes, stakes ou capacidades
+retroativamente a ele. Toda alternativa volta a passar por esta autoridade e
+pela rede protegida no preparo e no compromisso.
+
 ### Capacidades e conhecimento
 
 Para um agente estratégico existente, `capacidade_id` precisa ser um método operacional que já exista no fragmento canônico do agente. A quest não pode adicionar uma capacidade nova a Masao, Pan Chu ou um Juppongatana apenas porque seria conveniente.
@@ -111,5 +117,5 @@ A autorização de consequência exige fonte canônica existente e trecho litera
 - zero scheduler;
 - zero scan global;
 - nenhuma leitura Task 44 em turno comum;
-- execução terminal continua na Task 45;
+- execução terminal continua na Task45; reações pós-sucesso pertencem à Task50;
 - integração automática no fluxo `cronica` continua na Task 46.

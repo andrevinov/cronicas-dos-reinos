@@ -1,0 +1,25 @@
+schema_orcamento_reacoes_sidequest: 1
+natureza: contrato_de_regressao
+limites:
+  reacoes_max: 16
+  alternativas_por_reacao_max: 8
+  alvos_por_reacao_max: 10
+  recursos_por_alternativa_max: 8
+  contrato_por_reacao_bytes_max: 32768
+  preparacao_bytes_max: 12288
+  janela_dias_max: 30
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  fato_canonico_precede_contrato: true
+  contrato_task44_original_permanece_byte_a_byte: true
+  classificacoes_exatas: [reacao_mundo, oportunidade_sucessora, sem_reacao]
+  capacidade_conhecimento_presenca_e_recursos_sao_gates: true
+  direcao_nao_concede_autoridade: true
+  protected_core_continua_governado_pela_task44: true
+  reacao_mundo_usa_fila_existente: true
+  alternativa_e_recursos_sao_comprometidos_antes_da_narracao: true
+  oportunidade_sucessora_exige_gate_e_oferta: true
+  sem_reacao_nao_persiste_artefato: true
+  missao_original_nao_reabre: true

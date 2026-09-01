@@ -61,6 +61,10 @@ Task45 não possui exceção própria. Toda consequência passa pela Task44. Sid
 
 Sucesso só pode ser encerrado quando a política factual estiver satisfeita. Depois do lifecycle `concluida`, Task45 delega a entrega a Task43, preservando exatamente-once.
 
+Task45 não reabre nem prolonga a missão para acomodar repercussões do sucesso.
+Depois do terminal factual, a Task50 pode avaliar aquele fato e criar uma reação
+causal separada, preservando os bytes deste progresso e do contrato Task44.
+
 Falha/prazo podem delegar perdas contratadas a Task43 durante a resolução da consequência. Ausência de contrato ou prova continua impedindo a perda.
 
 ## Cânone

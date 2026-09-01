@@ -2,7 +2,8 @@
 
 ## Status e dependências
 
-**Planejada.** Este documento não autoriza reação no jogo antes da implementação.
+**Implementada.** A porta vive em `ferramentas/reacoes_sidequest.py`, usa a fila
+do Mundo Vivo e é verificada pelo preflight.
 
 Depende do terminal factual da Task49, da autoridade adversarial da Task44, da ponte canônica da Task42 e da fila existente do Mundo Vivo. Não altera contratos adversariais históricos.
 
@@ -26,7 +27,13 @@ Criar contratos imutáveis de reação causal derivados de fatos novos, sem:
 
 ### Novo domínio: reação de sidequest
 
-Adicionar uma porta de domínio, preferencialmente `reacoes_sidequest.py`, com artefatos reservados próprios. Cada reação possuirá:
+A implementação mantém índice, estado e contratos imutáveis em:
+
+- `narrador/sidequest-reacoes/index.yaml`;
+- `narrador/sidequest-reacoes/estado.yaml`;
+- `narrador/sidequest-reacoes/contratos/<reaction_id>.yaml`.
+
+Repositório ainda sem esses arquivos é configuração vazia válida. Cada reação possui:
 
 - `reaction_id`, missão e quest de origem;
 - fato causal de progresso ou terminal;
@@ -44,6 +51,11 @@ Adicionar uma porta de domínio, preferencialmente `reacoes_sidequest.py`, com a
 - estado `planejada`, `elegivel`, `comprometida`, `resolvida` ou `cancelada`.
 
 O contrato é criado somente depois que o fato-gatilho existe, mas antes de qualquer resolução, encontro ou rolagem da reação. Ele não modifica bytes Task44 da missão de origem.
+
+`preparar` é read-only e devolve `preparacao_id`; `materializar` reavalia as
+fontes e recusa preparação obsoleta. `sem_reacao` não escreve índice, estado,
+contrato ou pendência. A chave missão + fato + antagonista impede uma segunda
+interpretação divergente do mesmo gatilho.
 
 ### Três saídas possíveis
 
@@ -79,6 +91,24 @@ Ao vencer a condição:
 4. preparação de combate ou especialidade ocorre antes de qualquer rolagem;
 5. o resultado factual encerra a reação sem reabrir a sidequest original.
 
+O checkpoint chama `reconciliar`, que somente promove janelas já vencidas e
+repara sua pendência na fila existente. `resolver_fronteira.py` projeta o
+contexto compacto como `requer_resolucao_reacao`; nem ele nem
+`barreira_mundo.py` aceitam concluir essa pendência como no-op. O fluxo
+operacional reservado é:
+
+```text
+reacoes_sidequest.py preparar <missao>       # proposta YAML em stdin
+→ reacoes_sidequest.py materializar <missao> --preparacao-id <id>
+→ reacoes_sidequest.py comprometer <reaction_id> <alternativa...>
+→ narrar/rolar a operação comprometida
+→ reacoes_sidequest.py resolver <reaction_id> --resultado <texto>  # prova em stdin
+```
+
+Uma `oportunidade_sucessora` permanece apenas planejada neste domínio. Ela não
+escreve em `oportunidades.py`; eventual oferta continua submetida à Task47 e à
+autoria/lifecycle existentes.
+
 ### Reações jurídicas, furtivas e violentas
 
 O contrato não privilegia automaticamente combate. Um antagonista competente escolhe o método coerente com objetivo, custo e exposição, por exemplo:
@@ -105,6 +135,11 @@ Cada alternativa precisa de capacidade própria. “Encontrada morta na cela” 
 ## Testes
 
 Criar `tests/test_sidequest_success_reactions.py`.
+
+O arquivo foi criado com fixtures integralmente sintéticas em
+`TemporaryDirectory`. O orçamento permanente está em
+`baseline/sidequest-success-reactions-orcamento.yaml`; telemetria pós-hoc usa o
+marcador `sidequest_success_reactions`.
 
 Cobertura obrigatória:
 

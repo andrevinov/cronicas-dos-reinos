@@ -182,6 +182,10 @@ class SidequestOpportunityBudgetTest(unittest.TestCase):
             items[("ferramentas/progresso_sidequests_transacional.py", "check")],
             "progresso transacional de sidequests",
         )
+        self.assertEqual(
+            items[("ferramentas/reacoes_sidequest.py", "check")],
+            "reações causais de sidequest",
+        )
         result = integration.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertEqual(result["contrato"]["chamadas_orquestracao"], 2)

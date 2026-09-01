@@ -52,6 +52,7 @@ NARRATIVE_SYSTEM_KEYS = (
     "sidequest_progression",
     "active_sidequest_reassessment",
     "transactional_sidequest_progress",
+    "sidequest_success_reactions",
     "canon_bridge",
 )
 
@@ -71,6 +72,10 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
     "transactional_sidequest_progress": (
         "progresso_sidequests_transacional.py",
         "progresso-sidequests-transacional.py",
+    ),
+    "sidequest_success_reactions": (
+        "reacoes_sidequest.py",
+        "reacoes-sidequest.py",
     ),
     "canon_bridge": ("canon_bridge_runtime.py", "canon-bridge-runtime.py"),
 }
@@ -127,6 +132,13 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "transactional_sidequest_progress",
         "progresso_sidequests_registrado",
         "progresso_sidequests:",
+    ),
+    "sidequest_success_reactions": (
+        "sidequest_success_reactions",
+        "schema_reacao_sidequest",
+        "reaction_id:",
+        "reacao_mundo",
+        "oportunidade_sucessora",
     ),
     "canon_bridge": ("canon_bridge", "reserva_causal", "aguarda_evidencia"),
 }

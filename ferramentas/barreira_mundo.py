@@ -326,6 +326,11 @@ def conclude(
     no_change: bool = False,
 ) -> dict[str, Any]:
     pending = _pending_item(repo, pending_id)
+    if pending.get("tipo") == "resolver_reacao_sidequest":
+        raise WorldPendingBarrierError(
+            "reação de sidequest não aceita conclusão genérica; use "
+            "reacoes_sidequest.py comprometer e, após resultado factual, resolver"
+        )
     canonical_event = _canonical_event(repo, pending)
     try:
         candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)

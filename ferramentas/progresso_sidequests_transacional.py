@@ -21,6 +21,7 @@ from typing import Any
 import yaml
 
 import _progressao_sidequests_task45_base as progress_base
+import mundo
 import oportunidades
 import progressao_sidequests
 import sidequests_ativas
@@ -540,6 +541,10 @@ def _normalize_fact(
     )
     _validate_actors_for_resolved_phases(doc, phases, actors, substitutions)
     transcript = f"sessoes/{session:03d}/transcricao.md"
+    try:
+        canonical_now = mundo.instant_parts(mundo.load_canonical_time(repo)[0])
+    except mundo.WorldEngineError as exc:
+        raise TransactionalSidequestProgressError(str(exc)) from exc
     return {
         "id": fact_id,
         "descricao": description,
@@ -550,6 +555,7 @@ def _normalize_fact(
         "atores": actors,
         "substituicoes": substitutions,
         "visibilidade": visibility,
+        "canonizado_em": canonical_now,
         "fonte_transacional": {
             "tipo": "cronica_concluir",
             "transacao_id": transaction_id,

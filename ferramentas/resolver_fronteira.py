@@ -42,6 +42,7 @@ import barreira_mundo
 import direcoes_destino
 import mundo
 import pressao_ravens_bluff
+import reacoes_sidequest
 
 SCHEMA = 1
 MAX_BATCH = 16
@@ -172,7 +173,23 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
     # Task45 já fez o trabalho temporal e emitiu uma pendência causal explícita.
     # Não reinterprete esse contrato como rotina/no-op e não abra outros motores
     # apenas para decidir algo que só progressao_sidequests pode materializar.
-    if pending_type == "resolver_sidequest":
+    if pending_type == "resolver_reacao_sidequest":
+        try:
+            reaction = reacoes_sidequest.project_pending(repo, pending)
+        except reacoes_sidequest.SidequestReactionError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        item["reaction_id"] = reaction["reaction_id"]
+        item["classificacao"] = "requer_resolucao_reacao"
+        item["sem_mudanca_permitido"] = False
+        context["reacao_sidequest"] = {
+            key: reaction[key]
+            for key in (
+                "reaction_id", "estado", "missao", "gatilho", "antagonista_id",
+                "objetivo", "janela", "alternativas",
+            )
+        }
+        sources = _source_list(sources, reaction.get("fontes_lidas"))
+    elif pending_type == "resolver_sidequest":
         item["classificacao"] = "requer_resolucao_sidequest"
         item["sem_mudanca_permitido"] = False
     else:
@@ -377,6 +394,10 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         if item.get("classificacao") == "requer_resolucao_sidequest":
             raise BatchBoundaryError(
                 f"pendência {pending_id} exige resolução Task45 e não aceita sem_mudanca"
+            )
+        if item.get("classificacao") == "requer_resolucao_reacao":
+            raise BatchBoundaryError(
+                f"pendência {pending_id} exige compromisso/resolução da reação e não aceita sem_mudanca"
             )
         if item.get("classificacao") == "avaliar_candidato_autonomo":
             barreira_mundo._validate_autonomous_noop(decision["nota"])
