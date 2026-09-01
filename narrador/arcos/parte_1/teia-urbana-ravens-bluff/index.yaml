@@ -1,0 +1,114 @@
+schema_teia_urbana_ravens_bluff: 1
+natureza: reservado
+estatuto: integracao_autoral_reativa
+arco: parte_1_uma_ponte_para_kozakura
+cidade: ravens_bluff
+fonte_base: LC3 - Nightwatch in the Living City
+finalidade: >-
+  Fazer figuras e fenômenos canônicos de Ravens Bluff existirem além da cena de Ren,
+  podendo tocar cânone, sidequests emergentes e Mundo Vivo sem virar aparições,
+  alianças ou missões automáticas.
+
+fronteira_integracao:
+  data: 20 Eleasis, 1372 DR
+  retroatividade: proibida
+  passado_consolidado: imutavel
+  regra: >-
+    A fonte regional pode estabelecer existência local, mas nenhuma ação, encontro,
+    autoria de pista ou vínculo com a campanha nasce retroativamente. Cânone materializado
+    e decisões de campanha prevalecem sobre adaptação de fonte.
+
+janelas_preferenciais:
+  principio: usar_folgas_entre_batidas_canonicas
+  primeiras_folgas:
+  - 20 Eleasis, 1372 DR
+  - 22 Eleasis, 1372 DR
+  - 24 Eleasis, 1372 DR
+  - 26 Eleasis, 1372 DR
+  - 28 Eleasis, 1372 DR
+  regra: >-
+    São janelas de respiração, não agendamentos. Evento canônico devido, consequência
+    forte ou sidequest ativa pode fazê-las passar sem manifestação.
+
+regras:
+  scheduler: proibido
+  aparicao_automatica: proibida
+  sidequest_automatica: proibida
+  conhecimento_automatico_de_ren: proibido
+  alinhamento_fixo_com_ren_ou_masao: proibido
+  coincidencia_sem_causa: proibida
+  max_fragmentos_por_avaliacao: 1
+  max_sinais_urbanos_por_checkpoint: 1
+  usar_objetivo_proprio_do_npc: true
+  canon_forte_prevalece: true
+  protected_core_prevalece: true
+  sete_nomes_nao_e_reescrito: true
+
+integracao_operacional:
+  quando_consultar:
+  - evento mundial ou incidente local materialmente compatível com tags do roteador
+  - consequência off-screen de NPC já estabelecido
+  - âncora causal concreta que possa abrir Task40
+  - pressão canônica com espaço explícito para integração lateral
+  quando_nao_consultar:
+  - encontro incidental sem problema, pedido, consequência ou mudança
+  - turno curto sem interseção de local, pessoa, tema ou consequência
+  - tentativa de preencher silêncio apenas porque existe conteúdo preparado
+  canone: >-
+    Cruzamento com intenção futura exige compatibilidade causal real; transformação,
+    atraso e reancoragem continuam usando a autoridade canônica existente.
+  sidequests: >-
+    Pedido, dano, mensagem, testemunho, erro, ameaça, pista ou consequência concreta
+    pode abrir Task40. Presença ou rumor isolado não cria missão.
+  mundo_vivo: >-
+    O fragmento fornece somente autoria possível, comportamento e sinais. A manifestação
+    continua candidata até o narrador confirmá-la; acontecer fora de cena não notifica Ren.
+  rastros: >-
+    Verdade off-screen que deixe evidência chega por rastro, testemunho ou descoberta
+    legítima, nunca por conhecimento automático.
+  persistencia: >-
+    NPC nomeado só ganha persistência operacional quando entrar de fato na ficção pelos
+    mecanismos normais; este índice não cria relação, medidor, agenda ou presença.
+
+roteador:
+  porto_noite:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/porto-e-noite.yaml
+    tags: [porto, marinheiros, rumor, noite, morto_vivo, tyr, informacao]
+    cruza_com: [pell, luath, halessa_vorn]
+  mascaras_frascos:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/mascaras-e-frascos.yaml
+    tags: [documentos, identidade, ilusao, alquimia, comercio, espetaculo, efeito_magico]
+    cruza_com: [jack_mooney, lysa_renn, bram_vask]
+  subterraneo:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/subterraneo.yaml
+    tags: [subterraneo, esgoto, animais, desaparecimento, logistica]
+    cruza_com: [luath, red_sail]
+  jardins_diplomaticos:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/jardins-diplomaticos.yaml
+    tags: [magia, diplomacia, jardins, rumor, crianca]
+    cruza_com: [night_watch, casa_de_tyr]
+  narwhal_futuro:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/narwhal-futuro.yaml
+    tags: [narwhal, magia, identidade, segredo, vigilancia]
+    cruza_com: [kethra_dunn, red_sail]
+  fenomenos:
+    arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/fenomenos.yaml
+    tags: [clima, noite, night_watch, visibilidade, crime]
+    cruza_com: [luath, night_watch]
+
+cruzamentos_curados:
+- id: hunter_and_host
+  fragmentos: [porto_noite]
+  principio: conflito moral nasce de evidência e objetivo próprio; ninguém recebe razão por design
+- id: circus_confidence_trick
+  fragmentos: [mascaras_frascos]
+  principio: negócio ou espetáculo falso pode começar leve e adquirir stakes reais
+- id: bad_batch
+  fragmentos: [mascaras_frascos]
+  principio: consequência alquímica pode variar de cômica a séria conforme fatos em cena
+- id: underground_pressure
+  fragmentos: [subterraneo]
+  principio: alteração subterrânea pode virar pista, problema ecológico ou obstáculo independente
+- id: narwhal_future_only
+  fragmentos: [narwhal_futuro]
+  principio: toda integração começa depois da fronteira e respeita Narwhal já consolidada
