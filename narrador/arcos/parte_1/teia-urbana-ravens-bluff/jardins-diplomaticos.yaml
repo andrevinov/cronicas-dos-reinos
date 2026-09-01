@@ -1,0 +1,41 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: jardins_diplomaticos
+fonte_base: LC3 - Nightwatch in the Living City
+
+nucleos:
+  anna_kent:
+    nome: Anna Kent
+    fonte_canonica:
+    - criança de sete anos com talento mágico
+    - já teve acesso indevido a uma Wand of Polymorphing
+    - ligada ao ambiente diplomático dos Gardens of Opulent Splendor
+    objetivo_proprio: brincar, ser levada a sério e explorar magia acima da própria maturidade
+    vetores:
+      ren:
+      - testemunho ou acidente pode criar oportunidade de proteção e descoberta
+      masao:
+      - conversa adulta repetida ou incidente diplomático pode beneficiar terceiros sem intenção
+      ambos:
+      - informação ou caos produzido por brincadeira não escolhe lado
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - figura importante é transformada e some da rotina
+      - conversa diplomática é repetida pela criança em contexto errado
+      - item mágico inadequado volta às mãos dela
+    mundo_vivo:
+      sinais:
+      - animal incomum é tratado por funcionários como problema administrativo
+      - reclamação diplomática absurda chega a autoridade local
+      - empregados procuram alguém que desapareceu sem sair do recinto
+    guardrails:
+    - criança não age como agente consciente de nenhuma facção
+    - tom cômico pode ganhar consequência séria sem retirar agência dos adultos
+    - leis e imunidades diplomáticas só entram quando o local e a autoridade forem estabelecidos em cena
+
+cruzamentos_locais:
+- toca: night_watch
+  possibilidade: incidente mágico exige contenção, testemunho ou escolta
+- toca: casa_de_tyr
+  possibilidade: dano, custódia ou disputa de autoridade cria problema jurídico real
