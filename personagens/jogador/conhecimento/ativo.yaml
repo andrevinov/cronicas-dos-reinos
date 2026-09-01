@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 16
-sessao_mais_recente_indexada: 15
+sessao_atual_da_campanha: 17
+sessao_mais_recente_indexada: 17
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,61 +34,26 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: 'Persuasão 17 contra CD 12 levou o mensageiro a revelar uma segunda voz no pátio: uma mulher falando Comum
-    local sem sotaque corrigiu ''retirada'' para ''transferência provisória'' e perguntou se os sete nomes estavam
-    certos; o homem respondeu ''como na lista''. O mensageiro viu apenas parte de uma manga cinza-azulada. Os elementos
-    são compatíveis, mas não confirmam, a Cinza-Azul/Shizune.'
+- titulo: Ren pressionou a mulher Cinza-Azul sobre seu mandante e as sete crianças, mas falhou em Intimidação com
+    10 contra CD 14. Ela afirmou trabalhar para M. Harrow e alegou que as crianças seriam redistribuídas por uma
+    ordem administrativa, sem revelar destino, autoridade superior ou motivo para antecipar a transferência.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-721af3559946de51.md
-  bytes: 809
-  transacao: s015-721af3559946de51
-- titulo: 'O mensageiro identificou a porta no fundo do pátio atrás do mercador de cal: madeira grossa caiada, portinhola
-    de ferro à altura do peito, calha preta à direita, lasca triangular na soleira e nicho de pagamento atrás de
-    um tijolo claro. Ren o liberou sob ameaça e desapareceu por Passo da Sombra quando ele olhou para trás. O mensageiro
-    partiu sem ver o rosto nem a direção de Ren.'
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-c3e06e18dd56df9d.md
+  bytes: 753
+  transacao: s017-c3e06e18dd56df9d
+- titulo: Ren escalou violentamente o interrogatório, destruindo uma tábua e fazendo um corte superficial no rosto
+    da mulher Cinza-Azul. Com vantagem, obteve 16 contra CD 14 em Intimidação. Ela admitiu que M. Harrow é uma identidade
+    documental fabricada, afirmou trabalhar para Masao Hirasawa coordenando a célula documental local e revelou
+    que a ordem pretendia remover e separar as sete crianças antes da verificação institucional, apagando sua rastreabilidade;
+    disse não conhecer o destino final nem a loca…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b328e1370c3ba30e.md
-  bytes: 864
-  transacao: s015-b328e1370c3ba30e
-- titulo: 'Ren se aproximou da porta caiada, confirmou suas características e descobriu duas rotas alternativas:
-    a veneziana pelo telhado e a abertura de carga sob o beiral. Não conseguiu determinar se há ocupantes ou vigilância.'
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-8b53b3ec5008b3e6.md
+  bytes: 1285
+  transacao: s017-8b53b3ec5008b3e6
+- titulo: Questionada sobre Kurobane Jinzaburo e Kajiwara Shizune, a mulher Cinza-Azul afirmou desconhecer o paradeiro
+    de ambos. Disse que Kurobane não circulava por seus canais, que nunca teve contato direto com Shizune e que
+    Masao compartimentava sua célula documental sem lhe fornecer informações sobre guerreiros ou outros agentes.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-f56cc419496b706d.md
-  bytes: 868
-  transacao: s015-f56cc419496b706d
-- titulo: Ren usou Passo das Sombras para alcançar silenciosamente a veneziana. Descobriu que pode abri-la e restaurá-la
-    discretamente e visualizou uma área desocupada e em penumbra na passarela interna, válida para outro Passo das
-    Sombras, mas não determinou se há alguém nos pontos cegos.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-b60133cb4da787ac.md
-  bytes: 702
-  transacao: s015-b60133cb4da787ac
-- titulo: Ren usou Passo das Sombras para entrar silenciosamente no sótão da antiga calaria. Detectou um fio de
-    alarme na escada e sinais de pelo menos duas pessoas no andar inferior, sem ser percebido.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-8672e799ed760cf3.md
-  bytes: 594
-  transacao: s015-8672e799ed760cf3
-- titulo: 'Ren se aproximou sem ser percebido e observou os dois ocupantes: um falsificador local e uma mulher de
-    casaco cinza-azulado que também vigia os acessos. Não há guarda separado aparente. Ren ouviu confirmação de
-    que a oficina produziu a ordem, pagou o mensageiro e espera que uma carroça use o documento ao amanhecer para
-    levar os sete antes da resposta institucional.'
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-c3ed5029f3a33e37.md
-  bytes: 1227
-  transacao: s015-c3ed5029f3a33e37
-- titulo: Ren usou Passo das Sombras para escapar do agarrão e atacou a mulher duas vezes, causando 17 de dano não
-    letal. Ela não é reconhecida como Kajiwara Shizune e permanece consciente com 3/20 PV. Ao tentar correr para
-    a lamparina e a matriz, provoca um ataque de oportunidade; a reação de Ren está disponível.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-9ba91955a29c616f.md
-  bytes: 675
-  transacao: s015-9ba91955a29c616f
-- titulo: Ren gastou 1 Ki em Passo do Vento, salvou a matriz e um conjunto documental útil e recuou sem provocar
-    ataque. O homem acertou Ren com a besta por 7 de dano, mas Passos sem Pegadas foi mantido. No turno seguinte,
-    Ren acertou um de dois golpes; o homem está com 6/24 PV. Ren tem 45/52 PV, 1/7 Ki e ainda pode usar a ação bônus
-    para um golpe desarmado gratuito.
-  arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-015/tx-s015-cedae573fb3175e1.md
-  bytes: 816
-  transacao: s015-cedae573fb3175e1
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-95435c5fad07f083.md
+  bytes: 907
+  transacao: s017-95435c5fad07f083

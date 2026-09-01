@@ -4,8 +4,8 @@ descricao: Cursor e fila operacional do motor determinístico; não é fonte ind
   de fatos da campanha. Conclusões antigas podem ser compactadas depois de consolidadas;
   detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
-  data: 19 Eleasis, 1372 DR
-  hora: '23:12'
+  data: 20 Eleasis, 1372 DR
+  hora: 00:31
 pendencias: []
 concluidas_recentes:
 - id: mundo-050f1a0efdbe5a14

@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 16
+  sessao_atual: 17
   modo_de_cena_atual: patio_da_antiga_calaria_apos_combate
 personagem:
   nome: Ren Kagehira
@@ -18,14 +18,14 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
-  ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
+  area: Casa da Aurora Menor, Temple District, Ravens Bluff
+  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
   descricao_operacional: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
     documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 19 Eleasis, 1372 DR
+  data_exata: 20 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -33,7 +33,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 9
   periodo_do_dia: noite de 19 Eleasis, logo após o combate na antiga calaria
-  hora_aproximada: '23:12'
+  hora_aproximada: 00:31
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -63,7 +63,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/016/transcricao.md
+  transcricao_atual: sessoes/017/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -127,8 +127,10 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren está no pátio da antiga calaria, junto ao homem corpulento inconsciente; a mulher permanece inconsciente no interior.
-  risco_imediato: a oficina foi comprometida, as provas ainda precisam de destino e os dois ocupantes podem recuperar a consciência.
+  cena_atual: Ren está no pátio da antiga calaria, junto ao homem corpulento inconsciente; a mulher permanece inconsciente
+    no interior.
+  risco_imediato: a oficina foi comprometida, as provas ainda precisam de destino e os dois ocupantes podem recuperar
+    a consciência.
 pendencias:
 - decidir como lidar com os dois ocupantes inconscientes sem presumir ação de Ren
 - decidir o destino imediato da matriz e dos documentos recuperados

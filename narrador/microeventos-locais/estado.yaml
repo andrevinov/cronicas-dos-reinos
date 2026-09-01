@@ -234,38 +234,13 @@ transitos:
   ravens_bluff:
     ocorrencia:
       ciclo: 5
-      restantes:
-      - microevento_01
-      - rotina_02
+      restantes: []
     cartas:
       ciclo: 3
       assinatura_pool: e404bf52e23dbded870e2230d51894b43fe8749524a80ff472712898f65e5c32
       restantes:
-      - checagem_acesso
       - passagem_rua
 historico_transito_recente:
-- cena_id: s013-shinta-retoma-trajeto-apos-emboscada
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_01
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 95b9983a2e7aba1a6a5638d0fb26443a405cc3ac47ca8b06a71f9cd3ec09f9d2
-- cena_id: s013-shinta-galeria-ate-narwhal
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_02
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 0bd35408cfd6c48f0ab96585d8c43bae35cc0e6d67630494547a27f9e773268c
 - cena_id: s013-narwhal-ate-casa-aurora-menor
   escopo_transito: ravens_bluff
   ficha_ocorrencia: rotina_03
@@ -423,3 +398,26 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: ada57dedb448f85b72cb13b663bea2efac3c52691fa1c61ff79e8ec8bf812ff5
+- cena_id: s017-retirada-calaria-cativa
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 6dfcbcc332620fd19d41b08260112e8d7c73e7224be5a9f36455311e2f900d44
+  carta_id: checagem_acesso
+- cena_id: s017-retorno-casa-aurora-com-cinza-azul
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 1
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: e59dde7fca7f6993692c85a8a05d57daba7af5156f804b247b89098cab47d072

@@ -1,0 +1,67 @@
+schema_alteracoes_transacionais: 1
+sessao: 17
+status: encerrada
+fonte: sessoes/017/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 17
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 19 Eleasis, 1372 DR
+  hora: '23:12'
+  area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
+  ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 17
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 45/52
+  focus: 1/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: 00:31
+  area: Casa da Aurora Menor, Temple District, Ravens Bluff
+  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+  nivel_ficha: 7
+consolidacoes:
+- id: s017-sessao-b15a4cca400f340d
+  tipo: sessao
+  transacoes:
+  - s017-92054862c11fc64b
+  - s017-4dabc3bf27114388
+  - s017-7cb5f8d38bbe2bea
+  - s017-c3e06e18dd56df9d
+  - s017-8b53b3ec5008b3e6
+  - s017-95435c5fad07f083
+  - s017-66099b914997274e
+  - s017-4d0e809eecfe1f52
+  - s017-cc7c9b45b9bd5f96
+  - s017-b2d406f4fe4077f8
+  - s017-d84ad5cda14ca4da
+  - s017-bb7b73c8f9a94d7a
+  - s017-d805e4671a64f2e1
+  - s017-fde319e6149ec6fc
+  deltas: 36
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/cinza_azul.yaml
+  - estado/npcs/index.yaml
+  - estado/tempo.yaml
+  - historico/npcs/cinza_azul.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-017/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-8b53b3ec5008b3e6.md
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-95435c5fad07f083.md
+  - personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-c3e06e18dd56df9d.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/017/alteracoes-de-estado.yaml
+  - sessoes/017/consequencias.md
+  - sessoes/017/consolidacoes.jsonl
+  - sessoes/017/resumo.md

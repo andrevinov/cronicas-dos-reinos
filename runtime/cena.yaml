@@ -1,13 +1,13 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 16
+sessao: 17
 modo: patio_da_antiga_calaria_apos_combate
 localizacao:
-  area: Pátio da antiga calaria, Rua da Cal, Ravens Bluff
-  ponto_exato: pátio da cal junto à porta lateral da oficina, diante do homem corpulento inconsciente
+  area: Casa da Aurora Menor, Temple District, Ravens Bluff
+  ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
 tempo:
-  data: 19 Eleasis, 1372 DR
-  hora_aproximada: '23:12'
+  data: 20 Eleasis, 1372 DR
+  hora_aproximada: 00:31
 mecanica_imediata:
   pv: 45/52
   focus: 1/7
@@ -19,9 +19,9 @@ prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 E
   de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado terminal.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/016/handoff.yaml
+  handoff: sessoes/017/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/016/transcricao.md
+  transcricao_fria: sessoes/017/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:

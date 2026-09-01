@@ -397,7 +397,8 @@ npcs:
     persistencia: persistente_sem_agenda
     arquivo: estado/npcs/cinza_azul.yaml
     historico: historico/npcs/cinza_azul.yaml
-    bytes_fragmento: 444
+    bytes_fragmento: 535
+    grupo: oficina documental da antiga calaria
   falsificador_calaria:
     nome: homem corpulento da antiga calaria
     persistencia: persistente_sem_agenda

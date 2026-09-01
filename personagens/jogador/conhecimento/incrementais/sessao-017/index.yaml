@@ -1,0 +1,24 @@
+schema_conhecimento_incremental: 1
+sessao: 17
+fragmentos:
+- transacao: s017-c3e06e18dd56df9d
+  titulo: Ren pressionou a mulher Cinza-Azul sobre seu mandante e as sete crianças, mas falhou em Intimidação com
+    10 contra CD 14. Ela afirmou trabalhar para M. Harrow e alegou que as crianças seriam redistribuídas por uma
+    ordem administrativa, sem revelar destino, autoridade superior ou motivo para antecipar a transferência.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-c3e06e18dd56df9d.md
+  bytes: 753
+- transacao: s017-8b53b3ec5008b3e6
+  titulo: Ren escalou violentamente o interrogatório, destruindo uma tábua e fazendo um corte superficial no rosto
+    da mulher Cinza-Azul. Com vantagem, obteve 16 contra CD 14 em Intimidação. Ela admitiu que M. Harrow é uma identidade
+    documental fabricada, afirmou trabalhar para Masao Hirasawa coordenando a célula documental local e revelou
+    que a ordem pretendia remover e separar as sete crianças antes da verificação institucional, apagando sua rastreabilidade;
+    disse não conhecer o destino final nem a loca…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-8b53b3ec5008b3e6.md
+  bytes: 1285
+- transacao: s017-95435c5fad07f083
+  titulo: Questionada sobre Kurobane Jinzaburo e Kajiwara Shizune, a mulher Cinza-Azul afirmou desconhecer o paradeiro
+    de ambos. Disse que Kurobane não circulava por seus canais, que nunca teve contato direto com Shizune e que
+    Masao compartimentava sua célula documental sem lhe fornecer informações sobre guerreiros ou outros agentes.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-017/tx-s017-95435c5fad07f083.md
+  bytes: 907
+quantidade: 3

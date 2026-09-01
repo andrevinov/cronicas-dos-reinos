@@ -1,0 +1,89 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 17
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: patio_da_antiga_calaria_apos_combate
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 45
+      maximos: 52
+    focus:
+      atuais: 1
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 20 Eleasis, 1372 DR
+    hora_aproximada: 00:31
+    periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
+    clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Casa da Aurora Menor, Temple District, Ravens Bluff
+    ponto_exato: sala de trabalho junto ao vestíbulo da Casa da Aurora Menor, com Maerra e a mulher Cinza-Azul inconsciente
+continuidade:
+  resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
+    documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
+  prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 Eleasis. A investigação ainda precisa
+    de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado
+    terminal.
+eventos_recentes:
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-66099b914997274e
+  resumo: 'Ren nocauteou novamente a mulher Cinza-Azul de modo controlado, mantendo-a viva e inconsciente com 1
+    PV, e a carregou até a Casa da Aurora Menor. Passos sem Pegadas expirou às 23:30. Ren falhou em Furtividade
+    com 10 contra CD 14: um condutor anônimo viu uma figura de negro carregando uma mulher rumo ao Temple District,
+    e o alarme reforçado da entrada lateral alertou Maerra, que bloqueou a porta e exigiu identificaçã…'
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-4d0e809eecfe1f52
+  resumo: Maerra reconheceu Ren pela voz e permitiu que ele entrasse com a mulher Cinza-Azul no vestíbulo de serviço
+    da Casa da Aurora Menor, mantendo os dormitórios isolados. Ela indicou uma sala de trabalho para a cativa e
+    perguntou se a mulher está ligada à ordem das sete crianças.
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-cc7c9b45b9bd5f96
+  resumo: Ren relatou integralmente a Maerra a investigação, a captura e o interrogatório da mulher Cinza-Azul,
+    mostrando a matriz e os documentos falsos. Maerra reconheceu valor imediato para bloquear a ordem, mas manteve
+    a necessidade de cadeia institucional. Às 23:51, enviou um irmão leigo adulto com mensagem selada para buscar
+    Luath ou o oficial responsável; estimou retorno em vinte a trinta minutos se Luath estiver no po…
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-b2d406f4fe4077f8
+  resumo: Ren justificou a violência contra a mulher pelo risco às crianças e pediu que Maerra garantisse sua sobrevivência.
+    Maerra afirmou não considerá-lo um assassino frio, mas recusou chamar o corte de inevitável. Examinou e limpou
+    a ferida superficial da cativa, confirmou que ela está viva, inconsciente com 1 PV e fora de risco imediato,
+    e explicou que cura verdadeira a despertaria. Comprometeu-se a monitorá-la e impedir…
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-d84ad5cda14ca4da
+  resumo: Ren explicou que teme a eliminação de testemunhas por Masao e interrompeu antes de pronunciar o nome de
+    Nera diante da cativa. Maerra compreendeu, confirmou que enviou a mensagem sem nomes e permaneceu com Ren na
+    vigilância da mulher enquanto aguardam retorno da Night Watch.
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-bb7b73c8f9a94d7a
+  resumo: Ren aguardou com Maerra; Luath chegou e iniciou a custódia da cena, da cativa e das provas.
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-d805e4671a64f2e1
+  resumo: Maerra e Luath reconheceram a conclusão letal sobre os planos de Masao; Luath examinou as provas, recebeu
+    o relato completo e ouviu a cativa confirmar seus vínculos e a operação contra as crianças.
+- batch: s017-sessao-b15a4cca400f340d
+  transacao: s017-fde319e6149ec6fc
+  resumo: Luath aceitou a escolta de Ren; Maerra aceitou um guarda discreto dentro da Casa até o amanhecer, e o
+    grupo começou a preparar a transferência segura da cativa e das provas.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/017/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

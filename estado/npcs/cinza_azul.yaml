@@ -5,7 +5,8 @@ npc:
   nome: mulher Cinza-Azul
   persistencia: persistente_sem_agenda
   grupo: oficina documental da antiga calaria
-  estado: viva, inconsciente e estável no interior da oficina
+  estado: viva, inconsciente com 1 PV, ferida superficial do rosto limpa e coberta, sob guarda de Ren e vigilância
+    de Maerra na Casa da Aurora Menor
   vida:
     estado: incapacitado
     estabilidade: estável
