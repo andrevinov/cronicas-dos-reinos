@@ -41,6 +41,8 @@ narrador/
 │   └── imagens/
 ├── juppongatana/
 │   ├── README.md
+│   ├── index.yaml
+│   ├── conducao.md
 │   ├── membros.md
 │   ├── marcos-de-aparicao.md
 │   └── imagens/
@@ -103,6 +105,11 @@ Os arquivos reservados `juppongatana/` e `masao/` registram a estrutura canônic
 dos antagonistas orientais ligados à história de Ren. Eles devem ser consultados
 antes de usar Masao, um membro das Dez Espadas, artefatos do plano de deicídio ou
 pressões de escala regional/continental em Faerûn.
+
+Em `juppongatana/`, `index.yaml` é a autoridade do elenco; `membros.md` guarda
+perfis; `marcos-de-aparicao.md`, plausibilidade de entrada; `conducao.md`, uso
+dramático; e os dois YAML de progressão separam política de ledger. O caminho
+legado `narrador/juppongatana.md` é somente redirecionamento.
 
 ## Aliados maiores
 

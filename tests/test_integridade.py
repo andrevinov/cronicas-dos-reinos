@@ -74,5 +74,51 @@ class AgentRouterTest(unittest.TestCase):
             self.assertTrue(any("excede o limite do roteador" in error for error in errors))
 
 
+class NarratorStructureTest(unittest.TestCase):
+    def test_repo_real_tem_autoridades_ciclos_e_orcamentos_classificados(self):
+        result = mod.estrutura_narrador.audit(ROOT)
+        self.assertTrue(result["ok"], result["erros"])
+        self.assertEqual(result["erros"], [])
+        self.assertEqual(result["suspeitas_revisao_humana"], [])
+        self.assertGreater(result["arquivos_no_grafo"], 0)
+
+    def test_referencia_quebrada_em_fonte_reservada_e_detectada(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            path = repo / "narrador/origem.md"
+            path.parent.mkdir(parents=True)
+            path.write_text("Consultar narrador/inexistente.yaml.\n", encoding="utf-8")
+            _, broken, _ = mod.estrutura_narrador.reference_graph(repo)
+            self.assertEqual(
+                broken,
+                ["narrador/origem.md -> narrador/inexistente.yaml"],
+            )
+
+    def test_ciclo_multiarquivo_e_identificado_sem_inferir_que_e_lixo(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            folder = repo / "narrador"
+            folder.mkdir()
+            (folder / "a.yaml").write_text(
+                "proximo: narrador/b.yaml\n", encoding="utf-8"
+            )
+            (folder / "b.yaml").write_text(
+                "proximo: narrador/a.yaml\n", encoding="utf-8"
+            )
+            graph, broken, _ = mod.estrutura_narrador.reference_graph(repo)
+            self.assertEqual(broken, [])
+            self.assertEqual(
+                mod.estrutura_narrador.strongly_connected(graph),
+                [frozenset({"narrador/a.yaml", "narrador/b.yaml"})],
+            )
+
+    def test_caminho_legado_e_redirecionamento_curto_sem_regra_de_nivel(self):
+        path = ROOT / "narrador/juppongatana.md"
+        text = path.read_text(encoding="utf-8")
+        self.assertLessEqual(len(text.encode("utf-8")), 1024)
+        self.assertIn("redirecionamento legado", text)
+        self.assertNotIn("nível 5", text)
+
+
 if __name__ == "__main__":
     unittest.main()

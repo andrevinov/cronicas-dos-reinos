@@ -163,6 +163,8 @@ def add_task19(repo: Path, *, with_milestone: bool = True, prep: str = "a" * 24)
     policy = repo / progressao_juppongatana.POLICY
     policy.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / progressao_juppongatana.POLICY, policy)
+    roster = repo / progressao_juppongatana.ROSTER
+    shutil.copy2(ROOT / progressao_juppongatana.ROSTER, roster)
     entries = []
     if with_milestone:
         entries.append(

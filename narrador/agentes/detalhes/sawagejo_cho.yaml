@@ -1,0 +1,71 @@
+schema_detalhes_agente: 1
+natureza: reservado
+agente_id: sawagejo_cho
+secoes:
+  metodos_operacionais:
+    mapear_rede_de_apoio_de_ren:
+    - id: seguir_quem_protege_kage
+      abordagem: Usar apresentações, rumores de duelo ou circulação de armas para observar quem facilita, protege,
+        cura ou acompanha Ren quando sua identidade marcial chama atenção.
+      modalidade: fisica
+      tags: [kage, circo, aliados, vigilancia, armas]
+    desgastar_autoridade_de_ravens_bluff:
+    - id: violencia_publica_como_desafio
+      abordagem: Quando presente e sem comprometer objetivo maior, praticar violência ostensiva ou destruição localizada
+        que force Night Watch a responder a um homem que não teme patrulha comum.
+      modalidade: fisica
+      tags: [crime, night_watch, violencia, desafio, ordem_publica]
+    - id: matar_por_capricho_sem_ocultar_recado
+      abordagem: Se seu impulso e contexto sustentarem, matar terceiro não essencial como demonstração de desprezo
+        pela ordem local; nunca usar isso se atrapalhar diretamente plano de Masao.
+      modalidade: fisica
+      tags: [violencia, pressao, autoridade, capricho, medo]
+    pressionar_ren_por_vinculos:
+    - id: sequestrar_vinculo_conhecido_para_duelo
+      abordagem: Se souber canonicamente que Nera, Tavin ou outra pessoa é vínculo importante e tiver meios, usar
+        homens de Masao para capturar ou cercar o vínculo e exigir que Ren apareça para um confronto.
+      modalidade: fisica
+      tags: [vinculo_conhecido, refem, duelo, chantagem, capangas]
+    - id: ameacar_sem_sequestrar
+      abordagem: Marcar, seguir ou alcançar pessoa conhecida por Ren apenas o suficiente para provar acesso e impor
+        prazo ou condição de confronto, se captura completa for desnecessária.
+      modalidade: fisica
+      tags: [vinculo_conhecido, ameaca, duelo, pressao, vigilancia]
+    pressionar_identidade_marcial_de_ren:
+    - id: forcar_duelo_aberto
+      abordagem: Criar desafio público ou semi-público em que recusar também tenha custo social, usando curiosidade
+        por Kage e Getsuei-ryū para obrigar Ren a escolher entre cobertura e combate.
+      modalidade: fisica
+      tags: [duelo, kage, getsuei_ryu, circo, desafio_marcial]
+    - id: atacar_arma_e_tecnica
+      abordagem: Lutar para quebrar, tomar ou neutralizar arma e postura em vez de buscar apenas dano, aprendendo
+        o estilo enquanto pressiona Ren a improvisar.
+      modalidade: fisica
+      tags: [armas, getsuei_ryu, duelo, tecnica, katana_gari]
+    - id: cacar_apresentacao_ou_treino
+      abordagem: Aparecer onde a capacidade marcial de Ren está sendo exibida ou ensinada para transformar rotina
+        civil em arena de pressão sem exigir ataque surpresa homicida.
+      modalidade: fisica
+      tags: [circo, dojo, treino, kage, pressao]
+  autonomia_estrategica:
+    papel_no_arco: primeiro_grande_desafio_marcial_e_pressao_pessoal
+    iniciativa: alta
+    regra_masao: nao_sabotar_plano_mestre
+    regra_conhecimento_vinculos: exige_conhecimento_canonico
+    impulsos:
+    - procurar_adversario_raro
+    - colecionar_arma_ou_tecnica
+    - transformar_vinculo_conhecido_em_convite_para_duelo
+    - usar_violencia_publica_quando_ela_aumenta_pressao
+    feito_lendario:
+      principio: Quando demonstrar excelência, mudar a posição narrativa do conflito sem precisar de espetáculo gratuito.
+      exemplos_nao_obrigatorios:
+      - forçar Ren a escolher entre manter a cobertura de Kage e responder a um desafio impossível de ignorar
+      - alcançar um vínculo conhecido com homens de Masao e converter afeto em relógio de duelo
+    escaladas_condicionais:
+    - id: vinculo_conhecido
+      quando: Chō sabe canonicamente que Nera, Tavin ou outra pessoa importa para Ren e dispõe de acesso/capangas.
+      abordagem: Pode sequestrar ou cercar essa pessoa para exigir duelo; não é evento obrigatório.
+    - id: autoridade_interfere
+      quando: Night Watch ou outra força tenta encerrar sua violência e ele ainda possui margem estratégica.
+      abordagem: Pode desafiar a força abertamente para demonstrar que patrulha comum não resolve o problema.

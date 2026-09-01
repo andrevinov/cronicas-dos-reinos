@@ -310,7 +310,7 @@ def pending_candidates(repo: Path, pending: list[dict[str, Any]]) -> dict[str, A
 
 def _agent_method(repo: Path, agent_id: str, line_id: str, method_id: str) -> dict[str, Any]:
     try:
-        loaded = agentes.load_agent(repo, agent_id)
+        loaded = agentes.load_agent_complete(repo, agent_id)
         methods = metodos_agentes.for_line(
             loaded["resultado"], line_id, expected_agent_id=agent_id
         )
@@ -472,7 +472,7 @@ def _validate_route_references(repo: Path, profile: dict[str, Any]) -> None:
         agent_id = route["agente"]
         if agent_id not in cache:
             try:
-                cache[agent_id] = agentes.load_agent(repo, agent_id)["resultado"]
+                cache[agent_id] = agentes.load_agent_complete(repo, agent_id)["resultado"]
             except agentes.AgentValidationError as exc:
                 raise PressureError(str(exc)) from exc
         try:

@@ -312,6 +312,8 @@ Telemetria local fica **desligada por padrão**. Para um diagnóstico pontual, u
 - `contexto.py`: porta pública com overlay, memória de sessão e política de acesso;
 - `politica_acesso.py`: classificação, escalada, motivos e tetos;
 - `continuidade_autoral.py`: validação fria e lookup reservado por chave exata;
+- `estrutura_narrador.py`: auditoria fria de autoridade, referências, ciclos,
+  alcançabilidade suspeita e orçamento de consultas reservadas;
 - `transacoes.py`: schema/aplicação/busca de deltas;
 - `sessoes.py`: handoff e índice de sessões.
 
@@ -356,8 +358,19 @@ python3 ferramentas/migrar-estado-atual.py --check
 python3 ferramentas/migrar-memorias-fragmentadas.py --check
 python3 ferramentas/reindexar-conhecimento.py --check
 python3 ferramentas/gerar-runtime.py --check
+python3 ferramentas/estrutura_narrador.py auditar
 python3 ferramentas/verificar-integridade.py
 ```
+
+Agentes estratégicos permanecem dirigidos:
+
+```bash
+python3 ferramentas/agentes.py mostrar <id-ou-nome>
+python3 ferramentas/agentes.py detalhar <id-ou-nome> metodos_operacionais
+```
+
+O segundo comando só abre a seção pedida; `autonomia_estrategica` é a outra
+seção permitida. Ambos respeitam o teto de 8 KiB.
 
 Baseline lógica:
 

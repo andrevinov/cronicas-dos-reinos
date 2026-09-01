@@ -2,7 +2,7 @@ schema_continuidade_lacunas: 1
 natureza: verdade_reservada_canonica
 fase_origem: 3
 status: instalada
-decisoes_autorais: narrador/segredos/decisoes-lacunas-fase-2.yaml
+proveniencia_autoral: fase_2_concluida
 instalada_em: 2026-08-31
 regra_de_uso: >-
   Este registro fecha a verdade objetiva do narrador. Ele não concede conhecimento a

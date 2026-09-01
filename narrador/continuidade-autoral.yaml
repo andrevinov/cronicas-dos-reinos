@@ -25,7 +25,7 @@ cobertura:
   - natureza
   - fase_origem
   - status
-  - decisoes_autorais
+  - proveniencia_autoral
   - instalada_em
   - regra_de_uso
   - guardrails

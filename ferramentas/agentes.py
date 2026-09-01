@@ -2,9 +2,10 @@
 """Camada reservada de agentes autônomos.
 
 Esta ferramenta não executa o mundo e não toma decisões narrativas. Ela oferece
-duas operações baratas:
+três operações baratas:
 
 - ``mostrar``: abre apenas o índice e o fragmento do agente pedido;
+- ``detalhar``: abre uma única seção operacional explicitamente pedida;
 - ``validar``: manutenção/CI que percorre todos os agentes e confere schema,
   referências, mobilidade e proveniência do conhecimento registrado.
 
@@ -30,6 +31,9 @@ except ImportError as exc:
 
 INDEX_PATH = Path("narrador/agentes/index.yaml")
 AGENTS_DIR = Path("narrador/agentes")
+DETAILS_DIR = AGENTS_DIR / "detalhes"
+MAX_DIRECTED_BYTES = 8 * 1024
+DETAIL_SECTIONS = {"metodos_operacionais", "autonomia_estrategica"}
 
 VALID_TYPES = {"npc", "faccao", "instituicao"}
 VALID_STATES = {"ativo", "latente", "inativo"}
@@ -127,6 +131,66 @@ def _string_list(value: Any, label: str) -> list[str]:
     for index, item in enumerate(value):
         result.append(_nonempty_string(item, f"{label}[{index}]"))
     return result
+
+
+def _details_pointer(
+    repo: Path,
+    agent_id: str,
+    data: dict[str, Any],
+    *,
+    check_file: bool,
+) -> tuple[str, list[str]] | None:
+    raw = data.get("detalhes_operacionais")
+    if raw is None:
+        return None
+    if not isinstance(raw, dict) or set(raw) != {"arquivo", "secoes"}:
+        raise AgentValidationError(
+            f"{agent_id}.detalhes_operacionais exige somente arquivo e secoes"
+        )
+    path = _nonempty_string(raw.get("arquivo"), f"{agent_id}.detalhes_operacionais.arquivo")
+    _repo_path(repo, path, expected_prefix=DETAILS_DIR)
+    sections = _string_list(raw.get("secoes"), f"{agent_id}.detalhes_operacionais.secoes")
+    if not sections or len(sections) != len(set(sections)):
+        raise AgentValidationError(f"{agent_id}: seções de detalhe devem ser únicas e não vazias")
+    unknown = set(sections) - DETAIL_SECTIONS
+    if unknown:
+        raise AgentValidationError(
+            f"{agent_id}: seções de detalhe desconhecidas: {', '.join(sorted(unknown))}"
+        )
+    if any(section in data for section in sections):
+        raise AgentValidationError(
+            f"{agent_id}: seção detalhada não pode permanecer duplicada no fragmento-base"
+        )
+    if check_file and not (repo / path).is_file():
+        raise AgentValidationError(f"{agent_id}: fragmento de detalhes inexistente: {path}")
+    return path, sections
+
+
+def _load_details(
+    repo: Path,
+    agent_id: str,
+    data: dict[str, Any],
+) -> tuple[str, dict[str, Any]] | None:
+    pointer = _details_pointer(repo, agent_id, data, check_file=True)
+    if pointer is None:
+        return None
+    raw_path, declared = pointer
+    detail = load_yaml(repo / raw_path)
+    if not isinstance(detail, dict):
+        raise AgentValidationError(f"{agent_id}: detalhes devem conter mapa")
+    if detail.get("schema_detalhes_agente") != 1:
+        raise AgentValidationError(f"{agent_id}: schema_detalhes_agente deve ser 1")
+    if detail.get("natureza") != "reservado" or detail.get("agente_id") != agent_id:
+        raise AgentValidationError(f"{agent_id}: metadados do fragmento de detalhes inválidos")
+    sections = detail.get("secoes")
+    if not isinstance(sections, dict) or set(sections) != set(declared):
+        raise AgentValidationError(
+            f"{agent_id}: seções reais do detalhe divergem do fragmento-base"
+        )
+    for section, value in sections.items():
+        if not isinstance(value, dict) or not value:
+            raise AgentValidationError(f"{agent_id}.{section} deve ser mapa não vazio")
+    return raw_path, sections
 
 
 def load_index(repo: Path) -> dict[str, Any]:
@@ -295,6 +359,7 @@ def _validate_agent_shape(repo: Path, agent_id: str, meta: dict[str, Any], data:
     _validate_presence(repo, agent_id, meta, data, source_set=source_set, check_sources=check_sources)
     _validate_mobility(agent_id, data)
     _validate_local_action(agent_id, meta, data)
+    _details_pointer(repo, agent_id, data, check_file=check_sources)
     plan = data.get("plano_atual")
     if not isinstance(plan, dict):
         raise AgentValidationError(f"{agent_id}.plano_atual deve ser mapa")
@@ -348,10 +413,62 @@ def load_agent(repo: Path, query: str) -> dict[str, Any]:
         raise AgentValidationError(f"agente {agent_id} aponta para arquivo inexistente: {raw_path}")
     data = load_yaml(path)
     _validate_agent_shape(repo, agent_id, meta, data, check_sources=False)
-    return {
+    result = {
         "agente_id": agent_id,
         "fontes_lidas": [INDEX_PATH.as_posix(), raw_path],
         "elegibilidade_local": local_eligibility(data),
+        "resultado": data,
+    }
+    size = len(_dump(result).encode("utf-8"))
+    if size > MAX_DIRECTED_BYTES:
+        raise AgentValidationError(
+            f"consulta dirigida de {agent_id} excede {MAX_DIRECTED_BYTES} bytes: {size}"
+        )
+    return result
+
+
+def load_agent_detail(repo: Path, query: str, section: str) -> dict[str, Any]:
+    """Abre índice + base + exatamente uma seção detalhada declarada."""
+    index = load_index(repo)
+    agent_id, meta = resolve_agent(index, query)
+    raw_path = _nonempty_string(meta["arquivo"], f"agentes.{agent_id}.arquivo")
+    data = load_yaml(_repo_path(repo, raw_path, expected_prefix=AGENTS_DIR))
+    _validate_agent_shape(repo, agent_id, meta, data, check_sources=False)
+    detail = _load_details(repo, agent_id, data)
+    if detail is None:
+        raise AgentValidationError(f"{agent_id} não possui detalhes fragmentados")
+    detail_path, sections = detail
+    if section not in sections:
+        available = ", ".join(sorted(sections))
+        raise AgentValidationError(
+            f"seção inexistente para {agent_id}: {section}. Disponíveis: {available}"
+        )
+    result = {
+        "agente_id": agent_id,
+        "secao": section,
+        "fontes_lidas": [INDEX_PATH.as_posix(), raw_path, detail_path],
+        "resultado": sections[section],
+    }
+    size = len(_dump(result).encode("utf-8"))
+    if size > MAX_DIRECTED_BYTES:
+        raise AgentValidationError(
+            f"detalhe dirigido {agent_id}.{section} excede {MAX_DIRECTED_BYTES} bytes: {size}"
+        )
+    return result
+
+
+def load_agent_complete(repo: Path, query: str) -> dict[str, Any]:
+    """Recompõe detalhes para validadores frios; não usar como consulta em jogo."""
+    loaded = load_agent(repo, query)
+    data = dict(loaded["resultado"])
+    detail = _load_details(repo, loaded["agente_id"], data)
+    if detail is None:
+        return loaded
+    detail_path, sections = detail
+    data.update(sections)
+    return {
+        **loaded,
+        "fontes_lidas": [*loaded["fontes_lidas"], detail_path],
         "resultado": data,
     }
 
@@ -371,6 +488,33 @@ def validate_repo(repo: Path) -> dict[str, Any]:
                 raise AgentValidationError(f"agente {agent_id} aponta para arquivo inexistente: {raw_path}")
             data = load_yaml(path)
             _validate_agent_shape(repo, agent_id, meta, data, check_sources=True)
+            detail = _load_details(repo, agent_id, data)
+            base_result = {
+                "agente_id": agent_id,
+                "fontes_lidas": [INDEX_PATH.as_posix(), raw_path],
+                "elegibilidade_local": local_eligibility(data),
+                "resultado": data,
+            }
+            base_size = len(_dump(base_result).encode("utf-8"))
+            if base_size > MAX_DIRECTED_BYTES:
+                raise AgentValidationError(
+                    f"consulta dirigida de {agent_id} excede {MAX_DIRECTED_BYTES} bytes: {base_size}"
+                )
+            if detail is not None:
+                detail_path, sections = detail
+                for section, value in sections.items():
+                    projected = {
+                        "agente_id": agent_id,
+                        "secao": section,
+                        "fontes_lidas": [INDEX_PATH.as_posix(), raw_path, detail_path],
+                        "resultado": value,
+                    }
+                    size = len(_dump(projected).encode("utf-8"))
+                    if size > MAX_DIRECTED_BYTES:
+                        raise AgentValidationError(
+                            f"detalhe dirigido {agent_id}.{section} excede "
+                            f"{MAX_DIRECTED_BYTES} bytes: {size}"
+                        )
         except AgentValidationError as exc:
             errors.append(str(exc))
     return {"ok": not errors, "quantidade": len(agents), "erros": errors}
@@ -387,6 +531,9 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("validar", help="valida índice, fragmentos, mobilidade, fontes e evidências")
     show = sub.add_parser("mostrar", help="abre somente um agente por id ou nome")
     show.add_argument("agente")
+    detail = sub.add_parser("detalhar", help="abre uma seção operacional específica de um agente")
+    detail.add_argument("agente")
+    detail.add_argument("secao", choices=sorted(DETAIL_SECTIONS))
     args = parser.parse_args(argv)
     repo = args.repo.resolve()
     try:
@@ -394,7 +541,10 @@ def main(argv: list[str] | None = None) -> int:
             result = validate_repo(repo)
             print(_dump(result), end="")
             return 0 if result["ok"] else 1
-        result = load_agent(repo, args.agente)
+        if args.command == "detalhar":
+            result = load_agent_detail(repo, args.agente, args.secao)
+        else:
+            result = load_agent(repo, args.agente)
         print(_dump(result), end="")
         return 0
     except AgentValidationError as exc:

@@ -48,34 +48,6 @@ regras:
   nivel_mecanico_nao_e_aplicado_automaticamente: true
   aplicacao_mecanica_segue_regras_progressao: true
   depois_do_nivel_17_progressao_geral_reassume: true
-membros:
-  kurobane_jinzaburo:
-    nome: Kurobane Jinzaburō
-    circulo: externo
-  pan_chu:
-    nome: Pan Chu
-    circulo: externo
-  sawagejo_cho:
-    nome: Sawagejō Chō
-    circulo: externo
-  kajiwara_shizune:
-    nome: Kajiwara Shizune
-    circulo: externo
-  yukyuzan_anji:
-    nome: Yūkyūzan Anji
-    circulo: meio
-  uonuma_usui:
-    nome: Uonuma Usui
-    circulo: meio
-  kureha_shiranui:
-    nome: Kureha Shiranui
-    circulo: meio
-  amagiri_seishiro:
-    nome: Amagiri Seishirō
-    circulo: interno
-  wetuji:
-    nome: Wetuji
-    circulo: interno
-  fuji:
-    nome: Fuji
-    circulo: interno
+elenco:
+  autoridade: elenco_juppongatana
+  arquivo: narrador/juppongatana/index.yaml

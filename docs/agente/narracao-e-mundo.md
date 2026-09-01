@@ -48,6 +48,12 @@ python3 ferramentas/agentes.py mostrar <id-ou-nome>
 
 A consulta dirigida abre somente o índice e o fragmento solicitado. Não abrir todos os agentes, suas fontes canônicas ou a pasta inteira por precaução. A camada de agentes é uma condensação operacional: arquivos como `narrador/masao/`, `narrador/juppongatana/`, relações, relógios e sessões continuam sendo as fontes canônicas apontadas pelos fragmentos.
 
+Se o fragmento-base declarar `detalhes_operacionais` e a decisão concreta exigir
+um repertório específico, abrir uma única seção com
+`agentes.py detalhar <id> metodos_operacionais` ou
+`agentes.py detalhar <id> autonomia_estrategica`. Cada consulta tem teto de 8 KiB;
+a recomposição completa pertence somente a validadores frios.
+
 `elegibilidade_local` é derivada de `estado`, `presenca` e `atuacao_local`. Um NPC que exige presença física só pode executar ação física em Ravens Bluff se estiver `presente` ou `presente_oculto`; `indeterminado`, `fora_da_area` e `em_viagem` bloqueiam a ação local. `presente_oculto` continua sendo verdade reservada do narrador e **não cria conhecimento para Ren**. Agentes capazes de atuar por rede e instituições locais seguem regras próprias documentadas no fragmento.
 
 Para a Juppongatana, nunca presumir que a existência do coletivo significa que todos os membros estão em Ravens Bluff. Consultar o membro individual. Chegadas, saídas e viagens precisam virar estado canônico de presença/mobilidade antes de alterar sua elegibilidade local.

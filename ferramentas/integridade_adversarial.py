@@ -236,7 +236,7 @@ def _flatten_methods(agent: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def _agent_snapshot(repo: Path, actor_id: str) -> dict[str, Any] | None:
     try:
-        loaded = agentes.load_agent(repo, actor_id)
+        loaded = agentes.load_agent_complete(repo, actor_id)
     except agentes.AgentValidationError as exc:
         if "agente não encontrado" in str(exc):
             return None

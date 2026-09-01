@@ -31,20 +31,13 @@ acordo diferente com Masao.
 
 ---
 
-## Círculos
+## Círculos e elenco
 
-| Círculo | Membro | Alcunha | Classe e nível de referência | Imagem |
-| --- | --- | --- | --- | --- |
-| Externo | Kurobane Jinzaburō | Corvo do Estreito | Ladino 7, Ladrão | `imagens/kurobane-jinzaburo.png` |
-| Externo | Pan Chu | Lírio Dourado | Bárbaro 8, Berserker | `imagens/pan-chu.png` |
-| Externo | Sawagejō Chō | Caçador de Espadas | Guerreiro 8, Mestre de Batalha | `imagens/sawagejo-cho.png` |
-| Externo | Kajiwara Shizune | Senhora do Selo Negro | Ladina 7, Mastermind | `imagens/kajiwara-shizune.png` |
-| Meio | Yūkyūzan Anji | Punho da Ruína | Monge 10, Mão Aberta | `imagens/yukyuzan-anji.png` |
-| Meio | Uonuma Usui | Olho do Coração | Guerreiro 11, Mestre de Batalha | `imagens/uonuma-usui.png` |
-| Meio | Kureha Shiranui | Miko da Névoa Vermelha | Maga 11, Necromancia | `imagens/kureha-shiranui.png` |
-| Interno | Amagiri Seishirō | Lâmina do Intervalo | Guerreiro 12, Samurai / Ladino 3, Assassino | `imagens/amagiri-seishiro.png` |
-| Interno | Wetuji | Naginata das Nove Vidas | Monge 16, Kensei | `imagens/wetuji.png` |
-| Interno | Fuji | Montanha que se Ajoelha | Bárbaro 14, Berserker / Guerreiro 3, Mestre de Batalha | `imagens/fuji.png` |
+`index.yaml` é a autoridade única para IDs, nomes, alcunhas, círculos e rotas
+dos dez membros. Este README não mantém uma segunda tabela do elenco.
+
+Classes, níveis de referência, história, personalidade e técnicas continuam nos
+perfis dirigidos de `membros.md`.
 
 ---
 
@@ -68,8 +61,10 @@ Consultar `progressao.yaml`, `estado-progressao.yaml` e
 
 ## Arquivos
 
+* `index.yaml`: autoridade estrutural compacta do elenco.
 * `membros.md`: fichas canônicas consolidadas.
 * `marcos-de-aparicao.md`: momentos previstos para cruzarem a vida de Ren.
+* `conducao.md`: orientação dramática e checklist de preparação.
 * `progressao.yaml`: contrato reservado da faixa de níveis 8–17.
 * `estado-progressao.yaml`: ledger compacto de neutralizações duráveis já consumidas.
 * `imagens/`: imagens extraídas do documento interno.
@@ -81,6 +76,10 @@ Consultar `progressao.yaml`, `estado-progressao.yaml` e
 Os membros da Juppongatana devem aparecer como antagonistas inteligentes, não
 como encontros aleatórios. Cada entrada em cena deve ter objetivo próprio,
 terreno escolhido, plano de saída e consequência persistente.
+
+Consultar `conducao.md` ao preparar seu uso dramático. Durante jogo, consultar
+primeiro o agente individual; abrir uma seção de detalhe somente se a decisão
+concreta exigir métodos operacionais ou autonomia estratégica.
 
 O Círculo Externo pode aparecer desde Ren nível 6. O Círculo do Meio deve marcar
 mudança de escala. O Círculo Interno deve parecer quase calamidade pessoal: Ren

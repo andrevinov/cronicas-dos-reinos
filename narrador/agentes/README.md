@@ -35,6 +35,17 @@ python3 ferramentas/agentes.py mostrar shizune
 python3 ferramentas/agentes.py mostrar pan_chu
 ```
 
+Quando o resumo declarar detalhes fragmentados e a decisão concreta exigir uma
+única camada adicional, abrir exatamente uma seção:
+
+```bash
+python3 ferramentas/agentes.py detalhar shizune metodos_operacionais
+python3 ferramentas/agentes.py detalhar shizune autonomia_estrategica
+```
+
+`mostrar` e cada `detalhar` têm teto individual de 8 KiB. A recomposição completa
+existe somente para validadores frios e não é interface de narração.
+
 A validação ampla permanece fora do loop narrativo:
 
 ```bash

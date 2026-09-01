@@ -22,6 +22,7 @@ import yaml
 
 POLICY = Path("narrador/juppongatana/progressao.yaml")
 STATE = Path("narrador/juppongatana/estado-progressao.yaml")
+ROSTER = Path("narrador/juppongatana/index.yaml")
 SHEET = Path("personagens/jogador/ficha.yaml")
 AGENTS = Path("narrador/agentes/index.yaml")
 
@@ -41,18 +42,7 @@ DURABLE_TYPES = (
     "ruptura_definitiva_com_masao",
     "expulsao_ou_exilio_operacional",
 )
-EXPECTED_MEMBERS = {
-    "kurobane_jinzaburo": ("Kurobane Jinzaburō", "externo"),
-    "pan_chu": ("Pan Chu", "externo"),
-    "sawagejo_cho": ("Sawagejō Chō", "externo"),
-    "kajiwara_shizune": ("Kajiwara Shizune", "externo"),
-    "yukyuzan_anji": ("Yūkyūzan Anji", "meio"),
-    "uonuma_usui": ("Uonuma Usui", "meio"),
-    "kureha_shiranui": ("Kureha Shiranui", "meio"),
-    "amagiri_seishiro": ("Amagiri Seishirō", "interno"),
-    "wetuji": ("Wetuji", "interno"),
-    "fuji": ("Fuji", "interno"),
-}
+VALID_CIRCLES = {"externo", "meio", "interno"}
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_]{0,63}$")
 PREPARATION_RE = re.compile(r"^[0-9a-f]{24}$")
 
@@ -168,19 +158,64 @@ def load_policy(repo: Path) -> dict[str, Any]:
     if set(rules) != required_true or not all(value is True for value in rules.values()):
         raise JuppongatanaProgressionError("guardrails da progressão devem permanecer verdadeiros")
 
-    members = _map(data.get("membros"), "membros")
-    if set(members) != set(EXPECTED_MEMBERS):
-        raise JuppongatanaProgressionError("política deve conter exatamente os dez Juppongatana")
-    for member_id, (name, circle) in EXPECTED_MEMBERS.items():
-        meta = _map(members[member_id], f"membros.{member_id}")
-        if set(meta) != {"nome", "circulo"}:
-            raise JuppongatanaProgressionError(f"membros.{member_id} possui campos inesperados")
-        if meta.get("nome") != name or meta.get("circulo") != circle:
-            raise JuppongatanaProgressionError(f"membros.{member_id} diverge do contrato")
+    roster_ref = _map(data.get("elenco"), "elenco")
+    if set(roster_ref) != {"autoridade", "arquivo"}:
+        raise JuppongatanaProgressionError("elenco deve declarar autoridade e arquivo")
+    if roster_ref.get("autoridade") != "elenco_juppongatana":
+        raise JuppongatanaProgressionError("política deve usar a autoridade elenco_juppongatana")
+    if roster_ref.get("arquivo") != ROSTER.as_posix():
+        raise JuppongatanaProgressionError("política aponta para autoridade de elenco inesperada")
+    # Compatibilidade de API: consumidores recebem uma visão derivada, nunca uma
+    # segunda cópia persistida no arquivo de política.
+    data["membros"] = load_roster(repo)
     return data
 
 
-def load_state(repo: Path) -> dict[str, Any]:
+def load_roster(
+    repo: Path,
+    *,
+    check_routes: bool = False,
+) -> dict[str, dict[str, Any]]:
+    data = _map(_load(repo / ROSTER), ROSTER.as_posix())
+    if data.get("schema_elenco_juppongatana") != 1:
+        raise JuppongatanaProgressionError("elenco deve usar schema_elenco_juppongatana: 1")
+    if data.get("natureza") != "autoridade_reservada_de_elenco":
+        raise JuppongatanaProgressionError("natureza da autoridade de elenco inválida")
+    if data.get("id") != "juppongatana" or data.get("quantidade_canônica") != MAX_NEUTRALIZATIONS:
+        raise JuppongatanaProgressionError("elenco deve representar exatamente as Dez Espadas")
+    members = _map(data.get("membros"), "elenco.membros")
+    if len(members) != MAX_NEUTRALIZATIONS:
+        raise JuppongatanaProgressionError("elenco deve conter exatamente dez membros")
+    required = {"nome", "alcunha", "circulo", "perfil", "agente", "imagem"}
+    for member_id, raw in members.items():
+        _member_id(member_id)
+        meta = _map(raw, f"elenco.membros.{member_id}")
+        if set(meta) != required:
+            raise JuppongatanaProgressionError(
+                f"elenco.membros.{member_id} deve conter somente {', '.join(sorted(required))}"
+            )
+        _text(meta.get("nome"), f"elenco.membros.{member_id}.nome")
+        _text(meta.get("alcunha"), f"elenco.membros.{member_id}.alcunha")
+        if meta.get("circulo") not in VALID_CIRCLES:
+            raise JuppongatanaProgressionError(f"círculo inválido para {member_id}")
+        for field in ("perfil", "agente", "imagem"):
+            raw_path = _text(meta.get(field), f"elenco.membros.{member_id}.{field}")
+            path_text = raw_path.split("#", 1)[0]
+            path = Path(path_text)
+            if path.is_absolute() or ".." in path.parts or (
+                check_routes and not (repo / path).is_file()
+            ):
+                raise JuppongatanaProgressionError(
+                    f"rota inválida ou inexistente em elenco.membros.{member_id}.{field}: {raw_path}"
+                )
+    return members
+
+
+def load_state(
+    repo: Path,
+    roster: dict[str, dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    roster = roster if roster is not None else load_roster(repo)
     data = _map(_load(repo / STATE), STATE.as_posix())
     if data.get("schema_estado_progressao_juppongatana") != SCHEMA_STATE:
         raise JuppongatanaProgressionError(
@@ -214,7 +249,7 @@ def load_state(repo: Path) -> dict[str, Any]:
         if item.get("ordem") != index:
             raise JuppongatanaProgressionError("ordem das neutralizações deve ser sequencial")
         member = _member_id(item.get("membro"))
-        if member not in EXPECTED_MEMBERS:
+        if member not in roster:
             raise JuppongatanaProgressionError(f"membro fora da Juppongatana: {member}")
         if member in seen:
             raise JuppongatanaProgressionError(f"membro contado duas vezes: {member}")
@@ -276,6 +311,7 @@ def _source_evidence(repo: Path, source: Any, evidence: Any) -> tuple[str, str, 
 
 def _preparation_id(
     policy_bytes: bytes,
+    roster_bytes: bytes,
     state_bytes: bytes,
     sheet_bytes: bytes,
     source_bytes: bytes,
@@ -288,7 +324,7 @@ def _preparation_id(
     note: str | None,
 ) -> str:
     digest = hashlib.sha256()
-    for raw in (policy_bytes, state_bytes, sheet_bytes, source_bytes):
+    for raw in (policy_bytes, roster_bytes, state_bytes, sheet_bytes, source_bytes):
         digest.update(raw)
         digest.update(b"\0")
     for value in (member, kind, source, evidence, session or "", note or ""):
@@ -306,11 +342,12 @@ def _existing(state: dict[str, Any], member: str) -> dict[str, Any] | None:
 
 def status(repo: Path) -> dict[str, Any]:
     policy = load_policy(repo)
-    state = load_state(repo)
+    roster = load_roster(repo)
+    state = load_state(repo, roster)
     current = _sheet_level(repo)
     count = len(state["neutralizacoes"])
     unlocked = BASE_LEVEL + count
-    remaining = [member for member in policy["membros"] if _existing(state, member) is None]
+    remaining = [member for member in roster if _existing(state, member) is None]
     return {
         "ok": True,
         "nivel_ficha": current,
@@ -324,7 +361,7 @@ def status(repo: Path) -> dict[str, Any]:
             "cada membro único neutralizado de forma canônica e durável desbloqueia um nível; "
             "a aplicação mecânica da ficha continua separada"
         ),
-        "fontes_lidas": [POLICY.as_posix(), STATE.as_posix(), SHEET.as_posix()],
+        "fontes_lidas": [POLICY.as_posix(), ROSTER.as_posix(), STATE.as_posix(), SHEET.as_posix()],
     }
 
 
@@ -345,9 +382,10 @@ def prepare(
         note = _text(note, "nota", maximum=MAX_NOTE_CHARS)
 
     policy = load_policy(repo)
-    state = load_state(repo)
+    roster = load_roster(repo)
+    state = load_state(repo, roster)
     current = _sheet_level(repo)
-    if member not in policy["membros"]:
+    if member not in roster:
         raise JuppongatanaProgressionError(f"membro não pertence à Juppongatana: {member}")
     if kind not in DURABLE_TYPES:
         raise JuppongatanaProgressionError(
@@ -365,10 +403,12 @@ def prepare(
 
     source_rel, evidence_text, source_bytes = _source_evidence(repo, source, evidence)
     policy_bytes = (repo / POLICY).read_bytes()
+    roster_bytes = (repo / ROSTER).read_bytes()
     state_bytes = (repo / STATE).read_bytes()
     sheet_bytes = (repo / SHEET).read_bytes()
     prep = _preparation_id(
         policy_bytes,
+        roster_bytes,
         state_bytes,
         sheet_bytes,
         source_bytes,
@@ -404,7 +444,7 @@ def prepare(
         "aplicacao_mecanica_pendente": current < target,
         "mutacoes_aplicadas": False,
         "regra": "confirmar registra somente o milestone; não altera automaticamente a ficha",
-        "fontes_lidas": [POLICY.as_posix(), STATE.as_posix(), SHEET.as_posix(), source_rel],
+        "fontes_lidas": [POLICY.as_posix(), ROSTER.as_posix(), STATE.as_posix(), SHEET.as_posix(), source_rel],
     }
 
 
@@ -423,7 +463,8 @@ def confirm(
     if not PREPARATION_RE.fullmatch(expected):
         raise JuppongatanaProgressionError("preparacao_id deve ter 24 caracteres hexadecimais")
     member = _member_id(member)
-    state = load_state(repo)
+    roster = load_roster(repo)
+    state = load_state(repo, roster)
     existing = _existing(state, member)
     if existing is not None:
         if existing.get("preparacao_id") == expected:
@@ -437,7 +478,7 @@ def confirm(
                 "nivel_ficha": current,
                 "nivel_desbloqueado": existing["nivel_desbloqueado"],
                 "aplicacao_mecanica_pendente": current < existing["nivel_desbloqueado"],
-                "fontes_lidas": [STATE.as_posix(), SHEET.as_posix()],
+                "fontes_lidas": [ROSTER.as_posix(), STATE.as_posix(), SHEET.as_posix()],
             }
         raise JuppongatanaProgressionError(f"{member} já consumiu seu único milestone")
 
@@ -455,7 +496,7 @@ def confirm(
             "preparação ficou obsoleta; refaça `preparar` antes de confirmar"
         )
 
-    state = load_state(repo)
+    state = load_state(repo, roster)
     state["neutralizacoes"].append(fresh["milestone"])
     _atomic(repo / STATE, state)
     return {
@@ -474,16 +515,17 @@ def validate_repo(repo: Path) -> dict[str, Any]:
     pending = 0
     try:
         policy = load_policy(repo)
-        state = load_state(repo)
+        roster = load_roster(repo)
+        state = load_state(repo, roster)
         current = _sheet_level(repo)
-        members = len(policy["membros"])
+        members = len(roster)
         neutralizations = len(state["neutralizacoes"])
         unlocked = BASE_LEVEL + neutralizations
         pending = max(0, unlocked - current)
 
         agents = _map(_load(repo / AGENTS), AGENTS.as_posix())
         strategic = _map(agents.get("agentes"), "agentes.agentes")
-        for member_id, meta in policy["membros"].items():
+        for member_id, meta in roster.items():
             agent = strategic.get(member_id)
             if not isinstance(agent, dict) or agent.get("tipo") != "npc":
                 errors.append(f"membro sem agente estratégico NPC: {member_id}")
@@ -511,7 +553,7 @@ def validate_repo(repo: Path) -> dict[str, Any]:
         "neutralizacoes": neutralizations,
         "niveis_pendentes": pending,
         "erros": list(dict.fromkeys(errors)),
-        "fontes_lidas": [POLICY.as_posix(), STATE.as_posix(), SHEET.as_posix(), AGENTS.as_posix()],
+        "fontes_lidas": [POLICY.as_posix(), ROSTER.as_posix(), STATE.as_posix(), SHEET.as_posix(), AGENTS.as_posix()],
     }
 
 

@@ -107,6 +107,7 @@ def _progression_view(repo: Path) -> dict[str, Any]:
         (repo / path).is_file()
         for path in (
             progressao_juppongatana.POLICY,
+            progressao_juppongatana.ROSTER,
             progressao_juppongatana.STATE,
             progressao_juppongatana.SHEET,
         )

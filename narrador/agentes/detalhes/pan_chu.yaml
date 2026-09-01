@@ -1,0 +1,97 @@
+schema_detalhes_agente: 1
+natureza: reservado
+agente_id: pan_chu
+secoes:
+  metodos_operacionais:
+    proteger_cadeia_logistica:
+    - id: desviar_carga_ou_pessoal_por_rota_maritima
+      abordagem: Quando presença e meios estiverem canonicamente disponíveis, deslocar carga ou pessoal por rota marítima
+        menos exposta, trocando ponto de embarque, intermediário ou janela de saída.
+      modalidade: fisica
+      tags: [porto, navio, carga, extracao, contrabando]
+    - id: manter_rota_de_retirada
+      abordagem: Preservar uma opção de retirada para pessoa, relíquia ou carga comprometida sem converter a operação
+        em domínio aberto do porto.
+      modalidade: fisica
+      tags: [porto, navio, extracao, rota, fuga]
+    preservar_monopolio_da_ponte:
+    - id: ocultar_trafego_oriental_em_rotas_maritimas
+      abordagem: Quando puder atuar, misturar sinais de chegada oriental com tráfego marítimo clandestino plausível
+        para que pessoas e cargas pareçam ter origem portuária comum.
+      modalidade: fisica
+      tags: [navio, manifesto, carga, kozakura, contrabando]
+    - id: remover_carga_comprometedora
+      abordagem: Extrair rapidamente carga ou pessoa cuja presença possa demonstrar uma rota incompatível com os registros
+        do porto antes que autoridades comparem os indícios.
+      modalidade: fisica
+      tags: [carga, extracao, manifesto, porto, rota]
+    - id: oferecer_rota_falsa_convincente
+      abordagem: Fazer investigadores encontrarem uma rota marítima clandestina real e perigosa o bastante para explicar
+        parte dos indícios, desviando atenção da hipótese de uma passagem não marítima.
+      modalidade: mista
+      tags: [porto, contrabando, rota, manifesto, ponte]
+    mascarar_origem_kozakuriana:
+    - id: absorver_anomalia_em_trafego_maritimo
+      abordagem: Misturar sinais orientais recentes com cargas, tripulantes e intermediários reais do Golden Lily
+        para tornar o porto uma explicação plausível, sem precisar que toda mercadoria venha do navio.
+      modalidade: mista
+      tags: [porto, navio_oriental, carga_oriental, manifesto, cobertura]
+    expandir_presenca_de_masao:
+    - id: desembarcar_pessoal_sob_cobertura
+      abordagem: Quando presente, trazer pequenos grupos de homens como marinheiros, carregadores, guardas ou passageiros
+        e dispersá-los por intermediários antes que formem um padrão óbvio.
+      modalidade: fisica
+      tags: [estrangeiros, tripulacao, porto, milicia, cobertura]
+    - id: misturar_armas_e_drogas_em_carga_real
+      abordagem: Usar comércio legítimo como volume de cobertura para armas, drogas ou material clandestino, aceitando
+        perder parte da carga se isso preservar a rota maior.
+      modalidade: fisica
+      tags: [armas, drogas, carga, contrabando, porto]
+    desgastar_autoridade_de_ravens_bluff:
+    - id: recusar_expulsao_sob_risco_calculado
+      abordagem: Se autoridade tentar expulsar ou apreender o Golden Lily e Masao ainda exigir sua presença, negar
+        obediência e transformar o conflito em questão de força real, não de papel.
+      modalidade: mista
+      tags: [autoridade, porto, navio, expulsao, coercao]
+    - id: demonstrar_poder_naval
+      abordagem: Diante de tentativa coercitiva séria, usar armamento naval contra alvo militar ou portuário escolhido
+        para quebrar a expectativa de que uma ordem local basta para remover o navio.
+      modalidade: fisica
+      tags: [bombardeio, porto, autoridade, navio, cerco]
+    - id: derrotar_interdicao_naval
+      abordagem: Se uma força naval externa legitimamente entrar no tabuleiro, lutar para preservar a liberdade do
+        Golden Lily, priorizando manobra, disciplina da tripulação e retirada útil sobre destruição gratuita.
+      modalidade: fisica
+      tags: [batalha_naval, navio, interdicao, cormyr, retirada]
+    sustentar_cobertura_maritima:
+    - id: aquecer_comercio_legitimo
+      abordagem: Vender e comprar mercadoria real, contratar trabalho e pagar taxas suficientes para criar interesses
+        locais que prefiram a permanência do Golden Lily.
+      modalidade: mista
+      tags: [comercio, porto, mercadores, golden_lily, cobertura]
+    - id: usar_manifestos_parcialmente_verdadeiros
+      abordagem: Manter documentação que descreve corretamente grande parte do comércio enquanto esconde volumes,
+        passageiros ou compartimentos específicos.
+      modalidade: mista
+      tags: [manifesto, carga, porto, contrabando, documentos]
+  autonomia_estrategica:
+    papel_no_arco: capitao_que_transforma_contrabando_em_problema_de_soberania_maritima
+    iniciativa: alta
+    regra_masao: nao_sabotar_plano_mestre
+    regra_conhecimento_vinculos: exige_conhecimento_canonico
+    impulsos:
+    - proteger_tripulacao_e_navio
+    - responder_a_coercao_com_forca_calculada
+    - fazer_comercio_real_criar_interesses_a_seu_favor
+    feito_lendario:
+      principio: Quando demonstrar excelência, mudar a posição narrativa do conflito sem precisar de espetáculo gratuito.
+      exemplos_nao_obrigatorios:
+      - uma ordem de expulsão revela que a autoridade local talvez não tenha força para fazê-la cumprir
+      - uma tentativa naval de apreensão pode terminar com o Golden Lily ainda ancorado ou escapando em vantagem
+    escaladas_condicionais:
+    - id: tentativa_de_expulsao
+      quando: Autoridade tenta remover, apreender ou atacar o Golden Lily e Masao ainda exige sua presença.
+      abordagem: Pode usar força naval destrutiva contra estrutura ou força coercitiva para preservar presença.
+    - id: interdicao_externa
+      quando: Cormyr ou outra potência entra causalmente no conflito marítimo.
+      abordagem: Pode travar batalha naval séria; a força externa não recebe vitória automática por reputação.

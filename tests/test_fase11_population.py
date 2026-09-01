@@ -3,7 +3,7 @@ import sys, unittest, yaml
 from pathlib import Path
 ROOT=Path(__file__).parents[1]; TOOLS=ROOT/'ferramentas'
 if str(TOOLS) not in sys.path: sys.path.insert(0,str(TOOLS))
-import arcos, metodos_agentes, autonomia_juppongatana, pressao_ravens_bluff, contexto_cena, arco_mundo
+import agentes, arcos, metodos_agentes, autonomia_juppongatana, pressao_ravens_bluff, contexto_cena, arco_mundo
 
 class Phase11PopulationTest(unittest.TestCase):
     def test_parte1_tem_exatamente_quatro_juppongatana_e_dois_aliados(self):
@@ -27,12 +27,12 @@ class Phase11PopulationTest(unittest.TestCase):
         arc=arcos.load_contract(ROOT,'parte_1_uma_ponte_para_kozakura')
         for lid,line in arc['linhas_operacionais'].items():
             for aid in line['executores']:
-                data=yaml.safe_load((ROOT/f'narrador/agentes/{aid}.yaml').read_text(encoding='utf-8'))
+                data=agentes.load_agent_complete(ROOT,aid)['resultado']
                 methods=metodos_agentes.for_line(data,lid,expected_agent_id=aid)
                 self.assertGreaterEqual(len(methods),1,(lid,aid))
 
     def test_cho_e_pressao_pessoal_condicionada_a_conhecimento(self):
-        cho=yaml.safe_load((ROOT/'narrador/agentes/sawagejo_cho.yaml').read_text(encoding='utf-8'))
+        cho=agentes.load_agent_complete(ROOT,'sawagejo_cho')['resultado']
         prof=autonomia_juppongatana.normalize_profile(cho['autonomia_estrategica'],'sawagejo_cho')
         self.assertEqual(prof['regra_conhecimento_vinculos'],'exige_conhecimento_canonico')
         methods=metodos_agentes.for_line(cho,'pressionar_ren_por_vinculos')
@@ -40,14 +40,14 @@ class Phase11PopulationTest(unittest.TestCase):
         self.assertTrue(all('vinculo_conhecido' in m['tags'] for m in methods))
 
     def test_cho_tem_capricho_mas_nao_pode_sabotar_masao(self):
-        cho=yaml.safe_load((ROOT/'narrador/agentes/sawagejo_cho.yaml').read_text(encoding='utf-8'))
+        cho=agentes.load_agent_complete(ROOT,'sawagejo_cho')['resultado']
         prof=autonomia_juppongatana.normalize_profile(cho['autonomia_estrategica'],'sawagejo_cho')
         self.assertEqual(prof['regra_masao'],'nao_sabotar_plano_mestre')
         methods=metodos_agentes.for_line(cho,'desgastar_autoridade_de_ravens_bluff')
         self.assertTrue(any('capricho' in m['id'].lower() or 'impulso' in m['abordagem'].lower() for m in methods))
 
     def test_shizune_tem_exemplo_lendario_do_documento_restaurado_sem_canoniza_lo(self):
-        sh=yaml.safe_load((ROOT/'narrador/agentes/kajiwara_shizune.yaml').read_text(encoding='utf-8'))
+        sh=agentes.load_agent_complete(ROOT,'kajiwara_shizune')['resultado']
         prof=autonomia_juppongatana.normalize_profile(sh['autonomia_estrategica'],'kajiwara_shizune')
         blob=' '.join(prof['feito_lendario']['exemplos_nao_obrigatorios']).lower()
         self.assertIn('restaurado',blob)
@@ -55,7 +55,7 @@ class Phase11PopulationTest(unittest.TestCase):
         self.assertEqual(disc['exemplo_shizune_nao_obrigatorio']['estatuto'],'exemplo_de_escala_lendaria_nao_evento_canonico')
 
     def test_pan_chu_mantem_cormyr_inerte_enquanto_ameaca_civis(self):
-        pan=yaml.safe_load((ROOT/'narrador/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
+        pan=agentes.load_agent_complete(ROOT,'pan_chu')['resultado']
         ms=metodos_agentes.for_line(pan,'desgastar_autoridade_de_ravens_bluff')
         self.assertTrue(any('armamento naval' in m['abordagem'].lower() for m in ms))
         src=(ROOT/'narrador/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')

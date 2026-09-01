@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 import yaml
 import arcos
+import agentes
 
 AGENTS_INDEX=Path('narrador/agentes/index.yaml')
 VALID_INITIATIVE={'baixa','media','alta'}
@@ -79,8 +80,10 @@ def enabled_profiles(repo:Path)->dict[str,Any]:
     for agent_id in info['habilitacoes']['antagonistas']:
         meta=index.get(agent_id)
         if not isinstance(meta,dict): raise AutonomyError(f'agente habilitado inexistente: {agent_id}')
-        raw=txt(meta.get('arquivo'),f'{agent_id}.arquivo'); data=mp(load(repo/raw),raw)
-        rows[agent_id]=normalize_profile(data.get('autonomia_estrategica'),agent_id); sources.append(raw)
+        try: loaded=agentes.load_agent_complete(repo,agent_id)
+        except agentes.AgentValidationError as e: raise AutonomyError(str(e)) from e
+        data=mp(loaded['resultado'],agent_id)
+        rows[agent_id]=normalize_profile(data.get('autonomia_estrategica'),agent_id); sources.extend(loaded['fontes_lidas'])
     return {'arco_id':info['id'],'perfis':rows,'fontes_lidas':list(dict.fromkeys(sources))}
 
 def validate(repo:Path):

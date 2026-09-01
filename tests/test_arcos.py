@@ -12,6 +12,7 @@ TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
+import agentes
 import arcos
 
 
@@ -514,9 +515,7 @@ class ArcosBundleTest(unittest.TestCase):
         contract = arcos.load_contract(ROOT, "parte_1_uma_ponte_para_kozakura")
         for line_id, line in contract["linhas_operacionais"].items():
             for executor in line["executores"]:
-                path = ROOT / f"narrador/agentes/{executor}.yaml"
-                self.assertTrue(path.is_file(), (line_id, executor))
-                data = yaml.safe_load(path.read_text(encoding="utf-8"))
+                data = agentes.load_agent_complete(ROOT, executor)["resultado"]
                 import metodos_agentes
                 methods = metodos_agentes.for_line(
                     data, line_id, expected_agent_id=executor
@@ -525,12 +524,8 @@ class ArcosBundleTest(unittest.TestCase):
 
     def test_kurobane_e_shizune_traduzem_mesma_linha_de_formas_diferentes(self):
         import metodos_agentes
-        kurobane = yaml.safe_load(
-            (ROOT / "narrador/agentes/kurobane_jinzaburo.yaml").read_text(encoding="utf-8")
-        )
-        shizune = yaml.safe_load(
-            (ROOT / "narrador/agentes/kajiwara_shizune.yaml").read_text(encoding="utf-8")
-        )
+        kurobane = agentes.load_agent_complete(ROOT, "kurobane_jinzaburo")["resultado"]
+        shizune = agentes.load_agent_complete(ROOT, "kajiwara_shizune")["resultado"]
         km = metodos_agentes.for_line(kurobane, "impedir_consolidacao_de_provas")
         sm = metodos_agentes.for_line(shizune, "impedir_consolidacao_de_provas")
         self.assertTrue(all(method["modalidade"] == "fisica" for method in km))
@@ -539,9 +534,7 @@ class ArcosBundleTest(unittest.TestCase):
 
     def test_pan_chu_tem_repertorio_sem_ser_ativado_por_ele(self):
         import metodos_agentes
-        pan = yaml.safe_load(
-            (ROOT / "narrador/agentes/pan_chu.yaml").read_text(encoding="utf-8")
-        )
+        pan = agentes.load_agent_complete(ROOT, "pan_chu")["resultado"]
         self.assertEqual(pan["estado"], "latente")
         self.assertEqual(pan["presenca"]["estado"], "indeterminado")
         methods = metodos_agentes.for_line(pan, "proteger_cadeia_logistica")

@@ -21,9 +21,10 @@ except ImportError as exc:
 
 try:
     import continuidade_autoral
+    import estrutura_narrador
     import populacao
 except ModuleNotFoundError:
-    from ferramentas import continuidade_autoral, populacao
+    from ferramentas import continuidade_autoral, estrutura_narrador, populacao
 
 try:
     import gate_adnd
@@ -122,12 +123,15 @@ REQUIRED_PATHS = (
     "regras/adaptacoes-mecanicas.yaml",
     "runtime/README.md",
     "narrador/continuidade-autoral.yaml",
+    "narrador/estrutura.yaml",
     "narrador/populacao-canonica.yaml",
+    "narrador/juppongatana/index.yaml",
     RUNTIME_CONTEXT,
     RUNTIME_SCENE,
     RUNTIME_EVENTS,
     "ferramentas/gerar-runtime.py",
     "ferramentas/continuidade_autoral.py",
+    "ferramentas/estrutura_narrador.py",
     "ferramentas/populacao.py",
     "ferramentas/texturas.py",
     "ferramentas/gate_adnd.py",
@@ -389,6 +393,10 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     population_result = populacao.validate_repo(repo)
     errors.extend(
         f"população canônica: {error}" for error in population_result["erros"]
+    )
+    structure_result = estrutura_narrador.audit(repo)
+    errors.extend(
+        f"estrutura do narrador: {error}" for error in structure_result["erros"]
     )
 
     campanha = yaml_docs.get("campanha.yaml")

@@ -197,9 +197,10 @@ Nem todos precisam estar presentes em Faerûn ao mesmo tempo. Alguns podem agir
 fora de cena, chegar por rotas próprias, contrariar Masao parcialmente ou usar
 Ren por interesses particulares. Ainda assim, todos são cânone da campanha.
 
-Diretrizes específicas de uso em jogo, escala de ameaça, lealdade variável,
-dilemas para Ren e inspiração por easter eggs ficam no arquivo reservado
-`narrador/juppongatana.md` e na pasta `narrador/juppongatana/`.
+O elenco estrutural fica em `narrador/juppongatana/index.yaml`; diretrizes de uso
+em jogo, escala de ameaça, lealdade variável e dilemas para Ren ficam em
+`narrador/juppongatana/conducao.md`. O caminho `narrador/juppongatana.md` é apenas
+redirecionamento legado.
 
 Inspirações de Kara-Tur para membros, cultos, técnicas e relíquias de apoio ficam
 também em `narrador/kara-tur-segredos.md`.

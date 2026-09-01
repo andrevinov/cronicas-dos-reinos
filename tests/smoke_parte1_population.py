@@ -6,6 +6,7 @@ TOOLS = ROOT / 'ferramentas'
 sys.path.insert(0, str(TOOLS))
 
 import arcos
+import agentes
 import autonomia_juppongatana
 import eventos_canonicos
 import pressao_ravens_bluff
@@ -19,7 +20,7 @@ assert set(arc['habilitacoes']['direcoes']) == {'ponte_de_kozakura', 'golden_lil
 assert len(arc['linhas_operacionais']) == 11
 
 for agent_id in arc['habilitacoes']['antagonistas']:
-    data = yaml.safe_load((ROOT / f'narrador/agentes/{agent_id}.yaml').read_text(encoding='utf-8'))
+    data = agentes.load_agent_complete(ROOT, agent_id)['resultado']
     profile = autonomia_juppongatana.normalize_profile(data['autonomia_estrategica'], agent_id)
     assert profile['regra_masao'] == 'nao_sabotar_plano_mestre'
     assert profile['regra_conhecimento_vinculos'] == 'exige_conhecimento_canonico'

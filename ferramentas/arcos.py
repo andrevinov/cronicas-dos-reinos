@@ -97,6 +97,34 @@ def _repo_rel(value: Any, label: str) -> str:
     return path.as_posix()
 
 
+def _agent_with_details(
+    repo: Path,
+    agent_id: str,
+    meta: dict[str, Any],
+) -> tuple[dict[str, Any], list[str]]:
+    """Recompõe detalhe opcional sem impor o schema completo a fixtures de arco."""
+    source = _repo_rel(meta.get("arquivo"), f"agentes.{agent_id}.arquivo")
+    data = _map(_load(repo / source), source)
+    sources = [source]
+    pointer = data.get("detalhes_operacionais")
+    if pointer is None:
+        return data, sources
+    pointer = _map(pointer, f"{agent_id}.detalhes_operacionais")
+    detail_source = _repo_rel(
+        pointer.get("arquivo"), f"{agent_id}.detalhes_operacionais.arquivo"
+    )
+    detail = _map(_load(repo / detail_source), detail_source)
+    if detail.get("agente_id") != agent_id:
+        raise ArcContractError(f"detalhes operacionais divergem do agente: {agent_id}")
+    sections = _map(detail.get("secoes"), f"{agent_id}.detalhes.secoes")
+    declared = set(_list(pointer.get("secoes"), f"{agent_id}.detalhes_operacionais.secoes"))
+    if set(sections) != declared:
+        raise ArcContractError(f"seções de detalhe divergem do fragmento-base: {agent_id}")
+    data = {**data, **sections}
+    sources.append(detail_source)
+    return data, sources
+
+
 def _strict_keys(data: dict[str, Any], allowed: set[str], label: str) -> None:
     extra = set(data) - allowed
     if extra:
@@ -488,7 +516,7 @@ def resolve_agent_methods(
         raise ArcContractError(f"executor inexistente no índice de agentes: {executor_id}")
     source = _repo_rel(meta.get("arquivo"), f"agentes.{executor_id}.arquivo")
     try:
-        agent = _map(_load(repo / source), source)
+        agent, agent_sources = _agent_with_details(repo, executor_id, meta)
         methods = metodos_agentes.for_line(
             agent, line_id, expected_agent_id=executor_id
         )
@@ -506,7 +534,9 @@ def resolve_agent_methods(
             "restrições e decisão narrativa ainda governam se e como algo acontece"
         ),
         "fontes_lidas": list(
-            dict.fromkeys([*gate["fontes_lidas"], STRATEGIC_INDEX.as_posix(), source])
+            dict.fromkeys(
+                [*gate["fontes_lidas"], STRATEGIC_INDEX.as_posix(), *agent_sources]
+            )
         ),
     }
 
@@ -662,17 +692,16 @@ def validate(repo: Path, *, references: bool = True) -> dict[str, Any]:
                         raise ArcContractError(
                             f"{arc_id}.linhas_operacionais.{line_id}: executor inexistente: {executor}"
                         )
-                    agent_source = _repo_rel(
-                        agents[executor].get("arquivo"), f"agentes.{executor}.arquivo"
-                    )
                     try:
-                        agent_data = _map(_load(repo / agent_source), agent_source)
+                        agent_data, agent_sources = _agent_with_details(
+                            repo, executor, agents[executor]
+                        )
                         agent_methods = metodos_agentes.from_agent(
                             agent_data, expected_agent_id=executor
                         )
                     except metodos_agentes.AgentMethodError as exc:
                         raise ArcContractError(str(exc)) from exc
-                    sources.append(agent_source)
+                    sources.extend(agent_sources)
                     if line_id not in agent_methods:
                         raise ArcContractError(
                             f"{arc_id}.linhas_operacionais.{line_id}: executor {executor} "
@@ -685,17 +714,17 @@ def validate(repo: Path, *, references: bool = True) -> dict[str, Any]:
 
         # Manutenção fria: traduções existentes não podem apontar para linha inexistente
         # nem conceder uma linha a agente que o contrato não declarou como executor.
-        checked_agent_files: set[str] = set()
+        checked_agent_ids: set[str] = set()
         for agent_id, meta in agents.items():
-            agent_source = _repo_rel(meta.get("arquivo"), f"agentes.{agent_id}.arquivo")
-            if agent_source in checked_agent_files or not (repo / agent_source).is_file():
+            if agent_id in checked_agent_ids:
                 continue
-            checked_agent_files.add(agent_source)
+            checked_agent_ids.add(agent_id)
             try:
-                agent_data = _map(_load(repo / agent_source), agent_source)
+                agent_data, agent_sources = _agent_with_details(repo, agent_id, meta)
                 method_map = metodos_agentes.from_agent(
                     agent_data, expected_agent_id=agent_id
                 )
+                sources.extend(agent_sources)
             except metodos_agentes.AgentMethodError as exc:
                 raise ArcContractError(str(exc)) from exc
             for line_id in method_map:

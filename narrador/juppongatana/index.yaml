@@ -1,0 +1,87 @@
+schema_elenco_juppongatana: 1
+natureza: autoridade_reservada_de_elenco
+id: juppongatana
+nome: Juppongatana
+quantidade_canônica: 10
+autoridade_de:
+- ids
+- nomes
+- alcunhas
+- círculos
+- rotas_de_perfil
+- rotas_de_agente
+regra: >-
+  Este índice é a única autoridade estrutural para o elenco das Dez Espadas.
+  Perfis narrativos, agentes e política de progressão podem repetir dados para
+  leitura humana ou roteamento, mas devem validá-los contra este registro.
+membros:
+  kurobane_jinzaburo:
+    nome: Kurobane Jinzaburō
+    alcunha: Corvo do Estreito
+    circulo: externo
+    perfil: narrador/juppongatana/membros.md#kurobane-jinzaburo-o-corvo-do-estreito
+    agente: narrador/agentes/kurobane_jinzaburo.yaml
+    imagem: narrador/juppongatana/imagens/kurobane-jinzaburo.png
+  pan_chu:
+    nome: Pan Chu
+    alcunha: Lírio Dourado
+    circulo: externo
+    perfil: narrador/juppongatana/membros.md#pan-chu-o-lirio-dourado
+    agente: narrador/agentes/pan_chu.yaml
+    imagem: narrador/juppongatana/imagens/pan-chu.png
+  sawagejo_cho:
+    nome: Sawagejō Chō
+    alcunha: Caçador de Espadas
+    circulo: externo
+    perfil: narrador/juppongatana/membros.md#sawagejo-cho-o-cacador-de-espadas
+    agente: narrador/agentes/sawagejo_cho.yaml
+    imagem: narrador/juppongatana/imagens/sawagejo-cho.png
+  kajiwara_shizune:
+    nome: Kajiwara Shizune
+    alcunha: Senhora do Selo Negro
+    circulo: externo
+    perfil: narrador/juppongatana/membros.md#kajiwara-shizune-a-senhora-do-selo-negro
+    agente: narrador/agentes/kajiwara_shizune.yaml
+    imagem: narrador/juppongatana/imagens/kajiwara-shizune.png
+  yukyuzan_anji:
+    nome: Yūkyūzan Anji
+    alcunha: Punho da Ruína
+    circulo: meio
+    perfil: narrador/juppongatana/membros.md#yukyuzan-anji-o-punho-da-ruina
+    agente: narrador/agentes/yukyuzan_anji.yaml
+    imagem: narrador/juppongatana/imagens/yukyuzan-anji.png
+  uonuma_usui:
+    nome: Uonuma Usui
+    alcunha: Olho do Coração
+    circulo: meio
+    perfil: narrador/juppongatana/membros.md#uonuma-usui-o-olho-do-coracao
+    agente: narrador/agentes/uonuma_usui.yaml
+    imagem: narrador/juppongatana/imagens/uonuma-usui.png
+  kureha_shiranui:
+    nome: Kureha Shiranui
+    alcunha: Miko da Névoa Vermelha
+    circulo: meio
+    perfil: narrador/juppongatana/membros.md#kureha-shiranui-a-miko-da-nevoa-vermelha
+    agente: narrador/agentes/kureha_shiranui.yaml
+    imagem: narrador/juppongatana/imagens/kureha-shiranui.png
+  amagiri_seishiro:
+    nome: Amagiri Seishirō
+    alcunha: Lâmina do Intervalo
+    circulo: interno
+    perfil: narrador/juppongatana/membros.md#amagiri-seishiro-a-lamina-do-intervalo
+    agente: narrador/agentes/amagiri_seishiro.yaml
+    imagem: narrador/juppongatana/imagens/amagiri-seishiro.png
+  wetuji:
+    nome: Wetuji
+    alcunha: Naginata das Nove Vidas
+    circulo: interno
+    perfil: narrador/juppongatana/membros.md#wetuji-a-naginata-das-nove-vidas
+    agente: narrador/agentes/wetuji.yaml
+    imagem: narrador/juppongatana/imagens/wetuji.png
+  fuji:
+    nome: Fuji
+    alcunha: Montanha que se Ajoelha
+    circulo: interno
+    perfil: narrador/juppongatana/membros.md#fuji-a-montanha-que-se-ajoelha
+    agente: narrador/agentes/fuji.yaml
+    imagem: narrador/juppongatana/imagens/fuji.png

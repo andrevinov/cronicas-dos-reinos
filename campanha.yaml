@@ -107,6 +107,8 @@ estrutura:
     personagem_resumo_poderes: personagens/jogador/resumo-de-poderes.md
     area_do_narrador: narrador/README.md
     juppongatana: narrador/juppongatana/README.md
+    juppongatana_elenco: narrador/juppongatana/index.yaml
+    juppongatana_conducao: narrador/juppongatana/conducao.md
     juppongatana_membros: narrador/juppongatana/membros.md
     juppongatana_marcos: narrador/juppongatana/marcos-de-aparicao.md
     masao: narrador/masao/README.md

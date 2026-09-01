@@ -41,6 +41,7 @@ class JuppongatanaMilestoneRepositoryTest(unittest.TestCase):
             status["fontes_lidas"],
             [
                 "narrador/juppongatana/progressao.yaml",
+                "narrador/juppongatana/index.yaml",
                 "narrador/juppongatana/estado-progressao.yaml",
                 "personagens/jogador/ficha.yaml",
             ],
@@ -48,8 +49,10 @@ class JuppongatanaMilestoneRepositoryTest(unittest.TestCase):
 
     def test_politica_tem_exatamente_os_dez_membros_sem_masao(self):
         policy = progression.load_policy(ROOT)
-        self.assertEqual(set(policy["membros"]), set(progression.EXPECTED_MEMBERS))
-        self.assertNotIn("masao_hirasawa", policy["membros"])
+        roster = progression.load_roster(ROOT)
+        self.assertEqual(len(roster), progression.MAX_NEUTRALIZATIONS)
+        self.assertNotIn("masao_hirasawa", roster)
+        self.assertEqual(policy["elenco"]["arquivo"], progression.ROSTER.as_posix())
         self.assertEqual(policy["faixa_niveis"], list(range(8, 18)))
         self.assertEqual(policy["ordem_dos_membros"], "livre")
 
@@ -66,7 +69,13 @@ class JuppongatanaMilestoneSyntheticTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        for rel in (progression.POLICY, progression.STATE, progression.SHEET, progression.AGENTS):
+        for rel in (
+            progression.POLICY,
+            progression.ROSTER,
+            progression.STATE,
+            progression.SHEET,
+            progression.AGENTS,
+        ):
             target = self.repo / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / rel, target)
@@ -74,7 +83,7 @@ class JuppongatanaMilestoneSyntheticTest(unittest.TestCase):
         self.source.parent.mkdir(parents=True, exist_ok=True)
         lines = [
             f"milestone confirmado para {member}: neutralização durável estabelecida no cânone."
-            for member in progression.EXPECTED_MEMBERS
+            for member in progression.load_roster(self.repo)
         ]
         self.source.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -122,6 +131,7 @@ class JuppongatanaMilestoneSyntheticTest(unittest.TestCase):
             preview["fontes_lidas"],
             [
                 progression.POLICY.as_posix(),
+                progression.ROSTER.as_posix(),
                 progression.STATE.as_posix(),
                 progression.SHEET.as_posix(),
                 "sessoes/999/resumo.md",

@@ -28,6 +28,41 @@ class AgentesRepositoryTest(unittest.TestCase):
             ["narrador/agentes/index.yaml", "narrador/agentes/kajiwara_shizune.yaml"],
         )
         self.assertNotIn("narrador/agentes/masao_hirasawa.yaml", result["fontes_lidas"])
+        self.assertLessEqual(len(mod._dump(result).encode("utf-8")), mod.MAX_DIRECTED_BYTES)
+        self.assertNotIn("metodos_operacionais", result["resultado"])
+        self.assertNotIn("autonomia_estrategica", result["resultado"])
+
+    def test_detalhe_dirigido_abre_uma_secao_sem_exceder_l2(self):
+        result = mod.load_agent_detail(REPO, "Shizune", "metodos_operacionais")
+        self.assertEqual(result["secao"], "metodos_operacionais")
+        self.assertEqual(
+            result["fontes_lidas"],
+            [
+                "narrador/agentes/index.yaml",
+                "narrador/agentes/kajiwara_shizune.yaml",
+                "narrador/agentes/detalhes/kajiwara_shizune.yaml",
+            ],
+        )
+        self.assertLessEqual(len(mod._dump(result).encode("utf-8")), mod.MAX_DIRECTED_BYTES)
+        self.assertNotIn("autonomia_estrategica", result["resultado"])
+
+    def test_todas_as_consultas_fragmentadas_respeitam_orcamento(self):
+        index = mod.load_index(REPO)
+        for agent_id in index["agentes"]:
+            base = mod.load_agent(REPO, agent_id)
+            self.assertLessEqual(
+                len(mod._dump(base).encode("utf-8")),
+                mod.MAX_DIRECTED_BYTES,
+                agent_id,
+            )
+            pointer = base["resultado"].get("detalhes_operacionais") or {}
+            for section in pointer.get("secoes", []):
+                detail = mod.load_agent_detail(REPO, agent_id, section)
+                self.assertLessEqual(
+                    len(mod._dump(detail).encode("utf-8")),
+                    mod.MAX_DIRECTED_BYTES,
+                    f"{agent_id}.{section}",
+                )
 
     def test_corven_promovido_le_apenas_indice_e_fragmento_estrategico(self):
         result = mod.load_agent(REPO, "Corven")

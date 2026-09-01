@@ -1,0 +1,54 @@
+schema_estrutura_narrador: 1
+natureza: contrato_reservado_de_organizacao
+politica:
+  referencia_quebrada: erro
+  ciclo_nao_classificado: erro
+  autoridade_duplicada: erro
+  consulta_dirigida_max_bytes: 8192
+  arquivo_sem_entrada: suspeita_revisao_humana
+autoridades:
+  elenco_juppongatana:
+    arquivo: narrador/juppongatana/index.yaml
+    escopo: ids, nomes, alcunhas, círculos e rotas dos membros
+  perfis_juppongatana:
+    arquivo: narrador/juppongatana/membros.md
+    escopo: personalidade, história, técnicas e uso narrativo individual
+  marcos_juppongatana:
+    arquivo: narrador/juppongatana/marcos-de-aparicao.md
+    escopo: plausibilidade e pressão de primeira aparição
+  progressao_juppongatana:
+    arquivo: narrador/juppongatana/progressao.yaml
+    escopo: regra de milestones dos níveis 8 a 17
+  estado_progressao_juppongatana:
+    arquivo: narrador/juppongatana/estado-progressao.yaml
+    escopo: neutralizações duráveis já consumidas
+derivacoes:
+  indice_de_agentes:
+    arquivo: narrador/agentes/index.yaml
+    deriva_de: elenco_juppongatana
+    propriedade_validada: ids e nomes dos membros com agente individual
+  politica_de_progressao:
+    arquivo: narrador/juppongatana/progressao.yaml
+    deriva_de: elenco_juppongatana
+    propriedade_validada: conjunto de membros elegíveis
+redirecionamentos:
+  narrador/juppongatana.md:
+    destino: narrador/juppongatana/README.md
+    conteudo_movido_para: narrador/juppongatana/conducao.md
+    motivo: retirar segunda autoridade legada sem quebrar referências históricas
+ciclos_permitidos:
+- arquivos:
+  - narrador/arcos/parte_1/torneio-clandestino/index.yaml
+  - narrador/arcos/parte_1/torneio-clandestino/rodadas/final.yaml
+  natureza: ponteiro_funcional_nao_recursivo
+  motivo: o índice roteia a rodada e a rodada aponta para a lista autoritativa de candidatos no índice
+exclusoes_de_alcancabilidade:
+- narrador/sessoes
+- narrador/sidequests-canonicas/segredos
+- narrador/sidequests-canonicas/roteadores
+- narrador/arcos/parte_1/intencoes
+- narrador/segredos/decisoes-lacunas-fase-2.yaml
+motivo_exclusoes: histórico frio e fragmentos deliberadamente abertos apenas por roteadores especializados
+raizes_de_consulta:
+- narrador/segredos/canone.md
+- narrador/mundo/CICLO-NPCS.md

@@ -436,6 +436,7 @@ def _causal_actors_and_juppongatana(
         [
             arco_mundo.STRATEGIC_INDEX.as_posix(),
             progressao_juppongatana.POLICY.as_posix(),
+            progressao_juppongatana.ROSTER.as_posix(),
             progressao_juppongatana.STATE.as_posix(),
         ]
     )

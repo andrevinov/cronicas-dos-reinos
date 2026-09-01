@@ -114,6 +114,19 @@ somente a âncora selecionada, é reservada e não deve ser reproduzida ao jogad
 
 Durante esta refatoração, executar também `python3 ferramentas/verificar-integridade.py` e, quando aplicável, comparar com a baseline lógica criada na Etapa 1.
 
+### Higiene estrutural da área do narrador
+
+`narrador/estrutura.yaml` classifica autoridades, derivações, redirecionamentos,
+ciclos funcionais permitidos e raízes de consulta. A auditoria read-only
+`python3 ferramentas/estrutura_narrador.py auditar` confere referências explícitas,
+ciclos não classificados, autoridade do elenco da Juppongatana e orçamentos das
+consultas de agentes. Erros objetivos integram `verificar-integridade.py`.
+
+Arquivos sem entrada e repetição potencial permanecem `suspeitas_revisao_humana`:
+não são lixo por inferência e não bloqueiam o gate até que sua função seja
+classificada. A auditoria nunca percorre transcrições nem integra turno,
+checkpoint ou lifecycle.
+
 ## Git e histórico
 
 Commits devem refletir mudanças coerentes. É apropriado separar preparação regional, criação/progressão de personagem, encerramento de sessão, atualização de regras, correção de continuidade e ferramentas quando não forem a mesma unidade de trabalho.

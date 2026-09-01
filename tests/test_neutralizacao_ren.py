@@ -12,6 +12,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import arcos
+import agentes
 import contexto_cena
 import metodos_agentes
 
@@ -78,9 +79,7 @@ class ClandestineNeutralizationArcTest(unittest.TestCase):
 
 class ClandestineNeutralizationMethodsTest(unittest.TestCase):
     def _methods(self, agent_id: str):
-        data = yaml.safe_load(
-            (ROOT / f"narrador/agentes/{agent_id}.yaml").read_text(encoding="utf-8")
-        )
+        data = agentes.load_agent_complete(ROOT, agent_id)["resultado"]
         return metodos_agentes.for_line(data, LINE, expected_agent_id=agent_id)
 
     def test_cada_executor_tem_duas_traducoes_compactas_e_sigilosas(self):
@@ -107,7 +106,7 @@ class ClandestineNeutralizationMethodsTest(unittest.TestCase):
             {"fisica"},
         )
 
-    def test_resolver_metodos_abre_exatamente_um_fragmento_de_agente(self):
+    def test_resolver_metodos_abre_base_e_no_maximo_um_detalhe(self):
         for agent_id in sorted(EXECUTORS):
             result = arcos.resolve_agent_methods(ROOT, LINE, executor=agent_id)
             self.assertTrue(result["executor_permitido"])
@@ -118,8 +117,13 @@ class ClandestineNeutralizationMethodsTest(unittest.TestCase):
                 if source.startswith("narrador/agentes/") and source.endswith(".yaml")
                 and source != "narrador/agentes/index.yaml"
             ]
-            self.assertEqual(fragments, [f"narrador/agentes/{agent_id}.yaml"])
-            self.assertLessEqual(len(result["fontes_lidas"]), 5)
+            expected = [f"narrador/agentes/{agent_id}.yaml"]
+            base = agentes.load_agent(ROOT, agent_id)["resultado"]
+            pointer = base.get("detalhes_operacionais")
+            if pointer:
+                expected.append(pointer["arquivo"])
+            self.assertEqual(fragments, expected)
+            self.assertLessEqual(len(result["fontes_lidas"]), 6)
 
 
 class ClandestineNeutralizationContextTest(unittest.TestCase):
