@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -15,9 +16,12 @@ import populacao
 
 
 class PopulacaoCanonicaTest(unittest.TestCase):
-    def test_todas_as_relacoes_recebem_classificacao_explicita(self):
+    def test_todos_os_npcs_recebem_classificacao_explicita(self):
         result = populacao.validate_repo(ROOT)
         self.assertTrue(result["ok"], result["erros"])
+        npc_doc = yaml.safe_load(
+            (ROOT / "estado/npcs/index.yaml").read_text(encoding="utf-8")
+        )
         relation_doc = yaml.safe_load(
             (ROOT / "estado/relacoes/index.yaml").read_text(encoding="utf-8")
         )
@@ -26,6 +30,7 @@ class PopulacaoCanonicaTest(unittest.TestCase):
         expected_light = len(classes["promovidos_agentes_leves"])
         expected_represented = len(classes["representados_por_agente"])
         expected_persistent = len(classes["persistentes_sem_agenda"])
+        self.assertEqual(result["npcs"], npc_doc["quantidade"])
         self.assertEqual(result["relacoes"], relation_doc["quantidade"])
         self.assertEqual(result["estrategicos"], expected_strategic)
         self.assertEqual(result["promovidos"], expected_light)
@@ -33,11 +38,68 @@ class PopulacaoCanonicaTest(unittest.TestCase):
         self.assertEqual(result["persistentes"], expected_persistent)
         self.assertEqual(
             result["persistentes"],
-            result["relacoes"]
+            result["npcs"]
             - result["estrategicos"]
             - result["promovidos"]
             - result["representados"],
         )
+
+    def test_npc_sem_relacao_nao_escapa_da_classificacao(self):
+        npcs = yaml.safe_load(
+            (ROOT / "estado/npcs/index.yaml").read_text(encoding="utf-8")
+        )["npcs"]
+        relations = yaml.safe_load(
+            (ROOT / "estado/relacoes/index.yaml").read_text(encoding="utf-8")
+        )["relacoes"]
+        classes = populacao.load_population(ROOT)["classificacoes"]
+        classified = (
+            set(classes["promovidos_agentes_estrategicos"])
+            | set(classes["promovidos_agentes_leves"])
+            | set(classes["persistentes_sem_agenda"])
+            | set(classes["representados_por_agente"])
+        )
+        self.assertTrue(set(npcs) - set(relations) <= classified)
+
+    def test_novo_npc_sem_relacao_exige_destino_em_cenario_isolado(self):
+        with tempfile.TemporaryDirectory() as temp:
+            repo = Path(temp)
+            for relative in (
+                populacao.POPULATION,
+                populacao.NPCS,
+                populacao.RELATIONS,
+                populacao.STRATEGIC,
+                populacao.LIGHT,
+            ):
+                target = repo / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / relative).read_bytes())
+
+            npc_path = repo / populacao.NPCS
+            npc_doc = yaml.safe_load(npc_path.read_text(encoding="utf-8"))
+            npc_doc["npcs"]["npc_sem_relacao_fixture"] = {
+                "arquivo": "estado/npcs/npc_sem_relacao_fixture.yaml"
+            }
+            npc_doc["quantidade"] = len(npc_doc["npcs"])
+            npc_path.write_text(
+                yaml.safe_dump(npc_doc, allow_unicode=True, sort_keys=False),
+                encoding="utf-8",
+            )
+
+            missing = populacao.validate_repo(repo)
+            self.assertFalse(missing["ok"])
+            self.assertIn("npc_sem_relacao_fixture", missing["erros"][0])
+
+            population_path = repo / populacao.POPULATION
+            inventory = yaml.safe_load(population_path.read_text(encoding="utf-8"))
+            inventory["classificacoes"]["persistentes_sem_agenda"].append(
+                "npc_sem_relacao_fixture"
+            )
+            population_path.write_text(
+                yaml.safe_dump(inventory, allow_unicode=True, sort_keys=False),
+                encoding="utf-8",
+            )
+            classified = populacao.validate_repo(repo)
+        self.assertTrue(classified["ok"], classified["erros"])
 
     def test_promocao_estrategica_vem_do_canone_existente(self):
         data = populacao.load_population(ROOT)["classificacoes"]

@@ -77,6 +77,7 @@ A Task 38 também fecha três lacunas da telemetria anterior:
 - `cronica concluir` e `cronica registrar` são sinais de avanço narrativo moderno, além do writer legado `turno.py registrar`;
 - `poetry run dados` e `poetry run dados-lote` são classificados como `dice`, mantendo compatibilidade com `rolar-dados.py` / `rolar-lote.py` antigos;
 - `contexto.py reputacao` é reconhecido como consulta L2.
+- `contexto.py continuidade` é reconhecido como consulta L2 reservada e dirigida.
 
 ## O que é medido diretamente pelo rollout
 

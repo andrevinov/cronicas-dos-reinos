@@ -1,0 +1,296 @@
+schema_continuidade_autoral: 1
+natureza: indice_reservado_de_compromissos
+finalidade: >-
+  Impedir que uma verdade instalada, um personagem persistente ou um fio capaz de
+  atravessar cenas volte a ser tratado como improviso sem decisão. Este arquivo é
+  índice e obrigação de revisão; os fatos permanecem nas fontes apontadas.
+autoridade:
+  cria_canone: false
+  cria_agenda: false
+  cria_conhecimento_de_ren: false
+  obriga_reaparecimento: false
+execucao:
+  validacao: manutencao_e_ci
+  consulta_dirigida: contexto.py continuidade
+  nivel_consulta: L2_reservado_sob_demanda
+  motivo_obrigatorio: true
+  hot_path_turno: false
+  checkpoint: false
+  lifecycle_sessao: false
+
+cobertura:
+  fonte_canonica: narrador/segredos/continuidade-lacunas.yaml
+  chaves_nao_narrativas:
+  - schema_continuidade_lacunas
+  - natureza
+  - fase_origem
+  - status
+  - decisoes_autorais
+  - instalada_em
+  - regra_de_uso
+  - guardrails
+
+compromissos:
+  coordenadora_cinza_azul:
+    tipo: identidade_npc_e_antagonista_local
+    consultas: [cinza_azul, mulher_cinza_azul, mirel_sorn]
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: cinza_azul
+    destinos_operacionais:
+    - arquivo: estado/npcs/index.yaml
+      chave: npcs.cinza_azul
+    - arquivo: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
+      chave: atores_materializados_durante_execucao
+    retomada:
+      modo: gatilho_causal
+      gatilho: escolha de Ren sobre custódia, interrogatório, provas ou saída da calaria
+
+  falsificador_da_calaria:
+    tipo: identidade_npc_e_autor_material
+    consultas: [falsificador_calaria, homem_corpulento_calaria, berren_taal]
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: falsificador_calaria
+    destinos_operacionais:
+    - arquivo: estado/npcs/index.yaml
+      chave: npcs.falsificador_calaria
+    - arquivo: narrador/sidequests-emergentes/progresso/qse-c721ace29e628024.yaml
+      chave: estado.atores.falsificador_calaria
+    retomada:
+      modo: gatilho_causal
+      gatilho: escolha de Ren sobre custódia, interrogatório, provas ou saída da calaria
+
+  investigacao_sete_nomes:
+    tipo: sidequest_em_execucao
+    consultas: [sete_nomes, ordem_sete_nomes, qse_c721ace29e628024]
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: sete_nomes
+    destinos_operacionais:
+    - arquivo: narrador/sidequests-emergentes/quests/qse-c721ace29e628024.yaml
+      chave: id
+    - arquivo: narrador/sidequests-emergentes/progresso/qse-c721ace29e628024.yaml
+      chave: estado
+    retomada:
+      modo: gatilho_causal
+      gatilho: avanço factual, prazo ou decisão de Ren ligada à ordem e às provas
+
+  mensageiro_da_ordem:
+    tipo: npc_testemunha
+    consultas: [mensageiro_sete_nomes, mensageiro_da_ordem]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: sete_nomes.mensageiro
+    destinos_operacionais:
+    - arquivo: estado/npcs/index.yaml
+      chave: npcs.mensageiro_sete_nomes
+    retomada:
+      modo: gatilho_causal
+      gatilho: busca posterior, consequência contratada ou nova evidência que alcance o mensageiro
+
+  verificador_de_transferencias:
+    tipo: papel_institucional_nao_materializado
+    consultas: [verificador_transferencias_sete_nomes, verificador_de_transferencias]
+    estado: reservado_nao_materializado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: sete_nomes.verificador
+    destinos_operacionais:
+    - arquivo: narrador/sidequests-emergentes/progresso/qse-c721ace29e628024.yaml
+      chave: estado.atores.verificador_transferencias_sete_nomes
+    retomada:
+      modo: gatilho_causal
+      gatilho: procura legítima de Ren por verificação institucional da ordem
+
+  identidade_documental_m_harrow:
+    tipo: identidade_documental_sem_pessoa_fisica
+    consultas: [m_harrow, identidade_m_harrow]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: m_harrow
+    sem_destino_operacional: >-
+      É uma construção documental, não um NPC; a verdade canônica reservada é sua
+      representação suficiente até nova evidência administrativa.
+    retomada:
+      modo: gatilho_causal
+      gatilho: novo registro M. Harrow ou iniciais M.H. com contexto probatório suficiente
+
+  supervisor_e_transportadora_da_casa_velha:
+    tipo: sobreviventes_dormentes_de_celula
+    consultas:
+    - casa_velha_primeiro_raio
+    - homem_manga_cinza_dois_aneis
+    - mulher_vermelho_tintureiros
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_velha_primeiro_raio.homem_manga_cinza_dois_aneis
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_velha_primeiro_raio.mulher_vermelho
+    sem_destino_operacional: >-
+      Permanecem representados pela resolução reservada da célula e não possuem
+      agenda, relação ou reaparição obrigatória.
+    retomada:
+      modo: gatilho_causal
+      gatilho: investigação, rastro ou ação da cadeia que volte a alcançar um deles
+
+  operadores_retirados_da_casa_velha:
+    tipo: figurantes_resolvidos_por_agente_pai
+    consultas: [casa_velha_primeiro_raio, narro, toll, vessa]
+    estado: encerrado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_velha_primeiro_raio.operadores_retirados
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_velha_primeiro_raio.local
+    sem_destino_operacional: >-
+      A retirada fora de cena foi resolvida e não cria identidades autônomas nem
+      obrigação de reaparição.
+    retomada:
+      modo: nenhuma
+      motivo: desfecho imediato instalado; eventual retorno exigiria nova causa canônica
+
+  sobreviventes_da_emboscada_do_restaurante:
+    tipo: celula_adversarial_dormente
+    consultas: [emboscada_restaurante, lider_emboscada_restaurante]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: emboscada_restaurante
+    destinos_operacionais:
+    - arquivo: narrador/agentes/index.yaml
+      chave: agentes.masao_hirasawa
+    retomada:
+      modo: gatilho_causal
+      gatilho: operação, pista ou reencontro que ligue causalmente a rede aos sobreviventes
+
+  caminho_da_casa_salgueiro_seco:
+    tipo: oportunidade_lateral_legitima
+    consultas: [casa_salgueiro_seco, jardineiro_salgueiro_seco, tomas_rell]
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_salgueiro_seco
+    destinos_operacionais:
+    - arquivo: estado/relacoes/index.yaml
+      chave: relacoes.tomas_rell
+    - arquivo: estado/relacoes/index.yaml
+      chave: relacoes.jardineiro_salgueiro_seco
+    retomada:
+      modo: gatilho_causal
+      gatilho: iniciativa de Ren, resposta de Tomas ou consequência legítima sobre a propriedade
+
+  proprietaria_da_casa_salgueiro_seco:
+    tipo: identidade_estavel_nao_materializada
+    consultas: [casa_salgueiro_seco, proprietaria_salgueiro_seco]
+    estado: reservado_nao_materializado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: casa_salgueiro_seco.proprietaria
+    sem_destino_operacional: >-
+      A proprietária existe, mas permanece representada por Tomas e pelo jardineiro
+      até contato, título ou apresentação legítima.
+    retomada:
+      modo: gatilho_causal
+      gatilho: negociação, investigação de título ou apresentação intermediada
+
+  participantes_de_tyr:
+    tipo: participantes_institucionais_persistentes
+    consultas: [garran_holt, caldrin_vos, participantes_tyr]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.garran_holt
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.caldrin_vos
+    destinos_operacionais:
+    - arquivo: narrador/agentes/index.yaml
+      chave: agentes.casa_de_tyr
+    retomada:
+      modo: gatilho_causal
+      gatilho: reencontro institucional ou investigação que exija testemunha da operação de Tyr
+
+  contatos_imobiliarios_dormentes:
+    tipo: contatos_sem_agenda
+    consultas: [orsa_kelm, marrin_holt, contatos_imobiliarios]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.orsa_kelm
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.marrin_holt
+    sem_destino_operacional: >-
+      São contatos condicionais representados pela origem reservada; não merecem
+      stub ou agenda antes de Ren perseguir os imóveis correspondentes.
+    retomada:
+      modo: gatilho_causal
+      gatilho: iniciativa de Ren sobre a Lança Torta ou a oficina dos Três Martelos
+
+  contato_arcano_lockwood:
+    tipo: contato_latente_sem_presenca
+    consultas: [lockwood_mooney, contato_arcano_lockwood]
+    estado: dormente_deliberado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.lockwood_mooney
+    destinos_operacionais:
+    - arquivo: narrador/agentes-leves/index.yaml
+      chave: agentes.jack_mooney
+    retomada:
+      modo: gatilho_causal
+      gatilho: mediação de Jack ou necessidade arcana que torne o contato relevante
+
+  figurantes_institucionais_encerrados:
+    tipo: figurantes_resolvidos_por_autoridade
+    consultas: [thorn, edris, pallen, figurantes_institucionais]
+    estado: encerrado
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: participantes_secundarios.thorn_edris_pallen
+    sem_destino_operacional: >-
+      A autoridade da cena preserva a participação histórica sem criar três agentes
+      ou identidades autônomas.
+    retomada:
+      modo: nenhuma
+      motivo: participação encerrada; eventual individualização dependeria de nova causa em cena
+
+  relogios_antigos_reavaliados:
+    tipo: pressoes_ativas_sem_avanco_retroativo
+    consultas:
+    - exposicao_do_contato_de_kethra
+    - exposicao_do_contato_de_pell
+    - rastro_fraco_no_pomar
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: relogios_reavaliados_em_19_eleasis
+    destinos_operacionais:
+    - arquivo: narrador/relogios/index.yaml
+      chave: relogios.exposicao_do_contato_de_kethra
+    - arquivo: narrador/relogios/index.yaml
+      chave: relogios.exposicao_do_contato_de_pell
+    - arquivo: narrador/relogios/index.yaml
+      chave: relogios.rastro_fraco_no_pomar
+    retomada:
+      modo: gatilho_causal
+      gatilho: nova pressão produzida por agente, operação ou evidência canônica
+
+  futuros_deliberadamente_abertos:
+    tipo: fronteiras_de_jogo_nao_resolvidas
+    consultas: [futuros_abertos, fronteiras_de_jogo]
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: narrador/segredos/continuidade-lacunas.yaml
+      chave: futuros_abertos
+    sem_destino_operacional: >-
+      A lista reúne decisões de Ren e possibilidades causais; convertê-la em agenda,
+      checklist de cenas ou estado terminal violaria agência e preparação reativa.
+    retomada:
+      modo: gatilho_causal
+      gatilho: escolha de Ren ou mudança objetiva do mundo que alcance uma fronteira listada

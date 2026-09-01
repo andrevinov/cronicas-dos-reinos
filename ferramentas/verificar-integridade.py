@@ -20,6 +20,12 @@ except ImportError as exc:
     raise SystemExit("PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt") from exc
 
 try:
+    import continuidade_autoral
+    import populacao
+except ModuleNotFoundError:
+    from ferramentas import continuidade_autoral, populacao
+
+try:
     import gate_adnd
 except ModuleNotFoundError:
     import importlib.util
@@ -115,10 +121,14 @@ REQUIRED_PATHS = (
     "regras/resolucao-de-acoes.md",
     "regras/adaptacoes-mecanicas.yaml",
     "runtime/README.md",
+    "narrador/continuidade-autoral.yaml",
+    "narrador/populacao-canonica.yaml",
     RUNTIME_CONTEXT,
     RUNTIME_SCENE,
     RUNTIME_EVENTS,
     "ferramentas/gerar-runtime.py",
+    "ferramentas/continuidade_autoral.py",
+    "ferramentas/populacao.py",
     "ferramentas/texturas.py",
     "ferramentas/gate_adnd.py",
     "cenario/texturas/index.yaml",
@@ -371,6 +381,15 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     errors.extend(validate_agent_router(repo, yaml_docs))
     errors.extend(gate_adnd.validate_repository(repo, yaml_docs))
     errors.extend(ruleset_5_5e.validate(repo))
+
+    continuity_result = continuidade_autoral.validate_repo(repo)
+    errors.extend(
+        f"continuidade autoral: {error}" for error in continuity_result["erros"]
+    )
+    population_result = populacao.validate_repo(repo)
+    errors.extend(
+        f"população canônica: {error}" for error in population_result["erros"]
+    )
 
     campanha = yaml_docs.get("campanha.yaml")
     estado = yaml_docs.get("estado/estado-atual.yaml")

@@ -25,7 +25,7 @@ O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes 
 
 - **L0:** contexto atual;
 - **L1:** `contexto.py status` — 4 KiB;
-- **L2:** consultas dirigidas (`cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`, `reputacao`, sessão atual) — 8 KiB;
+- **L2:** consultas (`cena`, `retomada`, `npc`, `local`, `relacao`, `recurso`, `conhecimento`, `regra`/`reputacao`/`continuidade`, sessão) — 8 KiB;
 - **L3:** `buscar ... --apos L2 --motivo ...` — 8 KiB; 2–5 lacunas: `contexto-buscar-muitos.py`;
 - **L4:** histórico estruturado — 12 KiB, sem transcrição;
 - **L4T:** transcrição, só após L4 — 16 KiB;

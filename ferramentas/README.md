@@ -236,6 +236,8 @@ python3 ferramentas/contexto.py npc kethra
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
+python3 ferramentas/contexto.py continuidade cinza_azul \
+  --motivo "A identidade objetiva é necessária para evitar contradição canônica."
 ```
 
 Busca L3:
@@ -260,6 +262,7 @@ Semântica principal:
 - `sessao atual`: L2;
 - `sessao N` histórica: L4 dirigido, sem transcrição;
 - `npc`, `relacao`, `conhecimento`, `regra`: L2;
+- `continuidade`: L2 reservado por alvo exato; exige motivo, mas não busca ampla;
 - `buscar`: L3 e exige escalada declarada.
 
 ### Histórico em dois degraus
@@ -308,6 +311,7 @@ Telemetria local fica **desligada por padrão**. Para um diagnóstico pontual, u
 - `contexto_core.py`: mecanismo de índices/fragmentos herdado;
 - `contexto.py`: porta pública com overlay, memória de sessão e política de acesso;
 - `politica_acesso.py`: classificação, escalada, motivos e tetos;
+- `continuidade_autoral.py`: validação fria e lookup reservado por chave exata;
 - `transacoes.py`: schema/aplicação/busca de deltas;
 - `sessoes.py`: handoff e índice de sessões.
 

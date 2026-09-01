@@ -81,6 +81,37 @@ Quando apropriado verificar YAML, referências/IDs, XP e nível, PV, recursos in
 
 Inconsistência encontrada deve ser corrigida ou registrada como pendência; não ignorá-la silenciosamente só porque não bloqueia a tarefa imediata.
 
+### Continuidade autoral preventiva
+
+Personagem nomeado, identidade operacional, grupo individualizável, local com
+desfecho próprio ou fio capaz de atravessar cenas não pode permanecer apenas na
+memória do narrador. Ao identificá-lo em manutenção, adotar exatamente um destino:
+
+- camada operacional própria, quando já existe e é necessária;
+- representação explícita por agente, instituição, grupo ou registro reservado;
+- estado dormente com gatilho causal de retomada;
+- encerramento explícito com motivo;
+- reserva não materializada, quando a existência é canônica mas a presença ainda não é.
+
+`narrador/populacao-canonica.yaml` cobre **todo** `estado/npcs/index.yaml`, inclusive
+NPCs sem relação com Ren. `narrador/continuidade-autoral.yaml` cobre compromissos
+que não cabem nesse inventário e aponta para a verdade canônica sem duplicá-la.
+Validar com `python3 ferramentas/populacao.py validar` e
+`python3 ferramentas/continuidade_autoral.py check`; ambos também integram o gate
+de integridade existente.
+
+Esses registros são frios: não entram em turno, checkpoint, lifecycle, runtime ou
+contexto do modelo; não criam agenda, reaparição, consequência nem conhecimento de
+Ren. A validação não tenta extrair semântica de transcrições. Quando uma revisão
+humana encontra novo compromisso, a ausência de classificação passa a ser erro
+estrutural verificável, sem transformar heurística em verdade narrativa.
+
+Cada compromisso também declara chaves exatas de consulta. Quando L0 e uma
+consulta comum de NPC não bastarem para uma questão objetiva de continuidade, usar
+`contexto.py continuidade <chave> --motivo "<lacuna concreta>"`. O roteador pode
+sugerir aproximações, mas nunca escolhe verdade por fuzzy matching. A saída abre
+somente a âncora selecionada, é reservada e não deve ser reproduzida ao jogador.
+
 Durante esta refatoração, executar também `python3 ferramentas/verificar-integridade.py` e, quando aplicável, comparar com a baseline lógica criada na Etapa 1.
 
 ## Git e histórico

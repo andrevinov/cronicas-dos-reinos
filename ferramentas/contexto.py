@@ -9,6 +9,7 @@ O motor fragmentado da Etapa 6 continua em `contexto_core.py`. Esta porta soma:
 - textura narrativa compacta e dirigida para NPCs/locais;
 - diálogo relacional projetado a partir dos medidores já carregados;
 - reputação pública dirigida por persona, sem score global ou leitura por rotina;
+- continuidade autoral reservada por alvo exato, sem varrer transcrições;
 - busca histórica em dois degraus: estruturado primeiro, transcrição só mediante
   `--historico --transcricoes`;
 - política mecânica de L1–L4T com teto de bytes e justificativa para escaladas.
@@ -37,6 +38,7 @@ if str(TOOLS_DIR) not in sys.path:
 
 import contexto_core as core
 import catalogo_regras
+import continuidade_autoral
 import dialogo_relacional
 import politica_acesso as politica
 import recursos
@@ -399,6 +401,11 @@ def command_reputation(repo: Path, term: str, public: str | None = None) -> dict
     return data
 
 
+def command_continuity(repo: Path, term: str) -> dict[str, Any]:
+    result, sources = continuidade_autoral.lookup(repo, term)
+    return envelope("continuidade", term, "L2", sources, result)
+
+
 def _iter_text_files(root: Path) -> Iterable[Path]:
     if not root.exists():
         return
@@ -599,6 +606,16 @@ def build_parser() -> argparse.ArgumentParser:
     reputation.add_argument("termo")
     reputation.add_argument("--publico", help="opcional: limita a consulta a um público social")
 
+    continuity = sub.add_parser(
+        "continuidade",
+        help="L2 reservado: verdade autoral dirigida por identidade ou fio conhecido",
+    )
+    continuity.add_argument("termo")
+    continuity.add_argument(
+        "--motivo",
+        help="lacuna concreta que exige consultar verdade reservada",
+    )
+
     search = sub.add_parser("buscar", help="L3/L4/L4T: busca limitada e escalonada")
     search.add_argument("termo")
     search.add_argument("--reservado", action="store_true", help="inclui narrador/; exige motivo")
@@ -647,6 +664,8 @@ def main() -> int:
         after = getattr(args, "apos", None)
         reason = getattr(args, "motivo", None)
         reserved = bool(getattr(args, "reservado", False))
+        if args.command == "continuidade":
+            reserved = True
         validated_reason = politica.validate_escalation(
             decision,
             after=after,
@@ -674,6 +693,8 @@ def main() -> int:
             data = command_knowledge(repo, args.termo)
         elif args.command == "reputacao":
             data = command_reputation(repo, args.termo, args.publico)
+        elif args.command == "continuidade":
+            data = command_continuity(repo, args.termo)
         elif args.command == "regra":
             data = command_rule(repo, args.termo)
         elif args.command == "buscar":
@@ -701,6 +722,7 @@ def main() -> int:
         memoria_sessoes.SessionMemoryError,
         politica.AccessPolicyError,
         reputacao_publica.PublicReputationError,
+        continuidade_autoral.ContinuityError,
     ) as exc:
         print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
         return 1

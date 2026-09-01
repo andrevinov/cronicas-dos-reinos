@@ -138,6 +138,13 @@ class RolloutNarrativeSystemsTest(RolloutFixture):
             mod._access_level_from_command("python3 ferramentas/contexto.py reputacao ren"),
             "L2",
         )
+        self.assertEqual(
+            mod._access_level_from_command(
+                "python3 ferramentas/contexto.py continuidade cinza_azul "
+                "--motivo 'A identidade objetiva precisa ser consultada.'"
+            ),
+            "L2",
+        )
 
     def test_dados_e_dados_lote_sao_dice_sem_depender_dos_wrappers_legados(self):
         for command in (

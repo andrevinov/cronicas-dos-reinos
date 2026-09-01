@@ -296,6 +296,7 @@ def classify(
         "conhecimento",
         "regra",
         "reputacao",
+        "continuidade",
     }:
         return AccessDecision("L2", None)
     if command == "sessao":

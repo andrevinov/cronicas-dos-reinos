@@ -109,28 +109,30 @@ com proveniência; `confirmar` só ocorre depois da aparição real. Detalhes:
 Rotina é o padrão. Há no máximo 1 nova reavaliação leve por checkpoint e 2 abertas;
 seleção por mais atrasado → maior prioridade → ID.
 
-A classificação v2 mantém cobertura explícita das **35 relações atuais** e separa
-quatro destinos operacionais:
+A classificação v3 mantém cobertura explícita de **todo NPC canônico atual**, com
+ou sem relação com Ren, e separa quatro destinos operacionais:
 
-- **1 agente estratégico:** Corven Dalm;
-- **8 agentes leves:** Kethra Dunn, Bram Vask, Luath, Silva Elkwood, Maerra Thandrel, Halessa Vorn, Jack Mooney e Pell;
-- **6 representados por agente-pai:** Brass, Rusk e o homem capturado pela Red Sail; Sirrus pela Casa de Tyr; Noll por Bram; Tobb por Jack;
-- **20 persistentes sem agenda:** continuam canônicos e capazes de agir quando cena/evento os alcançar, mas sem camada autônoma própria.
+- agentes estratégicos, quando o cânone já sustenta objetivo e capacidade autônomos;
+- agentes leves, quando rotina e iniciativa ocasional justificam reavaliação limitada;
+- subordinados representados por agente-pai, sem camada autônoma duplicada;
+- persistentes sem agenda, que continuam canônicos sem ganhar scheduler.
 
 Corven foi promovido porque o cânone atual já lhe dá objetivo próprio, recursos e
 alavancas informacionais, restrições, presença local e um plano em execução. A
 promoção estratégica **não cria cadência automaticamente**: ele só entra em agenda
 quando houver uma decisão explícita que justifique reavaliação periódica. Assim, a
-v2 melhora a agência sem adicionar despertador ao checkpoint.
+classificação melhora a agência sem adicionar despertador ao checkpoint.
 
 As primeiras reavaliações dos oito leves continuam escalonadas de **11 a 18 Eleasis**,
 uma estreia por amanhecer, sem alterar o orçamento. Colisões futuras são resolvidas
 pelo orçamento determinístico já existente.
 
 O inventário `../populacao-canonica.yaml` e `ferramentas/populacao.py` pertencem
-somente a manutenção/CI. Eles garantem cobertura 35/35, exclusividade entre as
+somente a manutenção/CI. Eles garantem cobertura integral do índice, exclusividade entre as
 quatro classes e impedem que um subordinado ganhe camada autônoma duplicada do
-agente-pai. Detalhes: `../agentes-leves/README.md` e `../agentes/README.md`.
+agente-pai. A quantidade é sempre derivada de `estado/npcs/index.yaml`, sem
+congelar o estado vivo em documentação ou teste. Detalhes:
+`../agentes-leves/README.md` e `../agentes/README.md`.
 
 ## Baralho e interação com agentes
 

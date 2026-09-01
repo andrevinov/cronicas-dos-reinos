@@ -18,7 +18,15 @@ spec.loader.exec_module(policy)
 class PoliticaAcessoTest(unittest.TestCase):
     def test_classificacao_dos_niveis_operacionais(self):
         self.assertEqual(policy.classify("status").level, "L1")
-        for command in ("cena", "retomada", "npc", "relacao", "conhecimento", "regra"):
+        for command in (
+            "cena",
+            "retomada",
+            "npc",
+            "relacao",
+            "conhecimento",
+            "regra",
+            "continuidade",
+        ):
             self.assertEqual(policy.classify(command).level, "L2")
         self.assertEqual(policy.classify("buscar").level, "L3")
         self.assertEqual(policy.classify("buscar", historical=True).level, "L4")
@@ -91,6 +99,15 @@ class PoliticaAcessoTest(unittest.TestCase):
         decision = policy.AccessDecision("L2", None)
         with self.assertRaises(policy.AccessPolicyError):
             policy.validate_escalation(decision, after=None, reason=None, reserved=True)
+
+        continuity = policy.classify("continuidade")
+        reason = policy.validate_escalation(
+            continuity,
+            after=None,
+            reason="A identidade objetiva é necessária para evitar contradição canônica.",
+            reserved=True,
+        )
+        self.assertIn("identidade", reason)
 
     def test_tetos_de_bytes_nao_podem_ser_aumentados_pelo_chamador(self):
         self.assertEqual(policy.effective_budget("L1", 16000), 4096)

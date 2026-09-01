@@ -95,6 +95,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_microeventos*.py",
         "test_incidentes_mundo.py",
         "test_condicoes_mundo*.py",
+        "test_continuidade_autoral.py",
         "test_presenca_incidental.py",
         "test_ecologia_local.py",
         "test_fase11_population.py",

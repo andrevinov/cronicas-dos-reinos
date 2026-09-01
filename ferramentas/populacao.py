@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Classifica o cânone já existente antes de criar novos atores do Mundo Vivo.
+"""Classifica todo NPC canônico antes de criar novos atores do Mundo Vivo.
 
 Esta ferramenta é de manutenção/CI, não pertence ao hot path. Ela garante que
-cada relação atual tenha uma decisão explícita: agente estratégico, agente leve,
-coberta por um agente-pai ou persistente sem agenda. Importância narrativa não
-implica scheduler e a promoção estratégica não cria cadência por si só.
+cada NPC atual, tenha ou não relação com Ren, receba uma decisão explícita: agente
+estratégico, agente leve, coberto por um agente-pai ou persistente sem agenda.
+Importância narrativa não implica scheduler e a promoção estratégica não cria
+cadência por si só.
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ from typing import Any
 import yaml
 
 POPULATION = Path("narrador/populacao-canonica.yaml")
+NPCS = Path("estado/npcs/index.yaml")
 RELATIONS = Path("estado/relacoes/index.yaml")
 STRATEGIC = Path("narrador/agentes/index.yaml")
 LIGHT = Path("narrador/agentes-leves/index.yaml")
@@ -54,12 +56,16 @@ def _ids(value: Any, label: str) -> list[str]:
 
 def load_population(repo: Path) -> dict[str, Any]:
     data = _map(_load(repo / POPULATION), POPULATION.as_posix())
-    if data.get("schema_populacao_canonica") != 2:
-        raise PopulationError("inventário deve usar schema_populacao_canonica: 2")
+    if data.get("schema_populacao_canonica") != 3:
+        raise PopulationError("inventário deve usar schema_populacao_canonica: 3")
     if data.get("natureza") != "inventario_reservado":
         raise PopulationError("inventário deve ter natureza: inventario_reservado")
-    if data.get("origem") != RELATIONS.as_posix():
-        raise PopulationError("inventário deve declarar estado/relacoes/index.yaml como origem")
+    if data.get("origem") != NPCS.as_posix():
+        raise PopulationError("inventário deve declarar estado/npcs/index.yaml como origem")
+    if data.get("origem_relacional") != RELATIONS.as_posix():
+        raise PopulationError(
+            "inventário deve declarar estado/relacoes/index.yaml como origem_relacional"
+        )
     classes = _map(data.get("classificacoes"), "classificacoes")
     _ids(classes.get("promovidos_agentes_estrategicos"), "promovidos_agentes_estrategicos")
     _ids(classes.get("promovidos_agentes_leves"), "promovidos_agentes_leves")
@@ -76,6 +82,7 @@ def load_population(repo: Path) -> dict[str, Any]:
 def validate_repo(repo: Path) -> dict[str, Any]:
     errors: list[str] = []
     counts = {
+        "npcs": 0,
         "relacoes": 0,
         "estrategicos": 0,
         "promovidos": 0,
@@ -84,12 +91,26 @@ def validate_repo(repo: Path) -> dict[str, Any]:
     }
     try:
         population = load_population(repo)
+        npc_doc = _map(_load(repo / NPCS), NPCS.as_posix())
+        if npc_doc.get("schema_npcs") != 2:
+            raise PopulationError("índice de NPCs deve usar schema_npcs: 2")
+        npcs = _map(npc_doc.get("npcs"), "npcs")
+        if npc_doc.get("quantidade") != len(npcs):
+            raise PopulationError("estado/npcs/index.yaml possui quantidade divergente")
+
         relation_doc = _map(_load(repo / RELATIONS), RELATIONS.as_posix())
         if relation_doc.get("schema_relacoes") != 2:
             raise PopulationError("índice de relações deve usar schema_relacoes: 2")
         relations = _map(relation_doc.get("relacoes"), "relacoes")
         if relation_doc.get("quantidade") != len(relations):
             raise PopulationError("estado/relacoes/index.yaml possui quantidade divergente")
+        npc_ids = set(npcs)
+        relation_ids = set(relations)
+        relations_without_npc = sorted(relation_ids - npc_ids)
+        if relations_without_npc:
+            raise PopulationError(
+                "relações sem NPC canônico: " + ", ".join(relations_without_npc)
+            )
 
         strategic_doc = _map(_load(repo / STRATEGIC), STRATEGIC.as_posix())
         light_doc = _map(_load(repo / LIGHT), LIGHT.as_posix())
@@ -116,9 +137,8 @@ def validate_repo(repo: Path) -> dict[str, Any]:
             raise PopulationError("classificações sobrepostas: " + ", ".join(sorted(overlaps)))
 
         classified = promoted_strategic | promoted_light | persistent | represented_ids
-        relation_ids = set(relations)
-        missing = sorted(relation_ids - classified)
-        extra = sorted(classified - relation_ids)
+        missing = sorted(npc_ids - classified)
+        extra = sorted(classified - npc_ids)
         if missing or extra:
             raise PopulationError(f"cobertura incompleta; ausentes={missing}, extras={extra}")
 
@@ -135,27 +155,27 @@ def validate_repo(repo: Path) -> dict[str, Any]:
         )
         if invalid_strategic_types:
             raise PopulationError(
-                "relações promovidas a estratégico devem apontar para agentes tipo npc: "
+                "NPCs promovidos a estratégico devem apontar para agentes tipo npc: "
                 + ", ".join(invalid_strategic_types)
             )
-        relation_strategic = relation_ids & strategic
-        if relation_strategic != promoted_strategic:
+        npc_strategic = npc_ids & strategic
+        if npc_strategic != promoted_strategic:
             raise PopulationError(
-                "relações estratégicas divergem do inventário; "
-                f"somente_indice={sorted(relation_strategic-promoted_strategic)}, "
-                f"somente_inventario={sorted(promoted_strategic-relation_strategic)}"
+                "NPCs estratégicos divergem do inventário; "
+                f"somente_indice={sorted(npc_strategic-promoted_strategic)}, "
+                f"somente_inventario={sorted(promoted_strategic-npc_strategic)}"
             )
 
         if not promoted_light <= light:
             raise PopulationError(
                 "promovidos ausentes do índice leve: " + ", ".join(sorted(promoted_light - light))
             )
-        relation_light = relation_ids & light
-        if relation_light != promoted_light:
+        npc_light = npc_ids & light
+        if npc_light != promoted_light:
             raise PopulationError(
-                "relações agendadas como leves divergem do inventário; "
-                f"somente_indice={sorted(relation_light-promoted_light)}, "
-                f"somente_inventario={sorted(promoted_light-relation_light)}"
+                "NPCs agendados como leves divergem do inventário; "
+                f"somente_indice={sorted(npc_light-promoted_light)}, "
+                f"somente_inventario={sorted(promoted_light-npc_light)}"
             )
 
         autonomous = strategic | light
@@ -175,6 +195,7 @@ def validate_repo(repo: Path) -> dict[str, Any]:
                 raise PopulationError(f"{child}: agente-pai inexistente: {parent}")
 
         counts = {
+            "npcs": len(npc_ids),
             "relacoes": len(relation_ids),
             "estrategicos": len(promoted_strategic),
             "promovidos": len(promoted_light),
@@ -192,6 +213,7 @@ def status(repo: Path) -> dict[str, Any]:
         **result,
         "fontes_lidas": [
             POPULATION.as_posix(),
+            NPCS.as_posix(),
             RELATIONS.as_posix(),
             STRATEGIC.as_posix(),
             LIGHT.as_posix(),

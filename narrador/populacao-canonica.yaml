@@ -1,10 +1,11 @@
-schema_populacao_canonica: 2
+schema_populacao_canonica: 3
 natureza: inventario_reservado
-origem: estado/relacoes/index.yaml
+origem: estado/npcs/index.yaml
+origem_relacional: estado/relacoes/index.yaml
 descricao: >-
-  Classificação fria dos relacionamentos canônicos atuais para decidir qual camada
-  operacional cada NPC merece no Mundo Vivo. Importância narrativa não implica
-  agenda periódica.
+  Classificação fria de todos os NPCs canônicos atuais para decidir qual camada
+  operacional cada identidade persistente merece no Mundo Vivo, tenha ou não
+  relação com Ren. Importância narrativa não implica agenda periódica.
 regra: >-
   Promover a agente estratégico somente quem já possui objetivo autônomo,
   recursos ou alavancas, restrições próprias e decisão/plano capazes de produzir
@@ -56,3 +57,7 @@ classificacoes:
   - velis_rook
   - tomas_rell
   - jardineiro_salgueiro_seco
+  - cinza_azul
+  - falsificador_calaria
+  - homem_maos_limpas
+  - mensageiro_sete_nomes

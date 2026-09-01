@@ -270,7 +270,7 @@ def _access_level_from_command(command: str) -> str | None:
     if re.search(r"\bcontexto\.py\b.*\bstatus\b", lower):
         return "L1"
     if re.search(
-        r"\bcontexto\.py\b.*\b(?:retomada|cena|sessao|npc|local|relacao|recurso|conhecimento|regra)\b",
+        r"\bcontexto\.py\b.*\b(?:retomada|cena|sessao|npc|local|relacao|recurso|conhecimento|regra|continuidade)\b",
         lower,
     ):
         return "L2"

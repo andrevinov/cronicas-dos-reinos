@@ -49,11 +49,13 @@ python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
 python3 ferramentas/contexto.py sessao atual
+python3 ferramentas/contexto.py continuidade cinza_azul \
+  --motivo "A identidade objetiva é necessária para evitar contradição canônica."
 ```
 
 Teto mecânico: **8 KiB**.
 
-L2 é o nível normal da narração quando L0 não basta. Índice + fragmento específico é preferível a busca ampla. `npc` pode trazer uma pequena paleta narrativa junto da relação/medidores; `local` consulta apenas uma paleta compacta de ambiente. Essas texturas são opcionais e não autorizam busca ampla adicional quando já forem suficientes.
+L2 é o nível normal da narração quando L0 não basta. Índice + fragmento específico é preferível a busca ampla. `npc` pode trazer uma pequena paleta narrativa junto da relação/medidores; `local` consulta apenas uma paleta compacta de ambiente. `continuidade` abre somente o compromisso reservado e sua âncora exata; por ser reservado, exige motivo concreto mesmo em L2. Essas consultas não autorizam busca ampla adicional quando já forem suficientes.
 
 ### L3 — descoberta limitada
 
@@ -177,7 +179,7 @@ Más justificativas: “para ter certeza”, “pode ser útil”, “só confer
 
 ## Relação com material reservado
 
-`--reservado` é uma dimensão de visibilidade, não um nível próprio. Uma busca reservada continua obedecendo L3/L4/L4T e sempre exige motivo concreto. Conteúdo reservado não deve aparecer como conhecimento de Ren sem descoberta legítima.
+`--reservado` é uma dimensão de visibilidade, não um nível próprio. Uma busca reservada continua obedecendo L3/L4/L4T e sempre exige motivo concreto. A consulta dirigida `continuidade` é L2 reservado e também exige motivo, sem `--apos`. Conteúdo reservado não deve aparecer como conhecimento de Ren sem descoberta legítima.
 
 ## Testes permanentes
 
@@ -188,6 +190,7 @@ Más justificativas: “para ter certeza”, “pode ser útil”, “só confer
 - salto dirigido para sessão histórica conhecida;
 - rejeição de motivo genérico;
 - exigência de motivo para reservado;
+- continuidade dirigida como L2 reservado sem fuzzy matching automático;
 - tetos de bytes por nível;
 - presença da condição de parada nas respostas;
 - rejeição CLI de buscas caras sem `--apos`/`--motivo`.

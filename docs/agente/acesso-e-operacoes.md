@@ -27,6 +27,8 @@ python3 ferramentas/contexto.py npc kethra
 python3 ferramentas/contexto.py relacao jack
 python3 ferramentas/contexto.py conhecimento masao
 python3 ferramentas/contexto.py regra furtividade
+python3 ferramentas/contexto.py continuidade cinza_azul \
+  --motivo "A identidade objetiva é necessária para evitar contradição canônica."
 ```
 
 Busca ampla e histórico exigem declarar qual nível foi insuficiente e a lacuna concreta:
@@ -58,7 +60,7 @@ A ferramenta aplica tetos mecânicos por nível: L1 4 KiB; L2/L3 8 KiB; L4 12 Ki
 
 - **L0 — contexto já disponível:** nenhuma leitura.
 - **L1 — estado quente:** `contexto.py status`.
-- **L2 — consulta dirigida:** `cena`, `retomada`, `npc`, `relacao`, `conhecimento`, `regra` ou sessão atual.
+- **L2 — consulta dirigida:** `cena`, `retomada`, `npc`, `relacao`, `conhecimento`, `regra`, `continuidade` ou sessão atual.
 - **L3 — descoberta limitada:** `buscar`, com `--apos L2 --motivo`.
 - **L4 — histórico estruturado:** `buscar --historico --apos L3 --motivo`; sessão histórica conhecida pode saltar diretamente de L2 para L4.
 - **L4T — evidência bruta:** `buscar --historico --transcricoes --apos L4 --motivo`.
@@ -241,6 +243,13 @@ L2. Pesquisa conhecimento consolidado — incluindo fragmentos incrementais rece
 ### `regra`
 
 L2. Busca resumos internos. Ausência não autoriza inventar regra.
+
+### `continuidade`
+
+L2 reservado. Resolve por chave explícita um compromisso de continuidade e abre
+somente suas âncoras canônicas, sem busca ampla, histórico ou transcrição. Exige
+`--motivo` concreto, não usa `--apos` e nunca transforma a verdade do narrador em
+conhecimento de Ren ou texto visível sem descoberta legítima.
 
 ### `buscar`
 

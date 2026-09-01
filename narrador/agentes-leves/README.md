@@ -33,10 +33,11 @@ python3 ferramentas/populacao.py validar
 
 ## População canônica
 
-O passo 11 parte de `estado/relacoes/index.yaml`, não de NPCs inventados. O
-inventário frio `narrador/populacao-canonica.yaml` classifica todas as 35 relações
-atuais em três grupos: agentes leves, personagens cobertos por um agente-pai e
-personagens persistentes sem agenda.
+O passo 11 parte de `estado/npcs/index.yaml`, usando relações apenas como camada
+adicional de consistência. O inventário frio `narrador/populacao-canonica.yaml`
+classifica todos os NPCs canônicos atuais em quatro grupos: agentes estratégicos,
+agentes leves, personagens cobertos por um agente-pai e personagens persistentes
+sem agenda.
 
 Agentes leves atuais, com primeira reavaliação escalonada:
 

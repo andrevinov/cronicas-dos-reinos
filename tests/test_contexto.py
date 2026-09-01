@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 MODULE_PATH = Path(__file__).parents[1] / "ferramentas" / "contexto.py"
 spec = importlib.util.spec_from_file_location("contexto", MODULE_PATH)
@@ -106,10 +109,51 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
     def test_npc_lookup_combines_fast_meter_and_relation(self):
-        data = mod.command_npc(REPO, "nera")
+        with patch.object(mod.continuidade_autoral, "lookup") as continuity_lookup:
+            data = mod.command_npc(REPO, "nera")
         self.assertTrue(data["resultado"]["encontrado"])
         self.assertIsNotNone(data["resultado"]["medidores"])
         self.assertIsNotNone(data["resultado"]["relacao"])
+        continuity_lookup.assert_not_called()
+
+    def test_continuidade_resolve_verdade_reservada_sem_busca_ampla(self):
+        data = mod.command_continuity(REPO, "cinza_azul")
+        self.assertTrue(data["resultado"]["encontrado"])
+        self.assertEqual(data["resultado"]["visibilidade"], "narrador")
+        self.assertEqual(
+            data["fontes"],
+            [
+                "narrador/continuidade-autoral.yaml",
+                "narrador/segredos/continuidade-lacunas.yaml",
+            ],
+        )
+        anchor = data["resultado"]["compromissos"][0]["verdade_canonica"][0]
+        self.assertEqual(anchor["chave"], "cinza_azul")
+        self.assertIsInstance(anchor["valor"], dict)
+        self.assertTrue(anchor["valor"])
+
+        decision = mod.politica.classify("continuidade")
+        decorated, budget = mod.politica.decorate(
+            data,
+            decision,
+            requested_budget=mod.DEFAULT_MAX_BYTES,
+            after=None,
+            reason="A identidade objetiva é necessária para evitar contradição canônica.",
+        )
+        rendered, truncated = mod.fit_budget(decorated, budget, False)
+        self.assertFalse(truncated)
+        self.assertLessEqual(len(rendered.encode("utf-8")), 8 * 1024)
+
+    def test_cli_de_continuidade_recusa_acesso_reservado_sem_motivo(self):
+        proc = subprocess.run(
+            [sys.executable, str(MODULE_PATH), "continuidade", "cinza_azul"],
+            cwd=REPO,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn("exige --motivo", proc.stderr)
 
     def test_recurso_broche_combina_mecanica_e_disponibilidade_em_l2(self):
         data = mod.command_resource(REPO, "Broche do Semblante Humilde")
