@@ -16,6 +16,14 @@ circo_e_kage:
   continua_disponivel: true
   regra_de_cobertura: Ren pode continuar apresentações e negar que seja Kage; a cidade cheia de estrangeiros sustenta
     ambiguidade até fatos quebrarem a cobertura.
+teia_urbana_ravens_bluff:
+  arquivo: narrador/arcos/parte_1/teia-urbana-ravens-bluff/index.yaml
+  fonte_base: LC3 - Nightwatch in the Living City
+  automatico: false
+  regra: >-
+    Consultar de forma dirigida apenas quando local, evento, consequência ou âncora causal
+    intersectar o roteador. A teia pode cruzar NPCs existentes, sidequests e pressões do
+    Mundo Vivo, mas nunca ocupa à força uma batida canônica nem cria conhecimento de Ren.
 integracao_aliados:
   shen_meihua:
   - pode buscar trabalho médico, hospitalar ou ligado a templo
