@@ -50,6 +50,7 @@ NARRATIVE_SYSTEM_KEYS = (
     "quest_rewards",
     "adversarial_integrity",
     "sidequest_progression",
+    "active_sidequest_reassessment",
     "canon_bridge",
 )
 
@@ -65,6 +66,7 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
     "quest_rewards": ("recompensas_sidequest.py", "recompensas-sidequest.py"),
     "adversarial_integrity": ("integridade_adversarial.py", "integridade-adversarial.py"),
     "sidequest_progression": ("progressao_sidequests.py", "progressao-sidequests.py"),
+    "active_sidequest_reassessment": ("sidequests_ativas.py", "sidequests-ativas.py"),
     "canon_bridge": ("canon_bridge_runtime.py", "canon-bridge-runtime.py"),
 }
 
@@ -111,6 +113,11 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
     "quest_rewards": ("quest_rewards", "contrato_recompensa"),
     "adversarial_integrity": ("adversarial_integrity", "contrato_adversarial"),
     "sidequest_progression": ("sidequest_progression", "contrato_progressao"),
+    "active_sidequest_reassessment": (
+        "active_sidequest_reassessment",
+        "sidequests_ativas_task48",
+        "sidequests_ativas:",
+    ),
     "canon_bridge": ("canon_bridge", "reserva_causal", "aguarda_evidencia"),
 }
 
@@ -359,8 +366,8 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
         "coverage": all_summary["sidequest_decision_coverage"],
         "decisions": all_summary["sidequest_opportunity_decisions"],
         "regra": (
-            "todo cronica preparar deve declarar exatamente --oportunidade-sidequest "
-            "ou --sem-oportunidade-sidequest"
+            "todo cronica preparar deve declarar exatamente se existe nova oportunidade; "
+            "sidequests aceitas são reavaliadas independentemente pela Task48"
         ),
     }
     for item, turn in zip(report.get("per_narration_turn") or [], narration):

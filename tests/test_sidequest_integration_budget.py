@@ -51,6 +51,11 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=sentinel) as base,
             patch.object(
+                cronica._sidequests48,
+                "integrate_prepare",
+                return_value=sentinel,
+            ) as active,
+            patch.object(
                 cronica._sidequests46,
                 "integrate_prepare",
                 side_effect=AssertionError("turno neutro não pode acordar integração de sidequest"),
@@ -59,6 +64,7 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
             result = cronica.prepare(ROOT, scene_id="sidequest-integration:neutro", sidequest_signal=None)
         self.assertIs(result, sentinel)
         base.assert_called_once()
+        active.assert_called_once()
         emergent.assert_not_called()
 
     def test_baseline_congela_zero_custo_e_duas_chamadas(self):
@@ -73,6 +79,10 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
         self.assertEqual(neutral["fragmentos_sidequest_emergente"], 0)
         self.assertEqual(neutral["leituras_horizonte_canonico_adicionais"], 0)
         self.assertEqual(neutral["transcricoes_lidas"], 0)
+        active = contract["turno_com_sidequest_ativa"]
+        self.assertEqual(active["fragmentos_task45_max"], 2)
+        self.assertEqual(active["leituras_task40_autoria"], 0)
+        self.assertEqual(active["escritas"], 0)
         self.assertTrue(contract["migracao"]["catalogo_task33_no_hot_path"])
         self.assertEqual(contract["infra"]["schedulers_novos"], 0)
         self.assertEqual(contract["infra"]["relogios_novos"], 0)
@@ -159,6 +169,10 @@ class SidequestOpportunityBudgetTest(unittest.TestCase):
         self.assertEqual(
             items[("ferramentas/sidequests_integracao_check.py",)],
             "integração de sidequests emergentes",
+        )
+        self.assertEqual(
+            items[("ferramentas/sidequests_ativas.py", "check")],
+            "projeção de sidequests ativas",
         )
         result = integration.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])

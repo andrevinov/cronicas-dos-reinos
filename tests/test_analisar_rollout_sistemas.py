@@ -233,8 +233,39 @@ class RolloutSidequestSystemsTest(RolloutFixture):
             "quest_rewards",
             "adversarial_integrity",
             "sidequest_progression",
+            "active_sidequest_reassessment",
         ):
             self.assertEqual(systems[system], 0, system)
+
+    def test_decisao_sem_nova_oportunidade_ainda_detecta_sidequest_ativa(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "active"}),
+            user("active", "Ren continua uma investigação aceita."),
+            call(
+                "active",
+                "p1",
+                "poetry run cronica preparar --cena-id active --sem-oportunidade-sidequest",
+            ),
+            output(
+                "active",
+                "p1",
+                "Process exited with code 0\nsidequests_ativas:\n"
+                "  resultado: ativas_projetadas\n"
+                "sistemas_narrativos: [active_sidequest_reassessment]\n",
+            ),
+            call("active", "c1", "poetry run cronica concluir --ticket crn1.fixture"),
+            output("active", "c1", "Process exited with code 0\nfase: concluida\n"),
+        ]
+        narr = mod.analyze(self.path(rows))["narration_turns"]
+        self.assertEqual(narr["sidequest_opportunity_decisions"]["sem_oportunidade"], 1)
+        self.assertEqual(
+            narr["narrative_system_turns"]["active_sidequest_reassessment"],
+            1,
+        )
+        self.assertEqual(
+            narr["narrative_system_turns"]["emergent_sidequest_opportunity"],
+            0,
+        )
 
 
 class RolloutOpportunityDecisionGateTest(RolloutFixture):

@@ -76,4 +76,5 @@ Todo desfecho terminal usa `canon_bridge_runtime.finish`. Falha pode liberar/rea
 - projeção de pendência <= 8 KiB;
 - no máximo 48 fatos e 24 atores por quest;
 - no máximo 2 pendências Task45, alinhado ao teto já existente de 2 sidequests aceitas;
-- turno comum não consulta Task45 automaticamente; integração completa ao hot path continua reservada à Task46.
+- desde a Task48, turno comum projeta read-only no máximo dois fragmentos Task45 de missões aceitas; registro factual/terminal continua explícito até a Task49;
+- autoria/materialização de nova sidequest continua reservada à Task46.

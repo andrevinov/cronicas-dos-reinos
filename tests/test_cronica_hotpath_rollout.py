@@ -41,7 +41,14 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         }
 
     def test_turno_comum_nao_inventa_gatilho_nem_chama_endpoint(self):
-        with mock.patch.object(cronica.endpoints, "scene") as endpoint:
+        with (
+            mock.patch.object(cronica.endpoints, "scene") as endpoint,
+            mock.patch.object(
+                cronica._sidequests48,
+                "integrate_prepare",
+                side_effect=lambda _repo, prepared, **_kwargs: prepared,
+            ),
+        ):
             result = cronica.prepare(
                 ROOT,
                 scene_id="s013-turno-comum",
@@ -56,11 +63,16 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         self.assertEqual(payload["cena"]["npcs"], [])
 
     def test_saida_preparar_ensina_conclusao_sem_help_ou_leitura_de_codigo(self):
-        result = cronica.prepare(
-            ROOT,
-            scene_id="s013-autossuficiente",
-            sidequest_signal=None,
-        )
+        with mock.patch.object(
+            cronica._sidequests48,
+            "integrate_prepare",
+            side_effect=lambda _repo, prepared, **_kwargs: prepared,
+        ):
+            result = cronica.prepare(
+                ROOT,
+                scene_id="s013-autossuficiente",
+                sidequest_signal=None,
+            )
         contract = result["contrato_conclusao"]
         self.assertIn("cronica concluir --ticket <ticket>", contract["comando"])
         self.assertEqual(
@@ -71,11 +83,16 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         self.assertIn("Não chamar --help", contract["disciplina"])
 
     def test_turno_neutro_conclui_sem_confirmacao_reativa_falsa(self):
-        prepared = cronica.prepare(
-            ROOT,
-            scene_id="s013-neutral-concluir",
-            sidequest_signal=None,
-        )
+        with mock.patch.object(
+            cronica._sidequests48,
+            "integrate_prepare",
+            side_effect=lambda _repo, prepared, **_kwargs: prepared,
+        ):
+            prepared = cronica.prepare(
+                ROOT,
+                scene_id="s013-neutral-concluir",
+                sidequest_signal=None,
+            )
         order = []
 
         def preflight(_repo, _tx):

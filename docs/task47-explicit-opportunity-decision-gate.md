@@ -11,7 +11,7 @@ A Task47 não faz a Task40 rodar mais vezes. Ela torna obrigatória uma decisão
 Todo `cronica preparar` deve declarar exatamente uma das duas opções:
 
 - `--oportunidade-sidequest`: existe uma âncora causal concreta e a Task40 deve ser consultada;
-- `--sem-oportunidade-sidequest`: a cena foi avaliada e não existe âncora causal concreta suficiente.
+- `--sem-oportunidade-sidequest`: a cena foi avaliada e não existe âncora causal concreta suficiente para uma nova sidequest.
 
 As opções são mutuamente exclusivas. O comando sem nenhuma das duas é inválido.
 
@@ -19,10 +19,11 @@ As opções são mutuamente exclusivas. O comando sem nenhuma das duas é invál
 
 `--sem-oportunidade-sidequest`:
 
-- não chama Task40–45;
-- não acrescenta leitura, escrita, RNG, scheduler, relógio ou scan;
+- não chama Task40 nem autoria/materialização Task41/43/44/45/46;
+- sem missão aceita, não acrescenta leitura, escrita, RNG, scheduler, relógio ou scan;
+- com missão aceita, permite somente a projeção read-only Task48 de no máximo dois fragmentos Task45;
 - não permite nenhum `--sidequest-*` junto da decisão negativa;
-- devolve exatamente o resultado do hot path que a Task46 já devolvia quando `sidequest_signal=None`.
+- preserva exatamente o resultado-base quando não há missão aceita.
 
 A decisão existe para impedir esquecimento do narrador, não para inserir um sistema novo no turno neutro.
 
@@ -42,7 +43,7 @@ A decisão existe para impedir esquecimento do narrador, não para inserir um si
 `cronica.prepare()` distingue omissão de decisão de decisão negativa:
 
 - omitir `sidequest_signal` é erro Task47 e falha antes do pending gate/hot path;
-- `sidequest_signal=None` é a decisão negativa explícita;
+- `sidequest_signal=None` é a decisão negativa explícita sobre nova oportunidade;
 - `sidequest_signal={<âncora>}` é a decisão positiva explícita.
 
 Isso impede que uma integração interna contorne silenciosamente o contrato da CLI.
@@ -66,7 +67,8 @@ Após a Task47, o mesmo comando sem decisão não pode prosseguir. O narrador pr
 
 ## Economia congelada
 
-- turno negativo: 2 chamadas de orquestração, 0 leituras Task40–45;
+- turno negativo sem missão aceita: 2 chamadas de orquestração, 0 leituras Task40–45;
+- turno negativo com missão aceita: mesmas 2 chamadas e projeção Task48 de até 2 fragmentos Task45;
 - turno positivo: 2 chamadas de orquestração, mesmos tetos Task40/Task46;
 - 0 scheduler novo;
 - 0 relógio novo;
@@ -81,9 +83,10 @@ A suíte cobre:
 1. CLI sem decisão falha;
 2. flags positiva/negativa são mutuamente exclusivas;
 3. API programática sem decisão falha antes de qualquer leitura;
-4. decisão negativa retorna o mesmo objeto do hot path e não chama Task40/Task46;
-5. decisão positiva chama a integração exatamente uma vez;
-6. oportunidade incompleta falha antes do pending gate;
-7. decisão negativa rejeita campos `--sidequest-*`;
-8. regressão Maerra: o comando antigo sem decisão é inválido e a forma positiva infere o NPC explícito;
-9. analisador de rollout reprova decisões ausentes/conflitantes e exige 100% de cobertura.
+4. decisão negativa sem missão aceita retorna o mesmo objeto do hot path e não chama Task40/Task46;
+5. decisão negativa com missão aceita projeta Task48 sem autorar oportunidade;
+6. decisão positiva chama a integração exatamente uma vez;
+7. oportunidade incompleta falha antes do pending gate;
+8. decisão negativa rejeita campos `--sidequest-*`;
+9. regressão Maerra: o comando antigo sem decisão é inválido e a forma positiva infere o NPC explícito;
+10. analisador de rollout reprova decisões ausentes/conflitantes e exige 100% de cobertura.

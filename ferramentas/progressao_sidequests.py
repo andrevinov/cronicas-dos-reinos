@@ -17,7 +17,8 @@ A regra funcional continua a mesma: ``sidequests_emergentes``/Task41 define a qu
 ``canon_bridge_runtime.finish``/Task42 governa o terminal canônico. Um desfecho
 adversarial devido entra no Mundo Vivo como pendência ``resolver_sidequest`` e só
 esta porta Task45 pode materializá-lo; ele nunca equivale a um no-op genérico. Não
-há scheduler novo e a integração automática ao hot path continua reservada à Task46.
+há scheduler novo. A Task46 integra a autoria/materialização de oportunidades novas;
+a Task48 apenas projeta este progresso de forma read-only no hot path.
 """
 from __future__ import annotations
 

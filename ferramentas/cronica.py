@@ -6,8 +6,9 @@ A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
 retomada compacta limpa, transporte de ticket tolerante a whitespace acidental,
 gate read-only de pendências, contratos operacionais tolerantes a aliases
-inequívocos, sidequests emergentes Task46 e a decisão explícita Task47 antes de
-todo ``cronica preparar``.
+inequívocos, sidequests emergentes Task46, a decisão explícita Task47 e a
+reavaliação read-only de sidequests aceitas Task48 antes de todo
+``cronica preparar``.
 """
 from __future__ import annotations
 
@@ -30,6 +31,7 @@ import mecanica_cronica as _mechanics
 import progressao_juppongatana
 import retomada_cronica
 import sessoes
+import sidequests_ativas as _sidequests48
 import sidequests_integracao_runtime as _sidequests46
 import transacoes
 
@@ -123,9 +125,18 @@ def prepare(*args, **kwargs):
         except _sidequests46.EmergentSidequestIntegrationError as exc:
             raise _core.CronicaError(str(exc)) from exc
     try:
+        prepared = _sidequests48.integrate_prepare(
+            Path(repo),
+            prepared,
+            decode_ticket=decode_ticket,
+            encode_ticket=_core.encode_ticket,
+        )
+    except _sidequests48.ActiveSidequestError as exc:
+        raise _core.CronicaError(f"Task48: {exc}") from exc
+    try:
         output_budget = (
             _sidequests46.MAX_COMBINED_PREP_BYTES
-            if "sidequest_emergente" in prepared
+            if "sidequest_emergente" in prepared or "sidequests_ativas" in prepared
             else _core.MAX_PREP_OUTPUT_BYTES
         )
         return _mechanics.attach_to_prepare(
@@ -144,8 +155,12 @@ def prepare(*args, **kwargs):
 def _task46_meta(token: str) -> tuple[dict, dict | None]:
     payload = decode_ticket(token)
     try:
+        _sidequests48.ticket_meta(payload)
         return payload, _sidequests46.ticket_meta(payload)
-    except _sidequests46.EmergentSidequestIntegrationError as exc:
+    except (
+        _sidequests46.EmergentSidequestIntegrationError,
+        _sidequests48.ActiveSidequestError,
+    ) as exc:
         raise _core.CronicaError(str(exc)) from exc
 
 
@@ -317,8 +332,8 @@ def build_parser() -> argparse.ArgumentParser:
         "--sem-oportunidade-sidequest",
         action="store_true",
         help=(
-            "declara que a cena foi avaliada e não contém âncora causal concreta; "
-            "mantém zero leituras Task40–45"
+            "declara que a cena não contém âncora para nova sidequest; missões já "
+            "aceitas continuam projetadas read-only pela Task48"
         ),
     )
     prepare_parser.add_argument("--sidequest-origem-tipo")

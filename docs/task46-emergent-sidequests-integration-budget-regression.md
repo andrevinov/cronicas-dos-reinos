@@ -18,10 +18,11 @@ Desde a Task47, o turno comum declara explicitamente a decisão negativa:
 3. `cronica concluir`
 
 `--sem-oportunidade-sidequest` significa que o narrador avaliou a cena e não viu
-âncora causal concreta. Essa decisão não chama Task40, não abre fragmento de
-sidequest, não lê horizonte canônico adicional e não acrescenta chamada de
-orquestração. Omitir tanto a decisão positiva quanto a negativa é inválido pela
-Task47.
+âncora causal concreta para **nova** sidequest. Essa decisão não chama Task40,
+não autora Task41/43/44/45, não lê horizonte canônico adicional e não acrescenta
+chamada de orquestração. Desde a Task48, missões já aceitas continuam projetadas
+read-only por seus fragmentos Task45. Omitir tanto a decisão positiva quanto a
+negativa é inválido pela Task47.
 
 ### Turno com oportunidade causal
 
@@ -80,7 +81,8 @@ não abre Task33 para descobrir uma missão. A fonte operacional é
 ## Orçamento congelado
 
 - turno comum: 2 chamadas de orquestração;
-- leituras Task40–45 no turno comum: 0;
+- sem sidequest aceita: leituras Task40–45 no turno comum = 0;
+- com sidequest aceita: no máximo 2 fragmentos Task45 read-only pela Task48;
 - fragmentos emergentes no turno comum: 0;
 - horizonte canônico adicional no turno comum: 0;
 - pacote autoral Task40: <= 8 KiB;

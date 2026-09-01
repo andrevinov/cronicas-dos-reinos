@@ -40,6 +40,7 @@ class PreflightTest(unittest.TestCase):
             ("ferramentas/integridade_adversarial.py", "check"),
             ("ferramentas/progressao_sidequests.py", "check"),
             ("ferramentas/sidequests_integracao_check.py",),
+            ("ferramentas/sidequests_ativas.py", "check"),
             ("ferramentas/oportunidades.py", "check"),
             ("ferramentas/canon_bridge_runtime.py", "check"),
         }
@@ -50,6 +51,7 @@ class PreflightTest(unittest.TestCase):
         self.assertIn("integridade adversarial", names)
         self.assertIn("progressão e consequências de sidequest", names)
         self.assertIn("integração de sidequests emergentes", names)
+        self.assertIn("projeção de sidequests ativas", names)
         self.assertIn("canon bridge", names)
         self.assertFalse(any("Task4" in name for name in names))
 

@@ -2,7 +2,9 @@
 
 ## Status e dependências
 
-**Planejada.** Este documento descreve implementação futura e não altera o contrato operacional enquanto a Task não estiver concluída, testada e incorporada ao `AGENTS.md`.
+**Implementada.** A projeção read-only vive em `ferramentas/sidequests_ativas.py`,
+é anexada por `cronica preparar` e faz parte do contrato operacional do
+`AGENTS.md`.
 
 Depende das Tasks 41–47 e preserva suas autoridades: Task42 governa pontes canônicas, Task43 recompensas, Task44 integridade adversarial, Task45 progresso factual, Task46 materialização transacional e Task47 a decisão explícita sobre **novas** oportunidades.
 
@@ -25,9 +27,13 @@ Separar dois conceitos hoje fundidos:
 
 ### Índice compacto de missões ativas
 
-`narrador/oportunidades/estado.yaml` manterá uma projeção derivável e validada dos IDs em estado `aceita`. O teto existente de duas sidequests aceitas permanece. A projeção não duplica contratos nem fatos; serve apenas para localizar os fragmentos Task45 sem scan global.
+`narrador/oportunidades/estado.yaml` já é o índice autoritativo consultado para
+localizar IDs em estado `aceita`; nenhum índice derivado novo é escrito. O teto
+existente de duas sidequests aceitas permanece. A projeção não duplica contratos
+nem fatos e abre diretamente, por caminho determinístico, no máximo dois
+fragmentos Task45.
 
-Uma porta read-only de domínio, preferencialmente `sidequests_ativas.py projetar`, devolverá para cada missão:
+A porta read-only de domínio `sidequests_ativas.py projetar` devolve para cada missão:
 
 - `mission_id`, `quest_id`, título e prazo;
 - fases abertas, resolvidas, impossíveis ou indeterminadas;
@@ -35,18 +41,18 @@ Uma porta read-only de domínio, preferencialmente `sidequests_ativas.py projeta
 - atores necessários e possibilidade de substituição;
 - terminal atual;
 - IDs de pressões adversariais já contratadas;
-- digest dos fragmentos Task41/44/45 lidos.
+- digests do registro da missão e do fragmento Task45 lido.
 
 A saída deve ser compacta e não expor segredos ao jogador. O ticket pode transportar somente IDs, digests e decisões exigidas; conteúdo reservado completo permanece no repositório.
 
 ### Integração ao `cronica preparar`
 
-Depois da barreira de pendências e antes da emissão final do ticket:
+Depois da integração Task46 e antes da emissão final do ticket:
 
 1. consultar o índice compacto;
 2. se não houver missão aceita, preservar o resultado neutro atual;
 3. se houver, projetar no máximo duas missões em ordem determinística;
-4. anexar `sidequests_ativas` e um `contrato_reavaliacao` ao preparo;
+4. anexar `sidequests_ativas`, `contrato_reavaliacao` e metadados compactos ao ticket;
 5. não mutar progresso, agenda, mundo, transcrição ou lifecycle nesta etapa.
 
 O caminho positivo da Task47 continua sendo o único capaz de chamar Task40 e autorar Task41/43/44/45 para uma nova oferta. O caminho negativo deixa de zerar a leitura Task45 somente quando já existir missão aceita.
@@ -65,13 +71,14 @@ Orçamento proposto:
 
 ### Observabilidade
 
-Adicionar consulta read-only por `mission_id` **ou** `quest_id`, sem exigir payload de resolução. Ela deve distinguir claramente:
+A consulta `sidequests_ativas.py status <id>` aceita `mission_id` **ou**
+`quest_id`, sem exigir payload de resolução. Ela distingue claramente:
 
 - inexistente;
 - oferecida/adiada;
 - aceita;
 - terminal;
-- contrato ausente ou divergente.
+- contrato Task45 ausente em missão aceita legada.
 
 Isso elimina a necessidade de abrir manualmente arquivos reservados apenas para descobrir se uma sidequest continua ativa.
 
@@ -87,7 +94,8 @@ Esta Task ainda não registra fatos nem encerra missões; isso pertence à Task4
 
 ## Testes
 
-Criar `tests/test_active_sidequest_projection.py` e ampliar testes de domínio existentes, sem nomes permanentes baseados no número da Task.
+Foi criado `tests/test_active_sidequest_projection.py` e foram ampliados testes de
+domínio existentes, sem nomes permanentes baseados no número da Task.
 
 Cobertura obrigatória:
 
@@ -116,4 +124,4 @@ Regressões existentes a preservar:
 - nenhum writer chamado durante projeção;
 - testes de domínio passam em fixture isolada;
 - `test-domain sidequests cronica`, `test-full` e `preflight` verdes;
-- `AGENTS.md` só é alterado depois que o comportamento estiver implementado.
+- `AGENTS.md` descreve o comportamento já implementado.

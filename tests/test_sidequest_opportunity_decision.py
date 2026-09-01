@@ -53,6 +53,11 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=sentinel) as hot,
             patch.object(
+                cronica._sidequests48,
+                "integrate_prepare",
+                return_value=sentinel,
+            ) as active,
+            patch.object(
                 cronica._sidequests46,
                 "integrate_prepare",
                 side_effect=AssertionError("decisão negativa não pode acordar integração de sidequest"),
@@ -65,6 +70,7 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             )
         self.assertIs(result, sentinel)
         hot.assert_called_once()
+        active.assert_called_once()
         emergent.assert_not_called()
 
     def test_oportunidade_positiva_chama_integracao_exatamente_uma_vez(self):
@@ -89,6 +95,11 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=base),
             patch.object(cronica._sidequests46, "integrate_prepare", return_value=integrated) as emergent,
+            patch.object(
+                cronica._sidequests48,
+                "integrate_prepare",
+                return_value=integrated,
+            ) as active,
         ):
             result = cronica.prepare(
                 ROOT,
@@ -97,6 +108,7 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             )
         self.assertIs(result, integrated)
         emergent.assert_called_once()
+        active.assert_called_once()
         self.assertEqual(emergent.call_args.kwargs["signal_raw"], signal)
 
     def test_oportunidade_incompleta_falha_antes_do_pending_gate(self):
