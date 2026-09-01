@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: fuji
+especialidades:
+  cerco_e_extracao:
+    nome: Cerco e extração
+    dominio: ruptura de fortificação, carga extrema e proteção de retirada
+    objetivo: Abrir passagem ou retirar um protegido sem reduzir força colossal a sucesso automático.
+    procedimentos:
+    - id: encontrar_eixo_de_cerco
+      gatilho: pode examinar por um minuto portão, muralha, ponte ou barricada
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Percepção, bonus: 10, cd: 18}
+      resultado_sucesso: Identifica apoio cuja ruptura abre passagem sem colapso total imediato.
+      resultado_falha: Identifica apenas o ponto mais resistente e a tentativa produzirá ruído e dano amplo.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por estrutura antes que ela mude}
+    - id: retirar_protegido
+      gatilho: alcança criatura ou carga e existe uma rota física até ponto seguro
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Atletismo, bonus: 15, cd: 20}
+      resultado_sucesso: Transporta o alvo pela rota mantendo cobertura com o próprio corpo.
+      resultado_falha: Avança apenas metade da rota e fica exposto com o alvo até a próxima ação.
+      custo: {recurso: vigor_montanha, quantidade: 1}
+      limite: {tipo: condicional, valor: exige rota física ampla o bastante}
+    contrajogo: [Dividir rotas, remover o protegido, usar passagens estreitas, atacar por múltiplos eixos e tornar o objetivo incompatível com avanço direto.]

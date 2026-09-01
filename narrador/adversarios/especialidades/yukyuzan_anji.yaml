@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: yukyuzan_anji
+especialidades:
+  demolicao_precisa:
+    nome: Demolição precisa
+    dominio: leitura estrutural e ruptura de obstáculos
+    objetivo: Abrir ou destruir uma passagem sem depender de força cega nem soterrar protegidos.
+    procedimentos:
+    - id: ler_estrutura
+      gatilho: pode examinar por um minuto uma porta, parede, pilar ou fundação acessível
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Investigação, bonus: 5, cd: 15}
+      resultado_sucesso: Identifica ponto de ruptura, direção da queda e uma zona segura observável.
+      resultado_falha: Identifica material e resistência, mas não controla o colapso sem risco adicional.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por estrutura antes que ela mude}
+    - id: abrir_passagem
+      gatilho: alcança o ponto de ruptura identificado sem oposição imediata
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Atletismo, bonus: 8, cd: 20}
+      resultado_sucesso: Abre passagem de 5 pés e direciona destroços para a zona prevista.
+      resultado_falha: Danifica a estrutura, mas cria ruído, atraso e risco de colapso não controlado.
+      custo: {recurso: foco_ruina, quantidade: 1}
+      limite: {tipo: condicional, valor: exige um ponto estrutural previamente identificado}
+    contrajogo: [Reforçar pontos fracos, negar tempo de inspeção, sustentar a estrutura magicamente ou afastá-lo do apoio.]

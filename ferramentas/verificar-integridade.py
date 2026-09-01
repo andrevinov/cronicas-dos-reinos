@@ -20,11 +20,12 @@ except ImportError as exc:
     raise SystemExit("PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt") from exc
 
 try:
+    import adversarios
     import continuidade_autoral
     import estrutura_narrador
     import populacao
 except ModuleNotFoundError:
-    from ferramentas import continuidade_autoral, estrutura_narrador, populacao
+    from ferramentas import adversarios, continuidade_autoral, estrutura_narrador, populacao
 
 try:
     import gate_adnd
@@ -123,6 +124,8 @@ REQUIRED_PATHS = (
     "regras/adaptacoes-mecanicas.yaml",
     "runtime/README.md",
     "narrador/continuidade-autoral.yaml",
+    "narrador/adversarios/contrato.yaml",
+    "narrador/adversarios/index.yaml",
     "narrador/estrutura.yaml",
     "narrador/populacao-canonica.yaml",
     "narrador/juppongatana/index.yaml",
@@ -131,6 +134,7 @@ REQUIRED_PATHS = (
     RUNTIME_EVENTS,
     "ferramentas/gerar-runtime.py",
     "ferramentas/continuidade_autoral.py",
+    "ferramentas/adversarios.py",
     "ferramentas/estrutura_narrador.py",
     "ferramentas/populacao.py",
     "ferramentas/texturas.py",
@@ -393,6 +397,10 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     population_result = populacao.validate_repo(repo)
     errors.extend(
         f"população canônica: {error}" for error in population_result["erros"]
+    )
+    adversary_result = adversarios.validate_repo(repo)
+    errors.extend(
+        f"adversários mecânicos: {error}" for error in adversary_result["erros"]
     )
     structure_result = estrutura_narrador.audit(repo)
     errors.extend(

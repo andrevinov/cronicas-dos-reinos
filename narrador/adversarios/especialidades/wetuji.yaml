@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: wetuji
+especialidades:
+  adaptacao_predatoria:
+    nome: Adaptação predatória
+    dominio: sobrevivência, perseguição e leitura de terreno
+    objetivo: Escolher uma rota que preserve opções sem transformar instinto em certeza sobrenatural.
+    procedimentos:
+    - id: ler_territorio
+      gatilho: observa por dez minutos terreno natural, ruína ou distrito pouco movimentado
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Sobrevivência, bonus: 10, cd: 18}
+      resultado_sucesso: Identifica três rotas reais e qual favorece altura, ocultação ou velocidade.
+      resultado_falha: Identifica apenas a rota mais óbvia e um perigo nela.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por área ou mudança significativa}
+    - id: seguir_presa
+      gatilho: possui rastro físico recente ou cheiro de objeto tocado pelo alvo
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Sobrevivência, bonus: 10, oposicao: Furtividade ou Sobrevivência do alvo}
+      resultado_sucesso: Mantém direção geral até o próximo cruzamento complexo; não descobre destino futuro.
+      resultado_falha: Perde o rastro e precisa de vestígio novo para tentar outra vez.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por trecho de rastro}
+    contrajogo: [Água corrente, transporte fechado, multidão, trilhas divididas e alteração deliberada do terreno.]

@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: uonuma_usui
+especialidades:
+  contra_furtividade:
+    nome: Contra-furtividade por Shingan
+    dominio: leitura de som, vibração, ar, cheiro e respiração
+    objetivo: Localizar passagem ou emboscada sem converter percepção especializada em onisciência.
+    procedimentos:
+    - id: ler_presenca
+      gatilho: criatura se move ou respira dentro de 60 pés sem cobertura total acústica
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Percepção, bonus: 13, oposicao: Furtividade da criatura}
+      resultado_sucesso: Localiza o espaço e o padrão de movimento, não identidade nem intenção.
+      resultado_falha: Não localiza a criatura e não pode repetir até surgir novo som ou vibração.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por novo indício sensorial}
+    - id: reconstruir_trajeto
+      gatilho: examina por um minuto um espaço atravessado nas últimas horas
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Percepção, bonus: 13, cd: 20}
+      resultado_sucesso: Reconstrói quantidade aproximada, direção e ritmo dos passos.
+      resultado_falha: Obtém somente a direção dominante e mistura rastros sobrepostos.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por local antes que os vestígios mudem}
+    contrajogo: [Cobertura total acústica, ruído distribuído, ausência de movimento, levitação e trilhas falsas.]

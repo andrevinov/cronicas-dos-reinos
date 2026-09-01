@@ -1,0 +1,130 @@
+schema_adversario: 1
+natureza: reservado
+id: uonuma_usui
+nome: Uonuma Usui
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Guerreiro 11 Mestre de Batalha cego e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original que torna luz e escuridão escolhas táticas, sem percepção onisciente.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Neutro mau}
+escala: {categoria: chefe, referencia: círculo do meio; contraespecialista de nível de referência 11}
+defesas: {ca: 19, pv: 154, dados_vida: 22d8+55}
+movimento: {terrestre: 35}
+atributos: {for: 16, des: 20, con: 15, int: 14, sab: 20, car: 15}
+bonus_proficiencia: 4
+iniciativa: 9
+salvaguardas: {des: 9, con: 6, sab: 9}
+pericias: {atletismo: 7, intuicao: 9, percepcao: 13, furtividade: 9}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: [cego]
+sentidos: {percepcao_passiva: 23, especiais: [percepcao_as_cegas 60 pés; 10 pés enquanto Surdo]}
+idiomas: [Comum, Wa-an, Kozakurano]
+recursos:
+- {id: leituras_shingan, nome: Leituras de Shingan, maximo: 5, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: shingan
+  nome: Shingan
+  regra: Dentro da percepção às cegas, invisibilidade e escuridão não concedem vantagem contra Usui; cobertura total ainda bloqueia ataques e som mascarado reduz o sentido.
+  contrajogo: [Criar distância superior a 60 pés, cobertura total, ruído amplo ou Surdez.]
+- id: timbei_no_kabe
+  nome: Timbei no Kabe
+  regra: Não pode ser flanqueado enquanto empunha o timbei e estiver consciente.
+  contrajogo: [Desarmar o escudo ou incapacitá-lo antes de cercar.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou até três criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz três ataques de Rochin., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair da percepção às cegas e do alcance da lança.]
+- id: rochin
+  nome: Rochin
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 9, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Estocada curta contra articulação ou abertura., dano: {formula: 1d10+5, tipo: perfurante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância, cobertura ou atacar fora de seu sentido.]
+- id: kokyu_yomi
+  nome: Kokyū Yomi
+  ativacao: acao
+  gatilho: null
+  alcance: 10 pés
+  alvos: uma criatura que Usui possa perceber respirando
+  resolucao: {tipo: salvaguarda, atributo: con, cd: 17}
+  efeitos:
+  - {quando: falha, regra: A estocada acompanha a inspiração; o alvo não pode usar reações e tem deslocamento reduzido à metade até o fim do próximo turno de Usui., dano: {formula: 4d8+5, tipo: perfurante}}
+  - {quando: sucesso, regra: Sofre metade do dano e evita os efeitos adicionais., dano: {formula: 2d8+2, tipo: perfurante}}
+  custo: {recurso: leituras_shingan, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Mascarar respiração e som, sair de 10 pés ou esgotar suas leituras.]
+- id: hibiki
+  nome: Hibiki
+  ativacao: acao
+  gatilho: null
+  alcance: raio de 60 pés
+  alvos: criaturas e superfícies no raio
+  resolucao: {tipo: automatica, condicao: poder produzir e ouvir eco metálico}
+  efeitos:
+  - {quando: uso, regra: "Até o fim do próximo turno, conhece posições de criaturas não atrás de cobertura total no raio; isso não revela identidade.", dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Silêncio, Surdez, cobertura total e ecos falsos.]
+acoes_bonus:
+- id: mumyo
+  nome: Mumyō
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: raio de 30 pés
+  alvos: fontes de luz não mágicas no raio e o próprio Usui
+  resolucao: {tipo: automatica, condicao: possuir 1 Leitura de Shingan}
+  efeitos:
+  - {quando: uso, regra: Apaga luzes não mágicas desprotegidas e move até 15 pés sem provocar ataques de oportunidade., dano: null}
+  custo: {recurso: leituras_shingan, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Luz mágica, proteger chamas e combater fora de 60 pés.]
+reacoes:
+- id: leitura_do_impacto
+  nome: Leitura do impacto
+  ativacao: reacao
+  gatilho: ser alvo de ataque por criatura dentro de sua percepção às cegas
+  alcance: pessoal
+  alvos: o ataque desencadeador
+  resolucao: {tipo: automatica, condicao: empunhar o timbei e perceber o atacante}
+  efeitos:
+  - {quando: reação, regra: Recebe +4 CA contra o ataque desencadeador., dano: null}
+  custo: {recurso: leituras_shingan, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Atacar de fora do sentido, consumir a reação ou forçar salvaguarda.]
+acoes_lendarias: []
+taticas:
+  abertura: [Apaga luz, produz eco e mede a respiração antes de avançar.]
+  prioridades: [Neutraliza o alvo mais silencioso ou móvel primeiro.]
+  adaptacoes: [Recua para corredor se múltiplos ecos mascararem posições.]
+  uso_terreno: [Prefere espaços escuros, pisos ressonantes e gargalos.]
+  evita: [Não luta em campo aberto contra ataque além de 60 pés.]
+retirada:
+  postura: recua
+  gatilhos: [Perde audição funcional., O inimigo sustenta ataque além de 60 pés.]
+  metodo: Usa fumaça, escuridão e uma rota memorizada antes do confronto.
+  custo_ou_risco: Abandona o timbei se ele impedir a fuga, reduzindo sua defesa futura.
+  sinais_observaveis: [Passa a tocar paredes e cessa provocações para ouvir rotas.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/uonuma_usui.yaml
+  ids: [contra_furtividade]

@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: amagiri_seishiro
+especialidades:
+  medicao_de_ameaca:
+    nome: Medição de ameaça
+    dominio: distância, iniciativa, hábitos de guarda e seleção de momento
+    objetivo: Determinar como interromper ou executar um alvo sem confundir observação com conhecimento secreto.
+    procedimentos:
+    - id: medir_maai
+      gatilho: observa por um minuto o alvo mover-se, treinar ou atravessar espaço sob pressão
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Intuição, bonus: 9, oposicao: Enganação ou Acrobacia do alvo}
+      resultado_sucesso: Identifica distância preferida, reação defensiva visível e uma rota provável de recuo.
+      resultado_falha: Obtém apenas a distância aparente e não pode distinguir movimento espontâneo de isca.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por conjunto novo de movimentos}
+    - id: escolher_intervalo
+      gatilho: possui a leitura de Maai e pode observar entradas e saídas da área
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Percepção, bonus: 9, cd: 20}
+      resultado_sucesso: Escolhe uma janela verificável em que cobertura e rota permitem aproximação sem exposição inicial.
+      resultado_falha: A janela exige sacrificar surpresa ou uma rota de saída.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por configuração do local}
+    contrajogo: [Variar rotina, criar movimento falso, alterar terreno depois da observação e negar linha contínua de vigilância.]

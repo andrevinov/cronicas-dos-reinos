@@ -1,0 +1,157 @@
+schema_adversario: 1
+natureza: reservado
+id: wetuji
+nome: Wetuji
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Hengeyokai-gata kensai 16 de Kara-Tur e técnicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco original 5.5e; preserva metamorfose e maestria sem transportar estatísticas de AD&D.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide hengeyokai, alinhamento: Caótico neutro}
+escala: {categoria: lendario, referencia: círculo interno; kensei hengeyokai de nível de referência 16}
+defesas: {ca: 20, pv: 210, dados_vida: 28d8+84}
+movimento: {terrestre: 55, escalada: 40}
+atributos: {for: 16, des: 24, con: 17, int: 15, sab: 20, car: 18}
+bonus_proficiencia: 5
+iniciativa: 12
+salvaguardas: {des: 12, con: 8, sab: 10}
+pericias: {acrobacia: 12, atletismo: 8, furtividade: 12, percepcao: 10, sobrevivencia: 10}
+vulnerabilidades: []
+resistencias: [contundente, cortante e perfurante de ataques não mágicos]
+imunidades_dano: []
+imunidades_condicao: [amedrontado]
+sentidos: {percepcao_passiva: 20, especiais: [visao_no_escuro 60 pés]}
+idiomas: [Comum, Kozakurano, Hengeyokai]
+recursos:
+- {id: nove_vidas, nome: Nove Vidas, maximo: 9, recuperacao: descanso_longo, condicao_recuperacao: null}
+- {id: acoes_lendarias, nome: Ações Lendárias, maximo: 3, recuperacao: inicio_turno, condicao_recuperacao: null}
+tracos:
+- id: neko_no_maai
+  nome: Neko no Maai
+  regra: Ataques de oportunidade contra Wetuji têm desvantagem; levantar-se custa apenas 5 pés de deslocamento.
+  contrajogo: [Impedir movimento, cercar destinos e forçar salvaguardas.]
+- id: kyumei
+  nome: Kyūmei
+  regra: Ao início de cada turno escolhe uma defesa visível contra distância, cerco ou magia; ganha vantagem na primeira salvaguarda correspondente até o próximo turno.
+  contrajogo: [Variar vetor de ataque depois que a defesa for declarada.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou até três criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz três ataques com Naginata Lunar ou Mujin no Tsume., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Dispersar-se e controlar a arma longa.]
+- id: naginata_lunar
+  nome: Naginata lunar
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 15 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 12, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Corte da esfera contínua de ameaça., dano: {formula: 2d10+7, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Entrar além da haste, desarmar ou atacar de fora de 15 pés.]
+- id: mujin_no_tsume
+  nome: Mujin no Tsume
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 12, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: "Haste, joelho, garra ou mordida em distância curta.", dano: {formula: 2d8+7, tipo: cortante}}
+  - {quando: acerto, regra: Wetuji pode mover 5 pés sem provocar ataque do alvo., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter guarda fechada e negar espaços laterais.]
+- id: byakko_otoshi
+  nome: Byakko Otoshi
+  ativacao: acao
+  gatilho: null
+  alcance: ponto a até 30 pés; raio de 10 pés
+  alvos: criaturas no raio
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 20}
+  efeitos:
+  - {quando: falha, regra: "Wetuji salta ao ponto, causa dano e deixa o alvo Caído.", dano: {formula: 5d10+7, tipo: cortante}}
+  - {quando: sucesso, regra: Sofre metade do dano e não fica Caído., dano: {formula: 2d10+3, tipo: cortante}}
+  custo: {recurso: nove_vidas, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Espalhar-se, bloquear o ponto de queda ou usar teto baixo.]
+acoes_bonus:
+- id: kemono_gaeshi
+  nome: Kemono-Gaeshi
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: a própria Wetuji
+  resolucao: {tipo: automatica, condicao: possuir 1 Nove Vidas}
+  efeitos:
+  - {quando: uso, regra: Assume forma parcialmente felina até o próximo turno; move 20 pés e ganha vantagem no próximo ataque corpo a corpo., dano: null}
+  custo: {recurso: nove_vidas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Bloquear destinos e consumir sua mobilidade com perigo de área.]
+reacoes:
+- id: mugetsu
+  nome: Mugetsu
+  ativacao: reacao
+  gatilho: sofrer dano de fonte que possa perceber
+  alcance: pessoal
+  alvos: a própria Wetuji
+  resolucao: {tipo: automatica, condicao: possuir 1 Nove Vidas}
+  efeitos:
+  - {quando: reação, regra: Reduz o dano em 2d10+7 e move 10 pés sem provocar ataques de oportunidade., dano: null}
+  custo: {recurso: nove_vidas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação, cercar destinos ou causar múltiplas fontes de dano.]
+acoes_lendarias:
+- id: kagefumi
+  nome: Kagefumi
+  ativacao: acao_lendaria
+  gatilho: fim do turno de outra criatura
+  alcance: 15 pés
+  alvos: uma criatura visível
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 20}
+  efeitos:
+  - {quando: falha, regra: O deslocamento do alvo é reduzido a 0 até o fim do turno atual., dano: null}
+  - {quando: sucesso, regra: O deslocamento não muda., dano: null}
+  custo: {recurso: acoes_lendarias, quantidade: 1}
+  limite: {tipo: condicional, valor: exige sombra visível do alvo}
+  contrajogo: [Não projetar sombra visível, usar teleporte ou sair de 15 pés.]
+- id: arco_da_lua
+  nome: Arco da lua
+  ativacao: acao_lendaria
+  gatilho: fim do turno de outra criatura
+  alcance: corpo a corpo, 15 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 12, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: A naginata percorre parte da esfera de ameaça., dano: {formula: 1d10+7, tipo: cortante}}
+  custo: {recurso: acoes_lendarias, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair de 15 pés e negar linha de ataque.]
+taticas:
+  abertura: [Conversa e observa até encontrar uma técnica digna de resposta.]
+  prioridades: [Controla distância e testa adaptação antes do dano máximo.]
+  adaptacoes: [Muda defesa Kyūmei e alterna haste, garras e salto.]
+  uso_terreno: [Explora alturas, sombras e espaços com múltiplos eixos.]
+  evita: [Não desperdiça Nove Vidas contra ameaça trivial.]
+retirada:
+  postura: recua
+  gatilhos: [Perde o interesse marcial., Fica com 60 PV ou menos sem razão própria para continuar.]
+  metodo: Assume forma felina e quebra perseguição por altura.
+  custo_ou_risco: Revela sua natureza hengeyokai e abandona a missão de Masao.
+  sinais_observaveis: [Sorri, baixa a naginata e os traços felinos tornam-se evidentes.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/wetuji.yaml
+  ids: [adaptacao_predatoria]

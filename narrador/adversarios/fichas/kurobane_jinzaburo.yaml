@@ -1,0 +1,132 @@
+schema_adversario: 1
+natureza: reservado
+id: kurobane_jinzaburo
+nome: Kurobane Jinzaburō
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Ladino 7 Ladrão e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original; a referência de classe informa escala e identidade, não importa níveis de personagem.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Caótico neutro}
+escala: {categoria: elite, referencia: círculo externo; especialista móvel de nível de referência 7}
+defesas: {ca: 16, pv: 78, dados_vida: 12d8+24}
+movimento: {terrestre: 40, escalada: 40}
+atributos: {for: 11, des: 19, con: 14, int: 14, sab: 15, car: 13}
+bonus_proficiencia: 3
+iniciativa: 7
+salvaguardas: {des: 7, int: 5}
+pericias: {acrobacia: 10, furtividade: 10, percepcao: 5, prestidigitacao: 10}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 15, especiais: []}
+idiomas: [Comum, Kozakurano]
+recursos:
+- {id: impulso_corvo, nome: Impulso do Corvo, maximo: 3, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: ataque_oportunista
+  nome: Ataque oportunista
+  regra: Uma vez por turno, ao acertar com arma tendo vantagem ou estando oculto do alvo, causa 4d6 de dano perfurante adicional.
+  contrajogo: [Negar vantagem e manter linha de visão recíproca.]
+- id: funazoko
+  nome: Funazoko
+  regra: Ignora terreno difícil causado por telhados, cordames, mastros e superfícies estreitas; tem vantagem para não cair neles.
+  contrajogo: [Forçá-lo para terreno aberto e sem elevação.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: conforme os ataques escolhidos
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: "Faz dois ataques, usando Wakizashi ou Shigure em qualquer combinação.", dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura e distância podem negar opções de alvo.]
+- id: wakizashi
+  nome: Wakizashi
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Corta o alvo., dano: {formula: 1d6+4, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair do alcance ou impedir vantagem.]
+- id: shigure
+  nome: Shigure
+  ativacao: acao
+  gatilho: null
+  alcance: distância, 60 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: distancia}
+  efeitos:
+  - {quando: acerto, regra: Uma lâmina pequena força o alvo a proteger rosto e olhos., dano: {formula: 1d4+4, tipo: perfurante}}
+  - {quando: acerto, regra: O alvo não pode fazer ataques de oportunidade até o início do próximo turno de Jinzaburō., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total ou distância superior a 60 pés.]
+- id: kuroito
+  nome: Kuroito
+  ativacao: acao
+  gatilho: null
+  alcance: 30 pés
+  alvos: uma criatura Grande ou menor, ou um objeto solto
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 15}
+  efeitos:
+  - {quando: falha, regra: Puxa o alvo até 15 pés; uma criatura pode largar o objeto preso para não ser movida., dano: null}
+  - {quando: sucesso, regra: O alvo não é movido., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cortar a corda CA 13 e 5 PV ou usar cobertura total.]
+acoes_bonus:
+- id: karasu_watari
+  nome: Karasu Watari
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio Jinzaburō
+  resolucao: {tipo: automatica, condicao: possuir 1 Impulso do Corvo}
+  efeitos:
+  - {quando: uso, regra: Move até seu deslocamento sem provocar ataques de oportunidade e pode atravessar espaço vertical escalável., dano: null}
+  custo: {recurso: impulso_corvo, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Bloquear destinos e remover pontos de ancoragem.]
+reacoes:
+- id: tsubasa_gaeshi
+  nome: Tsubasa Gaeshi
+  ativacao: reacao
+  gatilho: ser alvo de ataque corpo a corpo por criatura que possa vê-lo
+  alcance: 5 pés
+  alvos: o atacante
+  resolucao: {tipo: salvaguarda, atributo: con, cd: 15}
+  efeitos:
+  - {quando: falha, regra: O haori obscurece a visão; o ataque desencadeador tem desvantagem., dano: null}
+  - {quando: sucesso, regra: O ataque é resolvido normalmente., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir sua reação ou atacá-lo sem depender de visão.]
+acoes_lendarias: []
+taticas:
+  abertura: [Começa acima do alvo ou junto da rota do objeto que pretende tomar.]
+  prioridades: [Cumpre o roubo ou troca antes de buscar dano.]
+  adaptacoes: [Usa Kuroito para separar perseguidor e objetivo.]
+  uso_terreno: [Prefere telhados, cordames, janelas e desníveis.]
+  evita: [Não permanece em duelo quando o objetivo já foi obtido.]
+retirada:
+  postura: recua
+  gatilhos: [Obtém o objeto-alvo., Fica com 25 PV ou menos sem vantagem vertical.]
+  metodo: Usa rota preparada, Karasu Watari e Kuroito para romper linha de visão.
+  custo_ou_risco: Pode abandonar lâminas, ganchos ou uma cópia secundária.
+  sinais_observaveis: [Olha para ancoragens e desloca a mão para uma corda já posicionada.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/kurobane_jinzaburo.yaml
+  ids: [furto_vertical]

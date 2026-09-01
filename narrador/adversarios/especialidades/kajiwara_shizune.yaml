@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: kajiwara_shizune
+especialidades:
+  guerra_administrativa:
+    nome: Guerra administrativa
+    dominio: falsificação, identidade, cadeia documental e autoridade fabricada
+    objetivo: Fazer uma instituição agir sobre uma mentira verificável apenas tarde demais.
+    procedimentos:
+    - id: kuroi_in
+      gatilho: dispõe de exemplar, materiais e uma hora por página ou selo
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Prestidigitação, bonus: 10, cd: 20}
+      resultado_sucesso: Produz documento que passa por inspeção rotineira; perícia forense ainda pode contestá-lo.
+      resultado_falha: Produz uma inconsistência detectável em papel, fórmula, dobra, tinta ou selo.
+      custo: {recurso: preparacoes, quantidade: 1}
+      limite: {tipo: condicional, valor: exige modelo e materiais compatíveis}
+    - id: vestir_autoridade
+      gatilho: apresenta identidade e documento preparados a funcionário ou testemunha
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Enganação, bonus: 10, oposicao: Intuição ou Investigação do verificador}
+      resultado_sucesso: O verificador aceita provisoriamente a autoridade e age dentro de suas atribuições normais.
+      resultado_falha: O verificador exige confirmação independente e registra a tentativa.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por identidade diante do mesmo verificador}
+    contrajogo: [Conferência por canal independente, cadeia de custódia, duas testemunhas, arquivo redundante e comparação material por especialista.]

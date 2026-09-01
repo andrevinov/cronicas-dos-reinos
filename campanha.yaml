@@ -106,6 +106,9 @@ estrutura:
     personagem_conhecimento: personagens/jogador/conhecimento.md
     personagem_resumo_poderes: personagens/jogador/resumo-de-poderes.md
     area_do_narrador: narrador/README.md
+    adversarios_mecanicos: narrador/adversarios/README.md
+    adversarios_contrato: narrador/adversarios/contrato.yaml
+    adversarios_indice: narrador/adversarios/index.yaml
     juppongatana: narrador/juppongatana/README.md
     juppongatana_elenco: narrador/juppongatana/index.yaml
     juppongatana_conducao: narrador/juppongatana/conducao.md

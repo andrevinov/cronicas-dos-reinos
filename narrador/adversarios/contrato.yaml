@@ -1,0 +1,34 @@
+schema_contrato_adversarios: 1
+natureza: contrato_mecanico_reservado
+ruleset_obrigatorio: dnd_5_5e
+orcamento:
+  indice_max_bytes: 4096
+  consulta_dirigida_max_bytes: 8192
+  fragmento_base_max_bytes: 8192
+  fragmento_especialidades_max_bytes: 8192
+tipos_adversario: [npc, criatura]
+funcoes: [combatente, especialista, hibrido]
+escalas: [comum, elite, chefe, lendario]
+origens_mecanicas:
+- oficial_5_5e
+- original_campanha
+- adaptado_edicao_anterior
+- compatibilidade_2014_aprovada
+ativacoes: [acao, acao_bonus, reacao, acao_lendaria]
+tipos_resolucao: [ataque, salvaguarda, teste, teste_oposto, automatica]
+modos_ataque: [corpo_a_corpo, distancia, magia]
+executores_teste: [adversario, opositor]
+atributos: [for, des, con, int, sab, car]
+tipos_limite: [ilimitado, usos_por_descanso, recarga, condicional]
+recuperacoes_recurso: [descanso_curto, descanso_longo, inicio_turno, condicional, nao_recupera]
+posturas_retirada: [recua, rende_se, luta_ate_incapacitado]
+invariantes:
+  numeros_definidos_antes_da_rolagem: true
+  dificuldade_nao_muda_pos_rolagem: true
+  toda_acao_tem_resolucao_e_contrajogo: true
+  escala_lendaria_exige_acao_lendaria: true
+  custo_referencia_recurso_declarado: true
+  especialidade_nao_combativa_tem_procedimento: true
+  taticas_nao_substituem_decisao_causal: true
+  retirada_nao_e_salvamento_automatico: true
+  consulta_dirigida_nao_abre_outros_adversarios: true

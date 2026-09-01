@@ -1,0 +1,154 @@
+schema_adversario: 1
+natureza: reservado
+id: fuji
+nome: Fuji
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Bárbaro 14, Guerreiro 3 e técnicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco original para guarda final, cerco e força possivelmente oni.
+perfil: {tamanho: Enorme, tipo_criatura: Humanoide, alinhamento: Leal neutro}
+escala: {categoria: lendario, referencia: círculo interno; muralha viva de referência 17}
+defesas: {ca: 18, pv: 285, dados_vida: 30d12+90}
+movimento: {terrestre: 40}
+atributos: {for: 28, des: 10, con: 24, int: 14, sab: 18, car: 15}
+bonus_proficiencia: 6
+iniciativa: 0
+salvaguardas: {for: 15, con: 13, sab: 10}
+pericias: {atletismo: 15, intuicao: 10, percepcao: 10}
+vulnerabilidades: []
+resistencias: [contundente, cortante, perfurante]
+imunidades_dano: []
+imunidades_condicao: [amedrontado]
+sentidos: {percepcao_passiva: 20, especiais: []}
+idiomas: [Comum, Kozakurano, Gigante]
+recursos:
+- {id: vigor_montanha, nome: Vigor da Montanha, maximo: 3, recuperacao: descanso_curto, condicao_recuperacao: null}
+- {id: goten, nome: Gōten, maximo: 1, recuperacao: descanso_longo, condicao_recuperacao: null}
+- {id: acoes_lendarias, nome: Ações Lendárias, maximo: 3, recuperacao: inicio_turno, condicao_recuperacao: null}
+tracos:
+- id: kongo
+  nome: Kongō
+  regra: Tem vantagem contra empurrão, queda, atordoamento ou paralisia; conta como Gargântuesco para carga e manobras.
+  contrajogo: [Negar apoio, usar controle mental ou separá-lo do objetivo.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques de Daikokutō., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância ou impedir o arco.]
+- id: daikokuto
+  nome: Daikokutō
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 15 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 15, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: A lâmina colossal atravessa cobertura leve., dano: {formula: 3d12+9, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total, distância ou espaço estreito.]
+- id: jishin
+  nome: Jishin
+  ativacao: acao
+  gatilho: null
+  alcance: raio de 20 pés centrado em Fuji
+  alvos: outras criaturas apoiadas no chão no raio
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 23}
+  efeitos:
+  - {quando: falha, regra: A criatura é empurrada 10 pés e fica Caída; o chão vira terreno difícil até ser reparado., dano: {formula: 5d10+9, tipo: contundente}}
+  - {quando: sucesso, regra: Sofre metade do dano e não é movida., dano: {formula: 2d10+4, tipo: contundente}}
+  custo: {recurso: vigor_montanha, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Não tocar o chão ou lutar além de 20 pés.]
+- id: oni_no_kiba
+  nome: Ōni no Kiba
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura Enorme ou menor
+  resolucao: {tipo: teste_oposto, atributo_ou_pericia: Atletismo, bonus: 15, oposicao: Atletismo ou Acrobacia do alvo}
+  efeitos:
+  - {quando: sucesso, regra: O alvo fica Agarrado; Fuji pode movê-lo 20 pés ou arremessá-lo 30 pés e deixá-lo Caído., dano: {formula: 2d10+9, tipo: contundente}}
+  - {quando: falha, regra: O alvo não é agarrado nem movido., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Evitar alcance, aumentar tamanho ou teleportar.]
+- id: goten
+  nome: Gōten
+  ativacao: acao
+  gatilho: null
+  alcance: linha de 40 pés por 10 pés
+  alvos: criaturas e objetos na linha
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 23}
+  efeitos:
+  - {quando: falha, regra: "Sofre o golpe anunciado, é empurrado 20 pés e fica Caído; objetos sofrem dano dobrado.", dano: {formula: 10d12+9, tipo: cortante}}
+  - {quando: sucesso, regra: Sofre metade do dano e pode mover 5 pés para fora da linha sem reação., dano: {formula: 5d12+4, tipo: cortante}}
+  custo: {recurso: goten, quantidade: 1}
+  limite: {tipo: condicional, valor: exige anunciar a linha no fim do turno anterior}
+  contrajogo: [Como é anunciado, sair da linha ou impedir o balanço.]
+acoes_bonus:
+- id: fudo_myoo
+  nome: Fudō Myōō
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio Fuji e uma criatura atrás dele
+  resolucao: {tipo: automatica, condicao: possuir 1 Vigor da Montanha}
+  efeitos:
+  - {quando: uso, regra: "Até o próximo turno recebe +2 CA, não pode ser movido e concede cobertura total à criatura protegida.", dano: null}
+  custo: {recurso: vigor_montanha, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Mudar o eixo ou esperar a postura terminar.]
+reacoes:
+- id: tetsumaku
+  nome: Tetsumaku
+  ativacao: reacao
+  gatilho: Fuji ou criatura a até 10 pés ser atingida por ataque que ele possa perceber
+  alcance: 10 pés
+  alvos: o ataque desencadeador
+  resolucao: {tipo: automatica, condicao: empunhar a Daikokutō}
+  efeitos:
+  - {quando: reação, regra: Reduz o dano do ataque em 3d12+9; dano restante atinge Fuji em vez do aliado protegido., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação ou forçar salvaguardas.]
+acoes_lendarias:
+- id: varredura_ashura
+  nome: Varredura Ashura
+  ativacao: acao_lendaria
+  gatilho: fim do turno de outra criatura
+  alcance: corpo a corpo, 15 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 15, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: A Daikokutō varre o espaço lateral., dano: {formula: 2d12+9, tipo: cortante}}
+  custo: {recurso: acoes_lendarias, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair de 15 pés e manter cobertura total.]
+taticas:
+  abertura: [Interpõe o corpo entre perigo e protegido.]
+  prioridades: [Bloqueia passagem e extrai antes de perseguir.]
+  adaptacoes: [Quebra o terreno contra mobilidade inimiga.]
+  uso_terreno: [Transforma corredor, ponte e portão em extensão do corpo.]
+  evita: [Não causa destruição sem relação com proteção ou objetivo.]
+retirada:
+  postura: recua
+  gatilhos: [O protegido alcança rota segura., Masao ordena retirada por meio verificável.]
+  metodo: Recua por último e usa Jishin para fechar a passagem.
+  custo_ou_risco: Aceita ferimentos graves e abandona terreno, nunca o protegido consciente.
+  sinais_observaveis: [Muda de golpes amplos para passos curtos e verifica a distância do protegido.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/fuji.yaml
+  ids: [cerco_e_extracao]

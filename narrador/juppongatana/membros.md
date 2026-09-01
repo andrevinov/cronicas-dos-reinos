@@ -11,9 +11,9 @@ Não revelar este conteúdo ao jogador salvo descoberta legítima em jogo.
 Tudo neste arquivo é canônico para a campanha, exceto quando marcado como boato,
 versão conhecida por Ren ou dúvida deliberada.
 
-As classes e níveis são escala de referência para D&D 5e. Antes de combate real,
-converter cada membro em bloco de estatísticas de NPC, com ações lendárias ou
-traços especiais quando a escala exigir.
+As classes e níveis são escala de referência para D&D 5e. Os blocos executáveis
+5.5e já preparados ficam em `narrador/adversarios/`; não reconstruir números a
+partir de classe nem ajustá-los depois de rolagens.
 
 ---
 

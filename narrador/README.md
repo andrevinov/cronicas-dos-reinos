@@ -29,6 +29,12 @@ narrador/
 │   ├── README.md
 │   ├── index.yaml
 │   └── <agente>.yaml
+├── adversarios/
+│   ├── README.md
+│   ├── contrato.yaml
+│   ├── index.yaml
+│   ├── fichas/
+│   └── especialidades/
 ├── mundo/
 │   ├── README.md
 │   ├── agenda.yaml
@@ -89,6 +95,14 @@ Durante narração, consultar um agente de forma dirigida com
 `python3 ferramentas/agentes.py mostrar <id-ou-nome>`. A validação ampla
 `python3 ferramentas/agentes.py validar` pertence a manutenção/CI e não ao loop
 normal de cada turno.
+
+## Adversários mecânicos
+
+`adversarios/` é uma autoridade mecânica separada: não decide presença, plano ou
+conhecimento, mas impede que NPC competente ou criatura entre em resolução com
+números, ações ou especialidades vagos. Consultar somente o adversário presente
+com `adversarios.py mostrar`; abrir uma especialidade não combativa apenas quando
+ela for materialmente relevante. A população canônica começa na fase seguinte.
 
 ## Mundo Vivo
 

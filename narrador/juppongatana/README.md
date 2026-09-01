@@ -39,6 +39,11 @@ dos dez membros. Este README não mantém uma segunda tabela do elenco.
 Classes, níveis de referência, história, personalidade e técnicas continuam nos
 perfis dirigidos de `membros.md`.
 
+Os blocos mecânicos executáveis ficam no registro separado
+`narrador/adversarios/index.yaml`, usando os mesmos dez IDs. Esse vínculo não
+cria presença nem ação: o agente individual continua governando elegibilidade,
+conhecimento e objetivo.
+
 ---
 
 ## Progressão de Ren

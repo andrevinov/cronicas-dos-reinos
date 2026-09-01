@@ -1,0 +1,132 @@
+schema_adversario: 1
+natureza: reservado
+id: kajiwara_shizune
+nome: Kajiwara Shizune
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Ladina 7 Mastermind e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original; especialidade administrativa é mais perigosa que confronto direto.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Leal mau}
+escala: {categoria: elite, referencia: círculo externo; estrategista administrativa de nível de referência 7}
+defesas: {ca: 16, pv: 72, dados_vida: 13d8+13}
+movimento: {terrestre: 30}
+atributos: {for: 9, des: 18, con: 13, int: 19, sab: 16, car: 18}
+bonus_proficiencia: 3
+iniciativa: 7
+salvaguardas: {des: 7, int: 7, sab: 6}
+pericias: {enganacao: 10, intuicao: 9, investigacao: 10, persuasao: 10, prestidigitacao: 7}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 16, especiais: []}
+idiomas: [Comum, Kozakurano, Shou, linguagem administrativa de Ravens Bluff]
+recursos:
+- {id: preparacoes, nome: Preparações, maximo: 3, recuperacao: descanso_longo, condicao_recuperacao: null}
+tracos:
+- id: golpe_cirurgico
+  nome: Golpe cirúrgico
+  regra: Uma vez por turno, ao acertar criatura com vantagem ou afetada por uma condição, causa 3d6 de dano perfurante adicional.
+  contrajogo: [Negar vantagem, remover condições e não permitir que escolha o terreno.]
+- id: rosto_banal
+  nome: Rosto banal
+  regra: Observador sem motivo concreto para suspeitar tem desvantagem para reconhecê-la através de disfarce mundano.
+  contrajogo: [Verificar identidade por sinal independente, senha ou documento cuja cadeia seja conhecida.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: conforme os ataques escolhidos
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques com Beni no Kizu ou Shikei no Hane., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Forçar distância e manter cobertura.]
+- id: beni_no_kizu
+  nome: Beni no Kizu
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Lâmina fina oculta em manga ou estojo., dano: {formula: 1d6+4, tipo: perfurante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Revistar estojos e manter distância.]
+- id: shikei_no_hane
+  nome: Shikei no Hane
+  ativacao: acao
+  gatilho: null
+  alcance: distância, 30 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: distancia}
+  efeitos:
+  - {quando: acerto, regra: "Agulha, pincel ou estilete atinge ponto vulnerável.", dano: {formula: 1d4+4, tipo: perfurante}}
+  - {quando: acerto, regra: O alvo tem desvantagem na próxima salvaguarda de Constituição antes do fim do próximo turno de Shizune., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura e proteção rígida de mãos, rosto e pescoço.]
+- id: tsumetai_shomei
+  nome: Tsumetai Shomei
+  ativacao: acao
+  gatilho: null
+  alcance: 30 pés
+  alvos: uma criatura capaz de ouvi-la
+  resolucao: {tipo: salvaguarda, atributo: sab, cd: 15}
+  efeitos:
+  - {quando: falha, regra: "Até o fim do próximo turno de Shizune, o alvo não pode usar reações e tem desvantagem no próximo teste de Intuição.", dano: null}
+  - {quando: sucesso, regra: O alvo reconhece a pressão e fica imune a esta técnica até o próximo amanhecer., dano: null}
+  custo: null
+  limite: {tipo: condicional, valor: uma tentativa por criatura por cena}
+  contrajogo: [Impedir audição, apresentar prova independente ou afastar-se do diálogo.]
+acoes_bonus:
+- id: utsushi_mi
+  nome: Utsushi-mi
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: a própria Shizune
+  resolucao: {tipo: automatica, condicao: possuir 1 Preparação}
+  efeitos:
+  - {quando: uso, regra: Desengaja e se move até 15 pés para cobertura ou multidão; pode tentar se esconder se ficar obscurecida., dano: null}
+  custo: {recurso: preparacoes, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Eliminar cobertura e controlar saídas antes de confrontá-la.]
+reacoes:
+- id: hari_no_koe
+  nome: Hari no Koe
+  ativacao: reacao
+  gatilho: criatura a até 30 pés declarar ataque antes de rolar
+  alcance: 30 pés
+  alvos: o atacante capaz de ouvi-la
+  resolucao: {tipo: salvaguarda, atributo: sab, cd: 15}
+  efeitos:
+  - {quando: falha, regra: O ataque desencadeador é feito com desvantagem., dano: null}
+  - {quando: sucesso, regra: O ataque é resolvido normalmente., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Impedir audição ou consumir sua reação com ataque menos importante.]
+acoes_lendarias: []
+taticas:
+  abertura: [Chega com identidade, documento e testemunha preparados.]
+  prioridades: [Rompe coordenação e escapa antes de trocar golpes.]
+  adaptacoes: [Expõe uma contradição ou terceiro quando documentos perdem valor.]
+  uso_terreno: [Prefere arquivo, tribunal, multidão e portas sob autoridade alheia.]
+  evita: [Não aceita duelo limpo nem permanece sem saída administrativa.]
+retirada:
+  postura: recua
+  gatilhos: [Sua identidade física fica verificável., Fica com 30 PV ou menos.]
+  metodo: Usa disfarce, multidão, ordem falsa e uma rota previamente legitimada.
+  custo_ou_risco: Queima uma identidade preparada e deixa documento rastreável.
+  sinais_observaveis: [Interrompe explicações e toca um selo ou estojo específico.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/kajiwara_shizune.yaml
+  ids: [guerra_administrativa]

@@ -372,6 +372,18 @@ python3 ferramentas/agentes.py detalhar <id-ou-nome> metodos_operacionais
 O segundo comando só abre a seção pedida; `autonomia_estrategica` é a outra
 seção permitida. Ambos respeitam o teto de 8 KiB.
 
+Adversários mecanicamente preparados também são dirigidos:
+
+```bash
+python3 ferramentas/adversarios.py mostrar <id-ou-nome>
+python3 ferramentas/adversarios.py especialidade <id-ou-nome> <especialidade-id>
+python3 ferramentas/adversarios.py validar
+```
+
+Os dois primeiros comandos abrem somente a ficha ou especialidade pedida; o
+terceiro é gate frio. A camada não cria encontros nem substitui presença/plano
+dos agentes. Registro vazio é válido até a população deliberada da fase seguinte.
+
 Baseline lógica:
 
 ```bash

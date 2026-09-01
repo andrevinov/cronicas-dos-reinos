@@ -26,6 +26,7 @@ TESTS = ROOT / "tests"
 # rápido depois de ser reconhecido como pequeno/determinístico. Isso evita que
 # uma mudança futura de implementação faça um arquivo caro entrar silenciosamente.
 FAST_FILES: tuple[str, ...] = (
+    "test_adversarios.py",
     "test_analisar_rollout.py",
     "test_analisar_rollout_sistemas.py",
     "test_auditar_testes.py",
@@ -51,6 +52,7 @@ FAST_FILES: tuple[str, ...] = (
 # mais de uma área. Ao pedir vários domínios, os arquivos são deduplicados.
 DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     "mecanica": (
+        "test_adversarios.py",
         "test_mecanica_*.py",
         "test_ficha_ren.py",
         "test_cronica_mecanica.py",
@@ -85,6 +87,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_torneio_clandestino.py",
     ),
     "mundo": (
+        "test_adversarios.py",
         "test_mundo*.py",
         "test_agentes*.py",
         "test_direcoes*.py",

@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: sawagejo_cho
+especialidades:
+  caca_de_armas:
+    nome: Caça de armas e estilos
+    dominio: história marcial, avaliação de lâminas e leitura de técnica
+    objetivo: Identificar valor, origem, fraqueza e padrão de uma arma ou escola marcial.
+    procedimentos:
+    - id: ler_lamina
+      gatilho: pode examinar uma arma, bainha, dano ou marca de forja por um minuto
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Investigação, bonus: 8, cd: 18}
+      resultado_sucesso: Determina tradição, qualidade, modificação e uma vulnerabilidade material observável.
+      resultado_falha: Obtém apenas a escola provável e pode confundir reparo com fabricação.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por peça ou novo vestígio}
+    - id: decifrar_estilo
+      gatilho: observa ao menos dois ataques ou uma sequência completa do alvo
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Investigação, bonus: 8, oposicao: Enganação ou Acrobacia do praticante}
+      resultado_sucesso: Reconhece o princípio do estilo e prevê sua distância preferida.
+      resultado_falha: Registra um padrão falso e precisa de nova evidência para tentar outra vez.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por sequência observada}
+    contrajogo: [Ocultar marcas, usar arma substituta, alternar escola e introduzir movimento deliberadamente falso.]

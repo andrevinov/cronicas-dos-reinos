@@ -1,0 +1,134 @@
+schema_adversario: 1
+natureza: reservado
+id: kureha_shiranui
+nome: Kureha Shiranui
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Maga 11 Necromancia e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original com ritos explícitos de cinza, medo, fogo e terreno.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Neutro mau}
+escala: {categoria: chefe, referencia: círculo do meio; ritualista de nível de referência 11}
+defesas: {ca: 16, pv: 112, dados_vida: 16d8+40}
+movimento: {terrestre: 30}
+atributos: {for: 8, des: 16, con: 15, int: 20, sab: 18, car: 17}
+bonus_proficiencia: 4
+iniciativa: 7
+salvaguardas: {int: 9, sab: 8, con: 6}
+pericias: {arcana: 13, intuicao: 8, medicina: 8, religiao: 13}
+vulnerabilidades: []
+resistencias: [necrótico, fogo]
+imunidades_dano: []
+imunidades_condicao: [amedrontado]
+sentidos: {percepcao_passiva: 14, especiais: []}
+idiomas: [Comum, Kozakurano, Shou]
+recursos:
+- {id: talismas_vermelhos, nome: Talismãs Vermelhos, maximo: 6, recuperacao: descanso_longo, condicao_recuperacao: null}
+tracos:
+- id: oficiante_da_nevoa
+  nome: Oficiante da névoa
+  regra: Enxerga normalmente através de névoa ou cinza criada por suas técnicas e sabe quando criatura marcada por Kokkai entra a 120 pés.
+  contrajogo: [Vento forte, água abundante, remover a marca e lutar fora da área preparada.]
+- id: ritualista_preparada
+  nome: Ritualista preparada
+  regra: Seus efeitos não atravessam cobertura total e terminam se a própria técnica disser; dissipar ou destruir talismãs continua válido.
+  contrajogo: [Identificar âncoras, quebrar linha de efeito e forçá-la a mudar de campo.]
+acoes:
+- id: kasei_fudo
+  nome: Kasei Fudō
+  ativacao: acao
+  gatilho: null
+  alcance: distância, 90 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 9, defesa: ca, modo: magia}
+  efeitos:
+  - {quando: acerto, regra: Talismã explode em faísca e marca ardente., dano: {formula: 2d8+5, tipo: fogo}}
+  - {quando: acerto, regra: O alvo emite luz fraca e não pode ficar invisível até o fim do próximo turno de Kureha., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total, resistência a fogo e romper linha de visão.]
+- id: akagiri
+  nome: Akagiri
+  ativacao: acao
+  gatilho: null
+  alcance: esfera de 20 pés a até 90 pés
+  alvos: criaturas na esfera
+  resolucao: {tipo: salvaguarda, atributo: con, cd: 17}
+  efeitos:
+  - {quando: falha, regra: A criatura fica Cega até o fim do próximo turno de Kureha; a área fica fortemente obscurecida por um minuto., dano: {formula: 4d6+5, tipo: veneno}}
+  - {quando: sucesso, regra: Sofre metade do dano e não fica Cega; a área ainda fica obscurecida., dano: {formula: 2d6+2, tipo: veneno}}
+  custo: {recurso: talismas_vermelhos, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Vento forte dispersa a esfera no fim da rodada; cobertura total impede o efeito inicial.]
+- id: tsuchibaka
+  nome: Tsuchibaka
+  ativacao: acao
+  gatilho: null
+  alcance: quadrado de 20 pés a até 60 pés
+  alvos: criaturas apoiadas na área
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 17}
+  efeitos:
+  - {quando: falha, regra: A criatura fica Impedida por lama e cinza; usa ação e salvaguarda de Força CD 17 para se libertar., dano: null}
+  - {quando: sucesso, regra: Não fica Impedida; a área continua sendo terreno difícil., dano: null}
+  custo: {recurso: talismas_vermelhos, quantidade: 1}
+  limite: {tipo: condicional, valor: dura um minuto ou até Kureha ficar Incapacitada}
+  contrajogo: [Não tocar o solo, sair antes do fechamento ou destruir os quatro talismãs CA 12 e 1 PV.]
+- id: shakunetsu_no_higan
+  nome: Shakunetsu no Higan
+  ativacao: acao
+  gatilho: null
+  alcance: 60 pés
+  alvos: uma criatura Amedrontada, Cega ou marcada por Kokkai
+  resolucao: {tipo: salvaguarda, atributo: sab, cd: 17}
+  efeitos:
+  - {quando: falha, regra: O alvo sofre colapso espiritual e fica Amedrontado até o fim do próximo turno de Kureha., dano: {formula: 7d8+5, tipo: necrótico}}
+  - {quando: sucesso, regra: Sofre metade do dano e não fica Amedrontado., dano: {formula: 3d8+2, tipo: necrótico}}
+  custo: {recurso: talismas_vermelhos, quantidade: 2}
+  limite: {tipo: condicional, valor: "exige alvo Cego, Amedrontado ou marcado"}
+  contrajogo: [Remover a condição ou marca, quebrar linha de efeito e preservar recursos contra Sabedoria.]
+acoes_bonus:
+- id: yurei_utsushi
+  nome: Yūrei Utsushi
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: a própria Kureha
+  resolucao: {tipo: automatica, condicao: possuir 1 Talismã Vermelho e ver espaço a até 30 pés dentro de névoa ou penumbra}
+  efeitos:
+  - {quando: uso, regra: Teleporta ao espaço e deixa um corpo falso até o início do próximo turno; o primeiro ataque contra o corpo falso erra automaticamente., dano: null}
+  custo: {recurso: talismas_vermelhos, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Iluminação plena, dissipar névoa e guardar ataques até localizar o destino.]
+reacoes:
+- id: shibito_no_suzu
+  nome: Shibito no Suzu
+  ativacao: reacao
+  gatilho: criatura a até 60 pés passar em salvaguarda contra uma técnica de Kureha
+  alcance: 60 pés
+  alvos: a criatura desencadeadora capaz de ouvir o sino
+  resolucao: {tipo: salvaguarda, atributo: sab, cd: 17}
+  efeitos:
+  - {quando: falha, regra: A criatura repete a salvaguarda desencadeadora e usa o novo resultado., dano: null}
+  - {quando: sucesso, regra: Mantém o sucesso e fica imune ao sino até o próximo amanhecer., dano: null}
+  custo: {recurso: talismas_vermelhos, quantidade: 1}
+  limite: {tipo: condicional, valor: uma vez por criatura por cena}
+  contrajogo: [Impedir audição, consumir sua reação ou destruir o sino.]
+acoes_lendarias: []
+taticas:
+  abertura: [Prepara cinza e uma rota de névoa antes de se revelar.]
+  prioridades: [Impede mobilidade e visão antes de causar dano alto.]
+  adaptacoes: [Troca medo por fogo quando o alvo resiste a Sabedoria.]
+  uso_terreno: [Usa cinza, lama, corredores e âncoras rituais visíveis.]
+  evita: [Não permanece em área ventilada sem talismãs preparados.]
+retirada:
+  postura: recua
+  gatilhos: [Fica com 35 PV ou menos., Perde todos os Talismãs Vermelhos.]
+  metodo: Usa corpo falso e névoa para alcançar uma âncora ritual de saída.
+  custo_ou_risco: Abandona âncoras que podem revelar sua assinatura.
+  sinais_observaveis: [A névoa converge para uma direção e ela recolhe o sino junto ao peito.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/kureha_shiranui.yaml
+  ids: [campo_ritual]

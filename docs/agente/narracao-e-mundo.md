@@ -60,6 +60,24 @@ Para a Juppongatana, nunca presumir que a existência do coletivo significa que 
 
 `python3 ferramentas/agentes.py validar` percorre fragmentos e fontes para conferir schema, mobilidade e proveniência. Essa validação pertence a manutenção/CI, **não ao loop normal de narração**.
 
+## Adversários mecanicamente preparados
+
+Agente estratégico e ficha mecânica têm autoridades diferentes. `agentes.py`
+responde o que um ator quer, sabe e pode mobilizar; `adversarios.py` responde como
+um NPC ou criatura já preparado resolve ações e especialidades. A ficha não cria
+presença, encontro, conhecimento nem intenção.
+
+Antes da primeira resolução mecânica de um adversário registrado, consultar
+somente `adversarios.py mostrar <id-ou-nome>`. Se o desafio depender de falsificação,
+perseguição, comando, investigação ou outra excelência não combativa, abrir também
+uma única seção com `adversarios.py especialidade <id> <especialidade-id>`.
+Ausência de ficha não autoriza inventar números depois da rolagem: preparar o bloco
+antes ou usar explicitamente um equivalente oficial já autorizado.
+
+Intervenção de aliado, retirada do inimigo e rota de fuga continuam consequências
+causais do mundo, não corretores de balanceamento retroativo. `adversarios.py validar`
+é manutenção/CI e não entra no turno comum.
+
 A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. A cadência de reavaliação vem do Mundo Vivo; não transformar uma pendência em obrigação de agir.
 
 ## Agentes recorrentes leves

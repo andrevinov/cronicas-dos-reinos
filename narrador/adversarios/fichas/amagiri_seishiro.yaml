@@ -1,0 +1,155 @@
+schema_adversario: 1
+natureza: reservado
+id: amagiri_seishiro
+nome: Amagiri Seishirō
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Guerreiro 12 Samurai e Ladino 3 Assassino; técnicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original centrado em iniciativa, distância, execução e leitura prévia.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Leal neutro}
+escala: {categoria: lendario, referencia: círculo interno; executor multiclasse de nível de referência 15}
+defesas: {ca: 19, pv: 178, dados_vida: 21d8+84}
+movimento: {terrestre: 45}
+atributos: {for: 14, des: 22, con: 18, int: 17, sab: 19, car: 16}
+bonus_proficiencia: 5
+iniciativa: 11
+salvaguardas: {des: 11, con: 9, sab: 9}
+pericias: {acrobacia: 11, furtividade: 11, intuicao: 9, percepcao: 9}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: [surpreso]
+sentidos: {percepcao_passiva: 19, especiais: []}
+idiomas: [Comum, Kozakurano]
+recursos:
+- {id: intervalos, nome: Intervalos, maximo: 5, recuperacao: descanso_curto, condicao_recuperacao: null}
+- {id: acoes_lendarias, nome: Ações Lendárias, maximo: 3, recuperacao: inicio_turno, condicao_recuperacao: null}
+tracos:
+- id: enzan
+  nome: Enzan
+  regra: Não pode ser surpreendido; se não se mover no turno, recebe +2 CA até o início do próximo turno.
+  contrajogo: [Forçá-lo a se mover por objetivo, área perigosa ou perda de linha de visão.]
+- id: primeiro_intervalo
+  nome: Primeiro intervalo
+  regra: Uma vez por cena, no primeiro acerto contra criatura que ainda não agiu, causa 4d8 de dano cortante adicional.
+  contrajogo: [Ganhar iniciativa, usar cobertura ou negar seu primeiro ataque.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou até três criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz três ataques de Issen., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Negar aproximação e controlar linhas de avanço.]
+- id: issen
+  nome: Issen
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 11, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: "Saque, avanço e recolhimento em um só corte.", dano: {formula: 2d8+6, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura, distância superior a 10 pés ou impor desvantagem.]
+- id: maai_kuzushi
+  nome: Maai Kuzushi
+  ativacao: acao
+  gatilho: null
+  alcance: linha de 30 pés
+  alvos: uma criatura na linha
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 19}
+  efeitos:
+  - {quando: falha, regra: Seishirō atravessa a linha até espaço desocupado atrás do alvo; o alvo não usa reação contra esse movimento., dano: {formula: 4d8+6, tipo: cortante}}
+  - {quando: sucesso, regra: Seishirō para em espaço adjacente antes do alvo e causa metade do dano., dano: {formula: 2d8+3, tipo: cortante}}
+  custo: {recurso: intervalos, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Quebrar a linha reta, usar cobertura total ou deixar nenhum espaço livre atrás do alvo.]
+- id: kage_nuki
+  nome: Kage Nuki
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura da qual esteja oculto
+  resolucao: {tipo: ataque, bonus: 11, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: O saque oculto impede reações do alvo até o fim do turno., dano: {formula: 5d8+6, tipo: cortante}}
+  custo: {recurso: intervalos, quantidade: 2}
+  limite: {tipo: condicional, valor: exige estar oculto do alvo}
+  contrajogo: [Iluminar a cobertura, ampliar percepção e não atravessar portas ou cortinas sem leitura.]
+acoes_bonus:
+- id: shukuchi
+  nome: Shukuchi
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio Seishirō
+  resolucao: {tipo: automatica, condicao: possuir 1 Intervalo e ver espaço desocupado a até 30 pés}
+  efeitos:
+  - {quando: uso, regra: Move-se ao espaço sem provocar ataques de oportunidade e sem atravessar barreira sólida., dano: null}
+  custo: {recurso: intervalos, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Bloquear destinos, usar cobertura total e forçá-lo a gastar Intervalos.]
+reacoes:
+- id: utsuroi
+  nome: Utsuroi
+  ativacao: reacao
+  gatilho: ser atingido por ataque que possa perceber
+  alcance: pessoal
+  alvos: o ataque desencadeador
+  resolucao: {tipo: automatica, condicao: possuir 1 Intervalo e haver espaço desocupado a 5 pés}
+  efeitos:
+  - {quando: reação, regra: "Recebe +5 CA contra o ataque; se ele errar, move 5 pés sem provocar ataque de oportunidade.", dano: null}
+  custo: {recurso: intervalos, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir sua reação, cercar espaços adjacentes ou forçar salvaguardas.]
+acoes_lendarias:
+- id: passo_no_intervalo
+  nome: Passo no intervalo
+  ativacao: acao_lendaria
+  gatilho: fim do turno de outra criatura
+  alcance: pessoal
+  alvos: o próprio Seishirō
+  resolucao: {tipo: automatica, condicao: haver espaço acessível a até 15 pés}
+  efeitos:
+  - {quando: uso, regra: Move até 15 pés sem provocar ataques de oportunidade., dano: null}
+  custo: {recurso: acoes_lendarias, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Controlar espaços de destino e terreno.]
+- id: corte_entre_batidas
+  nome: Corte entre batidas
+  ativacao: acao_lendaria
+  gatilho: fim do turno de outra criatura
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 11, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Um corte breve interrompe o ritmo do alvo., dano: {formula: 1d8+6, tipo: cortante}}
+  custo: {recurso: acoes_lendarias, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair de 10 pés antes do fim do turno ou retirar sua arma.]
+taticas:
+  abertura: [Mede posição e iniciativa antes de revelar o corte.]
+  prioridades: [Elimina rota e reação antes da execução.]
+  adaptacoes: [Troca avanço por Enzan contra controle de espaço.]
+  uso_terreno: [Explora portas, sombra e corredores retos.]
+  evita: [Não oferece repetição de padrão nem combate justo por orgulho.]
+retirada:
+  postura: recua
+  gatilhos: [A medição fornece a informação buscada., Fica com 55 PV ou menos sem objetivo de execução.]
+  metodo: Usa Shukuchi por uma linha preparada e corta quem cruzar o gargalo.
+  custo_ou_risco: Revela a direção de seu objetivo ou uma técnica que preferia ocultar.
+  sinais_observaveis: [Embainha parcialmente a katana e alinha o corpo com uma saída.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/amagiri_seishiro.yaml
+  ids: [medicao_de_ameaca]

@@ -7,6 +7,12 @@ politica:
   consulta_dirigida_max_bytes: 8192
   arquivo_sem_entrada: suspeita_revisao_humana
 autoridades:
+  contrato_mecanico_adversarios:
+    arquivo: narrador/adversarios/contrato.yaml
+    escopo: schema, ruleset, orçamentos e invariantes das fichas de adversários
+  registro_mecanico_adversarios:
+    arquivo: narrador/adversarios/index.yaml
+    escopo: ids e rotas dirigidas das fichas e especialidades mecânicas
   elenco_juppongatana:
     arquivo: narrador/juppongatana/index.yaml
     escopo: ids, nomes, alcunhas, círculos e rotas dos membros

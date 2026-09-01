@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: kureha_shiranui
+especialidades:
+  campo_ritual:
+    nome: Campo ritual de cinza
+    dominio: presságio fabricado, marca, rastreamento e terror ambiental
+    objetivo: Preparar um local para que sinais materiais sustentem medo e controle posteriores.
+    procedimentos:
+    - id: preparar_akagiri
+      gatilho: dispõe de dez minutos, cinza, quatro talismãs e acesso ao local
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Arcana, bonus: 13, cd: 20}
+      resultado_sucesso: Prepara zona de 30 pés que pode originar Akagiri sem revelar sua posição inicial.
+      resultado_falha: A zona funciona, mas deixa odor, calor e talismãs detectáveis antes da ativação.
+      custo: {recurso: talismas_vermelhos, quantidade: 1}
+      limite: {tipo: condicional, valor: uma zona ativa por vez}
+    - id: kokkai
+      gatilho: possui objeto pessoal, sangue ou pegada recente do alvo
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Arcana, bonus: 13, oposicao: Arcana ou Religião do investigador que protege o vestígio}
+      resultado_sucesso: Marca o vestígio por sete dias e percebe direção aproximada a até uma milha.
+      resultado_falha: A marca não adere e deixa cinza negra identificável no vestígio.
+      custo: {recurso: talismas_vermelhos, quantidade: 1}
+      limite: {tipo: condicional, valor: uma tentativa por vestígio}
+    contrajogo: [Água corrente, vento forte, remover talismãs, consagrar o vestígio e abandonar objetos contaminados.]

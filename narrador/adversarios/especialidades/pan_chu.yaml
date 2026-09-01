@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: pan_chu
+especialidades:
+  comando_maritimo:
+    nome: Comando marítimo clandestino
+    dominio: navegação, abordagem, extração e disciplina de tripulação
+    objetivo: Mover pessoas ou carga por água sob pressão sem perder o controle do navio.
+    procedimentos:
+    - id: vencer_mar_ruim
+      gatilho: o navio atravessa clima, perseguição ou manobra portuária perigosa
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Veículos aquáticos, bonus: 7, cd: 18}
+      resultado_sucesso: Mantém curso e vantagem posicional sem perder carga.
+      resultado_falha: Perde posição, sofre atraso ou precisa sacrificar carga para não encalhar.
+      custo: null
+      limite: {tipo: ilimitado, valor: null}
+    - id: impor_disciplina
+      gatilho: tripulantes hesitam sob ameaça imediata ou perdas
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Intimidação, bonus: 6, cd: 15}
+      resultado_sucesso: A tripulação cumpre uma ordem perigosa sem dispersar.
+      resultado_falha: Parte da tripulação procura cobertura ou rota própria e a manobra atrasa.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por crise distinta}
+    contrajogo: [Sabotar leme ou velame, separar oficiais e tripulação, bloquear canal navegável ou ameaçar a retirada dos marinheiros.]

@@ -1,0 +1,131 @@
+schema_adversario: 1
+natureza: reservado
+id: yukyuzan_anji
+nome: Yūkyūzan Anji
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Monge 10 Mão Aberta e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original centrado em impacto duplo, controle corporal e demolição.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Leal neutro}
+escala: {categoria: chefe, referencia: círculo do meio; mestre desarmado de nível de referência 10}
+defesas: {ca: 18, pv: 130, dados_vida: 20d8+40}
+movimento: {terrestre: 50}
+atributos: {for: 18, des: 18, con: 15, int: 12, sab: 18, car: 14}
+bonus_proficiencia: 4
+iniciativa: 4
+salvaguardas: {for: 8, des: 8, con: 6, sab: 8}
+pericias: {atletismo: 8, intuicao: 8, percepcao: 8, religiao: 5}
+vulnerabilidades: []
+resistencias: [contundente de ataques desarmados]
+imunidades_dano: []
+imunidades_condicao: [amedrontado]
+sentidos: {percepcao_passiva: 18, especiais: []}
+idiomas: [Comum, Kozakurano]
+recursos:
+- {id: foco_ruina, nome: Foco da Ruína, maximo: 5, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: corpo_disciplinado
+  nome: Corpo disciplinado
+  regra: Não sofre dano de queda nos primeiros 30 pés e tem vantagem para encerrar Agarrado ou Impedido no próprio turno.
+  contrajogo: [Usar múltiplas fontes de contenção ou queda superior a 30 pés.]
+- id: bodai
+  nome: Bodai
+  regra: Ao reduzir criatura a 0 PV com dano corpo a corpo, pode deixá-la estável e inconsciente sem custo.
+  contrajogo: [Manter distância e rota de retirada.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou até três criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz três ataques de Punho da Ruína., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Negar aproximação e dispersar os alvos.]
+- id: punho_da_ruina
+  nome: Punho da Ruína
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: "Impacto preciso de mão, cotovelo, ombro ou joelho.", dano: {formula: 1d10+4, tipo: contundente}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância ou impor desvantagem aos ataques.]
+- id: futae_no_kiwami
+  nome: Futae no Kiwami
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura ou objeto
+  resolucao: {tipo: salvaguarda, atributo: con, cd: 16}
+  efeitos:
+  - {quando: falha, regra: Dois impactos no mesmo ponto ignoram resistência a contundente e deixam criatura Caída; objeto sofre dano dobrado., dano: {formula: 5d8+4, tipo: contundente}}
+  - {quando: sucesso, regra: Sofre metade do dano e não fica Caída; objeto ainda sofre dano normal., dano: {formula: 2d8+2, tipo: contundente}}
+  custo: {recurso: foco_ruina, quantidade: 2}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Aumentar distância, obter cobertura total ou forçá-lo a gastar Foco antes.]
+- id: iwa_kudaki
+  nome: Iwa Kudaki
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: um objeto, porta, parede ou estrutura de até 10 pés
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Ignora limiar de dano 10 ou menor e causa dano dobrado a estruturas., dano: {formula: 3d10+4, tipo: contundente}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Distância, materiais resilientes e estrutura sem ponto de apoio acessível.]
+acoes_bonus:
+- id: raijin
+  nome: Raijin
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Sequência curta impede o alvo de usar reações até o início do próximo turno de Anji., dano: {formula: 1d8+4, tipo: contundente}}
+  custo: {recurso: foco_ruina, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair do alcance ou esgotar seu Foco.]
+reacoes:
+- id: myoo_no_kamae
+  nome: Myōō no Kamae
+  ativacao: reacao
+  gatilho: criatura entrar voluntariamente em seu alcance corpo a corpo
+  alcance: 5 pés
+  alvos: a criatura desencadeadora
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 16}
+  efeitos:
+  - {quando: falha, regra: O deslocamento da criatura termina e ela fica Caída., dano: null}
+  - {quando: sucesso, regra: A criatura completa o deslocamento normalmente., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação, teleportar ou atacá-lo à distância.]
+acoes_lendarias: []
+taticas:
+  abertura: [Ocupa o centro vazio e obriga o adversário a cruzar seu alcance.]
+  prioridades: [Derruba o mais móvel e quebra a rota, não o corpo mais fraco.]
+  adaptacoes: [Demole cobertura quando o inimigo evita aproximação.]
+  uso_terreno: [Transforma portas, paredes e pilares em vetores de pressão.]
+  evita: [Não persegue provocação que abandone sua causa ou protegidos.]
+retirada:
+  postura: recua
+  gatilhos: [Descobre que a missão protege crueldade contra inocentes., O objetivo moral deixa de existir.]
+  metodo: Abre passagem por estrutura e recua sem atacar quem não o impede.
+  custo_ou_risco: Rompe com ordem secundária de Masao e deixa testemunhas de sua escolha.
+  sinais_observaveis: [Interrompe a sequência, faz uma pergunta direta e olha para a estrutura mais fraca.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/yukyuzan_anji.yaml
+  ids: [demolicao_precisa]

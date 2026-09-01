@@ -1,0 +1,131 @@
+schema_adversario: 1
+natureza: reservado
+id: pan_chu
+nome: Pan Chu
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Bárbaro 8 Berserker, Pan Chu de Kara-Tur e técnicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original 5.5e; preserva identidade naval sem transportar estatísticas de AD&D.
+perfil: {tamanho: Grande, tipo_criatura: Humanoide, alinhamento: Caótico neutro}
+escala: {categoria: elite, referencia: círculo externo; capitão de abordagem de nível de referência 8}
+defesas: {ca: 16, pv: 136, dados_vida: 16d10+48}
+movimento: {terrestre: 35, natacao: 30}
+atributos: {for: 20, des: 12, con: 17, int: 12, sab: 14, car: 16}
+bonus_proficiencia: 3
+iniciativa: 1
+salvaguardas: {for: 8, con: 6, sab: 5}
+pericias: {atletismo: 11, intimidacao: 6, percepcao: 5, veiculos_aquaticos: 7}
+vulnerabilidades: []
+resistencias: [contundente, cortante, perfurante]
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 15, especiais: []}
+idiomas: [Comum, Kozakurano, Shou]
+recursos:
+- {id: furia_marinha, nome: Fúria Marinha, maximo: 3, recuperacao: descanso_longo, condicao_recuperacao: null}
+tracos:
+- id: arashi_no_kamae
+  nome: Arashi no Kamae
+  regra: Tem vantagem em testes e salvaguardas para resistir a empurrão, queda ou agarrão; conta como Enorme para capacidade de carga.
+  contrajogo: [Romper o piso, negar apoio ou atraí-lo para espaço estreito.]
+- id: honra_do_capitao
+  nome: Honra do capitão
+  regra: Não abandona tripulante consciente sob sua proteção; um inimigo pode explorar esse compromisso, mas não obrigá-lo a obedecer.
+  contrajogo: [Separar Pan Chu da tripulação ou oferecer retirada que preserve os homens.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: conforme os ataques escolhidos
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques de Nodachi., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância e impedir aproximação.]
+- id: nodachi
+  nome: Nodachi
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Golpe pesado de duas mãos., dano: {formula: 2d10+5, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Atacar à distância e usar cobertura.]
+- id: funabiraki
+  nome: Funabiraki
+  ativacao: acao
+  gatilho: null
+  alcance: cone de 15 pés
+  alvos: criaturas no cone
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 16}
+  efeitos:
+  - {quando: falha, regra: "Sofre dano, é empurrada 15 pés e fica Caída.", dano: {formula: 2d8+5, tipo: cortante}}
+  - {quando: sucesso, regra: Sofre metade do dano e não é movida., dano: {formula: 1d8+2, tipo: cortante}}
+  custo: null
+  limite: {tipo: recarga, valor: 5-6 no início do turno}
+  contrajogo: [Espalhar-se, manter mais de 15 pés ou sustentar posição atrás de cobertura.]
+- id: shio_no_tsume
+  nome: Shio no Tsume
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura Grande ou menor
+  resolucao: {tipo: teste_oposto, atributo_ou_pericia: Atletismo, bonus: 11, oposicao: Atletismo ou Acrobacia do alvo}
+  efeitos:
+  - {quando: sucesso, regra: O alvo fica Agarrado e Pan Chu pode movê-lo 10 pés ou arremessá-lo 15 pés para espaço desocupado., dano: null}
+  - {quando: falha, regra: O alvo não é agarrado nem movido., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Evitar alcance, aumentar tamanho ou ocupar espaço sem rota segura de arremesso.]
+acoes_bonus:
+- id: kuroshio
+  nome: Kuroshio
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio Pan Chu
+  resolucao: {tipo: automatica, condicao: possuir 1 Fúria Marinha}
+  efeitos:
+  - {quando: uso, regra: "Move até 20 pés em linha reta sem provocar ataques de oportunidade; pode atravessar espaço de criatura Média ou menor, empurrando-a 5 pés.", dano: null}
+  custo: {recurso: furia_marinha, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Quebrar a linha de avanço e usar obstáculos sólidos.]
+reacoes:
+- id: tetsu_no_ashi
+  nome: Pé de ferro
+  ativacao: reacao
+  gatilho: sofrer dano de ataque corpo a corpo enquanto estiver apoiado no chão ou convés
+  alcance: pessoal
+  alvos: o próprio Pan Chu
+  resolucao: {tipo: automatica, condicao: estar consciente e não estar Caído}
+  efeitos:
+  - {quando: reação, regra: Reduz o dano desencadeador em 1d12+5., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação, derrubá-lo antes ou usar salvaguardas.]
+acoes_lendarias: []
+taticas:
+  abertura: [Fecha a rota de saída e avança sobre o alvo mais móvel.]
+  prioridades: [Protege tripulação e controla bordas antes de buscar nocaute.]
+  adaptacoes: [Arremessa inimigos para separar aliados ou ameaçar queda.]
+  uso_terreno: [Explora convés, cais, portas e bordas perigosas.]
+  evita: [Não persegue sozinho para longe de tripulação ou objetivo.]
+retirada:
+  postura: recua
+  gatilhos: [A tripulação corre risco maior que o objetivo., O objetivo marítimo deixa de ser alcançável.]
+  metodo: Ordena retirada disciplinada e ocupa a retaguarda até embarcar.
+  custo_ou_risco: Abandona carga secundária e expõe o próprio navio durante a extração.
+  sinais_observaveis: [Muda o tom para ordens curtas e recua voltado ao inimigo.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/pan_chu.yaml
+  ids: [comando_maritimo]

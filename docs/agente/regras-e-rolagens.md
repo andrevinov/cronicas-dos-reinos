@@ -81,6 +81,24 @@ Qualquer comando `ren ...` carrega e valida a ficha antes de chamar o RNG. Ficha
 
 Toda entrada mecânica que puder ser validada sem aleatoriedade deve falhar antes do RNG. Em particular, modo de rolagem, expressão de dados, modificadores e alvos inválidos não podem consumir dado. 1 e 20 naturais têm tratamento automático em jogadas de ataque; testes e salvaguardas continuam resolvidos pelo total contra a CD, sem sucesso/falha automática apenas pelo valor natural. Crítico dobra os dados de dano, não o modificador.
 
+## Contrato de adversários
+
+`narrador/adversarios/contrato.yaml` é a autoridade para blocos mecânicos de NPCs
+e criaturas competentes. O registro é fragmentado: ficha-base e especialidade
+não combativa são consultas distintas de até 8 KiB. Todo bloco declara ruleset e
+proveniência, números defensivos, recursos, traços, ações, grupos explícitos de
+ação bônus/reação/ação lendária, táticas e retirada. Escala `lendario` não pode
+ser apenas rótulo: exige ao menos uma ação lendária preparada.
+
+Ação preparada possui ativação, gatilho quando aplicável, alcance, alvos,
+resolução, efeitos, dano estruturado quando houver, custo, limite e contrajogo.
+Testes declaram se o adversário rola com bônus próprio ou se o opositor usa a
+própria ficha contra uma CD. Custos só podem referenciar recursos declarados.
+Especialidade possui procedimento com resultado de sucesso e falha; prosa como
+“é excelente falsificador” não constitui resolução mecânica.
+O validador recusa campos extras destinados a ajuste pós-rolagem e qualquer
+ruleset divergente do ativo.
+
 A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate de migração não for concluído, seu uso por `dados` fica restrito às primitivas cuja semântica é compatível com o ruleset operacional. Nenhuma regra exclusiva de 5.5e pode entrar silenciosamente na narração antes da ativação final.
 
 ## Perfil alvo 5.5e de Ren

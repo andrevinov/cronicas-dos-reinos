@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: kurobane_jinzaburo
+especialidades:
+  furto_vertical:
+    nome: Furto vertical
+    dominio: infiltração, extração documental e fuga por altura
+    objetivo: Obter, trocar ou plantar um objeto sem transformar a operação em duelo.
+    procedimentos:
+    - id: entrar_por_cima
+      gatilho: existe uma rota por telhado, janela, mastro, viga ou cordame
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Furtividade, bonus: 10, oposicao: Percepção do vigia}
+      resultado_sucesso: Alcança o ponto de acesso sem ser percebido.
+      resultado_falha: É percebido antes de tocar o objetivo e sua rota fica identificável.
+      custo: null
+      limite: {tipo: ilimitado, valor: null}
+    - id: trocar_documento
+      gatilho: alcança um documento ou objeto portátil sem oposição física imediata
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Prestidigitação, bonus: 10, oposicao: Percepção ou Investigação do observador}
+      resultado_sucesso: Substitui ou remove o objeto sem deixar alteração óbvia.
+      resultado_falha: A manipulação deixa um indício físico antes de sua retirada.
+      custo: null
+      limite: {tipo: ilimitado, valor: null}
+    contrajogo: [Selos invioláveis, redundância documental, vigias em alturas distintas e objetos presos ao portador.]

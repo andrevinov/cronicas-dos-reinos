@@ -1,0 +1,130 @@
+schema_adversario: 1
+natureza: reservado
+id: sawagejo_cho
+nome: Sawagejō Chō
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Guerreiro 8 Mestre de Batalha e técnicas canônicas em narrador/juppongatana/membros.md
+  decisao: null
+  adaptacao: Bloco de NPC original centrado em troca de armas e quebra de padrões.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Caótico neutro}
+escala: {categoria: elite, referencia: círculo externo; duelista técnico de nível de referência 8}
+defesas: {ca: 17, pv: 105, dados_vida: 14d8+42}
+movimento: {terrestre: 35}
+atributos: {for: 14, des: 20, con: 16, int: 15, sab: 13, car: 15}
+bonus_proficiencia: 3
+iniciativa: 8
+salvaguardas: {for: 5, des: 8, con: 6}
+pericias: {acrobacia: 8, historia: 8, investigacao: 8, percepcao: 4}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 14, especiais: []}
+idiomas: [Comum, Kozakurano, Shou, Wa-an]
+recursos:
+- {id: dados_de_mestria, nome: Dados de Mestria, maximo: 4, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: hyakki_no_kamae
+  nome: Hyakki no Kamae
+  regra: Ao início de cada turno escolhe alcance ou guarda; até o próximo turno, ganha respectivamente 5 pés de alcance ou +1 CA.
+  contrajogo: [Mudar de distância depois que a postura estiver visível.]
+- id: colecionador_de_ritmos
+  nome: Colecionador de ritmos
+  regra: Depois que uma criatura o atinge duas vezes com o mesmo ataque na cena, Chō ganha +2 CA contra esse ataque até ela mudar de arma ou método.
+  contrajogo: [Alternar armas, técnicas e salvaguardas.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: conforme os ataques escolhidos
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques com Renbatō ou Hakujin no Tachi., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Negar alcance e cobertura visual.]
+- id: renbato
+  nome: Renbatō
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: A lâmina dupla pune guarda previsível., dano: {formula: 2d6+5, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Mudar o ritmo e sair do alcance.]
+- id: hakujin_no_tachi
+  nome: Hakujin no Tachi
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 15 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: A lâmina flexível contorna cobertura parcial., dano: {formula: 1d8+5, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total, distância superior a 15 pés ou agarrar a lâmina após ela errar.]
+- id: katana_gari
+  nome: Katana-Gari
+  ativacao: acao
+  gatilho: null
+  alcance: 10 pés
+  alvos: uma criatura segurando arma ou foco
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 16}
+  efeitos:
+  - {quando: falha, regra: O objeto cai em espaço escolhido por Chō a até 10 pés do alvo., dano: {formula: 1d6+5, tipo: cortante}}
+  - {quando: sucesso, regra: O alvo mantém o objeto e não sofre dano., dano: null}
+  custo: {recurso: dados_de_mestria, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Guardar a arma, usar ataque desarmado ou manter duas mãos firmes com vantagem na salvaguarda.]
+acoes_bonus:
+- id: troca_impossivel
+  nome: Troca impossível
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio Chō
+  resolucao: {tipo: automatica, condicao: possuir 1 Dado de Mestria}
+  efeitos:
+  - {quando: uso, regra: Move 10 pés sem provocar ataques de oportunidade e tem vantagem no próximo ataque de arma deste turno., dano: null}
+  custo: {recurso: dados_de_mestria, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Bloquear o espaço de destino ou forçá-lo a gastar o recurso defensivamente.]
+reacoes:
+- id: tsubame_mawashi
+  nome: Tsubame Mawashi
+  ativacao: reacao
+  gatilho: errar um ataque corpo a corpo contra criatura ao alcance
+  alcance: corpo a corpo, conforme a arma usada
+  alvos: a criatura do ataque errado
+  resolucao: {tipo: ataque, bonus: 8, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Converte o erro em corte de retorno., dano: {formula: 1d8+5, tipo: cortante}}
+  custo: {recurso: dados_de_mestria, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair do alcance após provocar o erro ou consumir sua reação.]
+acoes_lendarias: []
+taticas:
+  abertura: [Observa uma técnica antes de revelar a arma de maior alcance.]
+  prioridades: [Quebra padrão, desarma e só então busca dano decisivo.]
+  adaptacoes: [Troca de postura e arma quando o alvo estabiliza defesa.]
+  uso_terreno: [Espalha bainhas e armas para sempre ter opção ao alcance.]
+  evita: [Não repete a mesma sequência por dois turnos se puder variar.]
+retirada:
+  postura: recua
+  gatilhos: [Conclui que o adversário não possui técnica nova., Fica com 30 PV ou menos sem interesse estratégico.]
+  metodo: Arremessa facas para cobrir a troca de arma e rompe contato por uma rota observada.
+  custo_ou_risco: Pode abandonar uma arma comum, nunca uma peça rara sem necessidade extrema.
+  sinais_observaveis: [Deixa de sorrir e seleciona uma bainha leve voltada à fuga.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/sawagejo_cho.yaml
+  ids: [caca_de_armas]
