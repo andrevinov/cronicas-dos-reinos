@@ -1,0 +1,40 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: narwhal_futuro
+fonte_base: LC3 - Nightwatch in the Living City
+
+nucleos:
+  docara:
+    nome: Docara
+    fonte_canonica:
+    - maga drow ligada a Narwhal Manor
+    - identidade escondida sob cobertura doméstica por risco de preconceito
+    objetivo_proprio: preservar identidade, segurança e vínculo com Draco sem virar peça pública
+    vetores:
+      ren:
+      - pode testemunhar movimentos futuros ao redor da mansão ou cooperar se o segredo estiver ameaçado
+      masao:
+      - sua identidade pode virar alvo de chantagem, desinformação ou exploração por intermediários
+      ambos:
+      - observações futuras sobre Narwhal podem interessar a lados distintos sem adesão à guerra
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - alguém descobre ou falsifica prova de sua identidade
+      - testemunha descreve uma drow em crime cometido por outra pessoa
+      - ameaça externa força Draco a mover ou proteger o segredo
+    mundo_vivo:
+      sinais:
+      - segurança doméstica muda sem explicação pública
+      - criado encapuzado é comentado por gente da rua
+      - ruído de treino ou magia é percebido fora da mansão
+    guardrails:
+    - somente futuro; não reatribuir pistas, vigilância ou fatos já consolidados em Narwhal
+    - não tornar Docara autora retroativa de qualquer evento da campanha
+    - fonte regional cede a qualquer decisão de campanha já materializada
+
+cruzamentos_locais:
+- toca: kethra_dunn
+  possibilidade: mudança futura de rotina ou segurança alcança trabalho e acesso ao Manor
+- toca: red_sail
+  possibilidade: chantagem ou vigilância só nasce se houver novo canal causal observável
