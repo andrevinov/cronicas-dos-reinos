@@ -91,3 +91,10 @@ A suíte cobre:
 8. decisão negativa rejeita campos `--sidequest-*`;
 9. regressão Maerra: o comando antigo sem decisão é inválido e a forma positiva infere o NPC explícito;
 10. analisador de rollout reprova decisões ausentes/conflitantes e exige 100% de cobertura.
+
+## Integração posterior — Task 53
+
+A regressão “Sete Nomes” fixa a distinção operacional: a decisão negativa só
+nega uma **nova oportunidade**; ela não oculta nem pausa uma missão `aceita`.
+Nesse mesmo preparo, a Task48 projeta a missão ativa e o concluir continua
+obrigado a decidir seu progresso factual pela Task49.

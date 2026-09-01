@@ -41,6 +41,7 @@ import agentes_leves
 import barreira_mundo
 import direcoes_destino
 import mundo
+import operacoes_concorrentes
 import pressao_ravens_bluff
 import reacoes_sidequest
 
@@ -173,7 +174,40 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
     # Task45 já fez o trabalho temporal e emitiu uma pendência causal explícita.
     # Não reinterprete esse contrato como rotina/no-op e não abra outros motores
     # apenas para decidir algo que só progressao_sidequests pode materializar.
-    if pending_type == "resolver_reacao_sidequest":
+    if pending_type == "resolver_grupo_operacoes":
+        try:
+            group = operacoes_concorrentes.project_group_pending(repo, pending)
+        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        item["grupo_operacoes_id"] = group["grupo_operacoes_id"]
+        item["classificacao"] = "comprometer_grupo_operacoes"
+        item["sem_mudanca_permitido"] = False
+        context["grupo_operacoes"] = {
+            key: group[key]
+            for key in (
+                "grupo_operacoes_id", "estado", "janela", "simultaneidade",
+                "operacoes", "canais", "ordem_processamento",
+            )
+        }
+        sources = _source_list(sources, group.get("fontes_lidas"))
+    elif pending_type == "resolver_operacao_adversarial":
+        try:
+            operation = operacoes_concorrentes.project_operation_pending(repo, pending)
+        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        item["grupo_operacoes_id"] = operation["grupo_operacoes_id"]
+        item["operacao_id"] = operation["operacao_id"]
+        item["classificacao"] = "requer_resolucao_operacao"
+        item["sem_mudanca_permitido"] = False
+        context["operacao_adversarial"] = {
+            key: operation[key]
+            for key in (
+                "grupo_operacoes_id", "operacao_id", "estado", "local",
+                "alvo", "objetivo", "sinais_perceptiveis", "encontro",
+            )
+        }
+        sources = _source_list(sources, operation.get("fontes_lidas"))
+    elif pending_type == "resolver_reacao_sidequest":
         try:
             reaction = reacoes_sidequest.project_pending(repo, pending)
         except reacoes_sidequest.SidequestReactionError as exc:
@@ -282,12 +316,16 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
                 "Avalie todos os itens nesta mesma inferência. Envie em `sem_mudanca` "
                 "somente os itens que realmente não criam fato; omita os que exigem ação. "
                 "Evento canônico e consequência Task45 nunca aceitam no-op. Candidato "
-                "autônomo exige bloqueio canônico concreto."
+                "autônomo exige bloqueio canônico concreto. Grupos concorrentes são "
+                "comprometidos por inteiro em `grupos_operacoes`."
             ),
             "entrada_aplicar": {
                 "lote_id": batch_id,
                 "sem_mudanca": [
                     {"id": "<id>", "token": "<token>", "nota": "<motivo concreto>"}
+                ],
+                "grupos_operacoes": [
+                    {"id": "<id>", "token": "<token>", "bloqueios": {}}
                 ],
             },
         },
@@ -316,13 +354,25 @@ def _completed_map(repo: Path) -> dict[str, dict[str, Any]]:
     }
 
 
-def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]]]:
+def _valid_token(token: Any, label: str) -> str:
+    if (
+        not isinstance(token, str)
+        or len(token) != TOKEN_HEX
+        or any(ch not in "0123456789abcdef" for ch in token)
+    ):
+        raise BatchBoundaryError(f"{label} inválido")
+    return token
+
+
+def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]], list[dict[str, Any]]]:
     if not isinstance(payload, dict):
         raise BatchBoundaryError("plano de lote deve ser mapa")
     batch_id = payload.get("lote_id")
     if not isinstance(batch_id, str) or not batch_id.startswith("frn1."):
         raise BatchBoundaryError("lote_id inválido")
-    raw = payload.get("sem_mudanca")
+    if set(payload) - {"lote_id", "sem_mudanca", "grupos_operacoes"}:
+        raise BatchBoundaryError("plano de lote possui campos desconhecidos")
+    raw = payload.get("sem_mudanca", [])
     if not isinstance(raw, list):
         raise BatchBoundaryError("sem_mudanca deve ser lista")
     if len(raw) > MAX_BATCH:
@@ -342,27 +392,45 @@ def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]]]:
         if pending_id in seen:
             raise BatchBoundaryError(f"pendência repetida no lote: {pending_id}")
         seen.add(pending_id)
-        if (
-            not isinstance(token, str)
-            or len(token) != TOKEN_HEX
-            or any(ch not in "0123456789abcdef" for ch in token)
-        ):
-            raise BatchBoundaryError(f"sem_mudanca[{index}].token inválido")
+        token = _valid_token(token, f"sem_mudanca[{index}].token")
         decisions.append(
             {"id": pending_id, "token": token, "nota": _normalize_note(value.get("nota"))}
         )
-    return batch_id, decisions
+    raw_groups = payload.get("grupos_operacoes", [])
+    if not isinstance(raw_groups, list) or len(raw_groups) > MAX_BATCH:
+        raise BatchBoundaryError(f"grupos_operacoes deve ser lista com até {MAX_BATCH} itens")
+    groups: list[dict[str, Any]] = []
+    for index, value in enumerate(raw_groups):
+        if not isinstance(value, dict) or set(value) != {"id", "token", "bloqueios"}:
+            raise BatchBoundaryError(f"grupos_operacoes[{index}] possui estrutura inválida")
+        pending_id = value["id"]
+        if not isinstance(pending_id, str) or not barreira_mundo.PENDING_ID_RE.fullmatch(pending_id):
+            raise BatchBoundaryError(f"grupos_operacoes[{index}].id inválido")
+        if pending_id in seen:
+            raise BatchBoundaryError(f"pendência repetida no lote: {pending_id}")
+        seen.add(pending_id)
+        if not isinstance(value["bloqueios"], dict):
+            raise BatchBoundaryError(f"grupos_operacoes[{index}].bloqueios deve ser mapa")
+        groups.append(
+            {
+                "id": pending_id,
+                "token": _valid_token(value["token"], f"grupos_operacoes[{index}].token"),
+                "bloqueios": value["bloqueios"],
+            }
+        )
+    return batch_id, decisions, groups
 
 
 def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
     """Aplica todos os no-ops aprovados numa chamada, com revalidação por item."""
-    requested_batch_id, decisions = _parse_plan(payload)
+    requested_batch_id, decisions, group_decisions = _parse_plan(payload)
     current = prepare_batch(repo)
     current_by_id = {str(item["id"]): item for item in current["itens"]}
     completed = _completed_map(repo)
 
     validated: list[tuple[dict[str, str], dict[str, Any] | None]] = []
     already: list[dict[str, Any]] = []
+    validated_groups: list[tuple[dict[str, Any], dict[str, Any] | None]] = []
 
     # Toda validação acontece antes da primeira escrita.
     for decision in decisions:
@@ -399,11 +467,48 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
             raise BatchBoundaryError(
                 f"pendência {pending_id} exige compromisso/resolução da reação e não aceita sem_mudanca"
             )
+        if item.get("classificacao") in {"comprometer_grupo_operacoes", "requer_resolucao_operacao"}:
+            raise BatchBoundaryError(
+                f"pendência {pending_id} pertence a operação adversarial e não aceita sem_mudanca"
+            )
         if item.get("classificacao") == "avaliar_candidato_autonomo":
             barreira_mundo._validate_autonomous_noop(decision["nota"])
         validated.append((decision, item))
 
+    for decision in group_decisions:
+        pending_id = decision["id"]
+        item = current_by_id.get(pending_id)
+        if item is None:
+            if pending_id in completed:
+                already.append(
+                    {"id": pending_id, "resultado": "ja_concluida", "conclusao": completed[pending_id]}
+                )
+                validated_groups.append((decision, None))
+                continue
+            raise BatchBoundaryError(
+                f"pendência de grupo {pending_id} não está aberta nem concluída"
+            )
+        if decision["token"] != item.get("token"):
+            raise BatchBoundaryError(
+                f"pendência {pending_id} mudou desde preparar; refaça o lote"
+            )
+        if item.get("classificacao") != "comprometer_grupo_operacoes":
+            raise BatchBoundaryError(f"pendência {pending_id} não é grupo de operações")
+        validated_groups.append((decision, item))
+
     applied: list[dict[str, Any]] = []
+    committed_groups: list[dict[str, Any]] = []
+    for decision, item in validated_groups:
+        if item is None:
+            continue
+        try:
+            result = operacoes_concorrentes.commit_group(
+                repo, item["grupo_operacoes_id"], decision["bloqueios"]
+            )
+        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        committed_groups.append(result)
+
     for decision, item in validated:
         if item is None:
             continue
@@ -439,6 +544,7 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         "lote_id_solicitado": requested_batch_id,
         "lote_id_atual": remaining["lote_id"],
         "aplicadas": applied,
+        "grupos_comprometidos": committed_groups,
         "ja_aplicadas": already,
         "quantidade_restante": remaining["quantidade"],
         "requer_resolucao": remaining["itens"],

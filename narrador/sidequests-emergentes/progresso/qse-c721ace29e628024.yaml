@@ -49,8 +49,8 @@ estado:
       fato_id: mensageiro_interrogado_e_liberado
       motivo_automatico: null
     verificar_autoridade:
-      estado: indeterminada
-      fato_id: null
+      estado: possivel
+      fato_id: luath_assume_custodia_depoimento_e_provas
       motivo_automatico: null
   condicoes_sucesso:
     sucesso_01:
@@ -61,8 +61,8 @@ estado:
     sucesso_02:
       texto: As sete crianças permanecem fora de uma transferência não verificada
         enquanto a cadeia documental é preservada.
-      estado: pendente
-      fato_id: null
+      estado: satisfeita
+      fato_id: criancas_e_cadeia_protegidas_ate_transferencia_segura
   condicoes_falha:
     falha_01:
       texto: As crianças são transferidas por força da ordem antes que sua autoridade
@@ -99,6 +99,10 @@ estado:
       estado: indisponivel
       vida_estado: incapacitado
       fonte: estado/npcs/falsificador_calaria.yaml
+    luath:
+      estado: disponivel
+      vida_estado: null
+      fonte: estado/npcs/luath.yaml
   fatos:
     ordem_examinada_borda_polida:
       id: ordem_examinada_borda_polida
@@ -129,27 +133,88 @@ estado:
       condicoes_falha: {}
     mensageiro_interrogado_e_liberado:
       id: mensageiro_interrogado_e_liberado
-      descricao: >-
-        Ren confirmou a cadeia curta do portador, obteve a descrição da porta usada
-        para retirada e pagamento e o liberou sem revelar rosto ou direção.
+      descricao: Ren confirmou a cadeia curta do portador, obteve a descrição da porta
+        usada para retirada e pagamento e o liberou sem revelar rosto ou direção.
       prova:
         fonte: sessoes/015/resumo.md
-        evidencia: Ren o liberou sob ameaça e desapareceu por Passo da Sombra quando ele olhou para trás.
+        evidencia: Ren o liberou sob ameaça e desapareceu por Passo da Sombra quando
+          ele olhou para trás.
       fases:
         rastrear_mensageiro: resolvida
       condicoes_sucesso: {}
       condicoes_falha: {}
     oficina_e_provas_preservadas:
       id: oficina_e_provas_preservadas
-      descricao: >-
-        A antiga calaria foi confirmada como origem material da ordem; Ren preservou
-        a matriz e documentos úteis e neutralizou os dois ocupantes sem matá-los.
+      descricao: A antiga calaria foi confirmada como origem material da ordem; Ren
+        preservou a matriz e documentos úteis e neutralizou os dois ocupantes sem
+        matá-los.
       prova:
         fonte: sessoes/016/resumo.md
-        evidencia: O homem e a mulher estão inconscientes e estáveis; Ren mantém a matriz e os documentos.
+        evidencia: O homem e a mulher estão inconscientes e estáveis; Ren mantém a
+          matriz e os documentos.
       fases: {}
       condicoes_sucesso: {}
       condicoes_falha: {}
+    confissao_cinza_azul_vincula_masao:
+      id: confissao_cinza_azul_vincula_masao
+      descricao: A mulher Cinza-Azul admitiu servir a Masao, coordenar a célula documental
+        local e participar da operação destinada a remover as crianças.
+      prova:
+        fonte: sessoes/017/resumo.md
+        evidencia: Ela admitiu que M. Harrow é uma identidade documental fabricada,
+          afirmou trabalhar para Masao Hirasawa coordenando a célula documental local
+      fases: {}
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores:
+      - cinza_azul
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 19 Eleasis, 1372 DR
+        hora: '23:38'
+    luath_assume_custodia_depoimento_e_provas:
+      id: luath_assume_custodia_depoimento_e_provas
+      descricao: Luath compareceu, examinou as provas e recebeu diretamente a confirmação
+        da cativa, tornando possível a verificação institucional sem concluí-la.
+      prova:
+        fonte: sessoes/017/resumo.md
+        evidencia: Luath examinou as provas, recebeu o relato completo e ouviu a cativa
+          confirmar seus vínculos e a operação contra as crianças.
+      fases:
+        verificar_autoridade: possivel
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores:
+      - luath
+      - cinza_azul
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 20 Eleasis, 1372 DR
+        hora: 00:24
+    criancas_e_cadeia_protegidas_ate_transferencia_segura:
+      id: criancas_e_cadeia_protegidas_ate_transferencia_segura
+      descricao: As crianças permaneceram no abrigo, a prova e a testemunha ficaram
+        sob custódia e a transferência segura começou a ser preparada.
+      prova:
+        fonte: sessoes/017/resumo.md
+        evidencia: Luath aceitou a escolta de Ren; Maerra aceitou um guarda discreto
+          dentro da Casa até o amanhecer, e o grupo começou a preparar a transferência
+          segura da cativa e das provas.
+      fases: {}
+      condicoes_sucesso:
+        sucesso_02: satisfeita
+      condicoes_falha: {}
+      atores:
+      - maerra_thandrel
+      - luath
+      - cinza_azul
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 20 Eleasis, 1372 DR
+        hora: 00:31
   consequencias_ativadas: {}
   terminal: null
   historico_recente:
@@ -165,6 +230,43 @@ estado:
   - tipo: fato_registrado
     id: oficina_e_provas_preservadas
     fonte: sessoes/016/resumo.md
+  - tipo: fato_historico_migrado
+    id: confissao_cinza_azul_vincula_masao
+    fonte: sessoes/017/resumo.md
+    migracao_id: seven-names-session-017-v1
+    atores:
+    - cinza_azul
+    substituicoes: []
+  - tipo: fato_historico_migrado
+    id: luath_assume_custodia_depoimento_e_provas
+    fonte: sessoes/017/resumo.md
+    migracao_id: seven-names-session-017-v1
+    atores:
+    - luath
+    - cinza_azul
+    substituicoes: []
+  - tipo: fato_historico_migrado
+    id: criancas_e_cadeia_protegidas_ate_transferencia_segura
+    fonte: sessoes/017/resumo.md
+    migracao_id: seven-names-session-017-v1
+    atores:
+    - maerra_thandrel
+    - luath
+    - cinza_azul
+    substituicoes: []
+  necessita_reavaliacao_reacao:
+    estado: true
+    gatilho_tipo: progresso_excepcional
+    fato_id: confissao_cinza_azul_vincula_masao
+    motivo: Captura de coordenadora, confissão e provas preservadas alteraram a exposição
+      da rede; Task50 deve avaliar sem presumir conhecimento adversarial.
+  migracoes_aplicadas:
+    seven-names-session-017-v1:
+      instante_representado:
+        data: 20 Eleasis, 1372 DR
+        hora: 00:31
+      terminal_inventado: false
+      contrato_task44_alterado: false
 guardrails:
   progresso_por_fato_nao_checklist: true
   prazo_usa_relogio_existente: true

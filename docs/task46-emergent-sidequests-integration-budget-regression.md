@@ -99,3 +99,12 @@ O CI mede esses contratos por baseline e regressões de rollout. A meta continua
 sendo a dupla `cronica preparar` + `cronica concluir`; chamadas adicionais só
 existem quando outro sistema já as exige materialmente, nunca porque sidequest
 emergente virou polling.
+
+## Regressão integrada posterior — Task 53
+
+O snapshot histórico isolado de “Sete Nomes” prova o caminho completo: oferta e
+aceite preexistentes, preparação negativa para oportunidade nova com projeção da
+missão ativa, progresso Task49 por Luath, terminal exatamente uma vez, recompensa
+Task43 e reação Task50 separada. O orçamento medido está em
+`baseline/seven-names-migration-integration-orcamento.yaml`; a regressão pertence
+aos perfis `sidequests`, `cronica`, `mundo` e `sessoes`, além de `test-full`.

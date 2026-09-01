@@ -326,10 +326,14 @@ def conclude(
     no_change: bool = False,
 ) -> dict[str, Any]:
     pending = _pending_item(repo, pending_id)
-    if pending.get("tipo") == "resolver_reacao_sidequest":
+    if pending.get("tipo") in {
+        "resolver_reacao_sidequest",
+        "resolver_grupo_operacoes",
+        "resolver_operacao_adversarial",
+    }:
         raise WorldPendingBarrierError(
-            "reação de sidequest não aceita conclusão genérica; use "
-            "reacoes_sidequest.py comprometer e, após resultado factual, resolver"
+            "reação/operação adversarial não aceita conclusão genérica; use sua "
+            "ferramenta de domínio para compromisso ou resultado factual"
         )
     canonical_event = _canonical_event(repo, pending)
     try:

@@ -72,6 +72,9 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_entrada.py",
         "test_tempo_atomico.py",
         "test_diegetico.py",
+        "test_concurrent_world_operations.py",
+        "test_reactive_pressure_routing.py",
+        "test_seven_names_sidequest_regression.py",
     ),
     "sessoes": (
         "test_ciclo_sessoes.py",
@@ -80,6 +83,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_checkpoints_mundo.py",
         "test_unified_session_lifecycle.py",
         "test_auditoria_final.py",
+        "test_seven_names_sidequest_regression.py",
     ),
     "sidequests": (
         "test_*sidequest*.py",
@@ -89,6 +93,8 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_adversarial_integrity.py",
         "test_rede_protegida.py",
         "test_torneio_clandestino.py",
+        "test_concurrent_world_operations.py",
+        "test_reactive_pressure_routing.py",
     ),
     "mundo": (
         "test_adversarios.py",
@@ -121,6 +127,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_neutralizacao_ren.py",
         "test_npc_stubs.py",
         "test_iniciativa_social.py",
+        "test_reactive_pressure_routing.py",
         "test_dialogo_relacional.py",
         "test_reputacao_publica.py",
         "test_estado_relacional.py",
@@ -129,6 +136,8 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_ciclo_npcs.py",
         "test_locais.py",
         "test_sidequest_success_reactions.py",
+        "test_concurrent_world_operations.py",
+        "test_seven_names_sidequest_regression.py",
     ),
     "runtime": (
         "test_runtime.py",

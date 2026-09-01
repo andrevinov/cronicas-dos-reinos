@@ -28,6 +28,7 @@ import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
 import progressao_juppongatana
+import pressao_narrativa as _pressure52
 import progresso_sidequests_transacional as _sidequests49
 import retomada_cronica
 import sessoes
@@ -92,6 +93,10 @@ def _transaction_contract() -> dict:
         "decidir cada uma com sem_fato_sidequest=true ou fatos_sidequest. "
         "Fatos exigem evidência literal da narração/resumo."
     )
+    contract["pressao_narrativa_task52"] = (
+        "Pressão comprometida projetada no ticket exige resultado explícito; "
+        "conversa neutra não encerra operação adversarial."
+    )
     return contract
 
 
@@ -116,8 +121,14 @@ def prepare(*args, **kwargs):
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
     gate = _pending_gate.prepare_gate(Path(repo))
+    operation_pendings = None
     if gate is not None:
-        return gate
+        try:
+            operation_pendings = _pressure52.routable_operation_pendings(Path(repo))
+        except _pressure52.NarrativePressureError as exc:
+            raise _core.CronicaError(f"Task52: {exc}") from exc
+        if operation_pendings is None:
+            return gate
     base = _hot.prepare(*args, **kwargs)
     if signal is None:
         prepared = base
@@ -148,7 +159,7 @@ def prepare(*args, **kwargs):
             if "sidequest_emergente" in prepared or "sidequests_ativas" in prepared
             else _core.MAX_PREP_OUTPUT_BYTES
         )
-        return _mechanics.attach_to_prepare(
+        prepared = _mechanics.attach_to_prepare(
             Path(repo),
             prepared,
             mechanical_spec,
@@ -157,21 +168,32 @@ def prepare(*args, **kwargs):
             max_ticket_chars=_core.MAX_TICKET_CHARS,
             max_output_bytes=output_budget,
         )
+        return _pressure52.integrate_prepare(
+            Path(repo),
+            prepared,
+            operation_pendings=operation_pendings,
+            decode_ticket=decode_ticket,
+            encode_ticket=_core.encode_ticket,
+        )
     except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
+    except _pressure52.NarrativePressureError as exc:
+        raise _core.CronicaError(f"Task52: {exc}") from exc
 
 
-def _sidequest_meta(token: str) -> tuple[dict, dict | None, dict | None]:
+def _sidequest_meta(token: str) -> tuple[dict, dict | None, dict | None, dict | None]:
     payload = decode_ticket(token)
     try:
         return (
             payload,
             _sidequests46.ticket_meta(payload),
             _sidequests48.ticket_meta(payload),
+            _pressure52.ticket_meta(payload),
         )
     except (
         _sidequests46.EmergentSidequestIntegrationError,
         _sidequests48.ActiveSidequestError,
+        _pressure52.NarrativePressureError,
     ) as exc:
         raise _core.CronicaError(str(exc)) from exc
 
@@ -179,6 +201,7 @@ def _sidequest_meta(token: str) -> tuple[dict, dict | None, dict | None]:
 def _base_token(payload: dict) -> str:
     clean = _sidequests46.strip_ticket_payload(payload)
     clean.pop(_sidequests48.TICKET_KEY, None)
+    clean.pop(_pressure52.TICKET_KEY, None)
     token, _ = _core.encode_ticket(clean)
     return token
 
@@ -188,16 +211,33 @@ def confirm(repo: Path, token: str):
         _sidequests49.require_no_open_journal(Path(repo))
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
-    _, meta46, meta48 = _sidequest_meta(token)
-    if meta46 is not None or meta48 is not None:
+    _, meta46, meta48, meta52 = _sidequest_meta(token)
+    if meta46 is not None or meta48 is not None or meta52 is not None:
         raise _core.CronicaError(
-            "ticket com sidequest usa cronica concluir; não separe confirmar/registrar"
+            "ticket com sidequest/pressão usa cronica concluir; não separe confirmar/registrar"
         )
     return _hot.confirm(repo, token)
 
 
-def _conclude_base(repo: Path, token: str, transaction: dict):
+def _conclude_base(
+    repo: Path,
+    token: str,
+    transaction: dict,
+    *,
+    pressure_pending_ids: list[str] | None = None,
+):
     original = _core._preflight_registration
+    original_authorize = _hot.turno.barreira_mundo.authorize_registration
+    if pressure_pending_ids:
+        def pressure_authorize(inner_repo, inner_transaction, *, retry):
+            return _pressure52.authorize_registration(
+                inner_repo,
+                inner_transaction,
+                retry=retry,
+                allowed_pending_ids=pressure_pending_ids,
+                original=original_authorize,
+            )
+        _hot.turno.barreira_mundo.authorize_registration = pressure_authorize
     _core._preflight_registration = globals()["_preflight_registration"]
     try:
         return _hot.conclude(
@@ -208,14 +248,23 @@ def _conclude_base(repo: Path, token: str, transaction: dict):
         )
     finally:
         _core._preflight_registration = original
+        _hot.turno.barreira_mundo.authorize_registration = original_authorize
 
 
 def conclude(repo: Path, token: str, transaction: dict):
-    payload, meta46, meta48 = _sidequest_meta(token)
+    payload, meta46, meta48, meta52 = _sidequest_meta(token)
     try:
         mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
     except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
+    try:
+        pressure_plan = _pressure52.prepare_conclusion(
+            Path(repo),
+            ticket_meta_value=meta52,
+            transaction=mechanical_writer_tx,
+        )
+    except _pressure52.NarrativePressureError as exc:
+        raise _core.CronicaError(f"Task52: {exc}") from exc
     ticket_id_original = _core.ticket_id(token)
     base_token = _base_token(payload)
     if meta48 is None and _sidequests49.TRANSACTION_KEY in transaction:
@@ -234,12 +283,18 @@ def conclude(repo: Path, token: str, transaction: dict):
         except _sidequests49.TransactionalSidequestProgressError as exc:
             raise _core.CronicaError(f"Task49: {exc}") from exc
 
-    writer_tx = _sidequests49.writer_transaction(mechanical_writer_tx)
+    writer_tx = _pressure52.writer_transaction(mechanical_writer_tx)
+    writer_tx = _sidequests49.writer_transaction(writer_tx)
     writer_tx = _sidequests46.writer_transaction(writer_tx)
     installed46 = None
     try:
         if meta46 is None:
-            result = _conclude_base(repo, base_token, writer_tx)
+            result = _conclude_base(
+                repo,
+                base_token,
+                writer_tx,
+                pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+            )
         else:
             journal46 = _sidequests46.recover_matching_journal(
                 repo, ticket_id=ticket_id_original, transaction=transaction
@@ -248,7 +303,12 @@ def conclude(repo: Path, token: str, transaction: dict):
                 package = _sidequests46._plan_from_ticket(repo, meta46)
                 block, offer = _sidequests46._normalize_offer(transaction)
                 if block is None:
-                    result = _conclude_base(repo, base_token, writer_tx)
+                    result = _conclude_base(
+                        repo,
+                        base_token,
+                        writer_tx,
+                        pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                    )
                     installed46 = {
                         "resultado": "oferta_nao_materializada",
                         "mutacoes_sidequest": 0,
@@ -274,7 +334,12 @@ def conclude(repo: Path, token: str, transaction: dict):
                         plan=plan46,
                     )
             if journal46 is not None:
-                result = _conclude_base(repo, base_token, writer_tx)
+                result = _conclude_base(
+                    repo,
+                    base_token,
+                    writer_tx,
+                    pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                )
                 installed46 = _sidequests46.install(repo, journal46)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
         raise _core.CronicaError(
@@ -318,6 +383,16 @@ def conclude(repo: Path, token: str, transaction: dict):
         result.setdefault("sistemas_narrativos", []).append(
             "transactional_sidequest_progress"
         )
+    try:
+        installed52 = _pressure52.install_conclusion(Path(repo), pressure_plan)
+    except _pressure52.NarrativePressureError as exc:
+        raise _core.CronicaError(
+            f"Task52: {exc}. Se o turno já tiver sido registrado, repita o mesmo "
+            "cronica concluir; registro e resolução são idempotentes."
+        ) from exc
+    if installed52 is not None:
+        result["pressao_narrativa"] = installed52
+        result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
     return result
 
 
@@ -332,10 +407,11 @@ def register(
         _sidequests49.require_no_open_journal(Path(repo))
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
-    payload, meta46, meta48 = _sidequest_meta(token)
-    if meta46 is not None or meta48 is not None:
+    payload, meta46, meta48, meta52 = _sidequest_meta(token)
+    if meta46 is not None or meta48 is not None or meta52 is not None:
         raise _core.CronicaError(
-            "reparo de sidequest repete cronica concluir com a mesma transação; registrar isolado não instala sidequest"
+            "reparo de sidequest/pressão repete cronica concluir com a mesma transação; "
+            "registrar isolado não instala contratos narrativos"
         )
     try:
         writer_tx = _mechanics.validate_transaction(repo, payload, transaction)

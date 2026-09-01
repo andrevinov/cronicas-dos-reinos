@@ -2,7 +2,7 @@
 
 ## Status e dependências
 
-**Planejada.** É a etapa final de integração das Tasks 48–52.
+**Implementada em 2026-09-01.** É a etapa final de integração das Tasks 48–52.
 
 Esta Task não altera o passado narrado nem decide retroativamente qual reação Masao executará. Ela migra o estado operacional, prova o fluxo ponta a ponta e atualiza os contratos/documentação somente depois que a implementação estiver verde.
 
@@ -171,3 +171,27 @@ Também executar as auditorias read-only de testes e comparar o rollout com o ba
 - nenhuma nova dívida de nomes Task, freeze vivo ou fixture global compartilhada;
 - documentação e `AGENTS.md` refletem somente comportamento implementado;
 - `test-full`, `preflight` e workflows obrigatórios verdes.
+
+## Entrega realizada
+
+- `ferramentas/migracao_sete_nomes.py` fornece `dry-run`, aplicação com journal,
+  recovery, retry idempotente e `check` de preflight;
+- a campanha viva recebeu três fatos literais e o receipt
+  `historico/migracoes/sidequests/sete-nomes-session-017-v1.yaml`;
+- a missão permanece `aceita`, com `verificar_autoridade: possivel`, uma condição
+  de sucesso ainda pendente e `terminal: null`;
+- `necessita_reavaliacao_reacao` foi marcado sem criar reação, ataque ou encontro;
+- o SHA-256 do arquivo Task44 permaneceu
+  `2718784f2910baa9f97df28782741eefe350aff37e690d10a1bb13a593111218`;
+- o snapshot controlado e a regressão permanente estão em
+  `tests/fixtures/historical/seven-names-session-017-end.yaml` e
+  `tests/test_seven_names_sidequest_regression.py`;
+- tamanhos observados e tetos ficam em
+  `baseline/seven-names-migration-integration-orcamento.yaml`;
+- o analisador de rollout reconhece `seven_names_migration_regression`, e o
+  preflight executa o check real da migração.
+
+Validação final: `test-fast` 198 testes; perfis combinados 963 testes;
+`test-full` 1.416 testes; `preflight` 28 checks, todos verdes. As auditorias de
+congelamento vivo e histórico ficaram limpas, e o rollout de engenharia passou
+todas as sete metas comparáveis sem atribuir economia estimada à campanha real.

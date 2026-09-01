@@ -1,0 +1,17 @@
+schema_migracao_sete_nomes_receipt: 1
+natureza: registro_migracao_historica
+migration_id: seven-names-session-017-v1
+preparacao_id: snm-prep-4a5b74bf9711ddf4c0042d1e
+mission_id: sqe-47ea56e74d59f1c0
+quest_id: qse-c721ace29e628024
+instante_representado:
+  data: 20 Eleasis, 1372 DR
+  hora: 00:31
+motivo: Reconciliar fatos canônicos das Sessões 016–017 que ficaram atrás do progresso
+  operacional da sidequest aceita.
+task44_sha256: 2718784f2910baa9f97df28782741eefe350aff37e690d10a1bb13a593111218
+resultado:
+  task45_sha256: 662d8047562fc20b1a6c1a371cefc7f697e5442d0c613eabe5f65b85a6f8e725
+  estado_oportunidades_sha256: 83a82593d60911c083763715615e4266cbb2fd8d09f7743bed1ddac22b83891d
+  terminal_inventado: false
+  reacao_materializada: false

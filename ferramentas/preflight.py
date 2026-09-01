@@ -93,6 +93,21 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
+                "operações adversariais concorrentes",
+                (python, "ferramentas/operacoes_concorrentes.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
+                "roteamento de pressão narrativa",
+                (python, "ferramentas/pressao_narrativa.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
+                "migração histórica Sete Nomes",
+                (python, "ferramentas/migracao_sete_nomes.py", "check"),
+                "mundo vivo",
+            ),
+            Check(
                 "oportunidades de sidequest",
                 (python, "ferramentas/oportunidades.py", "check"),
                 "mundo vivo",

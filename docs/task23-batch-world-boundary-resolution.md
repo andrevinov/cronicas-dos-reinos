@@ -40,6 +40,10 @@ sem_mudanca:
   - id: mundo-...
     token: <token devolvido por preparar>
     nota: Motivo concreto para esta cadencia nao produzir fato novo.
+grupos_operacoes:
+  - id: mundo-...
+    token: <token devolvido por preparar>
+    bloqueios: {}
 YAML
 ```
 
@@ -68,6 +72,13 @@ autoritativas.
 Eventos canonicos datados nunca aceitam `sem_mudanca`. O lote somente os separa dos
 itens triviais. A materializacao continua exigindo transacao `modo: mundo` e a
 conclusao normal pela barreira.
+
+### `comprometer_grupo_operacoes`
+
+Grupos adversariais Task51 nunca aceitam `sem_mudanca`. A preparacao projeta
+todas as operacoes e `grupos_operacoes` compromete em lote as frentes validas;
+bloqueios causais sao declarados por operacao. As pendencias resultantes sao
+resolvidas separadamente e a escolha de Ren em uma frente nao fecha outra.
 
 ## Agentes leves
 

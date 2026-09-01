@@ -83,3 +83,11 @@ Todo desfecho terminal usa `canon_bridge_runtime.finish`. Falha pode liberar/rea
 - desde a Task48, turno comum projeta read-only no máximo dois fragmentos Task45 de missões aceitas;
 - a Task49 valida evidência do próprio turno, instala fatos com journal e chama os terminais idempotentes desta Task;
 - autoria/materialização de nova sidequest continua reservada à Task46.
+
+## Integração histórica posterior — Task 53
+
+A migração de “Sete Nomes Antes do Amanhecer” importa somente fatos literais das
+Sessões 016–017 para o fragmento Task45. Ela deixa `verificar_autoridade` aberta
+até uma atuação institucional canônica de Luath, preserva `terminal: null` e
+apenas sinaliza à Task50 que há causa para reavaliar repercussões. O contrato
+Task44 não é reescrito para acomodar o caminho emergente.

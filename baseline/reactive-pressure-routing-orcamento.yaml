@@ -1,0 +1,20 @@
+schema_orcamento_roteamento_pressao: 1
+natureza: contrato_de_regressao
+limites:
+  itens_por_preparo_max: 12
+  pressoes_comprometidas_por_ticket_max: 8
+  preparo_com_pressao_bytes_max: 32768
+  rng_novo: 0
+  scheduler_novo: 0
+  scans_globais: 0
+  parser_de_tom: 0
+invariantes:
+  prioridade_deterministica: true
+  ordem_nao_decide_acao_de_ren: true
+  pressao_comprometida_exige_resultado: true
+  conversa_neutra_nao_fecha_operacao: true
+  adiamento_exige_bloqueio_causal: true
+  continua_preserva_pendencia: true
+  encontro_antecede_primeira_rolagem: true
+  iniciativa_social_nao_cria_presenca_ou_conhecimento: true
+  censura_repetida_exige_fato_novo: true

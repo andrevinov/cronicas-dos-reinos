@@ -168,6 +168,61 @@ class RolloutNarrativeSystemsTest(RolloutFixture):
 
 
 class RolloutSidequestSystemsTest(RolloutFixture):
+    def test_migracao_historica_recebe_atribuicao_propria(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "migration"}),
+            user("migration", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "migration",
+                "m1",
+                "poetry run python ferramentas/migracao_sete_nomes.py dry-run qse-fixture",
+            ),
+            output(
+                "migration",
+                "m1",
+                "Process exited with code 0\nschema_migracao_sete_nomes: 1\n"
+                "migration_id: seven-names-session-017-v1\n",
+            ),
+        ]
+        systems = mod.analyze(self.path(rows))["narration_turns"]["narrative_system_turns"]
+        self.assertEqual(systems["seven_names_migration_regression"], 1)
+
+    def test_pressao_narrativa_recebe_atribuicao_propria(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "pressure"}),
+            user("pressure", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "pressure",
+                "p1",
+                "poetry run cronica preparar --cena-id pressure --sem-oportunidade-sidequest",
+            ),
+            output(
+                "pressure",
+                "p1",
+                "Process exited with code 0\nschema_pressao_narrativa: 1\ncontrato_pressao: ativo\n",
+            ),
+        ]
+        systems = mod.analyze(self.path(rows))["narration_turns"]["narrative_system_turns"]
+        self.assertEqual(systems["reactive_pressure_routing"], 1)
+
+    def test_operacoes_concorrentes_recebem_atribuicao_propria(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "operations"}),
+            user("operations", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "operations",
+                "b1",
+                "poetry run python ferramentas/operacoes_concorrentes.py comprometer gop-fixture",
+            ),
+            output(
+                "operations",
+                "b1",
+                "Process exited with code 0\ngrupo_operacoes_id: gop-fixture\n",
+            ),
+        ]
+        systems = mod.analyze(self.path(rows))["narration_turns"]["narrative_system_turns"]
+        self.assertEqual(systems["concurrent_adversarial_operations"], 1)
+
     def test_sidequest_atribui_sistemas_sem_terceira_chamada(self):
         rows = [
             record("event_msg", {"type": "task_started", "turn_id": "sidequest"}),

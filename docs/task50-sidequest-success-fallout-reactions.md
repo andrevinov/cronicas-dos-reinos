@@ -105,6 +105,11 @@ reacoes_sidequest.py preparar <missao>       # proposta YAML em stdin
 → reacoes_sidequest.py resolver <reaction_id> --resultado <texto>  # prova em stdin
 ```
 
+Quando duas ou mais reações sustentam ações na mesma janela, a Task51 pode
+reivindicá-las em um `grupo_operacoes`. Nesse caso, o reconciliador Task50 não
+recria as pendências individuais: a fronteira compromete todas as frentes
+válidas em lote e só então emite uma pendência independente por operação.
+
 Uma `oportunidade_sucessora` permanece apenas planejada neste domínio. Ela não
 escreve em `oportunidades.py`; eventual oferta continua submetida à Task47 e à
 autoria/lifecycle existentes.

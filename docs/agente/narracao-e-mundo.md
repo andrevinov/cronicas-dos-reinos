@@ -30,6 +30,10 @@ Quando um NPC presente precisar de voz, gesto ou presença e isso não estiver n
 
 **Conselho não é iniciativa padrão.** Saudação, conversa casual, reencontro, brincadeira ou simples discordância não justificam sermão. Conselho/censura só entram quando Ren pede avaliação, o assunto cai diretamente na responsabilidade do NPC ou há risco imediato que torne silêncio artificial. Mesmo então, preferir uma observação concreta e dar espaço para resposta. Preocupação persistente não autoriza repetir a mesma bronca em toda interação.
 
+Com Task52, pressão comprometida precede iniciativa social incidental. O mesmo
+`topico_censura` e digest causal é suprimido estruturalmente; somente fato novo
+reautoriza a objeção. Não inferir isso por palavras, tom ou julgamento literário.
+
 Risco percebido alto pode endurecer limites e urgência sem apagar afeto/confiança. Silva com afinidade e confiança altas continua alguém próxima mesmo quando considera Ren muito perigoso para si ou para os vulneráveis; esse risco não deve converter automaticamente cuidado em tutela moral.
 
 Detalhes: `docs/task26-npc-relationship-state-v1.md` e `docs/task27-relationship-aware-dialogue.md`.
@@ -37,6 +41,13 @@ Detalhes: `docs/task26-npc-relationship-state-v1.md` e `docs/task27-relationship
 ## Facções
 
 Facções relevantes devem possuir objetivos, liderança, recursos, área de influência, aliados, inimigos, conhecimento, planos, operações e reação ao personagem. Elas podem agir fora de cena. Reavaliar planos quando Ren interfere, recursos mudam, alianças mudam, informação é revelada, tempo avança ou outro agente interfere.
+
+Progresso decisivo de sidequest pode abrir reação causal do mundo sem prolongar
+a missão nem convertê-la em sermão. Captura, confissão, provas apreendidas e
+transferência institucional são fatos capazes de provocar reavaliação, mas não
+escolhem por si sós ataque, emboscada ou fraude. Essas ações exigem capacidade,
+conhecimento, presença e recursos canônicos; quando elegíveis, são comprometidas
+antes de serem narradas e podem disputar a atenção de Ren sem decidir sua ação.
 
 ## Agentes autônomos
 

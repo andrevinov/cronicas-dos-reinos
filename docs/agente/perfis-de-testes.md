@@ -54,6 +54,11 @@ poetry run test-domain cronica mundo
 
 O objetivo é investigação e feedback focado. Os domínios podem se sobrepor deliberadamente porque uma mesma regressão pode proteger mais de uma área.
 
+A regressão histórica permanente de “Sete Nomes” pertence simultaneamente a
+`sidequests`, `cronica`, `mundo` e `sessoes`. Ela usa `TemporaryDirectory` e um
+snapshot em `tests/fixtures/historical/`; nenhum desses perfis escreve no estado
+vivo do repositório.
+
 Para listar os arquivos sem executar:
 
 ```bash

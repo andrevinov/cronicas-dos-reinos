@@ -197,7 +197,25 @@ O Local Microevent Deck permanece separado e cotidiano. Task 35 não relaxa os v
 
 Detalhes: `docs/task35-world-local-incidents-v2.md`.
 
-## 10. Orçamento e invariantes
+## 10. Roteamento de pressão — Task 52
+
+Depois das projeções Tasks 46–49 e da mecânica, `cronica preparar` ordena matéria
+causal já autorizada. Operação Task51 comprometida tem prioridade sobre prazo,
+nova oportunidade e iniciativa incidental. O ticket recebe `contrato_pressao`;
+`cronica concluir` deve declarar `apresentada`, `resolvida`,
+`adiada_por_bloqueio` ou `continua` para cada operação.
+
+A exceção à barreira é estreita: só atravessa quando a fila inteira contém
+operações adversariais presentes no contrato do ticket. Uma pendência estranha
+restaura o bloqueio normal. Operação remota sem canal continua ativa, mas não
+expõe detalhes a Ren. Ataque comprometido já possui encontro e mecânica
+congelados antes da primeira rolagem.
+
+Iniciativa social não cria presença nem conhecimento e perde prioridade para
+pressão superior. `topico_censura` repetido com o mesmo digest causal é
+suprimido; fato novo reautoriza a resposta sem parser literário.
+
+## 11. Orçamento e invariantes
 
 Contratos relevantes:
 
@@ -209,6 +227,9 @@ Contratos relevantes:
 - `baseline/secret-npc-quest-catalog-orcamento.yaml`;
 - `baseline/world-local-incidents-v2-orcamento.yaml`;
 - `baseline/sidequest-success-reactions-orcamento.yaml`.
+- `baseline/concurrent-adversarial-operations-orcamento.yaml`;
+- `baseline/reactive-pressure-routing-orcamento.yaml`.
+- `baseline/seven-names-migration-integration-orcamento.yaml`.
 
 Invariantes atuais:
 
@@ -244,3 +265,34 @@ Invariantes atuais:
 - oportunidade sucessora não é oferta automática;
 - capacidade, conhecimento, presença, recursos e Protected Core continuam gates;
 - reação usa checkpoint/fila existentes, sem RNG, scheduler ou scan global.
+- pressão comprometida exige decisão explícita e conversa neutra não a fecha;
+- a ordem de atenção não escolhe ação de Ren;
+- turno sem pressão não lê o domínio adversarial;
+- censura social repetida exige identidade de fato nova, sem parser de tom.
+
+## 12. Operações adversariais concorrentes — Task 51
+
+Reações Task50 independentes podem compartilhar uma janela somente quando
+células, atores, recursos e capacidades exclusivas não se sobrepõem. O grupo é
+comprometido pela fronteira antes da narração ou escolha de Ren; um bloqueio
+causal remove apenas sua frente. As demais operações continuam com pendências
+próprias fora da presença de Ren.
+
+Informação entre frentes não é automática: percepção direta exige o mesmo local;
+mensageiro, sinal ou testemunha exigem canal, prova, atraso e escopo declarados.
+Composição e ameaça do encontro são congeladas antes da primeira rolagem.
+
+## 13. Migração histórica e regressão “Sete Nomes” — Task 53
+
+`migracao_sete_nomes.py dry-run <mission_id-ou-quest_id>` valida os contratos
+Tasks 41/43/44/45, seus digests e a evidência literal sem escrever. `aplicar`
+exige o `preparacao_id`, usa journal recuperável e receipt histórico idempotente.
+A migração importa três fatos consolidados, mantém ausente a confirmação formal
+que Luath ainda não havia dado e não materializa reação.
+
+O marco excepcional apenas define `necessita_reavaliacao_reacao`. A partir daí,
+Task50 continua obrigada a provar conhecimento, capacidade, presença e recurso
+do antagonista. O teste histórico prova que uma preparação negativa para oferta
+nova ainda projeta a missão ativa, que Luath pode ser substituto institucional
+quando sua competência e atuação são literais e que operações simultâneas só
+nascem em contratos posteriores e independentes.

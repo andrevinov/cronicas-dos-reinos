@@ -12,6 +12,7 @@ from typing import Any
 SCHEMA = 1
 MAX_OPENINGS = 3
 HIGH_RISK_MIN = 8
+MAX_CAUSAL_ID = 128
 
 POLICIES: dict[str, dict[str, Any]] = {
     "alta_afinidade_alta_confianca": {
@@ -94,3 +95,39 @@ def validate_projection(value: Any) -> dict[str, Any]:
     if not isinstance(limit, str) or not limit.strip() or len(limit) > 220:
         raise ValueError("limite de iniciativa social invalido")
     return value
+
+
+def authorize_censorship_topic(
+    *,
+    npc_id: str,
+    topic_id: str,
+    fact_id: str,
+    fact_digest: str,
+    previous: dict[str, str] | None,
+) -> dict[str, str] | None:
+    """Autoriza objeção por identidade causal, nunca por análise da prosa.
+
+    A mesma combinação NPC+tópico+digest é silêncio estrutural. Um digest novo,
+    vindo de fato canônico novo ou materialmente alterado, reabre a possibilidade
+    de resposta. A função não cria presença, conhecimento ou o próprio fato.
+    """
+    values = {
+        "npc_id": npc_id,
+        "topico_censura": topic_id,
+        "fato_id": fact_id,
+        "fato_digest": fact_digest,
+    }
+    for key, value in values.items():
+        if not isinstance(value, str) or not value.strip() or len(value.strip()) > MAX_CAUSAL_ID:
+            raise ValueError(f"{key} precisa ser ID causal compacto")
+        values[key] = value.strip()
+    if previous is not None:
+        if not isinstance(previous, dict):
+            raise ValueError("histórico de tópico precisa ser mapa")
+        if (
+            previous.get("npc_id") == values["npc_id"]
+            and previous.get("topico_censura") == values["topico_censura"]
+            and previous.get("fato_digest") == values["fato_digest"]
+        ):
+            return None
+    return values

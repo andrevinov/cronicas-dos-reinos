@@ -1,0 +1,25 @@
+schema_orcamento_migracao_sete_nomes: 1
+natureza: contrato_de_regressao
+medido_em: '2026-09-01'
+medidas_observadas:
+  snapshot_historico_bytes: 11931
+  progresso_vivo_pos_migracao_bytes: 9852
+  receipt_historico_bytes: 749
+limites:
+  fatos_historicos_importados_max: 3
+  snapshot_historico_bytes_max: 12288
+  progresso_task45_bytes_max: 24576
+  receipt_historico_bytes_max: 12288
+  journal_transacional_bytes_max: 131072
+  rng_novo: 0
+  scheduler_novo: 0
+  scans_globais: 0
+invariantes:
+  dry_run_obrigatorio_e_read_only: true
+  localiza_por_mission_id_ou_quest_id: true
+  evidencia_literal_obrigatoria: true
+  contrato_task44_preservado_byte_a_byte: true
+  terminal_ausente_nao_e_inventado: true
+  reacao_apenas_sinalizada_para_reavaliacao: true
+  retry_e_recovery_exatamente_uma_vez: true
+  fixture_historica_nao_representa_estado_vivo_futuro: true

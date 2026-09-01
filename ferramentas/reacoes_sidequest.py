@@ -274,6 +274,7 @@ def _agent(repo: Path, actor_id: str) -> dict[str, Any]:
     }
     return {
         "id": actor_id,
+        "tipo": actor.get("tipo"),
         "objetivo_atual": _text(actor.get("objetivo_atual"), "antagonista.objetivo_atual"),
         "recursos": list(actor.get("recursos") or []),
         "restricoes": list(actor.get("restricoes") or []),
@@ -1113,6 +1114,11 @@ def reconcile(repo: Path, *, now: mundo.WorldInstant | None = None) -> dict[str,
         contract, _ = _load_contract(repo, reaction_id)
         row = _map(state["reacoes"].get(reaction_id), f"estado.{reaction_id}")
         if contract["contrato"]["classificacao"] != "reacao_mundo":
+            continue
+        # Uma reação reivindicada por um grupo concorrente passa a ser
+        # orquestrada pela pendência única do grupo. Reenfileirá-la aqui
+        # criaria duas autoridades para o mesmo compromisso adversarial.
+        if row.get("grupo_operacoes_id"):
             continue
         minimum = mundo.parse_instant(
             contract["contrato"]["janela"]["minimo"]["data"],

@@ -2,7 +2,8 @@
 
 ## Status e dependências
 
-**Planejada.** Só entra no contrato operacional depois da Task50 e dos testes de integração.
+**Implementada.** O domínio vive em `ferramentas/operacoes_concorrentes.py`,
+integra a fronteira/checkpoint existentes e é verificado pelo preflight.
 
 Depende da fila/fronteira do Mundo Vivo, da Task44, da Task50 e dos contratos existentes de encontros simultâneos. Não altera a autoridade do jogador sobre Ren.
 
@@ -40,6 +41,12 @@ Adicionar `grupo_operacoes` ao domínio de reação, contendo:
 
 Uma operação física só entra no grupo se atores e recursos distintos estiverem disponíveis. O mesmo agente, unidade, item único ou capacidade exclusiva não pode ser reservado em dois locais incompatíveis.
 
+Os artefatos reservados ficam em
+`narrador/sidequest-reacoes/operacoes-concorrentes/`: índice e estado mutável,
+contratos imutáveis em `grupos/` e encontros congelados em `encontros/`. A
+reação Task50 reivindicada deixa de emitir pendência individual; o grupo possui
+uma única pendência até o compromisso atômico.
+
 ### Preparação e fronteira
 
 Quando a janela é alcançada:
@@ -51,7 +58,28 @@ Quando a janela é alcançada:
 5. `aplicar` materializa todas as operações comprometidas e suas pendências;
 6. o turno seguinte apresenta apenas sinais que Ren pode perceber legitimamente.
 
+`resolver_fronteira.py preparar` classifica o grupo como
+`comprometer_grupo_operacoes`. `aplicar` recebe a decisão no mesmo plano:
+
+```yaml
+lote_id: frn1.<token>
+grupos_operacoes:
+  - id: mundo-<id>
+    token: <token-do-item>
+    bloqueios: {}
+```
+
+O commit usa `runtime/operacoes-concorrentes-journal.yaml`: estado Task50,
+reservas, encontros e fila do Mundo Vivo são preparados antes da primeira
+escrita. Retry termina o journal sem duplicar efeitos. Depois, cada frente tem
+pendência `resolver_operacao_adversarial` e resultado factual independente.
+
 Escolher uma frente não cancela as outras. NPCs aliados e inimigos continuam agindo fora da presença de Ren. Resultados remotos só viram conhecimento de Ren quando um canal plausível os entrega.
+
+`percepcao-ren` projeta somente os sinais do local informado e entregas já
+realizadas. `entregar-informacao` exige canal declarado (`mensageiro`,
+`sinal_magico` ou `testemunha`), prova literal, atraso mínimo e fatos dentro do
+escopo congelado do canal.
 
 ### Limite de decisão de Ren
 
@@ -69,6 +97,11 @@ O sistema preserva tempos de deslocamento, capacidade de comunicação e consequ
 ### Encontro e combate
 
 Composição de inimigos, terreno, surpresa, objetivo tático e papel de especialistas são congelados antes da primeira rolagem. Um especialista pode usar o combate como distração para roubo, fuga ou extração sem precisar ser o combatente principal.
+
+O snapshot de encontro inclui composição canônica resolvida por alias, avaliação
+de ameaça para Ren solo e aliados realmente presentes, terreno, iniciativa,
+surpresa, objetivo e rotas de retirada. `registrar-rolagem` fixa também o SHA do
+snapshot; qualquer alteração posterior falha no replay e no `check`.
 
 Antes da resolução mecânica:
 
@@ -91,7 +124,11 @@ Protected Core não impede ataque ou combate. Ele impede apenas consequências g
 
 ## Testes
 
-Criar `tests/test_concurrent_world_operations.py` e ampliar os testes da fronteira em vez de criar arquivos nomeados pela Task.
+`tests/test_concurrent_world_operations.py` contém quinze cenários sintéticos em
+`TemporaryDirectory`; os perfis `mundo`, `sidequests` e `cronica` incluem o
+arquivo. O orçamento permanente está em
+`baseline/concurrent-adversarial-operations-orcamento.yaml` e a telemetria
+pós-hoc usa `concurrent_adversarial_operations`.
 
 Cobertura obrigatória:
 

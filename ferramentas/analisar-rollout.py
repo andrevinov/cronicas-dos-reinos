@@ -53,6 +53,9 @@ NARRATIVE_SYSTEM_KEYS = (
     "active_sidequest_reassessment",
     "transactional_sidequest_progress",
     "sidequest_success_reactions",
+    "concurrent_adversarial_operations",
+    "reactive_pressure_routing",
+    "seven_names_migration_regression",
     "canon_bridge",
 )
 
@@ -76,6 +79,18 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
     "sidequest_success_reactions": (
         "reacoes_sidequest.py",
         "reacoes-sidequest.py",
+    ),
+    "concurrent_adversarial_operations": (
+        "operacoes_concorrentes.py",
+        "operacoes-concorrentes.py",
+    ),
+    "reactive_pressure_routing": (
+        "pressao_narrativa.py",
+        "pressao-narrativa.py",
+    ),
+    "seven_names_migration_regression": (
+        "migracao_sete_nomes.py",
+        "migracao-sete-nomes.py",
     ),
     "canon_bridge": ("canon_bridge_runtime.py", "canon-bridge-runtime.py"),
 }
@@ -139,6 +154,23 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "reaction_id:",
         "reacao_mundo",
         "oportunidade_sucessora",
+    ),
+    "concurrent_adversarial_operations": (
+        "schema_grupo_operacoes",
+        "grupo_operacoes_id",
+        "comprometer_grupo_operacoes",
+        "resolver_operacao_adversarial",
+    ),
+    "reactive_pressure_routing": (
+        "reactive_pressure_routing",
+        "schema_pressao_narrativa",
+        "contrato_pressao",
+        "pressao_narrativa:",
+    ),
+    "seven_names_migration_regression": (
+        "schema_migracao_sete_nomes",
+        "seven-names-session-017-v1",
+        "necessita_reavaliacao_reacao",
     ),
     "canon_bridge": ("canon_bridge", "reserva_causal", "aguarda_evidencia"),
 }

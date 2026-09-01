@@ -1,0 +1,22 @@
+schema_orcamento_operacoes_concorrentes: 1
+natureza: contrato_de_regressao
+limites:
+  grupos_max: 8
+  operacoes_por_grupo_max: 4
+  canais_por_grupo_max: 8
+  contrato_por_grupo_bytes_max: 49152
+  encontro_por_operacao_bytes_max: 16384
+  preparacao_bytes_max: 16384
+  schedulers_novos: 0
+  rng_novo: 0
+  scans_globais: 0
+invariantes:
+  compromisso_em_lote_antecede_escolha_de_ren: true
+  ordem_tecnica_nao_define_prioridade_ficcional: true
+  recursos_exclusivos_nao_sao_duplicados: true
+  bloqueio_causal_afeta_somente_sua_operacao: true
+  frente_remota_permanece_ativa: true
+  conhecimento_remoto_exige_canal_e_atraso: true
+  mecanica_congelada_antes_da_primeira_rolagem: true
+  recovery_transacional_e_idempotente: true
+  protected_core_nao_remove_risco_mecanico: true

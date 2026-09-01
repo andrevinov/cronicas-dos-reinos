@@ -2,7 +2,8 @@
 
 ## Status e dependências
 
-**Planejada.** Este documento não altera sozinho o estilo ou o hot path.
+**Implementada.** O roteador vive em `ferramentas/pressao_narrativa.py`, integra
+`cronica preparar/concluir` e é verificado pelo preflight.
 
 Depende das projeções das Tasks 48–51 e integra os contratos existentes de iniciativa social, densidade narrativa, encontros, ameaça e mecânica diegética.
 
@@ -20,7 +21,7 @@ Criar um roteador compacto que ordene matérias já autorizadas para a cena e fa
 
 ### Projeção de pressão
 
-`cronica preparar` anexará `pressao_narrativa` quando existir matéria causal ativa. Cada item terá:
+`cronica preparar` anexa `pressao_narrativa` quando existe matéria causal ativa. Cada item tem:
 
 - tipo: `operacao_comprometida`, `combate_ativo`, `fronteira_temporal`, `evidencia_em_risco`, `prazo_sidequest`, `iniciativa_social`, `nova_oportunidade` ou equivalente versionado;
 - origem canônica e ID;
@@ -44,7 +45,7 @@ A ordem organiza atenção; não decide a ação de Ren nem obriga todo risco a 
 
 ### Contrato de resolução
 
-Quando houver pressão comprometida, o ticket carregará `contrato_pressao` e `cronica concluir` exigirá um dos resultados:
+Quando há pressão comprometida, o ticket carrega `contrato_pressao` e `cronica concluir` exige um dos resultados:
 
 - `apresentada`: a ameaça entrou na situação jogável;
 - `resolvida`: a cena produziu resultado factual;
@@ -119,3 +120,14 @@ Regressões a preservar:
 - turno neutro permanece barato;
 - testes usam fixtures controladas e nomes de domínio;
 - `test-domain cronica mundo sidequests`, `test-full` e `preflight` verdes.
+
+## Artefatos entregues
+
+- `ferramentas/pressao_narrativa.py`: prioridade determinística, projeção,
+  contrato/revalidação do ticket, exceção estrita da barreira e conclusão;
+- `ferramentas/cronica.py`: integração na mesma dupla preparar/concluir;
+- `ferramentas/iniciativa_social.py`: deduplicação causal de `topico_censura`;
+- `tests/test_reactive_pressure_routing.py` e ampliação dos testes sociais e de
+  telemetria;
+- `baseline/reactive-pressure-routing-orcamento.yaml`: zero RNG, scheduler,
+  scan global e parser de tom.

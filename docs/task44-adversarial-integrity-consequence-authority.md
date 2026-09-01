@@ -90,6 +90,10 @@ Assim, uma sidequest realmente conectada à espinha canônica pode colocar um me
 
 Essas autoridades não recebem correção protetiva escondida. Se uma consequência grave estiver estabelecida por fonte canônica, ação efetiva do jogador ou resultado de combate, o Protected Core não faz o atacante errar, a prisão desaparecer ou o golpe perder gravidade por conveniência.
 
+A Task51 repete esta autorização no commit de cada operação. Protected Core pode
+barrar uma consequência grave automática sem fonte, mas não apaga o encontro,
+reduz a ameaça ou altera um resultado mecânico efetivamente resolvido.
+
 A evidência literal continua obrigatória: ausência de plot armor não é licença para inventar o fato.
 
 ## Competência adversarial

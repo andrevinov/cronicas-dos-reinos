@@ -37,6 +37,7 @@ import direcoes
 import direcoes_mundo
 import interacoes_mundo
 import mundo
+import operacoes_concorrentes
 import reacoes_sidequest
 import sessoes
 import transacoes
@@ -79,6 +80,10 @@ def _reactions_configured(repo: Path) -> bool:
     return reacoes_sidequest.configured(repo)
 
 
+def _operations_configured(repo: Path) -> bool:
+    return operacoes_concorrentes.configured(repo)
+
+
 def sync_world(repo: Path) -> dict[str, Any]:
     """Sincroniza depois do cânone; tolera fixtures legadas sem Mundo Vivo."""
     if not _world_configured(repo):
@@ -90,6 +95,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
             "direcoes_reconsiderar": [],
             "integracao_reativa": {"configurado": False, "alterou": False},
             "reacoes_sidequest": {"configurado": False, "alterou": False},
+            "operacoes_concorrentes": {"configurado": False, "alterou": False},
             "barreira_pendencias": {"configurado": False, "bloqueado": False, "quantidade": 0},
         }
 
@@ -112,6 +118,13 @@ def sync_world(repo: Path) -> dict[str, Any]:
     }
     if _reactions_configured(repo):
         reaction_result = reacoes_sidequest.reconcile(repo)
+    operations_result: dict[str, Any] = {
+        "configurado": False,
+        "alterou": False,
+        "novas_pendencias": [],
+    }
+    if _operations_configured(repo):
+        operations_result = operacoes_concorrentes.reconcile(repo)
     barrier = (
         barreira_mundo.sync(repo)
         if (repo / mundo.WORLD_STATE_PATH).is_file()
@@ -121,6 +134,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
         *(direction_result.get("novas_pendencias") or []),
         *(result.get("novas_pendencias") or []),
         *(reaction_result.get("novas_pendencias") or []),
+        *(operations_result.get("novas_pendencias") or []),
     ]
     return {
         "configurado": True,
@@ -129,6 +143,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
         "direcoes_reconsiderar": direction_result.get("direcoes_reconsiderar") or [],
         "integracao_reativa": integration_result,
         "reacoes_sidequest": reaction_result,
+        "operacoes_concorrentes": operations_result,
         "barreira_pendencias": barrier,
     }
 
@@ -291,6 +306,11 @@ def check(repo: Path) -> list[str]:
         errors.extend(
             f"reações de sidequest: {error}" for error in reactions.get("erros") or []
         )
+    if _operations_configured(repo):
+        operations = operacoes_concorrentes.check(repo)
+        errors.extend(
+            f"operações concorrentes: {error}" for error in operations.get("erros") or []
+        )
     return list(dict.fromkeys(errors))
 
 
@@ -318,6 +338,7 @@ def status(repo: Path) -> dict[str, Any]:
         "direcoes": directions,
         "integracao_reativa": {"configurado": _integration_configured(repo)},
         "reacoes_sidequest": {"configurado": _reactions_configured(repo)},
+        "operacoes_concorrentes": {"configurado": _operations_configured(repo)},
         "memoria_sessoes": sessoes.status(repo),
     }
 

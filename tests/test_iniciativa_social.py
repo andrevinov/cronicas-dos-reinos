@@ -81,6 +81,31 @@ class SocialInitiativePureTest(unittest.TestCase):
                 self.assertIn(forbidden, rendered)
         self.assertIn("task 27", rendered)
 
+    def test_censura_repetida_usa_identidade_causal_e_fato_novo_reautoriza(self):
+        first = iniciativa_social.authorize_censorship_topic(
+            npc_id="maerra",
+            topic_id="risco_imposto_a_casa",
+            fact_id="fato-1",
+            fact_digest="a" * 64,
+            previous=None,
+        )
+        repeated = iniciativa_social.authorize_censorship_topic(
+            npc_id="maerra",
+            topic_id="risco_imposto_a_casa",
+            fact_id="fato-1",
+            fact_digest="a" * 64,
+            previous=first,
+        )
+        renewed = iniciativa_social.authorize_censorship_topic(
+            npc_id="maerra",
+            topic_id="risco_imposto_a_casa",
+            fact_id="fato-2",
+            fact_digest="b" * 64,
+            previous=first,
+        )
+        self.assertIsNone(repeated)
+        self.assertEqual(renewed["fato_id"], "fato-2")
+
 
 class SocialInitiativeRepositoryTest(unittest.TestCase):
     def test_nera_pode_iniciar_contato_cotidiano_sem_virar_sermao(self):
