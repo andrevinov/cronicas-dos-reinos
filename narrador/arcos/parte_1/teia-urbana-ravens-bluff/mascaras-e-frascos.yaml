@@ -1,0 +1,70 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: mascaras_frascos
+fonte_base: LC3 - Nightwatch in the Living City
+
+nucleos:
+  mortimer_mittlemer:
+    nome: Mortimer Mittlemer
+    fonte_canonica:
+    - ilusionista e vigarista experiente
+    - constrói identidades falsas e golpes encenados
+    objetivo_proprio: obter lucro, diversão e vantagem social sem ficar preso a uma identidade
+    vetores:
+      ren:
+      - pode vender perícia contra falsificação, disfarce ou encenação
+      - pode preferir Ren se outro cliente ameaçar sua liberdade
+      masao:
+      - intermediários podem contratar identidades, ilusões ou desinformação
+      - pode aceitar serviço sem conhecer a arquitetura maior da rede
+      ambos:
+      - pode trabalhar para clientes incompatíveis enquanto acreditar que sairá ileso
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - investidor ou patrono falso cruza negócio de NPC conhecido
+      - crime sob aparência de terceiro produz suspeita real
+      - golpe pequeno colide por acidente com operação séria
+    mundo_vivo:
+      sinais:
+      - novo nobre ou profissional aparece sem passado verificável
+      - registros contradizem a aparência pública de alguém
+      - a mesma descrição é associada a pessoas diferentes
+    guardrails:
+    - não substituir retroativamente o falsificador da calaria
+    - não tornar M. Harrow identidade de Mortimer sem nova evidência canônica
+
+  modo:
+    nome: Modo
+    fonte_canonica:
+    - conjurador aposentado e alquimista estabelecido
+    objetivo_proprio: manter reputação profissional, curiosidade alquímica e independência
+    vetores:
+      ren:
+      - reagentes, perícia e análise podem ajudar quando houver relação causal
+      masao:
+      - compras por terceiros podem abastecer operação sem revelar comprador final
+      ambos:
+      - item legítimo pode ser usado por qualquer lado depois da venda
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - efeito inesperado de poção atinge NPC conhecido
+      - falsificações são vendidas usando o nome do alquimista
+      - ingrediente raro chega por rota de procedência problemática
+    mundo_vivo:
+      sinais:
+      - lote de poções passa por recolhimento informal
+      - efeitos mágicos menores aparecem em clientes sem causa pública clara
+      - procura súbita por reagente altera preço e abastecimento
+    guardrails:
+    - erro alquímico não vira catástrofe sem escala e causa estabelecidas
+    - compra por intermediário não cria conhecimento de Masao por parte de Modo
+
+cruzamentos_locais:
+- toca: jack_mooney
+  possibilidade: patronagem, contrato ou investimento falso alcança o circo
+- toca: lysa_renn
+  possibilidade: consumo, falsificação ou troca de frasco produz consequência de tom variável
+- toca: bram_vask
+  possibilidade: penhor, documento ou lote duvidoso cria interseção comercial
