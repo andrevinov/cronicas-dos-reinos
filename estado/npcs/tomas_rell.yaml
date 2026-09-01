@@ -4,6 +4,14 @@ id: tomas_rell
 npc:
   nome: Tomas Rell
   persistencia: persistente_sem_agenda
+  grupo: Galeria dos Escribas / Casa do Salgueiro Seco
+  medidores:
+    vinculo: null
+    confianca: null
+    risco_percebido: null
+  natureza_do_vinculo: cooperação cautelosa com Ren e vínculo profissional estabelecido com Shinta
+  identidade_relacional: ren
+  fonte_relacional: estado/relacoes/tomas_rell.yaml
   origem_identidade:
     tipo: cena_confirmada
     cena_id: s015-shinta-procura-supervisores-e-confere-lotes

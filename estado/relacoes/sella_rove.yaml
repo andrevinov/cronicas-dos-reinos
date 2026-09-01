@@ -8,14 +8,14 @@ relacao:
   local: Lavadouro dos Três Tanques, Rua da Cal, Lower Trades
   status: 'Sella cumpriu a intermediação única prometida: transmitiu a resposta autorizada de Kethra e encerrou
     o canal, recusando novas consultas; o único sinal futuro continua sendo o fio azul escolhido por Kethra.'
-  atitude_para_ren: cautelosa e mais resistente à retórica de Ren; considerou a fala sobre arrependimento futuro
-    uma pressão disfarçada. Mantém o compromisso de levar uma única mensagem a Kethra, mas rejeita tornar o lavadouro
-    ou sua rotina uma ponte recorrente.
+  atitude_para_ren: cautelosa e resistente à retórica de Ren; cumpriu a única intermediação aceita e rejeita tornar
+    o lavadouro ou sua rotina uma ponte recorrente.
   confianca: nenhuma
   respeito: nenhum
-  motivo_atual: Sella preparou embrulho simples de comida e abriu uma saída lateral de cinza, mas a movimentação
-    ainda deixou uma lembrança fraca numa menina da rua. Quando Ren voltou para dar boa notícia a Kethra, Sella
-    alertou que boa notícia também deixa pegada, reforçando que o lavadouro não deve virar ponto de retorno frequente.
+  motivo_atual: >-
+    Sella transmitiu a resposta autorizada de Kethra, encerrou o canal de uso único e
+    recusou novas consultas. O fio azul permanece apenas como sinal futuro escolhido
+    por Kethra, não como autorização para usar Sella novamente.
   informacoes_observadas_por_ren:
   - Sella Rove é uma mulher de braços fortes e cabelo grisalho preso.
   - Ela controla ou trabalha nos fundos do Lavadouro dos Três Tanques.

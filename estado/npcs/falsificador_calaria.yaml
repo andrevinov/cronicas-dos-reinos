@@ -1,0 +1,16 @@
+schema_npc: 2
+natureza: estado_npc_atual
+id: falsificador_calaria
+npc:
+  nome: homem corpulento da antiga calaria
+  persistencia: persistente_sem_agenda
+  grupo: oficina documental da antiga calaria
+  estado: vivo, inconsciente e estável no pátio da calaria
+  vida:
+    estado: incapacitado
+    estabilidade: estável
+  ultima_observacao:
+    data: 19 Eleasis, 1372 DR
+    hora: '23:12'
+    fonte: sessoes/016/resumo.md
+  identidade_verdadeira: reservada_em_narrador

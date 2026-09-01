@@ -15,4 +15,9 @@ relogio:
   descricao: Um velho com três cabras viu um trabalhador pobre desconhecido sair sozinho das sebes perto do pomar.
     Não viu Colm, Hessa nem a carroça.
   consequencia_no_limite: Uma busca dirigida conecta o lagar à transferência ou identifica o trabalhador como Ren/Kage.
-eventos: []
+eventos:
+- tipo: reavaliacao_sem_avanco
+  sessao: 16
+  data_do_mundo: 19 Eleasis, 1372 DR
+  motivo: nenhuma causa canônica nova justificou progresso retroativo
+  progresso_mantido: 1

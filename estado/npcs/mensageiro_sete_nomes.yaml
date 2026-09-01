@@ -1,0 +1,12 @@
+schema_npc: 2
+natureza: estado_npc_atual
+id: mensageiro_sete_nomes
+npc:
+  nome: mensageiro da ordem dos Sete Nomes
+  persistencia: persistente_sem_agenda
+  grupo: cadeia civil da ordem irregular
+  estado: vivo, interrogado e liberado; paradeiro imediato não acompanhado por Ren
+  ultima_observacao:
+    data: 19 Eleasis, 1372 DR
+    fonte: sessoes/015/resumo.md
+  identidade_pessoal: não obtida em cena

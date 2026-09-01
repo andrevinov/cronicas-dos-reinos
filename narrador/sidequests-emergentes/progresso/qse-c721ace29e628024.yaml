@@ -46,7 +46,7 @@ estado:
       motivo_automatico: null
     rastrear_mensageiro:
       estado: resolvida
-      fato_id: provavel_mensageiro_localizado_rua_da_cal
+      fato_id: mensageiro_interrogado_e_liberado
       motivo_automatico: null
     verificar_autoridade:
       estado: indeterminada
@@ -80,9 +80,9 @@ estado:
       vida_estado: null
       fonte: estado/npcs/maerra_thandrel.yaml
     mensageiro_sete_nomes:
-      estado: reservado_nao_presente
+      estado: disponivel
       vida_estado: null
-      fonte: estado/npcs/index.yaml
+      fonte: estado/npcs/mensageiro_sete_nomes.yaml
     verificador_transferencias_sete_nomes:
       estado: reservado_nao_presente
       vida_estado: null
@@ -91,6 +91,14 @@ estado:
       estado: disponibilidade_nao_rastreada
       vida_estado: null
       fonte: estado/npcs/index.yaml
+    cinza_azul:
+      estado: indisponivel
+      vida_estado: incapacitado
+      fonte: estado/npcs/cinza_azul.yaml
+    falsificador_calaria:
+      estado: indisponivel
+      vida_estado: incapacitado
+      fonte: estado/npcs/falsificador_calaria.yaml
   fatos:
     ordem_examinada_borda_polida:
       id: ordem_examinada_borda_polida
@@ -119,6 +127,29 @@ estado:
         rastrear_mensageiro: resolvida
       condicoes_sucesso: {}
       condicoes_falha: {}
+    mensageiro_interrogado_e_liberado:
+      id: mensageiro_interrogado_e_liberado
+      descricao: >-
+        Ren confirmou a cadeia curta do portador, obteve a descrição da porta usada
+        para retirada e pagamento e o liberou sem revelar rosto ou direção.
+      prova:
+        fonte: sessoes/015/resumo.md
+        evidencia: Ren o liberou sob ameaça e desapareceu por Passo da Sombra quando ele olhou para trás.
+      fases:
+        rastrear_mensageiro: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+    oficina_e_provas_preservadas:
+      id: oficina_e_provas_preservadas
+      descricao: >-
+        A antiga calaria foi confirmada como origem material da ordem; Ren preservou
+        a matriz e documentos úteis e neutralizou os dois ocupantes sem matá-los.
+      prova:
+        fonte: sessoes/016/resumo.md
+        evidencia: O homem e a mulher estão inconscientes e estáveis; Ren mantém a matriz e os documentos.
+      fases: {}
+      condicoes_sucesso: {}
+      condicoes_falha: {}
   consequencias_ativadas: {}
   terminal: null
   historico_recente:
@@ -128,6 +159,12 @@ estado:
   - tipo: fato_registrado
     id: provavel_mensageiro_localizado_rua_da_cal
     fonte: sessoes/015/transcricao.md
+  - tipo: fato_registrado
+    id: mensageiro_interrogado_e_liberado
+    fonte: sessoes/015/resumo.md
+  - tipo: fato_registrado
+    id: oficina_e_provas_preservadas
+    fonte: sessoes/016/resumo.md
 guardrails:
   progresso_por_fato_nao_checklist: true
   prazo_usa_relogio_existente: true

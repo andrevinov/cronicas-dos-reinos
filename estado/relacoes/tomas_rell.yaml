@@ -1,0 +1,20 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: tomas_rell
+historico: historico/relacoes/tomas_rell.yaml
+relacao:
+  nome: Tomas Rell
+  tipo: intermediário administrativo e empregador de Shinta na Galeria dos Escribas
+  local: Ravens Bluff; paradeiro imediato não rastreado por Ren
+  status: ativo, fora da cena de Ren; aceitou cooperação cautelosa sob limites explícitos
+  atitude_para_ren: séria, cautelosa e disposta a cooperar sem abandonar o próprio julgamento
+  confianca: não quantificada; acreditou na sinceridade da revelação de Ren
+  respeito: profissional e moral em formação
+  motivo_atual: >-
+    Tomas sabe que Ren e Shinta são a mesma pessoa, ouviu o relato sobre Masao,
+    Juppongatana e Kurobane, aceitou Luath como canal reservado de emergência e
+    encaminhar a proposta sobre a Casa do Salgueiro Seco.
+  limites:
+  - não tratar as hipóteses sobre Shizune ou a presença física de Masao como fatos confirmados
+  - preservar a Galeria, Sella e seus trabalhadores de intervenção clandestina sem causa imediata
+  - comunicar-se por Luath antes de qualquer intervenção de Ren, salvo perigo imediato

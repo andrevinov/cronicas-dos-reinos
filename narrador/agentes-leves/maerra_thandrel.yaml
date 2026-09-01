@@ -10,7 +10,7 @@ rotina_padrao:
 objetivo_atual:
   descricao: Manter protegidas as sete crianças resgatadas e priorizar segurança de testemunhas sobre vingança privada.
   fonte: estado/relacoes/maerra_thandrel.yaml
-  evidencia: abrigo provisório concedido às sete crianças resgatadas
+  evidencia: mantém as sete crianças fora de transferência não verificada
 iniciativas_possiveis:
   - descricao: Encaminhar alertas discretos a aliados institucionais quando a proteção dos vulneráveis exigir.
     fonte: estado/relacoes/maerra_thandrel.yaml

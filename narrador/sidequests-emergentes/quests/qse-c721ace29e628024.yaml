@@ -62,7 +62,7 @@ npcs_novos:
 - id: mensageiro_sete_nomes
   nome: Mensageiro da Ordem
   funcao: portador potencialmente inocente e testemunha da cadeia de entrega
-  estatuto: reservado_nao_presente
+  estatuto: materializado_interrogado_e_liberado
 - id: verificador_transferencias_sete_nomes
   nome: Verificador de Transferências
   funcao: fonte institucional potencial capaz de confirmar a autoridade documental
@@ -156,3 +156,18 @@ guardrails_execucao:
   stakes: declarados_nao_executados_task45
   relacao_canone: candidatura_sem_rewrite_ate_task42
   scheduler: proibido
+atores_materializados_durante_execucao:
+- id: cinza_azul
+  nome_publico: mulher Cinza-Azul
+  funcao: coordenadora observada na oficina de origem
+  estado: viva, inconsciente e estável
+- id: falsificador_calaria
+  nome_publico: homem corpulento da antiga calaria
+  funcao: falsificador material observado na oficina de origem
+  estado: vivo, inconsciente e estável
+progresso_factual_ate_19_eleasis_23_12:
+- o mensageiro foi localizado, interrogado sem obter a identidade de Ren e liberado
+- a antiga calaria foi confirmada como oficina que produziu a ordem e pagou o mensageiro
+- Ren preservou a matriz e um conjunto documental útil
+- os dois ocupantes da oficina foram neutralizados de modo não letal
+- a verificação institucional e o resultado terminal permanecem pendentes

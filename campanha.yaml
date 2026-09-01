@@ -1,6 +1,6 @@
 campanha:
   nome: Crônicas dos Reinos
-  status: em_sessao
+  status: entre_sessoes
   idioma: pt-BR
   codificacao: UTF-8
 sistema:
@@ -227,9 +227,8 @@ regras:
     ferramenta_padrao: ferramentas/rolar-dados.py
 preparacao:
   prioridades_atuais:
-  - conduzir a sessão 003 a partir de 18:21 de 6 Eleasis, 1372 DR
-  - resolver como Kage prossegue após Jack cortar a provocação de Corven Dalm durante a apresentação fechada da
-    Casa Veyr
-  - preservar o recado de Luath sobre luz, pedra molhada e sol apagado para investigação posterior
-  - manter ativos os fios de Sarbreen, Luath, Brass/Red Sail, Narwhal, Maerra/crianças, Kethra, Colm/Dent e a apresentação
-    fechada da Casa Veyr
+  - retomar após a sessão 016 no pátio da antiga calaria, às 23:12 de 19 Eleasis, 1372 DR
+  - preservar a agência de Ren diante dos dois ocupantes inconscientes e das provas recuperadas
+  - concluir Sete Nomes Antes do Amanhecer somente por verificação institucional ou consequência causal equivalente
+  - manter separadas a identidade reservada da Cinza-Azul, as hipóteses de Ren sobre Shizune e o conhecimento compartimentado da célula
+  - manter ativos, sem avanço retroativo, os fios de Kethra, Pell e da rota rural

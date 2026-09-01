@@ -8,6 +8,9 @@ finalidade: >-
   alterar ainda o cânone, o estado corrente, o conhecimento de Ren ou sessões
   concluídas. A fase 3 deve instalar cada decisão por correção explícita e
   preservar a separação entre verdade do narrador e descoberta do personagem.
+instalacao_fase_3:
+  status: concluida
+  artefato_canonico: narrador/segredos/continuidade-lacunas.yaml
 autoridade:
   canone_automatico: false
   altera_estado: false
@@ -256,8 +259,10 @@ decisoes:
       papel: intermediário administrativo e empregador de Shinta na Galeria dos Escribas
       classificacao: persistente_sem_agenda_com_cobertura_populacional
       conhecimento:
-      - conhece somente Shinta no vínculo profissional
-      - não sabe que Shinta é Ren ou Kage
+      - sabe, por revelação direta e confirmação em cena, que Shinta é Ren Kagehira
+      - conhece o relato feito por Ren sobre os Kagehira, Masao, a Juppongatana e Kurobane
+      - distingue fatos confirmados das hipóteses de Ren sobre Shizune e a presença física de Masao
+      - aceitou Luath como canal reservado de emergência e encaminhar a proposta sobre a Casa do Salgueiro Seco
     proprietaria:
       id_proposto: proprietaria_salgueiro_seco
       papel: proprietária privada ausente, representada por Tomas e pelo jardineiro

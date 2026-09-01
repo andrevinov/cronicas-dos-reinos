@@ -3,7 +3,7 @@ natureza: indice_medidores_npcs
 escala: estado/npcs/escala.yaml
 contrato_relacional: estado/npcs/relacionamento-v1.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
-quantidade: 38
+quantidade: 42
 npcs:
   nera_vell:
     nome: Nera Vell
@@ -375,6 +375,38 @@ npcs:
   tomas_rell:
     nome: Tomas Rell
     persistencia: persistente_sem_agenda
+    medidores:
+      vinculo: null
+      confianca: null
+      risco_percebido: null
     arquivo: estado/npcs/tomas_rell.yaml
     historico: historico/npcs/tomas_rell.yaml
-    bytes_fragmento: 452
+    bytes_fragmento: 767
+  jardineiro_salgueiro_seco:
+    nome: jardineiro da Casa do Salgueiro Seco
+    persistencia: persistente_sem_agenda
+    medidores:
+      vinculo: null
+      confianca: null
+      risco_percebido: null
+    arquivo: estado/npcs/jardineiro_salgueiro_seco.yaml
+    historico: historico/npcs/jardineiro_salgueiro_seco.yaml
+    bytes_fragmento: 437
+  cinza_azul:
+    nome: mulher Cinza-Azul
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/cinza_azul.yaml
+    historico: historico/npcs/cinza_azul.yaml
+    bytes_fragmento: 444
+  falsificador_calaria:
+    nome: homem corpulento da antiga calaria
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/falsificador_calaria.yaml
+    historico: historico/npcs/falsificador_calaria.yaml
+    bytes_fragmento: 469
+  mensageiro_sete_nomes:
+    nome: mensageiro da ordem dos Sete Nomes
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/mensageiro_sete_nomes.yaml
+    historico: historico/npcs/mensageiro_sete_nomes.yaml
+    bytes_fragmento: 405

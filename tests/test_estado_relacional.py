@@ -24,7 +24,7 @@ class RelationshipStateRepositoryTest(unittest.TestCase):
         npc = yaml.safe_load((ROOT / estado_relacional.NPC_INDEX).read_text(encoding="utf-8"))
         relations = rel["relacoes"]
         npcs = npc["npcs"]
-        self.assertEqual(len(relations), 36)
+        self.assertEqual(rel["quantidade"], len(relations))
         self.assertTrue(set(relations) <= set(npcs))
         self.assertEqual(npc["quantidade"], len(npcs))
         self.assertGreaterEqual(len(npcs), len(relations))

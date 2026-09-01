@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: cinza_azul
+origem: reparacao_de_continuidade_fase_3
+eventos_pos_migracao:
+- tipo: identidade_operacional_persistente_materializada
+  fontes: [sessoes/010/resumo.md, sessoes/015/resumo.md]
+  nome: mulher Cinza-Azul
+  verdade_reservada: narrador/segredos/continuidade-lacunas.yaml

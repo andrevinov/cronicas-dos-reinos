@@ -26,7 +26,7 @@ recursos:
 tempo:
   data: 19 Eleasis, 1372 DR
   hora_aproximada: '23:12'
-  periodo: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+  periodo: noite de 19 Eleasis, logo após o combate na antiga calaria
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
 localizacao:
   plano: Material
@@ -84,25 +84,6 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  lacuna_dez_minutos_vigilancia_velis:
-    descricao: Ren perdeu visão das saídas de Narwhal Manor durante aproximadamente dez minutos enquanto despistava
-      o guarda e se reposicionava; não sabe se Velis ou um mensageiro saiu nesse intervalo.
-    duracao: até obter informação que confirme ou descarte uma saída nesse intervalo
-    inicio: 19:55 de 12 Eleasis
-  pista_endereco_portador_velis:
-    descricao: Ren confirmou por escuta que a antiga casa de cópias de portadas azul-escuras é uma isca de contravigilância.
-      O portador sabia do velho observado em Narwhal e foi enviado para atrair qualquer perseguidor; uma voz afirmou
-      que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
-    duracao: conhecimento persistente
-    inicio: 20:51 de 12 Eleasis
-  recado_unico_sella_para_kethra:
-    descricao: 'Sella Rove aceitou, sem pagamento, levar a Kethra uma única mensagem: Ren quer saber o que ela ouviu
-      sobre Velis depois da convocação, se a mulher de cinza-azulado apareceu e se aceita criar um novo ponto morto.
-      Sella não aceitou ser ponte recorrente nem revelou endereço. Ren deve aguardar resposta em 14 Eleasis, vinte
-      minutos depois do segundo sino após o poente, do outro lado da Rua da Cal junto ao mercador de cal fechado;
-      partir se ela não aparecer em meia hora.'
-    duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
-    inicio: 20:12 de 13 Eleasis
   passos_sem_pegadas:
     concentracao: true
     descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.

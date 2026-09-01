@@ -6,15 +6,15 @@ relacao:
   nome: Irmã Maerra Thandrel
   tipo: sacerdotisa de Lathander / abrigo potencial
   local: Casa da Aurora Menor, Temple District
-  status: ativa, em cena; abrigo provisório concedido às sete crianças resgatadas
+  status: ativa na Casa da Aurora Menor com as sete crianças; fora da cena de Ren
   atitude_para_ren: amiga pastoral, moralmente firme e abertamente preocupada com Ren; confiança alta em sua proteção
     de vulneráveis
   confianca: moderada-alta em pauta de proteção de vulneráveis
   respeito: cauteloso, crescente
-  motivo_atual: 'Maerra não tentou impedi-lo, mas enquadrou a janela como moldura: quem entrega uma janela escolhe
-    o que Ren vê por ela. Aconselhou-o a desconfiar do seco onde deveria haver água, procurar sinais como cal, sal,
-    carvão, pano encerado, ar quente, ralo tampado e preservação de papel, e deixar caminho de volta ou marca para
-    Luath.'
+  motivo_atual: >-
+    Maerra preserva a ordem irregular e mantém as sete crianças fora de transferência
+    não verificada. Ren aceitou investigar a origem e a autoridade do documento antes
+    do amanhecer; Maerra não controla como ele fará isso.
   riscos:
   - Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele.
   - Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren.

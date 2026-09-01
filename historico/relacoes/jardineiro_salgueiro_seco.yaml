@@ -1,0 +1,8 @@
+schema_historico_relacao: 1
+id: jardineiro_salgueiro_seco
+origem: reparacao_de_continuidade_fase_3
+relacao:
+  nome: jardineiro da Casa do Salgueiro Seco
+  tipo: cuidador e porteiro informal da propriedade
+  motivo: Shinta apresentou-se e trabalhou sob observação do jardineiro, sem revelar outra identidade.
+  fonte: sessoes/007/resumo.md

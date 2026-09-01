@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: jardineiro_salgueiro_seco
+origem: reparacao_de_continuidade_fase_3
+eventos_pos_migracao:
+- tipo: identidade_persistente_materializada
+  fonte: sessoes/007/resumo.md
+  nome: jardineiro da Casa do Salgueiro Seco
+  classificacao_inicial: persistente_sem_agenda

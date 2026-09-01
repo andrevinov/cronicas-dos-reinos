@@ -1,0 +1,178 @@
+schema_continuidade_lacunas: 1
+natureza: verdade_reservada_canonica
+fase_origem: 3
+status: instalada
+decisoes_autorais: narrador/segredos/decisoes-lacunas-fase-2.yaml
+instalada_em: 2026-08-31
+regra_de_uso: >-
+  Este registro fecha a verdade objetiva do narrador. Ele não concede conhecimento a
+  Ren, não exige reaparição e não substitui evidência legítima em cena.
+guardrails:
+- Transcrições e fatos jogados permanecem inalterados.
+- Desfecho fora de cena não cria ação, fala, crença ou decisão de Ren.
+- Estado futuro deliberadamente aberto continua dependente de causa e jogo.
+- Nome ou identidade reservada só chega ao jogador por descoberta canônica.
+
+cinza_azul:
+  identidade_operacional_publica: cinza_azul
+  identidade_verdadeira:
+    id: mirel_sorn
+    nome: Mirel Sorn
+  mesma_pessoa_nas_aparicoes:
+  - orientação de Velis Rook diante da Casa de Tyr
+  - referência dos criados de Narwhal Manor à Cinza-Azul
+  - mulher de casaco cinza-azulado neutralizada na antiga calaria
+  funcao: coordenadora documental local da primeira estrutura de Masao em Ravens Bluff
+  meios_de_apresentacao: atuação, maquiagem, vestuário e documentos sociais mundanos
+  compartimentacao:
+    conhece:
+    - a célula documental local e seus canais imediatos
+    - Masao como autoridade superior necessária ao trabalho
+    nao_conhece_automaticamente:
+    - toda a Juppongatana
+    - a Ponte de Kozakura
+    - todos os vínculos, aliados e esconderijos de Ren
+  relacao_com_kajiwara_shizune:
+    mesma_pessoa: false
+    membro_juppongatana: false
+    contato_direto_confirmado: false
+  estado_em_19_eleasis_23_12: viva, inconsciente e estável no interior da antiga calaria
+  fontes:
+  - sessoes/015/resumo.md
+  - sessoes/016/resumo.md
+
+falsificador_calaria:
+  identidade_operacional_publica: falsificador_calaria
+  identidade_verdadeira:
+    id: berren_taal
+    nome: Berren Taal
+  funcao: artesão local responsável pela produção material da ordem e de sua matriz
+  autoridade_estrategica: false
+  vinculo: contratado e instruído por Mirel Sorn sob cobertura operacional
+  limites:
+  - não conhece toda a cadeia de comando
+  - não conhece Shizune como participante da operação
+  - não recebe conhecimento automático sobre Ren e seus vínculos
+  estado_em_19_eleasis_23_12: vivo, inconsciente e estável no pátio da antiga calaria
+  fontes:
+  - sessoes/015/resumo.md
+  - sessoes/016/resumo.md
+
+sete_nomes:
+  quest_id: qse-c721ace29e628024
+  roster:
+  - {id: peta, nome: Peta}
+  - {id: miri, nome: Miri}
+  - {id: crianca_doss, nome: Doss}
+  - {id: crianca_cal, nome: Cal}
+  - {id: nib, nome: Nib}
+  - {id: jori, nome: Jori}
+  - {id: enna, nome: Enna}
+  mensageiro:
+    id: mensageiro_sete_nomes
+    funcao: elo civil descartável e testemunha material, sem autoria estratégica
+    estado: vivo, interrogado e liberado; paradeiro imediato não acompanhado por Ren
+  verificador:
+    id: verificador_transferencias_sete_nomes
+    funcao: papel institucional legítimo ainda não materializado
+  progresso_em_19_eleasis_23_12:
+  - ordem examinada e preservada
+  - mensageiro localizado, interrogado e liberado
+  - oficina de origem localizada
+  - matriz e conjunto documental preservados por Ren
+  - coordenadora e falsificador vivos e inconscientes
+  - verificação institucional ainda pendente
+  terminal: null
+
+m_harrow:
+  tipo: identidade_documental_fabricada
+  pessoa_real: false
+  funcao: sumidouro administrativo de culpa e cobertura escrita para registros divergentes
+  autoria: Mirel Sorn e a célula documental local
+  regra_de_correlacao: >-
+    Ocorrências já canonicamente ligadas a M. Harrow pertencem à mesma construção;
+    novas iniciais M.H. exigem contexto ou evidência antes de serem fundidas.
+  modelagem: identidade_em_disputa_sem_npc_fisico
+
+casa_velha_primeiro_raio:
+  funcao: ponto local de retenção perdido após o resgate, não a totalidade da cadeia
+  homem_manga_cinza_dois_aneis:
+    id: homem_manga_cinza_dois_aneis
+    papel: supervisor local da movimentação de crianças e pacotes
+    estado: vivo, não capturado e dormente após coordenar a evacuação
+    distinto_de: [homem_maos_limpas, berren_taal, mirel_sorn]
+  mulher_vermelho:
+    id: mulher_vermelho_tintureiros
+    papel: transportadora e guardiã subordinada
+    estado: recuperada viva e inconsciente pela própria cadeia e retirada antes de intervenção institucional
+    distinta_de: [mirel_sorn, kajiwara_shizune]
+  operadores_retirados:
+    narro: recuperado vivo e retirado do ponto
+    toll: recuperado vivo e retirado do ponto
+    vessa: recuperada viva e retirada do ponto
+  local: abandonado e limpo pela cadeia depois da perda das crianças
+  reaparecimento_obrigatorio: false
+
+emboscada_restaurante:
+  lider:
+    id: lider_emboscada_restaurante
+    papel: executor kozakurano experiente ligado à rede de Masao
+    estado: recuperado vivo, ferido e inconsciente pelos subordinados e pela operadora idosa
+    representacao: agente_adversarial_pai
+  retirada: os sobreviventes retornaram somente depois da saída de Ren e removeram o grupo
+  conhecimento_preservado:
+  - a operação já sabia que Shinta era Ren Kagehira antes do confronto
+  - o líder chamou Ren pelo nome
+  - os sobreviventes sabem que Ren derrotou os três e poupou o líder
+  conhecimento_nao_adquirido_automaticamente:
+  - localização da Galeria
+  - Nera, Tavin ou outros vínculos de Ren
+
+casa_salgueiro_seco:
+  funcao: caminho lateral legítimo de trabalho, reputação e possível propriedade para Shinta
+  armadilha_de_masao: false
+  jardineiro:
+    id: jardineiro_salgueiro_seco
+    papel: cuidador, porteiro informal e testemunha honesta do trabalho de Shinta
+    persistencia: persistente_sem_agenda
+    conhecimento: conhece Shinta e seu trabalho; não sabe que Shinta é Ren ou Kage
+  tomas_rell:
+    persistencia: persistente_sem_agenda
+    conhecimento_confirmado:
+    - Ren Kagehira e Shinta são a mesma pessoa
+    - relato de Ren sobre os Kagehira, Masao, Juppongatana e Kurobane
+    - hipótese de Ren sobre Shizune, sem tratá-la como fato
+    compromissos:
+    - usar Luath como canal reservado em emergência
+    - encaminhar a proposta sobre a Casa do Salgueiro Seco
+  proprietaria:
+    id: proprietaria_salgueiro_seco
+    papel: proprietária privada ausente, representada por Tomas e pelo jardineiro
+    ligacao_com_antagonistas: nenhuma
+    nome: reservado até descoberta ou apresentação legítima
+
+participantes_secundarios:
+  garran_holt: representado pela Casa de Tyr; persistente sem agenda individual
+  caldrin_vos: representado pela Casa de Tyr; persistente sem agenda individual
+  orsa_kelm: contato imobiliário dormente, ativável apenas por iniciativa causal de Ren
+  marrin_holt: contato imobiliário dormente, ativável apenas por iniciativa causal de Ren
+  lockwood_mooney: contato arcano latente, sem presença automática
+  thorn_edris_pallen: figurantes institucionais encerrados e representados pela autoridade da cena
+
+relogios_reavaliados_em_19_eleasis:
+  fonte: correção de continuidade da fase 3
+  resultado: nenhum avanço sem nova causa
+  ativos:
+  - exposicao_do_contato_de_kethra
+  - exposicao_do_contato_de_pell
+  - rastro_fraco_no_pomar
+
+futuros_abertos:
+- escolhas de Ren diante dos prisioneiros e das provas
+- conteúdo e resultado de interrogatórios futuros
+- entrega institucional das provas
+- resultado terminal de Sete Nomes Antes do Amanhecer
+- reação futura de Mirel Sorn e Berren Taal
+- reaparição de sobreviventes antigos
+- chegada física de Kajiwara Shizune a Ravens Bluff
+- decisão de Ren sobre a Casa do Salgueiro Seco

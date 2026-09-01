@@ -1,0 +1,14 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: jardineiro_salgueiro_seco
+npc:
+  nome: jardineiro da Casa do Salgueiro Seco
+  persistencia: persistente_sem_agenda
+  grupo: Casa do Salgueiro Seco
+  medidores:
+    vinculo: null
+    confianca: null
+    risco_percebido: null
+  natureza_do_vinculo: relação profissional inicial com Shinta
+  identidade_relacional: shinta
+  fonte_relacional: estado/relacoes/jardineiro_salgueiro_seco.yaml

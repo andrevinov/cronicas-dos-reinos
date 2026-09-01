@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: falsificador_calaria
+origem: reparacao_de_continuidade_fase_3
+eventos_pos_migracao:
+- tipo: identidade_operacional_persistente_materializada
+  fontes: [sessoes/015/resumo.md, sessoes/016/resumo.md]
+  nome: homem corpulento da antiga calaria
+  verdade_reservada: narrador/segredos/continuidade-lacunas.yaml

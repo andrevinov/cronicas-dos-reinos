@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 15
-status: em_andamento
+status: encerrada
 fonte: sessoes/015/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 15

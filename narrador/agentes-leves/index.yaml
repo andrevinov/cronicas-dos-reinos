@@ -73,7 +73,7 @@ agentes:
       data: '15 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/maerra_thandrel.yaml
-    perfil_blob_git: f63401ace71e28e31db90eaa3af292361de7ce0e
+    perfil_blob_git: 60981f98cf31eac8f66e0c8927ca82ff2b3e8e16
     fontes_causais:
     - estado/relacoes/maerra_thandrel.yaml
   halessa_vorn:

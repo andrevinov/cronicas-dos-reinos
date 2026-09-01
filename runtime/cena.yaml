@@ -15,9 +15,8 @@ mecanica_imediata:
   deslocamento: 55 pés
 resumo_imediato: Ren nocauteou de modo não letal os dois ocupantes da oficina, preservou a matriz e um conjunto
   documental útil e está no pátio junto ao homem inconsciente; a mulher permanece inconsciente no interior.
-prazos_e_alertas: Shinta deve voltar à Casa do Salgueiro Seco no primeiro clarear de 11 Eleasis para uma segunda
-  manhã de prova antes de ser recomendado ao escriturário. Tomas Rell deve visitar a propriedade depois do meio-dia
-  de 11 Eleasis. A próxima apresentação pública de Kage está marcada para 17 Eleasis ao cair da tarde.
+prazos_e_alertas: A ordem dos Sete Nomes prevê transferência às 06:00 de 20 Eleasis. A investigação ainda precisa
+  de verificação institucional ou consequência causal equivalente; captura e prova material não são resultado terminal.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
   handoff: sessoes/016/handoff.yaml
@@ -31,25 +30,6 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  lacuna_dez_minutos_vigilancia_velis:
-    descricao: Ren perdeu visão das saídas de Narwhal Manor durante aproximadamente dez minutos enquanto despistava
-      o guarda e se reposicionava; não sabe se Velis ou um mensageiro saiu nesse intervalo.
-    duracao: até obter informação que confirme ou descarte uma saída nesse intervalo
-    inicio: 19:55 de 12 Eleasis
-  pista_endereco_portador_velis:
-    descricao: Ren confirmou por escuta que a antiga casa de cópias de portadas azul-escuras é uma isca de contravigilância.
-      O portador sabia do velho observado em Narwhal e foi enviado para atrair qualquer perseguidor; uma voz afirmou
-      que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
-    duracao: conhecimento persistente
-    inicio: 20:51 de 12 Eleasis
-  recado_unico_sella_para_kethra:
-    descricao: 'Sella Rove aceitou, sem pagamento, levar a Kethra uma única mensagem: Ren quer saber o que ela ouviu
-      sobre Velis depois da convocação, se a mulher de cinza-azulado apareceu e se aceita criar um novo ponto morto.
-      Sella não aceitou ser ponte recorrente nem revelou endereço. Ren deve aguardar resposta em 14 Eleasis, vinte
-      minutos depois do segundo sino após o poente, do outro lado da Rua da Cal junto ao mercador de cal fechado;
-      partir se ela não aparecer em meia hora.'
-    duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
-    inicio: 20:12 de 13 Eleasis
   passos_sem_pegadas:
     concentracao: true
     descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.

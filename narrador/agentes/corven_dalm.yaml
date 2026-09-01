@@ -5,8 +5,8 @@ nome: Corven Dalm
 tipo: npc
 estado: ativo
 objetivo_atual: >-
-  Medir Ren/Kage, a gravadora e sua reação a Masao sem expor o patrono real,
-  usando informação controlada e a janela da Ponte Baixa como alavanca de teste.
+  Preservar o patrono real e a leitura obtida sobre Ren/Kage, aguardando nova
+  oportunidade concreta de usar informação ou contrato como alavanca.
 recursos:
   - posição de procurador da Casa Veyr e capacidade de operar por contrato e etiqueta
   - informação acionável sobre a Ponte Baixa e a janela antes da segunda maré
@@ -18,9 +18,9 @@ restricoes:
 presenca:
   referencia: Ravens Bluff
   estado: presente
-  detalhe: Corven está canonicamente em cena, a sós com Ren/Kage, no camarim funcional do circo.
+  detalhe: Corven permanece em Ravens Bluff, fora da cena de Ren e com paradeiro imediato não rastreado.
   fonte: estado/relacoes/corven_dalm.yaml
-  evidencia: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+  evidencia: Ravens Bluff; paradeiro imediato não rastreado por Ren
 mobilidade:
   estado: sem_deslocamento_registrado
   origem: null
@@ -44,10 +44,10 @@ conhecimento:
     fonte: estado/relacoes/corven_dalm.yaml
     evidencia: Dalm disse que a rede sabe que existe uma gravadora e um menino como alavanca, mas ainda não sabe onde eles dormem.
 plano_atual:
-  estado: em_execucao
+  estado: aguardando_oportunidade
   acao: >-
-    Continuar medindo Ren/Kage por negociação e informação controlada, preservando
-    o patrono real e usando a janela da Ponte Baixa como teste antes da segunda maré.
-  prazo_ou_oportunidade: Antes da segunda maré, enquanto a conversa privada e a pista da Ponte Baixa ainda servirem como alavanca.
+    Preservar o patrono real e não agir novamente sem uma nova alavanca, contato ou
+    mudança de risco que justifique retomar a medição de Ren/Kage.
+  prazo_ou_oportunidade: Nova oportunidade causal; a antiga janela antes da segunda maré pertence ao histórico concluído.
 fontes_canonicas:
   - estado/relacoes/corven_dalm.yaml

@@ -5,8 +5,8 @@ historico: historico/relacoes/corven_dalm.yaml
 relacao:
   nome: Corven Dalm
   tipo: procurador da Casa Veyr / contratante da apresentação fechada de Kage
-  local: guarda-roupa menor / camarim funcional de Kage, Jack Mooney & Sons Circus
-  status: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+  local: Ravens Bluff; paradeiro imediato não rastreado por Ren
+  status: ativo e fora da cena de Ren após concluir a apresentação fechada da Casa Veyr
   atitude_para_ren: polida, provocadora e calculista
   confianca: nenhuma
   respeito: tático inicial pela competência e audácia de Kage

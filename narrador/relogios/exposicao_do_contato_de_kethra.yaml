@@ -17,4 +17,9 @@ relogio:
     repetição começa a marcar Kethra como ponto de interesse.
   consequencia_no_limite: Narwhal passa a vigiar, isolar ou testar Kethra, possivelmente usando mensagens ou rotina
     de serviço como isca.
-eventos: []
+eventos:
+- tipo: reavaliacao_sem_avanco
+  sessao: 16
+  data_do_mundo: 19 Eleasis, 1372 DR
+  motivo: nenhuma causa canônica nova justificou progresso retroativo
+  progresso_mantido: 2

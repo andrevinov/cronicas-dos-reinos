@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: mensageiro_sete_nomes
+origem: reparacao_de_continuidade_fase_3
+eventos_pos_migracao:
+- tipo: identidade_operacional_persistente_materializada
+  fonte: sessoes/015/resumo.md
+  nome: mensageiro da ordem dos Sete Nomes
+  classificacao_inicial: persistente_sem_agenda

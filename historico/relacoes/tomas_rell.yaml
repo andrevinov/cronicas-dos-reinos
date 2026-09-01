@@ -1,0 +1,13 @@
+schema_historico_relacao: 1
+id: tomas_rell
+origem: reparacao_de_continuidade_fase_3
+relacao:
+  nome: Tomas Rell
+  tipo: intermediário administrativo e empregador de Shinta
+  motivo: >-
+    A relação profissional com Shinta tornou-se uma cooperação cautelosa com Ren quando
+    ele revelou a própria identidade, explicou a ameaça e obteve sucesso ao convencer
+    Tomas de sua sinceridade, sem retirar de Tomas julgamento ou limites próprios.
+  fontes:
+  - sessao:015:cena:s15-ren-explica-shinta-e-ameaca-a-tomas
+  - sessoes/015/resumo.md

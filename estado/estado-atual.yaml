@@ -29,10 +29,10 @@ tempo:
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
-  dia_do_mes: 11
+  dia_do_mes: 19
   dezena: 2
-  dia_da_dezena: 1
-  periodo_do_dia: meio da tarde de 11 Eleasis, durante atualização reservada com Halessa na Casa de Tyr
+  dia_da_dezena: 9
+  periodo_do_dia: noite de 19 Eleasis, logo após o combate na antiga calaria
   hora_aproximada: '23:12'
   clima: névoa baixa se dissipando, estrada úmida, cheiro de cal, carvão molhado, capim e fumaça baixa dos fornos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
@@ -110,14 +110,11 @@ objetivos:
   - descobrir por que Aiko Kagehira foi morta
   - descobrir o que restou da Juppongatana/Dez Espadas
   imediatos:
-  - cumprir o compromisso de trabalho como Shinta na Casa do Salgueiro Seco
-  - confirmar posteriormente se Mera Fumaça e Colm/Dent chegaram vivos a Iria Doss
-  - preservar o sigilo da fonte reservada no pacote entregue a Tyr
-  - manter Nera, Tavin e o livro original protegidos no circo
-  - observar reações de Ponte Baixa, Narwhal, Red Sail e Casa Veyr aos movimentos recentes
-  - proteger Peta e as demais crianças sob cuidado de Maerra
-  - manter a identidade pública de Kage sem expor desnecessariamente Ren
-  - reinstalar pontos mortos com Pell e Kethra apenas se voltarem a ser necessários
+  - escolha pendente de Ren sobre os dois ocupantes inconscientes da antiga calaria
+  - matriz e conjunto documental recuperados ainda sem destino definido
+  - verificação institucional da ordem pendente antes do prazo da transferência
+  - Peta e as demais crianças permanecem fora de transferência não verificada
+  - identidades de Ren, Shinta e Kage continuam separadas conforme o conhecimento de cada observador
 vinculos_ativos:
   night_watch:
     contato: Luath
@@ -130,14 +127,12 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren está diante do portão lateral da Casa do Salgueiro Seco, sob a persona de Shinta, aguardando o
-    jardineiro ao primeiro clarear depois de dormir poucas horas sem completar descanso longo.
-  risco_imediato: nenhum perigo imediato confirmado; a cobertura de Shinta ainda precisa ser preservada durante
-    o trabalho.
+  cena_atual: Ren está no pátio da antiga calaria, junto ao homem corpulento inconsciente; a mulher permanece inconsciente no interior.
+  risco_imediato: a oficina foi comprometida, as provas ainda precisam de destino e os dois ocupantes podem recuperar a consciência.
 pendencias:
-- apresentar-se ao jardineiro e iniciar o trabalho combinado na Casa do Salgueiro Seco
-- confirmar depois se Mera e Colm/Dent chegaram a Iria Doss
-- descobrir o nome/posição real do homem de mãos limpas no circuito de Bram/Narwhal
+- decidir como lidar com os dois ocupantes inconscientes sem presumir ação de Ren
+- decidir o destino imediato da matriz e dos documentos recuperados
+- buscar verificação institucional da ordem antes de 06:00 de 20 Eleasis, se Ren prosseguir com a missão aceita
 disponibilidades:
   broche_do_semblante_humilde: indisponível; uso gasto em 19 Eleasis e renovável no próximo amanhecer
 combate_atual: null
@@ -147,25 +142,6 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  lacuna_dez_minutos_vigilancia_velis:
-    descricao: Ren perdeu visão das saídas de Narwhal Manor durante aproximadamente dez minutos enquanto despistava
-      o guarda e se reposicionava; não sabe se Velis ou um mensageiro saiu nesse intervalo.
-    duracao: até obter informação que confirme ou descarte uma saída nesse intervalo
-    inicio: 19:55 de 12 Eleasis
-  pista_endereco_portador_velis:
-    descricao: Ren confirmou por escuta que a antiga casa de cópias de portadas azul-escuras é uma isca de contravigilância.
-      O portador sabia do velho observado em Narwhal e foi enviado para atrair qualquer perseguidor; uma voz afirmou
-      que a mensagem importante não passou pela mão dele. A rota real permanece desconhecida.
-    duracao: conhecimento persistente
-    inicio: 20:51 de 12 Eleasis
-  recado_unico_sella_para_kethra:
-    descricao: 'Sella Rove aceitou, sem pagamento, levar a Kethra uma única mensagem: Ren quer saber o que ela ouviu
-      sobre Velis depois da convocação, se a mulher de cinza-azulado apareceu e se aceita criar um novo ponto morto.
-      Sella não aceitou ser ponte recorrente nem revelou endereço. Ren deve aguardar resposta em 14 Eleasis, vinte
-      minutos depois do segundo sino após o poente, do outro lado da Rua da Cal junto ao mercador de cal fechado;
-      partir se ela não aparecer em meia hora.'
-    duracao: até Sella entregar a resposta autorizada por Kethra ou a janela de 14 Eleasis expirar
-    inicio: 20:12 de 13 Eleasis
   passos_sem_pegadas:
     concentracao: true
     descricao: Ren recebe +10 em Furtividade e não pode ser rastreado por meios não mágicos enquanto mantiver concentração.
@@ -179,13 +155,11 @@ efeitos_temporarios:
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
-    estado_diante_de_tomas: não desmascarada; aceita na lista regular do pátio de entregas da Galeria dos Escribas.
-      Concluiu em 13 Eleasis um dia completo sem erro atribuível, recebeu 4 PP e teve o trabalho declarado confiável
-      por Tomas; a supervisão direta diminuiu. Retorno confirmado para 14 e 15 Eleasis depois do primeiro sino.
-      Permanece sem acesso a documentos fechados, rotas de pastas, salas internas ou à Casa do Salgueiro Seco.
+    estado_diante_de_tomas: Tomas sabe, por revelação direta confirmada em 19 Eleasis, que Shinta é Ren Kagehira.
+      A relação profissional anterior e as restrições da Galeria continuam fatos históricos; Tomas aceitou cooperação
+      cautelosa, o canal reservado por Luath e o encaminhamento da proposta sobre a Casa do Salgueiro Seco.
     nome: Shinta Ryoushi
     origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
-    avaliacao_pratica: aprovado para retornar após o primeiro sino de 13 Eleasis diretamente à entrada de entrega;
-      diligência, organização e silêncio reconhecidos, com supervisão reduzida para amostragem, mas acesso a selos
-      fechados, rotas e documentos sensíveis ainda proibido
-modo: combate_no_restaurante
+    avaliacao_pratica: Shinta concluiu trabalho regular na Galeria, mas a continuidade futura desse vínculo profissional
+      não foi renegociada depois que Tomas soube que ele é Ren; as restrições de acesso históricas permanecem.
+modo: patio_da_antiga_calaria_apos_combate

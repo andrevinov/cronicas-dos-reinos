@@ -351,7 +351,7 @@ sessoes:
     - arquivo: sessoes/015/resumo.md
       bytes: 30739
     - arquivo: sessoes/015/alteracoes-de-estado.yaml
-      bytes: 11598
+      bytes: 11595
     - arquivo: sessoes/015/consequencias.md
       bytes: 3425
     - arquivo: sessoes/015/consolidacoes.jsonl
@@ -371,13 +371,15 @@ sessoes:
     handoff: sessoes/016/handoff.yaml
     compactos:
     - arquivo: sessoes/016/handoff.yaml
-      bytes: 2548
+      bytes: 2426
     - arquivo: sessoes/016/resumo.md
       bytes: 806
     - arquivo: sessoes/016/alteracoes-de-estado.yaml
       bytes: 1303
     - arquivo: sessoes/016/consequencias.md
       bytes: 257
+    - arquivo: sessoes/016/correcoes-de-continuidade.md
+      bytes: 1374
     - arquivo: sessoes/016/consolidacoes.jsonl
       bytes: 1740
     ordem_de_leitura:

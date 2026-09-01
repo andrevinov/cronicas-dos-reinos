@@ -1,0 +1,16 @@
+schema_npc: 2
+natureza: estado_npc_atual
+id: cinza_azul
+npc:
+  nome: mulher Cinza-Azul
+  persistencia: persistente_sem_agenda
+  grupo: oficina documental da antiga calaria
+  estado: viva, inconsciente e estável no interior da oficina
+  vida:
+    estado: incapacitado
+    estabilidade: estável
+  ultima_observacao:
+    data: 19 Eleasis, 1372 DR
+    hora: '23:12'
+    fonte: sessoes/015/resumo.md
+  identidade_verdadeira: reservada_em_narrador

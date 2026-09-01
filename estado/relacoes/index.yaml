@@ -1,7 +1,7 @@
 schema_relacoes: 2
 natureza: indice_relacoes_atuais
 historico_acumulado: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
-quantidade: 36
+quantidade: 38
 relacoes:
   edran_vale:
     nome: Edran Vale
@@ -60,7 +60,7 @@ relacoes:
     respeito: baixo, misturado com medo
     arquivo: estado/relacoes/colm_dunn.yaml
     historico: historico/relacoes/colm_dunn.yaml
-    bytes_fragmento: 3068
+    bytes_fragmento: 3111
     campos_atuais: 10
   mera_fumaca:
     nome: Mera Fumaça
@@ -72,7 +72,7 @@ relacoes:
     respeito: moderado, crescente
     arquivo: estado/relacoes/mera_fumaca.yaml
     historico: historico/relacoes/mera_fumaca.yaml
-    bytes_fragmento: 2325
+    bytes_fragmento: 2264
     campos_atuais: 10
   iria_doss:
     nome: Iria Doss
@@ -83,21 +83,20 @@ relacoes:
     respeito: desconhecido
     arquivo: estado/relacoes/iria_doss.yaml
     historico: historico/relacoes/iria_doss.yaml
-    bytes_fragmento: 1249
+    bytes_fragmento: 1303
     campos_atuais: 10
   sella_rove:
     nome: Sella Rove
     tipo: lavadeira / contato de Kethra
     status: 'Sella cumpriu a intermediação única prometida: transmitiu a resposta autorizada de Kethra e encerrou
       o canal, recusando novas consultas; o único sinal futuro continua sendo o fio azul escolhido por Kethra.'
-    atitude_para_ren: cautelosa e mais resistente à retórica de Ren; considerou a fala sobre arrependimento futuro
-      uma pressão disfarçada. Mantém o compromisso de levar uma única mensagem a Kethra, mas rejeita tornar o lavadouro
-      ou sua rotina uma ponte recorrente.
+    atitude_para_ren: cautelosa e resistente à retórica de Ren; cumpriu a única intermediação aceita e rejeita tornar
+      o lavadouro ou sua rotina uma ponte recorrente.
     confianca: nenhuma
     respeito: nenhum
     arquivo: estado/relacoes/sella_rove.yaml
     historico: historico/relacoes/sella_rove.yaml
-    bytes_fragmento: 2483
+    bytes_fragmento: 2284
     campos_atuais: 10
   dorra_hest:
     nome: Dorra Hest
@@ -197,14 +196,14 @@ relacoes:
   maerra_thandrel:
     nome: Irmã Maerra Thandrel
     tipo: sacerdotisa de Lathander / abrigo potencial
-    status: ativa, em cena; abrigo provisório concedido às sete crianças resgatadas
+    status: ativa na Casa da Aurora Menor com as sete crianças; fora da cena de Ren
     atitude_para_ren: amiga pastoral, moralmente firme e abertamente preocupada com Ren; confiança alta em sua proteção
       de vulneráveis
     confianca: moderada-alta em pauta de proteção de vulneráveis
     respeito: cauteloso, crescente
     arquivo: estado/relacoes/maerra_thandrel.yaml
     historico: historico/relacoes/maerra_thandrel.yaml
-    bytes_fragmento: 4238
+    bytes_fragmento: 4127
     campos_atuais: 13
   luath:
     nome: Luath
@@ -222,13 +221,13 @@ relacoes:
   sirrus_melandor:
     nome: Sirrus Melandor
     tipo: Chief Prelate / alto sacerdote de Tyr
-    status: em cena
+    status: ativo na Casa de Tyr; fora da cena de Ren
     atitude_para_ren: rígida, institucional e cautelosa
     confianca: baixa
     respeito: inicial pela gravidade do material, não por confiança pessoal
     arquivo: estado/relacoes/sirrus_melandor.yaml
     historico: historico/relacoes/sirrus_melandor.yaml
-    bytes_fragmento: 1585
+    bytes_fragmento: 1619
     campos_atuais: 10
   halessa_vorn:
     nome: Irmã Halessa Vorn
@@ -276,13 +275,13 @@ relacoes:
   corven_dalm:
     nome: Corven Dalm
     tipo: procurador da Casa Veyr / contratante da apresentação fechada de Kage
-    status: em cena; a sós com Ren/Kage, com Tobb do lado de fora
+    status: ativo e fora da cena de Ren após concluir a apresentação fechada da Casa Veyr
     atitude_para_ren: polida, provocadora e calculista
     confianca: nenhuma
     respeito: tático inicial pela competência e audácia de Kage
     arquivo: estado/relacoes/corven_dalm.yaml
     historico: historico/relacoes/corven_dalm.yaml
-    bytes_fragmento: 2713
+    bytes_fragmento: 2721
     campos_atuais: 10
   dessa_wren:
     nome: Dessa Wren
@@ -399,13 +398,13 @@ relacoes:
   brunna_torkel:
     nome: Brunna Torkel
     tipo: medidora de porões / fonte sobre Sarbreen
-    status: em cena
+    status: ativa em seu estabelecimento; fora da cena de Ren
     atitude_para_ren: irritada, alerta e potencialmente útil
     confianca: nenhuma
     respeito: baixo, baseado na pergunta certa
     arquivo: estado/relacoes/brunna_torkel.yaml
     historico: historico/relacoes/brunna_torkel.yaml
-    bytes_fragmento: 2377
+    bytes_fragmento: 2419
     campos_atuais: 10
   hessa_morn:
     arquivo: estado/relacoes/hessa_morn.yaml
@@ -431,3 +430,25 @@ relacoes:
     respeito: profissional inicial
     bytes_fragmento: 1993
     campos_atuais: 11
+  tomas_rell:
+    nome: Tomas Rell
+    tipo: intermediário administrativo e empregador de Shinta na Galeria dos Escribas
+    status: ativo, fora da cena de Ren; aceitou cooperação cautelosa sob limites explícitos
+    atitude_para_ren: séria, cautelosa e disposta a cooperar sem abandonar o próprio julgamento
+    confianca: não quantificada; acreditou na sinceridade da revelação de Ren
+    respeito: profissional e moral em formação
+    arquivo: estado/relacoes/tomas_rell.yaml
+    historico: historico/relacoes/tomas_rell.yaml
+    bytes_fragmento: 1141
+    campos_atuais: 9
+  jardineiro_salgueiro_seco:
+    nome: jardineiro da Casa do Salgueiro Seco
+    tipo: cuidador e porteiro informal da propriedade
+    status: ativo em sua rotina; fora da cena de Ren
+    atitude_para_ren: conhece apenas Shinta, como trabalhador disciplinado
+    confianca: profissional inicial em Shinta
+    respeito: prático, baseado no trabalho observado
+    arquivo: estado/relacoes/jardineiro_salgueiro_seco.yaml
+    historico: historico/relacoes/jardineiro_salgueiro_seco.yaml
+    bytes_fragmento: 710
+    campos_atuais: 9

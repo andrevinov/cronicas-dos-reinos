@@ -1,0 +1,15 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: jardineiro_salgueiro_seco
+historico: historico/relacoes/jardineiro_salgueiro_seco.yaml
+relacao:
+  nome: jardineiro da Casa do Salgueiro Seco
+  tipo: cuidador e porteiro informal da propriedade
+  local: Casa do Salgueiro Seco
+  status: ativo em sua rotina; fora da cena de Ren
+  atitude_para_ren: conhece apenas Shinta, como trabalhador disciplinado
+  confianca: profissional inicial em Shinta
+  respeito: prático, baseado no trabalho observado
+  motivo_atual: testemunhou o trabalho de Shinta e não conhece Ren ou Kage por trás da cobertura
+  riscos:
+  - reconhecimento futuro deve distinguir Shinta de Ren e Kage até evidência canônica em contrário
