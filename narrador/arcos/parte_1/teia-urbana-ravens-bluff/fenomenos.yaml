@@ -1,0 +1,28 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: fenomenos
+fonte_base: LC3 - Nightwatch in the Living City
+
+fenomenos:
+  the_veil:
+    nome: The Veil
+    fonte_canonica:
+    - névoa sazonal densa associada às noites de Ravens Bluff
+    - altera percepção, circulação e condições de patrulha
+    estatuto: dormente_ate_janela_sazonal_plausivel
+    objetivo_narrativo: tornar a cidade fisicamente diferente quando a estação justificar, sem fabricar encontro
+    mundo_vivo:
+      sinais:
+      - lanternas e fachos perdem alcance útil
+      - patrulhas, marinheiros e criminosos adaptam rotas e horários
+      - som e silhuetas tornam identificação menos confiável
+    guardrails:
+    - não antecipar The Veil só para criar atmosfera
+    - não usar névoa para esconder informação que já seria observável sem causa
+    - condição ambiental não cria automaticamente crime, emboscada ou presença de NPC
+    - quando surgir, registrar como condição urbana se persistir além da cena
+
+integracao:
+  night_watch: pode alterar patrulha, resposta e risco sem transformar Luath em expositor do fenômeno
+  sidequests: só gera âncora Task40 quando a névoa causar problema, perda, mensagem, pista ou consequência concreta
+  mundo_vivo: pode modular manifestação de evento compatível; não muda frequência do baralho

@@ -1,0 +1,41 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: subterraneo
+fonte_base: LC3 - Nightwatch in the Living City
+
+nucleos:
+  cudzu:
+    nome: Cudzu
+    fonte_canonica:
+    - druida que vive nos esgotos e conhece profundamente sua malha
+    - protege animais urbanos e mantém milhares de ratos sob cuidado
+    objetivo_proprio: proteger a ecologia subterrânea e impedir crueldade ou desequilíbrio
+    vetores:
+      ren:
+      - observação dos túneis e animais pode ajudar se Ren respeitar seus limites
+      masao:
+      - ação da rede que beneficie a ecologia pode receber cooperação pontual
+      - rotas podem ser afetadas por Cudzu sem que ele conheça a rede
+      ambos:
+      - pode negar ajuda a um lado e favorecer o outro conforme o dano aos animais
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - ratos encontram corpo, carga ou passagem alterada
+      - colônia abandona trecho subterrâneo por ameaça desconhecida
+      - trabalhadores ou criminosos destroem habitat e provocam reação
+    mundo_vivo:
+      sinais:
+      - migração anormal de ratos entre bairros
+      - trecho urbano perde ratos de forma inquietante
+      - obras subterrâneas param após comportamento animal incomum
+    guardrails:
+    - ratos não são câmera onisciente
+    - não ligar Cudzu às rotas de Masao sem evidência causal
+    - objetivo ecológico prevalece sobre simpatia ou antipatia por qualquer facção
+
+cruzamentos_locais:
+- toca: luath
+  possibilidade: patrulha recebe relato ou problema subterrâneo sem conhecer sua origem
+- toca: red_sail
+  possibilidade: carga, esconderijo ou circulação sofre efeito indireto da ecologia dos túneis

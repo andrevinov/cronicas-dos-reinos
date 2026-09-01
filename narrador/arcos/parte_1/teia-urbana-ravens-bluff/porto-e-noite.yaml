@@ -1,0 +1,70 @@
+schema_fragmento_teia_urbana: 1
+natureza: reservado
+id: porto_noite
+fonte_base: LC3 - Nightwatch in the Living City
+
+nucleos:
+  desiree_nadeaux:
+    nome: Desiree Nadeaux
+    fonte_canonica:
+    - proprietária da Silver Lily
+    - vampira benigna cujo segredo é protegido por capitães que confiam nela
+    - fonte de informação para gente do mar
+    objetivo_proprio: preservar a Silver Lily, sua discrição e a comunidade de capitães
+    vetores:
+      ren:
+      - informação marítima ou abrigo quando os interesses da casa coincidirem
+      - proteção mútua se uma ameaça atingir a Silver Lily
+      masao:
+      - intermediários podem usar capitães ou informação sem revelar finalidade final
+      - informação verdadeira pode beneficiar a rede se o pedido parecer legítimo
+      ambos:
+      - serviços podem alcançar lados incompatíveis sem fidelidade política
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - capitão protegido desaparece ou chega com carga perigosa
+      - alguém atribui mortes ou extorsão à dona da casa
+      - o segredo da Silver Lily vira moeda de chantagem
+    mundo_vivo:
+      sinais:
+      - capitães fecham fileiras em torno da estalagem
+      - uma noite de portas fechadas altera rumores do cais
+      - notícia marítima circula cedo demais entre frequentadores
+    guardrails:
+    - não revelar sua natureza sem descoberta legítima
+    - hospitalidade não equivale a lealdade a Ren
+
+  old_jack_harker:
+    nome: Old Jack Harker
+    fonte_canonica:
+    - veterano caçador de vampiros
+    - devoto de Tyr convicto de seu dever contra mortos-vivos
+    objetivo_proprio: impedir predação sobrenatural e proteger inocentes segundo sua leitura rígida do dever
+    vetores:
+      ren:
+      - conhecimento especializado pode ajudar diante de ameaça sobrenatural real
+      masao:
+      - evidência falsa de vampirismo ou necromancia pode manipulá-lo sem aliança consciente
+      ambos:
+      - investigação independente pode expor um lado e favorecer o outro em momentos diferentes
+    sidequests:
+      exige_ancora_causal: true
+      sementes:
+      - alvo aparentemente monstruoso não é a ameaça real
+      - sinais fabricados colocam inocente sob caça
+      - paranoia antiga coincide desta vez com perigo verdadeiro
+    mundo_vivo:
+      sinais:
+      - compras incomuns de prata, alho, óleo e símbolos sagrados
+      - hospedarias recebem perguntas sobre hóspedes noturnos
+      - marcas de proteção surgem em portas
+    guardrails:
+    - convicção não equivale a prova
+    - choque com Desiree não decide previamente quem está certo
+
+cruzamento_interno:
+  nome: hunter_and_host
+  regra: >-
+    Os dois podem colidir, cooperar ou ignorar-se. A cena deve nascer de evidência,
+    proteção, ameaça ou erro concreto; não transformar o encontro em combate obrigatório.
