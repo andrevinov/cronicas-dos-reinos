@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: arquetipo_sentinela_runica_n7
+especialidades:
+  vigilancia_runica:
+    nome: Vigilância rúnica
+    dominio: detecção de intrusão e memória geométrica limitada
+    objetivo: Detectar travessia no perímetro sem conceder percepção fora do circuito.
+    procedimentos:
+    - id: detectar_intrusao
+      gatilho: criatura cruza uma linha rúnica ativa dentro do perímetro
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Percepção, bonus: 6, oposicao: Furtividade da criatura}
+      resultado_sucesso: Localiza a linha cruzada e o tamanho aproximado, não identidade.
+      resultado_falha: Registra vibração sem posição e exige novo cruzamento para repetir.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por cruzamento distinto}
+    - id: reconstruir_circuito
+      gatilho: uma âncora foi alterada ou destruída nas últimas 24 horas
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Arcana, bonus: 5, cd: 15}
+      resultado_sucesso: Identifica qual âncora mudou e a direção da interferência.
+      resultado_falha: Sabe que houve dano, mas não distingue origem nem direção.
+      custo: null
+      limite: {tipo: condicional, valor: uma leitura por alteração}
+    contrajogo: [Saltar linhas, desativar runas, criar cruzamentos simultâneos e agir fora do perímetro.]

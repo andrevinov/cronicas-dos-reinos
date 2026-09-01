@@ -62,3 +62,27 @@ adversarios:
     funcao: hibrido
     arquivo: narrador/adversarios/fichas/fuji.yaml
     especialidades_arquivo: narrador/adversarios/especialidades/fuji.yaml
+  arquetipo_mestre_armas_n6:
+    nome: Arquétipo — Mestre de Armas Experiente
+    tipo: npc
+    funcao: combatente
+    arquivo: narrador/adversarios/fichas/arquetipo_mestre_armas_n6.yaml
+    especialidades_arquivo: narrador/adversarios/especialidades/arquetipo_mestre_armas_n6.yaml
+  arquetipo_cacador_sombras_n7:
+    nome: Arquétipo — Caçador de Sombras
+    tipo: npc
+    funcao: hibrido
+    arquivo: narrador/adversarios/fichas/arquetipo_cacador_sombras_n7.yaml
+    especialidades_arquivo: narrador/adversarios/especialidades/arquetipo_cacador_sombras_n7.yaml
+  arquetipo_sentinela_runica_n7:
+    nome: Arquétipo — Sentinela Rúnica
+    tipo: criatura
+    funcao: hibrido
+    arquivo: narrador/adversarios/fichas/arquetipo_sentinela_runica_n7.yaml
+    especialidades_arquivo: narrador/adversarios/especialidades/arquetipo_sentinela_runica_n7.yaml
+  arquetipo_predador_fendas_n6:
+    nome: Arquétipo — Predador de Fendas
+    tipo: criatura
+    funcao: hibrido
+    arquivo: narrador/adversarios/fichas/arquetipo_predador_fendas_n6.yaml
+    especialidades_arquivo: narrador/adversarios/especialidades/arquetipo_predador_fendas_n6.yaml

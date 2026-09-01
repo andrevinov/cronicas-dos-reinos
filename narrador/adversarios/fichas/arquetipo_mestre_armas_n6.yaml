@@ -1,0 +1,132 @@
+schema_adversario: 1
+natureza: reservado
+id: arquetipo_mestre_armas_n6
+nome: Arquétipo — Mestre de Armas Experiente
+tipo: npc
+funcao: combatente
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Arquétipo original de guerreiro nível de referência 6 para uso reutilizável.
+  decisao: null
+  adaptacao: Não representa pessoa, presença ou encontro até ser vinculado a um NPC canônico.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Qualquer}
+escala: {categoria: elite, referencia: combatente marcial de nível de referência 6}
+defesas: {ca: 18, pv: 82, dados_vida: 11d8+33}
+movimento: {terrestre: 30}
+atributos: {for: 18, des: 14, con: 16, int: 13, sab: 14, car: 12}
+bonus_proficiencia: 3
+iniciativa: 2
+salvaguardas: {for: 7, con: 6, sab: 5}
+pericias: {atletismo: 7, intuicao: 5, percepcao: 5}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 15, especiais: []}
+idiomas: [um idioma compatível com a identidade vinculada]
+recursos:
+- {id: manobras, nome: Manobras, maximo: 4, recuperacao: descanso_curto, condicao_recuperacao: null}
+- {id: retomada, nome: Retomada, maximo: 1, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: disciplina_de_formacao
+  nome: Disciplina de formação
+  regra: Tem vantagem para resistir a desarme e empurrão enquanto puder ver um aliado ou obstáculo que protege.
+  contrajogo: [Isolá-lo do objetivo ou atacar por vetor que não mova nem desarme.]
+- id: golpe_nao_letal
+  nome: Golpe não letal
+  regra: Pode deixar estável e inconsciente criatura reduzida a 0 PV por ataque corpo a corpo.
+  contrajogo: [Manter distância ou romper o objetivo de captura.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques de Espada Longa., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância e negar passagem.]
+- id: espada_longa
+  nome: Espada longa
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Golpe marcial controlado., dano: {formula: 1d10+4, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair do alcance, desarmar ou impor desvantagem.]
+- id: golpe_de_empurrao
+  nome: Golpe de empurrão
+  ativacao: acao
+  gatilho: null
+  alcance: 5 pés
+  alvos: uma criatura Grande ou menor
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 15}
+  efeitos:
+  - {quando: falha, regra: "Sofre dano e é empurrada 10 pés ou fica Caída, à escolha do mestre.", dano: {formula: 1d10+4, tipo: contundente}}
+  - {quando: sucesso, regra: Sofre metade do dano e permanece no lugar., dano: {formula: 1d6+2, tipo: contundente}}
+  custo: {recurso: manobras, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Aumentar tamanho, sustentar posição ou evitar a distância curta.]
+- id: ataque_desarmante
+  nome: Ataque desarmante
+  ativacao: acao
+  gatilho: null
+  alcance: 5 pés
+  alvos: uma criatura segurando objeto
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 15}
+  efeitos:
+  - {quando: falha, regra: O objeto cai aos pés do alvo e ele sofre dano., dano: {formula: 1d8+4, tipo: cortante}}
+  - {quando: sucesso, regra: Mantém o objeto e não sofre dano., dano: null}
+  custo: {recurso: manobras, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Usar duas mãos, guardar o objeto ou lutar desarmado.]
+acoes_bonus:
+- id: retomar_folego
+  nome: Retomar o fôlego
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio mestre
+  resolucao: {tipo: automatica, condicao: possuir 1 Retomada e estar consciente}
+  efeitos:
+  - {quando: uso, regra: Recupera 2d10+6 PV., dano: null}
+  custo: {recurso: retomada, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Impedir ação bônus ou incapacitá-lo antes da recuperação.]
+reacoes:
+- id: aparar
+  nome: Aparar
+  ativacao: reacao
+  gatilho: sofrer dano de ataque corpo a corpo que possa perceber
+  alcance: pessoal
+  alvos: o ataque desencadeador
+  resolucao: {tipo: automatica, condicao: empunhar uma arma}
+  efeitos:
+  - {quando: reação, regra: Reduz o dano em 1d10+4., dano: null}
+  custo: {recurso: manobras, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação ou usar salvaguarda e ataque à distância.]
+acoes_lendarias: []
+taticas:
+  abertura: [Ocupa passagem ou cobre o objetivo antes de atacar.]
+  prioridades: [Derruba, desarma e captura antes de buscar morte.]
+  adaptacoes: [Troca manobra quando o alvo sustenta posição.]
+  uso_terreno: [Prefere portas, escadas, pontes e cobertura de aliados.]
+  evita: [Não abandona objetivo por provocação pessoal.]
+retirada:
+  postura: recua
+  gatilhos: [O objetivo protegido foi retirado., Fica com 24 PV ou menos sem apoio.]
+  metodo: Recua em guarda e fecha a passagem atrás de si.
+  custo_ou_risco: Abandona equipamento pesado ou posição defendida.
+  sinais_observaveis: [Encurta a guarda e verifica a rota atrás do objetivo.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/arquetipo_mestre_armas_n6.yaml
+  ids: [leitura_de_duelo]

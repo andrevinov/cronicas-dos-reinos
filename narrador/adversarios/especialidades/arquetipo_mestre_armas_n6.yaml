@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: arquetipo_mestre_armas_n6
+especialidades:
+  leitura_de_duelo:
+    nome: Leitura de duelo
+    dominio: postura, alcance, disciplina e comando marcial
+    objetivo: Identificar uma abertura observável sem transformar experiência em conhecimento secreto.
+    procedimentos:
+    - id: ler_guarda
+      gatilho: observa por uma rodada o alvo lutar ou assumir postura
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Intuição, bonus: 5, oposicao: Enganação ou Acrobacia do alvo}
+      resultado_sucesso: Identifica alcance preferido e uma reação defensiva já demonstrada.
+      resultado_falha: Identifica apenas a arma principal e não recebe nova tentativa sem mudança de postura.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por postura distinta}
+    - id: ordenar_formacao
+      gatilho: possui ao menos dois aliados capazes de ouvi-lo e uma passagem defensável
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Atletismo, bonus: 7, cd: 15}
+      resultado_sucesso: Os aliados ocupam posições coerentes antes da aproximação inimiga.
+      resultado_falha: A formação deixa uma rota observável aberta.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por configuração do terreno}
+    contrajogo: [Mudar postura, atacar de vários eixos, separar o comandante e usar terreno aberto.]

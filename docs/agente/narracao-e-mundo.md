@@ -78,6 +78,17 @@ Intervenção de aliado, retirada do inimigo e rota de fuga continuam consequên
 causais do mundo, não corretores de balanceamento retroativo. `adversarios.py validar`
 é manutenção/CI e não entra no turno comum.
 
+Quando houver dúvida real sobre escala, usar antes da rolagem
+`ameacas.py avaliar <id> --ren --vetor combate|especialidade`. Informar quantidade,
+terreno, iniciativa e apenas aliados que já tenham presença, capacidade e motivo.
+Resultado `letal` ou `esmagadora` exige que uma saída plausível possa ser percebida
+ou investigada; não exige combate, não cria resgate e não garante a saída.
+
+Arquétipo reutilizável só fornece mecânica. Vinculá-lo a alguém requer um NPC ou
+criatura já sustentado pela cena/cânone e não copia personalidade, conhecimento,
+objetivo ou presença. Depois da preparação, nem vínculo nem avaliação autorizam
+trocar PV, CA, CD, dano, recursos ou número de inimigos.
+
 A existência de um agente no índice não obriga sua entrada em cena. Ações fora de cena só devem produzir conhecimento para Ren quando houver percepção, descoberta, comunicação ou inferência legítima. A cadência de reavaliação vem do Mundo Vivo; não transformar uma pendência em obrigação de agir.
 
 ## Agentes recorrentes leves

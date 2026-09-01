@@ -1,0 +1,88 @@
+schema_perfis_ameaca: 1
+natureza: reservado
+contrato: narrador/adversarios/contrato-ameacas.yaml
+perfis:
+  kurobane_jinzaburo:
+    natureza: ator_canonico
+    patamares: {combate: 7, especialidade: 9}
+    vetores: [mobilidade, furto, objetivo]
+    sinalizacao: Rotas altas, fios preparados e atenção ao objeto em vez do duelo.
+    saidas_plausiveis: [recuo por rota térrea, abandonar o objeto, cortar ancoragens]
+  pan_chu:
+    natureza: ator_canonico
+    patamares: {combate: 9, especialidade: 9}
+    vetores: [forca, deslocamento, comando]
+    sinalizacao: Massa física, tripulação disciplinada e bordas perigosas.
+    saidas_plausiveis: [afastar-se do convés, negociar pela tripulação, romper a rota marítima]
+  sawagejo_cho:
+    natureza: ator_canonico
+    patamares: {combate: 8, especialidade: 8}
+    vetores: [armas, ritmo, desarme]
+    sinalizacao: Arsenal visível e observação deliberada da técnica adversária.
+    saidas_plausiveis: [variar método, abandonar duelo, negar acesso à arma cobiçada]
+  kajiwara_shizune:
+    natureza: ator_canonico
+    patamares: {combate: 6, especialidade: 10}
+    vetores: [instituicao, identidade, documento]
+    sinalizacao: Autoridade verossímil, testemunhas e cadeia documental preparada.
+    saidas_plausiveis: [verificação independente, retirar-se da jurisdição, preservar cópias]
+  yukyuzan_anji:
+    natureza: ator_canonico
+    patamares: {combate: 11, especialidade: 9}
+    vetores: [corpo, controle, demolicao]
+    sinalizacao: Obstáculos partidos e postura imóvel em espaço sem cobertura.
+    saidas_plausiveis: [abrir distância, contestar a causa moral, abandonar a estrutura]
+  uonuma_usui:
+    natureza: ator_canonico
+    patamares: {combate: 12, especialidade: 11}
+    vetores: [percepcao, contra_furtividade, escuridao]
+    sinalizacao: Eco metálico, luzes apagadas e leitura de respiração.
+    saidas_plausiveis: [cobertura acústica, distância superior ao Shingan, ruído distribuído]
+  kureha_shiranui:
+    natureza: ator_canonico
+    patamares: {combate: 12, especialidade: 13}
+    vetores: [ritual, terreno, medo]
+    sinalizacao: Cinza, talismãs, calor e névoa vermelha antes da exposição direta.
+    saidas_plausiveis: [vento ou água, destruir âncoras, deixar o campo ritual]
+  amagiri_seishiro:
+    natureza: ator_canonico
+    patamares: {combate: 16, especialidade: 15}
+    vetores: [iniciativa, distancia, execucao]
+    sinalizacao: Silêncio, medição de passos e linha limpa entre entrada e saída.
+    saidas_plausiveis: [quebrar linha, alterar rotina, negar a janela observada]
+  wetuji:
+    natureza: ator_canonico
+    patamares: {combate: 17, especialidade: 17}
+    vetores: [adaptacao, mobilidade, sobrevivencia]
+    sinalizacao: Calma predatória, altura disponível e mudança constante de distância.
+    saidas_plausiveis: [encerrar o desafio, terreno sem altura, quebrar o interesse marcial]
+  fuji:
+    natureza: ator_canonico
+    patamares: {combate: 18, especialidade: 16}
+    vetores: [forca, cerco, protecao]
+    sinalizacao: Passagem fisicamente bloqueada e golpe máximo anunciado.
+    saidas_plausiveis: [mudar o eixo, separar o objetivo protegido, não disputar força]
+  arquetipo_mestre_armas_n6:
+    natureza: arquetipo_reutilizavel
+    patamares: {combate: 6, especialidade: 6}
+    vetores: [armas, controle, comando]
+    sinalizacao: Guarda treinada, manobras coordenadas e escolha consciente de terreno.
+    saidas_plausiveis: [romper formação, atacar à distância, negociar pelo objetivo]
+  arquetipo_cacador_sombras_n7:
+    natureza: arquetipo_reutilizavel
+    patamares: {combate: 7, especialidade: 8}
+    vetores: [furtividade, perseguicao, armadilha]
+    sinalizacao: Rotas vigiadas, rastros falsos e cobertura já escolhida.
+    saidas_plausiveis: [mudar rota, criar pista falsa, alcançar área pública]
+  arquetipo_sentinela_runica_n7:
+    natureza: arquetipo_reutilizavel
+    patamares: {combate: 7, especialidade: 6}
+    vetores: [constructo, terreno, vigilancia]
+    sinalizacao: Runas acesas, rota geométrica e área que pode ser evitada.
+    saidas_plausiveis: [sair do perímetro, quebrar âncoras, usar cobertura total]
+  arquetipo_predador_fendas_n6:
+    natureza: arquetipo_reutilizavel
+    patamares: {combate: 6, especialidade: 7}
+    vetores: [emboscada, escalada, perseguicao]
+    sinalizacao: Marcas acima da linha dos olhos, silêncio súbito e fendas acessíveis.
+    saidas_plausiveis: [área iluminada, espaço sem teto, bloquear as fendas]

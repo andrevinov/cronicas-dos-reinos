@@ -13,6 +13,12 @@ autoridades:
   registro_mecanico_adversarios:
     arquivo: narrador/adversarios/index.yaml
     escopo: ids e rotas dirigidas das fichas e especialidades mecânicas
+  contrato_avaliacao_ameacas:
+    arquivo: narrador/adversarios/contrato-ameacas.yaml
+    escopo: faixas, modificadores, orçamento e invariantes da avaliação pré-rolagem
+  perfis_avaliacao_ameacas:
+    arquivo: narrador/adversarios/ameacas.yaml
+    escopo: patamares de combate e especialidade, sinalização e saídas plausíveis
   elenco_juppongatana:
     arquivo: narrador/juppongatana/index.yaml
     escopo: ids, nomes, alcunhas, círculos e rotas dos membros

@@ -378,11 +378,16 @@ Adversários mecanicamente preparados também são dirigidos:
 python3 ferramentas/adversarios.py mostrar <id-ou-nome>
 python3 ferramentas/adversarios.py especialidade <id-ou-nome> <especialidade-id>
 python3 ferramentas/adversarios.py validar
+python3 ferramentas/ameacas.py avaliar <id-ou-nome> --ren --vetor combate
+python3 ferramentas/ameacas.py avaliar <id-ou-nome> --nivel 7 --vetor especialidade
+python3 ferramentas/ameacas.py validar
 ```
 
 Os dois primeiros comandos abrem somente a ficha ou especialidade pedida; o
-terceiro é gate frio. A camada não cria encontros nem substitui presença/plano
-dos agentes. Registro vazio é válido até a população deliberada da fase seguinte.
+terceiro e o último são gates frios. A avaliação é read-only, pré-rolagem e não
+cria encontros, aliados ou presença. `--ren` lê a ficha atual; a forma `--nivel`
+não lê estado vivo. Arquétipos reutilizáveis continuam sem existência ficcional
+até vínculo causal explícito.
 
 Baseline lógica:
 

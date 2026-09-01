@@ -21,11 +21,12 @@ except ImportError as exc:
 
 try:
     import adversarios
+    import ameacas
     import continuidade_autoral
     import estrutura_narrador
     import populacao
 except ModuleNotFoundError:
-    from ferramentas import adversarios, continuidade_autoral, estrutura_narrador, populacao
+    from ferramentas import adversarios, ameacas, continuidade_autoral, estrutura_narrador, populacao
 
 try:
     import gate_adnd
@@ -125,7 +126,9 @@ REQUIRED_PATHS = (
     "runtime/README.md",
     "narrador/continuidade-autoral.yaml",
     "narrador/adversarios/contrato.yaml",
+    "narrador/adversarios/contrato-ameacas.yaml",
     "narrador/adversarios/index.yaml",
+    "narrador/adversarios/ameacas.yaml",
     "narrador/estrutura.yaml",
     "narrador/populacao-canonica.yaml",
     "narrador/juppongatana/index.yaml",
@@ -135,6 +138,7 @@ REQUIRED_PATHS = (
     "ferramentas/gerar-runtime.py",
     "ferramentas/continuidade_autoral.py",
     "ferramentas/adversarios.py",
+    "ferramentas/ameacas.py",
     "ferramentas/estrutura_narrador.py",
     "ferramentas/populacao.py",
     "ferramentas/texturas.py",
@@ -401,6 +405,10 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
     adversary_result = adversarios.validate_repo(repo)
     errors.extend(
         f"adversários mecânicos: {error}" for error in adversary_result["erros"]
+    )
+    threat_result = ameacas.validate_repo(repo)
+    errors.extend(
+        f"avaliação de ameaças: {error}" for error in threat_result["erros"]
     )
     structure_result = estrutura_narrador.audit(repo)
     errors.extend(

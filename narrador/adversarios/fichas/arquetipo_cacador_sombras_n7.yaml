@@ -1,0 +1,131 @@
+schema_adversario: 1
+natureza: reservado
+id: arquetipo_cacador_sombras_n7
+nome: Arquétipo — Caçador de Sombras
+tipo: npc
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Arquétipo original de perseguidor nível de referência 7 para uso reutilizável.
+  decisao: null
+  adaptacao: Não representa pessoa, presença, conhecimento ou encontro até vínculo canônico.
+perfil: {tamanho: Médio, tipo_criatura: Humanoide, alinhamento: Qualquer}
+escala: {categoria: elite, referencia: perseguidor furtivo de nível de referência 7}
+defesas: {ca: 16, pv: 84, dados_vida: 13d8+26}
+movimento: {terrestre: 35, escalada: 20}
+atributos: {for: 13, des: 19, con: 14, int: 15, sab: 18, car: 11}
+bonus_proficiencia: 3
+iniciativa: 7
+salvaguardas: {des: 7, sab: 7}
+pericias: {furtividade: 10, investigacao: 5, percepcao: 10, sobrevivencia: 10}
+vulnerabilidades: []
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 20, especiais: [visao_no_escuro 60 pés]}
+idiomas: [um idioma compatível com a identidade vinculada]
+recursos:
+- {id: preparos_de_caca, nome: Preparos de Caça, maximo: 3, recuperacao: descanso_longo, condicao_recuperacao: null}
+tracos:
+- id: passo_sem_rastro
+  nome: Passo sem rastro
+  regra: Não deixa pegadas em terreno firme quando se move à metade do deslocamento; chuva, sangue e material solto ainda deixam vestígios.
+  contrajogo: [Observar sinais indiretos, bloquear rotas e usar superfície que registre passagem.]
+- id: primeira_emboscada
+  nome: Primeira emboscada
+  regra: Uma vez por cena, ao acertar criatura da qual esteja oculto, causa 3d6 de dano perfurante adicional.
+  contrajogo: [Manter observação, iluminação e cobertura recíproca.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: conforme a arma
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques de Arco Curto ou Faca de Caça., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total e mudança rápida de distância.]
+- id: arco_curto
+  nome: Arco curto
+  ativacao: acao
+  gatilho: null
+  alcance: distância, 80 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: distancia}
+  efeitos:
+  - {quando: acerto, regra: Flecha disparada de cobertura., dano: {formula: 1d6+4, tipo: perfurante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Cobertura total, distância superior a 80 pés ou combate adjacente.]
+- id: faca_de_caca
+  nome: Faca de caça
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Corte curto para abrir distância., dano: {formula: 1d6+4, tipo: cortante}}
+  - {quando: acerto, regra: Move 5 pés sem provocar ataque do alvo., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Negar espaço lateral e controlar o alcance.]
+- id: laco_oculto
+  nome: Laço oculto
+  ativacao: acao
+  gatilho: null
+  alcance: ponto preparado a até 30 pés
+  alvos: uma criatura sobre o ponto
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 15}
+  efeitos:
+  - {quando: falha, regra: Fica Impedida; usa ação e salvaguarda de Força CD 15 para escapar., dano: {formula: 2d6+4, tipo: perfurante}}
+  - {quando: sucesso, regra: Evita o laço e identifica seu espaço., dano: null}
+  custo: {recurso: preparos_de_caca, quantidade: 1}
+  limite: {tipo: condicional, valor: exige laço instalado antes do início da resolução}
+  contrajogo: [Investigar o terreno, mudar rota ou destruir o mecanismo CA 12 e 5 PV.]
+acoes_bonus:
+- id: fundir_na_sombra
+  nome: Fundir na sombra
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio caçador
+  resolucao: {tipo: automatica, condicao: estar em penumbra ou escuridão e possuir cobertura}
+  efeitos:
+  - {quando: uso, regra: Tenta se esconder com Furtividade +10 e move 10 pés., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Luz plena, percepção às cegas e remover cobertura.]
+reacoes:
+- id: quebrar_linha
+  nome: Quebrar linha
+  ativacao: reacao
+  gatilho: ser alvo de ataque à distância que possa perceber
+  alcance: pessoal
+  alvos: o próprio caçador
+  resolucao: {tipo: automatica, condicao: haver cobertura a até 10 pés}
+  efeitos:
+  - {quando: reação, regra: Move até 10 pés para cobertura e recebe +3 CA contra o ataque., dano: null}
+  custo: {recurso: preparos_de_caca, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Eliminar cobertura, consumir reação ou atacar de múltiplos eixos.]
+acoes_lendarias: []
+taticas:
+  abertura: [Observa a rota e instala um laço antes de revelar posição.]
+  prioridades: [Atrasa o alvo e preserva linha de retirada.]
+  adaptacoes: [Troca altura por multidão se perde escuridão.]
+  uso_terreno: [Prefere becos, ruínas, mata e tetos baixos.]
+  evita: [Não sustenta duelo corpo a corpo sem rota livre.]
+retirada:
+  postura: recua
+  gatilhos: [É localizado sem cobertura., Fica com 26 PV ou menos.]
+  metodo: Deixa laço, muda de altura e segue uma rota previamente limpa.
+  custo_ou_risco: Abandona equipamento preparado e vestígios identificáveis.
+  sinais_observaveis: [Reduz disparos e olha para cobertura sucessiva.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/arquetipo_cacador_sombras_n7.yaml
+  ids: [perseguicao_preparada]

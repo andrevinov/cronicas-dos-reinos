@@ -1,0 +1,131 @@
+schema_adversario: 1
+natureza: reservado
+id: arquetipo_sentinela_runica_n7
+nome: Arquétipo — Sentinela Rúnica
+tipo: criatura
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Criatura original 5.5e para ruínas arcanas e áreas subterrâneas de nível de referência 7.
+  decisao: null
+  adaptacao: Não estabelece espécie, população ou presença até vínculo canônico com um local.
+perfil: {tamanho: Grande, tipo_criatura: Constructo, alinhamento: Não alinhado}
+escala: {categoria: elite, referencia: guardião territorial de nível de referência 7}
+defesas: {ca: 18, pv: 102, dados_vida: 12d10+36}
+movimento: {terrestre: 30}
+atributos: {for: 19, des: 10, con: 17, int: 8, sab: 16, car: 5}
+bonus_proficiencia: 3
+iniciativa: 0
+salvaguardas: {for: 7, con: 6, sab: 6}
+pericias: {arcana: 5, percepcao: 6}
+vulnerabilidades: []
+resistencias: [contundente, cortante e perfurante de ataques não mágicos]
+imunidades_dano: [veneno]
+imunidades_condicao: [amedrontado, enfeitiçado, envenenado, exausto]
+sentidos: {percepcao_passiva: 16, especiais: [visao_no_escuro 60 pés]}
+idiomas: [compreende o idioma de seu criador mas não fala]
+recursos:
+- {id: cargas_runicas, nome: Cargas Rúnicas, maximo: 3, recuperacao: condicional, condicao_recuperacao: recupera todas após uma hora inativa sobre a runa-mãe}
+tracos:
+- id: circuito_visivel
+  nome: Circuito visível
+  regra: Cada Carga Rúnica acende uma linha no corpo; observador pode contar as cargas restantes sem conhecer sua função.
+  contrajogo: [Observar o padrão e forçar gastos antes da aproximação decisiva.]
+- id: guardiao_vinculado
+  nome: Guardião vinculado
+  regra: Não persegue além de 120 pés da runa-mãe e fica Inerte se todas as âncoras do vínculo forem destruídas.
+  contrajogo: [Sair do perímetro, localizar âncoras e evitar confronto direto.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz dois ataques de Braço de Pedra., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância e explorar seu perímetro.]
+- id: braco_de_pedra
+  nome: Braço de pedra
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Impacto de pedra animada., dano: {formula: 2d8+4, tipo: contundente}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Distância superior a 10 pés e cobertura sólida.]
+- id: arco_runico
+  nome: Arco rúnico
+  ativacao: acao
+  gatilho: null
+  alcance: linha de 60 pés
+  alvos: primeira criatura na linha
+  resolucao: {tipo: salvaguarda, atributo: des, cd: 15}
+  efeitos:
+  - {quando: falha, regra: Sofre descarga e não pode usar reações até o fim do próximo turno., dano: {formula: 4d8+3, tipo: elétrico}}
+  - {quando: sucesso, regra: Sofre metade do dano e mantém reações., dano: {formula: 2d8+1, tipo: elétrico}}
+  custo: {recurso: cargas_runicas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair da linha, usar cobertura total ou forçar o gasto das cargas.]
+- id: selo_de_imobilidade
+  nome: Selo de imobilidade
+  ativacao: acao
+  gatilho: null
+  alcance: círculo rúnico de 10 pés a até 30 pés
+  alvos: criaturas no círculo
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 15}
+  efeitos:
+  - {quando: falha, regra: Fica Impedida até o fim do próximo turno da sentinela., dano: null}
+  - {quando: sucesso, regra: Move 5 pés para fora do círculo sem provocar reação da sentinela., dano: null}
+  custo: {recurso: cargas_runicas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Evitar marcas no piso, não tocar o chão ou destruir a runa CA 14 e 10 PV.]
+acoes_bonus:
+- id: passo_geometrico
+  nome: Passo geométrico
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: a própria sentinela
+  resolucao: {tipo: automatica, condicao: existir runa vinculada desocupada a até 30 pés}
+  efeitos:
+  - {quando: uso, regra: Teleporta para a runa sem atravessar barreiras., dano: null}
+  custo: {recurso: cargas_runicas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Ocupar, cobrir ou destruir runas de destino.]
+reacoes:
+- id: barreira_de_glifo
+  nome: Barreira de glifo
+  ativacao: reacao
+  gatilho: criatura a até 30 pés atacar a runa-mãe ou uma âncora
+  alcance: 30 pés
+  alvos: o ataque desencadeador
+  resolucao: {tipo: automatica, condicao: possuir 1 Carga Rúnica e perceber o atacante}
+  efeitos:
+  - {quando: reação, regra: A âncora recebe +5 CA contra o ataque desencadeador., dano: null}
+  custo: {recurso: cargas_runicas, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Consumir a reação ou atacar várias âncoras na mesma rodada.]
+acoes_lendarias: []
+taticas:
+  abertura: [Ativa selo entre intruso e saída, mantendo a runa-mãe atrás.]
+  prioridades: [Protege âncoras e expulsa antes de destruir.]
+  adaptacoes: [Usa arco quando o intruso evita marcas do piso.]
+  uso_terreno: [Depende da geometria visível das runas.]
+  evita: [Não deixa o perímetro nem persegue alvo retirado.]
+retirada:
+  postura: rende_se
+  gatilhos: [Todas as âncoras são destruídas., A runa-mãe é desativada.]
+  metodo: Fica Inerte no lugar e deixa de bloquear passagem.
+  custo_ou_risco: Pode ser estudada, desmontada ou reativada por outro vínculo.
+  sinais_observaveis: [Linhas apagam em sequência e movimentos ficam mais lentos.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/arquetipo_sentinela_runica_n7.yaml
+  ids: [vigilancia_runica]

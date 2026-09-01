@@ -27,6 +27,7 @@ TESTS = ROOT / "tests"
 # uma mudança futura de implementação faça um arquivo caro entrar silenciosamente.
 FAST_FILES: tuple[str, ...] = (
     "test_adversarios.py",
+    "test_ameacas.py",
     "test_analisar_rollout.py",
     "test_analisar_rollout_sistemas.py",
     "test_auditar_testes.py",
@@ -53,6 +54,7 @@ FAST_FILES: tuple[str, ...] = (
 DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     "mecanica": (
         "test_adversarios.py",
+        "test_ameacas.py",
         "test_mecanica_*.py",
         "test_ficha_ren.py",
         "test_cronica_mecanica.py",
@@ -88,6 +90,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "mundo": (
         "test_adversarios.py",
+        "test_ameacas.py",
         "test_mundo*.py",
         "test_agentes*.py",
         "test_direcoes*.py",

@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: arquetipo_predador_fendas_n6
+especialidades:
+  caca_subterranea:
+    nome: Caça subterrânea
+    dominio: vibração, emboscada vertical e seleção de presa
+    objetivo: Localizar passagem por sinais físicos sem obter conhecimento além do ambiente.
+    procedimentos:
+    - id: sentir_passos
+      gatilho: criatura se move sobre pedra conectada a até 60 pés
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Percepção, bonus: 6, oposicao: Furtividade da criatura}
+      resultado_sucesso: Percebe direção e tamanho aproximado, não identidade ou intenção.
+      resultado_falha: Confunde a vibração com o ambiente e exige novo movimento para repetir.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por sequência de movimento}
+    - id: escolher_fenda
+      gatilho: dispõe de um minuto para observar rota com teto ou parede fraturada
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Sobrevivência, bonus: 6, cd: 15}
+      resultado_sucesso: Escolhe fenda com cobertura e rota de recuo conectada.
+      resultado_falha: A fenda oferece apenas cobertura ou retirada, não ambas.
+      custo: null
+      limite: {tipo: condicional, valor: uma escolha por trecho de túnel}
+    contrajogo: [Vibração falsa, ponte de madeira, teto bloqueado, iluminação ampla e rotas sem pedra conectada.]

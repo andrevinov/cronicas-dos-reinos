@@ -1,0 +1,130 @@
+schema_adversario: 1
+natureza: reservado
+id: arquetipo_predador_fendas_n6
+nome: Arquétipo — Predador de Fendas
+tipo: criatura
+funcao: hibrido
+ruleset: dnd_5_5e
+proveniencia:
+  origem: original_campanha
+  referencia: Criatura original 5.5e para cavernas, ruínas e níveis subterrâneos de referência 6.
+  decisao: null
+  adaptacao: Não estabelece espécie, ecologia ou presença até vínculo canônico com um local.
+perfil: {tamanho: Grande, tipo_criatura: Monstruosidade, alinhamento: Não alinhado}
+escala: {categoria: elite, referencia: predador de emboscada de nível de referência 6}
+defesas: {ca: 15, pv: 92, dados_vida: 11d10+33}
+movimento: {terrestre: 35, escalada: 40}
+atributos: {for: 18, des: 17, con: 16, int: 6, sab: 16, car: 7}
+bonus_proficiencia: 3
+iniciativa: 6
+salvaguardas: {des: 6, con: 6, sab: 6}
+pericias: {atletismo: 7, furtividade: 9, percepcao: 6, sobrevivencia: 6}
+vulnerabilidades: [trovejante]
+resistencias: []
+imunidades_dano: []
+imunidades_condicao: []
+sentidos: {percepcao_passiva: 16, especiais: [visao_no_escuro 90 pés]}
+idiomas: [nenhum]
+recursos:
+- {id: surtos_de_fenda, nome: Surtos de Fenda, maximo: 2, recuperacao: descanso_curto, condicao_recuperacao: null}
+tracos:
+- id: corpo_compressivel
+  nome: Corpo compressível
+  regra: Atravessa espaço de 2 pés de largura sem se espremer; enquanto dentro da fenda recebe cobertura de três quartos.
+  contrajogo: [Bloquear fendas, usar área ou atraí-lo para espaço aberto.]
+- id: sensivel_a_vibracao
+  nome: Sensível a vibração
+  regra: Tem vantagem para perceber criatura apoiada na mesma pedra a até 60 pés; ruído amplo concede desvantagem.
+  contrajogo: [Levitar, mover-se por estrutura separada ou criar vibrações falsas.]
+acoes:
+- id: multiataque
+  nome: Multiataque
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo
+  alvos: uma ou duas criaturas
+  resolucao: {tipo: automatica, condicao: estar capaz de agir}
+  efeitos:
+  - {quando: uso, regra: Faz um ataque de Mordida e um de Garra., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância e negar acesso pelo teto.]
+- id: mordida
+  nome: Mordida
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 5 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Mandíbulas prendem roupa ou armadura., dano: {formula: 2d8+4, tipo: perfurante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Manter distância, impor desvantagem ou proteger articulações.]
+- id: garra
+  nome: Garra
+  ativacao: acao
+  gatilho: null
+  alcance: corpo a corpo, 10 pés
+  alvos: uma criatura
+  resolucao: {tipo: ataque, bonus: 7, defesa: ca, modo: corpo_a_corpo}
+  efeitos:
+  - {quando: acerto, regra: Garra longa alcança de parede ou teto., dano: {formula: 1d10+4, tipo: cortante}}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Sair de 10 pés e usar cobertura.]
+- id: arrastar_para_fenda
+  nome: Arrastar para a fenda
+  ativacao: acao
+  gatilho: null
+  alcance: 10 pés
+  alvos: uma criatura Grande ou menor
+  resolucao: {tipo: salvaguarda, atributo: for, cd: 15}
+  efeitos:
+  - {quando: falha, regra: "É puxada 15 pés, fica Caída e não usa reações até o fim do turno.", dano: {formula: 2d6+4, tipo: cortante}}
+  - {quando: sucesso, regra: Não é movida e sofre metade do dano., dano: {formula: 1d6+2, tipo: cortante}}
+  custo: {recurso: surtos_de_fenda, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Ficar longe de fendas, usar apoio ou aumentar tamanho.]
+acoes_bonus:
+- id: correr_pela_pedra
+  nome: Correr pela pedra
+  ativacao: acao_bonus
+  gatilho: null
+  alcance: pessoal
+  alvos: o próprio predador
+  resolucao: {tipo: automatica, condicao: "estar adjacente a parede, teto ou fenda"}
+  efeitos:
+  - {quando: uso, regra: Move até 20 pés por escalada sem provocar ataques de oportunidade., dano: null}
+  custo: null
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Afastá-lo de superfícies escaláveis e bloquear destinos.]
+reacoes:
+- id: recolher_se
+  nome: Recolher-se
+  ativacao: reacao
+  gatilho: sofrer dano enquanto estiver adjacente a uma fenda acessível
+  alcance: pessoal
+  alvos: o próprio predador
+  resolucao: {tipo: automatica, condicao: possuir 1 Surto de Fenda}
+  efeitos:
+  - {quando: reação, regra: Move 10 pés para dentro da fenda e reduz o dano em 1d10+3., dano: null}
+  custo: {recurso: surtos_de_fenda, quantidade: 1}
+  limite: {tipo: ilimitado, valor: null}
+  contrajogo: [Bloquear fendas, consumir reação ou atacar em espaço aberto.]
+acoes_lendarias: []
+taticas:
+  abertura: [Ataca do teto e tenta arrastar um alvo isolado.]
+  prioridades: [Separa antes de permanecer exposto.]
+  adaptacoes: [Recua se não puder acessar fenda após atacar.]
+  uso_terreno: [Depende de teto, paredes e passagens estreitas.]
+  evita: [Não atravessa área aberta iluminada sem presa isolada.]
+retirada:
+  postura: recua
+  gatilhos: [Perde acesso a fendas., Fica com 28 PV ou menos.]
+  metodo: Sobe, comprime o corpo e rompe linha de visão na pedra.
+  custo_ou_risco: Abandona presa e revela a direção do covil.
+  sinais_observaveis: [Recolhe membros e procura rachadura acima da linha dos olhos.]
+especialidades:
+  arquivo: narrador/adversarios/especialidades/arquetipo_predador_fendas_n6.yaml
+  ids: [caca_subterranea]

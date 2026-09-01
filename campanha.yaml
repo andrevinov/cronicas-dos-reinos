@@ -109,6 +109,8 @@ estrutura:
     adversarios_mecanicos: narrador/adversarios/README.md
     adversarios_contrato: narrador/adversarios/contrato.yaml
     adversarios_indice: narrador/adversarios/index.yaml
+    ameacas_contrato: narrador/adversarios/contrato-ameacas.yaml
+    ameacas_perfis: narrador/adversarios/ameacas.yaml
     juppongatana: narrador/juppongatana/README.md
     juppongatana_elenco: narrador/juppongatana/index.yaml
     juppongatana_conducao: narrador/juppongatana/conducao.md

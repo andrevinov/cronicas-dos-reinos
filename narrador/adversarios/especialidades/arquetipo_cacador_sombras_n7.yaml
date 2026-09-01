@@ -1,0 +1,24 @@
+schema_especialidades_adversario: 1
+natureza: reservado
+adversario_id: arquetipo_cacador_sombras_n7
+especialidades:
+  perseguicao_preparada:
+    nome: Perseguição preparada
+    dominio: rastreamento, contrarrastro e seleção de emboscada
+    objetivo: Manter contato por indícios reais sem conhecer automaticamente destino ou identidade.
+    procedimentos:
+    - id: seguir_vestigio
+      gatilho: possui pegada, sangue, objeto ou testemunho de passagem recente
+      resolucao: {tipo: teste_oposto, atributo_ou_pericia: Sobrevivência, bonus: 10, oposicao: Furtividade ou Sobrevivência do alvo}
+      resultado_sucesso: Mantém direção geral até o próximo cruzamento complexo.
+      resultado_falha: Perde o rastro e exige vestígio novo para outra tentativa.
+      custo: null
+      limite: {tipo: condicional, valor: uma tentativa por trecho de rastro}
+    - id: preparar_emboscada
+      gatilho: dispõe de dez minutos e uma rota que o alvo provavelmente atravessará
+      resolucao: {tipo: teste, executor: adversario, atributo_ou_pericia: Furtividade, bonus: 10, cd: 18}
+      resultado_sucesso: Escolhe cobertura, saída e um ponto de laço antes da chegada.
+      resultado_falha: Precisa escolher entre cobertura e saída; sinais do preparo ficam detectáveis.
+      custo: {recurso: preparos_de_caca, quantidade: 1}
+      limite: {tipo: condicional, valor: uma preparação por área}
+    contrajogo: [Trocar transporte, dividir rastros, mudar rota tarde e investigar pontos de observação.]

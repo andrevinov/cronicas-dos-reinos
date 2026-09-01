@@ -1,0 +1,31 @@
+schema_contrato_ameacas: 1
+natureza: contrato_avaliacao_ameaca_reservado
+ruleset: dnd_5_5e
+orcamento:
+  registro_max_bytes: 8192
+  consulta_max_bytes: 4096
+naturezas_perfil: [ator_canonico, arquetipo_reutilizavel]
+vetores: [combate, especialidade]
+estados_recursos: [plenos, gastos, criticos]
+vantagens_contextuais: [grupo, neutra, adversario]
+faixas:
+- {id: baixa, minimo: null, maximo: -3, saida_observavel_obrigatoria: false}
+- {id: moderada, minimo: -2, maximo: -1, saida_observavel_obrigatoria: false}
+- {id: alta, minimo: 0, maximo: 1, saida_observavel_obrigatoria: false}
+- {id: letal, minimo: 2, maximo: 3, saida_observavel_obrigatoria: true}
+- {id: esmagadora, minimo: 4, maximo: null, saida_observavel_obrigatoria: true}
+modificadores:
+  inimigo_adicional: 2
+  aliado_competente: -2
+  recursos: {plenos: 0, gastos: 1, criticos: 2}
+  terreno: {grupo: -1, neutra: 0, adversario: 1}
+  iniciativa: {grupo: -1, neutra: 0, adversario: 1}
+invariantes:
+  avaliacao_antes_da_rolagem: true
+  classificacao_nao_altera_ficha: true
+  aliado_exige_presenca_capacidade_e_motivo: true
+  aliado_nao_e_injetado_para_balancear: true
+  ameaca_letal_exige_saida_observavel: true
+  saida_nao_garante_sucesso: true
+  quantidade_e_contexto_sao_explicitos: true
+  consulta_nao_roda_em_turno_comum: true

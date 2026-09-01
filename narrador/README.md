@@ -102,7 +102,9 @@ normal de cada turno.
 conhecimento, mas impede que NPC competente ou criatura entre em resolução com
 números, ações ou especialidades vagos. Consultar somente o adversário presente
 com `adversarios.py mostrar`; abrir uma especialidade não combativa apenas quando
-ela for materialmente relevante. A população canônica começa na fase seguinte.
+ela for materialmente relevante. Entradas `arquetipo_` são modelos reutilizáveis
+e não criam NPC, espécie ou presença. `ameacas.py avaliar` compara patamar e
+contexto antes da rolagem; não altera fichas nem injeta aliados.
 
 ## Mundo Vivo
 

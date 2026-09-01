@@ -99,6 +99,18 @@ Especialidade possui procedimento com resultado de sucesso e falha; prosa como
 O validador recusa campos extras destinados a ajuste pós-rolagem e qualquer
 ruleset divergente do ativo.
 
+`narrador/adversarios/contrato-ameacas.yaml` governa a avaliação pré-rolagem.
+Ela compara um patamar autoral de combate ou especialidade ao nível informado e
+aplica apenas modificadores explícitos de economia de ações, recursos, terreno e
+iniciativa. É uma heurística de preparação, não CR oficial, previsão de resultado
+ou licença para corrigir a ficha. `--ren` lê a ficha canônica somente nessa
+consulta; o turno comum permanece com zero leitura desta camada.
+
+Aliado só entra no cálculo se já estiver presente, for competente para a ameaça e
+tiver motivo causal para ajudar. Resultado letal/esmagador exige sinalização e
+saída observável, não intervenção automática. Arquétipos `arquetipo_` permanecem
+não canônicos até vínculo explícito com um ator ou criatura da ficção.
+
 A presença do núcleo 5.5e não muda `sistema.ruleset.atual`: enquanto o gate de migração não for concluído, seu uso por `dados` fica restrito às primitivas cuja semântica é compatível com o ruleset operacional. Nenhuma regra exclusiva de 5.5e pode entrar silenciosamente na narração antes da ativação final.
 
 ## Perfil alvo 5.5e de Ren

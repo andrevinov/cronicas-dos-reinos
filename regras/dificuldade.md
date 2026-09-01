@@ -57,3 +57,14 @@ Ao adaptar encontros publicados:
 * não transformar todo inimigo em estatística equilibrada para o nível de Ren;
 * registrar decisões recorrentes se virarem regra da campanha.
 
+## Avaliação dirigida de ameaça
+
+Quando uma ficha competente já estiver escolhida e a escala não for óbvia, usar
+`python3 ferramentas/ameacas.py avaliar <id> --ren --vetor combate` antes da
+rolagem. A avaliação pode incluir inimigos adicionais, aliados já causais,
+recursos, terreno e iniciativa. Ela não escolhe encontro, não reduz ficha e não
+convoca Joen, Luath ou qualquer outro aliado para corrigir dificuldade.
+
+As classificações são preparação: `baixa`, `moderada`, `alta`, `letal` e
+`esmagadora`. As duas últimas exigem perigo sinalizado e ao menos uma saída
+observável ou investigável. Saída possível não significa saída automática.
