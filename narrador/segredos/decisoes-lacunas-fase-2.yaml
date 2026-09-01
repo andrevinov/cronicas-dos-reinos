@@ -1,0 +1,338 @@
+schema_decisoes_lacunas: 1
+natureza: planejamento_autoral_reservado_nao_canonico
+fase: 2
+status: finalizada
+base_revisada: 2bf36a422e05770f3cb3e0fff55e43567fc15c24
+finalidade: >-
+  Fixar as decisões autorais necessárias para reparar lacunas de continuidade sem
+  alterar ainda o cânone, o estado corrente, o conhecimento de Ren ou sessões
+  concluídas. A fase 3 deve instalar cada decisão por correção explícita e
+  preservar a separação entre verdade do narrador e descoberta do personagem.
+autoridade:
+  canone_automatico: false
+  altera_estado: false
+  altera_conhecimento_de_ren: false
+  altera_sessao_concluida: false
+  uso_permitido:
+  - servir de contrato reservado para a fase 3
+  - distinguir decisão fechada de mistério deliberado
+  - impedir que alternativas descartadas reapareçam por improviso
+  uso_proibido:
+  - ser citado como prova canônica
+  - revelar verdade reservada ao jogador
+  - produzir consequência antes da instalação transacional
+
+guardrails:
+- Sessões concluídas permanecem históricas e transcrições não são reescritas.
+- Nenhuma decisão controla fala, intenção, escolha ou ação futura de Ren.
+- Conhecimento adversarial não pode crescer além do que fontes canônicas sustentam.
+- Um resultado fora de cena só será instalado quando possuir causa suficiente.
+- Mistério para Ren não pode continuar sendo indefinição do narrador quando a fase 3 exigir verdade objetiva.
+- Possibilidade de reaparição não obriga cena futura.
+
+decisoes:
+  cinza_azul:
+    estado: fechada
+    identidade_reservada:
+      id_proposto: mirel_sorn
+      nome_verdadeiro: Mirel Sorn
+      alias_operacional: Cinza-Azul
+    significado_na_campanha: >-
+      Coordenadora documental local da primeira estrutura de Masao em Ravens Bluff.
+      Ela é uma antagonista alcançável e significativa, capaz de fabricar autoridade,
+      coordenar falsificadores e disciplinar intermediários sem possuir a visão completa
+      do plano mestre.
+    aparicoes_mesma_pessoa:
+    - mulher que orientou Velis Rook diante da Casa de Tyr
+    - figura chamada Cinza-Azul pelos criados de Narwhal Manor
+    - mulher de casaco cinza-azulado capturada na antiga calaria
+    disfarces: >-
+      As diferenças de idade e feições observadas por Kethra são apresentações da
+      mesma mulher, produzidas por atuação, maquiagem, peças discretas e documentos
+      sociais coerentes. Não conceder magia ou capacidade adicional sem fonte mecânica.
+    relacao_com_shizune:
+      mesma_pessoa: false
+      membro_juppongatana: false
+      contato_direto_confirmado: false
+      funcao_dramatica: >-
+        Antecipar tematicamente a guerra administrativa que Shizune representa sem
+        fixar presença física de Shizune em Ravens Bluff nem transformar semelhança de
+        método em identidade.
+    conhecimento_e_limites:
+    - conhece a célula documental local e seus canais imediatos
+    - conhece Masao como autoridade superior apenas na forma compartimentada necessária ao trabalho
+    - não conhece automaticamente toda a Juppongatana, a Ponte ou todos os vínculos de Ren
+    - captura não entrega por si só a estrutura completa da campanha
+    alternativas_descartadas:
+    - a mulher da calaria ser uma imitadora ou isca diferente
+    - Cinza-Azul ser Kajiwara Shizune
+    - cada aparição cinza-azulada pertencer a uma mulher sem vínculo estável
+
+  falsificador_calaria:
+    estado: fechada
+    identidade_reservada:
+      id_proposto: berren_taal
+      nome_verdadeiro: Berren Taal
+      descricao_publica_inicial: homem corpulento da antiga calaria
+    significado_na_campanha: >-
+      Artesão local culpável pela produção material da ordem, mas não autor estratégico.
+      Ele demonstra que a célula compra competência urbana e compartimenta autoria.
+    papel:
+    - operou a oficina e produziu a matriz e os documentos
+    - recebeu instruções de Mirel Sorn sob identidade operacional
+    - tentou destruir evidência quando a oficina foi comprometida
+    limites_de_conhecimento:
+    - conhece Mirel por cobertura e rotina de trabalho, não por toda a cadeia de comando
+    - não conhece Shizune como participante da operação
+    - não conhece automaticamente a identidade completa, aliados ou esconderijos de Ren
+    estado_no_fim_da_sessao_16: vivo, inconsciente e estável no pátio da calaria
+    futuro_deliberadamente_aberto:
+    - interrogatório
+    - custódia ou entrega institucional
+    - fuga, cooperação ou recusa
+
+  mensageiro_sete_nomes:
+    estado: fechada
+    id_estavel: mensageiro_sete_nomes
+    significado_na_campanha: >-
+      Elo civil descartável e testemunha material da compartimentação. Não é antagonista
+      informado nem membro consciente da célula.
+    verdade_objetiva:
+    - foi contratado para transportar a ordem e pago por uma cadeia curta
+    - não conhecia a autoria estratégica
+    - foi localizado, capturado, interrogado e liberado por Ren
+    estado_corrente_decidido: vivo, materializado, liberado e com paradeiro imediato não acompanhado por Ren
+    nome_pessoal: deliberadamente não necessário enquanto não for obtido em cena
+    risco_ainda_aberto: >-
+      A possibilidade contratada de interceptação continua causalmente disponível,
+      mas não ocorreu automaticamente e deve respeitar tempo, alcance e proteção reais.
+
+  verificador_transferencias:
+    estado: fechada
+    id_estavel: verificador_transferencias_sete_nomes
+    significado_na_campanha: >-
+      Função institucional legítima capaz de verificar autoridade documental; não é
+      pessoa já presente nem recompensa automaticamente concedida.
+    estado_corrente_decidido: reservado_nao_presente
+
+  sete_criancas:
+    estado: fechada
+    significado_na_campanha: >-
+      Grupo protegido e conjunto de testemunhas vulneráveis. Não são sete arcos ou
+      sete agentes autônomos por padrão.
+    roster:
+    - id: peta
+      nome: Peta
+      individualizacao: existente
+    - id: miri
+      nome: Miri
+      individualizacao: recorrente_no_grupo
+    - id: crianca_doss
+      nome: Doss
+      individualizacao: roster
+    - id: crianca_cal
+      nome: Cal
+      individualizacao: roster
+    - id: nib
+      nome: Nib
+      individualizacao: roster
+    - id: jori
+      nome: Jori
+      individualizacao: roster
+    - id: enna
+      nome: Enna
+      individualizacao: roster
+    decisao_sobre_a_ordem: >-
+      Os sete nomes presentes na ordem correspondem exatamente a este roster. A fase 3
+      deve preservar a lista sem criar relações, agendas ou fichas extensas para todos.
+
+  sidequest_sete_nomes:
+    estado: fechada
+    situacao_apos_sessao_16:
+    - ordem examinada e preservada
+    - mensageiro materializado, localizado, interrogado e liberado
+    - oficina de origem localizada
+    - matriz e conjunto documental preservados por Ren
+    - Mirel Sorn e Berren Taal vivos e inconscientes
+    - verificação institucional ainda não realizada
+    terminal: null
+    decisao: >-
+      A investigação avançou materialmente, mas captura e evidência não produzem
+      sucesso automático. Autoridade ou falsidade ainda precisam adquirir valor
+      institucional antes do prazo ou por consequência causal equivalente.
+
+  m_harrow:
+    estado: fechada
+    natureza: identidade_documental_fabricada
+    pessoa_real: false
+    significado_na_campanha: >-
+      Sumidouro administrativo de culpa criado para dar corpo escrito à mentira sobre
+      o oriental, permitir que registros divergentes pareçam referir-se a alguém e
+      afastar a investigação de responsáveis reais.
+    autoria_operacional: Mirel Sorn e a célula documental local
+    relacao_com_registros_mh: >-
+      As ocorrências canônicas já ligadas a M. Harrow pertencem à mesma construção de
+      papel. Novas iniciais M.H. não devem ser fundidas sem contexto ou evidência.
+    forma_de_modelagem: identidade_em_disputa, nunca NPC físico
+
+  casa_velha_primeiro_raio:
+    estado: fechada
+    significado_na_campanha: >-
+      Ponto de retenção local de uma estrutura maior, desmantelado no nível imediato
+      pelo resgate das crianças, mas não prova de que toda a cadeia foi destruída.
+    homem_manga_cinza_dois_aneis:
+      id_proposto: homem_manga_cinza_dois_aneis
+      papel: supervisor local da movimentação de crianças e pacotes
+      estado: vivo, não capturado e dormente após coordenar a evacuação do ponto comprometido
+      distinto_de:
+      - homem_maos_limpas
+      - Berren Taal
+      - qualquer identidade de Mirel Sorn
+      conhecimento: somente o que sua presença e os relatos canônicos sustentam
+    mulher_vermelho:
+      id_proposto: mulher_vermelho_tintureiros
+      papel: transportadora e guardiã subordinada ao supervisor de manga cinza
+      distinta_de:
+      - Mirel Sorn
+      - Kajiwara Shizune
+      resultado_fora_de_cena: >-
+        Foi encontrada viva e inconsciente pela própria cadeia depois que Ren resgatou
+        Peta; foi removida antes de intervenção institucional.
+      futuro: sem reaparição obrigatória
+    narro:
+      papel: administrador imediato das crianças na Casa Velha
+      resultado_fora_de_cena: recuperado vivo e retirado do ponto após o fracasso
+      classificacao: representado_pela_celula_sem_agenda_individual
+    toll:
+      papel: guarda da cozinha e da porta
+      resultado_fora_de_cena: recuperado vivo e retirado do ponto após o fracasso
+      classificacao: representado_pela_celula_sem_agenda_individual
+    vessa:
+      papel: guarda interna
+      resultado_fora_de_cena: recuperada viva e retirada do ponto após o fracasso
+      classificacao: representada_pela_celula_sem_agenda_individual
+    decisao_sobre_o_local: abandonado e limpo pela cadeia depois da perda das crianças
+    alternativa_descartada: tratar todos como mortos, presos ou irrelevantes sem resolução
+
+  emboscada_restaurante:
+    estado: fechada
+    lider:
+      id_proposto: lider_emboscada_restaurante
+      papel: executor kozakurano experiente de uma célula criminosa ligada à rede de Masao
+      classificacao: representado_pelo_agente_adversarial_sem_agenda_individual
+      resultado_fora_de_cena: >-
+        Foi recuperado vivo, ferido e inconsciente pelos dois subordinados e pela
+        mulher idosa depois que Ren deixou o restaurante; a célula retirou o grupo do local.
+    subordinados:
+      classificacao: figurantes_recorriveis_somente_pelo_agente_pai
+      resultado_fora_de_cena: voltaram ao ponto apenas quando Ren já havia partido e ajudaram na retirada
+    mulher_idosa:
+      classificacao: operadora_incidental_da_mesma_celula
+      futuro: sem stub ou reaparição obrigatória
+    conhecimento_preservado:
+    - a operação já sabia antes do confronto que Shinta era Ren Kagehira
+    - o líder chamou Ren pelo nome
+    - os sobreviventes sabem que Ren derrotou os três e poupou o líder
+    - a rede não ganha automaticamente conhecimento sobre a Galeria, Nera ou outros vínculos
+    alternativas_descartadas:
+    - limitar o conhecimento da célula à persona Shinta
+    - deixar o líder indefinidamente inconsciente no restaurante
+    - transformar a derrota em captura institucional sem causa
+
+  casa_salgueiro_seco:
+    estado: fechada
+    funcao_na_campanha: >-
+      Caminho lateral e legítimo de trabalho, reputação e possível propriedade para
+      Shinta; não é armadilha secreta nem extensão automática da trama de Masao.
+    jardineiro:
+      id_proposto: jardineiro_salgueiro_seco
+      papel: cuidador, porteiro informal e testemunha honesta do trabalho de Shinta
+      classificacao: persistente_sem_agenda
+      conhecimento:
+      - conhece Shinta e sua disciplina incomum
+      - não sabe que Shinta é Ren ou Kage
+      nome_pessoal: não estabelecido porque ainda não foi obtido e não possui função causal
+    tomas_rell:
+      papel: intermediário administrativo e empregador de Shinta na Galeria dos Escribas
+      classificacao: persistente_sem_agenda_com_cobertura_populacional
+      conhecimento:
+      - conhece somente Shinta no vínculo profissional
+      - não sabe que Shinta é Ren ou Kage
+    proprietaria:
+      id_proposto: proprietaria_salgueiro_seco
+      papel: proprietária privada ausente, representada por Tomas e pelo jardineiro
+      ligacao_com_antagonistas: nenhuma
+      nome_pessoal: deliberadamente reservado para descoberta por título, contato ou negociação
+      classificacao: identidade_estavel_sem_presenca_automatica
+
+  participantes_secundarios:
+    estado: fechada
+    garran_holt:
+      classificacao: persistente_sem_agenda_representado_por_tyr
+      motivo: participou diretamente da operação de Tyr com Ren
+    caldrin_vos:
+      classificacao: persistente_sem_agenda_representado_por_tyr
+      motivo: testemunhou procedimento reservado e pode ser reencontrado institucionalmente
+    orsa_kelm:
+      classificacao: contato_imobiliario_dormente
+      promocao: somente se Ren perseguir a titularidade da Lança Torta
+    marrin_holt:
+      classificacao: contato_imobiliario_dormente
+      promocao: somente se Ren perseguir a oficina oeste dos Três Martelos
+    lockwood_mooney:
+      classificacao: contato_arcano_latente
+      presenca_automatica: false
+    thorn_edris_pallen:
+      classificacao: figurantes_institucionais_encerrados
+      representacao: autoridade ou agente-pai da cena de origem
+
+  relogios_antigos:
+    estado: fechada
+    decisao:
+    - exposicao do contato Kethra permanece ativa sem avanço retroativo
+    - exposicao do contato Pell permanece ativa sem avanço retroativo
+    - rastro rural fraco permanece ativo sem avanço retroativo
+    aplicacao_fase_3: >-
+      Registrar reavaliação em 19 Eleasis sem mudança causal. Ausência de progresso
+      deixa de parecer esquecimento, mas nenhum relógio ganha tique por passagem de tempo isolada.
+
+  correcoes_deterministicas:
+    estado: fechada
+    itens:
+    - alinhar campanha, índice de sessões e runtime em entre_sessoes após a sessão 16
+    - encerrar contabilmente os artefatos ainda abertos da sessão 15
+    - corrigir dia, período, cena, modo e prioridades obsoletas
+    - remover pendências já cumpridas ou superadas
+    - marcar Corven fora de cena, ainda ativo e em Ravens Bluff com paradeiro imediato não rastreado
+    - marcar Maerra na Casa da Aurora Menor com as crianças, não na cena de Ren
+    - marcar Sirrus na Casa de Tyr e Brunna em seu estabelecimento, não na cena de Ren
+    - atualizar Iria, Colm, Mera e o recado único de Sella conforme fatos já concluídos
+    - atualizar progresso e atores da side quest sem declarar resultado terminal
+    - regenerar runtime e handoffs apenas depois da instalação autoritativa
+
+deliberadamente_aberto:
+- as escolhas de Ren diante dos dois prisioneiros e das provas
+- o conteúdo e o resultado de qualquer interrogatório futuro
+- a entrega das provas a uma instituição
+- o resultado terminal de Sete Nomes Antes do Amanhecer
+- a resposta futura de Mirel Sorn ou Berren Taal à captura
+- qualquer reaparição dos sobreviventes da Casa Velha ou do restaurante
+- a chegada física de Kajiwara Shizune a Ravens Bluff
+- a decisão de Ren sobre comprar, investigar ou abandonar a Casa do Salgueiro Seco
+
+ordem_de_instalacao_fase_3:
+- correção transacional de lifecycle, tempo e estado corrente
+- identidades e estados dos ocupantes da calaria
+- progresso factual e atores de Sete Nomes Antes do Amanhecer
+- roster das sete crianças e identidade documental M. Harrow
+- identidades e resoluções reservadas da Casa Velha e do restaurante
+- jardineiro, Tomas, proprietária e participantes secundários
+- reavaliação explícita dos relógios sem avanço
+- regeneração de derivados e validação integral
+
+criterios_de_saida_da_fase_2:
+  todas_lacunas_classificadas: true
+  alternativas_centrais_descartadas: true
+  misterios_do_jogador_preservados: true
+  indefinicoes_do_narrador_restantes: false
+  canone_modificado: false
