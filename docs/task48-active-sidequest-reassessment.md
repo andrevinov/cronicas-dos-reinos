@@ -90,7 +90,9 @@ Isso elimina a necessidade de abrir manualmente arquivos reservados apenas para 
 - Estado ficcional e lifecycle tornam-se observáveis antes do prazo terminal.
 - A economia continua limitada pelo teto já existente de missões ativas.
 
-Esta Task ainda não registra fatos nem encerra missões; isso pertence à Task49.
+A projeção continua read-only. Ao concluir o turno, a Task49 exige uma decisão
+por missão, registra fatos válidos e delega eventual terminal às autoridades
+existentes.
 
 ## Testes
 
@@ -124,4 +126,4 @@ Regressões existentes a preservar:
 - nenhum writer chamado durante projeção;
 - testes de domínio passam em fixture isolada;
 - `test-domain sidequests cronica`, `test-full` e `preflight` verdes;
-- `AGENTS.md` descreve o comportamento já implementado.
+- `AGENTS.md` descreve o comportamento implementado e sua continuação Task49.

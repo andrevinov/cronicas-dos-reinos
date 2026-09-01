@@ -42,7 +42,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - retomada/lifecycle → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34;
-- local/side quest → `docs/agente/integracao-reativa-v2.md`, Tasks 40–48 (`docs/task48-active-sidequest-reassessment.md`);
+- local/side quest → `docs/agente/integracao-reativa-v2.md`, Tasks 40–49 (`docs/task49-transactional-sidequest-progress.md`);
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
 
@@ -56,7 +56,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Task47/48:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só bloqueia oferta nova; missões `aceita` seguem projetadas read-only, sem fatos/terminal.
+**Tasks47–49:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só bloqueia oferta nova; missão `aceita` é projetada e exige decisão factual no `cronica concluir`.
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag, local ou NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
 
@@ -98,7 +98,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 - **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências congeladas; `resolver_sidequest` nunca é no-op; recompensa = Task43, consequência grave = Task44/Protected Core.
 - **Task 46:** 40–45 ficam na mesma dupla; com âncora, `cronica preparar ... --oportunidade-sidequest --sidequest-origem-tipo ... --sidequest-ancora-tipo ... --sidequest-ancora ...` e enviar no mesmo `cronica concluir`; só materializar se a oferta foi narrada. Decisão negativa explícita não chama autoria Task40/41/43/44/46. Task32/33 = legado frio, nunca origem/hot path.
 - **Task 47:** `analisar-rollout.py` exige 100% de cobertura da decisão.
-- **Task 48:** missão `aceita` é projetada read-only no `cronica preparar`, por IDs+digest; máximo 2, zero scan/RNG/scheduler/escrita. Consulta: `sidequests_ativas.py status <id>`. Fatos/terminal seguem na Task45 até a Task49.
+- **Tasks 48/49:** missão `aceita` é projetada read-only por IDs+digest; máximo 2. `cronica concluir` exige `sem_fato_sidequest` ou fatos com prova literal; Task49 journala e delega terminal às Tasks42/43/45. Retry: repetir o concluir. Consulta: `sidequests_ativas.py status <id>`.
 - Task32 já narrada → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos. Checkpoint não sorteia side quest nem loot.
 
 ## 7. Checkpoint de cena e sessão

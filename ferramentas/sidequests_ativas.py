@@ -410,6 +410,29 @@ def integrate_prepare(
     result["ticket"] = new_token
     result["ticket_id"] = new_id
     result["sidequests_ativas"] = projection
+    result["contrato_reavaliacao"] = {
+        "campo": "progresso_sidequests",
+        "regra": "uma decisão obrigatória por missão projetada",
+        "missoes": [
+            {
+                "mission_id": item["mission_id"],
+                "decisoes": ["sem_fato_sidequest=true", "fatos_sidequest=[...]"]
+            }
+            for item in projection["missoes"]
+        ],
+        "fato_campos": [
+            "id",
+            "descricao",
+            "evidencia",
+            "fases",
+            "condicoes_sucesso",
+            "condicoes_falha",
+            "atores",
+            "substituicoes",
+            "visibilidade",
+        ],
+        "evidencia": "trecho literal de narracao ou resumo; nenhuma inferência automática",
+    }
     result.setdefault("sistemas_narrativos", []).append("active_sidequest_reassessment")
     result.setdefault("filtros", []).append("sidequests_aceitas_projetadas_task48")
     result.setdefault("disponibilidade", {})["sidequests_ativas"] = projection["quantidade"]
@@ -420,9 +443,9 @@ def integrate_prepare(
     )
     contract = result.get("contrato_conclusao")
     if isinstance(contract, dict):
-        contract["sidequests_ativas_task48"] = (
-            "Projeção read-only: reavalie os fatos narrados, mas ainda não envie progresso; "
-            "a escrita transacional pertence à Task49."
+        contract["sidequests_ativas_task48_49"] = (
+            "Reavalie cada missão projetada e envie exatamente uma decisão em "
+            "progresso_sidequests; fatos são validados e gravados transacionalmente."
         )
     total = _yaml_size(result)
     if total > MAX_COMBINED_PREP_BYTES:

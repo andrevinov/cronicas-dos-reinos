@@ -196,3 +196,7 @@ runtime/consultas-contexto.jsonl
 # Commit multiarquivo da consolidação; transitório e recuperável
 runtime/consolidacao-em-andamento.json
 runtime/.consolidacao-stage/
+
+# Recovery/idempotência operacional da Task49; não é cânone da campanha
+runtime/progresso-sidequests-transacional.yaml
+runtime/progresso-sidequests-receipts.jsonl

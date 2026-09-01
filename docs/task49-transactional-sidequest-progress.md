@@ -2,7 +2,9 @@
 
 ## Status e dependências
 
-**Planejada.** Não é contrato operacional até implementação, testes e atualização explícita do roteador.
+**Implementada.** A porta vive em
+`ferramentas/progresso_sidequests_transacional.py`, integra `cronica concluir` e
+é verificada pelo preflight.
 
 Depende da projeção read-only da Task48 e reutiliza Task42–46. Não cria um lifecycle paralelo.
 
@@ -26,14 +28,15 @@ Permitir que o mesmo `cronica concluir`:
 
 ### Decisão explícita por missão ativa
 
-O `contrato_reavaliacao` emitido pela Task48 exigirá, para cada missão projetada, exatamente uma decisão no payload de conclusão:
+O `contrato_reavaliacao` emitido pela Task48 exige, para cada missão projetada,
+exatamente uma decisão no campo `progresso_sidequests` do payload de conclusão:
 
 - `sem_fato_sidequest`: o turno não produziu fato capaz de alterar fase/condição;
 - `fatos_sidequest`: lista compacta de fatos factuais e seus efeitos declarados.
 
 Omissão ou conflito falham antes de qualquer escrita. A decisão não interpreta palavras-chave nem exige que todo diálogo produza progresso; ela apenas impede esquecimento silencioso.
 
-Cada fato terá:
+Cada fato possui:
 
 - ID estável no domínio da missão;
 - descrição factual curta;
@@ -42,19 +45,29 @@ Cada fato terá:
 - condições de sucesso/falha afetadas;
 - atores envolvidos;
 - substituição de ator, quando aplicável;
-- visibilidade e fonte transacional.
+- visibilidade; a fonte transacional é derivada do ID do turno, nunca escolhida pelo chamador.
 
 ### Evidência da própria transação
 
-Antes da escrita, o integrador valida que o trecho de evidência existe literalmente no payload narrativo. O journal Task46/49 guarda:
+Antes da escrita, o integrador valida que o trecho de evidência existe
+literalmente no payload narrativo. O journal Task49 guarda:
 
 - ID da transação;
 - digest da narração e do resumo;
 - fatos normalizados;
 - estado anterior esperado dos fragmentos;
-- bytes finais staged.
+- bytes finais staged, hashes anterior/final e etapas já instaladas.
 
-Depois que o writer registra a cena, a evidência passa a apontar para a transcrição canônica e para a transação. Falha entre writer e instalação do progresso é recuperada pelo mesmo journal, sem duplicar turno, fato, recompensa ou terminal.
+Um ledger operacional compacto de receipts permite repetir o mesmo ticket depois da
+instalação completa, inclusive quando a missão já saiu do índice ativo. O
+receipt não contém a prova reservada nem substitui o fragmento Task45.
+Journal e receipts vivem em `runtime/`, são ignorados pelo Git e não constituem
+cânone da campanha.
+
+Depois que o writer registra a cena, a evidência aponta para a transcrição
+canônica e para a transação. Falha entre writer e instalação do progresso é
+recuperada repetindo o mesmo `cronica concluir`, sem duplicar turno, fato,
+recompensa ou terminal.
 
 ### Substituição de atores
 
@@ -91,7 +104,8 @@ O terminal depende somente de fatos já registrados. Planejamento, resumo inferi
 
 ## Testes
 
-Criar `tests/test_transactional_sidequest_progress.py` e ampliar a matriz de lifecycle existente.
+Foi criado `tests/test_transactional_sidequest_progress.py` com fixtures em
+`TemporaryDirectory`, além das regressões dos contratos existentes.
 
 Cobertura obrigatória:
 
@@ -124,7 +138,7 @@ Regressões a preservar:
 ## Definition of done
 
 - decisão de progresso incorporada ao contrato de conclusão;
-- journal único cobre turno + fatos + terminal;
+- um journal Task49 por conclusão cobre fatos + terminal e referencia a transação do turno;
 - substituição de atores possui validação causal;
 - nenhum parse semântico automático de prosa;
 - testes de crash/retry e exatamente-once verdes;

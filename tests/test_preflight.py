@@ -41,6 +41,7 @@ class PreflightTest(unittest.TestCase):
             ("ferramentas/progressao_sidequests.py", "check"),
             ("ferramentas/sidequests_integracao_check.py",),
             ("ferramentas/sidequests_ativas.py", "check"),
+            ("ferramentas/progresso_sidequests_transacional.py", "check"),
             ("ferramentas/oportunidades.py", "check"),
             ("ferramentas/canon_bridge_runtime.py", "check"),
         }
@@ -52,6 +53,7 @@ class PreflightTest(unittest.TestCase):
         self.assertIn("progressão e consequências de sidequest", names)
         self.assertIn("integração de sidequests emergentes", names)
         self.assertIn("projeção de sidequests ativas", names)
+        self.assertIn("progresso transacional de sidequests", names)
         self.assertIn("canon bridge", names)
         self.assertFalse(any("Task4" in name for name in names))
 

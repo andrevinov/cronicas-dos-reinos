@@ -234,6 +234,7 @@ class RolloutSidequestSystemsTest(RolloutFixture):
             "adversarial_integrity",
             "sidequest_progression",
             "active_sidequest_reassessment",
+            "transactional_sidequest_progress",
         ):
             self.assertEqual(systems[system], 0, system)
 
@@ -265,6 +266,35 @@ class RolloutSidequestSystemsTest(RolloutFixture):
         self.assertEqual(
             narr["narrative_system_turns"]["emergent_sidequest_opportunity"],
             0,
+        )
+
+    def test_conclusao_com_fato_detecta_progresso_transacional(self):
+        rows = [
+            record("event_msg", {"type": "task_started", "turn_id": "progress"}),
+            user("progress", "Ren produz um fato para uma missão aceita."),
+            call(
+                "progress",
+                "p1",
+                "poetry run cronica preparar --cena-id progress --sem-oportunidade-sidequest",
+            ),
+            output(
+                "progress",
+                "p1",
+                "Process exited with code 0\nsidequests_ativas:\n  quantidade: 1\n",
+            ),
+            call("progress", "c1", "poetry run cronica concluir --ticket crn1.fixture"),
+            output(
+                "progress",
+                "c1",
+                "Process exited with code 0\nprogresso_sidequests:\n"
+                "  resultado: progresso_sidequests_registrado\n"
+                "sistemas_narrativos: [transactional_sidequest_progress]\n",
+            ),
+        ]
+        narr = mod.analyze(self.path(rows))["narration_turns"]
+        self.assertEqual(
+            narr["narrative_system_turns"]["transactional_sidequest_progress"],
+            1,
         )
 
 

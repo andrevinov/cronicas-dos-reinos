@@ -83,6 +83,7 @@ não abre Task33 para descobrir uma missão. A fonte operacional é
 - turno comum: 2 chamadas de orquestração;
 - sem sidequest aceita: leituras Task40–45 no turno comum = 0;
 - com sidequest aceita: no máximo 2 fragmentos Task45 read-only pela Task48;
+- na conclusão: uma decisão Task49 por missão, até quatro fatos por missão e um único writer de turno;
 - fragmentos emergentes no turno comum: 0;
 - horizonte canônico adicional no turno comum: 0;
 - pacote autoral Task40: <= 8 KiB;

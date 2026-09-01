@@ -21,7 +21,8 @@ As opções são mutuamente exclusivas. O comando sem nenhuma das duas é invál
 
 - não chama Task40 nem autoria/materialização Task41/43/44/45/46;
 - sem missão aceita, não acrescenta leitura, escrita, RNG, scheduler, relógio ou scan;
-- com missão aceita, permite somente a projeção read-only Task48 de no máximo dois fragmentos Task45;
+- com missão aceita, permite a projeção read-only Task48 de no máximo dois fragmentos Task45;
+- a conclusão dessas missões usa a decisão factual separada da Task49 e não altera a decisão sobre oportunidade nova;
 - não permite nenhum `--sidequest-*` junto da decisão negativa;
 - preserva exatamente o resultado-base quando não há missão aceita.
 

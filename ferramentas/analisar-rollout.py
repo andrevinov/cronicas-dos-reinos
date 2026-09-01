@@ -51,6 +51,7 @@ NARRATIVE_SYSTEM_KEYS = (
     "adversarial_integrity",
     "sidequest_progression",
     "active_sidequest_reassessment",
+    "transactional_sidequest_progress",
     "canon_bridge",
 )
 
@@ -67,6 +68,10 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
     "adversarial_integrity": ("integridade_adversarial.py", "integridade-adversarial.py"),
     "sidequest_progression": ("progressao_sidequests.py", "progressao-sidequests.py"),
     "active_sidequest_reassessment": ("sidequests_ativas.py", "sidequests-ativas.py"),
+    "transactional_sidequest_progress": (
+        "progresso_sidequests_transacional.py",
+        "progresso-sidequests-transacional.py",
+    ),
     "canon_bridge": ("canon_bridge_runtime.py", "canon-bridge-runtime.py"),
 }
 
@@ -117,6 +122,11 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "active_sidequest_reassessment",
         "sidequests_ativas_task48",
         "sidequests_ativas:",
+    ),
+    "transactional_sidequest_progress": (
+        "transactional_sidequest_progress",
+        "progresso_sidequests_registrado",
+        "progresso_sidequests:",
     ),
     "canon_bridge": ("canon_bridge", "reserva_causal", "aguarda_evidencia"),
 }

@@ -6,9 +6,8 @@ A Task 21 permanece preservada em ``_cronica_turn_core.py`` e a Task 22 em
 real: turno neutro sem gatilho inventado, trânsito urbano no mesmo hot path,
 retomada compacta limpa, transporte de ticket tolerante a whitespace acidental,
 gate read-only de pendências, contratos operacionais tolerantes a aliases
-inequívocos, sidequests emergentes Task46, a decisão explícita Task47 e a
-reavaliação read-only de sidequests aceitas Task48 antes de todo
-``cronica preparar``.
+inequívocos, sidequests emergentes Task46, a decisão explícita Task47, a
+reavaliação read-only Task48 e o progresso transacional Task49.
 """
 from __future__ import annotations
 
@@ -29,6 +28,7 @@ import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
 import progressao_juppongatana
+import progresso_sidequests_transacional as _sidequests49
 import retomada_cronica
 import sessoes
 import sidequests_ativas as _sidequests48
@@ -87,6 +87,11 @@ def _transaction_contract() -> dict:
         "conter sidequest_emergente com oferta+quest+contratos Task43/44/45. "
         "Sem oferta literal narrada, omita o bloco inteiro."
     )
+    contract["progresso_sidequests_task49"] = (
+        "Quando o preparo projetar missões aceitas, progresso_sidequests deve "
+        "decidir cada uma com sem_fato_sidequest=true ou fatos_sidequest. "
+        "Fatos exigem evidência literal da narração/resumo."
+    )
     return contract
 
 
@@ -106,6 +111,10 @@ def prepare(*args, **kwargs):
             "Task47: cronica preparar exige decisão explícita de oportunidade de sidequest; "
             "use sidequest_signal=None para descartar ou forneça a âncora causal"
         )
+    try:
+        _sidequests49.require_no_open_journal(Path(repo))
+    except _sidequests49.TransactionalSidequestProgressError as exc:
+        raise _core.CronicaError(f"Task49: {exc}") from exc
     gate = _pending_gate.prepare_gate(Path(repo))
     if gate is not None:
         return gate
@@ -152,11 +161,14 @@ def prepare(*args, **kwargs):
         raise _core.CronicaError(str(exc)) from exc
 
 
-def _task46_meta(token: str) -> tuple[dict, dict | None]:
+def _sidequest_meta(token: str) -> tuple[dict, dict | None, dict | None]:
     payload = decode_ticket(token)
     try:
-        _sidequests48.ticket_meta(payload)
-        return payload, _sidequests46.ticket_meta(payload)
+        return (
+            payload,
+            _sidequests46.ticket_meta(payload),
+            _sidequests48.ticket_meta(payload),
+        )
     except (
         _sidequests46.EmergentSidequestIntegrationError,
         _sidequests48.ActiveSidequestError,
@@ -165,15 +177,21 @@ def _task46_meta(token: str) -> tuple[dict, dict | None]:
 
 
 def _base_token(payload: dict) -> str:
-    token, _ = _core.encode_ticket(_sidequests46.strip_ticket_payload(payload))
+    clean = _sidequests46.strip_ticket_payload(payload)
+    clean.pop(_sidequests48.TICKET_KEY, None)
+    token, _ = _core.encode_ticket(clean)
     return token
 
 
 def confirm(repo: Path, token: str):
-    _, meta = _task46_meta(token)
-    if meta is not None:
+    try:
+        _sidequests49.require_no_open_journal(Path(repo))
+    except _sidequests49.TransactionalSidequestProgressError as exc:
+        raise _core.CronicaError(f"Task49: {exc}") from exc
+    _, meta46, meta48 = _sidequest_meta(token)
+    if meta46 is not None or meta48 is not None:
         raise _core.CronicaError(
-            "ticket Task46 usa a porta transacional cronica concluir; não separe confirmar/registrar"
+            "ticket com sidequest usa cronica concluir; não separe confirmar/registrar"
         )
     return _hot.confirm(repo, token)
 
@@ -193,69 +211,113 @@ def _conclude_base(repo: Path, token: str, transaction: dict):
 
 
 def conclude(repo: Path, token: str, transaction: dict):
-    payload, meta = _task46_meta(token)
+    payload, meta46, meta48 = _sidequest_meta(token)
     try:
         mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
     except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
-    if meta is None:
-        return _conclude_base(repo, token, mechanical_writer_tx)
-
     ticket_id_original = _core.ticket_id(token)
     base_token = _base_token(payload)
-    writer_tx = _sidequests46.writer_transaction(mechanical_writer_tx)
-    try:
-        journal = _sidequests46.recover_matching_journal(
-            repo, ticket_id=ticket_id_original, transaction=transaction
+    if meta48 is None and _sidequests49.TRANSACTION_KEY in transaction:
+        raise _core.CronicaError(
+            "progresso_sidequests só é aceito quando o ticket projeta missão ativa"
         )
-        if journal is None:
-            package = _sidequests46._plan_from_ticket(repo, meta)
-            block, offer = _sidequests46._normalize_offer(transaction)
-            if block is None:
-                result = _conclude_base(repo, base_token, writer_tx)
-                result["ticket_id"] = ticket_id_original
-                result["sidequest_emergente"] = {
-                    "resultado": "oferta_nao_materializada",
-                    "mutacoes_sidequest": 0,
-                    "regra": "oportunidade avaliada, mas nenhuma oferta foi narrada neste turno",
-                }
-                result.setdefault("sistemas_narrativos", []).append(
-                    "emergent_sidequest_opportunity"
-                )
-                return result
-            scene_id = str((_sidequests46._map(payload.get("cena"), "ticket.cena")).get("scene_id"))
-            plan = _sidequests46.prepare_installation(
-                repo,
-                package=package,
-                block=block,
-                offer_scene_id=scene_id,
-                offer_summary=offer["resumo"],
-            )
-            journal = _sidequests46.begin_conclusion(
+    progress_plan = None
+    if meta48 is not None:
+        try:
+            progress_plan = _sidequests49.prepare_conclusion(
                 repo,
                 ticket_id=ticket_id_original,
+                ticket_meta=meta48,
                 transaction=transaction,
-                plan=plan,
             )
-        result = _conclude_base(repo, base_token, writer_tx)
-        installed = _sidequests46.install(repo, journal)
+        except _sidequests49.TransactionalSidequestProgressError as exc:
+            raise _core.CronicaError(f"Task49: {exc}") from exc
+
+    writer_tx = _sidequests49.writer_transaction(mechanical_writer_tx)
+    writer_tx = _sidequests46.writer_transaction(writer_tx)
+    installed46 = None
+    try:
+        if meta46 is None:
+            result = _conclude_base(repo, base_token, writer_tx)
+        else:
+            journal46 = _sidequests46.recover_matching_journal(
+                repo, ticket_id=ticket_id_original, transaction=transaction
+            )
+            if journal46 is None:
+                package = _sidequests46._plan_from_ticket(repo, meta46)
+                block, offer = _sidequests46._normalize_offer(transaction)
+                if block is None:
+                    result = _conclude_base(repo, base_token, writer_tx)
+                    installed46 = {
+                        "resultado": "oferta_nao_materializada",
+                        "mutacoes_sidequest": 0,
+                        "regra": "oportunidade avaliada, mas nenhuma oferta foi narrada neste turno",
+                    }
+                else:
+                    scene_id = str(
+                        (_sidequests46._map(payload.get("cena"), "ticket.cena")).get(
+                            "scene_id"
+                        )
+                    )
+                    plan46 = _sidequests46.prepare_installation(
+                        repo,
+                        package=package,
+                        block=block,
+                        offer_scene_id=scene_id,
+                        offer_summary=offer["resumo"],
+                    )
+                    journal46 = _sidequests46.begin_conclusion(
+                        repo,
+                        ticket_id=ticket_id_original,
+                        transaction=transaction,
+                        plan=plan46,
+                    )
+            if journal46 is not None:
+                result = _conclude_base(repo, base_token, writer_tx)
+                installed46 = _sidequests46.install(repo, journal46)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
         raise _core.CronicaError(
             f"Task46: {exc}. Se o turno já tiver sido registrado, repita o mesmo cronica concluir; "
             "o journal recupera a instalação sem duplicar a narração ou a quest."
         ) from exc
 
+    installed49 = None
+    if progress_plan is not None:
+        try:
+            installed49 = _sidequests49.install(
+                repo,
+                progress_plan,
+                transaction=transaction,
+            )
+        except _sidequests49.TransactionalSidequestProgressError as exc:
+            raise _core.CronicaError(
+                f"Task49: {exc}. Se o turno já tiver sido registrado, repita o mesmo "
+                "cronica concluir; o journal recupera fatos e terminal sem duplicação."
+            ) from exc
+
     result["ticket_id"] = ticket_id_original
-    result["sidequest_emergente"] = installed
-    result.setdefault("sistemas_narrativos", []).extend(
-        [
-            "emergent_sidequest_opportunity",
-            "emergent_sidequest_authoring",
-            "quest_rewards",
-            "adversarial_integrity",
-            "sidequest_progression",
-        ]
-    )
+    if installed46 is not None:
+        result["sidequest_emergente"] = installed46
+        if installed46.get("resultado") == "oferta_nao_materializada":
+            result.setdefault("sistemas_narrativos", []).append(
+                "emergent_sidequest_opportunity"
+            )
+        else:
+            result.setdefault("sistemas_narrativos", []).extend(
+                [
+                    "emergent_sidequest_opportunity",
+                    "emergent_sidequest_authoring",
+                    "quest_rewards",
+                    "adversarial_integrity",
+                    "sidequest_progression",
+                ]
+            )
+    if installed49 is not None:
+        result["progresso_sidequests"] = installed49
+        result.setdefault("sistemas_narrativos", []).append(
+            "transactional_sidequest_progress"
+        )
     return result
 
 
@@ -266,10 +328,14 @@ def register(
     *,
     revalidate: bool = True,
 ):
-    payload, meta = _task46_meta(token)
-    if meta is not None:
+    try:
+        _sidequests49.require_no_open_journal(Path(repo))
+    except _sidequests49.TransactionalSidequestProgressError as exc:
+        raise _core.CronicaError(f"Task49: {exc}") from exc
+    payload, meta46, meta48 = _sidequest_meta(token)
+    if meta46 is not None or meta48 is not None:
         raise _core.CronicaError(
-            "reparo Task46 repete cronica concluir com a mesma transação; registrar isolado não instala a sidequest"
+            "reparo de sidequest repete cronica concluir com a mesma transação; registrar isolado não instala sidequest"
         )
     try:
         writer_tx = _mechanics.validate_transaction(repo, payload, transaction)

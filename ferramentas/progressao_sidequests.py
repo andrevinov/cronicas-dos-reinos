@@ -18,7 +18,8 @@ A regra funcional continua a mesma: ``sidequests_emergentes``/Task41 define a qu
 adversarial devido entra no Mundo Vivo como pendência ``resolver_sidequest`` e só
 esta porta Task45 pode materializá-lo; ele nunca equivale a um no-op genérico. Não
 há scheduler novo. A Task46 integra a autoria/materialização de oportunidades novas;
-a Task48 apenas projeta este progresso de forma read-only no hot path.
+a Task48 projeta este progresso de forma read-only e a Task49 instala fatos do
+turno antes de delegar o terminal novamente a esta porta.
 """
 from __future__ import annotations
 

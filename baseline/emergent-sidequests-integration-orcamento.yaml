@@ -18,6 +18,14 @@ turno_com_sidequest_ativa:
   leituras_task40_autoria: 0
   escritas: 0
   transcricoes_lidas: 0
+conclusao_com_sidequest_ativa:
+  decisoes_por_missao: 1
+  fatos_por_missao_max: 4
+  fatos_por_turno_max: 8
+  writers_de_turno: 1
+  evidencia_literal_obrigatoria: true
+  journal_recuperavel: true
+  parse_semantico_automatico: false
 turno_com_oportunidade:
   chamadas_orquestracao: 2
   pacote_autoral_max_bytes: 8192
@@ -41,6 +49,8 @@ infra:
 invariantes:
   - preparar_com_decisao_negativa_task47_nao_autora_nova_sidequest
   - sidequest_aceita_continua_projetada_read_only_independente_da_decisao_task47
+  - sidequest_projetada_exige_decisao_task49_antes_do_writer
+  - progresso_task49_delega_terminal_e_recompensa_as_tasks42_43_45
   - pacote_task40_e_revalidado_por_digest_antes_de_escrita
   - contratos_task41_task43_task44_task45_validam_antes_do_writer
   - sem_oferta_narrada_nao_nasce_sidequest

@@ -151,6 +151,8 @@ def check(repo: Path) -> dict[str, Any]:
             "turno_sem_sidequest_ativa_leituras_task40_45": 0,
             "turno_com_sidequest_ativa_fragmentos_task45_max": 2,
             "decisao_negativa_autoria_task40_46": 0,
+            "conclusao_missao_ativa_exige_decisao_task49": True,
+            "writer_turno_com_progresso_task49": 1,
             "turno_neutro_fragmentos_emergentes": 0,
             "turno_neutro_horizonte_canonico": 0,
             "chamadas_orquestracao": 2,

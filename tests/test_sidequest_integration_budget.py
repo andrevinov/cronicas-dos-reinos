@@ -83,6 +83,10 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
         self.assertEqual(active["fragmentos_task45_max"], 2)
         self.assertEqual(active["leituras_task40_autoria"], 0)
         self.assertEqual(active["escritas"], 0)
+        conclusion = contract["conclusao_com_sidequest_ativa"]
+        self.assertEqual(conclusion["decisoes_por_missao"], 1)
+        self.assertEqual(conclusion["writers_de_turno"], 1)
+        self.assertTrue(conclusion["journal_recuperavel"])
         self.assertTrue(contract["migracao"]["catalogo_task33_no_hot_path"])
         self.assertEqual(contract["infra"]["schedulers_novos"], 0)
         self.assertEqual(contract["infra"]["relogios_novos"], 0)
@@ -173,6 +177,10 @@ class SidequestOpportunityBudgetTest(unittest.TestCase):
         self.assertEqual(
             items[("ferramentas/sidequests_ativas.py", "check")],
             "projeção de sidequests ativas",
+        )
+        self.assertEqual(
+            items[("ferramentas/progresso_sidequests_transacional.py", "check")],
+            "progresso transacional de sidequests",
         )
         result = integration.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])
