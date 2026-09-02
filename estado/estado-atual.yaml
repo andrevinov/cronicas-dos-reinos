@@ -37,8 +37,6 @@ tempo:
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
-  prazo_relevante: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
-    o posto antes de seguir ao circo.
 recursos:
   pontos_de_vida:
     atuais: 52

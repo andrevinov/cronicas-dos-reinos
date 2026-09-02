@@ -169,19 +169,12 @@ class ContextoRepositoryTest(unittest.TestCase):
         rendered, _ = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
-    def test_recurso_passos_sem_pegadas_encontra_apenas_efeito_legado_nao_recastavel(self):
+    def test_recurso_nao_projeta_efeito_legado_ja_expirado(self):
         data = mod.command_resource(REPO, "passos sem pegadas")
-        self.assertTrue(data["resultado"]["encontrado"])
+        self.assertFalse(data["resultado"]["encontrado"])
         self.assertIsNone(data["resultado"]["mecanica"])
         self.assertIsNone(data["resultado"]["disponibilidade"])
-        effects = data["resultado"]["efeitos_temporarios_relacionados"]
-        self.assertEqual(len(effects), 1)
-        self.assertEqual(effects[0]["id"], "passos_sem_pegadas")
-        legacy = effects[0]["dados"]
-        self.assertEqual(legacy["origem_ruleset"], "dnd_5e_2014")
-        self.assertTrue(legacy["preservado_por_migracao"])
-        self.assertFalse(legacy["recastavel"])
-        self.assertEqual(legacy["termino"], "23:30 de 19 Eleasis, 1372 DR")
+        self.assertEqual(data["resultado"]["efeitos_temporarios_relacionados"], [])
         self.assertEqual(data["nivel"], "L2")
         self.assertEqual(
             data["fontes"][:2],

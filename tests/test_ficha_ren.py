@@ -63,11 +63,19 @@ class RenSheetSingleSourceTest(unittest.TestCase):
         self.assertEqual(mechanics.initiative, self.sheet["combate"]["iniciativa"])
         self.assertEqual(
             mechanics.resources["pontos_de_vida"],
-            {"atuais": 45, "maximos": 52, "dados_de_vida": "7d8"},
+            {
+                "atuais": self.sheet["combate"]["pontos_de_vida"]["atuais"],
+                "maximos": self.sheet["combate"]["pontos_de_vida"]["maximos"],
+                "dados_de_vida": self.sheet["combate"]["pontos_de_vida"]["dados_de_vida"],
+            },
         )
         self.assertEqual(
             mechanics.resources["focus"],
-            {"pontos_atuais": 1, "pontos_maximos": 7, "cd": 14},
+            {
+                "pontos_atuais": self.sheet["recursos_de_classe"]["focus"]["pontos_atuais"],
+                "pontos_maximos": self.sheet["recursos_de_classe"]["focus"]["pontos_maximos"],
+                "cd": self.sheet["recursos_de_classe"]["focus"]["cd"],
+            },
         )
         self.assertEqual(mechanics.resources["proficiencia"], {"bonus": 3})
 
