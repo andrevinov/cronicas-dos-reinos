@@ -191,11 +191,8 @@ def fit(data: dict, limit: int, as_json: bool, serialize: Serializer) -> tuple[s
     base, fields = _fields(data)
     query = data.get("consulta", {})
     if query.get("campo") is not None or query.get("campos"):
-        # Reconstrói a visão efetiva com os campos derivados para --campo/--campos.
-        directed = deepcopy(base)
-        for path, value, _ in fields:
-            _put(directed["resultado"], path, value)
-        return _page(directed, fields, limit, as_json, serialize)
+        # Preserva a ordem original dos campos/páginas, acrescentando só o derivado.
+        return _page(personalidade_decisoria.enrich(data), fields, limit, as_json, serialize)
     selected: dict[Path, set[int]] = {}
     # Uma rodada por campo: biografia/lista longa não monopoliza o orçamento.
     candidates = []

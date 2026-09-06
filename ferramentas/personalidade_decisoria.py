@@ -95,7 +95,9 @@ def project(person: str, role: Any) -> dict | None:
             continue
         if excerpt not in expected:
             raise ValueError("recorte de personalidade não pertence à frase de origem")
-        stable[axis] = {"id": criterion, "texto": excerpt,
+        # Preserva também condicionantes (em operação, fora dela, risco concreto).
+        # Palavras isoladas não podem transformar preferência contextual em regra geral.
+        stable[axis] = {"id": criterion, "texto": expected,
                         "origem": "/" + field + (f"/{index}" if index is not None else "")}
         if axis == "limites" and field == "evita":
             stable[axis]["sentido"] = "evitar"
