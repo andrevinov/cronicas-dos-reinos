@@ -653,6 +653,13 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     continua bloqueando o avanço e um retry termina a operação. Cache sozinho
     nunca cria acontecimento nem remove a barreira.
     """
+    # O mundo instalado pode ainda ser a imagem anterior, sem a chave causal.
+    # O journal é a autoridade do bloqueio, antes até de ler índice ou estado.
+    import acionamentos_leves
+    try:
+        acionamentos_leves.require_stable_canon(repo)
+    except (ValueError, OSError) as exc:
+        raise LightAgentError(f"acionamento causal: {exc}") from exc
     pending_id = _text(pending_id, "id da pendência")
     index = load_index(repo)
     if _schema(index) != 2:
@@ -660,9 +667,7 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     state = load_state(repo, index)
     world_state = mundo.load_world_state(repo)
     if "acionamentos_leves" in world_state:
-        import acionamentos_leves
         try:
-            acionamentos_leves.require_stable_canon(repo)
             acionamentos_leves._validate_control(world_state)
             # Validar a reposição antes de gravar o cache. A fila instalada
             # abaixo já contém o próximo trabalho, mesmo se o marcador falhar.
