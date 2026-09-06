@@ -98,13 +98,18 @@ class CheckpointCanonBridgeTest(cases.Task42Fixture):
         candidate, mission_id, deadline, _ = self.reserve()
         current = mundo.WorldInstant(deadline.minute + 1)
         self.set_time(current)
-        # Reproduz queda entre a escrita do lifecycle e a reconciliação do bridge.
-        oportunidades.finish(
-            self.repo, mission_id, "falhada", reason="encerramento isolado já persistido", now=current
-        )
-        mission_before = (self.repo / oportunidades.STATE).read_bytes()
         canon_before = self.canon_bytes(candidate["evento_id"])
+        # Interrompe o checkpoint real depois do prune e antes da escrita do bridge.
+        with patch.object(
+            canon_bridge, "reconcile_lifecycle", side_effect=OSError("queda simulada")
+        ):
+            with self.assertRaisesRegex(OSError, "queda simulada"):
+                self.sync()
+        state = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
+        self.assertEqual(state["missoes"][mission_id]["estado"], "falhada")
+        mission_before = (self.repo / oportunidades.STATE).read_bytes()
         self.assertTrue(canon_bridge.load_state(self.repo)["reservas"])
+        self.assertEqual(self.canon_bytes(candidate["evento_id"]), canon_before)
         result = self.sync()
         self.assertTrue(result["integracao_reativa"]["alterou"])
         self.assertEqual((self.repo / oportunidades.STATE).read_bytes(), mission_before)
