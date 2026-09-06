@@ -123,6 +123,11 @@ def checks(*, incluir_testes: bool = True) -> list[Check]:
                 "mundo vivo",
             ),
             Check(
+                "experiência narrativa integrada",
+                (python, "ferramentas/experiencia_integrada.py", "check"),
+                "integração",
+            ),
+            Check(
                 "estado atual separado do histórico",
                 (python, "ferramentas/migrar-estado-atual.py", "--check"),
                 "estrutura",

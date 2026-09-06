@@ -73,7 +73,7 @@ Criar scripts somente quando houver benefício prático claro, como rolagem, val
 
 Toda ferramenta deve, salvo decisão explícita em contrário, funcionar offline, usar mensagens em português, tratar erros básicos, deixar claro quando altera dados, preservar conteúdo existente, ser testável e evitar dependências desnecessárias. Não automatizar julgamento narrativo.
 
-O rolador padrão é `ferramentas/rolar-dados.py`. Se a ficha mudar de modo que invalide atalhos, atualizar a ferramenta ou registrar pendência antes de usar os atalhos afetados.
+O rolador público padrão é `poetry run dados`; rolagens independentes usam `poetry run dados-lote`. Se a ficha mudar de modo que invalide atalhos, atualizar a ferramenta ou registrar pendência antes de usar os atalhos afetados.
 
 ## Validação de consistência
 

@@ -48,7 +48,7 @@ A v1 **não possui `local_id`**. Enquanto não houver integração repo-aware co
 
 ## Escrita durante a sessão
 
-Criar ou reagendar substitui **o registro inteiro** no mesmo JSON enviado a `turno.py registrar`:
+Criar ou reagendar substitui **o registro inteiro** no mesmo JSON enviado a `cronica concluir`:
 
 ```json
 {
@@ -103,4 +103,4 @@ O pacote quente carrega no máximo quatro registros completos, ordenados por urg
 
 ## Custo
 
-A camada não lê histórico, transcrição, agenda nem agentes para o turno comum. Um compromisso entra como mais um delta na mesma chamada de `turno.py registrar`; portanto não adiciona escrita operacional. O runtime deriva a situação a partir do relógio que já está no pacote quente.
+A camada não lê histórico, transcrição, agenda nem agentes para o turno comum. Um compromisso entra como mais um delta na mesma chamada de `cronica concluir`; portanto não adiciona escrita operacional. O runtime deriva a situação a partir do relógio que já está no pacote quente.

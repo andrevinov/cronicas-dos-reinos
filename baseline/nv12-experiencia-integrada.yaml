@@ -1,0 +1,91 @@
+schema_experiencia_integrada: 1
+natureza: contrato_de_aceitacao_em_cenarios_isolados
+observacao: >-
+  Este arquivo define o piloto e a prova integrada da NV-12. Não cria fatos,
+  presença, planos ou missões na campanha; os episódios executáveis usam cópias
+  temporárias e a avaliação de partidas reais continua pós-hoc.
+
+comparacao:
+  antes:
+    cobertura: componentes_e_pares_isolados
+    retomada_fria_multicena: false
+    narracao_obrigatoria_na_avaliacao: false
+    instrucoes_operacionais_unificadas: false
+  depois:
+    cobertura: episodio_integrado_multiturno
+    retomada_fria_multicena: true
+    narracao_obrigatoria_na_avaliacao: true
+    instrucoes_operacionais_unificadas: true
+
+adocao_controlada:
+  elenco_inicial:
+    - id: silva_elkwood
+      npc: estado/npcs/silva_elkwood.yaml
+      relacao: estado/relacoes/silva_elkwood.yaml
+    - id: nera_vell
+      npc: estado/npcs/nera_vell.yaml
+      relacao: estado/relacoes/nera_vell.yaml
+    - id: luath
+      npc: estado/npcs/luath.yaml
+      relacao: estado/relacoes/luath.yaml
+  regra: >-
+    Somente personagens já indexados e com papel conversacional estabelecido
+    participam do piloto. Lacunas permanecem lacunas; nenhum perfil ou fato é
+    implantado retroativamente no save.
+
+episodio:
+  minimo_turnos: 5
+  marcos_obrigatorios:
+    - reencontro
+    - continuidade_sem_recontar
+    - passagem_tempo
+    - mudanca_cena
+    - retomada_fria
+    - consequencia
+  sistemas_com_evidencia_narrativa:
+    - memoria
+    - personalidade
+    - iniciativa
+    - consequencia
+  consultas_manuais_permitidas: 0
+
+documentacao_operacional:
+  - arquivo: narracao/protocolo-de-sessao.md
+    exige:
+      - poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest
+      - poetry run cronica concluir --ticket
+    proibe:
+      - poetry run cronica preparar --cena-id <id-estavel>\n
+  - arquivo: docs/agente/acesso-e-operacoes.md
+    exige:
+      - → cronica preparar
+      - → cronica concluir
+    proibe:
+      - → turno.py registrar
+      - python3 ferramentas/turno.py registrar <<'JSON'
+  - arquivo: docs/agente/auditoria-final.md
+    exige:
+      - cronica preparar
+      - cronica concluir
+    proibe:
+      - registrar o avanço com `turno.py registrar`
+  - arquivo: docs/agente/narracao-e-mundo.md
+    exige:
+      - cronica preparar
+      - cronica concluir
+    proibe:
+      - O avanço narrativo ao vivo usa `ferramentas/turno.py registrar`
+  - arquivo: docs/agente/integracao-reativa-v2.md
+    exige:
+      - poetry run cronica preparar
+      - poetry run cronica concluir --ticket
+    proibe:
+      - '## 1. Porta ao vivo: preparar → registrar → confirmar'
+
+invariantes:
+  ids_preservados: true
+  historico_append_only: true
+  save_real_inalterado_por_ensaio: true
+  retomada_sem_transcricao: true
+  agencia_de_ren_preservada: true
+  telemetria_somente_pos_hoc: true

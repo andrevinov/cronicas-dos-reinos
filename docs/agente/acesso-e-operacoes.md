@@ -1,6 +1,6 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a interface de escrita é `ferramentas/turno.py`. Política formal de níveis e orçamentos: `docs/agente/escada-de-acesso.md`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`. Telemetria pós-hoc: `docs/agente/telemetria-rollouts.md`.
+Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a porta operacional é `cronica preparar` + `cronica concluir`. Política formal de níveis e orçamentos: `docs/agente/escada-de-acesso.md`. Consolidação profunda: `docs/agente/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria-de-sessoes.md`. Telemetria pós-hoc: `docs/agente/telemetria-rollouts.md`.
 
 ## Regra principal de economia de contexto
 
@@ -92,16 +92,18 @@ Durante jogo ao vivo, consultar o estado efetivo. Não editar o consolidado apen
 ação do jogador
 → L0
 → consulta dirigida somente se faltar algo
+→ cronica preparar
 → rolagem(ns) necessária(s)
 → narração
-→ turno.py registrar
+→ cronica concluir
 → fim da interação
 ```
 
-Persistir a troca em uma única chamada:
+Preparar sem gatilho de sidequest e concluir a troca pela mesma porta pública:
 
 ```bash
-python3 ferramentas/turno.py registrar <<'JSON'
+poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest
+poetry run cronica concluir --ticket '<campo ticket>' <<'JSON'
 {
   "jogador": "Ren ...",
   "narracao": "...",
@@ -112,7 +114,7 @@ python3 ferramentas/turno.py registrar <<'JSON'
 JSON
 ```
 
-O registrador escreve apenas `sessoes/NNN/transcricao.md` e `runtime/eventos-pendentes.jsonl`.
+O concluir delega ao writer transacional e escreve apenas `sessoes/NNN/transcricao.md` e `runtime/eventos-pendentes.jsonl` no turno comum.
 
 Não atualizar na mesma interação, por rotina: estado, tempo, ficha, fragmentos de relação/NPC, conhecimento consolidado, consequências, relógios, handoff, índice de sessões ou arquivos separados de rolagens ocultas. Esses destinos pertencem ao checkpoint.
 
@@ -136,7 +138,7 @@ Operações: `set`, `inc`, `append`, `remove`, `registrar`. Deltas podem usar `v
 
 ### Idempotência do turno
 
-`turno.py` gera ID estável e marca a transcrição. Se o processo cair entre as duas escritas, repetir a mesma entrada repara somente o lado ausente.
+`cronica concluir` preserva o ID estável do writer e marca a transcrição. Se o processo cair entre as duas escritas, repetir a mesma conclusão com o mesmo ticket repara somente o lado ausente.
 
 ```bash
 python3 ferramentas/turno.py check
@@ -146,15 +148,15 @@ Não executar a suíte inteira de integridade depois de cada turno.
 
 ## Rolagens em lote
 
-Quando duas ou mais rolagens são independentes e todas já são necessárias antes de conhecer qualquer resultado, usar uma única chamada a `rolar-lote.py`. Não agrupar rolagem cuja existência dependa do resultado anterior.
+Quando duas ou mais rolagens são independentes e todas já são necessárias antes de conhecer qualquer resultado, usar uma única chamada a `poetry run dados-lote`. Não agrupar rolagem cuja existência dependa do resultado anterior.
 
 ## Checkpoint — muito menos frequente que turno
 
 Fazer checkpoint no fim de cena importante quando um estado canônico for útil e obrigatoriamente antes de considerar a sessão encerrada:
 
 ```bash
-python3 ferramentas/checkpoint.py cena
-python3 ferramentas/checkpoint.py sessao
+poetry run cronica sessao checkpoint
+poetry run cronica sessao encerrar
 ```
 
 O fluxo separa duas responsabilidades:
@@ -167,7 +169,7 @@ Essa separação evita contaminar a transação canônica com cache de leitura. 
 Se houver `runtime/consolidacao-em-andamento.json`, a operação normal fica bloqueada. Não narrar nem consultar contexto. Recuperar:
 
 ```bash
-python3 ferramentas/checkpoint.py recuperar
+poetry run cronica sessao recuperar
 ```
 
 Detalhes de mirrors, relações/NPCs, conhecimento incremental, consequências, progressão, segredos, clocks, ledger e staging: `docs/agente/consolidacao-transacional.md`.
@@ -198,7 +200,7 @@ Usar `contexto.py regra "assunto"`. Se ainda houver dúvida: decisão anterior e
 
 Durante jogo, dano, cura, Focus, moedas, munição e outros recursos entram como deltas; a ficha é sincronizada pela consolidação. Fora do loop narrativo, alteração canônica manual continua exigindo validação e regeneração do runtime quando aplicável.
 
-Depois de `checkpoint.py`, não regenerar runtime/handoff por rotina: o fluxo já os deixa coerentes.
+Depois de `cronica sessao checkpoint`, não regenerar runtime/handoff por rotina: o fluxo já os deixa coerentes.
 
 ### Preparação de nova região
 
@@ -206,7 +208,7 @@ Consultar direção real, cronologia relevante, consequências de alcance region
 
 ### Encerramento e checkpoint
 
-Antes de encerrar a sessão, executar `checkpoint.py sessao` e verificar sucesso. Relações atuais permanecem em seus fragmentos; causas históricas vão para histórico específico. Conhecimento novo entra em fragmentos incrementais e seus índices.
+Antes de encerrar a sessão, executar `poetry run cronica sessao encerrar` e verificar sucesso. Relações atuais permanecem em seus fragmentos; causas históricas vão para histórico específico. Conhecimento novo entra em fragmentos incrementais e seus índices.
 
 O motor não inventa fatos ausentes dos deltas, não incrementa a sessão automaticamente e não escolhe progressão pelo jogador.
 
@@ -267,7 +269,7 @@ L3 sem flags históricas. Exige `--apos L2 --motivo`. `--reservado` acrescenta m
 - **"Criar meu personagem"**: executar criação conforme edição e fontes.
 - **"Preparar a próxima sessão"**: preparar abertura e possibilidades prováveis sem avançar indevidamente o mundo.
 - **"Iniciar/retomar a sessão"**: usar `contexto.py retomada` e narrar com o mínimo seguro.
-- **"Encerrar a sessão"**: executar `checkpoint.py sessao`, validar e então encerrar.
+- **"Encerrar a sessão"**: executar `poetry run cronica sessao encerrar` e validar o resultado.
 - **"Conferir meu XP"**: recalcular histórico relevante e apontar divergências.
 - **"Quais opções eu tenho para evoluir?"**: consultar ficha, fontes, pré-requisitos e caminhos registrados.
 - **"Reavaliar o material-base"**: investigar lacunas e atualizar resumos.

@@ -161,5 +161,5 @@ Para uma interação normal:
 4. seguir a escada L0–L4T normalmente;
 5. quando NPC/local precisarem de presença e o contexto não bastar, usar textura dirigida L2;
 6. narrar com densidade apropriada — economia de contexto não é economia de prosa;
-7. registrar o avanço com `turno.py registrar`;
+7. usar `cronica preparar --sem-oportunidade-sidequest` (ou a oportunidade causal real), narrar e registrar com `cronica concluir`;
 8. medir o rollout somente depois, fora do loop.
