@@ -106,5 +106,37 @@ relacao:
     de encontrar Shizune no ambiente da Galeria.
   - Ren contou a tentativa fracassada de falar com Kethra em Narwhal, o registro de Jost Anon, a cauda rompida com
     Passos sem Pegadas e o acordo limitado pelo qual Sella Rove levará uma única mensagem a Kethra.
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: nera_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens
+        sem matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
+    fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+    id: mem_e72b02d17a2cc3657aaf6e82
+    participantes:
+    - nera_vell
+    - ren
+    registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
+    texto: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens sem
+      matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
+    tipo: informacao
+  memorias_importantes:
+  - anterior: 8
+    eixo: confianca
+    evidencia:
+      campo: jogador
+      trecho: Contará tudo que aconteceu na longa noite que teve.
+    fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+    id: mem_a942d44c3201fe618ecae896
+    participantes:
+    - nera_vell
+    - ren
+    registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
+    tipo: relacao
+    variacao: 1
 conteudo_mais_antigo_no_historico:
   riscos: 43

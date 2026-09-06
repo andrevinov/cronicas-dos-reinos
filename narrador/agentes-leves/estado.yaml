@@ -47,7 +47,14 @@ agentes:
     proxima_avaliacao:
       data: 18 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: 1972ea47b9d3d8b9ef4830dce0482e068396b30a515cb6ea6e2ff8e6f87d4597
+      pendencia_origem: mundo-f63f14ed4ba87991
+      confirmado_em:
+        data: 20 Eleasis, 1372 DR
+        hora: '10:00'
+      acertos_compactados: 0
+      ultima_compactacao: null
   maerra_thandrel:
     estado: ativo
     proxima_avaliacao:
@@ -70,9 +77,16 @@ agentes:
   jack_mooney:
     estado: ativo
     proxima_avaliacao:
-      data: 17 Eleasis, 1372 DR
+      data: 22 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: abefa6f6d585336ded662888e43ff459eab666a021314c8b199085de41dc0c12
+      pendencia_origem: mundo-0c5ea1a58fd13c45
+      confirmado_em:
+        data: 21 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   pell:
     estado: ativo
     proxima_avaliacao:

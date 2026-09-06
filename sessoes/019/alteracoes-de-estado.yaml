@@ -1,6 +1,6 @@
 schema_alteracoes_transacionais: 1
 sessao: 19
-status: em_andamento
+status: encerrada
 fonte: sessoes/019/consolidacoes.jsonl
 checkpoint_inicial:
   sessao: 19
@@ -19,7 +19,7 @@ checkpoint_inicial:
   nivel_ficha: 7
 checkpoint_atual:
   sessao: 19
-  modo: ren_desperto_apos_descanso_longo_no_circo
+  modo: conversa_com_silva_apos_operacao_sete_nomes
   personagem: Ren Kagehira
   nivel: 7
   pv: 52/52
@@ -27,9 +27,9 @@ checkpoint_atual:
   ca: 17
   dinheiro_po: 39.379999999999995
   data: 20 Eleasis, 1372 DR
-  hora: 09:15
+  hora: '10:00'
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+  ponto_exato: junto à carroça verde de Silva Elkwood, no acampamento do circo dos Mooney
   nivel_ficha: 7
 consolidacoes:
 - id: s019-cena-de65b8d690d7b2d1
@@ -74,6 +74,23 @@ consolidacoes:
   - estado/estado-atual.yaml
   - estado/tempo.yaml
   - personagens/jogador/ficha.yaml
+  - sessoes/019/alteracoes-de-estado.yaml
+  - sessoes/019/consequencias.md
+  - sessoes/019/consolidacoes.jsonl
+  - sessoes/019/resumo.md
+- id: s019-sessao-873ec1e9c6f08966
+  tipo: sessao
+  transacoes:
+  - s019-4b179cff8f9c1012
+  deltas: 10
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
   - sessoes/019/alteracoes-de-estado.yaml
   - sessoes/019/consequencias.md
   - sessoes/019/consolidacoes.jsonl

@@ -87,5 +87,17 @@ relacao:
   informacoes_compartilhadas_por_silva:
   - Sirrus autorizou que Velis Rook receba convocação suplementar no primeiro sino após o anoitecer de 12 Eleasis,
     com Ren junto ao oficial de justiça como auxiliar, sujeito aos limites acordados com Halessa.
+  relacao:
+    status: 'Silva recebeu de Ren o relato integral do encontro com Tomas, do pedido de Maerra e da operação na
+      oficina: infiltração, nocautes não letais, interrogatório, preservação das provas e condução da testemunha
+      viva até Luath. Ela agora conhece a sequência sem omissões e aguarda saber se Ren deseja alguma ação concreta
+      dela.'
+    motivo_atual: Silva valoriza a transparência completa de Ren e reconhece o peso de ele ter preservado testemunha
+      e provas para custódia institucional. Mantém uma objeção concreta ao risco de transformar interrogatório por
+      medo em hábito e considera que Tomas conhecer a cobertura torna Shinta dependente também da discrição dele.
+    informacoes_recebidas_por_silva:
+    - Em 20 Eleasis, Ren contou a Silva, sem omissões, o encontro com Tomas, o pedido de Maerra, a infiltração na
+      oficina, os nocautes não letais, o interrogatório, a preservação da matriz e dos documentos e a condução da
+      testemunha viva e das provas até Luath.
 conteudo_mais_antigo_no_historico:
   riscos: 54

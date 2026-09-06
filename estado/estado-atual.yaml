@@ -2,9 +2,9 @@ schema_estado: 1
 natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
-  status: em_sessao
-  sessao_atual: 19
-  modo_de_cena_atual: ren_desperto_apos_descanso_longo_no_circo
+  status: entre_sessoes
+  sessao_atual: 20
+  modo_de_cena_atual: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
   arquivo_ficha: personagens/jogador/ficha.yaml
@@ -19,21 +19,21 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
-  descricao_operacional: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo
-    e despertou às 09:15.
+  ponto_exato: acampamento do circo dos Mooney
+  descricao_operacional: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com
+    testemunha e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 20 Eleasis, 1372 DR
+  data_exata: 21 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
   dia_do_mes: 20
   dezena: 2
   dia_da_dezena: 10
-  periodo_do_dia: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
-  hora_aproximada: 09:15
+  periodo_do_dia: noite de 21 Eleasis, com Ren no circo dos Mooney
+  hora_aproximada: '22:00'
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -63,7 +63,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/019/transcricao.md
+  transcricao_atual: sessoes/020/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -124,8 +124,20 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren despertou em seu espaço habitual no circo dos Mooney após completar um descanso longo.
-  risco_imediato: nenhuma ameaça imediata foi estabelecida dentro do espaço de descanso de Ren
+  cena_atual: Ren está junto à carroça verde de Silva após contar toda a operação; Silva aguarda a resposta dele
+    sobre o que, se algo, deseja que ela faça.
+  risco_imediato: Silva agora conhece a exposição de Shinta diante de Tomas e a cadeia completa da operação; nenhuma
+    ameaça imediata está presente na conversa
+  elenco_cena:
+    cena_id: almoco_e_rotina_com_os_vell_no_circo
+    local:
+      area: Jack Mooney & Sons Circus, Ravens Bluff
+      ponto_exato: acampamento do circo dos Mooney
+    participantes:
+    - nera_vell
+    - silva_elkwood
+    - tavin_vell
+    versao: 1
 pendencias: []
 disponibilidades:
   broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
@@ -146,4 +158,4 @@ coberturas:
     origem_alegada: vila estrangeira de pescadores; nasceu e cresceu pescando
     avaliacao_pratica: Shinta concluiu trabalho regular na Galeria, mas a continuidade futura desse vínculo profissional
       não foi renegociada depois que Tomas soube que ele é Ren; as restrições de acesso históricas permanecem.
-modo: ren_desperto_apos_descanso_longo_no_circo
+modo: conversa_com_silva_apos_operacao_sete_nomes

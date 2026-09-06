@@ -4,8 +4,8 @@ descricao: Cursor e fila operacional do motor determinístico; não é fonte ind
   de fatos da campanha. Conclusões antigas podem ser compactadas depois de consolidadas;
   detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
-  data: 20 Eleasis, 1372 DR
-  hora: 09:15
+  data: 21 Eleasis, 1372 DR
+  hora: '22:00'
 pendencias: []
 concluidas_recentes:
 - id: mundo-050f1a0efdbe5a14
@@ -178,3 +178,83 @@ concluidas_recentes:
   agente: red_sail
   nota: A Red Sail distribuiu busca dirigida por curandeiros, rotas de carroças e
     propriedades abandonadas a leste, sem obter localização da cadeia rural.
+- id: mundo-f63f14ed4ba87991
+  tipo: reavaliar_agente_leve
+  agente_leve: silva_elkwood
+  disparado_em:
+    data: 20 Eleasis, 1372 DR
+    hora: '10:00'
+  resultado: rotina_sem_mudanca
+  nota: O relato de Ren já recebeu resposta na cena; ele não estabelece ameaça nova
+    aos Vell ou ao acampamento nem mensagem pendente que exija iniciativa autônoma
+    adicional de Silva.
+- id: mundo-0c5ea1a58fd13c45
+  tipo: reavaliar_agente_leve
+  agente_leve: jack_mooney
+  disparado_em:
+    data: 17 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Não surgiu novo patrono, risco aos filtros, ameaça ao abrigo ou decisão comercial
+    sobre Kage; Jack segue na administração ordinária do circo.
+- id: mundo-3230b48cba730348
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: A presença física de Shizune em Ravens Bluff continua indeterminada, e sua
+    atuação local exige presença física; o bloqueio canônico impede a nova ocupação
+    imobiliária neste ciclo.
+- id: mundo-d671b7a9c07770e9
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Os fatos canônicos atuais não estabelecem uma grande embarcação oriental a
+    caminho ou esperada; planos e capacidade logística não satisfazem sozinhos o critério
+    do marco.
+- id: mundo-17c93b387002202d
+  tipo: expiracao
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Halessa criou por Luath um canal seguro e materializou o núcleo do contato
+    sem converter hipótese em certeza.
+- id: mundo-5bdb91e922c5e0e3
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch abriu verificações discretas do depoimento e das provas sem
+    autorizar batida que comprometesse fontes ou custódia.
+- id: mundo-61a59445e535d6bb
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  agente: masao_hirasawa
+  nota: A rede de Masao trouxe pequenas células sob coberturas civis e passou a proteger
+    cargas, casas e negócios sem expor o comandante.
+- id: mundo-910249c36e703682
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail reorganizou a busca dirigida em pares menores e verificou rotas
+    e propriedades a leste sem localizar a cadeia rural.
+- id: mundo-ec7c21221a100a5f
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: Tyr abriu conferência reservada de origem, volume e trânsito das peças documentais,
+    preservando custódia e testemunha sem atribuir autoria.
+acionamentos_leves:
+  versao: 1
+  aguardando: {}
+  prazos: {}
+  rotinas_suspensas: {}

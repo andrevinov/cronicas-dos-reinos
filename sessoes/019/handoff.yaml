@@ -2,9 +2,9 @@ schema_handoff: 1
 natureza: memoria_compacta_de_retomada
 sessao: 19
 checkpoint:
-  tipo: cena
-  estado: retomavel
-  modo: ren_desperto_apos_descanso_longo_no_circo
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: conversa_com_silva_apos_operacao_sete_nomes
   personagem:
     nome: Ren Kagehira
     nivel: 7
@@ -22,7 +22,7 @@ checkpoint:
     dinheiro_po: 39.379999999999995
   tempo:
     data: 20 Eleasis, 1372 DR
-    hora_aproximada: 09:15
+    hora_aproximada: '10:00'
     periodo: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
     clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   localizacao:
@@ -32,10 +32,10 @@ checkpoint:
     regiao: The Vast
     cidade: Ravens Bluff
     area: Jack Mooney & Sons Circus, Ravens Bluff
-    ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+    ponto_exato: junto à carroça verde de Silva Elkwood, no acampamento do circo dos Mooney
 continuidade:
-  resumo_imediato: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo e despertou
-    às 09:15.
+  resumo_imediato: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com testemunha
+    e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
   prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
     o posto antes de seguir ao circo.
 eventos_recentes:
@@ -56,6 +56,12 @@ eventos_recentes:
   transacao: s019-186fa686d59b6319
   resumo: Ren permaneceu adormecido após a fronteira das 06:00 e concluiu o descanso longo às 09:15. Recuperou todos
     os PV, Focus e Dados de Vida; o Broche do Semblante Humilde voltou a ficar disponível.
+- batch: s019-sessao-873ec1e9c6f08966
+  transacao: s019-4b179cff8f9c1012
+  resumo: Ren contou integralmente a Silva o encontro com Tomas, o pedido de Maerra, a infiltração, os nocautes
+    não letais, o interrogatório e a entrega da testemunha e das provas a Luath. Silva reconheceu o valor da testemunha
+    viva e da cadeia de custódia, alertou uma única vez sobre os riscos de interrogatório por medo e perguntou se
+    Ren deseja alguma ação dela.
 fontes:
   estado: estado/estado-atual.yaml
   tempo: estado/tempo.yaml

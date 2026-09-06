@@ -1,0 +1,81 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 20
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    focus:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 39.379999999999995
+  tempo:
+    data: 21 Eleasis, 1372 DR
+    hora_aproximada: '22:00'
+    periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Jack Mooney & Sons Circus, Ravens Bluff
+    ponto_exato: acampamento do circo dos Mooney
+continuidade:
+  resumo_imediato: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com testemunha
+    e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
+eventos_recentes:
+- batch: s020-cena-c2ee74e501912d91
+  transacao: s020-c466bb2ca6bad1ce
+  resumo: A Night Watch iniciou verificações discretas a partir do depoimento e das provas, preservando custódia
+    e evitando batidas prematuras.
+- batch: s020-cena-f4e15672b8531dde
+  transacao: s020-4067e9fa0ac4aab1
+  resumo: A rede de Masao ampliou sua presença em Ravens Bluff de agentes isolados para pequenas células de rua
+    sob coberturas civis.
+- batch: s020-cena-1f5276b1b69c265d
+  transacao: s020-1aa1ae96a6630c03
+  resumo: A Red Sail estreitou a busca por Colm em pares menores sobre curandeiros, carroças e propriedades a leste,
+    sem encontrar a cadeia rural.
+- batch: s020-cena-23ad5852a833545e
+  transacao: s020-fb7d233292ce9676
+  resumo: Tyr iniciou uma conferência reservada das novas peças documentais, preservando prova e testemunha sem
+    atribuir autoria prematuramente.
+- batch: s020-cena-774fb4bf73bc0f4a
+  transacao: s020-73fd45bcc58b653b
+  resumo: Ren continuou dormindo após a fronteira das 06:00 e despertou às 09:30 no quarto-depósito, com Nera ao
+    seu lado. O descanso longo foi concluído sem alteração de recursos, que já estavam no máximo.
+- batch: s020-cena-4aa928b02eb50119
+  transacao: s020-50866443e9378896
+  resumo: Ren e Nera trocaram carinhos, vestiram-se e retornaram até Silva. Ren permaneceu no circo até o meio-dia,
+    alimentando-se e revendo os fios conhecidos de seus planos sem escolher ainda o próximo passo.
+- batch: s020-cena-c0f8739ff2009f91
+  transacao: s020-8f363374b17c00ae
+  resumo: Ren almoçou com Nera e Tavin, passou uma tarde tranquila conversando com os Vell e Silva e ajudou em tarefas
+    simples do acampamento até as 16:00.
+- batch: s020-cena-b75c99c6832a7241
+  transacao: s020-a0e5884aebc899e7
+  resumo: Ren permaneceu no circo durante o fim da tarde e a noite, compartilhando refeição e convivência tranquila
+    com Nera, Tavin e Silva até as 22:00.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/020/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

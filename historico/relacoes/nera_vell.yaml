@@ -545,3 +545,46 @@ eventos_pos_migracao:
     op: set
     valor: Ren e Nera tiveram uma despedida íntima e afetuosa antes de ele descansar e procurar Tomas. Ren reafirmou
       seu amor e sua promessa de sempre voltar; Nera correspondeu ao amor, respondeu com humor e pediu que ele voltasse.
+- transacao: s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+  sessao: 20
+  resumo: Ren aguardou Nera, recebeu-a com abraço e beijo, contou toda a operação da noite e pediu que ela dormisse
+    com ele. Nera aceitou, depois de verificar se Tavin estava bem acomodado.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: nera_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens
+          sem matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
+      fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+      id: mem_e72b02d17a2cc3657aaf6e82
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
+      texto: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens
+        sem matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
+      tipo: informacao
+  - alvo: relacao:nera_vell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      anterior: 8
+      eixo: confianca
+      evidencia:
+        campo: jogador
+        trecho: Contará tudo que aconteceu na longa noite que teve.
+      fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+      id: mem_a942d44c3201fe618ecae896
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
+      tipo: relacao
+      variacao: 1

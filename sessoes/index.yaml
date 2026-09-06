@@ -1,13 +1,13 @@
 schema_sessoes: 1
 natureza: indice_de_memoria_compacta
-sessao_atual: 19
+sessao_atual: 20
 politica:
   retomada: handoff + runtime + eventos pendentes
   historico: handoff/resumo/alteracoes antes de transcricao
   transcricoes: frias para leitura; nunca copiar para sessão nova
 totais:
-  sessoes: 19
-  bytes_transcricoes: 2117021
+  sessoes: 20
+  bytes_transcricoes: 2132689
 sessoes:
   '001':
     natureza: historica
@@ -441,19 +441,19 @@ sessoes:
       classe: arquivo_frio
       escalada: somente busca histórica explícita com transcrições
   019:
-    natureza: atual
+    natureza: historica
     handoff: sessoes/019/handoff.yaml
     compactos:
     - arquivo: sessoes/019/handoff.yaml
-      bytes: 2711
+      bytes: 3238
     - arquivo: sessoes/019/resumo.md
-      bytes: 1266
+      bytes: 1678
     - arquivo: sessoes/019/alteracoes-de-estado.yaml
-      bytes: 2172
+      bytes: 2637
     - arquivo: sessoes/019/consequencias.md
       bytes: 256
     - arquivo: sessoes/019/consolidacoes.jsonl
-      bytes: 5878
+      bytes: 7657
     ordem_de_leitura:
     - sessoes/019/handoff.yaml
     - sessoes/019/resumo.md
@@ -461,6 +461,30 @@ sessoes:
     - sessoes/019/consequencias.md
     transcricao:
       arquivo: sessoes/019/transcricao.md
-      bytes: 3497
+      bytes: 5981
+      classe: arquivo_frio
+      escalada: somente busca histórica explícita com transcrições
+  '020':
+    natureza: atual
+    handoff: sessoes/020/handoff.yaml
+    compactos:
+    - arquivo: sessoes/020/handoff.yaml
+      bytes: 3527
+    - arquivo: sessoes/020/resumo.md
+      bytes: 2706
+    - arquivo: sessoes/020/alteracoes-de-estado.yaml
+      bytes: 3943
+    - arquivo: sessoes/020/consequencias.md
+      bytes: 256
+    - arquivo: sessoes/020/consolidacoes.jsonl
+      bytes: 13534
+    ordem_de_leitura:
+    - sessoes/020/handoff.yaml
+    - sessoes/020/resumo.md
+    - sessoes/020/alteracoes-de-estado.yaml
+    - sessoes/020/consequencias.md
+    transcricao:
+      arquivo: sessoes/020/transcricao.md
+      bytes: 13184
       classe: append_only_frio_para_leitura
       escalada: somente busca histórica explícita com transcrições

@@ -1,0 +1,151 @@
+schema_alteracoes_transacionais: 1
+sessao: 20
+status: em_andamento
+fonte: sessoes/020/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 20
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 20 Eleasis, 1372 DR
+  hora: '10:00'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: junto à carroça verde de Silva Elkwood, no acampamento do circo dos Mooney
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 20
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 21 Eleasis, 1372 DR
+  hora: '22:00'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: acampamento do circo dos Mooney
+  nivel_ficha: 7
+consolidacoes:
+- id: s020-cena-ed7438154366b4df
+  tipo: cena
+  transacoes:
+  - s020-2377ab8dba2426b4
+  - s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+  - s020-014f06cd350d87fc
+  deltas: 10
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/index.yaml
+  - estado/npcs/nera_vell.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/tempo.yaml
+  - historico/npcs/nera_vell.yaml
+  - historico/relacoes/nera_vell.yaml
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-623eb076555b42b0
+  tipo: cena
+  transacoes:
+  - s020-d34fa3dc6f1051ea
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-c2ee74e501912d91
+  tipo: cena
+  transacoes:
+  - s020-c466bb2ca6bad1ce
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-f4e15672b8531dde
+  tipo: cena
+  transacoes:
+  - s020-4067e9fa0ac4aab1
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-1f5276b1b69c265d
+  tipo: cena
+  transacoes:
+  - s020-1aa1ae96a6630c03
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-23ad5852a833545e
+  tipo: cena
+  transacoes:
+  - s020-fb7d233292ce9676
+  deltas: 0
+  arquivos_afetados:
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-774fb4bf73bc0f4a
+  tipo: cena
+  transacoes:
+  - s020-73fd45bcc58b653b
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-4aa928b02eb50119
+  tipo: cena
+  transacoes:
+  - s020-50866443e9378896
+  deltas: 4
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-c0f8739ff2009f91
+  tipo: cena
+  transacoes:
+  - s020-8f363374b17c00ae
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md
+- id: s020-cena-b75c99c6832a7241
+  tipo: cena
+  transacoes:
+  - s020-a0e5884aebc899e7
+  deltas: 2
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/020/alteracoes-de-estado.yaml
+  - sessoes/020/consequencias.md
+  - sessoes/020/consolidacoes.jsonl
+  - sessoes/020/resumo.md

@@ -24,3 +24,14 @@ eventos_pos_migracao:
     valor: Nera viu Ren cumprir a promessa de voltar, recebeu dele informação suficiente sobre a busca suspensa
       de Brass, Kurobane e a possível presença de Shizune. Continua assustada com a escala da vingança, mas entende
       o alívio de Ren por Luath e Halessa finalmente reconhecerem seus inimigos como ameaças reais.
+- transacao: s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+  sessao: 20
+  resumo: Ren aguardou Nera, recebeu-a com abraço e beijo, contou toda a operação da noite e pediu que ela dormisse
+    com ele. Nera aceitou, depois de verificar se Tavin estava bem acomodado.
+  deltas:
+  - alvo: npc:nera_vell
+    caminho: medidores.confianca
+    fato_canonico: Contará tudo que aconteceu na longa noite que teve.
+    fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
+    op: inc
+    valor: 1

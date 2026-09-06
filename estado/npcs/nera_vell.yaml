@@ -6,7 +6,7 @@ npc:
   grupo: Vell / protegidos no circo
   medidores:
     vinculo: 8
-    confianca: 8
+    confianca: 9
     risco_percebido: 9
   natureza_do_vinculo: romântico explícito, protetivo e vulnerável
   subtexto_romantico: claro

@@ -5,9 +5,9 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 19
-  status: em_sessao
-  modo_de_cena: ren_desperto_apos_descanso_longo_no_circo
+  numero: 20
+  status: entre_sessoes
+  modo_de_cena: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
   nivel: 7
@@ -24,9 +24,9 @@ recursos:
   deslocamento: 55 pés
   dinheiro_po: 39.379999999999995
 tempo:
-  data: 20 Eleasis, 1372 DR
-  hora_aproximada: 09:15
-  periodo: manhã de 20 Eleasis, após o descanso longo de Ren no circo dos Mooney
+  data: 21 Eleasis, 1372 DR
+  hora_aproximada: '22:00'
+  periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
 localizacao:
   plano: Material
@@ -35,7 +35,7 @@ localizacao:
   regiao: The Vast
   cidade: Ravens Bluff
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+  ponto_exato: acampamento do circo dos Mooney
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/019/handoff.yaml
-  transcricao_fria: sessoes/019/transcricao.md
+  handoff_atual: sessoes/020/handoff.yaml
+  transcricao_fria: sessoes/020/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:

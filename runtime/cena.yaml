@@ -1,27 +1,27 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 19
-modo: ren_desperto_apos_descanso_longo_no_circo
+sessao: 20
+modo: conversa_com_silva_apos_operacao_sete_nomes
 localizacao:
   area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: em seu espaço habitual no acampamento do circo dos Mooney, desperto após um descanso longo completo
+  ponto_exato: acampamento do circo dos Mooney
 tempo:
-  data: 20 Eleasis, 1372 DR
-  hora_aproximada: 09:15
+  data: 21 Eleasis, 1372 DR
+  hora_aproximada: '22:00'
 mecanica_imediata:
   pv: 52/52
   focus: 7/7
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren completou um descanso longo sem interrupção diegética em seu espaço habitual no circo e despertou
-  às 09:15.
+resumo_imediato: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com testemunha
+  e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
 prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
   o posto antes de seguir ao circo.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/019/handoff.yaml
+  handoff: sessoes/020/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/019/transcricao.md
+  transcricao_fria: sessoes/020/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:

@@ -168,8 +168,8 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 9297
-    campos_atuais: 14
+    bytes_fragmento: 10528
+    campos_atuais: 16
   tavin_vell:
     nome: Tavin Vell
     tipo: testemunha jovem
@@ -259,8 +259,8 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 7290
-    campos_atuais: 14
+    bytes_fragmento: 8347
+    campos_atuais: 15
   jack_mooney:
     nome: Jack Mooney
     tipo: dono do circo / autoridade local do acampamento / patrono condicional

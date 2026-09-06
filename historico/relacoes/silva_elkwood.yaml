@@ -543,3 +543,28 @@ eventos_pos_migracao:
     valor: Silva recebeu de Ren o relato completo da custódia, das conclusões sobre Kurobane e Masao, da contravigilância
       com Luath e do ferimento na briga do circo; confirmou que Nera e Tavin permanecem seguros até onde o circo
       pode verificar e ofereceu cuidar da costela de Ren.
+- transacao: s019-4b179cff8f9c1012
+  sessao: 19
+  resumo: Ren contou integralmente a Silva o encontro com Tomas, o pedido de Maerra, a infiltração, os nocautes
+    não letais, o interrogatório e a entrega da testemunha e das provas a Luath. Silva reconheceu o valor da testemunha
+    viva e da cadeia de custódia, alertou uma única vez sobre os riscos de interrogatório por medo e perguntou se
+    Ren deseja alguma ação dela.
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: relacao.status
+    op: set
+    valor: 'Silva recebeu de Ren o relato integral do encontro com Tomas, do pedido de Maerra e da operação na oficina:
+      infiltração, nocautes não letais, interrogatório, preservação das provas e condução da testemunha viva até
+      Luath. Ela agora conhece a sequência sem omissões e aguarda saber se Ren deseja alguma ação concreta dela.'
+  - alvo: relacao:silva_elkwood
+    caminho: relacao.motivo_atual
+    op: set
+    valor: Silva valoriza a transparência completa de Ren e reconhece o peso de ele ter preservado testemunha e
+      provas para custódia institucional. Mantém uma objeção concreta ao risco de transformar interrogatório por
+      medo em hábito e considera que Tomas conhecer a cobertura torna Shinta dependente também da discrição dele.
+  - alvo: relacao:silva_elkwood
+    caminho: relacao.informacoes_recebidas_por_silva
+    op: append
+    valor: Em 20 Eleasis, Ren contou a Silva, sem omissões, o encontro com Tomas, o pedido de Maerra, a infiltração
+      na oficina, os nocautes não letais, o interrogatório, a preservação da matriz e dos documentos e a condução
+      da testemunha viva e das provas até Luath.
