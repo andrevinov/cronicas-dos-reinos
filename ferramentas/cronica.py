@@ -28,6 +28,7 @@ import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
 import memoria_duravel as _durable
+import memoria_cena as _scene_memory
 import progressao_juppongatana
 import pressao_narrativa as _pressure52
 import progresso_sidequests_transacional as _sidequests49
@@ -112,6 +113,8 @@ def prepare(*args, **kwargs):
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
     signal = kwargs.pop("sidequest_signal", _SIDEQUEST_DECISION_UNSET)
     mechanical_spec = kwargs.pop("mechanical_spec", None)
+    memory_participants = kwargs.pop("memory_participants", None)
+    memory_base = kwargs.pop("memory_base_in_context", None)
     if signal is _SIDEQUEST_DECISION_UNSET:
         raise _core.CronicaError(
             "Task47: cronica preparar exige decisão explícita de oportunidade de sidequest; "
@@ -169,13 +172,21 @@ def prepare(*args, **kwargs):
             max_ticket_chars=_core.MAX_TICKET_CHARS,
             max_output_bytes=output_budget,
         )
-        return _pressure52.integrate_prepare(
+        prepared = _pressure52.integrate_prepare(
             Path(repo),
             prepared,
             operation_pendings=operation_pendings,
             decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket,
         )
+        return _scene_memory.attach(
+            Path(repo), prepared, decode_ticket=decode_ticket,
+            encode_ticket=_core.encode_ticket, participants=memory_participants,
+            base_in_context=memory_base,
+            max_output_bytes=(_pressure52.MAX_OUTPUT_BYTES if "pressao_narrativa" in prepared else output_budget),
+        )
+    except _scene_memory.SceneMemoryError as exc:
+        raise _core.CronicaError(f"NV05: {exc}") from exc
     except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
     except _pressure52.NarrativePressureError as exc:
@@ -203,6 +214,7 @@ def _base_token(payload: dict) -> str:
     clean = _sidequests46.strip_ticket_payload(payload)
     clean.pop(_sidequests48.TICKET_KEY, None)
     clean.pop(_pressure52.TICKET_KEY, None)
+    clean.pop(_scene_memory.TICKET_KEY, None)
     token, _ = _core.encode_ticket(clean)
     return token
 
@@ -212,7 +224,9 @@ def confirm(repo: Path, token: str):
         _sidequests49.require_no_open_journal(Path(repo))
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
-    _, meta46, meta48, meta52 = _sidequest_meta(token)
+    payload, meta46, meta48, meta52 = _sidequest_meta(token)
+    if _scene_memory.TICKET_KEY in payload:
+        raise _core.CronicaError("elenco de cena usa cronica concluir; não separar confirmação e registro")
     if meta46 is not None or meta48 is not None or meta52 is not None:
         raise _core.CronicaError(
             "ticket com sidequest/pressão usa cronica concluir; não separe confirmar/registrar"
@@ -254,6 +268,10 @@ def _conclude_base(
 
 def conclude(repo: Path, token: str, transaction: dict):
     payload, meta46, meta48, meta52 = _sidequest_meta(token)
+    try:
+        transaction = _scene_memory.compile_cast(payload, transaction, repo=Path(repo))
+    except _scene_memory.SceneMemoryError as exc:
+        raise _core.CronicaError(f"NV05: {exc}") from exc
     # Memória vira deltas antes de qualquer writer ou journal de integração.
     try:
         transaction = _durable.prepare_transaction(Path(repo), transaction)
@@ -409,6 +427,8 @@ def register(
     *,
     revalidate: bool = True,
 ):
+    if _scene_memory.TICKET_KEY in decode_ticket(token):
+        raise _core.CronicaError("elenco de cena usa cronica concluir; repetir o mesmo concluir para reparar")
     if _durable.TRANSACTION_KEY in transaction:
         raise _core.CronicaError("memoria usa cronica concluir; registrar isolado não captura fatos")
     try:
@@ -450,6 +470,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser = _ORIGINAL_BUILD_PARSER()
     root = _subparsers(parser)
     prepare_parser = root.choices["preparar"]
+    cast_group = prepare_parser.add_mutually_exclusive_group()
+    cast_group.add_argument("--participante", action="append",
+                           help="elenco efetivo completo; repetir por NPC, sem criar encontro")
+    cast_group.add_argument("--sem-participantes", action="store_true",
+                           help="declara cena sem NPCs; não é elenco desconhecido")
+    prepare_parser.add_argument("--memoria-base-em-contexto",
+                                help="JSON do recibo anterior, somente se a base ainda está no contexto da IA")
     prepare_parser.add_argument(
         "--tag",
         dest="contexto_tag",
@@ -648,6 +675,8 @@ def _run_turn(repo: Path, args: argparse.Namespace):
             approach_informacao=args.abordagem_informacao,
             approach_adequacao=args.abordagem_adequacao,
             urban_transit=getattr(args, "transito_urbano", None),
+            memory_participants=([] if args.sem_participantes else args.participante),
+            memory_base_in_context=args.memoria_base_em_contexto,
             mechanical_spec=_mechanical_spec_from_args(args),
             sidequest_signal=_sidequest_signal_from_args(args),
         )

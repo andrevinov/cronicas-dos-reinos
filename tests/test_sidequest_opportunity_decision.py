@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 ROOT = Path(__file__).parents[1]
@@ -43,6 +44,8 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
         hot.assert_not_called()
 
     def test_decisao_negativa_preserva_hotpath_e_nao_acorda_integracao_sidequest(self):
+        # Tickets sentinela pertencem ao teste de roteamento, não à campanha.
+        # A integração com memória real possui fixtures canônicas próprias.
         sentinel = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
@@ -50,6 +53,7 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             "ticket_id": "sidequest",
         }
         with (
+            TemporaryDirectory() as temporary,
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=sentinel) as hot,
             patch.object(
@@ -64,10 +68,11 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             ) as emergent,
         ):
             result = cronica.prepare(
-                ROOT,
+                Path(temporary),
                 scene_id="sidequest-neutro",
                 sidequest_signal=None,
             )
+            self.assertEqual(list(Path(temporary).iterdir()), [])
         self.assertIs(result, sentinel)
         hot.assert_called_once()
         active.assert_called_once()
@@ -92,6 +97,7 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             "tier": None,
         }
         with (
+            TemporaryDirectory() as temporary,
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=base),
             patch.object(cronica._sidequests46, "integrate_prepare", return_value=integrated) as emergent,
@@ -102,10 +108,11 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             ) as active,
         ):
             result = cronica.prepare(
-                ROOT,
+                Path(temporary),
                 scene_id="sidequest-maerra",
                 sidequest_signal=signal,
             )
+            self.assertEqual(list(Path(temporary).iterdir()), [])
         self.assertIs(result, integrated)
         emergent.assert_called_once()
         active.assert_called_once()

@@ -68,7 +68,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Direção canônica é destino, nunca ação.** `endpoints.py direcao <id>`; `direcoes.py avancar` exige fonte canônica, evidência literal e nota. Encontros simultâneos: resolver NPCs antes de mutar; aliases colapsados/ordenados; ambiguidade falha antes de efeito.
 
-**Fala de NPC:** `contexto.py npc` inclui `dialogo_relacional` e `iniciativa_social`; conselho exige gatilho. Iniciativa não cria presença, segredo, side quest ou ação de Ren.
+**Memória de cena:** usar `memoria_cena` do preparar/retomada antes de `contexto.py npc`; aprofundar só lacuna indicada. Elenco completo: `--participante <id>` repetido ou `--sem-participantes`; mesma cena reutiliza o salvo. Recibo só com base ainda no contexto, nunca só no disco; retomada fria é completa. Contrato: `docs/agente/memoria-de-cena.md`. Conselho exige gatilho; `dialogo_relacional`/`iniciativa_social` não criam presença, segredo, side quest ou ação de Ren.
 
 **Identidades:** suspeita ≠ certeza. Pista Ren/Shinta/Kage → `identidades.py evidencia`; Actor bem-sucedido bloqueia só pista `atuacao`; confirmação exige fato canônico. **Reputação:** fato público atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`; nunca fundir personas automaticamente.
 

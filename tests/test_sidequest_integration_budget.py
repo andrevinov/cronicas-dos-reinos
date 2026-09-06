@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import yaml
@@ -41,6 +42,8 @@ def valid_ticket_payload(scene_id: str) -> dict:
 
 class SidequestNeutralBudgetTest(unittest.TestCase):
     def test_turno_neutro_retorna_exatamente_hotpath_sem_acordar_integracao(self):
+        # Este teste isola roteamento com ticket sentinela, não o save vivo.
+        # Memória com estado canônico é exercitada em test_memoria_cena_integracao.
         sentinel = {
             "schema_cronica_turno": 1,
             "fase": "preparacao",
@@ -48,6 +51,7 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
             "ticket_id": "fixture",
         }
         with (
+            TemporaryDirectory() as temporary,
             patch.object(cronica._pending_gate, "prepare_gate", return_value=None),
             patch.object(cronica._hot, "prepare", return_value=sentinel) as base,
             patch.object(
@@ -61,7 +65,8 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
                 side_effect=AssertionError("turno neutro não pode acordar integração de sidequest"),
             ) as emergent,
         ):
-            result = cronica.prepare(ROOT, scene_id="sidequest-integration:neutro", sidequest_signal=None)
+            result = cronica.prepare(Path(temporary), scene_id="sidequest-integration:neutro", sidequest_signal=None)
+            self.assertEqual(list(Path(temporary).iterdir()), [])
         self.assertIs(result, sentinel)
         base.assert_called_once()
         active.assert_called_once()

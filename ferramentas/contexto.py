@@ -21,6 +21,7 @@ quando a memória interna realmente não resolver a lacuna.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 from typing import Any, Iterable
@@ -41,6 +42,7 @@ import catalogo_regras
 import continuidade_autoral
 import dialogo_relacional
 import memoria_relevante
+import memoria_cena
 import politica_acesso as politica
 import recursos
 import reputacao_publica
@@ -219,7 +221,7 @@ def command_scene(repo: Path) -> dict[str, Any]:
     return data
 
 
-def command_resume(repo: Path) -> dict[str, Any]:
+def command_resume(repo: Path, *, include_memory: bool = True) -> dict[str, Any]:
     result, sources = memoria_sessoes.resume_view(repo)
     context = result.get("contexto")
     scene = result.get("cena")
@@ -248,7 +250,7 @@ def command_resume(repo: Path) -> dict[str, Any]:
     data = envelope("retomada", None, "L2", sources, result)
     if recent:
         _add_pending_source(data)
-    return data
+    return memoria_cena.resume(repo, data, records=records) if include_memory else data
 
 
 def _resolve_session(repo: Path, term: str) -> int:
@@ -658,6 +660,25 @@ def _decision_for(repo: Path, args: argparse.Namespace) -> politica.AccessDecisi
     )
 
 
+def render_resume(repo: Path, data: dict[str, Any], max_bytes: int, as_json: bool) -> tuple[str, bool]:
+    """Última etapa de saída: a memória não volta ao compactador genérico."""
+    import json as json_output
+
+    def dump(value: Any) -> str:
+        if as_json:
+            return json_output.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+        return yaml.safe_dump(value, allow_unicode=True, sort_keys=False, width=110)
+
+    completed = memoria_cena.resume(
+        repo, data, max_output_bytes=max_bytes,
+        measure=lambda value: len(dump(value).encode("utf-8")),
+    )
+    text = dump(completed)
+    if len(text.encode("utf-8")) > max_bytes:
+        raise ValueError("retomada excede orçamento; refine a consulta")
+    return text, bool((completed.get(memoria_cena.KEY) or {}).get("aprofundamento_necessario"))
+
+
 def main() -> int:
     args = build_parser().parse_args()
     repo = args.repo.resolve()
@@ -678,12 +699,26 @@ def main() -> int:
             reserved=reserved,
         )
 
+        if args.command == "retomada":
+            # Rota terminal própria: nunca passa pelo fit_budget genérico.
+            data, effective_max = politica.decorate(
+                command_resume(repo, include_memory=False),
+                decision, requested_budget=args.max_bytes,
+                after=after, reason=validated_reason,
+            )
+            text, truncated = render_resume(repo, data, effective_max, args.json)
+            if args.log_local and not args.sem_log:
+                try:
+                    log_query(repo, data, len(text.encode("utf-8")), truncated)
+                except OSError:
+                    pass
+            print(text, end="")
+            return 0
+
         if args.command == "status":
             data = command_status(repo)
         elif args.command == "cena":
             data = command_scene(repo)
-        elif args.command == "retomada":
-            data = command_resume(repo)
         elif args.command == "sessao":
             data = command_session(repo, args.termo)
         elif args.command == "npc":
