@@ -1,0 +1,160 @@
+{
+  "schema_baseline_sondas_narrativas": 1,
+  "natureza": "snapshot_historico_isolado",
+  "momento": "NV-02 sobre componentes pos-NV-01, antes de qualquer correcao NV-03",
+  "motivo_preservacao": "Registrar a medicao original para comparacoes futuras sem congelar o comportamento dos componentes ou o estado vivo da campanha.",
+  "observacao": "Nao comparar estes resultados como constantes obrigatorias do motor futuro. Falhas observadas de memoria devem ser corrigiveis nos proximos PRs. Esta fotografia nao descreve um episodio narrado nem uma medicao de tokens nativos.",
+  "proveniencia": {
+    "repositorio": "andrevinov/cronicas-dos-reinos",
+    "codigo_ref": "fd174b2f8ecb9b037d7df363bbde66cf60df5510",
+    "base_main_ref": "232a84e0eb8dc814c1646ad47195bdc307ac45de",
+    "checkout_ci_ref": "d30aa4922dc4c1375896aff26cc733e94b5e492d",
+    "workflow_run_id": 34005892158,
+    "workflow_job_id": 101412866676,
+    "fonte": "https://github.com/andrevinov/cronicas-dos-reinos/actions/runs/34005892158/job/101412866676",
+    "capturado_em_utc": "2026-09-06T02:14:01.4118303Z",
+    "marcador_log": "NV02_SONDAS=",
+    "teste": "test_benchmark_narrativo_sondas.NarrativeBenchmarkAdapterTest.test_sondas_reais_sao_deterministicas_e_nao_abrem_save_vivo",
+    "python": "3.12.14",
+    "pyyaml": "6.0.3",
+    "execucao": "GitHub Actions; duas execucoes identicas das sondas em diretorios temporarios; acesso ao save vivo bloqueado pelo teste",
+    "reproducao": "poetry run python ferramentas/benchmark_narrativo.py sondar"
+  },
+  "ensaio_narrado": {
+    "status": "nao_executado",
+    "tokens_nativos": null,
+    "qualidade_narrada": "nao_avaliada",
+    "economia_real": "inconclusiva_sem_rollouts_nativos_pareados"
+  },
+  "resultado_sondas": {
+    "catalogo_sha256": "dc3cc9bc4108a4cedd4f0febdbef5c533df1c556652f3d50d18a3ca1cfb1d298",
+    "codigo_componentes_sha256": {
+      "agentes_leves.py": "87509a141811751d70b8c2fb8c6ea4f733b826c731a8d1da5197194759c4f629",
+      "compromissos.py": "47163362da3a65bdd929b23bf1d9b657476e898d68d28690b015c8804198e65e",
+      "contexto.py": "178f9a274bf249540e40288b425bd3002a3cbbef2c908d951a65f7ce7927cc5e",
+      "contexto_core.py": "64c0f351892897c65606a766392a6c4ac1a2bcd6524765fb401baa126841a2ec",
+      "pressao_narrativa.py": "fb1655169c1d1576d450f1e6ab5ca66887b6bf78d5a595bdb15740cba65dd042",
+      "retomada_cronica.py": "3118f8ac9a9c334690ad3102e6905611a7fe2288951a95252140e1a4482aaf40",
+      "transacoes.py": "8ac6d69482935e4b356459f04e46a3ff1286eb6c697190179dd2e38dc53d304b"
+    },
+    "episodios": [
+      {
+        "amostras": [
+          {
+            "argument_bytes": 30,
+            "checagens_estruturais": {
+              "promessa_visivel": false,
+              "teto_respeitado": true,
+              "truncamento_sinalizado": true,
+              "vinculo_visivel": false
+            },
+            "componente": "contexto.command_npc + fit_budget",
+            "output_bytes": 5604,
+            "sha256_saida": "0602b41d1d0cd2524b255dda1c7101ed48ce2c3d0328eb70958d4e9234aed09d",
+            "somente_leitura": true
+          }
+        ],
+        "cenario": "reencontro_aliado",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      },
+      {
+        "amostras": [
+          {
+            "argument_bytes": 2,
+            "checagens_estruturais": {"promessa_em_janela": true},
+            "componente": "contexto.command_status",
+            "output_bytes": 961,
+            "sha256_saida": "7968735c6b113618e92a5e14ff312d1133dbc1e8aafb61ce3993070b8bca9efe",
+            "somente_leitura": true
+          }
+        ],
+        "cenario": "promessa_pendente",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      },
+      {
+        "amostras": [
+          {
+            "argument_bytes": 13,
+            "checagens_estruturais": {"overlay_visivel": true},
+            "componente": "contexto.command_relation",
+            "output_bytes": 360,
+            "sha256_saida": "e6f0360a161f830d2c308a4e5fd1620956fa2996415b16d57259ff189aefabe5",
+            "somente_leitura": true
+          }
+        ],
+        "cenario": "mudanca_confianca",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      },
+      {
+        "amostras": [
+          {
+            "argument_bytes": 2,
+            "checagens_estruturais": {"devidos_nao_somem": true, "sem_mutacao_publica": true},
+            "componente": "agentes_leves.process_checkpoint (não executa intenção)",
+            "output_bytes": 774,
+            "sha256_saida": "d8c699972466f0aaf0df427c1b7fbc1559c0502f845d40113b7db16cd8f49ac3",
+            "somente_leitura": false
+          }
+        ],
+        "cenario": "iniciativa_fora_cena",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      },
+      {
+        "amostras": [
+          {
+            "argument_bytes": 136,
+            "checagens_estruturais": {"duas_frentes_preservadas": true, "ordem_estavel": true},
+            "componente": "pressao_narrativa.sort_items (roteamento, não execução)",
+            "output_bytes": 147,
+            "sha256_saida": "ac7ecb768d64a7ee05c3cb730da0974e8a1b710651ddf7bb4fa756b311c4a90d",
+            "somente_leitura": true
+          }
+        ],
+        "cenario": "frentes_adversarias",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      },
+      {
+        "amostras": [
+          {
+            "argument_bytes": 2,
+            "checagens_estruturais": {
+              "local_atual": true,
+              "promessa_persistida": true,
+              "reconstrucao_estavel": true,
+              "sem_transcricao": true
+            },
+            "componente": "retomada_cronica.current_snapshot",
+            "output_bytes": 842,
+            "sha256_saida": "298fc00d0c6f9923db8b5183036e1e6289bace1e4d5d5cbf9a388f12310f22ea",
+            "somente_leitura": true
+          },
+          {
+            "argument_bytes": 2,
+            "checagens_estruturais": {"sem_contexto_anterior_como_argumento": true},
+            "componente": "retomada_cronica.current_snapshot",
+            "output_bytes": 842,
+            "sha256_saida": "298fc00d0c6f9923db8b5183036e1e6289bace1e4d5d5cbf9a388f12310f22ea",
+            "somente_leitura": true
+          }
+        ],
+        "cenario": "retomada_fria",
+        "qualidade_narrada": "nao_avaliada",
+        "tokens_nativos": null
+      }
+    ],
+    "limites": [
+      "Não executa uma IA nem mede tokens nativos.",
+      "Cadência e roteamento não provam execução de planos ou qualidade literária.",
+      "Nenhum dado de campanha é usado como fixture ou alterado."
+    ],
+    "natureza": "medicao_componentes_em_fixtures",
+    "schema_sondas_narrativas": 1,
+    "status": "DIAGNOSTICO_COMPONENTES_NAO_E_VEREDITO_NARRATIVO",
+    "totais": {"argument_bytes": 187, "invocacoes_locais": 7, "output_bytes": 9530, "tokens_nativos": null}
+  }
+}
