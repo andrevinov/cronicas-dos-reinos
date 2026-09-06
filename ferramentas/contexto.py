@@ -662,9 +662,11 @@ def _decision_for(repo: Path, args: argparse.Namespace) -> politica.AccessDecisi
 
 def render_resume(repo: Path, data: dict[str, Any], max_bytes: int, as_json: bool) -> tuple[str, bool]:
     """Última etapa de saída: a memória não volta ao compactador genérico."""
+    import json as json_output
+
     def dump(value: Any) -> str:
         if as_json:
-            return json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+            return json_output.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
         return yaml.safe_dump(value, allow_unicode=True, sort_keys=False, width=110)
 
     completed = memoria_cena.resume(
@@ -697,12 +699,26 @@ def main() -> int:
             reserved=reserved,
         )
 
+        if args.command == "retomada":
+            # Rota terminal própria: nunca passa pelo fit_budget genérico.
+            data, effective_max = politica.decorate(
+                command_resume(repo, include_memory=False),
+                decision, requested_budget=args.max_bytes,
+                after=after, reason=validated_reason,
+            )
+            text, truncated = render_resume(repo, data, effective_max, args.json)
+            if args.log_local and not args.sem_log:
+                try:
+                    log_query(repo, data, len(text.encode("utf-8")), truncated)
+                except OSError:
+                    pass
+            print(text, end="")
+            return 0
+
         if args.command == "status":
             data = command_status(repo)
         elif args.command == "cena":
             data = command_scene(repo)
-        elif args.command == "retomada":
-            data = command_resume(repo, include_memory=False)
         elif args.command == "sessao":
             data = command_session(repo, args.termo)
         elif args.command == "npc":
@@ -743,10 +759,7 @@ def main() -> int:
             after=after,
             reason=validated_reason,
         )
-        if (data.get("consulta") or {}).get("comando") == "retomada":
-            text, truncated = render_resume(repo, data, effective_max, args.json)
-        else:
-            text, truncated = fit_budget(data, effective_max, args.json)
+        text, truncated = fit_budget(data, effective_max, args.json)
     except (
         OSError,
         ValueError,
