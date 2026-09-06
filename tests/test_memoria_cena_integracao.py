@@ -14,7 +14,7 @@ import contexto
 import consolidar
 import memoria_cena as memory
 import retomada_cronica
-import sessoes
+import checkpoint
 import transacoes
 import test_memoria_duravel_integracao as fixtures
 
@@ -251,8 +251,8 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         self.assertNotIn(memory.TICKET_KEY, cronica.decode_ticket(cronica._base_token(payload)))
 
     def test_contexto_retomada_inclui_memoria_sem_compactacao_cega(self):
-        # A porta legada exige o handoff, criado pelo mesmo bootstrap público.
-        sessoes.bootstrap_current(self.repo)
+        # A porta legada exige handoff/índice, criados pelo checkpoint existente.
+        checkpoint.refresh_memory(self.repo, "cena")
         self.establish()
         direct = contexto.command_resume(self.repo)
         self.assertIn("silva_fixture", direct[memory.KEY]["itens"])
