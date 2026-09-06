@@ -13,6 +13,7 @@ idênticas. Qualquer divergência invalida o cache e restaura a avaliação norm
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import hashlib
 import json
 import sys
@@ -660,7 +661,16 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     world_state = mundo.load_world_state(repo)
     if "acionamentos_leves" in world_state:
         import acionamentos_leves
-        acionamentos_leves.require_stable_canon(repo)
+        try:
+            acionamentos_leves.require_stable_canon(repo)
+            acionamentos_leves._validate_control(world_state)
+            # Validar a reposição antes de gravar o cache. A fila instalada
+            # abaixo já contém o próximo trabalho, mesmo se o marcador falhar.
+            preview = deepcopy(world_state)
+            preview["pendencias"] = [p for p in preview["pendencias"] if p.get("id") != pending_id]
+            acionamentos_leves.dispatch(preview, index)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise LightAgentError(f"acionamento causal: {exc}") from exc
 
     matches = [item for item in _light_pending(world_state) if item.get("id") == pending_id]
     if not matches:
@@ -734,6 +744,12 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
         world_state["concluidas_recentes"] = world_state["concluidas_recentes"][
             -mundo.MAX_RECENT_COMPLETED:
         ]
+        if "acionamentos_leves" in world_state:
+            import acionamentos_leves
+            try:
+                acionamentos_leves.dispatch(world_state, index)
+            except (ValueError, OSError, yaml.YAMLError) as exc:
+                raise LightAgentError(f"repor vagas causais: {exc}") from exc
         mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
     else:
         completed = _completed_for(world_state, pending_id)
