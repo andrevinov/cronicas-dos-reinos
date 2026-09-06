@@ -13,13 +13,15 @@ import correspondente ter sido substituído. Isso causava `NameError` em avanço
 curtos e longos. `checkpoint.py`, `fronteira_mundo.py` e trechos sem marcadores
 continuavam usando a segunda fila, produzindo duas representações do mesmo prazo.
 
-Esta correção restaura os arquivos operacionais à versão integrada do #119, sem
-reescrever seu algoritmo nem sobrepor outro scheduler. O módulo alternativo
-`acionamento_npcs.py` é retirado: não fica código morto testando a si mesmo nem
-uma segunda fonte de verdade escondida. O diff de produção em relação à main
-`6bfa41f53db33afd122e07ad31d5f140f79b6369` é vazio; o #120 passa a acrescentar
-cobertura reconciliada e esta documentação. A branch e o histórico do #120 são
-preservados por commit normal, sem force-push ou alteração da main.
+A reconciliação restaurou os arquivos operacionais à versão integrada do #119,
+sem sobrepor outro scheduler. O módulo alternativo `acionamento_npcs.py` foi
+retirado: não fica código morto testando a si mesmo nem uma segunda fonte de
+verdade escondida. A cobertura foi portada para o motor adotado. Depois disso,
+o teste de cancelamento revelou uma falha real no staging repetido, corrigida
+pontualmente em `acionamentos_leves.stage` e descrita abaixo. Portanto, o diff
+final inclui essa correção de produção, além dos testes e da documentação.
+A branch e o histórico do #120 são preservados por commits normais, sem
+force-push ou alteração da main.
 
 ## Compatibilidade sem mascarar falhas
 
@@ -97,6 +99,29 @@ Todos os testes anteriores da main, incluindo guardas de journal antes da primei
 leitura e recuperação de conclusão interrompida, permanecem sem modificações.
 Nenhum teste usa `skip`, nenhum validador foi afrouxado e nenhum estado da campanha
 foi alterado para satisfazer uma expectativa.
+
+## Cancelamento e identidade da resolução durante o staging
+
+`test_cancelamento_em_resolucao_nao_deixa_prazo_falso` revelou que repetir
+`stage` sobre o mesmo plano podia recriar uma causa `compromisso:mapa` para o
+próprio agente cuja resolução havia cancelado o compromisso. Na primeira passagem,
+o prazo era corretamente revogado. Na segunda, o vínculo `id da pendência → agente`
+era reconstruído dos `outputs` já modificados; como a pendência já não existia,
+a tag de resolução perdia seu destinatário e a mudança parecia independente.
+
+O vínculo agora é obtido do mundo canônico persistido, que é a base ainda não
+instalada do lote. O mundo staged continua sendo usado para as alterações e
+preserva saídas de outros produtores; não é substituído pela base antiga.
+Sem saída de mundo prévia, a mesma leitura da base é reutilizada. Nada muda nos
+schemas, tetos, chamadas de IA, protocolo do writer ou dados da campanha.
+
+O teste de integração que revelou o problema permanece intacto. As sete regressões
+em `tests/test_acionamentos_staging.py` exercitam explicitamente a repetição do
+staging, sem depender da ordem de imports: cancelamento sem autoavaliação, outro
+envolvido ainda notificado, fonte alterada junto do cancelamento, fato independente
+não suprimido, saída de outro produtor preservada, rotina promovida mantendo ID e
+uma única leitura do mundo quando não há saída prévia. Também verificam igualdade
+dos bytes staged, imutabilidade das transações e ausência de escritas na fixture.
 
 ## Orçamento e validação
 
