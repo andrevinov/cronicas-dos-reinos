@@ -192,3 +192,13 @@ Os testes cobrem jornadas fora de cena, duas tentativas em uma transação, cust
 compartilhados, prazo, bloqueios, sucesso/falha, mudança de estratégia, operações
 reais, CLI em outro processo, inconsistências, retries e recuperação interrompida.
 As expectativas usam fixtures, não valores mutáveis do save da campanha.
+
+
+## Contatos efetivos — NV-09
+
+Um passo com `resolucao.tipo: contato` mantém este mesmo ciclo e a mesma agenda.
+Depois da tentativa e da chegada comprovada, `cronica preparar` pode encaminhá-lo
+à cena, subordinado às prioridades existentes. A entrega não usa `resolver:
+sucesso`: o `cronica concluir` registra a mensagem e deixa o plano em
+`aguarda_resposta`, sem aceitar o pedido por Ren. Contrato, canais, adiamento,
+recuperação e orçamento: `docs/nv09-contatos-sociais.md`.
