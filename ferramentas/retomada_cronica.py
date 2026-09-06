@@ -13,6 +13,7 @@ from typing import Any
 
 import yaml
 
+import memoria_cena
 import recursos
 import sessoes
 import transacoes
@@ -62,7 +63,7 @@ def previous_recap(repo: Path, session: int | None) -> dict[str, Any] | None:
     }
 
 
-def current_snapshot(repo: Path) -> dict[str, Any]:
+def current_snapshot(repo: Path, *, include_memory: bool = True) -> dict[str, Any]:
     context_path = repo / "runtime/contexto.yaml"
     scene_path = repo / "runtime/cena.yaml"
     context = _load_yaml(context_path)
@@ -119,30 +120,30 @@ def current_snapshot(repo: Path) -> dict[str, Any]:
     capabilities = effective_context.get("capacidades_contextuais")
     if capabilities:
         result["capacidades_contextuais"] = capabilities
-    return result
+    return memoria_cena.resume(repo, result, records=records) if include_memory else result
 
 
 def decorate_status(repo: Path, result: dict[str, Any]) -> dict[str, Any]:
     out = dict(result)
-    out["retomada"] = current_snapshot(repo)
+    out["retomada"] = current_snapshot(repo, include_memory=False)
     out["politica_retomada"] = (
         "Use esta projeção para retomar. Não abra handoff/transcrição nem use busca ampla "
         "se data/hora/local/resumo acima responderem à lacuna."
     )
-    return out
+    return memoria_cena.resume(repo, out)
 
 
 def decorate_start(repo: Path, result: dict[str, Any]) -> dict[str, Any]:
     out = dict(result)
     previous = out.get("sessao_anterior")
     out["recap_sessao_anterior"] = previous_recap(repo, previous)
-    out["retomada"] = current_snapshot(repo)
+    out["retomada"] = current_snapshot(repo, include_memory=False)
     out["politica_retomada"] = (
         "O recap acima vem do handoff compacto da sessão anterior; a abertura atual vem do runtime. "
         "Não abrir transcrição por rotina."
     )
     out["proximo_passo"] = {
         "acao": "recapitular_e_abrir_cena",
-        "depois": "cronica preparar --cena-id <id-estavel> (sem outras flags se não houver gatilho reativo real)",
+        "depois": "cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest (elenco novo: --participante <id> ou --sem-participantes)",
     }
-    return out
+    return memoria_cena.resume(repo, out)
