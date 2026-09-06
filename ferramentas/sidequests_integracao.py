@@ -100,6 +100,23 @@ def _atomic_yaml(path: Path, value: Any) -> None:
 
 def _signal_from_raw(raw: Any) -> dict[str, Any]:
     data = copy.deepcopy(_map(raw, "oportunidade_sidequest"))
+    character_expected = {"plano_id", "local_id", "periculosidade", "tier"}
+    if "plano_id" in data:
+        if set(data) != character_expected:
+            raise EmergentSidequestIntegrationError(
+                "sinal NV-11 exige somente plano_id, local_id, periculosidade e tier"
+            )
+        plan_id = data.get("plano_id")
+        if not isinstance(plan_id, str) or not plan_id:
+            raise EmergentSidequestIntegrationError("plano_id NV-11 inválido")
+        if data.get("periculosidade") not in opportunity.recompensas.VALID_DANGER:
+            raise EmergentSidequestIntegrationError("periculosidade NV-11 inválida")
+        tier = data.get("tier")
+        if tier is not None and (
+            isinstance(tier, bool) or not isinstance(tier, int) or not 1 <= tier <= 4
+        ):
+            raise EmergentSidequestIntegrationError("tier NV-11 inválido")
+        return data
     expected = {
         "origem_tipo", "origem_id", "ancora_tipo", "ancora", "npc_id",
         "local_id", "periculosidade", "tier",
@@ -125,6 +142,17 @@ def _signal_from_raw(raw: Any) -> dict[str, Any]:
 
 def _signal_for_ticket(signal: dict[str, Any], package: dict[str, Any]) -> dict[str, Any]:
     now = _map(_map(package.get("prazo_mundo"), "pacote.prazo_mundo").get("agora"), "pacote.agora")
+    if "plano_id" in signal:
+        cause = _map(package.get("causa_personagem"), "pacote.causa_personagem")
+        return {
+            "modo": "plano_personagem",
+            "plano_id": signal["plano_id"],
+            "local_id": signal["local_id"],
+            "periculosidade": signal["periculosidade"],
+            "tier": signal["tier"],
+            "causa_id": cause.get("id"),
+            "agora": {"data": str(now.get("data")), "hora": str(now.get("hora"))},
+        }
     return {
         "origem_tipo": signal["origem_tipo"],
         "origem_id": signal["origem_id"],
@@ -142,20 +170,44 @@ def _plan_from_ticket(repo: Path, meta: dict[str, Any]) -> dict[str, Any]:
     signal = _map(meta.get("sinal"), "ticket.sinal")
     now_raw = _map(signal.get("agora"), "ticket.sinal.agora")
     try:
-        opportunity.mundo.parse_instant(str(now_raw.get("data")), str(now_raw.get("hora")))
-        package = opportunity.plan(
-            repo,
-            signaled=True,
-            origin_type=signal.get("origem_tipo"),
-            origin_id=signal.get("origem_id"),
-            anchor_type=signal.get("ancora_tipo"),
-            anchor=signal.get("ancora"),
-            npc_id=signal.get("npc_id"),
-            local_id=signal.get("local_id"),
-            danger=str(signal.get("periculosidade")),
-            tier=signal.get("tier"),
+        opportunity.mundo.parse_instant(
+            str(now_raw.get("data")), str(now_raw.get("hora"))
         )
-    except (opportunity.EmergentSidequestOpportunityError, opportunity.mundo.WorldEngineError) as exc:
+        if signal.get("modo") == "plano_personagem":
+            import sidequests_personagens
+
+            package = sidequests_personagens.plan(
+                repo,
+                str(signal.get("plano_id")),
+                local_id=signal.get("local_id"),
+                danger=str(signal.get("periculosidade")),
+                tier=signal.get("tier"),
+            )
+            cause = _map(package.get("causa_personagem"), "pacote.causa_personagem")
+            if cause.get("id") != signal.get("causa_id"):
+                raise EmergentSidequestIntegrationError(
+                    "causa do plano mudou desde cronica preparar"
+                )
+        else:
+            package = opportunity.plan(
+                repo,
+                signaled=True,
+                origin_type=signal.get("origem_tipo"),
+                origin_id=signal.get("origem_id"),
+                anchor_type=signal.get("ancora_tipo"),
+                anchor=signal.get("ancora"),
+                npc_id=signal.get("npc_id"),
+                local_id=signal.get("local_id"),
+                danger=str(signal.get("periculosidade")),
+                tier=signal.get("tier"),
+            )
+    except (
+        opportunity.EmergentSidequestOpportunityError,
+        opportunity.mundo.WorldEngineError,
+        ValueError,
+        OSError,
+        yaml.YAMLError,
+    ) as exc:
         raise EmergentSidequestIntegrationError(str(exc)) from exc
     if package.get("resultado") != "material_para_planejamento":
         raise EmergentSidequestIntegrationError(
@@ -194,20 +246,32 @@ def integrate_prepare(
     """Anexa Task40 a uma preparação já existente sem mudar o caminho neutro."""
     signal = _signal_from_raw(signal_raw)
     try:
-        package = opportunity.plan(
-            repo,
-            signaled=True,
-            origin_type=signal["origem_tipo"],
-            origin_id=signal["origem_id"],
-            anchor_type=signal["ancora_tipo"],
-            anchor=signal["ancora"],
-            npc_id=signal["npc_id"],
-            local_id=signal["local_id"],
-            danger=signal["periculosidade"],
-            tier=signal["tier"],
-            now=now,
-        )
-    except opportunity.EmergentSidequestOpportunityError as exc:
+        if "plano_id" in signal:
+            import sidequests_personagens
+
+            package = sidequests_personagens.plan(
+                repo,
+                signal["plano_id"],
+                local_id=signal["local_id"],
+                danger=signal["periculosidade"],
+                tier=signal["tier"],
+                now=now,
+            )
+        else:
+            package = opportunity.plan(
+                repo,
+                signaled=True,
+                origin_type=signal["origem_tipo"],
+                origin_id=signal["origem_id"],
+                anchor_type=signal["ancora_tipo"],
+                anchor=signal["ancora"],
+                npc_id=signal["npc_id"],
+                local_id=signal["local_id"],
+                danger=signal["periculosidade"],
+                tier=signal["tier"],
+                now=now,
+            )
+    except (ValueError, OSError, yaml.YAMLError) as exc:
         raise EmergentSidequestIntegrationError(str(exc)) from exc
 
     result = copy.deepcopy(base_result)

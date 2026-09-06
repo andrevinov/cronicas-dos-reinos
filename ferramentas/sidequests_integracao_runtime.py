@@ -122,6 +122,7 @@ def install(repo: Path, journal: dict) -> dict:
 def check(repo: Path) -> dict[str, Any]:
     """Congela os mesmos tetos da Task40 sem abrir conteúdo secreto novo."""
     errors: list[str] = []
+    character_contract: dict[str, Any] | None = None
     try:
         if _base.MAX_AUTHOR_PACKET_BYTES != _base.opportunity.MAX_PAYLOAD_BYTES:
             errors.append("teto Task46 do pacote autoral diverge da Task40")
@@ -136,6 +137,11 @@ def check(repo: Path) -> dict[str, Any]:
         journal = _base._load_journal(repo)
         if journal is not None and journal.get("schema_task46_journal") != _base.SCHEMA:
             errors.append("journal Task46 possui schema inesperado")
+        import sidequests_personagens
+
+        nv11 = sidequests_personagens.check(repo)
+        character_contract = nv11.get("contrato")
+        errors.extend(f"NV-11: {error}" for error in nv11.get("erros") or [])
     except (
         _base.EmergentSidequestIntegrationError,
         _base.oportunidades.OpportunityError,
@@ -161,6 +167,7 @@ def check(repo: Path) -> dict[str, Any]:
             "instalacoes_por_oferta": 1,
             "schedulers_novos": 0,
             "relogios_novos": 0,
+            "sidequests_personagens": character_contract,
         },
     }
 

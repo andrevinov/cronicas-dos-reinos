@@ -52,6 +52,7 @@ VALID_ORIGIN_TYPES = {
     "consequencia_npc",
     "evento_canonico",
     "fato_de_cena",
+    "plano_personagem",
 }
 VALID_ANCHOR_TYPES = {
     "pedido",
@@ -175,6 +176,7 @@ def _validate_signal(
     local_id: Any,
     danger: Any,
     tier: Any,
+    character_plan_validated: bool = False,
 ) -> dict[str, Any]:
     origin_type = _text(origin_type, "origem_tipo", maximum=40)
     if origin_type in FORBIDDEN_ORIGIN_TYPES:
@@ -184,6 +186,10 @@ def _validate_signal(
     if origin_type not in VALID_ORIGIN_TYPES:
         raise EmergentSidequestOpportunityError(
             "origem_tipo deve ser: " + ", ".join(sorted(VALID_ORIGIN_TYPES))
+        )
+    if origin_type == "plano_personagem" and character_plan_validated is not True:
+        raise EmergentSidequestOpportunityError(
+            "origem plano_personagem exige a referência dirigida de --sidequest-plano"
         )
     origin_id = _stable_id(origin_id, "origem_id")
     anchor_type = _text(anchor_type, "ancora_tipo", maximum=40)
@@ -197,7 +203,7 @@ def _validate_signal(
         minimum=MIN_ANCHOR_CHARS,
         maximum=MAX_ANCHOR_CHARS,
     )
-    if origin_type in {"conversa_npc", "consequencia_npc"} and npc_id is None:
+    if origin_type in {"conversa_npc", "consequencia_npc", "plano_personagem"} and npc_id is None:
         raise EmergentSidequestOpportunityError(
             f"{origin_type} exige npc_id explícito; Task40 não procura NPCs"
         )
@@ -595,6 +601,7 @@ def plan(
     danger: str = "media",
     tier: int | None = None,
     now: mundo.WorldInstant | None = None,
+    character_plan_validated: bool = False,
 ) -> dict[str, Any]:
     """Monta o pacote Task40. Nunca escreve nem materializa uma sidequest."""
     if not signaled:
@@ -619,6 +626,7 @@ def plan(
         local_id=local_id,
         danger=danger,
         tier=tier,
+        character_plan_validated=character_plan_validated,
     )
 
     index, state, sources, blocked = _early_budget_gate(repo)

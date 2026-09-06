@@ -108,8 +108,13 @@ def _ref(value: Any) -> dict:
 def _step(value: Any) -> dict:
     step = _map(value, "passo")
     required = {"id", "acao", "em", "duracao_minutos", "local", "condicoes", "recursos", "conhecimento", "resolucao"}
-    if set(step) != required:
-        raise PlanError(f"campos do passo divergentes: {sorted(set(step) ^ required)}")
+    optional = {"oportunidade_sidequest"}
+    actual = set(step)
+    if not required <= actual or not actual <= required | optional:
+        raise PlanError(
+            f"campos do passo divergentes; faltando={sorted(required-actual)}; "
+            f"extras={sorted(actual-required-optional)}"
+        )
     _id(step["id"])
     _text(step["acao"], "acao")
     _instant(step["em"])
@@ -154,6 +159,13 @@ def _step(value: Any) -> dict:
             raise PlanError("recursos de operação são reservados pelo motor existente, nunca cobrados duas vezes")
     else:
         raise PlanError("resolução deve ser factual, teste ou operacao; combate não vira teste simples")
+    if step.get("oportunidade_sidequest") is not None:
+        import sidequests_personagens
+
+        try:
+            sidequests_personagens.validate_contract(step["oportunidade_sidequest"])
+        except sidequests_personagens.CharacterSidequestError as exc:
+            raise PlanError(str(exc)) from exc
     if _size(step) > 2400:
         raise PlanError("passo excede 2400 bytes; reduzir somente detalhes secundários")
     return step
@@ -618,6 +630,11 @@ def compute(repo: Path, records: list[dict]) -> tuple[dict, dict]:
                         "ultima_tentativa": None, "pendencia_id": None}
                 import contatos_sociais
                 contatos_sociais.validate_definition(world, plan)
+                import sidequests_personagens
+                try:
+                    sidequests_personagens.validate_definition(before, plan)
+                except sidequests_personagens.CharacterSidequestError as exc:
+                    raise PlanError(str(exc)) from exc
                 control[pid] = plan
                 when = _instant(plan["passo"]["em"])
             elif kind in {"entregar_contato", "adiar_contato"}:
@@ -683,6 +700,11 @@ def compute(repo: Path, records: list[dict]) -> tuple[dict, dict]:
             if kind in {"replanejar", "resolver"} and plan["estado"] == "pretende":
                 import contatos_sociais
                 contatos_sociais.validate_definition(world, plan)
+                import sidequests_personagens
+                try:
+                    sidequests_personagens.validate_definition(after, plan)
+                except sidequests_personagens.CharacterSidequestError as exc:
+                    raise PlanError(str(exc)) from exc
             plan["revisao"] += 1
             plan["motivo"] = event.get("motivo", event["fato"])
             plan["ultima_transacao"] = record["id"]

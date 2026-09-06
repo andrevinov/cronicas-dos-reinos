@@ -908,7 +908,9 @@ def authorize_sidequest_consequence(
 ) -> dict[str, Any]:
     """Autoriza consequência emergente contra o contrato já congelado."""
     _, mission = _mission(repo, mission_id)
-    if mission.get("estado") not in {"aceita", "concluida", "falhada", "expirada"}:
+    if mission.get("estado") not in {
+        "aceita", "concluida", "falhada", "expirada", "abandonada"
+    }:
         raise AdversarialIntegrityError("consequência exige sidequest aceita ou encerrada")
     doc, contract_source = load_contract(repo, mission)
     contract = doc["contrato"]
