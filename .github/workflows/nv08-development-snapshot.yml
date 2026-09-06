@@ -1,0 +1,21 @@
+name: NV08 development snapshot
+on:
+  push:
+    branches: [feat/nv-08-planos-executaveis]
+    paths: [.github/workflows/nv08-development-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  source-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Archive tracked source for isolated acceptance tests
+        run: git archive --format=tar HEAD | gzip > /tmp/nv08-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nv08-source
+          path: /tmp/nv08-source.tar.gz
+          retention-days: 1
