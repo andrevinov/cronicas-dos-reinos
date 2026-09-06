@@ -1,0 +1,132 @@
+{
+  "schema": 1,
+  "versao": "narrative-benchmark-v1",
+  "natureza": "cenario_sintetico_isolado",
+  "observacao": "Fixtures inventadas, não são cânone nem fotografia do estado vivo. Não copiar estes fatos para a campanha. Os roteiros são instrumentos de ensaio, não novas ações de Ren na campanha real.",
+  "protocolo": {
+    "minimo_passos_por_episodio": 5,
+    "escopo": "episodio_inteiro_incluindo_retomada_fronteira_e_reparo",
+    "repeticoes": "Parear por cenário, repetição e seed; nenhuma execução pode ser omitida depois de observar o resultado.",
+    "comparabilidade": "Mesmo catálogo, modelo, parâmetros, ruleset e condições de contexto; registrar intervenções e tentativas no mesmo rollout.",
+    "qualidade": "Os critérios exigem revisão semântica. O código só valida proveniência literal; palavra-chave não demonstra coerência.",
+    "tokens": "Contadores nativos separados de bytes; ausência não é zero. Cache e raciocínio não são somados novamente."
+  },
+  "cenarios": [
+    {
+      "id": "reencontro_aliado",
+      "objetivo": "Reencontro após distrações, sem recontar o vínculo ao narrador.",
+      "estado_inicial": {
+        "aliada": {"id": "lia", "nome": "Lia", "personalidade": "acolhedora, independente; protege sua oficina antes de agradar Ren"},
+        "vinculo": "Lia abrigou Ren durante a tempestade.",
+        "promessa": "Ren prometeu devolver a bússola de Lia.",
+        "conhecimento": "Lia sabe do empréstimo, mas não sabe onde Ren passou a noite."
+      },
+      "passos": [
+        {"entrada": "Entro na oficina de Lia e a cumprimento.", "contexto": "frio"},
+        {"entrada": "Pergunto como foi o movimento da oficina.", "contexto": "continua"},
+        {"entrada": "Examino os mapas expostos, sem tocar nos objetos pessoais.", "contexto": "continua"},
+        {"entrada": "Volto à mesa e pergunto como ela está.", "contexto": "continua"},
+        {"entrada": "Escuto o que Lia tem a dizer.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "vinculo_preservado", "descricao": "O reencontro preserva o abrigo oferecido e a familiaridade; não trata os dois como desconhecidos.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "personalidade_propria", "descricao": "Lia manifesta interesses próprios e não abandona seus limites para agradar Ren.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "sem_onisciencia", "descricao": "A narração não atribui a Lia conhecimento da noite de Ren nem decide emoções ou falas dele.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    },
+    {
+      "id": "promessa_pendente",
+      "objetivo": "Uma promessa sobrevive a distrações e ao vencimento da janela.",
+      "estado_inicial": {
+        "aliada": "Lia",
+        "promessa": {"id": "bussola", "resumo": "Ren prometeu devolver a bússola de Lia.", "envolvidos": ["ren", "lia"], "inicio": "14 Eleasis, 1372 DR 21:20", "fim": "14 Eleasis, 1372 DR 21:50"},
+        "agora": "14 Eleasis, 1372 DR 21:00",
+        "objeto": "A bússola permanece com Ren; nada registra sua devolução."
+      },
+      "passos": [
+        {"entrada": "Converso com o comerciante da praça.", "contexto": "frio"},
+        {"entrada": "Leio os avisos públicos enquanto o tempo passa.", "contexto": "continua"},
+        {"entrada": "Permaneço na praça até 21:30.", "contexto": "continua"},
+        {"entrada": "Retorno à oficina sem declarar que entreguei qualquer objeto.", "contexto": "continua"},
+        {"entrada": "Pergunto a Lia se ficou algo pendente entre nós.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "promessa_recuperada", "descricao": "O pedido de devolução reaparece sem o jogador precisar citar a bússola.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "sem_cumprimento_inventado", "descricao": "A promessa não é marcada como cumprida apenas porque Ren chegou à oficina.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "janela_coerente", "descricao": "A narração respeita a janela combinada sem inventar punição ou outro acordo.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    },
+    {
+      "id": "mudanca_confianca",
+      "objetivo": "Uma alteração pendente da relação prevalece antes do checkpoint.",
+      "estado_inicial": {"aliada": "Lia", "confianca_antes": "baixa", "acontecimento": "Ren devolveu intacto o mapa perdido da oficina.", "confianca_depois": "moderada", "persistencia": "A alteração foi registrada como delta, ainda não consolidada."},
+      "passos": [
+        {"entrada": "Entrego o mapa intacto a Lia.", "contexto": "frio"},
+        {"entrada": "Pergunto sobre o caminho até o cais.", "contexto": "continua"},
+        {"entrada": "Observo o movimento da rua.", "contexto": "continua"},
+        {"entrada": "Volto a conversar com Lia sobre a oficina.", "contexto": "continua"},
+        {"entrada": "Peço que ela me diga como avalia nossa parceria.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "overlay_visivel", "descricao": "O reencontro considera a confiança atualizada, mesmo antes da consolidação.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "memoria_causal", "descricao": "A mudança é ligada à devolução do mapa e não a um vínculo inventado.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "sem_reset", "descricao": "Distração ou retomada não devolvem a relação ao estado anterior.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    },
+    {
+      "id": "iniciativa_fora_cena",
+      "objetivo": "Um aliado com necessidade própria procura Ren sem ser convocado.",
+      "estado_inicial": {"aliada": "Lia", "objetivo": "Consertar a cobertura da oficina antes da chuva.", "necessidade": "A escada está com o carpinteiro; Lia precisa de ajuda no transporte.", "meios": "Lia conhece a praça onde Ren espera e pode caminhar até ela.", "conhecimento": "Lia não conhece planos privados de Ren.", "prazo": "14 Eleasis, 1372 DR 21:20"},
+      "passos": [
+        {"entrada": "Espero na praça, sem procurar Lia.", "contexto": "frio"},
+        {"entrada": "Converso com o vendedor de frutas.", "contexto": "continua"},
+        {"entrada": "Permaneço na praça até o horário combinado para o fechamento das lojas.", "contexto": "continua"},
+        {"entrada": "Observo quem se aproxima.", "contexto": "continua"},
+        {"entrada": "Escuto, sem assumir nenhum compromisso.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "contato_nao_solicitado", "descricao": "Lia inicia contato motivada por necessidade própria, não por convocação do jogador.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "logistica_plausivel", "descricao": "O contato respeita deslocamento, tempo e conhecimento da localização de Ren.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "agencia_preservada", "descricao": "Oferecer ajuda ou uma missão não produz aceite automático nem ação voluntária de Ren.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    },
+    {
+      "id": "frentes_adversarias",
+      "objetivo": "Duas operações independentes avançam sem compartilhamento mágico de informação.",
+      "estado_inicial": {
+        "adversario_a": {"id": "bor", "objetivo": "Comprar o silêncio do guarda da ponte.", "recursos": "Uma bolsa reservada; um único emissário.", "conhecimento": "Conhece o guarda, mas não sabe onde Ren está."},
+        "adversario_b": {"id": "ves", "objetivo": "Retirar documentos do depósito do cais.", "recursos": "Uma carroça própria e dois carregadores.", "conhecimento": "Conhece o depósito; não sabe do suborno."},
+        "restricao": "Nenhum ator ou recurso é compartilhado entre as duas operações."
+      },
+      "passos": [
+        {"entrada": "Observo a ponte sem me anunciar.", "contexto": "frio"},
+        {"entrada": "Intervenho contra o emissário quando ele se aproxima do guarda.", "contexto": "continua"},
+        {"entrada": "Permaneço na ponte enquanto transcorre uma hora.", "contexto": "continua"},
+        {"entrada": "Sigo até o cais pela rota conhecida.", "contexto": "continua"},
+        {"entrada": "Procuro sinais concretos do que ocorreu no depósito.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "independencia_das_frentes", "descricao": "Interromper a operação da ponte não encerra automaticamente a operação do depósito.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "execucao_nao_intencao", "descricao": "O resultado distingue plano, tentativa e consequência, sem conceder sucesso automático.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "conhecimento_e_recursos", "descricao": "As decisões respeitam os recursos declarados e não usam informação remota sem canal.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    },
+    {
+      "id": "retomada_fria",
+      "objetivo": "Retomar outra sessão sem histórico do chat, a partir do estado efetivo.",
+      "estado_inicial": {"agora": "14 Eleasis, 1372 DR 21:30", "local": "Oficina de Lia", "relacao": "Lia mantém confiança moderada por causa do mapa devolvido.", "promessa": "Ren prometeu devolver a bússola de Lia.", "estado_da_promessa": "Ainda pendente; não há registro de entrega.", "reinicio": "Após o terceiro passo, abrir outra sessão nativa sem copiar conversa; disponibilizar apenas memória persistida."},
+      "passos": [
+        {"entrada": "Converso com Lia sobre os mapas.", "contexto": "frio"},
+        {"entrada": "Observo a porta da oficina.", "contexto": "continua"},
+        {"entrada": "Continuo na oficina enquanto ela termina o trabalho.", "contexto": "continua"},
+        {"entrada": "Retome a cena de onde paramos.", "contexto": "frio"},
+        {"entrada": "Pergunto a Lia se há algo pendente entre nós.", "contexto": "continua"}
+      ],
+      "criterios": [
+        {"id": "local_e_tempo", "descricao": "A retomada conserva local e instante efetivos; não volta à cena anterior.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "promessa_sem_chat", "descricao": "A promessa reaparece a partir da persistência, não de uma lembrança fornecida no prompt de retomada.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"},
+        {"id": "relacao_sem_chat", "descricao": "A confiança e sua causa sobrevivem à ausência do histórico da conversa.", "avaliacao": "revisao_semantica_com_evidencia_da_narracao"}
+      ]
+    }
+  ]
+}
