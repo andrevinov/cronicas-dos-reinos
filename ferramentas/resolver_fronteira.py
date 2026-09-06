@@ -44,6 +44,7 @@ import mundo
 import operacoes_concorrentes
 import pressao_ravens_bluff
 import reacoes_sidequest
+import acionamentos_leves
 
 SCHEMA = 1
 MAX_BATCH = 16
@@ -64,10 +65,12 @@ def _token(value: Any, length: int = TOKEN_HEX) -> str:
     return hashlib.sha256(_canonical_json(value).encode("utf-8")).hexdigest()[:length]
 
 
-def _pending_sort_key(item: dict[str, Any]) -> tuple[int, str]:
+def _pending_sort_key(item: dict[str, Any], *, causal_queued: bool = False) -> tuple[int, int, str]:
     when = item.get("disparado_em") or {}
     instant = mundo.parse_instant(str(when.get("data")), str(when.get("hora")))
-    return instant.minute, str(item.get("id") or "")
+    routine = (causal_queued and item.get("tipo") == "reavaliar_agente_leve"
+               and not item.get("acionamento_causal"))
+    return int(routine), instant.minute, str(item.get("id") or "")
 
 
 def _source_list(*groups: Any) -> list[str]:
@@ -160,6 +163,7 @@ def _base_item(pending: dict[str, Any]) -> dict[str, Any]:
             "disparado_em",
             "motivo",
             "origem",
+            "acionamento_causal",
         )
         if pending.get(key) is not None
     }
@@ -168,6 +172,8 @@ def _base_item(pending: dict[str, Any]) -> dict[str, Any]:
 def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
     sources = [mundo.WORLD_STATE_PATH.as_posix()]
     item = _base_item(pending)
+    # A causa completa integra o token, mas a saída a apresenta uma única vez.
+    item.pop("acionamento_causal", None)
     context: dict[str, Any] = {}
     pending_type = str(pending.get("tipo") or "")
 
@@ -255,11 +261,19 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         sources = _source_list(sources, loaded.get("fontes_lidas"))
     elif pending_type == "reavaliar_agente_leve" and pending.get("agente_leve"):
         try:
-            loaded = agentes_leves.load_agent(repo, str(pending["agente_leve"]))
-        except agentes_leves.LightAgentError as exc:
+            if pending.get("acionamento_causal"):
+                projection = acionamentos_leves.pending_context(repo, pending)
+                context["acionamento_causal"] = projection
+                sources = _source_list(sources, projection.get("fontes_lidas"))
+                if item["classificacao"] == "avaliar_no_lote":
+                    item["classificacao"] = "avaliar_condicao_causal"
+                    item["sem_mudanca_permitido"] = "somente_motivo_concreto"
+            else:
+                loaded = agentes_leves.load_agent(repo, str(pending["agente_leve"]))
+                context["agente_leve"] = _compact_light(loaded["resultado"])
+                sources = _source_list(sources, loaded.get("fontes_lidas"))
+        except (ValueError, OSError, yaml.YAMLError) as exc:
             raise BatchBoundaryError(str(exc)) from exc
-        context["agente_leve"] = _compact_light(loaded["resultado"])
-        sources = _source_list(sources, loaded.get("fontes_lidas"))
     elif pending_type == "avaliar_direcao" and pending.get("direcao"):
         try:
             projection = direcoes_destino.project(repo, str(pending["direcao"]))
@@ -284,10 +298,17 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
 def prepare_batch(repo: Path) -> dict[str, Any]:
     """Projeta todas as pendências abertas em um único contrato read-only."""
     state = mundo.load_world_state(repo)
-    pending = sorted(
-        [item for item in state.get("pendencias") or [] if isinstance(item, dict)],
-        key=_pending_sort_key,
-    )
+    if acionamentos_leves.KEY in state:
+        try:
+            acionamentos_leves.require_stable_canon(repo)
+            acionamentos_leves._validate_control(state)
+        except ValueError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+    pending = [item for item in state.get("pendencias") or [] if isinstance(item, dict)]
+    # Sem causa nova, conservar exatamente a ordenação temporal anterior.
+    # A prioridade só desloca rotinas quando há condição causal no mesmo lote.
+    causal_queued = any(item.get("acionamento_causal") for item in pending)
+    pending.sort(key=lambda item: _pending_sort_key(item, causal_queued=causal_queued))
     if len(pending) > MAX_BATCH:
         raise BatchBoundaryError(
             f"fronteira possui {len(pending)} pendências; teto do lote é {MAX_BATCH}"
@@ -317,7 +338,8 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
                 "somente os itens que realmente não criam fato; omita os que exigem ação. "
                 "Evento canônico e consequência Task45 nunca aceitam no-op. Candidato "
                 "autônomo exige bloqueio canônico concreto. Grupos concorrentes são "
-                "comprometidos por inteiro em `grupos_operacoes`."
+                "comprometidos por inteiro em `grupos_operacoes`. Condição causal leve "
+                "exige motivo concreto; ausência de Ren não cancela um prazo."
             ),
             "entrada_aplicar": {
                 "lote_id": batch_id,
@@ -471,7 +493,7 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
             raise BatchBoundaryError(
                 f"pendência {pending_id} pertence a operação adversarial e não aceita sem_mudanca"
             )
-        if item.get("classificacao") == "avaliar_candidato_autonomo":
+        if item.get("classificacao") in {"avaliar_candidato_autonomo", "avaliar_condicao_causal"}:
             barreira_mundo._validate_autonomous_noop(decision["nota"])
         validated.append((decision, item))
 
@@ -534,7 +556,7 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
             }
         )
 
-    # Agente leve conclui fora da barreira; sincronizar uma vez também repara retries parciais.
+    # Sincronizar também repara retries parciais e promove causas ainda aguardando.
     barrier = barreira_mundo.sync(repo)
     remaining = prepare_batch(repo)
     return {

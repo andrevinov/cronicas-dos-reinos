@@ -281,6 +281,14 @@ def _validate_reputation_output(repo: Path, plan: dict[str, Any] | None) -> None
         raise ConsolidationError(f"reputação pública staged inválida: {exc}") from exc
 
 
+def _stage_causal_activations(repo: Path, plan: dict | None, records: list) -> None:
+    import acionamentos_leves
+    try:
+        acionamentos_leves.stage(repo, plan, records)
+    except (ValueError, OSError, _base.yaml.YAMLError) as exc:
+        raise ConsolidationError(f"acionamento causal: {exc}") from exc
+
+
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     has_reputation = _has_reputation_deltas(records)
@@ -304,6 +312,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
         _validate_npc_outputs(repo, plan)
         if has_reputation:
             _validate_reputation_output(repo, plan)
+        _stage_causal_activations(repo, plan, records)
         return plan
 
     trace_index: dict[str, Any] | None = None
@@ -350,6 +359,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     _validate_npc_outputs(repo, plan)
     if has_reputation:
         _validate_reputation_output(repo, plan)
+    _stage_causal_activations(repo, plan, records)
     return plan
 
 
