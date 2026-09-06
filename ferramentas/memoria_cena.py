@@ -343,11 +343,12 @@ def project(docs: dict, *, scope: str, budget: int, base: dict | None = None,
 
 def attach(repo: Path, prepared: dict, *, decode_ticket, encode_ticket,
            participants: list[str] | None = None, base_in_context: Any = None,
+           prospective_participants: list[str] | None = None,
            max_output_bytes: int = 8192) -> dict:
     base = receipt(base_in_context)
     reader, state, records, saved = load_scene(repo)
     if not state:
-        if participants is not None or base is not None:
+        if participants is not None or base is not None or prospective_participants:
             raise SceneMemoryError("memória de cena exige estado canônico")
         return prepared
     payload = decode_ticket(prepared["ticket"])
@@ -376,19 +377,25 @@ def attach(repo: Path, prepared: dict, *, decode_ticket, encode_ticket,
     if selected is not None or saved is not None:
         payload[TICKET_KEY] = meta
         out["ticket"], out["ticket_id"] = encode_ticket(payload)
+    # Um contato com presença/canal revalidados precisa de memória já na abertura.
+    # Projetá-la não confirma entrega nem altera o elenco guardado no ticket.
+    prospective = reader.resolve(prospective_participants, reader.indexes()) if prospective_participants else []
+    memory_people = _ids(sorted(set((people or []) + prospective)))
+    annotations = {"participantes_previstos": prospective} if prospective else {}
     if people is None:
-        pack = {"versao": VERSION, "modo": "completa", "participantes": None,
-                "aprofundamento_necessario": True,
-                "aviso": "Elenco não registrado para esta cena; use --participante <id> ou --sem-participantes. Menção não prova presença."}
+        annotations.update({"participantes": None, "aprofundamento_necessario": True,
+            "aviso": "Elenco não registrado para esta cena; use --participante <id> ou --sem-participantes. Menção não prova presença."})
+    if people is None and not prospective:
+        pack = {"versao": VERSION, "modo": "completa", **annotations}
     else:
-        docs = documents(reader, state, records, people)
+        docs = documents(reader, state, records, memory_people)
         scope = digest([VERSION, (state.get("campanha") or {}).get("sessao_atual"), scene_id, location(state)])
         # Margem de indentação do envelope YAML. O teste final mede a saída real.
-        budget = min(MAX_MEMORY_BYTES, max_output_bytes - size(out) - 300)
-        pack = project(docs, scope=scope, budget=budget, base=base, sources=reader.sources)
+        budget = min(MAX_MEMORY_BYTES, max_output_bytes - size(out) - 300) - (size(annotations) if annotations else 0)
+        pack = {**project(docs, scope=scope, budget=budget, base=base, sources=reader.sources), **annotations}
         while budget >= 400 and size({**out, KEY: pack}) > max_output_bytes:
             budget -= 128
-            pack = project(docs, scope=scope, budget=budget, base=base, sources=reader.sources)
+            pack = {**project(docs, scope=scope, budget=budget, base=base, sources=reader.sources), **annotations}
     if unresolved:
         pack["participantes_sem_memoria"] = unresolved
     out[KEY] = pack

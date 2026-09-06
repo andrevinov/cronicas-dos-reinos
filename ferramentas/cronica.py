@@ -194,10 +194,14 @@ def prepare(*args, **kwargs):
             Path(repo), prepared, contact_pendings, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, max_output_bytes=final_budget,
         )
+        contact = prepared.get(_contacts09.TICKET_KEY)
+        prospective = ([contact["portador"] if contact["meio"] == "mensageiro" else contact["npc_id"]]
+                       if contact else None)
         return _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
             base_in_context=memory_base,
+            prospective_participants=prospective,
             max_output_bytes=final_budget,
         )
     except _contacts09.plans.PlanError as exc:

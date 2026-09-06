@@ -43,6 +43,13 @@ O estado legado pode não possuir elenco estruturado. Nesse caso o pacote inform
 quem estava presente. A próxima declaração factual pelo narrador estabelece o
 registro prospectivamente. Uma lista vazia é diferente de elenco desconhecido.
 
+Contatos autorizados pela NV-09 acrescentam a memória do interlocutor físico ao
+mesmo pacote antes da primeira fala, em `participantes_previstos`. Em um recado,
+esse interlocutor é o portador. Essa projeção não muda o elenco do ticket: somente
+a entrega narrada e concluída pode acrescentar o participante. Adiar o contato
+não o inclui, e conhecer seu interlocutor não torna completo um elenco desconhecido.
+Contrato: `docs/nv09-contatos-sociais.md`.
+
 ## Persistência e mudanças durante o turno
 
 O preparo é read-only. Seu ticket guarda apenas o elenco, o elenco anterior e o
