@@ -48,28 +48,36 @@ class RenSheetSingleSourceTest(unittest.TestCase):
 
     def test_adapter_le_ataques_ca_iniciativa_e_recursos_da_ficha(self) -> None:
         mechanics = ficha_ren.load(self.sheet_path)
-        self.assertEqual(
-            [(item.label, item.attack_bonus, item.damage, item.damage_type) for item in mechanics.attacks.values()],
-            [
-                ("Golpe desarmado", 7, "1d8+4", "contundente"),
-                ("Wakizashi", 7, "1d8+4", "perfurante"),
-                ("Shuriken", 7, "1d4+4", "perfurante"),
-            ],
-        )
+        # A fonte é viva: evolução de nível, equipamento e descanso não são regressões.
+        attacks = self.sheet["combate"]["ataques"]
+        self.assertEqual(len(mechanics.attacks), len(attacks))
+        for profile, source in zip(mechanics.attacks.values(), attacks, strict=True):
+            with self.subTest(ataque=source["nome"]):
+                self.assertEqual(profile.label, source["nome"])
+                self.assertEqual(profile.attack_bonus, source["bonus_ataque"])
+                self.assertEqual(
+                    "".join((profile.damage + " " + profile.damage_type).split()),
+                    "".join(source["dano"].split()),
+                )
         self.assertEqual(
             mechanics.armor_class,
             self.sheet["combate"]["classe_de_armadura"]["valor"],
         )
         self.assertEqual(mechanics.initiative, self.sheet["combate"]["iniciativa"])
+        hp = self.sheet["combate"]["pontos_de_vida"]
+        focus = self.sheet["recursos_de_classe"]["focus"]
         self.assertEqual(
             mechanics.resources["pontos_de_vida"],
-            {"atuais": 45, "maximos": 52, "dados_de_vida": "7d8"},
+            {key: hp[key] for key in ("atuais", "maximos", "dados_de_vida")},
         )
         self.assertEqual(
             mechanics.resources["focus"],
-            {"pontos_atuais": 1, "pontos_maximos": 7, "cd": 14},
+            {key: focus[key] for key in ("pontos_atuais", "pontos_maximos", "cd")},
         )
-        self.assertEqual(mechanics.resources["proficiencia"], {"bonus": 3})
+        self.assertEqual(
+            mechanics.resources["proficiencia"],
+            {"bonus": self.sheet["proficiencia"]["bonus"]},
+        )
 
     def test_adaptador_reflete_edicao_da_ficha_sem_constante_python(self) -> None:
         changed = copy.deepcopy(self.sheet)
