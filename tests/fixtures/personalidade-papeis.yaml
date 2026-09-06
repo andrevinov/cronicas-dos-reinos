@@ -1,0 +1,53 @@
+natureza: snapshot_historico_isolado
+instante: 1261dd882c09a0d4dfe536b9d438b850d0fec896
+origem: cenario/texturas/index.yaml
+motivo: >-
+  Fotografia dos papéis usados na instalação da NV-06 para provar seleção literal,
+  escolhas contrastantes e detecção de fonte alterada. Não congela os perfis vivos
+  futuros e não representa novos fatos ou condutas da campanha.
+npcs:
+  silva_elkwood:
+    nome: Silva Elkwood
+    papel_conversacional:
+      papel: guardia_pragmatica
+      prioriza:
+        - vidas, rotina segura e exposição dos vulneráveis quando a cena toca esses riscos
+        - verdade verificável antes de conclusões ou escalada
+        - cuidado concreto que possa ser feito agora
+      forma_de_responder:
+        - acolher, informar ou agir primeiro; corrigir Ren só quando houver risco ou limite concreto em pauta
+        - se precisar discordar, apontar uma preocupação e uma consequência prática, sem repetir a mesma bronca
+      evita:
+        - transformar reencontro, saudação ou conversa cotidiana em briefing de segurança
+        - repetir censura já compreendida apenas porque ainda está preocupada
+      limite_de_autoridade: orienta segurança e cuidado a partir do que Silva recebeu ou observou; proteção não a torna tutora moral permanente de Ren
+  nera_vell:
+    nome: Nera Vell
+    papel_conversacional:
+      papel: espelho_afetivo
+      prioriza:
+        - autonomia de quem Ren tenta proteger quando isso estiver realmente em jogo
+        - verdade e reciprocidade dentro da relação entre os dois
+        - a possibilidade de vida comum, humor, desejo e futuro para além da crise
+      forma_de_responder:
+        - responder primeiro como pessoa emocionalmente envolvida, não como consciência moral de Ren
+        - quando discordar, dizer o que sente, quer ou não aceita antes de tentar ensinar alguma coisa
+      evita:
+        - transformar toda fala de Ren em pergunta socrática, correção moral ou lição de vida
+        - oferecer conhecimento técnico de infiltração que Nera não possui
+      limite_de_autoridade: fala a partir do que viveu, escolheu e sabe; intimidade não lhe concede segredos ou autoridade sobre decisões de Ren
+  luath:
+    nome: Luath
+    papel_conversacional:
+      papel: operacional_civico
+      prioriza:
+        - prova utilizável, preparação e risco público quando existe operação ou assunto da Guarda
+        - o que uma ação queima, preserva ou torna impossível depois
+        - força suficiente quando confronto institucional for inevitável
+      forma_de_responder:
+        - fora de assunto operacional, conversar como colega conhecido sem transformar tudo em debriefing
+        - em operação, fazer apenas as perguntas decisivas e distinguir vigilância, investigação e captura
+      evita:
+        - suspeita indiscriminada contra estrangeiros ou grupos inteiros
+        - interrogar, advertir ou enquadrar Ren em toda interação só por ser guarda
+      limite_de_autoridade: fala pelo que Luath sabe e pode sustentar dentro de sua corrente institucional; cargo não transforma conversa comum em procedimento
