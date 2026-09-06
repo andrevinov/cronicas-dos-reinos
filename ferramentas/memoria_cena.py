@@ -419,7 +419,7 @@ def resume(repo: Path, result: dict, *, max_output_bytes: int = 8192,
     return out
 
 
-def compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None) -> dict:
+def _compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None) -> dict:
     """Compila para os writers existentes; replay produz exatamente o mesmo delta."""
     meta = payload.get(TICKET_KEY)
     if meta is None:
@@ -484,3 +484,29 @@ def compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None) 
     out["deltas"] = [*out.get("deltas", []),
                      {"alvo": "estado", "op": "set", "caminho": CAST_PATH, "valor": selected}]
     return out
+
+
+def compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None) -> dict:
+    """Revalida elenco/local sem impedir o replay reconhecido pelo writer existente."""
+    writer = _compile_cast(payload, transaction, repo=repo)
+    if repo is None or TICKET_KEY not in payload:
+        return writer
+    import memoria_duravel
+    import transacoes
+    _, state, records, current = load_scene(repo)
+    session = (state.get("campanha") or {}).get("sessao_atual")
+    if type(session) is not int or session < 1:
+        raise SceneMemoryError("conclusão de elenco exige sessão canônica válida")
+    txid = transacoes.stable_transaction_id(writer, session)
+    if memoria_duravel.TRANSACTION_KEY in writer:
+        txid = memoria_duravel.scoped_transaction_id(txid, session)
+    # Não reaplica o elenco: os writers que recebem o retorno conservam suas
+    # próprias verificações de conteúdo/replay. Reutiliza o ledger por sessão.
+    if any(record.get("id") == txid for record in records):
+        return writer
+    if memoria_duravel._already_consolidated(Path(repo), session, txid):
+        return writer
+    meta = payload[TICKET_KEY]
+    if current != cast(meta["anterior"]) or location(state) != meta["local"]:
+        raise SceneMemoryError("preparação de elenco obsoleta; prepare novamente antes de concluir")
+    return writer
