@@ -148,7 +148,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.write(activation.WORLD, state)
         before = self.hashes()
         result = fronteira_mundo.query(self.repo, DATE, "08:30")
-        self.assertTrue(result["interromper"])
+        self.assertTrue(result["interromromper"])
         self.assertEqual(result["fronteira"]["hora"], "08:10")
         self.assertEqual(result["fronteira"]["motivos"], [{"camada": "agentes_leves", "ids": [self.silva]}])
         self.assertEqual(before, self.hashes())
@@ -314,8 +314,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         prepared = cronica.prepare(self.repo, scene_id="causa-fixture", sidequest_signal=None)
         tx = self.fixture.promise("promessa-publica")
         tx["memoria"]["fatos"][0]["compromisso"]["janela"] = {"inicio": {"data": DATE, "hora": "08:10"}}
-        compiled = memoria_duravel.compile_transaction(tx, session=3, existing_commitments={}, meters={})
-        cid = compiled["fato_ids"][0]
+        cid = memoria_duravel.event_id(tx["id"], tx["memoria"]["fatos"][0]["id"], 3)
         result = cronica.conclude(self.repo, prepared["ticket"], tx)
         self.assertIn(cid, self.read(activation.STATE)["compromissos"])
         self.assertEqual([p["agente_leve"] for p in self.pending()], [self.silva])
