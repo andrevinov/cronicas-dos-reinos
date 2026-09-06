@@ -205,8 +205,12 @@ def partition_gate(repo: Path) -> tuple[list[dict], list[dict]] | None:
     acionamentos_leves.require_stable_canon(repo)
     world = mundo.load_world_state(repo)
     control = plans._control(world)
+    import planos_adversarios
+    passive = {item["id"] for item in planos_adversarios.passive(repo, world)}
     contacts, operations = [], []
     for pending in world["pendencias"]:
+        if pending["id"] in passive:
+            continue
         if pending["tipo"] == "resolver_operacao_adversarial":
             operations.append(pending)
             continue

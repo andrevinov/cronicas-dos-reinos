@@ -193,6 +193,14 @@ compartilhados, prazo, bloqueios, sucesso/falha, mudança de estratégia, opera�
 reais, CLI em outro processo, inconsistências, retries e recuperação interrompida.
 As expectativas usam fixtures, não valores mutáveis do save da campanha.
 
+## Operações iniciadas pelo próprio plano — NV-10
+
+Um plano estratégico pode originar seu contrato Task51 sem depender de uma reação
+a sidequest. Objetivo, próximo passo, capacidade, conhecimento, implantação,
+recursos e consequência são revalidados antes do compromisso. Resultado remoto
+só permite adaptação depois de chegar por canal explícito. O fluxo e o schema de
+`origem_plano` estão em `docs/nv10-planos-adversarios.md`.
+
 
 ## Contatos efetivos — NV-09
 
