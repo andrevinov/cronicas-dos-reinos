@@ -65,10 +65,11 @@ def _token(value: Any, length: int = TOKEN_HEX) -> str:
     return hashlib.sha256(_canonical_json(value).encode("utf-8")).hexdigest()[:length]
 
 
-def _pending_sort_key(item: dict[str, Any]) -> tuple[int, int, str]:
+def _pending_sort_key(item: dict[str, Any], *, causal_queued: bool = False) -> tuple[int, int, str]:
     when = item.get("disparado_em") or {}
     instant = mundo.parse_instant(str(when.get("data")), str(when.get("hora")))
-    routine = item.get("tipo") == "reavaliar_agente_leve" and not item.get("acionamento_causal")
+    routine = (causal_queued and item.get("tipo") == "reavaliar_agente_leve"
+               and not item.get("acionamento_causal"))
     return int(routine), instant.minute, str(item.get("id") or "")
 
 
@@ -303,10 +304,11 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
             acionamentos_leves._validate_control(state)
         except ValueError as exc:
             raise BatchBoundaryError(str(exc)) from exc
-    pending = sorted(
-        [item for item in state.get("pendencias") or [] if isinstance(item, dict)],
-        key=_pending_sort_key,
-    )
+    pending = [item for item in state.get("pendencias") or [] if isinstance(item, dict)]
+    # Sem causa nova, conservar exatamente a ordenação temporal anterior.
+    # A prioridade só desloca rotinas quando há condição causal no mesmo lote.
+    causal_queued = any(item.get("acionamento_causal") for item in pending)
+    pending.sort(key=lambda item: _pending_sort_key(item, causal_queued=causal_queued))
     if len(pending) > MAX_BATCH:
         raise BatchBoundaryError(
             f"fronteira possui {len(pending)} pendências; teto do lote é {MAX_BATCH}"
