@@ -27,6 +27,7 @@ import contratos_operacionais as _contracts
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
+import memoria_duravel as _durable
 import progressao_juppongatana
 import pressao_narrativa as _pressure52
 import progresso_sidequests_transacional as _sidequests49
@@ -253,6 +254,11 @@ def _conclude_base(
 
 def conclude(repo: Path, token: str, transaction: dict):
     payload, meta46, meta48, meta52 = _sidequest_meta(token)
+    # Memória vira deltas antes de qualquer writer ou journal de integração.
+    try:
+        transaction = _durable.prepare_transaction(Path(repo), transaction)
+    except _durable.DurableMemoryError as exc:
+        raise _core.CronicaError(f"NV04: {exc}") from exc
     try:
         mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
     except _mechanics.MechanicalContractError as exc:
@@ -403,6 +409,8 @@ def register(
     *,
     revalidate: bool = True,
 ):
+    if _durable.TRANSACTION_KEY in transaction:
+        raise _core.CronicaError("memoria usa cronica concluir; registrar isolado não captura fatos")
     try:
         _sidequests49.require_no_open_journal(Path(repo))
     except _sidequests49.TransactionalSidequestProgressError as exc:

@@ -82,6 +82,7 @@ Durante avanço comum:
 - concluir conforme `contrato_conclusao`; mecânica explícita usa `MECÂNICA — ...`;
 - gasto persistente de Focus precisa ser pré-comprometido no próprio ticket. Atalho comum: `cronica preparar ... --gasto-focus <N>`; caminho completo: `--mecanica-json '<json>'`. Nunca enviar apenas delta negativo. No `concluir`, confirmar a obrigação em `mecanica.resolucoes` e usar `{"alvo":"estado","op":"inc","caminho":"recursos.focus.atuais","valor":-N}`. Exemplo completo e schema: `docs/agente/regras-e-rolagens.md`;
 - prosa completa fica na transcrição; JSONL só resumo/deltas/rolagens necessárias;
+- promessa, informação transmitida, mudança relacional ou marco novo: registrar `memoria={versao:1,fatos:[...]}` no mesmo concluir, com participantes e evidência literal. Schema: `docs/agente/memoria-duravel.md`. Sem fato novo, omitir; não duplicar os deltas compilados;
 - instante: `{"alvo":"tempo","op":"instante","valor":{"data":"<data>","hora":"HH:MM"}}`;
 - `rodape_canonico` verbatim como última linha visível.
 
