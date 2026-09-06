@@ -142,6 +142,40 @@ def finish(
     }
 
 
+def abandon(
+    repo: Path,
+    mission_id: str,
+    *,
+    reason: str,
+    now: mundo.WorldInstant | None = None,
+) -> dict[str, Any]:
+    """Encerra a participação e libera eventual reserva canônica da missão."""
+    current = _now(repo, now)
+    _, _, mission = _mission(repo, mission_id)
+    if mission.get("origem") != "sidequest_emergente":
+        raise CanonBridgeRuntimeError("porta Task42 abandona somente sidequest emergente")
+    try:
+        lifecycle = oportunidades.abandon(
+            repo, mission_id, reason=reason, now=current
+        )
+        bridge = canon_bridge.apply_terminal_transition(
+            repo, lifecycle["missao"], "abandonada", current
+        )
+    except (oportunidades.OpportunityError, canon_bridge.CanonBridgeError) as exc:
+        raise CanonBridgeRuntimeError(str(exc)) from exc
+    return {
+        "ok": True,
+        "resultado": "abandonada",
+        "missao": lifecycle["missao"],
+        "canon_bridge": bridge,
+        "consequencia_automatica": False,
+        "regra": (
+            "abandono libera a reserva e não resolve, recompensa nem pune; "
+            "consequência posterior exige fato canônico"
+        ),
+    }
+
+
 def _pending_origin(catalog: dict[str, Any], event_id: str) -> str:
     return f"agenda:agendamentos.{canon_bridge._schedule_id(catalog, event_id)}"
 
@@ -341,6 +375,9 @@ def main(argv: list[str] | None = None) -> int:
     end.add_argument("mission_id")
     end.add_argument("resultado", choices=["concluida", "falhada", "expirada"])
     end.add_argument("--motivo", required=True)
+    abandoned = sub.add_parser("abandonar")
+    abandoned.add_argument("mission_id")
+    abandoned.add_argument("--motivo", required=True)
     sub.add_parser("reconciliar")
     sub.add_parser("check")
     args = parser.parse_args(argv)
@@ -352,6 +389,8 @@ def main(argv: list[str] | None = None) -> int:
             result = finish(
                 repo, args.mission_id, args.resultado, reason=args.motivo
             )
+        elif args.cmd == "abandonar":
+            result = abandon(repo, args.mission_id, reason=args.motivo)
         elif args.cmd == "reconciliar":
             result = reconcile(repo)
         else:

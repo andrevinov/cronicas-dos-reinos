@@ -175,6 +175,35 @@ class SidequestLifecycleMatrixTest(SidequestLifecycleFixture):
         self.assertEqual(result["resultado"], "recusada")
         self.assertEqual((self.repo / canon_bridge.STATE).read_bytes(), before)
 
+    def test_cenario_abandonada_libera_reserva_sem_criar_consequencia(self):
+        candidate = self.bridge_candidate
+        package = bridge_cases._package_for(candidate)
+        spec = bridge_cases._spec_for(
+            package,
+            candidate,
+            "candidata_ponte",
+            deadline=candidate["ativacao"],
+        )
+        mid = self.install_spec(package, spec, "abandonada")
+        now = self.now_for(package)
+        canon_bridge_runtime.respond(self.repo, mid, "aceitar", now=now)
+        self.assertIsNotNone(
+            canon_bridge._reservation_for_mission(canon_bridge.load_state(self.repo), mid)
+        )
+        world_before = (self.repo / mundo.WORLD_STATE_PATH).read_bytes()
+        result = canon_bridge_runtime.abandon(
+            self.repo,
+            mid,
+            reason="Ren encerrou explicitamente sua participação na missão.",
+            now=now,
+        )
+        self.assertEqual(result["resultado"], "abandonada")
+        self.assertFalse(result["consequencia_automatica"])
+        self.assertIsNone(
+            canon_bridge._reservation_for_mission(canon_bridge.load_state(self.repo), mid)
+        )
+        self.assertEqual(world_before, (self.repo / mundo.WORLD_STATE_PATH).read_bytes())
+
     def test_cenario_expirada_sem_aceite_permanece_sem_consequencia_adversarial(self):
         package = copy.deepcopy(self.package)
         spec = authoring_cases.quest_spec(package)

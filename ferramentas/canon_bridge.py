@@ -43,7 +43,7 @@ RELATION_TO_MODE = {
     "candidata_transformacao": "transformacao",
 }
 RESERVATION_STATES = {"ativa", "aguarda_evidencia"}
-TERMINAL_RELEASE = {"recusada", "falhada", "expirada"}
+TERMINAL_RELEASE = {"recusada", "falhada", "expirada", "abandonada"}
 FORBIDDEN_EVIDENCE_PREFIXES = (
     "narrador/sidequests-emergentes/",
     "narrador/arcos/parte_1/intencoes/",

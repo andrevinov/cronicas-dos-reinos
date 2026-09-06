@@ -51,10 +51,11 @@ MISSION_STATES = {
     "expirada",
     "concluida",
     "falhada",
+    "abandonada",
 }
 OPEN_STATES = {"oferecida", "aceita", "adiada"}
 ACTIVE_STATES = {"aceita"}
-TERMINAL_STATES = {"recusada", "expirada", "concluida", "falhada"}
+TERMINAL_STATES = {"recusada", "expirada", "concluida", "falhada", "abandonada"}
 MAX_HISTORY = 64
 
 
@@ -779,6 +780,55 @@ def finish(
     }
 
 
+def abandon(
+    repo: Path,
+    mission_id: str,
+    *,
+    reason: str,
+    now: mundo.WorldInstant | None = None,
+) -> dict[str, Any]:
+    """Registra a decisão de abandonar uma missão aceita sem fabricar consequência."""
+    reason = text(reason, "motivo")
+    index = load_index(repo)
+    state = load_state(repo, index)
+    current, time_sources = _now(repo, now)
+    pruned = prune_expired(state, current)
+    mission = state["missoes"].get(mission_id)
+    if not isinstance(mission, dict):
+        if pruned:
+            atomic(repo / STATE, state)
+        raise OpportunityError(f"missão inexistente: {mission_id}")
+    if mission["estado"] != "aceita":
+        if pruned:
+            atomic(repo / STATE, state)
+        raise OpportunityError("somente missão aceita pode ser abandonada")
+    mission["estado"] = "abandonada"
+    mission["encerrada_em"] = mundo.instant_parts(current)
+    mission["motivo_encerramento"] = reason
+    _history(
+        state,
+        {
+            "tipo": "missao_abandonada",
+            "id": mission_id,
+            "de": "aceita",
+            "para": "abandonada",
+            "em": mundo.instant_parts(current),
+        },
+    )
+    atomic(repo / STATE, state)
+    return {
+        "ok": True,
+        "resultado": "abandonada",
+        "missao": mission,
+        "consequencia_automatica": False,
+        "regra": (
+            "abandono encerra participação; consequências possíveis ainda exigem "
+            "acontecimento factual pelos writers existentes"
+        ),
+        "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), *time_sources],
+    }
+
+
 def reopen(
     repo: Path,
     mission_id: str,
@@ -959,6 +1009,12 @@ def main() -> int:
     p_end.add_argument("--data")
     p_end.add_argument("--hora")
 
+    p_abandon = sub.add_parser("abandonar")
+    p_abandon.add_argument("id")
+    p_abandon.add_argument("--motivo", required=True)
+    p_abandon.add_argument("--data")
+    p_abandon.add_argument("--hora")
+
     p_reopen = sub.add_parser("reabrir")
     p_reopen.add_argument("id")
     p_reopen.add_argument("--motivo", required=True)
@@ -1004,6 +1060,13 @@ def main() -> int:
                 repo,
                 args.id,
                 args.resultado,
+                reason=args.motivo,
+                now=_instant_arg(args.data, args.hora),
+            )
+        elif args.cmd == "abandonar":
+            result = abandon(
+                repo,
+                args.id,
                 reason=args.motivo,
                 now=_instant_arg(args.data, args.hora),
             )

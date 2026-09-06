@@ -795,6 +795,15 @@ def normalize_spec(
         raise EmergentSidequestAuthoringError("segredos excede orçamento")
     normalized["segredos"] = [_text(item, f"segredos[{pos}]") for pos, item in enumerate(secrets)]
     normalized["bifurcacoes"] = _normalize_branches(spec["bifurcacoes"])
+    if package.get("causa_personagem") is not None:
+        try:
+            import sidequests_personagens
+
+            sidequests_personagens.validate_authoring_link(
+                package["causa_personagem"], normalized
+            )
+        except sidequests_personagens.CharacterSidequestError as exc:
+            raise EmergentSidequestAuthoringError(str(exc)) from exc
     _agency_scan(normalized)
     return package, normalized, sources
 
@@ -962,7 +971,7 @@ def _mission_record(
     *, qid: str, spec: dict[str, Any], package: dict[str, Any],
     preparation_id: str, offer_scene_id: str,
 ) -> dict[str, Any]:
-    return {
+    mission = {
         "id": mission_id(qid),
         "estado": "oferecida",
         "origem": "sidequest_emergente",
@@ -981,6 +990,9 @@ def _mission_record(
         "preparacao_id": preparation_id,
         "recompensas_declaradas": [item["id"] for item in spec["recompensas"]],
     }
+    if package.get("causa_personagem") is not None:
+        mission["causa_personagem"] = copy.deepcopy(package["causa_personagem"])
+    return mission
 
 
 def materialize(

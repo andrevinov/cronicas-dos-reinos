@@ -591,6 +591,13 @@ def build_parser() -> argparse.ArgumentParser:
     prepare_parser.add_argument("--sidequest-ancora-tipo")
     prepare_parser.add_argument("--sidequest-ancora")
     prepare_parser.add_argument("--sidequest-npc")
+    prepare_parser.add_argument(
+        "--sidequest-plano",
+        help=(
+            "NV-11: usa a causa dirigida declarada em um plano de personagem; "
+            "é incompatível com origem/âncora/npc manuais"
+        ),
+    )
 
     session = root.add_parser(
         "sessao",
@@ -628,6 +635,7 @@ def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
         "ancora_tipo": getattr(args, "sidequest_ancora_tipo", None),
         "ancora": getattr(args, "sidequest_ancora", None),
         "npc_id": getattr(args, "sidequest_npc", None),
+        "plano_id": getattr(args, "sidequest_plano", None),
     }
     enabled = bool(getattr(args, "oportunidade_sidequest", False))
     declined = bool(getattr(args, "sem_oportunidade_sidequest", False))
@@ -642,6 +650,23 @@ def _sidequest_signal_from_args(args: argparse.Namespace) -> dict | None:
                 "flags --sidequest-* não podem acompanhar --sem-oportunidade-sidequest"
             )
         return None
+    if fields["plano_id"] is not None:
+        manual = {
+            key: fields[key]
+            for key in ("origem_tipo", "origem_id", "ancora_tipo", "ancora", "npc_id")
+            if fields[key] is not None
+        }
+        if manual:
+            raise _core.CronicaError(
+                "--sidequest-plano não pode acompanhar origem, âncora ou NPC manuais"
+            )
+        return {
+            "plano_id": fields["plano_id"],
+            "local_id": args.local,
+            "periculosidade": args.periculosidade or "media",
+            "tier": args.tier,
+        }
+    fields.pop("plano_id")
     if fields["origem_id"] is None:
         fields["origem_id"] = args.cena_id
     if fields["npc_id"] is None and len(args.npc or []) == 1:

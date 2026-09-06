@@ -210,3 +210,11 @@ Depois da tentativa e da chegada comprovada, `cronica preparar` pode encaminhá-
 sucesso`: o `cronica concluir` registra a mensagem e deixa o plano em
 `aguarda_resposta`, sem aceitar o pedido por Ren. Contrato, canais, adiamento,
 recuperação e orçamento: `docs/nv09-contatos-sociais.md`.
+
+## Sidequests nascidas do plano — NV-11
+
+Uma necessidade, conflito ou impedimento dirigido pode alimentar as Tasks40–49
+sem criar catálogo paralelo. O campo opcional `oportunidade_sidequest` pertence
+ao passo; o preparo usa `--sidequest-plano <id>`, e oferta, resposta, progresso e
+terminal continuam no lifecycle existente. Contrato e exemplos:
+`docs/nv11-sidequests-personagens.md`.
