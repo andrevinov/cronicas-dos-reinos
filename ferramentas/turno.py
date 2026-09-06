@@ -368,6 +368,10 @@ def detect_world_checkpoint(
 
         gap = after.minute - cursor.minute
         agenda = mundo.load_agenda(repo)
+        if any(item["tipo"] == "avaliar_plano_personagem"
+               for item in mundo.collect_triggers(agenda, cursor, after)):
+            return {"motivo": "prazo_plano", "minutos_desde_checkpoint": gap,
+                    "tempo_efetivo": mundo.instant_parts(after)}
         dawn_text = str(agenda["hora_amanhecer"])
         match = re.fullmatch(r"([01]?\d|2[0-3]):([0-5]\d)", dawn_text)
         if not match:
@@ -456,6 +460,16 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
     resolution_id = authorization.get("pendencia_resolvida")
 
     prior_records = [item for item in existing_records if item.get("id") != transaction_id]
+    import planos_personagens
+    plan_events = planos_personagens.events(record)
+    if plan_events:
+        try:
+            if consolidated:
+                planos_personagens.verify_replay(repo, session, record)
+            else:
+                planos_personagens.validate_registration(repo, normalized, record, prior_records)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise TransactionError(f"plano de personagem: {exc}") from exc
     temporal_trigger = None if consolidated else detect_world_checkpoint(repo, prior_records, record)
 
     if need_pending:
@@ -478,7 +492,7 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         _atomic_write(transcript_path, candidate_transcript)
 
     checkpoint_world: dict[str, Any] | None = None
-    force_resolution_checkpoint = resolution_id is not None and not consolidated
+    force_resolution_checkpoint = (resolution_id is not None or bool(plan_events)) and not consolidated
     if temporal_trigger is not None or force_resolution_checkpoint:
         checkpoint_result = _run_scene_checkpoint(repo)
         world = checkpoint_result.get("mundo") or {}
@@ -487,7 +501,7 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
             "motivo": (
                 temporal_trigger["motivo"]
                 if temporal_trigger is not None
-                else "resolucao_pendencia_mundo"
+                else "continuidade_plano" if plan_events else "resolucao_pendencia_mundo"
             ),
             "novas_pendencias": len(world.get("novas_pendencias") or []),
             "agentes_reconsiderar": world.get("agentes_reconsiderar") or [],

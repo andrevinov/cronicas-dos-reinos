@@ -925,8 +925,11 @@ def commit_group(
     blockers: Any = None,
     *,
     fail_after: int | None = None,
+    validate_only: bool = False,
 ) -> dict[str, Any]:
-    recovered = _recover_open(repo, group_id, fail_after)
+    if validate_only and (repo / JOURNAL).exists():
+        raise ConcurrentOperationError("recuperar journal antes de preparar um lote misto")
+    recovered = None if validate_only else _recover_open(repo, group_id, fail_after)
     if recovered is not None:
         return {**recovered, "resultado": "recuperado"}
     contract, source = _load_group(repo, group_id)
@@ -1075,6 +1078,8 @@ def commit_group(
         "staged": staged,
         "resultado": result,
     }
+    if validate_only:
+        return {**result, "mutante": False}
     _atomic(repo / JOURNAL, journal)
     _install_journal(repo, journal, fail_after)
     barreira_mundo.sync(repo)
@@ -1152,12 +1157,17 @@ def register_roll(repo: Path, operation_id: str, roll_id: str) -> dict[str, Any]
     return {"ok": True, "resultado": "registrada", "operacao_id": operation_id, **expected}
 
 
-def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str) -> dict[str, Any]:
+def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str, *, desfecho: str | None = None) -> dict[str, Any]:
     contract, operation, row, _ = _operation_context(repo, operation_id)
     normalized_result = _text(result, "resultado", minimum=12)
     causal = _proof(repo, proof, "prova_resultado")
+    if desfecho is not None and desfecho not in {"sucesso", "falha", "parcial"}:
+        raise ConcurrentOperationError("desfecho deve ser sucesso, falha ou parcial")
+    resolution = {"resultado": normalized_result, "prova": causal}
+    if desfecho is not None:
+        resolution["desfecho"] = desfecho
     if row["estado"] == "resolvida":
-        if row["resolucao"] != {"resultado": normalized_result, "prova": causal}:
+        if row["resolucao"] != resolution:
             raise ConcurrentOperationError("operação já resolvida com resultado divergente")
         return {"ok": True, "resultado": "ja_resolvida", "operacao_id": operation_id}
     if row["estado"] != "comprometida":
@@ -1172,7 +1182,7 @@ def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str) ->
     group_id = contract["grupo_operacoes_id"]
     mutable = state["grupos"][group_id]["operacoes"][operation_id]
     mutable["estado"] = "resolvida"
-    mutable["resolucao"] = {"resultado": normalized_result, "prova": causal}
+    mutable["resolucao"] = resolution
     for key, reservation in list(state["reservas_exclusivas"].items()):
         if reservation.get("operacao_id") == operation_id:
             del state["reservas_exclusivas"][key]
@@ -1377,6 +1387,7 @@ def main(argv: list[str] | None = None) -> int:
     resolve = sub.add_parser("resolver")
     resolve.add_argument("operacao_id")
     resolve.add_argument("--resultado", required=True)
+    resolve.add_argument("--desfecho", choices=("sucesso", "falha", "parcial"))
     deliver = sub.add_parser("entregar-informacao")
     deliver.add_argument("operacao_id")
     deliver.add_argument("canal_id")
@@ -1398,7 +1409,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "registrar-rolagem":
             result = register_roll(repo, args.operacao_id, args.roll_id)
         elif args.cmd == "resolver":
-            result = resolve_operation(repo, args.operacao_id, _stdin(), args.resultado)
+            result = resolve_operation(repo, args.operacao_id, _stdin(), args.resultado, desfecho=args.desfecho)
         elif args.cmd == "entregar-informacao":
             result = deliver_information(repo, args.operacao_id, args.canal_id, args.fatos, _stdin())
         elif args.cmd == "percepcao-ren":

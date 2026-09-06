@@ -73,6 +73,20 @@ Eventos canonicos datados nunca aceitam `sem_mudanca`. O lote somente os separa 
 itens triviais. A materializacao continua exigindo transacao `modo: mundo` e a
 conclusao normal pela barreira.
 
+### `dar_continuidade_plano` (NV-08)
+
+Plano executável não aceita `sem_mudanca` nem conclusão genérica. O mesmo lote
+recebe `planos`, com evento escolhido pelo narrador, revisão e fato literal. O
+compilador não decide a ação: valida a escolha e delega **uma transação de mundo**
+ao writer/journal existentes, mesmo quando há vários personagens. Recursos,
+resultados e próximo prazo são instalados juntos. Intenção, tentativa e resultado
+são estados distintos. Uma lacuna exige bloqueio registrado, não sucesso implícito.
+
+O contrato histórico “lote não cria fato” permanece válido para `sem_mudanca`;
+não autoriza omitir o registro dos eventos explícitos deste caminho. Não há nova
+chamada por NPC, scheduler ou arquivo canônico paralelo. Ver
+[`nv08-planos-personagens.md`](nv08-planos-personagens.md).
+
 ### `comprometer_grupo_operacoes`
 
 Grupos adversariais Task51 nunca aceitam `sem_mudanca`. A preparacao projeta

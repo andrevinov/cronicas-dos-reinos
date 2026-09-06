@@ -30,6 +30,7 @@ import _rastros_core as _rastros_base
 import reputacao_publica
 import tempo_transacional
 import transacoes
+import planos_personagens
 
 for _name in dir(_base):
     if not _name.startswith("__"):
@@ -139,7 +140,7 @@ def _prepared_pending(
     for record in result:
         if record.get("sessao") != session or record.get("id") not in process_ids:
             continue
-        deltas = list(record.get("deltas") or [])
+        deltas = [d for d in record.get("deltas", []) if not planos_personagens.touches(d)]
         if strip_traces:
             deltas = [
                 delta
@@ -307,7 +308,8 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
 
     trace_records = [record for record in records if _trace_delta_ids(record)]
     atomic_instants = tempo_transacional.atomic_count(records)
-    if not trace_records and not atomic_instants:
+    has_plans = any(planos_personagens.events(record) for record in records)
+    if not trace_records and not atomic_instants and not has_plans:
         plan = _original_build_plan(repo, kind)
         _validate_npc_outputs(repo, plan)
         if has_reputation:
@@ -359,6 +361,11 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     _validate_npc_outputs(repo, plan)
     if has_reputation:
         _validate_reputation_output(repo, plan)
+    if has_plans:
+        try:
+            planos_personagens.stage(repo, plan, records)
+        except (ValueError, OSError, _base.yaml.YAMLError) as exc:
+            raise ConsolidationError(f"plano de personagem: {exc}") from exc
     _stage_causal_activations(repo, plan, records)
     return plan
 
