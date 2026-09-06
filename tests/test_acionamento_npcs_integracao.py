@@ -148,7 +148,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.write(activation.WORLD, state)
         before = self.hashes()
         result = fronteira_mundo.query(self.repo, DATE, "08:30")
-        self.assertTrue(result["interromromper"])
+        self.assertTrue(result["interromper"])
         self.assertEqual(result["fronteira"]["hora"], "08:10")
         self.assertEqual(result["fronteira"]["motivos"], [{"camada": "agentes_leves", "ids": [self.silva]}])
         self.assertEqual(before, self.hashes())
