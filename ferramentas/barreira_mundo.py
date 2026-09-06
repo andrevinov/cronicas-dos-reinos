@@ -502,7 +502,7 @@ def main(argv: list[str] | None = None) -> int:
     done.add_argument("--linha")
     done.add_argument("--metodo")
     done.add_argument("--sem-mudanca", action="store_true")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     repo = args.repo.resolve()
     try:
         if args.command == "status":
