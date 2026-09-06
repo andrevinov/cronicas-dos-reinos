@@ -8,6 +8,7 @@ Condições concretas da NV-07 usam a mesma fila, sem executar ações automatic
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import hashlib
 import json
 import sys
@@ -438,8 +439,18 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     open_pending = _light_pending(world_state)
     open_agents = {str(item.get("agente_leve")) for item in open_pending if item.get("agente_leve")}
     open_ids = {str(item.get("id")) for item in open_pending if item.get("id")}
-    completed_ids = {str(item.get("id")) for item in world_state.get("concluidas_recentes") or []
-                     if isinstance(item, dict) and item.get("id")}
+    # Uma rotina suspensa por prazo permanece trabalho aberto, não uma nova cadência.
+    control = world_state.get("acionamentos_leves") or {}
+    suspended = (control.get("rotinas_suspensas") or {}).values()
+    open_agents.update(str(item["agente_leve"]) for item in suspended)
+    open_ids.update(str(item["id"]) for item in suspended)
+    open_agents.update((control.get("aguardando") or {}).keys())
+    completed_ids = {
+        str(item.get("id"))
+        for item in world_state.get("concluidas_recentes") or []
+        if isinstance(item, dict) and item.get("id")
+    }
+
     state_changed = False
     candidates: list[tuple[mundo.WorldInstant, int, str, dict[str, Any]]] = []
     for agent_id, meta in index["agentes"].items():
@@ -529,14 +540,48 @@ def _completed_for(world_state: dict[str, Any], pending_id: str) -> dict[str, An
     return None
 
 
+def _sync_causal_queue(repo: Path, world_state: dict[str, Any]) -> dict[str, Any]:
+    if "acionamentos_leves" not in world_state:
+        return world_state
+    import barreira_mundo
+    try:
+        barreira_mundo.sync(repo, world_state)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise LightAgentError(f"reconciliar acionamentos: {exc}") from exc
+    return mundo.load_world_state(repo)
+
+
 def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[str, Any]:
-    """Instala cache antes da conclusão; queda entre escritas mantém a barreira."""
+    """Registra no-op explícito e instala cache antes de remover a pendência.
+
+    A ordem é proposital: se o processo cair entre as duas escritas, a pendência
+    continua bloqueando o avanço e um retry termina a operação. Cache sozinho
+    nunca cria acontecimento nem remove a barreira.
+    """
+    # O mundo instalado pode ainda ser a imagem anterior, sem a chave causal.
+    # O journal é a autoridade do bloqueio, antes até de ler índice ou estado.
+    import acionamentos_leves
+    try:
+        acionamentos_leves.require_stable_canon(repo)
+    except (ValueError, OSError) as exc:
+        raise LightAgentError(f"acionamento causal: {exc}") from exc
     pending_id = _text(pending_id, "id da pendência")
     index = load_index(repo)
     if _schema(index) != 2:
         raise LightAgentError("concluir-noop exige schema_agentes_leves: 2")
     state = load_state(repo, index)
     world_state = mundo.load_world_state(repo)
+    if "acionamentos_leves" in world_state:
+        try:
+            acionamentos_leves._validate_control(world_state)
+            # Validar a reposição antes de gravar o cache. A fila instalada
+            # abaixo já contém o próximo trabalho, mesmo se o marcador falhar.
+            preview = deepcopy(world_state)
+            preview["pendencias"] = [p for p in preview["pendencias"] if p.get("id") != pending_id]
+            acionamentos_leves.dispatch(preview, index)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise LightAgentError(f"acionamento causal: {exc}") from exc
+
     matches = [item for item in _light_pending(world_state) if item.get("id") == pending_id]
     if not matches:
         completed = _completed_for(world_state, pending_id)
@@ -544,10 +589,22 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
                              if isinstance(item.get("cache_negativo"), dict)
                              and item["cache_negativo"].get("pendencia_origem") == pending_id), None)
         if completed is not None and cached_agent is not None:
-            return {"ok": True, "ja_concluida": True, "agente_leve": cached_agent, "concluida": completed,
-                    "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), mundo.WORLD_STATE_PATH.as_posix()]}
+            _sync_causal_queue(repo, world_state)
+            return {
+                "ok": True,
+                "ja_concluida": True,
+                "agente_leve": cached_agent,
+                "concluida": completed,
+                "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), mundo.WORLD_STATE_PATH.as_posix()],
+            }
         raise LightAgentError(f"pendência leve não encontrada: {pending_id}")
     pending = matches[0]
+    if pending.get("acionamento_causal"):
+        import barreira_mundo
+        try:
+            barreira_mundo._validate_autonomous_noop(note)
+        except barreira_mundo.WorldPendingBarrierError as exc:
+            raise LightAgentError(str(exc)) from exc
     agent_id = _text(pending.get("agente_leve"), "pendência.agente_leve")
     meta = index["agentes"].get(agent_id)
     if not isinstance(meta, dict):
@@ -572,6 +629,8 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     world_state = mundo.load_world_state(repo)
     still_pending = [item for item in _light_pending(world_state) if item.get("id") == pending_id]
     if still_pending:
+        if still_pending[0].get("acionamento_causal") != pending.get("acionamento_causal"):
+            raise LightAgentError("causas mudaram durante concluir-noop; refaça a avaliação")
         pending = still_pending[0]
         if pending.get(acionamento_npcs.CAUSES) != assessed_causes or pending.get(acionamento_npcs.RESOLUTION):
             raise LightAgentError("causas da pendência mudaram durante a conclusão; refaça a avaliação")
@@ -586,16 +645,24 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
         if note:
             completed["nota"] = _text(note, "nota")
         world_state["concluidas_recentes"].append(completed)
-        world_state["concluidas_recentes"] = world_state["concluidas_recentes"][-mundo.MAX_RECENT_COMPLETED:]
-        try:
-            world_state = acionamento_npcs.rebalance(world_state, index)
-        except acionamento_npcs.NpcActivationError as exc:
-            raise LightAgentError(str(exc)) from exc
+        world_state["concluidas_recentes"] = world_state["concluidas_recentes"][
+            -mundo.MAX_RECENT_COMPLETED:
+        ]
+        if "acionamentos_leves" in world_state:
+            import acionamentos_leves
+            try:
+                acionamentos_leves.dispatch(world_state, index)
+            except (ValueError, OSError, yaml.YAMLError) as exc:
+                raise LightAgentError(f"repor vagas causais: {exc}") from exc
         mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
     else:
         completed = _completed_for(world_state, pending_id)
         if completed is None:
-            raise LightAgentError("pendência desapareceu durante concluir-noop sem conclusão rastreável")
+            raise LightAgentError(
+                "pendência desapareceu durante concluir-noop sem conclusão rastreável"
+            )
+
+    world_state = _sync_causal_queue(repo, world_state)
     return {
         "ok": True, "ja_concluida": False, "agente_leve": agent_id,
         "cache_negativo": cache, "concluida": completed,

@@ -153,14 +153,11 @@ def load_status(repo: Path) -> dict[str, Any]:
 
 def sync(repo: Path, state: dict[str, Any] | None = None) -> dict[str, Any]:
     state = state or mundo.load_world_state(repo)
-    import acionamento_npcs
+    import acionamentos_leves
     try:
-        refilled = acionamento_npcs.refill(repo, state)
-    except (OSError, ValueError) as exc:
-        raise WorldPendingBarrierError(str(exc)) from exc
-    if refilled != state:
-        mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, refilled)
-    state = refilled
+        state = acionamentos_leves.reconcile(repo, state)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise WorldPendingBarrierError(f"acionamento causal: {exc}") from exc
     payload = payload_from_state(state)
     _atomic_write(repo / BARRIER_PATH, payload)
     return {
@@ -338,6 +335,12 @@ def conclude(
     no_change: bool = False,
 ) -> dict[str, Any]:
     pending = _pending_item(repo, pending_id)
+    if pending.get("acionamento_causal"):
+        import acionamentos_leves
+        try:
+            acionamentos_leves.require_stable_canon(repo)
+        except acionamentos_leves.ActivationError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
     if pending.get("tipo") in {
         "resolver_reacao_sidequest",
         "resolver_grupo_operacoes",
@@ -347,19 +350,8 @@ def conclude(
             "reação/operação adversarial não aceita conclusão genérica; use sua "
             "ferramenta de domínio para compromisso ou resultado factual"
         )
-    import acionamento_npcs
-    if pending.get(acionamento_npcs.CAUSES) and not pending.get(acionamento_npcs.RESOLUTION):
-        if not no_change:
-            raise WorldPendingBarrierError(
-                "condição de NPC exige avaliação explícita pelo lote ou transação de mundo; "
-                "para no-op, use --sem-mudanca e --nota"
-            )
-        import agentes_leves
-        try:
-            result = agentes_leves.conclude_noop(repo, pending_id, note)
-        except agentes_leves.LightAgentError as exc:
-            raise WorldPendingBarrierError(str(exc)) from exc
-        return {**result, "barreira": sync(repo)}
+    if pending.get("acionamento_causal") and transaction_id is None:
+        _validate_autonomous_noop(note)
     canonical_event = _canonical_event(repo, pending)
     try:
         candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)
@@ -458,6 +450,15 @@ def conclude(
             "motivo": "pendência sem candidato elegível de pressão",
         }
 
+    if pending.get("acionamento_causal") and not has_action and no_change:
+        # Reutilizar o mesmo writer recuperável, inclusive a reposição de vagas.
+        # Os gates canônicos e de pressão acima continuam obrigatórios.
+        import agentes_leves
+        try:
+            result = agentes_leves.conclude_noop(repo, pending_id, note)
+        except agentes_leves.LightAgentError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
+        return {**result, "pressao_ravens_bluff": pressure_result, "barreira": load_status(repo)}
     result = mundo.conclude(repo, pending_id, note)
     barrier = sync(repo)
     return {**result, "pressao_ravens_bluff": pressure_result, "barreira": barrier}
@@ -469,6 +470,9 @@ def check(repo: Path) -> dict[str, Any]:
         status = load_status(repo)
         if status.get("configurado"):
             state = mundo.load_world_state(repo)
+            import acionamentos_leves
+            if acionamentos_leves.KEY in state:
+                acionamentos_leves._validate_control(state)
             expected = payload_from_state(state)
             actual = {
                 "schema_barreira_mundo": SCHEMA,
@@ -479,7 +483,7 @@ def check(repo: Path) -> dict[str, Any]:
             }
             if actual != expected:
                 errors.append("marcador runtime diverge de narrador/mundo/estado.yaml")
-    except (WorldPendingBarrierError, mundo.WorldEngineError) as exc:
+    except (ValueError, OSError, yaml.YAMLError) as exc:
         errors.append(str(exc))
     return {"ok": not errors, "erros": errors}
 

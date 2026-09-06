@@ -179,3 +179,15 @@ abre internamente. Portanto:
 
 Esses limites evitam que a ferramenta de inventário se transforme
 acidentalmente em um mecanismo de alteração da suíte.
+
+## Regressões dos acionamentos causais
+
+`tests/test_acionamentos_leves.py` exercita o contrato descrito em
+`docs/agente/acionamentos-causais.md` com cenários temporários, não com o save vivo.
+Além dos resultados individuais, conferir os erros completos no relatório de
+`--medir`: uma falha no checkpoint pode ser encapsulada pelo writer, e a causa
+original precisa ser examinada antes de alterar expectativas ou implementação.
+
+Usar o artifact JSON para localizar o teste e seu traceback mantém o diagnóstico
+reproduzível mesmo quando o log verboso da suíte é grande. Não remover testes,
+reduzir o discovery nem alterar os workflows para esconder essas falhas.

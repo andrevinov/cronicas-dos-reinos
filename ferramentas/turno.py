@@ -41,7 +41,9 @@ Passagens pequenas de tempo continuam no hot path comum. Quando o tempo efetivo
 acumula pelo menos duas horas desde o último cursor do Mundo Vivo, ou atravessa o
 amanhecer configurado, o próprio registro promove uma fronteira de cena: primeiro
 persiste transcrição + delta, depois consolida o cânone e só então sincroniza o
-motor do mundo. Não há checkpoint extra para uma caminhada de poucos minutos.
+motor do mundo. Não há checkpoint extra para uma caminhada de poucos minutos
+sem condição relevante; prazos exatos e mudanças em dependências leves também
+promovem essa mesma fronteira, sem chamada independente de orquestração.
 
 Depois de persistir e de qualquer checkpoint automático, o CLI emite por último
 `RODAPE_CANONICO — ...`. A linha é derivada do runtime efetivo e deve ser copiada
@@ -86,7 +88,7 @@ TIME_PATH = Path("estado/tempo.yaml")
 LEDGER_NAME = "consolidacoes.jsonl"
 
 # Aviso heurístico, nunca bloqueio. A meta é impedir que um painel completo de
-# estado seja copiado para a transcrição a cada avanço sem necessidade.
+# estado seja copiado para a transcrição a cada avanço.
 _STATUS_PATTERNS = {
     "pv": re.compile(r"(?:\bPV\b|pontos? de vida)", re.IGNORECASE),
     "ca": re.compile(r"(?:\bCA\b|classe de armadura)", re.IGNORECASE),
@@ -327,20 +329,20 @@ def detect_world_checkpoint(
     prior_records: Iterable[dict[str, Any]],
     current_record: dict[str, Any],
 ) -> dict[str, Any] | None:
-    """Detecta marco temporal sem tool call extra e sem abrir fragmentos de agentes.
+    """Detecta marco temporal/causal sem tool call independente.
 
     O relógio de referência é o cursor do Mundo Vivo, não apenas a duração deste
-    turno. Assim vários avanços pequenos acumulam e o primeiro que completar duas
-    horas promove o checkpoint.
+    turno. Vários avanços pequenos acumulam; prazos exatos não aguardam duas horas.
     """
-    import acionamento_npcs
-    prior_records = [r for r in prior_records
-                     if r.get("sessao", current_record.get("sessao")) == current_record.get("sessao")]
+    prior_records = list(prior_records)
+    import acionamentos_leves
     try:
-        causal = acionamento_npcs.changed_dependency(repo, current_record, prior_records)
-    except (OSError, ValueError, yaml.YAMLError) as exc:
-        raise TransactionError(f"não foi possível avaliar dependência de NPC: {exc}") from exc
-    if not _has_time_delta(current_record) and not causal:
+        causal = acionamentos_leves.checkpoint_trigger(repo, prior_records, current_record)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise TransactionError(f"não foi possível avaliar acionamento causal: {exc}") from exc
+    if causal is not None:
+        return causal
+    if not _has_time_delta(current_record):
         return None
     required = [repo / TIME_PATH, repo / WORLD_AGENDA_PATH, repo / WORLD_STATE_PATH]
     if not all(path.is_file() for path in required):
@@ -416,9 +418,7 @@ def _run_scene_checkpoint(repo: Path) -> dict[str, Any]:
 
 
 def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, Any]:
-    # A validação ON/OFF/RECALL ocorre dentro de normalize_transaction e, portanto,
-    # antes de qualquer leitura destinada a preparar uma escrita ou de qualquer
-    # mutação do transcript/buffer.
+    # A validação ON/OFF/RECALL ocorre antes de qualquer mutação.
     normalized, session = normalize_transaction(repo, transaction)
     record = build_pending_record(normalized, session)
     transaction_id = record["id"]
@@ -477,8 +477,7 @@ def register_transaction(repo: Path, transaction: dict[str, Any]) -> dict[str, A
         _append_block(transcript, render_transcript_block(normalized)) if need_transcript else transcript
     )
 
-    # Escrevemos o delta primeiro. Se o processo cair antes da transcrição, a
-    # repetição da mesma entrada detecta o ID e repara apenas a transcrição.
+    # Delta primeiro; retry repara a transcrição sem duplicar o evento.
     if need_pending:
         _atomic_write(pending_path, candidate_pending)
     if need_transcript:
