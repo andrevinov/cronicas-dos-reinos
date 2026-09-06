@@ -331,6 +331,12 @@ def conclude(
     no_change: bool = False,
 ) -> dict[str, Any]:
     pending = _pending_item(repo, pending_id)
+    if pending.get("acionamento_causal"):
+        import acionamentos_leves
+        try:
+            acionamentos_leves.require_stable_canon(repo)
+        except acionamentos_leves.ActivationError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
     if pending.get("tipo") in {
         "resolver_reacao_sidequest",
         "resolver_grupo_operacoes",
@@ -440,6 +446,15 @@ def conclude(
             "motivo": "pendência sem candidato elegível de pressão",
         }
 
+    if pending.get("acionamento_causal") and not has_action and no_change:
+        # Reutilizar o mesmo writer recuperável, inclusive a reposição de vagas.
+        # Os gates canônicos e de pressão acima continuam obrigatórios.
+        import agentes_leves
+        try:
+            result = agentes_leves.conclude_noop(repo, pending_id, note)
+        except agentes_leves.LightAgentError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
+        return {**result, "pressao_ravens_bluff": pressure_result, "barreira": load_status(repo)}
     result = mundo.conclude(repo, pending_id, note)
     barrier = sync(repo)
     return {**result, "pressao_ravens_bluff": pressure_result, "barreira": barrier}
@@ -487,7 +502,7 @@ def main(argv: list[str] | None = None) -> int:
     done.add_argument("--linha")
     done.add_argument("--metodo")
     done.add_argument("--sem-mudanca", action="store_true")
-    args = parser.parse_args(argv)
+    args = parser.parse_args()
     repo = args.repo.resolve()
     try:
         if args.command == "status":
