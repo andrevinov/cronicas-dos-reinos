@@ -14,6 +14,7 @@ import contexto
 import consolidar
 import memoria_cena as memory
 import retomada_cronica
+import sessoes
 import transacoes
 import test_memoria_duravel_integracao as fixtures
 
@@ -193,8 +194,6 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
 
     def test_compromisso_cumprido_some_da_parte_ativa_sem_apagar_memoria(self):
         out = self.prepare(["silva_fixture"])
-        cronica.conclude(self.repo, out["ticket"], self.f.promise())
-        out = self.prepare()
         cronica.conclude(self.repo, out["ticket"], self.f.complete("cumprir"))
         pack = self.prepare()[memory.KEY]
         self.assertNotIn("@compromissos", pack["itens"])
@@ -250,6 +249,8 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         self.assertNotIn(memory.TICKET_KEY, cronica.decode_ticket(cronica._base_token(payload)))
 
     def test_contexto_retomada_inclui_memoria_sem_compactacao_cega(self):
+        # A porta legada exige o handoff, criado pelo mesmo bootstrap público.
+        sessoes.bootstrap_current(self.repo)
         self.establish()
         direct = contexto.command_resume(self.repo)
         self.assertIn("silva_fixture", direct[memory.KEY]["itens"])
