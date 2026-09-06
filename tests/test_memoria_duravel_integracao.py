@@ -65,7 +65,7 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
         return (data.get("compromissos") or {}).get("itens", {})
 
     def promise_record(self, tid="promessa"):
-        eid = memory.event_id(tid, "fato")
+        eid = memory.event_id(tid, "fato", 3)
         record = deepcopy(self.active()[eid])
         record.pop("situacao_temporal", None)
         return eid, record
@@ -88,7 +88,7 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
         after = self.hashes()
         self.assertEqual({p for p in before.keys() | after.keys() if before.get(p) != after.get(p)},
                          {"runtime/eventos-pendentes.jsonl", "sessoes/003/transcricao.md"})
-        self.assertIn(memory.event_id("promessa", "fato"), self.active())
+        self.assertIn(memory.event_id("promessa", "fato", 3), self.active())
         self.assertEqual(result["transacao"]["deltas"], 2)
         self.assertEqual(self.relation()["memorias_importantes"][0]["operacao"], "registrar")
 
@@ -126,8 +126,8 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
         tx = self.complete("substituir", "troca")
         tx["memoria"]["fatos"][0]["compromisso"] = {"tipo": "compromisso", "resumo": "Devolver o selo a Silva."}
         cronica.conclude(self.repo, self.token, tx)
-        self.assertEqual(list(self.active()), [memory.event_id("troca", "fato")])
-        self.assertEqual(self.active()[memory.event_id("troca", "fato")]["resumo"], "Devolver o selo a Silva.")
+        self.assertEqual(list(self.active()), [memory.event_id("troca", "fato", 3)])
+        self.assertEqual(self.active()[memory.event_id("troca", "fato", 3)]["resumo"], "Devolver o selo a Silva.")
         self.assertEqual(transacoes.load_pending(self.repo)[-1]["deltas"][0]["op"], "remove")
         self.assertEqual(transacoes.load_pending(self.repo)[-1]["deltas"][1]["op"], "set")
 
@@ -312,7 +312,7 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
                                "concluir", "--ticket", self.token], input=json.dumps(self.promise(), ensure_ascii=False),
                               text=True, capture_output=True, check=False)
         self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
-        self.assertIn(memory.event_id("promessa", "fato"), self.active())
+        self.assertIn(memory.event_id("promessa", "fato", 3), self.active())
 
     def test_episodio_anotado_reconstroi_quatro_tipos_sem_contexto_de_chat(self):
         promise = self.promise()
@@ -345,6 +345,74 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
         self.assertEqual(result["transacao"]["deltas"], 0)
         # Ausência de anotação não é prova de ausência de promessa na prosa.
         self.assertFalse(self.active())
+
+
+    def test_informacao_e_conhecimento_independente_coexistem_ate_checkpoint(self):
+        text = "O barqueiro disse que a ponte caiu, mas isso ainda é um rumor."
+        tx = self.tx("dois-conhecimentos", "informacao", text, emissor="silva_fixture", destinatario="ren",
+                     canal="presencial", estatuto="rumor")
+        raw_text = "Ren reconheceu uma pegada diferente no portão."
+        tx["deltas"] = [{"alvo": "conhecimento", "op": "registrar",
+                         "valor": {"texto": raw_text, "fonte": "observacao_direta"}}]
+        cronica.conclude(self.repo, self.token, tx)
+        deltas = transacoes.load_pending(self.repo)[0]["deltas"]
+        self.assertEqual(sum(d["alvo"] == "conhecimento" for d in deltas), 2)
+        consolidar.consolidate(self.repo, "cena")
+        self.assertTrue(contexto.command_knowledge(self.repo, "barqueiro")["resultado"]["encontrado"])
+        self.assertTrue(contexto.command_knowledge(self.repo, "pegada")["resultado"]["encontrado"])
+        before = self.hashes()
+        cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+
+    def test_par_de_rastro_e_informacao_preservam_validacao_transacional(self):
+        text = "O barqueiro disse que a ponte caiu, mas isso ainda é um rumor."
+        tx = self.tx("rastro-e-relato", "informacao", text, emissor="silva_fixture", destinatario="ren",
+                     canal="presencial", estatuto="rumor")
+        trace = "rastro-0123456789abcdef"
+        tx["deltas"] = [
+            {"alvo": "conhecimento", "op": "registrar", "valor": {
+                "tipo": "rastro_descoberto", "rastro": trace, "fonte": "rastro:" + trace,
+                "texto": "Pegadas novas junto ao portão."}},
+            {"alvo": "rastro:" + trace, "op": "set", "caminho": "estado",
+             "valor": "descoberto", "visibilidade": "narrador"},
+        ]
+        writer, _ = memory.compile_transaction(tx, tx["id"], 3)
+        record = transacoes.build_pending_record(writer, 3)
+        self.assertEqual(record["deltas"][:2], tx["deltas"])
+        self.assertEqual(sum(d["alvo"] == "conhecimento" for d in record["deltas"]), 2)
+
+    def test_mesmo_id_cliente_em_sessoes_distintas_preserva_ambas_memorias_e_historicos(self):
+        tx = self.promise("id_reutilizado")
+        cronica.conclude(self.repo, self.token, tx)
+        consolidar.consolidate(self.repo, "cena")
+        first_id = memory.event_id("id_reutilizado", "fato", 3)
+        # Avanço de sessão somente na fixture: nenhuma cópia da transcrição antiga.
+        state = yaml.safe_load((self.repo / "estado/estado-atual.yaml").read_text())
+        state["campanha"]["sessao_atual"] = 4
+        self.write("estado/estado-atual.yaml", state)
+        hot = yaml.safe_load((self.repo / "runtime/contexto.yaml").read_text())
+        hot["sessao"]["numero"] = 4
+        self.write("runtime/contexto.yaml", hot)
+        scene = yaml.safe_load((self.repo / "runtime/cena.yaml").read_text())
+        scene["sessao"] = 4
+        self.write("runtime/cena.yaml", scene)
+        (self.repo / "sessoes/004").mkdir()
+        (self.repo / "sessoes/004/transcricao.md").write_text("# Sessão sintética 004\n", encoding="utf-8")
+        token = cronica.prepare(self.repo, scene_id="outra-sessao", sidequest_signal=None)["ticket"]
+        cronica.conclude(self.repo, token, tx)
+        second_id = memory.event_id("id_reutilizado", "fato", 4)
+        self.assertNotEqual(first_id, second_id)
+        self.assertEqual(set(self.active()), {first_id, second_id})
+        consolidar.consolidate(self.repo, "cena")
+        memories = self.relation()["memorias_importantes"]
+        self.assertEqual({row["id"] for row in memories}, {first_id, second_id})
+        history = yaml.safe_load((self.repo / "historico/relacoes/silva_fixture.yaml").read_text())
+        events = history["eventos_pos_migracao"]
+        self.assertEqual(len(events), 2)
+        self.assertEqual(len({row["transacao"] for row in events}), 2)
+        before = self.hashes()
+        cronica.conclude(self.repo, token, tx)
+        self.assertEqual(before, self.hashes())
 
 
 if __name__ == "__main__":

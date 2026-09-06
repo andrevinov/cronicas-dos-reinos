@@ -55,9 +55,27 @@ def _id(value: Any) -> str:
     return value
 
 
-def event_id(transaction_id: str, fact_id: str) -> str:
-    """ID estável também utilizado pelo compromisso novo; não depende do save."""
-    digest = hashlib.sha256(_json([transaction_id, fact_id]).encode()).hexdigest()[:24]
+def scoped_transaction_id(transaction_id: str, session: int) -> str:
+    """Isola IDs do cliente por sessão, inclusive no histórico do writer legado.
+
+    Aceita o ID já devolvido pela mesma sessão para que o seu eco também seja
+    idempotente. Não altera IDs de transações que não contêm o bloco memoria.
+    """
+    if type(session) is not int or session < 1:
+        raise DurableMemoryError("sessão de memória precisa ser inteiro positivo")
+    if not isinstance(transaction_id, str) or not transaction_id.strip():
+        raise DurableMemoryError("transação de memória precisa de ID não vazio")
+    prefix = f"s{session:03d}-nv04-"
+    if re.fullmatch(re.escape(prefix) + r"[0-9a-f]{32}", transaction_id):
+        return transaction_id
+    digest = hashlib.sha256(_json([session, transaction_id]).encode()).hexdigest()[:32]
+    return prefix + digest
+
+
+def event_id(transaction_id: str, fact_id: str, session: int) -> str:
+    """Identidade durável por sessão + transação + fato, independente do save."""
+    scoped = scoped_transaction_id(transaction_id, session)
+    digest = hashlib.sha256(_json([session, scoped, fact_id]).encode()).hexdigest()[:24]
     return "mem_" + digest
 
 
@@ -109,6 +127,7 @@ def _facts(transaction: dict) -> list[dict]:
 def compile_transaction(transaction: dict, transaction_id: str, session: int) -> tuple[dict, list[dict]]:
     """Compila sem ler o save; só o schema de compromisso é delegado ao domínio."""
     facts = _facts(transaction)
+    transaction_id = scoped_transaction_id(transaction_id, session)
     raw_deltas = transaction.get("deltas", [])
     if not isinstance(raw_deltas, list) or any(not isinstance(d, dict) for d in raw_deltas):
         raise DurableMemoryError("deltas deve ser lista de objetos")
@@ -120,7 +139,7 @@ def compile_transaction(transaction: dict, transaction_id: str, session: int) ->
     for fact in facts:
         kind = fact["tipo"]
         people = fact["participantes"]
-        eid = event_id(transaction_id, fact["id"])
+        eid = event_id(transaction_id, fact["id"], session)
         memory = {"id": eid, "tipo": kind, "fonte": f"transacao:{transaction_id}",
                   "participantes": people, "evidencia": fact["evidencia"], "registro_sha256": digest}
         anchors = [person for person in people if person != "ren"]
@@ -209,6 +228,20 @@ def compile_transaction(transaction: dict, transaction_id: str, session: int) ->
             if raw.get("alvo") != delta["alvo"]:
                 continue
             left, right = raw.get("caminho"), delta.get("caminho")
+            if raw.get("op") == delta["op"] == "registrar" and left is None and right is None:
+                original, compiled = raw.get("valor"), delta["valor"]
+                # Registrar é aditivo, não uma substituição do domínio inteiro.
+                # Um rastro independente pode coexistir com a informação recebida;
+                # a cópia do mesmo evento (ID ou texto) continua sendo recusada.
+                duplicate = original == compiled
+                if isinstance(original, dict) and isinstance(compiled, dict):
+                    duplicate = duplicate or any(
+                        original.get(key) is not None and original.get(key) == compiled.get(key)
+                        for key in ("id", "texto")
+                    )
+                if duplicate:
+                    raise DurableMemoryError("registro manual duplica fato de memória compilado")
+                continue
             if left is None or right is None or (isinstance(left, str) and
                     (left == right or left.startswith(right + ".") or right.startswith(left + "."))):
                 raise DurableMemoryError("delta manual concorre com memória compilada; registre o fato uma vez")
@@ -339,7 +372,7 @@ def prepare_transaction(repo: Path, transaction: dict) -> dict:
     requested_session = transaction.get("sessao", session)
     if type(requested_session) is not int or requested_session != session or status not in (None, "em_sessao"):
         raise DurableMemoryError("memória só pode ser registrada na sessão ativa")
-    txid = transacoes.stable_transaction_id(transaction, session)
+    txid = scoped_transaction_id(transacoes.stable_transaction_id(transaction, session), session)
     try:
         writer, facts = compile_transaction(transaction, txid, session)
         record = transacoes.build_pending_record(writer, session)
@@ -366,7 +399,7 @@ def prepare_transaction(repo: Path, transaction: dict) -> dict:
                 raise DurableMemoryError("estado.compromissos não é mapa")
         for fact in facts:
             if fact["tipo"] == "promessa":
-                eid = event_id(txid, fact["id"])
+                eid = event_id(txid, fact["id"], session)
                 old = fact.get("compromisso_id")
                 if fact["operacao"] != "registrar":
                     if active.get(old) != fact["anterior"]:

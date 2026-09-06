@@ -39,12 +39,12 @@ class DurableMemoryContractTest(unittest.TestCase):
         self.assertEqual(tx, original)
         self.assertNotIn("memoria", first)
         self.assertEqual(first["deltas"][0]["alvo"], "relacao:silva_fixture")
-        self.assertEqual(first["deltas"][0]["valor"]["fonte"], "transacao:teste-duravel")
+        self.assertEqual(first["deltas"][0]["valor"]["fonte"], "transacao:" + memory.scoped_transaction_id("teste-duravel", 3))
 
     def test_ids_independem_de_estado_e_mudam_por_fato_ou_transacao(self):
-        self.assertEqual(memory.event_id("a", "b"), memory.event_id("a", "b"))
-        self.assertNotEqual(memory.event_id("a", "b"), memory.event_id("b", "a"))
-        self.assertLessEqual(len(memory.event_id("a", "b")), 64)
+        self.assertEqual(memory.event_id("a", "b", 3), memory.event_id("a", "b", 3))
+        self.assertNotEqual(memory.event_id("a", "b", 3), memory.event_id("b", "a", 3))
+        self.assertLessEqual(len(memory.event_id("a", "b", 3)), 64)
 
     def test_schema_rejeita_bloco_vazio_nulo_versao_boolean_e_campos_extras(self):
         for block in (None, {}, {"versao": True, "fatos": []},
@@ -197,6 +197,53 @@ class DurableMemoryContractTest(unittest.TestCase):
         for relative in ("/etc/a.yaml", "estado/relacoes/../../x.yaml", "estado/npcs/a.yaml", "estado/relacoes/a.py"):
             with self.subTest(relative=relative), self.assertRaises(memory.DurableMemoryError):
                 memory._path(Path("/tmp/fixture"), relative, "estado/relacoes")
+
+
+    def test_registros_sem_caminho_independentes_preservam_par_de_rastro(self):
+        tx = transaction("informacao")
+        tx["memoria"]["fatos"][0].update(emissor="silva_fixture", destinatario="ren")
+        trace = "rastro-0123456789abcdef"
+        raw = [
+            {"alvo": "conhecimento", "op": "registrar", "valor": {
+                "tipo": "rastro_descoberto", "rastro": trace,
+                "fonte": "rastro:" + trace, "texto": "Pegadas novas junto ao portão."}},
+            {"alvo": "rastro:" + trace, "op": "set", "caminho": "estado",
+             "valor": "descoberto", "visibilidade": "narrador"},
+        ]
+        tx["deltas"] = deepcopy(raw)
+        result = self.compile(tx)
+        self.assertEqual(result["deltas"][:2], raw)
+        self.assertEqual(sum(d["alvo"] == "conhecimento" for d in result["deltas"]), 2)
+
+    def test_registro_sem_caminho_ainda_recusa_duplicata_por_id_ou_texto(self):
+        tx = transaction("informacao")
+        tx["memoria"]["fatos"][0].update(emissor="silva_fixture", destinatario="ren")
+        compiled = self.compile(tx)["deltas"][0]
+        for field in ("id", "texto"):
+            duplicate = deepcopy(tx)
+            duplicate["deltas"] = [{"alvo": "conhecimento", "op": "registrar",
+                                    "valor": {field: compiled["valor"][field]}}]
+            with self.subTest(field=field), self.assertRaises(memory.DurableMemoryError):
+                self.compile(duplicate)
+
+    def test_identidade_do_writer_e_dos_fatos_inclui_sessao(self):
+        tx = transaction()
+        first, _ = memory.compile_transaction(tx, "id_reutilizado", 3)
+        second, _ = memory.compile_transaction(tx, "id_reutilizado", 4)
+        self.assertNotEqual(first["id"], second["id"])
+        self.assertNotEqual(first["deltas"][0]["valor"]["id"], second["deltas"][0]["valor"]["id"])
+        self.assertNotEqual(first["deltas"][0]["valor"]["fonte"], second["deltas"][0]["valor"]["fonte"])
+        self.assertNotEqual(memory.event_id("mesmo", "fato", 3), memory.event_id("mesmo", "fato", 4))
+
+    def test_eco_do_id_devolvido_na_mesma_sessao_nao_ganha_outro_namespace(self):
+        tx = transaction()
+        first, _ = memory.compile_transaction(tx, "id_cliente", 3)
+        echo = deepcopy(tx)
+        echo["id"] = first["id"]
+        second, _ = memory.compile_transaction(echo, first["id"], 3)
+        self.assertEqual(first, second)
+        self.assertEqual(memory.scoped_transaction_id(first["id"], 3), first["id"])
+        self.assertNotEqual(memory.scoped_transaction_id(first["id"], 4), first["id"])
 
 
 if __name__ == "__main__":

@@ -66,7 +66,7 @@ Exemplo **sintético**, não um fato da campanha. `silva_fixture` só existe nos
 `janela.descricao` conserva condições sem inventar um instante. Não inventar
 horários, obrigações ou decisões do jogador que a ficção não estabeleceu.
 
-O ID novo é `mem_<hash da transação e do id local>`; aparece na consulta seguinte
+O ID novo é `mem_<hash da sessão, transação e id local>`; aparece na consulta seguinte
 `contexto.py status`, mesmo antes do checkpoint. O registro ativo fica **apenas**
 em `estado.compromissos`. As relações recebem uma marca histórica da declaração,
 com fonte `transacao:<id>` e referência ao compromisso, não outro estado ativo.
@@ -117,9 +117,18 @@ continuam distintas. Os nomes dos campos são reconhecidos pela projeção NV-03
 ## Repetição, conflito e recuperação
 
 Não enviar deltas manuais para os mesmos caminhos compilados; isso poderia
-aplicar o fato duas vezes. Deltas independentes continuam permitidos. Repetir o
+aplicar o fato duas vezes. Deltas independentes continuam permitidos, inclusive `conhecimento/registrar`
+sem caminho: dois registros aditivos distintos não conflitam pelo domínio comum.
+A cópia do mesmo ID ou texto compilado continua proibida. Repetir o
 mesmo `cronica concluir`, com o mesmo ticket e JSON, não duplica fato, promessa,
 conhecimento ou incremento. Divergência de conteúdo com ID repetido é recusada.
+
+Nas transações com `memoria`, o ID informado é uma referência do cliente:
+o compilador o coloca no namespace `sNNN-nv04-<hash>` da sessão corrente, antes
+de chegar ao writer. O ID devolvido também pode ser repetido na mesma sessão.
+Reutilizar uma referência de cliente em outra sessão gera outra transação e
+outros fatos, sem colidir nos compromissos ou na deduplicação dos históricos.
+Sem o bloco `memoria`, os IDs legados permanecem exatamente como antes.
 
 Após checkpoint, o ledger existente identifica a transação consolidada e as
 marcas de memória verificam sua assinatura. Se já arquivadas, a conferência abre
