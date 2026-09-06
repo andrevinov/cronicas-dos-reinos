@@ -260,6 +260,19 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
             raise BatchBoundaryError(str(exc)) from exc
         context["agente_leve"] = _compact_light(loaded["resultado"])
         sources = _source_list(sources, loaded.get("fontes_lidas"))
+        import acionamento_npcs
+        try:
+            activation, activation_sources = acionamento_npcs.project_pending(repo, pending)
+        except (OSError, ValueError) as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        if activation:
+            context["acionamento_npc"] = activation
+            item["classificacao"] = "avaliar_condicao_concreta"
+            sources = _source_list(sources, activation_sources)
+        if pending.get(acionamento_npcs.RESOLUTION):
+            item["classificacao"] = "concluir_resolucao_registrada"
+            item["sem_mudanca_permitido"] = False
+            context["resolucao_npc"] = pending[acionamento_npcs.RESOLUTION]
     elif pending_type == "avaliar_direcao" and pending.get("direcao"):
         try:
             projection = direcoes_destino.project(repo, str(pending["direcao"]))
@@ -300,6 +313,11 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
         items.append(item)
         sources = _source_list(sources, item_sources)
 
+    import acionamento_npcs
+    try:
+        waiting_count = len(acionamento_npcs.deferred(state))
+    except acionamento_npcs.NpcActivationError as exc:
+        raise BatchBoundaryError(str(exc)) from exc
     batch_payload = [{"id": item.get("id"), "token": item["token"]} for item in items]
     batch_id = f"frn1.{_token(batch_payload, BATCH_HEX)}"
     return {
@@ -308,6 +326,7 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
         "mutante": False,
         "lote_id": batch_id,
         "quantidade": len(items),
+        **({"avaliacoes_npcs_adiadas": waiting_count} if waiting_count else {}),
         "itens": items,
         "fontes_lidas": sources,
         "proximo_passo": {
@@ -455,6 +474,8 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
             raise BatchBoundaryError(
                 f"pendência {pending_id} mudou desde preparar; refaça o lote"
             )
+        if item.get("classificacao") == "concluir_resolucao_registrada":
+            raise BatchBoundaryError("NPC com fato já registrado deve ser concluído pela barreira")
         if item.get("classificacao") == "requer_fato_canonico":
             raise BatchBoundaryError(
                 f"pendência {pending_id} é evento canônico e não aceita sem_mudanca"

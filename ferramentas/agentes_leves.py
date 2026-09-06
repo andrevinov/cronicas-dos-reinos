@@ -489,6 +489,12 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     canonical, _ = mundo.load_canonical_time(repo)
     world_state = mundo.load_world_state(repo)
 
+    import acionamento_npcs
+    try:
+        acionamento_npcs.validate_state(world_state, index)
+        waiting = acionamento_npcs.deferred(world_state)
+    except acionamento_npcs.NpcActivationError as exc:
+        raise LightAgentError(str(exc)) from exc
     open_pending = _light_pending(world_state)
     open_agents = {
         str(item.get("agente_leve")) for item in open_pending if item.get("agente_leve")
@@ -523,6 +529,9 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     budget = index["orcamento"]
     available_open = max(0, int(budget["max_pendencias_abertas"]) - len(open_pending))
     limit = min(int(budget["max_novas_por_checkpoint"]), available_open)
+    # Trabalho já admitido não é ultrapassado por outra rodada de rotinas.
+    if waiting:
+        limit = 0
     selected = candidates[:limit]
 
     emitted: list[dict[str, Any]] = []
@@ -670,6 +679,16 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     if not isinstance(meta, dict):
         raise LightAgentError(f"pendência referencia agente leve inexistente: {agent_id}")
 
+    import acionamento_npcs
+    try:
+        acionamento_npcs.validate_state(world_state, index)
+    except acionamento_npcs.NpcActivationError as exc:
+        raise LightAgentError(str(exc)) from exc
+    if pending.get(acionamento_npcs.RESOLUTION):
+        raise LightAgentError("NPC já possui resolução transacional; conclua pela barreira, não como no-op")
+    if pending.get(acionamento_npcs.CAUSES) and (not isinstance(note, str) or len(" ".join(note.split())) < 8):
+        raise LightAgentError("condição concreta de NPC exige nota de avaliação explícita")
+    assessed_causes = pending.get(acionamento_npcs.CAUSES)
     signature, causal_sources = causal_signature(repo, agent_id, meta)
     canonical, _ = mundo.load_canonical_time(repo)
     cache = {
@@ -689,6 +708,8 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     ]
     if still_pending:
         pending = still_pending[0]
+        if pending.get(acionamento_npcs.CAUSES) != assessed_causes or pending.get(acionamento_npcs.RESOLUTION):
+            raise LightAgentError("causas da pendência mudaram durante a conclusão; refaça a avaliação")
         world_state["pendencias"] = [
             item for item in world_state["pendencias"] if item.get("id") != pending_id
         ]
@@ -705,12 +726,16 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
         world_state["concluidas_recentes"] = world_state["concluidas_recentes"][
             -mundo.MAX_RECENT_COMPLETED:
         ]
+        try:
+            world_state = acionamento_npcs.rebalance(world_state, index)
+        except acionamento_npcs.NpcActivationError as exc:
+            raise LightAgentError(str(exc)) from exc
         mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
     else:
         completed = _completed_for(world_state, pending_id)
         if completed is None:
             raise LightAgentError(
-                "pendência desapareceu durante concluir-noop sem conclusão rastreável"
+                "pendência desapareceu durante concluir-noop sem conclusão rastreávelvel"
             )
 
     return {
@@ -770,6 +795,11 @@ def check_world(repo: Path) -> dict[str, Any]:
         index = load_index(repo)
         known = set(index["agentes"])
         world_state = mundo.load_world_state(repo)
+        import acionamento_npcs
+        try:
+            acionamento_npcs.validate_state(world_state, index)
+        except acionamento_npcs.NpcActivationError as exc:
+            raise LightAgentError(str(exc)) from exc
         pending = _light_pending(world_state)
         for item in pending:
             agent_id = item.get("agente_leve")

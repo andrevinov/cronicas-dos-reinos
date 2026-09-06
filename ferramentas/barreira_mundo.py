@@ -92,7 +92,11 @@ def _instant_of(item: dict[str, Any]) -> mundo.WorldInstant:
 
 
 def payload_from_state(state: dict[str, Any]) -> dict[str, Any]:
-    pending = list(state.get("pendencias") or [])
+    import acionamento_npcs
+    try:
+        pending = [*(state.get("pendencias") or []), *acionamento_npcs.deferred(state)]
+    except acionamento_npcs.NpcActivationError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
     earliest = min((_instant_of(item) for item in pending), default=None)
     return {
         "schema_barreira_mundo": SCHEMA,
@@ -149,6 +153,14 @@ def load_status(repo: Path) -> dict[str, Any]:
 
 def sync(repo: Path, state: dict[str, Any] | None = None) -> dict[str, Any]:
     state = state or mundo.load_world_state(repo)
+    import acionamento_npcs
+    try:
+        refilled = acionamento_npcs.refill(repo, state)
+    except (OSError, ValueError) as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+    if refilled != state:
+        mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, refilled)
+    state = refilled
     payload = payload_from_state(state)
     _atomic_write(repo / BARRIER_PATH, payload)
     return {
@@ -335,6 +347,19 @@ def conclude(
             "reação/operação adversarial não aceita conclusão genérica; use sua "
             "ferramenta de domínio para compromisso ou resultado factual"
         )
+    import acionamento_npcs
+    if pending.get(acionamento_npcs.CAUSES) and not pending.get(acionamento_npcs.RESOLUTION):
+        if not no_change:
+            raise WorldPendingBarrierError(
+                "condição de NPC exige avaliação explícita pelo lote ou transação de mundo; "
+                "para no-op, use --sem-mudanca e --nota"
+            )
+        import agentes_leves
+        try:
+            result = agentes_leves.conclude_noop(repo, pending_id, note)
+        except agentes_leves.LightAgentError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
+        return {**result, "barreira": sync(repo)}
     canonical_event = _canonical_event(repo, pending)
     try:
         candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)

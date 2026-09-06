@@ -281,6 +281,19 @@ def _validate_reputation_output(repo: Path, plan: dict[str, Any] | None) -> None
         raise ConsolidationError(f"reputação pública staged inválida: {exc}") from exc
 
 
+def _stage_npc_notifications(repo: Path, plan: dict[str, Any] | None, records: list[dict[str, Any]], kind: str) -> None:
+    import acionamento_npcs
+    try:
+        changed = acionamento_npcs.stage_notifications(repo, plan, records)
+    except (OSError, ValueError) as exc:
+        raise ConsolidationError(f"acionamento de NPCs: {exc}") from exc
+    if changed and plan is not None:
+        path = f"sessoes/{plan['sessao']:03d}/{_base.LEDGER_NAME}"
+        ledger = [json.loads(line) for line in plan["outputs"][path].decode("utf-8").splitlines() if line.strip()]
+        _base._session_artifacts(repo, plan["sessao"], ledger, plan["checkpoint_antes"],
+                                 plan["checkpoint_depois"], kind, plan["outputs"])
+
+
 def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     session, pending_all, records, _done = _records_for_batch(repo)
     has_reputation = _has_reputation_deltas(records)
@@ -304,6 +317,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
         _validate_npc_outputs(repo, plan)
         if has_reputation:
             _validate_reputation_output(repo, plan)
+        _stage_npc_notifications(repo, plan, records, kind)
         return plan
 
     trace_index: dict[str, Any] | None = None
@@ -350,6 +364,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
     _validate_npc_outputs(repo, plan)
     if has_reputation:
         _validate_reputation_output(repo, plan)
+    _stage_npc_notifications(repo, plan, records, kind)
     return plan
 
 

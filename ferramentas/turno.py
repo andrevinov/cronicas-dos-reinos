@@ -333,7 +333,14 @@ def detect_world_checkpoint(
     turno. Assim vários avanços pequenos acumulam e o primeiro que completar duas
     horas promove o checkpoint.
     """
-    if not _has_time_delta(current_record):
+    import acionamento_npcs
+    prior_records = [r for r in prior_records
+                     if r.get("sessao", current_record.get("sessao")) == current_record.get("sessao")]
+    try:
+        causal = acionamento_npcs.changed_dependency(repo, current_record, prior_records)
+    except (OSError, ValueError, yaml.YAMLError) as exc:
+        raise TransactionError(f"não foi possível avaliar dependência de NPC: {exc}") from exc
+    if not _has_time_delta(current_record) and not causal:
         return None
     required = [repo / TIME_PATH, repo / WORLD_AGENDA_PATH, repo / WORLD_STATE_PATH]
     if not all(path.is_file() for path in required):
@@ -354,7 +361,9 @@ def detect_world_checkpoint(
         world_state = mundo.load_world_state(repo)
         cursor_data = world_state["processado_ate"]
         cursor = mundo.parse_instant(cursor_data["data"], cursor_data["hora"])
-        if after.minute <= cursor.minute:
+        if causal and after.minute < cursor.minute:
+            raise TransactionError("acontecimento de NPC não pode retroceder o cursor do mundo")
+        if after.minute <= cursor.minute and not causal:
             return None
 
         gap = after.minute - cursor.minute
@@ -368,6 +377,10 @@ def detect_world_checkpoint(
 
         if crossed_dawn:
             reason = "amanhecer"
+        elif causal:
+            reason = "acontecimento_npc"
+        elif acionamento_npcs.deadline_reached(repo, [*prior_records, current_record], after):
+            reason = "prazo_npc"
         elif gap >= SIGNIFICANT_WORLD_MINUTES:
             mode = str(current_record.get("modo") or "")
             if mode == "descanso" and gap >= 360:
