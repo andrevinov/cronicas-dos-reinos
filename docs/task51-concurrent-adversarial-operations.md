@@ -7,6 +7,11 @@ integra a fronteira/checkpoint existentes e é verificado pelo preflight.
 
 Depende da fila/fronteira do Mundo Vivo, da Task44, da Task50 e dos contratos existentes de encontros simultâneos. Não altera a autoridade do jogador sobre Ren.
 
+A NV-10 também permite origem em plano estratégico NV-08. Nesse caso não se cria
+uma reação Task50 artificial: o plano fornece intenção e a mesma Task51 preserva
+compromisso, reservas, encontros, canais e resultados. Contrato:
+`docs/nv10-planos-adversarios.md`.
+
 ## Problema
 
 Uma facção pode ter motivo e recursos para agir contra dois alvos na mesma janela: atacar uma comitiva para tomar provas e pressionar simultaneamente o local onde testemunhas ou protegidos permanecem. O sistema atual resolve pendências individualmente e não representa de forma explícita:

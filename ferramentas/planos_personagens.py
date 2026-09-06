@@ -361,7 +361,9 @@ def _gates(view: View, plan: dict, now: mundo.WorldInstant) -> list[str]:
         if now < _instant(step["em"]):
             blockers.append("condição temporal ainda não chegou")
         if step["resolucao"]["tipo"] == "operacao":
-            _, row = _operation(view, plan)
+            operation, row = _operation(view, plan)
+            import planos_adversarios
+            planos_adversarios.validate_attempt(view, plan, operation)
             if row["estado"] != "comprometida":
                 blockers.append("operação ainda não está comprometida pelo motor existente")
             return blockers
@@ -548,6 +550,10 @@ def _result(view: View, plan: dict, event: dict, record: dict, now: mundo.WorldI
         if event["fato"] != row["resolucao"]["resultado"]:
             raise PlanError("o fato deve preservar literalmente o resultado da operação")
         outcome["operacao"] = deepcopy(row["resolucao"])
+        import planos_adversarios
+        receipt = planos_adversarios.feedback(view.repo, plan, now=now)
+        if receipt:
+            outcome["retorno_ao_agente"] = receipt
     else:
         if resolution["tipo"] == "contato" and event["resultado"] == "sucesso":
             raise PlanError("entrega de contato usa cronica concluir, não sucesso automático fora de cena")

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Operações adversariais concorrentes derivadas de reações Task50.
+"""Operações adversariais concorrentes derivadas de reações ou planos próprios.
 
 O grupo é preparado antes da escolha de Ren. A fronteira compromete em lote as
 operações ainda causais, reserva recursos exclusivos e materializa encontros
@@ -396,42 +396,64 @@ def _operation(repo: Path, raw: Any, position: int) -> tuple[dict[str, Any], lis
         "celula_id", "atores", "recursos", "dependencias", "bloqueios_causais",
         "sinais_perceptiveis", "mecanica",
     }
+    from_plan = "origem_plano" in value
+    if from_plan:
+        expected = (expected - {"reaction_id", "alternative_id"}) | {"origem_plano"}
     if set(value) != expected:
         raise ConcurrentOperationError(
             f"operação possui campos divergentes: {sorted(set(value) ^ expected)}"
         )
     operation_id = _id(value["id"], f"operacoes[{position}].id")
-    reaction_id = _text(value["reaction_id"], f"{operation_id}.reaction_id", maximum=32)
-    try:
-        reaction, reaction_source = reactions._load_contract(repo, reaction_id)
-        reaction_state = reactions._load_state(repo)
-    except reactions.SidequestReactionError as exc:
-        raise ConcurrentOperationError(str(exc)) from exc
-    row = _map(reaction_state["reacoes"].get(reaction_id), f"reacao.{reaction_id}")
-    if row.get("estado") not in {"planejada", "elegivel"}:
-        raise ConcurrentOperationError(f"reação não está disponível para grupo: {reaction_id}")
-    alternative_id = _id(value["alternative_id"], f"{operation_id}.alternative_id")
-    alternatives = {
-        item["id"]: item for item in reaction["contrato"]["alternativas"]
-        if isinstance(item, dict) and item.get("id")
-    }
-    alternative = alternatives.get(alternative_id)
-    if not isinstance(alternative, dict) or alternative.get("estado") != "elegivel":
-        raise ConcurrentOperationError(f"alternativa não elegível: {alternative_id}")
     target = _map(value["alvo"], f"{operation_id}.alvo")
     if set(target) != {"id", "tipo"}:
         raise ConcurrentOperationError("alvo de operação exige id e tipo")
-    normalized_target = {"id": _id(target["id"], "alvo.id"), "tipo": _text(target["tipo"], "alvo.tipo", maximum=24)}
-    if normalized_target not in alternative["alvos"]:
-        raise ConcurrentOperationError("alvo da operação não pertence à alternativa Task50")
+    normalized_target = {"id": _id(target["id"], "alvo.id"),
+                         "tipo": _text(target["tipo"], "alvo.tipo", maximum=24)}
     actors = sorted(_id(item, f"{operation_id}.atores") for item in _list(value["atores"], "atores"))
-    antagonist_id = reaction["contrato"]["antagonista"]["id"]
+    resources = sorted(_text(item, f"{operation_id}.recursos", maximum=240)
+                       for item in _list(value["recursos"], "recursos"))
+    cell = None if value["celula_id"] is None else _id(value["celula_id"], "celula_id")
+    local = _id(value["local"], f"{operation_id}.local")
+    objective = _text(value["objetivo"], f"{operation_id}.objetivo")
+    normalized_input = {**value, "id": operation_id, "alvo": normalized_target,
+                        "atores": actors, "recursos": resources, "celula_id": cell,
+                        "local": local, "objetivo": objective}
+    origin = {}
+    if from_plan:
+        import planos_adversarios
+        try:
+            source, plan, actor, origin_sources = planos_adversarios.origin(
+                repo, value["origem_plano"], normalized_input
+            )
+        except ValueError as exc:
+            raise ConcurrentOperationError(str(exc)) from exc
+        origin = {"origem_plano": source, "objetivo_estrategico": plan["objetivo"]}
+        reaction_id, antagonist_id = None, actor["id"]
+        alternative = source["alternativa"]
+        alternative_id = alternative["id"]
+    else:
+        reaction_id = _text(value["reaction_id"], f"{operation_id}.reaction_id", maximum=32)
+        try:
+            reaction, reaction_source = reactions._load_contract(repo, reaction_id)
+            reaction_state = reactions._load_state(repo)
+        except reactions.SidequestReactionError as exc:
+            raise ConcurrentOperationError(str(exc)) from exc
+        row = _map(reaction_state["reacoes"].get(reaction_id), f"reacao.{reaction_id}")
+        if row.get("estado") not in {"planejada", "elegivel"}:
+            raise ConcurrentOperationError(f"reação não está disponível para grupo: {reaction_id}")
+        alternative_id = _id(value["alternative_id"], f"{operation_id}.alternative_id")
+        alternatives = {item["id"]: item for item in reaction["contrato"]["alternativas"] if isinstance(item, dict) and item.get("id")}
+        alternative = alternatives.get(alternative_id)
+        if not isinstance(alternative, dict) or alternative.get("estado") != "elegivel":
+            raise ConcurrentOperationError(f"alternativa não elegível: {alternative_id}")
+        antagonist_id = reaction["contrato"]["antagonista"]["id"]
+        origin_sources = [reaction_source]
+    if normalized_target not in alternative["alvos"]:
+        raise ConcurrentOperationError("alvo da operação não pertence à alternativa operacional")
     if not actors or antagonist_id not in actors or len(actors) != len(set(actors)):
         raise ConcurrentOperationError("atores devem incluir o antagonista sem duplicatas")
-    resources = sorted(_text(item, f"{operation_id}.recursos", maximum=240) for item in _list(value["recursos"], "recursos"))
     if set(resources) != set(alternative["recursos_exigidos"]) or len(resources) != len(set(resources)):
         raise ConcurrentOperationError("recursos da operação devem coincidir com a alternativa")
-    cell = None if value["celula_id"] is None else _id(value["celula_id"], "celula_id")
     try:
         actor = reactions._agent(repo, antagonist_id)
     except reactions.SidequestReactionError as exc:
@@ -454,12 +476,13 @@ def _operation(repo: Path, raw: Any, position: int) -> tuple[dict[str, Any], lis
         if len(strings[key]) != len(set(strings[key])):
             raise ConcurrentOperationError(f"{operation_id}.{key} possui duplicatas")
     return {
+        **origin,
         "id": operation_id,
         "reaction_id": reaction_id,
         "alternative_id": alternative_id,
         "alvo": normalized_target,
-        "local": _id(value["local"], f"{operation_id}.local"),
-        "objetivo": _text(value["objetivo"], f"{operation_id}.objetivo"),
+        "local": local,
+        "objetivo": objective,
         "celula_id": cell,
         "atores": actors,
         "recursos": resources,
@@ -468,7 +491,7 @@ def _operation(repo: Path, raw: Any, position: int) -> tuple[dict[str, Any], lis
         "exige_presenca_fisica": physical,
         "antagonista_id": antagonist_id,
         "mecanica": mechanics,
-    }, [reaction_source, *mechanical_sources, *actor["fontes_lidas"]]
+    }, [*origin_sources, *mechanical_sources, *actor["fontes_lidas"]]
 
 
 def _channels(repo: Path, raw: Any, operation_ids: set[str]) -> tuple[list[dict[str, Any]], list[str]]:
@@ -540,8 +563,9 @@ def _contract(repo: Path, proposal_raw: Any) -> tuple[dict[str, Any], dict[str, 
     if maximum.minute < minimum.minute:
         raise ConcurrentOperationError("janela máxima antecede a mínima")
     raw_operations = _list(proposal["operacoes"], "operacoes")
-    if not 2 <= len(raw_operations) <= MAX_OPERATIONS:
-        raise ConcurrentOperationError(f"grupo exige 2..{MAX_OPERATIONS} operações")
+    minimum_operations = 1 if any(isinstance(op, dict) and "origem_plano" in op for op in raw_operations) else 2
+    if not minimum_operations <= len(raw_operations) <= MAX_OPERATIONS:
+        raise ConcurrentOperationError(f"grupo exige {minimum_operations}..{MAX_OPERATIONS} operações")
     operations = []
     sources: list[str] = []
     for position, raw_operation in enumerate(raw_operations):
@@ -551,9 +575,16 @@ def _contract(repo: Path, proposal_raw: Any) -> tuple[dict[str, Any], dict[str, 
     operations.sort(key=lambda item: item["id"])
     if len({item["id"] for item in operations}) != len(operations):
         raise ConcurrentOperationError("IDs de operação duplicados")
-    if len({item["reaction_id"] for item in operations}) != len(operations):
+    reactive = [item for item in operations if item["reaction_id"] is not None]
+    if len({item["reaction_id"] for item in reactive}) != len(reactive):
         raise ConcurrentOperationError("cada operação deve possuir reação Task50 distinta")
     for operation in operations:
+        if operation.get("origem_plano"):
+            import planos_personagens
+            plan = mundo.load_world_state(repo)[planos_personagens.KEY][operation["origem_plano"]["id"]]
+            if minimum < planos_personagens._instant(plan["passo"]["em"]):
+                raise ConcurrentOperationError("janela da operação antecede a condição temporal do plano")
+            continue
         reaction, _ = reactions._load_contract(repo, operation["reaction_id"])
         reaction_window = reaction["contrato"]["janela"]
         _, reaction_min = _instant(reaction_window["minimo"], "reacao.janela.minimo")
@@ -666,25 +697,41 @@ def _operation_pending(contract: dict[str, Any], operation: dict[str, Any]) -> d
     }
 
 
-def materialize(repo: Path, proposal: Any, preparation_id: str) -> dict[str, Any]:
-    prepared = prepare(repo, proposal)
-    if prepared["preparacao_id"] != preparation_id:
-        raise ConcurrentOperationError("preparação do grupo obsoleta/divergente")
+def materialize(repo: Path, proposal: Any, preparation_id: str, *, fail_after: int | None = None) -> dict[str, Any]:
+    if (repo / JOURNAL).is_file():
+        journal = _load(repo / JOURNAL, "journal")
+        if journal.get("entrada_digest") != _digest([proposal, preparation_id]):
+            raise ConcurrentOperationError("journal aberto pertence a outra materialização")
+        return _recover_open(repo, journal["grupo_operacoes_id"], fail_after, action="materializar")
     contract, meta = _contract(repo, proposal)
     group_id = meta["group_id"]
     index = _load_index(repo, allow_missing=True)
     state = _load_state(repo, allow_missing=True)
+    materialization_digest = _digest([proposal, preparation_id])
+    existing_row = state["grupos"].get(group_id)
+    if existing_row and existing_row.get("materializacao_digest") == materialization_digest:
+        world = mundo.load_world_state(repo)
+        pending = next((item for item in world["pendencias"] if item.get("grupo_operacoes_id") == group_id), None)
+        return {"ok": True, "resultado": "ja_materializado", "grupo_operacoes_id": group_id,
+                "estado": existing_row["estado"], "pendencia": pending,
+                "reacoes_reivindicadas": [op["reaction_id"] for op in contract["grupo_operacoes"]["operacoes"]
+                                           if op["reaction_id"] is not None]}
+    prepared = prepare(repo, proposal)
+    if prepared["preparacao_id"] != preparation_id:
+        raise ConcurrentOperationError("preparação do grupo obsoleta/divergente")
     if group_id not in index["grupos"] and len(index["grupos"]) >= MAX_GROUPS:
         raise ConcurrentOperationError(f"índice excede {MAX_GROUPS} grupos")
-    reactions_state = reactions._load_state(repo)
-    member_reactions = [item["reaction_id"] for item in contract["grupo_operacoes"]["operacoes"]]
+    reactions_state = reactions._load_state(repo, allow_missing=True)
+    member_reactions = [item["reaction_id"] for item in contract["grupo_operacoes"]["operacoes"] if item["reaction_id"] is not None]
     for operation in contract["grupo_operacoes"]["operacoes"]:
         owner = state["operacao_para_grupo"].get(operation["id"])
         if owner is not None and owner != group_id:
             raise ConcurrentOperationError(
                 f"ID de operação já pertence a outro grupo: {operation['id']}"
             )
-    causal_key = _digest(sorted(member_reactions))
+    plan_causes = sorted(f"plano:{item['origem_plano']['id']}:{item['origem_plano']['revisao']}"
+                         for item in contract["grupo_operacoes"]["operacoes"] if item.get("origem_plano"))
+    causal_key = _digest(sorted([*member_reactions, *plan_causes]))
     divergent = [
         gid for gid, row in index["grupos"].items()
         if isinstance(row, dict) and row.get("chave_causal") == causal_key and gid != group_id
@@ -702,8 +749,8 @@ def materialize(repo: Path, proposal: Any, preparation_id: str) -> dict[str, Any
     rendered = _yaml(contract)
     if (repo / rel).is_file() and (repo / rel).read_text(encoding="utf-8") != rendered:
         raise ConcurrentOperationError("contrato de grupo existente diverge")
-    if not (repo / rel).is_file():
-        _atomic(repo / rel, contract, MAX_GROUP_BYTES)
+    if len(rendered.encode("utf-8")) > MAX_GROUP_BYTES:
+        raise ConcurrentOperationError("contrato de grupo excede orçamento")
     meta_row = {
         "grupo_operacoes_id": group_id,
         "chave_causal": causal_key,
@@ -715,11 +762,11 @@ def materialize(repo: Path, proposal: Any, preparation_id: str) -> dict[str, Any
         raise ConcurrentOperationError("metadado do grupo diverge")
     created = group_id not in index["grupos"]
     index["grupos"][group_id] = meta_row
-    _atomic(repo / INDEX, index)
     pending = _group_pending(contract)
     if group_id not in state["grupos"]:
         state["grupos"][group_id] = {
             "estado": "planejado",
+            "materializacao_digest": materialization_digest,
             "pendencia_id": None,
             "operacoes": {
                 item["id"]: {
@@ -733,7 +780,6 @@ def materialize(repo: Path, proposal: Any, preparation_id: str) -> dict[str, Any
             state["operacao_para_grupo"][operation["id"]] = group_id
         state["historico_recente"].append({"tipo": "grupo_materializado", "grupo_operacoes_id": group_id})
         state["historico_recente"] = state["historico_recente"][-MAX_HISTORY:]
-    _atomic(repo / STATE, state)
 
     world = mundo.load_world_state(repo)
     old_pending_ids = {
@@ -745,26 +791,35 @@ def materialize(repo: Path, proposal: Any, preparation_id: str) -> dict[str, Any
         row["estado"] = "planejada"
         row["pendencia_id"] = None
         row["grupo_operacoes_id"] = group_id
-    reactions._atomic(repo / reactions.STATE, reactions_state)
     now, _ = mundo.load_canonical_time(repo)
     _, minimum = _instant(contract["grupo_operacoes"]["janela"]["minimo"], "janela.minimo")
     added = []
     if now.minute >= minimum.minute:
         added = mundo._merge_pending(world, [pending])
-        state = _load_state(repo)
         state["grupos"][group_id]["estado"] = "elegivel"
         state["grupos"][group_id]["pendencia_id"] = pending["id"]
-        _atomic(repo / STATE, state)
-    mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world)
-    barreira_mundo.sync(repo, world)
-    return {
+    result = {
         "ok": True,
         "resultado": "materializado" if created else "ja_materializado",
         "grupo_operacoes_id": group_id,
-        "estado": _load_state(repo)["grupos"][group_id]["estado"],
+        "estado": state["grupos"][group_id]["estado"],
         "pendencia": pending if added else None,
         "reacoes_reivindicadas": member_reactions,
     }
+    documents = [(rel, contract), (INDEX, index), (STATE, state)]
+    if member_reactions:
+        documents.append((reactions.STATE, reactions_state))
+    documents.append((mundo.WORLD_STATE_PATH, world))
+    journal = {"schema_journal_operacoes_concorrentes": SCHEMA, "natureza": "journal_recuperacao",
+               "acao": "materializar", "entrada_digest": _digest([proposal, preparation_id]),
+               "grupo_operacoes_id": group_id, "resultado": result,
+               "staged": [_stage(path, (repo / path).read_bytes() if (repo / path).is_file() else None, doc)
+                          for path, doc in documents]}
+    _atomic(repo / JOURNAL, journal)
+    _install_journal(repo, journal, fail_after)
+    barreira_mundo.sync(repo)
+    (repo / JOURNAL).unlink()
+    return result
 
 
 def reconcile(repo: Path, now: mundo.WorldInstant | None = None) -> dict[str, Any]:
@@ -904,11 +959,13 @@ def _install_journal(repo: Path, journal: dict[str, Any], fail_after: int | None
             raise ConcurrentOperationError("falha simulada durante materialização do grupo")
 
 
-def _recover_open(repo: Path, group_id: str, fail_after: int | None = None) -> dict[str, Any] | None:
+def _recover_open(repo: Path, group_id: str, fail_after: int | None = None, *, action: str = "comprometer") -> dict[str, Any] | None:
     path = repo / JOURNAL
     if not path.is_file():
         return None
     journal = _load(path, JOURNAL.as_posix())
+    if journal.get("acao", "comprometer") != action:
+        raise ConcurrentOperationError("recuperar journal repetindo a operação original")
     if journal.get("grupo_operacoes_id") != group_id:
         raise ConcurrentOperationError(
             f"journal aberto pertence a {journal.get('grupo_operacoes_id')}; recupere-o primeiro"
@@ -941,24 +998,33 @@ def commit_group(
         raise ConcurrentOperationError("somente grupo elegível pode ser comprometido")
     operations = contract["grupo_operacoes"]["operacoes"]
     blocked = _normalized_blockers(repo, blockers, {item["id"] for item in operations})
-    reactions_state = reactions._load_state(repo)
+    reactions_state = reactions._load_state(repo, allow_missing=True)
     planned_reservations: dict[str, str] = {}
     for operation in operations:
         if operation["id"] in blocked:
             continue
         reaction_id = operation["reaction_id"]
-        reaction, _ = reactions._load_contract(repo, reaction_id)
-        reaction_row = reactions_state["reacoes"][reaction_id]
-        if reaction_row.get("grupo_operacoes_id") != group_id or reaction_row["estado"] != "planejada":
-            raise ConcurrentOperationError("reação deixou de estar reservada ao grupo")
-        task44 = reaction["contrato"]["origem_task44"]
-        if reactions._sha(repo / task44["arquivo"]) != task44["sha256"]:
-            raise ConcurrentOperationError("contrato Task44 original mudou")
-        actor = reactions._agent(repo, operation["antagonista_id"])
-        option = next(
-            item for item in reaction["contrato"]["alternativas"]
-            if item["id"] == operation["alternative_id"]
-        )
+        if operation.get("origem_plano"):
+            import planos_adversarios
+            try:
+                _, _, actor, _ = planos_adversarios.origin(repo, operation["origem_plano"], operation)
+            except ValueError as exc:
+                raise ConcurrentOperationError(str(exc)) from exc
+            option = operation["origem_plano"]["alternativa"]
+            current, _ = mundo.load_canonical_time(repo)
+            window = contract["grupo_operacoes"]["janela"]
+            if not _instant(window["minimo"], "janela.minimo")[1] <= current <= _instant(window["maximo"], "janela.maximo")[1]:
+                raise ConcurrentOperationError("compromisso fora da janela do plano; registrar bloqueio causal")
+        else:
+            reaction, _ = reactions._load_contract(repo, reaction_id)
+            reaction_row = reactions_state["reacoes"][reaction_id]
+            if reaction_row.get("grupo_operacoes_id") != group_id or reaction_row["estado"] != "planejada":
+                raise ConcurrentOperationError("reação deixou de estar reservada ao grupo")
+            task44 = reaction["contrato"]["origem_task44"]
+            if reactions._sha(repo / task44["arquivo"]) != task44["sha256"]:
+                raise ConcurrentOperationError("contrato Task44 original mudou")
+            actor = reactions._agent(repo, operation["antagonista_id"])
+            option = next(item for item in reaction["contrato"]["alternativas"] if item["id"] == operation["alternative_id"])
         if operation["capacidade_id"] not in actor["capacidades"]:
             raise ConcurrentOperationError(f"capacidade indisponível em {operation['id']}")
         if set(option["conhecimentos_requeridos"]) - set(actor["conhecimento"]):
@@ -996,7 +1062,7 @@ def commit_group(
                 raise ConcurrentOperationError(f"recurso indisponível: {resource}")
             task50_key = reactions._resource_key(actor["id"], resource)
             existing = reactions_state["recursos_comprometidos"].get(task50_key)
-            if existing is not None and existing.get("reaction_id") != reaction_id:
+            if existing is not None and (reaction_id is None or existing.get("reaction_id") != reaction_id):
                 raise ConcurrentOperationError(f"recurso Task50 já comprometido: {resource}")
 
     next_reactions = copy.deepcopy(reactions_state)
@@ -1011,22 +1077,26 @@ def commit_group(
     for operation in operations:
         op_id = operation["id"]
         op_row = next_state["grupos"][group_id]["operacoes"][op_id]
-        reaction_row = next_reactions["reacoes"][operation["reaction_id"]]
+        reaction_row = next_reactions["reacoes"].get(operation["reaction_id"])
         if op_id in blocked:
             op_row["estado"] = "bloqueada"
             op_row["bloqueio"] = blocked[op_id]
-            reaction_row["estado"] = "cancelada"
-            reaction_row["resolucao"] = {"tipo": "bloqueio_causal", **blocked[op_id]}
+            if reaction_row is not None:
+                reaction_row["estado"] = "cancelada"
+                reaction_row["resolucao"] = {"tipo": "bloqueio_causal", **blocked[op_id]}
             continue
         pending = _operation_pending(contract, operation)
         operation_pendings.append(pending)
         op_row["estado"] = "comprometida"
         op_row["pendencia_id"] = pending["id"]
-        reaction_row["estado"] = "comprometida"
-        reaction_row["pendencia_id"] = pending["id"]
-        reaction_row["alternativas_comprometidas"] = [operation["alternative_id"]]
-        reaction_row["comprometida_em"] = contract["grupo_operacoes"]["janela"]["minimo"]
+        if reaction_row is not None:
+            reaction_row["estado"] = "comprometida"
+            reaction_row["pendencia_id"] = pending["id"]
+            reaction_row["alternativas_comprometidas"] = [operation["alternative_id"]]
+            reaction_row["comprometida_em"] = contract["grupo_operacoes"]["janela"]["minimo"]
         for resource in operation["recursos"]:
+            if reaction_row is None:
+                continue
             key = reactions._resource_key(operation["antagonista_id"], resource)
             next_reactions["recursos_comprometidos"][key] = {
                 "reaction_id": operation["reaction_id"],
@@ -1063,7 +1133,8 @@ def commit_group(
         "fontes_lidas": [source],
     }
     staged = [
-        _stage(reactions.STATE, (repo / reactions.STATE).read_bytes(), next_reactions),
+        *([_stage(reactions.STATE, (repo / reactions.STATE).read_bytes(), next_reactions)]
+          if next_reactions != reactions_state else []),
         _stage(STATE, (repo / STATE).read_bytes(), next_state),
         *[
             _stage(path, (repo / path).read_bytes() if (repo / path).is_file() else None, doc)
@@ -1157,7 +1228,13 @@ def register_roll(repo: Path, operation_id: str, roll_id: str) -> dict[str, Any]
     return {"ok": True, "resultado": "registrada", "operacao_id": operation_id, **expected}
 
 
-def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str, *, desfecho: str | None = None) -> dict[str, Any]:
+def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str, *, desfecho: str | None = None,
+                      fail_after: int | None = None) -> dict[str, Any]:
+    if (repo / JOURNAL).is_file():
+        journal = _load(repo / JOURNAL, "journal")
+        if journal.get("entrada_digest") != _digest([operation_id, proof, result, desfecho]):
+            raise ConcurrentOperationError("journal aberto pertence a outro resultado")
+        return _recover_open(repo, journal["grupo_operacoes_id"], fail_after, action="resolver:" + operation_id)
     contract, operation, row, _ = _operation_context(repo, operation_id)
     normalized_result = _text(result, "resultado", minimum=12)
     causal = _proof(repo, proof, "prova_resultado")
@@ -1172,17 +1249,28 @@ def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str, *,
         return {"ok": True, "resultado": "ja_resolvida", "operacao_id": operation_id}
     if row["estado"] != "comprometida":
         raise ConcurrentOperationError("resultado exige operação comprometida")
-    try:
-        reactions.resolve(
-            repo, operation["reaction_id"], proof=causal, result=normalized_result
-        )
-    except reactions.SidequestReactionError as exc:
-        raise ConcurrentOperationError(str(exc)) from exc
+    from_plan = bool(operation.get("origem_plano"))
+    if from_plan:
+        if desfecho is None or normalized_result not in causal["evidencia"]:
+            raise ConcurrentOperationError("resultado de plano exige desfecho e consequência literal na prova")
+        # Reutiliza a validação do snapshot; o resultado não substitui mecânica.
+        project_operation_pending(repo, _operation_pending(contract, operation))
+        if row.get("primeira_rolagem") and row["primeira_rolagem"]["encontro_sha256"] != _sha_bytes((repo / _encounter_rel(operation_id)).read_bytes()):
+            raise ConcurrentOperationError("encontro mudou depois da primeira rolagem")
+        if operation["mecanica"]["modo"] != "nenhuma" and row.get("primeira_rolagem") is None:
+            raise ConcurrentOperationError("operação mecânica exige rolagem registrada antes do resultado")
+    else:
+        try:
+            reactions.resolve(repo, operation["reaction_id"], proof=causal, result=normalized_result)
+        except reactions.SidequestReactionError as exc:
+            raise ConcurrentOperationError(str(exc)) from exc
     state = _load_state(repo)
     group_id = contract["grupo_operacoes_id"]
     mutable = state["grupos"][group_id]["operacoes"][operation_id]
     mutable["estado"] = "resolvida"
     mutable["resolucao"] = resolution
+    if from_plan:
+        mutable["resolvida_em"] = mundo.instant_parts(mundo.load_canonical_time(repo)[0])
     for key, reservation in list(state["reservas_exclusivas"].items()):
         if reservation.get("operacao_id") == operation_id:
             del state["reservas_exclusivas"][key]
@@ -1195,8 +1283,25 @@ def resolve_operation(repo: Path, operation_id: str, proof: Any, result: str, *,
         {"tipo": "operacao_resolvida", "grupo_operacoes_id": group_id, "operacao_id": operation_id}
     )
     state["historico_recente"] = state["historico_recente"][-MAX_HISTORY:]
-    _atomic(repo / STATE, state)
-    return {"ok": True, "resultado": "resolvida", "operacao_id": operation_id, "grupo_operacoes_id": group_id}
+    response = {"ok": True, "resultado": "resolvida", "operacao_id": operation_id, "grupo_operacoes_id": group_id}
+    if from_plan:
+        world = mundo.load_world_state(repo)
+        pending = _operation_pending(contract, operation)
+        if pending["id"] not in {item["id"] for item in world["pendencias"]}:
+            raise ConcurrentOperationError("operação sem pendência canônica para resolver")
+        _completed(world, pending, normalized_result)
+        journal = {"schema_journal_operacoes_concorrentes": SCHEMA, "natureza": "journal_recuperacao",
+                   "acao": "resolver:" + operation_id, "entrada_digest": _digest([operation_id, proof, result, desfecho]),
+                   "grupo_operacoes_id": group_id, "resultado": response,
+                   "staged": [_stage(path, (repo / path).read_bytes(), doc)
+                              for path, doc in [(STATE, state), (mundo.WORLD_STATE_PATH, world)]]}
+        _atomic(repo / JOURNAL, journal)
+        _install_journal(repo, journal, fail_after)
+        barreira_mundo.sync(repo)
+        (repo / JOURNAL).unlink()
+    else:
+        _atomic(repo / STATE, state)
+    return response
 
 
 def deliver_information(
@@ -1218,6 +1323,11 @@ def deliver_information(
         raise ConcurrentOperationError("entrega remota exige canal indireto declarado")
     current = now or mundo.load_canonical_time(repo)[0]
     _, start = _instant(contract["grupo_operacoes"]["janela"]["minimo"], "janela.minimo")
+    feedback_to_actor = operation.get("origem_plano") and channel["destinatario"] == operation["antagonista_id"]
+    if feedback_to_actor:
+        if row["estado"] != "resolvida" or channel["atraso_minutos"] <= 0:
+            raise ConcurrentOperationError("retorno ao agente exige resultado e transporte com atraso positivo")
+        _, start = _instant(row["resolvida_em"], "resultado.em")
     available = mundo.WorldInstant(start.minute + channel["atraso_minutos"])
     if current.minute < available.minute:
         raise ConcurrentOperationError("canal ainda não cumpriu seu atraso mínimo")
@@ -1227,6 +1337,9 @@ def deliver_information(
     if set(normalized) - set(channel["conhecimentos_permitidos"]):
         raise ConcurrentOperationError("canal tenta entregar conhecimento além de seu escopo")
     causal = _proof(repo, proof, "prova_entrega")
+    if feedback_to_actor and any(fact not in causal["evidencia"] for fact in normalized):
+        raise ConcurrentOperationError("retorno não pode exceder os fatos comprovados pelo portador")
+    _proof(repo, channel["prova_disponibilidade"], "canal ainda disponível")
     delivery_id = "inf-" + _digest(
         {"grupo": contract["grupo_operacoes_id"], "operacao": operation_id, "canal": channel_id, "fatos": normalized, "prova": causal}
     )[:20]

@@ -29,9 +29,11 @@ import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
 import memoria_duravel as _durable
 import memoria_cena as _scene_memory
+import mundo as _world
 import progressao_juppongatana
 import pressao_narrativa as _pressure52
 import contatos_sociais as _contacts09
+import planos_adversarios as _plans10
 import progresso_sidequests_transacional as _sidequests49
 import retomada_cronica
 import sessoes
@@ -128,6 +130,7 @@ def prepare(*args, **kwargs):
     gate = _pending_gate.prepare_gate(Path(repo))
     operation_pendings = None
     contact_pendings = []
+    passive_plans = []
     if gate is not None:
         try:
             operation_pendings = _pressure52.routable_operation_pendings(Path(repo))
@@ -141,6 +144,10 @@ def prepare(*args, **kwargs):
             if partition is None:
                 return gate
             operation_pendings, contact_pendings = partition
+        try:
+            passive_plans = _plans10.passive(Path(repo), _world.load_world_state(Path(repo)))
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise _core.CronicaError(f"NV10: {exc}") from exc
     base = _hot.prepare(*args, **kwargs)
     if signal is None:
         prepared = base
@@ -194,6 +201,12 @@ def prepare(*args, **kwargs):
             Path(repo), prepared, contact_pendings, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, max_output_bytes=final_budget,
         )
+        try:
+            prepared = _plans10.attach(Path(repo), prepared, passive_plans,
+                                       decode_ticket=decode_ticket, encode_ticket=_core.encode_ticket,
+                                       max_output_bytes=final_budget)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise _core.CronicaError(f"NV10: {exc}") from exc
         contact = prepared.get(_contacts09.TICKET_KEY)
         prospective = ([contact["portador"] if contact["meio"] == "mensageiro" else contact["npc_id"]]
                        if contact else None)
@@ -237,6 +250,7 @@ def _base_token(payload: dict) -> str:
     clean.pop(_pressure52.TICKET_KEY, None)
     clean.pop(_scene_memory.TICKET_KEY, None)
     clean.pop(_contacts09.TICKET_KEY, None)
+    clean.pop(_plans10.TICKET_KEY, None)
     token, _ = _core.encode_ticket(clean)
     return token
 
@@ -247,8 +261,8 @@ def confirm(repo: Path, token: str):
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
     payload, meta46, meta48, meta52 = _sidequest_meta(token)
-    if _contacts09.TICKET_KEY in payload:
-        raise _core.CronicaError("contato usa cronica concluir; não separar confirmação e registro")
+    if _contacts09.TICKET_KEY in payload or _plans10.TICKET_KEY in payload:
+        raise _core.CronicaError("contato/plano dependente usa cronica concluir; não separar confirmação e registro")
     if _scene_memory.TICKET_KEY in payload:
         raise _core.CronicaError("elenco de cena usa cronica concluir; não separar confirmação e registro")
     if meta46 is not None or meta48 is not None or meta52 is not None:
@@ -265,11 +279,16 @@ def _conclude_base(
     *,
     pressure_pending_ids: list[str] | None = None,
     contact_pending_ids: list[str] | None = None,
+    passive_plan_ids: list[str] | None = None,
 ):
     original = _core._preflight_registration
     original_authorize = _hot.turno.barreira_mundo.authorize_registration
-    if pressure_pending_ids or contact_pending_ids:
+    if pressure_pending_ids or contact_pending_ids or passive_plan_ids:
         def pressure_authorize(inner_repo, inner_transaction, *, retry):
+            if passive_plan_ids:
+                return _plans10.authorize(inner_repo, inner_transaction, retry=retry,
+                    plans_pending=passive_plan_ids, operations_pending=pressure_pending_ids or [],
+                    contacts_pending=contact_pending_ids or [], original=original_authorize)
             if contact_pending_ids:
                 return _contacts09.authorize_registration(
                     inner_repo, inner_transaction, retry=retry, contacts=contact_pending_ids,
@@ -312,6 +331,10 @@ def conclude(repo: Path, token: str, transaction: dict):
     except (ValueError, OSError, yaml.YAMLError) as exc:
         raise _core.CronicaError(f"NV09: {exc}") from exc
     try:
+        passive_plan_ids = _plans10.validate_ticket(Path(repo), payload, transaction)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise _core.CronicaError(f"NV10: {exc}") from exc
+    try:
         mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
     except _mechanics.MechanicalContractError as exc:
         raise _core.CronicaError(str(exc)) from exc
@@ -353,6 +376,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                 writer_tx,
                 pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
                 contact_pending_ids=contact_pending_ids,
+                passive_plan_ids=passive_plan_ids,
             )
         else:
             journal46 = _sidequests46.recover_matching_journal(
@@ -368,6 +392,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                         writer_tx,
                         pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
                         contact_pending_ids=contact_pending_ids,
+                        passive_plan_ids=passive_plan_ids,
                     )
                     installed46 = {
                         "resultado": "oferta_nao_materializada",
@@ -400,6 +425,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                     writer_tx,
                     pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
                     contact_pending_ids=contact_pending_ids,
+                    passive_plan_ids=passive_plan_ids,
                 )
                 installed46 = _sidequests46.install(repo, journal46)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
@@ -464,8 +490,8 @@ def register(
     *,
     revalidate: bool = True,
 ):
-    if _contacts09.TICKET_KEY in decode_ticket(token):
-        raise _core.CronicaError("contato usa cronica concluir; repetir o concluir para reparar")
+    if _contacts09.TICKET_KEY in decode_ticket(token) or _plans10.TICKET_KEY in decode_ticket(token):
+        raise _core.CronicaError("contato/plano dependente usa cronica concluir; repetir o concluir para reparar")
     if _scene_memory.TICKET_KEY in decode_ticket(token):
         raise _core.CronicaError("elenco de cena usa cronica concluir; repetir o mesmo concluir para reparar")
     if _durable.TRANSACTION_KEY in transaction:

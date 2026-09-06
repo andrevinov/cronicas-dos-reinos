@@ -119,6 +119,15 @@ def routable_operation_pendings(repo: Path) -> list[dict[str, Any]] | None:
     except mundo.WorldEngineError as exc:
         raise NarrativePressureError(str(exc)) from exc
     pending = list(world.get("pendencias") or [])
+    if any(item.get("tipo") == "avaliar_plano_personagem" for item in pending):
+        import planos_adversarios
+        try:
+            dependent = {item["id"] for item in planos_adversarios.passive(repo, world)}
+        except ValueError as exc:
+            raise NarrativePressureError(str(exc)) from exc
+        pending = [item for item in pending if item["id"] not in dependent]
+        if dependent and not pending:
+            return []
     if not pending or any(item.get("tipo") != OPERATION_PENDING_TYPE for item in pending):
         return None
     return sorted(pending, key=lambda item: str(item.get("id")))

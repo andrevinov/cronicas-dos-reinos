@@ -1015,6 +1015,13 @@ def commit(repo: Path, reaction_id: str, alternative_ids: list[str]) -> dict[str
         except adversarial.AdversarialIntegrityError as exc:
             raise SidequestReactionError(str(exc)) from exc
         for resource in option["recursos_exigidos"]:
+            # A reserva Task51 também pode vir de intenção própria (NV-10).
+            # Não duplicar o pool: consultar sua autoridade existente.
+            import operacoes_concorrentes
+            if operacoes_concorrentes.configured(repo):
+                key51 = f"recurso:{actor['id']}:{hashlib.sha256(resource.encode('utf-8')).hexdigest()[:16]}"
+                if key51 in operacoes_concorrentes._load_state(repo)["reservas_exclusivas"]:
+                    raise SidequestReactionError(f"recurso já comprometido por operação: {resource}")
             if resource not in actor["recursos"]:
                 raise SidequestReactionError(f"recurso deixou de estar disponível: {resource}")
             key = _resource_key(actor["id"], resource)
