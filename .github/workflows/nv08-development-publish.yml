@@ -1,0 +1,60 @@
+name: NV08 publish validated patch
+on:
+  push:
+    branches: [feat/nv-08-planos-executaveis]
+    paths: [.github/workflows/nv08-development-publish.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/nv-08-planos-executaveis
+      - name: Verify and apply exact validated patch
+        run: |
+          python - <<'PY'
+          import base64
+          import hashlib
+          import lzma
+          import pathlib
+          import subprocess
+          encoded = ''.join(pathlib.Path(f'.nv08-dev/part-{i}').read_text().strip() for i in range(4))
+          raw = lzma.decompress(base64.b64decode(encoded, validate=True))
+          assert hashlib.sha256(raw).hexdigest() == 'ce6ac453d673b61a27b33bceb5a617462c9bf3ebe9be1400b7196579067c0b06'
+          patch = pathlib.Path('/tmp/nv08.patch')
+          patch.write_bytes(raw)
+          subprocess.run(['git', 'apply', '--check', str(patch)], check=True)
+          subprocess.run(['git', 'apply', str(patch)], check=True)
+          router = pathlib.Path('.nv08-dev/router.patch')
+          assert hashlib.sha256(router.read_bytes()).hexdigest() == 'dd7d1c3b8c68bfdde791850ccb3b9e58bb8e4ba82e076eaf7ef0b440edae739f'
+          subprocess.run(['git', 'apply', '--check', str(router)], check=True)
+          subprocess.run(['git', 'apply', str(router)], check=True)
+          expected = {
+              'AGENTS.md': '2b3d04b14943b33d184eb70dea204e0a3d08900321640602d8d0042c7f47429f',
+              'docs/nv08-planos-personagens.md': '448ecee777052e432d9da8e6ecee2802b9e81247aff50d6884b98020cd96ca4e',
+              'docs/task23-batch-world-boundary-resolution.md': 'e5c1106865800ff77016ba80ca5ca9de6f1e54791bfaa7354b2845d500370070',
+              'ferramentas/acionamentos_leves.py': 'be570f368b13523596939a688cc930dabb533f1c6359484fb53456662d6e4295',
+              'ferramentas/barreira_mundo.py': '8b2df29100596425a5f44db1f91b2a82528047429d067b9b3dc7178dec96d883',
+              'ferramentas/consolidar.py': '4a704652f36310c3a08154fc952ba3bd7fc4879677652a9751654ed25fa92f9f',
+              'ferramentas/mundo.py': 'f7e2b866f02c428113b3d1295c1ae3857581dd32936a19782ade44e6e60e62ac',
+              'ferramentas/operacoes_concorrentes.py': '05493dc5ff9b4176f93dcae0b21dc1707568a80d704d662b27fadeef228ca7a1',
+              'ferramentas/planos_personagens.py': '6656574f3f76b6bfa052f659b004c5a36a19defb2c953cf175fe943a637c1408',
+              'ferramentas/resolver_fronteira.py': 'd344419519c3c073f7f8c0a0ae1d2a56e5f5b7254cce560f98e4528e85fc4082',
+              'ferramentas/transacoes.py': '26612df18c332708740367aa3b0b888b96e651747ef9163c6fbe5efbeda527fe',
+              'ferramentas/turno.py': '0730f86316dfeb193eeb517b6d971cbe62d3a6005d9cb1053452b45f733d6196',
+              'tests/test_planos_operacoes.py': '8234d7f5703abb6b1aa523fc80ba28ec7bf3434be1df675b194bc77915c368b9',
+              'tests/test_planos_personagens.py': 'd52e8bc67831a18ce186b0dabd39cec232365bd97c8e8bd0b41fc221a097c0e4',
+          }
+          for name, digest in expected.items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest, name
+          subprocess.run(['git', 'add', '--', *expected], check=True)
+          actual = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines())
+          assert actual == set(expected)
+          PY
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: dar continuidade executável aos planos dos personagens (NV-08)'
+          git push origin HEAD:feat/nv-08-planos-executaveis
