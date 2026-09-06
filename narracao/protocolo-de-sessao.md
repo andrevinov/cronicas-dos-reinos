@@ -122,7 +122,7 @@ entrada
 O hot path usa **duas chamadas de orquestração**. Um turno comum sem gatilho reativo pode usar somente:
 
 ```bash
-poetry run cronica preparar --cena-id <id-estavel>
+poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest
 ```
 
 Isso emite ticket neutro: não inventar tag/local/NPC. Quando houver entrada/exploração real, novo encontro ou tag contextual já pertinente, acrescente apenas esses gatilhos. Gatilho local usa `--local`, `--acao`, `--tier` e `--periculosidade` juntos; não há inferência silenciosa de tier/risco. A saída de `preparar` traz `contrato_conclusao` com o JSON exato; não chamar `--help` nem abrir código-fonte para redescobri-lo. Depois que a narração estiver aceita, concluir por stdin:
@@ -211,12 +211,12 @@ Surpresa se houver → iniciativa → posição → ação de Ren → rolagens/c
 
 ## Rolagens
 
-Para rolagens visíveis, usar `ferramentas/rolar-dados.py`. Quando duas ou mais rolagens independentes já forem necessárias, usar uma chamada a `ferramentas/rolar-lote.py`. Não antecipar rolagens condicionais.
+Para rolagens visíveis, usar `poetry run dados`. Quando duas ou mais rolagens independentes já forem necessárias, usar uma chamada a `poetry run dados-lote`. Não antecipar rolagens condicionais.
 
 Se a perícia e a CD já forem conhecidas, usar diretamente a assinatura estável:
 
 ```bash
-poetry run rolar-dados ren pericia <nome> --cd <N> --label '<rótulo>'
+poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'
 ```
 
 Não fazer cascata de `--help` para redescobrir uma assinatura já fornecida pelo roteador.

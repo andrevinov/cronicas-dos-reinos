@@ -9,12 +9,12 @@
 Todo turno pode começar apenas com um ID estável:
 
 ```bash
-cronica preparar --cena-id s013-retorno-circo
+cronica preparar --cena-id s013-retorno-circo --sem-oportunidade-sidequest
 ```
 
 Desde a Task 24, esta mesma porta começa pelo **Pending Gate**. O caminho livre segue exatamente o contrato abaixo; se houver pendências reais do Mundo Vivo, `preparar` retorna `fase: bloqueada_pendencias_mundo`, não emite ticket nem autoriza narração. A fila é resolvida pela Task 23 e então o mesmo `cronica preparar` é repetido. Detalhes: `docs/task24-pending-gate-cronica-preparar.md`.
 
-Se **não existe gatilho reativo real**, essa chamada emite um **ticket neutro** read-only. Não chama endpoint de cena, não confirma cena inexistente e, sobretudo, não exige inventar tag/local/NPC para satisfazer a CLI.
+Se **não existe gatilho reativo real**, essa chamada emite um **ticket neutro** read-only. Não chama endpoint de cena, não confirma cena inexistente e, sobretudo, não exige inventar tag/local/NPC para satisfazer a CLI. Desde a Task47, todo preparo também declara exatamente `--sem-oportunidade-sidequest` ou uma oportunidade causal real; a negativa não bloqueia a projeção automática de missões já aceitas.
 
 Quando há entrada/exploração material de local, novo encontro de NPC ou tag contextual já pertinente, a mesma porta recebe os gatilhos reais. Exemplo local:
 
@@ -24,7 +24,8 @@ cronica preparar \
   --local lower_trades \
   --acao entrar \
   --tier 2 \
-  --periculosidade media
+  --periculosidade media \
+  --sem-oportunidade-sidequest
 ```
 
 O quarteto local é atômico: `--local`, `--acao`, `--tier` e `--periculosidade` aparecem juntos ou são todos omitidos. Tier e risco não são inferidos silenciosamente pela CLI. Tags contextuais usam namespace `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:` e só devem ser fornecidas quando já forem pertinentes à situação.

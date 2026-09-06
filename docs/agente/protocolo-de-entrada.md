@@ -24,7 +24,7 @@ Ren coloca três moedas sobre a mesa.
 — Cuide bem dele.
 ```
 
-ON pode avançar a ficção e, quando houver uma resolução narrativa, é o único texto do jogador que pode ser persistido por `turno.py registrar`.
+ON pode avançar a ficção e, quando houver uma resolução narrativa, é o único texto do jogador que pode ser enviado como `jogador` a `cronica concluir`.
 
 ### OFF — conversa de mesa
 
@@ -44,7 +44,7 @@ OFF:
 - não avança tempo;
 - não consome recurso;
 - não cria delta;
-- não chama `turno.py registrar` por si só;
+- não chama `cronica preparar` ou `cronica concluir` por si só;
 - não entra na transcrição da sessão.
 
 A resposta do narrador a conteúdo OFF também deve aparecer entre colchetes e deve permanecer fora da transação narrativa.
@@ -192,7 +192,7 @@ A mensagem é lida de stdin por padrão. O parser retorna:
 - placeholders RECALL encontrados;
 - `pode_registrar`.
 
-Para validar o texto que será enviado como campo `jogador` a `turno.py`:
+Para validar o texto que será enviado como campo `jogador` a `cronica concluir`:
 
 ```bash
 poetry run entrada validar-registro
@@ -210,6 +210,6 @@ Só ON puro e já resolvido é registrável.
 
 ## Barreira transacional
 
-`turno.py registrar` deve validar o campo `jogador` antes de qualquer escrita. Se houver OFF ou RECALL não resolvido, a operação falha sem tocar em transcrição ou buffer.
+`cronica concluir` e seu writer subjacente validam o campo `jogador` antes de qualquer escrita. Se houver OFF ou RECALL não resolvido, a operação falha sem tocar em transcrição ou buffer.
 
 Isso é uma barreira de segurança, não uma razão para chamar o parser em toda mensagem. Texto ON comum continua no caminho rápido sem tool call extra de classificação.

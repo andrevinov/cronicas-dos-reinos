@@ -54,7 +54,7 @@ A separação é de **camada de linguagem**, não de informação.
 
 ## Escrita e custo
 
-A validação ocorre dentro da construção transacional antes da transcrição e do buffer serem escritos. É somente regex sobre a string que já está na chamada de `turno.py registrar`:
+A validação ocorre dentro da construção transacional antes da transcrição e do buffer serem escritos. É somente regex sobre a string que já está na chamada de `cronica concluir`:
 
 - nenhuma leitura de arquivo;
 - nenhuma busca;

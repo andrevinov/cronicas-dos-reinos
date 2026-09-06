@@ -155,7 +155,7 @@ O recap deve ser curto e não revelar material reservado.
 
 Acompanhar mudanças importantes de localização, tempo, recursos, dano/cura, condições, magias/habilidades, itens, promessas, relações, descobertas, relógios e consequências. Não interromper a narração para exibir atualização interna.
 
-Desde a Etapa 7, **não consolidar essas mudanças diretamente em vários arquivos durante cada troca**. O avanço narrativo ao vivo usa `ferramentas/turno.py registrar`, que persiste somente:
+Desde a Etapa 7, **não consolidar essas mudanças diretamente em vários arquivos durante cada troca**. O avanço narrativo ao vivo usa `cronica preparar` e `cronica concluir`; o writer subjacente persiste somente:
 
 - a entrada do jogador e a resposta do narrador em `sessoes/NNN/transcricao.md`;
 - um registro mínimo em `runtime/eventos-pendentes.jsonl`.
@@ -198,7 +198,7 @@ Também não executar `git status`, `git diff`, suíte de testes, regeneração 
 
 ### Rolagens
 
-Se duas ou mais rolagens independentes já são necessárias antes de qualquer resultado, usar `ferramentas/rolar-lote.py`. Se a segunda rolagem só existe dependendo do resultado da primeira, não agrupá-las artificialmente.
+Se duas ou mais rolagens independentes já são necessárias antes de qualquer resultado, usar `poetry run dados-lote`. Se a segunda rolagem só existe dependendo do resultado da primeira, não agrupá-las artificialmente.
 
 Rolagens ocultas relevantes podem ser anexadas ao registro transacional em `rolagens_ocultas`; ficam indisponíveis à consulta pública normal e serão consolidadas no destino reservado adequado posteriormente.
 
@@ -207,7 +207,7 @@ Rolagens ocultas relevantes podem ser anexadas ao registro transacional em `rola
 Uma cena importante pode receber checkpoint narrativo na própria transcrição. Não consolidar por rotina a cada troca; quando houver fronteira de cena relevante e um checkpoint canônico for útil, usar:
 
 ```bash
-python3 ferramentas/checkpoint.py cena
+poetry run cronica sessao checkpoint
 ```
 
 Se não houver necessidade de checkpoint, `turno.py check` continua suficiente para uma pausa segura com transações pendentes. Se existir journal de consolidação, recuperar antes de retomar a narração.

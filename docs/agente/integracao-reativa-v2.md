@@ -2,26 +2,46 @@
 
 Orientação vigente para entrada/exploração de local, começo de encontro, descoberta contextual, recompensas, incidentes e lifecycle de side quests. A camada continua **reativa**: não é scheduler e não roda em turno comum.
 
-## 1. Porta ao vivo: preparar → registrar → confirmar
+## 1. Porta ao vivo: `cronica preparar` → narrar → `cronica concluir`
 
 Antes de narrar uma fronteira de cena que possui gatilho reativo:
 
 ```bash
-python3 ferramentas/cena_mundo.py preparar \
+poetry run cronica preparar \
   --cena-id "sessao-013:galeria" \
   --local galeria_dos_escribas --acao entrar --tier 1 --periculosidade baixa \
-  --npc tomas_rell \
+  --participante tomas_rell \
   --contexto-tag local:galeria_dos_escribas \
-  --contexto-tag assunto:documentos
+  --contexto-tag assunto:documentos \
+  --sem-oportunidade-sidequest
 ```
 
-`preparar` calcula contra sombras em memória. Portanto não cria mapa/recompensa, não estabelece candidato contextual ou incidente como fato e não cria arquivo de preparação.
+`cronica preparar` calcula contra sombras em memória, projeta memória do elenco e
+devolve um ticket único. Portanto não cria mapa/recompensa, não estabelece
+candidato contextual ou incidente como fato e não cria arquivo de preparação.
 
 Desde a Task 31, encontro com NPC não consome gate procedural nem cria potencial aleatório. Desde a Task 32, o mesmo encontro pode avaliar sidequests canônicas previamente escritas; detalhe secreto só abre depois de todos os gates determinísticos passarem. A Task 33 popula esse catálogo sem mudar o algoritmo. Task 34 projeta condições persistentes; Task 35 pode usar esse contexto para selecionar um incidente sério sem criar uma segunda camada ambiental.
 
-Se a cena for aceita, resolver rolagens, narrar e registrar o turno normalmente. Só depois confirmar com os mesmos parâmetros. `confirmar` refaz a preparação read-only e valida fingerprint; se fonte relevante mudou, falha antes da escrita.
+Se a cena ocorrer, resolver rolagens, narrar e concluir com o ticket devolvido:
 
-Se a hipótese de cena estiver errada ou não ocorrer, não confirmar. O antigo verbo `abrir` permanece alias legado de `preparar`.
+```bash
+poetry run cronica concluir --ticket '<campo ticket>' <<'JSON'
+{
+  "jogador": "Ren ...",
+  "narracao": "...",
+  "resumo": "Resumo curto do fato ocorrido.",
+  "modo": "exploração",
+  "deltas": []
+}
+JSON
+```
+
+`cronica concluir` revalida e confirma a cena antes do writer. Se uma fonte
+relevante mudou, falha antes da escrita e exige novo preparo.
+
+Se a hipótese de cena estiver errada ou não ocorrer, descarte o ticket. As portas
+`cena_mundo.py preparar|confirmar` e o alias `abrir` permanecem primitivas de
+manutenção e reparo, não passos adicionais do turno normal.
 
 ## 2. Idempotência e múltiplos NPCs
 

@@ -77,7 +77,7 @@ YAML
 
 Usa `interacoes_mundo.prepare_sidequest_effects`. `deltas_previstos` separa explicitamente:
 
-- `fase: turno`: deltas que entram no mesmo `turno.py registrar`;
+- `fase: turno`: deltas que entram no mesmo `cronica concluir`;
 - `fase: pos_canonico`: rastro/recompensa que só podem ser materializados depois que o fato-base estiver canônico.
 
 Agente novo continua exigindo classificação NPC v2 antes de ganhar agência.
