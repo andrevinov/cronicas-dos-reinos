@@ -42,7 +42,7 @@ import arco_mundo
 TIME_PATH = Path("estado/tempo.yaml")
 AGENDA_PATH = Path("narrador/mundo/agenda.yaml")
 WORLD_STATE_PATH = Path("narrador/mundo/estado.yaml")
-VALID_SCHEDULE_TYPES = {"reavaliar_agente", "movimento", "expiracao"}
+VALID_SCHEDULE_TYPES = {"reavaliar_agente", "movimento", "expiracao", "avaliar_plano_personagem"}
 VALID_RECURRENCES = {"amanhecer"}
 MAX_RECENT_COMPLETED = 64
 
@@ -583,6 +583,8 @@ def conclude(repo: Path, pending_id: str, note: str | None = None) -> dict[str, 
     if not matches:
         raise WorldEngineError(f"pendência não encontrada: {pending_id}")
     item = matches[0]
+    if item.get("tipo") == "avaliar_plano_personagem":
+        raise WorldEngineError("plano exige evento transacional de continuidade; não aceita conclusão genérica")
     state["pendencias"] = [record for record in state["pendencias"] if record["id"] != pending_id]
     completed = {
         "id": pending_id,
@@ -625,6 +627,13 @@ def check_repo(repo: Path) -> dict[str, Any]:
         missing = sorted(referenced - known)
         if missing:
             errors.append("agentes inexistentes referenciados: " + ", ".join(missing))
+
+        import planos_personagens
+        if planos_personagens.KEY in state:
+            try:
+                planos_personagens.check_control(state, agenda)
+            except planos_personagens.PlanError as exc:
+                errors.append(str(exc))
 
         pending_ids = {item["id"] for item in state["pendencias"]}
         completed_ids = {item["id"] for item in state["concluidas_recentes"]}

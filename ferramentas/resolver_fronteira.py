@@ -45,6 +45,7 @@ import operacoes_concorrentes
 import pressao_ravens_bluff
 import reacoes_sidequest
 import acionamentos_leves
+import planos_personagens
 
 SCHEMA = 1
 MAX_BATCH = 16
@@ -180,7 +181,16 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
     # Task45 já fez o trabalho temporal e emitiu uma pendência causal explícita.
     # Não reinterprete esse contrato como rotina/no-op e não abra outros motores
     # apenas para decidir algo que só progressao_sidequests pode materializar.
-    if pending_type == "resolver_grupo_operacoes":
+    if pending_type == planos_personagens.PENDING_TYPE:
+        try:
+            projection = planos_personagens.project_pending(repo, pending)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        item["classificacao"] = "dar_continuidade_plano"
+        item["sem_mudanca_permitido"] = False
+        context["plano_personagem"] = projection
+        sources = _source_list(sources, projection["fontes_lidas"])
+    elif pending_type == "resolver_grupo_operacoes":
         try:
             group = operacoes_concorrentes.project_group_pending(repo, pending)
         except operacoes_concorrentes.ConcurrentOperationError as exc:
@@ -323,7 +333,7 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
 
     batch_payload = [{"id": item.get("id"), "token": item["token"]} for item in items]
     batch_id = f"frn1.{_token(batch_payload, BATCH_HEX)}"
-    return {
+    result = {
         "schema_resolucao_fronteira": SCHEMA,
         "ok": True,
         "mutante": False,
@@ -352,6 +362,14 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
             },
         },
     }
+
+    if any(i["classificacao"] == "dar_continuidade_plano" for i in items):
+        result["proximo_passo"]["entrada_aplicar"]["planos"] = [
+            {"id": "<id>", "token": "<token>", "evento": "<tentar/resolver/replanejar/bloquear/desistir>"}]
+        result["proximo_passo"]["regra"] += (
+            " Planos usam `planos` neste mesmo lote: registrar evento e revisão, fato literal, "
+            "resultado com prova/mecânica e seguimento. Contrato: docs/nv08-planos-personagens.md.")
+    return result
 
 
 def _normalize_note(value: Any) -> str:
@@ -386,13 +404,13 @@ def _valid_token(token: Any, label: str) -> str:
     return token
 
 
-def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]], list[dict[str, Any]]]:
+def _parse_plan(payload: Any) -> tuple[str, list[dict], list[dict], list[dict]]:
     if not isinstance(payload, dict):
         raise BatchBoundaryError("plano de lote deve ser mapa")
     batch_id = payload.get("lote_id")
     if not isinstance(batch_id, str) or not batch_id.startswith("frn1."):
         raise BatchBoundaryError("lote_id inválido")
-    if set(payload) - {"lote_id", "sem_mudanca", "grupos_operacoes"}:
+    if set(payload) - {"lote_id", "sem_mudanca", "grupos_operacoes", "planos"}:
         raise BatchBoundaryError("plano de lote possui campos desconhecidos")
     raw = payload.get("sem_mudanca", [])
     if not isinstance(raw, list):
@@ -440,12 +458,38 @@ def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]], list[dict[str,
                 "bloqueios": value["bloqueios"],
             }
         )
-    return batch_id, decisions, groups
+    plans = payload.get("planos", [])
+    if not isinstance(plans, list) or len(plans) + len(groups) + len(decisions) > MAX_BATCH:
+        raise BatchBoundaryError("decisões do lote excedem o teto")
+    for value in plans:
+        if (not isinstance(value, dict) or set(value) - {"id", "token", "evento", "rolagens_ocultas", "deltas"}
+                or not {"id", "token", "evento"} <= set(value)):
+            raise BatchBoundaryError("decisão de plano exige id, token e evento")
+        if not isinstance(value["id"], str) or not barreira_mundo.PENDING_ID_RE.fullmatch(value["id"]):
+            raise BatchBoundaryError("id de pendência de plano inválido")
+        if value["id"] in seen:
+            raise BatchBoundaryError("pendência repetida no lote")
+        seen.add(value["id"])
+        _valid_token(value["token"], "planos.token")
+        if not isinstance(value["evento"], dict):
+            raise BatchBoundaryError("evento de plano deve ser mapa")
+        effects = value.get("deltas", [])
+        if not isinstance(effects, list) or len(effects) > 8 or any(planos_personagens.touches(d) for d in effects):
+            raise BatchBoundaryError("efeitos do plano devem ser até oito deltas normais")
+        try:
+            for delta in effects:
+                planos_personagens.transacoes.validate_delta(delta)
+        except ValueError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+        rolls = value.get("rolagens_ocultas", [])
+        if not isinstance(rolls, list) or len(rolls) > 1 or any(not isinstance(r, str) for r in rolls):
+            raise BatchBoundaryError("decisão admite até uma saída literal de rolagem")
+    return batch_id, decisions, groups, plans
 
 
 def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
     """Aplica todos os no-ops aprovados numa chamada, com revalidação por item."""
-    requested_batch_id, decisions, group_decisions = _parse_plan(payload)
+    requested_batch_id, decisions, group_decisions, plan_decisions = _parse_plan(payload)
     current = prepare_batch(repo)
     current_by_id = {str(item["id"]): item for item in current["itens"]}
     completed = _completed_map(repo)
@@ -477,6 +521,8 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
             raise BatchBoundaryError(
                 f"pendência {pending_id} mudou desde preparar; refaça o lote"
             )
+        if item.get("classificacao") == "dar_continuidade_plano":
+            raise BatchBoundaryError("plano não aceita no-op genérico; registrar continuidade ou bloqueio")
         if item.get("classificacao") == "requer_fato_canonico":
             raise BatchBoundaryError(
                 f"pendência {pending_id} é evento canônico e não aceita sem_mudanca"
@@ -517,6 +563,50 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         if item.get("classificacao") != "comprometer_grupo_operacoes":
             raise BatchBoundaryError(f"pendência {pending_id} não é grupo de operações")
         validated_groups.append((decision, item))
+
+    fresh_plans = []
+    for decision in plan_decisions:
+        item = current_by_id.get(decision["id"])
+        if item is None:
+            done = completed.get(decision["id"])
+            if done is None or done.get("tipo") != planos_personagens.PENDING_TYPE:
+                raise BatchBoundaryError("pendência de plano ausente")
+            # O recibo precisa corresponder à decisão, não apenas ao mesmo ID.
+            if done.get("decisao") != planos_personagens._digest(decision):
+                raise BatchBoundaryError("retry de plano diverge da decisão já registrada")
+            already.append({"id": decision["id"], "resultado": "ja_concluida", "conclusao": done})
+            continue
+        if item["classificacao"] != "dar_continuidade_plano" or item["token"] != decision["token"]:
+            raise BatchBoundaryError("plano mudou desde preparar; refazer lote")
+        fresh_plans.append(decision)
+    try:
+        plan_transaction = planos_personagens.compile_batch(repo, fresh_plans, current_by_id)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise BatchBoundaryError(str(exc)) from exc
+
+    # Um lote misto não pode gravar planos para só depois descobrir um grupo
+    # inválido. Validação pura reutiliza exatamente o contrato do motor existente.
+    if plan_transaction is not None:
+        owners = {current_by_id[d["id"]]["contexto"]["plano_personagem"]["plano"]["agente"]["id"]
+                  for d in fresh_plans}
+        if any(item and (item.get("agente_leve") or item.get("agente")) in owners
+               for _, item in validated):
+            raise BatchBoundaryError("não concluir rotina e alterar plano do mesmo agente no mesmo lote")
+        try:
+            for decision, item in validated_groups:
+                if item is not None:
+                    operacoes_concorrentes.commit_group(repo, item["grupo_operacoes_id"],
+                                                        decision["bloqueios"], validate_only=True)
+        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            raise BatchBoundaryError(str(exc)) from exc
+
+    plan_result = None
+    if plan_transaction is not None:
+        import turno
+        try:
+            plan_result = turno.register_transaction(repo, plan_transaction)
+        except (ValueError, OSError, yaml.YAMLError) as exc:
+            raise BatchBoundaryError(str(exc)) from exc
 
     applied: list[dict[str, Any]] = []
     committed_groups: list[dict[str, Any]] = []
@@ -567,6 +657,7 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         "lote_id_atual": remaining["lote_id"],
         "aplicadas": applied,
         "grupos_comprometidos": committed_groups,
+        **({"planos_aplicados": plan_result} if plan_result is not None else {}),
         "ja_aplicadas": already,
         "quantidade_restante": remaining["quantidade"],
         "requer_resolucao": remaining["itens"],

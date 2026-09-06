@@ -428,6 +428,12 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
                     continue
                 resolving = {pending_agents.get(str(t).split(":", 1)[1]) for t in record.get("tags") or []
                              if str(t).startswith("resolver-pendencia-mundo:")}
+                for delta in record.get("deltas", []):
+                    if str(delta.get("alvo", "")).startswith("plano:") and (delta.get("valor") or {}).get("evento") != "definir":
+                        pid = delta["alvo"].split(":", 1)[1]
+                        owner = (canonical_world.get("planos_personagens", {}).get(pid, {}).get("agente") or {})
+                        if owner.get("tipo") == "leve":
+                            resolving.add(owner.get("id"))
                 if aid not in resolving:
                     origins.append(record["id"])
             if origins:

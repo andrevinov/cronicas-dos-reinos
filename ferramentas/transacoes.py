@@ -50,6 +50,12 @@ HOT_COMMITMENTS = 4
 def validate_delta(delta: Any) -> dict[str, Any]:
     if not isinstance(delta, dict):
         raise TransactionError("cada delta precisa ser objeto JSON")
+    if str(delta.get("alvo", "")).startswith("plano:"):
+        import planos_personagens
+        try:
+            return planos_personagens.validate_delta(delta)
+        except planos_personagens.PlanError as exc:
+            raise TransactionError(str(exc)) from exc
     if tempo_transacional.is_atomic_delta(delta):
         try:
             return tempo_transacional.validate_atomic_delta(delta)

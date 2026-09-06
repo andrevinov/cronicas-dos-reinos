@@ -246,6 +246,13 @@ def authorize_registration(
             "barreira": status,
         }
 
+    if transaction.get("modo") == "mundo" and transaction.get("jogador") in (None, ""):
+        import planos_personagens
+        if planos_personagens.events(transaction):
+            # O writer valida todas as revisões, causas, custos e resultados antes
+            # da primeira escrita. O journal fechará as pendências conjuntamente.
+            return {"ok": True, "retry": False, "pendencia_resolvida": None, "barreira": status}
+
     if resolution_id is not None:
         state = mundo.load_world_state(repo)
         known = {str(item.get("id")) for item in state.get("pendencias") or []}
@@ -341,6 +348,7 @@ def conclude(
         "resolver_reacao_sidequest",
         "resolver_grupo_operacoes",
         "resolver_operacao_adversarial",
+        "avaliar_plano_personagem",
     }:
         raise WorldPendingBarrierError(
             "reação/operação adversarial não aceita conclusão genérica; use sua "

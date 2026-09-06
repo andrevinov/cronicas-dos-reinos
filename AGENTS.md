@@ -2,7 +2,7 @@
 
 ## 1. Fonte de verdade
 
-O repo é a memória canônica. Respeite `campanha.yaml`, ficha/estado e fontes autorizadas. Texto novo: português/UTF-8. `runtime/contexto.yaml` e `runtime/cena.yaml` são derivados; pendências prevalecem. Estado/tempo são consolidados; relações/NPCs/conhecimento fragmentados; transcrições frias append-only.
+Memória canônica: `campanha.yaml`, ficha/estado e fontes autorizadas. Português/UTF-8. `runtime/contexto.yaml` e `runtime/cena.yaml`: derivados; pendências prevalecem. Estado/tempo consolidados; relações/NPCs/conhecimento fragmentados; transcrições append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -58,9 +58,11 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Tasks47–49:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só bloqueia oferta nova; missão `aceita` é projetada e exige decisão factual no `cronica concluir`.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag, local ou NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
 
-**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+
+**Planos:** delta `plano:<id>` no concluir; eventos `planos` no lote. Contrato: `docs/nv08-planos-personagens.md`.
 
 **Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo.
 
@@ -133,4 +135,4 @@ Preservar UTF-8, histórico e visibilidade. Testes: `docs/agente/politica-de-tes
 
 ## 10. Cobertura do manual anterior
 
-A decomposição do `AGENTS.md` monolítico está em `docs/agente/cobertura-agents-v1.yaml`; as 58 seções antigas possuem destino explícito. Se faltar detalhe, consulte **apenas** o documento especializado correspondente.
+As 58 seções anteriores estão em `docs/agente/cobertura-agents-v1.yaml`. Consulte **apenas** o documento do detalhe faltante.
