@@ -1,8 +1,4 @@
-"""Integração causal/temporal em campanha sintética, sem consultar o save vivo.
-
-Usa o calendário, writer, journal, lote e CLI reais. Narração anotada não equivale
-à avaliação de uma IA nem mede tokens nativos de um episódio.
-"""
+"""Integração em campanha sintética; não usa o save vivo nem mede tokens de IA."""
 from copy import deepcopy
 import hashlib
 import json
@@ -16,12 +12,13 @@ import yaml
 
 TOOLS = Path(__file__).resolve().parents[1] / "ferramentas"
 sys.path.insert(0, str(TOOLS))
+import cronica  # Inicializa a porta pública e os adaptadores legados.
 import acionamento_npcs as activation
 import agentes_leves as light
 import barreira_mundo as barrier
 import checkpoint
 import consolidar
-import cronica
+import _consolidar_core as consolidation_core
 import fronteira_mundo
 import memoria_duravel
 import mundo
@@ -174,7 +171,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.assertIn(activation.BARRIER, plan["outputs"])
         journal = consolidar.stage_plan(self.repo, plan)
         with self.assertRaises(consolidar.ConsolidationError):
-            consolidar.install_staged(self.repo, journal, fail_after=1)
+            consolidation_core.install_staged(self.repo, journal, fail_after=1)
         consolidar.resume_consolidation(self.repo)
         self.assertEqual(len(self.pending()), 1)
         self.assertIn("relato_recebido", self.read(f"estado/relacoes/{self.silva}.yaml")["relacao"])
@@ -215,6 +212,19 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         again = batch.apply_batch(self.repo, payload)
         self.assertEqual(len(again["ja_aplicadas"]), 1)
         self.assertEqual(before, self.hashes())
+
+    def test_cli_lote_aplica_em_processo_novo_sem_herdar_importacoes(self):
+        turno.register_transaction(self.repo, self.transaction())
+        cmd = [sys.executable, str(TOOLS / "resolver_fronteira.py"), "--repo", str(self.repo)]
+        prepared = subprocess.run([*cmd, "preparar"], capture_output=True, text=True)
+        self.assertEqual(prepared.returncode, 0, prepared.stderr)
+        payload = self.noop_payload(yaml.safe_load(prepared.stdout))
+        applied = subprocess.run([*cmd, "aplicar"], input=json.dumps(payload), capture_output=True, text=True)
+        self.assertEqual(applied.returncode, 0, applied.stderr)
+        result = yaml.safe_load(applied.stdout)
+        self.assertEqual(result["quantidade_restante"], 0)
+        self.assertEqual(self.pending(), [])
+        self.assertFalse(barrier.load_status(self.repo)["bloqueado"])
 
     def test_lote_obsoleto_recusa_todos_antes_da_primeira_escrita(self):
         turno.register_transaction(self.repo, self.transaction())
@@ -304,8 +314,9 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         prepared = cronica.prepare(self.repo, scene_id="causa-fixture", sidequest_signal=None)
         tx = self.fixture.promise("promessa-publica")
         tx["memoria"]["fatos"][0]["compromisso"]["janela"] = {"inicio": {"data": DATE, "hora": "08:10"}}
+        compiled = memoria_duravel.compile_transaction(tx, session=3, existing_commitments={}, meters={})
+        cid = compiled["fato_ids"][0]
         result = cronica.conclude(self.repo, prepared["ticket"], tx)
-        cid = memoria_duravel.event_id("promessa-publica", "fato", 3)
         self.assertIn(cid, self.read(activation.STATE)["compromissos"])
         self.assertEqual([p["agente_leve"] for p in self.pending()], [self.silva])
         self.assertTrue(result["transacao"]["checkpoint_mundo"]["disparado"])

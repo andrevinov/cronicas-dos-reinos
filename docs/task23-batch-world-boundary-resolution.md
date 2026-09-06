@@ -87,6 +87,16 @@ resolvidas separadamente e a escolha de Ren em uma frente nao fecha outra.
 causal antes de remover a pendencia. A Task 23 nao generaliza esse cache para agentes
 estrategicos.
 
+A NV-07 acrescenta `avaliar_condicao_concreta`: prazo ou alteracao de dependencia
+explicita, com contexto causal dirigido no mesmo lote. Nao significa acao executada,
+presenca ou conhecimento adquirido pelo NPC. Uma causa nova nao e descartada pelo
+cache antigo. O no-op exige uma nota de avaliacao.
+
+`concluir_resolucao_registrada` indica transacao de mundo ja consolidada: conclua
+pela barreira, nunca como no-op. Avaliacoes adiadas conservam seus IDs no mesmo
+estado do Mundo Vivo e entram quando um slot e liberado; a barreira inclui esse
+trabalho restante. Manual: `docs/agente/acionamento-causal-npcs.md`.
+
 ## Staleness e retry
 
 Todas as decisoes sao revalidadas antes da primeira escrita. Se o token de uma
@@ -94,7 +104,8 @@ pendencia mudou, o lote falha antes de aplicar qualquer decisao.
 
 O token de agente leve nao inclui o proprio cache negativo. Isso permite recuperar a
 queda intencionalmente suportada pela Task 9 entre a escrita do cache e a remocao da
-pendencia.
+pendencia. Causas NV-07 incluem as assinaturas atuais de suas fontes no token;
+contexto que nao couber exige aprofundamento explicito, sem truncar fatos.
 
 Pendencia ja presente em `concluidas_recentes` e reconhecida como retry idempotente.
 
@@ -105,7 +116,8 @@ Contrato: `baseline/batch-world-boundary-resolution-orcamento.yaml`.
 - 1 chamada para preparar a fronteira;
 - 1 chamada para aplicar todos os no-ops;
 - maximo 16 pendencias por lote;
-- no maximo um fragmento dirigido por pendencia;
+- no maximo um perfil dirigido por pendencia; causas NV-07 acrescentam somente as
+  fontes explicitamente notificadas, sem varrer outros NPCs;
 - zero escrita em `preparar`;
 - zero scheduler;
 - zero estado paralelo;
@@ -113,4 +125,5 @@ Contrato: `baseline/batch-world-boundary-resolution-orcamento.yaml`.
 - itens realmente narrativos continuam separados e nao sao comprimidos.
 
 O ganho pretendido e reduzir inferencias e tool calls em fronteiras com varias rotinas,
-nao alterar a frequencia nem a criatividade do Mundo Vivo.
+nao alterar a frequencia nem a criatividade do Mundo Vivo. Bytes de ferramenta nao
+comprovam economia de tokens em episodios narrados.

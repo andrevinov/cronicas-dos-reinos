@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 """Agentes recorrentes leves do Mundo Vivo.
 
-A camada existe para NPCs que continuam vivendo fora de cena, mas cuja rotina é
-o padrão. Checkpoints de amanhecer fazem apenas uma pré-seleção determinística;
-fragmentos só são abertos quando uma pendência concreta precisa ser resolvida.
-
-Schema 2 adiciona cache negativo causal: depois de uma avaliação explícita concluir
-que nada extraordinário mudou, a próxima cadência pode ser compactada sem abrir o
-fragmento do agente se as fontes canônicas declaradas e a versão do perfil forem
-idênticas. Qualquer divergência invalida o cache e restaura a avaliação normal.
+Checkpoints selecionam revisões rotineiras sem abrir todos os perfis. Schema 2
+reutiliza decisões negativas enquanto fontes causais e perfil permanecem iguais.
+Condições concretas da NV-07 usam a mesma fila, sem executar ações automaticamente.
 """
 from __future__ import annotations
 
@@ -144,7 +139,6 @@ def load_index(repo: Path) -> dict[str, Any]:
     schema = _schema(data)
     if data.get("natureza") != "reservado":
         raise LightAgentError("índice de agentes leves deve ter natureza: reservado")
-
     budget = _map(data.get("orcamento"), "orcamento")
     max_new = budget.get("max_novas_por_checkpoint")
     max_open = budget.get("max_pendencias_abertas")
@@ -157,12 +151,10 @@ def load_index(repo: Path) -> dict[str, Any]:
     if budget.get("ordenacao") != "mais_atrasado_prioridade_id":
         raise LightAgentError("orcamento.ordenacao deve ser mais_atrasado_prioridade_id")
     if schema == 2:
-        max_checks = budget.get("max_checks_cache_negativo_por_checkpoint")
-        if max_checks != 1:
+        if budget.get("max_checks_cache_negativo_por_checkpoint") != 1:
             raise LightAgentError(
                 "schema 2 exige orcamento.max_checks_cache_negativo_por_checkpoint: 1"
             )
-
     agents = _map(data.get("agentes"), "agentes")
     if not agents:
         raise LightAgentError("índice de agentes leves não pode ser vazio")
@@ -202,11 +194,8 @@ def _validate_cache(cache: Any, agent_id: str) -> None:
     if cache is None:
         return
     item = _map(cache, f"{agent_id}.cache_negativo")
-    _hex(
-        item.get("assinatura_causal"),
-        CACHE_SIGNATURE_HEX_LEN,
-        f"{agent_id}.cache_negativo.assinatura_causal",
-    )
+    _hex(item.get("assinatura_causal"), CACHE_SIGNATURE_HEX_LEN,
+         f"{agent_id}.cache_negativo.assinatura_causal")
     _text(item.get("pendencia_origem"), f"{agent_id}.cache_negativo.pendencia_origem")
     confirmed = _map(item.get("confirmado_em"), f"{agent_id}.cache_negativo.confirmado_em")
     mundo.parse_instant(
@@ -237,8 +226,7 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
     if data.get("natureza") != "controle_reservado":
         raise LightAgentError("estado de agentes leves deve ter natureza: controle_reservado")
     states = _map(data.get("agentes"), "estado.agentes")
-    expected = set(index["agentes"])
-    actual = set(states)
+    expected, actual = set(index["agentes"]), set(states)
     if expected != actual:
         raise LightAgentError(
             f"estado/índice divergem; ausentes={sorted(expected-actual)}, extras={sorted(actual-expected)}"
@@ -257,9 +245,7 @@ def load_state(repo: Path, index: dict[str, Any] | None = None) -> dict[str, Any
     return data
 
 
-def _validate_evidence(
-    repo: Path, source: str, evidence: str, label: str, *, check_sources: bool
-) -> None:
+def _validate_evidence(repo: Path, source: str, evidence: str, label: str, *, check_sources: bool) -> None:
     if not check_sources:
         return
     path = _repo_path(repo, source)
@@ -271,13 +257,7 @@ def _validate_evidence(
         raise LightAgentError(f"{label}: evidência não localizada em {source}")
 
 
-def load_fragment(
-    repo: Path,
-    agent_id: str,
-    meta: dict[str, Any],
-    *,
-    check_sources: bool = False,
-) -> dict[str, Any]:
+def load_fragment(repo: Path, agent_id: str, meta: dict[str, Any], *, check_sources: bool = False) -> dict[str, Any]:
     raw_path = _text(meta.get("arquivo"), f"agentes.{agent_id}.arquivo")
     path = _repo_path(repo, raw_path, prefix=DIR)
     data = _map(_load_yaml(path), raw_path)
@@ -289,7 +269,6 @@ def load_fragment(
         raise LightAgentError(f"{agent_id}: id/nome divergem do índice")
     if data.get("perfil_operacional") != PROFILE:
         raise LightAgentError(f"{agent_id}: perfil_operacional deve ser {PROFILE}")
-
     sources = _list(data.get("fontes_canonicas"), f"{agent_id}.fontes_canonicas")
     source_list: list[str] = []
     source_set: set[str] = set()
@@ -297,7 +276,6 @@ def load_fragment(
         normalized = _text(source, f"{agent_id}.fontes_canonicas[{i}]")
         source_list.append(normalized)
         source_set.add(normalized)
-
     for field in ("rotina_padrao", "objetivo_atual"):
         item = _map(data.get(field), f"{agent_id}.{field}")
         _text(item.get("descricao"), f"{agent_id}.{field}.descricao")
@@ -306,7 +284,6 @@ def load_fragment(
         if source not in source_set:
             raise LightAgentError(f"{agent_id}.{field}: fonte não declarada: {source}")
         _validate_evidence(repo, source, evidence, f"{agent_id}.{field}", check_sources=check_sources)
-
     initiatives = _list(data.get("iniciativas_possiveis"), f"{agent_id}.iniciativas_possiveis")
     for i, raw in enumerate(initiatives):
         item = _map(raw, f"{agent_id}.iniciativas_possiveis[{i}]")
@@ -314,21 +291,11 @@ def load_fragment(
         source = _text(item.get("fonte"), f"{agent_id}.iniciativas_possiveis[{i}].fonte")
         evidence = _text(item.get("evidencia"), f"{agent_id}.iniciativas_possiveis[{i}].evidencia")
         if source not in source_set:
-            raise LightAgentError(
-                f"{agent_id}.iniciativas_possiveis[{i}]: fonte não declarada: {source}"
-            )
-        _validate_evidence(
-            repo,
-            source,
-            evidence,
-            f"{agent_id}.iniciativas_possiveis[{i}]",
-            check_sources=check_sources,
-        )
+            raise LightAgentError(f"{agent_id}.iniciativas_possiveis[{i}]: fonte não declarada: {source}")
+        _validate_evidence(repo, source, evidence, f"{agent_id}.iniciativas_possiveis[{i}]", check_sources=check_sources)
     _text(data.get("regra_de_reavaliacao"), f"{agent_id}.regra_de_reavaliacao")
-
     if meta.get("fontes_causais") is not None:
-        expected = _causal_sources(meta, agent_id)
-        if source_list != expected:
+        if source_list != _causal_sources(meta, agent_id):
             raise LightAgentError(
                 f"{agent_id}: fontes_causais do índice devem coincidir exatamente com fontes_canonicas do perfil"
             )
@@ -344,16 +311,12 @@ def _causal_bytes(repo: Path, source: str) -> bytes:
     except OSError as exc:
         raise LightAgentError(f"não foi possível ler fonte causal: {source}") from exc
     if len(data) > MAX_CAUSAL_SOURCE_BYTES:
-        raise LightAgentError(
-            f"fonte causal excede {MAX_CAUSAL_SOURCE_BYTES} bytes: {source}"
-        )
+        raise LightAgentError(f"fonte causal excede {MAX_CAUSAL_SOURCE_BYTES} bytes: {source}")
     return data
 
 
-def causal_signature(
-    repo: Path, agent_id: str, meta: dict[str, Any]
-) -> tuple[str, list[str]]:
-    """Assina apenas fontes causais compactas; nunca abre o perfil narrativo."""
+def causal_signature(repo: Path, agent_id: str, meta: dict[str, Any]) -> tuple[str, list[str]]:
+    """Assina somente fontes causais compactas; nunca abre o perfil narrativo."""
     sources = _causal_sources(meta, agent_id)
     rows = []
     for source in sources:
@@ -361,9 +324,7 @@ def causal_signature(
         rows.append({"fonte": source, "sha256": hashlib.sha256(data).hexdigest()})
     payload = {
         "agente": agent_id,
-        "perfil_blob_git": _hex(
-            meta.get("perfil_blob_git"), PROFILE_BLOB_HEX_LEN, f"{agent_id}.perfil_blob_git"
-        ),
+        "perfil_blob_git": _hex(meta.get("perfil_blob_git"), PROFILE_BLOB_HEX_LEN, f"{agent_id}.perfil_blob_git"),
         "fontes": rows,
     }
     rendered = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -382,9 +343,7 @@ def resolve_agent(index: dict[str, Any], query: str) -> tuple[str, dict[str, Any
     if not matches:
         raise LightAgentError(f"agente leve não encontrado: {query}")
     if len(matches) > 1:
-        raise LightAgentError(
-            f"consulta ambígua para {query!r}: {', '.join(item[0] for item in matches)}"
-        )
+        raise LightAgentError(f"consulta ambígua para {query!r}: {', '.join(item[0] for item in matches)}")
     return matches[0]
 
 
@@ -413,22 +372,14 @@ def validate_repo(repo: Path) -> dict[str, Any]:
             if schema == 2:
                 raw_path = _text(meta.get("arquivo"), f"agentes.{agent_id}.arquivo")
                 profile_path = _repo_path(repo, raw_path, prefix=DIR)
-                expected_blob = _hex(
-                    meta.get("perfil_blob_git"),
-                    PROFILE_BLOB_HEX_LEN,
-                    f"{agent_id}.perfil_blob_git",
-                )
+                expected_blob = _hex(meta.get("perfil_blob_git"), PROFILE_BLOB_HEX_LEN, f"{agent_id}.perfil_blob_git")
                 actual_blob = _git_blob_sha(profile_path)
                 if actual_blob != expected_blob:
-                    raise LightAgentError(
-                        f"{agent_id}: perfil_blob_git desatualizado; esperado {actual_blob}"
-                    )
+                    raise LightAgentError(f"{agent_id}: perfil_blob_git desatualizado; esperado {actual_blob}")
                 for source in _causal_sources(meta, agent_id):
                     _causal_bytes(repo, source)
                 if fragment["fontes_canonicas"] != meta["fontes_causais"]:
-                    raise LightAgentError(
-                        f"{agent_id}: fontes causais divergem do perfil narrativo"
-                    )
+                    raise LightAgentError(f"{agent_id}: fontes causais divergem do perfil narrativo")
     except LightAgentError as exc:
         errors.append(str(exc))
     return {
@@ -445,16 +396,11 @@ def _pending_id(agent_id: str, due: mundo.WorldInstant) -> str:
 
 
 def _light_pending(world_state: dict[str, Any]) -> list[dict[str, Any]]:
-    return [
-        item
-        for item in world_state.get("pendencias") or []
-        if isinstance(item, dict) and item.get("tipo") == "reavaliar_agente_leve"
-    ]
+    return [item for item in world_state.get("pendencias") or []
+            if isinstance(item, dict) and item.get("tipo") == "reavaliar_agente_leve"]
 
 
-def _next_future(
-    due: mundo.WorldInstant, interval_days: int, canonical: mundo.WorldInstant
-) -> mundo.WorldInstant:
+def _next_future(due: mundo.WorldInstant, interval_days: int, canonical: mundo.WorldInstant) -> mundo.WorldInstant:
     step = interval_days * 1440
     value = mundo.WorldInstant(due.minute + step)
     while value <= canonical:
@@ -466,13 +412,8 @@ def _set_next(state: dict[str, Any], agent_id: str, instant: mundo.WorldInstant)
     state["agentes"][agent_id]["proxima_avaliacao"] = mundo.instant_parts(instant)
 
 
-def _cache_hit(
-    repo: Path,
-    index: dict[str, Any],
-    state: dict[str, Any],
-    agent_id: str,
-    meta: dict[str, Any],
-) -> tuple[bool, str | None, list[str]]:
+def _cache_hit(repo: Path, index: dict[str, Any], state: dict[str, Any], agent_id: str,
+               meta: dict[str, Any]) -> tuple[bool, str | None, list[str]]:
     if _schema(index) != 2:
         return False, None, []
     cache = state["agentes"][agent_id].get("cache_negativo")
@@ -488,7 +429,6 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     state = load_state(repo, index)
     canonical, _ = mundo.load_canonical_time(repo)
     world_state = mundo.load_world_state(repo)
-
     import acionamento_npcs
     try:
         acionamento_npcs.validate_state(world_state, index)
@@ -496,16 +436,10 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
     except acionamento_npcs.NpcActivationError as exc:
         raise LightAgentError(str(exc)) from exc
     open_pending = _light_pending(world_state)
-    open_agents = {
-        str(item.get("agente_leve")) for item in open_pending if item.get("agente_leve")
-    }
+    open_agents = {str(item.get("agente_leve")) for item in open_pending if item.get("agente_leve")}
     open_ids = {str(item.get("id")) for item in open_pending if item.get("id")}
-    completed_ids = {
-        str(item.get("id"))
-        for item in world_state.get("concluidas_recentes") or []
-        if isinstance(item, dict) and item.get("id")
-    }
-
+    completed_ids = {str(item.get("id")) for item in world_state.get("concluidas_recentes") or []
+                     if isinstance(item, dict) and item.get("id")}
     state_changed = False
     candidates: list[tuple[mundo.WorldInstant, int, str, dict[str, Any]]] = []
     for agent_id, meta in index["agentes"].items():
@@ -514,32 +448,25 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
         raw_due = state["agentes"][agent_id]["proxima_avaliacao"]
         due = mundo.parse_instant(raw_due["data"], raw_due["hora"])
         pid = _pending_id(agent_id, due)
-
         if pid in open_ids or pid in completed_ids:
-            next_due = _next_future(due, int(meta["intervalo_dias"]), canonical)
-            _set_next(state, agent_id, next_due)
+            _set_next(state, agent_id, _next_future(due, int(meta["intervalo_dias"]), canonical))
             state_changed = True
             continue
-
         if agent_id in open_agents or due > canonical:
             continue
         candidates.append((due, -int(meta["prioridade"]), agent_id, meta))
-
     candidates.sort(key=lambda item: (item[0].minute, item[1], item[2]))
     budget = index["orcamento"]
     available_open = max(0, int(budget["max_pendencias_abertas"]) - len(open_pending))
     limit = min(int(budget["max_novas_por_checkpoint"]), available_open)
-    # Trabalho já admitido não é ultrapassado por outra rodada de rotinas.
     if waiting:
         limit = 0
     selected = candidates[:limit]
-
     emitted: list[dict[str, Any]] = []
     compacted: list[dict[str, Any]] = []
     invalidated: list[str] = []
     causal_sources_read: list[str] = []
     cache_checks = 0
-
     for due, _neg_priority, agent_id, meta in selected:
         hit, current_signature, sources = _cache_hit(repo, index, state, agent_id, meta)
         if current_signature is not None:
@@ -551,82 +478,47 @@ def process_checkpoint(repo: Path) -> dict[str, Any]:
             cache = state["agentes"][agent_id]["cache_negativo"]
             cache["acertos_compactados"] = int(cache["acertos_compactados"]) + 1
             cache["ultima_compactacao"] = mundo.instant_parts(canonical)
-            compacted.append(
-                {
-                    "agente_leve": agent_id,
-                    "resultado": "noop_compactado",
-                    "vencida_em": mundo.instant_parts(due),
-                    "proxima_avaliacao": mundo.instant_parts(next_due),
-                    "acertos_compactados": cache["acertos_compactados"],
-                }
-            )
+            compacted.append({"agente_leve": agent_id, "resultado": "noop_compactado",
+                              "vencida_em": mundo.instant_parts(due),
+                              "proxima_avaliacao": mundo.instant_parts(next_due),
+                              "acertos_compactados": cache["acertos_compactados"]})
             state_changed = True
             continue
-
         if current_signature is not None:
             state["agentes"][agent_id]["cache_negativo"] = None
             invalidated.append(agent_id)
             state_changed = True
-
-        emitted.append(
-            {
-                "id": _pending_id(agent_id, due),
-                "tipo": "reavaliar_agente_leve",
-                "agente_leve": agent_id,
-                "agentes_afetados": [],
-                "disparado_em": mundo.instant_parts(due),
-                "motivo": (
-                    f"Reavaliar {meta['nome']} fora de cena. Rotina é o padrão; "
-                    "só registrar iniciativa se o estado atual oferecer causa concreta."
-                ),
-                "origem": f"agentes-leves:{agent_id}.cadencia",
-            }
-        )
-
+        emitted.append({
+            "id": _pending_id(agent_id, due), "tipo": "reavaliar_agente_leve",
+            "agente_leve": agent_id, "agentes_afetados": [], "disparado_em": mundo.instant_parts(due),
+            "motivo": (f"Reavaliar {meta['nome']} fora de cena. Rotina é o padrão; "
+                       "só registrar iniciativa se o estado atual oferecer causa concreta."),
+            "origem": f"agentes-leves:{agent_id}.cadencia",
+        })
     added = mundo._merge_pending(world_state, emitted)
     if added:
         mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, world_state)
         added_ids = {item["id"] for item in added}
         for due, _neg_priority, agent_id, meta in selected:
             if _pending_id(agent_id, due) in added_ids:
-                _set_next(
-                    state,
-                    agent_id,
-                    _next_future(due, int(meta["intervalo_dias"]), canonical),
-                )
+                _set_next(state, agent_id, _next_future(due, int(meta["intervalo_dias"]), canonical))
                 state_changed = True
-
     if state_changed:
         mundo._atomic_write_yaml(repo / STATE, state)
-
     deferred = [agent_id for _due, _priority, agent_id, _meta in candidates[limit:]]
     return {
-        "ok": True,
-        "novas_pendencias": added,
+        "ok": True, "novas_pendencias": added,
         "agentes_leves_reconsiderar": [item["agente_leve"] for item in added],
-        "noops_compactados": compacted,
-        "caches_invalidados": invalidated,
+        "noops_compactados": compacted, "caches_invalidados": invalidated,
         "adiados_por_orcamento": deferred,
         "orcamento": {
             "max_novas_por_checkpoint": budget["max_novas_por_checkpoint"],
             "max_pendencias_abertas": budget["max_pendencias_abertas"],
-            "max_checks_cache_negativo_por_checkpoint": (
-                budget.get("max_checks_cache_negativo_por_checkpoint", 0)
-            ),
-            "checks_cache_negativo": cache_checks,
-            "pendencias_abertas_antes": len(open_pending),
+            "max_checks_cache_negativo_por_checkpoint": budget.get("max_checks_cache_negativo_por_checkpoint", 0),
+            "checks_cache_negativo": cache_checks, "pendencias_abertas_antes": len(open_pending),
         },
-        "fontes_lidas": list(
-            dict.fromkeys(
-                [
-                    INDEX.as_posix(),
-                    STATE.as_posix(),
-                    mundo.TIME_PATH.as_posix(),
-                    mundo.WORLD_STATE_PATH.as_posix(),
-                    *causal_sources_read,
-                ]
-            )
-        ),
+        "fontes_lidas": list(dict.fromkeys([INDEX.as_posix(), STATE.as_posix(), mundo.TIME_PATH.as_posix(),
+                                           mundo.WORLD_STATE_PATH.as_posix(), *causal_sources_read])),
     }
 
 
@@ -638,47 +530,28 @@ def _completed_for(world_state: dict[str, Any], pending_id: str) -> dict[str, An
 
 
 def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[str, Any]:
-    """Registra no-op explícito e instala cache antes de remover a pendência.
-
-    A ordem é proposital: se o processo cair entre as duas escritas, a pendência
-    continua bloqueando o avanço e um retry termina a operação. Cache sozinho
-    nunca cria acontecimento nem remove a barreira.
-    """
+    """Instala cache antes da conclusão; queda entre escritas mantém a barreira."""
     pending_id = _text(pending_id, "id da pendência")
     index = load_index(repo)
     if _schema(index) != 2:
         raise LightAgentError("concluir-noop exige schema_agentes_leves: 2")
     state = load_state(repo, index)
     world_state = mundo.load_world_state(repo)
-
     matches = [item for item in _light_pending(world_state) if item.get("id") == pending_id]
     if not matches:
         completed = _completed_for(world_state, pending_id)
-        cached_agent = next(
-            (
-                agent_id
-                for agent_id, item in state["agentes"].items()
-                if isinstance(item.get("cache_negativo"), dict)
-                and item["cache_negativo"].get("pendencia_origem") == pending_id
-            ),
-            None,
-        )
+        cached_agent = next((agent_id for agent_id, item in state["agentes"].items()
+                             if isinstance(item.get("cache_negativo"), dict)
+                             and item["cache_negativo"].get("pendencia_origem") == pending_id), None)
         if completed is not None and cached_agent is not None:
-            return {
-                "ok": True,
-                "ja_concluida": True,
-                "agente_leve": cached_agent,
-                "concluida": completed,
-                "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), mundo.WORLD_STATE_PATH.as_posix()],
-            }
+            return {"ok": True, "ja_concluida": True, "agente_leve": cached_agent, "concluida": completed,
+                    "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), mundo.WORLD_STATE_PATH.as_posix()]}
         raise LightAgentError(f"pendência leve não encontrada: {pending_id}")
-
     pending = matches[0]
     agent_id = _text(pending.get("agente_leve"), "pendência.agente_leve")
     meta = index["agentes"].get(agent_id)
     if not isinstance(meta, dict):
         raise LightAgentError(f"pendência referencia agente leve inexistente: {agent_id}")
-
     import acionamento_npcs
     try:
         acionamento_npcs.validate_state(world_state, index)
@@ -691,41 +564,29 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     assessed_causes = pending.get(acionamento_npcs.CAUSES)
     signature, causal_sources = causal_signature(repo, agent_id, meta)
     canonical, _ = mundo.load_canonical_time(repo)
-    cache = {
-        "assinatura_causal": signature,
-        "pendencia_origem": pending_id,
-        "confirmado_em": mundo.instant_parts(canonical),
-        "acertos_compactados": 0,
-        "ultima_compactacao": None,
-    }
+    cache = {"assinatura_causal": signature, "pendencia_origem": pending_id,
+             "confirmado_em": mundo.instant_parts(canonical), "acertos_compactados": 0,
+             "ultima_compactacao": None}
     state["agentes"][agent_id]["cache_negativo"] = cache
     mundo._atomic_write_yaml(repo / STATE, state)
-
-    # Releitura depois da primeira escrita torna retry seguro se houver queda.
     world_state = mundo.load_world_state(repo)
-    still_pending = [
-        item for item in _light_pending(world_state) if item.get("id") == pending_id
-    ]
+    still_pending = [item for item in _light_pending(world_state) if item.get("id") == pending_id]
     if still_pending:
         pending = still_pending[0]
         if pending.get(acionamento_npcs.CAUSES) != assessed_causes or pending.get(acionamento_npcs.RESOLUTION):
             raise LightAgentError("causas da pendência mudaram durante a conclusão; refaça a avaliação")
-        world_state["pendencias"] = [
-            item for item in world_state["pendencias"] if item.get("id") != pending_id
-        ]
-        completed = {
-            "id": pending_id,
-            "tipo": "reavaliar_agente_leve",
-            "agente_leve": agent_id,
-            "disparado_em": pending["disparado_em"],
-            "resultado": NOOP_RESULT,
-        }
+        # Retire exatamente o item avaliado antes de promover qualquer adiado.
+        position = next(i for i, item in enumerate(world_state["pendencias"])
+                        if item.get("id") == pending_id)
+        removed = world_state["pendencias"].pop(position)
+        if removed != pending or any(item.get("id") == pending_id for item in world_state["pendencias"]):
+            raise LightAgentError("conclusão não retirou exatamente uma pendência")
+        completed = {"id": pending_id, "tipo": "reavaliar_agente_leve", "agente_leve": agent_id,
+                     "disparado_em": pending["disparado_em"], "resultado": NOOP_RESULT}
         if note:
             completed["nota"] = _text(note, "nota")
         world_state["concluidas_recentes"].append(completed)
-        world_state["concluidas_recentes"] = world_state["concluidas_recentes"][
-            -mundo.MAX_RECENT_COMPLETED:
-        ]
+        world_state["concluidas_recentes"] = world_state["concluidas_recentes"][-mundo.MAX_RECENT_COMPLETED:]
         try:
             world_state = acionamento_npcs.rebalance(world_state, index)
         except acionamento_npcs.NpcActivationError as exc:
@@ -734,28 +595,13 @@ def conclude_noop(repo: Path, pending_id: str, note: str | None = None) -> dict[
     else:
         completed = _completed_for(world_state, pending_id)
         if completed is None:
-            raise LightAgentError(
-                "pendência desapareceu durante concluir-noop sem conclusão rastreávelvel"
-            )
-
+            raise LightAgentError("pendência desapareceu durante concluir-noop sem conclusão rastreável")
     return {
-        "ok": True,
-        "ja_concluida": False,
-        "agente_leve": agent_id,
-        "cache_negativo": cache,
-        "concluida": completed,
+        "ok": True, "ja_concluida": False, "agente_leve": agent_id,
+        "cache_negativo": cache, "concluida": completed,
         "pendencias_restantes": len(world_state["pendencias"]),
-        "fontes_lidas": list(
-            dict.fromkeys(
-                [
-                    INDEX.as_posix(),
-                    STATE.as_posix(),
-                    mundo.WORLD_STATE_PATH.as_posix(),
-                    mundo.TIME_PATH.as_posix(),
-                    *causal_sources,
-                ]
-            )
-        ),
+        "fontes_lidas": list(dict.fromkeys([INDEX.as_posix(), STATE.as_posix(), mundo.WORLD_STATE_PATH.as_posix(),
+                                           mundo.TIME_PATH.as_posix(), *causal_sources])),
     }
 
 
@@ -772,19 +618,13 @@ def status_view(repo: Path) -> dict[str, Any]:
             due.append(agent_id)
         cache = state["agentes"][agent_id].get("cache_negativo")
         if isinstance(cache, dict):
-            caches[agent_id] = {
-                "confirmado_em": cache["confirmado_em"],
-                "acertos_compactados": cache["acertos_compactados"],
-                "ultima_compactacao": cache["ultima_compactacao"],
-            }
+            caches[agent_id] = {"confirmado_em": cache["confirmado_em"],
+                                "acertos_compactados": cache["acertos_compactados"],
+                                "ultima_compactacao": cache["ultima_compactacao"]}
     return {
-        "orcamento": index["orcamento"],
-        "vencidos": sorted(due),
-        "caches_negativos": caches,
-        "proximas_avaliacoes": {
-            agent_id: state["agentes"][agent_id]["proxima_avaliacao"]
-            for agent_id in sorted(index["agentes"])
-        },
+        "orcamento": index["orcamento"], "vencidos": sorted(due), "caches_negativos": caches,
+        "proximas_avaliacoes": {agent_id: state["agentes"][agent_id]["proxima_avaliacao"]
+                                for agent_id in sorted(index["agentes"])},
         "fontes_lidas": [INDEX.as_posix(), STATE.as_posix(), mundo.TIME_PATH.as_posix()],
     }
 
@@ -825,10 +665,7 @@ def main(argv: list[str] | None = None) -> int:
     show = sub.add_parser("mostrar")
     show.add_argument("agente")
     sub.add_parser("processar")
-    noop = sub.add_parser(
-        "concluir-noop",
-        help="conclui reavaliação leve sem mudança extraordinária e instala cache causal",
-    )
+    noop = sub.add_parser("concluir-noop", help="conclui reavaliação leve sem mudança extraordinária e instala cache causal")
     noop.add_argument("id")
     noop.add_argument("--nota")
     args = parser.parse_args(argv)
