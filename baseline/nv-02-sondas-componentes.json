@@ -1,9 +1,10 @@
 {
   "schema_baseline_sondas_narrativas": 1,
   "natureza": "snapshot_historico_isolado",
-  "momento": "NV-02 sobre componentes pos-NV-01, antes de qualquer correcao NV-03",
-  "motivo_preservacao": "Registrar a medicao original para comparacoes futuras sem congelar o comportamento dos componentes ou o estado vivo da campanha.",
-  "observacao": "Nao comparar estes resultados como constantes obrigatorias do motor futuro. Falhas observadas de memoria devem ser corrigiveis nos proximos PRs. Esta fotografia nao descreve um episodio narrado nem uma medicao de tokens nativos.",
+  "momento": "NV-02 sobre componentes pós-NV-01, antes de qualquer correção NV-03",
+  "motivo_preservacao": "Registrar a medição original para comparações futuras sem congelar o comportamento dos componentes ou o estado vivo da campanha.",
+  "observacao": "Não comparar estes resultados como constantes obrigatórias do motor futuro. Falhas observadas de memória devem ser corrigíveis nos próximos PRs. Esta fotografia não descreve um episódio narrado nem uma medição de tokens nativos.",
+  "documentacao": "docs/agente/benchmark-narrativo.md",
   "proveniencia": {
     "repositorio": "andrevinov/cronicas-dos-reinos",
     "codigo_ref": "fd174b2f8ecb9b037d7df363bbde66cf60df5510",
@@ -14,10 +15,10 @@
     "fonte": "https://github.com/andrevinov/cronicas-dos-reinos/actions/runs/34005892158/job/101412866676",
     "capturado_em_utc": "2026-09-06T02:14:01.4118303Z",
     "marcador_log": "NV02_SONDAS=",
-    "teste": "test_benchmark_narrativo_sondas.NarrativeBenchmarkAdapterTest.test_sondas_reais_sao_deterministicas_e_nao_abrem_save_vivo",
+    "teste": "test_benchmark_narrativo_sondas.NarrativeBenchmarkIntegrationTest.test_sondas_reais_sao_deterministicas_e_nao_abrem_save_vivo",
     "python": "3.12.14",
     "pyyaml": "6.0.3",
-    "execucao": "GitHub Actions; duas execucoes identicas das sondas em diretorios temporarios; acesso ao save vivo bloqueado pelo teste",
+    "execucao": "GitHub Actions; duas execuções idênticas das sondas em diretórios temporários; acesso ao save vivo bloqueado pelo teste",
     "reproducao": "poetry run python ferramentas/benchmark_narrativo.py sondar"
   },
   "ensaio_narrado": {
