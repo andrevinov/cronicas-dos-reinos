@@ -31,12 +31,14 @@ except ImportError as exc:
     ) from exc
 
 import barreira_mundo
+import canon_bridge
 import ciclo_sessoes
 import consolidar
 import direcoes
 import direcoes_mundo
 import interacoes_mundo
 import mundo
+import oportunidades
 import operacoes_concorrentes
 import reacoes_sidequest
 import sessoes
@@ -84,6 +86,25 @@ def _operations_configured(repo: Path) -> bool:
     return operacoes_concorrentes.configured(repo)
 
 
+def _sync_canonical_reservations(repo: Path) -> bool:
+    """Reconcilia reservas após o lifecycle, inclusive em retry sem nova expiração.
+
+    Reutiliza a autoridade do bridge: não conclui missões, não satisfaz intenções
+    e não materializa eventos. Sem reservas, não abre oportunidades nem tempo.
+    Esta operação pertence ao checkpoint, nunca à dupla comum preparar/concluir.
+    """
+    if not canon_bridge.configured(repo):
+        return False
+    bridge = canon_bridge.load_state(repo)
+    if not bridge["reservas"]:
+        return False
+    index = oportunidades.load_index(repo)
+    state = oportunidades.load_state(repo, index)
+    current, _ = mundo.load_canonical_time(repo)
+    result = canon_bridge.reconcile_lifecycle(repo, state, current)
+    return bool(result["alterou"])
+
+
 def sync_world(repo: Path) -> dict[str, Any]:
     """Sincroniza depois do cânone; tolera fixtures legadas sem Mundo Vivo."""
     if not _world_configured(repo):
@@ -109,6 +130,10 @@ def sync_world(repo: Path) -> dict[str, Any]:
     integration_result: dict[str, Any] = {"configurado": False, "alterou": False}
     if _integration_configured(repo):
         integration_result = interacoes_mundo.sync_lifecycle(repo)
+    # O prune pode encerrar a missão antes de o bridge ser atualizado. Reconciliar
+    # mesmo sem mudança nova permite recuperar esse intervalo sem repetir efeitos.
+    if _sync_canonical_reservations(repo):
+        integration_result["alterou"] = True
 
     result = mundo.process_to_canonical(repo)
     reaction_result: dict[str, Any] = {

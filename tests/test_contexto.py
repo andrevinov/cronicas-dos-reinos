@@ -170,32 +170,45 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
     def test_recurso_passos_sem_pegadas_encontra_apenas_efeito_legado_nao_recastavel(self):
-        data = mod.command_resource(REPO, "passos sem pegadas")
-        self.assertTrue(data["resultado"]["encontrado"])
-        self.assertIsNone(data["resultado"]["mecanica"])
-        self.assertIsNone(data["resultado"]["disponibilidade"])
-        effects = data["resultado"]["efeitos_temporarios_relacionados"]
-        self.assertEqual(len(effects), 1)
-        self.assertEqual(effects[0]["id"], "passos_sem_pegadas")
-        legacy = effects[0]["dados"]
-        self.assertEqual(legacy["origem_ruleset"], "dnd_5e_2014")
-        self.assertTrue(legacy["preservado_por_migracao"])
-        self.assertFalse(legacy["recastavel"])
-        self.assertEqual(legacy["termino"], "23:30 de 19 Eleasis, 1372 DR")
-        self.assertEqual(data["nivel"], "L2")
-        self.assertEqual(
-            data["fontes"][:2],
-            ["personagens/jogador/ficha.yaml", "estado/estado-atual.yaml"],
-        )
-        self.assertTrue(
-            set(data["fontes"]).issubset(
-                {
-                    "personagens/jogador/ficha.yaml",
-                    "estado/estado-atual.yaml",
-                    "runtime/eventos-pendentes.jsonl",
-                }
-            )
-        )
+        # A existência desse efeito pertence à ativação histórica, não ao estado vivo.
+        snapshot = mod.load_yaml(REPO / "tests/fixtures/ren-5-5e-activation-snapshot.yaml")
+        legacy = dict(snapshot["efeito_legado_no_instante_da_ativacao"])
+        effect_id = legacy.pop("id")
+        sheet = {
+            "recursos_de_classe": {
+                "artes_sombrias": {"removidas_na_5_5e": ["Passos sem Pegadas"]}
+            }
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            sheet_path = repo / "personagens/jogador/ficha.yaml"
+            state_path = repo / "estado/estado-atual.yaml"
+            sheet_path.parent.mkdir(parents=True)
+            state_path.parent.mkdir(parents=True)
+            sheet_path.write_text(mod.serialize(sheet, False), encoding="utf-8")
+            for present in (True, False):
+                with self.subTest(efeito_presente=present):
+                    state = {"efeitos_temporarios": {effect_id: legacy} if present else {}}
+                    state_path.write_text(mod.serialize(state, False), encoding="utf-8")
+                    before = state_path.read_bytes()
+                    data = mod.command_resource(repo, "passos sem pegadas")
+                    self.assertEqual(data["resultado"]["encontrado"], present)
+                    self.assertIsNone(data["resultado"]["mecanica"])
+                    self.assertIsNone(data["resultado"]["disponibilidade"])
+                    effects = data["resultado"]["efeitos_temporarios_relacionados"]
+                    self.assertEqual(
+                        effects,
+                        [{"id": effect_id, "dados": legacy}] if present else [],
+                    )
+                    self.assertEqual(data["nivel"], "L2")
+                    self.assertEqual(
+                        data["fontes"],
+                        ["personagens/jogador/ficha.yaml", "estado/estado-atual.yaml"],
+                    )
+                    self.assertEqual(state_path.read_bytes(), before)
+                    rendered, truncated = mod.fit_budget(data, mod.DEFAULT_MAX_BYTES, False)
+                    self.assertFalse(truncated)
+                    self.assertLessEqual(len(rendered.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
 
     def test_knowledge_lookup_finds_masao_without_returning_whole_file(self):
         data = mod.command_knowledge(REPO, "Masao")
