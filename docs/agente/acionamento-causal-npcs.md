@@ -1,45 +1,112 @@
-# Acionamento causal de NPCs — NV-07
+# NV-07 — reconciliação do PR #120 com o #119
 
-## Responsabilidade
+## Uma única implementação operacional
 
-O Mundo Vivo distingue agora **revisão rotineira** de **condição concreta alcançada** nos agentes leves schema 2. Uma notificação pede avaliação do narrador: não executa plano, não transmite informação ao personagem, não cria presença, contato, sidequest, sucesso ou fracasso. Essas consequências continuam dependendo de fatos, agência e autoridades existentes. A implementação não antecipa as NV-08–11.
+Os PRs #119 e #120 foram implementações concorrentes da mesma etapa, não duas
+etapas complementares. Após o merge do #119, a autoridade operacional é
+`ferramentas/acionamentos_leves.py`, com o controle `acionamentos_leves` e a causa
+`acionamento_causal`. O manual vigente é `docs/agente/acionamentos-causais.md`.
 
-As dependências são explícitas: `fontes_causais` do índice de agentes leves e `envolvidos` dos compromissos canônicos. Não há inferência de destinatário por menção, nome aproximado ou texto livre. Só entram agentes ativos; NPCs não afetados não recebem uma avaliação de IA.
+A resolução textual dos conflitos do #120 deixou código de ambos os mecanismos.
+Em especial, `turno.py` ainda chamava `acionamento_npcs.deadline_reached` após o
+import correspondente ter sido substituído. Isso causava `NameError` em avanços
+curtos e longos. `checkpoint.py`, `fronteira_mundo.py` e trechos sem marcadores
+continuavam usando a segunda fila, produzindo duas representações do mesmo prazo.
 
-## Fluxo integrado
+Esta correção restaura os arquivos operacionais à versão integrada do #119, sem
+reescrever seu algoritmo nem sobrepor outro scheduler. O módulo alternativo
+`acionamento_npcs.py` é retirado: não fica código morto testando a si mesmo nem
+uma segunda fonte de verdade escondida. O diff de produção em relação à main
+`6bfa41f53db33afd122e07ad31d5f140f79b6369` é vazio; o #120 passa a acrescentar
+cobertura reconciliada e esta documentação. A branch e o histórico do #120 são
+preservados por commit normal, sem force-push ou alteração da main.
 
-A dupla `cronica preparar` → narração → `cronica concluir` permanece a porta comum. Quando o delta altera uma relação declarada ou um compromisso de um agente afetado, o writer promove o checkpoint existente. A consolidação calcula o fato e sua notificação **no mesmo plano/journal**, incluindo o marcador de barreira. Uma queda durante a instalação é reparada pelo journal existente, não por replay criativo nem por outra fila de eventos.
+## Compatibilidade sem mascarar falhas
 
-Em alterações de tempo, o detector também observa os instantes exatos dos compromissos efetivos, inclusive deltas anteriores ainda não consolidados. `fronteira` usa esses mesmos instantes antes de comprimir horas. Não é preciso aguardar o próximo amanhecer nem acumular duas horas. A consulta não consome prazo, e um compromisso fora do recorte quente continua elegível.
+Os 36 cenários de domínio e os 21 cenários de integração do segundo PR foram
+portados para o motor realmente instalado. Isso não significa preservar os nomes
+de campos ou as escolhas internas de uma API alternativa que nunca foi adotada.
+As divergências semânticas foram tratadas explicitamente:
 
-O instante de início ou fim produz uma causa para avaliação, **não presença, cumprimento ou falha automática**. Janela apenas descritiva não ganha hora inventada. Cumprimento/cancelamento/substituição permanecem na autoridade dos compromissos; suas alterações invalidam a causa antiga, sem punição fabricada. `checkpoint recuperar` reapresenta condições não entregues.
+- Motivos públicos: `acontecimento_relevante` e `prazo_relevante`.
+- Projeção do lote: `contexto.acionamento_causal` e classificação
+  `avaliar_condicao_causal`, não `acionamento_npc`/`avaliar_condicao_concreta`.
+- A fronteira identifica `compromisso:<id>:<fase>`, uma vez. O destinatário continua
+  verificado na fila. Não são aceitos dois candidatos para o mesmo prazo.
+- A barreira conta os itens ativos. Causas aguardando são verificadas separadamente;
+  a conclusão repõe a próxima vaga antes de instalar o estado e só libera o turno
+  depois de escoar o trabalho. O teste exige dois ativos, um aguardando e todas as
+  três avaliações concluídas; não apenas um número menor na saída.
+- Cancelamento revoga o gatilho antigo com `gatilho_revogado`. Não inventa
+  cumprimento/falha nem gera uma nova autoavaliação para o mesmo NPC. A remoção do
+  compromisso, o recibo, o histórico da revogação e a recuperação são verificados.
+- Resolver uma causa não cria loop por causa da própria alteração. O teste exige
+  persistência da mudança, preservação do ID durante a resolução, retry sem
+  escrita e notificação de outro dependente explícito.
+- Um no-op exige motivo concreto no contrato da main. Ausência, texto curto e
+  ausência de ação de Ren continuam rejeitados, antes de gravar cache ou estado.
+  O antigo teste supunha que qualquer nota sem a flag da API alternativa seria
+  inválida, o que não faz parte da porta instalada.
+- Informação no teste integrado usa `informacoes_recebidas`, domínio reconhecido
+  pela seleção NV-03. Não se supõe que qualquer nome arbitrário de campo seja
+  automaticamente classificado como conhecimento. O valor inteiro e seu estatuto
+  `rumor` precisam aparecer; as relações dos demais NPCs permanecem byte-idênticas.
 
-## Prioridade sem aumentar as avaliações simultâneas
+## Rastreabilidade da cobertura de domínio
 
-Os limites existentes continuam: uma revisão rotineira nova por checkpoint elegível e duas avaliações leves abertas. Prazos concretos precedem mudanças de fonte, que precedem rotina. Uma revisão preemptada mantém seu ID e sua origem no campo opcional `acionamento_npcs.adiadas` **do mesmo estado do Mundo Vivo**. A conclusão reabastece os slots sem exigir um novo amanhecer. A barreira conta também as adiadas e não libera o próximo turno enquanto houver trabalho não avaliado.
+Arquivo preservado: `tests/test_acionamento_npcs.py` (36 cenários). Os helpers de
+teste apenas compõem o índice, a entrada e a cópia staged; não implementam fila,
+relógio, roteamento ou projeção paralelos.
 
-Mudanças do mesmo agente são reunidas; a mesma fonte conserva todos os endereços modificados, até o limite. Os recibos de prazo pertencem ao mesmo controle reservado, separados do histórico recente de 64 conclusões, para que a rotação desse histórico não ressuscite notificações. O registro da campanha e o compromisso continuam sendo as autoridades; o controle apenas registra entrega/adiamento.
+| Propriedade da versão anterior | Cobertura no motor único |
+| --- | --- |
+| Causa antes de rotina, dois slots, IDs restaurados | `CausalQueueTest.test_causa_precede_rotinas_sem_aumentar_dois_slots` e `test_reposicao_nao_duplica_id_entre_rotina_ativa_e_suspensa` |
+| Coalescência, repetição, ordem determinística | testes `test_mesmo_agente_coalesce_sem_trocar_id_rotineiro` e `test_replay_mesma_causa_e_deterministico_e_idempotente` |
+| Backlog e liberação no mesmo minuto | `test_conclusao_reabastece_adiadas_sem_amanhecer` e integração de três dependentes |
+| Somente assinantes/ativos, isolamento de agentes estratégicos | testes de dependências compartilhadas, inativo e domínio estratégico |
+| Overflow e controle malformado | `test_fila_cheia_falha_sem_descartar_a_entrada_staged`, `test_controle_e_causas_malformados_falham_fechado`, mais teste integrado de stage sem escrita |
+| Sinal não executa ação; resolução não se perde | teste `test_notificar_nao_executa_acao_nem_atribui_conhecimento` e integração de resolução com outro dependente |
+| Início/fim, recibos além do histórico, janela descritiva | dez testes de `CausalDeadlineTest` |
+| Cancelamento/substituição/troca de envolvidos | testes de revogação e nova entrega; assertivas do schema retirado não permanecem como exigência artificial |
+| Fonte dirigida, rumor inteiro, lacuna de orçamento | oito testes de `CausalProjectionTest`, exercitando `pending_context` real |
+| Fonte alterada, inclusive fora do recorte; remoção | `base_fonte` muda, conteúdo antigo não reaparece; token obsoleto rejeitado na integração |
+| Symlink e fontes não assinadas | teste de fuga por symlink e testes de dependência explícita |
+| Listas/alterações pendentes e não mutação do original | `CausalDependencyTest` usa `_changed_source` com o overlay real |
+| Negativa barata e ausência de nova fila | testes de gate neutro, lote vazio e legado sem camada |
 
-Uma pendência com resolução de mundo já consolidada fica protegida de preempção ou no-op. Conclua-a pela barreira existente; consequências que precisem de nova avaliação aguardam separadamente, sem substituir o ID da operação em andamento.
+O controle antigo de ponteiros por campo não é mantido como segundo índice.
+A implementação adotada usa a fonte integral e seu digest para invalidar o lote,
+com memória relevante e consulta dirigida. O teste exige fato indivisível ou lacuna
+explícita, não corte de strings. Duplicidade entre rotinas ativas/suspensas é testada
+na preempção e reposição reais, não por construção de um schema abandonado.
 
-## Avaliação em lote
+## Integração e regressões adicionais
 
-`resolver_fronteira preparar` mantém o lote existente e acrescenta contexto causal somente aos agentes afetados. Carrega o perfil dirigido e as fontes explicitamente notificadas, não o elenco inteiro. A projeção preserva fatos inteiros e o estatuto de relatos/rumores. Não transforma a onisciência técnica do narrador em conhecimento do NPC.
+`tests/test_acionamento_npcs_integracao.py` mantém as 21 jornadas com fixtures,
+writer, calendário Harptos, checkpoint, journal interrompido, lote e CLI em
+processo novo. Preserva as asserções da promessa NV-04: ID compilado, persistência,
+NPC correto, checkpoint público e duas causas (relação e compromisso).
 
-O token inclui assinaturas de todas as causas e fontes, inclusive as que não couberem na página. Estado alterado invalida o preparo antes da primeira escrita. Informação indivisível que não cabe vira **aprofundamento necessário**, com fonte e endereço, nunca texto cortado. Leia a lacuna antes de decidir; validação estrutural não comprova que a IA fez essa leitura.
+Três regressões adicionais cobrem especificamente a reconciliação:
 
-Decisões genuínas de `sem_mudanca` são enviadas juntas com motivo explícito. Uma condição nova não é descartada automaticamente por um cache antigo. Depois da avaliação, o cache negativo existente continua reutilizável nas revisões rotineiras enquanto fontes e perfil permanecerem válidos. Uma nova alteração causal ou um novo prazo vence esse cache.
+1. Overflow do lote falha antes de instalar fato, notificações ou barreira.
+2. Um prazo seguido de checkpoints/recovery não cria dois controles ou duas entregas.
+3. As sete portas operacionais não importam nem referenciam o módulo retirado.
 
-## Custos e limites
+Todos os testes anteriores da main, incluindo guardas de journal antes da primeira
+leitura e recuperação de conclusão interrompida, permanecem sem modificações.
+Nenhum teste usa `skip`, nenhum validador foi afrouxado e nenhum estado da campanha
+foi alterado para satisfazer uma expectativa.
 
-Não há chamada independente de IA por NPC, nova porta CLI ou terceira chamada ritual. Um turno neutro sem delta causal/temporal mantém somente as duas escritas habituais e não lê fontes de acionamento. Turnos causais podem custar um checkpoint e uma avaliação do lote: isso é custo real, não economia gratuita.
+## Orçamento e validação
 
-A notificação acrescenta até 3 KiB de contexto causal por avaliação admitida (até duas), na fronteira existente, não no pacote normal de memória da cena. Os limites do lote e os orçamentos anteriores de memória/tickets não são elevados. Há leituras adicionais dirigidas nos caminhos causais/temporais, e o mapa completo de compromissos é consultado para não confundir recorte de exibição com autoridade temporal.
+O contrato acompanha a implementação adotada: duas avaliações leves ativas, uma
+nova rotina por checkpoint elegível, oito causas por agente, 32 sinais, 16 KiB de
+controle e 2.560 bytes por contexto causal. A regressão existente da main cobre
+as duas avaliações no envelope conjunto de 8 KiB. Não se preservam os limites
+maiores da implementação descartada.
 
-O contrato de limites está em `baseline/nv07-acionamento-causal.yaml`. Overflow falha explicitamente; não descarta obrigações para caber. As medições `NV07_BYTES` são bytes YAML do contexto causal e do lote completo em fixture; **não são tokens nativos nem prova de economia de episódios narrados equivalentes**.
-
-## Validação e preservação
-
-Testes de domínio puros cobrem prioridade, coalescência, adiamento, idempotência, recebimentos, invalidação, limites e leitura dirigida. Testes de integração usam campanha sintética, calendário Harptos, writer, consolidação interrompida, lote, CLI em processo novo e promessa NV-04. Nenhuma assertion congela sessão, recursos ou relógio do save vivo.
-
-A instalação não modifica dados da campanha, agendas, perfis originais ou transcrições. O campo opcional é criado apenas quando uma operação real gera uma notificação. O suporte mecânico não comprova completude da extração de acontecimentos nem qualidade narrativa; isso exige os ensaios narrados previstos no plano.
+Os registros `NV07_BYTES` medem bytes YAML, não tokens nativos. Não há alegação de
+economia de episódios narrados ou melhora literária a partir de testes estruturais.
+A confirmação dos checks deve corresponder ao head final, não ao antigo
+`c3c45e8`, que era verde antes da junção das duas implementações.

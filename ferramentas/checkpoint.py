@@ -135,8 +135,6 @@ def sync_world(repo: Path) -> dict[str, Any]:
     if _sync_canonical_reservations(repo):
         integration_result["alterou"] = True
 
-    import acionamento_npcs
-    activation_result = acionamento_npcs.sync_deadlines(repo)
     result = mundo.process_to_canonical(repo)
     reaction_result: dict[str, Any] = {
         "configurado": False,
@@ -158,7 +156,6 @@ def sync_world(repo: Path) -> dict[str, Any]:
         else {"configurado": False, "bloqueado": False, "quantidade": 0}
     )
     new_pending = [
-        *(activation_result.get("novas_pendencias") or []),
         *(direction_result.get("novas_pendencias") or []),
         *(result.get("novas_pendencias") or []),
         *(reaction_result.get("novas_pendencias") or []),
@@ -167,7 +164,6 @@ def sync_world(repo: Path) -> dict[str, Any]:
     return {
         "configurado": True,
         **result,
-        "alterou": bool(result.get("alterou") or activation_result["alterou"]),
         "novas_pendencias": new_pending,
         "direcoes_reconsiderar": direction_result.get("direcoes_reconsiderar") or [],
         "integracao_reativa": integration_result,

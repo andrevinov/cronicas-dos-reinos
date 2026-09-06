@@ -1,19 +1,19 @@
 schema_orcamento: 1
 natureza: contrato_engenharia
 etapa: NV-07
-escopo: notificacao_causal_agentes_leves_schema_2
+implementacao: ferramentas/acionamentos_leves.py
+origem: PR-119
+reconciliacao: PR-120
 limites:
   revisoes_rotineiras_novas_por_checkpoint: 1
   avaliacoes_leves_abertas: 2
-  avaliacoes_adiadas: 32
-  causas_por_avaliacao: 16
-  enderecos_por_fonte: 16
-  compromissos_para_roteamento: 64
-  bytes_contexto_causal_por_avaliacao: 3072
-  bytes_controle_reservado: 32768
-  bytes_fonte_dirigida: 32768
-  bytes_leitura_estado_mundo: 131072
+  sinais_causais: 32
+  causas_por_agente: 8
+  bytes_contexto_causal_por_avaliacao: 2560
+  bytes_controle_reservado: 16384
+  bytes_lote_duas_avaliacoes_fixture: 8192
 invariantes:
+  segundo_motor: false
   nova_porta_cli: false
   novo_scheduler: false
   nova_chamada_ia_por_npc: false

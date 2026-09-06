@@ -188,9 +188,6 @@ def _light_candidates(
     index = agentes_leves.load_index(repo)
     state = agentes_leves.load_state(repo, index)
     sources.extend([agentes_leves.INDEX.as_posix(), agentes_leves.STATE.as_posix()])
-    # Prazo concreto precede a disponibilidade de slots da revisão rotineira.
-    import acionamento_npcs
-    candidates.extend(acionamento_npcs.boundary_candidates(repo, index, world_state, start, target, sources))
     opened = [
         item
         for item in world_state.get("pendencias") or []

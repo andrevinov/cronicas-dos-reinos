@@ -363,9 +363,7 @@ def detect_world_checkpoint(
         world_state = mundo.load_world_state(repo)
         cursor_data = world_state["processado_ate"]
         cursor = mundo.parse_instant(cursor_data["data"], cursor_data["hora"])
-        if causal and after.minute < cursor.minute:
-            raise TransactionError("acontecimento de NPC não pode retroceder o cursor do mundo")
-        if after.minute <= cursor.minute and not causal:
+        if after.minute <= cursor.minute:
             return None
 
         gap = after.minute - cursor.minute
@@ -379,10 +377,6 @@ def detect_world_checkpoint(
 
         if crossed_dawn:
             reason = "amanhecer"
-        elif causal:
-            reason = "acontecimento_npc"
-        elif acionamento_npcs.deadline_reached(repo, [*prior_records, current_record], after):
-            reason = "prazo_npc"
         elif gap >= SIGNIFICANT_WORLD_MINUTES:
             mode = str(current_record.get("modo") or "")
             if mode == "descanso" and gap >= 360:

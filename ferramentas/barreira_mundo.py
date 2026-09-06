@@ -92,11 +92,7 @@ def _instant_of(item: dict[str, Any]) -> mundo.WorldInstant:
 
 
 def payload_from_state(state: dict[str, Any]) -> dict[str, Any]:
-    import acionamento_npcs
-    try:
-        pending = [*(state.get("pendencias") or []), *acionamento_npcs.deferred(state)]
-    except acionamento_npcs.NpcActivationError as exc:
-        raise WorldPendingBarrierError(str(exc)) from exc
+    pending = list(state.get("pendencias") or [])
     earliest = min((_instant_of(item) for item in pending), default=None)
     return {
         "schema_barreira_mundo": SCHEMA,

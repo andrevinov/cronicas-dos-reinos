@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
-"""Resolução em lote do Mundo Vivo, sem decisões narrativas automáticas.
+"""Resolve em lote pendências acumuladas numa fronteira temporal do Mundo Vivo.
 
-Preparar é read-only. Aplicar revalida antes de fechar no-ops e preserva os itens
-omitidos. Eventos canônicos e operações continuam nas autoridades de domínio.
-Agentes leves mantêm cache causal; nenhuma etapa cria scheduler ou fato sozinha.
+A camada é deliberadamente estreita:
+
+* ``preparar`` é read-only e abre no máximo um fragmento dirigido por pendência;
+* todas as pendências são apresentadas num único lote determinístico;
+* ``aplicar`` recebe por stdin somente as decisões ``sem_mudanca`` do narrador;
+* eventos canônicos datados nunca aceitam no-op;
+* consequências Task45 ``resolver_sidequest`` nunca aceitam no-op genérico;
+* candidatos autônomos de pressão só aceitam no-op com bloqueio canônico concreto;
+* agentes leves usam ``conclude_noop`` para preservar o cache negativo causal;
+* itens omitidos permanecem abertos e são devolvidos como trabalho restante.
+
+O lote não cria scheduler, estado paralelo nem decisão narrativa automática. Ele reduz
+a orquestração: uma fronteira com várias rotinas pode ser avaliada numa inferência e
+concluída numa única chamada mutante, sem processar cada agente por ferramenta.
 """
 from __future__ import annotations
 
@@ -74,26 +85,68 @@ def _source_list(*groups: Any) -> list[str]:
 
 
 def _compact_agent(data: dict[str, Any]) -> dict[str, Any]:
-    return {key: data.get(key) for key in (
-        "estado", "objetivo_atual", "recursos", "restricoes", "presenca",
-        "atuacao_local", "plano_atual", "conhecimento") if key in data}
+    return {
+        key: data.get(key)
+        for key in (
+            "estado",
+            "objetivo_atual",
+            "recursos",
+            "restricoes",
+            "presenca",
+            "atuacao_local",
+            "plano_atual",
+            "conhecimento",
+        )
+        if key in data
+    }
 
 
 def _compact_light(data: dict[str, Any]) -> dict[str, Any]:
-    return {key: data.get(key) for key in (
-        "rotina_padrao", "objetivo_atual", "iniciativas_possiveis", "regra_de_reavaliacao") if key in data}
+    return {
+        key: data.get(key)
+        for key in (
+            "rotina_padrao",
+            "objetivo_atual",
+            "iniciativas_possiveis",
+            "regra_de_reavaliacao",
+        )
+        if key in data
+    }
 
 
 def _compact_direction(data: dict[str, Any]) -> dict[str, Any]:
-    return {key: data.get(key) for key in (
-        "direcao_id", "nome", "permitido", "estado", "marco_atual", "modo_avaliacao",
-        "avanco_requer_fato_canonico", "regra", "motivo") if key in data}
+    return {
+        key: data.get(key)
+        for key in (
+            "direcao_id",
+            "nome",
+            "permitido",
+            "estado",
+            "marco_atual",
+            "modo_avaliacao",
+            "avanco_requer_fato_canonico",
+            "regra",
+            "motivo",
+        )
+        if key in data
+    }
 
 
 def _compact_canonical(data: dict[str, Any]) -> dict[str, Any]:
-    return {key: data.get(key) for key in (
-        "id", "titulo", "data", "janela", "atraso_dias", "nucleo_obrigatorio",
-        "guardrails", "regra") if key in data}
+    return {
+        key: data.get(key)
+        for key in (
+            "id",
+            "titulo",
+            "data",
+            "janela",
+            "atraso_dias",
+            "nucleo_obrigatorio",
+            "guardrails",
+            "regra",
+        )
+        if key in data
+    }
 
 
 def _base_item(pending: dict[str, Any]) -> dict[str, Any]:
@@ -124,7 +177,9 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
     context: dict[str, Any] = {}
     pending_type = str(pending.get("tipo") or "")
 
-    # Consequências e operações não são reclassificadas como revisões rotineiras.
+    # Task45 já fez o trabalho temporal e emitiu uma pendência causal explícita.
+    # Não reinterprete esse contrato como rotina/no-op e não abra outros motores
+    # apenas para decidir algo que só progressao_sidequests pode materializar.
     if pending_type == "resolver_grupo_operacoes":
         try:
             group = operacoes_concorrentes.project_group_pending(repo, pending)
@@ -134,7 +189,8 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         item["classificacao"] = "comprometer_grupo_operacoes"
         item["sem_mudanca_permitido"] = False
         context["grupo_operacoes"] = {
-            key: group[key] for key in (
+            key: group[key]
+            for key in (
                 "grupo_operacoes_id", "estado", "janela", "simultaneidade",
                 "operacoes", "canais", "ordem_processamento",
             )
@@ -150,7 +206,8 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         item["classificacao"] = "requer_resolucao_operacao"
         item["sem_mudanca_permitido"] = False
         context["operacao_adversarial"] = {
-            key: operation[key] for key in (
+            key: operation[key]
+            for key in (
                 "grupo_operacoes_id", "operacao_id", "estado", "local",
                 "alvo", "objetivo", "sinais_perceptiveis", "encontro",
             )
@@ -165,7 +222,8 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         item["classificacao"] = "requer_resolucao_reacao"
         item["sem_mudanca_permitido"] = False
         context["reacao_sidequest"] = {
-            key: reaction[key] for key in (
+            key: reaction[key]
+            for key in (
                 "reaction_id", "estado", "missao", "gatilho", "antagonista_id",
                 "objetivo", "janela", "alternativas",
             )
@@ -180,6 +238,7 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
             pressure = pressao_ravens_bluff.candidate_for_pending(repo, pending)
         except pressao_ravens_bluff.PressureError as exc:
             raise BatchBoundaryError(str(exc)) from exc
+
         if canonical is not None:
             item["classificacao"] = "requer_fato_canonico"
             item["sem_mudanca_permitido"] = False
@@ -222,17 +281,22 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
             raise BatchBoundaryError(str(exc)) from exc
         context["direcao"] = _compact_direction(projection)
         sources = _source_list(sources, projection.get("fontes_lidas"))
+
     if context:
         item["contexto"] = context
-    item["token"] = _token({
-        "pendencia": _base_item(pending), "classificacao": item["classificacao"],
-        "sem_mudanca_permitido": item["sem_mudanca_permitido"], "contexto": context,
-    })
+
+    token_payload = {
+        "pendencia": _base_item(pending),
+        "classificacao": item["classificacao"],
+        "sem_mudanca_permitido": item["sem_mudanca_permitido"],
+        "contexto": context,
+    }
+    item["token"] = _token(token_payload)
     return item, sources
 
 
 def prepare_batch(repo: Path) -> dict[str, Any]:
-    """Projeta todas as pendências abertas em um contrato read-only."""
+    """Projeta todas as pendências abertas em um único contrato read-only."""
     state = mundo.load_world_state(repo)
     if acionamentos_leves.KEY in state:
         try:
@@ -246,25 +310,27 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
     causal_queued = any(item.get("acionamento_causal") for item in pending)
     pending.sort(key=lambda item: _pending_sort_key(item, causal_queued=causal_queued))
     if len(pending) > MAX_BATCH:
-        raise BatchBoundaryError(f"fronteira possui {len(pending)} pendências; teto do lote é {MAX_BATCH}")
+        raise BatchBoundaryError(
+            f"fronteira possui {len(pending)} pendências; teto do lote é {MAX_BATCH}"
+        )
+
     items: list[dict[str, Any]] = []
     sources = [mundo.WORLD_STATE_PATH.as_posix()]
     for raw in pending:
         item, item_sources = _project_item(repo, raw)
         items.append(item)
         sources = _source_list(sources, item_sources)
-    import acionamento_npcs
-    try:
-        waiting_count = len(acionamento_npcs.deferred(state))
-    except acionamento_npcs.NpcActivationError as exc:
-        raise BatchBoundaryError(str(exc)) from exc
+
     batch_payload = [{"id": item.get("id"), "token": item["token"]} for item in items]
     batch_id = f"frn1.{_token(batch_payload, BATCH_HEX)}"
     return {
-        "schema_resolucao_fronteira": SCHEMA, "ok": True, "mutante": False,
-        "lote_id": batch_id, "quantidade": len(items),
-        **({"avaliacoes_npcs_adiadas": waiting_count} if waiting_count else {}),
-        "itens": items, "fontes_lidas": sources,
+        "schema_resolucao_fronteira": SCHEMA,
+        "ok": True,
+        "mutante": False,
+        "lote_id": batch_id,
+        "quantidade": len(items),
+        "itens": items,
+        "fontes_lidas": sources,
         "proximo_passo": {
             "acao": "decidir_sem_mudanca_em_conjunto",
             "regra": (
@@ -277,8 +343,12 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
             ),
             "entrada_aplicar": {
                 "lote_id": batch_id,
-                "sem_mudanca": [{"id": "<id>", "token": "<token>", "nota": "<motivo concreto>"}],
-                "grupos_operacoes": [{"id": "<id>", "token": "<token>", "bloqueios": {}}],
+                "sem_mudanca": [
+                    {"id": "<id>", "token": "<token>", "nota": "<motivo concreto>"}
+                ],
+                "grupos_operacoes": [
+                    {"id": "<id>", "token": "<token>", "bloqueios": {}}
+                ],
             },
         },
     }
@@ -291,19 +361,27 @@ def _normalize_note(value: Any) -> str:
     if len(note) < 8:
         raise BatchBoundaryError("nota de sem_mudanca deve explicar o motivo")
     if len(note) > MAX_NOTE_CHARS:
-        raise BatchBoundaryError(f"nota de sem_mudanca excede {MAX_NOTE_CHARS} caracteres")
+        raise BatchBoundaryError(
+            f"nota de sem_mudanca excede {MAX_NOTE_CHARS} caracteres"
+        )
     return note
 
 
 def _completed_map(repo: Path) -> dict[str, dict[str, Any]]:
     state = mundo.load_world_state(repo)
-    return {str(item["id"]): item for item in state.get("concluidas_recentes") or []
-            if isinstance(item, dict) and item.get("id")}
+    return {
+        str(item["id"]): item
+        for item in state.get("concluidas_recentes") or []
+        if isinstance(item, dict) and item.get("id")
+    }
 
 
 def _valid_token(token: Any, label: str) -> str:
-    if (not isinstance(token, str) or len(token) != TOKEN_HEX
-            or any(ch not in "0123456789abcdef" for ch in token)):
+    if (
+        not isinstance(token, str)
+        or len(token) != TOKEN_HEX
+        or any(ch not in "0123456789abcdef" for ch in token)
+    ):
         raise BatchBoundaryError(f"{label} inválido")
     return token
 
@@ -321,19 +399,25 @@ def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]], list[dict[str,
         raise BatchBoundaryError("sem_mudanca deve ser lista")
     if len(raw) > MAX_BATCH:
         raise BatchBoundaryError(f"sem_mudanca excede teto {MAX_BATCH}")
+
     decisions: list[dict[str, str]] = []
     seen: set[str] = set()
     for index, value in enumerate(raw):
         if not isinstance(value, dict):
             raise BatchBoundaryError(f"sem_mudanca[{index}] deve ser mapa")
-        pending_id, token = value.get("id"), value.get("token")
-        if not isinstance(pending_id, str) or not barreira_mundo.PENDING_ID_RE.fullmatch(pending_id):
+        pending_id = value.get("id")
+        token = value.get("token")
+        if not isinstance(pending_id, str) or not barreira_mundo.PENDING_ID_RE.fullmatch(
+            pending_id
+        ):
             raise BatchBoundaryError(f"sem_mudanca[{index}].id inválido")
         if pending_id in seen:
             raise BatchBoundaryError(f"pendência repetida no lote: {pending_id}")
         seen.add(pending_id)
         token = _valid_token(token, f"sem_mudanca[{index}].token")
-        decisions.append({"id": pending_id, "token": token, "nota": _normalize_note(value.get("nota"))})
+        decisions.append(
+            {"id": pending_id, "token": token, "nota": _normalize_note(value.get("nota"))}
+        )
     raw_groups = payload.get("grupos_operacoes", [])
     if not isinstance(raw_groups, list) or len(raw_groups) > MAX_BATCH:
         raise BatchBoundaryError(f"grupos_operacoes deve ser lista com até {MAX_BATCH} itens")
@@ -349,18 +433,23 @@ def _parse_plan(payload: Any) -> tuple[str, list[dict[str, str]], list[dict[str,
         seen.add(pending_id)
         if not isinstance(value["bloqueios"], dict):
             raise BatchBoundaryError(f"grupos_operacoes[{index}].bloqueios deve ser mapa")
-        groups.append({"id": pending_id,
-                       "token": _valid_token(value["token"], f"grupos_operacoes[{index}].token"),
-                       "bloqueios": value["bloqueios"]})
+        groups.append(
+            {
+                "id": pending_id,
+                "token": _valid_token(value["token"], f"grupos_operacoes[{index}].token"),
+                "bloqueios": value["bloqueios"],
+            }
+        )
     return batch_id, decisions, groups
 
 
 def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
-    """Aplica os no-ops aprovados numa chamada, com revalidação por item."""
+    """Aplica todos os no-ops aprovados numa chamada, com revalidação por item."""
     requested_batch_id, decisions, group_decisions = _parse_plan(payload)
     current = prepare_batch(repo)
     current_by_id = {str(item["id"]): item for item in current["itens"]}
     completed = _completed_map(repo)
+
     validated: list[tuple[dict[str, str], dict[str, Any] | None]] = []
     already: list[dict[str, Any]] = []
     validated_groups: list[tuple[dict[str, Any], dict[str, Any] | None]] = []
@@ -371,20 +460,35 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         item = current_by_id.get(pending_id)
         if item is None:
             if pending_id in completed:
-                already.append({"id": pending_id, "resultado": "ja_concluida", "conclusao": completed[pending_id]})
+                already.append(
+                    {
+                        "id": pending_id,
+                        "resultado": "ja_concluida",
+                        "conclusao": completed[pending_id],
+                    }
+                )
                 validated.append((decision, None))
                 continue
-            raise BatchBoundaryError(f"pendência {pending_id} não está aberta nem aparece nas conclusões recentes")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} não está aberta nem aparece nas conclusões recentes"
+            )
+
         if decision["token"] != item.get("token"):
-            raise BatchBoundaryError(f"pendência {pending_id} mudou desde preparar; refaça o lote")
-        if item.get("classificacao") == "concluir_resolucao_registrada":
-            raise BatchBoundaryError("NPC com fato já registrado deve ser concluído pela barreira")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} mudou desde preparar; refaça o lote"
+            )
         if item.get("classificacao") == "requer_fato_canonico":
-            raise BatchBoundaryError(f"pendência {pending_id} é evento canônico e não aceita sem_mudanca")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} é evento canônico e não aceita sem_mudanca"
+            )
         if item.get("classificacao") == "requer_resolucao_sidequest":
-            raise BatchBoundaryError(f"pendência {pending_id} exige resolução Task45 e não aceita sem_mudanca")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} exige resolução Task45 e não aceita sem_mudanca"
+            )
         if item.get("classificacao") == "requer_resolucao_reacao":
-            raise BatchBoundaryError(f"pendência {pending_id} exige compromisso/resolução da reação e não aceita sem_mudanca")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} exige compromisso/resolução da reação e não aceita sem_mudanca"
+            )
         if item.get("classificacao") in {"comprometer_grupo_operacoes", "requer_resolucao_operacao"}:
             raise BatchBoundaryError(
                 f"pendência {pending_id} pertence a operação adversarial e não aceita sem_mudanca"
@@ -392,30 +496,41 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         if item.get("classificacao") in {"avaliar_candidato_autonomo", "avaliar_condicao_causal"}:
             barreira_mundo._validate_autonomous_noop(decision["nota"])
         validated.append((decision, item))
+
     for decision in group_decisions:
         pending_id = decision["id"]
         item = current_by_id.get(pending_id)
         if item is None:
             if pending_id in completed:
-                already.append({"id": pending_id, "resultado": "ja_concluida", "conclusao": completed[pending_id]})
+                already.append(
+                    {"id": pending_id, "resultado": "ja_concluida", "conclusao": completed[pending_id]}
+                )
                 validated_groups.append((decision, None))
                 continue
-            raise BatchBoundaryError(f"pendência de grupo {pending_id} não está aberta nem concluída")
+            raise BatchBoundaryError(
+                f"pendência de grupo {pending_id} não está aberta nem concluída"
+            )
         if decision["token"] != item.get("token"):
-            raise BatchBoundaryError(f"pendência {pending_id} mudou desde preparar; refaça o lote")
+            raise BatchBoundaryError(
+                f"pendência {pending_id} mudou desde preparar; refaça o lote"
+            )
         if item.get("classificacao") != "comprometer_grupo_operacoes":
             raise BatchBoundaryError(f"pendência {pending_id} não é grupo de operações")
         validated_groups.append((decision, item))
+
     applied: list[dict[str, Any]] = []
     committed_groups: list[dict[str, Any]] = []
     for decision, item in validated_groups:
         if item is None:
             continue
         try:
-            result = operacoes_concorrentes.commit_group(repo, item["grupo_operacoes_id"], decision["bloqueios"])
+            result = operacoes_concorrentes.commit_group(
+                repo, item["grupo_operacoes_id"], decision["bloqueios"]
+            )
         except operacoes_concorrentes.ConcurrentOperationError as exc:
             raise BatchBoundaryError(str(exc)) from exc
         committed_groups.append(result)
+
     for decision, item in validated:
         if item is None:
             continue
@@ -427,7 +542,9 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
                 raise BatchBoundaryError(str(exc)) from exc
         else:
             result = barreira_mundo.conclude(
-                repo, pending_id, decision["nota"],
+                repo,
+                pending_id,
+                decision["nota"],
                 no_change=item.get("classificacao") == "avaliar_candidato_autonomo",
             )
         applied.append(
@@ -443,15 +560,27 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
     barrier = barreira_mundo.sync(repo)
     remaining = prepare_batch(repo)
     return {
-        "schema_resolucao_fronteira": SCHEMA, "ok": True, "mutante": True,
-        "lote_id_solicitado": requested_batch_id, "lote_id_atual": remaining["lote_id"],
-        "aplicadas": applied, "grupos_comprometidos": committed_groups,
-        "ja_aplicadas": already, "quantidade_restante": remaining["quantidade"],
-        "requer_resolucao": remaining["itens"], "barreira": barrier, "idempotente": True,
+        "schema_resolucao_fronteira": SCHEMA,
+        "ok": True,
+        "mutante": True,
+        "lote_id_solicitado": requested_batch_id,
+        "lote_id_atual": remaining["lote_id"],
+        "aplicadas": applied,
+        "grupos_comprometidos": committed_groups,
+        "ja_aplicadas": already,
+        "quantidade_restante": remaining["quantidade"],
+        "requer_resolucao": remaining["itens"],
+        "barreira": barrier,
+        "idempotente": True,
         "proximo_passo": (
-            {"acao": "continuar_turno"} if remaining["quantidade"] == 0 else {
+            {"acao": "continuar_turno"}
+            if remaining["quantidade"] == 0
+            else {
                 "acao": "materializar_somente_itens_restantes",
-                "regra": "Os no-ops já foram fechados em lote. Trabalhe somente os itens restantes; não reavalie os concluídos.",
+                "regra": (
+                    "Os no-ops já foram fechados em lote. Trabalhe somente os itens "
+                    "restantes; não reavalie os concluídos."
+                ),
             }
         ),
     }
@@ -465,7 +594,11 @@ def check(repo: Path) -> dict[str, Any]:
             errors.append("lote excedeu teto")
         if len({item["id"] for item in result["itens"]}) != result["quantidade"]:
             errors.append("lote contém ids duplicados")
-    except (BatchBoundaryError, mundo.WorldEngineError, barreira_mundo.WorldPendingBarrierError) as exc:
+    except (
+        BatchBoundaryError,
+        mundo.WorldEngineError,
+        barreira_mundo.WorldPendingBarrierError,
+    ) as exc:
         errors.append(str(exc))
     return {"ok": not errors, "erros": errors}
 
@@ -502,7 +635,11 @@ def main(argv: list[str] | None = None) -> int:
             result = check(repo)
         print(_dump(result), end="")
         return 0 if result.get("ok", True) else 1
-    except (BatchBoundaryError, mundo.WorldEngineError, barreira_mundo.WorldPendingBarrierError) as exc:
+    except (
+        BatchBoundaryError,
+        mundo.WorldEngineError,
+        barreira_mundo.WorldPendingBarrierError,
+    ) as exc:
         print(f"erro: {exc}", file=sys.stderr)
         return 1
 
