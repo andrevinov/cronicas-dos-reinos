@@ -252,6 +252,10 @@ def next_boundary(repo: Path, target: mundo.WorldInstant) -> dict[str, Any]:
         _agenda_candidates(repo, arc_ctx, agenda, start, target, candidates)
         _direction_candidates(repo, arc_ctx, agenda, world_state, start, target, candidates, sources)
         _entry_candidates(repo, arc_ctx, world_state, start, target, candidates, sources)
+        import acionamentos_leves
+        causal, causal_sources = acionamentos_leves.boundary_candidates(repo, start, target)
+        candidates.extend(causal)
+        sources.extend(causal_sources)
         _light_candidates(repo, world_state, start, target, candidates, sources)
         _event_candidates(repo, agenda, start, target, candidates, sources)
 

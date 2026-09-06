@@ -26,7 +26,7 @@ BARRIER = Path("runtime/mundo-pendencias.yaml")
 MAX_CONTROL_BYTES = 16384
 MAX_SIGNALS = 32
 MAX_CAUSES_PER_AGENT = 8
-MAX_CONTEXT_BYTES = 3072
+MAX_CONTEXT_BYTES = 2560
 
 
 class ActivationError(ValueError):
@@ -61,6 +61,8 @@ def _read(repo: Path, path: Path, outputs: dict | None = None) -> dict:
 
 def _minute(when: dict) -> int:
     import mundo
+    if not isinstance(when, dict) or set(when) != {"data", "hora"}:
+        raise ActivationError("instante causal exige data e hora")
     return mundo.parse_instant(when["data"], when["hora"]).minute
 
 
@@ -74,15 +76,39 @@ def _active(index: dict) -> dict:
     return {aid: meta for aid, meta in index["agentes"].items() if meta["estado"] == "ativo"}
 
 
-def _dependencies(index: dict) -> dict[str, set[str]]:
+def require_stable_canon(repo: Path) -> None:
+    import _consolidar_core
+    if (repo / _consolidar_core.JOURNAL_PATH).exists():
+        raise ActivationError("consolidação interrompida; recuperar o journal antes de avaliar acionamentos")
+
+
+def _entity_path(repo: Path, kind: str, aid: str, cache: dict) -> str:
+    prefix = "estado/relacoes" if kind == "relacao" else "estado/npcs"
+    index_path = prefix + "/index.yaml"
+    if index_path not in cache:
+        cache[index_path] = _read(repo, Path(index_path)) if (repo / index_path).is_file() else {}
+    key = "relacoes" if kind == "relacao" else "npcs"
+    entry = cache[index_path].get(key, {}).get(aid) or {}
+    path = entry.get("arquivo") or f"{prefix}/{aid}.yaml"
+    if (not isinstance(path, str) or not path.startswith(prefix + "/")
+            or not (repo / path).resolve().is_relative_to((repo / prefix).resolve())
+            or not (repo / path).resolve().is_relative_to(repo.resolve())
+            or Path(path).suffix != ".yaml"):
+        raise ActivationError("fragmento causal fora do domínio autorizado")
+    return path
+
+
+def _dependencies(index: dict, repo: Path | None = None, cache: dict | None = None) -> dict[str, set[str]]:
+    cache = {} if cache is None else cache
     result: dict[str, set[str]] = {}
     for aid, meta in _active(index).items():
-        for source in [*(meta.get("fontes_causais") or []), f"estado/npcs/{aid}.yaml"]:
+        meter = _entity_path(repo, "npc", aid, cache) if repo is not None else f"estado/npcs/{aid}.yaml"
+        for source in [*(meta.get("fontes_causais") or []), meter]:
             result.setdefault(source, set()).add(aid)
     return result
 
 
-def _source(delta: dict) -> str | None:
+def _source(delta: dict, repo: Path | None = None, cache: dict | None = None) -> str | None:
     if delta.get("visibilidade", "operacional") != "operacional":
         return None
     target = delta.get("alvo", "")
@@ -90,6 +116,8 @@ def _source(delta: dict) -> str | None:
         kind, aid = target.split(":", 1)
         if not re.fullmatch(r"[a-z][a-z0-9_]{0,79}", aid):
             raise ActivationError("alvo de acionamento exige ID canônico")
+        if repo is not None:
+            return _entity_path(repo, kind, aid, {} if cache is None else cache)
         return f"estado/{'relacoes' if kind == 'relacao' else 'npcs'}/{aid}.yaml"
     return None
 
@@ -231,7 +259,7 @@ def _refresh_deadlines(world: dict, state: dict, index: dict, now: dict) -> None
         kept = {k: c for k, c in pending[PENDING_KEY].items() if valid(aid, c)}
         if kept:
             pending[PENDING_KEY] = kept
-        elif str(pending.get("origem", "")).startswith("nv07:"):
+        elif aid not in active or str(pending.get("origem", "")).startswith("nv07:"):
             world["pendencias"].remove(pending)
             world["concluidas_recentes"].append({
                 "id": pending["id"], "tipo": pending["tipo"],
@@ -340,7 +368,9 @@ def checkpoint_trigger(repo: Path, prior: list, record: dict) -> dict | None:
         return None
     import agentes_leves
     index = agentes_leves.load_index(repo)
-    dependencies = _dependencies(index)
+    cache: dict = {}
+    touched = {s for d in deltas if (s := _source(d, repo, cache)) is not None}
+    dependencies = _dependencies(index, repo, cache)
     prior = [r for r in prior if r.get("sessao") == record.get("sessao")]
     if not (touched & dependencies.keys() or commitments_changed or time_changed):
         return None
@@ -370,7 +400,8 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
     import agentes_leves
     import barreira_mundo
     import tempo_transacional
-    touched = {s for r in records for d in r.get("deltas", []) if (s := _source(d)) is not None}
+    cache: dict = {}
+    touched = {s for r in records for d in r.get("deltas", []) if (s := _source(d, repo, cache)) is not None}
     commitment_change = any(_commitment_delta(d) for r in records for d in r.get("deltas", []))
     time_change = any(tempo_transacional.has_instant_change(r.get("deltas", [])) for r in records)
     if not (touched or commitment_change or time_change):
@@ -379,7 +410,7 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
     outputs = plan["outputs"]
     world = _read(repo, WORLD, outputs)
     original = deepcopy(world)
-    dependencies = _dependencies(index)
+    dependencies = _dependencies(index, repo, cache)
     now = _instant(_read(repo, TIME, outputs))
     pending_agents = {p["id"]: p.get("agente_leve") for p in world["pendencias"]}
     for source in sorted(touched & dependencies.keys() & outputs.keys()):
@@ -389,7 +420,7 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
         for aid in sorted(dependencies[source]):
             origins = []
             for record in records:
-                if not any(_source(d) == source for d in record.get("deltas", [])):
+                if not any(_source(d, repo, cache) == source for d in record.get("deltas", [])):
                     continue
                 resolving = {pending_agents.get(str(t).split(":", 1)[1]) for t in record.get("tags") or []
                              if str(t).startswith("resolver-pendencia-mundo:")}
@@ -421,6 +452,9 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
                 })
     if commitment_change or time_change:
         _refresh_deadlines(world, _read(repo, STATE, outputs), index, now)
+    empty = {"versao": 1, "aguardando": {}, "prazos": {}, "rotinas_suspensas": {}}
+    if KEY not in original and world.get(KEY) == empty:
+        world.pop(KEY, None)
     if world == original:
         return
     dispatch(world, index)
@@ -443,6 +477,7 @@ def reconcile(repo: Path, world: dict) -> dict:
     """Refaz prazos e repõe vagas após conclusão, inclusive no mesmo minuto/retry."""
     if not configured(repo):
         return world
+    require_stable_canon(repo)
     import agentes_leves
     import mundo
     out = deepcopy(world)
@@ -460,6 +495,7 @@ def reconcile(repo: Path, world: dict) -> dict:
 def boundary_candidates(repo: Path, start, target) -> tuple[list[tuple[int, str, str]], list[str]]:
     if not configured(repo):
         return [], []
+    require_stable_canon(repo)
     import agentes_leves
     import transacoes
     index = agentes_leves.load_index(repo)
@@ -484,19 +520,59 @@ def boundary_candidates(repo: Path, start, target) -> tuple[list[tuple[int, str,
 
 
 def pending_context(repo: Path, pending: dict) -> dict:
-    """Memória atual dirigida; apontar gatilho não transfere conhecimento entre atores."""
+    """Um fragmento dirigido por pendência, no lugar do perfil rotineiro estático.
+
+    Outros domínios/perfil permanecem disponíveis por aprofundamento explícito.
+    Os hashes integrais detectam staleness até quando a seleção omitir um campo.
+    """
+    require_stable_canon(repo)
     import memoria_cena as memory
+    import transacoes
+    import compromissos
     reader, state, records, _ = memory.load_scene(repo)
     aid = pending["agente_leve"]
-    docs = memory.documents(reader, state, records, [aid])
-    context = {"causas": deepcopy(pending[PENDING_KEY]),
-               "regra": "Prazo exige decisão explícita; ausência de Ren não é bloqueio. Não executar nem conceder conhecimento automaticamente."}
+    indexes = reader.indexes()
+    choices = [("relacao", indexes[1].get(aid)), ("npc", indexes[0].get(aid))]
+    changed = {c["fonte"] for c in pending[PENDING_KEY].values() if c["tipo"] == "mudanca"}
+    choices.sort(key=lambda item: ((item[1] or {}).get("arquivo") not in changed, item[0] != "relacao"))
+    result: dict[str, Any] = {"encontrado": any(entry for _, entry in choices)}
+    full_source = None
+    selected = None
+    for kind, entry in choices:
+        if not isinstance(entry, dict) or not entry.get("arquivo"):
+            continue
+        relative = _entity_path(reader.repo, kind, aid, reader.docs)
+        document = reader.read(relative)
+        if document.get("id", aid) != aid or not isinstance(document.get(kind), dict):
+            raise ActivationError("fragmento causal não corresponde ao participante")
+        effective, _ = transacoes.overlay_target(document[kind], records, f"{kind}:{aid}")
+        result["relacao" if kind == "relacao" else "medidores"] = {"id": aid, "dados": effective}
+        full_source, selected = effective, relative
+        break
+    role = (indexes[2].get(aid) or {}).get("papel_conversacional")
+    if role is not None:
+        result["textura_narrativa"] = {"papel_conversacional": deepcopy(role)}
+    docs = {aid: {"consulta": {"comando": "npc", "termo": aid}, "fontes": reader.sources,
+                  "resultado": result}}
+    applicable = {cid: raw for cid, raw in _commitments(state).items()
+                  if aid in (raw.get("envolvidos") or [])}
+    commitments = compromissos.runtime_bundle(applicable, *memory._time(state, records),
+                                              limit=max(1, len(applicable)))
+    if commitments:
+        docs["@compromissos"] = commitments["itens"]
+    causes = [{k: c[k] for k in ("tipo", "fonte", "compromisso", "fase", "em") if k in c
+               and not (k == "fonte" and c["tipo"] == "prazo")}
+              for _, c in sorted(pending[PENDING_KEY].items())]
+    context = {"causas": causes, "base_fonte": _digest([full_source, applicable]),
+               "fragmento": selected,
+               "fontes_lidas": sorted(set(reader.sources)),
+               "consulta_perfil": f"poetry run python ferramentas/agentes_leves.py mostrar {aid}",
+               "regra": "Avaliar em lote; prazo não depende de ação de Ren. Conhecimento, presença e sucesso não são concedidos. Aprofundar só lacuna necessária."}
     budget = MAX_CONTEXT_BYTES - _size(context) - 160
-    while budget >= 400:
-        pack = memory.project(docs, scope=_digest([aid, pending[PENDING_KEY]]),
-                              budget=budget, sources=reader.sources)
-        result = {**context, "memoria_atual": pack}
-        if _size(result) <= MAX_CONTEXT_BYTES:
-            return result
+    while budget >= 200:
+        pack = memory.project(docs, scope=_digest([aid, pending[PENDING_KEY]]), budget=budget)
+        output = {**context, "memoria_atual": pack}
+        if _size(output) <= MAX_CONTEXT_BYTES:
+            return output
         budget -= 128
-    raise ActivationError("contexto causal excede teto; resolver causas pendentes antes de acumular outras")
+    raise ActivationError("contexto causal excede teto; aprofundamento dirigido necessário")
