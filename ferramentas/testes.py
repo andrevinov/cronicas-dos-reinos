@@ -68,6 +68,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "cronica": (
         "test_cronica*.py",
+        "test_contatos*.py",
         "test_turno*.py",
         "test_entrada.py",
         "test_tempo_atomico.py",
@@ -127,6 +128,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_neutralizacao_ren.py",
         "test_npc_stubs.py",
         "test_iniciativa_social.py",
+        "test_contatos*.py",
         "test_reactive_pressure_routing.py",
         "test_dialogo_relacional.py",
         "test_reputacao_publica.py",

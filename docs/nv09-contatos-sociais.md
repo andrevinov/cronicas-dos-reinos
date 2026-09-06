@@ -111,8 +111,16 @@ pode invalidá-los e ainda entregar com base na versão antiga.
 
 A entrega inclui o interlocutor físico no elenco conhecido; em recados, somente
 o portador, nunca o remetente remoto. Não substitui um elenco desconhecido por uma
-lista supostamente completa. A NV-05 recupera o elenco/memória persistidos no preparo
-seguinte. Nenhuma promessa, aceitação ou missão é criada por esse evento.
+lista supostamente completa. Um elenco final explícito que conserva o interlocutor
+é preservado, inclusive quando outra pessoa sai durante a conversa.
+
+A memória NV-05 do interlocutor já acompanha o primeiro preparo autorizado, junto
+da memória do elenco atual e sob o mesmo orçamento conjunto. `participantes_previstos`
+identifica quem pode abrir o contato; isso não confirma a entrega nem grava sua
+participação. Um adiamento conserva o elenco anterior. Em recados, a memória de
+abertura é a do portador, sem tornar presente o remetente remoto. Elenco desconhecido
+continua sinalizado como lacuna mesmo quando há memória do contato disponível.
+Nenhuma promessa, aceitação ou missão é criada por esse evento.
 
 ```yaml
 contato_social:
@@ -168,3 +176,10 @@ recuperação de journal, dois contatos e filas mistas de operações. Medem byt
 argumentos, ticket e saída; isso não comprova economia de tokens nativos nem melhora
 literária em partidas. Essas avaliações continuam dependentes dos episódios NV-02
 com uma IA narrando, não apenas de campos estruturados corretos.
+
+`test_contatos_memoria.py` protege a abertura com memória já disponível, elenco
+desconhecido, mensageiro remoto, adiamento sem confirmação de participação,
+reutilização declarada de contexto e elenco final compatível com replay. Na fixture
+de medição existente, incluir essa memória muda o preparo de 4.489 para 7.503 bytes;
+o turno neutro permanece em 2.555, e o ticket em 716. O custo maior entrega contexto
+que antes faltava na primeira interação, dentro dos mesmos tetos de 4/8 KiB.

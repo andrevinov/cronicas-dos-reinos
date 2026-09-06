@@ -350,7 +350,10 @@ def compile_conclusion(repo: Path, payload: dict, transaction: dict) -> tuple[di
                 # O compilador NV05 já fez esse delta; não sobrescrever elenco
                 # final explicitamente contraditório enviado pelo narrador.
                 if existing and existing[0].get("valor") != payload[memoria_cena.TICKET_KEY]["elenco"]:
-                    raise plans.PlanError("elenco final contradiz contato presencial")
+                    final_cast = memoria_cena.cast(existing[0].get("valor"))
+                    if final_cast is None or physical not in final_cast["participantes"]:
+                        raise plans.PlanError("elenco final contradiz contato presencial")
+                    cast = final_cast
                 out["deltas"] = [d for d in out["deltas"] if d not in existing]
                 out["deltas"].append({"alvo": "estado", "op": "set", "caminho": memoria_cena.CAST_PATH, "valor": cast})
     # Reconstruir antes de conferir replay permite reparar buffer/transcrição e
