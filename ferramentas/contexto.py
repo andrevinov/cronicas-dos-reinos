@@ -40,6 +40,7 @@ import contexto_core as core
 import catalogo_regras
 import continuidade_autoral
 import dialogo_relacional
+import memoria_relevante
 import politica_acesso as politica
 import recursos
 import reputacao_publica
@@ -267,6 +268,7 @@ def command_session(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_relation(repo: Path, term: str) -> dict[str, Any]:
+    """Estado integral efetivo; a seleção acontece somente em fit_budget."""
     data = core.command_relation(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict) or not result.get("encontrado"):
@@ -286,6 +288,7 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
 
 
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
+    """Carrega integral, aplica pendências e deriva diálogo antes de selecionar."""
     data = core.command_npc(repo, term)
     result = data.get("resultado") or {}
     if not isinstance(result, dict):
@@ -601,6 +604,8 @@ def build_parser() -> argparse.ArgumentParser:
     ):
         child = sub.add_parser(name, help=help_text)
         child.add_argument("termo")
+        if name in {"npc", "relacao"}:
+            memoria_relevante.add_arguments(child)
 
     reputation = sub.add_parser("reputacao", help="L2: reputação pública de Ren, Shinta ou Kage")
     reputation.add_argument("termo")
@@ -708,6 +713,10 @@ def main() -> int:
         else:
             raise politica.AccessPolicyError(f"comando desconhecido: {args.command}")
 
+        if args.command in {"npc", "relacao"}:
+            data = memoria_relevante.request(
+                data, campo=args.campo, campos=args.campos, inicio=args.inicio
+            )
         data, effective_max = politica.decorate(
             data,
             decision,
@@ -715,6 +724,7 @@ def main() -> int:
             after=after,
             reason=validated_reason,
         )
+        text, truncated = fit_budget(data, effective_max, args.json)
     except (
         OSError,
         ValueError,
@@ -727,7 +737,6 @@ def main() -> int:
         print(f"FALHA DE CONSULTA — {exc}", file=sys.stderr)
         return 1
 
-    text, truncated = fit_budget(data, effective_max, args.json)
     output_bytes = len(text.encode("utf-8"))
     if args.log_local and not args.sem_log:
         try:

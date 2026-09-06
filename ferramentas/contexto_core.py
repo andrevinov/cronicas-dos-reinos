@@ -8,6 +8,7 @@ específico, sem carregar os antigos depósitos acumulativos.
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import json
 import re
 import unicodedata
@@ -22,6 +23,8 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+
+import memoria_relevante
 
 DEFAULT_MAX_BYTES = 8 * 1024
 HARD_MAX_BYTES = 16 * 1024
@@ -98,6 +101,8 @@ def serialize(data: Any, as_json: bool) -> str:
 
 def fit_budget(envelope: dict[str, Any], max_bytes: int, as_json: bool) -> tuple[str, bool]:
     max_bytes = max(1024, min(max_bytes, HARD_MAX_BYTES))
+    if (envelope.get("consulta") or {}).get("comando") in {"npc", "relacao"}:
+        return memoria_relevante.fit(envelope, max_bytes, as_json, serialize)
     text = serialize(envelope, as_json)
     if len(text.encode("utf-8")) <= max_bytes:
         return text, False
@@ -414,7 +419,7 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
     result = {
         "encontrado": True,
         "id": key,
-        "relacao": compact_relation(payload),
+        "relacao": deepcopy(payload),
         "historico_disponivel": entry.get("historico"),
     }
     return envelope("relacao", term, "L2", sources, result)
@@ -433,14 +438,14 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
     if isinstance(med_payload, dict):
         result["medidores"] = {
             "id": med_key,
-            "dados": compact_value(med_payload, string_limit=750, list_limit=6, depth=4),
+            "dados": deepcopy(med_payload),
         }
         if med_fragment:
             sources.append(med_fragment)
     if isinstance(rel_payload, dict):
         result["relacao"] = {
             "id": rel_key,
-            "dados": compact_relation(rel_payload),
+            "dados": deepcopy(rel_payload),
             "historico_disponivel": rel_entry.get("historico") if rel_entry else None,
         }
         if rel_fragment:
@@ -569,6 +574,8 @@ def build_parser() -> argparse.ArgumentParser:
     ):
         child = sub.add_parser(name, help=help_text)
         child.add_argument("termo")
+        if name in {"npc", "relacao"}:
+            memoria_relevante.add_arguments(child)
 
     search = sub.add_parser("buscar", help="busca limitada por ponteiros e ocorrências")
     search.add_argument("termo")
@@ -606,11 +613,15 @@ def main() -> int:
             )
         else:
             raise ValueError(f"comando desconhecido: {args.command}")
+        if args.command in {"npc", "relacao"}:
+            data = memoria_relevante.request(
+                data, campo=args.campo, campos=args.campos, inicio=args.inicio
+            )
+        text, truncated = fit_budget(data, args.max_bytes, args.json)
     except (OSError, ValueError, yaml.YAMLError) as exc:
         print(f"FALHA DE CONSULTA — {exc}")
         return 1
 
-    text, truncated = fit_budget(data, args.max_bytes, args.json)
     output_bytes = len(text.encode("utf-8"))
     if not args.sem_log:
         try:

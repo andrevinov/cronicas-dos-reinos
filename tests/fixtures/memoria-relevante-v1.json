@@ -1,0 +1,44 @@
+{
+  "natureza": "fixture_sintetica",
+  "motivo": "Reproduzir formatos e pressão de orçamento de Silva, Nera e Luath sem congelar nem copiar o save vivo. Nenhum acontecimento abaixo é cânone.",
+  "casos": [
+    {
+      "id": "silva_elkwood",
+      "relacao": {
+        "nome": "Silva Elkwood",
+        "tipo": "aliada independente",
+        "confianca": "moderada",
+        "personalidade": "acolhedora, com interesses próprios",
+        "acordos": ["Ren prometeu devolver o mapa emprestado na oficina."],
+        "informacoes_recebidas_por_silva": ["Silva ouviu de Ren que a ponte está interditada; é relato, não verificação própria."],
+        "momentos_de_vinculo": ["Silva abrigou Ren durante a tempestade de teste."],
+        "riscos": "Acolhimento não implica disponibilidade permanente."
+      }
+    },
+    {
+      "id": "nera_vell",
+      "relacao": {
+        "nome": "Nera Vell",
+        "tipo": "aliada autônoma",
+        "confianca": "cautelosa",
+        "divida": "Ajuda recebida não obriga Nera a aceitar novos riscos.",
+        "acordos": ["Nera pediu que Ren avise antes de levar visitantes."],
+        "marcos_da_relacao": [{"fato": {"descricao": "Nera confiou a Ren a chave da oficina de teste.", "limite": "Isso não confirma interesse romântico."}, "fonte": "fixture_sintetica"}],
+        "notas_de_consistencia": "Nera mantém seus limites e decide por conta própria."
+      }
+    },
+    {
+      "id": "luath",
+      "relacao": {
+        "nome": "Luath",
+        "tipo": "contato indireto",
+        "status": "sem resposta confirmada",
+        "confianca": "ainda não estabelecida",
+        "canal_confirmado": "Jack enviou uma carta; envio não prova leitura nem encontro.",
+        "conhecimento_recebido_por_carta": [{"conteudo": "A oficina precisa de uma avaliação.", "estado": "enviado", "recebimento_confirmado": false}],
+        "canal_de_registro": {"papel": "possível analista", "limite": "Não presumir recursos, localização ou decisão de colaborar."},
+        "marcos": ["Jack declarou ter enviado a carta da situação de teste."]
+      }
+    }
+  ]
+}
