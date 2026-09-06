@@ -318,7 +318,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         result = cronica.conclude(self.repo, prepared["ticket"], tx)
         self.assertIn(cid, self.read(activation.STATE)["compromissos"])
         self.assertEqual([p["agente_leve"] for p in self.pending()], [self.silva])
-        self.assertTrue(result["transacao"]["checkpoint_mundo"]["disparado"])
+        self.assertTrue(result["checkpoint_mundo"]["disparado"])
         self.assertEqual(len(self.pending()[0][activation.CAUSES]), 2)
 
     def test_compromisso_fora_do_recorte_quente_tambem_dispara(self):
