@@ -303,8 +303,8 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.assertEqual([x["agente_leve"] for x in self.pending()], [self.silva])
 
     def test_resolucao_preserva_id_sem_loop_e_notifica_outro_dependente(self):
-        turno.register_transaction(self.repo, self.transaction())
-        pid = self.pending()[0]["id"]
+        # Declare a dependência na fixture antes do primeiro acontecimento; índice
+        # e perfil devem coincidir durante toda a jornada, inclusive após restart.
         index = light.load_index(self.repo)
         meta = index["agentes"][self.nera]
         meta["fontes_causais"].append(f"estado/relacoes/{self.silva}.yaml")
@@ -313,18 +313,34 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.write(meta["arquivo"], profile)
         meta["perfil_blob_git"] = light._git_blob_sha(self.repo / meta["arquivo"])
         self.write(activation.INDEX.as_posix(), index)
+        validation = light.validate_repo(self.repo)
+        self.assertTrue(validation["ok"], validation)
+        turno.register_transaction(self.repo, self.transaction())
+        own = next(p for p in self.pending() if p["agente_leve"] == self.silva)
+        other = next(p for p in self.pending() if p["agente_leve"] == self.nera)
+        pid = own["id"]
+        own_causes = deepcopy(own[activation.PENDING_KEY])
+        light.conclude_noop(self.repo, other["id"], "Falta oportunidade concreta antes de novo relato.")
+        barrier.sync(self.repo)
+        self.assertEqual([p["id"] for p in self.pending()], [pid])
         resolution = self.transaction("resolucao", deltas=[{"alvo": "relacao:" + self.silva, "op": "set", "caminho": INFO,
                        "valor": "Silva verificou o relato e ainda não tem confirmação."}])
         resolution.pop("jogador")
         resolution.update(modo="mundo", tags=[barrier.RESOLUTION_TAG_PREFIX + pid])
-        result = turno.register_transaction(self.repo, resolution)
-        self.assertTrue(result["checkpoint_mundo"]["disparado"])
-        self.assertEqual([p["id"] for p in self.pending() if p["agente_leve"] == self.silva], [pid])
+        # Complementa a regressão in-process do #119 com a porta pública fria.
+        command = [sys.executable, str(TOOLS / "turno.py"), "--repo", str(self.repo), "registrar"]
+        result = subprocess.run(command, input=json.dumps(resolution), capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse(transacoes.load_pending(self.repo))
+        current = next(p for p in self.pending() if p["agente_leve"] == self.silva)
+        self.assertEqual(current["id"], pid)
+        self.assertEqual(current[activation.PENDING_KEY], own_causes)
         self.assertEqual(self.read(f"estado/relacoes/{self.silva}.yaml")["relacao"][INFO], resolution["deltas"][0]["valor"])
         barrier.conclude(self.repo, pid, "Verificação registrada e consolidada.")
         self.assertEqual([p["agente_leve"] for p in self.pending()], [self.nera])
         before = self.hashes()
-        turno.register_transaction(self.repo, resolution)
+        again = subprocess.run(command, input=json.dumps(resolution), capture_output=True, text=True)
+        self.assertEqual(again.returncode, 0, again.stderr)
         self.assertEqual(before, self.hashes())
 
     def test_cancelamento_em_resolucao_nao_deixa_prazo_falso(self):
@@ -389,9 +405,11 @@ class CausalActivationIntegrationTest(unittest.TestCase):
     def test_overflow_rejeitado_antes_de_instalar_fatos_e_notificacoes(self):
         record = {"tipo": "encontro", "resumo": "Revisar o documento.", "envolvidos": [self.silva],
                   "janela": {"descricao": "Após o aviso."}}
+        # O contrato aceito é oito causas por agente. Nove devem falhar mesmo
+        # que uma constante interna seja renomeada ou aumentada indevidamente.
         tx = self.transaction("muitas-causas", deltas=[
             {"alvo": "estado", "op": "set", "caminho": f"compromissos.mapa_{i}", "valor": deepcopy(record)}
-            for i in range(activation.MAX_CAUSES_PER_AGENT + 1)])
+            for i in range(9)])
         with patch.object(turno, "_run_scene_checkpoint", return_value={"mundo": {}}):
             turno.register_transaction(self.repo, tx)
         before = self.hashes()
