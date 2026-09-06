@@ -21,6 +21,7 @@ quando a memória interna realmente não resolver a lacuna.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 from typing import Any, Iterable
@@ -659,6 +660,23 @@ def _decision_for(repo: Path, args: argparse.Namespace) -> politica.AccessDecisi
     )
 
 
+def render_resume(repo: Path, data: dict[str, Any], max_bytes: int, as_json: bool) -> tuple[str, bool]:
+    """Última etapa de saída: a memória não volta ao compactador genérico."""
+    def dump(value: Any) -> str:
+        if as_json:
+            return json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+        return yaml.safe_dump(value, allow_unicode=True, sort_keys=False, width=110)
+
+    completed = memoria_cena.resume(
+        repo, data, max_output_bytes=max_bytes,
+        measure=lambda value: len(dump(value).encode("utf-8")),
+    )
+    text = dump(completed)
+    if len(text.encode("utf-8")) > max_bytes:
+        raise ValueError("retomada excede orçamento; refine a consulta")
+    return text, bool((completed.get(memoria_cena.KEY) or {}).get("aprofundamento_necessario"))
+
+
 def main() -> int:
     args = build_parser().parse_args()
     repo = args.repo.resolve()
@@ -725,15 +743,8 @@ def main() -> int:
             after=after,
             reason=validated_reason,
         )
-        if args.command == "retomada":
-            # Orçamento do envelope completo, já incluindo a política de acesso.
-            # Não compactar cegamente memórias após a projeção NV03/NV05.
-            data = memoria_cena.resume(repo, data, max_output_bytes=effective_max,
-                                      measure=lambda value: len(serialize(value, args.json).encode("utf-8")))
-            text = serialize(data, args.json)
-            if len(text.encode("utf-8")) > effective_max:
-                raise ValueError("retomada excede orçamento; refine a consulta")
-            truncated = bool((data.get(memoria_cena.KEY) or {}).get("aprofundamento_necessario"))
+        if (data.get("consulta") or {}).get("comando") == "retomada":
+            text, truncated = render_resume(repo, data, effective_max, args.json)
         else:
             text, truncated = fit_budget(data, effective_max, args.json)
     except (
