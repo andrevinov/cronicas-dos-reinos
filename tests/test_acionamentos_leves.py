@@ -163,6 +163,11 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         self.repo = self.f.repo
         self.write = self.f.write
         self.people = self.f.people
+        # A fixture NV-04 não precisava ativar Mundo Vivo. Nesta integração o
+        # relógio precisa cumprir o schema real, sem afrouxar seu validador.
+        time = self.read(causal.TIME)
+        time["schema_tempo"] = 1
+        self.write(causal.TIME.as_posix(), time)
         self.write("narrador/mundo/agenda.yaml", {"schema_agenda_mundo": 1, "natureza": "reservado",
                   "hora_amanhecer": "06:00", "reavaliacoes": {}, "agendamentos": []})
         self.write("narrador/mundo/estado.yaml", {"schema_estado_mundo": 1, "natureza": "controle_reservado",
