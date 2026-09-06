@@ -1,0 +1,31 @@
+schema_orcamento: 1
+natureza: contrato_engenharia
+etapa: NV-07
+implementacao: ferramentas/acionamentos_leves.py
+origem: PR-119
+reconciliacao: PR-120
+limites:
+  revisoes_rotineiras_novas_por_checkpoint: 1
+  avaliacoes_leves_abertas: 2
+  sinais_causais: 32
+  causas_por_agente: 8
+  bytes_contexto_causal_por_avaliacao: 2560
+  bytes_controle_reservado: 16384
+  bytes_lote_duas_avaliacoes_fixture: 8192
+invariantes:
+  segundo_motor: false
+  nova_porta_cli: false
+  novo_scheduler: false
+  nova_chamada_ia_por_npc: false
+  nova_chamada_ritual_por_turno: false
+  notificacao_e_fato_no_mesmo_journal: true
+  preempcao_preserva_id_e_origem: true
+  recibo_nao_depende_de_conclusoes_recentes: true
+  prazo_nao_significa_sucesso_ou_falha: true
+  npc_nao_afetado_nao_e_avaliado: true
+  lacuna_de_contexto_e_explicita: true
+medicao:
+  unidade: bytes_yaml
+  escopo: fixtures_de_fronteira_completa_e_contexto_causal
+  tokens_nativos: null
+  economia_episodios_narrados: nao_medida

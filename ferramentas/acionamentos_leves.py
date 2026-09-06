@@ -408,11 +408,15 @@ def stage(repo: Path, plan: dict | None, records: list) -> None:
         return
     index = agentes_leves.load_index(repo)
     outputs = plan["outputs"]
-    world = _read(repo, WORLD, outputs)
+    canonical_world = _read(repo, WORLD)
+    world = _read(repo, WORLD, outputs) if WORLD.as_posix() in outputs else deepcopy(canonical_world)
     original = deepcopy(world)
     dependencies = _dependencies(index, repo, cache)
     now = _instant(_read(repo, TIME, outputs))
-    pending_agents = {p["id"]: p.get("agente_leve") for p in world["pendencias"]}
+    # A tag resolve trabalho da base canônica, não da saída já transformada.
+    # Outro staging pode ter revogado o prazo: usar outputs aqui perderia o
+    # resolutor original e criaria uma autoavaliação espúria no mesmo lote.
+    pending_agents = {p["id"]: p.get("agente_leve") for p in canonical_world["pendencias"]}
     for source in sorted(touched & dependencies.keys() & outputs.keys()):
         kind = "relacao" if source.startswith("estado/relacoes/") else "npc"
         if _read(repo, Path(source)).get(kind) == _read(repo, Path(source), outputs).get(kind):
