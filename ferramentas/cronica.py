@@ -31,6 +31,7 @@ import memoria_duravel as _durable
 import memoria_cena as _scene_memory
 import progressao_juppongatana
 import pressao_narrativa as _pressure52
+import contatos_sociais as _contacts09
 import progresso_sidequests_transacional as _sidequests49
 import retomada_cronica
 import sessoes
@@ -126,13 +127,20 @@ def prepare(*args, **kwargs):
         raise _core.CronicaError(f"Task49: {exc}") from exc
     gate = _pending_gate.prepare_gate(Path(repo))
     operation_pendings = None
+    contact_pendings = []
     if gate is not None:
         try:
             operation_pendings = _pressure52.routable_operation_pendings(Path(repo))
         except _pressure52.NarrativePressureError as exc:
             raise _core.CronicaError(f"Task52: {exc}") from exc
         if operation_pendings is None:
-            return gate
+            try:
+                partition = _contacts09.partition_gate(Path(repo))
+            except (ValueError, OSError, yaml.YAMLError) as exc:
+                raise _core.CronicaError(f"NV09: {exc}") from exc
+            if partition is None:
+                return gate
+            operation_pendings, contact_pendings = partition
     base = _hot.prepare(*args, **kwargs)
     if signal is None:
         prepared = base
@@ -179,12 +187,21 @@ def prepare(*args, **kwargs):
             decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket,
         )
+        # O envelope ampliado já pertence às pressões anteriores. Um contato
+        # sozinho não pode usá-lo para elevar o teto do turno comum.
+        final_budget = _pressure52.MAX_OUTPUT_BYTES if "pressao_narrativa" in prepared else output_budget
+        prepared = _contacts09.prepare(
+            Path(repo), prepared, contact_pendings, decode_ticket=decode_ticket,
+            encode_ticket=_core.encode_ticket, max_output_bytes=final_budget,
+        )
         return _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
             base_in_context=memory_base,
-            max_output_bytes=(_pressure52.MAX_OUTPUT_BYTES if "pressao_narrativa" in prepared else output_budget),
+            max_output_bytes=final_budget,
         )
+    except _contacts09.plans.PlanError as exc:
+        raise _core.CronicaError(f"NV09: {exc}") from exc
     except _scene_memory.SceneMemoryError as exc:
         raise _core.CronicaError(f"NV05: {exc}") from exc
     except _mechanics.MechanicalContractError as exc:
@@ -215,6 +232,7 @@ def _base_token(payload: dict) -> str:
     clean.pop(_sidequests48.TICKET_KEY, None)
     clean.pop(_pressure52.TICKET_KEY, None)
     clean.pop(_scene_memory.TICKET_KEY, None)
+    clean.pop(_contacts09.TICKET_KEY, None)
     token, _ = _core.encode_ticket(clean)
     return token
 
@@ -225,6 +243,8 @@ def confirm(repo: Path, token: str):
     except _sidequests49.TransactionalSidequestProgressError as exc:
         raise _core.CronicaError(f"Task49: {exc}") from exc
     payload, meta46, meta48, meta52 = _sidequest_meta(token)
+    if _contacts09.TICKET_KEY in payload:
+        raise _core.CronicaError("contato usa cronica concluir; não separar confirmação e registro")
     if _scene_memory.TICKET_KEY in payload:
         raise _core.CronicaError("elenco de cena usa cronica concluir; não separar confirmação e registro")
     if meta46 is not None or meta48 is not None or meta52 is not None:
@@ -240,11 +260,17 @@ def _conclude_base(
     transaction: dict,
     *,
     pressure_pending_ids: list[str] | None = None,
+    contact_pending_ids: list[str] | None = None,
 ):
     original = _core._preflight_registration
     original_authorize = _hot.turno.barreira_mundo.authorize_registration
-    if pressure_pending_ids:
+    if pressure_pending_ids or contact_pending_ids:
         def pressure_authorize(inner_repo, inner_transaction, *, retry):
+            if contact_pending_ids:
+                return _contacts09.authorize_registration(
+                    inner_repo, inner_transaction, retry=retry, contacts=contact_pending_ids,
+                    operations=pressure_pending_ids or [], original=original_authorize,
+                )
             return _pressure52.authorize_registration(
                 inner_repo,
                 inner_transaction,
@@ -277,6 +303,10 @@ def conclude(repo: Path, token: str, transaction: dict):
         transaction = _durable.prepare_transaction(Path(repo), transaction)
     except _durable.DurableMemoryError as exc:
         raise _core.CronicaError(f"NV04: {exc}") from exc
+    try:
+        transaction, contact_pending_ids = _contacts09.compile_conclusion(Path(repo), payload, transaction)
+    except (ValueError, OSError, yaml.YAMLError) as exc:
+        raise _core.CronicaError(f"NV09: {exc}") from exc
     try:
         mechanical_writer_tx = _mechanics.validate_transaction(repo, payload, transaction)
     except _mechanics.MechanicalContractError as exc:
@@ -318,6 +348,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                 base_token,
                 writer_tx,
                 pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                contact_pending_ids=contact_pending_ids,
             )
         else:
             journal46 = _sidequests46.recover_matching_journal(
@@ -332,6 +363,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                         base_token,
                         writer_tx,
                         pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                        contact_pending_ids=contact_pending_ids,
                     )
                     installed46 = {
                         "resultado": "oferta_nao_materializada",
@@ -363,6 +395,7 @@ def conclude(repo: Path, token: str, transaction: dict):
                     base_token,
                     writer_tx,
                     pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                    contact_pending_ids=contact_pending_ids,
                 )
                 installed46 = _sidequests46.install(repo, journal46)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
@@ -427,6 +460,8 @@ def register(
     *,
     revalidate: bool = True,
 ):
+    if _contacts09.TICKET_KEY in decode_ticket(token):
+        raise _core.CronicaError("contato usa cronica concluir; repetir o concluir para reparar")
     if _scene_memory.TICKET_KEY in decode_ticket(token):
         raise _core.CronicaError("elenco de cena usa cronica concluir; repetir o mesmo concluir para reparar")
     if _durable.TRANSACTION_KEY in transaction:

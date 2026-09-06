@@ -128,3 +128,13 @@ Contrato: `baseline/batch-world-boundary-resolution-orcamento.yaml`.
 
 O ganho pretendido e reduzir inferencias e tool calls em fronteiras com varias rotinas,
 nao alterar a frequencia nem a criatividade do Mundo Vivo.
+
+
+## Contato de plano já tentado
+
+A NV-09 não cria outra fila: `avaliar_plano_personagem` continua no Mundo Vivo.
+Antes da tentativa, usa `planos` no lote. Depois de tentado, o contato pode ser
+encaminhado pelo `cronica preparar` à cena, junto das operações jogáveis, sem
+atravessar outras classes de pendência. O lote ainda permite diagnosticar um canal
+inválido e registrar falha/replanejamento pelo contrato da NV-08; nunca no-op
+para apagar o contato. Ver `docs/nv09-contatos-sociais.md`.

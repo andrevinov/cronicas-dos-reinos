@@ -62,7 +62,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
-**Planos:** delta `plano:<id>` no concluir; eventos `planos` no lote. Contrato: `docs/nv08-planos-personagens.md`.
+**Planos/contatos:** `plano:<id>` no concluir; `planos` no lote. Contratos: `docs/nv08-planos-personagens.md`.
 
 **Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo.
 

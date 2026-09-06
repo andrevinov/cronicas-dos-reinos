@@ -31,7 +31,9 @@ MAX_CONTROL_BYTES = 24 * 1024
 MAX_CONTEXT_BYTES = 4096
 MAX_REFERENCE_BYTES = 32 * 1024
 ID_RE = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
-EVENTS = {"definir", "tentar", "resolver", "replanejar", "bloquear", "desistir"}
+EVENTS = {"definir", "tentar", "resolver", "replanejar", "bloquear", "desistir",
+          "entregar_contato", "adiar_contato"}
+DORMANT = {"aguarda_resposta"}
 TERMINAL = {"concluido", "desistiu"}
 
 
@@ -141,6 +143,9 @@ def _step(value: Any) -> dict:
             raise PlanError("teste exige bônus e CD canônicos, fixados antes da tentativa")
         _int(_ref(resolution["bonus"])["valor"], "bonus", -20, 40)
         _int(_ref(resolution["cd"])["valor"], "cd", 1, 50)
+    elif kind == "contato":
+        import contatos_sociais
+        contatos_sociais.validate_resolution(resolution)
     elif kind == "operacao":
         if set(resolution) != {"tipo", "operacao_id"}:
             raise PlanError("operação exige somente operacao_id; seu motor mantém os efeitos")
@@ -170,6 +175,10 @@ def validate_delta(delta: dict) -> dict:
     kind = event.get("evento")
     if kind not in EVENTS:
         raise PlanError("evento de plano desconhecido")
+    if kind in {"entregar_contato", "adiar_contato"}:
+        import contatos_sociais
+        contatos_sociais.validate_event(event)
+        return delta
     common = {"evento", "revisao", "fato"}
     extra = {
         "definir": {"agente", "objetivo", "passo"}, "tentar": set(),
@@ -397,6 +406,9 @@ def _gates(view: View, plan: dict, now: mundo.WorldInstant) -> list[str]:
         resolution = step["resolucao"]
         if resolution["tipo"] == "factual":
             view.value(resolution["sem_oposicao"])
+        elif resolution["tipo"] == "contato":
+            import contatos_sociais
+            contatos_sociais.attempt_gate(view, plan)
         else:
             # Bônus deve vir do responsável, não de Ren ou de outro NPC.
             if resolution["bonus"]["arquivo"] not in {npc_source, *sources}:
@@ -412,9 +424,11 @@ def _control(world: dict) -> dict:
     control = world.setdefault(KEY, {})
     if not isinstance(control, dict) or len(control) > MAX_PLANS or _size(control) > MAX_CONTROL_BYTES:
         raise PlanError("controle de planos excede o teto; não descartar planos silenciosamente")
+    import contatos_sociais
+    contatos_sociais.receipts(world)
     for pid, plan in control.items():
         _id(pid)
-        if not isinstance(plan, dict) or plan.get("estado") not in {"pretende", "tentou", "bloqueado", *TERMINAL}:
+        if not isinstance(plan, dict) or plan.get("estado") not in {"pretende", "tentou", "bloqueado", *TERMINAL, *DORMANT}:
             raise PlanError("estado de plano inválido")
         _int(plan.get("revisao"), "revisao", 1)
         if plan.get("id") != pid:
@@ -427,7 +441,7 @@ def _control(world: dict) -> dict:
         _text(plan.get("motivo"), "motivo")
         _step(plan.get("passo"))
         pending = plan.get("pendencia_id")
-        if plan["estado"] in TERMINAL:
+        if plan["estado"] in TERMINAL | DORMANT:
             if pending is not None:
                 raise PlanError("plano terminal não pode conservar pendência")
         elif not isinstance(pending, str) or not re.fullmatch(r"mundo-[0-9a-f]{16}", pending):
@@ -441,6 +455,11 @@ def _control(world: dict) -> dict:
             end = _instant(attempt.get("terminar_em"))
             if end < start:
                 raise PlanError("tentativa termina antes de começar")
+        if plan["estado"] in DORMANT:
+            if (not contatos_sociais.is_contact(plan) or not isinstance(attempt, dict)
+                    or (attempt.get("resultado") or {}).get("resultado") != "contato_entregue"
+                    or contatos_sociais.cause_key(plan) not in contatos_sociais.receipts(world)):
+                raise PlanError("aguarda_resposta exige contato entregue com recibo, não objetivo concluído")
         if plan["estado"] == "tentou":
             if (attempt is None or attempt.get("resultado") is not None
                     or attempt.get("passo") != plan["passo"]["id"]
@@ -455,7 +474,7 @@ def check_control(world: dict, agenda: dict) -> None:
     schedules = [item for item in agenda.get("agendamentos", [])
                  if item["id"].startswith(SCHEDULE_PREFIX)]
     expected = {SCHEDULE_PREFIX + pid + "." + str(p["revisao"]): p
-                for pid, p in control.items() if p["estado"] not in TERMINAL}
+                for pid, p in control.items() if p["estado"] not in TERMINAL | DORMANT}
     if {s["id"] for s in schedules} != set(expected) or len(schedules) != len(expected):
         raise PlanError("agenda e planos ativos divergem")
     for schedule in schedules:
@@ -530,6 +549,8 @@ def _result(view: View, plan: dict, event: dict, record: dict, now: mundo.WorldI
             raise PlanError("o fato deve preservar literalmente o resultado da operação")
         outcome["operacao"] = deepcopy(row["resolucao"])
     else:
+        if resolution["tipo"] == "contato" and event["resultado"] == "sucesso":
+            raise PlanError("entrega de contato usa cronica concluir, não sucesso automático fora de cena")
         if event["rolagem"] is not None or event["prova"] is None:
             raise PlanError("resultado factual exige prova em estado canônico, não apenas vontade")
         proof = event["prova"]
@@ -589,19 +610,29 @@ def compute(repo: Path, records: list[dict]) -> tuple[dict, dict]:
                 plan = {"id": pid, "agente": deepcopy(event["agente"]), "objetivo": event["objetivo"],
                         "passo": deepcopy(event["passo"]), "estado": "pretende", "revisao": event["revisao"],
                         "ultima_tentativa": None, "pendencia_id": None}
+                import contatos_sociais
+                contatos_sociais.validate_definition(world, plan)
                 control[pid] = plan
                 when = _instant(plan["passo"]["em"])
+            elif kind in {"entregar_contato", "adiar_contato"}:
+                import contatos_sociais
+                if old is None or not any(p["id"] == old.get("pendencia_id") for p in world["pendencias"]):
+                    raise PlanError("contato sem pendência atual")
+                plan = old
+                when = contatos_sociais.apply_event(before, after, world, plan, event, record)
             else:
                 if old is None or old["estado"] in TERMINAL:
                     raise PlanError("evento exige plano ativo")
                 plan = old
                 if record.get("modo") != "mundo":
                     raise PlanError("execução de plano exige transação modo:mundo, sem ação de Ren")
-                if not any(p["id"] == plan.get("pendencia_id") for p in world["pendencias"]):
+                if plan["estado"] not in DORMANT and not any(p["id"] == plan.get("pendencia_id") for p in world["pendencias"]):
                     raise PlanError("plano ainda não tem condição/prazo aberto na fila do mundo")
                 if kind == "tentar":
                     if plan["estado"] not in {"pretende", "bloqueado"}:
                         raise PlanError("tentativa já está em curso; não executar/cobrar novamente")
+                    import contatos_sociais
+                    contatos_sociais.validate_definition(world, plan)
                     blockers = _gates(before, plan, now)
                     if blockers:
                         raise PlanError("tentativa bloqueada: " + "; ".join(blockers))
@@ -643,6 +674,9 @@ def compute(repo: Path, records: list[dict]) -> tuple[dict, dict]:
                         plan["estado"], when = "desistiu", None
                 if plan["estado"] == "bloqueado" and when <= now:
                     raise PlanError("bloqueio exige oportunidade futura de reavaliação, não loop imediato")
+            if kind in {"replanejar", "resolver"} and plan["estado"] == "pretende":
+                import contatos_sociais
+                contatos_sociais.validate_definition(world, plan)
             plan["revisao"] += 1
             plan["motivo"] = event.get("motivo", event["fato"])
             plan["ultima_transacao"] = record["id"]
@@ -672,9 +706,13 @@ def validate_registration(repo: Path, transaction: dict, record: dict, prior: li
         return
     for delta in changes:
         validate_delta(delta)
+        if delta["valor"]["evento"] == "entregar_contato":
+            plan = mundo.load_world_state(repo).get(KEY, {}).get(delta["alvo"][len(PREFIX):])
+            if not isinstance(plan, dict) or plan["passo"]["resolucao"].get("mensagem", "") not in str(transaction.get("narracao", "")):
+                raise PlanError("mensagem entregue deve aparecer literalmente na narração")
         if delta["valor"]["fato"] not in str(transaction.get("narracao", "")):
             raise PlanError("fato do plano deve aparecer literalmente na narração registrada")
-    if any(d["valor"]["evento"] != "definir" for d in changes):
+    if any(d["valor"]["evento"] not in {"definir", "entregar_contato", "adiar_contato"} for d in changes):
         if transaction.get("jogador") not in (None, "") or record.get("modo") != "mundo":
             raise PlanError("execução autônoma não carrega ação do jogador")
         # Ações simples só alteram seu próprio estado. Efeitos adversariais,
@@ -731,6 +769,12 @@ def project_pending(repo: Path, pending: dict) -> dict:
     blockers = _gates(view, plan, now) if plan["estado"] != "tentou" else []
     if plan["estado"] == "tentou" and plan["passo"]["resolucao"]["tipo"] == "operacao":
         _operation(view, plan)
+    if plan["estado"] == "tentou" and plan["passo"]["resolucao"]["tipo"] == "contato":
+        import contatos_sociais
+        try:
+            contatos_sociais.delivery(view, plan)
+        except PlanError as exc:
+            blockers.append(str(exc))
     result = {"plano": deepcopy(plan), "bloqueios": blockers,
               "assinatura_fontes": _digest(view.signatures),
               "fontes_lidas": [mundo.WORLD_STATE_PATH.as_posix(), *sorted(view.signatures)],
