@@ -9,6 +9,8 @@ from copy import deepcopy
 import argparse
 from typing import Any, Callable
 
+import personalidade_decisoria
+
 Serializer = Callable[[Any, bool], str]
 Path = tuple[str, ...]
 IDENTITY = {"nome", "tipo", "status", "identidade", "personalidade", "valores", "limites"}
@@ -53,7 +55,7 @@ def _put(value: dict, path: Path, item: Any) -> None:
 
 def _fields(data: dict) -> tuple[dict, list[tuple[Path, Any, int | None]]]:
     """Mantém wrappers/IDs; separa campos sem achatar seus fatos internos."""
-    base = deepcopy(data)
+    base = personalidade_decisoria.enrich(data)
     result = base.get("resultado") or {}
     if not isinstance(result, dict):
         raise ValueError("resultado de memória precisa ser mapa")
@@ -74,9 +76,11 @@ def _fields(data: dict) -> tuple[dict, list[tuple[Path, Any, int | None]]]:
                 raise ValueError("campo de memória precisa ter chave textual")
             fields.append((path + (key,), value, _priority(key, path)))
         _put(result, path, {})
-    for key in ("dialogo_relacional", "iniciativa_social"):
+    for key in ("dialogo_relacional", "iniciativa_social", personalidade_decisoria.KEY):
         if key in result:
-            fields.append(((key,), result.pop(key), 1))
+            # O perfil inteiro mantém valores, limites e lacunas juntos.
+            rank = 0 if key == personalidade_decisoria.KEY else 1
+            fields.append(((key,), result.pop(key), rank))
     return base, sorted(fields, key=lambda row: row[0])
 
 
@@ -187,7 +191,11 @@ def fit(data: dict, limit: int, as_json: bool, serialize: Serializer) -> tuple[s
     base, fields = _fields(data)
     query = data.get("consulta", {})
     if query.get("campo") is not None or query.get("campos"):
-        return _page(data, fields, limit, as_json, serialize)
+        # Reconstrói a visão efetiva com os campos derivados para --campo/--campos.
+        directed = deepcopy(base)
+        for path, value, _ in fields:
+            _put(directed["resultado"], path, value)
+        return _page(directed, fields, limit, as_json, serialize)
     selected: dict[Path, set[int]] = {}
     # Uma rodada por campo: biografia/lista longa não monopoliza o orçamento.
     candidates = []

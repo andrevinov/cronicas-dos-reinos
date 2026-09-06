@@ -91,6 +91,15 @@ A ferramenta não consegue verificar a janela interna de uma IA: a declaração 
 responsabilidade de seu chamador. Não se trata de comprovação de cache nativo de
 provedor. Não há cache persistente; a memoização de leituras dura uma chamada.
 
+## Personalidade na escolha — NV-06
+
+Quando o item trouxer `personalidade_decisoria`, usar seus critérios estáveis para
+ponderar condutas viáveis, não apenas o tom da fala. Reação recente, humor quando
+registrado e risco permanecem em `medidores.dados`; não redefinem a personalidade.
+Lacuna não autoriza inventar traço. Preferência não concede presença, conhecimento,
+capacidade, decisão de Ren ou sucesso. O perfil é indivisível e compartilha o teto
+existente. Contrato e exemplos: `docs/agente/personalidade-decisoria.md`.
+
 ## Orçamento e lacunas
 
 Há um teto conjunto de **4 KiB** para a memória, não um teto por NPC. Cabe dentro
