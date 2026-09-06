@@ -79,7 +79,8 @@ def _fields(data: dict) -> tuple[dict, list[tuple[Path, Any, int | None]]]:
     for key in ("dialogo_relacional", "iniciativa_social", personalidade_decisoria.KEY):
         if key in result:
             # O perfil inteiro mantém valores, limites e lacunas juntos.
-            rank = 0 if key == personalidade_decisoria.KEY else 1
+            # Fatos (0–3) precedem esta orientação interpretativa.
+            rank = 4 if key == personalidade_decisoria.KEY else 1
             fields.append(((key,), result.pop(key), rank))
     return base, sorted(fields, key=lambda row: row[0])
 

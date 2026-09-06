@@ -176,7 +176,8 @@ def evaluate_options(profile: dict, options: list[dict]) -> dict:
         unknown = sorted(k for k, v in gates.items() if v is None)
         status = ("inviavel_declarada" if blocked else "aguarda_base" if unknown
                   else "contraria_limite" if limits.intersection(negative)
-                  else "sem_fundamento_no_perfil" if not positive and not negative else "avaliavel")
+                  else "contraria_sem_apoio" if negative and not positive
+                  else "sem_fundamento_no_perfil" if not positive else "avaliavel")
         justification = [{"criterio": key, "texto_fonte": traits[key]["texto"],
                           "efeito": name, "justificativa_declarada": option[name][key]}
                          for name, keys in (("favorece", positive), ("contraria", negative)) for key in keys]

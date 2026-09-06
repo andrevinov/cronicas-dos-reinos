@@ -26,7 +26,7 @@ class PersonalitySelectionTest(unittest.TestCase):
         base, fields = relevant._fields(doc)
         selected = [(path, value, rank) for path, value, rank in fields if path == (personality.KEY,)]
         self.assertEqual(len(selected), 1)
-        self.assertEqual(selected[0][2], 0)
+        self.assertEqual(selected[0][2], 4)
         self.assertNotIn(personality.KEY, base["resultado"])
         self.assertNotIn(personality.KEY, doc["resultado"])
 
@@ -188,6 +188,19 @@ class PersonalityMemoryIntegrationTest(unittest.TestCase):
                 self.assertEqual(item[personality.KEY], cases.profile(person))
             else:
                 self.assertTrue(item["memoria_relevante"]["aprofundamento_necessario"])
+
+    def test_orcamento_compartilhado_prioriza_fatos_sobre_personalidade(self):
+        doc = cases.document(nome="Silva da fixture")
+        facts = {"vinculo": "Vínculo. " * 90,
+                 "informacoes_recebidas": "Conhecimento. " * 65,
+                 "acordos": "Promessa. " * 90}
+        doc["resultado"]["relacao"] = {"id": "silva_elkwood", "dados": facts}
+        pack = self.memory.project({"silva_elkwood": doc}, scope=self.memory.digest("disputa"), budget=4096)
+        item = pack["itens"]["silva_elkwood"]
+        self.assertEqual(item["relacao"]["dados"], facts)
+        self.assertNotIn(personality.KEY, item)
+        self.assertTrue(item["memoria_relevante"]["aprofundamento_necessario"])
+        self.assertLessEqual(self.memory.size(pack), 4096)
 
     def test_aprofundamento_cli_de_perfil_derivado(self):
         run = subprocess.run([sys.executable, str(Path(self.contexto.__file__)), "--repo", str(self.repo),

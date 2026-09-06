@@ -64,6 +64,8 @@ critérios e justificativas, e gates declarados de conhecimento, capacidade,
 recursos, presença/canal e autoridade. Não interpreta prosa para descobrir essas
 ligações. Gate desconhecido aguarda base; falso indica inviabilidade declarada;
 contrariar um limite conhecido exclui a alternativa da preferência do perfil.
+Uma opção apenas contrária aos critérios, sem apoio positivo conhecido, não vira
+preferível só porque a alternativa neutra não possui afinidade anotada.
 
 Entre as demais, mantém as alternativas não dominadas: uma domina outra somente
 se favorece todos os critérios dela, contraria no máximo os mesmos critérios e
@@ -80,7 +82,9 @@ pode deliberar diretamente usando o pacote já entregue.
 
 A integração ocorre em `memoria_relevante._fields`, após o estado efetivo, ponto
 compartilhado pela seleção NV-03 e pela memória NV-05. Nenhuma leitura adicional
-é necessária. O perfil é um campo prioritário indivisível: valores, limites e
+é necessária. Fatos de identidade, vínculo, promessa e conhecimento precedem o
+perfil interpretativo, que precede orientações extensas na memória de cena.
+O perfil é um campo prioritário indivisível: valores, limites e
 lacunas entram juntos; se não couberem, o mecanismo existente declara necessidade
 de aprofundamento. Não aumenta o teto conjunto de 4 KiB nem o envelope comum de
 8 KiB. Não multiplica orçamento por participante.
