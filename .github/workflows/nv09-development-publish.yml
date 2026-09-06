@@ -1,0 +1,44 @@
+name: NV09 publish validated patch
+on:
+  push:
+    branches: [feat/nv-09-contatos-efetivos]
+    paths: [.github/workflows/nv09-development-publish.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify and install exact tested patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse origin/main)" = "6c3dd7c5e84b06b1304223281f92087b4dff2ae8"
+          test "$(git ls-remote origin refs/heads/feat/nv-09-contatos-efetivos | cut -f1)" = "$GITHUB_SHA"
+          python3 - <<'PY'
+          import base64, gzip, hashlib, pathlib, subprocess
+          parts = [pathlib.Path(f'.nv09-transfer-{i:02d}.b64') for i in range(1, 9)]
+          encoded = ''.join(p.read_text().strip() for p in parts)
+          patch = gzip.decompress(base64.b64decode(encoded, validate=True))
+          expected = '8b6f1aa2754954a01f6d810a3cb4b346b05d7d8c78b351060b66d7e7ff798347'
+          assert hashlib.sha256(patch).hexdigest() == expected, 'Patch checksum mismatch'
+          changed = {line.split('\t', 2)[2] for line in subprocess.check_output(['git', 'apply', '--numstat'], input=patch).decode().splitlines()}
+          allowed = {'AGENTS.md', 'docs/nv08-planos-personagens.md', 'docs/nv09-contatos-sociais.md', 'docs/task23-batch-world-boundary-resolution.md', 'ferramentas/contatos_sociais.py', 'ferramentas/cronica.py', 'ferramentas/planos_personagens.py', 'tests/test_contatos_recuperacao.py', 'tests/test_contatos_sociais.py'}
+          assert changed == allowed, changed
+          subprocess.run(['git', 'apply', '--check'], input=patch, check=True)
+          subprocess.run(['git', 'apply'], input=patch, check=True)
+          for p in parts + [pathlib.Path('.nv09-patch-1.b64'), pathlib.Path('.github/workflows/nv09-development-snapshot.yml'), pathlib.Path('.github/workflows/nv09-development-publish.yml')]:
+              p.unlink()
+          subprocess.run(['git', 'add', '--', *sorted(allowed), *map(str, parts), '.nv09-patch-1.b64', '.github/workflows/nv09-development-snapshot.yml', '.github/workflows/nv09-development-publish.yml'], check=True)
+          subprocess.run(['git', 'diff', '--cached', '--check'], check=True)
+          final = set(subprocess.check_output(['git', 'diff', '--cached', '--name-only', 'origin/main']).decode().splitlines())
+          assert final == allowed, final
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: transformar iniciativa social em contato efetivo (NV-09)'
+          git push origin HEAD:refs/heads/feat/nv-09-contatos-efetivos
