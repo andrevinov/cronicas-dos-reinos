@@ -194,6 +194,8 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
 
     def test_compromisso_cumprido_some_da_parte_ativa_sem_apagar_memoria(self):
         out = self.prepare(["silva_fixture"])
+        cronica.conclude(self.repo, out["ticket"], self.f.promise())
+        out = self.prepare()
         cronica.conclude(self.repo, out["ticket"], self.f.complete("cumprir"))
         pack = self.prepare()[memory.KEY]
         self.assertNotIn("@compromissos", pack["itens"])
@@ -284,6 +286,54 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         cold = retomada_cronica.current_snapshot(self.repo)
         self.assertIn("silva_fixture", cold[memory.KEY]["itens"])
         self.assertEqual(cold["agora"]["local"]["ponto_exato"], "junto ao portão")
+
+    def test_preparo_obsoleto_nao_sobrescreve_elenco_mais_recente(self):
+        self.establish()
+        old = self.prepare(["nera_fixture"])
+        newer = self.prepare(["luath_fixture"])
+        cronica.conclude(self.repo, newer["ticket"], self.simple("elenco-novo"))
+        before = self.f.hashes()
+        with self.assertRaisesRegex(ValueError, "obsoleta"):
+            cronica.conclude(self.repo, old["ticket"], self.simple("outra-transacao"))
+        self.assertEqual(before, self.f.hashes())
+        self.assertEqual(set(self.prepare()[memory.KEY]["itens"]), {"luath_fixture"})
+
+    def test_preparo_obsoleto_continua_bloqueado_apos_checkpoint(self):
+        self.establish()
+        old = self.prepare(["nera_fixture"])
+        newer = self.prepare([])
+        cronica.conclude(self.repo, newer["ticket"], self.simple("saida-recente"))
+        consolidar.consolidate(self.repo, "cena")
+        before = self.f.hashes()
+        with self.assertRaisesRegex(ValueError, "obsoleta"):
+            cronica.conclude(self.repo, old["ticket"], self.f.relationship_tx())
+        self.assertEqual(before, self.f.hashes())
+
+    def test_preparo_antigo_com_elenco_explicito_tambem_e_revalidado(self):
+        self.establish()
+        old = self.prepare()
+        selected = deepcopy(cronica.decode_ticket(old["ticket"])[memory.TICKET_KEY]["elenco"])
+        selected["participantes"] = ["nera_fixture"]
+        newer = self.prepare([])
+        cronica.conclude(self.repo, newer["ticket"], self.simple("todos-sairam"))
+        tx = self.simple("outro-id", [{"alvo": "estado", "op": "set", "caminho": memory.CAST_PATH,
+                                       "valor": selected}])
+        before = self.f.hashes()
+        with self.assertRaisesRegex(ValueError, "obsoleta"):
+            cronica.conclude(self.repo, old["ticket"], tx)
+        self.assertEqual(before, self.f.hashes())
+
+    def test_retry_com_id_derivado_preserva_identidade_depois_de_mudar_elenco(self):
+        old = self.prepare(["silva_fixture"])
+        tx = self.f.promise()
+        tx.pop("id", None)
+        cronica.conclude(self.repo, old["ticket"], tx)
+        newer = self.prepare([])
+        cronica.conclude(self.repo, newer["ticket"], self.simple("saida-apos-promessa"))
+        consolidar.consolidate(self.repo, "cena")
+        before = self.f.hashes()
+        cronica.conclude(self.repo, old["ticket"], tx)
+        self.assertEqual(before, self.f.hashes())
 
 
 if __name__ == "__main__":
