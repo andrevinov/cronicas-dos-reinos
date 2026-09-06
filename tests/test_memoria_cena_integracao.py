@@ -251,18 +251,22 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         self.assertNotIn(memory.TICKET_KEY, cronica.decode_ticket(cronica._base_token(payload)))
 
     def test_contexto_retomada_inclui_memoria_sem_compactacao_cega(self):
-        # A porta legada exige handoff/índice, criados pelo checkpoint existente.
         checkpoint.refresh_memory(self.repo, "cena")
         self.establish()
         direct = contexto.command_resume(self.repo)
         self.assertIn("silva_fixture", direct[memory.KEY]["itens"])
+        program = Path(__file__).resolve().parents[1] / "ferramentas" / "contexto.py"
         for option in ([], ["--json"]):
-            completed = subprocess.run([sys.executable, str(Path(contexto.__file__)), "--repo", str(self.repo),
-                                        *option, "retomada"], check=True, capture_output=True, text=True)
-            output = yaml.safe_load(completed.stdout)
-            self.assertEqual(output[memory.KEY]["modo"], "completa")
-            self.assertIn("silva_fixture", output[memory.KEY]["itens"])
-            self.assertLessEqual(len(completed.stdout.encode()), 8192)
+            with self.subTest(formato=option or "yaml"):
+                completed = subprocess.run(
+                    [sys.executable, str(program), "--repo", str(self.repo), *option, "retomada"],
+                    check=True, capture_output=True, text=True,
+                )
+                output = yaml.safe_load(completed.stdout)
+                self.assertIn(memory.KEY, output, completed.stdout)
+                self.assertEqual(output[memory.KEY]["modo"], "completa")
+                self.assertIn("silva_fixture", output[memory.KEY]["itens"])
+                self.assertLessEqual(len(completed.stdout.encode()), 8192)
 
     def test_elenco_final_desconhecido_falha_antes_do_writer(self):
         out = self.prepare(["silva_fixture"])
