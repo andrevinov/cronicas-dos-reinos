@@ -122,21 +122,24 @@ def _motive(docs: dict[str, Any], npc_id: str) -> tuple[str | None, bool]:
 
 
 def _blockers(prepared: dict[str, Any], payload: dict[str, Any], scene_mode: str | None) -> list[str]:
-    result = []
+    weighted: list[tuple[int, str]] = []
     for item in (prepared.get("pressao_narrativa") or {}).get("itens", []):
-        if isinstance(item, dict) and pressao_narrativa.PRIORITIES.get(item.get("tipo"), 99) < pressao_narrativa.PRIORITIES["iniciativa_social"]:
-            result.append(str(item.get("id") or item.get("tipo")))
+        if not isinstance(item, dict):
+            continue
+        priority = pressao_narrativa.PRIORITIES.get(item.get("tipo"), 99)
+        if priority < pressao_narrativa.PRIORITIES["iniciativa_social"]:
+            weighted.append((priority, str(item.get("id") or item.get("tipo"))))
     contact = prepared.get("contato_social")
     if isinstance(contact, dict) and contact.get("plano_id"):
-        result.append("contato_social:" + str(contact["plano_id"]))
+        weighted.append((5, "contato_social:" + str(contact["plano_id"])))
     stay = prepared.get("permanencia_espacial")
     if isinstance(stay, dict) and stay.get("pressao_primaria"):
-        result.append("permanencia_espacial:" + str(stay["pressao_primaria"]))
+        weighted.append((6, "permanencia_espacial:" + str(stay["pressao_primaria"])))
     if (payload.get("cena") or {}).get("npcs"):
-        result.append("acao_social_solicitada")
+        weighted.append((5, "acao_social_solicitada"))
     if scene_mode in {"combate", "perigo_imediato"}:
-        result.append("modo_de_cena:" + scene_mode)
-    return sorted(set(result))
+        weighted.append((2, "modo_de_cena:" + scene_mode))
+    return [item for _, item in sorted(set(weighted))]
 
 
 def _proposal(social: dict[str, Any], cause: str | None) -> dict[str, Any]:
@@ -159,8 +162,14 @@ def _decision(window: str, npc: str, proposal: str) -> str:
 
 
 def _from_receipt(raw: dict[str, Any]) -> dict[str, Any]:
+    # Uma abertura já apresentada vira silêncio estrutural na projeção seguinte;
+    # o recibo original permanece terminal e não é reescrito.
+    if raw["resultado"] == "apresentada":
+        automatic, reason = "silencio_justificado", "repeticao_sem_causa_nova"
+    else:
+        automatic, reason = raw["resultado"], raw.get("motivo_codigo")
     return _row(raw["id"], raw["npc_id"], raw["presenca"], raw["proposta_digest"],
-                automatic=raw["resultado"], reason=raw.get("motivo_codigo"),
+                automatic=automatic, reason=reason,
                 blocker=raw.get("pressao_superior"), reused=True)
 
 
@@ -227,7 +236,8 @@ def attach_loaded(repo: Path, prepared: dict[str, Any], payload: dict[str, Any],
         if row["decisao_id"] == selected:
             view["proposta"] = proposals[selected]
         public_rows.append(view)
-    public = {"schema_iniciativa_elenco": SCHEMA, "janela_id": window, "janela_tipo": window_type,
+    public = {"schema_iniciativa_elenco": SCHEMA, "sistema": "iniciativa_social",
+              "janela_id": window, "janela_tipo": window_type,
               "interlocutores": people, "selecionada": selected, "itens": public_rows,
               "regra": "participante, presença/contactabilidade e interlocutor são distintos; no máximo uma abertura por janela; Ren conserva sua resposta",
               "metricas": {"interlocutores": len(people), "aberturas": 1 if selected else 0,
