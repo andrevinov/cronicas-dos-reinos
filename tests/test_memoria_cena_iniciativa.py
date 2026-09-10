@@ -77,16 +77,18 @@ class SceneMemoryInitiativeCompositionTest(unittest.TestCase):
         token, ticket_id = core.encode_ticket(payload)
         return {"ticket": token, "ticket_id": ticket_id, "fontes_lidas": [], "contrato_conclusao": {}}
 
+    def memory_pack(self):
+        return {"versao": memory.VERSION, "modo": "completa", "itens": {"nera_vell": {"encontrado": True}}}
+
     def test_mesmo_carregamento_produz_memoria_e_decisao_no_mesmo_ticket(self):
         reader = FakeReader()
         docs = {"nera_vell": self.social_doc()}
-        memory_pack = {"versao": memory.VERSION, "modo": "completa", "itens": {}}
         with tempfile.TemporaryDirectory() as tmp:
             with (
                 layer.interlocutors(["nera_vell"]),
                 mock.patch.object(memory, "load_scene", return_value=(reader, self.state(), [], self.saved())),
                 mock.patch.object(memory, "documents", return_value=docs) as load_docs,
-                mock.patch.object(memory, "project", return_value=memory_pack),
+                mock.patch.object(memory, "project", return_value=self.memory_pack()),
             ):
                 out = layer.attach(
                     Path(tmp),
@@ -100,6 +102,7 @@ class SceneMemoryInitiativeCompositionTest(unittest.TestCase):
         decoded = core.decode_ticket(out["ticket"])
         self.assertIn(memory.TICKET_KEY, decoded)
         self.assertIn(initiative.TICKET_KEY, decoded)
+        self.assertIn("nera_vell", out[memory.KEY]["itens"])
         self.assertEqual(out[initiative.PUBLIC_KEY]["interlocutores"], ["nera_vell"])
         self.assertEqual(out[initiative.PUBLIC_KEY]["itens"][0]["presenca"], "elenco_cena")
         self.assertEqual(out[initiative.PUBLIC_KEY]["metricas"]["consultas_adicionais_por_npc"], 0)
@@ -107,13 +110,12 @@ class SceneMemoryInitiativeCompositionTest(unittest.TestCase):
     def test_novo_participante_carrega_memoria_mas_nao_prova_presenca_retroativa(self):
         reader = FakeReader()
         docs = {"nera_vell": self.social_doc()}
-        memory_pack = {"versao": memory.VERSION, "modo": "completa", "itens": {}}
         with tempfile.TemporaryDirectory() as tmp:
             with (
                 layer.interlocutors(["nera_vell"]),
                 mock.patch.object(memory, "load_scene", return_value=(reader, self.state(), [], None)),
                 mock.patch.object(memory, "documents", return_value=docs),
-                mock.patch.object(memory, "project", return_value=memory_pack),
+                mock.patch.object(memory, "project", return_value=self.memory_pack()),
             ):
                 out = layer.attach(
                     Path(tmp), self.prepared(self.payload()),
@@ -121,21 +123,20 @@ class SceneMemoryInitiativeCompositionTest(unittest.TestCase):
                     participants=["nera_vell"], max_output_bytes=8192,
                 )
         item = out[initiative.PUBLIC_KEY]["itens"][0]
+        self.assertIn("nera_vell", out[memory.KEY]["itens"])
         self.assertEqual(item["presenca"], "ausente")
         self.assertEqual(item["resultado_automatico"], "nao_elegivel")
         self.assertIsNone(out[initiative.PUBLIC_KEY]["selecionada"])
-        self.assertIn("nera_vell", out[memory.KEY].get("itens", {}) or {}) if out[memory.KEY].get("itens") else None
 
     def test_permanencia_mesmo_local_preserva_presenca_apesar_de_novo_scene_id(self):
         reader = FakeReader()
         docs = {"nera_vell": self.social_doc()}
-        memory_pack = {"versao": memory.VERSION, "modo": "completa", "itens": {}}
         with tempfile.TemporaryDirectory() as tmp:
             with (
                 layer.interlocutors(["nera_vell"]),
                 mock.patch.object(memory, "load_scene", return_value=(reader, self.state(), [], self.saved("cena-anterior"))),
                 mock.patch.object(memory, "documents", return_value=docs),
-                mock.patch.object(memory, "project", return_value=memory_pack),
+                mock.patch.object(memory, "project", return_value=self.memory_pack()),
             ):
                 out = layer.attach(
                     Path(tmp), self.prepared(self.payload(scene_id="cena-renomeada", stay=True)),
