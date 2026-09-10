@@ -220,7 +220,11 @@ def attach_loaded(repo: Path, prepared: dict[str, Any], payload: dict[str, Any],
             rows.append(_row(did, npc_id, presence, digest, automatic="silencio_justificado", reason="sem_motivo_concreto")); continue
         proposals[did], pressures[did] = proposal, pressure
         if higher is not None:
-            rows.append(_row(did, npc_id, presence, digest, automatic="adiada_por_pressao_superior", reason="pressao_superior", blocker=higher)); continue
+            if isinstance(existing, dict) and existing.get("resultado") == "adiada_por_pressao_superior" and existing.get("pressao_superior") == higher:
+                rows.append(_from_receipt(existing))
+            else:
+                rows.append(_row(did, npc_id, presence, digest, automatic="adiada_por_pressao_superior", reason="pressao_superior", blocker=higher))
+            continue
         if presented:
             rows.append(_row(did, npc_id, presence, digest, automatic="silencio_justificado", reason="janela_ocupada")); continue
         candidates.append((1 if social["exige_motivo"] else 0, 1 if social["risco_alto"] else 0, npc_id, did))
