@@ -91,7 +91,7 @@ class CronicaInitiativeCompositionTest(unittest.TestCase):
             self.assertNotIn(initiative.TICKET_KEY, captured["payload"])
             self.assertNotIn(initiative.TRANSACTION_KEY, captured["tx"])
             self.assertEqual(result[initiative.PUBLIC_KEY]["resultados"][0]["resultado"], "nao_elegivel")
-            self.assertIn("present_cast_initiative", result["sistemas_narrativos"])
+            self.assertIn("npc_social_initiative", result["sistemas_narrativos"])
 
     def test_confirmar_e_registrar_separados_rejeitam_ticket_nv16(self):
         token = self._automatic_ticket()
