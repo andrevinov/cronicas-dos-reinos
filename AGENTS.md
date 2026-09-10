@@ -94,19 +94,9 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 
 ### Recompensas e side quests
 
-- **Task 40:** conversa incidental = zero chamada; âncora causal concreta → `oportunidade_sidequest.py planejar`, read-only, nunca cria/oferece quest.
-- **Task 41:** `sidequests_emergentes.py preparar` → narrar oferta → concluir → materializar; sem oferta, zero materialização. Nasce `oferecida`; rewards/stakes/cânone ficam declarados.
-- **Task 42:** não lateral usa `canon_bridge_runtime.py`; aceite só reserva causa e nunca move Ren. Supressão exige evidência; `reconciliar` libera fallback.
-- **Task 43:** `recompensas_sidequest.py` registra contrato antes do lifecycle. Descoberta ≠ obtenção; sucesso/perda só pelo writer e com contrato/evidência.
-- **Task 44:** `integridade_adversarial.py` congela stakes antes da oferta. Exige capacidade/conhecimento reais e preserva Protected Core; Task42 pode autorizar risco canônico. Terminal: Task45; hot path: Task46.
-- **Task 45:** `progressao_sidequests.py` executa progresso factual, prazo e consequências congeladas; `resolver_sidequest` nunca é no-op; recompensa = Task43, consequência grave = Task44/Protected Core.
-- **Task 46:** 40–45 ficam na mesma dupla; com âncora, preparar com oportunidade+origem/tipo/âncora e concluir no mesmo ticket; só materializar oferta narrada. Negativa não chama autoria. Task32/33 = legado frio.
-- **Task 47:** `analisar-rollout.py` exige 100% de cobertura da decisão.
-- **Tasks 48/49:** missão `aceita` é projetada read-only por IDs+digest; máximo 2. `cronica concluir` exige `sem_fato_sidequest` ou fatos com prova literal; Task49 journala e delega terminal às Tasks42/43/45. Retry: repetir o concluir. Consulta: `sidequests_ativas.py status <id>`.
-- **Task 50:** após fato Task49, `reacoes_sidequest.py` avalia mundo/sucessora/nenhuma. Capacidade, conhecimento, presença, recurso e Task44 são gates; mundo usa a fila existente. Comprometer antes de narrar/rolar; direção não autoriza ação.
-- **Tasks 51/52:** operações são comprometidas antes da escolha; pressão no ticket exige resultado e precede iniciativa incidental. Frente remota respeita canal; encontro congela antes da rolagem.
-- **Task 53:** migração usa `migracao_sete_nomes.py dry-run|aplicar`; nunca inventa terminal/reação. Oportunidade nova e missão ativa são decisões independentes.
-- Task32 já narrada → `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; `endpoints.py sidequest <id>` preserva efeitos. Checkpoint não sorteia side quest nem loot.
+- **Tasks 40–46:** conversa incidental não acorda autoria; âncora concreta percorre oportunidade → autoria → contratos → lifecycle no mesmo `preparar/concluir`. Só oferta narrada materializa; recompensa/risco/progresso ficam congelados. Task42 não move Ren; Task44 preserva Protected Core; Task45 terminal nunca é no-op.
+- **Tasks 47–49:** todo `preparar` decide oportunidade; negativa só bloqueia oferta nova. Missões aceitas (máx. 2) seguem read-only e no `concluir` exigem negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `sidequests_ativas.py status <id>`.
+- **Tasks 50–53/legado:** reações/operações exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração Sete Nomes não inventa terminal/reação. Task32 já narrada usa `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
 
 ## 7. Checkpoint de cena e sessão
 
