@@ -175,7 +175,10 @@ def due_plan_ids(repo: Path, now: mundo.WorldInstant) -> tuple[list[str], list[s
         if pid is None:
             continue
         when = _parse_when(raw.get("em"), f"agenda.{raw.get('id')}.em")
-        if when <= now:
+        # Compare o valor canônico, não a identidade da classe. Alguns testes
+        # carregam ``mundo.py`` por importlib em namespace isolado; ambos os
+        # objetos continuam representando o mesmo contrato de minuto absoluto.
+        if when.minute <= now.minute:
             due.append((when.minute, pid))
     ordered: list[str] = []
     for _, pid in sorted(due):
@@ -411,7 +414,7 @@ def collect_due(
             continue
         step = plan.get("passo") or {}
         when = _parse_when(step.get("em"), f"plano.{pid}.passo.em")
-        if when > now:
+        if when.minute > now.minute:
             continue
         try:
             contract = sidequests_personagens.validate_definition(view, plan)
