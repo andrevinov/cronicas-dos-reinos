@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from unittest import mock
 import sys
 import unittest
 from pathlib import Path
@@ -13,6 +14,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import fronteira_vivacidade as live
+import mundo
 
 
 class LivenessBoundaryContractTest(unittest.TestCase):
@@ -52,6 +54,13 @@ class LivenessBoundaryContractTest(unittest.TestCase):
             "origem": f"fixture:{candidate_id}",
         }
 
+    def envelope(self, candidate, hour="06:00"):
+        return {
+            "candidata": candidate,
+            "ativar_em": {"data": "21 Eleasis, 1372 DR", "hora": hour},
+            "expirar_em": None,
+        }
+
     def test_calma_exige_cobertura_de_todos_os_dominios(self):
         checks = self.checks()[:-1]
         with self.assertRaisesRegex(live.LivenessBoundaryError, "cobertura incompleta"):
@@ -62,9 +71,7 @@ class LivenessBoundaryContractTest(unittest.TestCase):
         self.assertIsNone(result["pressao_primaria"])
         self.assertEqual(result["decisoes"], [])
         self.assertEqual(result["recibo_calma"]["estado"], "calma_justificada")
-        self.assertEqual(
-            result["recibo_calma"]["motivo"], "nenhuma_pressao_elegivel"
-        )
+        self.assertEqual(result["recibo_calma"]["motivo"], "nenhuma_pressao_elegivel")
         self.assertEqual(
             [item["dominio"] for item in result["cobertura"]],
             list(live.REQUIRED_DOMAINS),
@@ -86,7 +93,7 @@ class LivenessBoundaryContractTest(unittest.TestCase):
         self.assertEqual(list(decisions.values()).count("entregue"), 1)
         self.assertIsNone(result["recibo_calma"])
 
-    def test_bloqueada_nao_consume_slot_e_preserva_motivo_concreto(self):
+    def test_bloqueada_nao_consome_slot_e_preserva_motivo_concreto(self):
         candidates = [
             self.candidate(
                 "mensagem-sem-canal",
@@ -103,9 +110,7 @@ class LivenessBoundaryContractTest(unittest.TestCase):
             item for item in result["decisoes"] if item["id"] == "mensagem-sem-canal"
         )
         self.assertEqual(blocked["decisao"], "bloqueada")
-        self.assertEqual(
-            blocked["motivo"], "Não existe canal causal válido para alcançar Ren."
-        )
+        self.assertEqual(blocked["motivo"], "Não existe canal causal válido para alcançar Ren.")
 
     def test_candidata_nao_pode_surgir_de_dominio_declarado_nao_configurado(self):
         checks = self.checks()
@@ -146,6 +151,113 @@ class LivenessBoundaryContractTest(unittest.TestCase):
         ]
         with self.assertRaisesRegex(live.LivenessBoundaryError, "até"):
             live.project(self.window(), overflow, self.checks())
+
+    def test_turno_curto_sem_mudanca_de_periodo_nao_aciona_vivacidade(self):
+        start = mundo.parse_instant("21 Eleasis, 1372 DR", "14:00")
+        target = mundo.parse_instant("21 Eleasis, 1372 DR", "14:30")
+        self.assertEqual(live.consultation_windows(start, target, 6 * 60), [])
+
+    def test_manha_ate_noite_usa_quatro_janelas_relevantes_e_nao_nove_horarias(self):
+        start = mundo.parse_instant("21 Eleasis, 1372 DR", "06:00")
+        target = mundo.parse_instant("21 Eleasis, 1372 DR", "22:00")
+        windows = live.consultation_windows(start, target, 6 * 60)
+        self.assertEqual(len(windows), 4)
+        self.assertEqual(
+            [(row["gatilho"], row["periodo"]) for row in windows],
+            [
+                ("inicio_dia", "amanhecer"),
+                ("mudanca_periodo", "dia"),
+                ("mudanca_periodo", "anoitecer"),
+                ("mudanca_periodo", "noite"),
+            ],
+        )
+
+    def test_faixa_promove_adiada_na_janela_seguinte(self):
+        start = mundo.parse_instant("21 Eleasis, 1372 DR", "06:00")
+        target = mundo.parse_instant("21 Eleasis, 1372 DR", "18:00")
+        windows = live.consultation_windows(start, target, 6 * 60)
+        envelopes = [
+            self.envelope(self.candidate("a", "planos_compromissos", 1)),
+            self.envelope(self.candidate("b", "sidequests_vivas", 2)),
+        ]
+        result = live.project_span(windows, envelopes, self.checks())
+        self.assertEqual(result["avaliacoes"][0]["pressao_primaria"], "a")
+        self.assertIn(
+            {"id": "b", "decisao": "adiada", "motivo": "a ocupa o único slot primário desta janela"},
+            result["avaliacoes"][0]["decisoes"],
+        )
+        self.assertEqual(result["avaliacoes"][1]["pressao_primaria"], "b")
+        self.assertEqual(result["metricas"]["max_primarias_por_janela"], 1)
+
+    def test_augment_endpoint_encurta_compressao_quando_pressao_vem_antes(self):
+        endpoint = {
+            "disponibilidade": {
+                "inicio": {"data": "21 Eleasis, 1372 DR", "hora": "06:00"},
+                "alvo_inteiro_sem_checkpoint": True,
+            },
+            "proximo_passo": {"acao": "pode_comprimir_ate_alvo"},
+            "ids": {"motivos_por_camada": {}},
+            "filtros": [],
+            "gates": [{"tipo": "fronteira_temporal", "resultado": "livre"}],
+            "fontes_lidas": [],
+        }
+        projection = {
+            "schema_fronteira_vivacidade": 1,
+            "aplicavel": True,
+            "primeira_pressao_em": {
+                "id": "compromisso:x",
+                "data": "21 Eleasis, 1372 DR",
+                "hora": "10:00",
+            },
+            "metricas": {"janelas": 2, "calmas": 1},
+            "fontes_lidas": ["estado/estado-atual.yaml"],
+        }
+        with mock.patch.object(live, "evaluate", return_value=projection):
+            result = live.augment_endpoint(
+                Path("/fixture"),
+                endpoint,
+                target_date="21 Eleasis, 1372 DR",
+                target_hour="22:00",
+            )
+        self.assertEqual(
+            result["proximo_passo"]["fronteira"],
+            {"data": "21 Eleasis, 1372 DR", "hora": "10:00"},
+        )
+        self.assertFalse(result["disponibilidade"]["alvo_inteiro_sem_checkpoint"])
+        self.assertEqual(result["ids"]["vivacidade"], ["compromisso:x"])
+        temporal = next(row for row in result["gates"] if row["tipo"] == "fronteira_temporal")
+        self.assertEqual(temporal["resultado"], "interromper")
+
+    def test_augment_endpoint_calmo_nao_inventa_fronteira(self):
+        endpoint = {
+            "disponibilidade": {
+                "inicio": {"data": "21 Eleasis, 1372 DR", "hora": "06:00"},
+                "alvo_inteiro_sem_checkpoint": True,
+            },
+            "proximo_passo": {"acao": "pode_comprimir_ate_alvo"},
+            "ids": {"motivos_por_camada": {}},
+            "filtros": [],
+            "gates": [{"tipo": "fronteira_temporal", "resultado": "livre"}],
+            "fontes_lidas": [],
+        }
+        projection = {
+            "schema_fronteira_vivacidade": 1,
+            "aplicavel": True,
+            "primeira_pressao_em": None,
+            "metricas": {"janelas": 4, "calmas": 4},
+            "fontes_lidas": ["estado/estado-atual.yaml"],
+        }
+        with mock.patch.object(live, "evaluate", return_value=projection):
+            result = live.augment_endpoint(
+                Path("/fixture"),
+                endpoint,
+                target_date="21 Eleasis, 1372 DR",
+                target_hour="22:00",
+            )
+        self.assertEqual(result["proximo_passo"]["acao"], "pode_comprimir_ate_alvo")
+        self.assertTrue(result["disponibilidade"]["alvo_inteiro_sem_checkpoint"])
+        gate = next(row for row in result["gates"] if row["tipo"] == "fronteira_vivacidade")
+        self.assertEqual(gate["resultado"], "calma_justificada")
 
 
 if __name__ == "__main__":

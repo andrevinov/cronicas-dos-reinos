@@ -3,8 +3,9 @@
 
 O analisador schema 3 permanece congelado em ``_analisar_rollout_core.py``. Esta
 camada preserva o schema público anterior e acrescenta extensões independentes
-para orquestração/sistemas narrativos e, na Task47, cobertura da decisão explícita
-de oportunidade de sidequest. Nada aqui roda durante o jogo ou escreve no repo.
+para orquestração/sistemas narrativos, cobertura Task47 e, na NV-14, distinção
+entre calma justificada e ausência de consulta dos módulos de vivacidade. Nada
+aqui roda durante o jogo ou escreve no repo.
 """
 from __future__ import annotations
 
@@ -31,6 +32,7 @@ for _name in dir(_core):
 SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 1
 OPPORTUNITY_DECISION_SCHEMA = 1
+LIVENESS_BOUNDARY_SCHEMA = 1
 
 _BASE_CLASSIFY_TOOL = _core._classify_tool
 _BASE_ACCESS_LEVEL = _core._access_level_from_command
@@ -55,6 +57,7 @@ NARRATIVE_SYSTEM_KEYS = (
     "sidequest_success_reactions",
     "concurrent_adversarial_operations",
     "reactive_pressure_routing",
+    "liveness_boundary",
     "seven_names_migration_regression",
     "canon_bridge",
 )
@@ -88,6 +91,7 @@ _SYSTEM_COMMAND_MARKERS: dict[str, tuple[str, ...]] = {
         "pressao_narrativa.py",
         "pressao-narrativa.py",
     ),
+    "liveness_boundary": ("fronteira_vivacidade.py", "fronteira-vivacidade.py"),
     "seven_names_migration_regression": (
         "migracao_sete_nomes.py",
         "migracao-sete-nomes.py",
@@ -166,6 +170,11 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "schema_pressao_narrativa",
         "contrato_pressao",
         "pressao_narrativa:",
+    ),
+    "liveness_boundary": (
+        "schema_fronteira_vivacidade",
+        "fronteira_vivacidade_nv14",
+        "calma_justificada",
     ),
     "seven_names_migration_regression": (
         "schema_migracao_sete_nomes",
@@ -258,6 +267,33 @@ def _narrative_systems_from_output(output_text: str) -> set[str]:
     }
 
 
+def _liveness_observation(output_text: str) -> dict[str, int] | None:
+    """Extrai somente sinais estruturais; não interpreta a prosa da narração."""
+    lower = output_text.casefold()
+    missing = int(
+        "cobertura incompleta da fronteira de vivacidade" in lower
+        or "modulos_nao_consultados" in lower
+        or "módulos não consultados" in lower
+    )
+    marker = "schema_fronteira_vivacidade" in lower or "fronteira_vivacidade_nv14" in lower
+    if not marker and not missing:
+        return None
+    calm = len(re.findall(r"estado\s*:\s*calma_justificada", lower))
+    calm += len(re.findall(r'"estado"\s*:\s*"calma_justificada"', lower))
+    yaml_primaries = re.findall(r"pressao_primaria\s*:\s*([^\s,}\]]+)", lower)
+    json_primaries = re.findall(r'"pressao_primaria"\s*:\s*"([^\"]+)"', lower)
+    values = [*yaml_primaries, *json_primaries]
+    nulls = {"null", "none", "~", "\"\""}
+    pressure = sum(value.strip('"\'') not in nulls for value in values)
+    evaluations = max(len(yaml_primaries), len(json_primaries))
+    return {
+        "avaliacoes": evaluations,
+        "calma_justificada": calm,
+        "pressao": pressure,
+        "modulos_nao_consultados": missing,
+    }
+
+
 def _observation_turn() -> dict[str, Any]:
     return {"user_messages": [], "narration_signal_tool": False, "calls": [], "calls_by_id": {}}
 
@@ -319,6 +355,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "orchestration_phase": _orchestration_phase(command),
                     "sidequest_decision": _sidequest_decision_from_command(command),
                     "narrative_systems": _narrative_systems_from_command(command),
+                    "liveness": None,
                     "output_seen": False,
                 }
                 index = len(turn["calls"])
@@ -341,6 +378,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
                 matched["narrative_systems"].update(_narrative_systems_from_output(output_text))
+                matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
 
     ordered = [turns[turn_id] for turn_id in order]
@@ -353,6 +391,7 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     decisions: Counter[str] = Counter()
     system_calls: Counter[str] = Counter()
     system_turns: Counter[str] = Counter()
+    liveness: Counter[str] = Counter()
     pair_turns = 0
     for turn in turns:
         per_turn_phases: list[str] = []
@@ -369,6 +408,10 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
                 if system in NARRATIVE_SYSTEM_KEYS:
                     system_calls[system] += 1
                     per_turn_systems.add(system)
+            observed_liveness = call.get("liveness")
+            if isinstance(observed_liveness, dict):
+                for key in ("avaliacoes", "calma_justificada", "pressao", "modulos_nao_consultados"):
+                    liveness[key] += int(observed_liveness.get(key, 0))
         if Counter(per_turn_phases) == Counter({"preparar": 1, "concluir": 1}):
             pair_turns += 1
         system_turns.update(per_turn_systems)
@@ -394,6 +437,13 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         "sidequest_decision_violations": int(violations),
         "sidequest_decision_coverage": round(valid_decisions / prepare_calls, 6) if prepare_calls else 1.0,
         "task47_decision_gate_ok": violations == 0,
+        "liveness_boundary": {
+            "avaliacoes": int(liveness["avaliacoes"]),
+            "janelas_com_pressao": int(liveness["pressao"]),
+            "calma_justificada": int(liveness["calma_justificada"]),
+            "modulos_nao_consultados": int(liveness["modulos_nao_consultados"]),
+            "cobertura_ok": liveness["modulos_nao_consultados"] == 0,
+        },
         "narrative_system_calls": {system: int(system_calls[system]) for system in NARRATIVE_SYSTEM_KEYS},
         "narrative_system_turns": {system: int(system_turns[system]) for system in NARRATIVE_SYSTEM_KEYS},
         "narrative_systems_observed": observed,
@@ -409,6 +459,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
     narration_summary = _observation_summary(narration)
     report["narrative_systems_schema"] = NARRATIVE_SYSTEMS_SCHEMA
     report["opportunity_decision_schema"] = OPPORTUNITY_DECISION_SCHEMA
+    report["liveness_boundary_schema"] = LIVENESS_BOUNDARY_SCHEMA
     report["all_turns"].update(all_summary)
     report["narration_turns"].update(narration_summary)
     report["task47_opportunity_decision_gate"] = {
@@ -424,6 +475,14 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
             "sidequests aceitas são reavaliadas independentemente pela Task48"
         ),
     }
+    report["nv14_liveness_boundary"] = {
+        "schema": LIVENESS_BOUNDARY_SCHEMA,
+        **all_summary["liveness_boundary"],
+        "regra": (
+            "calma só é justificada quando a saída NV-14 existe com cobertura; "
+            "ausência de consulta é medida separadamente e nunca conta como dia calmo"
+        ),
+    }
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
     inferred = report.get("measurement", {}).get("observational_inference")
@@ -432,6 +491,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
             "preferred cronica orchestration phases inferred from command lines",
             "narrative-system attribution inferred from command and tool-output markers",
             "Task47 sidequest-opportunity decision inferred from cronica preparar flags",
+            "NV-14 justified calm and missing-module coverage inferred from structured liveness output",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -446,6 +506,7 @@ def _human(report: dict[str, Any]) -> str:
     narr = report.get("narration_turns") or {}
     all_turns = report.get("all_turns") or {}
     systems = narr.get("narrative_system_turns") or {}
+    live = all_turns.get("liveness_boundary") or {}
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
@@ -462,6 +523,13 @@ def _human(report: dict[str, Any]) -> str:
             "Task47: decisão de oportunidade em "
             f"{all_turns.get('sidequest_decision_coverage', 1.0):.1%} dos preparar | "
             f"violações={all_turns.get('sidequest_decision_violations', 0)}"
+        ),
+        (
+            "NV-14: "
+            f"avaliações={live.get('avaliacoes', 0)} | "
+            f"pressão={live.get('janelas_com_pressao', 0)} | "
+            f"calma justificada={live.get('calma_justificada', 0)} | "
+            f"módulos não consultados={live.get('modulos_nao_consultados', 0)}"
         ),
         f"Sistemas observados por turno: {active}",
     ]
