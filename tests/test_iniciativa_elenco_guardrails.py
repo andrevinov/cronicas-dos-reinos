@@ -71,6 +71,15 @@ class InitiativeDecisionGuardrailTest(unittest.TestCase):
         with self.assertRaisesRegex(initiative.CastInitiativeError, "identidade/digest"):
             conclusion.validate_ticket(tampered)
 
+    def test_iniciativa_apresentada_nunca_pode_ser_resultado_automatico(self):
+        _, meta = self.attach(physical=False)
+        tampered = copy.deepcopy(meta)
+        row = tampered["itens"][0]
+        row["resultado_automatico"] = "apresentada"
+        row["motivo_automatico"] = "ausencia"
+        with self.assertRaisesRegex(initiative.CastInitiativeError, "nunca pode ser resultado automático"):
+            conclusion.validate_ticket(tampered)
+
     def test_ausencia_automatica_persiste_com_justificativa_auditavel(self):
         _, meta = self.attach(physical=False)
         plan = conclusion.prepare(self.repo, meta, {})
