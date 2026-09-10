@@ -56,7 +56,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Tasks47–49/NV-17:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só nega âncora nova: não oculta causa NV-11 vencida/alcançável; zero ativas só prioriza causa válida. Máx. 1 nova oportunidade por data+período e 2 ativas; só oferta narrada materializa.
+**Tasks47–49/NV-17:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. Negativa = sem âncora nova; causa NV-11 vencida/alcançável continua; zero ativas só prioriza causa válida. Máx. 1 nova oportunidade/data+período, 2 ativas; só oferta narrada materializa.
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local com `--acao/--tier/--periculosidade` só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag. **Permanência longa:** `--permanencia-local`; herda o local consolidado e `--local` só pode confirmá-lo. Não combinar com trânsito, NPC/tag ou gatilho de entrada.
 
@@ -97,7 +97,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 ### Recompensas e side quests
 
 - **Tasks 40–46:** conversa incidental não acorda autoria; âncora concreta percorre oportunidade → autoria → contratos → lifecycle no mesmo `preparar/concluir`. Só oferta narrada materializa; recompensa/risco/progresso ficam congelados. Task42 não move Ren; Task44 preserva Protected Core; Task45 terminal nunca é no-op.
-- **Tasks 47–49/NV-17:** negativa só nega âncora nova e não oculta causa NV-11 vencida/alcançável. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`.
+- **Tasks 47–49/NV-17:** negativa não oculta causa NV-11 vencida/alcançável. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`.
 - **Tasks 50–53/legado:** reações/operações exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração Sete Nomes não inventa terminal/reação. Task32 já narrada usa `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
 
 ## 7. Checkpoint de cena e sessão
