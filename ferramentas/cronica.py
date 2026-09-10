@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Porta unificada da crônica, composta até a NV-16.
+"""Porta unificada da crônica, composta até a NV-17.
 
 A composição preserva uma única identidade de módulo para compatibilidade com
 monkeypatches, reparos e integrações legadas. NV-15 instala permanência espacial;
-NV-16 acrescenta decisão explícita de iniciativa para interlocutores declarados.
+NV-16 acrescenta iniciativa do elenco; NV-17 roteia side quests vivas por causa.
 """
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ import sys
 
 # Imports de composição não fazem I/O de campanha.
 import permanencia_espacial_idempotencia as _stay_idempotency  # noqa: F401
-import cronica_iniciativa as _impl
+import cronica_sidequests_vivas as _impl
 
 if __name__ == "__main__":
     raise SystemExit(_impl.main())

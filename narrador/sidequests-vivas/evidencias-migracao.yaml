@@ -1,0 +1,4 @@
+schema_evidencias_migracao_nv17: 1
+natureza: declaracao_reservada
+mapeamentos: {}
+regra: Somente um mapeamento explícito para plano NV-11 com causa canônica do mesmo NPC autoriza conversão; afinidade, presença, texto frio ou zero missões não são evidência.
