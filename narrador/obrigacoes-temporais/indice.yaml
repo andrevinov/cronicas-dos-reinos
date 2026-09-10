@@ -1,0 +1,16 @@
+schema_indice_obrigacoes_temporais: 1
+natureza: indice_reservado_derivado
+por_data:
+  17 Eleasis, 1372 DR:
+  - jack_kage_pos_17_eleasis
+por_condicao:
+  9385eea3f73a5c23:
+  - silva_acompanhar_colm
+por_responsavel:
+  jack_mooney:
+  - jack_kage_pos_17_eleasis
+  silva_elkwood:
+  - silva_acompanhar_colm
+reconciliar:
+- jack_kage_pos_17_eleasis
+- silva_acompanhar_colm

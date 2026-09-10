@@ -1,0 +1,12 @@
+schema_estado_obrigacoes_temporais: 1
+natureza: controle_reservado
+descricao: Recibos técnicos da NV-18. Não são conhecimento de Ren, cânone ficcional ou scheduler paralelo.
+migracao:
+  executada: true
+  politica: somente_evidencia_literal_dirigida
+  commit_base: fcbbe76dde081f685184bb5416f6c187cc6e4568
+  convertidos:
+  - jack_kage_pos_17_eleasis
+  - silva_acompanhar_colm
+adiamentos: {}
+despachos: {}
