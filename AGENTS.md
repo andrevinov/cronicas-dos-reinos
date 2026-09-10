@@ -95,7 +95,7 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 ### Recompensas e side quests
 
 - **Tasks 40–46:** conversa incidental não acorda autoria; âncora concreta percorre oportunidade → autoria → contratos → lifecycle no mesmo `preparar/concluir`. Só oferta narrada materializa; recompensa/risco/progresso ficam congelados. Task42 não move Ren; Task44 preserva Protected Core; Task45 terminal nunca é no-op.
-- **Tasks 47–49:** todo `preparar` decide oportunidade; negativa só bloqueia oferta nova. Missões aceitas (máx. 2) seguem read-only e no `concluir` exigem negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `sidequests_ativas.py status <id>`.
+- **Tasks 47–49:** todo `preparar` decide oportunidade; negativa só bloqueia oferta nova. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`.
 - **Tasks 50–53/legado:** reações/operações exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração Sete Nomes não inventa terminal/reação. Task32 já narrada usa `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
 
 ## 7. Checkpoint de cena e sessão
