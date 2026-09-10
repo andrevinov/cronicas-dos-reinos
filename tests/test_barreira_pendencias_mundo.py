@@ -16,6 +16,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import barreira_mundo
+import entregas_causais
 import mundo
 import transacoes
 
@@ -150,7 +151,10 @@ class BarreiraPendenciasMundoSyntheticTest(unittest.TestCase):
         tx = self.tx(
             player=False,
             mode="mundo",
-            tags=[f"{barreira_mundo.RESOLUTION_TAG_PREFIX}{PENDING_ID}"],
+            tags=[
+                f"{barreira_mundo.RESOLUTION_TAG_PREFIX}{PENDING_ID}",
+                entregas_causais.NON_COMMUNICABLE_TAG,
+            ],
         )
         fake_checkpoint = {
             "canonico": {"tipo": "cena"},
