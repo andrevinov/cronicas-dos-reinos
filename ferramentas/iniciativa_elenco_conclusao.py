@@ -11,6 +11,14 @@ import iniciativa_elenco_estado as receipts
 
 MANUAL_SILENCE_REASONS = {"risco", "indisponibilidade"}
 MANUAL_INELIGIBLE_REASONS = {"falta_conhecimento", "risco", "indisponibilidade"}
+AUTOMATIC_MOTIVES = {
+    "ausencia": "O interlocutor não possui presença física consolidada nem canal de contato validado nesta janela.",
+    "indisponibilidade": "O estado relacional carregado não autoriza uma iniciativa dirigida a Ren nesta janela.",
+    "sem_motivo_concreto": "A política social exige causa concreta e nenhuma causa já estabelecida foi encontrada na memória carregada.",
+    "pressao_superior": "Uma pressão de prioridade superior ocupa a janela social; a iniciativa permanece reavaliável.",
+    "janela_ocupada": "Outra abertura social já ocupa o único slot incidental permitido nesta janela.",
+    "repeticao_sem_causa_nova": "A mesma abertura já foi apresentada nesta janela e não existe causa material nova para repeti-la.",
+}
 
 
 def validate_ticket(raw: Any) -> dict[str, Any]:
@@ -47,6 +55,12 @@ def validate_ticket(raw: Any) -> dict[str, Any]:
             raise initiative.CastInitiativeError("resultado automático inválido")
         if row["requer_decisao"] and automatic is not None:
             raise initiative.CastInitiativeError("decisão obrigatória não pode ter resultado automático")
+        if not row["requer_decisao"] and automatic is None:
+            raise initiative.CastInitiativeError("decisão automática precisa declarar resultado")
+        if row["motivo_automatico"] is not None and row["motivo_automatico"] not in AUTOMATIC_MOTIVES:
+            raise initiative.CastInitiativeError("motivo automático inválido")
+        if automatic == "adiada_por_pressao_superior" and not row["pressao_superior"]:
+            raise initiative.CastInitiativeError("adiamento automático exige pressão superior")
         if did in seen:
             raise initiative.CastInitiativeError("decisão duplicada no ticket")
         seen.add(did)
@@ -126,7 +140,8 @@ def prepare(repo: Path, raw_meta: Any, transaction: dict[str, Any]) -> dict[str,
                 raise initiative.CastInitiativeError("decisão automática sem resultado")
             if isinstance(existing, dict) and existing.get("resultado") == result and existing.get("pressao_superior") == row.get("pressao_superior"):
                 continue
-            plan.append(_plan_row(meta, row, result, reason=row["motivo_automatico"]))
+            code = row["motivo_automatico"]
+            plan.append(_plan_row(meta, row, result, reason=code, motive=AUTOMATIC_MOTIVES.get(code)))
             continue
         assert isinstance(block, dict)
         if block.get("decisao_id") != row["decisao_id"]:
