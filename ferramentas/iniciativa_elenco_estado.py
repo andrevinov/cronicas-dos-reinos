@@ -51,8 +51,13 @@ def _record(record_id: str, raw: Any) -> dict[str, Any]:
     for key in ("janela_id", "janela_tipo", "cena_id", "npc_id", "presenca", "proposta_digest"):
         if not isinstance(raw.get(key), str) or not raw[key]:
             raise InitiativeStateError(f"{record_id}.{key} inválido")
-    if len(raw["proposta_digest"]) != 64:
+    digest = raw["proposta_digest"]
+    if len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest):
         raise InitiativeStateError(f"{record_id}.proposta_digest inválido")
+    if raw["janela_tipo"] not in {"cena", "permanencia"}:
+        raise InitiativeStateError(f"{record_id}.janela_tipo inválido")
+    if raw["presenca"] not in {"elenco_cena", "canal_contato", "ausente"}:
+        raise InitiativeStateError(f"{record_id}.presenca inválida")
     for key in ("motivo_codigo", "motivo", "evidencia_literal", "pressao_superior", "ticket_id", "transacao_id"):
         if raw.get(key) is not None and not isinstance(raw[key], str):
             raise InitiativeStateError(f"{record_id}.{key} deve ser texto ou null")
@@ -82,10 +87,12 @@ def load(repo: Path) -> dict[str, Any]:
     decisions, order = data.get("decisoes"), data.get("ordem_recente")
     if not isinstance(decisions, dict) or not isinstance(order, list):
         raise InitiativeStateError("coleções do estado de iniciativa são inválidas")
+    if any(not isinstance(item, str) for item in order) or any(not isinstance(key, str) for key in decisions):
+        raise InitiativeStateError("IDs do estado de iniciativa devem ser texto")
     if len(decisions) > MAX_RECORDS or len(order) != len(set(order)) or set(order) != set(decisions):
         raise InitiativeStateError("índice do estado de iniciativa é inválido ou excedido")
     for record_id, raw in decisions.items():
-        _record(str(record_id), raw)
+        _record(record_id, raw)
     return data
 
 
