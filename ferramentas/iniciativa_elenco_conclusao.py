@@ -55,6 +55,8 @@ def validate_ticket(raw: Any) -> dict[str, Any]:
         automatic = row.get("resultado_automatico")
         if automatic is not None and automatic not in receipts.RESULTS:
             raise initiative.CastInitiativeError("resultado automático inválido")
+        if automatic == "apresentada":
+            raise initiative.CastInitiativeError("iniciativa apresentada nunca pode ser resultado automático")
         if row["requer_decisao"] and automatic is not None:
             raise initiative.CastInitiativeError("decisão obrigatória não pode ter resultado automático")
         if not row["requer_decisao"] and automatic is None:
