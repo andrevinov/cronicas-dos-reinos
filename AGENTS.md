@@ -42,7 +42,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - retomada/lifecycle → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/iniciativa/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34;
-- local/side quest → `docs/agente/integracao-reativa-v2.md`, Tasks 40–52 (`docs/task52-reactive-pressure-narrative-routing.md`);
+- local/side quest/permanência → `docs/agente/integracao-reativa-v2.md`, Tasks 40–52 (`docs/task52-reactive-pressure-narrative-routing.md`) e `docs/nv15-permanencia-espacial-reativa.md`;
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
 
@@ -58,13 +58,13 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Tasks47–49:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só bloqueia oferta nova; missão `aceita` é projetada e exige decisão factual no `cronica concluir`.
 
-**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag.
+**Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local com `--acao/--tier/--periculosidade` só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag. **Permanência longa no mesmo local:** `--permanencia-local`; herda o `local_id` consolidado e aceita `--local` apenas como confirmação do mesmo local. Não combinar permanência com trânsito, NPC/tag ou gatilho de entrada; elenco conhecido usa `--participante`.
 
 **Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
 **Planos/contatos/operações:** `plano:<id>` no concluir; `planos` no lote. Ver `docs/nv08-planos-personagens.md`.
 
-**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo.
+**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo. **Exceção NV-15 deliberada:** `--permanencia-local` reserva somente sorteios não-canônicos de microevento/incidente e um recibo espacial por `local+data+período` no primeiro preparo. Isso não cria fato narrativo; é a trava que impede reroll em retry/novo `scene_id`.
 
 Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json`.
 
@@ -76,7 +76,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Condição multi-dia:** cena espacial projeta automaticamente; fato canônico de início/fim → `condicoes_mundo.py registrar|encerrar`.
 
-**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto.
+**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto. Se a compressão for **permanência no mesmo local** (esperar, trabalhar, observar, conviver), cada janela alcançada volta por `cronica preparar ... --permanencia-local`; a NV-15 herda o local consolidado e avalia ecologia/presença/microevento/incidente/condições no máximo uma vez por local/data/período.
 
 Durante avanço comum:
 - não atualizar diretamente estado/ficha/relações/conhecimento/consequências/relógios/NPCs;
