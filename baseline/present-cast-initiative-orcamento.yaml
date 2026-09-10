@@ -14,6 +14,7 @@ limites:
   scans_globais_npc: 0
 invariantes:
   participante_nao_implica_interlocutor: true
+  participante_nao_prova_presenca_no_mesmo_preparo: true
   interlocutor_nao_cria_presenca: true
   interlocutor_nao_cria_sidequest: true
   no_maximo_uma_abertura_por_janela: true
