@@ -74,9 +74,10 @@ def attach(repo, prepared: dict, *, decode_ticket, encode_ticket,
     people = list(saved["participantes"]) if saved_is_current else None
     terms = participants if participants is not None else request.get("npcs") or None
     unresolved = []
+    indexes = reader.indexes()
     if terms is not None:
         try:
-            explicit = reader.resolve(terms, reader.indexes()) if terms else []
+            explicit = reader.resolve(terms, indexes) if terms else []
             people = explicit if participants is not None else sorted(set((people or []) + explicit))
         except memory.SceneMemoryError:
             if participants is not None:
@@ -95,8 +96,9 @@ def attach(repo, prepared: dict, *, decode_ticket, encode_ticket,
     # ``prospective_participants`` é produzido apenas por contato cujo canal e
     # chegada já passaram pelos gates próprios; ainda assim ele não vira
     # presença física — apenas contactabilidade para a decisão social.
-    prospective = reader.resolve(prospective_participants, reader.indexes()) if prospective_participants else []
-    memory_people = memory._ids(sorted(set((people or []) + canonical_present + prospective)))
+    prospective = reader.resolve(prospective_participants, indexes) if prospective_participants else []
+    present_needed = set(requested) & set(canonical_present)
+    memory_people = memory._ids(sorted(set((people or []) + prospective + list(present_needed))))
     annotations = {"participantes_previstos": prospective} if prospective else {}
     if people is None:
         annotations.update({
@@ -113,7 +115,7 @@ def attach(repo, prepared: dict, *, decode_ticket, encode_ticket,
             physical=canonical_present,
             contactable=prospective,
             docs=docs,
-            indexes=reader.indexes(),
+            indexes=indexes,
             scene_mode=(state.get("campanha") or {}).get("modo_de_cena_atual"),
         )
     except iniciativa_elenco.CastInitiativeError as exc:
