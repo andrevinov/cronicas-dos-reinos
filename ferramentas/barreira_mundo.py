@@ -42,6 +42,7 @@ except ImportError as exc:  # pragma: no cover
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
+import entregas_causais
 import mundo
 import pressao_ravens_bluff
 
@@ -227,6 +228,11 @@ def authorize_registration(
         status = refresh_if_blocked(repo)
 
     if retry:
+        if resolution_id is not None:
+            try:
+                entregas_causais.validate_retry_shape(transaction, resolution_id)
+            except entregas_causais.DeliveryError as exc:
+                raise WorldPendingBarrierError(str(exc)) from exc
         return {
             "ok": True,
             "retry": True,
@@ -246,7 +252,7 @@ def authorize_registration(
             "barreira": status,
         }
 
-    if transaction.get("modo") == "mundo" and transaction.get("jogador") in (None, ""):
+    if resolution_id is None and transaction.get("modo") == "mundo" and transaction.get("jogador") in (None, ""):
         import planos_personagens
         if planos_personagens.events(transaction):
             # O writer valida todas as revisões, causas, custos e resultados antes
@@ -255,9 +261,16 @@ def authorize_registration(
 
     if resolution_id is not None:
         state = mundo.load_world_state(repo)
-        known = {str(item.get("id")) for item in state.get("pendencias") or []}
-        if resolution_id not in known:
+        pending = next(
+            (item for item in state.get("pendencias") or [] if str(item.get("id")) == resolution_id),
+            None,
+        )
+        if pending is None:
             raise WorldPendingBarrierError(f"pendência não está aberta: {resolution_id}")
+        try:
+            entregas_causais.validate_resolution(pending, transaction)
+        except entregas_causais.DeliveryError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
         return {
             "ok": True,
             "retry": False,
@@ -317,7 +330,7 @@ def _canonical_module(repo: Path):
         return module
 
 
-def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
+def _catalog_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
     module = _canonical_module(repo)
     if module is None:
         return None
@@ -325,6 +338,124 @@ def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | No
         return module.event_for_pending(repo, pending)
     except module.CanonicalEventError as exc:
         raise WorldPendingBarrierError(str(exc)) from exc
+
+
+def _canonical_event(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
+    try:
+        blocked = entregas_causais.blocked_projection(repo, pending)
+    except entregas_causais.DeliveryError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+    if blocked is not None:
+        return blocked
+    return _catalog_event(repo, pending)
+
+
+def _blocked_delivery_result(
+    repo: Path,
+    pending: dict[str, Any],
+    receipt: dict[str, Any],
+    note: str | None,
+    *,
+    transaction_id: str | None,
+    line_id: str | None,
+    method_id: str | None,
+    no_change: bool,
+) -> dict[str, Any]:
+    if no_change:
+        raise WorldPendingBarrierError(
+            "entrega bloqueada é mudança causal persistente e não aceita --sem-mudanca"
+        )
+    receipt_tx = receipt.get("transacao")
+    if transaction_id is not None and receipt_tx and transaction_id != receipt_tx:
+        raise WorldPendingBarrierError(
+            "--transacao diverge da transação que registrou o recibo NV-13"
+        )
+    effective_tx = transaction_id or (receipt_tx if isinstance(receipt_tx, str) else None)
+    canonical_event = _catalog_event(repo, pending)
+    try:
+        candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)
+    except pressao_ravens_bluff.PressureError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+
+    if canonical_event is not None:
+        if not isinstance(effective_tx, str) or not effective_tx.strip():
+            raise WorldPendingBarrierError(
+                "evento canônico com entrega bloqueada precisa da transação que materializou seu núcleo"
+            )
+        pressure_args = (line_id, method_id)
+        if any(value is not None for value in pressure_args) and not all(
+            isinstance(value, str) and value.strip() for value in pressure_args
+        ):
+            raise WorldPendingBarrierError(
+                "ao acoplar pressão urbana a evento canônico, informe --linha e --metodo juntos"
+            )
+        if candidate is not None and line_id and method_id:
+            try:
+                pressure_result = pressao_ravens_bluff.apply_world_resolution(
+                    repo,
+                    pending,
+                    effective_tx.strip(),
+                    line_id.strip(),
+                    method_id.strip(),
+                    note or "evento canônico materializado; entrega a Ren bloqueada",
+                )
+            except pressao_ravens_bluff.PressureError as exc:
+                raise WorldPendingBarrierError(str(exc)) from exc
+        else:
+            pressure_result = {
+                "ok": True,
+                "alterou": False,
+                "candidato": candidate,
+                "motivo": "evento canônico materializado; entrega a Ren permanece bloqueada",
+            }
+    elif candidate is not None:
+        if not (
+            isinstance(effective_tx, str)
+            and effective_tx.strip()
+            and isinstance(line_id, str)
+            and line_id.strip()
+            and isinstance(method_id, str)
+            and method_id.strip()
+        ):
+            raise WorldPendingBarrierError(
+                "pendência com pressão e entrega bloqueada exige transação, linha e método da mudança canônica"
+            )
+        try:
+            pressure_result = pressao_ravens_bluff.apply_world_resolution(
+                repo,
+                pending,
+                effective_tx.strip(),
+                line_id.strip(),
+                method_id.strip(),
+                note or "ação autônoma consolidada; entrega a Ren bloqueada",
+            )
+        except pressao_ravens_bluff.PressureError as exc:
+            raise WorldPendingBarrierError(str(exc)) from exc
+    else:
+        pressure_result = {
+            "ok": True,
+            "alterou": False,
+            "motivo": "pendência sem candidato elegível de pressão",
+        }
+
+    try:
+        delivery = entregas_causais.materialize_blocked(repo, pending, receipt)
+    except entregas_causais.DeliveryError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+    barrier = sync(repo)
+    result: dict[str, Any] = {
+        "ok": True,
+        "entrega_causal": delivery,
+        "pressao_ravens_bluff": pressure_result,
+        "barreira": barrier,
+    }
+    if canonical_event is not None:
+        result["evento_canonico"] = {
+            "id": canonical_event["id"],
+            "titulo": canonical_event["titulo"],
+            "estado": "materializado_entrega_bloqueada",
+        }
+    return result
 
 
 def conclude(
@@ -354,9 +485,26 @@ def conclude(
             "reação/operação adversarial não aceita conclusão genérica; use sua "
             "ferramenta de domínio para compromisso ou resultado factual"
         )
+
+    try:
+        blocked_delivery = entregas_causais.blocked_receipt(repo, pending)
+    except entregas_causais.DeliveryError as exc:
+        raise WorldPendingBarrierError(str(exc)) from exc
+    if blocked_delivery is not None:
+        return _blocked_delivery_result(
+            repo,
+            pending,
+            blocked_delivery,
+            note,
+            transaction_id=transaction_id,
+            line_id=line_id,
+            method_id=method_id,
+            no_change=no_change,
+        )
+
     if pending.get("acionamento_causal") and transaction_id is None:
         _validate_autonomous_noop(note)
-    canonical_event = _canonical_event(repo, pending)
+    canonical_event = _catalog_event(repo, pending)
     try:
         candidate = pressao_ravens_bluff.candidate_for_pending(repo, pending)
     except pressao_ravens_bluff.PressureError as exc:

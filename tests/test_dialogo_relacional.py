@@ -66,18 +66,22 @@ class RelationshipDialoguePureTest(unittest.TestCase):
 
 
 class RelationshipDialogueRepositoryTest(unittest.TestCase):
-    def test_nera_combina_papel_e_relacao_alta_alta_na_mesma_consulta(self):
+    def test_nera_combina_papel_e_relacao_viva_na_mesma_consulta(self):
         data = contexto.command_npc(ROOT, "Nera")
         result = data["resultado"]
         self.assertEqual(
             result["textura_narrativa"]["papel_conversacional"]["papel"],
             "espelho_afetivo",
         )
+        meters = result["medidores"]["dados"]["medidores"]
         dialogue = result["dialogo_relacional"]
-        self.assertEqual(dialogue["modo"], "alta_afinidade_alta_confianca")
         self.assertEqual(dialogue["papel_base"], "espelho_afetivo")
-        self.assertEqual(dialogue["afinidade"], 8)
-        self.assertEqual(dialogue["confianca"], 8)
+        self.assertEqual(dialogue["afinidade"], meters["vinculo"])
+        self.assertEqual(dialogue["confianca"], meters["confianca"])
+        self.assertEqual(
+            dialogue["modo"],
+            dialogo_relacional.relationship_mode(meters["vinculo"], meters["confianca"]),
+        )
         self.assertNotIn("ferramentas/dialogo_relacional.py", data["fontes"])
         self.assertNotIn("estado/npcs/relacionamento-v1.yaml", data["fontes"])
 

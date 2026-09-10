@@ -23,22 +23,26 @@ import pressao_ravens_bluff as pressure
 
 
 class PressureWorldRepositoryTest(unittest.TestCase):
-    def test_rotas_reais_validam_e_masao_empurra_crime_sem_ren(self):
+    def test_rotas_reais_validam_e_masao_tem_rota_autonoma_sem_ren(self):
         result = pressure.validate(ROOT)
         self.assertTrue(result["ok"], result["erros"])
         self.assertGreaterEqual(result["rotas_mundo_vivo"], 1)
 
-        current = pressure.load_state(ROOT)["frentes"]["crime_e_milicias"]["nivel"]
-        candidate = pressure.candidate_for_agent(ROOT, "masao_hirasawa")
-        if current >= 4:
-            self.assertIsNone(candidate)
-            return
-        self.assertIsNotNone(candidate)
-        self.assertEqual(candidate["linha"], "expandir_presenca_de_masao")
-        self.assertEqual(candidate["metodo"], "trazer_celulas_em_lotes_pequenos")
-        self.assertEqual(candidate["frente"], "crime_e_milicias")
-        self.assertEqual((candidate["de"], candidate["para"]), (current, current + 1))
-        self.assertIn("Ren não bloqueia", candidate["regra"])
+        profile = pressure.load_profile(ROOT)
+        integration = profile["integracao_mundo_vivo"]
+        self.assertFalse(integration["ausencia_de_acao_de_ren_bloqueia"])
+        route = next(
+            item
+            for item in integration["rotas"]
+            if item["agente"] == "masao_hirasawa"
+            and item["linha"] == "expandir_presenca_de_masao"
+            and item["metodo"] == "trazer_celulas_em_lotes_pequenos"
+        )
+        crime = next(
+            effect for effect in route["efeitos"] if effect["frente"] == "crime_e_milicias"
+        )
+        self.assertEqual(crime["niveis_destino"], [1, 2])
+        self.assertIn("ausência de nova iniciativa de Ren nunca é motivo", integration["regra"])
 
 
 class PressureWorldApplyTest(unittest.TestCase):

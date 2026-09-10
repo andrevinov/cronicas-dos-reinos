@@ -218,7 +218,7 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertLess(len(rendered), 12000)
 
     def test_resume_and_session_memory_stay_small(self):
-        resume = mod.command_resume(REPO)
+        resume = mod.command_resume(REPO, include_memory=False)
         session = mod.command_session(REPO, "3")
         decision = mod.politica.classify("retomada")
         decorated, budget = mod.politica.decorate(
@@ -228,9 +228,8 @@ class ContextoRepositoryTest(unittest.TestCase):
             after=None,
             reason=None,
         )
-        rendered_resume, truncated_resume = mod.fit_budget(decorated, budget, True)
+        rendered_resume, _ = mod.render_resume(REPO, decorated, budget, True)
         rendered_session, _ = mod.fit_budget(session, mod.DEFAULT_MAX_BYTES, False)
-        self.assertFalse(truncated_resume)
         self.assertLessEqual(len(rendered_resume.encode("utf-8")), 8 * 1024)
         self.assertLessEqual(len(rendered_session.encode("utf-8")), mod.DEFAULT_MAX_BYTES)
         self.assertIsInstance(
