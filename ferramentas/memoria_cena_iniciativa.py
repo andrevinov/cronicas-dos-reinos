@@ -53,7 +53,12 @@ def attach(repo, prepared: dict, *, decode_ticket, encode_ticket,
     request = payload["cena"]
     scene_id = request["scene_id"]
     same_scene = saved is not None and saved["cena_id"] == scene_id
-    changed_place = bool(request.get("place") or payload.get("transito_urbano"))
+    # Permanência NV-15 congela o mesmo local atual; seu ``place`` no ticket
+    # não é movimento e, portanto, não apaga o elenco da mesma cena.
+    changed_place = bool(
+        (request.get("place") and payload.get("permanencia_espacial") is None)
+        or payload.get("transito_urbano")
+    )
     people = saved["participantes"] if same_scene and not changed_place else None
     terms = participants if participants is not None else request.get("npcs") or None
     unresolved = []
