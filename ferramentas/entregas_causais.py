@@ -1,9 +1,9 @@
-"""Entrega causal transacional ao jogador (NV-13).
+"""Contrato de entrega causal transacional ao jogador (NV-13).
 
-Resoluções genéricas do Mundo Vivo declaram explicitamente que não produziram
-informação para Ren ou registram, no mesmo lote, um destino causal reservado.
-O recibo usa ``relogio:entrega_<id>`` porque relógios já são instalados pelo
-journal de consolidação na mesma transação dos demais efeitos.
+Toda resolução genérica do Mundo Vivo declara que não produziu informação para
+Ren ou registra, no mesmo lote, um único destino causal reservado. O recibo usa
+``relogio:entrega_<id>`` porque relógios já participam do journal atômico de
+consolidação. Uma entrega sem canal permanece como pendência do Mundo Vivo.
 """
 from __future__ import annotations
 
@@ -124,8 +124,15 @@ def _destination(value: Any) -> dict[str, Any]:
     raise DeliveryError("destino deve ser entregue, plano, bloqueada, falhou ou abandonada")
 
 
-def validate_event(value: Any, pending_id: str, transaction: dict[str, Any] | None = None) -> dict[str, Any]:
-    required = {"versao", "tipo", "pendencia", "comunicavel", "destinatario", "causa", "conteudo", "destino"}
+def validate_event(
+    value: Any,
+    pending_id: str,
+    transaction: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    required = {
+        "versao", "tipo", "pendencia", "comunicavel", "destinatario",
+        "causa", "conteudo", "destino",
+    }
     if not isinstance(value, dict) or set(value) != required:
         raise DeliveryError("recibo comunicável possui campos inválidos")
     if value.get("versao") != SCHEMA or value.get("tipo") != "entrega_causal":
@@ -147,23 +154,32 @@ def validate_event(value: Any, pending_id: str, transaction: dict[str, Any] | No
     destination = result["destino"]
     if destination["estado"] == "plano" and transaction is not None:
         expected = f"plano:{destination['plano_id']}"
-        if not any(isinstance(delta, dict) and delta.get("alvo") == expected for delta in transaction.get("deltas") or []):
+        if not any(
+            isinstance(delta, dict) and delta.get("alvo") == expected
+            for delta in transaction.get("deltas") or []
+        ):
             raise DeliveryError(f"destino plano exige evento {expected} na mesma transação")
     return result
 
 
 def _deltas(transaction: dict[str, Any], pending_id: str) -> list[dict[str, Any]]:
     target = target_for(pending_id)
-    return [delta for delta in transaction.get("deltas") or [] if isinstance(delta, dict) and delta.get("alvo") == target]
+    return [
+        delta for delta in transaction.get("deltas") or []
+        if isinstance(delta, dict) and delta.get("alvo") == target
+    ]
 
 
-def _validate_delta(delta: dict[str, Any], pending_id: str, transaction: dict[str, Any]) -> dict[str, Any]:
+def _validate_delta(
+    delta: dict[str, Any], pending_id: str, transaction: dict[str, Any]
+) -> dict[str, Any]:
     if delta.get("op") != "registrar" or delta.get("visibilidade") != "narrador" or "caminho" in delta:
         raise DeliveryError("recibo NV-13 exige registrar reservado sem caminho")
     return validate_event(delta.get("valor"), pending_id, transaction)
 
 
 def validate_retry_shape(transaction: dict[str, Any], pending_id: str) -> None:
+    """Revalida marcadores NV-13; o fingerprint transacional fixa seu conteúdo."""
     tags = transaction.get("tags") or []
     negative = NON_COMMUNICABLE_TAG in tags
     deltas = _deltas(transaction, pending_id)
@@ -175,7 +191,10 @@ def validate_retry_shape(transaction: dict[str, Any], pending_id: str) -> None:
         _validate_delta(delta, pending_id, transaction)
 
 
-def validate_resolution(pending: dict[str, Any], transaction: dict[str, Any]) -> dict[str, Any] | None:
+def validate_resolution(
+    pending: dict[str, Any], transaction: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Writer gate: uma resolução genérica sempre fecha a pergunta comunicável?"""
     if not requires_contract(pending):
         return None
     pending_id = _text(pending.get("id"), "pendencia.id", 32)
@@ -197,7 +216,7 @@ def validate_resolution(pending: dict[str, Any], transaction: dict[str, Any]) ->
 
 
 def latest(repo: Path, pending_id: str) -> dict[str, Any] | None:
-    """Consulta dirigida: somente o relógio reservado determinístico da causa."""
+    """Consulta dirigida: lê somente o relógio determinístico da causa."""
     path = repo / "narrador/relogios" / f"{clock_id(pending_id)}.yaml"
     if not path.is_file():
         return None
@@ -210,8 +229,16 @@ def latest(repo: Path, pending_id: str) -> dict[str, Any] | None:
     matches = []
     for item in doc["eventos"]:
         value = item.get("valor") if isinstance(item, dict) else None
-        if isinstance(value, dict) and value.get("tipo") == "entrega_causal" and value.get("pendencia") == pending_id:
-            matches.append({"transacao": item.get("transacao"), "sessao": item.get("sessao"), "valor": validate_event(value, pending_id)})
+        if (
+            isinstance(value, dict)
+            and value.get("tipo") == "entrega_causal"
+            and value.get("pendencia") == pending_id
+        ):
+            matches.append({
+                "transacao": item.get("transacao"),
+                "sessao": item.get("sessao"),
+                "valor": validate_event(value, pending_id),
+            })
     return matches[-1] if matches else None
 
 
@@ -225,7 +252,11 @@ def blocked_receipt(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | Non
     stored = validate_event(pending.get("entrega_causal"), pending_id)
     if stored["destino"]["estado"] != "bloqueada":
         return None
-    return {"transacao": pending.get("transacao_origem"), "sessao": pending.get("sessao_origem"), "valor": stored}
+    return {
+        "transacao": pending.get("transacao_origem"),
+        "sessao": pending.get("sessao_origem"),
+        "valor": stored,
+    }
 
 
 def blocked_projection(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | None:
@@ -241,7 +272,10 @@ def blocked_projection(repo: Path, pending: dict[str, Any]) -> dict[str, Any] | 
         "janela": "até surgir canal causal válido",
         "atraso_dias": 0,
         "nucleo_obrigatorio": value["conteudo"],
-        "guardrails": ["não expor conteúdo sem canal válido", "não concluir enquanto bloqueada"],
+        "guardrails": [
+            "não expor conteúdo sem canal válido",
+            "não concluir enquanto bloqueada",
+        ],
         "regra": f"Bloqueio atual: {value['destino']['detalhe']}",
     }
 
@@ -251,44 +285,81 @@ def _new_pending_id(source_id: str, transaction_id: str | None) -> str:
     return "mundo-" + hashlib.sha256(raw).hexdigest()[:16]
 
 
-def materialize_blocked(repo: Path, pending: dict[str, Any], receipt: dict[str, Any] | None = None) -> dict[str, Any]:
+def materialize_blocked(
+    repo: Path,
+    pending: dict[str, Any],
+    receipt: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Troca causa resolvida por pendência de entrega, sem perder o conteúdo."""
     source_id = str(pending.get("id") or "")
     receipt = receipt or blocked_receipt(repo, pending)
     if receipt is None or receipt["valor"]["destino"]["estado"] != "bloqueada":
         raise DeliveryError("não há entrega bloqueada para preservar")
     state = mundo.load_world_state(repo)
-    current = next((item for item in state["pendencias"] if item.get("id") == source_id), None)
+    current = next(
+        (item for item in state["pendencias"] if item.get("id") == source_id), None
+    )
     if current is None:
         raise DeliveryError("pendência desapareceu antes da preservação da entrega")
     value = deepcopy(receipt["valor"])
+
     if current.get("tipo") == PENDING_TYPE:
-        changed = current.get("entrega_causal") != value
+        tx = receipt.get("transacao")
+        session = receipt.get("sessao")
+        changed = (
+            current.get("entrega_causal") != value
+            or current.get("transacao_origem") != tx
+            or (session is not None and current.get("sessao_origem") != session)
+        )
         current["entrega_causal"] = value
-        current["transacao_origem"] = receipt.get("transacao")
-        if receipt.get("sessao") is not None:
-            current["sessao_origem"] = receipt["sessao"]
+        current["transacao_origem"] = tx
+        if session is not None:
+            current["sessao_origem"] = session
         if changed:
             mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, state)
-        return {"ok": True, "alterou": changed, "pendencia": source_id, "estado": "bloqueada"}
+        return {
+            "ok": True,
+            "alterou": changed,
+            "pendencia": source_id,
+            "estado": "bloqueada",
+        }
 
     new_id = _new_pending_id(source_id, receipt.get("transacao"))
-    state["pendencias"] = [item for item in state["pendencias"] if item.get("id") != source_id]
-    completed = {"id": source_id, "tipo": pending.get("tipo"), "disparado_em": deepcopy(pending.get("disparado_em")), "resultado": "causa_resolvida_entrega_bloqueada"}
+    state["pendencias"] = [
+        item for item in state["pendencias"] if item.get("id") != source_id
+    ]
+    completed = {
+        "id": source_id,
+        "tipo": pending.get("tipo"),
+        "disparado_em": deepcopy(pending.get("disparado_em")),
+        "resultado": "causa_resolvida_entrega_bloqueada",
+    }
     if pending.get("agente"):
         completed["agente"] = pending["agente"]
     if receipt.get("transacao"):
         completed["transacao"] = receipt["transacao"]
     state["concluidas_recentes"].append(completed)
     state["concluidas_recentes"] = state["concluidas_recentes"][-mundo.MAX_RECENT_COMPLETED:]
-    state["pendencias"].append({
+
+    stored_value = deepcopy(value)
+    stored_value["pendencia"] = new_id
+    new_pending = {
         "id": new_id,
         "tipo": PENDING_TYPE,
         "disparado_em": deepcopy(pending.get("disparado_em")),
         "motivo": "Informação destinada a Ren continua bloqueada por ausência de canal causal válido.",
         "origem": f"entrega_causal:{source_id}",
-        "entrega_causal": value,
+        "entrega_causal": stored_value,
         "transacao_origem": receipt.get("transacao"),
-        **({"sessao_origem": receipt["sessao"]} if receipt.get("sessao") is not None else {}),
-    })
+    }
+    if receipt.get("sessao") is not None:
+        new_pending["sessao_origem"] = receipt["sessao"]
+    state["pendencias"].append(new_pending)
     mundo._atomic_write_yaml(repo / mundo.WORLD_STATE_PATH, state)
-    return {"ok": True, "alterou": True, "pendencia": new_id, "estado": "bloqueada", "origem": source_id}
+    return {
+        "ok": True,
+        "alterou": True,
+        "pendencia": new_id,
+        "estado": "bloqueada",
+        "origem": source_id,
+    }
