@@ -29,6 +29,26 @@ def _repo(args, kwargs) -> Path | None:
     return Path(raw) if raw is not None else None
 
 
+def _installed(repo: Path) -> bool:
+    """Ativa NV-17 somente depois do recibo one-shot de instalação/migração.
+
+    Fixtures anteriores à NV-17 não carregam esse recibo e devem continuar a
+    exercer exatamente o contrato que estão testando, sem ganhar dependência de
+    tempo/agenda/estado novos. No repositório instalado o recibo é obrigatório e
+    o check da própria NV-17 valida seu conteúdo.
+    """
+    return (Path(repo) / _live.MIGRATION).is_file()
+
+
+def _require_recovery_first(repo: Path) -> None:
+    """Preserva a precedência do journal Task49 antes de qualquer reserva NV-17."""
+    progress = _base._sidequests49
+    try:
+        progress.require_no_open_journal(Path(repo))
+    except progress.TransactionalSidequestProgressError as exc:
+        raise _core.CronicaError(f"Task49: {exc}") from exc
+
+
 def _public(route: dict) -> dict:
     selected = route.get("causa_viva")
     need = None
@@ -112,6 +132,15 @@ def prepare(*args, **kwargs):
     repo = _repo(args, kwargs)
     if repo is None:
         return _BASE_PREPARE(*args, **kwargs)
+
+    # Compatibilidade estrutural: sandboxes/fixtures anteriores à NV-17 não têm
+    # o recibo de migração e não devem precisar fabricar tempo/agenda novos.
+    if not _installed(repo):
+        return _BASE_PREPARE(*args, **kwargs)
+
+    # A Task49 já bloqueava qualquer turno novo durante recovery. A NV-17 não
+    # pode ler tempo/agenda nem reservar uma oportunidade antes desse gate.
+    _require_recovery_first(repo)
 
     # Pendência bloqueante tem precedência. Não reservar oportunidade enquanto o
     # turno talvez nem atravesse a barreira. A base ainda revalida sua própria
