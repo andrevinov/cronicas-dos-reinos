@@ -9,6 +9,9 @@ from typing import Any
 import iniciativa_elenco as initiative
 import iniciativa_elenco_estado as receipts
 
+MANUAL_SILENCE_REASONS = {"risco", "indisponibilidade"}
+MANUAL_INELIGIBLE_REASONS = {"falta_conhecimento", "risco", "indisponibilidade"}
+
 
 def validate_ticket(raw: Any) -> dict[str, Any]:
     expected_top = {"schema", "janela_id", "janela_tipo", "cena_id", "selecionada", "itens"}
@@ -16,7 +19,7 @@ def validate_ticket(raw: Any) -> dict[str, Any]:
         raise initiative.CastInitiativeError("ticket de iniciativa possui campos divergentes")
     if raw.get("janela_tipo") not in {"cena", "permanencia"}:
         raise initiative.CastInitiativeError("tipo de janela de iniciativa inválido")
-    initiative._text(raw.get("janela_id"), "janela_id", maximum=64)
+    window_id = initiative._text(raw.get("janela_id"), "janela_id", maximum=64)
     initiative._text(raw.get("cena_id"), "cena_id", maximum=160)
     rows = raw.get("itens")
     if not isinstance(rows, list) or not 1 <= len(rows) <= initiative.MAX_INTERLOCUTORS:
@@ -30,12 +33,12 @@ def validate_ticket(raw: Any) -> dict[str, Any]:
         if not isinstance(row, dict) or set(row) != expected_row:
             raise initiative.CastInitiativeError(f"ticket.itens[{pos}] possui campos divergentes")
         did = initiative._text(row.get("decisao_id"), "decisao_id", maximum=64)
-        initiative._npc(row.get("npc_id"), "npc_id")
+        npc_id = initiative._npc(row.get("npc_id"), "npc_id")
         if row.get("presenca") not in {"elenco_cena", "canal_contato", "ausente"}:
             raise initiative.CastInitiativeError("fonte de presença inválida")
         digest = initiative._text(row.get("proposta_digest"), "proposta_digest", maximum=64)
-        if len(digest) != 64:
-            raise initiative.CastInitiativeError("proposta_digest inválido")
+        if len(digest) != 64 or did != initiative._decision(window_id, npc_id, digest):
+            raise initiative.CastInitiativeError("identidade/digest da decisão de iniciativa inválidos")
         for key in ("requer_decisao", "exige_motivo", "reutilizado"):
             if not isinstance(row.get(key), bool):
                 raise initiative.CastInitiativeError(f"{key} precisa ser booleano")
@@ -48,6 +51,8 @@ def validate_ticket(raw: Any) -> dict[str, Any]:
             raise initiative.CastInitiativeError("decisão duplicada no ticket")
         seen.add(did)
         if row["requer_decisao"]:
+            if row["presenca"] == "ausente":
+                raise initiative.CastInitiativeError("interlocutor ausente não pode ser iniciativa selecionada")
             required.append(did)
     selected = raw.get("selecionada")
     if selected is not None:
@@ -99,9 +104,10 @@ def _plan_row(meta: dict[str, Any], row: dict[str, Any], result: str,
 
 def prepare(repo: Path, raw_meta: Any, transaction: dict[str, Any]) -> dict[str, Any]:
     meta = validate_ticket(raw_meta)
+    has_block = initiative.TRANSACTION_KEY in transaction
     block = transaction.get(initiative.TRANSACTION_KEY)
     if meta["selecionada"] is None:
-        if block not in (None, {}):
+        if has_block:
             raise initiative.CastInitiativeError("transação traz iniciativa sem abertura selecionada")
     elif not isinstance(block, dict):
         raise initiative.CastInitiativeError("abertura selecionada exige decisão explícita no concluir")
@@ -133,14 +139,14 @@ def prepare(repo: Path, raw_meta: Any, transaction: dict[str, Any]) -> dict[str,
         elif result == "silencio_justificado":
             expected = base | {"motivo_codigo", "motivo"}
             code = initiative._text(block.get("motivo_codigo"), "motivo_codigo", maximum=48)
-            if code not in initiative.SILENCE_REASONS:
-                raise initiative.CastInitiativeError("motivo de silêncio não permitido")
+            if code not in MANUAL_SILENCE_REASONS:
+                raise initiative.CastInitiativeError("silêncio manual aceita somente risco ou indisponibilidade; motivos automáticos vêm do preparo")
             plan.append(_plan_row(meta, row, result, code, initiative._text(block.get("motivo"), "motivo", 8, 240)))
         elif result == "nao_elegivel":
             expected = base | {"motivo_codigo", "motivo"}
             code = initiative._text(block.get("motivo_codigo"), "motivo_codigo", maximum=48)
-            if code not in initiative.INELIGIBLE_REASONS:
-                raise initiative.CastInitiativeError("motivo de inelegibilidade não permitido")
+            if code not in MANUAL_INELIGIBLE_REASONS:
+                raise initiative.CastInitiativeError("inelegibilidade manual aceita falta_conhecimento, risco ou indisponibilidade; ausência vem do preparo")
             plan.append(_plan_row(meta, row, result, code, initiative._text(block.get("motivo"), "motivo", 8, 240)))
         elif result == "adiada_por_pressao_superior":
             raise initiative.CastInitiativeError("adiamento por pressão superior é decisão automática do preparo")
