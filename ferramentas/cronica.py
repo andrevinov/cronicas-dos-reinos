@@ -7,6 +7,9 @@ reexporta a mesma superfície pública e interna para compatibilidade.
 """
 from __future__ import annotations
 
+# Instala primeiro a política de digest/retry do recibo espacial. O import tem
+# somente efeito de composição de funções; nenhum I/O de campanha ocorre aqui.
+import permanencia_espacial_idempotencia as _stay_idempotency  # noqa: F401
 import cronica_permanencia as _impl
 
 for _name in dir(_impl):
