@@ -42,7 +42,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nun
 - retomada/lifecycle → `docs/agente/memoria-de-sessoes.md`, `docs/task21-unified-cronica-turn-cli.md`, `docs/task22-unified-session-lifecycle.md`;
 - fronteira/pendências/contratos → `docs/task23-batch-world-boundary-resolution.md`, `docs/task24-pending-gate-cronica-preparar.md`, `docs/task25-harden-operational-contracts.md`;
 - NPC/diálogo/identidade/reputação/condições → `docs/agente/narracao-e-mundo.md`, Tasks 27–30 e 34; iniciativa do elenco → `docs/nv16-iniciativa-elenco-presente.md`;
-- local/side quest/permanência → `docs/agente/integracao-reativa-v2.md`, Tasks 40–52 (`docs/task52-reactive-pressure-narrative-routing.md`), `docs/nv15-permanencia-espacial-reativa.md` e `docs/nv17-sidequests-vivas-orientadas-por-causa.md`;
+- local/side quest/permanência → `docs/agente/integracao-reativa-v2.md`, `docs/task52-reactive-pressure-narrative-routing.md`, `docs/nv15-permanencia-espacial-reativa.md`, `docs/nv17-sidequests-vivas-orientadas-por-causa.md`;
 - regras/dados → `docs/agente/regras-e-rolagens.md`, `docs/agente/mecanica-diegetica.md`;
 - densidade → `docs/agente/densidade-narrativa.md`; ficha/tempo → `docs/agente/personagem-e-tempo.md`; manutenção/testes → `docs/agente/pesquisa-e-manutencao.md`, `docs/agente/telemetria-rollouts.md`, `docs/agente/perfis-de-testes.md`, `docs/agente/politica-de-testes.md`.
 
@@ -56,11 +56,9 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 
-**Tasks47–49 + NV-17:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa significa apenas **nenhuma âncora nova nesta cena**: não pode esconder causa NV-11 vencida e alcançável. Missão `aceita` continua projetada e exige decisão factual no `cronica concluir`. `--sidequest-plano` é referência de compatibilidade a uma causa NV-11 e não fura vencimento/alcance.
+**Tasks47–49/NV-17:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. A negativa só nega âncora nova: não oculta causa NV-11 vencida/alcançável; zero ativas só prioriza causa válida. Máx. 1 nova oportunidade por data+período e 2 ativas; só oferta narrada materializa.
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pela Task48. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local com `--acao/--tier/--periculosidade` só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag. **Permanência longa:** `--permanencia-local`; herda o local consolidado e `--local` só pode confirmá-lo. Não combinar com trânsito, NPC/tag ou gatilho de entrada.
-
-**Side quest viva:** a NV-17 abre somente causas NV-11 dirigidas por agenda/plano, local canônico ou referência explícita. Afinidade, presença isolada ou `0` missões ativas nunca criam causa. Presença só pode transportar uma causa já validada; coincidência de local sem presença confirmada não inventa o NPC. No máximo uma nova oportunidade por `data+período` e no máximo duas sidequests ativas. Se uma causa viva vencida disputa a janela com âncora nova da cena, a causa viva ocupa o slot e a âncora é adiada. O catálogo Task32/33 arquivado não participa do runtime.
 
 **Iniciativa do elenco:** `--participante <id>` seleciona memória/elenco prospectivo; não prova por si presença física no mesmo preparo. `--interlocutor <id>` é o subconjunto que recebe decisão NV-16, mas só fica elegível com presença já consolidada no elenco corrente ou canal de contato validado. Interlocutor não cria presença, encontro ou side quest. No máximo uma abertura por janela; silêncio/adiamento/inelegibilidade ficam explícitos.
 
@@ -68,7 +66,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Planos/contatos/operações:** `plano:<id>` no concluir; `planos` no lote. Ver `docs/nv08-planos-personagens.md`.
 
-**Cena reativa:** `cronica preparar` recebe só gatilhos reais; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo. **Exceções de reserva não-canônica deliberadas:** NV-15 congela sorteios/recibo espacial por `local+data+período`; NV-17 congela somente o sinal de oportunidade por `data+período`. Nenhuma reserva cria fato, oferta ou missão; ambas existem para impedir reroll/troca em retry ou novo `scene_id`.
+**Cena reativa:** `cronica preparar` recebe só gatilhos reais e é read-only; `cronica concluir` revalida/confirma/registra. Ticket neutro não fabrica confirmação; preparação obsoleta exige novo preparo. **Exceção NV-15 deliberada:** `--permanencia-local` reserva somente sorteios não-canônicos de microevento/incidente e um recibo espacial por `local+data+período` no primeiro preparo. Isso não cria fato narrativo; é a trava que impede reroll em retry/novo `scene_id`.
 
 Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json`.
 
@@ -80,7 +78,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Condição multi-dia:** cena espacial projeta automaticamente; fato canônico de início/fim → `condicoes_mundo.py registrar|encerrar`.
 
-**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto. Se a compressão for permanência no mesmo local, cada janela volta por `cronica preparar ... --permanencia-local`; declare `--interlocutor` apenas para quem já está presente/contactável. A NV-15 avalia espaço uma vez por local/data/período, a NV-16 usa a mesma identidade para não repetir abertura social e a NV-17 não oferece mais de uma nova oportunidade por janela.
+**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto. Se a compressão for permanência no mesmo local, cada janela volta por `cronica preparar ... --permanencia-local`; declare `--interlocutor` apenas para quem já está presente/contactável. A NV-15 avalia espaço uma vez por local/data/período e a NV-16 usa a mesma identidade para não repetir abertura social.
 
 Durante avanço comum:
 - não atualizar diretamente estado/ficha/relações/conhecimento/consequências/relógios/NPCs;
@@ -99,8 +97,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 ### Recompensas e side quests
 
 - **Tasks 40–46:** conversa incidental não acorda autoria; âncora concreta percorre oportunidade → autoria → contratos → lifecycle no mesmo `preparar/concluir`. Só oferta narrada materializa; recompensa/risco/progresso ficam congelados. Task42 não move Ren; Task44 preserva Protected Core; Task45 terminal nunca é no-op.
-- **Tasks 47–49 + NV-17:** todo `preparar` decide se surgiu âncora nova, enquanto causas NV-11 vencidas continuam independentes dessa negativa. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`. Zero ativas pode elevar prioridade, nunca fabricar necessidade.
-- **Tasks 50–53/legado:** reações/operações exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração Sete Nomes não inventa terminal/reação. Task32/33 frio fica arquivado para auditoria/compatibilidade de histórico já materializado e não origina novas oportunidades no runtime; checkpoint não sorteia side quest/loot.
+- **Tasks 47–49/NV-17:** negativa só nega âncora nova e não oculta causa NV-11 vencida/alcançável. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`.
+- **Tasks 50–53/legado:** reações/operações exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração Sete Nomes não inventa terminal/reação. Task32 já narrada usa `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
 
 ## 7. Checkpoint de cena e sessão
 
