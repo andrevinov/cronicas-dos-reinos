@@ -10,8 +10,9 @@ class PresentCastInitiativeRouterTest(unittest.TestCase):
     def test_router_separa_participante_presenca_e_interlocutor(self):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("--interlocutor <id>", text)
-        self.assertIn("Participante não vira interlocutor sozinho", text)
-        self.assertIn("interlocutor não cria presença, encontro ou side quest", text)
+        self.assertIn("--participante <id>` seleciona memória/elenco prospectivo", text)
+        self.assertIn("não prova por si presença física no mesmo preparo", text)
+        self.assertIn("Interlocutor não cria presença, encontro ou side quest", text)
         self.assertIn("docs/nv16-iniciativa-elenco-presente.md", text)
 
     def test_router_permanece_dentro_do_orcamento_existente(self):
