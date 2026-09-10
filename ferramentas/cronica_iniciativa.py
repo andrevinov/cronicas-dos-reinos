@@ -55,9 +55,9 @@ def conclude(repo: Path, token: str, transaction: dict):
         raise _core.CronicaError(f"NV16: {exc}") from exc
     clean_payload = _conclusion.strip_ticket_payload(payload)
     base_token, _ = _core.encode_ticket(clean_payload)
+    _, outer_ticket_id = _core.encode_ticket(payload)
     writer_tx = _conclusion.writer_transaction(transaction)
     result = _BASE_CONCLUDE(repo, base_token, writer_tx)
-    outer_ticket_id = _core.ticket_id(token)
     transaction_id = str((result.get("transacao") or {}).get("id") or "")
     if not transaction_id:
         raise _core.PartialConclusionError(
