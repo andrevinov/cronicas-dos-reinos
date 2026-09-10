@@ -3,22 +3,24 @@
 ## Objetivo
 
 A NV-16 fecha a diferença entre **ter memória de um NPC na cena** e **avaliar se
-ele realmente pode iniciar uma interação**. O sistema não transforma elenco em
+ele realmente pode iniciar uma interação**. O sistema não transforma memória em
 fala automática: ele exige um subconjunto explícito de interlocutores e dá a
 cada um uma decisão verificável.
 
 ## Três conceitos separados
 
-1. **Participante da memória** — NPC cujo estado relevante foi carregado para a
-   cena. `--participante` continua governando essa memória/elenco.
-2. **Presença/contactabilidade** — o NPC precisa já estar no elenco efetivo da
-   cena ou chegar por um canal de contato previamente validado. A NV-16 não cria
-   essa presença.
+1. **Participante da memória** — NPC cujo estado relevante deve ser carregado
+   para a cena. `--participante` governa a memória/elenco prospectivo, mas não é
+   prova suficiente de presença física durante o mesmo preparo.
+2. **Presença/contactabilidade** — a presença física vem do elenco corrente já
+   persistido e ainda ancorado ao local atual; alternativamente, um canal de
+   contato pode estabelecer contactabilidade depois de passar pelos gates
+   próprios. A NV-16 não cria nenhuma das duas coisas.
 3. **Interlocutor** — subconjunto explicitamente indicado com
    `--interlocutor <id>`. Só esse subconjunto recebe avaliação de iniciativa.
 
-Ser participante não abre conversa. Ser interlocutor não cria encontro, canal,
-conhecimento, side quest ou ação de Ren.
+Ser participante não abre conversa nem prova sozinho presença. Ser interlocutor
+não cria encontro, canal, conhecimento, side quest ou ação de Ren.
 
 ## Porta operacional
 
@@ -32,10 +34,16 @@ poetry run cronica concluir --ticket '<ticket>'
 `--interlocutor` é repetível, aceita no máximo seis IDs canônicos e não faz
 resolução aproximada. Omissão da flag mantém o caminho anterior sem custo NV-16.
 
-Em convivência/permanência, combine os interlocutores realmente presentes com
+Em convivência/permanência, indique apenas interlocutores cuja presença já esteja
+consolidada ou cujo contato tenha sido validado e combine com
 `--permanencia-local`. A identidade da janela social herda a janela NV-15 e,
 portanto, usa **local + data + período**, não `scene_id`. Em cena curta sem
 permanência, a janela é o próprio `scene_id`.
+
+Uma lista nova passada por `--participante` no mesmo `preparar` pode carregar a
+memória necessária e preparar o elenco a ser consolidado, mas não retroage como
+prova de que aquele NPC já estava fisicamente presente. Após o writer consolidar
+a presença, a janela seguinte pode avaliá-lo normalmente.
 
 ## Projeção
 
@@ -63,7 +71,7 @@ determinística.
 
 ## Conclusão
 
-Quando `iniciativa_elenco.selecionada` for `null`, a transação deve omitir o
+Quando `iniciativa_elenco.selecionada` for `null`, a transação deve **omitir** o
 bloco `iniciativa_elenco`. As decisões automáticas são instaladas somente depois
 do writer normal do turno terminar com sucesso.
 
@@ -89,6 +97,10 @@ iniciativa_elenco:
   motivo: razão concreta e curta
 ```
 
+Silêncio escolhido no `concluir` aceita somente `risco` ou
+`indisponibilidade`. `sem_motivo_concreto`, `janela_ocupada` e repetição são
+resultados derivados pelo preparo e não podem ser fabricados manualmente.
+
 ### NPC não elegível
 
 ```yaml
@@ -99,8 +111,12 @@ iniciativa_elenco:
   motivo: razão concreta e curta
 ```
 
-`adiada_por_pressao_superior` não pode ser escolhida livremente pelo narrador:
-é uma decisão automática derivada da prioridade já projetada.
+Inelegibilidade escolhida no `concluir` aceita `falta_conhecimento`, `risco` ou
+`indisponibilidade`. `ausencia` é consequência do gate de presença e não pode
+ser alegada para uma iniciativa que já foi selecionada como presente/contactável.
+
+`adiada_por_pressao_superior` também não pode ser escolhida livremente pelo
+narrador: é uma decisão automática derivada da prioridade já projetada.
 
 ## Frescor e idempotência
 
@@ -110,6 +126,8 @@ A identidade de uma tentativa combina janela + NPC + digest da proposta social.
 - uma iniciativa apresentada não reaparece na mesma janela;
 - silêncio/inelegibilidade iguais permanecem decididos até mudar a janela ou a
   causa material;
+- repetição de uma abertura já apresentada vira silêncio estrutural, não uma
+  segunda fala;
 - adiamento por pressão superior pode ser reavaliado quando a pressão deixa de
   ocupar a janela;
 - uma janela aceita no máximo uma iniciativa apresentada;
@@ -146,7 +164,8 @@ couber, o preparo falha em vez de elevar o teto.
   não inventa interlocutor nem assunto. A decisão concreta nasce apenas do
   subconjunto explícito da NV-16.
 - **NV-15:** fornece a identidade estável local/data/período para convivência
-  longa; mudar `scene_id` não reabre a mesma iniciativa.
+  longa; mudar `scene_id` não reabre a mesma iniciativa e não invalida por si a
+  presença já consolidada no mesmo local.
 - **contatos sociais:** contato previamente validado pode estabelecer
   contactabilidade; o contato solicitado tem precedência sobre iniciativa
   incidental.
@@ -158,9 +177,10 @@ couber, o preparo falha em vez de elevar o teto.
 ## Critérios cobertos
 
 - Nera, Silva, Jack ou qualquer outro NPC recebem decisão somente quando
-  explicitamente declarados como interlocutores e com presença/contactabilidade
-  verificável;
+  explicitamente declarados como interlocutores; presença/contactabilidade
+  determina elegibilidade sem ser inventada pela memória;
 - participante sem `--interlocutor` continua apenas memória;
+- novo `--participante` não vira presença retroativa no mesmo preparo;
 - interlocutor ausente produz inelegibilidade, nunca encontro;
 - no máximo uma abertura é selecionada por janela;
 - silêncio válido permanece possível e auditável;
