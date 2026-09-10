@@ -14,6 +14,8 @@ MANUAL_INELIGIBLE_REASONS = {"falta_conhecimento", "risco", "indisponibilidade"}
 AUTOMATIC_MOTIVES = {
     "ausencia": "O interlocutor não possui presença física consolidada nem canal de contato validado nesta janela.",
     "indisponibilidade": "O estado relacional carregado não autoriza uma iniciativa dirigida a Ren nesta janela.",
+    "falta_conhecimento": "O interlocutor não dispõe do conhecimento necessário para sustentar a abertura nesta janela.",
+    "risco": "O risco corrente impede a abertura social sem transformar cautela em ação automática.",
     "sem_motivo_concreto": "A política social exige causa concreta e nenhuma causa já estabelecida foi encontrada na memória carregada.",
     "pressao_superior": "Uma pressão de prioridade superior ocupa a janela social; a iniciativa permanece reavaliável.",
     "janela_ocupada": "Outra abertura social já ocupa o único slot incidental permitido nesta janela.",
