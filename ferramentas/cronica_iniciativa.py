@@ -79,8 +79,8 @@ def conclude(repo: Path, token: str, transaction: dict):
     result["ticket_id"] = outer_ticket_id
     result[_initiative.PUBLIC_KEY] = installed
     systems = result.setdefault("sistemas_narrativos", [])
-    if "present_cast_initiative" not in systems:
-        systems.append("present_cast_initiative")
+    if "npc_social_initiative" not in systems:
+        systems.append("npc_social_initiative")
     return result
 
 
