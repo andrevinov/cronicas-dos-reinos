@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Compoe a fronteira já projetada com uma noite aceita do torneio.
+"""Compõe a fronteira já projetada com extensões determinísticas raras.
 
-A Task 37 não substitui ``endpoints._base.boundary`` nem cria nova porta. Primeiro
-a fronteira existente é calculada exatamente como antes; esta camada só compara
-a próxima noite do mini-arco e, se ela vier antes ou no mesmo instante, ajusta a
-projeção já pronta. Nenhuma pendência de Mundo Vivo é criada.
+A Task 37 compara a próxima noite aceita do torneio com a fronteira base. A NV-14
+é aplicada depois, sobre a faixa que realmente pode ser comprimida, para que a
+mesma chamada ``endpoints.py fronteira`` consulte vivacidade sem criar um segundo
+ritual. Nenhuma das extensões cria pendência de Mundo Vivo.
 """
 from __future__ import annotations
 
@@ -12,6 +12,7 @@ import copy
 from pathlib import Path
 from typing import Any
 
+import fronteira_vivacidade
 import mundo
 import torneio_clandestino
 
@@ -34,29 +35,23 @@ def _tournament_gate(round_id: str, delayed: bool) -> dict[str, Any]:
         "resultado": "rodada_devida",
         "ids": [round_id],
         "atrasada": delayed,
-        "regra": "compromisso aceito por Ren; parar o tempo nao decide comparecimento nem resultado",
+        "regra": "compromisso aceito por Ren; parar o tempo não decide comparecimento nem resultado",
     }
 
 
-def augment_endpoint(
+def _augment_tournament(
     repo: Path,
     projected: dict[str, Any],
     *,
     target_date: str,
     target_hour: str,
 ) -> dict[str, Any]:
-    """Adiciona somente uma fronteira mais próxima/equivalente do torneio.
-
-    Endpoints sintéticos mínimos usados por contratos antigos são devolvidos
-    intocados. Em um endpoint real, o estado latente/terminal custa apenas a
-    leitura do pequeno estado Task37; o índice só abre quando o torneio está ativo.
-    """
     if not isinstance(projected, dict):
         return projected
-    availability = projected.get("disponibilidade")
-    if not isinstance(availability, dict):
+    original_availability = projected.get("disponibilidade")
+    if not isinstance(original_availability, dict):
         return projected
-    start = _instant(availability.get("inicio"))
+    start = _instant(original_availability.get("inicio"))
     if start is None:
         return projected
     target = mundo.parse_instant(target_date, target_hour)
@@ -69,23 +64,17 @@ def augment_endpoint(
         return projected
 
     result = copy.deepcopy(projected)
-    sources = list(
-        dict.fromkeys(
-            [*(result.get("fontes_lidas") or []), *(extra.get("fontes_lidas") or [])]
-        )
+    availability = result["disponibilidade"]
+    result["fontes_lidas"] = list(
+        dict.fromkeys([*(result.get("fontes_lidas") or []), *(extra.get("fontes_lidas") or [])])
     )
-    result["fontes_lidas"] = sources
     round_id = str(extra.get("rodada"))
     delayed = bool(extra.get("atrasada"))
-
     next_step = result.get("proximo_passo")
     if not isinstance(next_step, dict):
         next_step = {}
         result["proximo_passo"] = next_step
     existing = _instant(next_step.get("fronteira"))
-
-    # Se a fronteira base for anterior, ela continua soberana; a noite será
-    # reconsiderada quando o tempo alcançar o próximo trecho.
     if existing is not None and existing.minute < when.minute:
         return result
 
@@ -111,7 +100,6 @@ def augment_endpoint(
         result["gates"] = gates
     ids["motivos_por_camada"] = grouped
     ids[LAYER] = [round_id]
-
     filters = list(result.get("filtros") or [])
     if "compromisso_torneio_clandestino_task37" not in filters:
         filters.append("compromisso_torneio_clandestino_task37")
@@ -124,3 +112,28 @@ def augment_endpoint(
         "para abrir somente o fragmento devido. Ren ainda pode comparecer, faltar ou abandonar."
     )
     return result
+
+
+def augment_endpoint(
+    repo: Path,
+    projected: dict[str, Any],
+    *,
+    target_date: str,
+    target_hour: str,
+) -> dict[str, Any]:
+    """Aplica torneio e depois NV-14 na mesma fronteira operacional."""
+    tournament = _augment_tournament(
+        repo,
+        projected,
+        target_date=target_date,
+        target_hour=target_hour,
+    )
+    try:
+        return fronteira_vivacidade.augment_endpoint(
+            repo,
+            tournament,
+            target_date=target_date,
+            target_hour=target_hour,
+        )
+    except fronteira_vivacidade.LivenessBoundaryError as exc:
+        raise ValueError(str(exc)) from exc
