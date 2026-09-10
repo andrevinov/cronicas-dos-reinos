@@ -22,6 +22,7 @@ PENDING_TYPE = "entrega_causal"
 NON_COMMUNICABLE_TAG = "entrega-causal:nao-comunicavel"
 CLOCK_PREFIX = "entrega_"
 EXEMPT_PENDING_TYPES = {
+    "reavaliar_agente_leve",
     "resolver_reacao_sidequest",
     "resolver_grupo_operacoes",
     "resolver_operacao_adversarial",
