@@ -66,4 +66,4 @@ O writer revalida a forma NV-13 também em retries. O fingerprint transacional c
 
 ## Escopo
 
-Pendências que já possuem writer de domínio próprio — reações de side quest, grupos/operações adversariais, planos de personagem e resolução de side quest — não passam pelo gate genérico da NV-13. Esses fluxos continuam responsáveis pelos seus próprios efeitos e compromissos.
+Pendências que já possuem writer de domínio próprio — reavaliações de agentes leves, reações de side quest, grupos/operações adversariais, planos de personagem e resolução de side quest — não passam pelo gate genérico da NV-13. Esses fluxos continuam responsáveis pelos seus próprios efeitos e compromissos.
