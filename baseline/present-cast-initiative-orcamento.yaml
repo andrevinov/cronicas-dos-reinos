@@ -1,0 +1,26 @@
+schema_orcamento_iniciativa_elenco: 1
+natureza: contrato_de_orcamento
+limites:
+  interlocutores_por_preparo_max: 6
+  aberturas_por_janela_max: 1
+  projecao_publica_bytes_max: 3072
+  ticket_bytes_max: 4096
+  estado_reservado_bytes_max: 131072
+  registros_reservados_max: 256
+  consultas_adicionais_por_npc: 0
+  chamadas_ia_por_npc: 0
+  rng_novo: 0
+  schedulers_novos: 0
+  scans_globais_npc: 0
+invariantes:
+  participante_nao_implica_interlocutor: true
+  participante_nao_prova_presenca_no_mesmo_preparo: true
+  interlocutor_nao_cria_presenca: true
+  interlocutor_nao_cria_sidequest: true
+  no_maximo_uma_abertura_por_janela: true
+  permanencia_usa_local_data_periodo: true
+  cena_curta_usa_scene_id: true
+  adiamento_por_pressao_superior_e_reavaliavel: true
+  silencio_valido_e_auditavel: true
+  retry_e_idempotente: true
+  estado_e_reservado: true
