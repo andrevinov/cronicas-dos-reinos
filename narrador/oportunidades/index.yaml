@@ -62,6 +62,10 @@ regras:
   task32_task33_origem_operacional: false
   task40_exige_ancora_causal_explicita: true
   task46_duas_chamadas_preparar_concluir: true
+  nv17_causa_vencida_nao_pode_ser_ocultada_por_negativa: true
+  nv17_zero_ativas_somente_eleva_causa_existente: true
+  nv17_max_nova_oportunidade_por_janela: 1
+  nv17_runtime_nao_varre_catalogo_legado: true
 sidequests_canonicas:
   schema_sidequests_canonicas: 1
   engine: canonical_secret_quest_engine_task32
@@ -71,6 +75,19 @@ sidequests_canonicas:
   scheduler: proibido
   rng: proibido
   roteamento: fragmentado_por_npc_task33
+nv17:
+  engine: sidequests_vivas_orientadas_por_causa
+  estado: narrador/sidequests-vivas/estado.yaml
+  migracao_legado: narrador/sidequests-vivas/migracao-legado.yaml
+  evidencias_migracao: narrador/sidequests-vivas/evidencias-migracao.yaml
+  fonte_causa: oportunidade_sidequest_em_plano_nv11
+  sinal_manual: somente_ancora_nova_da_cena
+  roteamento_runtime:
+  - plano_nv08_vencido
+  - local_canonico
+  - referencia_explicita
+  max_ativas_projetadas: 2
+  max_novas_por_janela: 1
 perfis:
   kethra_dunn:
     nome: Kethra Dunn
