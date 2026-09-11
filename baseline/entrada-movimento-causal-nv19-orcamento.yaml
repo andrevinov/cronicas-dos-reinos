@@ -1,0 +1,31 @@
+schema_orcamento_entrada_movimento_causal: 1
+feature: nv19_entrada_movimento_causal
+arquitetura:
+  motor_de_planos: planos_personagens_nv08
+  agenda: narrador/mundo/agenda.yaml
+  journal_transacional: existente
+  scheduler_novo: false
+  fila_nova: false
+  rng: false
+  scan_populacao: false
+limites:
+  max_planos_ativos_existente: 8
+  max_entradas_por_janela_permanencia: 1
+  max_atores_detalhados_por_consulta_local: 1
+  max_bytes_projecao_entrada: 3072
+causalidade:
+  cadastro_isolado_cria_cameo: false
+  causa_canonica_dirigida_obrigatoria: true
+  movimento_e_presenca_na_mesma_transacao: true
+  chegada_exige_prova_factual: true
+  adiamento_preserva_pendencia: true
+  expiracao_derivada_sem_scheduler: true
+emissarios:
+  usa_mesmo_modelo_presenca: true
+  subsistema_paralelo: false
+invariantes:
+  - intenção não é deslocamento
+  - deslocamento previsto não é chegada
+  - chegada não decide ação de Ren
+  - presença incidental continua limitada a vínculos já ancorados
+  - agente protegido pelo arco não contorna operação por entrada_local
