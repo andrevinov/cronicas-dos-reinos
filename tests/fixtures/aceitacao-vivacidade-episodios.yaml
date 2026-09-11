@@ -1,0 +1,232 @@
+schema_aceitacao_vivacidade: 1
+natureza: aceitacao_integrada_read_only
+
+episodios:
+  dia_carregado_circo:
+    janelas:
+      - gatilho: inicio_dia
+        periodo: amanhecer
+        inicio: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        fim: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+      - gatilho: mudanca_periodo
+        periodo: dia
+        inicio: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        fim: {data: "21 Eleasis, 1372 DR", hora: "10:00"}
+      - gatilho: mudanca_periodo
+        periodo: anoitecer
+        inicio: {data: "21 Eleasis, 1372 DR", hora: "10:00"}
+        fim: {data: "21 Eleasis, 1372 DR", hora: "18:00"}
+    consultas:
+      - {dominio: entregas_contatos, estado: consultado, fontes: ["fixture/entregas.yaml"]}
+      - {dominio: planos_compromissos, estado: consultado, fontes: ["fixture/compromissos.yaml"]}
+      - {dominio: operacoes_reacoes, estado: consultado, fontes: ["fixture/operacoes.yaml"]}
+      - {dominio: sidequests_vivas, estado: consultado, fontes: ["fixture/sidequests.yaml"]}
+      - {dominio: iniciativas_elenco, estado: consultado, fontes: ["fixture/iniciativas.yaml"]}
+      - {dominio: ecologia_local, estado: consultado, fontes: ["fixture/ecologia.yaml"]}
+      - {dominio: ambiente_publico, estado: consultado, fontes: ["fixture/ambiente.yaml"]}
+    candidatas:
+      - candidata:
+          id: "mensagem:nera-aviso"
+          dominio: entregas_contatos
+          tipo: acao_social_solicitada
+          prioridade: 0
+          elegivel: true
+          fundamento: "A mensagem comunicável venceu e possui canal causal válido para alcançar Ren."
+          origem: "fixture:mensagem-comunicavel-vencida"
+        ativar_em: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        expirar_em: null
+      - candidata:
+          id: "compromisso:audiencia-circo"
+          dominio: planos_compromissos
+          tipo: fronteira_temporal
+          prioridade: 1
+          elegivel: true
+          fundamento: "O compromisso temporal permaneceu aberto ao atingir sua janela obrigatória."
+          origem: "fixture:compromisso-temporal-vencido"
+        ativar_em: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        expirar_em: null
+      - candidata:
+          id: "causa-nv11:ajuda-silva"
+          dominio: sidequests_vivas
+          tipo: nova_oportunidade
+          prioridade: 2
+          elegivel: true
+          fundamento: "A causa NV-11 já declarada tornou-se devida e precisa receber destino causal."
+          origem: "fixture:causa-sidequest-vencida"
+        ativar_em: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        expirar_em: null
+      - candidata:
+          id: "mensagem:segredo-sem-canal"
+          dominio: entregas_contatos
+          tipo: acao_social_solicitada
+          prioridade: 3
+          elegivel: false
+          fundamento: "O conteúdo permanece bloqueado porque nenhum canal autorizado pode revelá-lo a Ren."
+          origem: "fixture:segredo-bloqueado"
+        ativar_em: {data: "21 Eleasis, 1372 DR", hora: "06:00"}
+        expirar_em: null
+    papeis:
+      mensagem_comunicavel_vencida: "mensagem:nera-aviso"
+      compromisso_temporal_vencido: "compromisso:audiencia-circo"
+      causa_sidequest_vencida: "causa-nv11:ajuda-silva"
+    iniciativa:
+      chamadas_ia_por_npc: 0
+      scans_globais_npc: 0
+      itens:
+        - npc_id: nera_vell
+          resultado: apresentada
+          motivo: "Nera está no elenco presente, possui iniciativa plausível e ocupa a única abertura da janela."
+        - npc_id: silva_elkwood
+          resultado: silencio_justificado
+          motivo: "Silva recebeu decisão explícita e não abriu nova fala porque a janela já estava ocupada."
+    permanencia:
+      local_id: jack_mooney_sons_circus
+      slot_id: "jack_mooney_sons_circus|21 Eleasis, 1372 DR|dia"
+    cadeia_semantica:
+      - id: clima-dia
+        sistema: clima_diario
+        causas: []
+        evidencia: "A condição de chuva do dia foi congelada na alvorada antes de qualquer descrição de cena."
+      - id: transito-chuva
+        sistema: transito
+        causas: [clima-dia]
+        evidencia: "O deslocamento recebeu o modificador da chuva já congelada, sem rerrolar o clima durante a cena."
+      - id: edital-circo
+        sistema: politica_civica
+        causas: []
+        evidencia: "Um edital já produzido pelo governo está disponível no quadro público do circo."
+      - id: leitura-edital
+        sistema: entrega_publica
+        causas: [edital-circo]
+        evidencia: "Ren conhece o edital somente quando a permanência fornece o canal e o writer pareia a entrega NV-13."
+      - id: candidato-incidental
+        sistema: presenca_incidental
+        causas: []
+        evidencia: "Uma presença incidental filtrada aparece apenas como candidata contextual, não como encontro automático."
+      - id: cena-circo
+        sistema: cena
+        causas: [candidato-incidental]
+        evidencia: "A cena incorpora a candidata incidental sem fabricar ação, diálogo, conhecimento ou side quest."
+      - id: causa-silva
+        sistema: causa_sidequest
+        causas: []
+        evidencia: "A necessidade previamente declarada de Silva alcança sua janela e permanece uma causa, não uma missão aceita."
+      - id: oferta-silva
+        sistema: sidequest
+        causas: [causa-silva]
+        evidencia: "A oportunidade só pode ser apresentada porque a causa real já existia e alcançou Ren por vínculo plausível."
+      - id: gate-mecanico
+        sistema: mecanica_gate
+        causas: []
+        evidencia: "A dificuldade usada no episódio passa pelo gate mecânico vigente antes da resolução do teste."
+      - id: resultado-mecanico
+        sistema: resultado_mecanico
+        causas: [gate-mecanico]
+        evidencia: "A consequência mecânica é registrada depois do gate e da rolagem, nunca inventada pela narração."
+      - id: relacao-persistida
+        sistema: consequencia_relacional
+        causas: [oferta-silva]
+        evidencia: "A resposta de Ren à necessidade de Silva produz uma alteração relacional persistida pelo writer."
+      - id: reputacao-persistida
+        sistema: consequencia_reputacao
+        causas: [resultado-mecanico]
+        evidencia: "O resultado publicamente observável produz um marco de reputação separado e append-only."
+      - id: permanencia-circo
+        sistema: permanencia_espacial
+        causas: [cena-circo]
+        evidencia: "O slot espacial do circo permanece ancorado ao local canônico e sobrevive à troca de scene_id."
+      - id: efeito-futuro
+        sistema: consequencia_futura
+        causas: [relacao-persistida, reputacao-persistida, permanencia-circo]
+        evidencia: "Relação, reputação e permanência deixam estado consultável para uma cena futura sem depender da memória do narrador."
+      - id: cronica-unica
+        sistema: cronica
+        causas: [efeito-futuro]
+        evidencia: "A crônica registra a cadeia uma única vez; retries reutilizam identidades em vez de duplicar o acontecimento."
+
+  dia_legitimamente_calmo:
+    janelas:
+      - gatilho: inicio_dia
+        periodo: amanhecer
+        inicio: {data: "22 Eleasis, 1372 DR", hora: "06:00"}
+        fim: {data: "22 Eleasis, 1372 DR", hora: "06:00"}
+      - gatilho: mudanca_periodo
+        periodo: dia
+        inicio: {data: "22 Eleasis, 1372 DR", hora: "06:00"}
+        fim: {data: "22 Eleasis, 1372 DR", hora: "10:00"}
+      - gatilho: mudanca_periodo
+        periodo: anoitecer
+        inicio: {data: "22 Eleasis, 1372 DR", hora: "10:00"}
+        fim: {data: "22 Eleasis, 1372 DR", hora: "18:00"}
+    consultas:
+      - {dominio: entregas_contatos, estado: consultado, fontes: ["fixture/entregas.yaml"]}
+      - {dominio: planos_compromissos, estado: consultado, fontes: ["fixture/compromissos.yaml"]}
+      - {dominio: operacoes_reacoes, estado: consultado, fontes: ["fixture/operacoes.yaml"]}
+      - {dominio: sidequests_vivas, estado: consultado, fontes: ["fixture/sidequests.yaml"]}
+      - {dominio: iniciativas_elenco, estado: consultado, fontes: ["fixture/iniciativas.yaml"]}
+      - {dominio: ecologia_local, estado: consultado, fontes: ["fixture/ecologia.yaml"]}
+      - {dominio: ambiente_publico, estado: consultado, fontes: ["fixture/ambiente.yaml"]}
+    candidatas: []
+    papeis: {}
+    iniciativa:
+      chamadas_ia_por_npc: 0
+      scans_globais_npc: 0
+      itens: []
+    permanencia:
+      local_id: jack_mooney_sons_circus
+      slot_id: "jack_mooney_sons_circus|22 Eleasis, 1372 DR|dia"
+    cadeia_semantica: []
+
+regressoes:
+  comunicacao_resolvida_nao_desaparece:
+    arquivo: tests/test_entregas_causais.py
+    classe: EntregasCausaisContractTest
+    teste: test_destinos_finais_validos
+  permanencia_longa_local_nao_nulo:
+    arquivo: tests/test_cronica_permanencia_nv15.py
+    classe: CronicaPermanenceTests
+    teste: test_permanence_output_never_nulls_consolidated_local
+  causa_nv11_vencida_nao_silenciada:
+    arquivo: tests/test_sidequests_vivas_nv17.py
+    classe: LiveSidequestWindowTests
+    teste: test_negative_manual_decision_cannot_hide_due_cause_and_retry_is_stable
+  iniciativa_elegivel_recebe_decisao:
+    arquivo: tests/test_iniciativa_elenco.py
+    classe: PresentCastInitiativeTest
+    teste: test_tres_interlocutores_recebem_decisao_e_so_um_abre
+  sem_scan_global_ou_ia_por_npc:
+    arquivo: tests/test_iniciativa_elenco.py
+    classe: PresentCastInitiativeBudgetTest
+    teste: test_budget_congela_zero_scan_rng_scheduler_e_ia
+  turno_curto_economico:
+    arquivo: tests/test_cronica_hotpath_rollout.py
+    classe: NeutralTurnRegressionTest
+    teste: test_turno_comum_nao_inventa_gatilho_nem_chama_endpoint
+  turno_longo_reusa_fronteira:
+    arquivo: tests/test_fronteira_vivacidade.py
+    classe: LivenessBoundaryContractTest
+    teste: test_augment_endpoint_encurta_compressao_quando_pressao_vem_antes
+  projecao_limitada:
+    arquivo: tests/test_fronteira_vivacidade.py
+    classe: LivenessBoundaryContractTest
+    teste: test_ids_duplicados_e_overflow_falham_fechado
+  clima_alimenta_transito:
+    arquivo: tests/test_clima_diario_integracao_nv21.py
+    classe: ClimateTransitCompositionTest
+    teste: test_clima_entra_no_fingerprint_e_payload_sem_rerroll
+  politica_entrega_por_canal_causal:
+    arquivo: tests/test_politica_civica_integracao_nv22.py
+    classe: CivicWriterIntegrationTest
+    teste: test_entrega_e_recibo_nv13_sao_planejados_atomicamente
+  presenca_incidental_nao_fabrica_encontro:
+    arquivo: tests/test_presenca_incidental.py
+    classe: IncidentalPresenceIntegrationTest
+    teste: test_prepare_anexa_incidental_sem_criar_encontro_ou_escrita
+  mecanica_passa_pelo_gate:
+    arquivo: tests/test_gate_adnd.py
+    classe: FormalADNDGateTest
+    teste: test_adaptacao_5_5e_preparada_passa
+  reputacao_persiste_sem_score_oculto:
+    arquivo: tests/test_reputacao_publica.py
+    classe: PublicReputationEventTest
+    teste: test_dois_fatos_antes_do_checkpoint_acumulam
