@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""API pública da permanência espacial até NV-15 + projeção causal NV-19.
-
-A NV-19 acrescenta somente uma leitura dirigida dos planos ``entrada_local`` ao
-resultado já preparado pela permanência. Ela não sorteia personagem, não varre o
-cadastro e não altera o recibo espacial: o plano continua sendo resolvido pela
-agenda/journal do Mundo Vivo.
-"""
+"""Permanência espacial até NV-19 + leitura sensorial do clima NV-21."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -14,6 +8,7 @@ import yaml
 import permanencia_espacial_idempotencia as _impl
 import planos_personagens as _plans
 import mundo as _world
+import clima_diario as _climate
 
 for _name in dir(_impl):
     if not _name.startswith("__"):
@@ -38,16 +33,30 @@ def prepare(repo: Path, *, scene_id: str, place: str | None = None, now=None):
     planned = _BASE_PREPARE_NV15(repo, scene_id=scene_id, place=place, now=now)
     public = planned.get("publico") or {}
     local_id = public.get("local_id")
-    if not isinstance(local_id, str) or not local_id or not _has_entry_plans(Path(repo)):
+    if not isinstance(local_id, str) or not local_id:
         return planned
-    try:
-        entry = _plans.project_local_entry(Path(repo), local_id)
-    except _plans.PlanError as exc:
-        raise SpatialPermanenceError(f"entrada causal: {exc}") from exc
-    public["entrada_causal"] = entry
-    if entry is not None:
+
+    if _has_entry_plans(Path(repo)):
+        try:
+            entry = _plans.project_local_entry(Path(repo), local_id)
+        except _plans.PlanError as exc:
+            raise SpatialPermanenceError(f"entrada causal: {exc}") from exc
+        public["entrada_causal"] = entry
+        if entry is not None:
+            public["fontes_lidas"] = list(dict.fromkeys([
+                *(public.get("fontes_lidas") or []), *(entry.get("fontes_lidas") or [])
+            ]))
+
+    # NV-21 não sorteia na cena. Esta camada lê apenas o estado ativo congelado
+    # pela alvorada e expõe sensorial + disponibilidade de espaços antes da prosa.
+    if _climate.configured(Path(repo)):
+        try:
+            weather = _climate.for_scene(Path(repo), local_id, now=now)
+        except _climate.ClimateError as exc:
+            raise SpatialPermanenceError(f"clima diário: {exc}") from exc
+        public["clima"] = weather.get("ativo")
         public["fontes_lidas"] = list(dict.fromkeys([
-            *(public.get("fontes_lidas") or []), *(entry.get("fontes_lidas") or [])
+            *(public.get("fontes_lidas") or []), *(weather.get("fontes_lidas") or [])
         ]))
     return planned
 
