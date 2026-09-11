@@ -1,372 +1,63 @@
 #!/usr/bin/env python3
-"""Consolidação legado + rastros + instante atômico + relações + identidades + reputação.
+"""Consolidação até NV-19 + validação staged do ledger NV-20.
 
-``_consolidar_core.py`` preserva o consolidator já testado. Este wrapper intercepta
-somente lotes que exigem extensão:
-
-- `rastro:<id>` é validado e instalado no mesmo journal do conhecimento;
-- `tempo/instante` permanece um único delta persistido e é expandido **somente em
-  memória** para os espelhos físicos (`tempo.data_atual`, `tempo.data`,
-  `tempo.hora_aproximada`). O núcleo então sincroniza `estado.tempo` no mesmo plano
-  multi-arquivo antes de qualquer instalação;
-- afinidade/confiança são validadas contra o estado consolidado antes do stage;
-- suspeita/confirmação de identidade só carrega seu registro quando o lote contém
-  um delta desse tipo e é validada contra o estado anterior;
-- reputação pública só carrega públicos/personas quando o lote contém delta da Task 29;
-- qualquer fragmento NPC alterado é revalidado antes da instalação.
+O ledger de reconhecibilidade é um campo do estado canônico, portanto o writer
+multi-arquivo existente continua sendo a única transação. Esta borda apenas
+valida a transição append-only antes do stage e revalida o estado produzido.
 """
 from __future__ import annotations
 
-import copy
-import json
 from pathlib import Path
-from typing import Any
 
-import _consolidar_core as _base
-import estado_relacional
-import identidades
-import rastros
-import _rastros_core as _rastros_base
-import reputacao_publica
-import tempo_transacional
-import transacoes
-import planos_personagens
+_LEGACY_SOURCE = Path(__file__).with_name("_consolidar_nv19.py")
+_saved_name = globals().get("__name__", "consolidar")
+globals()["__name__"] = "_consolidar_nv19_exec"
+exec(compile(_LEGACY_SOURCE.read_text(encoding="utf-8"), str(_LEGACY_SOURCE), "exec"), globals(), globals())
+globals()["__name__"] = _saved_name
 
-for _name in dir(_base):
-    if not _name.startswith("__"):
-        globals()[_name] = getattr(_base, _name)
+import reconhecibilidade_persona as _recognition
 
-_original_build_plan = _base.build_plan
-_original_load_pending = transacoes.load_pending
+_BASE_BUILD_PLAN_NV19 = build_plan
 
 
-def _records_for_batch(repo: Path) -> tuple[int, list[dict[str, Any]], list[dict[str, Any]], set[str]]:
-    session = _base.current_session(repo)
-    pending_all = _original_load_pending(repo)
-    pending_session = transacoes.pending_for_session(pending_all, session)
-    ledger = _base.load_ledger(repo, session)
-    done = _base.consolidated_ids(ledger)
-    records = [record for record in pending_session if record["id"] not in done]
-    return session, pending_all, records, done
-
-
-def _trace_delta_ids(record: dict[str, Any]) -> list[str]:
-    result: list[str] = []
-    for delta in record.get("deltas") or []:
-        target = str(delta.get("alvo") or "")
-        if target.startswith(transacoes.TRACE_PREFIX):
-            result.append(target.split(":", 1)[1])
-    return result
-
-
-def _has_identity_deltas(records: list[dict[str, Any]]) -> bool:
-    """Gate estrutural: fixtures/fluxos legados não abrem o registro da Task 28."""
+def _has_recognition(records):
     return any(
-        identidades.is_identity_delta(delta)
+        _recognition.touches(delta)
         for record in records
         for delta in (record.get("deltas") or [])
     )
 
 
-def _has_reputation_deltas(records: list[dict[str, Any]]) -> bool:
-    """Gate estrutural: o caminho comum não abre públicos nem personas da Task 29."""
-    return any(
-        reputacao_publica.touches_reputation(delta)
-        for record in records
-        for delta in (record.get("deltas") or [])
-    )
-
-
-def _knowledge_value(record: dict[str, Any], trace_id: str) -> dict[str, Any]:
-    matches = []
-    for delta in record.get("deltas") or []:
-        if delta.get("alvo") != "conhecimento" or delta.get("op") != "registrar":
-            continue
-        value = delta.get("valor")
-        if (
-            isinstance(value, dict)
-            and value.get("tipo") == transacoes.TRACE_KNOWLEDGE_TYPE
-            and value.get("rastro") == trace_id
-        ):
-            matches.append(value)
-    if len(matches) != 1:
-        raise ConsolidationError(
-            f"transação {record['id']}: descoberta {trace_id} precisa de um único conhecimento pareado"
-        )
-    return matches[0]
-
-
-def _prepare_trace_index(
-    repo: Path, records: list[dict[str, Any]]
-) -> tuple[dict[str, Any], list[str]]:
-    index = rastros.load_index(repo)
-    discovered: list[str] = []
-    for record in records:
-        for trace_id in _trace_delta_ids(record):
-            meta = index["rastros"].get(trace_id)
-            if not isinstance(meta, dict):
-                raise ConsolidationError(f"transação {record['id']}: rastro inexistente: {trace_id}")
-            if meta.get("estado", "ativo") != "ativo":
-                raise ConsolidationError(
-                    f"transação {record['id']}: rastro {trace_id} já não está ativo para descoberta"
-                )
-            try:
-                doc = _rastros_base.validate_trace(repo, trace_id, meta)
-            except rastros.TraceError as exc:
-                raise ConsolidationError(str(exc)) from exc
-            value = _knowledge_value(record, trace_id)
-            if value.get("texto") != doc["fato_observavel"]:
-                raise ConsolidationError(
-                    f"transação {record['id']}: conhecimento de {trace_id} excede/diverge do fato observável"
-                )
-            if value.get("fonte") != f"rastro:{trace_id}":
-                raise ConsolidationError(
-                    f"transação {record['id']}: fonte pública de {trace_id} precisa apontar apenas para o rastro"
-                )
-            meta["estado"] = "descoberto"
-            discovered.append(trace_id)
-    return index, discovered
-
-
-def _prepared_pending(
-    pending_all: list[dict[str, Any]],
-    session: int,
-    process_ids: set[str],
-    *,
-    strip_traces: bool,
-) -> list[dict[str, Any]]:
-    """Transforma somente o lote atual; pendências de outras sessões ficam byte-lógicas iguais."""
-    result = copy.deepcopy(pending_all)
-    for record in result:
-        if record.get("sessao") != session or record.get("id") not in process_ids:
-            continue
-        deltas = [d for d in record.get("deltas", []) if not planos_personagens.touches(d)]
-        if strip_traces:
-            deltas = [
-                delta
-                for delta in deltas
-                if not str(delta.get("alvo") or "").startswith(transacoes.TRACE_PREFIX)
-            ]
-        try:
-            record["deltas"] = tempo_transacional.expand_atomic_deltas(deltas)
-        except tempo_transacional.AtomicTimeError as exc:
-            raise ConsolidationError(str(exc)) from exc
-    return result
-
-
-def _patch_ledger_and_artifacts(
-    repo: Path,
-    plan: dict[str, Any],
-    kind: str,
-    records: list[dict[str, Any]],
-    discovered: list[str],
-    atomic_instants: int,
-) -> None:
-    if not plan.get("batch"):
+def _validate_recognition_output(repo: Path, plan):
+    if plan is None:
         return
-    session = plan["sessao"]
-    ledger_rel = Path("sessoes") / f"{session:03d}" / _base.LEDGER_NAME
-    raw = plan["outputs"].get(ledger_rel.as_posix())
+    raw = (plan.get("outputs") or {}).get(_recognition.STATE_FILE.as_posix())
     if raw is None:
-        raise ConsolidationError("plano transacional não contém ledger esperado")
-    ledger: list[dict[str, Any]] = []
-    for line in raw.decode("utf-8").splitlines():
-        if line.strip():
-            ledger.append(json.loads(line))
-    batch = next((item for item in ledger if item.get("id") == plan["batch"]), None)
-    if batch is None:
-        raise ConsolidationError("batch recém-criado não encontrado no ledger staged")
-
-    batch["deltas"] = sum(len(record.get("deltas") or []) for record in records)
-    if atomic_instants:
-        batch["instantes_atomicos"] = atomic_instants
-    if discovered:
-        batch["rastros_descobertos"] = list(dict.fromkeys(discovered))
-        affected = set(batch.get("arquivos_afetados") or [])
-        affected.add(rastros.INDEX.as_posix())
-        batch["arquivos_afetados"] = sorted(affected)
-
-    plan["outputs"][ledger_rel.as_posix()] = _base.jsonl_text(ledger)
-    _base._session_artifacts(
-        repo,
-        session,
-        ledger,
-        plan["checkpoint_antes"],
-        plan["checkpoint_depois"],
-        kind,
-        plan["outputs"],
-    )
-
-
-def _validate_relationship_outputs(plan: dict[str, Any] | None) -> None:
-    """Contrato preservado da Task 26: valida medidores staged sem leitura extra."""
-    if plan is None:
-        return
-    prefix = "estado/npcs/"
-    for rel, raw in (plan.get("outputs") or {}).items():
-        if not rel.startswith(prefix) or not rel.endswith(".yaml"):
-            continue
-        if rel in {
-            estado_relacional.NPC_INDEX.as_posix(),
-            "estado/npcs/escala.yaml",
-            estado_relacional.CONTRACT.as_posix(),
-        }:
-            continue
-        try:
-            doc = _base.yaml.safe_load(raw.decode("utf-8"))
-        except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
-            raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
-        payload = doc.get("npc") if isinstance(doc, dict) else None
-        if not isinstance(payload, dict) or "medidores" not in payload:
-            continue
-        entity_id = str(doc.get("id") or Path(rel).stem)
-        try:
-            estado_relacional.validate_meters(payload["medidores"], entity_id=entity_id)
-        except estado_relacional.RelationshipStateError as exc:
-            raise ConsolidationError(str(exc)) from exc
-
-
-def _validate_identity_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
-    """Complementa a Task 26; só abre o registro se um fragmento staged tiver o campo."""
-    if plan is None:
-        return
-    registry: dict[str, Any] | None = None
-    prefix = "estado/npcs/"
-    for rel, raw in (plan.get("outputs") or {}).items():
-        if not rel.startswith(prefix) or not rel.endswith(".yaml"):
-            continue
-        if rel in {
-            estado_relacional.NPC_INDEX.as_posix(),
-            "estado/npcs/escala.yaml",
-            estado_relacional.CONTRACT.as_posix(),
-        }:
-            continue
-        try:
-            doc = _base.yaml.safe_load(raw.decode("utf-8"))
-        except (UnicodeDecodeError, _base.yaml.YAMLError) as exc:
-            raise ConsolidationError(f"fragmento NPC staged inválido: {rel}: {exc}") from exc
-        payload = doc.get("npc") if isinstance(doc, dict) else None
-        if not isinstance(payload, dict) or identidades.STATE_FIELD not in payload:
-            continue
-        entity_id = str(doc.get("id") or Path(rel).stem)
-        try:
-            if registry is None:
-                registry = identidades.load_registry(repo)
-            identidades.validate_state(payload[identidades.STATE_FIELD], registry)
-        except identidades.IdentitySuspicionError as exc:
-            raise ConsolidationError(f"{entity_id}: {exc}") from exc
-
-
-def _validate_npc_outputs(repo: Path, plan: dict[str, Any] | None) -> None:
-    _validate_relationship_outputs(plan)
-    _validate_identity_outputs(repo, plan)
-
-
-def _validate_reputation_output(repo: Path, plan: dict[str, Any] | None) -> None:
-    """Revalida apenas o estado staged de lotes que realmente tocaram a Task 29."""
-    if plan is None:
-        return
-    raw = (plan.get("outputs") or {}).get(reputacao_publica.STATE_FILE.as_posix())
-    if raw is None:
-        raise ConsolidationError("lote de reputação não produziu estado/estado-atual.yaml staged")
+        raise ConsolidationError("lote de fama não produziu estado/estado-atual.yaml staged")
     try:
         doc = _base.yaml.safe_load(raw.decode("utf-8"))
-        audiences = reputacao_publica.load_audiences(repo)
-        identities_registry = reputacao_publica.load_identities(repo)
         if not isinstance(doc, dict):
-            raise reputacao_publica.PublicReputationError("estado staged inválido")
-        reputacao_publica.validate_state(
-            doc.get(reputacao_publica.STATE_ROOT), audiences, identities_registry
+            raise _recognition.RecognizabilityError("estado staged inválido")
+        _recognition.validate_state(
+            doc.get(_recognition.STATE_ROOT),
+            _recognition.load_audiences(Path(repo)),
+            _recognition.load_identities(Path(repo)),
         )
-    except (UnicodeDecodeError, _base.yaml.YAMLError, reputacao_publica.PublicReputationError) as exc:
-        raise ConsolidationError(f"reputação pública staged inválida: {exc}") from exc
+    except (UnicodeDecodeError, _base.yaml.YAMLError, _recognition.RecognizabilityError) as exc:
+        raise ConsolidationError(f"reconhecibilidade staged inválida: {exc}") from exc
 
 
-def _stage_causal_activations(repo: Path, plan: dict | None, records: list) -> None:
-    import acionamentos_leves
-    try:
-        acionamentos_leves.stage(repo, plan, records)
-    except (ValueError, OSError, _base.yaml.YAMLError) as exc:
-        raise ConsolidationError(f"acionamento causal: {exc}") from exc
-
-
-def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
-    session, pending_all, records, _done = _records_for_batch(repo)
-    has_reputation = _has_reputation_deltas(records)
-    try:
-        estado_relacional.validate_batch(repo, records)
-        if _has_identity_deltas(records):
-            identidades.validate_batch(repo, records)
-        if has_reputation:
-            reputacao_publica.validate_batch(repo, records)
-    except (
-        estado_relacional.RelationshipStateError,
-        identidades.IdentitySuspicionError,
-        reputacao_publica.PublicReputationError,
-    ) as exc:
-        raise ConsolidationError(str(exc)) from exc
-
-    trace_records = [record for record in records if _trace_delta_ids(record)]
-    atomic_instants = tempo_transacional.atomic_count(records)
-    has_plans = any(planos_personagens.events(record) for record in records)
-    if not trace_records and not atomic_instants and not has_plans:
-        plan = _original_build_plan(repo, kind)
-        _validate_npc_outputs(repo, plan)
-        if has_reputation:
-            _validate_reputation_output(repo, plan)
-        _stage_causal_activations(repo, plan, records)
-        return plan
-
-    trace_index: dict[str, Any] | None = None
-    discovered: list[str] = []
-    if trace_records:
-        trace_index, discovered = _prepare_trace_index(repo, trace_records)
-
-    process_ids = {record["id"] for record in records}
-    prepared = _prepared_pending(
-        pending_all,
-        session,
-        process_ids,
-        strip_traces=bool(trace_records),
-    )
-
-    old_loader = transacoes.load_pending
-    transacoes.load_pending = lambda _repo: copy.deepcopy(prepared)
-    try:
-        plan = _original_build_plan(repo, kind)
-    finally:
-        transacoes.load_pending = old_loader
-
-    if plan is None:
-        raise ConsolidationError("lote estendido ficou sem plano de consolidação")
-
-    if trace_index is not None:
-        trace_bytes = _base.dump_yaml(trace_index)
-        if len(trace_bytes) > rastros.MAX_INDEX_BYTES:
-            raise ConsolidationError("índice de rastros excederia o teto operacional durante descoberta")
-        plan["outputs"][rastros.INDEX.as_posix()] = trace_bytes
-
-    _patch_ledger_and_artifacts(
-        repo,
-        plan,
-        kind,
-        records,
-        discovered,
-        atomic_instants,
-    )
-    if discovered:
-        plan["rastros_descobertos"] = list(dict.fromkeys(discovered))
-    if atomic_instants:
-        plan["instantes_atomicos"] = atomic_instants
-    _validate_npc_outputs(repo, plan)
-    if has_reputation:
-        _validate_reputation_output(repo, plan)
-    if has_plans:
+def build_plan(repo: Path, kind: str):
+    _session, _pending_all, records, _done = _records_for_batch(Path(repo))
+    has_recognition = _has_recognition(records)
+    if has_recognition:
         try:
-            planos_personagens.stage(repo, plan, records)
-        except (ValueError, OSError, _base.yaml.YAMLError) as exc:
-            raise ConsolidationError(f"plano de personagem: {exc}") from exc
-    _stage_causal_activations(repo, plan, records)
+            _recognition.validate_batch(Path(repo), records)
+        except _recognition.RecognizabilityError as exc:
+            raise ConsolidationError(str(exc)) from exc
+    plan = _BASE_BUILD_PLAN_NV19(Path(repo), kind)
+    if has_recognition:
+        _validate_recognition_output(Path(repo), plan)
     return plan
 
 
