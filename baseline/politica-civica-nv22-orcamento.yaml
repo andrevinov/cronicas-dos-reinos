@@ -1,0 +1,33 @@
+schema_orcamento_politica_civica_nv22: 1
+estado:
+  arquivo: estado/estado-atual.yaml
+  raiz: politica_civica
+  writer: transacao_existente
+  max_bytes: 65536
+limites:
+  medidas: 32
+  planos_institucionais: 48
+  publicacoes: 64
+  entregas_ren: 96
+  historico_por_medida: 16
+  avisos_por_permanencia: 6
+economia:
+  scheduler_novo: false
+  fila_nova: false
+  rng: false
+  sondagem_constante_governo: false
+  agenda: consulta_dirigida_apenas_planos_vencidos
+  permanencia: somente_publicacoes_ja_produzidas
+  catalogo: limitado_e_selecao_explicita
+idempotencia:
+  plano: medida_acao_prazo
+  publicacao: medida_local_periodo
+  entrega: publicacao_destinatario
+  proclamacao_repetida_por_cena: false
+causalidade:
+  entrega_publica: nv13_mesmo_writer
+  canais_persistentes: nv15
+  canais_ativos: evidencia_explicita
+  conhecimento_magico: proibido
+atomicidade:
+  estado_e_recibo_nv13: mesmo_journal_multi_arquivo

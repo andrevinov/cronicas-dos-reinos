@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""Porta unificada da crônica, composta até a NV-20.
+"""Porta unificada da crônica, composta até a NV-22.
 
-A composição preserva uma única identidade de módulo para compatibilidade com
-monkeypatches, reparos e integrações legadas. NV-19 expõe entradas causais;
-NV-20 acrescenta o contrato atômico de marco público/reconhecibilidade sem
-consultar fama no hot path.
+Preserva uma única identidade de módulo. NV-22 acrescenta política cívica e
+avisos públicos sem consultar agenda institucional no hot path normal.
 """
 from __future__ import annotations
 
@@ -12,7 +10,7 @@ import sys
 
 # Imports de composição não fazem I/O de campanha.
 import permanencia_espacial_idempotencia as _stay_idempotency  # noqa: F401
-import cronica_reconhecibilidade as _impl
+import cronica_politica_civica as _impl
 
 if __name__ == "__main__":
     raise SystemExit(_impl.main())

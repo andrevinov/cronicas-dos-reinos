@@ -1,0 +1,65 @@
+schema_instituicoes_civicas: 1
+jurisdicao: ravens_bluff
+natureza: registro_operacional_de_competencia_civica
+fonte_social: cenario/regioes/ravens-bluff/faccoes.md
+observacao: >-
+  Registro operacional da NV-22. Autorização aqui significa competência do
+  subsistema para originar uma medida; não redefine o cânone jurídico de
+  Ravens Bluff nem transforma canais de entrega em autoridades políticas.
+
+canais_publicos:
+  arauto:
+    nome: Arauto
+    modo: ativo
+  quadro_avisos:
+    nome: Quadro de avisos
+    modo: persistente
+  guarda:
+    nome: Guarda
+    modo: ativo
+  templo:
+    nome: Templo
+    modo: ativo
+  mensageiro:
+    nome: Mensageiro
+    modo: ativo
+  edital_publico:
+    nome: Edital em local público
+    modo: persistente
+
+instituicoes:
+  lord_mayor_gabinete:
+    nome: Lord Mayor e gabinete
+    autorizada: true
+    tipos: [lei, decreto, edital, aviso]
+    canais: [arauto, quadro_avisos, guarda, templo, mensageiro, edital_publico]
+  council_of_lords:
+    nome: Council of Lords
+    autorizada: true
+    tipos: [lei, edital, aviso]
+    canais: [arauto, quadro_avisos, guarda, templo, mensageiro, edital_publico]
+  courts_chancelaria:
+    nome: Courts / Chancelaria
+    autorizada: true
+    tipos: [edital, aviso]
+    canais: [quadro_avisos, guarda, mensageiro, edital_publico]
+  city_guard:
+    nome: City Guard
+    autorizada: true
+    tipos: [edital, aviso]
+    canais: [arauto, quadro_avisos, guarda, mensageiro, edital_publico]
+  harbor_administration:
+    nome: Harbor Administration
+    autorizada: true
+    tipos: [edital, aviso]
+    canais: [arauto, quadro_avisos, guarda, mensageiro, edital_publico]
+  advisory_council:
+    nome: Advisory Council
+    autorizada: false
+    tipos: []
+    canais: []
+  night_watch:
+    nome: Night Watch
+    autorizada: false
+    tipos: []
+    canais: []
