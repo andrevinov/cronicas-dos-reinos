@@ -4,11 +4,21 @@ from __future__ import annotations
 
 from pathlib import Path
 
-_LEGACY_SOURCE = Path(__file__).with_name("_consolidar_nv20.py")
-_saved_name = globals().get("__name__", "consolidar")
+_NV22_LEGACY_SOURCE = Path(__file__).with_name("_consolidar_nv20.py")
+_nv22_saved_name = globals().get("__name__", "consolidar")
 globals()["__name__"] = "_consolidar_nv20_exec"
-exec(compile(_LEGACY_SOURCE.read_text(encoding="utf-8"), str(_LEGACY_SOURCE), "exec"), globals(), globals())
-globals()["__name__"] = _saved_name
+try:
+    exec(
+        compile(
+            _NV22_LEGACY_SOURCE.read_text(encoding="utf-8"),
+            str(_NV22_LEGACY_SOURCE),
+            "exec",
+        ),
+        globals(),
+        globals(),
+    )
+finally:
+    globals()["__name__"] = _nv22_saved_name
 
 import politica_civica as _civic
 
