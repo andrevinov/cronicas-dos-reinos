@@ -1,0 +1,38 @@
+schema_orcamento_reconhecibilidade_desafios: 1
+feature: nv20_reconhecibilidade_persona_desafios_causais
+arquitetura:
+  estado_fama: estado/estado-atual.yaml
+  writer: transacional_existente
+  motor_desafios: planos_personagens_nv08
+  agenda: mundo_vivo_existente
+  scheduler_novo: false
+  fila_nova: false
+  rng: false
+  scan_desafiantes: false
+limites:
+  max_eventos_fama: 48
+  max_bytes_ledger_fama: 28672
+  max_audiencias_novas_por_marco: 3
+  max_eventos_expostos_por_query_dirigida: 8
+  max_bytes_projecao_desafio: 4096
+  max_planos_ativos: 8
+causalidade:
+  apresentacao_e_fama_mesmo_writer: true
+  dedup_por_persona_audiencia_localidade_marco: true
+  fama_confirma_identidade_real: false
+  fama_concede_conhecimento_individual: false
+  desafiante_aleatorio: false
+  desafio_exige_motivacao: true
+  desafio_exige_conhecimento_persona: true
+  desafio_exige_alcance_ou_canal: true
+  desafio_exige_interesse: true
+  desafio_exige_stakes: true
+  desafio_revalida_protecoes: true
+invariantes:
+  - Ren, Shinta e Kage mantêm ledgers separados por persona
+  - apresentação pública confirmada não pode existir sem seu delta de fama pareado
+  - repetição do mesmo marco e audiência não é farmável
+  - fama não escolhe ator nem cria NPC
+  - desafio planeja abordagem e não resolve o confronto
+  - entrada física continua pertencendo à NV-19
+  - query de fama só ocorre quando reconhecimento é dependência explícita
