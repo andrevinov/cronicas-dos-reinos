@@ -1,0 +1,44 @@
+schema_orcamento_clima_diario_nv21: 1
+feature: nv21_clima_diario_deterministico
+arquitetura:
+  gatilho: alvorada_existente_do_mundo_vivo
+  algoritmo: sha256_por_data_regiao_estacao
+  scheduler_novo: false
+  fila_nova: false
+  chamada_ia: false
+  rng_opaco: false
+  condicoes_persistentes: task34_existente
+limites:
+  max_avaliacoes_por_dia_regiao: 1
+  max_regioes_iniciais: 1
+  max_slots_por_deck: 64
+  max_historico_por_regiao: 12
+  max_bytes_estado_climatico: 20480
+  max_sensoriais_por_estado: 3
+  max_marcadores_por_efeito: 6
+  max_fontes_adicionais_transito: 2
+  max_candidatos_extremos_por_regiao: 1
+frequencia:
+  slots_por_estacao: 32
+  slots_extremos_por_estacao: 2
+  slots_vendaval_por_estacao: 1
+  regra_extremos: no_maximo_dez_porcento_do_deck
+causalidade:
+  cena_sorteia_clima: false
+  passagem_de_cena_rerrola: false
+  chuva_pode_ser_gerada_na_alvorada: true
+  extremo_exige_confirmacao: true
+  efeitos_extremos_congelados_antes_da_confirmacao: true
+  condicao_persistente_so_materializa_estado_ativo: true
+idempotencia:
+  seed_e_deck_auditaveis: true
+  id_por_data_regiao: true
+  fingerprint_por_resultado: true
+  candidato_extremo_estavel_ate_confirmacao: true
+  retry_checkpoint_nao_rerrola: true
+integracoes:
+  sensorial: permanencia_espacial
+  deslocamento: microeventos_transito
+  disponibilidade_espacos: permanencia_espacial
+  incidentes: marcadores_task34_para_incidentes_task35
+  condicoes_persistentes: condicoes_mundo

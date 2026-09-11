@@ -3,7 +3,8 @@ natureza: contrato_de_regressao
 objetivo: >-
   Dar textura determinística a deslocamentos materiais por Ravens Bluff usando o
   mesmo baralho de microeventos locais, sem cadastrar ruas, criar scheduler ou
-  acrescentar uma chamada operacional ao turno.
+  acrescentar uma chamada operacional ao turno. A NV-21 permite somente as duas
+  leituras dirigidas do clima já congelado (estado e, quando ativo, relógio).
 limites:
   max_novos_catalogos: 0
   max_novos_arquivos_estado: 0
@@ -12,7 +13,7 @@ limites:
   max_novos_algoritmos_baralho: 0
   max_novos_rng: 0
   max_chamadas_orquestracao_por_turno: 2
-  max_fontes_transito_preparar: 4
+  max_fontes_transito_preparar: 6
   max_escritas_transito_preparar: 0
   max_escritas_transito_confirmar: 1
   max_fragmentos_narrativos_adicionais: 0
@@ -36,6 +37,8 @@ invariantes:
   transito_nao_avanca_pressao: true
   transito_nao_revela_causa_da_pressao: true
   pressao_nao_altera_frequencia_3_para_1: true
+  clima_apenas_le_estado_ativo: true
+  clima_entra_no_fingerprint_antes_da_narracao: true
   historico_transito_nao_alimenta_pressao_de_seca_local: true
   npc_nomeado_automatico: false
   combate_automatico: false

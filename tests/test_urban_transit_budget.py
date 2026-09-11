@@ -11,6 +11,7 @@ TOOLS = ROOT / "ferramentas"
 if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
+import clima_diario as climate
 import cronica_hotpath as hot
 import microeventos_locais as micro
 import microeventos_transito as transit
@@ -35,7 +36,7 @@ class UrbanTransitBudgetTest(unittest.TestCase):
         self.assertEqual(limits["max_novos_algoritmos_baralho"], 0)
         self.assertEqual(limits["max_novos_rng"], 0)
         self.assertEqual(limits["max_chamadas_orquestracao_por_turno"], 2)
-        self.assertEqual(limits["max_fontes_transito_preparar"], 4)
+        self.assertEqual(limits["max_fontes_transito_preparar"], 6)
         self.assertEqual(limits["max_escritas_transito_preparar"], 0)
         self.assertEqual(limits["max_escritas_transito_confirmar"], 1)
         self.assertEqual(limits["max_historico_transito_recente"], transit.MAX_HISTORY)
@@ -43,7 +44,7 @@ class UrbanTransitBudgetTest(unittest.TestCase):
     def test_reutiliza_exatamente_catalogo_estado_e_helpers_existentes(self):
         self.assertEqual(transit.micro.INDEX, micro.INDEX)
         self.assertEqual(transit.micro.STATE, micro.STATE)
-        source = (ROOT / "ferramentas/microeventos_transito.py").read_text(encoding="utf-8")
+        source = (ROOT / "ferramentas/_microeventos_transito_nv20.py").read_text(encoding="utf-8")
         self.assertNotIn("def atomic(", source)
         self.assertNotIn("def deck_order(", source)
         self.assertNotIn("import random", source)
@@ -61,10 +62,10 @@ class UrbanTransitBudgetTest(unittest.TestCase):
             self.contract["limites"]["ocorrencia_microevento"],
         )
 
-    def test_fontes_sao_quatro_roteadores_compactos_e_pressao_e_read_only(self):
+    def test_fontes_preservam_quatro_roteadores_e_so_acrescentam_clima_dirigido(self):
         result = transit.plan(ROOT, scene_id="budget-source-check")["publico"]
         self.assertEqual(
-            result["fontes_lidas"],
+            result["fontes_lidas"][:4],
             [
                 micro.INDEX.as_posix(),
                 micro.STATE.as_posix(),
@@ -72,10 +73,12 @@ class UrbanTransitBudgetTest(unittest.TestCase):
                 pressao.STATE.as_posix(),
             ],
         )
+        self.assertIn(climate.STATE.as_posix(), result["fontes_lidas"])
         self.assertLessEqual(
             len(result["fontes_lidas"]),
             self.contract["limites"]["max_fontes_transito_preparar"],
         )
+        self.assertIn("clima_diario", result)
 
     def test_hot_path_declara_mesma_dupla_preparar_concluir(self):
         contract = hot._transaction_contract()

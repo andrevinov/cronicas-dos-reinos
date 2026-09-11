@@ -1,0 +1,8 @@
+schema_clima_diario: 1
+natureza: estado_climatico_deterministico
+regioes:
+  ravens_bluff:
+    avaliado_ate: 21 Eleasis, 1372 DR
+    ativo: null
+    candidato_extremo: null
+    historico_recente: []

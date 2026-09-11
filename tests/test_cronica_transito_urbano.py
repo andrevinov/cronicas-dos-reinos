@@ -60,12 +60,8 @@ class CronicaUrbanTransitTest(unittest.TestCase):
     def test_parser_publico_expoe_flag_na_mesma_porta_preparar(self):
         args = cronica.build_parser().parse_args(
             [
-                "preparar",
-                "--cena-id",
-                "move-1",
-                "--transito-urbano",
-                "ravens_bluff",
-                "--sem-oportunidade-sidequest",
+                "preparar", "--cena-id", "move-1", "--transito-urbano",
+                "ravens_bluff", "--sem-oportunidade-sidequest",
             ]
         )
         self.assertEqual(args.cmd, "preparar")
@@ -76,11 +72,7 @@ class CronicaUrbanTransitTest(unittest.TestCase):
         with mock.patch.object(hot.microeventos_transito, "plan", return_value=planned) as plan, mock.patch.object(
             hot.core, "prepare"
         ) as scene_prepare:
-            result = hot.prepare(
-                ROOT,
-                scene_id="transit-test",
-                urban_transit="ravens_bluff",
-            )
+            result = hot.prepare(ROOT, scene_id="transit-test", urban_transit="ravens_bluff")
         plan.assert_called_once_with(ROOT, scene_id="transit-test")
         scene_prepare.assert_not_called()
         self.assertFalse(result["reativa"])
@@ -94,25 +86,17 @@ class CronicaUrbanTransitTest(unittest.TestCase):
         with mock.patch.object(hot.microeventos_transito, "plan") as plan:
             with self.assertRaises(hot.core.CronicaError):
                 hot.prepare(
-                    ROOT,
-                    scene_id="move-and-enter",
-                    place="Galeria dos Escribas",
-                    action="entrar",
-                    tier=1,
-                    danger="baixa",
-                    urban_transit="ravens_bluff",
+                    ROOT, scene_id="move-and-enter", place="Galeria dos Escribas",
+                    action="entrar", tier=1, danger="baixa", urban_transit="ravens_bluff",
                 )
         plan.assert_not_called()
 
     def test_preparacao_real_fica_dentro_do_teto_da_task21(self):
-        result = hot.prepare(
-            ROOT,
-            scene_id="transit-budget-real",
-            urban_transit="ravens_bluff",
-        )
+        result = hot.prepare(ROOT, scene_id="transit-budget-real", urban_transit="ravens_bluff")
         rendered = yaml.safe_dump(result, allow_unicode=True, sort_keys=False).encode("utf-8")
         self.assertLessEqual(len(rendered), hot.core.MAX_PREP_OUTPUT_BYTES)
-        self.assertLessEqual(len(result["fontes_lidas"]), 4)
+        # NV-21 acrescenta somente estado climático + relógio quando clima ativo.
+        self.assertLessEqual(len(result["fontes_lidas"]), 6)
 
     def test_concluir_ordena_preflight_confirmacao_e_registro(self):
         token = self._ticket()
@@ -120,16 +104,10 @@ class CronicaUrbanTransitTest(unittest.TestCase):
         preview = {"id": "s013-transit", "checkpoint_previsto": None}
         confirmed = {**self._planned()["publico"], "mutacoes_aplicadas": True}
         registered = {
-            "id": "s013-transit",
-            "sessao": 13,
-            "deltas": [],
-            "transcricao_escrita": True,
-            "evento_escrito": True,
-            "reparo_parcial": False,
-            "ja_registrada": False,
-            "consolidada": False,
-            "checkpoint_mundo": None,
-            "avisos": [],
+            "id": "s013-transit", "sessao": 13, "deltas": [],
+            "transcricao_escrita": True, "evento_escrito": True,
+            "reparo_parcial": False, "ja_registrada": False,
+            "consolidada": False, "checkpoint_mundo": None, "avisos": [],
         }
 
         def preflight(_repo, _transaction):
@@ -148,8 +126,7 @@ class CronicaUrbanTransitTest(unittest.TestCase):
             hot.turno, "register_transaction", side_effect=register
         ), mock.patch.object(hot.rodape_turno, "build_safe", return_value="rodape"):
             result = hot.conclude(
-                ROOT,
-                token,
+                ROOT, token,
                 {"jogador": "x", "narracao": "y", "resumo": "z", "modo": "exploração", "deltas": []},
                 preflight=preflight,
             )
@@ -160,16 +137,10 @@ class CronicaUrbanTransitTest(unittest.TestCase):
     def test_reparo_pos_confirmacao_nao_revalida_nem_reconsome_transito(self):
         token = self._ticket()
         registered = {
-            "id": "s013-repair",
-            "sessao": 13,
-            "deltas": [],
-            "transcricao_escrita": True,
-            "evento_escrito": True,
-            "reparo_parcial": True,
-            "ja_registrada": False,
-            "consolidada": False,
-            "checkpoint_mundo": None,
-            "avisos": [],
+            "id": "s013-repair", "sessao": 13, "deltas": [],
+            "transcricao_escrita": True, "evento_escrito": True,
+            "reparo_parcial": True, "ja_registrada": False,
+            "consolidada": False, "checkpoint_mundo": None, "avisos": [],
         }
         with mock.patch.object(hot, "_revalidate_transit") as revalidate, mock.patch.object(
             hot, "_confirm_transit"
@@ -177,9 +148,7 @@ class CronicaUrbanTransitTest(unittest.TestCase):
             hot.turno, "register_transaction", return_value=registered
         ), mock.patch.object(hot.rodape_turno, "build_safe", return_value="rodape"):
             result = hot.register(
-                ROOT,
-                token,
-                {"qualquer": "payload já validado pelo fluxo real"},
+                ROOT, token, {"qualquer": "payload já validado pelo fluxo real"},
                 revalidate_ticket=False,
             )
         revalidate.assert_not_called()
@@ -203,11 +172,7 @@ class CronicaUrbanTransitTest(unittest.TestCase):
             "proximo_passo": {},
             "fontes_lidas": [],
         }) as prepare:
-            reactive = hot.prepare(
-                ROOT,
-                scene_id="plain-reactive",
-                context_tags=["assunto:documentos"],
-            )
+            reactive = hot.prepare(ROOT, scene_id="plain-reactive", context_tags=["assunto:documentos"])
         prepare.assert_called_once()
         self.assertTrue(reactive["reativa"])
 
