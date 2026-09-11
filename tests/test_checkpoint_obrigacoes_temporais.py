@@ -95,7 +95,7 @@ class TemporalCausalDispatchTest(unittest.TestCase):
             },
             "orcamento": {"max_pendencias_abertas": 1},
         }
-        tracker = {"despachos": {}}
+        tracker = {"adiamentos": {}, "despachos": {}}
         written = []
 
         def capture(_path, value):

@@ -99,7 +99,7 @@ agentes:
       data: '17 Eleasis, 1372 DR'
       hora: '06:00'
     arquivo: narrador/agentes-leves/jack_mooney.yaml
-    perfil_blob_git: 387d075e0b0cf51689a1b13aa1d9e61606868671
+    perfil_blob_git: 8a65549204c4bed3f8e0da456955c8d673797627
     fontes_causais:
     - estado/relacoes/jack_mooney.yaml
   pell:
