@@ -6,7 +6,7 @@ perfil_operacional: recorrente_leve
 rotina_padrao:
   descricao: Administrar o circo e transformar a presença ou ausência de Kage em produto sob filtros dos Mooney.
   fonte: estado/relacoes/jack_mooney.yaml
-  evidencia: Jack aceitou bem a estratégia e passou a vender a ausência como escassez e descanso do joelho da Princesa das Sombras, não como medo.
+  evidencia: Jack aceitou vender a ausência de Kage como escassez e descanso da Princesa das Sombras.
 objetivo_atual:
   descricao: Manter Kage comercialmente valioso sem entregar seu acesso ou segurança ao contratante externo.
   fonte: estado/relacoes/jack_mooney.yaml
@@ -15,9 +15,9 @@ iniciativas_possiveis:
 - descricao: Cancelar ou endurecer uma proposta quando um patrono tentar remover equipe, testemunhas ou filtros dos Mooney.
   fonte: estado/relacoes/jack_mooney.yaml
   evidencia: Se a Casa Veyr resistir a entrada, equipe, lamparinas ou testemunhas dos Mooney, Jack tende a cancelar ou endurecer a contraproposta.
-- descricao: Preparar e anunciar a próxima apresentação de Kage mantendo particulares anteriores sob preço e filtro próprios.
+- descricao: Reconciliar o calendário público de Kage antes de voltar a tratá-lo como futuro, preservando preço e filtros dos Mooney.
   fonte: estado/relacoes/jack_mooney.yaml
-  evidencia: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona dos Mooney, com anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack e custando pelo menos 80 PO.
+  evidencia: A apresentação pública que estava marcada para 17 Eleasis ao cair da tarde é agora um marco passado; qualquer próxima apresentação pública de Kage exige novo prazo, retorno ou encerramento explícito.
 regra_de_reavaliacao: Administração ordinária do circo é o padrão; só criar mudança persistente diante de novo patrono, risco aos filtros, ameaça ao abrigo ou decisão comercial relevante sobre Kage.
 fontes_canonicas:
 - estado/relacoes/jack_mooney.yaml

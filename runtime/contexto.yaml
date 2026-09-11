@@ -84,3 +84,69 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
+compromissos:
+  quantidade: 2
+  itens:
+    jack_kage_pos_17_eleasis:
+      tipo: compromisso
+      resumo: Jack precisa reconciliar o próximo passo público de Kage após o marco já passado de 17 Eleasis.
+      envolvidos:
+      - jack_mooney
+      janela:
+        inicio:
+          data: 18 Eleasis, 1372 DR
+          hora: 00:00
+        descricao: Reavaliação devida no primeiro instante após a data pública anteriormente marcada.
+      obrigacao_temporal:
+        schema: 1
+        estado: reconciliar
+        responsavel: jack_mooney
+        destinatario: ren
+        local_ou_canal: contato direto no circo dos Mooney
+        prazo_ou_condicao:
+          data: 17 Eleasis, 1372 DR
+        resultado_esperado: registrar próximo passo, novo prazo ou encerramento explícito para o fio público de
+          Kage
+        modo_retorno: conversa direta quando Jack alcançar Ren
+        fonte_canonica:
+          arquivo: estado/relacoes/jack_mooney.yaml
+          evidencia_literal: A data de 17 Eleasis para a apresentação pública de Kage já passou. O estado disponível
+            não registra novo calendário, retorno de Jack nem encerramento do fio; ele precisa ser reconciliado
+            antes de voltar a ser tratado como futuro.
+        fontes_suporte:
+        - arquivo: historico/relacoes/jack_mooney.yaml
+          evidencia_literal: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona
+            dos Mooney, com anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack
+            e custando pelo menos 80 PO.
+        protecoes:
+        - não inferir que a apresentação de 17 Eleasis ocorreu só porque a data passou
+        - não criar nova apresentação sem causa ou decisão canônica
+      situacao_temporal: devido
+    silva_acompanhar_colm:
+      tipo: compromisso
+      resumo: Silva precisa acompanhar a transferência de Colm e devolver apenas estado genérico a Ren quando houver
+        mudança.
+      envolvidos:
+      - silva_elkwood
+      obrigacao_temporal:
+        schema: 1
+        estado: reconciliar
+        responsavel: silva_elkwood
+        destinatario: ren
+        local_ou_canal: atualização por Silva sem revelar a rota compartimentada
+        prazo_ou_condicao:
+          condicao: segunda transferência de Colm concluída, bloqueada ou comprometida
+        resultado_esperado: reconciliar o estado de Colm e limitar eventual retorno a Ren ao estado geral de segurança
+        modo_retorno: atualização genérica, sem localização da segunda mão ou da cama final
+        fonte_canonica:
+          arquivo: estado/relacoes/colm_dunn.yaml
+          evidencia_literal: Hessa Morn o ocultou sob uma carga de hortaliças e iniciou o trajeto para a segunda
+            transferência.
+        fontes_suporte:
+        - arquivo: historico/relacoes/silva_elkwood.yaml
+          evidencia_literal: 'Silva entregou a Ren a primeira etapa da rota compartimentada de Colm: Hessa Morn
+            no lagar abandonado; a segunda mão e a cama final permanecem ocultas'
+        protecoes:
+        - não revelar a segunda mão, a cama final ou a rota compartimentada
+        - não transformar estado genérico em localização
+      situacao_temporal: sem_data
