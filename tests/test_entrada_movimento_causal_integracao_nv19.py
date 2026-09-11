@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import inspect
 from pathlib import Path
 import sys
 import unittest
@@ -107,7 +108,9 @@ class EntryLocalBudgetContractTest(unittest.TestCase):
         self.assertEqual(plans.MAX_ENTRY_PROJECTION_BYTES, 3072)
 
     def test_modulo_nv19_nao_importa_rng_scheduler_ou_catalogo_de_populacao(self):
-        source = Path(plans.__file__).read_text(encoding="utf-8")
+        defining_source = inspect.getsourcefile(plans.project_local_entry)
+        source_path = Path(defining_source) if defining_source else Path(plans.__file__)
+        source = source_path.read_text(encoding="utf-8")
         self.assertNotIn("import random", source)
         self.assertNotIn("import sched", source)
         self.assertNotIn("apscheduler", source.lower())

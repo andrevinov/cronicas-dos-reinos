@@ -27,6 +27,24 @@ def _recognition_registries():
     return _recognition.load_audiences(repo), _recognition.load_identities(repo)
 
 
+def _recognition_contract_relevant(deltas):
+    """Gate estrutural barato: o hot path neutro não abre registros NV-20."""
+    for delta in deltas:
+        if _recognition.touches(delta):
+            return True
+        if not isinstance(delta, dict):
+            continue
+        value = delta.get("valor")
+        if (
+            delta.get("alvo") == "consequencia"
+            and delta.get("op") == "registrar"
+            and isinstance(value, dict)
+            and value.get("tipo") == _recognition.PERFORMANCE_TYPE
+        ):
+            return True
+    return False
+
+
 def validate_delta(delta):
     if not _recognition.touches(delta):
         return _BASE_VALIDATE_DELTA_NV19(delta)
@@ -41,10 +59,13 @@ def validate_delta(delta):
 
 def validate_pending_record(record):
     result = _BASE_VALIDATE_PENDING_NV19(record)
+    deltas = list(record.get("deltas") or [])
+    if not _recognition_contract_relevant(deltas):
+        return result
     try:
         audiences, identities_registry = _recognition_registries()
         _recognition.validate_transaction_contract(
-            list(record.get("deltas") or []), audiences, identities_registry
+            deltas, audiences, identities_registry
         )
     except _recognition.RecognizabilityError as exc:
         raise TransactionError(str(exc)) from exc

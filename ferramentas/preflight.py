@@ -3,12 +3,26 @@
 from __future__ import annotations
 
 from pathlib import Path
+import sys
 
 _LEGACY_SOURCE = Path(__file__).with_name("_preflight_nv19.py")
 _saved_name = globals().get("__name__", "preflight")
-globals()["__name__"] = "_preflight_nv19_exec"
-exec(compile(_LEGACY_SOURCE.read_text(encoding="utf-8"), str(_LEGACY_SOURCE), "exec"), globals(), globals())
-globals()["__name__"] = _saved_name
+if _saved_name == "__main__":
+    # O snapshot contém dataclasses. Durante execução via ``exec``, dataclasses
+    # precisa encontrar ``cls.__module__`` em ``sys.modules``; ao mesmo tempo não
+    # podemos deixar o ``if __name__ == '__main__'`` legado executar antes da
+    # composição NV-20. O alias registra o próprio módulo público só no caminho CLI.
+    _exec_name = "_preflight_nv19_exec"
+    sys.modules[_exec_name] = sys.modules[_saved_name]
+    globals()["__name__"] = _exec_name
+    try:
+        exec(compile(_LEGACY_SOURCE.read_text(encoding="utf-8"), str(_LEGACY_SOURCE), "exec"), globals(), globals())
+    finally:
+        globals()["__name__"] = _saved_name
+else:
+    # Em import normal, preserve o nome real do módulo. Isso mantém dataclasses,
+    # monkeypatches e introspecção associados ao módulo público.
+    exec(compile(_LEGACY_SOURCE.read_text(encoding="utf-8"), str(_LEGACY_SOURCE), "exec"), globals(), globals())
 
 _BASE_CHECKS_NV19 = checks
 

@@ -10,7 +10,17 @@ globals()["__name__"] = "_planos_personagens_nv20_exec"
 exec(compile(_IMPL_SOURCE.read_text(encoding="utf-8"), str(_IMPL_SOURCE), "exec"), globals(), globals())
 globals()["__name__"] = _saved_name
 
+_BASE_STEP_PUBLIC_NV20 = _step
 _BASE_CHALLENGE_REQUIREMENTS_NV20 = _challenge_requirements
+
+
+def _step(value):
+    # A composição NV-20 precisa rejeitar a fusão antes de delegar o restante do
+    # passo à NV-19; caso contrário um ``entrada_local`` malformado intercepta o
+    # erro e mascara o invariante mais forte de separação entre chegada e desafio.
+    if isinstance(value, dict) and CHALLENGE_KEY in value and ENTRY_KEY in value:
+        raise PlanError("desafio_persona e entrada_local são passos distintos; não fundir chegada e desafio")
+    return _BASE_STEP_PUBLIC_NV20(value)
 
 
 def _challenge_requirements(view, plan):

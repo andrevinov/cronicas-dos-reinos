@@ -152,21 +152,25 @@ class CausalChallengeJourneyTest(legacy.PlanFixture):
         self.write("estado/estado-atual.yaml", state)
 
     def _prepare_actor(self):
+        relation_path = f"estado/relacoes/{self.actor}.yaml"
+        relation = self.read(relation_path)
+        relation["relacao"]["ambicao_desafio"] = "Desafiar Kage por prestígio."
+        # Conhecimento individual e reconhecibilidade coletiva são pré-condições
+        # independentes. A fixture mantém uma evidência canônica própria do ator
+        # para que remover o ledger de fama teste somente o gate de reconhecimento.
+        relation["relacao"]["fato_publico_kage"] = self.FACT
+        self.write(relation_path, relation)
+
         npc = self.read(self.source)
         npc["npc"]["motivacao_desafio"] = True
         npc["npc"]["interesse_desafio"] = "marcial"
         npc["npc"]["conhecimento"] = [
             {
                 "id": "kage_publico", "persona": "kage",
-                "fonte": "estado/estado-atual.yaml", "evidencia": self.FACT,
+                "fonte": relation_path, "evidencia": self.FACT,
             }
         ]
         self.write(self.source, npc)
-
-        relation_path = f"estado/relacoes/{self.actor}.yaml"
-        relation = self.read(relation_path)
-        relation["relacao"]["ambicao_desafio"] = "Desafiar Kage por prestígio."
-        self.write(relation_path, relation)
 
         profile_path = f"narrador/agentes-leves/{self.actor}.yaml"
         profile = self.read(profile_path)
