@@ -1,0 +1,31 @@
+schema_orcamento_aceitacao_vivacidade: 1
+
+limites:
+  max_candidatas: 12
+  max_bytes_projecao: 4096
+  max_primarias_por_janela: 1
+  chamadas_ia_por_npc: 0
+  scans_globais_npc: 0
+
+arquitetura:
+  scheduler_novo: false
+  fila_nova: false
+  hot_path_novo: false
+  writer_novo: false
+  reusa_fronteira_vivacidade: true
+  aceitacao_read_only: true
+
+economia:
+  turno_curto: "continua fora da fronteira quando não cruza janela relevante"
+  turno_longo: "reutiliza a fronteira temporal já necessária"
+  projecao: "limitada pelo mesmo teto da NV-14"
+  ia: "nenhuma chamada por NPC"
+
+causalidade:
+  candidata_sem_destino: proibida
+  adiamento_explicito: obrigatorio
+  bloqueio_preservado: obrigatorio
+  calma_sem_inventar_conteudo: obrigatoria
+  rollout_semantico: "contexto -> mecânica -> writer, com sucesso observado"
+
+teste_permanente: tests/test_aceitacao_vivacidade.py
