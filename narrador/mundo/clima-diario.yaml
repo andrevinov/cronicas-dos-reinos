@@ -1,0 +1,258 @@
+schema_clima_diario: 1
+natureza: configuracao_deterministica_reservada
+semente: nv21-clima-ravens-bluff-v1
+regioes:
+  ravens_bluff:
+    nome: Ravens Bluff
+    meses:
+      Hammer: inverno
+      Alturiak: inverno
+      Ches: primavera
+      Tarsakh: primavera
+      Mirtul: primavera
+      Kythorn: verao
+      Flamerule: verao
+      Eleasis: verao
+      Eleint: outono
+      Marpenoth: outono
+      Uktar: outono
+      Nightal: inverno
+    festivais:
+      Midwinter: inverno
+      Greengrass: primavera
+      Midsummer: verao
+      Shieldmeet: verao
+      Highharvestide: outono
+      Feast of the Moon: outono
+    decks:
+      inverno:
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_forte
+        - chuva_forte
+        - vento
+        - vento
+        - vento
+        - vento
+        - vento
+        - vento
+        - tempestade
+        - vendaval
+      primavera:
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_forte
+        - chuva_forte
+        - chuva_forte
+        - chuva_forte
+        - vento
+        - vento
+        - vento
+        - vento
+        - vento
+        - tempestade
+        - vendaval
+      verao:
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_forte
+        - chuva_forte
+        - vento
+        - vento
+        - vento
+        - vento
+        - tempestade
+        - vendaval
+      outono:
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - ceu_limpo
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - nublado
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_leve
+        - chuva_forte
+        - chuva_forte
+        - chuva_forte
+        - vento
+        - vento
+        - vento
+        - vento
+        - vento
+        - vento
+        - tempestade
+        - vendaval
+estados:
+  ceu_limpo:
+    familia: estavel
+    extremo: false
+    duracao_horas: 18
+    intensidade: leve
+    descricao: Céu predominantemente limpo e circulação normal de ar sobre a cidade.
+    sensorial: [luz aberta sobre telhados e ruas, ar sem precipitação relevante]
+    deslocamento: {tempo_percentual: 100, marcadores: [piso_seco]}
+    espacos: {exteriores: normal, expostos: normal, marcadores: [espacos_externos_abertos]}
+    incidentes: [tempo_estavel]
+    condicao:
+      sinais: [céu aberto, vias secas]
+      marcadores: [tempo_estavel, piso_seco]
+  nublado:
+    familia: estavel
+    extremo: false
+    duracao_horas: 18
+    intensidade: leve
+    descricao: Cobertura de nuvens persistente, sem precipitação relevante prevista.
+    sensorial: [luz difusa e céu fechado, umidade perceptível no ar]
+    deslocamento: {tempo_percentual: 100, marcadores: [visibilidade_normal]}
+    espacos: {exteriores: normal, expostos: normal, marcadores: [espacos_externos_abertos]}
+    incidentes: [ceu_nublado]
+    condicao:
+      sinais: [céu encoberto, luz difusa]
+      marcadores: [ceu_nublado]
+  chuva_leve:
+    familia: chuva
+    extremo: false
+    duracao_horas: 10
+    intensidade: leve
+    descricao: Chuva leve e intermitente mantém superfícies externas molhadas.
+    sensorial: [chuva fina nos telhados, cheiro de pedra e madeira molhadas]
+    deslocamento: {tempo_percentual: 110, marcadores: [chuva, piso_molhado]}
+    espacos: {exteriores: desconfortavel, expostos: cautela, marcadores: [abrigo_preferivel, piso_molhado]}
+    incidentes: [chuva, piso_molhado]
+    condicao:
+      sinais: [chuva fina, superfícies molhadas]
+      marcadores: [chuva, piso_molhado]
+  chuva_forte:
+    familia: chuva
+    extremo: false
+    duracao_horas: 8
+    intensidade: moderada
+    descricao: Chuva forte reduz visibilidade e torna vias e áreas expostas escorregadias.
+    sensorial: [água batendo forte em coberturas, ruas brilhando sob chuva contínua]
+    deslocamento: {tempo_percentual: 125, marcadores: [chuva_forte, piso_molhado, visibilidade_reduzida]}
+    espacos: {exteriores: restrito, expostos: restrito, marcadores: [abrigo_recomendado, piso_molhado]}
+    incidentes: [chuva_forte, piso_molhado, visibilidade_reduzida]
+    condicao:
+      sinais: [chuva intensa, visibilidade reduzida, piso encharcado]
+      marcadores: [chuva_forte, piso_molhado, visibilidade_reduzida]
+  vento:
+    familia: vento
+    extremo: false
+    duracao_horas: 8
+    intensidade: moderada
+    descricao: Vento persistente dificulta deslocamentos expostos e movimenta objetos leves.
+    sensorial: [rajadas entre construções, lonas e placas batendo ao vento]
+    deslocamento: {tempo_percentual: 110, marcadores: [vento_forte]}
+    espacos: {exteriores: cautela, expostos: cautela, marcadores: [vento_forte]}
+    incidentes: [vento_forte]
+    condicao:
+      sinais: [rajadas persistentes, objetos leves deslocados]
+      marcadores: [vento_forte]
+  tempestade:
+    familia: tempestade
+    extremo: true
+    duracao_horas: 6
+    intensidade: forte
+    descricao: Tempestade com chuva intensa, vento forte e trovoadas compromete áreas expostas.
+    sensorial: [trovoadas sobre a cidade, chuva e vento abafando sons distantes]
+    deslocamento: {tempo_percentual: 150, marcadores: [chuva_forte, vento_forte, visibilidade_reduzida]}
+    espacos: {exteriores: restrito, expostos: indisponivel, marcadores: [abrigo_necessario, tempestade]}
+    incidentes: [chuva_forte, vento_forte, tempestade, visibilidade_reduzida]
+    condicao:
+      sinais: [trovoadas, chuva intensa, rajadas fortes, visibilidade ruim]
+      marcadores: [chuva_forte, tempestade, vento_forte, visibilidade_reduzida]
+  vendaval:
+    familia: vendaval
+    extremo: true
+    duracao_horas: 4
+    intensidade: forte
+    descricao: Vendaval severo torna áreas expostas perigosas e ameaça estruturas leves e objetos soltos.
+    sensorial: [vento rugindo entre telhados, detritos e lonas sendo arrancados]
+    deslocamento: {tempo_percentual: 175, marcadores: [vento_extremo, objetos_soltos, estrutura_exposta]}
+    espacos: {exteriores: indisponivel, expostos: indisponivel, marcadores: [abrigo_necessario, vento_extremo]}
+    incidentes: [vento_extremo, objetos_soltos, estrutura_exposta]
+    condicao:
+      sinais: [rajadas violentas, detritos soltos, estruturas leves sob tensão]
+      marcadores: [estrutura_exposta, objetos_soltos, vento_extremo]
+regras:
+  avaliacao_por_dia_regiao: 1
+  zero_ia: true
+  zero_scheduler_novo: true
+  cena_nao_sorteia: true
+  extremo_exige_confirmacao: true
+  retry_preserva_resultado: true
