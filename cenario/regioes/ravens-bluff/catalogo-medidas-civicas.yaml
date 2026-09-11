@@ -1,0 +1,28 @@
+schema_catalogo_medidas_civicas: 1
+jurisdicao: ravens_bluff
+natureza: catalogo_limitado_sem_sorteio
+observacao: >-
+  O catálogo só pode ser usado por seleção explícita e com causa institucional.
+  Nenhuma entrada é sorteada ou sondada a cada turno.
+
+medidas_menores:
+  aviso_seguranca_local:
+    tipo: aviso
+    descricao: Aviso localizado de segurança, circulação ou ordem pública.
+    instituicoes: [lord_mayor_gabinete, city_guard]
+    canais_sugeridos: [quadro_avisos, guarda, arauto, edital_publico]
+  interdicao_temporaria_local:
+    tipo: edital
+    descricao: Interdição temporária e espacialmente delimitada por causa institucional explícita.
+    instituicoes: [lord_mayor_gabinete, city_guard, courts_chancelaria]
+    canais_sugeridos: [quadro_avisos, guarda, mensageiro, edital_publico]
+  aviso_portuario:
+    tipo: aviso
+    descricao: Aviso operacional referente a porto, tarifas, atracação ou fiscalização portuária.
+    instituicoes: [harbor_administration]
+    canais_sugeridos: [quadro_avisos, guarda, mensageiro, edital_publico]
+  convocacao_publica:
+    tipo: edital
+    descricao: Convocação pública institucional para audiência, comparecimento ou ato cívico.
+    instituicoes: [lord_mayor_gabinete, council_of_lords, courts_chancelaria]
+    canais_sugeridos: [arauto, quadro_avisos, templo, mensageiro, edital_publico]
