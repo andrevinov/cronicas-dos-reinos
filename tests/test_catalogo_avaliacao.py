@@ -87,6 +87,8 @@ class EvaluationCatalogContractTest(unittest.TestCase):
             "catalogo-modulos-v2.schema.json",
             "catalogo-guardrails-v2.schema.json",
             "series-avaliacao.schema.json",
+            "ledger-modular-v2.schema.json",
+            "adjudicacoes-ledger-v2.schema.json",
         }
         self.assertEqual({path.name for path in SCHEMAS.glob("*.json")}, expected)
         for filename in expected:

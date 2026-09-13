@@ -80,7 +80,8 @@ class RolloutNarrativeSystemsTest(RolloutFixture):
         ]
         report = mod.analyze(self.path(rows))
         self.assertEqual(report["schema_version"], 3)
-        self.assertEqual(report["narrative_systems_schema"], 1)
+        self.assertEqual(report["narrative_systems_schema"], 2)
+        self.assertEqual(report["modular_ledger_schema"], 2)
         self.assertEqual(report["narration_turns"]["turns"], 1)
         self.assertEqual(report["narration_turns"]["orchestration_calls"], 2)
         self.assertEqual(report["narration_turns"]["cronica_pair_turns"], 1)

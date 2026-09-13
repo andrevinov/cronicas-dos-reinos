@@ -13,6 +13,12 @@ memória canônica da campanha ou participa do hot path da narração.
   comparabilidade;
 - `schemas/`: schemas JSON dos três contratos novos.
 
+O schema do ledger hierárquico e o de suas adjudicações também ficam em
+`schemas/ledger-modular-v2.schema.json` e
+`schemas/adjudicacoes-ledger-v2.schema.json`. O ledger é emitido dentro de
+`modular_ledger_v2` por `ferramentas/analisar-rollout.py`; o gerador de pacotes
+continua pedindo explicitamente a visão v1 até a RM-11.
+
 O validador estrutural é executado com:
 
 ```bash

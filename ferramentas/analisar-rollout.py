@@ -2,13 +2,14 @@
 """Telemetria pós-hoc de rollout com atribuição de sistemas narrativos.
 
 O analisador schema 3 permanece congelado em ``_analisar_rollout_core.py``. Esta
-camada preserva o schema público anterior e acrescenta extensões independentes
-para orquestração/sistemas narrativos, cobertura Task47 e, na NV-14, distinção
-entre calma justificada e ausência de consulta dos módulos de vivacidade. Nada
-aqui roda durante o jogo ou escreve no repo.
+camada preserva a visão ``legacy-v1`` e acrescenta o ledger hierárquico
+``modules-v2``. A atribuição continua observacional, pós-hoc e somente leitura:
+nada aqui roda durante o jogo ou escreve no repo.
 """
 from __future__ import annotations
 
+import argparse
+import copy
 import importlib.util
 import json
 import re
@@ -30,9 +31,14 @@ for _name in dir(_core):
         globals()[_name] = getattr(_core, _name)
 
 SCHEMA_VERSION = _core.SCHEMA_VERSION
-NARRATIVE_SYSTEMS_SCHEMA = 1
+NARRATIVE_SYSTEMS_SCHEMA = 2
+LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
+MODULAR_LEDGER_SCHEMA = 2
+MODULAR_DETECTOR_VERSION = "2.0.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
+
+_CATALOG_V2_PATH = Path(__file__).resolve().parents[1] / "evaluation" / "catalogo-modulos-v2.json"
 
 _BASE_CLASSIFY_TOOL = _core._classify_tool
 _BASE_ACCESS_LEVEL = _core._access_level_from_command
@@ -267,6 +273,17 @@ def _narrative_systems_from_output(output_text: str) -> set[str]:
     }
 
 
+def _matching_markers(
+    text: str, markers_by_system: dict[str, tuple[str, ...]]
+) -> dict[str, list[str]]:
+    lower = text.casefold()
+    return {
+        system: [marker for marker in markers if marker in lower]
+        for system, markers in markers_by_system.items()
+        if any(marker in lower for marker in markers)
+    }
+
+
 def _liveness_observation(output_text: str) -> dict[str, int] | None:
     """Extrai somente sinais estruturais; não interpreta a prosa da narração."""
     lower = output_text.casefold()
@@ -294,8 +311,15 @@ def _liveness_observation(output_text: str) -> dict[str, int] | None:
     }
 
 
-def _observation_turn() -> dict[str, Any]:
-    return {"user_messages": [], "narration_signal_tool": False, "calls": [], "calls_by_id": {}}
+def _observation_turn(turn_id: str) -> dict[str, Any]:
+    return {
+        "turn_id": turn_id,
+        "user_messages": [],
+        "assistant_messages": [],
+        "narration_signal_tool": False,
+        "calls": [],
+        "calls_by_id": {},
+    }
 
 
 def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -306,7 +330,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
 
     def ensure(turn_id: str) -> dict[str, Any]:
         if turn_id not in turns:
-            turns[turn_id] = _observation_turn()
+            turns[turn_id] = _observation_turn(turn_id)
             order.append(turn_id)
         return turns[turn_id]
 
@@ -341,20 +365,42 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 continue
             turn = ensure(turn_id)
             item_type = payload.get("type")
-            if item_type == "message" and payload.get("role") == "user":
+            if item_type == "message":
                 text = _core._message_text(payload)
-                if text and not text.startswith("# AGENTS.md instructions"):
-                    turn["user_messages"].append(text)
+                if payload.get("role") == "user":
+                    if text and not text.startswith("# AGENTS.md instructions"):
+                        turn["user_messages"].append(text)
+                elif payload.get("role") == "assistant" and text:
+                    turn["assistant_messages"].append(text)
                 continue
             if item_type in {"function_call", "custom_tool_call"}:
+                name = str(payload.get("name") or "<sem-nome>")
+                raw_input = _core._tool_input(payload)
                 command = _core._extract_command(_core._tool_input(payload))
                 cid = _core._call_id(payload)
+                command_systems = _narrative_systems_from_command(command)
+                command_markers = _matching_markers(command, _SYSTEM_COMMAND_MARKERS)
+                if "npc_social_initiative" in command_systems:
+                    command_markers.setdefault("npc_social_initiative", []).append("contexto.py npc")
+                if "emergent_sidequest_opportunity" in command_systems:
+                    command_markers.setdefault("emergent_sidequest_opportunity", []).append(
+                        "--oportunidade-sidequest"
+                    )
                 call = {
                     "call_id": cid,
+                    "name": name,
+                    "raw_input": raw_input,
                     "command": command,
                     "orchestration_phase": _orchestration_phase(command),
                     "sidequest_decision": _sidequest_decision_from_command(command),
-                    "narrative_systems": _narrative_systems_from_command(command),
+                    "narrative_systems": set(command_systems),
+                    "command_systems": set(command_systems),
+                    "output_systems": set(),
+                    "command_markers": command_markers,
+                    "output_markers": {},
+                    "category": _classify_tool(name, raw_input),
+                    "output_text": "",
+                    "output_success": None,
                     "liveness": None,
                     "output_seen": False,
                 }
@@ -377,7 +423,12 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
             if matched is None:
                 matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
-                matched["narrative_systems"].update(_narrative_systems_from_output(output_text))
+                output_systems = _narrative_systems_from_output(output_text)
+                matched["narrative_systems"].update(output_systems)
+                matched["output_systems"] = output_systems
+                matched["output_markers"] = _matching_markers(output_text, _SYSTEM_OUTPUT_MARKERS)
+                matched["output_text"] = output_text
+                matched["output_success"] = _core._tool_success(payload, output_text)
                 matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
 
@@ -452,12 +503,735 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
+_ACTIVATION_PRIORITY = {
+    "ausente": 0,
+    "consulta": 1,
+    "gate_neutro": 2,
+    "decisao": 3,
+    "efeito": 4,
+}
+_SOURCE_ORDER = {"comando": 0, "output": 1, "ticket": 2, "resposta": 3, "adjudicacao": 4}
+
+_LEGACY_EFFECT_MARKERS: dict[str, tuple[str, ...]] = {
+    "emergent_sidequest_authoring": ("sidequest_materializada", "sidequest_emergente_materializada"),
+    "transactional_sidequest_progress": ("progresso_sidequests_registrado",),
+    "quest_rewards": ("recompensa_aplicada", "recompensa_materializada"),
+    "sidequest_success_reactions": ("reaction_id:", "reacao_materializada"),
+    "canon_bridge": ("ponte_materializada",),
+    "world_local_incidents": ("incidente_confirmado", "microevento_confirmado"),
+    "persistent_world_conditions": ("condicao_registrada", "condicao_encerrada"),
+    "batch_world_boundary": ("lote_aplicado", "fronteira_aplicada"),
+    "secret_canon": ("materializado_em_jogo",),
+    "concurrent_adversarial_operations": ("operacao_resolvida", "resolver_operacao_adversarial"),
+}
+
+_LEGACY_NEUTRAL_MARKERS: dict[str, tuple[str, ...]] = {
+    "npc_social_initiative": ("resultado: silencio", '"resultado": "silencio"'),
+    "world_local_incidents": ("sem_incidente", "sem_microevento"),
+    "liveness_boundary": ("calma_justificada",),
+    "reactive_pressure_routing": ("sem_pressao", "sem_pressão"),
+}
+
+
+def _load_modular_catalog() -> dict[str, Any]:
+    try:
+        catalog = json.loads(_CATALOG_V2_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RolloutError(f"catálogo modular v2 inválido: {exc}") from exc
+    if not isinstance(catalog, dict) or catalog.get("schema_catalogo_modulos") != 2:
+        raise RolloutError("catálogo modular v2 precisa usar schema_catalogo_modulos=2")
+    modules = catalog.get("modulos") or []
+    ids = [str(item.get("id") or "") for item in modules if isinstance(item, dict)]
+    if len(ids) != 12 or len(ids) != len(set(ids)):
+        raise RolloutError("catálogo modular v2 precisa conter doze módulos únicos")
+    return catalog
+
+
+def _catalog_indexes(catalog: dict[str, Any]) -> tuple[
+    dict[str, dict[str, Any]],
+    dict[str, tuple[str, str]],
+    dict[str, int],
+    dict[tuple[str, str], int],
+]:
+    modules = list(catalog.get("modulos") or [])
+    module_by_id = {str(module["id"]): module for module in modules}
+    aliases: dict[str, tuple[str, str]] = {}
+    module_order = {str(module["id"]): index for index, module in enumerate(modules)}
+    capability_order: dict[tuple[str, str], int] = {}
+    for module in modules:
+        module_id = str(module["id"])
+        for index, capability in enumerate(module.get("subcapacidades") or []):
+            capability_id = str(capability["id"])
+            capability_order[(module_id, capability_id)] = index
+            for alias in capability.get("aliases_v1") or []:
+                if alias in aliases:
+                    raise RolloutError(f"alias v1 duplicado no catálogo modular: {alias}")
+                aliases[str(alias)] = (module_id, capability_id)
+    return module_by_id, aliases, module_order, capability_order
+
+
+def _empty_signal() -> dict[str, Any]:
+    return {
+        "signal_sources": [],
+        "eligibility_observed": "indeterminada",
+        "activation_observed": "ausente",
+        "observed_result": None,
+        "materialized_result_observed": None,
+        "effect_observed": None,
+        "observable_evidence": [],
+        "inference_confidence": "media",
+    }
+
+
+def _add_signal(
+    signals: dict[tuple[str, str], dict[str, Any]],
+    module_id: str,
+    capability_id: str,
+    *,
+    source: str,
+    evidence: str,
+    eligibility: str = "indeterminada",
+    activation: str = "consulta",
+    observed_result: str | None = None,
+    materialized_result: str | None = None,
+    effect_observed: bool | None = None,
+    confidence: str = "media",
+) -> None:
+    signal = signals.setdefault((module_id, capability_id), _empty_signal())
+    if source not in signal["signal_sources"]:
+        signal["signal_sources"].append(source)
+    if evidence and evidence not in signal["observable_evidence"]:
+        signal["observable_evidence"].append(evidence)
+    if eligibility in {"sim", "nao"}:
+        current = signal["eligibility_observed"]
+        signal["eligibility_observed"] = eligibility if current == "indeterminada" else current
+    if _ACTIVATION_PRIORITY[activation] > _ACTIVATION_PRIORITY[signal["activation_observed"]]:
+        signal["activation_observed"] = activation
+        if observed_result is not None:
+            signal["observed_result"] = observed_result
+    elif signal["observed_result"] is None and observed_result is not None:
+        signal["observed_result"] = observed_result
+    if materialized_result is not None:
+        signal["materialized_result_observed"] = materialized_result
+    if effect_observed is True or signal["effect_observed"] is None:
+        signal["effect_observed"] = effect_observed
+    if confidence == "alta" or signal["inference_confidence"] == "baixa":
+        signal["inference_confidence"] = confidence
+
+
+def _legacy_activation(alias: str, output_text: str, source: str) -> tuple[str, str | None, str | None, bool | None]:
+    lower = output_text.casefold()
+    if any(marker in lower for marker in _LEGACY_NEUTRAL_MARKERS.get(alias, ())):
+        return "gate_neutro", "resultado_neutro", None, False
+    if any(marker in lower for marker in _LEGACY_EFFECT_MARKERS.get(alias, ())):
+        return "efeito", "efeito_observado", "efeito_materializado", True
+    if alias in {
+        "emergent_sidequest_opportunity",
+        "canonical_secret_quests",
+        "adversarial_integrity",
+        "concurrent_adversarial_operations",
+        "reactive_pressure_routing",
+        "secret_canon",
+    } and source == "output":
+        return "decisao", "decisao_observada", None, False
+    return "consulta", "marcador_observado", None, None
+
+
+def _legacy_signals(
+    signals: dict[tuple[str, str], dict[str, Any]],
+    calls: list[dict[str, Any]],
+    aliases: dict[str, tuple[str, str]],
+) -> list[dict[str, Any]]:
+    non_modules: dict[str, dict[str, Any]] = {}
+    for call in calls:
+        output_text = str(call.get("output_text") or "")
+        for source, key, marker_key in (
+            ("comando", "command_systems", "command_markers"),
+            ("output", "output_systems", "output_markers"),
+        ):
+            for alias in sorted(call.get(key) or set()):
+                evidence_markers = list((call.get(marker_key) or {}).get(alias) or [alias])
+                if alias not in aliases:
+                    if alias in {"seven_names_migration_regression", "underground_tournament"}:
+                        item = non_modules.setdefault(
+                            alias,
+                            {"item_id": alias, "signal_sources": [], "observable_evidence": []},
+                        )
+                        if source not in item["signal_sources"]:
+                            item["signal_sources"].append(source)
+                        for marker in evidence_markers:
+                            evidence = f"{source}:{marker}"
+                            if evidence not in item["observable_evidence"]:
+                                item["observable_evidence"].append(evidence)
+                    continue
+                module_id, capability_id = aliases[alias]
+                activation, result, materialized, effect = _legacy_activation(
+                    alias, output_text, source
+                )
+                for marker in evidence_markers:
+                    _add_signal(
+                        signals,
+                        module_id,
+                        capability_id,
+                        source=source,
+                        evidence=f"{source}:{marker}",
+                        activation=activation,
+                        observed_result=result,
+                        materialized_result=materialized,
+                        effect_observed=effect,
+                    )
+    return list(non_modules.values())
+
+
+def _new_module_signals(
+    signals: dict[tuple[str, str], dict[str, Any]], turn: dict[str, Any]
+) -> None:
+    calls = list(turn.get("calls") or [])
+    assistant_messages = list(turn.get("assistant_messages") or [])
+
+    # RM-07: somente acessos observáveis; ausência de sinal não vira zero.
+    for call in calls:
+        command = str(call.get("command") or "")
+        lower = command.casefold()
+        name = str(call.get("name") or "")
+        category = str(call.get("category") or "")
+        routed = _core._is_routed_context(command) and not _core._is_help_command(command)
+        raw = _core._is_raw_read(name, command, category)
+        if routed or raw:
+            evidence = "command:routed_context" if routed else "command:raw_read"
+            _add_signal(
+                signals,
+                "context_and_memory",
+                "routed_context_access",
+                source="comando",
+                evidence=evidence,
+                activation="consulta",
+                observed_result="acesso_observado",
+                confidence="alta",
+            )
+        if any(marker in lower for marker in ("contexto.py retomada", "contexto.py cena", "memoria_cena", "sessoes.py retomada")):
+            _add_signal(
+                signals,
+                "context_and_memory",
+                "scene_and_durable_memory",
+                source="comando",
+                evidence="command:scene_or_memory_context",
+                activation="consulta",
+                observed_result="memoria_consultada",
+            )
+        if any(marker in lower for marker in (" conhecimento ", " reputacao ", " reputação ", "identidades.py")):
+            _add_signal(
+                signals,
+                "context_and_memory",
+                "knowledge_layer_separation",
+                source="comando",
+                evidence="command:knowledge_layer_query",
+                activation="consulta",
+                observed_result="camada_consultada",
+            )
+        output_lower = str(call.get("output_text") or "").casefold()
+        if call.get("orchestration_phase") in {"concluir", "registrar"} and any(
+            marker in output_lower for marker in ("memoria:", '"memoria"', "memória:")
+        ):
+            _add_signal(
+                signals,
+                "context_and_memory",
+                "scene_and_durable_memory",
+                source="output",
+                evidence="output:memory_receipt",
+                eligibility="sim",
+                activation="efeito",
+                observed_result="memoria_persistida",
+                materialized_result="memoria_persistida",
+                effect_observed=True,
+                confidence="alta",
+            )
+
+    # RM-08: controle de turno/sessão sem chamada adicional.
+    transactional_seen = False
+    for call in calls:
+        command = str(call.get("command") or "")
+        lower = " ".join(command.casefold().split())
+        phase = call.get("orchestration_phase")
+        if phase:
+            transactional_seen = True
+            is_commit = phase in {"concluir", "registrar", "confirmar"}
+            succeeded = call.get("output_success") is True
+            activation = "efeito" if is_commit and succeeded else "decisao"
+            result = "turno_commitado" if activation == "efeito" else f"fase_{phase}_observada"
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "transactional_turn",
+                source="comando",
+                evidence=f"command:cronica_{phase}",
+                eligibility="sim",
+                activation=activation,
+                observed_result=result,
+                materialized_result="turno_commitado" if activation == "efeito" else None,
+                effect_observed=True if activation == "efeito" else False,
+                confidence="alta",
+            )
+            if "--ticket" in lower:
+                _add_signal(
+                    signals,
+                    "turn_and_session_orchestration",
+                    "transactional_turn",
+                    source="ticket",
+                    evidence="ticket:present",
+                    eligibility="sim",
+                    activation=activation,
+                    observed_result=result,
+                    materialized_result="turno_commitado" if activation == "efeito" else None,
+                    effect_observed=True if activation == "efeito" else False,
+                    confidence="alta",
+                )
+            if call.get("output_seen"):
+                _add_signal(
+                    signals,
+                    "turn_and_session_orchestration",
+                    "transactional_turn",
+                    source="output",
+                    evidence="output:orchestration_receipt",
+                    eligibility="sim",
+                    activation=activation,
+                    observed_result=result,
+                    materialized_result="turno_commitado" if activation == "efeito" else None,
+                    effect_observed=True if activation == "efeito" else False,
+                    confidence="alta",
+                )
+        lifecycle = re.search(r"\bcronica(?:\.py)?\s+sessao\s+(status|iniciar|checkpoint|encerrar|recuperar)\b", lower)
+        if lifecycle:
+            operation = lifecycle.group(1)
+            effect = operation != "status" and call.get("output_success") is True
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "session_lifecycle",
+                source="comando",
+                evidence=f"command:session_{operation}",
+                eligibility="sim",
+                activation="efeito" if effect else "consulta" if operation == "status" else "decisao",
+                observed_result=f"session_{operation}",
+                materialized_result=f"session_{operation}" if effect else None,
+                effect_observed=effect,
+                confidence="alta",
+            )
+        output_lower = str(call.get("output_text") or "").casefold()
+        if any(marker in output_lower for marker in ("idempot", "já concluído", "ja_concluido", "recuperado")):
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "idempotent_commit",
+                source="output",
+                evidence="output:idempotency_receipt",
+                activation="efeito",
+                observed_result="idempotencia_observada",
+                materialized_result="idempotencia_preservada",
+                effect_observed=True,
+            )
+    if not transactional_seen:
+        _add_signal(
+            signals,
+            "turn_and_session_orchestration",
+            "transactional_turn",
+            source="resposta" if assistant_messages else "comando",
+            evidence="turn:narrativo_sem_orquestracao",
+            eligibility="sim",
+            activation="ausente",
+            observed_result="orquestracao_ausente",
+            effect_observed=False,
+            confidence="alta",
+        )
+
+    # RM-09: a existência da entrega é estrutural; qualidade literária permanece N/D.
+    if assistant_messages:
+        response_text = "\n".join(assistant_messages)
+        _add_signal(
+            signals,
+            "narrative_delivery",
+            "visible_closure",
+            source="resposta",
+            evidence="response:present",
+            eligibility="sim",
+            activation="efeito",
+            observed_result="resposta_entregue",
+            materialized_result="resposta_entregue",
+            effect_observed=True,
+            confidence="alta",
+        )
+        if "rodape_canonico" in response_text.casefold() or "RODAPE_CANONICO" in response_text:
+            _add_signal(
+                signals,
+                "narrative_delivery",
+                "visible_closure",
+                source="resposta",
+                evidence="response:canonical_footer",
+                eligibility="sim",
+                activation="efeito",
+                observed_result="resposta_com_rodape",
+                materialized_result="resposta_entregue",
+                effect_observed=True,
+                confidence="alta",
+            )
+        if "mecânica —" in response_text.casefold() or "mecanica —" in response_text.casefold():
+            _add_signal(
+                signals,
+                "narrative_delivery",
+                "diegetic_mechanics",
+                source="resposta",
+                evidence="response:diegetic_mechanics",
+                eligibility="sim",
+                activation="efeito",
+                observed_result="mecanica_exposta",
+                materialized_result="mecanica_exposta",
+                effect_observed=True,
+                confidence="alta",
+            )
+    else:
+        _add_signal(
+            signals,
+            "narrative_delivery",
+            "visible_closure",
+            source="comando",
+            evidence="turn:narrativo_sem_resposta",
+            eligibility="sim",
+            activation="ausente",
+            observed_result="resposta_ausente",
+            effect_observed=False,
+            confidence="alta",
+        )
+
+    # RM-10: regra, rolagem e estado são sinais distintos.
+    for call in calls:
+        command = str(call.get("command") or "")
+        lower = command.casefold()
+        if re.search(r"\bcontexto\.py\b.*\bregra\b", lower) or "catalogo_regras.py" in lower:
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "rules_resolution",
+                source="comando",
+                evidence="command:rule_query",
+                activation="consulta",
+                observed_result="regra_consultada",
+                confidence="alta",
+            )
+        if _is_dice_command(command):
+            succeeded = call.get("output_success") is True
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "roll_execution",
+                source="comando",
+                evidence="command:dice",
+                eligibility="sim" if "--cd" in lower else "indeterminada",
+                activation="efeito" if succeeded else "decisao",
+                observed_result="rolagem_executada" if succeeded else "rolagem_solicitada",
+                materialized_result="rolagem_executada" if succeeded else None,
+                effect_observed=succeeded,
+                confidence="alta",
+            )
+            if call.get("output_seen"):
+                _add_signal(
+                    signals,
+                    "rules_and_character_state",
+                    "roll_execution",
+                    source="output",
+                    evidence="output:dice_result",
+                    eligibility="sim" if "--cd" in lower else "indeterminada",
+                    activation="efeito" if succeeded else "decisao",
+                    observed_result="rolagem_executada" if succeeded else "rolagem_solicitada",
+                    materialized_result="rolagem_executada" if succeeded else None,
+                    effect_observed=succeeded,
+                    confidence="alta",
+                )
+        output_lower = str(call.get("output_text") or "").casefold()
+        state_signal = any(
+            marker in lower or marker in output_lower
+            for marker in (
+                "--gasto-focus",
+                "--mecanica-json",
+                '"alvo":"estado"',
+                '"alvo": "estado"',
+                '"alvo":"tempo"',
+                '"alvo": "tempo"',
+                "recursos.focus",
+            )
+        )
+        if state_signal:
+            committed = call.get("orchestration_phase") in {"concluir", "registrar"} and call.get("output_success") is True
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "character_time_state",
+                source="output" if output_lower else "ticket",
+                evidence="output:character_or_time_state" if output_lower else "ticket:character_or_time_state",
+                eligibility="sim",
+                activation="efeito" if committed else "decisao",
+                observed_result="estado_commitado" if committed else "estado_pre_comprometido",
+                materialized_result="estado_commitado" if committed else None,
+                effect_observed=committed,
+                confidence="alta",
+            )
+
+    # Gate negativo é atividade real, mas jamais efeito material.
+    for call in calls:
+        decision = call.get("sidequest_decision")
+        if decision not in {"oportunidade", "sem_oportunidade", "ausente", "conflito"}:
+            continue
+        eligibility = (
+            "sim" if decision == "oportunidade" else "nao" if decision == "sem_oportunidade" else "indeterminada"
+        )
+        activation = (
+            "decisao"
+            if decision == "oportunidade"
+            else "gate_neutro"
+            if decision == "sem_oportunidade"
+            else "ausente"
+        )
+        _add_signal(
+            signals,
+            "sidequest_authoring",
+            "opportunity_gate",
+            source="comando",
+            evidence=f"command:sidequest_gate_{decision}",
+            eligibility=eligibility,
+            activation=activation,
+            observed_result=decision,
+            effect_observed=False,
+            confidence="alta",
+        )
+
+
+def _allocate_integer(value: int, owners: list[str]) -> dict[str, int]:
+    if not owners:
+        return {}
+    quotient, remainder = divmod(max(0, int(value)), len(owners))
+    return {
+        owner: quotient + (1 if index < remainder else 0)
+        for index, owner in enumerate(sorted(owners))
+    }
+
+
+def _turn_cost(item: dict[str, Any]) -> dict[str, int]:
+    input_tokens = int(item.get("input_tokens") or 0)
+    output_tokens = int(item.get("output_tokens") or 0)
+    return {
+        "input_tokens": input_tokens,
+        "cached_input_tokens": int(item.get("cached_input_tokens") or 0),
+        "uncached_input_tokens_approx": int(item.get("approx_uncached_input_tokens") or 0),
+        "output_tokens": output_tokens,
+        "total_tokens": input_tokens + output_tokens,
+    }
+
+
+def _build_modular_ledger(
+    report: dict[str, Any], narration: list[dict[str, Any]], catalog: dict[str, Any]
+) -> dict[str, Any]:
+    module_by_id, aliases, module_order, capability_order = _catalog_indexes(catalog)
+    events: list[dict[str, Any]] = []
+    non_module_observations: list[dict[str, Any]] = []
+    module_totals: dict[str, dict[str, int]] = {}
+    total_narrative_cost = {key: 0 for key in _turn_cost({})}
+
+    for item, turn in zip(report.get("per_narration_turn") or [], narration):
+        signals: dict[tuple[str, str], dict[str, Any]] = {}
+        non_modules = _legacy_signals(signals, list(turn.get("calls") or []), aliases)
+        _new_module_signals(signals, turn)
+        ordinal = int(item.get("ordinal") or len(events) + 1)
+        turn_id = str(turn.get("turn_id") or f"ordinal-{ordinal}")
+        for observation in non_modules:
+            non_module_observations.append(
+                {
+                    "session_id": (report.get("source") or {}).get("session_id"),
+                    "turn_id": turn_id,
+                    "turn_ordinal": ordinal,
+                    "classification": (
+                        "regressao_historica"
+                        if observation["item_id"] == "seven_names_migration_regression"
+                        else "extensao_campanha"
+                    ),
+                    **observation,
+                    "receives_modular_score": False,
+                    "receives_parent_cost": False,
+                }
+            )
+
+        ordered_keys = sorted(
+            signals,
+            key=lambda key: (
+                module_order.get(key[0], 10_000),
+                capability_order.get(key, 10_000),
+                key,
+            ),
+        )
+        parent_ids = sorted({module_id for module_id, _ in ordered_keys})
+        turn_cost = _turn_cost(item)
+        for key, value in turn_cost.items():
+            total_narrative_cost[key] += value
+        allocations: dict[str, dict[str, int]] = {module_id: {} for module_id in parent_ids}
+        for cost_key, value in turn_cost.items():
+            allocated = _allocate_integer(value, parent_ids)
+            for module_id in parent_ids:
+                allocations[module_id][cost_key] = allocated.get(module_id, 0)
+
+        primary_capability: dict[str, str] = {}
+        for module_id, capability_id in ordered_keys:
+            primary_capability.setdefault(module_id, capability_id)
+
+        for module_id, capability_id in ordered_keys:
+            module = module_by_id[module_id]
+            signal = signals[(module_id, capability_id)]
+            signal["signal_sources"].sort(key=lambda value: _SOURCE_ORDER.get(value, 99))
+            primary = primary_capability[module_id] == capability_id
+            additive = allocations[module_id] if primary else {key: 0 for key in turn_cost}
+            totals = module_totals.setdefault(module_id, {key: 0 for key in turn_cost})
+            if primary:
+                for key, value in additive.items():
+                    totals[key] += value
+            event_id = f"ml2:{ordinal}:{module_id}:{capability_id}"
+            events.append(
+                {
+                    "event_id": event_id,
+                    "session_id": (report.get("source") or {}).get("session_id"),
+                    "turn_id": turn_id,
+                    "turn_ordinal": ordinal,
+                    "analysis_unit": module.get("unidade_analise"),
+                    "module_id": module_id,
+                    "capability_id": capability_id,
+                    **signal,
+                    "adjudication": None,
+                    "cost": {
+                        "exposed_non_additive": dict(turn_cost),
+                        "parent_attributed_additive": additive,
+                        "parent_allocation_role": "primario" if primary else "exposicao_apenas",
+                        "capability_cost_mode": "exposicao_apenas",
+                        "marginal_cost": None,
+                        "marginal_cost_status": "indeterminado",
+                    },
+                    "detector_version": MODULAR_DETECTOR_VERSION,
+                    "module_implementation_version": module.get("versao_implementacao"),
+                    "module_evaluation_version": module.get("versao_avaliacao"),
+                }
+            )
+
+    attributed = {
+        key: sum(values[key] for values in module_totals.values())
+        for key in total_narrative_cost
+    }
+    closure = {
+        key: {
+            "narrative_total": total_narrative_cost[key],
+            "parent_attributed_total": attributed[key],
+            "difference": total_narrative_cost[key] - attributed[key],
+        }
+        for key in total_narrative_cost
+    }
+    return {
+        "schema_modular_ledger": MODULAR_LEDGER_SCHEMA,
+        "evaluation_series": "modules-v2",
+        "detector_version": MODULAR_DETECTOR_VERSION,
+        "catalog_schema": catalog.get("schema_catalogo_modulos"),
+        "catalog_version": catalog.get("versao_catalogo"),
+        "measurement_mode": "post_hoc_read_only",
+        "observed_is_not_eligibility": True,
+        "capability_cost_mode": "exposicao_apenas",
+        "parent_cost_method": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno",
+        "events": events,
+        "non_module_observations": non_module_observations,
+        "module_parent_costs": [
+            {"module_id": module_id, **module_totals[module_id]}
+            for module_id in sorted(module_totals, key=lambda value: module_order.get(value, 10_000))
+        ],
+        "cost_closure": closure,
+        "corrections": [],
+    }
+
+
+def apply_modular_adjudications(
+    ledger: dict[str, Any], adjudications: dict[str, Any] | list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Aplica correções sem apagar nenhuma observação do detector."""
+
+    result = copy.deepcopy(ledger)
+    corrections = adjudications.get("corrections") if isinstance(adjudications, dict) else adjudications
+    if not isinstance(corrections, list):
+        raise RolloutError("adjudicações modulares precisam conter uma lista corrections")
+    by_id = {event.get("event_id"): event for event in result.get("events") or []}
+    for index, correction in enumerate(corrections, 1):
+        if not isinstance(correction, dict):
+            raise RolloutError(f"adjudicação modular {index} não é objeto")
+        event_id = str(correction.get("event_id") or "")
+        event = by_id.get(event_id)
+        if event is None:
+            raise RolloutError(f"adjudicação modular aponta para evento inexistente: {event_id}")
+        reason = str(correction.get("reason") or "").strip()
+        if not reason:
+            raise RolloutError(f"adjudicação modular {event_id} exige reason")
+        eligibility = correction.get("eligibility")
+        activation = correction.get("activation")
+        effect = correction.get("effect_observed")
+        evidence = correction.get("evidence") or []
+        if eligibility not in {None, "sim", "nao", "indeterminada"}:
+            raise RolloutError(f"adjudicação modular {event_id}: eligibility inválida")
+        if activation not in {None, *set(_ACTIVATION_PRIORITY)}:
+            raise RolloutError(f"adjudicação modular {event_id}: activation inválida")
+        if effect is not None and not isinstance(effect, bool):
+            raise RolloutError(f"adjudicação modular {event_id}: effect_observed precisa ser booleano")
+        if not isinstance(evidence, list):
+            raise RolloutError(f"adjudicação modular {event_id}: evidence precisa ser lista")
+        adjudication = {
+            "signal_source": "adjudicacao",
+            "eligibility": eligibility,
+            "activation": activation,
+            "materialized_result": correction.get("materialized_result"),
+            "effect_observed": effect,
+            "reason": reason,
+            "evidence": list(evidence),
+        }
+        event["adjudication"] = adjudication
+        result["corrections"].append(
+            {
+                "event_id": event_id,
+                "observed_preserved": {
+                    "eligibility": event.get("eligibility_observed"),
+                    "activation": event.get("activation_observed"),
+                    "materialized_result": event.get("materialized_result_observed"),
+                    "effect_observed": event.get("effect_observed"),
+                },
+                "adjudicated": adjudication,
+            }
+        )
+    return result
+
+
+def telemetry_view(report: dict[str, Any], evaluation_series: str) -> dict[str, Any]:
+    """Retorna uma visão compatível sem reinterpretar o rollout bruto."""
+
+    result = copy.deepcopy(report)
+    if evaluation_series == "legacy-v1":
+        result.pop("modular_ledger_v2", None)
+        result.pop("modular_ledger_schema", None)
+        result["narrative_systems_schema"] = LEGACY_NARRATIVE_SYSTEMS_SCHEMA
+        return result
+    if evaluation_series == "modules-v2":
+        return result
+    raise RolloutError(f"visão de telemetria desconhecida: {evaluation_series}")
+
+
+def analyze(
+    path: Path,
+    narration_regex: str | None = None,
+    modular_adjudications: dict[str, Any] | list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
     report = _BASE_ANALYZE(path, narration_regex)
     ordered, narration = _scan_observations(path, narration_regex)
+    catalog = _load_modular_catalog()
     all_summary = _observation_summary(ordered)
     narration_summary = _observation_summary(narration)
     report["narrative_systems_schema"] = NARRATIVE_SYSTEMS_SCHEMA
+    report["modular_ledger_schema"] = MODULAR_LEDGER_SCHEMA
     report["opportunity_decision_schema"] = OPPORTUNITY_DECISION_SCHEMA
     report["liveness_boundary_schema"] = LIVENESS_BOUNDARY_SCHEMA
     report["all_turns"].update(all_summary)
@@ -485,6 +1259,10 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
     }
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
+    ledger = _build_modular_ledger(report, narration, catalog)
+    if modular_adjudications is not None:
+        ledger = apply_modular_adjudications(ledger, modular_adjudications)
+    report["modular_ledger_v2"] = ledger
     inferred = report.get("measurement", {}).get("observational_inference")
     if isinstance(inferred, list):
         for label in (
@@ -492,6 +1270,8 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
             "narrative-system attribution inferred from command and tool-output markers",
             "Task47 sidequest-opportunity decision inferred from cronica preparar flags",
             "NV-14 justified calm and missing-module coverage inferred from structured liveness output",
+            "modules-v2 capability ledger inferred from command, output, ticket and response signals",
+            "modules-v2 parent cost allocated once per module; capability cost is exposure only",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -510,6 +1290,8 @@ def _human(report: dict[str, Any]) -> str:
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
+    ledger = report.get("modular_ledger_v2") or {}
+    closure = (ledger.get("cost_closure") or {}).get("total_tokens") or {}
     extra = [
         "",
         "SISTEMAS NARRATIVOS (inferência observacional)",
@@ -533,6 +1315,19 @@ def _human(report: dict[str, Any]) -> str:
         ),
         f"Sistemas observados por turno: {active}",
     ]
+    if ledger:
+        extra.extend(
+            [
+                "",
+                "LEDGER MODULAR V2 (inferência observacional)",
+                (
+                    f"Eventos={len(ledger.get('events') or [])} | "
+                    f"módulos com custo={len(ledger.get('module_parent_costs') or [])} | "
+                    f"fechamento de tokens={closure.get('difference', 0)}"
+                ),
+                "Subcapacidades exibem exposição; o custo aditivo fecha somente no módulo pai.",
+            ]
+        )
     return base + "\n" + "\n".join(extra) + "\n"
 
 
@@ -544,7 +1339,39 @@ _core._human = _human
 
 
 def main() -> int:
-    return _core.main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("rollout", type=Path, help="arquivo rollout-*.jsonl")
+    parser.add_argument("--json", action="store_true", help="imprime JSON completo")
+    parser.add_argument(
+        "--narration-regex",
+        help="regex adicional/substitutiva para reconhecer turnos narrativos pela mensagem do usuário",
+    )
+    parser.add_argument(
+        "--visao",
+        choices=("legacy-v1", "modules-v2"),
+        default="modules-v2",
+        help="seleciona a extensão de telemetria; padrão modules-v2",
+    )
+    parser.add_argument(
+        "--adjudicacoes-modulares",
+        type=Path,
+        help="JSON opcional de correções do ledger; observações originais são preservadas",
+    )
+    args = parser.parse_args()
+    try:
+        adjudications = None
+        if args.adjudicacoes_modulares:
+            adjudications = json.loads(args.adjudicacoes_modulares.read_text(encoding="utf-8"))
+        report = analyze(args.rollout, args.narration_regex, adjudications)
+        selected = telemetry_view(report, args.visao)
+    except (OSError, json.JSONDecodeError, RolloutError, re.error) as exc:
+        print(f"FALHA DE TELEMETRIA — {exc}")
+        return 1
+    if args.json:
+        print(json.dumps(selected, ensure_ascii=False, indent=2))
+    else:
+        print(_human(selected), end="")
+    return 0
 
 
 if __name__ == "__main__":

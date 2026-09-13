@@ -961,6 +961,8 @@ def generate_session_evaluation(
     baseline = _load_json(baseline_path)
     analyzer = _load_module(ANALYZER_PATH, "avaliacao_sessao_analisar_rollout")
     report = analyzer.analyze(rollout)
+    if catalog_data.get("schema_catalogo_modulos") == 1 and hasattr(analyzer, "telemetry_view"):
+        report = analyzer.telemetry_view(report, "legacy-v1")
     raw_narration, source_times = _raw_turns(rollout, analyzer)
     turn_rows, correlation_warnings = _turn_rows(report, raw_narration)
     event_rows, unattributed = _module_event_rows(turn_rows, report, module_ids)

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Em implementação.** A RM-01 está concluída; as demais tasks continuam
+**Em implementação.** RM-01 e RM-02 estão concluídas; as demais tasks continuam
 propostas até serem executadas.
 
 Este roadmap transforma o catálogo plano de vinte itens em doze módulos de
@@ -101,7 +101,7 @@ novo contrato. A RM-12 é o corte definitivo.
 | Item | Entrega | Dependências |
 | --- | --- | --- |
 | [RM-01](rm01-catalogo-hierarquico-e-corte-da-serie.md) | catálogo hierárquico, guardrails e política de série — **concluída** | nenhuma |
-| [RM-02](rm02-ledger-telemetria-modular-v2.md) | eventos, atribuição e compatibilidade de telemetria | RM-01 |
+| [RM-02](rm02-ledger-telemetria-modular-v2.md) | eventos, atribuição e compatibilidade de telemetria — **concluída** | RM-01 |
 | [RM-03](rm03-consolidacao-sidequests.md) | três módulos de sidequest | RM-01–RM-02 |
 | [RM-04](rm04-consolidacao-mundo-causal.md) | projeção, fronteira e roteamento do mundo | RM-01–RM-02 |
 | [RM-05](rm05-continuidade-e-comportamento-npc.md) | continuidade e comportamento social de NPCs | RM-01–RM-02 |

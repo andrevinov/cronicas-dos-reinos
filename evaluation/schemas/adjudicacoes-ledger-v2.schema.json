@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "adjudicacoes-ledger-v2.schema.json",
+  "title": "Correções manuais do ledger modular v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_adjudicacoes_modulares", "corrections"],
+  "properties": {
+    "schema_adjudicacoes_modulares": {"const": 1},
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "reason"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "eligibility": {"type": ["string", "null"], "enum": ["sim", "nao", "indeterminada", null]},
+          "activation": {"type": ["string", "null"], "enum": ["ausente", "gate_neutro", "consulta", "decisao", "efeito", null]},
+          "materialized_result": {"type": ["string", "null"]},
+          "effect_observed": {"type": ["boolean", "null"]},
+          "reason": {"type": "string", "minLength": 1},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

@@ -442,6 +442,7 @@ Não medir dentro do loop narrativo. Depois da sessão:
 ```bash
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
+python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --visao legacy-v1 --json
 ```
 
 Comparação automática com a baseline de 15/08:
@@ -460,3 +461,9 @@ Arquivos de referência:
 - `docs/agente/engenharia/telemetria-rollouts.md`.
 
 Redução de tokens é tratada como tráfego operacional, não como fórmula de cobrança/quota.
+
+O JSON padrão inclui `modular_ledger_v2`: aliases v1 resolvidos em
+subcapacidades, custos aditivos fechados uma vez nos módulos pais e observação
+separada de adjudicação. Use `--adjudicacoes-modulares arquivo.json` para aplicar
+correções pós-hoc sem sobrescrever o sinal original. O gerador de avaliações v1
+seleciona `legacy-v1` explicitamente até o corte da RM-11.

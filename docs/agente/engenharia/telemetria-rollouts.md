@@ -23,6 +23,7 @@ sessão de jogo
 ```bash
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl
 python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --json
+python3 ferramentas/analisar-rollout.py ~/.codex/sessions/.../rollout-....jsonl --visao legacy-v1 --json
 python3 ferramentas/comparar-rollouts.py ~/.codex/sessions/.../rollout-novo.jsonl
 ```
 
@@ -36,10 +37,66 @@ consumidores existentes a migrar apenas para receber observabilidade adicional.
 Quando a extensão está presente, o relatório também contém:
 
 ```text
-narrative_systems_schema: 1
+narrative_systems_schema: 2
+modular_ledger_schema: 2
+modular_ledger_v2: {...}
 ```
 
-Ela acrescenta métricas de orquestração e atribuição de sistemas narrativos sem remover ou reinterpretar as métricas do schema 3.
+Ela acrescenta o ledger hierárquico sem remover ou reinterpretar as métricas do
+schema 3 nem os contadores planos v1. `--visao legacy-v1` remove o ledger da
+saída e restitui `narrative_systems_schema: 1`; essa é a visão que o gerador de
+pacotes v1 usa até a RM-11.
+
+### Ledger modular v2
+
+`modular_ledger_v2.events` contém uma linha lógica por combinação
+turno × módulo pai × subcapacidade observada. Cada evento registra:
+
+- sessão, turno, ordinal e unidade de análise;
+- `module_id` e `capability_id` do catálogo v2;
+- fontes `comando`, `output`, `ticket` ou `resposta` e evidência compacta;
+- elegibilidade observada separada da ativação observada;
+- ativação como `ausente`, `gate_neutro`, `consulta`, `decisao` ou `efeito`;
+- resultado observado, efeito materializado e confiança;
+- custo exposto não aditivo e custo atribuído aditivo no pai;
+- versões do detector, implementação e avaliação;
+- adjudicação opcional, sem alterar os campos observados.
+
+Aliases do catálogo v1 são resolvidos para uma única subcapacidade v2. Sete
+Nomes e Torneio Clandestino permanecem em `non_module_observations`, sem nota ou
+custo modular. Sinais dos módulos `context_and_memory`,
+`turn_and_session_orchestration`, `narrative_delivery` e
+`rules_and_character_state` são extraídos das operações que já existem; nenhuma
+chamada é adicionada ao turno.
+
+Um marcador não prova elegibilidade. Na ausência de prova, o ledger mantém
+`eligibility_observed: indeterminada`. A decisão
+`--sem-oportunidade-sidequest` é um `gate_neutro`, com efeito falso, e não uma
+materialização.
+
+### Custo no ledger
+
+Para cada turno, input e output são divididos uma única vez entre os módulos
+pais observados. `module_parent_costs` e `cost_closure` são aditivos e precisam
+fechar no total narrativo. Dentro do módulo, as subcapacidades usam
+`capability_cost_mode: exposicao_apenas`: todas mostram o custo exposto, mas
+somente o evento primário carrega a parcela aditiva do pai. Custo marginal
+permanece `indeterminado`; a divisão é atribuição contábil, não causal.
+
+### Adjudicações
+
+Correções opcionais seguem
+`evaluation/schemas/adjudicacoes-ledger-v2.schema.json`:
+
+```bash
+python3 ferramentas/analisar-rollout.py rollout.jsonl --json \
+  --adjudicacoes-modulares adjudicacoes.json
+```
+
+A correção entra em `event.adjudication` e em `corrections`. Os valores
+`eligibility_observed`, `activation_observed`, evidência e resultado originais
+permanecem intactos. O schema estável do ledger fica em
+`evaluation/schemas/ledger-modular-v2.schema.json`.
 
 ### Orquestração
 
@@ -53,17 +110,12 @@ A extensão reconhece as fases `cronica preparar`, `cronica concluir`, `cronica 
 
 Um turno conta como a dupla preferencial quando possui exatamente um `preparar` e um `concluir` como chamadas de orquestração. Rolagens materialmente necessárias entre as duas não deixam de ser válidas: elas são tools de mecânica, não uma terceira fase de orquestração.
 
-### Sistemas narrativos observados
+### Contadores planos v1 preservados
 
-A extensão atribui chamadas/turnos a sete famílias:
-
-- `npc_social_initiative`;
-- `world_local_incidents`;
-- `canonical_secret_quests`;
-- `secret_canon`;
-- `batch_world_boundary`;
-- `persistent_world_conditions`;
-- `underground_tournament`.
+Os campos `narrative_system_calls`, `narrative_system_turns` e
+`narrative_systems_observed` continuam disponíveis para auditorias históricas.
+Eles mantêm os vinte IDs v1 e sua semântica observacional anterior; não devem ser
+somados ao custo do ledger v2.
 
 A atribuição usa o comando e marcadores do output da própria ferramenta. Isso permite que uma única chamada de `cronica preparar` seja marcada, por exemplo, como incidente + condição persistente + sidequest canônica **sem contar três tool calls**.
 
@@ -216,6 +268,10 @@ Rollouts podem conter conversa, caminhos locais, prompts e outputs. O bruto não
 - leitura crua não é mascarada por L1/L2 roteado;
 - atribuição de sistema não equivale a fato canônico;
 - uma chamada pode pertencer a múltiplos sistemas sem multiplicar `tool_calls`;
+- elegibilidade observada não é inferida apenas da presença de marcador;
+- gates neutros não são efeitos;
+- custo fecha uma vez nos módulos pais; subcapacidades são exposição;
+- adjudicação nunca sobrescreve a observação original;
 - token traffic não é faturamento;
 - rollout bruto permanece fora do repo por padrão;
 - observabilidade nunca altera o cânone da campanha.

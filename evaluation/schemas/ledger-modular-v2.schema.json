@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ledger-modular-v2.schema.json",
+  "title": "Ledger hierárquico de telemetria modular v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_modular_ledger",
+    "evaluation_series",
+    "detector_version",
+    "catalog_schema",
+    "catalog_version",
+    "measurement_mode",
+    "observed_is_not_eligibility",
+    "capability_cost_mode",
+    "parent_cost_method",
+    "events",
+    "non_module_observations",
+    "module_parent_costs",
+    "cost_closure",
+    "corrections"
+  ],
+  "properties": {
+    "schema_modular_ledger": {"const": 2},
+    "evaluation_series": {"const": "modules-v2"},
+    "detector_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "catalog_schema": {"const": 2},
+    "catalog_version": {"type": "string", "minLength": 1},
+    "measurement_mode": {"const": "post_hoc_read_only"},
+    "observed_is_not_eligibility": {"const": true},
+    "capability_cost_mode": {"const": "exposicao_apenas"},
+    "parent_cost_method": {"type": "string", "minLength": 1},
+    "events": {"type": "array", "items": {"$ref": "#/$defs/event"}},
+    "non_module_observations": {"type": "array", "items": {"$ref": "#/$defs/nonModuleObservation"}},
+    "module_parent_costs": {"type": "array", "items": {"$ref": "#/$defs/moduleCost"}},
+    "cost_closure": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/closure"}
+    },
+    "corrections": {"type": "array", "items": {"$ref": "#/$defs/appliedCorrection"}}
+  },
+  "$defs": {
+    "tokenCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_tokens", "cached_input_tokens", "uncached_input_tokens_approx", "output_tokens", "total_tokens"],
+      "properties": {
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "cached_input_tokens": {"type": "integer", "minimum": 0},
+        "uncached_input_tokens_approx": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": "integer", "minimum": 0}
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "session_id",
+        "turn_id",
+        "turn_ordinal",
+        "analysis_unit",
+        "module_id",
+        "capability_id",
+        "signal_sources",
+        "eligibility_observed",
+        "activation_observed",
+        "observed_result",
+        "materialized_result_observed",
+        "effect_observed",
+        "observable_evidence",
+        "inference_confidence",
+        "adjudication",
+        "cost",
+        "detector_version",
+        "module_implementation_version",
+        "module_evaluation_version"
+      ],
+      "properties": {
+        "event_id": {"type": "string", "minLength": 1},
+        "session_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string", "minLength": 1},
+        "turn_ordinal": {"type": "integer", "minimum": 1},
+        "analysis_unit": {"enum": ["turno", "cena", "fronteira", "sessao", "evento"]},
+        "module_id": {"type": "string", "minLength": 1},
+        "capability_id": {"type": "string", "minLength": 1},
+        "signal_sources": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["comando", "output", "ticket", "resposta"]}
+        },
+        "eligibility_observed": {"enum": ["sim", "nao", "indeterminada"]},
+        "activation_observed": {"enum": ["ausente", "gate_neutro", "consulta", "decisao", "efeito"]},
+        "observed_result": {"type": ["string", "null"]},
+        "materialized_result_observed": {"type": ["string", "null"]},
+        "effect_observed": {"type": ["boolean", "null"]},
+        "observable_evidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "inference_confidence": {"enum": ["alta", "media", "baixa"]},
+        "adjudication": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/adjudication"}]},
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exposed_non_additive", "parent_attributed_additive", "parent_allocation_role", "capability_cost_mode", "marginal_cost", "marginal_cost_status"],
+          "properties": {
+            "exposed_non_additive": {"$ref": "#/$defs/tokenCost"},
+            "parent_attributed_additive": {"$ref": "#/$defs/tokenCost"},
+            "parent_allocation_role": {"enum": ["primario", "exposicao_apenas"]},
+            "capability_cost_mode": {"const": "exposicao_apenas"},
+            "marginal_cost": {"type": "null"},
+            "marginal_cost_status": {"const": "indeterminado"}
+          }
+        },
+        "detector_version": {"type": "string", "minLength": 1},
+        "module_implementation_version": {"type": "string", "minLength": 1},
+        "module_evaluation_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "adjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signal_source", "eligibility", "activation", "materialized_result", "effect_observed", "reason", "evidence"],
+      "properties": {
+        "signal_source": {"const": "adjudicacao"},
+        "eligibility": {"type": ["string", "null"], "enum": ["sim", "nao", "indeterminada", null]},
+        "activation": {"type": ["string", "null"], "enum": ["ausente", "gate_neutro", "consulta", "decisao", "efeito", null]},
+        "materialized_result": {"type": ["string", "null"]},
+        "effect_observed": {"type": ["boolean", "null"]},
+        "reason": {"type": "string", "minLength": 1},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "nonModuleObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_id", "turn_id", "turn_ordinal", "classification", "item_id", "signal_sources", "observable_evidence", "receives_modular_score", "receives_parent_cost"],
+      "properties": {
+        "session_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string"},
+        "turn_ordinal": {"type": "integer", "minimum": 1},
+        "classification": {"enum": ["regressao_historica", "extensao_campanha"]},
+        "item_id": {"enum": ["seven_names_migration_regression", "underground_tournament"]},
+        "signal_sources": {"type": "array", "items": {"enum": ["comando", "output"]}},
+        "observable_evidence": {"type": "array", "items": {"type": "string"}},
+        "receives_modular_score": {"const": false},
+        "receives_parent_cost": {"const": false}
+      }
+    },
+    "moduleCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module_id", "input_tokens", "cached_input_tokens", "uncached_input_tokens_approx", "output_tokens", "total_tokens"],
+      "properties": {
+        "module_id": {"type": "string", "minLength": 1},
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "cached_input_tokens": {"type": "integer", "minimum": 0},
+        "uncached_input_tokens_approx": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": "integer", "minimum": 0}
+      }
+    },
+    "closure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["narrative_total", "parent_attributed_total", "difference"],
+      "properties": {
+        "narrative_total": {"type": "integer", "minimum": 0},
+        "parent_attributed_total": {"type": "integer", "minimum": 0},
+        "difference": {"type": "integer"}
+      }
+    },
+    "appliedCorrection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "observed_preserved", "adjudicated"],
+      "properties": {
+        "event_id": {"type": "string"},
+        "observed_preserved": {"type": "object"},
+        "adjudicated": {"$ref": "#/$defs/adjudication"}
+      }
+    }
+  }
+}

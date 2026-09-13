@@ -19,7 +19,8 @@ o rollout e não participa do loop narrativo nem altera o cânone.
 
 ## Fontes versionadas
 
-- `ferramentas/analisar-rollout.py`: coleta operacional schema 3;
+- `ferramentas/analisar-rollout.py`: coleta operacional schema 3, extensão
+  narrativa 2 e visão compatível `legacy-v1`;
 - `evaluation/catalogo-modulos.json`: catálogo v1 ainda usado em produção;
 - `evaluation/catalogo-modulos-v2.json`: contrato hierárquico preparado, ainda
   não usado pelo gerador;

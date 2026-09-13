@@ -2,7 +2,7 @@
 
 ## Status e dependências
 
-**Proposta.** Depende da RM-01.
+**Concluída em 2026-09-13.** Depende da RM-01, já concluída.
 
 ## Problema
 
@@ -43,6 +43,20 @@ Cada evento modular deve carregar:
 6. Manter falsos positivos, desconhecidos e correções no ledger, sem sobrescrever
    a observação original.
 7. Não adicionar telemetria ao loop de jogo; análise continua pós-hoc.
+
+## Artefatos implementados
+
+- `ferramentas/analisar-rollout.py`: extensão narrativa 2, ledger
+  `modules-v2`, adaptador `legacy-v1` e adjudicações preservativas;
+- `evaluation/schemas/ledger-modular-v2.schema.json`: contrato do ledger;
+- `evaluation/schemas/adjudicacoes-ledger-v2.schema.json`: entrada de correções;
+- `tests/test_telemetria_modular.py`: cobertura de aliases, gates, custos,
+  indeterminação, adjudicação, módulos novos e operação read-only;
+- `docs/agente/engenharia/telemetria-rollouts.md`: contrato operacional e receita.
+
+O gerador v1 seleciona a visão legada explicitamente. O ledger v2 fica
+disponível para as RM-03–RM-10, mas ainda não inaugura a série de scorecards
+`modules-v2`, responsabilidade da RM-11/RM-12.
 
 ## Compatibilidade
 
