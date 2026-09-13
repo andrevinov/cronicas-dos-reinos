@@ -134,8 +134,8 @@ class EmergentBoundaryRepositoryTest(unittest.TestCase):
         protected = [
             ROOT / oportunidades.STATE,
             ROOT / "narrador/mundo/condicoes-persistentes.yaml",
-            ROOT / "narrador/juppongatana/estado-progressao.yaml",
-            ROOT / "narrador/recompensas/index.yaml",
+            ROOT / "narrador/elenco/juppongatana/estado-progressao.yaml",
+            ROOT / "narrador/tramas/recompensas/index.yaml",
             ROOT / intencoes_canonicas.INDEX,
         ]
         before = {path.as_posix(): path.read_bytes() for path in protected}
@@ -162,12 +162,12 @@ class EmergentBoundaryRepositoryTest(unittest.TestCase):
         result = self._signal()
         sources = result["fontes_lidas"]
         self.assertFalse(any("transcricao" in source for source in sources), sources)
-        self.assertFalse(any(source.startswith("narrador/sidequests-canonicas/") for source in sources), sources)
-        self.assertFalse(any(source.startswith("narrador/arcos/parte_1/eventos/") for source in sources), sources)
+        self.assertFalse(any(source.startswith("narrador/tramas/sidequests/canonicas/") for source in sources), sources)
+        self.assertFalse(any(source.startswith("narrador/tramas/arcos/parte_1/eventos/") for source in sources), sources)
         intent_sources = [
             source
             for source in sources
-            if source.startswith("narrador/arcos/parte_1/intencoes/")
+            if source.startswith("narrador/tramas/arcos/parte_1/intencoes/")
         ]
         self.assertLessEqual(len(intent_sources), emergent.MAX_INTENT_FRAGMENTS)
         self.assertFalse(result["metricas"]["catalogo_task33_aberto"])
@@ -175,9 +175,9 @@ class EmergentBoundaryRepositoryTest(unittest.TestCase):
         self.assertEqual(result["metricas"]["scans_globais"], 0)
 
     def test_envelope_de_recompensa_planeja_sem_gerar_item(self):
-        before = (ROOT / "narrador/recompensas/index.yaml").read_bytes()
+        before = (ROOT / "narrador/tramas/recompensas/index.yaml").read_bytes()
         result = self._signal()
-        after = (ROOT / "narrador/recompensas/index.yaml").read_bytes()
+        after = (ROOT / "narrador/tramas/recompensas/index.yaml").read_bytes()
         envelope = result["envelope_recompensa"]
         self.assertEqual(before, after)
         self.assertEqual(envelope["tier"], 2)

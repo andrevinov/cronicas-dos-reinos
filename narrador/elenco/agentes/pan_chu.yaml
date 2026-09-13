@@ -1,0 +1,48 @@
+schema_agente: 2
+natureza: reservado
+id: pan_chu
+nome: Pan Chu
+tipo: npc
+estado: latente
+objetivo_atual: Não executar ação local em Ravens Bluff enquanto sua chegada não estiver estabelecida; sua função
+  canônica envolve transporte marítimo clandestino, extração de pessoas e cargas e controle de rotas ilegais.
+recursos:
+- Golden Lily, grande navio de guerra roubado e tripulação disciplinada
+- transporte marítimo clandestino, extração de pessoas e cargas e controle de rotas ilegais
+- armamento naval de cerco capaz de ameaçar estruturas portuárias quando a escalada justificar
+- rede de marinheiros, contrabandistas e homens de abordagem
+restricoes:
+- não presumir presença em Ravens Bluff antes da chegada do Golden Lily ou outro fato canônico
+- proteger tripulação e cumprir sua honra pirata mesmo quando isso limita conveniência de Masao
+- não usar força naval destrutiva sem coerção, contestação séria ou objetivo estratégico compatível
+- não transformar possibilidade de Cormyr em chegada automática de frota externa
+presenca:
+  referencia: Ravens Bluff
+  estado: indeterminado
+  detalhe: A presença atual em Ravens Bluff não está estabelecida; o agente permanece inelegível para ação física
+    local até uma chegada ou presença ser canonizada.
+  fonte: null
+  evidencia: null
+mobilidade:
+  estado: sem_deslocamento_registrado
+  origem: null
+  destino: null
+  prazo: null
+atuacao_local:
+  regra: exige_presenca_fisica
+  escopo: Ravens Bluff
+  observacao: Membro da Juppongatana só se torna elegível para ação física em Ravens Bluff quando presença ou presença
+    oculta for estabelecida canonicamente.
+conhecimento: []
+plano_atual:
+  estado: sem_plano_registrado
+  acao: null
+  prazo_ou_oportunidade: O Golden Lily possui relógio canônico para alcançar Ravens Bluff em 27 Eleasis; até a chegada
+    ser resolvida, Pan Chu não executa ação física local.
+detalhes_operacionais:
+  arquivo: narrador/elenco/agentes/detalhes/pan_chu.yaml
+  secoes: [metodos_operacionais, autonomia_estrategica]
+fontes_canonicas:
+- narrador/elenco/juppongatana/membros.md
+- narrador/elenco/juppongatana/marcos-de-aparicao.md
+- narrador/verdade-da-campanha.md

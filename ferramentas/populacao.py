@@ -15,11 +15,11 @@ from typing import Any
 
 import yaml
 
-POPULATION = Path("narrador/populacao-canonica.yaml")
+POPULATION = Path("narrador/indices/populacao-canonica.yaml")
 NPCS = Path("estado/npcs/index.yaml")
 RELATIONS = Path("estado/relacoes/index.yaml")
-STRATEGIC = Path("narrador/agentes/index.yaml")
-LIGHT = Path("narrador/agentes-leves/index.yaml")
+STRATEGIC = Path("narrador/elenco/agentes/index.yaml")
+LIGHT = Path("narrador/elenco/agentes-leves/index.yaml")
 
 
 class PopulationError(ValueError):

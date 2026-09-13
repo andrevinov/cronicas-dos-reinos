@@ -24,11 +24,11 @@ import mundo
 
 REGISTRY = Path("narrador/mundo/ciclo-npcs.yaml")
 NPC_INDEX = Path("estado/npcs/index.yaml")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
-LIGHT_INDEX = Path("narrador/agentes-leves/index.yaml")
-LIGHT_STATE = Path("narrador/agentes-leves/estado.yaml")
-ENTRY_INDEX = Path("narrador/entradas/index.yaml")
-ENTRY_STATE = Path("narrador/entradas/estado.yaml")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
+LIGHT_INDEX = Path("narrador/elenco/agentes-leves/index.yaml")
+LIGHT_STATE = Path("narrador/elenco/agentes-leves/estado.yaml")
+ENTRY_INDEX = Path("narrador/elenco/entradas/index.yaml")
+ENTRY_STATE = Path("narrador/elenco/entradas/estado.yaml")
 MAX_RECENT_COMPLETED = 64
 
 

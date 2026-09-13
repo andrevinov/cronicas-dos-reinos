@@ -29,7 +29,7 @@ import intencoes_canonicas
 import mundo
 import oportunidades
 
-STATE = Path("narrador/arcos/parte_1/rewrites-causais.yaml")
+STATE = Path("narrador/tramas/arcos/parte_1/rewrites-causais.yaml")
 SCHEMA = 1
 MAX_STATE_BYTES = 12 * 1024
 MAX_HISTORY = 48
@@ -45,9 +45,9 @@ RELATION_TO_MODE = {
 RESERVATION_STATES = {"ativa", "aguarda_evidencia"}
 TERMINAL_RELEASE = {"recusada", "falhada", "expirada", "abandonada"}
 FORBIDDEN_EVIDENCE_PREFIXES = (
-    "narrador/sidequests-emergentes/",
-    "narrador/arcos/parte_1/intencoes/",
-    "narrador/arcos/parte_1/eventos/",
+    "narrador/tramas/sidequests/emergentes/",
+    "narrador/tramas/arcos/parte_1/intencoes/",
+    "narrador/tramas/arcos/parte_1/eventos/",
 )
 
 
@@ -161,7 +161,7 @@ def _quest_document(repo: Path, mission: dict[str, Any]) -> tuple[dict[str, Any]
     rel = Path(raw)
     if (
         rel.is_absolute() or ".." in rel.parts
-        or not rel.as_posix().startswith("narrador/sidequests-emergentes/quests/")
+        or not rel.as_posix().startswith("narrador/tramas/sidequests/emergentes/quests/")
     ):
         raise CanonBridgeError("arquivo de sidequest emergente inválido")
     doc = _map(_load(repo / rel), rel.as_posix())

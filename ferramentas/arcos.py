@@ -30,12 +30,12 @@ import yaml
 
 import metodos_agentes
 
-INDEX = Path("narrador/arcos/index.yaml")
-STATE = Path("narrador/arcos/estado.yaml")
-ARCS_DIR = Path("narrador/arcos")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
-ENTRIES_INDEX = Path("narrador/entradas/index.yaml")
-DIRECTIONS_INDEX = Path("narrador/direcoes/index.yaml")
+INDEX = Path("narrador/tramas/arcos/index.yaml")
+STATE = Path("narrador/tramas/arcos/estado.yaml")
+ARCS_DIR = Path("narrador/tramas/arcos")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
+ENTRIES_INDEX = Path("narrador/elenco/entradas/index.yaml")
+DIRECTIONS_INDEX = Path("narrador/tramas/direcoes/index.yaml")
 
 ARC_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_]{0,95}$")
 PIECE_ID_RE = ARC_ID_RE

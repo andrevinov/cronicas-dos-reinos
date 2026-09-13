@@ -20,11 +20,11 @@ from typing import Any
 
 import yaml
 
-POLICY = Path("narrador/juppongatana/progressao.yaml")
-STATE = Path("narrador/juppongatana/estado-progressao.yaml")
-ROSTER = Path("narrador/juppongatana/index.yaml")
+POLICY = Path("narrador/elenco/juppongatana/progressao.yaml")
+STATE = Path("narrador/elenco/juppongatana/estado-progressao.yaml")
+ROSTER = Path("narrador/elenco/juppongatana/index.yaml")
 SHEET = Path("personagens/jogador/ficha.yaml")
-AGENTS = Path("narrador/agentes/index.yaml")
+AGENTS = Path("narrador/elenco/agentes/index.yaml")
 
 SCHEMA_POLICY = 1
 SCHEMA_STATE = 1

@@ -61,7 +61,7 @@ def _quality(
 
 def _canonical_module(repo: Path):
     """Carrega o calendário somente no caminho raro em que ele existe no repo."""
-    catalog = repo / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+    catalog = repo / "narrador/tramas/arcos/parte_1/eventos-canonicos.yaml"
     if not catalog.is_file():
         return None
     try:

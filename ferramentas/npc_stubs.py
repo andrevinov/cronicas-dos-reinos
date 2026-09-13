@@ -23,8 +23,8 @@ import yaml
 
 NPC_INDEX = Path("estado/npcs/index.yaml")
 RELATION_INDEX = Path("estado/relacoes/index.yaml")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
-LIGHT_INDEX = Path("narrador/agentes-leves/index.yaml")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
+LIGHT_INDEX = Path("narrador/elenco/agentes-leves/index.yaml")
 AGENDA = Path("narrador/mundo/agenda.yaml")
 PERSISTENCE = "persistente_sem_agenda"
 MAX_NAME_CHARS = 80

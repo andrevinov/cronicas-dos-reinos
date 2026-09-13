@@ -21,7 +21,7 @@ import oportunidades
 
 SCHEMA = 1
 TICKET_KEY = "sidequests_ativas_task48"
-PROGRESS_PREFIX = Path("narrador/sidequests-emergentes/progresso")
+PROGRESS_PREFIX = Path("narrador/tramas/sidequests/emergentes/progresso")
 MAX_ACTIVE = 2
 MAX_PROJECTION_BYTES = 6 * 1024
 MAX_COMBINED_PREP_BYTES = 16 * 1024

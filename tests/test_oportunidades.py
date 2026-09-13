@@ -39,7 +39,7 @@ class OportunidadesRepoTest(unittest.TestCase):
 
     def test_indice_e_compacto(self):
         self.assertLessEqual(
-            (ROOT / "narrador/oportunidades/index.yaml").stat().st_size,
+            (ROOT / "narrador/tramas/oportunidades/index.yaml").stat().st_size,
             4096,
         )
 
@@ -83,17 +83,17 @@ class OportunidadesSinteticasTest(unittest.TestCase):
                 "npc_a": {
                     "nome": "NPC A",
                     "estado": "ativo",
-                    "arquivo": "narrador/oportunidades/perfis/npc_a.yaml",
+                    "arquivo": "narrador/tramas/oportunidades/perfis/npc_a.yaml",
                 },
                 "npc_b": {
                     "nome": "NPC B",
                     "estado": "ativo",
-                    "arquivo": "narrador/oportunidades/perfis/npc_b.yaml",
+                    "arquivo": "narrador/tramas/oportunidades/perfis/npc_b.yaml",
                 },
                 "npc_c": {
                     "nome": "NPC C",
                     "estado": "ativo",
-                    "arquivo": "narrador/oportunidades/perfis/npc_c.yaml",
+                    "arquivo": "narrador/tramas/oportunidades/perfis/npc_c.yaml",
                 },
             },
         }
@@ -148,11 +148,11 @@ class OportunidadesSinteticasTest(unittest.TestCase):
             ],
         )
 
-        self.y("narrador/oportunidades/index.yaml", self.index)
-        self.y("narrador/oportunidades/estado.yaml", self.state)
-        self.y("narrador/oportunidades/perfis/npc_a.yaml", self.profile_a)
-        self.y("narrador/oportunidades/perfis/npc_b.yaml", self.profile_b)
-        self.y("narrador/oportunidades/perfis/npc_c.yaml", self.profile_c)
+        self.y("narrador/tramas/oportunidades/index.yaml", self.index)
+        self.y("narrador/tramas/oportunidades/estado.yaml", self.state)
+        self.y("narrador/tramas/oportunidades/perfis/npc_a.yaml", self.profile_a)
+        self.y("narrador/tramas/oportunidades/perfis/npc_b.yaml", self.profile_b)
+        self.y("narrador/tramas/oportunidades/perfis/npc_c.yaml", self.profile_c)
         self.y(
             "estado/relacoes/index.yaml",
             {
@@ -179,7 +179,7 @@ class OportunidadesSinteticasTest(unittest.TestCase):
 
     def read_state(self):
         return yaml.safe_load(
-            (self.repo / "narrador/oportunidades/estado.yaml").read_text(
+            (self.repo / "narrador/tramas/oportunidades/estado.yaml").read_text(
                 encoding="utf-8"
             )
         )
@@ -209,7 +209,7 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         state = self.read_state()
         token = "op_01" if result == "oportunidade" else "nada_01"
         state["gate"] = {"ciclo": 1, "restantes": [token], "sorteios": 0}
-        self.y("narrador/oportunidades/estado.yaml", state)
+        self.y("narrador/tramas/oportunidades/estado.yaml", state)
 
     def test_baralho_sem_reposicao_e_deterministico(self):
         index = oportunidades.load_index(self.repo)
@@ -237,9 +237,9 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
-                "narrador/oportunidades/perfis/npc_a.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
+                "narrador/tramas/oportunidades/perfis/npc_a.yaml",
             ],
         )
 
@@ -257,8 +257,8 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         self.assertEqual(
             second["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
             ],
         )
 
@@ -283,8 +283,8 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         self.assertEqual(
             blocked["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
             ],
         )
 
@@ -324,15 +324,15 @@ class OportunidadesSinteticasTest(unittest.TestCase):
                 "necessidade_id": f"x{n}",
                 "janela": {"tipo": "a_qualquer_momento"},
             }
-        self.y("narrador/oportunidades/estado.yaml", state)
+        self.y("narrador/tramas/oportunidades/estado.yaml", state)
 
         result = oportunidades.encounter(self.repo, "npc_c", now=self.now)
         self.assertEqual(result["motivo"], "limite_de_sidequests_ativas")
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
             ],
         )
 
@@ -358,8 +358,8 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         self.assertEqual(
             second["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
             ],
         )
 
@@ -367,7 +367,7 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         state = self.read_state()
         state["sementes_consumidas"].append("npc_a:a_reabre")
         state["gate"] = {"ciclo": 1, "restantes": ["op_01"], "sorteios": 0}
-        self.y("narrador/oportunidades/estado.yaml", state)
+        self.y("narrador/tramas/oportunidades/estado.yaml", state)
 
         pending = oportunidades.encounter(self.repo, "npc_a", now=self.now)["pendencia"]
         self.assertEqual(pending["janela"]["tipo"], "temporal")
@@ -393,7 +393,7 @@ class OportunidadesSinteticasTest(unittest.TestCase):
         state = self.read_state()
         state["sementes_consumidas"].append("npc_a:a_temporal")
         state["gate"] = {"ciclo": 1, "restantes": ["op_01"], "sorteios": 0}
-        self.y("narrador/oportunidades/estado.yaml", state)
+        self.y("narrador/tramas/oportunidades/estado.yaml", state)
 
         pending = oportunidades.encounter(self.repo, "npc_a", now=self.now)["pendencia"]
         oportunidades.evaluate(

@@ -16,5 +16,5 @@ assert shizune["permitido"] and shizune["modo"] == "avaliar_primeira_aparicao"
 assert kurobane["permitido"] and kurobane["modo"] == "reaparicao_nao_bloqueada_pelo_marco"
 assert not cho["permitido"] and cho["estado_marco"] == "bloqueado"
 assert pan["permitido"] and pan["estado_marco"] == "elegivel" and pan["modo"] == "avaliar_primeira_aparicao"
-assert "narrador/juppongatana/marcos-de-aparicao.md" not in shizune["fontes_lidas"]
+assert "narrador/elenco/juppongatana/marcos-de-aparicao.md" not in shizune["fontes_lidas"]
 print("smoke marcos de aparição: OK")

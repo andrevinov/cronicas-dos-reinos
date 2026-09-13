@@ -139,7 +139,7 @@ class EntradaTransactionalBarrierTest(unittest.TestCase):
 
 class EntradaContractTest(unittest.TestCase):
     def test_contrato_documenta_tres_canais_e_limites_de_agencia(self):
-        text = (ROOT / "docs/agente/protocolo-de-entrada.md").read_text(encoding="utf-8")
+        text = (ROOT / "docs/agente/fundamentos/protocolo-de-entrada.md").read_text(encoding="utf-8")
         self.assertIn("texto normal   = ON", text)
         self.assertIn("[texto]        = OFF", text)
         self.assertIn("{texto}        = RECALL", text)

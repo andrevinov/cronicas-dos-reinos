@@ -27,7 +27,7 @@ class ThreatRepositoryTest(unittest.TestCase):
         cls.profiles = mod.load_profiles(REPO, cls.contract)["perfis"]
         cls.index = mod.adversarios.load_index(REPO)["adversarios"]
         cls.roster = yaml.safe_load(
-            (REPO / "narrador/juppongatana/index.yaml").read_text(encoding="utf-8")
+            (REPO / "narrador/elenco/juppongatana/index.yaml").read_text(encoding="utf-8")
         )["membros"]
 
     def test_perfis_cobrem_registro_e_juppongatana_continua_canonica(self):
@@ -99,7 +99,7 @@ class ThreatSyntheticTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        (self.repo / "narrador/adversarios").mkdir(parents=True)
+        (self.repo / "narrador/elenco/adversarios").mkdir(parents=True)
         shutil.copy(REPO / mod.CONTRACT_PATH, self.repo / mod.CONTRACT_PATH)
         shutil.copy(
             REPO / mod.adversarios.CONTRACT_PATH,
@@ -120,8 +120,8 @@ class ThreatSyntheticTest(unittest.TestCase):
                         "nome": "Arquétipo — Teste",
                         "tipo": "npc",
                         "funcao": "hibrido",
-                        "arquivo": "narrador/adversarios/fichas/arquetipo_teste.yaml",
-                        "especialidades_arquivo": "narrador/adversarios/especialidades/arquetipo_teste.yaml",
+                        "arquivo": "narrador/elenco/adversarios/fichas/arquetipo_teste.yaml",
+                        "especialidades_arquivo": "narrador/elenco/adversarios/especialidades/arquetipo_teste.yaml",
                     }
                 },
             },

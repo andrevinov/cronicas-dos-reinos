@@ -26,7 +26,7 @@ import mundo
 import progressao_juppongatana
 import transacoes
 
-ROOT = Path("narrador/arcos/parte_1/torneio-clandestino")
+ROOT = Path("narrador/tramas/arcos/parte_1/torneio-clandestino")
 INDEX = ROOT / "index.yaml"
 STATE = ROOT / "estado.yaml"
 SCHEMA = 1

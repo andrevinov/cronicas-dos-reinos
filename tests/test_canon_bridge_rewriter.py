@@ -124,8 +124,8 @@ class Task42Fixture(unittest.TestCase):
         task41_cases.isolate_opportunity_state(self.repo)
         shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)
         shutil.copytree(
-            ROOT / "narrador/arcos/parte_1",
-            self.repo / "narrador/arcos/parte_1",
+            ROOT / "narrador/tramas/arcos/parte_1",
+            self.repo / "narrador/tramas/arcos/parte_1",
         )
         # Cada teste começa sem overlay, independentemente do futuro estado vivo do repo.
         bridge = {

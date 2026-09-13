@@ -13,6 +13,7 @@ Arquivos principais:
 * `conhecimento/index.yaml`: índice dos fragmentos de conhecimento;
 * `conhecimento/topicos/`: conhecimento estável por assunto;
 * `conhecimento/descobertas/`: descobertas registradas por sessão quando existe cabeçalho explícito `Sessão NNN`.
+* `historico/`: recibos frios de migração, sem autoridade sobre o estado atual.
 
 Para descobrir o que Ren sabe, preferir:
 

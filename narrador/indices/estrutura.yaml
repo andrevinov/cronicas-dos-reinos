@@ -1,0 +1,71 @@
+schema_estrutura_narrador: 1
+natureza: contrato_reservado_de_organizacao
+politica:
+  referencia_quebrada: erro
+  ciclo_nao_classificado: erro
+  autoridade_duplicada: erro
+  consulta_dirigida_max_bytes: 8192
+  arquivo_sem_entrada: suspeita_revisao_humana
+autoridades:
+  contrato_mecanico_adversarios:
+    arquivo: narrador/elenco/adversarios/contrato.yaml
+    escopo: schema, ruleset, orçamentos e invariantes das fichas de adversários
+  registro_mecanico_adversarios:
+    arquivo: narrador/elenco/adversarios/index.yaml
+    escopo: ids e rotas dirigidas das fichas e especialidades mecânicas
+  contrato_avaliacao_ameacas:
+    arquivo: narrador/elenco/adversarios/contrato-ameacas.yaml
+    escopo: faixas, modificadores, orçamento e invariantes da avaliação pré-rolagem
+  perfis_avaliacao_ameacas:
+    arquivo: narrador/elenco/adversarios/ameacas.yaml
+    escopo: patamares de combate e especialidade, sinalização e saídas plausíveis
+  contrato_dungeons:
+    arquivo: narrador/tramas/dungeons/contrato.yaml
+    escopo: schema, orçamentos e invariantes de preparação explorável
+  registro_dungeons:
+    arquivo: narrador/tramas/dungeons/index.yaml
+    escopo: ids, locais, estatutos e manifestos dirigidos de dungeons preparadas
+  piloto_sarbreen_poroes_secos:
+    arquivo: narrador/tramas/dungeons/sarbreen_poroes_secos/manifesto.yaml
+    escopo: fronteira canônica, ativação, quatro níveis e recompensa final declarada
+  elenco_juppongatana:
+    arquivo: narrador/elenco/juppongatana/index.yaml
+    escopo: ids, nomes, alcunhas, círculos e rotas dos membros
+  perfis_juppongatana:
+    arquivo: narrador/elenco/juppongatana/membros.md
+    escopo: personalidade, história, técnicas e uso narrativo individual
+  marcos_juppongatana:
+    arquivo: narrador/elenco/juppongatana/marcos-de-aparicao.md
+    escopo: plausibilidade e pressão de primeira aparição
+  progressao_juppongatana:
+    arquivo: narrador/elenco/juppongatana/progressao.yaml
+    escopo: regra de milestones dos níveis 8 a 17
+  estado_progressao_juppongatana:
+    arquivo: narrador/elenco/juppongatana/estado-progressao.yaml
+    escopo: neutralizações duráveis já consumidas
+derivacoes:
+  indice_de_agentes:
+    arquivo: narrador/elenco/agentes/index.yaml
+    deriva_de: elenco_juppongatana
+    propriedade_validada: ids e nomes dos membros com agente individual
+  politica_de_progressao:
+    arquivo: narrador/elenco/juppongatana/progressao.yaml
+    deriva_de: elenco_juppongatana
+    propriedade_validada: conjunto de membros elegíveis
+redirecionamentos: {}
+ciclos_permitidos:
+- arquivos:
+  - narrador/tramas/arcos/parte_1/torneio-clandestino/index.yaml
+  - narrador/tramas/arcos/parte_1/torneio-clandestino/rodadas/final.yaml
+  natureza: ponteiro_funcional_nao_recursivo
+  motivo: o índice roteia a rodada e a rodada aponta para a lista autoritativa de candidatos no índice
+exclusoes_de_alcancabilidade:
+- narrador/historico/sessoes
+- narrador/tramas/sidequests/canonicas/segredos
+- narrador/tramas/sidequests/canonicas/roteadores
+- narrador/tramas/arcos/parte_1/intencoes
+- narrador/tramas/segredos/decisoes-lacunas-fase-2.yaml
+motivo_exclusoes: histórico frio e fragmentos deliberadamente abertos apenas por roteadores especializados
+raizes_de_consulta:
+- narrador/tramas/segredos/canone.md
+- narrador/mundo/CICLO-NPCS.md

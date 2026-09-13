@@ -51,7 +51,7 @@ class ConversationalRoleRepositoryTest(unittest.TestCase):
         self.assertEqual(texture["papel_conversacional"]["papel"], "espelho_afetivo")
         self.assertIn(texturas.INDEX_PATH.as_posix(), data["fontes"])
         self.assertFalse(any(source.startswith("cenario/texturas/npcs/") for source in data["fontes"]))
-        self.assertFalse(any(source.startswith("narrador/agentes/") for source in data["fontes"]))
+        self.assertFalse(any(source.startswith("narrador/elenco/agentes/") for source in data["fontes"]))
         rendered, _ = contexto.fit_budget(data, contexto.DEFAULT_MAX_BYTES, False)
         self.assertLessEqual(len(rendered.encode("utf-8")), contexto.DEFAULT_MAX_BYTES)
         delivered = yaml.safe_load(rendered)

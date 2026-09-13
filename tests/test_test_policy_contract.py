@@ -7,13 +7,13 @@ import yaml
 
 ROOT = Path(__file__).parents[1]
 AGENTS = ROOT / "AGENTS.md"
-POLICY = ROOT / "docs/agente/politica-de-testes.md"
+POLICY = ROOT / "docs/agente/engenharia/politica-de-testes.md"
 
 
 class PermanentTestPolicyContractTest(unittest.TestCase):
     def test_agents_roteia_e_resume_as_seis_regras_permanentes(self):
         text = AGENTS.read_text(encoding="utf-8")
-        self.assertIn("docs/agente/politica-de-testes.md", text)
+        self.assertIn("docs/agente/engenharia/politica-de-testes.md", text)
         required = (
             "estado vivo",
             "invariantes",
@@ -49,7 +49,7 @@ class PermanentTestPolicyContractTest(unittest.TestCase):
             "tests/live-state-freeze-review.yaml",
             "ferramentas/verificar-testes-historicos.py",
             "tests/historical-test-review.yaml",
-            "docs/agente/perfis-de-testes.md",
+            "docs/agente/engenharia/perfis-de-testes.md",
         )
         for rel in paths:
             with self.subTest(path=rel):

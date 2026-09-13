@@ -27,7 +27,7 @@ import sidequests_emergentes as emergent
 import transacoes
 import turno
 
-CONTRACTS_DIR = Path("narrador/sidequests-emergentes/recompensas")
+CONTRACTS_DIR = Path("narrador/tramas/sidequests/emergentes/recompensas")
 STATE_PATH = Path("estado/estado-atual.yaml")
 SHEET_PATH = Path("personagens/jogador/ficha.yaml")
 SCHEMA = 1
@@ -48,9 +48,9 @@ AUTHORITY_TYPES = {"quest_giver", "npc_existente", "instituicao", "proprietario"
 DISCOVERY_FAILURES = {"permanece_oculta", "perdida_permanentemente"}
 DISCOVERY_DELIVERY = {"imediata", "desfecho"}
 FORBIDDEN_PROOF = (
-    "narrador/sidequests-emergentes/",
-    "narrador/arcos/parte_1/intencoes/",
-    "narrador/arcos/parte_1/eventos/",
+    "narrador/tramas/sidequests/emergentes/",
+    "narrador/tramas/arcos/parte_1/intencoes/",
+    "narrador/tramas/arcos/parte_1/eventos/",
 )
 GOLD_CAPS = {
     1: {"baixo": 25, "moderado": 100, "alto": 250},
@@ -145,7 +145,7 @@ def _mission(repo: Path, ref: str) -> tuple[dict[str, Any], str, dict[str, Any]]
 
 def _quest(repo: Path, mission: dict[str, Any]) -> dict[str, Any]:
     raw = mission.get("arquivo")
-    if not isinstance(raw, str) or not raw.startswith("narrador/sidequests-emergentes/quests/"):
+    if not isinstance(raw, str) or not raw.startswith("narrador/tramas/sidequests/emergentes/quests/"):
         raise QuestRewardError("missão Task41 sem fragmento reservado válido")
     doc = _map(_load(repo / raw), raw)
     if doc.get("schema_sidequest_emergente") != 2 or doc.get("id") != mission.get("quest_id"):

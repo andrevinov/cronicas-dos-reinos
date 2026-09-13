@@ -18,7 +18,7 @@ class CronicaOperationalRouterTest(unittest.TestCase):
         self.assertIn("não pedir que ele rode CLI manualmente", text)
 
     def test_protocolo_de_sessao_nao_exige_cli_manual_do_jogador(self):
-        text = (ROOT / "narracao/protocolo-de-sessao.md").read_text(encoding="utf-8")
+        text = (ROOT / "narracao/operacao/protocolo-de-sessao.md").read_text(encoding="utf-8")
         self.assertIn("a operação é do narrador, não do jogador", text)
         self.assertIn("poetry run cronica sessao status", text)
         self.assertIn("poetry run cronica sessao iniciar", text)

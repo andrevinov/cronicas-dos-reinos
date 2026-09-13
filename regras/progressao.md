@@ -90,7 +90,7 @@ O registro deve conter:
 * escolhas pendentes;
 * arquivos atualizados.
 
-Para níveis 8–17, o registro de experiência deve apontar também para o milestone correspondente em `narrador/juppongatana/estado-progressao.yaml`.
+Para níveis 8–17, o registro de experiência deve apontar também para o milestone correspondente em `narrador/elenco/juppongatana/estado-progressao.yaml`.
 
 ---
 

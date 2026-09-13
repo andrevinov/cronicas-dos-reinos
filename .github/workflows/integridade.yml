@@ -45,9 +45,9 @@ jobs:
       - name: Consolidação transacional
         run: |
           test -f ferramentas/consolidar.py
-          test -f docs/agente/consolidacao-transacional.md
+          test -f docs/agente/operacao/consolidacao-transacional.md
           test -f baseline/consolidacao-step-08.md
-          grep -q 'docs/agente/consolidacao-transacional.md' AGENTS.md
+          grep -q 'docs/agente/operacao/consolidacao-transacional.md' AGENTS.md
           python ferramentas/consolidar.py check
           python ferramentas/consolidar.py status > /tmp/consolidacao-status.json
           python - <<'PY'
@@ -65,7 +65,7 @@ jobs:
         run: |
           test -f ferramentas/sessoes.py
           test -f ferramentas/checkpoint.py
-          test -f docs/agente/memoria-de-sessoes.md
+          test -f docs/agente/memoria/memoria-de-sessoes.md
           test -f baseline/memoria-sessoes-step-09.md
           test -f sessoes/index.yaml
           test -f sessoes/003/handoff.yaml
@@ -89,9 +89,9 @@ jobs:
       - name: Escada formal de acesso
         run: |
           test -f ferramentas/politica_acesso.py
-          test -f docs/agente/escada-de-acesso.md
+          test -f docs/agente/operacao/escada-de-acesso.md
           test -f baseline/escada-acesso-step-10.md
-          grep -q 'docs/agente/escada-de-acesso.md' AGENTS.md
+          grep -q 'docs/agente/operacao/escada-de-acesso.md' AGENTS.md
           grep -q 'L4T' AGENTS.md
           grep -q -- '--apos L2' AGENTS.md
           python ferramentas/contexto.py --sem-log --max-bytes 16000 status > /tmp/acesso-l1.yaml
@@ -132,7 +132,7 @@ jobs:
         run: |
           test -f ferramentas/analisar-rollout.py
           test -f ferramentas/comparar-rollouts.py
-          test -f docs/agente/telemetria-rollouts.md
+          test -f docs/agente/engenharia/telemetria-rollouts.md
           test -f baseline/telemetria-step-11.md
           test -f baseline/rollout-2026-08-15.json
           test -f baseline/metas-rollout-pos-refatoracao.json
@@ -226,7 +226,7 @@ jobs:
       - name: Auditoria final e teste de retomada
         run: |
           test -f ferramentas/auditoria-final.py
-          test -f docs/agente/auditoria-final.md
+          test -f docs/agente/engenharia/auditoria-final.md
           test -f baseline/auditoria-final-step-12.md
           python ferramentas/auditoria-final.py --json --sem-testes > /tmp/auditoria-final.json
           python - <<'PY'

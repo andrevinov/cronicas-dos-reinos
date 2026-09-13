@@ -47,8 +47,8 @@ class EventosRepoTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/eventos/index.yaml",
-                "narrador/eventos/cartas/acidente_no_porto.yaml",
+                "narrador/mundo/eventos/index.yaml",
+                "narrador/mundo/eventos/cartas/acidente_no_porto.yaml",
             ],
         )
 
@@ -65,13 +65,13 @@ class EventosRepoTest(unittest.TestCase):
         self.assertEqual(
             context["fontes_lidas"],
             [
-                "narrador/eventos/interacoes.yaml",
-                "narrador/agentes/index.yaml",
-                "narrador/agentes-leves/index.yaml",
-                "narrador/arcos/index.yaml",
-                "narrador/arcos/estado.yaml",
-                "narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml",
-                "narrador/arcos/controle-mundo.yaml",
+                "narrador/mundo/eventos/interacoes.yaml",
+                "narrador/elenco/agentes/index.yaml",
+                "narrador/elenco/agentes-leves/index.yaml",
+                "narrador/tramas/arcos/index.yaml",
+                "narrador/tramas/arcos/estado.yaml",
+                "narrador/tramas/arcos/parte_1_uma_ponte_para_kozakura.yaml",
+                "narrador/tramas/arcos/controle-mundo.yaml",
                 "narrador/mundo/rede-protegida.yaml",
             ],
         )
@@ -92,7 +92,7 @@ class EventosSinteticosTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         self.y(
-            "narrador/eventos/index.yaml",
+            "narrador/mundo/eventos/index.yaml",
             {
                 "schema_eventos_mundo": 1,
                 "natureza": "reservado",
@@ -110,20 +110,20 @@ class EventosSinteticosTest(unittest.TestCase):
                         "categoria": "teste",
                         "escala": "bairro",
                         "tags": ["porto", "comercio"],
-                        "arquivo": "narrador/eventos/cartas/a.yaml",
+                        "arquivo": "narrador/mundo/eventos/cartas/a.yaml",
                     },
                     "b": {
                         "nome": "Carta B",
                         "categoria": "teste",
                         "escala": "cidade",
                         "tags": ["saude"],
-                        "arquivo": "narrador/eventos/cartas/b.yaml",
+                        "arquivo": "narrador/mundo/eventos/cartas/b.yaml",
                     },
                 },
             },
         )
         self.y(
-            "narrador/eventos/cartas/a.yaml",
+            "narrador/mundo/eventos/cartas/a.yaml",
             {
                 "schema_evento_mundo": 1,
                 "natureza": "reservado",
@@ -139,7 +139,7 @@ class EventosSinteticosTest(unittest.TestCase):
             },
         )
         self.y(
-            "narrador/eventos/cartas/b.yaml",
+            "narrador/mundo/eventos/cartas/b.yaml",
             {
                 "schema_evento_mundo": 1,
                 "natureza": "reservado",
@@ -155,7 +155,7 @@ class EventosSinteticosTest(unittest.TestCase):
             },
         )
         self.y(
-            "narrador/eventos/interacoes.yaml",
+            "narrador/mundo/eventos/interacoes.yaml",
             {
                 "schema_interacoes_eventos": 1,
                 "natureza": "roteador_reservado",
@@ -186,7 +186,7 @@ class EventosSinteticosTest(unittest.TestCase):
             "nome": "unused",
         }
         self.y(
-            "narrador/agentes/index.yaml",
+            "narrador/elenco/agentes/index.yaml",
             {
                 "schema_agentes": 2,
                 "natureza": "reservado",
@@ -209,7 +209,7 @@ class EventosSinteticosTest(unittest.TestCase):
             },
         )
         self.y(
-            "narrador/agentes-leves/index.yaml",
+            "narrador/elenco/agentes-leves/index.yaml",
             {
                 "schema_agentes_leves": 1,
                 "natureza": "reservado",
@@ -221,7 +221,7 @@ class EventosSinteticosTest(unittest.TestCase):
             },
         )
         self.y(
-            "narrador/eventos/estado.yaml",
+            "narrador/mundo/eventos/estado.yaml",
             {
                 "schema_estado_eventos_mundo": 1,
                 "natureza": "controle_reservado",
@@ -279,10 +279,10 @@ class EventosSinteticosTest(unittest.TestCase):
         )
 
     def force_event_a(self):
-        state = self.read("narrador/eventos/estado.yaml")
+        state = self.read("narrador/mundo/eventos/estado.yaml")
         state["ocorrencia"] = {"ciclo": 1, "restantes": ["e", "r"]}
         state["eventos"] = {"ciclo": 1, "restantes": ["a", "b"]}
-        self.y("narrador/eventos/estado.yaml", state)
+        self.y("narrador/mundo/eventos/estado.yaml", state)
         self.tempo("11 Eleasis, 1372 DR", "06:01 de 11 Eleasis")
 
     def test_ordem_e_reprodutivel(self):
@@ -292,23 +292,23 @@ class EventosSinteticosTest(unittest.TestCase):
         self.assertEqual(sorted(first), ["a", "b", "c", "d"])
 
     def test_rotina_nao_le_roteador_nem_indices_de_agentes(self):
-        state = self.read("narrador/eventos/estado.yaml")
+        state = self.read("narrador/mundo/eventos/estado.yaml")
         state["ocorrencia"] = {"ciclo": 1, "restantes": ["r", "e"]}
-        self.y("narrador/eventos/estado.yaml", state)
+        self.y("narrador/mundo/eventos/estado.yaml", state)
         self.tempo("11 Eleasis, 1372 DR", "06:01 de 11 Eleasis")
         result = eventos_mundo.process_checkpoint(self.repo)
         self.assertEqual(result["dias_rotina"], 1)
         self.assertEqual(result["novas_pendencias"], [])
-        self.assertNotIn("narrador/eventos/interacoes.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/agentes/index.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/agentes-leves/index.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/mundo/eventos/interacoes.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes/index.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/index.yaml", result["fontes_lidas"])
 
     def test_evento_cria_uma_pendencia_com_orcamento_sem_abrir_fragmentos(self):
         self.force_event_a()
         result = eventos_mundo.process_checkpoint(self.repo)
         self.assertEqual(result["eventos_reconsiderar"], ["a"])
-        self.assertNotIn("narrador/eventos/cartas/a.yaml", result["fontes_lidas"])
-        self.assertIn("narrador/eventos/interacoes.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/mundo/eventos/cartas/a.yaml", result["fontes_lidas"])
+        self.assertIn("narrador/mundo/eventos/interacoes.yaml", result["fontes_lidas"])
         pending = self.read("narrador/mundo/estado.yaml")["pendencias"]
         self.assertEqual(len(pending), 1)
         item = pending[0]
@@ -327,17 +327,17 @@ class EventosSinteticosTest(unittest.TestCase):
         self.assertNotIn("l_inativo", routed["leves"])
 
     def test_sem_repeticao_antes_de_esgotar(self):
-        index = self.read("narrador/eventos/index.yaml")
+        index = self.read("narrador/mundo/eventos/index.yaml")
         index["ocorrencia"]["fichas"] = [
             {"id": "e1", "resultado": "evento"},
             {"id": "e2", "resultado": "evento"},
             {"id": "r", "resultado": "rotina"},
         ]
-        self.y("narrador/eventos/index.yaml", index)
-        state = self.read("narrador/eventos/estado.yaml")
+        self.y("narrador/mundo/eventos/index.yaml", index)
+        state = self.read("narrador/mundo/eventos/estado.yaml")
         state["ocorrencia"] = {"ciclo": 1, "restantes": ["e1", "e2", "r"]}
         state["eventos"] = {"ciclo": 1, "restantes": ["a", "b"]}
-        self.y("narrador/eventos/estado.yaml", state)
+        self.y("narrador/mundo/eventos/estado.yaml", state)
         self.tempo("12 Eleasis, 1372 DR", "06:01 de 12 Eleasis")
         result = eventos_mundo.process_checkpoint(self.repo)
         self.assertEqual(result["eventos_sorteados"], ["a", "b"])
@@ -366,7 +366,7 @@ class EventosSinteticosTest(unittest.TestCase):
         self.assertEqual(result["novas_pendencias"], [])
         self.assertEqual(len(self.read("narrador/mundo/estado.yaml")["pendencias"]), 1)
         self.assertEqual(
-            self.read("narrador/eventos/estado.yaml")["eventos"]["restantes"],
+            self.read("narrador/mundo/eventos/estado.yaml")["eventos"]["restantes"],
             ["b"],
         )
 
@@ -396,25 +396,25 @@ class EventosSinteticosTest(unittest.TestCase):
         self.assertEqual(pending[0]["agentes_leves_afetados"], [])
 
     def test_tags_do_indice_e_fragmento_nao_podem_divergir(self):
-        data = self.read("narrador/eventos/cartas/a.yaml")
+        data = self.read("narrador/mundo/eventos/cartas/a.yaml")
         data["tags"] = ["outra"]
-        self.y("narrador/eventos/cartas/a.yaml", data)
+        self.y("narrador/mundo/eventos/cartas/a.yaml", data)
         result = eventos_mundo.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertTrue(any("tags" in error for error in result["erros"]))
 
     def test_roteador_rejeita_agente_inexistente(self):
-        router = self.read("narrador/eventos/interacoes.yaml")
+        router = self.read("narrador/mundo/eventos/interacoes.yaml")
         router["estrategicos"]["fantasma"] = {"prioridade": 1, "tags": ["porto"]}
-        self.y("narrador/eventos/interacoes.yaml", router)
+        self.y("narrador/mundo/eventos/interacoes.yaml", router)
         result = eventos_mundo.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertTrue(any("inexistente" in error for error in result["erros"]))
 
     def test_fragmento_canonico_e_rejeitado(self):
-        data = self.read("narrador/eventos/cartas/a.yaml")
+        data = self.read("narrador/mundo/eventos/cartas/a.yaml")
         data["estatuto"] = "canonico"
-        self.y("narrador/eventos/cartas/a.yaml", data)
+        self.y("narrador/mundo/eventos/cartas/a.yaml", data)
         result = eventos_mundo.validate_repo(self.repo)
         self.assertFalse(result["ok"])
 

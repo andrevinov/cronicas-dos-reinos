@@ -54,6 +54,6 @@ O livro é uma fonte antiga de AD&D. Para esta campanha:
 * `cenario/regioes/kara-tur/kozakura.md`
 * `cenario/regioes/kara-tur/faccoes-e-antagonistas.md`
 * `cenario/regioes/kara-tur/itens-e-treinamentos-5e.md`
-* `narrador/kara-tur-segredos.md`
-* `narrador/aliados/`
-* `narrador/ponte-de-kozakura/`
+* `narrador/tramas/segredos/kara-tur.md`
+* `narrador/elenco/aliados/`
+* `narrador/tramas/ponte-de-kozakura/`

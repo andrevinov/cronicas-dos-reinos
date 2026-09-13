@@ -128,13 +128,13 @@ def _copy_common(repo: Path, *, canon: bool = False) -> None:
         shutil.copy2(ROOT / rel, target)
     task41_cases.isolate_opportunity_state(repo)
     shutil.copytree(ROOT / locais.INDEX.parent, repo / locais.INDEX.parent)
-    shutil.copytree(ROOT / "narrador/agentes", repo / "narrador/agentes")
+    shutil.copytree(ROOT / "narrador/elenco/agentes", repo / "narrador/elenco/agentes")
     for rel in (adversarial.POLICY, rede_protegida.INDEX):
         target = repo / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / rel, target)
     if canon:
-        shutil.copytree(ROOT / "narrador/arcos/parte_1", repo / "narrador/arcos/parte_1")
+        shutil.copytree(ROOT / "narrador/tramas/arcos/parte_1", repo / "narrador/tramas/arcos/parte_1")
         bridge_path = repo / canon_bridge.STATE
         bridge = yaml.safe_load(bridge_path.read_text(encoding="utf-8")) or {}
         bridge["reservas"] = {}
@@ -249,7 +249,7 @@ class Task44CompetentVillainTest(unittest.TestCase):
     def test_pan_chu_nao_bombardeia_por_ordem_simples_mas_coercao_abre_escalada(self):
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
-            shutil.copytree(ROOT / "narrador/agentes", repo / "narrador/agentes")
+            shutil.copytree(ROOT / "narrador/elenco/agentes", repo / "narrador/elenco/agentes")
             denied = adversarial.agent_conditional_escalation(
                 repo, "pan_chu", "tentativa_de_expulsao"
             )

@@ -23,8 +23,8 @@ import yaml
 import ecologia_local
 import locais
 
-INDEX = Path("narrador/incidentes-v2/index.yaml")
-STATE = Path("narrador/incidentes-v2/estado.yaml")
+INDEX = Path("narrador/mundo/incidentes/index.yaml")
+STATE = Path("narrador/mundo/incidentes/estado.yaml")
 SCHEMA = 1
 MAX_INDEX_BYTES = 24 * 1024
 MAX_STATE_BYTES = 16 * 1024

@@ -55,7 +55,7 @@ class ContextSceneAlliesTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/index.yaml",
+            "narrador/tramas/arcos/index.yaml",
             {
                 "schema_arcos": 1,
                 "natureza": "roteador_reservado",
@@ -63,14 +63,14 @@ class ContextSceneAlliesTest(unittest.TestCase):
                     "p1": {
                         "titulo": "P1",
                         "ordem": 1,
-                        "arquivo": "narrador/arcos/p1.yaml",
+                        "arquivo": "narrador/tramas/arcos/p1.yaml",
                         "proximo": None,
                     }
                 },
             },
         )
         self._write(
-            "narrador/arcos/estado.yaml",
+            "narrador/tramas/arcos/estado.yaml",
             {
                 "schema_estado_arcos": 2,
                 "natureza": "controle_reservado",
@@ -80,7 +80,7 @@ class ContextSceneAlliesTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/p1.yaml",
+            "narrador/tramas/arcos/p1.yaml",
             {
                 "schema_arco": 4,
                 "natureza": "reservado",
@@ -91,7 +91,7 @@ class ContextSceneAlliesTest(unittest.TestCase):
                 "inicio": {"tipo": "fato_canonico", "marcador": "inicio", "fonte": "campanha.yaml"},
                 "termino": {"tipo": "marco_explicito", "marcador": "fim", "fonte": "campanha.yaml"},
                 "orquestracao": {
-                    "fontes": {"plano": {"tipo": "documento_reservado", "arquivo": "narrador/masao/plano.md"}},
+                    "fontes": {"plano": {"tipo": "documento_reservado", "arquivo": "narrador/elenco/masao/plano.md"}},
                     "plano_mestre": {"agente": "masao", "objetivo": "obj", "referencia": "plano"},
                 },
                 "habilitacoes": {
@@ -106,14 +106,14 @@ class ContextSceneAlliesTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/entradas/index.yaml",
+            "narrador/elenco/entradas/index.yaml",
             {
                 "schema_entradas": 1,
                 "natureza": "reservado",
                 "cadencia_padrao_dias": 3,
                 "candidatos": {
-                    "shen": {"nome": "Shen", "ordem": 1, "nivel_minimo_normal": 6, "arquivo": "narrador/entradas/shen.yaml"},
-                    "joen": {"nome": "Joen", "ordem": 2, "nivel_minimo_normal": 7, "arquivo": "narrador/entradas/joen.yaml"},
+                    "shen": {"nome": "Shen", "ordem": 1, "nivel_minimo_normal": 6, "arquivo": "narrador/elenco/entradas/shen.yaml"},
+                    "joen": {"nome": "Joen", "ordem": 2, "nivel_minimo_normal": 7, "arquivo": "narrador/elenco/entradas/joen.yaml"},
                 },
             },
         )
@@ -140,7 +140,7 @@ class ContextSceneAlliesTest(unittest.TestCase):
         joen_open=False,
     ):
         self._write(
-            "narrador/entradas/estado.yaml",
+            "narrador/elenco/entradas/estado.yaml",
             {
                 "schema_estado_entradas": 1,
                 "natureza": "controle_reservado",
@@ -192,9 +192,9 @@ class ContextSceneAlliesTest(unittest.TestCase):
 
     def test_entrada_contextual_abre_zero_fragmentos(self):
         result = contexto_cena.select_candidates(self.repo, [self.PRESSAO], scene_id="s5")
-        self.assertNotIn("narrador/entradas/shen.yaml", result["fontes_lidas"])
-        self.assertIn("narrador/entradas/index.yaml", result["fontes_lidas"])
-        self.assertIn("narrador/entradas/estado.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/entradas/shen.yaml", result["fontes_lidas"])
+        self.assertIn("narrador/elenco/entradas/index.yaml", result["fontes_lidas"])
+        self.assertIn("narrador/elenco/entradas/estado.yaml", result["fontes_lidas"])
 
 
 if __name__ == "__main__":

@@ -99,7 +99,7 @@ class ContextoCenaTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/agentes/index.yaml",
+            "narrador/elenco/agentes/index.yaml",
             {
                 "schema_agentes": 2,
                 "natureza": "reservado",
@@ -113,18 +113,18 @@ class ContextoCenaTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/direcoes/index.yaml",
+            "narrador/tramas/direcoes/index.yaml",
             {
                 "schema_direcoes": 1,
                 "natureza": "reservado",
                 "direcoes": {
-                    "ponte_de_kozakura": {"nome": "Ponte de Kozakura", "arquivo": "narrador/direcoes/ponte_de_kozakura.yaml"},
-                    "futura": {"nome": "Futura", "arquivo": "narrador/direcoes/futura.yaml"},
+                    "ponte_de_kozakura": {"nome": "Ponte de Kozakura", "arquivo": "narrador/tramas/direcoes/ponte_de_kozakura.yaml"},
+                    "futura": {"nome": "Futura", "arquivo": "narrador/tramas/direcoes/futura.yaml"},
                 },
             },
         )
         self._write(
-            "narrador/direcoes/estado.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
             {
                 "schema_estado_direcoes": 1,
                 "natureza": "controle_reservado",
@@ -147,19 +147,19 @@ class ContextoCenaTest(unittest.TestCase):
 
     def _arc(self, antagonists: list[str], *, directions: list[str] | None = None) -> None:
         self._write(
-            "narrador/arcos/index.yaml",
+            "narrador/tramas/arcos/index.yaml",
             {
                 "schema_arcos": 1,
                 "natureza": "roteador_reservado",
-                "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/arcos/parte_1.yaml", "proximo": None}},
+                "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/tramas/arcos/parte_1.yaml", "proximo": None}},
             },
         )
         self._write(
-            "narrador/arcos/estado.yaml",
+            "narrador/tramas/arcos/estado.yaml",
             {"schema_estado_arcos": 2, "natureza": "controle_reservado", "arco_atual": "parte_1", "estado": "ativo", "historico_transicoes": []},
         )
         self._write(
-            "narrador/arcos/parte_1.yaml",
+            "narrador/tramas/arcos/parte_1.yaml",
             {
                 "schema_arco": 4,
                 "natureza": "reservado",
@@ -170,7 +170,7 @@ class ContextoCenaTest(unittest.TestCase):
                 "inicio": {"tipo": "fato_canonico", "marcador": "inicio_parte_1", "fonte": "campanha.yaml"},
                 "termino": {"tipo": "marco_explicito", "marcador": "fim_parte_1", "fonte": "campanha.yaml"},
                 "orquestracao": {
-                    "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/masao/plano.md"}},
+                    "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/elenco/masao/plano.md"}},
                     "plano_mestre": {"agente": "masao", "objetivo": "objetivo_parte_1", "referencia": "plano_mestre"},
                 },
                 "habilitacoes": {
@@ -188,11 +188,11 @@ class ContextoCenaTest(unittest.TestCase):
 
     def _milestones(self, antagonists: list[str]) -> None:
         self._write(
-            "narrador/arcos/marcos-aparicao.yaml",
+            "narrador/tramas/arcos/marcos-aparicao.yaml",
             {
                 "schema_marcos_aparicao": 1,
                 "natureza": "roteador_reservado",
-                "fonte_canonica": "narrador/juppongatana/marcos-de-aparicao.md",
+                "fonte_canonica": "narrador/elenco/juppongatana/marcos-de-aparicao.md",
                 "regras": {"elegivel_nao_e_aparicao": True, "consumido_nao_bloqueia_reaparicao": True},
                 "marcos": {
                     agent_id: {
@@ -207,7 +207,7 @@ class ContextoCenaTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/estado-marcos-aparicao.yaml",
+            "narrador/tramas/arcos/estado-marcos-aparicao.yaml",
             {
                 "schema_estado_marcos_aparicao": 1,
                 "natureza": "controle_reservado",
@@ -223,7 +223,7 @@ class ContextoCenaTest(unittest.TestCase):
             },
         )
         self._write("runtime/contexto.yaml", {"personagem": {"nivel": 6}})
-        source = self.repo / "narrador/juppongatana/marcos-de-aparicao.md"
+        source = self.repo / "narrador/elenco/juppongatana/marcos-de-aparicao.md"
         source.parent.mkdir(parents=True, exist_ok=True)
         source.write_text(
             "# Marcos\n" + "\n".join(f"### {agent_id}" for agent_id in antagonists) + "\n",
@@ -330,9 +330,9 @@ class ContextoCenaTest(unittest.TestCase):
             self.assertNotIn(forbidden, item)
 
     def test_linha_fora_do_arco_e_bloqueada_antes_de_fragmento(self):
-        arc = yaml.safe_load((self.repo / "narrador/arcos/parte_1.yaml").read_text())
+        arc = yaml.safe_load((self.repo / "narrador/tramas/arcos/parte_1.yaml").read_text())
         arc["linhas_operacionais"].pop("impedir_consolidacao_de_provas")
-        self._write("narrador/arcos/parte_1.yaml", arc)
+        self._write("narrador/tramas/arcos/parte_1.yaml", arc)
         result = contexto_cena.select_candidates(self.repo, [self.DOC, self.REG], scene_id="linha-bloq")
         self.assertEqual(result["operacoes"], [])
         self.assertGreaterEqual(result["arco"]["bloqueados_por_tipo"]["operacao"], 1)
@@ -492,7 +492,7 @@ class ContextoCenaTest(unittest.TestCase):
         item["grupo_arco"] = "livre"
         router["candidatos"] = {"presenca_agente_b": item}
         self._write(contexto_cena.ROUTER.as_posix(), router)
-        for rel in ("narrador/arcos/index.yaml", "narrador/arcos/estado.yaml", "narrador/arcos/parte_1.yaml"):
+        for rel in ("narrador/tramas/arcos/index.yaml", "narrador/tramas/arcos/estado.yaml", "narrador/tramas/arcos/parte_1.yaml"):
             (self.repo / rel).unlink()
         result = contexto_cena.select_candidates(
             self.repo, [self.LOCAL, self.DOC], scene_id="livre"

@@ -15,7 +15,7 @@ import yaml
 import arcos
 import agentes
 
-AGENTS_INDEX=Path('narrador/agentes/index.yaml')
+AGENTS_INDEX=Path('narrador/elenco/agentes/index.yaml')
 VALID_INITIATIVE={'baixa','media','alta'}
 MAX_IMPULSES=6
 MAX_ESCALATIONS=6

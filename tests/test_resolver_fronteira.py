@@ -53,7 +53,7 @@ class ResolverFronteiraPrepareTest(unittest.TestCase):
         }
         agent = {
             "agente_id": "red_sail",
-            "fontes_lidas": ["narrador/agentes/index.yaml", "narrador/agentes/red_sail.yaml"],
+            "fontes_lidas": ["narrador/elenco/agentes/index.yaml", "narrador/elenco/agentes/red_sail.yaml"],
             "elegibilidade_local": {"permitida": True},
             "resultado": {
                 "estado": "ativo",
@@ -65,9 +65,9 @@ class ResolverFronteiraPrepareTest(unittest.TestCase):
         light = {
             "agente_leve_id": "maerra",
             "fontes_lidas": [
-                "narrador/agentes-leves/index.yaml",
-                "narrador/agentes-leves/estado.yaml",
-                "narrador/agentes-leves/maerra.yaml",
+                "narrador/elenco/agentes-leves/index.yaml",
+                "narrador/elenco/agentes-leves/estado.yaml",
+                "narrador/elenco/agentes-leves/maerra.yaml",
             ],
             "cache_negativo": None,
             "resultado": {
@@ -88,9 +88,9 @@ class ResolverFronteiraPrepareTest(unittest.TestCase):
             },
             "avanco_requer_fato_canonico": True,
             "fontes_lidas": [
-                "narrador/direcoes/index.yaml",
-                "narrador/direcoes/estado.yaml",
-                "narrador/direcoes/golden.yaml",
+                "narrador/tramas/direcoes/index.yaml",
+                "narrador/tramas/direcoes/estado.yaml",
+                "narrador/tramas/direcoes/golden.yaml",
             ],
         }
 

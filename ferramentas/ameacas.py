@@ -20,8 +20,8 @@ except ModuleNotFoundError:
     from ferramentas import adversarios, ficha_ren
 
 
-CONTRACT_PATH = Path("narrador/adversarios/contrato-ameacas.yaml")
-PROFILES_PATH = Path("narrador/adversarios/ameacas.yaml")
+CONTRACT_PATH = Path("narrador/elenco/adversarios/contrato-ameacas.yaml")
+PROFILES_PATH = Path("narrador/elenco/adversarios/ameacas.yaml")
 REN_SHEET_PATH = Path("personagens/jogador/ficha.yaml")
 SCHEMA = 1
 

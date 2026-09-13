@@ -37,7 +37,7 @@ class CausalStagingIdentityTest(unittest.TestCase):
             "agentes": {
                 aid: {"nome": aid.upper(), "perfil_operacional": "recorrente_leve", "estado": "ativo",
                       "prioridade": 1, "intervalo_dias": 1, "inicio": deepcopy(WHEN),
-                      "arquivo": f"narrador/agentes-leves/{aid}.yaml",
+                      "arquivo": f"narrador/elenco/agentes-leves/{aid}.yaml",
                       "fontes_causais": [SOURCE], "perfil_blob_git": "0" * 40}
                 for aid in ("a", "b", "c")
             },

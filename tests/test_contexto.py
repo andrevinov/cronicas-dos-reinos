@@ -123,8 +123,8 @@ class ContextoRepositoryTest(unittest.TestCase):
         self.assertEqual(
             data["fontes"],
             [
-                "narrador/continuidade-autoral.yaml",
-                "narrador/segredos/continuidade-lacunas.yaml",
+                "narrador/indices/continuidade-autoral.yaml",
+                "narrador/tramas/segredos/continuidade-lacunas.yaml",
             ],
         )
         anchor = data["resultado"]["compromissos"][0]["verdade_canonica"][0]

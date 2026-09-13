@@ -1,0 +1,248 @@
+schema_eventos_canonicos_parte_1: 2
+natureza: reservado
+arco: parte_1_uma_ponte_para_kozakura
+principio: A espinha datada obriga situações e pressões do mundo, nunca decisões, emoções, rolagens, vitórias ou
+  derrotas de Ren. Passado materializado é imutável; futuro adapta a forma ao estado canônico sem apagar o núcleo
+  ainda possível.
+secret_canon_v2:
+  versao: 1
+  fronteira_autoral:
+    data: 17 Eleasis, 1372 DR
+    hora: '18:25'
+  passado_congelado:
+    emboscada_do_restaurante: ad5ac9e4ca6c2c6e10a3dda796929c20467362a23b0406f4522891086af50ab3
+  categorias_controladas:
+  - crise
+  - aliado
+  - juppongatana
+  - oportunidade_heroica
+  - identidade
+  - masao
+  - golden_lily
+  - ponte_kozakura
+  cobertura_obrigatoria:
+  - crise
+  - aliado
+  - juppongatana
+  - oportunidade_heroica
+  - identidade
+  - masao
+  - golden_lily
+  - ponte_kozakura
+  regra_de_autoria: Eventos posteriores à fronteira precisam declarar categorias e adaptação. Se um detalhe se tornar
+    impossível por fato canônico, adaptar a forma e preservar somente o núcleo ainda causalmente possível; nunca
+    reescrever passado, ressuscitar personagem ou anular escolha do jogador.
+  segredo_operacional: Detalhes futuros permanecem em domínio reservado. Documentação pública e roteador operacional
+    descrevem contratos e categorias, não títulos, datas, atores, sequência ou desfechos futuros.
+regras:
+  data_e_ativacao:
+    datas_sem_hora: A hora 06:00 é somente a fronteira determinística em que o evento se torna devido; não prescreve
+      a hora diegética da cena.
+    data_com_hora: Quando houver hora canônica explícita, ela deve ser respeitada dentro da tolerância causal normal.
+    densidade: Cada instante futuro possui no máximo um evento canônico. A autoria prefere folga entre batidas para
+      deixar consequências, side quests, Mundo Vivo e decisões de Ren respirarem.
+  prioridade:
+    evento_devido_pode_interromper_rotina: true
+    evento_devido_pode_fechar_temporariamente_outras_linhas: true
+    coexistencia_com_outros_eventos: permitida_quando_causalmente_compativel
+    regra: Quando um evento está devido, o narrador materializa a primeira forma plausível de seu núcleo antes de
+      deixar rotina empurrá-lo para fora do horizonte dramático. Materializar situação não obriga Ren a engajar.
+  impossibilidade:
+    criterio: impossibilidade_causal_real
+    nao_basta:
+    - inconveniência para a linha que Ren queria seguir
+    - falta de teste que só serviria para autorizar a existência do evento
+    - o narrador preferir esperar oportunidade mais elegante
+    - Ren não ter tomado iniciativa relacionada
+    atraso: Se a forma preferencial for impossível, usar adaptacao e preservar o núcleo causalmente possível. Se
+      o próprio núcleo estiver temporariamente impossível, manter a pendência; nunca converter evento canônico em
+      no-op.
+  testes:
+    regra: 'Fatos autorais do mundo não exigem rolagem só para existirem. Testar incertezas dentro da situação:
+      perceber, resistir, vencer, escapar, salvar, provar, infiltrar ou obter vantagem.'
+  agencia_de_ren:
+    nunca_escrever_decisao_do_jogador: true
+    mundo_pode_forcar_situacao: true
+    mundo_pode_criar_urgencia_e_custo_real: true
+    resultado_de_ren_nunca_e_nucleo_obrigatorio: true
+    escolhas_reservadas_ao_jogador:
+    - aceitar ou recusar convite, missão, duelo ou negociação
+    - render-se, fugir, atacar, negociar, investigar ou não agir
+    - poupar ou matar adversário derrotado
+    - acreditar ou não em personagem
+    - escolher método de infiltração, combate ou resgate
+    - revelar, negar ou manter uma identidade
+  identidade:
+    suspeita_nao_e_confirmacao: true
+    data_nao_confirma_persona: true
+    usar_task28_para_evidencia_e_confirmacao: true
+    acusacao_publica_pode_ser_rumor_ou_provocacao: true
+  progressao_juppongatana:
+    aparicao_nao_neutraliza: true
+    duelo_nao_neutraliza_por_si_so: true
+    usar_task54_para_resultado_duravel: true
+    membros_bloqueados_nao_sao_liberados_por_evento: true
+  aliados:
+    entrada_nao_define_confianca: true
+    ajuda_nao_cancela_consequencia_automaticamente: true
+    presenca_deve_ser_canonizada_antes_de_resgate_ou_intervencao: true
+  conhecimento:
+    acontecer_nao_notifica_ren: true
+    fonte: narrador/tramas/arcos/parte_1/descoberta-e-consequencias.yaml
+    ponte_exige_pistas: true
+  resolucao_operacional: A pendência temporal é concluída quando o núcleo entrou canonicamente em jogo por transação
+    de mundo. Isso não encerra a aventura; desfechos persistem pelos mecanismos normais.
+  fim_do_arco: A sequência termina quando a existência e a função operacional da Ponte se tornam estabelecidas e
+    Masao perde seu monopólio prático sobre ela. Isso pode ocorrer com vitória, derrota grave, abandono calculado
+    ou outra consequência coerente; não exige purificação total de Ravens Bluff.
+conhecimento_progressivo_da_rede:
+- a_partir_de: 16 Eleasis, 1372 DR
+  fato: A rede sabe que o homem de aparência trabalhadora observado repetidamente na rota é Ren Kagehira.
+  limite: Este é passado materializado. Não decorre daí saber emprego, moradia, Kage ou vínculos protegidos.
+- a_partir_de: 18 Eleasis, 1372 DR
+  capacidade: A rede possui material suficiente para pressionar a identidade profissional Shinta e tentar produzir
+    novas evidências.
+  limite: A data não confirma equivalência Ren/Shinta; confirmação continua exigindo evidência e regra da Task 28.
+- a_partir_de: 18 Eleint, 1372 DR
+  capacidade: A rede pode transformar evidências acumuladas, rumores e suspeitas sobre personas em acusação pública
+    coerente.
+  limite: Acusar não cria verdade, reputação automática nem conhecimento que a rede não tenha causalmente obtido.
+preparacoes_canonicas_fora_de_cena:
+- ate: 29 Eleasis, 1372 DR
+  fato: A viagem e a logística que permitem a chegada posterior do Golden Lily já estão em curso fora de cena.
+  conhecimento_de_ren: não automático
+- ate: 3 Eleint, 1372 DR
+  fato: A presença do Golden Lily produz sinal diplomático e militar suficiente para justificar resposta naval externa
+    posterior sem surgimento do nada.
+  conhecimento_de_ren: não automático
+- ate: 24 Eleint, 1372 DR
+  fato: A rede de Masao já moveu volume suficiente por rotas subterrâneas para que discrepâncias independentes possam
+    convergir sobre Sarbreen.
+  conhecimento_de_ren: não automático
+eventos:
+  emboscada_do_restaurante:
+    agendamento_id: canon_parte1_16_eleasis_emboscada
+    ativacao:
+      data: 16 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/emboscada_do_restaurante.yaml
+  shinta_incriminado:
+    agendamento_id: canon_parte1_18_eleasis_shinta
+    ativacao:
+      data: 18 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/shinta_incriminado.yaml
+  halessa_admite_a_teia:
+    agendamento_id: canon_parte1_21_eleasis_halessa
+    ativacao:
+      data: 21 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/halessa_admite_a_teia.yaml
+  arsenal_da_night_watch:
+    agendamento_id: canon_parte1_23_eleasis_arsenal
+    ativacao:
+      data: 23 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/arsenal_da_night_watch.yaml
+  veneno_em_tyr:
+    agendamento_id: canon_parte1_25_eleasis_veneno
+    ativacao:
+      data: 25 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/veneno_em_tyr.yaml
+  pessoas_sem_porto_e_ken:
+    agendamento_id: canon_parte1_27_eleasis_pessoas_ken
+    ativacao:
+      data: 27 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/pessoas_sem_porto_e_ken.yaml
+  chegada_de_shen_meihua:
+    agendamento_id: canon_parte1_29_eleasis_shen
+    ativacao:
+      data: 29 Eleasis, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/chegada_de_shen_meihua.yaml
+  chegada_golden_lily:
+    agendamento_id: chegada_golden_lily_01_eleint
+    ativacao:
+      data: 1 Eleint, 1372 DR
+      hora: '10:00'
+    fragmento: narrador/tramas/arcos/parte_1/eventos/chegada_golden_lily.yaml
+  feira_oriental_do_porto:
+    agendamento_id: canon_parte1_03_eleint_feira
+    ativacao:
+      data: 3 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/feira_oriental_do_porto.yaml
+  cerco_naval_de_cormyr:
+    agendamento_id: canon_parte1_05_eleint_cormyr
+    ativacao:
+      data: 5 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/cerco_naval_de_cormyr.yaml
+  casa_de_cha_e_drogas:
+    agendamento_id: canon_parte1_07_eleint_drogas
+    ativacao:
+      data: 7 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/casa_de_cha_e_drogas.yaml
+  sequestro_de_kethra:
+    agendamento_id: canon_parte1_10_eleint_kethra
+    ativacao:
+      data: 10 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/sequestro_de_kethra.yaml
+  tabuleiro_de_pan_chu:
+    agendamento_id: canon_parte1_12_eleint_pan
+    ativacao:
+      data: 12 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/tabuleiro_de_pan_chu.yaml
+  cho_na_cela:
+    agendamento_id: canon_parte1_14_eleint_cho
+    ativacao:
+      data: 14 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/cho_na_cela.yaml
+  extracao_de_cho:
+    agendamento_id: canon_parte1_16_eleint_fuga_cho
+    ativacao:
+      data: 16 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/extracao_de_cho.yaml
+  duelo_publico_de_cho:
+    agendamento_id: canon_parte1_18_eleint_duelo_cho
+    ativacao:
+      data: 18 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/duelo_publico_de_cho.yaml
+  chegada_de_joen:
+    agendamento_id: canon_parte1_20_eleint_joen
+    ativacao:
+      data: 20 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/chegada_de_joen.yaml
+  ataque_a_casa_da_aurora_menor:
+    agendamento_id: canon_parte1_22_eleint_aurora
+    ativacao:
+      data: 22 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/ataque_a_casa_da_aurora_menor.yaml
+  contabilidade_da_ponte:
+    agendamento_id: canon_parte1_24_eleint_contabilidade
+    ativacao:
+      data: 24 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/contabilidade_da_ponte.yaml
+  golpe_de_masao_antes_da_ponte:
+    agendamento_id: canon_parte1_26_eleint_golpe_masao
+    ativacao:
+      data: 26 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/golpe_de_masao_antes_da_ponte.yaml
+  descida_a_ponte_e_masao:
+    agendamento_id: canon_parte1_28_eleint_final
+    ativacao:
+      data: 28 Eleint, 1372 DR
+      hora: 06:00
+    fragmento: narrador/tramas/arcos/parte_1/eventos/descida_a_ponte_e_masao.yaml

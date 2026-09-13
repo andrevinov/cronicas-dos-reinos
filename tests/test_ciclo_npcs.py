@@ -39,9 +39,9 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
             "estado/npcs",
             "estado",
             "narrador/mundo",
-            "narrador/agentes",
-            "narrador/agentes-leves",
-            "narrador/entradas",
+            "narrador/elenco/agentes",
+            "narrador/elenco/agentes-leves",
+            "narrador/elenco/entradas",
             "runtime",
         ):
             (self.repo / rel).mkdir(parents=True, exist_ok=True)
@@ -102,7 +102,7 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
             ],
             "concluidas_recentes": [],
         })
-        self._yaml("narrador/agentes/index.yaml", {
+        self._yaml("narrador/elenco/agentes/index.yaml", {
             "schema_agentes": 2,
             "natureza": "reservado",
             "agentes": {
@@ -112,11 +112,11 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
                     "estado": "ativo",
                     "presenca": "presente",
                     "atuacao_local": "exige_presenca_fisica",
-                    "arquivo": "narrador/agentes/estrategico.yaml",
+                    "arquivo": "narrador/elenco/agentes/estrategico.yaml",
                 }
             },
         })
-        self._yaml("narrador/agentes/estrategico.yaml", {
+        self._yaml("narrador/elenco/agentes/estrategico.yaml", {
             "schema_agente": 2,
             "natureza": "reservado",
             "id": "estrategico",
@@ -124,7 +124,7 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
             "tipo": "npc",
             "estado": "ativo",
         })
-        self._yaml("narrador/agentes-leves/index.yaml", {
+        self._yaml("narrador/elenco/agentes-leves/index.yaml", {
             "schema_agentes_leves": 1,
             "natureza": "reservado",
             "orcamento": {
@@ -140,11 +140,11 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
                     "prioridade": 1,
                     "intervalo_dias": 3,
                     "inicio": {"data": "11 Eleasis, 1372 DR", "hora": "06:00"},
-                    "arquivo": "narrador/agentes-leves/leve.yaml",
+                    "arquivo": "narrador/elenco/agentes-leves/leve.yaml",
                 }
             },
         })
-        self._yaml("narrador/agentes-leves/estado.yaml", {
+        self._yaml("narrador/elenco/agentes-leves/estado.yaml", {
             "schema_estado_agentes_leves": 1,
             "natureza": "controle_reservado",
             "agentes": {
@@ -154,7 +154,7 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
                 }
             },
         })
-        self._yaml("narrador/entradas/index.yaml", {
+        self._yaml("narrador/elenco/entradas/index.yaml", {
             "schema_entradas": 1,
             "natureza": "reservado",
             "cadencia_padrao_dias": 3,
@@ -163,17 +163,17 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
                     "nome": "Entrada Morta",
                     "ordem": 1,
                     "nivel_minimo_normal": 1,
-                    "arquivo": "narrador/entradas/entrada_morta.yaml",
+                    "arquivo": "narrador/elenco/entradas/entrada_morta.yaml",
                 },
                 "entrada_viva": {
                     "nome": "Entrada Viva",
                     "ordem": 2,
                     "nivel_minimo_normal": 1,
-                    "arquivo": "narrador/entradas/entrada_viva.yaml",
+                    "arquivo": "narrador/elenco/entradas/entrada_viva.yaml",
                 },
             },
         })
-        self._yaml("narrador/entradas/estado.yaml", {
+        self._yaml("narrador/elenco/entradas/estado.yaml", {
             "schema_estado_entradas": 1,
             "natureza": "controle_reservado",
             "candidatos": {
@@ -193,7 +193,7 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
         })
         self._yaml("runtime/contexto.yaml", {"personagem": {"nivel": 6}})
         for cid in ("entrada_morta", "entrada_viva"):
-            self._yaml(f"narrador/entradas/{cid}.yaml", {
+            self._yaml(f"narrador/elenco/entradas/{cid}.yaml", {
                 "schema_entrada": 1,
                 "natureza": "reservado",
                 "id": cid,
@@ -235,13 +235,13 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
         result = ciclo_npcs.sync(self.repo)
         self.assertEqual(set(result["novos_mortos"]), {"estrategico", "leve", "entrada_morta"})
 
-        strategic = yaml.safe_load((self.repo / "narrador/agentes/index.yaml").read_text())
+        strategic = yaml.safe_load((self.repo / "narrador/elenco/agentes/index.yaml").read_text())
         self.assertEqual(strategic["agentes"]["estrategico"]["estado"], "inativo")
-        fragment = yaml.safe_load((self.repo / "narrador/agentes/estrategico.yaml").read_text())
+        fragment = yaml.safe_load((self.repo / "narrador/elenco/agentes/estrategico.yaml").read_text())
         self.assertEqual(fragment["estado"], "inativo")
 
-        light = yaml.safe_load((self.repo / "narrador/agentes-leves/index.yaml").read_text())
-        light_state = yaml.safe_load((self.repo / "narrador/agentes-leves/estado.yaml").read_text())
+        light = yaml.safe_load((self.repo / "narrador/elenco/agentes-leves/index.yaml").read_text())
+        light_state = yaml.safe_load((self.repo / "narrador/elenco/agentes-leves/estado.yaml").read_text())
         self.assertEqual(light["agentes"]["leve"]["estado"], "inativo")
         self.assertEqual(light_state["agentes"]["leve"]["estado"], "inativo")
 
@@ -270,7 +270,7 @@ class CicloNpcsSyntheticTest(unittest.TestCase):
         self._npc_index({"estrategico": "vivo"})
         result = ciclo_npcs.sync(self.repo)
         self.assertEqual(result["mortos"], [])
-        strategic = yaml.safe_load((self.repo / "narrador/agentes/index.yaml").read_text())
+        strategic = yaml.safe_load((self.repo / "narrador/elenco/agentes/index.yaml").read_text())
         self.assertEqual(strategic["agentes"]["estrategico"]["estado"], "ativo")
 
     def test_registro_morto_e_terminal_se_campo_some(self):

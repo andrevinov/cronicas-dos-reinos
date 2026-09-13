@@ -1,0 +1,65 @@
+{
+  "schema_metas_avaliacao": 1,
+  "natureza": "rubrica versionada da avaliação pós-hoc; não é regra de jogo",
+  "pesos_sessao": {
+    "calibracao": 25,
+    "eficacia_integridade": 25,
+    "confiabilidade": 15,
+    "economia": 20,
+    "fluidez": 5,
+    "jogador": 10
+  },
+  "pesos_modulo": {
+    "calibracao": 25,
+    "eficacia_integridade": 25,
+    "confiabilidade": 15,
+    "economia": 20,
+    "fluidez": 5,
+    "jogador": 10
+  },
+  "notas_avaliacao_ativacao": {
+    "ativou a contento": 90,
+    "sobreativou": 50,
+    "subativou": 50,
+    "ativacao mista": 30
+  },
+  "notas_impacto_1a5": {
+    "1": 90,
+    "2": 75,
+    "3": 55,
+    "4": 35,
+    "5": 15
+  },
+  "metas_globais": {
+    "reducao_input_bruto_minima": 0.7,
+    "reducao_input_bruto_ideal": 0.75,
+    "reducao_input_bruto_excelente": 0.85,
+    "inferencias_por_turno": 5,
+    "tools_por_turno": 5,
+    "tools_por_turno_alerta": 8,
+    "fracao_l0_l2_limpo": 0.8,
+    "orquestracao_preferencial_por_turno": 2,
+    "writers_bem_sucedidos_maximo_por_turno": 1,
+    "alvos_escritos_maximo_por_turno": 2,
+    "escritas_canonicas": 0,
+    "leituras_transcricao": 0,
+    "descobertas_schema": 0,
+    "arquivos_temporarios_turno": 0
+  },
+  "latencia_segundos": {
+    "mediana": 60,
+    "p90": 120
+  },
+  "faixas_desempenho": [
+    {"id": "excelente", "minimo": 90},
+    {"id": "saudavel", "minimo": 80},
+    {"id": "atencao", "minimo": 65},
+    {"id": "ruim", "minimo": 50},
+    {"id": "critico", "minimo": 0}
+  ],
+  "estabilidade": {
+    "oportunidades_por_modulo": 10,
+    "sessoes_minimas": 3
+  },
+  "nota": "N/D é excluído da média e os pesos restantes são renormalizados. Notas desta primeira sessão são provisórias."
+}

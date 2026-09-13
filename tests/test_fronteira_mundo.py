@@ -241,8 +241,8 @@ class FronteiraMundoTest(unittest.TestCase):
                 "/perfis/" in path
                 or "/cartas/" in path
                 or (
-                    path.startswith("narrador/agentes/")
-                    and path != "narrador/agentes/index.yaml"
+                    path.startswith("narrador/elenco/agentes/")
+                    and path != "narrador/elenco/agentes/index.yaml"
                 )
                 for path in result["fontes_lidas"]
             )

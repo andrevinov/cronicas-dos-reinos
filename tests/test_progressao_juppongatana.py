@@ -40,9 +40,9 @@ class JuppongatanaMilestoneRepositoryTest(unittest.TestCase):
         self.assertEqual(
             status["fontes_lidas"],
             [
-                "narrador/juppongatana/progressao.yaml",
-                "narrador/juppongatana/index.yaml",
-                "narrador/juppongatana/estado-progressao.yaml",
+                "narrador/elenco/juppongatana/progressao.yaml",
+                "narrador/elenco/juppongatana/index.yaml",
+                "narrador/elenco/juppongatana/estado-progressao.yaml",
                 "personagens/jogador/ficha.yaml",
             ],
         )
@@ -190,7 +190,7 @@ class JuppongatanaMilestoneSyntheticTest(unittest.TestCase):
                 self.repo,
                 "pan_chu",
                 "incapacitacao_duravel",
-                "narrador/juppongatana/progressao.yaml",
+                "narrador/elenco/juppongatana/progressao.yaml",
                 "neutralização",
             )
         with self.assertRaisesRegex(progression.JuppongatanaProgressionError, "evidência literal"):

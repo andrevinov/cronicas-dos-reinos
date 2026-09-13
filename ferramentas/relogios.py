@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Relógios como pressões e consequências de agentes do Mundo Vivo.
 
-Os fragmentos em ``narrador/relogios/*.yaml`` continuam sendo a fonte canônica
+Os fragmentos em ``narrador/mundo/relogios/*.yaml`` continuam sendo a fonte canônica
 do progresso. Cada um possui ``vinculo_agencial``: quem está operacionalmente
 ligado à pressão/consequência e, quando couber, qual operação ela materializa.
 
@@ -35,9 +35,9 @@ if str(TOOLS_DIR) not in sys.path:
 
 import agentes
 
-INDEX_PATH = Path("narrador/relogios/index.yaml")
-ROUTER_PATH = Path("narrador/relogios/vinculos.yaml")
-CLOCKS_DIR = Path("narrador/relogios")
+INDEX_PATH = Path("narrador/mundo/relogios/index.yaml")
+ROUTER_PATH = Path("narrador/mundo/relogios/vinculos.yaml")
+CLOCKS_DIR = Path("narrador/mundo/relogios")
 
 VALID_KINDS = {"pressao", "consequencia"}
 VALID_STATES = {"ativo", "resolvido"}

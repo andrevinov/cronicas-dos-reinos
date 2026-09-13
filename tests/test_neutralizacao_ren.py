@@ -18,7 +18,7 @@ import metodos_agentes
 
 LINE = "neutralizar_ren_sem_expor_a_rede"
 EXECUTORS = {"masao_hirasawa", "kajiwara_shizune", "kurobane_jinzaburo"}
-SOURCE = ROOT / "narrador/arcos/parte_1/neutralizacao-ren.yaml"
+SOURCE = ROOT / "narrador/tramas/arcos/parte_1/neutralizacao-ren.yaml"
 BUDGET = ROOT / "baseline/clandestine-neutralization-ren-orcamento.yaml"
 
 
@@ -43,7 +43,7 @@ class ClandestineNeutralizationArcTest(unittest.TestCase):
         self.assertNotIn("sawagejo_cho", line["executores"])
         self.assertEqual(
             arc["orquestracao"]["fontes"]["neutralizacao_ren"]["arquivo"],
-            "narrador/arcos/parte_1/neutralizacao-ren.yaml",
+            "narrador/tramas/arcos/parte_1/neutralizacao-ren.yaml",
         )
 
     def test_fonte_especializada_preserva_ponto_cego_de_masao_e_nao_forca_morte(self):
@@ -69,11 +69,11 @@ class ClandestineNeutralizationArcTest(unittest.TestCase):
         self.assertEqual(set(result["executores"]), EXECUTORS)
         self.assertEqual(
             result["fonte_estrategica"],
-            "narrador/arcos/parte_1/neutralizacao-ren.yaml",
+            "narrador/tramas/arcos/parte_1/neutralizacao-ren.yaml",
         )
         self.assertEqual(len(result["fontes_lidas"]), 3)
         self.assertFalse(
-            any(source.startswith("narrador/agentes/") for source in result["fontes_lidas"])
+            any(source.startswith("narrador/elenco/agentes/") for source in result["fontes_lidas"])
         )
 
 
@@ -111,13 +111,13 @@ class ClandestineNeutralizationMethodsTest(unittest.TestCase):
             result = arcos.resolve_agent_methods(ROOT, LINE, executor=agent_id)
             self.assertTrue(result["executor_permitido"])
             self.assertEqual(len(result["metodos"]), 2)
-            self.assertEqual(result["fonte_agente"], f"narrador/agentes/{agent_id}.yaml")
+            self.assertEqual(result["fonte_agente"], f"narrador/elenco/agentes/{agent_id}.yaml")
             fragments = [
                 source for source in result["fontes_lidas"]
-                if source.startswith("narrador/agentes/") and source.endswith(".yaml")
-                and source != "narrador/agentes/index.yaml"
+                if source.startswith("narrador/elenco/agentes/") and source.endswith(".yaml")
+                and source != "narrador/elenco/agentes/index.yaml"
             ]
-            expected = [f"narrador/agentes/{agent_id}.yaml"]
+            expected = [f"narrador/elenco/agentes/{agent_id}.yaml"]
             base = agentes.load_agent(ROOT, agent_id)["resultado"]
             pointer = base.get("detalhes_operacionais")
             if pointer:
@@ -151,7 +151,7 @@ class ClandestineNeutralizationContextTest(unittest.TestCase):
         self.assertEqual(set(item["executores"]), EXECUTORS)
         self.assertNotIn("executor", item)
         self.assertNotIn("metodo", item)
-        self.assertFalse(any(source.startswith("narrador/agentes/") for source in result["fontes_lidas"]))
+        self.assertFalse(any(source.startswith("narrador/elenco/agentes/") for source in result["fontes_lidas"]))
 
     def test_duas_tags_de_ameaca_explicitamente_ligadas_a_ren_tambem_bastam(self):
         result = contexto_cena.select_candidates(

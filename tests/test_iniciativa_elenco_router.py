@@ -13,7 +13,7 @@ class PresentCastInitiativeRouterTest(unittest.TestCase):
         self.assertIn("--participante <id>` seleciona memória/elenco prospectivo", text)
         self.assertIn("não prova por si presença física no mesmo preparo", text)
         self.assertIn("Interlocutor não cria presença, encontro ou side quest", text)
-        self.assertIn("docs/nv16-iniciativa-elenco-presente.md", text)
+        self.assertIn("docs/agente/narrativa/narracao-e-mundo.md", text)
 
     def test_router_permanece_dentro_do_orcamento_existente(self):
         self.assertLessEqual((ROOT / "AGENTS.md").stat().st_size, 13312)

@@ -53,7 +53,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
             doc["relacao"]["rotina"] = "Cuida dos documentos (fixture)."
             self.write(source, doc)
             name = doc["relacao"]["nome"]
-            rel = f"narrador/agentes-leves/{person}.yaml"
+            rel = f"narrador/elenco/agentes-leves/{person}.yaml"
             evidence = {"descricao": "Rotina documental.", "fonte": source,
                         "evidencia": "Cuida dos documentos (fixture)."}
             self.write(rel, {"schema_agente_leve": 1, "natureza": "reservado", "id": person,
@@ -398,7 +398,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         item = projected["itens"][0]["contexto"][activation.PENDING_KEY]
         size = len(yaml.safe_dump(item, allow_unicode=True, sort_keys=False).encode())
         self.assertLessEqual(size, activation.MAX_CONTEXT_BYTES)
-        self.assertNotIn(f"narrador/agentes-leves/{self.nera}.yaml", projected["fontes_lidas"])
+        self.assertNotIn(f"narrador/elenco/agentes-leves/{self.nera}.yaml", projected["fontes_lidas"])
         print("NV07_BYTES=" + json.dumps({"lote_completo_yaml": len(yaml.safe_dump(projected, allow_unicode=True, sort_keys=False).encode()),
                                          "contexto_causal_yaml": size, "tokens_nativos": None}, sort_keys=True))
 

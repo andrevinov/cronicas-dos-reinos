@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -80,19 +81,17 @@ DuplicateKeyLoader.add_constructor(
 )
 
 AGENT_DOCS = (
-    "docs/agente/fundamentos.md",
-    "docs/agente/acesso-e-operacoes.md",
-    "docs/agente/regras-e-rolagens.md",
-    "docs/agente/narracao-e-mundo.md",
-    "docs/agente/densidade-narrativa.md",
-    "docs/agente/personagem-e-tempo.md",
-    "docs/agente/pesquisa-e-manutencao.md",
+    "docs/agente/fundamentos/fundamentos.md",
+    "docs/agente/operacao/acesso-e-operacoes.md",
+    "docs/agente/regras/regras-e-rolagens.md",
+    "docs/agente/narrativa/narracao-e-mundo.md",
+    "docs/agente/narrativa/densidade-narrativa.md",
+    "docs/agente/regras/personagem-e-tempo.md",
+    "docs/agente/engenharia/pesquisa-e-manutencao.md",
 )
-AGENT_COVERAGE = "docs/agente/cobertura-agents-v1.yaml"
+AGENT_INDEX = "docs/agente/README.md"
 AGENTS_MAX_BYTES = 13 * 1024
 AGENTS_MAX_LINES = 180
-LEGACY_AGENT_SECTION_COUNT = 58
-LEGACY_AGENT_SHA = "61ef9a4458d187e24bbe701f78c730e3218f9e42"
 
 RUNTIME_CONTEXT = "runtime/contexto.yaml"
 RUNTIME_SCENE = "runtime/cena.yaml"
@@ -115,9 +114,9 @@ REQUIRED_PATHS = (
     "personagens/jogador/ficha.yaml",
     "personagens/jogador/conhecimento.md",
     "personagens/jogador/resumo-de-poderes.md",
-    "narracao/guia-de-narrativa.md",
-    "narracao/protocolo-de-sessao.md",
-    "narracao/limites.md",
+    "narracao/principios/guia-de-narrativa.md",
+    "narracao/operacao/protocolo-de-sessao.md",
+    "narracao/principios/limites.md",
     "regras/fontes.md",
     "regras/dificuldade.md",
     "regras/progressao.md",
@@ -125,16 +124,16 @@ REQUIRED_PATHS = (
     "regras/resolucao-de-acoes.md",
     "regras/adaptacoes-mecanicas.yaml",
     "runtime/README.md",
-    "narrador/continuidade-autoral.yaml",
-    "narrador/adversarios/contrato.yaml",
-    "narrador/adversarios/contrato-ameacas.yaml",
-    "narrador/adversarios/index.yaml",
-    "narrador/adversarios/ameacas.yaml",
-    "narrador/dungeons/contrato.yaml",
-    "narrador/dungeons/index.yaml",
-    "narrador/estrutura.yaml",
-    "narrador/populacao-canonica.yaml",
-    "narrador/juppongatana/index.yaml",
+    "narrador/indices/continuidade-autoral.yaml",
+    "narrador/elenco/adversarios/contrato.yaml",
+    "narrador/elenco/adversarios/contrato-ameacas.yaml",
+    "narrador/elenco/adversarios/index.yaml",
+    "narrador/elenco/adversarios/ameacas.yaml",
+    "narrador/tramas/dungeons/contrato.yaml",
+    "narrador/tramas/dungeons/index.yaml",
+    "narrador/indices/estrutura.yaml",
+    "narrador/indices/populacao-canonica.yaml",
+    "narrador/elenco/juppongatana/index.yaml",
     RUNTIME_CONTEXT,
     RUNTIME_SCENE,
     RUNTIME_EVENTS,
@@ -150,7 +149,7 @@ REQUIRED_PATHS = (
     "cenario/texturas/index.yaml",
     HISTORICAL_BASELINE.as_posix(),
     *AGENT_DOCS,
-    AGENT_COVERAGE,
+    AGENT_INDEX,
 )
 
 TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".py", ".json", ".jsonl", ".txt"}
@@ -208,8 +207,8 @@ def validate_historical_baseline(repo: Path) -> list[str]:
     return errors
 
 
-def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
-    """Garante que o roteador continue curto e que o manual legado tenha cobertura."""
+def validate_agent_router(repo: Path) -> list[str]:
+    """Garante um roteador curto e um índice completo dos manuais atuais."""
     errors: list[str] = []
     agents_path = repo / "AGENTS.md"
     if agents_path.exists():
@@ -233,42 +232,31 @@ def validate_agent_router(repo: Path, yaml_docs: dict[str, Any]) -> list[str]:
             "Economia de contexto não é economia de prosa",
             "runtime/contexto.yaml",
             "runtime/cena.yaml",
-            "docs/agente/acesso-e-operacoes.md",
-            "docs/agente/densidade-narrativa.md",
-            "docs/agente/cobertura-agents-v1.yaml",
+            "docs/agente/operacao/acesso-e-operacoes.md",
+            "docs/agente/narrativa/densidade-narrativa.md",
+            AGENT_INDEX,
         )
         for marker in required_markers:
             if marker not in text:
                 errors.append(f"AGENTS.md perdeu marcador operacional obrigatório: {marker!r}")
 
-    coverage = yaml_docs.get(AGENT_COVERAGE)
-    if not isinstance(coverage, dict):
-        errors.append(f"mapa de cobertura ausente ou inválido: {AGENT_COVERAGE}")
+    index_path = repo / AGENT_INDEX
+    if not index_path.is_file():
+        errors.append(f"índice dos manuais ausente: {AGENT_INDEX}")
         return errors
 
-    origem = coverage.get("origem") or {}
-    if origem.get("sha_blob") != LEGACY_AGENT_SHA:
-        errors.append("mapa de cobertura não referencia o SHA do AGENTS legado esperado")
-    if origem.get("secoes") != LEGACY_AGENT_SECTION_COUNT:
-        errors.append("mapa de cobertura não declara as 58 seções do AGENTS legado")
+    index_text = index_path.read_text(encoding="utf-8")
+    manual_root = index_path.parent
+    for target in re.findall(r"\]\(([^)#]+\.md)\)", index_text):
+        if not (manual_root / target).is_file():
+            errors.append(f"índice dos manuais aponta para arquivo ausente: {target}")
 
-    documentos = coverage.get("documentos") or {}
-    secoes = coverage.get("secoes") or {}
-    expected_sections = set(range(1, LEGACY_AGENT_SECTION_COUNT + 1))
-    actual_sections = set(secoes.keys()) if isinstance(secoes, dict) else set()
-    if actual_sections != expected_sections:
-        missing = sorted(expected_sections - actual_sections)
-        extra = sorted(actual_sections - expected_sections, key=str)
-        errors.append(f"cobertura de AGENTS incompleta: ausentes={missing}, extras={extra}")
-
-    if isinstance(secoes, dict) and isinstance(documentos, dict):
-        for numero, chave_doc in secoes.items():
-            destino = documentos.get(chave_doc)
-            if not isinstance(destino, str):
-                errors.append(f"seção {numero} aponta para documento lógico inexistente: {chave_doc!r}")
-                continue
-            if not (repo / destino).is_file():
-                errors.append(f"seção {numero} aponta para arquivo ausente: {destino}")
+    for path in sorted(manual_root.rglob("*.md")):
+        if path == index_path:
+            continue
+        relative = path.relative_to(manual_root).as_posix()
+        if f"({relative})" not in index_text:
+            errors.append(f"manual atual ausente do índice: {relative}")
 
     return errors
 
@@ -394,7 +382,7 @@ def validate(repo: Path, baseline: Path | None = None) -> list[str]:
             except Exception as exc:
                 errors.append(f"YAML inválido em {rel}: {exc}")
 
-    errors.extend(validate_agent_router(repo, yaml_docs))
+    errors.extend(validate_agent_router(repo))
     errors.extend(gate_adnd.validate_repository(repo, yaml_docs))
     errors.extend(ruleset_5_5e.validate(repo))
 

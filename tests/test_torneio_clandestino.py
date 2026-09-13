@@ -34,7 +34,7 @@ class TournamentRepositoryTest(unittest.TestCase):
         self.assertEqual(state["agenda"], [])
 
     def test_documentacao_publica_permanece_spoiler_light(self):
-        public = (ROOT / "docs/task37-underground-tournament-mini-arc.md").read_text(encoding="utf-8").lower()
+        public = (ROOT / "narrador/tramas/arcos/parte_1/torneio-clandestino/README.md").read_text(encoding="utf-8").lower()
         index = tour.load_index(ROOT)
         for item in index["agenda_relativa"][:-1]:
             detail = yaml.safe_load((ROOT / item["fragmento"]).read_text(encoding="utf-8"))

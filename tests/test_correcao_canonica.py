@@ -177,7 +177,7 @@ class CanonicalCorrectionTest(unittest.TestCase):
         )
         (self.repo / "runtime/eventos-pendentes.jsonl").write_text("", encoding="utf-8")
         (self.repo / "sessoes/003/transcricao.md").write_text("# Sessão 003\n\n---\n", encoding="utf-8")
-        shutil.copytree(ROOT / "narrador/recompensas", self.repo / "narrador/recompensas")
+        shutil.copytree(ROOT / "narrador/tramas/recompensas", self.repo / "narrador/tramas/recompensas")
 
     def _register(self, txid: str, deltas, summary: str) -> None:
         turno.register_transaction(
@@ -274,8 +274,8 @@ class CanonicalCorrectionTest(unittest.TestCase):
             "runtime/contexto.yaml",
             "runtime/eventos-pendentes.jsonl",
             "sessoes/003/transcricao.md",
-            "narrador/recompensas/index.yaml",
-            "narrador/recompensas/itens-index.yaml",
+            "narrador/tramas/recompensas/index.yaml",
+            "narrador/tramas/recompensas/itens-index.yaml",
         ]
         before = {rel: (self.repo / rel).read_bytes() for rel in watched}
         result = correcao.prepare_correction(self.repo, "tx-cena-errada", self._payload())
@@ -316,7 +316,7 @@ class CanonicalCorrectionTest(unittest.TestCase):
         self.assertEqual(state["recursos"]["dinheiro"]["po"], 44)
         self.assertNotIn("refugio_errado", reward_index["mapas"])
         self.assertFalse(any(meta.get("local_id") == "refugio_errado" for meta in item_index["recompensas"].values()))
-        self.assertFalse((self.repo / "narrador/recompensas/mapas/refugio_errado.yaml").exists())
+        self.assertFalse((self.repo / "narrador/tramas/recompensas/mapas/refugio_errado.yaml").exists())
 
         transcript = (self.repo / "sessoes/003/transcricao.md").read_text(encoding="utf-8")
         self.assertIn("resultado narrativo tx-valida-anterior", transcript)

@@ -34,8 +34,8 @@ class SidequestLifecycleFixture(progression_cases.Task45Fixture):
         agenda.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / mundo.AGENDA_PATH, agenda)
         shutil.copytree(
-            ROOT / "narrador/arcos/parte_1",
-            self.repo / "narrador/arcos/parte_1",
+            ROOT / "narrador/tramas/arcos/parte_1",
+            self.repo / "narrador/tramas/arcos/parte_1",
             dirs_exist_ok=True,
         )
         bridge = {

@@ -23,7 +23,7 @@ except ModuleNotFoundError:
     from ferramentas import agentes, progressao_juppongatana
 
 
-CONTRACT = Path("narrador/estrutura.yaml")
+CONTRACT = Path("narrador/indices/estrutura.yaml")
 NARRATOR = Path("narrador")
 TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".py", ".json", ".jsonl", ".txt"}
 REFERENCE_RE = re.compile(
@@ -104,8 +104,7 @@ def reference_graph(repo: Path) -> tuple[dict[str, set[str]], list[str], set[str
     referenced: set[str] = set()
     non_recursive_sources = {
         CONTRACT.as_posix(),
-        "narrador/juppongatana.md",
-        "narrador/juppongatana/index.yaml",
+        "narrador/elenco/juppongatana/index.yaml",
     }
     for path in _text_files(repo):
         source = path.relative_to(repo).as_posix()
@@ -113,11 +112,16 @@ def reference_graph(repo: Path) -> tuple[dict[str, set[str]], list[str], set[str
         for raw in REFERENCE_RE.findall(text):
             target = raw.split("#", 1)[0]
             referenced.add(target)
-            if source.startswith("narrador/") and not (repo / target).is_file():
+            historical_source = source.startswith("narrador/historico/")
+            if (
+                source.startswith("narrador/")
+                and not historical_source
+                and not (repo / target).is_file()
+            ):
                 broken.add(f"{source} -> {raw}")
             provenance_or_route = (
                 source in non_recursive_sources
-                or source.startswith("narrador/agentes/")
+                or source.startswith("narrador/elenco/agentes/")
             )
             if (
                 source in graph

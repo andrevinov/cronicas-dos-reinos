@@ -25,12 +25,12 @@ import yaml
 import agentes
 import metodos_agentes
 
-PROFILE = Path("narrador/arcos/parte_1/pressao-ravens-bluff.yaml")
-STATE = Path("narrador/arcos/parte_1/estado-pressao-ravens-bluff.yaml")
+PROFILE = Path("narrador/tramas/arcos/parte_1/pressao-ravens-bluff.yaml")
+STATE = Path("narrador/tramas/arcos/parte_1/estado-pressao-ravens-bluff.yaml")
 MAX_HISTORY = 24
 MAX_WORLD_ROUTES = 32
 MAX_WORLD_EFFECTS = 4
-BANNED_EVIDENCE_PREFIX = Path("narrador/arcos")
+BANNED_EVIDENCE_PREFIX = Path("narrador/tramas/arcos")
 TX_SESSION_RE = re.compile(r"^s(\d{3})-[a-z0-9]+$")
 
 

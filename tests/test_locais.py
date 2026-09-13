@@ -172,7 +172,7 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
             "local_id": "setor_a",
             "mapa_criado": False,
             "mapa": {"local_id": "setor_a"},
-            "fontes_lidas": ["narrador/recompensas/index.yaml"],
+            "fontes_lidas": ["narrador/tramas/recompensas/index.yaml"],
         }
         with (
             mock.patch.object(
@@ -221,7 +221,7 @@ class LocalRegistrySyntheticTest(unittest.TestCase):
             [
                 "cenario/locais/index.yaml",
                 "cenario/locais/ecologia.yaml",
-                "narrador/recompensas/index.yaml",
+                "narrador/tramas/recompensas/index.yaml",
             ],
         )
 

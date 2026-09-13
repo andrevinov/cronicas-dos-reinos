@@ -1,0 +1,42 @@
+{
+  "schema_pacote_avaliacao": 1,
+  "sessao_id": "021",
+  "natureza": "avaliacao_pos_hoc_derivada; não altera cânone",
+  "fonte": {
+    "arquivo": "rollout-2026-09-11T14-50-11-01a09197-5d83-7872-af60-0e7f996f56d7.jsonl",
+    "sha256": "901c9b494ad9ae7d607d075965253bea30802e6844a513d24fc49adfc70a2028",
+    "bytes": 15553049,
+    "codex_session_id": "01a09197-5d83-7872-af60-0e7f996f56d7",
+    "inicio_rollout": "2026-09-11T17:50:26.123000+00:00",
+    "fim_rollout": "2026-09-13T04:07:50.589000+00:00",
+    "bruto_copiado_para_repo": false
+  },
+  "versoes": {
+    "gerador": 1,
+    "telemetria": 3,
+    "sistemas_narrativos": 1,
+    "catalogo_modulos": 1,
+    "metas": 1
+  },
+  "amostra": {
+    "turnos_narrativos": 35,
+    "modulos_catalogados": 20,
+    "eventos_modulo_turno": 700,
+    "tokens_narrativos": 42331426,
+    "tokens_atribuidos_fracionados": 42331426,
+    "tokens_sem_atribuicao": 0
+  },
+  "avisos_medicao": [],
+  "artefatos": {
+    "telemetria": "telemetria.json",
+    "turnos": "turnos.csv",
+    "eventos_modulares": "eventos-modulares.csv",
+    "auditoria_modulos": "auditoria-modulos.csv",
+    "resumo_modulos": "resumo-modulos.csv",
+    "resumo_modulos_json": "resumo-modulos.json",
+    "feedback_jogador": "feedback-jogador.csv",
+    "validade_medicao": "validade-medicao.json",
+    "scorecard": "scorecard.json",
+    "relatorio": "relatorio.md"
+  }
+}

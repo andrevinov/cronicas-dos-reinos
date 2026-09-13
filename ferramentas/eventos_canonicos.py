@@ -18,8 +18,8 @@ import yaml
 
 import mundo
 
-CATALOG = Path("narrador/arcos/parte_1/eventos-canonicos.yaml")
-EVENT_DIR = Path("narrador/arcos/parte_1/eventos")
+CATALOG = Path("narrador/tramas/arcos/parte_1/eventos-canonicos.yaml")
+EVENT_DIR = Path("narrador/tramas/arcos/parte_1/eventos")
 SCHEMA = 2
 LEGACY_SCHEMA = 1
 EVENT_SCHEMA = 2

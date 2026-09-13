@@ -29,8 +29,8 @@ except ImportError as exc:
         "PyYAML não encontrado. Instale com: python3 -m pip install -r requirements-dev.txt"
     ) from exc
 
-INDEX_PATH = Path("narrador/agentes/index.yaml")
-AGENTS_DIR = Path("narrador/agentes")
+INDEX_PATH = Path("narrador/elenco/agentes/index.yaml")
+AGENTS_DIR = Path("narrador/elenco/agentes")
 DETAILS_DIR = AGENTS_DIR / "detalhes"
 MAX_DIRECTED_BYTES = 8 * 1024
 DETAIL_SECTIONS = {"metodos_operacionais", "autonomia_estrategica"}

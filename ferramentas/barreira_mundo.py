@@ -311,7 +311,7 @@ def _validate_autonomous_noop(note: str | None) -> str:
 
 
 def _canonical_module(repo: Path):
-    catalog = repo / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+    catalog = repo / "narrador/tramas/arcos/parte_1/eventos-canonicos.yaml"
     if not catalog.is_file():
         return None
     try:

@@ -87,7 +87,7 @@ class TestExecutionProfilesTest(unittest.TestCase):
         self.assertIn("python -m unittest discover -s tests -v", workflow)
 
     def test_documentacao_expoe_quatro_responsabilidades(self):
-        doc = (ROOT / "docs/agente/perfis-de-testes.md").read_text(encoding="utf-8")
+        doc = (ROOT / "docs/agente/engenharia/perfis-de-testes.md").read_text(encoding="utf-8")
         for command in (
             "poetry run test-fast",
             "poetry run test-domain",

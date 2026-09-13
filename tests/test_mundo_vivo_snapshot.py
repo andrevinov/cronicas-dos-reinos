@@ -86,14 +86,14 @@ class MundoVivoSnapshotRealTest(unittest.TestCase):
         self.assertEqual(self._of_type(pending, "avaliar_direcao"), [])
         self.assertEqual(self._of_type(pending, "evento_mundial"), [])
 
-        event_state = self._read_yaml("narrador/eventos/estado.yaml")
+        event_state = self._read_yaml("narrador/mundo/eventos/estado.yaml")
         self.assertEqual(event_state["ocorrencia"]["ciclo"], 1)
         self.assertEqual(len(event_state["ocorrencia"]["restantes"]), 9)
         self.assertEqual(event_state["eventos"]["ciclo"], 0)
         self.assertEqual(event_state["historico_recente"][0]["ficha_ocorrencia"], "rotina_02")
         self.assertEqual(event_state["historico_recente"][0]["resultado"], "rotina")
 
-        entry_state = self._read_yaml("narrador/entradas/estado.yaml")
+        entry_state = self._read_yaml("narrador/elenco/entradas/estado.yaml")
         shen = entry_state["candidatos"]["shen_meihua"]
         self.assertIsNone(shen["proxima_avaliacao"])
         self.assertTrue(
@@ -136,14 +136,14 @@ class MundoVivoSnapshotRealTest(unittest.TestCase):
         self.assertEqual(event["agentes_afetados"], ["night_watch"])
         self.assertEqual(event["agentes_leves_afetados"], ["luath"])
 
-        event_state = self._read_yaml("narrador/eventos/estado.yaml")
+        event_state = self._read_yaml("narrador/mundo/eventos/estado.yaml")
         self.assertEqual(event_state["historico_recente"][1]["ficha_ocorrencia"], "evento_03")
         self.assertEqual(event_state["historico_recente"][1]["resultado"], "evento")
         self.assertEqual(event_state["historico_recente"][1]["evento"], "procissao_local")
         self.assertEqual(event_state["eventos"]["ciclo"], 1)
         self.assertEqual(len(event_state["eventos"]["restantes"]), 9)
 
-        direction_state = self._read_yaml("narrador/direcoes/estado.yaml")
+        direction_state = self._read_yaml("narrador/tramas/direcoes/estado.yaml")
         self.assertEqual(direction_state["direcoes"]["ponte_de_kozakura"]["estado"], "ativa")
         self.assertEqual(
             direction_state["direcoes"]["ponte_de_kozakura"]["marco_atual"],
@@ -158,10 +158,10 @@ class MundoVivoSnapshotRealTest(unittest.TestCase):
         # e não avança direção/entrada implicitamente.
         stable_paths = [
             "narrador/mundo/estado.yaml",
-            "narrador/eventos/estado.yaml",
-            "narrador/entradas/estado.yaml",
-            "narrador/agentes-leves/estado.yaml",
-            "narrador/direcoes/estado.yaml",
+            "narrador/mundo/eventos/estado.yaml",
+            "narrador/elenco/entradas/estado.yaml",
+            "narrador/elenco/agentes-leves/estado.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
         ]
         before = {rel: (self.repo / rel).read_bytes() for rel in stable_paths}
         third = checkpoint.sync_world(self.repo)

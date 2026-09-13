@@ -47,10 +47,10 @@ class UrbanTransitDeckTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         shutil.copytree(
-            ROOT / "narrador/microeventos-locais",
-            self.repo / "narrador/microeventos-locais",
+            ROOT / "narrador/mundo/microeventos-locais",
+            self.repo / "narrador/mundo/microeventos-locais",
         )
-        pressure_dir = self.repo / "narrador/arcos/parte_1"
+        pressure_dir = self.repo / "narrador/tramas/arcos/parte_1"
         pressure_dir.mkdir(parents=True)
         shutil.copy2(ROOT / pressao.PROFILE, self.repo / pressao.PROFILE)
         shutil.copy2(ROOT / pressao.STATE, self.repo / pressao.STATE)

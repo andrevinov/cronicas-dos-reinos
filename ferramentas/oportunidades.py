@@ -22,9 +22,9 @@ import yaml
 
 import mundo
 
-INDEX = Path("narrador/oportunidades/index.yaml")
-STATE = Path("narrador/oportunidades/estado.yaml")
-PROFILES_DIR = Path("narrador/oportunidades/perfis")
+INDEX = Path("narrador/tramas/oportunidades/index.yaml")
+STATE = Path("narrador/tramas/oportunidades/estado.yaml")
+PROFILES_DIR = Path("narrador/tramas/oportunidades/perfis")
 RELATIONS = Path("estado/relacoes/index.yaml")
 
 VALID_GATE_RESULTS = {"nada", "oportunidade"}

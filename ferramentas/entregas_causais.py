@@ -211,14 +211,14 @@ def validate_resolution(
     if len(deltas) != 1:
         raise DeliveryError(
             "resolução do Mundo Vivo exige exatamente um destino NV-13 ou a tag "
-            f"{NON_COMMUNICABLE_TAG}; veja docs/nv13-entrega-causal-transacional.md"
+            f"{NON_COMMUNICABLE_TAG}; veja docs/agente/mundo/compromissos-estruturados.md"
         )
     return _validate_delta(deltas[0], pending_id, transaction)
 
 
 def latest(repo: Path, pending_id: str) -> dict[str, Any] | None:
     """Consulta dirigida: lê somente o relógio determinístico da causa."""
-    path = repo / "narrador/relogios" / f"{clock_id(pending_id)}.yaml"
+    path = repo / "narrador/mundo/relogios" / f"{clock_id(pending_id)}.yaml"
     if not path.is_file():
         return None
     try:

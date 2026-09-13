@@ -126,16 +126,16 @@ limites:
     avanco_exige_fonte_e_evidencia_literal: true
 arquivos_quentes_novos:
 - cenario/locais/index.yaml
-- narrador/recompensas/index.yaml
-- narrador/oportunidades/index.yaml
-- narrador/oportunidades/estado.yaml
+- narrador/tramas/recompensas/index.yaml
+- narrador/tramas/oportunidades/index.yaml
+- narrador/tramas/oportunidades/estado.yaml
 - narrador/mundo/contextos-cena.yaml
-- narrador/arcos/index.yaml
-- narrador/arcos/estado.yaml
-- narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml
-- narrador/arcos/controle-mundo.yaml
-- narrador/arcos/marcos-aparicao.yaml
-- narrador/arcos/estado-marcos-aparicao.yaml
+- narrador/tramas/arcos/index.yaml
+- narrador/tramas/arcos/estado.yaml
+- narrador/tramas/arcos/parte_1_uma_ponte_para_kozakura.yaml
+- narrador/tramas/arcos/controle-mundo.yaml
+- narrador/tramas/arcos/marcos-aparicao.yaml
+- narrador/tramas/arcos/estado-marcos-aparicao.yaml
 invariantes:
   scan_geral_por_turno: 0
   scan_semantico_contextual: 0

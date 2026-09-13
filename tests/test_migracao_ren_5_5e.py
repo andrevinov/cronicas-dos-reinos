@@ -18,7 +18,7 @@ class Ren55MigrationTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.sheet_raw = yaml.safe_load((ROOT / "personagens/jogador/ficha.yaml").read_text(encoding="utf-8"))
-        cls.migration = yaml.safe_load((ROOT / "personagens/jogador/migracao-5-5e.yaml").read_text(encoding="utf-8"))
+        cls.migration = yaml.safe_load((ROOT / "personagens/jogador/historico/migracoes/ativacao-5-5e.yaml").read_text(encoding="utf-8"))
         cls.mechanics = ficha_ren.load(ROOT / "personagens/jogador/ficha.yaml")
         cls.activation = yaml.safe_load(
             (ROOT / "tests/fixtures/ren-5-5e-activation-snapshot.yaml").read_text(encoding="utf-8")

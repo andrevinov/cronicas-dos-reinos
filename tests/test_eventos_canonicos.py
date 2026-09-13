@@ -47,7 +47,7 @@ class EventosCanonicosSyntheticTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         (self.repo / "estado").mkdir(parents=True)
         (self.repo / "narrador/mundo").mkdir(parents=True)
-        (self.repo / "narrador/arcos/parte_1").mkdir(parents=True)
+        (self.repo / "narrador/tramas/arcos/parte_1").mkdir(parents=True)
         (self.repo / "runtime").mkdir(parents=True)
         (self.repo / "sessoes/003").mkdir(parents=True)
         self._yaml(
@@ -59,7 +59,7 @@ class EventosCanonicosSyntheticTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/arcos/parte_1/eventos-canonicos.yaml",
+            "narrador/tramas/arcos/parte_1/eventos-canonicos.yaml",
             {
                 "schema_eventos_canonicos_parte_1": 1,
                 "natureza": "reservado",

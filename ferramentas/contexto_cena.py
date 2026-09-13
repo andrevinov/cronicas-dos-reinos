@@ -24,9 +24,9 @@ import aliados_contextuais
 import marcos_aparicao
 
 ROUTER = Path("narrador/mundo/contextos-cena.yaml")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
-DIRECTIONS_INDEX = Path("narrador/direcoes/index.yaml")
-DIRECTIONS_STATE = Path("narrador/direcoes/estado.yaml")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
+DIRECTIONS_INDEX = Path("narrador/tramas/direcoes/index.yaml")
+DIRECTIONS_STATE = Path("narrador/tramas/direcoes/estado.yaml")
 
 MAX_CONTEXT_TAGS = 8
 MAX_PRESENCE_CANDIDATES = 2

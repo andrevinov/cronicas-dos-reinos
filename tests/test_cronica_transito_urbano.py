@@ -34,10 +34,10 @@ class CronicaUrbanTransitTest(unittest.TestCase):
                 "regra": "teste",
             },
             "fontes_lidas": [
-                "narrador/microeventos-locais/index.yaml",
-                "narrador/microeventos-locais/estado.yaml",
-                "narrador/arcos/parte_1/pressao-ravens-bluff.yaml",
-                "narrador/arcos/parte_1/estado-pressao-ravens-bluff.yaml",
+                "narrador/mundo/microeventos-locais/index.yaml",
+                "narrador/mundo/microeventos-locais/estado.yaml",
+                "narrador/tramas/arcos/parte_1/pressao-ravens-bluff.yaml",
+                "narrador/tramas/arcos/parte_1/estado-pressao-ravens-bluff.yaml",
             ],
             "regra": "teste",
         }

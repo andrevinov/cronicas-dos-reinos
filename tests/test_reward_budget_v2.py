@@ -149,10 +149,10 @@ class RewardBudgetV2IntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        reward_dir = self.repo / "narrador/recompensas"
+        reward_dir = self.repo / "narrador/tramas/recompensas"
         reward_dir.mkdir(parents=True, exist_ok=True)
         for name in ("index.yaml", "itens-index.yaml", "tabelas.yaml", "planejadas.yaml"):
-            shutil.copy2(ROOT / "narrador/recompensas" / name, reward_dir / name)
+            shutil.copy2(ROOT / "narrador/tramas/recompensas" / name, reward_dir / name)
         index_path = reward_dir / "index.yaml"
         index = yaml.safe_load(index_path.read_text(encoding="utf-8"))
         index["mapas"] = {}
@@ -185,7 +185,7 @@ class RewardBudgetV2IntegrationTest(unittest.TestCase):
             ],
         )
         persisted = yaml.safe_load(
-            (self.repo / "narrador/recompensas/mapas/galeria_dos_escribas.yaml").read_text(encoding="utf-8")
+            (self.repo / "narrador/tramas/recompensas/mapas/galeria_dos_escribas.yaml").read_text(encoding="utf-8")
         )
         self.assertEqual(persisted["geracao"]["modo"], recompensas.GENERATOR_V2)
         self.assertEqual(persisted["geracao"]["orcamento_v2"]["familia_local"], "entreposto_documental")
@@ -212,7 +212,7 @@ class RewardBudgetV2IntegrationTest(unittest.TestCase):
         result = recompensas.ensure(self.repo, "fixture_sem_ecologia", 2, "alta")
         self.assertTrue(result["criado"])
         persisted = yaml.safe_load(
-            (self.repo / "narrador/recompensas/mapas/fixture_sem_ecologia.yaml").read_text(encoding="utf-8")
+            (self.repo / "narrador/tramas/recompensas/mapas/fixture_sem_ecologia.yaml").read_text(encoding="utf-8")
         )
         self.assertEqual(persisted["geracao"]["modo"], recompensas.GENERATOR)
 

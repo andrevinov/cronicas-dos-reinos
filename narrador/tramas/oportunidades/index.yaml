@@ -1,0 +1,137 @@
+schema_oportunidades: 1
+natureza: reservado
+semente: cronicas-dos-reinos-oportunidades-v1
+estatuto_operacional: sidequests_emergentes_integradas_task46
+nova_origem_sidequests: emergente_causal_task40
+gate:
+  versao: 2
+  modo: baralho_sem_reposicao_sha256
+  estatuto: legado_congelado_nao_operacional
+  fichas:
+  - id: nada_01
+    resultado: nada
+  - id: nada_02
+    resultado: nada
+  - id: nada_03
+    resultado: nada
+  - id: nada_04
+    resultado: nada
+  - id: nada_05
+    resultado: nada
+  - id: nada_06
+    resultado: nada
+  - id: nada_07
+    resultado: nada
+  - id: nada_08
+    resultado: nada
+  - id: oportunidade_01
+    resultado: oportunidade
+  - id: oportunidade_02
+    resultado: oportunidade
+  pressao_aventura:
+    origem: adventure_drought_pressure
+    fonte: narrador/mundo/microeventos-locais/estado.yaml
+    ordenacao_promovidos: sha256_seed_token
+    promocoes_nada_por_nivel:
+      0: 0
+      1: 1
+      2: 2
+      3: 3
+    estatuto: legado_congelado_nao_modula_sidequest
+orcamento:
+  max_ativas: 2
+  max_em_aberto: 3
+  max_pendencias_avaliacao: 1
+  cooldown_oferta_dias:
+  - 2
+  - 3
+regras:
+  acionamento: encontro_com_npc
+  scheduler: proibido
+  scan_geral_npcs: proibido
+  necessidade_nao_e_oferta: true
+  oferta_nao_e_aceite: true
+  consequencia_sem_ren_nao_e_automatica: true
+  pressao_aventura_modula_gate: true
+  pressao_nao_fura_orcamento: true
+  pressao_nao_rerrola: true
+  gate_procedural_operacional: false
+  encontro_nao_gera_nova_sidequest: true
+  fonte_nova_sidequest: emergente_causal_task40
+  perfis_procedurais_sao_legado: true
+  task32_task33_origem_operacional: false
+  task40_exige_ancora_causal_explicita: true
+  nv17_causa_vencida_nao_pode_ser_ocultada_por_negativa: true
+  nv17_zero_ativas_somente_eleva_causa_existente: true
+  nv17_max_nova_oportunidade_por_janela: 1
+sidequests_canonicas:
+  schema_sidequests_canonicas: 1
+  engine: canonical_secret_quest_engine_task32
+  estatuto: legado_frio_task46
+  origem_operacional: false
+  detalhes_somente_apos_gate: true
+  scheduler: proibido
+  rng: proibido
+  roteamento: fragmentado_por_npc_task33
+nv17:
+  engine: sidequests_vivas_orientadas_por_causa
+  estado: narrador/tramas/sidequests/vivas/estado.yaml
+  migracao_legado: narrador/tramas/sidequests/vivas/migracao-legado.yaml
+  evidencias_migracao: narrador/tramas/sidequests/vivas/evidencias-migracao.yaml
+  fonte_causa: oportunidade_sidequest_em_plano_nv11
+  sinal_manual: somente_ancora_nova_da_cena
+  roteamento_runtime:
+  - plano_nv08_vencido
+  - local_canonico
+  - referencia_explicita
+  max_ativas_projetadas: 2
+  max_novas_por_janela: 1
+perfis:
+  kethra_dunn:
+    nome: Kethra Dunn
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/kethra_dunn.yaml
+  bram_vask:
+    nome: Bram Vask
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/bram_vask.yaml
+  pell:
+    nome: Pell
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/pell.yaml
+  maerra_thandrel:
+    nome: Irmã Maerra Thandrel
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/maerra_thandrel.yaml
+  luath:
+    nome: Luath
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/luath.yaml
+  halessa_vorn:
+    nome: Irmã Halessa Vorn
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/halessa_vorn.yaml
+  silva_elkwood:
+    nome: Silva Elkwood
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/silva_elkwood.yaml
+  jack_mooney:
+    nome: Jack Mooney
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/jack_mooney.yaml
+  corven_dalm:
+    nome: Corven Dalm
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/corven_dalm.yaml
+  nera_vell:
+    nome: Nera Vell
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/nera_vell.yaml
+  brunna_torkel:
+    nome: Brunna Torkel
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/brunna_torkel.yaml
+  dessa_wren:
+    nome: Dessa Wren
+    estado: inativo
+    arquivo: narrador/tramas/oportunidades/perfis/dessa_wren.yaml

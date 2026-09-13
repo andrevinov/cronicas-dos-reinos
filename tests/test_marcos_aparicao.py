@@ -20,7 +20,7 @@ class MarcosAparicaoTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         self._write(
-            "narrador/arcos/index.yaml",
+            "narrador/tramas/arcos/index.yaml",
             {
                 "schema_arcos": 1,
                 "natureza": "roteador_reservado",
@@ -28,14 +28,14 @@ class MarcosAparicaoTest(unittest.TestCase):
                     "parte_1": {
                         "titulo": "Parte 1",
                         "ordem": 1,
-                        "arquivo": "narrador/arcos/parte_1.yaml",
+                        "arquivo": "narrador/tramas/arcos/parte_1.yaml",
                         "proximo": None,
                     }
                 },
             },
         )
         self._write(
-            "narrador/arcos/estado.yaml",
+            "narrador/tramas/arcos/estado.yaml",
             {
                 "schema_estado_arcos": 2,
                 "natureza": "controle_reservado",
@@ -45,7 +45,7 @@ class MarcosAparicaoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/parte_1.yaml",
+            "narrador/tramas/arcos/parte_1.yaml",
             {
                 "schema_arco": 4,
                 "natureza": "reservado",
@@ -59,7 +59,7 @@ class MarcosAparicaoTest(unittest.TestCase):
                     "fontes": {
                         "plano_mestre": {
                             "tipo": "documento_reservado",
-                            "arquivo": "narrador/masao/plano.md",
+                            "arquivo": "narrador/elenco/masao/plano.md",
                         }
                     },
                     "plano_mestre": {
@@ -84,11 +84,11 @@ class MarcosAparicaoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/marcos-aparicao.yaml",
+            "narrador/tramas/arcos/marcos-aparicao.yaml",
             {
                 "schema_marcos_aparicao": 1,
                 "natureza": "roteador_reservado",
-                "fonte_canonica": "narrador/juppongatana/marcos-de-aparicao.md",
+                "fonte_canonica": "narrador/elenco/juppongatana/marcos-de-aparicao.md",
                 "regras": {
                     "elegivel_nao_e_aparicao": True,
                     "consumido_nao_bloqueia_reaparicao": True,
@@ -102,7 +102,7 @@ class MarcosAparicaoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/estado-marcos-aparicao.yaml",
+            "narrador/tramas/arcos/estado-marcos-aparicao.yaml",
             {
                 "schema_estado_marcos_aparicao": 1,
                 "natureza": "controle_reservado",
@@ -116,7 +116,7 @@ class MarcosAparicaoTest(unittest.TestCase):
         )
         self._write("runtime/contexto.yaml", {"personagem": {"nivel": 6}})
         self._write(
-            "narrador/juppongatana/marcos-de-aparicao.md",
+            "narrador/elenco/juppongatana/marcos-de-aparicao.md",
             "# Marcos\n### Kurobane\n### Shizune\n### Cho\n### Pan\n",
             raw=True,
         )
@@ -158,10 +158,10 @@ class MarcosAparicaoTest(unittest.TestCase):
         self.assertEqual(result["modo"], "reaparicao_nao_bloqueada_pelo_marco")
 
     def test_arco_bloqueia_antes_de_ler_runtime_e_estado_de_marco(self):
-        contract = yaml.safe_load((self.repo / "narrador/arcos/parte_1.yaml").read_text())
+        contract = yaml.safe_load((self.repo / "narrador/tramas/arcos/parte_1.yaml").read_text())
         contract["habilitacoes"]["antagonistas"].remove("shizune")
         contract["linhas_operacionais"]["linha"]["executores"].remove("shizune")
-        self._write("narrador/arcos/parte_1.yaml", contract)
+        self._write("narrador/tramas/arcos/parte_1.yaml", contract)
         (self.repo / marcos_aparicao.RUNTIME).unlink()
         (self.repo / marcos_aparicao.STATE).unlink()
         result = marcos_aparicao.gate(self.repo, "shizune")
@@ -207,7 +207,7 @@ class MarcosAparicaoTest(unittest.TestCase):
         result = marcos_aparicao.validate(self.repo)
         self.assertTrue(result["ok"])
         gate = marcos_aparicao.gate(self.repo, "shizune")
-        self.assertNotIn("narrador/juppongatana/marcos-de-aparicao.md", gate["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/juppongatana/marcos-de-aparicao.md", gate["fontes_lidas"])
 
 
 if __name__ == "__main__":

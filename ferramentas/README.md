@@ -218,7 +218,7 @@ python3 ferramentas/checkpoint.py recuperar
 
 A recuperação instala os mesmos bytes staged sem recalcular `inc` e depois reconstrói a memória compacta. Sem journal, o comando também pode reparar apenas handoff/índice.
 
-Detalhes canônicos: `docs/agente/consolidacao-transacional.md`. Memória: `docs/agente/memoria-de-sessoes.md`.
+Detalhes canônicos: `docs/agente/operacao/consolidacao-transacional.md`. Memória: `docs/agente/memoria/memoria-de-sessoes.md`.
 
 ## Memória fria de sessões
 
@@ -321,7 +321,7 @@ L4T 16 KiB
 
 `--max-bytes` só reduz o teto. Pedir 16 KiB em `status` continua limitado a 4 KiB. Cada saída inclui `controle_acesso.pare_se_suficiente` para lembrar o agente de interromper a busca quando a lacuna estiver resolvida.
 
-Detalhes: `docs/agente/escada-de-acesso.md`.
+Detalhes: `docs/agente/operacao/escada-de-acesso.md`.
 
 Telemetria local fica **desligada por padrão**. Para um diagnóstico pontual, use `--log-local`; o arquivo `runtime/consultas-contexto.jsonl` continua local/ignorado. A medição normal é pós-hoc pelo rollout nativo.
 
@@ -457,6 +457,6 @@ Arquivos de referência:
 - `baseline/rollout-2026-08-15.json`;
 - `baseline/metas-rollout-pos-refatoracao.json`;
 - `baseline/telemetria-step-11.md`;
-- `docs/agente/telemetria-rollouts.md`.
+- `docs/agente/engenharia/telemetria-rollouts.md`.
 
 Redução de tokens é tratada como tráfego operacional, não como fórmula de cobrança/quota.

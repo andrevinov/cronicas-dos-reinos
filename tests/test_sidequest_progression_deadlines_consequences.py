@@ -76,7 +76,7 @@ class Task45Fixture(task43.Task43Fixture):
     def setUp(self):
         super().setUp()
         shutil.copytree(ROOT / "estado/npcs", self.repo / "estado/npcs", dirs_exist_ok=True)
-        shutil.copytree(ROOT / "narrador/agentes", self.repo / "narrador/agentes")
+        shutil.copytree(ROOT / "narrador/elenco/agentes", self.repo / "narrador/elenco/agentes")
         for rel in (adversarial.POLICY, rede_protegida.INDEX):
             dst = self.repo / rel
             dst.parent.mkdir(parents=True, exist_ok=True)

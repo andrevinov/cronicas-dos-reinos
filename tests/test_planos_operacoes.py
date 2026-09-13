@@ -39,7 +39,7 @@ class PlansOperationTest(ConcurrentOperationFixture):
         return world[plans.KEY]["rota"]
 
     def define(self):
-        actor = yaml.safe_load((self.repo / f"narrador/agentes/{ACTOR_ID}.yaml").read_text())
+        actor = yaml.safe_load((self.repo / f"narrador/elenco/agentes/{ACTOR_ID}.yaml").read_text())
         step = {"id": "tomar_matriz", "acao": "Tentar tomar a matriz documental.", "em": mundo.instant_parts(self.now),
             "duracao_minutos": 0, "local": "rua_da_guarda", "condicoes": [], "conhecimento": [], "recursos": [],
             "resolucao": {"tipo": "operacao", "operacao_id": "ataque_comitiva"}}
@@ -133,7 +133,7 @@ class PlansOperationTest(ConcurrentOperationFixture):
         self.materialize_group()
         plan = self.define()
         plan["passo"]["resolucao"] = {"tipo": "factual", "sem_oposicao": {
-            "arquivo": "narrador/agentes/index.yaml", "caminho": "autorizacao", "valor": True}}
+            "arquivo": "narrador/elenco/agentes/index.yaml", "caminho": "autorizacao", "valor": True}}
         before = self.hashes()
         blockers = plans._gates(plans.View(self.repo, []), plan, self.now)
         self.assertIn("agente adversarial", " ".join(blockers))

@@ -23,48 +23,48 @@ with tempfile.TemporaryDirectory() as tmp:
         else:
             path.write_text(yaml.safe_dump(value, allow_unicode=True, sort_keys=False), encoding="utf-8")
 
-    write("narrador/arcos/index.yaml", {
+    write("narrador/tramas/arcos/index.yaml", {
         "schema_arcos": 1, "natureza": "roteador_reservado",
-        "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/arcos/parte_1.yaml", "proximo": None}},
+        "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/tramas/arcos/parte_1.yaml", "proximo": None}},
     })
-    write("narrador/arcos/estado.yaml", {
+    write("narrador/tramas/arcos/estado.yaml", {
         "schema_estado_arcos": 2, "natureza": "controle_reservado",
         "arco_atual": "parte_1", "estado": "ativo", "historico_transicoes": [],
     })
-    write("narrador/arcos/parte_1.yaml", {
+    write("narrador/tramas/arcos/parte_1.yaml", {
         "schema_arco": 4, "natureza": "reservado", "estatuto": "contrato_orquestrador_de_arco",
         "id": "parte_1", "titulo": "Parte 1", "principio": "Teste.",
         "inicio": {"tipo": "fato_canonico", "marcador": "inicio", "fonte": "campanha.yaml"},
         "termino": {"tipo": "marco_explicito", "marcador": "fim", "fonte": "campanha.yaml"},
         "orquestracao": {
-            "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/masao/plano.md"}},
+            "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/elenco/masao/plano.md"}},
             "plano_mestre": {"agente": "masao", "objetivo": "objetivo", "referencia": "plano_mestre"},
         },
         "habilitacoes": {"politica_nao_listados": "bloqueados", "antagonistas": ["kurobane"], "aliados": [], "direcoes": []},
         "linhas_operacionais": {"proteger_prova": {"objetivo": "proteger_prova", "executores": ["kurobane"], "referencia": "plano_mestre"}},
     })
-    write("narrador/agentes/index.yaml", {
+    write("narrador/elenco/agentes/index.yaml", {
         "schema_agentes": 2, "agentes": {
-            "masao": {"nome": "Masao", "arquivo": "narrador/agentes/masao.yaml"},
-            "kurobane": {"nome": "Kurobane", "arquivo": "narrador/agentes/kurobane.yaml"},
+            "masao": {"nome": "Masao", "arquivo": "narrador/elenco/agentes/masao.yaml"},
+            "kurobane": {"nome": "Kurobane", "arquivo": "narrador/elenco/agentes/kurobane.yaml"},
         },
     })
-    write("narrador/agentes/masao.yaml", {"id": "masao"})
-    write("narrador/agentes/kurobane.yaml", {
+    write("narrador/elenco/agentes/masao.yaml", {"id": "masao"})
+    write("narrador/elenco/agentes/kurobane.yaml", {
         "id": "kurobane",
         "metodos_operacionais": {"proteger_prova": [{
             "id": "interceptar", "abordagem": "Interceptar fisicamente.",
             "modalidade": "fisica", "tags": ["documentos", "mensageiro"],
         }]},
     })
-    write("narrador/entradas/index.yaml", {"schema_entradas": 1, "candidatos": {}})
-    write("narrador/direcoes/index.yaml", {"schema_direcoes": 1, "direcoes": {}})
+    write("narrador/elenco/entradas/index.yaml", {"schema_entradas": 1, "candidatos": {}})
+    write("narrador/tramas/direcoes/index.yaml", {"schema_direcoes": 1, "direcoes": {}})
     write("campanha.yaml", "campanha: teste\n")
-    write("narrador/masao/plano.md", "# Plano\n")
+    write("narrador/elenco/masao/plano.md", "# Plano\n")
 
     result = arcos.resolve_agent_methods(repo, "proteger_prova", executor="kurobane")
     assert result["metodos"][0]["id"] == "interceptar"
     assert len(result["fontes_lidas"]) == 5
-    assert result["fonte_agente"] == "narrador/agentes/kurobane.yaml"
+    assert result["fonte_agente"] == "narrador/elenco/agentes/kurobane.yaml"
 
 print("smoke arcos/linha/métodos: OK")

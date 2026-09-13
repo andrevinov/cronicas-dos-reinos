@@ -53,9 +53,9 @@ SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_:-]{0,95}$")
 REACTION_RE = re.compile(r"^rsq-[0-9a-f]{20}$")
 FORBIDDEN_PROOF_PREFIXES = (
     "narrador/sidequest-reacoes/",
-    "narrador/sidequests-emergentes/",
-    "narrador/arcos/parte_1/intencoes/",
-    "narrador/arcos/parte_1/eventos/",
+    "narrador/tramas/sidequests/emergentes/",
+    "narrador/tramas/arcos/parte_1/intencoes/",
+    "narrador/tramas/arcos/parte_1/eventos/",
 )
 
 
@@ -199,7 +199,7 @@ def _mission(repo: Path, ref: str) -> tuple[dict[str, Any], str, dict[str, Any]]
 def _progress(repo: Path, mission_id: str, mission: dict[str, Any]) -> tuple[dict[str, Any], str]:
     source = mission.get("progresso_sidequest")
     if not isinstance(source, str) or not source.startswith(
-        "narrador/sidequests-emergentes/progresso/"
+        "narrador/tramas/sidequests/emergentes/progresso/"
     ):
         raise SidequestReactionError("missão não possui fragmento Task45 válido")
     doc = _load(repo / source, source)

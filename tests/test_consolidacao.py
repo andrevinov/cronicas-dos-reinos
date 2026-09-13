@@ -334,9 +334,9 @@ class ConsolidacaoTest(unittest.TestCase):
             summary="Ren segue sem perceber resposta inimiga.",
         )
         mod.consolidate(self.repo, "cena")
-        clock = self._read_yaml("narrador/relogios/busca_inimiga.yaml")
+        clock = self._read_yaml("narrador/mundo/relogios/busca_inimiga.yaml")
         self.assertEqual(clock["relogio"]["progresso"], 2)
-        hidden = (self.repo / "narrador/sessoes/003/rolagens-ocultas.md").read_text(encoding="utf-8")
+        hidden = (self.repo / "narrador/historico/sessoes/003/rolagens-ocultas.md").read_text(encoding="utf-8")
         self.assertIn("Percepção inimiga", hidden)
         public = (self.repo / "sessoes/003/resumo.md").read_text(encoding="utf-8")
         self.assertNotIn("d20 17", public)

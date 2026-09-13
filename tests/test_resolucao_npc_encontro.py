@@ -23,7 +23,7 @@ class ResolucaoNpcEncontroSyntheticTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         self.now = mundo.parse_instant("11 Eleasis, 1372 DR", "09:00")
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -57,18 +57,18 @@ class ResolucaoNpcEncontroSyntheticTest(unittest.TestCase):
                     "nera_vell": {
                         "nome": "Nera Vell",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/nera_vell.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/nera_vell.yaml",
                     },
                     "kethra_dunn": {
                         "nome": "Kethra Dunn",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/kethra_dunn.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/kethra_dunn.yaml",
                     },
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -83,7 +83,7 @@ class ResolucaoNpcEncontroSyntheticTest(unittest.TestCase):
         )
         for npc_id, name in (("nera_vell", "Nera Vell"), ("kethra_dunn", "Kethra Dunn")):
             self._write(
-                f"narrador/oportunidades/perfis/{npc_id}.yaml",
+                f"narrador/tramas/oportunidades/perfis/{npc_id}.yaml",
                 {
                     "schema_perfil_oportunidades": 1,
                     "natureza": "reservado",

@@ -25,18 +25,18 @@ import yaml
 
 import arcos
 
-INDEX = Path("narrador/direcoes/index.yaml")
-STATE = Path("narrador/direcoes/estado.yaml")
-DIR = Path("narrador/direcoes")
+INDEX = Path("narrador/tramas/direcoes/index.yaml")
+STATE = Path("narrador/tramas/direcoes/estado.yaml")
+DIR = Path("narrador/tramas/direcoes")
 VALID_STATES = {"ativa", "latente", "suspensa", "concluida"}
 FORBIDDEN_EVIDENCE_PREFIXES = (
-    "narrador/direcoes/",
-    "narrador/arcos/",
+    "narrador/tramas/direcoes/",
+    "narrador/tramas/arcos/",
 )
 FORBIDDEN_EVIDENCE_FILES = {
-    "narrador/masao/plano.md",
-    "narrador/juppongatana/marcos-de-aparicao.md",
-    "narrador/aliados/marcos-de-aparicao.md",
+    "narrador/elenco/masao/plano.md",
+    "narrador/elenco/juppongatana/marcos-de-aparicao.md",
+    "narrador/elenco/aliados/marcos-de-aparicao.md",
 }
 FORBIDDEN_OPERATIONAL_FIELDS = {
     "executor",

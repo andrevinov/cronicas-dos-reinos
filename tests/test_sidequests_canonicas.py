@@ -75,7 +75,7 @@ class CanonicalSecretQuestRepositoryTest(unittest.TestCase):
             "operacoes_contextuais": [],
             "direcoes_contextuais": [],
             "encontros": [],
-            "fontes_lidas": ["narrador/oportunidades/index.yaml"],
+            "fontes_lidas": ["narrador/tramas/oportunidades/index.yaml"],
             "sidequest_canonica": {
                 "id": "qsc-222222222222",
                 "npc_id": "npc_a",

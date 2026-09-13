@@ -23,8 +23,8 @@ import yaml
 
 import mundo
 
-INDEX = Path("narrador/rastros/index.yaml")
-ITEMS = Path("narrador/rastros/itens")
+INDEX = Path("narrador/mundo/rastros/index.yaml")
+ITEMS = Path("narrador/mundo/rastros/itens")
 CURRENT_STATE = Path("estado/estado-atual.yaml")
 TIME = mundo.TIME_PATH
 
@@ -32,11 +32,11 @@ VALID_TYPES = {"fisico", "documental", "rumor", "comportamental", "institucional
 VALID_SCOPES = {"cidade", "area", "ponto"}
 VALID_ACCESS = {"automatico", "investigacao", "interacao", "rumor"}
 FORBIDDEN_SOURCE_PREFIXES = (
-    "narrador/eventos/cartas/",
-    "narrador/rastros/",
+    "narrador/mundo/eventos/cartas/",
+    "narrador/mundo/rastros/",
 )
 FORBIDDEN_SOURCES = {
-    "narrador/eventos/estado.yaml",
+    "narrador/mundo/eventos/estado.yaml",
     "narrador/mundo/estado.yaml",
 }
 MAX_INDEX_BYTES = 16384

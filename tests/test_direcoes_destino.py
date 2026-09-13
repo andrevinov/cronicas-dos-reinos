@@ -15,7 +15,7 @@ class DestinosTest(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.repo = Path(self.tmp.name)
         self._yaml(
-            "narrador/arcos/index.yaml",
+            "narrador/tramas/arcos/index.yaml",
             {
                 "schema_arcos": 1,
                 "natureza": "roteador_reservado",
@@ -23,14 +23,14 @@ class DestinosTest(unittest.TestCase):
                     "parte_1": {
                         "titulo": "Parte 1",
                         "ordem": 1,
-                        "arquivo": "narrador/arcos/parte_1.yaml",
+                        "arquivo": "narrador/tramas/arcos/parte_1.yaml",
                         "proximo": None,
                     }
                 },
             },
         )
         self._yaml(
-            "narrador/arcos/estado.yaml",
+            "narrador/tramas/arcos/estado.yaml",
             {
                 "schema_estado_arcos": 2,
                 "natureza": "controle_reservado",
@@ -40,7 +40,7 @@ class DestinosTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/arcos/parte_1.yaml",
+            "narrador/tramas/arcos/parte_1.yaml",
             {
                 "schema_arco": 4,
                 "natureza": "reservado",
@@ -70,20 +70,20 @@ class DestinosTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/direcoes/index.yaml",
+            "narrador/tramas/direcoes/index.yaml",
             {
                 "schema_direcoes": 1,
                 "natureza": "reservado",
                 "direcoes": {
                     "ponte": {
                         "nome": "Ponte",
-                        "arquivo": "narrador/direcoes/ponte.yaml",
+                        "arquivo": "narrador/tramas/direcoes/ponte.yaml",
                         "avaliacao": {"cadencia": "amanhecer", "intervalo_dias": 2, "inicio": "12 Eleasis, 1372 DR"},
                         "ativacao": None,
                     },
                     "bairro": {
                         "nome": "Bairro",
-                        "arquivo": "narrador/direcoes/bairro.yaml",
+                        "arquivo": "narrador/tramas/direcoes/bairro.yaml",
                         "avaliacao": {"cadencia": "amanhecer", "intervalo_dias": 7, "inicio": "12 Eleasis, 1372 DR"},
                         "ativacao": None,
                     },
@@ -91,7 +91,7 @@ class DestinosTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/direcoes/estado.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
             {
                 "schema_estado_direcoes": 1,
                 "natureza": "controle_reservado",
@@ -123,7 +123,7 @@ class DestinosTest(unittest.TestCase):
 
     def _direction(self, did: str, name: str, milestone: str) -> None:
         self._yaml(
-            f"narrador/direcoes/{did}.yaml",
+            f"narrador/tramas/direcoes/{did}.yaml",
             {
                 "schema_direcao": 1,
                 "natureza": "reservado",
@@ -147,7 +147,7 @@ class DestinosTest(unittest.TestCase):
         )
 
     def test_projecao_e_destino_nao_executavel(self):
-        before = (self.repo / "narrador/direcoes/estado.yaml").read_bytes()
+        before = (self.repo / "narrador/tramas/direcoes/estado.yaml").read_bytes()
         result = direcoes_destino.project(self.repo, "ponte")
         self.assertTrue(result["permitido"])
         self.assertEqual(result["papel"], "restricao_destino")
@@ -157,43 +157,43 @@ class DestinosTest(unittest.TestCase):
         self.assertIn("guardrails", result["marco_atual"])
         for forbidden in ("executor", "acao", "metodo", "alvo"):
             self.assertNotIn(forbidden, result)
-        self.assertEqual(before, (self.repo / "narrador/direcoes/estado.yaml").read_bytes())
+        self.assertEqual(before, (self.repo / "narrador/tramas/direcoes/estado.yaml").read_bytes())
 
     def test_direcao_fora_do_arco_para_antes_do_fragmento(self):
-        (self.repo / "narrador/direcoes/bairro.yaml").unlink()
+        (self.repo / "narrador/tramas/direcoes/bairro.yaml").unlink()
         result = direcoes_destino.project(self.repo, "bairro")
         self.assertFalse(result["permitido"])
         self.assertEqual(result["motivo"], "direcao_bloqueada_pelo_arco")
-        self.assertNotIn("narrador/direcoes/bairro.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/direcoes/bairro.yaml", result["fontes_lidas"])
 
     def test_direcao_latente_nao_abre_fragmento(self):
-        arc = yaml.safe_load((self.repo / "narrador/arcos/parte_1.yaml").read_text())
+        arc = yaml.safe_load((self.repo / "narrador/tramas/arcos/parte_1.yaml").read_text())
         arc["habilitacoes"]["direcoes"] = ["bairro"]
-        self._yaml("narrador/arcos/parte_1.yaml", arc)
-        (self.repo / "narrador/direcoes/bairro.yaml").unlink()
+        self._yaml("narrador/tramas/arcos/parte_1.yaml", arc)
+        (self.repo / "narrador/tramas/direcoes/bairro.yaml").unlink()
         result = direcoes_destino.project(self.repo, "bairro")
         self.assertFalse(result["permitido"])
         self.assertEqual(result["motivo"], "direcao_nao_ativa")
-        self.assertNotIn("narrador/direcoes/bairro.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/direcoes/bairro.yaml", result["fontes_lidas"])
 
     def test_fragmento_rejeita_executor_ou_acao(self):
-        path = self.repo / "narrador/direcoes/ponte.yaml"
+        path = self.repo / "narrador/tramas/direcoes/ponte.yaml"
         data = yaml.safe_load(path.read_text())
         data["executor"] = "kurobane"
-        self._yaml("narrador/direcoes/ponte.yaml", data)
+        self._yaml("narrador/tramas/direcoes/ponte.yaml", data)
         with self.assertRaises(direcoes_destino.DestinationDirectionError):
             direcoes_destino.project(self.repo, "ponte")
 
     def test_marco_rejeita_acao_concreta(self):
-        path = self.repo / "narrador/direcoes/ponte.yaml"
+        path = self.repo / "narrador/tramas/direcoes/ponte.yaml"
         data = yaml.safe_load(path.read_text())
         data["marcos"][0]["acao"] = "Kurobane rouba o documento"
-        self._yaml("narrador/direcoes/ponte.yaml", data)
+        self._yaml("narrador/tramas/direcoes/ponte.yaml", data)
         with self.assertRaises(direcoes_destino.DestinationDirectionError):
             direcoes_destino.project(self.repo, "ponte")
 
     def test_preparar_avanco_exige_evidencia_literal_e_nao_muta(self):
-        before = (self.repo / "narrador/direcoes/estado.yaml").read_bytes()
+        before = (self.repo / "narrador/tramas/direcoes/estado.yaml").read_bytes()
         result = direcoes_destino.prepare_advance(
             self.repo,
             "ponte",
@@ -203,7 +203,7 @@ class DestinosTest(unittest.TestCase):
         )
         self.assertEqual(result["fato_base"]["fonte"], "sessoes/010/consequencias.md")
         self.assertFalse(result["mutou_estado"])
-        self.assertEqual(before, (self.repo / "narrador/direcoes/estado.yaml").read_bytes())
+        self.assertEqual(before, (self.repo / "narrador/tramas/direcoes/estado.yaml").read_bytes())
 
     def test_evidencia_inexistente_falha(self):
         with self.assertRaises(direcoes_destino.DestinationDirectionError):
@@ -220,20 +220,20 @@ class DestinosTest(unittest.TestCase):
             direcoes_destino.prepare_advance(
                 self.repo,
                 "ponte",
-                source="narrador/direcoes/ponte.yaml",
+                source="narrador/tramas/direcoes/ponte.yaml",
                 evidence="Destino obrigatório",
                 note="documento prescritivo não é fato-base",
             )
 
     def test_arco_rejeita_direcao_como_linha_operacional(self):
-        arc = yaml.safe_load((self.repo / "narrador/arcos/parte_1.yaml").read_text())
+        arc = yaml.safe_load((self.repo / "narrador/tramas/arcos/parte_1.yaml").read_text())
         arc["habilitacoes"]["antagonistas"] = ["masao"]
         arc["linhas_operacionais"]["ponte"] = {
             "objetivo": "fazer_ponte",
             "executores": ["masao"],
             "referencia": "plano",
         }
-        self._yaml("narrador/arcos/parte_1.yaml", arc)
+        self._yaml("narrador/tramas/arcos/parte_1.yaml", arc)
         with self.assertRaises(arcos.ArcContractError):
             arcos.current(self.repo)
 

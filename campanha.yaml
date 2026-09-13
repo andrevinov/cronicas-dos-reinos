@@ -77,9 +77,9 @@ estrutura:
     progressao: regras/progressao.md
     regras_da_casa: regras/regras-da-casa.md
     resolucao_de_acoes: regras/resolucao-de-acoes.md
-    guia_de_narrativa: narracao/guia-de-narrativa.md
-    protocolo_de_sessao: narracao/protocolo-de-sessao.md
-    limites_de_conteudo: narracao/limites.md
+    guia_de_narrativa: narracao/principios/guia-de-narrativa.md
+    protocolo_de_sessao: narracao/operacao/protocolo-de-sessao.md
+    limites_de_conteudo: narracao/principios/limites.md
     ferramentas: ferramentas/README.md
     rolador_de_dados: ferramentas/rolar-dados.py
     adaptador_ficha_ren: ferramentas/ficha_ren.py
@@ -106,37 +106,37 @@ estrutura:
     personagem_conhecimento: personagens/jogador/conhecimento.md
     personagem_resumo_poderes: personagens/jogador/resumo-de-poderes.md
     area_do_narrador: narrador/README.md
-    adversarios_mecanicos: narrador/adversarios/README.md
-    adversarios_contrato: narrador/adversarios/contrato.yaml
-    adversarios_indice: narrador/adversarios/index.yaml
-    ameacas_contrato: narrador/adversarios/contrato-ameacas.yaml
-    ameacas_perfis: narrador/adversarios/ameacas.yaml
-    dungeons_preparadas: narrador/dungeons/README.md
-    dungeons_contrato: narrador/dungeons/contrato.yaml
-    dungeons_indice: narrador/dungeons/index.yaml
-    juppongatana: narrador/juppongatana/README.md
-    juppongatana_elenco: narrador/juppongatana/index.yaml
-    juppongatana_conducao: narrador/juppongatana/conducao.md
-    juppongatana_membros: narrador/juppongatana/membros.md
-    juppongatana_marcos: narrador/juppongatana/marcos-de-aparicao.md
-    masao: narrador/masao/README.md
-    masao_plano: narrador/masao/plano.md
-    aliados_ren: narrador/aliados/README.md
-    aliados_ren_personagens: narrador/aliados/personagens.md
-    aliados_ren_tadasu: narrador/aliados/tadasu-no-kami.md
-    aliados_ren_marcos: narrador/aliados/marcos-de-aparicao.md
-    ponte_de_kozakura: narrador/ponte-de-kozakura/README.md
-    ponte_de_kozakura_anomalias: narrador/ponte-de-kozakura/anomalias-e-revelacao.md
-    shin_kozakura: narrador/ponte-de-kozakura/shin-kozakura.md
-    preparacao_sessao_atual: narrador/sessoes/001/preparacao.md
-    mapa_sessao_atual: narrador/sessoes/001/mapa-e-salas.md
-    npcs_sessao_atual: narrador/sessoes/001/npcs.md
-    relogios_sessao_atual: narrador/sessoes/001/relogios.md
+    adversarios_mecanicos: narrador/elenco/adversarios/README.md
+    adversarios_contrato: narrador/elenco/adversarios/contrato.yaml
+    adversarios_indice: narrador/elenco/adversarios/index.yaml
+    ameacas_contrato: narrador/elenco/adversarios/contrato-ameacas.yaml
+    ameacas_perfis: narrador/elenco/adversarios/ameacas.yaml
+    dungeons_preparadas: narrador/tramas/dungeons/README.md
+    dungeons_contrato: narrador/tramas/dungeons/contrato.yaml
+    dungeons_indice: narrador/tramas/dungeons/index.yaml
+    juppongatana: narrador/elenco/juppongatana/README.md
+    juppongatana_elenco: narrador/elenco/juppongatana/index.yaml
+    juppongatana_conducao: narrador/elenco/juppongatana/conducao.md
+    juppongatana_membros: narrador/elenco/juppongatana/membros.md
+    juppongatana_marcos: narrador/elenco/juppongatana/marcos-de-aparicao.md
+    masao: narrador/elenco/masao/README.md
+    masao_plano: narrador/elenco/masao/plano.md
+    aliados_ren: narrador/elenco/aliados/README.md
+    aliados_ren_personagens: narrador/elenco/aliados/personagens.md
+    aliados_ren_tadasu: narrador/elenco/aliados/tadasu-no-kami.md
+    aliados_ren_marcos: narrador/elenco/aliados/marcos-de-aparicao.md
+    ponte_de_kozakura: narrador/tramas/ponte-de-kozakura/README.md
+    ponte_de_kozakura_anomalias: narrador/tramas/ponte-de-kozakura/anomalias-e-revelacao.md
+    shin_kozakura: narrador/tramas/ponte-de-kozakura/shin-kozakura.md
+    preparacao_sessao_atual: narrador/historico/sessoes/001/preparacao.md
+    mapa_sessao_atual: narrador/historico/sessoes/001/mapa-e-salas.md
+    npcs_sessao_atual: narrador/historico/sessoes/001/npcs.md
+    relogios_sessao_atual: narrador/historico/sessoes/001/relogios.md
     estado_atual: estado/estado-atual.yaml
     relacoes: estado/relacoes.yaml
     medidores_npcs: estado/medidores-npcs.yaml
     tempo_atual: estado/tempo.yaml
-    registro_migracao_ficha_ren_5_5e: personagens/jogador/migracao-5-5e.yaml
+    registro_migracao_ficha_ren_5_5e: personagens/jogador/historico/migracoes/ativacao-5-5e.yaml
     gate_consistencia_5_5e: ferramentas/ruleset_5_5e.py
 fontes:
   status: ruleset_5_5e_ativo
@@ -214,7 +214,7 @@ tom:
   - violencia sombria permitida sem crueldade grafica gratuita
   limites_de_conteudo:
     status: definido
-    arquivo: narracao/limites.md
+    arquivo: narracao/principios/limites.md
 regras:
   fidelidade_aproximada: 70%
   dificuldade:
@@ -233,7 +233,7 @@ regras:
     arquivo: regras/progressao.md
   protocolo_de_rolagens:
     status: definido_inicial
-    arquivo: narracao/protocolo-de-sessao.md
+    arquivo: narracao/operacao/protocolo-de-sessao.md
     ferramenta_padrao: ferramentas/rolar-dados.py
 preparacao:
   prioridades_atuais:

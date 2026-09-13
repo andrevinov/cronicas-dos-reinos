@@ -31,8 +31,8 @@ import transacoes
 
 ROUTER_KEY = "sidequests_canonicas"
 ENGINE_ID = "canonical_secret_quest_engine_task32"
-GATES_DIR = Path("narrador/sidequests-canonicas/gates")
-DETAILS_DIR = Path("narrador/sidequests-canonicas/segredos")
+GATES_DIR = Path("narrador/tramas/sidequests/canonicas/gates")
+DETAILS_DIR = Path("narrador/tramas/sidequests/canonicas/segredos")
 QUEST_ID_RE = re.compile(r"^qsc-[0-9a-f]{12}$")
 MAX_REFS_PER_NPC = 4
 MAX_GATE_FRAGMENTS_PER_SCENE = 6

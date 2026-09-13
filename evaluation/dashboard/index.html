@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Painel pós-hoc de desempenho modular de Crônicas dos Reinos">
+    <title>Observatório modular — Crônicas dos Reinos</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-noise" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#topo" aria-label="Ir para o início">
+        <span class="brand-mark" aria-hidden="true">CR</span>
+        <span>
+          <strong>Observatório modular</strong>
+          <small>Crônicas dos Reinos</small>
+        </span>
+      </a>
+      <div class="session-picker">
+        <label for="sessionSelect">Sessão avaliada</label>
+        <select id="sessionSelect" aria-label="Selecionar sessão"></select>
+      </div>
+    </header>
+
+    <main id="topo" class="container" hidden>
+      <section class="hero" aria-labelledby="sessionTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Medição pós-hoc · <span id="confidenceLabel">provisória</span></p>
+          <h1 id="sessionTitle">Desempenho da sessão</h1>
+          <p id="sessionSummary" class="hero-summary"></p>
+          <div class="hero-badges">
+            <span id="evaluationStatus" class="badge"></span>
+            <span id="feedbackStatus" class="badge badge-muted">Feedback pendente</span>
+          </div>
+        </div>
+        <article class="score-panel" aria-label="Nota geral">
+          <div id="scoreRing" class="score-ring" style="--score: 0">
+            <div>
+              <strong id="overallScore">—</strong>
+              <span>/ 100</span>
+            </div>
+          </div>
+          <div>
+            <span id="scoreMode" class="score-kicker">Nota auditada</span>
+            <strong id="overallBand" class="score-band">—</strong>
+            <small id="scoreDelta">Primeira medição</small>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="axesTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Seis dimensões</p>
+            <h2 id="axesTitle">Onde o sistema sustenta — e onde cede</h2>
+          </div>
+          <p>As notas ausentes não viram neutras; os pesos restantes são renormalizados.</p>
+        </div>
+        <div id="axesGrid" class="axes-grid"></div>
+      </section>
+
+      <section class="section split-section" aria-label="Tendência e leitura rápida">
+        <article class="card trend-card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">Evolução</p>
+              <h2>Progresso entre sessões</h2>
+            </div>
+            <select id="trendMetric" aria-label="Métrica da tendência">
+              <option value="geral">Nota geral</option>
+              <option value="calibracao">Calibração</option>
+              <option value="eficacia_integridade">Eficácia</option>
+              <option value="confiabilidade">Confiabilidade</option>
+              <option value="economia">Economia</option>
+              <option value="fluidez">Fluidez</option>
+              <option value="jogador">Jogador</option>
+            </select>
+          </div>
+          <div id="trendChart" class="trend-chart" aria-live="polite"></div>
+        </article>
+        <article class="card insight-card">
+          <p class="eyebrow">Leitura rápida</p>
+          <h2>Extremos desta sessão</h2>
+          <div id="insights" class="insights"></div>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="metricsTitle">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Hot path</p>
+            <h2 id="metricsTitle">Sinais operacionais</h2>
+          </div>
+          <p>Valores da sessão, comparados aos contratos atuais quando existe meta explícita.</p>
+        </div>
+        <div id="metricsGrid" class="metrics-grid"></div>
+      </section>
+
+      <section class="section modules-section" aria-labelledby="modulesTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">20 módulos catalogados</p>
+            <h2 id="modulesTitle">Desempenho modular</h2>
+          </div>
+          <p>Custo fracionado é aditivo; latência exposta e tokens expostos não são causais.</p>
+        </div>
+        <div class="module-controls">
+          <label>
+            <span>Buscar</span>
+            <input id="moduleSearch" type="search" placeholder="Nome ou responsabilidade">
+          </label>
+          <label>
+            <span>Ativação</span>
+            <select id="activationFilter">
+              <option value="todos">Todos</option>
+              <option value="ativou a contento">A contento</option>
+              <option value="sobreativou">Sobreativou</option>
+              <option value="subativou">Subativou</option>
+              <option value="N/D">N/D</option>
+            </select>
+          </label>
+          <label>
+            <span>Ordenar</span>
+            <select id="moduleSort">
+              <option value="prioridade">Prioridade</option>
+              <option value="pior">Pior desempenho</option>
+              <option value="melhor">Melhor desempenho</option>
+              <option value="custo">Maior custo</option>
+              <option value="frequencia">Maior frequência</option>
+            </select>
+          </label>
+        </div>
+        <div id="moduleGrid" class="module-grid"></div>
+        <p id="moduleEmpty" class="empty-state" hidden>Nenhum módulo corresponde aos filtros.</p>
+      </section>
+
+      <section class="section feedback-section" aria-labelledby="feedbackTitle">
+        <div class="feedback-intro">
+          <div>
+            <p class="eyebrow">Sua percepção · peso 10%</p>
+            <h2 id="feedbackTitle">Avaliação do jogador</h2>
+            <p>Suas respostas são salvas somente neste navegador. Módulos reservados não aparecem neste formulário.</p>
+          </div>
+          <div class="feedback-preview">
+            <span>Prévia com sua nota</span>
+            <strong id="previewScore">N/D</strong>
+            <small id="playerAverage">Preencha ao menos um quesito global</small>
+          </div>
+        </div>
+
+        <form id="feedbackForm">
+          <div class="feedback-block">
+            <h3>Percepção geral</h3>
+            <p>Responda primeiro sem usar o diagnóstico técnico como guia.</p>
+            <div id="globalFeedback" class="global-feedback"></div>
+          </div>
+          <div class="feedback-block">
+            <h3>Comportamentos perceptíveis</h3>
+            <p>É opcional. “Não percebi” permanece fora da nota.</p>
+            <div id="moduleFeedback" class="module-feedback"></div>
+          </div>
+        </form>
+
+        <div class="feedback-actions">
+          <button id="exportFeedback" class="button button-primary" type="button">Exportar feedback CSV</button>
+          <label class="button button-secondary" for="importFeedback">Importar CSV</label>
+          <input id="importFeedback" class="visually-hidden" type="file" accept=".csv,text/csv">
+          <button id="resetFeedback" class="button button-ghost" type="button">Limpar respostas locais</button>
+          <span id="saveStatus" class="save-status" aria-live="polite">Nenhuma alteração local.</span>
+        </div>
+        <p class="feedback-help">Depois de exportar, substitua o arquivo <code>feedback-jogador.csv</code> da sessão e execute novamente o gerador para incorporar a nota ao scorecard histórico.</p>
+      </section>
+    </main>
+
+    <section id="loadingState" class="loading-state" aria-live="polite">
+      <div class="loader" aria-hidden="true"></div>
+      <p>Carregando avaliações…</p>
+    </section>
+
+    <section id="errorState" class="error-state" hidden>
+      <strong>Não foi possível carregar o painel.</strong>
+      <p id="errorMessage"></p>
+      <p>Sirva a raiz do repositório com <code>python3 -m http.server 8765</code> e abra <code>/evaluation/dashboard/</code>.</p>
+    </section>
+
+    <footer>
+      <span>Observabilidade pós-hoc · não altera o cânone</span>
+      <a href="../sessions/021/relatorio.md" id="reportLink">Abrir relatório da sessão</a>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

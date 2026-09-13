@@ -53,7 +53,7 @@ class RelogiosRepositoryTest(unittest.TestCase):
             result["operacoes_com_pressao_ativa"],
             ["red_sail_reconstruir_cadeia_colm"],
         )
-        self.assertEqual(result["fontes_lidas"], ["narrador/relogios/vinculos.yaml"])
+        self.assertEqual(result["fontes_lidas"], ["narrador/mundo/relogios/vinculos.yaml"])
 
     def test_consequencias_resolvidas_nao_competem_com_pressoes_ativas(self):
         result = relogios.by_agent(ROOT, "red_sail", include_resolved=True)
@@ -66,9 +66,9 @@ class RelogiosRepositoryTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/relogios/vinculos.yaml",
-                "narrador/relogios/index.yaml",
-                "narrador/relogios/rastro_fraco_no_pomar.yaml",
+                "narrador/mundo/relogios/vinculos.yaml",
+                "narrador/mundo/relogios/index.yaml",
+                "narrador/mundo/relogios/rastro_fraco_no_pomar.yaml",
             ],
         )
         self.assertEqual(result["vinculo"]["agente_principal"], "red_sail")
@@ -106,7 +106,7 @@ class RelogiosSyntheticTest(unittest.TestCase):
                     "estado": "ativo",
                     "presenca": "distribuida",
                     "atuacao_local": "estrutura_local",
-                    "arquivo": "narrador/agentes/red_sail.yaml",
+                    "arquivo": "narrador/elenco/agentes/red_sail.yaml",
                 }
             },
         }
@@ -135,19 +135,19 @@ class RelogiosSyntheticTest(unittest.TestCase):
         }
 
     def _make_repo(self):
-        self._write_yaml("narrador/agentes/index.yaml", self._agent_index())
+        self._write_yaml("narrador/elenco/agentes/index.yaml", self._agent_index())
         self._write_yaml(
-            "narrador/relogios/index.yaml",
+            "narrador/mundo/relogios/index.yaml",
             {
                 "schema_relogios": 1,
                 "natureza": "reservado",
                 "relogios": {
                     "busca": {
-                        "arquivo": "narrador/relogios/busca.yaml",
+                        "arquivo": "narrador/mundo/relogios/busca.yaml",
                         "sessao_ultima_atualizacao": 8,
                     },
                     "feito": {
-                        "arquivo": "narrador/relogios/feito.yaml",
+                        "arquivo": "narrador/mundo/relogios/feito.yaml",
                         "sessao_ultima_atualizacao": 8,
                     },
                 },
@@ -155,7 +155,7 @@ class RelogiosSyntheticTest(unittest.TestCase):
             },
         )
         self._write_yaml(
-            "narrador/relogios/busca.yaml",
+            "narrador/mundo/relogios/busca.yaml",
             self._clock("busca", progress=2, limit=4, state="ativo", kind="pressao"),
         )
         done = self._clock(
@@ -165,7 +165,7 @@ class RelogiosSyntheticTest(unittest.TestCase):
             state="resolvido",
             kind="consequencia",
         )
-        self._write_yaml("narrador/relogios/feito.yaml", done)
+        self._write_yaml("narrador/mundo/relogios/feito.yaml", done)
         relogios.sync(self.repo)
 
     def test_sincronizacao_e_idempotente(self):
@@ -176,13 +176,13 @@ class RelogiosSyntheticTest(unittest.TestCase):
         self.assertEqual(second["resolvidos_agora"], [])
 
     def test_pressao_que_alcanca_limite_vira_consequencia_resolvida(self):
-        doc = self._read_yaml("narrador/relogios/busca.yaml")
+        doc = self._read_yaml("narrador/mundo/relogios/busca.yaml")
         doc["relogio"]["progresso"] = 4
-        self._write_yaml("narrador/relogios/busca.yaml", doc)
+        self._write_yaml("narrador/mundo/relogios/busca.yaml", doc)
 
         result = relogios.sync(self.repo)
         self.assertEqual(result["resolvidos_agora"], ["busca"])
-        updated = self._read_yaml("narrador/relogios/busca.yaml")
+        updated = self._read_yaml("narrador/mundo/relogios/busca.yaml")
         self.assertEqual(updated["vinculo_agencial"]["estado"], "resolvido")
         self.assertEqual(updated["vinculo_agencial"]["tipo"], "consequencia")
         by_agent = relogios.by_agent(self.repo, "red_sail", include_resolved=True)
@@ -190,25 +190,25 @@ class RelogiosSyntheticTest(unittest.TestCase):
         self.assertIn("busca", by_agent["consequencias_resolvidas"])
 
     def test_agente_inexistente_no_vinculo_falha(self):
-        doc = self._read_yaml("narrador/relogios/busca.yaml")
+        doc = self._read_yaml("narrador/mundo/relogios/busca.yaml")
         doc["vinculo_agencial"]["agente_principal"] = "ninguem"
-        self._write_yaml("narrador/relogios/busca.yaml", doc)
+        self._write_yaml("narrador/mundo/relogios/busca.yaml", doc)
         result = relogios.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertIn("agentes inexistentes", result["erros"][0])
 
     def test_pressao_ativa_sem_operacao_falha(self):
-        doc = self._read_yaml("narrador/relogios/busca.yaml")
+        doc = self._read_yaml("narrador/mundo/relogios/busca.yaml")
         doc["vinculo_agencial"]["operacao"] = None
-        self._write_yaml("narrador/relogios/busca.yaml", doc)
+        self._write_yaml("narrador/mundo/relogios/busca.yaml", doc)
         result = relogios.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertIn("pressão ativa exige operação", result["erros"][0])
 
     def test_roteador_derivado_desatualizado_falha_validacao(self):
-        router = self._read_yaml("narrador/relogios/vinculos.yaml")
+        router = self._read_yaml("narrador/mundo/relogios/vinculos.yaml")
         router["pressoes_ativas"] = 99
-        self._write_yaml("narrador/relogios/vinculos.yaml", router)
+        self._write_yaml("narrador/mundo/relogios/vinculos.yaml", router)
         result = relogios.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertIn("roteador de vínculos está desatualizado", result["erros"][0])

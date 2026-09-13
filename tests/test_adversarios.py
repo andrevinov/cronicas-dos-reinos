@@ -38,7 +38,7 @@ class JuppongatanaAdversaryPopulationTest(unittest.TestCase):
         cls.contract = mod.load_contract(REPO)
         cls.index = mod.load_index(REPO, cls.contract)
         cls.roster = yaml.safe_load(
-            (REPO / "narrador/juppongatana/index.yaml").read_text(encoding="utf-8")
+            (REPO / "narrador/elenco/juppongatana/index.yaml").read_text(encoding="utf-8")
         )["membros"]
 
     def test_registro_mecanico_cobre_todo_o_elenco_canonico(self):
@@ -75,7 +75,7 @@ class JuppongatanaAdversaryPopulationTest(unittest.TestCase):
             self.assertTrue(sheet["acoes_bonus"], adversary_id)
             self.assertTrue(sheet["reacoes"], adversary_id)
             self.assertIn(
-                "narrador/juppongatana/membros.md",
+                "narrador/elenco/juppongatana/membros.md",
                 sheet["proveniencia"]["referencia"],
                 adversary_id,
             )
@@ -99,8 +99,8 @@ class AdversariosContractTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        (self.repo / "narrador/adversarios/fichas").mkdir(parents=True)
-        (self.repo / "narrador/adversarios/especialidades").mkdir(parents=True)
+        (self.repo / "narrador/elenco/adversarios/fichas").mkdir(parents=True)
+        (self.repo / "narrador/elenco/adversarios/especialidades").mkdir(parents=True)
         shutil.copy(
             REPO / mod.CONTRACT_PATH,
             self.repo / mod.CONTRACT_PATH,
@@ -113,8 +113,8 @@ class AdversariosContractTest(unittest.TestCase):
             "nome": "Mestra da Ponte",
             "tipo": "npc",
             "funcao": "hibrido",
-            "arquivo": "narrador/adversarios/fichas/mestra_ponte.yaml",
-            "especialidades_arquivo": "narrador/adversarios/especialidades/mestra_ponte.yaml",
+            "arquivo": "narrador/elenco/adversarios/fichas/mestra_ponte.yaml",
+            "especialidades_arquivo": "narrador/elenco/adversarios/especialidades/mestra_ponte.yaml",
         }
         self.base = {
             "schema_adversario": 1,
@@ -245,7 +245,7 @@ class AdversariosContractTest(unittest.TestCase):
                 "sinais_observaveis": ["Olha repetidamente para a margem e encurta a guarda."],
             },
             "especialidades": {
-                "arquivo": "narrador/adversarios/especialidades/mestra_ponte.yaml",
+                "arquivo": "narrador/elenco/adversarios/especialidades/mestra_ponte.yaml",
                 "ids": ["controle_de_passagem"],
             },
         }
@@ -298,8 +298,8 @@ class AdversariosContractTest(unittest.TestCase):
                 "nome": "Outro Adversário",
                 "tipo": "npc",
                 "funcao": "combatente",
-                "arquivo": "narrador/adversarios/fichas/outro_adversario.yaml",
-                "especialidades_arquivo": "narrador/adversarios/especialidades/outro_adversario.yaml",
+                "arquivo": "narrador/elenco/adversarios/fichas/outro_adversario.yaml",
+                "especialidades_arquivo": "narrador/elenco/adversarios/especialidades/outro_adversario.yaml",
             }
         self._write_yaml(
             mod.INDEX_PATH.as_posix(),
@@ -329,10 +329,10 @@ class AdversariosContractTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/adversarios/contrato.yaml",
-                "narrador/adversarios/index.yaml",
+                "narrador/elenco/adversarios/contrato.yaml",
+                "narrador/elenco/adversarios/index.yaml",
                 "campanha.yaml",
-                "narrador/adversarios/fichas/mestra_ponte.yaml",
+                "narrador/elenco/adversarios/fichas/mestra_ponte.yaml",
             ],
         )
         with self.assertRaises(mod.AdversaryValidationError):

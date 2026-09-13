@@ -94,7 +94,7 @@ class ActiveSidequestFixture(unittest.TestCase):
         mid = f"sqe-{suffix * 16}"
         qid = f"qse-{suffix * 16}"
         progress_rel = Path(
-            f"narrador/sidequests-emergentes/progresso/{qid}.yaml"
+            f"narrador/tramas/sidequests/emergentes/progresso/{qid}.yaml"
         )
         mission = {
             "id": mid,

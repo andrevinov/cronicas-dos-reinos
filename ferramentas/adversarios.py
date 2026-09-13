@@ -17,10 +17,10 @@ from typing import Any
 import yaml
 
 
-CONTRACT_PATH = Path("narrador/adversarios/contrato.yaml")
-INDEX_PATH = Path("narrador/adversarios/index.yaml")
-SHEETS_DIR = Path("narrador/adversarios/fichas")
-SPECIALTIES_DIR = Path("narrador/adversarios/especialidades")
+CONTRACT_PATH = Path("narrador/elenco/adversarios/contrato.yaml")
+INDEX_PATH = Path("narrador/elenco/adversarios/index.yaml")
+SHEETS_DIR = Path("narrador/elenco/adversarios/fichas")
+SPECIALTIES_DIR = Path("narrador/elenco/adversarios/especialidades")
 CAMPAIGN_PATH = Path("campanha.yaml")
 SCHEMA = 1
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_:-]{0,95}$")

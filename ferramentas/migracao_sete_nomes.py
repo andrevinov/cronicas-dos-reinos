@@ -250,22 +250,22 @@ def _contracts(
         repo,
         mission.get("arquivo"),
         "missao.arquivo",
-        "narrador/sidequests-emergentes/quests/",
+        "narrador/tramas/sidequests/emergentes/quests/",
     )
     reward_rel, reward_raw, reward = _relative_file(
         repo,
         mission.get("contrato_recompensa"),
         "missao.contrato_recompensa",
-        "narrador/sidequests-emergentes/recompensas/",
+        "narrador/tramas/sidequests/emergentes/recompensas/",
     )
     stake_rel, stake_raw, stake = _relative_file(
         repo,
         mission.get("contrato_adversarial"),
         "missao.contrato_adversarial",
-        "narrador/sidequests-emergentes/stakes/",
+        "narrador/tramas/sidequests/emergentes/stakes/",
     )
     quest_id = mission.get("quest_id")
-    progress_expected = Path(f"narrador/sidequests-emergentes/progresso/{quest_id}.yaml")
+    progress_expected = Path(f"narrador/tramas/sidequests/emergentes/progresso/{quest_id}.yaml")
     progress_path = repo / progress_expected
     progress_raw = progress_path.read_bytes() if progress_path.is_file() else b""
     progress = _load(progress_path, progress_expected.as_posix())

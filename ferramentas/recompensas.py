@@ -25,12 +25,12 @@ import yaml
 
 import ecologia_local
 
-INDEX = Path("narrador/recompensas/index.yaml")
-ITEM_INDEX = Path("narrador/recompensas/itens-index.yaml")
-TABLES = Path("narrador/recompensas/tabelas.yaml")
-PLANNED = Path("narrador/recompensas/planejadas.yaml")
-MAPS_DIR = Path("narrador/recompensas/mapas")
-ITEMS_DIR = Path("narrador/recompensas/itens")
+INDEX = Path("narrador/tramas/recompensas/index.yaml")
+ITEM_INDEX = Path("narrador/tramas/recompensas/itens-index.yaml")
+TABLES = Path("narrador/tramas/recompensas/tabelas.yaml")
+PLANNED = Path("narrador/tramas/recompensas/planejadas.yaml")
+MAPS_DIR = Path("narrador/tramas/recompensas/mapas")
+ITEMS_DIR = Path("narrador/tramas/recompensas/itens")
 
 GENERATOR = "deterministico_v1"
 GENERATOR_V2 = "deterministico_v2"

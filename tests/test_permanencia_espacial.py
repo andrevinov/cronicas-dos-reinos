@@ -50,7 +50,7 @@ class SpatialPermanenceTests(unittest.TestCase):
         micro_public = {
             "resultado": micro_result,
             "ficha_ocorrencia": "loc-1",
-            "fontes_lidas": ["narrador/microeventos-locais/estado.yaml"],
+            "fontes_lidas": ["narrador/mundo/microeventos-locais/estado.yaml"],
         }
         if micro_result == "avaliar_microevento":
             micro_public["carta"] = {
@@ -64,7 +64,7 @@ class SpatialPermanenceTests(unittest.TestCase):
         incident_public = {
             "resultado": incident_result,
             "origem": None,
-            "fontes_lidas": ["narrador/incidentes-v2/estado.yaml"],
+            "fontes_lidas": ["narrador/mundo/incidentes/estado.yaml"],
         }
         if incident_result == "avaliar_incidente":
             incident_public["incidente"] = {

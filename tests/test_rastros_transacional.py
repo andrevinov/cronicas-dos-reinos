@@ -27,7 +27,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         tempo["natureza"] = "tempo_atual"
         self.base._write_yaml("estado/tempo.yaml", tempo)
         self.base._write_yaml(
-            "narrador/rastros/index.yaml",
+            "narrador/mundo/rastros/index.yaml",
             {
                 "schema_indice_rastros": 1,
                 "natureza": "reservado",
@@ -111,7 +111,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         self.assertTrue(result["turno"]["evento_escrito"])
         self.assertTrue(result["turno"]["transcricao_escrita"])
         self.assertEqual(
-            self.read_yaml("narrador/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
+            self.read_yaml("narrador/mundo/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
             "ativo",
         )
         self.assertFalse((self.repo / "personagens/jogador/conhecimento/incrementais/sessao-003").exists())
@@ -127,7 +127,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         result = consolidar.consolidate(self.repo, "cena")
         self.assertFalse(result["recuperada"])
 
-        index = self.read_yaml("narrador/rastros/index.yaml")
+        index = self.read_yaml("narrador/mundo/rastros/index.yaml")
         self.assertEqual(index["rastros"][self.trace_id]["estado"], "descoberto")
         self.assertEqual(rastros.candidates(self.repo)["rastros"], [])
 
@@ -139,7 +139,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         ledger = consolidar.load_ledger(self.repo, 3)
         batch = ledger[-1]
         self.assertEqual(batch["rastros_descobertos"], [self.trace_id])
-        self.assertIn("narrador/rastros/index.yaml", batch["arquivos_afetados"])
+        self.assertIn("narrador/mundo/rastros/index.yaml", batch["arquivos_afetados"])
         self.assertEqual(batch["deltas"], 2)
 
     def test_queda_no_meio_recupera_conhecimento_e_rastro_do_mesmo_journal(self):
@@ -157,7 +157,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         self.assertTrue(recovered["recuperada"])
         self.assertFalse((self.repo / consolidar.JOURNAL_PATH).exists())
         self.assertEqual(
-            self.read_yaml("narrador/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
+            self.read_yaml("narrador/mundo/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
             "descoberto",
         )
         fragment = self.repo / "personagens/jogador/conhecimento/incrementais/sessao-003/tx-tx-rastro-crash.md"
@@ -178,11 +178,11 @@ class RastrosTransacionaisTest(unittest.TestCase):
         pair[0]["valor"]["texto"] = "Kurobane esteve aqui e deixou lama azul."
         self.base.register("tx-vazamento", pair, summary="Tentativa de vazamento.")
 
-        before_index = (self.repo / "narrador/rastros/index.yaml").read_bytes()
+        before_index = (self.repo / "narrador/mundo/rastros/index.yaml").read_bytes()
         before_knowledge = (self.repo / "personagens/jogador/conhecimento/index.yaml").read_bytes()
         with self.assertRaises(consolidar.ConsolidationError):
             consolidar.consolidate(self.repo, "cena")
-        self.assertEqual(before_index, (self.repo / "narrador/rastros/index.yaml").read_bytes())
+        self.assertEqual(before_index, (self.repo / "narrador/mundo/rastros/index.yaml").read_bytes())
         self.assertEqual(before_knowledge, (self.repo / "personagens/jogador/conhecimento/index.yaml").read_bytes())
         self.assertFalse((self.repo / consolidar.JOURNAL_PATH).exists())
 
@@ -191,7 +191,7 @@ class RastrosTransacionaisTest(unittest.TestCase):
         self.base.register("tx-rastro-retry", prepared["deltas_transacionais"], summary="Descoberta única.")
         consolidar.consolidate(self.repo, "cena")
         self.assertEqual(
-            self.read_yaml("narrador/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
+            self.read_yaml("narrador/mundo/rastros/index.yaml")["rastros"][self.trace_id]["estado"],
             "descoberto",
         )
         again = consolidar.consolidate(self.repo, "cena")

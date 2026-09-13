@@ -72,10 +72,10 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
         ]
         oportunidades.atomic(self.repo / oportunidades.STATE, state)
         documents = {
-            f"narrador/sidequests-emergentes/quests/{self.quest_id}.yaml": self.snapshot["quest_task41"],
-            f"narrador/sidequests-emergentes/recompensas/{self.quest_id}.yaml": self.snapshot["recompensa_task43"],
-            f"narrador/sidequests-emergentes/stakes/{self.quest_id}.yaml": self.snapshot["contrato_task44"],
-            f"narrador/sidequests-emergentes/progresso/{self.quest_id}.yaml": self.snapshot["progresso_task45"],
+            f"narrador/tramas/sidequests/emergentes/quests/{self.quest_id}.yaml": self.snapshot["quest_task41"],
+            f"narrador/tramas/sidequests/emergentes/recompensas/{self.quest_id}.yaml": self.snapshot["recompensa_task43"],
+            f"narrador/tramas/sidequests/emergentes/stakes/{self.quest_id}.yaml": self.snapshot["contrato_task44"],
+            f"narrador/tramas/sidequests/emergentes/progresso/{self.quest_id}.yaml": self.snapshot["progresso_task45"],
         }
         for rel, value in documents.items():
             self._yaml(rel, copy.deepcopy(value))
@@ -116,10 +116,10 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
         barreira_mundo.sync(self.repo)
 
     def progress_path(self) -> Path:
-        return self.repo / f"narrador/sidequests-emergentes/progresso/{self.quest_id}.yaml"
+        return self.repo / f"narrador/tramas/sidequests/emergentes/progresso/{self.quest_id}.yaml"
 
     def task44_path(self) -> Path:
-        return self.repo / f"narrador/sidequests-emergentes/stakes/{self.quest_id}.yaml"
+        return self.repo / f"narrador/tramas/sidequests/emergentes/stakes/{self.quest_id}.yaml"
 
     def apply_migration(self) -> dict:
         prepared = migration.dry_run(self.repo, self.quest_id)
@@ -223,7 +223,7 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
             + "\n",
             encoding="utf-8",
         )
-        agent_path = self.repo / "narrador/agentes/masao_hirasawa.yaml"
+        agent_path = self.repo / "narrador/elenco/agentes/masao_hirasawa.yaml"
         agent = yaml.safe_load(agent_path.read_text(encoding="utf-8"))
         agent["conhecimento"].extend(
             [
@@ -243,7 +243,7 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
         )
         if rel not in agent["fontes_canonicas"]:
             agent["fontes_canonicas"].append(rel)
-        self._yaml("narrador/agentes/masao_hirasawa.yaml", agent)
+        self._yaml("narrador/elenco/agentes/masao_hirasawa.yaml", agent)
         return {"fonte": rel, "evidencia": OPERATION_TARGET_EVIDENCE}
 
     @staticmethod
@@ -567,7 +567,7 @@ class SevenNamesRepositoryContractTest(unittest.TestCase):
         self.assertEqual(limits["rng_novo"], 0)
         self.assertEqual(limits["scheduler_novo"], 0)
         self.assertEqual(limits["scans_globais"], 0)
-        task44 = ROOT / "narrador/sidequests-emergentes/stakes/qse-c721ace29e628024.yaml"
+        task44 = ROOT / "narrador/tramas/sidequests/emergentes/stakes/qse-c721ace29e628024.yaml"
         before = hashlib.sha256(task44.read_bytes()).hexdigest()
         result = migration.check(ROOT)
         after = hashlib.sha256(task44.read_bytes()).hexdigest()

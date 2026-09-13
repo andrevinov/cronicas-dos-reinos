@@ -32,7 +32,7 @@ class RecompensasRepoTest(unittest.TestCase):
         self.assertFalse(result["mapa_existe"])
         self.assertEqual(
             result["fontes_lidas"],
-            ["narrador/recompensas/index.yaml"],
+            ["narrador/tramas/recompensas/index.yaml"],
         )
 
     def test_status_tambem_e_so_indice(self):
@@ -43,7 +43,7 @@ class RecompensasRepoTest(unittest.TestCase):
             result["recompensas_indexadas"],
             sum(meta["quantidade"] for meta in index["mapas"].values()),
         )
-        self.assertEqual(result["fontes_lidas"], ["narrador/recompensas/index.yaml"])
+        self.assertEqual(result["fontes_lidas"], ["narrador/tramas/recompensas/index.yaml"])
 
 
 class RecompensasSinteticasTest(unittest.TestCase):
@@ -57,10 +57,10 @@ class RecompensasSinteticasTest(unittest.TestCase):
 
     @staticmethod
     def _copy_base(repo: Path) -> None:
-        target = repo / "narrador/recompensas"
+        target = repo / "narrador/tramas/recompensas"
         target.mkdir(parents=True, exist_ok=True)
         for name in ("index.yaml", "itens-index.yaml", "tabelas.yaml", "planejadas.yaml"):
-            shutil.copy2(ROOT / "narrador/recompensas" / name, target / name)
+            shutil.copy2(ROOT / "narrador/tramas/recompensas" / name, target / name)
 
         # Fixtures sintéticos herdam schema/seed/tabelas da campanha, mas nunca o
         # estado vivo. Referências persistidas para mapas/itens reais tornariam o
@@ -83,7 +83,7 @@ class RecompensasSinteticasTest(unittest.TestCase):
 
     @staticmethod
     def _all_yaml_bytes(repo: Path) -> dict[str, bytes]:
-        base = repo / "narrador/recompensas"
+        base = repo / "narrador/tramas/recompensas"
         return {
             path.relative_to(repo).as_posix(): path.read_bytes()
             for path in sorted(base.rglob("*.yaml"))
@@ -114,8 +114,8 @@ class RecompensasSinteticasTest(unittest.TestCase):
         self.assertEqual(
             second["fontes_lidas"],
             [
-                "narrador/recompensas/index.yaml",
-                "narrador/recompensas/mapas/sarbreen_setor_a.yaml",
+                "narrador/tramas/recompensas/index.yaml",
+                "narrador/tramas/recompensas/mapas/sarbreen_setor_a.yaml",
             ],
         )
 
@@ -138,8 +138,8 @@ class RecompensasSinteticasTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/recompensas/index.yaml",
-                "narrador/recompensas/mapas/docas_armazem_7.yaml",
+                "narrador/tramas/recompensas/index.yaml",
+                "narrador/tramas/recompensas/mapas/docas_armazem_7.yaml",
             ],
         )
         self.assertTrue(result["mapa"]["elegiveis"])
@@ -158,14 +158,14 @@ class RecompensasSinteticasTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/recompensas/itens-index.yaml",
-                "narrador/recompensas/mapas/ponte_baixa_deposito.yaml",
-                f"narrador/recompensas/itens/{rid}.yaml",
+                "narrador/tramas/recompensas/itens-index.yaml",
+                "narrador/tramas/recompensas/mapas/ponte_baixa_deposito.yaml",
+                f"narrador/tramas/recompensas/itens/{rid}.yaml",
             ],
         )
 
     def test_recompensa_planejada_de_arco_mistura_sem_virar_procedural(self):
-        planned_path = self.repo / "narrador/recompensas/planejadas.yaml"
+        planned_path = self.repo / "narrador/tramas/recompensas/planejadas.yaml"
         planned = yaml.safe_load(planned_path.read_text(encoding="utf-8"))
         planned["por_local"]["templo_teste"] = [
             {
@@ -198,7 +198,7 @@ class RecompensasSinteticasTest(unittest.TestCase):
         self.assertTrue(check["ok"], check["erros"])
 
     def test_planejada_procedural_ou_procedural_de_arco_e_rejeitada(self):
-        planned_path = self.repo / "narrador/recompensas/planejadas.yaml"
+        planned_path = self.repo / "narrador/tramas/recompensas/planejadas.yaml"
         planned = yaml.safe_load(planned_path.read_text(encoding="utf-8"))
         planned["por_local"]["local_ruim"] = [
             {
@@ -227,10 +227,10 @@ class RecompensasSinteticasTest(unittest.TestCase):
         a = recompensas.ensure(self.repo, "setor_a", 2, "media")
         b = recompensas.ensure(self.repo, "setor_b", 2, "media")
         map_a = yaml.safe_load(
-            (self.repo / "narrador/recompensas/mapas/setor_a.yaml").read_text(encoding="utf-8")
+            (self.repo / "narrador/tramas/recompensas/mapas/setor_a.yaml").read_text(encoding="utf-8")
         )
         map_b = yaml.safe_load(
-            (self.repo / "narrador/recompensas/mapas/setor_b.yaml").read_text(encoding="utf-8")
+            (self.repo / "narrador/tramas/recompensas/mapas/setor_b.yaml").read_text(encoding="utf-8")
         )
         self.assertNotEqual(map_a["geracao"]["chave"], map_b["geracao"]["chave"])
         self.assertTrue(a["criado"])

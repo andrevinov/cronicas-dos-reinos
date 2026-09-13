@@ -1,0 +1,215 @@
+schema_progressao_sidequest: 1
+natureza: reservado
+mission_id: sqe-d11f8458fa6ac4dd
+quest_id: qse-0ef5715f28c8781e
+quest_file: narrador/tramas/sidequests/emergentes/quests/qse-0ef5715f28c8781e.yaml
+contrato_recompensa: narrador/tramas/sidequests/emergentes/recompensas/qse-0ef5715f28c8781e.yaml
+contrato_adversarial: narrador/tramas/sidequests/emergentes/stakes/qse-0ef5715f28c8781e.yaml
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 24 Eleasis, 1372 DR
+    hora: '18:00'
+contrato:
+  regra_sucesso: todas
+  regra_falha: qualquer
+  dependencias_fases:
+  - fase_id: reconstituir_fachada
+    atores_necessarios: []
+    substituicao_permitida: true
+  - fase_id: confirmar_elo
+    atores_necessarios: []
+    substituicao_permitida: true
+  - fase_id: entregar_cadeia
+    atores_necessarios:
+    - halessa_vorn
+    substituicao_permitida: false
+  efeitos_escaladas:
+  - escalada_id: limpar_fachada_e_mudar_rota
+    efeitos_npc: []
+  escaladas_falha:
+  - limpar_fachada_e_mudar_rota
+  escaladas_inacao:
+  - limpar_fachada_e_mudar_rota
+atores_novos_reservados: []
+estado:
+  fases:
+    reconstituir_fachada:
+      estado: resolvida
+      fato_id: livro_de_contas_e_fachada_sem_cozinha
+      motivo_automatico: null
+    confirmar_elo:
+      estado: resolvida
+      fato_id: agressor_entrega_chaves_ao_controlador_dos_reparos
+      motivo_automatico: null
+    entregar_cadeia:
+      estado: indeterminada
+      fato_id: null
+      motivo_automatico: null
+  condicoes_sucesso:
+    sucesso_01:
+      texto: Quem controlava ou sustentava materialmente a fachada do restaurante
+        é estabelecido por evidência verificável.
+      estado: pendente
+      fato_id: null
+    sucesso_02:
+      texto: Ao menos uma ligação confirmada com os atacantes é entregue a Halessa
+        dentro do prazo.
+      estado: pendente
+      fato_id: null
+  condicoes_falha:
+    falha_01:
+      texto: Os rastros materiais e comerciais do restaurante tornam-se inutilizáveis
+        antes que uma cadeia verificável seja estabelecida.
+      estado: pendente
+      fato_id: null
+    falha_02:
+      texto: O prazo termina sem que Halessa receba uma ligação confirmada entre a
+        fachada e os atacantes.
+      estado: pendente
+      fato_id: null
+  atores:
+    halessa_vorn:
+      estado: disponivel
+      vida_estado: null
+      fonte: estado/npcs/halessa_vorn.yaml
+    masao_hirasawa:
+      estado: disponibilidade_nao_rastreada
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+  fatos:
+    testemunho_equipe_atual_pos_emboscada:
+      id: testemunho_equipe_atual_pos_emboscada
+      descricao: A atendente declarou que a equipe atual assumiu o restaurante quatro
+        dias antes, após uma briga, contratada por um intermediário que recrutou no
+        cais e pagou uma dezena adiantada.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: A atendente declarou que a equipe atual começou há quatro dias,
+          depois de o restaurante fechar por causa de uma briga; um intermediário
+          recrutou trabalhadores no cais e pagou uma dezena adiantada. O relato ainda
+          não foi confirmado.
+      fases:
+        reconstituir_fachada: possivel
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-f1a9a5fc08dd81a8
+        sessao: 21
+    testemunho_garca_do_poente_e_recrutamento_antecipado:
+      id: testemunho_garca_do_poente_e_recrutamento_antecipado
+      descricao: A atendente declarou ter desembarcado seis dias antes na Garça do
+        Poente e que o intermediário surgiu na manhã seguinte já informado sobre as
+        experiências dos passageiros kozakuranos.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: A atendente afirmou ter chegado pelo porto seis dias antes na Garça
+          do Poente, vinda de Telflamm, com outros seis kozakuranos registrados no
+          desembarque. Segundo ela, o intermediário apareceu na manhã seguinte já
+          sabendo quais passageiros tinham experiência em cozinha.
+      fases:
+        confirmar_elo: possivel
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-c48eb16345226212
+        sessao: 21
+    livro_de_contas_e_fachada_sem_cozinha:
+      id: livro_de_contas_e_fachada_sem_cozinha
+      descricao: O livro de contas do peixeiro e seu testemunho mostram que o restaurante
+        não comprava mantimentos antes da emboscada; a equipe atual só iniciou compras
+        quatro dias antes.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: 'Ren comprou uma tainha por duas peças de prata. O peixeiro mostrou
+          seu livro de contas: o restaurante não comprara mantimentos por mais de
+          uma dezena antes da emboscada, e a equipe atual começou a comprar há quatro
+          dias. Ele declarou ter visto três kozakuranos abrirem o local na manhã da
+          luta e dois deles voltarem depois para retirar o terceiro pelos fundos.'
+      fases:
+        reconstituir_fachada: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-55b8f291fec8ec4f
+        sessao: 21
+    agressor_entrega_chaves_ao_controlador_dos_reparos:
+      id: agressor_entrega_chaves_ao_controlador_dos_reparos
+      descricao: O peixeiro testemunhou um dos agressores entregar as chaves do restaurante
+        ao homem que depois pagou os reparos e recebeu a nova equipe.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: O peixeiro declarou ter visto um dos agressores, alto e com cicatriz
+          na sobrancelha direita, voltar na manhã seguinte e entregar as chaves do
+          restaurante a um homem de casaco cinzento com uma caixa de contas. Esse
+          homem pagou os reparos e recebeu os novos trabalhadores; o peixeiro voltou
+          a vê-lo depois.
+      fases:
+        confirmar_elo: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-f6b9663e03664f4c
+        sessao: 21
+  consequencias_ativadas: {}
+  terminal: null
+  historico_recente:
+  - tipo: fato_registrado_transacional
+    id: testemunho_equipe_atual_pos_emboscada
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-f1a9a5fc08dd81a8
+    atores: []
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: testemunho_garca_do_poente_e_recrutamento_antecipado
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-c48eb16345226212
+    atores: []
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: livro_de_contas_e_fachada_sem_cozinha
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-55b8f291fec8ec4f
+    atores: []
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: agressor_entrega_chaves_ao_controlador_dos_reparos
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-f6b9663e03664f4c
+    atores: []
+    substituicoes: []
+guardrails:
+  progresso_por_fato_nao_checklist: true
+  prazo_usa_relogio_existente: true
+  sem_scheduler: true
+  consequencia_so_task44: true
+  recompensa_so_task43_apos_sucesso: true
+  canon_terminal_via_task42: true

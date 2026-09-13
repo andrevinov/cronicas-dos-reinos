@@ -105,7 +105,7 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "incidente_mundo",
         "incidentes_mundo_v2",
         "incidentes_para_avaliar",
-        "narrador/incidentes-v2/",
+        "narrador/mundo/incidentes/",
     ),
     "canonical_secret_quests": (
         "sidequest_canonica",
@@ -116,7 +116,7 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "evento_canonico_datado",
         "eventos_canonicos",
         "requer_fato_canonico",
-        "narrador/arcos/parte_1/eventos/",
+        "narrador/tramas/arcos/parte_1/eventos/",
     ),
     "batch_world_boundary": ("lote_id", "frn1."),
     "persistent_world_conditions": (

@@ -25,9 +25,9 @@ except ImportError as exc:
 
 import direcoes_destino
 
-INDEX_PATH = Path("narrador/direcoes/index.yaml")
-STATE_PATH = Path("narrador/direcoes/estado.yaml")
-DIRECTIONS_DIR = Path("narrador/direcoes")
+INDEX_PATH = Path("narrador/tramas/direcoes/index.yaml")
+STATE_PATH = Path("narrador/tramas/direcoes/estado.yaml")
+DIRECTIONS_DIR = Path("narrador/tramas/direcoes")
 TIME_PATH = Path("estado/tempo.yaml")
 VALID_STATES = {"ativa", "latente", "suspensa", "concluida"}
 VALID_STATUTES = {"canonica_obrigatoria"}

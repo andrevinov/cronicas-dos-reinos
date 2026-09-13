@@ -1,0 +1,113 @@
+ordinal,turn_id,classe_turno,inicio,fim,latencia_segundos,trecho_usuario,nivel_acesso,input_tokens,cached_input_tokens,uncached_input_tokens_aprox,output_tokens,reasoning_output_tokens,tokens_totais,inference_events,tool_calls,tool_output_bytes,read_search_calls,write_calls,dice_calls,other_calls,routed_context_calls,raw_read_calls,schema_discovery_calls,orchestration_calls,prepare_calls,conclude_calls,par_preparar_concluir_exato,decisao_oportunidade,decisao_sem_oportunidade,decisao_ausente,modulos_observados,quantidade_modulos_observados
+1,01a09199-34ab-7980-be17-36144ab066ac,avanco_comum,2026-09-11T17:52:11.991000+00:00,2026-09-11T17:53:38.103000+00:00,86.112,"""Não. Se tiver algo perturbando você, e você achar que eu posso resolver, estou aqui pra ajudar, como sempre.""
+
+Ren fala, enquanto olha pro céu estrelado, lembrando que esse talvez tenha sido seu último dia tranquilo em Ravens Bluff.",L2,157760,140160,17600,3693,2061,161453,5,4,27223,1,1,0,2,1,0,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2
+2,01a0919b-4649-73f2-b32d-8377d5872e85,autoria_ou_terminal,2026-09-11T17:54:27.580000+00:00,2026-09-11T18:01:58.591000+00:00,451.011,"Ren se despede de Silva. Fala pra Nera que talvez seja melhor não abusar e hoje ela dormir com Tavin, como de praxe. Ren vai dormir no seu quarto-depósito depois de uma despedia carinhosa com Nera.",L2+RAW,2793381,2721536,71845,15383,8421,2808764,41,40,183887,24,4,0,12,6,18,6,6,4,2,nao,0,4,0,"[""batch_world_boundary"", ""concurrent_adversarial_operations"", ""emergent_sidequest_opportunity"", ""liveness_boundary"", ""npc_social_initiative"", ""persistent_world_conditions"", ""secret_canon"", ""sidequest_success_reactions"", ""world_local_incidents""]",9
+3,01a091a5-7ff4-7882-b0a5-fe64b8d874b0,avanco_comum,2026-09-11T18:05:37.709000+00:00,2026-09-11T18:09:38.689000+00:00,240.98,"""Continua, claro. Você pode agendar no dia que convir. Acho que tínhamos combinado algo como uma vez a cada 15 dias, pra manter o público interessado, não é?"" Ren fala, se sentando numa caixa.
+
+""Outra coisa... eu tenho visto muitos orientai",L4T+RAW,1111114,1087744,23370,8923,5447,1120037,10,9,45478,6,1,0,2,4,2,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2
+4,01a091b9-2471-7150-acbc-6907316dbd4c,autoria_ou_terminal,2026-09-11T18:27:04.995000+00:00,2026-09-11T18:32:58.916000+00:00,353.921,"""Obrigado, Jack"", Ren fala.
+
+Ren deita depois que Jack se vai. Fica olhando pro teto, pensando em tantas coisas que tem pra resolver.
+
+Será se ele vai receber atualizações da dona da Casa do Salgueiro Seco? O que ela pediria pela casa? Como",L3+RAW,3237058,3183872,53186,13264,7593,3250322,22,21,124620,10,1,0,10,5,5,2,3,2,1,nao,0,2,0,"[""batch_world_boundary"", ""canonical_secret_quests"", ""emergent_sidequest_authoring"", ""emergent_sidequest_opportunity"", ""liveness_boundary"", ""npc_social_initiative"", ""persistent_world_conditions"", ""secret_canon"", ""underground_tournament"", ""world_local_incidents""]",10
+5,01a091c3-3f68-74f2-abda-dc891a3d711b,fronteira_temporal,2026-09-11T18:38:07.257000+00:00,2026-09-11T18:43:33.323000+00:00,326.066,"Ren levanta pela manhã. Depois de um dia tão calmo, ele decide ativar-se novamente. Mais uma vez, tentar encontrar pistas sobre Masao e os Juppongatana.
+
+Usando seu kit de disfarce, Ren se disfarça como um homem kozakurano idoso. Coloca rou",L2+RAW,3244728,3210368,34360,12515,5697,3257243,17,16,66388,6,3,1,6,1,5,0,7,4,3,nao,0,4,0,"[""batch_world_boundary"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""secret_canon"", ""world_local_incidents""]",6
+6,01a091fd-5673-7e82-9962-304d2537c8dd,avanco_comum,2026-09-11T19:42:12.320000+00:00,2026-09-11T19:43:11.988000+00:00,59.668,"""Diga a ela que vim em nome de um velho amigo, Ren"", Ren fala, mantendo a voz de velho.",L0,73881,57600,16281,2392,1221,76273,4,2,8927,0,1,0,1,0,0,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity""]",1
+7,01a091ff-83e0-72e2-ae99-4771e9311325,fronteira_temporal,2026-09-11T19:43:56.940000+00:00,2026-09-11T19:48:20.964000+00:00,264.024,"[Acho que você deveria continuar naturalmente, não?]
+
+Ren fica esperando Halessa.",L2+RAW,631916,604928,26988,10343,6430,642259,16,15,52660,4,2,0,9,2,2,0,8,6,2,nao,0,6,0,"[""batch_world_boundary"", ""emergent_sidequest_opportunity"", ""liveness_boundary"", ""npc_social_initiative"", ""persistent_world_conditions""]",5
+8,01a0920e-44da-7350-9689-089758c77525,avanco_comum,2026-09-11T20:00:03.854000+00:00,2026-09-11T20:01:58.758000+00:00,114.904,"""Sim, um mensageiro..."", Ren faz uma pausa. ""Um mensageiro que já atuou em missões secretas a pedido da Irmã Halessa Vorn, como entregar intimação para Velis Rook."" Ren fala isso pra que Halessa fique clara de que é ele mesmo. Ren sorri dep",RAW,333782,323712,10070,4168,1907,337950,6,5,16531,3,1,0,1,0,3,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2
+9,01a09212-b6e6-7e20-9f46-6688a0abae9b,fronteira_temporal,2026-09-11T20:04:55.193000+00:00,2026-09-11T20:09:13.175000+00:00,257.982,"Ren começa contando sobre a prisão que fizera junto de Luath a poucos dias. Fala sobre o pedido de Maerra para proteger as crianças e tudo mais. Ele sabe que a essa altura Halessa sabe do caso, mas provavelmente não sabe dos detalhes.
+
+Expl",L4T+RAW,1150588,1118848,31740,9329,4941,1159917,16,15,72126,10,1,0,4,9,1,0,3,2,1,nao,0,2,0,"[""batch_world_boundary"", ""emergent_sidequest_opportunity"", ""npc_social_initiative""]",3
+10,01a09218-1258-7ff1-bba0-a9b544a96536,autoria_ou_terminal,2026-09-11T20:10:46.291000+00:00,2026-09-11T20:22:14.253000+00:00,687.962,[Me explica direitinho porque você rodou poetry run cronica preparar --cena-id s021-ren-relata-prisioneira-masao-a-halessa --sem-oportunidade-sidequest --contexto-tag assunto:masao --participante halessa_vorn --interlocutor halessa_vorn com,L4T+RAW,4620090,4532224,87866,27615,11335,4647705,39,38,219975,32,2,0,4,8,24,0,4,2,2,nao,2,0,0,"[""adversarial_integrity"", ""batch_world_boundary"", ""canon_bridge"", ""canonical_secret_quests"", ""emergent_sidequest_authoring"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""quest_rewards"", ""reactive_pressure_routing"", ""seven_names_migration_regression"", ""sidequest_progression""]",12
+11,01a09229-f0d7-7330-a434-6eb9e1d3d848,fronteira_temporal,2026-09-11T20:30:17.350000+00:00,2026-09-11T20:34:30.619000+00:00,253.269,"""Aceito, claro. Pode deixar que irei quem controlava o restaurante.""
+
+Ren, de posse de uma nova missão, já começa a se empertiguar pra sair, pouco a pouco voltando pra atuação do velho de seu disfarce.
+
+""Muito obrigado, Halessa. Preferi con",RAW,2949079,2922752,26327,9053,3940,2958132,16,15,50091,2,2,0,11,0,2,0,6,5,1,nao,0,5,0,"[""active_sidequest_reassessment"", ""adversarial_integrity"", ""batch_world_boundary"", ""canon_bridge"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""quest_rewards"", ""reactive_pressure_routing"", ""sidequest_progression"", ""transactional_sidequest_progress""]",11
+12,01a093fb-aeb0-7383-9133-e6f934a3ec50,avanco_comum,2026-09-12T04:59:00.798000+00:00,2026-09-12T05:03:32.012000+00:00,271.214,"Ren se aproxima do restaurante, como se fosse um cliente interessado em tomar um café da manhã. Se ninguém o impedir, ele entrará no local.",L4+RAW,1137816,923648,214168,6261,3426,1144077,11,9,41506,5,1,0,3,2,3,0,4,3,1,nao,0,3,0,"[""active_sidequest_reassessment"", ""canon_bridge"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",6
+13,01a096d8-18d2-77a1-8573-077342631723,avanco_comum,2026-09-12T18:19:00.678000+00:00,2026-09-12T18:22:22.608000+00:00,201.93,"""Dewa, onegai shimasu"", responde Ren.
+
+  Espera pacientemente a sopa e começa a toma-la. Depois de um tempo tomando, Ren fala em kozakurano:
+
+  ""Fico feliz de poder comer uma comida feita por mãos de minha terra. A quanto tempo vocês abrira",RAW,512313,461184,51129,7220,4413,519533,11,10,65972,3,1,0,6,0,3,0,3,2,1,nao,0,2,0,"[""active_sidequest_reassessment"", ""canon_bridge"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",6
+14,01a096df-a471-75c0-9aab-7137159f07d0,mecanica,2026-09-12T18:27:14.212000+00:00,2026-09-12T18:29:35.663000+00:00,141.451,"""Fico muito feliz. Me mudei pra essa cidade há muitos anos, nos {aqui você preenche com alguma informação que Ren saiba sobre navios kozakuranos saindo para Faerun. Pode ser uma informação criada aqui pra essa conversa, não precisa pesquisa",L1,332249,318848,13401,5238,2738,337487,5,4,23616,1,1,1,1,1,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+15,01a096e5-b59d-7433-bd4a-c3a065520c0b,avanco_comum,2026-09-12T18:33:51.821000+00:00,2026-09-12T18:35:28.356000+00:00,96.535,"[""Há agora um rastro verificável, embora ainda não uma prova contra o intermediário: o registro de desembarque da Garça do Poente pode confirmar quem chegou seis dias atrás, e a rapidez do recrutamento sugere que alguém teve acesso antecipa",L0,234880,224640,10240,3525,1788,238405,3,2,18846,0,1,0,1,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+16,01a096ea-a9e0-7f31-b91d-50596c5fa827,avanco_comum,2026-09-12T18:39:16.497000+00:00,2026-09-12T18:41:30.621000+00:00,134.124,"Ren coloca o pagamento na mesa. Paga em dobro.
+
+""Isso aqui é pra dar sorte à conterrânea"", ele fala, bem fofo.
+
+""Eu sei que estou velho, mas ainda tenho intenção de trazer meus parentes pra cá um dia. Esse homem que encontrou trabalho pra v",L2+RAW,792297,776448,15849,4964,2647,797261,9,8,30117,6,1,0,1,1,5,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+17,01a096ee-6de6-7242-b6e2-73835fa7daaf,avanco_comum,2026-09-12T18:43:23.286000+00:00,2026-09-12T18:44:18.454000+00:00,55.168,"""Entendo. Amanhã eu passo por aqui pra tomar uma ótima tijela de ensopado e conversar com o Senhor Mori então.""
+
+Ren curva-se como de costume.
+
+""Muito obrigado... acho que fui mal educado e não perguntei seu nome, não é?""",L0,304029,295168,8861,2314,827,306343,3,2,18831,0,1,0,1,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+18,01a096f1-69f4-7053-8a4a-c8975b2b3acb,avanco_comum,2026-09-12T18:46:38.882000+00:00,2026-09-12T18:50:03.425000+00:00,204.543,"""Tanaka Matsumoto. Mas pra você, só Tanaka.""
+
+  Ren sorri, se curva. ""Bom dia, Aiko-dono!""
+
+  E vai saindo.
+
+  Ren vai em direção ao vendedor de peixe da porta vizinha que Aiko citou.
+
+  [Só pra saber, você cadastrou Aiko aonde tem que cada",RAW,2716771,2675456,41315,7000,3048,2723771,22,21,117300,16,1,0,4,0,16,6,3,2,1,nao,0,2,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress"", ""underground_tournament""]",7
+19,01a09804-7ec5-78a2-bb17-c22ada57dedb,mecanica,2026-09-12T23:47:07.216000+00:00,2026-09-12T23:50:15.872000+00:00,188.656,"""Sim, nada como almoçar tainha num Eleasis!"", Ren fala, animado como um senhor de idade pode ser animado.
+
+  Ren começa perguntando os preços dos peixes, até que seleciona um deles e o compra. Enquanto o vendedor prepara o peixe, ele fala:
+",RAW,1049091,904960,144131,6278,3664,1055369,7,5,22971,1,1,1,2,0,1,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+20,01a09809-c8b5-7ee0-9000-96fb4f51a2d4,avanco_comum,2026-09-12T23:52:53.242000+00:00,2026-09-12T23:54:09.748000+00:00,76.506,"""Nossa, é um absurdo isso. Fica parecendo pra vocês que nosso povo não é pacífico. Mas somos bem pacíficos. A maioria de nós.""
+
+Ren recebe o peixe e ajusta-o cuidadoso em meio aos seus pertences.
+
+""Esses homens voltaram por aqui alguma vez ",L0,484928,322816,162112,3586,1572,488514,3,2,19063,0,1,0,1,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+21,01a09814-1a92-7ae0-bbc2-afa377ead446,fronteira_temporal,2026-09-13T00:04:09.560000+00:00,2026-09-13T00:07:26.193000+00:00,196.633,"Ren agradece, se despede e parte.
+
+Ele se afasta bastante do local e quando vir a primeira pessoa em necessidade, entrega o peixe, dizendo que comprou hoje pela manhã mas não vai poder fazê-lo, pois está indo embora da cidade (pra se livrar",L2+RAW,1374715,1204992,169723,6016,2909,1380731,8,7,25409,2,2,1,2,1,1,0,3,2,1,nao,0,2,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""liveness_boundary"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",6
+22,01a0981c-1743-7950-9b18-932333228a38,mecanica,2026-09-13T00:12:53.007000+00:00,2026-09-13T00:15:25.039000+00:00,152.032,"Ren decide então procurar o navio Garça do Poente. Ele vai fingir ser o senhor Tanaka, pai de Takeshi Matsumoto, seu filho que deveria ter chegado no navio. Ele vai pedir pra falar com quem for preciso pra conferir a lista de pessoas que ve",L0,922337,912640,9697,5111,3065,927448,5,4,10804,0,1,1,2,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",4
+23,01a09823-88a5-76a0-94be-c6017389e33b,avanco_comum,2026-09-13T00:21:00.832000+00:00,2026-09-13T00:24:17.922000+00:00,197.09,"Ren decide que o resto da investigação terá que ser a noite, como Ren Kagehira, o shinobi.
+
+Mas vai aproveitar seu disfarce pra passar em dois lugares.
+
+Ele vai até a Galeria dos Escribas, tentar encontrar Tomas. Perguntar sobre novidades.",L0,990313,942080,48233,5552,2909,995865,7,5,30142,0,2,0,3,0,0,0,4,2,2,nao,0,2,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""reactive_pressure_routing"", ""transactional_sidequest_progress"", ""world_local_incidents""]",7
+24,01a09828-f648-70e3-979d-a4f10393f748,avanco_comum,2026-09-13T00:26:56.517000+00:00,2026-09-13T00:28:48.730000+00:00,112.213,"""Matsumoto. Tanaka Matsumoto"", Ren fala.",L0,175608,153856,21752,3080,993,178688,6,5,14664,0,2,0,3,0,0,0,3,1,2,nao,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+25,01a0982d-225c-7502-9c95-6f2f237856ca,avanco_comum,2026-09-13T00:31:29.957000+00:00,2026-09-13T00:33:26.562000+00:00,116.605,"""Bom dia, meu jovem. Um amigo em comum pediu pra eu procura-lo pra me ajudar com um problema que eu tenho. Você deve lembrar dele: um jovem kozakurano, alto, cabelo preso assim..."" e começa a descrever Ren pra ver se Tomas compreende e o le",L0,186971,177152,9819,3931,2380,190902,5,4,16699,0,1,0,3,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+26,01a09830-de96-7a81-8854-48be1926c18a,avanco_comum,2026-09-13T00:35:34.742000+00:00,2026-09-13T00:39:10.757000+00:00,216.015,"Quando Ren chega no lugar reservado, ele fala, lentamente deixando de agir como velho e permitindo que o homem veja o Ren por baixo do disfarce:
+
+""Desculpe vir aqui assim, Tomas. Mas venho porque se preocupo com sua segurança, mais que tudo",L1+RAW,694067,669056,25011,7683,3472,701750,13,12,54292,5,3,0,4,1,4,0,5,4,1,nao,0,4,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+27,01a09836-e0d5-7bd1-9440-c5afc1c56f81,avanco_comum,2026-09-13T00:42:08.532000+00:00,2026-09-13T00:44:15.739000+00:00,127.207,"Ren conta a Tomas os detalhes de sua última incursão a pedido de Maerra. Fala das crianças, da ordem, do local onde encontrou os falsificadores, da mulher capturada, do depoimento dela, sobre Masao, Juppongatana, Luath.
+
+""Pelo jeito as cois",L2,271856,261888,9968,4194,2797,276050,4,3,16285,1,1,0,1,1,0,0,2,2,0,nao,0,2,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+28,01a0983c-1172-7d53-a1d5-0fdd82dff654,avanco_comum,2026-09-13T00:47:48.673000+00:00,2026-09-13T00:49:08.396000+00:00,79.723,"""Não. Ela deixou claro que a operação de Masao é compartimentalizada: cada grupo só sabe de suas ações, nunca do todo. Ainda preciso conversar com Luath se ela ampliou seu depoimento, de toda forma.""
+
+Ren para por um instante. Depois conta ",L0,229269,221184,8085,2790,1300,232059,3,2,14869,0,1,0,1,0,0,0,2,2,0,nao,0,2,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",5
+29,01a09856-1669-7a02-b03f-42ab527247d2,autoria_ou_terminal,2026-09-13T01:16:13.869000+00:00,2026-09-13T01:28:19.381000+00:00,725.512,"Ren suspira.
+
+""Sem dúvidas eu tenho inimigos, Tomas, e eles me atacaram. Sabemos que eles localizaram Shinta, e podemos assumir que eles sabiam que Shinta trabalhava na galeria. Mas esse fato em si não é o que traz perigo pra cá. O que traz",RAW,3716349,3629312,87037,30917,10711,3747266,30,28,212289,19,6,0,3,0,19,0,8,7,1,nao,6,0,1,"[""active_sidequest_reassessment"", ""adversarial_integrity"", ""canon_bridge"", ""canonical_secret_quests"", ""emergent_sidequest_authoring"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""persistent_world_conditions"", ""quest_rewards"", ""reactive_pressure_routing"", ""sidequest_progression"", ""sidequest_success_reactions"", ""transactional_sidequest_progress""]",13
+30,01a09862-b759-76d0-8821-e08b79d1d284,mecanica,2026-09-13T01:30:01.482000+00:00,2026-09-13T01:31:43.072000+00:00,101.59,"""Claro que aceito. Descobrirei quem está por trás. Posso ver os documentos?""
+
+Ren observa os documentos, tentando encontrar o fio inicial de investigação e qualquer coisa que possa ajuda-lo.",RAW,1194041,1179136,14905,3638,2054,1197679,7,6,34609,2,1,1,2,0,2,0,2,2,0,nao,0,2,0,"[""active_sidequest_reassessment"", ""adversarial_integrity"", ""canon_bridge"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""quest_rewards"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",8
+31,01a09871-1011-7373-a418-146d5c90f488,avanco_comum,2026-09-13T01:45:41.699000+00:00,2026-09-13T01:49:51.689000+00:00,249.99,"""Tomas... quem entregou esses documentos aqui? Você tem uma descrição... localização, talvez? Como essa pessoa irá provar que é o 'portador autorizado' a receber essas cópias depois?""
+
+Faz um silêncio.
+
+""E essa contramarca de urgência... qu",RAW,1990569,1963520,27049,9200,4831,1999769,10,9,63101,4,3,0,2,0,4,0,4,4,0,nao,0,4,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""npc_social_initiative"", ""reactive_pressure_routing"", ""sidequest_progression"", ""transactional_sidequest_progress""]",6
+32,01a0987b-fa96-7f13-b9c6-00285b9d0614,avanco_comum,2026-09-13T01:57:37.104000+00:00,2026-09-13T01:59:35.064000+00:00,117.96,"""Ok, vamos começar descobrindo quem era o escrivão da Mesa de Cargas do porto na ronda de 21 Eleasis então.""
+
+Ren levanta, já começando a agir como um velho.
+
+""Em breve trarei novidades. Boas novidades.""
+
+E sai, o mais discretamente que pod",L0,363491,338560,24931,2578,702,366069,7,5,22309,0,1,0,4,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",4
+33,01a098d9-9ba2-74f2-8a22-f222974ecac2,mecanica,2026-09-13T03:39:53.177000+00:00,2026-09-13T03:44:48.117000+00:00,294.94,"Ren entra e se dirige a quem ele acredita que seja quem faz a recepção.
+
+""Boa tarde. Eu gostaria de registrar uma reclamação. Eu solicitei uma carga com urgência a ser retirada pela Garça do Poente. Eu consegui embarcar a carga, deu tudo ce",L2+RAW,1314515,1276032,38483,10845,4770,1325360,25,24,88753,9,3,1,11,4,5,0,4,1,3,nao,0,1,0,"[""active_sidequest_reassessment"", ""canon_bridge"", ""emergent_sidequest_opportunity"", ""quest_rewards"", ""reactive_pressure_routing"", ""sidequest_progression"", ""transactional_sidequest_progress""]",7
+34,01a098df-d727-7512-8e31-ff0edc58bcb3,avanco_comum,2026-09-13T03:46:41.648000+00:00,2026-09-13T03:47:42.338000+00:00,60.69,"Senhor Tanaka começa a mexer nos objetos pessoais, como quem procura o documento.
+
+""Era só o que me faltava"", fala, com rabugentisse de velho, ""eu não trouxe o documento. Vou em casa pega-lo e volto aqui. Mas me fale: que horas o senhor Dar",L0,368242,359808,8434,2283,786,370525,5,4,15752,0,1,0,3,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",4
+35,01a098e2-b2cc-7830-8a8c-5444cbd40891,avanco_comum,2026-09-13T03:49:48.960000+00:00,2026-09-13T03:51:10.791000+00:00,81.831,"Senhor Tanaka agradece, e sai do local.
+
+[No caso... você deu a entender que a side quest de Halessa já tá finalizada. Eu imaginei que ela ia querer mais. Só o que Ren levantou conversando com as pessoas já é suficiente?]",L0,407347,398336,9011,3103,1488,410450,5,4,17090,0,1,0,3,0,0,0,2,1,1,sim,0,1,0,"[""active_sidequest_reassessment"", ""emergent_sidequest_opportunity"", ""reactive_pressure_routing"", ""transactional_sidequest_progress""]",4

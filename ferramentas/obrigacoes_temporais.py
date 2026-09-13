@@ -21,9 +21,9 @@ import mundo
 
 STATE_PATH = Path("estado/estado-atual.yaml")
 TIME_PATH = Path("estado/tempo.yaml")
-CONFIG_PATH = Path("narrador/obrigacoes-temporais/evidencias.yaml")
-TRACKER_PATH = Path("narrador/obrigacoes-temporais/estado.yaml")
-INDEX_PATH = Path("narrador/obrigacoes-temporais/indice.yaml")
+CONFIG_PATH = Path("narrador/mundo/obrigacoes-temporais/evidencias.yaml")
+TRACKER_PATH = Path("narrador/mundo/obrigacoes-temporais/estado.yaml")
+INDEX_PATH = Path("narrador/mundo/obrigacoes-temporais/indice.yaml")
 SCHEMA = 1
 MAX_ACTIVE = 32
 MAX_DUE_PER_CHECKPOINT = 8

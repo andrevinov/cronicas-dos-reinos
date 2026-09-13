@@ -87,7 +87,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         self._write_profile()
         self._write_index()
         self._yaml(
-            "narrador/agentes-leves/estado.yaml",
+            "narrador/elenco/agentes-leves/estado.yaml",
             {
                 "schema_estado_agentes_leves": 2,
                 "natureza": "controle_reservado",
@@ -113,7 +113,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
 
     def _write_profile(self, extra: str | None = None) -> None:
         self._yaml(
-            "narrador/agentes-leves/a.yaml",
+            "narrador/elenco/agentes-leves/a.yaml",
             {
                 "schema_agente_leve": 1,
                 "natureza": "reservado",
@@ -143,9 +143,9 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         )
 
     def _write_index(self) -> None:
-        blob = light._git_blob_sha(self.repo / "narrador/agentes-leves/a.yaml")
+        blob = light._git_blob_sha(self.repo / "narrador/elenco/agentes-leves/a.yaml")
         self._yaml(
-            "narrador/agentes-leves/index.yaml",
+            "narrador/elenco/agentes-leves/index.yaml",
             {
                 "schema_agentes_leves": 2,
                 "natureza": "reservado",
@@ -163,7 +163,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
                         "prioridade": 1,
                         "intervalo_dias": 3,
                         "inicio": {"data": "10 Eleasis, 1372 DR", "hora": "06:00"},
-                        "arquivo": "narrador/agentes-leves/a.yaml",
+                        "arquivo": "narrador/elenco/agentes-leves/a.yaml",
                         "perfil_blob_git": blob,
                         "fontes_causais": ["estado/relacoes/a.yaml"],
                     }
@@ -187,7 +187,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         self.assertEqual(result["agentes_leves_reconsiderar"], ["a"])
         self.assertEqual(len(result["novas_pendencias"]), 1)
         self.assertNotIn("estado/relacoes/a.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/agentes-leves/a.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/a.yaml", result["fontes_lidas"])
         return result["novas_pendencias"][0]
 
     def _install_noop(self) -> tuple[dict, dict]:
@@ -196,7 +196,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         self.assertFalse(result["ja_concluida"])
         self.assertEqual(result["concluida"]["resultado"], light.NOOP_RESULT)
         self.assertIn("estado/relacoes/a.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/agentes-leves/a.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/a.yaml", result["fontes_lidas"])
         return pending, result
 
     def test_noop_explicito_instala_cache_e_remove_pendencia(self):
@@ -218,7 +218,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         self.assertEqual([item["agente_leve"] for item in result["noops_compactados"]], ["a"])
         self.assertEqual(result["orcamento"]["checks_cache_negativo"], 1)
         self.assertIn("estado/relacoes/a.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/agentes-leves/a.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/a.yaml", result["fontes_lidas"])
         state = light.load_state(self.repo, light.load_index(self.repo))
         self.assertEqual(state["agentes"]["a"]["cache_negativo"]["acertos_compactados"], 1)
         self.assertEqual(light.mundo.load_world_state(self.repo)["pendencias"], [])
@@ -235,7 +235,7 @@ class LightAgentNoopSyntheticTest(unittest.TestCase):
         self.assertEqual(result["caches_invalidados"], ["a"])
         self.assertEqual(result["agentes_leves_reconsiderar"], ["a"])
         self.assertEqual(result["noops_compactados"], [])
-        self.assertNotIn("narrador/agentes-leves/a.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/a.yaml", result["fontes_lidas"])
         state = light.load_state(self.repo, light.load_index(self.repo))
         self.assertIsNone(state["agentes"]["a"]["cache_negativo"])
 

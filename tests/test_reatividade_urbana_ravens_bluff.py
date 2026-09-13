@@ -7,9 +7,9 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "narrador/arcos/parte_1/teia-urbana-ravens-bluff/index.yaml"
-VIDA_CIVIL = ROOT / "narrador/arcos/parte_1/vida-civil.yaml"
-EVENTOS = ROOT / "narrador/arcos/parte_1/eventos-canonicos.yaml"
+INDEX = ROOT / "narrador/tramas/arcos/parte_1/teia-urbana-ravens-bluff/index.yaml"
+VIDA_CIVIL = ROOT / "narrador/tramas/arcos/parte_1/vida-civil.yaml"
+EVENTOS = ROOT / "narrador/tramas/arcos/parte_1/eventos-canonicos.yaml"
 
 
 def load_yaml(path: Path):
@@ -70,7 +70,7 @@ class RavensBluffUrbanReactivityTests(unittest.TestCase):
         route = vida["teia_urbana_ravens_bluff"]
         self.assertEqual(
             route["arquivo"],
-            "narrador/arcos/parte_1/teia-urbana-ravens-bluff/index.yaml",
+            "narrador/tramas/arcos/parte_1/teia-urbana-ravens-bluff/index.yaml",
         )
         self.assertFalse(route["automatico"])
 

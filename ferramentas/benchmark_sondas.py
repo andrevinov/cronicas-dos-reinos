@@ -122,9 +122,9 @@ def _initiative(repo: Path) -> list[dict]:
         agents[key] = {"nome": key.title(), "perfil_operacional": "recorrente_leve", "estado": "ativo",
                        "prioridade": 2, "intervalo_dias": 3,
                        "inicio": {"data": "14 Eleasis, 1372 DR", "hora": "06:00"},
-                       "arquivo": f"narrador/agentes-leves/{key}.yaml"}
+                       "arquivo": f"narrador/elenco/agentes-leves/{key}.yaml"}
         states[key] = {"estado": "ativo", "proxima_avaliacao": copy.deepcopy(agents[key]["inicio"])}
-        _yaml(repo, f"narrador/agentes-leves/{key}.yaml", {
+        _yaml(repo, f"narrador/elenco/agentes-leves/{key}.yaml", {
             "schema_agente_leve": 1, "natureza": "reservado", "id": key, "nome": key.title(),
             "perfil_operacional": "recorrente_leve",
             "rotina_padrao": {"descricao": "Trabalha na oficina.", "fonte": "fontes/canone.md", "evidencia": "Trabalha na oficina."},
@@ -133,10 +133,10 @@ def _initiative(repo: Path) -> list[dict]:
             "regra_de_reavaliacao": "Rotina é o padrão.", "fontes_canonicas": ["fontes/canone.md"]})
     (repo / "fontes").mkdir()
     (repo / "fontes/canone.md").write_text("Trabalha na oficina. Busca ajuda para o transporte. Pode procurar Ren na praça.\n", encoding="utf-8")
-    _yaml(repo, "narrador/agentes-leves/index.yaml", {"schema_agentes_leves": 1, "natureza": "reservado",
+    _yaml(repo, "narrador/elenco/agentes-leves/index.yaml", {"schema_agentes_leves": 1, "natureza": "reservado",
           "orcamento": {"max_novas_por_checkpoint": 1, "max_pendencias_abertas": 2,
                         "ordenacao": "mais_atrasado_prioridade_id"}, "agentes": agents})
-    _yaml(repo, "narrador/agentes-leves/estado.yaml", {"schema_estado_agentes_leves": 1,
+    _yaml(repo, "narrador/elenco/agentes-leves/estado.yaml", {"schema_estado_agentes_leves": 1,
                                                       "natureza": "controle_reservado", "agentes": states})
     sentinel = (repo / "estado/estado-atual.yaml").read_bytes()
     result = agentes_leves.process_checkpoint(repo)

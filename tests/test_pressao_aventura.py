@@ -73,8 +73,8 @@ class AdventurePressureIntegrationTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
         shutil.copytree(
-            ROOT / "narrador/microeventos-locais",
-            self.repo / "narrador/microeventos-locais",
+            ROOT / "narrador/mundo/microeventos-locais",
+            self.repo / "narrador/mundo/microeventos-locais",
         )
         self.index = micro.load_index(self.repo)
         self.ecology = ecologia_local.load_index(self.repo)

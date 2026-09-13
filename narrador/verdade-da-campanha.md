@@ -19,7 +19,7 @@ domínio infernal depois que ele cometeu crimes sujeitos a julgamento, incluindo
 o roubo de uma relíquia sagrada ainda não revelada.
 
 A aparência canônica de Masao é a da imagem em
-`narrador/masao/imagens/masao-hirasawa.png`, não a descrição inicial do documento
+`narrador/elenco/masao/imagens/masao-hirasawa.png`, não a descrição inicial do documento
 interno. Ele é velho, mas brutalmente musculoso, coberto de cicatrizes e marcas,
 com cabelos brancos longos e desalinhados, sorriso cruel e vestes rituais
 rasgadas com inscrições.
@@ -46,10 +46,10 @@ A versão conhecida por Ren pode conter lacunas, exageros ou símbolos, mas a ba
 
 Detalhes reservados ficam em:
 
-* `narrador/masao/README.md`;
-* `narrador/masao/plano.md`;
-* `narrador/aliados/tadasu-no-kami.md`;
-* `narrador/ponte-de-kozakura/`.
+* `narrador/elenco/masao/README.md`;
+* `narrador/elenco/masao/plano.md`;
+* `narrador/elenco/aliados/tadasu-no-kami.md`;
+* `narrador/tramas/ponte-de-kozakura/`.
 
 ### Cronologia de Kozakura e Ren
 
@@ -104,7 +104,7 @@ Opções compatíveis para a relíquia roubada ou para componentes associados:
   origem.
 
 Antes de transformar uma dessas opções em fato canônico, verificar
-`narrador/kara-tur-segredos.md`, `narrador/aliados/tadasu-no-kami.md` e registrar
+`narrador/tramas/segredos/kara-tur.md`, `narrador/elenco/aliados/tadasu-no-kami.md` e registrar
 a escolha aqui.
 
 Sinais que podem aparecer sem revelar a verdade inteira:
@@ -178,7 +178,7 @@ Masao.
 O nome é uma homenagem deliberada do jogador a Rurouni Kenshin e deve ser
 preservado. Dentro da campanha, a Juppongatana é também uma alcunha própria do
 submundo de Kara-Tur. Seus integrantes, estilos, objetivos, rivalidades e
-relações com Masao estão canonicamente definidos em `narrador/juppongatana/`.
+relações com Masao estão canonicamente definidos em `narrador/elenco/juppongatana/`.
 
 Membros canônicos:
 
@@ -197,13 +197,13 @@ Nem todos precisam estar presentes em Faerûn ao mesmo tempo. Alguns podem agir
 fora de cena, chegar por rotas próprias, contrariar Masao parcialmente ou usar
 Ren por interesses particulares. Ainda assim, todos são cânone da campanha.
 
-O elenco estrutural fica em `narrador/juppongatana/index.yaml`; diretrizes de uso
+O elenco estrutural fica em `narrador/elenco/juppongatana/index.yaml`; diretrizes de uso
 em jogo, escala de ameaça, lealdade variável e dilemas para Ren ficam em
-`narrador/juppongatana/conducao.md`. O caminho `narrador/juppongatana.md` é apenas
+`narrador/elenco/juppongatana/conducao.md`. O caminho `narrador/elenco/juppongatana/README.md` é apenas
 redirecionamento legado.
 
 Inspirações de Kara-Tur para membros, cultos, técnicas e relíquias de apoio ficam
-também em `narrador/kara-tur-segredos.md`.
+também em `narrador/tramas/segredos/kara-tur.md`.
 
 ### Aliados estruturais de Ren
 
@@ -211,7 +211,7 @@ O documento interno `books/Aliados para Ren.pdf` define cinco pilares canônicos
 de apoio futuro. Eles devem surgir em algum momento da campanha, preferencialmente
 na ordem abaixo, sem retirar de Ren a responsabilidade pelas decisões centrais.
 
-Os arquivos autoritativos ficam em `narrador/aliados/`.
+Os arquivos autoritativos ficam em `narrador/elenco/aliados/`.
 
 * **Shen Meihua**, a Agulha de Jade: médica, infiltradora e operadora de
   inteligência de Shou Lung, em fuga operacional de Shizune depois de seguir a
@@ -229,7 +229,7 @@ Os arquivos autoritativos ficam em `narrador/aliados/`.
   benevolente que condenou Masao, confirma que Ren não é escolhido e lhe oferece
   o Selo da Retificação como consequência de escolha, não como ordem divina.
 
-Marcos de aparição ficam em `narrador/aliados/marcos-de-aparicao.md`.
+Marcos de aparição ficam em `narrador/elenco/aliados/marcos-de-aparicao.md`.
 
 ### Faerûn
 
@@ -308,6 +308,6 @@ Sembia, Impiltur, Dragon Coast, Zhentarim, Thay e Harpistas.
 
 Arquivos autoritativos:
 
-* `narrador/ponte-de-kozakura/README.md`;
-* `narrador/ponte-de-kozakura/anomalias-e-revelacao.md`;
-* `narrador/ponte-de-kozakura/shin-kozakura.md`.
+* `narrador/tramas/ponte-de-kozakura/README.md`;
+* `narrador/tramas/ponte-de-kozakura/anomalias-e-revelacao.md`;
+* `narrador/tramas/ponte-de-kozakura/shin-kozakura.md`.

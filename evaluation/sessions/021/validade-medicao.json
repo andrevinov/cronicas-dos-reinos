@@ -1,0 +1,41 @@
+{
+  "schema_validade_medicao": 1,
+  "sessao_id": "021",
+  "natureza": "adjudicação pós-hoc da medição; não altera o cânone da sessão",
+  "metricas_adjudicadas": {
+    "cronica_preparar_reais": 73,
+    "decisoes_oportunidade_validas": 73,
+    "violacoes_gate_oportunidade": 0,
+    "cronica_concluir_bem_sucedidos": 40,
+    "cronica_concluir_falhos": 12,
+    "cronica_preparar_falhos": 11,
+    "turnos_narrativos_com_falha_operacional": 13,
+    "turnos_narrativos_com_conclusao_bem_sucedida": 35,
+    "leituras_transcricao_concluidas_em_turnos_narrativos": 6
+  },
+  "correcoes": [
+    {
+      "metrica": "violacoes_gate_oportunidade",
+      "observado": 1,
+      "adjudicado": 0,
+      "motivo": "O detector contou um comando rg que apenas citava cronica preparar; as 73 chamadas reais continham exatamente uma decisão."
+    },
+    {
+      "metrica": "writers_bem_sucedidos",
+      "observado": 0,
+      "adjudicado": 40,
+      "motivo": "Os outputs de concluir registraram transcricao_escrita:true e evento_escrito:true, mas a correlação do analisador classificou as escritas como desconhecidas."
+    },
+    {
+      "metrica": "leituras_transcricao_concluidas_em_turnos_narrativos",
+      "observado": 0,
+      "adjudicado": 6,
+      "motivo": "As buscas L4T foram concluídas, embora o schema 3 tenha preservado apenas as tentativas por não reconhecer o formato de resultado do executor."
+    }
+  ],
+  "violacoes_criticas": [],
+  "observacoes": [
+    "Todas as 35 respostas narrativas tiveram ao menos um concluir bem-sucedido no mesmo turno.",
+    "As falhas operacionais foram fail-closed e recuperadas, mas afetaram custo e latência."
+  ]
+}

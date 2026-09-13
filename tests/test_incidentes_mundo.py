@@ -96,7 +96,7 @@ class IncidentDeckTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        shutil.copytree(ROOT / "narrador/incidentes-v2", self.repo / "narrador/incidentes-v2")
+        shutil.copytree(ROOT / "narrador/mundo/incidentes", self.repo / "narrador/mundo/incidentes")
         self.index = incidents.load_index(self.repo)
         self.profile = ecologia_local.load_index(ROOT)["perfis"]["galeria_dos_escribas"]
 
@@ -167,9 +167,9 @@ class IncidentSceneIntegrationTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
-        shutil.copytree(ROOT / "narrador/recompensas", self.repo / "narrador/recompensas")
-        shutil.copytree(ROOT / "narrador/microeventos-locais", self.repo / "narrador/microeventos-locais")
-        shutil.copytree(ROOT / "narrador/incidentes-v2", self.repo / "narrador/incidentes-v2")
+        shutil.copytree(ROOT / "narrador/tramas/recompensas", self.repo / "narrador/tramas/recompensas")
+        shutil.copytree(ROOT / "narrador/mundo/microeventos-locais", self.repo / "narrador/mundo/microeventos-locais")
+        shutil.copytree(ROOT / "narrador/mundo/incidentes", self.repo / "narrador/mundo/incidentes")
 
     def tearDown(self):
         self.temp.cleanup()
@@ -261,7 +261,7 @@ class IncidentSceneIntegrationTest(unittest.TestCase):
         )
 
     def test_fixture_sem_task35_preserva_fluxo_antigo(self):
-        shutil.rmtree(self.repo / "narrador/incidentes-v2")
+        shutil.rmtree(self.repo / "narrador/mundo/incidentes")
         preview = cena_mundo.prepare_scene(
             self.repo,
             scene_id="task35-absent",

@@ -368,7 +368,7 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
             {"id": "<id>", "token": "<token>", "evento": "<tentar/resolver/replanejar/bloquear/desistir>"}]
         result["proximo_passo"]["regra"] += (
             " Planos usam `planos` neste mesmo lote: registrar evento e revisão, fato literal, "
-            "resultado com prova/mecânica e seguimento. Contrato: docs/nv08-planos-personagens.md.")
+            "resultado com prova/mecânica e seguimento. Contrato: docs/agente/mundo/compromissos-estruturados.md.")
     return result
 
 

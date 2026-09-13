@@ -178,7 +178,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
             source = f"estado/relacoes/{aid}.yaml"
             name = self.read(source)["relacao"]["nome"]
             fact = {"descricao": "Preservar os acordos e agir com prudência.", "fonte": source, "evidencia": name}
-            profile = f"narrador/agentes-leves/{aid}.yaml"
+            profile = f"narrador/elenco/agentes-leves/{aid}.yaml"
             self.write(profile, {"schema_agente_leve": 1, "natureza": "reservado", "id": aid,
                        "nome": name, "perfil_operacional": "recorrente_leve", "rotina_padrao": fact,
                        "objetivo_atual": fact, "iniciativas_possiveis": [fact],
@@ -282,7 +282,7 @@ class CausalActivationIntegrationTest(unittest.TestCase):
         with patch.object(Path, "read_text", read):
             result = batch.prepare_batch(self.repo)
         self.assertEqual(before, self.f.hashes())
-        fragments = [p for p in reads if p.startswith(("estado/relacoes/", "estado/npcs/", "narrador/agentes-leves/"))
+        fragments = [p for p in reads if p.startswith(("estado/relacoes/", "estado/npcs/", "narrador/elenco/agentes-leves/"))
                      and not p.endswith(("/index.yaml", "/estado.yaml"))]
         self.assertEqual(fragments, ["estado/relacoes/silva_fixture.yaml"])
         self.assertNotIn("nera_fixture.yaml", str(reads))

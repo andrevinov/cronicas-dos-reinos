@@ -32,12 +32,12 @@ class AgentesLevesRepositoryTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/agentes-leves/index.yaml",
-                "narrador/agentes-leves/estado.yaml",
+                "narrador/elenco/agentes-leves/index.yaml",
+                "narrador/elenco/agentes-leves/estado.yaml",
                 "estado/tempo.yaml",
             ],
         )
-        self.assertNotIn("narrador/agentes-leves/luath.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes-leves/luath.yaml", result["fontes_lidas"])
 
     def test_consulta_de_silva_e_fragmentada(self):
         result = light.load_agent(ROOT, "Silva")
@@ -45,9 +45,9 @@ class AgentesLevesRepositoryTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/agentes-leves/index.yaml",
-                "narrador/agentes-leves/estado.yaml",
-                "narrador/agentes-leves/silva_elkwood.yaml",
+                "narrador/elenco/agentes-leves/index.yaml",
+                "narrador/elenco/agentes-leves/estado.yaml",
+                "narrador/elenco/agentes-leves/silva_elkwood.yaml",
             ],
         )
 
@@ -56,7 +56,7 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        (self.repo / "narrador/agentes-leves").mkdir(parents=True)
+        (self.repo / "narrador/elenco/agentes-leves").mkdir(parents=True)
         (self.repo / "narrador/mundo").mkdir(parents=True)
         (self.repo / "estado").mkdir(parents=True)
         (self.repo / "fontes").mkdir(parents=True)
@@ -84,7 +84,7 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/agentes-leves/index.yaml",
+            "narrador/elenco/agentes-leves/index.yaml",
             {
                 "schema_agentes_leves": 1,
                 "natureza": "reservado",
@@ -101,7 +101,7 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/agentes-leves/estado.yaml",
+            "narrador/elenco/agentes-leves/estado.yaml",
             {
                 "schema_estado_agentes_leves": 1,
                 "natureza": "controle_reservado",
@@ -114,7 +114,7 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
         )
         for agent_id, name in (("a", "A"), ("b", "B"), ("c", "C")):
             self._yaml(
-                f"narrador/agentes-leves/{agent_id}.yaml",
+                f"narrador/elenco/agentes-leves/{agent_id}.yaml",
                 {
                     "schema_agente_leve": 1,
                     "natureza": "reservado",
@@ -151,7 +151,7 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
             "prioridade": priority,
             "intervalo_dias": 3,
             "inicio": {"data": date, "hora": "06:00"},
-            "arquivo": f"narrador/agentes-leves/{name.lower()}.yaml",
+            "arquivo": f"narrador/elenco/agentes-leves/{name.lower()}.yaml",
         }
 
     def _state(self, date):
@@ -218,10 +218,10 @@ class AgentesLevesSyntheticTest(unittest.TestCase):
         self.assertEqual((self.repo / "estado/estado-atual.yaml").read_bytes(), before)
 
     def test_validacao_rejeita_evidencia_inventada(self):
-        path = self.repo / "narrador/agentes-leves/a.yaml"
+        path = self.repo / "narrador/elenco/agentes-leves/a.yaml"
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         data["objetivo_atual"]["evidencia"] = "Isto não existe."
-        self._yaml("narrador/agentes-leves/a.yaml", data)
+        self._yaml("narrador/elenco/agentes-leves/a.yaml", data)
         result = light.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertIn("evidência não localizada", result["erros"][0])

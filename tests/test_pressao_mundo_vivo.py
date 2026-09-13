@@ -53,7 +53,7 @@ class PressureWorldApplyTest(unittest.TestCase):
             pressure.PROFILE,
             pressure.STATE,
             agentes.INDEX_PATH,
-            Path("narrador/agentes/masao_hirasawa.yaml"),
+            Path("narrador/elenco/agentes/masao_hirasawa.yaml"),
         ]
         for rel in files:
             dst = self.repo / rel

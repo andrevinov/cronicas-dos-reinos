@@ -7,7 +7,7 @@ máximo um encaminhamento por janela. Autoria/materialização continuam nas
 Tasks 40–46 e exigem oferta efetivamente narrada.
 
 O catálogo Task32/33 é histórico. Sua migração é one-shot e fica registrada em
-``narrador/sidequests-vivas/migracao-legado.yaml``; o runtime nunca o varre.
+``narrador/tramas/sidequests/vivas/migracao-legado.yaml``; o runtime nunca o varre.
 """
 from __future__ import annotations
 
@@ -29,12 +29,12 @@ import yaml
 import mundo
 
 SCHEMA = 1
-STATE = Path("narrador/sidequests-vivas/estado.yaml")
-LOCK = Path("narrador/sidequests-vivas/.estado.lock")
-MIGRATION = Path("narrador/sidequests-vivas/migracao-legado.yaml")
-MIGRATION_EVIDENCE = Path("narrador/sidequests-vivas/evidencias-migracao.yaml")
-LEGACY_SECRETS = Path("narrador/sidequests-canonicas/segredos")
-LEGACY_GATES = Path("narrador/sidequests-canonicas/gates")
+STATE = Path("narrador/tramas/sidequests/vivas/estado.yaml")
+LOCK = Path("narrador/tramas/sidequests/vivas/.estado.lock")
+MIGRATION = Path("narrador/tramas/sidequests/vivas/migracao-legado.yaml")
+MIGRATION_EVIDENCE = Path("narrador/tramas/sidequests/vivas/evidencias-migracao.yaml")
+LEGACY_SECRETS = Path("narrador/tramas/sidequests/canonicas/segredos")
+LEGACY_GATES = Path("narrador/tramas/sidequests/canonicas/gates")
 PLAN_SCHEDULE_PREFIX = "nv08."
 PLAN_PENDING_TYPE = "avaliar_plano_personagem"
 MAX_ACTIVE = 2

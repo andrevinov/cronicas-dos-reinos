@@ -143,7 +143,7 @@ class SidequestReactionFixture(unittest.TestCase):
 
     def _write_agent(self, *, presence="distribuida", local_rule="estrutura_local") -> None:
         self.yaml(
-            "narrador/agentes/index.yaml",
+            "narrador/elenco/agentes/index.yaml",
             {
                 "schema_agentes": 2,
                 "natureza": "reservado",
@@ -154,14 +154,14 @@ class SidequestReactionFixture(unittest.TestCase):
                         "estado": "ativo",
                         "presenca": presence,
                         "atuacao_local": local_rule,
-                        "arquivo": f"narrador/agentes/{ACTOR_ID}.yaml",
+                        "arquivo": f"narrador/elenco/agentes/{ACTOR_ID}.yaml",
                     }
                 },
             },
         )
         concrete = presence in {"presente", "presente_oculto", "fora_da_area", "em_viagem"}
         self.yaml(
-            f"narrador/agentes/{ACTOR_ID}.yaml",
+            f"narrador/elenco/agentes/{ACTOR_ID}.yaml",
             {
                 "schema_agente": 2,
                 "natureza": "reservado",
@@ -249,9 +249,9 @@ class SidequestReactionFixture(unittest.TestCase):
         }
 
     def _write_mission(self, *, completed: bool) -> None:
-        quest_rel = f"narrador/sidequests-emergentes/quests/{QUEST_ID}.yaml"
-        progress_rel = f"narrador/sidequests-emergentes/progresso/{QUEST_ID}.yaml"
-        adversarial_rel = f"narrador/sidequests-emergentes/stakes/{QUEST_ID}.yaml"
+        quest_rel = f"narrador/tramas/sidequests/emergentes/quests/{QUEST_ID}.yaml"
+        progress_rel = f"narrador/tramas/sidequests/emergentes/progresso/{QUEST_ID}.yaml"
+        adversarial_rel = f"narrador/tramas/sidequests/emergentes/stakes/{QUEST_ID}.yaml"
         mission = {
             "id": MISSION_ID,
             "estado": "concluida" if completed else "aceita",
@@ -404,7 +404,7 @@ class SidequestReactionFixture(unittest.TestCase):
 
 class SidequestReactionOriginTest(SidequestReactionFixture):
     def test_sucesso_gera_contrato_sem_reabrir_missao_ou_alterar_stakes_originais(self):
-        task44_path = self.repo / f"narrador/sidequests-emergentes/stakes/{QUEST_ID}.yaml"
+        task44_path = self.repo / f"narrador/tramas/sidequests/emergentes/stakes/{QUEST_ID}.yaml"
         before = task44_path.read_bytes()
         result = self.materialize()
         mission = oportunidades.load_state(
@@ -426,9 +426,9 @@ class SidequestReactionOriginTest(SidequestReactionFixture):
         self.assertEqual(mission["estado"], "aceita")
 
     def test_planejamento_reservado_nao_prova_gatilho(self):
-        progress_path = self.repo / f"narrador/sidequests-emergentes/progresso/{QUEST_ID}.yaml"
+        progress_path = self.repo / f"narrador/tramas/sidequests/emergentes/progresso/{QUEST_ID}.yaml"
         progress = yaml.safe_load(progress_path.read_text(encoding="utf-8"))
-        reserved = self.repo / "narrador/sidequests-emergentes/provas/futura.md"
+        reserved = self.repo / "narrador/tramas/sidequests/emergentes/provas/futura.md"
         reserved.parent.mkdir(parents=True, exist_ok=True)
         reserved.write_text(FACT_EVIDENCE + "\n", encoding="utf-8")
         progress["estado"]["fatos"][FACT_ID]["prova"]["fonte"] = reserved.relative_to(self.repo).as_posix()

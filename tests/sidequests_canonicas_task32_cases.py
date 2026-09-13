@@ -67,7 +67,7 @@ class CanonicalSecretQuestRepositoryTest(unittest.TestCase):
             "operacoes_contextuais": [],
             "direcoes_contextuais": [],
             "encontros": [],
-            "fontes_lidas": ["narrador/oportunidades/index.yaml"],
+            "fontes_lidas": ["narrador/tramas/oportunidades/index.yaml"],
             "sidequest_canonica": {
                 "id": "qsc-222222222222",
                 "npc_id": "npc_a",
@@ -108,8 +108,8 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
         self.q1 = "qsc-111111111111"
         self.q2 = "qsc-222222222222"
         self.q3 = "qsc-333333333333"
-        self._write("narrador/oportunidades/index.yaml", self._index())
-        self._write("narrador/oportunidades/estado.yaml", self._state())
+        self._write("narrador/tramas/oportunidades/index.yaml", self._index())
+        self._write("narrador/tramas/oportunidades/estado.yaml", self._state())
         self._write(
             "estado/npcs/index.yaml",
             {
@@ -141,12 +141,12 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
         self._write("estado/mundo-task32.yaml", {"pressao": {"nivel": 2}})
         self._write_gate(
             self.q1,
-            detail="narrador/sidequests-canonicas/segredos/qsc-111111111111.yaml",
+            detail="narrador/tramas/sidequests/canonicas/segredos/qsc-111111111111.yaml",
             conditions={"locais": ["local_b"]},
         )
         self._write_gate(
             self.q2,
-            detail="narrador/sidequests-canonicas/segredos/qsc-222222222222.yaml",
+            detail="narrador/tramas/sidequests/canonicas/segredos/qsc-222222222222.yaml",
             conditions={
                 "locais": ["local_a"],
                 "janela": {
@@ -175,7 +175,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
         self._write_detail(self.q2)
         self._write_gate(
             self.q3,
-            detail="narrador/sidequests-canonicas/segredos/qsc-333333333333.yaml",
+            detail="narrador/tramas/sidequests/canonicas/segredos/qsc-333333333333.yaml",
             conditions={
                 "locais": ["local_a"],
                 "identidade": {
@@ -257,17 +257,17 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
                     "npc_a": [
                         {
                             "id": self.q1,
-                            "gate": f"narrador/sidequests-canonicas/gates/{self.q1}.yaml",
+                            "gate": f"narrador/tramas/sidequests/canonicas/gates/{self.q1}.yaml",
                             "prioridade": 90,
                         },
                         {
                             "id": self.q2,
-                            "gate": f"narrador/sidequests-canonicas/gates/{self.q2}.yaml",
+                            "gate": f"narrador/tramas/sidequests/canonicas/gates/{self.q2}.yaml",
                             "prioridade": 80,
                         },
                         {
                             "id": self.q3,
-                            "gate": f"narrador/sidequests-canonicas/gates/{self.q3}.yaml",
+                            "gate": f"narrador/tramas/sidequests/canonicas/gates/{self.q3}.yaml",
                             "prioridade": 70,
                         },
                     ]
@@ -277,7 +277,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
                 "npc_a": {
                     "nome": "NPC A",
                     "estado": "inativo",
-                    "arquivo": "narrador/oportunidades/perfis/npc_a.yaml",
+                    "arquivo": "narrador/tramas/oportunidades/perfis/npc_a.yaml",
                 }
             },
         }
@@ -311,7 +311,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
 
     def _write_gate(self, qid: str, *, detail: str, conditions: dict):
         self._write(
-            f"narrador/sidequests-canonicas/gates/{qid}.yaml",
+            f"narrador/tramas/sidequests/canonicas/gates/{qid}.yaml",
             {
                 "schema_gate_sidequest_canonica": 1,
                 "natureza": "reservado",
@@ -324,7 +324,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
 
     def _write_detail(self, qid: str):
         self._write(
-            f"narrador/sidequests-canonicas/segredos/{qid}.yaml",
+            f"narrador/tramas/sidequests/canonicas/segredos/{qid}.yaml",
             {
                 "schema_sidequest_canonica": 1,
                 "natureza": "reservado",
@@ -382,7 +382,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
         self.assertEqual(result["sidequest"]["id"], self.q2)
         self.assertEqual(result["detalhes_lidos"], 1)
         self.assertNotIn(
-            f"narrador/sidequests-canonicas/segredos/{self.q1}.yaml",
+            f"narrador/tramas/sidequests/canonicas/segredos/{self.q1}.yaml",
             result["fontes_lidas"],
         )
 
@@ -517,8 +517,8 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
             "a": {"id": "a", "estado": "aceita", "npc_id": "x", "necessidade_id": "x"},
             "b": {"id": "b", "estado": "aceita", "npc_id": "y", "necessidade_id": "y"},
         }
-        self._write("narrador/oportunidades/estado.yaml", state)
-        (self.repo / f"narrador/sidequests-canonicas/segredos/{self.q2}.yaml").unlink()
+        self._write("narrador/tramas/oportunidades/estado.yaml", state)
+        (self.repo / f"narrador/tramas/sidequests/canonicas/segredos/{self.q2}.yaml").unlink()
         result = canonical.select_from_refs(
             self.repo,
             self._refs(self.q2),
@@ -540,7 +540,7 @@ class CanonicalSecretQuestSyntheticTest(unittest.TestCase):
         self.assertEqual(result["motivo"], "gate_procedural_retirado")
         refs = result["_sidequest_canonica_refs"]
         self.assertEqual([item["id"] for item in refs], [self.q1, self.q2, self.q3])
-        self.assertNotIn("narrador/oportunidades/estado.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/oportunidades/estado.yaml", result["fontes_lidas"])
 
 
 class CanonicalSecretQuestBudgetTest(unittest.TestCase):

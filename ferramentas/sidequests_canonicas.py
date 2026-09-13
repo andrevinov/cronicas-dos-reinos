@@ -21,7 +21,7 @@ for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
 
-ROUTERS_DIR = Path("narrador/sidequests-canonicas/roteadores")
+ROUTERS_DIR = Path("narrador/tramas/sidequests/canonicas/roteadores")
 FRAGMENTED_ROUTING = "fragmentado_por_npc_task33"
 FRAGMENTED_ROUTING_COLD = "fragmentado_por_npc_task33_legado_frio"
 ROUTER_FRAGMENT_SCHEMA = 1

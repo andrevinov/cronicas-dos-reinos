@@ -27,7 +27,7 @@ class MundoRepositoryTest(unittest.TestCase):
         self.assertIn("narrador/mundo/agenda.yaml", result["fontes_lidas"])
         self.assertFalse(
             any(
-                path.startswith("narrador/agentes/") and path != "narrador/agentes/index.yaml"
+                path.startswith("narrador/elenco/agentes/") and path != "narrador/elenco/agentes/index.yaml"
                 for path in result["fontes_lidas"]
             )
         )
@@ -39,8 +39,8 @@ class MundoSyntheticTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         (self.repo / "estado").mkdir(parents=True)
         (self.repo / "narrador/mundo").mkdir(parents=True)
-        (self.repo / "narrador/agentes").mkdir(parents=True)
-        (self.repo / "narrador/agentes/index.yaml").write_text(
+        (self.repo / "narrador/elenco/agentes").mkdir(parents=True)
+        (self.repo / "narrador/elenco/agentes/index.yaml").write_text(
             """schema_agentes: 2
 natureza: reservado
 agentes:
@@ -50,14 +50,14 @@ agentes:
     estado: ativo
     presenca: distribuida
     atuacao_local: estrutura_local
-    arquivo: narrador/agentes/red_sail.yaml
+    arquivo: narrador/elenco/agentes/red_sail.yaml
   kurobane_jinzaburo:
     nome: Kurobane Jinzaburō
     tipo: npc
     estado: ativo
     presenca: presente
     atuacao_local: exige_presenca_fisica
-    arquivo: narrador/agentes/kurobane_jinzaburo.yaml
+    arquivo: narrador/elenco/agentes/kurobane_jinzaburo.yaml
 """,
             encoding="utf-8",
         )
@@ -100,7 +100,7 @@ concluidas_recentes: []
     def test_nada_vencido_nao_le_indice_nem_fragmento_de_agente(self):
         result = mod.process_to_canonical(self.repo)
         self.assertFalse(result["alterou"])
-        self.assertNotIn("narrador/agentes/index.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/agentes/index.yaml", result["fontes_lidas"])
         self.assertFalse(any(path.endswith("red_sail.yaml") for path in result["fontes_lidas"]))
 
     def test_amanhecer_gera_pendencia_sem_abrir_fragmento(self):
@@ -109,7 +109,7 @@ concluidas_recentes: []
         self.assertTrue(result["alterou"])
         self.assertEqual(result["agentes_reconsiderar"], ["red_sail"])
         self.assertEqual(len(result["novas_pendencias"]), 1)
-        self.assertIn("narrador/agentes/index.yaml", result["fontes_lidas"])
+        self.assertIn("narrador/elenco/agentes/index.yaml", result["fontes_lidas"])
         self.assertFalse(any(path.endswith("red_sail.yaml") for path in result["fontes_lidas"]))
 
     def test_mesmo_instante_nao_processa_mundo_duas_vezes(self):

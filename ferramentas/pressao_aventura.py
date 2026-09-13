@@ -27,7 +27,7 @@ PROMOTED_ROUTINE_TOKENS = {
     3: {"rotina_01", "rotina_02", "rotina_03"},
 }
 MAX_DRY_STREAK_REPORTED = 64
-MICROEVENT_STATE = Path("narrador/microeventos-locais/estado.yaml")
+MICROEVENT_STATE = Path("narrador/mundo/microeventos-locais/estado.yaml")
 
 
 class AdventurePressureError(ValueError):

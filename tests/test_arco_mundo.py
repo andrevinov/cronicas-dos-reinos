@@ -34,7 +34,7 @@ class ArcWorldCompatibilityTest(unittest.TestCase):
     def test_configuracao_parcial_falha_fechada(self):
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
-            path = repo / "narrador/arcos/index.yaml"
+            path = repo / "narrador/tramas/arcos/index.yaml"
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text("schema_arcos: 1\n", encoding="utf-8")
             with self.assertRaises(arco_mundo.ArcWorldError):
@@ -46,18 +46,18 @@ class ArcWorldGuardTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         for rel in (
-            "narrador/arcos/index.yaml",
-            "narrador/arcos/estado.yaml",
-            "narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml",
-            "narrador/arcos/controle-mundo.yaml",
-            "narrador/arcos/marcos-aparicao.yaml",
-            "narrador/arcos/estado-marcos-aparicao.yaml",
+            "narrador/tramas/arcos/index.yaml",
+            "narrador/tramas/arcos/estado.yaml",
+            "narrador/tramas/arcos/parte_1_uma_ponte_para_kozakura.yaml",
+            "narrador/tramas/arcos/controle-mundo.yaml",
+            "narrador/tramas/arcos/marcos-aparicao.yaml",
+            "narrador/tramas/arcos/estado-marcos-aparicao.yaml",
         ):
             src = ROOT / rel
             dst = self.repo / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
-        controlled = yaml.safe_load((ROOT / "narrador/arcos/controle-mundo.yaml").read_text(encoding="utf-8"))["agentes_estrategicos"]
+        controlled = yaml.safe_load((ROOT / "narrador/tramas/arcos/controle-mundo.yaml").read_text(encoding="utf-8"))["agentes_estrategicos"]
         agents = {
             agent_id: {
                 "nome": agent_id,
@@ -65,7 +65,7 @@ class ArcWorldGuardTest(unittest.TestCase):
                 "estado": "ativo",
                 "presenca": "presente",
                 "atuacao_local": "exige_presenca_fisica" if agent_id != "juppongatana" else "depende_de_membros_presentes",
-                "arquivo": f"narrador/agentes/{agent_id}.yaml",
+                "arquivo": f"narrador/elenco/agentes/{agent_id}.yaml",
             }
             for agent_id in controlled
         }
@@ -77,9 +77,9 @@ class ArcWorldGuardTest(unittest.TestCase):
             "estado": "ativo",
             "presenca": "ancorada",
             "atuacao_local": "estrutura_local",
-            "arquivo": "narrador/agentes/night_watch.yaml",
+            "arquivo": "narrador/elenco/agentes/night_watch.yaml",
         }
-        path = self.repo / "narrador/agentes/index.yaml"
+        path = self.repo / "narrador/elenco/agentes/index.yaml"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(yaml.safe_dump({"schema_agentes": 2, "natureza": "reservado", "agentes": agents}, allow_unicode=True, sort_keys=False), encoding="utf-8")
         runtime = self.repo / "runtime/contexto.yaml"

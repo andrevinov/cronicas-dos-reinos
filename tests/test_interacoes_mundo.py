@@ -61,7 +61,7 @@ class EncounterIntegrationTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         self.now = mundo.parse_instant("11 Eleasis, 1372 DR", "09:00")
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -95,13 +95,13 @@ class EncounterIntegrationTest(unittest.TestCase):
                     "npc_a": {
                         "nome": "NPC A",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/npc_a.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/npc_a.yaml",
                     }
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -115,7 +115,7 @@ class EncounterIntegrationTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/oportunidades/perfis/npc_a.yaml",
+            "narrador/tramas/oportunidades/perfis/npc_a.yaml",
             {
                 "schema_perfil_oportunidades": 1,
                 "natureza": "reservado",
@@ -169,14 +169,14 @@ class EncounterIntegrationTest(unittest.TestCase):
             profile_reads = [
                 source
                 for source in result["fontes_lidas"]
-                if source.startswith("narrador/oportunidades/perfis/")
+                if source.startswith("narrador/tramas/oportunidades/perfis/")
             ]
             if result["resultado"] == "interacao_normal":
                 self.assertEqual(profile_reads, [])
             else:
                 self.assertEqual(
                     profile_reads,
-                    ["narrador/oportunidades/perfis/npc_a.yaml"],
+                    ["narrador/tramas/oportunidades/perfis/npc_a.yaml"],
                 )
                 oportunidades.evaluate(
                     self.repo,
@@ -225,8 +225,8 @@ class RewardIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        shutil.copytree(ROOT / "narrador/recompensas", self.repo / "narrador/recompensas")
-        shutil.copytree(ROOT / "narrador/oportunidades", self.repo / "narrador/oportunidades")
+        shutil.copytree(ROOT / "narrador/tramas/recompensas", self.repo / "narrador/tramas/recompensas")
+        shutil.copytree(ROOT / "narrador/tramas/oportunidades", self.repo / "narrador/tramas/oportunidades")
         state = oportunidades.load_state(
             self.repo,
             oportunidades.load_index(self.repo),
@@ -272,7 +272,7 @@ class RewardIntegrationTest(unittest.TestCase):
             danger="baixa",
         )
         self.assertTrue(first["mapa_criado"])
-        map_path = self.repo / "narrador/recompensas/mapas/setor_teste.yaml"
+        map_path = self.repo / "narrador/tramas/recompensas/mapas/setor_teste.yaml"
         before = map_path.read_bytes()
 
         second = interacoes_mundo.local_event(
@@ -287,8 +287,8 @@ class RewardIntegrationTest(unittest.TestCase):
         self.assertEqual(
             second["fontes_lidas"],
             [
-                "narrador/recompensas/index.yaml",
-                "narrador/recompensas/mapas/setor_teste.yaml",
+                "narrador/tramas/recompensas/index.yaml",
+                "narrador/tramas/recompensas/mapas/setor_teste.yaml",
             ],
         )
 
@@ -317,7 +317,7 @@ class LifecycleIntegrationTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         self.now = mundo.parse_instant("12 Eleasis, 1372 DR", "10:00")
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -351,13 +351,13 @@ class LifecycleIntegrationTest(unittest.TestCase):
                     "morto": {
                         "nome": "Morto",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/morto.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/morto.yaml",
                     }
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -444,8 +444,8 @@ class SidequestEffectsIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        shutil.copytree(ROOT / "narrador/oportunidades", self.repo / "narrador/oportunidades")
-        shutil.copytree(ROOT / "narrador/relogios", self.repo / "narrador/relogios")
+        shutil.copytree(ROOT / "narrador/tramas/oportunidades", self.repo / "narrador/tramas/oportunidades")
+        shutil.copytree(ROOT / "narrador/mundo/relogios", self.repo / "narrador/mundo/relogios")
         state = oportunidades.load_state(
             self.repo,
             oportunidades.load_index(self.repo),
@@ -486,9 +486,9 @@ class SidequestEffectsIntegrationTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/oportunidades/index.yaml",
-                "narrador/oportunidades/estado.yaml",
-                "narrador/relogios/vinculos.yaml",
+                "narrador/tramas/oportunidades/index.yaml",
+                "narrador/tramas/oportunidades/estado.yaml",
+                "narrador/mundo/relogios/vinculos.yaml",
             ],
         )
         self.assertEqual(len(result["deltas_transacionais"]), 2)

@@ -5,7 +5,7 @@ objetivo: >-
   aumentando deterministicamente a pressão sem scheduler, relógio ou novo estado.
 metrica:
   nome: cenas_locais_confirmadas_sem_candidato_microevento
-  fonte: narrador/microeventos-locais/estado.yaml#historico_recente
+  fonte: narrador/mundo/microeventos-locais/estado.yaml#historico_recente
   semantica: operacional_nao_canonica
 niveis:
   normal:

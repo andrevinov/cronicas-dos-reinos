@@ -165,7 +165,7 @@ class LocalEcologySceneIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        shutil.copytree(ROOT / "narrador/recompensas", self.repo / "narrador/recompensas")
+        shutil.copytree(ROOT / "narrador/tramas/recompensas", self.repo / "narrador/tramas/recompensas")
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
         registry_path = self.repo / "cenario/locais/index.yaml"
         registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))

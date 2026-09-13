@@ -11,7 +11,7 @@ responder, antes de uma descoberta contextual ou de uma movimentação controlad
 ``elegivel`` significa somente que uma cena concreta pode propor a primeira
 aparição. ``consumido`` significa que a primeira aparição já ocorreu e o marco não
 deve bloquear reaparições futuras. A fonte longa permanece em
-``narrador/juppongatana/marcos-de-aparicao.md``; esta camada guarda apenas índice e
+``narrador/elenco/juppongatana/marcos-de-aparicao.md``; esta camada guarda apenas índice e
 estado operacional mínimos.
 """
 from __future__ import annotations
@@ -27,8 +27,8 @@ import yaml
 
 import arcos
 
-INDEX = Path("narrador/arcos/marcos-aparicao.yaml")
-STATE = Path("narrador/arcos/estado-marcos-aparicao.yaml")
+INDEX = Path("narrador/tramas/arcos/marcos-aparicao.yaml")
+STATE = Path("narrador/tramas/arcos/estado-marcos-aparicao.yaml")
 RUNTIME = Path("runtime/contexto.yaml")
 VALID_STATES = {"bloqueado", "elegivel", "consumido"}
 MAX_HISTORY = 24

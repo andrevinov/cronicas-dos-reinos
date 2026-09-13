@@ -172,7 +172,7 @@ class CausalChallengeJourneyTest(legacy.PlanFixture):
         ]
         self.write(self.source, npc)
 
-        profile_path = f"narrador/agentes-leves/{self.actor}.yaml"
+        profile_path = f"narrador/elenco/agentes-leves/{self.actor}.yaml"
         profile = self.read(profile_path)
         profile["objetivo_atual"] = {
             "descricao": "Desafiar Kage por prestígio.",
@@ -180,7 +180,7 @@ class CausalChallengeJourneyTest(legacy.PlanFixture):
             "evidencia": "Desafiar Kage por prestígio.",
         }
         self.write(profile_path, profile)
-        index_path = "narrador/agentes-leves/index.yaml"
+        index_path = "narrador/elenco/agentes-leves/index.yaml"
         index = self.read(index_path)
         index["agentes"][self.actor]["perfil_blob_git"] = plans.agentes_leves._git_blob_sha(self.repo / profile_path)
         self.write(index_path, index)

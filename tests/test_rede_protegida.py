@@ -136,8 +136,8 @@ class ProtectedCoreSidequestIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        shutil.copytree(ROOT / "narrador/oportunidades", self.repo / "narrador/oportunidades")
-        shutil.copytree(ROOT / "narrador/relogios", self.repo / "narrador/relogios")
+        shutil.copytree(ROOT / "narrador/tramas/oportunidades", self.repo / "narrador/tramas/oportunidades")
+        shutil.copytree(ROOT / "narrador/mundo/relogios", self.repo / "narrador/mundo/relogios")
         target = self.repo / rede_protegida.INDEX
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / rede_protegida.INDEX, target)

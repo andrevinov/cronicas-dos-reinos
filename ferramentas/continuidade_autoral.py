@@ -21,7 +21,7 @@ from typing import Any
 
 import yaml
 
-REGISTRY = Path("narrador/continuidade-autoral.yaml")
+REGISTRY = Path("narrador/indices/continuidade-autoral.yaml")
 SCHEMA = 1
 NATURE = "indice_reservado_de_compromissos"
 OPEN_STATES = {

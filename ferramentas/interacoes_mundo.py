@@ -751,8 +751,8 @@ def attach_quest_reward(
 def _agent_indexes(repo: Path) -> tuple[set[str], list[str]]:
     sources: list[str] = []
     known: set[str] = set()
-    strategic_path = Path("narrador/agentes/index.yaml")
-    light_path = Path("narrador/agentes-leves/index.yaml")
+    strategic_path = Path("narrador/elenco/agentes/index.yaml")
+    light_path = Path("narrador/elenco/agentes-leves/index.yaml")
     for path, key in ((strategic_path, "agentes"), (light_path, "agentes")):
         if not (repo / path).is_file():
             continue

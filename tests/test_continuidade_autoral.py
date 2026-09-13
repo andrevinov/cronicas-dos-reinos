@@ -32,7 +32,7 @@ class ContinuidadeAutoralTest(unittest.TestCase):
             "schema_continuidade_autoral": 1,
             "natureza": "indice_reservado_de_compromissos",
             "cobertura": {
-                "fonte_canonica": "narrador/segredos/fonte.yaml",
+                "fonte_canonica": "narrador/tramas/segredos/fonte.yaml",
                 "chaves_nao_narrativas": [],
             },
             "compromissos": {
@@ -42,7 +42,7 @@ class ContinuidadeAutoralTest(unittest.TestCase):
                     "estado": "aberto_em_jogo",
                     "ancoras": [
                         {
-                            "arquivo": "narrador/segredos/fonte.yaml",
+                            "arquivo": "narrador/tramas/segredos/fonte.yaml",
                             "chave": "fio",
                         }
                     ],
@@ -56,7 +56,7 @@ class ContinuidadeAutoralTest(unittest.TestCase):
                 }
             },
         }
-        self._write_yaml(root, "narrador/segredos/fonte.yaml", source)
+        self._write_yaml(root, "narrador/tramas/segredos/fonte.yaml", source)
         self._write_yaml(root, "estado/npcs/index.yaml", destination)
         self._write_yaml(root, continuidade_autoral.REGISTRY.as_posix(), registry)
         return registry
@@ -64,7 +64,7 @@ class ContinuidadeAutoralTest(unittest.TestCase):
     def test_registro_canonico_cobre_fontes_sem_mutar_o_repo(self):
         paths = [
             ROOT / continuidade_autoral.REGISTRY,
-            ROOT / "narrador/segredos/continuidade-lacunas.yaml",
+            ROOT / "narrador/tramas/segredos/continuidade-lacunas.yaml",
         ]
         before = {path: path.read_bytes() for path in paths}
         result = continuidade_autoral.validate_repo(ROOT)
@@ -76,10 +76,10 @@ class ContinuidadeAutoralTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             repo = Path(temp)
             self._fixture(repo)
-            source_path = repo / "narrador/segredos/fonte.yaml"
+            source_path = repo / "narrador/tramas/segredos/fonte.yaml"
             source = yaml.safe_load(source_path.read_text(encoding="utf-8"))
             source["fio_novo"] = {"verdade": "a decidir"}
-            self._write_yaml(repo, "narrador/segredos/fonte.yaml", source)
+            self._write_yaml(repo, "narrador/tramas/segredos/fonte.yaml", source)
             result = continuidade_autoral.validate_repo(repo)
         self.assertFalse(result["ok"])
         self.assertIn("fio_novo", result["erros"][0])
@@ -120,8 +120,8 @@ class ContinuidadeAutoralTest(unittest.TestCase):
         self.assertEqual(
             sources,
             [
-                "narrador/continuidade-autoral.yaml",
-                "narrador/segredos/fonte.yaml",
+                "narrador/indices/continuidade-autoral.yaml",
+                "narrador/tramas/segredos/fonte.yaml",
             ],
         )
         self.assertEqual(result["compromissos"][0]["id"], "fio_exemplo")
@@ -133,7 +133,7 @@ class ContinuidadeAutoralTest(unittest.TestCase):
             result, sources = continuidade_autoral.lookup(repo, "fio exmplo")
         self.assertFalse(result["encontrado"])
         self.assertTrue(result["candidatos"])
-        self.assertEqual(sources, ["narrador/continuidade-autoral.yaml"])
+        self.assertEqual(sources, ["narrador/indices/continuidade-autoral.yaml"])
 
 
 if __name__ == "__main__":

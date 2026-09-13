@@ -50,32 +50,32 @@ episodio:
   consultas_manuais_permitidas: 0
 
 documentacao_operacional:
-  - arquivo: narracao/protocolo-de-sessao.md
+  - arquivo: narracao/operacao/protocolo-de-sessao.md
     exige:
       - poetry run cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest
       - poetry run cronica concluir --ticket
     proibe:
       - poetry run cronica preparar --cena-id <id-estavel>\n
-  - arquivo: docs/agente/acesso-e-operacoes.md
+  - arquivo: docs/agente/operacao/acesso-e-operacoes.md
     exige:
       - → cronica preparar
       - → cronica concluir
     proibe:
       - → turno.py registrar
       - python3 ferramentas/turno.py registrar <<'JSON'
-  - arquivo: docs/agente/auditoria-final.md
+  - arquivo: docs/agente/engenharia/auditoria-final.md
     exige:
       - cronica preparar
       - cronica concluir
     proibe:
       - registrar o avanço com `turno.py registrar`
-  - arquivo: docs/agente/narracao-e-mundo.md
+  - arquivo: docs/agente/narrativa/narracao-e-mundo.md
     exige:
       - cronica preparar
       - cronica concluir
     proibe:
       - O avanço narrativo ao vivo usa `ferramentas/turno.py registrar`
-  - arquivo: docs/agente/integracao-reativa-v2.md
+  - arquivo: docs/agente/mundo/integracao-reativa-v2.md
     exige:
       - poetry run cronica preparar
       - poetry run cronica concluir --ticket

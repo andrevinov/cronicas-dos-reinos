@@ -29,7 +29,7 @@ import mundo
 import presenca_incidental
 
 SCHEMA = 1
-STATE = Path("narrador/permanencia-espacial/estado.yaml")
+STATE = Path("narrador/mundo/permanencia-espacial/estado.yaml")
 STATE_NATURE = "controle_reservado"
 MAX_EVALUATIONS = 64
 MAX_STATE_BYTES = 256 * 1024

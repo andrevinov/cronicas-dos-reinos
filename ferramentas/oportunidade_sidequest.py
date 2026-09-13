@@ -41,7 +41,7 @@ MAX_JUPPONGATANA = 4
 MAX_ANCHOR_CHARS = 320
 MIN_ANCHOR_CHARS = 20
 MAX_OPEN_QUESTS_PROJECTED = 3
-REWARD_ENVELOPE = Path("narrador/recompensas/envelope-sidequest.yaml")
+REWARD_ENVELOPE = Path("narrador/tramas/recompensas/envelope-sidequest.yaml")
 SHEET = Path("personagens/jogador/ficha.yaml")
 NPC_INDEX = estado_relacional.NPC_INDEX
 

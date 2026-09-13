@@ -13,10 +13,10 @@ FORBIDDEN={'yukyuzan_anji','uonuma_usui','kureha_shiranui','amagiri_seishiro','w
 EXPECTED_ALLIES={'shen_meihua','tsukishiro_joen'}
 EXPECTED_DIR={'ponte_de_kozakura','golden_lily_em_ravens_bluff'}
 EXPECTED_LINES={'impedir_consolidacao_de_provas','proteger_cadeia_logistica','mapear_rede_de_apoio_de_ren','mascarar_origem_kozakuriana','preservar_monopolio_da_ponte','expandir_presenca_de_masao','ocupar_espaco_urbano','desgastar_autoridade_de_ravens_bluff','pressionar_ren_por_vinculos','pressionar_identidade_marcial_de_ren','sustentar_cobertura_maritima'}
-PRINCIPLES=Path('narrador/arcos/parte_1/principios-de-conducao.yaml')
-DISCOVERY=Path('narrador/arcos/parte_1/descoberta-e-consequencias.yaml')
-LIFE=Path('narrador/arcos/parte_1/vida-civil.yaml')
-DIRECTION_INDEX=Path('narrador/direcoes/index.yaml'); DIRECTION_STATE=Path('narrador/direcoes/estado.yaml'); AGENDA=Path('narrador/mundo/agenda.yaml')
+PRINCIPLES=Path('narrador/tramas/arcos/parte_1/principios-de-conducao.yaml')
+DISCOVERY=Path('narrador/tramas/arcos/parte_1/descoberta-e-consequencias.yaml')
+LIFE=Path('narrador/tramas/arcos/parte_1/vida-civil.yaml')
+DIRECTION_INDEX=Path('narrador/tramas/direcoes/index.yaml'); DIRECTION_STATE=Path('narrador/tramas/direcoes/estado.yaml'); AGENDA=Path('narrador/mundo/agenda.yaml')
 
 class PartOneError(ValueError): pass
 

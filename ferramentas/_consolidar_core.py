@@ -675,7 +675,7 @@ def _hidden_rolls_output(repo: Path, session: int, batch: str, records: list[dic
     entries = [(record["id"], roll) for record in records for roll in record.get("rolagens_ocultas", [])]
     if not entries:
         return None
-    rel = Path("narrador/sessoes") / f"{session:03d}" / "rolagens-ocultas.md"
+    rel = Path("narrador/historico/sessoes") / f"{session:03d}" / "rolagens-ocultas.md"
     path = repo / rel
     existing = path.read_text(encoding="utf-8") if path.is_file() else f"# Rolagens ocultas — Sessão {session:03d}\n"
     marker = f"<!-- consolidacao:{batch} -->"
@@ -695,7 +695,7 @@ def _clock_documents(
 ) -> None:
     if not clock_deltas:
         return
-    index_rel = Path("narrador/relogios/index.yaml")
+    index_rel = Path("narrador/mundo/relogios/index.yaml")
     index_abs = repo / index_rel
     index = load_yaml(index_abs) if index_abs.is_file() else {
         "schema_relogios": 1,
@@ -707,7 +707,7 @@ def _clock_documents(
         raise ConsolidationError("índice de relógios inválido")
 
     for clock_id, pairs in clock_deltas.items():
-        rel = Path("narrador/relogios") / f"{clock_id}.yaml"
+        rel = Path("narrador/mundo/relogios") / f"{clock_id}.yaml"
         absolute = repo / rel
         doc = load_yaml(absolute) if absolute.is_file() else {
             "schema_relogio": 1,
@@ -928,7 +928,7 @@ def build_plan(repo: Path, kind: str) -> dict[str, Any] | None:
 
     _clock_documents(repo, clock_deltas, outputs)
     if clock_deltas:
-        affected.update(path for path in outputs if path.startswith("narrador/relogios/"))
+        affected.update(path for path in outputs if path.startswith("narrador/mundo/relogios/"))
 
     new_batch: dict[str, Any] | None = None
     combined_ledger = list(ledger)

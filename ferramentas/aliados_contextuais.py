@@ -2,7 +2,7 @@
 """Gate contextual de entrada de aliados futuros.
 
 Esta camada não cria uma segunda fila de aliados. Ela lê somente o índice/estado
-já canônicos de ``narrador/entradas`` e o Contrato de Arco para responder se um
+já canônicos de ``narrador/elenco/entradas`` e o Contrato de Arco para responder se um
 aliado futuro pode ser proposto por uma cena concreta.
 
 A ordem é deliberada:
@@ -25,8 +25,8 @@ import yaml
 
 import arcos
 
-INDEX = Path("narrador/entradas/index.yaml")
-STATE = Path("narrador/entradas/estado.yaml")
+INDEX = Path("narrador/elenco/entradas/index.yaml")
+STATE = Path("narrador/elenco/entradas/estado.yaml")
 RUNTIME = Path("runtime/contexto.yaml")
 VALID_STATES = {"latente", "presente", "inviavel"}
 

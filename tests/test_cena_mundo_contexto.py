@@ -55,7 +55,7 @@ mundo_stub.parse_instant = lambda d, h: (d, h)
 sys.modules.setdefault("mundo", mundo_stub)
 
 opps = types.ModuleType("oportunidades")
-opps.INDEX = Path("narrador/oportunidades/index.yaml")
+opps.INDEX = Path("narrador/tramas/oportunidades/index.yaml")
 
 
 class OpportunityError(ValueError):
@@ -146,7 +146,7 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/agentes/index.yaml",
+            "narrador/elenco/agentes/index.yaml",
             {
                 "schema_agentes": 2,
                 "natureza": "reservado",
@@ -167,7 +167,7 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/index.yaml",
+            "narrador/tramas/arcos/index.yaml",
             {
                 "schema_arcos": 1,
                 "natureza": "roteador_reservado",
@@ -175,14 +175,14 @@ class CenaMundoContextoTest(unittest.TestCase):
                     "parte_1": {
                         "titulo": "Parte 1",
                         "ordem": 1,
-                        "arquivo": "narrador/arcos/parte_1.yaml",
+                        "arquivo": "narrador/tramas/arcos/parte_1.yaml",
                         "proximo": None,
                     }
                 },
             },
         )
         self._write(
-            "narrador/arcos/estado.yaml",
+            "narrador/tramas/arcos/estado.yaml",
             {
                 "schema_estado_arcos": 2,
                 "natureza": "controle_reservado",
@@ -192,7 +192,7 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/parte_1.yaml",
+            "narrador/tramas/arcos/parte_1.yaml",
             {
                 "schema_arco": 4,
                 "natureza": "reservado",
@@ -203,7 +203,7 @@ class CenaMundoContextoTest(unittest.TestCase):
                 "inicio": {"tipo": "fato_canonico", "marcador": "inicio", "fonte": "campanha.yaml"},
                 "termino": {"tipo": "marco_explicito", "marcador": "fim", "fonte": "campanha.yaml"},
                 "orquestracao": {
-                    "fontes": {"plano": {"tipo": "documento_reservado", "arquivo": "narrador/masao/plano.md"}},
+                    "fontes": {"plano": {"tipo": "documento_reservado", "arquivo": "narrador/elenco/masao/plano.md"}},
                     "plano_mestre": {"agente": "masao", "objetivo": "objetivo", "referencia": "plano"},
                 },
                 "habilitacoes": {
@@ -222,7 +222,7 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/direcoes/estado.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
             {
                 "schema_estado_direcoes": 1,
                 "natureza": "controle_reservado",
@@ -237,11 +237,11 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/marcos-aparicao.yaml",
+            "narrador/tramas/arcos/marcos-aparicao.yaml",
             {
                 "schema_marcos_aparicao": 1,
                 "natureza": "roteador_reservado",
-                "fonte_canonica": "narrador/juppongatana/marcos-de-aparicao.md",
+                "fonte_canonica": "narrador/elenco/juppongatana/marcos-de-aparicao.md",
                 "regras": {
                     "elegivel_nao_e_aparicao": True,
                     "consumido_nao_bloqueia_reaparicao": True,
@@ -258,7 +258,7 @@ class CenaMundoContextoTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/arcos/estado-marcos-aparicao.yaml",
+            "narrador/tramas/arcos/estado-marcos-aparicao.yaml",
             {
                 "schema_estado_marcos_aparicao": 1,
                 "natureza": "controle_reservado",
@@ -335,7 +335,7 @@ class CenaMundoContextoTest(unittest.TestCase):
         self.assertTrue(result["operacoes_contextuais"])
 
     def test_direcao_contextual_nao_muta_estado(self):
-        path = self.repo / "narrador/direcoes/estado.yaml"
+        path = self.repo / "narrador/tramas/direcoes/estado.yaml"
         before = path.read_bytes()
         cena_mundo.open_scene(
             self.repo,
@@ -345,9 +345,9 @@ class CenaMundoContextoTest(unittest.TestCase):
         self.assertEqual(path.read_bytes(), before)
 
     def test_configuracao_de_arco_quebrada_falha_antes_de_mutar_local(self):
-        state = yaml.safe_load((self.repo / "narrador/arcos/estado.yaml").read_text())
+        state = yaml.safe_load((self.repo / "narrador/tramas/arcos/estado.yaml").read_text())
         state["arco_atual"] = "parte_inexistente"
-        self._write("narrador/arcos/estado.yaml", state)
+        self._write("narrador/tramas/arcos/estado.yaml", state)
         with mock.patch.object(cena_mundo.interacoes_mundo, "local_event") as local:
             with self.assertRaises(cena_mundo.SceneGateError):
                 cena_mundo.open_scene(

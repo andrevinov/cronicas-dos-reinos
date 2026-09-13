@@ -27,8 +27,8 @@ import ecologia_local
 import locais
 import pressao_aventura
 
-INDEX = Path("narrador/microeventos-locais/index.yaml")
-STATE = Path("narrador/microeventos-locais/estado.yaml")
+INDEX = Path("narrador/mundo/microeventos-locais/index.yaml")
+STATE = Path("narrador/mundo/microeventos-locais/estado.yaml")
 MAX_INDEX_BYTES = 16 * 1024
 MAX_STATE_BYTES = 16 * 1024
 MAX_CARDS = 24

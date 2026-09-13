@@ -39,13 +39,13 @@ class DirectionsRepositoryTest(unittest.TestCase):
         self.assertEqual(
             result["fontes_lidas"],
             [
-                "narrador/direcoes/index.yaml",
-                "narrador/direcoes/estado.yaml",
-                "narrador/direcoes/shin_kozakura.yaml",
+                "narrador/tramas/direcoes/index.yaml",
+                "narrador/tramas/direcoes/estado.yaml",
+                "narrador/tramas/direcoes/shin_kozakura.yaml",
             ],
         )
-        self.assertNotIn("narrador/direcoes/ponte_de_kozakura.yaml", result["fontes_lidas"])
-        self.assertNotIn("narrador/ponte-de-kozakura/shin-kozakura.md", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/direcoes/ponte_de_kozakura.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/ponte-de-kozakura/shin-kozakura.md", result["fontes_lidas"])
 
     def test_status_real_reflete_estado_persistido_sem_congelar_marcos_iniciais(self):
         index = direcoes.load_index(ROOT)
@@ -67,7 +67,7 @@ class DirectionsSyntheticTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        (self.repo / "narrador/direcoes").mkdir(parents=True)
+        (self.repo / "narrador/tramas/direcoes").mkdir(parents=True)
         (self.repo / "fontes").mkdir(parents=True)
         (self.repo / "estado").mkdir(parents=True)
         # Esta suíte testa o motor de direções isoladamente. O gate de arco possui
@@ -79,20 +79,20 @@ class DirectionsSyntheticTest(unittest.TestCase):
         )
         self._arc_gate.start()
         self._yaml(
-            "narrador/direcoes/index.yaml",
+            "narrador/tramas/direcoes/index.yaml",
             {
                 "schema_direcoes": 1,
                 "natureza": "reservado",
                 "direcoes": {
                     "ponte": {
                         "nome": "Ponte",
-                        "arquivo": "narrador/direcoes/ponte.yaml",
+                        "arquivo": "narrador/tramas/direcoes/ponte.yaml",
                         "avaliacao": {"cadencia": "amanhecer", "intervalo_dias": 2, "inicio": "12 Eleasis, 1372 DR"},
                         "ativacao": None,
                     },
                     "bairro": {
                         "nome": "Bairro",
-                        "arquivo": "narrador/direcoes/bairro.yaml",
+                        "arquivo": "narrador/tramas/direcoes/bairro.yaml",
                         "avaliacao": {"cadencia": "amanhecer", "intervalo_dias": 7, "inicio": "11 Eleasis, 1372 DR"},
                         "ativacao": {"depende_de": {"direcao": "ponte", "marco": "controle_perdido"}},
                     },
@@ -100,7 +100,7 @@ class DirectionsSyntheticTest(unittest.TestCase):
             },
         )
         self._yaml(
-            "narrador/direcoes/estado.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
             {
                 "schema_estado_direcoes": 1,
                 "natureza": "controle_reservado",
@@ -165,13 +165,13 @@ class DirectionsSyntheticTest(unittest.TestCase):
                 for i, (mid, evidence) in enumerate(milestones, start=1)
             ],
         }
-        self._yaml(f"narrador/direcoes/{did}.yaml", data)
+        self._yaml(f"narrador/tramas/direcoes/{did}.yaml", data)
 
     def test_evidencia_inventada_faz_validacao_falhar(self):
-        path = self.repo / "narrador/direcoes/ponte.yaml"
+        path = self.repo / "narrador/tramas/direcoes/ponte.yaml"
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         data["marcos"][0]["evidencia"] = "texto que não existe"
-        self._yaml("narrador/direcoes/ponte.yaml", data)
+        self._yaml("narrador/tramas/direcoes/ponte.yaml", data)
         result = direcoes.validate_repo(self.repo)
         self.assertFalse(result["ok"])
         self.assertIn("não possui evidência", result["erros"][0])
@@ -210,7 +210,7 @@ class DirectionsSyntheticTest(unittest.TestCase):
             "marcos_concluidos": ["pistas", "controle_perdido"],
             "historico_recente": [],
         }
-        self._yaml("narrador/direcoes/estado.yaml", state)
+        self._yaml("narrador/tramas/direcoes/estado.yaml", state)
         result = direcoes.activate(self.repo, "bairro", "Ponte liberada", "A dependência foi cumprida.")
         self.assertEqual(result["estado"], "ativa")
         self.assertEqual(result["marco_atual"], "uso")
@@ -255,7 +255,7 @@ class DirectionsWorldIntegrationTest(unittest.TestCase):
         self.assertEqual(result["direcoes_reconsiderar"], ["ponte"])
         self.assertEqual(result["novas_pendencias"][0]["tipo"], "avaliar_direcao")
         self.assertEqual(result["novas_pendencias"][0]["direcao"], "ponte")
-        self.assertNotIn("narrador/direcoes/ponte.yaml", result["fontes_lidas"])
+        self.assertNotIn("narrador/tramas/direcoes/ponte.yaml", result["fontes_lidas"])
 
     def test_pendencia_aberta_impede_repeticao_da_mesma_direcao(self):
         self.case._yaml(
@@ -275,7 +275,7 @@ class DirectionsWorldIntegrationTest(unittest.TestCase):
             "marcos_concluidos": ["pistas", "controle_perdido"],
             "historico_recente": [],
         }
-        self.case._yaml("narrador/direcoes/estado.yaml", state)
+        self.case._yaml("narrador/tramas/direcoes/estado.yaml", state)
         result = direcoes_mundo.process_checkpoint(self.repo)
         records = [item for item in result["novas_pendencias"] if item["tipo"] == "ativar_direcao"]
         self.assertEqual(len(records), 1)

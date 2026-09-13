@@ -256,7 +256,7 @@ class EntregasCausaisPersistenceTest(unittest.TestCase):
         self.assertIn("não expor conteúdo sem canal válido", projection["guardrails"])
 
     def test_latest_le_recibo_do_relogio_transacional(self):
-        clock = self.repo / "narrador/relogios" / f"{entregas_causais.clock_id(PENDING_ID)}.yaml"
+        clock = self.repo / "narrador/mundo/relogios" / f"{entregas_causais.clock_id(PENDING_ID)}.yaml"
         clock.parent.mkdir(parents=True, exist_ok=True)
         event = self.blocked_event()
         clock.write_text(

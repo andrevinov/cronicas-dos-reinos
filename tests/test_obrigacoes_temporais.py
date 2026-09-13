@@ -58,11 +58,11 @@ class TemporalObligationFixture(unittest.TestCase):
         )
         dump(self.repo / "estado/relacoes/silva_elkwood.yaml", {"texto": "situação ainda em trânsito"})
         dump(
-            self.repo / "narrador/obrigacoes-temporais/evidencias.yaml",
+            self.repo / "narrador/mundo/obrigacoes-temporais/evidencias.yaml",
             {"schema_migracao_obrigacoes_temporais": 1, "natureza": "reservado", "candidatos": {}},
         )
         dump(
-            self.repo / "narrador/obrigacoes-temporais/estado.yaml",
+            self.repo / "narrador/mundo/obrigacoes-temporais/estado.yaml",
             {
                 "schema_estado_obrigacoes_temporais": 1,
                 "natureza": "controle_reservado",
@@ -76,7 +76,7 @@ class TemporalObligationFixture(unittest.TestCase):
             {"schema_estado": 1, "compromissos": {"retorno_silva": record()}},
         )
         dump(
-            self.repo / "narrador/obrigacoes-temporais/indice.yaml",
+            self.repo / "narrador/mundo/obrigacoes-temporais/indice.yaml",
             obrigacoes_temporais.build_index({"retorno_silva": record()}),
         )
 
@@ -186,7 +186,7 @@ class TemporalMigrationTest(unittest.TestCase):
             repo = Path(tmp)
             dump(repo / "estado/estado-atual.yaml", {"schema_estado": 1})
             dump(
-                repo / "narrador/obrigacoes-temporais/estado.yaml",
+                repo / "narrador/mundo/obrigacoes-temporais/estado.yaml",
                 {
                     "schema_estado_obrigacoes_temporais": 1,
                     "natureza": "controle_reservado",
@@ -196,14 +196,14 @@ class TemporalMigrationTest(unittest.TestCase):
                 },
             )
             dump(
-                repo / "narrador/obrigacoes-temporais/indice.yaml",
+                repo / "narrador/mundo/obrigacoes-temporais/indice.yaml",
                 obrigacoes_temporais.build_index({}),
             )
             dump(repo / "historico/prova.yaml", {"texto": "promessa literal comprovada"})
             dump(repo / "estado/relacoes/silva_elkwood.yaml", {"texto": "situação ainda em trânsito"})
             candidate = record()
             dump(
-                repo / "narrador/obrigacoes-temporais/evidencias.yaml",
+                repo / "narrador/mundo/obrigacoes-temporais/evidencias.yaml",
                 {
                     "schema_migracao_obrigacoes_temporais": 1,
                     "natureza": "reservado",
@@ -224,7 +224,7 @@ class TemporalMigrationTest(unittest.TestCase):
             self.assertIn("retorno_silva", state["compromissos"])
 
             shutil.rmtree(repo / "historico")
-            (repo / "narrador/obrigacoes-temporais/evidencias.yaml").unlink()
+            (repo / "narrador/mundo/obrigacoes-temporais/evidencias.yaml").unlink()
             second = obrigacoes_temporais.migrate(repo)
             self.assertTrue(second["ja_executada"])
             self.assertEqual(second["fontes_lidas"], [obrigacoes_temporais.TRACKER_PATH.as_posix()])
@@ -234,7 +234,7 @@ class TemporalMigrationTest(unittest.TestCase):
             repo = Path(tmp)
             dump(repo / "estado/estado-atual.yaml", {"schema_estado": 1})
             dump(
-                repo / "narrador/obrigacoes-temporais/estado.yaml",
+                repo / "narrador/mundo/obrigacoes-temporais/estado.yaml",
                 {
                     "schema_estado_obrigacoes_temporais": 1,
                     "natureza": "controle_reservado",
@@ -243,11 +243,11 @@ class TemporalMigrationTest(unittest.TestCase):
                     "despachos": {},
                 },
             )
-            dump(repo / "narrador/obrigacoes-temporais/indice.yaml", obrigacoes_temporais.build_index({}))
+            dump(repo / "narrador/mundo/obrigacoes-temporais/indice.yaml", obrigacoes_temporais.build_index({}))
             dump(repo / "historico/prova.yaml", {"texto": "outra coisa"})
             dump(repo / "estado/relacoes/silva_elkwood.yaml", {"texto": "situação ainda em trânsito"})
             dump(
-                repo / "narrador/obrigacoes-temporais/evidencias.yaml",
+                repo / "narrador/mundo/obrigacoes-temporais/evidencias.yaml",
                 {
                     "schema_migracao_obrigacoes_temporais": 1,
                     "natureza": "reservado",

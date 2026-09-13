@@ -1,0 +1,146 @@
+{
+  "schema_catalogo_modulos": 1,
+  "natureza": "catálogo de avaliação; não é estado canônico da campanha",
+  "modulos": [
+    {
+      "id": "emergent_sidequest_opportunity",
+      "responsabilidade": "Exigir decisão explícita sobre a existência de nova âncora causal e consultar autoria somente no caminho positivo.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Oportunidades de missões surgiram na medida certa",
+      "indicadores_especializados": ["cobertura_dos_preparos", "precisao_das_ancoras", "duplicacao_por_janela"]
+    },
+    {
+      "id": "emergent_sidequest_authoring",
+      "responsabilidade": "Transformar uma âncora causal validada em sidequest completa e persistente somente quando a oferta entra na ficção.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Qualidade e profundidade das novas missões",
+      "indicadores_especializados": ["completude_do_contrato", "profundidade", "sucesso_na_primeira_tentativa", "custo_por_autoria"]
+    },
+    {
+      "id": "active_sidequest_reassessment",
+      "responsabilidade": "Projetar em cada preparo o estado compacto de até duas sidequests aceitas para que fatos, prazos e terminais não sejam esquecidos.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Continuidade das missões ativas",
+      "indicadores_especializados": ["cobertura_das_missoes_ativas", "projecao_obsoleta", "payload", "estouro_de_orcamento"]
+    },
+    {
+      "id": "transactional_sidequest_progress",
+      "responsabilidade": "Obrigar cada missão ativa a receber decisão factual no mesmo concluir e instalar progresso, terminal e evidências de forma atômica e idempotente.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Registro consistente do progresso das missões",
+      "indicadores_especializados": ["decisao_por_missao_ativa", "atomicidade", "validade_da_evidencia", "retries"]
+    },
+    {
+      "id": "sidequest_progression",
+      "responsabilidade": "Manter fases, prazos, condições de sucesso ou falha e consequências de sidequests a partir de fatos canônicos.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Ritmo e profundidade do progresso das missões",
+      "indicadores_especializados": ["precisao_das_fases", "compressao_indevida", "terminal_prematuro"]
+    },
+    {
+      "id": "quest_rewards",
+      "responsabilidade": "Materializar e aplicar contratos executáveis de recompensa, descoberta ou perda das sidequests.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Coerência das recompensas e descobertas de missões",
+      "indicadores_especializados": ["recompensa_congelada", "aplicacao_exatamente_uma_vez", "aplicacao_prematura"]
+    },
+    {
+      "id": "sidequest_success_reactions",
+      "responsabilidade": "Criar reações causais imutáveis a sucesso ou progresso excepcional sem reabrir a missão nem inventar capacidade adversarial.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Naturalidade das reações ao progresso das missões",
+      "indicadores_especializados": ["gatilho_legitimo", "causalidade", "duplicacao", "reacao_prematura"]
+    },
+    {
+      "id": "canon_bridge",
+      "responsabilidade": "Permitir que uma sidequest aceita produza ponte causal para a espinha canônica sem editar o cânone-base nem controlar Ren.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Integração das missões com a trama principal",
+      "indicadores_especializados": ["evidencia_da_ponte", "hipotese_promovida", "vazamento_canonico"]
+    },
+    {
+      "id": "canonical_secret_quests",
+      "responsabilidade": "Projetar oportunidades de quest vindas de causas canônicas reservadas, sem transformar encontro ou afinidade em missão aleatória.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Oportunidades reservadas da trama",
+      "indicadores_especializados": ["causa_autorizada", "ausencia_de_vazamento", "oferta_legitima"]
+    },
+    {
+      "id": "seven_names_migration_regression",
+      "responsabilidade": "Preservar a migração histórica e a regressão ponta a ponta da sidequest Sete Nomes sem retcon ou terminal inventado.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Compatibilidade histórica da missão Sete Nomes",
+      "indicadores_especializados": ["contexto_relevante", "taxa_de_falso_marcador", "preservacao_historica"]
+    },
+    {
+      "id": "npc_social_initiative",
+      "responsabilidade": "Decidir se um NPC já presente ou contactável pode iniciar uma troca sem criar presença, encontro, segredo ou sidequest.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Naturalidade da iniciativa social dos NPCs",
+      "indicadores_especializados": ["elegibilidade_por_presenca_ou_contato", "abertura_por_janela", "repeticao", "rendimento_visivel"]
+    },
+    {
+      "id": "world_local_incidents",
+      "responsabilidade": "Avaliar e confirmar incidentes ou microeventos coerentes com entrada, exploração, trânsito ou permanência no local.",
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Naturalidade dos incidentes e microeventos locais",
+      "indicadores_especializados": ["gatilho_espacial_correto", "reserva_e_confirmacao", "ausencia_de_reroll"]
+    },
+    {
+      "id": "persistent_world_conditions",
+      "responsabilidade": "Projetar condições mundiais de vários dias na cena e registrar início ou fim canônico sem transformar a condição automaticamente em teste ou penalidade.",
+      "visibilidade_jogador": "indireta",
+      "rotulo_jogador": "Consistência das condições persistentes do mundo",
+      "indicadores_especializados": ["projecao_de_condicoes_ativas", "falsos_positivos", "consistencia_do_efeito"]
+    },
+    {
+      "id": "liveness_boundary",
+      "responsabilidade": "Agregar causas já existentes em compressões temporais e produzir recibo de calma ou pressão alcançável.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Continuidade do mundo durante passagens de tempo",
+      "indicadores_especializados": ["cobertura_das_causas", "calma_justificada", "interrupcoes_corretas"]
+    },
+    {
+      "id": "reactive_pressure_routing",
+      "responsabilidade": "Ordenar matérias narrativas autorizadas e fazer pressões adversariais comprometidas prevalecerem sobre iniciativas incidentais sem fabricar ameaça.",
+      "visibilidade_jogador": "indireta",
+      "rotulo_jogador": "Relevância e naturalidade das pressões narrativas",
+      "indicadores_especializados": ["fonte_causal", "prioridade_correta", "custo_de_resultados_neutros"]
+    },
+    {
+      "id": "batch_world_boundary",
+      "responsabilidade": "Resolver em lote pendências do Mundo Vivo antes de permitir narração ou escrita do turno.",
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Resolução das mudanças do mundo entre cenas",
+      "indicadores_especializados": ["pendencias_cobertas", "eventos_materializados", "bloqueios", "tempo_de_resolucao"]
+    },
+    {
+      "id": "secret_canon",
+      "responsabilidade": "Fazer situações futuras canônicas entrarem no mundo na data correta sem escolher a resposta de Ren nem conceder conhecimento indevido.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Cronologia reservada da trama",
+      "indicadores_especializados": ["eventos_vencidos_cobertos", "cronologia", "vazamentos", "evento_canonico_noop"]
+    },
+    {
+      "id": "adversarial_integrity",
+      "responsabilidade": "Congelar capacidade, risco, consequências e limites dos antagonistas sem onisciência, poder novo ou proteção artificial.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Integridade das forças adversárias",
+      "indicadores_especializados": ["capacidades_congeladas", "conhecimento_legitimo", "consistencia_de_recursos"]
+    },
+    {
+      "id": "concurrent_adversarial_operations",
+      "responsabilidade": "Comprometer operações adversariais simultâneas, reservar recursos separadamente e preservar consequências de cada frente antes da escolha do jogador.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Independência das operações adversárias",
+      "indicadores_especializados": ["separacao_das_frentes", "recursos_nao_duplicados", "independencia_de_ordem"]
+    },
+    {
+      "id": "underground_tournament",
+      "responsabilidade": "Gerir a mini-trama temporal do torneio clandestino e sua integração com fronteiras e cenas elegíveis.",
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Coerência temporal do torneio clandestino",
+      "indicadores_especializados": ["elegibilidade_temporal", "cronologia", "ativacoes_sem_relacao"]
+    }
+  ]
+}

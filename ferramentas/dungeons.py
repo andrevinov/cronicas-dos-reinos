@@ -25,10 +25,10 @@ except ModuleNotFoundError:
     from ferramentas import adversarios, ameacas, locais, recompensas
 
 
-CONTRACT_PATH = Path("narrador/dungeons/contrato.yaml")
-INDEX_PATH = Path("narrador/dungeons/index.yaml")
-DUNGEONS_DIR = Path("narrador/dungeons")
-PLANNED_REWARDS_PATH = Path("narrador/recompensas/planejadas.yaml")
+CONTRACT_PATH = Path("narrador/tramas/dungeons/contrato.yaml")
+INDEX_PATH = Path("narrador/tramas/dungeons/index.yaml")
+DUNGEONS_DIR = Path("narrador/tramas/dungeons")
+PLANNED_REWARDS_PATH = Path("narrador/tramas/recompensas/planejadas.yaml")
 SCHEMA = 1
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_]{0,95}$")
 DICE_RE = re.compile(r"^[1-9][0-9]*d[1-9][0-9]*(?:[+-][0-9]+)?$")

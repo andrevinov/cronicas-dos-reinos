@@ -23,12 +23,12 @@ import mundo
 import arco_mundo
 import rede_protegida
 
-INDEX = Path("narrador/eventos/index.yaml")
-STATE = Path("narrador/eventos/estado.yaml")
-INTERACTIONS = Path("narrador/eventos/interacoes.yaml")
-CARDS_DIR = Path("narrador/eventos/cartas")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
-LIGHT_INDEX = Path("narrador/agentes-leves/index.yaml")
+INDEX = Path("narrador/mundo/eventos/index.yaml")
+STATE = Path("narrador/mundo/eventos/estado.yaml")
+INTERACTIONS = Path("narrador/mundo/eventos/interacoes.yaml")
+CARDS_DIR = Path("narrador/mundo/eventos/cartas")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
+LIGHT_INDEX = Path("narrador/elenco/agentes-leves/index.yaml")
 
 VALID_RESULTS = {"rotina", "evento"}
 VALID_SCALES = {"bairro", "cidade", "regional"}

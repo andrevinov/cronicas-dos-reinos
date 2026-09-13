@@ -36,4 +36,4 @@ transacao:
   fonte_canonica_obrigatoria: true
   evidencia_literal_obrigatoria: true
   nivel_mecanico_nao_e_aplicado_automaticamente: true
-  unico_arquivo_mutado_pelo_gate: narrador/juppongatana/estado-progressao.yaml
+  unico_arquivo_mutado_pelo_gate: narrador/elenco/juppongatana/estado-progressao.yaml

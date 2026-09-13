@@ -18,21 +18,21 @@ class AllyContextTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        self._write("narrador/arcos/index.yaml", {
+        self._write("narrador/tramas/arcos/index.yaml", {
             "schema_arcos": 1, "natureza": "roteador_reservado",
-            "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/arcos/parte_1.yaml", "proximo": None}},
+            "arcos": {"parte_1": {"titulo": "Parte 1", "ordem": 1, "arquivo": "narrador/tramas/arcos/parte_1.yaml", "proximo": None}},
         })
-        self._write("narrador/arcos/estado.yaml", {
+        self._write("narrador/tramas/arcos/estado.yaml", {
             "schema_estado_arcos": 2, "natureza": "controle_reservado",
             "arco_atual": "parte_1", "estado": "ativo", "historico_transicoes": [],
         })
-        self._write("narrador/arcos/parte_1.yaml", {
+        self._write("narrador/tramas/arcos/parte_1.yaml", {
             "schema_arco": 4, "natureza": "reservado", "estatuto": "contrato_orquestrador_de_arco",
             "id": "parte_1", "titulo": "Parte 1", "principio": "Fixture de aliados contextuais.",
             "inicio": {"tipo": "fato_canonico", "marcador": "inicio", "fonte": "campanha.yaml"},
             "termino": {"tipo": "marco_explicito", "marcador": "fim", "fonte": "campanha.yaml"},
             "orquestracao": {
-                "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/masao/plano.md"}},
+                "fontes": {"plano_mestre": {"tipo": "documento_reservado", "arquivo": "narrador/elenco/masao/plano.md"}},
                 "plano_mestre": {"agente": "masao", "objetivo": "objetivo", "referencia": "plano_mestre"},
             },
             "habilitacoes": {
@@ -43,12 +43,12 @@ class AllyContextTest(unittest.TestCase):
                 "linha": {"objetivo": "objetivo_linha", "executores": ["masao"], "referencia": "plano_mestre"},
             },
         })
-        self._write("narrador/entradas/index.yaml", {
+        self._write("narrador/elenco/entradas/index.yaml", {
             "schema_entradas": 1, "natureza": "reservado", "cadencia_padrao_dias": 3,
             "candidatos": {
-                "shen": {"nome": "Shen", "ordem": 1, "nivel_minimo_normal": 6, "arquivo": "narrador/entradas/shen.yaml"},
-                "joen": {"nome": "Joen", "ordem": 2, "nivel_minimo_normal": 7, "arquivo": "narrador/entradas/joen.yaml"},
-                "futuro": {"nome": "Futuro", "ordem": 3, "nivel_minimo_normal": 8, "arquivo": "narrador/entradas/futuro.yaml"},
+                "shen": {"nome": "Shen", "ordem": 1, "nivel_minimo_normal": 6, "arquivo": "narrador/elenco/entradas/shen.yaml"},
+                "joen": {"nome": "Joen", "ordem": 2, "nivel_minimo_normal": 7, "arquivo": "narrador/elenco/entradas/joen.yaml"},
+                "futuro": {"nome": "Futuro", "ordem": 3, "nivel_minimo_normal": 8, "arquivo": "narrador/elenco/entradas/futuro.yaml"},
             },
         })
         self._state(shen_due=None, shen_state="latente", level=6)
@@ -61,7 +61,7 @@ class AllyContextTest(unittest.TestCase):
         p.write_text(yaml.safe_dump(data,allow_unicode=True,sort_keys=False),encoding="utf-8")
 
     def _state(self, *, shen_due, shen_state, level, shen_anticipated=False, joen_due=None, joen_state="latente", shen_open=True, joen_open=False):
-        self._write("narrador/entradas/estado.yaml", {
+        self._write("narrador/elenco/entradas/estado.yaml", {
             "schema_estado_entradas": 1, "natureza": "controle_reservado",
             "candidatos": {
                 "shen": {"estado": shen_state, "antecipado": shen_anticipated, "proxima_avaliacao": shen_due, "historico_recente": ([{"acao": "abrir_janela_contextual"}] if shen_open and shen_due is None and shen_state == "latente" else [])},
@@ -103,11 +103,11 @@ class AllyContextTest(unittest.TestCase):
 
     def test_fora_do_arco_para_antes_de_ler_entradas(self):
         # "futuro" existe na camada de entradas mas não está habilitado no arco.
-        (self.repo/"narrador/entradas/estado.yaml").unlink()
+        (self.repo/"narrador/elenco/entradas/estado.yaml").unlink()
         gate=aliados_contextuais.gate(self.repo,"futuro")
         self.assertFalse(gate["permitido"])
         self.assertEqual(gate["motivo"],"aliado_bloqueado_pelo_arco")
-        self.assertNotIn("narrador/entradas/estado.yaml", gate["fontes_lidas"])
+        self.assertNotIn("narrador/elenco/entradas/estado.yaml", gate["fontes_lidas"])
 
     def test_null_sem_registro_de_abertura_nao_vira_janela_por_acidente(self):
         self._state(shen_due=None, shen_state="latente", level=6, shen_open=False)
@@ -116,7 +116,7 @@ class AllyContextTest(unittest.TestCase):
         self.assertEqual(gate["motivo"],"janela_contextual_nao_aberta")
 
     def test_gate_e_somente_leitura(self):
-        path=self.repo/"narrador/entradas/estado.yaml"; before=path.read_bytes()
+        path=self.repo/"narrador/elenco/entradas/estado.yaml"; before=path.read_bytes()
         aliados_contextuais.gate(self.repo,"shen")
         self.assertEqual(before,path.read_bytes())
 

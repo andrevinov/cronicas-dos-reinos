@@ -157,7 +157,7 @@ class CanonicalIntentRewriteContractRepositoryTest(unittest.TestCase):
         self.assertTrue(all(budget["invariantes"].values()))
 
     def test_documentacao_task39_permanece_spoiler_light(self):
-        public = (ROOT / "docs/task39-canonical-intent-rewrite-contract.md").read_text(
+        public = (ROOT / "docs/agente/mundo/direcoes-como-destino.md").read_text(
             encoding="utf-8"
         )
         for event_id in self.future:

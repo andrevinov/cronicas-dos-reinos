@@ -29,8 +29,8 @@ import yaml
 import arcos
 import marcos_aparicao
 
-CONTROL = Path("narrador/arcos/controle-mundo.yaml")
-STRATEGIC_INDEX = Path("narrador/agentes/index.yaml")
+CONTROL = Path("narrador/tramas/arcos/controle-mundo.yaml")
+STRATEGIC_INDEX = Path("narrador/elenco/agentes/index.yaml")
 VALID_AGENT_GROUPS = {"antagonistas"}
 VALID_PURPOSES = {"reavaliacao", "evento", "movimento", "presenca"}
 ACTION_PURPOSES = {"reavaliacao", "evento"}

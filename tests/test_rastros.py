@@ -33,7 +33,7 @@ class RastrosSyntheticTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         self.y(
-            "narrador/rastros/index.yaml",
+            "narrador/mundo/rastros/index.yaml",
             {
                 "schema_indice_rastros": 1,
                 "natureza": "reservado",
@@ -129,7 +129,7 @@ class RastrosSyntheticTest(unittest.TestCase):
         trace_id = rastros.register(self.repo, self.spec())["rastro_id"]
         result = rastros.candidates(self.repo)
         self.assertEqual([x["id"] for x in result["rastros"]], [trace_id])
-        self.assertNotIn(f"narrador/rastros/itens/{trace_id}.yaml", result["fontes_lidas"])
+        self.assertNotIn(f"narrador/mundo/rastros/itens/{trace_id}.yaml", result["fontes_lidas"])
 
     def test_area_errada_bloqueia_rastro(self):
         rastros.register(self.repo, self.spec())
@@ -156,7 +156,7 @@ class RastrosSyntheticTest(unittest.TestCase):
         self.assertNotIn("origem", result["resultado"])
         self.assertEqual(
             result["fontes_lidas"],
-            ["narrador/rastros/index.yaml", f"narrador/rastros/itens/{trace_id}.yaml"],
+            ["narrador/mundo/rastros/index.yaml", f"narrador/mundo/rastros/itens/{trace_id}.yaml"],
         )
 
     def test_preparar_descoberta_so_propoe_delta(self):
@@ -179,11 +179,11 @@ class RastrosSyntheticTest(unittest.TestCase):
             rastros.register(self.repo, self.spec(evidence="Isto não existe na fonte."))
 
     def test_carta_nao_resolvida_nao_pode_ser_fonte(self):
-        card = self.repo / "narrador/eventos/cartas/x.yaml"
+        card = self.repo / "narrador/mundo/eventos/cartas/x.yaml"
         card.parent.mkdir(parents=True, exist_ok=True)
         card.write_text("premissa: algo pode acontecer\n", encoding="utf-8")
         spec = self.spec(evidence="algo pode acontecer")
-        spec["origem"]["fonte"] = "narrador/eventos/cartas/x.yaml"
+        spec["origem"]["fonte"] = "narrador/mundo/eventos/cartas/x.yaml"
         with self.assertRaises(rastros.TraceError):
             rastros.register(self.repo, spec)
 

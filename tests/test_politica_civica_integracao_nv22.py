@@ -128,7 +128,7 @@ class CivicWriterIntegrationTest(legacy.PlanFixture):
         plan = consolidar.build_plan(self.repo, "cena")
         self.assertIn("estado/estado-atual.yaml", plan["outputs"])
         receipt_target = delivery["deltas"][1]["alvo"].split(":", 1)[1]
-        self.assertIn(f"narrador/relogios/{receipt_target}.yaml", plan["outputs"])
+        self.assertIn(f"narrador/mundo/relogios/{receipt_target}.yaml", plan["outputs"])
         staged = yaml.safe_load(plan["outputs"]["estado/estado-atual.yaml"].decode("utf-8"))
         self.assertTrue(any(
             item["medida"] == measure_id

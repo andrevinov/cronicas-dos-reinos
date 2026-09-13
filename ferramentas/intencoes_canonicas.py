@@ -18,8 +18,8 @@ import yaml
 import eventos_canonicos
 import mundo
 
-INDEX = Path("narrador/arcos/parte_1/intencoes-canonicas.yaml")
-INTENTS_DIR = Path("narrador/arcos/parte_1/intencoes")
+INDEX = Path("narrador/tramas/arcos/parte_1/intencoes-canonicas.yaml")
+INTENTS_DIR = Path("narrador/tramas/arcos/parte_1/intencoes")
 SCHEMA = 1
 INTENT_SCHEMA = 1
 ARC = eventos_canonicos.ARC

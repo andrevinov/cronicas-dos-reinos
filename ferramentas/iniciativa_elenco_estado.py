@@ -11,7 +11,7 @@ from typing import Any
 import yaml
 
 SCHEMA = 1
-STATE = Path("narrador/iniciativas-elenco/estado.yaml")
+STATE = Path("narrador/elenco/iniciativas-elenco/estado.yaml")
 STATE_NATURE = "controle_reservado"
 MAX_STATE_BYTES = 128 * 1024
 MAX_RECORDS = 256

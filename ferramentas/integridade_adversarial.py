@@ -33,7 +33,7 @@ import rede_protegida
 import sidequests_emergentes as emergent
 
 POLICY = Path("narrador/mundo/autoridade-consequencias.yaml")
-CONTRACTS_DIR = Path("narrador/sidequests-emergentes/stakes")
+CONTRACTS_DIR = Path("narrador/tramas/sidequests/emergentes/stakes")
 SCHEMA = 1
 MAX_CONTRACT_BYTES = 24 * 1024
 MAX_PREP_BYTES = 8 * 1024
@@ -65,9 +65,9 @@ RISK_TARGET_TYPES = {
 CAPABILITY_SOURCES = {"agente", "quest"}
 KNOWLEDGE_SOURCES = {"agente", "quest"}
 FORBIDDEN_PROOF_PREFIXES = (
-    "narrador/sidequests-emergentes/",
-    "narrador/arcos/parte_1/intencoes/",
-    "narrador/arcos/parte_1/eventos/",
+    "narrador/tramas/sidequests/emergentes/",
+    "narrador/tramas/arcos/parte_1/intencoes/",
+    "narrador/tramas/arcos/parte_1/eventos/",
 )
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.:-]{0,127}$")
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_:-]{0,95}$")

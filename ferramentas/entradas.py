@@ -7,10 +7,10 @@ import yaml
 import mundo
 import arco_mundo
 
-INDEX=Path("narrador/entradas/index.yaml")
-STATE=Path("narrador/entradas/estado.yaml")
+INDEX=Path("narrador/elenco/entradas/index.yaml")
+STATE=Path("narrador/elenco/entradas/estado.yaml")
 RUNTIME=Path("runtime/contexto.yaml")
-DIR=Path("narrador/entradas")
+DIR=Path("narrador/elenco/entradas")
 VALID={"latente","presente","inviavel"}
 TERMINAIS={"presente","inviavel"}
 
@@ -50,7 +50,7 @@ def load_index(repo):
         if not isinstance(m.get("ordem"),int) or m["ordem"]<1: raise EntryError(f"{cid}: ordem inválida")
         if not isinstance(m.get("nivel_minimo_normal"),int) or m["nivel_minimo_normal"]<1: raise EntryError(f"{cid}: nível inválido")
         raw=text(m.get("arquivo"),f"{cid}.arquivo"); p=Path(raw)
-        if p.is_absolute() or ".." in p.parts or DIR not in p.parents: raise EntryError(f"{cid}: arquivo fora de narrador/entradas")
+        if p.is_absolute() or ".." in p.parts or DIR not in p.parents: raise EntryError(f"{cid}: arquivo fora de narrador/elenco/entradas")
         if raw in files: raise EntryError("arquivo duplicado")
         files.add(raw); orders.append(m["ordem"])
     if sorted(orders)!=list(range(1,len(orders)+1)): raise EntryError("ordens devem formar 1..N")

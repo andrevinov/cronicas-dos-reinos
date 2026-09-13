@@ -31,11 +31,11 @@ assert pressure['ok'] and pressure['frentes'] == 5, pressure
 canonical = eventos_canonicos.validate(ROOT)
 assert canonical['ok'] and canonical['eventos'] == 17, canonical
 
-pan = yaml.safe_load((ROOT / 'narrador/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
+pan = yaml.safe_load((ROOT / 'narrador/elenco/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
 assert pan['estado'] == 'latente'
 assert '27 Eleasis' in pan['plano_atual']['prazo_ou_oportunidade']
 
-golden = (ROOT / 'narrador/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
+golden = (ROOT / 'narrador/tramas/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
 assert '27 Eleasis' in golden and '10:00' in golden
 assert '29 Eleasis' in golden and 'não atacam' in golden
 

@@ -21,7 +21,7 @@ class EntryLocalPermanenceCompositionTest(unittest.TestCase):
     def test_sem_plano_de_entrada_preserva_preparo_nv15_sem_consulta_dirigida(self):
         repo = Path("/fixture-sem-nv19")
         base = {
-            "publico": {"local_id": "Circo", "fontes_lidas": ["narrador/permanencia-espacial/estado.yaml"]},
+            "publico": {"local_id": "Circo", "fontes_lidas": ["narrador/mundo/permanencia-espacial/estado.yaml"]},
             "ticket": {"avaliacao_id": "janela-x"},
         }
         with mock.patch.object(permanencia_espacial, "_BASE_PREPARE_NV15", return_value=deepcopy(base)), \
@@ -116,7 +116,7 @@ class EntryLocalBudgetContractTest(unittest.TestCase):
         self.assertNotIn("apscheduler", source.lower())
         body = source[source.index("def project_local_entry"):]
         self.assertNotIn("estado/npcs/index.yaml", body)
-        self.assertNotIn("narrador/agentes/index.yaml", body)
+        self.assertNotIn("narrador/elenco/agentes/index.yaml", body)
 
 
 if __name__ == "__main__":

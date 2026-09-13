@@ -28,7 +28,7 @@ def validate(repo: Path) -> list[str]:
         context = load(repo, "runtime/contexto.yaml")
         scene = load(repo, "runtime/cena.yaml")
         catalog = load(repo, "regras/catalogo.yaml")
-        migration = load(repo, "personagens/jogador/migracao-5-5e.yaml")
+        migration = load(repo, "personagens/jogador/historico/migracoes/ativacao-5-5e.yaml")
     except Exception as exc:
         return [f"não foi possível carregar contrato 5.5e: {exc}"]
 

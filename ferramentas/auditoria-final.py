@@ -57,10 +57,10 @@ EXPECTED_ENGINEERING_PATHS = (
     "baseline/estado-logico-2026-08-15.yaml",
     "baseline/rollout-2026-08-15.json",
     "baseline/metas-rollout-pos-refatoracao.json",
-    "docs/agente/escada-de-acesso.md",
-    "docs/agente/memoria-de-sessoes.md",
-    "docs/agente/telemetria-rollouts.md",
-    "docs/agente/densidade-narrativa.md",
+    "docs/agente/operacao/escada-de-acesso.md",
+    "docs/agente/memoria/memoria-de-sessoes.md",
+    "docs/agente/engenharia/telemetria-rollouts.md",
+    "docs/agente/narrativa/densidade-narrativa.md",
     "cenario/texturas/index.yaml",
 )
 

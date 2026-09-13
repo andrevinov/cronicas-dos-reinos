@@ -32,8 +32,8 @@ checkpoint = load_script("checkpoint_densidade_test", "checkpoint.py")
 class ContratoNarrativoTest(unittest.TestCase):
     def test_economia_de_contexto_nao_limita_prosa(self):
         agents = (REPO / "AGENTS.md").read_text(encoding="utf-8")
-        density = (REPO / "docs/agente/densidade-narrativa.md").read_text(encoding="utf-8")
-        guide = (REPO / "narracao/guia-de-narrativa.md").read_text(encoding="utf-8")
+        density = (REPO / "docs/agente/narrativa/densidade-narrativa.md").read_text(encoding="utf-8")
+        guide = (REPO / "narracao/principios/guia-de-narrativa.md").read_text(encoding="utf-8")
 
         self.assertIn("Economia de contexto não é economia de prosa", agents)
         self.assertIn("Economia de contexto não é economia de prosa", density)

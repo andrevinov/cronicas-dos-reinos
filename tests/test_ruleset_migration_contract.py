@@ -15,7 +15,7 @@ class RulesetMigrationContractTest(unittest.TestCase):
         cls.ruleset = cls.campaign["sistema"]["ruleset"]
         cls.sources = (ROOT / "regras/fontes.md").read_text(encoding="utf-8")
         cls.house_rules = (ROOT / "regras/regras-da-casa.md").read_text(encoding="utf-8")
-        cls.agent_rules = (ROOT / "docs/agente/regras-e-rolagens.md").read_text(encoding="utf-8")
+        cls.agent_rules = (ROOT / "docs/agente/regras/regras-e-rolagens.md").read_text(encoding="utf-8")
 
     def test_schema_declara_5_5e_ativo_e_migracao_concluida(self) -> None:
         self.assertEqual(self.ruleset["atual"], "dnd_5_5e")

@@ -34,9 +34,9 @@ if str(TOOLS_DIR) not in sys.path:
 
 import mundo
 
-INDEX = Path("narrador/agentes-leves/index.yaml")
-STATE = Path("narrador/agentes-leves/estado.yaml")
-DIR = Path("narrador/agentes-leves")
+INDEX = Path("narrador/elenco/agentes-leves/index.yaml")
+STATE = Path("narrador/elenco/agentes-leves/estado.yaml")
+DIR = Path("narrador/elenco/agentes-leves")
 CAUSAL_ROOT = Path("estado/relacoes")
 VALID_STATES = {"ativo", "inativo"}
 PROFILE = "recorrente_leve"

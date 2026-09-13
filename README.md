@@ -1395,7 +1395,7 @@ Já foram definidos:
 * progressão por marcos narrativos registrada em `regras/progressao.md`;
 * nenhum suplemento mecânico opcional no personagem inicial;
 * guia de narrativa e protocolo de sessão iniciais;
-* limites de conteúdo adulto registrados em `narracao/limites.md`;
+* limites de conteúdo adulto registrados em `narracao/principios/limites.md`;
 * estado inicial registrado em `estado/estado-atual.yaml`;
 * a preparação gradual de novas regiões.
 

@@ -18,8 +18,8 @@ import yaml
 KEY = "acionamentos_leves"
 PENDING_KEY = "acionamento_causal"
 STATE = Path("estado/estado-atual.yaml")
-INDEX = Path("narrador/agentes-leves/index.yaml")
-LIGHT_STATE = Path("narrador/agentes-leves/estado.yaml")
+INDEX = Path("narrador/elenco/agentes-leves/index.yaml")
+LIGHT_STATE = Path("narrador/elenco/agentes-leves/estado.yaml")
 WORLD = Path("narrador/mundo/estado.yaml")
 TIME = Path("estado/tempo.yaml")
 BARRIER = Path("runtime/mundo-pendencias.yaml")

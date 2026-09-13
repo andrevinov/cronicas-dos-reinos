@@ -22,7 +22,7 @@ class AutomaticNpcStubTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -53,13 +53,13 @@ class AutomaticNpcStubTest(unittest.TestCase):
                     "nera_vell": {
                         "nome": "Nera Vell",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/nera_vell.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/nera_vell.yaml",
                     }
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -73,7 +73,7 @@ class AutomaticNpcStubTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/oportunidades/perfis/nera_vell.yaml",
+            "narrador/tramas/oportunidades/perfis/nera_vell.yaml",
             {
                 "schema_perfil_oportunidades": 1,
                 "natureza": "reservado",
@@ -157,7 +157,7 @@ class AutomaticNpcStubTest(unittest.TestCase):
 
     def test_confirmar_materializa_stub_sem_sidequest_ou_agenda(self):
         prep = self._prepare_tomas()
-        opportunity_before = (self.repo / "narrador/oportunidades/estado.yaml").read_bytes()
+        opportunity_before = (self.repo / "narrador/tramas/oportunidades/estado.yaml").read_bytes()
         relations_before = (self.repo / "estado/relacoes/index.yaml").read_bytes()
         result = cena_mundo.confirm_scene(
             self.repo,
@@ -175,10 +175,10 @@ class AutomaticNpcStubTest(unittest.TestCase):
         self.assertEqual(fragment["npc"]["persistencia"], "persistente_sem_agenda")
         history = yaml.safe_load((self.repo / "historico/npcs/tomas.yaml").read_text(encoding="utf-8"))
         self.assertEqual(history["eventos_pos_migracao"][0]["cena_id"], "galeria-tomas")
-        self.assertEqual((self.repo / "narrador/oportunidades/estado.yaml").read_bytes(), opportunity_before)
+        self.assertEqual((self.repo / "narrador/tramas/oportunidades/estado.yaml").read_bytes(), opportunity_before)
         self.assertEqual((self.repo / "estado/relacoes/index.yaml").read_bytes(), relations_before)
-        self.assertFalse((self.repo / "narrador/agentes/index.yaml").exists())
-        self.assertFalse((self.repo / "narrador/agentes-leves/index.yaml").exists())
+        self.assertFalse((self.repo / "narrador/elenco/agentes/index.yaml").exists())
+        self.assertFalse((self.repo / "narrador/elenco/agentes-leves/index.yaml").exists())
         self.assertFalse((self.repo / "narrador/mundo/agenda.yaml").exists())
         self.assertTrue(npc_stubs.check_repo(self.repo)["ok"])
 

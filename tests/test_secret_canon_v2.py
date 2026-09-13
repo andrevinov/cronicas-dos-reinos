@@ -161,7 +161,7 @@ class SecretCanonV2RepositoryTest(unittest.TestCase):
 
     def test_documentacao_publica_nao_vaza_detalhes_futuros(self):
         public = (
-            (ROOT / "docs/task36-secret-canon-v2.md").read_text(encoding="utf-8")
+            (ROOT / "docs/agente/mundo/integracao-reativa-v2.md").read_text(encoding="utf-8")
             + "\n"
             + (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         )

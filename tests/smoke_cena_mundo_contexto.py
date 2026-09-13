@@ -35,7 +35,7 @@ mundo.parse_instant = lambda d, h: (d, h)
 sys.modules["mundo"] = mundo
 
 oportunidades = types.ModuleType("oportunidades")
-oportunidades.INDEX = Path("narrador/oportunidades/index.yaml")
+oportunidades.INDEX = Path("narrador/tramas/oportunidades/index.yaml")
 class OpportunityError(ValueError):
     pass
 oportunidades.OpportunityError = OpportunityError
@@ -56,11 +56,11 @@ with tempfile.TemporaryDirectory() as tmp:
     repo = Path(tmp)
     for rel in [
         "narrador/mundo/contextos-cena.yaml",
-        "narrador/arcos/index.yaml",
-        "narrador/arcos/estado.yaml",
-        "narrador/arcos/parte_1_uma_ponte_para_kozakura.yaml",
-        "narrador/arcos/marcos-aparicao.yaml",
-        "narrador/arcos/estado-marcos-aparicao.yaml",
+        "narrador/tramas/arcos/index.yaml",
+        "narrador/tramas/arcos/estado.yaml",
+        "narrador/tramas/arcos/parte_1_uma_ponte_para_kozakura.yaml",
+        "narrador/tramas/arcos/marcos-aparicao.yaml",
+        "narrador/tramas/arcos/estado-marcos-aparicao.yaml",
     ]:
         src = ROOT / rel
         dst = repo / rel
@@ -78,7 +78,7 @@ with tempfile.TemporaryDirectory() as tmp:
             }
         },
     }
-    path = repo / "narrador/agentes/index.yaml"
+    path = repo / "narrador/elenco/agentes/index.yaml"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(yaml.safe_dump(agents, allow_unicode=True, sort_keys=False), encoding="utf-8")
     runtime = repo / "runtime/contexto.yaml"
@@ -96,10 +96,10 @@ with tempfile.TemporaryDirectory() as tmp:
     assert result["candidatos_contextuais"][0]["id"] == "kajiwara_shizune"
     assert result["candidatos_contextuais"][0]["modo_avaliacao"] == "avaliar_estabelecimento_presenca"
     assert result["resumo"]["candidatos_contextuais"] == 1
-    assert "narrador/arcos/marcos-aparicao.yaml" in result["fontes_lidas"]
-    assert "narrador/arcos/estado-marcos-aparicao.yaml" in result["fontes_lidas"]
+    assert "narrador/tramas/arcos/marcos-aparicao.yaml" in result["fontes_lidas"]
+    assert "narrador/tramas/arcos/estado-marcos-aparicao.yaml" in result["fontes_lidas"]
     assert "runtime/contexto.yaml" in result["fontes_lidas"]
-    assert "narrador/agentes/index.yaml" in result["fontes_lidas"]
+    assert "narrador/elenco/agentes/index.yaml" in result["fontes_lidas"]
     assert result["candidatos_contextuais"][0]["marco_aparicao"]["estado"] == "elegivel"
 
 args = cena_mundo.build_parser().parse_args([

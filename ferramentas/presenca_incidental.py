@@ -26,7 +26,7 @@ import ecologia_local
 import locais
 import mundo
 
-INDEX = Path("narrador/presencas-incidentais.yaml")
+INDEX = Path("narrador/indices/presencas-incidentais.yaml")
 RELATIONS_ROOT = Path("estado/relacoes")
 SCHEMA = 1
 MAX_PROFILES = 8

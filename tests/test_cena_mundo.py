@@ -24,7 +24,7 @@ class CenaMundoTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         self.now = mundo.parse_instant("11 Eleasis, 1372 DR", "09:00")
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -58,18 +58,18 @@ class CenaMundoTest(unittest.TestCase):
                     "npc_a": {
                         "nome": "NPC A",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/npc_a.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/npc_a.yaml",
                     },
                     "npc_b": {
                         "nome": "NPC B",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/npc_b.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/npc_b.yaml",
                     },
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -84,7 +84,7 @@ class CenaMundoTest(unittest.TestCase):
         )
         for npc_id, name in (("npc_a", "NPC A"), ("npc_b", "NPC B")):
             self._write(
-                f"narrador/oportunidades/perfis/{npc_id}.yaml",
+                f"narrador/tramas/oportunidades/perfis/{npc_id}.yaml",
                 {
                     "schema_perfil_oportunidades": 1,
                     "natureza": "reservado",
@@ -217,7 +217,7 @@ class CenaMundoTest(unittest.TestCase):
             "ok": True,
             "local_id": "local_teste",
             "mapa_criado": True,
-            "fontes_lidas": ["narrador/recompensas/index.yaml"],
+            "fontes_lidas": ["narrador/tramas/recompensas/index.yaml"],
         }
         with (
             mock.patch.object(cena_mundo.oportunidades, "load_index") as opp,

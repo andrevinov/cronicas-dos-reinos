@@ -553,7 +553,7 @@ class PlansSafetyTest(PlanFixture):
     def test_preparacao_antiga_e_invalida_apos_mudanca_de_objetivo(self):
         self.define()
         payload = self.payload()
-        path = f"narrador/agentes-leves/{self.actor}.yaml"
+        path = f"narrador/elenco/agentes-leves/{self.actor}.yaml"
         doc = self.read(path)
         doc["objetivo_atual"]["descricao"] = "Outra intenção documental."
         self.write(path, doc)

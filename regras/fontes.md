@@ -141,13 +141,13 @@ esse encaixe, atualizar a preparação antiga em vez de ignorar o documento.
 `Aliados para Ren` também não é suplemento oficial. Ele é fonte interna
 autorizada para Shen Meihua, Tsukishiro Jōen, Dame Jenilynn Leyland, Kagehira
 Hotaru e Tadasu no Kami como pilares futuros da campanha de Ren. Suas revelações
-de bastidor ficam em `narrador/aliados/`.
+de bastidor ficam em `narrador/elenco/aliados/`.
 
 `Ponte de Kozakura` também não é suplemento oficial. Ele é fonte interna
 autorizada para a existência futura de um portal estável entre Ravens Bluff e
 Kozakura, para a evolução de sinais materiais antes da revelação e para
 Shin-Kozakura como consequência histórica posterior. Seus detalhes de bastidor
-ficam em `narrador/ponte-de-kozakura/`.
+ficam em `narrador/tramas/ponte-de-kozakura/`.
 
 Resumos derivados ficam em `cenario/regioes/kara-tur/`.
 

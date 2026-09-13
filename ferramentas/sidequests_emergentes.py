@@ -34,7 +34,7 @@ import locais
 import mundo
 import oportunidades
 
-QUESTS_DIR = Path("narrador/sidequests-emergentes/quests")
+QUESTS_DIR = Path("narrador/tramas/sidequests/emergentes/quests")
 NPC_INDEX = estado_relacional.NPC_INDEX
 LOCATION_INDEX = locais.INDEX
 

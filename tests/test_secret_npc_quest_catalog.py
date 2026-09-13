@@ -142,8 +142,8 @@ class SecretNpcQuestCatalogRepositoryTest(unittest.TestCase):
                 self.assertTrue(detail["oferta"]["recusa_permitida"])
                 self.assertEqual(gate["natureza"], "reservado")
                 self.assertEqual(detail["natureza"], "reservado")
-                self.assertTrue(gate_source.startswith("narrador/sidequests-canonicas/gates/"))
-                self.assertTrue(detail_source.startswith("narrador/sidequests-canonicas/segredos/"))
+                self.assertTrue(gate_source.startswith("narrador/tramas/sidequests/canonicas/gates/"))
+                self.assertTrue(detail_source.startswith("narrador/tramas/sidequests/canonicas/segredos/"))
 
     def test_task31_permanece_morta_e_nao_serve_de_catalogo(self):
         profiles = self.index["perfis"]
@@ -178,9 +178,9 @@ class SecretNpcQuestCatalogBudgetTest(unittest.TestCase):
         self.assertTrue(all(data["invariantes"].values()))
 
     def test_documentacao_publica_nao_lista_ids_ou_titulos_secretos(self):
-        doc = (ROOT / "docs/task33-secret-npc-quest-catalog.md").read_text(encoding="utf-8")
+        doc = (ROOT / "docs/agente/mundo/sidequest-gate-v2.md").read_text(encoding="utf-8")
         self.assertNotIn("qsc-7e", doc)
-        self.assertNotIn("narrador/sidequests-canonicas/segredos/qsc-", doc)
+        self.assertNotIn("narrador/tramas/sidequests/canonicas/segredos/qsc-", doc)
         self.assertNotIn("### Kethra", doc)
 
 

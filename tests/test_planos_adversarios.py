@@ -33,7 +33,7 @@ class AdversarialPlanFixture(PlanFixture, ConcurrentOperationFixture):
     def proposal_from_plans(self):
         with patch.object(self, "_reactions", return_value=(None, None)):
             proposal = ConcurrentOperationFixture.group_proposal(self)
-        source = f"narrador/agentes/{ACTOR_ID}.yaml"
+        source = f"narrador/elenco/agentes/{ACTOR_ID}.yaml"
         actor = self.read(source)
         actor["implantacoes"] = {}
         definitions = []
@@ -155,7 +155,7 @@ class AdversarialInitiativeTest(AdversarialPlanFixture):
 
     def test_capacidade_conhecimento_implantacao_e_recursos_reais_sao_obrigatorios(self):
         proposal = self.proposal_from_plans()
-        source = f"narrador/agentes/{ACTOR_ID}.yaml"
+        source = f"narrador/elenco/agentes/{ACTOR_ID}.yaml"
         original = self.read(source)
         mutations = [("metodos_operacionais", {}), ("conhecimento", []), ("implantacoes", {}), ("recursos", [])]
         for key, value in mutations:

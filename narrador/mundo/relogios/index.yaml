@@ -1,0 +1,27 @@
+schema_relogios: 1
+natureza: reservado
+vinculos_agenciais: narrador/mundo/relogios/vinculos.yaml
+consulta_recomendada: python3 ferramentas/relogios.py por-agente <id-ou-nome>
+relogios:
+  resposta_red_sail_ao_corpo:
+    arquivo: narrador/mundo/relogios/resposta_red_sail_ao_corpo.yaml
+    sessao_ultima_atualizacao: 4
+  rastro_fraco_no_pomar:
+    arquivo: narrador/mundo/relogios/rastro_fraco_no_pomar.yaml
+    sessao_ultima_atualizacao: 16
+  exposicao_do_contato_de_kethra:
+    arquivo: narrador/mundo/relogios/exposicao_do_contato_de_kethra.yaml
+    sessao_ultima_atualizacao: 16
+  exposicao_do_contato_de_pell:
+    arquivo: narrador/mundo/relogios/exposicao_do_contato_de_pell.yaml
+    sessao_ultima_atualizacao: 16
+  destino_de_edran_kells:
+    arquivo: narrador/mundo/relogios/destino_de_edran_kells.yaml
+    sessao_ultima_atualizacao: 5
+  operacao_preservacao_casa_pesos:
+    arquivo: narrador/mundo/relogios/operacao_preservacao_casa_pesos.yaml
+    sessao_ultima_atualizacao: 5
+  relatorio_pell_ponto_morto:
+    arquivo: narrador/mundo/relogios/relatorio_pell_ponto_morto.yaml
+    sessao_ultima_atualizacao: 5
+quantidade: 7

@@ -164,15 +164,15 @@ def validate_consumers(repo: Path) -> list[str]:
         if not isinstance(value, str) or value not in canonical:
             errors.append(f"{label}: local_id não canônico: {value!r}")
 
-    reward_index = repo / "narrador/recompensas/index.yaml"
+    reward_index = repo / "narrador/tramas/recompensas/index.yaml"
     if reward_index.is_file():
         data = _load(reward_index) or {}
         maps = data.get("mapas") if isinstance(data, dict) else None
         if isinstance(maps, dict):
             for local_id in maps:
-                require(local_id, f"narrador/recompensas/index.yaml mapas.{local_id}")
+                require(local_id, f"narrador/tramas/recompensas/index.yaml mapas.{local_id}")
 
-    item_index = repo / "narrador/recompensas/itens-index.yaml"
+    item_index = repo / "narrador/tramas/recompensas/itens-index.yaml"
     if item_index.is_file():
         data = _load(item_index) or {}
         rewards = data.get("recompensas") if isinstance(data, dict) else None
@@ -181,7 +181,7 @@ def validate_consumers(repo: Path) -> list[str]:
                 if isinstance(meta, dict):
                     require(meta.get("local_id"), f"itens-index.{reward_id}.local_id")
 
-    planned_path = repo / "narrador/recompensas/planejadas.yaml"
+    planned_path = repo / "narrador/tramas/recompensas/planejadas.yaml"
     if planned_path.is_file():
         data = _load(planned_path) or {}
         by_place = data.get("por_local") if isinstance(data, dict) else None

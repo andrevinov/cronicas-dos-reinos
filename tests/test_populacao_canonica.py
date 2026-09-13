@@ -145,7 +145,7 @@ class PopulacaoCanonicaTest(unittest.TestCase):
         self.assertEqual(before, after)
 
     def test_primeiras_reavaliacoes_leves_foram_escalonadas_sem_rajada(self):
-        index = yaml.safe_load((ROOT / "narrador/agentes-leves/index.yaml").read_text(encoding="utf-8"))
+        index = yaml.safe_load((ROOT / "narrador/elenco/agentes-leves/index.yaml").read_text(encoding="utf-8"))
         starts = {
             agent_id: meta["inicio"]["data"]
             for agent_id, meta in index["agentes"].items()

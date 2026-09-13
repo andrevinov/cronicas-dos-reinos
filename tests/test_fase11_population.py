@@ -51,22 +51,22 @@ class Phase11PopulationTest(unittest.TestCase):
         prof=autonomia_juppongatana.normalize_profile(sh['autonomia_estrategica'],'kajiwara_shizune')
         blob=' '.join(prof['feito_lendario']['exemplos_nao_obrigatorios']).lower()
         self.assertIn('restaurado',blob)
-        disc=yaml.safe_load((ROOT/'narrador/arcos/parte_1/descoberta-e-consequencias.yaml').read_text(encoding='utf-8'))
+        disc=yaml.safe_load((ROOT/'narrador/tramas/arcos/parte_1/descoberta-e-consequencias.yaml').read_text(encoding='utf-8'))
         self.assertEqual(disc['exemplo_shizune_nao_obrigatorio']['estatuto'],'exemplo_de_escala_lendaria_nao_evento_canonico')
 
     def test_pan_chu_mantem_cormyr_inerte_enquanto_ameaca_civis(self):
         pan=agentes.load_agent_complete(ROOT,'pan_chu')['resultado']
         ms=metodos_agentes.for_line(pan,'desgastar_autoridade_de_ravens_bluff')
         self.assertTrue(any('armamento naval' in m['abordagem'].lower() for m in ms))
-        src=(ROOT/'narrador/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
+        src=(ROOT/'narrador/tramas/arcos/parte_1/golden-lily.md').read_text(encoding='utf-8')
         self.assertIn('três fragatas de Cormyr',src)
         self.assertIn('as fragatas **não atacam**',src)
         self.assertIn('negociam com a Night Watch',src)
         self.assertIn('Se Pan Chu for completamente derrotado',src)
 
     def test_pan_chu_tem_relogio_canonico_sem_presenca_antecipada(self):
-        state=yaml.safe_load((ROOT/'narrador/arcos/estado-marcos-aparicao.yaml').read_text(encoding='utf-8'))
-        pan=yaml.safe_load((ROOT/'narrador/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
+        state=yaml.safe_load((ROOT/'narrador/tramas/arcos/estado-marcos-aparicao.yaml').read_text(encoding='utf-8'))
+        pan=yaml.safe_load((ROOT/'narrador/elenco/agentes/pan_chu.yaml').read_text(encoding='utf-8'))
         self.assertEqual(state['marcos']['pan_chu']['estado'],'elegivel')
         self.assertEqual(pan['estado'],'latente')
         self.assertIn('27 Eleasis',pan['plano_atual']['prazo_ou_oportunidade'])
@@ -79,14 +79,14 @@ class Phase11PopulationTest(unittest.TestCase):
         self.assertEqual(router['candidatos']['direcao_golden_lily']['tipo'],'direcao')
 
     def test_shen_e_joen_foram_curados_para_derrota_grave_sem_deus_ex_machina(self):
-        sh=yaml.safe_load((ROOT/'narrador/entradas/shen_meihua.yaml').read_text(encoding='utf-8'))
-        jo=yaml.safe_load((ROOT/'narrador/entradas/tsukishiro_joen.yaml').read_text(encoding='utf-8'))
+        sh=yaml.safe_load((ROOT/'narrador/elenco/entradas/shen_meihua.yaml').read_text(encoding='utf-8'))
+        jo=yaml.safe_load((ROOT/'narrador/elenco/entradas/tsukishiro_joen.yaml').read_text(encoding='utf-8'))
         self.assertTrue(any('surra' in x.lower() or 'quase-morte' in x.lower() for x in sh['gatilhos_fortes']))
         self.assertIn('não apaga a derrota',sh['forma_preferencial'])
         self.assertIn('jamais aparece do nada',jo['forma_preferencial'])
 
     def test_vida_civil_cobre_dojo_night_watch_kage_e_relacoes_sem_automatismo(self):
-        d=yaml.safe_load((ROOT/'narrador/arcos/parte_1/vida-civil.yaml').read_text(encoding='utf-8'))
+        d=yaml.safe_load((ROOT/'narrador/tramas/arcos/parte_1/vida-civil.yaml').read_text(encoding='utf-8'))
         self.assertFalse(d['dojo']['night_watch']['automatico'])
         self.assertTrue(d['circo_e_kage']['continua_disponivel'])
         self.assertTrue(d['relacoes']['romance_possivel_com_outros_npcs'])
@@ -94,7 +94,7 @@ class Phase11PopulationTest(unittest.TestCase):
         self.assertTrue(d['relacoes']['nao_transformar_em_harem_por_padrao'])
 
     def test_descoberta_nao_e_concedida_ao_ren(self):
-        d=yaml.safe_load((ROOT/'narrador/arcos/parte_1/descoberta-e-consequencias.yaml').read_text(encoding='utf-8'))
+        d=yaml.safe_load((ROOT/'narrador/tramas/arcos/parte_1/descoberta-e-consequencias.yaml').read_text(encoding='utf-8'))
         self.assertTrue(d['regras']['ren_nao_e_notificado_automaticamente'])
         self.assertTrue(d['regras']['consequencia_pode_chegar_antes_da_causa'])
         self.assertGreaterEqual(d['regras']['min_canais_para_acao_relevante'],1)
@@ -115,7 +115,7 @@ class Phase11PopulationTest(unittest.TestCase):
 
 class Phase11ArcWorldStateTest(unittest.TestCase):
     def test_controle_real_exige_estado_ativo_para_cho_e_pan(self):
-        d=yaml.safe_load((ROOT/'narrador/arcos/controle-mundo.yaml').read_text(encoding='utf-8'))
+        d=yaml.safe_load((ROOT/'narrador/tramas/arcos/controle-mundo.yaml').read_text(encoding='utf-8'))
         self.assertTrue(d['agentes_estrategicos']['sawagejo_cho']['requer_estado_ativo_para_acao'])
         self.assertTrue(d['agentes_estrategicos']['pan_chu']['requer_estado_ativo_para_acao'])
 

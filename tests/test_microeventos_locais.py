@@ -72,8 +72,8 @@ class LocalMicroeventDeckTest(unittest.TestCase):
             self.repo / "cenario/locais",
         )
         shutil.copytree(
-            ROOT / "narrador/microeventos-locais",
-            self.repo / "narrador/microeventos-locais",
+            ROOT / "narrador/mundo/microeventos-locais",
+            self.repo / "narrador/mundo/microeventos-locais",
         )
         self.index = micro.load_index(self.repo)
         self.ecology = ecologia_local.load_index(self.repo)
@@ -218,12 +218,12 @@ class LocalMicroeventSceneIntegrationTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
         shutil.copytree(
-            ROOT / "narrador/recompensas",
-            self.repo / "narrador/recompensas",
+            ROOT / "narrador/tramas/recompensas",
+            self.repo / "narrador/tramas/recompensas",
         )
         shutil.copytree(
-            ROOT / "narrador/microeventos-locais",
-            self.repo / "narrador/microeventos-locais",
+            ROOT / "narrador/mundo/microeventos-locais",
+            self.repo / "narrador/mundo/microeventos-locais",
         )
 
     def tearDown(self):
@@ -331,7 +331,7 @@ class LocalMicroeventSceneIntegrationTest(unittest.TestCase):
         other = Path(tempfile.mkdtemp())
         try:
             shutil.copytree(ROOT / "cenario/locais", other / "cenario/locais")
-            shutil.copytree(ROOT / "narrador/recompensas", other / "narrador/recompensas")
+            shutil.copytree(ROOT / "narrador/tramas/recompensas", other / "narrador/tramas/recompensas")
             result = cena_mundo.prepare_scene(
                 other,
                 scene_id="sem-micro-layer",

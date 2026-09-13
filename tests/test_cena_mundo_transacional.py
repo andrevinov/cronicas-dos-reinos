@@ -28,7 +28,7 @@ class TransactionalEncounterPreparationTest(unittest.TestCase):
         self.repo = Path(self.temp.name)
         self.now = mundo.parse_instant("11 Eleasis, 1372 DR", "09:00")
         self._write(
-            "narrador/oportunidades/index.yaml",
+            "narrador/tramas/oportunidades/index.yaml",
             {
                 "schema_oportunidades": 1,
                 "natureza": "reservado",
@@ -62,13 +62,13 @@ class TransactionalEncounterPreparationTest(unittest.TestCase):
                     "npc_a": {
                         "nome": "NPC A",
                         "estado": "ativo",
-                        "arquivo": "narrador/oportunidades/perfis/npc_a.yaml",
+                        "arquivo": "narrador/tramas/oportunidades/perfis/npc_a.yaml",
                     }
                 },
             },
         )
         self._write(
-            "narrador/oportunidades/estado.yaml",
+            "narrador/tramas/oportunidades/estado.yaml",
             {
                 "schema_estado_oportunidades": 1,
                 "natureza": "controle_reservado",
@@ -82,7 +82,7 @@ class TransactionalEncounterPreparationTest(unittest.TestCase):
             },
         )
         self._write(
-            "narrador/oportunidades/perfis/npc_a.yaml",
+            "narrador/tramas/oportunidades/perfis/npc_a.yaml",
             {
                 "schema_perfil_oportunidades": 1,
                 "natureza": "reservado",
@@ -221,8 +221,8 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         shutil.copytree(
-            ROOT / "narrador/recompensas",
-            self.repo / "narrador/recompensas",
+            ROOT / "narrador/tramas/recompensas",
+            self.repo / "narrador/tramas/recompensas",
         )
         shutil.copytree(
             ROOT / "cenario/locais",
@@ -300,7 +300,7 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
         self.assertTrue(preview["local"]["mapa_seria_criado"])
         self.assertNotIn("local_transacional", self._reward_index()["mapas"])
         self.assertFalse(
-            (self.repo / "narrador/recompensas/mapas/local_transacional.yaml").exists()
+            (self.repo / "narrador/tramas/recompensas/mapas/local_transacional.yaml").exists()
         )
 
         committed = cena_mundo.confirm_scene(
@@ -315,7 +315,7 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
         self.assertTrue(committed["local"]["mapa_criado"])
         self.assertIn("local_transacional", self._reward_index()["mapas"])
         self.assertTrue(
-            (self.repo / "narrador/recompensas/mapas/local_transacional.yaml").is_file()
+            (self.repo / "narrador/tramas/recompensas/mapas/local_transacional.yaml").is_file()
         )
 
     def test_preparacao_abandonada_nao_deixa_residuo(self):
@@ -358,7 +358,7 @@ class TransactionalLocalPreparationTest(unittest.TestCase):
             )
         self.assertNotIn("local_stale", self._reward_index()["mapas"])
         self.assertFalse(
-            (self.repo / "narrador/recompensas/mapas/local_stale.yaml").exists()
+            (self.repo / "narrador/tramas/recompensas/mapas/local_stale.yaml").exists()
         )
 
 

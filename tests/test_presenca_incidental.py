@@ -142,7 +142,7 @@ class IncidentalPresenceSelectionTest(unittest.TestCase):
         _, result = self._find_active("narwhal_manor", self.narwhal)
         self.assertEqual(result["fontes_lidas"], [incidental.INDEX.as_posix()])
         self.assertFalse(any(source.startswith("estado/relacoes/") for source in result["fontes_lidas"]))
-        self.assertFalse(any(source.startswith("narrador/agentes-leves/") for source in result["fontes_lidas"]))
+        self.assertFalse(any(source.startswith("narrador/elenco/agentes-leves/") for source in result["fontes_lidas"]))
 
     def test_sem_now_le_apenas_roteador_e_tempo(self):
         with mock.patch.object(
@@ -185,9 +185,11 @@ class IncidentalPresenceIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
-        for rel in ("cenario/locais", "narrador/recompensas", "narrador/microeventos-locais"):
+        for rel in ("cenario/locais", "narrador/tramas/recompensas", "narrador/mundo/microeventos-locais"):
             shutil.copytree(ROOT / rel, self.repo / rel)
-        shutil.copy2(ROOT / incidental.INDEX, self.repo / incidental.INDEX)
+        target = self.repo / incidental.INDEX
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / incidental.INDEX, target)
 
     def tearDown(self):
         self.temp.cleanup()

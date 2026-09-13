@@ -12,7 +12,7 @@ class TelemetryRepositoryContractTest(unittest.TestCase):
         required = [
             "ferramentas/analisar-rollout.py",
             "ferramentas/comparar-rollouts.py",
-            "docs/agente/telemetria-rollouts.md",
+            "docs/agente/engenharia/telemetria-rollouts.md",
             "baseline/telemetria-step-11.md",
             "baseline/rollout-2026-08-15.json",
             "baseline/metas-rollout-pos-refatoracao.json",
@@ -45,7 +45,7 @@ class TelemetryRepositoryContractTest(unittest.TestCase):
 
     def test_agent_router_keeps_telemetry_out_of_live_turn(self):
         agents = (REPO / "AGENTS.md").read_text(encoding="utf-8")
-        self.assertIn("docs/agente/telemetria-rollouts.md", agents)
+        self.assertIn("docs/agente/engenharia/telemetria-rollouts.md", agents)
         self.assertIn("analisar-rollout.py", agents)
         self.assertIn("medição é pós-hoc", agents)
 

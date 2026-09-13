@@ -2,7 +2,7 @@
 
 As fixtures são sintéticas. Não manter uma segunda implementação só para testar
 seu próprio schema: fila, prazos e projeção abaixo exercitam o motor da main.
-Rastreabilidade da substituição: docs/agente/acionamento-causal-npcs.md.
+Rastreabilidade da substituição: docs/agente/mundo/acionamentos-causais.md.
 """
 from copy import deepcopy
 import json

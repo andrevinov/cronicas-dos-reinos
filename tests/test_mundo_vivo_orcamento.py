@@ -27,31 +27,31 @@ ROLLOUT_TARGETS = ROOT / "baseline/metas-rollout-pos-refatoracao.json"
 
 
 def _fragment_source(path: str) -> bool:
-    if path.startswith("narrador/agentes/"):
-        return path != "narrador/agentes/index.yaml"
-    if path.startswith("narrador/agentes-leves/"):
+    if path.startswith("narrador/elenco/agentes/"):
+        return path != "narrador/elenco/agentes/index.yaml"
+    if path.startswith("narrador/elenco/agentes-leves/"):
         return path not in {
-            "narrador/agentes-leves/index.yaml",
-            "narrador/agentes-leves/estado.yaml",
+            "narrador/elenco/agentes-leves/index.yaml",
+            "narrador/elenco/agentes-leves/estado.yaml",
         }
-    if path.startswith("narrador/entradas/"):
+    if path.startswith("narrador/elenco/entradas/"):
         return path not in {
-            "narrador/entradas/index.yaml",
-            "narrador/entradas/estado.yaml",
+            "narrador/elenco/entradas/index.yaml",
+            "narrador/elenco/entradas/estado.yaml",
         }
-    if path.startswith("narrador/direcoes/"):
+    if path.startswith("narrador/tramas/direcoes/"):
         return path not in {
-            "narrador/direcoes/index.yaml",
-            "narrador/direcoes/estado.yaml",
+            "narrador/tramas/direcoes/index.yaml",
+            "narrador/tramas/direcoes/estado.yaml",
         }
-    if path.startswith("narrador/eventos/cartas/"):
+    if path.startswith("narrador/mundo/eventos/cartas/"):
         return True
-    if path.startswith("narrador/rastros/itens/"):
+    if path.startswith("narrador/mundo/rastros/itens/"):
         return True
-    if path.startswith("narrador/relogios/"):
+    if path.startswith("narrador/mundo/relogios/"):
         return path not in {
-            "narrador/relogios/index.yaml",
-            "narrador/relogios/vinculos.yaml",
+            "narrador/mundo/relogios/index.yaml",
+            "narrador/mundo/relogios/vinculos.yaml",
         }
     return False
 

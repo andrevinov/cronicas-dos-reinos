@@ -119,7 +119,7 @@ class DungeonRepositoryTest(unittest.TestCase):
             query = dungeons.show_level(ROOT, self.dungeon_id, number)
             self.assertLessEqual(len(dungeons._dump(query).encode("utf-8")), limit)
             level_sources = [source for source in query["fontes_lidas"] if "nivel-" in source]
-            self.assertEqual(level_sources, [f"narrador/dungeons/sarbreen_poroes_secos/nivel-{number}.yaml"])
+            self.assertEqual(level_sources, [f"narrador/tramas/dungeons/sarbreen_poroes_secos/nivel-{number}.yaml"])
             self.assertFalse(any("adversarios/fichas" in source for source in query["fontes_lidas"]))
             self.assertFalse(any("recompensas/planejadas" in source for source in query["fontes_lidas"]))
 
@@ -137,14 +137,14 @@ class DungeonSyntheticTest(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.repo = Path(self.temp.name)
         shutil.copy2(ROOT / "campanha.yaml", self.repo / "campanha.yaml")
-        shutil.copytree(ROOT / "narrador/dungeons", self.repo / "narrador/dungeons")
-        shutil.copytree(ROOT / "narrador/adversarios", self.repo / "narrador/adversarios")
+        shutil.copytree(ROOT / "narrador/tramas/dungeons", self.repo / "narrador/tramas/dungeons")
+        shutil.copytree(ROOT / "narrador/elenco/adversarios", self.repo / "narrador/elenco/adversarios")
         shutil.copytree(ROOT / "cenario/locais", self.repo / "cenario/locais")
-        rewards = self.repo / "narrador/recompensas"
+        rewards = self.repo / "narrador/tramas/recompensas"
         rewards.mkdir(parents=True)
-        shutil.copy2(ROOT / "narrador/recompensas/planejadas.yaml", rewards / "planejadas.yaml")
+        shutil.copy2(ROOT / "narrador/tramas/recompensas/planejadas.yaml", rewards / "planejadas.yaml")
         manifest = yaml.safe_load(
-            (ROOT / "narrador/dungeons/sarbreen_poroes_secos/manifesto.yaml").read_text(encoding="utf-8")
+            (ROOT / "narrador/tramas/dungeons/sarbreen_poroes_secos/manifesto.yaml").read_text(encoding="utf-8")
         )
         for raw in manifest["escopo_canonico"]["ancoras"]:
             source = ROOT / raw
@@ -164,7 +164,7 @@ class DungeonSyntheticTest(unittest.TestCase):
         )
 
     def test_area_desconectada_falha_fechada(self):
-        rel = "narrador/dungeons/sarbreen_poroes_secos/nivel-1.yaml"
+        rel = "narrador/tramas/dungeons/sarbreen_poroes_secos/nivel-1.yaml"
         level = self._load(rel)
         level["areas"].extend(
             [
@@ -186,7 +186,7 @@ class DungeonSyntheticTest(unittest.TestCase):
         self.assertIn("desconectadas", result["erros"][0])
 
     def test_recompensa_automatica_falha_fechada(self):
-        rel = "narrador/dungeons/sarbreen_poroes_secos/manifesto.yaml"
+        rel = "narrador/tramas/dungeons/sarbreen_poroes_secos/manifesto.yaml"
         manifest = self._load(rel)
         manifest["recompensa_final"]["obtencao_automatica"] = True
         self._write(rel, manifest)
@@ -195,7 +195,7 @@ class DungeonSyntheticTest(unittest.TestCase):
         self.assertIn("automática", result["erros"][0])
 
     def test_classificacao_de_ameaca_desatualizada_falha_fechada(self):
-        rel = "narrador/dungeons/sarbreen_poroes_secos/nivel-2.yaml"
+        rel = "narrador/tramas/dungeons/sarbreen_poroes_secos/nivel-2.yaml"
         level = self._load(rel)
         level["encontros"][0]["avaliacao_referencia"]["classificacao"] = "moderada"
         self._write(rel, level)

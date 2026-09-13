@@ -114,7 +114,7 @@ class LiveSidequestDirectedTests(unittest.TestCase):
                 mock.patch.object(
                     live,
                     "_opportunity_state",
-                    return_value=(index, state, ["narrador/oportunidades/estado.yaml"]),
+                    return_value=(index, state, ["narrador/tramas/oportunidades/estado.yaml"]),
                 )
             )
             stack.enter_context(

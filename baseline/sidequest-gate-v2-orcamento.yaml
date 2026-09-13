@@ -9,7 +9,7 @@ gate_base:
   oportunidade: 2
   sem_reposicao: true
 pressao:
-  fonte: narrador/microeventos-locais/estado.yaml
+  fonte: narrador/mundo/microeventos-locais/estado.yaml
   promocoes_nada_por_nivel:
     0: 0
     1: 1

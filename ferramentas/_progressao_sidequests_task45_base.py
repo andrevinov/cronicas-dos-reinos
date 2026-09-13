@@ -37,7 +37,7 @@ import sidequests_emergentes as emergent
 import transacoes
 import turno
 
-PROGRESS_DIR = Path("narrador/sidequests-emergentes/progresso")
+PROGRESS_DIR = Path("narrador/tramas/sidequests/emergentes/progresso")
 NPC_INDEX = Path("estado/npcs/index.yaml")
 SCHEMA = 1
 MAX_FRAGMENT_BYTES = 24 * 1024
@@ -56,9 +56,9 @@ CONDITION_STATES = {"pendente", "satisfeita", "inviavel"}
 UNAVAILABLE_LIFE_STATES = {"morto", "incapacitado", "desaparecido", "preso"}
 NPC_EFFECT_STATES = set(UNAVAILABLE_LIFE_STATES)
 FORBIDDEN_PROOF_PREFIXES = (
-    "narrador/sidequests-emergentes/",
-    "narrador/arcos/parte_1/intencoes/",
-    "narrador/arcos/parte_1/eventos/",
+    "narrador/tramas/sidequests/emergentes/",
+    "narrador/tramas/arcos/parte_1/intencoes/",
+    "narrador/tramas/arcos/parte_1/eventos/",
 )
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9_.:-]{0,127}$")
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9_:-]{0,95}$")
@@ -161,7 +161,7 @@ def _mission(repo: Path, ref: str) -> tuple[dict[str, Any], str, dict[str, Any]]
 
 def _quest(repo: Path, mission: dict[str, Any]) -> dict[str, Any]:
     rel = mission.get("arquivo")
-    if not isinstance(rel, str) or not rel.startswith("narrador/sidequests-emergentes/quests/"):
+    if not isinstance(rel, str) or not rel.startswith("narrador/tramas/sidequests/emergentes/quests/"):
         raise SidequestProgressionError("missão Task41 sem fragmento reservado válido")
     doc = _map(_load(repo / rel), rel)
     if doc.get("schema_sidequest_emergente") != 2 or doc.get("id") != mission.get("quest_id"):
