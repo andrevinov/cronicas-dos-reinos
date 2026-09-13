@@ -1,0 +1,155 @@
+schema_sidequest_emergente: 2
+natureza: reservado
+id: qse-65136f2c017fb178
+origem_engine: task41_emergent_sidequest_authoring_registry_v2
+pacote_task40_digest: 3ec55d1a74b137175c0a53e8ea7e3c5bd97d17eab8d0c7f406e6104fc4494653
+spec_digest: 60a86798969c9b9cbce315820606fb02baf4be0799207117fa0ab94d1654e4c3
+preparacao_id: sqe-prep-c31ed5876137c0f48cc9d6bd
+oferta_materializada:
+  cena_id: s021-ren-oferece-protecao-e-investigacao-a-tomas
+  quest_giver_id: tomas_rell
+  resumo: Tomas pediu que Ren estabeleça quem controla o pedido dos três selos e a
+    finalidade das cópias antes da quinta hora da madrugada, deixando a recusa explicitamente
+    permitida.
+titulo: Os Três Selos
+tipo: investigacao
+origem_causal:
+  tipo: conversa_npc
+  id: s021-ren-oferece-protecao-e-investigacao-a-tomas
+  npc_id: tomas_rell
+  ancora_tipo: ameaca
+  ancora: Ren advertiu Tomas de que a Galeria pode ser usada pela rede de Masao para
+    legitimar contrabando e ofereceu investigar ou proteger o local.
+quest_giver:
+  tipo: npc_existente
+  id: tomas_rell
+  nome: Tomas Rell
+  legitimidade: Tomas supervisiona o trabalho administrativo da Galeria, conhece o
+    pedido documental e pode controlar o acesso aos livros internos sob sua responsabilidade.
+oferta:
+  premissa: Três cópias autenticadas de autorizações antigas foram pedidas em conjunto
+    por um único portador, que voltará depois do fechamento para recolhê-las.
+  pedido: Tomas pede que seja estabelecido quem está por trás do pedido e a que carga
+    as cópias serão ligadas, sem prescrever o método de investigação.
+  recusa_permitida: true
+premissa: Um pedido formalmente correto reúne três autorizações antigas e desconexas;
+  o portador pretende recolher as cópias autenticadas depois do fechamento, antes
+  que a anomalia seja comunicada.
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 05:00
+objetivo: Estabelecer por evidência verificável quem controla o pedido dos três selos
+  e qual carga, rota ou destino receberia as cópias, entregando a cadeia a Tomas antes
+  que os documentos possam ser usados.
+locais:
+- id: galeria_dos_escribas
+  tipo: canonico
+  funcao: origem do pedido, custódia dos registros e ponto de entrega da cadeia documental
+npcs_existentes:
+- id: tomas_rell
+  funcao: origem do pedido, custodiante dos registros e autoridade administrativa
+    sobre o acesso oferecido
+npcs_novos:
+- id: portador_dos_tres_selos
+  nome: Portador dos Três Selos
+  funcao: pessoa ainda não identificada que pretende recolher as cópias; identidade
+    e lealdade permanecem reservadas até descoberta legítima
+  estatuto: reservado_nao_presente
+fases:
+- id: examinar_pedido
+  titulo: O pedido formal
+  situacao: O requerimento e os registros de referência estão sob controle de Tomas
+    na Galeria, mas sua regularidade aparente ainda não explica por que três autorizações
+    antigas foram reunidas.
+  condicao_avanco: Ao menos um marcador material, comercial ou documental do pedido
+    fica estabelecido por observação ou fonte canônica verificável.
+  locais:
+  - galeria_dos_escribas
+- id: identificar_controle
+  titulo: A mão por trás dos selos
+  situacao: O portador e o beneficiário real do pedido não estão identificados, e
+    a finalidade das cópias permanece indeterminada.
+  condicao_avanco: Uma pessoa, organização, carga, rota ou destino ligado ao pedido
+    fica estabelecido por evidência verificável.
+  locais:
+  - galeria_dos_escribas
+- id: entregar_cadeia
+  titulo: Antes da quinta hora
+  situacao: Tomas só pode invalidar as cópias ou alertar outra autoridade com uma
+    cadeia de fatos que sustente sua decisão administrativa.
+  condicao_avanco: Tomas recebe antes do prazo evidência suficiente para invalidar,
+    reter ou encaminhar legitimamente os documentos, ou o uso indevido se torna fato
+    consumado.
+  locais:
+  - galeria_dos_escribas
+antagonistas:
+- id: masao_hirasawa
+  tipo: ator_task40
+  funcao: pressão estratégica indireta sobre documentos e logística urbana
+  objetivo: Converter documentação e intermediários compartimentados em cobertura
+    para movimentos clandestinos sem expor o comando da rede.
+juppongatana: []
+condicoes_sucesso:
+- O controlador, beneficiário, destino ou carga do pedido é estabelecido por evidência
+  verificável.
+- Tomas recebe a cadeia documental antes do prazo e ainda possui meios administrativos
+  para impedir ou denunciar o uso indevido das cópias.
+condicoes_falha:
+- As cópias deixam o controle da Galeria e são usadas de modo durável para legitimar
+  um movimento ilícito.
+- O prazo termina sem cadeia verificável e sem possibilidade administrativa de conter
+  o uso dos documentos.
+stakes:
+  em_risco:
+  - a credibilidade dos selos da Galeria dos Escribas
+  - a rastreabilidade de cargas movimentadas em Ravens Bluff
+  - a segurança profissional de Tomas e dos funcionários ligados ao pedido
+  consequencia_expiracao: As três cópias podem sair do controle da Galeria e servir
+    como cobertura documental antes que as autoridades consigam comparar os registros
+    de origem.
+  perdas_possiveis: []
+recompensas:
+- id: acesso_registros_comparativos_galeria
+  tipo: acesso
+  modo: sucesso
+  descricao: Acesso supervisionado aos livros internos de comparação da Galeria para
+    futuras conferências documentais.
+  condicao: A cadeia verificável chega a Tomas antes do prazo e permite uma resposta
+    administrativa legítima.
+  valor_aproximado: especial
+  autoridade_concedente: Tomas controla o acesso funcional aos livros internos que
+    supervisiona.
+relacao_canone:
+  modo: candidata_ponte
+  intencoes_candidatas:
+  - arsenal_da_night_watch
+  justificativa: Se as cópias se ligarem a logística institucional da Night Watch,
+    a fase final pode abrir uma ponte causal para a intenção sem determinar ação ou
+    presença de Ren.
+  autoridade: candidatura_somente_task42_pode_reescrever
+segredos:
+- A identidade e a lealdade do portador permanecem indeterminadas até descoberta legítima.
+- A relação efetiva entre o pedido e a rede de Masao permanece hipótese até evidência
+  canônica.
+- A carga, a rota e o destino beneficiados pelas cópias não são conhecidos no momento
+  da oferta.
+bifurcacoes:
+- id: pedido_legitimo
+  se: A cadeia verificável demonstrar que o pedido possui finalidade legítima e independente
+    da rede.
+  efeito_no_mundo: Tomas libera o processamento regular e esta ponta é encerrada sem
+    confirmar ligação com Masao.
+- id: portador_percebe_vigilancia
+  se: O portador toma conhecimento de que o pedido está sob escrutínio antes de ser
+    identificado.
+  efeito_no_mundo: A recolha pode ser abandonada ou transferida a outro intermediário,
+    preservando parte da compartimentação.
+guardrails_execucao:
+  agencia_de_ren: preservada
+  npcs_novos: nao_presentes_ate_canonizacao_em_cena
+  recompensas: declaradas_nao_concedidas_task43_45
+  stakes: declarados_nao_executados_task45
+  relacao_canone: candidatura_sem_rewrite_ate_task42
+  scheduler: proibido

@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 20
+  numero: 21
   status: entre_sessoes
   modo_de_cena: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
@@ -22,10 +22,10 @@ recursos:
     maximos: 7
   ca: 17
   deslocamento: 55 pés
-  dinheiro_po: 39.379999999999995
+  dinheiro_po: 38.11999999999999
 tempo:
-  data: 21 Eleasis, 1372 DR
-  hora_aproximada: '22:00'
+  data: 22 Eleasis, 1372 DR
+  hora_aproximada: '13:10'
   periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
 localizacao:
@@ -34,8 +34,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: acampamento do circo dos Mooney
+  area: Ravens Bluff
+  ponto_exato: diante da Mesa de Cargas do porto
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/020/handoff.yaml
-  transcricao_fria: sessoes/020/transcricao.md
+  handoff_atual: sessoes/021/handoff.yaml
+  transcricao_fria: sessoes/021/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:
@@ -84,44 +84,40 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
+  disfarce_idoso_trabalhador_kozakurano:
+    cd_criacao: 14
+    descricao: Ren está visualmente disfarçado como um trabalhador kozakurano idoso, com roupas comuns mescladas,
+      envelhecimento cosmético, ombros acolchoados, gorro gasto e cabo de ferramenta emprestado por Dessa Wren.
+    duracao: até Ren remover o disfarce, ele ser danificado ou uma inspeção dirigida superá-lo
+    inicio: 06:30 de 22 Eleasis
+    limite: O sucesso cobre aparência visual; voz, mentira e atuação social permanecem sujeitos a Enganação ou Atuação
+      quando houver incerteza relevante.
+    qualidade_visual: 21
+    identidade_revelada_a:
+    - halessa_vorn
+    - tomas_rell
 compromissos:
-  quantidade: 2
+  quantidade: 3
   itens:
-    jack_kage_pos_17_eleasis:
-      tipo: compromisso
-      resumo: Jack precisa reconciliar o próximo passo público de Kage após o marco já passado de 17 Eleasis.
+    mem_e889c18521fbf8d102dcf9af:
+      tipo: encontro
+      resumo: Realizar a próxima apresentação pública de Kage na lona dos Mooney.
       envolvidos:
       - jack_mooney
+      - ren
       janela:
         inicio:
-          data: 18 Eleasis, 1372 DR
-          hora: 00:00
-        descricao: Reavaliação devida no primeiro instante após a data pública anteriormente marcada.
-      obrigacao_temporal:
-        schema: 1
-        estado: reconciliar
-        responsavel: jack_mooney
-        destinatario: ren
-        local_ou_canal: contato direto no circo dos Mooney
-        prazo_ou_condicao:
-          data: 17 Eleasis, 1372 DR
-        resultado_esperado: registrar próximo passo, novo prazo ou encerramento explícito para o fio público de
-          Kage
-        modo_retorno: conversa direta quando Jack alcançar Ren
-        fonte_canonica:
-          arquivo: estado/relacoes/jack_mooney.yaml
-          evidencia_literal: A data de 17 Eleasis para a apresentação pública de Kage já passou. O estado disponível
-            não registra novo calendário, retorno de Jack nem encerramento do fio; ele precisa ser reconciliado
-            antes de voltar a ser tratado como futuro.
-        fontes_suporte:
-        - arquivo: historico/relacoes/jack_mooney.yaml
-          evidencia_literal: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona
-            dos Mooney, com anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack
-            e custando pelo menos 80 PO.
-        protecoes:
-        - não inferir que a apresentação de 17 Eleasis ocorreu só porque a data passou
-        - não criar nova apresentação sem causa ou decisão canônica
-      situacao_temporal: devido
+          data: 2 Eleint, 1372 DR
+          hora: '18:00'
+      situacao_temporal: futuro
+    mem_3088230614f606408b4585d0:
+      tipo: compromisso
+      resumo: Jack falará com Dessa Wren para pesquisar vendedores, procedência e preços de materiais de Kozakura,
+        sem autorizar compra prévia.
+      envolvidos:
+      - jack_mooney
+      - ren
+      situacao_temporal: sem_data
     silva_acompanhar_colm:
       tipo: compromisso
       resumo: Silva precisa acompanhar a transferência de Colm e devolver apenas estado genérico a Ren quando houver

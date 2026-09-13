@@ -1,27 +1,27 @@
 versao_runtime: 2
 natureza: derivado_descartavel
-sessao: 20
+sessao: 21
 modo: conversa_com_silva_apos_operacao_sete_nomes
 localizacao:
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: acampamento do circo dos Mooney
+  area: Ravens Bluff
+  ponto_exato: diante da Mesa de Cargas do porto
 tempo:
-  data: 21 Eleasis, 1372 DR
-  hora_aproximada: '22:00'
+  data: 22 Eleasis, 1372 DR
+  hora_aproximada: '13:10'
 mecanica_imediata:
   pv: 52/52
   focus: 7/7
   ca: 17
   deslocamento: 55 pés
-resumo_imediato: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com testemunha
-  e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
+resumo_imediato: Sob o disfarce de trabalhador kozakurano idoso, Ren pediu para falar com Halessa; uma acólita aguarda
+  o nome e o assunto que deve anunciar.
 prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
   o posto antes de seguir ao circo.
 consulta_profunda_somente_se_necessaria:
   estado: estado/estado-atual.yaml
-  handoff: sessoes/020/handoff.yaml
+  handoff: sessoes/021/handoff.yaml
   indice_sessoes: sessoes/index.yaml
-  transcricao_fria: sessoes/020/transcricao.md
+  transcricao_fria: sessoes/021/transcricao.md
   relacoes: estado/relacoes.yaml
   conhecimento: personagens/jogador/conhecimento.md
 efeitos_temporarios:
@@ -30,3 +30,15 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
+  disfarce_idoso_trabalhador_kozakurano:
+    cd_criacao: 14
+    descricao: Ren está visualmente disfarçado como um trabalhador kozakurano idoso, com roupas comuns mescladas,
+      envelhecimento cosmético, ombros acolchoados, gorro gasto e cabo de ferramenta emprestado por Dessa Wren.
+    duracao: até Ren remover o disfarce, ele ser danificado ou uma inspeção dirigida superá-lo
+    inicio: 06:30 de 22 Eleasis
+    limite: O sucesso cobre aparência visual; voz, mentira e atuação social permanecem sujeitos a Enganação ou Atuação
+      quando houver incerteza relevante.
+    qualidade_visual: 21
+    identidade_revelada_a:
+    - halessa_vorn
+    - tomas_rell

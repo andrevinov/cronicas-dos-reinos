@@ -3,8 +3,15 @@ natureza: controle_reservado
 cidade: ravens_bluff
 global:
   ocorrencia:
-    ciclo: 1
-    restantes: []
+    ciclo: 2
+    restantes:
+    - g01
+    - g03
+    - g02
+    - g05
+    - g06
+    - g12
+    - g07
   cartas:
     ciclo: 1
     assinatura_pool: 86101a6f53a41dcf26f05d4f45844c2c2a0cb4d4f58dcfe708803c8d24bf6f8c
@@ -15,7 +22,6 @@ locais:
     ocorrencia:
       ciclo: 1
       restantes:
-      - l07
       - l06
       - l01
       - l08
@@ -34,6 +40,34 @@ locais:
       restantes:
       - desabamento_parcial
       - ferido_sem_ajuda
+  jack_mooney_sons_circus:
+    ocorrencia:
+      ciclo: 1
+      restantes:
+      - l02
+      - l07
+      - l06
+      - l01
+      - l08
+      - l05
+    cartas:
+      ciclo: 0
+      assinatura_pool: null
+      restantes: []
+  casa_de_tyr:
+    ocorrencia:
+      ciclo: 1
+      restantes:
+      - l02
+      - l07
+      - l06
+      - l01
+      - l08
+      - l05
+    cartas:
+      ciclo: 0
+      assinatura_pool: null
+      restantes: []
 historico_recente:
 - cena_id: s015-shinta-entra-galeria-18-eleasis
   local_id: galeria_dos_escribas
@@ -108,3 +142,33 @@ historico_recente:
   origem: null
   ficha_global: g06
   ficha_local: l05
+- cena_id: permanencia:jack_mooney_sons_circus:21 Eleasis, 1372 DR:noite
+  local_id: jack_mooney_sons_circus
+  resultado: rotina
+  origem: null
+  ficha_global: g10
+  ficha_local: l03
+- cena_id: s021-chegada-casa-tyr-procura-halessa
+  local_id: casa_de_tyr
+  resultado: rotina
+  origem: null
+  ficha_global: g04
+  ficha_local: l03
+- cena_id: permanencia:jack_mooney_sons_circus:22 Eleasis, 1372 DR:amanhecer
+  local_id: jack_mooney_sons_circus
+  resultado: rotina
+  origem: null
+  ficha_global: g08
+  ficha_local: l04
+- cena_id: permanencia:casa_de_tyr:22 Eleasis, 1372 DR:amanhecer
+  local_id: casa_de_tyr
+  resultado: rotina
+  origem: null
+  ficha_global: g11
+  ficha_local: l04
+- cena_id: s021-tanaka-entra-na-galeria-e-procura-tomas
+  local_id: galeria_dos_escribas
+  resultado: rotina
+  origem: null
+  ficha_global: g09
+  ficha_local: l07

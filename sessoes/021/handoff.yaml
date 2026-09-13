@@ -1,0 +1,86 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 21
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    focus:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 38.11999999999999
+  tempo:
+    data: 22 Eleasis, 1372 DR
+    hora_aproximada: '13:10'
+    periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Ravens Bluff
+    ponto_exato: diante da Mesa de Cargas do porto
+continuidade:
+  resumo_imediato: Sob o disfarce de trabalhador kozakurano idoso, Ren pediu para falar com Halessa; uma acólita
+    aguarda o nome e o assunto que deve anunciar.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
+eventos_recentes:
+- batch: s021-cena-5dd10471d6f91fde
+  transacao: s021-nv04-bf8834b9ca1597f545df152b7884d957
+  resumo: Ren informou Tomas de que a operação atribuída a Masao seria compartimentalizada, que os agressores atacaram
+    Shinta chamando-o de Ren e que a investigação alcança a Galeria. Tomas reconheceu o risco, sem presumir a origem
+    do vazamento, e pediu que Ren definisse o que pretende fazer, preservando Sella e os funcionários.
+- batch: s021-cena-5dd10471d6f91fde
+  transacao: s021-nv04-3ba94ac7ff5577723fc077b8d0b3438b
+  resumo: Ren explicou por que considera a Galeria um alvo logístico anterior às próprias identidades e ofereceu
+    ajuda. Tomas revelou o pedido anômalo de três cópias autenticadas, ofereceu a missão Os Três Selos com prazo
+    até 05:00 do dia seguinte e deixou explícito que Ren pode recusar.
+- batch: s021-cena-5dd10471d6f91fde
+  transacao: s021-8392f6aa14ad5d5f
+  resumo: Ren aceitou Os Três Selos e examinou o requerimento e as autorizações. Confirmou a regularidade aparente
+    dos documentos e a retirada por portador autorizado, mas não encontrou uma inconsistência capaz de identificar
+    a origem ou o beneficiário.
+- batch: s021-sessao-4a78a4c81ba76909
+  transacao: s021-nv04-3c72f04c76872607af4190276e6e08a7
+  resumo: Tomas informou que o pedido foi entregue após 09:00 por um homem bem-apessoado de casaco cinza com uma
+    caixa de contas preta. A retirada exige o talão E-39 correspondente; a urgência veio da Mesa de Cargas do porto,
+    sob o código da ronda noturna de 21 Eleasis; a Galeria fecha às 18:00 e a retirada estava prevista entre 20:00
+    e 22:00. Tomas suspendeu o selo final.
+- batch: s021-sessao-4a78a4c81ba76909
+  transacao: s021-df5d7627a578a19f
+  resumo: Disfarçado como Tanaka Matsumoto, Ren deixou a Galeria sem ser detido e chegou diante da Mesa de Cargas
+    do porto às 13:04.
+- batch: s021-sessao-4a78a4c81ba76909
+  transacao: s021-574ac8cdd2b6781b
+  resumo: A reclamação falsa de Tanaka foi aceita como plausível. O livro de serviço da Mesa de Cargas identificou
+    Darran Vell como escrivão responsável pela ronda noturna de 21 Eleasis; a atendente agora pede o número do despacho
+    e o nome do reclamante para formalizar a queixa.
+- batch: s021-sessao-4a78a4c81ba76909
+  transacao: s021-871b6d099c35743f
+  resumo: A atendente informou que Darran Vell encerrou a ronda às 06:00 e está escalado novamente das 18:00 de
+    22 Eleasis às 06:00 do dia seguinte. Sem o despacho, ela não abriu reclamação.
+- batch: s021-sessao-4a78a4c81ba76909
+  transacao: s021-206ce1cc392cc598
+  resumo: Tanaka deixou a Mesa de Cargas após descobrir o nome e o horário de Darran Vell.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/021/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

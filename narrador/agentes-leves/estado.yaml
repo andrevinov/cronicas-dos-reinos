@@ -19,7 +19,7 @@ agentes:
   bram_vask:
     estado: ativo
     proxima_avaliacao:
-      data: 18 Eleasis, 1372 DR
+      data: 24 Eleasis, 1372 DR
       hora: 06:00
     cache_negativo:
       assinatura_causal: fdfaea40a45c7a70338e8668a6fe763bc783906f3098f65df6f3c9e748d00f4a
@@ -27,8 +27,10 @@ agentes:
       confirmado_em:
         data: 16 Eleasis, 1372 DR
         hora: 06:00
-      acertos_compactados: 0
-      ultima_compactacao: null
+      acertos_compactados: 1
+      ultima_compactacao:
+        data: 22 Eleasis, 1372 DR
+        hora: 06:00
   luath:
     estado: ativo
     proxima_avaliacao:
@@ -49,10 +51,10 @@ agentes:
       hora: 06:00
     cache_negativo:
       assinatura_causal: 1972ea47b9d3d8b9ef4830dce0482e068396b30a515cb6ea6e2ff8e6f87d4597
-      pendencia_origem: mundo-f63f14ed4ba87991
+      pendencia_origem: mundo-2ba976e1df343c29
       confirmado_em:
-        data: 20 Eleasis, 1372 DR
-        hora: '10:00'
+        data: 21 Eleasis, 1372 DR
+        hora: '22:00'
       acertos_compactados: 0
       ultima_compactacao: null
   maerra_thandrel:
@@ -67,11 +69,11 @@ agentes:
       data: 20 Eleasis, 1372 DR
       hora: 06:00
     cache_negativo:
-      assinatura_causal: 172826b472a1f000c8b3826360adacad1da4659c9da929eb5d4e3f8d45471fab
-      pendencia_origem: mundo-d7d68ea1bf62011c
+      assinatura_causal: 72361446d9ea9719351095f651b72b41f310eddd20605c61db86c074b1b6664d
+      pendencia_origem: mundo-504d120a5ceffa1f
       confirmado_em:
-        data: 18 Eleasis, 1372 DR
-        hora: 06:00
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
       acertos_compactados: 0
       ultima_compactacao: null
   jack_mooney:
@@ -79,7 +81,14 @@ agentes:
     proxima_avaliacao:
       data: 22 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: dc495467ed88d4128523de07f5b8266337e1349bf47a0282bc6533d552af5344
+      pendencia_origem: mundo-89f79b11928659d5
+      confirmado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null
   pell:
     estado: ativo
     proxima_avaliacao:

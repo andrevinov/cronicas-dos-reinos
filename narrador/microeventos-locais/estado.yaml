@@ -23,14 +23,11 @@ locais:
     ocorrencia:
       ciclo: 2
       restantes:
-      - rotina_02
-      - microevento_01
       - rotina_01
     cartas:
       ciclo: 1
       assinatura_pool: 4cf96967c4975a6f244c956ad251e45eddccd1bdc3e5def76920545d1926cea1
       restantes:
-      - manutencao_pequena
       - carga_marca_confusa
       - ajuste_area_trabalho
       - ensaio_repetido
@@ -64,12 +61,19 @@ locais:
       restantes: []
   casa_de_tyr:
     ocorrencia:
-      ciclo: 0
-      restantes: []
+      ciclo: 1
+      restantes:
+      - rotina_01
+      - microevento_01
     cartas:
-      ciclo: 0
-      assinatura_pool: null
-      restantes: []
+      ciclo: 1
+      assinatura_pool: cc12471e22d76eba2af23e07dbe5c54a797c1fc9fd9ccda9cb5d91f8c25c2f1e
+      restantes:
+      - duvida_atendimento
+      - checagem_acesso
+      - cuidado_prioritario
+      - demanda_culto
+      - mensagem_sem_destino
   antiga_casa_copias_portadas_azuis:
     ocorrencia:
       ciclo: 0
@@ -98,7 +102,6 @@ locais:
     ocorrencia:
       ciclo: 2
       restantes:
-      - rotina_03
       - microevento_01
       - rotina_02
     cartas:
@@ -230,50 +233,71 @@ historico_recente:
     nome: leve
     cenas_secas_antes: 4
     promovido: false
+- cena_id: permanencia:jack_mooney_sons_circus:21 Eleasis, 1372 DR:noite
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_02
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 1
+    nome: leve
+    cenas_secas_antes: 5
+    promovido: false
+- cena_id: s021-chegada-casa-tyr-procura-halessa
+  local_id: casa_de_tyr
+  ficha_ocorrencia: rotina_02
+  resultado_base: rotina
+  resultado: microevento
+  pressao_aventura:
+    nivel: 2
+    nome: alta
+    cenas_secas_antes: 6
+    promovido: true
+  carta_id: rotina_servico_reordenada
+- cena_id: permanencia:jack_mooney_sons_circus:22 Eleasis, 1372 DR:amanhecer
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: microevento_01
+  resultado_base: microevento
+  resultado: microevento
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
+  carta_id: manutencao_pequena
+- cena_id: permanencia:casa_de_tyr:22 Eleasis, 1372 DR:amanhecer
+  local_id: casa_de_tyr
+  ficha_ocorrencia: rotina_03
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
+- cena_id: s021-tanaka-entra-na-galeria-e-procura-tomas
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: rotina_03
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 1
+    promovido: false
 transitos:
   ravens_bluff:
     ocorrencia:
-      ciclo: 6
-      restantes: []
+      ciclo: 7
+      restantes:
+      - rotina_03
     cartas:
-      ciclo: 3
+      ciclo: 4
       assinatura_pool: e404bf52e23dbded870e2230d51894b43fe8749524a80ff472712898f65e5c32
-      restantes: []
+      restantes:
+      - interrupcao_vizinhanca
+      - checagem_acesso
 historico_transito_recente:
-- cena_id: s015-shinta-rumo-galeria-escribas
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: microevento_01
-  resultado: microevento
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 0
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 1c23f2fafe8cc0cf42ff33798e5ff9badbd4f56724c4056ca596aaf108d4fc91
-  carta_id: passagem_rua
-- cena_id: s015-shinta-chegada-galeria-escribas
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_02
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 4b61b2db31b18b13195a2f3496513a91c656260d6db6157ddb9ceb4c6357ed10
-- cena_id: s015-transferencia-shinta-posto-night-watch
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_03
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 621d3e900aeb998d62cf72eb558edb399aa141c4f4a5f52b528257b83ad389db
 - cena_id: s15-contravigilancia-saida-posto
   escopo_transito: ravens_bluff
   ficha_ocorrencia: rotina_01
@@ -420,3 +444,37 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: 52606e047fb5e4f72d4216e59d415e77fea57b59a03d7d41903252892632f81b
+- cena_id: s021-transito-circo-casa-tyr
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: f9d63420d06661512ecb5e595962ee0f79ef896e4aad34a9c751fd90a89d44e6
+- cena_id: s021-tanaka-vai-do-porto-a-galeria-dos-escribas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: dbdcb8328757748027e3103f385d13369901ce6be42566629bd88e9b81e9945f
+  carta_id: passagem_rua
+- cena_id: s021-tanaka-vai-da-galeria-a-mesa-de-cargas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: ec3dc9594684553371e30622bf8a277033336bd3b96d94e36fcd33ae0d8cdf86

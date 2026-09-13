@@ -1,0 +1,64 @@
+schema_integridade_adversarial: 1
+natureza: reservado
+quest_id: qse-65136f2c017fb178
+mission_id: sqe-2cb76a0638860602
+preparacao_id: adv-prep-f2f24e88216a9c969593b111
+contrato_digest: 65726f3b7fc4b997bd621422be4dba8809f73dc9feaae64a31efc8f0c98a9746
+contrato:
+  objetivos_antagonistas:
+  - antagonista_id: masao_hirasawa
+    objetivo: Converter documentação e intermediários compartimentados em cobertura
+      para movimentos clandestinos sem expor o comando da rede.
+  capacidades_disponiveis:
+  - antagonista_id: masao_hirasawa
+    capacidade_id: substituir_moradores_gradualmente
+    fonte: agente
+    descricao: Usar compra, dívida, ameaça, desaparecimento ou documentação para remover
+      elos e instalar intermediários sem declarar ocupação formal.
+  conhecimentos_disponiveis:
+  - antagonista_id: masao_hirasawa
+    conhecimento_id: ravens_bluff_primeiro_degrau
+    fonte: agente
+    evidencia: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo
+      úteis ao primeiro degrau do plano.
+  estado_se_ren_nao_intervier: O portador recolhe ou abandona as cópias conforme o
+    procedimento combinado; a finalidade real permanece compartimentada e o elo humano
+    pode ser retirado de circulação se passar a ameaçar a cadeia.
+  escaladas_possiveis:
+  - id: silenciar_portador_comprometido
+    antagonista_id: masao_hirasawa
+    condicao: A rede descobre que o portador foi identificado e que seu depoimento
+      pode expor a cadeia documental enquanto ele continua alcançável.
+    capacidade_id: substituir_moradores_gradualmente
+    conhecimentos_requeridos:
+    - ravens_bluff_primeiro_degrau
+    alvos:
+    - portador_dos_tres_selos
+    gravidade: grave
+    reversibilidade: incerta
+    classe_impacto: liberdade
+    consequencia: A rede tenta remover o portador da circulação por coerção ou desaparecimento
+      para impedir que ele exponha a cadeia.
+    prioridade: preferencial
+    bloqueios_causais:
+    - O portador fica materialmente protegido ou fora do alcance da rede antes que
+      a remoção possa ocorrer.
+  consequencias_de_falha:
+  - silenciar_portador_comprometido
+  consequencias_de_inacao:
+  - silenciar_portador_comprometido
+  alvos_em_risco:
+  - id: portador_dos_tres_selos
+    tipo: npc
+    gravidade_maxima: grave
+    descricao: Intermediário reservado que pode ser removido da circulação se sua
+      identificação ameaçar a cadeia.
+  gravidade_maxima_causal: grave
+guardrails:
+  sem_plot_armor_por_conveniencia: true
+  sem_onisciencia_de_antagonista: true
+  sem_escalada_sem_capacidade: true
+  sem_amaciamento_de_escalada_obrigatoria: true
+  consequencia_real_exige_evidencia_causal: true
+  execucao_terminal_reservada_task45: true
+historico_recente: []

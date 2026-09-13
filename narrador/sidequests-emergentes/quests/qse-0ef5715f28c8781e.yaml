@@ -1,0 +1,164 @@
+schema_sidequest_emergente: 2
+natureza: reservado
+id: qse-0ef5715f28c8781e
+origem_engine: task41_emergent_sidequest_authoring_registry_v2
+pacote_task40_digest: b70c3c4f6fc7cc5b14eefcea0ec13b9ae2b45e34f85d0a04512f0b3ca82767b0
+spec_digest: 3d0a0d3dc153f106665aca3c7bcd1fee713ccdec14f45309fad30056987a6258
+preparacao_id: sqe-prep-04ab6eda33f602d5379ee0a0
+oferta_materializada:
+  cena_id: s021-ren-relata-emboscada-do-restaurante-a-halessa
+  quest_giver_id: halessa_vorn
+  resumo: Halessa pediu uma investigação limitada da infraestrutura da emboscada,
+    fixou prazo e deixou explícito que Ren pode recusar.
+titulo: Rastros Sob a Placa
+tipo: investigacao
+origem_causal:
+  tipo: conversa_npc
+  id: s021-ren-relata-emboscada-do-restaurante-a-halessa
+  npc_id: halessa_vorn
+  ancora_tipo: problema
+  ancora: Uma falsa senhora e três homens kozakuranos prepararam uma emboscada na
+    rota de Shinta, sabiam que Shinta era Ren e deixaram sem resposta quem organizou
+    a célula e tomou o restaurante.
+quest_giver:
+  tipo: npc_existente
+  id: halessa_vorn
+  nome: Irmã Halessa Vorn
+  legitimidade: Halessa recebeu o relato direto da vítima, atua na preservação institucional
+    de provas e pode pedir uma apuração voluntária sem deputar Ren nem falar pela
+    Night Watch.
+oferta:
+  premissa: A emboscada usou uma fachada comercial, uma rota habitual e conhecimento
+    da identidade de Shinta; pessoas podem desaparecer mais depressa que os rastros
+    materiais e documentais do estabelecimento.
+  pedido: Halessa pede que seja estabelecido quem controlava o restaurante e ao menos
+    um elo verificável entre a fachada e os atacantes, sem prescrever método nem confronto.
+  recusa_permitida: true
+premissa: A célula que atacou Ren deixou uma infraestrutura comercial ainda não atribuída;
+  seus sobreviventes e organizadores podem limpar ou abandonar os rastros independentemente
+  da decisão de Ren.
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 24 Eleasis, 1372 DR
+    hora: '18:00'
+objetivo: Estabelecer, por evidência verificável, quem controlava a fachada do restaurante
+  e ao menos uma conexão material, comercial ou documental com os atacantes, entregando
+  a cadeia a Halessa.
+locais:
+- id: restaurante_emboscada_shinta
+  tipo: proposto
+  nome: Restaurante da Emboscada
+  funcao: fachada comercial usada para cercar Shinta e possível fonte de rastros materiais,
+    testemunhais ou comerciais
+- id: registros_comerciais_ravens_bluff
+  tipo: proposto
+  nome: Registros Comerciais de Ravens Bluff
+  funcao: fontes institucionais possíveis para verificar titularidade, licença, aluguel
+    ou fornecedores
+- id: casa_de_tyr
+  tipo: canonico
+  funcao: ponto de entrega da cadeia probatória e autoridade para o cruzamento reservado
+    prometido
+npcs_existentes:
+- id: halessa_vorn
+  funcao: quest giver, destinatária da evidência e autoridade sobre o cruzamento reservado
+    de Tyr
+npcs_novos: []
+fases:
+- id: reconstituir_fachada
+  titulo: A casa por trás da placa
+  situacao: O restaurante foi usado como cenário preparado para a emboscada, mas proprietário,
+    locatário, trabalhadores e duração da ocupação permanecem desconhecidos.
+  condicao_avanco: A titularidade, o uso recente ou a cadeia de suprimentos do estabelecimento
+    fica estabelecida por observação, documento ou testemunho canônico.
+  locais:
+  - restaurante_emboscada_shinta
+  - registros_comerciais_ravens_bluff
+- id: confirmar_elo
+  titulo: Uma ligação que resista
+  situacao: Um único indício pode ser coincidência, cobertura descartável ou mentira
+    de testemunha.
+  condicao_avanco: Ao menos uma conexão entre a fachada e os atacantes é confirmada
+    por segunda fonte independente ou prova material suficiente.
+  locais:
+  - restaurante_emboscada_shinta
+  - registros_comerciais_ravens_bluff
+- id: entregar_cadeia
+  titulo: O fio chega a Tyr
+  situacao: Halessa só pode cruzar registros reservados quando recebe uma pessoa,
+    endereço, nome comercial, pagamento ou rota concretos.
+  condicao_avanco: A evidência verificável é entregue a Halessa dentro do prazo, preservando
+    sua origem e limitações.
+  locais:
+  - casa_de_tyr
+antagonistas:
+- id: masao_hirasawa
+  tipo: ator_task40
+  funcao: pressão estratégica compartimentada capaz de abandonar intermediários e
+    fachadas sem expor o comando
+  objetivo: Preservar a estrutura de comando e o conhecimento obtido sobre Ren enquanto
+    impede que uma célula exposta revele a rede.
+juppongatana: []
+condicoes_sucesso:
+- Quem controlava ou sustentava materialmente a fachada do restaurante é estabelecido
+  por evidência verificável.
+- Ao menos uma ligação confirmada com os atacantes é entregue a Halessa dentro do
+  prazo.
+condicoes_falha:
+- Os rastros materiais e comerciais do restaurante tornam-se inutilizáveis antes que
+  uma cadeia verificável seja estabelecida.
+- O prazo termina sem que Halessa receba uma ligação confirmada entre a fachada e
+  os atacantes.
+stakes:
+  em_risco:
+  - os rastros materiais e documentais deixados no restaurante
+  - a possibilidade de identificar a infraestrutura da célula sem uma varredura indiscriminada
+    da comunidade kozakurana
+  - o segredo de quais elos da fachada ainda são desconhecidos por Tyr
+  consequencia_expiracao: A fachada pode ser limpa, transferida ou abandonada, forçando
+    futuras investigações a recomeçar sem a cadeia comercial do ataque.
+  perdas_possiveis: []
+recompensas:
+- id: acesso_cruzamento_reservado_tyr
+  tipo: acesso
+  modo: sucesso
+  descricao: Acesso mediado por Halessa a um cruzamento reservado dos registros de
+    Tyr sobre o elo concreto entregue.
+  condicao: A cadeia verificável é entregue dentro do prazo e permite uma consulta
+    institucional específica.
+  valor_aproximado: especial
+  autoridade_concedente: Halessa controla a consulta reservada e delimita quais resultados
+    de Tyr podem ser legitimamente compartilhados.
+relacao_canone:
+  modo: lateral
+  intencoes_candidatas: []
+  justificativa: A apuração nasce da infraestrutura local da emboscada e pode revelar
+    informação útil sobre a rede sem substituir, reservar ou satisfazer uma intenção
+    canônica.
+  autoridade: candidatura_somente_task42_pode_reescrever
+segredos:
+- A ligação real entre a célula da emboscada e Masao permanece reservada até descoberta
+  legítima.
+- A cumplicidade, coação ou inocência da mulher usada como falsa senhora permanece
+  indeterminada até investigação.
+bifurcacoes:
+- id: fachada_alugada_por_intermediario
+  se: O restaurante tiver sido alugado ou cedido por um intermediário identificável.
+  efeito_no_mundo: A cadeia passa a apontar para pessoa, pagamento ou endereço verificável
+    sem confirmar ainda o comando superior.
+- id: operador_legitimo_coagido
+  se: O responsável legítimo tiver sido coagido ou afastado para permitir a emboscada.
+  efeito_no_mundo: Uma vítima potencial pode fornecer testemunho, mas sua proteção
+    passa a importar para preservar o elo.
+- id: fachada_limpa
+  se: O local já tiver sido esvaziado e limpo antes da investigação.
+  efeito_no_mundo: A via física enfraquece, mas registros comerciais e fornecedores
+    ainda podem conservar uma rota lateral.
+guardrails_execucao:
+  agencia_de_ren: preservada
+  npcs_novos: nao_presentes_ate_canonizacao_em_cena
+  recompensas: declaradas_nao_concedidas_task43_45
+  stakes: declarados_nao_executados_task45
+  relacao_canone: candidatura_sem_rewrite_ate_task42
+  scheduler: proibido

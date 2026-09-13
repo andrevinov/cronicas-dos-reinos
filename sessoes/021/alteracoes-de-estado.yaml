@@ -1,0 +1,254 @@
+schema_alteracoes_transacionais: 1
+sessao: 21
+status: encerrada
+fonte: sessoes/021/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 21
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 39.379999999999995
+  data: 21 Eleasis, 1372 DR
+  hora: '22:00'
+  area: Jack Mooney & Sons Circus, Ravens Bluff
+  ponto_exato: acampamento do circo dos Mooney
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 21
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 38.11999999999999
+  data: 22 Eleasis, 1372 DR
+  hora: '13:10'
+  area: Ravens Bluff
+  ponto_exato: diante da Mesa de Cargas do porto
+  nivel_ficha: 7
+consolidacoes:
+- id: s021-cena-3ae2f8d6a2fc24a7
+  tipo: cena
+  transacoes:
+  - s021-47a1de3170e34521
+  - s021-85f592842d618f1d
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-48ce0b69a09c5e3e
+  tipo: cena
+  transacoes:
+  - s021-jack-reconciliar-kage-21-eleasis
+  deltas: 1
+  arquivos_afetados:
+  - estado/relacoes/index.yaml
+  - estado/relacoes/jack_mooney.yaml
+  - historico/relacoes/jack_mooney.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-4a65b885c8e05e7d
+  tipo: cena
+  transacoes:
+  - s021-99a714b2fc990d61
+  - s021-nv04-b346a641a4505d8f83cac1801012e0bf
+  deltas: 14
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/jack_mooney.yaml
+  - historico/relacoes/jack_mooney.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-883e8c59944e8547
+  tipo: cena
+  transacoes:
+  - s021-859e4381d6836482
+  deltas: 7
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/jack_mooney.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/jack_mooney.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-caf02a2782260acc
+  tipo: cena
+  transacoes:
+  - s021-bfc2d1201c839fe7
+  - s021-0ac1a912303e3caa
+  - s021-d8ca8011a7736ebb
+  - s021-6eb6f72ebe4dc5b6
+  - s021-nv04-0ffe03442f8f78931d91e8df56e67a43
+  deltas: 23
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-09bac4dcc34a8042
+  tipo: cena
+  transacoes:
+  - s021-6b4fa903bac374a6
+  - s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
+  deltas: 8
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-46d653556f4c9d8d
+  tipo: cena
+  transacoes:
+  - s021-nv04-0a86869ad06971d0a11b04d140643294
+  deltas: 4
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-dd68c4d03fb13f5a
+  tipo: cena
+  transacoes:
+  - s021-nv04-d88be44f2b4cf3b9868e0bcaf94ba977
+  deltas: 3
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-5db392b413b8c434
+  tipo: cena
+  transacoes:
+  - s021-nv04-904029f2a717dd9f364fded279d37e49
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-48f0a442c95ede5f
+  tipo: cena
+  transacoes:
+  - s021-93958024d1a4de32
+  - s021-1e124f2c151e64cc
+  - s021-f1a9a5fc08dd81a8
+  - s021-c48eb16345226212
+  - s021-765244b64bcbe8e7
+  - s021-2347f23da4834c80
+  - s021-5f5f5ba39aa6f295
+  - s021-9765bf1829ba97a7
+  - s021-55b8f291fec8ec4f
+  - s021-f6b9663e03664f4c
+  - s021-ren-entrega-tainha-e-chega-a-area-portuaria
+  - s021-71a7f54f428d4f43
+  deltas: 40
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-cena-5dd10471d6f91fde
+  tipo: cena
+  transacoes:
+  - s021-1737f85425610ee6
+  - s021-c1414653bf741128
+  - s021-60a18cf0596bdbe4
+  - s021-f786dce76a6c99af
+  - s021-eb286f72429f8b94
+  - s021-nv04-b0e5fb71938e9009b417150c55d0c493
+  - s021-nv04-3141579e050d6316fbcec69d21f7aa17
+  - s021-nv04-bf8834b9ca1597f545df152b7884d957
+  - s021-nv04-3ba94ac7ff5577723fc077b8d0b3438b
+  - s021-8392f6aa14ad5d5f
+  deltas: 35
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/tomas_rell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/tomas_rell.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md
+- id: s021-sessao-4a78a4c81ba76909
+  tipo: sessao
+  transacoes:
+  - s021-nv04-3c72f04c76872607af4190276e6e08a7
+  - s021-df5d7627a578a19f
+  - s021-574ac8cdd2b6781b
+  - s021-871b6d099c35743f
+  - s021-206ce1cc392cc598
+  deltas: 20
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/tomas_rell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/tomas_rell.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-021/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-021/tx-s021-nv04-3c72f04c76872607af4190276e6e08a7.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/021/alteracoes-de-estado.yaml
+  - sessoes/021/consequencias.md
+  - sessoes/021/consolidacoes.jsonl
+  - sessoes/021/resumo.md

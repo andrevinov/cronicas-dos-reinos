@@ -98,3 +98,6 @@ incrementais:
   '17':
     index: personagens/jogador/conhecimento/incrementais/sessao-017/index.yaml
     quantidade: 3
+  '21':
+    index: personagens/jogador/conhecimento/incrementais/sessao-021/index.yaml
+    quantidade: 1

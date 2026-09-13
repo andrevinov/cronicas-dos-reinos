@@ -1,6 +1,7 @@
 schema_estado_obrigacoes_temporais: 1
 natureza: controle_reservado
-descricao: Recibos técnicos da NV-18. Não são conhecimento de Ren, cânone ficcional ou scheduler paralelo.
+descricao: Recibos técnicos da NV-18. Não são conhecimento de Ren, cânone ficcional
+  ou scheduler paralelo.
 migracao:
   executada: true
   politica: somente_evidencia_literal_dirigida
@@ -8,5 +9,20 @@ migracao:
   convertidos:
   - jack_kage_pos_17_eleasis
   - silva_acompanhar_colm
-adiamentos: {}
-despachos: {}
+adiamentos:
+  silva_acompanhar_colm:
+    estado: ativo
+    pendencia_origem: mundo-2ba976e1df343c29
+    assinatura_obrigacao: 157605ba914f83334276e4a518a34315
+    tipo: condicao
+    condicao: quando a segunda transferência de Colm for concluída, bloqueada ou comprometida
+    fonte: estado/relacoes/colm_dunn.yaml
+    assinatura_fonte: fc9bbe45570ba154a5bbad3b0b842826c59a1c2617672da6977cb1f578a6d0c0
+despachos:
+  silva_acompanhar_colm:
+    assinatura_obrigacao: 157605ba914f83334276e4a518a34315
+    em:
+      data: 21 Eleasis, 1372 DR
+      hora: '22:00'
+    fila: mundo-2ba976e1df343c29
+    via: acionamento_causal_existente

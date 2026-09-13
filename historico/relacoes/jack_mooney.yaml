@@ -284,3 +284,85 @@ eventos_pos_migracao:
     valor: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona dos Mooney, com
       anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack e custando pelo menos
       80 PO.
+- transacao: s021-jack-reconciliar-kage-21-eleasis
+  sessao: 21
+  resumo: Jack procurou Ren no quarto-depósito para reconciliar o calendário público de Kage.
+  deltas:
+  - alvo: relacao:jack_mooney
+    caminho: motivo_atual
+    op: set
+    valor: Na noite de 21 Eleasis, Jack procurou Ren no quarto-depósito para reconciliar o calendário público de
+      Kage; nenhuma nova apresentação foi decidida ainda.
+- transacao: s021-nv04-b346a641a4505d8f83cac1801012e0bf
+  sessao: 21
+  resumo: Ren autorizou a continuidade pública de Kage e propôs uma cadência quinzenal e materiais de Kozakura.
+    Jack marcou a próxima apresentação para 2 Eleint às 18:00 e prometeu pedir a Dressa que pesquise fornecedores,
+    procedência e preços sem comprar ainda.
+  deltas:
+  - alvo: relacao:jack_mooney
+    caminho: motivo_atual
+    op: set
+    valor: Kage tem uma nova apresentação pública combinada para 2 Eleint às 18:00; Jack também vai pedir a Dressa
+      que pesquise fornecedores e preços de materiais de Kozakura antes de qualquer compra.
+  - alvo: relacao:jack_mooney
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: jack_mooney
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: eu tenho visto muitos orientais por aqui. Gente de Kozakura.
+      fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+      id: mem_8a0485974a43ed33c30ca8eb
+      participantes:
+      - jack_mooney
+      - ren
+      registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+      texto: eu tenho visto muitos orientais por aqui. Gente de Kozakura.
+      tipo: informacao
+  - alvo: relacao:jack_mooney
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_e889c18521fbf8d102dcf9af
+      evidencia:
+        campo: narracao
+        trecho: Dois de Eleint, às seis da tarde. Eu cuido da lona e do anúncio; você me entrega Kage.
+      fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+      id: mem_e889c18521fbf8d102dcf9af
+      operacao: registrar
+      participantes:
+      - jack_mooney
+      - ren
+      registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+      tipo: promessa
+  - alvo: relacao:jack_mooney
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_3088230614f606408b4585d0
+      evidencia:
+        campo: narracao
+        trecho: Amanhã eu falo com Dressa. Ela vai levantar vendedores, procedência e preços, mas não compra nada
+          antes de trazer a lista para nós.
+      fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+      id: mem_3088230614f606408b4585d0
+      operacao: registrar
+      participantes:
+      - jack_mooney
+      - ren
+      registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+      tipo: promessa
+- transacao: s021-859e4381d6836482
+  sessao: 21
+  resumo: Jack deixou o quarto-depósito, e Ren adormeceu pensando em seus vários fios pendentes. A noite transcorreu
+    sem perturbação até as 06:00 de 22 Eleasis, completando o descanso.
+  deltas:
+  - alvo: relacao:jack_mooney
+    caminho: motivo_atual
+    op: set
+    valor: Kage tem uma nova apresentação pública combinada para 2 Eleint às 18:00; Jack também vai pedir a Dessa
+      Wren que pesquise fornecedores e preços de materiais de Kozakura antes de qualquer compra.

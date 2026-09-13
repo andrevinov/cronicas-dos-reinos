@@ -1,0 +1,9 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: aiko_matsuda
+npc:
+  nome: Aiko Matsuda
+  persistencia: persistente_sem_agenda
+  origem_identidade:
+    tipo: cena_confirmada
+    cena_id: s021-ren-pergunta-o-nome-da-atendente

@@ -10,11 +10,197 @@ relacao:
   atitude_para_ren: séria, cautelosa e disposta a cooperar sem abandonar o próprio julgamento
   confianca: não quantificada; acreditou na sinceridade da revelação de Ren
   respeito: profissional e moral em formação
-  motivo_atual: >-
-    Tomas sabe que Ren e Shinta são a mesma pessoa, ouviu o relato sobre Masao,
-    Juppongatana e Kurobane, aceitou Luath como canal reservado de emergência e
-    encaminhar a proposta sobre a Casa do Salgueiro Seco.
+  motivo_atual: Tomas sabe que Ren e Shinta são a mesma pessoa, ouviu o relato sobre Masao, Juppongatana e Kurobane,
+    aceitou Luath como canal reservado de emergência e encaminhar a proposta sobre a Casa do Salgueiro Seco.
   limites:
   - não tratar as hipóteses sobre Shizune ou a presença física de Masao como fatos confirmados
   - preservar a Galeria, Sella e seus trabalhadores de intervenção clandestina sem causa imediata
   - comunicar-se por Luath antes de qualquer intervenção de Ren, salvo perigo imediato
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: venho porque me preocupo com sua segurança, mais que tudo.
+    fonte: transacao:s021-nv04-b0e5fb71938e9009b417150c55d0c493
+    id: mem_9e671df47856ce15626c63dd
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: d83e8e6adc25b7499ae143e199ad3e2d13719368dade5d298badb5768d0966bf
+    texto: venho porque me preocupo com sua segurança, mais que tudo.
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: as crianças ameaçadas, a ordem, o local dos falsificadores, a captura da mulher
+    fonte: transacao:s021-nv04-3141579e050d6316fbcec69d21f7aa17
+    id: mem_ea44d5f917b1073c065cf4af
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: d823881d0fa25634dd5dd90a199519c9aa8fa0cb003d8dd3f6f8cdab92c524a7
+    texto: as crianças ameaçadas, a ordem, o local dos falsificadores, a captura da mulher
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: o depoimento dela sobre Masao e a Juppongatana, e a participação de Luath
+    fonte: transacao:s021-nv04-3141579e050d6316fbcec69d21f7aa17
+    id: mem_4ac587c7a5af0260b6f51096
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: d823881d0fa25634dd5dd90a199519c9aa8fa0cb003d8dd3f6f8cdab92c524a7
+    texto: o depoimento dela sobre Masao e a Juppongatana, e a participação de Luath
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: 'Ela deixou claro que a operação de Masao é compartimentalizada: cada grupo só sabe de suas ações,
+        nunca do todo.'
+    fonte: transacao:s021-nv04-bf8834b9ca1597f545df152b7884d957
+    id: mem_d5dc878546dc862623eee4ca
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 5aee56204924a70685257d0b73e67211943e45f079d3b6e8078fdf1ca8ab3afc
+    texto: 'Ela deixou claro que a operação de Masao é compartimentalizada: cada grupo só sabe de suas ações, nunca
+      do todo.'
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: foi atacado enquanto ainda era Shinta, que seus agressores o chamaram de Ren
+    fonte: transacao:s021-nv04-bf8834b9ca1597f545df152b7884d957
+    id: mem_67e4b879c3194654a5954824
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 5aee56204924a70685257d0b73e67211943e45f079d3b6e8078fdf1ca8ab3afc
+    texto: foi atacado enquanto ainda era Shinta, que seus agressores o chamaram de Ren
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Essa ponta chega até a Galeria.
+    fonte: transacao:s021-nv04-bf8834b9ca1597f545df152b7884d957
+    id: mem_c7952fb780bc7be058121895
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 5aee56204924a70685257d0b73e67211943e45f079d3b6e8078fdf1ca8ab3afc
+    texto: Essa ponta chega até a Galeria.
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: usando a Galeria ele tem como passar carregamentos contrabandeados como lícitos
+    fonte: transacao:s021-nv04-3ba94ac7ff5577723fc077b8d0b3438b
+    id: mem_02ecb35e83e0cf1dcd5826d2
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 196dc186eaaa820c62748125891ef2b4c57380e0adcfc3c9c386c25905b71c95
+    texto: usando a Galeria ele tem como passar carregamentos contrabandeados como lícitos
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Eu, Luath, Halessa e muitos outros estamos tentando formar esse bloco conjunto de pessoas
+    fonte: transacao:s021-nv04-3ba94ac7ff5577723fc077b8d0b3438b
+    id: mem_9edd92100f464ba6852589ca
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 196dc186eaaa820c62748125891ef2b4c57380e0adcfc3c9c386c25905b71c95
+    texto: Eu, Luath, Halessa e muitos outros estamos tentando formar esse bloco conjunto de pessoas
+    tipo: informacao
+  memorias_importantes:
+  - canal: presencial
+    destinatario: ren
+    emissor: tomas_rell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: O atendente da manhã recebeu um homem bem-apessoado, de casaco cinza cuidadosamente escovado, trazendo
+        sob o braço uma pequena caixa de contas laqueada de preto.
+    fonte: transacao:s021-nv04-3c72f04c76872607af4190276e6e08a7
+    id: mem_b18bfadaf570b09a37d7ba59
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 3ec535b4f2ac52e9e7fecd89c14b3b8d1fe175d3a6831ca65646e10228b7c28c
+    texto: O atendente da manhã recebeu um homem bem-apessoado, de casaco cinza cuidadosamente escovado, trazendo
+      sob o braço uma pequena caixa de contas laqueada de preto.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: tomas_rell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: O talão de retirada é o E-39; quem vier buscar precisa apresentar a metade correspondente.
+    fonte: transacao:s021-nv04-3c72f04c76872607af4190276e6e08a7
+    id: mem_a702415f4b23f4f40ffcf9df
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 3ec535b4f2ac52e9e7fecd89c14b3b8d1fe175d3a6831ca65646e10228b7c28c
+    texto: O talão de retirada é o E-39; quem vier buscar precisa apresentar a metade correspondente.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: tomas_rell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: A contramarca de urgência pertence à Mesa de Cargas do porto e traz o código da ronda noturna de 21
+        Eleasis, sem assinatura pessoal.
+    fonte: transacao:s021-nv04-3c72f04c76872607af4190276e6e08a7
+    id: mem_5bcd387036f4053516fa8828
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 3ec535b4f2ac52e9e7fecd89c14b3b8d1fe175d3a6831ca65646e10228b7c28c
+    texto: A contramarca de urgência pertence à Mesa de Cargas do porto e traz o código da ronda noturna de 21 Eleasis,
+      sem assinatura pessoal.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: tomas_rell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: A Galeria fecha às 18:00, e o pedido autoriza a retirada entre 20:00 e 22:00.
+    fonte: transacao:s021-nv04-3c72f04c76872607af4190276e6e08a7
+    id: mem_91a91d68ab41f649d0c931f0
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: 3ec535b4f2ac52e9e7fecd89c14b3b8d1fe175d3a6831ca65646e10228b7c28c
+    texto: A Galeria fecha às 18:00, e o pedido autoriza a retirada entre 20:00 e 22:00.
+    tipo: informacao

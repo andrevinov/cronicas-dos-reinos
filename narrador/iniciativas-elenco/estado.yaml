@@ -1,4 +1,256 @@
 schema_estado_iniciativa_elenco: 1
 natureza: controle_reservado
-decisoes: {}
-ordem_recente: []
+decisoes:
+  ini-27f6a7dd0bcf2bc4f85d:
+    id: ini-27f6a7dd0bcf2bc4f85d
+    janela_id: cena-13594bd5ea7c991b9de3
+    janela_tipo: cena
+    cena_id: s021-circo-silva-noite
+    npc_id: silva_elkwood
+    presenca: ausente
+    proposta_digest: 92e45bc72a786e9c69d266b31e666d952e47624e6410a94290e0f83ef87fde51
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 094f0409f4d7ad8ef103
+    transacao_id: s021-47a1de3170e34521
+    historico: []
+  ini-8a0c7852cab9f17ab71d:
+    id: ini-8a0c7852cab9f17ab71d
+    janela_id: cena-23fb1dc32953ad982de0
+    janela_tipo: cena
+    cena_id: s021-dormir-quarto-deposito-21-eleasis
+    npc_id: jack_mooney
+    presenca: ausente
+    proposta_digest: 271d1e2f8de3bda4e7532437aed228a984baf0a12c363bce2f9b5d58b923b10c
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 7e4a80661a184ea22587
+    transacao_id: s021-nv04-b346a641a4505d8f83cac1801012e0bf
+    historico: []
+  ini-6923dcaee646f02de232:
+    id: ini-6923dcaee646f02de232
+    janela_id: cena-941e97059b8c22a8cada
+    janela_tipo: cena
+    cena_id: s021-halessa-responde-ao-anuncio-de-ren
+    npc_id: halessa_vorn
+    presenca: ausente
+    proposta_digest: 5731ad7d73e1758a19bef0b49d35e6326ded55de2351834e307e01b65a68171e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: ddc4faf656344a6a706f
+    transacao_id: s021-nv04-0ffe03442f8f78931d91e8df56e67a43
+    historico: []
+  ini-3faec32344f496e76842:
+    id: ini-3faec32344f496e76842
+    janela_id: cena-01ab5bcd10ed17980f42
+    janela_tipo: cena
+    cena_id: s021-ren-revela-disfarce-a-halessa
+    npc_id: halessa_vorn
+    presenca: ausente
+    proposta_digest: 5731ad7d73e1758a19bef0b49d35e6326ded55de2351834e307e01b65a68171e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 2868b27852ec6d44c7c6
+    transacao_id: s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
+    historico: []
+  ini-18aab3fecc12c2b93d68:
+    id: ini-18aab3fecc12c2b93d68
+    janela_id: cena-303e57c68f1dbdb40c0b
+    janela_tipo: cena
+    cena_id: s021-ren-relata-prisioneira-masao-a-halessa
+    npc_id: halessa_vorn
+    presenca: ausente
+    proposta_digest: 5731ad7d73e1758a19bef0b49d35e6326ded55de2351834e307e01b65a68171e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: b5437077d93af929a9f2
+    transacao_id: s021-nv04-0a86869ad06971d0a11b04d140643294
+    historico: []
+  ini-a90b15de0ddcfc016f34:
+    id: ini-a90b15de0ddcfc016f34
+    janela_id: cena-9257369210a9c2df67fa
+    janela_tipo: cena
+    cena_id: s021-ren-relata-emboscada-do-restaurante-a-halessa
+    npc_id: halessa_vorn
+    presenca: ausente
+    proposta_digest: 5731ad7d73e1758a19bef0b49d35e6326ded55de2351834e307e01b65a68171e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 3756554a0b16a064ab10
+    transacao_id: s021-nv04-d88be44f2b4cf3b9868e0bcaf94ba977
+    historico: []
+  ini-a60a3c83b4f3663568b7:
+    id: ini-a60a3c83b4f3663568b7
+    janela_id: cena-4b27310d79e399af7c67
+    janela_tipo: cena
+    cena_id: s021-despedida-halessa-aceite-rastros-sob-placa
+    npc_id: halessa_vorn
+    presenca: ausente
+    proposta_digest: 5731ad7d73e1758a19bef0b49d35e6326ded55de2351834e307e01b65a68171e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 1c5e3ec064eef0c1d49a
+    transacao_id: s021-nv04-904029f2a717dd9f364fded279d37e49
+    historico: []
+  ini-a848e716dabaebbed63c:
+    id: ini-a848e716dabaebbed63c
+    janela_id: cena-582509e1e3556fb82ffc
+    janela_tipo: cena
+    cena_id: s021-tanaka-sinaliza-identidade-a-tomas
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 30207c46fc8b2c42c6f7
+    transacao_id: s021-eb286f72429f8b94
+    historico: []
+  ini-f9f7f8b1840c3265daad:
+    id: ini-f9f7f8b1840c3265daad
+    janela_id: cena-48280a1f7a0bba82e820
+    janela_tipo: cena
+    cena_id: s021-ren-revela-se-a-tomas-em-reserva
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 83b5f6233d8b9f0061ff
+    transacao_id: s021-nv04-b0e5fb71938e9009b417150c55d0c493
+    historico: []
+  ini-411c246197c8c37b9361:
+    id: ini-411c246197c8c37b9361
+    janela_id: cena-531f77f60b3b94a892c7
+    janela_tipo: cena
+    cena_id: s021-ren-relata-incursao-e-prisioneira-a-tomas
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 0e0ecf474140ef3c75e7
+    transacao_id: s021-nv04-3141579e050d6316fbcec69d21f7aa17
+    historico: []
+  ini-d099b5abba57f9a47a1c:
+    id: ini-d099b5abba57f9a47a1c
+    janela_id: cena-03a02c2464c9aba984f0
+    janela_tipo: cena
+    cena_id: s021-ren-explica-elo-dos-agressores-com-a-galeria
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: ea17b80d37d2bce5d48d
+    transacao_id: s021-nv04-bf8834b9ca1597f545df152b7884d957
+    historico: []
+  ini-513c763f0872476fd5aa:
+    id: ini-513c763f0872476fd5aa
+    janela_id: cena-18d2db813f205fd2f84b
+    janela_tipo: cena
+    cena_id: s021-ren-oferece-protecao-e-investigacao-a-tomas
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 441e05dc621dd9c5a2b3
+    transacao_id: s021-nv04-3ba94ac7ff5577723fc077b8d0b3438b
+    historico: []
+  ini-fce647a5a7fff08481b0:
+    id: ini-fce647a5a7fff08481b0
+    janela_id: cena-eb9ace9b6ea22ba021ae
+    janela_tipo: cena
+    cena_id: s021-ren-examina-documentos-dos-tres-selos
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 56d74c5528e18cc27833
+    transacao_id: s021-8392f6aa14ad5d5f
+    historico: []
+  ini-0e6e403cedac499223b4:
+    id: ini-0e6e403cedac499223b4
+    janela_id: cena-40a36362e24683a3e3e9
+    janela_tipo: cena
+    cena_id: s021-ren-pergunta-protocolo-dos-tres-selos
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 3e1bd8da4779230c7e79
+    transacao_id: s021-nv04-3c72f04c76872607af4190276e6e08a7
+    historico: []
+ordem_recente:
+- ini-27f6a7dd0bcf2bc4f85d
+- ini-8a0c7852cab9f17ab71d
+- ini-6923dcaee646f02de232
+- ini-3faec32344f496e76842
+- ini-18aab3fecc12c2b93d68
+- ini-a90b15de0ddcfc016f34
+- ini-a60a3c83b4f3663568b7
+- ini-a848e716dabaebbed63c
+- ini-f9f7f8b1840c3265daad
+- ini-411c246197c8c37b9361
+- ini-d099b5abba57f9a47a1c
+- ini-513c763f0872476fd5aa
+- ini-fce647a5a7fff08481b0
+- ini-0e6e403cedac499223b4

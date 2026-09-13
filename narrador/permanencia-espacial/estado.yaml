@@ -1,4 +1,222 @@
 schema_estado_permanencia_espacial: 1
 natureza: controle_reservado
-avaliacoes: {}
-ordem_recente: []
+avaliacoes:
+  perm-fa7f8f6f06069b1c5486:
+    id: perm-fa7f8f6f06069b1c5486
+    chave: jack_mooney_sons_circus|21 Eleasis, 1372 DR|noite
+    local_id: jack_mooney_sons_circus
+    data: 21 Eleasis, 1372 DR
+    periodo: noite
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 2
+      tags:
+      - espetaculo
+      - acampamento
+      - trabalho
+      - publico
+      - animais
+      - logistica
+      canais_microevento:
+      - rotina
+      - ensaio
+      - espetaculo
+      - entrega
+      - animal
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_02
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 1
+        nome: leve
+        cenas_secas_antes: 5
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais: []
+    decisao: null
+    fontes_lidas:
+    - narrador/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/presencas-incidentais.yaml
+    - narrador/microeventos-locais/index.yaml
+    - narrador/microeventos-locais/estado.yaml
+    - narrador/incidentes-v2/index.yaml
+    - narrador/incidentes-v2/estado.yaml
+    digest: 1c6615274cc6026e96d11755980d7871c57d7aad5b6b21add4f2a50527ac104a
+  perm-cdf766418a273c98d85c:
+    id: perm-cdf766418a273c98d85c
+    chave: jack_mooney_sons_circus|22 Eleasis, 1372 DR|amanhecer
+    local_id: jack_mooney_sons_circus
+    data: 22 Eleasis, 1372 DR
+    periodo: amanhecer
+    estado: invalidada
+    pressao_primaria: microevento:manutencao_pequena
+    candidatos:
+    - id: microevento:manutencao_pequena
+      tipo: rotina_local
+      prioridade: 7
+      origem: microeventos_locais
+      decisao: primaria
+    ecologia:
+      ritmo: 1
+      tags:
+      - espetaculo
+      - acampamento
+      - trabalho
+      - publico
+      - animais
+      - logistica
+      canais_microevento:
+      - rotina
+      - ensaio
+      - espetaculo
+      - entrega
+      - animal
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: avaliar_microevento
+      ficha_ocorrencia: microevento_01
+      resultado_base: microevento
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 0
+        promovido: false
+      carta:
+        id: manutencao_pequena
+        nome: Pequena manutenção pede atenção
+        categoria: manutencao
+        premissa: Algo banal do espaço físico precisa de ajuste, limpeza ou reparo
+          curto antes que a rotina siga normalmente.
+        atores_comuns:
+        - artista
+        - trabalhador
+        - cuidador_animais
+        - fornecedor
+        - visitante
+        - publico
+        guardrails:
+        - Usar somente papéis anônimos compatíveis com a ecologia, salvo NPC já estabelecido
+          por outra fonte.
+        - Não transformar inconveniência cotidiana em combate, crime grave, pista
+          secreta, missão ou recompensa automática.
+        - Estado canônico, arco, cena aceita e pendências prevalecem; incompatibilidade
+          consome a carta sem rerrolar outra.
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-38a0588e7dc60f78
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao:
+      resultado: invalidada
+      motivo: local atual consolidado mudou; candidato da permanência anterior perdeu
+        sua âncora espacial
+      em:
+        data: 22 Eleasis, 1372 DR
+        hora: 07:53
+    fontes_lidas:
+    - narrador/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/presencas-incidentais.yaml
+    - narrador/microeventos-locais/index.yaml
+    - narrador/microeventos-locais/estado.yaml
+    - narrador/incidentes-v2/index.yaml
+    - narrador/incidentes-v2/estado.yaml
+    digest: d8cde131727d2d8aa3e1d11d1374b9ed2e1c1008d7100b1f6d80075b1b3bc521
+  perm-fbc8361fd8d6084ad29f:
+    id: perm-fbc8361fd8d6084ad29f
+    chave: casa_de_tyr|22 Eleasis, 1372 DR|amanhecer
+    local_id: casa_de_tyr
+    data: 22 Eleasis, 1372 DR
+    periodo: amanhecer
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 2
+      tags:
+      - templo
+      - institucional
+      - culto
+      - atendimento
+      - seguranca
+      - mensageria
+      canais_microevento:
+      - culto
+      - atendimento
+      - mensageria
+      - seguranca
+      - rotina
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_03
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 0
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-38a0588e7dc60f78
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao: null
+    fontes_lidas:
+    - narrador/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/presencas-incidentais.yaml
+    - narrador/microeventos-locais/index.yaml
+    - narrador/microeventos-locais/estado.yaml
+    - narrador/incidentes-v2/index.yaml
+    - narrador/incidentes-v2/estado.yaml
+    digest: 0b55b9ae4e0b0399307184ba2a956aa6c4f849e491fa135f32bd87a2b8e75cf9
+ordem_recente:
+- perm-fa7f8f6f06069b1c5486
+- perm-cdf766418a273c98d85c
+- perm-fbc8361fd8d6084ad29f

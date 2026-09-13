@@ -4,8 +4,8 @@ descricao: Cursor e fila operacional do motor determinístico; não é fonte ind
   de fatos da campanha. Conclusões antigas podem ser compactadas depois de consolidadas;
   detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
-  data: 21 Eleasis, 1372 DR
-  hora: '22:00'
+  data: 22 Eleasis, 1372 DR
+  hora: '13:10'
 pendencias: []
 concluidas_recentes:
 - id: mundo-050f1a0efdbe5a14
@@ -253,6 +253,129 @@ concluidas_recentes:
   agente: casa_de_tyr
   nota: Tyr abriu conferência reservada de origem, volume e trânsito das peças documentais,
     preservando custódia e testemunha sem atribuir autoria.
+- id: mundo-2ba976e1df343c29
+  tipo: reavaliar_agente_leve
+  agente_leve: silva_elkwood
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: '22:00'
+  resultado: rotina_sem_mudanca
+  nota: Não há fato canônico de conclusão, bloqueio ou comprometimento da segunda
+    transferência de Colm nem atualização verificada para Silva entregar nesta janela.
+- id: mundo-4ce6c2fc6b56e468
+  tipo: reavaliar_agente_leve
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 00:00
+  nota: Jack procurou Ren no quarto-depósito para reconciliar o calendário público
+    de Kage, sem presumir nova apresentação.
+- id: mundo-07eb654a30c611ca
+  tipo: reavaliar_agente_leve
+  agente_leve: jack_mooney
+  disparado_em:
+    data: 21 Eleasis, 1372 DR
+    hora: '22:00'
+  resultado: rotina_sem_mudanca
+  nota: Jack acabou de reconciliar o calendário de Kage e assumiu compromissos explícitos
+    para a apresentação futura e para consultar Dessa; não há nova mudança extraordinária
+    a produzir nesta mesma janela.
+- id: mundo-89f79b11928659d5
+  tipo: reavaliar_agente_leve
+  agente_leve: jack_mooney
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: A mudança desta janela foi apenas a correção do nome de Dessa Wren no compromisso
+    já assumido; Jack já reconciliou o calendário e nenhuma nova decisão comercial
+    surgiu desde então.
+- id: mundo-d2a139f22600e256
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kurobane_jinzaburo
+  nota: As provas permanecem sob custódia institucional e não há fato canônico de
+    circulação, transporte, cópia ou acesso físico que abra a Kurobane uma janela
+    operacional nesta manhã.
+- id: mundo-dec2a23ce87f9173
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A Red Sail continua a busca já em execução, mas ainda não possui a casa de
+    Iria, o lagar, a cadeia rural nem uma nova pista logística canônica que produza
+    mudança extraordinária nesta avaliação.
+- id: mundo-e79b790aeb75b1b0
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: A Night Watch mantém custódia, vigilância e investigação já estabelecidas;
+    ainda não há resultado novo de interrogatório, perícia ou encaminhamento institucional
+    que deva ser canonizado nesta janela.
+- id: mundo-f9e883fdb93aa226
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Os sinais orientais conhecidos continuam compatíveis com comércio marítimo
+    comum; não surgiu fato canônico novo que satisfaça o critério do marco sem transformar
+    relato ou mercadoria isolada em prova da Ponte.
+- id: mundo-199972abc6ea0d46
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:18
+  resultado: rotina_sem_mudanca
+  nota: Halessa recebeu apenas o anúncio de um mensageiro em nome de Ren e já respondeu
+    a esse gatilho comparecendo à conversa narrada; não houve pedido substantivo,
+    prazo, operação ou nova decisão autônoma a materializar além da cena em curso.
+- id: mundo-f8aad4bbada0b2f2
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:20
+  resultado: rotina_sem_mudanca
+  nota: Halessa apenas reconheceu Ren sob um disfarce temporário e ouviu sua justificativa
+    de cautela; isso não estabeleceu novo prazo, ordem, operação ou necessidade de
+    ação autônoma fora da conversa em curso.
+- id: mundo-8bed84fafa7d17e6
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:34
+  resultado: rotina_sem_mudanca
+  nota: Os relatos recebidos são gerais e Halessa já os está avaliando diretamente
+    com Ren; sem locais, nomes, estabelecimentos ou padrões repetidos, ainda não há
+    medida institucional ou operação autônoma adicional que ela possa materializar
+    fora da conversa.
+- id: mundo-04998439c758e0e9
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:48
+  resultado: rotina_sem_mudanca
+  nota: Halessa acabou de receber o relato completo e formulou uma missão que Ren
+    aceitou; sua reação imediata pertence à conversa em curso, e ainda não existe
+    novo fato de execução, prova recebida ou condição de prazo que exija ação autônoma
+    separada.
+- id: mundo-504d120a5ceffa1f
+  tipo: reavaliar_agente_leve
+  agente_leve: halessa_vorn
+  disparado_em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:53
+  resultado: rotina_sem_mudanca
+  nota: Ren declarou confiança pessoal e Halessa já respondeu diretamente antes da
+    despedida; o marco aprofunda a memória relacional, mas não cria por si só novo
+    plano, contato, prazo ou ação autônoma fora da missão recém-aceita.
 acionamentos_leves:
   versao: 1
   aguardando: {}

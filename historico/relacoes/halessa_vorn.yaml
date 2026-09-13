@@ -411,3 +411,162 @@ eventos_pos_migracao:
     valor: Ao ouvir Ren agradecer por não ter surgido de uma sombra e confessar preferir sombras a portas, Halessa
       respondeu que a porta havia sido deixada aberta para ele; a frase carregou por um instante interesse pessoal
       sutil antes de ela retomar o profissionalismo.
+- transacao: s021-nv04-0ffe03442f8f78931d91e8df56e67a43
+  sessao: 21
+  resumo: Após breve espera, Ren foi conduzido sob disfarce a uma sala reservada; Halessa recebeu a mensagem enviada
+    em nome de Ren e veio ouvi-lo, sem demonstrar tê-lo reconhecido.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: mensagem_entregue
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Um mensageiro veio em nome de Ren
+      fonte: transacao:s021-nv04-0ffe03442f8f78931d91e8df56e67a43
+      id: mem_a227743120a41ea5e1bcf886
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: 54a235985aef4ce234bbe2fdb643537e4d50bbba9cf15a0165a217e995da65be
+      texto: Um mensageiro veio em nome de Ren
+      tipo: informacao
+- transacao: s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
+  sessao: 21
+  resumo: Ren revelou deliberadamente sua identidade a Halessa citando a missão secreta de Velis Rook; ela o reconheceu
+    e aceitou sua justificativa para circular disfarçado, perguntando por que ele veio.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: Halessa reconhece que o velho diante dela é Ren.
+      fonte: transacao:s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
+      id: mem_63b5eebb436c1131786ca10d
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: a3adc7dce139bae9bddcadd355f92ed8d248b8ee868fe765efaeebcbafc8438b
+      texto: Halessa reconhece que o velho diante dela é Ren.
+      tipo: marco
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Eu prefiro andar na cidade assim pra manter as pessoas que estão próximas de mim mais seguras
+      fonte: transacao:s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
+      id: mem_4bb2ad13d9f512bbb9d639d9
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: a3adc7dce139bae9bddcadd355f92ed8d248b8ee868fe765efaeebcbafc8438b
+      texto: Eu prefiro andar na cidade assim pra manter as pessoas que estão próximas de mim mais seguras
+      tipo: informacao
+- transacao: s021-nv04-0a86869ad06971d0a11b04d140643294
+  sessao: 21
+  resumo: 'Ren relatou a Halessa os detalhes da captura e as alegações da mulher sobre Masao, além do aumento percebido
+    de kozakuranos nas ruas. Halessa separou fatos, declarações e inferências: confirmou a existência de uma rede,
+    corrigiu que a cativa negara saber a localização de Masao e pediu padrões concretos além da origem das pessoas.'
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Que ela sabe da existência dele, e talvez onde ele se encontra. Que ela confirma que ele já possui
+          outros agentes implantados
+      fonte: transacao:s021-nv04-0a86869ad06971d0a11b04d140643294
+      id: mem_b21f41d7e3eadc3a99ed1a43
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: ba38c65dc349678c22ee74f6c68d71d31a8f713ab218125d5e89b85db8a6a702
+      texto: Que ela sabe da existência dele, e talvez onde ele se encontra. Que ela confirma que ele já possui
+        outros agentes implantados
+      tipo: informacao
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Ren fala que tem notado as ruas com maior quantidade de kozakuranos do que ele nunca tinha visto
+          desde que havia chegado em Ravens Bluff
+      fonte: transacao:s021-nv04-0a86869ad06971d0a11b04d140643294
+      id: mem_314207dcb724c00218f70a8b
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: ba38c65dc349678c22ee74f6c68d71d31a8f713ab218125d5e89b85db8a6a702
+      texto: Ren fala que tem notado as ruas com maior quantidade de kozakuranos do que ele nunca tinha visto desde
+        que havia chegado em Ravens Bluff
+      tipo: informacao
+- transacao: s021-nv04-d88be44f2b4cf3b9868e0bcaf94ba977
+  sessao: 21
+  resumo: Ren relatou a Halessa toda a emboscada do restaurante, inclusive que os atacantes conheciam a ligação
+    entre Shinta e Ren. Halessa ofereceu uma investigação opcional para identificar o controlador da fachada e um
+    elo verificável com os atacantes até o pôr do sol de 24 Eleasis, prometendo em troca acesso a um cruzamento
+    reservado de registros de Tyr.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Três homens kozakuranos usaram uma falsa senhora e a placa do restaurante para cercar Shinta; o
+          líder o chamou de Ren.
+      fonte: transacao:s021-nv04-d88be44f2b4cf3b9868e0bcaf94ba977
+      id: mem_3f0bac6939d6eabb6cad660f
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: 14aaf2f7644311e5941ee0f38e834fba5ac91de5e42500e2cac580e0883fdac0
+      texto: Três homens kozakuranos usaram uma falsa senhora e a placa do restaurante para cercar Shinta; o líder
+        o chamou de Ren.
+      tipo: informacao
+- transacao: s021-nv04-904029f2a717dd9f364fded279d37e49
+  sessao: 21
+  resumo: Ren aceitou Rastros Sob a Placa, disse a Halessa que confia nela e retomou plenamente a atuação do velho
+    antes de sair da Casa de Tyr. Nenhum fato da investigação foi obtido ainda.
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: jogador
+        trecho: Preferi contar tudo isso porque confio em você, e queria te manter informada.
+      fonte: transacao:s021-nv04-904029f2a717dd9f364fded279d37e49
+      id: mem_c4cba3f25c1781af684c7894
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: e4bacc58d6302f9355989ff0b2b18c4eb47150c22a1be35e4bc27d85ceddddea
+      texto: Preferi contar tudo isso porque confio em você, e queria te manter informada.
+      tipo: marco

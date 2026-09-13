@@ -52,6 +52,75 @@ missoes:
       data: 20 Eleasis, 1372 DR
       hora: 06:00
     motivo_encerramento: janela_temporal_encerrada
+  sqe-d11f8458fa6ac4dd:
+    id: sqe-d11f8458fa6ac4dd
+    estado: aceita
+    origem: sidequest_emergente
+    quest_id: qse-0ef5715f28c8781e
+    arquivo: narrador/sidequests-emergentes/quests/qse-0ef5715f28c8781e.yaml
+    npc_id: halessa_vorn
+    necessidade_id: qse-0ef5715f28c8781e
+    tipo: investigacao
+    titulo: Rastros Sob a Placa
+    objetivo: Estabelecer, por evidência verificável, quem controlava a fachada do
+      restaurante e ao menos uma conexão material, comercial ou documental com os
+      atacantes, entregando a cadeia a Halessa.
+    janela:
+      tipo: temporal
+      expira_em:
+        data: 24 Eleasis, 1372 DR
+        hora: '18:00'
+    pode_reabrir: false
+    consequencia_sem_ren: A fachada pode ser limpa, transferida ou abandonada, forçando
+      futuras investigações a recomeçar sem a cadeia comercial do ataque.
+    oferecida_em:
+      data: 22 Eleasis, 1372 DR
+      hora: 07:34
+    cena_oferta: s021-ren-relata-emboscada-do-restaurante-a-halessa
+    preparacao_id: sqe-prep-04ab6eda33f602d5379ee0a0
+    recompensas_declaradas:
+    - acesso_cruzamento_reservado_tyr
+    contrato_recompensa: narrador/sidequests-emergentes/recompensas/qse-0ef5715f28c8781e.yaml
+    progresso_sidequest: narrador/sidequests-emergentes/progresso/qse-0ef5715f28c8781e.yaml
+    contrato_adversarial: narrador/sidequests-emergentes/stakes/qse-0ef5715f28c8781e.yaml
+    ultima_decisao_em:
+      data: 22 Eleasis, 1372 DR
+      hora: 07:48
+  sqe-2cb76a0638860602:
+    id: sqe-2cb76a0638860602
+    estado: aceita
+    origem: sidequest_emergente
+    quest_id: qse-65136f2c017fb178
+    arquivo: narrador/sidequests-emergentes/quests/qse-65136f2c017fb178.yaml
+    npc_id: tomas_rell
+    necessidade_id: qse-65136f2c017fb178
+    tipo: investigacao
+    titulo: Os Três Selos
+    objetivo: Estabelecer por evidência verificável quem controla o pedido dos três
+      selos e qual carga, rota ou destino receberia as cópias, entregando a cadeia
+      a Tomas antes que os documentos possam ser usados.
+    janela:
+      tipo: temporal
+      expira_em:
+        data: 23 Eleasis, 1372 DR
+        hora: 05:00
+    pode_reabrir: false
+    consequencia_sem_ren: As três cópias podem sair do controle da Galeria e servir
+      como cobertura documental antes que as autoridades consigam comparar os registros
+      de origem.
+    oferecida_em:
+      data: 22 Eleasis, 1372 DR
+      hora: '10:20'
+    cena_oferta: s021-ren-oferece-protecao-e-investigacao-a-tomas
+    preparacao_id: sqe-prep-c31ed5876137c0f48cc9d6bd
+    recompensas_declaradas:
+    - acesso_registros_comparativos_galeria
+    contrato_recompensa: narrador/sidequests-emergentes/recompensas/qse-65136f2c017fb178.yaml
+    progresso_sidequest: narrador/sidequests-emergentes/progresso/qse-65136f2c017fb178.yaml
+    contrato_adversarial: narrador/sidequests-emergentes/stakes/qse-65136f2c017fb178.yaml
+    ultima_decisao_em:
+      data: 22 Eleasis, 1372 DR
+      hora: '10:20'
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
 - silva_elkwood:deslocamento_seguro
@@ -145,6 +214,34 @@ historico_recente:
   em:
     data: 20 Eleasis, 1372 DR
     hora: 06:00
+- tipo: sidequest_emergente_materializada_task46
+  id: sqe-d11f8458fa6ac4dd
+  quest_id: qse-0ef5715f28c8781e
+  npc_id: halessa_vorn
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:34
+- tipo: resposta_sidequest
+  id: sqe-d11f8458fa6ac4dd
+  de: oferecida
+  para: aceita
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: 07:48
+- tipo: sidequest_emergente_materializada_task46
+  id: sqe-2cb76a0638860602
+  quest_id: qse-65136f2c017fb178
+  npc_id: tomas_rell
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: '10:20'
+- tipo: resposta_sidequest
+  id: sqe-2cb76a0638860602
+  de: oferecida
+  para: aceita
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: '10:20'
 legado_procedural:
   estatuto: somente_auditoria_nao_operacional
   gate_congelado:

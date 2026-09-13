@@ -1,0 +1,65 @@
+schema_integridade_adversarial: 1
+natureza: reservado
+quest_id: qse-0ef5715f28c8781e
+mission_id: sqe-d11f8458fa6ac4dd
+preparacao_id: adv-prep-58283ca8e8d6f5c307c9eb62
+contrato_digest: f1c0cbb58f197468ecd56173f0a26935fe85d405820178f2ccac8f1a332c0d37
+contrato:
+  objetivos_antagonistas:
+  - antagonista_id: masao_hirasawa
+    objetivo: Preservar a estrutura de comando e o conhecimento obtido sobre Ren enquanto
+      impede que uma célula exposta revele a rede.
+  capacidades_disponiveis:
+  - antagonista_id: masao_hirasawa
+    capacidade_id: compartimentar_pressao_sobre_ren
+    fonte: agente
+    descricao: Pressão compartimentada por intermediários permite abandonar ou limpar
+      uma fachada exposta sem revelar a estrutura de comando.
+  conhecimentos_disponiveis:
+  - antagonista_id: masao_hirasawa
+    conhecimento_id: ravens_bluff_primeiro_degrau
+    fonte: agente
+    evidencia: Ravens Bluff oferece porto, crime, guildas, documentos e acesso subterrâneo
+      úteis ao primeiro degrau do plano.
+  estado_se_ren_nao_intervier: Os organizadores e sobreviventes da emboscada conservam
+    tempo para limpar a fachada, mudar intermediários e preservar a informação de
+    que Shinta é Ren.
+  escaladas_possiveis:
+  - id: limpar_fachada_e_mudar_rota
+    antagonista_id: masao_hirasawa
+    condicao: A rede identifica que a cadeia comercial do restaurante pode ser reconstruída
+      antes que registros ou testemunhos sejam preservados.
+    capacidade_id: compartimentar_pressao_sobre_ren
+    conhecimentos_requeridos:
+    - ravens_bluff_primeiro_degrau
+    alvos:
+    - rastro_comercial_restaurante
+    gravidade: moderada
+    reversibilidade: incerta
+    classe_impacto: juridico
+    consequencia: Uma célula compartimentada pode limpar o estabelecimento, abandonar
+      intermediários e tornar a cadeia comercial difícil ou impossível de provar.
+    prioridade: preferencial
+    bloqueios_causais:
+    - Os registros ou testemunhos relevantes são preservados antes que a rede identifique
+      a investigação.
+    - A célula não possui mais acesso material ao estabelecimento ou aos seus registros.
+  consequencias_de_falha:
+  - limpar_fachada_e_mudar_rota
+  consequencias_de_inacao:
+  - limpar_fachada_e_mudar_rota
+  alvos_em_risco:
+  - id: rastro_comercial_restaurante
+    tipo: informacao
+    gravidade_maxima: moderada
+    descricao: Cadeia de titularidade, pagamentos, fornecedores e testemunhos ligada
+      à fachada usada na emboscada.
+  gravidade_maxima_causal: moderada
+guardrails:
+  sem_plot_armor_por_conveniencia: true
+  sem_onisciencia_de_antagonista: true
+  sem_escalada_sem_capacidade: true
+  sem_amaciamento_de_escalada_obrigatoria: true
+  consequencia_real_exige_evidencia_causal: true
+  execucao_terminal_reservada_task45: true
+historico_recente: []

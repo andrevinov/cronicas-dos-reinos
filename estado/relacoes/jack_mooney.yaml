@@ -10,7 +10,8 @@ relacao:
   atitude_para_ren: pragmatica, desconfiada e interessada
   confianca: moderada e condicional
   respeito: inicial, baseado em competencia, audacia e honestidade parcial
-  motivo_atual: A data de 17 Eleasis para a apresentação pública de Kage já passou. O estado disponível não registra novo calendário, retorno de Jack nem encerramento do fio; ele precisa ser reconciliado antes de voltar a ser tratado como futuro.
+  motivo_atual: Kage tem uma nova apresentação pública combinada para 2 Eleint às 18:00; Jack também vai pedir a
+    Dessa Wren que pesquise fornecedores e preços de materiais de Kozakura antes de qualquer compra.
   acordos_oferecidos:
   - Após Ren decidir prosseguir, Jack estruturou transporte e entrada de modo que Kage permanecesse sob controle
     dos Mooney, não da Casa Veyr.
@@ -72,6 +73,48 @@ relacao:
     que ele vinha tentando preservar.
   - Jack aceitou a saída falsa porque protege a versão pública de Kage, mas a Casa Veyr pode ter ficado com suspeita
     de truque.
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: jack_mooney
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: eu tenho visto muitos orientais por aqui. Gente de Kozakura.
+    fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+    id: mem_8a0485974a43ed33c30ca8eb
+    participantes:
+    - jack_mooney
+    - ren
+    registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+    texto: eu tenho visto muitos orientais por aqui. Gente de Kozakura.
+    tipo: informacao
+  memorias_importantes:
+  - compromisso_id: mem_e889c18521fbf8d102dcf9af
+    evidencia:
+      campo: narracao
+      trecho: Dois de Eleint, às seis da tarde. Eu cuido da lona e do anúncio; você me entrega Kage.
+    fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+    id: mem_e889c18521fbf8d102dcf9af
+    operacao: registrar
+    participantes:
+    - jack_mooney
+    - ren
+    registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+    tipo: promessa
+  - compromisso_id: mem_3088230614f606408b4585d0
+    evidencia:
+      campo: narracao
+      trecho: Amanhã eu falo com Dressa. Ela vai levantar vendedores, procedência e preços, mas não compra nada
+        antes de trazer a lista para nós.
+    fonte: transacao:s021-nv04-b346a641a4505d8f83cac1801012e0bf
+    id: mem_3088230614f606408b4585d0
+    operacao: registrar
+    participantes:
+    - jack_mooney
+    - ren
+    registro_sha256: 08cae67b17676f187dbd850c8364470c558d0c2e66e4b27376c1ee2ca329674f
+    tipo: promessa
 conteudo_mais_antigo_no_historico:
   acordos_oferecidos: 45
   informacoes_recebidas_por_jack: 9

@@ -3,12 +3,11 @@ natureza: controle_reservado
 descricao: Curso dos dois baralhos; não é conhecimento de Ren nem registro de fatos
   que já aconteceram.
 processado_ate:
-  data: 21 Eleasis, 1372 DR
+  data: 22 Eleasis, 1372 DR
   hora: 06:00
 ocorrencia:
   ciclo: 2
   restantes:
-  - rotina_02
   - rotina_07
   - rotina_05
   - rotina_03
@@ -85,4 +84,9 @@ historico_recente:
     data: 21 Eleasis, 1372 DR
     hora: 06:00
   ficha_ocorrencia: rotina_01
+  resultado: rotina
+- amanhecer:
+    data: 22 Eleasis, 1372 DR
+    hora: 06:00
+  ficha_ocorrencia: rotina_02
   resultado: rotina

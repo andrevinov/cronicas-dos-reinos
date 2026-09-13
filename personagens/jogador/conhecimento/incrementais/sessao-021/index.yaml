@@ -1,0 +1,11 @@
+schema_conhecimento_incremental: 1
+sessao: 21
+fragmentos:
+- transacao: s021-nv04-3c72f04c76872607af4190276e6e08a7
+  titulo: Tomas informou que o pedido foi entregue após 09:00 por um homem bem-apessoado de casaco cinza com uma
+    caixa de contas preta. A retirada exige o talão E-39 correspondente; a urgência veio da Mesa de Cargas do porto,
+    sob o código da ronda noturna de 21 Eleasis; a Galeria fecha às 18:00 e a retirada estava prevista entre 20:00
+    e 22:00. Tomas suspendeu o selo final.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-021/tx-s021-nv04-3c72f04c76872607af4190276e6e08a7.md
+  bytes: 1123
+quantidade: 1

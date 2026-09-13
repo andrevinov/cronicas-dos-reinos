@@ -1,0 +1,156 @@
+schema_progressao_sidequest: 1
+natureza: reservado
+mission_id: sqe-2cb76a0638860602
+quest_id: qse-65136f2c017fb178
+quest_file: narrador/sidequests-emergentes/quests/qse-65136f2c017fb178.yaml
+contrato_recompensa: narrador/sidequests-emergentes/recompensas/qse-65136f2c017fb178.yaml
+contrato_adversarial: narrador/sidequests-emergentes/stakes/qse-65136f2c017fb178.yaml
+prazo:
+  tipo: temporal
+  expira_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 05:00
+contrato:
+  regra_sucesso: todas
+  regra_falha: qualquer
+  dependencias_fases:
+  - fase_id: examinar_pedido
+    atores_necessarios:
+    - tomas_rell
+    substituicao_permitida: false
+  - fase_id: identificar_controle
+    atores_necessarios: []
+    substituicao_permitida: true
+  - fase_id: entregar_cadeia
+    atores_necessarios:
+    - tomas_rell
+    substituicao_permitida: false
+  efeitos_escaladas:
+  - escalada_id: silenciar_portador_comprometido
+    efeitos_npc:
+    - npc_id: portador_dos_tres_selos
+      estado: desaparecido
+  escaladas_falha:
+  - silenciar_portador_comprometido
+  escaladas_inacao:
+  - silenciar_portador_comprometido
+atores_novos_reservados:
+- portador_dos_tres_selos
+estado:
+  fases:
+    examinar_pedido:
+      estado: resolvida
+      fato_id: protocolo_e_marcadores_do_pedido_estabelecidos
+      motivo_automatico: null
+    identificar_controle:
+      estado: possivel
+      fato_id: escrivao_noturno_21_eleasis
+      motivo_automatico: null
+    entregar_cadeia:
+      estado: indeterminada
+      fato_id: null
+      motivo_automatico: null
+  condicoes_sucesso:
+    sucesso_01:
+      texto: O controlador, beneficiário, destino ou carga do pedido é estabelecido
+        por evidência verificável.
+      estado: pendente
+      fato_id: null
+    sucesso_02:
+      texto: Tomas recebe a cadeia documental antes do prazo e ainda possui meios
+        administrativos para impedir ou denunciar o uso indevido das cópias.
+      estado: pendente
+      fato_id: null
+  condicoes_falha:
+    falha_01:
+      texto: As cópias deixam o controle da Galeria e são usadas de modo durável para
+        legitimar um movimento ilícito.
+      estado: pendente
+      fato_id: null
+    falha_02:
+      texto: O prazo termina sem cadeia verificável e sem possibilidade administrativa
+        de conter o uso dos documentos.
+      estado: pendente
+      fato_id: null
+  atores:
+    tomas_rell:
+      estado: disponivel
+      vida_estado: null
+      fonte: estado/npcs/tomas_rell.yaml
+    portador_dos_tres_selos:
+      estado: reservado_nao_presente
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+    masao_hirasawa:
+      estado: disponibilidade_nao_rastreada
+      vida_estado: null
+      fonte: estado/npcs/index.yaml
+  fatos:
+    protocolo_e_marcadores_do_pedido_estabelecidos:
+      id: protocolo_e_marcadores_do_pedido_estabelecidos
+      descricao: Tomas estabeleceu que a retirada exige a metade correspondente ao
+        talão E-39 preso ao requerimento.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: O talão de retirada é o E-39; quem vier buscar precisa apresentar
+          a metade correspondente.
+      fases:
+        examinar_pedido: resolvida
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores:
+      - tomas_rell
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '12:31'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-nv04-3c72f04c76872607af4190276e6e08a7
+        sessao: 21
+    escrivao_noturno_21_eleasis:
+      id: escrivao_noturno_21_eleasis
+      descricao: O livro de serviço da Mesa de Cargas registra Darran Vell como escrivão
+        responsável pela ronda noturna de 21 Eleasis.
+      prova:
+        fonte: sessoes/021/transcricao.md
+        evidencia: O livro de serviço marca Darran Vell como escrivão responsável
+          pela ronda noturna de ontem, vinte e um de Eleasis.
+      fases:
+        identificar_controle: possivel
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '12:31'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s021-574ac8cdd2b6781b
+        sessao: 21
+  consequencias_ativadas: {}
+  terminal: null
+  historico_recente:
+  - tipo: fato_registrado_transacional
+    id: protocolo_e_marcadores_do_pedido_estabelecidos
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-nv04-3c72f04c76872607af4190276e6e08a7
+    atores:
+    - tomas_rell
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: escrivao_noturno_21_eleasis
+    fonte: sessoes/021/transcricao.md
+    transacao_id: s021-574ac8cdd2b6781b
+    atores: []
+    substituicoes: []
+guardrails:
+  progresso_por_fato_nao_checklist: true
+  prazo_usa_relogio_existente: true
+  sem_scheduler: true
+  consequencia_so_task44: true
+  recompensa_so_task43_apos_sucesso: true
+  canon_terminal_via_task42: true

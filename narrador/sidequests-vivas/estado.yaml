@@ -1,4 +1,41 @@
 schema_sidequests_vivas: 1
 natureza: controle_reservado
-janelas: {}
-ordem_recente: []
+janelas:
+  22 Eleasis, 1372 DR|amanhecer:
+    janela_id: 22 Eleasis, 1372 DR|amanhecer
+    data: 22 Eleasis, 1372 DR
+    periodo: amanhecer
+    estado: reservada
+    origem: ancora_cena
+    sinal_efetivo:
+      origem_tipo: conversa_npc
+      origem_id: s021-ren-relata-emboscada-do-restaurante-a-halessa
+      ancora_tipo: problema
+      ancora: Uma falsa senhora e três homens kozakuranos prepararam uma emboscada
+        na rota de Shinta, sabiam que Shinta era Ren e deixaram sem resposta quem
+        organizou a célula e tomou o restaurante.
+      npc_id: halessa_vorn
+      local_id: null
+      periculosidade: media
+      tier: null
+    digest: 77eea382eba3dc5a9df86a8a
+  22 Eleasis, 1372 DR|dia:
+    janela_id: 22 Eleasis, 1372 DR|dia
+    data: 22 Eleasis, 1372 DR
+    periodo: dia
+    estado: reservada
+    origem: ancora_cena
+    sinal_efetivo:
+      origem_tipo: conversa_npc
+      origem_id: s021-ren-oferece-protecao-e-investigacao-a-tomas
+      ancora_tipo: ameaca
+      ancora: Ren advertiu Tomas de que a Galeria pode ser usada pela rede de Masao
+        para legitimar contrabando e ofereceu investigar ou proteger o local.
+      npc_id: tomas_rell
+      local_id: null
+      periculosidade: media
+      tier: null
+    digest: 18ace0ea05bf1595c149e098
+ordem_recente:
+- 22 Eleasis, 1372 DR|amanhecer
+- 22 Eleasis, 1372 DR|dia

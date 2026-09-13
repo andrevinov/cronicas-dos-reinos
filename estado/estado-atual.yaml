@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 20
+  sessao_atual: 21
   modo_de_cena_atual: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
@@ -18,14 +18,18 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Jack Mooney & Sons Circus, Ravens Bluff
-  ponto_exato: acampamento do circo dos Mooney
-  descricao_operacional: Ren concluiu um relato integral a Silva sobre Tomas, Maerra e a operação que terminou com
-    testemunha e provas sob custódia de Luath. Silva perguntou se ele deseja alguma ação concreta dela.
+  area: Ravens Bluff
+  ponto_exato: diante da Mesa de Cargas do porto
+  descricao_operacional: Sob o disfarce de trabalhador kozakurano idoso, Ren pediu para falar com Halessa; uma acólita
+    aguarda o nome e o assunto que deve anunciar.
+  local_id: casa_de_tyr
+  modo_atual: conversa_reservada_com_halessa_sob_disfarce
+  ponto: sala reservada de atendimento da Casa de Tyr
+  modo: diante do balcão de visitantes sob o disfarce de Tanaka Matsumoto
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 21 Eleasis, 1372 DR
+  data_exata: 22 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -33,7 +37,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 10
   periodo_do_dia: noite de 21 Eleasis, com Ren no circo dos Mooney
-  hora_aproximada: '22:00'
+  hora_aproximada: '13:10'
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -48,7 +52,7 @@ recursos:
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 39.379999999999995
+    po: 38.11999999999999
   condicoes: []
   disponibilidades:
     broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
@@ -63,7 +67,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/020/transcricao.md
+  transcricao_atual: sessoes/021/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -124,53 +128,16 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren está junto à carroça verde de Silva após contar toda a operação; Silva aguarda a resposta dele
-    sobre o que, se algo, deseja que ela faça.
+  cena_atual: No átrio de Tyr, uma acólita aguarda que Ren declare qual nome e assunto deve anunciar a Halessa;
+    o disfarce de trabalhador idoso não foi questionado visualmente.
   risco_imediato: Silva agora conhece a exposição de Shinta diante de Tomas e a cadeia completa da operação; nenhuma
     ameaça imediata está presente na conversa
-  elenco_cena:
-    cena_id: almoco_e_rotina_com_os_vell_no_circo
-    local:
-      area: Jack Mooney & Sons Circus, Ravens Bluff
-      ponto_exato: acampamento do circo dos Mooney
-    participantes:
-    - nera_vell
-    - silva_elkwood
-    - tavin_vell
-    versao: 1
+  elenco_cena: null
 compromissos:
-  jack_kage_pos_17_eleasis:
-    tipo: compromisso
-    resumo: Jack precisa reconciliar o próximo passo público de Kage após o marco já passado de 17 Eleasis.
-    envolvidos:
-    - jack_mooney
-    janela:
-      inicio:
-        data: 18 Eleasis, 1372 DR
-        hora: '00:00'
-      descricao: Reavaliação devida no primeiro instante após a data pública anteriormente marcada.
-    obrigacao_temporal:
-      schema: 1
-      estado: reconciliar
-      responsavel: jack_mooney
-      destinatario: ren
-      local_ou_canal: contato direto no circo dos Mooney
-      prazo_ou_condicao:
-        data: 17 Eleasis, 1372 DR
-      resultado_esperado: registrar próximo passo, novo prazo ou encerramento explícito para o fio público de Kage
-      modo_retorno: conversa direta quando Jack alcançar Ren
-      fonte_canonica:
-        arquivo: estado/relacoes/jack_mooney.yaml
-        evidencia_literal: A data de 17 Eleasis para a apresentação pública de Kage já passou. O estado disponível não registra novo calendário, retorno de Jack nem encerramento do fio; ele precisa ser reconciliado antes de voltar a ser tratado como futuro.
-      fontes_suporte:
-      - arquivo: historico/relacoes/jack_mooney.yaml
-        evidencia_literal: Próxima apresentação pública de Kage marcada para 17 Eleasis ao cair da tarde, na lona dos Mooney, com anúncio apenas dois dias antes; particulares anteriores continuam filtradas por Jack e custando pelo menos 80 PO.
-      protecoes:
-      - não inferir que a apresentação de 17 Eleasis ocorreu só porque a data passou
-      - não criar nova apresentação sem causa ou decisão canônica
   silva_acompanhar_colm:
     tipo: compromisso
-    resumo: Silva precisa acompanhar a transferência de Colm e devolver apenas estado genérico a Ren quando houver mudança.
+    resumo: Silva precisa acompanhar a transferência de Colm e devolver apenas estado genérico a Ren quando houver
+      mudança.
     envolvidos:
     - silva_elkwood
     obrigacao_temporal:
@@ -188,10 +155,28 @@ compromissos:
         evidencia_literal: Hessa Morn o ocultou sob uma carga de hortaliças e iniciou o trajeto para a segunda transferência.
       fontes_suporte:
       - arquivo: historico/relacoes/silva_elkwood.yaml
-        evidencia_literal: 'Silva entregou a Ren a primeira etapa da rota compartimentada de Colm: Hessa Morn no lagar abandonado; a segunda mão e a cama final permanecem ocultas'
+        evidencia_literal: 'Silva entregou a Ren a primeira etapa da rota compartimentada de Colm: Hessa Morn no
+          lagar abandonado; a segunda mão e a cama final permanecem ocultas'
       protecoes:
       - não revelar a segunda mão, a cama final ou a rota compartimentada
       - não transformar estado genérico em localização
+  mem_e889c18521fbf8d102dcf9af:
+    envolvidos:
+    - jack_mooney
+    - ren
+    janela:
+      inicio:
+        data: 2 Eleint, 1372 DR
+        hora: '18:00'
+    resumo: Realizar a próxima apresentação pública de Kage na lona dos Mooney.
+    tipo: encontro
+  mem_3088230614f606408b4585d0:
+    envolvidos:
+    - jack_mooney
+    - ren
+    resumo: Jack falará com Dessa Wren para pesquisar vendedores, procedência e preços de materiais de Kozakura,
+      sem autorizar compra prévia.
+    tipo: compromisso
 pendencias: []
 disponibilidades:
   broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
@@ -202,6 +187,18 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
+  disfarce_idoso_trabalhador_kozakurano:
+    cd_criacao: 14
+    descricao: Ren está visualmente disfarçado como um trabalhador kozakurano idoso, com roupas comuns mescladas,
+      envelhecimento cosmético, ombros acolchoados, gorro gasto e cabo de ferramenta emprestado por Dessa Wren.
+    duracao: até Ren remover o disfarce, ele ser danificado ou uma inspeção dirigida superá-lo
+    inicio: 06:30 de 22 Eleasis
+    limite: O sucesso cobre aparência visual; voz, mentira e atuação social permanecem sujeitos a Enganação ou Atuação
+      quando houver incerteza relevante.
+    qualidade_visual: 21
+    identidade_revelada_a:
+    - halessa_vorn
+    - tomas_rell
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
@@ -213,3 +210,6 @@ coberturas:
     avaliacao_pratica: Shinta concluiu trabalho regular na Galeria, mas a continuidade futura desse vínculo profissional
       não foi renegociada depois que Tomas soube que ele é Ren; as restrições de acesso históricas permanecem.
 modo: conversa_com_silva_apos_operacao_sete_nomes
+sessao:
+  modo_de_cena_atual: recepcao_de_tyr_sob_disfarce_procurando_halessa
+modo_de_cena: observando_a_distancia_o_restaurante_da_emboscada_sob_disfarce

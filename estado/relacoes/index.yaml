@@ -244,8 +244,8 @@ relacoes:
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 7856
-    campos_atuais: 13
+    bytes_fragmento: 11911
+    campos_atuais: 15
   silva_elkwood:
     nome: Silva Elkwood
     tipo: clériga de Chauntea / contato potencial de abrigo
@@ -270,8 +270,8 @@ relacoes:
     respeito: inicial, baseado em competencia, audacia e honestidade parcial
     arquivo: estado/relacoes/jack_mooney.yaml
     historico: historico/relacoes/jack_mooney.yaml
-    bytes_fragmento: 5543
-    campos_atuais: 11
+    bytes_fragmento: 7021
+    campos_atuais: 13
   corven_dalm:
     nome: Corven Dalm
     tipo: procurador da Casa Veyr / contratante da apresentação fechada de Kage
@@ -439,8 +439,8 @@ relacoes:
     respeito: profissional e moral em formação
     arquivo: estado/relacoes/tomas_rell.yaml
     historico: historico/relacoes/tomas_rell.yaml
-    bytes_fragmento: 1141
-    campos_atuais: 9
+    bytes_fragmento: 8257
+    campos_atuais: 11
   jardineiro_salgueiro_seco:
     nome: jardineiro da Casa do Salgueiro Seco
     tipo: cuidador e porteiro informal da propriedade

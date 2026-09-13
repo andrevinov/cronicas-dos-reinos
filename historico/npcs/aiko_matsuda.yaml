@@ -1,0 +1,8 @@
+schema_historico_npc: 2
+id: aiko_matsuda
+origem: npc-stub-automatico
+eventos_pos_migracao:
+- tipo: identidade_persistente_criada
+  cena_id: s021-ren-pergunta-o-nome-da-atendente
+  nome: Aiko Matsuda
+  classificacao_inicial: persistente_sem_agenda
