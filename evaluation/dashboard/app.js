@@ -179,6 +179,18 @@
     return `cronicas-avaliacao-feedback:${state.sessionEntry.sessao_id}`;
   }
 
+  function comparisonKey(entry) {
+    if (Array.isArray(entry.chave_comparabilidade) && entry.chave_comparabilidade.length) {
+      return JSON.stringify(entry.chave_comparabilidade);
+    }
+    return JSON.stringify([entry.serie_avaliacao || "legacy-v1", "versoes_ausentes"]);
+  }
+
+  function comparableSessions() {
+    const current = comparisonKey(state.sessionEntry);
+    return (state.index.sessoes || []).filter((entry) => comparisonKey(entry) === current);
+  }
+
   function loadStoredFeedback() {
     let stored = {};
     try {
@@ -270,7 +282,7 @@
     $("#feedbackStatus").textContent = hasPlayer ? "Feedback local ativo" : "Feedback pendente";
     $("#feedbackStatus").className = `badge ${hasPlayer ? "" : "badge-muted"}`.trim();
 
-    const entries = state.index.sessoes || [];
+    const entries = comparableSessions();
     const currentIndex = entries.findIndex((item) => item.sessao_id === state.sessionEntry.sessao_id);
     const previous = currentIndex > 0 ? number(entries[currentIndex - 1].nota_geral_0a100) : null;
     if (previous === null) {
@@ -340,7 +352,7 @@
 
   function renderTrend() {
     const metric = $("#trendMetric").value;
-    const values = (state.index.sessoes || [])
+    const values = comparableSessions()
       .map((entry) => ({
         id: entry.sessao_id,
         value: metric === "geral"

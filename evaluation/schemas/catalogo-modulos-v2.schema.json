@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalogo-modulos-v2.schema.json",
+  "title": "Catálogo hierárquico de módulos de avaliação v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_catalogo_modulos",
+    "versao_catalogo",
+    "serie_avaliacao",
+    "estado",
+    "padrao_producao",
+    "natureza",
+    "unidades_analise",
+    "estados_ativacao",
+    "modulos",
+    "camadas_nao_modulares",
+    "migracao_v1"
+  ],
+  "properties": {
+    "schema_catalogo_modulos": {"const": 2},
+    "versao_catalogo": {"type": "string", "minLength": 1},
+    "serie_avaliacao": {"const": "modules-v2"},
+    "estado": {"enum": ["preparacao", "producao", "descontinuado"]},
+    "padrao_producao": {"const": false},
+    "natureza": {"type": "string", "minLength": 1},
+    "unidades_analise": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["turno", "cena", "fronteira", "sessao", "evento"]}
+    },
+    "estados_ativacao": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "modulos": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/modulo"},
+      "allOf": [
+        {"contains": {"type": "object", "properties": {"id": {"const": "context_and_memory"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "turn_and_session_orchestration"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "narrative_delivery"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "rules_and_character_state"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "sidequest_authoring"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "sidequest_lifecycle"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "canonical_quest_integration"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "npc_continuity_and_social_behavior"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "scene_world_projection"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "world_boundary_resolution"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "causal_narrative_routing"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "adversarial_operations"}}, "required": ["id"]}}
+      ]
+    },
+    "camadas_nao_modulares": {"$ref": "#/$defs/camadasNaoModulares"},
+    "migracao_v1": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {"$ref": "#/$defs/migracao"}
+    }
+  },
+  "$defs": {
+    "texto": {"type": "string", "minLength": 1},
+    "modulo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "responsabilidade",
+        "escopo",
+        "unidade_analise",
+        "contrato_elegibilidade",
+        "resultados_possiveis",
+        "subcapacidades",
+        "visibilidade_jogador",
+        "rotulo_jogador",
+        "indicadores_especializados",
+        "guardrails_aplicaveis",
+        "versao_implementacao",
+        "versao_avaliacao"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "context_and_memory",
+            "turn_and_session_orchestration",
+            "narrative_delivery",
+            "rules_and_character_state",
+            "sidequest_authoring",
+            "sidequest_lifecycle",
+            "canonical_quest_integration",
+            "npc_continuity_and_social_behavior",
+            "scene_world_projection",
+            "world_boundary_resolution",
+            "causal_narrative_routing",
+            "adversarial_operations"
+          ]
+        },
+        "responsabilidade": {"$ref": "#/$defs/texto"},
+        "escopo": {"$ref": "#/$defs/texto"},
+        "unidade_analise": {"enum": ["turno", "cena", "fronteira", "sessao", "evento"]},
+        "contrato_elegibilidade": {"$ref": "#/$defs/contratoElegibilidade"},
+        "resultados_possiveis": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        },
+        "subcapacidades": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/subcapacidade"}
+        },
+        "visibilidade_jogador": {"enum": ["direta", "indireta", "tecnica", "reservada"]},
+        "rotulo_jogador": {"$ref": "#/$defs/texto"},
+        "indicadores_especializados": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/indicador"}
+        },
+        "guardrails_aplicaveis": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"]
+          }
+        },
+        "versao_implementacao": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "versao_avaliacao": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+      }
+    },
+    "contratoElegibilidade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gatilho", "exclusoes", "evidencias_minimas"],
+      "properties": {
+        "gatilho": {"$ref": "#/$defs/texto"},
+        "exclusoes": {"type": "array", "items": {"$ref": "#/$defs/texto"}},
+        "evidencias_minimas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/texto"}
+        }
+      }
+    },
+    "subcapacidade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "responsabilidade", "aliases_v1"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "responsabilidade": {"$ref": "#/$defs/texto"},
+        "aliases_v1": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        }
+      }
+    },
+    "indicador": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "unidade", "direcao_desejada"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "unidade": {"type": "string", "minLength": 1},
+        "direcao_desejada": {"enum": ["maior", "menor", "faixa_alvo", "categorica"]}
+      }
+    },
+    "itemNaoModular": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "rotulo", "responsabilidade", "recebe_nota_modular"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "rotulo": {"$ref": "#/$defs/texto"},
+        "responsabilidade": {"$ref": "#/$defs/texto"},
+        "recebe_nota_modular": {"const": false}
+      }
+    },
+    "camadasNaoModulares": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["regressoes_historicas", "extensoes_campanha"],
+      "properties": {
+        "regressoes_historicas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/itemNaoModular"}
+        },
+        "extensoes_campanha": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/itemNaoModular"}
+        }
+      }
+    },
+    "migracao": {
+      "type": "object",
+      "required": ["origem", "natureza_destino"],
+      "properties": {
+        "origem": {
+          "enum": [
+            "emergent_sidequest_opportunity",
+            "emergent_sidequest_authoring",
+            "active_sidequest_reassessment",
+            "transactional_sidequest_progress",
+            "sidequest_progression",
+            "quest_rewards",
+            "sidequest_success_reactions",
+            "canon_bridge",
+            "canonical_secret_quests",
+            "npc_social_initiative",
+            "world_local_incidents",
+            "persistent_world_conditions",
+            "liveness_boundary",
+            "batch_world_boundary",
+            "reactive_pressure_routing",
+            "secret_canon",
+            "adversarial_integrity",
+            "concurrent_adversarial_operations",
+            "seven_names_migration_regression",
+            "underground_tournament"
+          ]
+        },
+        "natureza_destino": {"enum": ["subcapacidade", "regressao_historica", "extensao_campanha"]},
+        "modulo": {"type": "string"},
+        "subcapacidade": {"type": "string"},
+        "destino": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"natureza_destino": {"const": "subcapacidade"}}},
+          "then": {"required": ["modulo", "subcapacidade"], "not": {"required": ["destino"]}}
+        },
+        {
+          "if": {"properties": {"natureza_destino": {"enum": ["regressao_historica", "extensao_campanha"]}}},
+          "then": {"required": ["destino"], "not": {"anyOf": [{"required": ["modulo"]}, {"required": ["subcapacidade"]}]}}
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

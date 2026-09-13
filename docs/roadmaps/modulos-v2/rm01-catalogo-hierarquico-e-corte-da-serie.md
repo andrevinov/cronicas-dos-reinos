@@ -2,7 +2,8 @@
 
 ## Status e dependências
 
-**Proposta.** Primeira task do roadmap; não depende de implementação anterior.
+**Concluída em 2026-09-13.** Primeira task do roadmap; não depende de
+implementação anterior.
 
 ## Problema
 
@@ -38,6 +39,23 @@ telemetria ou dashboard.
 
 Durante a implementação, o catálogo v1 continua sendo o padrão de produção. O
 v2 só se torna padrão na RM-11.
+
+## Artefatos implementados
+
+- `evaluation/catalogo-modulos-v2.json`: doze módulos, subcapacidades,
+  contratos, indicadores e mapa completo v1 → v2;
+- `evaluation/catalogo-guardrails-v2.json`: quatro guardrails críticos fora da
+  média modular;
+- `evaluation/series-avaliacao.json`: classificação, corte e chave de
+  comparabilidade;
+- `evaluation/schemas/`: schemas JSON publicados;
+- `ferramentas/catalogo_avaliacao.py`: validação sem dependência externa,
+  classificação de legado e bloqueio de agregação incompatível;
+- `tests/test_catalogo_avaliacao.py`: testes estruturais em fixtures controladas.
+
+O gerador v1 passou a marcar novos pacotes como `legacy-v1` e o índice derivado
+classifica pacotes antigos pelo fallback. O manifesto da sessão 021 não foi
+alterado.
 
 ## Testes
 

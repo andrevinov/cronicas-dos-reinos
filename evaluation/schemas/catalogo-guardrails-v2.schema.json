@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalogo-guardrails-v2.schema.json",
+  "title": "Catálogo de guardrails críticos",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_catalogo_guardrails", "versao_catalogo", "serie_avaliacao", "natureza", "participa_media_modular", "estados", "regra_agregacao", "guardrails"],
+  "properties": {
+    "schema_catalogo_guardrails": {"const": 1},
+    "versao_catalogo": {"type": "string", "minLength": 1},
+    "serie_avaliacao": {"const": "modules-v2"},
+    "natureza": {"type": "string", "minLength": 1},
+    "participa_media_modular": {"const": false},
+    "estados": {"type": "array", "uniqueItems": true, "items": {"enum": ["ok", "violado", "indeterminado", "nao_aplicavel"]}},
+    "regra_agregacao": {"type": "string", "minLength": 1},
+    "guardrails": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "allOf": [
+        {"contains": {"type": "object", "properties": {"id": {"const": "player_agency"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "knowledge_secrecy"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "roll_integrity"}}, "required": ["id"]}},
+        {"contains": {"type": "object", "properties": {"id": {"const": "canonical_consistency"}}, "required": ["id"]}}
+      ],
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "responsabilidade", "severidade", "unidade_analise", "participa_media_modular", "evidencias"],
+        "properties": {
+          "id": {"enum": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"]},
+          "responsabilidade": {"type": "string", "minLength": 1},
+          "severidade": {"const": "critica"},
+          "unidade_analise": {"enum": ["turno", "cena", "fronteira", "sessao", "evento"]},
+          "participa_media_modular": {"const": false},
+          "evidencias": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  }
+}

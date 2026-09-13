@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "series-avaliacao.schema.json",
+  "title": "Política de séries de avaliação",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_politica_series_avaliacao", "natureza", "serie_padrao_producao", "series", "classificacao", "corte", "comparabilidade"],
+  "properties": {
+    "schema_politica_series_avaliacao": {"const": 1},
+    "natureza": {"type": "string", "minLength": 1},
+    "serie_padrao_producao": {"const": "legacy-v1"},
+    "series": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "object"}},
+    "classificacao": {
+      "type": "object",
+      "required": ["campo_manifesto", "serie_quando_campo_ausente", "sessao_021", "reescrever_pacote_legado"],
+      "properties": {
+        "campo_manifesto": {"const": "serie_avaliacao"},
+        "serie_quando_campo_ausente": {"const": "legacy-v1"},
+        "sessao_021": {"const": "legacy-v1"},
+        "reescrever_pacote_legado": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "corte": {"type": "object"},
+    "comparabilidade": {
+      "type": "object",
+      "required": ["agregacao_entre_series", "versoes_incompativeis", "campos_versao", "regra", "referencia_legada"],
+      "properties": {
+        "agregacao_entre_series": {"const": "proibida"},
+        "versoes_incompativeis": {"const": "separar_series_temporais"},
+        "campos_versao": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "regra": {"type": "string", "minLength": 1},
+        "referencia_legada": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -20,7 +20,12 @@ o rollout e não participa do loop narrativo nem altera o cânone.
 ## Fontes versionadas
 
 - `ferramentas/analisar-rollout.py`: coleta operacional schema 3;
-- `evaluation/catalogo-modulos.json`: responsabilidades, visibilidade e KPIs;
+- `evaluation/catalogo-modulos.json`: catálogo v1 ainda usado em produção;
+- `evaluation/catalogo-modulos-v2.json`: contrato hierárquico preparado, ainda
+  não usado pelo gerador;
+- `evaluation/catalogo-guardrails-v2.json`: propriedades críticas externas à
+  média modular;
+- `evaluation/series-avaliacao.json`: corte e comparabilidade das séries;
 - `evaluation/metas-avaliacao.json`: pesos, metas e faixas;
 - `baseline/rollout-2026-08-15.json`: baseline histórica;
 - rollout JSONL concluído;
@@ -29,6 +34,19 @@ o rollout e não participa do loop narrativo nem altera o cânone.
 
 Alterar catálogo ou metas exige incrementar o respectivo schema. Comparações
 longitudinais devem mostrar as versões usadas em cada sessão.
+
+### Corte entre séries
+
+Até a RM-11, o catálogo v1 e a série `legacy-v1` continuam sendo o padrão de
+produção. Pacotes sem `serie_avaliacao` são classificados como `legacy-v1`; não
+se reescreve o snapshot apenas para acrescentar o campo. Por isso a sessão 021
+permanece intacta e aparece como legado no índice derivado.
+
+`modules-v2` exige declaração explícita depois da habilitação do avaliador v2.
+Não se calcula média, tendência ou baseline misturando `legacy-v1` e
+`modules-v2`. Também não se agregam silenciosamente pacotes cujas versões de
+catálogo, metas ou gerador divergem. O contrato executável está em
+`ferramentas/catalogo_avaliacao.py`.
 
 ## Pré-condição
 

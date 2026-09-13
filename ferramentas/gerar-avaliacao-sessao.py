@@ -20,6 +20,8 @@ from pathlib import Path
 from statistics import mean, median
 from typing import Any, Iterable
 
+from ferramentas.catalogo_avaliacao import comparability_key, evaluation_series
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ANALYZER_PATH = Path(__file__).with_name("analisar-rollout.py")
@@ -903,6 +905,8 @@ def _rebuild_session_index(sessions_dir: Path) -> None:
         entries.append(
             {
                 "sessao_id": session_id,
+                "serie_avaliacao": evaluation_series(manifest),
+                "chave_comparabilidade": list(comparability_key(manifest)),
                 "status_avaliacao": scorecard.get("status_avaliacao"),
                 "nota_geral_0a100": scorecard.get("nota_geral_0a100"),
                 "faixa_geral": scorecard.get("faixa_geral"),
@@ -1026,6 +1030,7 @@ def generate_session_evaluation(
     manifest = {
         "schema_pacote_avaliacao": PACKAGE_SCHEMA,
         "sessao_id": session_id,
+        "serie_avaliacao": "legacy-v1",
         "natureza": "avaliacao_pos_hoc_derivada; não altera cânone",
         "fonte": {
             "arquivo": rollout.name,

@@ -230,6 +230,7 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         }
         self.assertEqual({path.name for path in output.iterdir()}, expected)
         manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["serie_avaliacao"], "legacy-v1")
         self.assertEqual(manifest["amostra"]["turnos_narrativos"], 1)
         self.assertEqual(manifest["amostra"]["eventos_modulo_turno"], 2)
         self.assertEqual(manifest["amostra"]["tokens_narrativos"], 120)
@@ -293,6 +294,11 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertEqual(index["schema_indice_avaliacoes"], 1)
         self.assertEqual(len(index["sessoes"]), 1)
         self.assertEqual(index["sessoes"][0]["sessao_id"], "fixture")
+        self.assertEqual(index["sessoes"][0]["serie_avaliacao"], "legacy-v1")
+        self.assertEqual(
+            index["sessoes"][0]["chave_comparabilidade"],
+            ["legacy-v1", "1", "1", "1"],
+        )
         self.assertEqual(index["sessoes"][0]["caminho"], "fixture")
 
 

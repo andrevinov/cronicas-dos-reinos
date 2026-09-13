@@ -26,6 +26,8 @@ class EvaluationDashboardTest(unittest.TestCase):
         self.assertIn("localStorage", javascript)
         self.assertIn("impacto_menos2a2", javascript)
         self.assertIn("resumo-modulos.json", javascript)
+        self.assertIn("function comparableSessions()", javascript)
+        self.assertIn("chave_comparabilidade", javascript)
 
     def test_indice_aponta_para_pacotes_compativeis_com_o_painel(self) -> None:
         index = json.loads((SESSIONS / "index.json").read_text(encoding="utf-8"))
@@ -40,6 +42,8 @@ class EvaluationDashboardTest(unittest.TestCase):
                 feedback = list(csv.DictReader(stream))
 
             self.assertEqual(entry["sessao_id"], scorecard["sessao_id"])
+            self.assertEqual(entry["serie_avaliacao"], "legacy-v1")
+            self.assertEqual(entry["chave_comparabilidade"][0], entry["serie_avaliacao"])
             self.assertTrue(summary["modulos"])
             self.assertTrue(any(row["tipo"] == "global" for row in feedback))
             self.assertTrue(any(row["tipo"] == "modulo" for row in feedback))
