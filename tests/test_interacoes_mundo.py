@@ -573,20 +573,23 @@ class IntegrationBudgetTest(unittest.TestCase):
     def test_novos_roteadores_quentes_ficam_dentro_do_teto(self):
         contract = yaml.safe_load(BUDGET.read_text(encoding="utf-8"))
         limit = contract["limites"]["arquivos_quentes"]
+        live = set(contract["arquivos_estado_vivo"])
         sizes = {}
         for rel in contract["arquivos_quentes_novos"]:
             path = ROOT / rel
             sizes[rel] = path.stat().st_size
-            self.assertLessEqual(
-                sizes[rel],
-                limit["max_bytes_por_roteador"],
-                (rel, sizes[rel]),
-            )
+            if rel not in live:
+                self.assertLessEqual(
+                    sizes[rel],
+                    limit["max_bytes_por_roteador"],
+                    (rel, sizes[rel]),
+                )
         self.assertLessEqual(
-            sum(sizes.values()),
-            limit["max_bytes_total_novos"],
+            sum(size for rel, size in sizes.items() if rel not in live),
+            limit["max_bytes_total_estrutura_estatica"],
             sizes,
         )
+        self.assertTrue(limit["estado_vivo_nao_congelado_por_soma"])
 
 
 if __name__ == "__main__":

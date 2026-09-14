@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import sys
 import unittest
 from pathlib import Path
@@ -132,14 +133,23 @@ class SidequestOpportunityBudgetTest(unittest.TestCase):
             "ticket_id": ticket_id,
             "sistemas_narrativos": [],
         }
-        result = integration.integrate_prepare(
-            ROOT,
-            base,
-            signal_raw=self.signal(),
-            decode_ticket=cronica.decode_ticket,
-            encode_ticket=cronica._core.encode_ticket,
-            now=now,
+        state = copy.deepcopy(
+            opportunity.oportunidades.load_state(
+                ROOT, opportunity.oportunidades.load_index(ROOT)
+            )
         )
+        state["missoes"] = {}
+        with patch.object(
+            opportunity.oportunidades, "load_state", return_value=state
+        ):
+            result = integration.integrate_prepare(
+                ROOT,
+                base,
+                signal_raw=self.signal(),
+                decode_ticket=cronica.decode_ticket,
+                encode_ticket=cronica._core.encode_ticket,
+                now=now,
+            )
         package = result["sidequest_emergente"]
         self.assertEqual(package["resultado"], "material_para_planejamento")
         self.assertLessEqual(

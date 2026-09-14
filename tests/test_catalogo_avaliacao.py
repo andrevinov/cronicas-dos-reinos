@@ -86,8 +86,60 @@ class EvaluationCatalogContractTest(unittest.TestCase):
 
     def test_releases_correntes_congelam_duas_versoes_e_fixtures(self) -> None:
         catalogo_avaliacao.validate_module_releases(self.releases, self.catalog)
-        self.assertEqual(len(self.releases["releases"]), 12)
+        self.assertEqual(self.releases["schema_module_releases"], 2)
+        self.assertGreaterEqual(len(self.releases["releases"]), 12)
+        self.assertEqual(set(self.releases["current_releases"]), catalogo_avaliacao.MODULE_IDS)
+        self.assertTrue(
+            set(self.releases["current_releases"].values())
+            <= {item["release_id"] for item in self.releases["releases"]}
+        )
         self.assertTrue(all(item["fixtures"] for item in self.releases["releases"]))
+
+    def test_historico_aceita_multiplos_releases_sem_perder_o_corrente(self) -> None:
+        history = copy.deepcopy(self.releases)
+        current_id = history["current_releases"]["context_and_memory"]
+        current = next(item for item in history["releases"] if item["release_id"] == current_id)
+        major, minor, patch = map(int, current["implementation_version"].split("."))
+        next_version = f"{major}.{minor}.{patch + 1}"
+        successor = copy.deepcopy(current)
+        successor.update(
+            {
+                "release_id": f"context_and_memory/impl-{next_version}/eval-3.0.0",
+                "implementation_version": next_version,
+                "previous": {
+                    "implementation_version": current["implementation_version"],
+                    "evaluation_version": "3.0.0",
+                },
+                "implementation_change": "patch",
+                "evaluation_change": "none",
+                "compatibility": "compatible",
+                "source_revision": "fixture-rm12",
+            }
+        )
+        history["releases"].append(successor)
+        history["current_releases"]["context_and_memory"] = successor["release_id"]
+        catalog = copy.deepcopy(self.catalog)
+        next(item for item in catalog["modulos"] if item["id"] == "context_and_memory")[
+            "versao_implementacao"
+        ] = next_version
+
+        catalogo_avaliacao.validate_module_releases(history, catalog)
+        self.assertIn(current, history["releases"])
+
+        invalid = copy.deepcopy(history)
+        invalid["releases"][-1]["implementation_change"] = "minor"
+        with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "SemVer"):
+            catalogo_avaliacao.validate_module_releases(invalid, catalog)
+
+        branched = copy.deepcopy(history)
+        branched["releases"][-1]["previous"]["implementation_version"] = "1.0.0"
+        with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "release anterior"):
+            catalogo_avaliacao.validate_module_releases(branched, catalog)
+
+        stale_pointer = copy.deepcopy(history)
+        stale_pointer["current_releases"]["context_and_memory"] = current["release_id"]
+        with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "última release"):
+            catalogo_avaliacao.validate_module_releases(stale_pointer, catalog)
 
     def test_schemas_publicados_sao_json_validos_e_apontam_para_draft_2020(self) -> None:
         expected = {

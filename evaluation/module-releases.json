@@ -1,18 +1,280 @@
 {
-  "schema_module_releases": 1,
+  "schema_module_releases": 2,
   "natureza": "histórico imutável de versões avaliáveis; não é estado canônico",
+  "current_releases": {
+    "context_and_memory": "context_and_memory/impl-1.0.1/eval-3.0.0",
+    "turn_and_session_orchestration": "turn_and_session_orchestration/impl-1.0.1/eval-3.0.0",
+    "narrative_delivery": "narrative_delivery/impl-1.0.1/eval-3.0.0",
+    "rules_and_character_state": "rules_and_character_state/impl-1.0.0/eval-3.0.0",
+    "sidequest_authoring": "sidequest_authoring/impl-1.0.0/eval-3.0.0",
+    "sidequest_lifecycle": "sidequest_lifecycle/impl-1.0.0/eval-3.0.0",
+    "canonical_quest_integration": "canonical_quest_integration/impl-1.0.0/eval-3.0.0",
+    "npc_continuity_and_social_behavior": "npc_continuity_and_social_behavior/impl-1.0.0/eval-3.0.0",
+    "scene_world_projection": "scene_world_projection/impl-1.0.0/eval-3.0.0",
+    "world_boundary_resolution": "world_boundary_resolution/impl-1.0.0/eval-3.0.0",
+    "causal_narrative_routing": "causal_narrative_routing/impl-1.0.0/eval-3.0.0",
+    "adversarial_operations": "adversarial_operations/impl-1.0.0/eval-3.0.0"
+  },
   "releases": [
-    {"module_id":"context_and_memory","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"turn_and_session_orchestration","implementation_version":"1.0.1","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"patch","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Propagação da identidade de interação sem nova chamada ON.","compatibility":"incompatible_evaluation","fixtures":["tests/test_interacoes_narrativas.py","tests/test_cronica_cli.py"]},
-    {"module_id":"narrative_delivery","implementation_version":"1.0.1","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"patch","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Referência no rodapé e substituição de notas do jogador por evidência.","compatibility":"incompatible_evaluation","fixtures":["tests/test_interacoes_narrativas.py","tests/test_narrative_delivery_module_v2.py"]},
-    {"module_id":"rules_and_character_state","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"sidequest_authoring","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"sidequest_lifecycle","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"canonical_quest_integration","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"npc_continuity_and_social_behavior","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"scene_world_projection","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"world_boundary_resolution","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"causal_narrative_routing","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]},
-    {"module_id":"adversarial_operations","implementation_version":"1.0.0","evaluation_version":"3.0.0","previous":{"implementation_version":"1.0.0","evaluation_version":"2.0.0"},"implementation_change":"none","evaluation_change":"major","effective_date":"2026-09-14","source_revision":"RM-11","reason":"Régua padronizada e manifestações por interação.","compatibility":"incompatible_evaluation","fixtures":["tests/test_catalogo_avaliacao.py","tests/test_telemetria_modular.py"]}
+    {
+      "release_id": "context_and_memory/impl-1.0.0/eval-3.0.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.1/eval-3.0.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.1",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "3.0.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-12",
+      "reason": "Memória de cena remove duplicação do papel bruto e preserva diálogo e iniciativa elegíveis no orçamento.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_experiencia_narrativa_integrada.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "turn_and_session_orchestration/impl-1.0.1/eval-3.0.0",
+      "module_id": "turn_and_session_orchestration",
+      "implementation_version": "1.0.1",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Propagação da identidade de interação sem nova chamada ON.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_interacoes_narrativas.py",
+        "tests/test_cronica_cli.py"
+      ]
+    },
+    {
+      "release_id": "narrative_delivery/impl-1.0.1/eval-3.0.0",
+      "module_id": "narrative_delivery",
+      "implementation_version": "1.0.1",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Referência no rodapé e substituição de notas do jogador por evidência.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_interacoes_narrativas.py",
+        "tests/test_narrative_delivery_module_v2.py"
+      ]
+    },
+    {
+      "release_id": "rules_and_character_state/impl-1.0.0/eval-3.0.0",
+      "module_id": "rules_and_character_state",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "sidequest_authoring/impl-1.0.0/eval-3.0.0",
+      "module_id": "sidequest_authoring",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "sidequest_lifecycle/impl-1.0.0/eval-3.0.0",
+      "module_id": "sidequest_lifecycle",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "canonical_quest_integration/impl-1.0.0/eval-3.0.0",
+      "module_id": "canonical_quest_integration",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.0.0/eval-3.0.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "scene_world_projection/impl-1.0.0/eval-3.0.0",
+      "module_id": "scene_world_projection",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "world_boundary_resolution/impl-1.0.0/eval-3.0.0",
+      "module_id": "world_boundary_resolution",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "causal_narrative_routing/impl-1.0.0/eval-3.0.0",
+      "module_id": "causal_narrative_routing",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    },
+    {
+      "release_id": "adversarial_operations/impl-1.0.0/eval-3.0.0",
+      "module_id": "adversarial_operations",
+      "implementation_version": "1.0.0",
+      "evaluation_version": "3.0.0",
+      "previous": {
+        "implementation_version": "1.0.0",
+        "evaluation_version": "2.0.0"
+      },
+      "implementation_change": "none",
+      "evaluation_change": "major",
+      "effective_date": "2026-09-14",
+      "source_revision": "RM-11",
+      "reason": "Régua padronizada e manifestações por interação.",
+      "compatibility": "incompatible_evaluation",
+      "fixtures": [
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_telemetria_modular.py"
+      ]
+    }
   ]
 }

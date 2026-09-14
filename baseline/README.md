@@ -6,6 +6,9 @@ Esta pasta preserva o estado anterior à refatoração voltada à economia de co
 
 - `estado-logico-2026-08-15.yaml`: fatos essenciais da campanha que devem sobreviver às migrações estruturais.
 - `rollout-2026-08-15.json`: métricas resumidas do rollout do Codex usado como benchmark pré-refatoração.
+- `modules-v2-technical-acceptance.json`: medidas exatas da fixture técnica da
+  RM-12; valida integração e orçamento, mas não representa experiência de jogo
+  nem inaugura a série operacional `modules-v2`.
 
 O rollout bruto não é versionado: ele é grande, contém histórico operacional e pode incluir conteúdo que não precisa fazer parte do repositório. Para analisá-lo localmente:
 
@@ -38,3 +41,16 @@ A baseline não deve ser usada depois que a campanha voltar a avançar normalmen
 3. Enquanto a campanha estiver suspensa, toda mudança que mexa em estado canônico deve também passar pela comparação com a baseline.
 4. Se uma etapa exigir mudar a localização física de um fato, adaptar o extrator/verificador antes de remover a fonte antiga.
 5. Divergências da baseline só podem ser aceitas quando forem consequência consciente da própria migração, nunca por perda silenciosa de informação.
+
+## Baseline modular v2
+
+A baseline técnica da RM-12 é determinista e pode ser revalidada com:
+
+```bash
+poetry run python ferramentas/aceitacao_modular_v2.py check
+```
+
+A baseline operacional é outra coisa: será o pacote da primeira sessão real
+encerrada e auditada. Ela deve registrar somente valores observados e permanecer
+vinculada ao conjunto de releases capturado nas interações. A sessão técnica
+`900` e a sessão legada `021` não podem substituí-la.

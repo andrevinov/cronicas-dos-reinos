@@ -34,6 +34,7 @@ classificacoes:
     sirrus_melandor: casa_de_tyr
     tobb_marlin: jack_mooney
   persistentes_sem_agenda:
+  - aiko_matsuda
   - brunna_torkel
   - colm_dunn
   - dessa_wren

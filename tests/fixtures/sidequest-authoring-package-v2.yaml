@@ -1,0 +1,101 @@
+schema_fixture_sidequest_authoring: 1
+natureza: snapshot_de_contrato_hipotetico_nao_canonico
+instante_referencia: 22 Eleasis, 1372 DR 13:10
+motivo: >-
+  Exercitar autoria, lifecycle, recompensa e integração canônica com orçamento
+  disponível sem depender das missões que estiverem ativas no save corrente.
+pacote:
+  ok: true
+  resultado: material_para_planejamento
+  read_only: true
+  mutacoes_aplicadas: false
+  origem:
+    tipo: conversa_npc
+    id: task41-silva-conversa
+    npc_id: silva_elkwood
+    ancora_tipo: problema
+    ancora: >-
+      Silva descreveu um problema concreto envolvendo uma entrega ameaçada e
+      uma pessoa que precisa de ajuda antes que a situação piore.
+  autoridade:
+    pode_planejar: true
+    pode_criar_missao: false
+    pode_oferecer_missao: false
+    pode_reescrever_intencao: false
+    pode_marcar_intencao_satisfeita: false
+    regra: >-
+      O pacote autoriza pensar uma aventura, não canonizá-la; descartar é
+      sempre válido.
+  quests:
+    ativas: 0
+    abertas: 0
+    max_ativas: 2
+    max_abertas: 3
+    atuais: []
+  prazo_mundo:
+    agora: {data: '22 Eleasis, 1372 DR', hora: '13:10'}
+    local_id: jack_mooney_sons_circus
+    condicoes_persistentes: []
+  horizonte_intencoes_canonicas:
+    avaliadas: 1
+    janela_dias: 14
+    regra: >-
+      No máximo três intenções cronologicamente próximas são abertas; ausência
+      de match não autoriza scan adicional.
+    compativeis:
+    - evento_id: arsenal_da_night_watch
+      ativacao: {data: '23 Eleasis, 1372 DR', hora: '06:00'}
+      intencao:
+        id: icp1-arsenal_da_night_watch
+        funcao: >-
+          Ferir a capacidade institucional da Night Watch e ligar essa perda a
+          logística subterrânea, abrindo risco, recuperação e descoberta reais.
+        criterios_satisfacao:
+        - >-
+          A Night Watch sofre perda operacional material associada a
+          infraestrutura subterrânea ou logística de Sarbreen.
+        - >-
+          Surge oportunidade causal de recuperar pessoas ou patrimônio e obter
+          informação útil, sem garantir sucesso nem participação de Ren.
+      elasticidade:
+        modos: [satisfazer, transformar, adiar, reancorar]
+        atraso_maximo_horas: 96
+        satisfacao_antecipada: true
+        reancoragem_local: true
+        troca_de_atores: true
+  atores_causalmente_disponiveis:
+  - id: silva_elkwood
+    papel: origem
+    causal_agora: true
+  - id: masao_hirasawa
+    papel: ator_estrategico
+    causal_agora: true
+    linhas: [neutralizar_ren_sem_expor_a_rede]
+  juppongatana_possiveis:
+  - id: kurobane_jinzaburo
+    nome: Kurobane Jinzaburō
+    circulo: externo
+    estado: ativo
+    presenca: presente
+    causal_agora: true
+  envelope_recompensa:
+    tier: 2
+    periculosidade: media
+    familia_local: acampamento_espetaculo
+    pontos: 5
+    pontos_base: 4
+    bonus_risco: 1
+    teto_valor: moderado
+    max_itens: 3
+    categorias: [dinheiro, consumivel, ferramenta, curiosidade]
+    regra: >-
+      Envelope de planejamento; a fronteira não sorteia, cria ou entrega
+      recompensa.
+  fontes_lidas:
+  - fixture:tests/fixtures/sidequest-authoring-package-v2.yaml
+  metricas:
+    catalogo_task33_aberto: false
+    transcricao_lida: false
+    scans_globais: 0
+    escritas: 0
+    intencoes_lidas: 1

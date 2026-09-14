@@ -4,6 +4,7 @@ import argparse
 import contextlib
 import io
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -134,9 +135,11 @@ class OperationalTicketContractTest(unittest.TestCase):
         self.assertIn("ticket_id", str(caught.exception))
 
     def test_preparacao_explica_ticket_sem_criar_novo_campo(self):
-        with mock.patch.object(cronica._pending_gate, "prepare_gate", return_value=None):
+        with tempfile.TemporaryDirectory() as temporary, mock.patch.object(
+            cronica._pending_gate, "prepare_gate", return_value=None
+        ):
             result = cronica.prepare(
-                ROOT,
+                Path(temporary),
                 scene_id="s025-ticket-hint",
                 sidequest_signal=None,
             )

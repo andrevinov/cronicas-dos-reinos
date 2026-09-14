@@ -1,0 +1,41 @@
+schema_aceitacao_modular_v2: 1
+natureza: regressões controladas; cada âncora é executada pelos perfis oficiais
+
+episodios:
+  turno_curto_neutro:
+    arquivo: tests/test_cronica_hotpath_rollout.py
+    classe: NeutralTurnRegressionTest
+    teste: test_turno_comum_nao_inventa_gatilho_nem_chama_endpoint
+  cena_social_memoria_relacao:
+    arquivo: tests/test_npc_continuity_module_v2.py
+    classe: NpcContextAndBehaviorTest
+    teste: test_mudanca_relacional_solta_falha_e_fato_duravel_gera_par_atomico
+  regra_rolagem_recurso:
+    arquivo: tests/test_rules_and_character_state_module_v2.py
+    classe: RulesAndCharacterStateReceiptTest
+    teste: test_recibo_correlaciona_contrato_rolagem_recurso_e_tempo
+  oportunidade_e_autoria:
+    arquivo: tests/test_sidequest_modules_v2.py
+    classe: SidequestAuthoringFacadeTest
+    teste: test_oferta_preparada_usa_um_unico_journal_e_instalacao
+  progresso_terminal_exactly_once:
+    arquivo: tests/test_transactional_sidequest_progress.py
+    classe: TransactionalProgressTerminalTest
+    teste: test_sucesso_completo_encerra_e_recompensa_exatamente_uma_vez
+  permanencia_e_compressao:
+    arquivo: tests/test_cronica_permanencia_nv15.py
+    classe: CronicaPermanenceTests
+    teste: test_permanence_output_never_nulls_consolidated_local
+  evento_canonico_devido:
+    arquivo: tests/test_mundo_causal_modules_v2.py
+    classe: CausalNarrativeRoutingFacadeTest
+    teste: test_evento_datado_e_pressao_comprometida_nao_sao_soterrados
+  operacoes_adversariais_simultaneas:
+    arquivo: tests/test_adversarial_operations_module_v2.py
+    classe: UnifiedAdversarialOperationTest
+    teste: test_duas_frentes_usam_o_mesmo_contrato_e_reservas_separadas
+  retry_e_recovery:
+    arquivo: tests/test_turn_and_session_orchestration_module_v2.py
+    classe: CorrelatedTurnReceiptTest
+    teste: test_retry_e_reparo_nao_declaram_segundo_efeito
+

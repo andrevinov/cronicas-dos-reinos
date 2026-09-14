@@ -39,7 +39,7 @@
         {"id": "fatos_duraveis_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
+      "versao_implementacao": "1.0.1",
       "versao_avaliacao": "3.0.0"
     },
     {

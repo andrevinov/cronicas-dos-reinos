@@ -10,8 +10,9 @@ canônica da campanha nem autoriza ação no mundo.
 - `catalogo-modulos-v2.json`: os doze módulos-pai e suas subcapacidades;
 - `metas-avaliacao-v2.json`: pesos, faixas, confiança e prioridade;
 - `catalogo-guardrails-v2.json`: propriedades críticas fora da média;
-- `module-releases.json`: histórico imutável das versões de implementação e de
-  avaliação de cada módulo;
+- `module-releases.json`: log append-only das versões de implementação e de
+  avaliação, mais o mapa explícito `current_releases` para a release vigente de
+  cada módulo;
 - `series-avaliacao.json`: corte de série e regras de comparabilidade;
 - `schemas/`: contratos JSON publicados.
 
@@ -28,7 +29,8 @@ poetry run python ferramentas/catalogo_avaliacao.py --json
 
 O validador exige os doze módulos, migração única dos vinte itens v1,
 guardrails sem peso, política de série e release corrente coerente com as duas
-versões SemVer do catálogo.
+versões SemVer do catálogo. Uma alteração adiciona outra entrada com `release_id`
+único e move somente o ponteiro corrente; nunca edita a entrada predecessora.
 
 ## Pacote por sessão
 
@@ -55,3 +57,11 @@ outros módulos.
 A receita completa está em
 `docs/agente/engenharia/avaliacao-desempenho-sessoes.md` e a visualização em
 `dashboard/README.md`.
+
+O aceite reproduzível da arquitetura é executado por:
+
+```bash
+poetry run python ferramentas/aceitacao_modular_v2.py check
+```
+
+Ele usa uma sessão técnica isolada e não cria ponto na série real.

@@ -15,7 +15,6 @@ if str(TOOLS) not in sys.path:
 
 import locais
 import mundo
-import oportunidade_sidequest
 import oportunidades
 import sidequests_emergentes as emergent
 
@@ -31,20 +30,12 @@ def isolate_opportunity_state(repo: Path) -> None:
 
 
 def task40_package() -> dict:
-    return oportunidade_sidequest.plan(
-        ROOT,
-        signaled=True,
-        origin_type="conversa_npc",
-        origin_id="task41-silva-conversa",
-        anchor_type="problema",
-        anchor=(
-            "Silva descreveu um problema concreto envolvendo uma entrega ameaçada e "
-            "uma pessoa que precisa de ajuda antes que a situação piore."
-        ),
-        npc_id="silva_elkwood",
-        local_id="jack_mooney_sons_circus",
-        danger="media",
+    fixture = yaml.safe_load(
+        (ROOT / "tests/fixtures/sidequest-authoring-package-v2.yaml").read_text(
+            encoding="utf-8"
+        )
     )
+    return fixture["pacote"]
 
 
 def quest_spec(package: dict) -> dict:
@@ -230,11 +221,24 @@ class Task41PreparationTest(unittest.TestCase):
     def setUpClass(cls):
         cls.package = task40_package()
 
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.repo = Path(self.temp.name)
+        for rel in (oportunidades.INDEX, oportunidades.STATE, emergent.NPC_INDEX):
+            target = self.repo / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / rel, target)
+        isolate_opportunity_state(self.repo)
+        shutil.copytree(ROOT / locais.INDEX.parent, self.repo / locais.INDEX.parent)
+
+    def tearDown(self):
+        self.temp.cleanup()
+
     def test_preparar_e_read_only_e_nao_cria_npc_ou_quest(self):
         spec = quest_spec(self.package)
-        state_before = (ROOT / oportunidades.STATE).read_bytes()
-        npc_index_before = (ROOT / emergent.NPC_INDEX).read_bytes()
-        result = emergent.prepare(ROOT, package=self.package, quest=spec)
+        state_before = (self.repo / oportunidades.STATE).read_bytes()
+        npc_index_before = (self.repo / emergent.NPC_INDEX).read_bytes()
+        result = emergent.prepare(self.repo, package=self.package, quest=spec)
         self.assertEqual(result["fase"], "preparacao")
         self.assertEqual(result["resultado"], "pronta_para_oferta")
         self.assertTrue(result["read_only"])
@@ -243,9 +247,9 @@ class Task41PreparationTest(unittest.TestCase):
             len(yaml.safe_dump(result, allow_unicode=True, sort_keys=False).encode("utf-8")),
             emergent.MAX_PREP_OUTPUT_BYTES,
         )
-        self.assertEqual((ROOT / oportunidades.STATE).read_bytes(), state_before)
-        self.assertEqual((ROOT / emergent.NPC_INDEX).read_bytes(), npc_index_before)
-        self.assertFalse((ROOT / emergent._quest_path(result["quest_id"])).exists())
+        self.assertEqual((self.repo / oportunidades.STATE).read_bytes(), state_before)
+        self.assertEqual((self.repo / emergent.NPC_INDEX).read_bytes(), npc_index_before)
+        self.assertFalse((self.repo / emergent._quest_path(result["quest_id"])).exists())
         self.assertEqual(result["resumo_estrutura"]["antagonistas"], 1)
         self.assertEqual(result["resumo_estrutura"]["recompensas"], 2)
 
@@ -256,17 +260,17 @@ class Task41PreparationTest(unittest.TestCase):
             emergent.EmergentSidequestAuthoringError,
             "agência de Ren|escolha/ação futura de Ren",
         ):
-            emergent.prepare(ROOT, package=self.package, quest=spec)
+            emergent.prepare(self.repo, package=self.package, quest=spec)
 
     def test_antagonistas_e_recompensas_sao_obrigatorios(self):
         spec = quest_spec(self.package)
         spec["antagonistas"] = []
         with self.assertRaisesRegex(emergent.EmergentSidequestAuthoringError, "antagonistas"):
-            emergent.prepare(ROOT, package=self.package, quest=spec)
+            emergent.prepare(self.repo, package=self.package, quest=spec)
         spec = quest_spec(self.package)
         spec["recompensas"] = []
         with self.assertRaisesRegex(emergent.EmergentSidequestAuthoringError, "recompensas"):
-            emergent.prepare(ROOT, package=self.package, quest=spec)
+            emergent.prepare(self.repo, package=self.package, quest=spec)
 
     def test_recompensa_material_nao_fura_envelope_task40(self):
         spec = quest_spec(self.package)
@@ -285,7 +289,7 @@ class Task41PreparationTest(unittest.TestCase):
             "valor_aproximado": "especial",
             "autoridade_concedente": "Somente a proprietária legítima pode conceder ou transferir o direito.",
         }
-        result = emergent.prepare(ROOT, package=self.package, quest=spec)
+        result = emergent.prepare(self.repo, package=self.package, quest=spec)
         self.assertEqual(result["recompensas_planejadas"][0]["tipo"], "propriedade")
 
     def test_relacao_canone_nao_lateral_so_pode_usar_intencao_do_pacote(self):
@@ -297,7 +301,7 @@ class Task41PreparationTest(unittest.TestCase):
                 "intencoes_candidatas": [compatible[0]["evento_id"]],
                 "justificativa": "O clímax pode ser planejado como ponte causal, sem rewrite nesta Task.",
             }
-            result = emergent.prepare(ROOT, package=self.package, quest=spec)
+            result = emergent.prepare(self.repo, package=self.package, quest=spec)
             self.assertEqual(result["relacao_canone"]["modo"], "candidata_ponte")
         bad = quest_spec(self.package)
         bad["relacao_canone"] = {
@@ -309,7 +313,7 @@ class Task41PreparationTest(unittest.TestCase):
             emergent.EmergentSidequestAuthoringError,
             "Task41 só pode citar intenções",
         ):
-            emergent.prepare(ROOT, package=self.package, quest=bad)
+            emergent.prepare(self.repo, package=self.package, quest=bad)
 
 
 class Task41MaterializationTest(unittest.TestCase):

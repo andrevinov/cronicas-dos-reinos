@@ -113,6 +113,13 @@ class EmergentBoundaryFailFastTest(unittest.TestCase):
 
 
 class EmergentBoundaryRepositoryTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.opportunity_state = copy.deepcopy(
+            oportunidades.load_state(ROOT, oportunidades.load_index(ROOT))
+        )
+        cls.opportunity_state["missoes"] = {}
+
     def _signal(self, **overrides):
         values = {
             "signaled": True,
@@ -128,7 +135,12 @@ class EmergentBoundaryRepositoryTest(unittest.TestCase):
             "danger": "media",
         }
         values.update(overrides)
-        return emergent.plan(ROOT, **values)
+        with mock.patch.object(
+            emergent.oportunidades,
+            "load_state",
+            return_value=copy.deepcopy(self.opportunity_state),
+        ):
+            return emergent.plan(ROOT, **values)
 
     def test_planejamento_real_e_read_only_idempotente_e_limitado(self):
         protected = [

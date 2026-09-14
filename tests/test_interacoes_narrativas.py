@@ -195,7 +195,7 @@ class NarrativeInteractionTest(unittest.TestCase):
 
         self.assertEqual(
             item["module_versions"]["context_and_memory"]["implementation_version"],
-            "1.0.0",
+            "1.0.1",
         )
 
 

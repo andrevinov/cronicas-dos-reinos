@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight até NV-22 + gate read-only da aceitação integrada de vivacidade."""
+"""Preflight acumulado, incluindo a aceitação técnica modular v2 read-only."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -176,6 +176,12 @@ def _add_npc_continuity_check(items):
         len(result),
     )
     result.insert(insert_at, gate)
+    modular_gate = Check(
+        "aceitação técnica modular v2",
+        (sys.executable, "ferramentas/aceitacao_modular_v2.py", "check"),
+        "avaliação",
+    )
+    result.insert(insert_at + 1, modular_gate)
     return result
 
 

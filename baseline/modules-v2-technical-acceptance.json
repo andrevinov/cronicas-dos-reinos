@@ -1,0 +1,27 @@
+{
+  "schema_baseline_modules_v2": 1,
+  "natureza": "baseline técnica observada em fixture RM-12; não inaugura a série de experiência do jogador",
+  "fonte": "tests/fixtures/rollout-modules-v2-technical.jsonl",
+  "serie_avaliacao": "modules-v2",
+  "sessao_fixture": 900,
+  "inaugura_serie_real": false,
+  "estado_primeira_sessao_real": "pendente",
+  "observado": {
+    "interacoes_total": 6,
+    "interacoes_completas": 5,
+    "interacoes_incompletas": 1,
+    "respostas_finais_no_rollout": 2,
+    "referencias_visiveis_exatamente_uma_vez": 2,
+    "modulos_pais": 12,
+    "turnos_narrativos": 1,
+    "tokens_narrativos": 352,
+    "tokens_atribuidos_pais": 352
+  },
+  "invariantes": {
+    "duas_chamadas_orquestracao_turno_on": true,
+    "nota_numerica_jogador": false,
+    "guardrails_na_media": false,
+    "versoes_historicas_reescritas": false,
+    "escrita_no_save_canonico": false
+  }
+}

@@ -47,6 +47,20 @@ OPERATION_TARGET_EVIDENCE = (
     "Ren e a Night Watch iniciaram a transferência da cativa e da matriz pelas ruas da cidade."
 )
 
+LEGACY_SIDEQUEST_ROOT = "narrador/sidequests-emergentes/"
+CURRENT_SIDEQUEST_ROOT = "narrador/tramas/sidequests/emergentes/"
+
+
+def relocated_sidequest_paths(value):
+    """Adapta uma cópia do snapshot histórico ao layout atual do repositório."""
+    if isinstance(value, dict):
+        return {key: relocated_sidequest_paths(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [relocated_sidequest_paths(item) for item in value]
+    if isinstance(value, str) and value.startswith(LEGACY_SIDEQUEST_ROOT):
+        return CURRENT_SIDEQUEST_ROOT + value.removeprefix(LEGACY_SIDEQUEST_ROOT)
+    return value
+
 
 class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixture):
     def setUp(self):
@@ -59,7 +73,9 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
     def _install_snapshot(self) -> None:
         state = oportunidades.load_state(self.repo, oportunidades.load_index(self.repo))
         state["missoes"] = {
-            self.mission_id: copy.deepcopy(self.snapshot["oportunidade"]["missao"])
+            self.mission_id: relocated_sidequest_paths(
+                copy.deepcopy(self.snapshot["oportunidade"]["missao"])
+            )
         }
         state["historico_recente"] = [
             {
@@ -78,7 +94,7 @@ class SevenNamesHistoricalFixture(transactional_cases.TransactionalProgressFixtu
             f"narrador/tramas/sidequests/emergentes/progresso/{self.quest_id}.yaml": self.snapshot["progresso_task45"],
         }
         for rel, value in documents.items():
-            self._yaml(rel, copy.deepcopy(value))
+            self._yaml(rel, relocated_sidequest_paths(copy.deepcopy(value)))
         for rel, lines in self.snapshot["fontes_canonicas"].items():
             path = self.repo / rel
             path.parent.mkdir(parents=True, exist_ok=True)

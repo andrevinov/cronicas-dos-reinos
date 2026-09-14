@@ -4,17 +4,23 @@
   "title": "Histórico de releases dos módulos",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_module_releases", "natureza", "releases"],
+  "required": ["schema_module_releases", "natureza", "current_releases", "releases"],
   "properties": {
-    "schema_module_releases": {"const": 1},
+    "schema_module_releases": {"const": 2},
     "natureza": {"type": "string", "minLength": 1},
+    "current_releases": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
     "releases": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["module_id", "implementation_version", "evaluation_version", "previous", "implementation_change", "evaluation_change", "effective_date", "source_revision", "reason", "compatibility", "fixtures"],
+        "required": ["release_id", "module_id", "implementation_version", "evaluation_version", "previous", "implementation_change", "evaluation_change", "effective_date", "source_revision", "reason", "compatibility", "fixtures"],
         "properties": {
+          "release_id": {"type": "string", "minLength": 1},
           "module_id": {"type": "string", "minLength": 1},
           "implementation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
           "evaluation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},

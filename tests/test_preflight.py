@@ -24,6 +24,7 @@ class PreflightTest(unittest.TestCase):
         self.assertIn("runtime derivado", names)
         self.assertIn("integridade estrutural e semântica", names)
         self.assertIn("baseline histórica", names)
+        self.assertIn("aceitação técnica modular v2", names)
         self.assertIn("auditoria final e retomada", names)
 
         commands = [" ".join(item.comando) for item in items]
@@ -34,6 +35,7 @@ class PreflightTest(unittest.TestCase):
         self.assertFalse(any(" checkpoint.py sessao" in command for command in commands))
         self.assertTrue(any("gerar-runtime.py --check" in command for command in commands))
         self.assertTrue(any("experiencia_integrada.py check" in command for command in commands))
+        self.assertTrue(any("aceitacao_modular_v2.py check" in command for command in commands))
 
     def test_preflight_inclui_gates_de_sidequest_por_comando_estavel(self):
         commands = {tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)}

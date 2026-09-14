@@ -281,33 +281,124 @@ def validate_series_policy(policy: dict[str, Any]) -> None:
         raise EvaluationCatalogError("comparação modular precisa disputar versões de implementação")
 
 
+def _semver_change(previous: str, current: str, owner: str) -> str:
+    if not SEMVER_RE.fullmatch(previous) or not SEMVER_RE.fullmatch(current):
+        raise EvaluationCatalogError(f"{owner}: versões precisam ser SemVer")
+    before = tuple(int(part) for part in previous.split("."))
+    after = tuple(int(part) for part in current.split("."))
+    if after < before:
+        raise EvaluationCatalogError(f"{owner}: versão não pode retroceder")
+    if after == before:
+        return "none"
+    if after[0] != before[0]:
+        return "major"
+    if after[1] != before[1]:
+        return "minor"
+    return "patch"
+
+
 def validate_module_releases(data: dict[str, Any], catalog: dict[str, Any]) -> None:
-    if data.get("schema_module_releases") != 1:
-        raise EvaluationCatalogError("schema_module_releases precisa ser 1")
+    if data.get("schema_module_releases") != 2:
+        raise EvaluationCatalogError("schema_module_releases precisa ser 2")
     releases = _required_nonempty_list(data, "releases", "histórico de releases")
-    current: dict[str, dict[str, Any]] = {}
+    current_refs = data.get("current_releases")
+    if not isinstance(current_refs, dict) or set(current_refs) != MODULE_IDS:
+        raise EvaluationCatalogError("current_releases precisa apontar os doze módulos")
+    by_id: dict[str, dict[str, Any]] = {}
+    last_by_module: dict[str, dict[str, Any]] = {}
+    version_pairs: set[tuple[str, str, str]] = set()
     for release in releases:
         module_id = _required_text(release, "module_id", "release")
         if module_id not in MODULE_IDS:
             raise EvaluationCatalogError(f"release de módulo desconhecido: {module_id}")
+        release_id = _required_text(release, "release_id", f"release {module_id}")
+        if release_id in by_id:
+            raise EvaluationCatalogError(f"release_id duplicado: {release_id}")
         for key in ("implementation_version", "evaluation_version"):
             value = _required_text(release, key, f"release {module_id}")
             if not SEMVER_RE.fullmatch(value):
                 raise EvaluationCatalogError(f"release {module_id}: {key} não é SemVer")
+        expected_id = (
+            f"{module_id}/impl-{release['implementation_version']}"
+            f"/eval-{release['evaluation_version']}"
+        )
+        if release_id != expected_id:
+            raise EvaluationCatalogError(
+                f"release {module_id}: release_id precisa ser {expected_id}"
+            )
+        pair = (module_id, release["implementation_version"], release["evaluation_version"])
+        if pair in version_pairs:
+            raise EvaluationCatalogError(f"release duplicado para o par de versões: {release_id}")
+        version_pairs.add(pair)
+        previous = release.get("previous")
+        if not isinstance(previous, dict):
+            raise EvaluationCatalogError(f"release {module_id}: previous é obrigatório")
+        prior_release = last_by_module.get(module_id)
+        if prior_release is not None and (
+            previous.get("implementation_version")
+            != prior_release["implementation_version"]
+            or previous.get("evaluation_version") != prior_release["evaluation_version"]
+        ):
+            raise EvaluationCatalogError(
+                f"release {module_id}: previous precisa apontar a release anterior do log"
+            )
         for key in ("implementation_change", "evaluation_change"):
             if release.get(key) not in {"none", "patch", "minor", "major"}:
                 raise EvaluationCatalogError(f"release {module_id}: {key} inválido")
+        implementation_change = _semver_change(
+            _required_text(previous, "implementation_version", f"release {module_id}.previous"),
+            release["implementation_version"],
+            f"release {module_id}.implementation_version",
+        )
+        evaluation_change = _semver_change(
+            _required_text(previous, "evaluation_version", f"release {module_id}.previous"),
+            release["evaluation_version"],
+            f"release {module_id}.evaluation_version",
+        )
+        if release["implementation_change"] != implementation_change:
+            raise EvaluationCatalogError(
+                f"release {module_id}: implementation_change não corresponde ao SemVer"
+            )
+        if release["evaluation_change"] != evaluation_change:
+            raise EvaluationCatalogError(
+                f"release {module_id}: evaluation_change não corresponde ao SemVer"
+            )
         if release.get("compatibility") not in {"compatible", "incompatible_implementation", "incompatible_evaluation", "incompatible_both"}:
             raise EvaluationCatalogError(f"release {module_id}: compatibilidade inválida")
+        incompatible_implementation = implementation_change == "major"
+        incompatible_evaluation = evaluation_change == "major"
+        expected_compatibility = (
+            "incompatible_both"
+            if incompatible_implementation and incompatible_evaluation
+            else "incompatible_implementation"
+            if incompatible_implementation
+            else "incompatible_evaluation"
+            if incompatible_evaluation
+            else "compatible"
+        )
+        if release["compatibility"] != expected_compatibility:
+            raise EvaluationCatalogError(
+                f"release {module_id}: compatibility deveria ser {expected_compatibility}"
+            )
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", _required_text(release, "effective_date", f"release {module_id}")):
+            raise EvaluationCatalogError(f"release {module_id}: effective_date precisa ser YYYY-MM-DD")
+        _required_text(release, "source_revision", f"release {module_id}")
+        _required_text(release, "reason", f"release {module_id}")
         _required_nonempty_list(release, "fixtures", f"release {module_id}")
-        if module_id in current:
-            raise EvaluationCatalogError(f"release corrente duplicado para {module_id}")
-        current[module_id] = release
+        by_id[release_id] = release
+        last_by_module[module_id] = release
     catalog_modules = {item["id"]: item for item in catalog.get("modulos") or []}
-    if set(current) != MODULE_IDS:
-        raise EvaluationCatalogError("histórico precisa publicar um release corrente por módulo")
     for module_id, module in catalog_modules.items():
-        release = current[module_id]
+        release_id = current_refs[module_id]
+        if release_id != last_by_module[module_id]["release_id"]:
+            raise EvaluationCatalogError(
+                f"current_releases.{module_id} precisa apontar a última release do log"
+            )
+        release = by_id.get(release_id)
+        if release is None or release.get("module_id") != module_id:
+            raise EvaluationCatalogError(
+                f"current_releases.{module_id} aponta release ausente ou de outro módulo"
+            )
         if release["implementation_version"] != module["versao_implementacao"]:
             raise EvaluationCatalogError(f"release {module_id}: versão de implementação diverge do catálogo")
         if release["evaluation_version"] != module["versao_avaliacao"]:

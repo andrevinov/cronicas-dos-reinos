@@ -484,6 +484,18 @@ JSON
 manifestação concreta do jogador; não aceita nota de módulo. `interacao listar
 --sessao N` materializa a visão de leitura sem reescrever o ledger.
 
+O aceite integrado da RM-12 roda em diretório temporário, confere os nove
+episódios ancorados, versões, identidades, regeneração e orçamento, sem criar uma
+sessão canônica:
+
+```bash
+poetry run python ferramentas/aceitacao_modular_v2.py check
+```
+
+Antes do primeiro jogo v2, o resultado saudável é
+`pronta_para_primeira_sessao_real`. A baseline técnica serve à regressão; a
+baseline operacional só nasce do primeiro rollout real encerrado.
+
 ## Fachadas modulares de sidequest
 
 A RM-03 consolidou as portas públicas de sidequest sem migrar estado ou remover

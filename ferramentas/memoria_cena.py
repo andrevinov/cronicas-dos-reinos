@@ -209,7 +209,36 @@ def _npc(reader: Reader, person: str, indexes: list[dict], records: list) -> dic
         dialogue = dialogo_relacional.project(meter, role=role)
         if dialogue is not None:
             dialogo_relacional.validate_projection(dialogue)
-            result["dialogo_relacional"] = dialogue
+            # Na memória de cena, medidores e papel já estão presentes em seus
+            # domínios e não precisam ser repetidos dentro da projeção. Mantemos
+            # toda a orientação acionável e a decisão de iniciativa.
+            compact_dialogue = {
+                key: deepcopy(dialogue[key])
+                for key in (
+                    "modo",
+                    "tom",
+                    "abertura",
+                    "discordancia",
+                    "conselho",
+                    "iniciativa_social",
+                )
+                if key in dialogue
+            }
+            social = compact_dialogue.get("iniciativa_social")
+            if isinstance(social, dict):
+                compact_dialogue["iniciativa_social"] = {
+                    key: deepcopy(social[key])
+                    for key in (
+                        "modo",
+                        "pode_iniciar",
+                        "exige_motivo",
+                        "escopo",
+                        "risco_alto",
+                        "limite",
+                    )
+                    if key in social
+                }
+            result["dialogo_relacional"] = compact_dialogue
     return {"consulta": {"comando": "npc", "termo": person}, "fontes": sources, "resultado": result}
 
 
@@ -272,7 +301,18 @@ def project(docs: dict, *, scope: str, budget: int, base: dict | None = None,
         if absent:
             skeleton[person]["dominios_ausentes"] = absent
         _, selected_fields = relevant._fields(doc)
+        has_derived_personality = any(
+            path == ("personalidade_decisoria",) for path, _, _ in selected_fields
+        )
         for path, value, rank in selected_fields:
+            # O perfil decisório já preserva a interpretação estável do papel e
+            # sua origem. Repetir o papel bruto na memória compacta expulsa
+            # diálogo/iniciativa; a fonte continua disponível por consulta.
+            if has_derived_personality and path[:2] == (
+                "textura_narrativa",
+                "papel_conversacional",
+            ):
+                continue
             if rank is not None:
                 # O estado, os compromissos e as memórias vêm antes de instruções
                 # interpretativas longas. Não remover orientação sem sinalizar.

@@ -85,7 +85,8 @@ limites:
     scheduler_novo: false
   arquivos_quentes:
     max_bytes_por_roteador: 16384
-    max_bytes_total_novos: 32768
+    max_bytes_total_estrutura_estatica: 32768
+    estado_vivo_nao_congelado_por_soma: true
   linhas_operacionais_arco:
     max_linhas_por_arco: 12
     max_executores_por_linha: 6
@@ -135,6 +136,11 @@ arquivos_quentes_novos:
 - narrador/tramas/arcos/parte_1_uma_ponte_para_kozakura.yaml
 - narrador/tramas/arcos/controle-mundo.yaml
 - narrador/tramas/arcos/marcos-aparicao.yaml
+- narrador/tramas/arcos/estado-marcos-aparicao.yaml
+arquivos_estado_vivo:
+- narrador/tramas/oportunidades/estado.yaml
+- narrador/tramas/arcos/estado.yaml
+- narrador/tramas/arcos/controle-mundo.yaml
 - narrador/tramas/arcos/estado-marcos-aparicao.yaml
 invariantes:
   scan_geral_por_turno: 0

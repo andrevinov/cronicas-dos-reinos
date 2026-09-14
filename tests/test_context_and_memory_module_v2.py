@@ -78,7 +78,7 @@ class ContextAndMemoryModuleContractTest(unittest.TestCase):
         )
 
         self.assertEqual(catalog["versao_catalogo"], "3.0.0")
-        self.assertEqual(module["versao_implementacao"], "1.0.0")
+        self.assertEqual(module["versao_implementacao"], "1.0.1")
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},
             set(context_memory.CAPABILITIES),

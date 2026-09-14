@@ -18,6 +18,15 @@ Fontes versionadas: rollout JSONL, `catalogo-modulos-v2.json`,
 `metas-avaliacao-v2.json`, `module-releases.json`, política de séries, baseline,
 ledger `sessoes/NNN/interacoes.jsonl` e adjudicações opcionais.
 
+Antes da primeira sessão real, validar o mecanismo sem tocar o save:
+
+```bash
+poetry run python ferramentas/aceitacao_modular_v2.py check
+```
+
+`pronta_para_primeira_sessao_real` significa que o gate técnico passou. Não é
+uma nota de jogo e não inaugura a curva longitudinal.
+
 ## 1. Durante a sessão
 
 Cada resposta final visível recebe exatamente uma referência:
@@ -137,4 +146,7 @@ Patch de implementação é ajuste compatível; minor é mudança substancial qu
 preserva responsabilidade e régua; major muda responsabilidade/interface. Para
 a régua, major muda denominador, elegibilidade, indicador, peso ou significado.
 Toda alteração registra predecessora, natureza, compatibilidade, motivo e
-fixtures em `module-releases.json` antes de produzir dados novos.
+fixtures em `module-releases.json` antes de produzir dados novos. O registro é
+append-only: adicionar a release e mover seu ponteiro em `current_releases`, sem
+reescrever a predecessora. A primeira sessão real aceita vira a baseline
+operacional; a fixture técnica e sessões legadas nunca entram nessa posição.
