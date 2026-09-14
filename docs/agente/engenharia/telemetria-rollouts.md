@@ -93,8 +93,10 @@ conhecimento são observados sem expor o conteúdo do fato.
 ### Custo no ledger
 
 Para cada turno, input e output são divididos uma única vez entre os módulos
-pais observados. `module_parent_costs` e `cost_closure` são aditivos e precisam
-fechar no total narrativo. Dentro do módulo, as subcapacidades usam
+pais observados. `module_parent_costs`, `cost_class_totals` e `cost_closure` são
+aditivos e precisam fechar no total narrativo. A classe `controle` contém
+`turn_and_session_orchestration`; os demais pais entram em `dominio`. Essa
+separação é contábil e não presume custo marginal causal. Dentro do módulo, as subcapacidades usam
 `capability_cost_mode: exposicao_apenas`: todas mostram o custo exposto, mas
 somente o evento primário carrega a parcela aditiva do pai. Custo marginal
 permanece `indeterminado`; a divisão é atribuição contábil, não causal.
@@ -123,6 +125,21 @@ A extensão reconhece as fases `cronica preparar`, `cronica concluir`, `cronica 
 - `orchestration_phases`;
 - `cronica_pair_turns`;
 - `fraction_turns_with_cronica_pair`.
+
+`turn_and_session_orchestration` acrescenta a visão detalhada:
+
+- chamadas por classe e duração observada por fase;
+- pares bem-sucedidos, correlacionados, divergentes ou indeterminados;
+- bloqueios por pendência/recovery;
+- retries válidos, desnecessários e recuperados;
+- tickets obsoletos/incompatíveis e commits duplicados/incompletos;
+- operações e taxa de sucesso do lifecycle de sessão.
+
+Quando `schema_turn_and_session_orchestration: 1` está presente, o detector usa
+o recibo como evidência de alta confiança. Rollouts anteriores continuam
+mensuráveis pelos comandos e outputs legados, deixando correlação como
+indeterminada quando os IDs não são observáveis. Falha reconhecida de ticket ou
+commit fica no control plane e não ativa sidequest/NPC por substring incidental.
 
 Um turno conta como a dupla preferencial quando possui exatamente um `preparar` e um `concluir` como chamadas de orquestração. Rolagens materialmente necessárias entre as duas não deixam de ser válidas: elas são tools de mecânica, não uma terceira fase de orquestração.
 

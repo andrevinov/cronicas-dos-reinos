@@ -39,6 +39,7 @@ import sessoes
 import sidequest_authoring as _sidequest_authoring
 import sidequest_lifecycle as _sidequest_lifecycle
 import transacoes
+import turn_and_session_orchestration as _turn_orchestration
 
 # Compatibilidade para recovery/testes antigos; a orquestração usa a fachada
 # RM-07, que preserva os guardrails sociais compostos pela RM-05.
@@ -124,6 +125,9 @@ def prepare(*args, **kwargs):
     repo = args[0] if args else kwargs.get("repo")
     if repo is None:
         raise _core.CronicaError("cronica preparar exige raiz do repositório")
+    recovery_gate = _turn_orchestration.prepare_recovery_gate(Path(repo))
+    if recovery_gate is not None:
+        return recovery_gate
     signal = kwargs.pop("sidequest_signal", _SIDEQUEST_DECISION_UNSET)
     mechanical_spec = kwargs.pop("mechanical_spec", None)
     memory_participants = kwargs.pop("memory_participants", None)
@@ -152,7 +156,11 @@ def prepare(*args, **kwargs):
             except (ValueError, OSError, yaml.YAMLError) as exc:
                 raise _core.CronicaError(f"NV09: {exc}") from exc
             if partition is None:
-                return gate
+                return _turn_orchestration.publish_turn(
+                    gate,
+                    "preparar",
+                    max_output_bytes=_pending_gate.MAX_BLOCKED_OUTPUT_BYTES,
+                )
             operation_pendings, contact_pendings = partition
         try:
             passive_plans = _plans10.passive(Path(repo), _world.load_world_state(Path(repo)))
@@ -220,11 +228,18 @@ def prepare(*args, **kwargs):
         contact = prepared.get(_contacts09.TICKET_KEY)
         prospective = ([contact["portador"] if contact["meio"] == "mensageiro" else contact["npc_id"]]
                        if contact else None)
-        return _scene_memory.attach(
+        prepared = _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
             base_in_context=memory_base,
             prospective_participants=prospective,
+            max_output_bytes=(
+                final_budget - _turn_orchestration.RECEIPT_RESERVE_BYTES
+            ),
+        )
+        return _turn_orchestration.publish_turn(
+            prepared,
+            "preparar",
             max_output_bytes=final_budget,
         )
     except _contacts09.plans.PlanError as exc:
@@ -279,7 +294,10 @@ def confirm(repo: Path, token: str):
         raise _core.CronicaError(
             "ticket com sidequest/pressão usa cronica concluir; não separe confirmar/registrar"
         )
-    return _hot.confirm(repo, token)
+    return _turn_orchestration.publish_turn(
+        _hot.confirm(repo, token),
+        "confirmar",
+    )
 
 
 def _conclude_base(
@@ -466,7 +484,8 @@ def conclude(repo: Path, token: str, transaction: dict):
         result["pressao_narrativa"] = installed52
         result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
     result = _npc_continuity.publish_social_persistence(result, social_persistence)
-    return _context_memory.publish_memory_persistence(result, memory_persistence)
+    result = _context_memory.publish_memory_persistence(result, memory_persistence)
+    return _turn_orchestration.publish_turn(result, "concluir")
 
 
 def register(
@@ -499,11 +518,14 @@ def register(
     original = _core._revalidate_ticket
     _core._revalidate_ticket = globals()["_revalidate_ticket"]
     try:
-        return _hot.register(
-            repo,
-            token,
-            writer_tx,
-            revalidate_ticket=revalidate,
+        return _turn_orchestration.publish_turn(
+            _hot.register(
+                repo,
+                token,
+                writer_tx,
+                revalidate_ticket=revalidate,
+            ),
+            "registrar",
         )
     finally:
         _core._revalidate_ticket = original
@@ -714,16 +736,20 @@ def _mechanical_spec_from_args(args: argparse.Namespace) -> dict | None:
 
 def _run_session(repo: Path, command: str):
     if command == "status":
-        return retomada_cronica.decorate_status(repo, ciclo_cronica.session_status(repo))
-    if command == "checkpoint":
-        return ciclo_cronica.session_checkpoint(repo)
-    if command == "encerrar":
-        return ciclo_cronica.session_close(repo)
-    if command == "iniciar":
-        return retomada_cronica.decorate_start(repo, ciclo_cronica.session_start(repo))
-    if command == "recuperar":
-        return ciclo_cronica.session_recover(repo)
-    raise ciclo_cronica.UnifiedSessionError(f"subcomando de sessão desconhecido: {command}")
+        result = retomada_cronica.decorate_status(repo, ciclo_cronica.session_status(repo))
+    elif command == "checkpoint":
+        result = ciclo_cronica.session_checkpoint(repo)
+    elif command == "encerrar":
+        result = ciclo_cronica.session_close(repo)
+    elif command == "iniciar":
+        result = retomada_cronica.decorate_start(repo, ciclo_cronica.session_start(repo))
+    elif command == "recuperar":
+        result = ciclo_cronica.session_recover(repo)
+    else:
+        raise ciclo_cronica.UnifiedSessionError(
+            f"subcomando de sessão desconhecido: {command}"
+        )
+    return _turn_orchestration.publish_session(result, command)
 
 
 def _run_progression(repo: Path, command: str, file: Path | None):
@@ -789,17 +815,20 @@ def main(argv: list[str] | None = None) -> int:
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except PartialConclusionError as exc:
+        failure = _turn_orchestration.publish_partial_failure(
+            {
+                "schema_cronica_turno": SCHEMA,
+                "fase": "falha_parcial",
+                "ticket_id": exc.ticket_id,
+                "transacao_id": exc.transaction_id,
+                "cena_confirmada": True,
+                "turno_registrado": False,
+                "erro": str(exc),
+            }
+        )
         print(
             yaml.safe_dump(
-                {
-                    "schema_cronica_turno": SCHEMA,
-                    "fase": "falha_parcial",
-                    "ticket_id": exc.ticket_id,
-                    "transacao_id": exc.transaction_id,
-                    "cena_confirmada": True,
-                    "turno_registrado": False,
-                    "erro": str(exc),
-                },
+                failure,
                 allow_unicode=True,
                 sort_keys=False,
             ),

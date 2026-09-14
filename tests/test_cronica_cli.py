@@ -109,14 +109,16 @@ class CronicaPrepareTest(unittest.TestCase):
         }
 
     def test_preparar_chama_um_endpoint_e_emite_ticket_autocontido(self):
-        with mock.patch.object(cronica.endpoints, "scene", return_value=self.endpoint()) as scene:
-            result = cronica.prepare(
-                ROOT,
-                scene_id="scene-x",
-                context_tags=["local:porto"],
-                approach_preparacao="Ren preparou uma rota de fuga antes da abordagem.",
-                sidequest_signal=None,
-            )
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            with mock.patch.object(cronica.endpoints, "scene", return_value=self.endpoint()) as scene:
+                result = cronica.prepare(
+                    repo,
+                    scene_id="scene-x",
+                    context_tags=["local:porto"],
+                    approach_preparacao="Ren preparou uma rota de fuga antes da abordagem.",
+                    sidequest_signal=None,
+                )
         scene.assert_called_once()
         self.assertEqual(result["fase"], "preparacao")
         self.assertEqual(result["ids"]["preparacao"], "scene-prep-x")

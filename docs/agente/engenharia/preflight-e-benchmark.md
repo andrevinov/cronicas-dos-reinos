@@ -19,15 +19,13 @@ python3 ferramentas/preflight.py
 O preflight executa em sequência:
 
 1. suíte unitária completa;
-2. `turno.py check`;
-3. `consolidar.py check`;
-4. `sessoes.py check`;
-5. `checkpoint.py check`;
-6. migração/fragmentação/índice em modo `--check`;
-7. `gerar-runtime.py --check`;
-8. integridade estrutural/semântica;
-9. preservação da baseline histórica;
-10. auditoria final de retomada.
+2. o gate modular `turn_and_session_orchestration.py check`, que agrega turno,
+   consolidação, memória de sessões e checkpoint sem mutação;
+3. migração/fragmentação/índice em modo `--check`;
+4. `gerar-runtime.py --check`;
+5. integridade estrutural/semântica;
+6. preservação da baseline histórica;
+7. auditoria final de retomada.
 
 Ele não registra turno, não consolida, não abre sessão e não regenera runtime. Para depuração rápida é possível usar `--sem-testes`; para parar no primeiro erro, `--fail-fast`.
 

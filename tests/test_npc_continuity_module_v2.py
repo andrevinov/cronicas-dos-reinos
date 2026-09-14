@@ -37,7 +37,7 @@ class NpcContinuityModuleContractTest(unittest.TestCase):
             for alias in capability["aliases_v1"]
         }
 
-        self.assertEqual(catalog["versao_catalogo"], "2.5.0")
+        self.assertEqual(catalog["versao_catalogo"], "2.6.0")
         self.assertEqual(module["versao_implementacao"], "1.0.0")
         self.assertEqual(aliases, set(continuity.LEGACY_ALIASES))
         self.assertEqual(

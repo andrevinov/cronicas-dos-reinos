@@ -28,7 +28,11 @@ class ContactRecoveryTest(ContactFixture):
         with self.assertRaises(core.ConsolidationError):
             consolidar.consolidate(self.repo, "cena", fail_after=3)
         before = self.hashes()
-        with self.assertRaises(ValueError): self.prepare()
+        blocked = self.prepare()
+        self.assertEqual(blocked["fase"], "bloqueada_recuperacao_sessao")
+        self.assertFalse(blocked["disponibilidade"]["narracao"])
+        self.assertFalse(blocked["disponibilidade"]["conclusao"])
+        self.assertEqual(blocked["orquestracao"]["estado"], "bloqueado_recuperacao")
         self.assertEqual(before, self.hashes())
         consolidar.consolidate(self.repo, "cena")
         barrier.sync(self.repo)

@@ -227,7 +227,10 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         with patch.object(cronica._pending_gate, "prepare_gate", return_value=gate), \
                 patch.object(cronica._pressure52, "routable_operation_pendings", return_value=None), \
                 patch.object(memory, "load_scene", side_effect=AssertionError("leitura indevida")):
-            self.assertEqual(self.prepare(["silva_fixture"]), gate)
+            blocked = self.prepare(["silva_fixture"])
+            receipt = blocked.pop("orquestracao")
+            self.assertEqual(blocked, gate)
+            self.assertEqual(receipt["estado"], "bloqueado_pendencias")
 
     def test_parser_adiciona_opcoes_na_mesma_porta_e_nao_confunde_gatilhos(self):
         args = cronica.build_parser().parse_args(["preparar", "--cena-id", "c", "--sem-oportunidade-sidequest",

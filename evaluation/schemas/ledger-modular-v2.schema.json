@@ -17,6 +17,7 @@
     "events",
     "non_module_observations",
     "module_parent_costs",
+    "cost_class_totals",
     "cost_closure",
     "corrections"
   ],
@@ -33,6 +34,12 @@
     "events": {"type": "array", "items": {"$ref": "#/$defs/event"}},
     "non_module_observations": {"type": "array", "items": {"$ref": "#/$defs/nonModuleObservation"}},
     "module_parent_costs": {"type": "array", "items": {"$ref": "#/$defs/moduleCost"}},
+    "cost_class_totals": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/classCost"}
+    },
     "cost_closure": {
       "type": "object",
       "additionalProperties": {"$ref": "#/$defs/closure"}
@@ -102,8 +109,9 @@
         "cost": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["exposed_non_additive", "parent_attributed_additive", "parent_allocation_role", "capability_cost_mode", "marginal_cost", "marginal_cost_status"],
+          "required": ["attribution_class", "exposed_non_additive", "parent_attributed_additive", "parent_allocation_role", "capability_cost_mode", "marginal_cost", "marginal_cost_status"],
           "properties": {
+            "attribution_class": {"enum": ["controle", "dominio"]},
             "exposed_non_additive": {"$ref": "#/$defs/tokenCost"},
             "parent_attributed_additive": {"$ref": "#/$defs/tokenCost"},
             "parent_allocation_role": {"enum": ["primario", "exposicao_apenas"]},
@@ -150,9 +158,23 @@
     "moduleCost": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["module_id", "input_tokens", "cached_input_tokens", "uncached_input_tokens_approx", "output_tokens", "total_tokens"],
+      "required": ["module_id", "cost_class", "input_tokens", "cached_input_tokens", "uncached_input_tokens_approx", "output_tokens", "total_tokens"],
       "properties": {
         "module_id": {"type": "string", "minLength": 1},
+        "cost_class": {"enum": ["controle", "dominio"]},
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "cached_input_tokens": {"type": "integer", "minimum": 0},
+        "uncached_input_tokens_approx": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "total_tokens": {"type": "integer", "minimum": 0}
+      }
+    },
+    "classCost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cost_class", "input_tokens", "cached_input_tokens", "uncached_input_tokens_approx", "output_tokens", "total_tokens"],
+      "properties": {
+        "cost_class": {"enum": ["controle", "dominio"]},
         "input_tokens": {"type": "integer", "minimum": 0},
         "cached_input_tokens": {"type": "integer", "minimum": 0},
         "uncached_input_tokens_approx": {"type": "integer", "minimum": 0},

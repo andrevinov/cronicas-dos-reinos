@@ -34,7 +34,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.4.0"
+MODULAR_DETECTOR_VERSION = "2.5.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -236,6 +236,139 @@ def _orchestration_phase(command: str) -> str | None:
     return None
 
 
+def _session_lifecycle_operation(command: str) -> str | None:
+    lower = " ".join(command.casefold().split())
+    match = re.search(
+        r"\bcronica(?:\.py)?\s+sessao\s+(status|iniciar|checkpoint|encerrar|recuperar)\b",
+        lower,
+    )
+    return match.group(1) if match else None
+
+
+def _duration_seconds(output_text: str) -> float | None:
+    match = re.search(r"\bWall time\s+([0-9]+(?:\.[0-9]+)?)\s+seconds\b", output_text, re.I)
+    if match:
+        return float(match.group(1))
+    match = re.search(
+        r'["\']?wall_time_seconds["\']?\s*:\s*([0-9]+(?:\.[0-9]+)?)',
+        output_text,
+        re.I,
+    )
+    return float(match.group(1)) if match else None
+
+
+def _normalized_tool_output(payload: dict[str, Any]) -> str:
+    """Desembrulha outputs modernos sem alterar o analisador legado congelado."""
+
+    raw = payload.get("output")
+    if not isinstance(raw, list):
+        return _core._tool_output(payload)
+    parts: list[str] = []
+    for block in raw:
+        if not isinstance(block, dict):
+            parts.append(str(block))
+            continue
+        text = block.get("text")
+        if not isinstance(text, str):
+            text = block.get("content")
+        if not isinstance(text, str):
+            continue
+        try:
+            nested = json.loads(text)
+        except json.JSONDecodeError:
+            parts.append(text)
+            continue
+        if not isinstance(nested, dict) or not any(
+            key in nested for key in ("output", "exit_code", "returncode", "wall_time_seconds")
+        ):
+            parts.append(text)
+            continue
+        for key in ("exit_code", "returncode", "wall_time_seconds"):
+            if key in nested:
+                parts.append(f"{key}: {nested[key]}")
+        if isinstance(nested.get("output"), str):
+            parts.append(nested["output"])
+    return "\n".join(parts)
+
+
+def _output_scalar(output_text: str, key: str) -> str | None:
+    patterns = (
+        rf'(?:^|\r?\n)\s*"?{re.escape(key)}"?\s*:\s*"?([^"\r\n,}}]+)',
+        rf'\\"{re.escape(key)}\\"\s*:\s*\\"([^\\"]+)',
+    )
+    for pattern in patterns:
+        match = re.search(pattern, output_text, re.I)
+        if match:
+            return match.group(1).strip().strip("'\"")
+    return None
+
+
+def _output_bool(output_text: str, key: str) -> bool | None:
+    value = _output_scalar(output_text, key)
+    if value is None:
+        return None
+    normalized = value.casefold()
+    if normalized in {"true", "sim"}:
+        return True
+    if normalized in {"false", "nao", "não"}:
+        return False
+    return None
+
+
+def _orchestration_failure_kind(output_text: str) -> str | None:
+    lower = output_text.casefold()
+    if "falha_parcial" in lower or "falha parcial" in lower or "commit_incompleto" in lower:
+        return "commit_incompleto"
+    if "obsolet" in lower and ("ticket" in lower or "prepara" in lower):
+        return "ticket_obsoleto"
+    if "ticket" in lower and any(
+        marker in lower
+        for marker in (
+            "incompat",
+            "checksum inválido",
+            "checksum invalido",
+            "corrompido",
+            "prefixo/formato inválido",
+            "prefixo/formato invalido",
+        )
+    ):
+        return "ticket_incompativel"
+    if any(
+        marker in lower
+        for marker in (
+            "duplicado: true",
+            '"duplicado": true',
+            "marcador transacional duplicado",
+            "commit duplicado",
+            "transação duplicada",
+            "transacao duplicada",
+        )
+    ):
+        return "commit_duplicado"
+    return None
+
+
+def _orchestration_receipt(output_text: str) -> dict[str, Any] | None:
+    marker = "schema_turn_and_session_orchestration"
+    start = output_text.casefold().rfind(marker)
+    if start < 0:
+        return None
+    receipt_text = output_text[start:]
+    return {
+        "state": _output_scalar(receipt_text, "estado"),
+        "operation": _output_scalar(receipt_text, "operacao"),
+        "ticket_id": _output_scalar(receipt_text, "ticket_id"),
+        "transaction_id": _output_scalar(receipt_text, "transacao_id"),
+        "session": _output_scalar(receipt_text, "sessao"),
+        "commit_result": _output_scalar(receipt_text, "resultado"),
+        "exactly_once": _output_bool(receipt_text, "exactly_once"),
+        "new_effect": _output_bool(receipt_text, "efeito_novo"),
+        "duplicate": _output_bool(receipt_text, "duplicado"),
+        "incomplete": _output_bool(receipt_text, "incompleto"),
+        "canonical_order": _output_bool(receipt_text, "ordem_canonica_preservada"),
+    }
+
+
 def _sidequest_decision_from_command(command: str) -> str | None:
     if _orchestration_phase(command) != "preparar":
         return None
@@ -421,6 +554,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "raw_input": raw_input,
                     "command": command,
                     "orchestration_phase": _orchestration_phase(command),
+                    "session_lifecycle_operation": _session_lifecycle_operation(command),
                     "sidequest_decision": _sidequest_decision_from_command(command),
                     "narrative_systems": set(command_systems),
                     "command_systems": set(command_systems),
@@ -430,6 +564,9 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "category": _classify_tool(name, raw_input),
                     "output_text": "",
                     "output_success": None,
+                    "duration_seconds": None,
+                    "orchestration_receipt": None,
+                    "orchestration_failure": None,
                     "liveness": None,
                     "output_seen": False,
                 }
@@ -442,7 +579,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 continue
             if item_type not in {"function_call_output", "custom_tool_call_output"}:
                 continue
-            output_text = _core._tool_output(payload)
+            output_text = _normalized_tool_output(payload)
             cid = _core._call_id(payload)
             matched = None
             if cid and cid in turn["calls_by_id"]:
@@ -453,11 +590,27 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
                 output_systems = _narrative_systems_from_output(output_text)
+                orchestration_failure = _orchestration_failure_kind(output_text)
+                # Falha de ticket/commit pertence ao control plane. Marcadores
+                # incidentais do erro não provam ativação de sidequest ou NPC.
+                if orchestration_failure is not None:
+                    output_systems = set()
                 matched["narrative_systems"].update(output_systems)
                 matched["output_systems"] = output_systems
                 matched["output_markers"] = _matching_markers(output_text, _SYSTEM_OUTPUT_MARKERS)
                 matched["output_text"] = output_text
-                matched["output_success"] = _core._tool_success(payload, output_text)
+                success = _core._tool_success(payload, output_text)
+                if success is None and "script completed" in output_text.casefold():
+                    lower_output = output_text.casefold()
+                    explicit_failure = orchestration_failure is not None or any(
+                        marker in lower_output
+                        for marker in ("falha cronica", "script failed", "traceback (most recent call last)")
+                    )
+                    success = not explicit_failure
+                matched["output_success"] = success
+                matched["duration_seconds"] = _duration_seconds(output_text)
+                matched["orchestration_receipt"] = _orchestration_receipt(output_text)
+                matched["orchestration_failure"] = orchestration_failure
                 matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
 
@@ -468,19 +621,85 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
 
 def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     phases: Counter[str] = Counter()
+    call_classes: Counter[str] = Counter()
+    lifecycle_operations: Counter[str] = Counter()
+    lifecycle_success: Counter[str] = Counter()
     decisions: Counter[str] = Counter()
     system_calls: Counter[str] = Counter()
     system_turns: Counter[str] = Counter()
     liveness: Counter[str] = Counter()
+    phase_durations: dict[str, list[float]] = {}
+    retry_metrics: Counter[str] = Counter()
+    failure_metrics: Counter[str] = Counter()
     pair_turns = 0
+    successful_pair_turns = 0
+    correlated_pair_turns = 0
+    mismatched_pair_turns = 0
+    indeterminate_pair_turns = 0
+    blocked_turns = 0
+    receipt_calls = 0
+    lifecycle_receipt_calls = 0
     for turn in turns:
         per_turn_phases: list[str] = []
         per_turn_systems: set[str] = set()
+        primary_calls: dict[str, dict[str, Any]] = {}
+        blocked = False
         for call in turn["calls"]:
             phase = call.get("orchestration_phase")
             if isinstance(phase, str):
                 phases[phase] += 1
                 per_turn_phases.append(phase)
+                call_classes[
+                    "turno_primario" if phase in {"preparar", "concluir"} else "turno_reparo"
+                ] += 1
+                if phase in {"preparar", "concluir"} and phase not in primary_calls:
+                    primary_calls[phase] = call
+                duration = call.get("duration_seconds")
+                if isinstance(duration, (int, float)):
+                    phase_durations.setdefault(phase, []).append(float(duration))
+            lifecycle = call.get("session_lifecycle_operation")
+            if isinstance(lifecycle, str):
+                lifecycle_operations[lifecycle] += 1
+                call_classes["lifecycle_sessao"] += 1
+                if call.get("output_success") is True:
+                    lifecycle_success[lifecycle] += 1
+                duration = call.get("duration_seconds")
+                if isinstance(duration, (int, float)):
+                    phase_durations.setdefault(f"sessao:{lifecycle}", []).append(float(duration))
+
+            receipt = call.get("orchestration_receipt")
+            if isinstance(receipt, dict):
+                receipt_calls += 1
+                if lifecycle:
+                    lifecycle_receipt_calls += 1
+                state = str(receipt.get("state") or "")
+                if state.startswith("bloqueado_"):
+                    blocked = True
+                commit_result = str(receipt.get("commit_result") or "")
+                if commit_result == "reparo_recuperado_sem_duplicacao":
+                    retry_metrics["validos"] += 1
+                    retry_metrics["recuperados"] += 1
+                elif commit_result == "replay_sem_duplicacao":
+                    retry_metrics["desnecessarios"] += 1
+                if receipt.get("duplicate") is True:
+                    failure_metrics["commits_duplicados"] += 1
+                if receipt.get("incomplete") is True:
+                    failure_metrics["commits_incompletos"] += 1
+
+            output_lower = str(call.get("output_text") or "").casefold()
+            if "bloqueada_pendencias_mundo" in output_lower or "bloqueada_recuperacao_sessao" in output_lower:
+                blocked = True
+            failure = call.get("orchestration_failure")
+            if failure == "ticket_obsoleto":
+                failure_metrics["tickets_obsoletos"] += 1
+            elif failure == "ticket_incompativel":
+                failure_metrics["tickets_incompativeis"] += 1
+            elif failure == "commit_duplicado":
+                failure_metrics["commits_duplicados"] += 1
+            elif failure == "commit_incompleto" and not (
+                isinstance(receipt, dict) and receipt.get("incomplete") is True
+            ):
+                failure_metrics["commits_incompletos"] += 1
             decision = call.get("sidequest_decision")
             if isinstance(decision, str):
                 decisions[decision] += 1
@@ -492,22 +711,94 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
             if isinstance(observed_liveness, dict):
                 for key in ("avaliacoes", "calma_justificada", "pressao", "modulos_nao_consultados"):
                     liveness[key] += int(observed_liveness.get(key, 0))
-        if Counter(per_turn_phases) == Counter({"preparar": 1, "concluir": 1}):
+        exact_pair = Counter(per_turn_phases) == Counter({"preparar": 1, "concluir": 1})
+        if exact_pair:
             pair_turns += 1
+            prepare_call = primary_calls["preparar"]
+            conclude_call = primary_calls["concluir"]
+            if all(call.get("output_success") is True for call in (prepare_call, conclude_call)):
+                successful_pair_turns += 1
+            prepare_receipt = prepare_call.get("orchestration_receipt") or {}
+            conclude_receipt = conclude_call.get("orchestration_receipt") or {}
+            prepare_ticket = prepare_receipt.get("ticket_id") or _output_scalar(
+                str(prepare_call.get("output_text") or ""), "ticket_id"
+            )
+            conclude_ticket = conclude_receipt.get("ticket_id") or _output_scalar(
+                str(conclude_call.get("output_text") or ""), "ticket_id"
+            )
+            if prepare_ticket is None or conclude_ticket is None:
+                indeterminate_pair_turns += 1
+            elif prepare_ticket == conclude_ticket:
+                correlated_pair_turns += 1
+            else:
+                mismatched_pair_turns += 1
+        if blocked:
+            blocked_turns += 1
         system_turns.update(per_turn_systems)
     n = len(turns)
     observed = [system for system in NARRATIVE_SYSTEM_KEYS if system_turns[system]]
     orchestration_calls = sum(phases.values())
+    lifecycle_calls = sum(lifecycle_operations.values())
     prepare_calls = sum(decisions.values())
     valid_decisions = decisions["oportunidade"] + decisions["sem_oportunidade"]
     violations = decisions["ausente"] + decisions["conflito"]
     inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in turn["calls"]))
+    duration_summary = {
+        phase: {
+            "chamadas_observadas": len(values),
+            "total_segundos": round(sum(values), 3),
+            "media_segundos": round(sum(values) / len(values), 3),
+            "max_segundos": round(max(values), 3),
+        }
+        for phase, values in sorted(phase_durations.items())
+        if values
+    }
+    lifecycle_total = sum(lifecycle_operations.values())
+    lifecycle_successful = sum(lifecycle_success.values())
     return {
         "orchestration_calls": orchestration_calls,
         "avg_orchestration_calls_per_turn": round(orchestration_calls / n, 3) if n else 0,
         "orchestration_phases": dict(sorted(phases.items())),
         "cronica_pair_turns": pair_turns,
         "fraction_turns_with_cronica_pair": round(pair_turns / n, 6) if n else 0,
+        "turn_and_session_orchestration": {
+            "schema": 1,
+            "calls_total_including_lifecycle": orchestration_calls + lifecycle_calls,
+            "calls_by_class": dict(sorted(call_classes.items())),
+            "exact_prepare_conclude_pairs": pair_turns,
+            "successful_exact_pairs": successful_pair_turns,
+            "fraction_exact_pairs": round(pair_turns / n, 6) if n else 0,
+            "correlated_pairs": correlated_pair_turns,
+            "mismatched_pairs": mismatched_pair_turns,
+            "correlation_indeterminate_pairs": indeterminate_pair_turns,
+            "fraction_correlated_among_observable": round(
+                correlated_pair_turns / (correlated_pair_turns + mismatched_pair_turns), 6
+            ) if correlated_pair_turns + mismatched_pair_turns else None,
+            "blocked_turns": blocked_turns,
+            "receipts_observed": receipt_calls,
+            "retry": {
+                "validos": int(retry_metrics["validos"]),
+                "desnecessarios": int(retry_metrics["desnecessarios"]),
+                "recuperados": int(retry_metrics["recuperados"]),
+            },
+            "tickets": {
+                "obsoletos": int(failure_metrics["tickets_obsoletos"]),
+                "incompativeis": int(failure_metrics["tickets_incompativeis"]),
+            },
+            "commits": {
+                "duplicados": int(failure_metrics["commits_duplicados"]),
+                "incompletos": int(failure_metrics["commits_incompletos"]),
+            },
+            "duration_by_phase": duration_summary,
+            "session_lifecycle": {
+                "operations": dict(sorted(lifecycle_operations.items())),
+                "successful": dict(sorted(lifecycle_success.items())),
+                "fraction_successful": round(lifecycle_successful / lifecycle_total, 6)
+                if lifecycle_total
+                else None,
+                "receipts_observed": lifecycle_receipt_calls,
+            },
+        },
         "sidequest_opportunity_decisions": {
             key: int(decisions[key])
             for key in ("oportunidade", "sem_oportunidade", "ausente", "conflito")
@@ -698,6 +989,8 @@ def _legacy_signals(
             ("comando", "command_systems", "command_markers"),
             ("output", "output_systems", "output_markers"),
         ):
+            if source == "output" and call.get("orchestration_failure") is not None:
+                continue
             for alias in sorted(call.get(key) or set()):
                 # O v1 tratava toda consulta dirigida de NPC como iniciativa.
                 # No ledger v2, carregar relação/voz é continuidade, enquanto
@@ -1198,7 +1491,7 @@ def _new_module_signals(
             signals,
             "context_and_memory",
             "routed_context_access",
-            source="turno",
+            source="resposta",
             evidence="turn:l0_context_sufficient",
             eligibility="sim",
             activation="consulta",
@@ -1207,69 +1500,182 @@ def _new_module_signals(
             confidence="media",
         )
 
-    # RM-08: controle de turno/sessão sem chamada adicional.
-    transactional_seen = False
-    for call in calls:
-        command = str(call.get("command") or "")
-        lower = " ".join(command.casefold().split())
-        phase = call.get("orchestration_phase")
-        if phase:
-            transactional_seen = True
-            is_commit = phase in {"concluir", "registrar", "confirmar"}
-            succeeded = call.get("output_success") is True
-            activation = "efeito" if is_commit and succeeded else "decisao"
-            result = "turno_commitado" if activation == "efeito" else f"fase_{phase}_observada"
+    # RM-08: a correlação é inferida do par e do recibo emitido pelas chamadas
+    # existentes. Falha transacional não é aproximada a nenhum domínio narrativo.
+    turn_calls = [call for call in calls if call.get("orchestration_phase")]
+    lifecycle_calls = [
+        call for call in calls if call.get("session_lifecycle_operation")
+    ]
+    if turn_calls:
+        phase_counts = Counter(call["orchestration_phase"] for call in turn_calls)
+        failures = [
+            str(call.get("orchestration_failure"))
+            for call in turn_calls
+            if call.get("orchestration_failure")
+        ]
+        blocked = any(
+            str((call.get("orchestration_receipt") or {}).get("state") or "").startswith(
+                "bloqueado_"
+            )
+            or "bloqueada_pendencias_mundo" in str(call.get("output_text") or "").casefold()
+            or "bloqueada_recuperacao_sessao" in str(call.get("output_text") or "").casefold()
+            for call in turn_calls
+        )
+        exact_pair = phase_counts == Counter({"preparar": 1, "concluir": 1})
+        successful_pair = exact_pair and all(
+            call.get("output_success") is True for call in turn_calls
+        )
+        repair_only = set(phase_counts) <= {"registrar", "confirmar"} and all(
+            call.get("output_success") is True for call in turn_calls
+        )
+        mismatched = False
+        if exact_pair:
+            by_phase = {call["orchestration_phase"]: call for call in turn_calls}
+            ticket_ids = []
+            for phase in ("preparar", "concluir"):
+                call = by_phase[phase]
+                receipt = call.get("orchestration_receipt") or {}
+                value = receipt.get("ticket_id") or _output_scalar(
+                    str(call.get("output_text") or ""), "ticket_id"
+                )
+                ticket_ids.append(value)
+            mismatched = all(ticket_ids) and ticket_ids[0] != ticket_ids[1]
+
+        if failures:
+            result = failures[0]
+            activation = "decisao"
+            effect = False
+        elif blocked:
+            recovery = any(
+                "recuperacao" in str((call.get("orchestration_receipt") or {}).get("state") or "")
+                for call in turn_calls
+            )
+            result = "bloqueado_por_recovery" if recovery else "bloqueado_por_pendencia"
+            activation = "gate_neutro"
+            effect = False
+        elif mismatched:
+            result = "correlacao_de_ticket_divergente"
+            activation = "decisao"
+            effect = False
+        elif successful_pair:
+            result = "ciclo_concluido"
+            activation = "efeito"
+            effect = True
+        elif repair_only:
+            result = "reparo_explicito_concluido"
+            activation = "efeito"
+            effect = True
+        else:
+            result = "ciclo_incompleto"
+            activation = "decisao"
+            effect = False
+
+        for call in turn_calls:
             _add_signal(
                 signals,
                 "turn_and_session_orchestration",
                 "transactional_turn",
                 source="comando",
-                evidence=f"command:cronica_{phase}",
+                evidence=f"command:cronica_{call['orchestration_phase']}",
                 eligibility="sim",
                 activation=activation,
                 observed_result=result,
-                materialized_result="turno_commitado" if activation == "efeito" else None,
-                effect_observed=True if activation == "efeito" else False,
+                materialized_result="turno_commitado" if effect else None,
+                effect_observed=effect,
                 confidence="alta",
             )
-            if "--ticket" in lower:
-                _add_signal(
-                    signals,
-                    "turn_and_session_orchestration",
-                    "transactional_turn",
-                    source="ticket",
-                    evidence="ticket:present",
-                    eligibility="sim",
-                    activation=activation,
-                    observed_result=result,
-                    materialized_result="turno_commitado" if activation == "efeito" else None,
-                    effect_observed=True if activation == "efeito" else False,
-                    confidence="alta",
-                )
-            if call.get("output_seen"):
-                _add_signal(
-                    signals,
-                    "turn_and_session_orchestration",
-                    "transactional_turn",
-                    source="output",
-                    evidence="output:orchestration_receipt",
-                    eligibility="sim",
-                    activation=activation,
-                    observed_result=result,
-                    materialized_result="turno_commitado" if activation == "efeito" else None,
-                    effect_observed=True if activation == "efeito" else False,
-                    confidence="alta",
-                )
-        lifecycle = re.search(r"\bcronica(?:\.py)?\s+sessao\s+(status|iniciar|checkpoint|encerrar|recuperar)\b", lower)
-        if lifecycle:
-            operation = lifecycle.group(1)
-            effect = operation != "status" and call.get("output_success") is True
+        if any("--ticket" in str(call.get("command") or "").casefold() for call in turn_calls):
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "transactional_turn",
+                source="ticket",
+                evidence="ticket:correlation_present",
+                eligibility="sim",
+                activation=activation,
+                observed_result=result,
+                materialized_result="turno_commitado" if effect else None,
+                effect_observed=effect,
+                confidence="alta",
+            )
+        receipts = [
+            call.get("orchestration_receipt")
+            for call in turn_calls
+            if call.get("orchestration_receipt")
+        ]
+        if receipts:
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "transactional_turn",
+                source="output",
+                evidence="output:versioned_orchestration_receipt",
+                eligibility="sim",
+                activation=activation,
+                observed_result=result,
+                materialized_result="turno_commitado" if effect else None,
+                effect_observed=effect,
+                confidence="alta",
+            )
+
+        commit_receipts = [
+            receipt
+            for receipt in receipts
+            if receipt.get("commit_result") or receipt.get("incomplete") is True
+        ]
+        if commit_receipts:
+            recovered = any(
+                receipt.get("commit_result") == "reparo_recuperado_sem_duplicacao"
+                for receipt in commit_receipts
+            )
+            replay = any(
+                receipt.get("commit_result") == "replay_sem_duplicacao"
+                for receipt in commit_receipts
+            )
+            incomplete = any(receipt.get("incomplete") is True for receipt in commit_receipts)
+            idempotent = all(
+                receipt.get("exactly_once") is True and receipt.get("duplicate") is not True
+                for receipt in commit_receipts
+            )
+            outcome = (
+                "commit_incompleto"
+                if incomplete
+                else "retry_recuperado"
+                if recovered
+                else "retry_desnecessario_sem_duplicacao"
+                if replay
+                else "commit_exatamente_uma_vez"
+            )
+            _add_signal(
+                signals,
+                "turn_and_session_orchestration",
+                "idempotent_commit",
+                source="output",
+                evidence="output:exactly_once_receipt",
+                eligibility="sim",
+                activation="decisao" if incomplete else "gate_neutro" if replay else "efeito",
+                observed_result=outcome,
+                materialized_result="idempotencia_preservada" if idempotent else None,
+                effect_observed=idempotent and not replay,
+                confidence="alta",
+            )
+
+    for call in lifecycle_calls:
+        operation = str(call["session_lifecycle_operation"])
+        effect = operation != "status" and call.get("output_success") is True
+        receipt = call.get("orchestration_receipt")
+        for source, evidence in (
+            ("comando", f"command:session_{operation}"),
+            ("output", "output:versioned_session_receipt"),
+        ):
+            if source == "output" and not receipt:
+                continue
             _add_signal(
                 signals,
                 "turn_and_session_orchestration",
                 "session_lifecycle",
-                source="comando",
-                evidence=f"command:session_{operation}",
+                source=source,
+                evidence=evidence,
                 eligibility="sim",
                 activation="efeito" if effect else "consulta" if operation == "status" else "decisao",
                 observed_result=f"session_{operation}",
@@ -1277,20 +1683,8 @@ def _new_module_signals(
                 effect_observed=effect,
                 confidence="alta",
             )
-        output_lower = str(call.get("output_text") or "").casefold()
-        if any(marker in output_lower for marker in ("idempot", "já concluído", "ja_concluido", "recuperado")):
-            _add_signal(
-                signals,
-                "turn_and_session_orchestration",
-                "idempotent_commit",
-                source="output",
-                evidence="output:idempotency_receipt",
-                activation="efeito",
-                observed_result="idempotencia_observada",
-                materialized_result="idempotencia_preservada",
-                effect_observed=True,
-            )
-    if not transactional_seen:
+
+    if not turn_calls and not lifecycle_calls:
         _add_signal(
             signals,
             "turn_and_session_orchestration",
@@ -1563,6 +1957,11 @@ def _build_modular_ledger(
                     **signal,
                     "adjudication": None,
                     "cost": {
+                        "attribution_class": (
+                            "controle"
+                            if module_id == "turn_and_session_orchestration"
+                            else "dominio"
+                        ),
                         "exposed_non_additive": dict(turn_cost),
                         "parent_attributed_additive": additive,
                         "parent_allocation_role": "primario" if primary else "exposicao_apenas",
@@ -1588,6 +1987,17 @@ def _build_modular_ledger(
         }
         for key in total_narrative_cost
     }
+    class_totals: dict[str, dict[str, int]] = {
+        "controle": {key: 0 for key in total_narrative_cost},
+        "dominio": {key: 0 for key in total_narrative_cost},
+    }
+    for module_id, values in module_totals.items():
+        cost_class = (
+            "controle" if module_id == "turn_and_session_orchestration" else "dominio"
+        )
+        for key, value in values.items():
+            class_totals[cost_class][key] += value
+
     return {
         "schema_modular_ledger": MODULAR_LEDGER_SCHEMA,
         "evaluation_series": "modules-v2",
@@ -1597,12 +2007,24 @@ def _build_modular_ledger(
         "measurement_mode": "post_hoc_read_only",
         "observed_is_not_eligibility": True,
         "capability_cost_mode": "exposicao_apenas",
-        "parent_cost_method": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno",
+        "parent_cost_method": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno_com_classe_controle_separada",
         "events": events,
         "non_module_observations": non_module_observations,
         "module_parent_costs": [
-            {"module_id": module_id, **module_totals[module_id]}
+            {
+                "module_id": module_id,
+                "cost_class": (
+                    "controle"
+                    if module_id == "turn_and_session_orchestration"
+                    else "dominio"
+                ),
+                **module_totals[module_id],
+            }
             for module_id in sorted(module_totals, key=lambda value: module_order.get(value, 10_000))
+        ],
+        "cost_class_totals": [
+            {"cost_class": cost_class, **class_totals[cost_class]}
+            for cost_class in ("controle", "dominio")
         ],
         "cost_closure": closure,
         "corrections": [],
@@ -1732,6 +2154,8 @@ def analyze(
             "NV-14 justified calm and missing-module coverage inferred from structured liveness output",
             "modules-v2 capability ledger inferred from command, output, ticket and response signals",
             "modules-v2 parent cost allocated once per module; capability cost is exposure only",
+            "RM-08 orchestration receipt, retry, correlation and phase duration inferred from existing call outputs",
+            "RM-08 control cost separated from domain cost without claiming marginal causality",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -1745,6 +2169,7 @@ def _human(report: dict[str, Any]) -> str:
     base = _BASE_HUMAN(report).rstrip("\n")
     narr = report.get("narration_turns") or {}
     all_turns = report.get("all_turns") or {}
+    orchestration = narr.get("turn_and_session_orchestration") or {}
     systems = narr.get("narrative_system_turns") or {}
     live = all_turns.get("liveness_boundary") or {}
     active = ", ".join(
@@ -1759,7 +2184,9 @@ def _human(report: dict[str, Any]) -> str:
             "Orquestração: "
             f"{narr.get('avg_orchestration_calls_per_turn', 0)} chamada(s)/turno | "
             "dupla cronica preparar+concluir em "
-            f"{narr.get('fraction_turns_with_cronica_pair', 0):.1%} dos turnos"
+            f"{narr.get('fraction_turns_with_cronica_pair', 0):.1%} dos turnos | "
+            f"correlacionados={orchestration.get('correlated_pairs', 0)} | "
+            f"bloqueados={orchestration.get('blocked_turns', 0)}"
         ),
         (
             "Task47: decisão de oportunidade em "

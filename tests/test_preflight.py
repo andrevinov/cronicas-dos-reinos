@@ -16,10 +16,10 @@ class PreflightTest(unittest.TestCase):
         items = preflight.checks()
         names = {item.nome for item in items}
         self.assertIn("testes unitários", names)
-        self.assertIn("turno transacional", names)
-        self.assertIn("consolidação", names)
-        self.assertIn("memória de sessões", names)
-        self.assertIn("checkpoint", names)
+        self.assertIn("orquestração modular de turno e sessão", names)
+        self.assertTrue(
+            {"turno transacional", "consolidação", "memória de sessões", "checkpoint"}.isdisjoint(names)
+        )
         self.assertIn("experiência narrativa integrada", names)
         self.assertIn("runtime derivado", names)
         self.assertIn("integridade estrutural e semântica", names)
@@ -40,6 +40,7 @@ class PreflightTest(unittest.TestCase):
         expected = {
             ("ferramentas/adversarial_operations.py", "check"),
             ("ferramentas/context_and_memory.py", "check"),
+            ("ferramentas/turn_and_session_orchestration.py", "check"),
             ("ferramentas/sidequest_authoring.py", "check"),
             ("ferramentas/sidequest_lifecycle.py", "check"),
             ("ferramentas/canonical_quest_integration.py", "check"),
@@ -49,12 +50,14 @@ class PreflightTest(unittest.TestCase):
 
         names = {item.nome for item in preflight.checks(incluir_testes=False)}
         self.assertIn("contexto e memória modulares", names)
+        self.assertIn("orquestração modular de turno e sessão", names)
         self.assertIn("operações adversariais modulares", names)
         self.assertIn("autoria modular de sidequests", names)
         self.assertIn("lifecycle modular de sidequests", names)
         self.assertIn("integração canônica modular de sidequests", names)
         self.assertFalse(any("Task4" in name for name in names))
         self.assertFalse(preflight._ADVERSARIAL_INTERNAL_CHECKS & commands)
+        self.assertFalse(preflight._ORCHESTRATION_INTERNAL_CHECKS & commands)
 
     def test_sem_testes_remove_apenas_unittest(self):
         full = preflight.checks(incluir_testes=True)

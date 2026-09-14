@@ -14,6 +14,7 @@ somente o domínio necessário para a tarefa.
 - [`operacao/acesso-e-operacoes.md`](operacao/acesso-e-operacoes.md): consultas e limites de acesso;
 - [`operacao/endpoints-deterministicos.md`](operacao/endpoints-deterministicos.md): endpoints dirigidos;
 - [`operacao/consolidacao-transacional.md`](operacao/consolidacao-transacional.md): preparo, conclusão, checkpoint e recovery.
+- [`operacao/modulo-orquestracao-turno-e-sessao-v2.md`](operacao/modulo-orquestracao-turno-e-sessao-v2.md): control plane, recibos e correlação exactly-once.
 
 ## Memória
 

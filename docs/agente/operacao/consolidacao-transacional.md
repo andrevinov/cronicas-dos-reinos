@@ -2,6 +2,11 @@
 
 Este documento define **quando e como transformar `runtime/eventos-pendentes.jsonl` em cânone**. Não deve ser lido durante um turno comum. Consultá-lo em fechamento de cena importante, encerramento de sessão, recuperação de falha ou manutenção da arquitetura transacional.
 
+O contrato observável do par `preparar/concluir`, seus recibos, retries e
+lifecycle fica em `modulo-orquestracao-turno-e-sessao-v2.md`. A fachada modular
+não substitui a consolidação descrita aqui: apenas publica seu estado no output
+das chamadas existentes.
+
 ## Princípio
 
 Durante o jogo, `turno.py` registra cada avanço em transcrição + deltas. Enquanto esses deltas permanecem pendentes, `contexto.py` projeta-os sobre o último snapshot consolidado.
@@ -132,7 +137,7 @@ Primeiro todos os bytes finais são calculados e validados. Depois são gravados
 
 `runtime/eventos-pendentes.jsonl` é instalado **por último**. Portanto os deltas não desaparecem antes que o restante do novo cânone esteja preparado.
 
-Enquanto o journal existir, `transacoes.load_pending()` recusa operação normal. Isso bloqueia `contexto.py` e `turno.py`, impedindo que a campanha continue sobre um estado parcialmente instalado.
+Enquanto o journal existir, `transacoes.load_pending()` recusa operação normal. Isso bloqueia `contexto.py` e `turno.py`, impedindo que a campanha continue sobre um estado parcialmente instalado. `cronica preparar` também devolve um gate read-only sem ticket e sem autorização para narrar.
 
 ## Recuperação depois de queda
 

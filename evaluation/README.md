@@ -7,8 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; a versão 2.5.0 registra as
-  fachadas das RM-03–RM-07, incluindo contexto e memória unificados;
+  pela RM-01 e ainda não habilitado para produção; a versão 2.6.0 registra as
+  fachadas das RM-03–RM-08, incluindo o control plane de turno e sessão;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;
@@ -70,3 +70,9 @@ durável passam a compartilhar o pai `context_and_memory`. A telemetria distingu
 L0 econômico, consulta dirigida, aprofundamento justificado, leitura RAW,
 redundância, consulta de memória e efeito persistido. O custo de leitura e o
 recibo de memória permanecem separáveis sem cobrar novamente as subcapacidades.
+
+Na RM-08, `turn_and_session_orchestration` correlaciona preparo, conclusão,
+retry e lifecycle por recibos versionados emitidos nas chamadas existentes. O
+ledger separa custo de `controle` e `dominio`; tickets obsoletos, commits
+incompletos e recovery deixam de ser atribuídos por aproximação a módulos
+narrativos.

@@ -62,6 +62,15 @@ def output(turn: str, call_id: str, text: str) -> str:
     return with_turn(turn, "function_call_output", call_id=call_id, output=text)
 
 
+def modern_output(turn: str, call_id: str, result: dict) -> str:
+    return with_turn(
+        turn,
+        "custom_tool_call_output",
+        call_id=call_id,
+        output=[{"type": "text", "text": json.dumps(result, ensure_ascii=False)}],
+    )
+
+
 def tokens(input_tokens: int, cached: int, output_tokens: int) -> str:
     return record(
         "event_msg",
@@ -322,6 +331,174 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(orchestration["session_id"], "session-fixture")
         self.assertEqual(orchestration["analysis_unit"], "turno")
 
+    def test_rm08_mede_correlacao_duracao_idempotencia_e_classe_de_custo(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id rm08 --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Script completed\nWall time 0.2 seconds\nProcess exited with code 0\nOutput:\n"
+                "fase: preparacao\nticket_id: ticket-rm08\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  operacao: preparar\n  estado: preparado\n"
+                "  correlacao:\n    ticket_id: ticket-rm08\n",
+            ),
+            call("turno-1", "d1", "poetry run dados ren pericia percepcao --cd 14"),
+            output("turno-1", "d1", "Process exited with code 0\nresultado: 18\n"),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.fixture"),
+            output(
+                "turno-1",
+                "c1",
+                "Script completed\nWall time 0.4 seconds\nProcess exited with code 0\nOutput:\n"
+                "fase: concluida\nticket_id: ticket-rm08\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  operacao: concluir\n  estado: concluido\n"
+                "  correlacao:\n    ticket_id: ticket-rm08\n"
+                "  commit:\n"
+                "    resultado: commit_exatamente_uma_vez\n"
+                "    exactly_once: true\n    efeito_novo: true\n"
+                "    duplicado: false\n    incompleto: false\n",
+            ),
+            tokens(80, 60, 20),
+            assistant("turno-1", "A percepção resolve a incerteza.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-receipts.jsonl"))
+        metrics = report["narration_turns"]["turn_and_session_orchestration"]
+
+        self.assertEqual(metrics["calls_by_class"]["turno_primario"], 2)
+        self.assertEqual(metrics["exact_prepare_conclude_pairs"], 1)
+        self.assertEqual(metrics["successful_exact_pairs"], 1)
+        self.assertEqual(metrics["correlated_pairs"], 1)
+        self.assertEqual(metrics["mismatched_pairs"], 0)
+        self.assertEqual(metrics["duration_by_phase"]["preparar"]["media_segundos"], 0.2)
+        self.assertEqual(metrics["duration_by_phase"]["concluir"]["media_segundos"], 0.4)
+
+        ledger = report["modular_ledger_v2"]
+        events = [
+            event for event in ledger["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+        ]
+        transactional = next(
+            event for event in events if event["capability_id"] == "transactional_turn"
+        )
+        commit = next(
+            event for event in events if event["capability_id"] == "idempotent_commit"
+        )
+        self.assertEqual(transactional["observed_result"], "ciclo_concluido")
+        self.assertEqual(commit["observed_result"], "commit_exatamente_uma_vez")
+        self.assertTrue(all(event["cost"]["attribution_class"] == "controle" for event in events))
+        parent = next(
+            row for row in ledger["module_parent_costs"]
+            if row["module_id"] == "turn_and_session_orchestration"
+        )
+        self.assertEqual(parent["cost_class"], "controle")
+        by_class = {row["cost_class"]: row for row in ledger["cost_class_totals"]}
+        self.assertEqual(
+            by_class["controle"]["total_tokens"] + by_class["dominio"]["total_tokens"],
+            100,
+        )
+
+    def test_rm08_falha_de_ticket_nao_e_atribuida_a_sidequest_por_aproximacao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.stale"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 1\n"
+                "transactional_sidequest_progress\n"
+                "FALHA CRONICA — preparação do ticket ficou obsoleta; execute cronica preparar novamente\n",
+            ),
+            tokens(20, 10, 5),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-stale.jsonl"))
+        metrics = report["narration_turns"]["turn_and_session_orchestration"]
+        parents = {
+            event["module_id"] for event in report["modular_ledger_v2"]["events"]
+        }
+
+        self.assertEqual(metrics["tickets"]["obsoletos"], 1)
+        self.assertNotIn("sidequest_lifecycle", parents)
+        orchestration = next(
+            event for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+            and event["capability_id"] == "transactional_turn"
+        )
+        self.assertEqual(orchestration["observed_result"], "ticket_obsoleto")
+
+    def test_rm08_lifecycle_tem_classe_propria_sem_ciclo_de_turno_falso(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "s1", "poetry run cronica sessao recuperar"),
+            output(
+                "turno-1",
+                "s1",
+                "Process exited with code 0\nWall time 0.7 seconds\n"
+                "fase: recuperada\nsessao: 21\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  unidade: sessao\n  operacao: recuperar\n  estado: recuperado\n"
+                "  sessao: 21\n  recuperada: true\n"
+                "  ordem_canonica_preservada: true\n",
+            ),
+            tokens(20, 10, 5),
+            assistant("turno-1", "A sessão foi recuperada antes de qualquer nova narração."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-session.jsonl"))
+        metrics = report["all_turns"]["turn_and_session_orchestration"]
+        events = [
+            event for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+        ]
+
+        self.assertEqual(metrics["calls_by_class"], {"lifecycle_sessao": 1})
+        self.assertEqual(metrics["session_lifecycle"]["operations"], {"recuperar": 1})
+        self.assertEqual(metrics["session_lifecycle"]["fraction_successful"], 1.0)
+        self.assertEqual(metrics["duration_by_phase"]["sessao:recuperar"]["media_segundos"], 0.7)
+        self.assertEqual(
+            {event["capability_id"] for event in events},
+            {"session_lifecycle"},
+        )
+
+    def test_rm08_desembrulha_output_moderno_e_preserva_duracao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "s1", "poetry run cronica sessao status"),
+            modern_output(
+                "turno-1",
+                "s1",
+                {
+                    "exit_code": 0,
+                    "wall_time_seconds": 0.35,
+                    "output": (
+                        "fase: status\n"
+                        "orquestracao:\n"
+                        "  schema_turn_and_session_orchestration: 1\n"
+                        "  unidade: sessao\n"
+                        "  operacao: status\n"
+                        "  estado: observado\n"
+                    ),
+                },
+            ),
+            tokens(20, 10, 5),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-modern.jsonl"))
+        metrics = report["all_turns"]["turn_and_session_orchestration"]
+
+        self.assertEqual(metrics["session_lifecycle"]["successful"], {"status": 1})
+        self.assertEqual(
+            metrics["duration_by_phase"]["sessao:status"]["media_segundos"],
+            0.35,
+        )
+        self.assertEqual(metrics["session_lifecycle"]["receipts_observed"], 1)
+
     def test_rm07_registra_l0_quando_o_turno_nao_precisa_ler(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", mod.LEGACY_NARRATION_PROMPT),
@@ -346,7 +523,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
-        self.assertEqual(access["detector_version"], "2.4.0")
+        self.assertEqual(access["detector_version"], "2.5.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -624,7 +801,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.4.0")
+        self.assertEqual(social["detector_version"], "2.5.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -757,7 +934,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "2.4.0")
+        self.assertEqual(integrity[0]["detector_version"], "2.5.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

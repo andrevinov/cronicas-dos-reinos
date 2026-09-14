@@ -73,7 +73,9 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
                 sidequest_signal=None,
             )
             self.assertEqual(list(Path(temporary).iterdir()), [])
-        self.assertIs(result, sentinel)
+        receipt = result.pop("orquestracao")
+        self.assertEqual(result, sentinel)
+        self.assertEqual(receipt["operacao"], "preparar")
         hot.assert_called_once()
         active.assert_called_once()
         emergent.assert_not_called()
@@ -113,7 +115,9 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
                 sidequest_signal=signal,
             )
             self.assertEqual(list(Path(temporary).iterdir()), [])
-        self.assertIs(result, integrated)
+        receipt = result.pop("orquestracao")
+        self.assertEqual(result, integrated)
+        self.assertEqual(receipt["operacao"], "preparar")
         emergent.assert_called_once()
         active.assert_called_once()
         self.assertEqual(emergent.call_args.kwargs["signal_raw"], signal)

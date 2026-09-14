@@ -47,7 +47,7 @@ class SidequestModuleContractTest(unittest.TestCase):
             module["id"]: module["versao_implementacao"]
             for module in catalog["modulos"]
         }
-        self.assertEqual(catalog["versao_catalogo"], "2.5.0")
+        self.assertEqual(catalog["versao_catalogo"], "2.6.0")
         self.assertEqual(versions[authoring.MODULE_ID], "1.0.0")
         self.assertEqual(versions[lifecycle.MODULE_ID], "1.0.0")
         self.assertEqual(versions[canonical.MODULE_ID], "1.0.0")

@@ -57,6 +57,13 @@ _ADVERSARIAL_INTERNAL_CHECKS = {
     ("ferramentas/operacoes_concorrentes.py", "check"),
 }
 
+_ORCHESTRATION_INTERNAL_CHECKS = {
+    ("ferramentas/turno.py", "check"),
+    ("ferramentas/consolidar.py", "check"),
+    ("ferramentas/sessoes.py", "check"),
+    ("ferramentas/checkpoint.py", "check"),
+}
+
 
 def _consolidate_sidequest_checks(items):
     positions = [
@@ -193,13 +200,42 @@ def _add_context_memory_check(items):
     return result
 
 
+def _consolidate_orchestration_checks(items):
+    positions = [
+        index
+        for index, item in enumerate(items)
+        if tuple(item.comando[1:]) in _ORCHESTRATION_INTERNAL_CHECKS
+    ]
+    insert_at = min(positions) if positions else len(items)
+    result = [
+        item
+        for item in items
+        if tuple(item.comando[1:]) not in _ORCHESTRATION_INTERNAL_CHECKS
+    ]
+    result.insert(
+        insert_at,
+        Check(
+            "orquestração modular de turno e sessão",
+            (
+                sys.executable,
+                "ferramentas/turn_and_session_orchestration.py",
+                "check",
+            ),
+            "operação",
+        ),
+    )
+    return result
+
+
 def checks(*, incluir_testes: bool = True):
-    result = _add_context_memory_check(
-        _add_npc_continuity_check(
-            _consolidate_adversarial_checks(
-                _consolidate_world_causal_checks(
-                    _consolidate_sidequest_checks(
-                        _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+    result = _consolidate_orchestration_checks(
+        _add_context_memory_check(
+            _add_npc_continuity_check(
+                _consolidate_adversarial_checks(
+                    _consolidate_world_causal_checks(
+                        _consolidate_sidequest_checks(
+                            _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+                        )
                     )
                 )
             )

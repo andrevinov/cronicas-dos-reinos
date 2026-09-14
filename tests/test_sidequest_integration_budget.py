@@ -41,7 +41,7 @@ def valid_ticket_payload(scene_id: str) -> dict:
 
 
 class SidequestNeutralBudgetTest(unittest.TestCase):
-    def test_turno_neutro_retorna_exatamente_hotpath_sem_acordar_integracao(self):
+    def test_turno_neutro_preserva_hotpath_e_publica_recibo_sem_acordar_integracao(self):
         # Este teste isola roteamento com ticket sentinela, não o save vivo.
         # Memória com estado canônico é exercitada em test_memoria_cena_integracao.
         sentinel = {
@@ -67,7 +67,10 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
         ):
             result = cronica.prepare(Path(temporary), scene_id="sidequest-integration:neutro", sidequest_signal=None)
             self.assertEqual(list(Path(temporary).iterdir()), [])
-        self.assertIs(result, sentinel)
+        receipt = result.pop("orquestracao")
+        self.assertEqual(result, sentinel)
+        self.assertEqual(receipt["module_id"], "turn_and_session_orchestration")
+        self.assertEqual(receipt["operacao"], "preparar")
         base.assert_called_once()
         active.assert_called_once()
         emergent.assert_not_called()

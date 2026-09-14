@@ -84,7 +84,10 @@ class CronicaPendingGateTest(unittest.TestCase):
             scene_id="s024-livre",
             sidequest_signal=None,
         )
-        self.assertEqual(actual, expected)
+        self.assertEqual(
+            {key: value for key, value in actual.items() if key != "orquestracao"},
+            expected,
+        )
         self.assertIn("ticket", actual)
         self.assertEqual(actual["fontes_lidas"], [])
 
@@ -144,7 +147,10 @@ class CronicaPendingGateTest(unittest.TestCase):
             scene_id="s024-stale",
             sidequest_signal=None,
         )
-        self.assertEqual(actual, expected)
+        self.assertEqual(
+            {key: value for key, value in actual.items() if key != "orquestracao"},
+            expected,
+        )
         self.assertEqual(marker_path.read_bytes(), before)
 
     def test_marcador_livre_nao_abre_estado_autoritativo(self):

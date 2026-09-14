@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.5.0",
+  "versao_catalogo": "2.6.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -52,7 +52,7 @@
         "exclusoes": ["Entrada OFF", "Consulta pós-hoc de engenharia"],
         "evidencias_minimas": ["classificação ON/OFF/RECALL", "ticket ou recibo de lifecycle"]
       },
-      "resultados_possiveis": ["ciclo_concluido", "bloqueado_por_pendencia", "recuperado", "ciclo_incompleto", "indeterminado"],
+      "resultados_possiveis": ["ciclo_concluido", "bloqueado_por_pendencia", "bloqueado_por_recovery", "recuperado", "ticket_obsoleto", "ticket_incompativel", "ciclo_incompleto", "indeterminado"],
       "subcapacidades": [
         {"id": "transactional_turn", "responsabilidade": "Manter o par preparar/concluir e a atomicidade do turno.", "aliases_v1": []},
         {"id": "session_lifecycle", "responsabilidade": "Iniciar, checkpointar, recuperar e encerrar sessões sem saltos.", "aliases_v1": []},
@@ -62,11 +62,18 @@
       "rotulo_jogador": "Confiabilidade dos turnos e sessões",
       "indicadores_especializados": [
         {"id": "fracao_par_preparar_concluir_exato", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "chamadas_orquestracao_por_turno_e_classe", "unidade": "contagem", "direcao_desejada": "faixa_alvo"},
+        {"id": "pares_com_correlacao_confirmada", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "retries_validos_desnecessarios_recuperados", "unidade": "contagem", "direcao_desejada": "categorica"},
         {"id": "retries_com_efeito_duplicado", "unidade": "contagem", "direcao_desejada": "menor"},
-        {"id": "falhas_recuperadas", "unidade": "proporcao", "direcao_desejada": "maior"}
+        {"id": "tickets_obsoletos_ou_incompativeis", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "commits_duplicados_ou_incompletos", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "duracao_por_fase", "unidade": "segundos", "direcao_desejada": "menor"},
+        {"id": "falhas_recuperadas", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "lifecycle_sessao_valido", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {

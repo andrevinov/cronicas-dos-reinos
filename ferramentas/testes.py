@@ -47,6 +47,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_rules_catalog.py",
     "test_tags_contextuais_tipadas.py",
     "test_transacoes.py",
+    "test_turn_and_session_orchestration_module_v2.py",
     "test_test_execution_profiles.py",
     "test_test_policy_contract.py",
 )
@@ -74,6 +75,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_contatos*.py",
         "test_planos*.py",
         "test_turno*.py",
+        "test_turn_and_session_orchestration_module_v2.py",
         "test_entrada.py",
         "test_tempo_atomico.py",
         "test_diegetico.py",
@@ -90,6 +92,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_checkpoint.py",
         "test_checkpoints_mundo.py",
         "test_unified_session_lifecycle.py",
+        "test_turn_and_session_orchestration_module_v2.py",
         "test_mundo_causal_modules_v2.py",
         "test_auditoria_final.py",
         "test_seven_names_sidequest_regression.py",
