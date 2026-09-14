@@ -29,7 +29,7 @@ from typing import Any, Callable
 import yaml
 
 import _progressao_sidequests_task45_base as progress_base
-import integridade_adversarial as adversarial
+import adversarial_operations as adversarial
 import oportunidade_sidequest as opportunity
 import oportunidades
 import recompensas_sidequest as quest_rewards
@@ -411,17 +411,17 @@ def _adversarial_doc(
 ) -> tuple[dict[str, Any], Path]:
     try:
         _, _, contract, sources = adversarial.normalize_contract(repo, package, quest_raw, raw)
-        prep_id = adversarial._prep_id(qid, contract, sources, repo)
+        prep_id = adversarial.contract_preparation_id(qid, contract, sources, repo)
     except adversarial.AdversarialIntegrityError as exc:
         raise EmergentSidequestIntegrationError(str(exc)) from exc
-    rel = adversarial._contract_path(qid)
+    rel = adversarial.contract_path(qid)
     return {
-        "schema_integridade_adversarial": adversarial.SCHEMA,
+        "schema_integridade_adversarial": adversarial.INTEGRITY_SCHEMA,
         "natureza": "reservado",
         "quest_id": qid,
         "mission_id": mid,
         "preparacao_id": prep_id,
-        "contrato_digest": adversarial._digest(contract),
+        "contrato_digest": adversarial.contract_digest(contract),
         "contrato": contract,
         "guardrails": {
             "sem_plot_armor_por_conveniencia": True,

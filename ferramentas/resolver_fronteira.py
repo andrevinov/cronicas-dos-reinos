@@ -41,7 +41,7 @@ import agentes_leves
 import barreira_mundo
 import direcoes_destino
 import mundo
-import operacoes_concorrentes
+import adversarial_operations as operacoes_adversariais
 import pressao_ravens_bluff
 import reacoes_sidequest
 import acionamentos_leves
@@ -192,8 +192,8 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         sources = _source_list(sources, projection["fontes_lidas"])
     elif pending_type == "resolver_grupo_operacoes":
         try:
-            group = operacoes_concorrentes.project_group_pending(repo, pending)
-        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            group = operacoes_adversariais.project_group_pending(repo, pending)
+        except operacoes_adversariais.ConcurrentOperationError as exc:
             raise BatchBoundaryError(str(exc)) from exc
         item["grupo_operacoes_id"] = group["grupo_operacoes_id"]
         item["classificacao"] = "comprometer_grupo_operacoes"
@@ -208,8 +208,8 @@ def _project_item(repo: Path, pending: dict[str, Any]) -> tuple[dict[str, Any], 
         sources = _source_list(sources, group.get("fontes_lidas"))
     elif pending_type == "resolver_operacao_adversarial":
         try:
-            operation = operacoes_concorrentes.project_operation_pending(repo, pending)
-        except operacoes_concorrentes.ConcurrentOperationError as exc:
+            operation = operacoes_adversariais.project_operation_pending(repo, pending)
+        except operacoes_adversariais.ConcurrentOperationError as exc:
             raise BatchBoundaryError(str(exc)) from exc
         item["grupo_operacoes_id"] = operation["grupo_operacoes_id"]
         item["operacao_id"] = operation["operacao_id"]
@@ -595,9 +595,9 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         try:
             for decision, item in validated_groups:
                 if item is not None:
-                    operacoes_concorrentes.commit_group(repo, item["grupo_operacoes_id"],
+                    operacoes_adversariais.commit_group(repo, item["grupo_operacoes_id"],
                                                         decision["bloqueios"], validate_only=True)
-        except operacoes_concorrentes.ConcurrentOperationError as exc:
+        except operacoes_adversariais.ConcurrentOperationError as exc:
             raise BatchBoundaryError(str(exc)) from exc
 
     plan_result = None
@@ -614,10 +614,10 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         if item is None:
             continue
         try:
-            result = operacoes_concorrentes.commit_group(
+            result = operacoes_adversariais.commit_group(
                 repo, item["grupo_operacoes_id"], decision["bloqueios"]
             )
-        except operacoes_concorrentes.ConcurrentOperationError as exc:
+        except operacoes_adversariais.ConcurrentOperationError as exc:
             raise BatchBoundaryError(str(exc)) from exc
         committed_groups.append(result)
 

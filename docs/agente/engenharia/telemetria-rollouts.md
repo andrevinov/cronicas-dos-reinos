@@ -74,6 +74,13 @@ Um marcador não prova elegibilidade. Na ausência de prova, o ledger mantém
 `--sem-oportunidade-sidequest` é um `gate_neutro`, com efeito falso, e não uma
 materialização.
 
+Operações adversariais emitem `consulta`, `compromisso` e `efeito` como eventos
+separados do pai `adversarial_operations`. `operacoes_simultaneas: true` ativa a
+subcapacidade concorrente; `false` mantém somente integridade/execução simples.
+Os aliases históricos continuam observáveis, mas não recebem duas parcelas de
+custo. Violações de integridade pertencem ao catálogo de guardrails e ficam fora
+da média modular.
+
 ### Custo no ledger
 
 Para cada turno, input e output são divididos uma única vez entre os módulos

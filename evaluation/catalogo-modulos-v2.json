@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.3.0",
+  "versao_catalogo": "2.4.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -336,7 +336,7 @@
         {"id": "capacidades_ou_conhecimento_fabricados", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     }
   ],

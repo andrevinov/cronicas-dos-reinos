@@ -42,6 +42,7 @@ somente o domínio necessário para a tarefa.
 - [`mundo/integracao-reativa-v2.md`](mundo/integracao-reativa-v2.md): contrato integrado de cena reativa;
 - [`mundo/acionamentos-causais.md`](mundo/acionamentos-causais.md): acionamentos causais;
 - [`mundo/compromissos-estruturados.md`](mundo/compromissos-estruturados.md): planos, contatos e operações;
+- [`mundo/modulo-operacoes-adversariais-v2.md`](mundo/modulo-operacoes-adversariais-v2.md): contrato, concorrência e guardrails adversariais;
 - [`mundo/direcoes-como-destino.md`](mundo/direcoes-como-destino.md): direção sem ação prescrita;
 - [`mundo/ecologia-local.md`](mundo/ecologia-local.md): incidentes locais;
 - [`mundo/ecologia-transito-urbano.md`](mundo/ecologia-transito-urbano.md): trânsito urbano;

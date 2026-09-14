@@ -67,6 +67,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_migracao_ren_5_5e.py",
     ),
     "cronica": (
+        "test_adversarial_operations_module_v2.py",
         "test_cronica*.py",
         "test_contatos*.py",
         "test_planos*.py",
@@ -92,6 +93,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "sidequests": (
         "test_*sidequest*.py",
+        "test_adversarial_operations_module_v2.py",
         "test_oportunidades.py",
         "test_quest_rewards_discoveries_losses.py",
         "test_canon_bridge*.py",
@@ -103,6 +105,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "mundo": (
         "test_adversarios.py",
+        "test_adversarial_operations_module_v2.py",
         "test_ameacas.py",
         "test_dungeons.py",
         "test_mundo*.py",

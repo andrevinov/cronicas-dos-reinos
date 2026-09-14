@@ -34,7 +34,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.2.0"
+MODULAR_DETECTOR_VERSION = "2.3.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -278,6 +278,15 @@ def _narrative_systems_from_command(command: str) -> set[str]:
         result.add("reactive_pressure_routing")
         if re.search(r"\bcheck\b", lower):
             result.add("secret_canon")
+    if "adversarial_operations.py" in lower:
+        if re.search(r"\b(agente|check)\b", lower):
+            result.add("adversarial_integrity")
+        if re.search(
+            r"\b(preparar|materializar|comprometer|registrar-rolagem|resolver|"
+            r"entregar-informacao|percepcao-ren|reconciliar|check)\b",
+            lower,
+        ):
+            result.add("concurrent_adversarial_operations")
     for system, markers in _SYSTEM_COMMAND_MARKERS.items():
         if any(marker in lower for marker in markers):
             result.add(system)
@@ -680,6 +689,7 @@ def _legacy_signals(
         output_text = str(call.get("output_text") or "")
         command_lower = str(call.get("command") or "").casefold()
         output_lower = output_text.casefold()
+        facade_adversarial = "adversarial_operations.py" in command_lower
         actual_npc_initiative = (
             "--interlocutor" in command_lower
             or "iniciativa_elenco" in output_lower
@@ -693,6 +703,11 @@ def _legacy_signals(
                 # No ledger v2, carregar relação/voz é continuidade, enquanto
                 # iniciativa exige interlocutor ou decisão explícita no output.
                 if alias == "npc_social_initiative" and not actual_npc_initiative:
+                    continue
+                if (
+                    alias == "concurrent_adversarial_operations"
+                    and facade_adversarial
+                ):
                     continue
                 evidence_markers = list((call.get(marker_key) or {}).get(alias) or [alias])
                 if alias not in aliases:
@@ -732,6 +747,124 @@ def _new_module_signals(
 ) -> None:
     calls = list(turn.get("calls") or [])
     assistant_messages = list(turn.get("assistant_messages") or [])
+
+    # RM-06: proposta, compromisso e efeito são eventos diferentes do mesmo
+    # módulo pai. Integridade é o contrato verificável; concorrência só é
+    # promovida quando duas ou mais frentes são observáveis no recibo novo.
+    for call in calls:
+        command = str(call.get("command") or "")
+        lower = " ".join(command.casefold().split())
+        output_lower = str(call.get("output_text") or "").casefold()
+        facade = "adversarial_operations.py" in lower
+        legacy_integrity = "integridade_adversarial.py" in lower
+        legacy_operations = "operacoes_concorrentes.py" in lower
+        structured = any(
+            marker in output_lower
+            for marker in (
+                "schema_adversarial_operations",
+                "schema_integridade_adversarial",
+                "schema_preparacao_grupo_operacoes",
+                "schema_grupo_operacoes",
+                "grupo_operacoes_id",
+                "resolver_operacao_adversarial",
+            )
+        )
+        if not (facade or legacy_integrity or legacy_operations or structured):
+            continue
+
+        retry = "resultado_modular: retry_sem_duplicacao" in output_lower or bool(
+            re.search(r'"resultado_modular"\s*:\s*"retry_sem_duplicacao"', output_lower)
+        )
+        material_effect = (
+            "evento_modular: efeito_material" in output_lower
+            or bool(
+                re.search(r'"evento_modular"\s*:\s*"efeito_material"', output_lower)
+            )
+            or any(
+                marker in output_lower
+                for marker in (
+                    "resultado_modular: operacao_adversarial_resolvida",
+                    "resultado_modular: consequencia_informacional_entregue",
+                    '"resultado_modular": "operacao_adversarial_resolvida"',
+                    '"resultado_modular": "consequencia_informacional_entregue"',
+                )
+            )
+        )
+        commitment = (
+            "evento_modular: compromisso" in output_lower
+            or bool(re.search(r'"evento_modular"\s*:\s*"compromisso"', output_lower))
+            or any(
+                marker in output_lower
+                for marker in (
+                    "resultado: comprometido_em_lote",
+                    "resultado_modular: operacao_adversarial_comprometida",
+                    "resultado_modular: mecanica_adversarial_congelada",
+                    "resultado_modular: contrato_adversarial_materializado",
+                )
+            )
+        )
+        if retry:
+            activation = "gate_neutro"
+            result = "retry_sem_duplicacao"
+            materialized = None
+            effect = False
+        elif material_effect:
+            activation = "efeito"
+            result = "efeito_adversarial_observado"
+            materialized = "efeito_adversarial_materializado"
+            effect = True
+        elif commitment:
+            activation = "decisao"
+            result = "operacao_adversarial_comprometida"
+            materialized = None
+            effect = False
+        else:
+            activation = "consulta"
+            result = "contrato_adversarial_consultado"
+            materialized = None
+            effect = False if call.get("output_seen") else None
+
+        source = "output" if structured or "evento_modular" in output_lower else "comando"
+        _add_signal(
+            signals,
+            "adversarial_operations",
+            "adversarial_contract_integrity",
+            source=source,
+            evidence=f"{source}:adversarial_{activation}",
+            eligibility=(
+                "sim"
+                if call.get("output_success") is True and (commitment or material_effect)
+                else "indeterminada"
+            ),
+            activation=activation,
+            observed_result=result,
+            materialized_result=materialized,
+            effect_observed=effect,
+            confidence="alta" if structured or facade else "media",
+        )
+
+        simultaneous = bool(
+            re.search(r"operacoes_simultaneas\s*:\s*true", output_lower)
+            or re.search(r'"operacoes_simultaneas"\s*:\s*true', output_lower)
+            or re.search(r"quantidade_frentes\s*:\s*[2-9]", output_lower)
+            or re.search(r'"quantidade_frentes"\s*:\s*[2-9]', output_lower)
+        )
+        if simultaneous or (legacy_operations and not facade):
+            _add_signal(
+                signals,
+                "adversarial_operations",
+                "concurrent_operations",
+                source=source,
+                evidence=f"{source}:concurrent_fronts",
+                eligibility="sim" if simultaneous else "indeterminada",
+                activation=activation,
+                observed_result=(
+                    "frentes_concorrentes_observadas" if simultaneous else result
+                ),
+                materialized_result=materialized,
+                effect_observed=effect,
+                confidence="alta" if simultaneous else "media",
+            )
 
     # RM-05: continuidade dirigida é distinta de iniciativa incidental. Os
     # sinais vêm do mesmo comando/output já observado; nunca interpretam prosa

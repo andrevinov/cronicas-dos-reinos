@@ -339,11 +339,11 @@ def _objectives(actor: dict) -> set[str]:
 
 
 def _operation(view: View, plan: dict) -> tuple[dict, dict]:
-    import operacoes_concorrentes as operations
+    import adversarial_operations as operations
     if (view.repo / operations.JOURNAL).exists():
         raise PlanError("operação interrompida; recuperar seu journal antes de continuar o plano")
     opid = plan["passo"]["resolucao"]["operacao_id"]
-    contract, operation, row, source = operations._operation_context(view.repo, opid)
+    contract, operation, row, source = operations.operation_context(view.repo, opid)
     if operation["antagonista_id"] != plan["agente"]["id"]:
         raise PlanError("operação pertence a outro responsável")
     if operation["local"] != plan["passo"]["local"]:

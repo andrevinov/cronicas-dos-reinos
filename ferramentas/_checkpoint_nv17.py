@@ -39,7 +39,7 @@ import direcoes_mundo
 import interacoes_mundo
 import mundo
 import oportunidades
-import operacoes_concorrentes
+import adversarial_operations as operacoes_adversariais
 import reacoes_sidequest
 import sessoes
 import transacoes
@@ -83,7 +83,7 @@ def _reactions_configured(repo: Path) -> bool:
 
 
 def _operations_configured(repo: Path) -> bool:
-    return operacoes_concorrentes.configured(repo)
+    return operacoes_adversariais.configured(repo)
 
 
 def _sync_canonical_reservations(repo: Path) -> bool:
@@ -149,7 +149,7 @@ def sync_world(repo: Path) -> dict[str, Any]:
         "novas_pendencias": [],
     }
     if _operations_configured(repo):
-        operations_result = operacoes_concorrentes.reconcile(repo)
+        operations_result = operacoes_adversariais.reconcile(repo)
     barrier = (
         barreira_mundo.sync(repo)
         if (repo / mundo.WORLD_STATE_PATH).is_file()
@@ -332,7 +332,7 @@ def check(repo: Path) -> list[str]:
             f"reações de sidequest: {error}" for error in reactions.get("erros") or []
         )
     if _operations_configured(repo):
-        operations = operacoes_concorrentes.check(repo)
+        operations = operacoes_adversariais.check(repo)
         errors.extend(
             f"operações concorrentes: {error}" for error in operations.get("erros") or []
         )

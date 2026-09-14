@@ -29,7 +29,7 @@ import yaml
 
 import barreira_mundo
 import canonical_quest_integration as canon_bridge_runtime
-import integridade_adversarial as adversarial
+import adversarial_operations as adversarial
 import mundo
 import oportunidades
 import recompensas_sidequest as quest_rewards

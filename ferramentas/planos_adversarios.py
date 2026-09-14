@@ -76,27 +76,27 @@ def validate_attempt(view: plans.View, plan: dict, operation: dict) -> None:
 
 def feedback(repo: Path, plan: dict, *, now=None) -> dict:
     """O resultado do mundo só orienta o agente depois de chegar pelo canal."""
-    import operacoes_concorrentes as operations
-    _, operation, row, _ = operations._operation_context(repo, plan["passo"]["resolucao"]["operacao_id"])
+    import adversarial_operations as operations
+    _, operation, row, _ = operations.operation_context(repo, plan["passo"]["resolucao"]["operacao_id"])
     if not operation.get("origem_plano"):
         return {}
     if row["estado"] != "resolvida":
         raise plans.PlanError("operação ainda não possui resultado para o agente")
     current = now or mundo.load_canonical_time(repo)[0]
-    state = operations._load_state(repo)
+    state = operations.operation_control_state(repo)
     for delivery in state["entregas_informacao"]:
         if (delivery["operacao_id"] == operation["id"]
                 and delivery["destinatario"] == plan["agente"]["id"]
                 and row["resolucao"]["resultado"] in delivery["fatos"]
                 and plans._instant(delivery["entregue_em"]) <= current):
-            operations._proof(repo, delivery["prova"], "retorno ao agente")
+            operations.validate_causal_proof(repo, delivery["prova"], "retorno ao agente")
             return {"entrega_id": delivery["id"], "recebido_em": delivery["entregue_em"]}
     raise plans.PlanError("resultado remoto ainda não chegou ao agente por canal comprovado")
 
 
 def passive(repo: Path, world: dict) -> list[dict]:
     """Planos dependentes não impedem jogar a operação nem esperar o mensageiro."""
-    import operacoes_concorrentes as operations
+    import adversarial_operations as operations
     pendings = {p["id"] for p in world["pendencias"] if p["tipo"] == plans.PENDING_TYPE}
     if not pendings:
         return []
@@ -107,7 +107,7 @@ def passive(repo: Path, world: dict) -> list[dict]:
         if (plan["pendencia_id"] not in pendings or plan["estado"] != "tentou"
                 or plan["passo"]["resolucao"]["tipo"] != "operacao"):
             continue
-        _, operation, row, _ = operations._operation_context(repo, plan["passo"]["resolucao"]["operacao_id"])
+        _, operation, row, _ = operations.operation_context(repo, plan["passo"]["resolucao"]["operacao_id"])
         origin = operation.get("origem_plano")
         if not origin or origin["id"] != plan["id"] or origin["revisao"] + 1 != plan["revisao"]:
             continue

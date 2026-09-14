@@ -26,7 +26,7 @@ import yaml
 
 import iniciativa_social
 import mundo
-import operacoes_concorrentes as operations
+import adversarial_operations as operations
 
 SCHEMA = 1
 TICKET_KEY = "contrato_pressao"
@@ -437,30 +437,18 @@ def _fresh_authorization(
             raise NarrativePressureError(str(exc)) from exc
     elif allow_resolved_retry:
         try:
-            contract, operation, state_row, source = operations._operation_context(
-                repo, row["operacao_id"]
+            projected = operations.project_operation_snapshot(
+                repo,
+                row["operacao_id"],
+                allow_resolved=True,
             )
-            if state_row.get("estado") not in {"comprometida", "resolvida"}:
-                raise NarrativePressureError("retry não encontra operação resolvida")
-            reconstructed = operations._operation_pending(contract, operation)
+            reconstructed = projected["pendencia"]
             if reconstructed["id"] != row["pendencia_id"]:
                 raise NarrativePressureError("retry reconstruiu pendência divergente")
-            encounter_source = operations._encounter_rel(row["operacao_id"]).as_posix()
-            encounter = operations._load(repo / encounter_source, encounter_source)
-            if encounter.get("encontro_digest") != operations._digest(encounter.get("encontro")):
-                raise NarrativePressureError("encontro congelado divergente no retry")
             pending = reconstructed
-            projected = {
-                "operacao_id": operation["id"],
-                "grupo_operacoes_id": contract["grupo_operacoes_id"],
-                # O digest congela a autorização no instante comprometido. O
-                # estado resolvido é aceito aqui somente para retry idempotente.
-                "estado": "comprometida",
-                "local": operation["local"],
-                "bloqueios_causais": operation["bloqueios_causais"],
-                "encontro": encounter["encontro"],
-                "fontes_lidas": [source, encounter_source],
-            }
+            # O digest congela a autorização no instante comprometido. O estado
+            # resolvido é aceito aqui somente para retry idempotente.
+            projected["estado"] = "comprometida"
         except operations.ConcurrentOperationError as exc:
             raise NarrativePressureError(str(exc)) from exc
     else:
@@ -548,7 +536,7 @@ def prepare_conclusion(
             blocker = _map(result.get("bloqueio"), "resultado.bloqueio")
             if set(blocker) != {"motivo", "prova"}:
                 raise NarrativePressureError("adiamento exige bloqueio com motivo e prova")
-            normalized = operations._normalized_blockers(
+            normalized = operations.normalize_blockers(
                 repo,
                 {contract_row["operacao_id"]: blocker},
                 {contract_row["operacao_id"]},
@@ -565,14 +553,16 @@ def prepare_conclusion(
                 plan_item["evidencia_literal"] = evidence
             if outcome == "resolvida":
                 expected_fields |= {"prova", "resultado_factual"}
-                proof = operations._proof(repo, result.get("prova"), "resultado.prova")
+                proof = operations.validate_causal_proof(
+                    repo, result.get("prova"), "resultado.prova"
+                )
                 factual = _text(
                     result.get("resultado_factual"),
                     "resultado.resultado_factual",
                     minimum=12,
                 )
                 try:
-                    _, _, operation_state, _ = operations._operation_context(
+                    _, _, operation_state, _ = operations.operation_context(
                         repo, contract_row["operacao_id"]
                     )
                 except operations.ConcurrentOperationError as exc:

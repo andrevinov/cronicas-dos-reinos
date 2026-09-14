@@ -38,7 +38,7 @@ class PreflightTest(unittest.TestCase):
     def test_preflight_inclui_gates_de_sidequest_por_comando_estavel(self):
         commands = {tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)}
         expected = {
-            ("ferramentas/integridade_adversarial.py", "check"),
+            ("ferramentas/adversarial_operations.py", "check"),
             ("ferramentas/sidequest_authoring.py", "check"),
             ("ferramentas/sidequest_lifecycle.py", "check"),
             ("ferramentas/canonical_quest_integration.py", "check"),
@@ -47,11 +47,12 @@ class PreflightTest(unittest.TestCase):
         self.assertFalse(preflight._SIDEQUEST_INTERNAL_CHECKS & commands)
 
         names = {item.nome for item in preflight.checks(incluir_testes=False)}
-        self.assertIn("integridade adversarial", names)
+        self.assertIn("operações adversariais modulares", names)
         self.assertIn("autoria modular de sidequests", names)
         self.assertIn("lifecycle modular de sidequests", names)
         self.assertIn("integração canônica modular de sidequests", names)
         self.assertFalse(any("Task4" in name for name in names))
+        self.assertFalse(preflight._ADVERSARIAL_INTERNAL_CHECKS & commands)
 
     def test_sem_testes_remove_apenas_unittest(self):
         full = preflight.checks(incluir_testes=True)

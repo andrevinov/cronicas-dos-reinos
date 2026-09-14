@@ -462,7 +462,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.2.0")
+        self.assertEqual(social["detector_version"], "2.3.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -497,6 +497,135 @@ class ModularTelemetryTest(unittest.TestCase):
             event["materialized_result_observed"], "memoria_social_persistida"
         )
         self.assertTrue(event["effect_observed"])
+
+    def test_rm06_separa_consulta_compromisso_e_efeito_sem_duplicar_custo(self) -> None:
+        rows: list[str] = [
+            record(
+                "session_meta",
+                {"session_id": "session-adversarial", "cwd": "/fixture"},
+            )
+        ]
+        phases = (
+            (
+                "consulta",
+                "poetry run python ferramentas/adversarial_operations.py preparar",
+                "proposta_adversarial_validada",
+            ),
+            (
+                "compromisso",
+                "poetry run python ferramentas/adversarial_operations.py "
+                "comprometer gop-fixture",
+                "operacao_adversarial_comprometida",
+            ),
+            (
+                "efeito_material",
+                "poetry run python ferramentas/adversarial_operations.py "
+                "resolver operacao-fixture --resultado factual",
+                "operacao_adversarial_resolvida",
+            ),
+        )
+        for ordinal, (event_kind, command, result) in enumerate(phases, 1):
+            turn = f"adversarial-{ordinal}"
+            call_id = f"a{ordinal}"
+            rows.extend(
+                [
+                    record("event_msg", {"type": "task_started", "turn_id": turn}),
+                    user(turn, mod.LEGACY_NARRATION_PROMPT),
+                    call(turn, call_id, command),
+                    output(
+                        turn,
+                        call_id,
+                        "Process exited with code 0\n"
+                        "schema_adversarial_operations: 2\n"
+                        f"evento_modular: {event_kind}\n"
+                        f"resultado_modular: {result}\n"
+                        "quantidade_frentes: 2\n"
+                        "operacoes_simultaneas: true\n",
+                    ),
+                    tokens(30, 20, 10),
+                    assistant(turn, "A força externa conserva seu compromisso."),
+                ]
+            )
+
+        ledger = mod.analyze(
+            self.rollout(rows, "rollout-adversarial-events.jsonl")
+        )["modular_ledger_v2"]
+        integrity = [
+            event
+            for event in ledger["events"]
+            if event["module_id"] == "adversarial_operations"
+            and event["capability_id"] == "adversarial_contract_integrity"
+        ]
+        concurrent = [
+            event
+            for event in ledger["events"]
+            if event["module_id"] == "adversarial_operations"
+            and event["capability_id"] == "concurrent_operations"
+        ]
+
+        self.assertEqual(
+            [event["activation_observed"] for event in integrity],
+            ["consulta", "decisao", "efeito"],
+        )
+        self.assertEqual(len(concurrent), 3)
+        self.assertTrue(all(event["eligibility_observed"] == "sim" for event in concurrent))
+        for turn_ordinal in range(1, 4):
+            per_turn = [
+                event
+                for event in ledger["events"]
+                if event["turn_ordinal"] == turn_ordinal
+                and event["module_id"] == "adversarial_operations"
+            ]
+            attributed = [
+                event["cost"]["parent_attributed_additive"]["total_tokens"]
+                for event in per_turn
+            ]
+            self.assertEqual(sum(value > 0 for value in attributed), 1)
+            self.assertEqual(
+                sum(attributed),
+                next(
+                    event["cost"]["parent_attributed_additive"]["total_tokens"]
+                    for event in per_turn
+                    if event["cost"]["parent_allocation_role"] == "primario"
+                ),
+            )
+        parent = next(
+            row
+            for row in ledger["module_parent_costs"]
+            if row["module_id"] == "adversarial_operations"
+        )
+        self.assertGreater(parent["total_tokens"], 0)
+        self.assertEqual(integrity[0]["detector_version"], "2.3.0")
+
+    def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "simple",
+                "poetry run python ferramentas/adversarial_operations.py preparar",
+            ),
+            output(
+                "turno-1",
+                "simple",
+                "Process exited with code 0\n"
+                "schema_adversarial_operations: 2\n"
+                "evento_modular: consulta\n"
+                "resultado_modular: proposta_adversarial_validada\n"
+                "quantidade_frentes: 1\n"
+                "operacoes_simultaneas: false\n",
+            ),
+            assistant("turno-1", "A força externa prepara uma ação própria."),
+        ]
+        events = mod.analyze(
+            self.rollout(rows, "rollout-simple-adversarial.jsonl")
+        )["modular_ledger_v2"]["events"]
+        capabilities = {
+            event["capability_id"]
+            for event in events
+            if event["module_id"] == "adversarial_operations"
+        }
+        self.assertEqual(capabilities, {"adversarial_contract_integrity"})
 
     def test_visao_legada_e_read_only(self) -> None:
         rows = self.base_rows() + [

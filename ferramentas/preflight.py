@@ -52,6 +52,11 @@ _WORLD_CAUSAL_INTERNAL_CHECKS = {
     ("ferramentas/pressao_narrativa.py", "check"),
 }
 
+_ADVERSARIAL_INTERNAL_CHECKS = {
+    ("ferramentas/integridade_adversarial.py", "check"),
+    ("ferramentas/operacoes_concorrentes.py", "check"),
+}
+
 
 def _consolidate_sidequest_checks(items):
     positions = [
@@ -119,6 +124,29 @@ def _consolidate_world_causal_checks(items):
     return result
 
 
+def _consolidate_adversarial_checks(items):
+    positions = [
+        index
+        for index, item in enumerate(items)
+        if tuple(item.comando[1:]) in _ADVERSARIAL_INTERNAL_CHECKS
+    ]
+    insert_at = min(positions) if positions else len(items)
+    result = [
+        item
+        for item in items
+        if tuple(item.comando[1:]) not in _ADVERSARIAL_INTERNAL_CHECKS
+    ]
+    result.insert(
+        insert_at,
+        Check(
+            "operações adversariais modulares",
+            (sys.executable, "ferramentas/adversarial_operations.py", "check"),
+            "mundo vivo",
+        ),
+    )
+    return result
+
+
 def _add_npc_continuity_check(items):
     if any(
         tuple(item.comando[1:])
@@ -146,9 +174,11 @@ def _add_npc_continuity_check(items):
 
 def checks(*, incluir_testes: bool = True):
     result = _add_npc_continuity_check(
-        _consolidate_world_causal_checks(
-            _consolidate_sidequest_checks(
-                _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+        _consolidate_adversarial_checks(
+            _consolidate_world_causal_checks(
+                _consolidate_sidequest_checks(
+                    _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+                )
             )
         )
     )

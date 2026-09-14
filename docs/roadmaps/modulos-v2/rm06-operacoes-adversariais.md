@@ -2,7 +2,7 @@
 
 ## Status e dependências
 
-**Proposta.** Depende das RM-01–RM-02.
+**Implementada; gates próprios verdes.** Depende das RM-01–RM-02.
 
 ## Objetivo
 
