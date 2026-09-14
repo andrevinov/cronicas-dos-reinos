@@ -35,6 +35,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_benchmark_rollouts.py",
     "test_ci_full_suite_ownership.py",
     "test_comparar_rollouts.py",
+    "test_context_and_memory_module_v2.py",
     "test_entrada.py",
     "test_mecanica_dnd_5_5e.py",
     "test_metodos_agentes.py",
@@ -68,6 +69,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "cronica": (
         "test_adversarial_operations_module_v2.py",
+        "test_context_and_memory_module_v2.py",
         "test_cronica*.py",
         "test_contatos*.py",
         "test_planos*.py",
@@ -82,6 +84,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_seven_names_sidequest_regression.py",
     ),
     "sessoes": (
+        "test_context_and_memory_module_v2.py",
         "test_ciclo_sessoes.py",
         "test_memoria_sessoes.py",
         "test_checkpoint.py",
@@ -152,6 +155,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "runtime": (
         "test_runtime.py",
+        "test_context_and_memory_module_v2.py",
         "test_contexto*.py",
         "test_memorias_fragmentadas.py",
         "test_estado_historico.py",
@@ -165,6 +169,30 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_poetry_setup.py",
         "test_auditoria_final.py",
     ),
+    "contexto": (
+        "test_context_and_memory_module_v2.py",
+        "test_contexto.py",
+        "test_contexto_buscar_muitos.py",
+        "test_contexto_transacional.py",
+        "test_politica_acesso.py",
+        "test_memoria_relevante*.py",
+    ),
+    "memoria": (
+        "test_context_and_memory_module_v2.py",
+        "test_memoria_cena*.py",
+        "test_memoria_duravel*.py",
+        "test_memoria_relevante*.py",
+        "test_memoria_sessoes.py",
+        "test_memorias_fragmentadas.py",
+        "test_contatos_memoria.py",
+    ),
+    "retomada": (
+        "test_context_and_memory_module_v2.py",
+        "test_contexto.py",
+        "test_memoria_cena_cli.py",
+        "test_memoria_cena_integracao.py",
+        "test_memoria_sessoes.py",
+    ),
 }
 
 DOMAIN_ALIASES = {
@@ -176,6 +204,9 @@ DOMAIN_ALIASES = {
     "sidequests": "sidequests",
     "mundo": "mundo",
     "runtime": "runtime",
+    "contexto": "contexto",
+    "memoria": "memoria",
+    "retomada": "retomada",
 }
 
 
@@ -279,7 +310,11 @@ def build_parser() -> argparse.ArgumentParser:
     fast.add_argument("--list", action="store_true", help="lista arquivos sem executar")
 
     domain = subparsers.add_parser("domain", help="executa um ou mais domínios relacionados")
-    domain.add_argument("domains", nargs="+", help="mecânica, crônica, sessões, sidequests, mundo, runtime")
+    domain.add_argument(
+        "domains",
+        nargs="+",
+        help="mecânica, crônica, sessões, sidequests, mundo, runtime, contexto, memória, retomada",
+    )
     domain.add_argument("--list", action="store_true", help="lista arquivos sem executar")
 
     full = subparsers.add_parser("full", help="executa absolutamente toda a suíte")

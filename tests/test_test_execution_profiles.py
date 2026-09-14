@@ -30,6 +30,9 @@ class TestExecutionProfilesTest(unittest.TestCase):
             "sidequests": "sidequests",
             "mundo": "mundo",
             "runtime": "runtime",
+            "contexto": "contexto",
+            "memória": "memoria",
+            "retomada": "retomada",
         }
         full = set(testes.full_files(ROOT))
 

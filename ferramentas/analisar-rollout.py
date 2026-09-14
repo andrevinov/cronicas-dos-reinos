@@ -34,7 +34,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.3.0"
+MODULAR_DETECTOR_VERSION = "2.4.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -1023,63 +1023,189 @@ def _new_module_signals(
                 confidence="alta",
             )
 
-    # RM-07: somente acessos observáveis; ausência de sinal não vira zero.
+    # RM-07: toda demanda narrativa usa contexto, inclusive quando L0 basta e
+    # não há chamada. Leitura, memória e separação de conhecimento continuam
+    # sinais distintos e só o recibo pós-writer prova persistência.
+    access_calls = []
+    normalized_access = Counter(
+        " ".join(str(call.get("command") or "").casefold().split())
+        for call in calls
+        if _core._is_routed_context(str(call.get("command") or ""))
+        and not _core._is_help_command(str(call.get("command") or ""))
+    )
     for call in calls:
         command = str(call.get("command") or "")
-        lower = command.casefold()
+        lower = " ".join(command.casefold().split())
+        output_lower = str(call.get("output_text") or "").casefold()
         name = str(call.get("name") or "")
         category = str(call.get("category") or "")
         routed = _core._is_routed_context(command) and not _core._is_help_command(command)
         raw = _core._is_raw_read(name, command, category)
         if routed or raw:
-            evidence = "command:routed_context" if routed else "command:raw_read"
+            access_calls.append(call)
+            level = _access_level_from_command(command) if routed else "RAW"
+            duplicate = routed and normalized_access[lower] > 1
+            gap = bool(
+                "lacuna_preservada: true" in output_lower
+                or '"lacuna_preservada": true' in output_lower
+                or "encontrado: false" in output_lower
+                or '"encontrado": false' in output_lower
+            )
+            justified = bool("--motivo" in lower and "--apos" in lower)
+            stale = "obsolet" in output_lower
+            if stale:
+                observed = "contexto_obsoleto"
+            elif raw:
+                observed = "acesso_cru_sem_justificativa"
+            elif duplicate:
+                observed = "leitura_redundante"
+            elif gap:
+                observed = "lacuna_preservada"
+            elif level in {"L3", "L4", "L4T"}:
+                observed = (
+                    "aprofundamento_justificado"
+                    if justified
+                    else "aprofundamento_sem_justificativa_observavel"
+                )
+            else:
+                observed = "contexto_suficiente"
+            evidence = (
+                "command:raw_read"
+                if raw
+                else f"command:routed_context_{str(level).casefold()}"
+            )
             _add_signal(
                 signals,
                 "context_and_memory",
                 "routed_context_access",
-                source="comando",
+                source="output" if "schema_context_and_memory" in output_lower else "comando",
                 evidence=evidence,
+                eligibility="sim",
                 activation="consulta",
-                observed_result="acesso_observado",
+                observed_result=observed,
+                effect_observed=False,
                 confidence="alta",
             )
-        if any(marker in lower for marker in ("contexto.py retomada", "contexto.py cena", "memoria_cena", "sessoes.py retomada")):
+
+        memory_context = any(
+            marker in lower
+            for marker in (
+                "contexto.py retomada",
+                "contexto.py cena",
+                "memoria_cena",
+                "sessoes.py retomada",
+                "cronica sessao status",
+                "cronica sessao iniciar",
+            )
+        ) or "memoria_cena" in output_lower
+        if memory_context:
+            cold = "retomada" in lower or "cronica sessao" in lower
+            stale_memory = "obsolet" in output_lower
+            no_transcript = bool(
+                "transcricao_lida: false" in output_lower
+                or '"transcricao_lida": false' in output_lower
+            )
             _add_signal(
                 signals,
                 "context_and_memory",
                 "scene_and_durable_memory",
-                source="comando",
-                evidence="command:scene_or_memory_context",
+                source="output" if "memoria_cena" in output_lower else "comando",
+                evidence=(
+                    "output:cold_resume_without_transcript"
+                    if cold and no_transcript
+                    else "command:scene_or_memory_context"
+                ),
+                eligibility="sim",
                 activation="consulta",
-                observed_result="memoria_consultada",
+                observed_result=(
+                    "memoria_de_cena_obsoleta"
+                    if stale_memory
+                    else "retomada_fria_sem_transcricao"
+                    if cold and no_transcript
+                    else "memoria_consultada"
+                ),
+                effect_observed=False,
+                confidence="alta" if no_transcript or "memoria_cena" in output_lower else "media",
             )
-        if any(marker in lower for marker in (" conhecimento ", " reputacao ", " reputação ", "identidades.py")):
+
+        memory_declared = call.get("orchestration_phase") == "concluir" and bool(
+            re.search(r'(?:^|[\s{,"])mem[oó]ria["\s]*:', command, re.I)
+            or re.search(r'"memoria"\s*:', command, re.I)
+        )
+        memory_receipt = "schema_context_and_memory" in output_lower and bool(
+            "memoria_contexto" in output_lower
+            or "memoria_duravel_persistida" in output_lower
+            or "retry_sem_duplicacao" in output_lower
+        )
+        if memory_declared or memory_receipt:
+            retry = memory_receipt and "retry_sem_duplicacao" in output_lower
+            persisted = memory_receipt and not retry and call.get("output_success") is True
+            _add_signal(
+                signals,
+                "context_and_memory",
+                "scene_and_durable_memory",
+                source="output" if memory_receipt else "comando",
+                evidence=(
+                    "output:durable_memory_receipt"
+                    if memory_receipt
+                    else "command:durable_memory_declared"
+                ),
+                eligibility="sim",
+                activation="efeito" if persisted else "consulta" if retry else "decisao",
+                observed_result=(
+                    "memoria_persistida"
+                    if persisted
+                    else "retry_sem_duplicacao"
+                    if retry
+                    else "memoria_declarada_aguardando_commit"
+                ),
+                materialized_result="memoria_persistida" if persisted else None,
+                effect_observed=True if persisted else False,
+                confidence="alta",
+            )
+
+        knowledge_query = any(
+            marker in f" {lower} "
+            for marker in (
+                " conhecimento ",
+                " reputacao ",
+                " reputação ",
+                " continuidade ",
+                " identidades.py ",
+            )
+        )
+        separated_receipt = "camadas_destino" in output_lower
+        if knowledge_query or separated_receipt:
             _add_signal(
                 signals,
                 "context_and_memory",
                 "knowledge_layer_separation",
-                source="comando",
-                evidence="command:knowledge_layer_query",
-                activation="consulta",
-                observed_result="camada_consultada",
-            )
-        output_lower = str(call.get("output_text") or "").casefold()
-        if call.get("orchestration_phase") in {"concluir", "registrar"} and any(
-            marker in output_lower for marker in ("memoria:", '"memoria"', "memória:")
-        ):
-            _add_signal(
-                signals,
-                "context_and_memory",
-                "scene_and_durable_memory",
-                source="output",
-                evidence="output:memory_receipt",
+                source="output" if separated_receipt else "comando",
+                evidence=(
+                    "output:knowledge_destinations"
+                    if separated_receipt
+                    else "command:knowledge_layer_query"
+                ),
                 eligibility="sim",
-                activation="efeito",
-                observed_result="memoria_persistida",
-                materialized_result="memoria_persistida",
-                effect_observed=True,
+                activation="consulta",
+                observed_result="camadas_preservadas" if separated_receipt else "camada_consultada",
+                effect_observed=False,
                 confidence="alta",
             )
+
+    if not access_calls:
+        _add_signal(
+            signals,
+            "context_and_memory",
+            "routed_context_access",
+            source="turno",
+            evidence="turn:l0_context_sufficient",
+            eligibility="sim",
+            activation="consulta",
+            observed_result="contexto_l0_suficiente",
+            effect_observed=False,
+            confidence="media",
+        )
 
     # RM-08: controle de turno/sessão sem chamada adicional.
     transactional_seen = False

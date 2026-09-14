@@ -7,8 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; a versão 2.4.0 registra as
-  fachadas das RM-03–RM-06, incluindo operações adversariais unificadas;
+  pela RM-01 e ainda não habilitado para produção; a versão 2.5.0 registra as
+  fachadas das RM-03–RM-07, incluindo contexto e memória unificados;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;
@@ -64,3 +64,9 @@ pai `adversarial_operations`. A fachada emite consulta, compromisso e efeito
 material separadamente; a subcapacidade concorrente só é afirmada pelo recibo
 novo quando há mais de uma frente. Integridade continua verificável como
 guardrail não compensável e o custo aditivo pertence uma única vez ao pai.
+
+Na RM-07, a política L0–L5, a memória de cena, a retomada fria e a persistência
+durável passam a compartilhar o pai `context_and_memory`. A telemetria distingue
+L0 econômico, consulta dirigida, aprofundamento justificado, leitura RAW,
+redundância, consulta de memória e efeito persistido. O custo de leitura e o
+recibo de memória permanecem separáveis sem cobrar novamente as subcapacidades.

@@ -142,7 +142,7 @@ def validate_ticket(repo: Path, payload: dict, transaction: dict) -> list[str]:
     rows = payload.get(TICKET_KEY)
     if rows is None:
         return []
-    import memoria_duravel
+    import context_and_memory as memoria_duravel
     if not isinstance(rows, list) or not rows or len(rows) > plans.MAX_PLANS:
         raise plans.PlanError("ticket de planos aguardando inválido")
     if any(not isinstance(r, dict) or set(r) != {"id", "plano_id", "aguarda", "assinatura"} for r in rows):
@@ -150,7 +150,7 @@ def validate_ticket(repo: Path, payload: dict, transaction: dict) -> list[str]:
     records = transacoes.load_pending(repo)
     session = plans.View(repo, []).read("estado/estado-atual.yaml")["campanha"]["sessao_atual"]
     tid = transacoes.stable_transaction_id(transaction, session)
-    if not (any(r["id"] == tid for r in records) or memoria_duravel._already_consolidated(repo, session, tid)):
+    if not (any(r["id"] == tid for r in records) or memoria_duravel.already_consolidated(repo, session, tid)):
         if rows != passive(repo, mundo.load_world_state(repo)):
             raise plans.PlanError("operação/retorno do plano mudou; preparar novamente")
     return [r["id"] for r in rows]

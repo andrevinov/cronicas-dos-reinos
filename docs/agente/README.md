@@ -17,6 +17,7 @@ somente o domínio necessário para a tarefa.
 
 ## Memória
 
+- [`memoria/modulo-contexto-e-memoria-v2.md`](memoria/modulo-contexto-e-memoria-v2.md): fachada de acesso econômico, retomada e persistência;
 - [`memoria/memoria-de-cena.md`](memoria/memoria-de-cena.md): contexto do elenco e retomada;
 - [`memoria/memoria-de-sessoes.md`](memoria/memoria-de-sessoes.md): lifecycle e histórico de sessão;
 - [`memoria/memoria-duravel.md`](memoria/memoria-duravel.md): fatos persistentes;

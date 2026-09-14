@@ -1,6 +1,6 @@
 # Acesso ao contexto e operações do agente
 
-Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; durante narração ao vivo, a porta operacional é `cronica preparar` + `cronica concluir`. Política formal de níveis e orçamentos: `docs/agente/operacao/escada-de-acesso.md`. Consolidação profunda: `docs/agente/operacao/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria/memoria-de-sessoes.md`. Telemetria pós-hoc: `docs/agente/engenharia/telemetria-rollouts.md`.
+Este documento define como o agente decide **o que ler, quando parar de ler, o que escrever e quando fazer checkpoint**. A interface preferencial de leitura é `ferramentas/contexto.py`; `context_and_memory.py` é a fachada modular que compõe política e memória sem substituir essa CLI. Durante narração ao vivo, a porta operacional é `cronica preparar` + `cronica concluir`. Política formal de níveis e orçamentos: `docs/agente/operacao/escada-de-acesso.md`. Consolidação profunda: `docs/agente/operacao/consolidacao-transacional.md`. Memória de sessões: `docs/agente/memoria/memoria-de-sessoes.md`. Telemetria pós-hoc: `docs/agente/engenharia/telemetria-rollouts.md`.
 
 ## Regra principal de economia de contexto
 

@@ -24,6 +24,7 @@ import ciclo_cronica
 import ciclo_sessoes
 import consolidar
 import contratos_operacionais as _contracts
+import context_and_memory as _context_memory
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
@@ -39,10 +40,10 @@ import sidequest_authoring as _sidequest_authoring
 import sidequest_lifecycle as _sidequest_lifecycle
 import transacoes
 
-# Compatibilidade para recovery/testes antigos; a orquestração depende da
-# fachada pública RM-05, que delega às mesmas fontes e aos mesmos writers.
-_scene_memory = _npc_continuity
-_durable = _npc_continuity
+# Compatibilidade para recovery/testes antigos; a orquestração usa a fachada
+# RM-07, que preserva os guardrails sociais compostos pela RM-05.
+_scene_memory = _context_memory
+_durable = _context_memory
 
 # Nomes históricos continuam expostos para recovery e compatibilidade de testes,
 # mas a orquestração depende somente das duas fachadas públicas RM-03.
@@ -339,6 +340,10 @@ def conclude(repo: Path, token: str, transaction: dict):
     social_persistence = _npc_continuity.social_persistence_observation(
         social_persistence_source
     )
+    memory_persistence = _context_memory.durable_persistence_observation(
+        social_persistence_source,
+        transaction,
+    )
     try:
         transaction, contact_pending_ids = _contacts09.compile_conclusion(Path(repo), payload, transaction)
     except (ValueError, OSError, yaml.YAMLError) as exc:
@@ -460,7 +465,8 @@ def conclude(repo: Path, token: str, transaction: dict):
     if installed52 is not None:
         result["pressao_narrativa"] = installed52
         result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
-    return _npc_continuity.publish_social_persistence(result, social_persistence)
+    result = _npc_continuity.publish_social_persistence(result, social_persistence)
+    return _context_memory.publish_memory_persistence(result, memory_persistence)
 
 
 def register(

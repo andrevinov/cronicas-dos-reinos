@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.4.0",
+  "versao_catalogo": "2.5.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -21,9 +21,9 @@
       "escopo": "Escada de acesso L0–L5, memória de cena e durável, retomada e consultas focadas; não decide a ficção.",
       "unidade_analise": "turno",
       "contrato_elegibilidade": {
-        "gatilho": "Existe uma lacuna factual material para preparar, narrar, concluir ou retomar o turno.",
+        "gatilho": "O turno exige fundamentação factual, retomada ou persistência, ainda que o contexto já presente seja suficiente em L0.",
         "exclusoes": ["Leitura preventiva sem lacuna", "Busca ampla quando L0–L2 já bastam"],
-        "evidencias_minimas": ["lacuna declarada ou rota de acesso", "fontes efetivamente consultadas"]
+        "evidencias_minimas": ["contexto já presente em L0 ou lacuna/rota de acesso", "fontes efetivamente consultadas quando houver leitura"]
       },
       "resultados_possiveis": ["contexto_suficiente", "aprofundamento_justificado", "lacuna_preservada", "acesso_excessivo", "indeterminado"],
       "subcapacidades": [
@@ -39,7 +39,7 @@
         {"id": "fatos_duraveis_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {

@@ -583,7 +583,7 @@ def _plan_instant(raw: Any) -> mundo.WorldInstant | None:
 
 
 def _effective_state(repo: Path):
-    import memoria_cena
+    import context_and_memory as memoria_cena
 
     try:
         reader, state, records, saved = memoria_cena.load_scene(repo)
@@ -914,7 +914,7 @@ def _collect_initiatives(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     import dialogo_relacional
     import iniciativa_social
-    import memoria_cena
+    import context_and_memory as memoria_cena
 
     participants = list(saved.get("participantes") or []) if isinstance(saved, dict) else []
     potential: list[str] = []

@@ -17,6 +17,7 @@ if str(TOOLS) not in sys.path:
     sys.path.insert(0, str(TOOLS))
 
 import cronica
+import context_and_memory as context_memory
 from ferramentas import preflight
 import npc_continuity_and_social_behavior as continuity
 import retomada_cronica
@@ -36,7 +37,7 @@ class NpcContinuityModuleContractTest(unittest.TestCase):
             for alias in capability["aliases_v1"]
         }
 
-        self.assertEqual(catalog["versao_catalogo"], "2.4.0")
+        self.assertEqual(catalog["versao_catalogo"], "2.5.0")
         self.assertEqual(module["versao_implementacao"], "1.0.0")
         self.assertEqual(aliases, set(continuity.LEGACY_ALIASES))
         self.assertEqual(
@@ -44,9 +45,9 @@ class NpcContinuityModuleContractTest(unittest.TestCase):
             set(continuity.CAPABILITIES),
         )
         self.assertIs(cronica._npc_continuity, continuity)
-        self.assertIs(cronica._scene_memory, continuity)
-        self.assertIs(cronica._durable, continuity)
-        self.assertIs(retomada_cronica.memoria_cena, continuity)
+        self.assertIs(cronica._scene_memory, context_memory)
+        self.assertIs(cronica._durable, context_memory)
+        self.assertIs(retomada_cronica.memoria_cena, context_memory)
 
         base_source = (TOOLS / "_cronica_nv14.py").read_text(encoding="utf-8")
         initiative_source = (TOOLS / "cronica_iniciativa.py").read_text(

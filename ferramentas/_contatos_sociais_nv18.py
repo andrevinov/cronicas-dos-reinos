@@ -343,7 +343,7 @@ def compile_conclusion(repo: Path, payload: dict, transaction: dict) -> tuple[di
             out["deltas"].append(knowledge)
             # Só o interlocutor/portador comprovado entra no elenco. Mensageiro
             # não transporta o remetente; elenco desconhecido permanece lacuna.
-            import memoria_cena
+            import context_and_memory as memoria_cena
             cast = payload.get(memoria_cena.TICKET_KEY, {}).get("elenco")
             if cast is not None:
                 cast = deepcopy(cast)
@@ -362,12 +362,12 @@ def compile_conclusion(repo: Path, payload: dict, transaction: dict) -> tuple[di
                 out["deltas"].append({"alvo": "estado", "op": "set", "caminho": memoria_cena.CAST_PATH, "valor": cast})
     # Reconstruir antes de conferir replay permite reparar buffer/transcrição e
     # repetir entrega antiga sem depender da situação atual do canal ou de Ren.
-    import memoria_duravel
+    import context_and_memory as memoria_duravel
     state = plans.View(repo, []).read("estado/estado-atual.yaml")
     session = state["campanha"]["sessao_atual"]
     txid = transacoes.stable_transaction_id(out, session)
     records = transacoes.load_pending(repo)
-    if any(r["id"] == txid for r in records) or memoria_duravel._already_consolidated(repo, session, txid):
+    if any(r["id"] == txid for r in records) or memoria_duravel.already_consolidated(repo, session, txid):
         return out, meta["pendencias"]
     world = mundo.load_world_state(repo)
     if _queue_signature(world, meta["pendencias"]) != meta["fila"]:

@@ -12,6 +12,7 @@ TOOLS = Path(__file__).resolve().parents[1] / "ferramentas"
 sys.path.insert(0, str(TOOLS))
 import yaml
 import cronica
+import context_and_memory as context_memory
 import contexto
 import consolidar
 import memoria_duravel as memory
@@ -91,15 +92,23 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
         self.assertIn(memory.event_id("promessa", "fato", 3), self.active())
         self.assertEqual(result["transacao"]["deltas"], 2)
         self.assertEqual(self.relation()["memorias_importantes"][0]["operacao"], "registrar")
+        receipt = result[context_memory.MEMORY_PERSISTENCE_KEY]
+        self.assertEqual(receipt["resultado_modular"], "memoria_duravel_persistida")
+        self.assertEqual(receipt["fatos_persistidos_novos"], 1)
+        self.assertTrue(receipt["efeito_materializado"])
 
     def test_retry_pendente_nao_duplica_fato_ou_promessa(self):
         tx = self.promise()
         cronica.conclude(self.repo, self.token, tx)
         before = self.hashes()
-        cronica.conclude(self.repo, self.token, tx)
+        retry = cronica.conclude(self.repo, self.token, tx)
         self.assertEqual(before, self.hashes())
         self.assertEqual(len(self.relation()["memorias_importantes"]), 1)
         self.assertEqual(len(self.active()), 1)
+        receipt = retry[context_memory.MEMORY_PERSISTENCE_KEY]
+        self.assertEqual(receipt["resultado_modular"], "retry_sem_duplicacao")
+        self.assertEqual(receipt["fatos_persistidos_novos"], 0)
+        self.assertFalse(receipt["efeito_materializado"])
 
     def test_cumprir_remove_ativo_e_preserva_evidencia_de_fecho(self):
         cronica.conclude(self.repo, self.token, self.promise())

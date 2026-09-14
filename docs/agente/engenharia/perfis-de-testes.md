@@ -36,6 +36,9 @@ poetry run test-domain sessoes
 poetry run test-domain sidequests
 poetry run test-domain mundo
 poetry run test-domain runtime
+poetry run test-domain contexto
+poetry run test-domain memoria
+poetry run test-domain retomada
 ```
 
 As formas acentuadas em português também são aceitas, por exemplo:
@@ -44,6 +47,7 @@ As formas acentuadas em português também são aceitas, por exemplo:
 poetry run test-domain mecânica
 poetry run test-domain crônica
 poetry run test-domain sessões
+poetry run test-domain memória
 ```
 
 Mais de um domínio pode ser combinado; arquivos sobrepostos são executados uma única vez:

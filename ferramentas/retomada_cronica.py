@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-import npc_continuity_and_social_behavior as memoria_cena
+import context_and_memory as memoria_cena
 import recursos
 import sessoes
 import transacoes

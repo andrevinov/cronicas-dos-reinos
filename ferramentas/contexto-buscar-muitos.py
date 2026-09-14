@@ -17,7 +17,7 @@ if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
 import contexto
-import politica_acesso as politica
+import context_and_memory as politica
 import transacoes
 
 MIN_TERMS = 2

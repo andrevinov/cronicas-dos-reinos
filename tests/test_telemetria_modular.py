@@ -322,6 +322,168 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(orchestration["session_id"], "session-fixture")
         self.assertEqual(orchestration["analysis_unit"], "turno")
 
+    def test_rm07_registra_l0_quando_o_turno_nao_precisa_ler(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id l0 --sem-oportunidade-sidequest",
+            ),
+            output("turno-1", "p1", "Process exited with code 0\nfase: preparacao\n"),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.l0"),
+            output("turno-1", "c1", "Process exited with code 0\nfase: concluida\n"),
+            tokens(40, 30, 10),
+            assistant("turno-1", "A cena continua sem exigir nova consulta."),
+        ]
+        events = mod.analyze(
+            self.rollout(rows, "rollout-context-l0.jsonl")
+        )["modular_ledger_v2"]["events"]
+        access = next(
+            event for event in events
+            if event["module_id"] == "context_and_memory"
+            and event["capability_id"] == "routed_context_access"
+        )
+        self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
+        self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
+        self.assertEqual(access["detector_version"], "2.4.0")
+
+    def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
+        rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
+        scenarios = (
+            (
+                "profundo",
+                "python3 ferramentas/contexto.py buscar frase --historico --transcricoes "
+                "--apos L4 --motivo 'O histórico estruturado não contém a fala literal necessária.'",
+                "nivel: L4T\ncontexto_modular:\n  schema_context_and_memory: 2\n",
+                "aprofundamento_justificado",
+            ),
+            (
+                "raw",
+                "sed -n '1,80p' sessoes/021/transcricao.md",
+                "trecho bruto",
+                "acesso_cru_sem_justificativa",
+            ),
+        )
+        for turn, command, result, _ in scenarios:
+            rows.extend(
+                [
+                    record("event_msg", {"type": "task_started", "turn_id": turn}),
+                    user(turn, mod.LEGACY_NARRATION_PROMPT),
+                    call(turn, turn, command),
+                    output(turn, turn, "Process exited with code 0\n" + result),
+                    assistant(turn, "A continuidade é preservada."),
+                ]
+            )
+        rows.extend(
+            [
+                record("event_msg", {"type": "task_started", "turn_id": "repetido"}),
+                user("repetido", mod.LEGACY_NARRATION_PROMPT),
+                call("repetido", "r1", "python3 ferramentas/contexto.py npc silva"),
+                output("repetido", "r1", "Process exited with code 0\nnivel: L2\n"),
+                call("repetido", "r2", "python3 ferramentas/contexto.py npc silva"),
+                output("repetido", "r2", "Process exited with code 0\nnivel: L2\n"),
+                assistant("repetido", "Silva mantém a mesma postura."),
+            ]
+        )
+        events = mod.analyze(
+            self.rollout(rows, "rollout-context-depth.jsonl")
+        )["modular_ledger_v2"]["events"]
+        results = {
+            event["turn_id"]: event["observed_result"]
+            for event in events
+            if event["module_id"] == "context_and_memory"
+            and event["capability_id"] == "routed_context_access"
+        }
+        self.assertEqual(
+            results,
+            {
+                "profundo": "aprofundamento_justificado",
+                "raw": "acesso_cru_sem_justificativa",
+                "repetido": "leitura_redundante",
+            },
+        )
+
+    def test_rm07_detecta_contexto_e_memoria_de_cena_obsoletos(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "r1", "python3 ferramentas/contexto.py cena"),
+            output(
+                "turno-1",
+                "r1",
+                "Process exited with code 1\npreparação de elenco obsoleta\n",
+            ),
+            assistant("turno-1", "A preparação precisa ser refeita."),
+        ]
+        events = mod.analyze(
+            self.rollout(rows, "rollout-context-stale.jsonl")
+        )["modular_ledger_v2"]["events"]
+        by_capability = {
+            event["capability_id"]: event["observed_result"]
+            for event in events
+            if event["module_id"] == "context_and_memory"
+        }
+
+        self.assertEqual(
+            by_capability["routed_context_access"],
+            "contexto_obsoleto",
+        )
+        self.assertEqual(
+            by_capability["scene_and_durable_memory"],
+            "memoria_de_cena_obsoleta",
+        )
+
+    def test_rm07_memoria_commit_e_camadas_tem_custo_parental_unico(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "m1",
+                "poetry run cronica concluir --ticket crn1.memoria '{\"memoria\": {\"versao\": 1}}'",
+            ),
+            output(
+                "turno-1",
+                "m1",
+                "Process exited with code 0\n"
+                "memoria_contexto:\n"
+                "  schema_context_and_memory: 2\n"
+                "  resultado_modular: memoria_duravel_persistida\n"
+                "  evento_modular: efeito_material\n"
+                "  camadas_destino: [memoria_relacional]\n",
+            ),
+            tokens(60, 40, 20),
+            assistant("turno-1", "O rumor permanece atribuído a quem o recebeu."),
+        ]
+        ledger = mod.analyze(
+            self.rollout(rows, "rollout-context-memory-effect.jsonl")
+        )["modular_ledger_v2"]
+        events = [
+            event for event in ledger["events"]
+            if event["module_id"] == "context_and_memory"
+        ]
+        memory = next(
+            event for event in events
+            if event["capability_id"] == "scene_and_durable_memory"
+        )
+        layers = next(
+            event for event in events
+            if event["capability_id"] == "knowledge_layer_separation"
+        )
+
+        self.assertEqual(memory["activation_observed"], "efeito")
+        self.assertEqual(memory["materialized_result_observed"], "memoria_persistida")
+        self.assertEqual(layers["observed_result"], "camadas_preservadas")
+        attributed = [
+            event["cost"]["parent_attributed_additive"]["total_tokens"]
+            for event in events
+        ]
+        self.assertEqual(sum(value > 0 for value in attributed), 1)
+        parent = next(
+            row for row in ledger["module_parent_costs"]
+            if row["module_id"] == "context_and_memory"
+        )
+        self.assertEqual(sum(attributed), parent["total_tokens"])
+
     def test_fachadas_rm03_preservam_atribuicao_dos_aliases_v1(self) -> None:
         self.assertIn(
             "emergent_sidequest_authoring",
@@ -462,7 +624,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.3.0")
+        self.assertEqual(social["detector_version"], "2.4.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -595,7 +757,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "2.3.0")
+        self.assertEqual(integrity[0]["detector_version"], "2.4.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

@@ -536,7 +536,7 @@ def pending_context(repo: Path, pending: dict) -> dict:
     Os hashes integrais detectam staleness até quando a seleção omitir um campo.
     """
     require_stable_canon(repo)
-    import memoria_cena as memory
+    import context_and_memory as memory
     import transacoes
     import compromissos
     reader, state, records, _ = memory.load_scene(repo)
@@ -566,7 +566,7 @@ def pending_context(repo: Path, pending: dict) -> dict:
                   "resultado": result}}
     applicable = {cid: raw for cid, raw in _commitments(state).items()
                   if aid in (raw.get("envolvidos") or [])}
-    commitments = compromissos.runtime_bundle(applicable, *memory._time(state, records),
+    commitments = compromissos.runtime_bundle(applicable, *memory.scene_time(state, records),
                                               limit=max(1, len(applicable)))
     if commitments:
         docs["@compromissos"] = commitments["itens"]

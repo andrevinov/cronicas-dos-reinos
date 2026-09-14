@@ -39,16 +39,19 @@ if str(TOOLS_DIR) not in sys.path:
 
 import contexto_core as core
 import catalogo_regras
+import context_and_memory as context_memory
 import continuidade_autoral
 import dialogo_relacional
 import memoria_relevante
-import npc_continuity_and_social_behavior as memoria_cena
-import politica_acesso as politica
 import recursos
 import reputacao_publica
 import sessoes as memoria_sessoes
 import texturas
 import transacoes
+
+# A CLI continua estável; política e memória pertencem à fachada RM-07.
+memoria_cena = context_memory
+politica = context_memory
 
 DEFAULT_MAX_BYTES = core.DEFAULT_MAX_BYTES
 HARD_MAX_BYTES = core.HARD_MAX_BYTES

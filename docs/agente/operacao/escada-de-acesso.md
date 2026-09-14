@@ -2,7 +2,9 @@
 
 Este documento define a política executável de leitura da campanha. O objetivo não é fazer o agente percorrer mais etapas: é **evitar leituras sem lacuna concreta e evitar ciclos modelo → ferramenta → modelo que não acrescentam informação útil**.
 
-A implementação mecânica vive em `ferramentas/politica_acesso.py` e é aplicada pela porta pública `ferramentas/contexto.py`.
+A implementação mecânica vive em `ferramentas/politica_acesso.py`, pertence à
+fachada `ferramentas/context_and_memory.py` e é aplicada pela porta operacional
+`ferramentas/contexto.py`.
 
 ## Princípio zero
 

@@ -188,7 +188,7 @@ def due_plan_ids(repo: Path, now: mundo.WorldInstant) -> tuple[list[str], list[s
 
 
 def _scene(repo: Path) -> tuple[Any, dict[str, Any], list[dict[str, Any]], dict[str, Any] | None]:
-    import memoria_cena
+    import context_and_memory as memoria_cena
 
     try:
         reader, state, records, saved = memoria_cena.load_scene(repo)

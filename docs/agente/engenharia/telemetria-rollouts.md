@@ -81,6 +81,15 @@ Os aliases históricos continuam observáveis, mas não recebem duas parcelas de
 custo. Violações de integridade pertencem ao catálogo de guardrails e ficam fora
 da média modular.
 
+`context_and_memory` aparece em todo turno narrativo com demanda de contexto.
+Sem leitura, o detector registra `contexto_l0_suficiente`; consultas roteadas
+preservam L1–L4T, motivo de escalada e lacunas. Contexto obsoleto, RAW, repetição
+da mesma consulta e L3+ sem justificativa permanecem evidências negativas
+explícitas. Memória de cena/retomada é consulta; somente `memoria_contexto`
+emitido depois do writer é efeito durável. Retry confirma a memória sem contar
+novo efeito, e destinos de
+conhecimento são observados sem expor o conteúdo do fato.
+
 ### Custo no ledger
 
 Para cada turno, input e output são divididos uma única vez entre os módulos
