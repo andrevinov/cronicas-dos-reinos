@@ -7,8 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; a versão 2.7.0 registra as
-  fachadas das RM-03–RM-09, incluindo entrega narrativa correlacionada;
+  pela RM-01 e ainda não habilitado para produção; a versão 2.8.0 registra as
+  fachadas das RM-03–RM-10, incluindo entrega narrativa e mecânica correlacionadas;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;
@@ -82,3 +82,10 @@ prosa registrada e permite correlacioná-lo à resposta final e ao rodapé. Tama
 mecânica explícita e latência são medidas estruturais; adequação de progressão,
 densidade, voz, conhecimento e fechamento depende de auditoria semântica. Notas
 do jogador entram separadamente e nunca compensam agência, sigilo ou rolagem.
+
+Na RM-10, `rules_and_character_state` agrega as autoridades já existentes de
+regra, dado, ficha, estado e tempo sem criar outro RNG ou writer. O recibo
+`regras_estado_personagem` nasce depois do commit somente quando há obrigação
+mecânica ou delta pertinente; a telemetria separa consulta, alvo prévio,
+rolagem, recurso, estado e retry e não atribui deltas genéricos do mundo ao
+módulo.

@@ -2,6 +2,9 @@
 
 Este documento reúne obrigações antes presentes no `AGENTS.md` sobre manuais de regras, fidelidade, decisões e dados. Consultá-lo quando a tarefa for mecânica; não carregá-lo preventivamente para cenas sem dúvida de regra.
 
+A arquitetura consolidada, seus limites de ativação e o recibo pós-writer estão
+em [`modulo-regras-e-estado-personagem-v2.md`](modulo-regras-e-estado-personagem-v2.md).
+
 ## Manuais de regras
 
 Os arquivos em `regras/` devem funcionar como referência rápida durante o jogo, não como reprodução de livros inteiros. Cada resumo deve, quando aplicável:
@@ -79,6 +82,11 @@ Enquanto a cobertura do catálogo não for completa, termo não catalogado prese
 A rolagem continua fora de `cronica`, pela CLI `dados`. Em `cronica concluir`, a transação fornece os dados já rolados em `mecanica.resolucoes`; `cronica` os repassa ao núcleo mecânico para reconstruir deterministicamente escolhido, total e resultado. Só depois compara a consequência com os deltas e chama o writer.
 
 Gasto de Focus sem obrigação correspondente é recusado. Mudança do recurso desde `preparar` torna o ticket mecânico obsoleto. O caminho sem mecânica não abre catálogo nem estado adicional e continua em exatamente duas chamadas de orquestração: `preparar` e `concluir`.
+
+Depois de um commit com obrigação mecânica ou delta de personagem/tempo, a
+mesma saída inclui o recibo compacto `regras_estado_personagem`. Ele é apenas
+evidência pós-writer: não valida novamente, não rola dados e não realiza outra
+escrita. Turno puramente narrativo não recebe o recibo.
 
 ### Receita operacional para gasto de Focus
 

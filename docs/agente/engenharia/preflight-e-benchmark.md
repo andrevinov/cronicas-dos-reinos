@@ -20,8 +20,9 @@ O preflight executa em sequência:
 
 1. suíte unitária completa;
 2. os gates modulares, incluindo `turn_and_session_orchestration.py check` para
-   o controle transacional e `narrative_delivery.py check` para o contrato de
-   entrega sem juiz literário ou mutação;
+   o controle transacional, `narrative_delivery.py check` para o contrato de
+   entrega sem juiz literário ou mutação e
+   `rules_and_character_state.py check` para regras, RNG, ficha, estado e tempo;
 3. migração/fragmentação/índice em modo `--check`;
 4. `gerar-runtime.py --check`;
 5. integridade estrutural/semântica;

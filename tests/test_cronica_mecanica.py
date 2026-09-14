@@ -17,6 +17,7 @@ if str(TOOLS) not in sys.path:
 import _cronica_turn_core as turn_core
 import cronica
 import mecanica_cronica
+import rules_and_character_state
 
 
 class MechanicalRepo:
@@ -428,6 +429,11 @@ class PublicCronicaMechanicalIntegrationTest(unittest.TestCase):
             with mock.patch.object(cronica, "_conclude_base", return_value={"ok": True}) as delegate:
                 result = cronica.conclude(repo, token, tx)
             self.assertTrue(result["ok"])
+            receipt = result[rules_and_character_state.RECEIPT_KEY]
+            self.assertEqual(receipt["contrato"]["obrigacoes_recurso"], 1)
+            self.assertEqual(receipt["contrato"]["recursos_aplicados"], 1)
+            self.assertEqual(receipt["mutacoes"]["categorias"], ["recursos"])
+            self.assertTrue(receipt["commit"]["exactly_once"])
             delegated = delegate.call_args.args[2]
             self.assertNotIn("mecanica", delegated)
             self.assertEqual(delegated["deltas"], [delta])

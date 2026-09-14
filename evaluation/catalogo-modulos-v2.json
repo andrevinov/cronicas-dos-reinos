@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.7.0",
+  "versao_catalogo": "2.8.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -120,7 +120,7 @@
         "exclusoes": ["Ação sem incerteza material", "Mudança não canônica ou meramente hipotética"],
         "evidencias_minimas": ["gatilho ficcional", "regra ou contrato aplicável", "resultado e delta quando houver"]
       },
-      "resultados_possiveis": ["resolvido_sem_rolagem", "rolagem_resolvida", "estado_atualizado", "compromisso_ausente", "indeterminado"],
+      "resultados_possiveis": ["regra_consultada", "parametros_predefinidos", "rolagem_resolvida", "rolagem_sem_alvo_predefinido", "estado_commitado", "replay_sem_duplicacao", "guardrail_bloqueou", "redescoberta_assinatura", "indeterminado"],
       "subcapacidades": [
         {"id": "rules_resolution", "responsabilidade": "Definir dificuldade e modificadores antes da resolução.", "aliases_v1": []},
         {"id": "roll_execution", "responsabilidade": "Executar e preservar o resultado real da rolagem.", "aliases_v1": []},
@@ -130,11 +130,17 @@
       "rotulo_jogador": "Justiça das regras e consistência da ficha",
       "indicadores_especializados": [
         {"id": "rolagens_com_cd_previa", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "integridade_resultado_consequencia", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "consultas_regra_por_oportunidade", "unidade": "contagem", "direcao_desejada": "faixa_alvo"},
+        {"id": "redescobertas_schema_cli", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "recursos_comprometidos_aplicados", "unidade": "proporcao", "direcao_desejada": "maior"},
         {"id": "deltas_persistentes_validos", "unidade": "proporcao", "direcao_desejada": "maior"},
-        {"id": "divergencias_ficha_tempo", "unidade": "contagem", "direcao_desejada": "menor"}
+        {"id": "divergencias_ficha_estado_runtime", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "instantes_canonicos_coerentes", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "correcoes_mecanicas_jogador", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "roll_integrity", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {

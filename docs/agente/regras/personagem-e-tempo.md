@@ -2,6 +2,10 @@
 
 Este documento é referência para criação e progressão do personagem, inventário, recursos e cronologia. Não deve ser carregado em cenas sem relação com esses assuntos.
 
+O contrato modular que correlaciona esses deltas com regra, rolagem e commit
+está em
+[`modulo-regras-e-estado-personagem-v2.md`](modulo-regras-e-estado-personagem-v2.md).
+
 ## Ficha canônica
 
 A ficha deve permanecer em formato estruturado, preferencialmente YAML. Conforme a edição, deve representar identidade, ancestralidade ou espécie, classe e nível, antecedentes, atributos, perícias, proficiências, defesas, pontos de vida, condições, recursos, magias, equipamentos, experiência, idiomas, características e escolhas de progressão.

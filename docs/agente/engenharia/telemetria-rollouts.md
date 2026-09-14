@@ -98,6 +98,21 @@ timestamps. `densidade_nao_avaliada` é deliberado: extensão não equivale a
 qualidade, e rollouts anteriores sem recibo aparecem como
 `entrega_legada_observada`.
 
+`rules_and_character_state` correlaciona consultas dirigidas, alvo prévio,
+rolagem e o recibo `schema_rules_and_character_state: 1` anexado depois do
+writer. A visão `rules_and_character_state` mede consultas únicas/redundantes,
+redescoberta de CLI, rolagens com CD/CA prévia, obrigações e aplicações de
+recurso, deltas de personagem/tempo, instantes atômicos, retries e correções
+mecânicas explícitas do jogador. Um `alvo: estado` genérico só conta quando o
+caminho pertence a recursos, personagem, equipamento ou efeitos de Ren;
+localização, mundo, relações e elenco não ativam a RM-10.
+
+Rollouts antigos podem fornecer evidência de confiança média pelos comandos e
+deltas observáveis. O recibo novo eleva a correlação para alta confiança sem
+expor números da ficha ou reexecutar validação. Ausência de recibo, alvo ou
+opinião não é convertida em aprovação automática: permanece indeterminada ou
+N/D conforme o indicador.
+
 ### Custo no ledger
 
 Para cada turno, input e output são divididos uma única vez entre os módulos
@@ -210,6 +225,7 @@ Além dessa extensão, continuam sendo inferências observacionais:
 - leitura de transcrição;
 - nível L1/L2/L3/L4/L4T;
 - fases de `cronica` e famílias narrativas da extensão.
+- consultas de regra, alvo prévio de rolagem e recibos de personagem/tempo da RM-10;
 
 Desde o schema 3, chamada e resultado são correlacionados pelo `call_id` nativo quando possível, com FIFO apenas como fallback para rollouts antigos. Exit code, status explícito e respostas inequívocas permitem separar escrita tentada, concluída, falha e desconhecida.
 

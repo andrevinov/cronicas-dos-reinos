@@ -518,3 +518,17 @@ poetry run python ferramentas/npc_continuity_and_social_behavior.py check
 Consulta dirigida de NPC é continuidade; iniciativa só é observada com
 `--interlocutor` ou recibo de `iniciativa_elenco`. Detalhes:
 `docs/agente/narrativa/modulo-continuidade-npc-v2.md`.
+
+## Fachada modular de regras e estado do personagem
+
+A RM-10 reúne regra, rolagem e deltas de Ren/tempo sem trocar as portas públicas
+nem criar outro RNG, writer ou estado:
+
+```bash
+poetry run python ferramentas/rules_and_character_state.py check
+```
+
+`cronica concluir` anexa `regras_estado_personagem` depois do writer quando o
+turno possui obrigação mecânica ou delta pertinente. Turnos puramente
+narrativos e deltas genéricos do mundo não recebem esse recibo. Detalhes:
+`docs/agente/regras/modulo-regras-e-estado-personagem-v2.md`.

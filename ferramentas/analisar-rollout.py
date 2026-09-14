@@ -35,7 +35,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.6.0"
+MODULAR_DETECTOR_VERSION = "2.7.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -199,6 +199,219 @@ def _is_dice_command(command: str) -> bool:
     return bool(re.search(r"(?:^|\s)(?:poetry\s+run\s+)?dados(?:-lote)?(?:\s|$)", lower))
 
 
+def _is_rule_query(command: str) -> bool:
+    lower = " ".join(command.casefold().split())
+    return bool(
+        re.search(r"\bcontexto\.py\b.*\bregra\b", lower)
+        or re.search(r"\bcatalogo_regras\.py\b.*\b(?:consultar|receita|check)\b", lower)
+    )
+
+
+def _is_mechanical_schema_discovery(command: str, raw_input: str) -> bool:
+    """Restringe a redescoberta genérica do core às portas da RM-10."""
+
+    lower = command.casefold()
+    relevant = any(
+        marker in lower
+        for marker in (
+            "poetry run dados",
+            "cronica preparar",
+            "cronica concluir",
+            "rolar-dados.py",
+            "rolar-lote.py",
+            "mecanica_cronica.py",
+            "catalogo_regras.py",
+            "ficha_ren.py",
+            "tempo_transacional.py",
+        )
+    )
+    return relevant and _core._is_schema_discovery(command, _core._paths(raw_input))
+
+
+def _dice_observation(call: dict[str, Any]) -> dict[str, Any] | None:
+    command = str(call.get("command") or "")
+    if not _is_dice_command(command) or _core._is_help_command(command):
+        return None
+    lower = " ".join(command.casefold().split())
+    batch = bool(re.search(r"(?:^|\s)(?:poetry\s+run\s+)?dados-lote(?:\s|$)", lower))
+    target = None
+    target_flag = None
+    if re.search(r"\bataque\b", lower):
+        target, target_flag = "ca", "--ca"
+    elif re.search(r"\b(?:d20|pericia|skill|salvaguarda|save)\b", lower):
+        target, target_flag = "cd", "--cd"
+    return {
+        "batch": batch,
+        "target": target,
+        "target_applicable": target is not None,
+        "target_predefined": target_flag in lower if target_flag else None,
+        "success": call.get("output_success") is True,
+        "output_seen": bool(call.get("output_seen")),
+    }
+
+
+def _character_state_categories(text: str) -> set[str]:
+    """Reconhece somente estado de Ren/tempo; estado genérico pertence a outros módulos."""
+
+    lower = text.casefold()
+    categories: set[str] = set()
+    if re.search(r'["\']?alvo["\']?\s*:\s*["\']?tempo\b', lower):
+        categories.add("tempo_atomico")
+    if re.search(r'["\']?alvo["\']?\s*:\s*["\']?ficha\b', lower):
+        categories.add("ficha")
+    state_target = bool(
+        re.search(r'["\']?alvo["\']?\s*:\s*["\']?estado\b', lower)
+    )
+    if state_target:
+        if "recursos." in lower or "recursos/" in lower:
+            categories.add("recursos")
+        if "personagem." in lower or "personagem/" in lower:
+            categories.add("personagem")
+        if "equipamento_em_posse" in lower:
+            categories.add("equipamento")
+        if "efeitos_temporarios" in lower:
+            categories.add("condicoes_ou_efeitos")
+    return categories
+
+
+_MECHANICAL_CORRECTION_RE = re.compile(
+    r"\b(?:(?:resultado d[oa] dado|resultado da rolagem).{0,80}"
+    r"(?:errad[oa]|alterad[oa]|mudou|corrigid[oa]|corrigir)|(?:mudou|alterou).{0,40}"
+    r"(?:resultado d[oa] dado|resultado da rolagem)|(?:cd|ca) (?:era|deveria)|"
+    r"focus (?:não deveria|nao deveria)|(?:gastou|não gastou|nao gastou) focus|"
+    r"regra (?:foi|está|esta) aplicada errad[ao]|corrig(?:ir|indo) a mecânica|"
+    r"corrig(?:ir|indo) a mecanica)\b",
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def _mechanical_correction_signals(turns: list[dict[str, Any]]) -> int:
+    return sum(
+        bool(_MECHANICAL_CORRECTION_RE.search("\n".join(turn.get("user_messages") or [])))
+        for turn in turns[1:]
+    )
+
+
+def _rules_state_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
+    calls = [call for turn in turns for call in turn.get("calls") or []]
+    rule_calls = [call for call in calls if _is_rule_query(str(call.get("command") or ""))]
+    normalized_rule_queries = [
+        " ".join(str(call.get("command") or "").casefold().split())
+        for call in rule_calls
+    ]
+    rolls = [observed for call in calls if (observed := _dice_observation(call))]
+    target_rolls = [item for item in rolls if item["target_applicable"]]
+    predefined = [item for item in target_rolls if item["target_predefined"] is True]
+    receipts = [
+        call["rules_state_receipt"]
+        for call in calls
+        if isinstance(call.get("rules_state_receipt"), dict)
+    ]
+    resource_obligations = sum(int(item.get("resource_obligations") or 0) for item in receipts)
+    resources_applied = sum(int(item.get("resources_applied") or 0) for item in receipts)
+    relevant_deltas = sum(int(item.get("relevant_deltas") or 0) for item in receipts)
+    validated_receipts = sum(item.get("prewriter_validated") is True for item in receipts)
+    d20_receipts = [item for item in receipts if int(item.get("d20_obligations") or 0)]
+    delta_receipts = [item for item in receipts if int(item.get("relevant_deltas") or 0)]
+    atomic_receipts = [item for item in receipts if item.get("atomic_time") is True]
+    valid_delta_count = sum(
+        int(item.get("relevant_deltas") or 0)
+        for item in delta_receipts
+        if item.get("prewriter_validated") is True
+        and item.get("canonical_consistency") == "ok"
+    )
+    state_categories: Counter[str] = Counter()
+    for receipt in receipts:
+        state_categories.update(str(item) for item in receipt.get("categories") or [])
+    for call in calls:
+        for category in _character_state_categories(
+            str(call.get("command") or "")
+        ):
+            state_categories[category] += 1
+    guardrail_blocks = sum(
+        any(
+            marker in str(call.get("output_text") or "").casefold()
+            for marker in (
+                "diverge da primitiva",
+                "exige obrigação",
+                "exige obrigacao",
+                "ticket mecânico obsoleto",
+                "ticket mecanico obsoleto",
+                "resultado mecânico diverge",
+                "resultado mecanico diverge",
+            )
+        )
+        for call in calls
+    )
+    return {
+        "schema": 1,
+        "consultas_regra": {
+            "total": len(rule_calls),
+            "unicas": len(set(normalized_rule_queries)),
+            "redundantes": len(normalized_rule_queries) - len(set(normalized_rule_queries)),
+            "por_oportunidade": None,
+        },
+        "redescobertas_schema_cli": sum(bool(call.get("schema_discovery")) for call in calls),
+        "rolagens": {
+            "chamadas": len(rolls),
+            "lotes": sum(item["batch"] for item in rolls),
+            "sucesso_ferramenta": sum(item["success"] for item in rolls),
+            "falha_ou_indeterminada": sum(not item["success"] for item in rolls),
+            "alvo_aplicavel": len(target_rolls),
+            "alvo_predefinido": len(predefined),
+            "proporcao_alvo_predefinido": round(len(predefined) / len(target_rolls), 6)
+            if target_rolls
+            else None,
+        },
+        "contratos": {
+            "recibos_observados": len(receipts),
+            "regras": sum(int(item.get("rules") or 0) for item in receipts),
+            "obrigacoes": sum(int(item.get("obligations") or 0) for item in receipts),
+            "obrigacoes_d20": sum(int(item.get("d20_obligations") or 0) for item in receipts),
+            "obrigacoes_recurso": resource_obligations,
+            "resolucoes": sum(int(item.get("resolutions") or 0) for item in receipts),
+            "recursos_aplicados": resources_applied,
+            "proporcao_recursos_aplicados": round(resources_applied / resource_obligations, 6)
+            if resource_obligations
+            else None,
+            "validados_antes_do_writer": validated_receipts,
+            "exactly_once": sum(item.get("exactly_once") is True for item in receipts),
+            "replays_sem_novo_efeito": sum(item.get("new_effect") is False for item in receipts),
+            "integridade_resultado_consequencia": round(
+                sum(item.get("roll_integrity") == "ok" for item in d20_receipts)
+                / len(d20_receipts),
+                6,
+            )
+            if d20_receipts
+            else None,
+        },
+        "estado_personagem_tempo": {
+            "deltas_relevantes": relevant_deltas,
+            "deltas_persistentes_validos": valid_delta_count,
+            "proporcao_deltas_persistentes_validos": round(
+                valid_delta_count / relevant_deltas, 6
+            )
+            if relevant_deltas
+            else None,
+            "categorias_observadas": dict(sorted(state_categories.items())),
+            "instantes_atomicos": sum(item.get("atomic_time") is True for item in receipts),
+            "proporcao_instantes_canonicos_coerentes": round(
+                sum(item.get("canonical_consistency") == "ok" for item in atomic_receipts)
+                / len(atomic_receipts),
+                6,
+            )
+            if atomic_receipts
+            else None,
+            "divergencias_ficha_estado_runtime": None,
+        },
+        "guardrails": {
+            "bloqueios_observados": guardrail_blocks,
+            "nao_compensaveis": True,
+        },
+        "correcoes_mecanicas_jogador": _mechanical_correction_signals(turns),
+    }
+
+
 def _classify_tool(name: str, raw_input: str) -> str:
     command = _core._extract_command(raw_input)
     if _is_dice_command(command):
@@ -326,6 +539,39 @@ def _output_int(output_text: str, key: str) -> int | None:
         return None
 
 
+def _output_string_list(output_text: str, key: str) -> list[str]:
+    json_match = re.search(
+        rf'"{re.escape(key)}"\s*:\s*(\[[^\]]*\])', output_text, re.I
+    )
+    if json_match:
+        try:
+            value = json.loads(json_match.group(1))
+        except json.JSONDecodeError:
+            value = None
+        if isinstance(value, list):
+            return [str(item) for item in value if isinstance(item, str)]
+
+    lines = output_text.splitlines()
+    for index, line in enumerate(lines):
+        match = re.match(rf'^(\s*){re.escape(key)}\s*:\s*$', line, re.I)
+        if not match:
+            continue
+        base_indent = len(match.group(1))
+        result: list[str] = []
+        for candidate in lines[index + 1 :]:
+            if not candidate.strip():
+                continue
+            indent = len(candidate) - len(candidate.lstrip())
+            item = re.match(r"^\s*-\s+(.+?)\s*$", candidate)
+            if item and indent >= base_indent:
+                result.append(item.group(1).strip("'\""))
+                continue
+            if indent <= base_indent:
+                break
+        return result
+    return []
+
+
 def _record_timestamp(record: dict[str, Any], payload: dict[str, Any]) -> float | None:
     """Normaliza somente relógios explícitos do rollout; ausência fica N/D."""
 
@@ -418,6 +664,35 @@ def _delivery_receipt(output_text: str) -> dict[str, Any] | None:
         "mechanics_lines": _output_int(receipt_text, "linhas_mecanica"),
         "footer_emitted": _output_bool(receipt_text, "emitido"),
         "semantic_assessment": _output_scalar(receipt_text, "avaliacao_semantica"),
+    }
+
+
+def _rules_state_receipt(output_text: str) -> dict[str, Any] | None:
+    marker = "schema_rules_and_character_state"
+    start = output_text.casefold().rfind(marker)
+    if start < 0:
+        return None
+    receipt_text = output_text[start:]
+    return {
+        "event_id": _output_scalar(receipt_text, "evento_id"),
+        "state": _output_scalar(receipt_text, "estado"),
+        "ticket_id": _output_scalar(receipt_text, "ticket_id"),
+        "transaction_id": _output_scalar(receipt_text, "transacao_id"),
+        "session": _output_scalar(receipt_text, "sessao"),
+        "rules": _output_int(receipt_text, "regras"),
+        "obligations": _output_int(receipt_text, "obrigacoes"),
+        "d20_obligations": _output_int(receipt_text, "obrigacoes_d20"),
+        "resource_obligations": _output_int(receipt_text, "obrigacoes_recurso"),
+        "resolutions": _output_int(receipt_text, "resolucoes"),
+        "resources_applied": _output_int(receipt_text, "recursos_aplicados"),
+        "relevant_deltas": _output_int(receipt_text, "deltas_relevantes"),
+        "categories": _output_string_list(receipt_text, "categorias"),
+        "atomic_time": _output_bool(receipt_text, "tempo_atomico"),
+        "prewriter_validated": _output_bool(receipt_text, "validado_antes_do_writer"),
+        "exactly_once": _output_bool(receipt_text, "exactly_once"),
+        "new_effect": _output_bool(receipt_text, "efeito_novo"),
+        "roll_integrity": _output_scalar(receipt_text, "roll_integrity"),
+        "canonical_consistency": _output_scalar(receipt_text, "canonical_consistency"),
     }
 
 
@@ -629,8 +904,10 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "output_text": "",
                     "output_success": None,
                     "duration_seconds": None,
+                    "schema_discovery": _is_mechanical_schema_discovery(command, raw_input),
                     "orchestration_receipt": None,
                     "delivery_receipt": None,
+                    "rules_state_receipt": None,
                     "orchestration_failure": None,
                     "liveness": None,
                     "output_seen": False,
@@ -676,6 +953,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched["duration_seconds"] = _duration_seconds(output_text)
                 matched["orchestration_receipt"] = _orchestration_receipt(output_text)
                 matched["delivery_receipt"] = _delivery_receipt(output_text)
+                matched["rules_state_receipt"] = _rules_state_receipt(output_text)
                 matched["orchestration_failure"] = orchestration_failure
                 matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
@@ -1006,6 +1284,7 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
             "feedback_jogador": "nao_fornecido",
             "nota_literaria_automatica": None,
         },
+        "rules_and_character_state": _rules_state_summary(turns),
         "sidequest_opportunity_decisions": {
             key: int(decisions[key])
             for key in ("oportunidade", "sem_oportunidade", "ausente", "conflito")
@@ -1987,11 +2266,28 @@ def _new_module_signals(
             confidence="alta",
         )
 
-    # RM-10: regra, rolagem e estado são sinais distintos.
+    # RM-10: consulta, alvo prévio, rolagem e commit são evidências separadas.
+    # Estado genérico (local, relações, mundo) não ativa este módulo.
     for call in calls:
         command = str(call.get("command") or "")
         lower = command.casefold()
-        if re.search(r"\bcontexto\.py\b.*\bregra\b", lower) or "catalogo_regras.py" in lower:
+        output_text = str(call.get("output_text") or "")
+        output_lower = output_text.casefold()
+        receipt = call.get("rules_state_receipt")
+
+        if call.get("schema_discovery"):
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "rules_resolution",
+                source="comando",
+                evidence="command:mechanical_schema_rediscovery",
+                activation="consulta",
+                observed_result="redescoberta_assinatura",
+                effect_observed=False,
+                confidence="alta",
+            )
+        elif _is_rule_query(command):
             _add_signal(
                 signals,
                 "rules_and_character_state",
@@ -2000,63 +2296,177 @@ def _new_module_signals(
                 evidence="command:rule_query",
                 activation="consulta",
                 observed_result="regra_consultada",
+                effect_observed=False,
                 confidence="alta",
             )
-        if _is_dice_command(command):
-            succeeded = call.get("output_success") is True
+
+        roll = _dice_observation(call)
+        if roll is not None:
+            if roll["target_applicable"]:
+                predefined = roll["target_predefined"] is True
+                _add_signal(
+                    signals,
+                    "rules_and_character_state",
+                    "rules_resolution",
+                    source="comando",
+                    evidence=(
+                        f"command:{roll['target']}_predefined"
+                        if predefined
+                        else f"command:{roll['target']}_missing"
+                    ),
+                    eligibility="sim",
+                    activation="decisao",
+                    observed_result=(
+                        "parametros_predefinidos"
+                        if predefined
+                        else "rolagem_sem_alvo_predefinido"
+                    ),
+                    effect_observed=False,
+                    confidence="alta",
+                )
+            succeeded = bool(roll["success"])
             _add_signal(
                 signals,
                 "rules_and_character_state",
                 "roll_execution",
                 source="comando",
-                evidence="command:dice",
-                eligibility="sim" if "--cd" in lower else "indeterminada",
+                evidence="command:dice_batch" if roll["batch"] else "command:dice",
+                eligibility="sim" if roll["target_applicable"] else "indeterminada",
                 activation="efeito" if succeeded else "decisao",
-                observed_result="rolagem_executada" if succeeded else "rolagem_solicitada",
-                materialized_result="rolagem_executada" if succeeded else None,
+                observed_result="rolagem_resolvida" if succeeded else "indeterminado",
+                materialized_result="rolagem_resolvida" if succeeded else None,
                 effect_observed=succeeded,
                 confidence="alta",
             )
-            if call.get("output_seen"):
+            if roll["output_seen"]:
                 _add_signal(
                     signals,
                     "rules_and_character_state",
                     "roll_execution",
                     source="output",
                     evidence="output:dice_result",
-                    eligibility="sim" if "--cd" in lower else "indeterminada",
+                    eligibility="sim" if roll["target_applicable"] else "indeterminada",
                     activation="efeito" if succeeded else "decisao",
-                    observed_result="rolagem_executada" if succeeded else "rolagem_solicitada",
-                    materialized_result="rolagem_executada" if succeeded else None,
+                    observed_result="rolagem_resolvida" if succeeded else "indeterminado",
+                    materialized_result="rolagem_resolvida" if succeeded else None,
                     effect_observed=succeeded,
                     confidence="alta",
                 )
-        output_lower = str(call.get("output_text") or "").casefold()
-        state_signal = any(
-            marker in lower or marker in output_lower
-            for marker in (
-                "--gasto-focus",
-                "--mecanica-json",
-                '"alvo":"estado"',
-                '"alvo": "estado"',
-                '"alvo":"tempo"',
-                '"alvo": "tempo"',
-                "recursos.focus",
+
+        precommitted = "--gasto-focus" in lower or (
+            "--mecanica-json" in lower
+            and any(
+                marker in lower
+                for marker in ("gasto_recurso", "recursos.focus", '"recurso":"focus"', '"recurso": "focus"')
             )
         )
-        if state_signal:
-            committed = call.get("orchestration_phase") in {"concluir", "registrar"} and call.get("output_success") is True
+        categories = _character_state_categories(command)
+        if precommitted and not isinstance(receipt, dict):
             _add_signal(
                 signals,
                 "rules_and_character_state",
                 "character_time_state",
-                source="output" if output_lower else "ticket",
-                evidence="output:character_or_time_state" if output_lower else "ticket:character_or_time_state",
+                source="ticket",
+                evidence="ticket:mechanical_obligation_precommitted",
+                eligibility="sim",
+                activation="decisao",
+                observed_result="indeterminado",
+                effect_observed=False,
+                confidence="alta",
+            )
+
+        if isinstance(receipt, dict):
+            replay = receipt.get("new_effect") is False
+            effect = receipt.get("new_effect") is True
+            if int(receipt.get("rules") or 0) or int(receipt.get("obligations") or 0):
+                _add_signal(
+                    signals,
+                    "rules_and_character_state",
+                    "rules_resolution",
+                    source="output",
+                    evidence="output:rules_state_contract_receipt",
+                    eligibility="sim",
+                    activation="gate_neutro" if replay else "efeito" if effect else "decisao",
+                    observed_result="replay_sem_duplicacao" if replay else "parametros_predefinidos",
+                    materialized_result="contrato_mecanico_validado" if effect else None,
+                    effect_observed=effect,
+                    confidence="alta",
+                )
+            if int(receipt.get("d20_obligations") or 0):
+                resolved = (
+                    int(receipt.get("resolutions") or 0)
+                    >= int(receipt.get("d20_obligations") or 0)
+                )
+                _add_signal(
+                    signals,
+                    "rules_and_character_state",
+                    "roll_execution",
+                    source="output",
+                    evidence="output:roll_integrity_receipt",
+                    eligibility="sim",
+                    activation="gate_neutro" if replay else "efeito" if resolved else "decisao",
+                    observed_result="replay_sem_duplicacao" if replay else "rolagem_resolvida" if resolved else "indeterminado",
+                    materialized_result="rolagem_resolvida" if resolved and not replay else None,
+                    effect_observed=resolved and not replay,
+                    confidence="alta",
+                )
+            if int(receipt.get("relevant_deltas") or 0) or int(
+                receipt.get("resource_obligations") or 0
+            ):
+                _add_signal(
+                    signals,
+                    "rules_and_character_state",
+                    "character_time_state",
+                    source="output",
+                    evidence="output:rules_state_commit_receipt",
+                    eligibility="sim",
+                    activation="gate_neutro" if replay else "efeito" if effect else "decisao",
+                    observed_result="replay_sem_duplicacao" if replay else "estado_commitado",
+                    materialized_result="estado_commitado" if effect else None,
+                    effect_observed=effect,
+                    confidence="alta",
+                )
+        elif categories:
+            committed = (
+                call.get("orchestration_phase") in {"concluir", "registrar"}
+                and call.get("output_success") is True
+            )
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "character_time_state",
+                source="ticket",
+                evidence="ticket:legacy_character_or_time_delta",
                 eligibility="sim",
                 activation="efeito" if committed else "decisao",
-                observed_result="estado_commitado" if committed else "estado_pre_comprometido",
+                observed_result="estado_commitado" if committed else "indeterminado",
                 materialized_result="estado_commitado" if committed else None,
                 effect_observed=committed,
+                confidence="media",
+            )
+
+        if any(
+            marker in output_lower
+            for marker in (
+                "diverge da primitiva",
+                "exige obrigação",
+                "exige obrigacao",
+                "ticket mecânico obsoleto",
+                "ticket mecanico obsoleto",
+                "resultado mecânico diverge",
+                "resultado mecanico diverge",
+            )
+        ):
+            _add_signal(
+                signals,
+                "rules_and_character_state",
+                "rules_resolution",
+                source="output",
+                evidence="output:mechanical_guardrail_block",
+                eligibility="sim",
+                activation="decisao",
+                observed_result="guardrail_bloqueou",
+                effect_observed=False,
                 confidence="alta",
             )
 
@@ -2487,6 +2897,9 @@ def analyze(
             "RM-09 delivery receipt correlated with the final visible response and canonical footer position",
             "RM-09 response size and latency measured structurally without an automatic literary score",
             "RM-09 semantic audit, player perception and critical guardrails stored as separate evidence layers",
+            "RM-10 rule queries, predefined targets, rolls and character/time commits inferred as separate evidence",
+            "RM-10 versioned receipt correlates prewriter validation and exactly-once state effects without generic state attribution",
+            "RM-10 mechanical corrections and CLI rediscovery remain observations rather than automatic quality judgments",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -2504,6 +2917,9 @@ def _human(report: dict[str, Any]) -> str:
     systems = narr.get("narrative_system_turns") or {}
     live = all_turns.get("liveness_boundary") or {}
     delivery = narr.get("narrative_delivery") or {}
+    rules_state = narr.get("rules_and_character_state") or {}
+    rolls = rules_state.get("rolagens") or {}
+    contracts = rules_state.get("contratos") or {}
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
@@ -2540,6 +2956,15 @@ def _human(report: dict[str, Any]) -> str:
             f"correlacionadas={delivery.get('entregas_correlacionadas', 0)} | "
             f"rodapés irregulares={delivery.get('rodapes_ausentes_ou_fora_de_posicao', 0)} | "
             "qualidade semântica=N/D sem adjudicação"
+        ),
+        (
+            "RM-10 regras/estado: "
+            f"consultas={((rules_state.get('consultas_regra') or {}).get('total', 0))} | "
+            f"rolagens={rolls.get('chamadas', 0)} | "
+            f"alvo prévio={rolls.get('alvo_predefinido', 0)}/{rolls.get('alvo_aplicavel', 0)} | "
+            f"recibos={contracts.get('recibos_observados', 0)} | "
+            f"redescobertas={rules_state.get('redescobertas_schema_cli', 0)} | "
+            f"correções do jogador={rules_state.get('correcoes_mecanicas_jogador', 0)}"
         ),
     ]
     if ledger:

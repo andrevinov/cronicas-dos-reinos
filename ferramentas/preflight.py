@@ -247,15 +247,38 @@ def _add_narrative_delivery_check(items):
     return result
 
 
+def _add_rules_and_character_state_check(items):
+    if any(
+        tuple(item.comando[1:])
+        == ("ferramentas/rules_and_character_state.py", "check")
+        for item in items
+    ):
+        return items
+    result = list(items)
+    gate = Check(
+        "regras e estado do personagem modulares",
+        (sys.executable, "ferramentas/rules_and_character_state.py", "check"),
+        "mecânica",
+    )
+    insert_at = next(
+        (i for i, item in enumerate(result) if item.nome == "experiência narrativa integrada"),
+        len(result),
+    )
+    result.insert(insert_at, gate)
+    return result
+
+
 def checks(*, incluir_testes: bool = True):
-    result = _add_narrative_delivery_check(
-        _consolidate_orchestration_checks(
-            _add_context_memory_check(
-                _add_npc_continuity_check(
-                    _consolidate_adversarial_checks(
-                        _consolidate_world_causal_checks(
-                            _consolidate_sidequest_checks(
-                                _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+    result = _add_rules_and_character_state_check(
+        _add_narrative_delivery_check(
+            _consolidate_orchestration_checks(
+                _add_context_memory_check(
+                    _add_npc_continuity_check(
+                        _consolidate_adversarial_checks(
+                            _consolidate_world_causal_checks(
+                                _consolidate_sidequest_checks(
+                                    _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+                                )
                             )
                         )
                     )

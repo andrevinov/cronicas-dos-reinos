@@ -337,6 +337,166 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(orchestration["session_id"], "session-fixture")
         self.assertEqual(orchestration["analysis_unit"], "turno")
 
+    def test_rm10_correlaciona_regra_alvo_rolagem_recurso_e_tempo(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "Ren tenta perceber a ameaça."),
+            call("turno-1", "r1", "python3 ferramentas/contexto.py regra percepcao"),
+            output("turno-1", "r1", "Process exited with code 0\nregra: percepção\n"),
+            call("turno-1", "d1", "poetry run dados ren pericia percepcao --cd 15"),
+            output("turno-1", "d1", "Process exited with code 0\nresultado: 18\n"),
+            call(
+                "turno-1",
+                "c1",
+                "poetry run cronica concluir --ticket crn1.rm10",
+            ),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\n"
+                "regras_estado_personagem:\n"
+                "  schema_rules_and_character_state: 1\n"
+                "  evento_id: mechanics-rm10\n"
+                "  estado: commit_validado\n"
+                "  correlacao:\n    ticket_id: ticket-rm10\n"
+                "    transacao_id: tx-rm10\n    sessao: 21\n"
+                "  contrato:\n"
+                "    regras: 1\n    obrigacoes: 2\n    obrigacoes_d20: 1\n"
+                "    obrigacoes_recurso: 1\n    resolucoes: 2\n"
+                "    recursos_aplicados: 1\n    validado_antes_do_writer: true\n"
+                "  mutacoes:\n    categorias:\n    - recursos\n    - tempo_atomico\n"
+                "    deltas_relevantes: 2\n    tempo_atomico: true\n"
+                "  commit:\n    exactly_once: true\n    efeito_novo: true\n"
+                "  guardrails:\n    roll_integrity: ok\n"
+                "    canonical_consistency: ok\n",
+            ),
+            tokens(80, 50, 20),
+            assistant(
+                "turno-1",
+                "MECÂNICA — Percepção 18 contra CD 15.\nRODAPE_CANONICO",
+            ),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm10.jsonl"))
+        metrics = report["narration_turns"]["rules_and_character_state"]
+
+        self.assertEqual(metrics["consultas_regra"]["total"], 1)
+        self.assertEqual(metrics["redescobertas_schema_cli"], 0)
+        self.assertEqual(metrics["rolagens"]["chamadas"], 1)
+        self.assertEqual(metrics["rolagens"]["alvo_predefinido"], 1)
+        self.assertEqual(metrics["rolagens"]["proporcao_alvo_predefinido"], 1.0)
+        self.assertEqual(metrics["contratos"]["recibos_observados"], 1)
+        self.assertEqual(metrics["contratos"]["obrigacoes_d20"], 1)
+        self.assertEqual(metrics["contratos"]["proporcao_recursos_aplicados"], 1.0)
+        self.assertEqual(metrics["contratos"]["integridade_resultado_consequencia"], 1.0)
+        self.assertEqual(metrics["estado_personagem_tempo"]["deltas_relevantes"], 2)
+        self.assertEqual(
+            metrics["estado_personagem_tempo"]["proporcao_deltas_persistentes_validos"],
+            1.0,
+        )
+        self.assertEqual(metrics["estado_personagem_tempo"]["instantes_atomicos"], 1)
+        self.assertEqual(
+            metrics["estado_personagem_tempo"]["categorias_observadas"],
+            {"recursos": 1, "tempo_atomico": 1},
+        )
+
+        ledger = report["modular_ledger_v2"]
+        events = [
+            event
+            for event in ledger["events"]
+            if event["module_id"] == "rules_and_character_state"
+        ]
+        self.assertEqual(
+            {event["capability_id"] for event in events},
+            {"rules_resolution", "roll_execution", "character_time_state"},
+        )
+        self.assertTrue(any(event["observed_result"] == "rolagem_resolvida" for event in events))
+        self.assertTrue(any(event["observed_result"] == "estado_commitado" for event in events))
+        parent = next(
+            row
+            for row in ledger["module_parent_costs"]
+            if row["module_id"] == "rules_and_character_state"
+        )
+        self.assertGreater(parent["total_tokens"], 0)
+        self.assertTrue(all(event["detector_version"] == "2.7.0" for event in events))
+
+    def test_rm10_nao_ativa_em_narrativa_pura_ou_delta_generico_de_local(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "Ren atravessa a praça."),
+            call(
+                "turno-1",
+                "c1",
+                "poetry run cronica concluir --ticket crn1.neutro "
+                "'{\"deltas\":[{\"alvo\":\"estado\",\"op\":\"set\","
+                "\"caminho\":\"localizacao.local_atual\",\"valor\":\"ravens_bluff\"}]}'",
+            ),
+            output("turno-1", "c1", "Process exited with code 0\nfase: concluida\n"),
+            assistant("turno-1", "A praça se abre adiante.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm10-neutro.jsonl"))
+        modules = {
+            event["module_id"] for event in report["modular_ledger_v2"]["events"]
+        }
+
+        self.assertNotIn("rules_and_character_state", modules)
+        metrics = report["narration_turns"]["rules_and_character_state"]
+        self.assertEqual(metrics["rolagens"]["chamadas"], 0)
+        self.assertEqual(metrics["estado_personagem_tempo"]["deltas_relevantes"], 0)
+
+    def test_rm10_redescoberta_de_cli_nao_conta_como_rolagem(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "h1", "poetry run dados --help"),
+            output("turno-1", "h1", "Process exited with code 0\nusage: dados\n"),
+            assistant("turno-1", "Ren ainda avalia a situação.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm10-help.jsonl"))
+        metrics = report["narration_turns"]["rules_and_character_state"]
+        event = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "rules_and_character_state"
+        )
+
+        self.assertEqual(metrics["redescobertas_schema_cli"], 1)
+        self.assertEqual(metrics["rolagens"]["chamadas"], 0)
+        self.assertEqual(event["capability_id"], "rules_resolution")
+        self.assertEqual(event["observed_result"], "redescoberta_assinatura")
+        self.assertFalse(event["effect_observed"])
+
+    def test_rm10_guarda_bloqueio_e_correcao_do_jogador_sem_compensar(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "c1",
+                "poetry run cronica concluir --ticket crn1.rm10",
+            ),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 1\nresultado mecânico diverge da primitiva\n",
+            ),
+            assistant("turno-1", "A resolução foi interrompida."),
+            record("event_msg", {"type": "task_started", "turn_id": "turno-2"}),
+            user("turno-2", "O resultado da rolagem foi alterado; precisa de correção."),
+            assistant("turno-2", "Entendido."),
+            record("event_msg", {"type": "task_started", "turn_id": "turno-3"}),
+            user("turno-3", "O resultado da rolagem foi 18 e Ren segue adiante."),
+            assistant("turno-3", "Entendido."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm10-guardrail.jsonl"))
+        metrics = report["all_turns"]["rules_and_character_state"]
+        event = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "rules_and_character_state"
+        )
+
+        self.assertEqual(metrics["guardrails"]["bloqueios_observados"], 1)
+        self.assertTrue(metrics["guardrails"]["nao_compensaveis"])
+        self.assertEqual(metrics["correcoes_mecanicas_jogador"], 1)
+        self.assertEqual(event["observed_result"], "guardrail_bloqueou")
+        self.assertFalse(event["effect_observed"])
+
     def test_rm09_correlaciona_resposta_final_sem_julgar_prosa(self) -> None:
         rows = self.base_rows() + [
             at(user("turno-1", "Ren abre a porta."), "2026-09-14T12:00:00Z"),
@@ -694,7 +854,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
-        self.assertEqual(access["detector_version"], "2.6.0")
+        self.assertEqual(access["detector_version"], "2.7.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -972,7 +1132,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.6.0")
+        self.assertEqual(social["detector_version"], "2.7.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -1105,7 +1265,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "2.6.0")
+        self.assertEqual(integrity[0]["detector_version"], "2.7.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

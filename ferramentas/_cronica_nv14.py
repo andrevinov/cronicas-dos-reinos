@@ -32,6 +32,7 @@ import npc_continuity_and_social_behavior as _npc_continuity
 import mundo as _world
 import narrative_delivery as _narrative_delivery
 import progressao_juppongatana
+import rules_and_character_state as _rules_and_character_state
 import causal_narrative_routing as _pressure52
 import contatos_sociais as _contacts09
 import planos_adversarios as _plans10
@@ -492,6 +493,7 @@ def conclude(repo: Path, token: str, transaction: dict):
         result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
     result = _npc_continuity.publish_social_persistence(result, social_persistence)
     result = _context_memory.publish_memory_persistence(result, memory_persistence)
+    result = _rules_and_character_state.publish_conclusion(result, transaction, payload)
     result = _narrative_delivery.publish_conclusion(result, transaction)
     return _turn_orchestration.publish_turn(result, "concluir")
 

@@ -36,6 +36,7 @@ somente o domínio necessário para a tarefa.
 
 ## Regras e personagem
 
+- [`regras/modulo-regras-e-estado-personagem-v2.md`](regras/modulo-regras-e-estado-personagem-v2.md): fachada de regras, rolagens e commit de ficha/tempo;
 - [`regras/regras-e-rolagens.md`](regras/regras-e-rolagens.md): adjudicação, dados e recursos;
 - [`regras/mecanica-diegetica.md`](regras/mecanica-diegetica.md): apresentação da mecânica;
 - [`regras/personagem-e-tempo.md`](regras/personagem-e-tempo.md): ficha, estado e tempo.
