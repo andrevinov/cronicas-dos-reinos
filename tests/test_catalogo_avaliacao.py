@@ -12,6 +12,7 @@ ROOT = Path(__file__).parents[1]
 CATALOG_PATH = ROOT / "evaluation" / "catalogo-modulos-v2.json"
 GUARDRAILS_PATH = ROOT / "evaluation" / "catalogo-guardrails-v2.json"
 POLICY_PATH = ROOT / "evaluation" / "series-avaliacao.json"
+RELEASES_PATH = ROOT / "evaluation" / "module-releases.json"
 SCHEMAS = ROOT / "evaluation" / "schemas"
 
 
@@ -20,6 +21,7 @@ class EvaluationCatalogContractTest(unittest.TestCase):
         self.catalog = catalogo_avaliacao.load_json(CATALOG_PATH)
         self.guardrails = catalogo_avaliacao.load_json(GUARDRAILS_PATH)
         self.policy = catalogo_avaliacao.load_json(POLICY_PATH)
+        self.releases = catalogo_avaliacao.load_json(RELEASES_PATH)
 
     def test_catalogo_contem_exatamente_os_doze_modulos_de_primeira_classe(self) -> None:
         catalogo_avaliacao.validate_catalog_v2(self.catalog)
@@ -82,6 +84,11 @@ class EvaluationCatalogContractTest(unittest.TestCase):
         with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "peso"):
             catalogo_avaliacao.validate_guardrails(invalid, self.catalog)
 
+    def test_releases_correntes_congelam_duas_versoes_e_fixtures(self) -> None:
+        catalogo_avaliacao.validate_module_releases(self.releases, self.catalog)
+        self.assertEqual(len(self.releases["releases"]), 12)
+        self.assertTrue(all(item["fixtures"] for item in self.releases["releases"]))
+
     def test_schemas_publicados_sao_json_validos_e_apontam_para_draft_2020(self) -> None:
         expected = {
             "catalogo-modulos-v2.schema.json",
@@ -89,6 +96,7 @@ class EvaluationCatalogContractTest(unittest.TestCase):
             "series-avaliacao.schema.json",
             "ledger-modular-v2.schema.json",
             "adjudicacoes-ledger-v2.schema.json",
+            "module-releases.schema.json",
         }
         self.assertEqual({path.name for path in SCHEMAS.glob("*.json")}, expected)
         for filename in expected:
@@ -101,9 +109,9 @@ class EvaluationSeriesPolicyTest(unittest.TestCase):
     def setUp(self) -> None:
         self.policy = catalogo_avaliacao.load_json(POLICY_PATH)
 
-    def test_catalogo_v1_continua_padrao_e_campo_ausente_e_legado(self) -> None:
+    def test_modules_v2_e_padrao_mas_campo_ausente_continua_legado(self) -> None:
         catalogo_avaliacao.validate_series_policy(self.policy)
-        self.assertEqual(self.policy["serie_padrao_producao"], "legacy-v1")
+        self.assertEqual(self.policy["serie_padrao_producao"], "modules-v2")
         self.assertEqual(catalogo_avaliacao.evaluation_series({}, self.policy), "legacy-v1")
 
         session_021 = catalogo_avaliacao.load_json(
@@ -122,7 +130,7 @@ class EvaluationSeriesPolicyTest(unittest.TestCase):
         same = copy.deepcopy(legacy)
         self.assertEqual(
             catalogo_avaliacao.require_comparable([legacy, same], self.policy),
-            ("legacy-v1", "1", "1", "1"),
+            ("legacy-v1", "ausente", "1"),
         )
 
         modules_v2 = copy.deepcopy(legacy)
@@ -135,6 +143,18 @@ class EvaluationSeriesPolicyTest(unittest.TestCase):
         changed_targets["versoes"]["metas"] = 2
         with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "incompatível"):
             catalogo_avaliacao.require_comparable([legacy, changed_targets], self.policy)
+
+    def test_comparacao_modular_permite_implementacoes_mas_nao_reguas_distintas(self) -> None:
+        first = {"versoes_modulos": [{"module_id": "narrative_delivery", "module_implementation_version": "1.0.0", "module_evaluation_version": "3.0.0"}]}
+        second = copy.deepcopy(first)
+        second["versoes_modulos"][0]["module_implementation_version"] = "1.1.0"
+        self.assertEqual(
+            catalogo_avaliacao.require_module_comparable([first, second], "narrative_delivery"),
+            ("narrative_delivery", "3.0.0"),
+        )
+        second["versoes_modulos"][0]["module_evaluation_version"] = "4.0.0"
+        with self.assertRaisesRegex(catalogo_avaliacao.EvaluationCatalogError, "incompatíveis"):
+            catalogo_avaliacao.require_module_comparable([first, second], "narrative_delivery")
 
 
 if __name__ == "__main__":

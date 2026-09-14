@@ -44,12 +44,11 @@ SEMANTIC_DIMENSIONS = (
     "camadas_de_conhecimento",
     "conclusao_aberta",
 )
-PLAYER_DIMENSIONS = (
-    "ritmo",
-    "naturalidade",
-    "profundidade",
-    "agencia_percebida",
-)
+PLAYER_PERCEIVED_TYPES = {
+    "boa_ativacao", "oportunidade_percebida", "sobreativacao_percebida",
+    "ativacao_inadequada", "efeito_incorreto", "timing", "continuidade",
+    "possivel_guardrail",
+}
 GUARDRAILS = (
     "player_agency",
     "knowledge_secrecy",
@@ -154,7 +153,7 @@ def publish_conclusion(
             "deve_ser_ultima_linha_visivel": True,
         },
         "avaliacao_semantica": "nao_realizada",
-        "nota_jogador": None,
+        "manifestacoes_jogador": 0,
         "guardrails": {guardrail: "indeterminado" for guardrail in GUARDRAILS},
         "guardrails_participam_media": False,
         "escrita_canonica_pelo_modulo": False,
@@ -211,30 +210,35 @@ def validate_semantic_audit(value: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def validate_player_feedback(value: dict[str, Any]) -> dict[str, Any]:
-    """Aceita percepção parcial do jogador; ausência permanece N/D."""
+def validate_player_observation(value: dict[str, Any]) -> dict[str, Any]:
+    """Valida manifestação concreta sem convertê-la em nota ou verdade medida."""
 
     if not isinstance(value, dict):
-        raise NarrativeDeliveryError("feedback do jogador precisa ser mapa")
-    ratings = _exact_dimensions(value.get("notas"), PLAYER_DIMENSIONS, "notas")
-    invalid = {
-        name: score
-        for name, score in ratings.items()
-        if score is not None and (isinstance(score, bool) or not isinstance(score, int) or not 1 <= score <= 5)
-    }
-    if invalid:
-        raise NarrativeDeliveryError(f"notas do jogador inválidas: {invalid}")
-    if not any(score is not None for score in ratings.values()):
-        raise NarrativeDeliveryError("feedback sem nota deve ser omitido, preservando N/D")
-    comment = value.get("comentario")
-    if comment is not None and (not isinstance(comment, str) or not comment.strip()):
-        raise NarrativeDeliveryError("comentario, quando presente, precisa ser texto não vazio")
+        raise NarrativeDeliveryError("manifestação do jogador precisa ser mapa")
+    reference = value.get("interaction_ref")
+    if not isinstance(reference, str) or not re.fullmatch(r"S\d{3,}-I\d{4,}", reference):
+        raise NarrativeDeliveryError("interaction_ref inválida")
+    original = value.get("texto_original")
+    if not isinstance(original, str) or not original.strip():
+        raise NarrativeDeliveryError("texto_original precisa ser texto não vazio")
+    perceived_type = value.get("tipo_percebido")
+    if perceived_type not in PLAYER_PERCEIVED_TYPES:
+        raise NarrativeDeliveryError("tipo_percebido inválido")
     return {
-        "notas": copy.deepcopy(ratings),
-        "comentario": comment.strip() if isinstance(comment, str) else None,
-        "papel_na_agregacao": "percepcao_com_peso_limitado",
+        "interaction_ref": reference,
+        "texto_original": original.strip(),
+        "tipo_percebido": perceived_type,
+        "papel_na_agregacao": "evidencia_humana_sujeita_a_adjudicacao",
+        "estado": "pendente",
         "altera_guardrails": False,
+        "nota_numerica": None,
     }
+
+
+def validate_player_feedback(value: dict[str, Any]) -> dict[str, Any]:
+    """Alias compatível de API; o contrato v2 aceita observação, nunca nota."""
+
+    return validate_player_observation(value)
 
 
 def _contract_check(_repo: Path) -> dict[str, Any]:
@@ -270,7 +274,8 @@ def check(repo: Path) -> dict[str, Any]:
             "automatic_literary_judge": False,
             "short_turn_is_quality_failure": False,
             "semantic_dimensions": list(SEMANTIC_DIMENSIONS),
-            "player_dimensions": list(PLAYER_DIMENSIONS),
+            "player_numeric_rating": False,
+            "player_feedback_unit": "interaction_ref",
             "critical_guardrails": list(GUARDRAILS),
             "guardrails_are_compensable": False,
             "rewrites_narration": False,

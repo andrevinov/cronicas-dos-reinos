@@ -87,7 +87,13 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
                 "custom_tool_call_output",
                 timestamp="2026-01-01T12:00:06Z",
                 call_id="concluir-1",
-                output="Process exited with code 0\nfase: concluida\n",
+                output=(
+                    "Process exited with code 0\nfase: concluida\n"
+                    "interacao:\n  schema_narrative_interaction: 1\n"
+                    "  interaction_id: interaction-fixture\n"
+                    "  interaction_ref: S022-I0001\n  session: 22\n"
+                    "  ordinal: 1\n  class: ON\n  state: complete\n"
+                ),
             ),
             record(
                 "2026-01-01T12:00:07Z",
@@ -109,7 +115,7 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
                 "message",
                 timestamp="2026-01-01T12:00:08Z",
                 role="assistant",
-                content=[{"type": "output_text", "text": "A rua permanece calma."}],
+                content=[{"type": "output_text", "text": "A rua permanece calma.\nInteração S022-I0001"}],
             ),
         ]
         self.rollout.write_text("\n".join(rows) + "\n", encoding="utf-8")
@@ -298,9 +304,59 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertEqual(index["sessoes"][0]["serie_avaliacao"], "legacy-v1")
         self.assertEqual(
             index["sessoes"][0]["chave_comparabilidade"],
-            ["legacy-v1", "1", "1", "1"],
+            ["legacy-v1", "ausente", "1"],
         )
         self.assertEqual(index["sessoes"][0]["caminho"], "fixture")
+
+    def test_gerador_v2_publica_doze_pais_versoes_e_interacoes_sem_nota_do_jogador(self) -> None:
+        output = self.root / "pacote-v2"
+        frozen = self.root / "interacoes.json"
+        frozen.write_text(
+            json.dumps(
+                {
+                    "schema_narrative_interactions": 1,
+                    "session": 22,
+                    "interactions": [
+                        {
+                            "interaction_ref": "S022-I0001",
+                            "module_versions": {
+                                "turn_and_session_orchestration": {
+                                    "implementation_version": "1.0.0",
+                                    "evaluation_version": "3.0.0",
+                                }
+                            },
+                        }
+                    ],
+                    "player_feedback": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = mod.generate_session_evaluation(
+            self.rollout,
+            session_id="022",
+            output_dir=output,
+            catalog_path=mod.DEFAULT_CATALOG,
+            targets_path=mod.DEFAULT_TARGETS,
+            baseline_path=self.baseline,
+            interactions_path=frozen,
+        )
+
+        self.assertEqual(result["manifest"]["serie_avaliacao"], "modules-v2")
+        self.assertEqual(result["manifest"]["schema_pacote_avaliacao"], 2)
+        self.assertEqual(len(result["manifest"]["versoes_modulos"]), 12)
+        self.assertNotIn("jogador", result["scorecard"]["eixos"])
+        modules = json.loads((output / "resumo-modulos.json").read_text(encoding="utf-8"))["modulos"]
+        self.assertEqual(len(modules), 12)
+        self.assertEqual([item["prioridade_rank"] for item in modules], list(range(1, 13)))
+        self.assertTrue(all(item["versao_implementacao"] for item in modules))
+        orchestration = next(item for item in modules if item["modulo"] == "turn_and_session_orchestration")
+        self.assertEqual(orchestration["versao_implementacao"], "1.0.0")
+        interactions = json.loads((output / "interacoes.json").read_text(encoding="utf-8"))["interactions"]
+        self.assertEqual(interactions[0]["interaction_ref"], "S022-I0001")
+        self.assertTrue(interactions[0]["visible_exactly_once"])
+        self.assertTrue((output / "manifestacoes-jogador.json").is_file())
+        self.assertFalse((output / "feedback-jogador.csv").exists())
 
 
 if __name__ == "__main__":

@@ -27,6 +27,10 @@
     modules: [],
     feedbackRows: [],
     feedback: {},
+    interactions: [],
+    manifestations: [],
+    localManifestations: [],
+    releases: [],
   };
 
   const $ = (selector) => document.querySelector(selector);
@@ -94,6 +98,12 @@
     if (className) element.className = className;
     if (text !== undefined) element.textContent = text;
     return element;
+  }
+
+  async function sha256(textValue) {
+    const bytes = new TextEncoder().encode(textValue);
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, "0")).join("");
   }
 
   async function fetchJSON(path) {
@@ -179,6 +189,14 @@
     return `cronicas-avaliacao-feedback:${state.sessionEntry.sessao_id}`;
   }
 
+  function manifestationStorageKey() {
+    return `cronicas-avaliacao-manifestacoes:${state.sessionEntry.sessao_id}`;
+  }
+
+  function isV2() {
+    return state.sessionEntry?.serie_avaliacao === "modules-v2";
+  }
+
   function comparisonKey(entry) {
     if (Array.isArray(entry.chave_comparabilidade) && entry.chave_comparabilidade.length) {
       return JSON.stringify(entry.chave_comparabilidade);
@@ -241,6 +259,7 @@
   }
 
   function previewSessionScore() {
+    if (isV2()) return { score: number(state.scorecard.nota_geral_0a100), player: null };
     const player = playerScores().global;
     const scores = {};
     const weights = {};
@@ -252,6 +271,7 @@
   }
 
   function previewModuleScore(module) {
+    if (isV2()) return number(module.nota_desempenho_provisoria_0a100);
     const localPlayer = playerScores().modules[module.modulo];
     if (localPlayer === undefined) return number(module.nota_desempenho_provisoria_0a100);
     const scores = {};
@@ -267,7 +287,7 @@
     const preview = previewSessionScore();
     const original = number(state.scorecard.nota_geral_0a100);
     const score = preview.score;
-    const hasPlayer = preview.player !== null;
+    const hasPlayer = !isV2() && preview.player !== null;
     $("#overallScore").textContent = formatScore(score);
     $("#overallBand").textContent = scoreBand(score);
     $("#scoreMode").textContent = hasPlayer ? "Prévia com sua percepção" : "Nota auditada provisória";
@@ -276,11 +296,17 @@
     ring.style.setProperty("--ring-color", scoreColor(score));
     $("#previewScore").textContent = hasPlayer ? formatScore(score) : "N/D";
     const player = playerScores();
-    $("#playerAverage").textContent = hasPlayer
-      ? `Sua percepção: ${formatScore(player.global)} · ${player.answered} quesito(s)`
-      : "Preencha ao menos um quesito global";
-    $("#feedbackStatus").textContent = hasPlayer ? "Feedback local ativo" : "Feedback pendente";
-    $("#feedbackStatus").className = `badge ${hasPlayer ? "" : "badge-muted"}`.trim();
+    if (isV2()) {
+      const total = state.manifestations.length + state.localManifestations.length;
+      $("#feedbackStatus").textContent = `${total} manifestação(ões)`;
+      $("#feedbackStatus").className = "badge badge-muted";
+    } else {
+      $("#playerAverage").textContent = hasPlayer
+        ? `Sua percepção: ${formatScore(player.global)} · ${player.answered} quesito(s)`
+        : "Preencha ao menos um quesito global";
+      $("#feedbackStatus").textContent = hasPlayer ? "Feedback local ativo" : "Feedback pendente";
+      $("#feedbackStatus").className = `badge ${hasPlayer ? "" : "badge-muted"}`.trim();
+    }
 
     const entries = comparableSessions();
     const currentIndex = entries.findIndex((item) => item.sessao_id === state.sessionEntry.sessao_id);
@@ -301,6 +327,8 @@
     $("#confidenceLabel").textContent = state.scorecard.confianca?.sessao || "N/D";
     $("#sessionSummary").textContent = `${INTEGER.format(metrics.turnos_narrativos || 0)} turnos narrativos, ${state.modules.length} módulos catalogados e ${formatTokens(metrics.input_tokens)} tokens de entrada auditados.`;
     $("#evaluationStatus").textContent = `Avaliação ${state.scorecard.status_avaliacao || "N/D"}`;
+    $("#seriesStatus").textContent = isV2() ? "modules-v2" : "legado v1";
+    $("#moduleCount").textContent = `${state.modules.length} módulos catalogados`;
     $("#reportLink").href = `../sessions/${state.sessionEntry.caminho}/relatorio.md`;
     renderScore();
   }
@@ -511,6 +539,8 @@
         create("span", "pill", `Prioridade #${module.prioridade_rank ?? "N/D"}`),
         create("span", "pill", `Confiança ${module.confianca_amostra_sessao}`),
       );
+      if (module.versao_implementacao) meta.append(create("span", "pill", `Impl. ${module.versao_implementacao}`));
+      if (module.versao_avaliacao) meta.append(create("span", "pill", `Régua ${module.versao_avaliacao}`));
       const bar = create("div", "bar");
       const fill = create("span");
       fill.style.setProperty("--width", `${clamp(moduleScore || 0)}%`);
@@ -532,6 +562,22 @@
       details.append(create("summary", "", "Diagnóstico e evidências"));
       details.append(create("p", "", module.principais_problemas_de_ativacao || "Nenhum problema específico registrado."));
       if (module.justificativa_prioridade) details.append(create("p", "", module.justificativa_prioridade));
+      const release = state.releases.find((item) => item.module_id === module.modulo
+        && item.implementation_version === module.versao_implementacao
+        && item.evaluation_version === module.versao_avaliacao);
+      if (release) details.append(create("p", "release-note", `Release ${release.effective_date} · ${release.source_revision}: ${release.reason}`));
+      if (Array.isArray(module.subcapacidades) && module.subcapacidades.length) {
+        const list = create("ul", "capability-list");
+        for (const capability of module.subcapacidades) {
+          const item = create("li");
+          item.append(
+            create("strong", "", friendlyModuleName(capability.capability_id)),
+            create("span", "", ` · ${capability.eventos_observados} evento(s), ${capability.ativacoes_observadas} ativação(ões) — ${capability.responsabilidade}`),
+          );
+          list.append(item);
+        }
+        details.append(list);
+      }
       card.append(header, description, meta, bar, stats, details);
       container.append(card);
     }
@@ -626,6 +672,90 @@
     }
   }
 
+  function loadStoredManifestations() {
+    try {
+      const value = JSON.parse(localStorage.getItem(manifestationStorageKey()) || "[]");
+      state.localManifestations = Array.isArray(value) ? value : [];
+    } catch (_error) {
+      state.localManifestations = [];
+    }
+  }
+
+  function renderInteractionFeedback() {
+    const select = $("#manifestationInteraction");
+    select.replaceChildren();
+    for (const interaction of state.interactions) {
+      if (!interaction.interaction_ref) continue;
+      const option = document.createElement("option");
+      option.value = interaction.interaction_ref;
+      option.textContent = `${interaction.interaction_ref} · ${interaction.class || "ON"}`;
+      select.append(option);
+    }
+    const all = [...state.manifestations, ...state.localManifestations];
+    $("#manifestationCount").textContent = INTEGER.format(all.length);
+    const list = $("#manifestationList");
+    list.replaceChildren();
+    for (const item of all) {
+      const card = create("article", "manifestation-card");
+      const stateLabel = item.adjudication?.state || "pendente";
+      card.append(
+        create("strong", "", `${item.interaction_ref} · ${item.perceived_type}`),
+        create("span", "pill", stateLabel),
+        create("p", "", item.original_text),
+      );
+      list.append(card);
+    }
+    if (!all.length) list.append(create("p", "empty-state", "Nenhuma manifestação registrada nesta sessão."));
+  }
+
+  async function addManifestation(event) {
+    event.preventDefault();
+    const reference = $("#manifestationInteraction").value;
+    const textValue = $("#manifestationText").value.trim();
+    if (!reference || !textValue) return;
+    const feedbackId = `feedback-${(await sha256(`${reference}\0${textValue}`)).slice(0, 20)}`;
+    const item = {
+      feedback_id: feedbackId,
+      interaction_ref: reference,
+      recorded_at: new Date().toISOString(),
+      original_text: textValue,
+      perceived_type: $("#manifestationType").value,
+      expectation: $("#manifestationExpectation").value.trim() || null,
+      observation: null,
+      perceived_impact: $("#manifestationImpact").value || null,
+      player_module_id: null,
+      player_capability_id: null,
+      system_suggestion: null,
+      adjudication: { state: "pendente", reason: null },
+    };
+    const existing = state.localManifestations.findIndex((value) => value.feedback_id === feedbackId);
+    if (existing >= 0) state.localManifestations[existing] = item;
+    else state.localManifestations.push(item);
+    localStorage.setItem(manifestationStorageKey(), JSON.stringify(state.localManifestations));
+    $("#interactionFeedbackForm").reset();
+    renderInteractionFeedback();
+    renderScore();
+    showToast("Manifestação salva neste navegador.");
+  }
+
+  function exportManifestations() {
+    const value = {
+      schema_narrative_interactions: 1,
+      session: state.sessionEntry.sessao_id,
+      interactions: state.interactions,
+      player_feedback: [...state.manifestations, ...state.localManifestations],
+    };
+    const blob = new Blob([JSON.stringify(value, null, 2), "\n"], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `manifestacoes-jogador-sessao-${state.sessionEntry.sessao_id}.json`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(link.href);
+    showToast("Manifestações exportadas em JSON.");
+  }
+
   function handleFeedbackInput(event) {
     const target = event.target.closest("[data-feedback-key]");
     if (!target) return;
@@ -697,16 +827,35 @@
     if (!entry) throw new Error(`sessão ${sessionId} não encontrada no índice`);
     state.sessionEntry = entry;
     const base = `../sessions/${entry.caminho}`;
-    const [scorecard, moduleSummary, feedbackText] = await Promise.all([
+    const [scorecard, moduleSummary] = await Promise.all([
       fetchJSON(`${base}/scorecard.json`),
       fetchJSON(`${base}/resumo-modulos.json`),
-      fetchText(`${base}/feedback-jogador.csv`),
     ]);
     state.scorecard = scorecard;
     state.modules = moduleSummary.modulos || [];
-    state.feedbackRows = parseCSV(feedbackText);
-    loadStoredFeedback();
-    renderFeedback();
+    if (entry.serie_avaliacao === "modules-v2") {
+      const [interactionData, manifestationData] = await Promise.all([
+        fetchJSON(`${base}/interacoes.json`),
+        fetchJSON(`${base}/manifestacoes-jogador.json`),
+      ]);
+      state.interactions = interactionData.interactions || [];
+      state.manifestations = manifestationData.player_feedback || [];
+      state.feedbackRows = [];
+      state.feedback = {};
+      loadStoredManifestations();
+      $("#legacyFeedbackSection").hidden = true;
+      $("#interactionFeedbackSection").hidden = false;
+      renderInteractionFeedback();
+    } else {
+      state.feedbackRows = parseCSV(await fetchText(`${base}/feedback-jogador.csv`));
+      state.interactions = [];
+      state.manifestations = [];
+      state.localManifestations = [];
+      loadStoredFeedback();
+      $("#legacyFeedbackSection").hidden = false;
+      $("#interactionFeedbackSection").hidden = true;
+      renderFeedback();
+    }
     renderAllDataViews();
     $("#main")?.removeAttribute("hidden");
     $("#topo").hidden = false;
@@ -714,7 +863,12 @@
 
   async function initialize() {
     try {
-      state.index = await fetchJSON(SESSION_INDEX);
+      const [sessionIndex, releaseHistory] = await Promise.all([
+        fetchJSON(SESSION_INDEX),
+        fetchJSON("../module-releases.json"),
+      ]);
+      state.index = sessionIndex;
+      state.releases = releaseHistory.releases || [];
       const sessions = state.index.sessoes || [];
       if (!sessions.length) throw new Error("o índice não contém sessões avaliadas");
       const select = $("#sessionSelect");
@@ -749,6 +903,15 @@
     const [file] = event.target.files || [];
     if (file) importFeedback(file).catch((error) => showToast(`Falha ao importar: ${error.message}`));
     event.target.value = "";
+  });
+  $("#interactionFeedbackForm").addEventListener("submit", addManifestation);
+  $("#exportManifestations").addEventListener("click", exportManifestations);
+  $("#resetManifestations").addEventListener("click", () => {
+    if (!window.confirm("Limpar as manifestações locais desta sessão?")) return;
+    localStorage.removeItem(manifestationStorageKey());
+    state.localManifestations = [];
+    renderInteractionFeedback();
+    renderScore();
   });
 
   initialize();

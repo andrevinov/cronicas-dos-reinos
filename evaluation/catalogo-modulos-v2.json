@@ -1,9 +1,9 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.8.0",
+  "versao_catalogo": "3.0.0",
   "serie_avaliacao": "modules-v2",
-  "estado": "preparacao",
-  "padrao_producao": false,
+  "estado": "producao",
+  "padrao_producao": true,
   "natureza": "contrato de avaliação pós-hoc; não é estado canônico nem altera o hot path",
   "unidades_analise": ["turno", "cena", "fronteira", "sessao", "evento"],
   "estados_ativacao": [
@@ -40,7 +40,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "turn_and_session_orchestration",
@@ -73,8 +73,8 @@
         {"id": "lifecycle_sessao_valido", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "narrative_delivery",
@@ -100,15 +100,13 @@
         {"id": "exposicao_procedimental_sem_ficcao", "unidade": "proporcao", "direcao_desejada": "menor"},
         {"id": "tamanho_por_classe_turno", "unidade": "palavras", "direcao_desejada": "categorica"},
         {"id": "latencia_ate_entrega", "unidade": "segundos", "direcao_desejada": "menor"},
-        {"id": "nota_ritmo_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
-        {"id": "nota_naturalidade_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
-        {"id": "nota_profundidade_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
-        {"id": "nota_agencia_percebida_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "manifestacoes_confirmadas_por_interacao", "unidade": "contagem_tipificada", "direcao_desejada": "categorica"},
+        {"id": "retrabalho_confirmado_pelo_jogador", "unidade": "contagem", "direcao_desejada": "menor"},
         {"id": "violacoes_criticas", "unidade": "contagem_separada", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "rules_and_character_state",
@@ -141,7 +139,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "roll_integrity", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "sidequest_authoring",
@@ -168,7 +166,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "sidequest_lifecycle",
@@ -197,7 +195,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "canonical_quest_integration",
@@ -223,7 +221,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "npc_continuity_and_social_behavior",
@@ -252,7 +250,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "scene_world_projection",
@@ -279,7 +277,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "world_boundary_resolution",
@@ -305,7 +303,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "causal_narrative_routing",
@@ -331,7 +329,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     },
     {
       "id": "adversarial_operations",
@@ -357,7 +355,7 @@
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"],
       "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "2.0.0"
+      "versao_avaliacao": "3.0.0"
     }
   ],
   "camadas_nao_modulares": {

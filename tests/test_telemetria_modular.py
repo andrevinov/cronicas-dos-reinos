@@ -113,6 +113,29 @@ class ModularTelemetryTest(unittest.TestCase):
             record("event_msg", {"type": "task_started", "turn_id": turn}),
         ]
 
+    def test_rm11_audita_interacao_off_fora_dos_turnos_narrativos(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "[Como funciona a avaliação?]"),
+            call("turno-1", "i1", "poetry run interacao registrar"),
+            output(
+                "turno-1",
+                "i1",
+                "Process exited with code 0\n"
+                "schema_narrative_interaction: 1\n"
+                "interaction_id: interaction-off\n"
+                "interaction_ref: S022-I0007\n"
+                "session: 22\nordinal: 7\nclass: OFF\nstate: complete\n",
+            ),
+            assistant("turno-1", "[Ela usa evidência concreta.]\nINTERAÇÃO — S022-I0007"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm11-off.jsonl"))
+        interactions = report["modular_ledger_v2"]["interactions"]
+
+        self.assertEqual(report["narration_turns"]["turns"], 0)
+        self.assertEqual(interactions[0]["interaction_ref"], "S022-I0007")
+        self.assertEqual(interactions[0]["class"], "OFF")
+        self.assertTrue(interactions[0]["visible_exactly_once"])
+
     def test_varias_subcapacidades_contam_um_pai_e_custo_fecha_uma_vez(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", "Ren aceita avançar a investigação."),
@@ -416,7 +439,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "rules_and_character_state"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertTrue(all(event["detector_version"] == "2.7.0" for event in events))
+        self.assertTrue(all(event["detector_version"] == "3.0.0" for event in events))
 
     def test_rm10_nao_ativa_em_narrativa_pura_ou_delta_generico_de_local(self) -> None:
         rows = self.base_rows() + [
@@ -603,7 +626,7 @@ class ModularTelemetryTest(unittest.TestCase):
     def test_rm09_feedback_e_auditoria_nao_compensam_guardrail(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", mod.LEGACY_NARRATION_PROMPT),
-            assistant("turno-1", "A cena avança.\nRODAPE_CANONICO — fixture"),
+            assistant("turno-1", "A cena avança.\nRODAPE_CANONICO — fixture · Interação S022-I0001"),
         ]
         ledger = mod.analyze(
             self.rollout(rows, "rollout-rm09-human.jsonl")
@@ -641,14 +664,12 @@ class ModularTelemetryTest(unittest.TestCase):
                 ],
                 "player_feedback": [
                     {
-                        "event_id": event["event_id"],
-                        "ratings": {
-                            "ritmo": 5,
-                            "naturalidade": 5,
-                            "profundidade": None,
-                            "agencia_percebida": 2,
-                        },
-                        "comment": "Boa forma, mas tirou minha decisão.",
+                        "feedback_id": "feedback-fixture",
+                        "interaction_ref": "S022-I0001",
+                        "recorded_at": "2026-09-14T00:00:00Z",
+                        "original_text": "Boa forma, mas tirou minha decisão.",
+                        "perceived_type": "possivel_guardrail",
+                        "adjudication": {"state": "pendente", "reason": None},
                     }
                 ],
             },
@@ -659,8 +680,8 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertIsNone(audit["automatic_literary_score"])
         self.assertFalse(audit["guardrails_compensable"])
         self.assertEqual(audit["guardrails"]["player_agency"], "violado")
-        self.assertEqual(feedback["aggregation_role"], "percepcao_com_peso_limitado")
-        self.assertTrue(feedback["guardrails_unchanged"])
+        self.assertEqual(feedback["interaction_ref"], "S022-I0001")
+        self.assertEqual(feedback["adjudication"]["state"], "pendente")
 
     def test_rm08_mede_correlacao_duracao_idempotencia_e_classe_de_custo(self) -> None:
         rows = self.base_rows() + [
@@ -854,7 +875,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
-        self.assertEqual(access["detector_version"], "2.7.0")
+        self.assertEqual(access["detector_version"], "3.0.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -1132,7 +1153,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.7.0")
+        self.assertEqual(social["detector_version"], "3.0.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -1265,7 +1286,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "2.7.0")
+        self.assertEqual(integrity[0]["detector_version"], "3.0.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

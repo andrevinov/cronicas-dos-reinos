@@ -1,36 +1,36 @@
 # Painel de desempenho modular
 
-O painel é estático, sem dependências externas e sem backend. Sirva a raiz do
-repositório para que os caminhos relativos dos pacotes de sessão permaneçam
-acessíveis:
+O painel é estático, sem backend ou dependências externas:
 
 ```bash
 cd /home/andre/Projects/cronicas-dos-reinos
 python3 -m http.server 8765
 ```
 
-Abra:
+Abra `http://127.0.0.1:8765/evaluation/dashboard/`.
+
+O seletor lê `evaluation/sessions/index.json`, reconstruído pelo gerador. O
+painel mantém a sessão 021 como referência `legacy-v1`; sessões novas usam
+`modules-v2`, mostram somente os doze módulos-pai no ranking e abrem suas
+subcapacidades no diagnóstico. Versões de implementação e avaliação aparecem
+em cada cartão, e a tendência não mistura chaves de comparabilidade.
+
+## Manifestação do jogador
+
+Na série v2 não há nota de 1 a 5. O jogador relata uma ocorrência concreta
+ligada a uma `interaction_ref`, por exemplo:
 
 ```text
-http://127.0.0.1:8765/evaluation/dashboard/
+[AVALIAÇÃO S022-I0049 — havia uma boa oportunidade para um NPC interagir com
+Ren, mas ele não tomou iniciativa.]
 ```
 
-O seletor usa `evaluation/sessions/index.json`, reconstruído automaticamente por
-`ferramentas/gerar-avaliacao-sessao.py`. Portanto uma nova sessão aparece no
-painel após a geração normal de seus artefatos.
+O canal primário é o próprio Codex. O formulário do painel é secundário para
+registro retroativo: salva rascunhos em `localStorage` e exporta
+`manifestacoes-jogador-sessao-<id>.json`. Esse arquivo pode ser fornecido ao
+gerador com `--interacoes`. O texto começa como percepção `pendente`; detector
+ou auditor sugerem o módulo e a adjudicação separadamente.
 
-## Feedback do jogador
-
-As respostas são salvas em `localStorage`, separadas por sessão. O navegador não
-consegue sobrescrever arquivos locais quando é servido por `http.server`.
-As notas globais atualizam imediatamente a prévia da sessão; a nota de resultado
-de cada módulo atualiza sua prévia modular. Percepção de ativação, impacto e
-comentários permanecem registrados para a auditoria humana.
-
-Use **Exportar feedback CSV**, substitua
-`evaluation/sessions/<id>/feedback-jogador.csv` pelo arquivo exportado e rode o
-gerador novamente. O novo `scorecard.json` incorporará a nota histórica do
-jogador. Também é possível importar um CSV no painel sem alterar o repositório.
-
-Módulos reservados e puramente técnicos não são exibidos no formulário, embora
-continuem disponíveis na visão interna de desempenho modular.
+O navegador servido por `http.server` não escreve no repositório. A sessão 021
+continua exibindo seu formulário numérico legado, sem convertê-lo em evidência
+v2.

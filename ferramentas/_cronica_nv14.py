@@ -27,6 +27,7 @@ import contratos_operacionais as _contracts
 import context_and_memory as _context_memory
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
+import interacoes_narrativas as _narrative_interactions
 import mecanica_cronica as _mechanics
 import npc_continuity_and_social_behavior as _npc_continuity
 import mundo as _world
@@ -230,15 +231,23 @@ def prepare(*args, **kwargs):
         contact = prepared.get(_contacts09.TICKET_KEY)
         prospective = ([contact["portador"] if contact["meio"] == "mensageiro" else contact["npc_id"]]
                        if contact else None)
+        interaction_reserve = (
+            _narrative_interactions.PREPARE_RECEIPT_RESERVE_BYTES
+            if _narrative_interactions.integration_enabled(Path(repo))
+            else 0
+        )
         prepared = _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
             base_in_context=memory_base,
             prospective_participants=prospective,
             max_output_bytes=(
-                final_budget - _turn_orchestration.RECEIPT_RESERVE_BYTES
+                final_budget
+                - _turn_orchestration.RECEIPT_RESERVE_BYTES
+                - interaction_reserve
             ),
         )
+        prepared = _narrative_interactions.attach_prepare(Path(repo), prepared)
         return _turn_orchestration.publish_turn(
             prepared,
             "preparar",
@@ -495,6 +504,12 @@ def conclude(repo: Path, token: str, transaction: dict):
     result = _context_memory.publish_memory_persistence(result, memory_persistence)
     result = _rules_and_character_state.publish_conclusion(result, transaction, payload)
     result = _narrative_delivery.publish_conclusion(result, transaction)
+    result = _narrative_interactions.attach_conclusion(
+        Path(repo),
+        result,
+        transaction,
+        ticket_id=ticket_id_original,
+    )
     return _turn_orchestration.publish_turn(result, "concluir")
 
 
@@ -528,13 +543,20 @@ def register(
     original = _core._revalidate_ticket
     _core._revalidate_ticket = globals()["_revalidate_ticket"]
     try:
+        result = _hot.register(
+            repo,
+            token,
+            writer_tx,
+            revalidate_ticket=revalidate,
+        )
+        result = _narrative_interactions.attach_conclusion(
+            Path(repo),
+            result,
+            transaction,
+            ticket_id=_core.ticket_id(token),
+        )
         return _turn_orchestration.publish_turn(
-            _hot.register(
-                repo,
-                token,
-                writer_tx,
-                revalidate_ticket=revalidate,
-            ),
+            result,
             "registrar",
         )
     finally:

@@ -112,10 +112,11 @@ entrada
 → resolver RECALL
 → usar contexto já presente
 → consultar somente a lacuna necessária
-→ `cronica preparar` a cena/turno (read-only)
+→ `cronica preparar` a cena/turno (read-only para cânone; reserva a interação)
 → resolver rolagens do ON
 → produzir narração
 → `cronica concluir` com ON resolvido + narração + deltas
+→ emitir `RODAPE_CANONICO` com a `interaction_ref`
 → devolver controle ao jogador
 ```
 
@@ -139,7 +140,27 @@ poetry run cronica concluir --ticket '<ticket>' <<'JSON'
 JSON
 ```
 
-`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita. Ticket reativo revalida/confirma e registra; ticket neutro pré-valida e registra sem fabricar confirmação. Mecânica explícita na narração usa linha própria iniciada por `MECÂNICA — `. A prosa completa fica em `sessoes/NNN/transcricao.md` e resumo/deltas em `runtime/eventos-pendentes.jsonl`.
+`cronica concluir` recusa `jogador` contendo OFF ou RECALL não resolvido antes da escrita. Ticket reativo revalida/confirma e registra; ticket neutro pré-valida e registra sem fabricar confirmação. Mecânica explícita na narração usa linha própria iniciada por `MECÂNICA — `. A prosa completa fica em `sessoes/NNN/transcricao.md` e resumo/deltas em `runtime/eventos-pendentes.jsonl`. A saída inclui `interacao`; o rodapé devolvido já contém `Interação SNNN-INNNN` e continua verbatim como última linha visível.
+
+### Interações OFF, RECALL e avaliações
+
+Em sessão ativa, respostas finais sem `cronica preparar` também recebem identidade. Redigir o par e registrar uma vez:
+
+```bash
+poetry run interacao registrar <<'JSON'
+{"classe":"OFF","entrada":"[pergunta do jogador]","resposta":"[resposta do narrador]"}
+JSON
+```
+
+Encerrar a resposta com o `visible_marker` devolvido. O ledger
+`sessoes/NNN/interacoes.jsonl` é append-only, guarda hashes do par e não entra na
+transcrição nem altera mundo, tempo ou personagem.
+
+Uma entrada `[AVALIAÇÃO S022-I0049 — ...]` é estruturada com `interacao avaliar`.
+O JSON contém a referência alvo, o texto original, o tipo percebido e, para
+registrar a troca atual na mesma chamada, `classe`, `entrada` e `resposta`.
+Ausência de módulo é válida: detector/auditor sugerem classificação depois. O
+registro começa `pendente`, não é nota e não vira falha sem adjudicação.
 
 `turno.py registrar`, `endpoints.py cena` e `cena_mundo.py confirmar` continuam disponíveis para manutenção, teste e reparo, não como fluxo normal.
 

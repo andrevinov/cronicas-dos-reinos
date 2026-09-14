@@ -466,7 +466,23 @@ O JSON padrão inclui `modular_ledger_v2`: aliases v1 resolvidos em
 subcapacidades, custos aditivos fechados uma vez nos módulos pais e observação
 separada de adjudicação. Use `--adjudicacoes-modulares arquivo.json` para aplicar
 correções pós-hoc sem sobrescrever o sinal original. O gerador de avaliações v1
-seleciona `legacy-v1` explicitamente até o corte da RM-11.
+continua disponível apenas para snapshots legados. Desde a RM-11, o gerador
+padrão publica `modules-v2`, versões por módulo e liga eventos a referências de
+interação.
+
+Durante sessão ativa, `cronica preparar/concluir` reserva e completa a unidade
+ON no ledger append-only. Para OFF/RECALL/operacional, registrar o par já
+redigido sem avançar o jogo:
+
+```bash
+poetry run interacao registrar <<'JSON'
+{"classe":"OFF","entrada":"[pergunta]","resposta":"[resposta]"}
+JSON
+```
+
+`interacao avaliar` recebe uma `interaction_ref` anterior e preserva uma
+manifestação concreta do jogador; não aceita nota de módulo. `interacao listar
+--sessao N` materializa a visão de leitura sem reescrever o ledger.
 
 ## Fachadas modulares de sidequest
 

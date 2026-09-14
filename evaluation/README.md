@@ -1,91 +1,57 @@
 # Contratos e pacotes de avaliação
 
-Este diretório contém somente artefatos pós-hoc de engenharia. Nada aqui é
-memória canônica da campanha ou participa do hot path da narração.
+Este diretório contém artefatos pós-hoc de engenharia. Nada aqui é memória
+canônica da campanha nem autoriza ação no mundo.
 
-## Catálogos
+## Série de produção
 
-- `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
-- `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; a versão 2.8.0 registra as
-  fachadas das RM-03–RM-10, incluindo entrega narrativa e mecânica correlacionadas;
-- `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
-- `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
-  comparabilidade;
-- `schemas/`: schemas JSON dos três contratos novos.
+`modules-v2` é a série de produção desde a RM-11. Ela usa:
 
-O schema do ledger hierárquico e o de suas adjudicações também ficam em
-`schemas/ledger-modular-v2.schema.json` e
-`schemas/adjudicacoes-ledger-v2.schema.json`. O ledger é emitido dentro de
-`modular_ledger_v2` por `ferramentas/analisar-rollout.py`; o gerador de pacotes
-continua pedindo explicitamente a visão v1 até a RM-11.
+- `catalogo-modulos-v2.json`: os doze módulos-pai e suas subcapacidades;
+- `metas-avaliacao-v2.json`: pesos, faixas, confiança e prioridade;
+- `catalogo-guardrails-v2.json`: propriedades críticas fora da média;
+- `module-releases.json`: histórico imutável das versões de implementação e de
+  avaliação de cada módulo;
+- `series-avaliacao.json`: corte de série e regras de comparabilidade;
+- `schemas/`: contratos JSON publicados.
 
-O validador estrutural é executado com:
+`catalogo-modulos.json` e `metas-avaliacao.json` permanecem somente para ler e
+regenerar pacotes `legacy-v1`. Um manifesto sem `serie_avaliacao` é classificado
+como legado; por isso `sessions/021` continua intacto e não ganha identidades ou
+notas reconstruídas artificialmente.
+
+Validação estrutural:
 
 ```bash
 poetry run python ferramentas/catalogo_avaliacao.py --json
 ```
 
-Ele exige doze módulos exatos, mapa completo e único dos vinte itens v1,
-guardrails sem peso e política de série compatível. Também oferece
-`evaluation_series`, `comparability_key` e `require_comparable` para consumidores
-pós-hoc falharem antes de misturar séries ou versões incompatíveis.
+O validador exige os doze módulos, migração única dos vinte itens v1,
+guardrails sem peso, política de série e release corrente coerente com as duas
+versões SemVer do catálogo.
 
-## Corte da série
+## Pacote por sessão
 
-O padrão de produção continua sendo `legacy-v1`. Um pacote sem
-`serie_avaliacao` é classificado como legado sem ser reescrito. Isso mantém
-`sessions/021` como snapshot histórico imutável. `modules-v2` só poderá ser
-emitida como série de produção quando a RM-11 habilitar o avaliador hierárquico.
+O gerador de produção consome o rollout e, quando disponível, o ledger
+append-only `sessoes/NNN/interacoes.jsonl`. Ele publica:
 
-Pacotes de séries distintas podem aparecer lado a lado como referência, mas não
-entram na mesma média, tendência ou baseline. Dentro de uma série, catálogo,
-metas e gerador precisam ter versões iguais para agregação automática.
+- telemetria e eventos ligados por `interaction_id`/`interaction_ref`;
+- ranking somente dos doze módulos-pai;
+- drilldown diagnóstico das subcapacidades;
+- custo aditivo no pai e apenas exposição na subcapacidade;
+- versões de implementação e avaliação vigentes;
+- manifestações concretas do jogador e sua adjudicação;
+- guardrails fora da média;
+- scorecard e relatório da sessão.
 
-## Dados derivados
+Não existe nota numérica direta do jogador na série v2. Uma manifestação só
+altera métrica factual depois de adjudicada e preserva sempre o texto original.
 
-- `sessions/`: pacote autocontido por sessão e índice longitudinal derivado;
-- `auditorias/`: adjudicações reutilizáveis;
-- `dashboard/`: visualização estática dos pacotes publicados;
-- `metas-avaliacao.json`: pesos e faixas da avaliação v1.
+Comparação global exige a mesma série, contrato de avaliação e metas. Comparar
+versões de um módulo exige o mesmo `module_id` e versão de avaliação compatível;
+a versão de implementação é a dimensão em disputa e não fragmenta a série dos
+outros módulos.
 
-A receita operacional completa está em
-`docs/agente/engenharia/avaliacao-desempenho-sessoes.md`.
-
-Na RM-05, consultas dirigidas de NPC passam a sinalizar continuidade sem serem
-promovidas automaticamente a iniciativa. `--interlocutor` e recibos de
-`iniciativa_elenco` observam `social_initiative`; memória/relação/reputação e
-presença/identidade ficam em suas subcapacidades próprias. Qualidade de voz e
-contradições sem marcador estrutural continuam para adjudicação humana, sem
-inferência por substring da prosa.
-
-Na RM-06, contrato adversarial e operações simultâneas passam a compartilhar o
-pai `adversarial_operations`. A fachada emite consulta, compromisso e efeito
-material separadamente; a subcapacidade concorrente só é afirmada pelo recibo
-novo quando há mais de uma frente. Integridade continua verificável como
-guardrail não compensável e o custo aditivo pertence uma única vez ao pai.
-
-Na RM-07, a política L0–L5, a memória de cena, a retomada fria e a persistência
-durável passam a compartilhar o pai `context_and_memory`. A telemetria distingue
-L0 econômico, consulta dirigida, aprofundamento justificado, leitura RAW,
-redundância, consulta de memória e efeito persistido. O custo de leitura e o
-recibo de memória permanecem separáveis sem cobrar novamente as subcapacidades.
-
-Na RM-08, `turn_and_session_orchestration` correlaciona preparo, conclusão,
-retry e lifecycle por recibos versionados emitidos nas chamadas existentes. O
-ledger separa custo de `controle` e `dominio`; tickets obsoletos, commits
-incompletos e recovery deixam de ser atribuídos por aproximação a módulos
-narrativos.
-
-Na RM-09, `narrative_delivery` anexa ao `cronica concluir` um recibo compacto da
-prosa registrada e permite correlacioná-lo à resposta final e ao rodapé. Tamanho,
-mecânica explícita e latência são medidas estruturais; adequação de progressão,
-densidade, voz, conhecimento e fechamento depende de auditoria semântica. Notas
-do jogador entram separadamente e nunca compensam agência, sigilo ou rolagem.
-
-Na RM-10, `rules_and_character_state` agrega as autoridades já existentes de
-regra, dado, ficha, estado e tempo sem criar outro RNG ou writer. O recibo
-`regras_estado_personagem` nasce depois do commit somente quando há obrigação
-mecânica ou delta pertinente; a telemetria separa consulta, alvo prévio,
-rolagem, recurso, estado e retry e não atribui deltas genéricos do mundo ao
-módulo.
+A receita completa está em
+`docs/agente/engenharia/avaliacao-desempenho-sessoes.md` e a visualização em
+`dashboard/README.md`.

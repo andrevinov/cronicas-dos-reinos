@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "module-releases.schema.json",
+  "title": "Histórico de releases dos módulos",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_module_releases", "natureza", "releases"],
+  "properties": {
+    "schema_module_releases": {"const": 1},
+    "natureza": {"type": "string", "minLength": 1},
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["module_id", "implementation_version", "evaluation_version", "previous", "implementation_change", "evaluation_change", "effective_date", "source_revision", "reason", "compatibility", "fixtures"],
+        "properties": {
+          "module_id": {"type": "string", "minLength": 1},
+          "implementation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+          "evaluation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+          "previous": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["implementation_version", "evaluation_version"],
+            "properties": {
+              "implementation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+              "evaluation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+            }
+          },
+          "implementation_change": {"enum": ["none", "patch", "minor", "major"]},
+          "evaluation_change": {"enum": ["none", "patch", "minor", "major"]},
+          "effective_date": {"type": "string", "minLength": 1},
+          "source_revision": {"type": "string", "minLength": 1},
+          "reason": {"type": "string", "minLength": 1},
+          "compatibility": {"enum": ["compatible", "incompatible_implementation", "incompatible_evaluation", "incompatible_both"]},
+          "fixtures": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    }
+  }
+}

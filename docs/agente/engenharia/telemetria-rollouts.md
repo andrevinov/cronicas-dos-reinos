@@ -4,7 +4,7 @@ Este documento define como medir o custo operacional de **Crônicas dos Reinos**
 
 ## Princípio
 
-A campanha não deve gastar uma interação para medir a própria interação. Durante narração ao vivo, não criar `runtime/telemetria.jsonl`, não atualizar dashboards, não calcular médias e não executar analisadores de rollout.
+A campanha não deve gastar uma interação para calcular o próprio desempenho. Durante narração ao vivo, não criar `runtime/telemetria.jsonl`, não atualizar dashboards, não calcular médias e não executar analisadores de rollout. O ledger append-only `sessoes/NNN/interacoes.jsonl` é somente identidade/correlação do par jogador–resposta e manifestações do jogador; não executa análise nem guarda a prosa.
 
 A telemetria normal é **pós-hoc e somente leitura**:
 
@@ -43,23 +43,23 @@ modular_ledger_v2: {...}
 ```
 
 Ela acrescenta o ledger hierárquico sem remover ou reinterpretar as métricas do
-schema 3 nem os contadores planos v1. `--visao legacy-v1` remove o ledger da
-saída e restitui `narrative_systems_schema: 1`; essa é a visão que o gerador de
-pacotes v1 usa até a RM-11.
+schema 3 nem os contadores planos v1. `modules-v2` é a visão de produção desde a
+RM-11. `--visao legacy-v1` remove o ledger e restitui
+`narrative_systems_schema: 1` somente para auditorias históricas.
 
 ### Ledger modular v2
 
 `modular_ledger_v2.events` contém uma linha lógica por combinação
 turno × módulo pai × subcapacidade observada. Cada evento registra:
 
-- sessão, turno, ordinal e unidade de análise;
+- sessão, turno, ordinal, `interaction_id`, `interaction_ref` e unidade de análise;
 - `module_id` e `capability_id` do catálogo v2;
 - fontes `comando`, `output`, `ticket` ou `resposta` e evidência compacta;
 - elegibilidade observada separada da ativação observada;
 - ativação como `ausente`, `gate_neutro`, `consulta`, `decisao` ou `efeito`;
 - resultado observado, efeito materializado e confiança;
 - custo exposto não aditivo e custo atribuído aditivo no pai;
-- versões do detector, implementação e avaliação;
+- versões do detector, implementação e avaliação vigentes no evento;
 - adjudicação opcional, sem alterar os campos observados.
 
 Aliases do catálogo v1 são resolvidos para uma única subcapacidade v2. Sete
@@ -124,7 +124,13 @@ separação é contábil e não presume custo marginal causal. Dentro do módulo
 somente o evento primário carrega a parcela aditiva do pai. Custo marginal
 permanece `indeterminado`; a divisão é atribuição contábil, não causal.
 
-### Adjudicações e percepção do jogador
+### Unidades de interação, adjudicações e percepção do jogador
+
+`modular_ledger_v2.interactions` audita se cada resposta final possui recibo e
+exatamente uma referência visível. Em ON, `cronica preparar` reserva a identidade
+e `cronica concluir` a completa e a propaga no rodapé. OFF/RECALL/operacional usa
+`poetry run interacao registrar`; o registro não toca tempo, mundo, ficha ou
+transcrição. Retry reaproveita a reserva e hashes detectam divergência do par.
 
 Correções opcionais seguem
 `evaluation/schemas/adjudicacoes-ledger-v2.schema.json`:
@@ -141,12 +147,16 @@ permanecem intactos. O schema estável do ledger fica em
 
 O mesmo arquivo pode conter `semantic_audits` para progressão jogável,
 densidade proporcional, voz/diálogo, camadas de conhecimento e conclusão
-aberta, além de `player_feedback` com notas opcionais de 1 a 5 para ritmo,
-naturalidade, profundidade e agência percebida. Ausência de nota é N/D e o
-bloco deve ser omitido quando todas as dimensões estiverem ausentes. Agência,
-sigilo e integridade de rolagem são guardrails separados: não participam nem
-podem ser compensados pela média perceptiva. O ledger nunca cria nota literária
-automática.
+aberta. `player_feedback` não contém notas: preserva uma manifestação concreta,
+sua `interaction_ref`, tipo percebido, impacto opcional, classificação sugerida
+e adjudicação. Pendência não vira falha confirmada. Agência, sigilo e integridade
+de rolagem são guardrails separados: não participam nem podem ser compensados
+pela média. O ledger nunca cria nota literária automática.
+
+O detector modular vigente é `3.0.0`, pois a unidade de evidência e o contrato
+de avaliação mudaram de forma incompatível. Cada evento conserva também
+`module_implementation_version` e `module_evaluation_version`, impedindo que uma
+regeneração atribua ao passado a versão corrente do catálogo.
 
 ### Orquestração
 

@@ -39,8 +39,8 @@ class NarrativeDeliveryContractTest(unittest.TestCase):
         module = next(item for item in catalog["modulos"] if item["id"] == delivery.MODULE_ID)
         commands = [tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)]
 
-        self.assertEqual(catalog["versao_catalogo"], "2.8.0")
-        self.assertEqual(module["versao_implementacao"], "1.0.0")
+        self.assertEqual(catalog["versao_catalogo"], "3.0.0")
+        self.assertEqual(module["versao_implementacao"], "1.0.1")
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},
             set(delivery.CAPABILITIES),
@@ -97,7 +97,7 @@ class NarrativeDeliveryReceiptTest(unittest.TestCase):
         self.assertEqual(receipt["correlacao"]["transacao_id"], "tx-rm09")
         self.assertEqual(receipt["estrutura"]["linhas_mecanica"], 1)
         self.assertEqual(receipt["avaliacao_semantica"], "nao_realizada")
-        self.assertIsNone(receipt["nota_jogador"])
+        self.assertEqual(receipt["manifestacoes_jogador"], 0)
         self.assertFalse(receipt["guardrails_participam_media"])
         self.assertFalse(receipt["escrita_canonica_pelo_modulo"])
         self.assertLessEqual(delivery._size(receipt), delivery.MAX_RECEIPT_BYTES)
@@ -187,24 +187,26 @@ class NarrativeDeliveryHumanEvidenceTest(unittest.TestCase):
         self.assertFalse(audit["guardrails_compensaveis"])
         self.assertEqual(audit["guardrails"]["player_agency"], "violado")
 
-    def test_feedback_parcial_e_valido_mas_ausencia_total_permanece_nd(self) -> None:
+    def test_manifestacao_por_interacao_nao_vira_nota(self) -> None:
         feedback = delivery.validate_player_feedback(
             {
-                "notas": {
-                    "ritmo": 4,
-                    "naturalidade": None,
-                    "profundidade": 5,
-                    "agencia_percebida": 4,
-                },
-                "comentario": "A cena fluiu bem.",
+                "interaction_ref": "S022-I0049",
+                "texto_original": "Havia uma oportunidade de iniciativa.",
+                "tipo_percebido": "oportunidade_percebida",
             }
         )
-        self.assertEqual(feedback["papel_na_agregacao"], "percepcao_com_peso_limitado")
+        self.assertEqual(feedback["interaction_ref"], "S022-I0049")
+        self.assertEqual(feedback["estado"], "pendente")
+        self.assertIsNone(feedback["nota_numerica"])
         self.assertFalse(feedback["altera_guardrails"])
 
-        with self.assertRaisesRegex(delivery.NarrativeDeliveryError, "N/D"):
+        with self.assertRaisesRegex(delivery.NarrativeDeliveryError, "interaction_ref"):
             delivery.validate_player_feedback(
-                {"notas": {dimension: None for dimension in delivery.PLAYER_DIMENSIONS}}
+                {
+                    "interaction_ref": "turno-49",
+                    "texto_original": "Sem referência estável.",
+                    "tipo_percebido": "oportunidade_percebida",
+                }
             )
 
 

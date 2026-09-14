@@ -5,7 +5,7 @@
     {
       "sessao_id": "021",
       "serie_avaliacao": "legacy-v1",
-      "chave_comparabilidade": ["legacy-v1", "1", "1", "1"],
+      "chave_comparabilidade": ["legacy-v1", "ausente", "1"],
       "status_avaliacao": "provisoria",
       "nota_geral_0a100": 61.59,
       "faixa_geral": "ruim",

@@ -33,6 +33,7 @@
           <p id="sessionSummary" class="hero-summary"></p>
           <div class="hero-badges">
             <span id="evaluationStatus" class="badge"></span>
+            <span id="seriesStatus" class="badge badge-muted"></span>
             <span id="feedbackStatus" class="badge badge-muted">Feedback pendente</span>
           </div>
         </div>
@@ -54,7 +55,7 @@
       <section class="section" aria-labelledby="axesTitle">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Seis dimensões</p>
+            <p class="eyebrow">Dimensões comparáveis</p>
             <h2 id="axesTitle">Onde o sistema sustenta — e onde cede</h2>
           </div>
           <p>As notas ausentes não viram neutras; os pesos restantes são renormalizados.</p>
@@ -102,7 +103,7 @@
       <section class="section modules-section" aria-labelledby="modulesTitle">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">20 módulos catalogados</p>
+            <p id="moduleCount" class="eyebrow">Módulos catalogados</p>
             <h2 id="modulesTitle">Desempenho modular</h2>
           </div>
           <p>Custo fracionado é aditivo; latência exposta e tokens expostos não são causais.</p>
@@ -137,7 +138,7 @@
         <p id="moduleEmpty" class="empty-state" hidden>Nenhum módulo corresponde aos filtros.</p>
       </section>
 
-      <section class="section feedback-section" aria-labelledby="feedbackTitle">
+      <section id="legacyFeedbackSection" class="section feedback-section" aria-labelledby="feedbackTitle">
         <div class="feedback-intro">
           <div>
             <p class="eyebrow">Sua percepção · peso 10%</p>
@@ -172,6 +173,40 @@
           <span id="saveStatus" class="save-status" aria-live="polite">Nenhuma alteração local.</span>
         </div>
         <p class="feedback-help">Depois de exportar, substitua o arquivo <code>feedback-jogador.csv</code> da sessão e execute novamente o gerador para incorporar a nota ao scorecard histórico.</p>
+      </section>
+
+      <section id="interactionFeedbackSection" class="section feedback-section" aria-labelledby="interactionFeedbackTitle" hidden>
+        <div class="feedback-intro">
+          <div>
+            <p class="eyebrow">Evidência do jogador · por interação</p>
+            <h2 id="interactionFeedbackTitle">Registrar uma manifestação concreta</h2>
+            <p>O canal preferencial é dizer ao Codex a referência e o que ocorreu. Este formulário é uma alternativa retroativa; não atribui nota ao módulo.</p>
+          </div>
+          <div class="feedback-preview">
+            <span>Manifestações nesta sessão</span>
+            <strong id="manifestationCount">0</strong>
+            <small>Pendentes continuam visíveis, mas não viram falha sem adjudicação.</small>
+          </div>
+        </div>
+        <form id="interactionFeedbackForm" class="interaction-feedback-form">
+          <label><span>Interação</span><select id="manifestationInteraction" required></select></label>
+          <label><span>Tipo percebido</span><select id="manifestationType" required>
+            <option value="oportunidade_percebida">Oportunidade percebida</option>
+            <option value="boa_ativacao">Boa ativação</option>
+            <option value="sobreativacao_percebida">Sobreativação percebida</option>
+            <option value="ativacao_inadequada">Ativação inadequada</option>
+            <option value="efeito_incorreto">Efeito incorreto</option>
+            <option value="timing">Timing</option>
+            <option value="continuidade">Continuidade</option>
+            <option value="possivel_guardrail">Possível guardrail</option>
+          </select></label>
+          <label><span>Impacto percebido</span><select id="manifestationImpact"><option value="">Não informado</option><option value="baixo">Baixo</option><option value="moderado">Moderado</option><option value="alto">Alto</option><option value="critico">Crítico</option></select></label>
+          <label class="wide"><span>O que você observou</span><textarea id="manifestationText" required rows="3" placeholder="Na interação…, havia…, mas o sistema…"></textarea></label>
+          <label class="wide"><span>O que você esperava (opcional)</span><textarea id="manifestationExpectation" rows="2"></textarea></label>
+          <div class="feedback-actions wide"><button class="button button-primary" type="submit">Adicionar manifestação</button><button id="exportManifestations" class="button button-secondary" type="button">Exportar JSON</button><button id="resetManifestations" class="button button-ghost" type="button">Limpar somente as locais</button></div>
+        </form>
+        <div id="manifestationList" class="manifestation-list"></div>
+        <p class="feedback-help">No Codex, basta escrever em OFF: <code>[AVALIAÇÃO S022-I0049 — …]</code>. A classificação técnica e a adjudicação são feitas separadamente, preservando seu texto.</p>
       </section>
     </main>
 

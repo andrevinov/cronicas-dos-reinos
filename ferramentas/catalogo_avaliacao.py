@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -16,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CATALOG = ROOT / "evaluation" / "catalogo-modulos-v2.json"
 DEFAULT_GUARDRAILS = ROOT / "evaluation" / "catalogo-guardrails-v2.json"
 DEFAULT_SERIES_POLICY = ROOT / "evaluation" / "series-avaliacao.json"
+DEFAULT_RELEASES = ROOT / "evaluation" / "module-releases.json"
+SEMVER_RE = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 
 MODULE_IDS = frozenset(
     {
@@ -102,8 +105,8 @@ def validate_catalog_v2(catalog: dict[str, Any]) -> None:
         raise EvaluationCatalogError("schema_catalogo_modulos precisa ser 2")
     if catalog.get("serie_avaliacao") != "modules-v2":
         raise EvaluationCatalogError("o catálogo v2 precisa declarar serie_avaliacao=modules-v2")
-    if catalog.get("padrao_producao") is not False:
-        raise EvaluationCatalogError("modules-v2 não pode ser o padrão de produção antes da RM-11")
+    if catalog.get("padrao_producao") is not True or catalog.get("estado") != "producao":
+        raise EvaluationCatalogError("modules-v2 precisa ser o padrão de produção depois da RM-11")
 
     modules = _required_nonempty_list(catalog, "modulos", "catálogo")
     module_ids = [str(item.get("id") or "") for item in modules if isinstance(item, dict)]
@@ -257,10 +260,10 @@ def validate_guardrails(data: dict[str, Any], catalog: dict[str, Any]) -> None:
 
 
 def validate_series_policy(policy: dict[str, Any]) -> None:
-    if policy.get("schema_politica_series_avaliacao") != 1:
-        raise EvaluationCatalogError("schema_politica_series_avaliacao precisa ser 1")
-    if policy.get("serie_padrao_producao") != "legacy-v1":
-        raise EvaluationCatalogError("legacy-v1 precisa continuar como padrão até a RM-11")
+    if policy.get("schema_politica_series_avaliacao") != 2:
+        raise EvaluationCatalogError("schema_politica_series_avaliacao precisa ser 2")
+    if policy.get("serie_padrao_producao") != "modules-v2":
+        raise EvaluationCatalogError("modules-v2 precisa ser o padrão depois da RM-11")
     classification = policy.get("classificacao") or {}
     if classification.get("serie_quando_campo_ausente") != "legacy-v1":
         raise EvaluationCatalogError("pacote sem serie_avaliacao precisa ser legacy-v1")
@@ -273,6 +276,42 @@ def validate_series_policy(policy: dict[str, Any]) -> None:
         raise EvaluationCatalogError("agregação entre séries precisa ser proibida")
     if compatibility.get("versoes_incompativeis") != "separar_series_temporais":
         raise EvaluationCatalogError("versões incompatíveis precisam formar séries temporais separadas")
+    modular = compatibility.get("comparacao_modular") or {}
+    if modular.get("dimensao_em_disputa") != "module_implementation_version":
+        raise EvaluationCatalogError("comparação modular precisa disputar versões de implementação")
+
+
+def validate_module_releases(data: dict[str, Any], catalog: dict[str, Any]) -> None:
+    if data.get("schema_module_releases") != 1:
+        raise EvaluationCatalogError("schema_module_releases precisa ser 1")
+    releases = _required_nonempty_list(data, "releases", "histórico de releases")
+    current: dict[str, dict[str, Any]] = {}
+    for release in releases:
+        module_id = _required_text(release, "module_id", "release")
+        if module_id not in MODULE_IDS:
+            raise EvaluationCatalogError(f"release de módulo desconhecido: {module_id}")
+        for key in ("implementation_version", "evaluation_version"):
+            value = _required_text(release, key, f"release {module_id}")
+            if not SEMVER_RE.fullmatch(value):
+                raise EvaluationCatalogError(f"release {module_id}: {key} não é SemVer")
+        for key in ("implementation_change", "evaluation_change"):
+            if release.get(key) not in {"none", "patch", "minor", "major"}:
+                raise EvaluationCatalogError(f"release {module_id}: {key} inválido")
+        if release.get("compatibility") not in {"compatible", "incompatible_implementation", "incompatible_evaluation", "incompatible_both"}:
+            raise EvaluationCatalogError(f"release {module_id}: compatibilidade inválida")
+        _required_nonempty_list(release, "fixtures", f"release {module_id}")
+        if module_id in current:
+            raise EvaluationCatalogError(f"release corrente duplicado para {module_id}")
+        current[module_id] = release
+    catalog_modules = {item["id"]: item for item in catalog.get("modulos") or []}
+    if set(current) != MODULE_IDS:
+        raise EvaluationCatalogError("histórico precisa publicar um release corrente por módulo")
+    for module_id, module in catalog_modules.items():
+        release = current[module_id]
+        if release["implementation_version"] != module["versao_implementacao"]:
+            raise EvaluationCatalogError(f"release {module_id}: versão de implementação diverge do catálogo")
+        if release["evaluation_version"] != module["versao_avaliacao"]:
+            raise EvaluationCatalogError(f"release {module_id}: versão de avaliação diverge do catálogo")
 
 
 def evaluation_series(manifest: dict[str, Any], policy: dict[str, Any] | None = None) -> str:
@@ -318,13 +357,41 @@ def require_comparable(
     return next(iter(keys))
 
 
+def module_comparability_key(manifest: dict[str, Any], module_id: str) -> tuple[str, str]:
+    """Chave modular: implementação pode variar; a régua precisa permanecer."""
+
+    for item in manifest.get("versoes_modulos") or []:
+        if item.get("module_id") == module_id:
+            evaluation = item.get("module_evaluation_version")
+            if not evaluation:
+                break
+            return module_id, str(evaluation)
+    raise EvaluationCatalogError(f"manifesto não preserva versão de avaliação de {module_id}")
+
+
+def require_module_comparable(
+    manifests: Iterable[dict[str, Any]], module_id: str
+) -> tuple[str, str] | None:
+    keys = {module_comparability_key(manifest, module_id) for manifest in manifests}
+    if not keys:
+        return None
+    if len(keys) != 1:
+        raise EvaluationCatalogError(
+            f"avaliações incompatíveis para {module_id}: "
+            + ", ".join("/".join(key) for key in sorted(keys))
+        )
+    return next(iter(keys))
+
+
 def validate_defaults() -> None:
     catalog = load_json(DEFAULT_CATALOG)
     guardrails = load_json(DEFAULT_GUARDRAILS)
     policy = load_json(DEFAULT_SERIES_POLICY)
+    releases = load_json(DEFAULT_RELEASES)
     validate_catalog_v2(catalog)
     validate_guardrails(guardrails, catalog)
     validate_series_policy(policy)
+    validate_module_releases(releases, catalog)
 
 
 def main() -> int:
@@ -341,7 +408,8 @@ def main() -> int:
         "catalogo": str(DEFAULT_CATALOG.relative_to(ROOT)),
         "modulos_primeira_classe": len(MODULE_IDS),
         "itens_v1_mapeados": len(V1_ITEM_IDS),
-        "serie_padrao_producao": "legacy-v1",
+        "serie_padrao_producao": "modules-v2",
+        "historico_releases": str(DEFAULT_RELEASES.relative_to(ROOT)),
     }
     print(json.dumps(result, ensure_ascii=False, indent=2) if args.json else "CATÁLOGO DE AVALIAÇÃO — OK")
     return 0

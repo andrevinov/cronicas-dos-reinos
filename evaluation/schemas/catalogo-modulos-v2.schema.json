@@ -22,7 +22,7 @@
     "versao_catalogo": {"type": "string", "minLength": 1},
     "serie_avaliacao": {"const": "modules-v2"},
     "estado": {"enum": ["preparacao", "producao", "descontinuado"]},
-    "padrao_producao": {"const": false},
+    "padrao_producao": {"const": true},
     "natureza": {"type": "string", "minLength": 1},
     "unidades_analise": {
       "type": "array",

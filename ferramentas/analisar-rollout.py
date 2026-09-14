@@ -35,7 +35,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.7.0"
+MODULAR_DETECTOR_VERSION = "3.0.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -696,6 +696,23 @@ def _rules_state_receipt(output_text: str) -> dict[str, Any] | None:
     }
 
 
+def _interaction_receipt(output_text: str) -> dict[str, Any] | None:
+    marker = "schema_narrative_interaction"
+    start = output_text.casefold().rfind(marker)
+    if start < 0:
+        return None
+    receipt_text = output_text[start:]
+    return {
+        "interaction_id": _output_scalar(receipt_text, "interaction_id"),
+        "interaction_ref": _output_scalar(receipt_text, "interaction_ref"),
+        "session": _output_int(receipt_text, "session"),
+        "ordinal": _output_int(receipt_text, "ordinal"),
+        "class": _output_scalar(receipt_text, "class"),
+        "state": _output_scalar(receipt_text, "state"),
+        "replay": _output_bool(receipt_text, "replay"),
+    }
+
+
 def _sidequest_decision_from_command(command: str) -> str | None:
     if _orchestration_phase(command) != "preparar":
         return None
@@ -908,6 +925,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "orchestration_receipt": None,
                     "delivery_receipt": None,
                     "rules_state_receipt": None,
+                    "interaction_receipt": None,
                     "orchestration_failure": None,
                     "liveness": None,
                     "output_seen": False,
@@ -954,6 +972,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched["orchestration_receipt"] = _orchestration_receipt(output_text)
                 matched["delivery_receipt"] = _delivery_receipt(output_text)
                 matched["rules_state_receipt"] = _rules_state_receipt(output_text)
+                matched["interaction_receipt"] = _interaction_receipt(output_text)
                 matched["orchestration_failure"] = orchestration_failure
                 matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
@@ -976,6 +995,39 @@ def _visible_response(turn: dict[str, Any]) -> dict[str, Any] | None:
         return None
     messages = [text for text in turn.get("assistant_messages") or [] if text]
     return {"text": messages[-1], "channel": None, "timestamp": None} if messages else None
+
+
+_INTERACTION_REFERENCE_RE = re.compile(r"\bS\d{3,}-I\d{4,}\b")
+
+
+def _interaction_observation(turn: dict[str, Any], ordinal: int) -> dict[str, Any]:
+    receipts = [
+        call["interaction_receipt"]
+        for call in turn.get("calls") or []
+        if isinstance(call.get("interaction_receipt"), dict)
+    ]
+    receipt = receipts[-1] if receipts else None
+    response = _visible_response(turn)
+    response_text = str((response or {}).get("text") or "")
+    visible_refs = _INTERACTION_REFERENCE_RE.findall(response_text)
+    reference = str((receipt or {}).get("interaction_ref") or "") or (
+        visible_refs[-1] if visible_refs else None
+    )
+    interaction_id = str((receipt or {}).get("interaction_id") or "") or None
+    visible_once = bool(reference and visible_refs.count(reference) == 1)
+    return {
+        "interaction_id": interaction_id,
+        "interaction_ref": reference,
+        "session": (receipt or {}).get("session"),
+        "ordinal": (receipt or {}).get("ordinal") or ordinal,
+        "class": (receipt or {}).get("class") or "ON",
+        "state": (receipt or {}).get("state") or ("complete" if response else "incomplete"),
+        "turn_id": str(turn.get("turn_id") or f"ordinal-{ordinal}"),
+        "visible_reference_count": visible_refs.count(reference) if reference else 0,
+        "visible_exactly_once": visible_once,
+        "receipt_present": receipt is not None,
+        "response_present": response is not None,
+    }
 
 
 def _delivery_observation(turn: dict[str, Any]) -> dict[str, Any]:
@@ -2522,7 +2574,8 @@ def _turn_cost(item: dict[str, Any]) -> dict[str, int]:
 
 
 def _build_modular_ledger(
-    report: dict[str, Any], narration: list[dict[str, Any]], catalog: dict[str, Any]
+    report: dict[str, Any], narration: list[dict[str, Any]], catalog: dict[str, Any],
+    all_turns: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     module_by_id, aliases, module_order, capability_order = _catalog_indexes(catalog)
     events: list[dict[str, Any]] = []
@@ -2530,18 +2583,29 @@ def _build_modular_ledger(
     module_totals: dict[str, dict[str, int]] = {}
     total_narrative_cost = {key: 0 for key in _turn_cost({})}
 
+    interaction_candidates = all_turns if all_turns is not None else narration
+    interactions = [
+        observation
+        for index, turn in enumerate(interaction_candidates, 1)
+        for observation in [_interaction_observation(turn, index)]
+        if observation["receipt_present"] or observation["response_present"]
+    ]
+    interaction_by_turn = {item["turn_id"]: item for item in interactions}
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         signals: dict[tuple[str, str], dict[str, Any]] = {}
         non_modules = _legacy_signals(signals, list(turn.get("calls") or []), aliases)
         _new_module_signals(signals, turn)
         ordinal = int(item.get("ordinal") or len(events) + 1)
         turn_id = str(turn.get("turn_id") or f"ordinal-{ordinal}")
+        interaction = interaction_by_turn.get(turn_id) or _interaction_observation(turn, ordinal)
         for observation in non_modules:
             non_module_observations.append(
                 {
                     "session_id": (report.get("source") or {}).get("session_id"),
                     "turn_id": turn_id,
                     "turn_ordinal": ordinal,
+                    "interaction_id": interaction.get("interaction_id"),
+                    "interaction_ref": interaction.get("interaction_ref"),
                     "classification": (
                         "regressao_historica"
                         if observation["item_id"] == "seven_names_migration_regression"
@@ -2592,6 +2656,8 @@ def _build_modular_ledger(
                     "session_id": (report.get("source") or {}).get("session_id"),
                     "turn_id": turn_id,
                     "turn_ordinal": ordinal,
+                    "interaction_id": interaction.get("interaction_id"),
+                    "interaction_ref": interaction.get("interaction_ref"),
                     "analysis_unit": module.get("unidade_analise"),
                     "module_id": module_id,
                     "capability_id": capability_id,
@@ -2649,6 +2715,7 @@ def _build_modular_ledger(
         "observed_is_not_eligibility": True,
         "capability_cost_mode": "exposicao_apenas",
         "parent_cost_method": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno_com_classe_controle_separada",
+        "interactions": interactions,
         "events": events,
         "non_module_observations": non_module_observations,
         "module_parent_costs": [
@@ -2785,42 +2852,48 @@ def apply_modular_adjudications(
             }
         )
 
-    player_dimensions = {"ritmo", "naturalidade", "profundidade", "agencia_percebida"}
     feedback_items = adjudications.get("player_feedback", [])
     if not isinstance(feedback_items, list):
         raise RolloutError("adjudicações modulares: player_feedback precisa ser lista")
     for index, feedback in enumerate(feedback_items, 1):
         if not isinstance(feedback, dict):
             raise RolloutError(f"feedback do jogador {index} não é objeto")
-        event_id = str(feedback.get("event_id") or "")
-        event = by_id.get(event_id)
-        if event is None or event.get("module_id") != "narrative_delivery":
-            raise RolloutError(
-                f"feedback aponta para entrega narrativa inexistente: {event_id}"
-            )
-        ratings = feedback.get("ratings")
-        if not isinstance(ratings, dict) or set(ratings) != player_dimensions:
-            raise RolloutError(f"feedback {event_id}: ratings incompletas")
-        invalid = [
-            score
-            for score in ratings.values()
-            if score is not None
-            and (isinstance(score, bool) or not isinstance(score, int) or not 1 <= score <= 5)
-        ]
-        if invalid:
-            raise RolloutError(f"feedback {event_id}: notas precisam estar entre 1 e 5")
-        if not any(score is not None for score in ratings.values()):
-            raise RolloutError(f"feedback {event_id}: sem notas deve ser omitido (N/D)")
-        comment = feedback.get("comment")
-        if comment is not None and (not isinstance(comment, str) or not comment.strip()):
-            raise RolloutError(f"feedback {event_id}: comment precisa ser texto não vazio")
+        interaction_ref = str(feedback.get("interaction_ref") or "")
+        known_refs = {
+            str(item.get("interaction_ref"))
+            for item in result.get("interactions") or []
+            if item.get("interaction_ref")
+        }
+        if interaction_ref not in known_refs:
+            raise RolloutError(f"feedback aponta para interação inexistente: {interaction_ref}")
+        original_text = str(feedback.get("original_text") or "").strip()
+        if not original_text:
+            raise RolloutError(f"feedback {interaction_ref}: original_text é obrigatório")
+        perceived_type = feedback.get("perceived_type")
+        allowed_types = {
+            "boa_ativacao", "oportunidade_percebida", "sobreativacao_percebida",
+            "ativacao_inadequada", "efeito_incorreto", "timing", "continuidade",
+            "possivel_guardrail",
+        }
+        if perceived_type not in allowed_types:
+            raise RolloutError(f"feedback {interaction_ref}: perceived_type inválido")
+        adjudication = feedback.get("adjudication") or {"state": "pendente", "reason": None}
+        if adjudication.get("state") not in {
+            "pendente", "confirmada", "parcial", "nao_confirmada", "indeterminada"
+        }:
+            raise RolloutError(f"feedback {interaction_ref}: adjudication inválida")
         result["player_feedback"].append(
             {
-                "event_id": event_id,
-                "ratings": copy.deepcopy(ratings),
-                "comment": comment.strip() if isinstance(comment, str) else None,
-                "aggregation_role": "percepcao_com_peso_limitado",
-                "guardrails_unchanged": True,
+                **copy.deepcopy(feedback),
+                "feedback_id": str(feedback.get("feedback_id") or f"feedback-importado-{index}"),
+                "recorded_at": str(feedback.get("recorded_at") or "desconhecido"),
+                "expectation": feedback.get("expectation"),
+                "observation": feedback.get("observation"),
+                "perceived_impact": feedback.get("perceived_impact"),
+                "player_module_id": feedback.get("player_module_id"),
+                "player_capability_id": feedback.get("player_capability_id"),
+                "system_suggestion": feedback.get("system_suggestion"),
+                "adjudication": copy.deepcopy(adjudication),
             }
         )
     return result
@@ -2879,7 +2952,7 @@ def analyze(
     }
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
-    ledger = _build_modular_ledger(report, narration, catalog)
+    ledger = _build_modular_ledger(report, narration, catalog, ordered)
     if modular_adjudications is not None:
         ledger = apply_modular_adjudications(ledger, modular_adjudications)
     report["modular_ledger_v2"] = ledger

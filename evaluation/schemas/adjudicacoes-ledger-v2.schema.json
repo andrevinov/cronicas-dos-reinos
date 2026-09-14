@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schema_adjudicacoes_modulares"],
   "properties": {
-    "schema_adjudicacoes_modulares": {"const": 1},
+    "schema_adjudicacoes_modulares": {"const": 2},
     "corrections": {
       "type": "array",
       "items": {
@@ -55,21 +55,30 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["event_id", "ratings"],
+        "required": ["feedback_id", "interaction_ref", "recorded_at", "original_text", "perceived_type"],
         "properties": {
-          "event_id": {"type": "string", "minLength": 1},
-          "ratings": {
+          "schema_interaction_event": {"const": 1},
+          "event_type": {"const": "player_feedback"},
+          "feedback_id": {"type": "string", "minLength": 1},
+          "interaction_ref": {"type": "string", "pattern": "^S[0-9]{3,}-I[0-9]{4,}$"},
+          "recorded_at": {"type": "string", "minLength": 1},
+          "original_text": {"type": "string", "minLength": 1},
+          "perceived_type": {"enum": ["boa_ativacao", "oportunidade_percebida", "sobreativacao_percebida", "ativacao_inadequada", "efeito_incorreto", "timing", "continuidade", "possivel_guardrail"]},
+          "expectation": {"type": ["string", "null"]},
+          "observation": {"type": ["string", "null"]},
+          "perceived_impact": {"type": ["string", "null"], "enum": ["baixo", "moderado", "alto", "critico", null]},
+          "player_module_id": {"type": ["string", "null"]},
+          "player_capability_id": {"type": ["string", "null"]},
+          "system_suggestion": {"type": ["object", "null"]},
+          "adjudication": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["ritmo", "naturalidade", "profundidade", "agencia_percebida"],
+            "required": ["state", "reason"],
             "properties": {
-              "ritmo": {"$ref": "#/$defs/playerRating"},
-              "naturalidade": {"$ref": "#/$defs/playerRating"},
-              "profundidade": {"$ref": "#/$defs/playerRating"},
-              "agencia_percebida": {"$ref": "#/$defs/playerRating"}
+              "state": {"enum": ["pendente", "confirmada", "parcial", "nao_confirmada", "indeterminada"]},
+              "reason": {"type": ["string", "null"]}
             }
-          },
-          "comment": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]}
+          }
         }
       }
     }
@@ -86,7 +95,6 @@
         "knowledge_secrecy": {"$ref": "#/$defs/guardrailState"},
         "roll_integrity": {"$ref": "#/$defs/guardrailState"}
       }
-    },
-    "playerRating": {"type": ["integer", "null"], "minimum": 1, "maximum": 5}
+    }
   }
 }

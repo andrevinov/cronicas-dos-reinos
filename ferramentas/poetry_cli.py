@@ -56,6 +56,10 @@ def cronica() -> int:
     return _run_script("cronica.py")
 
 
+def interacao() -> int:
+    return _run_script("interacoes_narrativas.py")
+
+
 def turno() -> int:
     return _run_script("turno.py")
 

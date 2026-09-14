@@ -53,7 +53,7 @@ Estilo: `narracao/principios/guia-de-narrativa.md`; sessões: `narracao/operacao
 
 Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` em ON = **RECALL**. OFF não avança; RECALL só completa fato que Ren sabe, nunca vontade/emoção/estratégia/segredo.
 
-Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`.
+Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`. Interações: protocolo de sessão.
 
 **Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
 

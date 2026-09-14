@@ -8,6 +8,8 @@ fluxo_preferencial:
   fase_1: cronica preparar
   fase_2: cronica concluir
   preparar_e_read_only: true
+  preparar_e_read_only_para_canon_e_estado: true
+  preparar_pode_reservar_identidade_operacional_append_only: true
   concluir_confirma_antes_de_registrar: true
   concluir_confirma_antes_de_registrar_quando_reativo: true
   concluir_neutro_registra_sem_confirmacao_falsa: true
@@ -21,13 +23,15 @@ limites:
   max_chamadas_confirmacao_concluir_neutro: 0
   max_chamadas_registro_concluir: 1
   max_escritas_novas_da_orquestracao: 0
+  max_escritas_canonicas_novas_da_orquestracao: 0
+  max_append_interacao_operacional_por_turno: 2
   max_arquivos_runtime_novos: 0
   max_schedulers_novos: 0
   max_estados_novos: 0
   max_scans_repo: 0
   max_endpoints_novos: 0
 portas:
-  preparar: read_only
+  preparar: read_only_para_canon_com_reserva_de_interacao
   concluir: confirmar_se_reativo_e_registrar
   registrar: reparo_ou_uso_avancado
   confirmar: reparo_ou_uso_avancado

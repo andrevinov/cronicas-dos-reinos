@@ -14,6 +14,7 @@
     "observed_is_not_eligibility",
     "capability_cost_mode",
     "parent_cost_method",
+    "interactions",
     "events",
     "non_module_observations",
     "module_parent_costs",
@@ -33,6 +34,7 @@
     "observed_is_not_eligibility": {"const": true},
     "capability_cost_mode": {"const": "exposicao_apenas"},
     "parent_cost_method": {"type": "string", "minLength": 1},
+    "interactions": {"type": "array", "items": {"$ref": "#/$defs/interaction"}},
     "events": {"type": "array", "items": {"$ref": "#/$defs/event"}},
     "non_module_observations": {"type": "array", "items": {"$ref": "#/$defs/nonModuleObservation"}},
     "module_parent_costs": {"type": "array", "items": {"$ref": "#/$defs/moduleCost"}},
@@ -63,6 +65,42 @@
         "total_tokens": {"type": "integer", "minimum": 0}
       }
     },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interaction_id", "interaction_ref", "session", "ordinal", "class", "state", "turn_id", "visible_reference_count", "visible_exactly_once", "receipt_present", "response_present"],
+      "properties": {
+        "interaction_id": {"type": ["string", "null"]},
+        "interaction_ref": {"type": ["string", "null"], "pattern": "^S[0-9]{3,}-I[0-9]{4,}$"},
+        "session": {"type": ["integer", "null"], "minimum": 1},
+        "ordinal": {"type": "integer", "minimum": 1},
+        "class": {"enum": ["ON", "OFF", "RECALL", "operacional"]},
+        "state": {"enum": ["reserved", "complete", "incomplete"]},
+        "turn_id": {"type": "string", "minLength": 1},
+        "visible_reference_count": {"type": "integer", "minimum": 0},
+        "visible_exactly_once": {"type": "boolean"},
+        "receipt_present": {"type": "boolean"},
+        "response_present": {"type": "boolean"},
+        "input_sha256": {"type": ["string", "null"]},
+        "response_sha256": {"type": ["string", "null"]},
+        "transaction_id": {"type": ["string", "null"]},
+        "ticket_id": {"type": ["string", "null"]},
+        "release_set_id": {"type": ["string", "null"]},
+        "catalog_version": {"type": ["string", "null"]},
+        "module_versions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["implementation_version", "evaluation_version"],
+            "properties": {
+              "implementation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+              "evaluation_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+            }
+          }
+        }
+      }
+    },
     "event": {
       "type": "object",
       "additionalProperties": false,
@@ -71,6 +109,8 @@
         "session_id",
         "turn_id",
         "turn_ordinal",
+        "interaction_id",
+        "interaction_ref",
         "analysis_unit",
         "module_id",
         "capability_id",
@@ -93,6 +133,8 @@
         "session_id": {"type": ["string", "null"]},
         "turn_id": {"type": "string", "minLength": 1},
         "turn_ordinal": {"type": "integer", "minimum": 1},
+        "interaction_id": {"type": ["string", "null"]},
+        "interaction_ref": {"type": ["string", "null"], "pattern": "^S[0-9]{3,}-I[0-9]{4,}$"},
         "analysis_unit": {"enum": ["turno", "cena", "fronteira", "sessao", "evento"]},
         "module_id": {"type": "string", "minLength": 1},
         "capability_id": {"type": "string", "minLength": 1},
@@ -146,11 +188,13 @@
     "nonModuleObservation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["session_id", "turn_id", "turn_ordinal", "classification", "item_id", "signal_sources", "observable_evidence", "receives_modular_score", "receives_parent_cost"],
+      "required": ["session_id", "turn_id", "turn_ordinal", "interaction_id", "interaction_ref", "classification", "item_id", "signal_sources", "observable_evidence", "receives_modular_score", "receives_parent_cost"],
       "properties": {
         "session_id": {"type": ["string", "null"]},
         "turn_id": {"type": "string"},
         "turn_ordinal": {"type": "integer", "minimum": 1},
+        "interaction_id": {"type": ["string", "null"]},
+        "interaction_ref": {"type": ["string", "null"], "pattern": "^S[0-9]{3,}-I[0-9]{4,}$"},
         "classification": {"enum": ["regressao_historica", "extensao_campanha"]},
         "item_id": {"enum": ["seven_names_migration_regression", "underground_tournament"]},
         "signal_sources": {"type": "array", "items": {"enum": ["comando", "output"]}},
@@ -242,27 +286,43 @@
         "guardrails_compensable": {"const": false}
       }
     },
-    "playerRating": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
     "playerFeedback": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["event_id", "ratings", "comment", "aggregation_role", "guardrails_unchanged"],
+      "required": ["feedback_id", "interaction_ref", "recorded_at", "original_text", "perceived_type", "expectation", "observation", "perceived_impact", "player_module_id", "player_capability_id", "system_suggestion", "adjudication"],
       "properties": {
-        "event_id": {"type": "string", "minLength": 1},
-        "ratings": {
+        "schema_interaction_event": {"const": 1},
+        "event_type": {"const": "player_feedback"},
+        "feedback_id": {"type": "string", "minLength": 1},
+        "interaction_ref": {"type": "string", "pattern": "^S[0-9]{3,}-I[0-9]{4,}$"},
+        "recorded_at": {"type": "string", "minLength": 1},
+        "original_text": {"type": "string", "minLength": 1},
+        "perceived_type": {"enum": ["boa_ativacao", "oportunidade_percebida", "sobreativacao_percebida", "ativacao_inadequada", "efeito_incorreto", "timing", "continuidade", "possivel_guardrail"]},
+        "expectation": {"type": ["string", "null"]},
+        "observation": {"type": ["string", "null"]},
+        "perceived_impact": {"type": ["string", "null"], "enum": ["baixo", "moderado", "alto", "critico", null]},
+        "player_module_id": {"type": ["string", "null"]},
+        "player_capability_id": {"type": ["string", "null"]},
+        "system_suggestion": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "object", "additionalProperties": false, "required": ["module_id", "capability_id", "confidence", "evidence"], "properties": {
+              "module_id": {"type": ["string", "null"]},
+              "capability_id": {"type": ["string", "null"]},
+              "confidence": {"type": ["string", "null"]},
+              "evidence": {"type": "array", "items": {"type": "string"}}
+            }}
+          ]
+        },
+        "adjudication": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["ritmo", "naturalidade", "profundidade", "agencia_percebida"],
+          "required": ["state", "reason"],
           "properties": {
-            "ritmo": {"$ref": "#/$defs/playerRating"},
-            "naturalidade": {"$ref": "#/$defs/playerRating"},
-            "profundidade": {"$ref": "#/$defs/playerRating"},
-            "agencia_percebida": {"$ref": "#/$defs/playerRating"}
+            "state": {"enum": ["pendente", "confirmada", "parcial", "nao_confirmada", "indeterminada"]},
+            "reason": {"type": ["string", "null"]}
           }
-        },
-        "comment": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]},
-        "aggregation_role": {"const": "percepcao_com_peso_limitado"},
-        "guardrails_unchanged": {"const": true}
+        }
       }
     }
   }
