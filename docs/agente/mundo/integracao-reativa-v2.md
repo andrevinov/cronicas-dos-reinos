@@ -233,11 +233,13 @@ relaxam os vetos de combate, quest ou recompensa dos microeventos.
 Detalhes: `docs/agente/mundo/ecologia-local.md` e
 `docs/agente/mundo/microeventos-locais.md`.
 
-## 10. Roteamento de pressão
+## 10. Roteamento causal
 
-Depois das projeções de sidequest e da mecânica, `cronica preparar` ordena matéria
-causal já autorizada. Operação adversarial comprometida tem prioridade sobre prazo,
-nova oportunidade e iniciativa incidental. O ticket recebe `contrato_pressao`;
+Os hot paths dependem de `causal_narrative_routing`: `cronica preparar` entrega
+as pressões já autorizadas, enquanto endpoint e barreira projetam o evento
+canônico datado devido. Evento canônico e operação adversarial comprometida
+prevalecem sobre prazo, nova oportunidade e iniciativa incidental. O ticket
+recebe `contrato_pressao`;
 `cronica concluir` deve declarar `apresentada`, `resolvida`,
 `adiada_por_bloqueio` ou `continua` para cada operação.
 

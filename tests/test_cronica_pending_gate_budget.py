@@ -54,12 +54,12 @@ class CronicaPendingGateBudgetTest(unittest.TestCase):
         self.assertTrue(required <= set(invariants))
         self.assertTrue(all(invariants[key] for key in required))
 
-    def test_roteador_remove_leitura_manual_e_mantem_task23_como_proximo_passo(self):
+    def test_roteador_remove_leitura_manual_e_expoe_fachada_de_fronteira(self):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("Barreira de pendências vive dentro de `cronica preparar`", text)
         self.assertIn("fase: bloqueada_pendencias_mundo", text)
-        self.assertIn("resolver_fronteira.py preparar", text)
-        self.assertIn("resolver_fronteira.py aplicar", text)
+        self.assertIn("world_boundary_resolution.py preparar", text)
+        self.assertIn("world_boundary_resolution.py aplicar", text)
         self.assertIn("O writer repete a trava", text)
         self.assertNotIn(
             "Antes de novo ON, ler `runtime/mundo-pendencias.yaml`",

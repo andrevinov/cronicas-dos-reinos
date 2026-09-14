@@ -25,6 +25,7 @@ somente o domínio necessário para a tarefa.
 
 ## Narrativa
 
+- [`narrativa/modulo-continuidade-npc-v2.md`](narrativa/modulo-continuidade-npc-v2.md): continuidade, conhecimento, identidade, reputação e iniciativa do elenco;
 - [`narrativa/narracao-e-mundo.md`](narrativa/narracao-e-mundo.md): NPCs, relações, identidade e reputação;
 - [`narrativa/densidade-narrativa.md`](narrativa/densidade-narrativa.md): densidade adequada ao turno;
 - [`narrativa/papeis-conversacionais.md`](narrativa/papeis-conversacionais.md): papéis e diálogos;
@@ -45,6 +46,7 @@ somente o domínio necessário para a tarefa.
 - [`mundo/ecologia-local.md`](mundo/ecologia-local.md): incidentes locais;
 - [`mundo/ecologia-transito-urbano.md`](mundo/ecologia-transito-urbano.md): trânsito urbano;
 - [`mundo/microeventos-locais.md`](mundo/microeventos-locais.md): microeventos e permanência;
+- [`mundo/modulos-mundo-causal-v2.md`](mundo/modulos-mundo-causal-v2.md): fachadas de projeção espacial, fronteira e roteamento causal;
 - [`mundo/modulos-sidequest-v2.md`](mundo/modulos-sidequest-v2.md): fachadas públicas de autoria, lifecycle e integração canônica;
 - [`mundo/sidequest-gate-v2.md`](mundo/sidequest-gate-v2.md): oportunidade, autoria e lifecycle;
 - [`mundo/adventure-drought-pressure.md`](mundo/adventure-drought-pressure.md): pressão por ausência de aventura;

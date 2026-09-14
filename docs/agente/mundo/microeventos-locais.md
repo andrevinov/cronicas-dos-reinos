@@ -14,7 +14,10 @@ Não existe uma segunda ferramenta obrigatória no hot path. A narração contin
 python3 ferramentas/endpoints.py cena ...
 ```
 
-Quando a preparação possui gatilho local canônico e a camada está configurada, `cena_mundo.py preparar` simula o baralho junto com recompensa, contexto e gates já existentes. A confirmação da cena consome exatamente o sorteio preparado.
+Quando a preparação possui gatilho local canônico e a camada está configurada,
+`scene_world_projection` usa o compositor interno de `cena_mundo.py` para simular
+o baralho junto com recompensa, contexto e gates já existentes. A confirmação da
+cena consome exatamente o sorteio preparado.
 
 Para manutenção existem somente portas read-only:
 

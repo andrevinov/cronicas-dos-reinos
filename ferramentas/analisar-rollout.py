@@ -34,7 +34,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.0.0"
+MODULAR_DETECTOR_VERSION = "2.2.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -267,6 +267,17 @@ def _narrative_systems_from_command(command: str) -> set[str]:
             result.add("canonical_secret_quests")
         if re.search(r"\b(responder|finalizar|abandonar|reconciliar|check)\b", lower):
             result.add("canon_bridge")
+    if "scene_world_projection.py" in lower:
+        result.update({"world_local_incidents", "persistent_world_conditions"})
+    if "world_boundary_resolution.py" in lower:
+        if re.search(r"\b(fronteira|check)\b", lower):
+            result.add("liveness_boundary")
+        if re.search(r"\b(preparar|aplicar|check)\b", lower):
+            result.add("batch_world_boundary")
+    if "causal_narrative_routing.py" in lower:
+        result.add("reactive_pressure_routing")
+        if re.search(r"\bcheck\b", lower):
+            result.add("secret_canon")
     for system, markers in _SYSTEM_COMMAND_MARKERS.items():
         if any(marker in lower for marker in markers):
             result.add(system)
@@ -538,7 +549,20 @@ _LEGACY_NEUTRAL_MARKERS: dict[str, tuple[str, ...]] = {
     "npc_social_initiative": ("resultado: silencio", '"resultado": "silencio"'),
     "world_local_incidents": ("sem_incidente", "sem_microevento"),
     "liveness_boundary": ("calma_justificada",),
-    "reactive_pressure_routing": ("sem_pressao", "sem_pressão"),
+    "reactive_pressure_routing": (
+        "sem_pressao",
+        "sem pressão",
+        "resultado_modular: sem_materia",
+        '"resultado_modular": "sem_materia"',
+    ),
+    "batch_world_boundary": (
+        "resultado_modular: sem_pendencias",
+        "resultado_modular: gate_neutro_aplicado",
+        "resultado_modular: retry_sem_duplicacao",
+        '"resultado_modular": "sem_pendencias"',
+        '"resultado_modular": "gate_neutro_aplicado"',
+        '"resultado_modular": "retry_sem_duplicacao"',
+    ),
 }
 
 
@@ -654,11 +678,22 @@ def _legacy_signals(
     non_modules: dict[str, dict[str, Any]] = {}
     for call in calls:
         output_text = str(call.get("output_text") or "")
+        command_lower = str(call.get("command") or "").casefold()
+        output_lower = output_text.casefold()
+        actual_npc_initiative = (
+            "--interlocutor" in command_lower
+            or "iniciativa_elenco" in output_lower
+        )
         for source, key, marker_key in (
             ("comando", "command_systems", "command_markers"),
             ("output", "output_systems", "output_markers"),
         ):
             for alias in sorted(call.get(key) or set()):
+                # O v1 tratava toda consulta dirigida de NPC como iniciativa.
+                # No ledger v2, carregar relação/voz é continuidade, enquanto
+                # iniciativa exige interlocutor ou decisão explícita no output.
+                if alias == "npc_social_initiative" and not actual_npc_initiative:
+                    continue
                 evidence_markers = list((call.get(marker_key) or {}).get(alias) or [alias])
                 if alias not in aliases:
                     if alias in {"seven_names_migration_regression", "underground_tournament"}:
@@ -697,6 +732,163 @@ def _new_module_signals(
 ) -> None:
     calls = list(turn.get("calls") or [])
     assistant_messages = list(turn.get("assistant_messages") or [])
+
+    # RM-05: continuidade dirigida é distinta de iniciativa incidental. Os
+    # sinais vêm do mesmo comando/output já observado; nunca interpretam prosa
+    # como conhecimento, presença ou identidade confirmada.
+    for call in calls:
+        command = str(call.get("command") or "")
+        lower = " ".join(command.casefold().split())
+        output_lower = str(call.get("output_text") or "").casefold()
+        directed_npc = "contexto.py" in lower and re.search(r"\bnpc\b", lower)
+        facade = "npc_continuity_and_social_behavior.py" in lower
+        participant = call.get("orchestration_phase") == "preparar" and "--participante" in lower
+        interlocutor = call.get("orchestration_phase") == "preparar" and "--interlocutor" in lower
+        identity_operation = "identidades.py" in lower
+        reputation_operation = "reputacao_publica.py" in lower or (
+            "contexto.py" in lower and re.search(r"\breputacao\b", lower)
+        )
+
+        if directed_npc or participant or interlocutor or identity_operation or facade:
+            _add_signal(
+                signals,
+                "npc_continuity_and_social_behavior",
+                "presence_and_identity",
+                source="comando",
+                evidence=(
+                    "command:npc_continuity_facade"
+                    if facade
+                    else "command:directed_npc_context"
+                    if directed_npc
+                    else "command:identity_operation"
+                    if identity_operation
+                    else "command:scene_cast_or_interlocutor"
+                ),
+                activation="consulta" if directed_npc or facade else "decisao",
+                observed_result="contexto_npc_observado",
+                confidence="alta",
+            )
+
+        if directed_npc or participant or reputation_operation or facade:
+            _add_signal(
+                signals,
+                "npc_continuity_and_social_behavior",
+                "relationship_memory_reputation",
+                source="comando",
+                evidence=(
+                    "command:reputation_operation"
+                    if reputation_operation
+                    else "command:npc_memory_projection"
+                ),
+                activation="consulta",
+                observed_result="continuidade_social_consultada",
+                confidence="alta",
+            )
+
+        has_initiative = "iniciativa_elenco" in output_lower
+        eligible_presence = any(
+            marker in output_lower
+            for marker in (
+                "presenca: elenco_cena",
+                "presenca: canal_contato",
+                '"presenca": "elenco_cena"',
+                '"presenca": "canal_contato"',
+                "contexto_npc: presente",
+                "contexto_npc: contactavel",
+            )
+        )
+        presented = bool(
+            re.search(r"resultado\s*:\s*apresentada", output_lower)
+            or re.search(r'"resultado"\s*:\s*"apresentada"', output_lower)
+            or re.search(r"aberturas_apresentadas\s*:\s*[1-9]", output_lower)
+        )
+        neutral = has_initiative and any(
+            marker in output_lower
+            for marker in (
+                "silencio_justificado",
+                "nao_elegivel",
+                "selecionada: null",
+                '"selecionada": null',
+            )
+        )
+        if interlocutor or has_initiative:
+            activation = "efeito" if presented else "gate_neutro" if neutral else "decisao"
+            result = (
+                "abertura_apresentada"
+                if presented
+                else "silencio_ou_inelegibilidade_explicita"
+                if neutral
+                else "iniciativa_avaliada"
+            )
+            _add_signal(
+                signals,
+                "npc_continuity_and_social_behavior",
+                "social_initiative",
+                source="output" if has_initiative else "comando",
+                evidence=(
+                    "output:initiative_receipt"
+                    if has_initiative
+                    else "command:initiative_interlocutor"
+                ),
+                eligibility="sim" if eligible_presence else "indeterminada",
+                activation=activation,
+                observed_result=result,
+                materialized_result="abertura_apresentada" if presented else None,
+                effect_observed=presented,
+                confidence="alta" if has_initiative else "media",
+            )
+
+        if has_initiative or any(
+            marker in output_lower
+            for marker in (
+                "dialogo_relacional",
+                "personalidade_decisoria",
+                "reconhecimento_identidade",
+            )
+        ):
+            _add_signal(
+                signals,
+                "npc_continuity_and_social_behavior",
+                "presence_and_identity",
+                source="output",
+                evidence="output:structured_npc_continuity",
+                eligibility="sim" if eligible_presence else "indeterminada",
+                activation="decisao" if has_initiative else "consulta",
+                observed_result="continuidade_estruturada",
+                confidence="alta",
+            )
+
+        persistence_observed = bool(
+            re.search(r"fatos_sociais_persistidos\s*:\s*[1-9]", output_lower)
+            or re.search(r'"fatos_sociais_persistidos"\s*:\s*[1-9]', output_lower)
+        )
+        if any(
+            marker in output_lower
+            for marker in (
+                "informacoes_recebidas",
+                "memorias_importantes",
+                "reputacao_publica_ren",
+                "fatos_sociais_persistidos",
+            )
+        ):
+            _add_signal(
+                signals,
+                "npc_continuity_and_social_behavior",
+                "relationship_memory_reputation",
+                source="output",
+                evidence="output:relationship_memory_or_reputation",
+                activation="efeito" if persistence_observed else "consulta",
+                observed_result=(
+                    "fato_social_persistido"
+                    if persistence_observed
+                    else "fato_social_observado"
+                ),
+                materialized_result=(
+                    "memoria_social_persistida" if persistence_observed else None
+                ),
+                effect_observed=True if persistence_observed else None,
+                confidence="alta",
+            )
 
     # RM-07: somente acessos observáveis; ausência de sinal não vira zero.
     for call in calls:

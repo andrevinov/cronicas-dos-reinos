@@ -19,7 +19,7 @@ import yaml
 
 import _endpoints_core as _base
 import contratos_operacionais
-import fronteira_torneio
+import world_boundary_resolution as fronteira_torneio
 import pressao_ravens_bluff
 import qualidade_abordagem
 
@@ -65,19 +65,19 @@ def _canonical_module(repo: Path):
     if not catalog.is_file():
         return None
     try:
-        import eventos_canonicos
-        return eventos_canonicos
+        import causal_narrative_routing
+        return causal_narrative_routing
     except ModuleNotFoundError as exc:
-        if exc.name != "eventos_canonicos":
+        if exc.name != "causal_narrative_routing":
             raise
-        module_path = Path(__file__).with_name("eventos_canonicos.py")
-        spec = importlib.util.spec_from_file_location("eventos_canonicos", module_path)
+        module_path = Path(__file__).with_name("causal_narrative_routing.py")
+        spec = importlib.util.spec_from_file_location("causal_narrative_routing", module_path)
         if spec is None or spec.loader is None:
             raise _base.EndpointError(
-                "não foi possível carregar ferramentas/eventos_canonicos.py"
+                "não foi possível carregar ferramentas/causal_narrative_routing.py"
             ) from exc
         module = importlib.util.module_from_spec(spec)
-        sys.modules.setdefault("eventos_canonicos", module)
+        sys.modules.setdefault("causal_narrative_routing", module)
         spec.loader.exec_module(module)
         return module
 

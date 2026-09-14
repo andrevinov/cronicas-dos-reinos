@@ -32,7 +32,7 @@ from typing import Any
 
 import yaml
 
-import cena_mundo
+import scene_world_projection as cena_mundo
 import endpoints
 import interacoes_mundo
 import mundo

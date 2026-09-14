@@ -42,7 +42,7 @@ import catalogo_regras
 import continuidade_autoral
 import dialogo_relacional
 import memoria_relevante
-import memoria_cena
+import npc_continuity_and_social_behavior as memoria_cena
 import politica_acesso as politica
 import recursos
 import reputacao_publica

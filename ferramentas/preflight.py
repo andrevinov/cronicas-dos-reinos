@@ -48,6 +48,10 @@ _SIDEQUEST_INTERNAL_CHECKS = {
     ("ferramentas/canon_bridge_runtime.py", "check"),
 }
 
+_WORLD_CAUSAL_INTERNAL_CHECKS = {
+    ("ferramentas/pressao_narrativa.py", "check"),
+}
+
 
 def _consolidate_sidequest_checks(items):
     positions = [
@@ -82,9 +86,71 @@ def _consolidate_sidequest_checks(items):
     return result
 
 
+def _consolidate_world_causal_checks(items):
+    positions = [
+        index
+        for index, item in enumerate(items)
+        if tuple(item.comando[1:]) in _WORLD_CAUSAL_INTERNAL_CHECKS
+    ]
+    insert_at = min(positions) if positions else len(items)
+    result = [
+        item
+        for item in items
+        if tuple(item.comando[1:]) not in _WORLD_CAUSAL_INTERNAL_CHECKS
+    ]
+    facades = [
+        Check(
+            "projeção espacial modular",
+            (sys.executable, "ferramentas/scene_world_projection.py", "check"),
+            "mundo vivo",
+        ),
+        Check(
+            "fronteira modular do mundo",
+            (sys.executable, "ferramentas/world_boundary_resolution.py", "check"),
+            "mundo vivo",
+        ),
+        Check(
+            "roteamento narrativo causal",
+            (sys.executable, "ferramentas/causal_narrative_routing.py", "check"),
+            "mundo vivo",
+        ),
+    ]
+    result[insert_at:insert_at] = facades
+    return result
+
+
+def _add_npc_continuity_check(items):
+    if any(
+        tuple(item.comando[1:])
+        == ("ferramentas/npc_continuity_and_social_behavior.py", "check")
+        for item in items
+    ):
+        return items
+    result = list(items)
+    gate = Check(
+        "continuidade e comportamento social de NPCs",
+        (
+            sys.executable,
+            "ferramentas/npc_continuity_and_social_behavior.py",
+            "check",
+        ),
+        "mundo vivo",
+    )
+    insert_at = next(
+        (i for i, item in enumerate(result) if item.nome == "experiência narrativa integrada"),
+        len(result),
+    )
+    result.insert(insert_at, gate)
+    return result
+
+
 def checks(*, incluir_testes: bool = True):
-    result = _consolidate_sidequest_checks(
-        _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+    result = _add_npc_continuity_check(
+        _consolidate_world_causal_checks(
+            _consolidate_sidequest_checks(
+                _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+            )
+        )
     )
     gate = Check(
         "aceitação integrada de vivacidade",

@@ -2,7 +2,8 @@
 
 ## Status e dependências
 
-**Proposta.** Depende das RM-01–RM-02.
+**Implementada em 2026-09-13; gates próprios verdes.** Depende das RM-01–RM-02,
+já concluídas.
 
 ## Objetivo
 
@@ -32,6 +33,26 @@ Receber somente matérias já autorizadas, incluindo eventos canônicos datados,
 ordená-las por urgência. O roteador não vira produtor universal, scheduler ou
 licença para abrir fontes reservadas.
 
+## Artefatos implementados
+
+- `ferramentas/scene_world_projection.py`: fachada de cena e permanência;
+- `ferramentas/world_boundary_resolution.py`: fachada de vivacidade e lote;
+- `ferramentas/causal_narrative_routing.py`: fachada de pressão e cânone datado;
+- `ferramentas/_module_facade.py`: agregação read-only comum dos checks;
+- hot paths de `cronica`, `endpoints` e barreira migrados para as fachadas sem
+  chamada adicional;
+- `ferramentas/preflight.py`: três checks modulares, preservando a aceitação
+  integrada como regressão independente;
+- `ferramentas/analisar-rollout.py`: aliases das fachadas e separação explícita
+  entre gate neutro e efeito material;
+- `tests/test_mundo_causal_modules_v2.py`: contratos, delegação, causalidade,
+  exactly-once e preflight;
+- `docs/agente/mundo/modulos-mundo-causal-v2.md`: contrato operacional permanente.
+
+Nenhum estado, baralho, ticket, recibo, evento canônico ou histórico foi
+migrado. Os seis componentes v1 permanecem como implementação interna e
+compatibilidade.
+
 ## Invariantes
 
 - turno curto não consulta fronteira temporal;
@@ -49,6 +70,11 @@ licença para abrir fontes reservadas.
 - roteamento não abre produtor reservado inelegível;
 - cenários de permanência, trânsito, sono e dia calmo permanecem cobertos;
 - orçamentos existentes não são afrouxados sem medição explícita.
+
+A cobertura modular, o perfil `fast` e os três checks públicos fecham verdes. A
+suíte agregada ainda encontra falhas anteriores à RM-04 no estado vivo e em
+fixtures dependentes dele; elas não foram mascaradas nem tiveram seus tetos
+afrouxados nesta implementação.
 
 ## Definition of done
 

@@ -19,7 +19,7 @@ from typing import Any, Iterable
 
 import yaml
 
-import cena_mundo
+import scene_world_projection as cena_mundo
 import direcoes_destino
 import fronteira_mundo
 import interacoes_mundo

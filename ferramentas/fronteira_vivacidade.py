@@ -521,7 +521,7 @@ def project_span(
 
 
 def _priority(kind: str) -> int:
-    import pressao_narrativa
+    import causal_narrative_routing as pressao_narrativa
 
     if kind not in pressao_narrativa.PRIORITIES:
         raise LivenessBoundaryError(f"tipo de pressão sem prioridade existente: {kind}")

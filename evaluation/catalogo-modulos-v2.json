@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.1.0",
+  "versao_catalogo": "2.3.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -226,10 +226,12 @@
       "indicadores_especializados": [
         {"id": "iniciativas_com_presenca_ou_contato", "unidade": "proporcao", "direcao_desejada": "maior"},
         {"id": "aberturas_repetidas_por_janela", "unidade": "contagem", "direcao_desejada": "menor"},
-        {"id": "contradicoes_de_identidade_ou_memoria", "unidade": "contagem", "direcao_desejada": "menor"}
+        {"id": "contradicoes_de_identidade_ou_memoria", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "fatos_sociais_persistidos_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "rendimento_visivel_por_ativacao", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
@@ -256,7 +258,7 @@
         {"id": "condicoes_ativas_projetadas", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
@@ -282,7 +284,7 @@
         {"id": "tempo_de_resolucao", "unidade": "segundos", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
@@ -308,7 +310,7 @@
         {"id": "consultas_neutras_sem_competicao", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {

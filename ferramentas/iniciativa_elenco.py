@@ -92,6 +92,27 @@ def _known(npc_id: str, indexes: list[dict[str, Any]]) -> bool:
     return any(isinstance(index, dict) and npc_id in index for index in indexes)
 
 
+def classify_actor_context(
+    npc_id: str,
+    *,
+    present: list[str] | None = None,
+    contactable: list[str] | None = None,
+    mentioned: list[str] | None = None,
+    known: bool = False,
+) -> str:
+    """Não promove seleção de memória ou cadastro a presença física."""
+
+    if npc_id in set(present or []):
+        return "presente"
+    if npc_id in set(contactable or []):
+        return "contactavel"
+    if npc_id in set(mentioned or []):
+        return "mencionado"
+    if known:
+        return "apenas_conhecido"
+    return "desconhecido"
+
+
 def _social(doc: Any) -> dict[str, Any] | None:
     result = doc.get("resultado") if isinstance(doc, dict) else None
     dialogue = result.get("dialogo_relacional") if isinstance(result, dict) else None
@@ -175,12 +196,14 @@ def _from_receipt(raw: dict[str, Any]) -> dict[str, Any]:
 
 def attach_loaded(repo: Path, prepared: dict[str, Any], payload: dict[str, Any], *,
                   interlocutors: list[str] | None, physical: list[str] | None,
-                  contactable: list[str] | None, docs: dict[str, Any],
+                  contactable: list[str] | None, mentioned: list[str] | None = None,
+                  docs: dict[str, Any],
                   indexes: list[dict[str, Any]], scene_mode: str | None) -> tuple[dict[str, Any], dict[str, Any] | None]:
     if interlocutors is None:
         return prepared, None
     people = normalize_interlocutors(interlocutors)
     physical_set, contactable_set = set(physical or []), set(contactable or [])
+    mentioned_set = set(mentioned or [])
     window, window_type, scene_id = _window(payload)
     blockers = _blockers(prepared, payload, scene_mode)
     higher = blockers[0] if blockers else None
@@ -237,14 +260,29 @@ def attach_loaded(repo: Path, prepared: dict[str, Any], payload: dict[str, Any],
     public_rows = []
     for row in rows:
         view = {key: copy.deepcopy(row[key]) for key in ("decisao_id", "npc_id", "presenca", "requer_decisao", "resultado_automatico", "motivo_automatico", "pressao_superior", "reutilizado")}
+        view["contexto_npc"] = classify_actor_context(
+            row["npc_id"],
+            present=list(physical_set),
+            contactable=list(contactable_set),
+            mentioned=list(mentioned_set),
+            known=_known(row["npc_id"], indexes),
+        )
         if row["decisao_id"] == selected:
             view["proposta"] = proposals[selected]
         public_rows.append(view)
+    contexts = {
+        state: sum(item["contexto_npc"] == state for item in public_rows)
+        for state in ("presente", "contactavel", "mencionado", "apenas_conhecido")
+    }
     public = {"schema_iniciativa_elenco": SCHEMA, "sistema": "iniciativa_social",
               "janela_id": window, "janela_tipo": window_type,
               "interlocutores": people, "selecionada": selected, "itens": public_rows,
               "regra": "participante, presença/contactabilidade e interlocutor são distintos; no máximo uma abertura por janela; Ren conserva sua resposta",
               "metricas": {"interlocutores": len(people), "aberturas": 1 if selected else 0,
+                           "elegiveis_por_presenca_ou_contato": sum(row["presenca"] != "ausente" for row in rows),
+                           "silencios_explicitos": sum(row["resultado_automatico"] in {"silencio_justificado", "nao_elegivel"} for row in rows),
+                           "repeticoes_bloqueadas": sum(row["motivo_automatico"] == "repeticao_sem_causa_nova" for row in rows),
+                           "contextos": contexts,
                            "consultas_adicionais_por_npc": 0, "chamadas_ia": 0, "rng_novo": 0, "scheduler_novo": 0, "scan_global": 0}}
     if _size(public) > MAX_PUBLIC_BYTES:
         raise CastInitiativeError("projeção de iniciativa excede orçamento")

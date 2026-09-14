@@ -111,7 +111,10 @@ class CronicaPendingGateTest(unittest.TestCase):
         self.assertNotIn("contrato_conclusao", result)
         self.assertFalse(result["disponibilidade"]["narracao"])
         self.assertEqual(result["barreira"]["quantidade"], 1)
-        self.assertIn("resolver_fronteira.py preparar", result["proximo_passo"]["comando"])
+        self.assertIn(
+            "world_boundary_resolution.py preparar",
+            result["proximo_passo"]["comando"],
+        )
         self.assertEqual(
             result["fontes_lidas"],
             [

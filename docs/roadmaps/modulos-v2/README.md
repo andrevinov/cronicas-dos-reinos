@@ -2,8 +2,8 @@
 
 ## Status
 
-**Em implementação.** RM-01, RM-02 e RM-03 estão concluídas; as demais tasks continuam
-propostas até serem executadas.
+**Em implementação.** RM-01 a RM-03 estão concluídas e as RM-04–RM-05 estão
+implementadas; as demais tasks continuam propostas até serem executadas.
 
 Este roadmap transforma o catálogo plano de vinte itens em doze módulos de
 domínio. Comportamentos existentes continuam preservados como subcapacidades;
@@ -103,8 +103,8 @@ novo contrato. A RM-12 é o corte definitivo.
 | [RM-01](rm01-catalogo-hierarquico-e-corte-da-serie.md) | catálogo hierárquico, guardrails e política de série — **concluída** | nenhuma |
 | [RM-02](rm02-ledger-telemetria-modular-v2.md) | eventos, atribuição e compatibilidade de telemetria — **concluída** | RM-01 |
 | [RM-03](rm03-consolidacao-sidequests.md) | três módulos de sidequest — **concluída** | RM-01–RM-02 |
-| [RM-04](rm04-consolidacao-mundo-causal.md) | projeção, fronteira e roteamento do mundo | RM-01–RM-02 |
-| [RM-05](rm05-continuidade-e-comportamento-npc.md) | continuidade e comportamento social de NPCs | RM-01–RM-02 |
+| [RM-04](rm04-consolidacao-mundo-causal.md) | projeção, fronteira e roteamento do mundo — **implementada; gates próprios verdes** | RM-01–RM-02 |
+| [RM-05](rm05-continuidade-e-comportamento-npc.md) | continuidade e comportamento social de NPCs — **implementada; gates próprios verdes** | RM-01–RM-02 |
 | [RM-06](rm06-operacoes-adversariais.md) | operações adversariais e seus guardrails | RM-01–RM-02 |
 | [RM-07](rm07-contexto-e-memoria.md) | leitura econômica e memória correta | RM-01–RM-02 |
 | [RM-08](rm08-orquestracao-turno-e-sessao.md) | controle transacional do turno e da sessão | RM-01–RM-02 |

@@ -7,7 +7,8 @@ preparação do turno. Isso evita narrar uma ação de Ren que o writer rejeitar
 mais tarde e remove a leitura manual do marcador do protocolo do agente.
 
 A camada não resolve pendências, não chama o endpoint de cena e não emite ticket.
-A resolução continua pertencendo à Task 23 (``resolver_fronteira.py``), enquanto
+A resolução continua pertencendo ao motor legado ``resolver_fronteira.py``, agora
+exposto pela fachada ``world_boundary_resolution.py``, enquanto
 o writer preserva sua própria barreira como defesa contra corridas posteriores à
 preparação.
 """
@@ -95,7 +96,7 @@ def prepare_gate(repo: Path) -> dict[str, Any] | None:
         "fontes_lidas": list(status.get("fontes_lidas") or []),
         "proximo_passo": {
             "acao": "resolver_pendencias_mundo",
-            "comando": "poetry run python ferramentas/resolver_fronteira.py preparar",
+            "comando": "poetry run python ferramentas/world_boundary_resolution.py preparar",
             "regra": (
                 "Resolva a fila pela Task 23 antes de narrar. Depois de aplicar os no-ops e "
                 "materializar os itens restantes, repita o mesmo `cronica preparar`; esta "

@@ -40,9 +40,9 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nã
 - L0–L5/acesso → `docs/agente/operacao/escada-de-acesso.md`, `docs/agente/operacao/acesso-e-operacoes.md`;
 - consolidação/checkpoint → `docs/agente/operacao/consolidacao-transacional.md`;
 - retomada/lifecycle → `docs/agente/memoria/memoria-de-sessoes.md`, `docs/agente/operacao/consolidacao-transacional.md`;
-- fronteira/pendências/contratos → `docs/agente/mundo/integracao-reativa-v2.md`, `docs/agente/mundo/compromissos-estruturados.md`;
-- NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narrativa/narracao-e-mundo.md`, `docs/agente/narrativa/papeis-conversacionais.md`, `docs/agente/memoria/memoria-de-cena.md`;
-- local/incidente/permanência → `docs/agente/mundo/ecologia-local.md`, `docs/agente/mundo/microeventos-locais.md`, `docs/agente/mundo/integracao-reativa-v2.md`;
+- fronteira/pendências/contratos → `docs/agente/mundo/modulos-mundo-causal-v2.md`, `docs/agente/mundo/compromissos-estruturados.md`;
+- NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narrativa/modulo-continuidade-npc-v2.md`, `docs/agente/narrativa/narracao-e-mundo.md`, `docs/agente/memoria/memoria-de-cena.md`;
+- local/incidente/permanência → `docs/agente/mundo/modulos-mundo-causal-v2.md`, `docs/agente/mundo/ecologia-local.md`;
 - side quests → `docs/agente/mundo/modulos-sidequest-v2.md`, `docs/agente/mundo/sidequest-gate-v2.md`, `docs/agente/mundo/integracao-reativa-v2.md`;
 - regras/dados → `docs/agente/regras/regras-e-rolagens.md`, `docs/agente/regras/mecanica-diegetica.md`;
 - densidade → `docs/agente/narrativa/densidade-narrativa.md`; ficha/tempo → `docs/agente/regras/personagem-e-tempo.md`; manutenção/testes → `docs/agente/engenharia/pesquisa-e-manutencao.md`, `docs/agente/engenharia/telemetria-rollouts.md`, `docs/agente/engenharia/perfis-de-testes.md`, `docs/agente/engenharia/politica-de-testes.md`.
@@ -63,7 +63,7 @@ Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narraç�
 
 **Iniciativa do elenco:** `--participante <id>` seleciona memória/elenco prospectivo; não prova por si presença física no mesmo preparo. `--interlocutor <id>` é o subconjunto que recebe decisão de iniciativa, mas só fica elegível com presença já consolidada no elenco corrente ou canal de contato validado. Interlocutor não cria presença, encontro ou side quest. No máximo uma abertura por janela; silêncio/adiamento/inelegibilidade ficam explícitos.
 
-**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `resolver_fronteira.py preparar` → avaliar → `resolver_fronteira.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
+**Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `world_boundary_resolution.py preparar` → avaliar → `world_boundary_resolution.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
 **Planos/contatos/operações:** `plano:<id>` no concluir; `planos` no lote. Ver `docs/agente/mundo/compromissos-estruturados.md`.
 

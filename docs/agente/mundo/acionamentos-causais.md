@@ -56,8 +56,8 @@ concluir promove o checkpoint, e o preparar seguinte observa a barreira.
 Resolver a barreira continua em lote:
 
 ```sh
-poetry run python ferramentas/resolver_fronteira.py preparar
-poetry run python ferramentas/resolver_fronteira.py aplicar <<'JSON'
+poetry run python ferramentas/world_boundary_resolution.py preparar
+poetry run python ferramentas/world_boundary_resolution.py aplicar <<'JSON'
 {"lote_id":"<lote recebido>","sem_mudanca":[
   {"id":"<pendência>","token":"<token recebido>","nota":"<motivo concreto>"}
 ]}

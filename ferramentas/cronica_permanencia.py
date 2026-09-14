@@ -15,7 +15,11 @@ from pathlib import Path
 from typing import Any
 
 import _cronica_nv14 as _base
-import permanencia_espacial as _stay
+import scene_world_projection as _world_projection
+
+# A permanência continua usando o mesmo motor NV-15. A dependência pública da
+# orquestração passa pela fachada RM-04, sem criar novo estado ou sorteio.
+_stay = _world_projection.spatial_permanence
 
 _core = _base._core
 _hot = _base._hot

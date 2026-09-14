@@ -27,11 +27,10 @@ import contratos_operacionais as _contracts
 import cronica_hotpath as _hot
 import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
-import memoria_duravel as _durable
-import memoria_cena as _scene_memory
+import npc_continuity_and_social_behavior as _npc_continuity
 import mundo as _world
 import progressao_juppongatana
-import pressao_narrativa as _pressure52
+import causal_narrative_routing as _pressure52
 import contatos_sociais as _contacts09
 import planos_adversarios as _plans10
 import retomada_cronica
@@ -39,6 +38,11 @@ import sessoes
 import sidequest_authoring as _sidequest_authoring
 import sidequest_lifecycle as _sidequest_lifecycle
 import transacoes
+
+# Compatibilidade para recovery/testes antigos; a orquestração depende da
+# fachada pública RM-05, que delega às mesmas fontes e aos mesmos writers.
+_scene_memory = _npc_continuity
+_durable = _npc_continuity
 
 # Nomes históricos continuam expostos para recovery e compatibilidade de testes,
 # mas a orquestração depende somente das duas fachadas públicas RM-03.
@@ -327,10 +331,14 @@ def conclude(repo: Path, token: str, transaction: dict):
     except _scene_memory.SceneMemoryError as exc:
         raise _core.CronicaError(f"NV05: {exc}") from exc
     # Memória vira deltas antes de qualquer writer ou journal de integração.
+    social_persistence_source = transaction
     try:
         transaction = _durable.prepare_transaction(Path(repo), transaction)
     except _durable.DurableMemoryError as exc:
         raise _core.CronicaError(f"NV04: {exc}") from exc
+    social_persistence = _npc_continuity.social_persistence_observation(
+        social_persistence_source
+    )
     try:
         transaction, contact_pending_ids = _contacts09.compile_conclusion(Path(repo), payload, transaction)
     except (ValueError, OSError, yaml.YAMLError) as exc:
@@ -452,7 +460,7 @@ def conclude(repo: Path, token: str, transaction: dict):
     if installed52 is not None:
         result["pressao_narrativa"] = installed52
         result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
-    return result
+    return _npc_continuity.publish_social_persistence(result, social_persistence)
 
 
 def register(

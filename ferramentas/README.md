@@ -484,3 +484,37 @@ canônicos usam a terceira. Consultas dirigidas ficam disponíveis por
 `sidequest_lifecycle.py status` e ofertas/efeitos canônicos por
 `canonical_quest_integration.py oferecer|efeitos`. Detalhes e invariantes:
 `docs/agente/mundo/modulos-sidequest-v2.md`.
+
+## Fachadas modulares do mundo causal
+
+A RM-04 consolidou projeção espacial, fronteira e roteamento sem mover os
+estados, baralhos, filas ou writers dos motores anteriores:
+
+```bash
+poetry run python ferramentas/scene_world_projection.py check
+poetry run python ferramentas/world_boundary_resolution.py check
+poetry run python ferramentas/causal_narrative_routing.py check
+```
+
+`cronica preparar/concluir` usa a fachada espacial e o roteador causal dentro do
+mesmo ciclo. `endpoints.py fronteira` usa a fachada de fronteira na consulta já
+existente. Quando houver bloqueio, `world_boundary_resolution.py preparar|aplicar`
+é a porta pública do lote; `resolver_fronteira.py` permanece compatibilidade.
+
+Para teste dirigido do roteador puro, envie uma lista de matérias já autorizadas
+para `causal_narrative_routing.py rotear`. Lista vazia é gate neutro e não cria
+ameaça. Detalhes: `docs/agente/mundo/modulos-mundo-causal-v2.md`.
+
+## Fachada modular de NPCs
+
+A RM-05 reúne continuidade longitudinal e comportamento social sem mover elenco,
+memória, medidores, identidades, reputação ou recibos de iniciativa:
+
+```bash
+poetry run python ferramentas/npc_continuity_and_social_behavior.py check
+```
+
+`cronica preparar/concluir` usa essa fachada dentro das chamadas já existentes.
+Consulta dirigida de NPC é continuidade; iniciativa só é observada com
+`--interlocutor` ou recibo de `iniciativa_elenco`. Detalhes:
+`docs/agente/narrativa/modulo-continuidade-npc-v2.md`.

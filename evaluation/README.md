@@ -7,8 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; desde a versão 2.1.0, os três
-  módulos de sidequest possuem fachadas implementadas pela RM-03;
+  pela RM-01 e ainda não habilitado para produção; a versão 2.3.0 registra as
+  fachadas das RM-03–RM-05, incluindo continuidade social de NPCs;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;
@@ -51,3 +51,10 @@ metas e gerador precisam ter versões iguais para agregação automática.
 
 A receita operacional completa está em
 `docs/agente/engenharia/avaliacao-desempenho-sessoes.md`.
+
+Na RM-05, consultas dirigidas de NPC passam a sinalizar continuidade sem serem
+promovidas automaticamente a iniciativa. `--interlocutor` e recibos de
+`iniciativa_elenco` observam `social_initiative`; memória/relação/reputação e
+presença/identidade ficam em suas subcapacidades próprias. Qualidade de voz e
+contradições sem marcador estrutural continuam para adjudicação humana, sem
+inferência por substring da prosa.
