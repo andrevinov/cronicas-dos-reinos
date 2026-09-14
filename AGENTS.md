@@ -43,7 +43,7 @@ Alvo histórico conhecido pode saltar busca ampla; reservado exige motivo. **Nã
 - fronteira/pendências/contratos → `docs/agente/mundo/integracao-reativa-v2.md`, `docs/agente/mundo/compromissos-estruturados.md`;
 - NPC/diálogo/identidade/reputação/iniciativa → `docs/agente/narrativa/narracao-e-mundo.md`, `docs/agente/narrativa/papeis-conversacionais.md`, `docs/agente/memoria/memoria-de-cena.md`;
 - local/incidente/permanência → `docs/agente/mundo/ecologia-local.md`, `docs/agente/mundo/microeventos-locais.md`, `docs/agente/mundo/integracao-reativa-v2.md`;
-- side quests → `docs/agente/mundo/sidequest-gate-v2.md`, `docs/agente/mundo/integracao-reativa-v2.md`;
+- side quests → `docs/agente/mundo/modulos-sidequest-v2.md`, `docs/agente/mundo/sidequest-gate-v2.md`, `docs/agente/mundo/integracao-reativa-v2.md`;
 - regras/dados → `docs/agente/regras/regras-e-rolagens.md`, `docs/agente/regras/mecanica-diegetica.md`;
 - densidade → `docs/agente/narrativa/densidade-narrativa.md`; ficha/tempo → `docs/agente/regras/personagem-e-tempo.md`; manutenção/testes → `docs/agente/engenharia/pesquisa-e-manutencao.md`, `docs/agente/engenharia/telemetria-rollouts.md`, `docs/agente/engenharia/perfis-de-testes.md`, `docs/agente/engenharia/politica-de-testes.md`.
 
@@ -98,8 +98,8 @@ Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica 
 ### Recompensas e side quests
 
 - **Autoria e contratos:** conversa incidental não acorda autoria; âncora concreta percorre oportunidade → autoria → contratos → lifecycle no mesmo `preparar/concluir`. Só oferta narrada materializa; recompensa, risco e progresso ficam congelados. A ponte canônica não move Ren; integridade adversarial preserva o núcleo protegido; terminal nunca é no-op.
-- **Lifecycle:** negativa não oculta causa vencida/alcançável. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequests_ativas.py status <id>`.
-- **Reações e operações:** exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração legada não inventa terminal/reação. Oferta canônica já narrada usa `sidequests_canonicas.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
+- **Lifecycle:** negativa não oculta causa vencida/alcançável. Missões aceitas (máx. 2) exigem no `concluir` negativa factual ou fatos com evidência literal. Retry repete `concluir`; consulta: `endpoints.py sidequest <id>` ou `sidequest_lifecycle.py status <id>`.
+- **Reações e operações:** exigem causalidade e gates aplicáveis; compromisso precede narração/rolagem; direção não autoriza ação. Migração legada não inventa terminal/reação. Oferta canônica já narrada usa `canonical_quest_integration.py oferecer <qsc-id> --npc <id>`; checkpoint não sorteia side quest/loot.
 
 ## 7. Checkpoint de cena e sessão
 

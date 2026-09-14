@@ -45,6 +45,7 @@ somente o domínio necessário para a tarefa.
 - [`mundo/ecologia-local.md`](mundo/ecologia-local.md): incidentes locais;
 - [`mundo/ecologia-transito-urbano.md`](mundo/ecologia-transito-urbano.md): trânsito urbano;
 - [`mundo/microeventos-locais.md`](mundo/microeventos-locais.md): microeventos e permanência;
+- [`mundo/modulos-sidequest-v2.md`](mundo/modulos-sidequest-v2.md): fachadas públicas de autoria, lifecycle e integração canônica;
 - [`mundo/sidequest-gate-v2.md`](mundo/sidequest-gate-v2.md): oportunidade, autoria e lifecycle;
 - [`mundo/adventure-drought-pressure.md`](mundo/adventure-drought-pressure.md): pressão por ausência de aventura;
 - [`mundo/mundo-vivo-noop-compaction.md`](mundo/mundo-vivo-noop-compaction.md): compactação de no-op;
@@ -60,4 +61,3 @@ somente o domínio necessário para a tarefa.
 - [`engenharia/benchmark-narrativo.md`](engenharia/benchmark-narrativo.md): protocolo de benchmark;
 - [`engenharia/telemetria-rollouts.md`](engenharia/telemetria-rollouts.md): telemetria pós-hoc;
 - [`engenharia/avaliacao-desempenho-sessoes.md`](engenharia/avaliacao-desempenho-sessoes.md): avaliação uniforme por sessão.
-

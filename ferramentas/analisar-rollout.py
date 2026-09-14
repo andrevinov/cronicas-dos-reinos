@@ -258,6 +258,15 @@ def _narrative_systems_from_command(command: str) -> set[str]:
         result.add("npc_social_initiative")
     if "cronica preparar" in lower and "--oportunidade-sidequest" in lower:
         result.add("emergent_sidequest_opportunity")
+    if "sidequest_authoring.py" in lower:
+        result.add("emergent_sidequest_authoring")
+    if "sidequest_lifecycle.py" in lower:
+        result.add("active_sidequest_reassessment")
+    if "canonical_quest_integration.py" in lower:
+        if re.search(r"\b(avaliar|oferecer|efeitos|check)\b", lower):
+            result.add("canonical_secret_quests")
+        if re.search(r"\b(responder|finalizar|abandonar|reconciliar|check)\b", lower):
+            result.add("canon_bridge")
     for system, markers in _SYSTEM_COMMAND_MARKERS.items():
         if any(marker in lower for marker in markers):
             result.add(system)

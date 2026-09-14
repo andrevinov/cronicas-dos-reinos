@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.0.0",
+  "versao_catalogo": "2.1.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -147,7 +147,7 @@
         {"id": "custo_por_autoria", "unidade": "tokens", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
@@ -176,7 +176,7 @@
         {"id": "fases_e_prazos_corretos", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
@@ -202,7 +202,7 @@
         {"id": "vazamentos_canonicos", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {

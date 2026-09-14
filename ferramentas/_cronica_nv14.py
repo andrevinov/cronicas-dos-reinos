@@ -34,12 +34,17 @@ import progressao_juppongatana
 import pressao_narrativa as _pressure52
 import contatos_sociais as _contacts09
 import planos_adversarios as _plans10
-import progresso_sidequests_transacional as _sidequests49
 import retomada_cronica
 import sessoes
-import sidequests_ativas as _sidequests48
-import sidequests_integracao_runtime as _sidequests46
+import sidequest_authoring as _sidequest_authoring
+import sidequest_lifecycle as _sidequest_lifecycle
 import transacoes
+
+# Nomes históricos continuam expostos para recovery e compatibilidade de testes,
+# mas a orquestração depende somente das duas fachadas públicas RM-03.
+_sidequests46 = _sidequest_authoring
+_sidequests48 = _sidequest_lifecycle
+_sidequests49 = _sidequest_lifecycle
 
 for _name in dir(_core):
     if not _name.startswith("__"):
@@ -153,10 +158,10 @@ def prepare(*args, **kwargs):
         prepared = base
     else:
         try:
-            prepared = _sidequests46.integrate_prepare(
+            prepared = _sidequests46.prepare(
                 Path(repo),
                 base,
-                signal_raw=signal,
+                signal=signal,
                 decode_ticket=decode_ticket,
                 encode_ticket=_core.encode_ticket,
                 now=kwargs.get("now"),
@@ -164,7 +169,7 @@ def prepare(*args, **kwargs):
         except _sidequests46.EmergentSidequestIntegrationError as exc:
             raise _core.CronicaError(str(exc)) from exc
     try:
-        prepared = _sidequests48.integrate_prepare(
+        prepared = _sidequests48.prepare(
             Path(repo),
             prepared,
             decode_ticket=decode_ticket,
@@ -379,55 +384,22 @@ def conclude(repo: Path, token: str, transaction: dict):
                 passive_plan_ids=passive_plan_ids,
             )
         else:
-            journal46 = _sidequests46.recover_matching_journal(
-                repo, ticket_id=ticket_id_original, transaction=transaction
+            authoring_plan = _sidequests46.prepare_conclusion(
+                repo,
+                ticket_id=ticket_id_original,
+                ticket_payload=payload,
+                ticket_meta_value=meta46,
+                transaction=transaction,
             )
-            if journal46 is None:
-                package = _sidequests46._plan_from_ticket(repo, meta46)
-                block, offer = _sidequests46._normalize_offer(transaction)
-                if block is None:
-                    result = _conclude_base(
-                        repo,
-                        base_token,
-                        writer_tx,
-                        pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
-                        contact_pending_ids=contact_pending_ids,
-                        passive_plan_ids=passive_plan_ids,
-                    )
-                    installed46 = {
-                        "resultado": "oferta_nao_materializada",
-                        "mutacoes_sidequest": 0,
-                        "regra": "oportunidade avaliada, mas nenhuma oferta foi narrada neste turno",
-                    }
-                else:
-                    scene_id = str(
-                        (_sidequests46._map(payload.get("cena"), "ticket.cena")).get(
-                            "scene_id"
-                        )
-                    )
-                    plan46 = _sidequests46.prepare_installation(
-                        repo,
-                        package=package,
-                        block=block,
-                        offer_scene_id=scene_id,
-                        offer_summary=offer["resumo"],
-                    )
-                    journal46 = _sidequests46.begin_conclusion(
-                        repo,
-                        ticket_id=ticket_id_original,
-                        transaction=transaction,
-                        plan=plan46,
-                    )
-            if journal46 is not None:
-                result = _conclude_base(
-                    repo,
-                    base_token,
-                    writer_tx,
-                    pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
-                    contact_pending_ids=contact_pending_ids,
-                    passive_plan_ids=passive_plan_ids,
-                )
-                installed46 = _sidequests46.install(repo, journal46)
+            result = _conclude_base(
+                repo,
+                base_token,
+                writer_tx,
+                pressure_pending_ids=(pressure_plan or {}).get("pendencias_autorizadas"),
+                contact_pending_ids=contact_pending_ids,
+                passive_plan_ids=passive_plan_ids,
+            )
+            installed46 = _sidequests46.install_conclusion(repo, authoring_plan)
     except _sidequests46.EmergentSidequestIntegrationError as exc:
         raise _core.CronicaError(
             f"Task46: {exc}. Se o turno já tiver sido registrado, repita o mesmo cronica concluir; "
@@ -437,7 +409,7 @@ def conclude(repo: Path, token: str, transaction: dict):
     installed49 = None
     if progress_plan is not None:
         try:
-            installed49 = _sidequests49.install(
+            installed49 = _sidequests49.install_conclusion(
                 repo,
                 progress_plan,
                 transaction=transaction,

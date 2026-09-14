@@ -176,20 +176,16 @@ class SidequestOpportunityBudgetTest(unittest.TestCase):
             )
         }
         self.assertEqual(
-            items[("ferramentas/sidequests_integracao_check.py",)],
-            "integração de sidequests emergentes",
+            items[("ferramentas/sidequest_authoring.py", "check")],
+            "autoria modular de sidequests",
         )
         self.assertEqual(
-            items[("ferramentas/sidequests_ativas.py", "check")],
-            "projeção de sidequests ativas",
+            items[("ferramentas/sidequest_lifecycle.py", "check")],
+            "lifecycle modular de sidequests",
         )
         self.assertEqual(
-            items[("ferramentas/progresso_sidequests_transacional.py", "check")],
-            "progresso transacional de sidequests",
-        )
-        self.assertEqual(
-            items[("ferramentas/reacoes_sidequest.py", "check")],
-            "reações causais de sidequest",
+            items[("ferramentas/canonical_quest_integration.py", "check")],
+            "integração canônica modular de sidequests",
         )
         result = integration.check(ROOT)
         self.assertTrue(result["ok"], result["erros"])

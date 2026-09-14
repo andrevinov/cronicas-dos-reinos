@@ -7,7 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção;
+  pela RM-01 e ainda não habilitado para produção; desde a versão 2.1.0, os três
+  módulos de sidequest possuem fachadas implementadas pela RM-03;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;

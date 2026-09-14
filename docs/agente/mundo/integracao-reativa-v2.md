@@ -113,7 +113,7 @@ Quando uma quest fica elegível, o endpoint projeta apenas o necessário para o 
 Se o pedido realmente entrar na narração aceita, após `cronica concluir`:
 
 ```bash
-poetry run python ferramentas/sidequests_canonicas.py oferecer <qsc-id> --npc <npc_id> [--local <local_id>]
+poetry run python ferramentas/canonical_quest_integration.py oferecer <qsc-id> --npc <npc_id> [--local <local_id>]
 ```
 
 A porta revalida o gate e escreve uma vez. Retry é idempotente. O cooldown procedural antigo não é reutilizado.
@@ -177,7 +177,7 @@ poetry run python ferramentas/oportunidades.py responder <sqc-id> aceitar|adiar|
 Efeitos secretos de uma quest canônica só podem ser abertos depois de `aceita`:
 
 ```bash
-poetry run python ferramentas/sidequests_canonicas.py efeitos <sqc-id>
+poetry run python ferramentas/canonical_quest_integration.py efeitos <sqc-id>
 ```
 
 A saída alimenta `interacoes_mundo.py preparar-sidequest <id>`; deltas de pressão/consequência pertencem ao mesmo turno que narra o efeito. Rastro/recompensa ficam em `pos_canonico` até o fato-base existir.

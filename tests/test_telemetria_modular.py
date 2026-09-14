@@ -322,6 +322,25 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(orchestration["session_id"], "session-fixture")
         self.assertEqual(orchestration["analysis_unit"], "turno")
 
+    def test_fachadas_rm03_preservam_atribuicao_dos_aliases_v1(self) -> None:
+        self.assertIn(
+            "emergent_sidequest_authoring",
+            mod._narrative_systems_from_command(
+                "python3 ferramentas/sidequest_authoring.py check"
+            ),
+        )
+        self.assertIn(
+            "active_sidequest_reassessment",
+            mod._narrative_systems_from_command(
+                "python3 ferramentas/sidequest_lifecycle.py status sqe-fixture"
+            ),
+        )
+        canonical = mod._narrative_systems_from_command(
+            "python3 ferramentas/canonical_quest_integration.py oferecer qsc-fixture --npc silva"
+        )
+        self.assertIn("canonical_secret_quests", canonical)
+        self.assertNotIn("canon_bridge", canonical)
+
     def test_visao_legada_e_read_only(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", "Ren observa a rua."),

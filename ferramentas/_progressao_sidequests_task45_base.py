@@ -28,7 +28,7 @@ from typing import Any
 import yaml
 
 import barreira_mundo
-import canon_bridge_runtime
+import canonical_quest_integration as canon_bridge_runtime
 import integridade_adversarial as adversarial
 import mundo
 import oportunidades

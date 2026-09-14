@@ -2,7 +2,7 @@
 
 ## Status e dependências
 
-**Proposta.** Depende das RM-01–RM-02.
+**Concluída em 2026-09-13.** Depende das RM-01–RM-02, já concluídas.
 
 ## Objetivo
 
@@ -36,6 +36,25 @@ autoridade e conhecimento permanecem guardrails explícitos.
 Os scripts atuais podem permanecer como implementações internas durante a
 migração. A fachada v2 deve ser o contrato público; remoção ou renomeação física
 só ocorre depois que imports, documentação e testes tiverem destino registrado.
+
+## Artefatos implementados
+
+- `ferramentas/sidequest_authoring.py`: fachada de gate, autoria e oferta;
+- `ferramentas/sidequest_lifecycle.py`: fachada de projeção, progresso e efeitos
+  terminais;
+- `ferramentas/canonical_quest_integration.py`: fachada bidirecional da fronteira
+  canônica;
+- `ferramentas/_sidequest_facade.py`: agregação read-only uniforme dos checks;
+- `ferramentas/_cronica_nv14.py` e `ferramentas/sidequests_canonicas_cena.py`:
+  hot path migrado para as fachadas, sem chamada adicional;
+- `ferramentas/preflight.py`: nove checks públicos históricos consolidados em
+  três checks modulares, preservando os validadores internos;
+- `tests/test_sidequest_modules_v2.py`: contrato, roteamento, negativa, journal,
+  aliases e preflight;
+- `docs/agente/mundo/modulos-sidequest-v2.md`: contrato operacional permanente.
+
+Nenhum ticket, journal, receipt, estado ou histórico de sidequest foi reescrito.
+Os componentes anteriores permanecem como implementação interna e compatibilidade.
 
 ## Invariantes
 

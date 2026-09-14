@@ -11,7 +11,10 @@ from pathlib import Path
 from typing import Any, Callable
 
 import cena_mundo_v4 as _v4
-import sidequests_canonicas
+import canonical_quest_integration as _canonical_quests
+
+# Compatibilidade temporária para consumidores que patchavam a antiga porta.
+sidequests_canonicas = _canonical_quests
 
 _core = _v4._core
 _BASE_OPEN_SCENE: Callable[..., dict[str, Any]] | None = None
@@ -64,13 +67,13 @@ def open_scene(
     if isinstance(local, dict) and isinstance(local.get("local_id"), str):
         local_id = local["local_id"]
     try:
-        selection = sidequests_canonicas.select_from_refs(
+        selection = _canonical_quests.select_canonical_from_refs(
             repo,
             refs,
             local_id=local_id,
             now=now,
         )
-    except sidequests_canonicas.CanonicalSidequestError as exc:
+    except _canonical_quests.CanonicalSidequestError as exc:
         raise _core.SceneGateError(str(exc)) from exc
 
     # Tudo que foi realmente lido entra no fingerprint transacional, mesmo quando

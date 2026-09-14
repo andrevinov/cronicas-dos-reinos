@@ -38,27 +38,19 @@ class PreflightTest(unittest.TestCase):
     def test_preflight_inclui_gates_de_sidequest_por_comando_estavel(self):
         commands = {tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)}
         expected = {
-            ("ferramentas/recompensas_sidequest.py", "check"),
             ("ferramentas/integridade_adversarial.py", "check"),
-            ("ferramentas/progressao_sidequests.py", "check"),
-            ("ferramentas/sidequests_integracao_check.py",),
-            ("ferramentas/sidequests_ativas.py", "check"),
-            ("ferramentas/progresso_sidequests_transacional.py", "check"),
-            ("ferramentas/reacoes_sidequest.py", "check"),
-            ("ferramentas/oportunidades.py", "check"),
-            ("ferramentas/canon_bridge_runtime.py", "check"),
+            ("ferramentas/sidequest_authoring.py", "check"),
+            ("ferramentas/sidequest_lifecycle.py", "check"),
+            ("ferramentas/canonical_quest_integration.py", "check"),
         }
         self.assertTrue(expected <= commands)
+        self.assertFalse(preflight._SIDEQUEST_INTERNAL_CHECKS & commands)
 
         names = {item.nome for item in preflight.checks(incluir_testes=False)}
-        self.assertIn("recompensas de sidequest", names)
         self.assertIn("integridade adversarial", names)
-        self.assertIn("progressão e consequências de sidequest", names)
-        self.assertIn("integração de sidequests emergentes", names)
-        self.assertIn("projeção de sidequests ativas", names)
-        self.assertIn("progresso transacional de sidequests", names)
-        self.assertIn("reações causais de sidequest", names)
-        self.assertIn("canon bridge", names)
+        self.assertIn("autoria modular de sidequests", names)
+        self.assertIn("lifecycle modular de sidequests", names)
+        self.assertIn("integração canônica modular de sidequests", names)
         self.assertFalse(any("Task4" in name for name in names))
 
     def test_sem_testes_remove_apenas_unittest(self):

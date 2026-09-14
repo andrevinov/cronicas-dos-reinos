@@ -467,3 +467,20 @@ subcapacidades, custos aditivos fechados uma vez nos módulos pais e observaçã
 separada de adjudicação. Use `--adjudicacoes-modulares arquivo.json` para aplicar
 correções pós-hoc sem sobrescrever o sinal original. O gerador de avaliações v1
 seleciona `legacy-v1` explicitamente até o corte da RM-11.
+
+## Fachadas modulares de sidequest
+
+A RM-03 consolidou as portas públicas de sidequest sem migrar estado ou remover
+os motores anteriores:
+
+```bash
+poetry run python ferramentas/sidequest_authoring.py check
+poetry run python ferramentas/sidequest_lifecycle.py check
+poetry run python ferramentas/canonical_quest_integration.py check
+```
+
+O `cronica preparar/concluir` usa as duas primeiras fachadas; seleção e efeitos
+canônicos usam a terceira. Consultas dirigidas ficam disponíveis por
+`sidequest_lifecycle.py status` e ofertas/efeitos canônicos por
+`canonical_quest_integration.py oferecer|efeitos`. Detalhes e invariantes:
+`docs/agente/mundo/modulos-sidequest-v2.md`.

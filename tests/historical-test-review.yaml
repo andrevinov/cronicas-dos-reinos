@@ -30,7 +30,7 @@ arquivos:
   tests/test_canon_bridge_rewriter.py:
     classificacao: permanente
     requisito: Preservar agência, reservas canônicas, satisfação por evidência e fallback do canon bridge.
-    cobertura_atual: [tests/test_canon_bridge_rewriter.py]
+    cobertura_atual: [tests/test_canon_bridge_rewriter.py, tests/test_sidequest_modules_v2.py]
   tests/test_canon_bridge_schedule_guard.py:
     classificacao: permanente
     requisito: Impedir que o canon bridge reescreva agendamentos já materializados no passado.
@@ -62,11 +62,11 @@ arquivos:
   tests/test_emergent_sidequest_authoring_registry_v2.py:
     classificacao: permanente
     requisito: Garantir autoria e materialização de sidequest emergente somente após oferta real e contrato válido.
-    cobertura_atual: [tests/test_emergent_sidequest_authoring_registry_v2.py]
+    cobertura_atual: [tests/test_emergent_sidequest_authoring_registry_v2.py, tests/test_sidequest_modules_v2.py]
   tests/test_emergent_sidequest_opportunity_boundary.py:
     classificacao: permanente
     requisito: Garantir que oportunidade causal seja read-only, limitada e não nasça de conversa incidental.
-    cobertura_atual: [tests/test_emergent_sidequest_opportunity_boundary.py]
+    cobertura_atual: [tests/test_emergent_sidequest_opportunity_boundary.py, tests/test_sidequest_modules_v2.py]
   tests/test_incidentes_mundo.py:
     classificacao: permanente
     requisito: Validar sorteio determinístico, consumo idempotente e integração de incidentes locais do mundo.
@@ -82,7 +82,7 @@ arquivos:
   tests/test_quest_rewards_discoveries_losses.py:
     classificacao: permanente
     requisito: Garantir recompensas, descobertas e perdas de sidequest com contrato, causalidade e idempotência.
-    cobertura_atual: [tests/test_quest_rewards_discoveries_losses.py]
+    cobertura_atual: [tests/test_quest_rewards_discoveries_losses.py, tests/test_sidequest_modules_v2.py]
   tests/test_rules_catalog.py:
     classificacao: permanente
     requisito: Validar identidade, autoridade, aliases e fallback do catálogo de regras ativo.
@@ -102,7 +102,7 @@ arquivos:
   tests/test_sidequest_progression_deadlines_consequences.py:
     classificacao: permanente
     requisito: Validar progressão factual, prazos, consequências e recompensas terminais de sidequests.
-    cobertura_atual: [tests/test_sidequest_progression_deadlines_consequences.py]
+    cobertura_atual: [tests/test_sidequest_progression_deadlines_consequences.py, tests/test_sidequest_modules_v2.py]
   tests/test_task38_narrative_systems_integration.py:
     classificacao: substituivel
     requisito: Garantir integração dos sistemas narrativos sem ampliar hot path, scans, scheduler ou RNG.

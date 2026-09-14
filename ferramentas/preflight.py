@@ -36,9 +36,56 @@ else:
 
 _BASE_CHECKS_NV22 = checks
 
+_SIDEQUEST_INTERNAL_CHECKS = {
+    ("ferramentas/recompensas_sidequest.py", "check"),
+    ("ferramentas/progressao_sidequests.py", "check"),
+    ("ferramentas/sidequests_integracao_check.py",),
+    ("ferramentas/sidequests_vivas.py", "check"),
+    ("ferramentas/sidequests_ativas.py", "check"),
+    ("ferramentas/progresso_sidequests_transacional.py", "check"),
+    ("ferramentas/reacoes_sidequest.py", "check"),
+    ("ferramentas/oportunidades.py", "check"),
+    ("ferramentas/canon_bridge_runtime.py", "check"),
+}
+
+
+def _consolidate_sidequest_checks(items):
+    positions = [
+        index
+        for index, item in enumerate(items)
+        if tuple(item.comando[1:]) in _SIDEQUEST_INTERNAL_CHECKS
+    ]
+    insert_at = min(positions) if positions else len(items)
+    result = [
+        item
+        for item in items
+        if tuple(item.comando[1:]) not in _SIDEQUEST_INTERNAL_CHECKS
+    ]
+    facades = [
+        Check(
+            "autoria modular de sidequests",
+            (sys.executable, "ferramentas/sidequest_authoring.py", "check"),
+            "mundo vivo",
+        ),
+        Check(
+            "lifecycle modular de sidequests",
+            (sys.executable, "ferramentas/sidequest_lifecycle.py", "check"),
+            "mundo vivo",
+        ),
+        Check(
+            "integração canônica modular de sidequests",
+            (sys.executable, "ferramentas/canonical_quest_integration.py", "check"),
+            "mundo vivo",
+        ),
+    ]
+    result[insert_at:insert_at] = facades
+    return result
+
 
 def checks(*, incluir_testes: bool = True):
-    result = _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+    result = _consolidate_sidequest_checks(
+        _BASE_CHECKS_NV22(incluir_testes=incluir_testes)
+    )
     gate = Check(
         "aceitação integrada de vivacidade",
         (sys.executable, "ferramentas/aceitacao_vivacidade.py", "check"),
