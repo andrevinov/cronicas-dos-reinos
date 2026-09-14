@@ -19,8 +19,9 @@ python3 ferramentas/preflight.py
 O preflight executa em sequência:
 
 1. suíte unitária completa;
-2. o gate modular `turn_and_session_orchestration.py check`, que agrega turno,
-   consolidação, memória de sessões e checkpoint sem mutação;
+2. os gates modulares, incluindo `turn_and_session_orchestration.py check` para
+   o controle transacional e `narrative_delivery.py check` para o contrato de
+   entrega sem juiz literário ou mutação;
 3. migração/fragmentação/índice em modo `--check`;
 4. `gerar-runtime.py --check`;
 5. integridade estrutural/semântica;

@@ -7,8 +7,8 @@ memória canônica da campanha ou participa do hot path da narração.
 
 - `catalogo-modulos.json`: catálogo v1, ainda usado pelo gerador de produção;
 - `catalogo-modulos-v2.json`: contrato hierárquico dos doze módulos, preparado
-  pela RM-01 e ainda não habilitado para produção; a versão 2.6.0 registra as
-  fachadas das RM-03–RM-08, incluindo o control plane de turno e sessão;
+  pela RM-01 e ainda não habilitado para produção; a versão 2.7.0 registra as
+  fachadas das RM-03–RM-09, incluindo entrega narrativa correlacionada;
 - `catalogo-guardrails-v2.json`: propriedades críticas não compensáveis;
 - `series-avaliacao.json`: corte entre `legacy-v1` e `modules-v2` e regra de
   comparabilidade;
@@ -76,3 +76,9 @@ retry e lifecycle por recibos versionados emitidos nas chamadas existentes. O
 ledger separa custo de `controle` e `dominio`; tickets obsoletos, commits
 incompletos e recovery deixam de ser atribuídos por aproximação a módulos
 narrativos.
+
+Na RM-09, `narrative_delivery` anexa ao `cronica concluir` um recibo compacto da
+prosa registrada e permite correlacioná-lo à resposta final e ao rodapé. Tamanho,
+mecânica explícita e latência são medidas estruturais; adequação de progressão,
+densidade, voz, conhecimento e fechamento depende de auditoria semântica. Notas
+do jogador entram separadamente e nunca compensam agência, sigilo ou rolagem.

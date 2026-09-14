@@ -121,6 +121,13 @@ O arquivo `eventos-modulares.csv` é o ledger para localizar os turnos. Nesta
 primeira versão, elegibilidade e efeito esperado permanecem indeterminados até
 que uma auditoria por turno forneça evidência suficiente.
 
+Para `narrative_delivery`, a camada `modules-v2` já aceita auditoria por evento
+em `semantic_audits`, com progressão jogável, densidade proporcional,
+voz/diálogo, camadas de conhecimento e conclusão aberta. Agência, sigilo e
+integridade de rolagem seguem no bloco separado de guardrails. Até a RM-11, esse
+registro entra diretamente por `--adjudicacoes-modulares`; ele não altera o
+scorecard v1 nem a série histórica 021.
+
 ### 4. Coletar percepção do jogador
 
 O jogador preenche `feedback-jogador.csv` depois da sessão. Primeiro responde às
@@ -134,6 +141,11 @@ indireto. Valores aceitos:
 
 Campo vazio significa N/D e não vira nota neutra. O formulário não lista
 módulos reservados ou puramente técnicos.
+
+Na visão `modules-v2`, a entrega narrativa aceita especificamente ritmo,
+naturalidade, profundidade e agência percebida em `player_feedback`. Cada nota
+é 1–5 ou `null`; se todas forem `null`, o item é omitido. A participação é
+deliberadamente limitada e nunca muda o resultado dos guardrails críticos.
 
 ### 5. Regenerar e congelar o pacote da sessão
 

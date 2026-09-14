@@ -27,6 +27,7 @@ somente o domínio necessário para a tarefa.
 
 ## Narrativa
 
+- [`narrativa/modulo-entrega-narrativa-v2.md`](narrativa/modulo-entrega-narrativa-v2.md): recibo de entrega, avaliação semântica e percepção do jogador;
 - [`narrativa/modulo-continuidade-npc-v2.md`](narrativa/modulo-continuidade-npc-v2.md): continuidade, conhecimento, identidade, reputação e iniciativa do elenco;
 - [`narrativa/narracao-e-mundo.md`](narrativa/narracao-e-mundo.md): NPCs, relações, identidade e reputação;
 - [`narrativa/densidade-narrativa.md`](narrativa/densidade-narrativa.md): densidade adequada ao turno;

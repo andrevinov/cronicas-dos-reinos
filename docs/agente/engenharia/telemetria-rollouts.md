@@ -90,6 +90,14 @@ emitido depois do writer é efeito durável. Retry confirma a memória sem conta
 novo efeito, e destinos de
 conhecimento são observados sem expor o conteúdo do fato.
 
+`narrative_delivery` correlaciona o recibo `schema_narrative_delivery: 1` do
+`cronica concluir` com a última mensagem visível `final`. O relatório mede
+resposta e recibo presentes, rodapé na última linha, linhas mecânicas, exposição
+procedimental sem ficção, tamanho por classe de turno e latência quando há
+timestamps. `densidade_nao_avaliada` é deliberado: extensão não equivale a
+qualidade, e rollouts anteriores sem recibo aparecem como
+`entrega_legada_observada`.
+
 ### Custo no ledger
 
 Para cada turno, input e output são divididos uma única vez entre os módulos
@@ -101,7 +109,7 @@ separação é contábil e não presume custo marginal causal. Dentro do módulo
 somente o evento primário carrega a parcela aditiva do pai. Custo marginal
 permanece `indeterminado`; a divisão é atribuição contábil, não causal.
 
-### Adjudicações
+### Adjudicações e percepção do jogador
 
 Correções opcionais seguem
 `evaluation/schemas/adjudicacoes-ledger-v2.schema.json`:
@@ -115,6 +123,15 @@ A correção entra em `event.adjudication` e em `corrections`. Os valores
 `eligibility_observed`, `activation_observed`, evidência e resultado originais
 permanecem intactos. O schema estável do ledger fica em
 `evaluation/schemas/ledger-modular-v2.schema.json`.
+
+O mesmo arquivo pode conter `semantic_audits` para progressão jogável,
+densidade proporcional, voz/diálogo, camadas de conhecimento e conclusão
+aberta, além de `player_feedback` com notas opcionais de 1 a 5 para ritmo,
+naturalidade, profundidade e agência percebida. Ausência de nota é N/D e o
+bloco deve ser omitido quando todas as dimensões estiverem ausentes. Agência,
+sigilo e integridade de rolagem são guardrails separados: não participam nem
+podem ser compensados pela média perceptiva. O ledger nunca cria nota literária
+automática.
 
 ### Orquestração
 

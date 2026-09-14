@@ -161,3 +161,8 @@ A política de acesso continua valendo: pare de **buscar** quando o contexto for
 Isso não significa parar de **narrar** assim que os fatos mínimos forem conhecidos.
 
 Primeiro obtenha apenas os fatos/texturas necessários. Depois use esse material para contar a cena com a densidade que ela merece.
+
+A observação padronizada desta propriedade pertence a
+[`modulo-entrega-narrativa-v2.md`](modulo-entrega-narrativa-v2.md). Tamanho e
+parágrafos são contexto estrutural, nunca substitutos automáticos do julgamento
+de densidade proporcional.

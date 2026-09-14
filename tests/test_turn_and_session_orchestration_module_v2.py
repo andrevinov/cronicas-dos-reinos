@@ -33,7 +33,7 @@ class TurnAndSessionOrchestrationContractTest(unittest.TestCase):
             for item in preflight.checks(incluir_testes=False)
         ]
 
-        self.assertEqual(catalog["versao_catalogo"], "2.6.0")
+        self.assertEqual(catalog["versao_catalogo"], "2.7.0")
         self.assertEqual(module["versao_implementacao"], "1.0.0")
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},

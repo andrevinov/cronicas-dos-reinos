@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "adjudicacoes-ledger-v2.schema.json",
-  "title": "Correções manuais do ledger modular v2",
+  "title": "Adjudicações e percepção humana do ledger modular v2",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_adjudicacoes_modulares", "corrections"],
+  "required": ["schema_adjudicacoes_modulares"],
   "properties": {
     "schema_adjudicacoes_modulares": {"const": 1},
     "corrections": {
@@ -23,6 +23,70 @@
           "evidence": {"type": "array", "items": {"type": "string"}}
         }
       }
+    },
+    "semantic_audits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "evaluator", "dimensions", "guardrails", "evidence"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "evaluator": {"type": "string", "minLength": 1},
+          "dimensions": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["progressao_jogavel", "densidade_proporcional", "voz_e_dialogo", "camadas_de_conhecimento", "conclusao_aberta"],
+            "properties": {
+              "progressao_jogavel": {"$ref": "#/$defs/semanticState"},
+              "densidade_proporcional": {"$ref": "#/$defs/semanticState"},
+              "voz_e_dialogo": {"$ref": "#/$defs/semanticState"},
+              "camadas_de_conhecimento": {"$ref": "#/$defs/semanticState"},
+              "conclusao_aberta": {"$ref": "#/$defs/semanticState"}
+            }
+          },
+          "guardrails": {"$ref": "#/$defs/guardrails"},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "player_feedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "ratings"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1},
+          "ratings": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ritmo", "naturalidade", "profundidade", "agencia_percebida"],
+            "properties": {
+              "ritmo": {"$ref": "#/$defs/playerRating"},
+              "naturalidade": {"$ref": "#/$defs/playerRating"},
+              "profundidade": {"$ref": "#/$defs/playerRating"},
+              "agencia_percebida": {"$ref": "#/$defs/playerRating"}
+            }
+          },
+          "comment": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]}
+        }
+      }
     }
+  },
+  "$defs": {
+    "semanticState": {"enum": ["adequado", "inadequado", "indeterminado", "nao_aplicavel"]},
+    "guardrailState": {"enum": ["ok", "violado", "indeterminado", "nao_aplicavel"]},
+    "guardrails": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["player_agency", "knowledge_secrecy", "roll_integrity"],
+      "properties": {
+        "player_agency": {"$ref": "#/$defs/guardrailState"},
+        "knowledge_secrecy": {"$ref": "#/$defs/guardrailState"},
+        "roll_integrity": {"$ref": "#/$defs/guardrailState"}
+      }
+    },
+    "playerRating": {"type": ["integer", "null"], "minimum": 1, "maximum": 5}
   }
 }

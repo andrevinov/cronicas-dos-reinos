@@ -19,7 +19,9 @@
     "module_parent_costs",
     "cost_class_totals",
     "cost_closure",
-    "corrections"
+    "corrections",
+    "semantic_audits",
+    "player_feedback"
   ],
   "properties": {
     "schema_modular_ledger": {"const": 2},
@@ -44,7 +46,9 @@
       "type": "object",
       "additionalProperties": {"$ref": "#/$defs/closure"}
     },
-    "corrections": {"type": "array", "items": {"$ref": "#/$defs/appliedCorrection"}}
+    "corrections": {"type": "array", "items": {"$ref": "#/$defs/appliedCorrection"}},
+    "semantic_audits": {"type": "array", "items": {"$ref": "#/$defs/semanticAudit"}},
+    "player_feedback": {"type": "array", "items": {"$ref": "#/$defs/playerFeedback"}}
   },
   "$defs": {
     "tokenCost": {
@@ -200,6 +204,65 @@
         "event_id": {"type": "string"},
         "observed_preserved": {"type": "object"},
         "adjudicated": {"$ref": "#/$defs/adjudication"}
+      }
+    },
+    "semanticState": {"enum": ["adequado", "inadequado", "indeterminado", "nao_aplicavel"]},
+    "guardrailState": {"enum": ["ok", "violado", "indeterminado", "nao_aplicavel"]},
+    "semanticAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "evaluator", "dimensions", "guardrails", "evidence", "automatic_literary_score", "guardrails_compensable"],
+      "properties": {
+        "event_id": {"type": "string", "minLength": 1},
+        "evaluator": {"type": "string", "minLength": 1},
+        "dimensions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["progressao_jogavel", "densidade_proporcional", "voz_e_dialogo", "camadas_de_conhecimento", "conclusao_aberta"],
+          "properties": {
+            "progressao_jogavel": {"$ref": "#/$defs/semanticState"},
+            "densidade_proporcional": {"$ref": "#/$defs/semanticState"},
+            "voz_e_dialogo": {"$ref": "#/$defs/semanticState"},
+            "camadas_de_conhecimento": {"$ref": "#/$defs/semanticState"},
+            "conclusao_aberta": {"$ref": "#/$defs/semanticState"}
+          }
+        },
+        "guardrails": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["player_agency", "knowledge_secrecy", "roll_integrity"],
+          "properties": {
+            "player_agency": {"$ref": "#/$defs/guardrailState"},
+            "knowledge_secrecy": {"$ref": "#/$defs/guardrailState"},
+            "roll_integrity": {"$ref": "#/$defs/guardrailState"}
+          }
+        },
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "automatic_literary_score": {"type": "null"},
+        "guardrails_compensable": {"const": false}
+      }
+    },
+    "playerRating": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "playerFeedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event_id", "ratings", "comment", "aggregation_role", "guardrails_unchanged"],
+      "properties": {
+        "event_id": {"type": "string", "minLength": 1},
+        "ratings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ritmo", "naturalidade", "profundidade", "agencia_percebida"],
+          "properties": {
+            "ritmo": {"$ref": "#/$defs/playerRating"},
+            "naturalidade": {"$ref": "#/$defs/playerRating"},
+            "profundidade": {"$ref": "#/$defs/playerRating"},
+            "agencia_percebida": {"$ref": "#/$defs/playerRating"}
+          }
+        },
+        "comment": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]},
+        "aggregation_role": {"const": "percepcao_com_peso_limitado"},
+        "guardrails_unchanged": {"const": true}
       }
     }
   }

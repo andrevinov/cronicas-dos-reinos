@@ -39,6 +39,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_entrada.py",
     "test_mecanica_dnd_5_5e.py",
     "test_metodos_agentes.py",
+    "test_narrative_delivery_module_v2.py",
     "test_politica_acesso.py",
     "test_poetry_setup.py",
     "test_preflight.py",
@@ -83,6 +84,7 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_reactive_pressure_routing.py",
         "test_mundo_causal_modules_v2.py",
         "test_npc_continuity_module_v2.py",
+        "test_narrative_delivery_module_v2.py",
         "test_seven_names_sidequest_regression.py",
     ),
     "sessoes": (
@@ -196,6 +198,17 @@ DOMAIN_PATTERNS: dict[str, tuple[str, ...]] = {
         "test_memoria_cena_integracao.py",
         "test_memoria_sessoes.py",
     ),
+    "narrativa": (
+        "test_narrative_delivery_module_v2.py",
+        "test_densidade_narrativa.py",
+        "test_diegetico.py",
+        "test_rodape_turno.py",
+        "test_entrada.py",
+        "test_experiencia_narrativa_integrada.py",
+        "test_cronica_cli.py",
+        "test_turno_transacional.py",
+        "test_telemetria_modular.py",
+    ),
 }
 
 DOMAIN_ALIASES = {
@@ -210,6 +223,8 @@ DOMAIN_ALIASES = {
     "contexto": "contexto",
     "memoria": "memoria",
     "retomada": "retomada",
+    "narrativa": "narrativa",
+    "narracao": "narrativa",
 }
 
 
@@ -316,7 +331,7 @@ def build_parser() -> argparse.ArgumentParser:
     domain.add_argument(
         "domains",
         nargs="+",
-        help="mecânica, crônica, sessões, sidequests, mundo, runtime, contexto, memória, retomada",
+        help="mecânica, crônica, sessões, sidequests, mundo, runtime, contexto, memória, retomada, narrativa",
     )
     domain.add_argument("--list", action="store_true", help="lista arquivos sem executar")
 

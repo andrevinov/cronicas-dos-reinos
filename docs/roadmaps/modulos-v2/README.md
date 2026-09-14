@@ -2,7 +2,7 @@
 
 ## Status
 
-**Em implementação.** RM-01 a RM-03 estão concluídas e as RM-04–RM-08 estão
+**Em implementação.** RM-01 a RM-03 estão concluídas e as RM-04–RM-09 estão
 implementadas; as demais tasks continuam propostas até serem executadas.
 
 Este roadmap transforma o catálogo plano de vinte itens em doze módulos de
@@ -108,7 +108,7 @@ novo contrato. A RM-12 é o corte definitivo.
 | [RM-06](rm06-operacoes-adversariais.md) | operações adversariais e seus guardrails — **implementada; gates próprios verdes** | RM-01–RM-02 |
 | [RM-07](rm07-contexto-e-memoria.md) | leitura econômica e memória correta — **implementada; gates próprios verdes** | RM-01–RM-02 |
 | [RM-08](rm08-orquestracao-turno-e-sessao.md) | controle transacional do turno e da sessão — **implementada; gates próprios verdes** | RM-01–RM-02 |
-| [RM-09](rm09-entrega-narrativa.md) | qualidade estrutural e perceptiva da narração | RM-01–RM-02 |
+| [RM-09](rm09-entrega-narrativa.md) | qualidade estrutural e perceptiva da narração — **implementada; gates próprios verdes** | RM-01–RM-02 |
 | [RM-10](rm10-regras-e-estado-personagem.md) | regras, rolagens, recursos, ficha e tempo | RM-01–RM-02 |
 | [RM-11](rm11-avaliador-e-dashboard-v2.md) | scorecard hierárquico e nova série | RM-03–RM-10 |
 | [RM-12](rm12-aceitacao-e-baseline-v2.md) | regressão integrada e primeiro rollout real v2 | RM-11 |

@@ -88,6 +88,12 @@ def tokens(input_tokens: int, cached: int, output_tokens: int) -> str:
     )
 
 
+def at(row: str, timestamp: str) -> str:
+    value = json.loads(row)
+    value["timestamp"] = timestamp
+    return json.dumps(value, ensure_ascii=False)
+
+
 class ModularTelemetryTest(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
@@ -331,6 +337,171 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(orchestration["session_id"], "session-fixture")
         self.assertEqual(orchestration["analysis_unit"], "turno")
 
+    def test_rm09_correlaciona_resposta_final_sem_julgar_prosa(self) -> None:
+        rows = self.base_rows() + [
+            at(user("turno-1", "Ren abre a porta."), "2026-09-14T12:00:00Z"),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id rm09 --sem-oportunidade-sidequest",
+            ),
+            output("turno-1", "p1", "Process exited with code 0\nfase: preparacao\n"),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.rm09"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\nfase: concluida\n"
+                "entrega_narrativa:\n"
+                "  schema_narrative_delivery: 1\n"
+                "  entrega_id: delivery-rm09\n"
+                "  estado: prosa_registrada\n"
+                "  correlacao:\n    ticket_id: ticket-rm09\n"
+                "    transacao_id: tx-rm09\n    sessao: 21\n"
+                "  classe_turno: comum\n"
+                "  estrutura:\n    caracteres: 28\n    palavras: 5\n"
+                "    paragrafos: 1\n    linhas_mecanica: 0\n"
+                "  rodape:\n    emitido: true\n"
+                "  avaliacao_semantica: nao_realizada\n",
+            ),
+            at(
+                with_turn(
+                    "turno-1",
+                    "message",
+                    role="assistant",
+                    channel="commentary",
+                    content=[{"type": "output_text", "text": "Concluindo o turno."}],
+                ),
+                "2026-09-14T12:00:03Z",
+            ),
+            at(
+                with_turn(
+                    "turno-1",
+                    "message",
+                    role="assistant",
+                    channel="final",
+                    content=[
+                        {
+                            "type": "output_text",
+                            "text": "A porta se abre.\nRODAPE_CANONICO — fixture",
+                        }
+                    ],
+                ),
+                "2026-09-14T12:00:05Z",
+            ),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm09-delivery.jsonl"))
+        metrics = report["narration_turns"]["narrative_delivery"]
+
+        self.assertEqual(metrics["respostas_observadas"], 1)
+        self.assertEqual(metrics["recibos_observados"], 1)
+        self.assertEqual(metrics["entregas_correlacionadas"], 1)
+        self.assertEqual(metrics["rodapes_em_ultima_linha"], 1)
+        self.assertEqual(metrics["latencia"]["media_segundos"], 5.0)
+        self.assertIsNone(metrics["nota_literaria_automatica"])
+        self.assertEqual(metrics["auditoria_semantica"]["estado"], "nao_realizada")
+
+        events = report["modular_ledger_v2"]["events"]
+        closure = next(
+            event for event in events
+            if event["module_id"] == "narrative_delivery"
+            and event["capability_id"] == "visible_closure"
+        )
+        density = next(
+            event for event in events
+            if event["module_id"] == "narrative_delivery"
+            and event["capability_id"] == "narrative_density"
+        )
+        self.assertEqual(closure["observed_result"], "entrega_correlacionada")
+        self.assertEqual(closure["signal_sources"], ["output", "resposta"])
+        self.assertEqual(density["observed_result"], "densidade_nao_avaliada")
+        self.assertIsNone(density["effect_observed"])
+
+    def test_rm09_comentario_sem_final_nao_vira_entrega_narrativa(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            with_turn(
+                "turno-1",
+                "message",
+                role="assistant",
+                channel="commentary",
+                content=[{"type": "output_text", "text": "Ainda processando o turno."}],
+            ),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm09-interrompido.jsonl"))
+        metrics = report["narration_turns"]["narrative_delivery"]
+
+        self.assertEqual(metrics["respostas_observadas"], 0)
+        closure = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "narrative_delivery"
+            and event["capability_id"] == "visible_closure"
+        )
+        self.assertEqual(closure["observed_result"], "resposta_ausente")
+        self.assertFalse(closure["effect_observed"])
+
+    def test_rm09_feedback_e_auditoria_nao_compensam_guardrail(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            assistant("turno-1", "A cena avança.\nRODAPE_CANONICO — fixture"),
+        ]
+        ledger = mod.analyze(
+            self.rollout(rows, "rollout-rm09-human.jsonl")
+        )["modular_ledger_v2"]
+        event = next(
+            item for item in ledger["events"]
+            if item["module_id"] == "narrative_delivery"
+            and item["capability_id"] == "visible_closure"
+        )
+        self.assertEqual(ledger["semantic_audits"], [])
+        self.assertEqual(ledger["player_feedback"], [])
+
+        adjudicated = mod.apply_modular_adjudications(
+            ledger,
+            {
+                "corrections": [],
+                "semantic_audits": [
+                    {
+                        "event_id": event["event_id"],
+                        "evaluator": "auditor-fixture",
+                        "dimensions": {
+                            "progressao_jogavel": "adequado",
+                            "densidade_proporcional": "adequado",
+                            "voz_e_dialogo": "indeterminado",
+                            "camadas_de_conhecimento": "adequado",
+                            "conclusao_aberta": "adequado",
+                        },
+                        "guardrails": {
+                            "player_agency": "violado",
+                            "knowledge_secrecy": "ok",
+                            "roll_integrity": "ok",
+                        },
+                        "evidence": ["ação de Ren inferida indevidamente"],
+                    }
+                ],
+                "player_feedback": [
+                    {
+                        "event_id": event["event_id"],
+                        "ratings": {
+                            "ritmo": 5,
+                            "naturalidade": 5,
+                            "profundidade": None,
+                            "agencia_percebida": 2,
+                        },
+                        "comment": "Boa forma, mas tirou minha decisão.",
+                    }
+                ],
+            },
+        )
+
+        audit = adjudicated["semantic_audits"][0]
+        feedback = adjudicated["player_feedback"][0]
+        self.assertIsNone(audit["automatic_literary_score"])
+        self.assertFalse(audit["guardrails_compensable"])
+        self.assertEqual(audit["guardrails"]["player_agency"], "violado")
+        self.assertEqual(feedback["aggregation_role"], "percepcao_com_peso_limitado")
+        self.assertTrue(feedback["guardrails_unchanged"])
+
     def test_rm08_mede_correlacao_duracao_idempotencia_e_classe_de_custo(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", mod.LEGACY_NARRATION_PROMPT),
@@ -523,7 +694,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
-        self.assertEqual(access["detector_version"], "2.5.0")
+        self.assertEqual(access["detector_version"], "2.6.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -801,7 +972,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "2.5.0")
+        self.assertEqual(social["detector_version"], "2.6.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -934,7 +1105,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "2.5.0")
+        self.assertEqual(integrity[0]["detector_version"], "2.6.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

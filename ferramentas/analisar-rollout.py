@@ -15,6 +15,7 @@ import json
 import re
 import sys
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -34,7 +35,7 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "2.5.0"
+MODULAR_DETECTOR_VERSION = "2.6.0"
 OPPORTUNITY_DECISION_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
 
@@ -315,6 +316,35 @@ def _output_bool(output_text: str, key: str) -> bool | None:
     return None
 
 
+def _output_int(output_text: str, key: str) -> int | None:
+    value = _output_scalar(output_text, key)
+    if value is None:
+        return None
+    try:
+        return int(value)
+    except ValueError:
+        return None
+
+
+def _record_timestamp(record: dict[str, Any], payload: dict[str, Any]) -> float | None:
+    """Normaliza somente relógios explícitos do rollout; ausência fica N/D."""
+
+    candidates = (record.get("timestamp"), payload.get("timestamp"))
+    for value in candidates:
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            return float(value)
+        if not isinstance(value, str) or not value.strip():
+            continue
+        normalized = value.strip()
+        if normalized.endswith("Z"):
+            normalized = normalized[:-1] + "+00:00"
+        try:
+            return datetime.fromisoformat(normalized).timestamp()
+        except ValueError:
+            continue
+    return None
+
+
 def _orchestration_failure_kind(output_text: str) -> str | None:
     lower = output_text.casefold()
     if "falha_parcial" in lower or "falha parcial" in lower or "commit_incompleto" in lower:
@@ -366,6 +396,28 @@ def _orchestration_receipt(output_text: str) -> dict[str, Any] | None:
         "duplicate": _output_bool(receipt_text, "duplicado"),
         "incomplete": _output_bool(receipt_text, "incompleto"),
         "canonical_order": _output_bool(receipt_text, "ordem_canonica_preservada"),
+    }
+
+
+def _delivery_receipt(output_text: str) -> dict[str, Any] | None:
+    marker = "schema_narrative_delivery"
+    start = output_text.casefold().rfind(marker)
+    if start < 0:
+        return None
+    receipt_text = output_text[start:]
+    return {
+        "delivery_id": _output_scalar(receipt_text, "entrega_id"),
+        "state": _output_scalar(receipt_text, "estado"),
+        "ticket_id": _output_scalar(receipt_text, "ticket_id"),
+        "transaction_id": _output_scalar(receipt_text, "transacao_id"),
+        "session": _output_scalar(receipt_text, "sessao"),
+        "turn_class": _output_scalar(receipt_text, "classe_turno"),
+        "characters": _output_int(receipt_text, "caracteres"),
+        "words": _output_int(receipt_text, "palavras"),
+        "paragraphs": _output_int(receipt_text, "paragrafos"),
+        "mechanics_lines": _output_int(receipt_text, "linhas_mecanica"),
+        "footer_emitted": _output_bool(receipt_text, "emitido"),
+        "semantic_assessment": _output_scalar(receipt_text, "avaliacao_semantica"),
     }
 
 
@@ -477,7 +529,9 @@ def _observation_turn(turn_id: str) -> dict[str, Any]:
     return {
         "turn_id": turn_id,
         "user_messages": [],
+        "user_timestamps": [],
         "assistant_messages": [],
+        "assistant_records": [],
         "narration_signal_tool": False,
         "calls": [],
         "calls_by_id": {},
@@ -529,11 +583,21 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
             item_type = payload.get("type")
             if item_type == "message":
                 text = _core._message_text(payload)
+                timestamp = _record_timestamp(record, payload)
                 if payload.get("role") == "user":
                     if text and not text.startswith("# AGENTS.md instructions"):
                         turn["user_messages"].append(text)
+                        if timestamp is not None:
+                            turn["user_timestamps"].append(timestamp)
                 elif payload.get("role") == "assistant" and text:
                     turn["assistant_messages"].append(text)
+                    turn["assistant_records"].append(
+                        {
+                            "text": text,
+                            "channel": payload.get("channel"),
+                            "timestamp": timestamp,
+                        }
+                    )
                 continue
             if item_type in {"function_call", "custom_tool_call"}:
                 name = str(payload.get("name") or "<sem-nome>")
@@ -566,6 +630,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "output_success": None,
                     "duration_seconds": None,
                     "orchestration_receipt": None,
+                    "delivery_receipt": None,
                     "orchestration_failure": None,
                     "liveness": None,
                     "output_seen": False,
@@ -610,6 +675,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched["output_success"] = success
                 matched["duration_seconds"] = _duration_seconds(output_text)
                 matched["orchestration_receipt"] = _orchestration_receipt(output_text)
+                matched["delivery_receipt"] = _delivery_receipt(output_text)
                 matched["orchestration_failure"] = orchestration_failure
                 matched["liveness"] = _liveness_observation(output_text)
                 matched["output_seen"] = True
@@ -617,6 +683,92 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
     ordered = [turns[turn_id] for turn_id in order]
     narration = [turn for turn in ordered if _core._is_narration_turn(turn, narration_re)]
     return ordered, narration
+
+
+def _visible_response(turn: dict[str, Any]) -> dict[str, Any] | None:
+    records = [item for item in turn.get("assistant_records") or [] if item.get("text")]
+    finals = [item for item in records if item.get("channel") == "final"]
+    if finals:
+        return finals[-1]
+    # Rollouts antigos não registravam canal. Em rollouts modernos, comentário
+    # sem `final` é atualização operacional, não entrega ao jogador.
+    if records:
+        if not any(item.get("channel") is not None for item in records):
+            return records[-1]
+        return None
+    messages = [text for text in turn.get("assistant_messages") or [] if text]
+    return {"text": messages[-1], "channel": None, "timestamp": None} if messages else None
+
+
+def _delivery_observation(turn: dict[str, Any]) -> dict[str, Any]:
+    """Observa estrutura da saída; adequação narrativa exige adjudicação."""
+
+    response = _visible_response(turn)
+    receipts = [
+        call["delivery_receipt"]
+        for call in turn.get("calls") or []
+        if isinstance(call.get("delivery_receipt"), dict)
+    ]
+    receipt = receipts[-1] if receipts else None
+    text = str((response or {}).get("text") or "")
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    footer_lines = [line for line in lines if line.startswith("RODAPE_CANONICO")]
+    footer_correct = bool(lines and footer_lines and lines[-1] == footer_lines[-1])
+    body_lines = [line for line in lines if not line.startswith("RODAPE_CANONICO")]
+    mechanics_lines = [
+        line
+        for line in body_lines
+        if line.startswith("MECÂNICA —") or line.startswith("MECANICA —")
+    ]
+    prose_lines = [line for line in body_lines if line not in mechanics_lines]
+    paragraphs = [part for part in re.split(r"\n\s*\n", text.strip()) if part.strip()]
+    user_times = [value for value in turn.get("user_timestamps") or [] if isinstance(value, (int, float))]
+    response_time = (response or {}).get("timestamp")
+    latency = None
+    if user_times and isinstance(response_time, (int, float)) and response_time >= min(user_times):
+        latency = round(response_time - min(user_times), 3)
+    turn_class = str((receipt or {}).get("turn_class") or "").strip()
+    if not turn_class:
+        turn_class = "mecanico" if mechanics_lines else "nao_declarada"
+    return {
+        "response_present": response is not None,
+        "receipt_present": receipt is not None,
+        "correlated_delivery": (
+            response is not None
+            and receipt is not None
+            and bool(receipt.get("delivery_id"))
+        ),
+        "delivery_id": (receipt or {}).get("delivery_id"),
+        "turn_class": turn_class,
+        "characters": len(text),
+        "words": len(re.findall(r"[^\W_]+(?:[-'][^\W_]+)*", text, flags=re.UNICODE)),
+        "paragraphs": len(paragraphs),
+        "mechanics_lines": len(mechanics_lines),
+        "footer_lines": len(footer_lines),
+        "footer_correct": footer_correct,
+        "procedural_only": bool(mechanics_lines and not prose_lines),
+        "latency_seconds": latency,
+        "semantic_assessment": "nao_avaliada",
+        "automatic_literary_score": None,
+    }
+
+
+_NEXT_TURN_REWORK_RE = re.compile(
+    r"\b(?:corrigindo|correção|correcao|retcon|isso não aconteceu|isso nao aconteceu|"
+    r"você decidiu por ren|voce decidiu por ren|não foi isso que eu disse|nao foi isso que eu disse|"
+    r"você avançou o tempo demais|voce avancou o tempo demais|não queria avançar tanto|"
+    r"nao queria avancar tanto)\b",
+    re.IGNORECASE,
+)
+
+
+def _next_turn_rework_signals(turns: list[dict[str, Any]]) -> int:
+    """Conta pedidos explícitos; é indício conservador, nunca veredito de qualidade."""
+
+    return sum(
+        bool(_NEXT_TURN_REWORK_RE.search("\n".join(turn.get("user_messages") or [])))
+        for turn in turns[1:]
+    )
 
 
 def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
@@ -639,6 +791,7 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     blocked_turns = 0
     receipt_calls = 0
     lifecycle_receipt_calls = 0
+    deliveries = [_delivery_observation(turn) for turn in turns]
     for turn in turns:
         per_turn_phases: list[str] = []
         per_turn_systems: set[str] = set()
@@ -755,6 +908,22 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     }
     lifecycle_total = sum(lifecycle_operations.values())
     lifecycle_successful = sum(lifecycle_success.values())
+    latency_values = [
+        item["latency_seconds"]
+        for item in deliveries
+        if isinstance(item.get("latency_seconds"), (int, float))
+    ]
+    size_by_class: dict[str, dict[str, int | float]] = {}
+    for turn_class in sorted({str(item["turn_class"]) for item in deliveries}):
+        items = [item for item in deliveries if item["turn_class"] == turn_class]
+        size_by_class[turn_class] = {
+            "turnos": len(items),
+            "palavras_total": sum(int(item["words"]) for item in items),
+            "palavras_media": round(
+                sum(int(item["words"]) for item in items) / len(items), 3
+            ),
+            "caracteres_total": sum(int(item["characters"]) for item in items),
+        }
     return {
         "orchestration_calls": orchestration_calls,
         "avg_orchestration_calls_per_turn": round(orchestration_calls / n, 3) if n else 0,
@@ -798,6 +967,44 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
                 else None,
                 "receipts_observed": lifecycle_receipt_calls,
             },
+        },
+        "narrative_delivery": {
+            "schema": 1,
+            "turnos_esperados": n,
+            "respostas_observadas": sum(item["response_present"] for item in deliveries),
+            "recibos_observados": sum(item["receipt_present"] for item in deliveries),
+            "entregas_correlacionadas": sum(item["correlated_delivery"] for item in deliveries),
+            "rodapes_em_ultima_linha": sum(item["footer_correct"] for item in deliveries),
+            "rodapes_ausentes_ou_fora_de_posicao": sum(
+                item["response_present"] and not item["footer_correct"] for item in deliveries
+            ),
+            "turnos_com_mecanica_explicita": sum(item["mechanics_lines"] > 0 for item in deliveries),
+            "linhas_mecanica": sum(int(item["mechanics_lines"]) for item in deliveries),
+            "exposicao_procedimental_sem_ficcao": sum(item["procedural_only"] for item in deliveries),
+            "tamanho_por_classe": size_by_class,
+            "latencia": {
+                "turnos_observaveis": len(latency_values),
+                "media_segundos": round(sum(latency_values) / len(latency_values), 3)
+                if latency_values
+                else None,
+                "max_segundos": round(max(latency_values), 3) if latency_values else None,
+            },
+            "retrabalho_explicito_no_turno_seguinte": _next_turn_rework_signals(turns),
+            "auditoria_semantica": {
+                "estado": "nao_realizada",
+                "dimensoes": {
+                    key: None
+                    for key in (
+                        "progressao_jogavel",
+                        "densidade_proporcional",
+                        "voz_e_dialogo",
+                        "camadas_de_conhecimento",
+                        "conclusao_aberta",
+                    )
+                },
+            },
+            "feedback_jogador": "nao_fornecido",
+            "nota_literaria_automatica": None,
         },
         "sidequest_opportunity_decisions": {
             key: int(decisions[key])
@@ -1698,37 +1905,61 @@ def _new_module_signals(
             confidence="alta",
         )
 
-    # RM-09: a existência da entrega é estrutural; qualidade literária permanece N/D.
-    if assistant_messages:
-        response_text = "\n".join(assistant_messages)
+    # RM-09: estrutura é objetiva; adequação da prosa permanece N/D até
+    # auditoria semântica e percepção humana explícitas.
+    delivery = _delivery_observation(turn)
+    if delivery["response_present"]:
+        _add_signal(
+            signals,
+            "narrative_delivery",
+            "narrative_density",
+            source="resposta",
+            evidence="response:size_observed_without_quality_judgment",
+            eligibility="sim",
+            activation="consulta",
+            observed_result="densidade_nao_avaliada",
+            effect_observed=None,
+            confidence="alta",
+        )
+        closure_result = (
+            "entrega_correlacionada"
+            if delivery["correlated_delivery"] and delivery["footer_correct"]
+            else "rodape_ausente_ou_fora_de_posicao"
+            if not delivery["footer_correct"]
+            else "entrega_legada_observada"
+        )
         _add_signal(
             signals,
             "narrative_delivery",
             "visible_closure",
             source="resposta",
-            evidence="response:present",
+            evidence=(
+                "response:canonical_footer_is_last_line"
+                if delivery["footer_correct"]
+                else "response:canonical_footer_missing_or_misplaced"
+            ),
             eligibility="sim",
             activation="efeito",
-            observed_result="resposta_entregue",
-            materialized_result="resposta_entregue",
-            effect_observed=True,
+            observed_result=closure_result,
+            materialized_result="entrega_visivel" if delivery["footer_correct"] else None,
+            effect_observed=bool(delivery["footer_correct"]),
             confidence="alta",
         )
-        if "rodape_canonico" in response_text.casefold() or "RODAPE_CANONICO" in response_text:
+        if delivery["receipt_present"]:
             _add_signal(
                 signals,
                 "narrative_delivery",
                 "visible_closure",
-                source="resposta",
-                evidence="response:canonical_footer",
+                source="output",
+                evidence="output:narrative_delivery_receipt",
                 eligibility="sim",
                 activation="efeito",
-                observed_result="resposta_com_rodape",
-                materialized_result="resposta_entregue",
-                effect_observed=True,
+                observed_result=closure_result,
+                materialized_result="entrega_visivel" if delivery["footer_correct"] else None,
+                effect_observed=bool(delivery["footer_correct"]),
                 confidence="alta",
             )
-        if "mecânica —" in response_text.casefold() or "mecanica —" in response_text.casefold():
+        if delivery["mechanics_lines"]:
             _add_signal(
                 signals,
                 "narrative_delivery",
@@ -2028,6 +2259,8 @@ def _build_modular_ledger(
         ],
         "cost_closure": closure,
         "corrections": [],
+        "semantic_audits": [],
+        "player_feedback": [],
     }
 
 
@@ -2037,7 +2270,10 @@ def apply_modular_adjudications(
     """Aplica correções sem apagar nenhuma observação do detector."""
 
     result = copy.deepcopy(ledger)
-    corrections = adjudications.get("corrections") if isinstance(adjudications, dict) else adjudications
+    result.setdefault("corrections", [])
+    result.setdefault("semantic_audits", [])
+    result.setdefault("player_feedback", [])
+    corrections = adjudications.get("corrections", []) if isinstance(adjudications, dict) else adjudications
     if not isinstance(corrections, list):
         raise RolloutError("adjudicações modulares precisam conter uma lista corrections")
     by_id = {event.get("event_id"): event for event in result.get("events") or []}
@@ -2083,6 +2319,98 @@ def apply_modular_adjudications(
                     "effect_observed": event.get("effect_observed"),
                 },
                 "adjudicated": adjudication,
+            }
+        )
+
+    if not isinstance(adjudications, dict):
+        return result
+
+    semantic_dimensions = {
+        "progressao_jogavel",
+        "densidade_proporcional",
+        "voz_e_dialogo",
+        "camadas_de_conhecimento",
+        "conclusao_aberta",
+    }
+    semantic_states = {"adequado", "inadequado", "indeterminado", "nao_aplicavel"}
+    guardrail_ids = {"player_agency", "knowledge_secrecy", "roll_integrity"}
+    guardrail_states = {"ok", "violado", "indeterminado", "nao_aplicavel"}
+    audits = adjudications.get("semantic_audits", [])
+    if not isinstance(audits, list):
+        raise RolloutError("adjudicações modulares: semantic_audits precisa ser lista")
+    for index, audit in enumerate(audits, 1):
+        if not isinstance(audit, dict):
+            raise RolloutError(f"auditoria semântica {index} não é objeto")
+        event_id = str(audit.get("event_id") or "")
+        event = by_id.get(event_id)
+        if event is None or event.get("module_id") != "narrative_delivery":
+            raise RolloutError(
+                f"auditoria semântica aponta para entrega narrativa inexistente: {event_id}"
+            )
+        evaluator = str(audit.get("evaluator") or "").strip()
+        if not evaluator:
+            raise RolloutError(f"auditoria semântica {event_id} exige evaluator")
+        dimensions = audit.get("dimensions")
+        guardrails = audit.get("guardrails")
+        evidence = audit.get("evidence")
+        if not isinstance(dimensions, dict) or set(dimensions) != semantic_dimensions:
+            raise RolloutError(f"auditoria semântica {event_id}: dimensions incompletas")
+        if any(state not in semantic_states for state in dimensions.values()):
+            raise RolloutError(f"auditoria semântica {event_id}: estado semântico inválido")
+        if not isinstance(guardrails, dict) or set(guardrails) != guardrail_ids:
+            raise RolloutError(f"auditoria semântica {event_id}: guardrails incompletos")
+        if any(state not in guardrail_states for state in guardrails.values()):
+            raise RolloutError(f"auditoria semântica {event_id}: estado de guardrail inválido")
+        if not isinstance(evidence, list) or any(not isinstance(item, str) for item in evidence):
+            raise RolloutError(f"auditoria semântica {event_id}: evidence precisa ser lista")
+        result["semantic_audits"].append(
+            {
+                "event_id": event_id,
+                "evaluator": evaluator,
+                "dimensions": copy.deepcopy(dimensions),
+                "guardrails": copy.deepcopy(guardrails),
+                "evidence": list(evidence),
+                "automatic_literary_score": None,
+                "guardrails_compensable": False,
+            }
+        )
+
+    player_dimensions = {"ritmo", "naturalidade", "profundidade", "agencia_percebida"}
+    feedback_items = adjudications.get("player_feedback", [])
+    if not isinstance(feedback_items, list):
+        raise RolloutError("adjudicações modulares: player_feedback precisa ser lista")
+    for index, feedback in enumerate(feedback_items, 1):
+        if not isinstance(feedback, dict):
+            raise RolloutError(f"feedback do jogador {index} não é objeto")
+        event_id = str(feedback.get("event_id") or "")
+        event = by_id.get(event_id)
+        if event is None or event.get("module_id") != "narrative_delivery":
+            raise RolloutError(
+                f"feedback aponta para entrega narrativa inexistente: {event_id}"
+            )
+        ratings = feedback.get("ratings")
+        if not isinstance(ratings, dict) or set(ratings) != player_dimensions:
+            raise RolloutError(f"feedback {event_id}: ratings incompletas")
+        invalid = [
+            score
+            for score in ratings.values()
+            if score is not None
+            and (isinstance(score, bool) or not isinstance(score, int) or not 1 <= score <= 5)
+        ]
+        if invalid:
+            raise RolloutError(f"feedback {event_id}: notas precisam estar entre 1 e 5")
+        if not any(score is not None for score in ratings.values()):
+            raise RolloutError(f"feedback {event_id}: sem notas deve ser omitido (N/D)")
+        comment = feedback.get("comment")
+        if comment is not None and (not isinstance(comment, str) or not comment.strip()):
+            raise RolloutError(f"feedback {event_id}: comment precisa ser texto não vazio")
+        result["player_feedback"].append(
+            {
+                "event_id": event_id,
+                "ratings": copy.deepcopy(ratings),
+                "comment": comment.strip() if isinstance(comment, str) else None,
+                "aggregation_role": "percepcao_com_peso_limitado",
+                "guardrails_unchanged": True,
             }
         )
     return result
@@ -2156,6 +2484,9 @@ def analyze(
             "modules-v2 parent cost allocated once per module; capability cost is exposure only",
             "RM-08 orchestration receipt, retry, correlation and phase duration inferred from existing call outputs",
             "RM-08 control cost separated from domain cost without claiming marginal causality",
+            "RM-09 delivery receipt correlated with the final visible response and canonical footer position",
+            "RM-09 response size and latency measured structurally without an automatic literary score",
+            "RM-09 semantic audit, player perception and critical guardrails stored as separate evidence layers",
         ):
             if label not in inferred:
                 inferred.append(label)
@@ -2172,6 +2503,7 @@ def _human(report: dict[str, Any]) -> str:
     orchestration = narr.get("turn_and_session_orchestration") or {}
     systems = narr.get("narrative_system_turns") or {}
     live = all_turns.get("liveness_boundary") or {}
+    delivery = narr.get("narrative_delivery") or {}
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
@@ -2201,6 +2533,14 @@ def _human(report: dict[str, Any]) -> str:
             f"módulos não consultados={live.get('modulos_nao_consultados', 0)}"
         ),
         f"Sistemas observados por turno: {active}",
+        (
+            "RM-09 entrega: "
+            f"respostas={delivery.get('respostas_observadas', 0)} | "
+            f"recibos={delivery.get('recibos_observados', 0)} | "
+            f"correlacionadas={delivery.get('entregas_correlacionadas', 0)} | "
+            f"rodapés irregulares={delivery.get('rodapes_ausentes_ou_fora_de_posicao', 0)} | "
+            "qualidade semântica=N/D sem adjudicação"
+        ),
     ]
     if ledger:
         extra.extend(

@@ -30,6 +30,7 @@ import cronica_pending_gate as _pending_gate
 import mecanica_cronica as _mechanics
 import npc_continuity_and_social_behavior as _npc_continuity
 import mundo as _world
+import narrative_delivery as _narrative_delivery
 import progressao_juppongatana
 import causal_narrative_routing as _pressure52
 import contatos_sociais as _contacts09
@@ -344,6 +345,12 @@ def _conclude_base(
 
 
 def conclude(repo: Path, token: str, transaction: dict):
+    # A entrega valida a camada pública antes de qualquer writer. O recibo é
+    # anexado somente no fim, sem introduzir uma terceira chamada operacional.
+    try:
+        _narrative_delivery.validate_transaction(transaction)
+    except _narrative_delivery.NarrativeDeliveryError as exc:
+        raise _core.CronicaError(f"RM-09: {exc}") from exc
     payload, meta46, meta48, meta52 = _sidequest_meta(token)
     try:
         transaction = _scene_memory.compile_cast(payload, transaction, repo=Path(repo))
@@ -485,6 +492,7 @@ def conclude(repo: Path, token: str, transaction: dict):
         result.setdefault("sistemas_narrativos", []).append("reactive_pressure_routing")
     result = _npc_continuity.publish_social_persistence(result, social_persistence)
     result = _context_memory.publish_memory_persistence(result, memory_persistence)
+    result = _narrative_delivery.publish_conclusion(result, transaction)
     return _turn_orchestration.publish_turn(result, "concluir")
 
 

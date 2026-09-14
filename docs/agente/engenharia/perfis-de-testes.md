@@ -39,6 +39,7 @@ poetry run test-domain runtime
 poetry run test-domain contexto
 poetry run test-domain memoria
 poetry run test-domain retomada
+poetry run test-domain narrativa
 ```
 
 As formas acentuadas em português também são aceitas, por exemplo:

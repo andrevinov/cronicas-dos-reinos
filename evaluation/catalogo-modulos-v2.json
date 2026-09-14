@@ -1,6 +1,6 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "2.6.0",
+  "versao_catalogo": "2.7.0",
   "serie_avaliacao": "modules-v2",
   "estado": "preparacao",
   "padrao_producao": false,
@@ -86,7 +86,7 @@
         "exclusoes": ["Operação OFF", "Artefato pós-hoc"],
         "evidencias_minimas": ["entrada do jogador", "texto narrado e rodapé canônico"]
       },
-      "resultados_possiveis": ["entrega_adequada", "entrega_densa", "entrega_fragmentada", "agencia_invadida", "indeterminado"],
+      "resultados_possiveis": ["entrega_correlacionada", "entrega_legada_observada", "rodape_ausente_ou_fora_de_posicao", "densidade_nao_avaliada", "mecanica_exposta", "resposta_ausente", "indeterminado"],
       "subcapacidades": [
         {"id": "narrative_density", "responsabilidade": "Calibrar detalhe e extensão ao valor dramático do turno.", "aliases_v1": []},
         {"id": "diegetic_mechanics", "responsabilidade": "Integrar resultados e chamadas mecânicas sem opacidade ou metajogo.", "aliases_v1": []},
@@ -95,12 +95,19 @@
       "visibilidade_jogador": "direta",
       "rotulo_jogador": "Qualidade, clareza e ritmo da narração",
       "indicadores_especializados": [
-        {"id": "nota_clareza_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "turnos_com_fechamento_jogavel_claro", "unidade": "proporcao_adjudicada", "direcao_desejada": "maior"},
+        {"id": "retrabalho_ou_contestacao_seguinte", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "exposicao_procedimental_sem_ficcao", "unidade": "proporcao", "direcao_desejada": "menor"},
+        {"id": "tamanho_por_classe_turno", "unidade": "palavras", "direcao_desejada": "categorica"},
         {"id": "latencia_ate_entrega", "unidade": "segundos", "direcao_desejada": "menor"},
-        {"id": "violacoes_agencia_na_prosa", "unidade": "contagem", "direcao_desejada": "menor"}
+        {"id": "nota_ritmo_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "nota_naturalidade_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "nota_profundidade_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "nota_agencia_percebida_jogador", "unidade": "nota_1a5", "direcao_desejada": "maior"},
+        {"id": "violacoes_criticas", "unidade": "contagem_separada", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity"],
-      "versao_implementacao": "0.1.0",
+      "versao_implementacao": "1.0.0",
       "versao_avaliacao": "2.0.0"
     },
     {
