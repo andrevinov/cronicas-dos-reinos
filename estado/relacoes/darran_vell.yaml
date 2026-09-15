@@ -1,0 +1,230 @@
+schema_relacao: 2
+natureza: estado_relacao_atual
+id: darran_vell
+historico: historico/relacoes/darran_vell.yaml
+relacao:
+  nome: Darran Vell
+  tipo: escrivão da Mesa de Cargas do porto
+  status: Ren revelou a intenção de capturar o homem do casaco cinza e pediu cooperação documental. Darran explicou
+    que pode retratar a contramarca, mas não revogar as autorizações antigas; uma declaração assinada daria à Galeria
+    ou ao responsável pelas cópias causa para reter a entrega. Ele aceita considerar escrevê-la, mas exige proteção
+    e não quer ser abandonado depois.
+  atitude_para_ren: não identificou Ren; alarmado e hostil à figura encapuzada que o atacou
+  memorias_importantes:
+  - evidencia:
+      campo: narracao
+      trecho: As pálpebras de Darran estremecem. Ele engasga, puxa o ar de uma vez e abre os olhos.
+    fonte: transacao:s022-nv04-c39dd2fd035845f1a9c4141f4dc0dc3f
+    id: mem_a31aedaa0d7507a58e9c6900
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 50d22744c5e7f3bf89933abaf95422a3446b6f7a551cbe8ec40d339e38f1e48f
+    texto: As pálpebras de Darran estremecem. Ele engasga, puxa o ar de uma vez e abre os olhos.
+    tipo: marco
+  - canal: presencial
+    destinatario: ren
+    emissor: darran_vell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: — Fui eu que pus a contramarca. Casaco cinza, caixa preta de contas. Ele trouxe três números de despacho;
+        conferi que existiam e carimbei a urgência.
+    fonte: transacao:s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
+    id: mem_35e0e4e0ebab0f5a2510c786
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 8619321869134f40692ac735a7ce469c81970090ba9f81f552546d2d10fca8b3
+    texto: — Fui eu que pus a contramarca. Casaco cinza, caixa preta de contas. Ele trouxe três números de despacho;
+      conferi que existiam e carimbei a urgência.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: darran_vell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: '— Duas peças de ouro. Não registrei. E eles não precisam falsificar as cópias: basta apresentar autorizações
+        verdadeiras para uma carga diferente.'
+    fonte: transacao:s022-nv04-852170048d4ec46e6b983d02ecf76eec
+    id: mem_4d1216d00cd1ce208b7fe590
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: b9cd1c03023db4881e57805899c9d21913ef8df6d25de684023916e2d11724e4
+    texto: '— Duas peças de ouro. Não registrei. E eles não precisam falsificar as cópias: basta apresentar autorizações
+      verdadeiras para uma carga diferente.'
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: darran_vell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: — Muitos, não. Mas três homens com fala oriental vieram em noites diferentes perguntar por cargas
+        retidas e armazéns. Nenhum apresentou despacho.
+    fonte: transacao:s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+    id: mem_8455904bf22c66b5dfa0efab
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 42e0fdf3f291037d1dcaf2a6d265d87d7c7ea1dfc2fb9bfdddb24601aed0391b
+    texto: — Muitos, não. Mas três homens com fala oriental vieram em noites diferentes perguntar por cargas retidas
+      e armazéns. Nenhum apresentou despacho.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: darran_vell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: — Posso retirar a urgência, não revogar as autorizações. Uma declaração minha, com o código da ronda
+        e os três despachos, dá a Tomas causa para reter as cópias.
+    fonte: transacao:s022-nv04-c91f123a4cca516706a0661bac18d700
+    id: mem_e85c5de217cb48647a8158d6
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 37cf2f5d11ac657250c7c72f3d9f89059e0eac867fdcebb4fd55c8d1c9ec4357
+    texto: — Posso retirar a urgência, não revogar as autorizações. Uma declaração minha, com o código da ronda
+      e os três despachos, dá a Tomas causa para reter as cópias.
+    tipo: informacao
+  - compromisso_id: mem_41842e40e96d8b21e53e1199
+    evidencia:
+      campo: jogador
+      trecho: eu vou te colocar como testemunha protegida na Casa de Tyr.
+    fonte: transacao:s022-nv04-ec49985b5b9e35ef4b536bf176c8a5f9
+    id: mem_41842e40e96d8b21e53e1199
+    operacao: registrar
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 420cb515d8abb4a0dadf1a3eb8c4faefbdeb13099d98f6ccc00b6d35904c23c1
+    tipo: promessa
+  - compromisso_id: mem_95c45a8300e8e61fabd7f63b
+    evidencia:
+      campo: narracao
+      trecho: Se você me levar até lá e eles me receberem como testemunha, pode contar comigo. Eu digo tudo o que
+        vi e ouvi.
+    fonte: transacao:s022-nv04-ec49985b5b9e35ef4b536bf176c8a5f9
+    id: mem_95c45a8300e8e61fabd7f63b
+    operacao: registrar
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 420cb515d8abb4a0dadf1a3eb8c4faefbdeb13099d98f6ccc00b6d35904c23c1
+    tipo: promessa
+  - evidencia:
+      campo: narracao
+      trecho: Darran assina a retratação da contramarca de urgência, identifica o código da ronda e os três despachos,
+        e declara ter recebido duas moedas de ouro sem registro.
+    fonte: transacao:s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+    id: mem_ef7d4b2a32bce6e1ae50ab7d
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 174094aaa4967844c3aafc9b4d9b1b33470d129859a6548ef30ae1f8729779b9
+    texto: Darran assina a retratação da contramarca de urgência, identifica o código da ronda e os três despachos,
+      e declara ter recebido duas moedas de ouro sem registro.
+    tipo: marco
+  - canal: presencial
+    destinatario: ren
+    emissor: darran_vell
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Não tenho nenhum parente em Ravens Bluff que eu conheça.
+    fonte: transacao:s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+    id: mem_487fe13dd20dde7e1c5acd1a
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 174094aaa4967844c3aafc9b4d9b1b33470d129859a6548ef30ae1f8729779b9
+    texto: Não tenho nenhum parente em Ravens Bluff que eu conheça.
+    tipo: informacao
+  - compromisso_id: mem_41842e40e96d8b21e53e1199
+    evidencia:
+      campo: narracao
+      trecho: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+    fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+    id: mem_7f414119855c5561b8dad7b9
+    operacao: cumprir
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+    tipo: promessa
+  - evidencia:
+      campo: narracao
+      trecho: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+    fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+    id: mem_5f66cce891f2116109109f79
+    participantes:
+    - darran_vell
+    - halessa_vorn
+    - ren
+    registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+    texto: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+    tipo: marco
+  - compromisso_id: mem_badf183230b8f29c212535fb
+    evidencia:
+      campo: jogador
+      trecho: Inclusive, tô te devendo uma. Se precisar de algum favor, alguém que você precise assustar, recuperar
+        algum item que tomaram de você e coisas do tipo... pode falar.
+    fonte: transacao:s022-nv04-e0ae0ab97edb902fc964d568c851ea1c
+    id: mem_badf183230b8f29c212535fb
+    operacao: registrar
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: e06591abbcfaaa432fb98c814105119bcb2146885923714eadde66eeb07b6ec4
+    tipo: promessa
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: darran_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Eu não sou seu inimigo. Eu só preciso de algumas respostas, nada mais.
+    fonte: transacao:s022-nv04-bad831e330ff477902e7ff27ed38f4bf
+    id: mem_6167a1487d2cce73e4849e4c
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: e841136cb61d06d0aa1dace254cf2da64522d696aa87a6bac2e0fc8532b63778
+    texto: Eu não sou seu inimigo. Eu só preciso de algumas respostas, nada mais.
+    tipo: informacao
+  - canal: presencial
+    destinatario: darran_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: um homem bastante poderoso de Kozakura está se estabelecendo aqui em Ravens Bluff. Ele é um criminoso
+        procurado no meu país.
+    fonte: transacao:s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+    id: mem_a384bb0ee33953c2d0f40d2f
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 42e0fdf3f291037d1dcaf2a6d265d87d7c7ea1dfc2fb9bfdddb24601aed0391b
+    texto: um homem bastante poderoso de Kozakura está se estabelecendo aqui em Ravens Bluff. Ele é um criminoso
+      procurado no meu país.
+    tipo: informacao
+  - canal: presencial
+    destinatario: darran_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Nós vamos ter uma oportunidade de pegar esse homem de casaco cinza em algumas horas.
+    fonte: transacao:s022-nv04-c91f123a4cca516706a0661bac18d700
+    id: mem_d4b37b0c65f9b012d1386b7f
+    participantes:
+    - darran_vell
+    - ren
+    registro_sha256: 37cf2f5d11ac657250c7c72f3d9f89059e0eac867fdcebb4fd55c8d1c9ec4357
+    texto: Nós vamos ter uma oportunidade de pegar esse homem de casaco cinza em algumas horas.
+    tipo: informacao

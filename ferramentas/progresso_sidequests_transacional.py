@@ -21,6 +21,7 @@ from typing import Any
 import yaml
 
 import _progressao_sidequests_task45_base as progress_base
+import canonical_quest_integration as canonical_integration
 import mundo
 import oportunidades
 import progressao_sidequests
@@ -682,6 +683,35 @@ def _journal_id(ticket_id: str, transaction: dict[str, Any]) -> str:
     )[:24]
 
 
+def _canonical_assessments(
+    repo: Path,
+    mission_ids: list[str],
+    targets: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    terminal_by_mission = {
+        str(target.get("mission_id")): target.get("terminal")
+        for target in targets
+        if target.get("mission_id")
+    }
+    try:
+        return [
+            canonical_integration.assess_mission(
+                repo,
+                mission_id,
+                trigger=(
+                    "terminal"
+                    if terminal_by_mission.get(mission_id) is not None
+                    else "progresso"
+                ),
+            )
+            for mission_id in mission_ids
+        ]
+    except canonical_integration.CanonBridgeRuntimeError as exc:
+        raise TransactionalSidequestProgressError(
+            f"integração canônica sem recibo completo: {exc}"
+        ) from exc
+
+
 def prepare_conclusion(
     repo: Path,
     *,
@@ -755,6 +785,7 @@ def prepare_conclusion(
         "narration_digest": _sha(str(transaction.get("narracao") or "")),
         "summary_digest": _sha(str(transaction.get("resumo") or "")),
         "missions_decided": len(mission_ids),
+        "mission_ids": mission_ids,
         "fase": "validada_aguardando_turno" if targets else "sem_mutacao",
         "targets": targets,
         "progress_installed": [],
@@ -773,12 +804,28 @@ def install(repo: Path, journal: dict[str, Any], *, transaction: dict[str, Any])
     if journal.get("fase") == "ja_instalada":
         return copy.deepcopy(_map(journal.get("receipt_result"), "receipt.resultado"))
     if journal.get("fase") == "sem_mutacao":
+        mission_ids = [
+            str(item)
+            for item in (
+                journal.get("mission_ids")
+                or [
+                    target.get("mission_id")
+                    for target in journal.get("targets") or []
+                    if isinstance(target, dict) and target.get("mission_id")
+                ]
+            )
+        ]
         result = {
             "ok": True,
             "resultado": "sem_fatos_sidequest",
             "missoes_reavaliadas": int(journal.get("missions_decided") or 0),
             "fatos_registrados": 0,
             "terminais": [],
+            "avaliacoes_integracao_canonica": _canonical_assessments(
+                repo,
+                mission_ids,
+                [],
+            ),
         }
         _write_receipt(repo, journal, result)
         return result
@@ -839,10 +886,21 @@ def install(repo: Path, journal: dict[str, Any], *, transaction: dict[str, Any])
             {"mission_id": mission_id, "terminal": outcome, "resultado": result.get("resultado")}
         )
 
+    mission_ids = [
+        str(item)
+        for item in (
+            journal.get("mission_ids")
+            or [
+                target.get("mission_id")
+                for target in journal.get("targets") or []
+                if isinstance(target, dict) and target.get("mission_id")
+            ]
+        )
+    ]
     result = {
         "ok": True,
         "resultado": "progresso_sidequests_registrado",
-        "missoes_reavaliadas": len(journal["targets"]),
+        "missoes_reavaliadas": int(journal.get("missions_decided") or 0),
         "fatos_registrados": sum(len(target["fato_ids"]) for target in journal["targets"]),
         "fato_ids": {
             target["mission_id"]: list(target["fato_ids"])
@@ -851,6 +909,11 @@ def install(repo: Path, journal: dict[str, Any], *, transaction: dict[str, Any])
         "terminais": terminal_results,
         "transacao_id": journal["transaction_id"],
         "idempotente": True,
+        "avaliacoes_integracao_canonica": _canonical_assessments(
+            repo,
+            mission_ids,
+            list(journal["targets"]),
+        ),
     }
     _write_receipt(repo, journal, result)
     (repo / JOURNAL).unlink(missing_ok=True)

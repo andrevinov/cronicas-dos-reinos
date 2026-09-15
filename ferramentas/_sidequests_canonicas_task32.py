@@ -1172,7 +1172,8 @@ def offer(
         "oferta": projection["oferta"],
         "recusa_permitida": True,
         "proximo_passo": (
-            f"oportunidades.py responder {mid} aceitar|adiar|recusar"
+            "canonical_quest_integration.py responder "
+            f"{mid} aceitar|adiar|recusar"
         ),
         "fontes_lidas": list(dict.fromkeys(sources)),
     }

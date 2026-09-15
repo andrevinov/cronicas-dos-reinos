@@ -192,6 +192,7 @@ books/
 
 # Telemetria operacional local; não é cânone nem deve sujar commits
 runtime/consultas-contexto.jsonl
+runtime/.reservas-nomes-npcs.lock
 
 # Commit multiarquivo da consolidação; transitório e recuperável
 runtime/consolidacao-em-andamento.json

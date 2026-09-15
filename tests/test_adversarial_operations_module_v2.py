@@ -45,8 +45,9 @@ class AdversarialOperationsModuleContractTest(unittest.TestCase):
             for alias in capability["aliases_v1"]
         }
 
-        self.assertEqual(catalog["versao_catalogo"], "3.0.0")
-        self.assertEqual(module["versao_implementacao"], "1.0.0")
+        self.assertEqual(catalog["versao_catalogo"], "5.0.0")
+        self.assertEqual(module["versao_implementacao"], "1.0.1")
+        self.assertEqual(module["versao_avaliacao"], "4.0.0")
         self.assertEqual(aliases, set(adversarial.LEGACY_ALIASES))
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},

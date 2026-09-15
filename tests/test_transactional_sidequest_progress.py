@@ -146,6 +146,13 @@ class TransactionalProgressDecisionTest(TransactionalProgressFixture):
         self.assertEqual(
             result["progresso_sidequests"]["resultado"], "sem_fatos_sidequest"
         )
+        receipts = result["progresso_sidequests"][
+            "avaliacoes_integracao_canonica"
+        ]
+        self.assertEqual(len(receipts), 1)
+        self.assertEqual(receipts[0]["gatilho"], "progresso")
+        self.assertTrue(receipts[0]["recibo_completo"])
+        self.assertNotIn("mission_id", receipts[0])
         self.assertEqual(len(transacoes.load_pending(self.repo)), 1)
 
     def test_evidencia_ausente_falha_antes_do_writer_e_do_journal(self):

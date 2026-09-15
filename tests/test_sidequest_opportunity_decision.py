@@ -74,8 +74,14 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             )
             self.assertEqual(list(Path(temporary).iterdir()), [])
         receipt = result.pop("orquestracao")
+        coverage = result.pop("cobertura_avaliacao_modular")
+        sentinel.pop("cobertura_avaliacao_modular", None)
         self.assertEqual(result, sentinel)
         self.assertEqual(receipt["operacao"], "preparar")
+        self.assertIn(
+            "turn_and_session_orchestration|preparar|aplicavel|1",
+            coverage["recibos"],
+        )
         hot.assert_called_once()
         active.assert_called_once()
         emergent.assert_not_called()
@@ -116,8 +122,14 @@ class ExplicitOpportunityDecisionGateTest(unittest.TestCase):
             )
             self.assertEqual(list(Path(temporary).iterdir()), [])
         receipt = result.pop("orquestracao")
+        coverage = result.pop("cobertura_avaliacao_modular")
+        integrated.pop("cobertura_avaliacao_modular", None)
         self.assertEqual(result, integrated)
         self.assertEqual(receipt["operacao"], "preparar")
+        self.assertIn(
+            "turn_and_session_orchestration|preparar|aplicavel|1",
+            coverage["recibos"],
+        )
         emergent.assert_called_once()
         active.assert_called_once()
         self.assertEqual(emergent.call_args.kwargs["signal_raw"], signal)

@@ -92,53 +92,6 @@ relacao:
     que a porta havia sido deixada aberta para ele; a frase carregou por um instante interesse pessoal sutil antes
     de ela retomar o profissionalismo.
   informacoes_recebidas:
-  - canal: mensagem_entregue
-    destinatario: halessa_vorn
-    emissor: ren
-    estatuto: relato
-    evidencia:
-      campo: narracao
-      trecho: Um mensageiro veio em nome de Ren
-    fonte: transacao:s021-nv04-0ffe03442f8f78931d91e8df56e67a43
-    id: mem_a227743120a41ea5e1bcf886
-    participantes:
-    - halessa_vorn
-    - ren
-    registro_sha256: 54a235985aef4ce234bbe2fdb643537e4d50bbba9cf15a0165a217e995da65be
-    texto: Um mensageiro veio em nome de Ren
-    tipo: informacao
-  - canal: presencial
-    destinatario: halessa_vorn
-    emissor: ren
-    estatuto: relato
-    evidencia:
-      campo: jogador
-      trecho: Eu prefiro andar na cidade assim pra manter as pessoas que estão próximas de mim mais seguras
-    fonte: transacao:s021-nv04-164ba04a96dd7e1a50803ecfaf799bcf
-    id: mem_4bb2ad13d9f512bbb9d639d9
-    participantes:
-    - halessa_vorn
-    - ren
-    registro_sha256: a3adc7dce139bae9bddcadd355f92ed8d248b8ee868fe765efaeebcbafc8438b
-    texto: Eu prefiro andar na cidade assim pra manter as pessoas que estão próximas de mim mais seguras
-    tipo: informacao
-  - canal: presencial
-    destinatario: halessa_vorn
-    emissor: ren
-    estatuto: relato
-    evidencia:
-      campo: jogador
-      trecho: Que ela sabe da existência dele, e talvez onde ele se encontra. Que ela confirma que ele já possui
-        outros agentes implantados
-    fonte: transacao:s021-nv04-0a86869ad06971d0a11b04d140643294
-    id: mem_b21f41d7e3eadc3a99ed1a43
-    participantes:
-    - halessa_vorn
-    - ren
-    registro_sha256: ba38c65dc349678c22ee74f6c68d71d31a8f713ab218125d5e89b85db8a6a702
-    texto: Que ela sabe da existência dele, e talvez onde ele se encontra. Que ela confirma que ele já possui outros
-      agentes implantados
-    tipo: informacao
   - canal: presencial
     destinatario: halessa_vorn
     emissor: ren
@@ -173,6 +126,23 @@ relacao:
     texto: Três homens kozakuranos usaram uma falsa senhora e a placa do restaurante para cercar Shinta; o líder
       o chamou de Ren.
     tipo: informacao
+  - canal: presencial
+    destinatario: halessa_vorn
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: o homem de casaco cinza com a caixa de contas sustentou materialmente a fachada ao pagar os reparos
+        e receber a nova equipe
+    fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+    id: mem_480315eda2478e3e13ff3a76
+    participantes:
+    - halessa_vorn
+    - ren
+    registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+    texto: o homem de casaco cinza com a caixa de contas sustentou materialmente a fachada ao pagar os reparos e
+      receber a nova equipe
+    tipo: informacao
   memorias_importantes:
   - evidencia:
       campo: narracao
@@ -195,6 +165,18 @@ relacao:
     - ren
     registro_sha256: e4bacc58d6302f9355989ff0b2b18c4eb47150c22a1be35e4bc27d85ceddddea
     texto: Preferi contar tudo isso porque confio em você, e queria te manter informada.
+    tipo: marco
+  - evidencia:
+      campo: narracao
+      trecho: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+    fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+    id: mem_5f66cce891f2116109109f79
+    participantes:
+    - darran_vell
+    - halessa_vorn
+    - ren
+    registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+    texto: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
     tipo: marco
 conteudo_mais_antigo_no_historico:
   ofertas: 1

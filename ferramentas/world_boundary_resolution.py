@@ -14,7 +14,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import fronteira_torneio as _temporal_extensions
 import fronteira_vivacidade as _liveness
 import resolver_fronteira as _batch
@@ -39,20 +39,29 @@ BatchBoundaryError = _batch.BatchBoundaryError
 def augment_endpoint(*args: Any, **kwargs: Any) -> dict[str, Any]:
     """Compõe a fronteira existente na mesma consulta operacional."""
 
-    return _temporal_extensions.augment_endpoint(*args, **kwargs)
+    result = _temporal_extensions.augment_endpoint(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="fronteira", applicability="aplicavel"
+    )
 
 
 def evaluate(*args: Any, **kwargs: Any) -> dict[str, Any]:
-    return _liveness.evaluate(*args, **kwargs)
+    result = _liveness.evaluate(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="fronteira", applicability="aplicavel"
+    )
 
 
 def query(*args: Any, **kwargs: Any) -> dict[str, Any]:
-    return _liveness.query(*args, **kwargs)
+    result = _liveness.query(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="fronteira", applicability="aplicavel"
+    )
 
 
 def prepare_batch(repo: Path) -> dict[str, Any]:
     result = _batch.prepare_batch(repo)
-    return {
+    result = {
         **result,
         "schema_world_boundary_resolution": FACADE_SCHEMA,
         "module_id": MODULE_ID,
@@ -61,6 +70,12 @@ def prepare_batch(repo: Path) -> dict[str, Any]:
         ),
         "efeito_materializado": False,
     }
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="preparar_lote",
+        applicability=("aplicavel" if result.get("quantidade") else "nao_aplicavel"),
+    )
 
 
 def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
@@ -75,13 +90,19 @@ def apply_batch(repo: Path, payload: Any) -> dict[str, Any]:
         outcome = "gate_neutro_aplicado"
     else:
         outcome = "retry_sem_duplicacao"
-    return {
+    result = {
         **result,
         "schema_world_boundary_resolution": FACADE_SCHEMA,
         "module_id": MODULE_ID,
         "resultado_modular": outcome,
         "efeito_materializado": materialized,
     }
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="aplicar_lote",
+        applicability="aplicavel" if materialized or neutral_closures else "nao_aplicavel",
+    )
 
 
 def _check_liveness(_: Path) -> dict[str, Any]:

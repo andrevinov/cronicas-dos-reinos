@@ -104,11 +104,14 @@ class EvaluationCatalogContractTest(unittest.TestCase):
         successor = copy.deepcopy(current)
         successor.update(
             {
-                "release_id": f"context_and_memory/impl-{next_version}/eval-3.0.0",
+                "release_id": (
+                    f"context_and_memory/impl-{next_version}/"
+                    f"eval-{current['evaluation_version']}"
+                ),
                 "implementation_version": next_version,
                 "previous": {
                     "implementation_version": current["implementation_version"],
-                    "evaluation_version": "3.0.0",
+                    "evaluation_version": current["evaluation_version"],
                 },
                 "implementation_change": "patch",
                 "evaluation_change": "none",

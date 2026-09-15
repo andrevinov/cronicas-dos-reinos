@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -84,6 +85,53 @@ class ModularV2AcceptanceTest(unittest.TestCase):
         self.assertEqual(releases["releases_correntes"], 12)
         self.assertGreaterEqual(releases["releases_historicos"], 12)
         self.assertEqual(set(releases["current_release_ids"]), aceitacao_modular_v2.catalog_contract.MODULE_IDS)
+
+
+class FirstRealSessionAcceptanceTest(unittest.TestCase):
+    def status(self, observed, *, module_count=12):
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            package = repo / "evaluation/sessions/001"
+            package.mkdir(parents=True)
+            files = {
+                repo / aceitacao_modular_v2.SESSION_INDEX: {
+                    "sessoes": [{"serie_avaliacao": "modules-v2", "sessao_id": "001", "caminho": "001"}]
+                },
+                package / "manifest.json": {
+                    "serie_avaliacao": "modules-v2",
+                    "versoes_modulos": [{}] * module_count,
+                },
+                package / "scorecard.json": {"eixos": {}, "status_avaliacao": "provisoria"},
+                package / "interacoes.json": {"interactions": observed},
+                package / "resumo-modulos.json": {"modulos": [{}] * 12},
+            }
+            for path, value in files.items():
+                path.write_text(json.dumps(value), encoding="utf-8")
+            return aceitacao_modular_v2.first_real_session_status(repo)
+
+    def test_referencia_ausente_mantem_aceite_real_pendente(self):
+        result = self.status([
+            {"response_present": True, "visible_exactly_once": True},
+            {"response_present": True, "visible_exactly_once": False},
+        ])
+        self.assertEqual(result["estado"], "pendente")
+        self.assertFalse(result["aceite_final"])
+        self.assertEqual(result["interacoes_observadas"], 2)
+        self.assertEqual(result["interacoes_sem_referencia_unica"], 1)
+
+    def test_sem_respostas_observadas_nao_inaugura_baseline(self):
+        result = self.status([])
+        self.assertFalse(result["aceite_final"])
+        self.assertEqual(result["interacoes_observadas"], 0)
+
+    def test_referencias_unicas_permitem_aceite_real(self):
+        result = self.status([{"response_present": True, "visible_exactly_once": True}])
+        self.assertEqual(result["estado"], "aceita")
+        self.assertTrue(result["aceite_final"])
+
+    def test_pacote_estruturalmente_invalido_continua_bloqueando_gate(self):
+        with self.assertRaises(aceitacao_modular_v2.ModularAcceptanceError):
+            self.status([], module_count=11)
 
 
 if __name__ == "__main__":

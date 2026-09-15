@@ -30,6 +30,7 @@ DEFAULT_TARGETS = ROOT / "evaluation" / "metas-avaliacao-v2.json"
 DEFAULT_BASELINE = ROOT / "baseline" / "rollout-2026-08-15.json"
 PACKAGE_SCHEMA = 1
 PACKAGE_SCHEMA_V2 = 2
+GENERATOR_VERSION = "4.0.0"
 
 AUDIT_COLUMNS = (
     "modulo",
@@ -1007,40 +1008,96 @@ def _module_summary_v2(
     turn_rows: list[dict[str, Any]],
     targets: dict[str, Any],
     total_tokens: int,
+    opportunity_gate_audit: dict[str, Any] | None = None,
+    canonical_integration_audit: dict[str, Any] | None = None,
+    module_coverage_gates: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     events = list(ledger.get("events") or [])
     feedback = list(ledger.get("player_feedback") or [])
+    semantic_audits = list(ledger.get("semantic_audits") or [])
     cost_by_module = {
         item["module_id"]: item for item in ledger.get("module_parent_costs") or []
     }
     turn_by_ordinal = {int(item["ordinal"]): item for item in turn_rows}
     confidence_values = targets.get("confianca_evento") or {}
     weights = targets.get("pesos_modulo") or {}
+    gate_audit = opportunity_gate_audit or {}
+    canonical_gate = canonical_integration_audit or {}
+    coverage_gates = module_coverage_gates or {}
     rows: list[dict[str, Any]] = []
     for module in catalog:
         module_id = str(module["id"])
+        is_sidequest_authoring = module_id == "sidequest_authoring"
+        is_canonical_integration = module_id == "canonical_quest_integration"
+        evaluation_major = int(str(module.get("versao_avaliacao") or "0").split(".")[0])
+        uses_objective_opportunity = is_sidequest_authoring and evaluation_major >= 4
+        uses_objective_canonical = is_canonical_integration and evaluation_major >= 4
+        uses_fail_closed_coverage = (
+            evaluation_major >= 4 and not is_canonical_integration
+        )
+        coverage_gate = (
+            coverage_gates.get(module_id) or {}
+            if uses_fail_closed_coverage
+            else {}
+        )
+        coverage_activity_units = int(coverage_gate.get("activity_units") or 0)
+        coverage_complete_receipts = int(
+            coverage_gate.get("complete_receipts") or 0
+        )
+        coverage_missing_receipts = int(
+            coverage_gate.get("missing_receipts") or 0
+        )
+        coverage_incomplete_receipts = int(
+            coverage_gate.get("incomplete_receipts") or 0
+        )
+        coverage_duplicate_receipts = int(
+            coverage_gate.get("duplicate_receipts") or 0
+        )
+        coverage_applicable_units = int(
+            coverage_gate.get("applicable_units") or 0
+        )
+        coverage_not_applicable_units = int(
+            coverage_gate.get("not_applicable_units") or 0
+        )
+        coverage_indeterminate_units = int(
+            coverage_gate.get("indeterminate_units") or 0
+        )
+        coverage_complete = bool(coverage_gate.get("coverage_complete", False))
+        objective_assessment = (
+            gate_audit.get("objective_assessment") or {}
+            if uses_objective_opportunity
+            else {}
+        )
         module_events = [item for item in events if item.get("module_id") == module_id]
         eligible = 0
         activated = 0
-        true_positive = false_positive = false_negative = 0
+        true_positive = true_negative = false_positive = false_negative = 0
         effects: list[bool] = []
         for event in module_events:
             eligibility = _event_effective(event, "eligibility", "eligibility_observed")
             activation = _event_effective(event, "activation", "activation_observed")
-            is_active = activation not in {None, "ausente", "gate_neutro"}
+            gate_answered = activation == "gate_neutro"
+            is_active = activation not in {None, "ausente", "gate_neutro"} or (
+                gate_answered and eligibility == "sim"
+            )
             if eligibility == "sim":
                 eligible += 1
                 if is_active:
                     true_positive += 1
                 else:
                     false_negative += 1
-            elif eligibility == "nao" and is_active:
+            elif eligibility == "nao" and activation not in {
+                None,
+                "ausente",
+                "gate_neutro",
+            }:
                 false_positive += 1
             if is_active:
                 activated += 1
-                effect = _event_effective(event, "effect_observed", "effect_observed")
-                if isinstance(effect, bool):
-                    effects.append(effect)
+                if not gate_answered:
+                    effect = _event_effective(event, "effect_observed", "effect_observed")
+                    if isinstance(effect, bool):
+                        effects.append(effect)
 
         manifestations = []
         for item in feedback:
@@ -1052,25 +1109,250 @@ def _module_summary_v2(
             item for item in manifestations
             if (item.get("adjudication") or {}).get("state") in {"confirmada", "parcial"}
         ]
-        false_negative += sum(
+        confirmed_guardrails = [
+            item
+            for item in manifestations
+            if item.get("perceived_type") == "possivel_guardrail"
+            and (item.get("adjudication") or {}).get("state") == "confirmada"
+        ]
+        missed_opportunities = sum(
             item.get("perceived_type") == "oportunidade_percebida" for item in confirmed
         )
-        false_positive += sum(
-            item.get("perceived_type") in {"sobreativacao_percebida", "ativacao_inadequada"}
-            for item in confirmed
-        )
+        if not uses_objective_opportunity:
+            eligible += missed_opportunities
+            false_negative += missed_opportunities
+            false_positive += sum(
+                item.get("perceived_type")
+                in {"sobreativacao_percebida", "ativacao_inadequada"}
+                for item in confirmed
+            )
         effects.extend(
-            False for item in confirmed if item.get("perceived_type") == "efeito_incorreto"
+            item.get("perceived_type") == "boa_ativacao"
+            for item in confirmed
+            if item.get("perceived_type")
+            in {"boa_ativacao", "efeito_incorreto", "timing", "continuidade"}
         )
 
+        module_semantic_audits = []
+        semantic_effects: list[bool] = []
+        if module_id == "narrative_delivery":
+            module_event_ids = {str(item.get("event_id") or "") for item in module_events}
+            module_semantic_audits = [
+                item
+                for item in semantic_audits
+                if str(item.get("event_id") or "") in module_event_ids
+            ]
+            for audit in module_semantic_audits:
+                for state in (audit.get("dimensions") or {}).values():
+                    if state in {"adequado", "inadequado"}:
+                        semantic_effects.append(state == "adequado")
+            effects.extend(semantic_effects)
+
+        objective_indeterminate = 0
+        objective_receipts = 0
+        canonical_activity_units = 0
+        canonical_receipts = 0
+        canonical_duplicate_receipts = 0
+        canonical_non_scoreable = 0
+        canonical_missing_receipts = 0
+        canonical_incomplete_receipts = 0
+        canonical_coverage_complete = True
+        if uses_objective_opportunity:
+            classification_by_interaction: dict[str, str] = {}
+            interaction_by_turn = {
+                str(item.get("turn_id") or ""): str(item.get("interaction_ref") or "")
+                for item in ledger.get("interactions") or []
+            }
+            assessments = [
+                item
+                for item in objective_assessment.get("assessments") or []
+                if isinstance(item, dict)
+            ]
+            for assessment in assessments:
+                classification = str(assessment.get("classification") or "indeterminado")
+                interaction_ref = interaction_by_turn.get(str(assessment.get("turn_id") or ""))
+                key = interaction_ref or str(assessment.get("turn_id") or assessment.get("call_id") or "")
+                if key:
+                    classification_by_interaction[key] = classification
+
+            matrix = {
+                key: 0
+                for key in (
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                )
+            }
+            if classification_by_interaction:
+                for classification in classification_by_interaction.values():
+                    if classification in matrix:
+                        matrix[classification] += 1
+                    else:
+                        objective_indeterminate += 1
+                objective_receipts = len(classification_by_interaction)
+            else:
+                observed_matrix = objective_assessment.get("confusion_matrix") or {}
+                for key in matrix:
+                    matrix[key] = int(observed_matrix.get(key) or 0)
+                objective_indeterminate = int(
+                    objective_assessment.get("indeterminate") or 0
+                )
+                objective_receipts = int(objective_assessment.get("receipts") or 0)
+
+            feedback_classifications = {
+                "oportunidade_percebida": "falso_negativo",
+                "sobreativacao_percebida": "falso_positivo",
+                "ativacao_inadequada": "falso_positivo",
+            }
+            for item in confirmed:
+                replacement = feedback_classifications.get(str(item.get("perceived_type") or ""))
+                if replacement is None:
+                    continue
+                interaction_ref = str(item.get("interaction_ref") or "")
+                previous = classification_by_interaction.get(interaction_ref)
+                if previous in matrix:
+                    matrix[previous] = max(0, matrix[previous] - 1)
+                elif previous == "indeterminado":
+                    objective_indeterminate = max(0, objective_indeterminate - 1)
+                matrix[replacement] += 1
+                if interaction_ref:
+                    classification_by_interaction[interaction_ref] = replacement
+
+            true_positive = matrix["verdadeiro_positivo"]
+            true_negative = matrix["verdadeiro_negativo"]
+            false_positive = matrix["falso_positivo"]
+            false_negative = matrix["falso_negativo"]
+            eligible = true_positive + false_negative
+            activated = true_positive + false_positive
+
+        if uses_objective_canonical:
+            canonical_activity_units = int(canonical_gate.get("activity_units") or 0)
+            canonical_receipts = int(canonical_gate.get("receipts") or 0)
+            canonical_duplicate_receipts = int(
+                canonical_gate.get("duplicate_receipts") or 0
+            )
+            canonical_non_scoreable = int(canonical_gate.get("non_scoreable") or 0)
+            objective_indeterminate = int(canonical_gate.get("indeterminate") or 0)
+            canonical_missing_receipts = int(
+                canonical_gate.get("missing_receipts") or 0
+            )
+            canonical_incomplete_receipts = int(
+                canonical_gate.get("incomplete_receipts") or 0
+            )
+            canonical_coverage_complete = bool(
+                canonical_gate.get("coverage_complete", False)
+            )
+            matrix = canonical_gate.get("confusion_matrix") or {}
+            true_positive = int(matrix.get("verdadeiro_positivo") or 0)
+            true_negative = int(matrix.get("verdadeiro_negativo") or 0)
+            false_positive = int(matrix.get("falso_positivo") or 0)
+            false_negative = int(matrix.get("falso_negativo") or 0)
+            eligible = true_positive + false_negative
+            activated = true_positive + false_positive
+
+        materialized_authoring = any(
+            (event.get("adjudication") or {}).get("materialized_result")
+            or event.get("materialized_result_observed")
+            for event in module_events
+        )
         precision = _ratio_score(true_positive, true_positive + false_positive)
         recall = _ratio_score(true_positive, true_positive + false_negative)
-        calibration = _score_average((precision, recall))
+        specificity = _ratio_score(true_negative, true_negative + false_positive)
+        balanced_accuracy = (
+            _score_average((recall, specificity))
+            if uses_objective_canonical
+            else round((recall + specificity) / 2, 2)
+            if recall is not None and specificity is not None
+            else None
+        )
+        calibration = (
+            balanced_accuracy
+            if uses_objective_opportunity or uses_objective_canonical
+            else _score_average((precision, recall))
+        )
         efficacy = _ratio_score(sum(effects), len(effects)) if effects else None
+        performance_evaluable = calibration is not None or efficacy is not None
+        objective_scoreable = true_positive + true_negative + false_positive + false_negative
+        canonical_activity_observed = max(
+            canonical_activity_units,
+            canonical_receipts,
+        )
+        canonical_instrumentation_failure = bool(
+            uses_objective_canonical
+            and (
+                canonical_missing_receipts > 0
+                or canonical_incomplete_receipts > 0
+                or not canonical_coverage_complete
+            )
+        )
+        canonical_not_applicable = bool(
+            uses_objective_canonical
+            and canonical_activity_observed > 0
+            and not canonical_instrumentation_failure
+            and eligible == 0
+            and false_positive == 0
+        )
+        coverage_instrumentation_failure = bool(
+            uses_fail_closed_coverage
+            and coverage_activity_units > 0
+            and (
+                coverage_missing_receipts > 0
+                or coverage_incomplete_receipts > 0
+                or coverage_duplicate_receipts > 0
+                or not coverage_complete
+            )
+        )
+        coverage_not_applicable = bool(
+            uses_fail_closed_coverage
+            and coverage_activity_units > 0
+            and coverage_complete
+            and coverage_applicable_units == 0
+            and coverage_indeterminate_units == 0
+            and coverage_not_applicable_units == coverage_activity_units
+        )
+        coverage_indeterminate = bool(
+            uses_fail_closed_coverage
+            and coverage_activity_units > 0
+            and coverage_complete
+            and coverage_applicable_units == 0
+            and coverage_indeterminate_units > 0
+        )
+        if (
+            canonical_instrumentation_failure
+            or canonical_not_applicable
+            or coverage_instrumentation_failure
+            or coverage_not_applicable
+            or coverage_indeterminate
+        ):
+            performance_evaluable = False
+        evaluated_sample_size = max(
+            objective_scoreable
+            if uses_objective_opportunity or uses_objective_canonical
+            else eligible,
+            len(effects),
+        )
+        authoring_not_exercised = bool(
+            is_sidequest_authoring
+            and not performance_evaluable
+            and (
+                objective_scoreable > 0
+                and eligible == 0
+                and objective_indeterminate == 0
+                if uses_objective_opportunity
+                else int(gate_audit.get("prepare_calls") or 0) > 0
+                and int(gate_audit.get("valid_decisions") or 0)
+                == int(gate_audit.get("prepare_calls") or 0)
+                and int(gate_audit.get("violations") or 0) == 0
+            )
+            and not materialized_authoring
+        )
         reliability = _score_average(
             _number(confidence_values.get(str(event.get("inference_confidence"))))
             for event in module_events
         )
+        if not performance_evaluable:
+            reliability = None
         ordinals = sorted({int(event["turn_ordinal"]) for event in module_events})
         latencies = [
             float(turn_by_ordinal[ordinal]["latencia_segundos"])
@@ -1087,14 +1369,32 @@ def _module_summary_v2(
             "confiabilidade": reliability,
             "fluidez": fluency,
         }
-        performance = _weighted_score(scores, weights)
+        performance = _weighted_score(scores, weights) if performance_evaluable else None
         cost = cost_by_module.get(module_id) or {}
         attributed = int(cost.get("total_tokens") or 0)
-        if false_negative >= false_positive and false_negative:
+        if canonical_instrumentation_failure or coverage_instrumentation_failure:
+            activation_label = "falha de instrumentação"
+        elif canonical_not_applicable or coverage_not_applicable:
+            activation_label = "não aplicável"
+        elif coverage_indeterminate:
+            activation_label = "indeterminado"
+        elif false_negative >= false_positive and false_negative:
             activation_label = "subativou"
         elif false_positive:
             activation_label = "sobreativou"
-        elif module_events:
+        elif not performance_evaluable:
+            activation_label = (
+                "N/D"
+                if uses_fail_closed_coverage and coverage_activity_units == 0
+                else "indeterminado"
+                if uses_fail_closed_coverage
+                else "N/D"
+            )
+        elif module_events or (
+            uses_objective_canonical and canonical_activity_observed > 0
+        ) or (
+            uses_objective_opportunity and objective_receipts > 0
+        ):
             activation_label = "ativou a contento"
         else:
             activation_label = "N/D"
@@ -1103,9 +1403,79 @@ def _module_summary_v2(
             problems.append(f"{false_negative} oportunidade(s) elegível(is) sem ativação confirmada")
         if false_positive:
             problems.append(f"{false_positive} ativação(ões) sem elegibilidade confirmada")
+        if uses_objective_opportunity and objective_indeterminate:
+            problems.append(
+                f"{objective_indeterminate} decisão(ões) sem prova objetiva suficiente"
+            )
+        if (
+            uses_objective_opportunity
+            and int(gate_audit.get("prepare_calls") or 0) > objective_receipts
+        ):
+            problems.append(
+                f"{int(gate_audit.get('prepare_calls') or 0) - objective_receipts} "
+                "preparo(s) sem recibo avaliativo 4.0.0"
+            )
+        if canonical_instrumentation_failure:
+            problems.append(
+                f"{canonical_missing_receipts} recibo(s) ausente(s) e "
+                f"{canonical_incomplete_receipts} incompleto(s) em atividades de "
+                "sidequest que exigiam avaliação de integração canônica 4.0.0"
+            )
+        elif canonical_not_applicable:
+            problems.append(
+                f"{canonical_activity_observed} atividade(s) de sidequest avaliada(s); "
+                "nenhuma ponte canônica elegível nesta sessão"
+            )
+        elif uses_objective_canonical and objective_indeterminate:
+            problems.append(
+                f"{objective_indeterminate} avaliação(ões) canônica(s) não pontuável(is)"
+            )
+        if coverage_instrumentation_failure:
+            problems.append(
+                f"{coverage_missing_receipts} recibo(s) de cobertura ausente(s), "
+                f"{coverage_incomplete_receipts} incompleto(s) e "
+                f"{coverage_duplicate_receipts} duplicado(s) em "
+                f"{coverage_activity_units} atividade(s) esperada(s)"
+            )
+        elif coverage_not_applicable:
+            problems.append(
+                f"{coverage_activity_units} atividade(s) avaliada(s) e explicitamente "
+                "não aplicável(is) nesta sessão"
+            )
+        elif coverage_indeterminate:
+            problems.append(
+                f"{coverage_indeterminate_units} atividade(s) com aplicabilidade "
+                "indeterminada; nenhuma nota foi fabricada"
+            )
         if effects and not all(effects):
             problems.append(f"{sum(not value for value in effects)} efeito(s) inadequado(s)")
-        if not module_events:
+        if confirmed_guardrails:
+            problems.append(
+                f"{len(confirmed_guardrails)} guardrail(s) confirmado(s), tratado(s) fora da média"
+            )
+        if authoring_not_exercised:
+            problems.append(
+                "nenhuma oportunidade elegível exercitou autoria ou oferta; desempenho permanece N/D"
+            )
+        elif (
+            module_events
+            and not performance_evaluable
+            and not canonical_instrumentation_failure
+            and not coverage_instrumentation_failure
+            and not canonical_not_applicable
+        ):
+            problems.append(
+                "sinais observados sem elegibilidade ou efeito adjudicável; desempenho permanece N/D"
+            )
+        if (
+            not module_events
+            and not confirmed
+            and not module_semantic_audits
+            and not canonical_not_applicable
+            and not canonical_instrumentation_failure
+            and not coverage_instrumentation_failure
+            and not coverage_not_applicable
+        ):
             problems.append("nenhuma evidência observável nesta sessão; desempenho permanece N/D")
 
         capabilities: list[dict[str, Any]] = []
@@ -1124,8 +1494,18 @@ def _module_summary_v2(
                         for item in capability_events
                     ),
                     "ativacoes_observadas": sum(
-                        _event_effective(item, "activation", "activation_observed")
-                        not in {None, "ausente", "gate_neutro"}
+                        (
+                            _event_effective(item, "activation", "activation_observed")
+                            not in {None, "ausente", "gate_neutro"}
+                            or (
+                                _event_effective(item, "activation", "activation_observed")
+                                == "gate_neutro"
+                                and _event_effective(
+                                    item, "eligibility", "eligibility_observed"
+                                )
+                                == "sim"
+                            )
+                        )
                         for item in capability_events
                     ),
                     "custo": "exposicao_apenas",
@@ -1141,15 +1521,99 @@ def _module_summary_v2(
                 "versao_avaliacao": module.get("versao_avaliacao"),
                 "avaliacao_ativacao": activation_label,
                 "eventos_detectados": len(module_events),
-                "chamadas_detectadas": len(module_events),
+                "chamadas_detectadas": len(
+                    {
+                        str(call_id)
+                        for event in module_events
+                        for call_id in event.get("call_ids_observed") or []
+                        if call_id
+                    }
+                ),
                 "turnos_detectados": len(ordinals),
                 "oportunidades_elegiveis": eligible,
                 "ativacoes_observadas": activated,
+                "verdadeiros_positivos": true_positive,
+                "verdadeiros_negativos": true_negative,
                 "falsos_positivos": false_positive,
                 "falsos_negativos": false_negative,
                 "precisao_consulta": precision,
                 "cobertura_consulta": recall,
+                "precisao_oportunidade": (
+                    precision if uses_objective_opportunity else None
+                ),
+                "cobertura_oportunidade": (
+                    recall if uses_objective_opportunity else None
+                ),
+                "especificidade_oportunidade": specificity,
+                "acuracia_balanceada_oportunidade": balanced_accuracy,
+                "avaliacoes_oportunidade_recebidas": (
+                    objective_receipts if uses_objective_opportunity else None
+                ),
+                "avaliacoes_oportunidade_pontuaveis": (
+                    objective_scoreable if uses_objective_opportunity else None
+                ),
+                "avaliacoes_oportunidade_indeterminadas": (
+                    objective_indeterminate if uses_objective_opportunity else None
+                ),
+                "avaliacoes_integracao_recebidas": (
+                    canonical_receipts if uses_objective_canonical else None
+                ),
+                "avaliacoes_integracao_pontuaveis": (
+                    objective_scoreable if uses_objective_canonical else None
+                ),
+                "avaliacoes_integracao_nao_pontuaveis": (
+                    canonical_non_scoreable if uses_objective_canonical else None
+                ),
+                "recibos_integracao_duplicados": (
+                    canonical_duplicate_receipts if uses_objective_canonical else None
+                ),
+                "avaliacoes_integracao_indeterminadas": (
+                    objective_indeterminate if uses_objective_canonical else None
+                ),
+                "unidades_sidequest_observadas": (
+                    canonical_activity_observed if uses_objective_canonical else None
+                ),
+                "recibos_integracao_ausentes": (
+                    canonical_missing_receipts if uses_objective_canonical else None
+                ),
+                "recibos_integracao_incompletos": (
+                    canonical_incomplete_receipts if uses_objective_canonical else None
+                ),
+                "cobertura_integracao_completa": (
+                    canonical_coverage_complete if uses_objective_canonical else None
+                ),
+                "unidades_avaliativas_obrigatorias": (
+                    coverage_activity_units if uses_fail_closed_coverage else None
+                ),
+                "recibos_cobertura_completos": (
+                    coverage_complete_receipts if uses_fail_closed_coverage else None
+                ),
+                "recibos_cobertura_ausentes": (
+                    coverage_missing_receipts if uses_fail_closed_coverage else None
+                ),
+                "recibos_cobertura_incompletos": (
+                    coverage_incomplete_receipts if uses_fail_closed_coverage else None
+                ),
+                "recibos_cobertura_duplicados": (
+                    coverage_duplicate_receipts if uses_fail_closed_coverage else None
+                ),
+                "unidades_avaliativas_aplicaveis": (
+                    coverage_applicable_units if uses_fail_closed_coverage else None
+                ),
+                "unidades_avaliativas_nao_aplicaveis": (
+                    coverage_not_applicable_units if uses_fail_closed_coverage else None
+                ),
+                "unidades_avaliativas_indeterminadas": (
+                    coverage_indeterminate_units if uses_fail_closed_coverage else None
+                ),
+                "cobertura_avaliativa_completa": (
+                    coverage_complete if uses_fail_closed_coverage else None
+                ),
+                "acuracia_balanceada_integracao_canonica": (
+                    balanced_accuracy if uses_objective_canonical else None
+                ),
                 "precisao_efeito": efficacy,
+                "efeitos_avaliaveis": len(effects),
                 "tokens_totais_atribuidos_fracionados": attributed,
                 "participacao_tokens_fracionados_pct": round(attributed / total_tokens * 100, 4) if total_tokens else 0,
                 "latencia_exposta_mediana_segundos": latency_median,
@@ -1161,9 +1625,60 @@ def _module_summary_v2(
                 "nota_fluidez_exposta_0a100": fluency,
                 "nota_desempenho_provisoria_0a100": performance,
                 "faixa_desempenho": _status(performance, targets),
-                "confianca_amostra_sessao": "N/D" if not module_events else ("baixa" if eligible < 10 else "provisoria"),
+                "confianca_amostra_sessao": (
+                    "N/D"
+                    if not performance_evaluable
+                    else "baixa"
+                    if evaluated_sample_size < 10
+                    else "provisoria"
+                ),
                 "manifestacoes_jogador": len(manifestations),
                 "manifestacoes_confirmadas": len(confirmed),
+                "aplicabilidade_avaliacao": (
+                    "sem_atividade"
+                    if uses_fail_closed_coverage and coverage_activity_units == 0
+                    else "falha_instrumentacao"
+                    if coverage_instrumentation_failure
+                    else "nao_aplicavel"
+                    if coverage_not_applicable
+                    else "indeterminado"
+                    if coverage_indeterminate
+                    else
+                    "nao_exercitada"
+                    if authoring_not_exercised
+                    else "nao_aplicavel"
+                    if canonical_not_applicable
+                    else "aplicavel"
+                    if performance_evaluable
+                    else "evidencia_insuficiente"
+                    if module_events or confirmed or canonical_instrumentation_failure
+                    else "sem_evidencia"
+                ),
+                "auditorias_semanticas": len(module_semantic_audits),
+                "dimensoes_semanticas_avaliadas": len(semantic_effects),
+                "dimensoes_semanticas_inadequadas": sum(
+                    not value for value in semantic_effects
+                ),
+                "gate_oportunidade_preparos": (
+                    int(gate_audit.get("prepare_calls") or 0)
+                    if is_sidequest_authoring
+                    else None
+                ),
+                "gate_oportunidade_decisoes_validas": (
+                    int(gate_audit.get("valid_decisions") or 0)
+                    if is_sidequest_authoring
+                    else None
+                ),
+                "gate_oportunidade_violacoes": (
+                    int(gate_audit.get("violations") or 0)
+                    if is_sidequest_authoring
+                    else None
+                ),
+                "gate_oportunidade_conformidade_pct": (
+                    round(float(gate_audit.get("coverage") or 0) * 100, 2)
+                    if is_sidequest_authoring
+                    else None
+                ),
                 "principais_problemas_de_ativacao": "; ".join(problems),
                 "subcapacidades": capabilities,
             }
@@ -1173,12 +1688,34 @@ def _module_summary_v2(
     cost_weight = float(priority_policy.get("peso_participacao_custo") or 0.3)
     for row in rows:
         performance = _number(row["nota_desempenho_provisoria_0a100"])
-        evidence_deficit = 100 - performance if performance is not None else 50.0
+        inapplicable = row.get("aplicabilidade_avaliacao") in {
+            "nao_exercitada",
+            "nao_aplicavel",
+            "sem_atividade",
+        }
+        instrumentation_failure = (
+            row.get("aplicabilidade_avaliacao") == "falha_instrumentacao"
+        )
+        evidence_deficit = (
+            100.0
+            if instrumentation_failure
+            else 0.0
+            if inapplicable
+            else 100 - performance
+            if performance is not None
+            else 50.0
+        )
+        priority_cost_share = (
+            0.0
+            if inapplicable
+            else float(row["participacao_tokens_fracionados_pct"])
+        )
         row["pontuacao_prioridade_0a100"] = round(
             experience_weight * evidence_deficit
-            + cost_weight * float(row["participacao_tokens_fracionados_pct"]),
+            + cost_weight * priority_cost_share,
             2,
         )
+        row["custo_exposto_participa_prioridade"] = not inapplicable
         row["prioridade_provisoria"] = performance is None
     rows.sort(key=lambda row: (-float(row["pontuacao_prioridade_0a100"]), row["modulo"]))
     for rank, row in enumerate(rows, 1):
@@ -1241,6 +1778,22 @@ def _scorecard_v2(
         for guardrail, state in (audit.get("guardrails") or {}).items():
             if state == "violado":
                 critical.append({"guardrail": guardrail, "event_id": audit.get("event_id")})
+    confirmed_feedback_guardrails = [
+        item
+        for item in ledger.get("player_feedback") or []
+        if item.get("perceived_type") == "possivel_guardrail"
+        and (item.get("adjudication") or {}).get("state") == "confirmada"
+    ]
+    for item in confirmed_feedback_guardrails:
+        suggestion = item.get("system_suggestion") or {}
+        critical.append(
+            {
+                "guardrail": "manifestacao_jogador_confirmada",
+                "feedback_id": item.get("feedback_id"),
+                "interaction_ref": item.get("interaction_ref"),
+                "module_id": suggestion.get("module_id") or item.get("player_module_id"),
+            }
+        )
     return {
         "schema_scorecard_sessao": PACKAGE_SCHEMA_V2,
         "sessao_id": session_id,
@@ -1276,6 +1829,7 @@ def _scorecard_v2(
         "manifestacoes": {
             "total": len(ledger.get("player_feedback") or []),
             "confirmadas_ou_parciais": sum((item.get("adjudication") or {}).get("state") in {"confirmada", "parcial"} for item in ledger.get("player_feedback") or []),
+            "guardrails_confirmados": len(confirmed_feedback_guardrails),
         },
         "violacoes_criticas": critical,
         "guardrails_participam_media": False,
@@ -1411,7 +1965,14 @@ def _generate_session_evaluation_v2(
     }
     total_tokens = int((report.get("narration_turns") or {}).get("input_tokens") or 0) + int((report.get("narration_turns") or {}).get("output_tokens") or 0)
     module_rows = _module_summary_v2(
-        session_catalog, ledger, turn_rows, targets, total_tokens
+        session_catalog,
+        ledger,
+        turn_rows,
+        targets,
+        total_tokens,
+        report.get("task47_opportunity_decision_gate"),
+        report.get("canonical_quest_integration_gate"),
+        report.get("module_coverage_gates"),
     )
     latencies = [float(row["latencia_segundos"]) for row in turn_rows if row.get("latencia_segundos") is not None]
     scorecard = _scorecard_v2(
@@ -1432,7 +1993,7 @@ def _generate_session_evaluation_v2(
     _write_json(output_dir / "scorecard.json", scorecard)
 
     versions = {
-        "gerador": "2.0.0",
+        "gerador": GENERATOR_VERSION,
         "telemetria": report.get("schema_version"),
         "detector_modular": ledger.get("detector_version"),
         "catalogo_modulos": catalog_data.get("versao_catalogo"),

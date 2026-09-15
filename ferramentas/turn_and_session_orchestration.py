@@ -16,7 +16,7 @@ from typing import Any, Callable
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import checkpoint as _checkpoint
 import ciclo_sessoes as _sessions
 import consolidar as _consolidation
@@ -189,6 +189,12 @@ def publish_turn(
 
     out = copy.deepcopy(result)
     out[RECEIPT_KEY] = _turn_receipt(out, operation)
+    attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase=operation,
+        applicability="aplicavel",
+    )
     if max_output_bytes is not None:
         size = len(
             yaml.safe_dump(out, allow_unicode=True, sort_keys=False).encode("utf-8")
@@ -216,7 +222,12 @@ def publish_partial_failure(
     }
     receipt["proximo_estado"] = "reparo"
     out[RECEIPT_KEY] = receipt
-    return out
+    return attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase=operation,
+        applicability="aplicavel",
+    )
 
 
 def _session_number(result: dict[str, Any]) -> Any:
@@ -258,7 +269,12 @@ def publish_session(result: dict[str, Any], operation: str) -> dict[str, Any]:
             f"recibo de sessão excede {MAX_RECEIPT_BYTES} bytes"
         )
     out[RECEIPT_KEY] = receipt
-    return out
+    return attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase=f"sessao_{operation}",
+        applicability="aplicavel",
+    )
 
 
 def prepare_recovery_gate(repo: Path) -> dict[str, Any] | None:

@@ -1,0 +1,21 @@
+schema_npc: 2
+natureza: medidores_npc_atuais
+id: darran_vell
+npc:
+  nome: Darran Vell
+  persistencia: persistente_sem_agenda
+  origem_identidade:
+    tipo: cena_confirmada
+    cena_id: s022-ren-aborda-darran-latrina
+  status: consciente, ferido e cooperando; pode redigir fora da Mesa uma retratação assinada da contramarca, mas
+    condiciona a confissão a não ser abandonado sem proteção
+  local: com Ren, no último reservado de uma casa de sopas longe do porto
+  estatisticas:
+    ca: 10
+    condicao: nenhuma; consciente e ferido
+    equivalente_mecanico: Commoner do D&D 5.5e
+    pv_atuais: 1
+    pv_maximos: 4
+  npc:
+    local: com Ren, inconsciente, no sótão vazio de uma antiga oficina além do porto
+    status: inconsciente e estável após nocaute não letal; não desperta apenas com primeiros socorros

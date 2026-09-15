@@ -1,10 +1,32 @@
 {
   "schema_catalogo_modulos": 2,
-  "versao_catalogo": "3.0.0",
+  "versao_catalogo": "5.0.0",
   "serie_avaliacao": "modules-v2",
   "estado": "producao",
   "padrao_producao": true,
   "natureza": "contrato de avaliação pós-hoc; não é estado canônico nem altera o hot path",
+  "contrato_cobertura_fail_closed": {
+    "schema": 1,
+    "modulos": [
+      "context_and_memory",
+      "turn_and_session_orchestration",
+      "narrative_delivery",
+      "rules_and_character_state",
+      "sidequest_authoring",
+      "sidequest_lifecycle",
+      "canonical_quest_integration",
+      "npc_continuity_and_social_behavior",
+      "scene_world_projection",
+      "world_boundary_resolution",
+      "causal_narrative_routing",
+      "adversarial_operations"
+    ],
+    "atividade_sem_recibo": "falha_instrumentacao",
+    "recibo_incompleto": "falha_instrumentacao",
+    "nao_aplicavel_exige_recibo_explicito": true,
+    "nd_exige_zero_atividade_avaliativa": true,
+    "pontuacao_exige_aplicabilidade_e_evidencia": true
+  },
   "unidades_analise": ["turno", "cena", "fronteira", "sessao", "evento"],
   "estados_ativacao": [
     "nao_elegivel",
@@ -39,8 +61,8 @@
         {"id": "fatos_duraveis_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.1",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "turn_and_session_orchestration",
@@ -73,8 +95,8 @@
         {"id": "lifecycle_sessao_valido", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
-      "versao_implementacao": "1.0.1",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "narrative_delivery",
@@ -105,8 +127,8 @@
         {"id": "violacoes_criticas", "unidade": "contagem_separada", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity"],
-      "versao_implementacao": "1.0.1",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "rules_and_character_state",
@@ -138,8 +160,8 @@
         {"id": "correcoes_mecanicas_jogador", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "roll_integrity", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "sidequest_authoring",
@@ -147,13 +169,13 @@
       "escopo": "Elegibilidade, autoria, contrato e oferta de sidequests emergentes; não acompanha missões já aceitas.",
       "unidade_analise": "evento",
       "contrato_elegibilidade": {
-        "gatilho": "Há âncora causal nova, alcançável e autorizada dentro dos limites de oportunidade e missões ativas.",
+        "gatilho": "Há âncora causal concreta, atual, alcançável, acionável, distinta e autorizada dentro dos limites de oportunidade e missões ativas.",
         "exclusoes": ["Conversa incidental", "Ausência de âncora", "Limite de oportunidade ou missões atingido"],
-        "evidencias_minimas": ["origem e tipo da âncora", "decisão positiva ou negativa", "oferta literal quando materializada"]
+        "evidencias_minimas": ["origem e tipo da âncora", "recibo objetivo independente da declaração", "decisão positiva ou negativa", "oferta literal quando materializada"]
       },
       "resultados_possiveis": ["sem_oportunidade", "oportunidade_recusada", "oferta_materializada", "autoria_incompleta", "indeterminado"],
       "subcapacidades": [
-        {"id": "opportunity_gate", "responsabilidade": "Exigir e validar a decisão explícita sobre nova oportunidade.", "aliases_v1": ["emergent_sidequest_opportunity"]},
+        {"id": "opportunity_gate", "responsabilidade": "Avaliar elegibilidade por evidência estruturada e comparar o resultado com a decisão explícita, sem tratar a declaração como verdade.", "aliases_v1": ["emergent_sidequest_opportunity"]},
         {"id": "quest_authoring", "responsabilidade": "Produzir contrato completo, persistente e coerente com a âncora.", "aliases_v1": ["emergent_sidequest_authoring"]},
         {"id": "fictional_materialization", "responsabilidade": "Persistir somente a oferta efetivamente narrada.", "aliases_v1": []}
       ],
@@ -161,12 +183,15 @@
       "rotulo_jogador": "Qualidade e medida das novas missões",
       "indicadores_especializados": [
         {"id": "precisao_das_ancoras", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "cobertura_de_oportunidades", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "acuracia_balanceada_de_oportunidade", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "taxa_de_indeterminacao", "unidade": "proporcao", "direcao_desejada": "menor"},
         {"id": "ofertas_com_contrato_completo", "unidade": "proporcao", "direcao_desejada": "maior"},
         {"id": "custo_por_autoria", "unidade": "tokens", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "2.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "sidequest_lifecycle",
@@ -194,8 +219,8 @@
         {"id": "fases_e_prazos_corretos", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "canonical_quest_integration",
@@ -203,11 +228,11 @@
       "escopo": "Pontes sidequest→cânone e cânone→oportunidade; não executa autoria nem lifecycle da missão.",
       "unidade_analise": "evento",
       "contrato_elegibilidade": {
-        "gatilho": "Há causa canônica autorizada ou fato de sidequest aceito capaz de formar ponte comprovável.",
-        "exclusoes": ["Afinidade ou encontro sem causa", "Possibilidade futura não canônica", "Segredo ainda não descoberto"],
-        "evidencias_minimas": ["fonte canônica", "evidência literal da ponte", "camada de conhecimento autorizada"]
+        "gatilho": "Cada oferta materializada, resposta, reavaliação de progresso ou terminal de sidequest exige um recibo seguro que classifique a obrigação da ponte no domínio reservado.",
+        "exclusoes": ["Afinidade ou encontro sem causa", "Possibilidade futura não canônica", "Segredo ainda não descoberto", "Oferta ou progresso intermediário sem operação pontuável"],
+        "evidencias_minimas": ["recibo completo por missão", "relação canônica estruturada em fonte reservada", "operação correspondente no ledger Task42 quando elegível"]
       },
-      "resultados_possiveis": ["ponte_nao_elegivel", "ponte_projetada", "oportunidade_canonica", "hipotese_promovida", "vazamento", "indeterminado"],
+      "resultados_possiveis": ["verdadeiro_positivo", "verdadeiro_negativo", "falso_positivo", "falso_negativo", "nao_pontuavel", "nao_aplicavel", "falha_instrumentacao"],
       "subcapacidades": [
         {"id": "sidequest_to_canon_bridge", "responsabilidade": "Produzir ponte causal a partir de fato aceito da sidequest.", "aliases_v1": ["canon_bridge"]},
         {"id": "canon_to_quest_opportunity", "responsabilidade": "Projetar oportunidade a partir de causa canônica reservada.", "aliases_v1": ["canonical_secret_quests"]}
@@ -215,13 +240,15 @@
       "visibilidade_jogador": "reservada",
       "rotulo_jogador": "Integração das missões com a trama principal",
       "indicadores_especializados": [
+        {"id": "cobertura_recibos_por_atividade", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "acuracia_balanceada_integracao", "unidade": "percentual", "direcao_desejada": "maior"},
         {"id": "pontes_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"},
         {"id": "hipoteses_promovidas", "unidade": "contagem", "direcao_desejada": "menor"},
         {"id": "vazamentos_canonicos", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "2.0.0",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "npc_continuity_and_social_behavior",
@@ -249,8 +276,8 @@
         {"id": "rendimento_visivel_por_ativacao", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.1.0",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "scene_world_projection",
@@ -276,8 +303,8 @@
         {"id": "condicoes_ativas_projetadas", "unidade": "proporcao", "direcao_desejada": "maior"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "world_boundary_resolution",
@@ -302,8 +329,8 @@
         {"id": "tempo_de_resolucao", "unidade": "segundos", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "causal_narrative_routing",
@@ -328,8 +355,8 @@
         {"id": "consultas_neutras_sem_competicao", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     },
     {
       "id": "adversarial_operations",
@@ -354,8 +381,8 @@
         {"id": "capacidades_ou_conhecimento_fabricados", "unidade": "contagem", "direcao_desejada": "menor"}
       ],
       "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"],
-      "versao_implementacao": "1.0.0",
-      "versao_avaliacao": "3.0.0"
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
     }
   ],
   "camadas_nao_modulares": {

@@ -15,7 +15,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import eventos_canonicos as _canonical
 import pressao_narrativa as _pressure
 
@@ -42,13 +42,11 @@ NarrativePressureError = _pressure.NarrativePressureError
 CanonicalEventError = _canonical.CanonicalEventError
 
 routable_operation_pendings = _pressure.routable_operation_pendings
-integrate_prepare = _pressure.integrate_prepare
 ticket_meta = _pressure.ticket_meta
 strip_ticket_payload = _pressure.strip_ticket_payload
 prepare_conclusion = _pressure.prepare_conclusion
 writer_transaction = _pressure.writer_transaction
 authorize_registration = _pressure.authorize_registration
-install_conclusion = _pressure.install_conclusion
 project_social_pressure = _pressure.project_social_pressure
 authorize_censorship_topic = _pressure.authorize_censorship_topic
 sort_items = _pressure.sort_items
@@ -57,6 +55,31 @@ event_for_pending = _canonical.event_for_pending
 pending_projection = _canonical.pending_projection
 load_catalog = _canonical.load_catalog
 load_event = _canonical.load_event
+
+
+def integrate_prepare(*args: Any, **kwargs: Any) -> dict[str, Any]:
+    result = _pressure.integrate_prepare(*args, **kwargs)
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="preparar",
+        applicability=(
+            "aplicavel" if result.get("pressao_narrativa") is not None
+            else "nao_aplicavel"
+        ),
+    )
+
+
+def install_conclusion(*args: Any, **kwargs: Any) -> dict[str, Any] | None:
+    result = _pressure.install_conclusion(*args, **kwargs)
+    if result is None:
+        return None
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel",
+    )
 
 
 class CausalNarrativeRoutingError(ValueError):
@@ -121,7 +144,7 @@ def route_authorized(matters: list[dict[str, Any]]) -> dict[str, Any]:
         result = "evento_canonico_datado"
     else:
         result = "materia_selecionada"
-    return {
+    result = {
         "schema_causal_narrative_routing": FACADE_SCHEMA,
         "module_id": MODULE_ID,
         "resultado_modular": result,
@@ -135,6 +158,12 @@ def route_authorized(matters: list[dict[str, Any]]) -> dict[str, Any]:
             "produtor_novo": 0,
         },
     }
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="rotear",
+        applicability="aplicavel" if ordered else "nao_aplicavel",
+    )
 
 
 def check(repo: Path) -> dict[str, Any]:

@@ -50,11 +50,11 @@ agentes:
       data: 18 Eleasis, 1372 DR
       hora: 06:00
     cache_negativo:
-      assinatura_causal: 1972ea47b9d3d8b9ef4830dce0482e068396b30a515cb6ea6e2ff8e6f87d4597
-      pendencia_origem: mundo-2ba976e1df343c29
+      assinatura_causal: 4f34c06a450e1f9a92e888e024d01aa392f3af6e6afc5567adeb933bd48b6944
+      pendencia_origem: mundo-773532eace81cf09
       confirmado_em:
-        data: 21 Eleasis, 1372 DR
-        hora: '22:00'
+        data: 22 Eleasis, 1372 DR
+        hora: '17:42'
       acertos_compactados: 0
       ultima_compactacao: null
   maerra_thandrel:
@@ -69,11 +69,11 @@ agentes:
       data: 20 Eleasis, 1372 DR
       hora: 06:00
     cache_negativo:
-      assinatura_causal: 72361446d9ea9719351095f651b72b41f310eddd20605c61db86c074b1b6664d
-      pendencia_origem: mundo-504d120a5ceffa1f
+      assinatura_causal: b787f512bf2e0aba0923612c452c2fb6b57984fab44742181244788247531476
+      pendencia_origem: mundo-7baab5a14f68dbd3
       confirmado_em:
         data: 22 Eleasis, 1372 DR
-        hora: 07:53
+        hora: '21:49'
       acertos_compactados: 0
       ultima_compactacao: null
   jack_mooney:

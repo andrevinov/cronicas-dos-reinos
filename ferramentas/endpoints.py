@@ -229,6 +229,10 @@ def project_scene(
     _project_tournament_invite(result, preview)
     _project_incident(result, preview)
     _base.validate_endpoint(result)
+    if "cobertura_avaliacao_modular" in preview:
+        result["cobertura_avaliacao_modular"] = preview[
+            "cobertura_avaliacao_modular"
+        ]
     return result
 
 

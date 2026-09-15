@@ -37,11 +37,15 @@ contrato_recompensa:
 estado:
   recompensas:
     acesso_registros_comparativos_galeria:
-      estado: pendente
+      estado: obtida
       tentativas_descoberta: 0
-      transacao: null
+      transacao: task43-58d1da78ea9e4a513557
   perdas: {}
-  historico_recente: []
+  historico_recente:
+  - tipo: recompensas_sucesso
+    ids:
+    - acesso_registros_comparativos_galeria
+    transacao: task43-58d1da78ea9e4a513557
 guardrails:
   descoberta_nao_e_obtencao: true
   perda_exige_contrato_e_prova: true

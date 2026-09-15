@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 21
+  sessao_atual: 22
   modo_de_cena_atual: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
@@ -18,14 +18,14 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Ravens Bluff
-  ponto_exato: diante da Mesa de Cargas do porto
-  descricao_operacional: Sob o disfarce de trabalhador kozakurano idoso, Ren pediu para falar com Halessa; uma acólita
-    aguarda o nome e o assunto que deve anunciar.
-  local_id: casa_de_tyr
-  modo_atual: conversa_reservada_com_halessa_sob_disfarce
-  ponto: sala reservada de atendimento da Casa de Tyr
-  modo: diante do balcão de visitantes sob o disfarce de Tanaka Matsumoto
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
+  descricao_operacional: Ren está na sala interna da Galeria com Tomas. A retratação de Darran e os três maços retidos
+    estão sob controle de Tomas; a janela autorizada terminou sem apresentação do talão E-39. Ren declarou que pretende
+    observar externamente uma possível chegada tardia.
+  modo_atual: conversa_com_tomas_apos_entrega_da_retratacao
+  ponto: sala interna da Galeria dos Escribas
+  modo: em identidade própria, com as roupas ninja ocultas sob a capa com gorro
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
@@ -37,7 +37,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 10
   periodo_do_dia: noite de 21 Eleasis, com Ren no circo dos Mooney
-  hora_aproximada: '13:10'
+  hora_aproximada: '22:04'
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -55,19 +55,40 @@ recursos:
     po: 38.11999999999999
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
+    broche_do_semblante_humilde: usado às 20:50 de 22 Eleasis; indisponível até o amanhecer de 23 Eleasis
     traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
   focus:
-    atuais: 7
+    atuais: 5
     maximos: 7
     recarga: descanso curto ou longo
+  itens_importantes:
+  - selo quebrado do Clã Kagehira
+  - mapa incompleto de rotas comerciais entre Kara-Tur e Faerûn
+  - pedaço de tecido com o símbolo usado pelo traidor
+  - prancheta de Velis Rook, examinada
+  - carimbo falso da lua velada
+  - bilhete de B. sobre isca para o oriental
+  - ficha de cobre com vela vermelha
+  - cordão azul
+  - ordem em papel encerado sobre gravadora, oriental e Brass
+  - fita vermelha identificável do homem da Red Sail
+  - botão de osso infantil tomado como garantia
+  - tira de couro da amarra sabotada da corda alta
+  - faca curva usada por Merrit para cortar a tira da amarra da corda alta
+  - caderno de contas de Bram Vask
+  - pedaço rasgado de pano vermelho encerado da porta de ferro da Casa Velha
+  - Broche do Semblante Humilde, empréstimo provisório de Maerra/Lathander; um uso por amanhecer para efeito semelhante
+    a Disfarçar-se em si por uma hora, com aparência humilde/comum sem imitar pessoa específica perfeitamente
+  - mapa público da Escada das Sete Águas, comprado de Brunna Torkel
+  - 'cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída
+    baixa para drenagem, parede raspada, ar seco e marca apagada'
 ponteiros:
   tempo_atual: estado/tempo.yaml
   relacoes: estado/relacoes.yaml
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/021/transcricao.md
+  transcricao_atual: sessoes/022/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -99,6 +120,8 @@ equipamento_em_posse:
   - mapa público da Escada das Sete Águas, comprado de Brunna Torkel
   - 'cópia discreta de Brunna Torkel sobre porões secos atrás de armazéns antigos: duas entradas possíveis, saída
     baixa para drenagem, parede raspada, ar seco e marca apagada'
+  - retratação assinada por Darran Vell da contramarca de urgência, com código da ronda, três despachos e confissão
+    de pagamento irregular
   outros:
   - figurino de O Vento da Noite guardado com Dessa Wren
   - roupa de cidadão menor limpo guardada no circo
@@ -128,11 +151,18 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: No átrio de Tyr, uma acólita aguarda que Ren declare qual nome e assunto deve anunciar a Halessa;
-    o disfarce de trabalhador idoso não foi questionado visualmente.
-  risco_imediato: Silva agora conhece a exposição de Shinta diante de Tomas e a cadeia completa da operação; nenhuma
-    ameaça imediata está presente na conversa
-  elenco_cena: null
+  cena_atual: Ren nocauteou Darran sem letalidade e o levou pelos telhados usando Passo do Vento. Darran está inconsciente
+    e estável; o cerco imediato foi rompido, mas o alarme se espalha pelo porto.
+  risco_imediato: A retirada autorizada terminou sem portador; Tomas proibiu captura ou violência dentro da Galeria
+    ou diante de sua porta. Um eventual visitante tardio pode ser apenas um mensageiro.
+  elenco_cena:
+    cena_id: s022-ren-entrega-retratacao-e-propoe-seguir-portador
+    local:
+      area: Galeria dos Escribas, Ravens Bluff
+      ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
+    participantes:
+    - tomas_rell
+    versao: 1
 compromissos:
   silva_acompanhar_colm:
     tipo: compromisso
@@ -177,9 +207,22 @@ compromissos:
     resumo: Jack falará com Dessa Wren para pesquisar vendedores, procedência e preços de materiais de Kozakura,
       sem autorizar compra prévia.
     tipo: compromisso
+  mem_95c45a8300e8e61fabd7f63b:
+    envolvidos:
+    - darran_vell
+    - ren
+    resumo: Darran testemunhará somente sobre o que viu e ouviu se for acolhido como testemunha protegida pela Casa
+      de Tyr.
+    tipo: compromisso
+  mem_badf183230b8f29c212535fb:
+    envolvidos:
+    - darran_vell
+    - ren
+    resumo: Prestar a Darran um favor razoável quando ele o pedir, em reparação pela violência e confusão da captura.
+    tipo: compromisso
 pendencias: []
 disponibilidades:
-  broche_do_semblante_humilde: disponível; uso renovado no amanhecer de 20 Eleasis
+  broche_do_semblante_humilde: usado às 20:50 de 22 Eleasis; indisponível até o amanhecer de 23 Eleasis
 combate_atual: null
 efeitos_temporarios:
   narwhal_alerta_para_observador_idoso:
@@ -187,18 +230,6 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  disfarce_idoso_trabalhador_kozakurano:
-    cd_criacao: 14
-    descricao: Ren está visualmente disfarçado como um trabalhador kozakurano idoso, com roupas comuns mescladas,
-      envelhecimento cosmético, ombros acolchoados, gorro gasto e cabo de ferramenta emprestado por Dessa Wren.
-    duracao: até Ren remover o disfarce, ele ser danificado ou uma inspeção dirigida superá-lo
-    inicio: 06:30 de 22 Eleasis
-    limite: O sucesso cobre aparência visual; voz, mentira e atuação social permanecem sujeitos a Enganação ou Atuação
-      quando houver incerteza relevante.
-    qualidade_visual: 21
-    identidade_revelada_a:
-    - halessa_vorn
-    - tomas_rell
 coberturas:
   shinta_ryoushi:
     capacidades_declaradas: lê Comum melhor do que fala e escreve na língua de origem
@@ -213,3 +244,11 @@ modo: conversa_com_silva_apos_operacao_sete_nomes
 sessao:
   modo_de_cena_atual: recepcao_de_tyr_sob_disfarce_procurando_halessa
 modo_de_cena: observando_a_distancia_o_restaurante_da_emboscada_sob_disfarce
+ativos_narrativos:
+  acesso:
+  - descricao: Permissão de Tomas para consultar, sob supervisão, livros internos usados na comparação de selos,
+      assinaturas e autorizações.
+    id: acesso_supervisionado_registros_comparativos_galeria
+    nome: Acesso supervisionado aos registros comparativos da Galeria
+    origem: sidequest:qse-65136f2c017fb178:acesso_registros_comparativos_galeria
+    tipo: acesso

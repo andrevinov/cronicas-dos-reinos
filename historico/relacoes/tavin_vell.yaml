@@ -136,3 +136,53 @@ eventos_pos_migracao:
     op: set
     valor: Ren abraçou Tavin em despedida e prometeu voltar à noite; Tavin perguntou se o retorno seria antes de
       ele dormir.
+- transacao: s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+  sessao: 22
+  resumo: Ren explicou a Silva como pretende vigiar e interrogar Darran, definiu a manhã seguinte como limite para
+    seu retorno e pediu para ver Nera e Tavin. Silva aceitou o limite ao primeiro claro e buscou o consentimento
+    dos dois; Nera e Tavin vieram vê-lo antes da saída.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+      fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+      id: mem_393052db78ef3c6f96122975
+      participantes:
+      - nera_vell
+      - ren
+      - silva_elkwood
+      - tavin_vell
+      registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+      texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+      tipo: marco
+- transacao: s022-nv04-e136fa88a227527bc4d26210397a5d5a
+  sessao: 22
+  resumo: Ren mostrou a Tavin o símbolo oculto de seu traje, reafirmou a Nera que sempre volta e contou a ela sobre
+    a investigação documental e o possível acesso aos registros da Galeria. Nera devolveu seu afeto, pediu que ele
+    não force uma pista pequena e lembrou que voltar também faz parte da missão.
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tavin_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Ren mostrou a Tavin o pequeno símbolo Kagehira escondido no traje e explicou que aquela roupa só
+          é usada em missões.
+      fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+      id: mem_4dfb179648a0390251ded30a
+      participantes:
+      - ren
+      - tavin_vell
+      registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+      texto: Ren mostrou a Tavin o pequeno símbolo Kagehira escondido no traje e explicou que aquela roupa só é
+        usada em missões.
+      tipo: informacao

@@ -275,3 +275,51 @@ eventos_pos_migracao:
       registro_sha256: 3ec535b4f2ac52e9e7fecd89c14b3b8d1fe175d3a6831ca65646e10228b7c28c
       texto: A Galeria fecha às 18:00, e o pedido autoriza a retirada entre 20:00 e 22:00.
       tipo: informacao
+- transacao: s022-nv04-e3b8cd845655a29f4e08122a92174c53
+  sessao: 22
+  resumo: Ren relatou a Tomas a captura de Darran, a confissão, o elo com o homem do casaco cinza e a proteção da
+    testemunha por Tyr. Entregou a retratação assinada antes do fim da janela. Tomas verificou o documento, suspendeu
+    formalmente o talão E-39 e reteve os três maços, obtendo base administrativa para negar e denunciar a retirada.
+    Ninguém apresentou o talão até o encerramento da janela. Os Três Selos foi concluída com sucesso, e Ren obteve
+    acesso supervisionado aos registros comparativos da Galeri…
+  deltas:
+  - alvo: relacao:tomas_rell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tomas_rell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Além do documento, ele prometeu depor em Tyr sobre o caso, em troca de proteção à testemunha.
+      fonte: transacao:s022-nv04-e3b8cd845655a29f4e08122a92174c53
+      id: mem_a11ee40344fe14a05f4cdeb3
+      participantes:
+      - ren
+      - tomas_rell
+      registro_sha256: b054fe200b68505a275d50a562d86a84d48db2514cb91900fe1cb3641b2ef5cf
+      texto: Além do documento, ele prometeu depor em Tyr sobre o caso, em troca de proteção à testemunha.
+      tipo: informacao
+  - alvo: relacao:tomas_rell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tomas_rell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Porém... eu vou querer seguir essa pessoa que chegar aqui pra receber as cópias. Eu preciso chegar
+          nesse homem do casaco cinza.
+      fonte: transacao:s022-nv04-e3b8cd845655a29f4e08122a92174c53
+      id: mem_18669ce811eb9256c0afceaf
+      participantes:
+      - ren
+      - tomas_rell
+      registro_sha256: b054fe200b68505a275d50a562d86a84d48db2514cb91900fe1cb3641b2ef5cf
+      texto: Porém... eu vou querer seguir essa pessoa que chegar aqui pra receber as cópias. Eu preciso chegar
+        nesse homem do casaco cinza.
+      tipo: informacao

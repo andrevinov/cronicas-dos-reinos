@@ -1,9 +1,10 @@
-schema_orcamento_npc_stub: 1
+schema_orcamento_npc_stub: 2
 natureza: contrato_de_regressao
 objetivo: Persistir identidade mínima de NPC nomeado sem criar scheduler, sidequest ou custo no turno comum.
+motivo_extensao: Catálogo CSV e reserva nominal acrescentam duas fontes apenas ao bootstrap de NPC novo; consultas de NPC conhecido continuam sem leitura adicional.
 limites:
   max_stubs_por_cena: 6
-  max_fontes_para_npc_novo: 3
+  max_fontes_para_npc_novo: 5
   max_escritas_preparar: 0
   max_fragmentos_narrativos: 0
   index_npcs_max_bytes: 49152

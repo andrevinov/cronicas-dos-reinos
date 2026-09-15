@@ -99,5 +99,99 @@ relacao:
     - Em 20 Eleasis, Ren contou a Silva, sem omissões, o encontro com Tomas, o pedido de Maerra, a infiltração na
       oficina, os nocautes não letais, o interrogatório, a preservação da matriz e dos documentos e a condução da
       testemunha viva e das provas até Luath.
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Tomas suspendeu o selo final de três cópias autenticadas e pediu que Ren investigasse quem controla
+        a retirada com o talão E-39, prevista entre 20:00 e 22:00.
+    fonte: transacao:s022-nv04-917a2cf8859432b3884dc333069fd9cb
+    id: mem_9055fe8faef3ab735573c1bc
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: a8dddb9507fc98d6db67180e0f320e33180b466438200d1086d931a3d401d2af
+    texto: Tomas suspendeu o selo final de três cópias autenticadas e pediu que Ren investigasse quem controla a
+      retirada com o talão E-39, prevista entre 20:00 e 22:00.
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Ren pretende abordar Darran Vell nas docas como Ren Kagehira e disse a Silva que pretende apenas conversar.
+    fonte: transacao:s022-nv04-917a2cf8859432b3884dc333069fd9cb
+    id: mem_47616e1ef178c7fdf0271381
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: a8dddb9507fc98d6db67180e0f320e33180b466438200d1086d931a3d401d2af
+    texto: Ren pretende abordar Darran Vell nas docas como Ren Kagehira e disse a Silva que pretende apenas conversar.
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Ren diz a Silva que vigiará Darran, pretende abordá-lo sozinho sobre o selo de urgência e, com informação
+        ou não, irá depois até Tomas.
+    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+    id: mem_11ccfee18b9dc74586243a34
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+    texto: Ren diz a Silva que vigiará Darran, pretende abordá-lo sozinho sobre o selo de urgência e, com informação
+      ou não, irá depois até Tomas.
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Ren avisa Silva de que, se não estiver de volta até a manhã de 23 Eleasis, sua ausência deve ser tratada
+        como problema.
+    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+    id: mem_bcb6ba31c9fd601060d566f1
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+    texto: Ren avisa Silva de que, se não estiver de volta até a manhã de 23 Eleasis, sua ausência deve ser tratada
+      como problema.
+    tipo: informacao
+  memorias_importantes:
+  - evidencia:
+      campo: narracao
+      trecho: Silva chamou atenção para o sobrenome compartilhado por Darran, Nera e Tavin Vell, sem assumir que
+        exista parentesco.
+    fonte: transacao:s022-nv04-917a2cf8859432b3884dc333069fd9cb
+    id: mem_80d19378ec809242a3e0cd9b
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: a8dddb9507fc98d6db67180e0f320e33180b466438200d1086d931a3d401d2af
+    texto: Silva chamou atenção para o sobrenome compartilhado por Darran, Nera e Tavin Vell, sem assumir que exista
+      parentesco.
+    tipo: marco
+  - evidencia:
+      campo: narracao
+      trecho: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+    id: mem_393052db78ef3c6f96122975
+    participantes:
+    - nera_vell
+    - ren
+    - silva_elkwood
+    - tavin_vell
+    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+    texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    tipo: marco
 conteudo_mais_antigo_no_historico:
   riscos: 54

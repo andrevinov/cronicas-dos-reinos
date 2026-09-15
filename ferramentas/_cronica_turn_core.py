@@ -289,6 +289,10 @@ def prepare(
         },
         "fontes_lidas": endpoint["fontes_lidas"],
     }
+    if "cobertura_avaliacao_modular" in endpoint:
+        result["cobertura_avaliacao_modular"] = endpoint[
+            "cobertura_avaliacao_modular"
+        ]
     size = len(yaml.safe_dump(result, allow_unicode=True, sort_keys=False).encode("utf-8"))
     if size > MAX_PREP_OUTPUT_BYTES:
         raise CronicaError(

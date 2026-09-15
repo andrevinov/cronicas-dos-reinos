@@ -171,7 +171,7 @@ Método continua repertório, não acontecimento.
 A resposta de Ren continua explícita:
 
 ```bash
-poetry run python ferramentas/oportunidades.py responder <sqc-id> aceitar|adiar|recusar
+poetry run python ferramentas/canonical_quest_integration.py responder <sqc-id> aceitar|adiar|recusar
 ```
 
 Efeitos secretos de uma quest canônica só podem ser abertos depois de `aceita`:

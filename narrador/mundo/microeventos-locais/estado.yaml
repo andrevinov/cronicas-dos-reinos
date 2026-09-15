@@ -22,8 +22,7 @@ locais:
   jack_mooney_sons_circus:
     ocorrencia:
       ciclo: 2
-      restantes:
-      - rotina_01
+      restantes: []
     cartas:
       ciclo: 1
       assinatura_pool: 4cf96967c4975a6f244c956ad251e45eddccd1bdc3e5def76920545d1926cea1
@@ -62,14 +61,11 @@ locais:
   casa_de_tyr:
     ocorrencia:
       ciclo: 1
-      restantes:
-      - rotina_01
-      - microevento_01
+      restantes: []
     cartas:
       ciclo: 1
       assinatura_pool: cc12471e22d76eba2af23e07dbe5c54a797c1fc9fd9ccda9cb5d91f8c25c2f1e
       restantes:
-      - duvida_atendimento
       - checagem_acesso
       - cuidado_prioritario
       - demanda_culto
@@ -285,86 +281,51 @@ historico_recente:
     nome: normal
     cenas_secas_antes: 1
     promovido: false
+- cena_id: permanencia:casa_de_tyr:22 Eleasis, 1372 DR:dia
+  local_id: casa_de_tyr
+  ficha_ocorrencia: rotina_01
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 2
+    promovido: false
+- cena_id: permanencia:jack_mooney_sons_circus:22 Eleasis, 1372 DR:dia
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_01
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 3
+    promovido: false
+- cena_id: s022-ren-entrega-darran-e-relatorio-a-halessa
+  local_id: casa_de_tyr
+  ficha_ocorrencia: microevento_01
+  resultado_base: microevento
+  resultado: microevento
+  pressao_aventura:
+    nivel: 1
+    nome: leve
+    cenas_secas_antes: 4
+    promovido: false
+  carta_id: duvida_atendimento
 transitos:
   ravens_bluff:
     ocorrencia:
-      ciclo: 7
+      ciclo: 9
       restantes:
+      - rotina_01
+      - microevento_01
       - rotina_03
     cartas:
       ciclo: 4
       assinatura_pool: e404bf52e23dbded870e2230d51894b43fe8749524a80ff472712898f65e5c32
       restantes:
-      - interrupcao_vizinhanca
       - checagem_acesso
 historico_transito_recente:
-- cena_id: s15-contravigilancia-saida-posto
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_01
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 5fc6dcb2b40305836019e5c0840ec0325d50db8da29ea07e8f83d81facc06df5
-- cena_id: s15-ren-descansa-e-vai-galeria
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: microevento_01
-  resultado: microevento
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 6e442054456392ed4f3f43251b7a4b9ae76bada3d04a01d01ed23a5b6af6e580
-  carta_id: interrupcao_vizinhanca
-- cena_id: s15-ren-segue-tomas-pela-cidade
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_01
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 1e493c9117ffe0e23c9e73d1b59ee1d037eb709b9a03a8d7dbad1eae7d322002
-- cena_id: s15-ren-afasta-se-da-casa-de-tomas
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_03
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 9d66e3428ce9048e0167ba49d4c5f7ae9d0ec8bce39b307d94731c650d45a07b
-- cena_id: s15-ren-vai-ao-temple-district
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_02
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: c5b877ba0c9cf4216806d726e663fbe52642cf59ba1e71ed76721ee1d9f0f987
-- cena_id: s15-busca-mensageiro-circuito-noturno
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_03
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: 6f9bfafe420a82c66b065b8de6f98b44025196c5dc0453c55fdaa81a45754408
 - cena_id: s15-seguir-e-interceptar-mensageiro
   escopo_transito: ravens_bluff
   ficha_ocorrencia: rotina_01
@@ -478,3 +439,70 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: ec3dc9594684553371e30622bf8a277033336bd3b96d94e36fcd33ae0d8cdf86
+- cena_id: s022-retorno-circo-tanaka
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 888888ef326a06d74808a56afba10e6a2052de3db61cfd1090ac85f7bcafcc75
+- cena_id: s022-ren-vai-porto-vigiar-darran
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 02ee9bced94376996461bab78d6c41d5c4cb718dc4aacc1899eeb4c4072f8286
+- cena_id: s022-ren-rompe-busca-porto-com-darran
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: microevento_01
+  resultado: microevento
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 354a1b36659a819d39388b58e335b4c38de941c5bae73e0578e10fadbfba950a
+  carta_id: interrupcao_vizinhanca
+- cena_id: s022-ren-e-darran-saem-da-busca-para-restaurante
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: bcc6569fbf1964ceaa614973a304d863cba5997714b6c0f3b664eef8d8c8b4f3
+- cena_id: s022-ren-leva-darran-a-casa-de-tyr
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_03
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 15053f5fa1cc98a7213781375e58e07ccd7c8f621b0d1da3997aebd0b2d27a2f
+- cena_id: s022-ren-corre-pelos-telhados-ate-tomas
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_02
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 09ea313ced3c1e104210abd8177d937ea5f0e8c18a1b932d94aeb5498390b1da

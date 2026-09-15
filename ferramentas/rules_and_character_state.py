@@ -16,7 +16,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import catalogo_regras
 import ficha_ren
 import mecanica_cronica
@@ -388,7 +388,12 @@ def publish_conclusion(
         deltas = []
     categories, relevant_deltas = _delta_categories(deltas)
     if not counts["obrigacoes"] and not relevant_deltas:
-        return result
+        return attach_coverage(
+            result,
+            module_id=MODULE_ID,
+            phase="concluir",
+            applicability="nao_aplicavel",
+        )
 
     persisted = result.get("transacao") if isinstance(result.get("transacao"), dict) else {}
     replay = any(
@@ -437,7 +442,12 @@ def publish_conclusion(
     systems = out.setdefault("sistemas_narrativos", [])
     if MODULE_ID not in systems:
         systems.append(MODULE_ID)
-    return out
+    return attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel",
+    )
 
 
 def check(repo: Path) -> dict[str, Any]:

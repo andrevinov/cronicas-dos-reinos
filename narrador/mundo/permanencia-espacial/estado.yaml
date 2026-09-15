@@ -216,7 +216,138 @@ avaliacoes:
     - narrador/mundo/incidentes/index.yaml
     - narrador/mundo/incidentes/estado.yaml
     digest: 0b55b9ae4e0b0399307184ba2a956aa6c4f849e491fa135f32bd87a2b8e75cf9
+  perm-708ef34ce081bd8f6a24:
+    id: perm-708ef34ce081bd8f6a24
+    chave: casa_de_tyr|22 Eleasis, 1372 DR|dia
+    local_id: casa_de_tyr
+    data: 22 Eleasis, 1372 DR
+    periodo: dia
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 3
+      tags:
+      - templo
+      - institucional
+      - culto
+      - atendimento
+      - seguranca
+      - mensageria
+      canais_microevento:
+      - culto
+      - atendimento
+      - mensageria
+      - seguranca
+      - rotina
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_01
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 2
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-38a0588e7dc60f78
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao: null
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: 4edbc45e148952d9642238db7ddabed877a6186c1f5eb862151fd9bed4213a42
+  perm-cdab45315004b8b1136b:
+    id: perm-cdab45315004b8b1136b
+    chave: jack_mooney_sons_circus|22 Eleasis, 1372 DR|dia
+    local_id: jack_mooney_sons_circus
+    data: 22 Eleasis, 1372 DR
+    periodo: dia
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 2
+      tags:
+      - espetaculo
+      - acampamento
+      - trabalho
+      - publico
+      - animais
+      - logistica
+      canais_microevento:
+      - rotina
+      - ensaio
+      - espetaculo
+      - entrega
+      - animal
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_01
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 3
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-38a0588e7dc60f78
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao: null
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: 07ea79d33e412bfbc299f06553fcd59f1a6b0a465ed299ea1db5540fab7ade9c
 ordem_recente:
 - perm-fa7f8f6f06069b1c5486
 - perm-cdf766418a273c98d85c
 - perm-fbc8361fd8d6084ad29f
+- perm-708ef34ce081bd8f6a24
+- perm-cdab45315004b8b1136b

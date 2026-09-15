@@ -570,3 +570,48 @@ eventos_pos_migracao:
       registro_sha256: e4bacc58d6302f9355989ff0b2b18c4eb47150c22a1be35e4bc27d85ceddddea
       texto: Preferi contar tudo isso porque confio em você, e queria te manter informada.
       tipo: marco
+- transacao: s022-nv04-e845a5eb1808fac969fdde90c502dc06
+  sessao: 22
+  resumo: Ren despista Darran sobre a pergunta de parentes. Halessa recebe Darran como depoente protegido sob custódia
+    de Tyr e providencia cuidados, cumprindo a promessa de Ren; o modo como ele foi capturado será registrado. Ren
+    entrega a Halessa a cadeia verificável da fachada e do elo com os atacantes, concluindo Rastros Sob a Placa
+    e obtendo acesso mediado ao cruzamento reservado de Tyr. Halessa distingue o elo operacional da prova ainda
+    ausente de comando direto por Masao e lembra a urgência das cóp…
+  deltas:
+  - alvo: relacao:halessa_vorn
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+      fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+      id: mem_5f66cce891f2116109109f79
+      participantes:
+      - darran_vell
+      - halessa_vorn
+      - ren
+      registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+      texto: A Casa de Tyr recebe Darran Vell como depoente sob proteção e custódia desta casa.
+      tipo: marco
+  - alvo: relacao:halessa_vorn
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: halessa_vorn
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: o homem de casaco cinza com a caixa de contas sustentou materialmente a fachada ao pagar os reparos
+          e receber a nova equipe
+      fonte: transacao:s022-nv04-e845a5eb1808fac969fdde90c502dc06
+      id: mem_480315eda2478e3e13ff3a76
+      participantes:
+      - halessa_vorn
+      - ren
+      registro_sha256: 538fccec4bad518e44debc45c538474f4a31fb451a8faafe68c3ae8130b7d2fa
+      texto: o homem de casaco cinza com a caixa de contas sustentou materialmente a fachada ao pagar os reparos
+        e receber a nova equipe
+      tipo: informacao

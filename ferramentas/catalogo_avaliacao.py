@@ -108,6 +108,29 @@ def validate_catalog_v2(catalog: dict[str, Any]) -> None:
     if catalog.get("padrao_producao") is not True or catalog.get("estado") != "producao":
         raise EvaluationCatalogError("modules-v2 precisa ser o padrão de produção depois da RM-11")
 
+    coverage = catalog.get("contrato_cobertura_fail_closed")
+    if not isinstance(coverage, dict) or coverage.get("schema") != 1:
+        raise EvaluationCatalogError(
+            "catálogo precisa declarar contrato_cobertura_fail_closed schema 1"
+        )
+    covered_modules = coverage.get("modulos")
+    if not isinstance(covered_modules, list) or set(covered_modules) != MODULE_IDS:
+        raise EvaluationCatalogError(
+            "contrato fail-closed precisa cobrir exatamente os doze módulos"
+        )
+    for key in (
+        "nao_aplicavel_exige_recibo_explicito",
+        "nd_exige_zero_atividade_avaliativa",
+        "pontuacao_exige_aplicabilidade_e_evidencia",
+    ):
+        if coverage.get(key) is not True:
+            raise EvaluationCatalogError(f"contrato fail-closed exige {key}=true")
+    for key in ("atividade_sem_recibo", "recibo_incompleto"):
+        if coverage.get(key) != "falha_instrumentacao":
+            raise EvaluationCatalogError(
+                f"contrato fail-closed exige {key}=falha_instrumentacao"
+            )
+
     modules = _required_nonempty_list(catalog, "modulos", "catálogo")
     module_ids = [str(item.get("id") or "") for item in modules if isinstance(item, dict)]
     if len(modules) != len(MODULE_IDS) or set(module_ids) != MODULE_IDS:
@@ -135,6 +158,10 @@ def validate_catalog_v2(catalog: dict[str, Any]) -> None:
             raise EvaluationCatalogError(f"{owner}: visibilidade_jogador inválida: {visibility}")
         _required_text(module, "versao_implementacao", owner)
         _required_text(module, "versao_avaliacao", owner)
+        if int(str(module["versao_avaliacao"]).split(".")[0]) < 4:
+            raise EvaluationCatalogError(
+                f"{owner}: contrato fail-closed exige avaliação major 4 ou superior"
+            )
 
         eligibility = module.get("contrato_elegibilidade")
         if not isinstance(eligibility, dict):

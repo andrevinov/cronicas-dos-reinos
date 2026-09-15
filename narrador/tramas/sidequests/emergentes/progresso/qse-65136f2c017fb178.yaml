@@ -43,24 +43,24 @@ estado:
       fato_id: protocolo_e_marcadores_do_pedido_estabelecidos
       motivo_automatico: null
     identificar_controle:
-      estado: possivel
-      fato_id: escrivao_noturno_21_eleasis
+      estado: resolvida
+      fato_id: darran_liga_portador_a_contramarca
       motivo_automatico: null
     entregar_cadeia:
-      estado: indeterminada
-      fato_id: null
+      estado: resolvida
+      fato_id: retratacao_e_testemunha_entregues_a_tomas
       motivo_automatico: null
   condicoes_sucesso:
     sucesso_01:
       texto: O controlador, beneficiário, destino ou carga do pedido é estabelecido
         por evidência verificável.
-      estado: pendente
-      fato_id: null
+      estado: satisfeita
+      fato_id: darran_liga_portador_a_contramarca
     sucesso_02:
       texto: Tomas recebe a cadeia documental antes do prazo e ainda possui meios
         administrativos para impedir ou denunciar o uso indevido das cópias.
-      estado: pendente
-      fato_id: null
+      estado: satisfeita
+      fato_id: retratacao_e_testemunha_entregues_a_tomas
   condicoes_falha:
     falha_01:
       texto: As cópias deixam o controle da Galeria e são usadas de modo durável para
@@ -131,8 +131,93 @@ estado:
         tipo: cronica_concluir
         transacao_id: s021-574ac8cdd2b6781b
         sessao: 21
+    darran_liga_portador_a_contramarca:
+      id: darran_liga_portador_a_contramarca
+      descricao: A declaração de Darran, convergente com a descrição independente
+        de Tomas, estabelece que o mesmo portador obteve a contramarca no porto e
+        entregou o pedido na Galeria, controlando operacionalmente o requerimento.
+      prova:
+        fonte: sessoes/022/transcricao.md
+        evidencia: — Fui eu que pus a contramarca. Casaco cinza, caixa preta de contas.
+          Ele trouxe três números de despacho; conferi que existiam e carimbei a urgência.
+      fases:
+        identificar_controle: resolvida
+      condicoes_sucesso:
+        sucesso_01: satisfeita
+      condicoes_falha: {}
+      atores:
+      - portador_dos_tres_selos
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '20:07'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
+        sessao: 22
+    darran_confessa_pagamento_e_uso_fora_de_contexto:
+      id: darran_confessa_pagamento_e_uso_fora_de_contexto
+      descricao: Darran confessou ter recebido duas peças de ouro sem registro para
+        aplicar a urgência e explicou que autorizações antigas autênticas podem ser
+        usadas fora do contexto para legitimar outra carga; a cadeia de evidências
+        agora pode ser levada a Tomas.
+      prova:
+        fonte: sessoes/022/transcricao.md
+        evidencia: '— Duas peças de ouro. Não registrei. E eles não precisam falsificar
+          as cópias: basta apresentar autorizações verdadeiras para uma carga diferente.'
+      fases:
+        entregar_cadeia: possivel
+      condicoes_sucesso: {}
+      condicoes_falha: {}
+      atores: []
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '20:07'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s022-nv04-852170048d4ec46e6b983d02ecf76eec
+        sessao: 22
+    retratacao_e_testemunha_entregues_a_tomas:
+      id: retratacao_e_testemunha_entregues_a_tomas
+      descricao: Tomas recebeu a retratação assinada por Darran antes do fim da janela
+        e, com o depoimento protegido por Tyr, obteve base administrativa legítima
+        para reter e denunciar o uso das cópias.
+      prova:
+        fonte: sessoes/022/transcricao.md
+        evidencia: Tomas recebe a retratação assinada por Darran antes do fim da janela,
+          confere o código da ronda e os três despachos e guarda o documento com os
+          maços retidos. Com a retratação e a testemunha sob proteção de Tyr, ele
+          agora possui base administrativa para negar a retirada e denunciar qualquer
+          tentativa de usar as cópias.
+      fases:
+        entregar_cadeia: resolvida
+      condicoes_sucesso:
+        sucesso_02: satisfeita
+      condicoes_falha: {}
+      atores:
+      - tomas_rell
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '21:49'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s022-nv04-e3b8cd845655a29f4e08122a92174c53
+        sessao: 22
   consequencias_ativadas: {}
-  terminal: null
+  terminal:
+    resultado: concluida
+    gatilho: sucesso
+    em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
+    motivo: condicoes_factuais_task45_satisfeitas
+    pendencia_id: null
+    recompensa_resultado: recompensas_obtidas
   historico_recente:
   - tipo: fato_registrado_transacional
     id: protocolo_e_marcadores_do_pedido_estabelecidos
@@ -147,6 +232,32 @@ estado:
     transacao_id: s021-574ac8cdd2b6781b
     atores: []
     substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: darran_liga_portador_a_contramarca
+    fonte: sessoes/022/transcricao.md
+    transacao_id: s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
+    atores:
+    - portador_dos_tres_selos
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: darran_confessa_pagamento_e_uso_fora_de_contexto
+    fonte: sessoes/022/transcricao.md
+    transacao_id: s022-nv04-852170048d4ec46e6b983d02ecf76eec
+    atores: []
+    substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: retratacao_e_testemunha_entregues_a_tomas
+    fonte: sessoes/022/transcricao.md
+    transacao_id: s022-nv04-e3b8cd845655a29f4e08122a92174c53
+    atores:
+    - tomas_rell
+    substituicoes: []
+  - tipo: desfecho_terminal
+    resultado: concluida
+    gatilho: sucesso
+    em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
 guardrails:
   progresso_por_fato_nao_checklist: true
   prazo_usa_relogio_existente: true

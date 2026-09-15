@@ -200,7 +200,7 @@ recursos_de_classe:
     resumo: Teleporta-se e recebe vantagem no próximo ataque corpo a corpo antes do fim do turno.
   focus:
     pontos_maximos: 7
-    pontos_atuais: 7
+    pontos_atuais: 5
     cd: 14
     recarga: descanso curto ou longo
     calculo_cd: 8 + bônus de proficiência + modificador de Sabedoria

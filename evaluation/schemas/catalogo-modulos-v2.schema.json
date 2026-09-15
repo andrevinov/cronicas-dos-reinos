@@ -11,6 +11,7 @@
     "estado",
     "padrao_producao",
     "natureza",
+    "contrato_cobertura_fail_closed",
     "unidades_analise",
     "estados_ativacao",
     "modulos",
@@ -24,6 +25,34 @@
     "estado": {"enum": ["preparacao", "producao", "descontinuado"]},
     "padrao_producao": {"const": true},
     "natureza": {"type": "string", "minLength": 1},
+    "contrato_cobertura_fail_closed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "modulos",
+        "atividade_sem_recibo",
+        "recibo_incompleto",
+        "nao_aplicavel_exige_recibo_explicito",
+        "nd_exige_zero_atividade_avaliativa",
+        "pontuacao_exige_aplicabilidade_e_evidencia"
+      ],
+      "properties": {
+        "schema": {"const": 1},
+        "modulos": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}
+        },
+        "atividade_sem_recibo": {"const": "falha_instrumentacao"},
+        "recibo_incompleto": {"const": "falha_instrumentacao"},
+        "nao_aplicavel_exige_recibo_explicito": {"const": true},
+        "nd_exige_zero_atividade_avaliativa": {"const": true},
+        "pontuacao_exige_aplicabilidade_e_evidencia": {"const": true}
+      }
+    },
     "unidades_analise": {
       "type": "array",
       "uniqueItems": true,

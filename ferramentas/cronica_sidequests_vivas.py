@@ -13,6 +13,7 @@ from pathlib import Path
 
 import yaml
 
+from _module_facade import attach_coverage
 import cronica_iniciativa as _prev
 import cronica_pending_gate as _pending_gate
 import sidequests_vivas as _live
@@ -124,6 +125,43 @@ def _decorate(prepared: dict, routed: dict) -> dict:
     return prepared
 
 
+def _attach_opportunity_assessment(
+    prepared: dict,
+    *,
+    declared_signal: dict | None,
+    routed: dict,
+) -> dict:
+    assessment = _base._sidequests46.assess_opportunity(
+        declared_signal=declared_signal,
+        routed=routed,
+        prepared=prepared,
+    )
+    candidate = copy.deepcopy(prepared)
+    candidate["avaliacao_oportunidade_sidequest"] = assessment
+    attach_coverage(
+        candidate,
+        module_id="sidequest_authoring",
+        phase="preparar",
+        applicability=(
+            "indeterminado"
+            if assessment.get("resultado_esperado") == "indeterminado"
+            else "aplicavel"
+        ),
+    )
+    if _encoded_size(candidate) <= _output_limit(prepared):
+        return candidate
+
+    # O recibo avaliativo é obrigatório na implementação 2.0.1. A projeção
+    # pública NV-17 é apenas diagnóstico redundante com o ticket e pode ceder
+    # espaço sem alterar a decisão nem a autoria já preparadas.
+    candidate.pop("sidequests_vivas", None)
+    if _encoded_size(candidate) <= _output_limit(prepared):
+        return candidate
+    raise _core.CronicaError(
+        "sidequest_authoring 2.0.1: recibo objetivo de oportunidade excede o orçamento"
+    )
+
+
 def prepare(*args, **kwargs):
     signal = kwargs.get("sidequest_signal", _UNSET)
     if signal is _UNSET:
@@ -167,7 +205,12 @@ def prepare(*args, **kwargs):
     prepared = _BASE_PREPARE(*args, **forwarded)
     if not isinstance(prepared, dict):
         return prepared
-    return _decorate(prepared, routed)
+    decorated = _decorate(prepared, routed)
+    return _attach_opportunity_assessment(
+        decorated,
+        declared_signal=signal,
+        routed=routed,
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:

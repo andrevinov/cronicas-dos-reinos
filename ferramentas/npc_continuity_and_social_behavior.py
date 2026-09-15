@@ -4,7 +4,8 @@
 Elenco, memória, medidores relacionais, identidade, reputação, personalidade e
 iniciativa continuam com suas fontes canônicas próprias. Esta fachada compõe os
 motores existentes no mesmo preparo/concluir e publica uma única identidade de
-módulo, sem cache, estado paralelo, scan de NPCs ou chamada adicional.
+módulo. Nomeação explícita usa catálogo offline e reservas não canônicas; não
+adiciona scan, sorteio ou chamada ao turno comum.
 """
 from __future__ import annotations
 
@@ -14,7 +15,7 @@ from typing import Any, Callable
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import dialogo_relacional as _dialogue
 import estado_relacional as _relationships
 import identidades as _identities
@@ -24,10 +25,12 @@ import iniciativa_elenco_estado as _initiative_receipts
 import memoria_cena as _scene_memory
 import memoria_cena_iniciativa as _scene_social
 import memoria_duravel as _durable
+import nomes_npcs as _names
 import personalidade_decisoria as _personality
 import reputacao_publica as _reputation
 
 FACADE_SCHEMA = 2
+IMPLEMENTATION_VERSION = "1.1.0"
 MODULE_ID = "npc_continuity_and_social_behavior"
 CAPABILITIES = (
     "social_initiative",
@@ -55,6 +58,8 @@ SOURCE_OWNERSHIP = {
     "identity": _identities.REGISTRY.as_posix(),
     "reputation": _reputation.STATE_FILE.as_posix(),
     "initiative_receipts": _initiative_receipts.STATE.as_posix(),
+    "name_catalog": _names.CATALOG.as_posix(),
+    "name_reservations": _names.RESERVATIONS.as_posix(),
 }
 
 # Compatibilidade com os nomes usados pela composição histórica da crônica.
@@ -73,6 +78,26 @@ INITIATIVE_PUBLIC_KEY = _initiative.PUBLIC_KEY
 INITIATIVE_TICKET_KEY = _initiative.TICKET_KEY
 INITIATIVE_TRANSACTION_KEY = _initiative.TRANSACTION_KEY
 SOCIAL_PERSISTENCE_KEY = "continuidade_npc"
+
+
+def generate_name(repo: Path, **conditions: Any) -> dict[str, Any]:
+    """Reserva nome do catálogo sem criar NPC, parentesco ou presença."""
+    return attach_coverage(
+        _names.reserve(repo, **conditions),
+        module_id=MODULE_ID,
+        phase="gerar_nome",
+        applicability="aplicavel",
+    )
+
+
+def register_authoritative_name(repo: Path, **source: Any) -> dict[str, Any]:
+    """Documenta nome imposto por fonte/jogador/parentesco, nunca por estética."""
+    return attach_coverage(
+        _names.reserve_external(repo, **source),
+        module_id=MODULE_ID,
+        phase="registrar_nome",
+        applicability="aplicavel",
+    )
 
 
 def interlocutors(value: list[str] | None):
@@ -94,7 +119,7 @@ def attach(
 ) -> dict[str, Any]:
     """Compõe elenco, memória e iniciativa no envelope de preparo existente."""
 
-    return _scene_social.attach(
+    result = _scene_social.attach(
         repo,
         prepared,
         decode_ticket=decode_ticket,
@@ -103,6 +128,15 @@ def attach(
         base_in_context=base_in_context,
         prospective_participants=prospective_participants,
         max_output_bytes=max_output_bytes,
+    )
+    applicability = "aplicavel" if (
+        participants or prospective_participants or base_in_context
+    ) else "nao_aplicavel"
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="preparar",
+        applicability=applicability,
     )
 
 
@@ -212,7 +246,12 @@ def publish_social_persistence(
         systems = result.setdefault("sistemas_narrativos", [])
         if MODULE_ID not in systems:
             systems.append(MODULE_ID)
-    return result
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel" if observation is not None else "nao_aplicavel",
+    )
 
 
 def classify_actor_context(
@@ -307,7 +346,12 @@ def install_initiative_conclusion(
             "repeticoes_reutilizadas": sum(bool(row.get("reutilizado")) for row in outcomes),
         },
     )
-    return result
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="concluir_iniciativa",
+        applicability="aplicavel",
+    )
 
 
 def _list_check(check: Callable[[Path], list[str]]) -> Callable[[Path], dict[str, Any]]:
@@ -357,6 +401,7 @@ def check(repo: Path) -> dict[str, Any]:
             ("relationship_state", _list_check(_relationships.check)),
             ("identity_separation", _list_check(_identities.check)),
             ("reputation_by_persona", _list_check(_reputation.check)),
+            ("name_catalog_and_reservations", _names.check),
         ),
         contract={
             "source_ownership": SOURCE_OWNERSHIP,
@@ -368,7 +413,11 @@ def check(repo: Path) -> dict[str, Any]:
             "relationship_change_without_durable_fact": False,
             "additional_orchestration_calls": 0,
             "new_scheduler": False,
-            "new_rng": False,
+            "new_rng": True,
+            "naming_rng_only_on_explicit_request": True,
+            "name_reservation_creates_npc_or_kinship": False,
+            "full_name_duplicates_allowed": False,
+            "component_reuse_requires_explicit_permission": True,
             "parallel_state": False,
         },
     )
@@ -377,9 +426,54 @@ def check(repo: Path) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, default=Path.cwd())
-    parser.add_argument("cmd", choices=["check"])
+    commands = parser.add_subparsers(dest="cmd", required=True)
+    commands.add_parser("check")
+    commands.add_parser("catalogo-nomes")
+    generate = commands.add_parser("gerar-nome", help="reserva nome sem criar NPC")
+    generate.add_argument("--reserva", required=True)
+    generate.add_argument("--genero", required=True, choices=["masculino", "feminino", "neutro"])
+    generate.add_argument("--raca", required=True)
+    generate.add_argument("--regiao", required=True, help="região de origem, não residência")
+    generate.add_argument("--cultura")
+    surname = generate.add_mutually_exclusive_group()
+    surname.add_argument("--sem-sobrenome", action="store_true")
+    surname.add_argument("--tipo-sobrenome", choices=_names.SURNAME_TYPES, default="sobrenome")
+    generate.add_argument("--permitir-reuso", action="store_true")
+    register = commands.add_parser("registrar-nome", help="exceção nominal com autoridade explícita")
+    register.add_argument("--reserva", required=True)
+    register.add_argument("--nome", required=True)
+    register.add_argument("--origem", required=True, choices=_names.EXTERNAL_ORIGINS)
+    register.add_argument("--evidencia", required=True)
+    cancel = commands.add_parser("cancelar-nome", help="libera somente proposta não materializada")
+    cancel.add_argument("--reserva", required=True)
+    # A porta anterior aceitava --repo também depois de check; preservar CLI.
+    for command in commands.choices.values():
+        command.add_argument("--repo", type=Path, default=argparse.SUPPRESS)
     args = parser.parse_args(argv)
-    result = check(args.repo.resolve())
+    repo = args.repo.resolve()
+    try:
+        if args.cmd == "check":
+            result = check(repo)
+        elif args.cmd == "gerar-nome":
+            result = generate_name(
+                repo, reservation=args.reserva, gender=args.genero, race=args.raca,
+                region=args.regiao, culture=args.cultura,
+                surname_type=None if args.sem_sobrenome else args.tipo_sobrenome,
+                allow_reuse=args.permitir_reuso,
+            )
+        elif args.cmd == "registrar-nome":
+            result = register_authoritative_name(
+                repo, reservation=args.reserva, name=args.nome,
+                origin=args.origem, evidence=args.evidencia,
+            )
+        else:
+            result = (
+                _names.catalog_summary(repo) if args.cmd == "catalogo-nomes"
+                else _names.cancel(repo, args.reserva)
+            )
+            attach_coverage(result, module_id=MODULE_ID, phase=args.cmd.replace("-", "_"), applicability="nao_aplicavel")
+    except (_names.NpcNameError, OSError) as exc:
+        result = {"ok": False, "module_id": MODULE_ID, "erros": [str(exc)]}
     print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
     return 0 if result["ok"] else 1
 

@@ -9,10 +9,12 @@ nada aqui roda durante o jogo ou escreve no repo.
 from __future__ import annotations
 
 import argparse
+import ast
 import copy
 import importlib.util
 import json
 import re
+import shlex
 import sys
 from collections import Counter
 from datetime import datetime
@@ -35,9 +37,25 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "3.0.0"
-OPPORTUNITY_DECISION_SCHEMA = 1
+MODULAR_DETECTOR_VERSION = "4.2.0"
+OPPORTUNITY_DECISION_SCHEMA = 2
+CANONICAL_INTEGRATION_ASSESSMENT_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
+MODULE_COVERAGE_SCHEMA = 1
+
+FAIL_CLOSED_MODULE_IDS = (
+    "context_and_memory",
+    "turn_and_session_orchestration",
+    "narrative_delivery",
+    "rules_and_character_state",
+    "sidequest_authoring",
+    "sidequest_lifecycle",
+    "npc_continuity_and_social_behavior",
+    "scene_world_projection",
+    "world_boundary_resolution",
+    "causal_narrative_routing",
+    "adversarial_operations",
+)
 
 _CATALOG_V2_PATH = Path(__file__).resolve().parents[1] / "evaluation" / "catalogo-modulos-v2.json"
 
@@ -112,6 +130,10 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
         "incidente_mundo",
         "incidentes_mundo_v2",
         "incidentes_para_avaliar",
+        "incidente_confirmado",
+        "microevento_confirmado",
+        "sem_incidente",
+        "sem_microevento",
         "narrador/mundo/incidentes/",
     ),
     "canonical_secret_quests": (
@@ -129,6 +151,8 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
     "persistent_world_conditions": (
         "condicoes_mundo",
         "condicoes_persistentes_ativas",
+        "condicao_registrada",
+        "condicao_encerrada",
         "condicoes-persistentes.yaml",
     ),
     "underground_tournament": (
@@ -192,18 +216,192 @@ _SYSTEM_OUTPUT_MARKERS: dict[str, tuple[str, ...]] = {
 }
 
 
+_SHELL_OPERATORS = {"&", "&&", ";", "|", "||"}
+_PYTHON_PROGRAM_RE = re.compile(r"^(?:python|python3)(?:\.\d+)*$")
+
+
+def _javascript_string_literal(source: str) -> str | None:
+    source = source.lstrip()
+    if not source or source[0] not in {'"', "'", "`"}:
+        return None
+    quote = source[0]
+    escaped = False
+    end = None
+    for index, character in enumerate(source[1:], 1):
+        if escaped:
+            escaped = False
+            continue
+        if character == "\\":
+            escaped = True
+            continue
+        if character == quote:
+            end = index
+            break
+    if end is None:
+        return None
+    literal = source[: end + 1]
+    try:
+        if quote == '"':
+            value = json.loads(literal)
+        elif quote == "'":
+            value = ast.literal_eval(literal)
+        else:
+            value = literal[1:-1]
+    except (json.JSONDecodeError, SyntaxError, ValueError):
+        return None
+    return value if isinstance(value, str) else None
+
+
+def _javascript_variable_string(source: str, name: str, before: int) -> str | None:
+    assignments = list(
+        re.finditer(
+            rf"\b(?:const|let|var)\s+{re.escape(name)}\s*=\s*",
+            source[:before],
+        )
+    )
+    if not assignments:
+        return None
+    return _javascript_string_literal(source[assignments[-1].end() :])
+
+
+def _nested_exec_commands(text: str) -> list[str]:
+    """Extrai comandos de chamadas ``tools.exec_command({...})`` do tool unificado."""
+
+    decoder = json.JSONDecoder()
+    commands: list[str] = []
+    for match in re.finditer(r"\btools\.exec_command\s*\(\s*", text):
+        try:
+            payload, _ = decoder.raw_decode(text[match.end() :])
+        except json.JSONDecodeError:
+            payload = None
+        if isinstance(payload, dict):
+            command = payload.get("cmd") or payload.get("command")
+            if isinstance(command, str):
+                commands.append(command)
+                continue
+
+        # O código do tool unificado também aceita objetos JavaScript com
+        # chaves não citadas. Decodificamos somente o literal de `cmd`, sem
+        # avaliar o restante do programa.
+        remainder = text[match.end() :]
+        key = re.search(r"(?:\bcmd\b|[\"']cmd[\"'])\s*:\s*", remainder)
+        command = None
+        if key is not None and key.end() < len(remainder):
+            value_source = remainder[key.end() :].lstrip()
+            command = _javascript_string_literal(value_source)
+            if command is None:
+                identifier = re.match(r"([A-Za-z_$][A-Za-z0-9_$]*)", value_source)
+                if identifier:
+                    command = _javascript_variable_string(
+                        text, identifier.group(1), match.start()
+                    )
+        elif re.match(r"\s*\{\s*cmd\s*[,}]", remainder):
+            command = _javascript_variable_string(text, "cmd", match.start())
+        if isinstance(command, str):
+            commands.append(command)
+    return commands
+
+
+def _command_invocations(command: str) -> list[tuple[str, list[str]]]:
+    """Retorna programa e argumentos por segmento, sem interpretar texto citado."""
+
+    nested_commands = _nested_exec_commands(command)
+    if nested_commands:
+        return [
+            invocation
+            for nested_command in nested_commands
+            for invocation in _command_invocations(nested_command)
+        ]
+
+    try:
+        lexer = shlex.shlex(command, posix=True, punctuation_chars=";&|")
+        lexer.whitespace_split = True
+        lexer.commenters = ""
+        tokens = list(lexer)
+    except ValueError:
+        # Comando montado por concatenação pode expor apenas um prefixo com
+        # aspas ainda abertas. O prefixo programa/subcomando continua sendo
+        # evidência suficiente; o fallback jamais examina outputs ou prosa.
+        tokens = command.split()
+
+    segments: list[list[str]] = [[]]
+    for token in tokens:
+        if token in _SHELL_OPERATORS:
+            if segments[-1]:
+                segments.append([])
+            continue
+        segments[-1].append(token)
+
+    result: list[tuple[str, list[str]]] = []
+    for segment in segments:
+        if not segment:
+            continue
+        index = 0
+        while index < len(segment) and re.match(
+            r"^[A-Za-z_][A-Za-z0-9_]*=", segment[index]
+        ):
+            index += 1
+        if index >= len(segment):
+            continue
+        if Path(segment[index]).name.casefold() == "env":
+            index += 1
+            while index < len(segment) and (
+                segment[index].startswith("-")
+                or re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", segment[index])
+            ):
+                index += 1
+        if index + 1 < len(segment) and (
+            Path(segment[index]).name.casefold() == "poetry"
+            and segment[index + 1].casefold() == "run"
+        ):
+            index += 2
+        if index >= len(segment):
+            continue
+
+        program = Path(segment[index]).name.casefold()
+        index += 1
+        if _PYTHON_PROGRAM_RE.fullmatch(program):
+            while index < len(segment) and segment[index].startswith("-"):
+                option = segment[index]
+                index += 1
+                if option in {"-c", "-m"}:
+                    index = len(segment)
+                    break
+            if index >= len(segment):
+                continue
+            program = Path(segment[index]).name.casefold()
+            index += 1
+        result.append((program, [item.casefold() for item in segment[index:]]))
+    return result
+
+
+def _invocation(
+    command: str, programs: set[str]
+) -> tuple[str, list[str]] | None:
+    normalized = {item.casefold() for item in programs}
+    return next(
+        (item for item in _command_invocations(command) if item[0] in normalized),
+        None,
+    )
+
+
+def _is_routed_context_command(command: str) -> bool:
+    return _invocation(command, {"contexto.py", "contexto-buscar-muitos.py"}) is not None
+
+
 def _is_dice_command(command: str) -> bool:
-    lower = command.casefold()
-    if any(marker in lower for marker in DICE_MARKERS):
-        return True
-    return bool(re.search(r"(?:^|\s)(?:poetry\s+run\s+)?dados(?:-lote)?(?:\s|$)", lower))
+    return _invocation(
+        command,
+        {"dados", "dados-lote", "rolar-dados.py", "rolar-lote.py"},
+    ) is not None
 
 
 def _is_rule_query(command: str) -> bool:
-    lower = " ".join(command.casefold().split())
+    context = _invocation(command, {"contexto.py"})
+    catalog = _invocation(command, {"catalogo_regras.py"})
     return bool(
-        re.search(r"\bcontexto\.py\b.*\bregra\b", lower)
-        or re.search(r"\bcatalogo_regras\.py\b.*\b(?:consultar|receita|check)\b", lower)
+        context and "regra" in context[1]
+        or catalog and {"consultar", "receita", "check"}.intersection(catalog[1])
     )
 
 
@@ -229,6 +427,8 @@ def _is_mechanical_schema_discovery(command: str, raw_input: str) -> bool:
 
 
 def _dice_observation(call: dict[str, Any]) -> dict[str, Any] | None:
+    if call.get("command_executed") is False:
+        return None
     command = str(call.get("command") or "")
     if not _is_dice_command(command) or _core._is_help_command(command):
         return None
@@ -293,7 +493,12 @@ def _mechanical_correction_signals(turns: list[dict[str, Any]]) -> int:
 
 
 def _rules_state_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
-    calls = [call for turn in turns for call in turn.get("calls") or []]
+    calls = [
+        call
+        for turn in turns
+        for call in turn.get("calls") or []
+        if call.get("command_executed") is not False
+    ]
     rule_calls = [call for call in calls if _is_rule_query(str(call.get("command") or ""))]
     normalized_rule_queries = [
         " ".join(str(call.get("command") or "").casefold().split())
@@ -420,11 +625,13 @@ def _classify_tool(name: str, raw_input: str) -> str:
 
 
 def _access_level_from_command(command: str) -> str | None:
+    if not _is_routed_context_command(command):
+        return None
     result = _BASE_ACCESS_LEVEL(command)
     if result is not None:
         return result
     lower = command.casefold()
-    if _core._is_routed_context(command) and re.search(r"\bcontexto\.py\b.*\breputacao\b", lower):
+    if re.search(r"\bcontexto\.py\b.*\breputacao\b", lower):
         return "L2"
     return None
 
@@ -432,31 +639,83 @@ def _access_level_from_command(command: str) -> str | None:
 def _is_turn_register(command: str) -> bool:
     if _core._is_help_command(command):
         return False
-    lower = " ".join(command.casefold().split())
-    return (
-        "turno.py registrar" in lower
-        or "cronica.py concluir" in lower
-        or "cronica concluir" in lower
-        or "cronica.py registrar" in lower
-        or "cronica registrar" in lower
+    turno = _invocation(command, {"turno.py"})
+    return bool(
+        turno and turno[1][:1] == ["registrar"]
+        or {"concluir", "registrar"}.intersection(_orchestration_phases(command))
     )
+
+
+def _orchestration_phases(command: str) -> list[str]:
+    phases: list[str] = []
+    for program, args in _command_invocations(command):
+        if (
+            program in {"cronica", "cronica.py"}
+            and args[:1]
+            and args[0] in {"preparar", "concluir", "registrar", "confirmar"}
+        ):
+            phases.append(args[0])
+    return phases
 
 
 def _orchestration_phase(command: str) -> str | None:
-    lower = " ".join(command.casefold().split())
-    for phase in ("preparar", "concluir", "registrar", "confirmar"):
-        if f"cronica {phase}" in lower or f"cronica.py {phase}" in lower:
-            return phase
-    return None
+    phases = _orchestration_phases(command)
+    return phases[0] if phases else None
+
+
+def _call_orchestration_phases(call: dict[str, Any]) -> list[str]:
+    phases = call.get("orchestration_phases")
+    if isinstance(phases, list):
+        return [str(item) for item in phases if isinstance(item, str)]
+    phase = call.get("orchestration_phase")
+    return [phase] if isinstance(phase, str) else []
+
+
+def _call_has_phase(call: dict[str, Any], phase: str) -> bool:
+    return phase in _call_orchestration_phases(call)
+
+
+def _expanded_orchestration_calls(calls: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for call in calls:
+        for phase in _call_orchestration_phases(call):
+            result.append({**call, "orchestration_phase": phase})
+    return result
+
+
+def _session_lifecycle_operations(command: str) -> list[str]:
+    allowed = {"status", "iniciar", "checkpoint", "encerrar", "recuperar"}
+    return [
+        args[1]
+        for program, args in _command_invocations(command)
+        if program in {"cronica", "cronica.py"}
+        and len(args) >= 2
+        and args[0] == "sessao"
+        and args[1] in allowed
+    ]
 
 
 def _session_lifecycle_operation(command: str) -> str | None:
-    lower = " ".join(command.casefold().split())
-    match = re.search(
-        r"\bcronica(?:\.py)?\s+sessao\s+(status|iniciar|checkpoint|encerrar|recuperar)\b",
-        lower,
-    )
-    return match.group(1) if match else None
+    operations = _session_lifecycle_operations(command)
+    return operations[0] if operations else None
+
+
+def _call_session_lifecycle_operations(call: dict[str, Any]) -> list[str]:
+    operations = call.get("session_lifecycle_operations")
+    if isinstance(operations, list):
+        return [str(item) for item in operations if isinstance(item, str)]
+    operation = call.get("session_lifecycle_operation")
+    return [operation] if isinstance(operation, str) else []
+
+
+def _expanded_session_lifecycle_calls(
+    calls: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for call in calls:
+        for operation in _call_session_lifecycle_operations(call):
+            result.append({**call, "session_lifecycle_operation": operation})
+    return result
 
 
 def _duration_seconds(output_text: str) -> float | None:
@@ -624,6 +883,33 @@ def _orchestration_failure_kind(output_text: str) -> str | None:
     return None
 
 
+def _successful_turn_conclusion(call: dict[str, Any]) -> bool:
+    """Return whether a conclude invocation visibly completed the transaction."""
+    if call.get("output_success") is not True or call.get("orchestration_failure"):
+        return False
+    receipt = call.get("orchestration_receipt") or {}
+    state = str(receipt.get("state") or "").casefold()
+    if state in {"concluido", "concluida", "commitado", "completo", "complete", "completed"}:
+        return True
+    if receipt.get("commit_result") or receipt.get("new_effect") is True:
+        return True
+    interaction = call.get("interaction_receipt") or {}
+    if str(interaction.get("state") or "").casefold() in {
+        "concluido",
+        "concluida",
+        "completo",
+        "complete",
+        "completed",
+    }:
+        return True
+    return bool(
+        re.search(
+            r"(?im)^\s*fase\s*:\s*(?:conclu[ií]d[ao]|complet[ao])\s*$",
+            str(call.get("output_text") or ""),
+        )
+    )
+
+
 def _orchestration_receipt(output_text: str) -> dict[str, Any] | None:
     marker = "schema_turn_and_session_orchestration"
     start = output_text.casefold().rfind(marker)
@@ -713,12 +999,128 @@ def _interaction_receipt(output_text: str) -> dict[str, Any] | None:
     }
 
 
-def _sidequest_decision_from_command(command: str) -> str | None:
-    if _orchestration_phase(command) != "preparar":
+def _opportunity_assessment_receipt(output_text: str) -> dict[str, Any] | None:
+    marker = "schema_avaliacao_oportunidade_sidequest"
+    start = output_text.casefold().rfind(marker)
+    if start < 0:
         return None
-    lower = " ".join(command.casefold().split())
-    opportunity = "--oportunidade-sidequest" in lower
-    declined = "--sem-oportunidade-sidequest" in lower
+    receipt_text = output_text[start:]
+    return {
+        "schema": _output_int(receipt_text, marker),
+        "module_id": _output_scalar(receipt_text, "module_id"),
+        "implementation_version": _output_scalar(
+            receipt_text, "versao_implementacao"
+        ),
+        "evaluation_version": _output_scalar(receipt_text, "versao_avaliacao"),
+        "declaration": _output_scalar(receipt_text, "declaracao"),
+        "effective_decision": _output_scalar(receipt_text, "decisao_efetiva"),
+        "expected_result": _output_scalar(receipt_text, "resultado_esperado"),
+        "classification": _output_scalar(receipt_text, "classificacao"),
+        "included_in_score": _output_bool(receipt_text, "incluida_na_pontuacao"),
+        "structured_candidates": _output_int(
+            receipt_text, "candidatos_estruturados"
+        ),
+        "reasons": _output_string_list(receipt_text, "motivos"),
+    }
+
+
+def _canonical_integration_assessment_receipts(
+    output_text: str,
+) -> list[dict[str, Any]]:
+    marker = "schema_avaliacao_integracao_canonica"
+    starts = [match.start() for match in re.finditer(marker, output_text.casefold())]
+    result: list[dict[str, Any]] = []
+    for index, start in enumerate(starts):
+        end = starts[index + 1] if index + 1 < len(starts) else len(output_text)
+        receipt_text = output_text[start:end]
+        result.append(
+            {
+                "schema": _output_int(receipt_text, marker),
+                "assessment_id": _output_scalar(receipt_text, "assessment_id"),
+                "module_id": _output_scalar(receipt_text, "module_id"),
+                "capability_id": _output_scalar(receipt_text, "capability_id"),
+                "implementation_version": _output_scalar(
+                    receipt_text, "versao_implementacao"
+                ),
+                "evaluation_version": _output_scalar(
+                    receipt_text, "versao_avaliacao"
+                ),
+                "mission_ref": _output_scalar(receipt_text, "mission_ref"),
+                "trigger": _output_scalar(receipt_text, "gatilho"),
+                "classification": _output_scalar(receipt_text, "classificacao"),
+                "included_in_score": _output_bool(
+                    receipt_text, "incluida_na_pontuacao"
+                ),
+                "complete": _output_bool(receipt_text, "recibo_completo"),
+                "reasons": _output_string_list(receipt_text, "motivos"),
+            }
+        )
+    return result
+
+
+def _canonical_integration_receipt_complete(receipt: dict[str, Any]) -> bool:
+    return bool(
+        receipt.get("schema") == CANONICAL_INTEGRATION_ASSESSMENT_SCHEMA
+        and receipt.get("complete") is True
+        and receipt.get("module_id") == "canonical_quest_integration"
+        and receipt.get("mission_ref")
+        and receipt.get("assessment_id")
+    )
+
+
+def _canonical_integration_expected_receipts(call: dict[str, Any]) -> int:
+    if call.get("command_executed") is False or call.get("output_success") is False:
+        return 0
+    output_text = str(call.get("output_text") or "")
+    output_lower = output_text.casefold()
+    expected = 0
+    if "resultado: sidequest_materializada" in output_lower or (
+        '"resultado": "sidequest_materializada"' in output_lower
+    ):
+        expected += 1
+    if any(
+        marker in output_lower
+        for marker in (
+            "resultado: progresso_sidequests_registrado",
+            "resultado: sem_fatos_sidequest",
+            '"resultado": "progresso_sidequests_registrado"',
+            '"resultado": "sem_fatos_sidequest"',
+        )
+    ):
+        expected += int(_output_int(output_text, "missoes_reavaliadas") or 0)
+
+    invocations = _command_invocations(str(call.get("command") or ""))
+    lifecycle_programs = {
+        "canonical_quest_integration.py",
+        "canon_bridge_runtime.py",
+        "oportunidades.py",
+    }
+    if any(
+        program in lifecycle_programs
+        and args[:1]
+        and args[0] in {"oferecer", "responder", "finalizar", "abandonar"}
+        for program, args in invocations
+    ):
+        expected = max(expected, 1)
+    return expected
+
+
+def _sidequest_decision_from_command(command: str) -> str | None:
+    if "preparar" not in _orchestration_phases(command):
+        return None
+    cronica = next(
+        (
+            item
+            for item in _command_invocations(command)
+            if item[0] in {"cronica", "cronica.py"}
+            and item[1][:1] == ["preparar"]
+        ),
+        None,
+    )
+    if cronica is None:
+        return None
+    opportunity = "--oportunidade-sidequest" in cronica[1]
+    declined = "--sem-oportunidade-sidequest" in cronica[1]
     if opportunity and declined:
         return "conflito"
     if opportunity:
@@ -728,45 +1130,193 @@ def _sidequest_decision_from_command(command: str) -> str | None:
     return "ausente"
 
 
-def _narrative_systems_from_command(command: str) -> set[str]:
-    lower = command.casefold()
-    result: set[str] = set()
-    if "contexto.py" in lower and re.search(r"\bnpc\b", lower):
-        result.add("npc_social_initiative")
-    if "cronica preparar" in lower and "--oportunidade-sidequest" in lower:
-        result.add("emergent_sidequest_opportunity")
-    if "sidequest_authoring.py" in lower:
-        result.add("emergent_sidequest_authoring")
-    if "sidequest_lifecycle.py" in lower:
-        result.add("active_sidequest_reassessment")
-    if "canonical_quest_integration.py" in lower:
-        if re.search(r"\b(avaliar|oferecer|efeitos|check)\b", lower):
-            result.add("canonical_secret_quests")
-        if re.search(r"\b(responder|finalizar|abandonar|reconciliar|check)\b", lower):
-            result.add("canon_bridge")
-    if "scene_world_projection.py" in lower:
-        result.update({"world_local_incidents", "persistent_world_conditions"})
-    if "world_boundary_resolution.py" in lower:
-        if re.search(r"\b(fronteira|check)\b", lower):
-            result.add("liveness_boundary")
-        if re.search(r"\b(preparar|aplicar|check)\b", lower):
-            result.add("batch_world_boundary")
-    if "causal_narrative_routing.py" in lower:
-        result.add("reactive_pressure_routing")
-        if re.search(r"\bcheck\b", lower):
-            result.add("secret_canon")
-    if "adversarial_operations.py" in lower:
-        if re.search(r"\b(agente|check)\b", lower):
-            result.add("adversarial_integrity")
-        if re.search(
-            r"\b(preparar|materializar|comprometer|registrar-rolagem|resolver|"
-            r"entregar-informacao|percepcao-ren|reconciliar|check)\b",
-            lower,
+def _spatial_prepare_kinds(command: str) -> list[str]:
+    """Return typed spatial triggers routed through ``cronica preparar``."""
+
+    kinds: list[str] = []
+    for program, args in _command_invocations(command):
+        if program not in {"cronica", "cronica.py"} or args[:1] != ["preparar"]:
+            continue
+        if "--permanencia-local" in args:
+            kinds.append("permanencia_local")
+        elif "--transito-urbano" in args:
+            kinds.append("transito_urbano")
+        elif "--local" in args and any(
+            args[index + 1] in {"entrar", "explorar"}
+            for index, item in enumerate(args[:-1])
+            if item == "--acao"
         ):
-            result.add("concurrent_adversarial_operations")
-    for system, markers in _SYSTEM_COMMAND_MARKERS.items():
-        if any(marker in lower for marker in markers):
-            result.add(system)
+            kinds.append("gatilho_local")
+    return kinds
+
+
+def _top_level_output_section(output_text: str, name: str) -> str:
+    lines = output_text.splitlines()
+    start = next(
+        (
+            index
+            for index, line in enumerate(lines)
+            if re.fullmatch(rf"{re.escape(name)}\s*:\s*", line, re.I)
+        ),
+        None,
+    )
+    if start is None:
+        return ""
+    section: list[str] = []
+    for line in lines[start + 1 :]:
+        if line and not line[0].isspace():
+            break
+        section.append(line)
+    return "\n".join(section)
+
+
+def _module_coverage_receipts(output_text: str) -> dict[str, Any]:
+    """Lê somente o recibo compacto; schema ou linha divergente ficam incompletos."""
+
+    marker = "cobertura_avaliacao_modular"
+    lower = output_text.casefold()
+    block_present = marker in lower
+    schema_present = bool(
+        block_present
+        and re.search(
+            r'["\']?schema_avaliacao_cobertura_modular["\']?\s*:\s*1\b',
+            output_text,
+            re.I,
+        )
+    )
+    encoded = re.findall(
+        r'([a-z][a-z0-9_]*\|[a-z][a-z0-9_]*\|(?:aplicavel|nao_aplicavel|indeterminado)\|\d+)',
+        output_text,
+        re.I,
+    )
+    receipts: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str, int]] = set()
+    for raw in encoded:
+        module_id, phase, applicability, raw_units = raw.casefold().split("|", 3)
+        units = int(raw_units)
+        key = (module_id, phase, applicability, units)
+        if key in seen:
+            continue
+        seen.add(key)
+        receipts.append(
+            {
+                "module_id": module_id,
+                "phase": phase,
+                "applicability": applicability,
+                "units": units,
+                "complete": bool(
+                    schema_present
+                    and module_id in FAIL_CLOSED_MODULE_IDS
+                    and units > 0
+                ),
+            }
+        )
+    return {
+        "block_present": block_present,
+        "schema_present": schema_present,
+        "receipts": receipts,
+    }
+
+
+def _spatial_prepare_result(
+    kind: str, output_text: str, output_success: bool | None
+) -> tuple[str, str, str | None, bool]:
+    """Classify a read-only spatial preparation without inventing an effect."""
+
+    lower = output_text.casefold()
+    candidate = bool(
+        re.search(
+            r"(?i)\bresultado\s*:\s*avaliar_(?:microevento|incidente)\b",
+            output_text,
+        )
+        or re.search(r"(?im)^\s+carta\s*:\s*$", output_text)
+    )
+    neutral = any(
+        marker in lower
+        for marker in (
+            "resultado: rotina",
+            "resultado: calma_espacial",
+            "sem_incidente",
+            "sem_microevento",
+        )
+    )
+    visible_projection = bool(
+        _top_level_output_section(output_text, "transito_urbano")
+        or _top_level_output_section(output_text, "permanencia_espacial")
+        or re.search(
+            r"(?im)^(?:incidente_mundo|incidentes_para_avaliar|"
+            r"condicoes_persistentes_ativas)\s*:",
+            output_text,
+        )
+    )
+    if output_success is False:
+        return "consulta", "preparo_espacial_falhou", None, visible_projection
+    if candidate:
+        return "decisao", "projecao_espacial_reservada", None, True
+    if visible_projection and neutral:
+        return "gate_neutro", "projecao_espacial_neutra", None, True
+    if visible_projection or output_success is True:
+        return "consulta", f"{kind}_processado", None, visible_projection
+    return "consulta", f"{kind}_encaminhado", None, False
+
+
+def _narrative_systems_from_command(command: str) -> set[str]:
+    result: set[str] = set()
+    invocations = _command_invocations(command)
+    marker_programs = {
+        system: {Path(marker).name.casefold() for marker in markers}
+        for system, markers in _SYSTEM_COMMAND_MARKERS.items()
+    }
+    for program, args in invocations:
+        arg_set = set(args)
+        if program == "contexto.py" and "npc" in arg_set:
+            result.add("npc_social_initiative")
+        if (
+            program in {"cronica", "cronica.py"}
+            and args[:1] == ["preparar"]
+            and "--oportunidade-sidequest" in arg_set
+        ):
+            result.add("emergent_sidequest_opportunity")
+        if program == "sidequest_authoring.py":
+            result.add("emergent_sidequest_authoring")
+        if program == "sidequest_lifecycle.py":
+            result.add("active_sidequest_reassessment")
+        if program == "canonical_quest_integration.py":
+            if {"avaliar", "oferecer", "efeitos", "check"}.intersection(arg_set):
+                result.add("canonical_secret_quests")
+            if {"responder", "finalizar", "abandonar", "reconciliar", "check"}.intersection(
+                arg_set
+            ):
+                result.add("canon_bridge")
+        if program == "scene_world_projection.py":
+            result.update({"world_local_incidents", "persistent_world_conditions"})
+        if program == "world_boundary_resolution.py":
+            if {"fronteira", "check"}.intersection(arg_set):
+                result.add("liveness_boundary")
+            if {"preparar", "aplicar", "check"}.intersection(arg_set):
+                result.add("batch_world_boundary")
+        if program == "causal_narrative_routing.py":
+            result.add("reactive_pressure_routing")
+            if "check" in arg_set:
+                result.add("secret_canon")
+        if program == "adversarial_operations.py":
+            if {"agente", "check"}.intersection(arg_set):
+                result.add("adversarial_integrity")
+            if {
+                "preparar",
+                "materializar",
+                "comprometer",
+                "registrar-rolagem",
+                "resolver",
+                "entregar-informacao",
+                "percepcao-ren",
+                "reconciliar",
+                "check",
+            }.intersection(arg_set):
+                result.add("concurrent_adversarial_operations")
+        for system, programs in marker_programs.items():
+            if program in programs:
+                result.add(system)
     return result
 
 
@@ -898,6 +1448,8 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 cid = _core._call_id(payload)
                 command_systems = _narrative_systems_from_command(command)
                 command_markers = _matching_markers(command, _SYSTEM_COMMAND_MARKERS)
+                orchestration_phases = _orchestration_phases(command)
+                lifecycle_operations = _session_lifecycle_operations(command)
                 if "npc_social_initiative" in command_systems:
                     command_markers.setdefault("npc_social_initiative", []).append("contexto.py npc")
                 if "emergent_sidequest_opportunity" in command_systems:
@@ -909,8 +1461,14 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "name": name,
                     "raw_input": raw_input,
                     "command": command,
-                    "orchestration_phase": _orchestration_phase(command),
-                    "session_lifecycle_operation": _session_lifecycle_operation(command),
+                    "orchestration_phase": (
+                        orchestration_phases[0] if orchestration_phases else None
+                    ),
+                    "orchestration_phases": orchestration_phases,
+                    "session_lifecycle_operation": (
+                        lifecycle_operations[0] if lifecycle_operations else None
+                    ),
+                    "session_lifecycle_operations": lifecycle_operations,
                     "sidequest_decision": _sidequest_decision_from_command(command),
                     "narrative_systems": set(command_systems),
                     "command_systems": set(command_systems),
@@ -926,9 +1484,17 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                     "delivery_receipt": None,
                     "rules_state_receipt": None,
                     "interaction_receipt": None,
+                    "opportunity_assessment": None,
+                    "canonical_integration_assessments": [],
+                    "module_coverage": {
+                        "block_present": False,
+                        "schema_present": False,
+                        "receipts": [],
+                    },
                     "orchestration_failure": None,
                     "liveness": None,
                     "output_seen": False,
+                    "command_executed": True,
                 }
                 index = len(turn["calls"])
                 turn["calls"].append(call)
@@ -949,8 +1515,44 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
             if matched is None:
                 matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
-                output_systems = _narrative_systems_from_output(output_text)
-                orchestration_failure = _orchestration_failure_kind(output_text)
+                output_lower = output_text.casefold()
+                nested_commands = _nested_exec_commands(
+                    str(matched.get("command") or "")
+                )
+                execution_prevented = bool(
+                    len(nested_commands) == 1
+                    and (
+                        "erro: ticket armazenado não encontrado" in output_lower
+                        or (
+                            "script error:" in output_lower
+                            and "referenceerror:" in output_lower
+                        )
+                    )
+                )
+                matched["command_executed"] = not execution_prevented
+                if execution_prevented:
+                    matched["orchestration_phase"] = None
+                    matched["orchestration_phases"] = []
+                    matched["session_lifecycle_operation"] = None
+                    matched["session_lifecycle_operations"] = []
+                    matched["sidequest_decision"] = None
+                    matched["narrative_systems"] = set()
+                    matched["command_systems"] = set()
+                    matched["command_markers"] = {}
+                output_is_observation = bool(
+                    not execution_prevented
+                    and matched.get("category") not in {"read_search", "validation"}
+                )
+                output_systems = (
+                    set()
+                    if not output_is_observation
+                    else _narrative_systems_from_output(output_text)
+                )
+                orchestration_failure = (
+                    _orchestration_failure_kind(output_text)
+                    if output_is_observation
+                    else None
+                )
                 # Falha de ticket/commit pertence ao control plane. Marcadores
                 # incidentais do erro não provam ativação de sidequest ou NPC.
                 if orchestration_failure is not None:
@@ -961,25 +1563,264 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 matched["output_text"] = output_text
                 success = _core._tool_success(payload, output_text)
                 if success is None and "script completed" in output_text.casefold():
-                    lower_output = output_text.casefold()
                     explicit_failure = orchestration_failure is not None or any(
-                        marker in lower_output
+                        marker in output_lower
                         for marker in ("falha cronica", "script failed", "traceback (most recent call last)")
                     )
                     success = not explicit_failure
                 matched["output_success"] = success
                 matched["duration_seconds"] = _duration_seconds(output_text)
-                matched["orchestration_receipt"] = _orchestration_receipt(output_text)
-                matched["delivery_receipt"] = _delivery_receipt(output_text)
-                matched["rules_state_receipt"] = _rules_state_receipt(output_text)
-                matched["interaction_receipt"] = _interaction_receipt(output_text)
+                matched["orchestration_receipt"] = (
+                    _orchestration_receipt(output_text) if output_is_observation else None
+                )
+                matched["delivery_receipt"] = (
+                    _delivery_receipt(output_text) if output_is_observation else None
+                )
+                matched["rules_state_receipt"] = (
+                    _rules_state_receipt(output_text) if output_is_observation else None
+                )
+                matched["interaction_receipt"] = (
+                    _interaction_receipt(output_text) if output_is_observation else None
+                )
+                matched["opportunity_assessment"] = (
+                    _opportunity_assessment_receipt(output_text)
+                    if output_is_observation
+                    else None
+                )
+                matched["canonical_integration_assessments"] = (
+                    _canonical_integration_assessment_receipts(output_text)
+                    if output_is_observation
+                    else []
+                )
+                matched["module_coverage"] = (
+                    _module_coverage_receipts(output_text)
+                    if output_is_observation
+                    else {
+                        "block_present": False,
+                        "schema_present": False,
+                        "receipts": [],
+                    }
+                )
                 matched["orchestration_failure"] = orchestration_failure
-                matched["liveness"] = _liveness_observation(output_text)
+                matched["liveness"] = (
+                    _liveness_observation(output_text) if output_is_observation else None
+                )
                 matched["output_seen"] = True
 
     ordered = [turns[turn_id] for turn_id in order]
+    for turn in ordered:
+        turn["narration_signal_tool"] = any(
+            call.get("command_executed") is not False
+            and _is_turn_register(str(call.get("command") or ""))
+            for call in turn.get("calls") or []
+        )
     narration = [turn for turn in ordered if _core._is_narration_turn(turn, narration_re)]
     return ordered, narration
+
+
+def _expected_module_activities(call: dict[str, Any]) -> list[tuple[str, str | None]]:
+    """Deriva a obrigação de cobertura da porta pública realmente concluída."""
+
+    if call.get("command_executed") is False or call.get("output_success") is not True:
+        return []
+    command = str(call.get("command") or "")
+    expected: list[tuple[str, str | None]] = []
+    receipt = call.get("orchestration_receipt") or {}
+    blocked = str(receipt.get("state") or "").casefold().startswith("bloquead")
+    direct = {
+        "context_and_memory.py": "context_and_memory",
+        "sidequest_authoring.py": "sidequest_authoring",
+        "sidequest_lifecycle.py": "sidequest_lifecycle",
+        "npc_continuity_and_social_behavior.py": "npc_continuity_and_social_behavior",
+        "scene_world_projection.py": "scene_world_projection",
+        "world_boundary_resolution.py": "world_boundary_resolution",
+        "causal_narrative_routing.py": "causal_narrative_routing",
+        "adversarial_operations.py": "adversarial_operations",
+        "rules_and_character_state.py": "rules_and_character_state",
+        "narrative_delivery.py": "narrative_delivery",
+        "turn_and_session_orchestration.py": "turn_and_session_orchestration",
+    }
+    for program, args in _command_invocations(command):
+        if program in {"cronica", "cronica.py"} and args[:1] == ["preparar"]:
+            expected.append(("turn_and_session_orchestration", "preparar"))
+            if not blocked:
+                expected.extend(
+                    (
+                        ("scene_world_projection", "preparar"),
+                        ("sidequest_authoring", "preparar"),
+                        ("sidequest_lifecycle", "preparar"),
+                        ("causal_narrative_routing", "preparar"),
+                        ("npc_continuity_and_social_behavior", "preparar"),
+                        ("context_and_memory", "preparar"),
+                    )
+                )
+        elif program in {"cronica", "cronica.py"} and args[:1] == ["concluir"]:
+            expected.extend(
+                (
+                    ("turn_and_session_orchestration", "concluir"),
+                    ("context_and_memory", "concluir"),
+                    ("npc_continuity_and_social_behavior", "concluir"),
+                    ("rules_and_character_state", "concluir"),
+                    ("narrative_delivery", "concluir"),
+                )
+            )
+        elif program in {"cronica", "cronica.py"} and args[:1] == ["sessao"]:
+            operation = args[1] if len(args) > 1 else None
+            if operation:
+                expected.append(
+                    ("turn_and_session_orchestration", f"sessao_{operation}")
+                )
+        elif program == "contexto.py" and args[:1] != ["check"]:
+            expected.append(("context_and_memory", "consulta"))
+        elif program in {"dados", "dados-lote", "dados.py", "dados-lote.py"}:
+            # As primitivas de dado já têm saída estruturada própria e não
+            # atravessam um envelope YAML ao qual anexar o recibo compacto.
+            expected.append(("rules_and_character_state", None))
+        elif program == "endpoints.py" and args[:1] == ["fronteira"]:
+            expected.append(("world_boundary_resolution", "fronteira"))
+        elif program in direct and args[:1] != ["check"]:
+            expected.append((direct[program], None))
+    return list(dict.fromkeys(expected))
+
+
+def _native_coverage_complete(
+    call: dict[str, Any], module_id: str, applicability: str
+) -> bool:
+    if module_id == "turn_and_session_orchestration":
+        return isinstance(call.get("orchestration_receipt"), dict)
+    if module_id == "narrative_delivery":
+        return isinstance(call.get("delivery_receipt"), dict)
+    if module_id == "rules_and_character_state" and applicability == "aplicavel":
+        return isinstance(call.get("rules_state_receipt"), dict) or (
+            _dice_observation(call) is not None
+            and call.get("output_success") is True
+        )
+    if module_id == "sidequest_authoring":
+        return isinstance(call.get("opportunity_assessment"), dict)
+    return True
+
+
+def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    counters = {
+        module_id: Counter(
+            {
+                "activity_units": 0,
+                "receipts": 0,
+                "complete_receipts": 0,
+                "applicable_units": 0,
+                "not_applicable_units": 0,
+                "indeterminate_units": 0,
+                "missing_receipts": 0,
+                "incomplete_receipts": 0,
+                "duplicate_receipts": 0,
+            }
+        )
+        for module_id in FAIL_CLOSED_MODULE_IDS
+    }
+    assessments: dict[str, list[dict[str, Any]]] = {
+        module_id: [] for module_id in FAIL_CLOSED_MODULE_IDS
+    }
+    for turn in turns:
+        turn_id = str(turn.get("turn_id") or "")
+        for call in turn.get("calls") or []:
+            for module_id, expected_phase in _expected_module_activities(call):
+                if module_id not in counters:
+                    continue
+                counter = counters[module_id]
+                counter["activity_units"] += 1
+                coverage = call.get("module_coverage") or {}
+                module_receipts = [
+                    item
+                    for item in coverage.get("receipts") or []
+                    if item.get("module_id") == module_id
+                ]
+                matching = [
+                    item
+                    for item in module_receipts
+                    if expected_phase is None or item.get("phase") == expected_phase
+                ]
+                if (
+                    not matching
+                    and module_id == "rules_and_character_state"
+                    and expected_phase is None
+                    and _dice_observation(call) is not None
+                ):
+                    matching = [
+                        {
+                            "module_id": module_id,
+                            "phase": "rolagem",
+                            "applicability": "aplicavel",
+                            "units": 1,
+                            "complete": True,
+                        }
+                    ]
+                status = "completo"
+                applicability = None
+                if not matching:
+                    key = (
+                        "incomplete_receipts"
+                        if module_receipts
+                        or (
+                            coverage.get("block_present")
+                            and not coverage.get("schema_present")
+                        )
+                        else "missing_receipts"
+                    )
+                    counter[key] += 1
+                    status = "incompleto" if key == "incomplete_receipts" else "ausente"
+                else:
+                    counter["receipts"] += len(matching)
+                    if len(matching) > 1:
+                        counter["duplicate_receipts"] += len(matching) - 1
+                        counter["incomplete_receipts"] += 1
+                        status = "duplicado"
+                    receipt = matching[0]
+                    applicability = str(receipt.get("applicability") or "")
+                    native_complete = _native_coverage_complete(
+                        call, module_id, applicability
+                    )
+                    if receipt.get("complete") is not True or not native_complete:
+                        counter["incomplete_receipts"] += 1
+                        status = "incompleto"
+                    elif len(matching) == 1:
+                        counter["complete_receipts"] += 1
+                        field = {
+                            "aplicavel": "applicable_units",
+                            "nao_aplicavel": "not_applicable_units",
+                            "indeterminado": "indeterminate_units",
+                        }[applicability]
+                        counter[field] += 1
+                assessments[module_id].append(
+                    {
+                        "turn_id": turn_id,
+                        "call_id": str(call.get("call_id") or "") or None,
+                        "phase": expected_phase,
+                        "applicability": applicability,
+                        "receipt_status": status,
+                    }
+                )
+
+    result: dict[str, dict[str, Any]] = {}
+    for module_id, counter in counters.items():
+        activity = int(counter["activity_units"])
+        complete = int(counter["complete_receipts"])
+        result[module_id] = {
+            "schema": MODULE_COVERAGE_SCHEMA,
+            "module_id": module_id,
+            **dict(counter),
+            "coverage_complete": bool(
+                counter["missing_receipts"] == 0
+                and counter["incomplete_receipts"] == 0
+                and counter["duplicate_receipts"] == 0
+                and complete == activity
+            ),
+            "assessments": assessments[module_id],
+            "regra": (
+                "atividade esperada exige recibo completo; ausência ou incompletude "
+                "é falha de instrumentação e N/D exige zero atividade"
+            ),
+        }
+    return result
 
 
 def _visible_response(turn: dict[str, Any]) -> dict[str, Any] | None:
@@ -1113,6 +1954,16 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     phase_durations: dict[str, list[float]] = {}
     retry_metrics: Counter[str] = Counter()
     failure_metrics: Counter[str] = Counter()
+    opportunity_assessment_counts: Counter[str] = Counter()
+    opportunity_assessments: list[dict[str, Any]] = []
+    canonical_assessment_counts: Counter[str] = Counter()
+    canonical_assessments: list[dict[str, Any]] = []
+    canonical_assessment_ids: set[str] = set()
+    canonical_complete_receipts = 0
+    canonical_duplicate_receipts = 0
+    canonical_expected_receipts = 0
+    canonical_missing_receipts = 0
+    canonical_incomplete_receipts = 0
     pair_turns = 0
     successful_pair_turns = 0
     correlated_pair_turns = 0
@@ -1128,8 +1979,10 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         primary_calls: dict[str, dict[str, Any]] = {}
         blocked = False
         for call in turn["calls"]:
-            phase = call.get("orchestration_phase")
-            if isinstance(phase, str):
+            if call.get("command_executed") is False:
+                continue
+            call_phases = _call_orchestration_phases(call)
+            for phase in call_phases:
                 phases[phase] += 1
                 per_turn_phases.append(phase)
                 call_classes[
@@ -1140,20 +1993,29 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
                 duration = call.get("duration_seconds")
                 if isinstance(duration, (int, float)):
                     phase_durations.setdefault(phase, []).append(float(duration))
-            lifecycle = call.get("session_lifecycle_operation")
-            if isinstance(lifecycle, str):
+            receipt = call.get("orchestration_receipt")
+            call_lifecycle_operations = _call_session_lifecycle_operations(call)
+            receipt_operation = (
+                str(receipt.get("operation") or "")
+                if isinstance(receipt, dict)
+                else ""
+            )
+            for lifecycle in call_lifecycle_operations:
                 lifecycle_operations[lifecycle] += 1
                 call_classes["lifecycle_sessao"] += 1
-                if call.get("output_success") is True:
+                outcome_attributable = (
+                    len(call_lifecycle_operations) == 1
+                    or receipt_operation == lifecycle
+                )
+                if outcome_attributable and call.get("output_success") is True:
                     lifecycle_success[lifecycle] += 1
                 duration = call.get("duration_seconds")
-                if isinstance(duration, (int, float)):
+                if outcome_attributable and isinstance(duration, (int, float)):
                     phase_durations.setdefault(f"sessao:{lifecycle}", []).append(float(duration))
 
-            receipt = call.get("orchestration_receipt")
             if isinstance(receipt, dict):
                 receipt_calls += 1
-                if lifecycle:
+                if call_lifecycle_operations:
                     lifecycle_receipt_calls += 1
                 state = str(receipt.get("state") or "")
                 if state.startswith("bloqueado_"):
@@ -1186,6 +2048,78 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
             decision = call.get("sidequest_decision")
             if isinstance(decision, str):
                 decisions[decision] += 1
+            assessment = call.get("opportunity_assessment")
+            if isinstance(assessment, dict):
+                classification = str(assessment.get("classification") or "indeterminado")
+                if classification not in {
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                    "indeterminado",
+                }:
+                    classification = "indeterminado"
+                opportunity_assessment_counts[classification] += 1
+                opportunity_assessments.append(
+                    {
+                        "turn_id": str(turn.get("turn_id") or ""),
+                        "call_id": str(call.get("call_id") or "") or None,
+                        **copy.deepcopy(assessment),
+                        "classification": classification,
+                    }
+                )
+            canonical_receipts = [
+                item
+                for item in call.get("canonical_integration_assessments") or []
+                if isinstance(item, dict)
+            ]
+            complete_canonical_receipts = [
+                item
+                for item in canonical_receipts
+                if _canonical_integration_receipt_complete(item)
+            ]
+            expected_canonical = _canonical_integration_expected_receipts(call)
+            canonical_expected_receipts += expected_canonical
+            canonical_missing_receipts += max(
+                0,
+                expected_canonical - len(canonical_receipts),
+            )
+            canonical_incomplete_receipts += (
+                len(canonical_receipts) - len(complete_canonical_receipts)
+            )
+            canonical_complete_receipts += len(complete_canonical_receipts)
+            for canonical_assessment in complete_canonical_receipts:
+                assessment_id = str(
+                    canonical_assessment.get("assessment_id") or ""
+                )
+                if assessment_id in canonical_assessment_ids:
+                    canonical_duplicate_receipts += 1
+                    continue
+                canonical_assessment_ids.add(assessment_id)
+                classification = str(
+                    canonical_assessment.get("classification") or "indeterminado"
+                )
+                included = canonical_assessment.get("included_in_score") is True
+                if classification not in {
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                    "indeterminado",
+                }:
+                    classification = "indeterminado"
+                if included:
+                    canonical_assessment_counts[classification] += 1
+                else:
+                    canonical_assessment_counts["nao_pontuavel"] += 1
+                canonical_assessments.append(
+                    {
+                        "turn_id": str(turn.get("turn_id") or ""),
+                        "call_id": str(call.get("call_id") or "") or None,
+                        **copy.deepcopy(canonical_assessment),
+                        "classification": classification,
+                    }
+                )
             for system in call.get("narrative_systems") or set():
                 if system in NARRATIVE_SYSTEM_KEYS:
                     system_calls[system] += 1
@@ -1346,6 +2280,64 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         "sidequest_decision_violations": int(violations),
         "sidequest_decision_coverage": round(valid_decisions / prepare_calls, 6) if prepare_calls else 1.0,
         "task47_decision_gate_ok": violations == 0,
+        "sidequest_opportunity_assessment": {
+            "schema": OPPORTUNITY_DECISION_SCHEMA,
+            "receipts": len(opportunity_assessments),
+            "scoreable": sum(
+                opportunity_assessment_counts[key]
+                for key in (
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                )
+            ),
+            "indeterminate": opportunity_assessment_counts["indeterminado"],
+            "confusion_matrix": {
+                key: int(opportunity_assessment_counts[key])
+                for key in (
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                )
+            },
+            "assessments": opportunity_assessments,
+        },
+        "canonical_quest_integration_assessment": {
+            "schema": CANONICAL_INTEGRATION_ASSESSMENT_SCHEMA,
+            "activity_units": int(canonical_expected_receipts),
+            "receipts": int(canonical_complete_receipts),
+            "unique_assessments": len(canonical_assessments),
+            "duplicate_receipts": int(canonical_duplicate_receipts),
+            "scoreable": sum(
+                canonical_assessment_counts[key]
+                for key in (
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                )
+            ),
+            "non_scoreable": int(canonical_assessment_counts["nao_pontuavel"]),
+            "indeterminate": int(canonical_assessment_counts["indeterminado"]),
+            "missing_receipts": int(canonical_missing_receipts),
+            "incomplete_receipts": int(canonical_incomplete_receipts),
+            "coverage_complete": (
+                canonical_missing_receipts == 0
+                and canonical_incomplete_receipts == 0
+            ),
+            "confusion_matrix": {
+                key: int(canonical_assessment_counts[key])
+                for key in (
+                    "verdadeiro_positivo",
+                    "verdadeiro_negativo",
+                    "falso_positivo",
+                    "falso_negativo",
+                )
+            },
+            "assessments": canonical_assessments,
+        },
         "liveness_boundary": {
             "avaliacoes": int(liveness["avaliacoes"]),
             "janelas_com_pressao": int(liveness["pressao"]),
@@ -1380,7 +2372,15 @@ _LEGACY_EFFECT_MARKERS: dict[str, tuple[str, ...]] = {
     "persistent_world_conditions": ("condicao_registrada", "condicao_encerrada"),
     "batch_world_boundary": ("lote_aplicado", "fronteira_aplicada"),
     "secret_canon": ("materializado_em_jogo",),
-    "concurrent_adversarial_operations": ("operacao_resolvida", "resolver_operacao_adversarial"),
+    "concurrent_adversarial_operations": ("operacao_resolvida",),
+}
+
+_PASSIVE_LEGACY_OUTPUT_MARKERS: dict[str, set[str]] = {
+    # Referências em `fontes_lidas` e instruções do contrato não provam que a
+    # subcapacidade foi consultada ou executada naquele turno.
+    "world_local_incidents": {"narrador/mundo/incidentes/"},
+    "persistent_world_conditions": {"condicoes-persistentes.yaml"},
+    "concurrent_adversarial_operations": {"resolver_operacao_adversarial"},
 }
 
 _LEGACY_NEUTRAL_MARKERS: dict[str, tuple[str, ...]] = {
@@ -1443,6 +2443,7 @@ def _catalog_indexes(catalog: dict[str, Any]) -> tuple[
 
 def _empty_signal() -> dict[str, Any]:
     return {
+        "call_ids_observed": [],
         "signal_sources": [],
         "eligibility_observed": "indeterminada",
         "activation_observed": "ausente",
@@ -1467,8 +2468,14 @@ def _add_signal(
     materialized_result: str | None = None,
     effect_observed: bool | None = None,
     confidence: str = "media",
+    call_id: str | None = None,
+    call_ids: list[str] | None = None,
 ) -> None:
     signal = signals.setdefault((module_id, capability_id), _empty_signal())
+    previous_effect = signal["effect_observed"]
+    for observed_call_id in [call_id, *(call_ids or [])]:
+        if observed_call_id and observed_call_id not in signal["call_ids_observed"]:
+            signal["call_ids_observed"].append(observed_call_id)
     if source not in signal["signal_sources"]:
         signal["signal_sources"].append(source)
     if evidence and evidence not in signal["observable_evidence"]:
@@ -1484,7 +2491,13 @@ def _add_signal(
         signal["observed_result"] = observed_result
     if materialized_result is not None:
         signal["materialized_result_observed"] = materialized_result
-    if effect_observed is True or signal["effect_observed"] is None:
+    # Uma falha observável não pode ser apagada por outro sinal bem-sucedido da
+    # mesma subcapacidade no turno. Estados intermediários devem usar None.
+    if effect_observed is False:
+        if previous_effect is not False and observed_result is not None:
+            signal["observed_result"] = observed_result
+        signal["effect_observed"] = False
+    elif signal["effect_observed"] is None:
         signal["effect_observed"] = effect_observed
     if confidence == "alta" or signal["inference_confidence"] == "baixa":
         signal["inference_confidence"] = confidence
@@ -1493,18 +2506,11 @@ def _add_signal(
 def _legacy_activation(alias: str, output_text: str, source: str) -> tuple[str, str | None, str | None, bool | None]:
     lower = output_text.casefold()
     if any(marker in lower for marker in _LEGACY_NEUTRAL_MARKERS.get(alias, ())):
-        return "gate_neutro", "resultado_neutro", None, False
+        return "gate_neutro", "resultado_neutro", None, None
     if any(marker in lower for marker in _LEGACY_EFFECT_MARKERS.get(alias, ())):
         return "efeito", "efeito_observado", "efeito_materializado", True
-    if alias in {
-        "emergent_sidequest_opportunity",
-        "canonical_secret_quests",
-        "adversarial_integrity",
-        "concurrent_adversarial_operations",
-        "reactive_pressure_routing",
-        "secret_canon",
-    } and source == "output":
-        return "decisao", "decisao_observada", None, False
+    # O nome de um módulo em output pode ser projeção, contrato ou diagnóstico.
+    # Sem marcador de efeito/neutralidade, ele prova somente consulta.
     return "consulta", "marcador_observado", None, None
 
 
@@ -1514,14 +2520,28 @@ def _legacy_signals(
     aliases: dict[str, tuple[str, str]],
 ) -> list[dict[str, Any]]:
     non_modules: dict[str, dict[str, Any]] = {}
+    typed_sidequest_decisions = {
+        call.get("sidequest_decision")
+        for call in calls
+        if call.get("sidequest_decision")
+        in {"oportunidade", "sem_oportunidade", "ausente", "conflito"}
+    }
+    sidequest_gate_is_negative = typed_sidequest_decisions == {"sem_oportunidade"}
     for call in calls:
+        if call.get("command_executed") is False:
+            continue
         output_text = str(call.get("output_text") or "")
         command_lower = str(call.get("command") or "").casefold()
         output_lower = output_text.casefold()
-        facade_adversarial = "adversarial_operations.py" in command_lower
+        facade_adversarial = _invocation(
+            str(call.get("command") or ""), {"adversarial_operations.py"}
+        ) is not None
         actual_npc_initiative = (
-            "--interlocutor" in command_lower
-            or "iniciativa_elenco" in output_lower
+            _call_has_phase(call, "preparar")
+            and (
+                "--interlocutor" in command_lower
+                or "iniciativa_elenco" in output_lower
+            )
         )
         for source, key, marker_key in (
             ("comando", "command_systems", "command_markers"),
@@ -1530,6 +2550,27 @@ def _legacy_signals(
             if source == "output" and call.get("orchestration_failure") is not None:
                 continue
             for alias in sorted(call.get(key) or set()):
+                sidequest_decision = call.get("sidequest_decision")
+                # A decisão tipada do cronica é autoritativa. Marcadores v1 no
+                # mesmo output apenas identificam a infraestrutura carregada e
+                # não podem promover um gate negativo a ativação/autoria.
+                if (
+                    alias == "emergent_sidequest_opportunity"
+                    and (
+                        sidequest_decision
+                        in {"oportunidade", "sem_oportunidade", "ausente", "conflito"}
+                        or typed_sidequest_decisions
+                    )
+                ):
+                    continue
+                if (
+                    alias == "emergent_sidequest_authoring"
+                    and (
+                        sidequest_decision == "sem_oportunidade"
+                        or sidequest_gate_is_negative
+                    )
+                ):
+                    continue
                 # O v1 tratava toda consulta dirigida de NPC como iniciativa.
                 # No ledger v2, carregar relação/voz é continuidade, enquanto
                 # iniciativa exige interlocutor ou decisão explícita no output.
@@ -1541,6 +2582,13 @@ def _legacy_signals(
                 ):
                     continue
                 evidence_markers = list((call.get(marker_key) or {}).get(alias) or [alias])
+                if source == "output":
+                    passive = _PASSIVE_LEGACY_OUTPUT_MARKERS.get(alias, set())
+                    evidence_markers = [
+                        marker for marker in evidence_markers if marker not in passive
+                    ]
+                    if not evidence_markers:
+                        continue
                 if alias not in aliases:
                     if alias in {"seven_names_migration_regression", "underground_tournament"}:
                         item = non_modules.setdefault(
@@ -1569,6 +2617,7 @@ def _legacy_signals(
                         observed_result=result,
                         materialized_result=materialized,
                         effect_observed=effect,
+                        call_id=str(call.get("call_id") or "") or None,
                     )
     return list(non_modules.values())
 
@@ -1576,8 +2625,151 @@ def _legacy_signals(
 def _new_module_signals(
     signals: dict[tuple[str, str], dict[str, Any]], turn: dict[str, Any]
 ) -> None:
-    calls = list(turn.get("calls") or [])
+    calls = [
+        call
+        for call in turn.get("calls") or []
+        if call.get("command_executed") is not False
+    ]
     assistant_messages = list(turn.get("assistant_messages") or [])
+
+    # RM-04: o hot path importa a fachada como ``cena_mundo``; por isso o
+    # rollout observa ``cronica preparar`` em vez de uma CLI adicional. Os
+    # gatilhos tipados provam a consulta. A preparação continua read-only e só
+    # marcadores explícitos do concluir provam efeito material.
+    for call in calls:
+        command = str(call.get("command") or "")
+        kinds = _spatial_prepare_kinds(command)
+        if not kinds:
+            continue
+        output_text = str(call.get("output_text") or "")
+        output_success = call.get("output_success")
+        call_id = str(call.get("call_id") or "") or None
+        for kind in kinds:
+            activation, result, materialized, visible_projection = _spatial_prepare_result(
+                kind, output_text, output_success
+            )
+            _add_signal(
+                signals,
+                "scene_world_projection",
+                "local_incidents",
+                source="comando",
+                evidence=f"command:spatial_trigger_{kind}",
+                eligibility="sim",
+                activation=activation,
+                observed_result=result,
+                materialized_result=materialized,
+                effect_observed=None,
+                confidence="alta",
+                call_id=call_id,
+            )
+            if visible_projection:
+                _add_signal(
+                    signals,
+                    "scene_world_projection",
+                    "local_incidents",
+                    source="output",
+                    evidence="output:spatial_projection_gate",
+                    eligibility="sim",
+                    activation=activation,
+                    observed_result=result,
+                    effect_observed=None,
+                    confidence="alta",
+                    call_id=call_id,
+                )
+
+            if kind == "permanencia_local":
+                permanence = _top_level_output_section(
+                    output_text, "permanencia_espacial"
+                )
+                reused = _output_bool(permanence, "reutilizado") if permanence else None
+                continuity_activation = (
+                    "efeito"
+                    if reused is True
+                    else "decisao"
+                    if permanence
+                    else "consulta"
+                )
+                _add_signal(
+                    signals,
+                    "scene_world_projection",
+                    "spatial_continuity",
+                    source="output" if permanence else "comando",
+                    evidence=(
+                        "output:spatial_reservation_reused"
+                        if reused is True
+                        else "output:spatial_reservation_created"
+                        if permanence
+                        else "command:spatial_continuity_requested"
+                    ),
+                    eligibility="sim",
+                    activation=continuity_activation,
+                    observed_result=(
+                        "reserva_espacial_reutilizada"
+                        if reused is True
+                        else "reserva_espacial_criada"
+                        if permanence
+                        else "continuidade_espacial_encaminhada"
+                    ),
+                    materialized_result=(
+                        "janela_espacial_preservada" if reused is True else None
+                    ),
+                    effect_observed=True if reused is True else None,
+                    confidence="alta",
+                    call_id=call_id,
+                )
+
+        active_conditions = re.search(
+            r"(?im)^condicoes_persistentes_ativas\s*:\s*(\d+)?\s*$",
+            output_text,
+        )
+        condition_gate = bool(
+            re.search(
+                r"(?im)^\s*-\s*tipo\s*:\s*condicoes_ambientais\s*$",
+                output_text,
+            )
+        )
+        if active_conditions or condition_gate:
+            count = (
+                int(active_conditions.group(1))
+                if active_conditions and active_conditions.group(1) is not None
+                else None
+            )
+            active = count is None or count > 0
+            _add_signal(
+                signals,
+                "scene_world_projection",
+                "persistent_conditions",
+                source="output",
+                evidence=(
+                    "output:persistent_conditions_projected"
+                    if active_conditions and active
+                    else "output:persistent_conditions_gate"
+                ),
+                eligibility=(
+                    "sim"
+                    if active_conditions and active
+                    else "nao"
+                    if active_conditions
+                    else "indeterminada"
+                ),
+                activation=(
+                    "decisao"
+                    if active_conditions and active
+                    else "gate_neutro"
+                    if active_conditions
+                    else "consulta"
+                ),
+                observed_result=(
+                    "condicoes_ativas_projetadas"
+                    if active_conditions and active
+                    else "sem_condicao_ativa"
+                    if active_conditions
+                    else "condicoes_persistentes_consultadas"
+                ),
+                effect_observed=None,
+                confidence="alta",
+                call_id=call_id,
+            )
 
     # RM-06: proposta, compromisso e efeito são eventos diferentes do mesmo
     # módulo pai. Integridade é o contrato verificável; concorrência só é
@@ -1586,10 +2778,14 @@ def _new_module_signals(
         command = str(call.get("command") or "")
         lower = " ".join(command.casefold().split())
         output_lower = str(call.get("output_text") or "").casefold()
-        facade = "adversarial_operations.py" in lower
-        legacy_integrity = "integridade_adversarial.py" in lower
-        legacy_operations = "operacoes_concorrentes.py" in lower
-        structured = any(
+        facade = _invocation(command, {"adversarial_operations.py"}) is not None
+        legacy_integrity = _invocation(command, {"integridade_adversarial.py"}) is not None
+        legacy_operations = _invocation(command, {"operacoes_concorrentes.py"}) is not None
+        output_is_observation = call.get("category") not in {
+            "read_search",
+            "validation",
+        }
+        structured = output_is_observation and any(
             marker in output_lower
             for marker in (
                 "schema_adversarial_operations",
@@ -1597,7 +2793,6 @@ def _new_module_signals(
                 "schema_preparacao_grupo_operacoes",
                 "schema_grupo_operacoes",
                 "grupo_operacoes_id",
-                "resolver_operacao_adversarial",
             )
         )
         if not (facade or legacy_integrity or legacy_operations or structured):
@@ -1638,7 +2833,7 @@ def _new_module_signals(
             activation = "gate_neutro"
             result = "retry_sem_duplicacao"
             materialized = None
-            effect = False
+            effect = None
         elif material_effect:
             activation = "efeito"
             result = "efeito_adversarial_observado"
@@ -1648,12 +2843,12 @@ def _new_module_signals(
             activation = "decisao"
             result = "operacao_adversarial_comprometida"
             materialized = None
-            effect = False
+            effect = True
         else:
             activation = "consulta"
             result = "contrato_adversarial_consultado"
             materialized = None
-            effect = False if call.get("output_seen") else None
+            effect = None
 
         source = "output" if structured or "evento_modular" in output_lower else "comando"
         _add_signal(
@@ -1672,8 +2867,8 @@ def _new_module_signals(
             materialized_result=materialized,
             effect_observed=effect,
             confidence="alta" if structured or facade else "media",
+            call_id=str(call.get("call_id") or "") or None,
         )
-
         simultaneous = bool(
             re.search(r"operacoes_simultaneas\s*:\s*true", output_lower)
             or re.search(r'"operacoes_simultaneas"\s*:\s*true', output_lower)
@@ -1695,6 +2890,7 @@ def _new_module_signals(
                 materialized_result=materialized,
                 effect_observed=effect,
                 confidence="alta" if simultaneous else "media",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
     # RM-05: continuidade dirigida é distinta de iniciativa incidental. Os
@@ -1704,13 +2900,18 @@ def _new_module_signals(
         command = str(call.get("command") or "")
         lower = " ".join(command.casefold().split())
         output_lower = str(call.get("output_text") or "").casefold()
-        directed_npc = "contexto.py" in lower and re.search(r"\bnpc\b", lower)
-        facade = "npc_continuity_and_social_behavior.py" in lower
-        participant = call.get("orchestration_phase") == "preparar" and "--participante" in lower
-        interlocutor = call.get("orchestration_phase") == "preparar" and "--interlocutor" in lower
-        identity_operation = "identidades.py" in lower
-        reputation_operation = "reputacao_publica.py" in lower or (
-            "contexto.py" in lower and re.search(r"\breputacao\b", lower)
+        context_invocation = _invocation(command, {"contexto.py"})
+        directed_npc = bool(context_invocation and "npc" in context_invocation[1])
+        facade = _invocation(
+            command, {"npc_continuity_and_social_behavior.py"}
+        ) is not None
+        participant = _call_has_phase(call, "preparar") and "--participante" in lower
+        interlocutor = _call_has_phase(call, "preparar") and "--interlocutor" in lower
+        identity_operation = _invocation(command, {"identidades.py"}) is not None
+        reputation_operation = _invocation(
+            command, {"reputacao_publica.py"}
+        ) is not None or (
+            context_invocation is not None and "reputacao" in context_invocation[1]
         )
 
         if directed_npc or participant or interlocutor or identity_operation or facade:
@@ -1731,6 +2932,7 @@ def _new_module_signals(
                 activation="consulta" if directed_npc or facade else "decisao",
                 observed_result="contexto_npc_observado",
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         if directed_npc or participant or reputation_operation or facade:
@@ -1747,9 +2949,19 @@ def _new_module_signals(
                 activation="consulta",
                 observed_result="continuidade_social_consultada",
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
-        has_initiative = "iniciativa_elenco" in output_lower
+        output_is_observation = call.get("category") not in {
+            "read_search",
+            "validation",
+        }
+        has_initiative = bool(
+            output_is_observation
+            and
+            "iniciativa_elenco" in output_lower
+            and (_call_has_phase(call, "preparar") or facade)
+        )
         eligible_presence = any(
             marker in output_lower
             for marker in (
@@ -1798,16 +3010,20 @@ def _new_module_signals(
                 activation=activation,
                 observed_result=result,
                 materialized_result="abertura_apresentada" if presented else None,
-                effect_observed=presented,
+                effect_observed=True if presented else None,
                 confidence="alta" if has_initiative else "media",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
-        if has_initiative or any(
-            marker in output_lower
-            for marker in (
-                "dialogo_relacional",
-                "personalidade_decisoria",
-                "reconhecimento_identidade",
+        if has_initiative or (
+            output_is_observation
+            and any(
+                marker in output_lower
+                for marker in (
+                    "dialogo_relacional",
+                    "personalidade_decisoria",
+                    "reconhecimento_identidade",
+                )
             )
         ):
             _add_signal(
@@ -1820,13 +3036,17 @@ def _new_module_signals(
                 activation="decisao" if has_initiative else "consulta",
                 observed_result="continuidade_estruturada",
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         persistence_observed = bool(
-            re.search(r"fatos_sociais_persistidos\s*:\s*[1-9]", output_lower)
-            or re.search(r'"fatos_sociais_persistidos"\s*:\s*[1-9]', output_lower)
+            output_is_observation
+            and (
+                re.search(r"fatos_sociais_persistidos\s*:\s*[1-9]", output_lower)
+                or re.search(r'"fatos_sociais_persistidos"\s*:\s*[1-9]', output_lower)
+            )
         )
-        if any(
+        if output_is_observation and any(
             marker in output_lower
             for marker in (
                 "informacoes_recebidas",
@@ -1852,6 +3072,7 @@ def _new_module_signals(
                 ),
                 effect_observed=True if persistence_observed else None,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
     # RM-07: toda demanda narrativa usa contexto, inclusive quando L0 basta e
@@ -1861,17 +3082,23 @@ def _new_module_signals(
     normalized_access = Counter(
         " ".join(str(call.get("command") or "").casefold().split())
         for call in calls
-        if _core._is_routed_context(str(call.get("command") or ""))
+        if _is_routed_context_command(str(call.get("command") or ""))
         and not _core._is_help_command(str(call.get("command") or ""))
     )
     for call in calls:
         command = str(call.get("command") or "")
         lower = " ".join(command.casefold().split())
         output_lower = str(call.get("output_text") or "").casefold()
+        context_invocation = _invocation(command, {"contexto.py"})
         name = str(call.get("name") or "")
         category = str(call.get("category") or "")
-        routed = _core._is_routed_context(command) and not _core._is_help_command(command)
-        raw = _core._is_raw_read(name, command, category)
+        routed = _is_routed_context_command(command) and not _core._is_help_command(command)
+        raw = bool(
+            category == "read_search"
+            and not routed
+            and not _core._is_help_command(command)
+            and _core._looks_like_raw_read(f"{name} {command}")
+        )
         if routed or raw:
             access_calls.append(call)
             level = _access_level_from_command(command) if routed else "RAW"
@@ -1914,23 +3141,36 @@ def _new_module_signals(
                 eligibility="sim",
                 activation="consulta",
                 observed_result=observed,
-                effect_observed=False,
+                effect_observed=observed not in {
+                    "contexto_obsoleto",
+                    "acesso_cru_sem_justificativa",
+                    "leitura_redundante",
+                    "aprofundamento_sem_justificativa_observavel",
+                },
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
-        memory_context = any(
-            marker in lower
-            for marker in (
-                "contexto.py retomada",
-                "contexto.py cena",
-                "memoria_cena",
-                "sessoes.py retomada",
-                "cronica sessao status",
-                "cronica sessao iniciar",
+        context_operation = context_invocation[1] if context_invocation else []
+        memory_command = bool(
+            context_invocation
+            and {"retomada", "cena"}.intersection(context_operation)
+            or _invocation(command, {"memoria_cena.py", "sessoes.py"}) is not None
+            or {"status", "iniciar"}.intersection(
+                _session_lifecycle_operations(command)
             )
-        ) or "memoria_cena" in output_lower
+        )
+        memory_context = memory_command or bool(
+            routed and "memoria_cena" in output_lower
+        )
         if memory_context:
-            cold = "retomada" in lower or "cronica sessao" in lower
+            cold = bool(
+                "retomada" in context_operation
+                or _invocation(command, {"sessoes.py"}) is not None
+                or {"status", "iniciar"}.intersection(
+                    _session_lifecycle_operations(command)
+                )
+            )
             stale_memory = "obsolet" in output_lower
             no_transcript = bool(
                 "transcricao_lida: false" in output_lower
@@ -1955,11 +3195,18 @@ def _new_module_signals(
                     if cold and no_transcript
                     else "memoria_consultada"
                 ),
-                effect_observed=False,
+                effect_observed=(
+                    False
+                    if stale_memory
+                    else True
+                    if no_transcript
+                    else None
+                ),
                 confidence="alta" if no_transcript or "memoria_cena" in output_lower else "media",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
-        memory_declared = call.get("orchestration_phase") == "concluir" and bool(
+        memory_declared = _call_has_phase(call, "concluir") and bool(
             re.search(r'(?:^|[\s{,"])mem[oó]ria["\s]*:', command, re.I)
             or re.search(r'"memoria"\s*:', command, re.I)
         )
@@ -1991,8 +3238,9 @@ def _new_module_signals(
                     else "memoria_declarada_aguardando_commit"
                 ),
                 materialized_result="memoria_persistida" if persisted else None,
-                effect_observed=True if persisted else False,
+                effect_observed=True if persisted else None,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         knowledge_query = any(
@@ -2020,8 +3268,9 @@ def _new_module_signals(
                 eligibility="sim",
                 activation="consulta",
                 observed_result="camadas_preservadas" if separated_receipt else "camada_consultada",
-                effect_observed=False,
+                effect_observed=True if separated_receipt else None,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
     if not access_calls:
@@ -2034,16 +3283,14 @@ def _new_module_signals(
             eligibility="sim",
             activation="consulta",
             observed_result="contexto_l0_suficiente",
-            effect_observed=False,
+            effect_observed=True,
             confidence="media",
         )
 
     # RM-08: a correlação é inferida do par e do recibo emitido pelas chamadas
     # existentes. Falha transacional não é aproximada a nenhum domínio narrativo.
-    turn_calls = [call for call in calls if call.get("orchestration_phase")]
-    lifecycle_calls = [
-        call for call in calls if call.get("session_lifecycle_operation")
-    ]
+    turn_calls = _expanded_orchestration_calls(calls)
+    lifecycle_calls = _expanded_session_lifecycle_calls(calls)
     if turn_calls:
         phase_counts = Counter(call["orchestration_phase"] for call in turn_calls)
         failures = [
@@ -2060,9 +3307,33 @@ def _new_module_signals(
             for call in turn_calls
         )
         exact_pair = phase_counts == Counter({"preparar": 1, "concluir": 1})
-        successful_pair = exact_pair and all(
-            call.get("output_success") is True for call in turn_calls
+        successful_conclusions = [
+            index
+            for index, call in enumerate(turn_calls)
+            if call["orchestration_phase"] == "concluir"
+            and _successful_turn_conclusion(call)
+        ]
+        problem_indices = [
+            index
+            for index, call in enumerate(turn_calls)
+            if call.get("orchestration_failure")
+            or str((call.get("orchestration_receipt") or {}).get("state") or "").startswith(
+                "bloqueado_"
+            )
+            or "bloqueada_pendencias_mundo"
+            in str(call.get("output_text") or "").casefold()
+            or "bloqueada_recuperacao_sessao"
+            in str(call.get("output_text") or "").casefold()
+        ]
+        completed_cycle = bool(
+            phase_counts["preparar"]
+            and successful_conclusions
+            and (
+                not problem_indices
+                or successful_conclusions[-1] > problem_indices[-1]
+            )
         )
+        successful_pair = exact_pair and completed_cycle
         repair_only = set(phase_counts) <= {"registrar", "confirmar"} and all(
             call.get("output_success") is True for call in turn_calls
         )
@@ -2079,8 +3350,16 @@ def _new_module_signals(
                 ticket_ids.append(value)
             mismatched = all(ticket_ids) and ticket_ids[0] != ticket_ids[1]
 
-        if failures:
-            result = failures[0]
+        if mismatched:
+            result = "correlacao_de_ticket_divergente"
+            activation = "decisao"
+            effect = False
+        elif completed_cycle:
+            result = "ciclo_concluido" if successful_pair else "ciclo_concluido_apos_retry"
+            activation = "efeito"
+            effect = True
+        elif failures:
+            result = failures[-1]
             activation = "decisao"
             effect = False
         elif blocked:
@@ -2090,15 +3369,7 @@ def _new_module_signals(
             )
             result = "bloqueado_por_recovery" if recovery else "bloqueado_por_pendencia"
             activation = "gate_neutro"
-            effect = False
-        elif mismatched:
-            result = "correlacao_de_ticket_divergente"
-            activation = "decisao"
-            effect = False
-        elif successful_pair:
-            result = "ciclo_concluido"
-            activation = "efeito"
-            effect = True
+            effect = None
         elif repair_only:
             result = "reparo_explicito_concluido"
             activation = "efeito"
@@ -2121,6 +3392,7 @@ def _new_module_signals(
                 materialized_result="turno_commitado" if effect else None,
                 effect_observed=effect,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
         if any("--ticket" in str(call.get("command") or "").casefold() for call in turn_calls):
             _add_signal(
@@ -2175,14 +3447,23 @@ def _new_module_signals(
                 receipt.get("exactly_once") is True and receipt.get("duplicate") is not True
                 for receipt in commit_receipts
             )
+            idempotence_failed = incomplete or any(
+                receipt.get("exactly_once") is False
+                or receipt.get("duplicate") is True
+                for receipt in commit_receipts
+            )
             outcome = (
                 "commit_incompleto"
                 if incomplete
+                else "commit_duplicado_ou_sem_exatamente_uma_vez"
+                if idempotence_failed
                 else "retry_recuperado"
-                if recovered
+                if recovered and idempotent
                 else "retry_desnecessario_sem_duplicacao"
                 if replay
                 else "commit_exatamente_uma_vez"
+                if idempotent
+                else "commit_sem_prova_exatamente_uma_vez"
             )
             _add_signal(
                 signals,
@@ -2191,22 +3472,54 @@ def _new_module_signals(
                 source="output",
                 evidence="output:exactly_once_receipt",
                 eligibility="sim",
-                activation="decisao" if incomplete else "gate_neutro" if replay else "efeito",
+                activation=(
+                    "decisao"
+                    if idempotence_failed
+                    else "gate_neutro"
+                    if replay
+                    else "efeito"
+                    if idempotent
+                    else "consulta"
+                ),
                 observed_result=outcome,
                 materialized_result="idempotencia_preservada" if idempotent else None,
-                effect_observed=idempotent and not replay,
+                effect_observed=(
+                    False
+                    if idempotence_failed
+                    else True
+                    if idempotent and not replay
+                    else None
+                ),
                 confidence="alta",
+                call_ids=[
+                    str(call.get("call_id") or "")
+                    for call in turn_calls
+                    if (call.get("orchestration_receipt") or {}).get("commit_result")
+                    or (call.get("orchestration_receipt") or {}).get("incomplete") is True
+                ],
             )
 
     for call in lifecycle_calls:
         operation = str(call["session_lifecycle_operation"])
-        effect = operation != "status" and call.get("output_success") is True
         receipt = call.get("orchestration_receipt")
+        operations = _call_session_lifecycle_operations(call)
+        receipt_operation = (
+            str(receipt.get("operation") or "")
+            if isinstance(receipt, dict)
+            else ""
+        )
+        outcome_attributable = len(operations) == 1 or receipt_operation == operation
+        effect = None
+        if operation != "status" and outcome_attributable:
+            if call.get("output_success") is True:
+                effect = True
+            elif call.get("output_success") is False:
+                effect = False
         for source, evidence in (
             ("comando", f"command:session_{operation}"),
             ("output", "output:versioned_session_receipt"),
         ):
-            if source == "output" and not receipt:
+            if source == "output" and (not receipt or receipt_operation != operation):
                 continue
             _add_signal(
                 signals,
@@ -2215,11 +3528,18 @@ def _new_module_signals(
                 source=source,
                 evidence=evidence,
                 eligibility="sim",
-                activation="efeito" if effect else "consulta" if operation == "status" else "decisao",
+                activation=(
+                    "efeito"
+                    if effect is True
+                    else "decisao"
+                    if effect is False
+                    else "consulta"
+                ),
                 observed_result=f"session_{operation}",
                 materialized_result=f"session_{operation}" if effect else None,
                 effect_observed=effect,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
     if not turn_calls and not lifecycle_calls:
@@ -2338,6 +3658,7 @@ def _new_module_signals(
                 observed_result="redescoberta_assinatura",
                 effect_observed=False,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
         elif _is_rule_query(command):
             _add_signal(
@@ -2348,8 +3669,9 @@ def _new_module_signals(
                 evidence="command:rule_query",
                 activation="consulta",
                 observed_result="regra_consultada",
-                effect_observed=False,
+                effect_observed=None,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         roll = _dice_observation(call)
@@ -2373,8 +3695,9 @@ def _new_module_signals(
                         if predefined
                         else "rolagem_sem_alvo_predefinido"
                     ),
-                    effect_observed=False,
+                    effect_observed=predefined,
                     confidence="alta",
+                    call_id=str(call.get("call_id") or "") or None,
                 )
             succeeded = bool(roll["success"])
             _add_signal(
@@ -2389,6 +3712,7 @@ def _new_module_signals(
                 materialized_result="rolagem_resolvida" if succeeded else None,
                 effect_observed=succeeded,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
             if roll["output_seen"]:
                 _add_signal(
@@ -2403,6 +3727,7 @@ def _new_module_signals(
                     materialized_result="rolagem_resolvida" if succeeded else None,
                     effect_observed=succeeded,
                     confidence="alta",
+                    call_id=str(call.get("call_id") or "") or None,
                 )
 
         precommitted = "--gasto-focus" in lower or (
@@ -2423,13 +3748,14 @@ def _new_module_signals(
                 eligibility="sim",
                 activation="decisao",
                 observed_result="indeterminado",
-                effect_observed=False,
+                effect_observed=None,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         if isinstance(receipt, dict):
             replay = receipt.get("new_effect") is False
-            effect = receipt.get("new_effect") is True
+            effect = True if receipt.get("new_effect") is True else None
             if int(receipt.get("rules") or 0) or int(receipt.get("obligations") or 0):
                 _add_signal(
                     signals,
@@ -2438,11 +3764,26 @@ def _new_module_signals(
                     source="output",
                     evidence="output:rules_state_contract_receipt",
                     eligibility="sim",
-                    activation="gate_neutro" if replay else "efeito" if effect else "decisao",
-                    observed_result="replay_sem_duplicacao" if replay else "parametros_predefinidos",
-                    materialized_result="contrato_mecanico_validado" if effect else None,
-                    effect_observed=effect,
+                    activation=(
+                        "gate_neutro"
+                        if replay
+                        else "efeito"
+                        if effect is True
+                        else "consulta"
+                    ),
+                    observed_result=(
+                        "replay_sem_duplicacao"
+                        if replay
+                        else "parametros_predefinidos"
+                        if effect is True
+                        else "contrato_sem_prova_de_efeito"
+                    ),
+                    materialized_result=(
+                        "contrato_mecanico_validado" if effect is True else None
+                    ),
+                    effect_observed=None if replay else effect,
                     confidence="alta",
+                    call_id=str(call.get("call_id") or "") or None,
                 )
             if int(receipt.get("d20_obligations") or 0):
                 resolved = (
@@ -2459,8 +3800,9 @@ def _new_module_signals(
                     activation="gate_neutro" if replay else "efeito" if resolved else "decisao",
                     observed_result="replay_sem_duplicacao" if replay else "rolagem_resolvida" if resolved else "indeterminado",
                     materialized_result="rolagem_resolvida" if resolved and not replay else None,
-                    effect_observed=resolved and not replay,
+                    effect_observed=None if replay else resolved,
                     confidence="alta",
+                    call_id=str(call.get("call_id") or "") or None,
                 )
             if int(receipt.get("relevant_deltas") or 0) or int(
                 receipt.get("resource_obligations") or 0
@@ -2472,15 +3814,32 @@ def _new_module_signals(
                     source="output",
                     evidence="output:rules_state_commit_receipt",
                     eligibility="sim",
-                    activation="gate_neutro" if replay else "efeito" if effect else "decisao",
-                    observed_result="replay_sem_duplicacao" if replay else "estado_commitado",
-                    materialized_result="estado_commitado" if effect else None,
-                    effect_observed=effect,
+                    activation=(
+                        "gate_neutro"
+                        if replay
+                        else "efeito"
+                        if effect is True
+                        else "consulta"
+                    ),
+                    observed_result=(
+                        "replay_sem_duplicacao"
+                        if replay
+                        else "estado_commitado"
+                        if effect is True
+                        else "estado_sem_prova_de_efeito"
+                    ),
+                    materialized_result="estado_commitado" if effect is True else None,
+                    effect_observed=None if replay else effect,
                     confidence="alta",
+                    call_id=str(call.get("call_id") or "") or None,
                 )
         elif categories:
             committed = (
-                call.get("orchestration_phase") in {"concluir", "registrar"}
+                bool(
+                    {"concluir", "registrar"}.intersection(
+                        _call_orchestration_phases(call)
+                    )
+                )
                 and call.get("output_success") is True
             )
             _add_signal(
@@ -2493,8 +3852,11 @@ def _new_module_signals(
                 activation="efeito" if committed else "decisao",
                 observed_result="estado_commitado" if committed else "indeterminado",
                 materialized_result="estado_commitado" if committed else None,
-                effect_observed=committed,
+                # A menção de um delta antes do writer é uma intenção, não uma
+                # falha. Só o concluir/registrar bem-sucedido prova o efeito.
+                effect_observed=True if committed else None,
                 confidence="media",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
         if any(
@@ -2520,16 +3882,16 @@ def _new_module_signals(
                 observed_result="guardrail_bloqueou",
                 effect_observed=False,
                 confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
             )
 
-    # Gate negativo é atividade real, mas jamais efeito material.
+    # A flag é uma declaração obrigatória, não a verdade de elegibilidade. O
+    # recibo 2.0.0/4.0.0 é independente da classificação escolhida no comando e
+    # prevalece quando consegue provar os predicados duros.
     for call in calls:
         decision = call.get("sidequest_decision")
         if decision not in {"oportunidade", "sem_oportunidade", "ausente", "conflito"}:
             continue
-        eligibility = (
-            "sim" if decision == "oportunidade" else "nao" if decision == "sem_oportunidade" else "indeterminada"
-        )
         activation = (
             "decisao"
             if decision == "oportunidade"
@@ -2543,12 +3905,143 @@ def _new_module_signals(
             "opportunity_gate",
             source="comando",
             evidence=f"command:sidequest_gate_{decision}",
-            eligibility=eligibility,
+            eligibility="indeterminada",
             activation=activation,
-            observed_result=decision,
-            effect_observed=False,
+            observed_result=f"declaracao_{decision}",
+            # Decidir o gate não é, por si, efeito autoral. Um efeito só existe
+            # quando autoria ou oferta materializa resultado observável.
+            effect_observed=None,
             confidence="alta",
+            call_id=str(call.get("call_id") or "") or None,
         )
+        assessment = call.get("opportunity_assessment")
+        if not isinstance(assessment, dict):
+            continue
+        expected = assessment.get("expected_result")
+        effective = assessment.get("effective_decision")
+        eligibility = (
+            "sim"
+            if expected == "elegivel"
+            else "nao"
+            if expected == "nao_elegivel"
+            else "indeterminada"
+        )
+        _add_signal(
+            signals,
+            "sidequest_authoring",
+            "opportunity_gate",
+            source="output",
+            evidence="output:objective_sidequest_opportunity_assessment",
+            eligibility=eligibility,
+            activation="decisao" if effective == "oportunidade" else "gate_neutro",
+            observed_result=str(assessment.get("classification") or "indeterminado"),
+            effect_observed=None,
+            confidence="alta",
+            call_id=str(call.get("call_id") or "") or None,
+        )
+        gate_signal = signals[("sidequest_authoring", "opportunity_gate")]
+        gate_signal["observed_result"] = str(
+            assessment.get("classification") or "indeterminado"
+        )
+
+    # A integração canônica 2.0 é observada pelo recibo por missão, inclusive
+    # quando a operação ocorre dentro do lifecycle unificado. Heurística de
+    # comando permanece apenas como conferência de completude.
+    for call in calls:
+        canonical_receipts = [
+            item
+            for item in call.get("canonical_integration_assessments") or []
+            if isinstance(item, dict)
+        ]
+        complete_canonical_receipts = [
+            item
+            for item in canonical_receipts
+            if _canonical_integration_receipt_complete(item)
+        ]
+        expected_receipts = _canonical_integration_expected_receipts(call)
+        missing_receipts = max(0, expected_receipts - len(canonical_receipts))
+        incomplete_receipts = len(canonical_receipts) - len(complete_canonical_receipts)
+        for capability_id in {
+            str(item.get("capability_id") or "sidequest_to_canon_bridge")
+            for item in complete_canonical_receipts
+        }:
+            capability_receipts = [
+                item
+                for item in complete_canonical_receipts
+                if str(item.get("capability_id") or "sidequest_to_canon_bridge")
+                == capability_id
+            ]
+            scoreable = [
+                item
+                for item in capability_receipts
+                if item.get("included_in_score") is True
+            ]
+            classifications = {
+                str(item.get("classification") or "indeterminado")
+                for item in scoreable
+            }
+            eligible = any(
+                item.get("classification")
+                in {"verdadeiro_positivo", "falso_negativo"}
+                for item in scoreable
+            )
+            active = bool(
+                classifications.intersection(
+                    {"verdadeiro_positivo", "falso_positivo"}
+                )
+            )
+            incorrect = bool(
+                classifications.intersection(
+                    {"falso_positivo", "falso_negativo"}
+                )
+            )
+            _add_signal(
+                signals,
+                "canonical_quest_integration",
+                capability_id,
+                source="output",
+                evidence="output:canonical_integration_assessment_receipt",
+                eligibility="sim" if eligible else "nao",
+                activation=(
+                    "efeito"
+                    if active
+                    else "ausente"
+                    if scoreable
+                    else "consulta"
+                ),
+                observed_result=(
+                    "integracao_incorreta"
+                    if incorrect
+                    else "integracao_avaliada"
+                ),
+                effect_observed=(False if incorrect else True if scoreable else None),
+                confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
+            )
+        if missing_receipts or incomplete_receipts:
+            invocations = _command_invocations(str(call.get("command") or ""))
+            missing_capability = (
+                "canon_to_quest_opportunity"
+                if any(
+                    program == "canonical_quest_integration.py"
+                    and args[:1] == ["oferecer"]
+                    for program, args in invocations
+                )
+                else "sidequest_to_canon_bridge"
+            )
+            _add_signal(
+                signals,
+                "canonical_quest_integration",
+                missing_capability,
+                source="output",
+                evidence="output:canonical_integration_receipt_missing",
+                eligibility="indeterminada",
+                activation="ausente",
+                observed_result="falha_instrumentacao",
+                effect_observed=False,
+                confidence="alta",
+                call_id=str(call.get("call_id") or "") or None,
+            )
 
 
 def _allocate_integer(value: int, owners: list[str]) -> dict[str, int]:
@@ -2937,9 +4430,21 @@ def analyze(
         "violations": all_summary["sidequest_decision_violations"],
         "coverage": all_summary["sidequest_decision_coverage"],
         "decisions": all_summary["sidequest_opportunity_decisions"],
+        "objective_assessment": all_summary["sidequest_opportunity_assessment"],
         "regra": (
-            "todo cronica preparar deve declarar exatamente se existe nova oportunidade; "
-            "sidequests aceitas são reavaliadas independentemente pela Task48"
+            "todo cronica preparar declara se percebeu âncora nova, mas a declaração "
+            "não prova elegibilidade; somente recibo objetivo ou adjudicação entra na "
+            "matriz de confusão, e casos indeterminados ficam fora da nota"
+        ),
+    }
+    report["canonical_quest_integration_gate"] = {
+        **all_summary["canonical_quest_integration_assessment"],
+        "ok": all_summary["canonical_quest_integration_assessment"][
+            "coverage_complete"
+        ],
+        "regra": (
+            "toda atividade observável de sidequest exige recibo canônico por missão; "
+            "ausência de recibo é falha de instrumentação e nunca produz N/D"
         ),
     }
     report["nv14_liveness_boundary"] = {
@@ -2950,9 +4455,12 @@ def analyze(
             "ausência de consulta é medida separadamente e nunca conta como dia calmo"
         ),
     }
+    coverage_gates = _module_coverage_gates(ordered)
+    report["module_coverage_gates"] = coverage_gates
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
     ledger = _build_modular_ledger(report, narration, catalog, ordered)
+    ledger["module_coverage_gates"] = copy.deepcopy(coverage_gates)
     if modular_adjudications is not None:
         ledger = apply_modular_adjudications(ledger, modular_adjudications)
     report["modular_ledger_v2"] = ledger
@@ -2961,7 +4469,9 @@ def analyze(
         for label in (
             "preferred cronica orchestration phases inferred from command lines",
             "narrative-system attribution inferred from command and tool-output markers",
-            "Task47 sidequest-opportunity decision inferred from cronica preparar flags",
+            "Task47 declaration inferred from cronica preparar flags; objective sidequest eligibility comes from a versioned receipt or adjudication",
+            "canonical quest integration comes from per-mission receipts; sidequest activity without coverage is an instrumentation failure, never N/D",
+            "eleven module facades use schema-1 fail-closed coverage receipts; expected activity without a complete receipt is an instrumentation failure and N/D requires zero activity",
             "NV-14 justified calm and missing-module coverage inferred from structured liveness output",
             "modules-v2 capability ledger inferred from command, output, ticket and response signals",
             "modules-v2 parent cost allocated once per module; capability cost is exposure only",

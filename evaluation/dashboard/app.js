@@ -55,11 +55,11 @@
   }
 
   function scoreColor(score) {
-    if (score === null) return "#9aa29f";
-    if (score >= 80) return "#2f735d";
-    if (score >= 65) return "#c99032";
-    if (score >= 50) return "#c06c3e";
-    return "#a3483e";
+    if (score === null) return "#899892";
+    if (score >= 80) return "#6bc49f";
+    if (score >= 65) return "#e0ae52";
+    if (score >= 50) return "#ec9962";
+    return "#e37c72";
   }
 
   function formatScore(value) {
@@ -414,7 +414,7 @@
       line.setAttribute("x2", width - padding.right);
       line.setAttribute("y1", y(tick));
       line.setAttribute("y2", y(tick));
-      line.setAttribute("stroke", tick === 0 ? "#c9c4b8" : "#e5e0d5");
+      line.setAttribute("stroke", tick === 0 ? "var(--line-strong)" : "var(--line)");
       line.setAttribute("stroke-dasharray", tick === 0 ? "0" : "4 5");
       svg.append(line);
       const label = document.createElementNS(ns, "text");
@@ -422,7 +422,7 @@
       label.setAttribute("y", y(tick) + 4);
       label.setAttribute("text-anchor", "end");
       label.setAttribute("font-size", "10");
-      label.setAttribute("fill", "#7b8581");
+      label.setAttribute("fill", "var(--muted)");
       label.textContent = String(tick);
       svg.append(label);
     }
@@ -430,7 +430,7 @@
       const path = document.createElementNS(ns, "polyline");
       path.setAttribute("points", values.map((item, index) => `${x(index)},${y(item.value)}`).join(" "));
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "#235d54");
+      path.setAttribute("stroke", "var(--forest-2)");
       path.setAttribute("stroke-width", "3");
       path.setAttribute("stroke-linecap", "round");
       path.setAttribute("stroke-linejoin", "round");
@@ -442,7 +442,7 @@
       circle.setAttribute("cy", y(item.value));
       circle.setAttribute("r", item.id === state.sessionEntry.sessao_id ? "7" : "5");
       circle.setAttribute("fill", scoreColor(item.value));
-      circle.setAttribute("stroke", "#fffdf8");
+      circle.setAttribute("stroke", "var(--surface)");
       circle.setAttribute("stroke-width", "3");
       svg.append(circle);
       const label = document.createElementNS(ns, "text");
@@ -450,7 +450,7 @@
       label.setAttribute("y", height - 10);
       label.setAttribute("text-anchor", "middle");
       label.setAttribute("font-size", "10");
-      label.setAttribute("fill", "#64716d");
+      label.setAttribute("fill", "var(--muted)");
       label.textContent = `S${item.id}`;
       svg.append(label);
       const valueLabel = document.createElementNS(ns, "text");
@@ -459,7 +459,7 @@
       valueLabel.setAttribute("text-anchor", "middle");
       valueLabel.setAttribute("font-size", "12");
       valueLabel.setAttribute("font-weight", "700");
-      valueLabel.setAttribute("fill", "#172725");
+      valueLabel.setAttribute("fill", "var(--ink)");
       valueLabel.textContent = formatScore(item.value);
       svg.append(valueLabel);
     });
@@ -498,7 +498,7 @@
 
   function activationClass(value) {
     if (value === "ativou a contento") return "ok";
-    if (value === "sobreativou" || value === "subativou") return "over";
+    if (["sobreativou", "subativou", "falha de instrumentação"].includes(value)) return "over";
     return "";
   }
 
@@ -524,13 +524,27 @@
     $("#moduleEmpty").hidden = modules.length > 0;
     for (const module of modules) {
       const moduleScore = number(previewModuleScore(module));
+      const instrumentationFailure = module.avaliacao_ativacao === "falha de instrumentação";
+      const notApplicable = module.aplicabilidade_avaliacao === "nao_aplicavel";
+      const indeterminate = module.aplicabilidade_avaliacao === "indeterminado";
+      const scoreText = instrumentationFailure ? "ERRO" : (notApplicable || indeterminate) ? "—" : formatScore(moduleScore);
+      const scoreState = instrumentationFailure ? "telemetria incompleta" : notApplicable ? "não aplicável" : indeterminate ? "indeterminado" : scoreBand(moduleScore);
       const card = create("article", "module-card");
-      card.style.setProperty("--module-color", scoreColor(moduleScore));
+      card.style.setProperty("--module-color", instrumentationFailure ? "#e37c72" : scoreColor(moduleScore));
       const header = create("div", "module-card-header");
       const name = create("div");
-      name.append(create("h3", "", friendlyModuleName(module.modulo)), create("span", "module-id", module.modulo));
+      const versionRow = create("div", "module-version-row");
+      versionRow.append(
+        create("span", "module-version", `Módulo v${module.versao_implementacao || "N/D"}`),
+        create("span", "evaluation-version", `Avaliação v${module.versao_avaliacao || "N/D"}`),
+      );
+      name.append(
+        create("h3", "", friendlyModuleName(module.modulo)),
+        create("span", "module-id", module.modulo),
+        versionRow,
+      );
       const scoreBox = create("div", "module-score");
-      scoreBox.append(create("strong", "", formatScore(moduleScore)), create("small", "", scoreBand(moduleScore)));
+      scoreBox.append(create("strong", "", scoreText), create("small", "", scoreState));
       header.append(name, scoreBox);
       const description = create("p", "module-description", module.responsabilidade);
       const meta = create("div", "module-meta");
@@ -539,8 +553,40 @@
         create("span", "pill", `Prioridade #${module.prioridade_rank ?? "N/D"}`),
         create("span", "pill", `Confiança ${module.confianca_amostra_sessao}`),
       );
-      if (module.versao_implementacao) meta.append(create("span", "pill", `Impl. ${module.versao_implementacao}`));
-      if (module.versao_avaliacao) meta.append(create("span", "pill", `Régua ${module.versao_avaliacao}`));
+      const gateCompliance = number(module.gate_oportunidade_conformidade_pct);
+      if (gateCompliance !== null) {
+        meta.append(create("span", "pill ok", `Declaração ${formatPercent(gateCompliance, true)}`));
+      }
+      const opportunityPrecision = number(module.precisao_oportunidade);
+      const opportunityCoverage = number(module.cobertura_oportunidade);
+      const opportunityBalanced = number(module.acuracia_balanceada_oportunidade);
+      if (opportunityPrecision !== null) {
+        meta.append(create("span", "pill", `Precisão ${formatPercent(opportunityPrecision, true)}`));
+      }
+      if (opportunityCoverage !== null) {
+        meta.append(create("span", "pill", `Cobertura ${formatPercent(opportunityCoverage, true)}`));
+      }
+      if (opportunityBalanced !== null) {
+        meta.append(create("span", "pill", `Balanceada ${formatPercent(opportunityBalanced, true)}`));
+      }
+      const canonicalBalanced = number(module.acuracia_balanceada_integracao_canonica);
+      if (canonicalBalanced !== null) {
+        meta.append(create("span", "pill", `Integração ${formatPercent(canonicalBalanced, true)}`));
+      }
+      if (module.cobertura_integracao_completa !== null && module.cobertura_integracao_completa !== undefined) {
+        meta.append(create(
+          "span",
+          `pill ${module.cobertura_integracao_completa ? "ok" : "over"}`,
+          module.cobertura_integracao_completa ? "Cobertura completa" : "Cobertura incompleta",
+        ));
+      }
+      if (module.cobertura_avaliativa_completa !== null && module.cobertura_avaliativa_completa !== undefined) {
+        meta.append(create(
+          "span",
+          `pill ${module.cobertura_avaliativa_completa ? "ok" : "over"}`,
+          module.cobertura_avaliativa_completa ? "Cobertura completa" : "Cobertura incompleta",
+        ));
+      }
       const bar = create("div", "bar");
       const fill = create("span");
       fill.style.setProperty("--width", `${clamp(moduleScore || 0)}%`);
@@ -549,7 +595,7 @@
       const stats = create("div", "module-stats");
       const values = [
         ["Turnos", INTEGER.format(module.turnos_detectados || 0)],
-        ["Chamadas", INTEGER.format(module.chamadas_detectadas || 0)],
+        ["Chamadas observadas", INTEGER.format(module.chamadas_detectadas || 0)],
         ["Custo", formatTokens(module.tokens_totais_atribuidos_fracionados)],
         ["Parcela", formatPercent(module.participacao_tokens_fracionados_pct, true)],
       ];
@@ -561,6 +607,55 @@
       const details = document.createElement("details");
       details.append(create("summary", "", "Diagnóstico e evidências"));
       details.append(create("p", "", module.principais_problemas_de_ativacao || "Nenhum problema específico registrado."));
+      if (instrumentationFailure) {
+        details.append(create("p", "", "A nota foi bloqueada: houve atividade avaliativa esperada, mas o recibo obrigatório estava ausente, incompleto ou duplicado. Isso nunca é convertido em N/D."));
+      } else if (notApplicable) {
+        details.append(create("p", "", "O módulo respondeu com recibo completo e declarou explicitamente que nenhuma de suas operações era aplicável nesta sessão."));
+      } else if (indeterminate) {
+        details.append(create("p", "", "O módulo foi avaliado, mas a evidência não permite decidir aplicabilidade ou desempenho sem fabricar uma nota."));
+      } else if (["evidencia_insuficiente", "sem_evidencia"].includes(module.aplicabilidade_avaliacao)) {
+        details.append(create("p", "", "A nota permanece N/D: confiança do detector e latência exposta não substituem evidência de calibração ou de efeito."));
+      }
+      if (module.unidades_avaliativas_obrigatorias !== null && module.unidades_avaliativas_obrigatorias !== undefined) {
+        details.append(create(
+          "p",
+          "",
+          `Cobertura fail-closed: ${INTEGER.format(module.unidades_avaliativas_obrigatorias || 0)} atividade(s) esperada(s), ${INTEGER.format(module.recibos_cobertura_completos || 0)} recibo(s) completo(s), ${INTEGER.format(module.recibos_cobertura_ausentes || 0)} ausente(s), ${INTEGER.format(module.recibos_cobertura_incompletos || 0)} incompleto(s) e ${INTEGER.format(module.recibos_cobertura_duplicados || 0)} duplicado(s). Aplicáveis: ${INTEGER.format(module.unidades_avaliativas_aplicaveis || 0)}; não aplicáveis: ${INTEGER.format(module.unidades_avaliativas_nao_aplicaveis || 0)}; indeterminadas: ${INTEGER.format(module.unidades_avaliativas_indeterminadas || 0)}.`,
+        ));
+      }
+      if ((module.dimensoes_semanticas_avaliadas || 0) > 0) {
+        details.append(create(
+          "p",
+          "",
+          `Auditoria semântica: ${INTEGER.format(module.dimensoes_semanticas_avaliadas)} dimensão(ões) avaliadas; ${INTEGER.format(module.dimensoes_semanticas_inadequadas || 0)} inadequada(s).`,
+        ));
+      }
+      if (module.gate_oportunidade_preparos !== null && module.gate_oportunidade_preparos !== undefined) {
+        details.append(create(
+          "p",
+          "",
+          `Declaração do gate: ${INTEGER.format(module.gate_oportunidade_decisoes_validas || 0)}/${INTEGER.format(module.gate_oportunidade_preparos || 0)} preparos declarados; ${INTEGER.format(module.gate_oportunidade_violacoes || 0)} violação(ões) estruturais. Isso mede preenchimento, não acerto.`,
+        ));
+      }
+      if (module.avaliacoes_oportunidade_recebidas !== null && module.avaliacoes_oportunidade_recebidas !== undefined) {
+        details.append(create(
+          "p",
+          "",
+          `Elegibilidade objetiva: ${INTEGER.format(module.avaliacoes_oportunidade_pontuaveis || 0)} caso(s) pontuável(is), ${INTEGER.format(module.avaliacoes_oportunidade_indeterminadas || 0)} indeterminado(s). Matriz: VP ${INTEGER.format(module.verdadeiros_positivos || 0)}, VN ${INTEGER.format(module.verdadeiros_negativos || 0)}, FP ${INTEGER.format(module.falsos_positivos || 0)}, FN ${INTEGER.format(module.falsos_negativos || 0)}.`,
+        ));
+      }
+      if (module.avaliacoes_integracao_recebidas !== null && module.avaliacoes_integracao_recebidas !== undefined) {
+        details.append(create(
+          "p",
+          "",
+          `Integração canônica: ${INTEGER.format(module.unidades_sidequest_observadas || 0)} atividade(s), ${INTEGER.format(module.avaliacoes_integracao_recebidas || 0)} recibo(s) completo(s), ${INTEGER.format(module.recibos_integracao_ausentes || 0)} ausente(s), ${INTEGER.format(module.recibos_integracao_incompletos || 0)} incompleto(s) e ${INTEGER.format(module.recibos_integracao_duplicados || 0)} replay(s). Casos pontuáveis únicos: ${INTEGER.format(module.avaliacoes_integracao_pontuaveis || 0)}; não pontuáveis: ${INTEGER.format(module.avaliacoes_integracao_nao_pontuaveis || 0)}. Matriz: VP ${INTEGER.format(module.verdadeiros_positivos || 0)}, VN ${INTEGER.format(module.verdadeiros_negativos || 0)}, FP ${INTEGER.format(module.falsos_positivos || 0)}, FN ${INTEGER.format(module.falsos_negativos || 0)}.`,
+        ));
+      }
+      if (module.custo_exposto_participa_prioridade === false) {
+        details.append(create("p", "", module.modulo === "sidequest_authoring"
+          ? "O custo exibido é exposição não causal e não participa da prioridade enquanto a autoria não for exercitada."
+          : "O custo exibido é exposição não causal e não participa da prioridade quando nenhuma operação do módulo era aplicável."));
+      }
       if (module.justificativa_prioridade) details.append(create("p", "", module.justificativa_prioridade));
       const release = state.releases.find((item) => item.module_id === module.modulo
         && item.implementation_version === module.versao_implementacao

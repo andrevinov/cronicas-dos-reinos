@@ -1,0 +1,136 @@
+schema_historico_npc: 2
+id: darran_vell
+origem: npc-stub-automatico
+eventos_pos_migracao:
+- tipo: identidade_persistente_criada
+  cena_id: s022-ren-aborda-darran-latrina
+  nome: Darran Vell
+  classificacao_inicial: persistente_sem_agenda
+- transacao: s022-6d66a96a1727c0c3
+  sessao: 22
+  resumo: Ren venceu a iniciativa, nocauteou Darran com um único golpe não letal e não gastou Focus em Ataque Atordoante.
+    Gastou 1 Focus em Passo do Vento, carregou Darran por dois saltos e rompeu o cerco imediato, mas o porto está
+    sendo alertado e a fuga ainda não terminou.
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: inconsciente e estável após nocaute não letal; sendo carregado por Ren durante a fuga pelos telhados
+      do porto
+  - alvo: npc:darran_vell
+    caminho: local
+    op: set
+    valor: com Ren, sobre uma cobertura baixa além da casa de pesagem no porto
+  - alvo: npc:darran_vell
+    caminho: estatisticas
+    op: set
+    valor:
+      ca: 10
+      condicao: inconsciente e estável
+      equivalente_mecanico: Commoner do D&D 5.5e
+      pv_atuais: 0
+      pv_maximos: 4
+- transacao: s022-3952ecb9ff86b0d4
+  sessao: 22
+  resumo: Ren gastou 1 Focus e cruzou com Darran um vão largo entre telhados, rompendo o caminho imediato dos perseguidores.
+    Uma interrupção na rua comprou alguns segundos, mas Ren falhou em ocultar seu rumo; às 20h30 ele alcançou um
+    sótão temporário fora do porto, enquanto a busca se organiza na direção correta. Darran permanece inconsciente,
+    estável e com 0 PV; primeiros socorros confirmaram sua estabilidade, mas não o despertaram.
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: npc.local
+    op: set
+    valor: com Ren, inconsciente, no sótão vazio de uma antiga oficina além do porto
+  - alvo: npc:darran_vell
+    caminho: npc.status
+    op: set
+    valor: inconsciente e estável após nocaute não letal; não desperta apenas com primeiros socorros
+- transacao: s022-nv04-c39dd2fd035845f1a9c4141f4dc0dc3f
+  sessao: 22
+  resumo: 'A correção da regra de nocaute foi aplicada: Darran estava com 1/4 PV e Inconsciente. Ren obteve 11 contra
+    CD 10 em Medicina e o acordou às 20h31. Darran reconhece a figura encapuzada que o atacou, está assustado e
+    pergunta o que ela quer; a busca continua se aproximando do quarteirão.'
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: estatisticas.pv_atuais
+    op: set
+    valor: 1
+  - alvo: npc:darran_vell
+    caminho: estatisticas.condicao
+    op: set
+    valor: nenhuma; consciente e ferido
+  - alvo: npc:darran_vell
+    caminho: local
+    op: set
+    valor: com Ren, consciente, no sótão vazio de uma antiga oficina além do porto
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente e ferido após despertar com os primeiros socorros de Ren; assustado diante da figura encapuzada
+      que o nocauteou e levou do porto
+- transacao: s022-nv04-bad831e330ff477902e7ff27ed38f4bf
+  sessao: 22
+  resumo: Ren disse a Darran que talvez esteja salvando sua vida, afirmou não ser inimigo e pediu apenas respostas.
+    Darran rejeitou a culpa pelo sequestro e ofereceu responder se Ren o libertar depois. Intuição 9 contra CD 10
+    falhou; Ren não sabe se a proposta é sincera ou apenas uma forma de ganhar tempo enquanto a busca se aproxima.
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente, ferido e sob controle de Ren no sótão; assustado e ressentido, ofereceu responder às perguntas
+      se fosse libertado depois
+- transacao: s022-nv04-852170048d4ec46e6b983d02ecf76eec
+  sessao: 22
+  resumo: 'Persuasão 20 contra CD 12 levou Darran a confessar que recebeu duas peças de ouro, sem registro, para
+    aplicar a contramarca. Ele explicou que as cópias não precisam ser falsificadas: autorizações antigas e autênticas
+    podem ser apresentadas fora do contexto para legitimar uma carga diferente. Darran agora demonstra medo concreto
+    das pessoas por trás do pedido e pediu para não ser devolvido à Mesa de Cargas. A cadeia já pode ser levada
+    a Tomas, mas ainda não foi entregue.'
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente, ferido e agora cooperando por medo das pessoas por trás do pedido; confessou pagamento indevido
+      e pediu para não retornar à Mesa de Cargas
+- transacao: s022-3943ed9f60f6aa3a
+  sessao: 22
+  resumo: Darran aceitou acompanhar Ren em silêncio. Furtividade 16 contra CD 15 permitiu que saíssem por terra
+    do setor imediato da busca sem contato com a ronda. Às 20h50, Ren deu sua capa a Darran e usou o Broche do Semblante
+    Humilde, assumindo aparência comum até 21h50; o uso ficou indisponível até o próximo amanhecer. Às 21h00, ambos
+    alcançaram um reservado isolado numa casa de sopas longe do porto e podem continuar a conversa.
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: local
+    op: set
+    valor: com Ren, no último reservado de uma casa de sopas longe do porto
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente, ferido e cooperando; deixou o setor de busca por vontade própria com Ren, está coberto pela
+      capa dele e disposto a continuar respondendo
+- transacao: s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+  sessao: 22
+  resumo: Ren contou a Darran que persegue um criminoso poderoso de Kozakura cuja rede estaria usando o porto para
+    cargas ilícitas, falsificações e mortes. Darran não confirmou uma chegada numerosa de kozakuranos, mas relatou
+    três homens de fala oriental que, em noites diferentes, perguntaram por cargas sem reclamante, armazéns e trocas
+    de turno sem apresentar despacho; um deles era o homem do casaco cinza. Intuição 17 contra CD 12 mostrou que
+    Darran ainda não aceita toda a explicação como fato, porém ac…
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente, ferido e cooperando; teme uma operação organizada ligada ao porto e procura demonstrar utilidade
+      para obter proteção de Ren
+- transacao: s022-nv04-c91f123a4cca516706a0661bac18d700
+  sessao: 22
+  resumo: Ren informou a Darran que pretende capturar o homem do casaco cinza e pediu um documento para impedir
+    a retirada das cópias. A janela conhecida de retirada já está em curso, das 20h às 22h. Darran explicou que
+    não pode revogar as autorizações antigas, mas pode assinar uma retratação da contramarca, com o código da ronda,
+    os três despachos e a confissão do pagamento; isso daria a Tomas fundamento para reter as cópias se o documento
+    chegar antes da entrega. Darran pode escrever sem voltar à Mesa,…
+  deltas:
+  - alvo: npc:darran_vell
+    caminho: status
+    op: set
+    valor: consciente, ferido e cooperando; pode redigir fora da Mesa uma retratação assinada da contramarca, mas
+      condiciona a confissão a não ser abandonado sem proteção

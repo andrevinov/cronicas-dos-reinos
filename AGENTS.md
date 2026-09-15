@@ -2,7 +2,7 @@
 
 ## 1. Fonte de verdade
 
-Memória canônica: `campanha.yaml`, ficha/estado e fontes autorizadas. Português/UTF-8. `runtime/contexto.yaml` e `runtime/cena.yaml`: derivados; pendências prevalecem. Estado/tempo consolidados; demais memórias fragmentadas; transcrições append-only.
+Cânone: `campanha.yaml`, ficha/estado, fontes autorizadas. Português/UTF-8. `runtime/contexto.yaml`/`runtime/cena.yaml` derivados; pendências prevalecem. Estado/tempo consolidados; demais memórias fragmentadas; transcrições append-only.
 
 ## 2. Invariantes inegociáveis
 
@@ -55,29 +55,31 @@ Texto normal = **ON**; bloco inteiro `[...]` = **OFF**; `{...}` em ON = **RECALL
 
 Fluxo: `entrada → ON/OFF/RECALL → cronica preparar → rolagens → narração → cronica concluir → RODAPE_CANONICO → fim`. Interações: protocolo de sessão.
 
-**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. Use `ticket:` completo, nunca `ticket_id`; a saída de `preparar` é autoritativa: **não chamar `--help`, `sed`/`rg` ou código-fonte para redescobrir sintaxe**.
+**Porta operacional preferencial.** `poetry run cronica preparar --cena-id <id-estavel> ...` → narrar → `poetry run cronica concluir --ticket '<campo ticket>'`. `ticket:` completo, nunca `ticket_id`; saída de `preparar` autoritativa: **não redescobrir sintaxe via `--help`, `sed`/`rg` ou fonte**.
 
 **Contrato de oportunidade e progresso:** todo `cronica preparar` usa exatamente `--sem-oportunidade-sidequest` ou `--oportunidade-sidequest` + origem/tipo/âncora. Omissão/conflito falham. Negativa = sem âncora nova; causa vencida/alcançável continua; zero ativas só prioriza causa válida. Máx. 1 nova oportunidade/data+período, 2 ativas; só oferta narrada materializa.
 
 **Turno comum sem gatilho:** `cronica preparar --cena-id <id-estavel> --sem-oportunidade-sidequest`; sidequest aceita é anexada pelo lifecycle. **Não inventar tag/local/NPC.** `--contexto-tag` (`--tag` alias): `local:`, `assunto:`, `acao:`, `pessoa:` ou `risco:`. Gatilho local com `--acao/--tier/--periculosidade` só ao **entrar/explorar**. Trânsito: `--transito-urbano ravens_bluff`, sem local/NPC/tag. **Permanência longa:** `--permanencia-local`; herda o local consolidado e `--local` só pode confirmá-lo. Não combinar com trânsito, NPC/tag ou gatilho de entrada.
 
-**Iniciativa do elenco:** `--participante <id>` seleciona memória/elenco prospectivo; não prova por si presença física no mesmo preparo. `--interlocutor <id>` é o subconjunto que recebe decisão de iniciativa, mas só fica elegível com presença já consolidada no elenco corrente ou canal de contato validado. Interlocutor não cria presença, encontro ou side quest. No máximo uma abertura por janela; silêncio/adiamento/inelegibilidade ficam explícitos.
+**Iniciativa do elenco:** `--participante <id>` seleciona memória/elenco prospectivo; não prova por si presença física no mesmo preparo. `--interlocutor <id>` recebe decisão social só com presença consolidada ou canal validado. Interlocutor não cria presença, encontro ou side quest. Máx. uma abertura/janela; silêncio/adiamento/inelegibilidade explícitos.
+
+**NPC original novo:** nomear só via `npc_continuity_and_social_behavior.py gerar-nome`: `nomes_npcs_forgotten_realms.csv` obrigatório por gênero/raça/origem, reserva estável, sem reuso padrão. Não cria NPC/parentesco nem renomeia cânone. Ver `docs/agente/narrativa/modulo-continuidade-npc-v2.md`.
 
 **Barreira de pendências vive dentro de `cronica preparar`.** Não leia marcador antes. Se `fase: bloqueada_pendencias_mundo`, **não narrar**: `world_boundary_resolution.py preparar` → avaliar → `world_boundary_resolution.py aplicar`; materializar só `requer_resolucao` e repetir `cronica preparar`. Evento canônico nunca é no-op. Reparo: `endpoints.py pendencias`; `tipo: reavaliar_agente_leve` → `agentes_leves.py concluir-noop <id>`; planos → eventos explícitos no lote, nunca no-op; demais → `barreira_mundo.py concluir <id>`. O writer repete a trava.
 
 **Planos/contatos/operações:** `plano:<id>` no concluir; `planos` no lote. Ver `docs/agente/mundo/compromissos-estruturados.md`.
 
-**Cena reativa:** `preparar` recebe só gatilhos reais e é read-only; `concluir` revalida/confirma/registra. Ticket neutro não confirma; preparo obsoleto exige outro. **Reserva de permanência:** `--permanencia-local` reserva sorteios não-canônicos e um recibo por `local+data+período` no primeiro preparo. Não cria fato; impede reroll em retry/novo `scene_id`.
+**Cena reativa:** `preparar`: gatilhos reais, read-only; `concluir`: revalida/confirma/registra. Ticket neutro não confirma; obsoleto exige novo preparo. **Reserva:** `--permanencia-local`: sorteios não canônicos+recibo por `local+data+período` no primeiro preparo; não cria fato e impede reroll em retry/novo `scene_id`.
 
 Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` são reparo. Writer legado usa stdin (`turno.py registrar <<'JSON'`); **não criar** `.turno-temporario.json`.
 
 **Direção canônica é destino, nunca ação.** `endpoints.py direcao <id>`; `direcoes.py avancar` exige fonte canônica, evidência literal e nota. Encontros simultâneos: resolver NPCs antes de mutar; aliases colapsados/ordenados; ambiguidade falha antes de efeito.
 
-**Memória de cena:** usar `memoria_cena` do preparar/retomada antes de `contexto.py npc`; aprofundar só lacuna indicada. Elenco completo: `--participante <id>` repetido ou `--sem-participantes`; mesma cena reutiliza o salvo. Recibo só com base ainda no contexto, nunca só no disco; retomada fria é completa. Contrato: `docs/agente/memoria/memoria-de-cena.md`. Conselho exige gatilho; `dialogo_relacional`/`iniciativa_social` não criam presença, segredo, side quest ou ação de Ren.
+**Memória de cena:** usar `memoria_cena` de preparar/retomada antes de `contexto.py npc`; aprofundar só lacuna indicada. Elenco: `--participante <id>` repetido ou `--sem-participantes`; mesma cena reutiliza salvo. Recibo exige base no contexto, não só no disco; retomada fria completa. Ver `docs/agente/memoria/memoria-de-cena.md`. Conselho exige gatilho; `dialogo_relacional`/`iniciativa_social` não criam presença/segredo/sidequest/ação de Ren.
 
 **Identidades:** suspeita ≠ certeza. Pista Ren/Shinta/Kage → `identidades.py evidencia`; Actor bem-sucedido bloqueia só pista `atuacao`; confirmação exige fato canônico. **Reputação:** fato público atribuído à persona → `reputacao_publica.py evento`; consulta rara → `contexto.py reputacao <persona>`; nunca fundir personas automaticamente.
 
-**Condição multi-dia:** cena espacial projeta automaticamente; fato canônico de início/fim → `condicoes_mundo.py registrar|encerrar`.
+**Multi-dia:** projeção espacial automática; início/fim canônico → `condicoes_mundo.py registrar|encerrar`.
 
 **Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto. Se a compressão for permanência no mesmo local, cada janela volta por `cronica preparar ... --permanencia-local`; declare `--interlocutor` apenas para quem já está presente/contactável. A projeção espacial avalia uma vez por local/data/período e a iniciativa social usa a mesma identidade para não repetir abertura.
 
@@ -93,7 +95,7 @@ Durante avanço comum:
 
 Rolagem: `poetry run dados ren pericia <nome> --cd <N> --label '<rótulo>'`; não redescobrir assinatura via `--help`. Independentes: `poetry run dados-lote`. Rodapé é derivado. **medição é pós-hoc**: nunca `analisar-rollout.py`/`comparar-rollouts.py` durante jogo.
 
-Meta: **2 chamadas de orquestração por turno** (`cronica preparar` + `cronica concluir`), além do materialmente necessário.
+Meta: **2 orquestrações/turno** (`cronica preparar` + `cronica concluir`), mais o materialmente necessário.
 
 ### Recompensas e side quests
 
@@ -115,13 +117,12 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
-Preservar UTF-8, histórico e visibilidade. Testes: `docs/agente/engenharia/politica-de-testes.md`.
+Preservar UTF-8/histórico/visibilidade. Testes: `docs/agente/engenharia/politica-de-testes.md`.
 
-- estado vivo → invariantes/relações;
-- absoluto mutável → **fixtures/snapshots/cenários temporários/histórico imutável**;
-- **snapshot histórico** → natureza+motivo;
-- permanente → **nome de domínio**, não `test_taskNN_*`;
-- remoção → **propriedade protegida** + destino;
-- `ROOT`: preferir `TemporaryDirectory` se isolável.
+- estado vivo → invariantes; absoluto mutável → fixtures/snapshots/cenários temporários/histórico imutável;
+- snapshot histórico → natureza+motivo;
+- teste permanente → nome de domínio, não `test_taskNN_*`;
+- remoção → propriedade protegida+destino;
+- isolável → `TemporaryDirectory`, não `ROOT`.
 
-`auditar-testes.py`: heurística read-only; suspeito exige revisão. Índice: `docs/agente/README.md`.
+`auditar-testes.py`: read-only; suspeito exige revisão. Índice: `docs/agente/README.md`.

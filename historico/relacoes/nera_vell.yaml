@@ -588,3 +588,69 @@ eventos_pos_migracao:
       registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
       tipo: relacao
       variacao: 1
+- transacao: s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+  sessao: 22
+  resumo: Ren explicou a Silva como pretende vigiar e interrogar Darran, definiu a manhã seguinte como limite para
+    seu retorno e pediu para ver Nera e Tavin. Silva aceitou o limite ao primeiro claro e buscou o consentimento
+    dos dois; Nera e Tavin vieram vê-lo antes da saída.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+      fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+      id: mem_393052db78ef3c6f96122975
+      participantes:
+      - nera_vell
+      - ren
+      - silva_elkwood
+      - tavin_vell
+      registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+      texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+      tipo: marco
+- transacao: s022-nv04-e136fa88a227527bc4d26210397a5d5a
+  sessao: 22
+  resumo: Ren mostrou a Tavin o símbolo oculto de seu traje, reafirmou a Nera que sempre volta e contou a ela sobre
+    a investigação documental e o possível acesso aos registros da Galeria. Nera devolveu seu afeto, pediu que ele
+    não force uma pista pequena e lembrou que voltar também faz parte da missão.
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: nera_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao
+          salão de registros da Galeria, útil contra Masao e seus comparsas.
+      fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+      id: mem_580c4484ce5359e5b864f75f
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+      texto: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao salão
+        de registros da Galeria, útil contra Masao e seus comparsas.
+      tipo: informacao
+  - alvo: relacao:nera_vell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: jogador
+        trecho: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas
+          anteriores.
+      fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+      id: mem_5f38ba45d498cd5ce23fb386
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+      texto: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas anteriores.
+      tipo: marco

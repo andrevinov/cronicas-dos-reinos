@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import cena_mundo as _scene
 import condicoes_mundo as _conditions
 import ecologia_local as _ecology
@@ -41,25 +41,40 @@ SpatialPermanenceError = spatial_permanence.SpatialPermanenceError
 def prepare_scene(*args: Any, **kwargs: Any) -> dict[str, Any]:
     """Projeta uma cena pelo compositor transacional existente, sem nova escrita."""
 
-    return _scene.prepare_scene(*args, **kwargs)
+    result = _scene.prepare_scene(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="preparar", applicability="aplicavel"
+    )
 
 
 def confirm_scene(*args: Any, **kwargs: Any) -> dict[str, Any]:
     """Confirma exatamente a projeção revalidada pelo compositor existente."""
 
-    return _scene.confirm_scene(*args, **kwargs)
+    result = _scene.confirm_scene(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="confirmar", applicability="aplicavel"
+    )
 
 
 def open_scene(*args: Any, **kwargs: Any) -> dict[str, Any]:
     """Mantém o alias legado de abertura sobre a mesma projeção."""
 
-    return _scene.open_scene(*args, **kwargs)
+    result = _scene.open_scene(*args, **kwargs)
+    return attach_coverage(
+        result, module_id=MODULE_ID, phase="abrir", applicability="aplicavel"
+    )
 
 
 def prepare_permanence(*args: Any, **kwargs: Any) -> dict[str, Any]:
     """Reserva uma única identidade espacial por local, data e período."""
 
-    return spatial_permanence.prepare(*args, **kwargs)
+    result = spatial_permanence.prepare(*args, **kwargs)
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="permanencia",
+        applicability="aplicavel",
+    )
 
 
 def check(repo: Path) -> dict[str, Any]:

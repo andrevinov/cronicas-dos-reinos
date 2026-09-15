@@ -86,8 +86,9 @@ class RulesAndCharacterStateContractTest(unittest.TestCase):
         module = next(item for item in catalog["modulos"] if item["id"] == rules_state.MODULE_ID)
         commands = [tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)]
 
-        self.assertEqual(catalog["versao_catalogo"], "3.0.0")
-        self.assertEqual(module["versao_implementacao"], "1.0.0")
+        self.assertEqual(catalog["versao_catalogo"], "5.0.0")
+        self.assertEqual(module["versao_implementacao"], "1.0.1")
+        self.assertEqual(module["versao_avaliacao"], "4.0.0")
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},
             set(rules_state.CAPABILITIES),

@@ -378,6 +378,15 @@ def check(repo: Path) -> list[str]:
         if not isinstance(payload, dict):
             errors.append(f"{entity_id}: payload npc inválido")
             continue
+        # Memória qualitativa não promove uma identidade persistente a medidores.
+        if (
+            "medidores" not in payload
+            and "medidores" not in entry
+            and payload.get("persistencia")
+            == entry.get("persistencia")
+            == "persistente_sem_agenda"
+        ):
+            continue
         try:
             meters = validate_meters(payload.get("medidores"), entity_id=entity_id)
             indexed = validate_meters(entry.get("medidores"), entity_id=f"{entity_id}.indice")

@@ -5,7 +5,11 @@
     {
       "sessao_id": "021",
       "serie_avaliacao": "legacy-v1",
-      "chave_comparabilidade": ["legacy-v1", "ausente", "1"],
+      "chave_comparabilidade": [
+        "legacy-v1",
+        "ausente",
+        "1"
+      ],
       "status_avaliacao": "provisoria",
       "nota_geral_0a100": 61.59,
       "faixa_geral": "ruim",
@@ -65,6 +69,68 @@
         "motivo": "uma única sessão; estabilidade exige pelo menos três sessões e dez oportunidades por módulo"
       },
       "caminho": "021"
+    },
+    {
+      "sessao_id": "022",
+      "serie_avaliacao": "modules-v2",
+      "chave_comparabilidade": [
+        "modules-v2",
+        "3.0.0",
+        "2.0.0"
+      ],
+      "status_avaliacao": "provisoria",
+      "nota_geral_0a100": 72.45,
+      "faixa_geral": "atencao",
+      "eixos": {
+        "calibracao": {
+          "nota_0a100": 99.24,
+          "peso": 30
+        },
+        "eficacia_integridade": {
+          "nota_0a100": 78.89,
+          "peso": 30
+        },
+        "confiabilidade": {
+          "nota_0a100": 59.98,
+          "peso": 20
+        },
+        "economia": {
+          "nota_0a100": 38.63,
+          "peso": 15
+        },
+        "fluidez": {
+          "nota_0a100": 24.37,
+          "peso": 5
+        }
+      },
+      "indicadores_globais": {
+        "turnos_narrativos": 26,
+        "interacoes_observadas": 35,
+        "interacoes_com_referencia_exata": 23,
+        "input_tokens": 39061803,
+        "cached_input_tokens": 38144512,
+        "uncached_input_tokens_aprox": 917291,
+        "output_tokens": 272772,
+        "reducao_input_bruto_baseline": 0.300169,
+        "inferencias_por_turno": 14.308,
+        "tools_por_turno": 13.077,
+        "orquestracao_por_turno": 3.885,
+        "fracao_par_cronica_exato": 0.192308,
+        "fracao_l0_l2_limpo": 0.307692,
+        "fracao_turnos_com_raw": 0.653846,
+        "raw_read_calls": 129,
+        "schema_discovery_calls": 14,
+        "compactacoes": 4,
+        "latencia_mediana_segundos": 238.911,
+        "latencia_p90_segundos": 508.124,
+        "latencia_maxima_segundos": 1028.687,
+        "turnos_acima_300_segundos": 11
+      },
+      "confianca": {
+        "sessao": "provisoria",
+        "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+      },
+      "caminho": "022"
     }
   ]
 }

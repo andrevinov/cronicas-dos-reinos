@@ -1,7 +1,7 @@
 schema_relacoes: 2
 natureza: indice_relacoes_atuais
 historico_acumulado: historico/legado/relacoes-acumuladas-pre-etapa-6.yaml
-quantidade: 38
+quantidade: 39
 relacoes:
   edran_vale:
     nome: Edran Vale
@@ -168,7 +168,7 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 10528
+    bytes_fragmento: 10666
     campos_atuais: 16
   tavin_vell:
     nome: Tavin Vell
@@ -180,8 +180,8 @@ relacoes:
     respeito: medo respeitoso com simpatia
     arquivo: estado/relacoes/tavin_vell.yaml
     historico: historico/relacoes/tavin_vell.yaml
-    bytes_fragmento: 1989
-    campos_atuais: 11
+    bytes_fragmento: 3245
+    campos_atuais: 13
   velha_sella:
     nome: Velha Sella
     tipo: contato cauteloso / moradora de Fishtown
@@ -244,7 +244,7 @@ relacoes:
       para aceitá-lo como agente clandestino coordenado de Tyr
     arquivo: estado/relacoes/halessa_vorn.yaml
     historico: historico/relacoes/halessa_vorn.yaml
-    bytes_fragmento: 11911
+    bytes_fragmento: 11323
     campos_atuais: 15
   silva_elkwood:
     nome: Silva Elkwood
@@ -259,8 +259,8 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 8347
-    campos_atuais: 15
+    bytes_fragmento: 12269
+    campos_atuais: 17
   jack_mooney:
     nome: Jack Mooney
     tipo: dono do circo / autoridade local do acampamento / patrono condicional
@@ -439,7 +439,7 @@ relacoes:
     respeito: profissional e moral em formação
     arquivo: estado/relacoes/tomas_rell.yaml
     historico: historico/relacoes/tomas_rell.yaml
-    bytes_fragmento: 8257
+    bytes_fragmento: 9535
     campos_atuais: 11
   jardineiro_salgueiro_seco:
     nome: jardineiro da Casa do Salgueiro Seco
@@ -452,3 +452,15 @@ relacoes:
     historico: historico/relacoes/jardineiro_salgueiro_seco.yaml
     bytes_fragmento: 710
     campos_atuais: 9
+  darran_vell:
+    arquivo: estado/relacoes/darran_vell.yaml
+    historico: historico/relacoes/darran_vell.yaml
+    nome: Darran Vell
+    tipo: escrivão da Mesa de Cargas do porto
+    status: Ren revelou a intenção de capturar o homem do casaco cinza e pediu cooperação documental. Darran explicou
+      que pode retratar a contramarca, mas não revogar as autorizações antigas; uma declaração assinada daria à
+      Galeria ou ao responsável pelas cópias causa para reter a entrega. Ele aceita considerar escrevê-la, mas exige
+      proteção e não quer ser abandonado depois.
+    atitude_para_ren: não identificou Ren; alarmado e hostil à figura encapuzada que o atacou
+    bytes_fragmento: 9618
+    campos_atuais: 6

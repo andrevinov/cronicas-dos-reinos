@@ -17,7 +17,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import diegetico
 
 FACADE_SCHEMA = 2
@@ -168,7 +168,12 @@ def publish_conclusion(
     systems = out.setdefault("sistemas_narrativos", [])
     if MODULE_ID not in systems:
         systems.append(MODULE_ID)
-    return out
+    return attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel",
+    )
 
 
 def _exact_dimensions(value: Any, expected: tuple[str, ...], label: str) -> dict[str, Any]:

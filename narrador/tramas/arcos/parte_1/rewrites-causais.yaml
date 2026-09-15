@@ -1,34 +1,6 @@
 schema_canon_bridge: 1
 natureza: controle_reservado
-reservas:
-  arsenal_da_night_watch:
-    evento_id: arsenal_da_night_watch
-    intencao_id: icp1-arsenal_da_night_watch
-    mission_id: sqe-2cb76a0638860602
-    quest_id: qse-65136f2c017fb178
-    modo: ponte
-    estado: ativa
-    criada_em:
-      data: 22 Eleasis, 1372 DR
-      hora: '10:20'
-    ativacao_padrao:
-      data: 23 Eleasis, 1372 DR
-      hora: 06:00
-    ativacao_efetiva:
-      data: 23 Eleasis, 1372 DR
-      hora: 06:00
-    ancora_quest:
-      prazo:
-        tipo: temporal
-        expira_em:
-          data: 23 Eleasis, 1372 DR
-          hora: 05:00
-      locais_fase_final:
-      - galeria_dos_escribas
-    justificativa: Se as cópias se ligarem a logística institucional da Night Watch,
-      a fase final pode abrir uma ponte causal para a intenção sem determinar ação
-      ou presença de Ren.
-    regra_agencia: ancora_causal_nao_move_nem_decide_ren
+reservas: {}
 resolucoes: {}
 historico_recente:
 - tipo: reserva_criada
@@ -52,3 +24,10 @@ historico_recente:
   em:
     data: 22 Eleasis, 1372 DR
     hora: '10:20'
+- tipo: reserva_liberada
+  evento_id: arsenal_da_night_watch
+  mission_id: sqe-2cb76a0638860602
+  motivo: quest_concluida
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: '21:49'

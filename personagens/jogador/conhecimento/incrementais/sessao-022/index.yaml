@@ -1,0 +1,48 @@
+schema_conhecimento_incremental: 1
+sessao: 22
+fragmentos:
+- transacao: s022-577c16041b304eb7
+  titulo: Ren confirmou visualmente Darran Vell no turno noturno e o seguiu quando ele saiu sozinho com um livro.
+    A Furtividade falhou; Darran ouviu o ruído, chamou auxílio e entrou na casa de pesagem sem identificar Ren.
+    O alvo agora está alerta e a primeira abertura se fechou.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-577c16041b304eb7.md
+  bytes: 627
+- transacao: s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
+  titulo: Darran declarou ter aplicado pessoalmente a contramarca de urgência, perto da quarta badalada, a pedido
+    de um homem bem-apessoado de casaco cinza e caixa preta de contas — descrição que coincide com a fornecida por
+    Tomas para o entregador do pedido. Darran verificou apenas que os três números de despacho existiam; segundo
+    ele, o homem não deu nome, carga ou finalidade. A convergência liga a mesma pessoa ao selo no porto e à entrega
+    na Galeria, estabelecendo o controlador operacional do pedido,…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354.md
+  bytes: 804
+- transacao: s022-nv04-852170048d4ec46e6b983d02ecf76eec
+  titulo: 'Persuasão 20 contra CD 12 levou Darran a confessar que recebeu duas peças de ouro, sem registro, para
+    aplicar a contramarca. Ele explicou que as cópias não precisam ser falsificadas: autorizações antigas e autênticas
+    podem ser apresentadas fora do contexto para legitimar uma carga diferente. Darran agora demonstra medo concreto
+    das pessoas por trás do pedido e pediu para não ser devolvido à Mesa de Cargas. A cadeia já pode ser levada
+    a Tomas, mas ainda não foi entregue.'
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-852170048d4ec46e6b983d02ecf76eec.md
+  bytes: 779
+- transacao: s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+  titulo: Ren contou a Darran que persegue um criminoso poderoso de Kozakura cuja rede estaria usando o porto para
+    cargas ilícitas, falsificações e mortes. Darran não confirmou uma chegada numerosa de kozakuranos, mas relatou
+    três homens de fala oriental que, em noites diferentes, perguntaram por cargas sem reclamante, armazéns e trocas
+    de turno sem apresentar despacho; um deles era o homem do casaco cinza. Intuição 17 contra CD 12 mostrou que
+    Darran ainda não aceita toda a explicação como fato, porém ac…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-5b14a75a7afc0335b699b1b9f2410db2.md
+  bytes: 803
+- transacao: s022-nv04-c91f123a4cca516706a0661bac18d700
+  titulo: Ren informou a Darran que pretende capturar o homem do casaco cinza e pediu um documento para impedir
+    a retirada das cópias. A janela conhecida de retirada já está em curso, das 20h às 22h. Darran explicou que
+    não pode revogar as autorizações antigas, mas pode assinar uma retratação da contramarca, com o código da ronda,
+    os três despachos e a confissão do pagamento; isso daria a Tomas fundamento para reter as cópias se o documento
+    chegar antes da entrega. Darran pode escrever sem voltar à Mesa,…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-c91f123a4cca516706a0661bac18d700.md
+  bytes: 827
+- transacao: s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+  titulo: Darran redige e assina a retratação da urgência, incluindo o código da ronda, os três despachos e a confissão
+    do pagamento irregular; Ren guarda o documento. Darran relata não conhecer parentes seus em Ravens Bluff. Os
+    dois chegam sem incidente à entrada da Casa de Tyr.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1.md
+  bytes: 475
+quantidade: 6

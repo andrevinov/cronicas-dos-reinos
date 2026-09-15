@@ -47,10 +47,14 @@ class SidequestModuleContractTest(unittest.TestCase):
             module["id"]: module["versao_implementacao"]
             for module in catalog["modulos"]
         }
-        self.assertEqual(catalog["versao_catalogo"], "3.0.0")
-        self.assertEqual(versions[authoring.MODULE_ID], "1.0.0")
-        self.assertEqual(versions[lifecycle.MODULE_ID], "1.0.0")
-        self.assertEqual(versions[canonical.MODULE_ID], "1.0.0")
+        self.assertEqual(catalog["versao_catalogo"], "5.0.0")
+        self.assertEqual(versions[authoring.MODULE_ID], "2.0.1")
+        self.assertEqual(versions[lifecycle.MODULE_ID], "1.0.1")
+        self.assertEqual(versions[canonical.MODULE_ID], "2.0.0")
+        self.assertEqual(authoring.IMPLEMENTATION_VERSION, "2.0.1")
+        self.assertEqual(authoring.EVALUATION_VERSION, "4.0.0")
+        self.assertEqual(canonical.IMPLEMENTATION_VERSION, "2.0.0")
+        self.assertEqual(canonical.EVALUATION_VERSION, "4.0.0")
 
     def test_cronica_e_cena_dependem_das_fachadas_publicas(self) -> None:
         self.assertIs(cronica._sidequests46, authoring)
@@ -94,8 +98,60 @@ class SidequestModuleContractTest(unittest.TestCase):
             "preservada",
         )
 
+    def test_consultas_diretas_do_lifecycle_publicam_cobertura(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            projection = lifecycle.project(repo)
+            status = lifecycle.query(repo, "sq-inexistente")
+        self.assertIn(
+            "sidequest_lifecycle|projetar|nao_aplicavel|1",
+            projection["cobertura_avaliacao_modular"]["recibos"],
+        )
+        self.assertIn(
+            "sidequest_lifecycle|status|nao_aplicavel|1",
+            status["cobertura_avaliacao_modular"]["recibos"],
+        )
+
 
 class SidequestAuthoringFacadeTest(unittest.TestCase):
+    def test_avaliacao_objetiva_nao_converte_ausencia_de_prova_em_acerto(self) -> None:
+        assessment = authoring.assess_opportunity(
+            declared_signal=None,
+            routed={
+                "sinal_efetivo": None,
+                "origem": None,
+                "causa_viva": None,
+                "projecao": {
+                    "resultado": "sem_causa_nv11_vencida",
+                    "causas": [],
+                },
+            },
+            prepared={"fase": "preparacao"},
+        )
+
+        self.assertEqual(assessment["resultado_esperado"], "indeterminado")
+        self.assertEqual(assessment["classificacao"], "indeterminado")
+        self.assertFalse(assessment["incluida_na_pontuacao"])
+
+    def test_limite_objetivo_produz_verdadeiro_negativo(self) -> None:
+        assessment = authoring.assess_opportunity(
+            declared_signal=None,
+            routed={
+                "sinal_efetivo": None,
+                "origem": None,
+                "causa_viva": None,
+                "projecao": {
+                    "resultado": "limite_ativas",
+                    "causas": [{"id": "causa-bloqueada"}],
+                },
+            },
+            prepared={"fase": "preparacao"},
+        )
+
+        self.assertEqual(assessment["resultado_esperado"], "nao_elegivel")
+        self.assertEqual(assessment["classificacao"], "verdadeiro_negativo")
+        self.assertTrue(assessment["incluida_na_pontuacao"])
+
     def test_sem_oferta_nao_abre_journal_nem_instala(self) -> None:
         payload = {"cena": {"scene_id": "fixture-rm03"}}
         transaction = {"narracao": "Nenhuma oferta foi feita."}
@@ -141,7 +197,6 @@ class SidequestAuthoringFacadeTest(unittest.TestCase):
             result = authoring.install_conclusion(Path(temporary), prepared)
         install.assert_called_once_with(Path(temporary), journal)
         self.assertEqual(result["resultado"], "sidequest_materializada")
-
 
 if __name__ == "__main__":
     unittest.main()

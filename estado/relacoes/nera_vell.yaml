@@ -26,8 +26,6 @@ relacao:
     como responsável por salvar a alma dele. Disse que poderia se arrepender se Ren decidisse por ela, escondesse
     o risco ou usasse seu nome para justificar crueldade, mas não de tê-lo escolhido.
   acordos:
-  - Ren decidiu tirar Tavin de perigo e recuperar o livro de provas.
-  - Ren prometeu dar um jeito de checar a situação de Nera e Tavin e entrar em contato.
   - Se Ren não voltar no tempo que indicar, Nera avisará Silva, que acionará Luath; ninguém deixará o esconderijo
     para procurá-lo nem exporá o circo.
   - Nera entendeu o convite discreto de Ren e afirmou que deseja conversar e passar a noite com ele em seus aposentos
@@ -58,22 +56,6 @@ relacao:
   - Nera entende que os inimigos ainda parecem possuir palavras de pressão sobre ela e Tavin, mas não demonstraram
     saber a porta exata onde os Vell dormem.
   momentos_de_vinculo:
-  - Ren voltou ao circo sem trazer cauda e pediu a Silva para ver Nera e Tavin; Nera recebeu sua presença com alívio
-    e reconheceu novamente que ele cumpriu a promessa limitada de voltar.
-  - Durante uma conversa leve com Tavin, Nera percebeu pelo olhar de Ren que ele guardava algo que não queria dizer
-    diante do menino. Sem expô-lo, apertou sua mão e indicou discretamente que conversariam quando Tavin terminasse
-    o turno.
-  - Ren convidou Nera, de maneira tímida e respeitando sua escolha, para uma noite privada de conversa e intimidade.
-    Nera correspondeu com desejo claro, humor afetuoso e preocupação com as cinco noites de pouco sono dele.
-  - Nera ajudou Dessa e Ren a construir o disfarce de velho erudito, usando sua precisão de gravadora para corrigir
-    linhas, idade aparente e a leitura dos traços do rosto; disse preferir o rosto verdadeiro de Ren e notou, preocupada,
-    que ele não comeu.
-  - Antes da operação contra Velis, Nera recusou pagamento pelo auxílio no disfarce. Ren ofereceu compartilhar todo
-    o dinheiro caso ela precise; Nera aceitou pedir ajuda sem falso orgulho, mas pediu transparência sobre quanto
-    resta e que ele preserve recursos para suas próprias saídas.
-  - Nera recusou tratar Kethra como carta ou peça e pediu que Ren proteja a sobrevivência dela antes de usar a informação.
-    Ren reconheceu Kethra como aliada. Nera ajudou a remover parte do disfarce, falou do medo de vê-lo manipulado
-    por escolhas sem combate e encerrou a visita para que ele pudesse comer e dormir.
   - Ren convidou Nera timidamente e sem pressão para dormir com ele. Nera aceitou porque desejava estar com Ren
     e sentira sua falta, recusando enquadrar a intimidade apenas como calma roubada antes de uma possível desgraça.
   - Após passarem a noite juntos por escolha mútua, Ren comparou-se ao homem da parábola que prova um morango enquanto
@@ -124,6 +106,23 @@ relacao:
     texto: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens sem
       matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
     tipo: informacao
+  - canal: presencial
+    destinatario: nera_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao salão
+        de registros da Galeria, útil contra Masao e seus comparsas.
+    fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+    id: mem_580c4484ce5359e5b864f75f
+    participantes:
+    - nera_vell
+    - ren
+    registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+    texto: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao salão
+      de registros da Galeria, útil contra Masao e seus comparsas.
+    tipo: informacao
   memorias_importantes:
   - anterior: 8
     eixo: confianca
@@ -138,5 +137,31 @@ relacao:
     registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
     tipo: relacao
     variacao: 1
+  - evidencia:
+      campo: narracao
+      trecho: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+    id: mem_393052db78ef3c6f96122975
+    participantes:
+    - nera_vell
+    - ren
+    - silva_elkwood
+    - tavin_vell
+    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+    texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    tipo: marco
+  - evidencia:
+      campo: jogador
+      trecho: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas anteriores.
+    fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+    id: mem_5f38ba45d498cd5ce23fb386
+    participantes:
+    - nera_vell
+    - ren
+    registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+    texto: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas anteriores.
+    tipo: marco
 conteudo_mais_antigo_no_historico:
+  acordos: 2
+  momentos_de_vinculo: 6
   riscos: 43

@@ -433,7 +433,7 @@ def _validate_agent_ids_if_needed(repo: Path, records: list[dict[str, Any]]) -> 
 def _atomic_write_yaml(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(path.name + ".tmp")
-    text = yaml.safe_dump(data, allow_unicode=True, sort_keys=False)
+    text = yaml.safe_dump(data, allow_unicode=True, sort_keys=False, width=256)
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
 

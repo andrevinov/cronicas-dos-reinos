@@ -5,7 +5,7 @@ fontes_canonicas:
   tempo: estado/tempo.yaml
   ficha: personagens/jogador/ficha.yaml
 sessao:
-  numero: 21
+  numero: 22
   status: entre_sessoes
   modo_de_cena: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
@@ -18,14 +18,14 @@ recursos:
     atuais: 52
     maximos: 52
   focus:
-    atuais: 7
+    atuais: 5
     maximos: 7
   ca: 17
   deslocamento: 55 pés
   dinheiro_po: 38.11999999999999
 tempo:
   data: 22 Eleasis, 1372 DR
-  hora_aproximada: '13:10'
+  hora_aproximada: '22:04'
   periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
 localizacao:
@@ -34,15 +34,15 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Ravens Bluff
-  ponto_exato: diante da Mesa de Cargas do porto
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
 rodape:
   itens_magicos:
     broche_do_semblante_humilde:
       nome: Broche do Semblante Humilde
       caminho_disponibilidade: recursos.disponibilidades.broche_do_semblante_humilde
       efeito_temporario: broche_do_semblante_humilde
-      disponibilidade: disponível; uso renovado no amanhecer de 20 Eleasis
+      disponibilidade: usado às 20:50 de 22 Eleasis; indisponível até o amanhecer de 23 Eleasis
 ponteiros:
   ficha: personagens/jogador/ficha.yaml
   estado_completo: estado/estado-atual.yaml
@@ -52,8 +52,8 @@ ponteiros:
   conhecimento_de_ren: personagens/jogador/conhecimento.md
   retomada: ferramentas/contexto.py retomada
   indice_sessoes: sessoes/index.yaml
-  handoff_atual: sessoes/021/handoff.yaml
-  transcricao_fria: sessoes/021/transcricao.md
+  handoff_atual: sessoes/022/handoff.yaml
+  transcricao_fria: sessoes/022/transcricao.md
   narrador: narrador/
   regras: regras/
 capacidades_contextuais:
@@ -84,20 +84,8 @@ efeitos_temporarios:
       Ao menos dois homens receberam ou compartilharam essa descrição; a mansão está mais alerta a observadores.
     duracao: até a segurança encerrar o alerta ou a situação mudar
     inicio: 19:50 de 12 Eleasis
-  disfarce_idoso_trabalhador_kozakurano:
-    cd_criacao: 14
-    descricao: Ren está visualmente disfarçado como um trabalhador kozakurano idoso, com roupas comuns mescladas,
-      envelhecimento cosmético, ombros acolchoados, gorro gasto e cabo de ferramenta emprestado por Dessa Wren.
-    duracao: até Ren remover o disfarce, ele ser danificado ou uma inspeção dirigida superá-lo
-    inicio: 06:30 de 22 Eleasis
-    limite: O sucesso cobre aparência visual; voz, mentira e atuação social permanecem sujeitos a Enganação ou Atuação
-      quando houver incerteza relevante.
-    qualidade_visual: 21
-    identidade_revelada_a:
-    - halessa_vorn
-    - tomas_rell
 compromissos:
-  quantidade: 3
+  quantidade: 5
   itens:
     mem_e889c18521fbf8d102dcf9af:
       tipo: encontro
@@ -118,31 +106,20 @@ compromissos:
       - jack_mooney
       - ren
       situacao_temporal: sem_data
-    silva_acompanhar_colm:
+    mem_95c45a8300e8e61fabd7f63b:
       tipo: compromisso
-      resumo: Silva precisa acompanhar a transferência de Colm e devolver apenas estado genérico a Ren quando houver
-        mudança.
+      resumo: Darran testemunhará somente sobre o que viu e ouviu se for acolhido como testemunha protegida pela
+        Casa de Tyr.
       envolvidos:
-      - silva_elkwood
-      obrigacao_temporal:
-        schema: 1
-        estado: reconciliar
-        responsavel: silva_elkwood
-        destinatario: ren
-        local_ou_canal: atualização por Silva sem revelar a rota compartimentada
-        prazo_ou_condicao:
-          condicao: segunda transferência de Colm concluída, bloqueada ou comprometida
-        resultado_esperado: reconciliar o estado de Colm e limitar eventual retorno a Ren ao estado geral de segurança
-        modo_retorno: atualização genérica, sem localização da segunda mão ou da cama final
-        fonte_canonica:
-          arquivo: estado/relacoes/colm_dunn.yaml
-          evidencia_literal: Hessa Morn o ocultou sob uma carga de hortaliças e iniciou o trajeto para a segunda
-            transferência.
-        fontes_suporte:
-        - arquivo: historico/relacoes/silva_elkwood.yaml
-          evidencia_literal: 'Silva entregou a Ren a primeira etapa da rota compartimentada de Colm: Hessa Morn
-            no lagar abandonado; a segunda mão e a cama final permanecem ocultas'
-        protecoes:
-        - não revelar a segunda mão, a cama final ou a rota compartimentada
-        - não transformar estado genérico em localização
+      - darran_vell
+      - ren
       situacao_temporal: sem_data
+    mem_badf183230b8f29c212535fb:
+      tipo: compromisso
+      resumo: Prestar a Darran um favor razoável quando ele o pedir, em reparação pela violência e confusão da captura.
+      envolvidos:
+      - darran_vell
+      - ren
+      situacao_temporal: sem_data
+  omitidos:
+  - silva_acompanhar_colm

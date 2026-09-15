@@ -508,10 +508,19 @@ def first_real_session_status(repo: Path) -> dict[str, Any]:
     if len(manifest.get("versoes_modulos") or []) != 12 or len(modules.get("modulos") or []) != 12:
         raise ModularAcceptanceError("primeira sessão real não preserva os doze módulos")
     observed = [item for item in interactions_data.get("interactions") or [] if item.get("response_present")]
-    if not observed or any(not item.get("visible_exactly_once") for item in observed):
-        raise ModularAcceptanceError("primeira sessão real tem resposta sem referência única")
     if "jogador" in (scorecard.get("eixos") or {}):
         raise ModularAcceptanceError("primeira sessão real contém nota numérica do jogador")
+    missing_references = sum(not item.get("visible_exactly_once") for item in observed)
+    if not observed or missing_references:
+        return {
+            "estado": "pendente",
+            "aceite_final": False,
+            "motivo": "primeira sessão real não possui respostas auditáveis com referência única em todas elas",
+            "sessao_id": entry["sessao_id"],
+            "interacoes_observadas": len(observed),
+            "interacoes_sem_referencia_unica": missing_references,
+            "status_avaliacao": scorecard.get("status_avaliacao"),
+        }
     return {
         "estado": "aceita",
         "aceite_final": True,

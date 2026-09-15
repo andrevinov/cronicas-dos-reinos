@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+import nomes_npcs
 
 NPC_INDEX = Path("estado/npcs/index.yaml")
 RELATION_INDEX = Path("estado/relacoes/index.yaml")
@@ -212,6 +213,20 @@ def _identity(entity_id: str, name: str, *, automatic: bool) -> dict[str, Any]:
     }
 
 
+def _guard_name(repo: Path, name: str) -> dict[str, Any] | None:
+    try:
+        return nomes_npcs.require_reservation(repo, name)
+    except nomes_npcs.NpcNameError as exc:
+        raise NpcStubError(str(exc)) from exc
+
+
+def _guard_identity_name(repo: Path, identity: dict[str, Any]) -> dict[str, Any] | None:
+    nominal = _guard_name(repo, str(identity.get("nome") or ""))
+    if nominal is not None and identity.get("reserva_nome") != nominal["reserva"]:
+        raise NpcStubError("reserva nominal mudou ou falta no ticket; preparar novamente antes de criar NPC")
+    return nominal
+
+
 def guard_resolution(repo: Path, supplied: str, resolved_id: str) -> list[str]:
     """Impede que um alias resolvido por outra camada ignore um stub homônimo."""
     npc_doc = _optional(repo, NPC_INDEX)
@@ -263,7 +278,10 @@ def resolve_or_propose(repo: Path, supplied: str) -> dict[str, Any]:
             + "; não criar stub novo"
         )
 
-    suggestions = _suggest(query, known)
+    # Uma reserva explícita é nomeação intencional, não um typo. Homônimos
+    # exatos continuam bloqueados acima; a compatibilidade legada mantém fuzzy.
+    nominal = _guard_name(repo, str(raw))
+    suggestions = _suggest(query, known) if nominal is None else []
     if suggestions:
         raise NpcStubError(
             f"NPC desconhecido {raw!r} parece alias/typo de identidade existente: "
@@ -281,11 +299,16 @@ def resolve_or_propose(repo: Path, supplied: str) -> dict[str, Any]:
         raise NpcStubError(
             f"ID derivado {entity_id!r} já pertence a outra identidade; use nome/qualificador mais específico"
         )
+    identity = _identity(entity_id, str(raw).strip(), automatic=True)
+    if nominal is not None:
+        identity["reserva_nome"] = nominal["reserva"]
+        identity["nomeacao"] = nominal["nomeacao"]
+        sources.extend([nomes_npcs.CATALOG.as_posix(), nomes_npcs.RESERVATIONS.as_posix()])
     return {
         "npc_id": entity_id,
         "recebido": raw,
         "resolucao": "stub_persistente_proposto",
-        "identidade_stub": _identity(entity_id, str(raw).strip(), automatic=True),
+        "identidade_stub": identity,
         "fontes_lidas": sources,
     }
 
@@ -316,6 +339,9 @@ def _stub_bytes(identity: dict[str, Any], scene_id: str) -> tuple[str, str, str]
             }
         ],
     }
+    if isinstance(identity.get("nomeacao"), dict):
+        fragment["npc"]["nomeacao"] = identity["nomeacao"]
+        history["eventos_pos_migracao"][0]["nomeacao"] = identity["nomeacao"]
     return _dump(fragment), _dump(history), name
 
 
@@ -334,8 +360,6 @@ def ensure_stub(repo: Path, identity: dict[str, Any], *, scene_id: str) -> dict[
     existing = mapping.get(npc_id)
     fragment_rel = Path("estado/npcs") / f"{npc_id}.yaml"
     history_rel = Path("historico/npcs") / f"{npc_id}.yaml"
-    fragment_text, history_text, name = _stub_bytes(identity, scene_id)
-
     if isinstance(existing, dict):
         existing_name = existing.get("nome")
         if normalize_ref(existing_name) != normalize_ref(name):
@@ -351,6 +375,10 @@ def ensure_stub(repo: Path, identity: dict[str, Any], *, scene_id: str) -> dict[
         return {"criado": False, "npc_id": npc_id, "arquivo": fragment_rel.as_posix()}
 
     # Revalida homônimos imediatamente antes da escrita.
+    nominal = _guard_identity_name(repo, identity)
+    if nominal is not None:
+        identity = {**identity, "nomeacao": nominal["nomeacao"]}
+    fragment_text, history_text, name = _stub_bytes(identity, scene_id)
     known, _ = _known(repo)
     for other_id, entity in known.items():
         if other_id == npc_id:
@@ -384,6 +412,16 @@ def ensure_many(repo: Path, identities: list[dict[str, Any]], *, scene_id: str) 
     unique: dict[str, dict[str, Any]] = {str(item["npc_id"]): item for item in automatic}
     if len(unique) > MAX_STUBS_PER_SCENE:
         raise NpcStubError(f"uma cena cria no máximo {MAX_STUBS_PER_SCENE} stubs de NPC")
+    if not unique:
+        return []
+    # Um lote não começa a materializar se qualquer nome novo não foi reservado.
+    # Identidades antigas sem nova reserva preservam o custo anterior; cada
+    # ensure_stub ainda bloqueia um nome novo não reservado antes de escrever.
+    if any(identity.get("reserva_nome") for identity in unique.values()):
+        indexed = (_optional(repo, NPC_INDEX) or {}).get("npcs") or {}
+        for npc_id, identity in unique.items():
+            if npc_id not in indexed:
+                _guard_identity_name(repo, identity)
     return [ensure_stub(repo, unique[npc_id], scene_id=scene_id) for npc_id in sorted(unique)]
 
 

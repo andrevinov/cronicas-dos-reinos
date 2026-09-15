@@ -1,0 +1,259 @@
+schema_alteracoes_transacionais: 1
+sessao: 22
+status: encerrada
+fonte: sessoes/022/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 22
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 38.11999999999999
+  data: 22 Eleasis, 1372 DR
+  hora: '13:10'
+  area: Ravens Bluff
+  ponto_exato: diante da Mesa de Cargas do porto
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 22
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 5/7
+  ca: 17
+  dinheiro_po: 38.11999999999999
+  data: 22 Eleasis, 1372 DR
+  hora: '22:04'
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
+  nivel_ficha: 7
+consolidacoes:
+- id: s022-cena-245780ecb7a23d93
+  tipo: cena
+  transacoes:
+  - s022-92ac07dbb6f8e3f6
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-ea7c0ee7e5541f41
+  tipo: cena
+  transacoes:
+  - s022-536935f51f96ebfe
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-08ca08f6058d423a
+  tipo: cena
+  transacoes:
+  - s022-1f14528fa59c8807
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-8470b6c2b93c04e9
+  tipo: cena
+  transacoes:
+  - s022-nv04-917a2cf8859432b3884dc333069fd9cb
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-e5dd857828c7266e
+  tipo: cena
+  transacoes:
+  - s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+  deltas: 9
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-0e8a051588da0178
+  tipo: cena
+  transacoes:
+  - s022-nv04-e136fa88a227527bc4d26210397a5d5a
+  - s022-2cf1c734eddf14e4
+  deltas: 13
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-17caef56535f8814
+  tipo: cena
+  transacoes:
+  - s022-577c16041b304eb7
+  - s022-e4f70de3d11e7aff
+  deltas: 11
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-577c16041b304eb7.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-6f7e2fcaad7afe6d
+  tipo: cena
+  transacoes:
+  - s022-2a55c412d268ddab
+  - s022-9dffc93447deca1b
+  - s022-6d66a96a1727c0c3
+  deltas: 22
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/darran_vell.yaml
+  - estado/npcs/index.yaml
+  - estado/relacoes/darran_vell.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/npcs/darran_vell.yaml
+  - historico/relacoes/darran_vell.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-c4da5da67d4503ef
+  tipo: cena
+  transacoes:
+  - s022-3952ecb9ff86b0d4
+  - s022-nv04-c39dd2fd035845f1a9c4141f4dc0dc3f
+  - s022-nv04-bad831e330ff477902e7ff27ed38f4bf
+  - s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
+  - s022-nv04-852170048d4ec46e6b983d02ecf76eec
+  - s022-3943ed9f60f6aa3a
+  - s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+  - s022-nv04-c91f123a4cca516706a0661bac18d700
+  - corr-s022-2502e828c1ee5a6f
+  deltas: 55
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/npcs/darran_vell.yaml
+  - estado/npcs/index.yaml
+  - estado/relacoes/darran_vell.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/npcs/darran_vell.yaml
+  - historico/relacoes/darran_vell.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354.md
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-5b14a75a7afc0335b699b1b9f2410db2.md
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-852170048d4ec46e6b983d02ecf76eec.md
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-c91f123a4cca516706a0661bac18d700.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-1bf93d8fb6197967
+  tipo: cena
+  transacoes:
+  - s022-nv04-ec49985b5b9e35ef4b536bf176c8a5f9
+  - s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+  - corr-s022-99a2fea6f20c022b
+  deltas: 15
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/darran_vell.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/darran_vell.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1.md
+  - personagens/jogador/conhecimento/index.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-cena-1d5355e1dc83e88d
+  tipo: cena
+  transacoes:
+  - s022-nv04-e845a5eb1808fac969fdde90c502dc06
+  deltas: 9
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/darran_vell.yaml
+  - estado/relacoes/halessa_vorn.yaml
+  - estado/relacoes/index.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/darran_vell.yaml
+  - historico/relacoes/halessa_vorn.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md
+- id: s022-sessao-97d577c3e507bb5e
+  tipo: sessao
+  transacoes:
+  - s022-nv04-e0ae0ab97edb902fc964d568c851ea1c
+  - s022-d7b720d7c2069ed1
+  - s022-c5141408bec6788e
+  - s022-b9b0bd70adbbfd3f
+  - s022-nv04-e3b8cd845655a29f4e08122a92174c53
+  - task43-58d1da78ea9e4a513557
+  deltas: 39
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/darran_vell.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/tomas_rell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/darran_vell.yaml
+  - historico/relacoes/tomas_rell.yaml
+  - sessoes/022/alteracoes-de-estado.yaml
+  - sessoes/022/consequencias.md
+  - sessoes/022/consolidacoes.jsonl
+  - sessoes/022/resumo.md

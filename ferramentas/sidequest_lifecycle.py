@@ -8,6 +8,7 @@ from typing import Any, Callable
 
 import yaml
 
+from _module_facade import attach_coverage
 from _sidequest_facade import combine_checks
 import progresso_sidequests_transacional as _transactional
 import progressao_sidequests as _progression
@@ -59,14 +60,38 @@ SIDEQUEST_LIFECYCLE_CLI_ERRORS = SIDEQUEST_LIFECYCLE_ERRORS + (
     yaml.YAMLError,
 )
 
-project = _active.project
-query = _active.query
 ticket_meta = _active.ticket_meta
 integrate_prepare = _active.integrate_prepare
 require_no_open_journal = _transactional.require_no_open_journal
 writer_transaction = _transactional.writer_transaction
 prepare_conclusion = _transactional.prepare_conclusion
 install = _transactional.install
+
+
+def project(repo: Path) -> dict[str, Any]:
+    result = _active.project(repo)
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="projetar",
+        applicability=(
+            "aplicavel" if int(result.get("quantidade") or 0) > 0
+            else "nao_aplicavel"
+        ),
+    )
+
+
+def query(repo: Path, reference: str) -> dict[str, Any]:
+    result = _active.query(repo, reference)
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="status",
+        applicability=(
+            "aplicavel" if result.get("encontrada") is True
+            else "nao_aplicavel"
+        ),
+    )
 
 
 def prepare(
@@ -78,11 +103,20 @@ def prepare(
 ) -> dict[str, Any]:
     """Projeta todas as missões aceitas sem escrever ou abrir autoria."""
 
-    return integrate_prepare(
+    result = integrate_prepare(
         repo,
         base_result,
         decode_ticket=decode_ticket,
         encode_ticket=encode_ticket,
+    )
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="preparar",
+        applicability=(
+            "aplicavel" if result.get("sidequests_ativas") is not None
+            else "nao_aplicavel"
+        ),
     )
 
 
@@ -94,7 +128,13 @@ def install_conclusion(
 ) -> dict[str, Any]:
     """Instala fatos, terminais e efeitos exactly-once pelo journal existente."""
 
-    return install(repo, prepared, transaction=transaction)
+    result = install(repo, prepared, transaction=transaction)
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel",
+    )
 
 
 def check(repo: Path) -> dict[str, Any]:

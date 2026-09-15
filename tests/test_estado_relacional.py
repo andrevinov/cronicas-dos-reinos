@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -60,6 +61,51 @@ class RelationshipStateRepositoryTest(unittest.TestCase):
         self.assertIn("estado/npcs/sella_conferente_galeria.yaml", data["fontes"])
         self.assertIn("estado/relacoes/sella_conferente_galeria.yaml", data["fontes"])
         self.assertNotIn(estado_relacional.CONTRACT.as_posix(), data["fontes"])
+
+
+class RelationshipStatePersistentIdentityTest(unittest.TestCase):
+    def check(self, payload, entry):
+        with tempfile.TemporaryDirectory() as temporary:
+            repo = Path(temporary)
+            files = {
+                estado_relacional.CONTRACT: {"schema_estado_relacional": 1},
+                estado_relacional.REL_INDEX: {"relacoes": {"npc_fixture": {}}},
+                estado_relacional.NPC_INDEX: {
+                    "quantidade": 1,
+                    "npcs": {
+                        "npc_fixture": {
+                            "arquivo": "estado/npcs/npc_fixture.yaml",
+                            **entry,
+                        }
+                    },
+                },
+                Path("estado/npcs/npc_fixture.yaml"): {"npc": payload},
+            }
+            for relative, value in files.items():
+                path = repo / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(yaml.safe_dump(value), encoding="utf-8")
+            return estado_relacional.check(repo)
+
+    def test_memoria_qualitativa_nao_exige_promocao_a_medidores(self):
+        identity = {"persistencia": "persistente_sem_agenda"}
+        self.assertEqual(self.check(identity, identity), [])
+
+    def test_ausencia_de_medidores_sem_identidade_persistente_falha(self):
+        self.assertTrue(self.check({}, {}))
+
+    def test_medidores_invalidos_ou_divergentes_no_stub_continuam_falhando(self):
+        identity = {"persistencia": "persistente_sem_agenda"}
+        for payload, entry in (
+            ({**identity, "medidores": None}, identity),
+            (identity, {**identity, "medidores": {"confianca": 3}}),
+            ({**identity, "medidores": {"confianca": 11}}, identity),
+            ({**identity, "medidores": {"confianca": 3}},
+             {**identity, "medidores": {"confianca": 4}}),
+            (identity, {}),
+        ):
+            with self.subTest(payload=payload, entry=entry):
+                self.assertTrue(self.check(payload, entry))
 
 
 class RelationshipStateDeltaTest(unittest.TestCase):

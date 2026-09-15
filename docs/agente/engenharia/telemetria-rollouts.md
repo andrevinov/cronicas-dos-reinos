@@ -69,10 +69,21 @@ custo modular. Sinais dos módulos `context_and_memory`,
 `rules_and_character_state` são extraídos das operações que já existem; nenhuma
 chamada é adicionada ao turno.
 
-Um marcador não prova elegibilidade. Na ausência de prova, o ledger mantém
-`eligibility_observed: indeterminada`. A decisão
-`--sem-oportunidade-sidequest` é um `gate_neutro`, com efeito falso, e não uma
-materialização.
+Um marcador ou uma declaração não prova elegibilidade. Na ausência de prova, o
+ledger mantém `eligibility_observed: indeterminada`. A decisão
+`--sem-oportunidade-sidequest` é um `gate_neutro`, sem efeito material, e não um
+verdadeiro negativo automático. A implementação 2.0.1 emite
+`schema_avaliacao_oportunidade_sidequest: 1`, separando declaração, decisão
+efetiva, resultado esperado e classificação. Somente recibo pontuável ou
+adjudicação alimenta VP/VN/FP/FN; indeterminados não entram no denominador.
+
+A integração canônica 2.0.0/régua 4.0.0 emite
+`schema_avaliacao_integracao_canonica: 1` em toda oferta materializada e para
+cada missão processada em resposta, progresso ou terminal. O recibo contém uma
+referência opaca, não contém evento, intenção, fonte nem relação reservada. O
+detector 4.2.0 usa esses recibos como fonte de verdade da matriz VP/VN/FP/FN;
+comandos e marcadores servem somente para provar quantos recibos deveriam
+existir. Recibo ausente ou incompleto abre `falha_instrumentacao`, nunca N/D.
 
 Operações adversariais emitem `consulta`, `compromisso` e `efeito` como eventos
 separados do pai `adversarial_operations`. `operacoes_simultaneas: true` ativa a
@@ -153,8 +164,23 @@ e adjudicação. Pendência não vira falha confirmada. Agência, sigilo e integ
 de rolagem são guardrails separados: não participam nem podem ser compensados
 pela média. O ledger nunca cria nota literária automática.
 
-O detector modular vigente é `3.0.0`, pois a unidade de evidência e o contrato
-de avaliação mudaram de forma incompatível. Cada evento conserva também
+O detector modular vigente é `4.2.0`. A linha 4.2 aplica o contrato de cobertura
+fail-closed aos doze módulos: cada atividade esperada precisa de recibo completo;
+ausência, incompletude ou duplicação bloqueia a nota como falha de instrumentação.
+Um recibo explícito pode declarar `nao_aplicavel` ou `indeterminado`; N/D fica
+reservado a zero atividade avaliativa. A integração canônica conserva seu recibo
+específico por missão, enquanto os outros onze módulos usam também
+`schema_avaliacao_cobertura_modular: 1`. A linha 4.1 acrescentou recibos por
+atividade e auditoria de completude da integração canônica. A linha 4 introduziu
+a verdade avaliativa independente da declaração de oportunidade, a matriz de
+confusão e a exclusão explícita dos indeterminados. A linha 3 já distinguia
+consulta, gate e efeito e
+só reconhecia o programa
+efetivamente invocado. Menções encontradas por busca/leitura não ativam módulo,
+chamadas aninhadas no tool unificado são desdobradas por operação observada e
+gatilhos espaciais tipados do `cronica preparar` são atribuídos à fachada
+`scene_world_projection`, mesmo sem uma chamada CLI adicional.
+Cada evento conserva também
 `module_implementation_version` e `module_evaluation_version`, impedindo que uma
 regeneração atribua ao passado a versão corrente do catálogo.
 

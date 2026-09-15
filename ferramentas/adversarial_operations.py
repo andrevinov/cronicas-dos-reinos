@@ -15,7 +15,7 @@ from typing import Any
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import integridade_adversarial as _integrity
 import operacoes_concorrentes as _operations
 
@@ -92,7 +92,12 @@ def _event(
     if count is not None:
         event["quantidade_frentes"] = count
         event["operacoes_simultaneas"] = count > 1
-    return event
+    return attach_coverage(
+        event,
+        module_id=MODULE_ID,
+        phase=kind,
+        applicability="aplicavel",
+    )
 
 
 # Contrato de integridade Task44: API pública mantida sob o módulo pai.

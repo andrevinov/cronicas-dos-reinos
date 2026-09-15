@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import hashlib
+import random
+import shutil
 import sys
 import tempfile
 import unittest
@@ -15,6 +17,8 @@ if str(TOOLS) not in sys.path:
 
 import cena_mundo
 import npc_stubs
+import nomes_npcs
+import npc_continuity_and_social_behavior as npc_continuity
 
 
 class AutomaticNpcStubTest(unittest.TestCase):
@@ -234,6 +238,44 @@ class AutomaticNpcStubTest(unittest.TestCase):
             yaml.safe_load((self.repo / "estado/npcs/index.yaml").read_text(encoding="utf-8"))["quantidade"],
             0,
         )
+
+    def _reserve_catalog_name(self, key):
+        shutil.copyfile(ROOT / nomes_npcs.CATALOG, self.repo / nomes_npcs.CATALOG)
+        return npc_continuity.generate_name(
+            self.repo, reservation=key, gender="masculino", race="Humano",
+            region="The Vast", rng=random.Random(7),
+        )
+
+    def test_catalogo_reserva_atravessa_preparar_confirmar_e_reencontro(self):
+        result = self._reserve_catalog_name("catalogo-pessoa-1")
+        before = self._digest()
+        prepared = cena_mundo.prepare_scene(self.repo, scene_id="catalogo-cena", npcs=[result["nome_completo"]])
+        self.assertEqual(before, self._digest())
+        self.assertEqual(prepared["stubs_npc"][0]["reserva_nome"], result["reserva"])
+        self.assertIn(nomes_npcs.CATALOG.as_posix(), prepared["fontes_lidas"])
+        self.assertIn(nomes_npcs.RESERVATIONS.as_posix(), prepared["fontes_lidas"])
+        budget = yaml.safe_load((ROOT / "baseline/npc-stub-orcamento.yaml").read_text(encoding="utf-8"))
+        self.assertLessEqual(len(prepared["fontes_lidas"]), budget["limites"]["max_fontes_para_npc_novo"])
+        committed = cena_mundo.confirm_scene(self.repo, preparation_id=prepared["preparacao_id"], scene_id="catalogo-cena", npcs=[result["nome_completo"]])
+        self.assertTrue(committed["stubs_npc_persistidos"][0]["criado"])
+        npc_id = prepared["npcs_canonicos"][0]
+        fragment = yaml.safe_load((self.repo / f"estado/npcs/{npc_id}.yaml").read_text(encoding="utf-8"))
+        self.assertEqual(fragment["npc"]["nomeacao"]["reserva"], result["reserva"])
+        resumed = cena_mundo.prepare_scene(self.repo, scene_id="catalogo-reencontro", npcs=[result["nome_completo"]])
+        self.assertEqual(resumed["npcs_canonicos"], [npc_id])
+        self.assertNotIn(nomes_npcs.CATALOG.as_posix(), resumed["fontes_lidas"])
+        self.assertNotIn(nomes_npcs.RESERVATIONS.as_posix(), resumed["fontes_lidas"])
+
+    def test_confirmacao_publica_recusa_reserva_trocada_apos_preparo(self):
+        first = self._reserve_catalog_name("catalogo-pessoa-1")
+        prepared = cena_mundo.prepare_scene(self.repo, scene_id="catalogo-obsoleto", npcs=[first["nome_completo"]])
+        nomes_npcs.cancel(self.repo, first["reserva"])
+        second = self._reserve_catalog_name("catalogo-pessoa-2")
+        self.assertEqual(first["nome_completo"], second["nome_completo"])
+        before = self._digest()
+        with self.assertRaisesRegex(cena_mundo.SceneGateError, "obsoleta"):
+            cena_mundo.confirm_scene(self.repo, preparation_id=prepared["preparacao_id"], scene_id="catalogo-obsoleto", npcs=[first["nome_completo"]])
+        self.assertEqual(before, self._digest())
 
 
 class NpcStubBudgetContractTest(unittest.TestCase):

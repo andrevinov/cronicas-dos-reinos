@@ -30,7 +30,14 @@ Qualquer promoção continua explícita e separada.
 
 `cena_mundo.py preparar` continua read-only. Quando uma referência de NPC não existe, a porta tenta tratá-la como identidade nova somente se ela parecer um **nome próprio reutilizável e inequívoco**.
 
-Exemplo:
+Na campanha com o catálogo de nomes instalado, NPC original novo precisa de
+reserva prévia por `npc_continuity_and_social_behavior.py gerar-nome`; referência
+sem reserva falha. Nome imposto por fonte autorizada/jogador/parentesco exige
+`registrar-nome` com evidência. A regra completa fica em
+`docs/agente/narrativa/modulo-continuidade-npc-v2.md`. NPC já indexado não sorteia
+nome nem é renomeado. Fixtures legadas sem catálogo preservam seu contrato.
+
+Exemplo de nome já reservado:
 
 ```text
 Tomas -> proposta determinística de npc_id: tomas
@@ -52,7 +59,7 @@ A criação automática nunca usa fuzzy matching para escolher uma pessoa.
 
 - alias que resolve para mais de um NPC falha;
 - nome novo que colide com identidade existente falha;
-- referência muito parecida com identidade conhecida é tratada como possível typo e exige desambiguação;
+- referência sem reserva intencional muito parecida com identidade conhecida é tratada como possível typo e exige desambiguação;
 - um alias já resolvido por relações/perfis é conferido contra stubs existentes para não esconder homônimo posterior;
 - o ID estável completo sempre vence a ambiguidade.
 
@@ -68,7 +75,7 @@ A camada não roda como scheduler e não adiciona leitura ao turno comum.
 
 - NPC já resolvido por ID/nome completo: custo anterior preservado;
 - alias conhecido: pode consultar também o índice compacto de NPCs para detectar colisão;
-- NPC novo: consulta dirigida aos índices de identidades e só escreve no `confirmar`;
+- NPC novo: consulta índices, CSV e reserva nominal (até cinco fontes de bootstrap); só escreve no `confirmar`, preservando a origem do nome;
 - stub recém-criado não abre perfil de oportunidade e não sorteia side quest.
 
 A classificação inicial `persistente_sem_agenda` deve ser alterada explicitamente se o NPC for promovido no futuro.

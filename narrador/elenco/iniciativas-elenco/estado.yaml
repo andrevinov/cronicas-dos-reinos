@@ -239,6 +239,125 @@ decisoes:
     ticket_id: 3e1bd8da4779230c7e79
     transacao_id: s021-nv04-3c72f04c76872607af4190276e6e08a7
     historico: []
+  ini-e38edf5ea2853e7650c9:
+    id: ini-e38edf5ea2853e7650c9
+    janela_id: cena-ee09a1c1fcb6c0b36e2e
+    janela_tipo: cena
+    cena_id: s022-ren-primeiros-socorros-darran-sotao
+    npc_id: darran_vell
+    presenca: elenco_cena
+    proposta_digest: b5943730923f44b6d13a90b4289122c04d816b81d5624daabcfe230c28ca19f1
+    resultado: nao_elegivel
+    motivo_codigo: indisponibilidade
+    motivo: O estado relacional carregado não autoriza uma iniciativa dirigida a Ren
+      nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 9f97c35ac8070b036f56
+    transacao_id: s022-nv04-bad831e330ff477902e7ff27ed38f4bf
+    historico: []
+  ini-57c5001c042c5b9cf738:
+    id: ini-57c5001c042c5b9cf738
+    janela_id: cena-66642404f026d0f48ea3
+    janela_tipo: cena
+    cena_id: s022-ren-e-darran-conversam-na-casa-de-sopas
+    npc_id: darran_vell
+    presenca: ausente
+    proposta_digest: 08d7708fa2f559607f7458ef96ecac3348d218192440aa7ba42cff1c4091b40f
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: b670c8a5047df7423833
+    transacao_id: s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
+    historico: []
+  ini-0b325463c5c3fc20f21a:
+    id: ini-0b325463c5c3fc20f21a
+    janela_id: cena-66642404f026d0f48ea3
+    janela_tipo: cena
+    cena_id: s022-ren-e-darran-conversam-na-casa-de-sopas
+    npc_id: darran_vell
+    presenca: elenco_cena
+    proposta_digest: b5943730923f44b6d13a90b4289122c04d816b81d5624daabcfe230c28ca19f1
+    resultado: nao_elegivel
+    motivo_codigo: indisponibilidade
+    motivo: O estado relacional carregado não autoriza uma iniciativa dirigida a Ren
+      nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: d11c9618a4522ee0593e
+    transacao_id: s022-nv04-c91f123a4cca516706a0661bac18d700
+    historico: []
+  ini-e9e7d158616433b71a80:
+    id: ini-e9e7d158616433b71a80
+    janela_id: cena-d7cc2abc52e1ee38769b
+    janela_tipo: cena
+    cena_id: s022-ren-leva-darran-a-casa-de-tyr
+    npc_id: darran_vell
+    presenca: ausente
+    proposta_digest: 08d7708fa2f559607f7458ef96ecac3348d218192440aa7ba42cff1c4091b40f
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 07379e9264c59d7b1d29
+    transacao_id: s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+    historico: []
+  ini-2f3751fb21b03d06617b:
+    id: ini-2f3751fb21b03d06617b
+    janela_id: cena-c546b7dc57c626c20581
+    janela_tipo: cena
+    cena_id: s022-ren-se-despede-de-halessa-e-darran
+    npc_id: darran_vell
+    presenca: ausente
+    proposta_digest: 08d7708fa2f559607f7458ef96ecac3348d218192440aa7ba42cff1c4091b40f
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: c4c05805e706c8706b68
+    transacao_id: s022-nv04-e0ae0ab97edb902fc964d568c851ea1c
+    historico: []
+  ini-104be2c9a47c31bd5fd9:
+    id: ini-104be2c9a47c31bd5fd9
+    janela_id: cena-2921b4273dba2af2ea56
+    janela_tipo: cena
+    cena_id: s022-ren-entra-pelas-sombras-e-aborda-tomas
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: c48828405b86e725b883
+    transacao_id: s022-b9b0bd70adbbfd3f
+    historico: []
+  ini-31118004f14961cd1bc9:
+    id: ini-31118004f14961cd1bc9
+    janela_id: cena-6dc36d6efd7f5254c8bb
+    janela_tipo: cena
+    cena_id: s022-ren-entrega-retratacao-e-propoe-seguir-portador
+    npc_id: tomas_rell
+    presenca: ausente
+    proposta_digest: 88eb394f12e7fc1e782dba7730f3d9397e69a3821d3263c49b5883650c69f92e
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: f2de0c8b22df8d889933
+    transacao_id: s022-nv04-e3b8cd845655a29f4e08122a92174c53
+    historico: []
 ordem_recente:
 - ini-27f6a7dd0bcf2bc4f85d
 - ini-8a0c7852cab9f17ab71d
@@ -254,3 +373,10 @@ ordem_recente:
 - ini-513c763f0872476fd5aa
 - ini-fce647a5a7fff08481b0
 - ini-0e6e403cedac499223b4
+- ini-e38edf5ea2853e7650c9
+- ini-57c5001c042c5b9cf738
+- ini-0b325463c5c3fc20f21a
+- ini-e9e7d158616433b71a80
+- ini-2f3751fb21b03d06617b
+- ini-104be2c9a47c31bd5fd9
+- ini-31118004f14961cd1bc9

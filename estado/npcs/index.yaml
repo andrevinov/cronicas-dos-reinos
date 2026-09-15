@@ -3,7 +3,7 @@ natureza: indice_medidores_npcs
 escala: estado/npcs/escala.yaml
 contrato_relacional: estado/npcs/relacionamento-v1.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
-quantidade: 43
+quantidade: 44
 npcs:
   nera_vell:
     nome: Nera Vell
@@ -417,3 +417,9 @@ npcs:
     arquivo: estado/npcs/aiko_matsuda.yaml
     historico: historico/npcs/aiko_matsuda.yaml
     bytes_fragmento: 225
+  darran_vell:
+    nome: Darran Vell
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/darran_vell.yaml
+    historico: historico/npcs/darran_vell.yaml
+    bytes_fragmento: 824

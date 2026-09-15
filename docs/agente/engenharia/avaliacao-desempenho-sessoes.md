@@ -27,6 +27,11 @@ poetry run python ferramentas/aceitacao_modular_v2.py check
 `pronta_para_primeira_sessao_real` significa que o gate técnico passou. Não é
 uma nota de jogo e não inaugura a curva longitudinal.
 
+Se um pacote real já existir com respostas sem referência única, o aceite real
+permanece `pendente`, com a quantidade de respostas afetadas no diagnóstico.
+Isso não reprova a prontidão técnica nem autoriza corrigir retroativamente as
+referências no histórico ou aceitar a sessão como baseline operacional.
+
 ## 1. Durante a sessão
 
 Cada resposta final visível recebe exatamente uma referência:
@@ -100,14 +105,53 @@ Por módulo:
 - manifestações confirmadas, falsos positivos/negativos e problemas;
 - versão de implementação, versão de avaliação e confiança da amostra.
 
+Para `sidequest_authoring` a partir da implementação 2.0.1/régua 4.0.0, a
+declaração positiva ou negativa é apenas cobertura estrutural. O recibo objetivo
+ou uma adjudicação produz VP, VN, FP, FN ou `indeterminado`. Precisão mede
+`VP/(VP+FP)`, cobertura mede `VP/(VP+FN)` e a nota de calibração usa acurácia
+balanceada somente quando as classes positiva e negativa possuem denominador.
+Indeterminado fica visível e fora da nota; uma coleção de negativas declaradas
+não fabrica desempenho alto.
+
+Para `canonical_quest_integration` 2.0.0/régua 4.0.0, a unidade é cada atividade
+de sidequest. Recibos completos sustentam a matriz objetiva; a calibração usa a
+média das classes efetivamente observadas, com confiança baixa enquanto a
+amostra for pequena. Se houve atividade mas nenhuma ponte era elegível, o card
+mostra **não aplicável**, não N/D e não nota alta. Se um recibo esperado estiver
+ausente ou incompleto, mostra **falha de instrumentação** e bloqueia a nota. N/D
+fica reservado ao caso em que nenhuma atividade do domínio foi observada.
+
+A mesma semântica fail-closed vale para todos os módulos na régua 4.0.0. O
+detector deriva atividades obrigatórias das portas públicas executadas e exige
+um recibo estruturado de cada fachada. Recibo completo `nao_aplicavel` produz
+N/A; recibo completo `indeterminado` bloqueia a nota sem fabricar N/D; atividade
+sem recibo completo produz **falha de instrumentação**. Assim, N/D significa
+somente que a sessão não gerou unidade avaliativa para aquele módulo.
+
+Consulta, decisão, gate e efeito são estados distintos. Um gate neutro responde
+uma oportunidade elegível sem fabricar efeito; consulta ou decisão sem resultado
+material não é falha de eficácia. A nota modular só existe quando há evidência
+adjudicável de calibração ou efeito: confiança do detector e latência exposta,
+isoladamente, permanecem diagnósticos e não fabricam desempenho numérico.
+Manifestações confirmadas/parciais de boa ativação alimentam efeitos adequados;
+efeito incorreto, timing e continuidade alimentam efeitos inadequados. Dimensões
+de auditoria semântica adequadas/inadequadas entram na eficácia da entrega
+narrativa; guardrails continuam separados e não compensáveis.
+Uma manifestação de possível guardrail só vira violação crítica quando sua
+adjudicação é `confirmada`; ela não entra na nota numérica do módulo.
+
 Por sessão: calibração 30%, eficácia 30%, confiabilidade 20%, economia 15% e
 fluidez 5%. N/D é excluído e os pesos restantes são renormalizados. Não existe
 eixo numérico do jogador.
 
 Prioridade combina 70% do déficit de experiência/desempenho e 30% da parcela de
-custo. Quando a nota é N/D, usa-se déficit de evidência de 50 apenas para ordenar
-a fila; `prioridade_provisoria` deixa explícito que isso não é uma nota
-inventada.
+custo. Zero atividade e inaplicabilidade confirmada não geram déficit; uma falha
+de instrumentação usa déficit 100 para não desaparecer no fim da fila. Casos
+indeterminados continuam provisórios sem nota inventada. `sem_evidencia`,
+`evidencia_insuficiente` e **inaplicabilidade confirmada** são estados
+diferentes. Se nenhuma oportunidade elegível exercitou
+autoria ou oferta de sidequest, o gate é reportado separadamente e nem déficit
+nem custo exposto entram na prioridade do módulo.
 
 Uma sessão é provisória. Estabilidade exige ao menos três sessões comparáveis e
 dez oportunidades por módulo.

@@ -13,7 +13,10 @@ O seletor lê `evaluation/sessions/index.json`, reconstruído pelo gerador. O
 painel mantém a sessão 021 como referência `legacy-v1`; sessões novas usam
 `modules-v2`, mostram somente os doze módulos-pai no ranking e abrem suas
 subcapacidades no diagnóstico. Versões de implementação e avaliação aparecem
-em cada cartão, e a tendência não mistura chaves de comparabilidade.
+em cada cartão, e a tendência não mistura chaves de comparabilidade. Na régua
+4.0.0, cada cartão também mostra a cobertura fail-closed: N/D significa zero
+atividade; N/A exige recibo explícito; recibo ausente, incompleto ou duplicado
+aparece como falha de instrumentação e bloqueia a nota.
 
 ## Manifestação do jogador
 

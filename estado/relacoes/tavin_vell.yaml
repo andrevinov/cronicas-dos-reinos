@@ -31,5 +31,37 @@ relacao:
   momentos_de_vinculo:
   - Ao ver Ren retornar à carroça verde, Tavin abandonou a tarefa que fazia e o abraçou imediatamente, reforçando
     a associação de Ren com retorno e segurança.
+  memorias_importantes:
+  - evidencia:
+      campo: narracao
+      trecho: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
+    id: mem_393052db78ef3c6f96122975
+    participantes:
+    - nera_vell
+    - ren
+    - silva_elkwood
+    - tavin_vell
+    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
+    texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
+    tipo: marco
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: tavin_vell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Ren mostrou a Tavin o pequeno símbolo Kagehira escondido no traje e explicou que aquela roupa só é
+        usada em missões.
+    fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
+    id: mem_4dfb179648a0390251ded30a
+    participantes:
+    - ren
+    - tavin_vell
+    registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
+    texto: Ren mostrou a Tavin o pequeno símbolo Kagehira escondido no traje e explicou que aquela roupa só é usada
+      em missões.
+    tipo: informacao
 conteudo_mais_antigo_no_historico:
   riscos: 10

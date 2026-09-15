@@ -250,14 +250,482 @@ class ModularTelemetryTest(unittest.TestCase):
             if event["module_id"] == "sidequest_authoring"
             and event["capability_id"] == "opportunity_gate"
         )
-        self.assertEqual(gate["eligibility_observed"], "nao")
+        self.assertEqual(gate["eligibility_observed"], "indeterminada")
         self.assertEqual(gate["activation_observed"], "gate_neutro")
-        self.assertFalse(gate["effect_observed"])
+        self.assertIsNone(gate["effect_observed"])
         self.assertIsNone(gate["materialized_result_observed"])
         self.assertEqual(
             report["narration_turns"]["narrative_system_turns"]["emergent_sidequest_opportunity"],
             0,
         )
+
+    def test_decisao_negativa_tipificada_prevalece_sobre_marcadores_legados(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "Ren observa a rua."),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id neutro --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\n",
+            ),
+            call(
+                "turno-1",
+                "s1",
+                "python3 ferramentas/sidequests_emergentes.py status",
+            ),
+            output("turno-1", "s1", "Process exited with code 0\nsem oferta nova\n"),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.fixture"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\nfase: concluida\n"
+                "emergent_sidequest_opportunity: {resultado: sem_oportunidade}\n"
+                "sidequest_emergente_task46\n"
+                "emergent_sidequest_authoring\n",
+            ),
+            assistant("turno-1", "Nada novo se oferece como missão."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-gate-tipificado.jsonl"))
+        authoring_events = [
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "sidequest_authoring"
+        ]
+
+        self.assertEqual(len(authoring_events), 1)
+        gate = authoring_events[0]
+        self.assertEqual(gate["capability_id"], "opportunity_gate")
+        self.assertEqual(gate["eligibility_observed"], "indeterminada")
+        self.assertEqual(gate["activation_observed"], "gate_neutro")
+        self.assertIsNone(gate["effect_observed"])
+        self.assertEqual(
+            gate["observable_evidence"], ["command:sidequest_gate_sem_oportunidade"]
+        )
+
+    def test_recibo_objetivo_prevalece_sobre_declaracao_de_oportunidade(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "Ren observa a rua."),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id objetiva --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\n"
+                "avaliacao_oportunidade_sidequest:\n"
+                "  schema_avaliacao_oportunidade_sidequest: 1\n"
+                "  module_id: sidequest_authoring\n"
+                "  versao_implementacao: 2.0.0\n"
+                "  versao_avaliacao: 4.0.0\n"
+                "  declaracao: sem_oportunidade\n"
+                "  decisao_efetiva: oportunidade\n"
+                "  resultado_esperado: elegivel\n"
+                "  classificacao: verdadeiro_positivo\n"
+                "  incluida_na_pontuacao: true\n"
+                "  candidatos_estruturados: 1\n"
+                "  motivos:\n  - causa_causal_validada\n",
+            ),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.objetiva"),
+            output("turno-1", "c1", "Process exited with code 0\nfase: concluida\n"),
+            assistant("turno-1", "Uma causa concreta permanece disponível.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-gate-objetivo.jsonl"))
+        gate = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "sidequest_authoring"
+            and event["capability_id"] == "opportunity_gate"
+        )
+        objective = report["task47_opportunity_decision_gate"]["objective_assessment"]
+
+        self.assertEqual(gate["eligibility_observed"], "sim")
+        self.assertEqual(gate["activation_observed"], "decisao")
+        self.assertEqual(gate["observed_result"], "verdadeiro_positivo")
+        self.assertEqual(objective["receipts"], 1)
+        self.assertEqual(objective["scoreable"], 1)
+        self.assertEqual(objective["confusion_matrix"]["verdadeiro_positivo"], 1)
+
+    def test_integracao_canonica_usa_recibo_seguro_por_missao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "q1",
+                "python3 ferramentas/canonical_quest_integration.py responder sqm-fixture aceitar",
+            ),
+            output(
+                "turno-1",
+                "q1",
+                "Process exited with code 0\nresultado: aceita\n"
+                "avaliacoes_integracao_canonica:\n"
+                "- schema_avaliacao_integracao_canonica: 1\n"
+                "  assessment_id: cqi-fixture\n"
+                "  module_id: canonical_quest_integration\n"
+                "  versao_implementacao: 2.0.0\n"
+                "  versao_avaliacao: 4.0.0\n"
+                "  mission_ref: sqm-opaca\n"
+                "  gatilho: resposta\n"
+                "  classificacao: verdadeiro_positivo\n"
+                "  incluida_na_pontuacao: true\n"
+                "  recibo_completo: true\n"
+                "  motivos:\n  - ledger_task42_consultado\n",
+            ),
+            call(
+                "turno-1",
+                "q2",
+                "python3 ferramentas/canonical_quest_integration.py responder sqm-fixture aceitar",
+            ),
+            output(
+                "turno-1",
+                "q2",
+                "Process exited with code 0\nresultado: replay_sem_duplicacao\n"
+                "avaliacoes_integracao_canonica:\n"
+                "- schema_avaliacao_integracao_canonica: 1\n"
+                "  assessment_id: cqi-fixture\n"
+                "  module_id: canonical_quest_integration\n"
+                "  versao_implementacao: 2.0.0\n"
+                "  versao_avaliacao: 4.0.0\n"
+                "  mission_ref: sqm-opaca\n"
+                "  gatilho: resposta\n"
+                "  classificacao: verdadeiro_positivo\n"
+                "  incluida_na_pontuacao: true\n"
+                "  recibo_completo: true\n"
+                "  motivos:\n  - ledger_task42_consultado\n",
+            ),
+            assistant("turno-1", "A decisão de Ren foi registrada.\nRODAPE_CANONICO"),
+        ]
+
+        report = mod.analyze(self.rollout(rows, "rollout-canonical-receipt.jsonl"))
+        gate = report["canonical_quest_integration_gate"]
+
+        self.assertTrue(gate["ok"])
+        self.assertEqual(gate["activity_units"], 2)
+        self.assertEqual(gate["receipts"], 2)
+        self.assertEqual(gate["unique_assessments"], 1)
+        self.assertEqual(gate["duplicate_receipts"], 1)
+        self.assertEqual(gate["missing_receipts"], 0)
+        self.assertEqual(gate["incomplete_receipts"], 0)
+        self.assertEqual(gate["confusion_matrix"]["verdadeiro_positivo"], 1)
+        self.assertNotIn("mission_id", gate["assessments"][0])
+
+    def test_atividade_sem_recibo_vira_falha_de_instrumentacao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "q1",
+                "python3 ferramentas/oportunidades.py responder sqm-fixture aceitar",
+            ),
+            output("turno-1", "q1", "Process exited with code 0\nresultado: aceita\n"),
+            assistant("turno-1", "A decisão de Ren foi registrada.\nRODAPE_CANONICO"),
+        ]
+
+        report = mod.analyze(self.rollout(rows, "rollout-canonical-missing.jsonl"))
+        gate = report["canonical_quest_integration_gate"]
+        event = next(
+            item
+            for item in report["modular_ledger_v2"]["events"]
+            if item["module_id"] == "canonical_quest_integration"
+            and item["observed_result"] == "falha_instrumentacao"
+        )
+
+        self.assertFalse(gate["ok"])
+        self.assertEqual(gate["activity_units"], 1)
+        self.assertEqual(gate["receipts"], 0)
+        self.assertEqual(gate["missing_receipts"], 1)
+        self.assertFalse(event["effect_observed"])
+
+    def test_texto_de_contrato_nao_materializa_operacao_ou_projecao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id contrato --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\n"
+                "schema_pressao_narrativa: 1\npressao_narrativa: {itens: []}\n"
+                "contrato_conclusao: resolver_operacao_adversarial somente se comprometida\n"
+                "fontes_lidas:\n- narrador/mundo/incidentes/index.yaml\n"
+                "- narrador/mundo/condicoes-persistentes.yaml\n",
+            ),
+            assistant("turno-1", "O preparo não materializa operação alguma."),
+        ]
+        events = mod.analyze(self.rollout(rows, "rollout-contract-text.jsonl"))[
+            "modular_ledger_v2"
+        ]["events"]
+        module_ids = {event["module_id"] for event in events}
+        routing = next(
+            event
+            for event in events
+            if event["module_id"] == "causal_narrative_routing"
+        )
+
+        self.assertNotIn("adversarial_operations", module_ids)
+        self.assertNotIn("scene_world_projection", module_ids)
+        self.assertEqual(routing["activation_observed"], "consulta")
+        self.assertIsNone(routing["effect_observed"])
+        self.assertEqual(routing["call_ids_observed"], ["p1"])
+
+    def test_rm04_cronica_tipifica_transito_neutro_sem_inventar_efeito(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id transito "
+                "--sem-oportunidade-sidequest --transito-urbano ravens_bluff",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\n"
+                "gates:\n- tipo: transito_urbano\n  resultado: rotina\n"
+                "transito_urbano:\n  resultado: rotina\n  reutilizado: false\n",
+            ),
+            assistant("turno-1", "O trajeto segue sem incidente."),
+        ]
+        events = mod.analyze(self.rollout(rows, "rollout-rm04-transit.jsonl"))[
+            "modular_ledger_v2"
+        ]["events"]
+        projection = [
+            event
+            for event in events
+            if event["module_id"] == "scene_world_projection"
+        ]
+
+        self.assertEqual(len(projection), 1)
+        event = projection[0]
+        self.assertEqual(event["capability_id"], "local_incidents")
+        self.assertEqual(event["eligibility_observed"], "sim")
+        self.assertEqual(event["activation_observed"], "gate_neutro")
+        self.assertEqual(event["observed_result"], "projecao_espacial_neutra")
+        self.assertIsNone(event["effect_observed"])
+        self.assertEqual(event["call_ids_observed"], ["p1"])
+
+    def test_rm04_permanencia_expoe_condicoes_e_continuidade_reutilizada(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id permanencia "
+                "--sem-oportunidade-sidequest --permanencia-local",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\n"
+                "gates:\n- tipo: permanencia_espacial\n  resultado: calma_espacial\n"
+                "- tipo: condicoes_ambientais\n  resultado: consultadas\n"
+                "permanencia_espacial:\n  reutilizado: true\n"
+                "condicoes_persistentes_ativas: 1\n",
+            ),
+            assistant("turno-1", "A permanência conserva a mesma janela espacial."),
+        ]
+        events = mod.analyze(self.rollout(rows, "rollout-rm04-permanence.jsonl"))[
+            "modular_ledger_v2"
+        ]["events"]
+        projection = {
+            event["capability_id"]: event
+            for event in events
+            if event["module_id"] == "scene_world_projection"
+        }
+
+        self.assertEqual(
+            set(projection),
+            {"local_incidents", "persistent_conditions", "spatial_continuity"},
+        )
+        self.assertEqual(projection["local_incidents"]["eligibility_observed"], "sim")
+        self.assertEqual(
+            projection["persistent_conditions"]["observed_result"],
+            "condicoes_ativas_projetadas",
+        )
+        self.assertEqual(
+            projection["spatial_continuity"]["observed_result"],
+            "reserva_espacial_reutilizada",
+        )
+        self.assertTrue(projection["spatial_continuity"]["effect_observed"])
+
+    def test_rm04_confirmacao_material_e_atribuida_ao_preparo_espacial(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id local "
+                "--sem-oportunidade-sidequest --local porto --acao entrar "
+                "--tier 1 --periculosidade baixa",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\n"
+                "incidente_mundo: {resultado: avaliar_incidente}\n",
+            ),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.local"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\nfase: concluida\n"
+                "microevento_confirmado: true\n",
+            ),
+            assistant("turno-1", "O incidente local é confirmado.\nRODAPE_CANONICO"),
+        ]
+        event = next(
+            event
+            for event in mod.analyze(self.rollout(rows, "rollout-rm04-confirm.jsonl"))[
+                "modular_ledger_v2"
+            ]["events"]
+            if event["module_id"] == "scene_world_projection"
+            and event["capability_id"] == "local_incidents"
+        )
+
+        self.assertEqual(event["activation_observed"], "efeito")
+        self.assertEqual(event["materialized_result_observed"], "efeito_materializado")
+        self.assertTrue(event["effect_observed"])
+        self.assertEqual(event["call_ids_observed"], ["p1", "c1"])
+
+    def test_busca_que_menciona_modulos_nao_e_execucao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "r1",
+                "rg -n 'cronica preparar|sidequest_authoring.py|"
+                "resolver_operacao_adversarial|sidequest_progression' docs ferramentas",
+            ),
+            output(
+                "turno-1",
+                "r1",
+                "Process exited with code 0\n"
+                "sidequest_materializada\noperacao_resolvida\n"
+                "condicao_registrada\nlote_aplicado\n",
+            ),
+            assistant("turno-1", "A busca não executou nenhum módulo narrativo."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-search-mentions.jsonl"))
+        events = report["modular_ledger_v2"]["events"]
+        parents = {event["module_id"] for event in events}
+        orchestration = next(
+            event
+            for event in events
+            if event["module_id"] == "turn_and_session_orchestration"
+        )
+
+        self.assertEqual(report["narration_turns"]["orchestration_calls"], 0)
+        self.assertEqual(report["task47_opportunity_decision_gate"]["prepare_calls"], 0)
+        self.assertEqual(orchestration["observed_result"], "orquestracao_ausente")
+        self.assertEqual(orchestration["call_ids_observed"], [])
+        self.assertTrue(
+            {
+                "sidequest_authoring",
+                "sidequest_lifecycle",
+                "scene_world_projection",
+                "world_boundary_resolution",
+                "adversarial_operations",
+            }.isdisjoint(parents)
+        )
+
+    def test_invocacao_encadeada_e_reconhecida_sem_ler_argumento_citado(self) -> None:
+        actual = (
+            "cd /fixture && env PYTHONPATH=. poetry run cronica preparar "
+            "--cena-id teste --sem-oportunidade-sidequest"
+        )
+        mentioned = "rg -n 'poetry run cronica preparar --sem-oportunidade-sidequest' docs"
+        unified = (
+            "const r = await tools.exec_command({\"cmd\":\"poetry run cronica preparar "
+            "--cena-id teste --sem-oportunidade-sidequest\"}); text(r.output);"
+        )
+        unified_js = (
+            "const r = await tools.exec_command({ cmd: \"poetry run cronica preparar "
+            "--cena-id teste --sem-oportunidade-sidequest\", yield_time_ms: 30000 });"
+        )
+
+        self.assertEqual(mod._orchestration_phase(actual), "preparar")
+        self.assertEqual(mod._sidequest_decision_from_command(actual), "sem_oportunidade")
+        self.assertEqual(mod._orchestration_phase(unified), "preparar")
+        self.assertEqual(mod._sidequest_decision_from_command(unified), "sem_oportunidade")
+        self.assertEqual(mod._orchestration_phase(unified_js), "preparar")
+        self.assertEqual(mod._sidequest_decision_from_command(unified_js), "sem_oportunidade")
+        self.assertIsNone(mod._orchestration_phase(mentioned))
+        self.assertIsNone(mod._sidequest_decision_from_command(mentioned))
+
+    def test_tool_unificado_conta_operacoes_aninhadas_realmente_executadas(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            with_turn(
+                "turno-1",
+                "custom_tool_call",
+                name="exec",
+                call_id="u1",
+                input=(
+                    "const p = await tools.exec_command({cmd: \"poetry run cronica "
+                    "preparar --cena-id unificado --sem-oportunidade-sidequest\"});\n"
+                    "const c = await tools.exec_command({cmd: \"poetry run cronica "
+                    "concluir --ticket crn1.unificado\"}); text(c.output);"
+                ),
+            ),
+            output(
+                "turno-1",
+                "u1",
+                "Script completed\nProcess exited with code 0\nfase: concluida\n"
+                "ticket_id: ticket-unificado\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  operacao: concluir\n  estado: concluido\n"
+                "  correlacao:\n    ticket_id: ticket-unificado\n"
+                "  commit:\n    exactly_once: true\n    efeito_novo: true\n",
+            ),
+            assistant("turno-1", "A cena foi concluída.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-unified-pair.jsonl"))
+        metrics = report["narration_turns"]["turn_and_session_orchestration"]
+
+        self.assertEqual(metrics["calls_by_class"]["turno_primario"], 2)
+        self.assertEqual(metrics["exact_prepare_conclude_pairs"], 1)
+        self.assertEqual(report["task47_opportunity_decision_gate"]["prepare_calls"], 1)
+
+    def test_tool_unificado_que_falha_antes_da_chamada_nao_conta_execucao(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            with_turn(
+                "turno-1",
+                "custom_tool_call",
+                name="exec",
+                call_id="u1",
+                input=(
+                    "const cmd = `poetry run cronica concluir --ticket ${ticket}`;\n"
+                    "const encoded = btoa(payload);\n"
+                    "const r = await tools.exec_command({cmd});"
+                ),
+            ),
+            output(
+                "turno-1",
+                "u1",
+                "Script failed\nScript error:\nReferenceError: btoa is not defined\n",
+            ),
+            assistant("turno-1", "A operação não chegou a ser executada."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-unified-prevented.jsonl"))
+        event = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+        )
+
+        self.assertEqual(report["narration_turns"]["orchestration_calls"], 0)
+        self.assertEqual(event["observed_result"], "orquestracao_ausente")
+        self.assertEqual(event["call_ids_observed"], [])
 
     def test_alias_v1_resolve_para_uma_unica_subcapacidade_sem_inventar_elegibilidade(self) -> None:
         rows = self.base_rows() + [
@@ -439,7 +907,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "rules_and_character_state"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertTrue(all(event["detector_version"] == "3.0.0" for event in events))
+        self.assertTrue(all(event["detector_version"] == "4.2.0" for event in events))
 
     def test_rm10_nao_ativa_em_narrativa_pura_ou_delta_generico_de_local(self) -> None:
         rows = self.base_rows() + [
@@ -463,6 +931,81 @@ class ModularTelemetryTest(unittest.TestCase):
         metrics = report["narration_turns"]["rules_and_character_state"]
         self.assertEqual(metrics["rolagens"]["chamadas"], 0)
         self.assertEqual(metrics["estado_personagem_tempo"]["deltas_relevantes"], 0)
+
+    def test_rm10_intencao_de_delta_nao_apaga_commit_posterior(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", "Ren força a atenção apesar do cansaço."),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id foco --sem-oportunidade-sidequest "
+                "--mecanica-json '{\"deltas\":[{\"alvo\":\"estado\",\"caminho\":"
+                "\"recursos.focus.atuais\",\"valor\":-1}]}'",
+            ),
+            output("turno-1", "p1", "Process exited with code 0\nfase: preparacao\n"),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.foco"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\n"
+                "regras_estado_personagem:\n"
+                "  schema_rules_and_character_state: 1\n"
+                "  contrato:\n    obrigacoes_recurso: 1\n"
+                "  mutacoes:\n    deltas_relevantes: 1\n"
+                "  commit:\n    exactly_once: true\n    efeito_novo: true\n",
+            ),
+            assistant("turno-1", "MECÂNICA — Ren gasta 1 Focus.\nRODAPE_CANONICO"),
+        ]
+        event = next(
+            event
+            for event in mod.analyze(self.rollout(rows, "rollout-rm10-pending.jsonl"))[
+                "modular_ledger_v2"
+            ]["events"]
+            if event["module_id"] == "rules_and_character_state"
+            and event["capability_id"] == "character_time_state"
+        )
+
+        self.assertTrue(event["effect_observed"])
+        self.assertEqual(event["materialized_result_observed"], "estado_commitado")
+        self.assertCountEqual(event["call_ids_observed"], ["p1", "c1"])
+
+    def test_rm10_replay_e_recibo_incompleto_nao_viram_falha_de_efeito(self) -> None:
+        for label, new_effect, expected_result in (
+            ("replay", "    efeito_novo: false\n", "replay_sem_duplicacao"),
+            ("legado", "", "estado_sem_prova_de_efeito"),
+        ):
+            with self.subTest(label=label):
+                rows = self.base_rows() + [
+                    user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+                    call(
+                        "turno-1",
+                        "c1",
+                        f"poetry run cronica concluir --ticket crn1.{label}",
+                    ),
+                    output(
+                        "turno-1",
+                        "c1",
+                        "Process exited with code 0\n"
+                        "regras_estado_personagem:\n"
+                        "  schema_rules_and_character_state: 1\n"
+                        "  mutacoes:\n    deltas_relevantes: 1\n"
+                        "  commit:\n    exactly_once: true\n"
+                        f"{new_effect}",
+                    ),
+                    assistant("turno-1", "O estado permanece consistente.\nRODAPE_CANONICO"),
+                ]
+                event = next(
+                    event
+                    for event in mod.analyze(
+                        self.rollout(rows, f"rollout-rm10-{label}.jsonl")
+                    )["modular_ledger_v2"]["events"]
+                    if event["module_id"] == "rules_and_character_state"
+                    and event["capability_id"] == "character_time_state"
+                )
+
+                self.assertEqual(event["observed_result"], expected_result)
+                self.assertIsNone(event["effect_observed"])
+                self.assertIsNone(event["materialized_result_observed"])
 
     def test_rm10_redescoberta_de_cli_nao_conta_como_rolagem(self) -> None:
         rows = self.base_rows() + [
@@ -757,6 +1300,46 @@ class ModularTelemetryTest(unittest.TestCase):
             100,
         )
 
+    def test_rm08_commit_legado_sem_prova_nao_finge_exatamente_uma_vez(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id legado --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\nticket_id: ticket-legado\n",
+            ),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.legado"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 0\nfase: concluida\nticket_id: ticket-legado\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  commit:\n    resultado: commit_exatamente_uma_vez\n",
+            ),
+            assistant("turno-1", "A cena termina sem recibo completo."),
+        ]
+        events = mod.analyze(self.rollout(rows, "rollout-rm08-unproven.jsonl"))[
+            "modular_ledger_v2"
+        ]["events"]
+        commit = next(
+            event
+            for event in events
+            if event["module_id"] == "turn_and_session_orchestration"
+            and event["capability_id"] == "idempotent_commit"
+        )
+
+        self.assertEqual(commit["observed_result"], "commit_sem_prova_exatamente_uma_vez")
+        self.assertEqual(commit["activation_observed"], "consulta")
+        self.assertIsNone(commit["effect_observed"])
+        self.assertIsNone(commit["materialized_result_observed"])
+        self.assertEqual(commit["call_ids_observed"], ["c1"])
+
     def test_rm08_falha_de_ticket_nao_e_atribuida_a_sidequest_por_aproximacao(self) -> None:
         rows = self.base_rows() + [
             user("turno-1", mod.LEGACY_NARRATION_PROMPT),
@@ -784,6 +1367,63 @@ class ModularTelemetryTest(unittest.TestCase):
             and event["capability_id"] == "transactional_turn"
         )
         self.assertEqual(orchestration["observed_result"], "ticket_obsoleto")
+
+    def test_rm08_retry_recuperado_nao_vira_efeito_transacional_incorreto(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call(
+                "turno-1",
+                "p1",
+                "poetry run cronica preparar --cena-id antigo --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p1",
+                "Process exited with code 0\nfase: preparacao\nticket_id: ticket-antigo\n",
+            ),
+            call("turno-1", "c1", "poetry run cronica concluir --ticket crn1.antigo"),
+            output(
+                "turno-1",
+                "c1",
+                "Process exited with code 1\n"
+                "FALHA CRONICA — preparação do ticket ficou obsoleta\n",
+            ),
+            call(
+                "turno-1",
+                "p2",
+                "poetry run cronica preparar --cena-id novo --sem-oportunidade-sidequest",
+            ),
+            output(
+                "turno-1",
+                "p2",
+                "Process exited with code 0\nfase: preparacao\nticket_id: ticket-novo\n",
+            ),
+            call("turno-1", "c2", "poetry run cronica concluir --ticket crn1.novo"),
+            output(
+                "turno-1",
+                "c2",
+                "Process exited with code 0\nfase: concluida\nticket_id: ticket-novo\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  operacao: concluir\n  estado: concluido\n"
+                "  commit:\n    exactly_once: true\n    efeito_novo: true\n",
+            ),
+            assistant("turno-1", "A cena é concluída após renovar o preparo.\nRODAPE_CANONICO"),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-retry-recovered.jsonl"))
+        metrics = report["narration_turns"]["turn_and_session_orchestration"]
+        event = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+            and event["capability_id"] == "transactional_turn"
+        )
+
+        self.assertEqual(metrics["exact_prepare_conclude_pairs"], 0)
+        self.assertEqual(metrics["tickets"]["obsoletos"], 1)
+        self.assertEqual(event["observed_result"], "ciclo_concluido_apos_retry")
+        self.assertTrue(event["effect_observed"])
+        self.assertEqual(event["call_ids_observed"], ["p1", "c1", "p2", "c2"])
 
     def test_rm08_lifecycle_tem_classe_propria_sem_ciclo_de_turno_falso(self) -> None:
         rows = self.base_rows() + [
@@ -818,6 +1458,57 @@ class ModularTelemetryTest(unittest.TestCase):
             {event["capability_id"] for event in events},
             {"session_lifecycle"},
         )
+
+    def test_rm08_lifecycle_unificado_preserva_todas_as_operacoes_sem_inventar_saida(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            with_turn(
+                "turno-1",
+                "custom_tool_call",
+                name="exec",
+                call_id="u1",
+                input=(
+                    "const s = await tools.exec_command({cmd: \"poetry run cronica "
+                    "sessao status\"});\n"
+                    "const i = await tools.exec_command({cmd: \"poetry run cronica "
+                    "sessao iniciar\"}); text(i.output);"
+                ),
+            ),
+            output(
+                "turno-1",
+                "u1",
+                "Script completed\nWall time 0.8 seconds\nProcess exited with code 0\n"
+                "fase: iniciada\n"
+                "orquestracao:\n"
+                "  schema_turn_and_session_orchestration: 1\n"
+                "  unidade: sessao\n  operacao: iniciar\n  estado: iniciado\n",
+            ),
+            assistant("turno-1", "A sessão foi iniciada."),
+        ]
+        report = mod.analyze(self.rollout(rows, "rollout-rm08-lifecycle-unified.jsonl"))
+        orchestration = report["all_turns"]["turn_and_session_orchestration"]
+        lifecycle = orchestration["session_lifecycle"]
+        event = next(
+            event
+            for event in report["modular_ledger_v2"]["events"]
+            if event["module_id"] == "turn_and_session_orchestration"
+            and event["capability_id"] == "session_lifecycle"
+        )
+
+        self.assertEqual(lifecycle["operations"], {"iniciar": 1, "status": 1})
+        self.assertEqual(lifecycle["successful"], {"iniciar": 1})
+        self.assertEqual(
+            orchestration["duration_by_phase"]["sessao:iniciar"],
+            {
+                "chamadas_observadas": 1,
+                "total_segundos": 0.8,
+                "media_segundos": 0.8,
+                "max_segundos": 0.8,
+            },
+        )
+        self.assertNotIn("sessao:status", orchestration["duration_by_phase"])
+        self.assertTrue(event["effect_observed"])
+        self.assertEqual(event["call_ids_observed"], ["u1"])
 
     def test_rm08_desembrulha_output_moderno_e_preserva_duracao(self) -> None:
         rows = self.base_rows() + [
@@ -875,7 +1566,8 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
-        self.assertEqual(access["detector_version"], "3.0.0")
+        self.assertTrue(access["effect_observed"])
+        self.assertEqual(access["detector_version"], "4.2.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -932,6 +1624,38 @@ class ModularTelemetryTest(unittest.TestCase):
                 "repetido": "leitura_redundante",
             },
         )
+        effects = {
+            event["turn_id"]: event["effect_observed"]
+            for event in events
+            if event["module_id"] == "context_and_memory"
+            and event["capability_id"] == "routed_context_access"
+        }
+        self.assertEqual(
+            effects,
+            {"profundo": True, "raw": False, "repetido": False},
+        )
+
+    def test_rm07_falha_observada_prevalece_no_resultado_agregado(self) -> None:
+        rows = self.base_rows() + [
+            user("turno-1", mod.LEGACY_NARRATION_PROMPT),
+            call("turno-1", "r1", "python3 ferramentas/contexto.py npc silva"),
+            output("turno-1", "r1", "Process exited with code 0\nnivel: L2\n"),
+            call("turno-1", "r2", "sed -n '1,40p' sessoes/021/transcricao.md"),
+            output("turno-1", "r2", "Process exited with code 0\ntrecho bruto\n"),
+            assistant("turno-1", "A continuidade é preservada."),
+        ]
+        event = next(
+            event
+            for event in mod.analyze(self.rollout(rows, "rollout-context-mixed.jsonl"))[
+                "modular_ledger_v2"
+            ]["events"]
+            if event["module_id"] == "context_and_memory"
+            and event["capability_id"] == "routed_context_access"
+        )
+
+        self.assertEqual(event["observed_result"], "acesso_cru_sem_justificativa")
+        self.assertFalse(event["effect_observed"])
+        self.assertCountEqual(event["call_ids_observed"], ["r1", "r2"])
 
     def test_rm07_detecta_contexto_e_memoria_de_cena_obsoletos(self) -> None:
         rows = self.base_rows() + [
@@ -1002,6 +1726,7 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(memory["activation_observed"], "efeito")
         self.assertEqual(memory["materialized_result_observed"], "memoria_persistida")
         self.assertEqual(layers["observed_result"], "camadas_preservadas")
+        self.assertTrue(layers["effect_observed"])
         attributed = [
             event["cost"]["parent_attributed_additive"]["total_tokens"]
             for event in events
@@ -1066,13 +1791,13 @@ class ModularTelemetryTest(unittest.TestCase):
             "resultado_modular: sem_materia",
             "output",
         )
-        self.assertEqual(neutral, ("gate_neutro", "resultado_neutro", None, False))
+        self.assertEqual(neutral, ("gate_neutro", "resultado_neutro", None, None))
         self.assertEqual(
             neutral_applied,
-            ("gate_neutro", "resultado_neutro", None, False),
+            ("gate_neutro", "resultado_neutro", None, None),
         )
         self.assertEqual(material, ("efeito", "efeito_observado", "efeito_materializado", True))
-        self.assertEqual(routed_empty, ("gate_neutro", "resultado_neutro", None, False))
+        self.assertEqual(routed_empty, ("gate_neutro", "resultado_neutro", None, None))
 
     def test_rm05_separa_consulta_de_continuidade_e_iniciativa_real(self) -> None:
         rows = self.base_rows() + [
@@ -1153,7 +1878,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "3.0.0")
+        self.assertEqual(social["detector_version"], "4.2.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -1258,6 +1983,10 @@ class ModularTelemetryTest(unittest.TestCase):
             [event["activation_observed"] for event in integrity],
             ["consulta", "decisao", "efeito"],
         )
+        self.assertEqual(
+            [event["effect_observed"] for event in integrity],
+            [None, True, True],
+        )
         self.assertEqual(len(concurrent), 3)
         self.assertTrue(all(event["eligibility_observed"] == "sim" for event in concurrent))
         for turn_ordinal in range(1, 4):
@@ -1286,7 +2015,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "3.0.0")
+        self.assertEqual(integrity[0]["detector_version"], "4.2.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [

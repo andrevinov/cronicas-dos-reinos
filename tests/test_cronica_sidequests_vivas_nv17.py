@@ -68,6 +68,13 @@ class CronicaLiveSidequestIntegrationTests(unittest.TestCase):
         self.assertEqual(captured["sidequest_signal"]["plano_id"], "silva_socorro")
         self.assertEqual(result["sidequests_vivas"]["causa_viva"]["id"], "scp-causa")
         self.assertIn("live_sidequests_by_cause", result["sistemas_narrativos"])
+        assessment = result["avaliacao_oportunidade_sidequest"]
+        self.assertEqual(assessment["versao_implementacao"], "2.0.1")
+        self.assertEqual(assessment["versao_avaliacao"], "4.0.0")
+        self.assertEqual(assessment["declaracao"], "sem_oportunidade")
+        self.assertEqual(assessment["decisao_efetiva"], "oportunidade")
+        self.assertEqual(assessment["resultado_esperado"], "elegivel")
+        self.assertEqual(assessment["classificacao"], "verdadeiro_positivo")
 
     def test_blocking_world_gate_does_not_reserve_or_discover_sidequest(self):
         gate = {"fase": "bloqueada_pendencias_mundo"}
@@ -95,8 +102,12 @@ class CronicaLiveSidequestIntegrationTests(unittest.TestCase):
             mock.patch.object(bridge._live, "route_prepare", return_value=routed),
             mock.patch.object(bridge, "_BASE_PREPARE", side_effect=lambda *a, **k: captured.update(k) or {"fase": "preparada"}),
         ):
-            bridge.prepare(Path("/repo"), sidequest_signal=manual)
+            result = bridge.prepare(Path("/repo"), sidequest_signal=manual)
         self.assertEqual(captured["sidequest_signal"], manual)
+        self.assertEqual(
+            result["avaliacao_oportunidade_sidequest"]["classificacao"],
+            "indeterminado",
+        )
 
     def test_repository_without_nv17_receipt_delegates_without_live_reads(self):
         sentinel = {"fase": "preparada-legada"}

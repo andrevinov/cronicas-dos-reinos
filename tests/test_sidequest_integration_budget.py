@@ -69,9 +69,15 @@ class SidequestNeutralBudgetTest(unittest.TestCase):
             result = cronica.prepare(Path(temporary), scene_id="sidequest-integration:neutro", sidequest_signal=None)
             self.assertEqual(list(Path(temporary).iterdir()), [])
         receipt = result.pop("orquestracao")
+        coverage = result.pop("cobertura_avaliacao_modular")
+        sentinel.pop("cobertura_avaliacao_modular", None)
         self.assertEqual(result, sentinel)
         self.assertEqual(receipt["module_id"], "turn_and_session_orchestration")
         self.assertEqual(receipt["operacao"], "preparar")
+        self.assertIn(
+            "turn_and_session_orchestration|preparar|aplicavel|1",
+            coverage["recibos"],
+        )
         base.assert_called_once()
         active.assert_called_once()
         emergent.assert_not_called()

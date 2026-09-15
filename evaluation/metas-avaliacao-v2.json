@@ -1,7 +1,7 @@
 {
   "schema_metas_avaliacao": 2,
   "versao_metas": "2.0.0",
-  "contrato_avaliacao": "3.0.0",
+  "contrato_avaliacao": "4.0.0",
   "natureza": "rubrica modules-v2 pós-hoc; percepção humana entra como evidência adjudicada, não como nota",
   "pesos_sessao": {
     "calibracao": 30,

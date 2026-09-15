@@ -31,6 +31,22 @@ class EvaluationDashboardTest(unittest.TestCase):
         self.assertIn("manifestacoes-jogador.json", javascript)
         self.assertIn("function renderInteractionFeedback()", javascript)
         self.assertIn("versao_implementacao", javascript)
+        self.assertIn('`Módulo v${module.versao_implementacao || "N/D"}`', javascript)
+        self.assertIn('`Avaliação v${module.versao_avaliacao || "N/D"}`', javascript)
+        self.assertIn("Declaração do gate:", javascript)
+        self.assertIn("Isso mede preenchimento, não acerto.", javascript)
+        self.assertIn("Elegibilidade objetiva:", javascript)
+        self.assertIn("acuracia_balanceada_oportunidade", javascript)
+        self.assertIn("falha de instrumentação", javascript)
+        self.assertIn("não aplicável", javascript)
+        self.assertIn("Integração canônica:", javascript)
+        self.assertIn("recibos_integracao_ausentes", javascript)
+        self.assertIn('<option value="não aplicável">Não aplicável</option>', html)
+        self.assertIn(
+            '<option value="falha de instrumentação">Falha de instrumentação</option>',
+            html,
+        )
+        self.assertIn(".module-version-row", css)
         self.assertIn('fetchJSON("../module-releases.json")', javascript)
         self.assertIn('id="interactionFeedbackSection"', html)
         self.assertIn('id="manifestationInteraction"', html)
@@ -45,29 +61,44 @@ class EvaluationDashboardTest(unittest.TestCase):
             package = SESSIONS / entry["caminho"]
             scorecard = json.loads((package / "scorecard.json").read_text(encoding="utf-8"))
             summary = json.loads((package / "resumo-modulos.json").read_text(encoding="utf-8"))
-            with (package / "feedback-jogador.csv").open(encoding="utf-8-sig", newline="") as stream:
-                feedback = list(csv.DictReader(stream))
 
             self.assertEqual(entry["sessao_id"], scorecard["sessao_id"])
-            self.assertEqual(entry["serie_avaliacao"], "legacy-v1")
             self.assertEqual(entry["chave_comparabilidade"][0], entry["serie_avaliacao"])
-            self.assertEqual(entry["chave_comparabilidade"], ["legacy-v1", "ausente", "1"])
             self.assertTrue(summary["modulos"])
-            self.assertTrue(any(row["tipo"] == "global" for row in feedback))
-            self.assertTrue(any(row["tipo"] == "modulo" for row in feedback))
-            self.assertEqual(
-                set(feedback[0]),
-                {
-                    "tipo",
-                    "item",
-                    "rotulo",
-                    "observado",
-                    "nota_1a5",
-                    "ativacao_menos2a2",
-                    "impacto_menos2a2",
-                    "comentario",
-                },
-            )
+            if entry["serie_avaliacao"] == "legacy-v1":
+                self.assertEqual(
+                    entry["chave_comparabilidade"], ["legacy-v1", "ausente", "1"]
+                )
+                with (package / "feedback-jogador.csv").open(
+                    encoding="utf-8-sig", newline=""
+                ) as stream:
+                    feedback = list(csv.DictReader(stream))
+                self.assertTrue(any(row["tipo"] == "global" for row in feedback))
+                self.assertTrue(any(row["tipo"] == "modulo" for row in feedback))
+                self.assertEqual(
+                    set(feedback[0]),
+                    {
+                        "tipo",
+                        "item",
+                        "rotulo",
+                        "observado",
+                        "nota_1a5",
+                        "ativacao_menos2a2",
+                        "impacto_menos2a2",
+                        "comentario",
+                    },
+                )
+            else:
+                self.assertEqual(entry["serie_avaliacao"], "modules-v2")
+                self.assertFalse((package / "feedback-jogador.csv").exists())
+                manifestations = json.loads(
+                    (package / "manifestacoes-jogador.json").read_text(encoding="utf-8")
+                )
+                adjudications = json.loads(
+                    (package / "adjudicacoes-modulares.json").read_text(encoding="utf-8")
+                )
+                self.assertIn("player_feedback", manifestations)
+                self.assertIn("player_feedback", adjudications)
 
 
 if __name__ == "__main__":

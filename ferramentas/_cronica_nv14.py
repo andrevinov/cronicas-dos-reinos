@@ -19,6 +19,7 @@ from pathlib import Path
 import yaml
 
 import _cronica_turn_core as _core
+import _module_facade as _module_coverage
 import checkpoint
 import ciclo_cronica
 import ciclo_sessoes
@@ -170,6 +171,13 @@ def prepare(*args, **kwargs):
         except (ValueError, OSError, yaml.YAMLError) as exc:
             raise _core.CronicaError(f"NV10: {exc}") from exc
     base = _hot.prepare(*args, **kwargs)
+    if "cobertura_avaliacao_modular" not in base:
+        _module_coverage.attach_coverage(
+            base,
+            module_id="scene_world_projection",
+            phase="preparar",
+            applicability="nao_aplicavel",
+        )
     if signal is None:
         prepared = base
     else:
@@ -236,6 +244,21 @@ def prepare(*args, **kwargs):
             if _narrative_interactions.integration_enabled(Path(repo))
             else 0
         )
+        # A cobertura já presente faz parte do envelope de entrada da memória,
+        # mas não deve expulsar fatos prioritários. Neutralizamos apenas esses
+        # bytes já contabilizados; os recibos anexados depois continuam cobertos
+        # pelas reservas públicas de interação e orquestração.
+        existing_coverage_bytes = len(
+            yaml.safe_dump(
+                {
+                    _module_coverage.COVERAGE_KEY: prepared.get(
+                        _module_coverage.COVERAGE_KEY
+                    )
+                },
+                allow_unicode=True,
+                sort_keys=False,
+            ).encode("utf-8")
+        )
         prepared = _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
@@ -245,6 +268,7 @@ def prepare(*args, **kwargs):
                 final_budget
                 - _turn_orchestration.RECEIPT_RESERVE_BYTES
                 - interaction_reserve
+                + existing_coverage_bytes
             ),
         )
         prepared = _narrative_interactions.attach_prepare(Path(repo), prepared)

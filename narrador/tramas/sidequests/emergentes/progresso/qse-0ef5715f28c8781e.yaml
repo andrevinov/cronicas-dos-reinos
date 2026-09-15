@@ -43,20 +43,20 @@ estado:
       fato_id: agressor_entrega_chaves_ao_controlador_dos_reparos
       motivo_automatico: null
     entregar_cadeia:
-      estado: indeterminada
-      fato_id: null
+      estado: resolvida
+      fato_id: cadeia_da_fachada_entregue_a_halessa
       motivo_automatico: null
   condicoes_sucesso:
     sucesso_01:
       texto: Quem controlava ou sustentava materialmente a fachada do restaurante
         é estabelecido por evidência verificável.
-      estado: pendente
-      fato_id: null
+      estado: satisfeita
+      fato_id: cadeia_da_fachada_entregue_a_halessa
     sucesso_02:
       texto: Ao menos uma ligação confirmada com os atacantes é entregue a Halessa
         dentro do prazo.
-      estado: pendente
-      fato_id: null
+      estado: satisfeita
+      fato_id: cadeia_da_fachada_entregue_a_halessa
   condicoes_falha:
     falha_01:
       texto: Os rastros materiais e comerciais do restaurante tornam-se inutilizáveis
@@ -179,8 +179,43 @@ estado:
         tipo: cronica_concluir
         transacao_id: s021-f6b9663e03664f4c
         sessao: 21
+    cadeia_da_fachada_entregue_a_halessa:
+      id: cadeia_da_fachada_entregue_a_halessa
+      descricao: Ren entregou a Halessa, dentro do prazo, uma cadeia verificável que
+        identifica o intermediário que sustentava a fachada e liga esse operador diretamente
+        a um dos atacantes.
+      prova:
+        fonte: sessoes/022/transcricao.md
+        evidencia: 'Halessa recebe a cadeia verificável dentro do prazo: o homem de
+          casaco cinza com a caixa de contas sustentou materialmente a fachada ao
+          pagar os reparos e receber a nova equipe, e um dos atacantes entregou-lhe
+          as chaves.'
+      fases:
+        entregar_cadeia: resolvida
+      condicoes_sucesso:
+        sucesso_01: satisfeita
+        sucesso_02: satisfeita
+      condicoes_falha: {}
+      atores:
+      - halessa_vorn
+      substituicoes: []
+      visibilidade: narrador
+      canonizado_em:
+        data: 22 Eleasis, 1372 DR
+        hora: '21:35'
+      fonte_transacional:
+        tipo: cronica_concluir
+        transacao_id: s022-nv04-e845a5eb1808fac969fdde90c502dc06
+        sessao: 22
   consequencias_ativadas: {}
-  terminal: null
+  terminal:
+    resultado: concluida
+    gatilho: sucesso
+    em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
+    motivo: condicoes_factuais_task45_satisfeitas
+    pendencia_id: null
   historico_recente:
   - tipo: fato_registrado_transacional
     id: testemunho_equipe_atual_pos_emboscada
@@ -206,6 +241,19 @@ estado:
     transacao_id: s021-f6b9663e03664f4c
     atores: []
     substituicoes: []
+  - tipo: fato_registrado_transacional
+    id: cadeia_da_fachada_entregue_a_halessa
+    fonte: sessoes/022/transcricao.md
+    transacao_id: s022-nv04-e845a5eb1808fac969fdde90c502dc06
+    atores:
+    - halessa_vorn
+    substituicoes: []
+  - tipo: desfecho_terminal
+    resultado: concluida
+    gatilho: sucesso
+    em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
 guardrails:
   progresso_por_fato_nao_checklist: true
   prazo_usa_relogio_existente: true

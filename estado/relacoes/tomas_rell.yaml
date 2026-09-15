@@ -139,6 +139,38 @@ relacao:
     registro_sha256: 196dc186eaaa820c62748125891ef2b4c57380e0adcfc3c9c386c25905b71c95
     texto: Eu, Luath, Halessa e muitos outros estamos tentando formar esse bloco conjunto de pessoas
     tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Além do documento, ele prometeu depor em Tyr sobre o caso, em troca de proteção à testemunha.
+    fonte: transacao:s022-nv04-e3b8cd845655a29f4e08122a92174c53
+    id: mem_a11ee40344fe14a05f4cdeb3
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: b054fe200b68505a275d50a562d86a84d48db2514cb91900fe1cb3641b2ef5cf
+    texto: Além do documento, ele prometeu depor em Tyr sobre o caso, em troca de proteção à testemunha.
+    tipo: informacao
+  - canal: presencial
+    destinatario: tomas_rell
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: Porém... eu vou querer seguir essa pessoa que chegar aqui pra receber as cópias. Eu preciso chegar
+        nesse homem do casaco cinza.
+    fonte: transacao:s022-nv04-e3b8cd845655a29f4e08122a92174c53
+    id: mem_18669ce811eb9256c0afceaf
+    participantes:
+    - ren
+    - tomas_rell
+    registro_sha256: b054fe200b68505a275d50a562d86a84d48db2514cb91900fe1cb3641b2ef5cf
+    texto: Porém... eu vou querer seguir essa pessoa que chegar aqui pra receber as cópias. Eu preciso chegar nesse
+      homem do casaco cinza.
+    tipo: informacao
   memorias_importantes:
   - canal: presencial
     destinatario: ren

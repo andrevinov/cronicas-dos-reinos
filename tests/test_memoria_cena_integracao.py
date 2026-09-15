@@ -229,7 +229,12 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
                 patch.object(memory, "load_scene", side_effect=AssertionError("leitura indevida")):
             blocked = self.prepare(["silva_fixture"])
             receipt = blocked.pop("orquestracao")
+            coverage = blocked.pop("cobertura_avaliacao_modular")
             self.assertEqual(blocked, gate)
+            self.assertEqual(
+                coverage["recibos"],
+                ["turn_and_session_orchestration|preparar|aplicavel|1"],
+            )
             self.assertEqual(receipt["estado"], "bloqueado_pendencias")
 
     def test_parser_adiciona_opcoes_na_mesma_porta_e_nao_confunde_gatilhos(self):

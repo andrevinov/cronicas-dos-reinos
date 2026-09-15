@@ -14,7 +14,7 @@ from typing import Any, Callable
 
 import yaml
 
-from _module_facade import combine_checks
+from _module_facade import attach_coverage, combine_checks
 import memoria_cena as _scene_engine
 import memoria_duravel as _durable_engine
 import npc_continuity_and_social_behavior as _npc_memory
@@ -155,6 +155,12 @@ def decorate(
         reason=reason,
         budget=budget,
     )
+    attach_coverage(
+        out,
+        module_id=MODULE_ID,
+        phase="consulta",
+        applicability="aplicavel",
+    )
     return out, budget
 
 
@@ -171,7 +177,7 @@ def attach(
 ) -> dict[str, Any]:
     """Entrega memória de cena no preparo existente, sem terceira chamada."""
 
-    return _npc_memory.attach(
+    result = _npc_memory.attach(
         repo,
         prepared,
         decode_ticket=decode_ticket,
@@ -180,6 +186,12 @@ def attach(
         base_in_context=base_in_context,
         prospective_participants=prospective_participants,
         max_output_bytes=max_output_bytes,
+    )
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="preparar",
+        applicability="aplicavel",
     )
 
 
@@ -269,7 +281,12 @@ def publish_memory_persistence(
     """Publica o recibo somente depois de o writer transacional retornar."""
 
     if observation is None:
-        return result
+        return attach_coverage(
+            result,
+            module_id=MODULE_ID,
+            phase="concluir",
+            applicability="nao_aplicavel",
+        )
     out = copy.deepcopy(observation)
     transaction = result.get("transacao") if isinstance(result, dict) else None
     retry = isinstance(transaction, dict) and transaction.get("ja_registrada") is True
@@ -286,7 +303,12 @@ def publish_memory_persistence(
     systems = result.setdefault("sistemas_narrativos", [])
     if MODULE_ID not in systems:
         systems.append(MODULE_ID)
-    return result
+    return attach_coverage(
+        result,
+        module_id=MODULE_ID,
+        phase="concluir",
+        applicability="aplicavel",
+    )
 
 
 # Consultas internas dirigidas usadas por produtores já existentes. Elas não

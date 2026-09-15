@@ -54,7 +54,7 @@ missoes:
     motivo_encerramento: janela_temporal_encerrada
   sqe-d11f8458fa6ac4dd:
     id: sqe-d11f8458fa6ac4dd
-    estado: aceita
+    estado: concluida
     origem: sidequest_emergente
     quest_id: qse-0ef5715f28c8781e
     arquivo: narrador/tramas/sidequests/emergentes/quests/qse-0ef5715f28c8781e.yaml
@@ -86,9 +86,13 @@ missoes:
     ultima_decisao_em:
       data: 22 Eleasis, 1372 DR
       hora: 07:48
+    encerrada_em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
+    motivo_encerramento: condicoes_factuais_task45_satisfeitas
   sqe-2cb76a0638860602:
     id: sqe-2cb76a0638860602
-    estado: aceita
+    estado: concluida
     origem: sidequest_emergente
     quest_id: qse-65136f2c017fb178
     arquivo: narrador/tramas/sidequests/emergentes/quests/qse-65136f2c017fb178.yaml
@@ -121,6 +125,10 @@ missoes:
     ultima_decisao_em:
       data: 22 Eleasis, 1372 DR
       hora: '10:20'
+    encerrada_em:
+      data: 22 Eleasis, 1372 DR
+      hora: '21:49'
+    motivo_encerramento: condicoes_factuais_task45_satisfeitas
 sementes_consumidas:
 - nera_vell:pequena_pendencia_de_vida
 - silva_elkwood:deslocamento_seguro
@@ -242,6 +250,20 @@ historico_recente:
   em:
     data: 22 Eleasis, 1372 DR
     hora: '10:20'
+- tipo: missao_encerrada
+  id: sqe-d11f8458fa6ac4dd
+  de: aceita
+  para: concluida
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: '21:49'
+- tipo: missao_encerrada
+  id: sqe-2cb76a0638860602
+  de: aceita
+  para: concluida
+  em:
+    data: 22 Eleasis, 1372 DR
+    hora: '21:49'
 legado_procedural:
   estatuto: somente_auditoria_nao_operacional
   gate_congelado:

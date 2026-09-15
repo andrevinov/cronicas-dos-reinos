@@ -16,6 +16,7 @@ if str(TOOLS) not in sys.path:
 
 import canon_bridge
 import canon_bridge_runtime
+import canonical_quest_integration
 import eventos_canonicos
 import intencoes_canonicas
 import locais
@@ -214,6 +215,52 @@ class Task42LifecycleTest(Task42Fixture):
         self.assertEqual(result["resultado"], "aceita")
         self.assertFalse(result["canon_bridge"]["alterou"])
         self.assertEqual((self.repo / canon_bridge.STATE).read_bytes(), bridge_before)
+
+    def test_fachada_classifica_lateral_sem_expor_identidade_reservada(self):
+        candidate = self.bridge_candidate
+        package = _package_for(candidate)
+        spec = _spec_for(package, candidate, "lateral")
+        mission = self.materialize(package, spec, scene_suffix="lateral-recibo")
+
+        result = canonical_quest_integration.respond(
+            self.repo,
+            mission["mission_id"],
+            "aceitar",
+            now=_instant(package["prazo_mundo"]["agora"]),
+        )
+        receipt = result["avaliacoes_integracao_canonica"][0]
+
+        self.assertEqual(receipt["classificacao"], "verdadeiro_negativo")
+        self.assertTrue(receipt["incluida_na_pontuacao"])
+        self.assertTrue(receipt["recibo_completo"])
+        self.assertTrue(receipt["mission_ref"].startswith("sqm-"))
+        self.assertNotIn("mission_id", receipt)
+        self.assertNotIn("quest_id", receipt)
+        self.assertNotIn("relacao_canone", receipt)
+        self.assertNotIn(candidate["evento_id"], yaml.safe_dump(receipt))
+
+    def test_fachada_classifica_reserva_elegivel_como_verdadeiro_positivo(self):
+        candidate = self.bridge_candidate
+        package = _package_for(candidate)
+        spec = _spec_for(
+            package,
+            candidate,
+            "candidata_ponte",
+            deadline=candidate["ativacao"],
+        )
+        mission = self.materialize(package, spec, scene_suffix="ponte-recibo")
+
+        result = canonical_quest_integration.respond(
+            self.repo,
+            mission["mission_id"],
+            "aceitar",
+            now=_instant(package["prazo_mundo"]["agora"]),
+        )
+        receipt = result["avaliacoes_integracao_canonica"][0]
+
+        self.assertEqual(receipt["classificacao"], "verdadeiro_positivo")
+        self.assertTrue(receipt["incluida_na_pontuacao"])
+        self.assertEqual(receipt["gatilho"], "resposta")
 
     def test_aceitar_ponte_cria_so_reserva_e_nao_move_ren(self):
         candidate = self.bridge_candidate

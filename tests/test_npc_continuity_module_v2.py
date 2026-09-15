@@ -37,8 +37,9 @@ class NpcContinuityModuleContractTest(unittest.TestCase):
             for alias in capability["aliases_v1"]
         }
 
-        self.assertEqual(catalog["versao_catalogo"], "3.0.0")
-        self.assertEqual(module["versao_implementacao"], "1.0.0")
+        self.assertEqual(catalog["versao_catalogo"], "5.0.0")
+        self.assertEqual(module["versao_implementacao"], continuity.IMPLEMENTATION_VERSION)
+        self.assertEqual(module["versao_avaliacao"], "4.0.0")
         self.assertEqual(aliases, set(continuity.LEGACY_ALIASES))
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},
@@ -78,9 +79,11 @@ class NpcContinuityModuleContractTest(unittest.TestCase):
                 "identity",
                 "reputation",
                 "initiative_receipts",
+                "name_catalog",
+                "name_reservations",
             },
         )
-        self.assertEqual(len(set(continuity.SOURCE_OWNERSHIP.values())), 6)
+        self.assertEqual(len(set(continuity.SOURCE_OWNERSHIP.values())), 8)
         report = continuity.check(ROOT)
         self.assertTrue(report["ok"], report["erros"])
         self.assertFalse(report["contrato"]["parallel_state"])
