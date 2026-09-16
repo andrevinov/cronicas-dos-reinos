@@ -1,0 +1,267 @@
+schema_alteracoes_transacionais: 1
+sessao: 23
+status: em_andamento
+fonte: sessoes/023/consolidacoes.jsonl
+checkpoint_inicial:
+  sessao: 23
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 5/7
+  ca: 17
+  dinheiro_po: 38.11999999999999
+  data: 22 Eleasis, 1372 DR
+  hora: '22:04'
+  area: Galeria dos Escribas, Ravens Bluff
+  ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
+  nivel_ficha: 7
+checkpoint_atual:
+  sessao: 23
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem: Ren Kagehira
+  nivel: 7
+  pv: 52/52
+  focus: 7/7
+  ca: 17
+  dinheiro_po: 37.61999999999999
+  data: 23 Eleasis, 1372 DR
+  hora: '11:35'
+  area: Rua diante do restaurante da emboscada
+  ponto_exato: na rua diante do restaurante da emboscada, observando a entrada sob o disfarce de Tanaka
+  nivel_ficha: 7
+consolidacoes:
+- id: s023-cena-a6cfe2fa0bff04fd
+  tipo: cena
+  transacoes:
+  - s023-nv04-f4be6966ea21501465085f05280b5747
+  - s023-1a19fc960fc77661
+  - s023-7b0dd136e6bf1882
+  deltas: 12
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/tomas_rell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/tomas_rell.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-015a78b6cfadfc09
+  tipo: cena
+  transacoes:
+  - s023-0ce562bbb95796e3
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-4d33aae7bee94361
+  tipo: cena
+  transacoes:
+  - s023-fa8b150d3d3d0979
+  - s023-ba5ea27b87f4669b
+  - s023-dafeafa23dbd59d2
+  - s023-cd57d696b14d586a
+  - s023-761d1a066d5d2ddd
+  deltas: 23
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-761d1a066d5d2ddd.md
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-cd57d696b14d586a.md
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-dafeafa23dbd59d2.md
+  - personagens/jogador/conhecimento/index.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-46786420676a21f9
+  tipo: cena
+  transacoes:
+  - s023-ea5c9fe82dd8d20c
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-fd583dacb0a216a6
+  tipo: cena
+  transacoes:
+  - s023-mundo-arsenal-23-eleasis-0600
+  deltas: 2
+  arquivos_afetados:
+  - narrador/mundo/relogios/arsenal_da_night_watch.yaml
+  - narrador/mundo/relogios/index.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-6317c40f1fdd505c
+  tipo: cena
+  transacoes:
+  - s023-5478c34c4f696994
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/tempo.yaml
+  - personagens/jogador/ficha.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-a842815ae6d49e50
+  tipo: cena
+  transacoes:
+  - s023-7ab4884d0b9a6f86
+  - s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+  deltas: 13
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-1a75db08344fd3ff
+  tipo: cena
+  transacoes:
+  - s023-nv04-7ad01d24f30c6a8303b2628878852a79
+  deltas: 7
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/silva_elkwood.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/silva_elkwood.yaml
+  - narrador/mundo/estado.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-7ad01d24f30c6a8303b2628878852a79.md
+  - personagens/jogador/conhecimento/index.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-f08da1421dce023c
+  tipo: cena
+  transacoes:
+  - s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+  - s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+  - s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+  - s023-14aa2834feddc1b3
+  - s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603
+  deltas: 33
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/dessa_wren.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/relacoes/merrit_tealeaf.yaml
+  - estado/relacoes/nera_vell.yaml
+  - estado/relacoes/tavin_vell.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/dessa_wren.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - historico/relacoes/merrit_tealeaf.yaml
+  - historico/relacoes/nera_vell.yaml
+  - historico/relacoes/tavin_vell.yaml
+  - narrador/mundo/estado.yaml
+  - personagens/jogador/ficha.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-3aaf0a0a6c1513de
+  tipo: cena
+  transacoes:
+  - s023-nv04-5b33072a1195aa621217505585d8fc5f
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - narrador/mundo/estado.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-5b33072a1195aa621217505585d8fc5f.md
+  - personagens/jogador/conhecimento/index.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-5c33fba77584e985
+  tipo: cena
+  transacoes:
+  - s023-nv04-c3c2a7d174ef03896f0545ba49e745cf
+  deltas: 5
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-ffb917be0fdd0a4a
+  tipo: cena
+  transacoes:
+  - s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+  deltas: 6
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - narrador/mundo/estado.yaml
+  - personagens/jogador/conhecimento/ativo.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/index.yaml
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6.md
+  - personagens/jogador/conhecimento/index.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md
+- id: s023-cena-ae60efa9bfc53ed3
+  tipo: cena
+  transacoes:
+  - s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+  deltas: 10
+  arquivos_afetados:
+  - estado/estado-atual.yaml
+  - estado/relacoes/index.yaml
+  - estado/relacoes/maerra_thandrel.yaml
+  - estado/tempo.yaml
+  - historico/relacoes/maerra_thandrel.yaml
+  - narrador/mundo/estado.yaml
+  - runtime/mundo-pendencias.yaml
+  - sessoes/023/alteracoes-de-estado.yaml
+  - sessoes/023/consequencias.md
+  - sessoes/023/consolidacoes.jsonl
+  - sessoes/023/resumo.md

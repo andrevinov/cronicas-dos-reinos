@@ -168,7 +168,7 @@ relacoes:
     respeito: prático
     arquivo: estado/relacoes/nera_vell.yaml
     historico: historico/relacoes/nera_vell.yaml
-    bytes_fragmento: 10666
+    bytes_fragmento: 11293
     campos_atuais: 16
   tavin_vell:
     nome: Tavin Vell
@@ -180,7 +180,7 @@ relacoes:
     respeito: medo respeitoso com simpatia
     arquivo: estado/relacoes/tavin_vell.yaml
     historico: historico/relacoes/tavin_vell.yaml
-    bytes_fragmento: 3245
+    bytes_fragmento: 4931
     campos_atuais: 13
   velha_sella:
     nome: Velha Sella
@@ -203,8 +203,8 @@ relacoes:
     respeito: cauteloso, crescente
     arquivo: estado/relacoes/maerra_thandrel.yaml
     historico: historico/relacoes/maerra_thandrel.yaml
-    bytes_fragmento: 4127
-    campos_atuais: 13
+    bytes_fragmento: 9393
+    campos_atuais: 15
   luath:
     nome: Luath
     tipo: sargento da City Guard / supervisor possível da Night Watch
@@ -259,7 +259,7 @@ relacoes:
       antes da vigilância
     arquivo: estado/relacoes/silva_elkwood.yaml
     historico: historico/relacoes/silva_elkwood.yaml
-    bytes_fragmento: 12269
+    bytes_fragmento: 11131
     campos_atuais: 17
   jack_mooney:
     nome: Jack Mooney
@@ -292,8 +292,8 @@ relacoes:
     respeito: profissional inicial
     arquivo: estado/relacoes/dessa_wren.yaml
     historico: historico/relacoes/dessa_wren.yaml
-    bytes_fragmento: 3213
-    campos_atuais: 12
+    bytes_fragmento: 3722
+    campos_atuais: 13
   merrit_tealeaf:
     nome: Merrit Tealeaf
     tipo: halfling contorcionista / sabotadora confessa da corda alta
@@ -303,8 +303,8 @@ relacoes:
     respeito: medo pratico
     arquivo: estado/relacoes/merrit_tealeaf.yaml
     historico: historico/relacoes/merrit_tealeaf.yaml
-    bytes_fragmento: 2744
-    campos_atuais: 10
+    bytes_fragmento: 3200
+    campos_atuais: 11
   homem_red_sail_capturado:
     nome: desconhecido
     tipo: agente operacional menor/médio da Red Sail
@@ -439,7 +439,7 @@ relacoes:
     respeito: profissional e moral em formação
     arquivo: estado/relacoes/tomas_rell.yaml
     historico: historico/relacoes/tomas_rell.yaml
-    bytes_fragmento: 9535
+    bytes_fragmento: 11184
     campos_atuais: 11
   jardineiro_salgueiro_seco:
     nome: jardineiro da Casa do Salgueiro Seco

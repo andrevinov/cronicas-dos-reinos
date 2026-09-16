@@ -345,9 +345,327 @@ avaliacoes:
     - narrador/mundo/incidentes/index.yaml
     - narrador/mundo/incidentes/estado.yaml
     digest: 07ea79d33e412bfbc299f06553fcd59f1a6b0a465ed299ea1db5540fab7ade9c
+  perm-0abea244aa92eae90418:
+    id: perm-0abea244aa92eae90418
+    chave: galeria_dos_escribas|22 Eleasis, 1372 DR|noite
+    local_id: galeria_dos_escribas
+    data: 22 Eleasis, 1372 DR
+    periodo: noite
+    estado: resolvida
+    pressao_primaria: microevento:ajuste_area_trabalho
+    candidatos:
+    - id: microevento:ajuste_area_trabalho
+      tipo: rotina_local
+      prioridade: 7
+      origem: microeventos_locais
+      decisao: primaria
+    ecologia:
+      ritmo: 0
+      tags:
+      - trabalho
+      - entrega
+      - documentos
+      - carga
+      - comercio
+      - acesso_controlado
+      canais_microevento:
+      - trabalho
+      - entrega
+      - documentos
+      - carga
+      - abastecimento
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: avaliar_microevento
+      ficha_ocorrencia: microevento_01
+      resultado_base: microevento
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 0
+        promovido: false
+      carta:
+        id: ajuste_area_trabalho
+        nome: Área de trabalho precisa ser reorganizada
+        categoria: manutencao
+        premissa: Uma área de trabalho fica momentaneamente desconfortável ou desorganizada
+          e exige uma correção simples de quem já está ali.
+        atores_comuns:
+        - trabalhador
+        - conferente
+        - carregador
+        - entregador
+        - supervisor
+        - fornecedor
+        guardrails:
+        - Usar somente papéis anônimos compatíveis com a ecologia, salvo NPC já estabelecido
+          por outra fonte.
+        - Não transformar inconveniência cotidiana em combate, crime grave, pista
+          secreta, missão ou recompensa automática.
+        - Estado canônico, arco, cena aceita e pendências prevalecem; incompatibilidade
+          consome a carta sem rerrolar outra.
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-38a0588e7dc60f78
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao:
+      avaliacao_id: perm-0abea244aa92eae90418
+      resultado: resolvida
+      evidencia_literal: O funcionário sai pela porta lateral para sacudir um pano
+        sujo de areia, recolhe-o e volta para dentro.
+      em:
+        data: 22 Eleasis, 1372 DR
+        hora: '22:04'
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: 9eba4d767d086f4c0f804caa1028656099a19d536f4f3074ee2e5a75255cc859
+  perm-d5c726f67f5dcce124cf:
+    id: perm-d5c726f67f5dcce124cf
+    chave: galeria_dos_escribas|23 Eleasis, 1372 DR|noite
+    local_id: galeria_dos_escribas
+    data: 23 Eleasis, 1372 DR
+    periodo: noite
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 0
+      tags:
+      - trabalho
+      - entrega
+      - documentos
+      - carga
+      - comercio
+      - acesso_controlado
+      canais_microevento:
+      - trabalho
+      - entrega
+      - documentos
+      - carga
+      - abastecimento
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_02
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 0
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais: []
+    decisao: null
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: 3f96ab872cbc4d5c6654e920e4e1180cb1da5905a079d3ee09fa0119debd708b
+  perm-958573bf164b7c929b0c:
+    id: perm-958573bf164b7c929b0c
+    chave: jack_mooney_sons_circus|23 Eleasis, 1372 DR|noite
+    local_id: jack_mooney_sons_circus
+    data: 23 Eleasis, 1372 DR
+    periodo: noite
+    estado: adiada
+    pressao_primaria: incidente:perseguicao_cruza_cena
+    candidatos:
+    - id: incidente:perseguicao_cruza_cena
+      tipo: incidente_local
+      prioridade: 2
+      origem: incidentes_mundo
+      decisao: primaria
+    ecologia:
+      ritmo: 2
+      tags:
+      - espetaculo
+      - acampamento
+      - trabalho
+      - publico
+      - animais
+      - logistica
+      canais_microevento:
+      - rotina
+      - ensaio
+      - espetaculo
+      - entrega
+      - animal
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_02
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 1
+        promovido: false
+    incidente_local:
+      resultado: avaliar_incidente
+      origem: global
+      incidente:
+        id: perseguicao_cruza_cena
+        nome: Perseguição atravessa a cena
+        tipo: perseguicao
+        severidade: moderada
+        intervencao: imediata
+        premissa: Duas ou mais pessoas surgem em perseguição real, com risco de atropelar,
+          derrubar ou envolver terceiros no caminho.
+        rotas_observaveis:
+        - intervir
+        - proteger_terceiros
+        - observar
+        - pedir_ajuda
+        - deixar_passar
+        atores_comuns:
+        - artista
+        - trabalhador
+        - cuidador_animais
+        - fornecedor
+        - visitante
+        - publico
+        guardrails:
+        - O incidente apresenta uma situação; nunca escreve decisão, emoção ou resposta
+          de Ren.
+        - Intervenção imediata pode resolver toda a situação sem criar side quest,
+          recompensa ou compromisso posterior.
+        - NPCs nomeados só entram por outra camada canônica; aqui os participantes
+          são papéis anônimos plausíveis da ecologia.
+        - Se violência surgir, calibrar oposição ao contexto; ameaça esmagadora precisa
+          deixar fuga, negociação, cobertura ou outra saída observável.
+    condicoes_ambientais: []
+    decisao:
+      avaliacao_id: perm-958573bf164b7c929b0c
+      resultado: adiada
+      motivo: A perseguição foi apresentada antes do sono; sua resolução aguarda a
+        reação do jogador, sem decidir uma ação de Ren.
+      em:
+        data: 23 Eleasis, 1372 DR
+        hora: 00:23
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: ac64a2bbff2e1e7f5bfb6296905c06034faae72ebf8f25d4f98df26f57c7a819
+  perm-a6eb1c4aa0422173751a:
+    id: perm-a6eb1c4aa0422173751a
+    chave: jack_mooney_sons_circus|23 Eleasis, 1372 DR|amanhecer
+    local_id: jack_mooney_sons_circus
+    data: 23 Eleasis, 1372 DR
+    periodo: amanhecer
+    estado: calma_espacial
+    pressao_primaria: null
+    candidatos: []
+    ecologia:
+      ritmo: 1
+      tags:
+      - espetaculo
+      - acampamento
+      - trabalho
+      - publico
+      - animais
+      - logistica
+      canais_microevento:
+      - rotina
+      - ensaio
+      - espetaculo
+      - entrega
+      - animal
+      - manutencao
+    presenca_incidental:
+      resultado: nenhuma_presenca_incidental
+      candidatos: []
+    microevento_local:
+      resultado: rotina
+      ficha_ocorrencia: rotina_03
+      resultado_base: rotina
+      pressao_aventura:
+        nivel: 0
+        nome: normal
+        cenas_secas_antes: 2
+        promovido: false
+    incidente_local:
+      resultado: rotina
+      origem: null
+    condicoes_ambientais:
+    - id: cnd-6624f23cc5b4bec1
+      tipo: clima
+      assunto: Clima diário — ravens_bluff
+      intensidade: leve
+      sinais:
+      - céu aberto
+      - vias secas
+      marcadores:
+      - piso_seco
+      - tempo_estavel
+    decisao: null
+    fontes_lidas:
+    - narrador/mundo/permanencia-espacial/estado.yaml
+    - narrador/mundo/agenda.yaml
+    - estado/estado-atual.yaml
+    - cenario/locais/index.yaml
+    - cenario/locais/ecologia.yaml
+    - narrador/mundo/condicoes-persistentes.yaml
+    - narrador/indices/presencas-incidentais.yaml
+    - narrador/mundo/microeventos-locais/index.yaml
+    - narrador/mundo/microeventos-locais/estado.yaml
+    - narrador/mundo/incidentes/index.yaml
+    - narrador/mundo/incidentes/estado.yaml
+    digest: 30bad3fdf9687f370e168c2dce33fc06a54d88a34732e5e51891fbffbff273e1
 ordem_recente:
 - perm-fa7f8f6f06069b1c5486
 - perm-cdf766418a273c98d85c
 - perm-fbc8361fd8d6084ad29f
 - perm-708ef34ce081bd8f6a24
 - perm-cdab45315004b8b1136b
+- perm-0abea244aa92eae90418
+- perm-d5c726f67f5dcce124cf
+- perm-958573bf164b7c929b0c
+- perm-a6eb1c4aa0422173751a

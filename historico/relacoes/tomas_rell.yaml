@@ -323,3 +323,63 @@ eventos_pos_migracao:
       texto: Porém... eu vou querer seguir essa pessoa que chegar aqui pra receber as cópias. Eu preciso chegar
         nesse homem do casaco cinza.
       tipo: informacao
+- transacao: s023-nv04-f4be6966ea21501465085f05280b5747
+  sessao: 23
+  resumo: Ren agradeceu Tomas, desculpou-se pela entrada e pelo rapto improvisado de Darran e declarou que levará
+    o homem de casaco cinza à justiça. Tomas aceitou as desculpas pela entrada e confirmou a suspensão do E-39.
+    Ren saiu furtivamente pelo Passo Sombrio, sem gasto de Focus, e assumiu posto oculto no telhado às 22h08.
+  deltas:
+  - alvo: relacao:tomas_rell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: jogador
+        trecho: Ren agradece Tomas por tudo. Pede desculpas pela forma que entrou e também por ter raptado Darran,
+          que aquilo fora um improviso, na verdade.
+      fonte: transacao:s023-nv04-f4be6966ea21501465085f05280b5747
+      id: mem_aec0c8ccf35ca16582471b79
+      participantes:
+      - ren
+      - tomas_rell
+      registro_sha256: 59914d880f24c6e660de68301b2286cd9716ffc15aa3f8ae2c71cebb539518dd
+      texto: Pede desculpas pela forma que entrou e também por ter raptado Darran, que aquilo fora um improviso,
+        na verdade.
+      tipo: marco
+  - alvo: relacao:tomas_rell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_aa2e1bac596a32edb8b1d140
+      evidencia:
+        campo: jogador
+        trecho: em breve eu trarei o homem de casaco cinza pra justiça.
+      fonte: transacao:s023-nv04-f4be6966ea21501465085f05280b5747
+      id: mem_aa2e1bac596a32edb8b1d140
+      operacao: registrar
+      participantes:
+      - ren
+      - tomas_rell
+      registro_sha256: 59914d880f24c6e660de68301b2286cd9716ffc15aa3f8ae2c71cebb539518dd
+      tipo: promessa
+  - alvo: relacao:tomas_rell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tomas_rell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: eu não pretendo matá-lo ou coisa do tipo, Tomas... a não ser que ele insista muito por esse tipo
+          de justiça.
+      fonte: transacao:s023-nv04-f4be6966ea21501465085f05280b5747
+      id: mem_bf82ae88094ab387d7b42200
+      participantes:
+      - ren
+      - tomas_rell
+      registro_sha256: 59914d880f24c6e660de68301b2286cd9716ffc15aa3f8ae2c71cebb539518dd
+      texto: eu não pretendo matá-lo ou coisa do tipo, Tomas... a não ser que ele insista muito por esse tipo de
+        justiça.
+      tipo: informacao

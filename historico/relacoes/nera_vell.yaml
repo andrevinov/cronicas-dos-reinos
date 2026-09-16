@@ -654,3 +654,104 @@ eventos_pos_migracao:
       registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
       texto: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas anteriores.
       tipo: marco
+- transacao: s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+  sessao: 23
+  resumo: Ren respondeu a Merrit que usará a lona para treinar amanhã, sem marcar horário nem combinar presença
+    dela. Ren ficou com Nera e Tavin no interior da carroça verde, perguntou se comeram e comeu pão oferecido por
+    Nera; Silva forneceu água e retomou o trabalho no exterior. Ren brincou sobre ter resgatado um parente de Nera,
+    sem confirmar parentesco, e relatou aos dois o rapto de Darran Vell, desculpas, elo com o homem do casaco cinza,
+    proteção por Halessa em Tyr, retratação a Tomas, E-39 suspenso…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: nera_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+          Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      fonte: transacao:s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+      id: mem_10454c29c630523fedd5c0e3
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: b393404fb29dfb7eccb072cd6e92f3e56d5a73aaaa9c7fd49e8c2e40d090c2fe
+      texto: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+        Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      tipo: informacao
+- transacao: s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+  sessao: 23
+  resumo: Ren declarou aos dois que não sabe se o homem de cinza conhece o paradeiro de Darran, quer capturá-lo
+    depressa por suas respostas e por considerá-lo uma ameaça. Ficou mais alguns minutos brincando com Tavin e conversando
+    com Nera; Tavin imitou o escriba da história, sem ensinar técnicas ou impor novas falas a Ren. Ren levantou-se
+    e anunciou sua intenção de atualizar Maerra, verificar seu bem-estar e procurar o homem de cinza. Nera agradeceu
+    o relato e pediu que mandasse um abraço a Maerra; Tavi…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: nera_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa
+          por suas respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está
+          bem.
+      fonte: transacao:s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+      id: mem_37ed1fcc4bd2faa9ee2a8ed4
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: 0e0657424f03eb5b8c240cc374efee1e87fdcc21434f26a1130ebc0d9543769f
+      texto: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa por
+        suas respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está bem.
+      tipo: informacao
+- transacao: s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+  sessao: 23
+  resumo: Ren beijou Nera, declarou seu amor e prometeu voltar logo; Nera retribuiu o beijo e o amor. Ren saiu da
+    carroça, despediu-se de Silva, recolheu as roupas já usadas como Tanaka no quarto-depósito e procurou Dessa
+    no guarda-roupa. Pagou cinco pratas pelo auxílio de figurino e, com seu kit e a costureira, recompôs o disfarce
+    material de trabalhador kozakurano idoso, sem usar o broche. Preparação rotineira de uma versão já praticada,
+    com tempo, ferramentas e ajuda profissional; não houve inspeção n…
+  deltas:
+  - alvo: relacao:nera_vell
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_765bbbc64bff3b5cbf84bd40
+      evidencia:
+        campo: jogador
+        trecho: 'Ren dá um beijo em Nera.
+
+
+          "Te amo. Volto logo." E sai.'
+      fonte: transacao:s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+      id: mem_765bbbc64bff3b5cbf84bd40
+      operacao: registrar
+      participantes:
+      - nera_vell
+      - ren
+      registro_sha256: d96ffb4bb0a64c49e01914d6bab1ba685d1260317d391eb5fe1a66bf519b74af
+      tipo: promessa
+arquivamentos_de_manutencao:
+- id: nera_arquivamento_s023_despedida
+  natureza: manutencao_sem_alteracao_de_fatos
+  motivo: 'NV04: liberar espaço no fragmento ativo de 12 KiB para salvar a despedida autorizada. Os dois registros
+    de informações anteriores já estão integralmente preservados em eventos_pos_migracao; nenhuma condição de proteção,
+    risco, acordo ou medidor é alterada.'
+  fragmento: estado/relacoes/nera_vell.yaml
+  sha256_antes: a33849878458ebd2d626f067bba51017e031bc6c8714b3e34527580ad33a9a76
+  sha256_depois: ffc51bba025ab6df913ebd445bce26c127908149c0f2b06b4ecdef54c6ebd624
+  quantidades_arquivadas:
+    informacoes_recebidas: 2
+  referencias:
+    informacoes_recebidas:
+    - mem_e72b02d17a2cc3657aaf6e82
+    - mem_580c4484ce5359e5b864f75f

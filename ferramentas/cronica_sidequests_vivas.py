@@ -25,6 +25,18 @@ _BASE_BUILD_PARSER = _base.build_parser
 _UNSET = object()
 
 
+class _CompactMemory(dict):
+    """Representação YAML compacta, com o mesmo conteúdo da memória entregue."""
+
+
+yaml.SafeDumper.add_representer(
+    _CompactMemory,
+    lambda dumper, value: dumper.represent_mapping(
+        "tag:yaml.org,2002:map", value.items(), flow_style=True
+    ),
+)
+
+
 def _repo(args, kwargs) -> Path | None:
     raw = args[0] if args else kwargs.get("repo")
     return Path(raw) if raw is not None else None
@@ -157,6 +169,28 @@ def _attach_opportunity_assessment(
     candidate.pop("sidequests_vivas", None)
     if _encoded_size(candidate) <= _output_limit(prepared):
         return candidate
+
+    # Recuos redundantes podem ceder espaço ao recibo sem descartar memória,
+    # evidências, obrigações ou gates do preparo já validado.
+    memory = candidate.get("memoria_cena")
+    if isinstance(memory, dict):
+        candidate["memoria_cena"] = _CompactMemory(memory)
+        if _encoded_size(candidate) <= _output_limit(prepared):
+            return candidate
+
+    contract = candidate.get("contrato_conclusao")
+    if isinstance(contract, dict):
+        for key in (
+            "sidequest_emergente_task46", "progresso_sidequests_task49",
+            "pressao_narrativa_task52", "reconhecibilidade_persona_nv20",
+            "politica_civica_nv22", "permanencia_espacial_nv15",
+        ):
+            contract.pop(key, None)
+        contract["contratos_complementares"] = (
+            "docs/agente/operacao/contratos-complementares-conclusao.md"
+        )
+        if _encoded_size(candidate) <= _output_limit(prepared):
+            return candidate
     raise _core.CronicaError(
         "sidequest_authoring 2.0.1: recibo objetivo de oportunidade excede o orçamento"
     )

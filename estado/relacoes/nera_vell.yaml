@@ -95,33 +95,33 @@ relacao:
     estatuto: relato
     evidencia:
       campo: narracao
-      trecho: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens
-        sem matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
-    fonte: transacao:s020-nv04-0c99ae5acef4d63fc9380b2ac65373ef
-    id: mem_e72b02d17a2cc3657aaf6e82
+      trecho: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+        Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+    fonte: transacao:s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+    id: mem_10454c29c630523fedd5c0e3
     participantes:
     - nera_vell
     - ren
-    registro_sha256: bf488b6311598c15a9ffc09dd9acef75e31e8c755238c9fb84655f62e2c24531
-    texto: Ren conta a Nera que encontrou Tomas, atendeu ao pedido de Maerra, infiltrou-se, derrubou os homens sem
-      matá-los, interrogou um deles e entregou a testemunha e as provas a Luath.
+    registro_sha256: b393404fb29dfb7eccb072cd6e92f3e56d5a73aaaa9c7fd49e8c2e40d090c2fe
+    texto: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por Halessa
+      em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
     tipo: informacao
   - canal: presencial
     destinatario: nera_vell
     emissor: ren
     estatuto: relato
     evidencia:
-      campo: jogador
-      trecho: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao salão
-        de registros da Galeria, útil contra Masao e seus comparsas.
-    fonte: transacao:s022-nv04-e136fa88a227527bc4d26210397a5d5a
-    id: mem_580c4484ce5359e5b864f75f
+      campo: narracao
+      trecho: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa por
+        suas respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está bem.
+    fonte: transacao:s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+    id: mem_37ed1fcc4bd2faa9ee2a8ed4
     participantes:
     - nera_vell
     - ren
-    registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
-    texto: Ren contou a Nera que Tomas pediu a checagem de uma disparidade documental e ofereceu acesso ao salão
-      de registros da Galeria, útil contra Masao e seus comparsas.
+    registro_sha256: 0e0657424f03eb5b8c240cc374efee1e87fdcc21434f26a1130ebc0d9543769f
+    texto: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa por suas
+      respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está bem.
     tipo: informacao
   memorias_importantes:
   - anterior: 8
@@ -161,7 +161,23 @@ relacao:
     registro_sha256: 76742f5c53ffcc15d65e18ad5fba7843e35416efa5e1204f156036be53962c8e
     texto: Ren reafirmou a Nera que sempre voltará e lembrou que cumpriu essa promessa em todas as partidas anteriores.
     tipo: marco
+  - compromisso_id: mem_765bbbc64bff3b5cbf84bd40
+    evidencia:
+      campo: jogador
+      trecho: 'Ren dá um beijo em Nera.
+
+
+        "Te amo. Volto logo." E sai.'
+    fonte: transacao:s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+    id: mem_765bbbc64bff3b5cbf84bd40
+    operacao: registrar
+    participantes:
+    - nera_vell
+    - ren
+    registro_sha256: d96ffb4bb0a64c49e01914d6bab1ba685d1260317d391eb5fe1a66bf519b74af
+    tipo: promessa
 conteudo_mais_antigo_no_historico:
   acordos: 2
   momentos_de_vinculo: 6
   riscos: 43
+  informacoes_recebidas: 2

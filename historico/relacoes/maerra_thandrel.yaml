@@ -156,3 +156,198 @@ eventos_pos_migracao:
     valor: Em 15 Eleasis, após receber conselho e notícia de que as crianças permaneciam seguras, Ren tomou a mão
       de Maerra e agradeceu por tudo. Maerra recebeu o gesto com afeto pastoral e o convidou a voltar também quando
       precisasse falar, não apenas para entregar algo ou salvar alguém.
+- transacao: s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603
+  sessao: 23
+  resumo: Ren falou na voz de Tanaka, aproximou-se e ofereceu deliberadamente a Maerra a pista do histórico compartilhado
+    de acolhimento de pessoas resgatadas. Maerra reconheceu Ren pela referência, pronunciou seu nome em voz baixa
+    e o recebeu com humor e afeto pastoral; comentou a qualidade da maquiagem, atribuindo-a a Dessa como suposição,
+    não descoberta de informações privadas. Reconheceu antes da condição de falha, portanto a fala condicional final
+    do jogador não foi executada. Maerra sabe que esse v…
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: Eu lembro dos amigos, Ren. Você é que está tornando o trabalho difícil.
+      fonte: transacao:s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603
+      id: mem_a06730b50f8d759c8e8e38e8
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: fdfc847fc17f87c65a8c31b77f0c99a36e99fc93d0225190506c57f2d416e069
+      texto: Eu lembro dos amigos, Ren. Você é que está tornando o trabalho difícil.
+      tipo: marco
+- transacao: s023-nv04-5b33072a1195aa621217505585d8fc5f
+  sessao: 23
+  resumo: Ren perguntou pela noite após a retirada da mulher Cinza-Azul com Luath e pelos dias seguintes no templo.
+    A retirada foi na madrugada de 20 Eleasis, e o intervalo até hoje é pouco mais de três dias, preenchendo a lacuna
+    temporal sem mudar o histórico. Maerra relatou cansaço e encerramento da madrugada sem nova confusão, permanência
+    do guarda até o amanhecer, ausência de entrada forçada, janela quebrada, nova tentativa de retirar crianças,
+    ameaça ou recado estranho desde então. É o relato presen…
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: memorias_importantes
+    op: append
+    valor:
+      canal: presencial
+      destinatario: ren
+      emissor: maerra_thandrel
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: O guarda ficou até o amanhecer. Desde a retirada, não tivemos entrada à força, janela quebrada,
+          nova tentativa de levar as crianças, ameaça ou recado estranho.
+      fonte: transacao:s023-nv04-5b33072a1195aa621217505585d8fc5f
+      id: mem_519e9c8493f8164bab1b9bba
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: 2d9179741ad2768f5cf20a57316e6d3d7e8db886b1bdefaee5b439ee7661ed02
+      texto: O guarda ficou até o amanhecer. Desde a retirada, não tivemos entrada à força, janela quebrada, nova
+        tentativa de levar as crianças, ameaça ou recado estranho.
+      tipo: informacao
+  - alvo: relacao:maerra_thandrel
+    caminho: memorias_importantes
+    op: append
+    valor:
+      canal: presencial
+      destinatario: ren
+      emissor: maerra_thandrel
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Não notei ninguém voltando repetidamente para observar a casa. Isso não me permite dizer que não
+          houve vigilância discreta.
+      fonte: transacao:s023-nv04-5b33072a1195aa621217505585d8fc5f
+      id: mem_2954cad0dfdb8eb4156cd48c
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: 2d9179741ad2768f5cf20a57316e6d3d7e8db886b1bdefaee5b439ee7661ed02
+      texto: Não notei ninguém voltando repetidamente para observar a casa. Isso não me permite dizer que não houve
+        vigilância discreta.
+      tipo: informacao
+- transacao: s023-nv04-c3c2a7d174ef03896f0545ba49e745cf
+  sessao: 23
+  resumo: 'Ren contou presencialmente a Maerra a noite com Darran e Tomas: rapto, desculpas, elo com o homem de
+    cinza, acolhimento protegido por Halessa em Tyr, retratação, suspensão do E-39 e retenção de três maços sem
+    portador na janela. Maerra recebeu essas informações como relato de Ren, sem adquirir informações do episódio
+    com o rapaz da bolsa ou conhecimento reservado externo. Ren brincou sobre ter pensado em trazer outro Vell para
+    ela salvar. Maerra reagiu com atenção à captura, humor sobre disting…'
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: maerra_thandrel
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+          Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      fonte: transacao:s023-nv04-c3c2a7d174ef03896f0545ba49e745cf
+      id: mem_bc5ed9ec9adc525eaaf54a90
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: f4f9536813bfe198ffea37dce4c0a21b5b354c73a1c82f337b7680342351a6ca
+      texto: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+        Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      tipo: informacao
+- transacao: s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+  sessao: 23
+  resumo: Ren permaneceu conversando com Maerra, perguntou pelas sete crianças e recebeu seu relato de alimentação,
+    sono irregular e retomada de brincadeiras. Contou que acha saber onde encontrar o homem do casaco cinza e que
+    irá como senhor Tanaka; espera obter respostas se conseguir capturá-lo. Maerra perguntou se ele costuma estar
+    acompanhado. Ren permanece na recepção da Casa da Aurora Menor.
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: memorias_importantes
+    op: append
+    valor:
+      canal: presencial
+      destinatario: ren
+      emissor: maerra_thandrel
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Continuam os sete aqui, comendo bem. O sono ainda varia; alguns acordam assustados. Mas já há brincadeiras
+          no pátio, e nem toda conversa acaba voltando ao que aconteceu.
+      fonte: transacao:s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+      id: mem_ea025c775e4e592552bf7619
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: d9e1da7caeff1f2fb6e478df3029a08b8d4c71a54cdc3a4a35c0f5e0144cf4c5
+      texto: Continuam os sete aqui, comendo bem. O sono ainda varia; alguns acordam assustados. Mas já há brincadeiras
+        no pátio, e nem toda conversa acaba voltando ao que aconteceu.
+      tipo: informacao
+  - alvo: relacao:maerra_thandrel
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: maerra_thandrel
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: 'Ren explica que acha saber onde encontrar o homem do casaco cinza e que irá como senhor Tanaka.
+
+
+          — Ele é a chave pra muita coisa. Se eu conseguir captura-lo, talvez encontre algumas das respostas que
+          precisamos.'
+      fonte: transacao:s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+      id: mem_17325d65be6f70a8f17d5636
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: d9e1da7caeff1f2fb6e478df3029a08b8d4c71a54cdc3a4a35c0f5e0144cf4c5
+      texto: Ren explica que acha saber onde encontrar o homem do casaco cinza e que irá como senhor Tanaka.
+      tipo: informacao
+- transacao: s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+  sessao: 23
+  resumo: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka. Observa a
+    entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista da porta
+    dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua vista; Aiko
+    havia anunciado sua visita para depois do meio-dia, sem hora exata.
+  deltas:
+  - alvo: relacao:maerra_thandrel
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: maerra_thandrel
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: '"Provavelmente estará acompanhado. Mas vou te contar um segredo..."'
+      fonte: transacao:s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+      id: mem_2701e44b4a9aee02dc6e3fd1
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: 830ef6bf847aaf5e9dfa91852fe8048e9149ae98aaeeea1fdc4761e56d61bca5
+      texto: Provavelmente estará acompanhado.
+      tipo: informacao
+  - alvo: relacao:maerra_thandrel
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_1ea629a2500fc9c4fb75869e
+      evidencia:
+        campo: jogador
+        trecho: Passo pra saber como está em breve.
+      fonte: transacao:s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+      id: mem_1ea629a2500fc9c4fb75869e
+      operacao: registrar
+      participantes:
+      - maerra_thandrel
+      - ren
+      registro_sha256: 830ef6bf847aaf5e9dfa91852fe8048e9149ae98aaeeea1fdc4761e56d61bca5
+      tipo: promessa

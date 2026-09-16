@@ -186,3 +186,62 @@ eventos_pos_migracao:
       texto: Ren mostrou a Tavin o pequeno símbolo Kagehira escondido no traje e explicou que aquela roupa só é
         usada em missões.
       tipo: informacao
+- transacao: s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+  sessao: 23
+  resumo: Ren respondeu a Merrit que usará a lona para treinar amanhã, sem marcar horário nem combinar presença
+    dela. Ren ficou com Nera e Tavin no interior da carroça verde, perguntou se comeram e comeu pão oferecido por
+    Nera; Silva forneceu água e retomou o trabalho no exterior. Ren brincou sobre ter resgatado um parente de Nera,
+    sem confirmar parentesco, e relatou aos dois o rapto de Darran Vell, desculpas, elo com o homem do casaco cinza,
+    proteção por Halessa em Tyr, retratação a Tomas, E-39 suspenso…
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tavin_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+          Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      fonte: transacao:s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+      id: mem_a10f2ba92a299aae69246cf7
+      participantes:
+      - ren
+      - tavin_vell
+      registro_sha256: b393404fb29dfb7eccb072cd6e92f3e56d5a73aaaa9c7fd49e8c2e40d090c2fe
+      texto: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+        Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+      tipo: informacao
+- transacao: s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+  sessao: 23
+  resumo: Ren declarou aos dois que não sabe se o homem de cinza conhece o paradeiro de Darran, quer capturá-lo
+    depressa por suas respostas e por considerá-lo uma ameaça. Ficou mais alguns minutos brincando com Tavin e conversando
+    com Nera; Tavin imitou o escriba da história, sem ensinar técnicas ou impor novas falas a Ren. Ren levantou-se
+    e anunciou sua intenção de atualizar Maerra, verificar seu bem-estar e procurar o homem de cinza. Nera agradeceu
+    o relato e pediu que mandasse um abraço a Maerra; Tavi…
+  deltas:
+  - alvo: relacao:tavin_vell
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: tavin_vell
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa
+          por suas respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está
+          bem.
+      fonte: transacao:s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+      id: mem_035119be887c4dad3fb9352a
+      participantes:
+      - ren
+      - tavin_vell
+      registro_sha256: 0e0657424f03eb5b8c240cc374efee1e87fdcc21434f26a1130ebc0d9543769f
+      texto: Ren não sabe se o homem do casaco cinza conhece o paradeiro de Darran. Quer capturá-lo depressa por
+        suas respostas e pela ameaça que vê nele; também pretende atualizar Maerra e verificar se ela está bem.
+      tipo: informacao

@@ -24,4 +24,7 @@ relogios:
   relatorio_pell_ponto_morto:
     arquivo: narrador/mundo/relogios/relatorio_pell_ponto_morto.yaml
     sessao_ultima_atualizacao: 5
-quantidade: 7
+  arsenal_da_night_watch:
+    arquivo: narrador/mundo/relogios/arsenal_da_night_watch.yaml
+    sessao_ultima_atualizacao: 23
+quantidade: 8

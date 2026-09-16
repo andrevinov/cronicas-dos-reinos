@@ -45,5 +45,17 @@ relacao:
   - Dessa entende disfarce teatral e roupas comuns, mas não é especialista em espionagem real.
   - A versão teatral de Kara-Tur feita por Dessa será adaptação local, não reconstrução cultural autêntica.
   pedidos_pendentes: []
+  memorias_importantes:
+  - evidencia:
+      campo: narracao
+      trecho: Dessa recebe as moedas e ajuda Ren a recompor o disfarce material de Tanaka Matsumoto.
+    fonte: transacao:s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+    id: mem_b3d6dc9ef2e380d0ecbfe4f6
+    participantes:
+    - dessa_wren
+    - ren
+    registro_sha256: d96ffb4bb0a64c49e01914d6bab1ba685d1260317d391eb5fe1a66bf519b74af
+    texto: Dessa recebe as moedas e ajuda Ren a recompor o disfarce material de Tanaka Matsumoto.
+    tipo: marco
 conteudo_mais_antigo_no_historico:
   informacoes_compartilhadas_por_dessa: 5

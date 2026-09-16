@@ -21,8 +21,10 @@ locais:
       restantes: []
   jack_mooney_sons_circus:
     ocorrencia:
-      ciclo: 2
-      restantes: []
+      ciclo: 3
+      restantes:
+      - microevento_01
+      - rotina_01
     cartas:
       ciclo: 1
       assinatura_pool: 4cf96967c4975a6f244c956ad251e45eddccd1bdc3e5def76920545d1926cea1
@@ -97,14 +99,11 @@ locais:
   galeria_dos_escribas:
     ocorrencia:
       ciclo: 2
-      restantes:
-      - microevento_01
-      - rotina_02
+      restantes: []
     cartas:
       ciclo: 1
       assinatura_pool: 9806f19877f3550106d0fad8cb9c39d2fd5f6fbc84a27dc3616126e0e4792ea7
       restantes:
-      - ajuste_area_trabalho
       - rotina_servico_reordenada
       - entrega_atrasada
       - abastecimento_incompleto
@@ -312,12 +311,52 @@ historico_recente:
     cenas_secas_antes: 4
     promovido: false
   carta_id: duvida_atendimento
+- cena_id: permanencia:galeria_dos_escribas:22 Eleasis, 1372 DR:noite
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: microevento_01
+  resultado_base: microevento
+  resultado: microevento
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
+  carta_id: ajuste_area_trabalho
+- cena_id: permanencia:galeria_dos_escribas:23 Eleasis, 1372 DR:noite
+  local_id: galeria_dos_escribas
+  ficha_ocorrencia: rotina_02
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 0
+    promovido: false
+- cena_id: permanencia:jack_mooney_sons_circus:23 Eleasis, 1372 DR:noite
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_02
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 1
+    promovido: false
+- cena_id: permanencia:jack_mooney_sons_circus:23 Eleasis, 1372 DR:amanhecer
+  local_id: jack_mooney_sons_circus
+  ficha_ocorrencia: rotina_03
+  resultado_base: rotina
+  resultado: rotina
+  pressao_aventura:
+    nivel: 0
+    nome: normal
+    cenas_secas_antes: 2
+    promovido: false
 transitos:
   ravens_bluff:
     ocorrencia:
       ciclo: 9
       restantes:
-      - rotina_01
       - microevento_01
       - rotina_03
     cartas:
@@ -326,17 +365,6 @@ transitos:
       restantes:
       - checagem_acesso
 historico_transito_recente:
-- cena_id: s15-seguir-e-interceptar-mensageiro
-  escopo_transito: ravens_bluff
-  ficha_ocorrencia: rotina_01
-  resultado: rotina
-  pressao_niveis:
-    custo_de_vida: 0
-    ocupacao_imobiliaria: 0
-    crime_e_milicias: 1
-    desgaste_da_autoridade: 0
-    presenca_oriental: 0
-  preparacao_fingerprint: ada57dedb448f85b72cb13b663bea2efac3c52691fa1c61ff79e8ec8bf812ff5
 - cena_id: s017-retirada-calaria-cativa
   escopo_transito: ravens_bluff
   ficha_ocorrencia: microevento_01
@@ -506,3 +534,14 @@ historico_transito_recente:
     desgaste_da_autoridade: 0
     presenca_oriental: 0
   preparacao_fingerprint: 09ea313ced3c1e104210abd8177d937ea5f0e8c18a1b932d94aeb5498390b1da
+- cena_id: s023-retorno-ao-circo
+  escopo_transito: ravens_bluff
+  ficha_ocorrencia: rotina_01
+  resultado: rotina
+  pressao_niveis:
+    custo_de_vida: 0
+    ocupacao_imobiliaria: 0
+    crime_e_milicias: 2
+    desgaste_da_autoridade: 0
+    presenca_oriental: 0
+  preparacao_fingerprint: 2c6836400e1cecb8a93f6af977e4661039da70d4f1351a08a6ed1f0b5c2ae029

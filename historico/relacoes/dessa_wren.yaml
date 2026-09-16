@@ -104,3 +104,26 @@ eventos_pos_migracao:
     op: append
     valor: Em 12 Eleasis, Dessa recebeu 2 PO pelo auxílio qualificado no disfarce de velho erudito de Ren e pelo
       conjunto limpo e respeitável de Shinta, separado para a manhã seguinte.
+- transacao: s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+  sessao: 23
+  resumo: Ren beijou Nera, declarou seu amor e prometeu voltar logo; Nera retribuiu o beijo e o amor. Ren saiu da
+    carroça, despediu-se de Silva, recolheu as roupas já usadas como Tanaka no quarto-depósito e procurou Dessa
+    no guarda-roupa. Pagou cinco pratas pelo auxílio de figurino e, com seu kit e a costureira, recompôs o disfarce
+    material de trabalhador kozakurano idoso, sem usar o broche. Preparação rotineira de uma versão já praticada,
+    com tempo, ferramentas e ajuda profissional; não houve inspeção n…
+  deltas:
+  - alvo: relacao:dessa_wren
+    caminho: memorias_importantes
+    op: append
+    valor:
+      evidencia:
+        campo: narracao
+        trecho: Dessa recebe as moedas e ajuda Ren a recompor o disfarce material de Tanaka Matsumoto.
+      fonte: transacao:s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+      id: mem_b3d6dc9ef2e380d0ecbfe4f6
+      participantes:
+      - dessa_wren
+      - ren
+      registro_sha256: d96ffb4bb0a64c49e01914d6bab1ba685d1260317d391eb5fe1a66bf519b74af
+      texto: Dessa recebe as moedas e ajuda Ren a recompor o disfarce material de Tanaka Matsumoto.
+      tipo: marco

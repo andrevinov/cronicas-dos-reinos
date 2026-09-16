@@ -14,6 +14,8 @@ import hashlib
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 import _cronica_nv14 as _base
 import scene_world_projection as _world_projection
 
@@ -26,6 +28,18 @@ _hot = _base._hot
 
 STAY_PREFIX = "turn-stay-"
 STAY_KEY = "permanencia_espacial"
+
+
+class _CompactProjection(dict):
+    """Projeção pública completa, serializada sem indentação redundante."""
+
+
+yaml.SafeDumper.add_representer(
+    _CompactProjection,
+    lambda dumper, value: dumper.represent_mapping(
+        "tag:yaml.org,2002:map", value.items(), flow_style=True
+    ),
+)
 
 _BASE_BUILD_PARSER = _base.build_parser
 _BASE_RUN_TURN = _base._run_turn
@@ -229,8 +243,9 @@ def _hot_prepare(
         },
         "gates": _stay_gate(public),
         "modificadores": modifiers,
-        STAY_KEY: public,
-        "fontes_lidas": list(public.get("fontes_lidas") or []),
+        STAY_KEY: _CompactProjection(public),
+        # Compartilhar a lista permite aliases YAML sem perder proveniência.
+        "fontes_lidas": public.get("fontes_lidas") or [],
         "proximo_passo": {},
     }
     decorated = _hot._decorate(result, reactive=False)

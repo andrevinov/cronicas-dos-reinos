@@ -1,0 +1,121 @@
+{
+  "schema_adjudicacoes_modulares": 2,
+  "corrections": [],
+  "semantic_audits": [],
+  "player_feedback": [
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Dar espaço à caracterização de Ren e simplificar a resolução física de uma cena incidental com um homem comum e destreinado, considerando a grande diferença de capacidade. A esperança de recuperação do rapaz é a intenção declarada do jogador; um eventual retorno seria bem recebido.",
+      "feedback_id": "feedback-af1f4eb0f1cbd8f021c7",
+      "interaction_ref": "S023-I0012",
+      "observation": "O narrador usou duas salvaguardas físicas e um teste de Intimidação para a sequência com Escuridão.",
+      "original_text": "[AVALIAÇÃO S023-I0012 — a coisa toda com o ladrão é apenas uma forma de Ren mostrar no que ele acredita: ele não acha que deveria chamar as autoridades, nem bater num homem desses. Mas pra não deixa-lo impune, Ren o assusta um pouco. Na cabeça dele, talvez esse homem, assustado, deixe o crime e passe a agir como um cidadão responsável. O homem é um NPC menor, que provavelmente nunca voltará (seria legal se voltasse, porém, rs). Talvez não coubessem jogadas, considerando que ele é um homem comum e destreinado e Ren é um monge nível 7.]",
+      "perceived_impact": null,
+      "perceived_type": "sobreativacao_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T14:55:52.447708Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Buscar equilíbrio aproximado entre aventuras procuradas por Ren e conflitos que chegam a ele por iniciativa do mundo, inclusive consequências no abrigo e nos vínculos com Nera, Tavin, Silva e o circo. Incidentes podem iniciar arcos sem uma oferta formal anterior. O ataque de outro shinobi é um exemplo possível, com vitória incerta e decisões de proteção e deslocamento pertencendo ao jogador.",
+      "feedback_id": "feedback-afbbe07462bb8763254a",
+      "interaction_ref": "S023-I0014",
+      "observation": "O jogador observa que até aqui Ren tem procurado mais aventura do que a aventura tem chegado a ele; oferece o exemplo de ameaça no quarto-depósito como orientação de ritmo e iniciativa, sem pedir que ocorra agora.",
+      "original_text": "[AVALIAÇÃO S023-I0014 — Não é tanto uma avaliação, mas algo a ser considerado sim. Imagine um mini-arco que começa com Ren entrando no seu quarto-depósito e, depois de alguns segundos, percebe alguém nas sombras. É outro shinobi. Começa uma luta mortal ali dentro do circo. Ren vence (talvez) e vai até Nera e Tavin. Conclui que não estão mais seguros, e saem. Esse shinobi pode até nem morrer, pode ser alguém que não é do nível dos Juppongatana, mas próximo. Ren agora não está mais seguro no circo e precisa dar um jeito de proteger Nera e Tavin ainda por cima. E talvez até Silva e o pessoal do circo.\n\nO que quero dizer aqui é: side quests poderiam começar automaticamente. Ou isso pode ser interpretado como uma quest canônica. Enfim, só estou dizendo que um dia Ren pode não dormir tranquilo nesse bendido quarto. Até aqui, Ren tem procurado mais aventura do que aventura tem chegado a ele. E eu acho que poderia ser um meio-a-meio aqui.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:10:10.155298Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "O elenco do circo deve circular por áreas comuns e ter iniciativa própria, com interações, informações ou pedidos quando houver causa e oportunidade, sem isolar automaticamente toda conversa de Ren com Silva.",
+      "feedback_id": "feedback-68ef08dc3d06af8dfef0",
+      "interaction_ref": "S023-I0017",
+      "observation": "O jogador cita Sorn, Lysa e Merrit como exemplos de elenco existente; a preferência não cria presença, encontro ou sidequest específica neste instante.",
+      "original_text": "[AVALIAÇÃO S023-I0017 — se Ren e Silva estão conversando em uma área comum do circo, não seria impossível um NPC que é do circo vê-lo e falar alguma coisa. Temos vários: Sorn, Lysa, Merrit, entre outros tantos já. Eles podem passar por Ren, perguntar do próximo show, podem pedir coisas a Ren (sidequests), podem contar algo. Até aqui, toda conversa que Ren tem com Silva é só ele e ela, não importa se estão comendo, se estão em público ou whatever. Ou seja: não temos \"Mundo Vivo\", temos Mundo Morto, rs.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:27:26.290057Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Durante o rollout, registrar avaliações e cumprir o procedimento de classificação, sem tratá-las como pedidos de reparo imediato; revisão e correções ocorrerão depois pelo dashboard.",
+      "feedback_id": "feedback-4270b7e0feeb2e203e92",
+      "interaction_ref": "S023-I0019",
+      "observation": "Correção explícita de procedimento: a avaliação anterior não autorizava corrigir o problema na cena seguinte nem realizar manutenção durante o jogo. Preservar o fluxo ON e deixar a avaliação disponível para adjudicação no dashboard.",
+      "original_text": "[AVALIAÇÃO S023-I0019 — quando eu faço a inserção de uma avaliação aqui eu não espero que você resolva o problema na hora. Eu só quero que anote e cumpra os procedimentos que classificam isso. Se houver problemas resolveremos depois que o rollout terminar. É pra isso que construímos o dashboard.]",
+      "perceived_impact": null,
+      "perceived_type": "timing",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:33:13.755388Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Reavaliar causalmente, após o rollout, a permanência e o grau de proteção de Nera e Tavin conforme o tempo sem ocorrências e a evolução dos interesses da Red Sail, incluindo a responsabilidade modular por consequências persistentes.",
+      "feedback_id": "feedback-0fa624220783fb07ab69",
+      "interaction_ref": "S023-I0020",
+      "observation": "Avaliação registrada para adjudicação no dashboard; não autoriza relaxar proteções ou alterar fatos agora. A afirmação sobre a Red Sail e a hipótese de que Nera deixou de ser um risco para ela são elementos da avaliação do jogador, não confirmação automática de conhecimento de Ren ou de estado canônico.",
+      "original_text": "[AVALIAÇÃO S023-I0020 — Nera e Tavin parecem eternamento presos na Carroça Verde. A situação deles já poderia ter mudado. Mesmo que eles continuem como reféns protegidos, é complicado viverem como que eternamente presos ali. Eu entendo que as camadas de proteção deveriam ir naturalmente relaxando ao passo que passam muitas noites sem ocorrências. Nós até sabemos que a Red Sail parou de procura-los ativamente. Sinceramente, considerando o que já temos, eu penso que Nera nem é mais uma 'liability' para a Red Sail.\n\nDeveria ter um módulo pensando nas consequências das coisas? Ou talvez algum módulo já existente deveria ter essa atribuição e não está fazendo?]",
+      "perceived_impact": null,
+      "perceived_type": "efeito_incorreto",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:48:35.690427Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Avaliar após o rollout se a exposição da Casa da Aurora Menor e os objetivos de Masao estão gerando consequências e iniciativas causais apropriadas, em vez de proteção invariavelmente sem ocorrências.",
+      "feedback_id": "feedback-51f5094ef53e761d9032",
+      "interaction_ref": "S023-I0027",
+      "observation": "Feedback registrado para adjudicação no dashboard. A possibilidade de Masao mandar alguém atacar não materializa ataque, presença hostil ou retaliação agora; não realizar correção imediata em resposta à avaliação.",
+      "original_text": "[AVALIAÇÃO S023-I0027 — Mais uma vez, um lugar que potencialmente Masao poderia mandar alguém atacar e, até aqui, nada, nenhuma consequência.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T16:11:36.703088Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    }
+  ]
+}

@@ -40,6 +40,19 @@ relacao:
   - Merrit não conseguiu confiar totalmente que Harl não será exposto.
   - Se for usada como narradora, Merrit deve ficar onde Silva veja suas mãos.
   - O sucesso como narradora pode reduzir o desespero de Merrit, mas ainda não restaura confiança plena.
+  memorias_importantes:
+  - compromisso_id: mem_2e6bfe29955ba7cb65d335f7
+    evidencia:
+      campo: jogador
+      trecho: Bom dia! Hoje não, Merrit. Mas amanhã, sem dúvida
+    fonte: transacao:s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+    id: mem_2e6bfe29955ba7cb65d335f7
+    operacao: registrar
+    participantes:
+    - merrit_tealeaf
+    - ren
+    registro_sha256: b393404fb29dfb7eccb072cd6e92f3e56d5a73aaaa9c7fd49e8c2e40d090c2fe
+    tipo: promessa
 conteudo_mais_antigo_no_historico:
   informacoes_compartilhadas_por_merrit: 8
   riscos: 1

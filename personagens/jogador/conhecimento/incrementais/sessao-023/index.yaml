@@ -1,0 +1,50 @@
+schema_conhecimento_incremental: 1
+sessao: 23
+fragmentos:
+- transacao: s023-dafeafa23dbd59d2
+  titulo: Ren pediu calma, vigiou o homem e impediu a entrega imediata da bolsa. A mulher afirmou ser dona e descreveu
+    seu remendo verde no fundo, um lenço azul e uma chave de baú com cordão vermelho no interior. Ren viu a costura
+    verde, mas o conteúdo não foi conferido e a propriedade continua sendo a alegação dela. O fugitivo está sentado,
+    livre e com a bolsa; o outro perseguidor está a poucos passos.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-dafeafa23dbd59d2.md
+  bytes: 922
+- transacao: s023-cd57d696b14d586a
+  titulo: Ren tomou rapidamente a bolsa das mãos do fugitivo com Destreza (Prestidigitação), 17 contra CD 15. O
+    homem, de aparência adulta jovem, barba rala, braços magros e camisa gasta, admitiu que pegou a bolsa e que
+    ela pertence à mulher. Cumprindo sua decisão condicional, Ren a entregou à reclamante; ela abriu a bolsa e Ren
+    viu o lenço azul e a chave com cordão vermelho previamente descritos. A mulher agradeceu; o homem, ainda sentado
+    e sem estar Agarrado, perguntou se Ren chamará a guarda. O trabal…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-cd57d696b14d586a.md
+  bytes: 1191
+- transacao: s023-761d1a066d5d2ddd
+  titulo: A mulher da bolsa e o trabalhador saíram após o sinal de Ren; o carregador seguiu com seu caixote. Ren
+    conjurou Escuridão pelas Artes Sombrias, gastando 1 Focus. O rapaz falhou em duas salvaguardas de Destreza contra
+    CD 15 (1 no empurrão contra a carroça; 13 na rasteira) e não escapou nas duas tentativas. Intimidação de Ren
+    teve sucesso com vantagem, [12,10], total 12 contra CD 10. Após isso, o rapaz permaneceu agachado e pediu para
+    sair durante cerca de três minutos de ameaças proferidas por R…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-761d1a066d5d2ddd.md
+  bytes: 1734
+- transacao: s023-nv04-7ad01d24f30c6a8303b2628878852a79
+  titulo: Ren informou a Silva que Darran ficou bem e afirmou que Tomas já compreende seu modo de agir. Merrit chegou
+    por uma tarefa cotidiana de panos sob orientação de Silva, cumprimentou Ren e perguntou se ele treinaria na
+    lona hoje, sem resposta imposta ao jogador e sem ouvir retroativamente o relato anterior sobre Darran. Silva
+    informou que Nera e Tavin estão bem, autorizou a visita no interior da carroça e os chamou. Nera e Tavin aproximaram-se
+    por vontade própria do lado de dentro; Nera estendeu a…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-7ad01d24f30c6a8303b2628878852a79.md
+  bytes: 695
+- transacao: s023-nv04-5b33072a1195aa621217505585d8fc5f
+  titulo: Ren perguntou pela noite após a retirada da mulher Cinza-Azul com Luath e pelos dias seguintes no templo.
+    A retirada foi na madrugada de 20 Eleasis, e o intervalo até hoje é pouco mais de três dias, preenchendo a lacuna
+    temporal sem mudar o histórico. Maerra relatou cansaço e encerramento da madrugada sem nova confusão, permanência
+    do guarda até o amanhecer, ausência de entrada forçada, janela quebrada, nova tentativa de retirar crianças,
+    ameaça ou recado estranho desde então. É o relato presen…
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-5b33072a1195aa621217505585d8fc5f.md
+  bytes: 1007
+- transacao: s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+  titulo: Ren permaneceu conversando com Maerra, perguntou pelas sete crianças e recebeu seu relato de alimentação,
+    sono irregular e retomada de brincadeiras. Contou que acha saber onde encontrar o homem do casaco cinza e que
+    irá como senhor Tanaka; espera obter respostas se conseguir capturá-lo. Maerra perguntou se ele costuma estar
+    acompanhado. Ren permanece na recepção da Casa da Aurora Menor.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6.md
+  bytes: 711
+quantidade: 6

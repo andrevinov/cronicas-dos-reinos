@@ -2,24 +2,10 @@ schema_estado_mundo: 1
 natureza: controle_reservado
 descricao: Cursor e fila operacional do motor determinístico; não é fonte independente de fatos da campanha. Conclusões antigas podem ser compactadas depois de consolidadas; detalhes canônicos permanecem nas fontes históricas e transacionais próprias.
 processado_ate:
-  data: 22 Eleasis, 1372 DR
-  hora: '22:04'
+  data: 23 Eleasis, 1372 DR
+  hora: '11:35'
 pendencias: []
 concluidas_recentes:
-- id: mundo-050f1a0efdbe5a14
-  tipo: reavaliar_agente_leve
-  agente_leve: bram_vask
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  resultado: rotina_sem_mudanca
-- id: mundo-a579af274540ec0e
-  tipo: reavaliar_agente_leve
-  agente_leve: maerra_thandrel
-  disparado_em:
-    data: 15 Eleasis, 1372 DR
-    hora: 06:00
-  resultado: rotina_sem_mudanca
 - id: mundo-ccfdf574959f090c
   tipo: avaliar_direcao
   disparado_em:
@@ -355,6 +341,123 @@ concluidas_recentes:
     hora: '21:49'
   resultado: rotina_sem_mudanca
   nota: 'A nova prova já foi recebida na cena: Halessa protegeu o depoente e autorizou o cruzamento reservado; sem nome ou localização do intermediário, não há alvo canônico para outra iniciativa extraordinária imediata.'
+- id: mundo-bc23781fb8b7a579
+  tipo: reavaliar_agente_leve
+  agente_leve: pell
+  disparado_em:
+    data: 18 Eleasis, 1372 DR
+    hora: 06:00
+  resultado: rotina_sem_mudanca
+  nota: Pell mantém mensageria e procura indireta já estabelecidas. O contexto não contém informação pagável nova, ameaça direta ou oportunidade concreta de pagamento que autorize uma iniciativa distinta.
+- id: mundo-567cbf3b479cb6a4
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  agente: red_sail
+  nota: A busca dirigida em execução permanece válida, sem nova pista factual ou localização descoberta no contexto. Não se atribuem à Red Sail a casa de Iria, o lagar, a cadeia rural ou conhecimento automático da crise que ainda será materializada.
+- id: mundo-5fae5ff9b675219b
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  agente: kajiwara_shizune
+  nota: 'Bloqueio canônico concreto: a presença física de Shizune em Ravens Bluff permanece indeterminada, e sua regra de atuação local exige essa presença para novas ações físicas. Elegibilidade local explicitamente nao; não avançar ocupação imobiliária nem
+    canonizar chegada por sinais compatíveis.'
+- id: mundo-8733f879a5351247
+  tipo: avaliar_direcao
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  nota: Não há no contexto fato canônico novo que sustente avanço da Golden Lily. A cadência da direção avalia sustentação, mas não cria rumor, viagem, executor ou presença.
+- id: mundo-d591c0b836a77eea
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  agente: casa_de_tyr
+  nota: Tyr mantém custódias separadas, proteção da testemunha já acolhida e mediação por Luath, sem retorno documental novo ou cooperação clandestina recém-autorizada. A reavaliação não inventa atribuição de autoria nem atraso; a crise institucional será materializada
+    separadamente.
+- id: mundo-6a41d07ac16fbafb
+  tipo: expiracao
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  nota: 'Núcleo do arsenal materializado em domínio reservado: perdas patrimoniais, trilha física para logística subterrânea de Sarbreen e resposta institucional iniciada. Ren ainda não recebeu notícia; não houve oferta ou resultado de recuperação.'
+- id: mundo-c5f1cb6afa53753f
+  tipo: reavaliar_agente
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 06:00
+  agente: night_watch
+  nota: 'A resposta ao arsenal já foi materializada em s023-mundo-arsenal-23-eleasis-0600: inventário, isolamento e preservação de vestígios, com coordenação de Luath. Esta reavaliação mantém a investigação anterior e o protocolo de força preparada, sem um segundo
+    fato ou suspeita indiscriminada; não transfere a Ren conhecimento interno da ocorrência.'
+- id: mundo-167542710ed1674a
+  tipo: reavaliar_agente_leve
+  agente_leve: silva_elkwood
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 09:15
+  resultado: rotina_sem_mudanca
+  nota: A alteração é o relato presencial de Ren sobre Darran protegido por Tyr e as cópias retidas por Tomas; Silva já respondeu a esse relato na mesma conversa. Não foi demonstrado parentesco com Nera ou Tavin, nova observação do abrigo ou demanda de mensagem
+    que exija intervenção extraordinária. Seu controle de acesso aos Vell e o trabalho pastoral continuam; o pedido atual de Ren será resolvido presencialmente, sem fabricar uma operação fora de cena.
+- id: mundo-06087f8e2d59adfe
+  tipo: reavaliar_agente_leve
+  agente_leve: silva_elkwood
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: 09:20
+  resultado: rotina_sem_mudanca
+  nota: As mudanças são a avaliação de Ren de que Darran ficou bem e Tomas compreendeu seu modo de agir, além da própria confirmação de Silva de que os Vell estão bem. Silva já autorizou a visita e os chamou para conversar no abrigo, mantendo seu controle de
+    acesso. Nada novo demonstra ameaça, observação ou obrigação de mensagem que exija outra intervenção fora desta conversa; o cuidado pastoral e a rotina continuam.
+- id: mundo-808f68aaec60d061
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: '10:41'
+  resultado: rotina_sem_mudanca
+  nota: A mudança é Maerra reconhecer o amigo Ren pelo histórico de resgates que ele deliberadamente evocou, sob outra aparência, preservando discrição. Ele ainda não comunicou novo fato de investigação, ameaça às crianças, ordem de transferência ou obrigação
+    institucional; a saudação não exige alerta a aliados nem intervenção extraordinária. Maerra continua sua rotina religiosa e de abrigo, e responderá presencialmente às perguntas atuais conforme seu conhecimento.
+- id: mundo-c762db5f2df38157
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: '10:45'
+  resultado: rotina_sem_mudanca
+  nota: 'A alteração é a marca da própria informação transmitida por Maerra: ela relatou a noite com guarda até o amanhecer, ausência de novos incidentes observados e o limite de suas observações sobre vigilância discreta. Nenhum alerta, nova ordem de transferência,
+    ameaça ou violação da proteção foi recebido; Ren ainda não relatou a noite com Darran e Tomas nesta conversa. Seu cuidado religioso e de abrigo continua, sem motivo novo para um encaminhamento extraordinário a Luath ou Tyr.'
+- id: mundo-20c705cda2920110
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: '10:55'
+  resultado: rotina_sem_mudanca
+  nota: 'Restrição de conhecimento e oportunidade: Maerra recebeu o relato do rapto e do desfecho, mas não conhece o paradeiro do homem do casaco cinza nem dispõe de alvo localizado para um alerta operacional. O encaminhamento institucional de Darran já ocorreu:
+    Halessa o protege em Tyr, e Tomas reteve os três maços após receber a retratação. Essa testemunha já está protegida pela instituição apropriada. Maerra permanece responsável pelo abrigo das sete crianças e exerce sua rotina pastoral, conforme seu perfil;
+    não há encaminhamento pendente de Darran que ela possa executar.'
+- id: mundo-0ed8b6e3356ea46d
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: '11:10'
+  resultado: rotina_sem_mudanca
+  nota: 'Restrição de conhecimento: Maerra ouviu que Ren acha saber onde encontrar o homem e usará a persona Tanaka, mas não recebeu endereço, horário, identificação verificável ou composição de acompanhantes para encaminhar uma operação a Luath ou Tyr. O deponente
+    Darran já se encontra sob proteção de Halessa em Tyr, e os maços foram retidos por Tomas. Maerra continua no abrigo responsável pelas sete crianças; sem os dados de localização, não pode executar um alerta dirigido sobre essa busca. A rotina pastoral é o
+    padrão de seu perfil e permanece em curso.'
+- id: mundo-ed0b42b5c425b58f
+  tipo: reavaliar_agente_leve
+  agente_leve: maerra_thandrel
+  disparado_em:
+    data: 23 Eleasis, 1372 DR
+    hora: '11:35'
+  resultado: rotina_sem_mudanca
+  nota: 'Restrição de conhecimento e oportunidade: Ren apenas estimou que o homem estaria acompanhado; Maerra continua sem endereço, horário ou identificação dos acompanhantes para uma operação dirigida. A promessa é uma visita cordial em breve, sem instante
+    combinado, e não atribui tarefa institucional a Maerra. Darran já está protegido por Tyr. Maerra permanece no abrigo exercendo os cuidados pastorais das sete crianças, conforme sua rotina padrão; não pode executar encaminhamento dirigido sem os dados de
+    localização que não recebeu.'
 acionamentos_leves:
   versao: 1
   aguardando: {}

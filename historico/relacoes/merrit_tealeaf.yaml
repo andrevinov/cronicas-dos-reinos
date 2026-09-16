@@ -65,3 +65,28 @@ relacao:
   - Merrit não conseguiu confiar totalmente que Harl não será exposto.
   - Se for usada como narradora, Merrit deve ficar onde Silva veja suas mãos.
   - O sucesso como narradora pode reduzir o desespero de Merrit, mas ainda não restaura confiança plena.
+eventos_pos_migracao:
+- transacao: s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+  sessao: 23
+  resumo: Ren respondeu a Merrit que usará a lona para treinar amanhã, sem marcar horário nem combinar presença
+    dela. Ren ficou com Nera e Tavin no interior da carroça verde, perguntou se comeram e comeu pão oferecido por
+    Nera; Silva forneceu água e retomou o trabalho no exterior. Ren brincou sobre ter resgatado um parente de Nera,
+    sem confirmar parentesco, e relatou aos dois o rapto de Darran Vell, desculpas, elo com o homem do casaco cinza,
+    proteção por Halessa em Tyr, retratação a Tomas, E-39 suspenso…
+  deltas:
+  - alvo: relacao:merrit_tealeaf
+    caminho: memorias_importantes
+    op: append
+    valor:
+      compromisso_id: mem_2e6bfe29955ba7cb65d335f7
+      evidencia:
+        campo: jogador
+        trecho: Bom dia! Hoje não, Merrit. Mas amanhã, sem dúvida
+      fonte: transacao:s023-nv04-ff43021efbf23ec086cea14a39f2df7c
+      id: mem_2e6bfe29955ba7cb65d335f7
+      operacao: registrar
+      participantes:
+      - merrit_tealeaf
+      - ren
+      registro_sha256: b393404fb29dfb7eccb072cd6e92f3e56d5a73aaaa9c7fd49e8c2e40d090c2fe
+      tipo: promessa

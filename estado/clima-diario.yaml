@@ -2,9 +2,53 @@ schema_clima_diario: 1
 natureza: estado_climatico_deterministico
 regioes:
   ravens_bluff:
-    avaliado_ate: 22 Eleasis, 1372 DR
+    avaliado_ate: 23 Eleasis, 1372 DR
     ativo:
-      id: clima-2b9a91fec8768ea1
+      id: clima-ba4991713fc847cb
+      data: 23 Eleasis, 1372 DR
+      regiao: ravens_bluff
+      estacao: verao
+      estado: ceu_limpo
+      extremo: false
+      inicio:
+        data: 23 Eleasis, 1372 DR
+        hora: 06:00
+      fim_previsto:
+        data: 24 Eleasis, 1372 DR
+        hora: 00:00
+      duracao_horas: 18
+      intensidade: leve
+      descricao: Céu predominantemente limpo e circulação normal de ar sobre a cidade.
+      efeitos:
+        sensorial:
+        - luz aberta sobre telhados e ruas
+        - ar sem precipitação relevante
+        deslocamento:
+          tempo_percentual: 100
+          marcadores:
+          - piso_seco
+        espacos:
+          exteriores: normal
+          expostos: normal
+          marcadores:
+          - espacos_externos_abertos
+        incidentes:
+        - tempo_estavel
+        condicao:
+          sinais:
+          - céu aberto
+          - vias secas
+          marcadores:
+          - piso_seco
+          - tempo_estavel
+      fato_canonico: 'Clima NV-21 23 Eleasis, 1372 DR em ravens_bluff: ceu_limpo.'
+      seed_sha256: 9099f5269b4b925f452a685b2a5fb388ca67aef720ef831aa802ca823bbb934a
+      slot_indice: 10
+      condicao_id: cnd-6624f23cc5b4bec1
+      fingerprint: 530405daaffddbab5da7da2571b8ec776666edf9d153f0eefeb3e4621353c7d2
+    candidato_extremo: null
+    historico_recente:
+    - id: clima-2b9a91fec8768ea1
       data: 22 Eleasis, 1372 DR
       regiao: ravens_bluff
       estacao: verao
@@ -46,5 +90,3 @@ regioes:
       slot_indice: 6
       condicao_id: cnd-38a0588e7dc60f78
       fingerprint: 6a55a0c99fd5143eff26da774da9c0ef72450910257b641b8b4c0c1baf5cd411
-    candidato_extremo: null
-    historico_recente: []

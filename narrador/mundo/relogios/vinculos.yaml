@@ -1,9 +1,9 @@
 schema_vinculos_relogios: 1
 natureza: roteador_derivado
 descricao: Roteador compacto derivado dos vinculos_agenciais dos relógios; não é fonte independente de fatos.
-quantidade: 7
+quantidade: 8
 pressoes_ativas: 3
-consequencias_resolvidas: 4
+consequencias_resolvidas: 5
 operacoes:
   night_watch_preservar_casa_pesos:
     agente_principal: night_watch
@@ -41,6 +41,7 @@ por_agente:
   night_watch:
     pressoes_ativas: []
     consequencias_resolvidas:
+    - arsenal_da_night_watch
     - destino_de_edran_kells
     - operacao_preservacao_casa_pesos
     operacoes_com_pressao_ativa: []
@@ -55,6 +56,15 @@ por_agente:
     operacoes_com_pressao_ativa:
     - red_sail_reconstruir_cadeia_colm
 relogios:
+  arsenal_da_night_watch:
+    titulo: Materialização do fato do arsenal da Night Watch
+    tipo: consequencia
+    estado: resolvido
+    operacao: null
+    agente_principal: night_watch
+    papel_agente: afetado
+    agentes_relacionados: []
+    arquivo: narrador/mundo/relogios/arsenal_da_night_watch.yaml
   destino_de_edran_kells:
     titulo: Destino de Edran Kells
     tipo: consequencia

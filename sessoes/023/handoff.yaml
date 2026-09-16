@@ -1,0 +1,99 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 23
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    focus:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 37.61999999999999
+  tempo:
+    data: 23 Eleasis, 1372 DR
+    hora_aproximada: '11:35'
+    periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Rua diante do restaurante da emboscada
+    ponto_exato: na rua diante do restaurante da emboscada, observando a entrada sob o disfarce de Tanaka
+continuidade:
+  resumo_imediato: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka. Observa
+    a entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista da
+    porta dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua vista;
+    Aiko havia anunciado sua visita para depois do meio-dia, sem hora exata.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
+eventos_recentes:
+- batch: s023-cena-f08da1421dce023c
+  transacao: s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab
+  resumo: Ren declarou aos dois que não sabe se o homem de cinza conhece o paradeiro de Darran, quer capturá-lo
+    depressa por suas respostas e por considerá-lo uma ameaça. Ficou mais alguns minutos brincando com Tavin e conversando
+    com Nera; Tavin imitou o escriba da história, sem ensinar técnicas ou impor novas falas a Ren. Ren levantou-se
+    e anunciou sua intenção de atualizar Maerra, verificar seu bem-estar e procurar o homem…
+- batch: s023-cena-f08da1421dce023c
+  transacao: s023-nv04-1fb984d749f9b9bd7638048b0afa38f2
+  resumo: Ren beijou Nera, declarou seu amor e prometeu voltar logo; Nera retribuiu o beijo e o amor. Ren saiu da
+    carroça, despediu-se de Silva, recolheu as roupas já usadas como Tanaka no quarto-depósito e procurou Dessa
+    no guarda-roupa. Pagou cinco pratas pelo auxílio de figurino e, com seu kit e a costureira, recompôs o disfarce
+    material de trabalhador kozakurano idoso, sem usar o broche. Preparação rotineira de uma versão…
+- batch: s023-cena-f08da1421dce023c
+  transacao: s023-14aa2834feddc1b3
+  resumo: Após a etapa de figurino concluída, Ren foi materialmente à Casa da Aurora Menor usando Tanaka. O deslocamento
+    foi uma transição para o encontro, sem cena própria de perturbação urbana. Maerra foi encontrada em sua rotina
+    recolhendo tigelas no espaço de recepção; não há ferimento visível. Ela recebeu o visitante com cortesia, indicou
+    um banco e perguntou o motivo da visita, sem se declarar conhecedora da identidade…
+- batch: s023-cena-f08da1421dce023c
+  transacao: s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603
+  resumo: Ren falou na voz de Tanaka, aproximou-se e ofereceu deliberadamente a Maerra a pista do histórico compartilhado
+    de acolhimento de pessoas resgatadas. Maerra reconheceu Ren pela referência, pronunciou seu nome em voz baixa
+    e o recebeu com humor e afeto pastoral; comentou a qualidade da maquiagem, atribuindo-a a Dessa como suposição,
+    não descoberta de informações privadas. Reconheceu antes da condição de falha, portan…
+- batch: s023-cena-3aaf0a0a6c1513de
+  transacao: s023-nv04-5b33072a1195aa621217505585d8fc5f
+  resumo: Ren perguntou pela noite após a retirada da mulher Cinza-Azul com Luath e pelos dias seguintes no templo.
+    A retirada foi na madrugada de 20 Eleasis, e o intervalo até hoje é pouco mais de três dias, preenchendo a lacuna
+    temporal sem mudar o histórico. Maerra relatou cansaço e encerramento da madrugada sem nova confusão, permanência
+    do guarda até o amanhecer, ausência de entrada forçada, janela quebrada, nova tentati…
+- batch: s023-cena-5c33fba77584e985
+  transacao: s023-nv04-c3c2a7d174ef03896f0545ba49e745cf
+  resumo: 'Ren contou presencialmente a Maerra a noite com Darran e Tomas: rapto, desculpas, elo com o homem de
+    cinza, acolhimento protegido por Halessa em Tyr, retratação, suspensão do E-39 e retenção de três maços sem
+    portador na janela. Maerra recebeu essas informações como relato de Ren, sem adquirir informações do episódio
+    com o rapaz da bolsa ou conhecimento reservado externo. Ren brincou sobre ter pensado em trazer outr…'
+- batch: s023-cena-ffb917be0fdd0a4a
+  transacao: s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+  resumo: Ren permaneceu conversando com Maerra, perguntou pelas sete crianças e recebeu seu relato de alimentação,
+    sono irregular e retomada de brincadeiras. Contou que acha saber onde encontrar o homem do casaco cinza e que
+    irá como senhor Tanaka; espera obter respostas se conseguir capturá-lo. Maerra perguntou se ele costuma estar
+    acompanhado. Ren permanece na recepção da Casa da Aurora Menor.
+- batch: s023-cena-ae60efa9bfc53ed3
+  transacao: s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+  resumo: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka. Observa a
+    entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista da porta
+    dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua vista; Aiko
+    havia anunciado sua visita para depois do meio-dia, sem hora exata.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/023/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

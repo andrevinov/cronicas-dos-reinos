@@ -23,19 +23,7 @@ relacao:
     suplementar de Velis; às 17:45, entregou a confirmação a Ren e informou que Sirrus autorizou a vigilância coordenada
     nos limites definidos.
   riscos:
-  - Silva sabe que Ren retornou sem cauda útil percebida, mas sem a certeza plena que ele queria.
-  - Silva ouviu o relato de Ren sobre Sarbreen, Brunna Torkel, a Escada das Sete Águas e a avaliação de Luath.
-  - Silva sabe que Ren despertou o Passo Sombrio e quer que ele teste a técnica longe dos Vell até conhecer seus
-    limites.
-  - Silva sabe que a resposta da Casa Veyr chegou com 40 PO adiantadas, mas que Jack ainda não aceitou a apresentação
-    fechada.
-  - Silva sabe que Casa Veyr foi verificada como presença temporária pagante, mas sem raiz local forte.
-  - Silva mantém Nera e Tavin longe da superfície da apresentação fechada de Kage.
-  - Silva ajudou Ren a fazer uma visita discreta por Passo Sombrio à carroça verde, mas considera a técnica brusca
-    demais para uso casual perto dos Vell.
   - Silva manteve a rotina do circo quieta enquanto Ren completava descanso curto antes do amanhecer de 7 Eleasis.
-  - Silva leu a mensagem curta de Luath informando que o pacote reservado da Ponte Baixa passou para Tyr sem nome
-    no papel externo.
   - Silva continua como filtro obrigatório para conversas com Nera e Tavin quando houver risco de observação no
     acampamento.
   - Ren contou a Silva que Bram Vask tentou matar Colm e o próprio Ren novamente, e declarou que alguns homens são
@@ -50,21 +38,6 @@ relacao:
     Reconhece que ele permaneceu não identificado, saiu sem atacar, retornou antes do prazo e confessou a quebra,
     mas considera que Narwhal explorou previsivelmente o orgulho dele.
   informacoes_recebidas_por_silva:
-  - Ren contou o plano coordenado com Halessa para pressionar e seguir Velis, confessou a vontade de eliminar os
-    agentes de Masao e explicou que pretende respeitar os limites dos aliados enquanto pondera quando será necessário
-    escalar.
-  - Nera retornou dos aposentos de Ren às 05:00 conforme combinado, por vontade própria e sem sinal de medo ou risco
-    imediato. Silva sabe que Ren dormiu apenas cerca de quatro horas antes de partir como Shinta.
-  - Em 12 Eleasis, Ren revelou a cobertura de Shinta Ryoushi, a tentativa de obter uma casa, os empregos com o jardineiro
-    e com Tomas no pátio de entregas e os limites de acesso impostos pelo escriturário.
-  - Ren relatou a possível cauda após o trabalho como Shinta e explicou que rompeu a linha de visão numa loja lotada,
-    gastou o Broche do Semblante Humilde e só então retornou ao circo sob outra aparência.
-  - 'Ren relatou integralmente a operação contra Velis: a reação à convocação, a detecção do velho, a quebra do
-    limite de ruptura, o portador usado como isca, a escuta na antiga casa de cópias e a existência de outra mensagem
-    por rota desconhecida.'
-  - Em 13 Eleasis, Ren relatou o primeiro dia regular de Shinta na Galeria dos Escribas, a familiaridade inicial
-    com a conferente Sella e o plano de alcançar a dona da Casa do Salgueiro Seco para negociar um possível abrigo
-    seguro para Nera e Tavin.
   - Ren contou a tentativa fracassada de falar com Kethra em Narwhal sob o Broche, o registro dos nomes falsos Jost
     Anon e Arthur Donovan ligados a uma alegação sobre a Galeria, a cauda rompida com Passos sem Pegadas e o acordo
     de mensagem única com Sella Rove.
@@ -105,17 +78,75 @@ relacao:
     emissor: ren
     estatuto: relato
     evidencia:
-      campo: jogador
-      trecho: Tomas suspendeu o selo final de três cópias autenticadas e pediu que Ren investigasse quem controla
-        a retirada com o talão E-39, prevista entre 20:00 e 22:00.
-    fonte: transacao:s022-nv04-917a2cf8859432b3884dc333069fd9cb
-    id: mem_9055fe8faef3ab735573c1bc
+      campo: narracao
+      trecho: Ren conta como capturou Darran e depois lhe pediu desculpas pela violência.
+    fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+    id: mem_cd8ba7e43b007bc24dca63ec
     participantes:
     - ren
     - silva_elkwood
-    registro_sha256: a8dddb9507fc98d6db67180e0f320e33180b466438200d1086d931a3d401d2af
-    texto: Tomas suspendeu o selo final de três cópias autenticadas e pediu que Ren investigasse quem controla a
-      retirada com o talão E-39, prevista entre 20:00 e 22:00.
+    registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+    texto: Ren conta como capturou Darran e depois lhe pediu desculpas pela violência.
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Explica a ligação que Darran revelou com o homem do casaco cinza
+    fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+    id: mem_8d797e8b96c834f56a65062e
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+    texto: Explica a ligação que Darran revelou com o homem do casaco cinza
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Halessa acolheu Darran como testemunha protegida na Casa de Tyr
+    fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+    id: mem_c45252d4247a507ba0aa64db
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+    texto: Halessa acolheu Darran como testemunha protegida na Casa de Tyr
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Tomas recebeu a retratação assinada, suspendeu o talão E-39 e reteve os três maços de cópias.
+    fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+    id: mem_ed5d893c953614bf686bc8de
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+    texto: Tomas recebeu a retratação assinada, suspendeu o talão E-39 e reteve os três maços de cópias.
+    tipo: informacao
+  - canal: presencial
+    destinatario: silva_elkwood
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Ninguém apresentou o talão durante a janela autorizada.
+    fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+    id: mem_10527a03e4596b9392fae05e
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+    texto: Ninguém apresentou o talão durante a janela autorizada.
     tipo: informacao
   - canal: presencial
     destinatario: silva_elkwood
@@ -123,48 +154,16 @@ relacao:
     estatuto: relato
     evidencia:
       campo: jogador
-      trecho: Ren pretende abordar Darran Vell nas docas como Ren Kagehira e disse a Silva que pretende apenas conversar.
-    fonte: transacao:s022-nv04-917a2cf8859432b3884dc333069fd9cb
-    id: mem_47616e1ef178c7fdf0271381
+      trecho: Ele ficou bem. Tomas já entendeu meu modus operandi. Aquela carinha dele de escriba sério não me engana
+        não
+    fonte: transacao:s023-nv04-7ad01d24f30c6a8303b2628878852a79
+    id: mem_bc82bb6944719b5cd00e04a6
     participantes:
     - ren
     - silva_elkwood
-    registro_sha256: a8dddb9507fc98d6db67180e0f320e33180b466438200d1086d931a3d401d2af
-    texto: Ren pretende abordar Darran Vell nas docas como Ren Kagehira e disse a Silva que pretende apenas conversar.
-    tipo: informacao
-  - canal: presencial
-    destinatario: silva_elkwood
-    emissor: ren
-    estatuto: relato
-    evidencia:
-      campo: jogador
-      trecho: Ren diz a Silva que vigiará Darran, pretende abordá-lo sozinho sobre o selo de urgência e, com informação
-        ou não, irá depois até Tomas.
-    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
-    id: mem_11ccfee18b9dc74586243a34
-    participantes:
-    - ren
-    - silva_elkwood
-    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
-    texto: Ren diz a Silva que vigiará Darran, pretende abordá-lo sozinho sobre o selo de urgência e, com informação
-      ou não, irá depois até Tomas.
-    tipo: informacao
-  - canal: presencial
-    destinatario: silva_elkwood
-    emissor: ren
-    estatuto: relato
-    evidencia:
-      campo: jogador
-      trecho: Ren avisa Silva de que, se não estiver de volta até a manhã de 23 Eleasis, sua ausência deve ser tratada
-        como problema.
-    fonte: transacao:s022-nv04-4527aa7fcc09c67166bcc7c385b53ab0
-    id: mem_bcb6ba31c9fd601060d566f1
-    participantes:
-    - ren
-    - silva_elkwood
-    registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
-    texto: Ren avisa Silva de que, se não estiver de volta até a manhã de 23 Eleasis, sua ausência deve ser tratada
-      como problema.
+    registro_sha256: 674ced5b41fc5b9ad1cf8602452219f9fef0cc1c35701adc382cf6fcf1205a7c
+    texto: Ele ficou bem. Tomas já entendeu meu modus operandi. Aquela carinha dele de escriba sério não me engana
+      não
     tipo: informacao
   memorias_importantes:
   - evidencia:
@@ -193,5 +192,22 @@ relacao:
     registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
     texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
     tipo: marco
+  - canal: presencial
+    destinatario: ren
+    emissor: silva_elkwood
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Estão bem. A noite passou tranquila por aqui.
+    fonte: transacao:s023-nv04-7ad01d24f30c6a8303b2628878852a79
+    id: mem_ff3929aaf8b6e1646d03bad5
+    participantes:
+    - ren
+    - silva_elkwood
+    registro_sha256: 674ced5b41fc5b9ad1cf8602452219f9fef0cc1c35701adc382cf6fcf1205a7c
+    texto: Estão bem. A noite passou tranquila por aqui.
+    tipo: informacao
 conteudo_mais_antigo_no_historico:
-  riscos: 54
+  riscos: 63
+  informacoes_recebidas_por_silva: 6
+  informacoes_recebidas: 4

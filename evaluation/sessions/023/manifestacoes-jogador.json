@@ -1,0 +1,2072 @@
+{
+  "schema_narrative_interactions": 1,
+  "session": 23,
+  "interactions": [
+    {
+      "interaction_id": "interaction-da63733de48ee00e96b0",
+      "interaction_ref": "S023-I0001",
+      "session": 23,
+      "ordinal": 1,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-1a7049513ae9116991d9",
+      "interaction_ref": "S023-I0002",
+      "session": 23,
+      "ordinal": 2,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "973742442c5e15fcd45a9372fe391262610188a8fc5be25c8b02d56c67da4d39",
+      "response_sha256": "77fcb350cc8ac08a0ea100989719bbd9d081d31a71b3b6fb1c2799b57f0112b3",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-f4be6966ea21501465085f05280b5747",
+      "ticket_id": "721bb27319d95067b4cc",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-ad896a03479d98e95ab1",
+      "interaction_ref": "S023-I0003",
+      "session": 23,
+      "ordinal": 3,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "8f3f0bcd84c029643e02be981cfa787d87d51f35e886b672c0f1de0e6ee52a0f",
+      "response_sha256": "0e6cb2ea493a8c69f928e7cc076e9e1b52c2ed2413c11f9bf04b1c248a1efa74",
+      "turn_id": null,
+      "transaction_id": "s023-1a19fc960fc77661",
+      "ticket_id": "4284d9321730403cbb4b",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-f7b8031f9753df478e61",
+      "interaction_ref": "S023-I0004",
+      "session": 23,
+      "ordinal": 4,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "8f3f0bcd84c029643e02be981cfa787d87d51f35e886b672c0f1de0e6ee52a0f",
+      "response_sha256": "4b0d7aa81fd9e7d5a41fdad6543f9bb4451f2dac6e8399a36793c163e66b13d6",
+      "turn_id": null,
+      "transaction_id": "s023-7b0dd136e6bf1882",
+      "ticket_id": "bab508d3af5cb87d08f1",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-ad8fcc4e0a01bf29caba",
+      "interaction_ref": "S023-I0005",
+      "session": 23,
+      "ordinal": 5,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "8f3e82a1841c4884f331e4e6ca3cef490a835c3e861a67a2f012ac40b8f5d688",
+      "response_sha256": "31dfbe3836fa0aa2b7fd026c681520656429b9f5bae854db3364adf9c3349b99",
+      "turn_id": null,
+      "transaction_id": "s023-0ce562bbb95796e3",
+      "ticket_id": "9444fee89de505bb2095",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-622c88497555698c6750",
+      "interaction_ref": "S023-I0006",
+      "session": 23,
+      "ordinal": 6,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-6770e37989859a4c3aa8",
+      "interaction_ref": "S023-I0007",
+      "session": 23,
+      "ordinal": 7,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "ccad0931a0cbecfcf6594d6efaedb2823e82ee399cee28f92d23eeef32cbbb60",
+      "response_sha256": "28c79b28d24deac9f92d6850c0056cacce81550c6e8f9653475036a4d022b749",
+      "turn_id": null,
+      "transaction_id": "s023-fa8b150d3d3d0979",
+      "ticket_id": "12335bfa74a77dd530b4",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-16c26974e33fc6c497d1",
+      "interaction_ref": "S023-I0008",
+      "session": 23,
+      "ordinal": 8,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-c33b309cf232cecf344a",
+      "interaction_ref": "S023-I0009",
+      "session": 23,
+      "ordinal": 9,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "76b18713f187feff0fb92c17e64684f97a514e18cb3e03d7b8ff3e04a2846f5c",
+      "response_sha256": "f3241165a432c5573fe454a15de61022b1b330033947a87fdd74d6831c4ba583",
+      "turn_id": null,
+      "transaction_id": "s023-ba5ea27b87f4669b",
+      "ticket_id": "14f3804139b5e2b8ffe7",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-cef2a0b96b7414ec9a9f",
+      "interaction_ref": "S023-I0010",
+      "session": 23,
+      "ordinal": 10,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "f0b3019f85f5622612c1f2b2732f311bde9f00996dc3924a63e919f9718a7a5f",
+      "response_sha256": "22165b03f38172ad01fe3bcda7d3771edbfca837d3c8676861336c877f13d0ea",
+      "turn_id": null,
+      "transaction_id": "s023-dafeafa23dbd59d2",
+      "ticket_id": "524c13b9fca8a3c975a8",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-19554dc0449e8b3258cf",
+      "interaction_ref": "S023-I0011",
+      "session": 23,
+      "ordinal": 11,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "112a51d2cf836925cc8a7ddbff82198ec36d5b4fa0e781103fd05712d2e0f4f5",
+      "response_sha256": "c5dcf26ad8c88f15cb616fa3d7254e0843c4c27ad0b77b4c83d490f24d88096e",
+      "turn_id": null,
+      "transaction_id": "s023-cd57d696b14d586a",
+      "ticket_id": "fbbe26ffb17cd841672d",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-3f0f60dbb012cb137249",
+      "interaction_ref": "S023-I0012",
+      "session": 23,
+      "ordinal": 12,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "6bbb50b225040fea52f65a26a4c1d3ca93e1c8f2581c11103a9ea724c4477408",
+      "response_sha256": "97134273940fc4f7ba2fab19d47c0238f1a3a5aaede085b9b9e45f1559a75cf6",
+      "turn_id": null,
+      "transaction_id": "s023-761d1a066d5d2ddd",
+      "ticket_id": "88bdfe16c49733e50e2f",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-69c33f487d0c8e1e7fd2",
+      "interaction_ref": "S023-I0013",
+      "session": 23,
+      "ordinal": 13,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "8cbff79a1070eaa6e48e9ed7b4c237801de03d1654f40802eb2698ef59f8a764",
+      "response_sha256": "348b70e1377d460e7122854f1a4d070dd37b27a9596081699eb8a0b4be800b0a",
+      "turn_id": null,
+      "transaction_id": "s023-ea5c9fe82dd8d20c",
+      "ticket_id": "2d61aee660f03bf2f579",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-0883cb61e676f1a21ad7",
+      "interaction_ref": "S023-I0014",
+      "session": 23,
+      "ordinal": 14,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "8cbff79a1070eaa6e48e9ed7b4c237801de03d1654f40802eb2698ef59f8a764",
+      "response_sha256": "bb97a59f60ddc7859ccd2c834d7d1ede6aa9f007947649e8d32e53b4b31a72e8",
+      "turn_id": null,
+      "transaction_id": "s023-5478c34c4f696994",
+      "ticket_id": "8469b49003a71bdc3c51",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-444ca9ccbdd023fbab6e",
+      "interaction_ref": "S023-I0015",
+      "session": 23,
+      "ordinal": 15,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-02ab740be1f5f13971be",
+      "interaction_ref": "S023-I0016",
+      "session": 23,
+      "ordinal": 16,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "25261bf8bc901de9c03b1bd610b9e8f109671544f5093f76ad5886d956d4d51c",
+      "response_sha256": "378696d3d13e02e05aa0a75a91ec61f92d46ff5838829fedbce5543420d02a4f",
+      "turn_id": null,
+      "transaction_id": "s023-7ab4884d0b9a6f86",
+      "ticket_id": "d14e157c79f4f48ffe40",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-240c6829419132a49f52",
+      "interaction_ref": "S023-I0017",
+      "session": 23,
+      "ordinal": 17,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "b408e00e05d516c1675370f8393d7932f1161afc38ed2829bb362cbc3f9d3d2e",
+      "response_sha256": "2f9a5b283ab8dcc12b2d67150afe1e800bdae192de726f0ccc1b3aaad28e0d03",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-2bac9d46fb3e48485bb358df3d07135e",
+      "ticket_id": "f5623765dee78fdb17a1",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-953c88623a6d00995f54",
+      "interaction_ref": "S023-I0018",
+      "session": 23,
+      "ordinal": 18,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-d8277465de8ea4a8abe8",
+      "interaction_ref": "S023-I0019",
+      "session": 23,
+      "ordinal": 19,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "5e8fb4a02b2b67a9b5200ce8558698c18d83bde222b87784efd76526e95b3ffd",
+      "response_sha256": "d7221da6a2b42ac32e715fac5077c9ec87715f841e83836d18dc378fd310d77e",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-7ad01d24f30c6a8303b2628878852a79",
+      "ticket_id": "71411cb548eb126f29e7",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-29374f13df266ebcf5eb",
+      "interaction_ref": "S023-I0020",
+      "session": 23,
+      "ordinal": 20,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "15a1f36a5392d770063298ac625f5160d99fa54b103aa6ed32fe6dd8566c52a4",
+      "response_sha256": "7f8c1307a4e14e1516732864093323c04c41f8fdd42c739c0491b62eff48215a",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-ff43021efbf23ec086cea14a39f2df7c",
+      "ticket_id": "099fb59d8e1b06564c15",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-5e2181a80ca7a1e7a668",
+      "interaction_ref": "S023-I0021",
+      "session": 23,
+      "ordinal": 21,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "404b0f2ecd1dbfaa5ec8c7b456fc8b4dd5fb972d3d21656c8776f068d2673d46",
+      "response_sha256": "ae60ee63dcb5e0765a8e651ca35b737bd759f32aa096e7eaeee8da593acd1ce2",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-841ca9c68dbe45cc1fdc8e020dcf0eab",
+      "ticket_id": "a6dd3ee372de03628039",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-baa5374c6aaf093c5515",
+      "interaction_ref": "S023-I0022",
+      "session": 23,
+      "ordinal": 22,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-e982956b9cddf0f0180a",
+      "interaction_ref": "S023-I0023",
+      "session": 23,
+      "ordinal": 23,
+      "class": "ON",
+      "state": "incomplete",
+      "input_sha256": null,
+      "response_sha256": null,
+      "turn_id": null,
+      "transaction_id": null,
+      "ticket_id": null,
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-9b29d9b40e20d9749924",
+      "interaction_ref": "S023-I0024",
+      "session": 23,
+      "ordinal": 24,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "c5026a2e5f79a8adb2126ac8d64f6b7cf44b8b7f656a7e107e08818741e3e5e4",
+      "response_sha256": "a61ff0f96a2a545332ef658507881f0f6d60815a55342b5353c768b80a075941",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-1fb984d749f9b9bd7638048b0afa38f2",
+      "ticket_id": "76fa5d246a85f8b94a19",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-d148fadd5dce5734a03b",
+      "interaction_ref": "S023-I0025",
+      "session": 23,
+      "ordinal": 25,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "74f7773ce8523b22711c02b7653ed28c043ee2b4af688d6b1c6ebb9de53e3f54",
+      "response_sha256": "48315f180a8e9acfd203bcbeea3068cfbe6dae52f41610b73f54f5ce449a17ea",
+      "turn_id": null,
+      "transaction_id": "s023-14aa2834feddc1b3",
+      "ticket_id": "f1a6d0a5ccfe9807d0f5",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-5b49fbbbdec3137d32a4",
+      "interaction_ref": "S023-I0026",
+      "session": 23,
+      "ordinal": 26,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "2a86ef4676c450809254542e2b9676e563879e3c074b11ddc5d2674232c59b69",
+      "response_sha256": "3daae9fb6e338a09f9ea12e8dd139699bb4ba1d4876c812c72b33fe5faa58b7c",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603",
+      "ticket_id": "8168229f2eb22c6d48b8",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-8e55099cf5f88fcf90d5",
+      "interaction_ref": "S023-I0027",
+      "session": 23,
+      "ordinal": 27,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "2bb84377cfbaa09a9612e7fae0e164dbdd9d1a02e62e9ff7ee09e91f912969dd",
+      "response_sha256": "5940df102483455d3c751ae1a5cc51a6dc9821dedb23c255b1439221479c6657",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-5b33072a1195aa621217505585d8fc5f",
+      "ticket_id": "d62f8097fe71e5fddd34",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-8c0861c8d6986967a929",
+      "interaction_ref": "S023-I0028",
+      "session": 23,
+      "ordinal": 28,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "d1b07bea969981e2875466114e230ee9ceaf282dfdaaaca83b6163a9958161a2",
+      "response_sha256": "a9d9a8b1c879d7b83a379b21458598c59915025faa7b34f126a23c130ff7cd5f",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-c3c2a7d174ef03896f0545ba49e745cf",
+      "ticket_id": "9253137fc65ddc5e2ae6",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-a1860a12971ca2ad392f",
+      "interaction_ref": "S023-I0029",
+      "session": 23,
+      "ordinal": 29,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "268a03da1497a9e30bc744a7402b68a4478e877e81988206d61479ee492f1be5",
+      "response_sha256": "02c0e8c2fa1f78d0f7c9c190fac5015bb9df1cd55b407989ce9abe0d69c85ce4",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6",
+      "ticket_id": "e432c16628a5d3bf3fff",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    },
+    {
+      "interaction_id": "interaction-58c5598a6a580793b7de",
+      "interaction_ref": "S023-I0030",
+      "session": 23,
+      "ordinal": 30,
+      "class": "ON",
+      "state": "complete",
+      "input_sha256": "e0c88342d82352ca4815014aa0e427ea7feaba1a30010efff04f6da5e6ffcc6c",
+      "response_sha256": "f72d02617b4e07740235c2677d8af56df6322c43f441923ac7d805f439df2a18",
+      "turn_id": null,
+      "transaction_id": "s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559",
+      "ticket_id": "2d088240ed7cad1089c9",
+      "release_set_id": "release-set-0255fe598da05ee2",
+      "catalog_version": "5.0.0",
+      "module_versions": {
+        "adversarial_operations": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "canonical_quest_integration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.0"
+        },
+        "causal_narrative_routing": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "context_and_memory": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "narrative_delivery": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "npc_continuity_and_social_behavior": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.1.0"
+        },
+        "rules_and_character_state": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "scene_world_projection": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "sidequest_authoring": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "2.0.1"
+        },
+        "sidequest_lifecycle": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        },
+        "turn_and_session_orchestration": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.2"
+        },
+        "world_boundary_resolution": {
+          "evaluation_version": "4.0.0",
+          "implementation_version": "1.0.1"
+        }
+      }
+    }
+  ],
+  "player_feedback": [
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Dar espaço à caracterização de Ren e simplificar a resolução física de uma cena incidental com um homem comum e destreinado, considerando a grande diferença de capacidade. A esperança de recuperação do rapaz é a intenção declarada do jogador; um eventual retorno seria bem recebido.",
+      "feedback_id": "feedback-af1f4eb0f1cbd8f021c7",
+      "interaction_ref": "S023-I0012",
+      "observation": "O narrador usou duas salvaguardas físicas e um teste de Intimidação para a sequência com Escuridão.",
+      "original_text": "[AVALIAÇÃO S023-I0012 — a coisa toda com o ladrão é apenas uma forma de Ren mostrar no que ele acredita: ele não acha que deveria chamar as autoridades, nem bater num homem desses. Mas pra não deixa-lo impune, Ren o assusta um pouco. Na cabeça dele, talvez esse homem, assustado, deixe o crime e passe a agir como um cidadão responsável. O homem é um NPC menor, que provavelmente nunca voltará (seria legal se voltasse, porém, rs). Talvez não coubessem jogadas, considerando que ele é um homem comum e destreinado e Ren é um monge nível 7.]",
+      "perceived_impact": null,
+      "perceived_type": "sobreativacao_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T14:55:52.447708Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Buscar equilíbrio aproximado entre aventuras procuradas por Ren e conflitos que chegam a ele por iniciativa do mundo, inclusive consequências no abrigo e nos vínculos com Nera, Tavin, Silva e o circo. Incidentes podem iniciar arcos sem uma oferta formal anterior. O ataque de outro shinobi é um exemplo possível, com vitória incerta e decisões de proteção e deslocamento pertencendo ao jogador.",
+      "feedback_id": "feedback-afbbe07462bb8763254a",
+      "interaction_ref": "S023-I0014",
+      "observation": "O jogador observa que até aqui Ren tem procurado mais aventura do que a aventura tem chegado a ele; oferece o exemplo de ameaça no quarto-depósito como orientação de ritmo e iniciativa, sem pedir que ocorra agora.",
+      "original_text": "[AVALIAÇÃO S023-I0014 — Não é tanto uma avaliação, mas algo a ser considerado sim. Imagine um mini-arco que começa com Ren entrando no seu quarto-depósito e, depois de alguns segundos, percebe alguém nas sombras. É outro shinobi. Começa uma luta mortal ali dentro do circo. Ren vence (talvez) e vai até Nera e Tavin. Conclui que não estão mais seguros, e saem. Esse shinobi pode até nem morrer, pode ser alguém que não é do nível dos Juppongatana, mas próximo. Ren agora não está mais seguro no circo e precisa dar um jeito de proteger Nera e Tavin ainda por cima. E talvez até Silva e o pessoal do circo.\n\nO que quero dizer aqui é: side quests poderiam começar automaticamente. Ou isso pode ser interpretado como uma quest canônica. Enfim, só estou dizendo que um dia Ren pode não dormir tranquilo nesse bendido quarto. Até aqui, Ren tem procurado mais aventura do que aventura tem chegado a ele. E eu acho que poderia ser um meio-a-meio aqui.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:10:10.155298Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "O elenco do circo deve circular por áreas comuns e ter iniciativa própria, com interações, informações ou pedidos quando houver causa e oportunidade, sem isolar automaticamente toda conversa de Ren com Silva.",
+      "feedback_id": "feedback-68ef08dc3d06af8dfef0",
+      "interaction_ref": "S023-I0017",
+      "observation": "O jogador cita Sorn, Lysa e Merrit como exemplos de elenco existente; a preferência não cria presença, encontro ou sidequest específica neste instante.",
+      "original_text": "[AVALIAÇÃO S023-I0017 — se Ren e Silva estão conversando em uma área comum do circo, não seria impossível um NPC que é do circo vê-lo e falar alguma coisa. Temos vários: Sorn, Lysa, Merrit, entre outros tantos já. Eles podem passar por Ren, perguntar do próximo show, podem pedir coisas a Ren (sidequests), podem contar algo. Até aqui, toda conversa que Ren tem com Silva é só ele e ela, não importa se estão comendo, se estão em público ou whatever. Ou seja: não temos \"Mundo Vivo\", temos Mundo Morto, rs.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:27:26.290057Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Durante o rollout, registrar avaliações e cumprir o procedimento de classificação, sem tratá-las como pedidos de reparo imediato; revisão e correções ocorrerão depois pelo dashboard.",
+      "feedback_id": "feedback-4270b7e0feeb2e203e92",
+      "interaction_ref": "S023-I0019",
+      "observation": "Correção explícita de procedimento: a avaliação anterior não autorizava corrigir o problema na cena seguinte nem realizar manutenção durante o jogo. Preservar o fluxo ON e deixar a avaliação disponível para adjudicação no dashboard.",
+      "original_text": "[AVALIAÇÃO S023-I0019 — quando eu faço a inserção de uma avaliação aqui eu não espero que você resolva o problema na hora. Eu só quero que anote e cumpra os procedimentos que classificam isso. Se houver problemas resolveremos depois que o rollout terminar. É pra isso que construímos o dashboard.]",
+      "perceived_impact": null,
+      "perceived_type": "timing",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:33:13.755388Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Reavaliar causalmente, após o rollout, a permanência e o grau de proteção de Nera e Tavin conforme o tempo sem ocorrências e a evolução dos interesses da Red Sail, incluindo a responsabilidade modular por consequências persistentes.",
+      "feedback_id": "feedback-0fa624220783fb07ab69",
+      "interaction_ref": "S023-I0020",
+      "observation": "Avaliação registrada para adjudicação no dashboard; não autoriza relaxar proteções ou alterar fatos agora. A afirmação sobre a Red Sail e a hipótese de que Nera deixou de ser um risco para ela são elementos da avaliação do jogador, não confirmação automática de conhecimento de Ren ou de estado canônico.",
+      "original_text": "[AVALIAÇÃO S023-I0020 — Nera e Tavin parecem eternamento presos na Carroça Verde. A situação deles já poderia ter mudado. Mesmo que eles continuem como reféns protegidos, é complicado viverem como que eternamente presos ali. Eu entendo que as camadas de proteção deveriam ir naturalmente relaxando ao passo que passam muitas noites sem ocorrências. Nós até sabemos que a Red Sail parou de procura-los ativamente. Sinceramente, considerando o que já temos, eu penso que Nera nem é mais uma 'liability' para a Red Sail.\n\nDeveria ter um módulo pensando nas consequências das coisas? Ou talvez algum módulo já existente deveria ter essa atribuição e não está fazendo?]",
+      "perceived_impact": null,
+      "perceived_type": "efeito_incorreto",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T15:48:35.690427Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    },
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "Avaliar após o rollout se a exposição da Casa da Aurora Menor e os objetivos de Masao estão gerando consequências e iniciativas causais apropriadas, em vez de proteção invariavelmente sem ocorrências.",
+      "feedback_id": "feedback-51f5094ef53e761d9032",
+      "interaction_ref": "S023-I0027",
+      "observation": "Feedback registrado para adjudicação no dashboard. A possibilidade de Masao mandar alguém atacar não materializa ataque, presença hostil ou retaliação agora; não realizar correção imediata em resposta à avaliação.",
+      "original_text": "[AVALIAÇÃO S023-I0027 — Mais uma vez, um lugar que potencialmente Masao poderia mandar alguém atacar e, até aqui, nada, nenhuma consequência.]",
+      "perceived_impact": null,
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-15T16:11:36.703088Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    }
+  ]
+}

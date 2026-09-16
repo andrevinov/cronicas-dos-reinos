@@ -1,7 +1,6 @@
 schema_estado_agentes_leves: 2
 natureza: controle_reservado
-descricao: Próxima reavaliação e cache negativo causal dos NPCs leves; não é conhecimento
-  de Ren. Cache começa nulo e só nasce de concluir-noop explícito.
+descricao: Próxima reavaliação e cache negativo causal dos NPCs leves; não é conhecimento de Ren. Cache começa nulo e só nasce de concluir-noop explícito.
 agentes:
   kethra_dunn:
     estado: ativo
@@ -50,11 +49,11 @@ agentes:
       data: 18 Eleasis, 1372 DR
       hora: 06:00
     cache_negativo:
-      assinatura_causal: 4f34c06a450e1f9a92e888e024d01aa392f3af6e6afc5567adeb933bd48b6944
-      pendencia_origem: mundo-773532eace81cf09
+      assinatura_causal: 03a9b9ed139b4802b6bb7bad5f1368f3943d6689e970905a6174145d4d3e1ec9
+      pendencia_origem: mundo-06087f8e2d59adfe
       confirmado_em:
-        data: 22 Eleasis, 1372 DR
-        hora: '17:42'
+        data: 23 Eleasis, 1372 DR
+        hora: 09:20
       acertos_compactados: 0
       ultima_compactacao: null
   maerra_thandrel:
@@ -62,7 +61,14 @@ agentes:
     proxima_avaliacao:
       data: 20 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: d2d77e48286ba0cb3d246703e0d320d9a4cf53f4f5042730398a8d9e30528029
+      pendencia_origem: mundo-ed0b42b5c425b58f
+      confirmado_em:
+        data: 23 Eleasis, 1372 DR
+        hora: '11:35'
+      acertos_compactados: 0
+      ultima_compactacao: null
   halessa_vorn:
     estado: ativo
     proxima_avaliacao:
@@ -92,6 +98,13 @@ agentes:
   pell:
     estado: ativo
     proxima_avaliacao:
-      data: 18 Eleasis, 1372 DR
+      data: 26 Eleasis, 1372 DR
       hora: 06:00
-    cache_negativo: null
+    cache_negativo:
+      assinatura_causal: b16da02dc2e4826dfa0aa5a6896ea0497c786c7c2476d3afb2da85ee62091299
+      pendencia_origem: mundo-bc23781fb8b7a579
+      confirmado_em:
+        data: 23 Eleasis, 1372 DR
+        hora: 06:00
+      acertos_compactados: 0
+      ultima_compactacao: null

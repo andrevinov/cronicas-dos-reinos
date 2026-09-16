@@ -11,10 +11,9 @@ relacao:
     de vulneráveis
   confianca: moderada-alta em pauta de proteção de vulneráveis
   respeito: cauteloso, crescente
-  motivo_atual: >-
-    Maerra preserva a ordem irregular e mantém as sete crianças fora de transferência
-    não verificada. Ren aceitou investigar a origem e a autoridade do documento antes
-    do amanhecer; Maerra não controla como ele fará isso.
+  motivo_atual: Maerra preserva a ordem irregular e mantém as sete crianças fora de transferência não verificada.
+    Ren aceitou investigar a origem e a autoridade do documento antes do amanhecer; Maerra não controla como ele
+    fará isso.
   riscos:
   - Se Ren parecer ameaça para Nera e Tavin, Maerra pode tentar separá-los dele.
   - Maerra tende a priorizar segurança das testemunhas antes da vingança privada de Ren.
@@ -53,5 +52,131 @@ relacao:
   - Em 15 Eleasis, após receber conselho e notícia de que as crianças permaneciam seguras, Ren tomou a mão de Maerra
     e agradeceu por tudo. Maerra recebeu o gesto com afeto pastoral e o convidou a voltar também quando precisasse
     falar, não apenas para entregar algo ou salvar alguém.
+  memorias_importantes:
+  - evidencia:
+      campo: narracao
+      trecho: Eu lembro dos amigos, Ren. Você é que está tornando o trabalho difícil.
+    fonte: transacao:s023-nv04-63d54f5ef548d3f6c1129a9b2cbe8603
+    id: mem_a06730b50f8d759c8e8e38e8
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: fdfc847fc17f87c65a8c31b77f0c99a36e99fc93d0225190506c57f2d416e069
+    texto: Eu lembro dos amigos, Ren. Você é que está tornando o trabalho difícil.
+    tipo: marco
+  - canal: presencial
+    destinatario: ren
+    emissor: maerra_thandrel
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: O guarda ficou até o amanhecer. Desde a retirada, não tivemos entrada à força, janela quebrada, nova
+        tentativa de levar as crianças, ameaça ou recado estranho.
+    fonte: transacao:s023-nv04-5b33072a1195aa621217505585d8fc5f
+    id: mem_519e9c8493f8164bab1b9bba
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: 2d9179741ad2768f5cf20a57316e6d3d7e8db886b1bdefaee5b439ee7661ed02
+    texto: O guarda ficou até o amanhecer. Desde a retirada, não tivemos entrada à força, janela quebrada, nova
+      tentativa de levar as crianças, ameaça ou recado estranho.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: maerra_thandrel
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Não notei ninguém voltando repetidamente para observar a casa. Isso não me permite dizer que não houve
+        vigilância discreta.
+    fonte: transacao:s023-nv04-5b33072a1195aa621217505585d8fc5f
+    id: mem_2954cad0dfdb8eb4156cd48c
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: 2d9179741ad2768f5cf20a57316e6d3d7e8db886b1bdefaee5b439ee7661ed02
+    texto: Não notei ninguém voltando repetidamente para observar a casa. Isso não me permite dizer que não houve
+      vigilância discreta.
+    tipo: informacao
+  - canal: presencial
+    destinatario: ren
+    emissor: maerra_thandrel
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Continuam os sete aqui, comendo bem. O sono ainda varia; alguns acordam assustados. Mas já há brincadeiras
+        no pátio, e nem toda conversa acaba voltando ao que aconteceu.
+    fonte: transacao:s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+    id: mem_ea025c775e4e592552bf7619
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: d9e1da7caeff1f2fb6e478df3029a08b8d4c71a54cdc3a4a35c0f5e0144cf4c5
+    texto: Continuam os sete aqui, comendo bem. O sono ainda varia; alguns acordam assustados. Mas já há brincadeiras
+      no pátio, e nem toda conversa acaba voltando ao que aconteceu.
+    tipo: informacao
+  - compromisso_id: mem_1ea629a2500fc9c4fb75869e
+    evidencia:
+      campo: jogador
+      trecho: Passo pra saber como está em breve.
+    fonte: transacao:s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+    id: mem_1ea629a2500fc9c4fb75869e
+    operacao: registrar
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: 830ef6bf847aaf5e9dfa91852fe8048e9149ae98aaeeea1fdc4761e56d61bca5
+    tipo: promessa
+  informacoes_recebidas:
+  - canal: presencial
+    destinatario: maerra_thandrel
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por
+        Halessa em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+    fonte: transacao:s023-nv04-c3c2a7d174ef03896f0545ba49e745cf
+    id: mem_bc5ed9ec9adc525eaaf54a90
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: f4f9536813bfe198ffea37dce4c0a21b5b354c73a1c82f337b7680342351a6ca
+    texto: Ren relata o rapto de Darran Vell, as desculpas, o elo com o homem do casaco cinza, a proteção por Halessa
+      em Tyr, a retratação entregue a Tomas, o E-39 suspenso e três maços retidos, sem portador na janela.
+    tipo: informacao
+  - canal: presencial
+    destinatario: maerra_thandrel
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: narracao
+      trecho: 'Ren explica que acha saber onde encontrar o homem do casaco cinza e que irá como senhor Tanaka.
+
+
+        — Ele é a chave pra muita coisa. Se eu conseguir captura-lo, talvez encontre algumas das respostas que precisamos.'
+    fonte: transacao:s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
+    id: mem_17325d65be6f70a8f17d5636
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: d9e1da7caeff1f2fb6e478df3029a08b8d4c71a54cdc3a4a35c0f5e0144cf4c5
+    texto: Ren explica que acha saber onde encontrar o homem do casaco cinza e que irá como senhor Tanaka.
+    tipo: informacao
+  - canal: presencial
+    destinatario: maerra_thandrel
+    emissor: ren
+    estatuto: relato
+    evidencia:
+      campo: jogador
+      trecho: '"Provavelmente estará acompanhado. Mas vou te contar um segredo..."'
+    fonte: transacao:s023-nv04-8ccaaf6aaf0d4f0ed1c85ee3f66c2559
+    id: mem_2701e44b4a9aee02dc6e3fd1
+    participantes:
+    - maerra_thandrel
+    - ren
+    registro_sha256: 830ef6bf847aaf5e9dfa91852fe8048e9149ae98aaeeea1fdc4761e56d61bca5
+    texto: Provavelmente estará acompanhado.
+    tipo: informacao
 conteudo_mais_antigo_no_historico:
   auxilios_prestados: 9

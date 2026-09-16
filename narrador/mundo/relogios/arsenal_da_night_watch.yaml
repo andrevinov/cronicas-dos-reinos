@@ -1,0 +1,63 @@
+schema_relogio: 1
+id: arsenal_da_night_watch
+natureza: reservado
+vinculo_agencial:
+  tipo: consequencia
+  estado: resolvido
+  operacao: null
+  agente_principal: night_watch
+  papel_agente: afetado
+  agentes_relacionados: []
+relogio:
+  titulo: Materialização do fato do arsenal da Night Watch
+  progresso: 1
+  limite: 1
+  descricao: Registro da ocorrência única devida ao amanhecer de 23 Eleasis. O limite acompanha a materialização do fato, e a situação patrimonial continua em crise.
+  consequencia_no_limite: As perdas e os vestígios foram materializados, e a resposta institucional começou. A recuperação do patrimônio permanece sem resultado.
+  situacao_atual:
+    comunicabilidade_atual: Etapa interna de inventário, preservação de vestígios e coordenação da guarda. Nenhum
+      boletim ou pedido de ajuda foi encaminhado ao circo nesta etapa; Ren não foi contatado.
+    estado: crise_em_resposta
+    evento_canonico: arsenal_da_night_watch
+    fatos:
+    - Uma operação hostil retirou armas e um estandarte histórico valioso do arsenal da Night Watch, em Ravens Bluff.
+    - No acesso de retirada há marcas recentes de arrasto e resíduos de lama associados a uma saída de drenagem;
+      a trilha física aponta para infraestrutura subterrânea e logística de Sarbreen, sem revelar o destino final
+      ou a identidade dos responsáveis.
+    - A Night Watch iniciou inventário das perdas, isolamento do acesso violado e preservação dos vestígios. Luath
+      recebeu a ocorrência para coordenar a resposta institucional.
+    - A situação está aberta à recuperação do patrimônio e à descoberta de logística adversária; uma incursão pode
+      expor agentes a risco e permitir socorrê-los. Não foi fixado que algum agente já esteja desaparecido, nem
+      resultado de recuperação.
+    - Ren está dormindo no quarto-depósito do circo e ainda não recebeu notícia ou pedido de ajuda.
+    fonte: agenda:agendamentos.canon_parte1_23_eleasis_arsenal
+    guardrails:
+    - A resposta da Night Watch independe de Ren e preserva força preparada, discrição e cadeia de prova.
+    - Nenhum responsável foi identificado; nenhuma identidade das Dez Espadas foi confirmada por este fato.
+    - Uma possível oferta a Ren exige canal e presença legítimos. Recuperação, salvamento, recompensa, reputação
+      e milestone permanecem sem resultado.
+    instante:
+      data: 23 Eleasis, 1372 DR
+      hora: 06:00
+    pendencia: mundo-6a41d07ac16fbafb
+    titulo: O estandarte que não voltou para casa
+eventos:
+- transacao: s023-mundo-arsenal-23-eleasis-0600
+  sessao: 23
+  valor:
+    fatos:
+    - Uma operação hostil retirou armas e um estandarte histórico valioso do arsenal da Night Watch, em Ravens Bluff.
+    - No acesso de retirada há marcas recentes de arrasto e resíduos de lama associados a uma saída de drenagem;
+      a trilha física aponta para infraestrutura subterrânea e logística de Sarbreen, sem revelar o destino final
+      ou a identidade dos responsáveis.
+    - A Night Watch iniciou inventário das perdas, isolamento do acesso violado e preservação dos vestígios. Luath
+      recebeu a ocorrência para coordenar a resposta institucional.
+    - A situação está aberta à recuperação do patrimônio e à descoberta de logística adversária; uma incursão pode
+      expor agentes a risco e permitir socorrê-los. Não foi fixado que algum agente já esteja desaparecido, nem
+      resultado de recuperação.
+    - Ren está dormindo no quarto-depósito do circo e ainda não recebeu notícia ou pedido de ajuda.
+    fonte: agenda:agendamentos.canon_parte1_23_eleasis_arsenal
+    instante:
+      data: 23 Eleasis, 1372 DR
+      hora: 06:00
+    tipo: materializacao_canonica

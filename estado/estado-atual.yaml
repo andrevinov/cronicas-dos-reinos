@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 22
+  sessao_atual: 23
   modo_de_cena_atual: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
@@ -18,18 +18,19 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Galeria dos Escribas, Ravens Bluff
-  ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
-  descricao_operacional: Ren está na sala interna da Galeria com Tomas. A retratação de Darran e os três maços retidos
-    estão sob controle de Tomas; a janela autorizada terminou sem apresentação do talão E-39. Ren declarou que pretende
-    observar externamente uma possível chegada tardia.
+  area: Rua diante do restaurante da emboscada
+  ponto_exato: na rua diante do restaurante da emboscada, observando a entrada sob o disfarce de Tanaka
+  descricao_operacional: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka.
+    Observa a entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista
+    da porta dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua
+    vista; Aiko havia anunciado sua visita para depois do meio-dia, sem hora exata.
   modo_atual: conversa_com_tomas_apos_entrega_da_retratacao
   ponto: sala interna da Galeria dos Escribas
   modo: em identidade própria, com as roupas ninja ocultas sob a capa com gorro
 tempo:
   ano_dr: 1372
   nome_do_ano: Ano da Magia Selvagem
-  data_exata: 22 Eleasis, 1372 DR
+  data_exata: 23 Eleasis, 1372 DR
   calendario: Calendário de Harptos
   mes: Eleasis
   nome_sazonal_do_mes: Highsun
@@ -37,7 +38,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 10
   periodo_do_dia: noite de 21 Eleasis, com Ren no circo dos Mooney
-  hora_aproximada: '22:04'
+  hora_aproximada: '11:35'
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -52,13 +53,13 @@ recursos:
   classe_de_armadura: 17
   deslocamento: 55 pés
   dinheiro:
-    po: 38.11999999999999
+    po: 37.61999999999999
   condicoes: []
   disponibilidades:
-    broche_do_semblante_humilde: usado às 20:50 de 22 Eleasis; indisponível até o amanhecer de 23 Eleasis
+    broche_do_semblante_humilde: disponível desde o amanhecer de 23 Eleasis
     traje_shinta_bem_vestido: em uso por Shinta desde a manhã de 13 Eleasis
   focus:
-    atuais: 5
+    atuais: 7
     maximos: 7
     recarga: descanso curto ou longo
   itens_importantes:
@@ -88,7 +89,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/022/transcricao.md
+  transcricao_atual: sessoes/023/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:
@@ -151,17 +152,22 @@ vinculos_ativos:
 conhecimento_atual:
   arquivo: personagens/jogador/conhecimento.md
 estado_narrativo:
-  cena_atual: Ren nocauteou Darran sem letalidade e o levou pelos telhados usando Passo do Vento. Darran está inconsciente
-    e estável; o cerco imediato foi rompido, mas o alarme se espalha pelo porto.
+  cena_atual: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka. Observa
+    a entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista da
+    porta dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua vista;
+    Aiko havia anunciado sua visita para depois do meio-dia, sem hora exata.
   risco_imediato: A retirada autorizada terminou sem portador; Tomas proibiu captura ou violência dentro da Galeria
     ou diante de sua porta. Um eventual visitante tardio pode ser apenas um mensageiro.
-  elenco_cena:
-    cena_id: s022-ren-entrega-retratacao-e-propoe-seguir-portador
+  elenco_cena: null
+  modo_de_cena: maerra_recebe_relato_darran_e_tomas
+  aparencia_atual: 'Tanaka Matsumoto: trabalhador kozakurano idoso, nas roupas do conjunto já usado, com cabelo
+    grisalho e linhas de idade compostas com Dessa; disfarce material.'
+  elenco_operacional:
+    cena_id: s023-tanaka-observa-restaurante-aiko
     local:
-      area: Galeria dos Escribas, Ravens Bluff
-      ponto_exato: sala interna da Galeria dos Escribas, junto a Tomas Rell
-    participantes:
-    - tomas_rell
+      area: Rua diante do restaurante da emboscada
+      ponto_exato: na rua diante do restaurante da emboscada, observando a entrada sob o disfarce de Tanaka
+    participantes: []
     versao: 1
 compromissos:
   silva_acompanhar_colm:
@@ -220,9 +226,41 @@ compromissos:
     - ren
     resumo: Prestar a Darran um favor razoável quando ele o pedir, em reparação pela violência e confusão da captura.
     tipo: compromisso
+  mem_aa2e1bac596a32edb8b1d140:
+    envolvidos:
+    - ren
+    - tomas_rell
+    janela:
+      descricao: em breve
+    resumo: Levar o homem de casaco cinza à justiça.
+    tipo: compromisso
+  mem_2e6bfe29955ba7cb65d335f7:
+    envolvidos:
+    - merrit_tealeaf
+    - ren
+    janela:
+      descricao: amanhã, 24 Eleasis; sem horário combinado nem presença de Merrit acordada
+    resumo: Usar a lona para treinar em 24 Eleasis.
+    tipo: compromisso
+  mem_765bbbc64bff3b5cbf84bd40:
+    envolvidos:
+    - nera_vell
+    - ren
+    janela:
+      descricao: logo, sem horário exato prometido
+    resumo: Voltar logo para ver Nera no circo.
+    tipo: compromisso
+  mem_1ea629a2500fc9c4fb75869e:
+    envolvidos:
+    - maerra_thandrel
+    - ren
+    janela:
+      descricao: em breve, sem horário exato combinado
+    resumo: Visitar Maerra em breve para saber como ela está.
+    tipo: compromisso
 pendencias: []
 disponibilidades:
-  broche_do_semblante_humilde: usado às 20:50 de 22 Eleasis; indisponível até o amanhecer de 23 Eleasis
+  broche_do_semblante_humilde: disponível desde o amanhecer de 23 Eleasis
 combate_atual: null
 efeitos_temporarios:
   narwhal_alerta_para_observador_idoso:

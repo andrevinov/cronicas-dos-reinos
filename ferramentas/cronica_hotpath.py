@@ -165,6 +165,17 @@ def _decorate(result: dict[str, Any], *, reactive: bool) -> dict[str, Any]:
     result = dict(result)
     result["reativa"] = reactive
     result["contrato_conclusao"] = _transaction_contract()
+    if "permanencia_espacial" in result:
+        # Instruções estáticas ficam em referência; avaliações e gates permanecem.
+        for key in (
+            "sidequest_emergente_task46", "progresso_sidequests_task49",
+            "pressao_narrativa_task52", "reconhecibilidade_persona_nv20",
+            "politica_civica_nv22", "permanencia_espacial_nv15",
+        ):
+            result["contrato_conclusao"].pop(key, None)
+        result["contrato_conclusao"]["contratos_complementares"] = (
+            "docs/agente/operacao/contratos-complementares-conclusao.md"
+        )
     next_step = dict(result.get("proximo_passo") or {})
     next_step.update(
         {

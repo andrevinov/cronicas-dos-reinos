@@ -104,3 +104,6 @@ incrementais:
   '22':
     index: personagens/jogador/conhecimento/incrementais/sessao-022/index.yaml
     quantidade: 6
+  '23':
+    index: personagens/jogador/conhecimento/incrementais/sessao-023/index.yaml
+    quantidade: 6

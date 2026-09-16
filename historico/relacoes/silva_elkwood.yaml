@@ -697,3 +697,190 @@ eventos_pos_migracao:
       registro_sha256: 130debf4e59fdf86ae178eb228412ffac937da9d3e27da86143be827e41984e6
       texto: Nera e Tavin aceitaram ver Ren antes da saída e vieram até a carroça verde por escolha própria.
       tipo: marco
+- transacao: s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+  sessao: 23
+  resumo: 'Ren contou a Silva a captura de Darran, as desculpas pela violência, o elo relatado com o homem do casaco
+    cinza, a proteção formal por Halessa na Casa de Tyr e o desfecho na Galeria: Tomas recebeu a retratação assinada,
+    suspendeu o talão E-39, reteve os três maços e não houve portador na janela autorizada. Ren brincou que os Vell
+    sempre precisam de resgate; Silva respondeu com humor sobre o rapto inicial, reconheceu o apoio institucional
+    e perguntou como Darran ficou na despedida. São informaçõ…'
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ren conta como capturou Darran e depois lhe pediu desculpas pela violência.
+      fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+      id: mem_cd8ba7e43b007bc24dca63ec
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+      texto: Ren conta como capturou Darran e depois lhe pediu desculpas pela violência.
+      tipo: informacao
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Explica a ligação que Darran revelou com o homem do casaco cinza
+      fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+      id: mem_8d797e8b96c834f56a65062e
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+      texto: Explica a ligação que Darran revelou com o homem do casaco cinza
+      tipo: informacao
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Halessa acolheu Darran como testemunha protegida na Casa de Tyr
+      fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+      id: mem_c45252d4247a507ba0aa64db
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+      texto: Halessa acolheu Darran como testemunha protegida na Casa de Tyr
+      tipo: informacao
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Tomas recebeu a retratação assinada, suspendeu o talão E-39 e reteve os três maços de cópias.
+      fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+      id: mem_ed5d893c953614bf686bc8de
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+      texto: Tomas recebeu a retratação assinada, suspendeu o talão E-39 e reteve os três maços de cópias.
+      tipo: informacao
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Ninguém apresentou o talão durante a janela autorizada.
+      fonte: transacao:s023-nv04-2bac9d46fb3e48485bb358df3d07135e
+      id: mem_10527a03e4596b9392fae05e
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 04aad1b69aed443134e1cab00ae6e74e922d0825fd7c74dadfb5a0c4efd1a0b4
+      texto: Ninguém apresentou o talão durante a janela autorizada.
+      tipo: informacao
+- transacao: s023-nv04-7ad01d24f30c6a8303b2628878852a79
+  sessao: 23
+  resumo: Ren informou a Silva que Darran ficou bem e afirmou que Tomas já compreende seu modo de agir. Merrit chegou
+    por uma tarefa cotidiana de panos sob orientação de Silva, cumprimentou Ren e perguntou se ele treinaria na
+    lona hoje, sem resposta imposta ao jogador e sem ouvir retroativamente o relato anterior sobre Darran. Silva
+    informou que Nera e Tavin estão bem, autorizou a visita no interior da carroça e os chamou. Nera e Tavin aproximaram-se
+    por vontade própria do lado de dentro; Nera estendeu a…
+  deltas:
+  - alvo: relacao:silva_elkwood
+    caminho: informacoes_recebidas
+    op: append
+    valor:
+      canal: presencial
+      destinatario: silva_elkwood
+      emissor: ren
+      estatuto: relato
+      evidencia:
+        campo: jogador
+        trecho: Ele ficou bem. Tomas já entendeu meu modus operandi. Aquela carinha dele de escriba sério não me
+          engana não
+      fonte: transacao:s023-nv04-7ad01d24f30c6a8303b2628878852a79
+      id: mem_bc82bb6944719b5cd00e04a6
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 674ced5b41fc5b9ad1cf8602452219f9fef0cc1c35701adc382cf6fcf1205a7c
+      texto: Ele ficou bem. Tomas já entendeu meu modus operandi. Aquela carinha dele de escriba sério não me engana
+        não
+      tipo: informacao
+  - alvo: relacao:silva_elkwood
+    caminho: memorias_importantes
+    op: append
+    valor:
+      canal: presencial
+      destinatario: ren
+      emissor: silva_elkwood
+      estatuto: relato
+      evidencia:
+        campo: narracao
+        trecho: Estão bem. A noite passou tranquila por aqui.
+      fonte: transacao:s023-nv04-7ad01d24f30c6a8303b2628878852a79
+      id: mem_ff3929aaf8b6e1646d03bad5
+      participantes:
+      - ren
+      - silva_elkwood
+      registro_sha256: 674ced5b41fc5b9ad1cf8602452219f9fef0cc1c35701adc382cf6fcf1205a7c
+      texto: Estão bem. A noite passou tranquila por aqui.
+      tipo: informacao
+arquivamentos_de_manutencao:
+- id: silva_arquivamento_s023_relato_darran_tomas
+  natureza: manutencao_sem_alteracao_de_fatos
+  motivo: 'NV04: liberar o fragmento ativo de 12 KiB para registrar o relato autorizado de Ren a Silva. Registros
+    anteriores já estão integralmente preservados em relacao ou eventos_pos_migracao neste histórico; riscos atuais,
+    acordos e marcos permanecem no fragmento ativo.'
+  fragmento: estado/relacoes/silva_elkwood.yaml
+  sha256_antes: 1712e28192569d296ff86ff5e87b13c4d54a29b9e683e2c831c149734046419b
+  sha256_depois: 24b06bd4838ce0a12fdec4e539e249496be6ed1551a6c1169b91517938daf1bb
+  quantidades_arquivadas:
+    riscos: 9
+    informacoes_recebidas_por_silva: 6
+    informacoes_recebidas: 4
+  referencias:
+    riscos:
+    - 7eac418b8d84a763555e0352bd70db2767eab7cab9b023e471c3b9627e7ed102
+    - 33e4282976715791d3ac36d3f25bc709a63a53cc29096ec6506ca24f14b0c85a
+    - b85e9c0cfd75a8278051536515029b263827ffa4a18ad9be96137af68b0b044b
+    - 04b226413d5313fdabe12960f7dcee37c246d6405f4169a9652a078905a1b469
+    - 8469d3b351bd5e06d3b12cd387e86c108403887c056347c18d2d58770fc58575
+    - 42bc34c759ad1e1d66e71bb2982bd73280e56dd42f2649f02d2311151e3e37fa
+    - 59431bb3d17a1fa1c635784b2c87dc5b20fd8c26748b091ae257e0036e4a8a5e
+    - 8ad9be62c6fb93eebe6d2ac760242a46cf4b998a514a38db33cbcca7e1543b09
+    - ac8e3495a90415ce172f4e22e4b3f8cdae69f4dc1f72be523b7fb35cdf7b9b6d
+    informacoes_recebidas_por_silva:
+    - 5260b9d8317dda816f94da3f03d68e19a647e508975ead7a107a7f7973a1a78f
+    - 6d95a3f23d5baf382a326e793ef41c64848c4e3e3c6ac212a226206f49295f5a
+    - 30f13dbf84eecc5378bd20c36285b34754b12c1476cf8aa08f0696cb9a51dc14
+    - a350db8303854c17d65b2521853700319b434c67eb16f8af309ff21ea7321fc2
+    - 6cdca5211af3d29017143005a0cce661a83e38edfe73babb6e6ce51a2f77ada6
+    - 125ff736fa736d7013856f8784442cf4f4c8fe8047b393b3c13df2620a36f2af
+    informacoes_recebidas:
+    - mem_9055fe8faef3ab735573c1bc
+    - mem_47616e1ef178c7fdf0271381
+    - mem_11ccfee18b9dc74586243a34
+    - mem_bcb6ba31c9fd601060d566f1

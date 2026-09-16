@@ -1,7 +1,7 @@
 schema_conhecimento_ativo: 2
 natureza: roteador_derivado
-sessao_atual_da_campanha: 22
-sessao_mais_recente_indexada: 22
+sessao_atual_da_campanha: 23
+sessao_mais_recente_indexada: 23
 topicos_prioritarios:
 - titulo: Sobre Masao e as Dez Espadas
   arquivos:
@@ -34,53 +34,55 @@ descobertas_recentes:
   bytes: 1451
 observacao: Roteador de acesso; os fatos permanecem nos fragmentos literais do conhecimento de Ren.
 incrementais_recentes:
-- titulo: Ren confirmou visualmente Darran Vell no turno noturno e o seguiu quando ele saiu sozinho com um livro.
-    A Furtividade falhou; Darran ouviu o ruído, chamou auxílio e entrou na casa de pesagem sem identificar Ren.
-    O alvo agora está alerta e a primeira abertura se fechou.
+- titulo: Ren pediu calma, vigiou o homem e impediu a entrega imediata da bolsa. A mulher afirmou ser dona e descreveu
+    seu remendo verde no fundo, um lenço azul e uma chave de baú com cordão vermelho no interior. Ren viu a costura
+    verde, mas o conteúdo não foi conferido e a propriedade continua sendo a alegação dela. O fugitivo está sentado,
+    livre e com a bolsa; o outro perseguidor está a poucos passos.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-577c16041b304eb7.md
-  bytes: 627
-  transacao: s022-577c16041b304eb7
-- titulo: Darran declarou ter aplicado pessoalmente a contramarca de urgência, perto da quarta badalada, a pedido
-    de um homem bem-apessoado de casaco cinza e caixa preta de contas — descrição que coincide com a fornecida por
-    Tomas para o entregador do pedido. Darran verificou apenas que os três números de despacho existiam; segundo
-    ele, o homem não deu nome, carga ou finalidade. A convergência liga a mesma pessoa ao selo no porto e à entrega
-    na Galeria, estabelecendo o controlador operacional do pedido,…
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-dafeafa23dbd59d2.md
+  bytes: 922
+  transacao: s023-dafeafa23dbd59d2
+- titulo: Ren tomou rapidamente a bolsa das mãos do fugitivo com Destreza (Prestidigitação), 17 contra CD 15. O
+    homem, de aparência adulta jovem, barba rala, braços magros e camisa gasta, admitiu que pegou a bolsa e que
+    ela pertence à mulher. Cumprindo sua decisão condicional, Ren a entregou à reclamante; ela abriu a bolsa e Ren
+    viu o lenço azul e a chave com cordão vermelho previamente descritos. A mulher agradeceu; o homem, ainda sentado
+    e sem estar Agarrado, perguntou se Ren chamará a guarda. O trabal…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354.md
-  bytes: 804
-  transacao: s022-nv04-46fc7a8bd5eb8c3e325db46a4471b354
-- titulo: 'Persuasão 20 contra CD 12 levou Darran a confessar que recebeu duas peças de ouro, sem registro, para
-    aplicar a contramarca. Ele explicou que as cópias não precisam ser falsificadas: autorizações antigas e autênticas
-    podem ser apresentadas fora do contexto para legitimar uma carga diferente. Darran agora demonstra medo concreto
-    das pessoas por trás do pedido e pediu para não ser devolvido à Mesa de Cargas. A cadeia já pode ser levada
-    a Tomas, mas ainda não foi entregue.'
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-cd57d696b14d586a.md
+  bytes: 1191
+  transacao: s023-cd57d696b14d586a
+- titulo: A mulher da bolsa e o trabalhador saíram após o sinal de Ren; o carregador seguiu com seu caixote. Ren
+    conjurou Escuridão pelas Artes Sombrias, gastando 1 Focus. O rapaz falhou em duas salvaguardas de Destreza contra
+    CD 15 (1 no empurrão contra a carroça; 13 na rasteira) e não escapou nas duas tentativas. Intimidação de Ren
+    teve sucesso com vantagem, [12,10], total 12 contra CD 10. Após isso, o rapaz permaneceu agachado e pediu para
+    sair durante cerca de três minutos de ameaças proferidas por R…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-852170048d4ec46e6b983d02ecf76eec.md
-  bytes: 779
-  transacao: s022-nv04-852170048d4ec46e6b983d02ecf76eec
-- titulo: Ren contou a Darran que persegue um criminoso poderoso de Kozakura cuja rede estaria usando o porto para
-    cargas ilícitas, falsificações e mortes. Darran não confirmou uma chegada numerosa de kozakuranos, mas relatou
-    três homens de fala oriental que, em noites diferentes, perguntaram por cargas sem reclamante, armazéns e trocas
-    de turno sem apresentar despacho; um deles era o homem do casaco cinza. Intuição 17 contra CD 12 mostrou que
-    Darran ainda não aceita toda a explicação como fato, porém ac…
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-761d1a066d5d2ddd.md
+  bytes: 1734
+  transacao: s023-761d1a066d5d2ddd
+- titulo: Ren informou a Silva que Darran ficou bem e afirmou que Tomas já compreende seu modo de agir. Merrit chegou
+    por uma tarefa cotidiana de panos sob orientação de Silva, cumprimentou Ren e perguntou se ele treinaria na
+    lona hoje, sem resposta imposta ao jogador e sem ouvir retroativamente o relato anterior sobre Darran. Silva
+    informou que Nera e Tavin estão bem, autorizou a visita no interior da carroça e os chamou. Nera e Tavin aproximaram-se
+    por vontade própria do lado de dentro; Nera estendeu a…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-5b14a75a7afc0335b699b1b9f2410db2.md
-  bytes: 803
-  transacao: s022-nv04-5b14a75a7afc0335b699b1b9f2410db2
-- titulo: Ren informou a Darran que pretende capturar o homem do casaco cinza e pediu um documento para impedir
-    a retirada das cópias. A janela conhecida de retirada já está em curso, das 20h às 22h. Darran explicou que
-    não pode revogar as autorizações antigas, mas pode assinar uma retratação da contramarca, com o código da ronda,
-    os três despachos e a confissão do pagamento; isso daria a Tomas fundamento para reter as cópias se o documento
-    chegar antes da entrega. Darran pode escrever sem voltar à Mesa,…
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-7ad01d24f30c6a8303b2628878852a79.md
+  bytes: 695
+  transacao: s023-nv04-7ad01d24f30c6a8303b2628878852a79
+- titulo: Ren perguntou pela noite após a retirada da mulher Cinza-Azul com Luath e pelos dias seguintes no templo.
+    A retirada foi na madrugada de 20 Eleasis, e o intervalo até hoje é pouco mais de três dias, preenchendo a lacuna
+    temporal sem mudar o histórico. Maerra relatou cansaço e encerramento da madrugada sem nova confusão, permanência
+    do guarda até o amanhecer, ausência de entrada forçada, janela quebrada, nova tentativa de retirar crianças,
+    ameaça ou recado estranho desde então. É o relato presen…
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-c91f123a4cca516706a0661bac18d700.md
-  bytes: 827
-  transacao: s022-nv04-c91f123a4cca516706a0661bac18d700
-- titulo: Darran redige e assina a retratação da urgência, incluindo o código da ronda, os três despachos e a confissão
-    do pagamento irregular; Ren guarda o documento. Darran relata não conhecer parentes seus em Ravens Bluff. Os
-    dois chegam sem incidente à entrada da Casa de Tyr.
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-5b33072a1195aa621217505585d8fc5f.md
+  bytes: 1007
+  transacao: s023-nv04-5b33072a1195aa621217505585d8fc5f
+- titulo: Ren permaneceu conversando com Maerra, perguntou pelas sete crianças e recebeu seu relato de alimentação,
+    sono irregular e retomada de brincadeiras. Contou que acha saber onde encontrar o homem do casaco cinza e que
+    irá como senhor Tanaka; espera obter respostas se conseguir capturá-lo. Maerra perguntou se ele costuma estar
+    acompanhado. Ren permanece na recepção da Casa da Aurora Menor.
   arquivos:
-  - personagens/jogador/conhecimento/incrementais/sessao-022/tx-s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1.md
-  bytes: 475
-  transacao: s022-nv04-3cac0edd56ff1290fbbe1b8e9fe1c9a1
+  - personagens/jogador/conhecimento/incrementais/sessao-023/tx-s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6.md
+  bytes: 711
+  transacao: s023-nv04-bec8c8a454515aaf8a0dc4603fa77ad6
