@@ -152,6 +152,14 @@ class EvaluationCatalogContractTest(unittest.TestCase):
             "ledger-modular-v2.schema.json",
             "adjudicacoes-ledger-v2.schema.json",
             "module-releases.schema.json",
+            "contrato-medicao.schema.json",
+            "contrato-modulo-medicao.schema.json",
+            "corpus-regressao-rollout.schema.json",
+            "entrada-medicao.schema.json",
+            "gabarito-regressao-rollout.schema.json",
+            "operacoes-executadas-rollout.schema.json",
+            "resultado-corpus-regressao.schema.json",
+            "resultados-operacoes-rollout.schema.json",
         }
         self.assertEqual({path.name for path in SCHEMAS.glob("*.json")}, expected)
         for filename in expected:

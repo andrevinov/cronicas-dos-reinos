@@ -3,6 +3,35 @@
 Este diretório contém artefatos pós-hoc de engenharia. Nada aqui é memória
 canônica da campanha nem autoriza ação no mundo.
 
+## Entrada congelada de medição
+
+A atividade 1 do reparo publica `contrato-medicao.json`, contratos locais em
+`contratos-modulos/` e três schemas de entrada/unidades. A porta
+`ferramentas/entrada_medicao.py` congela corte e hash do rollout, snapshots das
+fontes e versões selecionadas, sem copiar o bruto ou recalcular notas.
+
+Uso e limites: [contrato de entrada e unidades](../docs/agente/engenharia/contrato-entrada-medicao.md).
+O gerador descrito abaixo ainda não consome essa entrada; sua integração e as
+correções de extração e notas pertencem às atividades seguintes.
+
+## Corpus de regressão
+
+A atividade 2 publica `regressoes-rollout-v1/`, com entradas nativas reduzidas,
+configuração congelada e gabaritos independentes do analisador. O executor
+`ferramentas/verificar_corpus_avaliacao.py` percorre entrada, detector, gerador,
+agregação e aceite. O resultado inicial permanece vermelho para que as correções
+seguintes tenham um critério observável de conclusão.
+
+Contrato, execução e limites: [corpus independente de regressão](../docs/agente/engenharia/corpus-regressao-avaliacao.md).
+
+A atividade 3 introduz o ledger `executed_operations`, mantendo métricas nativas
+por chamada e evidência modular por operação. Correlação, transporte e limites:
+[operações executadas no rollout](../docs/agente/engenharia/operacoes-executadas-rollout.md).
+
+A atividade 4 publica `operation_outcomes`, com resultado e fonte de evidência
+por operação, e tipa separadamente os estados da cobertura modular. Semântica e
+precedência: [classificação de resultados](../docs/agente/engenharia/classificacao-resultados-rollout.md).
+
 ## Série de produção
 
 `modules-v2` é a série de produção desde a RM-11. Ela usa:

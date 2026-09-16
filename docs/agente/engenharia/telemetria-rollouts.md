@@ -81,7 +81,7 @@ A integração canônica 2.0.0/régua 4.0.0 emite
 `schema_avaliacao_integracao_canonica: 1` em toda oferta materializada e para
 cada missão processada em resposta, progresso ou terminal. O recibo contém uma
 referência opaca, não contém evento, intenção, fonte nem relação reservada. O
-detector 4.2.0 usa esses recibos como fonte de verdade da matriz VP/VN/FP/FN;
+desde o detector 4.2.0, esses recibos são a fonte de verdade da matriz VP/VN/FP/FN;
 comandos e marcadores servem somente para provar quantos recibos deveriam
 existir. Recibo ausente ou incompleto abre `falha_instrumentacao`, nunca N/D.
 
@@ -164,8 +164,17 @@ e adjudicação. Pendência não vira falha confirmada. Agência, sigilo e integ
 de rolagem são guardrails separados: não participam nem podem ser compensados
 pela média. O ledger nunca cria nota literária automática.
 
-O detector modular vigente é `4.2.0`. A linha 4.2 aplica o contrato de cobertura
-fail-closed aos doze módulos: cada atividade esperada precisa de recibo completo;
+O detector modular vigente é `4.4.0`. A linha 4.4 classifica o resultado de cada
+operação com evidência explícita e separa falha operacional, não execução,
+resultado ausente ou ambíguo, evidência insuficiente e erro do detector. Seu
+contrato está em
+[classificação de resultados](classificacao-resultados-rollout.md). A linha 4.3
+separa chamadas nativas e operações executadas, correlaciona cada resultado
+interno por índice ou ordem e preserva fragmentos e retransmissões sem transferir
+sucesso entre operações. Seu contrato está em
+[operações executadas no rollout](operacoes-executadas-rollout.md). A linha 4.2
+aplica o contrato de cobertura fail-closed aos doze módulos: cada atividade
+esperada precisa de recibo completo;
 ausência, incompletude ou duplicação bloqueia a nota como falha de instrumentação.
 Um recibo explícito pode declarar `nao_aplicavel` ou `indeterminado`; N/D fica
 reservado a zero atividade avaliativa. A integração canônica conserva seu recibo

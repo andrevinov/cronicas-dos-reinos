@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import ast
 import copy
+import hashlib
 import importlib.util
 import json
 import re
@@ -37,7 +38,9 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "4.2.0"
+MODULAR_DETECTOR_VERSION = "4.4.0"
+EXECUTED_OPERATION_SCHEMA = 1
+OPERATION_OUTCOME_SCHEMA = 1
 OPPORTUNITY_DECISION_SCHEMA = 2
 CANONICAL_INTEGRATION_ASSESSMENT_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
@@ -496,7 +499,7 @@ def _rules_state_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     calls = [
         call
         for turn in turns
-        for call in turn.get("calls") or []
+        for call in _turn_operations(turn)
         if call.get("command_executed") is not False
     ]
     rule_calls = [call for call in calls if _is_rule_query(str(call.get("command") or ""))]
@@ -1380,6 +1383,517 @@ def _observation_turn(turn_id: str) -> dict[str, Any]:
     }
 
 
+def _observation_fields(
+    *, name: str, raw_input: str, command: str, call_id: str | None,
+    operation_id: str, operation_index: int, parent_call_id: str | None,
+) -> dict[str, Any]:
+    command_systems = _narrative_systems_from_command(command)
+    command_markers = _matching_markers(command, _SYSTEM_COMMAND_MARKERS)
+    phases = _orchestration_phases(command)
+    lifecycle = _session_lifecycle_operations(command)
+    if "npc_social_initiative" in command_systems:
+        command_markers.setdefault("npc_social_initiative", []).append("contexto.py npc")
+    if "emergent_sidequest_opportunity" in command_systems:
+        command_markers.setdefault("emergent_sidequest_opportunity", []).append(
+            "--oportunidade-sidequest"
+        )
+    return {
+        "operation_id": operation_id,
+        "operation_index": operation_index,
+        "parent_call_id": parent_call_id,
+        "call_id": call_id,
+        "name": name,
+        "raw_input": raw_input,
+        "command": command,
+        "orchestration_phase": phases[0] if phases else None,
+        "orchestration_phases": phases,
+        "session_lifecycle_operation": lifecycle[0] if lifecycle else None,
+        "session_lifecycle_operations": lifecycle,
+        "sidequest_decision": _sidequest_decision_from_command(command),
+        "narrative_systems": set(command_systems),
+        "command_systems": set(command_systems),
+        "output_systems": set(),
+        "command_markers": command_markers,
+        "output_markers": {},
+        "category": _classify_tool(name, raw_input),
+        "output_text": "",
+        "output_success": None,
+        "duration_seconds": None,
+        "schema_discovery": _is_mechanical_schema_discovery(command, raw_input),
+        "orchestration_receipt": None,
+        "delivery_receipt": None,
+        "rules_state_receipt": None,
+        "interaction_receipt": None,
+        "opportunity_assessment": None,
+        "canonical_integration_assessments": [],
+        "module_coverage": {
+            "block_present": False,
+            "schema_present": False,
+            "receipts": [],
+        },
+        "orchestration_failure": None,
+        "liveness": None,
+        "output_seen": False,
+        "command_executed": True,
+        "correlation_status": "pendente",
+        "result_index": None,
+    }
+
+
+def _turn_operations(turn: dict[str, Any]) -> list[dict[str, Any]]:
+    operations: list[dict[str, Any]] = []
+    for call in turn.get("calls") or []:
+        expanded = call.get("operations")
+        if isinstance(expanded, list):
+            operations.extend(item for item in expanded if isinstance(item, dict))
+        else:  # Compatibilidade com turns sintéticos construídos por testes antigos.
+            operations.append(call)
+    return operations
+
+
+def _public_module_command(command: str) -> bool:
+    direct = {
+        "context_and_memory.py", "sidequest_authoring.py", "sidequest_lifecycle.py",
+        "npc_continuity_and_social_behavior.py", "scene_world_projection.py",
+        "world_boundary_resolution.py", "causal_narrative_routing.py",
+        "adversarial_operations.py", "rules_and_character_state.py",
+        "narrative_delivery.py", "turn_and_session_orchestration.py",
+    }
+    for program, args in _command_invocations(command):
+        if program in {"cronica", "cronica.py", "dados", "dados-lote", "dados.py", "dados-lote.py"}:
+            return True
+        if program == "contexto.py" and args[:1] != ["check"]:
+            return True
+        if program == "endpoints.py" and args[:1] == ["fronteira"]:
+            return True
+        if program in direct and args[:1] != ["check"]:
+            return True
+    return False
+
+
+def _enrich_operation(
+    operation: dict[str, Any], result_payload: dict[str, Any], output_text: str,
+    *, correlation_status: str, result_index: int | None,
+) -> None:
+    execution_prevented = _execution_prevented(output_text)
+    operation["command_executed"] = not execution_prevented
+    operation["correlation_status"] = correlation_status
+    operation["result_index"] = result_index
+    operation["output_text"] = output_text
+    operation["output_seen"] = True
+    if execution_prevented:
+        operation["orchestration_phase"] = None
+        operation["orchestration_phases"] = []
+        operation["session_lifecycle_operation"] = None
+        operation["session_lifecycle_operations"] = []
+        operation["sidequest_decision"] = None
+        operation["narrative_systems"] = set()
+        operation["command_systems"] = set()
+        operation["command_markers"] = {}
+    structured_observation = bool(
+        not execution_prevented
+        and (
+            operation.get("category") not in {"read_search", "validation"}
+            or _public_module_command(str(operation.get("command") or ""))
+        )
+    )
+    output_systems = (
+        _narrative_systems_from_output(output_text) if structured_observation else set()
+    )
+    orchestration_failure = (
+        _orchestration_failure_kind(output_text) if structured_observation else None
+    )
+    if orchestration_failure is not None:
+        output_systems = set()
+    operation["narrative_systems"].update(output_systems)
+    operation["output_systems"] = output_systems
+    operation["output_markers"] = (
+        _matching_markers(output_text, _SYSTEM_OUTPUT_MARKERS)
+        if structured_observation else {}
+    )
+    outcome = _classify_observed_operation(
+        operation, result_payload, output_text,
+        execution_prevented=execution_prevented,
+    )
+    operation["operation_outcome"] = outcome
+    success = (
+        True if outcome["state"] == "sucesso"
+        else False if outcome["state"] == "falha_operacional"
+        else None
+    )
+    operation["output_success"] = success
+    operation["duration_seconds"] = _duration_seconds(output_text)
+    operation["orchestration_receipt"] = (
+        _orchestration_receipt(output_text) if structured_observation else None
+    )
+    operation["delivery_receipt"] = (
+        _delivery_receipt(output_text) if structured_observation else None
+    )
+    operation["rules_state_receipt"] = (
+        _rules_state_receipt(output_text) if structured_observation else None
+    )
+    operation["interaction_receipt"] = (
+        _interaction_receipt(output_text) if structured_observation else None
+    )
+    operation["opportunity_assessment"] = (
+        _opportunity_assessment_receipt(output_text) if structured_observation else None
+    )
+    operation["canonical_integration_assessments"] = (
+        _canonical_integration_assessment_receipts(output_text)
+        if structured_observation else []
+    )
+    operation["module_coverage"] = (
+        _module_coverage_receipts(output_text)
+        if structured_observation
+        else {"block_present": False, "schema_present": False, "receipts": []}
+    )
+    operation["orchestration_failure"] = orchestration_failure
+    operation["liveness"] = (
+        _liveness_observation(output_text) if structured_observation else None
+    )
+
+
+def _execution_prevented(output_text: str) -> bool:
+    output_lower = output_text.casefold()
+    return bool(
+        "erro: ticket armazenado não encontrado" in output_lower
+        or ("script error:" in output_lower and "referenceerror:" in output_lower)
+    )
+
+
+def _outcome_evidence(
+    source: str, marker: str, output_text: str | None,
+) -> dict[str, Any]:
+    return {
+        "source": source,
+        "marker": marker,
+        "output_sha256": (
+            hashlib.sha256(output_text.encode("utf-8")).hexdigest()
+            if output_text is not None else None
+        ),
+    }
+
+
+def _operation_outcome(
+    state: str, source: str, marker: str, output_text: str | None,
+) -> dict[str, Any]:
+    return {
+        "schema": OPERATION_OUTCOME_SCHEMA,
+        "state": state,
+        "evidence": _outcome_evidence(source, marker, output_text),
+    }
+
+
+def _semantic_failure_marker(operation: dict[str, Any], output_text: str) -> str | None:
+    command = str(operation.get("command") or "")
+    if (
+        operation.get("category") in {"read_search", "validation"}
+        and not _public_module_command(command)
+    ):
+        return None
+    patterns = (
+        ("erro_terminal", r"(?im)^\s*erro\b"),
+        ("falha_terminal", r"(?im)^\s*falha\b"),
+        ("recusa_terminal", r"(?im)^\s*(?:opera[cç][aã]o\s+)?recusad[ao]\b"),
+        ("script_failed", r"(?im)^\s*script failed\b"),
+        ("error_terminal", r"(?im)^\s*error\b"),
+        ("failed_terminal", r"(?im)^\s*failed\b"),
+        ("traceback", r"(?im)^\s*traceback \(most recent call last\)"),
+        ("estado_falho", r"(?im)^\s*(?:estado|status)\s*:\s*(?:erro|falha|falhou|recusad[ao])\s*$"),
+    )
+    for marker, pattern in patterns:
+        if re.search(pattern, output_text):
+            return marker
+    return None
+
+
+def _classify_observed_operation(
+    operation: dict[str, Any], result_payload: dict[str, Any], output_text: str,
+    *, execution_prevented: bool,
+) -> dict[str, Any]:
+    if execution_prevented:
+        return _operation_outcome(
+            "nao_executada", "envelope_host", "falha_antes_da_invocacao", output_text
+        )
+
+    semantic_failure = _semantic_failure_marker(operation, output_text)
+    if semantic_failure is not None:
+        return _operation_outcome(
+            "falha_operacional", "saida_operacao", semantic_failure, output_text
+        )
+
+    for key in ("exit_code", "returncode"):
+        value = result_payload.get(key)
+        if isinstance(value, int) and not isinstance(value, bool):
+            return _operation_outcome(
+                "sucesso" if value == 0 else "falha_operacional",
+                f"resultado.{key}", f"{key}={value}", output_text,
+            )
+    success = result_payload.get("success")
+    if isinstance(success, bool):
+        return _operation_outcome(
+            "sucesso" if success else "falha_operacional",
+            "resultado.success", f"success={str(success).lower()}", output_text,
+        )
+    status = str(result_payload.get("status") or "").casefold()
+    if status in {"success", "succeeded", "completed", "ok"}:
+        return _operation_outcome("sucesso", "resultado.status", f"status={status}", output_text)
+    if status in {"failure", "failed", "error", "cancelled", "canceled"}:
+        return _operation_outcome(
+            "falha_operacional", "resultado.status", f"status={status}", output_text
+        )
+
+    for pattern in _core.EXIT_CODE_RES:
+        match = pattern.search(output_text)
+        if match:
+            value = int(match.group(1))
+            return _operation_outcome(
+                "sucesso" if value == 0 else "falha_operacional",
+                "saida_operacao", f"exit_code={value}", output_text,
+            )
+    if re.search(r"(?:^|[,\{\s])[\"']?is_error[\"']?\s*:\s*true", output_text, re.I):
+        return _operation_outcome(
+            "falha_operacional", "saida_operacao", "is_error=true", output_text
+        )
+    stripped = output_text.strip()
+    lower = stripped.casefold()
+    if lower.startswith(("failed", "error", "invalid patch")):
+        return _operation_outcome(
+            "falha_operacional", "saida_operacao", "prefixo_falha", output_text
+        )
+    if stripped.startswith(("OK", "Done!", "Success", "SUCCESS")):
+        return _operation_outcome(
+            "sucesso", "saida_operacao", "prefixo_sucesso", output_text
+        )
+    if _public_module_command(str(operation.get("command") or "")) and re.search(
+        r"(?im)^\s*(?:estado|status)\s*:\s*"
+        r"(?:preparado|concluido|iniciado|aplicado|registrado|confirmado|ok|sucesso)\s*$",
+        output_text,
+    ):
+        return _operation_outcome(
+            "sucesso", "saida_operacao", "estado_terminal_sucesso", output_text
+        )
+    return _operation_outcome(
+        "evidencia_insuficiente", "saida_operacao", "sem_sinal_terminal", output_text
+    )
+
+
+def _final_operation_outcome(operation: dict[str, Any]) -> dict[str, Any]:
+    modern = any(
+        key in operation
+        for key in ("operation_id", "correlation_status", "operation_outcome", "output_seen")
+    )
+    if not modern:
+        success = operation.get("output_success")
+        return _operation_outcome(
+            "sucesso" if success is True else "falha_operacional" if success is False else "evidencia_insuficiente",
+            "compatibilidade_legada", "output_success", str(operation.get("output_text") or "") or None,
+        )
+    success = operation.get("output_success")
+    output_seen = operation.get("output_seen") is True
+    executed = operation.get("command_executed") is not False
+    correlation = str(operation.get("correlation_status") or "pendente")
+    if (not output_seen and success is not None) or (not executed and success is not None):
+        return _operation_outcome(
+            "erro_detector", "invariante_detector",
+            "sucesso_sem_resultado_ou_execucao", str(operation.get("output_text") or "") or None,
+        )
+    if correlation == "ambiguo":
+        return _operation_outcome(
+            "resultado_ambiguo", "correlacao", "indice_ambiguo", None
+        )
+    if not output_seen or correlation in {"pendente", "resultado_ausente"}:
+        return _operation_outcome(
+            "resultado_ausente", "correlacao", correlation, None
+        )
+    stored = operation.get("operation_outcome")
+    valid_states = {
+        "sucesso", "falha_operacional", "nao_executada", "resultado_ausente",
+        "resultado_ambiguo", "evidencia_insuficiente", "erro_detector",
+    }
+    if isinstance(stored, dict) and stored.get("state") in valid_states:
+        return copy.deepcopy(stored)
+    return _operation_outcome(
+        "erro_detector", "invariante_detector", "classificacao_ausente_ou_invalida",
+        str(operation.get("output_text") or "") or None,
+    )
+
+
+def _forwarded_nested_result_indexes(source: str) -> list[int]:
+    """Localiza resultados internos encaminhados explicitamente para ``text``."""
+
+    variables: dict[str, int] = {}
+    for index, match in enumerate(re.finditer(r"\btools\.exec_command\s*\(", source)):
+        prefix = source[max(0, match.start() - 160) : match.start()]
+        assignment = re.search(
+            r"\b(?:const|let|var)\s+([A-Za-z_$][A-Za-z0-9_$]*)\s*=\s*"
+            r"(?:await\s*)?$",
+            prefix,
+        )
+        if assignment is not None:
+            variables[assignment.group(1)] = index
+    forwarded = {
+        index
+        for variable, index in variables.items()
+        if re.search(
+            rf"\btext\s*\(\s*{re.escape(variable)}(?:\.output)?\s*\)",
+            source,
+        )
+    }
+    return sorted(forwarded)
+
+
+def _json_result_candidates(output_text: str) -> list[Any]:
+    decoder = json.JSONDecoder()
+    values: list[Any] = []
+    index = 0
+    while index < len(output_text):
+        match = re.search(r"[\[{]", output_text[index:])
+        if match is None:
+            break
+        start = index + match.start()
+        try:
+            value, consumed = decoder.raw_decode(output_text[start:])
+        except json.JSONDecodeError:
+            index = start + 1
+            continue
+        values.append(value)
+        index = start + consumed
+    return values
+
+
+def _result_entries(value: Any) -> list[dict[str, Any]]:
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    if isinstance(value, dict) and any(
+        key in value for key in ("i", "result", "status", "value", "reason")
+    ):
+        return [value]
+    return []
+
+
+def _result_payload_and_text(entry: dict[str, Any]) -> tuple[int | None, dict[str, Any], str]:
+    explicit_index = entry.get("i")
+    result = entry.get("result") if isinstance(entry.get("result"), dict) else entry
+    status = str(result.get("status") or "").casefold()
+    value = result.get("value") if "value" in result else result
+    if status == "rejected":
+        reason = result.get("reason")
+        return (
+            explicit_index if isinstance(explicit_index, int) and not isinstance(explicit_index, bool) else None,
+            {"status": "failed"},
+            reason if isinstance(reason, str) else json.dumps(reason, ensure_ascii=False),
+        )
+    if isinstance(value, dict):
+        payload = dict(value)
+        raw_output = value.get("output")
+        if isinstance(raw_output, str):
+            text = raw_output
+        elif isinstance(raw_output, list):
+            text = _normalized_tool_output({"output": raw_output})
+        elif isinstance(value.get("content"), list):
+            text = _normalized_tool_output({"output": value["content"]})
+        else:
+            text = json.dumps(value, ensure_ascii=False)
+    elif isinstance(value, str):
+        payload, text = {}, value
+    else:
+        payload, text = {}, json.dumps(value, ensure_ascii=False)
+    if status in {"rejected", "failure", "failed", "error", "cancelled", "canceled"}:
+        payload.setdefault("status", "failed")
+    return (
+        explicit_index if isinstance(explicit_index, int) and not isinstance(explicit_index, bool) else None,
+        payload,
+        text,
+    )
+
+
+def _correlate_nested_results(call: dict[str, Any], output_text: str) -> None:
+    operations = call.get("operations") or []
+    entries: list[dict[str, Any]] = []
+    for candidate in _json_result_candidates(output_text):
+        candidate_entries = _result_entries(candidate)
+        if candidate_entries:
+            entries.extend(candidate_entries)
+    if not entries and _execution_prevented(output_text):
+        for operation in operations:
+            _enrich_operation(
+                operation, {"status": "failed"}, output_text,
+                correlation_status="execucao_impedida", result_index=None,
+            )
+            operation["output_success"] = None
+        call["operation_correlation"] = {
+            "schema": 1,
+            "operations": len(operations),
+            "results": 0,
+            "correlated": len(operations),
+            "status": "execucao_impedida",
+        }
+        return
+    if not entries:
+        forwarded = _forwarded_nested_result_indexes(str(call.get("command") or ""))
+        if len(forwarded) == 1 and forwarded[0] < len(operations):
+            index = forwarded[0]
+            _enrich_operation(
+                operations[index], {}, output_text,
+                correlation_status="saida_encaminhada", result_index=index,
+            )
+            entries = [{"i": index, "_already_correlated": True}]
+    used: set[int] = set()
+    sequential = 0
+    ambiguous = False
+    for entry in entries:
+        if entry.get("_already_correlated") is True:
+            used.add(int(entry["i"]))
+            continue
+        explicit, payload, text = _result_payload_and_text(entry)
+        if explicit is None:
+            while sequential in used:
+                sequential += 1
+            index, status = sequential, "ordem_declarada"
+            sequential += 1
+        else:
+            index, status = explicit, "indice_explicito"
+        if index < 0 or index >= len(operations) or index in used:
+            ambiguous = True
+            continue
+        used.add(index)
+        _enrich_operation(
+            operations[index], payload, text,
+            correlation_status=status, result_index=index,
+        )
+    for index, operation in enumerate(operations):
+        if index not in used:
+            operation["correlation_status"] = "ambiguo" if ambiguous else "resultado_ausente"
+    call["operation_correlation"] = {
+        "schema": 1,
+        "operations": len(operations),
+        "results": len(entries),
+        "correlated": len(used),
+        "status": (
+            "ambiguo" if ambiguous else "completo" if len(used) == len(operations) else "incompleto"
+        ),
+    }
+
+
+def _mirror_direct_operation(call: dict[str, Any]) -> None:
+    operation = call["operations"][0]
+    for key in (
+        "command_executed", "output_text", "output_success", "duration_seconds",
+        "orchestration_receipt", "delivery_receipt", "rules_state_receipt",
+        "interaction_receipt", "opportunity_assessment",
+        "canonical_integration_assessments", "module_coverage",
+        "orchestration_failure", "liveness", "output_systems", "output_markers",
+    ):
+        call[key] = operation.get(key)
+    call["narrative_systems"] = set(operation.get("narrative_systems") or set())
+
+
+def _is_intermediate_output(output_text: str) -> bool:
+    lower = output_text.casefold()
+    return "script running with cell id" in lower or "process running with session id" in lower
+
+
 def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     narration_re = re.compile(narration_regex, re.I | re.S) if narration_regex else DEFAULT_NARRATION_RE
     turns: dict[str, dict[str, Any]] = {}
@@ -1446,57 +1960,33 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 raw_input = _core._tool_input(payload)
                 command = _core._extract_command(_core._tool_input(payload))
                 cid = _core._call_id(payload)
-                command_systems = _narrative_systems_from_command(command)
-                command_markers = _matching_markers(command, _SYSTEM_COMMAND_MARKERS)
-                orchestration_phases = _orchestration_phases(command)
-                lifecycle_operations = _session_lifecycle_operations(command)
-                if "npc_social_initiative" in command_systems:
-                    command_markers.setdefault("npc_social_initiative", []).append("contexto.py npc")
-                if "emergent_sidequest_opportunity" in command_systems:
-                    command_markers.setdefault("emergent_sidequest_opportunity", []).append(
-                        "--oportunidade-sidequest"
-                    )
-                call = {
-                    "call_id": cid,
-                    "name": name,
-                    "raw_input": raw_input,
-                    "command": command,
-                    "orchestration_phase": (
-                        orchestration_phases[0] if orchestration_phases else None
-                    ),
-                    "orchestration_phases": orchestration_phases,
-                    "session_lifecycle_operation": (
-                        lifecycle_operations[0] if lifecycle_operations else None
-                    ),
-                    "session_lifecycle_operations": lifecycle_operations,
-                    "sidequest_decision": _sidequest_decision_from_command(command),
-                    "narrative_systems": set(command_systems),
-                    "command_systems": set(command_systems),
-                    "output_systems": set(),
-                    "command_markers": command_markers,
-                    "output_markers": {},
-                    "category": _classify_tool(name, raw_input),
-                    "output_text": "",
-                    "output_success": None,
-                    "duration_seconds": None,
-                    "schema_discovery": _is_mechanical_schema_discovery(command, raw_input),
-                    "orchestration_receipt": None,
-                    "delivery_receipt": None,
-                    "rules_state_receipt": None,
-                    "interaction_receipt": None,
-                    "opportunity_assessment": None,
-                    "canonical_integration_assessments": [],
-                    "module_coverage": {
-                        "block_present": False,
-                        "schema_present": False,
-                        "receipts": [],
-                    },
-                    "orchestration_failure": None,
-                    "liveness": None,
-                    "output_seen": False,
-                    "command_executed": True,
-                }
                 index = len(turn["calls"])
+                native_identity = cid or f"call-{index}"
+                call = _observation_fields(
+                    name=name, raw_input=raw_input, command=command, call_id=cid,
+                    operation_id=f"{turn_id}/{native_identity}/native",
+                    operation_index=0, parent_call_id=cid,
+                )
+                nested = _nested_exec_commands(command)
+                operation_commands = nested or [command]
+                call["operations"] = [
+                    _observation_fields(
+                        name="exec_command" if nested else name,
+                        raw_input=json.dumps({"cmd": operation_command}, ensure_ascii=False),
+                        command=operation_command,
+                        call_id=cid,
+                        operation_id=f"{turn_id}/{native_identity}/{operation_index}",
+                        operation_index=operation_index,
+                        parent_call_id=cid,
+                    )
+                    for operation_index, operation_command in enumerate(operation_commands)
+                ]
+                call["operation_correlation"] = {
+                    "schema": 1, "operations": len(call["operations"]),
+                    "results": 0, "correlated": 0, "status": "pendente",
+                }
+                call["output_fragments"] = []
+                call["duplicate_terminal_outputs"] = 0
                 turn["calls"].append(call)
                 if cid:
                     turn["calls_by_id"][cid] = index
@@ -1512,99 +2002,44 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
                 candidate = turn["calls"][turn["calls_by_id"][cid]]
                 if not candidate["output_seen"]:
                     matched = candidate
-            if matched is None:
+                else:
+                    candidate["duplicate_terminal_outputs"] += 1
+                    continue
+            elif not cid:
                 matched = next((item for item in turn["calls"] if not item["output_seen"]), None)
             if matched is not None:
-                output_lower = output_text.casefold()
-                nested_commands = _nested_exec_commands(
-                    str(matched.get("command") or "")
-                )
-                execution_prevented = bool(
-                    len(nested_commands) == 1
-                    and (
-                        "erro: ticket armazenado não encontrado" in output_lower
-                        or (
-                            "script error:" in output_lower
-                            and "referenceerror:" in output_lower
-                        )
+                if _is_intermediate_output(output_text):
+                    matched["output_fragments"].append(output_text)
+                    matched["operation_correlation"]["status"] = "aguardando_resultado_terminal"
+                    continue
+                operations = matched["operations"]
+                if len(operations) == 1 and not _nested_exec_commands(str(matched.get("command") or "")):
+                    _enrich_operation(
+                        operations[0], payload, output_text,
+                        correlation_status="chamada_nativa", result_index=0,
                     )
-                )
-                matched["command_executed"] = not execution_prevented
-                if execution_prevented:
-                    matched["orchestration_phase"] = None
-                    matched["orchestration_phases"] = []
-                    matched["session_lifecycle_operation"] = None
-                    matched["session_lifecycle_operations"] = []
-                    matched["sidequest_decision"] = None
-                    matched["narrative_systems"] = set()
-                    matched["command_systems"] = set()
-                    matched["command_markers"] = {}
-                output_is_observation = bool(
-                    not execution_prevented
-                    and matched.get("category") not in {"read_search", "validation"}
-                )
-                output_systems = (
-                    set()
-                    if not output_is_observation
-                    else _narrative_systems_from_output(output_text)
-                )
-                orchestration_failure = (
-                    _orchestration_failure_kind(output_text)
-                    if output_is_observation
-                    else None
-                )
-                # Falha de ticket/commit pertence ao control plane. Marcadores
-                # incidentais do erro não provam ativação de sidequest ou NPC.
-                if orchestration_failure is not None:
-                    output_systems = set()
-                matched["narrative_systems"].update(output_systems)
-                matched["output_systems"] = output_systems
-                matched["output_markers"] = _matching_markers(output_text, _SYSTEM_OUTPUT_MARKERS)
-                matched["output_text"] = output_text
-                success = _core._tool_success(payload, output_text)
-                if success is None and "script completed" in output_text.casefold():
-                    explicit_failure = orchestration_failure is not None or any(
-                        marker in output_lower
-                        for marker in ("falha cronica", "script failed", "traceback (most recent call last)")
-                    )
-                    success = not explicit_failure
-                matched["output_success"] = success
-                matched["duration_seconds"] = _duration_seconds(output_text)
-                matched["orchestration_receipt"] = (
-                    _orchestration_receipt(output_text) if output_is_observation else None
-                )
-                matched["delivery_receipt"] = (
-                    _delivery_receipt(output_text) if output_is_observation else None
-                )
-                matched["rules_state_receipt"] = (
-                    _rules_state_receipt(output_text) if output_is_observation else None
-                )
-                matched["interaction_receipt"] = (
-                    _interaction_receipt(output_text) if output_is_observation else None
-                )
-                matched["opportunity_assessment"] = (
-                    _opportunity_assessment_receipt(output_text)
-                    if output_is_observation
-                    else None
-                )
-                matched["canonical_integration_assessments"] = (
-                    _canonical_integration_assessment_receipts(output_text)
-                    if output_is_observation
-                    else []
-                )
-                matched["module_coverage"] = (
-                    _module_coverage_receipts(output_text)
-                    if output_is_observation
-                    else {
-                        "block_present": False,
-                        "schema_present": False,
-                        "receipts": [],
+                    matched["operation_correlation"] = {
+                        "schema": 1, "operations": 1, "results": 1,
+                        "correlated": 1, "status": "completo",
                     }
-                )
-                matched["orchestration_failure"] = orchestration_failure
-                matched["liveness"] = (
-                    _liveness_observation(output_text) if output_is_observation else None
-                )
+                    _mirror_direct_operation(matched)
+                else:
+                    _correlate_nested_results(matched, output_text)
+                    states = [item.get("output_success") for item in operations]
+                    matched["output_success"] = (
+                        False if False in states else True if states and all(state is True for state in states) else None
+                    )
+                    matched["command_executed"] = any(
+                        item.get("command_executed") is not False for item in operations
+                    )
+                    matched["narrative_systems"] = set().union(
+                        *(set(item.get("narrative_systems") or set()) for item in operations)
+                    )
+                    matched["output_systems"] = set().union(
+                        *(set(item.get("output_systems") or set()) for item in operations)
+                    )
+                    matched["output_text"] = output_text
+                    matched["duration_seconds"] = _duration_seconds(output_text)
                 matched["output_seen"] = True
 
     ordered = [turns[turn_id] for turn_id in order]
@@ -1612,7 +2047,7 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
         turn["narration_signal_tool"] = any(
             call.get("command_executed") is not False
             and _is_turn_register(str(call.get("command") or ""))
-            for call in turn.get("calls") or []
+            for call in _turn_operations(turn)
         )
     narration = [turn for turn in ordered if _core._is_narration_turn(turn, narration_re)]
     return ordered, narration
@@ -1722,7 +2157,7 @@ def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, A
     }
     for turn in turns:
         turn_id = str(turn.get("turn_id") or "")
-        for call in turn.get("calls") or []:
+        for call in _turn_operations(turn):
             for module_id, expected_phase in _expected_module_activities(call):
                 if module_id not in counters:
                     continue
@@ -1792,11 +2227,40 @@ def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, A
                         counter[field] += 1
                 assessments[module_id].append(
                     {
+                        "operation_id": call.get("operation_id"),
                         "turn_id": turn_id,
                         "call_id": str(call.get("call_id") or "") or None,
                         "phase": expected_phase,
                         "applicability": applicability,
                         "receipt_status": status,
+                        "assessment_state": (
+                            "falha_instrumentacao_recibo_ausente"
+                            if status == "ausente"
+                            else "falha_instrumentacao_recibo_duplicado"
+                            if status == "duplicado"
+                            else "falha_instrumentacao_recibo_incompleto"
+                            if status == "incompleto"
+                            else "nao_aplicavel"
+                            if applicability == "nao_aplicavel"
+                            else "evidencia_insuficiente"
+                            if applicability == "indeterminado"
+                            else "aplicavel"
+                        ),
+                        "evidence": {
+                            "command_sha256": hashlib.sha256(
+                                str(call.get("command") or "").encode("utf-8")
+                            ).hexdigest(),
+                            "output_sha256": (
+                                hashlib.sha256(
+                                    str(call.get("output_text") or "").encode("utf-8")
+                                ).hexdigest()
+                                if call.get("output_seen") else None
+                            ),
+                            "marker": (
+                                f"{module_id}|{expected_phase or '*'}|"
+                                f"{applicability or status}"
+                            ),
+                        },
                     }
                 )
 
@@ -1844,7 +2308,7 @@ _INTERACTION_REFERENCE_RE = re.compile(r"\bS\d{3,}-I\d{4,}\b")
 def _interaction_observation(turn: dict[str, Any], ordinal: int) -> dict[str, Any]:
     receipts = [
         call["interaction_receipt"]
-        for call in turn.get("calls") or []
+        for call in _turn_operations(turn)
         if isinstance(call.get("interaction_receipt"), dict)
     ]
     receipt = receipts[-1] if receipts else None
@@ -1877,7 +2341,7 @@ def _delivery_observation(turn: dict[str, Any]) -> dict[str, Any]:
     response = _visible_response(turn)
     receipts = [
         call["delivery_receipt"]
-        for call in turn.get("calls") or []
+        for call in _turn_operations(turn)
         if isinstance(call.get("delivery_receipt"), dict)
     ]
     receipt = receipts[-1] if receipts else None
@@ -1978,7 +2442,7 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
         per_turn_systems: set[str] = set()
         primary_calls: dict[str, dict[str, Any]] = {}
         blocked = False
-        for call in turn["calls"]:
+        for call in _turn_operations(turn):
             if call.get("command_executed") is False:
                 continue
             call_phases = _call_orchestration_phases(call)
@@ -2159,7 +2623,7 @@ def _observation_summary(turns: list[dict[str, Any]]) -> dict[str, Any]:
     prepare_calls = sum(decisions.values())
     valid_decisions = decisions["oportunidade"] + decisions["sem_oportunidade"]
     violations = decisions["ausente"] + decisions["conflito"]
-    inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in turn["calls"]))
+    inactive = sum(1 for turn in turns if not any(call.get("narrative_systems") for call in _turn_operations(turn)))
     duration_summary = {
         phase: {
             "chamadas_observadas": len(values),
@@ -2627,7 +3091,7 @@ def _new_module_signals(
 ) -> None:
     calls = [
         call
-        for call in turn.get("calls") or []
+        for call in _turn_operations(turn)
         if call.get("command_executed") is not False
     ]
     assistant_messages = list(turn.get("assistant_messages") or [])
@@ -4086,7 +4550,7 @@ def _build_modular_ledger(
     interaction_by_turn = {item["turn_id"]: item for item in interactions}
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         signals: dict[tuple[str, str], dict[str, Any]] = {}
-        non_modules = _legacy_signals(signals, list(turn.get("calls") or []), aliases)
+        non_modules = _legacy_signals(signals, _turn_operations(turn), aliases)
         _new_module_signals(signals, turn)
         ordinal = int(item.get("ordinal") or len(events) + 1)
         turn_id = str(turn.get("turn_id") or f"ordinal-{ordinal}")
@@ -4392,6 +4856,100 @@ def apply_modular_adjudications(
     return result
 
 
+def _executed_operation_ledger(turns: list[dict[str, Any]]) -> dict[str, Any]:
+    operations: list[dict[str, Any]] = []
+    native_calls = grouped = fragments = duplicate_outputs = 0
+    for turn in turns:
+        turn_id = str(turn.get("turn_id") or "")
+        for call in turn.get("calls") or []:
+            native_calls += 1
+            expanded = call.get("operations") or []
+            grouped += len(expanded) > 1
+            fragments += len(call.get("output_fragments") or [])
+            duplicate_outputs += int(call.get("duplicate_terminal_outputs") or 0)
+            for operation in expanded:
+                output_text = str(operation.get("output_text") or "")
+                success = operation.get("output_success")
+                operations.append(
+                    {
+                        "operation_id": operation.get("operation_id"),
+                        "parent_call_id": operation.get("parent_call_id"),
+                        "turn_id": turn_id,
+                        "operation_index": operation.get("operation_index"),
+                        "result_index": operation.get("result_index"),
+                        "category": operation.get("category"),
+                        "correlation_status": operation.get("correlation_status"),
+                        "command_executed": operation.get("command_executed"),
+                        "output_seen": operation.get("output_seen"),
+                        "result_state": (
+                            "sucesso" if success is True else "falha" if success is False else "indeterminado"
+                        ),
+                        "command_sha256": hashlib.sha256(
+                            str(operation.get("command") or "").encode("utf-8")
+                        ).hexdigest(),
+                        "output_sha256": (
+                            hashlib.sha256(output_text.encode("utf-8")).hexdigest()
+                            if operation.get("output_seen") else None
+                        ),
+                    }
+                )
+    states = Counter(item["result_state"] for item in operations)
+    correlations = Counter(str(item["correlation_status"]) for item in operations)
+    return {
+        "schema": EXECUTED_OPERATION_SCHEMA,
+        "native_calls": native_calls,
+        "grouped_native_calls": grouped,
+        "operations": operations,
+        "summary": {
+            "operations": len(operations),
+            "successful": states["sucesso"],
+            "failed": states["falha"],
+            "indeterminate": states["indeterminado"],
+            "correlation": dict(sorted(correlations.items())),
+            "intermediate_fragments": fragments,
+            "duplicate_terminal_outputs": duplicate_outputs,
+        },
+        "regra": (
+            "chamada nativa e operação executada são unidades distintas; hashes "
+            "preservam rastreabilidade sem copiar comando ou output"
+        ),
+    }
+
+
+def _operation_outcome_ledger(turns: list[dict[str, Any]]) -> dict[str, Any]:
+    operations: list[dict[str, Any]] = []
+    for turn in turns:
+        turn_id = str(turn.get("turn_id") or "")
+        for operation in _turn_operations(turn):
+            outcome = _final_operation_outcome(operation)
+            operations.append(
+                {
+                    "operation_id": operation.get("operation_id"),
+                    "parent_call_id": operation.get("parent_call_id"),
+                    "turn_id": turn_id,
+                    "operation_index": operation.get("operation_index"),
+                    "state": outcome["state"],
+                    "evidence": outcome["evidence"],
+                }
+            )
+    states = Counter(str(item["state"]) for item in operations)
+    return {
+        "schema": OPERATION_OUTCOME_SCHEMA,
+        "operations": operations,
+        "summary": {
+            "operations": len(operations),
+            "by_state": dict(sorted(states.items())),
+            "operational_failures": states["falha_operacional"],
+            "insufficient_evidence": states["evidencia_insuficiente"],
+            "detector_errors": states["erro_detector"],
+        },
+        "regra": (
+            "conclusão do envelope não prova sucesso interno; toda classificação "
+            "indica sua evidência e falha operacional não cria obrigação de recibo"
+        ),
+    }
+
+
 def telemetry_view(report: dict[str, Any], evaluation_series: str) -> dict[str, Any]:
     """Retorna uma visão compatível sem reinterpretar o rollout bruto."""
 
@@ -4399,6 +4957,10 @@ def telemetry_view(report: dict[str, Any], evaluation_series: str) -> dict[str, 
     if evaluation_series == "legacy-v1":
         result.pop("modular_ledger_v2", None)
         result.pop("modular_ledger_schema", None)
+        result.pop("executed_operations", None)
+        result.pop("executed_operations_schema", None)
+        result.pop("operation_outcomes", None)
+        result.pop("operation_outcomes_schema", None)
         result["narrative_systems_schema"] = LEGACY_NARRATIVE_SYSTEMS_SCHEMA
         return result
     if evaluation_series == "modules-v2":
@@ -4420,6 +4982,10 @@ def analyze(
     report["modular_ledger_schema"] = MODULAR_LEDGER_SCHEMA
     report["opportunity_decision_schema"] = OPPORTUNITY_DECISION_SCHEMA
     report["liveness_boundary_schema"] = LIVENESS_BOUNDARY_SCHEMA
+    report["executed_operations_schema"] = EXECUTED_OPERATION_SCHEMA
+    report["executed_operations"] = _executed_operation_ledger(ordered)
+    report["operation_outcomes_schema"] = OPERATION_OUTCOME_SCHEMA
+    report["operation_outcomes"] = _operation_outcome_ledger(ordered)
     report["all_turns"].update(all_summary)
     report["narration_turns"].update(narration_summary)
     report["task47_opportunity_decision_gate"] = {
@@ -4468,6 +5034,7 @@ def analyze(
     if isinstance(inferred, list):
         for label in (
             "preferred cronica orchestration phases inferred from command lines",
+            "operation outcomes derived per correlated result; fulfilled envelopes are not success evidence",
             "narrative-system attribution inferred from command and tool-output markers",
             "Task47 declaration inferred from cronica preparar flags; objective sidequest eligibility comes from a versioned receipt or adjudication",
             "canonical quest integration comes from per-mission receipts; sidequest activity without coverage is an instrumentation failure, never N/D",
@@ -4503,6 +5070,8 @@ def _human(report: dict[str, Any]) -> str:
     rules_state = narr.get("rules_and_character_state") or {}
     rolls = rules_state.get("rolagens") or {}
     contracts = rules_state.get("contratos") or {}
+    outcome_summary = (report.get("operation_outcomes") or {}).get("summary") or {}
+    outcome_states = outcome_summary.get("by_state") or {}
     active = ", ".join(
         f"{name}={systems.get(name, 0)}" for name in NARRATIVE_SYSTEM_KEYS if systems.get(name, 0)
     ) or "nenhum"
@@ -4532,6 +5101,13 @@ def _human(report: dict[str, Any]) -> str:
             f"módulos não consultados={live.get('modulos_nao_consultados', 0)}"
         ),
         f"Sistemas observados por turno: {active}",
+        (
+            "Resultados operacionais: "
+            f"sucesso={outcome_states.get('sucesso', 0)} | "
+            f"falha={outcome_summary.get('operational_failures', 0)} | "
+            f"evidência insuficiente={outcome_summary.get('insufficient_evidence', 0)} | "
+            f"erro do detector={outcome_summary.get('detector_errors', 0)}"
+        ),
         (
             "RM-09 entrega: "
             f"respostas={delivery.get('respostas_observadas', 0)} | "

@@ -1,0 +1,2 @@
+{"timestamp":"2026-01-01T00:00:00Z","type":"session_meta","payload":{"id":"corpus-avaliacao-v1","cli_version":"fixture","cwd":"/tmp/fixture","model_provider":"fixture","context_window":1000}}
+{"timestamp":"2026-01-01T00:00:01Z","type":"formato_futuro","payload":{}}

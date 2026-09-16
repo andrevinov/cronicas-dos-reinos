@@ -1,0 +1,57 @@
+{
+  "schema_metas_avaliacao": 2,
+  "versao_metas": "2.0.0",
+  "contrato_avaliacao": "4.0.0",
+  "natureza": "rubrica modules-v2 pós-hoc; percepção humana entra como evidência adjudicada, não como nota",
+  "pesos_sessao": {
+    "calibracao": 30,
+    "eficacia_integridade": 30,
+    "confiabilidade": 20,
+    "economia": 15,
+    "fluidez": 5
+  },
+  "pesos_modulo": {
+    "calibracao": 35,
+    "eficacia_integridade": 35,
+    "confiabilidade": 20,
+    "fluidez": 10
+  },
+  "confianca_evento": {
+    "alta": 100,
+    "media": 70,
+    "baixa": 40
+  },
+  "impacto_manifestacao": {
+    "baixo": 1,
+    "moderado": 2,
+    "alto": 3,
+    "critico": 5
+  },
+  "metas_globais": {
+    "reducao_input_bruto_minima": 0.7,
+    "inferencias_por_turno": 5,
+    "tools_por_turno": 5,
+    "fracao_l0_l2_limpo": 0.8,
+    "orquestracao_preferencial_por_turno": 2
+  },
+  "latencia_segundos": {
+    "mediana": 60,
+    "p90": 120
+  },
+  "faixas_desempenho": [
+    {"id": "excelente", "minimo": 90},
+    {"id": "saudavel", "minimo": 80},
+    {"id": "atencao", "minimo": 65},
+    {"id": "ruim", "minimo": 50},
+    {"id": "critico", "minimo": 0}
+  ],
+  "estabilidade": {
+    "oportunidades_por_modulo": 10,
+    "sessoes_minimas": 3
+  },
+  "prioridade": {
+    "peso_deficit_experiencia": 0.7,
+    "peso_participacao_custo": 0.3
+  },
+  "nota": "N/D é excluído e os pesos restantes são renormalizados. Economia modular permanece indicador até haver baseline comparável por classe de oportunidade."
+}

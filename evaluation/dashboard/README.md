@@ -4,10 +4,17 @@ O painel é estático, sem backend ou dependências externas:
 
 ```bash
 cd /home/andre/Projects/cronicas-dos-reinos
-python3 -m http.server 8765
+poetry run servidor
 ```
 
-Abra `http://127.0.0.1:8765/evaluation/dashboard/`.
+Abra `http://127.0.0.1:18765/evaluation/dashboard/`. O comando usa a raiz do
+repositório mesmo quando chamado de uma subpasta e atende somente nesta máquina.
+Encerre com `Ctrl+C`.
+
+A porta padrão 18765 reduz conflitos com portas comuns de desenvolvimento. Se
+estiver ocupada, o comando avisa; para usar outra, execute
+`poetry run servidor --porta 18766`. Após atualizar o checkout, execute
+`poetry install --only-root` uma vez para instalar o novo atalho no `.venv`.
 
 O seletor lê `evaluation/sessions/index.json`, reconstruído pelo gerador. O
 painel mantém a sessão 021 como referência `legacy-v1`; sessões novas usam

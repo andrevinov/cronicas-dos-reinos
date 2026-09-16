@@ -1,0 +1,29 @@
+{
+  "schema_contrato_modulo": 1,
+  "versao_contrato": "1.0.0",
+  "module_id": "context_and_memory",
+  "unidade_contexto_legada": "turno",
+  "indicadores": {
+    "fracao_l0_l2_suficiente": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "leituras_raw_sem_justificativa": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "fatos_duraveis_com_evidencia": {
+      "unidade_avaliativa": "fato_memoria",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  }
+}

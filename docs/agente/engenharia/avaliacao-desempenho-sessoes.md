@@ -5,6 +5,27 @@ Esta é a receita canônica para transformar cada rollout concluído em um pacot
 o cânone. O único dado criado durante o jogo é a identidade append-only das
 interações, necessária para ligar evidência posterior ao par correto.
 
+O reparo do instrumento passa a ter um
+[contrato de entrada e unidades](contrato-entrada-medicao.md), com uma porta
+separada para congelar fontes antes da medição. A atividade 1 não muda o gerador
+nem corrige suas notas; o procedimento abaixo continua descrevendo o fluxo
+existente até sua integração nas atividades seguintes.
+
+O [corpus independente de regressão](corpus-regressao-avaliacao.md) fixa as
+expectativas das correções antes de alterar o detector. Enquanto as atividades
+3–9 não forem concluídas, seu comando estrito reprova o avaliador e discrimina
+falha do instrumento de erro no próprio corpus.
+
+Desde o detector 4.3.0, chamadas agrupadas são decompostas conforme o contrato
+de [operações executadas](operacoes-executadas-rollout.md). A contagem nativa do
+host continua por `call_id`; recibos, sucesso e sinais modulares são associados
+ao resultado de cada operação interna.
+
+O detector 4.4.0 aplica a
+[classificação de resultados](classificacao-resultados-rollout.md) antes da
+cobertura modular. Falha operacional, ausência de recibo, inaplicabilidade,
+evidência insuficiente e erro do detector permanecem estados independentes.
+
 ## Fontes e unidades
 
 - sessão canônica: unidade do pacote;

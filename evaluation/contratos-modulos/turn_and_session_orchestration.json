@@ -1,0 +1,78 @@
+{
+  "schema_contrato_modulo": 1,
+  "versao_contrato": "1.0.0",
+  "module_id": "turn_and_session_orchestration",
+  "unidade_contexto_legada": "turno",
+  "indicadores": {
+    "fracao_par_preparar_concluir_exato": {
+      "unidade_avaliativa": "interacao",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "chamadas_orquestracao_por_turno_e_classe": {
+      "unidade_avaliativa": "interacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "pares_com_correlacao_confirmada": {
+      "unidade_avaliativa": "interacao",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "retries_validos_desnecessarios_recuperados": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "retries_com_efeito_duplicado": {
+      "unidade_avaliativa": "efeito_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "tickets_obsoletos_ou_incompativeis": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "commits_duplicados_ou_incompletos": {
+      "unidade_avaliativa": "efeito_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "duracao_por_fase": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "falhas_recuperadas": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "lifecycle_sessao_valido": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  }
+}

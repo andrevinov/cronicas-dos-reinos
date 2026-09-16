@@ -1,0 +1,131 @@
+{
+  "case_id": "encerramento_falho_com_leitura",
+  "checks": [
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "turn_and_session_orchestration",
+        "activity_units"
+      ],
+      "check_id": "fecho-sem-turn_and_session_orchestration",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O encerramento recusado não cria obrigação de cobertura.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "activity_units"
+      ],
+      "check_id": "fecho-sem-context_and_memory",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O encerramento recusado não cria obrigação de cobertura.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "npc_continuity_and_social_behavior",
+        "activity_units"
+      ],
+      "check_id": "fecho-sem-npc_continuity_and_social_behavior",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O encerramento recusado não cria obrigação de cobertura.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "rules_and_character_state",
+        "activity_units"
+      ],
+      "check_id": "fecho-sem-rules_and_character_state",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O encerramento recusado não cria obrigação de cobertura.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "narrative_delivery",
+        "activity_units"
+      ],
+      "check_id": "fecho-sem-narrative_delivery",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O encerramento recusado não cria obrigação de cobertura.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "operacoes_falhas"
+      ],
+      "check_id": "fecho-falhou",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O sucesso da leitura não substitui a falha do encerramento.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

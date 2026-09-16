@@ -1,0 +1,448 @@
+{
+  "case_id": "preparo_direto_completo",
+  "checks": [
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "turn_and_session_orchestration",
+        "activity_units"
+      ],
+      "check_id": "direto-turn_and_session_orchestration-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "turn_and_session_orchestration|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade turn_and_session_orchestration.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "turn_and_session_orchestration",
+        "complete_receipts"
+      ],
+      "check_id": "direto-turn_and_session_orchestration-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "turn_and_session_orchestration|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo turn_and_session_orchestration está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "turn_and_session_orchestration",
+        "missing_receipts"
+      ],
+      "check_id": "direto-turn_and_session_orchestration-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "turn_and_session_orchestration|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "scene_world_projection",
+        "activity_units"
+      ],
+      "check_id": "direto-scene_world_projection-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "scene_world_projection|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade scene_world_projection.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "scene_world_projection",
+        "complete_receipts"
+      ],
+      "check_id": "direto-scene_world_projection-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "scene_world_projection|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo scene_world_projection está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "scene_world_projection",
+        "missing_receipts"
+      ],
+      "check_id": "direto-scene_world_projection-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "scene_world_projection|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_authoring",
+        "activity_units"
+      ],
+      "check_id": "direto-sidequest_authoring-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_authoring|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade sidequest_authoring.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_authoring",
+        "complete_receipts"
+      ],
+      "check_id": "direto-sidequest_authoring-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_authoring|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo sidequest_authoring está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_authoring",
+        "missing_receipts"
+      ],
+      "check_id": "direto-sidequest_authoring-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_authoring|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_lifecycle",
+        "activity_units"
+      ],
+      "check_id": "direto-sidequest_lifecycle-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_lifecycle|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade sidequest_lifecycle.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_lifecycle",
+        "complete_receipts"
+      ],
+      "check_id": "direto-sidequest_lifecycle-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_lifecycle|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo sidequest_lifecycle está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_lifecycle",
+        "missing_receipts"
+      ],
+      "check_id": "direto-sidequest_lifecycle-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "sidequest_lifecycle|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "causal_narrative_routing",
+        "activity_units"
+      ],
+      "check_id": "direto-causal_narrative_routing-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "causal_narrative_routing|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade causal_narrative_routing.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "causal_narrative_routing",
+        "complete_receipts"
+      ],
+      "check_id": "direto-causal_narrative_routing-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "causal_narrative_routing|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo causal_narrative_routing está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "causal_narrative_routing",
+        "missing_receipts"
+      ],
+      "check_id": "direto-causal_narrative_routing-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "causal_narrative_routing|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "npc_continuity_and_social_behavior",
+        "activity_units"
+      ],
+      "check_id": "direto-npc_continuity_and_social_behavior-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "npc_continuity_and_social_behavior|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade npc_continuity_and_social_behavior.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "npc_continuity_and_social_behavior",
+        "complete_receipts"
+      ],
+      "check_id": "direto-npc_continuity_and_social_behavior-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "npc_continuity_and_social_behavior|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo npc_continuity_and_social_behavior está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "npc_continuity_and_social_behavior",
+        "missing_receipts"
+      ],
+      "check_id": "direto-npc_continuity_and_social_behavior-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "npc_continuity_and_social_behavior|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "activity_units"
+      ],
+      "check_id": "direto-context_and_memory-atividades",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "context_and_memory|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Cada preparo concluído cria uma atividade context_and_memory.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "complete_receipts"
+      ],
+      "check_id": "direto-context_and_memory-completos",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "context_and_memory|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo context_and_memory está explícito no resultado próprio.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "missing_receipts"
+      ],
+      "check_id": "direto-context_and_memory-ausentes",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "context_and_memory|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A ausência é contada somente em preparo concluído sem o recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

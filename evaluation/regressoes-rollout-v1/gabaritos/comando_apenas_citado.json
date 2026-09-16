@@ -1,0 +1,154 @@
+{
+  "case_id": "comando_apenas_citado",
+  "checks": [
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "turn_and_session_orchestration",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-turn_and_session_orchestration",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "scene_world_projection",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-scene_world_projection",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_authoring",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-sidequest_authoring",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "sidequest_lifecycle",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-sidequest_lifecycle",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "causal_narrative_routing",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-causal_narrative_routing",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "npc_continuity_and_social_behavior",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-npc_continuity_and_social_behavior",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "activity_units"
+      ],
+      "check_id": "citacao-sem-context_and_memory",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "rg -n cronica docs",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "O texto encontrado é documentação, não execução.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

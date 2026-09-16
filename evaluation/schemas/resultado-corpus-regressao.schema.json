@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resultado-corpus-regressao.schema.json",
+  "title": "Resultado determinístico do corpus de regressão",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_resultado_corpus_regressao",
+    "versao_corpus",
+    "corpus_sha256",
+    "codigo_sha256",
+    "status",
+    "casos_executados",
+    "checks",
+    "aprovados",
+    "falhas",
+    "resultados"
+  ],
+  "properties": {
+    "schema_resultado_corpus_regressao": {
+      "const": 1
+    },
+    "versao_corpus": {
+      "type": "string",
+      "minLength": 1
+    },
+    "corpus_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "codigo_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analisador",
+        "gerador",
+        "aceite",
+        "executor_corpus"
+      ],
+      "properties": {
+        "analisador": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "gerador": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "aceite": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "executor_corpus": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "aprovado",
+        "reprovado"
+      ]
+    },
+    "casos_executados": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "checks": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "aprovados": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "falhas": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "resultados": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tipo",
+          "case_id",
+          "check_id",
+          "ok",
+          "caminho",
+          "esperado",
+          "observado_disponivel",
+          "observado",
+          "unidade_avaliativa"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "tipo": {
+            "enum": [
+              "gabarito",
+              "relacao"
+            ]
+          },
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "check_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "caminho": {
+            "type": "array"
+          },
+          "esperado": {},
+          "observado_disponivel": {
+            "type": "boolean"
+          },
+          "observado": {},
+          "unidade_avaliativa": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

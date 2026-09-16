@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contrato-modulo-medicao.schema.json",
+  "title": "Contrato local de indicadores de um módulo",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_contrato_modulo",
+    "versao_contrato",
+    "module_id",
+    "unidade_contexto_legada",
+    "indicadores"
+  ],
+  "properties": {
+    "schema_contrato_modulo": {
+      "const": 1
+    },
+    "versao_contrato": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "unidade_contexto_legada": {
+      "enum": [
+        "turno",
+        "cena",
+        "fronteira",
+        "sessao",
+        "evento"
+      ]
+    },
+    "indicadores": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unidade_avaliativa",
+          "medida",
+          "fonte",
+          "denominador",
+          "ausencia_de_evidencia"
+        ],
+        "properties": {
+          "unidade_avaliativa": {
+            "type": "string",
+            "minLength": 1
+          },
+          "medida": {
+            "enum": [
+              "proporcao",
+              "percentual",
+              "proporcao_adjudicada",
+              "razao",
+              "nota",
+              "contagem",
+              "tokens",
+              "segundos",
+              "palavras",
+              "contagem_tipificada",
+              "contagem_separada"
+            ]
+          },
+          "fonte": {
+            "enum": [
+              "nativa",
+              "observacao",
+              "adjudicacao_ou_recibo_objetivo",
+              "agregacao",
+              "atribuicao_contabil"
+            ]
+          },
+          "denominador": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ausencia_de_evidencia": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "medida": {
+                  "enum": [
+                    "proporcao",
+                    "percentual",
+                    "proporcao_adjudicada",
+                    "razao",
+                    "nota"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "denominador": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$comment": "A cobertura de IDs e a medida de cada indicador precisam corresponder ao catálogo selecionado; não há quantidade fixa de módulos."
+}

@@ -12,6 +12,9 @@ dependencies = [
 # Use sempre como `poetry run <comando> ...` ou, com o .venv ativado,
 # simplesmente `<comando> ...`.
 [project.scripts]
+# Sobe o servidor local do painel de avaliação na porta padrão 18765.
+servidor = "ferramentas.poetry_cli:servidor"
+
 # Classifica/valida a linguagem da mesa: ON, OFF e RECALL.
 entrada = "ferramentas.poetry_cli:entrada"
 

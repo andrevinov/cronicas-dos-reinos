@@ -1,0 +1,50 @@
+{
+  "schema_contrato_modulo": 1,
+  "versao_contrato": "1.0.0",
+  "module_id": "sidequest_authoring",
+  "unidade_contexto_legada": "evento",
+  "indicadores": {
+    "precisao_das_ancoras": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "cobertura_de_oportunidades": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "acuracia_balanceada_de_oportunidade": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "taxa_de_indeterminacao": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "ofertas_com_contrato_completo": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "custo_por_autoria": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "tokens",
+      "fonte": "atribuicao_contabil",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  }
+}

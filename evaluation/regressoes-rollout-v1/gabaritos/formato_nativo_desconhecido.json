@@ -1,0 +1,44 @@
+{
+  "case_id": "formato_nativo_desconhecido",
+  "checks": [
+    {
+      "caminho": [
+        "entrada",
+        "status"
+      ],
+      "check_id": "formato-bloqueia",
+      "esperado": "bloqueada",
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "formato_futuro",
+          "linha": 2,
+          "ponteiro": "/type"
+        }
+      ],
+      "justificativa": "Formato desconhecido impede conclusões dependentes.",
+      "operacao": "igual",
+      "unidade_avaliativa": "sessao"
+    },
+    {
+      "caminho": [
+        "scorecard"
+      ],
+      "check_id": "sem-score",
+      "esperado": null,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "formato_futuro",
+          "linha": 2,
+          "ponteiro": "/type"
+        }
+      ],
+      "justificativa": "Entrada bloqueada não produz scorecard.",
+      "operacao": "ausente",
+      "unidade_avaliativa": "sessao"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

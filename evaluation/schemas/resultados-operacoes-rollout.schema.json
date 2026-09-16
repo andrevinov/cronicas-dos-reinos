@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resultados-operacoes-rollout.schema.json",
+  "title": "Classificação de resultados das operações do rollout",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "operations", "summary", "regra"],
+  "properties": {
+    "schema": {"const": 1},
+    "operations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/operationOutcome"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operations",
+        "by_state",
+        "operational_failures",
+        "insufficient_evidence",
+        "detector_errors"
+      ],
+      "properties": {
+        "operations": {"type": "integer", "minimum": 0},
+        "by_state": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "operational_failures": {"type": "integer", "minimum": 0},
+        "insufficient_evidence": {"type": "integer", "minimum": 0},
+        "detector_errors": {"type": "integer", "minimum": 0}
+      }
+    },
+    "regra": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "marker", "output_sha256"],
+      "properties": {
+        "source": {"type": "string", "minLength": 1},
+        "marker": {"type": "string", "minLength": 1},
+        "output_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        }
+      }
+    },
+    "operationOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation_id",
+        "parent_call_id",
+        "turn_id",
+        "operation_index",
+        "state",
+        "evidence"
+      ],
+      "properties": {
+        "operation_id": {"type": "string", "minLength": 1},
+        "parent_call_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string", "minLength": 1},
+        "operation_index": {"type": "integer", "minimum": 0},
+        "state": {
+          "enum": [
+            "sucesso",
+            "falha_operacional",
+            "nao_executada",
+            "resultado_ausente",
+            "resultado_ambiguo",
+            "evidencia_insuficiente",
+            "erro_detector"
+          ]
+        },
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    }
+  }
+}

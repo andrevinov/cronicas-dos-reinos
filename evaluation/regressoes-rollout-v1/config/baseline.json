@@ -1,0 +1,8 @@
+{
+  "narration_turns": {
+    "input_tokens": 1000,
+    "turns": 1
+  },
+  "natureza": "fixture isolada; não representa sessão real",
+  "schema_baseline_sintetica": 1
+}

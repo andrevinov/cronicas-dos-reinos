@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "contrato-medicao.schema.json",
+  "title": "Contrato comum de entrada e unidades de medição",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_contrato_medicao",
+    "versao_contrato",
+    "escopo",
+    "formatos",
+    "unidades",
+    "indicadores_globais",
+    "indicadores_comuns_modulares",
+    "politicas"
+  ],
+  "properties": {
+    "schema_contrato_medicao": {
+      "const": 1
+    },
+    "versao_contrato": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "escopo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formatos": {
+      "type": "object",
+      "required": [
+        "codex_jsonl_v1"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "codex_jsonl_v1": {
+          "type": "object",
+          "required": [
+            "tipos_registro",
+            "tipos_response_item",
+            "representacoes_output",
+            "validacao",
+            "correlacao_agrupada"
+          ],
+          "properties": {
+            "tipos_registro": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "tipos_response_item": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "representacoes_output": {
+              "const": [
+                "texto",
+                "blocos"
+              ]
+            },
+            "validacao": {
+              "type": "string",
+              "minLength": 1
+            },
+            "correlacao_agrupada": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "unidades": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "definicao",
+          "identidade"
+        ],
+        "properties": {
+          "definicao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identidade": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "indicadores_globais": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unidade_avaliativa",
+          "medida",
+          "fonte",
+          "denominador",
+          "ausencia_de_evidencia"
+        ],
+        "properties": {
+          "unidade_avaliativa": {
+            "type": "string",
+            "minLength": 1
+          },
+          "medida": {
+            "enum": [
+              "proporcao",
+              "percentual",
+              "proporcao_adjudicada",
+              "razao",
+              "nota",
+              "contagem",
+              "tokens",
+              "segundos",
+              "palavras",
+              "contagem_tipificada",
+              "contagem_separada"
+            ]
+          },
+          "fonte": {
+            "enum": [
+              "nativa",
+              "observacao",
+              "adjudicacao_ou_recibo_objetivo",
+              "agregacao",
+              "atribuicao_contabil"
+            ]
+          },
+          "denominador": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ausencia_de_evidencia": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "medida": {
+                  "enum": [
+                    "proporcao",
+                    "percentual",
+                    "proporcao_adjudicada",
+                    "razao",
+                    "nota"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "denominador": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "indicadores_comuns_modulares": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unidade_avaliativa",
+          "medida",
+          "fonte",
+          "denominador",
+          "ausencia_de_evidencia"
+        ],
+        "properties": {
+          "unidade_avaliativa": {
+            "type": "string",
+            "minLength": 1
+          },
+          "medida": {
+            "enum": [
+              "proporcao",
+              "percentual",
+              "proporcao_adjudicada",
+              "razao",
+              "nota",
+              "contagem",
+              "tokens",
+              "segundos",
+              "palavras",
+              "contagem_tipificada",
+              "contagem_separada"
+            ]
+          },
+          "fonte": {
+            "enum": [
+              "nativa",
+              "observacao",
+              "adjudicacao_ou_recibo_objetivo",
+              "agregacao",
+              "atribuicao_contabil"
+            ]
+          },
+          "denominador": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ausencia_de_evidencia": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "medida": {
+                  "enum": [
+                    "proporcao",
+                    "percentual",
+                    "proporcao_adjudicada",
+                    "razao",
+                    "nota"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "denominador": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "politicas": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$comment": "O validador Python também verifica referências de unidade. Este schema não certifica resultados do detector."
+}

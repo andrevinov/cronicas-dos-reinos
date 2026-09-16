@@ -44,6 +44,13 @@ def _run_script(filename: str, *prefix_args: str) -> int:
     ).returncode
 
 
+def servidor() -> int:
+    try:
+        return _run_script("servidor.py")
+    except KeyboardInterrupt:
+        return 0
+
+
 def entrada() -> int:
     return _run_script("entrada.py")
 

@@ -1,0 +1,68 @@
+{
+  "case_id": "consulta_sucesso_preparo_falha",
+  "checks": [
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "activity_units"
+      ],
+      "check_id": "consulta_sucesso_preparo_falha-contexto-atividade",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "context_and_memory|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "A consulta concluída exige somente seu próprio recibo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "context_and_memory",
+        "complete_receipts"
+      ],
+      "check_id": "consulta_sucesso_preparo_falha-contexto-completo",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "context_and_memory|",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O recibo da consulta está completo.",
+      "operacao": "igual",
+      "unidade_avaliativa": "recibo_modular"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "preparos_concluidos"
+      ],
+      "check_id": "consulta_sucesso_preparo_falha-sem-preparos",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Exit code 2 impede que o preparo falho crie sete obrigações.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

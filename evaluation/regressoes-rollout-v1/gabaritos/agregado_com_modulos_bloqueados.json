@@ -1,0 +1,45 @@
+{
+  "case_id": "agregado_com_modulos_bloqueados",
+  "checks": [
+    {
+      "caminho": [
+        "dominio",
+        "modulos_bloqueados"
+      ],
+      "check_id": "bloqueado-presente",
+      "esperado": 7,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "estado: preparado",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O segundo preparo sem recibos bloqueia os sete módulos obrigados.",
+      "operacao": "igual",
+      "unidade_avaliativa": "modulo"
+    },
+    {
+      "caminho": [
+        "propriedades",
+        "agregado_ignora_componentes_bloqueados"
+      ],
+      "check_id": "agregado-invariante",
+      "esperado": true,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "estado: preparado",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Perturbar componentes de módulos bloqueados não pode alterar eixos ou nota.",
+      "operacao": "igual",
+      "unidade_avaliativa": "sessao"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

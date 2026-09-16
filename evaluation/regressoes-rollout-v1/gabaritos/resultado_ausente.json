@@ -1,0 +1,45 @@
+{
+  "case_id": "resultado_ausente",
+  "checks": [
+    {
+      "caminho": [
+        "dominio",
+        "preparos_concluidos"
+      ],
+      "check_id": "desconhecido-sem-obrigacao",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "cronica preparar",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "Sem resultado, sucesso permanece indeterminado e não cria obrigação concluída.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "resultados_indeterminados"
+      ],
+      "check_id": "desconhecido-estado",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "cronica preparar",
+          "linha": 4,
+          "ponteiro": "/payload/arguments"
+        }
+      ],
+      "justificativa": "A lacuna precisa permanecer explícita.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

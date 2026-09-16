@@ -1,0 +1,428 @@
+{
+  "schema_catalogo_modulos": 2,
+  "versao_catalogo": "5.0.0",
+  "serie_avaliacao": "modules-v2",
+  "estado": "producao",
+  "padrao_producao": true,
+  "natureza": "contrato de avaliação pós-hoc; não é estado canônico nem altera o hot path",
+  "contrato_cobertura_fail_closed": {
+    "schema": 1,
+    "modulos": [
+      "context_and_memory",
+      "turn_and_session_orchestration",
+      "narrative_delivery",
+      "rules_and_character_state",
+      "sidequest_authoring",
+      "sidequest_lifecycle",
+      "canonical_quest_integration",
+      "npc_continuity_and_social_behavior",
+      "scene_world_projection",
+      "world_boundary_resolution",
+      "causal_narrative_routing",
+      "adversarial_operations"
+    ],
+    "atividade_sem_recibo": "falha_instrumentacao",
+    "recibo_incompleto": "falha_instrumentacao",
+    "nao_aplicavel_exige_recibo_explicito": true,
+    "nd_exige_zero_atividade_avaliativa": true,
+    "pontuacao_exige_aplicabilidade_e_evidencia": true
+  },
+  "unidades_analise": ["turno", "cena", "fronteira", "sessao", "evento"],
+  "estados_ativacao": [
+    "nao_elegivel",
+    "elegivel_nao_ativado",
+    "ativado_sem_efeito",
+    "efeito_materializado",
+    "falha_contratual",
+    "indeterminado"
+  ],
+  "modulos": [
+    {
+      "id": "context_and_memory",
+      "responsabilidade": "Fornecer somente o contexto necessário e preservar memória factual, autoria e separação das camadas de conhecimento.",
+      "escopo": "Escada de acesso L0–L5, memória de cena e durável, retomada e consultas focadas; não decide a ficção.",
+      "unidade_analise": "turno",
+      "contrato_elegibilidade": {
+        "gatilho": "O turno exige fundamentação factual, retomada ou persistência, ainda que o contexto já presente seja suficiente em L0.",
+        "exclusoes": ["Leitura preventiva sem lacuna", "Busca ampla quando L0–L2 já bastam"],
+        "evidencias_minimas": ["contexto já presente em L0 ou lacuna/rota de acesso", "fontes efetivamente consultadas quando houver leitura"]
+      },
+      "resultados_possiveis": ["contexto_suficiente", "aprofundamento_justificado", "lacuna_preservada", "acesso_excessivo", "indeterminado"],
+      "subcapacidades": [
+        {"id": "routed_context_access", "responsabilidade": "Selecionar o menor degrau de acesso suficiente.", "aliases_v1": []},
+        {"id": "scene_and_durable_memory", "responsabilidade": "Projetar e registrar memória com participantes e evidência corretos.", "aliases_v1": []},
+        {"id": "knowledge_layer_separation", "responsabilidade": "Impedir fusão entre conhecimento do narrador, mundo, NPC, Ren e jogador.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "indireta",
+      "rotulo_jogador": "Continuidade e lembrança do que importa",
+      "indicadores_especializados": [
+        {"id": "fracao_l0_l2_suficiente", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "leituras_raw_sem_justificativa", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "fatos_duraveis_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "turn_and_session_orchestration",
+      "responsabilidade": "Executar o ciclo transacional de turno e sessão exatamente uma vez, com recuperação explícita e commits idempotentes.",
+      "escopo": "Preparar, concluir, checkpoint, iniciar, encerrar e recuperar; não substitui os módulos de domínio.",
+      "unidade_analise": "turno",
+      "contrato_elegibilidade": {
+        "gatilho": "Há avanço narrativo ON ou transição de lifecycle solicitada.",
+        "exclusoes": ["Entrada OFF", "Consulta pós-hoc de engenharia"],
+        "evidencias_minimas": ["classificação ON/OFF/RECALL", "ticket ou recibo de lifecycle"]
+      },
+      "resultados_possiveis": ["ciclo_concluido", "bloqueado_por_pendencia", "bloqueado_por_recovery", "recuperado", "ticket_obsoleto", "ticket_incompativel", "ciclo_incompleto", "indeterminado"],
+      "subcapacidades": [
+        {"id": "transactional_turn", "responsabilidade": "Manter o par preparar/concluir e a atomicidade do turno.", "aliases_v1": []},
+        {"id": "session_lifecycle", "responsabilidade": "Iniciar, checkpointar, recuperar e encerrar sessões sem saltos.", "aliases_v1": []},
+        {"id": "idempotent_commit", "responsabilidade": "Tornar retries seguros e impedir escrita parcial silenciosa.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "tecnica",
+      "rotulo_jogador": "Confiabilidade dos turnos e sessões",
+      "indicadores_especializados": [
+        {"id": "fracao_par_preparar_concluir_exato", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "chamadas_orquestracao_por_turno_e_classe", "unidade": "contagem", "direcao_desejada": "faixa_alvo"},
+        {"id": "pares_com_correlacao_confirmada", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "retries_validos_desnecessarios_recuperados", "unidade": "contagem", "direcao_desejada": "categorica"},
+        {"id": "retries_com_efeito_duplicado", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "tickets_obsoletos_ou_incompativeis", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "commits_duplicados_ou_incompletos", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "duracao_por_fase", "unidade": "segundos", "direcao_desejada": "menor"},
+        {"id": "falhas_recuperadas", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "lifecycle_sessao_valido", "unidade": "proporcao", "direcao_desejada": "maior"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "narrative_delivery",
+      "responsabilidade": "Entregar prosa clara, consequente e ritmada, respeitando a agência de Ren e expondo mecânica somente quando aplicável.",
+      "escopo": "Forma e legibilidade da resposta visível; não cria autorização causal nem altera resultados mecânicos.",
+      "unidade_analise": "turno",
+      "contrato_elegibilidade": {
+        "gatilho": "O turno ON exige uma resposta narrativa visível ao jogador.",
+        "exclusoes": ["Operação OFF", "Artefato pós-hoc"],
+        "evidencias_minimas": ["entrada do jogador", "texto narrado e rodapé canônico"]
+      },
+      "resultados_possiveis": ["entrega_correlacionada", "entrega_legada_observada", "rodape_ausente_ou_fora_de_posicao", "densidade_nao_avaliada", "mecanica_exposta", "resposta_ausente", "indeterminado"],
+      "subcapacidades": [
+        {"id": "narrative_density", "responsabilidade": "Calibrar detalhe e extensão ao valor dramático do turno.", "aliases_v1": []},
+        {"id": "diegetic_mechanics", "responsabilidade": "Integrar resultados e chamadas mecânicas sem opacidade ou metajogo.", "aliases_v1": []},
+        {"id": "visible_closure", "responsabilidade": "Entregar consequência compreensível e rodapé canônico correto.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Qualidade, clareza e ritmo da narração",
+      "indicadores_especializados": [
+        {"id": "turnos_com_fechamento_jogavel_claro", "unidade": "proporcao_adjudicada", "direcao_desejada": "maior"},
+        {"id": "retrabalho_ou_contestacao_seguinte", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "exposicao_procedimental_sem_ficcao", "unidade": "proporcao", "direcao_desejada": "menor"},
+        {"id": "tamanho_por_classe_turno", "unidade": "palavras", "direcao_desejada": "categorica"},
+        {"id": "latencia_ate_entrega", "unidade": "segundos", "direcao_desejada": "menor"},
+        {"id": "manifestacoes_confirmadas_por_interacao", "unidade": "contagem_tipificada", "direcao_desejada": "categorica"},
+        {"id": "retrabalho_confirmado_pelo_jogador", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "violacoes_criticas", "unidade": "contagem_separada", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity"],
+      "versao_implementacao": "1.0.2",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "rules_and_character_state",
+      "responsabilidade": "Aplicar regras, rolagens, recursos, ficha e tempo de modo pré-comprometido, rastreável e consistente.",
+      "escopo": "Resolução mecânica e deltas de personagem/tempo; não escolhe ações ou estados internos de Ren.",
+      "unidade_analise": "evento",
+      "contrato_elegibilidade": {
+        "gatilho": "A ficção exige teste, gasto, mudança persistente de ficha ou avanço temporal.",
+        "exclusoes": ["Ação sem incerteza material", "Mudança não canônica ou meramente hipotética"],
+        "evidencias_minimas": ["gatilho ficcional", "regra ou contrato aplicável", "resultado e delta quando houver"]
+      },
+      "resultados_possiveis": ["regra_consultada", "parametros_predefinidos", "rolagem_resolvida", "rolagem_sem_alvo_predefinido", "estado_commitado", "replay_sem_duplicacao", "guardrail_bloqueou", "redescoberta_assinatura", "indeterminado"],
+      "subcapacidades": [
+        {"id": "rules_resolution", "responsabilidade": "Definir dificuldade e modificadores antes da resolução.", "aliases_v1": []},
+        {"id": "roll_execution", "responsabilidade": "Executar e preservar o resultado real da rolagem.", "aliases_v1": []},
+        {"id": "character_time_state", "responsabilidade": "Registrar recursos, ficha e instante canônico de forma consistente.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Justiça das regras e consistência da ficha",
+      "indicadores_especializados": [
+        {"id": "rolagens_com_cd_previa", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "integridade_resultado_consequencia", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "consultas_regra_por_oportunidade", "unidade": "contagem", "direcao_desejada": "faixa_alvo"},
+        {"id": "redescobertas_schema_cli", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "recursos_comprometidos_aplicados", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "deltas_persistentes_validos", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "divergencias_ficha_estado_runtime", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "instantes_canonicos_coerentes", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "correcoes_mecanicas_jogador", "unidade": "contagem", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "roll_integrity", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "sidequest_authoring",
+      "responsabilidade": "Detectar uma oportunidade causal válida e materializar uma sidequest completa somente quando sua oferta entra na ficção.",
+      "escopo": "Elegibilidade, autoria, contrato e oferta de sidequests emergentes; não acompanha missões já aceitas.",
+      "unidade_analise": "evento",
+      "contrato_elegibilidade": {
+        "gatilho": "Há âncora causal concreta, atual, alcançável, acionável, distinta e autorizada dentro dos limites de oportunidade e missões ativas.",
+        "exclusoes": ["Conversa incidental", "Ausência de âncora", "Limite de oportunidade ou missões atingido"],
+        "evidencias_minimas": ["origem e tipo da âncora", "recibo objetivo independente da declaração", "decisão positiva ou negativa", "oferta literal quando materializada"]
+      },
+      "resultados_possiveis": ["sem_oportunidade", "oportunidade_recusada", "oferta_materializada", "autoria_incompleta", "indeterminado"],
+      "subcapacidades": [
+        {"id": "opportunity_gate", "responsabilidade": "Avaliar elegibilidade por evidência estruturada e comparar o resultado com a decisão explícita, sem tratar a declaração como verdade.", "aliases_v1": ["emergent_sidequest_opportunity"]},
+        {"id": "quest_authoring", "responsabilidade": "Produzir contrato completo, persistente e coerente com a âncora.", "aliases_v1": ["emergent_sidequest_authoring"]},
+        {"id": "fictional_materialization", "responsabilidade": "Persistir somente a oferta efetivamente narrada.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Qualidade e medida das novas missões",
+      "indicadores_especializados": [
+        {"id": "precisao_das_ancoras", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "cobertura_de_oportunidades", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "acuracia_balanceada_de_oportunidade", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "taxa_de_indeterminacao", "unidade": "proporcao", "direcao_desejada": "menor"},
+        {"id": "ofertas_com_contrato_completo", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "custo_por_autoria", "unidade": "tokens", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "2.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "sidequest_lifecycle",
+      "responsabilidade": "Projetar, progredir e encerrar sidequests aceitas, incluindo recompensa e reação causal, de forma atômica e exactly-once.",
+      "escopo": "Estado de missões ativas, fatos, fases, prazos, terminais, recompensas e reações; não cria nova oportunidade.",
+      "unidade_analise": "evento",
+      "contrato_elegibilidade": {
+        "gatilho": "Existe sidequest aceita relevante ao preparo, fato novo, prazo ou terminal alcançado.",
+        "exclusoes": ["Missão apenas oferecida", "Ausência de missão ativa ou fato novo para commit"],
+        "evidencias_minimas": ["ID e estado anterior da missão", "decisão factual por missão", "evidência literal para progresso ou terminal"]
+      },
+      "resultados_possiveis": ["projecao_sem_mudanca", "progresso_instalado", "terminal_aplicado", "recompensa_ou_reacao_aplicada", "falha_transacional", "indeterminado"],
+      "subcapacidades": [
+        {"id": "active_reassessment", "responsabilidade": "Projetar de forma compacta o estado relevante das missões aceitas.", "aliases_v1": ["active_sidequest_reassessment"]},
+        {"id": "transactional_progress", "responsabilidade": "Decidir e instalar fatos de progresso atomicamente.", "aliases_v1": ["transactional_sidequest_progress"]},
+        {"id": "phase_and_terminal_progression", "responsabilidade": "Manter fases, prazos e condições terminais.", "aliases_v1": ["sidequest_progression"]},
+        {"id": "terminal_rewards", "responsabilidade": "Aplicar recompensas, descobertas ou perdas exatamente uma vez.", "aliases_v1": ["quest_rewards"]},
+        {"id": "success_reactions", "responsabilidade": "Produzir consequência causal pós-progresso sem reabrir a missão.", "aliases_v1": ["sidequest_success_reactions"]}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Continuidade e consequência das missões ativas",
+      "indicadores_especializados": [
+        {"id": "decisao_por_missao_ativa", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "efeitos_terminais_duplicados", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "fases_e_prazos_corretos", "unidade": "proporcao", "direcao_desejada": "maior"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "canonical_quest_integration",
+      "responsabilidade": "Integrar sidequests e causas canônicas sem promover hipótese a fato, editar o cânone-base ou revelar informação reservada.",
+      "escopo": "Pontes sidequest→cânone e cânone→oportunidade; não executa autoria nem lifecycle da missão.",
+      "unidade_analise": "evento",
+      "contrato_elegibilidade": {
+        "gatilho": "Cada oferta materializada, resposta, reavaliação de progresso ou terminal de sidequest exige um recibo seguro que classifique a obrigação da ponte no domínio reservado.",
+        "exclusoes": ["Afinidade ou encontro sem causa", "Possibilidade futura não canônica", "Segredo ainda não descoberto", "Oferta ou progresso intermediário sem operação pontuável"],
+        "evidencias_minimas": ["recibo completo por missão", "relação canônica estruturada em fonte reservada", "operação correspondente no ledger Task42 quando elegível"]
+      },
+      "resultados_possiveis": ["verdadeiro_positivo", "verdadeiro_negativo", "falso_positivo", "falso_negativo", "nao_pontuavel", "nao_aplicavel", "falha_instrumentacao"],
+      "subcapacidades": [
+        {"id": "sidequest_to_canon_bridge", "responsabilidade": "Produzir ponte causal a partir de fato aceito da sidequest.", "aliases_v1": ["canon_bridge"]},
+        {"id": "canon_to_quest_opportunity", "responsabilidade": "Projetar oportunidade a partir de causa canônica reservada.", "aliases_v1": ["canonical_secret_quests"]}
+      ],
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Integração das missões com a trama principal",
+      "indicadores_especializados": [
+        {"id": "cobertura_recibos_por_atividade", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "acuracia_balanceada_integracao", "unidade": "percentual", "direcao_desejada": "maior"},
+        {"id": "pontes_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "hipoteses_promovidas", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "vazamentos_canonicos", "unidade": "contagem", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "2.0.0",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "npc_continuity_and_social_behavior",
+      "responsabilidade": "Preservar identidade, presença, memória, relação, reputação e iniciativa social autônoma dos NPCs.",
+      "escopo": "Continuidade e comportamento social do elenco presente ou contactável; não cria presença, segredo ou sidequest.",
+      "unidade_analise": "cena",
+      "contrato_elegibilidade": {
+        "gatilho": "Um NPC está consolidado no elenco da cena ou possui canal de contato validado.",
+        "exclusoes": ["Participante apenas prospectivo", "NPC ausente e sem canal", "Abertura social já consumida na janela"],
+        "evidencias_minimas": ["presença ou canal consolidado", "estado relacional/memória relevante", "janela social"]
+      },
+      "resultados_possiveis": ["silencio_coerente", "iniciativa_social", "continuidade_atualizada", "presenca_fabricada", "repeticao", "indeterminado"],
+      "subcapacidades": [
+        {"id": "social_initiative", "responsabilidade": "Decidir abertura social elegível sem controlar Ren.", "aliases_v1": ["npc_social_initiative"]},
+        {"id": "presence_and_identity", "responsabilidade": "Preservar elenco, aliases, suspeita e certeza de identidade.", "aliases_v1": []},
+        {"id": "relationship_memory_reputation", "responsabilidade": "Manter relações, fatos lembrados e reputações sem fundir personas.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Naturalidade e continuidade dos personagens",
+      "indicadores_especializados": [
+        {"id": "iniciativas_com_presenca_ou_contato", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "aberturas_repetidas_por_janela", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "contradicoes_de_identidade_ou_memoria", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "fatos_sociais_persistidos_com_evidencia", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "rendimento_visivel_por_ativacao", "unidade": "proporcao", "direcao_desejada": "maior"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "1.1.0",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "scene_world_projection",
+      "responsabilidade": "Projetar local, incidentes, microeventos e condições persistentes coerentes sem reroll ou efeito automático indevido.",
+      "escopo": "Entrada, exploração, trânsito e permanência espacial, mais condições de vários dias; não resolve fronteiras temporais.",
+      "unidade_analise": "cena",
+      "contrato_elegibilidade": {
+        "gatilho": "A cena contém gatilho espacial real ou condição mundial ativa aplicável ao local e instante.",
+        "exclusoes": ["Turno sem mudança ou permanência espacial relevante", "Condição não aplicável", "Retry da mesma reserva"],
+        "evidencias_minimas": ["local e janela consolidados", "tipo de gatilho", "reserva e confirmação quando houver efeito"]
+      },
+      "resultados_possiveis": ["projecao_neutra", "incidente_ou_microevento", "condicao_projetada", "reroll_indevido", "efeito_nao_autorizado", "indeterminado"],
+      "subcapacidades": [
+        {"id": "local_incidents", "responsabilidade": "Reservar e confirmar incidentes ou microeventos uma vez por gatilho elegível.", "aliases_v1": ["world_local_incidents"]},
+        {"id": "persistent_conditions", "responsabilidade": "Projetar início, vigência e fim de condições persistentes.", "aliases_v1": ["persistent_world_conditions"]},
+        {"id": "spatial_continuity", "responsabilidade": "Preservar local e janela entre retries e permanências.", "aliases_v1": []}
+      ],
+      "visibilidade_jogador": "direta",
+      "rotulo_jogador": "Vivacidade e consistência dos lugares",
+      "indicadores_especializados": [
+        {"id": "gatilhos_espaciais_corretos", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "rerolls_por_janela", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "condicoes_ativas_projetadas", "unidade": "proporcao", "direcao_desejada": "maior"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "world_boundary_resolution",
+      "responsabilidade": "Resolver causas vencidas e pendências do mundo antes de cruzar fronteiras narrativas ou temporais.",
+      "escopo": "Compressão temporal, lotes do Mundo Vivo e barreira de escrita; não fabrica novas causas.",
+      "unidade_analise": "fronteira",
+      "contrato_elegibilidade": {
+        "gatilho": "Há compressão temporal material ou pendência vencida/alcançável antes do avanço.",
+        "exclusoes": ["Turno curto sem compressão", "Ausência comprovada de causas ou pendências"],
+        "evidencias_minimas": ["instante de origem e destino", "pendências/casos alcançáveis", "lote aplicado ou recibo de calma"]
+      },
+      "resultados_possiveis": ["calma_justificada", "interrupcao", "lote_materializado", "bloqueio_preservado", "causa_omitida", "indeterminado"],
+      "subcapacidades": [
+        {"id": "temporal_liveness", "responsabilidade": "Avaliar causas durante compressões e emitir calma ou interrupção justificadas.", "aliases_v1": ["liveness_boundary"]},
+        {"id": "pending_batch_resolution", "responsabilidade": "Resolver pendências em lote antes de liberar a escrita.", "aliases_v1": ["batch_world_boundary"]}
+      ],
+      "visibilidade_jogador": "indireta",
+      "rotulo_jogador": "Continuidade do mundo nas passagens de tempo",
+      "indicadores_especializados": [
+        {"id": "causas_vencidas_cobertas", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "eventos_canonicos_noop", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "tempo_de_resolucao", "unidade": "segundos", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "causal_narrative_routing",
+      "responsabilidade": "Selecionar entre matérias narrativas autorizadas pela causalidade, cronologia e prioridade, sem fabricar pressão.",
+      "escopo": "Arbitragem entre causa canônica datada, pressão comprometida e iniciativa incidental; não executa o efeito do domínio escolhido.",
+      "unidade_analise": "turno",
+      "contrato_elegibilidade": {
+        "gatilho": "Duas ou mais matérias autorizadas competem pelo mesmo espaço narrativo, ou uma causa canônica datada vence.",
+        "exclusoes": ["Nenhuma matéria causal elegível", "Única matéria sem conflito de prioridade"],
+        "evidencias_minimas": ["fontes causais candidatas", "ordem de precedência", "matéria escolhida ou decisão neutra"]
+      },
+      "resultados_possiveis": ["sem_materia", "materia_selecionada", "evento_canonico_datado", "prioridade_invertida", "pressao_fabricada", "indeterminado"],
+      "subcapacidades": [
+        {"id": "reactive_pressure_arbitration", "responsabilidade": "Ordenar pressões autorizadas e preservar compromissos adversariais.", "aliases_v1": ["reactive_pressure_routing"]},
+        {"id": "dated_secret_canon", "responsabilidade": "Introduzir evento canônico reservado na data correta.", "aliases_v1": ["secret_canon"]}
+      ],
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Relevância e naturalidade das pressões narrativas",
+      "indicadores_especializados": [
+        {"id": "materias_com_fonte_causal", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "prioridade_correta", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "consultas_neutras_sem_competicao", "unidade": "contagem", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    },
+    {
+      "id": "adversarial_operations",
+      "responsabilidade": "Comprometer e executar operações adversariais com capacidade, conhecimento, risco, recursos e consequências congelados.",
+      "escopo": "Operações simples ou simultâneas de antagonistas e facções; não ajusta dificuldade ou resultado após escolha ou rolagem.",
+      "unidade_analise": "evento",
+      "contrato_elegibilidade": {
+        "gatilho": "Uma força externa possui objetivo, conhecimento, capacidade e janela legítimos para agir.",
+        "exclusoes": ["Ameaça sem capacidade prévia", "Conhecimento onisciente", "Reação criada depois de observar a decisão ou rolagem de Ren"],
+        "evidencias_minimas": ["compromisso anterior à resolução", "recursos separados por frente", "consequências congeladas"]
+      },
+      "resultados_possiveis": ["operacao_inelegivel", "operacao_comprometida", "frentes_concorrentes", "operacao_resolvida", "capacidade_fabricada", "indeterminado"],
+      "subcapacidades": [
+        {"id": "adversarial_contract_integrity", "responsabilidade": "Congelar capacidade, conhecimento, risco e consequências antes da resolução.", "aliases_v1": ["adversarial_integrity"]},
+        {"id": "concurrent_operations", "responsabilidade": "Separar recursos e consequências de frentes simultâneas.", "aliases_v1": ["concurrent_adversarial_operations"]}
+      ],
+      "visibilidade_jogador": "reservada",
+      "rotulo_jogador": "Integridade e independência das forças adversárias",
+      "indicadores_especializados": [
+        {"id": "operacoes_pre_comprometidas", "unidade": "proporcao", "direcao_desejada": "maior"},
+        {"id": "recursos_duplicados_entre_frentes", "unidade": "contagem", "direcao_desejada": "menor"},
+        {"id": "capacidades_ou_conhecimento_fabricados", "unidade": "contagem", "direcao_desejada": "menor"}
+      ],
+      "guardrails_aplicaveis": ["player_agency", "knowledge_secrecy", "roll_integrity", "canonical_consistency"],
+      "versao_implementacao": "1.0.1",
+      "versao_avaliacao": "4.0.0"
+    }
+  ],
+  "camadas_nao_modulares": {
+    "regressoes_historicas": [
+      {
+        "id": "seven_names_migration_regression",
+        "rotulo": "Migração histórica da sidequest Sete Nomes",
+        "responsabilidade": "Preservar o snapshot e a prova ponta a ponta sem transformar uma campanha específica em módulo pontuável.",
+        "recebe_nota_modular": false
+      }
+    ],
+    "extensoes_campanha": [
+      {
+        "id": "underground_tournament",
+        "rotulo": "Torneio Clandestino",
+        "responsabilidade": "Manter a mini-trama temporal como extensão opt-in da campanha, coberta por testes próprios.",
+        "recebe_nota_modular": false
+      }
+    ]
+  },
+  "migracao_v1": [
+    {"origem": "emergent_sidequest_opportunity", "natureza_destino": "subcapacidade", "modulo": "sidequest_authoring", "subcapacidade": "opportunity_gate"},
+    {"origem": "emergent_sidequest_authoring", "natureza_destino": "subcapacidade", "modulo": "sidequest_authoring", "subcapacidade": "quest_authoring"},
+    {"origem": "active_sidequest_reassessment", "natureza_destino": "subcapacidade", "modulo": "sidequest_lifecycle", "subcapacidade": "active_reassessment"},
+    {"origem": "transactional_sidequest_progress", "natureza_destino": "subcapacidade", "modulo": "sidequest_lifecycle", "subcapacidade": "transactional_progress"},
+    {"origem": "sidequest_progression", "natureza_destino": "subcapacidade", "modulo": "sidequest_lifecycle", "subcapacidade": "phase_and_terminal_progression"},
+    {"origem": "quest_rewards", "natureza_destino": "subcapacidade", "modulo": "sidequest_lifecycle", "subcapacidade": "terminal_rewards"},
+    {"origem": "sidequest_success_reactions", "natureza_destino": "subcapacidade", "modulo": "sidequest_lifecycle", "subcapacidade": "success_reactions"},
+    {"origem": "canon_bridge", "natureza_destino": "subcapacidade", "modulo": "canonical_quest_integration", "subcapacidade": "sidequest_to_canon_bridge"},
+    {"origem": "canonical_secret_quests", "natureza_destino": "subcapacidade", "modulo": "canonical_quest_integration", "subcapacidade": "canon_to_quest_opportunity"},
+    {"origem": "npc_social_initiative", "natureza_destino": "subcapacidade", "modulo": "npc_continuity_and_social_behavior", "subcapacidade": "social_initiative"},
+    {"origem": "world_local_incidents", "natureza_destino": "subcapacidade", "modulo": "scene_world_projection", "subcapacidade": "local_incidents"},
+    {"origem": "persistent_world_conditions", "natureza_destino": "subcapacidade", "modulo": "scene_world_projection", "subcapacidade": "persistent_conditions"},
+    {"origem": "liveness_boundary", "natureza_destino": "subcapacidade", "modulo": "world_boundary_resolution", "subcapacidade": "temporal_liveness"},
+    {"origem": "batch_world_boundary", "natureza_destino": "subcapacidade", "modulo": "world_boundary_resolution", "subcapacidade": "pending_batch_resolution"},
+    {"origem": "reactive_pressure_routing", "natureza_destino": "subcapacidade", "modulo": "causal_narrative_routing", "subcapacidade": "reactive_pressure_arbitration"},
+    {"origem": "secret_canon", "natureza_destino": "subcapacidade", "modulo": "causal_narrative_routing", "subcapacidade": "dated_secret_canon"},
+    {"origem": "adversarial_integrity", "natureza_destino": "subcapacidade", "modulo": "adversarial_operations", "subcapacidade": "adversarial_contract_integrity"},
+    {"origem": "concurrent_adversarial_operations", "natureza_destino": "subcapacidade", "modulo": "adversarial_operations", "subcapacidade": "concurrent_operations"},
+    {"origem": "seven_names_migration_regression", "natureza_destino": "regressao_historica", "destino": "seven_names_migration_regression"},
+    {"origem": "underground_tournament", "natureza_destino": "extensao_campanha", "destino": "underground_tournament"}
+  ]
+}

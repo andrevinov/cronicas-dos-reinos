@@ -1,0 +1,29 @@
+{
+  "schema_contrato_modulo": 1,
+  "versao_contrato": "1.0.0",
+  "module_id": "sidequest_lifecycle",
+  "unidade_contexto_legada": "evento",
+  "indicadores": {
+    "decisao_por_missao_ativa": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "efeitos_terminais_duplicados": {
+      "unidade_avaliativa": "efeito_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "fases_e_prazos_corretos": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  }
+}

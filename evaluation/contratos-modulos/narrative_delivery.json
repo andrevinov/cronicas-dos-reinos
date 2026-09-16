@@ -1,0 +1,64 @@
+{
+  "schema_contrato_modulo": 1,
+  "versao_contrato": "1.0.0",
+  "module_id": "narrative_delivery",
+  "unidade_contexto_legada": "turno",
+  "indicadores": {
+    "turnos_com_fechamento_jogavel_claro": {
+      "unidade_avaliativa": "interacao",
+      "medida": "proporcao_adjudicada",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "retrabalho_ou_contestacao_seguinte": {
+      "unidade_avaliativa": "interacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "exposicao_procedimental_sem_ficcao": {
+      "unidade_avaliativa": "interacao",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "unidades elegíveis com evidência completa; indeterminadas excluídas e contadas separadamente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "tamanho_por_classe_turno": {
+      "unidade_avaliativa": "interacao",
+      "medida": "palavras",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_ate_entrega": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "manifestacoes_confirmadas_por_interacao": {
+      "unidade_avaliativa": "manifestacao",
+      "medida": "contagem_tipificada",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "retrabalho_confirmado_pelo_jogador": {
+      "unidade_avaliativa": "manifestacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "violacoes_criticas": {
+      "unidade_avaliativa": "interacao",
+      "medida": "contagem_separada",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  }
+}

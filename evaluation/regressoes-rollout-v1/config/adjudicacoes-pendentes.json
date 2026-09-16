@@ -1,0 +1,24 @@
+{
+  "corrections": [],
+  "player_feedback": [
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "expectation": "Uma reação verificável.",
+      "feedback_id": "fb-fixture-1",
+      "interaction_ref": "S990-I0001",
+      "observation": "Nenhuma reação foi observada.",
+      "original_text": "Manifestação sintética: faltou reação do mundo.",
+      "perceived_impact": "moderado",
+      "perceived_type": "oportunidade_percebida",
+      "player_capability_id": null,
+      "player_module_id": "scene_world_projection",
+      "recorded_at": "2026-01-01T00:00:20Z",
+      "system_suggestion": null
+    }
+  ],
+  "schema_adjudicacoes_modulares": 2,
+  "semantic_audits": []
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "operacoes-executadas-rollout.schema.json",
+  "title": "Ledger de operações executadas no rollout",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "native_calls",
+    "grouped_native_calls",
+    "operations",
+    "summary",
+    "regra"
+  ],
+  "properties": {
+    "schema": {"const": 1},
+    "native_calls": {"type": "integer", "minimum": 0},
+    "grouped_native_calls": {"type": "integer", "minimum": 0},
+    "operations": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/operation"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operations",
+        "successful",
+        "failed",
+        "indeterminate",
+        "correlation",
+        "intermediate_fragments",
+        "duplicate_terminal_outputs"
+      ],
+      "properties": {
+        "operations": {"type": "integer", "minimum": 0},
+        "successful": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "indeterminate": {"type": "integer", "minimum": 0},
+        "correlation": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "intermediate_fragments": {"type": "integer", "minimum": 0},
+        "duplicate_terminal_outputs": {"type": "integer", "minimum": 0}
+      }
+    },
+    "regra": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "operation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation_id",
+        "parent_call_id",
+        "turn_id",
+        "operation_index",
+        "result_index",
+        "category",
+        "correlation_status",
+        "command_executed",
+        "output_seen",
+        "result_state",
+        "command_sha256",
+        "output_sha256"
+      ],
+      "properties": {
+        "operation_id": {"type": "string", "minLength": 1},
+        "parent_call_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string", "minLength": 1},
+        "operation_index": {"type": "integer", "minimum": 0},
+        "result_index": {"type": ["integer", "null"], "minimum": 0},
+        "category": {"type": "string", "minLength": 1},
+        "correlation_status": {
+          "enum": [
+            "pendente",
+            "chamada_nativa",
+            "indice_explicito",
+            "ordem_declarada",
+            "saida_encaminhada",
+            "execucao_impedida",
+            "resultado_ausente",
+            "ambiguo"
+          ]
+        },
+        "command_executed": {"type": "boolean"},
+        "output_seen": {"type": "boolean"},
+        "result_state": {"enum": ["sucesso", "falha", "indeterminado"]},
+        "command_sha256": {"$ref": "#/$defs/sha256"},
+        "output_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        }
+      }
+    }
+  }
+}

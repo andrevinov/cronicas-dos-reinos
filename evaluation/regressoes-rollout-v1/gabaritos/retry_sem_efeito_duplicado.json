@@ -1,0 +1,45 @@
+{
+  "case_id": "retry_sem_efeito_duplicado",
+  "checks": [
+    {
+      "caminho": [
+        "dominio",
+        "efeitos_memoria_persistida"
+      ],
+      "check_id": "memoria-efeito-unico",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "memoria_contexto",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Retry confirma a persistência sem criar segundo efeito.",
+      "operacao": "igual",
+      "unidade_avaliativa": "efeito_modular"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "operacoes_concluidas"
+      ],
+      "check_id": "memoria-dois-resultados",
+      "esperado": 2,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "memoria_contexto",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "As duas operações concluíram, embora só uma materialize efeito.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

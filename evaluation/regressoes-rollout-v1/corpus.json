@@ -1,0 +1,590 @@
+{
+  "casos": [
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "preparo_direto_completo",
+      "conjunto": "desenvolvimento",
+      "descricao": "Controle positivo: preparo direto com sete recibos completos.",
+      "gabarito": "gabaritos/preparo_direto_completo.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/preparo_direto_completo.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "76b3e6b8ca370ecc4bd12f2474f3cca7132d2a8738d280e4cc9361f1eb961343",
+      "sha256_rollout": "42792755fc91cb08259bece50e7c6a967745850ecbaaaa89b66650a28397aa63",
+      "tags": [
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "leitura_e_preparo_separados",
+      "conjunto": "desenvolvimento",
+      "descricao": "Leitura e preparo equivalentes em chamadas separadas.",
+      "gabarito": "gabaritos/leitura_e_preparo_separados.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/leitura_e_preparo_separados.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "6d167e2d0de2f542921f76967b7e16054afd0e6b325763dde2d7c592544887ae",
+      "sha256_rollout": "b84cda05c63f858cda5415ce5c904c3ec9a2bd017ee984d2a0eeaaa446a4ae57",
+      "tags": [
+        "metamorfico",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "leitura_e_preparo_agrupados",
+      "conjunto": "desenvolvimento",
+      "descricao": "Redução sintética do agrupamento que descartou sete recibos na sessão 23.",
+      "gabarito": "gabaritos/leitura_e_preparo_agrupados.json",
+      "origem": {
+        "referencias_s023": [
+          "call_x1z7XqGYozos780kfjIJsj0H"
+        ],
+        "tipo": "reducao_s023"
+      },
+      "rollout": "rollouts/leitura_e_preparo_agrupados.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "f1ad1eeda30a3d2ddac0f84c423aff69fb021c0242f0e764cac21e670a7d244a",
+      "sha256_rollout": "546528801db2edecd74b4644cd4965cbbe3ed14fc82f3bb799138a25634fdaf4",
+      "tags": [
+        "metamorfico",
+        "s023"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "consulta_sucesso_preparo_falha",
+      "conjunto": "desenvolvimento",
+      "descricao": "Consulta bem-sucedida e preparo falho com resultados permutados.",
+      "gabarito": "gabaritos/consulta_sucesso_preparo_falha.json",
+      "origem": {
+        "referencias_s023": [
+          "call_GWDmUBmgUOS5GB4p7lJNzijy"
+        ],
+        "tipo": "reducao_s023"
+      },
+      "rollout": "rollouts/consulta_sucesso_preparo_falha.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "e3fb83d8b25c33042f39e596c68b2bf62ef123ed02403ad39c0a55451f7e340f",
+      "sha256_rollout": "7950f9a0f64595d958d19acc087114e6a29eb324818185f80da8ceaa0abebd64",
+      "tags": [
+        "metamorfico",
+        "falha_mista",
+        "s023"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "preparo_falha_consulta_sucesso",
+      "conjunto": "desenvolvimento",
+      "descricao": "Consulta bem-sucedida e preparo falho com resultados permutados.",
+      "gabarito": "gabaritos/preparo_falha_consulta_sucesso.json",
+      "origem": {
+        "referencias_s023": [
+          "call_GWDmUBmgUOS5GB4p7lJNzijy"
+        ],
+        "tipo": "reducao_s023"
+      },
+      "rollout": "rollouts/preparo_falha_consulta_sucesso.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "6273c02079cd15fc84c7d01310333cffab52ea8e059c5baa3f7a33768c878a6b",
+      "sha256_rollout": "5eb6f2fdf5bafd5282024c766e7884026571f21cd96663fcb39dd6c83d3f06a7",
+      "tags": [
+        "metamorfico",
+        "falha_mista",
+        "s023"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "lote_recusado_com_leitura",
+      "conjunto": "desenvolvimento",
+      "descricao": "Redução sintética do lote recusado que o envelope promoveu a sucesso.",
+      "gabarito": "gabaritos/lote_recusado_com_leitura.json",
+      "origem": {
+        "referencias_s023": [
+          "call_6fB4Boykl7e7xBOiqQUZEIg4"
+        ],
+        "tipo": "reducao_s023"
+      },
+      "rollout": "rollouts/lote_recusado_com_leitura.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "af716782d500e54fff714905f1975c15a7d9353cd563ff42b0e22828fb69299a",
+      "sha256_rollout": "19401a6289a8aa5f1e5dcd3e7e8f5e205f810751167448e60d78e127b2f399d6",
+      "tags": [
+        "falha_mista",
+        "s023"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "encerramento_falho_com_leitura",
+      "conjunto": "desenvolvimento",
+      "descricao": "Redução sintética do encerramento falho misturado a leituras.",
+      "gabarito": "gabaritos/encerramento_falho_com_leitura.json",
+      "origem": {
+        "referencias_s023": [
+          "call_ZL43KEjr4YfRKBILc6zcwb9k"
+        ],
+        "tipo": "reducao_s023"
+      },
+      "rollout": "rollouts/encerramento_falho_com_leitura.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "55c116f82b3b9fca83308f3711695dbdb1214c9e52e2ee5e467697b11ef92589",
+      "sha256_rollout": "429672fb7cf2604ee4163f2b7463e4be5bb36a8aa5debb9417dc96a0e1ad0f9b",
+      "tags": [
+        "falha_mista",
+        "s023"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "resultado_fragmentado",
+      "conjunto": "desenvolvimento",
+      "descricao": "Resultado final após sinal intermediário pertence à mesma chamada.",
+      "gabarito": "gabaritos/resultado_fragmentado.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/resultado_fragmentado.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "0a41f50844f1bb55dfa18d985387ecc9bdea294ecd507244ec78b44b48826af3",
+      "sha256_rollout": "053d5e0e3b64fe6d24aa9ae422ceb6595abb9e9faed8d96d9c22272ae6aefcea",
+      "tags": [
+        "fragmento"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "resultado_retransmitido",
+      "conjunto": "desenvolvimento",
+      "descricao": "Retransmitir o resultado da primeira chamada não conclui a segunda.",
+      "gabarito": "gabaritos/resultado_retransmitido.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/resultado_retransmitido.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "1225e588f4f9f5c4871aa9342fcf301ef3bc71c822b1e7db1f783a277ca3eefe",
+      "sha256_rollout": "ac5949fd85c86b6cf30d031aad8991d4b9e0c1435d09ce016e6dafb47d68ed67",
+      "tags": [
+        "retransmissao"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "comando_apenas_citado",
+      "conjunto": "desenvolvimento",
+      "descricao": "Comando e recibos citados não representam execução.",
+      "gabarito": "gabaritos/comando_apenas_citado.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/comando_apenas_citado.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "b568c64896be47130cc0630e6fa4b154fb3106962537c7767a394e90ea879e75",
+      "sha256_rollout": "6fa0b4baaae0d131f0d40a442c3c4cddaadb6d685a585f92909309f430a5b769",
+      "tags": [
+        "citacao",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "preparo_sem_recibos",
+      "conjunto": "desenvolvimento",
+      "descricao": "Preparo concluído sem recibos gera ausência real.",
+      "gabarito": "gabaritos/preparo_sem_recibos.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/preparo_sem_recibos.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "f32a75d880f8b727bb0f897ceb9a007ceecf289f0a98e9ce7313c90e85dce259",
+      "sha256_rollout": "0ced788c66ad51b814be94871a7e7ccf160b3d592e636ef4a202f28a9c55649d",
+      "tags": [
+        "ausencia",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "resultado_ausente",
+      "conjunto": "desenvolvimento",
+      "descricao": "Chamada sem resultado não fabrica sucesso.",
+      "gabarito": "gabaritos/resultado_ausente.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/resultado_ausente.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "b6878a2c5706fa5d5d06bb634e40f92e11d0f07c4c7a4ca2bbad50084fd047d7",
+      "sha256_rollout": "e5202143db95686053b17e58d31659a605872ef690e93fccda5bbb0ae861d2bb",
+      "tags": [
+        "evidencia_ausente"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "retry_sem_efeito_duplicado",
+      "conjunto": "desenvolvimento",
+      "descricao": "Retry de memória conserva exactly-once.",
+      "gabarito": "gabaritos/retry_sem_efeito_duplicado.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/retry_sem_efeito_duplicado.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "27554e38f4543eeaffe18f722416e9f2ad9039c4c6060ec87023d212f7e21fcb",
+      "sha256_rollout": "7d536837c66bd206ec082c6e7a9f29cc7fca9fd3bbf39dd096a31708572d0d8f",
+      "tags": [
+        "retry",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "agregado_com_modulos_bloqueados",
+      "conjunto": "desenvolvimento",
+      "descricao": "Scorecard deve excluir componentes de módulos bloqueados.",
+      "gabarito": "gabaritos/agregado_com_modulos_bloqueados.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/agregado_com_modulos_bloqueados.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "21595da51e48fd05d20b5dcf3b0ea2e03f56403a93b24c156676aeef5488e0ce",
+      "sha256_rollout": "dbeec85e66885ae9b5aaf0e91ca6ee79d6f057fab43d4c3321a537674be10283",
+      "tags": [
+        "agregacao",
+        "falha_instrumentacao"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes-pendentes.json",
+      "case_id": "manifestacao_pendente_sem_auditoria",
+      "conjunto": "desenvolvimento",
+      "descricao": "Feedback pendente e ausência de auditoria não viram qualidade confirmada.",
+      "gabarito": "gabaritos/manifestacao_pendente_sem_auditoria.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/manifestacao_pendente_sem_auditoria.jsonl",
+      "sha256_adjudicacoes": "b0f9b297df1d2c9f550b0527a56f47437fccddbad1251b9607c26b211ee7fb93",
+      "sha256_gabarito": "5a5aed3176212623e32ec9a3dc1d05284d8ffeb4bcf1046a7e642b07ff32be31",
+      "sha256_rollout": "38dc1a1bc6f061f12ccb969fefb4dcc83e674d14a899c5a5ccc08f302ea414f4",
+      "tags": [
+        "qualidade",
+        "feedback"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "formato_nativo_desconhecido",
+      "conjunto": "desenvolvimento",
+      "descricao": "Envelope nativo futuro falha explicitamente.",
+      "gabarito": "gabaritos/formato_nativo_desconhecido.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/formato_nativo_desconhecido.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "669b40514e39d5581a87e17584402102bbf75bacebe8f09005d5ef605a295e68",
+      "sha256_rollout": "28d33b917939179b663b11306a24a3a18e29273fe21a563d10b8440f85bacead",
+      "tags": [
+        "formato_desconhecido"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "saida_em_blocos",
+      "conjunto": "desenvolvimento",
+      "descricao": "Representação de output em blocos é suportada pelo contrato.",
+      "gabarito": "gabaritos/saida_em_blocos.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/saida_em_blocos.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "968af47ec4e9dfac1895b0da37604a250e97c2e9e30af661bbb473c0fdcc7d22",
+      "sha256_rollout": "ea354c341449c5bcfda524c1a69e968f3edd5163bad39e6bce7d74f8d6c88c23",
+      "tags": [
+        "formato",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "resultados_fora_de_ordem",
+      "conjunto": "desenvolvimento",
+      "descricao": "Resultados independentes chegam em ordem inversa e conservam atribuição.",
+      "gabarito": "gabaritos/resultados_fora_de_ordem.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/resultados_fora_de_ordem.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "7a8a9163e9c566d7c1c675d1c2dc14d498593feb6074a1280eff9fd07e2ec84c",
+      "sha256_rollout": "ef694350665036e2d3a45d8361ca222db4f559fc3ba1415fcf91e6e7909503f9",
+      "tags": [
+        "correlacao",
+        "controle"
+      ]
+    },
+    {
+      "adjudicacoes": "config/adjudicacoes.json",
+      "case_id": "aceite_com_instrumentacao_falha",
+      "conjunto": "desenvolvimento",
+      "descricao": "Aceite real não pode aprovar pacote com módulos bloqueados.",
+      "gabarito": "gabaritos/aceite_com_instrumentacao_falha.json",
+      "origem": {
+        "referencias_s023": [],
+        "tipo": "sintetico"
+      },
+      "rollout": "rollouts/aceite_com_instrumentacao_falha.jsonl",
+      "sha256_adjudicacoes": "f707d0aeaf54f0c82de372ec2d46a97393ff0a1417ddf237404cf124ace043e8",
+      "sha256_gabarito": "c542be3050ccc54caa3296ee466bec3e6883d1c945c9fbb9cafe1fb7600c7710",
+      "sha256_rollout": "e668493c6ab55d8426cd4324adb87aa0484b1152f7d3babbafedd84b9a5fd668",
+      "tags": [
+        "aceite",
+        "falha_instrumentacao"
+      ]
+    }
+  ],
+  "configuracao": {
+    "baseline": "config/baseline.json",
+    "catalogo": "config/catalogo.json",
+    "contrato_medicao": "config/contrato-medicao.json",
+    "contratos_modulos": "config/contratos-modulos",
+    "guardrails": "config/guardrails.json",
+    "interacoes": "config/interacoes.json",
+    "metas": "config/metas.json",
+    "releases": "config/releases.json",
+    "series": "config/series.json",
+    "validade": "config/validade.json"
+  },
+  "escopo": "entrada nativa até artefatos consumidos pelo painel",
+  "fonte_expectativas": "gabaritos normativos escritos antes das correções das atividades 3–10; não gerados pelo avaliador",
+  "natureza": "fixtures pós-hoc isoladas; não descrevem estado vivo nem reescrevem avaliações históricas",
+  "relacoes": [
+    {
+      "caminhos": [
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "turn_and_session_orchestration",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "turn_and_session_orchestration",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "turn_and_session_orchestration",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "scene_world_projection",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "scene_world_projection",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "scene_world_projection",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_authoring",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_authoring",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_authoring",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_lifecycle",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_lifecycle",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "sidequest_lifecycle",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "causal_narrative_routing",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "causal_narrative_routing",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "causal_narrative_routing",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "npc_continuity_and_social_behavior",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "npc_continuity_and_social_behavior",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "npc_continuity_and_social_behavior",
+          "missing_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "missing_receipts"
+        ]
+      ],
+      "casos": [
+        "leitura_e_preparo_separados",
+        "leitura_e_preparo_agrupados"
+      ],
+      "justificativa": "Agrupar muda chamadas nativas, mas não as atividades e recibos das operações.",
+      "relation_id": "agrupar_preserva_fatos",
+      "tipo": "equivalencia",
+      "unidade_excluida": [
+        "telemetria",
+        "all_turns",
+        "tool_calls"
+      ]
+    },
+    {
+      "caminhos": [
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "activity_units"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "complete_receipts"
+        ],
+        [
+          "telemetria",
+          "module_coverage_gates",
+          "context_and_memory",
+          "missing_receipts"
+        ],
+        [
+          "dominio",
+          "preparos_concluidos"
+        ]
+      ],
+      "casos": [
+        "consulta_sucesso_preparo_falha",
+        "preparo_falha_consulta_sucesso"
+      ],
+      "justificativa": "A ordem independente não pode transferir sucesso entre operações.",
+      "relation_id": "permutar_resultados_preserva_atribuicao",
+      "tipo": "equivalencia",
+      "unidade_excluida": null
+    }
+  ],
+  "schema_corpus_regressao_rollout": 1,
+  "sha256_configuracao": {
+    "config/baseline.json": "b4fce4ef9fa5b99071fae3615ee43b2476b2eadded629e526441de97361b26de",
+    "config/catalogo.json": "90bb7647888470c7ebca6bac94bdaea05539f2540c0f7e05f157b275688c7047",
+    "config/contrato-medicao.json": "dbe980e54d350ad8444e3211191acc4ba29c26ea42ce71071d39a2234c3de063",
+    "config/contratos-modulos/adversarial_operations.json": "faa3c61add2c537e8872b5755104434f999a24c97c2d632868a183fcc1d1b4b4",
+    "config/contratos-modulos/canonical_quest_integration.json": "519c215cf0f94dea8d62d9c7be298788a4c7e8693b2bf181f1c2caeba835a28c",
+    "config/contratos-modulos/causal_narrative_routing.json": "10fedc3995a4906cc3b2635855fa84fd6999ca5dff5f106b6d69ef35ea2f4122",
+    "config/contratos-modulos/context_and_memory.json": "2223f7b3c762272183dc41a81dacae2195672a28863efe9a6adb74acc7b87371",
+    "config/contratos-modulos/narrative_delivery.json": "a8b14807a57c9f7c5681dfa821c1cea1a226f5e2be9fb1fbbbde583b6f76325c",
+    "config/contratos-modulos/npc_continuity_and_social_behavior.json": "f1b58917e7e5336691a20d66fe624b263239b35fa54552e86432badf5fe73fd9",
+    "config/contratos-modulos/rules_and_character_state.json": "2ba49d6cf76e0665b30b429a7ca2068e9560d69b91d89df3540f81877b698d79",
+    "config/contratos-modulos/scene_world_projection.json": "3839cc9939b8a3d72dd69361d363eb7f9bc7acdba2984fabbe213ca5fe2cf58a",
+    "config/contratos-modulos/sidequest_authoring.json": "359a3958527ff19c62d975cc7296b29af3735466d93bb61b14eb7ea49b4b18dd",
+    "config/contratos-modulos/sidequest_lifecycle.json": "d25196deccf46b376e0a4c92caf67878d11c16801fa50645398b375a59bc735b",
+    "config/contratos-modulos/turn_and_session_orchestration.json": "3090e89e4c83b1ab850ccf7bd06494e7c756a5bcf93f5a75b1f38835c9cba819",
+    "config/contratos-modulos/world_boundary_resolution.json": "f0e0dabfdaa9de6c45e0368e7457e53a33b38d21ca3214727b647911b01fe5fe",
+    "config/guardrails.json": "2129bbe9f056c63449d8f300a49f1e1d46059dcaa05b92f0f527fadebf9acec5",
+    "config/interacoes.json": "1fc92e4d1504aa46a8278ae0755467541ae7e7eecaf9a7442d1e4562f0ca9139",
+    "config/metas.json": "4982fbd12cf43a12912273e21150e9f74caf94adeaac06c2d5ad096330232c4a",
+    "config/releases.json": "61f503849f684e96c1e13d4ac574b43fb941f5202fa59761d29e840fd5256fdc",
+    "config/series.json": "336e3cce713d8cba6ee4d39ca80bc64a2e3efadf017c30e8da12e116710cd2c7",
+    "config/validade.json": "666b811f21c3ab4c0e50708c7967dbaade6b538262a313d86479e9fde3c567a1"
+  },
+  "versao_corpus": "1.0.0"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_politica_series_avaliacao": 2,
+  "natureza": "política de classificação e comparabilidade de pacotes pós-hoc",
+  "serie_padrao_producao": "modules-v2",
+  "series": [
+    {
+      "id": "legacy-v1",
+      "catalogo": "catalogo-modulos.json",
+      "estado": "legado",
+      "regra_entrada": "todo pacote sem serie_avaliacao explícita e todo pacote produzido antes do corte RM-11",
+      "comparavel_com": ["legacy-v1"]
+    },
+    {
+      "id": "modules-v2",
+      "catalogo": "catalogo-modulos-v2.json",
+      "estado": "producao",
+      "regra_entrada": "todo pacote novo produzido pelo gerador RM-11 declara serie_avaliacao=modules-v2",
+      "comparavel_com": ["modules-v2"]
+    }
+  ],
+  "classificacao": {
+    "campo_manifesto": "serie_avaliacao",
+    "serie_quando_campo_ausente": "legacy-v1",
+    "sessao_021": "legacy-v1",
+    "reescrever_pacote_legado": false
+  },
+  "corte": {
+    "tipo": "explicito_por_contrato",
+    "condicao": "o pacote foi produzido pelo gerador RM-11 e declara modules-v2",
+    "antes_do_corte": "legacy-v1",
+    "depois_do_corte": "modules-v2"
+  },
+  "comparabilidade": {
+    "agregacao_entre_series": "proibida",
+    "versoes_incompativeis": "separar_series_temporais",
+    "campos_versao": ["contrato_avaliacao", "metas"],
+    "regra": "agregação global exige a mesma série e o mesmo contrato de avaliação; versão de implementação de um módulo não fragmenta os demais",
+    "referencia_legada": "pode ser exibida lado a lado, identificada como referencia_legada e nunca entra na mesma média ou tendência",
+    "comparacao_modular": {
+      "chave": ["module_id", "module_evaluation_version"],
+      "dimensao_em_disputa": "module_implementation_version",
+      "avaliacao_major_incompativel": true,
+      "amostra_minima_obrigatoria": true
+    }
+  }
+}

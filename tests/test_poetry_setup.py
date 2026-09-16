@@ -19,6 +19,7 @@ class PoetrySetupTest(unittest.TestCase):
 
         scripts = data["project"]["scripts"]
         expected = {
+            "servidor",
             "entrada",
             "contexto",
             "cronica",
@@ -52,6 +53,7 @@ class PoetrySetupTest(unittest.TestCase):
 
     def test_every_wrapper_target_exists(self):
         targets = {
+            "servidor.py",
             "entrada.py",
             "contexto.py",
             "cronica.py",

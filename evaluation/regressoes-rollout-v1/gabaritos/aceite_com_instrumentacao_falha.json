@@ -1,0 +1,26 @@
+{
+  "case_id": "aceite_com_instrumentacao_falha",
+  "checks": [
+    {
+      "caminho": [
+        "propriedades",
+        "aceite_recusa_instrumentacao_falha"
+      ],
+      "check_id": "aceite-recusado",
+      "esperado": true,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "estado: preparado",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O aceite real precisa considerar falha de instrumentação.",
+      "operacao": "igual",
+      "unidade_avaliativa": "sessao"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

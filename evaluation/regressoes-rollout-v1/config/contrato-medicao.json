@@ -1,0 +1,526 @@
+{
+  "schema_contrato_medicao": 1,
+  "versao_contrato": "1.0.0",
+  "escopo": "contrato de entrada e unidades; não certifica extração, notas ou qualidade narrativa",
+  "formatos": {
+    "codex_jsonl_v1": {
+      "tipos_registro": [
+        "session_meta",
+        "turn_context",
+        "response_item",
+        "event_msg",
+        "token_usage_record",
+        "compacted",
+        "world_state"
+      ],
+      "tipos_response_item": [
+        "message",
+        "reasoning",
+        "function_call",
+        "custom_tool_call",
+        "function_call_output",
+        "custom_tool_call_output"
+      ],
+      "representacoes_output": [
+        "texto",
+        "blocos"
+      ],
+      "correlacao_agrupada": "exige adaptador e vínculo por operação; o envelope concluído não prova sucesso de seus comandos",
+      "validacao": "envelope JSONL; conteúdos e recibos serão interpretados nas atividades 3–5"
+    }
+  },
+  "unidades": {
+    "inferencia": {
+      "definicao": "Uma inferência com uso de tokens observado; não uma resposta.",
+      "identidade": [
+        "registro_nativo"
+      ]
+    },
+    "chamada_ferramenta": {
+      "definicao": "Uma chamada nativa ao host; pode conter várias operações.",
+      "identidade": [
+        "call_id"
+      ]
+    },
+    "operacao_executada": {
+      "definicao": "Uma invocação e seu próprio resultado dentro de uma chamada.",
+      "identidade": [
+        "call_id",
+        "indice_operacao"
+      ]
+    },
+    "turno_conversa": {
+      "definicao": "Um turno do host/LLM; pode conter várias interações canônicas.",
+      "identidade": [
+        "turn_id"
+      ]
+    },
+    "interacao": {
+      "definicao": "Um par jogador–resposta identificado no ledger da sessão.",
+      "identidade": [
+        "interaction_ref"
+      ]
+    },
+    "atividade_modular": {
+      "definicao": "Uma passagem de domínio por operação, módulo, fase e objeto; não um evento agregado.",
+      "identidade": [
+        "operacao_id",
+        "module_id",
+        "fase",
+        "objeto_ref"
+      ]
+    },
+    "evento_modular": {
+      "definicao": "Um sinal agregado por interação/turno e subcapacidade; não prova oportunidade.",
+      "identidade": [
+        "event_id"
+      ]
+    },
+    "recibo_modular": {
+      "definicao": "Uma declaração estruturada vinculada à atividade que deve cobrir.",
+      "identidade": [
+        "atividade_id",
+        "schema_recibo"
+      ]
+    },
+    "oportunidade": {
+      "definicao": "Um caso de elegibilidade fundamentado independentemente da ativação observada.",
+      "identidade": [
+        "caso_id",
+        "evidencia_elegibilidade"
+      ]
+    },
+    "efeito_modular": {
+      "definicao": "Um resultado material confirmado e deduplicado por identidade causal.",
+      "identidade": [
+        "efeito_id",
+        "atividade_id"
+      ]
+    },
+    "fato_memoria": {
+      "definicao": "Um fato durável com evidência e destino rastreáveis.",
+      "identidade": [
+        "fato_id",
+        "evidencia"
+      ]
+    },
+    "cena": {
+      "definicao": "Um contexto de cena identificado; não equivale a turno do host.",
+      "identidade": [
+        "cena_id"
+      ]
+    },
+    "janela": {
+      "definicao": "Uma janela causal idempotente definida pelo contrato do módulo.",
+      "identidade": [
+        "module_id",
+        "janela_id"
+      ]
+    },
+    "fronteira": {
+      "definicao": "Uma avaliação/resolução temporal com identidade e instante alvo.",
+      "identidade": [
+        "fronteira_id",
+        "instante"
+      ]
+    },
+    "sessao": {
+      "definicao": "A sessão canônica selecionada para o pacote.",
+      "identidade": [
+        "sessao_id"
+      ]
+    },
+    "modulo": {
+      "definicao": "Um domínio do catálogo, com versões de implementação e avaliação distintas.",
+      "identidade": [
+        "module_id"
+      ]
+    },
+    "manifestacao": {
+      "definicao": "Um relato do jogador com identidade própria; pendente não é confirmação.",
+      "identidade": [
+        "feedback_id",
+        "interaction_ref"
+      ]
+    }
+  },
+  "indicadores_globais": {
+    "input_tokens": {
+      "unidade_avaliativa": "inferencia",
+      "medida": "tokens",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "cached_input_tokens": {
+      "unidade_avaliativa": "inferencia",
+      "medida": "tokens",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "output_tokens": {
+      "unidade_avaliativa": "inferencia",
+      "medida": "tokens",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "reasoning_output_tokens": {
+      "unidade_avaliativa": "inferencia",
+      "medida": "tokens",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "inference_events": {
+      "unidade_avaliativa": "inferencia",
+      "medida": "contagem",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "tool_calls": {
+      "unidade_avaliativa": "chamada_ferramenta",
+      "medida": "contagem",
+      "fonte": "nativa",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "inferencias_por_turno": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "razao",
+      "fonte": "observacao",
+      "denominador": "inferências nativas / turnos de conversa do recorte declarado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "tools_por_turno": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "razao",
+      "fonte": "observacao",
+      "denominador": "chamadas nativas / turnos de conversa do recorte declarado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "orquestracao_por_turno": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "razao",
+      "fonte": "observacao",
+      "denominador": "operações de orquestração executadas / turnos de conversa do recorte declarado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "fracao_l0_l2_limpo": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "proporcao",
+      "fonte": "observacao",
+      "denominador": "turnos de conversa do recorte declarado com classificação de acesso observável",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "fracao_turnos_com_raw": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "proporcao",
+      "fonte": "observacao",
+      "denominador": "turnos de conversa do recorte declarado com classificação de acesso observável",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "fracao_par_cronica_exato": {
+      "unidade_avaliativa": "interacao",
+      "medida": "proporcao",
+      "fonte": "observacao",
+      "denominador": "interações ON com operação preparar/concluir correlacionável; separar retries e compressões em várias interações",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "raw_read_calls": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "schema_discovery_calls": {
+      "unidade_avaliativa": "operacao_executada",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_mediana_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_p90_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_maxima_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "turnos_acima_300_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "reducao_input_bruto_baseline": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "proporcao",
+      "fonte": "agregacao",
+      "denominador": "input por turno em baseline compatível; declarar recortes e versões comparados",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "nota_geral_0a100": {
+      "unidade_avaliativa": "sessao",
+      "medida": "nota",
+      "fonte": "agregacao",
+      "denominador": "somente dimensões avaliáveis sob contrato e pesos congelados; componentes bloqueados excluídos",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  },
+  "indicadores_comuns_modulares": {
+    "eventos_detectados": {
+      "unidade_avaliativa": "evento_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "chamadas_detectadas": {
+      "unidade_avaliativa": "chamada_ferramenta",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "turnos_detectados": {
+      "unidade_avaliativa": "turno_conversa",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "oportunidades_elegiveis": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "ativacoes_observadas": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "efeitos_avaliaveis": {
+      "unidade_avaliativa": "efeito_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "manifestacoes_jogador": {
+      "unidade_avaliativa": "manifestacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "manifestacoes_confirmadas": {
+      "unidade_avaliativa": "manifestacao",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "verdadeiros_positivos": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "contagem",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "verdadeiros_negativos": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "contagem",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "falsos_positivos": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "contagem",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "falsos_negativos": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "contagem",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "precisao": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "VP / (VP + FP)",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "cobertura": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "VP / (VP + FN)",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "especificidade": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "VN / (VN + FP)",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "acuracia_balanceada": {
+      "unidade_avaliativa": "oportunidade",
+      "medida": "proporcao",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "média das classes observadas conforme régua local; declarar classes ausentes",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "unidades_avaliativas_obrigatorias": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "unidades_avaliativas_aplicaveis": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "unidades_avaliativas_nao_aplicaveis": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "unidades_avaliativas_indeterminadas": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": null,
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "recibos_cobertura_completos": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": "contar por atividade obrigada; multiplicidade de recibos é diagnóstico separado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "recibos_cobertura_ausentes": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": "contar por atividade obrigada; multiplicidade de recibos é diagnóstico separado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "recibos_cobertura_incompletos": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": "contar por atividade obrigada; multiplicidade de recibos é diagnóstico separado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "recibos_cobertura_duplicados": {
+      "unidade_avaliativa": "atividade_modular",
+      "medida": "contagem",
+      "fonte": "observacao",
+      "denominador": "contar por atividade obrigada; multiplicidade de recibos é diagnóstico separado",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "precisao_efeito": {
+      "unidade_avaliativa": "efeito_modular",
+      "medida": "percentual",
+      "fonte": "adjudicacao_ou_recibo_objetivo",
+      "denominador": "efeitos adequados / efeitos com adequação avaliada",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "nota_calibracao_0a100": {
+      "unidade_avaliativa": "modulo",
+      "medida": "nota",
+      "fonte": "agregacao",
+      "denominador": "somente componentes válidos e avaliáveis; cobertura inválida bloqueia a conclusão dependente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "nota_eficacia_integridade_0a100": {
+      "unidade_avaliativa": "modulo",
+      "medida": "nota",
+      "fonte": "agregacao",
+      "denominador": "somente componentes válidos e avaliáveis; cobertura inválida bloqueia a conclusão dependente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "nota_desempenho_provisoria_0a100": {
+      "unidade_avaliativa": "modulo",
+      "medida": "nota",
+      "fonte": "agregacao",
+      "denominador": "somente componentes válidos e avaliáveis; cobertura inválida bloqueia a conclusão dependente",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "tokens_totais_atribuidos_fracionados": {
+      "unidade_avaliativa": "modulo",
+      "medida": "tokens",
+      "fonte": "atribuicao_contabil",
+      "denominador": "rateio dos pais observados; não representa custo marginal causal",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "participacao_tokens_fracionados_pct": {
+      "unidade_avaliativa": "modulo",
+      "medida": "percentual",
+      "fonte": "atribuicao_contabil",
+      "denominador": "rateio dos pais observados; não representa custo marginal causal",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_exposta_mediana_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": "latência exposta nas interações observadas; não causal",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    },
+    "latencia_exposta_p90_segundos": {
+      "unidade_avaliativa": "interacao",
+      "medida": "segundos",
+      "fonte": "observacao",
+      "denominador": "latência exposta nas interações observadas; não causal",
+      "ausencia_de_evidencia": "indeterminado; nunca zero, sucesso ou inaplicabilidade presumidos"
+    }
+  },
+  "politicas": {
+    "fonte": "prefixo de bytes com registros JSON completos, hash e recorte explícitos; append posterior não altera a entrada",
+    "dependencias": "snapshots explícitos; não consultar estado vivo ou arquivos do pacote implicitamente",
+    "formatos_desconhecidos": "diagnóstico com linha e escopo; impedir conclusões dependentes",
+    "identidade_ausente": "desconhecida; nunca promover ordinal do host a identidade canônica",
+    "inaplicabilidade": "exige evidência explícita; ausência não é N/A",
+    "qualidade": "conformidade estrutural não é auditoria semântica; pendência humana não é confirmação",
+    "versoes": "snapshot do catálogo é régua selecionada, não prova a implementação histórica executada",
+    "isolamento": "contrato e indicadores locais por module_id; sem quantidade fixa de módulos no núcleo",
+    "historico": "contrato novo não reinterpreta ou reescreve os pacotes anteriores"
+  }
+}

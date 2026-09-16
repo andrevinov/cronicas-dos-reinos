@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gabarito-regressao-rollout.schema.json",
+  "title": "Gabarito independente por caso de rollout",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_gabarito_regressao",
+    "case_id",
+    "natureza",
+    "checks"
+  ],
+  "properties": {
+    "schema_gabarito_regressao": {
+      "const": 1
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "natureza": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check_id",
+          "operacao",
+          "caminho",
+          "esperado",
+          "unidade_avaliativa",
+          "evidencias",
+          "justificativa"
+        ],
+        "properties": {
+          "check_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operacao": {
+            "enum": [
+              "igual",
+              "ausente"
+            ]
+          },
+          "caminho": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            }
+          },
+          "esperado": {},
+          "unidade_avaliativa": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "fonte",
+                    "linha",
+                    "ponteiro",
+                    "fragmento"
+                  ],
+                  "properties": {
+                    "fonte": {
+                      "const": "rollout"
+                    },
+                    "linha": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "ponteiro": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "fragmento": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "fonte",
+                    "ponteiro",
+                    "esperado"
+                  ],
+                  "properties": {
+                    "fonte": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "ponteiro": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "esperado": {}
+                  }
+                }
+              ]
+            }
+          },
+          "justificativa": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$comment": "O validador Python confere unidades contra o contrato congelado e resolve cada evidência literal."
+}

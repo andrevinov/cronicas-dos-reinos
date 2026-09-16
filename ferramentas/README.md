@@ -2,6 +2,16 @@
 
 Ferramentas locais de apoio para conduzir **Crônicas dos Reinos** com leitura e escrita econômicas.
 
+## Servidor do painel de avaliação
+
+```bash
+poetry run servidor
+```
+
+Abra `http://127.0.0.1:18765/evaluation/dashboard/` e encerre com `Ctrl+C`.
+A porta pode ser alterada com `--porta <número>`. Detalhes em
+[`evaluation/dashboard/README.md`](../evaluation/dashboard/README.md).
+
 ## Rolador de dados
 
 Usar `ferramentas/rolar-dados.py` para uma rolagem individual:

@@ -1,0 +1,43 @@
+{
+  "schema_catalogo_guardrails": 1,
+  "versao_catalogo": "1.0.0",
+  "serie_avaliacao": "modules-v2",
+  "natureza": "propriedades críticas não compensáveis e externas à média modular",
+  "participa_media_modular": false,
+  "estados": ["ok", "violado", "indeterminado", "nao_aplicavel"],
+  "regra_agregacao": "qualquer violação crítica permanece visível e não pode ser compensada por nota alta",
+  "guardrails": [
+    {
+      "id": "player_agency",
+      "responsabilidade": "Preservar o controle exclusivo do jogador sobre decisões, falas, intenções, crenças, emoções definitivas e ações voluntárias de Ren.",
+      "severidade": "critica",
+      "unidade_analise": "turno",
+      "participa_media_modular": false,
+      "evidencias": ["entrada do jogador", "prosa entregue", "deltas e resoluções persistidos"]
+    },
+    {
+      "id": "knowledge_secrecy",
+      "responsabilidade": "Separar conhecimento do narrador, mundo, facções, NPCs, Ren e jogador, sem promover rumor, hipótese ou segredo não descoberto.",
+      "severidade": "critica",
+      "unidade_analise": "evento",
+      "participa_media_modular": false,
+      "evidencias": ["fonte do fato", "camada de conhecimento", "texto ou efeito exposto"]
+    },
+    {
+      "id": "roll_integrity",
+      "responsabilidade": "Fixar dificuldade e modificadores antes da rolagem e preservar resultado, capacidade e consequências depois dela.",
+      "severidade": "critica",
+      "unidade_analise": "evento",
+      "participa_media_modular": false,
+      "evidencias": ["pré-compromisso mecânico", "resultado bruto", "consequência aplicada"]
+    },
+    {
+      "id": "canonical_consistency",
+      "responsabilidade": "Impedir corrupção, contradição ou reescrita silenciosa do estado canônico e manter efeitos persistentes rastreáveis.",
+      "severidade": "critica",
+      "unidade_analise": "sessao",
+      "participa_media_modular": false,
+      "evidencias": ["estado anterior", "transação ou fato canônico", "estado consolidado"]
+    }
+  ]
+}

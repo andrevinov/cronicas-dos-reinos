@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "entrada-medicao.schema.json",
+  "title": "Entrada imutável de medição pós-hoc",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_entrada_medicao",
+    "sessao_id",
+    "escopo_validacao",
+    "fonte",
+    "contrato",
+    "snapshots",
+    "contratos_modulos",
+    "codigo_sha256",
+    "ambiente",
+    "diagnosticos",
+    "status",
+    "entrada_id"
+  ],
+  "properties": {
+    "schema_entrada_medicao": {
+      "const": 1
+    },
+    "sessao_id": {
+      "type": "string",
+      "pattern": "^[0-9]{3,}$"
+    },
+    "escopo_validacao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entrada_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "status": {
+      "enum": [
+        "valida",
+        "limitada",
+        "bloqueada"
+      ]
+    },
+    "fonte": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "perfil",
+        "corte_bytes",
+        "sha256",
+        "sha256_esperado",
+        "recorte",
+        "registros",
+        "ultima_timestamp",
+        "codex_session_id"
+      ],
+      "properties": {
+        "perfil": {
+          "const": "codex_jsonl_v1"
+        },
+        "corte_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sha256_esperado": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recorte": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registros": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ultima_timestamp": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "codex_session_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "contrato": {
+      "$ref": "#/$defs/snapshot"
+    },
+    "snapshots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalogo",
+        "metas",
+        "baseline",
+        "guardrails",
+        "series",
+        "releases",
+        "interacoes",
+        "adjudicacoes",
+        "validade"
+      ],
+      "properties": {
+        "catalogo": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "metas": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "baseline": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "guardrails": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "series": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "releases": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "interacoes": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "adjudicacoes": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "validade": {
+          "$ref": "#/$defs/snapshot"
+        }
+      }
+    },
+    "contratos_modulos": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/snapshot"
+      }
+    },
+    "codigo_sha256": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "ambiente": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python",
+        "PyYAML"
+      ],
+      "properties": {
+        "python": {
+          "type": "string",
+          "minLength": 1
+        },
+        "PyYAML": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "diagnosticos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "escopo",
+          "gravidade",
+          "mensagem"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "escopo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mensagem": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gravidade": {
+            "enum": [
+              "bloqueio",
+              "limitacao"
+            ]
+          },
+          "linha": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "estado",
+        "sha256",
+        "conteudo",
+        "formato"
+      ],
+      "properties": {
+        "estado": {
+          "enum": [
+            "presente",
+            "ausente",
+            "invalida"
+          ]
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conteudo": {
+          "type": [
+            "object",
+            "array",
+            "null"
+          ]
+        },
+        "formato": {
+          "enum": [
+            "json",
+            "jsonl",
+            null
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "estado": {
+                "const": "presente"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "conteudo": {
+                "type": [
+                  "object",
+                  "array"
+                ]
+              },
+              "formato": {
+                "enum": [
+                  "json",
+                  "jsonl"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "sha256": {
+                "type": "null"
+              },
+              "conteudo": {
+                "type": "null"
+              },
+              "formato": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$comment": "Hashes, cobertura dos contratos locais e coerência de status exigem validação semântica por entrada_medicao.py. A fonte bruta é externa e não integra o documento."
+}

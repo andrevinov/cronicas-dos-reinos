@@ -1,0 +1,47 @@
+{
+  "case_id": "lote_recusado_com_leitura",
+  "checks": [
+    {
+      "caminho": [
+        "telemetria",
+        "module_coverage_gates",
+        "world_boundary_resolution",
+        "activity_units"
+      ],
+      "check_id": "lote-sem-atividade",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "Uma aplicação recusada não é uma atividade concluída.",
+      "operacao": "igual",
+      "unidade_avaliativa": "atividade_modular"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "operacoes_falhas"
+      ],
+      "check_id": "lote-falhou",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "fonte": "rollout",
+          "fragmento": "erro:",
+          "linha": 5,
+          "ponteiro": "/payload/output"
+        }
+      ],
+      "justificativa": "O erro pertence à aplicação, independentemente da leitura bem-sucedida.",
+      "operacao": "igual",
+      "unidade_avaliativa": "operacao_executada"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}

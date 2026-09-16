@@ -1,0 +1,81 @@
+{
+  "case_id": "manifestacao_pendente_sem_auditoria",
+  "checks": [
+    {
+      "caminho": [
+        "scorecard",
+        "manifestacoes",
+        "total"
+      ],
+      "check_id": "feedback-total",
+      "esperado": 1,
+      "evidencias": [
+        {
+          "esperado": "fb-fixture-1",
+          "fonte": "config/adjudicacoes-pendentes.json",
+          "ponteiro": "/player_feedback/0/feedback_id"
+        }
+      ],
+      "justificativa": "A manifestação pendente permanece visível.",
+      "operacao": "igual",
+      "unidade_avaliativa": "manifestacao"
+    },
+    {
+      "caminho": [
+        "scorecard",
+        "manifestacoes",
+        "confirmadas_ou_parciais"
+      ],
+      "check_id": "feedback-confirmado",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "esperado": "pendente",
+          "fonte": "config/adjudicacoes-pendentes.json",
+          "ponteiro": "/player_feedback/0/adjudication/state"
+        }
+      ],
+      "justificativa": "Pendência não é confirmação.",
+      "operacao": "igual",
+      "unidade_avaliativa": "manifestacao"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "auditorias_semanticas"
+      ],
+      "check_id": "auditoria-zero",
+      "esperado": 0,
+      "evidencias": [
+        {
+          "esperado": [],
+          "fonte": "config/adjudicacoes-pendentes.json",
+          "ponteiro": "/semantic_audits"
+        }
+      ],
+      "justificativa": "Nenhuma auditoria semântica foi fornecida.",
+      "operacao": "igual",
+      "unidade_avaliativa": "manifestacao"
+    },
+    {
+      "caminho": [
+        "dominio",
+        "qualidade_narrativa_auditada"
+      ],
+      "check_id": "qualidade-nao-auditada",
+      "esperado": false,
+      "evidencias": [
+        {
+          "esperado": [],
+          "fonte": "config/adjudicacoes-pendentes.json",
+          "ponteiro": "/semantic_audits"
+        }
+      ],
+      "justificativa": "Conformidade estrutural não prova qualidade narrativa.",
+      "operacao": "igual",
+      "unidade_avaliativa": "manifestacao"
+    }
+  ],
+  "natureza": "expectativa normativa independente do avaliador",
+  "schema_gabarito_regressao": 1
+}
